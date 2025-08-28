@@ -5,18 +5,37 @@
 # instead of modifying the PKGBUILD file. Here's an example:
 # env _makemenuconfig=y _copyfinalconfig=y _subarch=30 makepkg
 
+# Toggles colorful log messages.
+#
+# We unfortunately have no way of checking whether the
+# terminal supports colors because 'makepkg' unsets
+# the 'CI' and 'COLORTERM' variables before we can read them.
+#
+# Set to anything but null to deactivate.
+: "${_disable_colorful_logging:=""}"
+
+# Specifies a list of additional patches to apply.
+#
+# All values must be prefixed with a plus sign (+)
+# and be separated by spaces. Any invalid values
+# will be silently ignored.
+#
+# Available patch categories:
+# - experimental: Experimental patches that should not be enabled on production kernels
+: "${_additionalpatches:=""}"
+
 # Tweak kernel options prior to a build via menuconfig.
-# 
+#
 # Set to anything but null to activate.
 : "${_makemenuconfig:=""}"
 
 # Tweak kernel options prior to a build via nconfig.
-# 
+#
 # Set to anything but null to activate.
 : "${_makenconfig:=""}"
 
 # Tweak kernel options prior to a build via xconfig.
-# 
+#
 # Set to anything but null to activate.
 : "${_makexconfig:=""}"
 
@@ -44,49 +63,49 @@
 
 # Determines whether the kernel configuration should be
 # copied into the source tree before compilation starts.
-# 
+#
 # Set to anything but null to activate.
 : "${_copyfinalconfig:=""}"
 
 # Only compile active modules to VASTLY reduce the number
 # of modules built and the build time.
-# 
+#
 # To keep track of which modules are needed for your specific system/hardware,
 # give modprobed-db a try: https://aur.archlinux.org/packages/modprobed-db
-# 
+#
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
 
 # Optionally select a sub architecture by number or its Kconfig name,
 # for example MCORE2 or MZEN4.
-# 
+#
 # Leaving it blank will require user interaction during the build.
 # Note that the default option is empty.
-# 
+#
 # Important notice for maintainers:
 # Make sure to update the '_subarch'
 # section inside update_defconfig()
 # if this list is updated on updating
 # the kernel compiler patchset.
 #
-#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  4. AMD Barcelona (MBARCELONA)
-#  5. AMD Bobcat (MBOBCAT)
-#  6. AMD Jaguar (MJAGUAR)
-#  7. AMD Bulldozer (MBULLDOZER)
-#  8. AMD Piledriver (MPILEDRIVER)
-#  9. AMD Steamroller (MSTEAMROLLER)
-#  10. AMD Excavator (MEXCAVATOR)
-#  11. AMD Zen (MZEN)
-#  12. AMD Zen 2 (MZEN2)
-#  13. AMD Zen 3 (MZEN3)
-#  14. AMD Zen 4 (MZEN4)
-#  15. AMD Zen 5 (MZEN5)
-#  16. Intel P4 / older Netburst based Xeon (MPSC)
-#  17. Intel Atom (MATOM)
+#  1. Generic-x86-64 (GENERIC_CPU)
+#  2. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  3. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  4. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  5. AMD Barcelona (MBARCELONA)
+#  6. AMD Bobcat (MBOBCAT)
+#  7. AMD Jaguar (MJAGUAR)
+#  8. AMD Bulldozer (MBULLDOZER)
+#  9. AMD Piledriver (MPILEDRIVER)
+#  10. AMD Steamroller (MSTEAMROLLER)
+#  11. AMD Excavator (MEXCAVATOR)
+#  12. AMD Ryzen (MZEN)
+#  13. AMD Ryzen 2 (MZEN2)
+#  14. AMD Ryzen 3 (MZEN3)
+#  15. AMD Ryzen 4 (MZEN4)
+#  16. AMD Ryzen 5 (MZEN5)
+#  17. Intel P4 / older Netburst based Xeon (MPSC)
 #  18. Intel Core 2 (MCORE2)
 #  19. Intel Nehalem (MNEHALEM)
 #  20. Intel Westmere (MWESTMERE)
@@ -98,28 +117,27 @@
 #  26. Intel Haswell (MHASWELL)
 #  27. Intel Broadwell (MBROADWELL)
 #  28. Intel Skylake (MSKYLAKE)
-#  29. Intel Skylake X (MSKYLAKEX)
-#  30. Intel Cannon Lake (MCANNONLAKE)
-#  31. Intel Ice Lake (MICELAKE)
-#  32. Intel Cascade Lake (MCASCADELAKE)
+#  29. Intel Skylake-X (7th Gen Core i7/i9) (MSKYLAKEX)
+#  30. Intel Coffee Lake/Kaby Lake Refresh (8th Gen Core i3/i5/i7) (MCANNONLAKE)
+#  31. Intel Ice Lake (MICELAKE_CLIENT)
+#  32. Intel Ice Lake-SP (3rd Gen Xeon Scalable) (MICELAKE_SERVER)
 #  33. Intel Cooper Lake (MCOOPERLAKE)
-#  34. Intel Tiger Lake (MTIGERLAKE)
-#  35. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
-#  36. Intel Rocket Lake (MROCKETLAKE)
-#  37. Intel Alder Lake (MALDERLAKE)
-#  38. Intel Raptor Lake (MRAPTORLAKE)
-#  39. Intel Meteor Lake (MMETEORLAKE)
-#  40. Intel Emerald Rapids (MEMERALDRAPIDS)
-#  41. Generic-x86-64 (GENERIC_CPU)
-#  42. Intel-Native optimizations autodetected by the compiler (MNATIVE_INTEL)
-#  43. AMD-Native optimizations autodetected by the compiler (MNATIVE_AMD)
+#  34. Intel Cascade Lake (MCASCADELAKE)
+#  35. Intel Tiger Lake (MTIGERLAKE)
+#  36. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
+#  37. Intel Rocket Lake (MROCKETLAKE)
+#  38. Intel Alder Lake (MALDERLAKE)
+#  39. Intel Raptor Lake (MRAPTORLAKE)
+#  40. Intel Meteor Lake (MMETEORLAKE)
+#  41. Intel Emerald Rapids (MEMERALDRAPIDS)
+#  42. Intel Diamond Rapids (7th Gen Xeon Scalable) (MDIAMONDRAPIDS)
 : "${_subarch:=""}"
 
 # Selects the x86-64 microarchitecture to compile for.
 # This value is only used by the GENERIC_CPU
 # subarchitecture and is required.
 # Can be either '1', '2', '3' or '4'
-# 
+#
 # Set to '1' by default
 #
 # For more information see:
@@ -130,7 +148,7 @@
 # Enable compilation with LLVM
 # Be warned, this is largely untested by me (JeremyStarTM). It *should* work,
 # but if it doesn't, write a comment and I'll fix it.
-# 
+#
 # Set to anything but null to activate.
 : "${_use_llvm_lto:=""}"
 
@@ -139,7 +157,7 @@
 # Set to 'y' to force enable, 'n' to force disable or '' to ignore debug options.
 # Leaving the setting empty will use the kernel configuration setting to determine
 # if debug options shall be enabled/disabled.
-# 
+#
 # Set to anything but null to activate.
 : "${_debug:=""}"
 
@@ -163,14 +181,17 @@
 
 
 # Kernel version
-_kernel_major=6.14
-_kernel_minor=10
+_kernel_major=6.16
+_kernel_minor=1
 # Clear Linux patches version
-_clr=6.14.8-1574
+_clr=6.16.1-1593
 # kernel_compiler_patch version
-_kernelcompilerpatch="20241018"
+_kernelcompilerpatch="20250818.2"
+# kernel_compiler_patch name
+_kernelcompilername="more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
 # Source directory names
 _src_linux=linux-${_kernel_major}
+
 
 # Package information
 pkgbase=linux-clear-cjktty-zfs
@@ -178,145 +199,337 @@ pkgver=${_kernel_major}.${_kernel_minor}
 pkgrel=1
 pkgdesc="Clear Linux内核,带有zfs和cjktty并开启kexec"
 arch=("x86_64")
-url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
-license=(GPL-2.0-only)
+url="https://git.staropensource.de/StarOpenSource/Linux-Tachyon"
+license=("GPL-2.0-only")
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
-[ -n "${_use_llvm_to}" ] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
-[ "${_debug}" == "y" ] && options=("!strip")
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
+  "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.2"
-  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.9.patch"
+  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.4"
+  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.16.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
+
+# Integrity & signature verification
+# -> SHA-256 checksums of the package's sources
+#    These need to be updated each release; see the 'source' array
+sha256sums=(
+    "1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83"
+            "SKIP"
+            "ea642697bed40c9ab1b89d68e094fd03bc5812f9717d23feef62462e1793e661"
+            "SKIP"
+            "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
+            'SKIP'
+            'SKIP'
+            'SKIP'
+)
+
+# -> Kernel PGP signer fingerprints
+#    Taken from https://www.kernel.org/signature.html
+validpgpkeys=(
+  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds (torvalds@kernel.org)
+  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman (gregkh@kernel.org)
+  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
+  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
+)
+
+
+# Update package information and build flags based on build settings
+[ -n "${_use_llvm_lto}" ] && makedepends+=("clang" "llvm" "lld")
+[ "${_debug}" == "y" ] && options=("!strip")
 [ -n "${_use_llvm_lto}" ] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
 
+
+# Set kernel build properties
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
-export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @${SOURCE_DATE_EPOCH}})"
 
-# Check for deprecated settings
+
+## Logs a message.
+##
+## This method is internal and should not be used directly.
+##
+## Arguments: <str:ANSI color code> <str:level name> <str:message...>
+_log() {
+    COLOR_CODE="${1}"
+    LEVEL_NAME="${2}"
+    shift 2
+
+    if [ -z "${_disable_colorful_logging}" ]; then
+        echo -en "\e[1;${COLOR_CODE}m:: ${LEVEL_NAME}: \e[0m\e[0;${COLOR_CODE}m"
+        echo -n "${*}"
+        echo -e "\e[0m"
+    else
+        echo -en ":: ${LEVEL_NAME}: "
+        echo "${*}"
+    fi
+}
+
+## Logs an informational message.
+##
+## Arguments: <str:message...>
+_info() { _log "37" "INFO" "${*}"; }
+
+## Logs a warning message.
+##
+## Arguments: <str:message...>
+_warning() { _log "33" "WARN" "${*}"; }
+
+## Logs an error message.
+##
+## Arguments: <str:message...>
+_error() { _log "31" "ERR!" "${*}"; }
+
+
+## Checks for deprecated settings.
 _check_deprecated_settings() {
     if [ -n "${_update_kconfig_on_reuse}" ]; then
-        warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'"
+        _warning "Please switch to using '_optimize_defconfig' flag instead of '_update_kconfig_on_reuse'"
         _optimize_defconfig="y"
     fi
     if [ -n "${_reuse_current}" ]; then
-        warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
+        _warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
         _use_current="y"
     fi
-    [ -n "${_show_compile}" ] && warning "'_show_compile' is no longer supported"
+    [ -n "${_show_compile}" ] && _warning "'_show_compile' is no longer supported"
 
     # To avoid an error
     true
 }
 
+## Parses the linux.spec file for patches to apply
 _get_patches() {
-    # set -x
-    local spec_file="${srcdir}/cl-linux/linux.spec"
-
-    # 1. Search for patches in the linux.spec file
-    #    Matches lines starting exactly with: %patch followed immediately by digits.
-    #    This implicitly ignores commented-out lines.
-    # 2. Pipe the grep output to sed to extract the patch number.
-    #    Captures the digits immediately following '%patch'.
-    local applied_patch_numbers=$(grep -E '^%patch[0-9]+' $spec_file | sed -E 's/^%patch([0-9]+).*/\1/')
-
-    # Check if any patch numbers were found
-    if [ -z "$applied_patch_numbers" ]; then
-        error "No applied '%patchXXXX' directives found in the %prep section."
-        exit 0
-    fi
-
-    # 4. Iterate through the extracted patch numbers
-    while IFS= read -r num; do
-        # 5. For each number, find the corresponding uncommented 'PatchXXXX:' line.
-        #    Grep for lines starting exactly with 'Patch', the number, ':', and optional whitespace.
-        patch_line=$(grep -E "^Patch${num}:[[:space:]]*" "$spec_file")
-
-        # 6. Check if a corresponding PatchXXXX line was found
-        if [ -n "$patch_line" ]; then
-            # 7. Extract the filename part after the first ': ' delimiter.
-            #    Remove the "Patch0XXX: " prefix using bash substr removal
-            echo "${patch_line#Patch[0-9]*:[[:space:]]}"
-        else
-            # Output a warning if the definition line is missing (shouldn't happen with valid spec files)
-            warning "Warning: Could not find definition line 'Patch${num}:' for applied patch number $num"
-        fi
-    done <<< "$applied_patch_numbers" # Feed the numbers into the loop
+    # Get the list of patches from the file, ignore the comments
+    grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
+    # Experimental patches
+    [[ "${_additionalpatches,,}" == *"+experimental"* ]] && grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
 }
 
-# Applies all patches
+
+## Invokes '_get_patches' and applies them as well as KCC
 _apply_patches() {
-    # Patch with kernel version patches
-    patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
-    
+    _info "Applying patches"
+
+    # Patch with kernel update patch
+    _info "Applying kernel update patch"
+    patch -sNp1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
+
     # Set version
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
-    
-    # Patch with Clear Linux patches
-    for i in $(_get_patches); do
-        echo "Applying $i"
+
+    # Patch with Tachyon patches
+    for __patch in $(_get_patches); do
+        _info "Applying '${__patch}'"
         if [ -n "${_use_llvm_lto}" ]; then
-            if [ "${i}" == "0133-novector.patch" ] ; then
-                continue
-            fi
+            [ "${__patch}" == "0133-novector.patch" ] && continue
         fi
-        
-        patch -Np1 -i "${srcdir}/cl-linux/${i}" || true
+
+        patch -sNp1 -i "${srcdir}/tachyon/patches/${__patch}" || true
     done
 
     # Patch with kernel_compiler_patch patches.
     # Do this before any defconfig invocations so we
     # have all of the extra selectable uarches ready and selectable
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
+    _info "Applying the kernel compiler patch"
+    patch -sNp1 -i "$srcdir/kernel_compiler_patch-${_kernelcompilerpatch}/${_kernelcompilername}"
 }
 
-# Allows user to modify the kernel config
+
+## Runs *config based on the user's wishes.
 _modify_defconfig() {
-    [ -n "$_makemenuconfig" ] && make ${BUILD_FLAGS[*]} menuconfig
-    [ -n "$_makexconfig" ] && make ${BUILD_FLAGS[*]} xconfig
-    [ -n "$_makenconfig" ] && make ${BUILD_FLAGS[*]} nconfig
+    [ -n "${_makemenuconfig}" ] && make ${BUILD_FLAGS[*]} menuconfig
+    [ -n "${_makexconfig}" ] && make ${BUILD_FLAGS[*]} xconfig
+    [ -n "${_makenconfig}" ] && make ${BUILD_FLAGS[*]} nconfig
 
     # Don't crash if all three are false
     true
 }
 
-# Copies the kernel config
-_copy_defconfig() {
-    local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
-    [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
-        warning "Major version was updated, you should regen the defconfig"
 
+## Verifies the kernel configuration version
+## and copies the current kernel configuration, if wanted.
+_copy_defconfig() {
+    # Check if running kernel is compatible with the new kernel
+    local __current_major_version
+    __current_major_version="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
+    [ "${__current_major_version}" != "${_kernel_major}" ] &&
+        _warning "Major version was updated, you should regen the defconfig"
+
+    # Copy running kernel configuration
     if [ -s /proc/config.gz ]; then
+        _info "Copying configuration from running kernel"
         # modprobe configs
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
     else
-        warning "Your kernel was not compiled with IKCONFIG_PROC."
-        warning "Unable to read kernel configuration, aborting."
+        _warning "Your kernel was not compiled with IKCONFIG_PROC."
+        _warning "Unable to read kernel configuration, aborting."
         exit
     fi
 }
 
-# Updates the kernel config
-_update_defconfig() {   
+
+## When reusing current config, also apply local patches, integrate ZFS,
+## apply extra kernel options, then sync with olddefconfig (non-interactive).
+_apply_overrides_on_current_config() {
+    # Apply any local patches shipped via source array (e.g., cjktty)
+    local src
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        src="${src%.zst}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        patch -Np1 <"../$src"
+    done
+
+    # Prepare kernel tree for external integration
+    make ${BUILD_FLAGS[*]} prepare -j$(nproc)
+    make ${BUILD_FLAGS[*]} modules_prepare -j$(nproc)
+
+    # Integrate ZFS as builtin
+    cd ${srcdir}/"zfs"
+    ./autogen.sh
+    sed -i "s|\$(uname -r)|${pkgver}-clear-cjktty-zfs|g" configure
+    ./configure CC=gcc --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
+        --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
+        --libexecdir=/usr/lib/zfs --with-config=kernel \
+        --enable-linux-builtin=yes \
+        --with-linux=${srcdir}/${_src_linux} \
+        --with-linux-obj=${srcdir}/${_src_linux}
+    ./copy-builtin ${srcdir}/${_src_linux}
+
+    # Back to kernel tree
+    cd ${srcdir}/${_src_linux}
+
+    # Enable ZFS and other custom options
+    scripts/config -e CONFIG_ZFS
+
+    # cjktty fonts
+    scripts/config -e CONFIG_FONT_CJK_16x16 \
+                   -e CONFIG_FONT_CJK_32x32
+
+    # kexec related options
+    scripts/config -e CONFIG_ARCH_SUPPORTS_KEXEC \
+                   -e CONFIG_ARCH_SUPPORTS_KEXEC_FILE \
+                   -e CONFIG_ARCH_SUPPORTS_KEXEC_PURGATORY \
+                   -e CONFIG_ARCH_SUPPORTS_KEXEC_SIG \
+                   -e CONFIG_ARCH_SUPPORTS_KEXEC_SIG_FORCE \
+                   -e CONFIG_ARCH_SUPPORTS_KEXEC_BZIMAGE_VERIFY_SIG \
+                   -e CONFIG_ARCH_SUPPORTS_KEXEC_JUMP \
+                   -e CONFIG_ARCH_SUPPORTS_CRASH_DUMP \
+                   -e CONFIG_ARCH_SUPPORTS_CRASH_HOTPLUG
+
+    # Virtual USB for specific use-cases
+    scripts/config -m CONFIG_USB_DUMMY_HCD \
+                   -m CONFIG_USB_MASS_STORAGE
+
+    # Extra configuration (mirrors _update_defconfig)
+    _info "Updating kernel configuration (current config reuse)"
+    # General setup
+    scripts/config --set-str DEFAULT_HOSTNAME archlinux \
+                   -e IKCONFIG \
+                   -e IKCONFIG_PROC \
+                   -u RT_GROUP_SCHED
+    # Power management and ACPI options
+    scripts/config -e ACPI_REV_OVERRIDE_POSSIBLE \
+                   -e ACPI_TABLE_UPGRADE
+    # Virtualization
+    scripts/config -e KVM_SMM
+    # General architecture-dependent options
+    scripts/config -e KPROBES
+    # Enable loadable module support
+    scripts/config -u MODULE_SIG_FORCE
+    # Networking support
+    scripts/config -e NETFILTER_INGRESS
+    # OpenVPN data channel offload (OVPN-DCO)
+    scripts/config -e OVPN
+    # Device Drivers
+    scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                   -e DELL_SMBIOS_SMM \
+                   -m PATA_JMICRON \
+                   -E SOUND SOUND_OSS_CORE \
+                   -e SND_OSSEMUL \
+                   -M SND_OSSEMUL SND_MIXER_OSS \
+                   -M SND_MIXER_OSS SND_PCM_OSS \
+                   -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                   -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
+    # Make section mismatch errors non-fatal
+    scripts/config -e SECTION_MISMATCH_WARN_ONLY
+    # File systems
+    scripts/config -m NTFS3_FS \
+                   -e NTFS3_LZX_XPRESS \
+                   -e NTFS3_FS_POSIX_ACL
+    scripts/config -m SMB_SERVER \
+                   -e SMB_SERVER_SMBDIRECT \
+                   -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
+                   -e SMB_SERVER_KERBEROS5
+    # Security options
+    scripts/config -e SECURITY_SELINUX \
+                   -e SECURITY_SELINUX_BOOTPARAM \
+                   -e SECURITY_SMACK \
+                   -e SECURITY_SMACK_BRINGUP \
+                   -e SECURITY_SMACK_NETFILTER \
+                   -e SECURITY_SMACK_APPEND_SIGNALS \
+                   -e SECURITY_TOMOYO \
+                   -e SECURITY_APPARMOR \
+                   -e SECURITY_YAMA
+    # Landlock
+    scripts/config -e SECURITY_LANDLOCK
+    # Fonts
+    scripts/config -k -e FONT_TER16x32
+
+    # EDAC
+    scripts/config -e EDAC_AMD64 \
+                   -e EDAC_IGEN6
+
+    # LLVM toggles
+    [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
+                                                -e LTO \
+                                                -e LTO_CLANG \
+                                                -e ARCH_SUPPORTS_LTO_CLANG \
+                                                -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+                                                -e HAS_LTO_CLANG \
+                                                -e LTO_CLANG_THIN \
+                                                -e HAVE_GCC_PLUGINS
+
+    # Debug toggles
+    [ "${_debug}" == "y" ] && scripts/config -e DEBUG_INFO \
+                                            -e DEBUG_INFO_BTF \
+                                            -e DEBUG_INFO_DWARF4 \
+                                            -e PAHOLE_HAS_SPLIT_BTF \
+                                            -e DEBUG_INFO_BTF_MODULES
+    [ "${_debug}" == "n" ] && scripts/config -d DEBUG_INFO \
+                                            -d DEBUG_INFO_BTF \
+                                            -d DEBUG_INFO_DWARF4 \
+                                            -d PAHOLE_HAS_SPLIT_BTF \
+                                            -d DEBUG_INFO_BTF_MODULES
+
+    # Finally, sync config without interaction
+    _info "Executing 'make olddefconfig' (current config reuse)"
+    make ${BUILD_FLAGS[*]} olddefconfig
+}
+
+
+## Modifies the kernel configuration and displays a
+## selection of subarches (if left unspecified by the user).
+_update_defconfig() {
     # Copy configuration file (if found)
     if [ -f "${startdir}/kconfig" ]; then
-        echo ":: Using configuration file \"${startdir}/kconfig\""
+        _info "Using configuration file \"${startdir}/kconfig\""
         cp -Tf "${startdir}/kconfig" ./.config
     else
-        echo ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
-        cp -Tf $srcdir/cl-linux/config ./.config
+        _info "Using configuration file \"${srcdir}/${pkgbase}/config\""
+        cp -Tf $srcdir/tachyon/config ./.config
     fi
-    
+
 	# 添加cjktty补丁
 	local src
 	for src in "${source[@]}"; do
@@ -368,6 +581,7 @@ _update_defconfig() {
         -m CONFIG_USB_MASS_STORAGE
 
     # Extra configuration
+    _info "Updating kernel configuration"
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
                    -e IKCONFIG \
@@ -384,6 +598,8 @@ _update_defconfig() {
     scripts/config -u MODULE_SIG_FORCE
     # Networking support
     scripts/config -e NETFILTER_INGRESS
+    # OpenVPN data channel offload (OVPN-DCO)
+    scripts/config -e OVPN
     # Device Drivers
     scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
                    -e DELL_SMBIOS_SMM \
@@ -418,7 +634,7 @@ _update_defconfig() {
     scripts/config -e SECURITY_LANDLOCK
     # Library routines
     scripts/config -k -e FONT_TER16x32
-    
+
     # EDAC enablement for modern CPUs
     scripts/config -e EDAC_AMD64 \
                 -e EDAC_IGEN6
@@ -444,10 +660,10 @@ _update_defconfig() {
                                             -d DEBUG_INFO_DWARF4 \
                                             -d PAHOLE_HAS_SPLIT_BTF \
                                             -d DEBUG_INFO_BTF_MODULES
-    
+
     # Run olddefconfig
+    _info "Executing 'make olddefconfig'"
     make ${BUILD_FLAGS[*]} olddefconfig
-    diff -u $srcdir/cl-linux/config .config || :
 
     # Here we slightly break the config by removing one of the
     # members of the 'Processor family' selection.
@@ -461,14 +677,15 @@ _update_defconfig() {
             # Ask for subarch if none provided
             make "${BUILD_FLAGS[@]}" oldconfig
             ;;
-        "41" | "GENERIC_CPU")
+        "1" | "GENERIC_CPU")
+            # Set x86-64 microarch
             scripts/config -e GENERIC_CPU
             scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
             make "${BUILD_FLAGS[@]}" oldconfig
             ;;
-        [1-9]|[1-3][0-9]|[4][0-3]|43)
-            # 1 to 9, 10 to 39, 40 to 43
-            # 43 is the last supported value here, refer to the _subarch
+        [1-9]|[1-3][0-9]|[4][0-3]|42)
+            # 1 to 9, 10 to 39, 40 to 42
+            # 42 is the last supported value here, refer to the _subarch
             # documentation above and keep the last section of this check
             # in sync with the supported value.
             # stderr checks below shouldn't be needed with the above check in place,
@@ -477,14 +694,16 @@ _update_defconfig() {
 
             # We're only interested in stderr
             {
-                local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&$out)
+                local __ERROR
+                __ERROR="$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&${out})"
             } {out}>/dev/null
 
-            # Invoke echo to sanitize the __ERROR, it can contain a newline or a \r
-            # symbol, thus breaking the script
-            if [ -n "$(echo $__ERROR)" ]; then
-                warning "Selected subarch: ${_subarch} is not supported"
-                exit
+            # Invoke echo to sanitize the __ERROR as it can contain
+            # newlines or carriage returns, thus breaking the script.
+            # shellcheck disable=SC2116
+            if [ -n "$(echo ${__ERROR})" ]; then
+                _warning "Selected subarch: ${_subarch} is not supported"
+                exit 1
             fi
             ;;
         *)
@@ -494,30 +713,39 @@ _update_defconfig() {
                 scripts/config -e "${_subarch}"
                 make "${BUILD_FLAGS[@]}" olddefconfig
             else
-                warning "Unrecognized subarch value: ${_subarch}"
-                exit
+                _warning "Unrecognized subarch value: ${_subarch}"
+                exit 1
             fi
             ;;
     esac
 }
 
-# Prepares the installation
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#prepare()
 prepare() {
     cd "${_src_linux}" || exit 1
 
     _check_deprecated_settings
     _apply_patches
 
-    [ -n "${_use_current}" ] && _copy_defconfig
-    [ -n "${_optimize_defconfig}" ] || [ -z "${_use_current}" ] && _update_defconfig
-    
+    # Config strategy:
+    # - If reusing current config, copy it and apply overrides non-interactively.
+    # - Otherwise, use the original flow that prepares a fresh defconfig.
+    if [ -n "${_use_current}" ]; then
+        _copy_defconfig
+        _apply_overrides_on_current_config
+    else
+        _update_defconfig
+    fi
+
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "${_localmodcfg}" ]; then
         if [ -e "${HOME}/.config/modprobed.db" ]; then
+            _info "Applying the modprobed database"
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
-            echo ":: No modprobed.db file was found at ${HOME}/.config, skipping"
+            _info "No modprobed.db file was found at ${HOME}/.config, skipping"
         fi
     fi
 
@@ -532,13 +760,15 @@ prepare() {
     make -s kernelrelease > version
 }
 
-# Build kernel
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#build()
 build() {
     cd "${_src_linux}" || exit 1
     make ${BUILD_FLAGS[*]} all
 }
 
-# Packages the kernel package
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#package()
 _package() {
     pkgdesc="${pkgdesc} 此包包括内核和已编译的模块"
     depends=("coreutils" "kmod" "initramfs")
@@ -546,126 +776,113 @@ _package() {
                 "linux-firmware: firmware images needed for some devices")
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
     install=linux.install
-    
+
     cd "${_src_linux}" || exit 1
-    local "modulesdir=${pkgdir}/usr/lib/modules/$(<version)"
-    
+    local "__modulesdir=${pkgdir}/usr/lib/modules/$(<version)"
+
     # Create boot image
     # systemd expects to find the kernel there to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "${modulesdir}/vmlinuz"
-    
+    install -Dm644 "$(make -s image_name)" "${__modulesdir}/vmlinuz"
+
     # Used by mkinitcpio to name the kernel
-    echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
-    
+    echo "${pkgbase}" | install -Dm644 /dev/stdin "${__modulesdir}/pkgbase"
+
     # Install modules
-    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 \
-        DEPMOD=/doesnt/exist modules_install  # Suppress depmod
-    
+    # We specify DEPMOD=/doesnt/exist here to suppress depmod
+    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" \
+        INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
+
     # Remove build directory
-    rm "${modulesdir}"/build
+    rm -vrf "${__modulesdir}"/build
 }
 
-# Packages the headers package
+
+## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#package()
 _package-headers() {
     pkgdesc="${pkgdesc} 此包包括用于构建内核模块的头文件和脚本"
     depends=("pahole")
-    
+
     cd "${_src_linux}" || exit 1
-local "builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
-    
-    install -Dt "${builddir}" -m644 .config Makefile Module.symvers System.map \
+    local "__builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
+
+    install -Dt "${__builddir}" -m644 .config Makefile Module.symvers System.map \
         localversion.* version vmlinux
-    install -Dt "${builddir}/kernel" -m644 kernel/Makefile
-    install -Dt "${builddir}/arch/x86" -m644 arch/x86/Makefile
-    cp -t "${builddir}" -a scripts
-    
+    install -Dt "${__builddir}/kernel" -m644 kernel/Makefile
+    install -Dt "${__builddir}/arch/x86" -m644 arch/x86/Makefile
+    cp -t "${__builddir}" -a scripts
+
     # Required when STACK_VALIDATION is enabled
-    install -Dt "${builddir}/tools/objtool" tools/objtool/objtool
-    
+    install -Dt "${__builddir}/tools/objtool" tools/objtool/objtool
+
     # Required when DEBUG_INFO_BTF_MODULES is enabled
-    [ -f tools/bpf/resolve_btfids/resolve_btfids ] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-    
-    cp -t "${builddir}" -a include
-    cp -t "${builddir}/arch/x86" -a arch/x86/include
-    install -Dt "${builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-    
-    install -Dt "${builddir}/drivers/md" -m644 drivers/md/*.h
-    install -Dt "${builddir}/net/mac80211" -m644 net/mac80211/*.h
-    
+    [ -f tools/bpf/resolve_btfids/resolve_btfids ] && install -Dt "${__builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+
+    cp -t "${__builddir}" -a include
+    cp -t "${__builddir}/arch/x86" -a arch/x86/include
+    install -Dt "${__builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+
+    install -Dt "${__builddir}/drivers/md" -m644 drivers/md/*.h
+    install -Dt "${__builddir}/net/mac80211" -m644 net/mac80211/*.h
+
     # https://bugs.archlinux.org/task/13146
-    install -Dt "${builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-    
+    install -Dt "${__builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
     # https://bugs.archlinux.org/task/20402
-    install -Dt "${builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-    install -Dt "${builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-    install -Dt "${builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-    
+    install -Dt "${__builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+    install -Dt "${__builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+    install -Dt "${__builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
     # https://bugs.archlinux.org/task/71392
-    install -Dt "${builddir}/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
-    
-    find . -name 'Kconfig*' -exec install -Dm644 {} "${builddir}/{}" \;
-    
+    install -Dt "${__builddir}/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+
+    find . -name 'Kconfig*' -exec install -Dm644 {} "${__builddir}/{}" \;
+
     # Remove redundant architectures
-    local arch
-    for arch in "${builddir}"/arch/*/; do
-        [[ $arch = */x86/ ]] && continue
-        echo "Removing $(basename "${arch}")"
-        rm -r "${arch}"
+    local __arch
+    for __arch in "${__builddir}/arch/"*/; do
+        [[ ${__arch} = */x86/ ]] && continue
+        _info "Removing '$(basename "${__arch}")'"
+        rm -r "${__arch}"
     done
-    
+
     # Remove documentation
-    rm -r "${builddir}/Documentation"
-    
+    rm -r "${__builddir}/Documentation"
+
     # Remove broken symlinks
-    find -L "${builddir}" -type l -printf "Removing %P\n" -delete
-    
+    find -L "${__builddir}" -type l -printf "Removing %P\n" -delete
+
     # Remove loose objects
-    find "${builddir}" -type f -name '*.o' -printf "Removing %P\n" -delete
-    
+    find "${__builddir}" -type f -name '*.o' -printf "Removing %P\n" -delete
+
     # Strip build tools
-    local file
-    while read -rd "" file; do
-        case "$(file -Sib "$file")" in
-            application/x-sharedlib\;*)      # Libraries (.so)
-                strip -v $STRIP_SHARED "$file" ;;
-            application/x-archive\;*)        # Libraries (.a)
-                strip -v $STRIP_STATIC "$file" ;;
-            application/x-executable\;*)     # Binaries
-                strip -v $STRIP_BINARIES "$file" ;;
-            application/x-pie-executable\;*) # Relocatable binaries
-                strip -v $STRIP_SHARED "$file" ;;
+    local __file
+    while read -rd "" __file; do
+        case "$(file -Sib "${__file}")" in
+            application/x-sharedlib\;*)       # Libraries (.so)
+                strip -v ${STRIP_SHARED} "${__file}" ;;
+            application/x-archive\;*)         # Libraries (.a)
+                strip -v ${STRIP_STATIC} "${__file}" ;;
+            application/x-executable\;*)      # Binaries
+                strip -v ${STRIP_BINARIEreS} "${__file}" ;;
+            application/x-pie-executable\;*)  # Relocatable binaries
+                strip -v ${STRIP_SHARED} "${__file}" ;;
         esac
-    done < <(find "${builddir}" -type f -perm -u+x ! -name vmlinux -print0)
-    
+    done < <(find "${__builddir}" -type f -perm -u+x ! -name vmlinux -print0)
+
     # Strip vmlinux
-    strip -v $STRIP_STATIC "${builddir}/vmlinux"
-    
+    strip -v ${STRIP_STATIC} "${__builddir}/vmlinux"
+
     # Add symlink to build directory
-    mkdir -p "$pkgdir/usr/src"
-    ln -sr "${builddir}" "$pkgdir/usr/src/$pkgbase"
+    mkdir -p "${pkgdir}/usr/src"
+    ln -sr "${__builddir}" "${pkgdir}/usr/src/${pkgbase}"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#"$pkgbase"}")
-    _package${_p#"$pkgbase"}
+
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+for _package in "${pkgname[@]}"; do
+  eval "package_${_package}() {
+    $(declare -f "_package${_package#"${pkgbase}"}")
+    _package${_package#"${pkgbase}"}
   }"
 done
-
-# Taken from https://www.kernel.org/signature.html
-validpgpkeys=(
-  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds (torvalds@kernel.org)
-  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman (gregkh@kernel.org)
-  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
-  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
-)
-sha256sums=("a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670"
-            "SKIP"
-            "6ed2cf0d734b872ff433726dc18da14a501bacd4ec4e9d16c95daf1d9fc5bfa5"
-            "SKIP"
-            "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61"
-            'SKIP'
-            'SKIP'
-            'SKIP')

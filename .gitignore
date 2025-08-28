@@ -1,5 +1,12 @@
-cl-linux
+# Package
+/tachyon
+/src
+/pkg
 *.sign
 *.xz
 *.gz
 *.zst
+
+# IDEs
+/.idea
+/.vscode
