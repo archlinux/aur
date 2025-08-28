@@ -1,0 +1,13 @@
+pkgbase = vim-lobster-git
+	pkgdesc = Vim support for the Lobster programming language
+	pkgver = r7.0bfda4c
+	pkgrel = 1
+	url = https://github.com/jcorbin/vim-lobster
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = vim-lobster::git+https://github.com/jcorbin/vim-lobster
+	sha256sums = SKIP
+
+pkgname = vim-lobster-git
