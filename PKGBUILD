@@ -4,7 +4,7 @@
 pkgname=python-dict2xml
 _pkgname=${pkgname#python-}
 pkgver=1.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Small utility to convert a python dictionary into an XML string"
 arch=('any')
 url="https://github.com/delfick/${pkgname}"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=(
     'python-build'
-    'python-hatch'
+    'python-hatchling'
     'python-installer'
 )
 checkdepends=(
