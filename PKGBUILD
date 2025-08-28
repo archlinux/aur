@@ -1,6 +1,6 @@
 # Maintainer: zty012 <me@zty012.de>
 pkgname=project-graph-bin
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
 arch=('x86_64')
@@ -11,8 +11,8 @@ options=('!strip' '!emptydirs')
 provides=('project-graph')
 conflicts=('project-graph-nightly-bin' 'project-graph-git')
 install=project-graph-bin.install
-source_x86_64=('https://github.com/LiRenTech/project-graph/releases/download/v2.0.4/Project.Graph_2.0.4_amd64.deb')
-sha256sums_x86_64=('08ee0c0b5ee882c98e7ea383e23e0fbf95c5abed34e731abad7185cb68e22ba8')
+source_x86_64=('https://github.com/LiRenTech/project-graph/releases/download/v2.0.5/Project.Graph_2.0.5_amd64.deb')
+sha256sums_x86_64=('a100ca22517bebfcbc64af3aa1d7bbd26096c32d103ff32821b0ba840d7c28d7')
 package() {
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
