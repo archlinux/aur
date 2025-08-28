@@ -4,7 +4,7 @@ pkgname='mautrix-signal'
 _name='signal'
 pkgver=0.8.6
 _libsigver="0.78.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/mautrix/signal"
@@ -30,9 +30,9 @@ source=(
   "${pkgname}.tmpfiles"
 )
 sha256sums=('3e9f7a7173abe3e7305bae5e8f0d29466dab28785a9382a82361bbb3f1f93c08'
-            'e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded'
+            '2582791c2210b568afcb916112299a929424c18b381ae8b6b57a2144d0f18b63'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
-            '6bd18a77b692c79ca62d40fb430d780fb5f01c16c9ec4a19e139a733b7cc7a1f')
+            '2515ba90e73c054289c3877a86b01ae57117aaa8096348e69d4d0cbe01304a9d')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -62,7 +62,7 @@ package() {
   install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-  install -dm 750 "${pkgdir}/etc/$pkgname"
+  install -dm 770 "${pkgdir}/etc/$pkgname"
   install -Dvm 640 "config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
   touch 'registration.yaml'
   install -Dvm 640 'registration.yaml' "${pkgdir}/etc/${pkgname}/registration.yaml"
