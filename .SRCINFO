@@ -1,0 +1,15 @@
+pkgbase = pkger-g
+	pkgdesc = PKGER - Pro GTK GUI package manager for Arch Linux
+	pkgver = 0.1.40
+	pkgrel = 1
+	url = https://gitlab.com/package-installer-gui/pkger-g
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = pacman-contrib
+	depends = gtk3
+	source = pkger-g-0.1.40.tar.gz::https://gitlab.com/package-installer-gui/pkger-g/-/archive/main/pkger-g-main.tar.gz
+	sha256sums = SKIP
+
+pkgname = pkger-g
