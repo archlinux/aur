@@ -1,12 +1,12 @@
 pkgbase = tunein-cli-bin
         pkgdesc = Browse and listen to thousands of radio stations across the globe right from your terminal 🌎 📻 🎵✨
-        pkgver = 0.3.1
+        pkgver = 0.4.0
         pkgrel = 1
         url = https://github.com/tsirysndr/tunein-cli
         arch = x86_64
         license = MIT
         depends = alsa-lib
-        source = https://github.com/tsirysndr/tunein-cli/releases/download/v0.3.1/tunein_v0.3.1_x86_64-unknown-linux-gnu.tar.gz
-        sha256sums = fdd7b862ec7912db256e6ced5e7c68abda6ba569e77dd8b687efc541aa7b5a04
+        source = https://github.com/tsirysndr/tunein-cli/releases/download/v0.4.0/tunein_v0.4.0_x86_64-unknown-linux-gnu.tar.gz
+        sha256sums = a4945f497bd35da41a8442a40358f7bab548712667e1703ad68e719b0d6b5df6
 
 pkgname = tunein-cli-bin
