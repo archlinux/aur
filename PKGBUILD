@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.9.4
+pkgver=0.9.5
 _electronversion=32
 _nodever=22
 pkgrel=1
@@ -25,13 +25,17 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f5629c0eafd259c3015c374436f275da6a02d600ea243c49563788fa09198719'
+sha256sums=('f415bdabd80e1483aba6d597cfa77dadd84e2dc4bc52387db94666c9447c92d8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodever}"
     nvm use "${_nodever}"
+}
+_get_electron_version() {
+    _electronversion="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/e2/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -42,6 +46,7 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
+    _get_electron_version
     _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
