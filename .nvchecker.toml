@@ -1,0 +1,5 @@
+[wf-config]
+source = 'github'
+github = 'WayfireWM/wf-config'
+use_latest_release = true
+prefix = 'v'
