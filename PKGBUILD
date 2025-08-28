@@ -2,7 +2,7 @@
 
 pkgname='piximan'
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Pixiv batch downloader and local collection viewer'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/fekoneko/piximan'
