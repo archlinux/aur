@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sshpilot
-pkgver=2.8.9
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
@@ -9,8 +9,8 @@ license=('GPL-3.0-only')
 depends=('python')
 makedepends=()
 arch=('any')
-sha256sums=('47f1b14228c45a38b3ef5c18b3ddf28a7f6aab459574ce1b247fbbb6840fc5d9')
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('021895bbafc79606165c570e5d9767354bfefef51b4515c75f65477585ceccbf')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _srcdir="${pkgname}-${pkgver}"
 
@@ -30,6 +30,7 @@ package() {
 	cp -a 'sshpilot/resources'/* "${pkgdir}${site_packages}/sshpilot/resources/"
 	cp -a 'sshpilot/ui'/* "${pkgdir}${site_packages}/sshpilot/ui/"
 	# Install desktop file and icon
-	install -D -m 644 'io.github.mfat.sshpilot.desktop' "${pkgdir}/usr/share/applications/io.github.mfat.sshpilot.desktop"
-	install -D -m 644 'sshpilot/io.github.mfat.sshpilot.svg' "${pkgdir}/usr/share/pixmaps/io.github.mfat.sshpilot.png"
+	install -D -m 644 'io.github.mfat.sshpilot.desktop' -t "${pkgdir}/usr/share/applications"
+	install -D -m 644 'sshpilot/resources/sshpilot.svg' "${pkgdir}/usr/share/pixmaps/io.github.mfat.sshpilot.svg"
+	install -D -m 644 'io.github.mfat.sshpilot.metainfo.xml' -t "${pkgdir}/usr/share/metainfo"
 }
