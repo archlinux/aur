@@ -1,0 +1,20 @@
+pkgbase = python-uuid7
+	pkgdesc = UUID version 7, generating time-sorted UUIDs with 200ns time resolution and 48 bits of randomness.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/stevesimmons/uuid7
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-uuid_extensions
+	conflicts = python-uuid_extensions
+	replaces = python-uuid_extensions
+	source = https://files.pythonhosted.org/packages/source/u/uuid7/uuid7-0.1.0.tar.gz
+	sha256sums = 8c57aa32ee7456d3cc68c95c4530bc571646defac01895cfc73545449894a63c
+
+pkgname = python-uuid7
