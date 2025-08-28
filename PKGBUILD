@@ -4,8 +4,8 @@
 
 _pkgname='caelestia-shell'
 pkgname="$_pkgname-git"
-pkgver=1.0.0.r3.g8578470
-pkgrel=2
+pkgver=1.0.0.r0.g60e67e8
+pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
