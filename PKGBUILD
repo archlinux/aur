@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Maintainer: Mike Gabriel <mike dot gabriel at das-netzwerkteam dot de>
 # Contributor: Robert Tari <robert at tari dot in>
 
