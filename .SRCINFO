@@ -1,13 +1,12 @@
 pkgbase = mnemo
 	pkgdesc = Note-taking app designed to enhance the retention of information.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/lemueldls/mnemo
 	arch = x86_64
 	license = AGPL-3.0
 	makedepends = cargo
 	makedepends = nodejs
-	makedepends = pnpm
 	makedepends = git
 	makedepends = file
 	makedepends = appmenu-gtk-module
@@ -30,7 +29,7 @@ pkgbase = mnemo
 	depends = openssl
 	options = !strip
 	options = !emptydirs
-	source = mnemo-v0.1.1.tar.gz::https://github.com/lemueldls/mnemo/archive/refs/tags/mnemo-v0.1.1.tar.gz
-	sha256sums = 6bed534ca29696c08f13314a3082813bdbbd2f2917065814744204d4d3c4352d
+	source = mnemo-v0.1.2.tar.gz::https://github.com/lemueldls/mnemo/archive/refs/tags/mnemo-v0.1.2.tar.gz
+	sha256sums = 7fada046aebc81244da93268fac98ecd819b1fd5a929263e747c73aa29a23d48
 
 pkgname = mnemo

@@ -1,14 +1,14 @@
 pkgname=mnemo
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Note-taking app designed to enhance the retention of information."
 arch=('x86_64')
 url="https://github.com/lemueldls/mnemo"
 license=('AGPL-3.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl')
-makedepends=('cargo' 'nodejs' 'pnpm' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
+makedepends=('cargo' 'nodejs' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("mnemo-v$pkgver.tar.gz::https://github.com/lemueldls/mnemo/archive/refs/tags/mnemo-v$pkgver.tar.gz")
-sha256sums=('6bed534ca29696c08f13314a3082813bdbbd2f2917065814744204d4d3c4352d')
+sha256sums=('7fada046aebc81244da93268fac98ecd819b1fd5a929263e747c73aa29a23d48')
 _builddir="mnemo-mnemo-v$pkgver/platform"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
@@ -22,6 +22,7 @@ build() {
     # unfortunately LTOFLAGS -flto=auto set by /etc/makepkg.conf break linking as those are added to CFLAGS automatically
     # building will bail out with something like: undefined reference to 'ring_core_0_17_8_OPENSSL_ia32cap_P' when -flto=auto is set
     export CFLAGS="${CFLAGS//-flto=auto//}"
+    export NUXT_PUBLIC_API_BASE_URL="https://notes.lemueldls.workers.dev"
     pnpm install
     pnpm tauri build -b deb -c "${srcdir}/${_builddir}/tauri/tauri.package.conf.json" || true
 }
@@ -33,5 +34,5 @@ package() {
     install -Dm644 usr/share/icons/hicolor/128x128/apps/mnemo.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/mnemo.png
     install -Dm644 usr/share/icons/hicolor/256x256@2/apps/mnemo.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/mnemo.png
     install -Dm644 usr/share/icons/hicolor/32x32/apps/mnemo.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/mnemo.png
-    # install -Dm644 usr/share/licenses/mnemo/LICENSE "$pkgdir"/usr/share/licenses/mnemo/LICENSE
+    install -Dm644 usr/share/licenses/mnemo/LICENSE "$pkgdir"/usr/share/licenses/mnemo/LICENSE
 }
