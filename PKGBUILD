@@ -2,7 +2,7 @@
 
 _pkgname=mrv2
 pkgname="${_pkgname}-bin"
-pkgver=1.3.9
+pkgver=1.4.0
 pkgrel=0
 pkgdesc="mrv2 is an open source professional player and review tool for VFX, animation and computer graphics (binaries)"
 arch=("x86_64")
@@ -16,7 +16,7 @@ license=("BSD-3-Clause")
 _pkgnameversion=${_pkgname}-v${pkgver}
 
 source_x86_64=(${_rel_url}/${_pkgnameversion}-Linux-amd64.tar.gz)
-sha256sums_x86_64=('eeb9fe7d94a77785c4ca62c909e6de37ca461c7863c0136f3c8a782389ce4285')
+sha256sums_x86_64=('7dd8df785108cf2800cbc63a412dcc06af52fd01dda8a6ce88bfe6dd5fd9a7c8')
 
 prepare() {
     # Replace Exec path in application launcher file, link will be located in '/usr/bin'
