@@ -1,13 +1,13 @@
 pkgbase = arashi-icon-theme
 	pkgdesc = Arashi a smooth, modern icon set with a twist!
 	pkgver = 25.08.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0hStormy/Arashi
 	arch = any
 	license = CC-BY-4.0
-	depends = hicolor-icon-theme
 	provides = arashi-icon-theme
 	options = !strip
+	options = !debug
 	source = Arashi-25.08.3::https://github.com/0hStormy/Arashi/releases/download/25.08.3/Arashi-25.08.3.zip
 	sha256sums = efa7e4c94a05cd5103dab814c157c4514adaebd7bda36c77a239489b3d00a3ea
 
