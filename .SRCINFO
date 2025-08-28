@@ -1,7 +1,7 @@
 pkgbase = python-blis
 	pkgdesc = Fast matrix-multiplication as a self-contained Python library
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/explosion/cython-blis
 	arch = x86_64
 	arch = aarch64
