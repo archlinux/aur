@@ -10,7 +10,8 @@ pkgbase = dblab
 	arch = armv7h
 	license = MIT
 	makedepends = go
-	depends = glibc
+	provides = dblab
+	conflicts = dblab
 	source = dblab-0.33.0.tar.gz::https://github.com/danvergara/dblab/archive/refs/tags/v0.33.0.tar.gz
 	sha256sums = 9a2d664cfe8ae553aa71598bcaecbaff0ce554ad05d9f0cbd4f18b3e941c2273
 

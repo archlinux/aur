@@ -1,5 +1,5 @@
-# Maintainer: Marcel Röthke <marcel@roethke.info>
-
+# Maintainer: nicknb <nicknb at posteo dot com>
+# Contributor: Marcel Röthke <marcel@roethke.info>
 pkgname=dblab
 pkgver=0.33.0
 pkgrel=1
@@ -7,11 +7,10 @@ pkgdesc="Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Serve
 arch=(x86_64 i686 aarch64 armv7h armv7h)
 url="https://github.com/danvergara/dblab"
 license=('MIT')
-depends=(glibc)
 makedepends=(go)
-checkdepends=()
-optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danvergara/dblab/archive/refs/tags/v${pkgver}.tar.gz")
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9a2d664cfe8ae553aa71598bcaecbaff0ce554ad05d9f0cbd4f18b3e941c2273')
 
 build() {
