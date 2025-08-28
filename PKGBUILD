@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.83.2
+pkgver=3.84.0
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -13,7 +13,8 @@ license=('AGPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'java-runtime'
+    'python'
+    'ripgrep'
 )
 makedepends=(
     'gendesk'
@@ -28,16 +29,21 @@ source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('e7b19081f32ac375205662bf7d1b78021780d31dcf2e3e59731f68d46f5570df'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('af447790700d1f0c2ba6d25a873f3f0b96542e4643e6b00e019a2b09614c34a1'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _electronversion="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}.git/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}.git"
+    _get_electron_version
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname}/
@@ -88,6 +94,7 @@ build() {
     NODE_ENV=development    yarn node scripts/download-plantuml.js
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.json
+    ln -sf "/usr/bin/rg" "${srcdir}/${pkgname}.git/out/linux-unpacked/resources/app.asar.unpacked/node_modules/@vscode/ripgrep/bin/rg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
