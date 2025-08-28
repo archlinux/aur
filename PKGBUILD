@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=semaphore-git
 pkgver=v2.9.53.beta.r62.3ba035ff
