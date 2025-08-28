@@ -2,7 +2,7 @@
 
 pkgname=elephant-desktopapplications
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc='desktopapplications provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -10,15 +10,15 @@ license=('MIT')
 makedepends=('go')
 conflicts=('elephant-desktopapplications')
 provides=('elephant-desktopapplications')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-7.tar.gz")
-sha256sums=('2b0878fd386213aa5351ccdc8dbb46f59893b20008ecb23db0de18345c9f182c')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-8.tar.gz")
+sha256sums=('9b3d5d300dd9b1b5ded7a4f520f70fb91c066602ec11bab433dd250917a12dce')
 
 build() {
-    cd elephant-${pkgver}-beta-7/internal/providers/desktopapplications
+    cd elephant-${pkgver}-beta-8/internal/providers/desktopapplications
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-7/internal/providers/desktopapplications
+    cd elephant-${pkgver}-beta-8/internal/providers/desktopapplications
     install -Dm 755 desktopapplications.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
