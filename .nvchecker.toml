@@ -1,0 +1,5 @@
+[wayfire]
+source = 'github'
+github = 'WayfireWM/wayfire'
+use_latest_release = true
+prefix = 'v'
