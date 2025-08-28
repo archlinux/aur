@@ -1,0 +1,27 @@
+pkgbase = ironpython3-bin
+	pkgdesc = Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://ironpython.net
+	arch = any
+	license = Apache-2.0
+	depends = mono>=5.12
+	depends = sh
+	optdepends = gtk2: Window Console Help
+	provides = ironpython3
+	provides = ironpython3.4
+	conflicts = ironpython3
+	conflicts = ironpython3.4
+	conflicts = ironpython-bin<3
+	replaces = ironpython-bin<3
+	noextract = ironpython3-3.4.2-any.deb
+	source = ironpython3-3.4.2-any.deb::https://github.com/IronLanguages/ironpython3/releases/download/v3.4.2/ironpython_3.4.2.deb
+	source = ironpython3-3.4.2-README.md::https://github.com/IronLanguages/ironpython3/raw/refs/tags/v3.4.2/README.md
+	source = ironpython3-3.4.2-LICENSE::https://github.com/IronLanguages/ironpython3/raw/refs/tags/v3.4.2/LICENSE
+	source = ironpython.sh
+	sha256sums = 03b29046d06f9ddfc6f0b525e0f8ad3cf1e0fefd2482aaaf9b663a9bc0fa0259
+	sha256sums = df796578fceb50ec591f80e58e701fc69a1193ea9212705436de7f931a75bf03
+	sha256sums = 11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049
+	sha256sums = 0a0dfec7b5b7b7035c2aa3d2028b849fac8a330b1373353e58cabde3a722eb77
+
+pkgname = ironpython3-bin

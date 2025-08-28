@@ -1,0 +1,5 @@
+[ironpython3-bin]
+source = "github"
+github = "IronLanguages/ironpython3"
+use_latest_release = true
+prefix = "v"
