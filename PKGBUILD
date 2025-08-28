@@ -1,8 +1,8 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=zelda64recomp-bin
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Static recompilation of Majora's Mask for PC"
 url='https://github.com/Mr-Wiseguy/Zelda64Recomp'
 arch=("x86_64" "aarch64")
@@ -14,8 +14,8 @@ source_x86_64=("Zelda64Recompiled-v${pkgver}.zip::${url}/releases/download/v${pk
 source_aarch64=("Zelda64Recompiled-v${pkgver}.zip::${url}/releases/download/v${pkgver}/Zelda64Recompiled-v${pkgver}-Linux-ARM64.zip")
 
 sha256sums=('78e993db9ddfca475599da78ccbef6140de6267de0f1da8917507e7cab3d872e')
-sha256sums_x86_64=('80111d3166c0fdbfaa6434f9dca71a407068f6d51788c618425ed8f641ae4f4f')
-sha256sums_aarch64=('6a8e3958096a8bc2a1fa0af589d37512f024f7085ce5259aa13e5c111814ae80')
+sha256sums_x86_64=('de8b19cdb4e3ad0c10fd6d8127f7a6cc2a9eba106d89c753439178b718887c42')
+sha256sums_aarch64=('2e49b96aced578363065e1764ca96eaa5590cb6f7e80efd10e8ce1a08462b933')
 
 # Version 1.2.0 released as a .tar.gz inside of a .zip. This might not be needed for future releases
 prepare() {
