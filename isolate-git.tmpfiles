@@ -1,0 +1,2 @@
+# setuid root, group isolate, only allow root and group to execute.
+z /usr/bin/isolate 4754 root isolate - -
