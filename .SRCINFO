@@ -1,0 +1,16 @@
+pkgbase = wastearr-git
+	pkgdesc = CLI tool that analyzes Sonarr and Radarr collections to identify content with poor ratings-to-storage ratios
+	pkgver = r0.1.0.r0.g2104b19
+	pkgrel = 1
+	url = https://github.com/username/wastearr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = wastearr
+	conflicts = wastearr
+	source = git+https://github.com/username/wastearr.git
+	sha256sums = SKIP
+
+pkgname = wastearr-git
