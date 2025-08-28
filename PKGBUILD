@@ -1,8 +1,8 @@
-# Maintainer: Mutker Telag <dark.dusk53443@fastmail.com>
+# Maintainer: Mutker Telag <hello@mutker.com>
 
 pkgname=nvidiactl-git
 _pkgname=${pkgname%-git}
-pkgver=r60.a31e801
+pkgver=r76.48c076f
 pkgrel=1
 pkgdesc='A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.'
 arch=('x86_64')
