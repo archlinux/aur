@@ -1,0 +1,10 @@
+[Unit]
+Description=Proton Mail Bridge (file key storage, noninteractive)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/protonmail-bridge --noninteractive
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
