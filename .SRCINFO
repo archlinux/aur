@@ -1,0 +1,15 @@
+pkgbase = losci-git
+	pkgdesc = Digital oscilloscope for visualizing sound.
+	pkgver = r3.c46c934
+	pkgrel = 1
+	url = https://codeberg.org/MorsMortium/losci
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = luajit-sdl3
+	provides = losci
+	conflicts = losci
+	source = losci-git::git+https://codeberg.org/MorsMortium/losci.git
+	sha512sums = SKIP
+
+pkgname = losci-git
