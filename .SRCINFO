@@ -1,0 +1,23 @@
+pkgbase = libgpg-stream
+  pkgdesc = GNU-Standard GPG Streaming Library for secure multicast communication
+  pkgver = 1.0.0
+  pkgrel = 1
+  url = https://github.com/theesfeld/libgpg-stream
+  arch = x86_64
+  arch = i686
+  arch = aarch64
+  arch = armv7h
+  license = GPL-3.0-or-later
+  makedepends = gcc
+  makedepends = autoconf
+  makedepends = automake
+  makedepends = libtool
+  makedepends = pkg-config
+  depends = gpgme
+  depends = glibc
+  optdepends = gnupg: for GPG key management
+  provides = libgpg-stream=1.0.0
+  source = https://github.com/theesfeld/libgpg-stream/releases/download/v1.0.0/libgpg-stream-1.0.0.tar.gz
+  sha256sums = 9dec47df15025baf3e9f9e20f06999a6717d5cb37f7f754b0562c970c208e8d8
+
+pkgname = libgpg-stream
