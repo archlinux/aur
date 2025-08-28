@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc="Python bindings to Rust's UUID library."
 arch=(any)
 url="https://github.com/fastuuid/fastuuid"
-license=('BSD-3-Clause license')
+license=('BSD-3-Clause')
 depends=('python' 'glibc' 'gcc-libs')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-hypothesis' 'python-pytest' 'python-pytest-benchmark' 'python-pytest' 'python-uuid7')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('d0bd4e5b35aad2826403f4411937c89e7c88857b1513fe10f696544c03e9bd8e')
 
 build() {
