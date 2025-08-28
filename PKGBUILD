@@ -4,7 +4,7 @@ _user_gh="lmstudio-ai"
 _name_gh="lmstudio-python"
 _name_pip="lmstudio"
 pkgname="python-lmstudio"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="LM Studio Python SDK "
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
 	'python-httpx-ws>=0.7.0'
 	'python-msgspec>=0.19.0'
 	'python-anyio>=4.8.0'
+	'python-typing_extensions>=4.12.2'
 )
 
 #makedepends=(
@@ -36,7 +37,7 @@ depends=(
 #    "python-coverage>=7.6.4",
 #)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name_pip::1}/${_name_pip//-/_}/${_name_pip//-/_}-$pkgver.tar.gz")
-sha512sums=('7358e496dc190ad4a6afadcee41b799997de0d228dd897beba8d4a1cb935119d726b352912096fb465e890f427de7914049cad0736990002ddebfaf764bc5d37')
+sha512sums=('70812805098631962e40fc0e99c7689b26b2385941b1684abdcfcc13e6f0208572f802439d5872caf96247ad4fa52b2b581d1bffc2ef07004db47912442509a9')
 
 build() {
   cd "$_name_pip-$pkgver"
