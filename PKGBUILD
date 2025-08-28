@@ -1,5 +1,5 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
