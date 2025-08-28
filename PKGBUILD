@@ -2,7 +2,7 @@
 
 pkgname=openlist-desktop-bin
 _pkgname=OpenList.Desktop
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A desktop application for OpenList"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=('libarchive')
 backup=()
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('15ce0bfefe0b981aaa3cd41e037e43ce27d67e2dc9d8249862751e662ee3391e')
+sha256sums=('aa650927760fc4095fe4867169962fc1dfbe5e769705277e48a24c2e5ebdcc18')
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
 
 package() {
