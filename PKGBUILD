@@ -4,7 +4,7 @@
 
 _pkgname='caelestia-shell'
 pkgname="$_pkgname-git"
-pkgver=v1.0.0.r1.g0b03cfd
+pkgver=v1.0.0.r5.gf39bcb0
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$pkgver
     cmake --build build
 }
 
