@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Jochen Jägers (JochenJ) <aur@diezonks.de>
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
