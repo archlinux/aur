@@ -92,12 +92,13 @@ prepare() {
 }
 
 build() {
+	_ninjaflags="$NINJAFLAGS"
+	[ -z "$_ninjaflags" ] && [ -n "$CI" ] && _ninjaflags="-j2"
+	[ -z "$_ninjaflags" ] || msg2 "Using ninja flags $_ninjaflags"
+	
 	msg2 "Building libbgcode"
 	cd "$srcdir/libbgcode-$_libbgcode"
 	cd build
-
-	_ninjaflags="$NINJAFLAGS"
-	[ -z "$_ninjaflags" ] && [ -n "$SHELL" ] && _ninjaflags="-j2"
 	
 	cmake .. \
 		-G Ninja \
