@@ -2,7 +2,7 @@
 pkgname=monika-after-story-cn
 pkgver=0.12.17.0
 srcpkgver=0.12.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod for the free game Doki Doki Literature Club from Team Salvato, which builds on Act 3 to create a simulator of your eternal life with Monika, with third-party Chinese language support."
 arch=(
     'i686'
@@ -28,7 +28,7 @@ sha256sums=(
     '550bf597271b3b6a3774018968d8f2ed8620e6a33c584ddcadab8e8f75f95d15'
     '680da91bc6246feb36dad12c18e999c07ebc068a1cb5cdc5b4f4b9e492d820b8'
     'd5c09635c0d7dc8e0444fa754eb37ba699856b6b47cf5af51bd2c5201181942f'
-    '423b9be754b431923e285878b87e91ea9f2a08165e99a847291ef696c046a43c'
+    'e09e7372ecb9c6071436e314b2063dc10cb703d8235921e011f126b637692d60'
 )
 prepare() {
     cp -a "$srcdir/MonikaModDev-$srcpkgver/Monika After Story/." "$srcdir/DDLC/"
@@ -41,18 +41,21 @@ prepare() {
     chmod +x "$srcdir/DDLC/DDLC.sh"
     chmod +x "$srcdir/DDLC/lib/linux-x86_64/DDLC"
     chmod +x "$srcdir/DDLC/lib/linux-i686/DDLC"
+    chmod +x "$srcdir/DDLC/game/mod_assets/games/chess/stockfish_8_linux_x64"
+    
+    cd "$srcdir/DDLC"
+    ./fix.sh
 }
 build () {
     cd "$srcdir/DDLC"
-    
-    ./fix.sh
+    ./DDLC.sh . lint || true
     ./DDLC.sh . compile
     
-    rm -f game/*.rpy
+    find game -type f -name "*.rpy" -delete
 }
 package() {
-    install -Dm644 "$srcdir/mas.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/mas.png"
-    install -Dm644 "$srcdir/mas.desktop" "$pkgdir/usr/share/applications/mas.desktop"
+    install -Dm644 "$srcdir/mas.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/mascn.png"
+    install -Dm644 "$srcdir/mascn.desktop" "$pkgdir/usr/share/applications/mascn.desktop"
     
     install -d "$pkgdir/opt/monika-after-story-cn"
     cp -a "$srcdir/DDLC/." "$pkgdir/opt/monika-after-story-cn"
