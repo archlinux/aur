@@ -7,6 +7,7 @@ pkgbase = losci-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = luajit-sdl3
+	depends = sdl3_image
 	provides = losci
 	conflicts = losci
 	source = losci-git::git+https://codeberg.org/MorsMortium/losci.git
