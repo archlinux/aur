@@ -1,12 +1,14 @@
-# Maintainer: éclairevoyant
+# Maintainer: envolution
+# Contributor: éclairevoyant
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=theharvester-git
-pkgver=4.2.0.r307.gcaf21cb
+pkgver=4.8.2.r55.g70e5c171
 pkgrel=1
 pkgdesc="Gather emails, names, subdomains, IPs and URLs related to targets using public sources"
 arch=(any)
 url="https://github.com/laramies/theHarvester"
-license=(GPL2)
+license=(GPL-2.0-only) #as per pyproject.toml
 depends=(
 	python-aiodns
 	python-aiofiles
@@ -21,11 +23,12 @@ depends=(
 	python-lxml
 	python-netaddr
 	python-ujson
-	python-pyppeteer
 	python-yaml
 	python-requests
 	python-retrying
 	python-shodan
+  python-playwrite
+  python-slowapi
 	uvicorn
 	python-uvloop
 )
@@ -47,11 +50,12 @@ build() {
 
 check() {
 	cd $pkgname
-	export PYTHONPATH="$PWD/build/lib"
-	python -m unittest discover
+	export PYTHONPATH="$PWD/build/lib/theHarvester"
+	python -m pytest
 }
 
 package() {
 	cd $pkgname
 	python -m installer -d "$pkgdir" dist/*.whl
 }
+# vim:set ts=2 sw=2 et:
