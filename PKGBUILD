@@ -4,7 +4,7 @@
 
 _pkgname='caelestia-shell'
 pkgname="$_pkgname-git"
-pkgver=v1.0.0.r5.gf39bcb0
+pkgver=1.0.0.r3.g8578470
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
