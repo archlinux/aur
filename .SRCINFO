@@ -1,20 +1,20 @@
 pkgbase = ipscan
 	pkgdesc = Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.
-	pkgver = 3.9.1
-	pkgrel = 3
+	pkgver = 3.9.2
+	pkgrel = 1
 	url = https://angryip.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = jdk17-openjdk
-	depends = java-runtime
+	depends = java-runtime>=17
 	source = ipscan
 	source = ipscan.desktop
 	source = build.gradle.patch
-	source = https://github.com/angryip/ipscan/archive/refs/tags/3.9.1.zip
+	source = https://github.com/angryip/ipscan/archive/refs/tags/3.9.2.zip
 	sha512sums = e2caf62412c35a7a29128d0ae176aca1e4a45cf81e44b76e4bb23ad1c0633fa8833d674d7d514942a170ab54223b6c4a93ab458f2736107e7bbe9a5e806a7c5e
 	sha512sums = c17db5e4ac90af8675e9ac2a8e77f1322beb8bacb578a288bcfbf8da67270004ec40314b2793ea8ed8eeeeb64f9c03b3f80694e38c55be9d213486b825689a0f
 	sha512sums = 8ec4aae1b2226af984e58acd20ddc7d78268ab53a1f39cb6c85143741638727cf94794597bb9755483968c5f93e37cc96c33c61527529c074782f9447914399a
-	sha512sums = 0b09e252f56ac6632a377a6757e9b3e1b07b12229112f3c3cc9faf15380d93309ef028e8a5eb2650c061756fbeca453440518aff396f52aa700e37f1c82e3076
+	sha512sums = 65df0b6265793baec0e839ed62fac9f6e90cff56e081bd7db5b1edd356c4e27063e549a67de1e53bcc0d45c0de7fd36dc62d5983ffd40f1951fa412be5989f6a
 
 pkgname = ipscan
