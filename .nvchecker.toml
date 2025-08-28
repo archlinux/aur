@@ -1,0 +1,5 @@
+[wayfire-plugins-extra]
+source = 'github'
+github = 'WayfireWM/wayfire-plugins-extra'
+use_latest_release = true
+prefix = 'v'
