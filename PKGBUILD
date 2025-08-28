@@ -2,7 +2,7 @@
 # Maintainer: Damien Butt <22627489+damienbutt@users.noreply.github.com>
 
 pkgname='emojify-go-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Lighting fast Emoji conversion on the command line 😱'
 url='https://github.com/damienbutt/emojify-go'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('emojify')
 conflicts=('emojify')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go_1.0.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('6ec9bcc61456a52ee7ee4e08f072d5764467813546c8f05d57e37d59821b027d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.1/emojify-go_1.0.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('5351745556bbf262e57d4ac4d223f84050d313c516eb23e937daaac4cd9a49b8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.0/emojify-go_1.0.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('5b7ed90811f9ce379203221b7f55f8501a2482eeba3d7c241138721c4e82876a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/damienbutt/emojify-go/releases/download/v1.0.1/emojify-go_1.0.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('cd19270343030252696c41789ee60e3d468435000e411efaf70afee638874cb7')
 
 package() {
   # bin
