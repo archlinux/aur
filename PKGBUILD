@@ -1,5 +1,5 @@
-# Maintainer: Martin Rys <rys.pw/#contact_me>
-# Previous maintainer: Arda Demir <ardadem.dev@gmail.com>
+# Maintainer: Martin Rys <rys.rs/contact>
+# Contributor: Arda Demir <ardadem.dev@gmail.com>
 pkgname=a4tech-bloody-driver-git
 _pkgname=a4tech-bloody-driver
 pkgver=r155.2beb8fe
