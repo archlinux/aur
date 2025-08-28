@@ -3,7 +3,7 @@
 _pkgbase=hp-vendor
 pkgname=${_pkgbase}-dkms-git
 pkgver=r279.67a92d0
-pkgrel=1
+pkgrel=2
 pkgdesc="HP Dev One specific platform driver from Pop!_OS"
 arch=('x86_64')
 url="https://github.com/pop-os/hp-vendor"
