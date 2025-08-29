@@ -26,8 +26,6 @@ mkdir -p "$DOCS"
 
 exec /usr/bin/deno run \
   --allow-all \
-  --unstable-kv \
-  --unstable-worker-options \
   /usr/lib/silverbullet/silverbullet.js \
   --hostname "$HOST" \
   --port "$PORT" \
