@@ -2,8 +2,8 @@
 pkgname=kubectl-swiftnp
 # renovate: datasource=github-releases depName=bmuschko/kubectl-swiftnp
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='kubectl plugin to display the pods and containers which have recently been OOMKilled'
+pkgrel=2
+pkgdesc='kubectl plugin for rendering details of network policies'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bmuschko/kubectl-swiftnp'
 license=('Apache-2.0')

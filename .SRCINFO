@@ -1,7 +1,7 @@
 pkgbase = kubectl-swiftnp
-	pkgdesc = kubectl plugin to display the pods and containers which have recently been OOMKilled
+	pkgdesc = kubectl plugin for rendering details of network policies
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bmuschko/kubectl-swiftnp
 	arch = x86_64
 	arch = aarch64
