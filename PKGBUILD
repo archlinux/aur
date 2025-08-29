@@ -1,7 +1,7 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
 url="https://github.com/Sinedka/aniparser"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'git')
 source=("https://github.com/Sinedka/aniparser/releases/download/v$pkgver/dist-full.tar.gz")
-sha256sums=('6f2537868a478c7c1ebf431ec5add8c9f28c5b7d05c83e7b1a58a7677326cd90')
+sha256sums=('035d3343d80687d48952248a197aac6fe4849e8858edfb90566118fc2a08688c')
 build() {
   return 0
 }
