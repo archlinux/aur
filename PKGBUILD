@@ -25,5 +25,5 @@ package() {
   cd "$pkgname-$pkgver"
   platform="$(go env GOOS)_$(go env GOARCH)"
   install -Dm755 "bin/$platform/piximan" "$pkgdir/usr/bin/piximan"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 'COPYING' "$pkgdir/usr/share/licenses/piximan/COPYING"
 }
