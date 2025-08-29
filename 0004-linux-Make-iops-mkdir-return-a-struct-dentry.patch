@@ -1,7 +1,7 @@
 From f6deca487803fa5ec872450c575eec87316b5c79 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 26 Jun 2025 10:08:49 -0600
-Subject: [PATCH 04/16] linux: Make iops mkdir return a struct dentry *
+Subject: [PATCH 04/18] linux: Make iops mkdir return a struct dentry *
 
 The Linux 6.15 commit:
 'Change inode_operations.mkdir to return struct dentry *' (88d5baf69082)
@@ -91,5 +91,5 @@ index 5301f3503..c9b8fe8ed 100644
  ])
 \ No newline at end of file
 -- 
-2.50.1
+2.51.0
 

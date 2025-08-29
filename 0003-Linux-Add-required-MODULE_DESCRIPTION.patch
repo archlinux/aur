@@ -1,7 +1,7 @@
 From c7656af901c68006c3a82478c56a4c9cf141c4ea Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Sun, 1 Jun 2025 06:57:55 -0600
-Subject: [PATCH 03/16] Linux: Add required MODULE_DESCRIPTION
+Subject: [PATCH 03/18] Linux: Add required MODULE_DESCRIPTION
 
 The Linux 6.15 commit:
     "modpost: require a MODULE_DESCRIPTION()" (6c6c1fc09de3)
@@ -66,5 +66,5 @@ index 010a4464f..581dc10e2 100644
      echo make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 >&AS_MESSAGE_LOG_FD &&
      make -C $LINUX_KERNEL_BUILD M=$SRCDIR_PARENT/conftest.dir $SPARSE_MAKEFLAGS modules KBUILD_VERBOSE=1 >&AS_MESSAGE_LOG_FD 2>conftest.err &&
 -- 
-2.50.1
+2.51.0
 

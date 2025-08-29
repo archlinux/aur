@@ -1,7 +1,7 @@
 From 2415e6b43fc7abfff6765c9c1cd5ff63c44a8a0c Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 31 Jul 2025 10:20:13 -0600
-Subject: [PATCH 13/16] linux: refactor afs_linux_writepage
+Subject: [PATCH 13/18] linux: refactor afs_linux_writepage
 
 In preparation for a future commit, refactor afs_linux_writepage() by
 moving the code that handles locking/obtaining the credential structure,
@@ -158,5 +158,5 @@ index 070a2ca75..d36fbbe66 100644
  done:
      end_page_writeback(pp);
 -- 
-2.50.1
+2.51.0
 

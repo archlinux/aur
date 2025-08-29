@@ -1,7 +1,7 @@
 From 7c685a34dd97dbe192fafccf8d7419e41f5fa73e Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Sun, 1 Jun 2025 07:22:08 -0600
-Subject: [PATCH 06/16] Linux: Use folio_wait_locked()
+Subject: [PATCH 06/18] Linux: Use folio_wait_locked()
 
 The Linux 6.15 commit:
     mm: Remove wait_on_page_locked() (d96e2802a802)
@@ -132,5 +132,5 @@ index 598114671..4b4e4003b 100644
  dnl                above tests
  AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
 -- 
-2.50.1
+2.51.0
 
