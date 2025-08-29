@@ -1,22 +1,15 @@
 pkgbase = godash
-	pkgdesc = Terminal Personal Productivity Dashboard - Task management, notes, calendar & weather in a beautiful TUI
+	pkgdesc = Terminal Personal Productivity Dashboard with integrated task management, notes, Google Calendar & weather
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/HellasDev/GoDash
 	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = MIT
-	makedepends = go
-	makedepends = git
 	depends = glibc
 	optdepends = firefox: For better browser integration with calendar links
 	optdepends = google-chrome: Alternative browser for calendar integration
 	optdepends = chromium: Alternative browser for calendar integration
-	source = godash-1.0.0.tar.gz::https://github.com/HellasDev/GoDash/archive/v1.0.0.tar.gz
-	sha256sums = c0d5efb8cf171b07049741ec197454d86fdc4ba0225b8d7e5787655ee46c684e
+	source = godash-1.0.0.tar.gz::https://github.com/HellasDev/GoDash/releases/download/v1.0.0-bin/godash-v1.0.0-linux-amd64.tar.gz
+	sha256sums = 26f62ac0967d201ce3c317709a5c86937be0901b3ff3ffae4fb93d25c81bce53
 
 pkgname = godash
