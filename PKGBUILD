@@ -2,7 +2,7 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.1.2
+_pkgver=32.0.0-beta1
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 epoch=11
@@ -78,6 +78,7 @@ makedepends=(
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
   "libvpl" # Deps of QSV plugin
   "python>=$_pythonver" # Deps of Scripting plugin
+  "simde" # Deps of libobs
   "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
   "systemd-libs" # Deps of V4L2 plugin
