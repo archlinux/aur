@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
-pkgver=4.15.3
+pkgver=4.15.4
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
@@ -29,17 +29,18 @@ provides=('tuxedo-keyboard'
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 #source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz)
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz)
-sha256sums=('29f2b2d6e3aeb2769fa0516c63eabc2c9fb140fbf831995dce9dd24fa49f4f13')
-sha512sums=('5eb7b75e6aac3e3d9712aa01856e1913ccf3a20096702d14d1fb721e468c7567b0abe660988ea5d6f5bb25ae1a2bdceee9c827acc86e80e4d8d3c9c807d909cf')
+sha256sums=('b39929e850aab91934b7456c74323ebb6d5dd9b616120dd862c14980fc47c368')
+sha512sums=('d982006ddd652fb90dbaf66c1b976a03019da4aed88fdfd8c99b63efde42ad64e09e2eb573fdb0f63696980f60bf37af2400bb8af5e1320019f244e3377f7755')
 
 package() {
-  mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/lib/udev/hwdb.d"
-  mkdir -p "${pkgdir}/etc/"
-  install -Dm644 "${_pkgname%}-v$pkgver"/debian/tuxedo-drivers.dkms "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
-  sed -i "s/#MODULE_VERSION#/${pkgver}/" "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
 
-  cp -rav "${_pkgname%}-v$pkgver"/etc/* -t "$pkgdir/etc/"
-  cp -rav "${_pkgname%}-v$pkgver"/usr/* -t "$pkgdir/usr"
-  cp -rav "${_pkgname%}-v$pkgver"/src/*  "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/debian/tuxedo-drivers.dkms "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/dkms.conf"
+  sed -i "s/#MODULE_VERSION#/$pkgver/g" "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/dkms.conf"
+
+  install -Dm644 "${_pkgname%}-v$pkgver"/etc/modprobe.d/tuxedo_keyboard.conf -t "$pkgdir/usr/lib/modprobe.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/usr/lib/udev/rules.d/*.rules -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/usr/lib/udev/hwdb.d/*.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
+
+  cp -r "${_pkgname%}-v$pkgver"/src/* "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/"
+
 }
