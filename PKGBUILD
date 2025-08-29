@@ -2,7 +2,7 @@
 pkgname=mubu-bin
 _pkgname=Mubu
 _zhsname='幕布'
-pkgver=5.0.4
+pkgver=5.1.0
 _electronversion=15
 pkgrel=1
 pkgdesc="A mind management tool that combines outline notes and mind maps.(Prebuilt version.Use system-wide electron)一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)"
@@ -24,9 +24,9 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a1ac6028de9851eea6f78c270e38f024577873244a354d409d1a95d6eada22c9'
+sha256sums=('109385b649df8eec1a1c2f1d5c245318d2e91b3ee12b629970a6c161ff13c848'
             'dbc572392757c2abbb6d6d7ca62337561b46b8f3b403963a3624fa5a4884c4ec'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
