@@ -1,6 +1,6 @@
 pkgbase = manuskript
 	pkgdesc = Provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://www.theologeek.ch/manuskript/
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = manuskript
 	depends = python-pyenchant
 	depends = python-pyqt5
 	depends = qt5-svg
-	optdepends = qt5-webengine: preview PDF export
-	optdepends = pandoc: export to various formats
-	optdepends = pdfjs: preview PDF export
-	source = https://github.com/olivierkes/manuskript/archive/0.16.1/manuskript-0.16.1.tar.gz
-	sha256sums = 129125b3d7ce39f3417b41fc57c6ea2c883cc02ca1899e4b533e6070bc56a18c
+	optdepends = python-pyqt5-webengine: preview PDF export
+	optdepends = pandoc: export to PDF and various other formats
+	optdepends = texlive-formatsextra: export to PDF
+	optdepends = texlive-xetex: export to PDF
+	source = https://github.com/olivierkes/manuskript/archive/0.17.0/manuskript-0.17.0.tar.gz
+	sha256sums = a31d8918b28bcb0f42a614fdc6e2732eca1cd276b9ed1664d1b9cad2e66393ab
 
 pkgname = manuskript
