@@ -1,0 +1,10 @@
+post_install() {
+  cat <<'EOF'
+==> wayboard requires privileges to read keyboard input.
+    • If your user is in the input group, no change is needed.
+    • Otherwise, you can set the setuid bit on /usr/bin/wayboard:
+        sudo chmod u+s /usr/bin/wayboard
+
+    Review the README for details. Use at your own risk.
+EOF
+}
