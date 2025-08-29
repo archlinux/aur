@@ -2,10 +2,10 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli smallestai speechify speechmatics spitch tavus turn-detector)
+_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -40,11 +40,13 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework Plugin for Silero.'
                   'Agent Framework plugin for Simli.'
                   'Agent Framework plugin for speech synthesis with the Smallest AI.'
+                  "Agent Framework plugin for services using Soniox's API."
                   "Agent Framework plugin for voice synthesis with Speechify's API."
                   'Agent Framework plugin for Speechmatics.'
                   'spitch plugin template for LiveKit Agents.'
                   'Agent Framework plugin for Tavus.'
-                  'End of utterance detection for LiveKit Agents.')
+                  'End of utterance detection for LiveKit Agents.'
+                  'Agent Framework plugin for speech synthesis with the Uplift AI.')
 _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents'"
@@ -78,11 +80,13 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-onnxruntime' 'python-numpy'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
+                  "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-speechmatics-rt'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-spitch'"
                   "'python-livekit-agents'"
-                  "'python-livekit-agents' 'python-transformers' 'python-numpy' 'python-onnxruntime' 'python-jinja'")
+                  "'python-livekit-agents' 'python-transformers' 'python-numpy' 'python-onnxruntime' 'python-jinja'"
+                  "'python-livekit-agents' 'python-av' 'python-numpy'")
 _plugins__optdepends=(""
                       ""
                       ""
@@ -120,6 +124,8 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
+                      ""
+                      ""
                       "")
 arch=('x86_64' 'aarch64')
 _repo='https://github.com/livekit/agents'
@@ -129,8 +135,8 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('70750263d5c91845065e6a11db5421eaad92e6c82596b6e3a99ca609da300256'
-            '6b99cbfd39246b6706f98ec13c7c50c6b299181f2474fa05cbc8046acc274396')
+sha256sums=('dc909e4405255e219f70cd0030ad137ac19e4b830e3cd1945cced764a5eff662'
+            '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
   cp -f "$srcdir"/silero_vad.onnx "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx
@@ -188,41 +194,44 @@ package_python-livekit-agents() {
   optdepends=('python-mcp: mcp'
               'python-av: codecs' 'python-numpy: codecs'
               'python-pillow: images'
-              'python-livekit-plugins-aws: aws'
-              'python-livekit-plugins-neuphonic: neuphonic'
-              'python-livekit-plugins-playai: playai'
-              'python-livekit-plugins-turn-detector: turn-detector'
-              'python-livekit-plugins-assemblyai: assemblyai'
-              'python-livekit-plugins-rime: rime'
-              'python-livekit-plugins-nltk: nltk'
+              'python-livekit-plugins-anam: anam'
               'python-livekit-plugins-anthropic: anthropic'
-              'python-livekit-plugins-openai: openai'
-              'python-livekit-plugins-groq: groq'
-              'python-livekit-plugins-elevenlabs: elevenlabs'
+              'python-livekit-plugins-assemblyai: assemblyai'
+              'python-livekit-plugins-aws: aws'
               'python-livekit-plugins-azure: azure'
-              'python-livekit-plugins-fal: fal'
-              'python-livekit-plugins-clova: clova'
-              'python-livekit-plugins-deepgram: deepgram'
-              'python-livekit-plugins-silero: silero'
-              'python-livekit-plugins-cartesia: cartesia'
-              'python-livekit-plugins-speechmatics: speechmatics'
-              'python-livekit-plugins-google: google'
-              'python-livekit-plugins-gladia: gladia'
-              'python-livekit-plugins-resemble: resemble'
+              'python-livekit-plugins-baseten: baseten'
               'python-livekit-plugins-bey: bey'
               'python-livekit-plugins-bithuman: bithuman'
-              'python-livekit-plugins-speechify: speechify'
-              'python-livekit-plugins-tavus: tavus'
-              'python-livekit-plugins-hume: hume'
-              'python-livekit-plugins-lmnt: lmnt'
-              'python-livekit-plugins-baseten: baseten'
-              'python-livekit-plugins-langchain: langchain'
-              'python-livekit-plugins-sarvam: sarvam'
-              'python-livekit-plugins-spitch: spitch'
-              'python-livekit-plugins-inworld: inworld'
+              'python-livekit-plugins-cartesia: cartesia'
+              'python-livekit-plugins-clova: clova'
+              'python-livekit-plugins-deepgram: deepgram'
+              'python-livekit-plugins-elevenlabs: elevenlabs'
+              'python-livekit-plugins-fal: fal'
+              'python-livekit-plugins-gladia: gladia'
+              'python-livekit-plugins-google: google'
+              'python-livekit-plugins-groq: groq'
               'python-livekit-plugins-hedra: hedra'
-              'python-livekit-plugins-anam: anam'
-              'python-livekit-plugins-simli: simli')
+              'python-livekit-plugins-hume: hume'
+              'python-livekit-plugins-inworld: inworld'
+              'python-livekit-plugins-langchain: langchain'
+              'python-livekit-plugins-lmnt: lmnt'
+              'python-livekit-plugins-mistralai: mistralai'
+              'python-livekit-plugins-neuphonic: neuphonic'
+              'python-livekit-plugins-nltk: nltk'
+              'python-livekit-plugins-openai: openai'
+              'python-livekit-plugins-playai: playai'
+              'python-livekit-plugins-resemble: resemble'
+              'python-livekit-plugins-rime: rime'
+              'python-livekit-plugins-sarvam: sarvam'
+              'python-livekit-plugins-silero: silero'
+              'python-livekit-plugins-simli: simli'
+              'python-livekit-plugins-smallestai: smallestai'
+              'python-livekit-plugins-speechify: speechify'
+              'python-livekit-plugins-speechmatics: speechmatics'
+              'python-livekit-plugins-spitch: spitch'
+              'python-livekit-plugins-tavus: tavus'
+              'python-livekit-plugins-turn-detector: turn-detector'
+              'python-livekit-plugins-upliftai: upliftai')
   cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   python -m installer --destdir="$pkgdir" $_name0/dist/*.whl
 }
