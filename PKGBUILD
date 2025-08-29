@@ -1,6 +1,6 @@
 # Maintainer: Burhanverse <contact@burhanverse.eu.org>
 pkgname=fagram-bin
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Telegram Desktop based messenger with Feature-rich modifications."
 arch=(x86_64)
@@ -19,7 +19,7 @@ options=(!debug)
 
 source=("https://github.com/burhancodes/fagram-rpm/releases/download/v${pkgver}/fagram-v${pkgver}.tar.gz")
 
-sha256sums=('0741b77a6089722b24bdf9c3fd50fb54c3eacb8c9c9cf3ea0bf95c9d30608353')
+sha256sums=('2c35dc131bf17563c14d900a4a2dbadd2a14c65e0b6736feee967976a994d2fc')
 
 package() {
     cd "${srcdir}/"
@@ -41,13 +41,13 @@ package() {
 
     # Desktop launcher
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/fagram.png" "${pkgdir}/usr/share/pixmaps/fagram.png"
-    install -Dm644 "${srcdir}/usr/share/applications/org.fagram.desktop.desktop" "${pkgdir}/usr/share/applications/org.fagram.desktop.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/org.fagram.desktop" "${pkgdir}/usr/share/applications/org.fagram.desktop"
 
     # DBus service
-    install -Dm644 "${srcdir}/usr/share/dbus-1/services/org.fagram.desktop.service" "${pkgdir}/usr/share/dbus-1/services/org.fagram.desktop.service"
+    install -Dm644 "${srcdir}/usr/share/dbus-1/services/org.fagram.service" "${pkgdir}/usr/share/dbus-1/services/org.fagram.service"
 
     # Metainfo
-    install -Dm644 "${srcdir}/usr/share/metainfo/org.fagram.desktop.metainfo.xml" "${pkgdir}/usr/share/metainfo/org.fagram.desktop.metainfo.xml"
+    install -Dm644 "${srcdir}/usr/share/metainfo/org.fagram.metainfo.xml" "${pkgdir}/usr/share/metainfo/org.fagram.metainfo.xml"
 
     # Icons
     local icon_size icon_dir

@@ -1,6 +1,6 @@
 pkgbase = fagram-bin
 	pkgdesc = Telegram Desktop based messenger with Feature-rich modifications.
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/FajoX1/fagramdesktop
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = fagram-bin
 	provides = fagram
 	conflicts = fagram
 	options = !debug
-	source = https://github.com/burhancodes/fagram-rpm/releases/download/v1.1.9/fagram-v1.1.9.tar.gz
-	sha256sums = 0741b77a6089722b24bdf9c3fd50fb54c3eacb8c9c9cf3ea0bf95c9d30608353
+	source = https://github.com/burhancodes/fagram-rpm/releases/download/v1.1.10/fagram-v1.1.10.tar.gz
+	sha256sums = 2c35dc131bf17563c14d900a4a2dbadd2a14c65e0b6736feee967976a994d2fc
 
 pkgname = fagram-bin
