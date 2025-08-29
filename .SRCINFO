@@ -6,6 +6,7 @@ pkgbase = dstll-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = glibc
 	provides = dstll
 	conflicts = dstll
 	source_x86_64 = dstll-x86_64-0.2.1.tar.gz::https://github.com/dhth/dstll/releases/download/v0.2.1/dstll_0.2.1_linux_amd64.tar.gz
