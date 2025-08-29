@@ -1,6 +1,6 @@
 # Maintainer: William Theesfeld <william@theesfeld.net>
 pkgname=libgpg-stream
-pkgver=1.0.0
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="GNU-Standard GPG Streaming Library for secure multicast communication"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ optdepends=('gnupg: for GPG key management')
 provides=("$pkgname=$pkgver")
 backup=()
 source=("https://github.com/theesfeld/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9dec47df15025baf3e9f9e20f06999a6717d5cb37f7f754b0562c970c208e8d8')
+sha256sums=('557dc8b7d06da564dba04ffc745437c0f4625a9737fdba17dec0f004acce8371')
 
 build() {
     cd "$pkgname-$pkgver"
