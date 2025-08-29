@@ -1,6 +1,6 @@
 pkgbase = otree
 	pkgdesc = Object Tree TUI Viewer
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/fioncat/otree
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = otree
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	source = otree-0.6.0::git+https://github.com/fioncat/otree#commit=9c209ce0902e2556072145060d356b2cfbc04a89
+	source = otree-0.6.1::git+https://github.com/fioncat/otree#commit=9c209ce0902e2556072145060d356b2cfbc04a89
 	sha512sums = 53e6c3cbd0a5cc27916ccc8800ae86da5bc51509571aed493cee4f81543f2a6ee151a54a0e9d87f49f02883e469fa4ea1121d1c980d6a101b00bd851aa85f15e
 
 pkgname = otree
