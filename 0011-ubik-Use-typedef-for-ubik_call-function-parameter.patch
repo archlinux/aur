@@ -1,7 +1,7 @@
 From 4ea7fa11eeb4acfa1d3ab19ff5ce8faf6be2ba35 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 25 Apr 2025 11:43:01 -0600
-Subject: [PATCH 11/16] ubik: Use typedef for ubik_call function parameter
+Subject: [PATCH 11/18] ubik: Use typedef for ubik_call function parameter
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -289,5 +289,5 @@ index 450b1531e..dd27fa2d2 100644
  	  long p5, long p6, long p7, long p8, long p9, long p10,
  	  long p11, long p12, long p13, long p14, long p15, long p16)
 -- 
-2.50.1
+2.51.0
 

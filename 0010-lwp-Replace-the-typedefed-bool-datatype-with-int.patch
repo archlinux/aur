@@ -1,7 +1,7 @@
 From 13248c326732c67dbfb9bf409f198e0d29e6f3f0 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 24 Apr 2025 13:21:12 -0600
-Subject: [PATCH 10/16] lwp: Replace the typedefed bool datatype with int
+Subject: [PATCH 10/18] lwp: Replace the typedefed bool datatype with int
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -94,5 +94,5 @@ index b9172944d..3032b5640 100644
  {
      return (t->TotalTime.tv_sec < 0 || t->TotalTime.tv_usec < 0);
 -- 
-2.50.1
+2.51.0
 

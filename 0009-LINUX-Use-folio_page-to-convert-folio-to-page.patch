@@ -1,7 +1,7 @@
 From 7ac828855acd0c1c38daa9ad0828d6b8fbf13176 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Mon, 2 Jun 2025 12:18:19 -0500
-Subject: [PATCH 09/16] LINUX: Use folio_page() to convert folio to page
+Subject: [PATCH 09/18] LINUX: Use folio_page() to convert folio to page
 
 A few pieces of code are currently converting a folio into a page via
 &folio->page. But the macro folio_page() can do this for us; use that
@@ -72,5 +72,5 @@ index dedc3f391..b0b600256 100644
  }
  #endif
 -- 
-2.50.1
+2.51.0
 

@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.8.13.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -32,24 +32,28 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz
         0013-linux-refactor-afs_linux_writepage.patch
         0014-Linux-Use-__readahead_folio.patch
         0015-Linux-Rename-page-index-to-page-__folio_index.patch
-        0016-linux-convert-aops-writepage-to-writepages.patch)
+        0016-linux-convert-aops-writepage-to-writepages.patch
+        0017-Linux-Restore-using-d_name.name-in-d_revalidate.patch
+        0018-Linux-Use-a-stable-dentry-name-in-d_revalidate.patch)
 sha256sums=('59ab4f60cb925c5779c93e233621186c1226d4770239fb2b544942d49cebd976'
-            '5d4753c1511ae011d7f7efc95235460a15d9bc9b7af0d486cc749879c1244f70'
-            '39a0337e699bf761186fccfd7fc5fd40fcda83dd825c2b15ef7a11415cc6a42a'
-            '1901eb8f02ba52246012da0bc56dce76896e656f1ce24f625be75ba2e30652f8'
-            '90d5f78a2699298b7425d766347613967675305a34cedd4126041e5d305b7140'
-            '75ec00db57873aa3942adce322f7b6533180ee46e8602cf74864f3808bcb9883'
-            '084b6de7d5c5933ac3a3c1eacd4ca5b60fdf3a6f346b817b3e5b2ce7759fa970'
-            '1d935ff9ca5f5011d3c15079a84dd726cf968723f3172eb2b0378470548eb0da'
-            '339e397c9de0c88ad38c5c21081342b88ec419bd41a433aa3571d6e1773bff4a'
-            '1f5cf7cd342258424d97da0fb0e3f3976948cdb251534310d805a76d0ee1f19f'
-            '6b5ebe98bd4b30ba864250b14034ec4b6e69bb7eadb6ae7d02c653f5d2dc9b7e'
-            'ed2a41f110d5e7b75f0a9d5825e8d5a300efac9a16945f754bfcedce3ed5d0e8'
-            'fc9e701cd44d87f52b594f42481caf2b4e63911c8df3e475999280bb88245c8c'
-            'ba8d046dea2f8c41984e819d5108ae62dcc84cadbd1e5fa5e3de7eb2ac12525b'
-            '14cfcc2d350ea6c47c9df4de826e2ed3b75223bbc75cd0b310bf688a49323018'
-            'ba27ea29a2f6c8e63654d549056048bd84f63871db3bc604d8f91e990d611a57'
-            'aec06722fb56c971114594096ff9b230f4b6aea4be68f565d04c66267105a3bd')
+            '9e1db95794b3c6e03855ce0cf6e61c3c13dfb26cb8a766a8e0e88f640cb5462f'
+            '23c61e22c72b2820ca377815d36cd53cc11032282d83f7e9bc428c77103957c3'
+            '707f080dac174e82aa55c1e6cce626809b8e539476cab90e6d5ca3af5ed63049'
+            'b4732d4a059d7bf8779502de395d3b416a83181ea883993eaca91a959820cd4a'
+            '9aaac70aa548a487f79d20ccfdf839e311738244e86537e2330048d4241aa030'
+            'dffbe5bac94f997aa8e97220e3aa9bf6e2506356dfd9d655ddc1aae4ea91331d'
+            '6429dee327e423d12b7c6a6d5eefde4f5709e1e3db81fcb718d9fbb0596fe256'
+            'e146e569d4607c0a1505148fa78d77703148f195f4a768792dec181edd57e274'
+            '991c8d4c4a077b461878bb4f0fd5fb5080f5ea4da447f357c6dce9feb0741188'
+            '7df242a5b65d822511f8c1865e75dfa3d122f7bfaf1b5fac3b8396d7852c9c18'
+            '9f567254b19532abb3ff07ad9b25c94e3bab5003b6063183af8405ee6cf7f509'
+            '7be033844e1e45b1ad5120a721bef95aa61d508fc6cc7103e254cd7ad1daee06'
+            '4d92988789c92612f3ba4a3802b00188de2c87889768364f5d59060f9c2ee626'
+            'c4d973253fd898551433784077436426bb302bceeead3153260ecb0f434a8b94'
+            '40017f237696c28c3b699c05ad9d860aac66510f26c2a4987cd58cd2ffc2507d'
+            'be90ee33bc3d1c73951eb7bd80f468630e1e14bdee08e2d65dad826c6bb8293d'
+            'e48f6ac3e9b5779889d1bb3c0402c103bb9a25603bf7bdd6337ded348045bc23'
+            '27e82fe3883b48858e724a99a4987885aa030b4351a7337a42e0a16bc579466e')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -87,6 +91,10 @@ prepare() {
   patch -p1 < "${srcdir}"/0014-Linux-Use-__readahead_folio.patch
   patch -p1 < "${srcdir}"/0015-Linux-Rename-page-index-to-page-__folio_index.patch
   patch -p1 < "${srcdir}"/0016-linux-convert-aops-writepage-to-writepages.patch
+
+  # Fix possible information leak via DNS SRV requests
+  patch -p1 < "${srcdir}"/0017-Linux-Restore-using-d_name.name-in-d_revalidate.patch
+  patch -p1 < "${srcdir}"/0018-Linux-Use-a-stable-dentry-name-in-d_revalidate.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

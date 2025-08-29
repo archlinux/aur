@@ -1,7 +1,7 @@
 From 4ece1e43eb779a08bc931fc792f29d56bc9e87ec Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 26 Jun 2025 10:12:57 -0600
-Subject: [PATCH 05/16] cf: check for dentry flag macros/enums
+Subject: [PATCH 05/18] cf: check for dentry flag macros/enums
 
 Linux 6.15 commit:
     dcache: convert dentry flag macros to enum (b2b4483b5d05)
@@ -119,5 +119,5 @@ index 581dc10e2..fbe3c1aa8 100644
  AC_DEFUN([AC_CHECK_LINUX_STRUCT],
   [AC_CHECK_LINUX_TYPED_STRUCT([struct $1], [$2], [$3])
 -- 
-2.50.1
+2.51.0
 

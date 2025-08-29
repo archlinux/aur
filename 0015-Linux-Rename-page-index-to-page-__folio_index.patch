@@ -1,7 +1,7 @@
 From d99f2503dd0b8317cf7170a9e00263796d88ee26 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 31 Jul 2025 09:03:10 -0600
-Subject: [PATCH 15/16] Linux: Rename page->index to page->__folio_index
+Subject: [PATCH 15/18] Linux: Rename page->index to page->__folio_index
 
 The Linux 6.16 commit:
     'mm: rename page->index to page->__folio_index' (acc53a0b4c156)
@@ -96,5 +96,5 @@ index 5cd346fb5..24841e9f3 100644
  
  dnl Check for typed structure elements
 -- 
-2.50.1
+2.51.0
 

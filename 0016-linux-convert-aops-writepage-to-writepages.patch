@@ -1,7 +1,7 @@
 From 902a669d9899308b5d1828b4ed01622ddf2b9f39 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 31 Jul 2025 11:27:53 -0600
-Subject: [PATCH 16/16] linux: convert aops->writepage to writepages
+Subject: [PATCH 16/18] linux: convert aops->writepage to writepages
 
 As part of the transition from pages to folios, the Linux 6.16 commit:
 'fs: Remove aops->writepage' (6b0dfabb35550)
@@ -226,5 +226,5 @@ index c7c0c2318..4155def67 100644
 +                       [[-Werror]])
 +])
 -- 
-2.50.1
+2.51.0
 

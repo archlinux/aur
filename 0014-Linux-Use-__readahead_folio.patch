@@ -1,7 +1,7 @@
 From c5ae372b1d366d1b39bbb63a5101191921f2528d Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 31 Jul 2025 10:46:14 -0600
-Subject: [PATCH 14/16] Linux: Use __readahead_folio
+Subject: [PATCH 14/18] Linux: Use __readahead_folio
 
 The linux 6.16 commit:
   'filemap: remove readahead_page()' (c09b997342bcd)
@@ -210,5 +210,5 @@ index 8be20ba90..c60804e6b 100644
  dnl Consequences - things which get set as a result of the
  dnl                above tests
 -- 
-2.50.1
+2.51.0
 

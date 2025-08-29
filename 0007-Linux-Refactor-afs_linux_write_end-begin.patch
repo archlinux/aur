@@ -1,7 +1,7 @@
 From 45fcdcd1a0c63dc9f8e97cec86342c660941362e Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 26 Jun 2025 10:07:20 -0600
-Subject: [PATCH 07/16] Linux: Refactor afs_linux_write_end()/begin()
+Subject: [PATCH 07/18] Linux: Refactor afs_linux_write_end()/begin()
 
 Refactor afs_linux_write_end() and afs_linux_write_begin() to separate
 the folio and non-folio related code.  This allows reducing some of the
@@ -141,5 +141,5 @@ index 9f1707805..d22b70de1 100644
  #ifndef STRUCT_DENTRY_OPERATIONS_HAS_D_AUTOMOUNT
  static void *
 -- 
-2.50.1
+2.51.0
 

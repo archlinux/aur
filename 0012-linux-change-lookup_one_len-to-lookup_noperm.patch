@@ -1,7 +1,7 @@
 From 3142218debedc3a9f6bb234909e7fe2889ea2b6f Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Mon, 7 Jul 2025 16:57:23 -0600
-Subject: [PATCH 12/16] linux: change lookup_one_len to lookup_noperm
+Subject: [PATCH 12/18] linux: change lookup_one_len to lookup_noperm
 
 The linux 6.16 commit:
     'VFS: rename lookup_one_len family to lookup_noperm and remove
@@ -91,5 +91,5 @@ index d991ee313..8be20ba90 100644
  dnl                above tests
  AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
 -- 
-2.50.1
+2.51.0
 

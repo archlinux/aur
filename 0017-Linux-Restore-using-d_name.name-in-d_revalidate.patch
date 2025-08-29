@@ -1,0 +1,61 @@
+From 372abebfcdfbc51bdaf1c8790914719b5b823556 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 26 Aug 2025 14:32:26 -0600
+Subject: [PATCH 17/18] Linux: Restore using d_name.name in d_revalidate
+
+The commit:
+    Linux-6.14: Handle dops.d_revalidate with parent (0306f3fdac736)
+updated afs_linux_dentry_revalidate to use the 'name' parameter that was
+introduced in Linux 6.14.  The change however is incorrectly using the
+'name' parameter (the name that the dentry is expected to have) by not
+using the qstr length of 'name'.  The original code had used dentry
+parameter's 'd_name.name' field as a NUL terminated string.
+
+Both the 'name' and 'd_name.name' are NUL terminated qstr (according to
+the porting documentation and existing Linux code usage).  However
+'name' can at times be a pointer to a longer path string where 'name'
+points to the leading part of that path, and the qstr length determines
+the length of the leading part. To properly use the 'name' parameter,
+the qstr length must be used instead of relying on the entire length of
+the NUL terminated string.
+
+Update afs_linux_dentry_revalidate to use the parent's dentry
+d_name.name field (restoring the way the dentry's name was obtained to
+what it was prior to the 0306f3fdac736 commit).
+
+Note: historically, openafs has been using the dentry d_name.name as
+a NUL terminated string from at least the initial git commit.  And
+within Linux, the dentry d_name.name has also been treated as a NUL
+terminated string (current as of 6.16 and going back to at least 2.6.18)
+
+It should be noted that the dentry d_name is unstable when d_revalidate
+is called.  A future commit will update the code to use a stable
+dentry d_name.
+
+This commit addresses a problem with excessive DNS queries that was
+reported to the openafs-info mailing list.  Initial analysis and
+identification of the mistake where done by <jaltman@auristor.com> and
+<marc@auristor.com>.
+Ref:  https://lists.openafs.org/pipermail/openafs-info/2025-August/043532.html
+
+Change-Id: I111b758af5580e827f460cbed736e6a8c33cf0e0
+---
+ src/afs/LINUX/osi_vnodeops.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index fe4c10b9e..12dd4d292 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1609,7 +1609,7 @@ afs_linux_dentry_revalidate(struct inode *parent_inode, const struct qstr *name,
+     if ((flags & LOOKUP_RCU) != 0) {
+ 	return -ECHILD;
+     }
+-    return dentry_revalidate_common(VTOAFS(parent_inode), name->name, dp);
++    return dentry_revalidate_common(VTOAFS(parent_inode), dp->d_name.name, dp);
+ }
+ #else
+ # if defined(DOP_REVALIDATE_TAKES_UNSIGNED)
+-- 
+2.51.0
+
