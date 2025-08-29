@@ -1,7 +1,7 @@
 pkgbase = vdr-softhddevice
 	pkgdesc = software and GPU emulated HD output device plugin for VDR
-	pkgver = 2.4.5
-	pkgrel = 2
+	pkgver = 2.4.6
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ua0lnj/vdr-plugin-softhddevice
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = vdr-softhddevice
 	optdepends = nvidia: Required for VDPAU decoding
 	optdepends = vdr-xorg: Recommended way to start X.org server together with VDR
 	backup = etc/vdr/conf.avail/50-softhddevice.conf
-	source = vdr-softhddevice-2.4.5.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/v2.4.5.tar.gz
+	source = vdr-softhddevice-2.4.6.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/v2.4.6.tar.gz
 	source = 50-softhddevice.conf
-	sha256sums = 950abfb9576b4c2b8943feb10c0197056191968bcb14310f82cd9b77eb9adc89
+	sha256sums = 2908f02394c31b36aa1483e66ab3741afc2742f1fd7037b289654cb1db54c268
 	sha256sums = 889d4c19770a926f8aa6a014ff8219800a7a74c464ef0b12dcef6bb8db93e719
 
 pkgname = vdr-softhddevice
