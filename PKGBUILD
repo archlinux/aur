@@ -5,7 +5,7 @@
 
 pkgname=cervisia
 pkgver=25.04.3
-pkgrel=4
+pkgrel=5
 pkgdesc='CVS Frontend'
 url='https://apps.kde.org/cervisia/'
 arch=(x86_64)
