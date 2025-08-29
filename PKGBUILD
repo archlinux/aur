@@ -11,7 +11,6 @@ depends=('glfw' 'luajit' 'lua53' 'openxr' 'enet')
 makedepends=('cmake')
 source=("git+https://github.com/bjornbytes/lovr.git#tag=v0.18.0"
         "Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers"
-        "glslang::git+https://github.com/KhronosGroup/glslang"
         "joltc::git+https://github.com/amerkoleci/joltc"
         "lovr-http::git+https://github.com/bjornbytes/lovr-http"
         "lua-enet::git+https://github.com/bjornbytes/lua-enet"
@@ -29,21 +28,14 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "SKIP"
 )
 
 prepare() {
 
   repo=${pkgname}
   git -C $repo submodule init
-  git -C $repo config submodule.deps/glfw.url "file://$srcdir/glfw"
-  git -C $repo config submodule.deps/glslang.url "file://$srcdir/glslang"
   git -C $repo config submodule.deps/joltc.url "file://$srcdir/joltc"
-  git -C $repo config submodule.deps/lua.url "file://$srcdir/lua"
-  git -C $repo config submodule.deps/luajit.url "file://$srcdir/LuaJIT"
   git -C $repo config submodule.deps/msdfgen.url "file://$srcdir/msdfgen"
-  git -C $repo config submodule.deps/openxr.url "file://$srcdir/openxr-sdk"
-  git -C $repo config submodule.deps/tracy.url "file://$srcdir/tracy"
   git -C $repo config submodule.deps/vulkan-headers.url "file://$srcdir/Vulkan-Headers"
   git -C $repo config submodule.plugins/lovr-http.url "file://$srcdir/lovr-http"
   git -C $repo config submodule.plugins/lua-enet.url "file://$srcdir/lua-enet"
@@ -61,6 +53,7 @@ build() {
     cmake -B build -S "${pkgname}" \
         -G 'Unix Makefiles' \
         -Wno-dev\
+        -DCMAKE_C_FLAGS=-lm \
         -DLOVR_USE_LUAJIT=On \
         -DLOVR_SYSTEM_LUA=On \
         -DLOVR_USE_GLFW=On \
@@ -69,6 +62,7 @@ build() {
         -DLOVR_USE_OPENXR=On \
         -DLOVR_SYSTEM_OPENXR=On \
         -DLOVR_ENABLE_THREAD=On \
+        -DLOVR_USE_GLSLANG=Off \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
