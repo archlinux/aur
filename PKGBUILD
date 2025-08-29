@@ -1,7 +1,7 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.50.10
+pkgver=0.50.11
 pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=(any)
@@ -44,6 +44,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-types-python-dateutil # required by jinja-time
          python-openpyxl
          python-pillow
+         python-openapi-core
          python-loguru
          python-extruct
          python-babel
@@ -57,7 +58,7 @@ source=(https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver
         tmpfiles
         service
         chromium.service)
-sha512sums=('71aec88d2b3935c35010f522e642da9d9bb6176a0923fef75c7a3b014154d912b1baf29bbdbf15f2312cf5f0ff3ae72064a385ebcf7d3a727a7347439dd32c32'
+sha512sums=('8106aed24ccedf5ee482268974cec0caf609cd30e6c3ca2f1bb7fe5133bb30e881b1b686af2733a8f125028d78825c9d3243728ead146b98ccd9241d2c48a8c0'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318'
             'eecd4b25411f6f47b81dd6849aae233b0928e19342818b9c7857bf291850b2cefb33cd35aa5877be1675c9642a8feee53b35d2e318a255547ef4ce07a30c9e1b'
