@@ -4,32 +4,36 @@
 
 _pkgname=xfce4-whiskermenu-plugin
 pkgname=${_pkgname}-git
-pkgver=2.4.0+43+g86b6bff
+pkgver=2.10.0+5+gbda8b62
 pkgrel=1
 pkgdesc="Alternate Xfce menu"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="http://gottcode.org/${_pkgname}/"
-license=("GPL2")
-depends=("xfce4-panel" "exo>=0.11")
-makedepends=("cmake" "git")
-groups=("xfce4-goodies" "xfce4-goodies-git")
-provides=("${_pkgname}=${pkgver%%.r*}")
+url='https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin/start'
+license=('GPL-2.0-or-later')
+depends=('libxfce4ui>=4.21.0' 'accountsservice' 'garcon' 'gtk3' 'gtk-layer-shell' 'xfce4-panel')
+makedepends=('git' 'meson' 'ninja')
+optdepends=('mugshot: Update user details')
+groups=('xfce4-goodies-git')
+provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/panel-plugins/${_pkgname}")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
   git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make
+  local meson_options=(
+    -D accountsservice=enabled
+    -D gtk-layer-shell=enabled
+  )
+
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
