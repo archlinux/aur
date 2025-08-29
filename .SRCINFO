@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vtk
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization (mingw-w64)
-	pkgver = 9.4.1
+	pkgver = 9.5.0
 	pkgrel = 1
 	url = http://www.vtk.org/
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = mingw-w64-vtk
 	depends = mingw-w64-libtheora
 	depends = mingw-w64-freeglut
 	depends = mingw-w64-lz4
-	depends = mingw-w64-glew
 	depends = mingw-w64-double-conversion
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-gl2ps
@@ -32,7 +31,7 @@ pkgbase = mingw-w64-vtk
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://www.vtk.org/files/release/9.4/VTK-9.4.1.tar.gz
-	sha256sums = c253b0c8d002aaf98871c6d0cb76afc4936c301b72358a08d5f3f72ef8bc4529
+	source = https://www.vtk.org/files/release/9.5/VTK-9.5.0.tar.gz
+	sha256sums = 04ae86246b9557c6b61afbc534a6df099244fbc8f3937f82e6bc0570953af87d
 
 pkgname = mingw-w64-vtk
