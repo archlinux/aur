@@ -1,0 +1,12 @@
+pkgbase = vosk-model-ru
+	pkgdesc = Russian model for Vosk speech recognition
+	pkgver = 0.42
+	pkgrel = 1
+	url = https://alphacephei.com/vosk/
+	arch = any
+	license = Apache
+	makedepends = unzip
+	source = https://alphacephei.com/kaldi/models/vosk-model-ru-0.42.zip
+	sha256sums = 00eb9e5ed8230492da1acf702cd3548e1282256a5fdde8f188253e77217e9429
+
+pkgname = vosk-model-ru
