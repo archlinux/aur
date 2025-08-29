@@ -3,19 +3,25 @@
 pkgname=python-cleantext
 _name=${pkgname#python-}
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source python package to clean raw text data'
 arch=(any)
 url=https://pypi.org/project/cleantext
 license=(MIT)
 depends=(python python-nltk)
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('854003de912406d8d821623774b307dc6f0626fd9fac0bdc5d24864ee3f37578')
+checkdepends=(nltk-data python-pytest)
+source=("https://github.com/prasanthg3/$_name/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('2922ccef610ff42fa927a13c4f322fb9a0fc5a2d34a6c7ebf67f726e654f3a2a')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
+}
+
+check() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  pytest
 }
 
 package() {
