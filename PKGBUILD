@@ -2,7 +2,7 @@
 # Contributor: Will Gauvin <wgauvin@gmail.com>
 
 pkgname=libindi-gphoto
-pkgver=2.1.4
+pkgver=2.1.5.1
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for DSLR camers using gphoto"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -11,7 +11,7 @@ arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libgphoto2 libraw)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080")
+sha256sums=("9a85e6cf928dd095f019adf1919c79f9a3ac55294bedb8c9f65cc8bf3f9152d8")
 
 prepare() {
   mkdir -p build
