@@ -2,24 +2,27 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-git
-pkgver=4.19.2+114+geb3ca062
+pkgver=4.21.0+246+g2bbc1a46
 pkgrel=1
 pkgdesc="Settings manager for xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL2')
 groups=('xfce4-git')
-depends=('exo' 'libxfce4util' 'garcon' 'libxfce4ui>=4.19.5' 'xfconf' 'libnotify' 'colord'
-         'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra' 'python'
-         'gtk-layer-shell')
-makedepends=('git' 'xfce4-dev-tools' 'glib2-devel')
-optdepends=('libcanberra: for sound control')
+depends=('garcon' 'libxfce4ui>=4.21.2' 'xfconf' 'libnotify' 'libcanberra' 'upower'
+         'colord' 'libxklavier' 'elementary-icon-theme' 'gnome-themes-extra')
+makedepends=('git' 'glib2-devel' 'xfce4-dev-tools' 'xf86-input-libinput' 'wlr-protocols')
+optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling'
+            'xiccd: for displays support in xfce4-color-settings'
+            'cups: for printers support in xfce4-color-settings'
+            'sane: for scanners support in xfce4-color-settings')
+
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}"
-        'enable-antialias-by-default.patch')
+        'default-xsettings-xml.patch')
 sha256sums=('SKIP'
-            '25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac')
+            '008da8cae0251864d1bf34e2649674e0566475a423becf81e8e3f5c6acb3877d')
 
 pkgver() {
   cd "${_pkgname}"
@@ -28,31 +31,21 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  # Enable font hinting by default
-  patch -uNp2 -r- -i ../enable-antialias-by-default.patch
-
-  git submodule update --init
+  patch -Np1 -i ../default-xsettings-xml.patch
 }
 
 build() {
-  cd "${_pkgname}"
+  local meson_options=(
+    -D x11=enabled
+    -D wayland=enabled
+    -D gtk-layer-shell=enabled
+    -D upower=enabled
+  )
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --enable-xrandr \
-    --enable-xcursor \
-    --enable-libnotify \
-    --enable-libxklavier \
-    --enable-pluggable-dialogs \
-    --enable-sound-settings \
-    --disable-upower-glib \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
