@@ -8,7 +8,7 @@
 
 pkgname=openvsp-bin
 pkgdesc='A parametric aircraft geometry tool'
-pkgver=3.43.0
+pkgver=3.45.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://openvsp.org'
@@ -28,6 +28,7 @@ optdepends=(
   'doxygen: generate documentation'
   'graphviz: generate documentation')
 makedepends=('cmake' 'unzip')
+conflicts=('openvsp')
 
 _name=OpenVSP-OpenVSP_${pkgver}
 
@@ -38,7 +39,7 @@ libxml2_pkgrel=1
 
 source=("${pkgname}-${pkgver}.deb"::"https://openvsp.org/download.php?file=zips/current/linux/OpenVSP-${pkgver}-Ubuntu-24.04_amd64.deb"
   "https://archive.archlinux.org/packages/l/libxml2/libxml2-${libxml2_pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('ca055b7dba5f4d950c11ddc107b67f0d4e7839026c2b5f88a6bab8d72c6d67ca'
+sha256sums=('bddf907e18881b28a949e0d67b8043adbdd1ba98f5698473097ea8c1cbd8bf67'
   '2a1b0ab11ff213a57268d20fff183e3fd3e4ab9191aeed473de336b77bdfa6e1')
 
 prepare() {
@@ -66,9 +67,11 @@ package() {
   mkdir -p ${pkgdir}/usr/share/${pkgname}
 
   # binaries
-  cp vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt vspviewer \
+#  cp vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt vspviewer \
+#    ${pkgdir}/usr/share/${pkgname}
+  cp vsp vspaero vspscript vsploads vspaero_opt vspviewer \
     ${pkgdir}/usr/share/${pkgname}
- 
+  
   # misc
   cp README.md ${pkgdir}/usr/share/${pkgname}
   cp LICENSE ${pkgdir}/usr/share/${pkgname}
@@ -85,8 +88,11 @@ package() {
   # binary symlinks, relative
   mkdir -p ${pkgdir}/usr/bin
   cd ${pkgdir}/usr/share/${pkgname}
-  ln -sr vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt vspviewer \
+#  ln -sr vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt vspviewer \
+#    ${pkgdir}/usr/bin/
+  ln -sr vsp vspaero vspscript vsploads vspaero_opt vspviewer \
     ${pkgdir}/usr/bin/
+
 
   # libraries missing in Arch
   mkdir -p ${pkgdir}/usr/lib
