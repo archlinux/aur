@@ -1,0 +1,22 @@
+pkgbase = python-segments
+	pkgdesc = Segmentation with orthography profiles
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/segments
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-regex
+	depends = python-csvw
+	provides = python-segments
+	conflicts = python-segments
+	options = !strip
+	options = !debug
+	source = segments-2.3.0.tar.gz::https://files.pythonhosted.org/packages/source/s/segments/segments-2.3.0.tar.gz
+	sha256sums = 381143f66f59eaf45398f5bb57f899d6501be011048ec5f92754c9b24b181615
+
+pkgname = python-segments
