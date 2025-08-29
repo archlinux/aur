@@ -28,7 +28,7 @@ sha256sums=(
 prepare() {
     cp -a "$srcdir/MonikaModDev-$pkgver/Monika After Story/." "$srcdir/DDLC/"
     cp -a "$srcdir/scripts/." "$srcdir/DDLC/"
-    cp -a "$srcdir/fix.sh" "$srcdir/DDLC/"
+    cp "$srcdir/fix.sh" "$srcdir/DDLC/"
     
     chmod +x "$srcdir/DDLC/fix.sh"
     chmod +x "$srcdir/DDLC/DDLC.sh"
@@ -45,11 +45,12 @@ build () {
     ./DDLC.sh . compile
     
     find game -type f -name "*.rpy" -delete
+    rm fix.sh traceback.txt
 }
 package() {
     install -Dm644 "$srcdir/mas.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/mas.png"
     install -Dm644 "$srcdir/mas.desktop" "$pkgdir/usr/share/applications/mas.desktop"
     
     install -d "$pkgdir/opt/monika-after-story"
-    cp -a "$srcdir/DDLC/." "$pkgdir/opt/monika-after-story"
+    cp -rL "$srcdir/DDLC/." "$pkgdir/opt/monika-after-story"
 }
