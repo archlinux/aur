@@ -3,8 +3,8 @@
 # Contributor: darkhz <kmachanwenw at gmail dot com>
 
 pkgname=bluetuith
-pkgver=0.2.5
-pkgrel=4
+pkgver=0.2.5_rc1
+pkgrel=1
 pkgdesc="TUI-based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/bluetuith-org/bluetuith"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('bluez' 'dbus')
 optdepends=("bluez-obex: send and receive files via OBEX")
 makedepends=('git' 'go')
-source=("$pkgname::git+$url.git#tag=v0.2.5-rc1")
+source=("$pkgname::git+$url.git#tag=v${pkgver/_/-}")
 sha256sums=('8c5961fa0ea46f90a18847048b817788cface1a10ca02a4688228e03dc6e62b3')
 
 prepare() {
