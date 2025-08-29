@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=wrkflw
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='validate and execute GitHub Actions workflows locally'
 url="https://github.com/bahdotsh/$pkgname"
@@ -13,7 +13,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('3d972f95f56e73f803d0d998674befa97c7e620885c0e81fe131ff6cbabf6bf4')
+sha256sums=('475acd61bff0b6ee4ec58aa566b442355e88d9efe18267c58c1501f3fb93f4bc')
 
 prepare() {
 	cd "$_archive"
