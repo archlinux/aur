@@ -2,7 +2,7 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.83'
+pkgver='2.0.84'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'sdl2-compat'
   'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5601ea8eda181252983e8aa641a9daa7c74888d01d4f2bf3c7fa0a1ac3c44d0b')
+sha256sums=('1b613e8da83d396c0367e96b4cbb860c2c363516d73ec276e3aa17e61265a379')
 
 build() {
   # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
