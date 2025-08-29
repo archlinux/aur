@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}::git+${url}#tag=Release_$pkgver"
         "eddiscovery"
 		"eddiscovery.desktop")
 md5sums=(
-	"b02620f45daab924d8ca67269a114a70"
+	"a981105ef61a3f8e4493e06952390ead"
 	"764d0276476fb60618d87c918baca9e3"
 	"a81a935726d655d8369897dae396ea53"
 )
