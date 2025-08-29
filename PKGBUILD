@@ -3,7 +3,7 @@
 
 pkgname=kime
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 depends=('noto-fonts-cjk')
@@ -23,6 +23,8 @@ build() {
 
     # Clean cache
     rm -rf build || true
+    export RUSTFLAGS="-L ${srcdir}/${pkgname}-${pkgver}/target/release ${RUSTFLAGS}"
+    # https://github.com/Riey/kime/issues/701#issuecomment-2944494908
     scripts/build.sh -ar
 }
 
