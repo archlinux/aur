@@ -2,42 +2,31 @@
 # Contributor: Alex Wiggins <alex.d.wiggins at gmail . com>
 
 pkgname=penguin-subtitle-player
-pkgver=1.5.0
-pkgrel=4
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Standalone subtitle player'
 arch=('x86_64')
 url='https://github.com/carsonip/Penguin-Subtitle-Player'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-base')
-makedepends=('git')
-_commit=ca6a87e7ec3fe4ab0925525bfa771700022c5697  # tags/v1.5.0
-source=("git+https://github.com/carsonip/Penguin-Subtitle-Player.git#commit=$_commit"
-        'git+https://gitlab.freedesktop.org/uchardet/uchardet.git')
-sha256sums=('SKIP'
-            'SKIP')
-
-pkgver() {
-  cd Penguin-Subtitle-Player
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+depends=('hicolor-icon-theme' 'qt5-base' 'uchardet')
+source=("https://github.com/carsonip/Penguin-Subtitle-Player/archive/v${pkgver}/$pkgname-$pkgver.tar.gz")
+sha256sums=('fdc34d234c7f632ec2ebbf84af9aefac6ea504bb5de7323c63cfaa0acf095b06')
 
 prepare() {
-  cd Penguin-Subtitle-Player
-  git submodule init
-  git submodule set-url src/uchardet "$srcdir/uchardet"
-  git -c protocol.file.allow=always submodule update
+  cd Penguin-Subtitle-Player-$pkgver
 
-  # Add better integration for Linux
-  git cherry-pick -n 96ec9e4d7b1adf6de3b3ed71b6c57c8cb362fcae
+  # Unbundle uchardet
+  sed -i '/src\/uchardet/d' PenguinSubtitlePlayer.pro
+  sed -i 's|uchardet/src/uchardet.h|uchardet/uchardet.h|' src/chardet.cpp
 }
 
 build() {
-  cd Penguin-Subtitle-Player
-  qmake-qt5 PREFIX=/usr PenguinSubtitlePlayer.pro
+  cd Penguin-Subtitle-Player-$pkgver
+  qmake-qt5 PREFIX=/usr PenguinSubtitlePlayer.pro LIBS+=" -luchardet"
   make
 }
 
 package() {
-  cd Penguin-Subtitle-Player
+  cd Penguin-Subtitle-Player-$pkgver
   make INSTALL_ROOT="$pkgdir" install
 }
