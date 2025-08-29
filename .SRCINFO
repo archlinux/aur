@@ -1,0 +1,19 @@
+pkgbase = mult-bin
+	pkgdesc = Run a command multiple times and glance at the outputs via a TUI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dhth/mult
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = mult
+	conflicts = mult
+	source_x86_64 = mult-x86_64-0.3.0.tar.gz::https://github.com/dhth/mult/releases/download/v0.3.0/mult_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cf2fd7e42ee748d2573c50781cf4f8334809f6d951589d2851dd09d987b3d3ac
+	source_i686 = mult-i686-0.3.0.tar.gz::https://github.com/dhth/mult/releases/download/v0.3.0/mult_0.3.0_linux_386.tar.gz
+	sha256sums_i686 = 39b205e5af8b023318ff42cddec9c82dd678d360389f5c2bc9f1f0bc577440cf
+	source_aarch64 = mult-aarch64-0.3.0.tar.gz::https://github.com/dhth/mult/releases/download/v0.3.0/mult_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f349c122fa7ae8dbfad973c18d15a4baa4fb05aee7f23490ff6ff8e3bb02ef2c
+
+pkgname = mult-bin
