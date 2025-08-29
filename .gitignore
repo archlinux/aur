@@ -4,3 +4,4 @@ src/
 *.pkg.tar.zst
 libfprint
 libfprint-CS9711/
+sigfm

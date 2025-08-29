@@ -6,7 +6,7 @@
 
 pkgname=libfprint-cs9711-git
 _pkgname=libfprint
-pkgver=1.94.9+19.r1830.20230914.936dbc1
+pkgver=1.94.9+28.r1839.20250829.152cc367
 pkgrel=1
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
@@ -32,17 +32,19 @@ makedepends=(
   systemd
   opencv
   cmake
+  doctest
 )
 checkdepends=(
   cairo
   umockdev
   doctest
 )
-provides=(libfprint libfprint-2.so libfprint-cs9711)
+provides=("libfprint=${pkgver}" "libfprint-2.so" "libfprint-cs9711")
 replaces=("libfprint-cs9711<=1.94.8")
-conflicts=(libfprint)
+conflicts=("libfprint>=1.1")
 groups=(fprint)
-source=("git+https://gitlab.freedesktop.org/Tooniis/libfprint.git#branch=sigfm"
+source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git"
+        "sigfm::git+https://gitlab.freedesktop.org/Tooniis/libfprint#branch=sigfm"
         # Patches from https://github.com/ddlsmurf/libfprint-CS9711
         '0000-data_autosuspend.hwdb.patch'
         '0000-libfprint_drivers_cs9711_cs9711.c.patch'
@@ -51,6 +53,7 @@ source=("git+https://gitlab.freedesktop.org/Tooniis/libfprint.git#branch=sigfm"
         '0000-meson.build.patch'
 )
 b2sums=('SKIP'
+        'SKIP'
         'e037a114b21c328c80012a296424612b0a656574995fbc293e7c3144fbdc5f7dd53a40b9eecf03e3406eaac1620c3bdf8c291e6a932f776b138c593fe7dff2b2'
         '5b8029de09ca58ec78b3bf2e987f92fbc0694c77c476113032fca133f322f05de7f30f59ac561c1bf11666de191c14f073502ba58978d4112fa524b619692f6a'
         '47bf846159a5dfc2eb8823ccede211ffde0efbf04b4020da7c9d9275ae6e13e0e70762117ef742a38bebb5bf2db5dc8fceecba31a4d1c58effea8b984c3ceb52'
@@ -76,7 +79,10 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  git reset --hard && git clean -fdd
+  git reset --hard origin/master && git clean -fdd
+  git config remote.sigfm.url >&- || git remote add sigfm $srcdir/sigfm
+  git fetch sigfm makepkg
+  git merge sigfm/makepkg --no-edit
   sed -i 's|import shutil|import shutil\n    import traceback|g' tests/virtual-image.py
   for patch in $srcdir/*.patch; do
     git apply $patch
