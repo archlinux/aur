@@ -1,6 +1,6 @@
 pkgbase = libgpg-stream
 	pkgdesc = GNU-Standard GPG Streaming Library for secure multicast communication
-	pkgver = 1.1.7
+	pkgver = 1.1.9
 	pkgrel = 2
 	url = https://github.com/theesfeld/libgpg-stream
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = libgpg-stream
 	depends = gpgme
 	depends = glibc
 	optdepends = gnupg: for GPG key management
-	provides = libgpg-stream=1.1.7
-	source = https://github.com/theesfeld/libgpg-stream/releases/download/v1.1.7/libgpg-stream-1.1.7.tar.gz
-	sha256sums = 557dc8b7d06da564dba04ffc745437c0f4625a9737fdba17dec0f004acce8371
+	provides = libgpg-stream=1.1.9
+	source = https://github.com/theesfeld/libgpg-stream/releases/download/v1.1.9/libgpg-stream-1.1.9.tar.gz
+	sha256sums = 3a8a4041b4b40d4e19696331d1b3123951e6238a8c63ec84087b32109770ea93
 
 pkgname = libgpg-stream
