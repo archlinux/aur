@@ -7,7 +7,7 @@ pkgbase = tunein-cli-bin
         license = MIT
         depends = alsa-lib
         depends = dbus
-        source = https://github.com/tsirysndr/tunein-cli/releases/download/v0.4.0/tunein_v0.4.0_x86_64-unknown-linux-gnu.tar.gz
-        sha256sums = a4945f497bd35da41a8442a40358f7bab548712667e1703ad68e719b0d6b5df6
+        source = https://github.com/tsirysndr/tunein-cli/releases/download/v0.4.1/tunein_v0.4.1_x86_64-unknown-linux-gnu.tar.gz
+        sha256sums = 3d7a1cd0c975a8bb94b8e5ff308bf8ae3220b2c359a0dd57e34119a262ed2d0d
 
 pkgname = tunein-cli-bin
