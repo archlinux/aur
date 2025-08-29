@@ -1,6 +1,6 @@
 pkgbase = mkeditor-git
 	pkgdesc = The simple markdown editor.(Use system-wide electron)
-	pkgver = 3.4.0.r2.g90bd455
+	pkgver = 3.5.1.r0.gfaf524a
 	pkgrel = 1
 	url = https://versyxdigital.github.io/mkeditor
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mkeditor-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron37
-	provides = mkeditor=3.4.0
+	provides = mkeditor=3.5.1
 	conflicts = mkeditor
 	source = mkeditor.git::git+https://github.com/versyxdigital/mkeditor.git
 	source = mkeditor.sh
