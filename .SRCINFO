@@ -1,6 +1,6 @@
 pkgbase = puppeteer
 	pkgdesc = JavaScript API for Chrome and Firefox
-	pkgver = 24.17.0
+	pkgver = 24.17.1
 	pkgrel = 1
 	url = https://pptr.dev
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = puppeteer
 	makedepends = npm
 	depends = nodejs
 	noextract = .tgz
-	source = https://registry.npmjs.org/puppeteer/-/puppeteer-24.17.0.tgz
-	source = https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-24.17.0.tgz
-	sha256sums = b0805af14355d388fdd0ede45b49d56bd1f72772b139c5ead4aa4256c23558c7
-	sha256sums = 9de947d567bdd2f690d158d50401906b54d74dabf60503742a3c7912ccdccfd9
+	source = https://registry.npmjs.org/puppeteer/-/puppeteer-24.17.1.tgz
+	source = https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-24.17.1.tgz
+	sha256sums = a24c67ff5f126d1093aa4dead94f05ea08d5624b0ab424cf77e6fcd0b77825e2
+	sha256sums = 4a9e76d6b94920eb97b2f39c9428a05e0a1176603e9a41a20c7ee4f260b03b90
 
 pkgname = puppeteer
 	depends = nodejs
-	depends = puppeteer-core=24.17.0
+	depends = puppeteer-core=24.17.1
 
 pkgname = puppeteer-core
 	optdepends = chromium: for use with Chrome
