@@ -1,0 +1,15 @@
+pkgbase = bmm-bin
+	pkgdesc = Get to your bookmarks in a flash
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dhth/bmm
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = bmm
+	conflicts = bmm
+	source_x86_64 = bmm-x86_64-0.3.0.tar.gz::https://github.com/dhth/bmm/releases/download/v0.3.0/bmm-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ba78c154e0f69042f206389570a310b3f3eb713d3072e4298334ec5fcb6bd654
+
+pkgname = bmm-bin
