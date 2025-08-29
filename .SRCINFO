@@ -1,6 +1,6 @@
 pkgbase = komodo-periphery-bin
 	pkgdesc = Periphery server for the komodo monitor
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 3
 	epoch = 0
 	url = https://komo.do/
@@ -12,7 +12,7 @@ pkgbase = komodo-periphery-bin
 	provides = komodo-periphery
 	conflicts = komodo-periphery
 	backup = etc/komodo-periphery.toml
-	source = periphery::https://github.com/moghtech/komodo/releases/download/v1.19.0/periphery-x86_64
+	source = periphery::https://github.com/moghtech/komodo/releases/download/v1.19.1/periphery-x86_64
 	source = komodo-peripheryd.service
 	source = komodo-peripheryd.sysusers
 	source = komodo-peripheryd.tmpfiles
