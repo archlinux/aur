@@ -1,7 +1,7 @@
 # Maintainer: yifwon <wyf9661 [at] gmail.com>
 pkgname=('wps-office-bin')
-pkgver=12.1.2.22570
-pkgrel=2
+pkgver=12.1.2.22571
+pkgrel=1
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
@@ -26,7 +26,7 @@ provides=(${pkgname%-bin})
 options=(!strip !zipman !debug)
 
 source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::${_srcurl}/${pkgver}/amd64")
-sha1sums_x86_64=('2c96e17f862e033662ce598ad0b9472fcb4f68cc')
+sha1sums_x86_64=('ded0a7ba0f6c419b4ae10388cf12b816b3fb0e8f')
 
 package(){
   xz -df data.tar.xz
