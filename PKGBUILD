@@ -1,7 +1,7 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 pkgname=monika-after-story
 pkgver=0.12.17
-pkgrel=5
+pkgrel=6
 pkgdesc="A mod for the free game Doki Doki Literature Club from Team Salvato, which builds on Act 3 to create a simulator of your eternal life with Monika."
 arch=(
     'i686'
@@ -19,8 +19,8 @@ source=(
 )
 sha256sums=(
     'd1d5f4dbc409f921c1f3b48e1c422da7ebf032916699517e0dd213127e2c4328'
-    'd35ab44d0c7770632e3f8b18853e110cdad96db70f7195868ee176c345b9f873'
-    '8be9bb90c771c0014d81252222097a81207d1a4e199c5acc04ecc9ed32d4375d'
+    '7eec1459c47de1b8519cff53688995be7a582f18fdf8ce4fb88da60c9ad87b11'
+    '1aea7f22a69c0ff9a37665078d9848ff39b455ce1cac336254d7b72c10cfbdeb'
     'a8416c26f4ee7e6afe18b6c6641bb2e4978b41731ef06712ab5066fdffd0d3ab'
     '550bf597271b3b6a3774018968d8f2ed8620e6a33c584ddcadab8e8f75f95d15'
     '723c98ca0bc0f022a444c7a7cb225989ad2b2fbe364ead02c5b1c29d31a7abd4'
