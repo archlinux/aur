@@ -3,7 +3,7 @@
 _pkgauthor=allocata
 _pkgname=sip
 pkgname=${_pkgname}-bin
-pkgver=1.0.0
+pkgver=1.0.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Alternative to git clone for selective GitHub downloads"
@@ -18,9 +18,9 @@ depends=('glibc' 'gcc-libs')
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
-sha256sums=('e92854e34dd352e5735d751251b0695b7235e7d1bc0e2deafd0ef39640dbac4c'
-            '6290bef5c857d7d9183b9a67240eade48f5a8854db0037c737686608b43c3c29')
-sha256sums_x86_64=('a30f3c794d7585b5b50a1fa29fbb32b23bac11c9b3657564bddd369cabbbf5d9')
+sha256sums=('f2e7a98a3a69d6b1505b940be558b2d76c614d86d7c51c9a8486943728695c6f'
+            '71c0b4fdd7d42bc47beb55eeb1e4ecc4f82fca8e2c054beebe83cef5dc376d3a')
+sha256sums_x86_64=('db84ace5862c10c12613650dce40c749a591b2d40e85a74ce5c635bce7c84da8')
 
 
 package() {
