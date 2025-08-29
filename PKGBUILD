@@ -1,6 +1,6 @@
 # Maintainer: Jørgen Stråbø <aur@jorgen-10.no>
 pkgname='freeshow-git'
-pkgver='1.4.8'
+pkgver='1.4.9.r0.g6622de2'
 pkgrel='1'
 pkgdesc="A software with a friendly interface and powerful features for making slideshows"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 makedepends=('npm' 'fakeroot' 'git' 'python')
 source=("$pkgname::git+https://github.com/ChurchApps/FreeShow.git" "freeshow.desktop" "freeshow")
-sha256sums=('SKIP' '5f141e1d28ec7b2ddfed43855a7d3cceca6b710887fbecc0fbfea1e56f9f05f5' '254019aa21f63a16d25ea2ea87644d6395eaeabe9fc3604b604326483db35f56' )
+sha256sums=('SKIP' '5f141e1d28ec7b2ddfed43855a7d3cceca6b710887fbecc0fbfea1e56f9f05f5' '622f64c95c31f467fc7fcd63c13f1afe149506a14c9a9a810a52b758a9f04968' )
 
 pkgver() {
   cd "$pkgname"
