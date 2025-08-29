@@ -1,5 +1,5 @@
 pkgname=crosscode
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Cross platform iOS IDE"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/CrossCode_${pkgver}_amd64.deb")
-sha256sums_x86_64=('913d5662dd581e7b2aedf06c3267039ca85c45677ae71aa64695c93b3e152102')
 package() {
   tar -xvf data.tar.gz -C "${pkgdir}"
 }
+sha256sums_x86_64=('50b53d10601b3f0f134b407a1016bc499cb680c48ae2cadab19919b663abf5f4')
