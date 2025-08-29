@@ -1,32 +1,21 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=wol-rs
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Wake up remote hosts with Wake On LAN magic packets'
 arch=('i686' 'x86_64')
-url="https://github.com/swsnr/wol.rs"
+url="https://codeberg.org/swsnr/wol.rs"
 license=('MPL-2.0')
 depends=()
 conflicts=('wol')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'git')
 options=()
-source=(
-    "${url}/releases/download/v${pkgver}/wol-v${pkgver}.tar.zst"
-    "${url}/releases/download/v${pkgver}/wol-v${pkgver}-vendor.tar.zst"
-    "config.toml"
-)
-sha256sums=('51ad6c48630012f085530de8a567e1d9ee48042d12ff30ff693c5f2dca8a2781'
-            '5c1907068d552ba8116852e74f4651af3abc79da2663a0a5d62275d60c39d2da'
-            '8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881')
-
-prepare() {
-    cd "wol-v${pkgver}" || return 1
-    install -D -m644 "${srcdir}/config.toml" .cargo/config.toml
-}
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('f7c35b0b440a08660a98f5459bcabb2c254b29c401a18a1ed2b88a8c69ab5a5d')
 
 build() {
-    cd "wol-v${pkgver}" || return 1
+    cd "wol.rs" || return 1
 
     # Dump completions and manpage
     cargo build --release --frozen --features cli,manpage,completions
@@ -43,7 +32,7 @@ build() {
  }
 
 package() {
-    cd "wol-v${pkgver}" || return 1
+    cd "wol.rs" || return 1
     install -Dm755 "target/release/wol" "${pkgdir}/usr/bin/wol"
 
     gzip -n wol.1
