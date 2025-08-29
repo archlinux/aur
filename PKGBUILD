@@ -12,12 +12,22 @@ optdepends=(
     'google-chrome: Alternative browser for calendar integration'
     'chromium: Alternative browser for calendar integration'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/HellasDev/GoDash/releases/download/v${pkgver}-bin/godash-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('26f62ac0967d201ce3c317709a5c86937be0901b3ff3ffae4fb93d25c81bce53')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/HellasDev/GoDash/releases/download/v${pkgver}-bin/godash-v${pkgver}-linux-amd64.tar.gz"
+        "godash.desktop::https://raw.githubusercontent.com/HellasDev/GoDash/main/godash.desktop"
+        "logo.png::https://raw.githubusercontent.com/HellasDev/GoDash/main/logo.png")
+sha256sums=('26f62ac0967d201ce3c317709a5c86937be0901b3ff3ffae4fb93d25c81bce53'
+            'SKIP'
+            'SKIP')
 
 package() {
     # Install binary
     install -Dm755 godash-linux-amd64 "${pkgdir}/usr/bin/godash"
+    
+    # Install desktop file
+    install -Dm644 godash.desktop "${pkgdir}/usr/share/applications/godash.desktop"
+    
+    # Install icon
+    install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/godash.png"
     
     # Create documentation directory
     mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
