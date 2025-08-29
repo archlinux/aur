@@ -4,7 +4,7 @@
 _pkgname=kime
 pkgname=kime-bin
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 # official binary have kime-window
@@ -32,6 +32,8 @@ sha256sums=('d401170d822b5d5ebae683a2651273f2b73cdd2f75c8ff3b6c747a846f02961b'
  
 build() {
     cd "${_pkgname}-${pkgver}"
+    export RUSTFLAGS="-L ${srcdir}/${pkgname}-${pkgver}/target/release ${RUSTFLAGS}"
+    # https://github.com/Riey/kime/issues/701#issuecomment-2944494908
     rm -rf build || true
     mkdir -pv build/out target/release
     cp ../kime_engine.h* ./src/engine/cffi
