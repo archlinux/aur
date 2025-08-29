@@ -20,5 +20,5 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 obsidian-control.py "$pkgdir/usr/bin/obsidian-control"
-  install -Dm755 obsidian-control.desktop "$pkgdir/usr/share/applications/obsidian-wizard.desktop"
+  install -Dm755 obsidian-control.desktop "$pkgdir/usr/share/applications/obsidian-control.desktop"
 }
