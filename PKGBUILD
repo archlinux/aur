@@ -4,31 +4,31 @@ pkgname=python-pyproject-parser
 pkgver=0.13.0
 pkgrel=1
 pkgdesc='Parser for pyproject.toml'
-arch=('any')
+arch=(any)
 url='https://github.com/repo-helper/pyproject-parser'
-license=('MIT')
+license=(MIT)
 depends=(
-  'python'
-  'python-apeye-core'
-  'python-attrs'
-  'python-dom-toml'
-  'python-domdf-python-tools'
-  'python-natsort'
-  'python-packaging'
-  'python-shippinglabel'
-  'python-toml'
-  'python-typing_extensions'
+  python
+  python-apeye-core
+  python-attrs
+  python-dom-toml
+  python-domdf-python-tools
+  python-natsort
+  python-packaging
+  python-shippinglabel
+  python-toml
+  python-typing_extensions
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-hatchling'
-  'python-hatch-requirements-txt'
-  'python-setuptools'
-  'python-wheel'
+  git
+  python-build
+  python-installer
+  python-hatchling
+  python-hatch-requirements-txt
+  python-setuptools
+  python-wheel
 )
-#checkdepends=('')
+#checkdepends=()
 # cli optdepends: click, consolekit & sdjson
 optdepends=(
   'python-readme-renderer: render markdown'
