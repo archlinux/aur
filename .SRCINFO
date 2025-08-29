@@ -1,6 +1,6 @@
 pkgbase = spectrwm
 	pkgdesc = A small, dynamic tiling and reparenting window manager for X11
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/conformal/spectrwm
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = spectrwm
 	depends = xcb-util-wm
 	replaces = scrotwm
 	backup = etc/spectrwm.conf
-	source = spectrwm-3.6.0.tar.gz::https://github.com/conformal/spectrwm/archive/refs/tags/SPECTRWM_3_6_0.tar.gz
-	sha256sums = 49854c5215475d2450d2558da12a3afe9019861170ba9d556c8b403d4d66f0d1
+	source = spectrwm-3.7.0.tar.gz::https://github.com/conformal/spectrwm/archive/refs/tags/SPECTRWM_3_7_0.tar.gz
+	sha256sums = 9541ceb713dd186755643a85b03e9ebe98b9703b00025d229ee92a6ba910c805
 
 pkgname = spectrwm

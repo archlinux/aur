@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=spectrwm
-pkgver=3.6.0
+pkgver=3.7.0
 _pkgver="${pkgname^^}_${pkgver//./_}"
 pkgrel=1
 pkgdesc='A small, dynamic tiling and reparenting window manager for X11'
@@ -15,7 +15,7 @@ makedepends=('libxt')
 replaces=('scrotwm')
 backup=(etc/spectrwm.conf)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('49854c5215475d2450d2558da12a3afe9019861170ba9d556c8b403d4d66f0d1')
+sha256sums=('9541ceb713dd186755643a85b03e9ebe98b9703b00025d229ee92a6ba910c805')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
