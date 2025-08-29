@@ -7,7 +7,6 @@ pkgdesc='Pixiv batch downloader and local collection viewer'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/fekoneko/piximan'
 license=('GPL-3.0-only')
-makedepends=('go')
 conflicts=('piximan')
 provides=('piximan')
 

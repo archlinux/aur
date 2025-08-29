@@ -7,7 +7,6 @@ pkgbase = piximan-bin
 	arch = i686
 	arch = aarch64
 	license = GPL-3.0-only
-	makedepends = go
 	provides = piximan
 	conflicts = piximan
 	source_x86_64 = piximan-bin-0.11.2.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.2/piximan_v0.11.2_linux_amd64.tar.gz
