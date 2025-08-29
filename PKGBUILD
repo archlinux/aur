@@ -3,7 +3,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-qsi
-pkgver=2.1.4
+pkgver=2.1.5.1
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for QSI cameras"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -11,14 +11,12 @@ license=(LGPL2.1)
 arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libqsi=${pkgver})
 makedepends=(cmake libqsi=${pkgver})
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "fix_cmake.patch")
-sha256sums=("e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080" "8bd2d012125f56071cb41137bf1039fad03e4e44396d059413631a0b8e478771")
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
+sha256sums=("9a85e6cf928dd095f019adf1919c79f9a3ac55294bedb8c9f65cc8bf3f9152d8")
 
 prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
-  sed -i -e '/option(WITH_.*On)$/s/ On)$/ Off)/' CMakeLists.txt
-  patch -Np1 < ${srcdir}/fix_cmake.patch
 }
 
 build() {
@@ -28,8 +26,7 @@ build() {
     -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DFIRMWARE_INSTALL_DIR=/usr \
-    -DWITH_QSI=On \
-    ../indi-3rdparty-${pkgver}
+    ../indi-3rdparty-${pkgver}/indi-qsi/
   make
 }
 
