@@ -1,6 +1,6 @@
 pkgbase = zen-browser
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	pkgver = 1.15b
+	pkgver = 1.15.1b
 	pkgrel = 1
 	url = https://zen-browser.app/
 	arch = x86_64
@@ -61,20 +61,20 @@ pkgbase = zen-browser
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-142.0.source.tar.xz
+	noextract = firefox-142.0.1.source.tar.xz
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !debug
-	source = git+https://github.com/zen-browser/desktop.git#tag=1.15b
-	source = https://archive.mozilla.org/pub/firefox/releases/142.0/source/firefox-142.0.source.tar.xz
+	source = git+https://github.com/zen-browser/desktop.git#tag=1.15.1b
+	source = https://archive.mozilla.org/pub/firefox/releases/142.0.1/source/firefox-142.0.1.source.tar.xz
 	source = firefox-l10n::git+https://github.com/mozilla-l10n/firefox-l10n
 	source = zen-browser.desktop
 	source = 0003-do-not-disable-system-extensions.zen.patch
 	source = 0004-fix-package-json.zen.patch
 	source = 0005-source-firefox-language-packs.patch
-	sha256sums = 85565bdb094994e9647e5fe925d73cb0a0ff196a1f55a27bacc17373c2354cfe
-	sha256sums = 2808e1f10f3b6c593f96f3745a55d12c98107886daef00f1e354c24203a64b0f
+	sha256sums = f6ddcd8f86fd57e086a9bff76436f847702df715faccca0de824eef982ec1511
+	sha256sums = b0adb44ed4c3383e752a5947adbfb0d03f24172cb468831bd49978de25e810c0
 	sha256sums = SKIP
 	sha256sums = 523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9
 	sha256sums = 36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a
@@ -82,22 +82,22 @@ pkgbase = zen-browser
 	sha256sums = 7702c197f5509e4ec7e744f74105cc8339b631e37f7a0b41bf3070bf3ccc92a7
 
 pkgname = zen-browser
-	provides = zen-browser=1.15b
+	provides = zen-browser=1.15.1b
 
 pkgname = zen-browser-i18n-zh-cn
 	pkgdesc = Language pack for Zen Browser (zh-CN)
 	arch = any
-	depends = zen-browser>=1.15b
+	depends = zen-browser>=1.15.1b
 	optdepends = 
 
 pkgname = zen-browser-i18n-zh-tw
 	pkgdesc = Language pack for Zen Browser (zh-TW)
 	arch = any
-	depends = zen-browser>=1.15b
+	depends = zen-browser>=1.15.1b
 	optdepends = 
 
 pkgname = zen-browser-i18n-ja
 	pkgdesc = Language pack for Zen Browser (ja)
 	arch = any
-	depends = zen-browser>=1.15b
+	depends = zen-browser>=1.15.1b
 	optdepends = 
