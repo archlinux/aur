@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=qsv
 pkgname=qsv-bin
-pkgver=6.0.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '215a1bd3fd3d1bca8acdc6d9e9a0ac68d32093153847c7d486d06d8910e8daf7'
             '360b157e3b3fc9b27156c69bc2885bd52c4d21539213cd72052fd5254eec8761'
             '3e9655bdf946b412518fcfe6b628ab2a0c041c918b7302405ceb08a02779425c')
-sha256sums_x86_64=('a3125053663fe3c5210cbfb5ae5aea265371e0f98b1e3651ae96a69ccdb95064')
+sha256sums_x86_64=('778486ec89a317209a743d5a4ab221ca565f4ffe921bfdc409e224fb12346f74')
 
 package() {
     install -Dm755 "qsvpy313" "$pkgdir/usr/bin/qsv"
