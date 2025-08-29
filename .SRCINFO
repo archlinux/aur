@@ -1,0 +1,16 @@
+pkgbase = dfft-bin
+	pkgdesc = Monitor changes as AI agents modify your codebase
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dhth/dfft
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
+	provides = dfft
+	conflicts = dfft
+	source_x86_64 = dfft-x86_64-0.1.1.tar.gz::https://github.com/dhth/dfft/releases/download/v0.1.1/dfft-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 87c278b234d2d0a3db6e6d122d2a1f1b36197073d80ab55e460458dd114823f6
+
+pkgname = dfft-bin
