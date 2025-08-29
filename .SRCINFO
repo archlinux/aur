@@ -1,7 +1,7 @@
 pkgbase = oshd
 	pkgdesc = Odd Static Hosts Daemon
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TheOddCell/oshd
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = oshd
 	depends = systemd
 	source = oshctl.py
 	source = oshd-clean.service
+	sha256sums = SKIP,
 	sha256sums = SKIP
 
 pkgname = oshd
