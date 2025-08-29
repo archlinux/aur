@@ -5,9 +5,9 @@
 pkgname=hyperrogue
 # vercmp does not support upstream's versioning, so we prepend letters with '.'
 # example upstream vercmp(v13.1 > v13.1a) vercmp(v13.1 < v13.1.a)
-pkgver=13.1.b
+pkgver=13.1.d
 _pkgver=$(sed 's/\.\([a-zA-Z]\)/\1/' <<<"$pkgver")
-pkgrel=2
+pkgrel=1
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world"
 arch=('i686' 'x86_64')
 url="http://www.roguetemple.com/z/hyper.php"
@@ -29,7 +29,7 @@ depends=(
   'gcc-libs')
 makedepends=('glu')
 source=("hyperrogue-$_pkgver.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('f9f8f1750a4f6b7de0b89367bcfbafd632f7f855be9d2b1869d610efb14c31e7')
+sha256sums=('94ecffb39e5a986413c94e19e0d9e45c75941655a6242e15211685e76ee88d9e')
 
 build() {
   cd "$srcdir/$pkgname-${_pkgver}"

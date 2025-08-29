@@ -1,7 +1,7 @@
 pkgbase = hyperrogue
 	pkgdesc = You are a lone outsider in a strange, non-Euclidean hyperbolic world
-	pkgver = 13.1.b
-	pkgrel = 2
+	pkgver = 13.1.d
+	pkgrel = 1
 	url = http://www.roguetemple.com/z/hyper.php
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = hyperrogue
 	depends = gcc-libs
 	options = !strip
 	options = !debug
-	source = hyperrogue-13.1b.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v13.1b.tar.gz
-	sha256sums = f9f8f1750a4f6b7de0b89367bcfbafd632f7f855be9d2b1869d610efb14c31e7
+	source = hyperrogue-13.1d.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v13.1d.tar.gz
+	sha256sums = 94ecffb39e5a986413c94e19e0d9e45c75941655a6242e15211685e76ee88d9e
 
 pkgname = hyperrogue
