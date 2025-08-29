@@ -4,14 +4,14 @@
 _pkgname=xfce4-windowck-plugin
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.4.5+156+g448ce38
+pkgver=0.6.1+82+g28afc52
 pkgrel=1
 pkgdesc="Xfce panel plugin for displaying window title and buttons"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('xfce4-panel' 'libwnck3')
-makedepends=('intltool' 'xfce4-dev-tools' 'python' 'git')
+makedepends=('xfce4-dev-tools' 'python' 'git' 'meson')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 options=('!libtool')
@@ -19,19 +19,18 @@ source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}-::;s:^v::;s/-/+/g"
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  local meson_options=(
+  )
 
-  ./autogen.sh \
-    --prefix=/usr
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }

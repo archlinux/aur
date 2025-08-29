@@ -1,6 +1,6 @@
 pkgbase = xfce4-windowck-plugin-git
 	pkgdesc = Xfce panel plugin for displaying window title and buttons
-	pkgver = 0.4.5+156+g448ce38
+	pkgver = 0.6.1+82+g28afc52
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/
@@ -8,14 +8,14 @@ pkgbase = xfce4-windowck-plugin-git
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
-	makedepends = intltool
+	license = GPL-3.0-or-later
 	makedepends = xfce4-dev-tools
 	makedepends = python
 	makedepends = git
+	makedepends = meson
 	depends = xfce4-panel
 	depends = libwnck3
-	provides = xfce4-windowck-plugin=0.4.5
+	provides = xfce4-windowck-plugin=0.6.1
 	conflicts = xfce4-windowck-plugin
 	options = !libtool
 	source = xfce4-windowck-plugin::git+https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/
