@@ -1,6 +1,6 @@
 pkgbase = morghulis-git
 	pkgdesc = Wayland GTK4 Desktop Shell (Development Version)
-	pkgver = v0.11.2.r0.g45a0f9f
+	pkgver = v0.12.0.r11.g731991c
 	pkgrel = 1
 	url = https://github.com/ARKye03/morghulis
 	install = morghulis.install
@@ -17,8 +17,6 @@ pkgbase = morghulis-git
 	depends = glib2
 	depends = libnm
 	depends = libadwaita
-	depends = libastal-io-git
-	depends = libastal-4-git
 	depends = libastal-mpris-git
 	depends = libastal-notifd-git
 	depends = libastal-network-git

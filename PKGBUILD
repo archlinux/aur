@@ -1,7 +1,7 @@
 # Maintainer: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=morghulis-git
-pkgver=v0.11.2.r0.g45a0f9f
+pkgver=v0.12.0.r11.g731991c
 pkgrel=1
 pkgdesc="Wayland GTK4 Desktop Shell (Development Version)"
 arch=(x86_64)
@@ -13,8 +13,6 @@ depends=(
 	glib2
 	libnm
 	libadwaita
-	libastal-io-git
-	libastal-4-git
 	libastal-mpris-git
 	libastal-notifd-git
 	libastal-network-git

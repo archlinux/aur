@@ -1,8 +1,19 @@
 post_install() {
-    echo "Updating icon cache and desktop database..."
-    glib-compile-schemas /usr/share/glib-2.0/schemas
-    gtk4-update-icon-cache -q -t -f /usr/share/icons/hicolor
-    update-desktop-database -q /usr/share/applications
+    echo -e "\033[1;31m"
+    echo "╔══════════════════════════════════════════════════════════════╗"
+    echo "║                        IMPORTANT NOTICE                      ║"
+    echo "║                                                              ║"
+    echo "║  Your user must belong to the 'video' group to access        ║"
+    echo "║  the Backlight service!                                      ║"
+    echo "║                                                              ║"
+    echo "║  Run: sudo usermod -a -G video \$USER                        ║"
+    echo "║  Then logout and login again.                                ║"
+    echo "╚══════════════════════════════════════════════════════════════╝"
+    echo -e "\033[0m"
+    
+    echo "Reloading udev rules for morghulis..."
+    udevadm control --reload-rules
+    udevadm trigger
 }
 
 post_upgrade() {
@@ -10,7 +21,7 @@ post_upgrade() {
 }
 
 post_remove() {
-    glib-compile-schemas /usr/share/glib-2.0/schemas
-    gtk4-update-icon-cache -q -t -f /usr/share/icons/hicolor
-    update-desktop-database -q /usr/share/applications
+    echo "Reloading udev rules..."
+    udevadm control --reload-rules
+    udevadm trigger
 }
