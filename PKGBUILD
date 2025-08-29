@@ -3,7 +3,7 @@ pkgname=aniparser-bin
 _pkgname=AniParser
 pkgver=0.3.2
 _electronversion=35
-pkgrel=1
+pkgrel=2
 pkgdesc="AniParser Electron application.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Sinedka/aniparser"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sinedka/aniparser/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5ca9a0ae67861436497fb4eff189d38be8db906b78250f363b57fd734eeb1554'
+sha256sums=('a1c5f7084dc4f711e881c2baeeb1d4cfb1470515055f348bbef2720a282f5ab6'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
