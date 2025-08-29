@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jan-bin
 _pkgname=Jan
-pkgver=0.6.8
-pkgrel=2
+pkgver=0.6.9
+pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version)"
 arch=('x86_64')
 url="https://jan.ai/"
@@ -25,7 +25,7 @@ options=(
     '!emptydirs'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('e798c2757ee4efbdf9e4663084e28721f3aa97d11066d02d4dd3803dc62d2313')
+sha256sums=('4673e65132ac0604219ec199d7d0e38bac629d53ace6d0b3b95872afa4ee36b8')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
