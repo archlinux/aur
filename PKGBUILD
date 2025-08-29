@@ -2,7 +2,7 @@
 
 pkgname=python-dicttools
 _name=${pkgname//-/_}
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 epoch=
 pkgdesc="Python dictionary tools."
@@ -26,7 +26,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cbfa643a2337906f2c730e24d48547799cc3994c2049d110bd4389859538ee32')
+sha256sums=('761442421bc626abab3e4b3d0aa8c206f2488d3c4b75db271e1147b4cded5ae0')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
