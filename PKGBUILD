@@ -3,8 +3,8 @@
 
 pkgname=bottles
 _pkgname=Bottles
-pkgver=51.21
-pkgrel=3
+pkgver=51.24
+pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=(any)
@@ -58,16 +58,13 @@ source=(
   disable-flatpak-check.patch
 )
 sha256sums=(
-  3a5653464839d5dbe36d44eabb823d422421897325f3c7944cddc9475575869d
+  15aafb191fb51e0565959e69836089031dee2d660f5447c7bd9a65f672b58fa5 
   012f00b6678ff20bb0a43c592c8f6b6af0d315053bf0473aa3f3b56c74845b73
 )
 
 prepare() {
-  patch --forward --directory="${srcdir}/${_pkgname}-${pkgver}" --strip=1 --input="${srcdir}/disable-flatpak-check.patch"
-  # cd "${srcdir}/${_pkgname}-${pkgver}"
-  
   # Fix warning about flatpak and sandbox environment
-  # patch -Np0 -i ../disable-flatpak-check.patch
+  patch --forward --directory="${srcdir}/${_pkgname}-${pkgver}" --strip=1 --input="${srcdir}/disable-flatpak-check.patch"
 }
 
 build() {
