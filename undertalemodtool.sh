@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set Wine prefix to custom location, for better compatability
-export WINEPREFIX="$HOME/.local/share/undertalemodtool"
+export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/undertalemodtool"
 
 # Make directory for Wine prefix if doesn't exist
 if [ ! -d "$WINEPREFIX" ]; then
