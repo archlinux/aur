@@ -1,7 +1,7 @@
 # Maintainer: Stikkot
 pkgname=app-opener
-pkgver=v1
-pkgrel=6
+pkgver=1.1
+pkgrel=1
 pkgdesc="Complex for open applications and start scripts..."
 arch=('any')
 url="https://github.com/stikundra-murtsi/app-opener"
@@ -17,7 +17,7 @@ source=(
 	"LICENSE"
 	"README.md"
 )
-sha256sums=('09001345dba196c8308c9ba16aa20b53b11f74735f4d8122433168170b8b1cea'
+sha256sums=('3c88c60976be48f6ca0e81661421bd5abb9a18f428c9a82541f52e6ccec427b1'
             'd417dce80618596ded1a24e0bd50f280d16bab608c6d488ced2767cdd7ccf1d0'
             'b688cb2088e9cd2f2c47b27774c1f3df614943ab3fb7ab3443a6998d5ce122aa'
             '405eabcaef114fae58b843f51690249bb3679cdf113e165421e59d36b8d4f37f'

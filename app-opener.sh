@@ -6,6 +6,7 @@ app="$2" # Приложение
 error="For a hint use command - help..." # Ошибка
 p="$(dirname $(realpath $0))/"
 config="$HOME/.config/app-opener/app-opener.conf"
+version="1.1"
 
 if [[ -f $config ]]; then
 	while IFS='=' read -r key value; do
@@ -79,6 +80,9 @@ case $com in
 		;;
 	path)
 		echo -e "Path to the root catalog app-opener: \e[32m$p\e[0m"
+		;;
+	version)
+		echo "app-opener - $version"
 		;;
 	# Ошибка
 	*)
