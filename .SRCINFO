@@ -1,32 +1,32 @@
 pkgbase = xfce4-panel-git
-	pkgdesc = Panel for the Xfce desktop environment - git checkout
-	pkgver = 4.19.4+89+g5551d10e
+	pkgdesc = Panel for the Xfce desktop environment (git checkout)
+	pkgver = 4.21.0+173+g4cbfe6ac
 	pkgrel = 1
-	url = http://docs.xfce.org/xfce/xfce4-panel/start
+	url = https://docs.xfce.org/xfce/xfce4-panel/start
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	groups = xfce4-git
 	license = GPL2
-	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = git
 	makedepends = xfce4-dev-tools
 	makedepends = gobject-introspection
 	makedepends = vala
 	makedepends = glib2-devel
-	depends = exo
+	makedepends = meson
+	makedepends = wayland
 	depends = garcon
-	depends = libxfce4ui>=4.15.1
-	depends = libwnck3
+	depends = libxfce4ui>=4.21.0
+	depends = libxfce4windowing
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = xfconf
-	depends = libxfce4util>=4.15.2
 	depends = libdbusmenu-gtk3
+	depends = gtk-layer-shell
 	optdepends = xfce4-panel-profiles
-	provides = xfce4-panel=4.19.4
+	provides = xfce4-panel=4.21.0
 	conflicts = xfce4-panel
 	conflicts = xfce4-statusnotifier-plugin
 	replaces = xfce4-statusnotifier-plugin
