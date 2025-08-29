@@ -1,6 +1,6 @@
 pkgbase = tunein-cli-bin
         pkgdesc = Browse and listen to thousands of radio stations across the globe right from your terminal 🌎 📻 🎵✨
-        pkgver = 0.4.0
+        pkgver = 0.4.1
         pkgrel = 1
         url = https://github.com/tsirysndr/tunein-cli
         arch = x86_64
