@@ -1,13 +1,13 @@
 pkgbase = motus-bin
 	pkgdesc = A dead simple password generator
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/oleiade/motus
 	arch = x86_64
 	license = AGPL-3.0-only
 	provides = motus
 	conflicts = motus
-	source = motus-bin-0.3.1.tar.gz::https://github.com/oleiade/motus/releases/download/v0.3.1/motus_0.3.1_linux_amd64.tar.gz
-	sha256sums = d01a40d440cf7f938af28f6e4fe87190e04cf4cf656b5405d22d26b814b800ea
+	source = motus-bin-0.4.0.tar.gz::https://github.com/oleiade/motus/releases/download/v0.4.0/motus_0.4.0_linux_amd64.tar.gz
+	sha256sums = 9c18be6b36f3a160329e6f6e0228f48fb4301c575dfee6ad26aacf99ea0c35dd
 
 pkgname = motus-bin
