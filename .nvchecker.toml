@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/repo-helper/pyproject-parser.git"
 prefix = "v"
+exclude_regex = ".*(pre|alpha|beta|b|rc).*"
