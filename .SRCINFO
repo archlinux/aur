@@ -1,0 +1,16 @@
+pkgbase = obsidian-control-git
+	pkgdesc = ObsidianOS Control Center
+	pkgver = r2.650ceea
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS/obsidian-control
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = obsidianctl-git
+	depends = pyside6
+	provides = obsidian-control
+	source = obsidian-control-git::git+https://github.com/Obsidian-OS/obsidian-control
+	sha256sums = SKIP
+
+pkgname = obsidian-control-git
