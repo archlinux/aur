@@ -1,6 +1,6 @@
 pkgbase = limine-booster
-	pkgdesc = Zero-config automation for Limine boot entries with Booster and mkinitcpio support, including AUR kernels
-	pkgver = 2.5.0
+	pkgdesc = Zero-config automation for Limine boot entries with Booster
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/abshka/limine-booster
 	arch = any
@@ -9,9 +9,8 @@ pkgbase = limine-booster
 	depends = limine
 	optdepends = intel-ucode: For automatic detection and inclusion of Intel microcode
 	optdepends = amd-ucode: For automatic detection and inclusion of AMD microcode
-	optdepends = mkinitcpio: For generating traditional initramfs images
 	optdepends = limine-snapper-sync: For BTRFS snapshot integration
-	source = https://github.com/abshka/limine-booster/archive/v2.5.0.tar.gz
-	sha256sums = f36224fbcae8e9833913fdf3c478a5991a7d482a708bdb452bee457bb033d966
+	source = https://github.com/abshka/limine-booster/archive/v2.6.0.tar.gz
+	sha256sums = 477293dcacbdb592c872fd7b38d3b6e7890e653f8a4237c9589302c1c9cd4a88
 
 pkgname = limine-booster
