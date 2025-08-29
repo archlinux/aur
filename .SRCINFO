@@ -1,6 +1,6 @@
 pkgbase = python-p115servedb
 	pkgdesc = 115 网盘基于 p115updatedb 导出数据库的挂载服务
-	pkgver = 0.0.6
+	pkgver = 0.0.6.1
 	pkgrel = 1
 	url = https://pypi.org/project/p115servedb
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = python-p115servedb
 	conflicts = python-p115servedb
 	options = !strip
 	options = !debug
-	source = p115servedb-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/p/p115servedb/p115servedb-0.0.6.tar.gz
-	sha256sums = e379e054e27d813224bdd832ca9fa9b91089567870296f8ef56d788f39e0f84f
+	source = p115servedb-0.0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/p/p115servedb/p115servedb-0.0.6.1.tar.gz
+	sha256sums = d113a9da15052ee745bd1dbad9c9a58a98d91bdd95166503a6439899331c16d9
 
 pkgname = python-p115servedb
