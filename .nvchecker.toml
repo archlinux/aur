@@ -1,0 +1,6 @@
+[davfs2]
+source = "git"
+git = "https://github.com/alisarctl/davfs2.git"
+prefix = "rel-"
+from_pattern = "-"
+to_pattern = "."
