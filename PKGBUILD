@@ -1,7 +1,7 @@
 # Maintainer: William Theesfeld <william@theesfeld.net>
 pkgname=libgpg-stream
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU-Standard GPG Streaming Library for secure multicast communication"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/theesfeld/libgpg-stream"
@@ -17,16 +17,21 @@ sha256sums=('557dc8b7d06da564dba04ffc745437c0f4625a9737fdba17dec0f004acce8371')
 build() {
     cd "$pkgname-$pkgver"
 
+    # Set proper build flags
+    export CFLAGS="${CFLAGS} -O2"
+    export CPPFLAGS="${CPPFLAGS} -O2"
+
     # Generate autotools build system
     ./autogen.sh
 
-    # Configure with standard GNU paths
+    # Configure with standard GNU paths and proper optimization
     ./configure \
         --prefix=/usr \
         --libdir=/usr/lib \
         --includedir=/usr/include \
         --enable-examples \
-        --disable-debug
+        --disable-debug \
+        --disable-dependency-tracking
 
     # Build library and examples
     make
@@ -42,6 +47,12 @@ package() {
 
     # Install library and headers
     make DESTDIR="$pkgdir" install
+
+    # Run libtool --finish to complete installation
+    libtool --finish "$pkgdir/usr/lib"
+
+    # Remove libtool archives (.la files) to prevent $srcdir references
+    find "$pkgdir" -name '*.la' -delete
 
     # Install examples to documentation directory
     install -Dm755 examples/example-sender "$pkgdir/usr/share/doc/$pkgname/examples/example-sender"

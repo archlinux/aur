@@ -1,7 +1,7 @@
 pkgbase = libgpg-stream
 	pkgdesc = GNU-Standard GPG Streaming Library for secure multicast communication
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theesfeld/libgpg-stream
 	arch = x86_64
 	arch = i686
