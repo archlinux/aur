@@ -1,7 +1,7 @@
 # Maintainer: Enrique <1enrique3@protonmail.com>
 
 pkgname=rokit-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Next-generation toolchain manager for Roblox projects."
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ url="https://github.com/rojo-rbx/rokit"
 license=('MIT')
 source_x86_64=("https://github.com/rojo-rbx/rokit/releases/download/v$pkgver/rokit-$pkgver-linux-x86_64.zip")
 source_aarch64=("https://github.com/rojo-rbx/rokit/releases/download/v$pkgver/rokit-$pkgver-linux-aarch64.zip")
-sha512sums_x86_64=('5818226302680b9b513f8576233a1ca4ab3759431f69678b4f3e97f5c24505ef2b6e380b89c5543a5827ef1d463e94eaede0021a782dbe7c7a6b54d1e08cfbb7')
-sha512sums_aarch64=('3940d5e72f47d3a07d44c7c2a0d2acbc5b11ae53d06c1cdfc38229c1750e92bbc945b89f5bb7a74ee253755b6d5beab6f67b9181c337bc24027518ca05498b7e')
+sha512sums_x86_64=('f56ef6c6273cee43b9df7ceef9ec1d9158150bcbd51396a3d526c7612a07a450c789538c470be27cdefc6762a7f8e66746154c08c0e34c5d5339e27e95139c39')
+sha512sums_aarch64=('e90497cfd46569749546c44db6bb0d0fc9adae6ab2407ce46426c7d8244bbcc323599fd33665f9001d9b691f0de16a754bc94c3868b20e1853ecf8f2796b7179')
 
 package() {
 	install -Dm755 rokit "$pkgdir/usr/bin/rokit"
