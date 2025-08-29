@@ -117,6 +117,7 @@ function helmrelease() {
   local sourceParameter
   local yaml
   local remoteKubeconfig
+  local remoteKubeconfigNamespace
   local REMOTE_KUBECONFIG
   if kubectl version &> /dev/null; then
     clusterConnected=true
@@ -196,8 +197,9 @@ function helmrelease() {
   remoteKubeconfig="$(<<< "$helmReleaseYaml" | yq -r '.spec.kubeConfig.secretRef.name // empty')"
   if [[ ! -z "$remoteKubeconfig" ]] && ( [[ "$subCommand" != template ]] || [[ "$clusterConnected" == true ]] ); then
     REMOTE_KUBECONFIG="$(mktemp)"
+    remoteKubeconfigNamespace="$(<<< "$helmReleaseYaml" | yq -r '.metadata.namespace')"
     trap "rm -f \"$REMOTE_KUBECONFIG\"" EXIT
-    kubectl --namespace=$namespace get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
+    kubectl ${remoteKubeconfigNamespace:+--namespace=$remoteKubeconfigNamespace} get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
   fi
   releaseName=$(_hr_getReleaseName "$helmReleaseYaml")
   case "$subCommand" in
