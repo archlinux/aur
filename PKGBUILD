@@ -11,10 +11,8 @@ url='https://github.com/pentix/qjournalctl'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'libssh' 'qt5-base')
 makedepends=('imagemagick')
-source=("https://github.com/pentix/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        'qjournalctl.appdata.xml')
-sha256sums=('8f456e599d5b54f8463e18e2880129393ba65a5e5dbdde19c893291f9ab92cb3'
-            '8f82dfee83ef1b4b66661f54ea7fbf781c2f971fdbb83bed0d1ef8777324efaa')
+source=("https://github.com/pentix/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('8f456e599d5b54f8463e18e2880129393ba65a5e5dbdde19c893291f9ab92cb3')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -34,5 +32,4 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
   install -Dm644 ui/qjournalctl-64x64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/qjournalctl.png"
   install -Dm644 ui/qjournalctl-96x96.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/qjournalctl.png"
-  install -Dm644 ../qjournalctl.appdata.xml "$pkgdir/usr/share/metainfo/qjournalctl.appdata.xml"
 }
