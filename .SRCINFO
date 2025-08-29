@@ -1,25 +1,16 @@
 pkgbase = git-gone
 	pkgdesc = Prune stale local Git branches
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/git-gone
 	arch = i686
 	arch = x86_64
-	license = Apache-2.0
+	license = EUPL-1.2
 	makedepends = rust
 	makedepends = cargo
+	makedepends = git
 	conflicts = git-gone-git
-	source = https://codeberg.org/swsnr/git-gone/releases/download/v1.3.0/git-gone-v1.3.0.tar.zst
-	source = git-gone-v1.3.0.tar.zst.sshsig::https://codeberg.org/swsnr/git-gone/releases/download/v1.3.0/git-gone-v1.3.0.tar.zst.sig
-	source = https://codeberg.org/swsnr/git-gone/releases/download/v1.3.0/git-gone-v1.3.0-vendor.tar.zst
-	source = git-gone-v1.3.0-vendor.tar.zst.sshsig::https://codeberg.org/swsnr/git-gone/releases/download/v1.3.0/git-gone-v1.3.0-vendor.tar.zst.sig
-	source = config.toml
-	source = allowed-signers
-	sha256sums = dbdc45b90d496cfa63155f0c614f3dc69a6ff2fe834121bcac984ca8eeea4197
-	sha256sums = 469b1478a424d4fafc764466da76c959f72deba139750258bfb7401ba2f5bba3
-	sha256sums = 3b7cf87e563fbc9c715ec43a80a346f4262432899ec6b7cbb92e8a88a97c2090
-	sha256sums = 3b78e525ef81dd95cfc7a3ed3b89f24e61d528437ba8596f5e56334411d7515a
-	sha256sums = 8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881
-	sha256sums = 2691054f647923a439befd20624c23e9cf2c0c0c300dccd33ceaa052b9fbb5ce
+	source = git+https://codeberg.org/swsnr/git-gone.git#tag=v1.3.1
+	sha256sums = 1b41b172418f22aed98c6b7c92e41dcfc0ecaa1e94ea94869912d6caaa6e484a
 
 pkgname = git-gone
