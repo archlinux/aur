@@ -3,7 +3,7 @@
 pkgname=python-blacksheep-client-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.1.2
+pkgver=0.1.2.1
 pkgrel=1
 epoch=
 pkgdesc="blacksheep request extension."
@@ -37,7 +37,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('f6abb4067b4ff575cc6ec70b13a6acb3c4e535b4a9832a797e77496ebd5c5198')
+sha256sums=('4d0fd0751cd3e1a2fc4e7e974db05042f114ab3cfb6256d178f09dffba6eb122')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
