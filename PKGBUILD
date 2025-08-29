@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://www.newgrounds.com/portal/view/770371"
 license=(Apache)
 depends=(vlc fuse3 fuse-overlayfs)
-source=("https://github.com/FunkinCrew/Funkin/releases/download/$pkgver/funkin-linux-64bit.zip"
+source=("https://github.com/FunkinCrew/Funkin/releases/download/v$pkgver/funkin-linux-64bit.zip"
         "funkin.desktop"
         "funkin.sh")
 sha256sums=("6636ea4a9a0fe2be76811eb48307693bc008ed6cf984713e281da2b49b7d0e57"
