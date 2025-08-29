@@ -2,7 +2,7 @@
 _reponame=boxflat
 pkgname=$_reponame-git
 provides=($_reponame)
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
 	python-pyserial
 	python-gobject
 	python-cairo
+	python-evdev
 	gtk4
 	libadwaita
 	udev
