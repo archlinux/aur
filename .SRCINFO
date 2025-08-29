@@ -1,6 +1,6 @@
 pkgbase = reframe
 	pkgdesc = DRM/KMS based remote desktop for Linux that supports Wayland/NVIDIA/headless/login…
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/AlynxZhou/reframe/
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = reframe
 	arch = armv6h
 	license = Apache-2.0
 	makedepends = meson
-	makedepends = glib2-devel
 	depends = glib2
 	depends = libepoxy
 	depends = libvncserver
@@ -20,7 +19,7 @@ pkgbase = reframe
 	depends = gcc-libs
 	depends = glibc
 	backup = etc/reframe/example.conf
-	source = https://github.com/AlynxZhou/reframe/archive/v1.0.0.tar.gz
-	sha512sums = 9f89f38d4fffb55ecb49c6e0466078e710fd56cc0007f931e71bf76028ce07d0fc825ebe8d82ecc855b5572880603f3cff4de69db8964b1b05e4ac0df0cdd1c8
+	source = https://github.com/AlynxZhou/reframe/archive/v1.0.1.tar.gz
+	sha512sums = 376c87eb891d26bebc3120338dfed2c272b327a20342d5a7da852bef0bbf752b85047c3ae6b6f5c49e830cefee22750bf08c9b3cdc31495ffcb30fd5c3009bee
 
 pkgname = reframe
