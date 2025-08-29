@@ -8,15 +8,15 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-git
-pkgver=4.19.2+14+g6cab7463
+pkgver=4.21.0+148+g2208cf98
 pkgrel=1
 pkgdesc="Xfce session manager (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-session/start"
-license=('GPL2')
-depends=('libxfce4ui' 'libwnck3' 'xfconf' 'libsm' 'polkit' 'xorg-iceauth'
-         'xorg-xinit' 'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
-makedepends=('git' 'xfce4-dev-tools' 'glib2-devel')
+license=('GPL-2.0-or-later')
+depends=('libxfce4ui>=4.21.0' 'libxfce4windowing' 'xfconf' 'libsm' 'polkit' 'xorg-iceauth'
+         'xorg-xinit' 'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme' 'gtk-layer-shell')
+makedepends=('git' 'xfce4-dev-tools' 'glib2-devel' 'meson')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
             'xfce4-screensaver: for locking screen with xflock4'
             'xscreensaver: for locking screen with xflock4'
@@ -36,21 +36,18 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  local meson_options=(
+    -D x11=enabled
+    -D wayland=enabled
+    -D gtk-layer-shell=enabled
+  )
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-debug \
-    --enable-systemd
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 
   # Provide a default PolicyKit Authentication Agent (FS#42569)
   install -d "${pkgdir}"/etc/xdg/autostart

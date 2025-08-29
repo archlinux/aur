@@ -1,6 +1,6 @@
 pkgbase = xfce4-session-git
 	pkgdesc = Xfce session manager (git checkout)
-	pkgver = 4.19.2+14+g6cab7463
+	pkgver = 4.21.0+148+g2208cf98
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-session/start
 	arch = x86_64
@@ -8,12 +8,13 @@ pkgbase = xfce4-session-git
 	arch = armv7h
 	arch = aarch64
 	groups = xfce4-git
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = xfce4-dev-tools
 	makedepends = glib2-devel
-	depends = libxfce4ui
-	depends = libwnck3
+	makedepends = meson
+	depends = libxfce4ui>=4.21.0
+	depends = libxfce4windowing
 	depends = xfconf
 	depends = libsm
 	depends = polkit
@@ -22,11 +23,12 @@ pkgbase = xfce4-session-git
 	depends = xorg-xrdb
 	depends = polkit-gnome
 	depends = hicolor-icon-theme
+	depends = gtk-layer-shell
 	optdepends = gnome-keyring: for keyring support when GNOME compatibility is enabled
 	optdepends = xfce4-screensaver: for locking screen with xflock4
 	optdepends = xscreensaver: for locking screen with xflock4
 	optdepends = gnome-screensaver: for locking screen with xflock4
-	provides = xfce4-session=4.19.2
+	provides = xfce4-session=4.21.0
 	conflicts = xfce4-session
 	replaces = xfce-utils
 	source = xfce4-session::git+https://gitlab.xfce.org/xfce/xfce4-session
