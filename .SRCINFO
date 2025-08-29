@@ -1,13 +1,16 @@
 pkgbase = flightgear-data
 	pkgdesc = Base-Data for the opensource flight-simulator.
 	pkgver = 2024.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.flightgear.org/
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
+	depends = perl
+	depends = bash
+	depends = python
 	options = !strip
 	options = !debug
 	source = https://gitlab.com/flightgear/fgdata/-/archive/v2024.1.1/fgdata-v2024.1.1.tar.gz
-	sha256sums = 39202a62d1236d51450232778751339bd29de650ea16a27c7ebbdccd6ea355b7
+	md5sums = 14580ae9f41c19e5233108127cb3f3d8
 
 pkgname = flightgear-data
