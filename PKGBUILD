@@ -3,7 +3,7 @@
 _pkgname=converternow
 pkgname=$_pkgname-bin
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 url="https://github.com/ferraridamiano/ConverterNOW"
 license=('GPL-3.0-or-later')
@@ -23,14 +23,14 @@ Exec=$_pkgname %U\n\
 Icon=$_pkgname\n\
 Terminal=false\n\
 Type=Application\n\
-StartupWMClass=Converter NOW" > $_pkgname.desktop
+StartupWMClass=Converter NOW" > io.github.ferraridamiano.ConverterNOW.desktop
 }
 
 package() {
 # Create directories
   mkdir -p "$pkgdir/opt/ConverterNOW" "$pkgdir/usr/bin"
 # Install
-  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 io.github.ferraridamiano.ConverterNOW.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 data/flutter_assets/assets/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   mv data lib $_pkgname "$pkgdir/opt/ConverterNOW"
   ln -s /opt/ConverterNOW/$_pkgname "$pkgdir/usr/bin"
