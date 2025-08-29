@@ -1,8 +1,8 @@
 pkgbase = snapx
 	pkgdesc = Screenshot tool that handles images, text, and video (fork of ShareX)
 	pkgver = 0.4.0
-	pkgrel = 3
-	url = https://github.com/BrycensRanch/SnapX
+	pkgrel = 4
+	url = https://github.com/SnapXL/SnapX
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = snapx
 	makedepends = dotnet-sdk>=9.0
 	makedepends = clang
 	makedepends = zlib
-	source = snapx::git+https://github.com/BrycensRanch/SnapX.git
+	source = snapx::git+https://github.com/SnapXL/SnapX.git
 	sha256sums = SKIP
 
 pkgname = snapx
