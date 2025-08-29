@@ -6,7 +6,6 @@ pkgbase = quint-bin
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	makedepends = deno>=2.1.10
 	provides = quint
 	conflicts = quint
 	source = https://github.com/informalsystems/quint/raw/v0.27.0/LICENSE

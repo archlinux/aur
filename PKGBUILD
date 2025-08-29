@@ -12,7 +12,6 @@ url="https://github.com/${_orgname}/${_pkgname}"
 license=('Apache')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-makedepends=('deno>=2.1.10')
 source=("https://github.com/${_orgname}/${_pkgname}/raw/v${pkgver}/LICENSE")
 source_x86_64=("quint_x86_64::https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/quint-linux-amd64")
 source_aarch64=("quint_aarch64::https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/quint-linux-arm64")
