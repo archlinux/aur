@@ -1,16 +1,16 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=php-raphf
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A reusable split-off of pecl_http's persistent handle and resource factory API"
-arch=('i686' 'x86_64')
-license=('BSD')
+arch=('x86_64')
+license=('BSD-2-Clause')
 url="https://mdref.m6w6.name/raphf"
-depends=('php')
+depends=('php' 'glibc')
 backup=('etc/php/conf.d/raphf.ini')
 source=("https://pecl.php.net/get/raphf-${pkgver}.tgz")
-sha512sums=('0a609fc21a62880963e7afb75297eb75a2598aab2c816cb61e84d665b0453e4952aa9bf25fe2c818cc94492a4b94aed965053c67899fdb984d88661364fffb1e')
+sha512sums=('ca82e95bfaa9012de2c46334ff9095c8e214c108d58ed778c33541c9a39b53e2edc5539af1da075a11f025c209ea6cd1439f902be12f5726fb9fbc7c194e30b2')
 
 build() {
   cd "${srcdir}/raphf-${pkgver}"
