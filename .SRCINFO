@@ -1,7 +1,7 @@
 pkgbase = libsocket-git
 	pkgdesc = Library with a C part and a C++ part making sockets usage easy and clean
 	pkgver = 2.5.0.r39.g6214af7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dermesser.github.io/libsocket/doc/
 	arch = i686
 	arch = x86_64

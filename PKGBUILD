@@ -2,7 +2,7 @@
 
 pkgname=libsocket-git
 pkgver=2.5.0.r39.g6214af7
-pkgrel=1
+pkgrel=2
 pkgdesc='Library with a C part and a C++ part making sockets usage easy and clean'
 arch=('i686' 'x86_64')
 url='http://dermesser.github.io/libsocket/doc/'
@@ -39,6 +39,7 @@ build() {
         -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_STATIC_LIBS=ON \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         ..
     make
 }
