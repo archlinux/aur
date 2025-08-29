@@ -1,0 +1,16 @@
+pkgbase = dstll-bin
+	pkgdesc = Gives you a high level overview of various constructs in your code
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dhth/dstll
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dstll
+	conflicts = dstll
+	source_x86_64 = dstll-x86_64-0.2.1.tar.gz::https://github.com/dhth/dstll/releases/download/v0.2.1/dstll_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4035fbd3076031d58f535f1ff863a77ca566ffffa434493416ae95575d8edbdb
+	source_aarch64 = dstll-aarch64-0.2.1.tar.gz::https://github.com/dhth/dstll/releases/download/v0.2.1/dstll_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 845ca2164d2cb1864315ef2976e286ca25a38f39b960b3d629af02e3bbd0855f
+
+pkgname = dstll-bin
