@@ -1,0 +1,17 @@
+pkgbase = godash-bin
+	pkgdesc = Terminal Personal Productivity Dashboard - Pre-built binary with full calendar functionality
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HellasDev/GoDash
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	optdepends = firefox: For better browser integration with calendar links
+	optdepends = google-chrome: Alternative browser for calendar integration
+	optdepends = chromium: Alternative browser for calendar integration
+	provides = godash
+	conflicts = godash
+	source = godash-bin-1.0.0.tar.gz::https://github.com/HellasDev/GoDash/releases/download/v1.0.0-bin/godash-v1.0.0-linux-amd64.tar.gz
+	sha256sums = 26f62ac0967d201ce3c317709a5c86937be0901b3ff3ffae4fb93d25c81bce53
+
+pkgname = godash-bin
