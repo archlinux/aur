@@ -3,7 +3,7 @@
 pkgname=python-phonemizer
 _name=${pkgname#python-}
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple text to phones converter for multiple languages"
 arch=('any')
@@ -14,7 +14,6 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
-    #     python-attrs
     python-joblib
     python-pytest
     python-typing_extensions
