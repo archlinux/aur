@@ -1,0 +1,9 @@
+--- Makefile	2025-04-01 10:58:01.109767908 -0500
++++ Makefile    2025-07-25 09:18:18.853650129 -0500
+@@ -1,5 +1,5 @@
+ VERSION         := 0.0.1
+-TARGET          := $(shell uname -r)
++TARGET          := $(if $(KERNELDIR),$(notdir $(patsubst %/build,%,$(KERNELDIR))),$(shell uname -r))
+ 
+ KERNEL_MODULES	:= /lib/modules/$(TARGET)
+ 
