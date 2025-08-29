@@ -1,16 +1,16 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libfishcamp
-pkgver=2.1.4
+pkgver=2.1.5.1
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by fishcamp"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL-2.1-or-later)
 arch=(i686 x86_64 aarch64)
-depends=(libusb )
+depends=(libusb)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080")
+sha256sums=("9a85e6cf928dd095f019adf1919c79f9a3ac55294bedb8c9f65cc8bf3f9152d8")
 
 prepare() {
   mkdir -p build
@@ -18,6 +18,7 @@ prepare() {
 
 build() {
   cd build
+  sed -i "/include(CMakeCommon)/d" "../indi-3rdparty-${pkgver}/${pkgname}/CMakeLists.txt"
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
