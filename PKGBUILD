@@ -1,4 +1,4 @@
-pkgname=CrossCode
+pkgname=crosscode
 pkgver=0.0.2
 pkgrel=1
 pkgdesc="Cross platform iOS IDE"
