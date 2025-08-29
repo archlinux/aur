@@ -1,0 +1,17 @@
+pkgbase = launcherx-bin-fix-sums
+	pkgdesc = LauncherX is a cross-platform minecraft launcher for next generation(fixed checksums)
+	pkgver = 2025.8.17
+	pkgrel = 1
+	url = https://corona.studio/lx
+	arch = x86_64
+	arch = aarch64
+	provides = launcherx
+	conflicts = launcherx
+	conflicts = launcherx-bin
+	options = !strip
+	source = LauncherX.desktop
+	source = LauncherX.png
+	sha256sums = b8eead686e80061adeff1cc5af92e18ecedcd3e4dbc39c86b5db5276f9ee0473
+	sha256sums = 9408fdaf9db619d4c50f35de6d6bce81abbd718ecc1bfd9b4e4d5ad6a095d2f9
+
+pkgname = launcherx-bin-fix-sums
