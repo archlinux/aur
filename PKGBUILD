@@ -2,7 +2,7 @@
 
 pkgname=ashuffle
 pkgver=3.14.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -19,6 +19,8 @@ sha256sums=('34131f0b5afa368012ea2ed78e33c4b6b702d7d850dd9b5240709ce151ca8de6')
 
 prepare() {
   cd "ashuffle-${pkgver}"
+  sed -i meson.build \
+    -e '/absl_low_level_hash/d'
 }
 
 build() {
