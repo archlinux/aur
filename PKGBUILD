@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=jira-cli
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Feature-rich interactive Jira command line."
 arch=(x86_64)
@@ -15,7 +15,7 @@ provides=('jira')
 
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('726d793f1863f075ee4446b31f9ff692fa10b66b09ee2bc1d2471f7f94315c85')
+sha256sums=('89989534ae3f254be7a13dde51bfcf1c58f36cbf26ad3de9e333ead36579c007')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/cmd/jira"

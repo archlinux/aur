@@ -1,6 +1,6 @@
 pkgbase = jira-cli
 	pkgdesc = Feature-rich interactive Jira command line.
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ankitpokhrel/jira-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jira-cli
 	conflicts = jira-cli-bin
 	conflicts = go-jira
 	conflicts = go-jira-bin
-	source = jira-cli-1.5.1::https://github.com/ankitpokhrel/jira-cli/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = 726d793f1863f075ee4446b31f9ff692fa10b66b09ee2bc1d2471f7f94315c85
+	source = jira-cli-1.6.0::https://github.com/ankitpokhrel/jira-cli/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 89989534ae3f254be7a13dde51bfcf1c58f36cbf26ad3de9e333ead36579c007
 
 pkgname = jira-cli
