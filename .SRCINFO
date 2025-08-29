@@ -1,0 +1,23 @@
+pkgbase = python-dlinfo
+	pkgdesc = Python wrapper for libc's dlinfo and dyld_find on Mac
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/dlinfo
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	optdepends = python-pytorch-cuda: Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CUDA)
+	provides = python-dlinfo
+	conflicts = python-dlinfo
+	options = !strip
+	options = !debug
+	source = dlinfo-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/d/dlinfo/dlinfo-2.0.0.tar.gz
+	sha256sums = 88a2bc04f51d01bc604cdc9eb1c3cc0bde89057532ca6a3e71a41f6235433e17
+
+pkgname = python-dlinfo
