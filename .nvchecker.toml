@@ -1,0 +1,4 @@
+[openrgb]
+source = "git"
+git = "https://gitlab.com/CalcProgrammer1/OpenRGB.git"
+prefix = "release_"
