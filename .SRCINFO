@@ -1,0 +1,19 @@
+pkgbase = ksniff
+	pkgdesc = kubectl plugin that utilizes tcpdump and Wireshark to start a remote capture on any pod in your Kubernetes cluster
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/eldadru/ksniff
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	provides = kubectl-ksniff
+	source = https://github.com/eldadru/ksniff/archive/v1.6.2/ksniff-1.6.2.tar.gz
+	sha512sums = efc08d0a2a1d3db11488e80d75b1c1878cb0de1355f46a702eeb0cabd215fd9da51d6a953fed8c90fe9c6634c4e8a25c114eecfd21b9fccb6921dd99185aa952
+	b2sums = b60b84a44b0070ac3cbddf348a43b82d26a5fb3d832670a0e677b1d90969749de6369d3063a2a0eadd01716f644cfabc400fa0a24e0b9fb8fd8c94cbd3f8f740
+
+pkgname = ksniff
