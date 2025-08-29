@@ -1,14 +1,14 @@
 pkgbase = xfce4-power-manager-git
 	pkgdesc = Power manager for Xfce desktop
-	pkgver = 4.19.3+15+g7206eda2
+	pkgver = 4.21.0+139+g76f230c1
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-power-manager/start
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	groups = xfce4
-	license = GPL2
+	groups = xfce4-git
+	license = GPL-2.0-or-later
 	makedepends = xfce4-panel
 	makedepends = wayland-protocols
 	makedepends = wayland
@@ -16,14 +16,15 @@ pkgbase = xfce4-power-manager-git
 	makedepends = xfce4-dev-tools
 	makedepends = glib2-devel
 	makedepends = wlr-protocols
-	depends = libxfce4ui
+	makedepends = meson
+	depends = libxfce4ui>=4.21.0
 	depends = upower
 	depends = libnotify
 	depends = xfce4-notifyd
 	depends = hicolor-icon-theme
 	depends = networkmanager
 	optdepends = xfce4-panel: Xfce panel plugin support
-	provides = xfce4-power-manager=4.19.3
+	provides = xfce4-power-manager=4.21.0
 	conflicts = xfce4-power-manager
 	source = xfce4-power-manager::git+https://gitlab.xfce.org/xfce/xfce4-power-manager
 	sha256sums = SKIP
