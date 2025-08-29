@@ -1,0 +1,15 @@
+pkgbase = tbll-bin
+	pkgdesc = Outputs data in tabular format
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/dhth/tbll
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = tbll
+	conflicts = tbll
+	source_x86_64 = tbll-x86_64-1.1.0.tar.gz::https://github.com/dhth/tbll/releases/download/v1.1.0/tbll-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = d9c15742877c1eb8bec0f3053f54ef7c1aad93c2722078d12058dbf461963591
+
+pkgname = tbll-bin
