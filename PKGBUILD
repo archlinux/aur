@@ -3,7 +3,7 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=1.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
@@ -23,7 +23,7 @@ source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_
 sha256sums=('8199abc3f6d0000ce831e4af60b90539ed625df596416c82945ff80a81ca361a'
             'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2'
             'e86604e9604d59cddcc13de60b71c0e652cd1f9b56d89de36b2158509849e51c'
-            '6bf907e94783751f80b2c26bab66e59ee290428fcbed9c1ddceeab67692f3ade')
+            'f53328babef392393ee44086f8897174232e863280a84266630a3cd92facc190')
 
 build() {
   # Remove -pipe because their weird build process needs -save-temps.
