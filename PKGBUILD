@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aniparser-bin
 _pkgname=AniParser
-pkgver=0.3.1
+pkgver=0.3.2
 _electronversion=35
 pkgrel=1
 pkgdesc="AniParser Electron application.(Prebuilt version.Use system-wide electron)"
@@ -18,8 +18,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sinedka/aniparser/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('291076e0280c67edaa1461737fbc5da228ed10b981474ff29c30ceba762261ea'
-            '002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1'
+sha256sums=('5ca9a0ae67861436497fb4eff189d38be8db906b78250f363b57fd734eeb1554'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
