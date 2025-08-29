@@ -1,7 +1,7 @@
 # Maintainer: Melvin Redondo-Tanis <melvin@redondotanis.com>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.22.0.20250813_16938856004
+pkgver=1.23.0.20250827_17270089246
 pkgrel=1
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
@@ -17,7 +17,7 @@ source=(
   "LICENSE.md::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
 )
 sha256sums=(
-  '56f6662af6182a130d70ef292ca25b6d71629beabc8c73f8f822a0624e766f92'
+  'e5b4368a2c8c555796d546acdc242a4c34556a0dbfb55b0c8e2a25aaefa002bf'
   '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5'
 )
 
