@@ -5,7 +5,7 @@ pkgname=(serverstatus-git
     serverstatus-clients-linux-git
     serverstatus-clients-psutil-git
     serverstatus-server-git)
-pkgver=1.1.5.r13.g1a764ed
+pkgver=1.1.6.r3.g68a1d37
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
@@ -74,7 +74,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/python /usr/share/serverstatus/clients/client-linux.py
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 
 [Install]
@@ -99,7 +99,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/python /usr/share/serverstatus/clients/client-psutil.py
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 
 [Install]
@@ -135,7 +135,7 @@ After=network.target
 
 [Service]
 ExecStart=sergate --config=/usr/share/serverstatus/server/config.json --web-dir=/usr/share/serverstatus/web
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 
 [Install]
