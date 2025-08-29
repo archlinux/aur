@@ -1,7 +1,7 @@
 # Maintainer: Clem Lorteau <spam at lorteau dot fr>
 pkgname=arch-wiki-search
 _origpkgname=arch_wiki_search
-pkgver=20250827
+pkgver=20250829
 pkgrel=1
 pkgdesc="Read and search Archwiki and other wikis, online or offline, on the desktop or the terminal"
 arch=("any")
@@ -34,8 +34,8 @@ optdepends=(
     "chromium: desktop environment browsing"
     "brave: desktop environment browsing"
 )
-source=("https://files.pythonhosted.org/packages/b4/af/44f9315a2b901c78691188c2e35bf6303c06c52db7e4aa535a89bc0b906b/arch_wiki_search-20250827.tar.gz")
-sha256sums=("27e67c092dfcf18028a9e9cd5eda5a5ec89d72847c542d565bf0fd94a5240abd")
+source=("https://files.pythonhosted.org/packages/f4/ec/12b107c2938bcb1c5b8563abd17a35d63dc20608c3842042c91b07094dbc/arch_wiki_search-20250829.tar.gz")
+sha256sums=("4fa329c27ea5fe8b4a0b931eddb1912e279ea266bcb06f7bd7d421abebc70a54")
 package() {
     cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
