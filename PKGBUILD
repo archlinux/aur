@@ -1,6 +1,6 @@
 pkgname=oshd
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Odd Static Hosts Daemon"
 arch=('any')
 url="https://github.com/TheOddCell/oshd"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python3' 'systemd')
 makedepends=()
 source=('oshctl.py' 'oshd-clean.service')
-sha256sums=('SKIP', 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
     install -Dm755 oshctl.py "$pkgdir/usr/bin/oshctl"
