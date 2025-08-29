@@ -2,7 +2,7 @@
 
 pkgname=lovr
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua Virtual Reality Framework, a VR game engine'
 arch=('x86_64')
 url='https://lovr.org/'
