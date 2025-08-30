@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/oshd
+ExecStop=/usr/bin/oshd clean
 Restart=on-failure
 # Ensure it runs as root for /etc/hosts and socket permissions
 User=root

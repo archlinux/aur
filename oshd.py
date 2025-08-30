@@ -63,7 +63,7 @@ def handle_command(cmd_line):
         rm_entry(parts[1])
         return b"OK"
 
-    elif cmd == "clear":
+    elif cmd == "clean":
         clear_tmp()
         return b"OK"
 
