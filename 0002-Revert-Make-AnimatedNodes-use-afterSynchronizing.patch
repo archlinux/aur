@@ -1,0 +1,36 @@
+From 3ca60486f6ffc4af994c53df891043a277919ff3 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 30 Aug 2025 00:52:55 +0200
+Subject: [PATCH 2/2] Revert "Make AnimatedNodes use afterSynchronizing"
+
+This reverts commit 39ccc9ace899d467e95b5169b31836726cb3890d
+to fix https://bugreports.qt.io/browse/QTBUG-139630.
+---
+ src/quickcontrolsimpl/qquickanimatednode.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/quickcontrolsimpl/qquickanimatednode.cpp b/src/quickcontrolsimpl/qquickanimatednode.cpp
+index 7b4415df86..95d6ab0457 100644
+--- a/src/quickcontrolsimpl/qquickanimatednode.cpp
++++ b/src/quickcontrolsimpl/qquickanimatednode.cpp
+@@ -75,7 +75,7 @@ void QQuickAnimatedNode::start(int duration)
+     if (duration > 0)
+         m_duration = duration;
+ 
+-    connect(m_window, &QQuickWindow::afterSynchronizing, this, &QQuickAnimatedNode::advance, Qt::DirectConnection);
++    connect(m_window, &QQuickWindow::beforeRendering, this, &QQuickAnimatedNode::advance, Qt::DirectConnection);
+     connect(m_window, &QQuickWindow::frameSwapped, this, &QQuickAnimatedNode::update, Qt::DirectConnection);
+ 
+     // If we're inside a QQuickWidget, this call is necessary to ensure the widget
+@@ -97,7 +97,7 @@ void QQuickAnimatedNode::stop()
+         return;
+ 
+     m_running = false;
+-    disconnect(m_window, &QQuickWindow::afterSynchronizing, this, &QQuickAnimatedNode::advance);
++    disconnect(m_window, &QQuickWindow::beforeRendering, this, &QQuickAnimatedNode::advance);
+     disconnect(m_window, &QQuickWindow::frameSwapped, this, &QQuickAnimatedNode::update);
+     emit stopped();
+ }
+-- 
+2.51.0
+
