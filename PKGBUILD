@@ -1,9 +1,9 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-git'
 _pkgname='winboat'
-pkgver='0.6.3'
+pkgver=r91.3d48910
 _pkgver='0.6.3'
-pkgrel='1'
+pkgrel=1
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
 url='https://github.com/TibixDev/winboat'
@@ -21,6 +21,13 @@ source=(
 sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
             '7579d3d52fa1cd4df438a0a86e5a60e72030ae612f85866001e2f07a6de62efa'
             'SKIP')
+
+
+pkgver() {
+  cd "winboat"
+  #git describe --tags | sed 's/-/+/g'
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 package() {
 	cd "$srcdir/$_pkgname"
 	npm i --cache "${srcdir}/npm-cache" 
