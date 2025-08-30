@@ -1,7 +1,7 @@
 pkgbase = janet-lang
 	pkgdesc = A dynamic Lisp dialect and bytecode vm
 	pkgver = 1.39.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://janet-lang.org/
 	arch = arm
 	arch = armv6h
@@ -16,7 +16,6 @@ pkgbase = janet-lang
 	provides = jpm
 	conflicts = janet-lang-git
 	options = staticlibs
-	options = !lto
 	source = janet-lang-1.39.1.tar.gz::https://github.com/janet-lang/janet/archive/v1.39.1.tar.gz
 	source = git+https://github.com/janet-lang/jpm#commit=d93b7c2
 	source = default-config.janet
