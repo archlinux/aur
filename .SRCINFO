@@ -1,7 +1,7 @@
 pkgbase = opww
 	pkgdesc = Odd Pacman Wrapper Wrapper
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TheOddCell/opww
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = opww
 	depends = less
 	depends = base-devel
 	depends = git
-	source = opww
+	source = https://github.com/TheOddCell/opww/archive/refs/tags/v$pkgver.tar.gz
 	sha256sums = SKIP
 
 pkgname = opww
