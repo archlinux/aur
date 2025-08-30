@@ -2,8 +2,8 @@
 Exec=/usr/bin/lug-helper
 Icon=/usr/share/icons/hicolor/256x256/apps/lug-logo.png
 Name=LUG-Helper
+Keywords=Star Citizen;StarCitizen
 StartupNotify=true
 Terminal=true
 Type=Application
 Categories=Game
-

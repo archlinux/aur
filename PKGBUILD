@@ -1,12 +1,12 @@
 # Maintainer: termuellinator
 
 pkgname=lug-helper
-pkgver=4.3
+pkgver=4.4
 pkgrel=1
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
 arch=('any')
-depends=('bash' 'coreutils' 'curl' 'findutils' 'wine' 'winetricks')
+depends=('bash' 'coreutils' 'curl' 'findutils' 'unzip' 'cabextract')
 optdepends=('zenity' 'polkit' 'lutris')
 provides=('lug-helper')
 conflicts=('lug-helper')
@@ -17,8 +17,8 @@ source=(
     'lug-helper.desktop'
 )
 sha256sums=(
-    '505f0422e36173b7a1ccf898dd0d7f053c3140ff5a75339c67d4a775c92aafac'
-    'c3cedb70924c42a47ac9ff7e6455403432c41e3320bee752e6158330158f62a0'
+    'd0c9d8dab96ce63f41cb696a50cf513e62845ecfc8df143af4f8842a1a6ffec3'
+    'c2e32dcc04ff2414686d6465a21f7d64d6a8df7a58363e15ade17a58dcf5ca1b'
 )
 
 
