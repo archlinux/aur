@@ -1,7 +1,7 @@
 From 77641ee36dc57eea4217fbd7fa5b2ccad5133dd3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 21:39:39 +0100
-Subject: [PATCH 14/24] Link corelib correctly against runtimeobject when
+Subject: [PATCH 14/25] Link corelib correctly against runtimeobject when
  compiling for Windows
 
 This library is included by mingw-w64 and also needs to be linked against
