@@ -1,0 +1,13 @@
+pkgbase = batwatch-git
+	pkgdesc = Blink the screen when battery level reaches certain limits
+	pkgver = r8.bdd16d9
+	pkgrel = 1
+	url = https://github.com/nj-twice/batwatch
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/nj-twice/batwatch
+	sha256sums = SKIP
+
+pkgname = batwatch-git
