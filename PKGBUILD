@@ -1,8 +1,8 @@
 # Maintainer: Sandwich <sandwich dot archworks dot co>
 
 pkgname=mautrix-slack
-pkgver=0.1.4
-pkgrel=1
+pkgver=0.2.3
+pkgrel=0
 pkgdesc="A Matrix-Slack puppeting bridge"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
   mautrix-slack.service
 )
 backup=("etc/${pkgname}/mautrix-slack.yaml")
-sha256sums=('9ab8d0485b9bcb20de08c76091466b0a587b0e3d0a47c852715ede1f4672bc0f'
+sha256sums=('e5bd8e42da628a6e4142ca8f8e5ef8c2b53f274fa3d33f9b6cb4f49ce24caa93'
             'c1e3d2d9a65fa9ced4b35fdad98ec69a21dfee5da9e22e8c76e7821cebc0fa1e'
             'dc52d374b0af0af85aa44bc2679edf48e41c2631f684b8df7d2cc591fbadbf96'
             '58bed71d40735df20c01176eafea2e85aa98e2e24c26d2d0adc76652c5b25003')
