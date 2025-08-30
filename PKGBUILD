@@ -21,11 +21,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v$
 sha256sums=('a43489328b88846e5cddbdad9274f25ee9854e337e52490a74bb7955de03c650'
             'SKIP'
             '7fb56585e6027ea800920a364acd73b49205298dcf887a4ee71fb65125c4539f')
-options=('staticlibs' '!lto')
+options=('staticlibs')
 
 build() {
   cd "${srcdir}"/$_pkgname-$pkgver
-  CFLAGS+=" -fPIC"
+  CFLAGS+=" -fPIC -ffat-lto-objects"
   LDFLAGS+=" -rdynamic"
   make PREFIX="/usr" all build/janet.pc docs
 }
