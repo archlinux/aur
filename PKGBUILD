@@ -1,24 +1,23 @@
 # Maintainer: Beacrox beacrox@atl.tools
 
 pkgname=pulse-visualizer-git
-pkgver=1.0.r202.g882d607
+pkgver=1.2.5.r0.9ad3994
 pkgrel=1
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire (latest git)"
 arch=('any')
-url="https://github.com/Beacroxx/pulse-visualizer"
+url="https://github.com/Audio-Solutions/pulse-visualizer"
 license=('GPL3')
 depends=('sdl3' 'fftw' 'freetype2' 'glew' 'yaml-cpp' 'libebur128')
 makedepends=('cmake' 'ninja' 'clang' 'git')
 optdepends=('libpulse: PulseAudio support' 'libpipewire: PipeWire support')
-source=("git+https://github.com/Beacroxx/pulse-visualizer.git")
+source=("git+https://github.com/Audio-Solutions/pulse-visualizer.git")
 sha256sums=('SKIP')
 install=pulse-visualizer-git.install
 
 pkgver() {
   cd "$srcdir/pulse-visualizer"
-  printf "1.0.r%s.g%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --tags --long --match "v[0-9]*" 2>/dev/null | \
+    sed -E 's/^v//; s/-([0-9]+)-g([0-9a-f]+)$/\.r\1.\2/'
 }
 
 build() {
