@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=v1.25.2.r18.g4013ed4
+pkgver=v1.25.3.r56.gda8f1d0
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities (Git)"
 arch=('x86_64')
