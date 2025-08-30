@@ -1,4 +1,4 @@
-# Maintainer: Rafael Senties Martinelli <rafael@senties-martinelli.com>
+# Maintainer: Rafael Senties Martinelli <rafael@rsm92.fr>
 # Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
 
 # This package was updated from: https://aur.archlinux.org/packages/python2-cssmin
@@ -6,7 +6,7 @@
 pkgname=python-cssmin
 _name=cssmin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT' 'BSD')
 pkgdesc='Python port of the YUI CSS compression algorithm. No longer maintained.'

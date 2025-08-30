@@ -1,7 +1,7 @@
 pkgbase = python-cssmin
 	pkgdesc = Python port of the YUI CSS compression algorithm. No longer maintained.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zacharyvoase/cssmin
 	arch = any
 	license = MIT
