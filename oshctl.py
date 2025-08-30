@@ -1,104 +1,52 @@
 #!/usr/bin/env python3
-import sys
 import os
-import shutil
-import pathlib
+import sys
+import socket
+import pwd
 
-HOSTS_FILE = "/etc/hosts"
-MARKER = "# [oshd] tmp\n"
+SOCKET_PATH = "/run/oshd.sock"
+OSHD_PATH = "/usr/bin/oshd"  # Adjust path to your oshd executable if needed
 
-def hosts_starts_with_noclear():
+def is_daemon_running():
+    return os.path.exists(SOCKET_PATH)
+
+def send_via_socket(command):
     try:
-        with open("/etc/systemd/system/oshd-clean.service", "r") as f:
-            first_line = f.readline().strip()
-        return first_line == "# oshd-noclear"
-    except FileNotFoundError:
+        client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        client.connect(SOCKET_PATH)
+        client.sendall(command.encode())
+        response = client.recv(1024)
+        print(response.decode())
+        client.close()
+        return True
+    except Exception as e:
+        print(f"Failed to connect to daemon: {e}")
         return False
 
-def add_entry(host, ip, tmp=False):
-    entry = f"{ip}\t{host}"
-    if tmp:
-        entry += f"\t{MARKER.strip()}"
-    with open(HOSTS_FILE, "a") as f:
-        f.write(entry + "\n")
-
-def rm_entry(host):
-    lines = []
-    with open(HOSTS_FILE, "r") as f:
-        for line in f:
-            if host not in line.split():
-                lines.append(line)
-    with open(HOSTS_FILE, "w") as f:
-        f.writelines(lines)
-
-def clear_tmp():
-    lines = []
-    with open(HOSTS_FILE, "r") as f:
-        for line in f:
-            if MARKER.strip() not in line:
-                lines.append(line)
-    with open(HOSTS_FILE, "w") as f:
-        f.writelines(lines)
+def run_one_shot(command_args):
+    print("oshd daemon not found, did you enable/start it? attempting to use one-shot mode...")
+    # Ensure we are root
+    if os.geteuid() != 0:
+        print("ERROR: must be run as root in one-shot mode")
+        sys.exit(1)
+    # Build command to execute oshd directly
+    cmd = [OSHD_PATH] + command_args
+    os.execv(OSHD_PATH, cmd)  # replaces current process
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: oshctl [add|rm|clear|service] ...")
-        return
-    
-    cmd = sys.argv[1]
+        print("Usage: oshctl <command>")
+        sys.exit(1)
 
-    if cmd == "add":
-        if len(sys.argv) < 4:
-            print("Usage: oshctl add <host[:tmp]> <ip|alias>")
-            return
-        raw_host, ip = sys.argv[2], sys.argv[3]
-        tmp = False
-        if raw_host.endswith(":tmp"):
-            host = raw_host.split(":")[0]
-            tmp = True
-        else:
-            host = raw_host
-        add_entry(host, ip, tmp)
+    command_args = sys.argv[1:]
+    command_line = " ".join(command_args)
 
-    elif cmd == "rm":
-        if len(sys.argv) < 3:
-            print("Usage: oshctl rm <host>")
-            return
-        rm_entry(sys.argv[2])
-
-    elif cmd == "clear":
-        clear_tmp()
-
-    elif cmd == "service":
-        if hosts_starts_with_noclear():
-            print("Service management disabled (did you install from an package library?)")
-            return
-        if len(sys.argv) < 3:
-            print("Usage: oshctl service [install|uninstall]")
-            return
-        action = sys.argv[2]
-        if action == "install":
-            with open("/etc/systemd/system/oshd-clean.service", "w") as f:
-                f.write(f"""[Unit]
-Description=Clean temporary /etc/hosts entries from oshd
-DefaultDependencies=no
-Before=shutdown.target reboot.target halt.target poweroff.target
-
-[Service]
-Type=oneshot
-ExecStart={pathlib.Path(__file__).resolve()} clear
-
-[Install]
-WantedBy=halt.target reboot.target shutdown.target poweroff.target
-""")
-            os.system("systemctl daemon-reload")
-            print("It is reccomended to now enable and start oshd-clean.service.")
-        elif action == "uninstall":
-            if os.path.exists("etc/systemd/system/oshd-clean.service"):
-                os.system("systemctl disable --now oshd-clean.service")
-                os.remove("/etc/systemd/system/oshd-clean.service")
-                os.system("systemctl daemon-reload")
+    if is_daemon_running():
+        if not send_via_socket(command_line):
+            # Fallback to one-shot if socket fails
+            run_one_shot(command_args)
+    else:
+        run_one_shot(command_args)
 
 if __name__ == "__main__":
     main()
-
