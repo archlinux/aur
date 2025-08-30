@@ -1,7 +1,7 @@
 pkgbase = openlara-git
 	pkgdesc = Classic Tomb Raider open-source engine
 	pkgver = r1430.b4bcd4a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/XProger/OpenLara
 	arch = x86_64
 	arch = aarch64

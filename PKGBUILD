@@ -5,7 +5,7 @@ pkgname=openlara-git
 _pkgname=openlara
 _prjname=OpenLara
 pkgver=r1430.b4bcd4a
-pkgrel=2
+pkgrel=3
 pkgdesc="Classic Tomb Raider open-source engine"
 url="https://github.com/XProger/OpenLara"
 license=('unknown')
@@ -28,13 +28,13 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir"/usr/{share,lib}/openlara
-	install -m 755 "$srcdir/$_prjname/src/platform/sdl2/OpenLara" "$pkgdir/usr/lib/openlara/OpenLara"
+#	mkdir -p "$pkgdir/usr/bin" "$pkgdir"/usr/{share,lib}/openlara
+	install -m 755 "$srcdir/$_prjname/src/platform/sdl2/OpenLara" "$pkgdir/usr/bin/openlara"
 #       install -m 644 "$srcdir/$_prjname/bin/openvr_api.dll" "$pkgdir/usr/lib/openlara/openvr_api.dll"
 #	install -m 644 "$srcdir/$_prjname/bin/LEVEL2.PSX" "$pkgdir/usr/share/openlara/LEVEL2.PSX"
 #	install -m 644 "$srcdir/$_prjname/bin/05.ogg" "$pkgdir/usr/share/openlara/05.ogg"
-#	install -m 644 "$srcdir/$_prjname/bin/008.ogg" "$pkgdir/usr/share/openlara/008.ogg"
+#	install -m 644 "$srcdir/$_prjname/bin/008.ogg" "$pkgdir/usr/share/openlara/008openlara.ogg"
 	# use a wrapper as the program needs its CWD to be the directory containing the data files
-	echo -e '#!/bin/sh\nset -eu\ncd /usr/share/openlara\n/usr/lib/openlara/OpenLara $@' > "$pkgdir/usr/bin/openlara"
-	chmod 0755 "$pkgdir/usr/bin/openlara"
+	#echo -e '#!/bin/sh\nset -eu\ncd /usr/share/openlara\n/usr/lib/openlara/OpenLara $@' > "$pkgdir/usr/bin/openlara"
+	#chmod 0755 "$pkgdir/usr/bin/openlara"
 }
