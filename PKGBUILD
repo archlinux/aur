@@ -9,7 +9,7 @@ url='https://github.com/programadoroccidental/pass-phrase'
 license=('GPL3')
 depends=('pass')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0725fbeee95ad937a9052cac3ca4c952fafeaefc8b5cdd1e87339f0718b8dcfd77cc7ac3b194e5135b1ed17da2019ea0d0c1ed22361dba7f57827fe71e39f147')
+sha512sums=('e5c30e243c2c2faf1b8ea37b20680e9d3b6187418e0c3adf991f633d4d027417e19d4202bd6d0c4f685b4736f923d2706d64e6cdc5b291278d26c2dfd1036a5f')
 
 package() {
   cd "$pkgname-$pkgver"
