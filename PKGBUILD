@@ -4,7 +4,7 @@ _modulename="libxml2"
 _pyruntime=python2
 pkgname="${_pyruntime}-${_modulename}"
 pkgver=2.9.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Python 2 bindings for the XML parsing library v2'
 _url="https://gitlab.gnome.org/GNOME/${_modulename}"
 url="${_url}/-/wikis/home"
@@ -17,12 +17,6 @@ depends=(
 )
 makedepends=(
   git
-)
-provides=(
- "${pkgname}" 
-)
-conflicts=(
- "${pkgname}" 
 )
 _commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
