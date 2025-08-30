@@ -3,7 +3,7 @@
 pkgver=1.12.3
 pkgbase=windsurf
 pkgname=(windsurf{,-electron-latest})
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://windsurf.com/"
 license=('LicenseRef-Windsurf Editor')
@@ -22,7 +22,6 @@ optdepends=('glib2: Move to trash functionality'
             'lsof: Terminal splitting'
             'vulkan-driver')
 options=('!strip') # for sing of ext ?
-makedepends=(tar sed desktop-file-utils) # tar is faster than bsdtar.
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('07a88b123beb656b588dfe7c17b666388630c7b1c7eed1e2cd5a811fe4bd6ec3'
@@ -44,8 +43,6 @@ build() {
 	ln -svf /usr/bin/xdg-open usr/share/windsurf/resources/app/node_modules/open/xdg-open
 	# SVG Icon
 	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-	# Hide entry of URL handler
-	desktop-file-edit --set-key Hidden --set-value true usr/share/applications/windsurf-url-handler.desktop
 }
 
 package_windsurf(){
