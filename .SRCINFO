@@ -1,16 +1,14 @@
 pkgbase = coreutils-uutils
-	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils symlinked as system core utilities (WARNING: use at own risk).
+	pkgdesc = (Experimental) Use uutils as system core utilities
 	pkgver = 0.1.0
 	pkgrel = 5
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
 	license = MIT
 	makedepends = rust-musl
-	makedepends = make
 	depends = uutils-coreutils=0.1.0
 	provides = coreutils
 	provides = b3sum
-	provides = sha3sum
 	conflicts = coreutils
 	conflicts = b3sum
 	conflicts = sha3sum
