@@ -1,7 +1,7 @@
 From 6a53bc605a3d987f8f9337716eaef6c52eeb9df8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 May 2025 00:51:18 +0200
-Subject: [PATCH 20/24] Allow keeping Android app in background with
+Subject: [PATCH 20/25] Allow keeping Android app in background with
  QtQuickView
 
 Do not terminate Qt as this would stop the main Qt thread which is not
