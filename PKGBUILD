@@ -16,8 +16,8 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Install binary
-  install -Dm755 "${srcdir}/30nama.AppImage" \
-    "${pkgdir}/usr/bin/30nama"
+  install -Dm755 "${srcdir}/30nama-1.4.2.AppImage" \
+  "${pkgdir}/usr/bin/30nama"
 
   # Desktop entry
   install -Dm644 "${srcdir}/30nama.desktop" \
