@@ -2,7 +2,7 @@
 
 pkgname=python-caerus
 pkgdesc='Detection of favorable moments in time series data'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 url='https://github.com/erdogant/caerus'
 arch=('any')
@@ -30,7 +30,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '6b8db65b1d27be4472a9e73aa9dc3c19cce9b7e78bfc872633eeebc3ba4d8717'
+  '193843e50977930569e4070f7d28b1f550df20699b2e048762348d03f0a29f43'
 )
 
 build() {
