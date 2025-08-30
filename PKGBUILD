@@ -10,7 +10,7 @@
 
 _gitname=gkrellm
 pkgname=${_gitname}d-git
-pkgver=20210123.13f1489
+pkgver=20250830.edad31a
 pkgrel=1
 pkgdesc="Headless version of system monitor package"
 arch=('x86_64' 'i686')
@@ -42,7 +42,7 @@ package() {
   cd ${srcdir}/${_gitname}/server
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -Dm644 "gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
+  install -Dm644 "../data/gkrellmd.conf" "$pkgdir/etc/gkrellmd.conf"
   install -Dm644 "../../gkrellmd.service" "$pkgdir/usr/lib/systemd/system/gkrellmd.service"
 }
 
