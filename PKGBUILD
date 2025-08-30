@@ -2,12 +2,12 @@
 pkgname=puck
 pkgver="2.3.65"
 _weird_number="260"
-pkgrel=1
+pkgrel=2
 pkgdesc="Program for the use and computation of kinship data"
 arch=(any)
 url="https://www.kintip.net/"
-license=('GPL')
-depends=(jre7)
+license=('GPL-1.0-or-later')
+depends=('java-runtime')
 source=("https://www.kintip.net/component/jdownloads/send/3-logiciels/${_weird_number}-${pkgname}-${pkgver//\./\-}"
 	"puck.desktop")
 noextract=()

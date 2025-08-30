@@ -1,11 +1,11 @@
 pkgbase = puck
 	pkgdesc = Program for the use and computation of kinship data
 	pkgver = 2.3.65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kintip.net/
 	arch = any
-	license = GPL
-	depends = jre7
+	license = GPL-1.0-or-later
+	depends = java-runtime
 	source = https://www.kintip.net/component/jdownloads/send/3-logiciels/260-puck-2-3-65
 	source = puck.desktop
 	sha256sums = cf5dd82634d66ceb08df146527a65577491fd3eab7d330bfceb7ec0498e1a70c
