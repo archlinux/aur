@@ -35,7 +35,7 @@ package() {
   cd "${srcdir}/${_gitname}"
 
   # binary
-  install -vDm755 "doWM" "$pkgdir/usr/bin/doWM"
+  install -vDm755 "doWM" "$pkgdir/usr/local/bin/doWM"
   
   # xsession listing
   install -vDm644 "doWM.desktop" "$pkgdir/usr/share/xsessions/doWM.desktop"
