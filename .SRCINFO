@@ -1,7 +1,7 @@
 pkgbase = wmii-git
 	pkgdesc = A dynamic window manager for X11.
 	pkgver = r2832.26848c93
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0intro/wmii
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = wmii-git
 	depends = libxinerama
 	depends = libxrandr
 	depends = libixp
+	depends = python-setuptools
 	optdepends = dash: for use of the default wmiirc configs
 	optdepends = libxft: for anti-aliased font support
 	optdepends = xorg-xmessage: for use of the default wmiirc configs

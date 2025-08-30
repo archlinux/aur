@@ -1,13 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmii-git
 pkgver=r2832.26848c93
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc='A dynamic window manager for X11.'
 arch=('i686' 'x86_64')
 url='https://github.com/0intro/wmii'
 license=(MIT)
-depends=('libx11' 'libxinerama' 'libxrandr' 'libixp')
+depends=('libx11' 'libxinerama' 'libxrandr' 'libixp' 'python-setuptools')
 makedepends=(git txt2tags)
 optdepends=(
 	'dash: for use of the default wmiirc configs'
