@@ -4,7 +4,7 @@ _suffix=rc
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.0-beta1
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 epoch=11
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -143,6 +143,8 @@ prepare() {
 build() {
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_FLAGS="-DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="-DNDEBUG" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_LIBFDK=ON \
