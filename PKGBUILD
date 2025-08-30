@@ -1,42 +1,44 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
-_pkgname="GIMP_AppImage-release"
-pkgname="gimp-appimage"
-pkgver="2.10.22"
-pkgrel="1"
-pkgdesc="GNU Image Manipulation Program (AppImage version)"
-arch=('x86_64')
-_filename="${_pkgname}-${pkgver}-withplugins-${arch}.AppImage"
-url='https://github.com/aferrero2707/gimp-appimage'
-license=('custom')
-depends=('hicolor-icon-theme' 'zlib')
+# Maintainer: Josh Ellithorpe <quest@mac.com>
+
+pkgname=gimp-appimage
+_pkgname=gimp
+pkgver=3.0.4
+pkgrel=1
+pkgdesc="GNU Image Manipulation Program AppImage"
 provides=('gimp')
 conflicts=('gimp')
-options=('!strip' '!emptydirs')
-install='GIMP_AppImage.install'
-source=("${_filename}::${url}/releases/download/continuous/${_filename}"
-        ${_pkgname}.sh)
-sha256sums=('0289456e7bd566d14fb0c6f8f22bca58bcf62d6b698fb41571d5e2d347b62e42'
-            '04e6d5c88f0eed70bcb1189a89015878943e6f039db30bb6f50fcad363d67487')
+arch=('x86_64')
+depends=('fuse2')
+url="https://www.gimp.org/"
+options=(!strip)
+_desktop_name=org.gimp.GIMP.Stable.desktop
+_icon_name=org.gimp.GIMP.Stable.svg
+_filename=GIMP-${pkgver}-x86_64.AppImage
+source=(
+  https://download.gimp.org/gimp/v3.0/linux/GIMP-${pkgver}-x86_64.AppImage
+)
+sha512sums=('f2d96f79cc4cff291700742565499fe825e5f36554e77ff2b5cbc31089c1a8ba79e77b7e8b4898fe40a020dbe24d1c9fa6b6f5954aeb0e5a4d61725e7501c39a')
 
 prepare() {
-    cd "${srcdir}"
-
-    # mark as executable so we can extract
-    chmod u+x ${_filename}
-
-    # extract the AppImage  
-    ./${_filename} --appimage-extract
+  cd "${srcdir}"
+  rm -rf squashfs-root
+  chmod +x ${_filename}
+  ./${_filename} --appimage-extract
+  sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/gimp %U|" squashfs-root/${_desktop_name}
+  sed -i -e "s|TryExec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/gimp|" squashfs-root/${_desktop_name}
+  sed -i -E "s:StartupWMClass=org.gimp.GIMP.Stable:StartupWMClass=${_pkgname}:" "squashfs-root/${_desktop_name}"
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
-    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/gimp-2.10"
-    ln -s "${pkgdir}/usr/bin/gimp-2.10" "${pkgdir}/usr/bin/gimp"
+  echo "Starting install"
+  install -Dm755 ${_filename} "${pkgdir}/opt/GIMP/${_filename}"
 
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-    cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/applications" "${pkgdir}/usr/share/"
+  echo "Symlinking binary"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/GIMP/${_filename}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  echo "Installing desktop launcher"
+  install -Dm755 squashfs-root/${_desktop_name} "${pkgdir}/usr/share/applications/${_desktop_name}"
+  echo "Installing icon"
+  install -Dm644 "squashfs-root/${_icon_name}" "${pkgdir}/usr/share/pixmaps/${_icon_name}"
 }
-
-# vim: set ts=4 sw=4 et syn=sh ft=sh:
