@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-git'
 _pkgname='winboat'
-pkgver=r93.0be4918
+pkgver=r94.8c04abb
 _pkgver='0.6.3'
 pkgrel=1
 pkgdesc='Run Windows apps on Linux with seamless integration'
@@ -38,7 +38,7 @@ package() {
 	install -D icons/icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
 
 	# Licences
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"	
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"	
 	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop <<EOF
 [Desktop Entry]
 Name=winboat
