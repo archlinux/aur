@@ -1,0 +1,16 @@
+pkgbase = 30nama-bin
+	pkgdesc = 30nama binary release
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://30nama.com
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://cdn.30store.click/30nama-1.4.2.AppImage
+	source = 30nama.desktop
+	source = 30nama.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = 30nama-bin
