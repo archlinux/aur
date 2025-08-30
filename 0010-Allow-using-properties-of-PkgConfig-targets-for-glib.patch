@@ -1,7 +1,7 @@
 From c4f4c45daa87da4696de44e33354804027e451af Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 26 Apr 2022 20:16:31 +0200
-Subject: [PATCH 10/24] Allow using properties of PkgConfig targets for glib2
+Subject: [PATCH 10/25] Allow using properties of PkgConfig targets for glib2
  to handle deps of static glib2
 
 Change-Id: I37d20256d17ae9cc0775e32aa479f1e433ece908

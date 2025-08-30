@@ -1,7 +1,7 @@
 From a309df1954c665a1145962a202f130b3cf1585e6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 2 Apr 2025 22:00:09 +0200
-Subject: [PATCH 19/24] Avoid compile error due to inconsistent use of
+Subject: [PATCH 19/25] Avoid compile error due to inconsistent use of
  `noexcept`
 
 Change-Id: Ib4c392cd306b4e8b433048af077ae7aeb0459e1f
