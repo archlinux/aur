@@ -1,6 +1,6 @@
 pkgbase = mkdocstrings-python
 	pkgdesc = A Python handler for mkdocstrings
-	pkgver = 1.18.0
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://mkdocstrings.github.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mkdocstrings-python
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings_python/mkdocstrings_python-1.18.0.tar.gz
-	sha256sums = 0b9924b4034fe9ae43604d78fe8e5107ea2c2391620124fc833043a62e83c744
+	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings_python/mkdocstrings_python-1.18.2.tar.gz
+	sha256sums = 4ad536920a07b6336f50d4c6d5603316fafb1172c5c882370cbbc954770ad323
 
 pkgname = mkdocstrings-python
 	depends = python>=3.9
