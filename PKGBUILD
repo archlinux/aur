@@ -1,8 +1,8 @@
 # Maintainer: Jonas Karlsson <jonaskarlsson at fripost dot org>
 
 pkgname=thinkfan-tui
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A terminal-based Linux application for fan control and temperature monitoring on ThinkPad laptops."
 url="https://github.com/karjonas/thinkfan-tui"
 license=('MIT')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('polkit' 'lm_sensors')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("git+$url#tag=$pkgver")
-sha256sums=('03bdb58fecce2ca574645b80d53e3e0ce80323506a1207ef95c67d259ff72ade')
+sha256sums=('948856a9121aca09d8bc2d9b3d38f2ac40725b82b8eb85fcd1a9386e73c1b80c')
 
 prepare() {
     cd "$pkgname"

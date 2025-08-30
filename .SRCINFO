@@ -1,7 +1,7 @@
 pkgbase = thinkfan-tui
 	pkgdesc = A terminal-based Linux application for fan control and temperature monitoring on ThinkPad laptops.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/karjonas/thinkfan-tui
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = thinkfan-tui
 	makedepends = cargo
 	depends = polkit
 	depends = lm_sensors
-	source = git+https://github.com/karjonas/thinkfan-tui#tag=0.2.0
-	sha256sums = 03bdb58fecce2ca574645b80d53e3e0ce80323506a1207ef95c67d259ff72ade
+	source = git+https://github.com/karjonas/thinkfan-tui#tag=0.3.0
+	sha256sums = 948856a9121aca09d8bc2d9b3d38f2ac40725b82b8eb85fcd1a9386e73c1b80c
 
 pkgname = thinkfan-tui
