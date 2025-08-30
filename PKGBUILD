@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-bluetooth-battery-meter-git
-pkgver=030.r60.gda350ab
+pkgver=030.r70.g11a137c
 pkgrel=1
 pkgdesc="A GNOME extension that displays indicator icons in the system tray, acting as a meter for Bluetooth device battery levels."
 arch=('any')
@@ -30,6 +30,7 @@ build() {
     --extra-source=icons/ \
     --extra-source=lib/ \
     --extra-source=preferences/ \
+    --extra-source=script/ \
     --extra-source=ui/ \
     --podir=po \
     --force
