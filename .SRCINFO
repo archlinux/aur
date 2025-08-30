@@ -5,7 +5,6 @@ pkgbase = omarchist-bin
 	url = https://github.com/tahayvr/omarchist-app
 	install = omarchist-bin.install
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = cairo
 	depends = desktop-file-utils
