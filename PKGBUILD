@@ -7,7 +7,7 @@ _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-declarative
 _qtver=6.9.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -22,9 +22,11 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Exclude-qmltime-when-cross-compiling.patch')
+        '0001-Exclude-qmltime-when-cross-compiling.patch'
+        '0002-Revert-Make-AnimatedNodes-use-afterSynchronizing.patch')
 sha256sums=('477f2d2c0bd98916107818725e6d498206e033dfb2859c52121e01a06ac42664'
-            '2bc8af6b56c9eb83347af81ed74c6e822f54d2bc91a34966674c6aad0a31bd71')
+            'aeb0c250bc652284c205437caa47fb5278cef4d3f44d9ca04cc26a7a3240c0ed'
+            '5a49f45f8d5f9b5fd9fda856a4000876b3433d91737020d03dd0f9a780a8a90d')
 
 prepare () {
   cd $_pkgfqn
