@@ -1,7 +1,7 @@
 # Maintainer: Sandwich <sandwich at archworks dot co>
 
 pkgname=baibot
-pkgver=1.7.2
+pkgver=1.7.6
 pkgrel=0
 pkgdesc="Baibot - Matrix AI Chatbot"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "$pkgname.sysusers"
   "$pkgname.service"
 )
-sha256sums=('d0dfe9f845cfbca32c0d11fe2deb32dbe935674f2c6c39dcc25556e0eedae808'
+sha256sums=('ed44d4577511efd44fbacaa516469d1498cc32595206b9ce574c6b91a68bf78e'
             '40785e3b129ef1ac793c973018cad12bafd212cb5434f60a8ecf80114bfc7a4c'
             '4068016b826f1fa2783a240689a374a889ea477dc9e92fc26298c250e2f1605b'
             'c4d8314216b3430b514f009204e381004a8a7713d0b8b3c559c88c3cc0afe400'
