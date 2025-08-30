@@ -1,6 +1,6 @@
 # Maintainer: Christian <37947442+OfficialKris@users.noreply.github.com>
 pkgname=dowm-git
-pkgver=r89.78560cb
+pkgver=r129.d73b7ec
 pkgrel=1
 pkgdesc="A beautiful window manager for x11"
 arch=(x86_64)

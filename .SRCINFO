@@ -1,6 +1,6 @@
 pkgbase = dowm-git
 	pkgdesc = A beautiful window manager for x11
-	pkgver = r89.78560cb
+	pkgver = r129.d73b7ec
 	pkgrel = 1
 	url = https://github.com/BobdaProgrammer/doWM
 	arch = x86_64
