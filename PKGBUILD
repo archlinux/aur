@@ -2,7 +2,7 @@
 
 pkgname=hyprpanel-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="An opinionated panel/shell for the Hyprland compositor."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ optdepends=('uwsm: wayland session support'
 _src="${url}/releases/download/v${pkgver}/hyprpanel_Linux"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_src}_x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_src}_arm64.tar.gz")
-sha256sums_x86_64=('a964c417117fdea5c0d31663cdd2709ffe603f660cf1acb1582c918a57d9ed7d')
-sha256sums_aarch64=('3d680c71254b4e5d493ed0d54c22990d56f65b9206e78803615a53144022733b')
+sha256sums_x86_64=('6a0849d8956f149655f993f6f6968b6b43862361c0ecf9c308f086de07d90b84')
+sha256sums_aarch64=('7c5374f8b8ee1d709f822f818c47d13962d067b1fa702fc3ff9987ca407e678d')
 
 package() {
   install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

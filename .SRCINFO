@@ -1,6 +1,6 @@
 pkgbase = hyprpanel-bin
 	pkgdesc = An opinionated panel/shell for the Hyprland compositor.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/pdf/hyprpanel
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = hyprpanel-bin
 	provides = hyprpanel
 	conflicts = hyprpanel
 	options = !strip
-	source_x86_64 = hyprpanel-bin-0.3.0-x86_64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.3.0/hyprpanel_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a964c417117fdea5c0d31663cdd2709ffe603f660cf1acb1582c918a57d9ed7d
-	source_aarch64 = hyprpanel-bin-0.3.0-aarch64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.3.0/hyprpanel_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 3d680c71254b4e5d493ed0d54c22990d56f65b9206e78803615a53144022733b
+	source_x86_64 = hyprpanel-bin-0.3.1-x86_64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.3.1/hyprpanel_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6a0849d8956f149655f993f6f6968b6b43862361c0ecf9c308f086de07d90b84
+	source_aarch64 = hyprpanel-bin-0.3.1-aarch64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.3.1/hyprpanel_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7c5374f8b8ee1d709f822f818c47d13962d067b1fa702fc3ff9987ca407e678d
 
 pkgname = hyprpanel-bin
