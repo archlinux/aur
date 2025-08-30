@@ -1,0 +1,4 @@
+[python-wn]
+source = "git"
+git = "https://github.com/goodmami/wn.git"
+prefix = "v"

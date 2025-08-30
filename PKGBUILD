@@ -1,28 +1,48 @@
-# Maintainer: Mufeed Ali <mufeed@kumo.foo>
-# ex-Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Mufeed Ali <mufeed@kumo.foo>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Federico Cassani <federico dot cassani at outlook dot com>
-
-pkgbase='python-wn'
 pkgname=python-wn
-_author=goodmami
-_gitname=wn
-pkgver=0.9.5
+_name=${pkgname#python-}
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Wordnet interface library"
 arch=('any')
-url='https://github.com/goodmami/wn'
+url="https://wn.readthedocs.io"
 license=('MIT')
-depends=('python' 'python-tomli' 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-flit')
-source=("https://files.pythonhosted.org/packages/a7/05/278cb587ad052681a8a8092af8c28a8e802397d5c35f530a79cf913c66cf/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('9ae62e0e6607f56e63e9eb8360930c8337ecc44e9e0488430aa1fa3fb9c51be4')
+depends=(
+  'python'
+  'python-httpx'
+  'python-tomli'
+)
+makedepends=(
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-benchmark'
+  'python-starlette'
+)
+optdepends=('python-starlette')
+source=("$_name-$pkgver.tar.gz::https://github.com/goodmami/wn/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9987e72445bb21404f86edbb5ecccf149871582dcf60edfd98525eac1b27ad23')
 
 build() {
-    cd "${srcdir}/${_gitname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  PYTHONPATH=. pytest
 }
 
 package() {
-    cd "${srcdir}/${_gitname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
