@@ -39,10 +39,13 @@ post_install() {
 post_upgrade() {
     blue "alacritty-smooth-cursor-git was updated"
     magen "Important changes:"
+    green "- Reworked the cursor rendering method, should look and behave better"
     green "- Added seltools patch. See README.md on GitHub for more info"
     magen "Older changes:"
     green "- Patches rebased to match upstream Alacritty's master branch"
     green "- Fixed Wayland support. No XWayland is required anymore. If you experience issues, please reopen https://github.com/GregTheMadMonk/alacritty-smooth-cursor/issues/3"
     green "- Animation speed no longer depends on FPS. You might want to adjust your motion factor because it might've been affected by your FPS previously"
     green "- Idle resource consumption greatly reduced"
+    green ""
+    magen "See CHANGELOG for a more versbose list of changes"
 }

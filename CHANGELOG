@@ -1,3 +1,6 @@
+2025-08-30 GregTheMadMonk <yagreg7@gmail.com>
+    * Rework cursor rendering: better rendering over text and transition to
+      hidden cursor now work
 2025-04-16 GregTheMadMonk <yagreg7@gmail.com>
     * Add seltools patch: interactive preview of current selection as JSON data
 2025-04-11 GregTheMadMonk <yagreg7@gmail.com>
