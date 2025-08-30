@@ -1,7 +1,7 @@
 # Maintainer: Jan Dvorak <(firstname).(lastname) @ dvorak-sw.com>
 pkgname=epodpisfs
 pkgver=19.9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Electronic signing of tax and other forms for the Financial Administration of the Czech Republic"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://epodpora.mfcr.cz/cs/seznam-okruhu/podpisova-aplikace-epodpisfs/podp
 license=('custom')
 depends=('ca-certificates' 'ttf-dejavu' 'freetype2' 'glibc>=2.27' 'libxext' 'libxrender' 'libxtst' 'libx11' 'opensc' 'xdg-utils' 'zlib')
 options=('!strip' '!emptydirs' '!debug')
-source=("${pkgname}-${pkgver}_${arch}.deb::https://adisspr.mfcr.cz/dpr/adis/idpr_pub/epodpis_info/epodpisfs-ubuntu-19.9.deb")
-sha256sums=('5835b8f7ae76c9273b39669c95f8b010e082ea287b0cf2002b49af6ec623c7a4')
+source=("${pkgname}-${pkgver}_${arch}.deb::https://adisspr.mfcr.cz/dpr/adis/idpr_pub/epodpis_info/epodpisfs-ubuntu-19.0.deb")
+sha256sums=('dbe27a01277d8401ac6d21364db62d1dedc29f26a32c6cd364923094ca51429e')
                          
 package() {      
         # Create subdirectories
@@ -18,7 +18,7 @@ package() {
         install -d "${pkgdir}/usr/bin"
 
         # Extract package data
-        tar --exclude='./epodpisfs' -xI unzstd -f data.tar.zst -C "${pkgdir}"
+        tar --exclude='./epodpisfs' -xI unzstd -f data.tar.xz -C "${pkgdir}"
   
         # Fix desktop file
         sed -i 's/^Categories=/Categories=Office;/' "${pkgdir}/usr/share/applications/${pkgname}.desktop"

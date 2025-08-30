@@ -1,7 +1,7 @@
 pkgbase = epodpisfs
 	pkgdesc = Electronic signing of tax and other forms for the Financial Administration of the Czech Republic
 	pkgver = 19.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://epodpora.mfcr.cz/cs/seznam-okruhu/podpisova-aplikace-epodpisfs/podpisova-aplikace-epodpisfs-4569
 	arch = x86_64
 	license = custom
@@ -19,7 +19,7 @@ pkgbase = epodpisfs
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source = epodpisfs-19.9_x86_64.deb::https://adisspr.mfcr.cz/dpr/adis/idpr_pub/epodpis_info/epodpisfs-ubuntu-19.9.deb
-	sha256sums = 5835b8f7ae76c9273b39669c95f8b010e082ea287b0cf2002b49af6ec623c7a4
+	source = epodpisfs-19.9_x86_64.deb::https://adisspr.mfcr.cz/dpr/adis/idpr_pub/epodpis_info/epodpisfs-ubuntu-19.0.deb
+	sha256sums = dbe27a01277d8401ac6d21364db62d1dedc29f26a32c6cd364923094ca51429e
 
 pkgname = epodpisfs
