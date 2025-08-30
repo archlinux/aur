@@ -4,6 +4,7 @@ import sys
 import socket
 import pwd
 import grp
+import signal
 
 HOSTS_FILE = "/etc/hosts"
 MARKER = "# [oshd] tmp\n"
@@ -62,12 +63,17 @@ def handle_command(cmd_line):
         rm_entry(parts[1])
         return b"OK"
 
-    elif cmd == "clean":
+    elif cmd == "clear":
         clear_tmp()
         return b"OK"
 
     else:
         return b"ERROR: unknown command"
+# --- Cleanup ---
+def on_exit(signum, frame)
+    print(f"Got signal {signum}, cleaning up...")
+    clear_tmp()
+    sys.exit(0)
 
 # --- Daemon mode ---
 def run_daemon():
@@ -79,6 +85,9 @@ def run_daemon():
     server.bind(SOCKET_PATH)
     os.chmod(SOCKET_PATH, 0o660)
     
+    for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP):
+        signal.signal(sig, on_exit)
+
     root_uid = pwd.getpwnam("root").pw_uid
     wheel_gid = grp.getgrnam("wheel").gr_gid
     os.chown(SOCKET_PATH, root_uid, wheel_gid)
