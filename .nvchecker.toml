@@ -1,0 +1,3 @@
+[wordbook]
+source = "git"
+git = "https://github.com/mufeedali/Wordbook.git"
