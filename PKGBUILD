@@ -2,7 +2,7 @@
 
 pkgname=g13-ak
 pkgdesc='Userspace Linux driver for the Logitech G13 gameboard'
-pkgver=1
+pkgver=3
 pkgrel=1
 url="https://github.com/achilleas-k/g13-ak"
 arch=(x86_64)
@@ -15,8 +15,8 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/achilleas-k/g13-ak/archive/refs/tags/v${pkgver}.tar.gz
   g13.service
 )
-sha256sums=('38cd9c7c883f66e68ba5090d7b7534a23258ed4c2103a2b749a0bbebcd16bc0d'
-            'ba770d252497113236a53f2aeb5d395f2d86ca353998b45d99107ce20de1e8a4')
+sha256sums=('b6c0dfefaa11dac2b0528a34016d1d1817dbe1c0860f612fde4594ca9ce2db4f'
+            'c7ab2fe541068452e4c605c7eb318930ece1ef664f0939360c576d5d60447c17')
 
 prepare() {
   cd $pkgname-$pkgver
