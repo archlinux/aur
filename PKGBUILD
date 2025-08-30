@@ -1,55 +1,100 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_knotty pzl_marupeke pzl_masyu pzl_minesweeper pzl_moonlight pzl_numberlink pzl_nurikabe pzl_othello pzl_ripple pzl_scrabbler pzl_shakashaka pzl_shikaku pzl_skyscrapers pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordladder pzl_wordwheel pzl_wordy)
+pkgname=(
+	pzl_common
+	pzl_ajs
+	pzl_akari
+	pzl_arrowsudoku
+	pzl_binary
+	pzl_boggle
+	pzl_bridges
+	pzl_codeword
+	pzl_fillomino
+	pzl_follow_123
+	pzl_futoshiki
+	pzl_gol
+	pzl_gridword
+	pzl_hidato
+	pzl_hitori
+	pzl_jigsaw
+	pzl_jigsawsudoku
+	pzl_kakuro
+	pzl_knotty
+	pzl_marupeke
+	pzl_masyu
+	pzl_minesweeper
+	pzl_moonlight
+	pzl_numberlink
+	pzl_nurikabe
+	pzl_othello
+	pzl_phrazy
+	pzl_ripple
+	pzl_scrabbler
+	pzl_shakashaka
+	pzl_shikaku
+	pzl_skyscrapers
+	pzl_sokoban
+	pzl_sudoku
+	pzl_suguru
+	pzl_sumpuzzle
+	pzl_targets
+	pzl_tetrofit
+	pzl_tracks
+	pzl_wordladder
+	pzl_wordwheel
+	pzl_wordy)
 pkgbase="pzl_games"
-pkgver=32.1
-_pkgver=32_1
+pkgver=35.1
+_pkgver=35_1
 pkgrel=1
 pkgdesc="Collection of puzzle games."
 arch=('any')
 url="http://pzl.org.uk/"
 license=('GPL')
-source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
-        "pzl_ajs.desktop"
-        "pzl_akari.desktop"
-        "pzl_arrowsudoku.desktop"
-        "pzl_binary.desktop"
-        "pzl_boggle.desktop"
-        "pzl_bridges.desktop"
-        "pzl_codeword.desktop"
-        "pzl_fillomino.desktop"
-        "pzl_follow_123.desktop"
-        "pzl_futoshiki.desktop"
-        "pzl_gol.desktop"
-        "pzl_hidato.desktop"
-        "pzl_hitori.desktop"
-        "pzl_jigsaw.desktop"
-        "pzl_jigsawsudoku.desktop"
-        "pzl_kakuro.desktop"
-        "pzl_knotty.desktop"
-        "pzl_marupeke.desktop"
-        "pzl_masyu.desktop"
-        "pzl_minesweeper.desktop"
-        "pzl_moonlight.desktop"
-        "pzl_numberlink.desktop"
-        "pzl_nurikabe.desktop"
-        "pzl_othello.desktop"
-        "pzl_ripple.desktop"
-        "pzl_scrabbler.desktop"
-        "pzl_shakashaka.desktop"
-        "pzl_shikaku.desktop"
-        "pzl_skyscrapers.desktop"
-        "pzl_sokoban.desktop"
-        "pzl_sudoku.desktop"
-        "pzl_suguru.desktop"
-        "pzl_sumpuzzle.desktop"
-        "pzl_targets.desktop"
-        "pzl_tetrofit.desktop"
-        "pzl_wordladder.desktop"
-        "pzl_wordwheel.desktop"
-        "pzl_wordy.desktop")
+source=("https://pzl.org.uk/pzl3_$_pkgver.zip"
+	    "pzl_ajs.desktop"
+	    "pzl_akari.desktop"
+	    "pzl_arrowsudoku.desktop"
+	    "pzl_binary.desktop"
+	    "pzl_boggle.desktop"
+	    "pzl_bridges.desktop"
+	    "pzl_codeword.desktop"
+	    "pzl_fillomino.desktop"
+	    "pzl_follow_123.desktop"
+	    "pzl_futoshiki.desktop"
+	    "pzl_gol.desktop"
+	    "pzl_gridword.desktop"
+	    "pzl_hidato.desktop"
+	    "pzl_hitori.desktop"
+	    "pzl_jigsaw.desktop"
+	    "pzl_jigsawsudoku.desktop"
+	    "pzl_kakuro.desktop"
+	    "pzl_knotty.desktop"
+	    "pzl_marupeke.desktop"
+	    "pzl_masyu.desktop"
+	    "pzl_minesweeper.desktop"
+	    "pzl_moonlight.desktop"
+	    "pzl_numberlink.desktop"
+	    "pzl_nurikabe.desktop"
+	    "pzl_othello.desktop"
+	    "pzl_phrazy.desktop"
+	    "pzl_ripple.desktop"
+	    "pzl_scrabbler.desktop"
+	    "pzl_shakashaka.desktop"
+	    "pzl_shikaku.desktop"
+	    "pzl_skyscrapers.desktop"
+	    "pzl_sokoban.desktop"
+	    "pzl_sudoku.desktop"
+	    "pzl_suguru.desktop"
+	    "pzl_sumpuzzle.desktop"
+	    "pzl_targets.desktop"
+	    "pzl_tetrofit.desktop"
+	    "pzl_tracks.desktop"
+	    "pzl_wordladder.desktop"
+	    "pzl_wordwheel.desktop"
+	    "pzl_wordy.desktop")
 
-md5sums=('e63539c7387402f5d6b88d7e38539a15'
+md5sums=('c12bee4aedcaae9ba080f6e2ba0c4168'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -61,6 +106,7 @@ md5sums=('e63539c7387402f5d6b88d7e38539a15'
          '51133afd3dcae236d0276221434400c5'
          '744840240079721ae72b14b49589ef4b'
          '512c219ec03d89e100e0aca6ff5b3f42'
+         '9f5eda512aed6ec3740871ee29a2577d'
          'a07ce126d031c9fbed8c1cbe2c6af1a1'
          'c16b0f4c92f3d37269097f138c820e54'
          '00333ad5a67aa529189cb8d5efce7ec2'
@@ -74,6 +120,7 @@ md5sums=('e63539c7387402f5d6b88d7e38539a15'
          'ab1d907a83c8b7e359eff308ee89d9d9'
          '08f441dcf7ec24f4148d9a952738d7f4'
          'b56963fa4b72c8b93e799ed25055a3b4'
+         'ddeee87eaa9d05008e4950581c88c97f'
          'd1eea30878b0028a5a5e36a0b0158b81'
          'bdcdc0250d61c33f85289e7e436546a6'
          'ab72a7b572307731ba3647e2f1e6d6fa'
@@ -85,6 +132,7 @@ md5sums=('e63539c7387402f5d6b88d7e38539a15'
          '652ec7a6aa6a225f62579a315bd98421'
          '1c6a099a8b6fff65b9856eb8baab784f'
          'adf64f6092e1d05aafb1bc0c093d56b2'
+         'b4025c7712f6d5adced2c4b25462f8a8'
          'b0afcb5b6a3f2f05b8fd8e6d59d8e6ca'
          'b7b52cd6e554eb01aa0537bb5526e297'
          'fbf0b094c7d61bbce4ab78b9d408de2e')
@@ -210,6 +258,17 @@ package_pzl_gol() {
 	install -m644 pzl3_download/gol.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/gol_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_gol.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_gridword() {
+	pkgdesc="Simple word making game."
+	url="http://pzl.org.uk/gridword.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/gridword.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/gridword_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/gridword_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_gridword.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_hidato() {
@@ -403,6 +462,17 @@ package_pzl_othello() {
 	install -m644 pzl_othello.desktop "$pkgdir/usr/share/applications"
 }
 
+package_pzl_phrazy() {
+	pkgdesc="Extends Wordle to use phrases instead of single words."
+	url="http://pzl.org.uk/phrazy.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/phrazy.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/phrazy_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/phrazy_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_phrazy.desktop "$pkgdir/usr/share/applications"
+}
+
 package_pzl_ripple() {
 	pkgdesc="Puzzle as a rectangular grid of cells to be filled with consecutive numbers."
 	url="http://pzl.org.uk/ripple.html"
@@ -465,6 +535,17 @@ package_pzl_tetrofit() {
 	install -m644 pzl3_download/tetrofit_data.py "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/tetrofit_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_tetrofit.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_tracks() {
+	pkgdesc="Puzzle game."
+	url="http://pzl.org.uk/tracks.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/tracks.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/tracks_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/tracks_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_tracks.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_wordwheel() {

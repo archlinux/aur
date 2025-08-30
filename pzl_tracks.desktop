@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Tracks
+Comment=Tracks (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/tracks.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/tracks_icon.png
+Type=Application
