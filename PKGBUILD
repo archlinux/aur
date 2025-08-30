@@ -13,14 +13,9 @@ conflicts=(${_pkgname})
 depends=('qt6-base' 'qt6-multimedia')
 makedepends=('npm' 'go' 'git')
 options=("!strip" "!debug")
-source=(
-	"$pkgname.png::https://raw.githubusercontent.com/tibixdev/winboat/refs/heads/main/icons/icon.png"
-	"LICENSE::$url/blob/main/LICENSE"
-	"git+https://github.com/tibixdev/winboat.git")
+source=("git+https://github.com/tibixdev/winboat.git")
 
-sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
-            '7579d3d52fa1cd4df438a0a86e5a60e72030ae612f85866001e2f07a6de62efa'
-            'SKIP')
+sha256sums=('SKIP')
 
 
 pkgver() {
