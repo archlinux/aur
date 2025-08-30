@@ -2,9 +2,9 @@
 
 pkgname=qstopmotion
 pkgver=2.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Application for creating stop-motion animation movies'
-url='http://qstopmotion.org/'
+url='https://qstopmotion.org/'
 license=('GPL2')
 arch=('x86_64')
 depends=('ffmpeg' 'libgphoto2' 'qt5-multimedia' 'qwt' 'v4l-utils')
@@ -15,7 +15,7 @@ sha256sums=('8f2054c9a7644ae40a5ceaebe576758f2ea87f5430f12d873f1b8eacf73b4671'
             'fd0c4a63f3cd407143257141ab50cacd500821ded2ba1141a6b54def3490b3f1')
 
 build() {
-  cmake -S $pkgname-$pkgver-Source -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake -S $pkgname-$pkgver-Source -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
