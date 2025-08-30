@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=clipvault
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Clipboard history manager for Wayland, inspired by cliphist"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fac175c2a0406bcd078853b4845b2d20a24bbb999522e4611d632c9811a73fef83610aa88268924823e27fcf840360f2a70930de34e64ef7436dc0cdfd1132cc')
+sha512sums=('465330c5cc8799de9f75e92d22b0598c19b83b19af35abe97da7a888dda79f3fde12b919a2ed6975357c37f183aeee05278253d12927e706e449849e0fa2d7b2')
 options=(!debug !lto)
 
 prepare()
