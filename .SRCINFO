@@ -1,0 +1,16 @@
+pkgbase = bakah
+	pkgdesc = Build Bake files using Buildah
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/emersion/bakah
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = buildah
+	provides = bakah
+	conflicts = bakah
+	source = git+https://github.com/emersion/bakah.git
+	sha256sums = SKIP
+
+pkgname = bakah
