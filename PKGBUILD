@@ -2,7 +2,7 @@
 # contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname="proxify"
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation and replay"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -12,15 +12,14 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${url##*/}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('08891ef27157c91e44a01edff580a6c8975ba87fb721ecad85876b2ebe259d23b8329ef0dc517051d1987843eae998fae30823e4cc54f3f777459a8d6fe07286')
+b2sums=('0cf6420cb2e2f44e2fb182817fe73f8e34e630c06d25660afcc006dcaaca499bb52534c9f3f3f13ac6543f5f27961503ec6770ad68dc432dd503ba1e75828f72')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build"
 }
