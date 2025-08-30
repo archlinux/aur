@@ -2,6 +2,7 @@
 import os
 import sys
 import socket
+import time
 
 SOCKET_PATH = "/run/oshd.sock"
 OSHD_PATH = "/usr/bin/oshd"  # Adjust path to your oshd executable if needed
@@ -23,9 +24,10 @@ def send_via_socket(command):
         return False
 
 def run_one_shot(command_args):
-    print("oshd is not running, starting oshd.")
-    print("It is reccomended to enable oshd to start on boot.")
-    os.system("systemctl start oshd")
+    print("oshd is not running.")
+    print("enabling oshd...")
+    os.system("systemctl enable --now oshd")
+    time.sleep(2) # wait for oshd to launch
     main()
 
 def main():

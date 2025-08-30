@@ -66,7 +66,8 @@ def handle_command(cmd_line):
     elif cmd == "clean":
         clear_tmp()
         return b"OK"
-
+    elif cmd == "list":
+        with open(HOSTS_FILE) as f: print(f.read())
     else:
         return b"ERROR: unknown command"
 # --- Cleanup ---
