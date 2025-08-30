@@ -6,7 +6,7 @@ app="$2" # Приложение
 error="For a hint use command - help..." # Ошибка
 p="$(dirname $(realpath $0))/"
 config="$HOME/.config/app-opener/app-opener.conf"
-version="1.1"
+version="1.2"
 
 if [[ -f $config ]]; then
 	while IFS='=' read -r key value; do
@@ -17,7 +17,7 @@ if [[ -f $config ]]; then
 		export "$key"="$value"
 	done < "$config"
 else
-	app recovery
+	$p"recovery.sh" "$HOME/.app-opener/"
 fi
 
 mkdir -p "$HOME/.app-opener/apps" "$HOME/.app-opener/scripts"
@@ -71,18 +71,27 @@ case $com in
 		echo -e "\e[32mapp-opener - Complex for launching scripts and programs"
 		echo -e "app-opener - called by the command - app."
 		echo -e "--------------------------------------------------\e[0m"
-		echo "open  - open programm."
-		echo "start - run script."
-		echo "list  - show the installed packages."
-		echo "help  - show this is menu."
-		echo "path  - show path installed app-opener."
+		echo "open     - open programm."
+		echo "start    - run script."
+		echo "edit     - edit script."
+		echo "list     - show the installed packages."
+		echo "help     - show this is menu."
+		echo "path     - show path installed app-opener."
+		echo "recovery - start recovery script."
+		echo "version  - show version."
+		echo "authory  - show authory."
 		exit 0
 		;;
 	path)
 		echo -e "Path to the root catalog app-opener: \e[32m$p\e[0m"
 		;;
+	# Вывод версии
 	version)
 		echo "app-opener - $version"
+		;;
+	# Вывод авторства (Удалять фрагмент запрещено)
+	authory)
+		echo -e "Authory - \e[32mStikundraMurtsi (Илья Мурцыта)\e[0m"
 		;;
 	# Ошибка
 	*)

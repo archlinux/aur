@@ -3,7 +3,7 @@
 p="$1"
 
 mkconfig() {
-	echo "Editor=nano" > $config
+	echo "Editor=nano" > $HOME/.config/app-opener/app-opener.conf
 }
 
 echo -e "\e[32mWell, let's see what can be restored here..."

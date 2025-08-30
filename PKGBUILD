@@ -1,6 +1,6 @@
 # Maintainer: Stikkot
 pkgname=app-opener
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Complex for open applications and start scripts..."
 arch=('any')
@@ -17,12 +17,12 @@ source=(
 	"LICENSE"
 	"README.md"
 )
-sha256sums=('3c88c60976be48f6ca0e81661421bd5abb9a18f428c9a82541f52e6ccec427b1'
+sha256sums=('d6325306c590f12b9ad03e9d40309cfe19540d5208b6562df38d11cff9b9221a'
             'd417dce80618596ded1a24e0bd50f280d16bab608c6d488ced2767cdd7ccf1d0'
-            'b688cb2088e9cd2f2c47b27774c1f3df614943ab3fb7ab3443a6998d5ce122aa'
+            '67616c99765cb1b7bd8ae71b61abba722cb31625564894f1f704b242413c16ce'
             '405eabcaef114fae58b843f51690249bb3679cdf113e165421e59d36b8d4f37f'
             'b8f5c5864931b44061a04d87b35cdf20d3d57246e10a4d7bcfbd7449f121937c'
-            'ad2bc6b605f507834fa2765eb54e97a492b02fd4e2c8177339165b652a95407f'
+            '1eee93882484a32ee699f0c7a3f53353fc068db77b1e68acaa2e411d71d9ec3d'
             'a507af0cb04bd75b80d24db6f405150cfc6063ab7b950333adf97317721f17ff')
 
 package() {
