@@ -1,7 +1,7 @@
 # Maintainer: Beacrox beacrox@atl.tools
 
 pkgname=pulse-visualizer-git
-pkgver=1.2.5.r0.9ad3994
+pkgver=1.3.0.r0.291d107
 pkgrel=1
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire (latest git)"
 arch=('any')
