@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wage at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-initial-setup-git
 pkgver=r28.25a77b7
 pkgrel=1
