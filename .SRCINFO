@@ -1,6 +1,6 @@
 pkgbase = hyprpanel
 	pkgdesc = An opinionated panel/shell for the Hyprland compositor.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/pdf/hyprpanel
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = hyprpanel
 	optdepends = pulse-native-provider: volume control support
 	optdepends = upower: battery status support
 	options = !strip
-	source = https://github.com/pdf/hyprpanel/archive/v0.3.0/hyprpanel-0.3.0.tar.gz
-	sha256sums = 55a8015a136d7888baf315f8cbbc023414f2e0b8df2e5fd35f149ef3b825ac06
+	source = https://github.com/pdf/hyprpanel/archive/v0.3.1/hyprpanel-0.3.1.tar.gz
+	sha256sums = 1dbc35141717018ecf65e2fdd255e169c4c43d2b05a8b90d32fbf0afcacda070
 
 pkgname = hyprpanel
