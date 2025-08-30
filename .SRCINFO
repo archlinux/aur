@@ -1,0 +1,16 @@
+pkgbase = tomo-bin
+	pkgdesc = A no-frills pomodoro progress indicator for terminal multiplexers
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dhth/tomo
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
+	provides = tomo
+	conflicts = tomo
+	source_x86_64 = tomo-x86_64-0.2.1.tar.gz::https://github.com/dhth/tomo/releases/download/v0.2.1/tomo-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 72f48bc31bd31135288de128240c10dd7209057b222f3e2edcf713f2d46d76d9
+
+pkgname = tomo-bin
