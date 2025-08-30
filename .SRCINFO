@@ -1,6 +1,6 @@
 pkgbase = gitmux-git
 	pkgdesc = Git in your tmux status bar
-	pkgver = r72.b821624
+	pkgver = r87.2e9ceb1
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = gitmux-git
 	license = MIT
 	makedepends = git
 	makedepends = go
-	makedepends = tmux
+	depends = tmux
 	provides = gitmux-git
 	conflicts = gitmux
 	source = git+https://github.com/arl/gitmux.git
