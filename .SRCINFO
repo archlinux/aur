@@ -1,7 +1,7 @@
 pkgbase = ltfs-git
 	pkgdesc = Linear Tape File System
 	pkgver = 2.4.3.0.10450.r125.gadb3722
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LinearTapeFileSystem/ltfs
 	arch = x86_64
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = ltfs-git
 	depends = libxml2
 	depends = net-snmp
 	depends = python-pyxattr
+	provides = ltfs
+	conflicts = ltfs
 	backup = etc/ltfs.conf.local
 	source = ltfs-git::git+https://github.com/LinearTapeFileSystem/ltfs.git
 	sha256sums = SKIP
