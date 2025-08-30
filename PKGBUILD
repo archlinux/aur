@@ -3,7 +3,7 @@
 
 _name=qmmp
 pkgname=${_name}-1
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
