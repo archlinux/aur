@@ -43,7 +43,7 @@ optdepends=(
 
 _snapshot="${_name}-${pkgver}"
 source=("${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
-sha256sums=('f429a76b645480dd56a8fb64f55d33b8259f175f9f31a6f0de3f6209c7bf365d')
+sha256sums=('98f33b1b88f81cdf1c15f5fd9c28167d83e7377a262282766584b21e668a1ffc')
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
