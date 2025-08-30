@@ -20,7 +20,7 @@ depends=(
   nss
   util-linux-libs
 )
-optdepends=('libappindicator-gtk3: app indication'
+optdepends=('libappindicator-gtk3:  Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)'
 )
 
 makedepends=(gzip)
