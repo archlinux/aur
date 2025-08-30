@@ -1,12 +1,15 @@
 pkgbase = vidcutter
 	pkgdesc = Modern, simple to use, constantly evolving and hella fast media cutter + joiner with frame-accurate SmartCut technology
 	pkgver = 6.0.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ozmartian/vidcutter
 	arch = x86_64
 	license = GPL3
-	makedepends = python-setuptools
 	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ffmpeg
 	depends = mediainfo
 	depends = mpv
