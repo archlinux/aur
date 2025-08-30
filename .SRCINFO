@@ -1,0 +1,82 @@
+pkgbase = python-misaki
+	pkgdesc = G2P engine for TTS
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://pypi.org/project/misaki
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-regex
+	depends = python-addict
+	options = !strip
+	options = !debug
+	source = misaki-0.9.4.tar.gz::https://files.pythonhosted.org/packages/source/m/misaki/misaki-0.9.4.tar.gz
+	sha256sums = 3960fa3e6de179a90ee8e628446a4a4f6b8c730b6e3410999cf396189f4d9c40
+
+pkgname = python-misaki
+	provides = python-misaki
+	conflicts = python-misaki
+
+pkgname = python-misaki-en
+	pkgdesc = G2P engine for TTS - en
+	depends = python-misaki
+	depends = python-espeakng-loader
+	depends = python-num2words
+	depends = python-spacy
+	depends = python-spacy-curated-transformers
+	depends = python-pytorch
+	depends = python-transformers
+	provides = python-misaki-en
+	conflicts = python-misaki-en
+
+pkgname = python-misaki-ja
+	pkgdesc = G2P engine for TTS - ja
+	depends = python-misaki
+	depends = python-fugashi
+	depends = python-jaconv
+	depends = python-mojimoji
+	depends = python-unidic
+	depends = python-pyopenjtalk
+	provides = python-misaki-ja
+	conflicts = python-misaki-ja
+
+pkgname = python-misaki-ko
+	pkgdesc = G2P engine for TTS - ko
+	depends = python-misaki
+	depends = python-jamo
+	depends = python-nltk
+	provides = python-misaki-ko
+	conflicts = python-misaki-ko
+
+pkgname = python-misaki-zh
+	pkgdesc = G2P engine for TTS - zh
+	depends = python-misaki
+	depends = python-jieba
+	depends = python-ordered-set
+	depends = python-pypinyin
+	depends = python-cn2an
+	depends = python-pypinyin-dict
+	provides = python-misaki-zh
+	conflicts = python-misaki-zh
+
+pkgname = python-misaki-vi
+	pkgdesc = G2P engine for TTS - vi
+	depends = python-misaki
+	depends = python-num2words
+	depends = python-spacy
+	depends = python-spacy-curated-transformers
+	depends = python-underthesea
+	provides = python-misaki-vi
+	conflicts = python-misaki-vi
+
+pkgname = python-misaki-he
+	pkgdesc = G2P engine for TTS - he
+	depends = python-misaki
+	depends = python-mishkal-hebrew
+	provides = python-misaki-he
+	conflicts = python-misaki-he
