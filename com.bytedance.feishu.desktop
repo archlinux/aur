@@ -1,0 +1,51 @@
+[Desktop Entry]
+Version=1.0
+Name=Feishu
+Name[zh_CN]=Feishu
+# Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
+# From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
+GenericName=Feishu
+GenericName[zh_CN]=Feishu
+# Not translated in KDE, from Epiphany 2.26.1-0ubuntu1.
+# Gnome and KDE 3 uses Comment.
+Comment=Feishu is a next-generation office suite that integrates messaging, schedule management, collaborative documents, video meeting, and various apps in one platform.
+Comment[ja]=Feishu は、メッセージ、スケジュール管理、文書の共同編集、ビデオ会議などの様々な機能を統合し、仕事を効率化する新世代のビジネスツールです。
+Comment[zh_CN]=Feishu 整合即时沟通、云文档、音视频会议、工作台等功能于一体，助力个人与企业开启未来办公新模式！
+Exec=env _portableConfig="com.bytedance.feishu" portable -- %U
+StartupNotify=true
+StartupWMClass=feishu
+Terminal=false
+Icon=bytedance-feishu
+Type=Application
+Categories=Office;
+MimeType=message/rfc822;x-scheme-handler/feishu;x-scheme-handler/feishu-open;x-scheme-handler/feishu;x-scheme-handler/x-feishu;
+#X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot,org.kde.KWin.ScreenShot2
+# Additional config to ensure portable works properly
+Actions=nosandbox;opendir;share;quit;
+X-Flatpak-RenamedFrom=feishu.desktop;
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.bytedance.feishu;
+
+[Desktop Action nosandbox]
+Name=Toggle Sandbox...
+Name[zh_CN]=更改沙盒偏好...
+Exec=env _portableConfig="com.bytedance.feishu" portable --actions f5aaebc6-0014-4d30-beba-72bce57e0650
+Icon=security-low-symbolic
+
+[Desktop Action opendir]
+Name=Open Feishu Home
+Name[zh_CN]=打开数据目录
+Exec=env _portableConfig="com.bytedance.feishu" portable --actions opendir
+Icon=go-home-symbolic
+
+[Desktop Action share]
+Name=Share files with Feishu
+Name[zh_CN]=向 Feishu 传输文件
+Exec=env _portableConfig="com.bytedance.feishu" portable --actions share-files
+Icon=insert-image-symbolic
+
+[Desktop Action quit]
+Name=Quit Feishu
+Name[zh_CN]=退出 Feishu
+Exec=env _portableConfig="com.bytedance.feishu" portable --actions quit
+Icon=system-log-out-symbolic

@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+# This is your Application ID, avoid conflict
+appID="com.bytedance.feishu"
+
+# This is a friendly name of an application. It should only contain ASCII characters and not spaces.
+friendlyName="Feishu"
+
+# This is the state directory of your application, which is located under "XDG_DATA_HOME"
+stateDirectory="Feishu_Data"
+
+# This is the target executable to launch
+launchTarget="/opt/bytedance/feishu/bytedance-feishu --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoDecoder,WebRTCPipeWireCapturer,TouchpadOverscrollHistoryNavigation --wayland-text-input-version=3 --enable-wayland-ime --no-suid-sandbox"
+
+# Takes boolean value. When enabled, do not process XAuth files and enable X access. Generally this should be always false.
+waylandOnly=false
+
+# Takes boolean value. Binds /dev/video* into the sandbox. Required if target application uses /dev/video* interfaces directly instead of v4l2.
+bindCameras="true"
+
+# Takes boolean value. Binds PipeWire socket into the sandbox. Required if target application doesn't use Portals.
+bindPipewire="true"
+
+dbusWake="true"
