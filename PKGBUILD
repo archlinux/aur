@@ -7,8 +7,9 @@ pkgdesc="RPG Maker 2000/2003 material replacement"
 arch=('any')
 url="https://github.com/EasyRPG/RTP"
 license=('GPL3')
-makedepends=(git oxipng)
-optdepends=(easyrpg-player)
+makedepends=(git)
+optdepends=(easyrpg-player
+"oxipng: optimize images at build time")
 source=(${pkgname}::"git+${url}.git") # replace with stable frozen commit
 sha256sums=('SKIP')
 
@@ -19,7 +20,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  oxipng -o 6 --strip safe -r . # -Z is slow
+  oxipng -o 6 --strip safe -r . || : # -Z is slow
   rm -r .git *.md Makefile .gitattributes .gitignore COPYING
 }
 

@@ -6,8 +6,8 @@ pkgbase = easyrpg-rtp
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = oxipng
 	optdepends = easyrpg-player
+	optdepends = oxipng: optimize images at build time
 	source = easyrpg-rtp::git+https://github.com/EasyRPG/RTP.git
 	sha256sums = SKIP
 
