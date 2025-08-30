@@ -1,0 +1,14 @@
+pkgbase = signal-styler
+	pkgdesc = Add custom CSS to Signal Desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/m-obeid/signal-styler
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	depends = nodejs
+	noextract = signal-styler-1.0.0.tgz
+	source = https://registry.npmjs.org/signal-styler/-/signal-styler-1.0.0.tgz
+	sha256sums = SKIP
+
+pkgname = signal-styler
