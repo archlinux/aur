@@ -3,7 +3,7 @@
 
 pkgname=coolreader
 pkgver=3.2.59
-pkgrel=7
+pkgrel=8
 pkgdesc='Fast and small XML/CSS based eBook reader'
 arch=('x86_64')
 url='https://github.com/buggins/coolreader'
@@ -23,6 +23,7 @@ prepare() {
 build() {
   cmake -S $pkgname-cr$pkgver -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DGUI=QT5 \
     -DMAX_IMAGE_SCALE_MUL=2 \
     -DDOC_DATA_COMPRESSION_LEVEL=3 \
