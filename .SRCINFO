@@ -1,13 +1,12 @@
 pkgbase = git-x
 	pkgdesc = CLI extensions for Git that simplify common workflows
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simeg/git-x
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cargo
-	makedepends = rust
 	depends = git
 	source = git-x-1.1.0.tar.gz::https://static.crates.io/crates/git-x/git-x-1.1.0.crate
 	sha256sums = dac2f14a3f515d7be0793bdede677fcfabbae86429fbc61cc0df39521437589c

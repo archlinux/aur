@@ -2,11 +2,11 @@
 
 pkgname='git-x'
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI extensions for Git that simplify common workflows'
 url='https://github.com/simeg/git-x'
 license=('MIT')
-makedepends=('cargo' 'rust')
+makedepends=('cargo')
 depends=('git')
 arch=('x86_64' 'i686')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
@@ -31,9 +31,6 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
-  mkdir -p "${pkgdir}/usr/lib/git-core"
-  ln -s -t "${pkgdir}/usr/lib/git-core" "../../bin/${pkgname}"
-
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}" ./README.md
   install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}" ./docs/*
 }
