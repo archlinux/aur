@@ -2,7 +2,7 @@
 pkgname=python-textstat
 _name=${pkgname#python-}
 pkgver=0.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package to calculate readability statistics of a text object - paragraphs, sentences, articles."
 arch=('any')
 url="https://textstat.org"
@@ -37,6 +37,10 @@ check() {
 package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Remove installed tests
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rf "${pkgdir}${site_packages}/tests/"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
