@@ -1,6 +1,6 @@
 pkgbase = python-pdftext
 	pkgdesc = Extract structured text from pdfs quickly
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 3
 	url = https://pypi.org/project/pdftext/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pdftext
 	depends = python-pydantic-settings
 	depends = python-pypdfium2
 	provides = python-pdftext
-	source = pdftext-0.6.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pdftext/pdftext-0.6.2.tar.gz
-	sha256sums = ff5b92462ac03ae63a23429384ae123d45c162dcda30e7bf2c5c92a6b208c9de
+	source = pdftext-0.6.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pdftext/pdftext-0.6.3.tar.gz
+	sha256sums = ab5c5dfe0f1fb78de1db837ccadac1ea41b07ce1890fead973c9a84cdaf54dec
 
 pkgname = python-pdftext
