@@ -1,0 +1,16 @@
+pkgbase = wally-git
+	pkgdesc = A package manager for Roblox projects inspired by Cargo
+	pkgver = rX.Y.gZ
+	pkgrel = 1
+	url = https://github.com/UpliftGames/wally
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = rust
+	conflicts = wally
+	source = git+https://github.com/UpliftGames/wally.git
+	sha256sums = SKIP
+
+pkgname = wally-git
