@@ -1,4 +1,4 @@
-# Maintainer: brionical27 <brionical@proton.me>
+# Maintainer: BNDays27 <brionical@proton.me>
 pkgname=hedgemodmanager-git
 pkgver=8.0.0.beta4.r24
 pkgrel=1
@@ -9,11 +9,9 @@ url="https://github.com/hedge-dev/HedgeModManager"
 license=('MIT')
 depends=('dotnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0' 'git')
-conflicts=('hedgemodmanager-bin')
+provides=('hedgemodmanager')
 source=("hedgemodmanager::git+https://github.com/hedge-dev/HedgeModManager.git")
-noextract=()
 sha256sums=(SKIP)
-validpgpkeys=()
 
 pkgver() {
   cd $srcdir/hedgemodmanager
