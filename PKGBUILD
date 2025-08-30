@@ -2,10 +2,10 @@
 # Maintainer: Rinne <aur@rinne.in>
 
 _pkgname=animeko
-_appimage=ani-5.0.0-alpha03-linux-x86_64.appimage
+_appimage=ani-5.0.0-alpha04-linux-x86_64.appimage
 
 pkgname=animeko-appimage-alpha
-pkgver=v5.0.0_alpha03
+pkgver=v5.0.0_alpha04
 pkgrel=1
 pkgdesc="集找番、追番、看番的一站式弹幕追番平台，云收藏同步 (Bangumi)，离线缓存，BitTorrent，弹幕云过滤。100% Kotlin/Compose Multiplatform"
 arch=('x86_64')
@@ -14,9 +14,9 @@ license=('AGPL-3.0-or-later')
 depends=('vlc' 'gvfs')
 provides=('animeko')
 options=(!strip)
-source_x86_64=("${_appimage}::https://github.com/open-ani/animeko/releases/download/v5.0.0-alpha03/ani-5.0.0-alpha03-linux-x86_64.appimage")
+source_x86_64=("${_appimage}::https://github.com/open-ani/animeko/releases/download/v5.0.0-alpha04/ani-5.0.0-alpha04-linux-x86_64.appimage")
 noextract=("${_appimage}")
-sha1sums_x86_64=('9eaa656e01aa79e02470a6e77190f879ecc50396')
+sha1sums_x86_64=('cf3ee678b3b309d3b7200d0fe20960ff349528ae')
 
 prepare() {
     chmod +x "${_appimage}"
