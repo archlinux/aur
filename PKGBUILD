@@ -15,7 +15,7 @@ _bcachefs_branch=
 _makenconfig=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.16.0.rc6.1.bcachefs.git.00212.gd156fb9d839c
+pkgver=6.17.0.rc3.1.bcachefs.git.00315.g0212e20a99c6
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/koverstreet/bcachefs'
@@ -74,9 +74,9 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('SKIP'
-            '71c62861b14e80e2911fc3e9cbba3208447f640c47ce61d8ff14f6e0e342be55')
+            'd2fc708cddaa4229707d977f634bc2fc491c532aface6482a5568cdcb734017f')
 b2sums=('SKIP'
-        '2e8958d582d682416616a8834ae8058591f4e046f3d9b912a1dd3abd67dc11836167b29969a40ef61a8b074deab12315a63642e95807c22cf2c23642b8b02efc')
+        '0d6e80edc8f9c3e7ec98840047eea02bb36d6f69d37fc74c6a3be17f48804f3a3543b609a24a7da71bc9038a8bef59795caa699a888ccae779d3bf307aa7b51d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
