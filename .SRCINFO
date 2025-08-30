@@ -1,0 +1,23 @@
+pkgbase = python-curated-tokenizers
+	pkgdesc = Lightweight piece tokenization library
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/curated-tokenizers
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = python-pytest
+	provides = python-curated-tokenizers
+	conflicts = python-curated-tokenizers
+	options = !strip
+	options = !debug
+	source = https://files.pythonhosted.org/packages/fe/33/0ce2cad39bdcaa8eeda2a7de7ce4613ea6f5c540d5accf0fbe51c9f5253c/curated_tokenizers-2.0.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 9b948d299157c317474d7c2c325b073187c6123c5c520b299603548781b8b98a
+
+pkgname = python-curated-tokenizers
