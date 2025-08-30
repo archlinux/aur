@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='BASIC language cross-compiler for ColecoVision/SG1000/MSX and other 8 bit computers'
 pkgname=cvbasic
-pkgver=0.8.0
+pkgver=0.9.0
 _commit=6f05ca6bcc944dbb391af47f6c4ce080a6c7aa9c
 pkgrel=1
 url=https://nanochess.org/cvbasic.html
@@ -18,6 +18,11 @@ build () {
 	"${CC:-gcc}" ${CFLAGS} ${LDFLAGS} \
 		-DASM_LIBRARY_PATH=\"/usr/share/cvbasic\" \
 		-o cvbasic cvbasic.c node.c driver.c cpuz80.c cpu6502.c cpu9900.c
+}
+
+check () {
+	cd "$pkgname-$pkgver"
+	./cvbasic examples/viboritas.bas examples/viboritas.asm .
 }
 
 package () {
