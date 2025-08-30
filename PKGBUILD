@@ -1,87 +1,39 @@
-# Maintainer: kj_sh604 <406hs_jk@proton.me>
+# Maintainer: kj_sh604
+# Maintainer: oech3
 
 pkgname=coreutils-uutils
 pkgver=0.1.0
-pkgrel=4
-pkgdesc='Cross-platform Rust rewrite of the GNU coreutils installed as system
+pkgrel=5
+pkgdesc='Cross-platform Rust rewrite of the GNU coreutils symlinked as system
 core utilities (WARNING: use at own risk).'
 arch=('x86_64')
 license=('MIT')
-url='https://github.com/uutils/coreutils'
-conflicts=(
-  coreutils
-  b3sum
-  sha3sum
-)
-provides=(
-  coreutils
-  b3sum
-  sha3sum
-)
-depends=(
-  gcc-libs
-  glibc
-  oniguruma
-)
-makedepends=(
-  cargo
-  clang
-  python-sphinx
-  rust
-)
-source=("uutils-coreutils-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-         disable_selinux.patch
-         build-stty.patch)
-sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8'
-            '302614165d99f04600627222ddad0444a0144fcad6a1ff59ad43fb0b3162060e'
-            '0bd635cc349cfe133ddad0b1d05256c023b46f4a30f81aee123100119762df8e')
+url=https://github.com/uutils/coreutils
+conflicts=(coreutils b3sum sha3sum)
+provides=(coreutils b3sum sha3sum)
+depends=(uutils-coreutils=${pkgver}) # avoid random version bump
+makedepends=(rust-musl make)
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
 
-prepare() {
-  cd ${pkgname%-uutils}-${pkgver}
-  patch -Np1 -i $srcdir/disable_selinux.patch
-  patch -Np1 -i $srcdir/build-stty.patch
-
+build() {
+  cd coreutils-${pkgver}
+  cargo build -p uu_stty --release --target=x86_64-unknown-linux-musl # temporary stty workaround
 }
 
 package() {
-  cd ${pkgname%-uutils}-${pkgver}
-  export RUSTONIG_DYNAMIC_LIBONIG=1
-  make install \
-      DESTDIR="$pkgdir" \
-      PREFIX=/usr \
-      MANDIR=/share/man/man1 \
-      PROG_PREFIX= \
-      PROFILE=release \
-      MULTICALL=y \
-      SKIP_UTILS="hostname kill more uptime"
-  # add libstdbuf.so
-  mkdir -p $pkgdir/usr/lib/coreutils
-  cd $srcdir && cd ${pkgname%-uutils}-${pkgver}/target/release/deps
-  mv liblibstdbuf.so $pkgdir/usr/lib/coreutils/libstdbuf.so
-  # clean conflicts (arch ships these in the bash-completion package)
-  rm $pkgdir/usr/share/bash-completion/completions/*
-  # symlink missing binaries
-  cd $pkgdir/usr/bin
-  if [ -f "coreutils" ]; then
-    local binaries=(
-      "b2sum" "b3sum" "md5sum" "sha1sum" "sha224sum" "sha256sum" "sha3-224sum"
-      "sha3-256sum" "sha3-384sum" "sha3-512sum" "sha384sum" "sha3sum"
-      "sha512sum" "shake128sum" "shake256sum"
-    )
-    for bin in "${binaries[@]}"; do
-      ln -s coreutils "$bin" || echo "warning: failed to create symlink for $bin"
-    done
-  else
-    echo "coreutils binary not found, skipping symlink creation."
-  fi
-
-  # create dummy shell scripts for chcon and runcon
-  install -m 755 <(echo "#!/bin/sh
-echo \"warning: chcon is no longer built with the coreutils-uutils package\"
-exit 1") $pkgdir/usr/bin/chcon
-  install -m 755 <(echo "#!/bin/sh
-echo \"warning: runcon is no longer built with the coreutils-uutils package\"
-exit 1") $pkgdir/usr/bin/runcon
+  cd coreutils-$pkgver
+  install -Dm755 target/x86_64-unknown-linux-musl/release/stty "$pkgdir"/usr/bin/stty
+  # fail if uu-coreutils binary is renamed in the uutils-coreutils package
+  /usr/bin/uu-coreutils install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
+  cd "$pkgdir"/usr
+  cp -sf /usr/bin/uu-coreutils bin/\[ # avoid completion err
+  for f in $(uu-coreutils --list|grep -v -E '^(kill|more|uptime|hostname|\[)$')  chcon runcon ; do
+    ln -sf /usr/bin/uu-coreutils bin/"$f"
+    ln -sf /usr/share/man/man1/uu-"$f".1.gz share/man/man1/"$f".1.gz
+    echo -e "#compdef ${f}=uu-${f}\n_uu-${f}" > share/zsh/site-functions/_$f
+    echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
+  done
 }
 
 # vim: ts=2 sw=2 et:

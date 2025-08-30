@@ -1,28 +1,20 @@
 pkgbase = coreutils-uutils
-	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils installed as system core utilities (WARNING: use at own risk).
+	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils symlinked as system core utilities (WARNING: use at own risk).
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	makedepends = clang
-	makedepends = python-sphinx
-	makedepends = rust
-	depends = gcc-libs
-	depends = glibc
-	depends = oniguruma
+	makedepends = rust-musl
+	makedepends = make
+	depends = uutils-coreutils=0.1.0
 	provides = coreutils
 	provides = b3sum
 	provides = sha3sum
 	conflicts = coreutils
 	conflicts = b3sum
 	conflicts = sha3sum
-	source = uutils-coreutils-0.1.0.tar.gz::https://github.com/uutils/coreutils/archive/0.1.0.tar.gz
-	source = disable_selinux.patch
-	source = build-stty.patch
+	source = https://github.com/uutils/coreutils/archive/0.1.0.tar.gz
 	sha256sums = 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
-	sha256sums = 302614165d99f04600627222ddad0444a0144fcad6a1ff59ad43fb0b3162060e
-	sha256sums = 0bd635cc349cfe133ddad0b1d05256c023b46f4a30f81aee123100119762df8e
 
 pkgname = coreutils-uutils
