@@ -1,7 +1,7 @@
 From 3fae8d6b2fa575be3588139e6e145bbc10854035 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
-Subject: [PATCH 08/24] Find fontconfig via pkg-config for correct handling of
+Subject: [PATCH 08/25] Find fontconfig via pkg-config for correct handling of
  its dependencies
 
 CMake's own find module unforunately does not consider fontconfig's deps so
