@@ -1,7 +1,7 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
-pkgver=0.5.1.r4.geae0643
-pkgrel=3
+pkgver=0.5.1.r4.g5376c6a
+pkgrel=1
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
 license=("MIT")
@@ -10,10 +10,10 @@ source=("${pkgname}::git+${url}?signed")
 validpgpkeys=('4F9434A2EAC21BEC148F3656BF6CB659ADEE60EC')
 sha1sums=('SKIP')
 makedepends=("cargo" "git" "scdoc")
-depends=("gtk4" "gtk4-layer-shell")
+depends=("gtk4" "libadwaita" "librsvg" "gtk4-layer-shell")
 optdepends=("swaylock: default buttons"
             "systemd: default buttons")
-backup=("etc/wleave/"{"style.css","layout"})
+backup=("etc/wleave/"{"style.css","layout","layout.json"})
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -29,6 +29,7 @@ prepare() {
 build() {
     scdoc < "${srcdir}/${pkgname}/man/wleave.1.scd" | gzip > "${srcdir}/${pkgname}/wleave.1.gz"
     scdoc < "${srcdir}/${pkgname}/man/wleave.5.scd" | gzip > "${srcdir}/${pkgname}/wleave.5.gz"
+    scdoc < "${srcdir}/${pkgname}/man/wleave.json.5.scd" | gzip > "${srcdir}/${pkgname}/wleave.json.5.gz"
 
     cd "${srcdir}/${pkgname}"
 
@@ -41,7 +42,7 @@ package() {
     install -Dm755 "$srcdir/$pkgname/target/release/wleave" "$pkgdir/usr/bin/wleave"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 -t "$pkgdir/etc/wleave" "$srcdir/$pkgname/"{"style.css","layout"}
+    install -Dm644 -t "$pkgdir/etc/wleave" "$srcdir/$pkgname/"{"style.css","layout.json"}
 
     install -Dm644 "$srcdir/$pkgname/completions/wleave.bash" "$pkgdir/usr/share/bash-completion/completions/wleave"
     install -Dm644 "$srcdir/$pkgname/completions/_wleave" "$pkgdir/usr/share/zsh/site-functions/_wleave"
