@@ -3,7 +3,7 @@
 
 pkgname=qhttpengine
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Simple and secure HTTP server for Qt'
 arch=('x86_64')
 url='https://github.com/nitroshare/qhttpengine'
@@ -14,7 +14,7 @@ source=("https://github.com/nitroshare/$pkgname/archive/$pkgver/$pkgname-$pkgver
 sha256sums=('6505cf889909dc29bab4069116656e7ca5a9e879f04935139439c5691a76c55e')
 
 build() {
-  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr' -DBUILD_TESTS=ON
+  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr' -DBUILD_TESTS=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
