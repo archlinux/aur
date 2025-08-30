@@ -2,7 +2,7 @@
 
 pkgname="python-doctr"
 _name="python_doctr"
-pkgver=0.11.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Document Text Recognition (docTR): deep Learning for high-performance OCR on documents."
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
 makedepends=(python-build python-installer python-wheel)
 checkdepends=()
 source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('1668491a39ce84ee75553b51cb3e45cb46c54a6d3d999adbf336dc85602643ff')
+sha256sums=('1d307fee13a7ea82fcbfcf66a56c2223a38c59575ea67703a39763cf09f106a9')
 
 build() {
   cd "$_name-$pkgver"

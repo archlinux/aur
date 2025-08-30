@@ -1,6 +1,6 @@
 pkgbase = python-doctr
 	pkgdesc = Document Text Recognition (docTR): deep Learning for high-performance OCR on documents.
-	pkgver = 0.11.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/python-doctr/
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-doctr
 	optdepends = python-tf-keras
 	optdepends = python-tf2onnx
 	optdepends = python-mplcursors
-	source = python_doctr-0.11.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python_doctr/python_doctr-0.11.0.tar.gz
-	sha256sums = 1668491a39ce84ee75553b51cb3e45cb46c54a6d3d999adbf336dc85602643ff
+	source = python_doctr-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python_doctr/python_doctr-1.0.0.tar.gz
+	sha256sums = 1d307fee13a7ea82fcbfcf66a56c2223a38c59575ea67703a39763cf09f106a9
 
 pkgname = python-doctr
