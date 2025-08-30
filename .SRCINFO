@@ -1,0 +1,13 @@
+pkgbase = afc
+	pkgdesc = Anime File Checker, checks CRC32 contained in filenames
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/olifre/afc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = zlib
+	source = afc-1.2.tar.gz::https://github.com/olifre/afc/archive/refs/tags/1.2.tar.gz
+	sha256sums = 08900b705bba5a9964e454d5efafdfb6c3097c436b551d5aca6bb7725c69e770
+
+pkgname = afc
