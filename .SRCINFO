@@ -1,0 +1,15 @@
+pkgbase = squidge-bin
+	pkgdesc = Shortens delimited data
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/dhth/squidge
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = sqdj
+	conflicts = squidge
+	source_x86_64 = squidge-x86_64-0.2.3.tar.gz::https://github.com/dhth/squidge/releases/download/v0.2.3/sqdj-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c0791b8c8140490207f9c3199ab0ca313a2ce5ae2aaeb6404dc549a8861ab26f
+
+pkgname = squidge-bin
