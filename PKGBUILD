@@ -1,4 +1,5 @@
-# Maintainer: GrayJack <gr41.j4ck@gmail.com>
+# Maintainer: Peter Sagerson <psagers@ignorare.net>
+# Contributor: GrayJack <gr41.j4ck@gmail.com>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 
 _pkgname=janet
