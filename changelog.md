@@ -1,3 +1,115 @@
+2025.08.30, v18.7.4
+
+fix:
+- a6d18ddb select file: name -> line
+- 2077468a client: listeners: click: avoid select on conext menu
+- 64e4aba4 client: menu: before show: unsetBind
+
+2025.07.26, v18.7.3
+
+fix:
+- 884c83eb client: polyfill (#442)
+
+2025.07.24, v18.7.2
+
+feature:
+- 2e775908 cloudcmd: html-looks-like: remove
+- bb6a7a28 docker: npm -> bun
+
+2025.07.06, v18.7.1
+
+fix:
+- 784bb2eb build: sw
+
+feature:
+- 8f52376d cloudcmd: revert: optimize-css-assets-webpack-plugin -> css-minimizer-webpack-plugin: broken spinner
+- 82008749 cloudcmd: optimize-css-assets-webpack-plugin -> css-minimizer-webpack-plugin
+
+2025.07.05, v18.7.0
+
+fix:
+- b1e231a5 client: menu: close: ESC
+
+feature:
+- 546d0610 cloudcmd: process v0.11.10
+- 121b114e cloudcmd: path-browserify v1.0.1
+- 8592cedc cloudcmd: mini-css-extract-plugin v2.9.2
+- a53ab67b cloudcmd: webpack-cli v6.0.1
+- de2cedd9 cloudcmd: webpack v5.99.9
+- da545ea4 cloudcmd: style-loader v4.0.0
+- db6e8334 cloudcmd: optimize-css-assets-webpack-plugin v6.0.1
+- 2f0c1a61 cloudcmd: html-webpack-plugin v5.6.3
+- e100dcf6 cloudcmd: extract-text-webpack-plugin v3.0.2
+- 76c40008 cloudcmd: css-loader v7.1.2
+- fb5e5a32 cloudcmd: clean-css-loader v4.2.1
+- 8551cd54 cloudcmd: babel-loader v10.0.0
+- c9380319 webpack 5
+- ddc94adb cloudcmd: eslint-plugin-putout v28.0.0
+
+2025.07.04, v18.6.1
+
+feature:
+- 9eafa189 cloudcmd: http-auth v4.2.1
+- e99d0847 cloudcmd: montag v1.2.1
+- b77e9c91 cloudcmd: pipe-io v4.0.1
+- 4b476a6d cloudcmd: globals v16.3.0
+- 2057065d cloudcmd: @putout/eslint-flat v3.0.1
+
+2025.07.02, v18.6.0
+
+feature:
+- 2eb3dc66 cloudcmd: @iocmd/wait v2.1.0
+- 1679b788 cloudcmd: webpackbar v7.0.0
+- 9a4cf388 cloudcmd: eslint-plugin-putout v27.2.1
+- f4b0f92f cloudcmd: express v5.1.0
+- 4ab4be12 thread-it: get rid (#438)
+- 99ad0c21 cloudcmd: rm @putout/babel
+- 8ccec23d cloudcmd: help: require -> import
+- 2a97ac66 cloudcmd: yargs-parser v22.0.0
+- b26c8bba cloudcmd: thread-it v3.0.0
+
+2025.04.10, v18.5.2
+
+feature:
+- 8450bfa6 cloudcmd: putout v40.0.3
+- 51f51b54 cloudcmd: @putout/plugin-cloudcmd v4.0.0
+- 08ab63d7 cloudcmd: supertape v11.0.4
+- e7cc9b92 cloudcmd: redlint v4.1.1
+- 368c9bb8 cloudcmd: eslint v9.23.0
+- 43fd5ed6 cloudcmd: madrun v11.0.0
+- f774d5b2 cloudcmd: eslint-plugin-putout v26.1.0
+- b0a7fc16 cloudcmd: putout v39.3.0
+
+2025.02.03, v18.5.1
+
+feature:
+- 467f0a79 cloudcmd: webpack-merge v6.0.1
+- 353a1fb6 cloudcmd: putout v38.0.5
+- 8e98b778 cloudcmd: eslint-plugin-putout v24.0.0
+
+2025.01.20, v18.5.0
+
+fix:
+- ad8e55d8 client: themes -> columns (#434)
+
+feature:
+- 2fc503f7 cloudcmd: @putout/babel v3.0.0
+
+2024.12.13, v18.4.1
+
+feature:
+- 100e940e cloudcmd: putout v37.0.1
+
+2024.11.22, v18.4.0
+
+fix:
+- dff02672 cloudcmd: make manifest.json accessible when authentication is enabled (#428)
+
+2024.11.14, v18.3.0
+
+feature:
+- 71dc8dd6 cloudcmd: Add support for Progressive Web App (#426)
+
 2024.11.06, v18.2.1
 
 feature:
@@ -7266,3 +7378,4 @@ post-processing functions passed like this {'client.js': function(){}}
 
 - Changed the passing MoreProcessing agrument to jsScripts function Minify module, 
 no it passes with a file name, and js file name writing only once.
+
