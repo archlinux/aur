@@ -1,0 +1,18 @@
+pkgbase = opentomb
+	pkgdesc = A Cross-Platform reimplementation of classic Tomb Raider 1—5 engines.
+	pkgver = 2018.02.04_alpha
+	pkgrel = 1
+	url = http://opentomb.github.io/
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = unknown
+	makedepends = cmake
+	depends = libpng
+	depends = openal
+	depends = zlib
+	depends = sdl2
+	source = https://github.com/opentomb//archive/refs/tags/win32-2018-02-04_alpha.tar.gz
+	sha256sums = a10fe30a4364fe4e7713c7bb0ce5e06589bf103900aabbb7fdc540aa44a245ea
+
+pkgname = opentomb
