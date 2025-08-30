@@ -5,7 +5,7 @@
 
 pkgname=nitroshare
 pkgver=0.3.4
-pkgrel=6
+pkgrel=7
 pkgdesc='LAN file sender application, designed to make transferring files from one device to another extremely simple'
 arch=('x86_64')
 url='https://nitroshare.net'
@@ -14,7 +14,7 @@ depends=('hicolor-icon-theme' 'python' 'qhttpengine' 'qmdnsengine' 'qt5-svg')
 makedepends=('cmake' 'ninja' 'qt5-tools')
 optdepends=('nemo-python: integration with Nemo'
             'python-caja: integration with Caja'
-            'python-nautilus: integration with Nautilus')
+            'nautilus-python: integration with Nautilus')
 source=("https://github.com/nitroshare/$pkgname-desktop/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         'nitroshare.appdata.xml'
         'qt-5.11.patch')
@@ -36,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cmake -S $pkgname-desktop-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake -S $pkgname-desktop-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
