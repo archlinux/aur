@@ -10,12 +10,14 @@ pkgbase = python2-libxml2
 	license = MIT
 	makedepends = git
 	depends = glibc
-	depends = libxml2-2.9
+	depends = libxml2-legacy
 	depends = python2
+	provides = python2-libxml2
+	conflicts = python2-libxml2
 	source = python2-libxml2::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=7846b0a677f8d3ce72486125fa281e92ac9970e8
 	source = no-fuzz.diff
 	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1a3880e1aeb825134f2dd61c5393a5a4529a8ba861dd1ba8e43bbb42f0f9102f
 	sha256sums = 3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f
 	sha256sums = 9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f
 

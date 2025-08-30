@@ -1,9 +1,4 @@
-# Contributor: MarsSeed <marcell.meszaros@runbox.eu>
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: John Proctor <jproctor@prium.net>
+# Maintainer: kj_sh604
 
 _modulename="libxml2"
 _pyruntime=python2
@@ -17,11 +12,17 @@ arch=(x86_64 aarch64 i686 armv7h)
 license=(MIT)
 depends=(
   glibc
-  libxml2-2.9
+  libxml2-legacy
   "${_pyruntime}"
 )
 makedepends=(
   git
+)
+provides=(
+ "${pkgname}" 
+)
+conflicts=(
+ "${pkgname}" 
 )
 _commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
@@ -30,11 +31,9 @@ source=(
   no-fuzz.diff # Do not run fuzzing tests
   "${_w3_tests}"
 )
-sha256sums=(
-  'SKIP'
-  '3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f'
-  '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f'
-)
+sha256sums=('1a3880e1aeb825134f2dd61c5393a5a4529a8ba861dd1ba8e43bbb42f0f9102f'
+            '3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f'
+            '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
 pkgver() {
   cd "${pkgname}"
@@ -93,12 +92,6 @@ build() (
   find doc -type f -exec chmod 0644 {} +
 )
 
-check() {
-  CFLAGS="${_cflags[*]}" \
-  LDFLAGS="${_ldflags[*]}" \
-  make -C build check
-}
-
 package() {
   make DESTDIR="${pkgdir}" -C build install
   "${_pyruntime}" -m compileall \
@@ -124,3 +117,5 @@ package() {
   rm -rf "${pkgdir}/usr/share/man/man1"
   rm -rf "${pkgdir}/usr/share/man/man3"
 }
+
+# vim: ts=2 sw=2 et:
