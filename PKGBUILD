@@ -1,7 +1,7 @@
 # Maintainer: NJ <njnjdeez at gmail dot com>
 
 pkgname=batwatch-git
-pkgver=r7.c32793a
+pkgver=r8.bdd16d9
 pkgrel=1
 pkgdesc="Blink the screen when battery level reaches certain limits"
 arch=('x86_64')
