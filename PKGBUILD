@@ -1,9 +1,9 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber+aur@gmail.com>
 # Maintainer: ExtremTechniker <aur@extremtechniker.io>
 pkgname=f1multiviewer-bin
-pkgver=1.43.2
+pkgver=2.0.0
 # This ID changes for every release, you must grab it from https://multiviewer.app/download each time.
-_build=243289395
+_build=287713842
 pkgrel=1
 pkgdesc="Unofficial motorsports desktop client"
 arch=('x86_64')
@@ -13,22 +13,26 @@ depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'xdg-utils')
 provides=('f1multiviewer')
 conflicts=('f1multiviewer')
 install=f1multiviewer-bin.install
-source=("https://releases.multiviewer.app/download/$_build/MultiViewer.for.F1-linux-x64-$pkgver.zip"
-    "f1multiviewer.desktop")
+source=("https://releases.multiviewer.app/download/$_build/MultiViewer-linux-x64-$pkgver.zip"
+    "f1multiviewer.desktop"
+    "f1multiviewer.png")
 noextract=()
-sha256sums=('0e0fde1b7b494d31f4d6cc5a3a3b5ad9b8fa8f00ee3cf09d3b64408687f0c108'
-            '00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a')
+sha256sums=('b7a188797dda084b50ae805d9304e3a76ff1cd890e63110daab1cfda376a734f'
+            '00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a'
+            'e12530bab6425cc2a11ba3d1ef8606f239e0cfddaac8ca732490dbb88bdb3f72')
 
 package() {
     install -d "$pkgdir/opt/$pkgname"
-    cp -a "MultiViewer for F1-linux-x64/." "$pkgdir/opt/$pkgname"
-    chmod 755 "$pkgdir/opt/$pkgname/MultiViewer for F1"
+    cp -a "MultiViewer-linux-x64/." "$pkgdir/opt/$pkgname"
+    chmod 755 "$pkgdir/opt/$pkgname"
+    chmod 755 "$pkgdir/opt/$pkgname/multiviewer"
 
     install -d "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/MultiViewer for F1" "$pkgdir/usr/bin/f1multiviewer"
-    install -Dm644 "MultiViewer for F1-linux-x64/resources/app/.webpack/main/88a36af69fdc182ce561a66de78de7b1.png" "$pkgdir/usr/share/pixmaps/f1multiviewer.png"
+    ln -s "/opt/$pkgname/multiviewer" "$pkgdir/usr/bin/f1multiviewer"
+    ln -s "/opt/$pkgname/multiviewer" "$pkgdir/usr/bin/multiviewer"
+    install -Dm644 "f1multiviewer.png" "$pkgdir/usr/share/pixmaps/f1multiviewer.png"
     install -Dm644 f1multiviewer.desktop "$pkgdir/usr/share/applications/f1multiviewer.desktop"
 
-    install -Dm644 "MultiViewer for F1-linux-x64/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/Electron-LICENSE"
-    install -Dm644 "MultiViewer for F1-linux-x64/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    install -Dm644 "MultiViewer-linux-x64/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/Electron-LICENSE"
+    install -Dm644 "MultiViewer-linux-x64/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
