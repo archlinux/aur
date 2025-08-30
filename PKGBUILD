@@ -3,7 +3,7 @@
 _dlname="tinyMediaManager"
 _pkgname="${_dlname,,}"
 pkgname="${_pkgname}-bin"
-pkgver=5.1.8
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname}")
@@ -11,15 +11,15 @@ conflicts=("${_pkgname}")
 arch=("x86_64" "aarch64")
 url="https://www.${_pkgname}.org"
 license=("Apache-2.0")
-depends=("ffmpeg" "java-runtime>=21" "libmediainfo")
+depends=("ffmpeg" "java-runtime>=8" "libmediainfo")
 source=("${_pkgname}.desktop"
         "${_pkgname}.png")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::https://release.${_pkgname}.org/v${pkgver%%.*}/dist/${_dlname}-${pkgver}-linux-amd64.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::https://release.${_pkgname}.org/v${pkgver%%.*}/dist/${_dlname}-${pkgver}-linux-arm64.tar.xz")
 sha256sums=('08499a10730b6af6113c4a56e4ed7bed068d7fed282080dfd550b66d6a8ac9f5'
             '79b50c260b1c1c1f695c0ea1d743742d11d9a1337a2bc73985e4428752492f0f')
-sha256sums_x86_64=('fea69aa07488d6f195170f3683235f36c989cf91688322f285e88a896b97ae0b')
-sha256sums_aarch64=('d7b41f6edc5b4567c261cb7628662108e6a025a7e84416ca3212a6bd0225e0ca')
+sha256sums_x86_64=('1f1f326580b0de27fea0eff316761973b6aa3f1a6aaa7bf6e777d2f4ddfdf1ac')
+sha256sums_aarch64=('053df23250f3d679571266acdfc2104a3099a1f5a663663dd6e0a1feb5791d00')
 _mark1=$(if [[ $CARCH == x86_64 ]]; then echo "linux";      elif [[ $CARCH == aarch64 ]]; then echo "arm";            fi)
 _mark2=$(if [[ $CARCH == x86_64 ]]; then echo "${_dlname}"; elif [[ $CARCH == aarch64 ]]; then echo "${_dlname}-arm"; fi)
 
