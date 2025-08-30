@@ -1,9 +1,11 @@
 pkgbase = openlara-git
 	pkgdesc = Classic Tomb Raider open-source engine
-	pkgver = r200.e14e661
+	pkgver = r1430.b4bcd4a
 	pkgrel = 1
 	url = https://github.com/XProger/OpenLara
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = unknown
 	makedepends = git
 	makedepends = clang
@@ -12,8 +14,7 @@ pkgbase = openlara-git
 	depends = libpulse
 	provides = openlara
 	conflicts = openlara
-	source = openlara::git://github.com/XProger/OpenLara.git
+	source = git+https://github.com/XProger/OpenLara
 	md5sums = SKIP
 
 pkgname = openlara-git
-
