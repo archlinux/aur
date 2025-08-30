@@ -22,20 +22,11 @@ source=(
 sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
             '7579d3d52fa1cd4df438a0a86e5a60e72030ae612f85866001e2f07a6de62efa'
             '5821f3653aefaa1767fd5996dbb1a899579bb9640a53a66b50c145798b41522d')
-
-#build() {
-#	cd "$srcdir"
-
-	# Convert image
-#	magick "$_pkgname.ico" "$_pkgname.png"
-#}
-
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	npm i
 	npm run build:linux-gs
-	cd dist/linux-unpacked
-	pwd
+	cd dist
 	install -d "$pkgdir/usr/bin/"
 
 	install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/usr/bin/$_pkgname"
