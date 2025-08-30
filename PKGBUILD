@@ -28,9 +28,7 @@ build() {
 }
 
 package() {
-#	mkdir -p "$pkgdir/usr/bin" "$pkgdir"/usr/{share,lib}/openlara
-	install -m 755 "$srcdir/$_prjname/src/platform/sdl2/OpenLara" "$pkgdir/usr/bin/openlara"
-#       install -m 644 "$srcdir/$_prjname/bin/openvr_api.dll" "$pkgdir/usr/lib/openlara/openvr_api.dll"
+	install -Dm755 "$srcdir/$_prjname/src/platform/sdl2/OpenLara" "$pkgdir/usr/bin/openlara"
 #	install -m 644 "$srcdir/$_prjname/bin/LEVEL2.PSX" "$pkgdir/usr/share/openlara/LEVEL2.PSX"
 #	install -m 644 "$srcdir/$_prjname/bin/05.ogg" "$pkgdir/usr/share/openlara/05.ogg"
 #	install -m 644 "$srcdir/$_prjname/bin/008.ogg" "$pkgdir/usr/share/openlara/008openlara.ogg"
