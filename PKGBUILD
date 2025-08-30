@@ -1,9 +1,9 @@
 
-# Maintainer: Rafael Senties Martinelli <rafael AT senties-martinelli DOT com>
+# Maintainer: Rafael Senties Martinelli <rafael@rsm92.fr>
 
-pkgver=v2.0.1.r0.g9de40bb # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
-_commit=9de40bbb2de9c389eae840879df727c02072b1c1
-_commit_sha256=c73e124696d0abda4d510a01434e3c710c8713df6f4b11a9c7c2dead42b7a9c8
+pkgver=v2.0.1.r15.g8d35f3e # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
+_commit=8d35f3e4ee0ae91dae8ce911c741a3f32d5c7bc0
+_commit_sha256=317a826414d95e8a43050b5bdd551f32be0da9795f7bd581cc9eb898b853e1a7
 
 # Static content
 
@@ -12,7 +12,7 @@ pkgrel=1
 epoch=
 pkgdesc="Smart video player and playlist manager"
 arch=("any")
-url="https://www.phantom-player.rsm92.dev"
+url="https://phantom-player.rsm92.fr"
 license=('GPLv3')
 groups=()
 depends=("gtk3" "python" "python-cairo" "python-pillow" "python-magic" "python-send2trash" "python-vlc")
