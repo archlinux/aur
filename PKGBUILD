@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wage at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=wordbook
