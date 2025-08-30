@@ -1,6 +1,6 @@
 pkgbase = winboat-git
 	pkgdesc = Run Windows apps on Linux with seamless integration
-	pkgver = r91.3d48910
+	pkgver = r93.0be4918
 	pkgrel = 1
 	url = https://github.com/TibixDev/winboat
 	arch = x86_64

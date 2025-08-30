@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-git'
 _pkgname='winboat'
-pkgver=r91.3d48910
+pkgver=r93.0be4918
 _pkgver='0.6.3'
 pkgrel=1
 pkgdesc='Run Windows apps on Linux with seamless integration'
