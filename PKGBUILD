@@ -1,6 +1,6 @@
 # Maintainer: Ruud van Asseldonk <aur@veniogames.com>
 pkgname=rcl
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 epoch=
 pkgdesc='A reasonable configuration language'
@@ -19,12 +19,10 @@ backup=()
 options=()
 install=
 changelog=
-# TODO: Append ?signed again, when releases are signed with a non-revoked key.
-source=("git+https://github.com/ruuda/rcl.git#tag=v${pkgver}")
+source=("git+https://github.com/ruuda/rcl.git?signed#tag=v${pkgver}")
 noextract=()
-sha256sums=('8e04b49f36525098e5e616d02d1e53d49360bd535f47c86c84b975ba9771ecf3')
-# TODO: Restore on the next release.
-# validpgpkeys=(94F3C99316DFFDE10FBA6939284FE5A783926532) # Ruud van Asseldonk <dev@veniogames.com>
+sha256sums=('261c1b5d9e33bc78a40231caffbaeae4d41fd3387190ebfbd4597525e40b813e')
+validpgpkeys=(94F3C99316DFFDE10FBA6939284FE5A783926532) # Ruud van Asseldonk <dev@veniogames.com>
 
 prepare() {
 	cd "${pkgname}"
