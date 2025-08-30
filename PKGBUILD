@@ -1,4 +1,3 @@
-# Maintainer: kj_sh604
 # Maintainer: oech3
 
 pkgname=coreutils-uutils
