@@ -5,13 +5,13 @@ pkgname=openlara-git
 _pkgname=openlara
 _prjname=OpenLara
 pkgver=r1430.b4bcd4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic Tomb Raider open-source engine"
 url="https://github.com/XProger/OpenLara"
 license=('unknown')
 arch=("x86_64" "aarch64" "riscv64")
 makedepends=('git' 'clang')
-depends=('libx11' 'libgl' 'libpulse')
+depends=('libx11' 'libgl' 'libpulse' 'sdl2')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+https://github.com/XProger/${_prjname}")
@@ -23,14 +23,14 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_prjname/src/platform/nix"
+	cd "$srcdir/$_prjname/src/platform/sdl2"
 	./build.sh
 }
 
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir"/usr/{share,lib}/openlara
-	install -m 755 "$srcdir/$_prjname/bin/OpenLara" "$pkgdir/usr/lib/openlara/OpenLara"
-        install -m 644 "$srcdir/$_prjname/bin/openvr_api.dll" "$pkgdir/usr/lib/openlara/openvr_api.dll"
+	install -m 755 "$srcdir/$_prjname/src/platform/sdl2/OpenLara" "$pkgdir/usr/lib/openlara/OpenLara"
+#       install -m 644 "$srcdir/$_prjname/bin/openvr_api.dll" "$pkgdir/usr/lib/openlara/openvr_api.dll"
 #	install -m 644 "$srcdir/$_prjname/bin/LEVEL2.PSX" "$pkgdir/usr/share/openlara/LEVEL2.PSX"
 #	install -m 644 "$srcdir/$_prjname/bin/05.ogg" "$pkgdir/usr/share/openlara/05.ogg"
 #	install -m 644 "$srcdir/$_prjname/bin/008.ogg" "$pkgdir/usr/share/openlara/008.ogg"
