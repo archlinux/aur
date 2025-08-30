@@ -2,7 +2,6 @@
 import os
 import sys
 import socket
-import pwd
 
 SOCKET_PATH = "/run/oshd.sock"
 OSHD_PATH = "/usr/bin/oshd"  # Adjust path to your oshd executable if needed
@@ -24,14 +23,10 @@ def send_via_socket(command):
         return False
 
 def run_one_shot(command_args):
-    print("oshd daemon not found, did you enable/start it? attempting to use one-shot mode...")
-    # Ensure we are root
-    if os.geteuid() != 0:
-        print("ERROR: must be run as root in one-shot mode")
-        sys.exit(1)
-    # Build command to execute oshd directly
-    cmd = [OSHD_PATH] + command_args
-    os.execv(OSHD_PATH, cmd)  # replaces current process
+    print("oshd is not running, starting oshd.")
+    print("It is reccomended to enable oshd to start on boot.")
+    os.system("systemctl start oshd")
+    main()
 
 def main():
     if len(sys.argv) < 2:
