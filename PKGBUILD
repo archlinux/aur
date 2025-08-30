@@ -5,7 +5,7 @@ pkgrel=2
 epoch=
 pkgdesc="Electronic signing of tax and other forms for the Financial Administration of the Czech Republic"
 arch=('x86_64')
-url="https://epodpora.mfcr.cz/cs/seznam-okruhu/podpisova-aplikace-epodpisfs/podpisova-aplikace-epodpisfs-4569"
+url="https://podpora.mojedane.gov.cz/cs/seznam-okruhu/app/UXVlc3Rpb25zfGRpZ2VzdC5hc3B4P3NpZD00NTY4"
 license=('custom')
 depends=('ca-certificates' 'ttf-dejavu' 'freetype2' 'glibc>=2.27' 'libxext' 'libxrender' 'libxtst' 'libx11' 'opensc' 'xdg-utils' 'zlib')
 options=('!strip' '!emptydirs' '!debug')
