@@ -1,4 +1,4 @@
 [guile-gnutls]
-source='git'
-git='https://gitlab.com/gnutls/guile.git'
-prefix='v'
+source = 'git'
+git = 'https://codeberg.org/guile-gnutls/guile-gnutls.git'
+prefix = 'v'

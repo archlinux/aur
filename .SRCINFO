@@ -1,16 +1,17 @@
 pkgbase = guile-gnutls
 	pkgdesc = Guile bindings for the GnuTLS library
-	pkgver = 4.0.1
+	pkgver = 5.0.1
 	pkgrel = 1
-	url = https://gitlab.com/gnutls/guile
+	url = https://codeberg.org/guile-gnutls/guile-gnutls
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	license = LGPL-3.0-or-later
 	depends = guile
 	depends = gnutls
-	source = https://gitlab.com/gnutls/guile/-/archive/v4.0.1/guile-v4.0.1.tar.gz
+	depends = glibc
+	source = guile-gnutls-5.0.1.tar.gz::https://codeberg.org/guile-gnutls/guile-gnutls/archive/v5.0.1.tar.gz
 	validpgpkeys = B1D2BD1375BECB784CF4F8C4D73CF638C53C06BE
-	sha256sums = 3263c7fcecdb77cba14b78c40ba348ca1ea5268a6996c9c3b46bc833bc9bfd1e
+	sha256sums = 8c7ac6cca191b132cf4878f6e99e44fe42836779edd55f676e39c02ac9fa50b8
 
 pkgname = guile-gnutls
