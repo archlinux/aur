@@ -1,0 +1,17 @@
+pkgbase = shfl-bin
+	pkgdesc = Rearrange lines in a file with simple keymaps
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dhth/shfl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = shfl
+	conflicts = shfl
+	source_x86_64 = shfl-x86_64-0.1.0.tar.gz::https://github.com/dhth/shfl/releases/download/v0.1.0/shfl_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a414eee6ccacc4c02c36ed67b9fb6ba743ae724e4e5aa412363168ad2a638265
+	source_aarch64 = shfl-aarch64-0.1.0.tar.gz::https://github.com/dhth/shfl/releases/download/v0.1.0/shfl_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 56e564d4975469b08e627d530701e1455cd0f6188205a885e4767ba3f6c1d459
+
+pkgname = shfl-bin
