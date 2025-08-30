@@ -1,6 +1,6 @@
 pkgbase = certiliamiddleware
 	pkgdesc = Certilia Middleware for Certilia smart cards
-	pkgver = 3.9.4
+	pkgver = 3.9.6
 	pkgrel = 1
 	url = https://www.certilia.com
 	install = certiliamiddleware.install
@@ -13,7 +13,7 @@ pkgbase = certiliamiddleware
 	depends = xcb-util-wm
 	options = !strip
 	options = staticlibs
-	source = https://www.certilia.com/update/certiliamiddleware_3.9.4-1_amd64.deb
-	sha512sums = fcb244cbaef8da7865e5223d5432079be8c463fe476d36675a145fffbedfa50052d1903f612f455d6d3fcda5a870667bff3c1fb482c287095f4b03a906aa086b
+	source = https://www.certilia.com/update/certiliamiddleware_3.9.6-1_amd64.deb
+	sha512sums = 01f1469ce414112aa5612f93c1df184caad36508007f4ea62a604808569a7dc3a98297d2f1ee9e60bfdfe30164214ab739a182d99394d214fd5ad4d2043d9806
 
 pkgname = certiliamiddleware

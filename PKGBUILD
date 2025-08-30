@@ -1,7 +1,7 @@
 # Maintainer: Certilia <support@certilia.com>
 
 pkgname=certiliamiddleware
-pkgver=3.9.4
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="Certilia Middleware for Certilia smart cards"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("ca-certificates-utils" "ccid" "xcb-util-cursor" "xcb-util-keysyms" "xc
 source=("${url}/update/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
 options=("!strip" "staticlibs")
 install="certiliamiddleware.install"
-sha512sums=("fcb244cbaef8da7865e5223d5432079be8c463fe476d36675a145fffbedfa50052d1903f612f455d6d3fcda5a870667bff3c1fb482c287095f4b03a906aa086b")
+sha512sums=("01f1469ce414112aa5612f93c1df184caad36508007f4ea62a604808569a7dc3a98297d2f1ee9e60bfdfe30164214ab739a182d99394d214fd5ad4d2043d9806")
 
 package() {
   tar --no-same-owner --zstd -xvf data.tar.zst -C ${pkgdir}
