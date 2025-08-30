@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=6.12.43
+_pkgver=6.12.44
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 _KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -19,9 +19,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-lts-6.12.43-1-x86_64.pkg.tar.zst
-_headerspkg=linux-lts-headers-6.12.43-1-x86_64.pkg.tar.zst
-_docspkg=linux-lts-docs-6.12.43-1-x86_64.pkg.tar.zst
+_kernpkg=linux-lts-6.12.44-1-x86_64.pkg.tar.zst
+_headerspkg=linux-lts-headers-6.12.44-1-x86_64.pkg.tar.zst
+_docspkg=linux-lts-docs-6.12.44-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -29,9 +29,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('e8133e0ced5c2fda432f934276d9332838a55ffb302607f511d21834926f9d46'
-            '6f526ce1d7fdf083be225bbe5ac8996ce1f9c7d8a52c0dddbce5182c37f10fb6'
-            '30e0e62137c609055e113d97aa1d40e251c20000f7544f95be12e43a1eb993a7')
+sha256sums=('1a01bdf872ecc46315d4ff5ad46dd7ecbce0fe6234a993d0717b61504bda2f4a'
+            'dafc7b91a7cc9fb3fcfc557df31a56f86a3a50b0041f4b6c853f161a22c9a5ad'
+            '80f5744c0a6a9437fdf7c65a577fe00affdf1700b91d8217db35f345f2ad154b')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -49,7 +49,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.12.43-1-lts-bin() {
+package_linux6.12.44-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -68,7 +68,7 @@ package_linux6.12.43-1-lts-bin() {
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}","${_versioned_pkgname}-bin"}
 }
 
-package_linux6.12.43-1-lts-headers-bin() {
+package_linux6.12.44-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -78,7 +78,7 @@ package_linux6.12.43-1-lts-headers-bin() {
   mv "${pkgdir}/usr/share/licenses/"{"${_pkgname}-headers","${_versioned_pkgname}-headers-bin"}
 }
 
-package_linux6.12.43-1-lts-docs-bin() {
+package_linux6.12.44-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
