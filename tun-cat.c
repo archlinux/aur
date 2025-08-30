@@ -97,7 +97,7 @@ uint16_t get_sum(char *hdr, int len, uint16_t *pshdr, int pslen) {
 void usage(void)
 {
  fprintf( stderr,
-  " Tunnel-cat version 1.5\n"
+  " Tunnel-cat version 1.8.1\n"
   "Transferring settings through a non-configured IP tunnel.\n\n"
   " Usage:\ntun-cat send <interface> <port> ...\n"
   "tun-cat listen <interface> <port> [<timeout>]\n" );
@@ -153,7 +153,7 @@ int main(int argc, char **argv)
  char *msg, *addptr;
  size_t msglen, added;
  int i;
- int true = 1;
+ int bcast_on = 1;
  struct timespec delay = {0,SEND_INT};
  struct sockaddr_in addr;
  int sock;
@@ -186,7 +186,7 @@ int main(int argc, char **argv)
   if( setsockopt(sock, SOL_SOCKET, SO_BINDTODEVICE, net_ifname, strlen(net_ifname)) < 0 )
    pr_error(3, "SO_BINDTODEVICE");
 
-  if( setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &true, sizeof(true)) < 0 )
+  if( setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &bcast_on, sizeof(bcast_on)) < 0 )
    pr_error(4, "SO_BROADCAST");
 
   mtu = get_mtu(sock, net_ifname);
