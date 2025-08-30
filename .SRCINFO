@@ -1,6 +1,6 @@
 pkgbase = python-pytelegrambotapi
 	pkgdesc = Python Telegram bot api
-	pkgver = 4.28.0
+	pkgver = 4.29.0
 	pkgrel = 1
 	url = https://github.com/eternnoir/pyTelegramBotAPI
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pytelegrambotapi
 	depends = python-build
 	depends = sed
 	depends = coreutils
-	source = https://github.com/eternnoir/pyTelegramBotAPI/archive/refs/tags/4.28.0.tar.gz
-	sha256sums = 96b7abebaee087917186f8f9ed20832e191e280cf63943cf97e898393c610f86
+	source = https://github.com/eternnoir/pyTelegramBotAPI/archive/refs/tags/4.29.0.tar.gz
+	sha256sums = f84f5ddbb20b89df830cfc7928ea21db720d73f96594e42d9c289ad9b3905068
 
 pkgname = python-pytelegrambotapi
