@@ -70,7 +70,7 @@ def handle_command(cmd_line):
     else:
         return b"ERROR: unknown command"
 # --- Cleanup ---
-def on_exit(signum, frame)
+def on_exit(signum, frame):
     print(f"Got signal {signum}, cleaning up...")
     clear_tmp()
     sys.exit(0)
