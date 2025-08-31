@@ -1,12 +1,10 @@
 --- a/src/core/CMakeLists.txt
 +++ b/src/core/CMakeLists.txt
-@@ -26,8 +26,8 @@ target_include_directories(CsCore
-    PUBLIC
+@@ -34,7 +34,7 @@ target_include_directories(CsCore
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include/QtCore>
--   $<INSTALL_INTERFACE:include>
+    $<INSTALL_INTERFACE:include>
 -   $<INSTALL_INTERFACE:include/QtCore>
-+   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 +   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtCore>
  )
  
@@ -55,17 +53,6 @@
  )
  
  include_directories(
---- a/src/script/CMakeLists.txt
-+++ b/src/script/CMakeLists.txt
-@@ -37,7 +37,7 @@ set(EXTRA_SCRIPT_LDFLAGS)
- target_include_directories(CsScript
-    PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include/QtScript>
--   $<INSTALL_INTERFACE:include/QtScript>
-+   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtScript>
- )
- 
- include_directories(
 --- a/src/sql/CMakeLists.txt
 +++ b/src/sql/CMakeLists.txt
 @@ -15,7 +15,7 @@ set(EXTRA_SQL_LDFLAGS)
@@ -101,7 +88,7 @@
  include_directories(
 --- a/src/webkit/CMakeLists.txt
 +++ b/src/webkit/CMakeLists.txt
-@@ -39,7 +39,7 @@ endif()
+@@ -67,7 +67,7 @@ endif()
  target_include_directories(CsWebKit
     PUBLIC
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include/QtWebKit>
