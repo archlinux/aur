@@ -1,0 +1,134 @@
+TARGET_PATH="/etc/security/rootasrole.json"
+DEFAULT_PATH="/usr/share/rootasrole/default.json"
+
+log() {
+    echo "RootAsRole: $1"
+}
+
+check_immutable() {
+	# Check the file system type
+	FS_TYPE=$(df -T "$TARGET_PATH" | awk 'NR==2 {print $2}')
+
+	# Supported file systems for immutable flag
+	# It may not work on all file systems, but it is supported on the most common ones.
+	case "$FS_TYPE" in
+	ext2 | ext3 | ext4 | xfs | btrfs | ocfs2 | jfs | reiserfs)
+		if ! grep -q '"immutable": true' "$TARGET_PATH"; then
+			sed -i 's/"immutable": false/"immutable": true/' "$TARGET_PATH"
+			log "The file $TARGET_PATH is now immutable, and sr will check that immutable is enforced before executing."
+		fi
+		# Attempt to set the immutable flag
+		if ! chattr +i "$TARGET_PATH" >/dev/null 2>&1; then
+			log "Failed to set the immutable flag on $TARGET_PATH"
+			sed -i 's/"immutable": true/"immutable": false/' "$TARGET_PATH"
+			sed -i "s;\"CAP_LINUX_IMMUTABLE\";;g" "$TARGET_PATH"
+		fi
+		;;
+	*)
+		log "The file system $FS_TYPE does not support the immutable flag. Avoid checking the immutable flag during sr execution."
+		sed -i "s/\"immutable\": true/\"immutable\": false/g" "$TARGET_PATH"
+		sed -i "s;\"CAP_LINUX_IMMUTABLE\";;g" "$TARGET_PATH"
+		exit 1
+		;;
+	esac
+}
+
+
+get_invoking_user() {
+	current_user=$(id -un 2>/dev/null)
+	# If SUDO_USER is set, use it
+	if [ -n "$current_user" ] && [ "$current_user" != "root" ] && [ "$current_user" != "0" ]; then
+		echo "\"$current_user\""
+		return
+	elif [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+        echo "\"$SUDO_USER\""
+        return
+    elif [ -n "$USER" ] && [ "$USER" != "root" ]; then
+		echo "\"$USER\""
+        return
+	elif [ -n "$LOGNAME" ] && [ "$LOGNAME" != "root" ]; then
+		echo "\"$LOGNAME\""
+        return
+	elif [ -n "$USERNAME" ] && [ "$USERNAME" != "root" ]; then
+		echo "\"$USERNAME\""
+        return
+	elif [ -n "$SUDO_UID" ] && [ "$SUDO_UID" != "0" ]; then
+		echo "$SUDO_UID"
+        return
+	elif [ -n "$RAR_USER" ] && [ "$RAR_USER" != "root" ]; then
+		echo "\"$RAR_USER\""
+        return
+	elif [ -n "$RAR_UID" ] && [ "$RAR_UID" != "0" ]; then
+		echo "$RAR_UID"
+        return
+	fi
+
+    # Otherwise walk the process tree upwards
+    pid=$PPID
+    while [ "$pid" -gt 1 ]; do
+        # Get UID and CMD for this process using POSIX-compatible approach
+        if ps_output=$(ps -o uid=,user= -p "$pid" 2>/dev/null); then
+            uid=$(echo "$ps_output" | awk '{print $1}')
+            user=$(echo "$ps_output" | awk '{print $2}')
+            if [ "$uid" != "0" ]; then
+                if [ -n "$user" ]; then
+                    echo "\"$user\""
+                    return
+                else
+                    echo "$uid"
+                    return
+                fi
+            fi
+        fi
+        pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ') || break
+    done
+
+    # If we got here, it's root
+    echo "root"
+}
+
+
+setadmin() {
+	
+	if grep -q '"ROOTADMINISTRATOR"' "$TARGET_PATH"; then
+		ADMIN_USER=$(get_invoking_user)
+		sed -i "s/\"ROOTADMINISTRATOR\"/$ADMIN_USER/g" "$TARGET_PATH"
+		log "The user $ADMIN_USER is now the administrator."
+	fi
+}
+
+
+
+post_install() {
+	if [ ! -f "$TARGET_PATH" ]; then
+		if cp "$DEFAULT_PATH" "$TARGET_PATH"; then
+			setadmin
+			check_immutable
+		else
+			log "Failed to copy the default configuration file to $TARGET_PATH"
+			exit 1
+		fi
+	else 
+		log "The configuration file $TARGET_PATH already exists. Skipping the post-installation process."
+		exit 0
+	fi
+}
+
+pre_remove() {    
+    # Remove immutable flag if present, ignore errors
+    if [ -f "$TARGET_PATH" ]; then
+        chattr -i "$TARGET_PATH" 2>/dev/null || true
+        log "Removed immutable flag from $TARGET_PATH (if it was set)"
+    fi
+}
+
+post_upgrade() {
+    setcap '=p' /usr/bin/dosr
+}
+
+post_remove() {
+	if [ -f "$TARGET_PATH" ]; then
+        rm -f "$TARGET_PATH"
+        log "Removed $TARGET_PATH"
+    fi
+}

@@ -1,0 +1,24 @@
+pkgbase = dosr
+	pkgdesc = A better alternative to sudo(-rs)/su • Fast • Memory-safe • Security-oriented
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://lechatp.github.io/RootAsRole/
+	install = rootasrole.install
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = e2fsprogs
+	depends = pcre2
+	depends = pam
+	depends = libseccomp
+	depends = glibc
+	depends = gcc-libs
+	optdepends = pandoc: for building man pages
+	options = !debug
+	backup = usr/share/rootasrole/dosr
+	backup = usr/share/rootasrole/default.json
+	source = dosr-3.2.2.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v3.2.2.tar.gz
+	validpgpkeys = 74F43C5774BE1F3527DEFA4835C155EA0525104D
+	sha256sums = 2d707bbfa0d7be87e44739f6caf5f23ead088b497ffce187f4e8b2b60b2f59af
+
+pkgname = dosr
