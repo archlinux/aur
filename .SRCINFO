@@ -1,0 +1,23 @@
+pkgbase = python-jamo
+	pkgdesc = A Hangul syllable and jamo analyzer.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/jamo
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-nose2
+	makedepends = autopep8
+	makedepends = python-flake8
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-jamo
+	conflicts = python-jamo
+	options = !strip
+	options = !debug
+	source = jamo-0.4.1.tar.gz::https://files.pythonhosted.org/packages/source/j/jamo/jamo-0.4.1.tar.gz
+	sha256sums = ea65cf9d35338d0e0af48d75ff426d8a369b0ebde6f07051c3ac37256f56d025
+
+pkgname = python-jamo
