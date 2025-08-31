@@ -3,12 +3,12 @@
 
 pkgname='perl-cgi-compile'
 pkgver='0.27'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Compile .cgi scripts to a code reference like ModPerl::Registry"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cgi>=0' 'perl-capture-tiny>=0' 'perl-file-pushd>=0' 'perl-sub-identify>=0' 'perl-sub-name>=0' 'perl-try-tiny>=0' 'perl>=5.8.1')
+depends=('perl-cgi>=0' 'perl-capture-tiny>=0' 'perl-file-pushd>=0' 'perl-sub-identify>=0' 'perl-sub-name>=0' 'perl-try-tiny>=0' 'perl-module-build-tiny' 'perl>=5.8.1')
 makedepends=()
 checkdepends=('perl-test-nowarnings>=0' 'perl-test-requires>=0')
 url='https://metacpan.org/release/CGI-Compile'
