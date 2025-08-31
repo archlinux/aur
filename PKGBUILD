@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
@@ -11,9 +11,9 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('gerbil')
 conflicts=('gerbil-git')
-source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v0.9.0/Gerbil-0.9.0.AppImage"
-        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v0.9.0/assets/gerbil.desktop")
-sha256sums=('932652dbe6f6ce04a7c2117bb1b6ccbc62c93ee7bd5851c293612e8c48a0b6cf'
+source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v0.9.1/Gerbil-0.9.1.AppImage"
+        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v0.9.1/assets/gerbil.desktop")
+sha256sums=('6ca15d6dccbbbc61a3a1bb1729ae9fe3f4496a4154a60bd1ada7249983d8a2a8'
             'da139b72a1d0965c1fe7749cb93c2ef50c00d551f7b884ed9296db3114283893')
 
 prepare() {
@@ -45,10 +45,17 @@ WRAPPER
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     install -dm755 "${pkgdir}/usr/share/pixmaps"
     
-    if [ -f "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/gerbil.png" ]; then
-        cp "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/gerbil.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
-        cp "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/gerbil.png" "${pkgdir}/usr/share/pixmaps/gerbil.png"
+    if [ -f "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/Gerbil.png" ]; then
+        cp "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/Gerbil.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
+        cp "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/Gerbil.png" "${pkgdir}/usr/share/pixmaps/gerbil.png"
     else
-        echo "Warning: Could not find icon.png in expected locations"
+        echo "Warning: Could not find Gerbil.png in expected locations"
+        find "${pkgdir}/opt/gerbil" -name "*erbil*.png" -type f | head -1 | while read icon_file; do
+            if [ -n "$icon_file" ]; then
+                echo "Found icon at: $icon_file"
+                cp "$icon_file" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
+                cp "$icon_file" "${pkgdir}/usr/share/pixmaps/gerbil.png"
+            fi
+        done
     fi
 }
