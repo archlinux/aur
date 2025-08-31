@@ -14,15 +14,15 @@ conflicts=("authtui")
 source=("git+https://github.com/d116u/authtui.git")
 sha1sums=('SKIP')
 
-pkgver() {
+#pkgver() {
   # 从 git 仓库生成软件版本
   # 其他实现见: https://wiki.archlinux.org/title/VCS_package_guidelines#Git
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
-}
+#  cd "${pkgname%-git}"
+#  ( set -o pipefail
+#    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+#    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+#  )
+#}
 
 
 build() {
