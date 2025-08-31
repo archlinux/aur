@@ -1,0 +1,27 @@
+pkgbase = python-pyopenjtalk
+	pkgdesc = A python wrapper for OpenJTalk
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/pyopenjtalk
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-cmake
+	depends = cython
+	depends = python
+	depends = python-importlib_resources
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-oldest-supported-numpy
+	provides = python-pyopenjtalk
+	conflicts = python-pyopenjtalk
+	options = !strip
+	options = !debug
+	source = pyopenjtalk-0.4.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pyopenjtalk/pyopenjtalk-0.4.1.tar.gz
+	sha256sums = d5ada46f7fc2b52c1c79c273eb9668ff6ad7ab276a8db9d8be119ef93440f0dc
+
+pkgname = python-pyopenjtalk
