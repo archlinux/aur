@@ -50,14 +50,12 @@ options=('!lto')
 
 source=(
   "$_name::git+$url"
-  'aw-core-install-aw-cli.patch'
   'aw-core-install-schemas.patch'
   'aw-qt-install-logo.patch'
   'aw-server-fix-static-install.patch'
 )
 sha256sums=(
   'SKIP'
-  '1bbff09e15b027b2bca96c0f3233550cf3f3e52210ed07bc0bc3c4e6e90570f0'
   'cba81025c0e38fd6022b0926972a839d7e6305830bf0c18e561692bfd2806b35'
   '9a8ef6abf6bc05d9c0c3d21fbc69621031f2b817c34ec075fcf2a88dd4415dd6'
   '6d608266b03e62a99c8885403c86950e6a2bda43513bc57c681744fec7048612'
@@ -81,7 +79,6 @@ prepare() {
   git -C "$srcdir/$_name" clean -dfx
   git -C "$srcdir/$_name" submodule foreach --recursive 'git clean -dfx'
   git -C "$srcdir/$_name" submodule update --init --recursive
-  git -C "$srcdir/$_aw_core" apply "$srcdir/aw-core-install-aw-cli.patch"
   git -C "$srcdir/$_aw_core" apply "$srcdir/aw-core-install-schemas.patch"
   git -C "$srcdir/$_aw_qt" apply "$srcdir/aw-qt-install-logo.patch"
   git -C "$srcdir/$_aw_server" apply "$srcdir/aw-server-fix-static-install.patch"
