@@ -24,19 +24,6 @@ makedepends=(
 source=('nowaymouse-git::git+https://github.com/Neal-Ning/nowaymouse.git')
 sha256sums=('SKIP')
 
-keywords=(
-  'mouse'
-  'pointer'
-  'keyboard'
-  'control'
-  'automation'
-  'wayland'
-  'compositor'
-  'input'
-  'accessibility'
-  'productivity'
-)
-
 pkgver() {
   cd "$srcdir/$pkgname"
   echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
