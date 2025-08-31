@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
@@ -45,16 +45,9 @@ WRAPPER
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     install -dm755 "${pkgdir}/usr/share/pixmaps"
     
-    # Try different possible icon locations
-    if [ -f "${pkgdir}/opt/gerbil/resources/assets/icon.png" ]; then
-        cp "${pkgdir}/opt/gerbil/resources/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
-        cp "${pkgdir}/opt/gerbil/resources/assets/icon.png" "${pkgdir}/usr/share/pixmaps/gerbil.png"
-    elif [ -f "${pkgdir}/opt/gerbil/assets/icon.png" ]; then
-        cp "${pkgdir}/opt/gerbil/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
-        cp "${pkgdir}/opt/gerbil/assets/icon.png" "${pkgdir}/usr/share/pixmaps/gerbil.png"
-    elif [ -f "${pkgdir}/opt/gerbil/icon.png" ]; then
-        cp "${pkgdir}/opt/gerbil/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
-        cp "${pkgdir}/opt/gerbil/icon.png" "${pkgdir}/usr/share/pixmaps/gerbil.png"
+    if [ -f "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/gerbil.png" ]; then
+        cp "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/gerbil.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/gerbil.png"
+        cp "${pkgdir}/opt/gerbil/usr/share/icons/hicolor/513x513/apps/gerbil.png" "${pkgdir}/usr/share/pixmaps/gerbil.png"
     else
         echo "Warning: Could not find icon.png in expected locations"
     fi
