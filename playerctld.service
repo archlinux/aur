@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022–2025 David Ludovino
+# SPDX-FileCopyrightText: 2025 Arch Linux contributors
+# SPDX-License-Identifier: 0BSD OR GFDL-1.3-or-later
+
 [Unit]
 Description=Keep track of media player activity
 
