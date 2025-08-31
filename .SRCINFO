@@ -1,7 +1,7 @@
 pkgbase = digitalwatchdog-client
 	pkgdesc = DW Spectrum Client
 	pkgver = 6.0.5.41290
-	pkgrel = 1
+	pkgrel = 2
 	url = https://digital-watchdog.com/
 	install = digitalwatchdog-client.install
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = digitalwatchdog-client
 	depends = qt5-webengine
 	depends = systemd-libs
 	depends = zlib>=1.1.4
+	depends = libxml2-legacy
 	optdepends = binutils
 	replaces = digitalwatchdog-client-1.2<4.2.0
 	options = !strip
