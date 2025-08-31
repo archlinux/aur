@@ -1,7 +1,7 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmpdebian
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Part of the tmplinux suite. Temporary Debian"
 arch=('any')
 url="https://github.com/TheOddCell/tmpdebian"
