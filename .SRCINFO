@@ -6,7 +6,6 @@ pkgbase = dl-desktop-git
 	arch = x86_64
 	license = GPL
 	makedepends = npm
-	makedepends = python
 	makedepends = git
 	depends = gtk2
 	depends = libxss

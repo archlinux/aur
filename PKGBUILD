@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/hmlendea/dl-desktop"
 license=('GPL')
 depends=('gtk2' 'libxss' 'nss' 'nspr' 'libxtst' 'alsa-lib')
-makedepends=('npm' 'python' 'git')
+makedepends=('npm' 'git')
 source=("git+https://github.com/hmlendea/dl-desktop")
 md5sums=("SKIP")
 
