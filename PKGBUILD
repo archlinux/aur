@@ -3,14 +3,14 @@
 _name=langgraph-sdk
 pkgname=python-$_name
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for interacting with LangGraph API."
 arch=('any')
 license=('MIT')
 url="https://github.com/langchain-ai/langgraph/tree/main/libs/sdk-py"
 depends=('python' 'python-httpx' 'python-orjson')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-watch')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/langchain-ai/langgraph/refs/tags/${_name//langgraph-/}==$pkgver/docs/docs/cloud/reference/api/openapi.json")
 sha256sums=('65c37fdb1d6f572deb7d5dda45aab79916c13c276a1e08b29309ae7729567a36'
