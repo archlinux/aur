@@ -1,12 +1,13 @@
 pkgbase = fluxengine-git
 	pkgdesc = PSOC5 floppy disk imaging interface
-	pkgver = r2814.9ce405ce
+	pkgver = r2937.7cde8e3a
 	pkgrel = 1
 	url = http://cowlark.com/fluxengine/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = xxd
+	makedepends = ninja
 	depends = wxwidgets-gtk3
 	depends = libudev.so
 	depends = zlib
