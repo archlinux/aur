@@ -1,6 +1,6 @@
 # Maintainer: Tjw123hh Pigmonky <tjw123hh@outlook.com>
 pkgname=python-east-asian-spacing-git
-pkgver=1.4.2.r97.g2a1d8a7
+pkgver=1.4.4.r4.g4a7e5d3
 pkgrel=1
 pkgdesc="East Asian Contextual Spacing Build Tools"
 arch=('any')
