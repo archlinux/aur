@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r407.055229a
+pkgver=r414.b35ca49
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
 arch=('x86_64')
@@ -18,9 +18,9 @@ depends=(
     'dracut'
     'efibootmgr')
 optdepends=(
-    'systemd: bootctl detects ESP path automatically.'
-    'sbctl: signs bootable EFI files for Secure Boot when enabled.'
-    'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
+    'kernel-modules-hook: Safely keeps kernel on upgrade failure'
+    'sbctl: Signs UEFI boot files for Secure Boot when enabled'
+    'journalctl-desktop-notification: Sends desktop notifications when errors occur'
 )
 makedepends=('git' 'maven')
 sha256sums=('SKIP')
