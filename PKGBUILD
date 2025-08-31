@@ -1,6 +1,6 @@
 # Maintainer: zyx <d0116u@gmail.com>
 pkgname=authtui-git
-pkgver=.r.
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="a full rust tui auther"
 arch=('i686' 'x86_64')
