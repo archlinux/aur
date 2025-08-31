@@ -1,7 +1,7 @@
 pkgbase = waterfox-bin
 	pkgdesc = Current/modern generation of customizable privacy-conscious web browser.
 	pkgver = 6.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.waterfox.net
 	arch = x86_64
 	license = MPL-2.0
@@ -20,7 +20,7 @@ pkgbase = waterfox-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	provides = waterfox=6.6.2
-	source = https://cdn1.waterfox.net/waterfox/releases/6.6.2/Linux_x86_64/waterfox-6.6.2.tar.bz2
+	source = waterfox-6.6.2-3.tar.bz2::https://cdn1.waterfox.net/waterfox/releases/6.6.2/Linux_x86_64/waterfox-6.6.2.tar.bz2
 	source = waterfox.desktop
 	sha512sums = 9627fd3e87428caceff141e559ae84fff30457c1032d5cac0829d6dec13864a64abfee05190d484f5cb23a11eecc2af8f85a06e7080c25f3e5a087c8214f89b8
 	sha512sums = d0237cffceb1f22bcef3479ee192360c069052534cbe6f452bf88e671ba26b7d8d04f6cdbb4f34647277b64136093d703b5f9ac8071fe0d3c80d70b1e1395a84

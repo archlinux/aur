@@ -4,7 +4,7 @@
 
 pkgname=waterfox-bin
 pkgver=6.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
   'speech-dispatcher: Text-to-Speech'
   'hunspell-en_US: Spell checking, American English')
 provides=("waterfox=${pkgver}")
-source=("https://cdn1.waterfox.net/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
+source=("waterfox-${pkgver}-${pkgrel}.tar.bz2::https://cdn1.waterfox.net/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
   "waterfox.desktop")
 
 package() {
