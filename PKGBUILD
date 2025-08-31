@@ -1,8 +1,8 @@
 # Maintainer: Joachim COQBLIN <arch@coqblin.net>
 pkgname=gitlab-sync
 pkgver=2.1
-pkgrel=1
-pkgdesc="Script d'automatisation pour configurer une synchronisation miroir entre deux dépôts GitLab."
+pkgrel=2
+pkgdesc="[FR] Automatise la configuration d'un miroir GitLab. [EN] Automates the configuration of a GitLab mirror."
 arch=('any')
 url="https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync"
 license=('AGPL3')

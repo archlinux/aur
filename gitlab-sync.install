@@ -1,6 +1,14 @@
 post_install() {
-  echo "==> Pour configurer gitlab-sync, copiez et éditez le fichier d'exemple :"
-  echo "    mkdir -p ~/.config/gitlab_sync"
-  echo "    cp /usr/share/doc/gitlab-sync/config.ini.example ~/.config/gitlab_sync/config.ini"
-  echo "    nano ~/.config/gitlab_sync/config.ini"
+  # Detect user language, default to English
+  if echo "$LANG" | grep -q -E '^fr'; then
+    echo "==> Pour configurer gitlab-sync, copiez et éditez le fichier d'exemple :"
+    echo "    mkdir -p ~/.config/gitlab_sync"
+    echo "    cp /usr/share/doc/gitlab-sync/config.ini.example ~/.config/gitlab_sync/config.ini"
+    echo "    nano ~/.config/gitlab_sync/config.ini"
+  else
+    echo "==> To configure gitlab-sync, copy and edit the example file:"
+    echo "    mkdir -p ~/.config/gitlab_sync"
+    echo "    cp /usr/share/doc/gitlab-sync/config.ini.example ~/.config/gitlab_sync/config.ini"
+    echo "    nano ~/.config/gitlab_sync/config.ini"
+  fi
 }
