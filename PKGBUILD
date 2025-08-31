@@ -4,7 +4,7 @@ _pkgauthor=Beacroxx
 _pkgname=pulse-visualizer
 pkgname=${_pkgname}-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -28,8 +28,11 @@ _pkghome="home/bea/pulse-gh-release/${CARCH}"
 prepare() {
 	cd "${_pkghome}/" || exit
 
-	mkdir ./fonts
+	mkdir -p ./fonts
 	mv ./JetBrainsMonoNerdFont-Medium.ttf ./fonts/
+
+	mkdir -p ./icons
+	cp pulse-visualizer.png ./icons/
 }
 
 package() {
@@ -55,5 +58,7 @@ package() {
 	cp -rf shaders "${pkgdir}/usr/share/${_pkgname}/"
 	cp -rf themes "${pkgdir}/usr/share/${_pkgname}/"
 	cp -rf fonts "${pkgdir}/usr/share/${_pkgname}/"
+	cp -rf icons "${pkgdir}/usr/share/${_pkgname}/"
+
 	cp -f config.yml.template "${pkgdir}/usr/share/${_pkgname}/"
 }

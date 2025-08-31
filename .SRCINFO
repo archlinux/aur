@@ -1,7 +1,7 @@
 pkgbase = pulse-visualizer-bin
 	pkgdesc = A GPU-accelerated audio visualizer for PulseAudio/PipeWire
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Beacroxx/pulse-visualizer
 	install = pulse-visualizer-bin.install
 	arch = x86_64
