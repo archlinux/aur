@@ -1,6 +1,6 @@
 # Maintainer: zyx <d0116u@gmail.com>
 pkgname=authtui-git
-pkgver=1.0.1
+pkgver=r15.f61d69f
 pkgrel=1
 pkgdesc="a full rust tui auther"
 arch=('i686' 'x86_64')
@@ -11,12 +11,23 @@ makedepends=('cargo' 'git')
 optdepends=('fish: fish completions')
 depends=('rust')
 conflicts=("authtui")
-source=("https://github.com/d116u/authtui/archive/refs/heads/main.zip")
+source=("git+https://github.com/d116u/authtui.git")
 sha1sums=('SKIP')
+
+pkgver() {
+  # 从 git 仓库生成软件版本
+  # 其他实现见: https://wiki.archlinux.org/title/VCS_package_guidelines#Git
+  cd "${pkgname%-git}"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
 
 build() {
   #git clone https://github.com/d116u/authtui.git
-  cd "authtui-main"
+  cd "${pkgname%-git}"
   if command -v rustup > /dev/null 2>&1; then
     RUSTFLAGS="-C target-cpu=native" rustup run nightly \
       cargo build --release
@@ -30,6 +41,6 @@ build() {
 
 
 package() {
-  cd "authtui-main"
+  cd "${pkgname%-git}"
   install -Dm755 "target/release/auther" "$pkgdir/usr/bin/authtui"
 }
