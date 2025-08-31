@@ -1,12 +1,15 @@
+pkgver=0.1.1
 # Maintainer: James Condron <james@zero-internet.org.uk>
 pkgname=threes
-pkgver=0.1.0
-pkgrel=4
+pkgrel=1
 pkgdesc="a tool for bringing up tailscale connected virtual machines."
 arch=('any')
 url="https://code.fatlads.lol/threes/threes"
 license=('BSD-3-Clause')
-depends=("rqlite")
+depends=(
+    "rqlite"
+    "libvirt"
+)
 makedepends=('go>=1.24')
 source=(
     "$url/archive/v$pkgver.tar.gz"
@@ -43,7 +46,7 @@ package() {
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-post_install() {
+postinstall() {
     echo "Please follow the instructions at https://code.fatlads.lol/threes/threes#networking prior to starting.
 
 You will also need to edit /etc/threes/10-config.env, if you haven't already, with various tailscale tokens."

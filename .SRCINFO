@@ -1,13 +1,14 @@
 pkgbase = threes
 	pkgdesc = a tool for bringing up tailscale connected virtual machines.
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://code.fatlads.lol/threes/threes
 	arch = any
 	license = BSD-3-Clause
 	makedepends = go>=1.24
 	depends = rqlite
-	source = https://code.fatlads.lol/threes/threes/archive/v0.1.0.tar.gz
+	depends = libvirt
+	source = https://code.fatlads.lol/threes/threes/archive/v0.1.1.tar.gz
 	source = threes.service
 	source = 10-config.env
 	sha256sums = 380ae81eea12cf4c61d1f869b0faa8171435ccdb03a3b4b22db73ad05747ba41
