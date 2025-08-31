@@ -2,7 +2,7 @@
 pkgname='nowaymouse-git'
 pkgver=r0.g0000000
 pkgrel=1
-pkgdesc="Effective controler for mouse position, movements and actions with keyboard on wayland based compositors"
+pkgdesc="Control mouse position, movements and actions with keyboard on wlroots-based wayland compositors."
 arch=(
     'x86_64'
     'aarch64'

@@ -1,5 +1,5 @@
 pkgbase = nowaymouse-git
-	pkgdesc = Effective controler for mouse position, movements and actions with keyboard on wayland based compositors
+	pkgdesc = Control mouse position, movements and actions with keyboard on wlroots-based wayland compositors.
 	pkgver = r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Neal-Ning/nowaymouse
