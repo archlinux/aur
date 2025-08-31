@@ -1,10 +1,11 @@
 pkgbase = omarchist-bin
 	pkgdesc = A GUI app for Omarchy.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
-	url = https://github.com/tahayvr/omarchist-app
+	url = https://github.com/tahayvr/omarchist
 	install = omarchist-bin.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = cairo
 	depends = desktop-file-utils
@@ -17,7 +18,9 @@ pkgbase = omarchist-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/tahayvr/omarchist-app/releases/download/v0.0.1/Omarchist_0.0.1_amd64.deb
-	sha256sums_x86_64 = 78a820f682cf1b419f60bbb9b1aec80f5f21e727404d5989b189e1e78c51de4f
+	source_x86_64 = https://github.com/tahayvr/omarchist/releases/download/v0.0.2/Omarchist_0.0.2_amd64.deb
+	sha256sums_x86_64 = d526fba47109f274bf74cd572c7869f4c57814c1af75041a5b22567a180f050c
+	source_aarch64 = https://github.com/tahayvr/omarchist/releases/download/v0.0.2/Omarchist_0.0.2_arm64.deb
+	sha256sums_aarch64 = 3b5cd5d6051f387e1f02fcf2808db414c0ddaf9091fa6e7aadf6436e32415265
 
 pkgname = omarchist-bin
