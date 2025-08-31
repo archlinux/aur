@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=daggy
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Run multiple commands on remote servers simultaneously and save output locally'
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 license=('MIT')
 url='https://daggy.gitbook.io/docs'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/synacker/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f813c1619167d3bd981c811ee0afca4b59140a659b41602737fdfb7b66e182e')
+sha256sums=('fed4a56d970f37a858a80c2ef1f0fc8d928cd8b1daead166141a538782030864')
 
 build() {
   cd "${pkgname}-${pkgver}"
