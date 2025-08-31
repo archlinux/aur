@@ -1,0 +1,57 @@
+pkgbase = linux-stub
+	pkgdesc = Linux, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
+	pkgver = 6.16.4.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = rust
+	makedepends = rust-bindgen
+	makedepends = rust-src
+	makedepends = tar
+	makedepends = xz
+	options = !debug
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.4.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.4.tar.sign
+	source = https://github.com/archlinux/linux/releases/download/v6.16.4-arch1/linux-v6.16.4-arch1.patch.zst
+	source = https://github.com/archlinux/linux/releases/download/v6.16.4-arch1/linux-v6.16.4-arch1.patch.zst.sig
+	source = config::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config/raw/?ref=6.16.4.arch1-1
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
+	sha256sums = d6a5e3c71a10b533a756251387cc8bf48bbd5c76d842ba5e957d8b1c316ab622
+	sha256sums = SKIP
+	sha256sums = bbb122a7ab583e548e10a459588ca8aeb0efe7112a9c1e5e7155f8f88d1f2fa1
+	sha256sums = SKIP
+	sha256sums = 33e7e35af5a1a9d937aa54865c79cd2fc0f2834e9db9f7ba171e3bb93f19e552
+	b2sums = 251feef2f995c155850eac2fce5b89f37f39e9f13b6a4e6873370fdc69654692c6bf6c92f04ca7c0b5fd6088d74442afb68db71d2cc18691e23c61b0be714f34
+	b2sums = SKIP
+	b2sums = fc43e6e57889aac4d401c0c4d1dd0f1e7c534de99ca25f928624c8bba842102f6c17ee74e8d7353cc71fc3655db24ca0c5097eb0b89e90d6eec1820d5302d28d
+	b2sums = SKIP
+	b2sums = 8e28d86a7621302a27c9c817d07d2d7186c3702a458bb21a955cf6cf2a8a52d64e9570b4a43415b575bc85674041baf46f42085602854d74021efe8337dcac2d
+
+pkgname = linux-stub
+	pkgdesc = kernel and modules for the Linux kernel, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
+	depends = coreutils
+	depends = kmod
+	optdepends = initramfs: for early-userspace boot support
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = scx-scheds: to use sched-ext schedulers
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	provides = KSMBD-MODULE
+	provides = NTSYNC-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = virtualbox-guest-modules-arch
+	provides = wiregard-arch
+
+pkgname = linux-stub-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
+	depends = pahole
