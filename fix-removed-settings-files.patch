@@ -1,0 +1,13 @@
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index c3c4d2bab8..7fcd7f6048 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -179,8 +179,6 @@
+ @RESPATH@/chrome/firedragon.manifest
+ @RESPATH@/chrome/firedragon@JAREXT@
+ #ifdef FIREDRAGON_SETTINGS
+-@RESPATH@/defaults/autoconfig/prefcalls-firedragon.js
+-@RESPATH@/defaults/pref/local-settings.js
+ @RESPATH@/distribution/policies.json
+ @RESPATH@/firedragon.cfg
+ #endif

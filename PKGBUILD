@@ -75,9 +75,11 @@ options=(!debug
 backup=("usr/lib/${__pkgname}/${__pkgname}.cfg"
         "usr/lib/${__pkgname}/distribution/policies.json")
 source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-source.tar.zst
-        firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon)
+        firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
+        fix-removed-settings-files.patch)
 sha256sums=('2f5807dda0c35303e84945bdba5cdae4783e51ec217c3cdd0b322a5d536d9794'
-            '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0')
+            '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
+            '9a1f613ef715e60a5c6c6514fb33f1881e5bd670beba1bcfe3af0559038c878f')
 
 # Select the method of profiling
 if [[ "${_build_pgo::1}" == "t" ]]; then
@@ -99,6 +101,8 @@ prepare() {
   mkdir "${srcdir}/mozbuild"
 
   cd firedragon-source-v"${_pkgver}" || exit
+
+  patch -Nsp1 -i ../fix-removed-settings-files.patch
 
   _deno install --allow-scripts --frozen
 
