@@ -1,7 +1,7 @@
 pkgbase = threes
 	pkgdesc = a tool for bringing up tailscale connected virtual machines.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.fatlads.lol/threes/threes
 	arch = any
 	license = BSD-3-Clause
