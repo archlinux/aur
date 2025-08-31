@@ -1,19 +1,24 @@
-pkgbase = pkgbase
-	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
-	pkgver = latest
+pkgbase = polycule-bin
+	pkgdesc = A geeky and efficient [matrix] client for power users.
+	pkgver = 0.3.4
 	pkgrel = 1
-	url = https://github.com/vlvassilev/yuma123
+	url = https://polycule.im
 	arch = x86_64
-	license = BSD
-	depends = git
-	depends = autoconf
-	depends = automake
-	depends = libtool
-	depends = make
-	depends = gcc
-	provides = yuma123
-	conflicts = yuma123
-	source = git+https://github.com/vlvassilev/yuma123
-	sha256sums = SKIP
+	license = EUPL-1.2
+	depends = dbus
+	depends = gtk3
+	depends = jsoncpp
+	depends = libnotify
+	depends = libsecret
+	depends = mimalloc
+	depends = mpv
+	depends = openssl
+	depends = xdg-user-dirs
+	provides = polycule=0.3.4
+	conflicts = polycule
+	source = https://gitlab.com/polycule_client/polycule/-/jobs/artifacts/v0.3.4/download?job=build%3Alinux%3Ax86_64
+	source = https://gitlab.com/polycule_client/polycule/-/archive/v0.3.4/polycule-v0.3.4.tar.gz
+	sha256sums = b5f587e6253872abb3b95e34304af085591dc889b37ac41a74ebd187049490af
+	sha256sums = cd452a14ef7843aaba8e80d627bfdcdd120ab1396ece7dbb9f895da3ed754dd5
 
-pkgname = yuma123-git
+pkgname = polycule-bin
