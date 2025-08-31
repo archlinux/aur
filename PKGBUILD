@@ -2,7 +2,7 @@
 
 pkgname=gnu-netcat
 pkgver=0.7.1
-pkgrel=11
+pkgrel=12
 pkgdesc="GNU rewrite of netcat, the network piping application"
 depends=(
   'glibc'
@@ -17,6 +17,12 @@ replaces=('netcat')
 provides=('netcat')
 source=("https://downloads.sourceforge.net/sourceforge/netcat/netcat-$pkgver.tar.bz2")
 sha256sums=('b55af0bbdf5acc02d1eb6ab18da2acd77a400bafd074489003f3df09676332bb')
+
+prepare() {
+  cd "${srcdir}/netcat-${pkgver}"
+  autoreconf -fiv
+}
+
 
 build() {
   cd "${srcdir}/netcat-${pkgver}"
