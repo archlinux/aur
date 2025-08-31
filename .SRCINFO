@@ -1,7 +1,7 @@
 pkgbase = elephant-websearch
 	pkgdesc = websearch provider for elephant
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = elephant-websearch
 	makedepends = go
 	provides = elephant-websearch
 	conflicts = elephant-websearch
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-11.tar.gz
-	sha256sums = 51ceb6339c87994b954f0a33d7ef636671b9d37e29a604b7e4dd6af7bb337115
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-12.tar.gz
+	sha256sums = 5f64e8cc6d76986acfee595a7a38edf858ccc89dc21032faa117e4ee53b49422
 
 pkgname = elephant-websearch
