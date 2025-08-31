@@ -1,42 +1,54 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
-# Maintainer: pikakolendo <pikakolendo02 at g-m-a-i-1 dot c0m>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: pikakolendo <pikakolendo02 at g-m-a-i-1 dot c0m>
 
 _pkgname='appimagetool'
 pkgname="${_pkgname}-bin"
-pkgver=13
-pkgrel=0
+pkgver=r67.aa0b7dc
+pkgrel=1
 pkgdesc='Package desktop applications as AppImages'
-arch=('x86_64' 'armv7h' 'aarch64')
-url='https://github.com/AppImage/AppImageKit'
+arch=('x86_64' 'armv7h' 'aarch64' 'i686')
+url='https://github.com/AppImage/appimagetool'
 license=('MIT')
 depends=('libappimage')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-noextract=("${_pkgname}-${pkgver}-x86_64.appimage"
-          "${_pkgname}-${pkgver}-armv7.appimage"
-          "${_pkgname}-${pkgver}-aarch64.appimage")
+noextract=("${_pkgname}-i686.AppImage"
+          "${_pkgname}-x86_64.AppImage"
+          "${_pkgname}-armhf.AppImage"
+          "${_pkgname}-aarch64.AppImage")
 
-source=("${_pkgname}-${pkgver}-README.md::${url}/raw/${pkgver}/README.md"
-        "${_pkgname}-${pkgver}-LICENSE::${url}/raw/${pkgver}/LICENSE")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${url}/releases/download/${pkgver}/${_pkgname}-x86_64.AppImage")
-source_armv7h=("${_pkgname}-${pkgver}-armv7.appimage::${url}/releases/download/${pkgver}/${_pkgname}-armhf.AppImage")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${url}/releases/download/${pkgver}/${_pkgname}-aarch64.AppImage")
+source=("git+${url}.git")
+source_i686=("${_pkgname}-i686.AppImage::${url}/releases/download/continuous/${_pkgname}-i686.AppImage")
+source_x86_64=("${_pkgname}-x86_64.AppImage::${url}/releases/download/continuous/${_pkgname}-x86_64.AppImage")
+source_armv7h=("${_pkgname}-armv7h.AppImage::${url}/releases/download/continuous/${_pkgname}-armhf.AppImage")
+source_aarch64=("${_pkgname}-aarch64.AppImage::${url}/releases/download/continuous/${_pkgname}-aarch64.AppImage")
 
-sha256sums=('bf014bb030e26169da2129cb51e75ecc0c1a94cb2c970ee99050c65eaad16a09'
-            '9cb22a08334c3a108ec4da96c1d6aea7a17a732fa9f5ca3413a9b4ce651397d8')
-sha256sums_x86_64=('df3baf5ca5facbecfc2f3fa6713c29ab9cefa8fd8c1eac5d283b79cab33e4acb')
-sha256sums_armv7h=('36bb718f32002357375d77b082c264baba2a2dcf44ed1a27d51dbb528fbb60f6')
-sha256sums_aarch64=('334e77beb67fc1e71856c29d5f3f324ca77b0fde7a840fdd14bd3b88c25c341f')
+sha256sums=('SKIP')
+sha256sums_i686=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_armv7h=('SKIP')
+sha256sums_aarch64=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  ( set -o pipefail
+    git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
 
 prepare() {
-  chmod a+x "${_pkgname}-${pkgver}-${CARCH}.appimage"
-  ./"${_pkgname}-${pkgver}-${CARCH}.appimage" --appimage-extract
+  chmod a+x "${_pkgname}-${CARCH}.AppImage"
+  ./"${_pkgname}-${CARCH}.AppImage" --appimage-extract
 }
 
 package(){
+  depends+=('zsync' 'desktop-file-utils' 'squashfs-tools')
+
   install -Dvm755 "squashfs-root/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dvm755 "squashfs-root/usr/lib/appimagekit/mksquashfs" -t "${pkgdir}/usr/lib/appimagekit"
-  install -Dvm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dvm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dvm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dvm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
