@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator')
 options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
-sha256sums=('b26f97bc5fc6050e7cfe9a75b20990e97d2647f0725b866c3abcc308049ccd28')
+sha256sums=('3b1d6a11424e732e643900dbe0c79f3135048546d288d45d26c560bb7a1b94f5')
 
 build() {
   bsdtar -x -f data.tar.gz
@@ -17,6 +17,7 @@ build() {
 
 package() {
   install -Dm755 usr/bin/twintaillauncher -t "$pkgdir/usr/bin"
+  install -Dm755 usr/lib/twintaillauncher/resources/mangohud_default.conf -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/7zr -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/krpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/hpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
