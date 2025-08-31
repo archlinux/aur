@@ -1,7 +1,7 @@
 pkgbase = kratos-git
 	pkgdesc = Your ultimate Go microservices framework for the cloud-native era
 	pkgver = 2.8.4.r35.g308cfee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go-kratos.dev
 	arch = x86_64
 	license = MIT
@@ -26,12 +26,12 @@ pkgname = kratos-git
 
 pkgname = protoc-gen-go-errors-git
 	pkgdesc = Protobuf plugin that generates error codes and RPC error helpers
-	url = https://github.com/go-kratos/kratos/tree/main/cmd/kratos
+	url = https://github.com/go-kratos/kratos/tree/main/cmd/protoc-gen-go-errors
 	provides = protoc-gen-go-errors=2.8.4
 	conflicts = protoc-gen-go-errors
 
 pkgname = protoc-gen-go-http-git
 	pkgdesc = Protobuf plugin that generates RPC service templates for HTTP APIs
-	url = https://github.com/go-kratos/kratos/tree/main/cmd/kratos
+	url = https://github.com/go-kratos/kratos/tree/main/cmd/protoc-gen-go-http
 	provides = protoc-gen-go-http=2.8.4
 	conflicts = protoc-gen-go-http

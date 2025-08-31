@@ -9,7 +9,7 @@ _pkgname=(
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
 pkgver=2.8.4.r35.g308cfee
-pkgrel=1
+pkgrel=2
 pkgdesc="Your ultimate Go microservices framework for the cloud-native era"
 arch=('x86_64')
 url="https://go-kratos.dev"
@@ -92,20 +92,20 @@ package_kratos-git() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
   cd "completions"
-  install -vDm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -vDm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -vDm644 "${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
-  install -vDm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_pkgname}.ps1"
+  install -vDm644 "${pkgname%-git}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
+  install -vDm644 "${pkgname%-git}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname%-git}.fish"
+  install -vDm644 "${pkgname%-git}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-git}"
+  install -vDm644 "${pkgname%-git}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname%-git}.ps1"
 }
 
 package_protoc-gen-go-errors-git() {
   pkgdesc="Protobuf plugin that generates error codes and RPC error helpers"
-  url="${_url}/tree/main/cmd/${_pkgname}"
+  url="${_url}/tree/main/cmd/${pkgname%-git}"
   provides=(
     "${pkgname%-git}=${pkgver%%.r*}"
   )
@@ -114,13 +114,13 @@ package_protoc-gen-go-errors-git() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 
 package_protoc-gen-go-http-git() {
   pkgdesc="Protobuf plugin that generates RPC service templates for HTTP APIs"
-  url="${_url}/tree/main/cmd/${_pkgname}"
+  url="${_url}/tree/main/cmd/${pkgname%-git}"
   provides=(
     "${pkgname%-git}=${pkgver%%.r*}"
   )
@@ -129,6 +129,6 @@ package_protoc-gen-go-http-git() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
