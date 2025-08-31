@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=throne
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base')
 makedepends=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('5000600137ecb5e56fb3fa7076dfaea50ec14f2f43bf2d190ce79ffd2c13c8cc'
+sha256sums=('b01b2a3d7010fe0de2b0669334f29560632dda4352c59b4e0f586a44116f0b29'
             'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62')
 
 prepare() {
@@ -46,9 +46,10 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
+    TAGS="with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale"
     go build -o "${srcdir}/build" \
         -ldflags="-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}'" \
-        -tags="with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale"
+        -tags="${TAGS}"
 }
 
 package() {
