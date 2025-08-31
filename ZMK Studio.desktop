@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Office;
+Exec=zmk-studio
+Icon=zmk-studio
+Name=ZMK Studio
+Terminal=false
+Type=Application

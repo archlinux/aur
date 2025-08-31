@@ -1,0 +1,21 @@
+pkgbase = zmk-studio
+	pkgdesc = A desktop application for managing ZMK firmware devices
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/zmkfirmware/zmk-studio
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = rust
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = openssl
+	conflicts = zmk-studio-bin
+	source = https://github.com/zmkfirmware/zmk-studio/archive/refs/tags/v0.3.1.tar.gz
+	source = ZMK Studio.desktop
+	sha256sums = e324178d762b758573b917ee380f47e58dbaf87bfc597c2415e85ecac57d2697
+	sha256sums = a3c1735eda3d8184b1c2914aaf9be81eb228de4c6ebe203ddc6179822b2e57a1
+
+pkgname = zmk-studio
