@@ -6,7 +6,7 @@ pkgname=gamemaker-beta-bin
 
 # Version
 pkgver=2024.1400.0.880
-pkgrel=1
+pkgrel=2
 
 # Generic
 pkgdesc="Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals."
@@ -17,7 +17,7 @@ license=('custom')
 # Dependencies
 depends=(
     'linuxdeploy'
-    'appimagetool'
+    'obsolete-appimagetool-bin'
     'clang'
     'openal'
     'unzip'

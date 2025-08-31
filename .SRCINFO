@@ -1,12 +1,12 @@
 pkgbase = gamemaker-beta-bin
 	pkgdesc = Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals.
 	pkgver = 2024.1400.0.880
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gamemaker.io
 	arch = x86_64
 	license = custom
 	depends = linuxdeploy
-	depends = appimagetool
+	depends = obsolete-appimagetool-bin
 	depends = clang
 	depends = openal
 	depends = unzip
