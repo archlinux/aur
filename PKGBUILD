@@ -2,7 +2,7 @@
 
 _pkgname=laigter
 pkgname=${_pkgname}-appimage
-pkgver=1.11.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Automatic normal/specular/parallax/occlussion map generator for sprites!"
 arch=('x86_64')
