@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
-sha256sums=("5de1718a7baa2fd4daf9ecdc109e66da39e4cf13f177937948b800890a7475d8"
+sha256sums=("ae5e89842fbe179b26dc42fd77a00f56670641e355f6f8acb1807aa0606eb173"
 "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
 "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
@@ -24,7 +24,7 @@ options=('!lto')
 
 prepare(){
     cd $srcdir/${_pkgname}-${pkgver}
-    sed -i "s/productName: Mihomo Party/productName: mihomo-party/" electron-builder.yml
+    sed -i "s/productName: Mihomo Party/productName: clash-party/" electron-builder.yml
     pnpm install
 }
 
