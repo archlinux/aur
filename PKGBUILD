@@ -1,5 +1,6 @@
 # $Id: 469156894119f3e86346aecbb0de97fac03a04fe $
 # Maintainer: Ido Rosen <ido@kernel.org>
+# Contributor: Xiaoxu Guo <ftiasch0@gmail.com>
 #
 # NOTE: To request changes to this package, please submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
@@ -16,48 +17,48 @@
 #   sacrificing the security and multiplexing functions that the OS kernel
 #   normally provides.'' (10/3/2013)
 
+# AMD/Xilinx's website seems to block certain user-agent strings. Argh.
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 pkgname='openonload'
 pkgdesc="A high performance network stack from Solarflare."
-pkgver='201710'
+epoch=1
+pkgver='9.0.2.140'
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.openonload.org/'
 license=('custom')
 depends=("linux-lts")
-makedepends=("linux-lts" "linux-lts-headers")
+makedepends=("linux-lts" "linux-lts-headers" "libarchive") # libarchive for bsdunzip
 options=('libtool' '!strip' '!makeflags' '!buildflags' 'staticlibs')
-source=("http://www.openonload.org/download/openonload-${pkgver//\./-}.tgz"
+source=("https://www.xilinx.com/content/dam/xilinx/publications/solarflare/onload/openonload/9_0_2_47/sf-109585-ls-47-openonload-release-package.zip"
         'openonload.install'
         'openonload.service'
-        'openonload-201310-cpp11-space-literal-fix.patch'
-        'openonload-201606-archlinux.patch'
-        'openonload-201710-p74377-glibc.patch'
+	'openonload-9_0_2_140-noegrep.patch'
 )
-sha512sums=('06148af3e21a9222111a71154ea9c2c9cb032b2d0a567c4892b6fea6890a1385772e3ab15cfd2985805a7f235e0e4c5b5f50ebeffc3b9ecd7afd4e1261a7df2d'
-            'ac464250f2fb96d13e8ae129bac80c03f8cca62e450fdd765f24ccd064e28e9942e4a16ebc693e75c71fc1eb86c3a1b08337b2e39c6c618e129d8ec87d872bdb'
+sha512sums=('227159ddd9e6236a2ecdde0464cadb411524a0a842fc615298deda1018d428fec42bc09fed23d1a89311acd379af80176569db48efc9b643dd71b1f3323f9dd5'
+            '68e6ed6ea8a6f8b62dfdb291354385015c977603c8b5ee0ae321c7f0177cedb30a6abdade9c2de76bf00d88bcd095c028e1c9bd6fef535f34f0273acca1ff02c'
             'b7e4529e37c64f99c660ca9b58f388cdd8f0d2f250ba875eb210f4909bb1f1c985a065aae64c048ca6f824adc6e3176c6eae1f582c049631326db73e939edd7b'
-            'a1d23b60b699c04caee93eb18d855dbe2e65d2115f10eb3771d1a2f04eea8d3b8042550152a5f96140aca759db10c3fbebdde85dbebcf46505c15f2ba7934bdb'
-            'c368ce3ed7987d1b374f1e671eb21bc80af4b927e4db4a229712f334ee4843f5921fb64c7ac83df214a9cc37134f8a3360273e9ba9496ff56c329476d26d050a'
-            '713bec2eb1792781fe01d1df5df579507ae252548f7b3b9f77987904876ac6f8116f96ef7b2a27037f153299807773738560ba046694d2f8592cb22361ec7feb')
+            '835d5150284de22c956dc11526dd6ab3c379f4f1728d9a3501e7470fc8fa38ff54d29a79d3d654cc74c230520384989efd5d61b2d4034060a8c7e856e8e33fa9')
 
 install="openonload.install"
 
 if [[ -z "$_kernelver" ]]; then
     #_kernelver="$(uname -r)"                                      # running
-    #_kernelver="$(cat /lib/modules/extramodules-4.4-lts/version)" # installed
     _kernelver="$(pacman -Q linux-lts | cut -d' ' -f2)-lts"        # installed
 fi
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver//\./-}"
+  cd "${srcdir}/"
 
-  patch -p1 < "${srcdir}/openonload-201310-cpp11-space-literal-fix.patch"
-  patch -p1 < "${srcdir}/openonload-201606-archlinux.patch"
-  patch -p1 -R < "${srcdir}/openonload-201710-p74377-glibc.patch"
+  tar xzf ${pkgname##open}-${pkgver}.tgz
+
+  cd "${pkgname##open}-${pkgver}"
+  patch -p1 < "${srcdir}/openonload-9_0_2_140-noegrep.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver//\./-}"
+  cd "${srcdir}/${pkgname##open}-${pkgver}"
 
   case $CARCH in
     "i686")
@@ -77,14 +78,16 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver//\./-}"
+  cd "${srcdir}/${pkgname##open}-${pkgver}"
 
   # OpenOnload:
   install -dm755 "${pkgdir}/etc/modprobe.d"
   install -dm755 "${pkgdir}/etc/depmod.d"
   i_prefix="${pkgdir}" ./scripts/onload_install --verbose \
       --kernelver "$_kernelver" \
-      ${DEBUG:+--debug} rpm_install
+      --kernelmodulesdir="/usr/lib/modules" \
+      --moddir="extramodules" \
+      ${DEBUG:+--debug} --nobuild
   rm -f "${pkgdir}/etc/modprobe.conf" # may be created by onload_install
   mv "${pkgdir}/usr/lib64/"* "${pkgdir}/usr/lib/"
   rmdir "${pkgdir}/usr/lib64"

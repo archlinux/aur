@@ -1,0 +1,97 @@
+diff -rupN onload-9.0.2.140/src/driver/linux_net/drivers/net/ethernet/sfc/kernel_compat.sh onload-9.0.2.140.noegrep/src/driver/linux_net/drivers/net/ethernet/sfc/kernel_compat.sh
+--- onload-9.0.2.140/src/driver/linux_net/drivers/net/ethernet/sfc/kernel_compat.sh	2025-06-13 03:55:39.000000000 -0700
++++ onload-9.0.2.140.noegrep/src/driver/linux_net/drivers/net/ethernet/sfc/kernel_compat.sh	2025-08-31 04:57:33.273400505 -0700
+@@ -290,7 +290,7 @@ EFX_HAVE_NET_RPS_H                     f
+ EFX_HAVE_IP_TUNNEL_FLAGS_TO_BE16	symbol	ip_tunnel_flags_to_be16	include/net/ip_tunnels.h
+ EFX_NEED_TIME64_TO_TM			nsymbol	time64_to_tm		include/linux/time.h
+ EFX_HAVE_ASSIGN_STR_NO_SRC_ARG      custom
+-" | egrep -v -e '^#' -e '^$' | sed 's/[ \t][ \t]*/:/g'
++" | grep -E -v -e '^#' -e '^$' | sed 's/[ \t][ \t]*/:/g'
+ }
+ 
+ ######################################################################
+diff -rupN onload-9.0.2.140/src/driver/linux_net/drivers/net/ethernet/sfc/util/user_compat.sh onload-9.0.2.140.noegrep/src/driver/linux_net/drivers/net/ethernet/sfc/util/user_compat.sh
+--- onload-9.0.2.140/src/driver/linux_net/drivers/net/ethernet/sfc/util/user_compat.sh	2025-03-28 07:18:12.000000000 -0700
++++ onload-9.0.2.140.noegrep/src/driver/linux_net/drivers/net/ethernet/sfc/util/user_compat.sh	2025-08-31 04:57:33.276733846 -0700
+@@ -40,7 +40,7 @@ function usage()
+ function generate_compat_symbols() {
+     echo "
+ EFX_NEED_STRUCT_ETHTOOL_DUMP			nsymbol	ethtool_dump		include/linux/ethtool.h
+-" | egrep -v -e '^#' -e '^$' | sed 's/[ \t][ \t]*/:/g'
++" | grep -E -v -e '^#' -e '^$' | sed 's/[ \t][ \t]*/:/g'
+ }
+ 
+ ######################################################################
+@@ -101,7 +101,7 @@ function test_symbol()
+             fi
+             [ -f "$base/$file" ] &&  \
+                 strip_comments $base/$file | \
+-                egrep -w "$symbol" >/dev/null && \
++                grep -E -w "$symbol" >/dev/null && \
+                 return 0
+         done
+     done
+@@ -132,7 +132,7 @@ fi
+ 
+ # filter the available symbols
+ if [ -n "$FILTER" ]; then
+-    compat_symbols="$(echo "$compat_symbols" | egrep "^($FILTER):")"
++    compat_symbols="$(echo "$compat_symbols" | grep -E "^($FILTER):")"
+ fi
+ 
+ function do_one_symbol() {
+diff -rupN onload-9.0.2.140/src/driver/linux_net/scripts/kernel_compat_funcs.sh onload-9.0.2.140.noegrep/src/driver/linux_net/scripts/kernel_compat_funcs.sh
+--- onload-9.0.2.140/src/driver/linux_net/scripts/kernel_compat_funcs.sh	2025-03-28 07:18:12.000000000 -0700
++++ onload-9.0.2.140.noegrep/src/driver/linux_net/scripts/kernel_compat_funcs.sh	2025-08-31 04:57:33.276733846 -0700
+@@ -208,7 +208,7 @@ function test_symbol()
+             fi
+             [ -f "$KBUILD_SRC/$prefix$file" ] &&  \
+                 strip_comments $KBUILD_SRC/$prefix$file | \
+-                egrep -w "$symbol" >/dev/null && \
++                grep -E -w "$symbol" >/dev/null && \
+                 return 0
+         done
+     done
+@@ -299,13 +299,13 @@ function test_inline_symbol()
+     # look for the inline..symbol. This is complicated since the inline
+     # and the symbol may be on different lines.
+     strip_comments $KBUILD_SRC/$file | \
+-	egrep -m 1 -B 1 '(^|[,\* \(])'"$symbol"'($|[,; \(\)])' > $t
++	grep -E -m 1 -B 1 '(^|[,\* \(])'"$symbol"'($|[,; \(\)])' > $t
+     [ $? = 0 ] || return $?
+ 
+     # there is either an inline on the final line, or an inline and
+     # no semicolon on the previous line
+-    head -1 $t | egrep -q 'inline[^;]*$' && return
+-    tail -1 $t | egrep -q 'inline' && return
++    head -1 $t | grep -E -q 'inline[^;]*$' && return
++    tail -1 $t | grep -E -q 'inline' && return
+ 
+     return 1
+ }
+@@ -335,14 +335,14 @@ function test_export()
+ 		echo >&2 "Looking for export of $symbol in $KBUILD_SRC/$file"
+             fi
+             if [ -f $KBUILD_SRC/$file ]; then
+-		egrep -q 'EXPORT_(PER_CPU)?SYMBOL(_GPL)?\('"$symbol"'\)' $KBUILD_SRC/$file && return
++		grep -E -q 'EXPORT_(PER_CPU)?SYMBOL(_GPL)?\('"$symbol"'\)' $KBUILD_SRC/$file && return
+             fi
+ 	done
+ 	if [ -n "$MAP" ]; then
+             if [ $efx_verbose = true ]; then
+ 		echo >&2 "Looking for export of $symbol in $MAP"
+             fi
+-	    egrep -q "[A-Z] $symbol\$" $MAP && return
++	    grep -E -q "[A-Z] $symbol\$" $MAP && return
+ 	fi
+ 	return 1
+     fi
+@@ -594,7 +594,7 @@ fi
+ 
+ # filter the available symbols
+ if [ -n "$FILTER" ]; then
+-    kompat_symbols="$(echo "$kompat_symbols" | egrep "^($FILTER):")"
++    kompat_symbols="$(echo "$kompat_symbols" | grep -E "^($FILTER):")"
+ fi
+ 
+ compile_dir="$(mktemp -d)"
