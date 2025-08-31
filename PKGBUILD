@@ -6,7 +6,7 @@ _pkgname=HybridFileXfer
 # https://github.com/weixiansen574/HybridFileXfer
 pkgname=hybridfilexfer-git
 pkgver=r65.7de4351
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-track Express Transfer: Simultaneously utilize all I/O channels (USB+WiFi) for maximum file transfer speed || 多轨快传：同时利用所有输入/输出通道 (USB+WiFi),实现最大文件传输速度'
 # 多轨快传：同时利用所有输入/输出通道（USB+WiFi），实现最大文件传输速度
 arch=('x86_64')
