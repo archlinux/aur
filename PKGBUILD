@@ -6,7 +6,7 @@
 
 pkgname=python-persist-queue
 _pkg="${pkgname#python-}"
-pkgver=0.8.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Thread-safe disk-based persistent queue'
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 # 	'python-mock'
 # 	'python-pymysql')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('09bb473f0c0a3a333ef5225f19f638c58f912a3e947cba3317451f137e8a8143')
+sha256sums=('1baaba4980b1592bbe341c216c6faa90588b85b9f075bfd24b55c880aa275cc7')
 
 prepare() {
 	cd "$_pkg-$pkgver"

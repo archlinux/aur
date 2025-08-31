@@ -1,6 +1,6 @@
 pkgbase = python-persist-queue
 	pkgdesc = Thread-safe disk-based persistent queue
-	pkgver = 0.8.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/peter-wangxu/persist-queue
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-persist-queue
 	depends = python
 	optdepends = python-msgpack: MessagePack serialization support
 	optdepends = python-cbor2: CBOR serialization support
-	source = python-persist-queue-0.8.1.tar.gz::https://github.com/peter-wangxu/persist-queue/archive/v0.8.1.tar.gz
-	sha256sums = 09bb473f0c0a3a333ef5225f19f638c58f912a3e947cba3317451f137e8a8143
+	source = python-persist-queue-1.0.0.tar.gz::https://github.com/peter-wangxu/persist-queue/archive/v1.0.0.tar.gz
+	sha256sums = 1baaba4980b1592bbe341c216c6faa90588b85b9f075bfd24b55c880aa275cc7
 
 pkgname = python-persist-queue
