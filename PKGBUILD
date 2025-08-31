@@ -17,7 +17,7 @@ source=(
 
 sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
             '7579d3d52fa1cd4df438a0a86e5a60e72030ae612f85866001e2f07a6de62efa'
-            '3e9d04ab5ba04e5d900c3559ab802b117de1a95e761cbb3859746fdd52161ace')
+            '1af2246ba2fdc12d534850340ee6375b31e20f27dae10f437dbaa8e897c742e2')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
