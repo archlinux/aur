@@ -2,7 +2,7 @@
 pkgname=deadlock-modmanager-git
 _pkgname=${pkgname%-git}
 pkgdesc='A mod manager for the Valve game Deadlock'
-pkgver=0.5.0.r1.gcf09652
+pkgver=0.5.0.r2.g9b88f77
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Stormix/$_pkgname"
@@ -46,7 +46,7 @@ package() {
 
 	cd "$srcdir/$_pkgname/apps/desktop"
 
-	install -Dm755 "src-tauri/target/release/desktop" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "src-tauri/target/release/deadlock-mod-manager" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
 	install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
 	install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
