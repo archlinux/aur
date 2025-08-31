@@ -1,15 +1,19 @@
 pkgbase = yaft-git
-	pkgdesc = yet another framebuffer terminal - git
-	pkgver = 20140619
+	pkgdesc = yet another framebuffer terminal
+	pkgver = r454.59ef091
 	pkgrel = 1
 	url = https://github.com/uobikiemukot/yaft
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = ncurses
-	optdepends = fbv: needed to set wallpaper
-	source = git+https://github.com/uobikiemukot/yaft.git
-	md5sums = SKIP
+	optdepends = fbv: for the yaft_wall command to work
+	optdepends = idump: for the yaft_wall command to work
+	conflicts = yaft
+	backup = usr/share/terminfo/y/yaft-256color
+	source = yaft::git+https://github.com/uobikiemukot/yaft.git
+	source = https://github.com/uobikiemukot/yaft/pull/62.patch
+	sha256sums = SKIP
+	sha256sums = 45c392757f4c6eee0c4b877ed287adc236b61bca9c058d9497b3a6bfa3a6c98b
 
 pkgname = yaft-git
-
