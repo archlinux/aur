@@ -1,0 +1,55 @@
+pkgbase = sponge-git
+	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
+	pkgver = 1.14.6.r0.ge03df22
+	pkgrel = 1
+	url = https://go-sponge.com
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = protobuf
+	source = sponge::git+https://github.com/go-dev-frame/sponge.git
+	sha256sums = SKIP
+
+pkgname = sponge-git
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-doc
+	depends = protoc-gen-go
+	depends = protoc-gen-go-gin-git=1.14.6.r0.ge03df22
+	depends = protoc-gen-go-grpc
+	depends = protoc-gen-go-rpc-tmpl-git=1.14.6.r0.ge03df22
+	depends = protoc-gen-gotag
+	depends = protoc-gen-json-field-git=1.14.6.r0.ge03df22
+	depends = protoc-gen-openapiv2
+	depends = protoc-gen-validate
+	depends = swag
+	provides = sponge=1.14.6
+	conflicts = sponge
+
+pkgname = protoc-gen-go-gin-git
+	pkgdesc = Protobuf plugin to generate Gin routes, handlers, RPC stubs, and error codes
+	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-go-gin
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = protoc-gen-go-gin=1.14.6
+	conflicts = protoc-gen-go-gin
+
+pkgname = protoc-gen-go-rpc-tmpl-git
+	pkgdesc = Protobuf plugin to generate RPC service templates and RPC error codes
+	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-go-rpc-tmpl
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = protoc-gen-go-rpc-tmpl=1.14.6
+	conflicts = protoc-gen-go-rpc-tmpl
+
+pkgname = protoc-gen-json-field-git
+	pkgdesc = Protobuf plugin to generate JSON field code from proto files
+	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-json-field
+	provides = protoc-gen-json-field=1.14.6
+	conflicts = protoc-gen-json-field
