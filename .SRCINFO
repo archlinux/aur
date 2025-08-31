@@ -1,0 +1,18 @@
+pkgbase = authtui-git
+	pkgdesc = a full rust tui auther
+	pkgver = .r.
+	pkgrel = 1
+	url = https://github.com/d116u/authtui
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = rust
+	optdepends = fish: fish completions
+	provides = authtui
+	conflicts = authtui
+	source = https://github.com/d116u/authtui/archive/refs/heads/main.zip
+	sha1sums = SKIP
+
+pkgname = authtui-git
