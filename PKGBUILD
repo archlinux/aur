@@ -5,8 +5,8 @@
 pkgname=jnetmap
 _pkgname=jNetMap
 pkgver=0.5.6
-subver=735
-pkgrel=5
+subver=736
+pkgrel=1
 pkgdesc="Graphical network monitoring and documentation tool"
 arch=('any')
 url="http://rakudave.ch/jnetmap"
@@ -15,7 +15,7 @@ depends=('java-runtime')
 provide=('jnetmap')
 conflicts=('jnetmap')
 source=(https://rakudave.synology.me/jnetmap/${pkgname}-${pkgver}-${subver}_all.deb)
-sha256sums=('f5aa50cd7bbbe83e0d1f65131e6088a2ea8710133d617016255d6448def4a823')
+sha256sums=('42ff075c157fee0337917f2c3e36fe1da5eb90899f8b7eb0271553176e45827f')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
