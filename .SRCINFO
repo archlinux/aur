@@ -1,6 +1,6 @@
 pkgbase = python-langchain-cli
 	pkgdesc = A CLI for interacting with LangChain
-	pkgver = 0.0.36
+	pkgver = 0.0.37
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/cli
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-langchain-cli
 	depends = uvicorn
 	depends = python-tomlkit
 	depends = python-gritql
-	source = langchain-cli-0.0.36.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-cli/langchain_cli-0.0.36.tar.gz
-	b2sums = 58eac4900df106c35a9928066fa6c9c2234cfbc18e86cd7963f50eb3af1fa647616606e350bf9473ede90927832ef4b09324ae6c546996ef18ebd25290524641
+	source = langchain-cli-0.0.37.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-cli/langchain_cli-0.0.37.tar.gz
+	b2sums = 1d2884b413c06710ac2cbf6a170d350db8ef23e30f235cd4139c3f1e66219e60c448c8ca875566113669ea93722082888afbe859127a2beb158a1ef4cd13149c
 
 pkgname = python-langchain-cli
