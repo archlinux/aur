@@ -1,7 +1,7 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
-	pkgver = 30.1
-	pkgrel = 2
+	pkgver = 30.2
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
@@ -55,11 +55,11 @@ pkgbase = emacs-lucid
 	conflicts = emacs
 	replaces = emacs-lucid-nativecomp
 	options = !strip
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.1.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.1.tar.xz.sig
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.2.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.2.tar.xz.sig
 	validpgpkeys = 17E90D521672C04631B1183EE78DAE0F3115E06B
 	validpgpkeys = CEA1DE21AB108493CC9C65742E82323B8F4353EE
-	b2sums = ad502a2e15a04618f4766ec6e285739cb5bb6f19c5065c3aed03b3e50df590cee382a0331f382de6f13523f1362a4355f65961ce45504f7d33419ea6d04e326f
+	b2sums = 9163ba6bfab1010a156c669ac085ad363545d73e3ffac21c710b14b618df61a4c6a80a50fd3fa81d852c2ccace5080e614b679606fa584e28509f99ad6196784
 	b2sums = SKIP
 
 pkgname = emacs-lucid
