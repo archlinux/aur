@@ -1,0 +1,28 @@
+pkgbase = tensamin-bin
+	pkgdesc = Super secure messaging app
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://tensamin.methanium.net
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = alsa-lib
+	depends = xdg-utils
+	depends = nss
+	depends = libxss
+	depends = libgcrypt
+	depends = ttf-liberation
+	depends = dbus
+	depends = libpulse
+	depends = libva
+	depends = libffi
+	optdepends = pipewire: Screen sharing
+	optdepends = kdialog: Native dialogs on KDE Plasma
+	optdepends = gtk4: for --gtk-version=4
+	optdepends = gnome-keyring: Password storage backend (org.freedesktop.secrets)
+	optdepends = kwallet: Password storage backend on KDE Plasma
+	provides = tensamin
+	source_x86_64 = https://github.com/Tensamin/Frontend/releases/download/v0.1.1-desktop-apps/tensamin-linux-x64-0.1.1.deb
+	sha256sums_x86_64 = 34323d3bccec074efd17e3b943daddf1b40eae155d407cce4e5516e052dc55bf
+
+pkgname = tensamin-bin
