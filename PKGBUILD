@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 pkgname="kwin-effect-rounded-corners-x11"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Rounds the corners of your windows (x11)"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
@@ -22,7 +22,7 @@ optdepends=(
 
 _pkgsrc="KDE-Rounded-Corners-$pkgver"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matinlotfali/KDE-Rounded-Corners/archive/v${pkgver}.tar.gz")
-sha256sums=('e2ab37034f56a0cb31371c04579c2d678711272f79a5060a652dced19a69a003')
+sha256sums=('9563b105e19e1af02fe22a68cf50f221f8337b9417d436fd5ec54f1747cfcf3b')
 
 prepare() {
   # ensure Qt6
