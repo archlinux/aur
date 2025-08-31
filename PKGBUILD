@@ -1,4 +1,4 @@
-pkgname=opww
+pkgname=tmparch
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Temporary Arch Linux"

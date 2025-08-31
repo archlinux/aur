@@ -1,4 +1,4 @@
-pkgbase = opww
+pkgbase = tmparch
 	pkgdesc = Temporary Arch Linux
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = opww
 	source = https://github.com/TheOddCell/tmparch/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = opww
+pkgname = tmparch
