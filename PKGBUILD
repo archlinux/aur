@@ -1,5 +1,5 @@
 pkgname=cmdcreate
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Meme-Supplier/cmdcreate"
