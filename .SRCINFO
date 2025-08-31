@@ -1,0 +1,14 @@
+pkgbase = com.wxriw.lyricify4
+	pkgdesc = A lyrics player for spotify running in Wine container (unofficial packaging) / 使用 Wine 容器运行的一个 Spotify 歌词播放器（非官方打包）
+	pkgver = 4.2.28.240502
+	pkgrel = 1
+	url = https://github.com/Lyricify/Lyricify-on-Wine
+	arch = x86_64
+	license = custom
+	makedepends = 7zip
+	depends = spark-dwine-helper
+	options = !strip
+	source = lyricify4.deb::https://github.com/Lyricify/Lyricify-on-Wine/releases/download/v4.2.28/com.wxriw.lyricify4_4.2.28.240502-release-wpack240503.02_amd64.deb
+	sha256sums = 8261d4e9509e4eb51db56da80cf1e7b6da5ebb49eab7bfb342885c57878880de
+
+pkgname = com.wxriw.lyricify4
