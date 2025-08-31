@@ -1,0 +1,26 @@
+From c6554ac914375762d6c621bfaa291463471f8cb2 Mon Sep 17 00:00:00 2001
+From: phonetic112 <73647246+phonetic112@users.noreply.github.com>
+Date: Tue, 31 Dec 2024 21:22:08 -0500
+Subject: [PATCH] Fix ImportError
+
+---
+ aw_server/custom_static.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/aw_server/custom_static.py b/aw_server/custom_static.py
+index 138b301e..e9bf624a 100644
+--- a/aw_server/custom_static.py
++++ b/aw_server/custom_static.py
+@@ -23,11 +23,11 @@
+ 
+ from flask import (
+     Blueprint,
+-    escape,
+     jsonify,
+     send_from_directory,
+ )
+ 
++from markupsafe import escape
+ 
+ def get_custom_static_blueprint(custom_static_directories):
+     custom_static_blueprint = Blueprint("custom_static", __name__, url_prefix="/")

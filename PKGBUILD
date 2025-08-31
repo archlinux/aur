@@ -17,6 +17,7 @@ depends=(
   'python-flask-restx' # AUR
   'python-flask'
   'python-iso8601'
+  'python-markupsafe'
   'python-peewee'
   'python-persist-queue' # AUR hosted in this repo
   'python-platformdirs'
@@ -53,12 +54,14 @@ source=(
   'aw-core-install-schemas.patch'
   'aw-qt-install-logo.patch'
   'aw-server-fix-static-install.patch'
+  'aw-server-pr152-fix-importerror-new-flask.patch::https://github.com/ActivityWatch/aw-server/pull/152.patch'
 )
 sha256sums=(
   'SKIP'
   'cba81025c0e38fd6022b0926972a839d7e6305830bf0c18e561692bfd2806b35'
   '9a8ef6abf6bc05d9c0c3d21fbc69621031f2b817c34ec075fcf2a88dd4415dd6'
   '6d608266b03e62a99c8885403c86950e6a2bda43513bc57c681744fec7048612'
+  'c716bf33264fdef5e6cb5bd5057601a51ee530918cba2f1a3c4773c81dff7c9b'
 )
 
 _aw_core="$_name/aw-core"
@@ -82,6 +85,7 @@ prepare() {
   git -C "$srcdir/$_aw_core" apply "$srcdir/aw-core-install-schemas.patch"
   git -C "$srcdir/$_aw_qt" apply "$srcdir/aw-qt-install-logo.patch"
   git -C "$srcdir/$_aw_server" apply "$srcdir/aw-server-fix-static-install.patch"
+  git -C "$srcdir/$_aw_server" apply "$srcdir/aw-server-pr152-fix-importerror-new-flask.patch"
 
   cd "$srcdir/$_aw_server_rust" || exit 1
   export RUSTUP_TOOLCHAIN='stable'
