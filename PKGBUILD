@@ -1,3 +1,4 @@
+# Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmparch
 pkgver=2.1.3
 pkgrel=2
