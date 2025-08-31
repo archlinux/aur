@@ -1,6 +1,6 @@
 # Maintainer: Martel Théo <marteltheo at gmail dot com>
 pkgname=bettercrewlink-bin
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='Free, open, Among Us Proximity Chat'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libcap>=2')
 source=("https://github.com/OhMyGuus/BetterCrewLink/releases/download/v$pkgver/Better-CrewLink-$pkgver.AppImage"
         "bettercrewlink.desktop"
         "https://raw.githubusercontent.com/OhMyGuus/BetterCrewLink/nightly/static/images/logos/BCL-AppIcon.png")
-md5sums=('111278f4170476caac57e0c5c5f615e0'
+md5sums=('cb623fd83fe41830df6e2c6d73ac239b'
          '617a6fc40e38cb2be31a1541e39fcf96'
          '0c383871ddf0e11c81cf4cd3a77bd589')
 options=(!strip libtool emptydirs staticlibs)
