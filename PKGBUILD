@@ -23,10 +23,6 @@ conflicts=(${pkgname%-*})
 source=("$pkgname-$pkgver::git+$url.git")
 sha256sums=('SKIP')
 
-prepare() {
-    git -C "${srcdir}/${pkgname}" clean -dfx
-}
-
 pkgver() {
     cd $pkgname-$pkgver
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
