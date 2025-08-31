@@ -1,6 +1,6 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=1.8.5.r5.g6d21f90
+pkgver=1.8.5.r16.geae0fab
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare(){
     cd $srcdir/${_pkgname}
-    sed -i "s/productName: Mihomo Party/productName: mihomo-party/" electron-builder.yml
+    sed -i "s/productName: Mihomo Party/productName: clash-party/" electron-builder.yml
     pnpm install
 }
 
