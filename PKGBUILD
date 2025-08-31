@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _gemname=mbox2csv
 pkgname=ruby-${_gemname}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Parse MBOX files and export email data into CSV format"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(ruby-mail ruby-ruby-progressbar)
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('f5b1f1114ff894112c74b198b02d0e42642cf06c5cb4d20e2457dcf84279dabb')
+sha256sums=('d94c13259ab4d44e778edda4b9b43a1709887ea944c17bf4c63db9a266e32678')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
