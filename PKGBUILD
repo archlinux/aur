@@ -4,7 +4,8 @@
 
 pkgname=jnetmap
 _pkgname=jNetMap
-pkgver=0.5.6
+pkgver=0.5.6.736
+_pkgver=0.5.6
 subver=736
 pkgrel=1
 pkgdesc="Graphical network monitoring and documentation tool"
@@ -14,7 +15,7 @@ license=('GPL3')
 depends=('java-runtime')
 provide=('jnetmap')
 conflicts=('jnetmap')
-source=(https://rakudave.synology.me/jnetmap/${pkgname}-${pkgver}-${subver}_all.deb)
+source=(https://rakudave.synology.me/jnetmap/${pkgname}-${_pkgver}-${subver}_all.deb)
 sha256sums=('42ff075c157fee0337917f2c3e36fe1da5eb90899f8b7eb0271553176e45827f')
 
 package() {
