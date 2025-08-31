@@ -1,0 +1,19 @@
+pkgbase = cruise-bin
+	pkgdesc =
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://nucleofusion.github.io/cruise/
+	license = MIT
+	optdepends = trivy
+	optdepends = grype
+	depends = docker
+	conflicts = cruise
+	provides = cruise
+	arch = aarch64
+	source_aarch64 = https://github.com/NucleoFusion/cruise/releases/download/v1.0.0-rc.1/cruise_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c5a9899bfaf8e013ff3df368f365e8b86c334826ab5a1184690eabf0a31a9702
+	arch = x86_64
+	source_x86_64 = https://github.com/NucleoFusion/cruise/releases/download/v1.0.0-rc.1/cruise_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = caedfe5e54bca5e41abb5b0713ef1b3d96a8098653f99c77cac69cb20d296f88
+	
+pkgname = cruise-bin
