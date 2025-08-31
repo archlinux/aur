@@ -1,15 +1,22 @@
-# Maintainer: Joachim COQBLIN <arch@coqblin.net>
+# Maintainer: Barikad <arch@coqblin.net>
 pkgname=gitlab-sync
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="[FR] Automatise la configuration d'un miroir GitLab. [EN] Automates the configuration of a GitLab mirror."
 arch=('any')
 url="https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync"
 license=('AGPL3')
 install=gitlab-sync.install
 depends=('python' 'python-gitlab' 'python-ruamel-yaml')
-source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('5cca335f6b5897f2135001baeff7146571a28b781ac6ace00f8aed8ece770803')
+makedepends=('pandoc')
+source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
+        "gitlab-sync.1.md")
+sha256sums=('5cca335f6b5897f2135001baeff7146571a28b781ac6ace00f8aed8ece770803'
+            '5e5ba627d5eb6f4b311152b407e69d645abb40ae8ee32a8b77df7463ce81f2fa')
+
+build() {
+  pandoc -s -t man gitlab-sync.1.md -o gitlab-sync.1
+}
 
 package() {
   cd "$srcdir/$pkgname-v$pkgver"
@@ -29,4 +36,7 @@ package() {
   
   # Installer la configuration d'exemple
   install -Dm644 config_example/config.ini.example "$pkgdir/usr/share/doc/$pkgname/config.ini.example"
+
+  # Installer la page de manuel
+  install -Dm644 "$srcdir/gitlab-sync.1" "$pkgdir/usr/share/man/man1/gitlab-sync.1"
 }

@@ -1,15 +1,18 @@
 pkgbase = gitlab-sync
 	pkgdesc = [FR] Automatise la configuration d'un miroir GitLab. [EN] Automates the configuration of a GitLab mirror.
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync
 	install = gitlab-sync.install
 	arch = any
 	license = AGPL3
+	makedepends = pandoc
 	depends = python
 	depends = python-gitlab
 	depends = python-ruamel-yaml
 	source = gitlab-sync-v2.1.tar.gz::https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync/-/archive/v2.1/gitlab-sync-v2.1.tar.gz
+	source = gitlab-sync.1.md
 	sha256sums = 5cca335f6b5897f2135001baeff7146571a28b781ac6ace00f8aed8ece770803
+	sha256sums = 5e5ba627d5eb6f4b311152b407e69d645abb40ae8ee32a8b77df7463ce81f2fa
 
 pkgname = gitlab-sync
