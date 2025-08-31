@@ -62,13 +62,13 @@ post_install() {
 }
 
 post_upgrade() {
+    _post_install_wheels
     echo ":: Executing systemctl daemon-reload..."
     systemctl daemon-reload
     systemctl is-active --quiet cellframe-node.service \
     && echo ":: Restarting cellframe-node.service..." \
     && systemctl restart cellframe-node.service \
     || echo ":: cellframe-node.service not enabled, skipping restart..."
-    _post_install_wheels
 }
 
 pre_remove() {
