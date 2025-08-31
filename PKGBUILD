@@ -20,9 +20,9 @@ build() {
 }
 
 package() {
+    install -vDm 644 ../$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -vDm 644 ../$pkgname-sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
     cd buildnumber-generator
-    install -vDm 644 systemd/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -vDm 640 cfg_systemd.toml /etc/buildnumber-generator-server
-    install -vDm 644 systemd/$pkgname-sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -vDm 640 cfg_systemd.toml "$pkgdir/etc/buildnumber-generator.toml"
     python setup.py install --root="$pkgdir" --optimize=1
 }
