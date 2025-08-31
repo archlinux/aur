@@ -1,0 +1,20 @@
+pkgbase = nowaymouse-git
+	pkgdesc = Effective controler for mouse position, movements and actions with keyboard on wayland based compositors
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Neal-Ning/nowaymouse
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-yaml
+	depends = gtk3
+	depends = gtk-layer-shell
+	source = nowaymouse-git::git+https://github.com/Neal-Ning/nowaymouse.git
+	sha256sums = SKIP
+
+pkgname = nowaymouse-git
