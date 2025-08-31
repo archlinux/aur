@@ -1,6 +1,6 @@
 pkgbase = commander-genius-git
 	pkgdesc = A modern implementation of the classic Commander Keen game series
-	pkgver = 3.0.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://clonekeenplus.sourceforge.io/
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = commander-genius-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = glu
+	makedepends = ccmake
+	makedepends = minizip
 	depends = sdl2
 	depends = mesa
 	depends = sdl2_image
