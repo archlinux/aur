@@ -38,7 +38,7 @@ build() {
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
