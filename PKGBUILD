@@ -1,5 +1,4 @@
-# Maintainer: Nlsdt <xsfx0313@proton.me>
-# Maintainer: Li Hua <lihua@email.com>
+# Maintainer: Nlsdt <nlsdt@nlsdt.cc>
 
 # 包元数据
 _pkgname=HybridFileXfer
@@ -31,7 +30,7 @@ conflicts=('hybridfilexfer')
 
 # 资源获取
 source=(
-    "$_pkgname::git+https://github.com/weixiansen574/HybridFileXfer.git"
+    "$_pkgname::git+https://hk.gh-proxy.com/github.com/weixiansen574/HybridFileXfer.git"
     'annotations.jar::https://repo1.maven.org/maven2/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar'
 )
 sha256sums=(
