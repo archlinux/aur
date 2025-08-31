@@ -1,3 +1,4 @@
+# Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmpfedora
 pkgver=1.0.0
 pkgrel=1
