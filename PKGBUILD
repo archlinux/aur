@@ -1,7 +1,7 @@
 # Maintainer: George Bereveskos <report@hellas.dev>
 pkgname=godash
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal Personal Productivity Dashboard with integrated task management, notes, Google Calendar & weather"
 arch=('x86_64')
 url="https://github.com/HellasDev/GoDash"
