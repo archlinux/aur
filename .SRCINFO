@@ -1,6 +1,6 @@
 pkgbase = tqm
 	pkgdesc = CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria.
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/autobrr/tqm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tqm
 	makedepends = go
 	optdepends = deluge: torrent downloader
 	optdepends = qbittorrent: torrent downloader
-	source = tqm-1.16.0.tar.gz::https://github.com/autobrr/tqm/archive/v1.16.0.tar.gz
-	sha512sums = 0474b42ed2ee091ce829b2a4ff9070999ad2bbd57c834976832684819ede32b70b3965fab0db749e28282529e681fd1babfbffb16b2c2fa3b453d7b025fdb733
+	source = tqm-1.17.0.tar.gz::https://github.com/autobrr/tqm/archive/v1.17.0.tar.gz
+	sha512sums = e6f34cb4c8b67cd14052fd1953daf0434478ef3f110449a56bf4e26ac24b5e525a43bf1935e53e81b8198c6bf70e65a36e8eff4ae3f9501452994071c1680a60
 
 pkgname = tqm
