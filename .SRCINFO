@@ -1,7 +1,7 @@
 pkgbase = kinit5
 	pkgdesc = Process launcher to speed up launching KDE applications
 	pkgver = 5.116.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://community.kde.org/Frameworks
 	install = kinit5.install
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = kinit5
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools5
 	depends = kio5
+	conflicts = kinit
+	replaces = kinit
 	source = https://download.kde.org/stable/frameworks/5.116/kinit-5.116.0.tar.xz
 	source = https://download.kde.org/stable/frameworks/5.116/kinit-5.116.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
