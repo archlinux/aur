@@ -4,14 +4,14 @@
 
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=3.6.0.r0.gbee00e478
-pkgrel=1
+pkgver=3.6.0.r0.gbee00e4
+pkgrel=2
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
 url="https://clonekeenplus.sourceforge.io/"
-license=('GPL')
+license=(GPL-3.0-or-later)
 depends=('sdl2' 'mesa' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
-makedepends=('git' 'cmake' 'ccache' 'minizip')
+makedepends=('git' 'cmake')
 provides=(commander-genius)
 conflicts=(commander-genius)
 source=(git+https://gitlab.com/Dringgstein/Commander-Genius.git)
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
