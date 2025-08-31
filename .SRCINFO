@@ -1,6 +1,6 @@
 pkgbase = mumps-cmake
 	pkgdesc = MUMPS via CMake
-	pkgver = 5.6.2.2
+	pkgver = 5.8.1.0
 	pkgrel = 1
 	url = https://github.com/scivision/mumps
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = mumps-cmake
 	depends = bzip2
 	provides = mumps
 	conflicts = mumps
-	source = git+https://github.com/scivision/mumps.git#tag=v5.6.2.2
+	source = git+https://github.com/scivision/mumps.git#tag=v5.8.1.0
 	sha256sums = SKIP
 
 pkgname = mumps-cmake

@@ -1,5 +1,5 @@
 pkgname=mumps-cmake
-pkgver=5.6.2.2
+pkgver=5.8.1.0
 pkgrel=1
 pkgdesc='MUMPS via CMake'
 arch=('x86_64')
