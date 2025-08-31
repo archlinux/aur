@@ -1,5 +1,5 @@
 pkgname=tmparch
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Temporary Arch Linux"
 arch=('any')
