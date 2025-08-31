@@ -1,6 +1,22 @@
+diff -rauN unac-1.8.0.orig/autogen.sh unac-1.8.0-compilation-patches/autogen.sh
+--- unac-1.8.0.orig/autogen.sh	2004-10-16 17:26:11.000000000 +0200
++++ unac-1.8.0-compilation-patches/autogen.sh	2025-08-31 18:50:03.275332853 +0200
+@@ -6,10 +6,10 @@
+ # Relies on autoconf 2.50 series, fix the command names if not the default
+ # on your system.
+ #
+-autoconf=autoconf
++autoconf="autoconf -I /usr/share/gettext/m4"
+ automake=automake
+ autoheader=autoheader
+-aclocal=aclocal
++aclocal="aclocal -I /usr/share/gettext/m4"
+ 
+ libtoolize --copy --force
+ $aclocal
 diff -rauN unac-1.8.0.orig/unac.c unac-1.8.0-compilation-patches/unac.c
 --- unac-1.8.0.orig/unac.c	2003-10-13 12:24:24.000000000 +0200
-+++ unac-1.8.0-compilation-patches/unac.c	2024-07-09 18:18:45.083672082 +0200
++++ unac-1.8.0-compilation-patches/unac.c	2025-08-31 18:42:23.277643210 +0200
 @@ -13873,9 +13873,9 @@
      *out_lengthp = 0;
    } else {
@@ -15,7 +31,7 @@ diff -rauN unac-1.8.0.orig/unac.c unac-1.8.0-compilation-patches/unac.c
        return -1;
 diff -rauN unac-1.8.0.orig/unaccent.c unac-1.8.0-compilation-patches/unaccent.c
 --- unac-1.8.0.orig/unaccent.c	2003-10-13 12:24:25.000000000 +0200
-+++ unac-1.8.0-compilation-patches/unaccent.c	2024-07-09 18:18:52.543672339 +0200
++++ unac-1.8.0-compilation-patches/unaccent.c	2025-08-31 18:42:23.317859336 +0200
 @@ -90,7 +90,7 @@
      const char* charset = argv[optind++];
  
