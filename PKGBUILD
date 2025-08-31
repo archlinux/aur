@@ -1,4 +1,5 @@
-# Maintainer: Radu Potop <radu at wooptoo com>
+# Maintainer: xuhcc <xuhcc@cryptolab.net>
+# Contributor: Radu Potop <radu at wooptoo com>
 
 origname=lib3to6
 pkgname=python-lib3to6
