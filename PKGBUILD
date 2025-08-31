@@ -9,7 +9,7 @@ license=("AGPL3")
 arch=("any")
 depends=("roundcubemail")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('a3fd5f89fd8968271d6e7bd3aa9b62c38e522b7734b0e2dcf85b96f305d7f22d')
+b2sums=('14ee8a6d1639cdaa3e9b5721aac0d44ff2a5890107888984af8f5fac4b4a2593782b2dc7128f6a9d1c7e97f184209c0ae5a3052d7ce11b910e972940bdfc1966')
 backup=("etc/webapps/roundcubemail/plugins/caldavzap/config.inc.php")
 
 package(){
