@@ -1,0 +1,14 @@
+pkgbase = mcat-bin
+	pkgdesc = A powerful extended cat command, to cat all the things you couldn't before
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/Skardyy/mcat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = mcat
+	source = https://github.com/Skardyy/mcat/releases/download/v0.4.4/mcat-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 1717be3f120f93a4f2441778d3733e014b65b5c95f20191e26df96397ea053ce
+
+pkgname = mcat-bin
