@@ -4,7 +4,7 @@
 # Contributor: cute.tec@gmail.com
 
 pkgname=xfwm4-git
-pkgver=4.15.1+1+g6117ce1f4
+pkgver=4.20.0+151+g1163ee4a9
 pkgrel=1
 pkgdesc="Xfce window manager (git version)"
 arch=('i686' 'x86_64')
@@ -24,23 +24,17 @@ pkgver() {
 }
 
 build() {
-  cd xfwm4
-
-  ./autogen.sh \
+  cd $pkgname
+  ./configure \
     --prefix=/usr \
-    --libexecdir=/usr/lib \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --disable-dependency-tracking \
-    --disable-static \
-    --enable-epoxy \
     --enable-startup-notification \
-    --enable-xsync \
-    --enable-render \
     --enable-randr \
-    --enable-xpresent \
     --enable-compositor \
-    --disable-debug
+    --enable-xsync \
+    --disable-debug \
+    --enable-maintainer-mode
   make
 }
 
