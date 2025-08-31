@@ -1,0 +1,3 @@
+[python-testdata]
+source = "pypi"
+pypi = "testdata"
