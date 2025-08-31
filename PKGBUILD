@@ -1,4 +1,4 @@
-pkgver=0.1.1
+pkgver=0.1.2
 # Maintainer: James Condron <james@zero-internet.org.uk>
 pkgname=threes
 pkgrel=1
