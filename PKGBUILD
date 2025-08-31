@@ -11,7 +11,7 @@ makedepends=('unzip')
 _tag='v1.520'
 source=("https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/${_tag}/lxgw-wenkai-nerd.zip" \
         "OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/${_tag}/OFL.txt")
-sha256sums=('6567497100c447e2269ae1d56a124fcf6462ba764c01e5ae290fac0e563ee4c4'
+sha256sums=('48fefcfa5f685e13bbdb1bcfda4616136278d1ecf044786aef68dee48ac722db'
             'ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614')
 
 package() {
