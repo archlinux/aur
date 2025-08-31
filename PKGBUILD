@@ -1,4 +1,5 @@
-# Maintainer: Radu Potop <radu at wooptoo com>
+# Maintainer: xuhcc <xuhcc@cryptolab.net>
+# Contributor: Radu Potop <radu at wooptoo com>
 
 origname=bumpver
 pkgname=python-bumpver
@@ -8,7 +9,10 @@ pkgdesc='Automatic versioning for Python packages'
 arch=(any)
 url="https://github.com/mbarkhau/$origname"
 license=("MIT")
-depends=("python")
+depends=(
+    "python-toml"
+    "python-lexid"
+)
 makedepends=(
     "python-astor"
     "python-build"
