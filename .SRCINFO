@@ -1,0 +1,15 @@
+pkgbase = tracktion-download-manager
+	pkgdesc = Download manager for Tracktion applications
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://www.tracktion.com/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = freetype2
+	depends = glibc
+	source = https://downloads.tracktion.com/download-mgr/153/tracktion_download_manager_v1.5.3.deb
+	sha256sums = 577b8480c9d33a8b5cc213c61e9c3ff90a6e6a0a00efa0cbe7f4c2ec4f99cfa7
+
+pkgname = tracktion-download-manager
