@@ -1,6 +1,6 @@
 pkgbase = tmplinux
 	pkgdesc = The tmplinux suite
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = any
 	license = MIT
