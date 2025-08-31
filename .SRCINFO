@@ -1,7 +1,7 @@
 pkgbase = hybridfilexfer-git
 	pkgdesc = Multi-track Express Transfer: Simultaneously utilize all I/O channels (USB+WiFi) for maximum file transfer speed || 多轨快传：同时利用所有输入/输出通道 (USB+WiFi),实现最大文件传输速度
 	pkgver = r65.7de4351
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/weixiansen574/HybridFileXfer
 	arch = x86_64
 	license = GPL-3.0-only
