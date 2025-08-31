@@ -12,6 +12,7 @@ depends=('webkit2gtk-4.1' 'cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango
 source=("git+https://github.com/Stormix/$_pkgname.git" 'deadlock-modmanager.desktop')
 sha256sums=('SKIP' '0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=('!lto')
 
 pkgver() {
