@@ -9,8 +9,8 @@
 
 pkgbase=wps-office-cn-bwrap
 pkgname=('wps-office-cn-bwrap')
-pkgver=12.1.0.17900
-pkgrel=2
+pkgver=12.1.2.22570
+pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 makedepends+=(desktop-file-utils)
 arch=('x86_64')
@@ -21,28 +21,28 @@ options=('!emptydirs')
 # https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
 # https://pastebin.com/29TeRUMj by Asuka Minato
 _get_source_url() {
-    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
-    uri="${url#https://wps-linux-personal.wpscdn.cn}"
-    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
-    timestamp10=$(date '+%s')
-    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
-    url+="?t=${timestamp10}&k=${md5hash%% *}"
-    echo "$url"
+    local furl="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}.AK.preread.sw_474164_$1.deb"
+    local uri="${furl#https://wps-linux-personal.wpscdn.cn}"
+    local secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
+    local timestamp10=$(date '+%s')
+    local md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
+    #echo "$md5hash"
+    #echo "$md5hash"
+    #exit 1
+    echo "${furl}?t=${timestamp10}&k=${md5hash%% *}"
 }
 
 source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
-source=('fix-wps-python-parse.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-wps-python-parse.patch?h=wps-office-cn' "portable-config" "wps-helper")
-sha1sums=('f3713481edf04ffb08be8d24dce66554dd5a4f13'
-          '27d72f36d5eb12702a10c5f4686e29f7a4398a27'
+source=("portable-config" "wps-helper")
+sha1sums=('27d72f36d5eb12702a10c5f4686e29f7a4398a27'
           'cf90e963dc8d36479d486a1fd87cb554516e8773')
-sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
+sha1sums_x86_64=('2c96e17f862e033662ce598ad0b9472fcb4f68cc')
 
 prepare() {
     bsdtar -xpf data.tar.xz
     cd "${srcdir}/usr/bin"
     sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' *
     cd "${srcdir}"
-    patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
 }
 
 package_wps-office-cn-bwrap() {
