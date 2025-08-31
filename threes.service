@@ -1,0 +1,9 @@
+[Unit]
+Description=threes server
+
+[Service]
+ExecStart=/usr/bin/threes serve
+EnvironmentFile=/etc/threes/10-config.env
+
+[Install]
+WantedBy=default.target
