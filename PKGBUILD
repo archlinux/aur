@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=geopard
-pkgver=1.6.0+3+g2c32ba5
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Colorful, adaptive gemini browser"
 arch=('x86_64' 'aarch64')
-url="https://ranfdev.com/projects/Geopard"
+url="https://ranfdev.com/projects/geopard"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
@@ -16,14 +16,8 @@ makedepends=(
   'git'
   'meson'
 )
-_commit=2c32ba550b9d275c2f8ce91f26a62a1bba974609
-source=("git+https://github.com/ranfdev/Geopard.git#commit=${_commit}")
-sha256sums=('ab5bb6e8b4ccc8528f4b6a4b04d93fcf3e6550422138f118d984e03fef5f1a55')
-
-pkgver() {
-  cd Geopard
-  git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
-}
+source=("git+https://github.com/ranfdev/Geopard.git#tag=v$pkgver")
+sha256sums=('f2206585288a958d2e1041419a989426bef589231c3d53b64906e1487a3647fc')
 
 prepare() {
   cd Geopard
