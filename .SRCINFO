@@ -1,7 +1,7 @@
 pkgbase = tmparch
 	pkgdesc = Temporary Arch Linux
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheOddCell/tmparch
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = tmparch
 	depends = shadow
 	depends = util-linux
 	depends = systemd
+	depends = squashfs-tools
 	source = https://github.com/TheOddCell/tmparch/archive/refs/tags/v2.1.0.tar.gz
 	sha256sums = SKIP
 

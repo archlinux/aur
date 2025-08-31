@@ -1,11 +1,11 @@
 pkgname=tmparch
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Temporary Arch Linux"
 arch=('any')
 url="https://github.com/TheOddCell/tmparch"
 license=('MIT')
-depends=('bash' 'arch-install-scripts' 'shadow' 'util-linux' 'systemd')
+depends=('bash' 'arch-install-scripts' 'shadow' 'util-linux' 'systemd' 'squashfs-tools')
 makedepends=()
 source=("https://github.com/TheOddCell/tmparch/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
