@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=geopard
-pkgver=1.6.0.r3.g2c32ba5
+pkgver=1.6.0+3+g2c32ba5
 pkgrel=1
 pkgdesc="Colorful, adaptive gemini browser"
 arch=('x86_64' 'aarch64')

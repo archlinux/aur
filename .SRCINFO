@@ -1,6 +1,6 @@
 pkgbase = geopard
 	pkgdesc = Colorful, adaptive gemini browser
-	pkgver = 1.6.0.r3.g2c32ba5
+	pkgver = 1.6.0+3+g2c32ba5
 	pkgrel = 1
 	url = https://ranfdev.com/projects/Geopard
 	arch = x86_64
