@@ -1,8 +1,9 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
+# Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 _pkgname=yaft
 pkgname=${_pkgname}-git
 pkgver=r454.59ef091
-pkgrel=1
+pkgrel=2
 pkgdesc="yet another framebuffer terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/uobikiemukot/yaft"

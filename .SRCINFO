@@ -1,7 +1,7 @@
 pkgbase = yaft-git
 	pkgdesc = yet another framebuffer terminal
 	pkgver = r454.59ef091
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uobikiemukot/yaft
 	arch = i686
 	arch = x86_64
