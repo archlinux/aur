@@ -1,8 +1,8 @@
 # Maintainer: Kevin <github@kev314.dev>
 
 pkgname=noctalia-shell
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
@@ -23,7 +23,7 @@ optdepends=(
   'cava: Audio visualizer component'
 )
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('8b4c372140ae2aa6659a824e2a42ebb5b5e798b43c8fce11682a6da59f646437')
+sha256sums=('f6a7ce7260500aafec1d12f8de49361624e40351c0bb7fca161378af3974e082')
 
 package() {
   cd "$srcdir/$pkgname"
