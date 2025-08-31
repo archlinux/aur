@@ -7,7 +7,7 @@ pkgname=(
   "protoc-gen-go-http"
 )
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Your ultimate Go microservices framework for the cloud-native era"
 arch=('x86_64')
 url="https://go-kratos.dev"
@@ -36,7 +36,7 @@ prepare() {
   done
   chmod -R ug+Xwr "${GOMODCACHE}"
 
-  mkdir -p build
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -53,6 +53,10 @@ build() {
     pushd "cmd/${_name}" >/dev/null
     go build -v -o "${srcdir}/${_pkgsrc}/build/${_name}" .
     popd >/dev/null
+  done
+
+  for _sh in bash fish zsh powershell; do
+    ./"build/${pkgbase}" completion "${_sh}" > "completions/${pkgbase}.${_sh}"
   done
 }
 
@@ -77,6 +81,12 @@ package_kratos() {
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "completions"
+  install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
 }
 
 package_protoc-gen-go-errors() {

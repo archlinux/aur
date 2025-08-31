@@ -1,7 +1,7 @@
 pkgbase = kratos
 	pkgdesc = Your ultimate Go microservices framework for the cloud-native era
 	pkgver = 2.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go-kratos.dev
 	arch = x86_64
 	license = MIT
