@@ -4,8 +4,8 @@
 
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
-pkgver=0.65.0
-pkgrel=1
+pkgver=0.66.0
+pkgrel=2
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
 url='https://ryukau.github.io/VSTPlugins/'
@@ -15,15 +15,15 @@ depends=(cairo gcc-libs glibc libxcb xcb-util xcb-util-cursor)
 makedepends=(cmake fontconfig git gtkmm3 libx11 libxkbcommon-x11 pango vst3sdk
              xcb-util-keysyms)
 optdepends=('vst3-host: for running VST3 plugins')
-_pocketfft_ref=61f446c
+_pocketfft_ref=0fa0ef5
 _vcl_ref=4c90584
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ryukau/VSTPlugins/archive/refs/tags/UhhyouPlugins$pkgver.tar.gz"
   "pocketfft-$_pocketfft_ref.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/$_pocketfft_ref/pocketfft-$_pocketfft_ref.tar.gz"
   "vcl-$_vcl_ref.tar.gz::https://github.com/vectorclass/version2/archive/$_vcl_ref.tar.gz"
 )
-sha256sums=('ad1961f01924d56f91d0d48b0cab68f327cbfc8386fb67b018a90f722339df8d'
-            '1e9aa6022bd23affd36d21e0e8c874d08cda5701a102f8da865ca66ff2309dc7'
+sha256sums=('c7591353addebd9502555482ead5db9d5ef28972fafba104482402992f7689bd'
+            '03f0a020d7815e13acaa9419f94b13977df1902724fb2227bcf800de9b8e5200'
             'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827')
 
 prepare() {
