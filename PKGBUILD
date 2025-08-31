@@ -3,7 +3,7 @@
 
 pkgname=mangayomi-bin
 _pkgname=mangayomi
-pkgver=0.6.35
+pkgver=0.6.5
 pkgrel=1
 epoch=1
 pkgdesc="A free and open source manga, manhwa and manhua reader for Android, Windows, Linux, and macOS."
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 source=("https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip")
 
 # The checksum has been generated for the source file.
-sha256sums=('9e3da005bc7194f4dce9838ea916fc1eb9331c1e05fdaa381cc99a05c7741ca2')
+sha256sums=('18c76c5b02cfa8f80bce5551a1fbccc6481bc0da35c17f4c8e9590a75946c189')
 
 package() {
   # 1. Create the installation directory in /opt

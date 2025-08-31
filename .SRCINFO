@@ -1,6 +1,6 @@
 pkgbase = mangayomi-bin
 	pkgdesc = A free and open source manga, manhwa and manhua reader for Android, Windows, Linux, and macOS.
-	pkgver = 0.6.35
+	pkgver = 0.6.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/kodjodevf/mangayomi
@@ -12,7 +12,7 @@ pkgbase = mangayomi-bin
 	depends = unzip
 	provides = mangayomi
 	conflicts = mangayomi
-	source = mangayomi-0.6.35.zip::https://github.com/kodjodevf/mangayomi/releases/download/v0.6.35/Mangayomi-v0.6.35-linux.zip
-	sha256sums = 87f5dcf1587112f43ccbba506f7df6b9a59824071119f0265f972021674fd7a9
+	source = https://github.com/kodjodevf/mangayomi/releases/download/v0.6.5/Mangayomi-v0.6.5-linux.zip
+	sha256sums = 18c76c5b02cfa8f80bce5551a1fbccc6481bc0da35c17f4c8e9590a75946c189
 
 pkgname = mangayomi-bin
