@@ -1,0 +1,14 @@
+pkgbase = python-lexid
+	pkgdesc = A Micro Library to Increment Lexical Ids
+	pkgver = 2021.1006
+	pkgrel = 1
+	url = https://github.com/mbarkhau/lexid
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/mbarkhau/lexid/archive/1334ace84f67f59d93a96b9bf0a4953fb7a15da6.zip
+	sha256sums = a80eeec081525a431b24c348253a2cb8ab6a67bd4d1c2b70404e5b7dc1361371
+
+pkgname = python-lexid
