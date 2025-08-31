@@ -1,7 +1,7 @@
 # Maintainer: James Condron <james@zero-internet.org.uk>
 pkgname=threes
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for bringing up tailscale connected virtual machines."
 arch=('any')
 url="https://code.fatlads.lol/threes/threes"
@@ -18,13 +18,13 @@ sha256sums=('380ae81eea12cf4c61d1f869b0faa8171435ccdb03a3b4b22db73ad05747ba41'
             '66048b51f4a8a524f4325c9229997796c45efc804520c627ab4df4551d98008b')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export CGO_ENABLED=0
     go build -ldflags="-s -w" -trimpath -o my-app ./cmd/
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
 
     # Install binaries
     install -Dm755 threes "$pkgdir/usr/bin/threes"
