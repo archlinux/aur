@@ -1,0 +1,20 @@
+pkgbase = python-torbjorn
+	pkgdesc = Provide some practical Python decorators.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/torbjorn
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-torbjorn
+	conflicts = python-torbjorn
+	options = !strip
+	options = !debug
+	source = torbjorn-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/t/torbjorn/torbjorn-0.1.1.tar.gz
+	sha256sums = 9bcf36a970215d8df8b6d7eeaa2259c627ada3a194967f07804409f3867008b7
+
+pkgname = python-torbjorn
