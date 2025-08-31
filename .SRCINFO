@@ -1,6 +1,6 @@
 pkgbase = python-chws-tool
 	pkgdesc = Utility for OpenType chws/vchw features
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/googlefonts/chws_tool
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-chws-tool
 	makedepends = python-wheel
 	depends = python
 	depends = python-east-asian-spacing
-	source = python-chws-tool-1.4.2.tar.gz::https://github.com/googlefonts/chws_tool/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = 97760a4fca01443164d562fd2fb84e0a5796f5ea8991d340c33c92c777be5ea5
+	source = python-chws-tool-1.4.4.tar.gz::https://github.com/googlefonts/chws_tool/archive/refs/tags/v1.4.4.tar.gz
+	sha256sums = 6f6731befe8798514f6c4374c6bf446fae071b2eafe6a60b5f578b389559a6da
 
 pkgname = python-chws-tool
