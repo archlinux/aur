@@ -1,0 +1,4 @@
+[slsa-verifier]
+source = "git"
+git = "https://github.com/slsa-framework/slsa-verifier.git"
+prefix = "v"
