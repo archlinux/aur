@@ -30,10 +30,14 @@ source=("${pkgname}.sh"
 	"conv.sh"
 	"LTspice64-${pkgver}.msi::https://ltspice.analog.com/download/${pkgver}/LTspice64.msi"
 	)
+
+installer_sha256='032a2331ef99ec31a3736147c35abb48ce1a48077b2825bca5f5baccd9fa9d73'
+
 sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
             '9d1eb3d868376960050469324f8c7e7fbf674bfcbcac76c2a10934dbe77f6b6c'
-            '032a2331ef99ec31a3736147c35abb48ce1a48077b2825bca5f5baccd9fa9d73')
+	    ${installer_sha256}
+    )
 
 OPTIONS=(!strip)
 
