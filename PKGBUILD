@@ -1,14 +1,14 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat'
-pkgver='0.6.4'
-_pkgver='0.6.4'
+pkgver='0.6.8'
+_pkgver='0.6.8'
 pkgrel='1'
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
 url='https://github.com/TibixDev/winboat'
 license=('MIT')
-depends=('qt6-base' 'qt6-multimedia')
-makedepends=('npm' 'go')
+depends=('docker' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
+makedepends=('zip' 'npm' 'go')
 options=("!strip" "!debug")
 source=(
 	"$pkgname.png::https://raw.githubusercontent.com/tibixdev/winboat/refs/heads/main/icons/icon.png"
@@ -19,19 +19,13 @@ sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
             '7579d3d52fa1cd4df438a0a86e5a60e72030ae612f85866001e2f07a6de62efa'
             '3e9d04ab5ba04e5d900c3559ab802b117de1a95e761cbb3859746fdd52161ace')
 
-#build() {
-#	cd "$srcdir"
-
-	# Convert image
-#	magick "$_pkgname.ico" "$_pkgname.png"
-#}
-
-package() {
+build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	npm i --cache "${srcdir}/npm-cache" 
 	npm run build:linux-gs
-	cd dist/linux-unpacked
-	pwd	
+}
+package() {
+	cd dist/linux-unpacked	
 	install -d "$pkgdir/opt/$pkgname"
 
 	cp -a * $pkgdir/opt/$pkgname
