@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DALEX
-_pkgver=2.4.3
+_pkgver=2.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="moDel Agnostic Language for Exploration and eXplanation"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,6 +13,7 @@ depends=(
   r-ggplot2
   r-ibreakdown
   r-ingredients
+  r-kernelshap
 )
 checkdepends=(
   r-caret
@@ -29,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eb0756c65611440e8d9a11742d47472f')
-b2sums=('a53533fca756a05a4748b6eb3698437c7a64c74c35c3b84cd264a8caa0536428796c1799be8db2865e6f80cc35dc873756712bc19fe492250cf8f22267b8b386')
+md5sums=('38587f3e8432848e5af64f1d14627848')
+b2sums=('2bcf1059bbd1e290925d324dcb835b147a453d11a7365d960096b72623fe2bb3ef6d4d75531245cb9a77e8a29184436ef01d2f8e999a06ce1a95cd522747458d')
 
 build() {
   mkdir build
