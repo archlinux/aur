@@ -1,3 +1,4 @@
+# Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=opww
 pkgver=2.1.0
 pkgrel=5
