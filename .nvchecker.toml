@@ -1,0 +1,4 @@
+[kratos]
+source = "git"
+git = "https://github.com/go-kratos/kratos.git"
+prefix = "v"
