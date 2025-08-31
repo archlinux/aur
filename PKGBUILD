@@ -14,11 +14,11 @@ depends=('docker')
 optdepends=('trivy' 'grype')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.0.0-rc.1/cruise_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c5a9899bfaf8e013ff3df368f365e8b86c334826ab5a1184690eabf0a31a9702')
+sha256sums_aarch64=('6c284b87452d3b8060abb19fad4416b63e9540c3535aed625d7f509df89045b4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.0.0-rc.1/cruise_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('caedfe5e54bca5e41abb5b0713ef1b3d96a8098653f99c77cac69cb20d296f88')
+sha256sums_x86_64=('9b561331687814d1ea661ab213658c7f7642c7f28a476f5b96bf2f16e0c6c436')
 
 package() {
-  install -Dm755 "./cruise-bin" "${pkgdir}/usr/bin/cruise-bin"
+  install -Dm755 "./cruise" "${pkgdir}/usr/bin/cruise"
 }
