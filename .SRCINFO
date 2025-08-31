@@ -1,16 +1,21 @@
 pkgbase = hybridfilexfer-git
-	pkgdesc = 多轨快传，同时使用USB和5G与2.4GWIFI等通道传输文件到电脑，榨干手机IO！
-	pkgver = r27.89241d9
-	pkgrel = 8
+	pkgdesc = Multi-track Express Transfer: Simultaneously utilize all I/O channels (USB+WiFi) for maximum file transfer speed || 多轨快传：同时利用所有输入/输出通道 (USB+WiFi),实现最大文件传输速度
+	pkgver = r65.7de4351
+	pkgrel = 1
 	url = https://github.com/weixiansen574/HybridFileXfer
-	arch = any
-	license = GPL-3.0-or-later
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = jdk8-openjdk
 	makedepends = git
-	depends = jdk21-openjdk
+	depends = java-runtime>=8
 	depends = android-tools
+	depends = android-udev
+	depends = bash
+	provides = hybridfilexfer
 	conflicts = hybridfilexfer
-	conflicts = hybridfilexfer-bin
-	source = hybridfilexfer::git+https://github.com/weixiansen574/HybridFileXfer
+	source = HybridFileXfer::git+https://hk.gh-proxy.com/github.com/weixiansen574/HybridFileXfer.git
+	source = annotations.jar::https://repo1.maven.org/maven2/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar
 	sha256sums = SKIP
+	sha256sums = 61666dbce7e42e6c85b43c04fcfb8293a21dcb55b3c80e869270ce42c01a6b35
 
 pkgname = hybridfilexfer-git
