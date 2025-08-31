@@ -12,5 +12,6 @@ pkgbase = echo-meter
 	depends = gtk4-layer-shell
 	depends = json-glib
 	source = echo-meter-1.1.0.tar.gz::https://github.com/Nithin-3/echo-meter/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 9f36dc70aaa3881d17a9be7c6ff2885b5ddc93b51ddf25d59b4c4df8a9dd8b15
 
 pkgname = echo-meter
