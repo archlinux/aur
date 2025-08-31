@@ -79,5 +79,5 @@ package() {
 #!/bin/bash
 exec java -jar /usr/share/java/$_pkgname/$_pkgname.jar "\$@"
 EOF
-    install -Dm755 "${_pkgname,,}" "$pkgdir/usr/bin/${_pkgname,,}"
+    install -Dm755 "${_pkgname,,}" "$pkgdir/usr/bin/$_pkgname"
 }
