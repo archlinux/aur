@@ -1,14 +1,13 @@
 pkgbase = python-langgraph-cli
 	pkgdesc = CLI for interacting with LangGraph API.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/cli
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-mock
-	checkdepends = python-pytest-watch
 	checkdepends = python-msgspec
 	makedepends = python-hatchling
 	makedepends = python-build
