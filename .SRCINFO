@@ -1,0 +1,32 @@
+pkgbase = deadlock-modmanager
+	pkgdesc = A mod manager for the Valve game Deadlock
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Stormix/deadlock-modmanager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = cargo-tauri
+	makedepends = pnpm
+	makedepends = lld
+	makedepends = gcc
+	depends = webkit2gtk-4.1
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = libsoup3
+	depends = pango
+	depends = openssl
+	depends = bzip2
+	depends = hicolor-icon-theme
+	provides = deadlock-modmanager
+	conflicts = deadlock-modmanager-git
+	options = !lto
+	source = git+https://github.com/Stormix/deadlock-modmanager.git#tag=v0.5.0
+	source = deadlock-modmanager.desktop
+	sha256sums = f294b47742276805936733a4d7052723c02dd3ef14e1d28040d77888d1c642c4
+	sha256sums = 0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4
+
+pkgname = deadlock-modmanager

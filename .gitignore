@@ -1,0 +1,5 @@
+deadlock-modmanager/
+pkg/
+src/
+*.tar.zst
+*.log
