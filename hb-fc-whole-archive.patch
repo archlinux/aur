@@ -1,11 +1,12 @@
 diff --git a/UI/Qt/CMakeLists.txt b/UI/Qt/CMakeLists.txt
-index 93fa801ebf9..8474b25d770 100644
+index 1e33be0365d..44b42e65317 100644
 --- a/UI/Qt/CMakeLists.txt
 +++ b/UI/Qt/CMakeLists.txt
-@@ -15,5 +15,5 @@ target_sources(ladybird PRIVATE
+@@ -14,7 +14,7 @@ target_sources(ladybird PRIVATE
+     WebContentView.cpp
      ladybird.qrc
-     main.cpp
  )
 -target_link_libraries(ladybird PRIVATE Qt::Core Qt::Gui Qt::Widgets)
 +target_link_libraries(ladybird PRIVATE Qt::Core Qt::Gui Qt::Widgets -Wl,--whole-archive harfbuzz fontconfig -Wl,--no-whole-archive)
+ lagom_copy_runtime_dlls(ladybird)
  create_ladybird_bundle(ladybird)

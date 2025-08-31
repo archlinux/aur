@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20250820
+pkgver=20250830
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -14,17 +14,15 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=cd08b3b6f49507a1b0c2b0bce3e9d082beb1ded1" # 2025-08-20
-  "git+https://github.com/microsoft/vcpkg.git#commit=ee0973d8090e4e3e452244bb50d34c25fe907dc2" # 2025-08-19 (vcpkg.json:builtin-baseline)
-  "ladybird.desktop"
+  "git+$url#commit=87c7fb1d633676201c96bb3c5c09a81719691990" # 2025-08-30
+  "git+https://github.com/microsoft/vcpkg.git#commit=120deac3062162151622ca4860575a33844ba10b" # 2025-08-27 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  'c83838259b1b8cf1c7118b706286c99977223439bbcc056694e2952708bf2350'
-  'e830f31f65032f3aa8443f3e906241e762b6cc191c9372dbcd1111985a4e3929'
+  'cf2cf709c6be6e39ac04ea5bf69f30ccc3d16bad87dbf95c6aad04b47e37cfe8'
   '7f50eb833838df5fcd1fc0aa0eea986ed93cd670c283dad4ac5276e7c9e3ffbe'
 )
 
@@ -70,9 +68,6 @@ package() {
 
   find "$pkgdir" -name '*.a' -delete
   find "$pkgdir" -name '*.cmake' -delete
-
-  install -Dm644 "ladybird.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "ladybird/Base/res/icons/128x128/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
 
   install -Dm644 ladybird/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
