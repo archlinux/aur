@@ -1,5 +1,5 @@
 pkgname=pitone
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Linguaggio di programmazione in italiano – eseguibile standalone"
 arch=('any')
