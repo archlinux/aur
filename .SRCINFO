@@ -1,0 +1,19 @@
+pkgbase = gerbil
+	pkgdesc = Run Large Language Models locally
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/lone-cloud/gerbil
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = gtk3
+	depends = nss
+	optdepends = alsa-lib: Audio support for sound effects
+	optdepends = libxss: Screen saver detection support
+	provides = gerbil
+	conflicts = gerbil-git
+	source = gerbil-0.9.0.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v0.9.0/Gerbil-0.9.0.AppImage
+	source = gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v0.9.0/assets/gerbil.desktop
+	sha256sums = 932652dbe6f6ce04a7c2117bb1b6ccbc62c93ee7bd5851c293612e8c48a0b6cf
+	sha256sums = da139b72a1d0965c1fe7749cb93c2ef50c00d551f7b884ed9296db3114283893
+
+pkgname = gerbil
