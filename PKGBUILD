@@ -25,7 +25,7 @@ depends=(
          'pkgconf' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'wayland' 'wayland-protocols'
          'libdisplay-info'
-         'wlroots>=0.19' 'wlroots<0.20'
+         'wlroots0.19'
 )
 makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers' 'doctest'
              'pkgconf' 'wayland-protocols' 'libxml2'

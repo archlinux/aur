@@ -40,8 +40,7 @@ pkgbase = wayfire-git
 	depends = wayland
 	depends = wayland-protocols
 	depends = libdisplay-info
-	depends = wlroots>=0.19
-	depends = wlroots<0.20
+	depends = wlroots0.19
 	optdepends = xorg-xeyes
 	provides = wayfire
 	provides = wayland-compositor
