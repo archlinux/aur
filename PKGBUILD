@@ -1,7 +1,7 @@
 # Maintainer: Erim <Erim4@yahoo.com>
 
 pkgname=ape
-pkgver=3.1.7
+pkgver=3.1.8.1
 pkgrel=1
 pkgdesc="A plasmid editor"
 arch=('any')
@@ -10,7 +10,7 @@ license=('proprietary')
 depends=('tclkit' 'sdx')
 makedepends=('imagemagick')
 source=("https://jorgensen.biology.utah.edu/wayned/ape/Download/Linux/ApE_linux_current.zip")
-md5sums=('21b527009e578394741c730710538b1f')
+md5sums=('c2bb6143c15261d872d709fa1115a10c')
 
 build() {
     cat <<EOF > ape
