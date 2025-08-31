@@ -3,7 +3,7 @@
 
 _name='activitywatch'
 pkgname="$_name-git"
-pkgver=0.12.3b19.r1.g04fbfac
+pkgver=0.13.2.r11.gbd4c5e6
 pkgrel=1
 pkgdesc='Log what you do on your computer. Simple, extensible, no third parties.'
 arch=('x86_64')
@@ -60,7 +60,7 @@ sha256sums=(
   'SKIP'
   'cba81025c0e38fd6022b0926972a839d7e6305830bf0c18e561692bfd2806b35'
   '9a8ef6abf6bc05d9c0c3d21fbc69621031f2b817c34ec075fcf2a88dd4415dd6'
-  '6d608266b03e62a99c8885403c86950e6a2bda43513bc57c681744fec7048612'
+  'd2abcb1605f70ceaa8ff2a3e3df25b1e088c17eced8f48355c937fe3c08a827a'
   'c716bf33264fdef5e6cb5bd5057601a51ee530918cba2f1a3c4773c81dff7c9b'
 )
 

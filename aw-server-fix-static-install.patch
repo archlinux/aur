@@ -7,7 +7,7 @@ index 3718a8b..bb28200 100644
  authors = ["Erik Bjäreholt <erik@bjareho.lt>"]
  license = "MPL-2.0"
 -include = ["aw_server/static/*"]
-+include = ["aw_server/static/**/*"]
++include = [{ path = "aw_server/static/**", format = ["sdist", "wheel"] }]
  
  [tool.poetry.scripts]
  aw-server = "aw_server:main"
