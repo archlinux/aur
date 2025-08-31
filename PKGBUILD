@@ -2,7 +2,7 @@
 
 pkgname=pdfalto
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='PDF to XML ALTO file converter'
 arch=('x86_64')
 url='https://github.com/kermitt2/pdfalto'
@@ -11,10 +11,12 @@ depends=('libtiff' 'freetype2' 'icu' 'libpng14' 'libxml2' 'zlib')
 makedepends=('cmake' 'gcc12')
 source=("git+https://github.com/kermitt2/${pkgname}.git#tag=${pkgver}"
         "pdfalto-use-system-libs.patch"
-        "pdfalto-compilation-fixes.patch")
+        "pdfalto-compilation-fixes.patch"
+        "pdfalto-c++17.patch")
 md5sums=('3ab6d630f542e95b63a664ccad5d17a4'
          '6d1ef0ea61e4ec3f65bca9c5a78fa62f'
-         '8cb9aeb09a45f860ae0b793ce329a425')
+         '8cb9aeb09a45f860ae0b793ce329a425'
+         '5ebbed5a08f7d6fd67fa5dcd3c5ceca2')
 
 prepare()
 {
@@ -31,6 +33,10 @@ prepare()
 	rm -rf "$srcdir/pdfalto/libs/"
 
 	patch -Np1 -i "$srcdir/pdfalto-compilation-fixes.patch"
+
+	# ICU increased the minimal level of C++ standard required
+	# to include their header files (and use the library)
+	patch -Np1 -i "$srcdir/pdfalto-c++17.patch"
 	
 	cd ../..
 }

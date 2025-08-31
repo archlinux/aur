@@ -1,0 +1,12 @@
+diff -rauN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2025-08-31 19:13:13.411593611 +0200
++++ b/CMakeLists.txt	2025-08-31 19:17:09.095594440 +0200
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.5+)
+ project(pdfalto)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ #--- look for fontconfig
+ if (NOT NO_FONTCONFIG)

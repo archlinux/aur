@@ -1,7 +1,7 @@
 pkgbase = pdfalto
 	pkgdesc = PDF to XML ALTO file converter
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kermitt2/pdfalto
 	arch = x86_64
 	license = GPL2
@@ -16,8 +16,10 @@ pkgbase = pdfalto
 	source = git+https://github.com/kermitt2/pdfalto.git#tag=0.4
 	source = pdfalto-use-system-libs.patch
 	source = pdfalto-compilation-fixes.patch
+	source = pdfalto-c++17.patch
 	md5sums = 3ab6d630f542e95b63a664ccad5d17a4
 	md5sums = 6d1ef0ea61e4ec3f65bca9c5a78fa62f
 	md5sums = 8cb9aeb09a45f860ae0b793ce329a425
+	md5sums = 5ebbed5a08f7d6fd67fa5dcd3c5ceca2
 
 pkgname = pdfalto
