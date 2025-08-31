@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('bzip2' 'elfutils' 'gstreamer' 'glib2' 'libffi' 'libunwind' 'openssl' '
 makedepends=('rust' 'cargo')
 
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/v${CORE_VER}/wayclip-v${CORE_VER}-x86_64-unknown-linux-gnu.tar.gz"
+        "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.0/wayclip-v0.1.0-x86_64-unknown-linux-gnu.tar.gz"
         "wayclip-daemon.service")
 
-sha256sums=('cf4b0effc49524cfc4b54fb2be8759bec70b415576eb5ef6b3a7975703e19c71'
+sha256sums=('90a04a0e62cf22fad5af10a344fe21b06c7a1fa45a49f66eba22ce4a18817b9a'
             '3feeefb691d1e614be8104ce5669e24b27f607aafbea4b8996060a137fca0298'
             'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
 
