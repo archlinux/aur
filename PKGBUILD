@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw-dev
 pkgver=development
-pkgrel=14
+pkgrel=15
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=post.install
 changelog=
 source=('git+https://github.com/prolog/shadow-of-the-wyrm.git' 'https://www.shadowofthewyrm.org/assets/ShadowOfTheWyrm-assets.zip')
 noextract=()
-md5sums=('SKIP' '52976400bb40914727117018c4038950')
+md5sums=('SKIP' '06c5a2aa55ac864721cee9d178d48157')
 validpgpkeys=()
 
 build() {
