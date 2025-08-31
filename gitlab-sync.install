@@ -1,0 +1,6 @@
+post_install() {
+  echo "==> Pour configurer gitlab-sync, copiez et éditez le fichier d'exemple :"
+  echo "    mkdir -p ~/.config/gitlab_sync"
+  echo "    cp /usr/share/doc/gitlab-sync/config.ini.example ~/.config/gitlab_sync/config.ini"
+  echo "    nano ~/.config/gitlab_sync/config.ini"
+}

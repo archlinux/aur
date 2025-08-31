@@ -1,0 +1,15 @@
+pkgbase = gitlab-sync
+	pkgdesc = Script d'automatisation pour configurer une synchronisation miroir entre deux dépôts GitLab.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync
+	install = gitlab-sync.install
+	arch = any
+	license = AGPL3
+	depends = python
+	depends = python-gitlab
+	depends = python-ruamel-yaml
+	source = gitlab-sync-v2.1.tar.gz::https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync/-/archive/v2.1/gitlab-sync-v2.1.tar.gz
+	sha256sums = 5cca335f6b5897f2135001baeff7146571a28b781ac6ace00f8aed8ece770803
+
+pkgname = gitlab-sync
