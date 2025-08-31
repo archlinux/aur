@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sshpilot
-pkgver=3.5.0
+pkgver=3.5.2
 pkgrel=1
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
@@ -9,13 +9,15 @@ license=('GPL-3.0-only')
 depends=('python')
 makedepends=()
 arch=('any')
-sha256sums=('6d8944000e9bee573832e169f9edf2313857940462cbd9347004359281419040')
+sha256sums=('2bea5a7dae577bd03a49d5472b3efab4187369b116ca1552e4483132d8b08cab')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _srcdir="${pkgname}-${pkgver}"
 
 package() {
-	depends+=('python-gobject' 'python-cairo' 'python-paramiko' 'python-cryptography' 'python-secretstorage' 'python-matplotlib')
+	depends+=(
+		'python-gobject' 'python-cairo' 'python-paramiko' 'python-cryptography' 'python-secretstorage' 'python-matplotlib'
+		'libadwaita' 'vte4')
 
 	cd "${_srcdir}"
 
@@ -28,7 +30,6 @@ package() {
 	cp -a 'sshpilot'/*.py "${pkgdir}${site_packages}/sshpilot/"
 	install -d "${pkgdir}${site_packages}/sshpilot/resources" "${pkgdir}${site_packages}/sshpilot/ui"
 	cp -a 'sshpilot/resources'/* "${pkgdir}${site_packages}/sshpilot/resources/"
-	cp -a 'sshpilot/ui'/* "${pkgdir}${site_packages}/sshpilot/ui/"
 	# Install desktop file and icon
 	install -D -m 644 'io.github.mfat.sshpilot.desktop' -t "${pkgdir}/usr/share/applications"
 	install -D -m 644 'sshpilot/resources/sshpilot.svg' "${pkgdir}/usr/share/pixmaps/io.github.mfat.sshpilot.svg"
