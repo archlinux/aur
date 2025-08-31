@@ -1,0 +1,15 @@
+pkgbase = elephant-unicode
+	pkgdesc = unicode provider for elephant
+	pkgver = 1.0.0
+	pkgrel = 11
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = elephant-unicode
+	conflicts = elephant-unicode
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-11.tar.gz
+	sha256sums = 51ceb6339c87994b954f0a33d7ef636671b9d37e29a604b7e4dd6af7bb337115
+
+pkgname = elephant-unicode
