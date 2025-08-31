@@ -1,8 +1,8 @@
 # Maintainer: nithin <nithin3dev@gmail.com>
 pkgname=echo-meter
-pkgver=1.0.2
-pkgrel=2
-pkgdesc="A GTK4 application for visualizing echo measurements"
+pkgver=1.1.0
+pkgrel=3
+pkgdesc="Echo Meter – a modern GTK4 OSD that displays volume, brightness, mic mute, and keyboard lock status"
 arch=('x86_64')
 url="https://github.com/Nithin-3/echo-meter"
 license=('MIT')
