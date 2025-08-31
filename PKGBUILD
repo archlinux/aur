@@ -14,7 +14,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum=80439ba055c12f541abf44b8fc3c9b825a8f42fc25ce67462ec7e556c5790b85}
+: ${_cksum=d6a5e3c71a10b533a756251387cc8bf48bbd5c76d842ba5e957d8b1c316ab622}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +26,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.16.3
+pkgver=6.16.4
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
