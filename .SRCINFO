@@ -1,12 +1,12 @@
 pkgbase = tmpfedora
 	pkgdesc = Part of the tmplinux suite. Temporary Fedora
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheOddCell/tmpfedora
 	arch = any
 	license = MIT
 	depends = bash
-	depends = dnf5
+	depends = dnf
 	depends = shadow
 	depends = util-linux
 	depends = systemd
