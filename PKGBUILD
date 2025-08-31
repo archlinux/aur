@@ -2,7 +2,7 @@
 # Maintainer: Filip Mikina <filipmikina at gmail dot com>
 
 pkgname='hyprdynamicmonitors-bin'
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Dynamic monitor configuration for Hyprland.'
 url=''
@@ -13,14 +13,14 @@ conflicts=('hyprdynamicmonitors')
 depends=('hyprland')
 optdepends=('upower')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.0.2/hyprdynamicmonitors_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a34643f7793d08a1f8e1eaab10917622029f361b4e71532283954a53feb052fd')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.0/hyprdynamicmonitors_Linux_arm64.tar.gz")
+sha256sums_aarch64=('06274d16393c233ba9e21af454644b90ede1bde117ddb2acbd441be244a3e883')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.0.2/hyprdynamicmonitors_Linux_i386.tar.gz")
-sha256sums_i686=('e12fa2c1807e1d3085be218a3ca71ef2acf4e231dcea77d00dbdc5357e6218ca')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.0/hyprdynamicmonitors_Linux_i386.tar.gz")
+sha256sums_i686=('013ae3c3012814c0f95117838e067deddd17957a680b5094aeb548bd9a08c0ed')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.0.2/hyprdynamicmonitors_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c3fbe222f10662f3b4e4799fe2a2a9da08d77c08d3ba7f183f33345ceb5a3aac')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.0/hyprdynamicmonitors_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('845128bde9040044312431dc2f9a0df7b18140e60fa5584b0b3cc1d5fd2a593c')
 
 package() {
   local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
