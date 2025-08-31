@@ -1,7 +1,7 @@
 # Maintainer: Joachim COQBLIN <arch@coqblin.net>
 pkgname=gitlab-sync
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="[FR] Automatise la configuration d'un miroir GitLab. [EN] Automates the configuration of a GitLab mirror."
 arch=('any')
 url="https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync"

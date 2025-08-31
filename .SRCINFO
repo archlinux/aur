@@ -1,7 +1,7 @@
 pkgbase = gitlab-sync
 	pkgdesc = [FR] Automatise la configuration d'un miroir GitLab. [EN] Automates the configuration of a GitLab mirror.
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.villejuif.fr/J-COQBLIN/gitlab-sync
 	install = gitlab-sync.install
 	arch = any

@@ -1,4 +1,5 @@
-post_install() {
+# Common function to display notes
+print_notes() {
   # Detect user language, default to English
   if echo "$LANG" | grep -q -E '^fr'; then
     echo "==> Pour configurer gitlab-sync, copiez et éditez le fichier d'exemple :"
@@ -11,4 +12,14 @@ post_install() {
     echo "    cp /usr/share/doc/gitlab-sync/config.ini.example ~/.config/gitlab_sync/config.ini"
     echo "    nano ~/.config/gitlab_sync/config.ini"
   fi
+}
+
+# Runs on first install
+post_install() {
+  print_notes
+}
+
+# Runs on every upgrade
+post_upgrade() {
+  print_notes
 }
