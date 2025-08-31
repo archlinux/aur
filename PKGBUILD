@@ -1,7 +1,7 @@
 # Maintainer: yobson <contact@yobson.xyz>
 pkgname=deadlock-modmanager-git
 _pkgname=${pkgname%-git}
-pkgdesc='A mod manager for the Valve game Deadlock'
+pkgdesc='A mod manager for the Valve game Deadlock (latest git build)'
 pkgver=0.5.0.r2.g9b88f77
 pkgrel=1
 arch=('x86_64')
