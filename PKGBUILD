@@ -3,38 +3,41 @@
 
 pkgname=python-skidl
 _name=${pkgname#python-}
-pkgver=2.0.1
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A Python package for textually describing electronic circuit schematics."
 arch=(any)
-url="https://pypi.org/project/skidl"
+# url="https://pypi.org/project/skidl"
+url="https://github.com/devbisme/skidl"
 license=('MIT')
 groups=()
 _py_deps=(
-  deprecation
-#  future
   graphviz
   pygame
   # AUR
   kinet2pcb
-  kinparse
-  sexpdata
-  pyspice)
+  inspice
+  simp-sexp
+)
 depends=(
   bash
   python
-  "${_py_deps[@]/#/python-}")
-makedepends=(python-build
+  "${_py_deps[@]/#/python-}"
+)
+makedepends=(
+  python-build
   python-installer
   python-wheel
-  python-setuptools)
+  python-setuptools
+)
 optdepends=('kicad-library: part libraries')
-provides=(${_name})
-conflicts=(${_name})
-options=('!emptydirs' '!strip')
+provides=(${pkgname} ${_name})
+conflicts=(${pkgname} ${_name})
+options=('!emptydirs' '!strip' '!debug')
 install=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d3d8b74cefd85948889f6fb804507f95a72e0812ffd40a467c20f53fd9593c0d')
+# source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0dbb3ef748ff3b83313b4cf03c5d8b3e2eb82007657d2b077d1b7bdc94472464')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -49,9 +52,6 @@ package() {
 
 if [ -d /usr/share/kicad/symbols/ ]; then
   export KICAD_SYMBOL_DIR="/usr/share/kicad/symbols"
-  export KICAD8_SYMBOL_DIR="/usr/share/kicad/symbols"
-  export KICAD7_SYMBOL_DIR="/usr/share/kicad/symbols"
-  export KICAD6_SYMBOL_DIR="/usr/share/kicad/symbols"
 fi
 
 export PATH
