@@ -1,30 +1,25 @@
 pkgbase = noctalia-shell-git
-pkgver = 0.0.0
-pkgrel = 1
-pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)
-url = https://github.com/noctalia-dev/noctalia-shell
-arch = any
-license = MIT
-
-depends = quickshell
-depends = ttf-roboto
-depends = inter-font
-depends = ttf-material-symbols-variable-git
-depends = gpu-screen-recorder
-depends = brightnessctl
-depends = ddcutil
-
-optdepends = cliphist: For clipboard history support
-optdepends = swww: Wallpaper animations and effects
-optdepends = matugen-bin: Material You color scheme generation
-optdepends = cava: Audio visualizer component
-
-makedepends = git
-
-provides = noctalia-shell
-conflicts = noctalia-shell
-
-source = git+https://github.com/noctalia-dev/noctalia-shell.git
-md5sums = SKIP
+	pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)
+	pkgver = 2.3.1.r16.g330eac0
+	pkgrel = 1
+	url = https://github.com/noctalia-dev/noctalia-shell
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = quickshell-git
+	depends = ttf-roboto
+	depends = inter-font
+	depends = ttf-material-symbols-variable-git
+	depends = gpu-screen-recorder
+	depends = brightnessctl
+	depends = ddcutil
+	optdepends = cliphist: For clipboard history support
+	optdepends = matugen-bin: Material You color scheme generation
+	optdepends = cava: Audio visualizer component
+	optdepends = wlsunset: For supporting NightLight
+	provides = noctalia-shell
+	conflicts = noctalia-shell
+	source = git+https://github.com/noctalia-dev/noctalia-shell.git
+	sha256sums = SKIP
 
 pkgname = noctalia-shell-git
