@@ -1,0 +1,9 @@
+pkgbase = ttf-lxgw-wenkai-mono-nerd
+	pkgdesc = Placeholder; real content published by GitHub Actions (LXGW WenKai Nerd Font variant)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Yikai-Liao/LxgwWenKaiNerdFont
+	arch = any
+	license = OFL
+
+pkgname = ttf-lxgw-wenkai-mono-nerd
