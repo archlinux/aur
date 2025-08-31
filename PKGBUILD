@@ -2,7 +2,7 @@
 pkgname='winboat'
 pkgver='0.6.8'
 _pkgver='0.6.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
 url='https://github.com/TibixDev/winboat'
@@ -25,6 +25,7 @@ build() {
 	npm run build:linux-gs
 }
 package() {
+	cd "$srcdir/$pkgname-$pkgver"
 	cd dist/linux-unpacked	
 	install -d "$pkgdir/opt/$pkgname"
 
