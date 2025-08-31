@@ -2,7 +2,7 @@
 pkgname=python-east-asian-spacing
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="East Asian Contextual Spacing Build Tools"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('python-build'
 checkdepends=('python-pytest'
               'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('386da894484af034c04ff6b59204d1f03da28c57600f88c0a46de8574d8d7c9d')
+sha256sums=('0e28ef3d7b8a9d2469af44f479be82ced6eba3606c0076b091c9c46b344fcb97')
 
 build() {
     cd $_name-$pkgver
