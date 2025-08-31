@@ -1,3 +1,4 @@
+# Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmpdebian
 pkgver=1.0.2
 pkgrel=2
