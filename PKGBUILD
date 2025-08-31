@@ -1,3 +1,4 @@
+# Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=oshd
 pkgver=2.1.1
 pkgrel=2
