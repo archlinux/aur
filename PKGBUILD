@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=30.1
 _pkgver_major=${pkgver/.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -82,10 +82,14 @@ build() {
     --sysconfdir=/etc
     --prefix=/usr
     --libexecdir=/usr/lib
-    --with-tree-sitter
     --localstatedir=/var
     --disable-build-details
+    --with-cairo
+    --with-harfbuzz
+    --with-libsystemd
     --with-modules
+    --with-native-compilation=aot
+    --with-tree-sitter
     --with-x-toolkit=lucid
     --without-gconf
     --without-gsettings
