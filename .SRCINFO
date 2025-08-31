@@ -8,7 +8,6 @@ pkgbase = python-langgraph-checkpoint
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-mock
-	checkdepends = python-pytest-watcher
 	checkdepends = python-dataclasses-json
 	checkdepends = python-numpy
 	checkdepends = python-pandas
