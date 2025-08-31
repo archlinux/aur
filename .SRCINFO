@@ -1,14 +1,12 @@
 pkgbase = python-mcp
 	pkgdesc = Model Context Protocol SDK.
 	pkgver = 1.13.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = ruff
 	checkdepends = python-trio
-	checkdepends = python-pytest-flakefinder
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-examples
 	checkdepends = python-inline-snapshot
