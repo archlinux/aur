@@ -1,5 +1,5 @@
 pkgname=mnemo
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Note-taking app designed to enhance the retention of information."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('AGPL-3.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl')
 makedepends=('cargo' 'nodejs' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("mnemo-v$pkgver.tar.gz::https://github.com/lemueldls/mnemo/archive/refs/tags/mnemo-v$pkgver.tar.gz")
-sha256sums=('7fada046aebc81244da93268fac98ecd819b1fd5a929263e747c73aa29a23d48')
+sha256sums=('35ad8188e9fad86ea91cb097cee0dd89a9983468ead817897239732621b5d57a')
 _builddir="mnemo-mnemo-v$pkgver/platform"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
