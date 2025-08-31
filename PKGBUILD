@@ -1,6 +1,6 @@
 # Maintainer: Tjw123hh Pigmonky <tjw123hh@outlook.com>
 pkgname=python-chws-tool-git
-pkgver=1.4.2.r21.g29e5183
+pkgver=1.4.4.r2.g275575b
 pkgrel=1
 pkgdesc="Utility for OpenType chws/vchw features"
 arch=('any')
