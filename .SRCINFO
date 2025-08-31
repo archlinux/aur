@@ -1,0 +1,21 @@
+pkgbase = dl-desktop-git
+	pkgdesc = Desktop client for Duolingo, using Electron
+	pkgver = 20200524
+	pkgrel = 1
+	url = https://github.com/hmlendea/dl-desktop
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = python
+	makedepends = git
+	depends = gtk2
+	depends = libxss
+	depends = gconf
+	depends = nss
+	depends = nspr
+	depends = libxtst
+	depends = alsa-lib
+	source = git+https://github.com/hmlendea/dl-desktop
+	md5sums = SKIP
+
+pkgname = dl-desktop-git
