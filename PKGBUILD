@@ -1,29 +1,70 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.9.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('LGPL-2.1-only')
-depends=('cups' 'fontconfig' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'libgl'
-         'libice' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxi' 'libxkbcommon'
-         'libxkbcommon-x11' 'openssl' 'vulkan-icd-loader' 'xcb-util-keysyms'
-         'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib')
-optdepends=('mariadb-libs: for MySQL database support'
-            'postgresql-libs: for PostgreSQL database support')
-makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
-             'vulkan-headers' 'libxcursor' 'libxext'  'libxfixes' 'libxinerama'
-             'libxrandr' 'libxrender' 'libxml2')
+depends=(
+    'fontconfig'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gst-plugins-base-libs'
+    'gstreamer'
+    'libcups'
+    'libgl'
+    'libice'
+    'libjpeg'
+    'libpulse'
+    'libsm'
+    'libx11'
+    'libxcb'
+    'libxi'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'openssl' # loaded on demand by QLibrary
+    'sqlite'
+    'vulkan-icd-loader'
+    'xcb-util-image'
+    'xcb-util-keysyms'
+    'xcb-util-renderutil'
+    'xcb-util-wm'
+    'zlib')
+optdepends=(
+    'gtk2: for GTK2 GUI style'
+    'mariadb-libs: for MySQL database support'
+    'postgresql-libs: for PostgreSQL database support')
+makedepends=(
+    'cmake'
+    'alsa-lib'
+    'mariadb-libs'
+    'postgresql'
+    'postgresql-libs'
+    'vulkan-headers'
+    'libxcursor'
+    'libxext'
+    'libxfixes'
+    'libxinerama'
+    'libxrandr'
+    'libxrender'
+    'libxml2')
 options=('!lto')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        '010-copperspice-fix-cmake-include-dirs.patch')
-sha256sums=('875a12c9d6e94aebbceccbe4fcd33f5b1e305b3e43b1da50b2ee1115c6a518b9'
-            '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46')
+        '010-copperspice-fix-cmake-include-dirs.patch'
+        '020-copperspice-fix-werror-format-security-without-wformat.patch'
+        '030-copperspice-support-newer-vulkan-versions.patch'::'https://github.com/copperspice/copperspice/commit/dea67ae78b1048e92834fd7ecc5892e919d5930b.patch')
+sha256sums=('93cf35ec896eed5e9b955dbc3dd51dceae7da4ff5fa3215c91d0db198f49a855'
+            '920425d9fe93d3cb445c7406c8e9217e757bd5415c5805e6835fa1b67e8c8409'
+            '6190590c3ac496923ccbc80189a1d488531071392390e7bdd57c081c31d6eb16'
+            'c0a65063df0e7c66fefd791e6806bd98a3cc452ee1c4c73f55559df7f14d9285')
 
 prepare() {
     patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"
+    patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/020-copperspice-fix-werror-format-security-without-wformat.patch"
+    patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/030-copperspice-support-newer-vulkan-versions.patch"
 }
 
 build() {

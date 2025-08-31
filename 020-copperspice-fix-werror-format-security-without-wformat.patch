@@ -1,0 +1,20 @@
+--- a/src/webkit/CMakeLists.txt
++++ b/src/webkit/CMakeLists.txt
+@@ -40,7 +40,7 @@ if(NOT MSVC)
+          -Wno-class-memaccess -Wno-implicit-fallthrough -Wno-deprecated-enum-enum-conversion
+          -Wno-int-in-bool-context -Wno-unused-but-set-variable -Wno-deprecated-copy -Wno-misleading-indentation
+          -Wno-deprecated-copy -Wno-stringop-truncation -Wno-free-nonheap-object -Wno-array-bounds
+-         -Wno-format -Wno-unused-parameter -Wno-mismatched-new-delete -Wno-unused-function
++         -Wno-unused-parameter -Wno-mismatched-new-delete -Wno-unused-function
+          -Wno-maybe-uninitialized -Wno-deprecated-enum-float-conversion -Wno-deprecated-declarations
+          -Wno-strict-aliasing -Wno-switch -Wno-range-loop-construct -Wno-address -Wno-cast-function-type
+          -Wno-pedantic)
+@@ -52,7 +52,7 @@ if(NOT MSVC)
+          -Wno-implicit-fallthrough -Wno-deprecated-enum-enum-conversion
+          -Wno-int-in-bool-context -Wno-deprecated-copy -Wno-misleading-indentation
+          -Wno-deprecated-copy -Wno-free-nonheap-object -Wno-array-bounds
+-         -Wno-format -Wno-unused-parameter -Wno-mismatched-new-delete -Wno-unused-function
++         -Wno-unused-parameter -Wno-mismatched-new-delete -Wno-unused-function
+          -Wno-deprecated-enum-float-conversion -Wno-deprecated-declarations
+          -Wno-strict-aliasing -Wno-switch -Wno-range-loop-construct -Wno-address
+          -Wno-undefined-bool-conversion -Wno-undefined-var-template -Wno-inconsistent-missing-override
