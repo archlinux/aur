@@ -1,0 +1,22 @@
+pkgbase = python-cn2an
+	pkgdesc = Convert Chinese numerals and Arabic numerals.
+	pkgver = 0.5.23
+	pkgrel = 1
+	url = https://pypi.org/project/cn2an
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-proces
+	depends = python-torbjorn
+	provides = python-cn2an
+	conflicts = python-cn2an
+	options = !strip
+	options = !debug
+	source = cn2an-0.5.23.tar.gz::https://files.pythonhosted.org/packages/source/c/cn2an/cn2an-0.5.23.tar.gz
+	sha256sums = eda06a63e5eff4a64488d9f22e5f2a4ceca6eaa63416e4f771e67edecb1a5bdb
+
+pkgname = python-cn2an
