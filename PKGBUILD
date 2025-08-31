@@ -3,12 +3,12 @@
 pkgname=python-inspice
 _name=${pkgname#python-}
 pkgver=1.6.4.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)"
 arch=('any')
 url="https://pypi.org/project/${_name}"
-license=(MIT)
+license=(AGPL-3.0-or-later)
 groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})

@@ -1,10 +1,10 @@
 pkgbase = python-inspice
 	pkgdesc = Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)
 	pkgver = 1.6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/inspice
 	arch = any
-	license = MIT
+	license = AGPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
