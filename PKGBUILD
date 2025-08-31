@@ -1,8 +1,10 @@
-# Maintainer : mrkmg <kevin@mrkmg.com>
+# Maintainer : Andy <andybreuhan@andybreuhan.de>
 # Contributor : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor : mrkmg <kevin@mrkmg.com>
+
 
 pkgname=meshroom-bin
-pkgver=2023.3.0
+pkgver=2025.1.0
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=( 'x86_64')
@@ -15,12 +17,10 @@ provides=('meshroom')
 conflicts=('meshroom')
 options=('!strip')
 
-_extractedname='Meshroom-2023.3.0'
-_downloadapp='Meshroom.html'
-_filename='Meshroom-2023.3.0-linux.tar.gz'
-_srcurl="$(python fosshub.py ${_downloadapp} ${_filename})"
+_extractedname='Meshroom-2025.1.0'
+_filename='Meshroom-2025.1.0-linux.tar.gz'
 source=(
-  ${_srcurl}
+  "https://zenodo.org/records/16887472/files/Meshroom-2025.1.0-Linux.tar.gz"
   'Meshroom'
   'meshroom_photogrammetry'
   'Meshroom.png'
@@ -28,7 +28,7 @@ source=(
   'meshroom_compute'
 )
 
-sha256sums=('92b81246356df3fd37ea08e1d09519392897aaa730843eb9fd4bd0582916d391'
+sha256sums=('c55c07af9324adab378484c9ffc8b16810f925120e558bcbe5aae29916cf0e6c'
             '5efd9924e4b0cea03ec24c797bd909fc20abcf6fb9449b2e4305d8b416372df0'
             '6b8826602092d3c7d28fd1762b23b30aa4cd1c12826440168ddf003a32b6b805'
             'a24e45c707c8e0689f2f1b7952f652e824b7c55e159f4c4a0421fabd428cdf5e'
