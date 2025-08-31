@@ -1,0 +1,5 @@
+[slsa-verifier-bin]
+source = "github"
+github = "slsa-framework/slsa-verifier"
+use_latest_release = true
+prefix = "v"
