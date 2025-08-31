@@ -1,7 +1,7 @@
 pkgbase = alarm-clock-applet
 	pkgdesc = A fully-featured alarm clock for use with an AppIndicator implementation.
 	pkgver = 0.4.1
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://alarm-clock-applet.github.io/
 	install = alarm-clock-applet.install
@@ -23,6 +23,7 @@ pkgbase = alarm-clock-applet
 	depends = libayatana-appindicator
 	optdepends = gnome-control-center
 	optdepends = playerctl
+	optdepends = mate-media
 	optdepends = gconf>=2.0
 	conflicts = alarm-clock-applet-git
 	source = alarm-clock-0.4.1.tar.gz::https://github.com/alarm-clock-applet/alarm-clock/archive/refs/tags/0.4.1.tar.gz
