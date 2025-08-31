@@ -1,7 +1,7 @@
 pkgname=tmparch
 pkgver=2.1.3
-pkgrel=1
-pkgdesc="Temporary Arch Linux"
+pkgrel=2
+pkgdesc="Part of the tmplinux suite. Temporary Arch Linux"
 arch=('any')
 url="https://github.com/TheOddCell/tmparch"
 license=('MIT')
