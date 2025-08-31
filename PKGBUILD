@@ -3,7 +3,7 @@
 pkgname=izwu
 _gemname=$pkgname
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Automating "Is it worth upgrading my OS?"'
 url=https://github.com/5long/izwu
 arch=(any)

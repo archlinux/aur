@@ -1,7 +1,7 @@
 pkgbase = izwu
 	pkgdesc = Automating "Is it worth upgrading my OS?"
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/5long/izwu
 	arch = any
 	license = MIT
