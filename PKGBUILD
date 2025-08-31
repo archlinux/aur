@@ -3,7 +3,7 @@
 # Based on https://github.com/aerospike/aerospike-client-c
 
 pkgname=aerospike-client-c-libuv
-pkgver=7.0.4
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Aerospike C Client."
 arch=('x86_64')
