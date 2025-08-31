@@ -1,6 +1,6 @@
 pkgname=tmparch
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Temporary Arch Linux"
 arch=('any')
 url="https://github.com/TheOddCell/tmparch"
