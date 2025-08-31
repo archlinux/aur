@@ -1,6 +1,6 @@
 pkgbase = authtui-git
 	pkgdesc = a full rust tui auther
-	pkgver = r16.0b427ba
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/d116u/authtui
 	arch = i686
