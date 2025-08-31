@@ -4,14 +4,14 @@
 
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=3.0.4.r0.gdf0b19966
+pkgver=3.6.0.r0.gbee00e478
 pkgrel=1
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
 url="https://clonekeenplus.sourceforge.io/"
 license=('GPL')
 depends=('sdl2' 'mesa' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
-makedepends=('git' 'cmake' 'glu')
+makedepends=('git' 'cmake' 'ccache' 'minizip')
 provides=(commander-genius)
 conflicts=(commander-genius)
 source=(git+https://gitlab.com/Dringgstein/Commander-Genius.git)
