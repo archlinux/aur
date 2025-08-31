@@ -1,6 +1,7 @@
 #!/bin/bash
 
 post_install() {
-	echo "Running picoscope7beta deb postinst..."
-	/opt/picoscope/scripts/picoscope7beta_postinst
+    echo "Running picoscope7beta deb postinst..."
+    echo "... but not actually..."
+#    /opt/picoscope/scripts/picoscope7beta_postinst
 }

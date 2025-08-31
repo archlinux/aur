@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
 pkgver=7.2.3.6884
-pkgrel=1
+pkgrel=2
 pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
@@ -10,16 +10,16 @@ license=('custom')
 groups=()
 depends=(ttf-roboto ps7b_libpicoipp ps7b_libpicocv desktop-file-utils which fuse2)
 optdepends=('ps7b_libps2000: Support for PicoScope 2000 series'
-		'ps7b_libps2000a: Support for PicoScope 2000a series'
-        'ps7b_libps3000: Support for PicoScope 3000 series'
-        'ps7b_libps3000a: Support for PicoScope 3000a series'
-        'ps7b_libps4000: Support for PicoScope 4000 series'
-        'ps7b_libps4000a: Support for PicoScope 4000a series'
-        'ps7b_libps5000: Support for PicoScope 5000 series'
-        'ps7b_libps5000a: Support for PicoScope 5000a series'
-        'ps7b_libps6000: Support for PicoScope 6000 series'
-        'ps7b_libps6000a: Support for PicoScope 6000a series'
-        )
+    'ps7b_libps2000a: Support for PicoScope 2000a series'
+    'ps7b_libps3000: Support for PicoScope 3000 series'
+    'ps7b_libps3000a: Support for PicoScope 3000a series'
+    'ps7b_libps4000: Support for PicoScope 4000 series'
+    'ps7b_libps4000a: Support for PicoScope 4000a series'
+    'ps7b_libps5000: Support for PicoScope 5000 series'
+    'ps7b_libps5000a: Support for PicoScope 5000a series'
+    'ps7b_libps6000: Support for PicoScope 6000 series'
+    'ps7b_libps6000a: Support for PicoScope 6000a series'
+    )
 provides=(picoscope7)
 conflicts=(picoscope7)
 replaces=()
@@ -31,16 +31,17 @@ source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/pi
 md5sums=('7c748d8d9d79bd750b970ab21810b797')
 
 package() {
-  tar -xf data.tar.* -C "${pkgdir}"
-  chmod -R go-w $pkgdir
-  chown -R root:root $pkgdir
+    tar -xf data.tar.* -C "${pkgdir}"
+    chmod -R go-w $pkgdir
+    chown -R root:root $pkgdir
 
-  mkdir -p $pkgdir/usr/bin
-  ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
+    #  mkdir -p $pkgdir/usr/bin
+    #  ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
 
-  mkdir -p $pkgdir/opt/picoscope/scripts
-  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
-  mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
+    #  mkdir -p $pkgdir/opt/picoscope/scripts
+    #  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
+    # #  mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
 
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/doc/picoscope/copyright" 
+    tar -xf control.tar.* -C "${pkgdir}/opt/picoscope" ./copyright
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/opt/picoscope/copyright"
 }
