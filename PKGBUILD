@@ -1,7 +1,5 @@
 # Maintainer: yuioto <yuiotochan@outlook.com>
 
-export ALL_PROXY=socks5://127.0.0.1:10808
-
 pkgname=wiliwili-git
 _pkg=wiliwili
 pkgver=v1.5.2.r0.g6ec18248
