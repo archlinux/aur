@@ -9,13 +9,11 @@ license=('MIT')
 depends=('gcc-libs')
 provides=('mcat')
 
-source=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-$CARCH-unknown-linux-gnu.tar.xz")
+source_x86_64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-x86_64-unknown-linux-gnu.tar.xz")
+source_aarch64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-aarch64-unknown-linux-gnu.tar.xz")
 
-if [[ $CARCH == "x86_64" ]]; then
-    sha256sums=('1717be3f120f93a4f2441778d3733e014b65b5c95f20191e26df96397ea053ce')
-elif [[ $CARCH == "aarch64" ]]; then
-    sha256sums=('1a826e43231d661df971773124de96f84a5a6a264fbf910dad0541aa34f9acc8')
-fi
+sha256sums_x86_64=('1717be3f120f93a4f2441778d3733e014b65b5c95f20191e26df96397ea053ce')
+sha256sums_aarch64=('1a826e43231d661df971773124de96f84a5a6a264fbf910dad0541aa34f9acc8')
 
 package() {
     install -Dm755 "$srcdir/mcat-$CARCH-unknown-linux-gnu/mcat" "$pkgdir/usr/bin/mcat"

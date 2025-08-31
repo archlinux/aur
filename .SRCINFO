@@ -8,7 +8,9 @@ pkgbase = mcat-bin
 	license = MIT
 	depends = gcc-libs
 	provides = mcat
-	source = https://github.com/Skardyy/mcat/releases/download/v0.4.4/mcat-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 1717be3f120f93a4f2441778d3733e014b65b5c95f20191e26df96397ea053ce
+	source_x86_64 = https://github.com/Skardyy/mcat/releases/download/v0.4.4/mcat-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1717be3f120f93a4f2441778d3733e014b65b5c95f20191e26df96397ea053ce
+	source_aarch64 = https://github.com/Skardyy/mcat/releases/download/v0.4.4/mcat-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 1a826e43231d661df971773124de96f84a5a6a264fbf910dad0541aa34f9acc8
 
 pkgname = mcat-bin
