@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=ksubdomain
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="无状态子域名爆破工具"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("libpcap" "glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('cd19c4c20770402b35a514fb46ccbd482e3112608364f3ca45e7b85e586d2f0c3a0a7f2531525884c4527d407e7e4c37aa33b3c7b9f4f3c5e953e631f161f009')
+b2sums=('7d67de991a64b52b16de2bec9d55659ee867863c0e721fc342ca2a56fb5607d4527c9a30b4295350e89d4aa757b5f62eb5c2d34b01357b5cf4fdd0eddc86e946')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/ksubdomain

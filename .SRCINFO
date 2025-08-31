@@ -1,6 +1,6 @@
 pkgbase = ksubdomain
 	pkgdesc = 无状态子域名爆破工具
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/boy-hack/ksubdomain
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ksubdomain
 	makedepends = go
 	depends = libpcap
 	depends = glibc
-	source = ksubdomain-2.3.1.tar.gz::https://github.com/boy-hack/ksubdomain/archive/v2.3.1.tar.gz
-	b2sums = cd19c4c20770402b35a514fb46ccbd482e3112608364f3ca45e7b85e586d2f0c3a0a7f2531525884c4527d407e7e4c37aa33b3c7b9f4f3c5e953e631f161f009
+	source = ksubdomain-2.4.0.tar.gz::https://github.com/boy-hack/ksubdomain/archive/v2.4.0.tar.gz
+	b2sums = 7d67de991a64b52b16de2bec9d55659ee867863c0e721fc342ca2a56fb5607d4527c9a30b4295350e89d4aa757b5f62eb5c2d34b01357b5cf4fdd0eddc86e946
 
 pkgname = ksubdomain
