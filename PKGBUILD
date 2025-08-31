@@ -1,7 +1,7 @@
 # Maintainer: James Condron <james@zero-internet.org.uk>
 pkgname=threes
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="a tool for bringing up tailscale connected virtual machines."
 arch=('any')
 url="https://code.fatlads.lol/threes/threes"
@@ -27,7 +27,7 @@ package() {
     cd "$pkgname"
 
     # Install binaries
-    install -Dm755 "$srcdir/threes" \
+    install -Dm755 "$srcdir/threes/threes" \
             "$pkgdir/usr/bin/threes"
 
     # Install systemd unit
