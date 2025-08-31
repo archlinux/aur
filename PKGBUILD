@@ -3,7 +3,7 @@
 
 pkgname=libtiff4
 pkgver=3.9.7
-pkgrel=6
+pkgrel=7
 pkgdesc='Library for manipulation of TIFF images'
 arch=(x86_64)
 url=http://www.simplesystems.org/libtiff/
@@ -29,6 +29,7 @@ prepare() {
   # Rename 3.9.7 to 4.3.7, 3.6.x was the first release with the unintentional ABI change
   patch -Np1 -i ../libtiff4-soname.patch
 
+  autoreconf -fiv
   ./autogen.sh
 }
 
