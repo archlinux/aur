@@ -1,6 +1,6 @@
 pkgbase = playerctld-systemd-unit
 	pkgdesc = A systemd user unit for playerctld
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://wiki.archlinux.org/title/MPRIS#Playerctl
 	install = playerctld.install
