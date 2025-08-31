@@ -1,7 +1,7 @@
 # Maintainer: Andrés González <aur.andres at pm dot me>
 
 pkgname=cspell-lsp
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Performs spell checking in source code files, using the cspell library."
 url="https://github.com/vlabo/cspell-lsp"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/@vlabo/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('60f36a88c0d864f16741e55312ab6554268fb924e0ecb41c1adb5d802be101f6')
+sha256sums=("1338db0080360e2e2cd9af7d0444553f1929adddf31a554dd1ba78997d1588af")
 
 prepare() {
   tar xf "$pkgname-$pkgver.tgz" package/LICENSE
