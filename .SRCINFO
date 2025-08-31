@@ -1,6 +1,6 @@
 pkgbase = tmparch
 	pkgdesc = Part of the tmplinux suite. Temporary Arch Linux
-	pkgver = 2.1.4
+	pkgver = 2.2.0
 	pkgrel = 2
 	url = https://github.com/TheOddCell/tmparch
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tmparch
 	depends = util-linux
 	depends = systemd
 	depends = squashfs-tools
-	source = https://github.com/TheOddCell/tmparch/archive/refs/tags/v2.1.4.tar.gz
+	source = https://github.com/TheOddCell/tmparch/archive/refs/tags/v2.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = tmparch
