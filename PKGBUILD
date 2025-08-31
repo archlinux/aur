@@ -25,7 +25,7 @@ sha256sums=('0e28ef3d7b8a9d2469af44f479be82ced6eba3606c0076b091c9c46b344fcb97')
 
 build() {
     cd $_name-$pkgver
-    SETUPTOOLS_SCM_PRETEND_VERSION_FOR_EAST_ASIAN_SPACING=$pkgver python -m build --wheel --no-isolation
+    SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check() {
