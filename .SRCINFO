@@ -1,0 +1,20 @@
+pkgbase = python-simp-sexp
+	pkgdesc = A simple S-expression parser
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/simp-sexp
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-simp-sexp
+	conflicts = python-simp-sexp
+	options = !strip
+	options = !debug
+	source = simp_sexp-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/s/simp_sexp/simp_sexp-0.3.0.tar.gz
+	sha256sums = 9d0c57bd5f8400b9fe558ea36b7518067ddbe727a106b1498c7fa104b77c1ca1
+
+pkgname = python-simp-sexp
