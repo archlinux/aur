@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-mkinitcpio-hook"
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
 arch=("any")
@@ -19,14 +19,14 @@ depends=(
     'mkinitcpio'
     'efibootmgr')
 optdepends=(
-    'systemd: bootctl detects ESP path automatically.'
-    'sbctl: signs bootable EFI files for Secure Boot when enabled.'
-    'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
+    'kernel-modules-hook: Safely keeps kernel on upgrade failure'
+    'sbctl: Signs UEFI boot files for Secure Boot when enabled'
+    'journalctl-desktop-notification: Sends desktop notifications when errors occur'
 )
 makedepends=('git' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('5479aa45e2eae9e64e655cd1bd132ffdd4b6a599ac236632d8d533df0d27389a')
+sha256sums=('c5f2349d2941cc8b9070158dfa31ddb80d11c55cf2984b9c1c3dbf2d4a907476')
 
 _check_java_version() {
     local java_version
