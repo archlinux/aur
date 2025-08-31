@@ -3,7 +3,7 @@
 _name=langgraph-checkpoint
 pkgname=python-${_name}
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library with base interfaces for LangGraph checkpoint savers."
 arch=('any')
 license=('MIT')
