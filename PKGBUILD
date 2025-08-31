@@ -1,6 +1,6 @@
 # Maintainer: savew
 
-pkgname=ffetch-bin
+pkgname=ffetch
 pkgver=0.2.15
 pkgrel=1
 pkgdesc='CLI tool to fetch system info.'
