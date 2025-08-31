@@ -6,7 +6,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=spotdl
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).'
 arch=('any')
@@ -47,7 +47,7 @@ replaces=('python-spotdl')
 conflicts=('python-spotdl')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('65a4f46b51a293b1eaccd224b6161b647bded5fc6cb2e44d83c4e5cef123cdfbb1283b95a1ef7e7d9098835d1e1e531eb6ef00f4feb904758e33dc57950142f4')
+b2sums=('405f9717332aa68e03752ac46579d55176a4a91e03a5d6118125a0c20a09bf712c81d5f7a5bf79a14fd2d1f15b24651a2d85fd1d55ae0e6fc32a0d2a97e934b0')
 
 # Document: https://wiki.archlinux.org/title/Python_package_guidelines
 build() {
