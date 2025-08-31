@@ -1,0 +1,20 @@
+pkgbase = python-proces
+	pkgdesc = text preprocess.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://pypi.org/project/proces
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-proces
+	conflicts = python-proces
+	options = !strip
+	options = !debug
+	source = proces-0.1.7.tar.gz::https://files.pythonhosted.org/packages/source/p/proces/proces-0.1.7.tar.gz
+	sha256sums = 70a05d9e973dd685f7a9092c58be695a8181a411d63796c213232fd3fdc43775
+
+pkgname = python-proces
