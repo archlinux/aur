@@ -1,7 +1,7 @@
 # Maintainer: Eran Sandler <eran@sandler.co.il>
 pkgname=hyprmon-bin
 pkgver=0.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-monitor profile manager for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/erans/hyprmon"
@@ -27,6 +27,6 @@ package() {
     # Install the binary (tar.gz should extract just the binary)
     install -Dm755 "hyprmon" "$pkgdir/usr/bin/hyprmon"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyprmon/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/hyprmon/README.md"
 }
