@@ -13,8 +13,6 @@ pkgbase = coolreader
 	depends = libunibreak
 	depends = qt5-base
 	source = https://github.com/buggins/coolreader/archive/cr3.2.59/coolreader-3.2.59.tar.gz
-	source = cr3.appdata.xml
 	sha256sums = 54253ce3da8f3575d7e64f0afd3d2e9d369ca4e785584cfad4462eead1b8f51e
-	sha256sums = 9d868cfd61b686b5a398797819367f16d7a65f1f5420441fb34c8d39236f7382
 
 pkgname = coolreader

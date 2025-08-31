@@ -10,10 +10,8 @@ url='https://github.com/buggins/coolreader'
 license=('GPL2')
 depends=('fribidi' 'hicolor-icon-theme' 'libunibreak' 'qt5-base')
 makedepends=('cmake' 'ninja' 'qt5-tools')
-source=("https://github.com/buggins/coolreader/archive/cr$pkgver/$pkgname-$pkgver.tar.gz"
-        'cr3.appdata.xml')
-sha256sums=('54253ce3da8f3575d7e64f0afd3d2e9d369ca4e785584cfad4462eead1b8f51e'
-            '9d868cfd61b686b5a398797819367f16d7a65f1f5420441fb34c8d39236f7382')
+source=("https://github.com/buggins/coolreader/archive/cr$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('54253ce3da8f3575d7e64f0afd3d2e9d369ca4e785584cfad4462eead1b8f51e')
 
 prepare() {
   sed -i 's|src/desktop/cr3.png DESTINATION share/pixmaps|src/desktop/cr3.png DESTINATION share/icons/hicolor/32x32/apps|
@@ -33,5 +31,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 cr3.appdata.xml "$pkgdir/usr/share/metainfo/cr3.appdata.xml"
 }
