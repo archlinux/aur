@@ -1,14 +1,18 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.4.0 ➙ 3.8.0
-              : 2025-05-20 ➙ 2025-07-17
+ Tags         : 3.5.0 ➙ 3.9.0
+              : 2025-05-21 ➙ 2025-08-31
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-08-31   : 3.9.0
+                compact(cidrs) can now handle mixed ipv4/ipv6
+ 2025-07-17     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-07-17   : 3.8.0
                 Cidr cache lockfile name use effective user id instead of username.
 
- 2025-07-17   : 3.7.0, origin/master
+ 2025-07-17   : 3.7.0
                 Cidr cache lockfile: remove getlogin() line accidently left in - reported by
                 AUR user @piate
  2025-07-16     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
@@ -26,7 +30,3 @@
  2025-05-21   : 3.5.0
                 Use builtin types where possible. e.g. typing.List -> list
  2025-05-20     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-05-20   : 3.4.0
-                Remove unused files
-                update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
