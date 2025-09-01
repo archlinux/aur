@@ -1,0 +1,4 @@
+e2studio_installer-*.run
+pkg
+src
+*.pkg.tar.zst

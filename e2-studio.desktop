@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Renesas e² studio
+Exec=/opt/renesas/e2_studio/eclipse/e2studio
+Icon=/opt/renesas/e2_studio/eclipse/icon.xpm
