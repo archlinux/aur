@@ -1,12 +1,13 @@
 pkgbase = shader-slang
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
 	pkgver = 2025.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = glm
+	makedepends = python3
 	makedepends = spirv-headers
 	makedepends = unordered_dense
 	makedepends = vulkan-headers
