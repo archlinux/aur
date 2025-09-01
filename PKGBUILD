@@ -5,7 +5,7 @@
 pkgname=fcitx
 pkgdesc="Flexible Context-aware Input Tool with eXtension"
 pkgver=4.2.9.9
-pkgrel=3
+pkgrel=4
 groups=('fcitx-im')
 arch=('x86_64')
 url="https://fcitx-im.org"
@@ -19,8 +19,7 @@ depends=('pango' 'libxinerama' 'gtk-update-icon-cache' 'shared-mime-info'
 optdepends=('enchant: for word predication support'
             'opencc: optional engine to do chinese convert'
             'gettext: for fcitx-po-parser'
-            'fcitx-configtool: for configuration (GTK based)'
-            'kcm-fcitx: for configuration under KDE')
+            'fcitx-configtool: for configuration (GTK based)')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'mesa' 'opencc'
              'iso-codes' 'gobject-introspection' 'enchant' 'python' 'glib2-devel')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}_dict.tar.xz"{,.sig})
