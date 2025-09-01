@@ -1,0 +1,23 @@
+diff --git a/CPAN/buildme.sh b/CPAN/buildme.sh
+index 98c84f6..e3720c7 100755
+--- a/CPAN/buildme.sh
++++ b/CPAN/buildme.sh
+@@ -543,6 +543,10 @@ function build_module {
+ 
+     cd "${module}"
+ 
++    if [ "${module}" = "Audio-Scan-1.10" ]; then
++        patch Scan.xs ../Scan.xs.patch || true
++    fi
++
+     if [ $local_use_hints -eq 1 ]; then
+         # Always copy in our custom hints for OSX
+         cp -R ../hints .
+@@ -750,6 +754,7 @@ function build {
+ 
+             tar_wrapper zxf EV-4.03.tar.gz
+             cd EV-4.03
++            patch typemap ../typemap.patch || true
+             patch -p0 < ../EV-llvm-workaround.patch # patch to avoid LLVM bug 9891
+             if [ "$OS" = "Darwin" ]; then
+                 if [ $PERL_58 ]; then

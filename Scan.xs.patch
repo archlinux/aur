@@ -1,0 +1,24 @@
+220c220
+< _scan( char *, char *suffix, PerlIO *infile, SV *path, int filter, int md5_size, int md5_offset )
+---
+> _scan( char *self, char *suffix, PerlIO *infile, SV *path, int filter, int md5_size, int md5_offset )
+272c272
+< _find_frame( char *, char *suffix, PerlIO *infile, SV *path, int offset )
+---
+> _find_frame( char *self, char *suffix, PerlIO *infile, SV *path, int offset )
+288c288
+< _find_frame_return_info( char *, char *suffix, PerlIO *infile, SV *path, int offset )
+---
+> _find_frame_return_info( char *self, char *suffix, PerlIO *infile, SV *path, int offset )
+312c312
+< is_supported(char *, SV *path)
+---
+> is_supported(char *self, SV *path)
+328c328
+< type_for(char *, SV *suffix)
+---
+> type_for(char *self, SV *suffix)
+366c366
+< extensions_for(char *, SV *type)
+---
+> extensions_for(char *self, SV *type)
