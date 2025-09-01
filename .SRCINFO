@@ -1,0 +1,16 @@
+pkgbase = libreoffice-codehighlighter2
+	pkgdesc = Code Highlighter 2 – syntax highlighting extension for LibreOffice
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://gitlab.com/jmzambon/libreoffice-codehighlighter2
+	arch = any
+	groups = libreoffice-extensions
+	license = GPL3
+	depends = libreoffice
+	depends = python
+	depends = python-pygments
+	noextract = codehighlighter2-2.8.1.oxt
+	source = codehighlighter2-2.8.1.oxt::https://gitlab.com/jmzambon/libreoffice-codehighlighter2/-/raw/v2.8.1/codehighlighter2.oxt?inline=false
+	sha256sums = f6ecb26a45e7f768b502ea9d6875e74e923c159034e29f5760da0063da690258
+
+pkgname = libreoffice-codehighlighter2
