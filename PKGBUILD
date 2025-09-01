@@ -1,4 +1,5 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
+# Co-Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=obsidianctl-git
 pkgver=r25.e924876
 pkgrel=1
