@@ -1,0 +1,20 @@
+pkgbase = cthulock
+	pkgdesc = Wayland screen locker focused on customizability
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/FriederHannenheim/cthulock
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = egl-wayland
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = pam
+	source = cthulock-v0.1.2.tar.gz::https://github.com/FriederHannenheim/cthulock/archive/refs/tags/v0.1.2.tar.gz
+	b2sums = 9aeaeaa0ac4de9dfd85fc46815dde0452cbc3dd4b45fc1e96d8357c36af6857265efecfef03bb399b22ca61f814df97c83e2a6bcc91430711614d18a52b2e380
+
+pkgname = cthulock
