@@ -4,8 +4,8 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.9.2
-pkgrel=12
+pkgver=2.9.3
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -15,7 +15,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
          'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
          'z3' 'zlib')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
-             'cereal' 'cgal' 'eigen')
+             'cereal' 'cgal' 'eigen' 'nlohmann-json')
 options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${pkgname}-${pkgver/_/-}.tar.gz
         fixes_boost.patch
@@ -23,10 +23,10 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${p
         fixes_nanosvg.patch
         integrate_occtwrapper.patch
         boost-1.88.patch)
-sha256sums=('ee0efd43729ae4a0dc16372f6a562d577e482f62e9b1851d8a5f30c61d9f317d'
+sha256sums=('cb0315af94a7889ea3f89b0bff1e03a37508956bd6caa56e12d900a712daa2ed'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
             '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
-            'ecd2e2a367ca08cea7178f3807f5b59e318ac601fc6d8976910f99a6362f5213'
+            'bd5d5b2cdc60df0add095dc7b77643022a7245b74dc9d7720fdc50eb203dba08'
             'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223'
             '75d240f20ac5a9da8a780500dd9756af8c6d13edddaf25ff99673d42eabf3d7a')
 
@@ -69,7 +69,7 @@ build() {
       -S PrusaSlicer-version_${pkgver/_/-}/deps \
       -B deps_${pkgver} \
       -DDEP_WX_GTK3=ON \
-      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;z3;ZLIB"
+      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;z3;ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \
