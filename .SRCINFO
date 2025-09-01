@@ -12,6 +12,6 @@ pkgbase = grooveauthor-bin
 	source = grooveauthor-bin-1.1.2.tar.gz::https://github.com/PerryAsleep/GrooveAuthor/releases/latest/download/GrooveAuthor-v1.1.2-linux-x64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/PerryAsleep/GrooveAuthor/refs/tags/v1.1.2/LICENSE
 	sha256sums = c402319025928aad0cb9c7934720ed6b2e528cf77c12a7ec676e5723294eeca0
-	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
+	sha256sums = aaf15363b40ddcddc5a479a3dfcea7f04df7f919baf11d4ea5645b9a50987c4c
 
 pkgname = grooveauthor-bin

@@ -18,10 +18,10 @@ prepare() {
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
-  cp -r --preserve=mode,timestamps "$srcdir/grooveauthor" "$pkgdir/opt/$pkgname"
+  cp -r --preserve=mode,timestamps "$srcdir/grooveauthor" "$pkgdir/opt"
 
   install -Dm644 "$srcdir/grooveauthor/GrooveAuthor.desktop" \
     "$pkgdir/usr/share/applications/GrooveAuthor.desktop"
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/grooveauthor/LICENSE"
 }
