@@ -1,33 +1,25 @@
 pkgbase = shader-slang
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
-	pkgver = 0.24.46
+	pkgver = 2025.15.1
 	pkgrel = 1
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
 	license = MIT
-	makedepends = premake
-	makedepends = git
+	makedepends = cmake
+	makedepends = glm
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
 	depends = glslang
 	depends = libx11
-	source = https://github.com/shader-slang/slang/archive/refs/tags/v0.24.46.tar.gz
-	source = git+https://github.com/shader-slang/glslang#commit=f74f37c
-	source = git+https://github.com/syoyo/tinyobjloader#commit=d541711
-	source = git+https://github.com/g-truc/glm#commit=0d973b4
-	source = git+https://github.com/ocornut/imgui#commit=fd2a90e
-	source = git+https://github.com/shader-slang/slang-binaries#commit=5ed82af
-	source = spirv-tools::git+https://github.com/shader-slang/SPIRV-Tools#commit=d49b34d
-	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=85a1ed2
-	source = git+https://github.com/richgel999/miniz#commit=a426483
-	source = git+https://github.com/lz4/lz4#commit=d443718
-	sha1sums = 95b304aa70765b2d5632278fe4295acb01cde02c
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
+	depends = llvm
+	depends = llvm
+	depends = lz4
+	depends = miniz
+	depends = spirv-tools
+	depends = unordered_dense
+	source = https://github.com/shader-slang/slang/archive/refs/tags/v2025.15.1.tar.gz
+	source = lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea
+	sha256sums = db81c46c2461f8f1b18df348e30192aa62f029ef708c07a8f80341648f19b7ce
+	sha256sums = SKIP
 
 pkgname = shader-slang

@@ -1,85 +1,79 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Otreblan <otreblain@gmail.com>
+
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=0.24.46
-_commit_glm=0d973b4
-_commit_glslang=f74f37c
-_commit_imgui=fd2a90e
-_commit_lz4=d443718
-_commit_miniz=a426483
-_commit_slang_binaries=5ed82af
-_commit_spirv_headers=85a1ed2
-_commit_spirv_tools=d49b34d
-_commit_tinyobjloader=d541711
+pkgver=2025.15.1
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz"
-        "git+https://github.com/shader-slang/glslang#commit=$_commit_glslang"
-        "git+https://github.com/syoyo/tinyobjloader#commit=$_commit_tinyobjloader"
-        "git+https://github.com/g-truc/glm#commit=$_commit_glm"
-        "git+https://github.com/ocornut/imgui#commit=$_commit_imgui"
-        "git+https://github.com/shader-slang/slang-binaries#commit=$_commit_slang_binaries"
-        "spirv-tools::git+https://github.com/shader-slang/SPIRV-Tools#commit=$_commit_spirv_tools"
-        "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=$_commit_spirv_headers"
-        "git+https://github.com/richgel999/miniz#commit=$_commit_miniz"
-        "git+https://github.com/lz4/lz4#commit=$_commit_lz4"
-        )
-sha1sums=('95b304aa70765b2d5632278fe4295acb01cde02c'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP')
-makedepends=(premake git)
-depends=(glslang libx11)
+source=(
+	"$url/archive/refs/tags/v$pkgver.tar.gz"
+	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
+)
+sha256sums=(
+	'db81c46c2461f8f1b18df348e30192aa62f029ef708c07a8f80341648f19b7ce'
+	'SKIP'
+)
+makedepends=(
+	cmake
+	glm
+	spirv-headers
+	vulkan-headers
+)
+depends=(
+	glslang
+	libx11
+	llvm
+	llvm
+	lz4
+	miniz
+	spirv-tools
+	unordered_dense
+)
 
 prepare() {
-  cd slang-$pkgver
-  for f in glslang tinyobjloader glm imgui slang-binaries spirv-tools spirv-headers miniz lz4
-  do
-    rmdir external/$f
-    ln -s "$srcdir/$f" external/$f
-  done
+	cd "slang-$pkgver"
+
+	rm -rf external/lua
+	ln -s "$srcdir/lua" external/lua
+
+	sed -e "s/find_package(lz4.*/include(FindPkgConfig)\npkg_check_modules(lz4 REQUIRED IMPORTED_TARGET GLOBAL liblz4)/" \
+		-e "s/LZ4::lz4/PkgConfig::lz4/g" \
+		-i "CMakeLists.txt"
+
+	sed -e "s/\(find_package(LLVM \)\([^ ]\+\) /\1/" \
+		-i "cmake/LLVM.cmake"
+
+	sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
+		-e "/localintermediate.h/d" \
+		-i "source/slang-glslang/slang-glslang.cpp"
 }
 
 build() {
-  cd slang-$pkgver
-  msg2 "Generating makefiles"
-  premake5 gmake --deps=true --arch=x64
-  msg2 "Building shader-slang"
-  make config=release_x64
-}
+	cmake -B build -S "slang-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+		-DSLANG_VERSION="v$pkgver" \
+		-DSLANG_ENABLE_RELEASE_DEBUG_INFO=FALSE \
+		-DSLANG_ENABLE_SPLIT_DEBUG_INFO=FALSE \
+		-DSLANG_ENABLE_TESTS=FALSE \
+		-DSLANG_ENABLE_SLANG_RHI=FALSE \
+		-DSLANG_USE_SYSTEM_MINIZ=TRUE \
+		-DSLANG_USE_SYSTEM_LZ4=TRUE \
+		-DSLANG_USE_SYSTEM_VULKAN_HEADERS=TRUE \
+		-DSLANG_USE_SYSTEM_SPIRV_HEADERS=TRUE \
+		-DSLANG_USE_SYSTEM_SPIRV_TOOLS=TRUE \
+		-DSLANG_USE_SYSTEM_UNORDERED_DENSE=TRUE \
+		-DSLANG_USE_SYSTEM_GLSLANG=TRUE \
+		-DSLANG_SLANG_LLVM_FLAVOR=DISABLE \
 
-check() {
-  cd slang-$pkgver
-  bin/linux-x64/release/slang-test
+	cmake --build build
 }
 
 package() {
-  cd slang-$pkgver
-
-  for bin in slangc
-  do
-    install -Dm755 "bin/linux-x64/release/$bin" "$pkgdir/usr/bin/$bin"
-  done
-
-  for lib in libslang{,-glslang,-llvm}.so libgfx.so
-  do
-    install -Dm755 "bin/linux-x64/release/$lib" "$pkgdir/usr/lib/$lib"
-  done
-
-  for header in *.h prelude/*.h
-  do
-    install -Dm644 "$header" "$pkgdir/usr/include/shader-slang/$header"
-  done
-
-  find docs examples -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/shader-slang/{}" \;
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	DESTDIR="$pkgdir" cmake --install build
 }
