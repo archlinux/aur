@@ -2,27 +2,27 @@
 # Maintainer: Filip Mikina <filipmikina at gmail dot com>
 
 pkgname='hyprdynamicmonitors-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Dynamic monitor configuration for Hyprland.'
-url=''
+url='https://github.com/fiffeek/hyprdynamicmonitors'
 arch=('aarch64' 'i686' 'x86_64')
 license=('MIT')
 provides=('hyprdynamicmonitors-bin')
 conflicts=('hyprdynamicmonitors')
 optdepends=('hyprland' 'upower')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.1/hyprdynamicmonitors_Linux_arm64.tar.gz")
-sha256sums_aarch64=('09fe4ae4bdfe097aca91d283c7c7da02b28c00397d693cee28513bb43f7e4099')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.2/hyprdynamicmonitors_Linux_arm64.tar.gz")
+sha256sums_aarch64=('f9284fa1bc5cb8dd3e7ffc4630192b4ebab04d7d0851cb51d25427236495e132')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.1/hyprdynamicmonitors_Linux_i386.tar.gz")
-sha256sums_i686=('1f2a195a4ff1b3554cc229c35401d142648ba007ddd966229103219108af8fd1')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.2/hyprdynamicmonitors_Linux_i386.tar.gz")
+sha256sums_i686=('9df82ac5e8f0bb1eda6bf4533405d2a7aaa2a2d1364e45551a87a9037d3311e5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.1/hyprdynamicmonitors_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4c0b672f1d43ebc346d0e876c18cd0b75ab37450fefd408fe2745c13af6e7c29')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.2/hyprdynamicmonitors_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('6e4fd1662e3c7016a1a9e3d548d40205e4f6f9255fed6bdc61119d79bbf5449f')
 
 package() {
-  local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
+  local x86_64=x86_64 i686=i386 aarch64=arm64
   cd "hyprdynamicmonitors-${pkgver}-linux-${!CARCH}"
 
   # bin
