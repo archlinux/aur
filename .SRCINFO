@@ -1,0 +1,12 @@
+pkgbase = seec
+	pkgdesc = Scratch Everywhere! Extension Compiler
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/gradylink/seec
+	arch = any
+	license = LGPL-3.0
+	makedepends = go
+	source = https://github.com/gradylink/seec/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 3aebb73b59ef250c801fbe0ef357dc5a0e3fc93cd396a286d1b8e08666c8344a
+
+pkgname = seec
