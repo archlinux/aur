@@ -1,4 +1,5 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
+# Co-Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=obsidian-control-git
 pkgver=r2.650ceea
 pkgrel=1
@@ -6,7 +7,7 @@ pkgdesc="ObsidianOS Control Center"
 arch=('any')
 url="https://github.com/Obsidian-OS/obsidian-control"
 license=('MIT')
-depends=('python' 'obsidianctl-git' 'pyside6')
+depends=('python' 'obsidianctl' 'pyside6')
 makedepends=('git')
 provides=('obsidian-control')
 source=("$pkgname::git+$url")
