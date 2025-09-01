@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 
 pkgname=hyprland-per-window-layout
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc='Per window keyboard layout (language) for Hyprland wayland compositor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/coffebar/$pkgname"
 license=('GPL')
 makedepends=(cargo git)
 depends=()
-_commit=b4028d1
+_commit=539771c
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
