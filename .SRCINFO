@@ -1,25 +1,25 @@
 pkgbase = recaf
 	pkgdesc = A modern Java bytecode editor
-	pkgver = 2.21.14
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
 	arch = any
 	license = MIT
-	makedepends = jdk24-openjdk
-	depends = java-environment-openjdk=24
+	makedepends = jdk-openjdk>=22
+	makedepends = gradle
+	depends = java-environment>=22
+	depends = java-openjfx>=24.0.1
 	depends = ttf-font
 	provides = recaf
-	provides = recaf-git
 	conflicts = recaf-bin
 	conflicts = recaf-git
-	replaces = recaf
-	source = recaf-2.21.14.tar.gz::https://github.com/Col-E/Recaf/archive/refs/tags/2.21.14.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/Col-E/Recaf/2.21.14/LICENSE
+	source = recaf-4.0.0-alpha.tar.gz::https://github.com/Col-E/Recaf/archive/refs/tags/4.0.0-alpha.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/LICENSE
 	source = recaf
 	source = recaf.desktop
-	sha256sums = ae0a25f167f331aab374db74021c5ef162b3fb38768c369ae06e8b8242f01f7e
-	sha256sums = a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ef3dc4884802173816ac104d61f56e58ff86d2f094cf369385795a2e6d569478
+	sha256sums = a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f
+	sha256sums = 9ed567509d1c319cbb48837be3d641ee230612a15197ffa50fe28307252318b5
+	sha256sums = a44c16bd628e5066f648fb9dc80ddc36cb94d3d014f487234b4e93c8a9ae7d91
 
 pkgname = recaf

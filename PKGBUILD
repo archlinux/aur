@@ -1,53 +1,50 @@
 # Maintainer: Dwi Mulia Mokoginta <dwi-mulia-mokoginta@protonmail.com>
 # Contributor: dreamscached <dreamscache.d@gmail.com>
 
-_pkgname="recaf"
-pkgname="$_pkgname"
-pkgver=2.21.14
-pkgrel=2
-pkgdesc="A modern Java bytecode editor"
-url="https://github.com/Col-E/Recaf"
+pkgname="recaf"
+pkgver=4.0.0
+pkgrel=1
+pkgdesc='A modern Java bytecode editor'
+url='https://github.com/Col-E/Recaf'
 license=('MIT')
+arch=('any')
 
-arch=("any")
-depends=('java-environment-openjdk=24' "ttf-font")
-makedepends=('jdk24-openjdk')
+depends=('java-environment>=22' 'java-openjfx>=24.0.1' 'ttf-font')
+makedepends=('jdk-openjdk>=22' 'gradle')
 
-conflicts=("$_pkgname-bin" "$_pkgname-git")
-replaces=("$_pkgname")
-provides=("$_pkgname" "$_pkgname-git")
+conflicts=("$pkgname-bin" "$pkgname-git")
+provides=("$pkgname")
 
 source=(
-    "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-    "LICENSE::https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
-    "$_pkgname"
-    "$_pkgname.desktop"
+  "$pkgname-$pkgver-alpha.tar.gz::$url/archive/refs/tags/$pkgver-alpha.tar.gz"
+  "LICENSE::https://raw.githubusercontent.com/Col-E/Recaf/$pkgver-alpha/LICENSE"
+  "$pkgname"
+  "$pkgname.desktop"
 )
+
+sha256sums=('ef3dc4884802173816ac104d61f56e58ff86d2f094cf369385795a2e6d569478'
+            'a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f'
+            '9ed567509d1c319cbb48837be3d641ee230612a15197ffa50fe28307252318b5'
+            'a44c16bd628e5066f648fb9dc80ddc36cb94d3d014f487234b4e93c8a9ae7d91')
 
 build() {
-  cd "Recaf-$pkgver"
+  cd "$srcdir/Recaf-$pkgver-alpha"
 
-  JAVA_HOME="/usr/lib/jvm/default-runtime" ./mvnw clean package -Dmaven.test.skip -Dcheckstyle.skip
+  export TARGET_VERSION=24
+
+  JAVA_HOME="/usr/lib/jvm/java-24-openjdk" /usr/bin/gradle assemble -x compileTestJava -Dskip_jfx_bundle=true
 }
 
-sha256sums=(
-    'ae0a25f167f331aab374db74021c5ef162b3fb38768c369ae06e8b8242f01f7e'
-    'a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5'
-    'SKIP'
-    'SKIP'
-)
-
 package() {
-    cd "Recaf-$pkgver"
+    cd "$srcdir/Recaf-$pkgver-alpha"
 
-    sed -i "/^Version=/c\Version=$pkgver" "$srcdir/$_pkgname.desktop"
-    sed -i "/^Comment=/c\Comment=$pkgdesc" "$srcdir/$_pkgname.desktop"
+    sed -i "/^Version=/c\Version=$pkgver" "$srcdir/$pkgname.desktop"
+    sed -i "/^Comment=/c\Comment=$pkgdesc" "$srcdir/$pkgname.desktop"
 
-    install -Dm755 "target/$_pkgname-$pkgver-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
-    install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/recaf"
-    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-    install -Dm644 "src/main/resources/icons/logo-full.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    install -Dm755 "recaf-ui/build/libs/recaf-ui-$pkgver-SNAPSHOT-all.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+    install -Dm644 "recaf.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
     
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/recaf"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
