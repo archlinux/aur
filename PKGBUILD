@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=redux
-_pkgver=1.1.4
+_pkgver=1.1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="R Bindings to 'hiredis'"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('13eb2a35ff97ad02e09b1e42ec8cff7c')
-b2sums=('7f92928ecb8fac5feac29169ad2ca086b2539c661dd459e2f82b51b0f0dfd643e42e37a353c4eeeb3de5f51f33d702da50f7c604ee9f62de38de6344dff1f8c5')
+md5sums=('8090798d9567e2c0a5ee9bc1db1179ca')
+b2sums=('ea25a92c589e9ab8c25ace1ecd3d3a5de818df861d08bb87c9ceb4a2d032196a82ee9739c242706e59cee4070ac9ca41a2d9374674a09489ca109f19a37fc522')
 
 build() {
   mkdir build

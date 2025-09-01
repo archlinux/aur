@@ -1,7 +1,7 @@
 pkgbase = r-redux
 	pkgdesc = R Bindings to 'hiredis'
-	pkgver = 1.1.4
-	pkgrel = 3
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=redux
 	arch = x86_64
 	license = GPL-2.0-only
@@ -14,8 +14,8 @@ pkgbase = r-redux
 	optdepends = r-rmarkdown
 	optdepends = r-sys
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/redux_1.1.4.tar.gz
-	md5sums = 13eb2a35ff97ad02e09b1e42ec8cff7c
-	b2sums = 7f92928ecb8fac5feac29169ad2ca086b2539c661dd459e2f82b51b0f0dfd643e42e37a353c4eeeb3de5f51f33d702da50f7c604ee9f62de38de6344dff1f8c5
+	source = https://cran.r-project.org/src/contrib/redux_1.1.5.tar.gz
+	md5sums = 8090798d9567e2c0a5ee9bc1db1179ca
+	b2sums = ea25a92c589e9ab8c25ace1ecd3d3a5de818df861d08bb87c9ceb4a2d032196a82ee9739c242706e59cee4070ac9ca41a2d9374674a09489ca109f19a37fc522
 
 pkgname = r-redux
