@@ -1,0 +1,27 @@
+pkgbase = python-kokoro
+	pkgdesc = TTS An inference library for Kokoro-82M
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://pypi.org/project/kokoro
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-huggingface-hub
+	depends = python-loguru
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-transformers
+	depends = python-misaki-en
+	provides = python-kokoro
+	conflicts = python-kokoro
+	options = !strip
+	options = !debug
+	source = kokoro-0.9.4.tar.gz::https://files.pythonhosted.org/packages/source/k/kokoro/kokoro-0.9.4.tar.gz
+	sha256sums = fbf633262797f8cf46fdac3315cf9cade67dc8b762c0feccf334892772fb9ac4
+
+pkgname = python-kokoro
