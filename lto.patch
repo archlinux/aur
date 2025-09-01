@@ -1,11 +1,8 @@
-diff '--color=auto' -rupN cosmic-bg.orig/Cargo.toml cosmic-bg/Cargo.toml
---- cosmic-bg.orig/Cargo.toml	2024-09-26 18:12:01.813689739 +0200
-+++ cosmic-bg/Cargo.toml	2024-09-26 18:12:22.830588098 +0200
-@@ -36,6 +36,7 @@ features = ["calloop"]
+diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2025-09-01 12:11:09.659939524 -0600
++++ b/Cargo.toml	2025-09-01 12:13:17.707605444 -0600
+@@ -33,3 +33,4 @@
  
  [profile.release]
  opt-level = 3
 +lto = "thin"
- 
- # TODO: Remove when sctk is updated to latest calloop, like cosmic-config
- [patch.'https://github.com/pop-os/libcosmic']

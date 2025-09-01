@@ -1,6 +1,6 @@
 pkgbase = cosmic-bg-git
 	pkgdesc = COSMIC session service which applies backgrounds to displays.
-	pkgver = 1.0.0.alpha.7.r1.g1da843a
+	pkgver = 1.0.0.alpha.7.r4.gf5cf3a6
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-bg
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = cosmic-bg-git
 	source = git+https://github.com/pop-os/cosmic-bg.git
 	source = lto.patch
 	sha256sums = SKIP
-	sha256sums = fa29e15bc552eaf2a656c270c83f8564d85f30216198f3e30a7040f8659174b8
+	sha256sums = d6700a009732ec4087fe8dfae5ea9470dd889a0e63969e91e2abaaa56ca7827c
 
 pkgname = cosmic-bg-git
