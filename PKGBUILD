@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -8,37 +8,45 @@ url="https://github.com/wayclip/cli"
 license=('MIT')
 depends=('bzip2' 'elfutils' 'gstreamer' 'glib2' 'libffi' 'libunwind' 'openssl' 'pcre2' 'util-linux-libs' 'xz' 'zlib' 'zstd')
 makedepends=('rust' 'cargo')
+provides=('wayclip')
+conflicts=('wayclip')
 
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
-        "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.1/wayclip-v0.1.1-x86_64-unknown-linux-gnu.tar.gz"
+        "wayclip-core.tar.gz::https://github.com/Wayclip/core/archive/refs/tags/v0.1.1.tar.gz"
         "wayclip-daemon.service")
 
-sha256sums=('fe80f33d641be22f1f42a29ab566a5b4ada4f8aaec9b622795f8c57477eaf55a'
-            'c6e6a209ab3ab1a6478e65bd461c621c1ffb2886ca30fde10f9f313079207a70'
+sha256sums=('25c905d9896db818ebd3d49fb2d85bad65c11432c0b31bccf198f578c4947adb'
+            'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8'
             'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
 
 prepare() {
-  mv "$srcdir/wayclip-binaries/daemon" "$srcdir/"
-  mv "$srcdir/wayclip-binaries/trigger" "$srcdir/"
-
-  cd "$srcdir/cli-$pkgver"
+  tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir/"
+  tar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/"
 }
 
 build() {
-  cd "$srcdir/cli-$pkgver"
+  local core_dir="core-v0.1.1"
+
   export CFLAGS+=" -ffat-lto-objects"
   export CXXFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release
+
+  cd "$srcdir/$core_dir"
+  cargo build --release --locked
+  mv target/release/daemon "$srcdir/daemon"
+  mv target/release/trigger "$srcdir/trigger"
+
+  cd "$srcdir/$pkgname-$pkgver"
+  cargo build --release --locked
 }
 
 check() {
-  cd "$srcdir/cli-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   cargo test
 }
 
 package() {
-  install -Dm755 "$srcdir/cli-$pkgver/target/release/wayclip_cli" "$pkgdir/usr/bin/wayclip-cli"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/wayclip" "$pkgdir/usr/bin/wayclip"
 
   install -Dm755 "$srcdir/daemon" "$pkgdir/usr/bin/wayclip-daemon"
   install -Dm755 "$srcdir/trigger" "$pkgdir/usr/bin/wayclip-trigger"
