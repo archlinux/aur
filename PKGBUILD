@@ -1,7 +1,7 @@
 # Maintainer: Arda Yılmaz <fijarom at fijarom dot com>
 
 pkgname=fokus
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=4
 pkgdesc="A minimalist terminal‐based focus timer and stopwatch with daily logging, built in Rust"
 arch=('x86_64')
