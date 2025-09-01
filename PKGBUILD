@@ -1,15 +1,15 @@
 pkgbase=ttf-noto-vf
 pkgname=(ttf-noto-{sans,serif,sans-mono}-vf)
-pkgver=2025.08.01
+pkgver=2025.09.01
 pkgrel=1
 provides=(ttf-font noto-fonts noto-fonts-extra)
 arch=(any)
 url='https://fonts.google.com/noto'
 license=('OFL-1.1')
 source=(https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-$pkgver.tar.gz
-        46-noto-sans.conf 46-noto-serif.conf 46-noto-sans-mono.conf
-        66-noto-sans.conf 66-noto-serif.conf 66-noto-sans-mono.conf)
-sha256sums=('b1e2ce44aacc1773a18c2fb7345c3c710cb269684747a68d2a97c0a8b180b652'
+        46-noto-sans-vf.conf 46-noto-serif-vf.conf 46-noto-sans-mono-vf.conf
+        66-noto-sans-vf.conf 66-noto-serif-vf.conf 66-noto-sans-mono-vf.conf)
+sha256sums=('323abf164d47e8a45e1a4f78abb7238420648e550ecb1630342ca19f867f614a'
             '83a8faf6a47954075f97a2d555048e2a6689c38603b2ca00150157bf645f4593'
             'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa'
             'f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884'
@@ -18,37 +18,37 @@ sha256sums=('b1e2ce44aacc1773a18c2fb7345c3c710cb269684747a68d2a97c0a8b180b652'
             '4526289f59654e2a81dc734669a1ae4e416f9a56d0896ec3741c6bf065baf8a8')
 
 package_ttf-noto-sans-vf() {
-  pkgdesc='	Google Noto Sans font (Variable weight and width, TTF)'
+  pkgdesc='Google Noto Sans font (Variable weight and width, TTF)'
 
   cd notofonts.github.io-noto-monthly-release-$pkgver
   install -Dm644 fonts/NotoSans/full/variable-ttf/*.ttf -t "$pkgdir"/usr/share/fonts/noto
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 
-  install -Dm644 "$srcdir"/*-noto-sans.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+  install -Dm644 "$srcdir"/*-noto-sans-vf.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
   ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
 
 package_ttf-noto-serif-vf() {
-  pkgdesc='	Google Noto Serif font (Variable weight and width, TTF)'
+  pkgdesc='Google Noto Serif font (Variable weight and width, TTF)'
 
   cd notofonts.github.io-noto-monthly-release-$pkgver
   install -Dm644 fonts/NotoSerif/unhinted/variable-ttf/*.ttf -t "$pkgdir"/usr/share/fonts/noto
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 
-  install -Dm644 "$srcdir"/*-noto-serif.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+  install -Dm644 "$srcdir"/*-noto-serif-vf.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
   ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
 
 package_ttf-noto-sans-mono-vf() {
-  pkgdesc='	Google Noto Sans Mono font (Variable weight and width, TTF)'
+  pkgdesc='Google Noto Sans Mono font (Variable weight and width, TTF)'
 
   cd notofonts.github.io-noto-monthly-release-$pkgver
   install -Dm644 fonts/NotoSansMono/unhinted/variable-ttf/*.ttf -t "$pkgdir"/usr/share/fonts/noto
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 
-  install -Dm644 "$srcdir"/*-noto-sans-mono.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+  install -Dm644 "$srcdir"/*-noto-sans-mono-vf.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
   ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
