@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/archive/refs/tags/v0.1.1.tar.gz"
         "wayclip-daemon.service")
 
-sha256sums=('859e6388043f2fdea84259cdd28afe5c20dac372cc1c8f7f38e5c348969de380'
+sha256sums=('9c666107be2ef19f2dd654bbe49efb085fad25f7a18867e6f17c0de506926c1d'
             'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8'
             'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
 
@@ -23,7 +23,7 @@ prepare() {
   tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir/"
   tar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/"
 
-  local core_dir="core-${CORE_VER}"
+  local core_dir="core-0.1.1"
   local cli_dir="cli-$pkgver"
 
   cd "$srcdir/$core_dir"
@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-  local core_dir="core-${CORE_VER}"
+  local core_dir="core-0.1.1"
   local cli_dir="cli-$pkgver"
 
   export CFLAGS+=" -ffat-lto-objects"
