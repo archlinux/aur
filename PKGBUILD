@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=mecab-ipadic
 pkgver=2.7.0_20070801
-pkgrel=8
+pkgrel=9
 pkgdesc="IPA dictionary for mecab"
 arch=('any')
 url="https://taku910.github.io/mecab"
@@ -16,8 +16,8 @@ md5sums=('5e33399fd830b3c3f66cd4b5c366c989')
 
 prepare() {
   cd "$pkgname/$pkgname"
-  ./configure --libexec=/usr/lib/mecab --prefix=/usr --with-charset=utf-8
   sed -i "s|^MECAB_DICT_INDEX=.*|MECAB_DICT_INDEX=/usr/lib/mecab/mecab-dict-index|g" configure.in
+  ./configure --libexec=/usr/lib/mecab --prefix=/usr --with-charset=utf-8
 }
 build() {
   cd "$pkgname/$pkgname"
