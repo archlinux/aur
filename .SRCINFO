@@ -1,0 +1,16 @@
+pkgbase = fv-cli-bin
+	pkgdesc = A command-line font viewer using terminal graphics (Sixel, iTerm, Kitty)
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/kenshaw/fv
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = fv
+	conflicts = fv
+	source = README-0.5.8.md::https://raw.githubusercontent.com/kenshaw/fv/v0.5.8/README.md
+	sha256sums = 6eb277fec0697370fd521e045b161b705857440545f7da357d191316934d68d1
+	source_x86_64 = https://github.com/kenshaw/fv/releases/download/v0.5.8/fv-0.5.8-linux-amd64.tar.bz2
+	sha256sums_x86_64 = b453541c2f584b8875ee88a9c56ba1db941a615cef266120c85c22fef1cb690f
+
+pkgname = fv-cli-bin
