@@ -1,0 +1,18 @@
+pkgbase = auh
+	pkgdesc = AUR helper written in Bash
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~nicknb/auh
+	arch = any
+	license = GPL-3.0-or-later
+	depends = jq
+	depends = git
+	depends = curl
+	depends = pacman
+	depends = sudo
+	provides = auh
+	conflicts = auh
+	source = auh-0.0.1.tar.gz::https://git.sr.ht/~nicknb/auh/archive/v0.0.1.tar.gz
+	sha256sums = 54adb1d3a75fc8fe4cc620ca16379e3141cd7232a00340cf67f609ba2b5b34a7
+
+pkgname = auh
