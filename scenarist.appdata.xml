@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>ru.kitscenarist.Scenarist</id>
+  <launchable type="desktop-id">scenarist.desktop</launchable>
+  <name>KIT Scenarist</name>
+  <summary>Screenwriting software</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>KIT Scenarist is a program for creating screenplays which oriented at international standards in the field of film production. The program is a full-featured studio for creating stories from the birth of the idea and before the transfer of the script to production.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://kitscenarist.ru/assets/images/news/cards-filter.jpg</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/dimkanovikov/KITScenarist/issues</url>
+  <url type="homepage">https://kitscenarist.ru/en/</url>
+</component>
