@@ -1,6 +1,6 @@
 # Maintainer: Jacob Meyers <jeyersdev@gmail.com>
 pkgname=alescript
-pkgver=1.0
+pkgver=1.1
 pkgrel=8
 pkgdesc="A programming language targeted for building console applications."
 arch=('x86_64')
