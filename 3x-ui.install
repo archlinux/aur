@@ -14,7 +14,7 @@ post_install() {
 
     for f in geoip geosite; do
       curl -fSL "https://github.com/$user_suffix/releases/latest/download/$f.dat" \
-        -o "/usr/share/x-ui/bin/${f}${suffix}.dat" || echo "Failed to fetch $f from $user_suffix"
+        -o "/usr/lib/x-ui/bin/${f}${suffix}.dat" || echo "Failed to fetch $f from $user_suffix"
     done
   done
 }

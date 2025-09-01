@@ -3,7 +3,7 @@
 pkgname=3x-ui
 pkgver=2.6.7
 _xrayver=25.8.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
@@ -58,7 +58,7 @@ prepare() {
   sed -i -E 's|wget -O ([^ ]+) ?-?N? (https?://[^ ]+)|curl -L -o \1 \2|g'         ${pkgname:1}.sh
   sed -i -E 's|wget -N (https?://[^ ]+/([^/ ]+))|curl -L -o \2 \1|g'              ${pkgname:1}.sh
   sed -i 's|/usr/local/|/usr/lib/|g'                                              ${pkgname:1}.sh
-  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/share/x-ui/|' ${pkgname:1}.service
+  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|' ${pkgname:1}.service
   sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'         ${pkgname:1}.service
 }
 
@@ -73,7 +73,5 @@ package() {
     i686)    _xrayarch="i386";;
     x86_64)  _xrayarch="amd64";;
   esac
-  install -vDm 755 ../xray                    "$pkgdir"/usr/bin/xray-${pkgname}-${_xrayver}
-  install -vd                                 "$pkgdir"/usr/share/${pkgname:1}/bin
-  ln -sf /usr/bin/xray-${pkgname}-${_xrayver} "$pkgdir"/usr/share/${pkgname:1}/bin/xray-linux-${_xrayarch}
+  install -vDm 755 ../xray                    "$pkgdir"/usr/lib/${pkgname:1}/bin/xray-linux-${_xrayarch}
 }

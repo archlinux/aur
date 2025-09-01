@@ -1,7 +1,7 @@
 pkgbase = 3x-ui
 	pkgdesc = Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit
 	pkgver = 2.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MHSanaei/3x-ui
 	install = 3x-ui.install
 	arch = aarch64
