@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6337
+pkgver=b6341
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -39,7 +39,7 @@ sha256sums=()
 
 prepare() {
   cd "$srcdir"
-  git clone --depth 3 --single-branch --branch master "${url}" "${_pkgname}"
+  git clone --depth 20 --single-branch --branch master "${url}" "${_pkgname}"
 }
 
 pkgver() {
