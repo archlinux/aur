@@ -16,15 +16,15 @@ _cart="CART26FQ2_LIN_${pkgver}_TARBALL"
 pkgrel=1
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
-makedepends=('imagemagick')
+makedepends=('resvg')
 options=('!debug')
 url='https://customerconnect.omnissa.com/downloads/info/slug/virtual_desktop_and_apps/omnissa_horizon_clients/8'
 license=('custom')
 source=("${pkgbase}-${pkgver}-${_build1}-${_build2}.tar.gz::https://download3.omnissa.com/software/${_cart}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}.tar.gz"
-        'Horizon_8_Logo.png'
+        'horizon-icon.svg'
         'horizon-usb.service')
 sha256sums=('5515e79188e2605ced5a95c3a3829865b567be5d7a8de00a57455f7b5b2ae392'
-            '7b50a24cb893bb5887e0e2099029ec2957fd94a2b55b8718f0777fb0b66f440f'
+            'ef412bcc6d3e3d45e161861a8fb2abebc1403e7e2d84c52a16552d9091efd5b0'
             '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2')
 
 prepare() {
@@ -65,11 +65,10 @@ build() {
 		"Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/share/applications/horizon-client.desktop"
 
 	# prepare high(er) quality icons
-	# BTW... Anybody has a SVG file for that icon?
 	install -d "${srcdir}/icons"
 	for SIZE in 16 24 32 48 64 96 128; do
-		magick "${srcdir}/Horizon_8_Logo.png" \
-			-scale "${SIZE}" +set date:create +set date:modify \
+		resvg --height "${SIZE}" --width "${SIZE}" \
+			"${srcdir}/horizon-icon.svg" \
 			"${srcdir}/icons/horizon-client-${SIZE}.png"
 	done
 }
@@ -119,8 +118,10 @@ package_omnissa-horizon-client() {
 	ln -s '../../../opensc-pkcs11.so' "${pkgdir}/usr/lib/omnissa/horizon/pkcs11/libopenscpkcs11.so"
 
 	# install high(er) quality icons
+	install -D -m0644 "${srcdir}/horizon-icon.svg" \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/horizon-client.svg"
 	for SIZE in 16 24 32 48 64 96 128; do
-		install -D "${srcdir}/icons/horizon-client-${SIZE}.png" \
+		install -D -m0644 "${srcdir}/icons/horizon-client-${SIZE}.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/horizon-client.png"
 	done
 }
