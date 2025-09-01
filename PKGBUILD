@@ -1,8 +1,9 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=rime-moe-pinyin-git
-pkgver=20250831.151631
+pkgver=4.2.r8.g70b2d53
 pkgrel=1
+epoch=1
 pkgdesc="moeOS RIME 全拼方案. 简洁, 现代."
 arch=('any')
 url="https://github.com/Kimiblock/moeOS-pinyin"
@@ -14,8 +15,13 @@ source=(
 	pinyin::"git+https://github.com/Kimiblock/moeOS-pinyin.git"
 	wanxiang-lts-zh-hans.gram::"https://github.com/Kimiblock/moeOS-pinyin/raw/refs/heads/master/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram")
 sha256sums=('SKIP'
-            '28a34da7f25ae6edbb9906abd9aecb4cf31f0ec004709a23bf602fc1630cafb6')
+            'SKIP')
 makedepends=("git" "git-lfs")
+
+function pkgver() {
+	cd "${srcdir}/pinyin"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 function prepare() {
 	cd pinyin
