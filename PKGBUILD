@@ -1,4 +1,5 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
+# Co-Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=plugind-git
 pkgver=r2.28b008c
 pkgrel=1
@@ -6,7 +7,7 @@ pkgdesc="ObsidianOS Plugin Daemon - A daemon that manages and triggers plugins o
 arch=('any')
 url="https://github.com/Obsidian-OS/plugind"
 license=('MIT')
-depends=('obsidianctl-git' 'glibc' 'bash' 'grep' 'awk')
+depends=('obsidianctl' 'glibc' 'bash' 'grep' 'awk')
 makedepends=('git' 'cargo' 'rust')
 provides=('plugind' 'pluginctl')
 source=("$pkgname::git+$url")
