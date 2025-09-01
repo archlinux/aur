@@ -2,7 +2,7 @@
 
 pkgbase=bin2cpp
 pkgname=bin2cpp
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="bin2cpp: The easiest way to embed small files into a c++ executable. bin2cpp converts text or binary files to C++ files (*.h, *.cpp) for easy access within the code."
 arch=($CARCH)
@@ -28,10 +28,8 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
-source=("${pkgname}::git+${url}.git#tag=${pkgver}"
-	"0001-Use-the-kernel-version-as-a-fallback.patch")
-sha256sums=('511965596926455f0c73c20b43a2b5264e3456ba057b373c09b27ab9f2bb1c2f'
-            '68d7965d56cf62457c5aaee9f911cd8526f9b83557ca53a751ca062ed4bd44f2')
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('c6de4b825fb74ec07f6ce104d2c9634e7053f58481c5a9e4c2f0ec50b767da41')
 options=(!strip !lto !debug)
 
 build() {
@@ -43,7 +41,6 @@ build() {
     #     fi
     PLATFORM=x64
     cd "${srcdir}/${pkgname}/"
-   patch -Np1 < ${srcdir}/0001-Use-the-kernel-version-as-a-fallback.patch
     sed -e 's|"."|"share/bin2cpp"|g' \
         -e 's|"docs"|"share/doc/bin2cpp"|g' \
         -i CMakeLists.txt
