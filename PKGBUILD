@@ -3,7 +3,7 @@ pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
 pkgver=1.0.0
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -16,7 +16,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'stremio-service'
     'ffmpeg'
 )
 makedepends=(
