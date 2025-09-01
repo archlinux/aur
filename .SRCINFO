@@ -1,0 +1,11 @@
+pkgbase = snapsr-bin
+	pkgdesc = CLI tool to snapshot and restore custom file setups with ease
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/BeastieNate5/snapsr
+	arch = x86_64
+	license = MIT
+	source = snapsr::https://github.com/BeastieNate5/snapsr/releases/download/v0.0.1/snapsr-x86_64
+	sha256sums = c1c8afb0565a9a8111d0111c61a381122ee79a07cdc3b822591fa913c7282a51
+
+pkgname = snapsr-bin
