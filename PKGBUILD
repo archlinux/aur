@@ -1,4 +1,4 @@
-# Maintainer: teraflops <me@priet.us>
+# Maintainer: teraflops <prietus@live.com>
 pkgname=roon-now-playing-git
 pkgver=1.0.0
 pkgrel=1
