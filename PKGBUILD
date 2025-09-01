@@ -2,7 +2,7 @@
 pkgname=moekoemusic-bin
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.5.0
+pkgver=1.5.1
 _electronversion=33
 pkgrel=1
 pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
@@ -27,12 +27,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/iAJue/MoeKoeMusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ac52d16700a23d6cbd6b3430011c12c3b7ca760e957b4378be9baa2a5003449'
+sha256sums=('f438a864347ce2b7c2a0916f1b71371b4a07d484d837e5fc79ad320db29d48ac'
             'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
