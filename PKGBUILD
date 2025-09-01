@@ -5,27 +5,31 @@ pkgdesc="Like pyenv and rbenv, but for Go."
 arch=('i686' 'x86_64')
 url="https://github.com/syndbg/goenv"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b63de7cc977cdafc84ac7ddb263b068de1204b5ee4e4d2d40d72d68b37e9a9ff')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+  "go-build-${pkgver}.tar.gz::https://github.com/go-nv/goenv/archive/refs/tags/${pkgver}.tar.gz"
+)
+md5sums=('163c351001f67d016a4464d94dac16df'
+         '163c351001f67d016a4464d94dac16df')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    
-    for file in libexec/*; do
-        install -D -m755 "$file" "${pkgdir}/usr/lib/goenv/$file"
-    done
-    
-    for file in bin/*; do
-        install -D -m755 "$file" "${pkgdir}/usr/lib/goenv/$file"
-    done
-    
-    if [ -d "${srcdir}/${pkgname}-${pkgver}/plugins/go-build" ]; then
-        install -d "${pkgdir}/usr/lib/goenv/plugins/go-build"
-        cp -r "${srcdir}/${pkgname}-${pkgver}/plugins/go-build/"* "${pkgdir}/usr/lib/goenv/plugins/go-build/"
-    fi
-    
-    install -d "${pkgdir}/usr/bin"
-    ln -s /usr/lib/goenv/libexec/goenv "${pkgdir}/usr/bin/goenv"
-    
-    echo "$pkgver" > "${pkgdir}/usr/lib/goenv/APP_VERSION"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  for file in libexec/*; do
+    install -D -m755 "$file" "${pkgdir}/usr/lib/goenv/$file"
+  done
+
+  for file in bin/*; do
+    install -D -m755 "$file" "${pkgdir}/usr/lib/goenv/$file"
+  done
+
+  install -d "${pkgdir}/usr/lib/goenv/plugins/go-build"
+  if [ -d "${srcdir}/goenv-${pkgver}/plugins/go-build" ]; then
+    cp -r "${srcdir}/goenv-${pkgver}/plugins/go-build/"* "${pkgdir}/usr/lib/goenv/plugins/go-build/"
+  fi
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /usr/lib/goenv/libexec/goenv "${pkgdir}/usr/bin/goenv"
+
+  echo "$pkgver" > "${pkgdir}/usr/lib/goenv/APP_VERSION"
 }
