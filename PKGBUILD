@@ -1,6 +1,6 @@
 _reponame=libfirm
 pkgname="${_reponame}-git"
-pkgver=1.22.0.r1139.g95a238c
+pkgver=1.22.0.r1142.g114012d
 pkgrel=2
 pkgdesc='A c-lib for graph-based IR, optimizations and code gen for compilers'
 url="https://pp.ipd.kit.edu/firm/"
@@ -9,13 +9,10 @@ arch=('any')
 makedepends=('git')
 source=("${_reponame}::git+https://github.com/${_reponame}/${_reponame}.git" 
         libfirm.pc
-        libfirm-python-3.12-imp.patch
-	libfirm-python-3.12-filter-backslash-regex.patch
        )
 md5sums=('SKIP'
          '39a7ef0417669487524b95460962f6c7'
-         'f5b5339cdb17008b3f91763ca2cbdb0b'
-         '44b306970eb0509c141f65a8b1c9df39')
+        )
 options=(staticlibs)
 conflicts=('libfirm')
 provides=("libfirm=${pkgver}")
@@ -27,8 +24,6 @@ pkgver() {
 
 prepare() {
 	cd "$_reponame"
-	patch -Np1 < "$srcdir/libfirm-python-3.12-imp.patch"
-	patch -Np1 < "$srcdir/libfirm-python-3.12-filter-backslash-regex.patch"
 }
 
 build() {
