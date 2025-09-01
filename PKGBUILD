@@ -2,13 +2,13 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
-pkgver=9.99.0_2976_ga2e98fb53c
+pkgver=9.99.0_2995_g4953e80122
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='https://kicad.org/'
 license=('GPL-3.0-or-later')
-depends=('curl' 'glew' 'glm' 'ngspice' 'opencascade' 'python' 'python-wxpython' 'wxwidgets-gtk3' 'unixodbc' 'libgit2' 'boost-libs' 'nng' 'protobuf' 'libspnav' 'poppler')
+depends=('curl' 'glew' 'glm' 'ngspice' 'opencascade' 'python' 'python-wxpython' 'wxwidgets-gtk3' 'unixodbc' 'libgit2' 'boost-libs' 'nng' 'protobuf' 'libspnav' 'poppler' 'poppler-glib')
 makedepends=('git' 'cmake' 'ninja' 'mesa' 'boost' 'swig')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=('!strip')
 source=(
-	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=a2e98fb53c
+	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=4953e80122
 	'kicad-nightly-wrapper.sh'
 	'fix-version-string.patch'
 )
