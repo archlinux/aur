@@ -8,7 +8,6 @@ pkgbase = bakah
 	makedepends = git
 	makedepends = go
 	depends = buildah
-	provides = bakah
 	conflicts = bakah
 	source = git+https://github.com/emersion/bakah.git
 	sha256sums = SKIP

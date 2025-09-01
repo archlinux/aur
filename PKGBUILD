@@ -8,7 +8,6 @@ url="https://github.com/emersion/bakah"
 license=('MIT')
 depends=('buildah')
 makedepends=('git' 'go')
-provides=('bakah')
 conflicts=('bakah')
 source=("git+$url.git")
 sha256sums=('SKIP')
