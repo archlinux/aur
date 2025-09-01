@@ -1,6 +1,6 @@
 # Maintainer: nilrem <nilremdev at gmail dot com>
 pkgname="celeste-mod-cli"
-pkgver="0.3.9"
+pkgver="0.3.16"
 pkgrel=1
 pkgdesc="tui mod manager for Celeste"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('zig>=0.14.0')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c4c8273be4b81ed29d65d946a8e6d9ba1e1e4c9f0896d4e39b2921782419413a')
+sha256sums=('92287770b5e906af725b8fbf196af03aba2526253aeda5aca349478ebdd3138f')
 package(){
     install -Dm 644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd "${pkgname}"
