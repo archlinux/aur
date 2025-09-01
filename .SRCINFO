@@ -1,7 +1,7 @@
 pkgbase = alescript
 	pkgdesc = A programming language targeted for building console applications.
 	pkgver = 1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://jd.pnc3.net/software/alescript
 	arch = x86_64
 	license = Apache-2.0
