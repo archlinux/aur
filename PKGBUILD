@@ -15,7 +15,11 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/tgt"
     cargo fetch --locked
-    cp /usr/lib/libunwind.so.8 libunwind.so.1
+    
+    # Create compatibility symlink in build directory
+    if [ ! -f /usr/lib/libunwind.so.1 ] && [ -f /usr/lib/libunwind.so.8 ]; then
+        ln -sf /usr/lib/libunwind.so.8 "$srcdir/tgt/libunwind.so.1"
+    fi
 }
 
 build() {
@@ -23,7 +27,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export ZSTD_SYS_USE_PKG_CONFIG=0
     export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
-    cargo clean
+    export LD_LIBRARY_PATH="$srcdir/tgt:$LD_LIBRARY_PATH"
     cargo build --release --features download-tdlib
 }
 
