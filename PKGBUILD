@@ -2,7 +2,7 @@
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=wleave
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Wayland-native logout script written in GTK4 "
 arch=('x86_64')
 url="https://github.com/AMNatty/wleave"
@@ -41,7 +41,7 @@ package() {
     install -Dm644 "$pkgname/completions/_wleave" "$pkgdir/usr/share/zsh/site-functions/_wleave"
     install -Dm644 "$pkgname/completions/wleave.fish" "$pkgdir/usr/share/fish/vendor_completions.d/wleave.fish"
 
-    install -Dm644 -t "$pkgdir/usr/share/wleave/icons" "$pkgname/icons"/*
+    install -Dm644 -t "$pkgdir/usr/share/wleave/icons"/*.svg "$pkgname/icons"/*
 
     install -Dm644 -t "$pkgdir/usr/share/man/man1" "${pkgname}/wleave.1.gz"
     install -Dm644 -t "$pkgdir/usr/share/man/man5" "${pkgname}/wleave.5.gz"
