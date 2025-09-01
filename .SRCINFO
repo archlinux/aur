@@ -1,16 +1,16 @@
 pkgbase = python-soupsieve-doc
 	pkgdesc = Documentation for SoupSieve
-	pkgver = 2.7
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://facelessuser.github.io/soupsieve
 	arch = any
 	license = MIT
-	makedepends = python-soupsieve=2.7
+	makedepends = python-soupsieve=2.8
 	makedepends = python-pymdown-extensions
 	makedepends = mkdocs-minify-plugin
 	makedepends = mkdocs-material-pymdownx-extras
 	makedepends = mkdocs-git-revision-date-localized-plugin
-	source = https://files.pythonhosted.org/packages/source/s/soupsieve/soupsieve-2.7.tar.gz
-	md5sums = 28ca964d8f4829ebf2ec2905791c20f6
+	source = https://files.pythonhosted.org/packages/source/s/soupsieve/soupsieve-2.8.tar.gz
+	md5sums = 111f637c4017009883667bea09b0a442
 
 pkgname = python-soupsieve-doc

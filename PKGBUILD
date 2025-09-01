@@ -2,7 +2,7 @@
 
 _pyname=soupsieve
 pkgname=python-${_pyname}-doc
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Documentation for SoupSieve"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=("python-${_pyname}=${pkgver}"
 ##           'python-mkdocs-git-revision-date-localized-plugin'
              'mkdocs-git-revision-date-localized-plugin')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('28ca964d8f4829ebf2ec2905791c20f6')
+md5sums=('111f637c4017009883667bea09b0a442')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
