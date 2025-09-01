@@ -1,6 +1,6 @@
 # Maintainer: Luca Saccarola <aur.sdx1a@simplelogin.com>
 pkgname='kara-git'
-pkgver='r22.3154447'
+pkgver=r24.7d2d305
 pkgrel=1
 pkgdesc="KDE Plasma Pager Applet"
 arch=(any)
@@ -17,9 +17,7 @@ pkgver() {
 }
 
 package() {
-    local dest
-    dest=~/.local/share/plasma/plasmoids/org.dhruv8sh.kara
-    [[ -d "$dest" ]] && rm -rf "$dest"
-    mkdir -p "$(basename "$dest")"
-    cp -r "$srcdir/${pkgname%-git}" "$dest"
+    _pkgdir="${pkgdir}/usr/share/plasma/plasmoids/org.dhruv8sh.kara"
+    mkdir -p "${_pkgdir}"
+    cp -r kara/* "${_pkgdir}"
 }
