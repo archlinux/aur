@@ -1,7 +1,7 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 
 pkgname=ravedude
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="avrdude wrapper for embedded rust development"
 url="https://github.com/Rahix/avr-hal/tree/main/ravedude"
@@ -10,7 +10,7 @@ arch=("x86_64" "aarch64")
 source=("git+https://github.com/Rahix/avr-hal#tag=ravedude-$pkgver")
 depends=("avrdude")
 makedepends=("git" "cargo")
-sha512sums=('4ed82c04b60e048e0c6ecf22a35454885caf3a80abeb0e0736646fc9eddaf705ffbb1af9b5125db65ea9e59ca9128c785dcbf345c7a7776e8b23837d1561fb10')
+sha512sums=('87822d9a1ad9a6b6d180b53e9e890c41bdcb3af987b9aa3f370038a973d0308b2802a6dce96363fc22321f36095275361c6abfa102eaa1bc567077b3a07a3785')
 
 prepare() {
     cd "$srcdir/avr-hal/ravedude"
