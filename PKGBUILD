@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=projectforge-bin
 _pkgname='Project Forge'
-pkgver=1.7.20
+pkgver=1.7.21
 pkgrel=1
 pkgdesc="Project Forge helps you build applications with Go.(Prebuilt version)"
 arch=(
@@ -22,10 +22,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_i686=("${pkgname%-bin}-${pkgver}-i686.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.rpm")
 sha256sums=('c13f88f8f26e1959cebd757842d7c7b067c7ec10a637fed994ccf7f6f6d6763e')
-sha256sums_aarch64=('2b7e8d9021051c986bd02120b4f698d8219b22f2595c39f82a20c1096aa3aa7f')
-sha256sums_armv7h=('a407936bd250adbdb1413033edcf15dd53d821b6d87371a7a9e7ccf61769975e')
-sha256sums_i686=('32c415e2f40887bd1091b5432c810a09bf8570dd7c66999e2933f051cb78881c')
-sha256sums_x86_64=('f8a9acc01402ce32040f4b3a2f77311e80eacbb6fed006e496266ab94269c46b')
+sha256sums_aarch64=('0e3f0ee0478ecf5f3aa96596614432a2d13ac168460c71cdf9ee737ae6e80fb8')
+sha256sums_armv7h=('33b00b429a28f3dd2c7bcdc3b977140f8069686b4d4d9ff5eae3bd74cbc07b94')
+sha256sums_i686=('f11c7483cd89d8f9c7a697c60a5609dedd25edebf81554886d92b8be903e58f2')
+sha256sums_x86_64=('53fadb38868fc585f4736043dc56da08779eb288413590f765d44f76f5cb5be6')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
