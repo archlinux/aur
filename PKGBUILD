@@ -53,6 +53,10 @@ prepare() {
 			sed -e 's/"spirv-tools\/include\/\(.*\)"/<\1>/g' \
 			-i {} \+
 
+	# Change libslang.so -> libshader-slang.so
+	sed -e "s/LINK_WITH_PRIVATE slang-common-objects/&\nOUTPUT_NAME $pkgname/g" \
+		-i source/slang/CMakeLists.txt
+
 	# TODO https://github.com/shader-slang/slang/issues/8333
 	#sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
 	#	-e "/localintermediate.h/d" \
