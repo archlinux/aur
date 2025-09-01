@@ -1,0 +1,17 @@
+pkgbase = tgt-client
+	pkgdesc = A simple TUI for Telegram
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FedericoBruzzone/tgt
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = tdlib
+	source = git+https://github.com/FedericoBruzzone/tgt.git
+	sha256sums = SKIP
+
+pkgname = tgt-client
