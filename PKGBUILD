@@ -12,6 +12,6 @@ source=("lobehub-desktop-beta_1.120.6_amd64.deb::https://github.com/lobehub/lobe
 sha256sums=('1a07e0dbb6d57f4992f2318c522f29bb9c7ca8e8ccfa3d477b8bc077904919fc')
 
 package() {
-  cd "$pkgdir"
+  cd "${pkgdir}"
   bsdtar -O -xf "${srcdir}/lobehub-desktop-beta_1.120.6_amd64.deb" data.tar.xz | bsdtar -xJf -
 }
