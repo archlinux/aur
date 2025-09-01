@@ -1,0 +1,19 @@
+pkgbase = dream-prompter
+	pkgdesc = GIMP Plugin which integrates Google's Nano Banana AI for image creation and editing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zquestz/dream-prompter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gettext
+	makedepends = python
+	depends = gimp>=3.0
+	depends = python>=3.8
+	depends = python-google-genai
+	provides = dream-prompter
+	conflicts = dream-prompter
+	source = dream-prompter-1.0.0.tar.gz::https://github.com/zquestz/dream-prompter/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 30ffc92a4db58eb64b1cd17d47dc46570421a652c093bee9f86ec0dff0b02793
+
+pkgname = dream-prompter
