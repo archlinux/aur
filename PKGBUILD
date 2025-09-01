@@ -2,17 +2,17 @@
 pkgname=puck
 pkgver="2.3.70"
 _weird_number="261"
-pkgrel=1
+pkgrel=2
 pkgdesc="Program for the use and computation of kinship data"
 arch=(any)
 url="https://www.kintip.net/"
 license=('GPL-1.0-or-later')
-depends=('java-runtime')
+depends=('jre8-openjdk')
 source=("${_weird_number}-${pkgname}-${pkgver//\./\-}.zip::https://www.kintip.net/component/jdownloads/send/3-logiciels/${_weird_number}-${pkgname}-${pkgver//\./\-}"
  	    "puck.desktop")
 noextract=()
 sha256sums=('20414f0c57a11885b143bfdd408babb999cd08b93725ef4c7006d3f7daafe710'
-            '6e3c93fce73b04de31a381394c8db7a574de0eb69f76d93e65a430109a2bba23')
+            '068e53ce69005737d84ac37dfd7a65807a149293e10655952c92b214b6c4e34e')
 
 package() {
 	install -d -m775 "${pkgdir}/opt/puck"
