@@ -2,19 +2,21 @@
 
 pkgname=tidy-viewer
 _pkgname=tv
-pkgver=1.5.2
+pkgver=1.8.93
 pkgrel=1
 pkgdesc="CLI csv pretty printer that uses column styling"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexhallam/tv"
 license=('Unlicense')
 makedepends=('cargo')
+options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3f950c1d05cc7fd5806a49a3f10a9437290e2b24ddf8402ec04d54c63d1a60d5')
+sha256sums=('e99811843fe3e28d22c82f6c8ad757bf5065c622fbbb2d7e4011ab346dca6f1d')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -22,6 +24,12 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features --workspace
 }
 
 package() {
