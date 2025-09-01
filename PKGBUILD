@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.3
+pkgver=2.0
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -14,10 +14,12 @@ makedepends=('cython'
              'python-build'
              'python-installer'
              'python-numpy')  # wheel required by new setuptools
-#checkdepends=('python-pytest-astropy-header'
+#checkdepends=(
+#    'python-pytest-astropy-header'
 #             'python-pytest-xdist'
-##              'python-pytest-remotedata'
+#              'python-pytest-remotedata'
 #              'python-scipy'
+#              'python-astropy'
 #              'python-regions'
 #              'python-click'
 #              'python-matplotlib'
@@ -27,10 +29,12 @@ makedepends=('cython'
 #              'python-tqdm'
 #              'python-naima'
 #              'python-ipywidgets'
+#              'python-numba'
 #              'python-sherpa'
 #             )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('32e1e414abb138225980da36a72790c5')
+#       "gammapy-data-${pkgver}.tar.gz::https://github.com/gammapy/gammapy-data/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('740b4790c2203554788c3f621524788e')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -51,20 +55,22 @@ build() {
 #        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver .).egg-info
 ##   PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest \
 ##        -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --remote-data #"build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --remote-data #
-#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest \
-#        -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 "build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
+#    ls "${srcdir}/gammapy-data-${pkgver}"
+#    GAMMAPY_DATA="${srcdir}/gammapy-data-${pkgver}" PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest \
+#        -vv -l -ra --color=yes -o console_output_style=count --remote-data=any "build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/data/tests/test_obs_table.py::test_basics \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/data/tests/test_obs_table.py::test_select_parameter_box \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/data/tests/test_obs_table.py::test_select_sky_regions \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/data/tests/test_pointing.py::test_fixed_pointing_icrs \
-#        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/data/tests/test_pointing.py::test_fixed_pointing_info_altaz
+#        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/data/tests/test_pointing.py::test_fixed_pointing_info_altaz \
+#        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/gammapy/makers/tests/test_reduce.py
 #        #--remote-data # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --remote-data #
 ##   PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv --color=yes
 ##   pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" #|| warning "Tests failed" # -vv --color=yes
 #}
 
 package_python-gammapy() {
-    depends=('python>=3.9' 'python-scipy>1.10' 'python-yaml>=5.3' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=2.5.0' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
+    depends=('python>=3.10' 'python-scipy>=1.13' 'python-yaml>=5.3' 'python-astropy>=6.0' 'python-regions>=0.9.0' 'python-click>=8.0' 'python-pydantic>=2.8.0' 'python-iminuit>=2.26.0' 'python-matplotlib>=3.8')
     optdepends=('python-pandas: For working with tables'
                 'python-emcee: For fitting by MCMC sampling'
                 'python-corner: For MCMC corner plots'
