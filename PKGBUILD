@@ -1,6 +1,6 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=2
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(
   "$pkgname-$pkgver.deb::https://d20adtppz83p9s.cloudfront.net/GTK/${pkgver}/awsvpnclient_amd64.deb"
   'awsvpnclient.desktop.patch'
 )
-sha512sums=('b6b78ff2298e752669c504c994b81e2b63077db08a5ba97841b4cd8c9141b5590102f3eefe0d7d5cc3fb2d7902a86447e0b5c69df8a943d78ea1f5cc968c6867'
+sha512sums=('a89a626ca52ee664762798190ae5c610366da8879d7d65e3d2a8a9119bedef30b1cb5026e04ddfc0e779e135bc66091d45572b6d19cc13dfc16fe43e364e980f'
             'a9c46dbaf6588f0de9f3687e07bb30f6a0671c43673c86123e43192e7fc2279ca53c61e473ca22014a712980b9110d1ba19bf2d7ded8b20d74bdd5d70f118434')
 depends=('xdg-utils' 'lsof')
 makedepends=('zstd')
