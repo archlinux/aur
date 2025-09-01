@@ -1,2 +1,4 @@
 /wleave/
 /*.zst
+/src/
+/pkg/

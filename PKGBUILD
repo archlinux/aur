@@ -1,13 +1,14 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=wleave
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=3
 pkgdesc="A Wayland-native logout script written in GTK4 "
 arch=('x86_64')
 url="https://github.com/AMNatty/wleave"
 source=("wleave::git+https://github.com/AMNatty/wleave#tag=${pkgver}")
 b2sums=('SKIP')
+depends=('librsvg' 'libadwaita')
 makedepends=('cargo' 'git' 'scdoc')
 license=("MIT")
 conflicts=("wleave-git")
@@ -34,7 +35,7 @@ package() {
     install -Dm755 "$pkgname/target/release/wleave" "$pkgdir/usr/bin/wleave"
     install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 -t "$pkgdir/etc/wleave" "$pkgname/"{"style.css","layout"}
+    install -Dm644 -t "$pkgdir/etc/wleave" "$pkgname/"{"style.css","layout.json"}
 
     install -Dm644 "$pkgname/completions/wleave.bash" "$pkgdir/usr/share/bash-completion/completions/wleave"
     install -Dm644 "$pkgname/completions/_wleave" "$pkgdir/usr/share/zsh/site-functions/_wleave"
