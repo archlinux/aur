@@ -1,6 +1,6 @@
 pkgbase = zulip-desktop-git
 	pkgdesc = Real-time team chat based on the email threading model (Use system-wide electron)
-	pkgver = 5.12.0.r0.g15902e5
+	pkgver = 5.12.1.r0.g52a3fa6
 	pkgrel = 1
 	url = https://zulip.com/apps
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = zulip-desktop-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron35
-	provides = zulip-desktop=5.12.0
+	depends = electron37
+	provides = zulip-desktop=5.12.1
 	conflicts = zulip-desktop
 	source = zulip-desktop.git::git+https://github.com/zulip/zulip-desktop.git
 	source = zulip-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = zulip-desktop-git
