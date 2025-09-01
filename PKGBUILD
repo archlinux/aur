@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaterm-bin
 _pkgname=Chaterm
-pkgver=0.3.0
+pkgver=0.3.1
 _electronversion=30
 pkgrel=1
 pkgdesc="A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Prebuilt version,use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9df3215ab98af9a8a833c9068a7c31354030ada6368e22075fd3e38ea1728771'
+sha256sums=('bd657360f4ae980dfd42f7f3c30b79d184df961ef63802d798bcd2902056509e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
