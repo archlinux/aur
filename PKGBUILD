@@ -1,8 +1,8 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=iris-emu
-pkgver=0.13a
-_pkgver=0.13-alpha
+pkgver=0.14a
+_pkgver=0.14-alpha
 pkgrel=1
 pkgdesc="Experimental PlayStation 2 Emulator"
 arch=("x86_64")
