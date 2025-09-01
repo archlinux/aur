@@ -1,0 +1,18 @@
+pkgbase = hmcl-portable
+	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular. Sandboxed by portable.
+	pkgver = 3.6.16
+	pkgrel = 1
+	epoch = 1
+	url = https://hmcl.huangyuhui.net
+	arch = anyx86_64
+	license = Apache
+	makedepends = hmcl
+	depends = hicolor-icon-theme
+	source = net.huangyuhui.hmcl.desktop
+	source = start.sh
+	source = portable-config
+	sha256sums = 744da95283655004d6e231cca886587a9abd3fef47d181b6be3988b21661ad03
+	sha256sums = 1857c88af6ec87898383eb7d4672dfe008311d18f74cb78e29dbf860ac5d72d7
+	sha256sums = a3ee3b0e3cee5ff1000b7ba0f9d2d37c93616d06ba22c531683f5b0799210906
+
+pkgname = hmcl-portable
