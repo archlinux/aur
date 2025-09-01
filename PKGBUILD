@@ -2,7 +2,7 @@
 
 pkgname=procmon
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Trace syscall activity tool"
 arch=('x86_64')
 url="https://github.com/microsoft/ProcMon-for-Linux"
@@ -28,6 +28,6 @@ build() {
 package() {
   cd "ProcMon-for-Linux-$pkgver.0.0"
 
-  install -Dm644 "_build"/{getsyscalls,procmon} -t "$pkgdir/usr/bin"
+  install -Dm755 "_build"/{getsyscalls,procmon} -t "$pkgdir/usr/bin"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/procmon"
 }
