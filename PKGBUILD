@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.2.0.r0.ga2a678c
+pkgver=3.3.0.r0.g2570a97
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -46,8 +46,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname//-/.}/app/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}/app"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -56,8 +61,13 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    sed -i "2i\Name[zh_CN]=思源笔记" "${srcdir}/${pkgname//-/.}/app/${pkgname%-git}.desktop"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Office" \
+        --name="${pkgname%-git}" \
+        --exec="${pkgname%-git} %U" \
+        --custom="Name[zh_CN]=思源笔记"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -90,17 +100,19 @@ build() {
     cd "${srcdir}/${pkgname//-/.}/app"
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
-    go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
-    cd "${srcdir}/${pkgname//-/.}/app"
-    local electronDist="/usr/lib/electron${_electronversion}"
     case "${CARCH}" in
         aarch64)
             _CFG_FILE=electron-builder-linux-arm64.yml
+            _KERNEL_DIR=kernel-linux-arm64
             ;;
         x86_64)
             _CFG_FILE=electron-builder-linux.yml
+            _KERNEL_DIR=kernel-linux
             ;;
     esac
+    go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
+    cd "${srcdir}/${pkgname//-/.}/app"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config ${_CFG_FILE} "
 }
 package() {
