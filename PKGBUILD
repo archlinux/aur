@@ -1,24 +1,36 @@
-# Maintainer: TingPing <tingping@tingping.se>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: TingPing <tingping@tingping.se>
 
 pkgname=libgrss
-pkgver=0.7.0
-pkgrel=1
-pkgdesc='A Glib-based library to manage RSS and Atom feeds'
-arch=('i686' 'x86_64')
+pkgver=0.7.0+16+g971c421
+pkgrel=4
+pkgdesc="Glib-based library to manage RSS and Atom feeds"
 url="https://wiki.gnome.org/Projects/Libgrss"
-license=('LGPL3')
-depends=('glib2' 'libsoup' 'libxml2')
-makedepends=('gtk-doc' 'gobject-introspection')
-source=("https://download.gnome.org/sources/libgrss/${pkgver:0:3}/$pkgname-$pkgver.tar.xz")
-sha256sums=('6709c0f630a915ea7d5f1ac88ac173ef974d8d7406f43bd4be70d3e71fd554d9')
+arch=(x86_64)
+license=(LGPL3)
+depends=(glib2 libsoup libxml2)
+makedepends=(intltool gtk-doc gobject-introspection git glib2-devel)
+_commit=971c421dc26400e933de60b71eea0335a9ba2693  # master
+source=("git+https://git.gnome.org/browse/libgrss#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --enable-gtk-doc --enable-introspection
-	make
+  cd $pkgname
+  ./configure --prefix=/usr --enable-gtk-doc
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	DESTDIR="$pkgdir" make install
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }

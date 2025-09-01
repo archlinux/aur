@@ -1,18 +1,19 @@
 pkgbase = libgrss
-	pkgdesc = A Glib-based library to manage RSS and Atom feeds
-	pkgver = 0.7.0
-	pkgrel = 1
+	pkgdesc = Glib-based library to manage RSS and Atom feeds
+	pkgver = 0.7.0+16+g971c421
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/Libgrss
-	arch = i686
 	arch = x86_64
 	license = LGPL3
+	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = glib2-devel
 	depends = glib2
 	depends = libsoup
 	depends = libxml2
-	source = https://download.gnome.org/sources/libgrss/0.7/libgrss-0.7.0.tar.xz
-	sha256sums = 6709c0f630a915ea7d5f1ac88ac173ef974d8d7406f43bd4be70d3e71fd554d9
+	source = git+https://git.gnome.org/browse/libgrss#commit=971c421dc26400e933de60b71eea0335a9ba2693
+	sha256sums = SKIP
 
 pkgname = libgrss
-
