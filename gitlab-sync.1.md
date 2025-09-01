@@ -1,6 +1,6 @@
 % gitlab-sync(1) | Manuel de GitLab-Sync
-% Joachim COQBLIN
-% Août 2025
+% Barikad
+% Septembre 2025
 
 # NOM
 
@@ -8,7 +8,7 @@ gitlab-sync - [FR] Automatise la configuration d'un miroir GitLab. [EN] Automate
 
 # SYNOPSIS
 
-**gitlab-sync** *chemin_absolu_du_dépôt*
+**gitlab-sync** [*options*] *chemin_absolu_du_dépôt*
 
 # DESCRIPTION
 
@@ -16,19 +16,29 @@ gitlab-sync - [FR] Automatise la configuration d'un miroir GitLab. [EN] Automate
 **gitlab-sync** est un outil en ligne de commande qui automatise entièrement le processus de mise en place d'une synchronisation miroir entre un dépôt GitLab source (ex: auto-hébergé) et un dépôt cible (ex: GitLab.com).
 
 Le script effectue les actions suivantes :
-1.  Crée un nouveau projet sur l'instance GitLab cible.
-2.  Génère un "Project Access Token" avec des permissions limitées (`write_repository`) sur le projet cible.
-3.  Ajoute ce token comme une variable CI/CD (`GITLAB_COM_TOKEN`) dans le projet source.
-4.  Configure le miroir "push" dans les paramètres CI/CD du projet source.
+1.  Identifie le projet source en lisant la configuration `remote.origin.url` du dépôt Git local.
+2.  Crée un nouveau projet sur l'instance GitLab cible, ou met à jour le projet existant.
+3.  Synchronise les métadonnées (description, sujets/tags, avatar) du projet source vers le projet cible.
+4.  Génère un "Project Access Token" avec des permissions limitées (`write_repository`) sur le projet cible.
+5.  Ajoute ce token comme une variable CI/CD (`GITLAB_COM_TOKEN`) dans le projet source.
+6.  Configure le miroir "push" dans les paramètres CI/CD du projet source.
 
 **[EN]**
 **gitlab-sync** is a command-line tool that fully automates the process of setting up a mirror synchronization between a source GitLab repository (e.g., self-hosted) and a target repository (e.g., GitLab.com).
 
 The script performs the following actions:
-1.  Creates a new project on the target GitLab instance.
-2.  Generates a "Project Access Token" with limited permissions (`write_repository`) on the target project.
-3.  Adds this token as a CI/CD variable (`GITLAB_COM_TOKEN`) in the source project.
-4.  Configures the "push" mirror in the source project's CI/CD settings.
+1.  Identifies the source project by reading the `remote.origin.url` configuration from the local Git repository.
+2.  Creates a new project on the target GitLab instance, or updates an existing one.
+3.  Synchronizes metadata (description, topics/tags, avatar) from the source project to the target.
+4.  Generates a "Project Access Token" with limited permissions (`write_repository`) on the target project.
+5.  Adds this token as a CI/CD variable (`GITLAB_COM_TOKEN`) in the source project.
+6.  Configures the "push" mirror in the source project's CI/CD settings.
+
+# OPTIONS
+
+**--debug**
+:   **[FR]** Active le mode de débogage. Affiche les requêtes et réponses API détaillées, ce qui est utile pour le dépannage.
+:   **[EN]** Enables debug mode. Displays detailed API requests and responses, which is useful for troubleshooting.
 
 # CONFIGURATION
 
@@ -61,11 +71,9 @@ Then, edit this new file to add your GitLab instance URLs and your Personal Acce
 gitlab-sync /home/user/projets/mon-super-projet
 ```
 
-**[FR] Traitement en masse**
+**[FR] Utilisation avec le mode débogage**
 ```
-while read repo_path; do
-  gitlab-sync "$repo_path"
-done < liste_depots.txt
+gitlab-sync --debug /home/user/projets/mon-super-projet
 ```
 
 **[EN] Standard usage**
@@ -73,11 +81,9 @@ done < liste_depots.txt
 gitlab-sync /home/user/projects/my-cool-project
 ```
 
-**[EN] Bulk processing**
+**[EN] Usage with debug mode**
 ```
-while read repo_path; do
-  gitlab-sync "$repo_path"
-done < repo_list.txt
+gitlab-sync --debug /home/user/projects/my-cool-project
 ```
 
 # FICHIERS / FILES
