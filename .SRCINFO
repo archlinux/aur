@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-window-calls-git
+	pkgdesc = GNOME Extension for getting windows list in wayland
+	pkgver = r59.b6be15f
+	pkgrel = 1
+	url = https://github.com/ickyicky/window-calls
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell
+	provides = gnome-shell-extension-window-calls
+	conflicts = gnome-shell-extension-window-calls
+	source = git+https://github.com/ickyicky/window-calls.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-window-calls-git
