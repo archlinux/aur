@@ -1,7 +1,7 @@
 # Maintainer: graysky <therealgraysky AT proton DOT me>
 pkgname=zmk-studio
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for runtime keymap updates on ZMK-powered devices without reflashing firmware"
 arch=(x86_64)
 url="https://github.com/zmkfirmware/zmk-studio"
