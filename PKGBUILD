@@ -2,7 +2,7 @@
 
 _pkgname="iwe"
 pkgname="${_pkgname}-bin"
-pkgver=0.0.39
+pkgver=0.0.41
 pkgrel=1
 pkgdesc="Text editor extension for markdown notes taking"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('iwe' 'iwes')
 
 source=("https://github.com/iwe-org/${_pkgname}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
 
-sha256sums=('ceae1bec9c6344f92fea851a289aa8d5cb82f17b9078ff31b6c8208b0de4df85')
+sha256sums=('5813026d70c32aba054f1f5cf5b982d5402c1d82061cc729ab00cedd4058ab83')
 
 package() {
   install -Dm 755 "${srcdir}/iwe" -t "${pkgdir}/usr/bin/"
