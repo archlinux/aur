@@ -1,39 +1,33 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=cloudpan189-go-bin
-pkgver=0.1.3
-pkgrel=8
-pkgdesc="Cloud 189 Command Line Client (CLI), implemented based on GO.天翼云盘命令行客户端(CLI),基于GO语言实现"
+# Maintainer: xihale <xihale.top at qq dot com>
+pkgname=cloudpan189-go-mauruppi-bin
+pkgver=0.1.5
+pkgrel=0
+pkgdesc="(MaurUppi-fork) Cloud 189 Command Line Client (CLI), implemented based on GO.(MaurUppi-分支)天翼云盘命令行客户端(CLI),基于GO语言实现"
 arch=(
-    'aarch64'
-    'armv7h'
-    'i686'
-    'x86_64'
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
 )
-url="https://github.com/tickstep/cloudpan189-go"
+url="https://github.com/MaurUppi/cloudpan189-go"
 license=('Apache-2.0')
-provides=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-mauruppi-bin}=${pkgver}")
 conflicts=(
-    "${pkgname%-bin}"
-    "${pkgname%-go-bin}"
+  "${pkgname%-MaurUppi-bin}"
+  "${pkgname%-go-MaurUppi-bin}"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-arm64.zip")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-armv7.zip")
-source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-amd64.zip")
-source=("${pkgname%-bin}.sh")
-sha256sums=('f4d78002b295e10a401fbfcc6ff613237da6a804894889ab8c1b3ffc7b0f0e7d')
-sha256sums_aarch64=('ec8729093a82092b35a68a022d548f76d40a61e6ab490f1bef9842abb8134ef7')
-sha256sums_armv7h=('ba8ac3a31c61c6fb81a88e7d90167427af5d5850fb551e8422ec182c5cabb70c')
-sha256sums_i686=('f5cdf2195dc07f20cb09f716d8f916c04ee12512c2a7fe9a81d3300813a5b472')
-sha256sums_x86_64=('08415a7ab7df6d222d37c3599047a12d96abafeaa60167c4eef74fd59fceeea9')
-build() {
-    sed -e "
-        s/@appname@/${pkgname}/g
-        s/@cfgdirname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
-}
+
+source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname%-mauruppi-bin}-v${pkgver}-linux-arm64.tar.gz")
+source_armv7h=("${url}/releases/download/v${pkgver}/${pkgname%-mauruppi-bin}-v${pkgver}-linux-arm.tar.gz")
+source_i686=("${url}/releases/download/v${pkgver}/${pkgname%-mauruppi-bin}-v${pkgver}-linux-386.tar.gz")
+source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-mauruppi-bin}-v${pkgver}-linux-amd64.tar.gz")
+source=("${pkgname%-mauruppi-bin}.sh")
+sha256sums_aarch64=('2683655ec0f88ede86297204d0b91453552bd3bdd586d82c1fe2ad36f1c5bc62')
+sha256sums_armv7h=('3150a57b25ea8f67549a170ff681acd3c736790f290c0346bb174be774a6ab30')
+sha256sums_i686=('06e24138b54d7e2adbbec126ea659183d20e3d78a3736ea3f44c9b19e0564e2b')
+sha256sums_x86_64=('acf7c9ccf4a1fc87f785cf91a5b3a72888cc88bfe5c819acac80835a71c513db')
+sha256sums=('7b43fc93998e2a09b009d79b5e630b391edd32cb7326d71857de4bae631d7f2c')
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${pkgname%-bin}-"*/"${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-"*/README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname%-mauruppi-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-mauruppi-bin}"
+  install -Dm755 "${srcdir}/${pkgname%-mauruppi-bin}" "${pkgdir}/usr/bin/${pkgname%-mauruppi-bin}-bin"
 }
