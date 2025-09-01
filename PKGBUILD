@@ -1,18 +1,19 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
+# https://wiki.archlinux.org/title/PKGBUILD
 
 pkgname=qownnotes
-pkgver=25.8.7
-tag="9e02035b7932297433f7d0fd4021cbabc1378ceb"
+pkgver=25.9.0
+tag="c2e5f73e014c42a3140383550e1e6bdaa8d8c9a8"
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://www.qownnotes.org/'
 license=('GPL2')
 groups=('qownnotes')
-depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl' 'qt5-websockets' 'qt5-x11extras' 'aspell')
-makedepends=('qt5-tools')
+depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-websockets' 'aspell')
+makedepends=('qt6-tools')
 source=("https://github.com/pbek/QOwnNotes/releases/download/v${pkgver}/qownnotes-${pkgver}.tar.xz")
-sha256sums=('3812c57490220657b29a65950d822eef378c34353ef87025c8f262e6a4a844ee')
+sha256sums=('dc26ed94fd9b4b5c932be01f4ca1467aa7ee12a3d1ad1867edcd514488d56c3a')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -21,7 +22,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    qmake QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
+    qmake6 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
     make
 }
 
@@ -39,6 +40,6 @@ package() {
     install -D -m644 "images/icons/scalable/apps/QOwnNotes.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/QOwnNotes.svg"
 
     # install languages
-    install -d "${pkgdir}/usr/share/qt5/translations/"
-    install -D -m644 languages/*.qm "${pkgdir}/usr/share/qt5/translations/"
+    install -d "${pkgdir}/usr/share/qt6/translations/"
+    install -D -m644 languages/*.qm "${pkgdir}/usr/share/qt6/translations/"
 }
