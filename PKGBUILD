@@ -2,11 +2,11 @@
 
 pkgname=fokus
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist terminal‐based focus timer and stopwatch with daily logging, built in Rust"
 arch=('x86_64')
 url="https://sr.ht/~fijarom/fokus/"
-license=('GPL-3.0')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('rust')
 
