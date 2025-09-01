@@ -1,0 +1,21 @@
+diff -rauN ucspi-unix-1.0/unixserver.c ucspi-unix-1.0-compilation-patches/unixserver.c
+--- ucspi-unix-1.0/unixserver.c	2015-08-12 05:05:40.000000000 +0200
++++ ucspi-unix-1.0-compilation-patches/unixserver.c	2025-09-01 18:04:53.569473306 +0200
+@@ -253,7 +253,7 @@
+   }
+ }
+ 
+-void handle_children()
++void handle_children(__attribute__((__unused__)) int sig)
+ {
+   pid_t pid;
+   int status;
+@@ -280,7 +280,7 @@
+   log_child_exit(pid, status);
+ }
+ 
+-void handle_intr()
++void handle_intr(__attribute__((__unused__)) int sig)
+ {
+   if(opt_delete)
+     unlink(opt_socket);
