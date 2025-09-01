@@ -1,7 +1,7 @@
 pkgbase = grooveauthor-bin
 	pkgdesc = A free open-source editor for authoring StepMania charts
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PerryAsleep/GrooveAuthor
 	arch = x86_64
 	license = MIT

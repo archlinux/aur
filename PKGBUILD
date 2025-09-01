@@ -1,7 +1,7 @@
 # Maintainer: pinkdad <pinkdad@proton.me>
 pkgname=grooveauthor-bin
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A free open-source editor for authoring StepMania charts"
 arch=('x86_64')
 url="https://github.com/PerryAsleep/GrooveAuthor"
