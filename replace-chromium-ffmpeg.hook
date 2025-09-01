@@ -5,7 +5,10 @@ Type=Package
 Target=chromium-ffmpeg-bin
 Target=nwjs
 Target=nwjs-bin
+Target=opera
+Target=opera-beta
+Target=opera-developer
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /opt/nwjs/lib/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera{,-beta,-developer}/libffmpeg.so /opt/nwjs/lib/libffmpeg.so 2>/dev/null||:'
