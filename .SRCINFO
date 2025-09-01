@@ -1,6 +1,6 @@
 pkgbase = cro-chain-maind-bin
 	pkgdesc = Crypto.org Chain CLI
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/crypto-org-chain/chain-main
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = cro-chain-maind-bin
 	license = Apache
 	provides = cro-chain-maind
 	conflicts = cro-chain-maind
-	source_x86_64 = chain-maind-6.0.1-x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v6.0.1/chain-main_6.0.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f20e2d85abbda8d9743b07cb4912f13ad04838bd109ebe4e73a6c67b219ce77a
-	source_aarch64 = chain-maind-6.0.1-aarch64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v6.0.1/chain-main_6.0.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 7bb1aa27abd797e0170fd884a43137a025fef4b4e9d6759faf4c8151f317e140
+	source_x86_64 = chain-maind-6.0.2-x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v6.0.2/chain-main_6.0.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ecbfaa68f706ca11869823de41b19693dfe9c0996ceaa5555a090f26b063f32d
+	source_aarch64 = chain-maind-6.0.2-aarch64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v6.0.2/chain-main_6.0.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e12b7c2d6278c3ff5a73706402f15d4bff6355dd3d98061b81ccfe2f309cfed0
 
 pkgname = cro-chain-maind-bin

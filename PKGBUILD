@@ -3,7 +3,7 @@
 _appname=chain-maind
 _pkgname="cro-${_appname}"
 pkgname="${_pkgname}-bin"
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc='Crypto.org Chain CLI'
 license=('Apache')
@@ -13,8 +13,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${_appname}-${pkgver}-${arch[0]}.tar.gz::${url}/releases/download/v${pkgver}/chain-main_${pkgver}_Linux_${arch[0]}.tar.gz")
 source_aarch64=("${_appname}-${pkgver}-${arch[1]}.tar.gz::${url}/releases/download/v${pkgver}/chain-main_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('f20e2d85abbda8d9743b07cb4912f13ad04838bd109ebe4e73a6c67b219ce77a')
-sha256sums_aarch64=('7bb1aa27abd797e0170fd884a43137a025fef4b4e9d6759faf4c8151f317e140')
+sha256sums_x86_64=('ecbfaa68f706ca11869823de41b19693dfe9c0996ceaa5555a090f26b063f32d')
+sha256sums_aarch64=('e12b7c2d6278c3ff5a73706402f15d4bff6355dd3d98061b81ccfe2f309cfed0')
 
 package() {
   install -Dm755 "bin/${_appname}" "${pkgdir}/usr/bin/${_appname}"
