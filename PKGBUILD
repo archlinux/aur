@@ -34,7 +34,6 @@ depends=(
 	miniz
 	spirv-tools
 )
-conflicts=(slang) #TODO https://github.com/shader-slang/slang/issues/8334
 
 prepare() {
 	cd "slang-$pkgver"
@@ -53,9 +52,19 @@ prepare() {
 			sed -e 's/"spirv-tools\/include\/\(.*\)"/<\1>/g' \
 			-i {} \+
 
+	#TODO https://github.com/shader-slang/slang/issues/8334
+
 	# Change libslang.so -> libshader-slang.so
 	sed -e "s/LINK_WITH_PRIVATE slang-common-objects/&\nOUTPUT_NAME $pkgname/g" \
 		-i source/slang/CMakeLists.txt
+
+	# Add include prefix
+	sed -e 's/${CMAKE_INSTALL_INCLUDEDIR}/&\/'"$pkgname"'/g' \
+		-i cmake/SlangTarget.cmake
+
+	# Disable double header install
+	perl -0777 -pi -e 's/install\s*\(\s*DIRECTORY\s*"\$\{slang_SOURCE_DIR\}\/include\".*?\)\s*//s' \
+		CMakeLists.txt
 
 	# TODO https://github.com/shader-slang/slang/issues/8333
 	#sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
