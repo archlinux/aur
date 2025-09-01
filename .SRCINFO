@@ -1,11 +1,11 @@
 pkgbase = bind-git
 	pkgdesc = A complete, highly portable implementation of the DNS protocol: development version
 	pkgver = 9.21.11.r126.gd468180
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.isc.org/software/bind/
 	install = bind.install
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	makedepends = dnssec-anchors
 	makedepends = fstrm
