@@ -12,7 +12,7 @@ makedepends=('pandoc')
 source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "gitlab-sync.1.md")
 sha256sums=('696c01a16bbb50a5a58a78be84eca31d4816c636dd99e1ac0733ce8d67379c32'
-            '3e68968b4f686789d750a9cff61e76e4530ffaec0499791ff78dc4d947908ea0')
+            'b42398cc8e76ed53cf224139c8aa27ee5c10f2e17cbadd19df123729feae5cda')
 
 build() {
   pandoc -s -t man gitlab-sync.1.md -o gitlab-sync.1

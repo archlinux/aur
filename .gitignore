@@ -1,0 +1,10 @@
+# Arch Linux packaging
+*.pkg.tar.zst
+*.src.tar.gz
+pkg/
+src/
+
+# Archives downloaded by makepkg
+*.tar.gz
+*.tar.xz
+*.zip
