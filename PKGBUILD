@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: X-LeeHe <a2956962139@outlook.com>
 
 pkgname=tgt-client-git
 pkgver=1.0.0
@@ -7,7 +7,7 @@ pkgdesc="A simple TUI for Telegram"
 arch=('x86_64')
 url="https://github.com/FedericoBruzzone/tgt"
 license=('MIT' 'Apache-2.0')
-depends=('gcc-libs' 'tdlib')
+depends=('gcc-libs' 'tdlib' 'libc++' 'libc++abi' 'libunwind')
 makedepends=('rust' 'cargo' 'git')
 source=("git+https://github.com/FedericoBruzzone/tgt.git")
 sha256sums=('SKIP')
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/tgt"
     cargo fetch --locked
+    cp /usr/lib/libunwind.so.8 libunwind.so.1
 }
 
 build() {
     cd "$srcdir/tgt"
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --release --locked --no-default-features --features download-tdlib
+    export ZSTD_SYS_USE_PKG_CONFIG=0
+    export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
+    cargo clean
+    cargo build --release --features download-tdlib
 }
 
 package() {
