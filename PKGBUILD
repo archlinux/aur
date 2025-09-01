@@ -1,7 +1,7 @@
 # Maintainer: Walwe <aur@walwe.de>
 pkgname=md2pdf-git
 gitname=md2pdf
-pkgver=0.0.5.r3.g5d033c3
+pkgver=0.0.6.r0.gd614176
 pkgrel=1
 pkgdesc="A Python Markdown to PDF Converter"
 arch=('any')
