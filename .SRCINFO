@@ -1,6 +1,6 @@
 pkgbase = noctalia-shell
 	pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell.
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/noctalia-dev/noctalia-shell
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = noctalia-shell
 	optdepends = cava: Audio visualizer component
 	optdepends = wlsunset: For supporting NightLight
 	conflicts = noctalia-shell-git
-	source = git+https://github.com/noctalia-dev/noctalia-shell.git#tag=v2.3.3
-	sha256sums = 81e2cd6c1d70ba06df0a60506b06083a18f27f2aa0001e099ec91c0d8460af19
+	source = git+https://github.com/noctalia-dev/noctalia-shell.git#tag=v2.3.4
+	sha256sums = 856d33cee36b228c608fdac0105c33cd1a9a3c056a8ba7427aada4343dd48175
 
 pkgname = noctalia-shell
