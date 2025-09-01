@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -15,17 +15,27 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/archive/refs/tags/v0.1.1.tar.gz"
         "wayclip-daemon.service")
 
-sha256sums=('f2f9777cb2a6e64a03437da41231b63a07bba584b24ea904cfc813444a41dcb8'
+sha256sums=('859e6388043f2fdea84259cdd28afe5c20dac372cc1c8f7f38e5c348969de380'
             'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8'
             'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
 
 prepare() {
   tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir/"
   tar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/"
+
+  local core_dir="core-${CORE_VER}"
+  local cli_dir="cli-$pkgver"
+
+  cd "$srcdir/$core_dir"
+  cargo update
+  cargo fetch
+
+  cd "$srcdir/$cli_dir"
+  cargo fetch --locked
 }
 
 build() {
-  local core_dir="core-0.1.1"
+  local core_dir="core-${CORE_VER}"
   local cli_dir="cli-$pkgver"
 
   export CFLAGS+=" -ffat-lto-objects"
@@ -33,18 +43,18 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   cd "$srcdir/$core_dir"
-  cargo build --release --locked
+  cargo build --release --frozen
   mv target/release/daemon "$srcdir/daemon"
   mv target/release/trigger "$srcdir/trigger"
 
   cd "$srcdir/$cli_dir"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   local cli_dir="cli-$pkgver"
   cd "$srcdir/$cli_dir"
-  cargo test
+  cargo test --frozen
 }
 
 package() {
