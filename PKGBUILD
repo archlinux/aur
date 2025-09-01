@@ -2,9 +2,9 @@
 # Maintainer: littzhch <2371050115@qq.com>
 
 pkgname=notepad---bin
-_pkgname=com.hmja.notepad
-pkgver=3.4.0.0
-_pkgver=v3.4
+_pkgname=com.hmja.notepadqt6
+pkgver=3.5.1.0
+_pkgver=v3.5
 pkgrel=1
 epoch=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
@@ -15,9 +15,9 @@ provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 depends=(
     gcc-libs
-    qscintilla-qt5
+    qscintilla-qt6
     qt5-xmlpatterns
-    qt5-base
+    qt6-base
     libglvnd
     glibc
     hicolor-icon-theme
@@ -26,16 +26,16 @@ depends=(
 makedepends=(
     patchelf
 )
-source=("https://github.com/maoyaotang12/deb/raw/refs/heads/main/com.hmja.notepad_3.4.0.0_amd64.deb"
+source=("https://github.com/maoyaotang12/deb/raw/refs/heads/main/${_pkgname}_${pkgver}_amd64.deb"
 "${url}/raw/master/LICENSE")
-sha256sums=('742e7eac0c791379def8c5a7b5d9d882063d8284284fd84aa93cf199f5ebe69a'
+sha256sums=('0f1f63c29f5b95f9ba113373e46a1d8d48872fcdbb93109bbd21b9407ee7f7c1'
             '0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b')
 options=("!strip")
 
 prepare() {
     cd ${srcdir}
     tar -xvf data.tar.xz
-    cd "${srcdir}/opt/apps/com.hmja.notepad/files"
+    cd "${srcdir}/opt/apps/${_pkgname%qt6}/files"
     strip lib*
     strip plugin/lib*
     patchelf Notepad-- --set-rpath /usr/lib/notepad--
@@ -45,14 +45,14 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/opt/apps/com.hmja.notepad/files"
+    cd "${srcdir}/opt/apps/${_pkgname%qt6}/files"
     install -Dm755 "notepad--" "${pkgdir}/usr/bin/notepad--"
     install -Dm755 "Notepad--" "${pkgdir}/usr/lib/notepad--/Notepad--"
-    install -Dm755 "libqmyedit_qt5.so.15" "${pkgdir}/usr/lib/notepad--/libqmyedit_qt5.so.15"
+    install -Dm755 "libqmyedit_qt6.so.15" "${pkgdir}/usr/lib/notepad--/libqmyedit_qt6.so.15"
     cp -r plugin "${pkgdir}/usr/lib/notepad--/"
     cp -r themes "${pkgdir}/usr/lib/notepad--/"
 
-    cd "${srcdir}/opt/apps/com.hmja.notepad/entries/applications"
+    cd "${srcdir}/opt/apps/${_pkgname%qt6}/entries/applications"
     sed "s/\/opt\/apps\/com.hmja.notepad\/files\/Notepad--/notepad--/g" -i com.hmja.notepad.desktop
     sed "s/Categories=TextEditor;/Categories=TextEditor;Development;/g" -i com.hmja.notepad.desktop
     sed "s/Exec=notepad-- %U/Exec=env QT_SCALE_FACTOR=1.15 notepad-- %U/g" -i com.hmja.notepad.desktop
