@@ -1,7 +1,7 @@
 pkgbase = element-portable
 	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.11.103
-	pkgrel = 3
+	pkgver = 1.11.110
+	pkgrel = 2
 	epoch = 1
 	url = https://element.io
 	arch = x86_64
@@ -19,23 +19,18 @@ pkgbase = element-portable
 	makedepends = yarn
 	makedepends = element-web
 	makedepends = desktop-file-utils
-	source = git+https://github.com/element-hq/element-desktop.git#tag=v1.11.103
-	source = git+https://github.com/element-hq/element-web.git#tag=v1.11.103
-	source = autolaunch.patch
+	makedepends = element-desktop
 	source = io.element.Element.desktop
 	source = element-portable.sh
 	source = portable-config
-	sha256sums = eeeff356e6b3b1083f375b6c730eecd7a8713ea3c7907642b1b893d920bc0abd
-	sha256sums = 238f2d5aafba3fd6d9dbbba2987e78723782b8b35523a512eafe7badcaf79590
-	sha256sums = 268485f35103d00a89be7f5c84703e3d393350c71f4f90932f7bcb5ea2fd094f
 	sha256sums = 02245e0619c679f5db78966b963d165eed47546eaf28377de70fb29861f9baa3
 	sha256sums = 38808c57f5783383a22e68f6ab3a2bdd2edb15decc1f890a950ae50290df97b2
-	sha256sums = e762104d6a3cd5b0a18b03cb3dcbe010af611083ad9c0a41c2570534ffa2ff30
+	sha256sums = 4c48738603a6c8f62c6b0e22f36a84b76b1c3422e862f366c6a64159d6adbf22
 
 pkgname = element-portable
 	pkgdesc = Glossy Matrix collaboration client — desktop version. Sandboxed by Portable.
-	depends = portable>4
-	depends = element-web=1.11.103
+	depends = portable
+	depends = element-web=1.11.110
 	depends = electron
 	depends = libsecret
 	provides = element-desktop

@@ -10,8 +10,8 @@
 # Use latest Electron
 _electron=electron
 pkgname=element-portable
-pkgver=1.11.103
-pkgrel=3
+pkgver=1.11.110
+pkgrel=2
 epoch=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
@@ -31,75 +31,39 @@ makedepends=(
 	yarn
 	element-web
 	desktop-file-utils
+	element-desktop
 )
 _url="https://github.com/element-hq/element"
-source=(git+https://github.com/element-hq/element-desktop.git#tag=v${pkgver}
-        git+https://github.com/element-hq/element-web.git#tag=v${pkgver}
-        autolaunch.patch
+source=(
         io.element.Element.desktop
         element-portable.sh
         portable-config)
-sha256sums=('eeeff356e6b3b1083f375b6c730eecd7a8713ea3c7907642b1b893d920bc0abd'
-            '238f2d5aafba3fd6d9dbbba2987e78723782b8b35523a512eafe7badcaf79590'
-            '268485f35103d00a89be7f5c84703e3d393350c71f4f90932f7bcb5ea2fd094f'
-            '02245e0619c679f5db78966b963d165eed47546eaf28377de70fb29861f9baa3'
+sha256sums=('02245e0619c679f5db78966b963d165eed47546eaf28377de70fb29861f9baa3'
             '38808c57f5783383a22e68f6ab3a2bdd2edb15decc1f890a950ae50290df97b2'
-            'e762104d6a3cd5b0a18b03cb3dcbe010af611083ad9c0a41c2570534ffa2ff30')
+            '4c48738603a6c8f62c6b0e22f36a84b76b1c3422e862f366c6a64159d6adbf22')
 
 prepare() {
-#   # Find out which major release of electron this version of element-desktop requires
-#   _electron_major=$(jq --raw-output '.devDependencies.electron' < "${srcdir}/element-desktop/package.json" | sed 's/^[~^]\?\([0-9]\+\)\(\.[0-9]\+\)*$/\1/')
-#
-#   # Check if we depend on the correct electron version
-#   if [ "${_electron}" != "electron${_electron_major}" ] ; then
-#     echo "Error: Incorrect electron version detected. Please change the value of \"_electron\" from \"${_electron}\" to \"electron${_electron_major}\"."
-#     return 1
-#   fi
-
-	cd element-web
-	yarn install --no-fund
-	cd ../element-desktop
-	patch -p1 < ../autolaunch.patch
-	sed -i 's|"target": "deb"|"target": "dir"|' package.json
-	sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
-	yarn install --no-fund
-}
-
-build() {
-	cd element-desktop
-	export SQLCIPHER_BUNDLED=1
-	export CFLAGS+=" -ffat-lto-objects"
-	yarn run build:native
-	yarn run build
+	pacman -Ql element-desktop >file.list
 }
 
 package_element-portable() {
 	pkgdesc+="desktop version. Sandboxed by Portable."
 	provides+=("element-desktop")
 	conflicts+=("element-desktop")
-	depends+=('portable>4' "element-web=${pkgver}" ${_electron} libsecret)
+	depends+=('portable' "element-web=${pkgver}" ${_electron} libsecret)
 	backup=('etc/element/config.json')
 
-	cd element-desktop
-
-	install -d "${pkgdir}"{/usr/lib/element/,/etc/webapps/element}
-
-	# Install the app content, replace the webapp with a symlink to the system package
-	cp -r dist/linux-unpacked/resources/* "${pkgdir}"/usr/lib/element/
-	ln -s /usr/share/webapps/element "${pkgdir}"/usr/lib/element/webapp
-
-	# Config file
-	ln -s /etc/element/config.json "${pkgdir}"/etc/webapps/element/config.json
-	install -Dm644 element.io/release/config.json -t "${pkgdir}"/etc/element
-
-	# Required extras
-	install -Dm644 ../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
-	install -Dm755 ../${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
-
-	# Icons
-	install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
-	for i in 16 24 48 64 96 128 256 512; do
-		install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/io.element.Element.png
-	done
+	while IFS= read -r line; do
+	file="$(echo "$line" | awk '{print $2}')"
+	if [[ -d ${file} ]]; then
+		echo "Omitting Directory"
+	else
+		install -Dm755 "${file}" "${pkgdir}/${file}"
+	fi
+	done < file.list
+	rm -f "${pkgdir}/usr/share/applications"/*
+	rm -f "${pkgdir}/usr/bin"/*
 	install -vDm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/io.element.Element/config"
+	install -vDm644 "${srcdir}/io.element.Element.desktop" -t "${pkgdir}/usr/share/applications"
+	install -vDm755 "${srcdir}/element-portable.sh" -t "${pkgdir}/usr/bin"
 }
