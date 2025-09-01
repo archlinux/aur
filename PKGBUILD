@@ -3,12 +3,12 @@
 
 pkgname=python-skidl
 _name=${pkgname#python-}
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A Python package for textually describing electronic circuit schematics."
 arch=(any)
-# url="https://pypi.org/project/skidl"
-url="https://github.com/devbisme/skidl"
+url="https://pypi.org/project/skidl"
+# url="https://github.com/devbisme/skidl"
 license=('MIT')
 groups=()
 _py_deps=(
@@ -35,9 +35,9 @@ provides=(${pkgname} ${_name})
 conflicts=(${pkgname} ${_name})
 options=('!emptydirs' '!strip' '!debug')
 install=
-# source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0dbb3ef748ff3b83313b4cf03c5d8b3e2eb82007657d2b077d1b7bdc94472464')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+#source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f127544aa1f8675ca262c838468b3fa02007de1af6a2e7996450e7278c28d285')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
