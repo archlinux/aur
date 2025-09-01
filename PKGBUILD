@@ -12,6 +12,7 @@ makedepends=('cmake' 'ninja' 'clang' 'git')
 optdepends=('libpulse: PulseAudio support' 'libpipewire: PipeWire support')
 source=("git+https://github.com/Audio-Solutions/pulse-visualizer.git")
 sha256sums=('SKIP')
+conflicts=("pulse-visualizer-bin")
 install=pulse-visualizer-git.install
 
 pkgver() {

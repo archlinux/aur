@@ -18,6 +18,7 @@ pkgbase = pulse-visualizer-git
 	depends = libebur128
 	optdepends = libpulse: PulseAudio support
 	optdepends = libpipewire: PipeWire support
+	conflicts = pulse-visualizer-bin
 	source = git+https://github.com/Audio-Solutions/pulse-visualizer.git
 	sha256sums = SKIP
 
