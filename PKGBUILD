@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd "CopyContent-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 "target/release/cct" "$pkgdir/usr/bin/cct"
 }
