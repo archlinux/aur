@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/archive/refs/tags/v0.1.1.tar.gz"
         "wayclip-daemon.service")
 
-sha256sums=('7b4a085aa2f6336764b2fb8aa9586820de152271ee75e52d6c973c507ffc6b9f'
+sha256sums=('713ada3afa0a8bf9f8c0a2982bfb996251d0fcb845f2e05a1a5ac2e5b2643061'
             'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8'
             'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
 
@@ -49,6 +49,7 @@ build() {
 
   cd "$srcdir/$cli_dir"
   cargo build --release --frozen
+  mv target/release/wayclip "$srcdir/wayclip"
 }
 
 check() {
@@ -58,8 +59,7 @@ check() {
 }
 
 package() {
-  local cli_dir="cli-$pkgver"
-  install -Dm755 "$srcdir/$cli_dir/target/release/wayclip" "$pkgdir/usr/bin/wayclip"
+  install -Dm755 "$srcdir/wayclip" "$pkgdir/usr/bin/wayclip"
 
   install -Dm755 "$srcdir/daemon" "$pkgdir/usr/bin/wayclip-daemon"
   install -Dm755 "$srcdir/trigger" "$pkgdir/usr/bin/wayclip-trigger"
