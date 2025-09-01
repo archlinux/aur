@@ -42,4 +42,3 @@ package() {
       ln -sf "/usr/bin/busybox" "${pkgdir}/usr/bin/${i}"
   done
 }
-
