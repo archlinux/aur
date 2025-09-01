@@ -12,10 +12,10 @@ arch=('x86_64')
 options=('!emptydirs' 'debug')
 makedepends=(
     'git' 'dnssec-anchors' 'fstrm' 'icu' 'jemalloc' 'json-c' 'krb5' 'libcap'
-    'libidn2' 'libmaxminddb' 'libnsl' 'libuv' 'liburcu' 'libxml2' 'lmdb' 'meson' 'ninja' 'openssl'
+    'libidn2' 'libmaxminddb' 'libnghttp2' 'libnsl' 'libuv' 'liburcu' 'libxml2' 'lmdb' 'meson' 'ninja' 'openssl'
     'protobuf' 'protobuf-c' 'python' 'python-sphinx' 'readline' 'zlib')
 depends=('bash' 'dnssec-anchors' 'fstrm' 'glibc' 'icu' 'jemalloc' 'json-c' 'krb5'
-    'libcap' 'libedit' 'libidn2' 'libmaxminddb' 'libnsl' 'liburcu' 'libuv' 'libxml2'
+    'libcap' 'libedit' 'libidn2' 'libmaxminddb' 'libnghttp2' 'libnsl' 'liburcu' 'libuv' 'libxml2'
     'lmdb' 'openssl' 'protobuf-c' 'python' 'readline' 'xz' 'zlib')
 conflicts=('bind' 'bind-tools' 'dnsutils')
 replaces=('bind-tools' 'dnsutils' 'host')
