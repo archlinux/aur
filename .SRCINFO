@@ -1,0 +1,18 @@
+pkgbase = crust-git
+	pkgdesc = Crust Shell built from the git repo
+	pkgver = b01.18.g1728b7b
+	pkgrel = 1
+	url = https://github.com/mostypc123/crust
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pip
+	source = git+https://github.com/mostypc123/crust
+	sha256sums = SKIP
+
+pkgname = crust-git
