@@ -1,4 +1,4 @@
-# Maintainer: teraflops <cprieto.ortiz@gmail.com>
+# Maintainer: teraflops <cprieto.ortiz@gmail.com>        
 pkgname=gnome-shell-extension-eversolo-nowplaying-git
 _pkgdesc='Extension for GNOME Shell to control and show now playing on Eversolo devices'
 pkgver=r5.7ae86bd
