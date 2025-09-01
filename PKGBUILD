@@ -9,6 +9,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'gcc' 'make')
 source=("https://github.com/Jeyers-Development/aleScript-main/releases/download/$pkgver/alescript.tar.gz")
+noextract=('alescript.tar.gz')
 sha256sums=('7182db862228818b65f908fad88da3c79089956095599affeae66496d899b30b')
 
 package() {

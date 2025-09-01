@@ -8,6 +8,7 @@ pkgbase = alescript
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
+	noextract = alescript.tar.gz
 	source = https://github.com/Jeyers-Development/aleScript-main/releases/download/1.0/alescript.tar.gz
 	sha256sums = 7182db862228818b65f908fad88da3c79089956095599affeae66496d899b30b
 
