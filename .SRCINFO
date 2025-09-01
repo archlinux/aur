@@ -1,18 +1,18 @@
 pkgbase = libbsd-git
 	pkgdesc = Provides useful functions commonly found on BSD systems
-	pkgver = 0.11.7.r24.gca3db5e
+	pkgver = 0.12.2.r4.g22fddb1
 	pkgrel = 1
 	url = https://libbsd.freedesktop.org/wiki/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	depends = glibc
 	depends = libmd
-	provides = libbsd=0.11.7.r24.gca3db5e
+	provides = libbsd=0.12.2.r4.g22fddb1
 	conflicts = libbsd
 	options = staticlibs
-	source = git+https://gitlab.freedesktop.org/libbsd/libbsd
+	source = git+https://gitlab.freedesktop.org/libbsd/libbsd.git
 	sha256sums = SKIP
 
 pkgname = libbsd-git

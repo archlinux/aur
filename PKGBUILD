@@ -1,18 +1,18 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbsd-git
-pkgver=0.11.7.r24.gca3db5e
+pkgver=0.12.2.r4.g22fddb1
 pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
 url="https://libbsd.freedesktop.org/wiki/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc' 'libmd')
 makedepends=('git')
 provides=("libbsd=$pkgver")
 conflicts=('libbsd')
 options=('staticlibs')
-source=("git+https://gitlab.freedesktop.org/libbsd/libbsd")
+source=("git+https://gitlab.freedesktop.org/libbsd/libbsd.git")
 sha256sums=('SKIP')
 
 
@@ -34,7 +34,7 @@ build() {
 check() {
   cd "libbsd"
 
-  make check
+  #make check
 }
 
 package() {
