@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=startup-configuration
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Configure startup applications for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=(
   'just'
 )
 source=("git+https://github.com/ellieplayswow/startup-configuration.git#tag=v$pkgver")
-sha256sums=('4d08c3dcdcbca6897ff05d279d6df1278439e718bfe69f1567032aa6fbc99d8e')
+sha256sums=('9f8b519a2c29e0f63881128d805f0a2ef351277c7dc2ffc4a02892461bdc8643')
 
 prepare() {
   cd "$pkgname"
