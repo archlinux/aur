@@ -4,13 +4,13 @@
 
 pkgname=mpd-sacd
 pkgver=0.25
-pkgrel=1
-pkgdesc='MPD with patches for SACD and DVDA ISO playback. (DVDA ISO playback temporary disabled)'
+pkgrel=2
+pkgdesc='MPD with patches for SACD and DVD-A ISO playback.'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later')
 depends=('alsa-lib'			'audiofile'			'avahi' 		'bzip2'					'chromaprint'	'curl'
-		 'dbus'				'expat'				'faad2'			'ffmpeg4.4'				'flac' 			'fluidsynth'
+		 'dbus'				'expat'				'faad2'			'ffmpeg'				'flac' 			'fluidsynth'
 		 'fmt'				'glibc'				'gcc-libs'		'hicolor-icon-theme'	'jack2' 		'icu'
 		 'lame'				'libao'				'libcdio' 		'libcdio-paranoia' 		'libgme'		'libid3tag'
 		 'libmad'			'libmms' 			'libmikmod'		'libmodplug' 			'libmpcdec'		'libmpdclient'
@@ -33,14 +33,14 @@ sha1sums=('SKIP'
 backup=('etc/mpd.conf')
 
 prepare() {
-	cd "${srcdir}/mpd/build"
+	cd "${srcdir}/mpd"
+	# Prepare build directory
 	rm -rf build
 	install -dm755 build
 }
 
 build() {
 	cd "$srcdir/mpd/build"
-	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 	_opts=(# not in an official repo
 		   '-Dadplug=disabled'
 		   # interferes with detection of alsa devices
@@ -50,9 +50,8 @@ build() {
 		   # not in official repo
 		   '-Dtremor=disabled'
 		   # not in official repo (and not libsidplayfp)
-		   '-Dsidplay=disabled'
-		   # temporary disabled (why? will test when able)
-		   '-Ddvdaiso=false')
+		   '-Dsidplay=disabled')
+		   # DVD-Audio support re-enabled. "Worked on my machine" -Jay
 	# Use clang to match previous build environment; works with meson and avoids toolchain issues
 	env CC=clang CXX=clang++ arch-meson .. "${_opts[@]}"
 	ninja
