@@ -3,25 +3,28 @@
 pkgname=python-pyopenjtalk
 _name=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A python wrapper for OpenJTalk"
-arch=('any')
+arch=($CARCH)
 url="https://pypi.org/project/${_name}"
 license=(MIT)
 groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
-    cython
+    gcc-libs
+    glibc
     python
     python-importlib_resources
-    python-numpy
     python-tqdm
     # AUR
-    python-oldest-supported-numpy
+    python-marine
 )
 makedepends=(
+    cmake
+    cython
+    python-flake8
     python-build
     python-installer
     python-wheel
@@ -44,5 +47,5 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
