@@ -4,7 +4,7 @@ pkgname=siyuan
 pkgver=3.3.0
 _electronversion=37
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -42,8 +42,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/app"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -98,17 +103,19 @@ build() {
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
-    cd "${srcdir}/${pkgname}-${pkgver}/app"
-    local electronDist="/usr/lib/electron${_electronversion}"
     case "${CARCH}" in
         aarch64)
             _CFG_FILE=electron-builder-linux-arm64.yml
+            _KERNEL_DIR=kernel-linux-arm64
             ;;
         x86_64)
             _CFG_FILE=electron-builder-linux.yml
+            _KERNEL_DIR=kernel-linux
             ;;
     esac
+    go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
+    cd "${srcdir}/${pkgname}-${pkgver}/app"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=${_CFG_FILE} "
 }
 package() {
