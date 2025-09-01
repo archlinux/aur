@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=wordbook
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A dictionary application built for GNOME."
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
   'meson'
 )
 source=("Wordbook-$pkgver.tar.gz::https://github.com/mufeedali/Wordbook/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('18117e650fd9e66adccba6c64b12ae8943775f31a72ab5924787806b49931694')
+sha256sums=('2dbd51785476bcf933a3dbcecbb97f60a2dfc987f4b5b00108deb4be2e0052a2')
 
 build() {
   arch-meson "Wordbook-$pkgver" build

@@ -1,6 +1,6 @@
 pkgbase = wordbook
 	pkgdesc = A dictionary application built for GNOME.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://apps.gnome.org/Wordbook
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = wordbook
 	depends = python-pydantic
 	depends = python-rapidfuzz
 	depends = python-wn
-	source = Wordbook-0.5.1.tar.gz::https://github.com/mufeedali/Wordbook/archive/refs/tags/0.5.1.tar.gz
-	sha256sums = 18117e650fd9e66adccba6c64b12ae8943775f31a72ab5924787806b49931694
+	source = Wordbook-0.6.0.tar.gz::https://github.com/mufeedali/Wordbook/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = 2dbd51785476bcf933a3dbcecbb97f60a2dfc987f4b5b00108deb4be2e0052a2
 
 pkgname = wordbook
