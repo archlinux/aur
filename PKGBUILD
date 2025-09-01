@@ -6,7 +6,7 @@ url="https://codeberg.org/swsnr/turnon"
 license=("EUPL-1.2")
 arch=("x86_64" "aarch64")
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 makedepends=("rust" "cargo" "git" "blueprint-compiler" "just")
 depends=(libadwaita gtk4 hicolor-icon-theme graphene dconf gcc-libs glib2 glibc)
 source=("git+https://codeberg.org/swsnr/turnon.git#tag=v${pkgver}")
@@ -14,6 +14,7 @@ md5sums=('e938a8b0c65c5b3508daac008562f6b1')
 
 function prepare() {
 	cd "${srcdir}/turnon"
+	git revert -n 34d798cee604c1a7914ea363b8a39ad278dc1004
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 	sed -i 's|@# Compile settings schemas after installation||g' justfile
