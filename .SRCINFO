@@ -1,10 +1,11 @@
 pkgbase = mecab-ipadic
 	pkgdesc = IPA dictionary for mecab
 	pkgver = 2.7.0_20070801
-	pkgrel = 9
+	pkgrel = 10
 	url = https://taku910.github.io/mecab
 	arch = any
 	license = GPL-2.0-only
+	makedepends = git
 	depends = mecab
 	source = mecab-ipadic::git+https://github.com/taku910/mecab.git#tag=2fd29256c6d5e1b10211cac838069ee9ede8c77a
 	md5sums = 5e33399fd830b3c3f66cd4b5c366c989
