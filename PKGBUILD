@@ -3,7 +3,7 @@
 _pkgname=zimtohrli
 pkgname=$_pkgname-git
 pkgver=0.2.1.r26.b066e34
-pkgrel=1
+pkgrel=2
 pkgdesc='A psychoacoustic perceptual metric for audio compression'
 arch=(x86_64)
 url=https://github.com/google/zimtohrli
@@ -24,6 +24,7 @@ makedepends=(
   pkgconf
   python
   clang
+  xxd
   ninja
 )
 provides=($_pkgname)
