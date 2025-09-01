@@ -17,7 +17,7 @@ prepare() {
 }
 
 package() {
-  install -d "$pkgdir/opt/$pkgname"
+  install -d "$pkgdir/opt/grooveauthor"
   cp -r --preserve=mode,timestamps "$srcdir/grooveauthor" "$pkgdir/opt"
 
   install -Dm644 "$srcdir/grooveauthor/GrooveAuthor.desktop" \
