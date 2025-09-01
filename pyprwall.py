@@ -26,6 +26,7 @@ class WallpaperManager(Adw.Application):
     from gi.repository import GLib
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.daemon_mode = False  # Flag to indicate if we're running in daemon mode
         self.wallpaper_dir = str(Path.home() / "Pictures" / "Wallpapers")
         self.hypr_config_dir = str(Path.home() / ".config" / "hypr")
         self.hyprpaper_conf = os.path.join(self.hypr_config_dir, "hyprpaper.conf")
@@ -125,6 +126,8 @@ WantedBy=default.target
 
     def run_daemon(self):
         """Run the application in daemon mode for wallpaper cycling"""
+        self.daemon_mode = True
+        
         # Load the last used folder
         if os.path.exists(self.config_file):
             try:
@@ -375,12 +378,18 @@ WantedBy=default.target
     def start_cycling(self):
         """Start the wallpaper cycling"""
         if not self.wallpaper_list:
-            self.cycle_status_label.set_label("No wallpapers available for cycling")
+            if not self.daemon_mode:
+                self.cycle_status_label.set_label("No wallpapers available for cycling")
+            else:
+                print("No wallpapers available for cycling")
             return
         
         self.is_cycling = True
-        self.cycle_button.set_label("Stop Cycling")
-        self.next_button.set_sensitive(True)
+        
+        # Only update UI if not in daemon mode
+        if not self.daemon_mode:
+            self.cycle_button.set_label("Stop Cycling")
+            self.next_button.set_sensitive(True)
         
         # Initialize wallpaper list order
         if self.is_random_order:
@@ -403,20 +412,30 @@ WantedBy=default.target
         minutes = self.cycle_interval // 60
         time_str = f"{minutes} minute{'s' if minutes != 1 else ''}"
         order_str = "random" if self.is_random_order else "sequential"
-        self.cycle_status_label.set_label(f"Cycling every {time_str} in {order_str} order")
+        
+        if not self.daemon_mode:
+            self.cycle_status_label.set_label(f"Cycling every {time_str} in {order_str} order")
+        else:
+            print(f"Cycling every {time_str} in {order_str} order")
 
     def stop_cycling(self):
         """Stop the wallpaper cycling"""
         self.is_cycling = False
-        self.cycle_button.set_label("Start Cycling")
-        self.next_button.set_sensitive(False)
+        
+        # Only update UI if not in daemon mode
+        if not self.daemon_mode:
+            self.cycle_button.set_label("Start Cycling")
+            self.next_button.set_sensitive(False)
         
         # Cancel the timer
         if self.cycle_timeout_id:
             GLib.source_remove(self.cycle_timeout_id)
             self.cycle_timeout_id = None
         
-        self.cycle_status_label.set_label("Cycling stopped")
+        if not self.daemon_mode:
+            self.cycle_status_label.set_label("Cycling stopped")
+        else:
+            print("Cycling stopped")
 
     def schedule_next_cycle(self):
         """Schedule the next wallpaper change"""
@@ -462,16 +481,23 @@ WantedBy=default.target
             self.apply_hyprlock_wallpaper()
             subprocess.run(["pkill", "hyprlock"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             
-            # Update UI selection to match current wallpaper
-            self.update_ui_selection()
+            # Update UI selection to match current wallpaper (only if not in daemon mode)
+            if not self.daemon_mode:
+                self.update_ui_selection()
             
             # Update status
             wallpaper_name = os.path.basename(next_wallpaper)
-            self.status_label.set_label(f"Cycled to: {wallpaper_name}")
-            
+            if not self.daemon_mode:
+                self.status_label.set_label(f"Cycled to: {wallpaper_name}")
+            else:
+                print(f"Cycled to: {wallpaper_name}")
+                
         except Exception as e:
-            print(f"Error during cycling: {e}")
-            self.status_label.set_label(f"Error cycling wallpaper: {e}")
+            error_msg = f"Error cycling wallpaper: {e}"
+            if not self.daemon_mode:
+                self.status_label.set_label(error_msg)
+            else:
+                print(error_msg)
 
     def update_ui_selection(self):
         """Update the UI to show the currently applied wallpaper as selected"""
