@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname='Hugin Messenger'
-pkgver=1.0.9
+pkgver=1.1.1
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4ab4ae49f1b4f9fe690f776b9cd56d2727ee55f783fc8ad0cca2fa514254cbae'
+sha256sums=('35f4f1dcd9b6dc585849bde14ce864c8d42132e88fcd0de7dffd66009f9f98e4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,8 +35,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
