@@ -1,6 +1,6 @@
 pkgbase = bakah
 	pkgdesc = Build Bake files using Buildah
-	pkgver = 0
+	pkgver = r25.5193fd1
 	pkgrel = 1
 	url = https://github.com/emersion/bakah
 	arch = x86_64
