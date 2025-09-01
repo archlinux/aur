@@ -13,9 +13,9 @@ pkgbase = walker-bin
 	optdepends = libqalculate: for calculator module
 	provides = walker
 	conflicts = walker
-	source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.13.26/walker_v0.13.26_Linux_x86_64.tar.gz
+	source_x86_64 = walker-x86_64-0.13.26.tar.gz::https://github.com/abenz1267/walker/releases/download/v0.13.26/walker_v0.13.26_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = a5e910c349e2d33186938dad55a72d03e64819832a95348397b53c9d6d92eb7f
-	source_aarch64 = https://github.com/abenz1267/walker/releases/download/v0.13.26/walker_v0.13.26_Linux_arm64.tar.gz
-	sha256sums_aarch64 = baad7f9650624ca644af3f1fe52f529e293d23c232281e59feebd05d21e65dd4
+	source_aarch64 = walker-aarch64-0.13.26.tar.gz::https://github.com/abenz1267/walker/releases/download/v0.13.26/walker_v0.13.26_Linux_x86_64.tar.gz
+	sha256sums_aarch64 = a5e910c349e2d33186938dad55a72d03e64819832a95348397b53c9d6d92eb7f
 
 pkgname = walker-bin
