@@ -3,17 +3,17 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.33.0
-pkgrel=2
+pkgver=1.33.1
+pkgrel=1
 pkgdesc='Normalize loudness of audio and video files using FFmpeg'
 arch=(any)
 url=https://github.com/slhck/ffmpeg-normalize
 license=(MIT)
 depends=(ffmpeg python-colorlog python-ffmpeg-progress-yield python-mutagen python-tqdm)
-checkdepends=(git mypy python-pytest ruff) # python-types-tqdm
-makedepends=(python-build python-installer python-wheel python-setuptools)
+checkdepends=(git python-pytest uv)
+makedepends=(python-build python-installer python-uv-build)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('bf6e76c51423b3cb3a57bf615e0dabd20264e996b14bc89ece5e3aad0496ee5d9f68b99b0d1ece562ca1c590b7bd982e4651a42df92f71e85441e898b75acd06')
+sha512sums=('ee83d9ab48cf2a2e4e16e1fb1b9442e9a4b247fb4535de75c03ca823422d24d1a087598fb3a4ba6e4e91d8bf75e24b1904faece2eb243392b8c91383f329d652')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,11 +22,11 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  pytest tests/test_all.py
+  uv run pytest tests
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
