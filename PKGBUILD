@@ -1,7 +1,7 @@
 # Maintainer: Jacob Meyers <jeyersdev@gmail.com>
 pkgname=alescript
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A programming language targeted for building console applications."
 arch=('x86_64')
 url="https://jd.pnc3.net/software/alescript"
