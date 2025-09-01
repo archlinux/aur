@@ -1,6 +1,6 @@
 # Maintainer: Jozef Gaal <preklady@mayday.sk>
 pkgname=orphycleaner
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="OrphyCleaner is a lightweight GUI tool for Arch-based Linux that scans your home directory for orphaned or unused app folders."
 arch=('x86_64')
