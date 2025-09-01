@@ -6,7 +6,7 @@ pkgver=0.3.1.r140.g2960f10
 pkgrel=1
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
-url="https://git.frohnmeyer-wds.de/JfMods/Inceptum"
+url="https://git.jfronny.dev/JfMods/Inceptum"
 license=("GPL3")
 depends=("java-runtime>=23" 'bash')
 makedepends=('git' 'java-environment>=23' 'gradle')
