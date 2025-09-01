@@ -3,7 +3,7 @@
 
 pkgname=quich
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Just an advanced terminal calculator"
 url="https://github.com/Usbac/quich"
 arch=('x86_64')
@@ -13,13 +13,13 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}/${pkgname}-${pkg
 sha256sums=('d28d9a3552552bf692b126dacac6bcc2591531b6a44a24cb1285d2d506dadc85')
 
 build() {
-    cd ${pkgname}-${pkgver}
-    NAME=${pkgname} make quich
+  cd ${pkgname}-${pkgver}
+  NAME=${pkgname} make quich
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
-    install -D -m755 ${pkgname} -t "${pkgdir}/usr/bin"
-    install -D -m644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
-    install -D -m644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd ${pkgname}-${pkgver}
+  install -D -m755 ${pkgname} -t "${pkgdir}/usr/bin"
+  install -D -m644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -D -m644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
