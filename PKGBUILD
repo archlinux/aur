@@ -4,7 +4,7 @@ _gitname=laravel-ls
 pkgname="${_gitname}-git"
 pkgver=r234.a93641a
 pkgrel=1
-pkgdesc=' Laravel Language Server written in go. '
+pkgdesc='Laravel Language Server written in go.'
 arch=(x86_64)
 url="https://github.com/${_gitname}/${_gitname}"
 license=("GPL-3.0")
@@ -19,10 +19,6 @@ sha256sums=(
 pkgver() {
   cd $_gitname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-  cd $_gitname
 }
 
 build() {
