@@ -1,14 +1,15 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
-pkgname=f37-backgrounds
-pkgver=37.0.5
+_fedoraver=37
+pkgname=f$_fedoraver-backgrounds
+pkgver=$_fedoraver.0.6
 pkgrel=1
-pkgdesc="Desktop backgrounds of the Fedora 37 default theme for GNOME, KDE, Mate and Xfce desktops"
+pkgdesc="Desktop backgrounds of the Fedora $_fedoraver default theme for GNOME, KDE, Mate and Xfce desktops"
 arch=('any')
 url="https://github.com/fedoradesign/backgrounds"
-license=('custom')
+license=('CC-BY-SA-4.0')
 source=("https://github.com/fedoradesign/backgrounds/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-b2sums=('9cdad101aee869e4a4f3132494854c513820b78d1b85350079fae6b6d6f344c2e98e951319cd2cce104344893dd303544e3afb939f7e39af9a659186c95e7a11')
+b2sums=('a5c6241785c4053370578cec251aa449c449f18b9832cd3554ae8d3fabd23142ba90dd5756aca3ca2c8f8397cd3fc303ba15f5f35b0bcfc5c07cd87377f3374b')
 
 build() {
     cd $pkgname
@@ -18,5 +19,4 @@ build() {
 package() {
     cd $pkgname
     make install DESTDIR="$pkgdir"
-    install -Dm644 CC-BY-SA-4.0 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

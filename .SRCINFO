@@ -1,11 +1,11 @@
 pkgbase = f37-backgrounds
 	pkgdesc = Desktop backgrounds of the Fedora 37 default theme for GNOME, KDE, Mate and Xfce desktops
-	pkgver = 37.0.5
+	pkgver = 37.0.6
 	pkgrel = 1
 	url = https://github.com/fedoradesign/backgrounds
 	arch = any
-	license = custom
-	source = https://github.com/fedoradesign/backgrounds/releases/download/v37.0.5/f37-backgrounds-37.0.5.tar.xz
-	b2sums = 9cdad101aee869e4a4f3132494854c513820b78d1b85350079fae6b6d6f344c2e98e951319cd2cce104344893dd303544e3afb939f7e39af9a659186c95e7a11
+	license = CC-BY-SA-4.0
+	source = https://github.com/fedoradesign/backgrounds/releases/download/v37.0.6/f37-backgrounds-37.0.6.tar.xz
+	b2sums = a5c6241785c4053370578cec251aa449c449f18b9832cd3554ae8d3fabd23142ba90dd5756aca3ca2c8f8397cd3fc303ba15f5f35b0bcfc5c07cd87377f3374b
 
 pkgname = f37-backgrounds
