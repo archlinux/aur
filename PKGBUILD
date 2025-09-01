@@ -34,6 +34,9 @@ optdepends=(
     'kdialog: needed for file dialogs in KDE'
     'ttf-liberation: fix fonts for some PDFs'
 )
+makedepends=(
+    'jq'
+)
 options=(
     '!emptydirs'
     '!strip'

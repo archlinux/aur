@@ -5,6 +5,7 @@ pkgbase = slimjet
 	url = https://www.slimjet.com
 	arch = x86_64
 	license = LicenseRef-freeware
+	makedepends = jq
 	depends = alsa-lib
 	depends = nspr
 	depends = nss
