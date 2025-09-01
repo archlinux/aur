@@ -1,5 +1,5 @@
 pkgbase = chromium-ffmpeg-legacy-bin
-	pkgdesc = Add codecs to Chromium ( libavcodec , all Chromium patches)
+	pkgdesc = Add codecs to Chromium ( libavcodec 61, all Chromium patches)
 	pkgver = 137.0.7151.69
 	pkgrel = 1
 	url = https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/
