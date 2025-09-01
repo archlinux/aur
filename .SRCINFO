@@ -1,4 +1,4 @@
-pkgbase = tgt-client
+pkgbase = tgt-client-git
 	pkgdesc = A simple TUI for Telegram
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = tgt-client
 	source = git+https://github.com/FedericoBruzzone/tgt.git
 	sha256sums = SKIP
 
-pkgname = tgt-client
+pkgname = tgt-client-git
