@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/archive/refs/tags/v0.1.1.tar.gz"
         "wayclip-daemon.service")
 
-sha256sums=('25c905d9896db818ebd3d49fb2d85bad65c11432c0b31bccf198f578c4947adb'
+sha256sums=('f2f9777cb2a6e64a03437da41231b63a07bba584b24ea904cfc813444a41dcb8'
             'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8'
             'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
 
@@ -25,7 +25,8 @@ prepare() {
 }
 
 build() {
-  local core_dir="core-v0.1.1"
+  local core_dir="core-0.1.1"
+  local cli_dir="cli-$pkgver"
 
   export CFLAGS+=" -ffat-lto-objects"
   export CXXFLAGS+=" -ffat-lto-objects"
@@ -36,17 +37,19 @@ build() {
   mv target/release/daemon "$srcdir/daemon"
   mv target/release/trigger "$srcdir/trigger"
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$cli_dir"
   cargo build --release --locked
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  local cli_dir="cli-$pkgver"
+  cd "$srcdir/$cli_dir"
   cargo test
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/wayclip" "$pkgdir/usr/bin/wayclip"
+  local cli_dir="cli-$pkgver"
+  install -Dm755 "$srcdir/$cli_dir/target/release/wayclip" "$pkgdir/usr/bin/wayclip"
 
   install -Dm755 "$srcdir/daemon" "$pkgdir/usr/bin/wayclip-daemon"
   install -Dm755 "$srcdir/trigger" "$pkgdir/usr/bin/wayclip-trigger"
