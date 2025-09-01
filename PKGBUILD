@@ -1,57 +1,51 @@
-# Maintainer: Jesse Spangenberger <azulephoenix at gmail dot com>
-# Contributor: twa022 <twa022 at gmail dot com>
-# Contributor: Zom <zom[at]eevul[dot]org> 
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 
-pkgbase=notepadqq
-pkgname=('notepadqq-bin' 'notepadqq-common')
-pkgver=1.0.1
-_pkgver=1.0.1-0~yakkety1
-pkgrel=2
-arch=('i686' 'x86_64')
-url="http://notepadqq.altervista.org/wp/"
-optdepends=('notepadqq-gtk: enables GTK style on startup')
-makedepends=('pacman>=4.2.0')
+pkgname=notepadqq
+pkgver=2.0.0beta
+pkgrel=3
+pkgdesc='Notepad++-like text editor for Linux'
+arch=('x86_64')
+url='https://notepadqq.com/'
+license=('GPL3')
+depends=('hicolor-icon-theme' 'qt5-svg' 'qt5-webengine' 'qt5-websockets' 'uchardet')
+makedepends=('git' 'qt5-tools')
+optdepends=('mathjax2: Math rendering')
+options=('!emptydirs')
+_commit=5317c21678e71687aaab56862339354e1ea07306
+source=("git+https://github.com/notepadqq/notepadqq.git#commit=$_commit"
+        "git+https://github.com/notepadqq/CodeMirror.git"
+        fix-autosave.patch)
+sha256sums=('e66199693ae087109ea749594ffe44ec7059bfef2faf1e744e67a48896b2ea2a'
+            'SKIP'
+            'a461affdcd9246098c07b9ca4f1c978fa5444a233595fa7ee97d99ca03893426')
 
-source=("notepadqq-common.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq-common_${_pkgver}_all.deb")
-source_i686=("notepadqq-bin_i686.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_${_pkgver}_i386.deb")
-source_x86_64=("notepadqq-bin_x86_64.deb::http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_${_pkgver}_amd64.deb")
-
-noextract=("${source[@]%%::*}" "${source_i686[@]%%::*}" "${source_x86_64[@]%%:*}")
-
-md5sums=('609439057e91e4a5b8e1d25fd8f2ac9f')
-md5sums_i686=('357fa4007c7491f5297160de61ec4356')
-md5sums_x86_64=('59069dd6112c01199691c07362136485')
-
-package_notepadqq-common() {
-  pkgdesc="A Linux clone of Notepad++ Common files"
-  depends=('hicolor-icon-theme')
-  license=('GPL3')
-  options=('!strip' '!emptydirs')
-  install=${pkgname}.install
-  conflicts=('notepadqq-git')
-  
-  cd "${srcdir}"
-  bsdtar -xf ${pkgname}.deb --include "data.tar.xz"
-  bsdtar -xf data.tar.xz --exclude lintian -C "${pkgdir}"
-  install -Dm644 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/notepadqq.svg" "${pkgdir}/usr/share/pixmaps/notepadqq.svg"
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g' | sed 's/\+//'
 }
 
-package_notepadqq-bin() {
-  pkgdesc="A Linux clone of Notepad++"
-  depends=('qt5-webkit>5.2' 
-	   'desktop-file-utils' 
-	   'notepadqq-common='${pkgver})
-  depends_x86_64+=('gcc-libs-multilib')
-  conflicts=('notepadqq-git' 'notepadqq')
-  provides=('notepadqq='${pkgver})
-  options=('!strip')
-  license=('GPL3')
-  install=${pkgname}.install
-  
-  cd "${srcdir}"
-  bsdtar -xf ${pkgname}_${CARCH}.deb --include "data.tar.xz"
-  bsdtar -xf data.tar.xz --exclude lintian -C "${pkgdir}"
-  
+prepare() {
+  cd $pkgname
+  git config submodule.src/editor/libs/codemirror.url "$srcdir/CodeMirror"
+  git submodule update --init
+
+  # Fix segfault on autosave
+  # https://github.com/notepadqq/notepadqq/pull/1140
+  patch -Np1 -i ../fix-autosave.patch
+
+  # Unbundle MathJax
+  sed -i 's|libs/MathJax/MathJax|../../mathjax2/MathJax|' src/editor/features/latex/latex.js
+  sed -i '/MathJax/d' src/editor/Makefile
 }
 
+build() {
+  cd $pkgname
+  qmake-qt5 PREFIX=/usr LRELEASE=/usr/bin/lrelease notepadqq.pro
+  make
+}
 
+package() {
+  cd $pkgname
+  make INSTALL_ROOT="$pkgdir" install
+}

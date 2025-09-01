@@ -1,0 +1,23 @@
+From 4b5a4aba6d446a02b5a7a609417dda38a4e494f2 Mon Sep 17 00:00:00 2001
+From: Artur Wrona <arturwrona91@gmail.com>
+Date: Tue, 13 May 2025 22:50:08 +0200
+Subject: [PATCH] Fix segfault on autosave
+
+---
+ src/ui/Sessions/sessions.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/ui/Sessions/sessions.cpp b/src/ui/Sessions/sessions.cpp
+index b4f3d56cb..4a2d1ebb1 100644
+--- a/src/ui/Sessions/sessions.cpp
++++ b/src/ui/Sessions/sessions.cpp
+@@ -289,7 +289,8 @@ bool saveSession(DocEngine* docEngine, TopEditorContainer* editorContainer, QStr
+ 
+         for (int j = 0; j < tabCount; j++) {
+             auto editor = tabWidget->editor(j);
+-            bool isClean = editor->isClean();
++            bool isClean = true;
++            editor->isCleanP().wait().tap([&](bool _isClean){ isClean = _isClean; });
+             bool isOrphan = editor->filePath().isEmpty();
+             Editor::IndentationMode indentInfo = editor->indentationMode();
+ 
