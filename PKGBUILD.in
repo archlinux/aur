@@ -8,7 +8,7 @@ pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='https://kicad.org/'
 license=('GPL-3.0-or-later')
-depends=('curl' 'glew' 'glm' 'ngspice' 'opencascade' 'python' 'python-wxpython' 'wxwidgets-gtk3' 'unixodbc' 'libgit2' 'boost-libs' 'nng' 'protobuf' 'libspnav' 'poppler')
+depends=('curl' 'glew' 'glm' 'ngspice' 'opencascade' 'python' 'python-wxpython' 'wxwidgets-gtk3' 'unixodbc' 'libgit2' 'boost-libs' 'nng' 'protobuf' 'libspnav' 'poppler' 'poppler-glib')
 makedepends=('git' 'cmake' 'ninja' 'mesa' 'boost' 'swig')
 optdepends=(
 	'kicad-library-nightly: for footprints and symbols'
