@@ -9,19 +9,27 @@ pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
 url="https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
 license=('GPL-2.0-or-later')
-depends=('git'
-         'man'
-         'python'
-         'python-dateutil'
-         'rpm-tools')
+depends=(
+  'bash'
+  'git'
+  'python-dateutil'
+  'python-importlib-metadata'
+  'python-notify2'
+  'python-requests'
+  'python-setuptools'
+  'python-yaml'
+  'python'
+  'rpm-tools'
+)
 
-makedepends=('python-distribute'
-             'python-coverage'
-	     'python-mock'
-	     'python-nose'
-	     'python-nosexcover'
-	     'python-setuptools'
-	     'dpkg')
+makedepends=(
+  'dpkg'
+  'python-coverage'
+  'python-distribute'
+  'python-mock'
+  'python-nose'
+  'python-nosexcover'
+)
 
 #checkdepends=('devscripts'
 #              'pristine-tar'
