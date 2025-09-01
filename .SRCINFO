@@ -1,17 +1,17 @@
 pkgbase = electronim-bin
 	pkgdesc = Electron based multi IM (Instant Messaging) client.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.0.112
+	pkgver = 0.0.113
 	pkgrel = 1
 	url = https://github.com/manusa/electronim
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron36
-	provides = electronim=0.0.112
+	provides = electronim=0.0.113
 	conflicts = electronim
-	source = electronim-0.0.112-x86_64.AppImage::https://github.com/manusa/electronim/releases/download/v0.0.112/electronim-linux-x86_64.AppImage
+	source = electronim-0.0.113-x86_64.AppImage::https://github.com/manusa/electronim/releases/download/v0.0.113/electronim-linux-x86_64.AppImage
 	source = electronim.sh
-	sha256sums = 2343749ca11fe266fc57e61ef52065c51d10f211b129259915f8790c8052750e
+	sha256sums = 545367b5ec258760ef0a34146e687ddf4af02744a10182e2424efe5478a3ea12
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = electronim-bin
