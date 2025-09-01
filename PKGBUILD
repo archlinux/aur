@@ -6,7 +6,7 @@
 
 pkgname=visual-studio-code-portable
 _pkgname=visual-studio-code
-pkgver=1.102.1
+pkgver=1.103.2
 pkgrel=1
 pkgdesc="Visual Studio Code, sandboxed by portable."
 arch=('x86_64' 'aarch64')
@@ -33,9 +33,9 @@ sha256sums=('2f1782b30c4e040efff655fd9cf477930c5a0c81ddae27749b0cbb922c1d248e'
             'c361efa7e02fcad759ed80d2fbab67877f33219b981578af6fffaf18aeb12d9b'
             '3af748dd6578a1775e8eb7248ba397b7e11840df2ea6ee234ff76fee3dc306cf'
             '9dc32f5c87bf681059b4fb3f750fe3d0b4672655e4d84ae44bf25a6f5b3bb142'
-            '5138f24c3398c8212bdecf49211c1b1326b0b6c5ffaa887e802766d6e7684ec3')
-sha256sums_x86_64=('ad402eebd6948cb42c0d3e612bc139c9688c7557cd16ac31f5a03ca29d59623f')
-sha256sums_aarch64=('0c1b614590de245eb192c3161af5c80bbbdd4e4402ca3b7ea07508f856cb06b5')
+            '83ab349fc824e818ed9c2b13da197994f6b5183fdd4af111883bbfd92fedc6c2')
+sha256sums_x86_64=('be59af3e4da58f07439251b281dc66b6874fcc607e80d8f011a695a7737e7d02')
+sha256sums_aarch64=('dba41f9c1626d51c7551dce4e1db6934e512a6e0eaa489229afd10964727b008')
 
 _set_meta_info() {
   sed 's/@@NAME_LONG@@/Visual Studio Code/g' "$1" |\
