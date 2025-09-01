@@ -1,0 +1,14 @@
+pkgbase = laravel-ls-git
+	pkgdesc = Laravel Language Server written in go.
+	pkgver = r234.a93641a
+	pkgrel = 1
+	url = https://github.com/laravel-ls/laravel-ls
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/laravel-ls/laravel-ls.git
+	sha256sums = SKIP
+
+pkgname = laravel-ls-git
