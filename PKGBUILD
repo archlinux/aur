@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rasterVis
-_pkgver=0.51.6
+_pkgver=0.51.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-sf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9e0a042f2e7058b73b32e8207fdbfd74')
-b2sums=('fa3e9629e42727102cbff7b1c76fb3ace380be049a766e534055f63c182dad0726279e3a3f5b6c24a9f171a58e49b0a37bbdf2f166ada1d75a9a342397d168f3')
+md5sums=('4c31585f2f4c883fdc687e9cd0a4c7ea')
+b2sums=('d461e684115b523d601c9eb3583888614deda310c0e2dc6d94c85c4357804fe306ef763b039e5acec90741267f7a290aed023468c6aaa71ac34f45d4bfdf20c5')
 
 build() {
   mkdir build
