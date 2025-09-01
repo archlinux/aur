@@ -9,7 +9,8 @@ url=https://github.com/slhck/ffmpeg-normalize
 license=(MIT)
 depends=(ffmpeg python-colorlog python-ffmpeg-progress-yield python-mutagen python-tqdm)
 checkdepends=(git python-pytest uv)
-makedepends=(git python-build python-installer python-uv-build)
+#makedepends=(python-build python-installer python-uv-build)
+makedepends=(git python-installer uv)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -25,12 +26,15 @@ prepare() {
 
 build() {
   cd $pkgname
-  python -m build --wheel --no-isolation
+  #python -m build --wheel --no-isolation
+  uv --no-cache --offline build --no-build-isolation --out-dir=dist --wheel .
 }
 
 check() {
   cd $pkgname
-  uv run pytest tests
+  uv venv --system-site-packages
+  uv --offline --no-cache pip install --link-mode=copy --no-deps dist/*.whl
+  PATH=".venv/bin:$PATH" ./.venv/bin/python -m pytest tests
 }
 
 package() {
