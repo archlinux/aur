@@ -23,17 +23,16 @@ makedepends=(
 	cmake
 	glm
 	spirv-headers
+	unordered_dense
 	vulkan-headers
 )
 depends=(
 	#glslang # TODO https://github.com/shader-slang/slang/issues/8333
 	libx11
 	llvm
-	llvm
 	lz4
 	miniz
 	spirv-tools
-	unordered_dense
 )
 conflicts=(slang) #TODO https://github.com/shader-slang/slang/issues/8334
 
