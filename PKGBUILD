@@ -1,9 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=Beacroxx
+_pkgauthor=Audio-Solutions
 _pkgname=pulse-visualizer
 pkgname=${_pkgname}-bin
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=2
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire"
 arch=('x86_64')
@@ -16,49 +16,15 @@ depends=('glibc' 'gcc-libs' 'libebur128' 'glew' 'freetype2' 'libglvnd' 'libpipew
 conflicts=("${_pkgname}" "${_pkgname}"-git)
 provides=("${_pkgname}")
 
-source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
+source=("${_urlraw}/LICENSE"
+        "${_urlraw}/README.md")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.tar.gz")
 sha256sums=('c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
-            'f71c84e53a77e7d7bd3efe817e3d5ce38ee5f66baead5ef7a4bbf9cc7e18ff86')
-sha256sums_x86_64=('54d6cb69296d3157630605d9f9e3220fb859178a5f009bfdfe62d531d9c2b39a')
-
-_pkghome="home/bea/pulse-gh-release/${CARCH}"
-
-prepare() {
-	cd "${_pkghome}/" || exit
-
-	mkdir -p ./fonts
-	mv ./JetBrainsMonoNerdFont-Medium.ttf ./fonts/
-
-	mkdir -p ./icons
-	cp pulse-visualizer.png ./icons/
-}
-
+            '11a4badc7e4ecbaa7f2b405af1fa01f1e0732b208c6e7ed5d69c7b62078f16c0')
+sha256sums_x86_64=('e5f0c5408d439fef80ae3a19eb802c0302beeb7f455a3479a23144609975f7c3')
 package() {
-	cd "${srcdir}/" || exit
-
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-	cd "${_pkghome}/" || exit
-
-	install -Dm644 "CONFIGURATION.md" "${pkgdir}/usr/share/doc/${pkgname}/CONFIGURATION.md"
-
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-	install -Dm644 "${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-
-	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-	install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-
-	mkdir "${pkgdir}/usr/share/${_pkgname}/"
-	cp -rf shaders "${pkgdir}/usr/share/${_pkgname}/"
-	cp -rf themes "${pkgdir}/usr/share/${_pkgname}/"
-	cp -rf fonts "${pkgdir}/usr/share/${_pkgname}/"
-	cp -rf icons "${pkgdir}/usr/share/${_pkgname}/"
-
-	cp -f config.yml.template "${pkgdir}/usr/share/${_pkgname}/"
+  cd "$srcdir" || return
+  chmod +x ./install.sh
+  ./install.sh "$pkgdir/usr" "skip-root"
 }
+

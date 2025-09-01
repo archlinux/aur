@@ -1,8 +1,8 @@
 pkgbase = pulse-visualizer-bin
 	pkgdesc = A GPU-accelerated audio visualizer for PulseAudio/PipeWire
-	pkgver = 1.2.0
+	pkgver = 1.3.1
 	pkgrel = 2
-	url = https://github.com/Beacroxx/pulse-visualizer
+	url = https://github.com/Audio-Solutions/pulse-visualizer
 	install = pulse-visualizer-bin.install
 	arch = x86_64
 	license = GPL-3.0-only
@@ -20,11 +20,11 @@ pkgbase = pulse-visualizer-bin
 	provides = pulse-visualizer
 	conflicts = pulse-visualizer
 	conflicts = pulse-visualizer-git
-	source = LICENSE-1.2.0::https://raw.githubusercontent.com/Beacroxx/pulse-visualizer/v1.2.0/LICENSE
-	source = README-1.2.0.md::https://raw.githubusercontent.com/Beacroxx/pulse-visualizer/v1.2.0/README.md
+	source = https://raw.githubusercontent.com/Audio-Solutions/pulse-visualizer/v1.3.1/LICENSE
+	source = https://raw.githubusercontent.com/Audio-Solutions/pulse-visualizer/v1.3.1/README.md
 	sha256sums = c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271
-	sha256sums = f71c84e53a77e7d7bd3efe817e3d5ce38ee5f66baead5ef7a4bbf9cc7e18ff86
-	source_x86_64 = https://github.com/Beacroxx/pulse-visualizer/releases/download/v1.2.0/pulse-visualizer-v1.2.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 54d6cb69296d3157630605d9f9e3220fb859178a5f009bfdfe62d531d9c2b39a
+	sha256sums = 11a4badc7e4ecbaa7f2b405af1fa01f1e0732b208c6e7ed5d69c7b62078f16c0
+	source_x86_64 = https://github.com/Audio-Solutions/pulse-visualizer/releases/download/v1.3.1/pulse-visualizer-1.3.1-Linux.tar.gz
+	sha256sums_x86_64 = e5f0c5408d439fef80ae3a19eb802c0302beeb7f455a3479a23144609975f7c3
 
 pkgname = pulse-visualizer-bin
