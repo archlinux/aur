@@ -1,7 +1,7 @@
 # Maintainer: Micro <microgamercz@proton.me> -> https://github.com/MicrogamerCz
 
 pkgname=piki-git
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Unofficial Kirigami client for Pixiv"
 arch=(x86_64)
