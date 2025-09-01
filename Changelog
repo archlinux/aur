@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.5.0 ➙ 3.9.0
-              : 2025-05-21 ➙ 2025-08-31
+ Tags         : 3.6.0 ➙ 3.10
+              : 2025-07-16 ➙ 2025-09-01
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-09-01   : 3.10
+                Cidr.compact(): with  mixed ipv4/ipv6 - allow host bits in cidrs
+ 2025-08-31     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
 
  2025-08-31   : 3.9.0
                 compact(cidrs) can now handle mixed ipv4/ipv6
@@ -26,7 +30,3 @@
                 insteed of None
                 Cidr Cache lockfile name: use effective user instead of real user
  2025-05-21     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-
- 2025-05-21   : 3.5.0
-                Use builtin types where possible. e.g. typing.List -> list
- 2025-05-20     update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
