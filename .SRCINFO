@@ -1,6 +1,6 @@
 pkgbase = niri-dinit
 	pkgdesc = A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)
-	pkgver = 25.01
+	pkgver = 25.08
 	pkgrel = 1
 	url = https://github.com/YaLTeR/niri
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = niri-dinit
 	optdepends = waybar: suggested Wayland highly customizable desktop bar
 	optdepends = xdg-desktop-portal-gtk: XDG desktop portal that implements most functionality
 	optdepends = xdg-desktop-portal-gnome: XDG desktop portal that supports screencasting
-	provides = niri=25.01
+	provides = niri=25.08
 	conflicts = niri
 	options = !lto
-	source = git+https://github.com/YaLTeR/niri.git#tag=e05bc269e678ecf828b96ae79c991c13b00b38a5
-	sha256sums = 76971d8de19ebb94afcdbc7fc97122fe584cba3aadc060414a927b2018d2ef04
+	source = git+https://github.com/YaLTeR/niri.git#tag=d85b524d7c07a47345eab434f471f2b7bfa2c9c3
+	sha256sums = 841b899aff667b1333feac47853dc12806dccd27df575ba68dbd2a682df08a77
 
 pkgname = niri-dinit

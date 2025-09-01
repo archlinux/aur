@@ -1,6 +1,6 @@
 # Maintainer: Mark Karlinsky <mark.devnull@gmail.com>
 pkgname=niri-dinit
-pkgver=25.01
+pkgver=25.08
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)"
 arch=('x86_64')
@@ -41,9 +41,9 @@ optdepends=(
 provides=("niri=${pkgver}")
 conflicts=("niri")
 options=(!lto)
-_tag=e05bc269e678ecf828b96ae79c991c13b00b38a5 # git rev-parse "v$pkgver"
+_tag=d85b524d7c07a47345eab434f471f2b7bfa2c9c3 # git rev-parse "v$pkgver"
 source=("git+${url}.git#tag=${_tag}")
-sha256sums=('76971d8de19ebb94afcdbc7fc97122fe584cba3aadc060414a927b2018d2ef04')
+sha256sums=('841b899aff667b1333feac47853dc12806dccd27df575ba68dbd2a682df08a77')
 
 prepare() {
     cd "$srcdir/niri"
