@@ -1,5 +1,5 @@
 pkgbase = zmk-studio
-	pkgdesc = A desktop application for managing ZMK firmware devices
+	pkgdesc = A tool for runtime keymap updates on ZMK-powered devices without reflashing firmware
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/zmkfirmware/zmk-studio

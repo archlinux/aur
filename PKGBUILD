@@ -2,7 +2,7 @@
 pkgname=zmk-studio
 pkgver=0.3.1
 pkgrel=1
-pkgdesc="A desktop application for managing ZMK firmware devices"
+pkgdesc="A tool for runtime keymap updates on ZMK-powered devices without reflashing firmware"
 arch=(x86_64)
 url="https://github.com/zmkfirmware/zmk-studio"
 license=(MIT)
