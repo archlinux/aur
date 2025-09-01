@@ -3,7 +3,7 @@
 
 pkgname="recaf"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern Java bytecode editor'
 url='https://github.com/Col-E/Recaf'
 license=('MIT')
@@ -36,15 +36,16 @@ build() {
 }
 
 package() {
-    cd "$srcdir/Recaf-$pkgver-alpha"
+  cd "$srcdir/Recaf-$pkgver-alpha"
 
-    sed -i "/^Version=/c\Version=$pkgver" "$srcdir/$pkgname.desktop"
-    sed -i "/^Comment=/c\Comment=$pkgdesc" "$srcdir/$pkgname.desktop"
+  sed -i "/^Version=/c\Version=$pkgver" "$srcdir/$pkgname.desktop"
+  sed -i "/^Comment=/c\Comment=$pkgdesc" "$srcdir/$pkgname.desktop"
 
-    install -Dm755 "recaf-ui/build/libs/recaf-ui-$pkgver-SNAPSHOT-all.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-    install -Dm644 "recaf.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-    
-    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/recaf"
-    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "recaf-ui/build/libs/recaf-ui-$pkgver-SNAPSHOT-all.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm644 "recaf-ui/src/main/resources/icons/logo-full.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/recaf"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
