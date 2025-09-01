@@ -1,7 +1,7 @@
 pkgbase = cursor-bin
 	pkgdesc = AI-first coding environment
 	pkgver = 1.5.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.cursor.com
 	arch = x86_64
 	license = LicenseRef-Cursor_EULA
