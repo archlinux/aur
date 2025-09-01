@@ -3,7 +3,7 @@
   # Contributor:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
 _pkgname=ExtratermQt
-pkgver=0.81.3
+pkgver=0.81.4
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators.(Prebuilt versrion)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 )
 options=('!strip')
 source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.34-${CARCH}.AppImage")
-sha256sums=('1541433e560ad088dd29a284f37b931613ca6460694536ce8c8c9de6ecd2f5bb')
+sha256sums=('1188f8802c89ef1f7b36686b62145f65bce0258918621adf9acbcd19043c5645')
 prepare() {
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
