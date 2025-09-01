@@ -1,0 +1,19 @@
+pkgbase = screenshot-translator
+	pkgdesc = Screenshot translator with CLI and PyQt6 GUI using Gemini API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/junyixu/pyqt-screenshot-translator
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-openai
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = python-markdown
+	depends = spectacle
+	depends = kdialog
+	source = git+https://github.com/junyixu/pyqt-screenshot-translator.git#branch=final-public
+	sha256sums = SKIP
+
+pkgname = screenshot-translator
