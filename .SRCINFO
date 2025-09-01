@@ -1,7 +1,7 @@
 pkgbase = alescript
 	pkgdesc = A programming language targeted for building console applications.
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://jd.pnc3.net/software/alescript
 	arch = x86_64
 	license = Apache-2.0
@@ -10,6 +10,6 @@ pkgbase = alescript
 	makedepends = make
 	noextract = alescript.tar.gz
 	source = https://github.com/Jeyers-Development/aleScript-main/releases/download/1.0/alescript.tar.gz
-	sha256sums = 7182db862228818b65f908fad88da3c79089956095599affeae66496d899b30b
+	sha256sums = cd25938456b5c4f950197a5047aafd79024703294857835787b8d0d015875b37
 
 pkgname = alescript
