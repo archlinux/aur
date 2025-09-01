@@ -11,6 +11,9 @@ from gi.repository import Gtk, Gio, Gdk, GdkPixbuf, GObject, Adw, Pango
 
 import threading
 from gi.repository import GLib
+import json
+import random
+import argparse
 
 # To customize the thumbnail size
 THUMB_WIDTH = 320
@@ -30,14 +33,139 @@ class WallpaperManager(Adw.Application):
         self.current_wallpaper = None
         self.thumbnails = {}
         
+        # Cycling feature variables
+        self.is_cycling = False
+        self.cycle_timeout_id = None
+        self.wallpaper_list = []
+        self.current_index = 0
+        self.cycle_interval = 1800  # Default 30 minutes in seconds
+        self.is_random_order = False
+        
         # Use a dedicated config directory inside the user's home folder
         self.config_dir = str(Path.home() / ".config" / "pyprwall")
         self.config_file = os.path.join(self.config_dir, '.pyprwall_config')
+        self.cycle_config_file = os.path.join(self.config_dir, '.pyprwall_cycle_config')
         
         # Create directories if they don't exist
         os.makedirs(self.wallpaper_dir, exist_ok=True)
         os.makedirs(self.hypr_config_dir, exist_ok=True)
-        os.makedirs(self.config_dir, exist_ok=True) # Create the new config directory
+        os.makedirs(self.config_dir, exist_ok=True)
+        
+        # Load cycle configuration
+        self.load_cycle_config()
+
+    def load_cycle_config(self):
+        """Load cycling configuration from file"""
+        try:
+            if os.path.exists(self.cycle_config_file):
+                with open(self.cycle_config_file, 'r') as f:
+                    config = json.load(f)
+                    self.cycle_interval = config.get('interval', 1800)
+                    self.is_random_order = config.get('random_order', False)
+        except Exception as e:
+            print(f"Error loading cycle config: {e}")
+
+    def save_cycle_config(self):
+        """Save cycling configuration to file"""
+        try:
+            config = {
+                'interval': self.cycle_interval,
+                'random_order': self.is_random_order
+            }
+            with open(self.cycle_config_file, 'w') as f:
+                json.dump(config, f)
+        except Exception as e:
+            print(f"Error saving cycle config: {e}")
+
+    def create_systemd_service(self):
+        """Create a systemd user service file for automatic wallpaper cycling"""
+        script_path = os.path.abspath(__file__)
+        service_content = f"""[Unit]
+Description=PyprWall Wallpaper Cycling
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart={script_path} --cycle-daemon
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+"""
+        
+        service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
+        os.makedirs(os.path.dirname(service_path), exist_ok=True)
+        
+        with open(service_path, 'w') as f:
+            f.write(service_content)
+        
+        return service_path
+
+    def enable_systemd_service(self):
+        """Enable and start the systemd service"""
+        try:
+            subprocess.run(["systemctl", "--user", "enable", "pyprwall.service"], check=True)
+            subprocess.run(["systemctl", "--user", "start", "pyprwall.service"], check=True)
+            return True
+        except subprocess.CalledProcessError as e:
+            print(f"Error enabling systemd service: {e}")
+            return False
+
+    def disable_systemd_service(self):
+        """Stop and disable the systemd service"""
+        try:
+            subprocess.run(["systemctl", "--user", "stop", "pyprwall.service"], check=True)
+            subprocess.run(["systemctl", "--user", "disable", "pyprwall.service"], check=True)
+            return True
+        except subprocess.CalledProcessError as e:
+            print(f"Error disabling systemd service: {e}")
+            return False
+
+    def run_daemon(self):
+        """Run the application in daemon mode for wallpaper cycling"""
+        # Load the last used folder
+        if os.path.exists(self.config_file):
+            try:
+                with open(self.config_file, 'r') as f:
+                    folder = f.read().strip()
+                    if os.path.exists(folder):
+                        self.wallpaper_dir = folder
+            except Exception as e:
+                print(f"Error reading config file: {e}")
+        
+        # Load wallpapers
+        supported_formats = ['.png', '.jpg', '.jpeg', '.jxl', '.webp']
+        try:
+            wallpapers = [os.path.join(self.wallpaper_dir, f) for f in os.listdir(self.wallpaper_dir)
+                         if os.path.isfile(os.path.join(self.wallpaper_dir, f)) and
+                         os.path.splitext(f)[1].lower() in supported_formats]
+            wallpapers.sort()
+            self.wallpaper_list = wallpapers
+        except Exception as e:
+            print(f"Error loading wallpapers: {e}")
+            return
+        
+        if not self.wallpaper_list:
+            print("No wallpapers found in the directory")
+            return
+        
+        # Load cycle configuration
+        self.load_cycle_config()
+        
+        # Start cycling
+        print(f"Starting wallpaper cycling with {len(self.wallpaper_list)} wallpapers")
+        self.start_cycling()
+        
+        # Run the main loop
+        from gi.repository import GLib
+        loop = GLib.MainLoop()
+        try:
+            loop.run()
+        except KeyboardInterrupt:
+            print("Stopping wallpaper cycling")
+            self.stop_cycling()
 
     def do_activate(self):
         """
@@ -45,7 +173,7 @@ class WallpaperManager(Adw.Application):
         """
         # Create main window with larger default size
         self.win = Gtk.ApplicationWindow(application=self)
-        self.win.set_default_size(1200, 800)  # Increased window size
+        self.win.set_default_size(1200, 900)  # Increased height for new controls
         self.win.set_title("PyprWall - Hyprland Wallpaper Manager")
 
         # Create header bar
@@ -72,6 +200,9 @@ class WallpaperManager(Adw.Application):
         # Create main box
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
         self.win.set_child(main_box)
+
+        # Create cycling controls
+        self.create_cycling_controls(main_box)
 
         # Scrolled window for grid
         scrolled = Gtk.ScrolledWindow()
@@ -114,6 +245,245 @@ class WallpaperManager(Adw.Application):
         # Call initialization directly (GTK4: realize/map may not fire reliably)
         self.on_window_realize(self.win)
 
+    def create_cycling_controls(self, parent_box):
+        """Create the cycling controls UI"""
+        # Create a frame for cycling controls
+        cycling_frame = Gtk.Frame()
+        cycling_frame.set_label("Automatic Wallpaper Cycling")
+        cycling_frame.set_margin_top(10)
+        cycling_frame.set_margin_bottom(10)
+        cycling_frame.set_margin_start(10)
+        cycling_frame.set_margin_end(10)
+        
+        # Create main cycling box
+        cycling_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        cycling_box.set_margin_top(10)
+        cycling_box.set_margin_bottom(10)
+        cycling_box.set_margin_start(10)
+        cycling_box.set_margin_end(10)
+        
+        # First row: interval controls
+        interval_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        interval_box.set_halign(Gtk.Align.CENTER)
+        
+        interval_label = Gtk.Label(label="Change wallpaper every:")
+        interval_box.append(interval_label)
+        
+        # Spin button for interval (in minutes)
+        self.interval_spin = Gtk.SpinButton()
+        self.interval_spin.set_range(1, 120)  # 1 minute to 2 hours
+        self.interval_spin.set_increments(1, 5)
+        self.interval_spin.set_value(self.cycle_interval // 60)  # Convert seconds to minutes
+        self.interval_spin.connect("value-changed", self.on_interval_changed)
+        interval_box.append(self.interval_spin)
+        
+        minutes_label = Gtk.Label(label="minutes")
+        interval_box.append(minutes_label)
+        
+        cycling_box.append(interval_box)
+        
+        # Second row: options
+        options_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+        options_box.set_halign(Gtk.Align.CENTER)
+        
+        # Random order checkbox
+        self.random_check = Gtk.CheckButton(label="Random order")
+        self.random_check.set_active(self.is_random_order)
+        self.random_check.connect("toggled", self.on_random_toggled)
+        options_box.append(self.random_check)
+        
+        cycling_box.append(options_box)
+        
+        # Third row: control buttons
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        button_box.set_halign(Gtk.Align.CENTER)
+        
+        # Start/Stop cycling button
+        self.cycle_button = Gtk.Button(label="Start Cycling")
+        self.cycle_button.connect("clicked", self.on_cycle_button_clicked)
+        self.cycle_button.set_sensitive(False)  # Will be enabled when wallpapers are loaded
+        button_box.append(self.cycle_button)
+        
+        # Next wallpaper button (for manual control during cycling)
+        self.next_button = Gtk.Button(label="Next Wallpaper")
+        self.next_button.connect("clicked", self.on_next_wallpaper_clicked)
+        self.next_button.set_sensitive(False)
+        button_box.append(self.next_button)
+        
+        cycling_box.append(button_box)
+        
+        # Systemd service controls
+        systemd_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        systemd_box.set_halign(Gtk.Align.CENTER)
+        
+        self.systemd_button = Gtk.Button(label="Enable Auto-Start")
+        self.systemd_button.connect("clicked", self.on_systemd_button_clicked)
+        systemd_box.append(self.systemd_button)
+        
+        cycling_box.append(systemd_box)
+        
+        # Status for cycling
+        self.cycle_status_label = Gtk.Label(label="")
+        self.cycle_status_label.set_margin_top(5)
+        cycling_box.append(self.cycle_status_label)
+        
+        cycling_frame.set_child(cycling_box)
+        parent_box.append(cycling_frame)
+
+    def on_interval_changed(self, spin_button):
+        """Handle interval spin button changes"""
+        self.cycle_interval = int(spin_button.get_value()) * 60  # Convert minutes to seconds
+        self.save_cycle_config()
+        
+        # If currently cycling, restart with new interval
+        if self.is_cycling:
+            self.stop_cycling()
+            self.start_cycling()
+
+    def on_random_toggled(self, check_button):
+        """Handle random order checkbox toggle"""
+        self.is_random_order = check_button.get_active()
+        self.save_cycle_config()
+
+    def on_cycle_button_clicked(self, button):
+        """Handle start/stop cycling button"""
+        if self.is_cycling:
+            self.stop_cycling()
+        else:
+            self.start_cycling()
+
+    def on_next_wallpaper_clicked(self, button):
+        """Handle next wallpaper button"""
+        if self.wallpaper_list:
+            self.cycle_to_next_wallpaper()
+
+    def on_systemd_button_clicked(self, button):
+        """Handle systemd service enable/disable button"""
+        service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
+        service_enabled = os.path.exists(service_path)
+        
+        if service_enabled:
+            if self.disable_systemd_service():
+                button.set_label("Enable Auto-Start")
+                self.cycle_status_label.set_label("Auto-start disabled")
+        else:
+            self.create_systemd_service()
+            if self.enable_systemd_service():
+                button.set_label("Disable Auto-Start")
+                self.cycle_status_label.set_label("Auto-start enabled")
+
+    def start_cycling(self):
+        """Start the wallpaper cycling"""
+        if not self.wallpaper_list:
+            self.cycle_status_label.set_label("No wallpapers available for cycling")
+            return
+        
+        self.is_cycling = True
+        self.cycle_button.set_label("Stop Cycling")
+        self.next_button.set_sensitive(True)
+        
+        # Initialize wallpaper list order
+        if self.is_random_order:
+            # Create a shuffled copy of the list
+            self.cycling_wallpapers = self.wallpaper_list.copy()
+            random.shuffle(self.cycling_wallpapers)
+            self.current_index = 0
+        else:
+            self.cycling_wallpapers = self.wallpaper_list.copy()
+            # Start from current wallpaper if it exists in the list
+            if self.current_wallpaper and self.current_wallpaper in self.cycling_wallpapers:
+                self.current_index = self.cycling_wallpapers.index(self.current_wallpaper)
+            else:
+                self.current_index = 0
+        
+        # Start the cycling timer
+        self.schedule_next_cycle()
+        
+        # Update status
+        minutes = self.cycle_interval // 60
+        time_str = f"{minutes} minute{'s' if minutes != 1 else ''}"
+        order_str = "random" if self.is_random_order else "sequential"
+        self.cycle_status_label.set_label(f"Cycling every {time_str} in {order_str} order")
+
+    def stop_cycling(self):
+        """Stop the wallpaper cycling"""
+        self.is_cycling = False
+        self.cycle_button.set_label("Start Cycling")
+        self.next_button.set_sensitive(False)
+        
+        # Cancel the timer
+        if self.cycle_timeout_id:
+            GLib.source_remove(self.cycle_timeout_id)
+            self.cycle_timeout_id = None
+        
+        self.cycle_status_label.set_label("Cycling stopped")
+
+    def schedule_next_cycle(self):
+        """Schedule the next wallpaper change"""
+        if self.cycle_timeout_id:
+            GLib.source_remove(self.cycle_timeout_id)
+        
+        # Convert seconds to milliseconds for GLib.timeout_add
+        self.cycle_timeout_id = GLib.timeout_add(self.cycle_interval * 1000, self.on_cycle_timeout)
+
+    def on_cycle_timeout(self):
+        """Handle the cycling timeout"""
+        if not self.is_cycling:
+            return False  # Stop the timeout
+        
+        self.cycle_to_next_wallpaper()
+        return True  # Continue the timeout
+
+    def cycle_to_next_wallpaper(self):
+        """Cycle to the next wallpaper"""
+        if not self.cycling_wallpapers:
+            return
+        
+        # Move to next wallpaper
+        self.current_index = (self.current_index + 1) % len(self.cycling_wallpapers)
+        
+        # If we completed a full cycle in random mode, reshuffle
+        if self.is_random_order and self.current_index == 0:
+            random.shuffle(self.cycling_wallpapers)
+        
+        # Set the new wallpaper
+        next_wallpaper = self.cycling_wallpapers[self.current_index]
+        self.current_wallpaper = next_wallpaper
+        
+        # Apply the wallpaper
+        try:
+            # Always update the hyprpaper config first for persistence
+            self.update_hyprpaper_config()
+            
+            # Then, try to apply via IPC for an immediate change
+            self.apply_hyprpaper_via_ipc()
+
+            # Always update the hyprlock config for persistence and then restart hyprlock
+            self.apply_hyprlock_wallpaper()
+            subprocess.run(["pkill", "hyprlock"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            
+            # Update UI selection to match current wallpaper
+            self.update_ui_selection()
+            
+            # Update status
+            wallpaper_name = os.path.basename(next_wallpaper)
+            self.status_label.set_label(f"Cycled to: {wallpaper_name}")
+            
+        except Exception as e:
+            print(f"Error during cycling: {e}")
+            self.status_label.set_label(f"Error cycling wallpaper: {e}")
+
+    def update_ui_selection(self):
+        """Update the UI to show the currently applied wallpaper as selected"""
+        if not self.current_wallpaper:
+            return
+        
+        # Find and select the corresponding thumbnail
+        for child in self.flow_box:
+            if child in self.thumbnails and self.thumbnails[child] == self.current_wallpaper:
+                self.flow_box.select_child(child)
+                break
+
     def on_window_realize(self, widget):
         """
         Handles the 'realize' signal of the window. This is the first time the window is shown.
@@ -134,11 +504,22 @@ class WallpaperManager(Adw.Application):
             self.load_wallpapers(self.wallpaper_dir)
         else:
             self.load_wallpapers(self.wallpaper_dir)
+            
+        # Check systemd service status
+        service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
+        if os.path.exists(service_path):
+            self.systemd_button.set_label("Disable Auto-Start")
+        else:
+            self.systemd_button.set_label("Enable Auto-Start")
 
     def on_open_clicked(self, button):
         """
         Callback for the 'Open Folder' button. Opens a file chooser dialog.
         """
+        # Stop cycling when changing folders
+        if self.is_cycling:
+            self.stop_cycling()
+        
         # Create file chooser dialog
         dialog = Gtk.FileChooserDialog(
             title="Select Wallpaper Folder",
@@ -217,11 +598,12 @@ class WallpaperManager(Adw.Application):
         self.status_label.set_label(f"Loading from {os.path.basename(folder_path)}...")
 
         def do_load():
-            # Clear existing thumbnails (in main thread)
+            # Clear existing thumbnails and wallpaper list (in main thread)
             def clear_thumbnails():
                 while self.flow_box.get_first_child() is not None:
                     self.flow_box.remove(self.flow_box.get_first_child())
                 self.thumbnails = {}
+                self.wallpaper_list = []
             GLib.idle_add(clear_thumbnails)
 
             supported_formats = ['.png', '.jpg', '.jpeg', '.jxl', '.webp']
@@ -237,10 +619,17 @@ class WallpaperManager(Adw.Application):
             if not wallpapers:
                 GLib.idle_add(self.status_label.set_label, "No wallpapers found in selected folder")
                 GLib.idle_add(self.spinner.stop)
+                GLib.idle_add(lambda: self.cycle_button.set_sensitive(False))
                 return
+
+            # Sort wallpapers for consistent ordering
+            wallpapers.sort()
 
             for wallpaper in wallpapers:
                 full_path = os.path.join(folder_path, wallpaper)
+                # Add to wallpaper list for cycling
+                GLib.idle_add(lambda p=full_path: self.wallpaper_list.append(p))
+                
                 try:
                     pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(full_path, THUMB_WIDTH, THUMB_HEIGHT)
                     thumbnail = Gtk.Image.new_from_pixbuf(pixbuf)
@@ -275,7 +664,9 @@ class WallpaperManager(Adw.Application):
 
             def finish_loading():
                 self.spinner.stop()
-                self.status_label.set_label("Select a wallpaper to apply.")
+                self.status_label.set_label("Select a wallpaper to apply or start cycling.")
+                # Enable cycling button if wallpapers were loaded
+                self.cycle_button.set_sensitive(len(self.wallpaper_list) > 0)
             GLib.idle_add(finish_loading)
 
         thread = self.threading.Thread(target=do_load)
@@ -319,7 +710,7 @@ class WallpaperManager(Adw.Application):
 
             # Always update the hyprlock config for persistence and then restart hyprlock
             self.apply_hyprlock_wallpaper()
-            subprocess.run(["pkill", "hyprlock"])
+            subprocess.run(["pkill", "hyprlock"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             
             self.status_label.set_label(f"Applied {os.path.basename(self.current_wallpaper)} to desktop and lockscreen!")
             
@@ -333,13 +724,13 @@ class WallpaperManager(Adw.Application):
             subprocess.run([
                 "hyprctl", "hyprpaper", "preload", 
                 f"{self.current_wallpaper}"
-            ], check=True, text=True, timeout=10)
+            ], check=True, text=True, timeout=10, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
             # Set the wallpaper
             subprocess.run([
                 "hyprctl", "hyprpaper", "wallpaper", 
                 f",{self.current_wallpaper}"
-            ], check=True, text=True, timeout=10)
+            ], check=True, text=True, timeout=10, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                 
         except (FileNotFoundError, subprocess.CalledProcessError, subprocess.TimeoutExpired, Exception) as e:
             print(f"IPC method failed: {e}. The config file has been updated for persistence.")
@@ -442,6 +833,17 @@ def main():
     """
     Main function to run the application.
     """
+    parser = argparse.ArgumentParser(description='PyprWall - Hyprland Wallpaper Manager')
+    parser.add_argument('--cycle-daemon', action='store_true', 
+                       help='Run in daemon mode for wallpaper cycling')
+    args = parser.parse_args()
+    
+    if args.cycle_daemon:
+        # Run in daemon mode
+        app = WallpaperManager(application_id="com.reeves.pyprwall")
+        app.run_daemon()
+        return
+    
     # Load CSS for styling
     css_provider = Gtk.CssProvider()
     css = """
