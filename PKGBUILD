@@ -40,11 +40,6 @@ conflicts=(slang) #TODO https://github.com/shader-slang/slang/issues/8334
 prepare() {
 	cd "slang-$pkgver"
 
-	for lib in {lua,glslang}; do
-		rm -rf "external/$lib"
-		ln -s "$srcdir/$lib" "external/$lib"
-	done
-
 	sed -e "s/find_package(lz4.*/include(FindPkgConfig)\npkg_check_modules(lz4 REQUIRED IMPORTED_TARGET GLOBAL liblz4)/" \
 		-e "s/LZ4::lz4/PkgConfig::lz4/g" \
 		-e "/find_package/ s/VulkanHeaders/Vulkan/g" \
@@ -81,7 +76,8 @@ build() {
 		-DSLANG_USE_SYSTEM_SPIRV_HEADERS=TRUE \
 		-DSLANG_USE_SYSTEM_SPIRV_TOOLS=TRUE \
 		-DSLANG_USE_SYSTEM_UNORDERED_DENSE=TRUE \
-		-DSLANG_USE_SYSTEM_GLSLANG=FALSE \
+		-DSLANG_OVERRIDE_GLSLANG_PATH="$srcdir" \
+		-DSLANG_OVERRIDE_LUA_PATH="$srcdir" \
 		-DSLANG_SLANG_LLVM_FLAVOR=DISABLE \
 		-DSLANG_ENABLE_GFX=FALSE
 
