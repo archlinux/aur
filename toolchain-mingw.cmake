@@ -6,7 +6,7 @@ set (CMAKE_C_COMPILER @TRIPLE@-gcc)
 set (CMAKE_CXX_COMPILER @TRIPLE@-g++)
 
 # where is the target environment
-set (CMAKE_FIND_ROOT_PATH /usr/@TRIPLE@)
+list (APPEND CMAKE_FIND_ROOT_PATH /usr/@TRIPLE@)
 
 # search for programs in the build host directories
 set (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
