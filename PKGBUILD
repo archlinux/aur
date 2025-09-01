@@ -1,8 +1,9 @@
 # Maintainer: Richard Chapman Gomes <chapgx@codeh.io>
 
 pkgname=attu-chap
+name=attu
 pkgver=2.6.0
-filename=${pkgname}_${pkgver}_amd64.deb
+filename=${name}_${pkgver}_amd64.deb
 pkgrel=1
 pkgdesc="Attu is an all-in-one milvus administration tool."
 arch=("x86_64")
