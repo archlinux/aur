@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('google-chrome: required at runtime for launching Chrome (Chromium not tested)')
-source=("${_pypiname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pypiname:0:1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
+source=("${_pypiname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pypiname:0:1}/${_pypiname}/selenium_driverless-${pkgver}.tar.gz")
 sha256sums=('151ccf57d399691ec4e943a941a496dbe575d0154a520cc2eca988ebe5d07a76')
 
 build() {
