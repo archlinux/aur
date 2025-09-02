@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=1.0.0.alpha.6.r0.g5dd5f23
+pkgver=1.0.0.alpha.7.r11.gd69a50e
 pkgrel=1
 pkgdesc="COSMIC On-Screen Display"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
 license=('GPL-3.0-only')
 depends=(
+  'libpipewire'
   'libpulse'
   'libxkbcommon'
   'systemd-libs'
@@ -14,6 +15,7 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'clang'
   'git'
   'mold'
 )
@@ -31,6 +33,8 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  sed 's|libexec|lib/polkit-1|g' -i Makefile src/subscriptions/polkit_agent_helper.rs
 }
 
 build() {
@@ -42,7 +46,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  ARGS+=" --frozen" nice make polkit-agent-helper-1='/usr/lib/polkit-1/polkit-agent-helper-1'
+  ARGS+=" --frozen" nice make
 }
 
 package() {
