@@ -1,7 +1,7 @@
 pkgbase = stable-diffusion.cpp-vulkan-git
 	pkgdesc = Stable Diffusion and Flux in pure C/C++ (Vulkan version)
-	pkgver = r256.5900ef6
-	pkgrel = 2
+	pkgver = r261.4c6475f
+	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
 	license = MIT
