@@ -1,15 +1,15 @@
 pkgbase = rsign2
 	pkgdesc = A command-line tool to sign files and verify signatures.
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/jedisct1/rsign2
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cargo
-	source = rsign2-0.6.3.tar.gz::https://static.crates.io/crates/rsign2/rsign2-0.6.3.crate
-	sha256sums = dd714e5954c122f7b6eb9c740416afd49a43eaf38996f01c0c12c82bfd3f7620
-	b2sums = 9e7ad47150758f279651c3aa84ebb5a61f7bb9bf6bb4db108ab1fa8f33c1f20bc9b03d594e9b87e02c34de1921ca85c5d9c79124f52c5029e24564d8981002bc
+	source = rsign2-0.6.4.tar.gz::https://static.crates.io/crates/rsign2/rsign2-0.6.4.crate
+	sha256sums = 03668b0d84b16e72ee2a34eba5badbd03f19c8c8916a46465c23e999831b7eb1
+	b2sums = b8b38266d90ed097d34d4e13d028be07e6ca45546de47b26b75e71c8c214f41717b50291ebb535079d1730350bf79cd53e1520eb618ea964b084b8759b05761e
 	depends_x86_64 = gcc-libs
 	depends_i686 = gcc-libs
 
