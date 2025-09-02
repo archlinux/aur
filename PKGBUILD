@@ -4,7 +4,7 @@
 
 pkgname=bkmr
 pkgver=6.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management'
 url='https://github.com/sysid/bkmr'
 license=('BSD-3-Clause')
@@ -31,20 +31,22 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" \
-    cargo build --manifest-path bkmr/Cargo.toml --frozen --release
+  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" cargo build --manifest-path bkmr/Cargo.toml --frozen --release
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" target/release/bkmr
+
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  ./target/release/bkmr completion bash > bkmr.sh 2>/dev/null
-  install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  ./target/release/bkmr completion fish > fish.fish 2>/dev/null
-  install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  ./target/release/bkmr completion zsh > zsh.zsh 2>/dev/null
-  install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+
+#   ./target/release/bkmr completion bash > bkmr.sh 2>/dev/null
+#   install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+#   ./target/release/bkmr completion fish > fish.fish 2>/dev/null
+#   install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+#   ./target/release/bkmr completion zsh > zsh.zsh 2>/dev/null
+#   install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
