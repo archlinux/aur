@@ -1,7 +1,7 @@
 pkgbase = rclone-ui-bin
 	pkgdesc = The cross-platform desktop GUI for rclone & S3.(Prebuilt version)
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rcloneui.com/
 	arch = x86_64
 	license = Apache-2.0
