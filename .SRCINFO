@@ -1,7 +1,7 @@
 pkgbase = winboat-arjix
 	pkgdesc = Run Windows apps on 🐧 Linux with ✨ seamless integration
 	pkgver = 0.6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TibixDev/winboat
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,9 @@ pkgbase = winboat-arjix
 	depends = libxtst
 	depends = libxss
 	depends = libsecret
+	depends = docker
+	depends = docker-compose
+	depends = freerdp
 	provides = winboat
 	conflicts = winboat
 	source = git+https://github.com/TibixDev/winboat.git#tag=v0.6.10

@@ -3,12 +3,12 @@
 pkgname=winboat-arjix
 _pkgname=winboat
 pkgver=0.6.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Run Windows apps on 🐧 Linux with ✨ seamless integration"
 arch=('x86_64')
 url="https://github.com/TibixDev/winboat"
 license=('MIT')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxtst' 'libxss' 'libsecret')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxtst' 'libxss' 'libsecret' 'docker' 'docker-compose' 'freerdp')
 makedepends=('npm' 'git')
 provides=(winboat)
 conflicts=(winboat)
