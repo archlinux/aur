@@ -90,11 +90,16 @@ build() {
 
 package(){
   install -Dm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
-  ln -svf /usr/lib/${_so}.$_avcodec "$pkgdir"/usr/lib/${_so}
-  install -Dvm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  ln -sf /usr/lib/${_so}.$_avcodec "$pkgdir"/usr/lib/${_so}
+  install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   for _n in 7.5 7.6 7.7 7.8 7.9 8.0 ; do
-    ln -svf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi/${_so}.$_n
-    ln -svf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi-snapshot/${_so}.$_n
+    ln -sf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi/${_so}.$_n
+    ln -sf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi-snapshot/${_so}.$_n
   done
+
+  for _n in {37..50} ; do
+    install -d "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2
+    ln -svf /usr/lib/${_so}.$_avcodec "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2/$_so
+  done  
 }
