@@ -1,8 +1,8 @@
-# Maintainer: <teraflops, cprieto.ortiz@gmail.com>
+# Maintainer: <teraflops, cprieto.ortiz@gmail.com>  
 
 pkgname=mympc-git
 pkgver=r7.99708e5
-pkgrel=2
+pkgrel=1
 pkgdesc="An mpc wrapper with music library zsh completion and advanced tagging features."
 arch=('any')
 url="https://gitlab.com/teraflops/mympc"
