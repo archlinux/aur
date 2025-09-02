@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6341
+pkgver=b6351
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -39,17 +39,14 @@ sha256sums=()
 
 prepare() {
   cd "$srcdir"
-  git clone --depth 20 --single-branch --branch master "${url}" "${_pkgname}"
+  git clone --depth 1 --single-branch --branch master "${url}" "${_pkgname}"
 }
 
 pkgver() {
-  cd "$_pkgname"
-
-  local _latest_tag
-  _latest_tag=$(git describe --tags --abbrev=0)
-
-  # 格式化为：<最新标签>
-  printf "%s" "$_latest_tag"
+  # 使用 API 获取最新发布的标签
+  curl -s "https://api.github.com/repos/ggml-org/llama.cpp/releases/latest" | \
+    grep '"tag_name":' | \
+    sed -E 's/.*"([^"]+)".*/\1/'
 }
 
 build() {
