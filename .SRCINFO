@@ -1,7 +1,7 @@
 pkgbase = micromamba
 	pkgdesc = The fast cross-platform package manager
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mamba-org/mamba
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,10 @@ pkgbase = micromamba
 	provides = python-libmambapy=2.3.2
 	conflicts = micromamba-bin
 	source = micromamba-2.3.2.tar.gz::https://github.com/mamba-org/mamba/archive/2.3.2.tar.gz
+	source = etc-install.patch::https://github.com/mamba-org/mamba/commit/3dec9c0bc0e424749c649eae96de92c323e3b3d3.patch
 	source = static-off.patch
 	sha512sums = 7c6eef5d634042e142dfa1595344ced37ba7fe47e1b09fbce6208949a670dfe0c7e01d684e035be156f5f7bebad15065ffa672c41f585123b7d3c87b41a4adba
+	sha512sums = 4e9230098bc1409e771d06811267c44d4ce95ce71ba9e5a2b63605e21302c94359d531a8f528944f09c76382468efda62daf51de171364c9198b2297111dff0e
 	sha512sums = ee549a0bff94bff386a820cb54e38b0c51f7f563c9dd99ab017bc4ba46a117a11fe8e6c016a8e6eef1ae30cde8e0f57b04d6cda685ad8f1609e1f22c38bf9258
 
 pkgname = micromamba
