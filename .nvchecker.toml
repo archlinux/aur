@@ -1,0 +1,4 @@
+[waybar-dunst]
+source = "git"
+git = "https://github.com/CelDaemon/waybar-dunst.git"
+prefix = "v"
