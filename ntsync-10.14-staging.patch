@@ -1,4 +1,4 @@
-From 494478eea1899f8b6224d0213d3bae5d9dd4fc36 Mon Sep 17 00:00:00 2001
+From 29be224fe291c11e47472618caf699d3492a746a Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 15:59:07 +0300
 Subject: [PATCH 01/57] Revert "server: Keep owned mutex syncs alive until
@@ -13,7 +13,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  2 files changed, 4 insertions(+), 28 deletions(-)
 
 diff --git a/dlls/kernel32/tests/sync.c b/dlls/kernel32/tests/sync.c
-index 49f5002f651..5023b9540e5 100644
+index 7ccc91e0a38..5969a170be5 100644
 --- a/dlls/kernel32/tests/sync.c
 +++ b/dlls/kernel32/tests/sync.c
 @@ -230,35 +230,12 @@ static void test_temporary_objects(void)
@@ -85,10 +85,10 @@ index e370d301472..573fcda1083 100644
  
  static int mutex_sync_signaled( struct object *obj, struct wait_queue_entry *entry )
 -- 
-2.50.1
+2.51.0
 
 
-From 979aefdc5bf5b0f033f83b1d28cb14ef0728e745 Mon Sep 17 00:00:00 2001
+From 854a485615a2d4acd3ef7739634d94847cda4caa Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 15:59:24 +0300
 Subject: [PATCH 02/57] Revert "server: Use a signaled flag for message queue
@@ -102,7 +102,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 29 insertions(+), 33 deletions(-)
 
 diff --git a/server/queue.c b/server/queue.c
-index 18fe5bee82d..523733e7e9b 100644
+index 10d5983e958..a25a73f6ec9 100644
 --- a/server/queue.c
 +++ b/server/queue.c
 @@ -116,7 +116,6 @@ struct msg_queue
@@ -113,7 +113,7 @@ index 18fe5bee82d..523733e7e9b 100644
      int                    paint_count;     /* pending paint messages count */
      int                    hotkey_count;    /* pending hotkey messages count */
      int                    quit_message;    /* is there a pending quit message? */
-@@ -307,7 +306,6 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+@@ -308,7 +307,6 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
      if ((queue = alloc_object( &msg_queue_ops )))
      {
          queue->fd              = NULL;
@@ -121,7 +121,7 @@ index 18fe5bee82d..523733e7e9b 100644
          queue->paint_count     = 0;
          queue->hotkey_count    = 0;
          queue->quit_message    = 0;
-@@ -711,18 +709,6 @@ void add_queue_hook_count( struct thread *thread, unsigned int index, int count
+@@ -713,18 +711,6 @@ void add_queue_hook_count( struct thread *thread, unsigned int index, int count
      assert( thread->queue->shared->hooks_count[index] >= 0 );
  }
  
@@ -140,7 +140,7 @@ index 18fe5bee82d..523733e7e9b 100644
  /* check the queue status */
  static inline int is_signaled( struct msg_queue *queue )
  {
-@@ -749,7 +735,7 @@ static inline void set_queue_bits( struct msg_queue *queue, unsigned int bits )
+@@ -751,7 +737,7 @@ static inline void set_queue_bits( struct msg_queue *queue, unsigned int bits )
      }
      SHARED_WRITE_END;
  
@@ -149,7 +149,7 @@ index 18fe5bee82d..523733e7e9b 100644
  }
  
  /* clear some queue bits */
-@@ -769,7 +755,6 @@ static inline void clear_queue_bits( struct msg_queue *queue, unsigned int bits
+@@ -771,7 +757,6 @@ static inline void clear_queue_bits( struct msg_queue *queue, unsigned int bits
          if (queue->keystate_lock) unlock_input_keystate( queue->input );
          queue->keystate_lock = 0;
      }
@@ -157,7 +157,7 @@ index 18fe5bee82d..523733e7e9b 100644
  }
  
  /* check if message is matched by the filter */
-@@ -1302,11 +1287,7 @@ static int msg_queue_select( struct msg_queue *queue, int events )
+@@ -1304,11 +1289,7 @@ static int msg_queue_select( struct msg_queue *queue, int events )
      }
      queue->waiting = !!events;
  
@@ -170,7 +170,7 @@ index 18fe5bee82d..523733e7e9b 100644
      return 1;
  }
  
-@@ -1345,8 +1326,18 @@ static void msg_queue_dump( struct object *obj, int verbose )
+@@ -1347,8 +1328,18 @@ static void msg_queue_dump( struct object *obj, int verbose )
  static int msg_queue_signaled( struct object *obj, struct wait_queue_entry *entry )
  {
      struct msg_queue *queue = (struct msg_queue *)obj;
@@ -191,7 +191,7 @@ index 18fe5bee82d..523733e7e9b 100644
  }
  
  static void msg_queue_satisfied( struct object *obj, struct wait_queue_entry *entry )
-@@ -1360,7 +1351,6 @@ static void msg_queue_satisfied( struct object *obj, struct wait_queue_entry *en
+@@ -1362,7 +1353,6 @@ static void msg_queue_satisfied( struct object *obj, struct wait_queue_entry *en
          shared->changed_mask = 0;
      }
      SHARED_WRITE_END;
@@ -199,7 +199,7 @@ index 18fe5bee82d..523733e7e9b 100644
  }
  
  static void msg_queue_destroy( struct object *obj )
-@@ -1415,7 +1405,7 @@ static void msg_queue_poll_event( struct fd *fd, int event )
+@@ -1417,7 +1407,7 @@ static void msg_queue_poll_event( struct fd *fd, int event )
  
      if (event & (POLLERR | POLLHUP)) set_fd_events( fd, -1 );
      else set_fd_events( queue->fd, 0 );
@@ -208,7 +208,7 @@ index 18fe5bee82d..523733e7e9b 100644
  }
  
  static void thread_input_dump( struct object *obj, int verbose )
-@@ -3188,9 +3178,20 @@ DECL_HANDLER(set_queue_mask)
+@@ -3185,9 +3175,20 @@ DECL_HANDLER(set_queue_mask)
          reply->wake_bits    = queue_shm->wake_bits;
          reply->changed_bits = queue_shm->changed_bits;
  
@@ -232,7 +232,7 @@ index 18fe5bee82d..523733e7e9b 100644
      }
  }
  
-@@ -3211,8 +3212,6 @@ DECL_HANDLER(get_queue_status)
+@@ -3208,8 +3209,6 @@ DECL_HANDLER(get_queue_status)
              shared->changed_bits &= ~req->clear_bits;
          }
          SHARED_WRITE_END;
@@ -241,7 +241,7 @@ index 18fe5bee82d..523733e7e9b 100644
      }
      else reply->wake_bits = reply->changed_bits = 0;
  }
-@@ -3411,8 +3410,6 @@ DECL_HANDLER(get_message)
+@@ -3408,8 +3407,6 @@ DECL_HANDLER(get_message)
      }
      SHARED_WRITE_END;
  
@@ -250,7 +250,7 @@ index 18fe5bee82d..523733e7e9b 100644
      /* then check for posted messages */
      if ((filter & QS_POSTMESSAGE) &&
          get_posted_message( queue, queue->ignore_post_msg, get_win, req->get_first, req->get_last, req->flags, reply ))
-@@ -3482,7 +3479,6 @@ DECL_HANDLER(get_message)
+@@ -3479,7 +3476,6 @@ DECL_HANDLER(get_message)
      }
      SHARED_WRITE_END;
  
@@ -259,10 +259,10 @@ index 18fe5bee82d..523733e7e9b 100644
      return;
  
 -- 
-2.50.1
+2.51.0
 
 
-From 4a1c2a26c070c196d82bd2857f38787b2715d1b8 Mon Sep 17 00:00:00 2001
+From 020d7e616cab30289b3f66747f9c68363df44a4f Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 15:59:30 +0300
 Subject: [PATCH 03/57] Revert "server: Use a flag to keep track of message
@@ -276,7 +276,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 10 insertions(+), 15 deletions(-)
 
 diff --git a/server/queue.c b/server/queue.c
-index 523733e7e9b..4b8fdf677fd 100644
+index a25a73f6ec9..25d80835498 100644
 --- a/server/queue.c
 +++ b/server/queue.c
 @@ -133,7 +133,6 @@ struct msg_queue
@@ -287,7 +287,7 @@ index 523733e7e9b..4b8fdf677fd 100644
      queue_shm_t           *shared;          /* queue in session shared memory */
      unsigned int           ignore_post_msg; /* ignore post messages newer than this unique id */
  };
-@@ -318,7 +317,6 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+@@ -319,7 +318,6 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
          queue->last_get_msg    = current_time;
          queue->keystate_lock   = 0;
          queue->ignore_post_msg = 0;
@@ -295,7 +295,7 @@ index 523733e7e9b..4b8fdf677fd 100644
          list_init( &queue->send_result );
          list_init( &queue->callback_result );
          list_init( &queue->pending_timers );
-@@ -1273,21 +1271,16 @@ static void cleanup_results( struct msg_queue *queue )
+@@ -1275,21 +1273,16 @@ static void cleanup_results( struct msg_queue *queue )
  /* check if the thread owning the queue is hung (not checking for messages) */
  static int is_queue_hung( struct msg_queue *queue )
  {
@@ -322,7 +322,7 @@ index 523733e7e9b..4b8fdf677fd 100644
      return 1;
  }
  
-@@ -1302,7 +1295,8 @@ static int msg_queue_add_queue( struct object *obj, struct wait_queue_entry *ent
+@@ -1304,7 +1297,8 @@ static int msg_queue_add_queue( struct object *obj, struct wait_queue_entry *ent
          return 0;
      }
  
@@ -332,7 +332,7 @@ index 523733e7e9b..4b8fdf677fd 100644
      add_queue( obj, entry );
      return 1;
  }
-@@ -1312,7 +1306,8 @@ static void msg_queue_remove_queue(struct object *obj, struct wait_queue_entry *
+@@ -1314,7 +1308,8 @@ static void msg_queue_remove_queue(struct object *obj, struct wait_queue_entry *
      struct msg_queue *queue = (struct msg_queue *)obj;
  
      remove_queue( obj, entry );
@@ -342,7 +342,7 @@ index 523733e7e9b..4b8fdf677fd 100644
  }
  
  static void msg_queue_dump( struct object *obj, int verbose )
-@@ -1333,7 +1328,7 @@ static int msg_queue_signaled( struct object *obj, struct wait_queue_entry *entr
+@@ -1335,7 +1330,7 @@ static int msg_queue_signaled( struct object *obj, struct wait_queue_entry *entr
          if ((ret = check_fd_events( queue->fd, POLLIN )))
              /* stop waiting on select() if we are signaled */
              set_fd_events( queue->fd, 0 );
@@ -352,10 +352,10 @@ index 523733e7e9b..4b8fdf677fd 100644
              set_fd_events( queue->fd, POLLIN );
      }
 -- 
-2.50.1
+2.51.0
 
 
-From ef5d1db29f0b86a0b9ec91833a11c7500c196730 Mon Sep 17 00:00:00 2001
+From 70cf7304bf7468a6f0b5ed482f1910a21c6b8315 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 15:59:36 +0300
 Subject: [PATCH 04/57] Revert "server: Split semaphore to a dedicated sync
@@ -617,10 +617,10 @@ index 4b31bfe806c..304a821bcec 100644
      }
  }
 -- 
-2.50.1
+2.51.0
 
 
-From 318f661c117daee8897bf46d066c99e1febba196 Mon Sep 17 00:00:00 2001
+From 554128c8c9edb2a93a56fd9899283d8539655451 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 15:59:42 +0300
 Subject: [PATCH 05/57] Revert "server: Split mutex to a dedicated sync
@@ -895,10 +895,10 @@ index 573fcda1083..90cc594c741 100644
          release_object( mutex );
      }
 -- 
-2.50.1
+2.51.0
 
 
-From 29aa3ca8d8db7b6d293d8cd5bd211d15615fa25d Mon Sep 17 00:00:00 2001
+From 8a57a5f2f55cf064b2f997768f864ad9956688b9 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 15:59:48 +0300
 Subject: [PATCH 06/57] Revert "server: Move some checks inside of mutex
@@ -996,10 +996,10 @@ index 90cc594c741..4737b6f711b 100644
      }
  }
 -- 
-2.50.1
+2.51.0
 
 
-From 3526d932262001e27a7849115d8b81931085412c Mon Sep 17 00:00:00 2001
+From 340057f502add14c5cfa72723ce73294c2a4a4f5 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:01:41 +0300
 Subject: [PATCH 07/57] Revert "server: Get rid of the console signaled flag."
@@ -1051,10 +1051,10 @@ index f0cb6689d4b..8c9c395ab41 100644
      if (req->read)
      {
 -- 
-2.50.1
+2.51.0
 
 
-From a27628cae3820cdd7339e6efba6d971fde5489a6 Mon Sep 17 00:00:00 2001
+From ddb2b72d699d9644d6ec24061bd1eb3a50cf57c3 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:01:47 +0300
 Subject: [PATCH 08/57] Revert "server: Use the console sync for console output
@@ -1165,10 +1165,10 @@ index 8c9c395ab41..54cb091d452 100644
  
      if (req->read)
 -- 
-2.50.1
+2.51.0
 
 
-From 36759c9c71f26ab3d031fab1e761347995321fb8 Mon Sep 17 00:00:00 2001
+From fbcd6775835af81c8ee99e2f49223d9a21426d97 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:01:51 +0300
 Subject: [PATCH 09/57] Revert "server: Use the console sync for console input
@@ -1281,10 +1281,10 @@ index 54cb091d452..343ccfa7463 100644
              wake_up( &output->obj, 0 );
      }
 -- 
-2.50.1
+2.51.0
 
 
-From aaf8269b74b29b1105435d48af76c67514292b80 Mon Sep 17 00:00:00 2001
+From 6b48807f8bb124a032337be909faa9a39571f773 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:01:55 +0300
 Subject: [PATCH 10/57] Revert "server: Use the console sync for screen buffers
@@ -1414,10 +1414,10 @@ index 343ccfa7463..6b85ecc8a54 100644
              wake_up( &input->obj, 0 );
          LIST_FOR_EACH_ENTRY( output, &server->console->outputs, struct console_output, entry )
 -- 
-2.50.1
+2.51.0
 
 
-From 68918e3522f48a9b0023406f9b20007060621480 Mon Sep 17 00:00:00 2001
+From eaefa219a4049bdbdf2d7ee44024cadedc2e6a12 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:03 +0300
 Subject: [PATCH 11/57] Revert "server: Use an event sync for console server
@@ -1581,10 +1581,10 @@ index 6b85ecc8a54..6665d0a0836 100644
      release_object( server );
  }
 -- 
-2.50.1
+2.51.0
 
 
-From dc77362bd5e6fe3ac99963b90b9344cc305f8bbf Mon Sep 17 00:00:00 2001
+From 448b7ba513bf5c9a0d9c6210044988d8d7ae99d2 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:08 +0300
 Subject: [PATCH 12/57] Revert "server: Use an event sync for console objects."
@@ -1745,10 +1745,10 @@ index 6665d0a0836..d3c5317728e 100644
              wake_up( &screen_buffer->obj, 0 );
          LIST_FOR_EACH_ENTRY( input, &server->console->inputs, struct console_input, entry )
 -- 
-2.50.1
+2.51.0
 
 
-From cea799238cf44c3fa600cd1549d8d550a80497ec Mon Sep 17 00:00:00 2001
+From 38fa3feed1ac9e015b5b7fd3e7e3e599e19de961 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:18 +0300
 Subject: [PATCH 13/57] Revert "server: Use an event sync for timer objects."
@@ -1870,10 +1870,10 @@ index 522fc6a7113..f85fa66ed47 100644
  
  /* create a timer */
 -- 
-2.50.1
+2.51.0
 
 
-From 0bd35d3c4cd372af6b41af64cc13975c9bca9889 Mon Sep 17 00:00:00 2001
+From 19ed0c8d8ec3008a4060d0cf5f479383cc622f60 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:22 +0300
 Subject: [PATCH 14/57] Revert "server: Use an event sync for completion port
@@ -2005,10 +2005,10 @@ index a2028a89823..fd623b36d5a 100644
  
      release_object( completion );
 -- 
-2.50.1
+2.51.0
 
 
-From 4e5ebe8dd41014b0113eb0aa47a1277a765af416 Mon Sep 17 00:00:00 2001
+From e39be0de4bfcc6faba9ad3ccb57fbf1dcc31530e Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:26 +0300
 Subject: [PATCH 15/57] Revert "server: Use an event sync for device manager
@@ -2138,10 +2138,10 @@ index f4b3f19028b..892ec98c44f 100644
                  if (irp->file) grab_object( irp );
                  manager->current_call = irp;
 -- 
-2.50.1
+2.51.0
 
 
-From 5158d277e0432aa836a90d3ccb63b51842772e2e Mon Sep 17 00:00:00 2001
+From 6f2fafec38e29d238e7e54d793ead602c845ad2d Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:31 +0300
 Subject: [PATCH 16/57] Revert "server: Use an event sync for debug objects."
@@ -2259,10 +2259,10 @@ index 2956ee17b8e..5f8b0ffc8fe 100644
      else
      {
 -- 
-2.50.1
+2.51.0
 
 
-From 7a982b335129bb5c23820e0555711ec065ee0636 Mon Sep 17 00:00:00 2001
+From 04ea2c1d6c146c0844260a3f32e20db72e2c3bc7 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:35 +0300
 Subject: [PATCH 17/57] Revert "server: Use an event sync for debug event
@@ -2401,10 +2401,10 @@ index 5f8b0ffc8fe..43d01fbf246 100644
          reply->pid = get_process_id( event->sender->process );
          reply->tid = get_thread_id( event->sender );
 -- 
-2.50.1
+2.51.0
 
 
-From 5b480686d652229fad9849f6ebd36f8609d90ac0 Mon Sep 17 00:00:00 2001
+From 993345ff73a711717849d6698f082aff4b4fb5a2 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:40 +0300
 Subject: [PATCH 18/57] Revert "server: Use an event sync for file lock
@@ -2418,7 +2418,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 16 insertions(+), 27 deletions(-)
 
 diff --git a/server/fd.c b/server/fd.c
-index 3febfdad266..8b9133e102b 100644
+index 63fd09e53ef..b71733a61b3 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -278,7 +278,6 @@ static const struct object_ops inode_ops =
@@ -2488,7 +2488,7 @@ index 3febfdad266..8b9133e102b 100644
  }
  
  /* set (or remove) a Unix lock if possible for the given range */
-@@ -1516,24 +1507,22 @@ static struct file_lock *add_lock( struct fd *fd, int shared, file_pos_t start,
+@@ -1514,24 +1505,22 @@ static struct file_lock *add_lock( struct fd *fd, int shared, file_pos_t start,
      struct file_lock *lock;
  
      if (!(lock = alloc_object( &file_lock_ops ))) return NULL;
@@ -2518,7 +2518,7 @@ index 3febfdad266..8b9133e102b 100644
  }
  
  /* remove an existing lock */
-@@ -1547,7 +1536,7 @@ static void remove_lock( struct file_lock *lock, int remove_unix )
+@@ -1545,7 +1534,7 @@ static void remove_lock( struct file_lock *lock, int remove_unix )
      if (remove_unix) remove_unix_locks( lock->fd, lock->start, lock->end );
      if (list_empty( &inode->locks )) inode_close_pending( inode, 1 );
      lock->process = NULL;
@@ -2528,10 +2528,10 @@ index 3febfdad266..8b9133e102b 100644
  }
  
 -- 
-2.50.1
+2.51.0
 
 
-From 51360b00486f97898b2df5feb5b85abbabc14e5b Mon Sep 17 00:00:00 2001
+From 50332a3ab837e9061e9c5013d304235024d6def1 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:45 +0300
 Subject: [PATCH 19/57] Revert "server: Use an event sync for startup info
@@ -2545,7 +2545,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 14 insertions(+), 24 deletions(-)
 
 diff --git a/server/process.c b/server/process.c
-index 37a75dc1c45..bc74c89600f 100644
+index 8e0f9189a61..109db705fb4 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -139,16 +139,15 @@ static const struct fd_ops process_fd_ops =
@@ -2599,7 +2599,7 @@ index 37a75dc1c45..bc74c89600f 100644
          release_object( process->startup_info );
          process->startup_info = NULL;
      }
-@@ -889,7 +888,6 @@ static void startup_info_destroy( struct object *obj )
+@@ -890,7 +889,6 @@ static void startup_info_destroy( struct object *obj )
      assert( obj->ops == &startup_info_ops );
      free( info->data );
      if (info->process) release_object( info->process );
@@ -2607,7 +2607,7 @@ index 37a75dc1c45..bc74c89600f 100644
  }
  
  static void startup_info_dump( struct object *obj, int verbose )
-@@ -904,11 +902,10 @@ static void startup_info_dump( struct object *obj, int verbose )
+@@ -905,11 +903,10 @@ static void startup_info_dump( struct object *obj, int verbose )
      fputc( '\n', stderr );
  }
  
@@ -2621,7 +2621,7 @@ index 37a75dc1c45..bc74c89600f 100644
  }
  
  /* get a process from an id (and increment the refcount) */
-@@ -1218,16 +1215,9 @@ DECL_HANDLER(new_process)
+@@ -1219,16 +1216,9 @@ DECL_HANDLER(new_process)
          release_object( parent );
          return;
      }
@@ -2639,10 +2639,10 @@ index 37a75dc1c45..bc74c89600f 100644
  
      if ((req->handles_size & 3) || req->handles_size > info->data_size)
 -- 
-2.50.1
+2.51.0
 
 
-From 35d9372af8a8b47a62c189f5cdae4a0886b0bfc8 Mon Sep 17 00:00:00 2001
+From 48235898995eda4260e74f4049d47e14d787edd0 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:50 +0300
 Subject: [PATCH 20/57] Revert "server: Use an event sync for process objects."
@@ -2656,7 +2656,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  2 files changed, 9 insertions(+), 14 deletions(-)
 
 diff --git a/server/process.c b/server/process.c
-index bc74c89600f..aefe077440a 100644
+index 109db705fb4..e8d399d51da 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -90,7 +90,7 @@ struct type_descr process_type =
@@ -2695,7 +2695,7 @@ index bc74c89600f..aefe077440a 100644
      process->parent_id       = 0;
      process->debug_obj       = NULL;
      process->debug_event     = NULL;
-@@ -721,7 +720,6 @@ struct process *create_process( int fd, struct process *parent, unsigned int fla
+@@ -722,7 +721,6 @@ struct process *create_process( int fd, struct process *parent, unsigned int fla
          goto error;
      }
      if (!(process->msg_fd = create_anonymous_fd( &process_fd_ops, fd, &process->obj, 0 ))) goto error;
@@ -2703,7 +2703,7 @@ index bc74c89600f..aefe077440a 100644
  
      /* create the handle table */
      if (!parent)
-@@ -795,7 +793,6 @@ static void process_destroy( struct object *obj )
+@@ -796,7 +794,6 @@ static void process_destroy( struct object *obj )
      if (process->idle_event) release_object( process->idle_event );
      if (process->id) free_ptid( process->id );
      if (process->token) release_object( process->token );
@@ -2711,7 +2711,7 @@ index bc74c89600f..aefe077440a 100644
      list_remove( &process->rawinput_entry );
      free( process->rawinput_devices );
      free( process->dir_cache );
-@@ -811,11 +808,10 @@ static void process_dump( struct object *obj, int verbose )
+@@ -812,11 +809,10 @@ static void process_dump( struct object *obj, int verbose )
      fprintf( stderr, "Process id=%04x handles=%p\n", process->id, process->handles );
  }
  
@@ -2725,7 +2725,7 @@ index bc74c89600f..aefe077440a 100644
  }
  
  static unsigned int process_map_access( struct object *obj, unsigned int access )
-@@ -997,7 +993,7 @@ static void process_killed( struct process *process )
+@@ -998,7 +994,7 @@ static void process_killed( struct process *process )
      finish_process_tracing( process );
      release_job_process( process );
      start_sigkill_timer( process );
@@ -2735,7 +2735,7 @@ index bc74c89600f..aefe077440a 100644
  
  /* add a thread to a process running threads list */
 diff --git a/server/process.h b/server/process.h
-index 2564a4f96d1..dfe8d628538 100644
+index 251af45be79..0023ce23671 100644
 --- a/server/process.h
 +++ b/server/process.h
 @@ -36,7 +36,6 @@ enum startup_state { STARTUP_IN_PROGRESS, STARTUP_DONE, STARTUP_ABORTED };
@@ -2747,10 +2747,10 @@ index 2564a4f96d1..dfe8d628538 100644
      process_id_t         parent_id;       /* parent process id (at the time of creation) */
      struct list          thread_list;     /* thread list */
 -- 
-2.50.1
+2.51.0
 
 
-From b535b420edd2081ab0193e571dcdb0ba7df44b84 Mon Sep 17 00:00:00 2001
+From c056ab435af2e4175a44aecdac53b64d10e3b6fb Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:02:57 +0300
 Subject: [PATCH 21/57] Revert "server: Use an event sync for job objects."
@@ -2763,7 +2763,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 23 insertions(+), 31 deletions(-)
 
 diff --git a/server/process.c b/server/process.c
-index aefe077440a..f90e725ca93 100644
+index e8d399d51da..ba56a0b9c54 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -192,24 +192,24 @@ struct type_descr job_type =
@@ -2881,10 +2881,10 @@ index aefe077440a..f90e725ca93 100644
  
  struct ptid_entry
 -- 
-2.50.1
+2.51.0
 
 
-From 745e311670d5fe26475eeb473e8e28339ba9c8f7 Mon Sep 17 00:00:00 2001
+From 8da860feb6836d3f4e6902344523bca6797ef282 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:02 +0300
 Subject: [PATCH 22/57] Revert "server: Use an event sync for thread objects."
@@ -2898,7 +2898,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  2 files changed, 15 insertions(+), 20 deletions(-)
 
 diff --git a/server/thread.c b/server/thread.c
-index 3003c4bc930..2315e0a6115 100644
+index aa566c10be4..af3e85253e0 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -189,7 +189,7 @@ struct type_descr thread_type =
@@ -2937,7 +2937,7 @@ index 3003c4bc930..2315e0a6115 100644
      thread->unix_pid        = -1;  /* not known yet */
      thread->unix_tid        = -1;  /* not known yet */
      thread->context         = NULL;
-@@ -557,8 +556,11 @@ struct thread *create_thread( int fd, struct process *process, const struct secu
+@@ -558,8 +557,11 @@ struct thread *create_thread( int fd, struct process *process, const struct secu
          release_object( thread );
          return NULL;
      }
@@ -2951,7 +2951,7 @@ index 3003c4bc930..2315e0a6115 100644
  
      if (process->desktop)
      {
-@@ -573,10 +575,6 @@ struct thread *create_thread( int fd, struct process *process, const struct secu
+@@ -574,10 +576,6 @@ struct thread *create_thread( int fd, struct process *process, const struct secu
      set_fd_events( thread->request_fd, POLLIN );  /* start listening to events */
      add_process_thread( thread->process, thread );
      return thread;
@@ -2962,7 +2962,7 @@ index 3003c4bc930..2315e0a6115 100644
  }
  
  /* handle a client event */
-@@ -653,7 +651,6 @@ static void destroy_thread( struct object *obj )
+@@ -654,7 +652,6 @@ static void destroy_thread( struct object *obj )
      release_object( thread->process );
      if (thread->id) free_ptid( thread->id );
      if (thread->token) release_object( thread->token );
@@ -2970,7 +2970,7 @@ index 3003c4bc930..2315e0a6115 100644
  }
  
  /* dump a thread on stdout for debugging purposes */
-@@ -666,11 +663,10 @@ static void dump_thread( struct object *obj, int verbose )
+@@ -667,11 +664,10 @@ static void dump_thread( struct object *obj, int verbose )
               thread->id, thread->unix_pid, thread->unix_tid, thread->state );
  }
  
@@ -2985,7 +2985,7 @@ index 3003c4bc930..2315e0a6115 100644
  }
  
  static unsigned int thread_map_access( struct object *obj, unsigned int access )
-@@ -1581,7 +1577,7 @@ void kill_thread( struct thread *thread, int violent_death )
+@@ -1582,7 +1578,7 @@ void kill_thread( struct thread *thread, int violent_death )
      }
      kill_console_processes( thread, 0 );
      abandon_mutexes( thread );
@@ -3007,10 +3007,10 @@ index b33a00d9f26..7a4eb983733 100644
      struct list            proc_entry;    /* entry in per-process thread list */
      struct list            desktop_entry; /* entry in per-desktop thread list */
 -- 
-2.50.1
+2.51.0
 
 
-From af66a3c89ccf659b0c87ed85ba011da9d5080e92 Mon Sep 17 00:00:00 2001
+From 6edf28a5bca7221a66ff5ba42d8796cbefb73a79 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:07 +0300
 Subject: [PATCH 23/57] Revert "server: Use an event sync for context objects."
@@ -3023,7 +3023,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 14 insertions(+), 31 deletions(-)
 
 diff --git a/server/thread.c b/server/thread.c
-index 2315e0a6115..2f46f837df4 100644
+index af3e85253e0..3a1c9353e0c 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -130,10 +130,9 @@ static const struct object_ops thread_apc_ops =
@@ -3115,7 +3115,7 @@ index 2315e0a6115..2f46f837df4 100644
      return context;
  }
  
-@@ -606,7 +589,7 @@ static void cleanup_thread( struct thread *thread )
+@@ -607,7 +590,7 @@ static void cleanup_thread( struct thread *thread )
      if (thread->context)
      {
          thread->context->status = STATUS_ACCESS_DENIED;
@@ -3124,7 +3124,7 @@ index 2315e0a6115..2f46f837df4 100644
          release_object( thread->context );
          thread->context = NULL;
      }
-@@ -1934,7 +1917,7 @@ DECL_HANDLER(select)
+@@ -1935,7 +1918,7 @@ DECL_HANDLER(select)
          }
          ctx->status = STATUS_SUCCESS;
          current->suspend_cookie = req->cookie;
@@ -3134,10 +3134,10 @@ index 2315e0a6115..2f46f837df4 100644
  
      if (!req->cookie) goto invalid_param;
 -- 
-2.50.1
+2.51.0
 
 
-From 3ab3463aeceb391ae685d648857e3e903716cdad Mon Sep 17 00:00:00 2001
+From e793e822c79d1dfddf2e2bfe0831afd25dada86c Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:14 +0300
 Subject: [PATCH 24/57] Revert "server: Use an event sync for thread apc
@@ -3151,7 +3151,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 12 insertions(+), 22 deletions(-)
 
 diff --git a/server/thread.c b/server/thread.c
-index 2f46f837df4..033f7a1e801 100644
+index 3a1c9353e0c..e41c30173a8 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -85,7 +85,6 @@ struct thread_wait
@@ -3190,7 +3190,7 @@ index 2f46f837df4..033f7a1e801 100644
      default_map_access,         /* map_access */
      default_get_sd,             /* get_sd */
      default_set_sd,             /* set_sd */
-@@ -668,11 +667,10 @@ static void dump_thread_apc( struct object *obj, int verbose )
+@@ -669,11 +668,10 @@ static void dump_thread_apc( struct object *obj, int verbose )
      fprintf( stderr, "APC owner=%p type=%u\n", apc->owner, apc->call.type );
  }
  
@@ -3204,7 +3204,7 @@ index 2f46f837df4..033f7a1e801 100644
  }
  
  static void thread_apc_destroy( struct object *obj )
-@@ -688,7 +686,6 @@ static void thread_apc_destroy( struct object *obj )
+@@ -689,7 +687,6 @@ static void thread_apc_destroy( struct object *obj )
              async_set_result( apc->owner, apc->call.async_io.status, 0 );
          release_object( apc->owner );
      }
@@ -3212,7 +3212,7 @@ index 2f46f837df4..033f7a1e801 100644
      reserve_obj_unbind( apc->reserve );
  }
  
-@@ -699,7 +696,6 @@ static struct thread_apc *create_apc( struct object *owner, const union apc_call
+@@ -700,7 +697,6 @@ static struct thread_apc *create_apc( struct object *owner, const union apc_call
  
      if ((apc = alloc_object( &thread_apc_ops )))
      {
@@ -3220,7 +3220,7 @@ index 2f46f837df4..033f7a1e801 100644
          if (call_data) apc->call = *call_data;
          else apc->call.type = APC_NONE;
          apc->caller      = NULL;
-@@ -708,12 +704,6 @@ static struct thread_apc *create_apc( struct object *owner, const union apc_call
+@@ -709,12 +705,6 @@ static struct thread_apc *create_apc( struct object *owner, const union apc_call
          apc->executed    = 0;
          apc->result.type = APC_NONE;
          if (owner) grab_object( owner );
@@ -3233,7 +3233,7 @@ index 2f46f837df4..033f7a1e801 100644
      }
      return apc;
  }
-@@ -1448,7 +1438,7 @@ void thread_cancel_apc( struct thread *thread, struct object *owner, enum apc_ty
+@@ -1449,7 +1439,7 @@ void thread_cancel_apc( struct thread *thread, struct object *owner, enum apc_ty
          if (apc->owner != owner) continue;
          list_remove( &apc->entry );
          apc->executed = 1;
@@ -3242,7 +3242,7 @@ index 2f46f837df4..033f7a1e801 100644
          release_object( apc );
          return;
      }
-@@ -1478,7 +1468,7 @@ static void clear_apc_queue( struct list *queue )
+@@ -1479,7 +1469,7 @@ static void clear_apc_queue( struct list *queue )
          struct thread_apc *apc = LIST_ENTRY( ptr, struct thread_apc, entry );
          list_remove( &apc->entry );
          apc->executed = 1;
@@ -3251,7 +3251,7 @@ index 2f46f837df4..033f7a1e801 100644
          release_object( apc );
      }
  }
-@@ -1941,7 +1931,7 @@ DECL_HANDLER(select)
+@@ -1942,7 +1932,7 @@ DECL_HANDLER(select)
              apc->result.create_thread.handle = handle;
              clear_error();  /* ignore errors from the above calls */
          }
@@ -3260,7 +3260,7 @@ index 2f46f837df4..033f7a1e801 100644
          close_handle( current->process, req->prev_apc );
          release_object( apc );
      }
-@@ -1964,7 +1954,7 @@ DECL_HANDLER(select)
+@@ -1965,7 +1955,7 @@ DECL_HANDLER(select)
          else
          {
              apc->executed = 1;
@@ -3270,10 +3270,10 @@ index 2f46f837df4..033f7a1e801 100644
          release_object( apc );
      }
 -- 
-2.50.1
+2.51.0
 
 
-From ab079fe05951759bfdad33eb80424ab6080d8af5 Mon Sep 17 00:00:00 2001
+From c2b5e0321dcccea66f9f942e730ba6ff0ca54f15 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:20 +0300
 Subject: [PATCH 25/57] Revert "server: Use an event sync for fd objects."
@@ -3318,7 +3318,7 @@ index c69554fc657..e0fd122e6ad 100644
      event->signaled = 0;
  }
 diff --git a/server/fd.c b/server/fd.c
-index 8b9133e102b..5f083a2df13 100644
+index b71733a61b3..06015bc8416 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -134,7 +134,6 @@ struct fd
@@ -3365,7 +3365,7 @@ index 8b9133e102b..5f083a2df13 100644
      default_map_access,       /* map_access */
      default_get_sd,           /* get_sd */
      default_set_sd,           /* set_sd */
-@@ -1645,12 +1645,6 @@ static void fd_dump( struct object *obj, int verbose )
+@@ -1641,12 +1641,6 @@ static void fd_dump( struct object *obj, int verbose )
      fprintf( stderr, "\n" );
  }
  
@@ -3378,7 +3378,7 @@ index 8b9133e102b..5f083a2df13 100644
  static void fd_destroy( struct object *obj )
  {
      struct fd *fd = (struct fd *)obj;
-@@ -1675,7 +1669,6 @@ static void fd_destroy( struct object *obj )
+@@ -1671,7 +1665,6 @@ static void fd_destroy( struct object *obj )
          if (fd->unix_fd != -1) close( fd->unix_fd );
          free( fd->unix_name );
      }
@@ -3386,7 +3386,7 @@ index 8b9133e102b..5f083a2df13 100644
  }
  
  /* check if the desired access is possible without violating */
-@@ -1776,7 +1769,6 @@ static struct fd *alloc_fd_object(void)
+@@ -1769,7 +1762,6 @@ static struct fd *alloc_fd_object(void)
      if (!fd) return NULL;
  
      fd->fd_ops     = NULL;
@@ -3394,7 +3394,7 @@ index 8b9133e102b..5f083a2df13 100644
      fd->user       = NULL;
      fd->inode      = NULL;
      fd->closed     = NULL;
-@@ -1790,6 +1782,7 @@ static struct fd *alloc_fd_object(void)
+@@ -1783,6 +1775,7 @@ static struct fd *alloc_fd_object(void)
      fd->nt_name    = NULL;
      fd->nt_namelen = 0;
      fd->cacheable  = 0;
@@ -3402,7 +3402,7 @@ index 8b9133e102b..5f083a2df13 100644
      fd->fs_locks   = 1;
      fd->poll_index = -1;
      fd->completion = NULL;
-@@ -1800,14 +1793,12 @@ static struct fd *alloc_fd_object(void)
+@@ -1793,14 +1786,12 @@ static struct fd *alloc_fd_object(void)
      list_init( &fd->inode_entry );
      list_init( &fd->locks );
  
@@ -3422,7 +3422,7 @@ index 8b9133e102b..5f083a2df13 100644
  }
  
  /* allocate a pseudo fd object, for objects that need to behave like files but don't have a unix fd */
-@@ -1818,7 +1809,6 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
+@@ -1811,7 +1802,6 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
      if (!fd) return NULL;
  
      fd->fd_ops     = fd_user_ops;
@@ -3430,7 +3430,7 @@ index 8b9133e102b..5f083a2df13 100644
      fd->user       = user;
      fd->inode      = NULL;
      fd->closed     = NULL;
-@@ -1832,6 +1822,7 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
+@@ -1825,6 +1815,7 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
      fd->nt_namelen = 0;
      fd->unix_fd    = -1;
      fd->cacheable  = 0;
@@ -3438,7 +3438,7 @@ index 8b9133e102b..5f083a2df13 100644
      fd->fs_locks   = 0;
      fd->poll_index = -1;
      fd->completion = NULL;
-@@ -1842,12 +1833,6 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
+@@ -1835,12 +1826,6 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
      init_async_queue( &fd->wait_q );
      list_init( &fd->inode_entry );
      list_init( &fd->locks );
@@ -3451,7 +3451,7 @@ index 8b9133e102b..5f083a2df13 100644
      return fd;
  }
  
-@@ -2321,8 +2306,8 @@ int is_fd_removable( struct fd *fd )
+@@ -2314,8 +2299,8 @@ int is_fd_removable( struct fd *fd )
  void set_fd_signaled( struct fd *fd, int signaled )
  {
      if (fd->comp_flags & FILE_SKIP_SET_EVENT_ON_HANDLE) return;
@@ -3462,7 +3462,7 @@ index 8b9133e102b..5f083a2df13 100644
  }
  
  /* check if events are pending and if yes return which one(s) */
-@@ -2339,6 +2324,13 @@ int check_fd_events( struct fd *fd, int events )
+@@ -2332,6 +2317,13 @@ int check_fd_events( struct fd *fd, int events )
      return pfd.revents;
  }
  
@@ -3477,7 +3477,7 @@ index 8b9133e102b..5f083a2df13 100644
  struct object *default_fd_get_sync( struct object *obj )
  {
 diff --git a/server/object.h b/server/object.h
-index d8067b145c7..2ac54876ddf 100644
+index 3e519030c5e..52704ec830f 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -221,14 +221,9 @@ static inline void *mem_append( void *ptr, const void *src, data_size_t len )
@@ -3496,10 +3496,10 @@ index d8067b145c7..2ac54876ddf 100644
                                     unsigned int attr, int manual_reset, int initial_state,
                                     const struct security_descriptor *sd );
 -- 
-2.50.1
+2.51.0
 
 
-From c7271a6338c36c7a72edcd73f8b42665be565716 Mon Sep 17 00:00:00 2001
+From c0e2f73488c57223e5a86e00b58629fb0bb48309 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:25 +0300
 Subject: [PATCH 26/57] Revert "server: Introduce a new event sync object."
@@ -3771,10 +3771,10 @@ index e0fd122e6ad..8d4a78d988a 100644
      release_object( event );
  }
 -- 
-2.50.1
+2.51.0
 
 
-From daa046be5f3fb42f419b7c0c6eb478e39633c47f Mon Sep 17 00:00:00 2001
+From d25b39f04e4781114fdc1aad9f3d34dbe4d151ff Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:31 +0300
 Subject: [PATCH 27/57] Revert "server: Redirect fd-based objects sync to the
@@ -3842,7 +3842,7 @@ index 892ec98c44f..d4cdacf7132 100644
      default_get_sd,                   /* get_sd */
      default_set_sd,                   /* set_sd */
 diff --git a/server/fd.c b/server/fd.c
-index 5f083a2df13..a38394e1cb4 100644
+index 06015bc8416..0b2571751aa 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -162,7 +162,6 @@ struct fd
@@ -3868,7 +3868,7 @@ index 5f083a2df13..a38394e1cb4 100644
      no_signal,                /* signal */
      no_get_fd,                /* get_fd */
      default_get_sync,         /* get_sync */
-@@ -2307,7 +2306,7 @@ void set_fd_signaled( struct fd *fd, int signaled )
+@@ -2300,7 +2299,7 @@ void set_fd_signaled( struct fd *fd, int signaled )
  {
      if (fd->comp_flags & FILE_SKIP_SET_EVENT_ON_HANDLE) return;
      fd->signaled = signaled;
@@ -3877,7 +3877,7 @@ index 5f083a2df13..a38394e1cb4 100644
  }
  
  /* check if events are pending and if yes return which one(s) */
-@@ -2324,20 +2323,13 @@ int check_fd_events( struct fd *fd, int events )
+@@ -2317,20 +2316,13 @@ int check_fd_events( struct fd *fd, int events )
      return pfd.revents;
  }
  
@@ -4107,10 +4107,10 @@ index 191160562f6..15337fbe2df 100644
      default_get_sd,               /* get_sd */
      default_set_sd,               /* set_sd */
 -- 
-2.50.1
+2.51.0
 
 
-From 6d357dcbf16d2d203fbf239643944143e2f0cf5c Mon Sep 17 00:00:00 2001
+From 2043b4c4c06ba40d0993c6c6dbdf279764b80d31 Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:38 +0300
 Subject: [PATCH 28/57] Revert "server: Add an operation to retrieve an object
@@ -4177,7 +4177,7 @@ index 4068f744567..62459b18419 100644
      default_get_sd,           /* get_sd */
      default_set_sd,           /* set_sd */
 diff --git a/server/atom.c b/server/atom.c
-index f3b0d1abffb..a333c54d006 100644
+index 0bba828e300..209e9abc5a9 100644
 --- a/server/atom.c
 +++ b/server/atom.c
 @@ -81,7 +81,6 @@ static const struct object_ops atom_table_ops =
@@ -4389,7 +4389,7 @@ index 8d4a78d988a..ad7c09acc99 100644
      default_get_sd,              /* get_sd */
      default_set_sd,              /* set_sd */
 diff --git a/server/fd.c b/server/fd.c
-index a38394e1cb4..085d2f6e368 100644
+index 0b2571751aa..12b50cd9741 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -175,7 +175,6 @@ static const struct object_ops fd_ops =
@@ -4449,10 +4449,10 @@ index ddcf03accb2..8a90fdc090c 100644
      default_get_sd,                  /* get_sd */
      default_set_sd,                  /* set_sd */
 diff --git a/server/hook.c b/server/hook.c
-index 7ba1f3ea9bf..4c55c565968 100644
+index e53ba4514bf..fb944b6a0bf 100644
 --- a/server/hook.c
 +++ b/server/hook.c
-@@ -84,7 +84,6 @@ static const struct object_ops hook_table_ops =
+@@ -83,7 +83,6 @@ static const struct object_ops hook_table_ops =
      NULL,                         /* satisfied */
      no_signal,                    /* signal */
      no_get_fd,                    /* get_fd */
@@ -4589,7 +4589,7 @@ index d83428233f4..f1263013bf1 100644
      default_get_sd,                          /* get_sd */
      default_set_sd,                          /* set_sd */
 diff --git a/server/object.c b/server/object.c
-index 9371ca0ef4c..1ff8ede0efc 100644
+index e8f0dba7c51..20f44c0d46e 100644
 --- a/server/object.c
 +++ b/server/object.c
 @@ -112,7 +112,6 @@ static const struct object_ops apc_reserve_ops =
@@ -4608,7 +4608,7 @@ index 9371ca0ef4c..1ff8ede0efc 100644
      default_map_access,        /* map_access */
      default_get_sd,            /* get_sd */
      default_set_sd,            /* set_sd */
-@@ -643,11 +641,6 @@ struct fd *no_get_fd( struct object *obj )
+@@ -642,11 +640,6 @@ struct fd *no_get_fd( struct object *obj )
      return NULL;
  }
  
@@ -4621,7 +4621,7 @@ index 9371ca0ef4c..1ff8ede0efc 100644
  {
      return map_access( access, &obj->ops->type->mapping );
 diff --git a/server/object.h b/server/object.h
-index 2ac54876ddf..f9f4a5f7462 100644
+index 52704ec830f..9adcdfb294a 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -84,8 +84,6 @@ struct object_ops
@@ -4643,7 +4643,7 @@ index 2ac54876ddf..f9f4a5f7462 100644
  extern struct security_descriptor *default_get_sd( struct object *obj );
  extern int default_set_sd( struct object *obj, const struct security_descriptor *sd, unsigned int set_info );
 diff --git a/server/process.c b/server/process.c
-index f90e725ca93..5561461dc95 100644
+index ba56a0b9c54..b06ec608850 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -109,7 +109,6 @@ static const struct object_ops process_ops =
@@ -4671,7 +4671,7 @@ index f90e725ca93..5561461dc95 100644
      default_get_sd,                /* get_sd */
      default_set_sd,                /* set_sd */
 diff --git a/server/queue.c b/server/queue.c
-index 4b8fdf677fd..f57ea874ee5 100644
+index 25d80835498..5e601f0be8c 100644
 --- a/server/queue.c
 +++ b/server/queue.c
 @@ -169,7 +169,6 @@ static const struct object_ops msg_queue_ops =
@@ -4791,7 +4791,7 @@ index 238dcfad1c7..55638a502bd 100644
      default_get_sd,               /* get_sd */
      default_set_sd,               /* set_sd */
 diff --git a/server/thread.c b/server/thread.c
-index 033f7a1e801..f3528711b99 100644
+index e41c30173a8..50d67a84983 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -110,7 +110,6 @@ static const struct object_ops thread_apc_ops =
@@ -4818,7 +4818,7 @@ index 033f7a1e801..f3528711b99 100644
      thread_map_access,          /* map_access */
      default_get_sd,             /* get_sd */
      default_set_sd,             /* set_sd */
-@@ -966,36 +963,6 @@ void set_wait_status( struct wait_queue_entry *entry, int status )
+@@ -967,36 +964,6 @@ void set_wait_status( struct wait_queue_entry *entry, int status )
      entry->wait->status = status;
  }
  
@@ -4855,7 +4855,7 @@ index 033f7a1e801..f3528711b99 100644
  /* finish waiting */
  static unsigned int end_wait( struct thread *thread, unsigned int status )
  {
-@@ -1012,19 +979,19 @@ static unsigned int end_wait( struct thread *thread, unsigned int status )
+@@ -1013,19 +980,19 @@ static unsigned int end_wait( struct thread *thread, unsigned int status )
          if (wait->select == SELECT_WAIT_ALL)
          {
              for (i = 0, entry = wait->queues; i < wait->count; i++, entry++)
@@ -4878,7 +4878,7 @@ index 033f7a1e801..f3528711b99 100644
          release_object( entry->obj );
          entry->obj = NULL;
      }
-@@ -1057,7 +1024,7 @@ static int wait_on( const union select_op *select_op, unsigned int count, struct
+@@ -1058,7 +1025,7 @@ static int wait_on( const union select_op *select_op, unsigned int count, struct
      {
          struct object *obj = objects[i];
          entry->wait = wait;
@@ -4887,7 +4887,7 @@ index 033f7a1e801..f3528711b99 100644
          {
              wait->count = i;
              end_wait( current, get_error() );
-@@ -1112,13 +1079,13 @@ static int check_wait( struct thread *thread )
+@@ -1113,13 +1080,13 @@ static int check_wait( struct thread *thread )
          /* Note: we must check them all anyway, as some objects may
           * want to do something when signaled, even if others are not */
          for (i = 0, entry = wait->queues; i < wait->count; i++, entry++)
@@ -4928,7 +4928,7 @@ index 5ce7298211e..3cdb9e5be5f 100644
      default_get_sd,            /* get_sd */
      token_set_sd,              /* set_sd */
 diff --git a/server/window.c b/server/window.c
-index 0729534ad6c..1cad3989f6d 100644
+index e237d40a153..3a95d6a348c 100644
 --- a/server/window.c
 +++ b/server/window.c
 @@ -111,7 +111,6 @@ static const struct object_ops window_ops =
@@ -4940,7 +4940,7 @@ index 0729534ad6c..1cad3989f6d 100644
      default_get_sd,           /* get_sd */
      default_set_sd,           /* set_sd */
 diff --git a/server/winstation.c b/server/winstation.c
-index bb5596f9a03..b3746090ccf 100644
+index bfcd4a53613..9ff8a8fd167 100644
 --- a/server/winstation.c
 +++ b/server/winstation.c
 @@ -79,7 +79,6 @@ static const struct object_ops winstation_ops =
@@ -4960,10 +4960,10 @@ index bb5596f9a03..b3746090ccf 100644
      default_get_sd,               /* get_sd */
      default_set_sd,               /* set_sd */
 -- 
-2.50.1
+2.51.0
 
 
-From 9c69c7fb6d77966d59e6efdaf953f0908961c21d Mon Sep 17 00:00:00 2001
+From 09be4e71a6faf50ae777a0a73d6b0b0472a601aa Mon Sep 17 00:00:00 2001
 From: Vasiliy Stelmachenok <ventureo@cachyos.org>
 Date: Sat, 19 Jul 2025 16:03:42 +0300
 Subject: [PATCH 29/57] Revert "server: Move object grab/release out of
@@ -4977,10 +4977,10 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/server/thread.c b/server/thread.c
-index f3528711b99..b580220c02a 100644
+index 50d67a84983..1cf5722c6e8 100644
 --- a/server/thread.c
 +++ b/server/thread.c
-@@ -928,6 +928,8 @@ int resume_thread( struct thread *thread )
+@@ -929,6 +929,8 @@ int resume_thread( struct thread *thread )
  /* add a thread to an object wait queue; return 1 if OK, 0 on error */
  int add_queue( struct object *obj, struct wait_queue_entry *entry )
  {
@@ -4989,7 +4989,7 @@ index f3528711b99..b580220c02a 100644
      list_add_tail( &obj->wait_queue, &entry->entry );
      return 1;
  }
-@@ -936,6 +938,7 @@ int add_queue( struct object *obj, struct wait_queue_entry *entry )
+@@ -937,6 +939,7 @@ int add_queue( struct object *obj, struct wait_queue_entry *entry )
  void remove_queue( struct object *obj, struct wait_queue_entry *entry )
  {
      list_remove( &entry->entry );
@@ -4997,7 +4997,7 @@ index f3528711b99..b580220c02a 100644
  }
  
  struct thread *get_wait_queue_thread( struct wait_queue_entry *entry )
-@@ -990,11 +993,7 @@ static unsigned int end_wait( struct thread *thread, unsigned int status )
+@@ -991,11 +994,7 @@ static unsigned int end_wait( struct thread *thread, unsigned int status )
          if (wait->abandoned) status += STATUS_ABANDONED_WAIT_0;
      }
      for (i = 0, entry = wait->queues; i < wait->count; i++, entry++)
@@ -5009,7 +5009,7 @@ index f3528711b99..b580220c02a 100644
      if (wait->user) remove_timeout_user( wait->user );
      free( wait );
      return status;
-@@ -1031,7 +1030,6 @@ static int wait_on( const union select_op *select_op, unsigned int count, struct
+@@ -1032,7 +1031,6 @@ static int wait_on( const union select_op *select_op, unsigned int count, struct
              return 0;
          }
  
@@ -5018,10 +5018,10 @@ index f3528711b99..b580220c02a 100644
      }
  
 -- 
-2.50.1
+2.51.0
 
 
-From 6d59cd4ab0f3bf852a4680fdf3a25b3c29740716 Mon Sep 17 00:00:00 2001
+From afea2de3a8a4b9509a10567cc7f89979932e2403 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 10 Feb 2025 16:18:15 -0600
 Subject: [PATCH 30/57] ntdll: Add stub functions for in-process
@@ -5236,10 +5236,10 @@ index 117915beb19..1c36532f13b 100644
      select_op.signal_and_wait.op = SELECT_SIGNAL_AND_WAIT;
      select_op.signal_and_wait.wait = wine_server_obj_handle( wait );
 -- 
-2.50.1
+2.51.0
 
 
-From 2372e42973d4ee00398f432b6209809e34cf5b0b Mon Sep 17 00:00:00 2001
+From 16e670eab1936389c6625c2504bbe8c7f78d4d62 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 10 Feb 2025 16:44:49 -0600
 Subject: [PATCH 31/57] ntdll: Retrieve and cache an ntsync device in wait
@@ -5263,10 +5263,10 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  create mode 100644 server/inproc_sync.c
 
 diff --git a/configure b/configure
-index 248be30dd8f..6d16fef3608 100755
+index be91611ac70..690ec061b17 100755
 --- a/configure
 +++ b/configure
-@@ -10001,6 +10001,12 @@ if test "x$ac_cv_header_linux_major_h" = xyes
+@@ -10003,6 +10003,12 @@ if test "x$ac_cv_header_linux_major_h" = xyes
  then :
    printf "%s\n" "#define HAVE_LINUX_MAJOR_H 1" >>confdefs.h
  
@@ -5280,7 +5280,7 @@ index 248be30dd8f..6d16fef3608 100755
  ac_fn_c_check_header_compile "$LINENO" "linux/param.h" "ac_cv_header_linux_param_h" "$ac_includes_default"
  if test "x$ac_cv_header_linux_param_h" = xyes
 diff --git a/configure.ac b/configure.ac
-index 5c142c721fd..48b073935d7 100644
+index 3741ea997e4..2f37f98890f 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -682,6 +682,7 @@ AC_CHECK_HEADERS(\
@@ -5508,10 +5508,10 @@ index 376d2835ec4..cf05cc62998 100644
  #undef HAVE_LINUX_PARAM_H
  
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index 751297f9720..93d5267fdb1 100644
+index b8dad20381a..3a90752c611 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -5977,6 +5977,18 @@ struct set_keyboard_repeat_reply
+@@ -5980,6 +5980,18 @@ struct set_keyboard_repeat_reply
  };
  
  
@@ -5530,7 +5530,7 @@ index 751297f9720..93d5267fdb1 100644
  enum request
  {
      REQ_new_process,
-@@ -6276,6 +6288,7 @@ enum request
+@@ -6280,6 +6292,7 @@ enum request
      REQ_get_next_process,
      REQ_get_next_thread,
      REQ_set_keyboard_repeat,
@@ -5538,7 +5538,7 @@ index 751297f9720..93d5267fdb1 100644
      REQ_NB_REQUESTS
  };
  
-@@ -6580,6 +6593,7 @@ union generic_request
+@@ -6585,6 +6598,7 @@ union generic_request
      struct get_next_process_request get_next_process_request;
      struct get_next_thread_request get_next_thread_request;
      struct set_keyboard_repeat_request set_keyboard_repeat_request;
@@ -5546,14 +5546,14 @@ index 751297f9720..93d5267fdb1 100644
  };
  union generic_reply
  {
-@@ -6882,6 +6896,7 @@ union generic_reply
+@@ -6888,6 +6902,7 @@ union generic_reply
      struct get_next_process_reply get_next_process_reply;
      struct get_next_thread_reply get_next_thread_reply;
      struct set_keyboard_repeat_reply set_keyboard_repeat_reply;
 +    struct get_linux_sync_device_reply get_linux_sync_device_reply;
  };
  
- #define SERVER_PROTOCOL_VERSION 885
+ #define SERVER_PROTOCOL_VERSION 891
 diff --git a/server/Makefile.in b/server/Makefile.in
 index 6e4e68d6ebf..57250fd0332 100644
 --- a/server/Makefile.in
@@ -5645,10 +5645,10 @@ index 00000000000..de07f674bda
 +#endif
 +}
 diff --git a/server/protocol.def b/server/protocol.def
-index 0ca4c0551c4..e84de4368d5 100644
+index 82aed0d8da9..6edac0aae25 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4143,3 +4143,8 @@ struct handle_info
+@@ -4141,3 +4141,8 @@ struct handle_info
  @REPLY
      int enable;                /* previous state of auto-repeat enable */
  @END
@@ -5658,10 +5658,10 @@ index 0ca4c0551c4..e84de4368d5 100644
 +@REQ(get_linux_sync_device)
 +@END
 diff --git a/server/request_handlers.h b/server/request_handlers.h
-index c28f98a5c3f..dfed7904738 100644
+index d042a455d6b..4eb225be803 100644
 --- a/server/request_handlers.h
 +++ b/server/request_handlers.h
-@@ -304,6 +304,7 @@ DECL_HANDLER(resume_process);
+@@ -305,6 +305,7 @@ DECL_HANDLER(resume_process);
  DECL_HANDLER(get_next_process);
  DECL_HANDLER(get_next_thread);
  DECL_HANDLER(set_keyboard_repeat);
@@ -5669,7 +5669,7 @@ index c28f98a5c3f..dfed7904738 100644
  
  typedef void (*req_handler)( const void *req, void *reply );
  static const req_handler req_handlers[REQ_NB_REQUESTS] =
-@@ -605,6 +606,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
+@@ -607,6 +608,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
      (req_handler)req_get_next_process,
      (req_handler)req_get_next_thread,
      (req_handler)req_set_keyboard_repeat,
@@ -5677,16 +5677,16 @@ index c28f98a5c3f..dfed7904738 100644
  };
  
  C_ASSERT( sizeof(abstime_t) == 8 );
-@@ -2302,3 +2304,4 @@ C_ASSERT( offsetof(struct set_keyboard_repeat_request, period) == 20 );
+@@ -2301,3 +2303,4 @@ C_ASSERT( offsetof(struct set_keyboard_repeat_request, period) == 20 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_request) == 24 );
  C_ASSERT( offsetof(struct set_keyboard_repeat_reply, enable) == 8 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_reply) == 16 );
 +C_ASSERT( sizeof(struct get_linux_sync_device_request) == 16 );
 diff --git a/server/request_trace.h b/server/request_trace.h
-index ecb3cf6f26a..6fd490ca68e 100644
+index 079acda0b1c..b3685940de3 100644
 --- a/server/request_trace.h
 +++ b/server/request_trace.h
-@@ -3399,6 +3399,10 @@ static void dump_set_keyboard_repeat_reply( const struct set_keyboard_repeat_rep
+@@ -3402,6 +3402,10 @@ static void dump_set_keyboard_repeat_reply( const struct set_keyboard_repeat_rep
      fprintf( stderr, " enable=%d", req->enable );
  }
  
@@ -5697,7 +5697,7 @@ index ecb3cf6f26a..6fd490ca68e 100644
  typedef void (*dump_func)( const void *req );
  
  static const dump_func req_dumpers[REQ_NB_REQUESTS] =
-@@ -3700,6 +3704,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
+@@ -3704,6 +3708,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_process_request,
      (dump_func)dump_get_next_thread_request,
      (dump_func)dump_set_keyboard_repeat_request,
@@ -5705,7 +5705,7 @@ index ecb3cf6f26a..6fd490ca68e 100644
  };
  
  static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
-@@ -4001,6 +4006,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
+@@ -4006,6 +4011,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_process_reply,
      (dump_func)dump_get_next_thread_reply,
      (dump_func)dump_set_keyboard_repeat_reply,
@@ -5713,7 +5713,7 @@ index ecb3cf6f26a..6fd490ca68e 100644
  };
  
  static const char * const req_names[REQ_NB_REQUESTS] =
-@@ -4302,6 +4308,7 @@ static const char * const req_names[REQ_NB_REQUESTS] =
+@@ -4308,6 +4314,7 @@ static const char * const req_names[REQ_NB_REQUESTS] =
      "get_next_process",
      "get_next_thread",
      "set_keyboard_repeat",
@@ -5722,10 +5722,10 @@ index ecb3cf6f26a..6fd490ca68e 100644
  
  static const struct
 -- 
-2.50.1
+2.51.0
 
 
-From c3de93b3a7b71de8a61c8b5a7784a2b54f5c90f6 Mon Sep 17 00:00:00 2001
+From 55c343f49aa1a24918c3b64934028ef23fba38cf Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 14:31:06 -0600
 Subject: [PATCH 32/57] server: Add an object operation to retrieve an
@@ -5772,10 +5772,10 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  36 files changed, 105 insertions(+)
 
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index 93d5267fdb1..f7a6a42c405 100644
+index 3a90752c611..05e4406e556 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -5976,6 +5976,18 @@ struct set_keyboard_repeat_reply
+@@ -5979,6 +5979,18 @@ struct set_keyboard_repeat_reply
      char __pad_12[4];
  };
  
@@ -5815,7 +5815,7 @@ index 62459b18419..f68b4b60006 100644
      iosb_destroy              /* destroy */
  };
 diff --git a/server/atom.c b/server/atom.c
-index a333c54d006..7f7a9bc81b7 100644
+index 209e9abc5a9..523ba5b5c07 100644
 --- a/server/atom.c
 +++ b/server/atom.c
 @@ -90,6 +90,7 @@ static const struct object_ops atom_table_ops =
@@ -6027,7 +6027,7 @@ index ad7c09acc99..c19cfa5ba3e 100644
      no_destroy                   /* destroy */
  };
 diff --git a/server/fd.c b/server/fd.c
-index 085d2f6e368..c6a0e366aca 100644
+index 12b50cd9741..ae4a08b743c 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -184,6 +184,7 @@ static const struct object_ops fd_ops =
@@ -6087,10 +6087,10 @@ index 8a90fdc090c..b8e2d3423c0 100644
      handle_table_destroy             /* destroy */
  };
 diff --git a/server/hook.c b/server/hook.c
-index 4c55c565968..fcb3dbcfbea 100644
+index fb944b6a0bf..37f24e2e62c 100644
 --- a/server/hook.c
 +++ b/server/hook.c
-@@ -93,6 +93,7 @@ static const struct object_ops hook_table_ops =
+@@ -92,6 +92,7 @@ static const struct object_ops hook_table_ops =
      NULL,                         /* unlink_name */
      no_open_file,                 /* open_file */
      no_kernel_obj_list,           /* get_kernel_obj_list */
@@ -6227,7 +6227,7 @@ index f1263013bf1..8713c2a8360 100644
      named_pipe_dir_destroy                   /* destroy */
  };
 diff --git a/server/object.c b/server/object.c
-index 1ff8ede0efc..cdc7ed5353b 100644
+index 20f44c0d46e..aef10a9c03e 100644
 --- a/server/object.c
 +++ b/server/object.c
 @@ -121,6 +121,7 @@ static const struct object_ops apc_reserve_ops =
@@ -6246,7 +6246,7 @@ index 1ff8ede0efc..cdc7ed5353b 100644
      no_close_handle,           /* close_handle */
      no_destroy                 /* destroy */
  };
-@@ -641,6 +643,11 @@ struct fd *no_get_fd( struct object *obj )
+@@ -640,6 +642,11 @@ struct fd *no_get_fd( struct object *obj )
      return NULL;
  }
  
@@ -6259,7 +6259,7 @@ index 1ff8ede0efc..cdc7ed5353b 100644
  {
      return map_access( access, &obj->ops->type->mapping );
 diff --git a/server/object.h b/server/object.h
-index f9f4a5f7462..07f4bb67d6b 100644
+index 9adcdfb294a..b333be6e43a 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -42,6 +42,7 @@ struct async;
@@ -6291,7 +6291,7 @@ index f9f4a5f7462..07f4bb67d6b 100644
  
  int get_serial_async_timeout(struct object *obj, int type, int count);
 diff --git a/server/process.c b/server/process.c
-index 5561461dc95..d5f3c1963cb 100644
+index b06ec608850..86f6a94cd79 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -118,6 +118,7 @@ static const struct object_ops process_ops =
@@ -6319,10 +6319,10 @@ index 5561461dc95..d5f3c1963cb 100644
      job_destroy                    /* destroy */
  };
 diff --git a/server/protocol.def b/server/protocol.def
-index e84de4368d5..1ed8960d303 100644
+index 6edac0aae25..cbd97a88a08 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4144,6 +4144,18 @@ struct handle_info
+@@ -4142,6 +4142,18 @@ struct handle_info
      int enable;                /* previous state of auto-repeat enable */
  @END
  
@@ -6342,7 +6342,7 @@ index e84de4368d5..1ed8960d303 100644
  /* Obtain a fd for the ntsync device */
  @REQ(get_linux_sync_device)
 diff --git a/server/queue.c b/server/queue.c
-index f57ea874ee5..23fb453aedb 100644
+index 5e601f0be8c..1e75a8d2d05 100644
 --- a/server/queue.c
 +++ b/server/queue.c
 @@ -178,6 +178,7 @@ static const struct object_ops msg_queue_ops =
@@ -6462,7 +6462,7 @@ index 55638a502bd..5f8db81eec9 100644
      symlink_destroy               /* destroy */
  };
 diff --git a/server/thread.c b/server/thread.c
-index b580220c02a..b0bd041d7ba 100644
+index 1cf5722c6e8..5cbe4dacffd 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -119,6 +119,7 @@ static const struct object_ops thread_apc_ops =
@@ -6514,7 +6514,7 @@ index 3cdb9e5be5f..87cfde364be 100644
      token_destroy              /* destroy */
  };
 diff --git a/server/window.c b/server/window.c
-index 1cad3989f6d..5978022866f 100644
+index 3a95d6a348c..581e6c859fd 100644
 --- a/server/window.c
 +++ b/server/window.c
 @@ -120,6 +120,7 @@ static const struct object_ops window_ops =
@@ -6526,7 +6526,7 @@ index 1cad3989f6d..5978022866f 100644
      window_destroy            /* destroy */
  };
 diff --git a/server/winstation.c b/server/winstation.c
-index b3746090ccf..4b8a4972971 100644
+index 9ff8a8fd167..ef696afcc6a 100644
 --- a/server/winstation.c
 +++ b/server/winstation.c
 @@ -88,6 +88,7 @@ static const struct object_ops winstation_ops =
@@ -6546,10 +6546,10 @@ index b3746090ccf..4b8a4972971 100644
      desktop_destroy               /* destroy */
  };
 -- 
-2.50.1
+2.51.0
 
 
-From 12dac72205f3beb885210e8087b63e6c44c139e8 Mon Sep 17 00:00:00 2001
+From 6a2483a4ae30cb30cf25eeac6046b3b3bb2c7d67 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Thu, 13 Mar 2025 14:09:42 -0500
 Subject: [PATCH 33/57] server: Create in-process synchronization objects for
@@ -6796,7 +6796,7 @@ index de07f674bda..da148496285 100644
  
  
 diff --git a/server/object.h b/server/object.h
-index 07f4bb67d6b..ba99feb1a05 100644
+index b333be6e43a..f9aa3fbe486 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -239,7 +239,11 @@ extern void abandon_mutexes( struct thread *thread );
@@ -6812,10 +6812,10 @@ index 07f4bb67d6b..ba99feb1a05 100644
  /* serial functions */
  
 -- 
-2.50.1
+2.51.0
 
 
-From 97b9c292e99baba88eb401ed25b695e67bf5aa6c Mon Sep 17 00:00:00 2001
+From 1491f2388621f1670eda970cbf1b0dc9717f498b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Thu, 13 Mar 2025 14:32:22 -0500
 Subject: [PATCH 34/57] server: Create in-process synchronization objects for
@@ -6864,7 +6864,7 @@ index da148496285..f2aee9ece3f 100644
  {
  }
 diff --git a/server/object.h b/server/object.h
-index ba99feb1a05..eea8705912d 100644
+index f9aa3fbe486..685cc437724 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -241,6 +241,7 @@ extern void abandon_mutexes( struct thread *thread );
@@ -7030,10 +7030,10 @@ index 094741bf36d..f3b8179f5fe 100644
      }
  }
 -- 
-2.50.1
+2.51.0
 
 
-From 0b20d8142ae14745dff57d88d986b931e6f61de9 Mon Sep 17 00:00:00 2001
+From 2ba8cbd84159cb01592cd2c6e9b4ba04e7159d96 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Thu, 13 Mar 2025 14:49:49 -0500
 Subject: [PATCH 35/57] server: Create in-process synchronization objects for
@@ -7349,7 +7349,7 @@ index 4218423ebac..671e1a77e36 100644
          release_object( mutex );
      }
 diff --git a/server/object.h b/server/object.h
-index eea8705912d..d956b1d45ad 100644
+index 685cc437724..4749e6c52ce 100644
 --- a/server/object.h
 +++ b/server/object.h
 @@ -241,10 +241,12 @@ extern void abandon_mutexes( struct thread *thread );
@@ -7366,10 +7366,10 @@ index eea8705912d..d956b1d45ad 100644
  /* serial functions */
  
 -- 
-2.50.1
+2.51.0
 
 
-From 18d25058bf729c589fee11cc5e695dd5cffb3ac8 Mon Sep 17 00:00:00 2001
+From 4d4687f7b5d5e8bccefa416794671ef9c345293a Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Thu, 11 Mar 2021 20:32:58 -0600
 Subject: [PATCH 36/57] server: Create in-process synchronization objects for
@@ -7479,10 +7479,10 @@ index ac598e85229..11e39c93a99 100644
  
      release_object( completion );
 -- 
-2.50.1
+2.51.0
 
 
-From 15e1790ce28c6300a9af0359325f3accb349fc6c Mon Sep 17 00:00:00 2001
+From 01e69e957c9773d7d09cdb1f35f541f5800a3687 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 19 Mar 2025 16:43:36 -0500
 Subject: [PATCH 37/57] server: Create in-process synchronization objects for
@@ -7580,10 +7580,10 @@ index 7070314ed8d..58263d5372b 100644
              wake_up( &screen_buffer->obj, 0 );
          LIST_FOR_EACH_ENTRY( input, &server->console->inputs, struct console_input, entry )
 -- 
-2.50.1
+2.51.0
 
 
-From e96aa03e891664e5e0c544233f844de4ff5d0ee1 Mon Sep 17 00:00:00 2001
+From 59f05fbc21f88d1161cdcf50cb8e5c81ba8c933c Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 19 Mar 2025 17:06:29 -0500
 Subject: [PATCH 38/57] server: Create in-process synchronization objects for
@@ -7690,10 +7690,10 @@ index 58263d5372b..a0b553cece7 100644
      release_object( server );
  }
 -- 
-2.50.1
+2.51.0
 
 
-From 8980f628ec6255e321111bad3966a7ee61722fb0 Mon Sep 17 00:00:00 2001
+From d0e5e4dfe9c00a1425e3a0f06c5c8d44e6e9fab5 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 19 Mar 2025 17:14:45 -0500
 Subject: [PATCH 39/57] server: Create in-process synchronization objects for
@@ -7796,10 +7796,10 @@ index a0b553cece7..2fde411ea1b 100644
              wake_up( &input->obj, 0 );
          LIST_FOR_EACH_ENTRY( output, &server->console->outputs, struct console_output, entry )
 -- 
-2.50.1
+2.51.0
 
 
-From 0a538bb8130a0c8385a25a3c6496b5e53ac49e3e Mon Sep 17 00:00:00 2001
+From 3562b3520c74fb1fadc0a74ce60cac481e76f246 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 19 Mar 2025 17:30:31 -0500
 Subject: [PATCH 40/57] server: Create in-process synchronization objects for
@@ -7901,10 +7901,10 @@ index 2fde411ea1b..7c7b0e6ad53 100644
              wake_up( &output->obj, 0 );
      }
 -- 
-2.50.1
+2.51.0
 
 
-From 6c54e77e240761338d3a72be51cc3bbe19fb89c7 Mon Sep 17 00:00:00 2001
+From a29bf8c243f9d3c2092a938e0a2a7327a1d99b47 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 19 Mar 2025 17:35:15 -0500
 Subject: [PATCH 41/57] server: Create in-process synchronization objects for
@@ -8007,10 +8007,10 @@ index 7c7b0e6ad53..ee8a50aad8d 100644
  
      if (req->read)
 -- 
-2.50.1
+2.51.0
 
 
-From 64ce583ef340943844718b10eb2e2d5e00a2c77c Mon Sep 17 00:00:00 2001
+From 9f3df4f25784910ae44f3a0a6e243549e9d6d029 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:11:03 -0600
 Subject: [PATCH 42/57] server: Create in-process synchronization objects for
@@ -8109,10 +8109,10 @@ index cab5f95eefd..2aaa87ed792 100644
      else
      {
 -- 
-2.50.1
+2.51.0
 
 
-From 99a8416aa0210a633b2a4a204564473f1e6c14e2 Mon Sep 17 00:00:00 2001
+From 0be9589ffa30a65afcb3ce573da787c4c572a39e Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 10 Mar 2021 11:02:42 -0600
 Subject: [PATCH 43/57] server: Create in-process synchronization objects for
@@ -8225,10 +8225,10 @@ index 1f9ceffd8d0..3c2bee4c485 100644
                  if (irp->file) grab_object( irp );
                  manager->current_call = irp;
 -- 
-2.50.1
+2.51.0
 
 
-From 7f372da682f0fccda5819a4ad48e7bb83577a2d6 Mon Sep 17 00:00:00 2001
+From 47c5072e19e7854e5fc8b4f8818666d5dd87a58e Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:13:20 -0600
 Subject: [PATCH 44/57] server: Create in-process synchronization objects for
@@ -8300,10 +8300,10 @@ index 6f1b0bec022..2b93ae2fa76 100644
  DECL_HANDLER(create_event)
  {
 -- 
-2.50.1
+2.51.0
 
 
-From c4417145ba749dd13d38590d8ee8c0d0dfb29ec5 Mon Sep 17 00:00:00 2001
+From 68a3b6e38f6036d67b56326a2377b5a2436035fa Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:16:53 -0600
 Subject: [PATCH 45/57] server: Create in-process synchronization objects for
@@ -8316,7 +8316,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  2 files changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/server/process.c b/server/process.c
-index d5f3c1963cb..960342a1eaa 100644
+index 86f6a94cd79..aaee0b94525 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -95,6 +95,7 @@ static unsigned int process_map_access( struct object *obj, unsigned int access
@@ -8336,7 +8336,7 @@ index d5f3c1963cb..960342a1eaa 100644
      no_close_handle,             /* close_handle */
      process_destroy              /* destroy */
  };
-@@ -689,6 +690,7 @@ struct process *create_process( int fd, struct process *parent, unsigned int fla
+@@ -690,6 +691,7 @@ struct process *create_process( int fd, struct process *parent, unsigned int fla
      process->rawinput_device_count = 0;
      process->rawinput_mouse  = NULL;
      process->rawinput_kbd    = NULL;
@@ -8344,7 +8344,7 @@ index d5f3c1963cb..960342a1eaa 100644
      memset( &process->image_info, 0, sizeof(process->image_info) );
      list_init( &process->rawinput_entry );
      list_init( &process->kernel_object );
-@@ -789,6 +791,8 @@ static void process_destroy( struct object *obj )
+@@ -790,6 +792,8 @@ static void process_destroy( struct object *obj )
      free( process->rawinput_devices );
      free( process->dir_cache );
      free( process->image );
@@ -8353,7 +8353,7 @@ index d5f3c1963cb..960342a1eaa 100644
  }
  
  /* dump a process on stdout for debugging purposes */
-@@ -822,6 +826,14 @@ static struct list *process_get_kernel_obj_list( struct object *obj )
+@@ -823,6 +827,14 @@ static struct list *process_get_kernel_obj_list( struct object *obj )
      return &process->kernel_object;
  }
  
@@ -8368,7 +8368,7 @@ index d5f3c1963cb..960342a1eaa 100644
  static struct security_descriptor *process_get_sd( struct object *obj )
  {
      static struct security_descriptor *process_default_sd;
-@@ -986,6 +998,7 @@ static void process_killed( struct process *process )
+@@ -987,6 +999,7 @@ static void process_killed( struct process *process )
      release_job_process( process );
      start_sigkill_timer( process );
      wake_up( &process->obj, 0 );
@@ -8377,10 +8377,10 @@ index d5f3c1963cb..960342a1eaa 100644
  
  /* add a thread to a process running threads list */
 diff --git a/server/process.h b/server/process.h
-index dfe8d628538..59ca4ecbabb 100644
+index 0023ce23671..9a4edc35fc8 100644
 --- a/server/process.h
 +++ b/server/process.h
-@@ -87,6 +87,7 @@ struct process
+@@ -88,6 +88,7 @@ struct process
      struct list          rawinput_entry;  /* entry in the rawinput process list */
      struct list          kernel_object;   /* list of kernel object pointers */
      struct pe_image_info image_info;      /* main exe image info */
@@ -8389,10 +8389,10 @@ index dfe8d628538..59ca4ecbabb 100644
  
  /* process functions */
 -- 
-2.50.1
+2.51.0
 
 
-From b2f8520e512715b4a9d103b14374e52157b5bab7 Mon Sep 17 00:00:00 2001
+From 8e9f22962efdc7d704f1b0700ea271920d742154 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:17:35 -0600
 Subject: [PATCH 46/57] server: Create in-process synchronization objects for
@@ -8404,7 +8404,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/server/process.c b/server/process.c
-index 960342a1eaa..0c2ef8bb20d 100644
+index aaee0b94525..83c2a9b2935 100644
 --- a/server/process.c
 +++ b/server/process.c
 @@ -194,6 +194,7 @@ struct type_descr job_type =
@@ -8466,10 +8466,10 @@ index 960342a1eaa..0c2ef8bb20d 100644
  
  static void job_dump( struct object *obj, int verbose )
 -- 
-2.50.1
+2.51.0
 
 
-From acb737ad39091c72fab16c1839f1429bec610868 Mon Sep 17 00:00:00 2001
+From 58136a995873f44b401a96234f87cc41f866230e Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:24:15 -0600
 Subject: [PATCH 47/57] server: Create in-process synchronization objects for
@@ -8481,7 +8481,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  1 file changed, 38 insertions(+), 3 deletions(-)
 
 diff --git a/server/queue.c b/server/queue.c
-index 23fb453aedb..4717281ea0e 100644
+index 1e75a8d2d05..f00c9b1a48e 100644
 --- a/server/queue.c
 +++ b/server/queue.c
 @@ -135,6 +135,7 @@ struct msg_queue
@@ -8509,7 +8509,7 @@ index 23fb453aedb..4717281ea0e 100644
      no_close_handle,           /* close_handle */
      msg_queue_destroy          /* destroy */
  };
-@@ -317,6 +319,7 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+@@ -318,6 +320,7 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
          queue->last_get_msg    = current_time;
          queue->keystate_lock   = 0;
          queue->ignore_post_msg = 0;
@@ -8517,7 +8517,7 @@ index 23fb453aedb..4717281ea0e 100644
          list_init( &queue->send_result );
          list_init( &queue->callback_result );
          list_init( &queue->pending_timers );
-@@ -733,7 +736,11 @@ static inline void set_queue_bits( struct msg_queue *queue, unsigned int bits )
+@@ -735,7 +738,11 @@ static inline void set_queue_bits( struct msg_queue *queue, unsigned int bits )
      }
      SHARED_WRITE_END;
  
@@ -8530,7 +8530,7 @@ index 23fb453aedb..4717281ea0e 100644
  }
  
  /* clear some queue bits */
-@@ -753,6 +760,8 @@ static inline void clear_queue_bits( struct msg_queue *queue, unsigned int bits
+@@ -755,6 +762,8 @@ static inline void clear_queue_bits( struct msg_queue *queue, unsigned int bits
          if (queue->keystate_lock) unlock_input_keystate( queue->input );
          queue->keystate_lock = 0;
      }
@@ -8539,7 +8539,7 @@ index 23fb453aedb..4717281ea0e 100644
  }
  
  /* check if message is matched by the filter */
-@@ -1346,6 +1355,15 @@ static void msg_queue_satisfied( struct object *obj, struct wait_queue_entry *en
+@@ -1348,6 +1357,15 @@ static void msg_queue_satisfied( struct object *obj, struct wait_queue_entry *en
          shared->changed_mask = 0;
      }
      SHARED_WRITE_END;
@@ -8555,7 +8555,7 @@ index 23fb453aedb..4717281ea0e 100644
  }
  
  static void msg_queue_destroy( struct object *obj )
-@@ -1391,6 +1409,7 @@ static void msg_queue_destroy( struct object *obj )
+@@ -1393,6 +1411,7 @@ static void msg_queue_destroy( struct object *obj )
      if (queue->hooks) release_object( queue->hooks );
      if (queue->fd) release_object( queue->fd );
      if (queue->shared) free_shared_object( queue->shared );
@@ -8563,7 +8563,7 @@ index 23fb453aedb..4717281ea0e 100644
  }
  
  static void msg_queue_poll_event( struct fd *fd, int event )
-@@ -1401,6 +1420,7 @@ static void msg_queue_poll_event( struct fd *fd, int event )
+@@ -1403,6 +1422,7 @@ static void msg_queue_poll_event( struct fd *fd, int event )
      if (event & (POLLERR | POLLHUP)) set_fd_events( fd, -1 );
      else set_fd_events( queue->fd, 0 );
      wake_up( &queue->obj, 0 );
@@ -8571,7 +8571,7 @@ index 23fb453aedb..4717281ea0e 100644
  }
  
  static void thread_input_dump( struct object *obj, int verbose )
-@@ -3185,7 +3205,15 @@ DECL_HANDLER(set_queue_mask)
+@@ -3182,7 +3202,15 @@ DECL_HANDLER(set_queue_mask)
                  }
                  SHARED_WRITE_END;
              }
@@ -8588,7 +8588,7 @@ index 23fb453aedb..4717281ea0e 100644
          }
      }
  }
-@@ -3207,6 +3235,9 @@ DECL_HANDLER(get_queue_status)
+@@ -3204,6 +3232,9 @@ DECL_HANDLER(get_queue_status)
              shared->changed_bits &= ~req->clear_bits;
          }
          SHARED_WRITE_END;
@@ -8598,7 +8598,7 @@ index 23fb453aedb..4717281ea0e 100644
      }
      else reply->wake_bits = reply->changed_bits = 0;
  }
-@@ -3405,6 +3436,9 @@ DECL_HANDLER(get_message)
+@@ -3402,6 +3433,9 @@ DECL_HANDLER(get_message)
      }
      SHARED_WRITE_END;
  
@@ -8608,7 +8608,7 @@ index 23fb453aedb..4717281ea0e 100644
      /* then check for posted messages */
      if ((filter & QS_POSTMESSAGE) &&
          get_posted_message( queue, queue->ignore_post_msg, get_win, req->get_first, req->get_last, req->flags, reply ))
-@@ -3474,6 +3508,7 @@ DECL_HANDLER(get_message)
+@@ -3471,6 +3505,7 @@ DECL_HANDLER(get_message)
      }
      SHARED_WRITE_END;
  
@@ -8617,10 +8617,10 @@ index 23fb453aedb..4717281ea0e 100644
      return;
  
 -- 
-2.50.1
+2.51.0
 
 
-From a4db0541ebb4e316c6306c8f8e43e8b0446e78e7 Mon Sep 17 00:00:00 2001
+From 215ee3f19a463a1ba52e77b3111eaa358956daad Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:26:35 -0600
 Subject: [PATCH 48/57] server: Create in-process synchronization objects for
@@ -8633,7 +8633,7 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  2 files changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/server/thread.c b/server/thread.c
-index b0bd041d7ba..f665bb86c3a 100644
+index 5cbe4dacffd..4930b9eaf63 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -190,6 +190,7 @@ static int thread_signaled( struct object *obj, struct wait_queue_entry *entry )
@@ -8661,7 +8661,7 @@ index b0bd041d7ba..f665bb86c3a 100644
  
      thread->creation_time = current_time;
      thread->exit_time     = 0;
-@@ -578,6 +580,14 @@ static struct list *thread_get_kernel_obj_list( struct object *obj )
+@@ -579,6 +581,14 @@ static struct list *thread_get_kernel_obj_list( struct object *obj )
      return &thread->kernel_object;
  }
  
@@ -8676,7 +8676,7 @@ index b0bd041d7ba..f665bb86c3a 100644
  /* cleanup everything that is no longer needed by a dead thread */
  /* used by destroy_thread and kill_thread */
  static void cleanup_thread( struct thread *thread )
-@@ -633,6 +643,7 @@ static void destroy_thread( struct object *obj )
+@@ -634,6 +644,7 @@ static void destroy_thread( struct object *obj )
      release_object( thread->process );
      if (thread->id) free_ptid( thread->id );
      if (thread->token) release_object( thread->token );
@@ -8684,7 +8684,7 @@ index b0bd041d7ba..f665bb86c3a 100644
  }
  
  /* dump a thread on stdout for debugging purposes */
-@@ -1519,6 +1530,7 @@ void kill_thread( struct thread *thread, int violent_death )
+@@ -1520,6 +1531,7 @@ void kill_thread( struct thread *thread, int violent_death )
      kill_console_processes( thread, 0 );
      abandon_mutexes( thread );
      wake_up( &thread->obj, 0 );
@@ -8705,10 +8705,10 @@ index 7a4eb983733..980ebd7d17c 100644
  
  extern struct thread *current;
 -- 
-2.50.1
+2.51.0
 
 
-From 1d50c451efa7d8ee1d3904610a845adeb27f9ea2 Mon Sep 17 00:00:00 2001
+From a9c58d4edd2d0745115445b16289487491bf23ac Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:29:38 -0600
 Subject: [PATCH 49/57] server: Create in-process synchronization objects for
@@ -8820,10 +8820,10 @@ index 0fb36338959..4d159653d63 100644
  
  /* create a timer */
 -- 
-2.50.1
+2.51.0
 
 
-From 08effd6967085f6433a4689bf177605d1b81b95b Mon Sep 17 00:00:00 2001
+From 505558103534f4b48e9944f2ee91ef74ea620fb4 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 17:40:57 -0600
 Subject: [PATCH 50/57] server: Create in-process synchronization objects for
@@ -8869,7 +8869,7 @@ index 3c2bee4c485..8c5ac281537 100644
      device_file_destroy               /* destroy */
  };
 diff --git a/server/fd.c b/server/fd.c
-index c6a0e366aca..793b58c9275 100644
+index ae4a08b743c..c7622c20bbd 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -159,6 +159,7 @@ struct fd
@@ -8880,7 +8880,7 @@ index c6a0e366aca..793b58c9275 100644
  };
  
  static void fd_dump( struct object *obj, int verbose );
-@@ -1668,6 +1669,7 @@ static void fd_destroy( struct object *obj )
+@@ -1664,6 +1665,7 @@ static void fd_destroy( struct object *obj )
          if (fd->unix_fd != -1) close( fd->unix_fd );
          free( fd->unix_name );
      }
@@ -8888,7 +8888,7 @@ index c6a0e366aca..793b58c9275 100644
  }
  
  /* check if the desired access is possible without violating */
-@@ -1786,6 +1788,7 @@ static struct fd *alloc_fd_object(void)
+@@ -1779,6 +1781,7 @@ static struct fd *alloc_fd_object(void)
      fd->poll_index = -1;
      fd->completion = NULL;
      fd->comp_flags = 0;
@@ -8896,7 +8896,7 @@ index c6a0e366aca..793b58c9275 100644
      init_async_queue( &fd->read_q );
      init_async_queue( &fd->write_q );
      init_async_queue( &fd->wait_q );
-@@ -1826,6 +1829,7 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
+@@ -1819,6 +1822,7 @@ struct fd *alloc_pseudo_fd( const struct fd_ops *fd_user_ops, struct object *use
      fd->poll_index = -1;
      fd->completion = NULL;
      fd->comp_flags = 0;
@@ -8904,7 +8904,7 @@ index c6a0e366aca..793b58c9275 100644
      fd->no_fd_status = STATUS_BAD_DEVICE_TYPE;
      init_async_queue( &fd->read_q );
      init_async_queue( &fd->write_q );
-@@ -2306,7 +2310,15 @@ void set_fd_signaled( struct fd *fd, int signaled )
+@@ -2299,7 +2303,15 @@ void set_fd_signaled( struct fd *fd, int signaled )
  {
      if (fd->comp_flags & FILE_SKIP_SET_EVENT_ON_HANDLE) return;
      fd->signaled = signaled;
@@ -8921,7 +8921,7 @@ index c6a0e366aca..793b58c9275 100644
  }
  
  /* check if events are pending and if yes return which one(s) */
-@@ -2348,6 +2360,17 @@ WCHAR *default_fd_get_full_name( struct object *obj, data_size_t max, data_size_
+@@ -2341,6 +2353,17 @@ WCHAR *default_fd_get_full_name( struct object *obj, data_size_t max, data_size_
      return ret;
  }
  
@@ -9062,10 +9062,10 @@ index a4353c9963a..71a65c26b83 100644
      sock_destroy                  /* destroy */
  };
 -- 
-2.50.1
+2.51.0
 
 
-From fde1345b32be77a069d5ad5a4d2d839be446a7d8 Mon Sep 17 00:00:00 2001
+From 04aa318ed2ebfb705462f29df27744f79a968d2b Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Wed, 19 Mar 2025 19:32:55 -0500
 Subject: [PATCH 51/57] server: Add a request to retrieve the in-process
@@ -9081,10 +9081,10 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  5 files changed, 72 insertions(+), 1 deletion(-)
 
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index f7a6a42c405..d36e8c2b192 100644
+index 05e4406e556..3d418454ee1 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -6001,6 +6001,19 @@ struct get_linux_sync_device_reply
+@@ -6004,6 +6004,19 @@ struct get_linux_sync_device_reply
  };
  
  
@@ -9104,7 +9104,7 @@ index f7a6a42c405..d36e8c2b192 100644
  enum request
  {
      REQ_new_process,
-@@ -6301,6 +6314,7 @@ enum request
+@@ -6305,6 +6318,7 @@ enum request
      REQ_get_next_thread,
      REQ_set_keyboard_repeat,
      REQ_get_linux_sync_device,
@@ -9112,7 +9112,7 @@ index f7a6a42c405..d36e8c2b192 100644
      REQ_NB_REQUESTS
  };
  
-@@ -6606,6 +6620,7 @@ union generic_request
+@@ -6611,6 +6625,7 @@ union generic_request
      struct get_next_thread_request get_next_thread_request;
      struct set_keyboard_repeat_request set_keyboard_repeat_request;
      struct get_linux_sync_device_request get_linux_sync_device_request;
@@ -9120,15 +9120,15 @@ index f7a6a42c405..d36e8c2b192 100644
  };
  union generic_reply
  {
-@@ -6909,8 +6924,9 @@ union generic_reply
+@@ -6915,8 +6930,9 @@ union generic_reply
      struct get_next_thread_reply get_next_thread_reply;
      struct set_keyboard_repeat_reply set_keyboard_repeat_reply;
      struct get_linux_sync_device_reply get_linux_sync_device_reply;
 +    struct get_linux_sync_obj_reply get_linux_sync_obj_reply;
  };
  
--#define SERVER_PROTOCOL_VERSION 885
-+#define SERVER_PROTOCOL_VERSION 886
+-#define SERVER_PROTOCOL_VERSION 891
++#define SERVER_PROTOCOL_VERSION 892
  
  #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
 diff --git a/server/inproc_sync.c b/server/inproc_sync.c
@@ -9166,10 +9166,10 @@ index 6471364c4de..c6f79081b6f 100644
 +#endif
 +}
 diff --git a/server/protocol.def b/server/protocol.def
-index 1ed8960d303..8571ec62a54 100644
+index cbd97a88a08..21181389ad5 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4160,3 +4160,11 @@ enum inproc_sync_type
+@@ -4158,3 +4158,11 @@ enum inproc_sync_type
  /* Obtain a fd for the ntsync device */
  @REQ(get_linux_sync_device)
  @END
@@ -9182,10 +9182,10 @@ index 1ed8960d303..8571ec62a54 100644
 +    unsigned int access;        /* handle access rights */
 +@END
 diff --git a/server/request_handlers.h b/server/request_handlers.h
-index dfed7904738..11ef472c579 100644
+index 4eb225be803..055345df769 100644
 --- a/server/request_handlers.h
 +++ b/server/request_handlers.h
-@@ -305,6 +305,7 @@ DECL_HANDLER(get_next_process);
+@@ -306,6 +306,7 @@ DECL_HANDLER(get_next_process);
  DECL_HANDLER(get_next_thread);
  DECL_HANDLER(set_keyboard_repeat);
  DECL_HANDLER(get_linux_sync_device);
@@ -9193,7 +9193,7 @@ index dfed7904738..11ef472c579 100644
  
  typedef void (*req_handler)( const void *req, void *reply );
  static const req_handler req_handlers[REQ_NB_REQUESTS] =
-@@ -607,6 +608,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
+@@ -609,6 +610,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
      (req_handler)req_get_next_thread,
      (req_handler)req_set_keyboard_repeat,
      (req_handler)req_get_linux_sync_device,
@@ -9201,7 +9201,7 @@ index dfed7904738..11ef472c579 100644
  };
  
  C_ASSERT( sizeof(abstime_t) == 8 );
-@@ -2305,3 +2307,8 @@ C_ASSERT( sizeof(struct set_keyboard_repeat_request) == 24 );
+@@ -2304,3 +2306,8 @@ C_ASSERT( sizeof(struct set_keyboard_repeat_request) == 24 );
  C_ASSERT( offsetof(struct set_keyboard_repeat_reply, enable) == 8 );
  C_ASSERT( sizeof(struct set_keyboard_repeat_reply) == 16 );
  C_ASSERT( sizeof(struct get_linux_sync_device_request) == 16 );
@@ -9211,10 +9211,10 @@ index dfed7904738..11ef472c579 100644
 +C_ASSERT( offsetof(struct get_linux_sync_obj_reply, access) == 12 );
 +C_ASSERT( sizeof(struct get_linux_sync_obj_reply) == 16 );
 diff --git a/server/request_trace.h b/server/request_trace.h
-index 6fd490ca68e..92c94ce616f 100644
+index b3685940de3..da9594f348c 100644
 --- a/server/request_trace.h
 +++ b/server/request_trace.h
-@@ -3403,6 +3403,17 @@ static void dump_get_linux_sync_device_request( const struct get_linux_sync_devi
+@@ -3406,6 +3406,17 @@ static void dump_get_linux_sync_device_request( const struct get_linux_sync_devi
  {
  }
  
@@ -9232,7 +9232,7 @@ index 6fd490ca68e..92c94ce616f 100644
  typedef void (*dump_func)( const void *req );
  
  static const dump_func req_dumpers[REQ_NB_REQUESTS] =
-@@ -3705,6 +3716,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
+@@ -3709,6 +3720,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_thread_request,
      (dump_func)dump_set_keyboard_repeat_request,
      (dump_func)dump_get_linux_sync_device_request,
@@ -9240,7 +9240,7 @@ index 6fd490ca68e..92c94ce616f 100644
  };
  
  static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
-@@ -4007,6 +4019,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
+@@ -4012,6 +4024,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_next_thread_reply,
      (dump_func)dump_set_keyboard_repeat_reply,
      NULL,
@@ -9248,7 +9248,7 @@ index 6fd490ca68e..92c94ce616f 100644
  };
  
  static const char * const req_names[REQ_NB_REQUESTS] =
-@@ -4309,6 +4322,7 @@ static const char * const req_names[REQ_NB_REQUESTS] =
+@@ -4315,6 +4328,7 @@ static const char * const req_names[REQ_NB_REQUESTS] =
      "get_next_thread",
      "set_keyboard_repeat",
      "get_linux_sync_device",
@@ -9257,10 +9257,10 @@ index 6fd490ca68e..92c94ce616f 100644
  
  static const struct
 -- 
-2.50.1
+2.51.0
 
 
-From d8427b4e45c91b13876c5548f10c308bc028b200 Mon Sep 17 00:00:00 2001
+From c4af59d3bf2d40d9d35ba1d3b90b245471030aa2 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Tue, 9 Mar 2021 11:32:25 -0600
 Subject: [PATCH 52/57] server: Introduce select_inproc_queue and
@@ -9276,10 +9276,10 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  5 files changed, 109 insertions(+), 1 deletion(-)
 
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index d36e8c2b192..9b906a650c7 100644
+index 3d418454ee1..ed64ffc9187 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -6014,6 +6014,30 @@ struct get_linux_sync_obj_reply
+@@ -6017,6 +6017,30 @@ struct get_linux_sync_obj_reply
  };
  
  
@@ -9310,7 +9310,7 @@ index d36e8c2b192..9b906a650c7 100644
  enum request
  {
      REQ_new_process,
-@@ -6315,6 +6339,8 @@ enum request
+@@ -6319,6 +6343,8 @@ enum request
      REQ_set_keyboard_repeat,
      REQ_get_linux_sync_device,
      REQ_get_linux_sync_obj,
@@ -9319,7 +9319,7 @@ index d36e8c2b192..9b906a650c7 100644
      REQ_NB_REQUESTS
  };
  
-@@ -6621,6 +6647,8 @@ union generic_request
+@@ -6626,6 +6652,8 @@ union generic_request
      struct set_keyboard_repeat_request set_keyboard_repeat_request;
      struct get_linux_sync_device_request get_linux_sync_device_request;
      struct get_linux_sync_obj_request get_linux_sync_obj_request;
@@ -9328,7 +9328,7 @@ index d36e8c2b192..9b906a650c7 100644
  };
  union generic_reply
  {
-@@ -6925,8 +6953,10 @@ union generic_reply
+@@ -6931,8 +6959,10 @@ union generic_reply
      struct set_keyboard_repeat_reply set_keyboard_repeat_reply;
      struct get_linux_sync_device_reply get_linux_sync_device_reply;
      struct get_linux_sync_obj_reply get_linux_sync_obj_reply;
@@ -9336,15 +9336,15 @@ index d36e8c2b192..9b906a650c7 100644
 +    struct unselect_inproc_queue_reply unselect_inproc_queue_reply;
  };
  
--#define SERVER_PROTOCOL_VERSION 886
-+#define SERVER_PROTOCOL_VERSION 887
+-#define SERVER_PROTOCOL_VERSION 892
++#define SERVER_PROTOCOL_VERSION 893
  
  #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
 diff --git a/server/protocol.def b/server/protocol.def
-index 8571ec62a54..f3e2226a3ba 100644
+index 21181389ad5..9044a5c9b2b 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4168,3 +4168,14 @@ enum inproc_sync_type
+@@ -4166,3 +4166,14 @@ enum inproc_sync_type
      int type;                   /* object type */
      unsigned int access;        /* handle access rights */
  @END
@@ -9360,7 +9360,7 @@ index 8571ec62a54..f3e2226a3ba 100644
 +    int          signaled;        /* was the queue signaled? */
 +@END
 diff --git a/server/queue.c b/server/queue.c
-index 4717281ea0e..708d0eca899 100644
+index f00c9b1a48e..d4b5aedb2a2 100644
 --- a/server/queue.c
 +++ b/server/queue.c
 @@ -136,6 +136,7 @@ struct msg_queue
@@ -9371,7 +9371,7 @@ index 4717281ea0e..708d0eca899 100644
  };
  
  struct hotkey
-@@ -320,6 +321,7 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
+@@ -321,6 +322,7 @@ static struct msg_queue *create_msg_queue( struct thread *thread, struct thread_
          queue->keystate_lock   = 0;
          queue->ignore_post_msg = 0;
          queue->inproc_sync     = create_inproc_event( TRUE, FALSE );
@@ -9379,7 +9379,7 @@ index 4717281ea0e..708d0eca899 100644
          list_init( &queue->send_result );
          list_init( &queue->callback_result );
          list_init( &queue->pending_timers );
-@@ -1290,6 +1292,10 @@ static int is_queue_hung( struct msg_queue *queue )
+@@ -1292,6 +1294,10 @@ static int is_queue_hung( struct msg_queue *queue )
          if (get_wait_queue_thread(entry)->queue == queue)
              return 0;  /* thread is waiting on queue -> not hung */
      }
@@ -9390,7 +9390,7 @@ index 4717281ea0e..708d0eca899 100644
      return 1;
  }
  
-@@ -4312,3 +4318,42 @@ DECL_HANDLER(set_keyboard_repeat)
+@@ -4311,3 +4317,42 @@ DECL_HANDLER(set_keyboard_repeat)
  
      release_object( desktop );
  }
@@ -9434,10 +9434,10 @@ index 4717281ea0e..708d0eca899 100644
 +    }
 +}
 diff --git a/server/request_handlers.h b/server/request_handlers.h
-index 11ef472c579..3a9717eb8df 100644
+index 055345df769..c7769ef7e30 100644
 --- a/server/request_handlers.h
 +++ b/server/request_handlers.h
-@@ -306,6 +306,8 @@ DECL_HANDLER(get_next_thread);
+@@ -307,6 +307,8 @@ DECL_HANDLER(get_next_thread);
  DECL_HANDLER(set_keyboard_repeat);
  DECL_HANDLER(get_linux_sync_device);
  DECL_HANDLER(get_linux_sync_obj);
@@ -9446,7 +9446,7 @@ index 11ef472c579..3a9717eb8df 100644
  
  typedef void (*req_handler)( const void *req, void *reply );
  static const req_handler req_handlers[REQ_NB_REQUESTS] =
-@@ -609,6 +611,8 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
+@@ -611,6 +613,8 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
      (req_handler)req_set_keyboard_repeat,
      (req_handler)req_get_linux_sync_device,
      (req_handler)req_get_linux_sync_obj,
@@ -9455,7 +9455,7 @@ index 11ef472c579..3a9717eb8df 100644
  };
  
  C_ASSERT( sizeof(abstime_t) == 8 );
-@@ -2312,3 +2316,6 @@ C_ASSERT( sizeof(struct get_linux_sync_obj_request) == 16 );
+@@ -2311,3 +2315,6 @@ C_ASSERT( sizeof(struct get_linux_sync_obj_request) == 16 );
  C_ASSERT( offsetof(struct get_linux_sync_obj_reply, type) == 8 );
  C_ASSERT( offsetof(struct get_linux_sync_obj_reply, access) == 12 );
  C_ASSERT( sizeof(struct get_linux_sync_obj_reply) == 16 );
@@ -9463,10 +9463,10 @@ index 11ef472c579..3a9717eb8df 100644
 +C_ASSERT( offsetof(struct unselect_inproc_queue_request, signaled) == 12 );
 +C_ASSERT( sizeof(struct unselect_inproc_queue_request) == 16 );
 diff --git a/server/request_trace.h b/server/request_trace.h
-index 92c94ce616f..d341cf13227 100644
+index da9594f348c..c7259aa92c3 100644
 --- a/server/request_trace.h
 +++ b/server/request_trace.h
-@@ -3414,6 +3414,15 @@ static void dump_get_linux_sync_obj_reply( const struct get_linux_sync_obj_reply
+@@ -3417,6 +3417,15 @@ static void dump_get_linux_sync_obj_reply( const struct get_linux_sync_obj_reply
      fprintf( stderr, ", access=%08x", req->access );
  }
  
@@ -9482,7 +9482,7 @@ index 92c94ce616f..d341cf13227 100644
  typedef void (*dump_func)( const void *req );
  
  static const dump_func req_dumpers[REQ_NB_REQUESTS] =
-@@ -3717,6 +3726,8 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
+@@ -3721,6 +3730,8 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_set_keyboard_repeat_request,
      (dump_func)dump_get_linux_sync_device_request,
      (dump_func)dump_get_linux_sync_obj_request,
@@ -9491,7 +9491,7 @@ index 92c94ce616f..d341cf13227 100644
  };
  
  static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
-@@ -4020,6 +4031,8 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
+@@ -4025,6 +4036,8 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_set_keyboard_repeat_reply,
      NULL,
      (dump_func)dump_get_linux_sync_obj_reply,
@@ -9500,7 +9500,7 @@ index 92c94ce616f..d341cf13227 100644
  };
  
  static const char * const req_names[REQ_NB_REQUESTS] =
-@@ -4323,6 +4336,8 @@ static const char * const req_names[REQ_NB_REQUESTS] =
+@@ -4329,6 +4342,8 @@ static const char * const req_names[REQ_NB_REQUESTS] =
      "set_keyboard_repeat",
      "get_linux_sync_device",
      "get_linux_sync_obj",
@@ -9510,10 +9510,10 @@ index 92c94ce616f..d341cf13227 100644
  
  static const struct
 -- 
-2.50.1
+2.51.0
 
 
-From 96345f975362cbfc87d5e01b7f0eb1198c0c93c6 Mon Sep 17 00:00:00 2001
+From 51a8d7211a4628d38bbdc505ddead2b6eb7d910a Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Thu, 21 Apr 2022 16:11:14 -0500
 Subject: [PATCH 53/57] server: Allow creating an event object for client-side
@@ -9530,10 +9530,10 @@ Signed-off-by: Vasiliy Stelmachenok <ventureo@cachyos.org>
  6 files changed, 64 insertions(+), 1 deletion(-)
 
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index 9b906a650c7..5d4a733134b 100644
+index ed64ffc9187..6e5ee0e896c 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
-@@ -6038,6 +6038,20 @@ struct unselect_inproc_queue_reply
+@@ -6041,6 +6041,20 @@ struct unselect_inproc_queue_reply
  };
  
  
@@ -9554,7 +9554,7 @@ index 9b906a650c7..5d4a733134b 100644
  enum request
  {
      REQ_new_process,
-@@ -6341,6 +6355,7 @@ enum request
+@@ -6345,6 +6359,7 @@ enum request
      REQ_get_linux_sync_obj,
      REQ_select_inproc_queue,
      REQ_unselect_inproc_queue,
@@ -9562,7 +9562,7 @@ index 9b906a650c7..5d4a733134b 100644
      REQ_NB_REQUESTS
  };
  
-@@ -6649,6 +6664,7 @@ union generic_request
+@@ -6654,6 +6669,7 @@ union generic_request
      struct get_linux_sync_obj_request get_linux_sync_obj_request;
      struct select_inproc_queue_request select_inproc_queue_request;
      struct unselect_inproc_queue_request unselect_inproc_queue_request;
@@ -9570,22 +9570,22 @@ index 9b906a650c7..5d4a733134b 100644
  };
  union generic_reply
  {
-@@ -6955,8 +6971,9 @@ union generic_reply
+@@ -6961,8 +6977,9 @@ union generic_reply
      struct get_linux_sync_obj_reply get_linux_sync_obj_reply;
      struct select_inproc_queue_reply select_inproc_queue_reply;
      struct unselect_inproc_queue_reply unselect_inproc_queue_reply;
 +    struct get_inproc_alert_event_reply get_inproc_alert_event_reply;
  };
  
--#define SERVER_PROTOCOL_VERSION 887
-+#define SERVER_PROTOCOL_VERSION 888
+-#define SERVER_PROTOCOL_VERSION 893
++#define SERVER_PROTOCOL_VERSION 894
  
  #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
 diff --git a/server/protocol.def b/server/protocol.def
-index f3e2226a3ba..9b84b964ec9 100644
+index 9044a5c9b2b..ee895ab9f24 100644
 --- a/server/protocol.def
 +++ b/server/protocol.def
-@@ -4179,3 +4179,10 @@ enum inproc_sync_type
+@@ -4177,3 +4177,10 @@ enum inproc_sync_type
  @REQ(unselect_inproc_queue)
      int          signaled;        /* was the queue signaled? */
  @END
@@ -9597,10 +9597,10 @@ index f3e2226a3ba..9b84b964ec9 100644
 +    obj_handle_t handle;          /* handle to the event */
 +@END
 diff --git a/server/request_handlers.h b/server/request_handlers.h
-index 3a9717eb8df..026c2cb2893 100644
+index c7769ef7e30..95fe556efd0 100644
 --- a/server/request_handlers.h
 +++ b/server/request_handlers.h
-@@ -308,6 +308,7 @@ DECL_HANDLER(get_linux_sync_device);
+@@ -309,6 +309,7 @@ DECL_HANDLER(get_linux_sync_device);
  DECL_HANDLER(get_linux_sync_obj);
  DECL_HANDLER(select_inproc_queue);
  DECL_HANDLER(unselect_inproc_queue);
@@ -9608,7 +9608,7 @@ index 3a9717eb8df..026c2cb2893 100644
  
  typedef void (*req_handler)( const void *req, void *reply );
  static const req_handler req_handlers[REQ_NB_REQUESTS] =
-@@ -613,6 +614,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
+@@ -615,6 +616,7 @@ static const req_handler req_handlers[REQ_NB_REQUESTS] =
      (req_handler)req_get_linux_sync_obj,
      (req_handler)req_select_inproc_queue,
      (req_handler)req_unselect_inproc_queue,
@@ -9616,7 +9616,7 @@ index 3a9717eb8df..026c2cb2893 100644
  };
  
  C_ASSERT( sizeof(abstime_t) == 8 );
-@@ -2319,3 +2321,6 @@ C_ASSERT( sizeof(struct get_linux_sync_obj_reply) == 16 );
+@@ -2318,3 +2320,6 @@ C_ASSERT( sizeof(struct get_linux_sync_obj_reply) == 16 );
  C_ASSERT( sizeof(struct select_inproc_queue_request) == 16 );
  C_ASSERT( offsetof(struct unselect_inproc_queue_request, signaled) == 12 );
  C_ASSERT( sizeof(struct unselect_inproc_queue_request) == 16 );
@@ -9624,10 +9624,10 @@ index 3a9717eb8df..026c2cb2893 100644
 +C_ASSERT( offsetof(struct get_inproc_alert_event_reply, handle) == 8 );
 +C_ASSERT( sizeof(struct get_inproc_alert_event_reply) == 16 );
 diff --git a/server/request_trace.h b/server/request_trace.h
-index d341cf13227..e7bb89c6c72 100644
+index c7259aa92c3..144844d8420 100644
 --- a/server/request_trace.h
 +++ b/server/request_trace.h
-@@ -3423,6 +3423,15 @@ static void dump_unselect_inproc_queue_request( const struct unselect_inproc_que
+@@ -3426,6 +3426,15 @@ static void dump_unselect_inproc_queue_request( const struct unselect_inproc_que
      fprintf( stderr, " signaled=%d", req->signaled );
  }
  
@@ -9643,7 +9643,7 @@ index d341cf13227..e7bb89c6c72 100644
  typedef void (*dump_func)( const void *req );
  
  static const dump_func req_dumpers[REQ_NB_REQUESTS] =
-@@ -3728,6 +3737,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
+@@ -3732,6 +3741,7 @@ static const dump_func req_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_linux_sync_obj_request,
      (dump_func)dump_select_inproc_queue_request,
      (dump_func)dump_unselect_inproc_queue_request,
@@ -9651,7 +9651,7 @@ index d341cf13227..e7bb89c6c72 100644
  };
  
  static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
-@@ -4033,6 +4043,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
+@@ -4038,6 +4048,7 @@ static const dump_func reply_dumpers[REQ_NB_REQUESTS] =
      (dump_func)dump_get_linux_sync_obj_reply,
      NULL,
      NULL,
@@ -9659,7 +9659,7 @@ index d341cf13227..e7bb89c6c72 100644
  };
  
  static const char * const req_names[REQ_NB_REQUESTS] =
-@@ -4338,6 +4349,7 @@ static const char * const req_names[REQ_NB_REQUESTS] =
+@@ -4344,6 +4355,7 @@ static const char * const req_names[REQ_NB_REQUESTS] =
      "get_linux_sync_obj",
      "select_inproc_queue",
      "unselect_inproc_queue",
@@ -9668,7 +9668,7 @@ index d341cf13227..e7bb89c6c72 100644
  
  static const struct
 diff --git a/server/thread.c b/server/thread.c
-index f665bb86c3a..e8f0c40421c 100644
+index 4930b9eaf63..e40740849b2 100644
 --- a/server/thread.c
 +++ b/server/thread.c
 @@ -423,6 +423,7 @@ static inline void init_thread_structure( struct thread *thread )
@@ -9679,7 +9679,7 @@ index f665bb86c3a..e8f0c40421c 100644
  
      thread->creation_time = current_time;
      thread->exit_time     = 0;
-@@ -644,6 +645,7 @@ static void destroy_thread( struct object *obj )
+@@ -645,6 +646,7 @@ static void destroy_thread( struct object *obj )
      if (thread->id) free_ptid( thread->id );
      if (thread->token) release_object( thread->token );
      if (use_inproc_sync()) close( thread->inproc_sync );
@@ -9687,7 +9687,7 @@ index f665bb86c3a..e8f0c40421c 100644
  }
  
  /* dump a thread on stdout for debugging purposes */
-@@ -1387,8 +1389,13 @@ static int queue_apc( struct process *process, struct thread *thread, struct thr
+@@ -1388,8 +1390,13 @@ static int queue_apc( struct process *process, struct thread *thread, struct thr
      grab_object( apc );
      list_add_tail( queue, &apc->entry );
      if (!list_prev( queue, &apc->entry ))  /* first one */
@@ -9701,7 +9701,7 @@ index f665bb86c3a..e8f0c40421c 100644
      return 1;
  }
  
-@@ -1419,6 +1426,8 @@ void thread_cancel_apc( struct thread *thread, struct object *owner, enum apc_ty
+@@ -1420,6 +1427,8 @@ void thread_cancel_apc( struct thread *thread, struct object *owner, enum apc_ty
          apc->executed = 1;
          wake_up( &apc->obj, 0 );
          release_object( apc );
@@ -9710,7 +9710,7 @@ index f665bb86c3a..e8f0c40421c 100644
          return;
      }
  }
-@@ -1433,6 +1442,9 @@ static struct thread_apc *thread_dequeue_apc( struct thread *thread, int system
+@@ -1434,6 +1443,9 @@ static struct thread_apc *thread_dequeue_apc( struct thread *thread, int system
      {
          apc = LIST_ENTRY( ptr, struct thread_apc, entry );
          list_remove( ptr );
@@ -9720,7 +9720,7 @@ index f665bb86c3a..e8f0c40421c 100644
      }
      return apc;
  }
-@@ -2301,3 +2313,12 @@ DECL_HANDLER(get_next_thread)
+@@ -2302,3 +2314,12 @@ DECL_HANDLER(get_next_thread)
      set_error( STATUS_NO_MORE_ENTRIES );
      release_object( process );
  }
@@ -9746,10 +9746,10 @@ index 980ebd7d17c..bd31c58466c 100644
  
  extern struct thread *current;
 -- 
-2.50.1
+2.51.0
 
 
-From 0c8462d7f2b470d3c17574083637f11144539839 Mon Sep 17 00:00:00 2001
+From f7a47ea39c2f6c5bc1966bc04870955b1b64f740 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Mon, 8 Mar 2021 18:07:23 -0600
 Subject: [PATCH 54/57] ntdll: Introduce a helper to wait on an internal server
@@ -9779,10 +9779,10 @@ index 2e6331b23a2..414a0ad10cf 100644
          }
          else  /* Unix lock conflict, sleep a bit and retry */
 diff --git a/dlls/ntdll/unix/process.c b/dlls/ntdll/unix/process.c
-index fdb81845a7e..1a6b07667ef 100644
+index 3321640ba97..2ec119d5db1 100644
 --- a/dlls/ntdll/unix/process.c
 +++ b/dlls/ntdll/unix/process.c
-@@ -879,7 +879,7 @@ NTSTATUS WINAPI NtCreateUserProcess( HANDLE *process_handle_ptr, HANDLE *thread_
+@@ -880,7 +880,7 @@ NTSTATUS WINAPI NtCreateUserProcess( HANDLE *process_handle_ptr, HANDLE *thread_
  
      /* wait for the new process info to be ready */
  
@@ -9849,7 +9849,7 @@ index e7b9cac6575..39c6fd4acba 100644
      if (status != WAIT_OBJECT_0) goto done;
  
 diff --git a/dlls/ntdll/unix/thread.c b/dlls/ntdll/unix/thread.c
-index 6c1ea2d0a00..ab08dc57413 100644
+index 7f61a37bf2b..d4b9c6a402d 100644
 --- a/dlls/ntdll/unix/thread.c
 +++ b/dlls/ntdll/unix/thread.c
 @@ -1832,7 +1832,7 @@ NTSTATUS get_thread_context( HANDLE handle, void *context, BOOL *self, USHORT ma
@@ -9883,10 +9883,10 @@ index b14a6e52d62..22bb0978803 100644
  
  static inline BOOL in_wow64_call(void)
 -- 
-2.50.1
+2.51.0
 
 
-From 4dae5db2516caf93135c9013db901b2975eb61db Mon Sep 17 00:00:00 2001
+From 22bfa31ef9fc28928fe24bbfa97831d78a0fc8e8 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Tue, 6 Apr 2021 15:37:02 -0500
 Subject: [PATCH 55/57] ntdll: Use in-process synchronization objects.
@@ -10597,10 +10597,10 @@ index c6f79081b6f..f3c6a37fc8c 100644
  
  int create_inproc_event( int manual_reset, int signaled )
 -- 
-2.50.1
+2.51.0
 
 
-From 7ad496ca5460837c87fa43d9bc415d20d031f352 Mon Sep 17 00:00:00 2001
+From 9ed8f28b902d839f16b0738ec3b2ebc1c9d448da Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Tue, 20 Apr 2021 17:55:59 -0500
 Subject: [PATCH 56/57] ntdll: Use server_wait_for_object() when waiting on
@@ -10634,10 +10634,10 @@ index 8d26564de4b..080d4654c76 100644
  
      ret = linux_wait_objs( device, count, objs, wait_any, alertable, timeout );
 -- 
-2.50.1
+2.51.0
 
 
-From e43f8ac52e99831b4ee1d2aeea72f5fa4cd1cd84 Mon Sep 17 00:00:00 2001
+From 215acdefd15af5ee4133417cdcb6aebff8362b75 Mon Sep 17 00:00:00 2001
 From: Elizabeth Figura <zfigura@codeweavers.com>
 Date: Fri, 12 Mar 2021 15:04:17 -0600
 Subject: [PATCH 57/57] ntdll: Cache in-process synchronization objects.
@@ -10957,5 +10957,5 @@ index 84667d989dd..0db2d50e439 100644
  extern void call_raise_user_exception_dispatcher(void);
  
 -- 
-2.50.1
+2.51.0
 

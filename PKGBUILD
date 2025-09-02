@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.13.r58.g288a40d05c8
-pkgrel=2
+pkgver=10.14.r0.g1d1e5fb3e51
+pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.13-staging.patch
+  ntsync-10.14-staging.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
   0001-HACK-ws2_32-Block-first-internet-connection-for-some.patch
@@ -33,7 +33,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  '2e41e91daa7bcd946ef58072b4b5681dd252343e8b3664689639b7abdd85c149'
+  'a28375f726f90b266568458fac036f1f1894753793548e070f5115967c8c0bfc'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
   '7f524fff2146871019dd4d8dfb278dec6bb4dec71870d3ddfb5a7004c29a6f57'
@@ -118,8 +118,8 @@ prepare() {
   ../wine-staging/staging/patchinstall.py --backend=git-apply --all \
     -W server-Signal_Thread
 
-  # NTSync for Wine 10.13
-  patch -Np1 -i "${srcdir}/ntsync-10.13-staging.patch"
+  # NTSync for Wine 10.14
+  patch -Np1 -i "${srcdir}/ntsync-10.14-staging.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"
