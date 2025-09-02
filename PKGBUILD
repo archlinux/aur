@@ -3,7 +3,7 @@
 
 pkgname=kcm-fcitx
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE Config Module for Fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/kcm-fcitx"
