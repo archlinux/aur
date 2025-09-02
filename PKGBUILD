@@ -5,7 +5,7 @@
 
 pkgname=obs-studio-with-websockets
 pkgver=31.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -28,7 +28,7 @@ sha256sums=('9014c849bfb77b44021e09ea84e698c4c272be15fd2ac156b447797ce72c59fa')
 provides=('obs-studio')
 
 build() {
-  export CFLAGS+=" -Wno-error=deprecated-declarations"
+  export CXXFLAGS+=" -Wno-error=deprecated-declarations"
   cmake -B build -S obs-studio-$pkgver \
     -DENABLE_NATIVE_NVENC=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
