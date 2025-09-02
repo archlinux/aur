@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgver.zip")
 
 sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
-            '0221fd24f1e44106c26a3c8e0def158dda5b15885fceeaedd5a26bf53dd9818b'
+            '81aef5e6123ddcbb838f915fbff5846b769b68e9ad2fc5d0f1d68370319aed2b'
             '46d2c3bb5bb6533f23b5732f64f45cc17cc17c23abdf31ea34bf923f24f49df8')
 
 build() {
