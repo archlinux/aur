@@ -1,6 +1,6 @@
 pkgname=moonasst
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Moonasst Qt application"
 arch=('x86_64')
 url="https://gitee.com/nemozz-hz/moonasst"
@@ -17,7 +17,7 @@ package() {
 	# 检查moonasst二进制文件是否存在
 	if [ ! -f "moonasst" ]; then
 		echo "错误: 找不到moonasst二进制文件"
-		echo "请确保在GitHub仓库的根目录中有moonasst可执行文件"
+		echo "请确保在Gitee仓库的根目录中有moonasst可执行文件"
 		exit 1
 	fi
 	
@@ -30,7 +30,7 @@ package() {
 	# 检查moonlight二进制文件是否存在
 	if [ ! -f "moonlight" ]; then
 		echo "错误: 找不到moonlight二进制文件"
-		echo "请确保在GitHub仓库的根目录中有moonlight可执行文件"
+		echo "请确保在Gitee仓库的根目录中有moonlight可执行文件"
 		exit 1
 	fi
 	
@@ -42,7 +42,7 @@ package() {
 	
 	# 创建目标目录
 	install -dm775 "$pkgdir/opt/exec"
-	install -dm775 "$pkgdir/opt/exec/Moonlight Game Streaming Project"
+	install -dm777 "$pkgdir/opt/exec/Moonlight Game Streaming Project"
 	
 	# 安装二进制文件
 	install -Dm755 moonasst "$pkgdir/opt/exec/moonasst"
@@ -54,7 +54,7 @@ package() {
 	
 	# 安装moonlight配置文件
 	if [ -f "Moonlight.ini" ]; then
-		install -Dm644 Moonlight.ini "$pkgdir/opt/exec/Moonlight Game Streaming Project/Moonlight.ini"
+		install -Dm777 Moonlight.ini "$pkgdir/opt/exec/Moonlight Game Streaming Project/Moonlight.ini"
 	fi
 	
 	# 创建桌面文件
