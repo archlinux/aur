@@ -2,7 +2,7 @@
 # Contributor: Jonathan "nekonyuu" Raffre <nk@nyuu.eu>
 pkgname=inkdrop
 _pkgname=inkdrop
-pkgver=5.11.0
+pkgver=5.11.1
 pkgrel=1
 pkgdesc="The Note-taking App with Robust Markdown Editor"
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=(
     'a7a5d6324a17a99cc09a58141cacd4b7'
 )
 source_x86_64=(${_pkgname}-${pkgver}.zip::https://d3ip0rje8grhnl.cloudfront.net/v${pkgver}/Inkdrop-${pkgver}-Linux.zip)
-md5sums_x86_64=('1cc01f31abe54722d2811d27bebaf6f0')
+md5sums_x86_64=('1bc536a0eed079ef48fe7678265eaa6c')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/inkdrop ${pkgdir}/usr/share/pixmaps ${pkgdir}/usr/share/applications ${pkgdir}/usr/bin
