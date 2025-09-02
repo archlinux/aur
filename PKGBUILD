@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=moon
-pkgver=1.39.4
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('20d4d16032ff0502c346a7772d3f623f1ba42b5d66f472ea03ab3f69eca042e5')
+sha256sums=('d9422f60aa28061e2833ad85ed7b35542826ad64395613cb0c46c000cbdc9842')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
