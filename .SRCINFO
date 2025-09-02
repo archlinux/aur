@@ -1,0 +1,22 @@
+pkgbase = fchat-horizon-git
+	pkgdesc = Horizon (F-Chat) Electron client - development snapshot using system Electron runtime
+	pkgver = 1.33.4.r1.g8a74230
+	pkgrel = 1
+	url = https://github.com/Fchat-Horizon/Horizon
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = electron
+	depends = libnotify
+	depends = libsecret
+	depends = libappindicator-gtk3
+	optdepends = xdg-utils: open URLs with default handlers
+	provides = fchat-horizon=1.33.4
+	provides = fchat=3
+	conflicts = fchat-horizon
+	source = Horizon::git+https://github.com/Fchat-Horizon/Horizon.git#branch=development
+	sha256sums = SKIP
+
+pkgname = fchat-horizon-git
