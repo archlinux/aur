@@ -1,6 +1,6 @@
 # Maintainer: Spark Xia <legion_REMOVE_THIS_20220808&#64;gmail&#46;com>
 pkgname=longbridge-pro
-pkgver=0.5.1        # upstream "v0.5.0"
+pkgver=0.6.0        # upstream "v0.6.0"
 pkgrel=1
 pkgdesc="Longbridge Pro – professional trading platform"
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=(
 )
 source=(
   "https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v${pkgver}-linux-x86_64.deb"
-  "https://pub.lbkrs.com/files/202211/yyY2XRM5auoPCXfy/LBPL-Platform_TnCs__31_Oct_2022-FINAL_.pdf"
+  "https://pub.lbkrs.com/static/offline/202508/FN9DnQt1WuLR5Wmz/LBPL_Platform_TnCs_3_December_2024.pdf"
 )
 sha256sums=(
-  '39187bc21561415b1208aec73e90d9501624d74ecb9a9a4bb59fc2bd8cf994cf' # .deb
-  'd647a1375a54e3a51670cda6f3f6b9f1e878b7d62b44af1bcf376c1a42230148' # EULA
+  'f0c76337cfe292202050e84d8a4a9f89f546a3d5ebc99b9287f265528bfb9aa9' # .deb
+  'c7ed0deafa4570da6fd7d173f8be759645673ee55d3a41ef9473e0d6658ad231' # EULA
 )
 
 prepare() {
@@ -41,7 +41,7 @@ package() {
   install -Dm644 usr/share/icons/hicolor/1024x1024/apps/longbridge.png \
     "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/longbridge.png"
 
-  install -Dm644 ./LBPL-Platform_TnCs__31_Oct_2022-FINAL_.pdf \
+  install -Dm644 ./LBPL_Platform_TnCs_3_December_2024.pdf \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
