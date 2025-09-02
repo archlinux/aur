@@ -21,5 +21,5 @@ build() {
 }
 package() {
   install -d "${pkgdir}/usr/"
-  cp -r "${srcdir}/usr" "${pkgdir}/usr/"
+  cp -r "${srcdir}/usr/local" "${pkgdir}/usr/"
 }
