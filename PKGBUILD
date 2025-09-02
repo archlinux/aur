@@ -30,7 +30,7 @@ optdepends=(
   'python-transformers: needed for convert_hf_to_gguf.py'
 )
 provides=(${_pkgname})
-conflicts=(${_pkgname} libggml ggml)
+conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 source=()
 sha256sums=()

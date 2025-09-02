@@ -25,6 +25,7 @@ pkgbase = llama.cpp-vulkan
 	conflicts = llama.cpp
 	conflicts = libggml
 	conflicts = ggml
+	conflicts = stable-diffusion.cpp
 	options = lto
 	options = !debug
 
