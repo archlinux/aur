@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.13.r0.g75b9e1722d1
+pkgver=10.13.r58.g288a40d05c8
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
@@ -14,7 +14,6 @@ source=(
   30-win32-aliases.conf
   wine-binfmt.conf
   ntsync-10.13-staging.patch
-  7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
   0002-wine.inf-Set-a-valid-Win10-ProductId.patch
@@ -33,8 +32,7 @@ sha256sums=(
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  'b0cd33633ed247eef08f08170c50066d9e9e788f6d051688eb220ce941d3acc4'
-  'a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c'
+  '2e41e91daa7bcd946ef58072b4b5681dd252343e8b3664689639b7abdd85c149'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
   'de34be62e63a4187582b21a3a77d4162a33e7d777095e8e7b8fbd13cb745516f'
@@ -128,10 +126,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/0003-wineboot-On-prefix-upgrade-update-win10-build-number.patch"
   patch -Np1 -i "${srcdir}/0004-wineboot-Generate-better-DigitalProductId.patch"
   patch -Np1 -i "${srcdir}/0005-wineboot-Load-root-certificates-on-prefix-update.patch"
-
-  # Fixes crashes in many games in new WoW64 mode
-  # https://bugs.winehq.org/show_bug.cgi?id=57444
-  patch -Np1 -i "${srcdir}/7064.patch"
 
   # Make keyboard shortcuts independent of layout
   # https://bugs.winehq.org/show_bug.cgi?id=30984
