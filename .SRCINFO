@@ -1,7 +1,7 @@
 pkgbase = proton-mail-bin
 	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
-	pkgver = 1.8.1
-	pkgrel = 3
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://proton.me
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -38,8 +38,8 @@ pkgbase = proton-mail-bin
 	optdepends = trash-cli: file deletion support (trash-put)
 	provides = proton-mail
 	conflicts = proton-mail
-	source = ProtonMail-desktop-beta-1.8.1.deb::https://proton.me/download/mail/linux/1.8.1/ProtonMail-desktop-beta.deb
-	sha512sums = 31635456313c2fb4d41172eeaffe779484cb690fcd70cab56ded52064017bef227ea25ed98d9fc7f602200b97b04532b344c35081dfb3a847720f510101b8939
-	b2sums = 490011373e001f00affa131a870a8cf246022df4be54b47bb2cb1aa4606b65d56f94bae2b67a16e1935d5ae3d6df51dd69bc4a3c3339e1977823f53e65844ebd
+	source = ProtonMail-desktop-beta-1.9.0.deb::https://proton.me/download/mail/linux/1.9.0/ProtonMail-desktop-beta.deb
+	sha512sums = b43abcf864e6296d112231cf262c8c4cac82f4b1c54cb5ba06ebb63bf032a150fd5d97d4343b9037a9694e86cb2d26d8ed1d7741668a0a3e7e123fa9cc847c75
+	b2sums = 553982eb417359eeae9bf2cf6f4dbd02784cf0ad9108ed118bab5c48cfff91d2539179ab542f5f9425ce220205b80cf44969891dee4e89516002a443acf32e4a
 
 pkgname = proton-mail-bin

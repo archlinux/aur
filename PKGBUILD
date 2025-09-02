@@ -3,8 +3,8 @@
 
 pkgname=proton-mail-bin
 _name=${pkgname%-bin}
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.9.0
+pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('x86_64')
 url='https://proton.me'
@@ -47,8 +47,8 @@ optdepends=(
 provides=("$_name")
 conflicts=("$_name")
 source=("ProtonMail-desktop-beta-$pkgver.deb::$url/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb")
-sha512sums=('31635456313c2fb4d41172eeaffe779484cb690fcd70cab56ded52064017bef227ea25ed98d9fc7f602200b97b04532b344c35081dfb3a847720f510101b8939')
-b2sums=('490011373e001f00affa131a870a8cf246022df4be54b47bb2cb1aa4606b65d56f94bae2b67a16e1935d5ae3d6df51dd69bc4a3c3339e1977823f53e65844ebd')
+sha512sums=('b43abcf864e6296d112231cf262c8c4cac82f4b1c54cb5ba06ebb63bf032a150fd5d97d4343b9037a9694e86cb2d26d8ed1d7741668a0a3e7e123fa9cc847c75')
+b2sums=('553982eb417359eeae9bf2cf6f4dbd02784cf0ad9108ed118bab5c48cfff91d2539179ab542f5f9425ce220205b80cf44969891dee4e89516002a443acf32e4a')
 
 package() {
     bsdtar -xvf data.tar.xz -C "$pkgdir/"
