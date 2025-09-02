@@ -21,7 +21,7 @@ noextract=("${source[@]##*/}")
 sha256sums=('396f52f270fb45c24aae1b14407fd1f2bdf8beadfafcbfb9c0b4d89fb2155818'
     'c9a70989678660eed9a1e904c74fa043da8bec8e2036856fc16e31ced79b04f8'
     '6abaa6c26f46ef17764c4a753e0e84de1cdadde5634fd2987621fdc617988d19'
-    'f2e08dca6c75e1c72396b097ba2e3b4b9fcd77665ba8994d655a4a70504b0649')
+    '20a2e851c8914af6a4098f9718b7462f9f108430b498483f9c04eba81e695fc2')
 
 prepare() {
     mkdir AnycubicSlicerNext
