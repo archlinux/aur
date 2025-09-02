@@ -1,7 +1,7 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.37.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imhex.werwolv.net
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -32,9 +32,15 @@ pkgbase = imhex
 	options = !lto
 	source = imhex-1.37.4.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v1.37.4/Full.Sources.tar.gz
 	source = imhex-patterns-1.37.4.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v1.37.4.tar.gz
+	source = fmt-update.patch
+	source = patterns-fmt-update.patch
 	sha256sums = 711481cc8dfc368d1b88f5d3e8a44d65f23fa43eb9db092599924f3a4cf1aaa2
 	sha256sums = 541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5
+	sha256sums = cfd6afdea025fdcd215f6a72c8a81853bccc1db01b0920e27c371fa86bca2c41
+	sha256sums = 4eaa595c0a25ae29e998681644b4d8b06df4fc51226639a5c9bb447d990aa95f
 	b2sums = 11f93ca310ddec8ec7d074d5450a02f3147d40aaa92387fbe7fce3be08445e129bbd7336d923e971a2f7f2b6df778a6210de73060cb91abe85161e7fd88588b7
 	b2sums = c8699f9f26faeae784b4c4cb14b682d0f4d0c544ef8c9596b8688c19e6066d7101a7c32979ee807cd4a05225fe2548a8759b1fd0a07c578ea5c0fcdb9f104e69
+	b2sums = 95b48f077d47af4b430477e5581f4da3f34e2d27920a038bcd5d4affb812c4de3801aba89053b9ffa394eb501a1c2eede40de0a9d7d940a9be292e3ac74dd2f3
+	b2sums = 46eea8e7a7133ac2b5d37c02ca892cdbebaf68204947936757708f72e37d3ba332f3cd908a06d0e4bbd4a1a19c2f1f8d6bb6e01606e97dd383584c9f6060f40f
 
 pkgname = imhex
