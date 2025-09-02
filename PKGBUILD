@@ -2,7 +2,7 @@
 
 pkgname=harbor-cli
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
 url='https://goharbor.io'
@@ -44,11 +44,11 @@ build() {
     -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
     -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.ReleaseChannel=stable \
     -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.GoVersion=$(go version | awk '{print $3}')" \
-    -o "$srcdir/$pkgname/build/harbor" ./cmd/harbor/main.go
+    -o "$srcdir/$pkgname/build/harbor-cli" ./cmd/harbor/main.go
   }
 
   package() {
     cd "$srcdir/$pkgname"
 
-    install -vDm755 -t "$pkgdir/usr/bin" build/harbor
+    install -vDm755 -t "$pkgdir/usr/bin" build/harbor-cli
   }
