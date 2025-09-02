@@ -20,7 +20,7 @@ source=(
 	"$_pkgname-linux-unpacked.zip::$url/archive/v$pkgver/$pkgver.zip")
 
 sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
-            '95ec4c0a83a04d4d2ad84bae325f569881bb709d4292d156e525b8b4c7f44967'
+            '0221fd24f1e44106c26a3c8e0def158dda5b15885fceeaedd5a26bf53dd9818b'
             '46d2c3bb5bb6533f23b5732f64f45cc17cc17c23abdf31ea34bf923f24f49df8')
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
