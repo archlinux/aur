@@ -1,7 +1,7 @@
 pkgbase = edh-logger-cli
 	pkgdesc = CLI to log MTG Commander games & view stats (edh --help for usage)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GhelloZ/edh-logger-cli
 	arch = x86_64
 	license = GPL-3.0-only
