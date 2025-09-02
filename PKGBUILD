@@ -4,7 +4,7 @@ pkgbase=python-misaki
 pkgname=(python-misaki{,-{en,ja,ko,zh,vi,he}})
 _name=misaki
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="G2P engine for TTS"
 arch=('any')
@@ -50,12 +50,12 @@ package_python-misaki-en() {
     conflicts=(${pkgname})
     depends=(
         python-misaki
+        python-pytorch
         # AUR
         python-espeakng-loader
         python-num2words
         python-spacy
         python-spacy-curated-transformers
-        python-pytorch
         python-transformers
     )
 }
@@ -65,10 +65,10 @@ package_python-misaki-ja() {
     provides=(${pkgname})
     conflicts=(${pkgname})
     depends=(
+        python-jaconv
         python-misaki
         # AUR
         python-fugashi
-        python-jaconv
         python-mojimoji
         python-unidic
         python-pyopenjtalk
@@ -80,10 +80,10 @@ package_python-misaki-ko() {
     provides=(${pkgname})
     conflicts=(${pkgname})
     depends=(
+        python-nltk
         python-misaki
         # AUR
         python-jamo
-        python-nltk
     )
 }
 
@@ -92,12 +92,12 @@ package_python-misaki-zh() {
     provides=(${pkgname})
     conflicts=(${pkgname})
     depends=(
-        python-misaki
-        # AUR
         python-jieba
         python-ordered-set
-        python-pypinyin
+        python-misaki
+        # AUR
         python-cn2an
+        python-pypinyin
         python-pypinyin-dict
     )
 }
