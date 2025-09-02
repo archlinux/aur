@@ -2,6 +2,7 @@
 PATH="/usr/share/java/configuradorfnmt"
 JAR="configuradorfnmt.jar"
 BC="bc-fips.jar"
+BCUTIL="bcutil-fips.jar"
 BCPKIX="bcpkix-fips.jar"
-CLASSPATH="${PATH}/${JAR}:${PATH}/${BC}:${PATH}/${BCPIX}"
+CLASSPATH="${PATH}/${JAR}:${PATH}/${BC}:${PATH}/${BCUTIL}:${PATH}/${BCPKIX}"
 /usr/bin/java -classpath "${CLASSPATH}" es.gob.fnmt.cert.certrequest.CertRequest "$@"

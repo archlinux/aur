@@ -2,7 +2,7 @@
 
 pkgname=configuradorfnmt
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for request keys and certificates of FNMT"
 arch=('any')
 url="https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/co
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 b2sums=('39adb59f0b64c84b10e75a2c3728fa5f509b169050c80a7c12e1b08753416eba99ba47ce64d02b6e7e2fba59b6c2e71374225db55fe68a027b7b9de561e97c5c'
         '668221fb76264ab2d77d1417fec8032a498d369e7f5005c713a3b9a5244f91afd203f7644c12b4f72984634ffac897e04b32bbaf3cf7626ef81743736b9a9db2'
-        '28a4fb76e9026edfc05d860a3a835744b363c289ccaf770f9a781c851f2f8345a6a925f4a74b187a427c49ae690763de1710e25db5729235c4ef4c584dc1fc49')
+        '689e194e73f3cb11034f968062ebc05701ba5e80462bba88c1b2d669cbc40290909edd32e857bdaea23670e306ae39510cc5975868dd7ba6c1419c698404a9e7')
 
 package() {
     bsdtar -O -xf "${pkgname}-${pkgver}"*.deb data.tar.xz | bsdtar -C "${srcdir}" -xJf -
@@ -27,6 +27,7 @@ package() {
     install -Dm644 "usr/lib/${pkgname}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "usr/lib/${pkgname}/${pkgname}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
     install -Dm644 "usr/lib/${pkgname}/bc-fips.jar" "${pkgdir}/usr/share/java/${pkgname}/bc-fips.jar"
+    install -Dm644 "usr/lib/${pkgname}/bcutil-fips.jar" "${pkgdir}/usr/share/java/${pkgname}/bcutil-fips.jar"
     install -Dm644 "usr/lib/${pkgname}/bcpkix-fips.jar" "${pkgdir}/usr/share/java/${pkgname}/bcpkix-fips.jar"
     install -Dm644 "usr/share/doc/configuradorfnmt/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
