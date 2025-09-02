@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.1.0.r6.ged6e2ec
+pkgver=0.1.0.r9.gf3d2026
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
@@ -42,7 +42,8 @@ check() {
 
   cd "$srcdir"/Sleipnir
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  cp .py-build-cmake_cache/cp${python_version}-cp${python_version}-linux_$CARCH/_jormungandr.cpython-${python_version}-$CARCH-linux-gnu.so jormungandr
+  local glibc_version=$(pacman -Q glibc | cut -d ' ' -f 2 | cut -d '+' -f 1 | sed 's/\./_/')
+  cp .py-build-cmake_cache/cp${python_version}-cp${python_version}-manylinux_${glibc_version}_$CARCH/_jormungandr.cpython-${python_version}-$CARCH-linux-gnu.so jormungandr
   PYTHONPATH=. pytest
 }
 
