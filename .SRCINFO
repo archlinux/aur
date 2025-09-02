@@ -1,0 +1,17 @@
+pkgbase = tocaia
+	pkgdesc = Portable TUI Gopher client written in C89 for POSIX systems
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/manipuladordedados/tocaia
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	options = !debug
+	options = strip
+	source = tocaia::git+https://github.com/manipuladordedados/tocaia.git#tag=0.9.0
+	md5sums = SKIP
+
+pkgname = tocaia
