@@ -2,7 +2,7 @@
 
 pkgname=python-pylink-square
 _name=pylink
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
@@ -28,9 +28,9 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/square/pylink/archive/refs/tags/v$pkgver.tar.gz
   $pkgname-0.14.3-remove_mock.patch
 )
-sha512sums=('7e8acb4926bda12b7e137f625f644400ee931d8fe6b93052573579ed461ec94e9cc48024bfea9f27badebb26bd4683d9c3a10a644e3f9b5715c7c6386595c1bd'
+sha512sums=('99449a4748bd12221a54511d4f994b9ecf2eee5d7235976d3a4847efcc12780248012c4f9e16e39dd04e2495b4027e9f661edfa8fd1dae2260404cd534bcf9ac'
             '35ff6497171de4acb6eebbca0619419ba8fa74da9487181dcbd90068fe2c7122e79d0d3e54dfc9a0bf010e398d144ff6ce20ca5e76e426269f6274b1d66287da')
-b2sums=('fbc15b7248e9d6fc489b795b50ded4229c5d92f3d62ca3e8cd2cda7b206956ea7efa37115469d0b05a00e400d7fefcb17cc8cf2e5c48c391b221fe5924e38b5a'
+b2sums=('108cf7ad82d0a994ad4e2276df5fbbb31753fcfc22e122f54e361c7a9536606c9262e7f91dc14f7021fef3ef69e6f169aed24e31cfac2eb026869c2c7b43dc2c'
         '4cc08b683975b3400caa0d73efb986737971c1003f1c0632d7440c25c9f0cc661f847275753c6ba03dc214e303a3cfd1ea8d3fb2bb6824c7560945fe1f2ecb05')
 
 prepare() {
