@@ -1,0 +1,15 @@
+pkgbase = cdf
+	pkgdesc = CLI tool to manage path bookmarks in the terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cl1ckname/cdf
+	install = cdf.install
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = https://github.com/cl1ckname/cdf/archive/v0.1.1.tar.gz
+	sha256sums = 1079e4e8786931b96706b87e40749e8aab8964b605adce9a15e0b131d86d9b94
+
+pkgname = cdf

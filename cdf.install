@@ -1,0 +1,5 @@
+post_install() {
+  echo "To enable shell integration for cdf, add the following to your shell config:"
+  echo "For Bash, add to ~/.bashrc: eval \"\$(cdf shell bash)\""
+  echo "For Fish, add to ~/.config/fish/config.fish: cdf shell fish | source"
+}
