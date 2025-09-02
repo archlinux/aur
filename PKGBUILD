@@ -1,72 +1,79 @@
-# Maintainer:
+# Maintainer: Echo J. <aidas957 at gmail dot com>
 # Contributor: Paragoumba <aur at paragoumba dot fr>
 # Contributor: Renaud Littolff <rlittolff@gmail.com>
 
+# shellcheck shell=bash disable=SC2034,SC2164
+
 pkgname=proton-pass
-pkgver=1.31.4
+pkgver=1.32.5
 pkgrel=1
 pkgdesc="Open-source and secure identity manager"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib'
-         'at-spi2-core'
-         'cairo'
-         'dbus'
-         'expat'
-         'gcc-libs'
-         'glib2'
-         'glibc'
-         'gtk3'
-         'libcups'
-         'libdrm'
-         'libx11'
-         'libxcb'
-         'libxcomposite'
-         'libxdamage'
-         'libxext'
-         'libxfixes'
-         'libxkbcommon'
-         'libxrandr'
-         'mesa'
-         'nspr'
-         'nss'
-         'pango'
-         'systemd-libs')
-makedepends=('gendesk' 'npm' 'rustup' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz")
-sha256sums=('8c74cb1c8f582e6683e94ca133eee713f82d9c9a785bebec0070e5fc74fc00b1')
+depends=('bash' 'gcc-libs' 'glibc' 'electron')
+makedepends=('rust' 'yarn')
+conflicts=('proton-pass-bin')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
+        "proton-pass.desktop"
+        "7d910a0ebe6bc69dc145fa7569c0094748d280cd.patch")
+sha256sums=('7ec2449211364e0ed753a71372cb204151146e2ed5878bc85e8abb8270066164'
+            '501210c67fc921a2fb4ba591980192ad1da60e26fb6b2fd7d68aad4075eafac7'
+            '7f576b4db49378fedf722f6dc8c13b09a62cda0d6c7b86948a9717352c02610b')
 
 prepare() {
-    cd "WebClients-${pkgname}-${pkgver}/applications/pass-desktop"
-    gendesk -f -n \
-        --pkgname "${pkgname}" \
-        --pkgdesc "${pkgdesc}" \
-        --name 'Proton Pass' \
-        --genericname 'Password Manager' \
-        --categories 'Utility' \
-        --startupnotify
+    cd WebClients-${pkgname}-${pkgver}
 
-    sed "s/process.resourcesPath/path.dirname(app.getAppPath())/" -i src/main.ts
+    # Fix collect-metrics workspace error (https://github.com/ProtonMail/WebClients/commit/7d910a0ebe6bc69dc145fa7569c0094748d280cd)
+    patch --no-backup-if-mismatch -Np1 -i ../7d910a0ebe6bc69dc145fa7569c0094748d280cd.patch
 
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    yarn install
-    rustup default stable
+    # Limit workspace applications to avoid mysterious dependency issues
+    sed -i 's@"applications/\*",@"applications/pass*",@' package.json
+
+    # Use the NPM version of the Drive SDK (because the Proton (Tech) servers are inaccessible)
+    sed -i -e 's@proton/drive-sdk@protontech/drive-sdk@' -e 's@0.0.9@0.0.10@' packages/drive/package.json
+
+    # Disable the rustup command (because we don't use that tool)
+    sed -i 's@execSync(`rustup@//execSync(`rustup@' applications/pass-desktop/native/build.js
+
+    # Bypass pass-desktop-native build script
+    sed -i 's@build:multi@build@' applications/pass-desktop/package.json
+
+    # Skip electron-forge in build step
+    sed -i 's@ && electron-forge package@@' applications/pass-desktop/package.json
+
+    # HACK: Make the tray icon work under system Electron
+    sed -i 's@process.resourcesPath@"/usr/share/proton-pass"@' applications/pass-desktop/src/main.ts
 }
 
 build() {
-    cd "WebClients-${pkgname}-${pkgver}/applications/pass-desktop"
+    cd WebClients-${pkgname}-${pkgver}/applications/pass-desktop
+
+    yarn install
     yarn run build:desktop
+
+    # HACK: Move Rust target directory to avoid asset-relocator including it
+    {
+        mv native/target ../rust-target
+        yarn exec 'NODE_ENV=production electron-forge package'
+        mv ../rust-target native/target
+    }
 }
 
 package() {
-    cd "WebClients-${pkgname}-${pkgver}/applications/pass-desktop"
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -r "out/Proton Pass-linux-x64/"* "${pkgdir}/opt/${pkgname}"
+    cd WebClients-${pkgname}-${pkgver}/applications/pass-desktop
 
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/Proton Pass" "${pkgdir}/usr/bin/${pkgname}"
+    # Copy the main application archive/assets
+    install -d "${pkgdir}"/usr/share/${pkgname}
+    cp -ar "out/Proton Pass-linux-"*/resources/* -t "${pkgdir}"/usr/share/${pkgname}
 
-    install -Dm644 assets/logo.svg "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    # Set up the wrapper script
+    install -d "${pkgdir}"/usr/bin
+    echo -e '#!/bin/bash\n\nexec /usr/bin/electron /usr/share/proton-pass/app.asar "$@"' \
+        | tee "${pkgdir}"/usr/bin/${pkgname} > /dev/null
+    chmod +x "${pkgdir}"/usr/bin/${pkgname}
+
+    # Copy the desktop file (and associated icon)
+    install -Dm644 assets/logo.svg "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
+    install -Dm644 "${srcdir}"/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
 }
