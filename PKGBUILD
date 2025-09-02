@@ -5,7 +5,7 @@ pkgrel=2
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium (with optimization unused at Chromium)"
 arch=('x86_64')
-conflicts=({nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs chromium-ffmpeg
+conflicts=({nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs chromium-ffmpeg{,-legacy}
 opera{,-developer,-beta}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 url=https://ffmpeg.org/
