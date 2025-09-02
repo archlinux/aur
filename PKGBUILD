@@ -1,7 +1,7 @@
 # Maintainer: kewl fft <kewl@archlinux.org>
 
 pkgname=nimbus-beacon-node
-pkgver=25.7.1
+pkgver=25.9.0
 pkgrel=1
 pkgdesc="Nimbus Ethereum consensus client (beacon node)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('nimbus-beacon-node')
 conflicts=('nimbus-beacon-node-git' 'nimbus-beacon-node-bin')
 options=(!strip !buildflags)
 source=("nimbus-eth2::git+https://github.com/status-im/nimbus-eth2.git#tag=v${pkgver}?submodules")
-sha256sums=('9fca714863c609037fc743c5fc6b4bee45b7feb7bc7ec278d591912cb2829c37')
+sha256sums=('83ea9b4e5df1ff1636a5ace708efc76ed684547998c4d47b56ffc594ec2c2c66')
 
 prepare() {
   cd "$srcdir/nimbus-eth2"
