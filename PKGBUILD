@@ -53,7 +53,7 @@ package() {
     install -Dm644 *.md                -t "${pkgdir}/usr/share/doc/${_pkgname}"
 
     cd api
-    find . -type f \( -iname "*.json" -o -iname "*.lock" -o -iname "*.js" \) -exec \
+    find . -type f ! -path './.*' ! -path './node_modules/*' -exec \
         install -Dm644 {}                 "${pkgdir}/usr/lib/${_pkgname}/"{} \;
     chmod 755                             "${pkgdir}/usr/lib/${_pkgname}/app.js"
     cp -r node_modules                    "${pkgdir}/usr/lib/${_pkgname}"
