@@ -7,7 +7,7 @@
 
 pkgname=wine-pure-git
 pkgver=10.13.r58.g288a40d05c8
-pkgrel=1
+pkgrel=2
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
@@ -16,6 +16,7 @@ source=(
   ntsync-10.13-staging.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
+  0001-HACK-ws2_32-Block-first-internet-connection-for-some.patch
   0002-wine.inf-Set-a-valid-Win10-ProductId.patch
   0003-wineboot-On-prefix-upgrade-update-win10-build-number.patch
   0004-wineboot-Generate-better-DigitalProductId.patch
@@ -35,6 +36,7 @@ sha256sums=(
   '2e41e91daa7bcd946ef58072b4b5681dd252343e8b3664689639b7abdd85c149'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
+  '7f524fff2146871019dd4d8dfb278dec6bb4dec71870d3ddfb5a7004c29a6f57'
   'de34be62e63a4187582b21a3a77d4162a33e7d777095e8e7b8fbd13cb745516f'
   '69b120ed11e07270db4e4378c8ad42d1bae418a6f8a10d98dc031ab9af0d1130'
   '236d3f562d1ce05ae9d372cd606acb0dab545579fcecae9cf14df1c253fff574'
@@ -49,7 +51,7 @@ sha256sums=(
 pkgdesc="Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)"
 url="https://github.com/ventureoo/PKGBUILDs"
 arch=(x86_64)
-options=(staticlibs !lto)
+options=(!lto)
 license=(LGPL-2.1-or-later)
 depends=(
   desktop-file-utils
@@ -99,7 +101,6 @@ optdepends=(
 )
 provides=("wine-staging" "wine" "wine-wow64" "wine=${pkgver%.r*}")
 conflicts=("wine")
-makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
 
 pkgver() {
@@ -148,6 +149,10 @@ prepare() {
   # Fix black windows in some launchers when using winewayland
   patch -Np1 -i "${srcdir}/Add-workarounds-for-game-launchers.patch"
 
+  # Fixes anti-cheat bypass for Mihoyo games
+  # Patch by @NelloKudo
+  patch -Np1 -i "${srcdir}/0001-HACK-ws2_32-Block-first-internet-connection-for-some.patch"
+
   ./dlls/winevulkan/make_vulkan
   ./tools/make_requests
   ./tools/make_specfiles
@@ -162,13 +167,12 @@ build() {
   local mtune="${flags["-mtune"]:-"haswell"}"
 
   # Apply flags for cross-compilation (from Proton)
-  export CFLAGS="-O2 -march=$march -mtune=$mtune -mfpmath=sse -fwrapv -fno-strict-aliasing -pipe"
+  export CFLAGS="-O2 -march=$march -mtune=$mtune -mfpmath=sse -fwrapv -pipe"
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CROSSCFLAGS"
   export CROSSLDFLAGS="-Wl,-O1"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-  echo "Building Wine..."
   cd "$pkgname-build"
   ../wine/configure \
     --disable-tests \
