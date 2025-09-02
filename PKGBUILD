@@ -1,7 +1,8 @@
-# Maintainer: Emil Bay <archlinux@tixz.dk>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: Emil Bay <archlinux@tixz.dk>
 pkgname=nethermind-ethereum-bin
-pkgver=1.32.4
-_commit=1c4c7c0a
+pkgver=1.33.0
+_commit=e586d620
 pkgrel=1
 pkgdesc='A robust execution client for Ethereum node operators. Binary distribution.'
 arch=('x86_64' 'aarch64')
@@ -21,9 +22,9 @@ source_aarch64=(
   "https://nethdev.blob.core.windows.net/builds/nethermind-${pkgver}-${_commit}-linux-arm64.zip.asc"
 )
 
-sha256sums_x86_64=('2ae6a26f961c0acdbbf802aaf877f0f3687a54bf8f849647601ef10582aaced6'
+sha256sums_x86_64=('ba4410e2bb1a6cebac12efbf5ac42efa8e402270c52efa9309f09f30aceef7a2'
                    'SKIP')
-sha256sums_aarch64=('e250b21b4335ee447ccbdc2948a7043719e2e2fe9b75f83bfab5c853ae60cd9d'
+sha256sums_aarch64=('e7027c360c71d16f508c1b60021ac7e7b282b5df9c8351d9103cca3141c5bbca'
                     'SKIP')
 # Can be acquired with `gpg --receive-keys CB6DA407 34E353C6` (listed at the bottom of https://downloads.nethermind.io/)
 validpgpkeys=('6942FB745ECE67D86CDA45704770A0C134E353C6' 'EECCEA1473108E3222D76722D39BE1DDCB6DA407')
@@ -51,4 +52,3 @@ package() {
   # Install data files (preserving structure)
   find Data -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/nethermind/{}" \;
 }
-
