@@ -32,7 +32,7 @@ function build() {
 function check() {
 	cd "${srcdir}/tuwunel"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --locked
+	cargo test --frozen --release --locked
 }
 
 function package() {
