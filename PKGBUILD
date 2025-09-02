@@ -105,4 +105,9 @@ package(){
     do ln -svf /usr/lib/$_so.${_avcodec} "$_f/$_so"
   done
   install -Dvm644 block-opera-ldpreload.hook -t "$pkgdir"/usr/share/libalpm/hooks
+
+  for _n in {31..36} ; do
+    install -d "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2
+    ln -svf /usr/lib/${_so}.$_avcodec "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2/$_so
+  done  
 }
