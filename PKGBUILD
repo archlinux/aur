@@ -2,7 +2,7 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty-git
 pkgver=0.0.1.alpha.19.r3.59bf06d
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast Python type checker and language server, written in Rust."
 arch=("x86_64")
 url="https://github.com/astral-sh/ty"
@@ -28,6 +28,8 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 	git submodule update --init --recursive
+	# Update Ruff to latest, as ty current resides in Ruff's codebase
+	git submodule update --remote --merge ruff
 	cp ruff/rust-toolchain.toml .
 	cargo fetch --manifest-path ruff/Cargo.toml --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
