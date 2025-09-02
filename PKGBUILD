@@ -3,9 +3,9 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=d671649be437668a4155225a4b39188a8d27c2f4
-pkgver=6.16.pf2
-pkgrel=2
+_rev=983dc263c2e3122190bb877c0c1190bca60fbdb8
+pkgver=6.16.pf3
+pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url=https://pfkernel.natalenko.name
@@ -15,7 +15,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'723ba59a320bc0f7e72054bc9f21cee7bdac4cdefde16dcd9063401982f3b2e9b955dda67015e507a37fc3191c3a0f535f41ab02d9d4daf1e5d0c333beaae383')
+		'4e19ba85c2631a2fea62a5f8b32631ee92ac641f281c4c91a5154cc1d623d17c0bdfda4843e225f9ce2a2756334736dbe39680420d3ea11e38b029c5e67477e1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
