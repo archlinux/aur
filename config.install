@@ -1,0 +1,18 @@
+post_install() {
+    cat <<EOF
+To add this module to waybar, add the following to your config:
+
+    {
+        ...
+        "custom/dunst": {
+            "return-type": "json",
+            "format": "{text}",
+            "exec": "/usr/lib/waybar-dunst/waybar-dunst",
+            "on-click": "dunstctl set-paused toggle"
+        }
+        ...
+    }
+
+Then add "custom/dunst" to your module array of choice.
+EOF
+}
