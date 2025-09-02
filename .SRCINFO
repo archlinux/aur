@@ -1,7 +1,7 @@
 pkgbase = roon-now-playing-git
 	pkgdesc = waybar module that shows now playing info from Roon using roon-kit, grabs lyrics and shows covers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/teraflops/roon_now_playing
 	install = roon-now-playing.install
 	arch = any

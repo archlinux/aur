@@ -1,7 +1,7 @@
 # Maintainer: teraflops <prietus@live.com>
 pkgname=roon-now-playing-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="waybar module that shows now playing info from Roon using roon-kit, grabs lyrics and shows covers"
 arch=('any')
 url="https://gitlab.com/teraflops/roon_now_playing"
