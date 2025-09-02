@@ -1,6 +1,6 @@
 # Maintainer: Hannes Körber <hannes@hkoerber.de>
 pkgname='screencfg-git'
-pkgver=0.1.r2.gd33f9b3
+pkgver=0.3.r1.g92e67f9
 pkgrel=1
 pkgdesc='Automatically configure your screen setup'
 arch=('x86_64')
