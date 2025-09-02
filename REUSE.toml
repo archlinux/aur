@@ -24,7 +24,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "telepathy-logger-fix-doc.patch",
-    "telepathy-logger-incompatible-pointer.patch",
+    "telepathy-logger-fix-tests.patch",
 ]
 SPDX-FileCopyrightText = "telepathy-logger contributors"
 SPDX-License-Identifier = "LGPL-2.1-or-later"
