@@ -1,6 +1,27 @@
 Version history
 ===============
 
+0.10.32
+-------
+
+2025-09-01
+
+Flopsy has overhauled his multiplayer level folders: 4 maps are new,
+35 maps have been edited, 148 maps have been deleted. Now, Lix ships
+with a total of 990 multiplayer levels, 115 of which are by Flopsy.
+
+Reorder the 3-player and 4-player directory listings: Flopsy's multiplayer
+directories appear at the top of these listings. These maps have solid quality
+and are suitable for beginners and experienced players alike.
+
+Improve the balance in Rubix's asymmetric two-player map Constraint.
+
+Warn about long level titles or long authors: In the editor, when you type
+a long title/author, a small warning will say that the level browser may
+abbreviate your text. You can still type as much as you like.
+
+
+
 0.10.31
 -------
 

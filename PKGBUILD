@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=lix
-pkgver=0.10.31
+pkgver=0.10.32
 pkgrel=1
 pkgdesc="An action-puzzle game inspired by Lemmings"
 url="https://www.lixgame.com/"
@@ -14,7 +14,7 @@ license=('custom:CC0')
 _gitname=LixD
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('556e4abb3b7a96c7e8bf70c0887e9d33e29eab1fa879e49fc3340f98094b3e203509977fd8c4a7073ab94ef463d44caaef464c132f958d9bdf34639bd314f6c7'
+sha512sums=('959dfb27fe0d7c78b4aa4d7da7390d16e5dd4e7ce9ddc67d890efb2f241ffd53e0e957d4be4a6a2d6dd3aefb92fe998c7da547ff83ff92b0f205938c1345ad85'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 prepare() {
     cd "$_gitname-$pkgver" || exit 1
 
-    # Iterate thorugh the required packages and versions to fetch them in advance
+    # Iterate through the required packages and versions to fetch them in advance
     # Read from dub.selections.json and print them as "package@version"
     for line in $(jq -r '.versions | keys[] as $k | "\($k)@\(.[$k])"' <dub.selections.json); do
         # Fetch each package at the required version
