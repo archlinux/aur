@@ -1,6 +1,6 @@
 pkgbase = r-tmvtnorm
 	pkgdesc = Truncated Multivariate Normal and Student t Distribution
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tmvtnorm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-tmvtnorm
 	depends = r-gmm
 	depends = r-mvtnorm
 	optdepends = r-lattice
-	source = https://cran.r-project.org/src/contrib/tmvtnorm_1.6.tar.gz
-	sha256sums = 2d9b2c5330d11a62384b4c0c1c012be34806b48683898045a4a40fdb9a8e1bba
+	source = https://cran.r-project.org/src/contrib/tmvtnorm_1.7.tar.gz
+	sha256sums = 4b180b31e3bc4eb5009f5d7d83b7f2dd377989341ef27502113127d60f531bd8
 
 pkgname = r-tmvtnorm
