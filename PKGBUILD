@@ -2,7 +2,7 @@
 
 pkgname=cursor-bin
 pkgver=1.5.9
-pkgrel=17
+pkgrel=18
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -11,25 +11,17 @@ license=('LicenseRef-Cursor_EULA')
 depends=('ripgrep' 'xdg-utils'
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
-_appimage="${pkgname}-${pkgver}.AppImage"
-_commit=de327274300c6f38ec9f4240d11e82c3b0660b29
-source=("${_appimage}::https://downloads.cursor.com/production/de327274300c6f38ec9f4240d11e82c3b0660b29/linux/x64/Cursor-1.5.9-x86_64.AppImage"
+_commit=de327274300c6f38ec9f4240d11e82c3b0660b29 # sed'ded at GitHub WF
+source=("https://downloads.cursor.com/production/de327274300c6f38ec9f4240d11e82c3b0660b29/linux/x64/deb/amd64/deb/cursor_1.5.9_amd64.deb"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh)
-sha512sums=('c4abae532e55a6efd39d082d805de791f6be2ffe2b764572f20a7156a6699092bf0a0c0d9b3c13975f22c94ee2e872ec4be5a8e750affa7e1a8711604923851c'
+sha512sums=('3d30150e4868b80ef6aeb012ffdb5e281ed41e3651f2b32f3d92baa284d990c11932df5c483d2eafc7ef48a1dd1047f888503bbe1f8906c8087fe1452dbe2e3b'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 
 _app=usr/share/cursor/resources/app
 package() {
-  rm -rf squashfs-root
-  chmod +x ${_appimage}
-  # Don't use upstream's broken resources
-  for _f in co.anysphere.cursor.png usr/bin usr/share/{appdata,applications,bash-completion,mime,zsh}
-    do ./${_appimage} --appimage-extract $_f > /dev/null
-  done
-  ./${_appimage} --appimage-extract usr/share/cursor/resources/app > /dev/null
-  cd squashfs-root
+  # Exclude electron
+  bsdtar -xf data.tar.xz --exclude 	'usr/share/cursor/[^r]*' --exclude 'usr/share/windsurf/*.pak'
   mv usr/share/zsh/{vendor-completions,site-functions}
-  install -Dm644 co.anysphere.cursor.png -t usr/share/pixmaps
   ln -svf /usr/bin/rg ${_app}/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
 
@@ -40,4 +32,10 @@ package() {
   mv usr "${pkgdir}"/usr
   sed -e "s|code-flags|cursor-flags|" -e "s|/usr/lib/code|/${_app}|" -e "s|/usr/lib/code/code.mjs|--app=/${_app}|" \
     -e "s|name=electron|name=${_electron}|" "${srcdir}"/code.sh | install -Dm755 /dev/stdin "${pkgdir}"/usr/share/cursor/cursor
+  install -d "$pkgdir"/usr/bin
+  ln -sf /usr/share/cursor/cursor "$pkgdir"/usr/bin/cursor
+
+  # Fix native title bar
+  # https://github.com/cursor/cursor/issues/3108
+  sed -i 's|l\.frame=!1|(!On(o, i?.forceNativeTitlebar ? "native" : void 0) \&\& (l.frame = !1))|g' "${pkgdir}"/usr/share/cursor/resources/app/out/main.js
 }
