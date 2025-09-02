@@ -67,7 +67,7 @@ build() {
   # ${_url}/+/refs/heads/master/chromium/config/Chrome/linux/x64/
   # BUILD.gn
   ./configure \
-    --disable-{debug,all,autodetect,doc,iconv,network,symver} \
+    --disable-{debug,all,autodetect,doc,iconv,network,symver,large-tests} \
     --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
