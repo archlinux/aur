@@ -1,17 +1,17 @@
 pkgbase = laradumps-bin
 	pkgdesc = A friendly app designed to boost your Laravel PHP coding and debugging experience.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.7.2
+	pkgver = 4.7.3
 	pkgrel = 1
 	url = https://laradumps.dev/
 	arch = x86_64
 	license = MIT
 	depends = electron32
-	provides = laradumps=4.7.2
+	provides = laradumps=4.7.3
 	conflicts = laradumps
-	source = laradumps-4.7.2-x86_64.AppImage::https://github.com/laradumps/app/releases/download/v4.7.2/LaraDumps-4.7.2.AppImage
-	source = LICENSE-4.7.2::https://raw.githubusercontent.com/laradumps/app/v4.7.2/LICENSE
+	source = laradumps-4.7.3-x86_64.AppImage::https://github.com/laradumps/app/releases/download/v4.7.3/LaraDumps-4.7.3.AppImage
+	source = LICENSE-4.7.3::https://raw.githubusercontent.com/laradumps/app/v4.7.3/LICENSE
 	source = laradumps.sh
-	sha256sums = b3f953c0605b799ace2b408ec2def45c6ac76b02054970f314a0e909c5f4946b
+	sha256sums = 47fa5aaade0e259f538b346201c67df921db6eb492f85ba5957fdb8511303a60
 	sha256sums = 5b51339f43fd902deb38117b7e0aabf8c29d8b13f7b48a5af39b0beb1c236d0e
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 

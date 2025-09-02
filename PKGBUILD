@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=laradumps-bin
 _pkgname=LaraDumps
-pkgver=4.7.2
+pkgver=4.7.3
 _electronversion=32
 pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/laradumps/app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b3f953c0605b799ace2b408ec2def45c6ac76b02054970f314a0e909c5f4946b'
+sha256sums=('47fa5aaade0e259f538b346201c67df921db6eb492f85ba5957fdb8511303a60'
             '5b51339f43fd902deb38117b7e0aabf8c29d8b13f7b48a5af39b0beb1c236d0e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
