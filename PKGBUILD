@@ -1,7 +1,7 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 
 pkgname=eez-studio-appimage
-pkgver=0.23.2
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
     "requirements.txt"
 )
 
-sha256sums=('18380472a9ddc3001a63fb8438022425f47fc9268f7502aad2947c69382f5530'
+sha256sums=('541b115c009b418e5a8599b490a57ddfbc6c2631456c34684c4fc62f93cafe11'
             '7019be3da97f345557fb38a581aabfd8a1d2e5324391a785213d8e5eb238aa90')
 
 prepare() {
