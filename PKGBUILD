@@ -32,7 +32,7 @@
 #   All dependencies are documented in 'README.md'.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.33.r0.g39602c6
+pkgver=1.34.r0.g04e2f79
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -46,7 +46,7 @@ makedepends=('gcc' 'make' 'pkg-config' 'git' 'openssh')
 optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_tag=v1.33
+_tag=v1.34
 source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag?signed"
         "ssh_allowed_signers")
 sha256sums=('SKIP'
