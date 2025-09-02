@@ -1,7 +1,7 @@
 pkgbase = python-google-genai
 	pkgdesc = GenAI Python SDK.
 	pkgver = 1.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-genai
 	arch = any
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = python-google-genai
 	checkdepends = python-mcp
 	checkdepends = python-aiohttp
 	checkdepends = python-sentencepiece
+	checkdepends = python-protobuf
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
