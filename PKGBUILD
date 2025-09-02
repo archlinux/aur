@@ -27,12 +27,12 @@ source=("${_pypiname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/
 sha256sums=('151ccf57d399691ec4e943a941a496dbe575d0154a520cc2eca988ebe5d07a76')
 
 build() {
-  cd "${_pypiname}-${pkgver}"
+  cd "selenium_driverless-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pypiname}-${pkgver}"
+  cd "selenium_driverless-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/" 2>/dev/null || true
