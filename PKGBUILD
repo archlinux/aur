@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/co
 noextract=("${pkgname}-${pkgver}-amd64.deb")
 b2sums=('39adb59f0b64c84b10e75a2c3728fa5f509b169050c80a7c12e1b08753416eba99ba47ce64d02b6e7e2fba59b6c2e71374225db55fe68a027b7b9de561e97c5c'
         '668221fb76264ab2d77d1417fec8032a498d369e7f5005c713a3b9a5244f91afd203f7644c12b4f72984634ffac897e04b32bbaf3cf7626ef81743736b9a9db2'
-        '689e194e73f3cb11034f968062ebc05701ba5e80462bba88c1b2d669cbc40290909edd32e857bdaea23670e306ae39510cc5975868dd7ba6c1419c698404a9e7')
+        '6218b559d57d7baaee6fd4d98546dc0a93e91dc7931f06a6e8b7fe2cad076b499ade5c731c572f5e36377e1642179b6e867b891e99fb618b5d38bc0500127aef')
 
 package() {
     bsdtar -O -xf "${pkgname}-${pkgver}"*.deb data.tar.xz | bsdtar -C "${srcdir}" -xJf -
