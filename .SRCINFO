@@ -1,6 +1,6 @@
 pkgbase = r-magicaxis
 	pkgdesc = Pretty Scientific Plotting with Minor-Tick and Log Minor-Tick Support
-	pkgver = 2.4.5
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=magicaxis
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-magicaxis
 	depends = r-sm
 	optdepends = r-fst
 	optdepends = r-imager
-	source = https://cran.r-project.org/src/contrib/magicaxis_2.4.5.tar.gz
-	sha256sums = 6d4802502a6fb2feafb3d9cbd7fa48e2d2de68a7f3eca3436b96d642c6039213
+	source = https://cran.r-project.org/src/contrib/magicaxis_2.5.1.tar.gz
+	sha256sums = 52866ea96b99036de4baea8e3436665427831fe31f7ccccccad2ca465c8627f7
 
 pkgname = r-magicaxis
