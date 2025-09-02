@@ -22,7 +22,7 @@ pkgbase = python-selenium-driverless
 	depends = python-aiohttp
 	depends = python-cdp-socket
 	optdepends = google-chrome: required at runtime for launching Chrome (Chromium not tested)
-	source = selenium-driverless-1.9.4.tar.gz::https://files.pythonhosted.org/packages/source/s/selenium-driverless/selenium-driverless-1.9.4.tar.gz
+	source = selenium-driverless-1.9.4.tar.gz::https://files.pythonhosted.org/packages/source/s/selenium-driverless/selenium_driverless-1.9.4.tar.gz
 	sha256sums = 151ccf57d399691ec4e943a941a496dbe575d0154a520cc2eca988ebe5d07a76
 
 pkgname = python-selenium-driverless
