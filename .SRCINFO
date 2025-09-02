@@ -1,6 +1,6 @@
 pkgbase = ffetch
 	pkgdesc = CLI tool to fetch system info.
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/0l3d/ffetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ffetch
 	depends = pciutils
 	depends = xorg-xprop
 	depends = coreutils
-	source = https://github.com/0l3d/ffetch/releases/download/v0.2.15/ffetch-v0.2.15-linux-x86_64.tar.gz
+	source = https://github.com/0l3d/ffetch/releases/download/v0.2.16/ffetch-v0.2.16-linux-x86_64.tar.gz
 	sha256sums = bd0a1756c36f4ae7ad5010f7392f5229c3fdb7235da60af600b4c3f4e0d263f6
 
 pkgname = ffetch
