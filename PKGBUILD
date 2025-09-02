@@ -1,7 +1,7 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=12.5.0
-pkgrel=2
+pkgver=12.6.0
+pkgrel=1
 stratver=3.0.5
 trustver=2.10.0
 btradever=1.2.1002
@@ -9,10 +9,10 @@ pkgdesc="Trading terminal in Wine"
 url="https://arqatech.com/ru/products/quik/terminals/user-applications/quik-workstation/"
 arch=('x86_64')
 noextract=('keygen.zip')
-depends=('wine<=10.8')
+depends=('wine<=10.8' 'unixodbc')
 
 source=(
-"https://arqatech.com/upload/iblock/0de/quik_${pkgver}_upd.zip"
+"https://arqatech.com/upload/iblock/119/quik_${pkgver}_upd.zip"
 "ftp://ftp.quik.ru/public/updates/10.2/StratVolat_${stratver}_upd.zip"
 #"ftp://ftp.quik.ru/public/updates/11.2/TrustManager_${trustver}_upd.zip"
 #"ftp://ftp.quik.ru/public/updates/10.2/BTrading_${btradever}_upd.zip"
@@ -25,15 +25,15 @@ source=(
 "ip.cfg"
 )
 sha256sums=(
-'f5b49d7be5020be2e385c1d353fbd991d158da93c204cdec38908afd11814592' # quik_12.5.0_upd.zip
+'62fe8c046f9d313d56ba87e1a38d5af832d57f7918be2488a6f0c0a712727be0' # quik_12.6.0_upd.zip
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75' # StratVolat 3.0.5
 #'ff4dd52e56fabe8c06730daca770a92312338303bc06b58d417105d44c5a0869' # TrustManager
 #'0f6724e6666c379cf9a1f53aa627f4b0c56fded2d7e3fbf3704d6526066fa8e3' # BasketTrading
 'bc66665d2209836abe51ae9258c289c0f682dba4ea5261f9319996a60a6a4ae7' # keygen
 'b2a3a2e2a895cea35aad5dee97640ef7bcccbb38e61e61b14baff6cecbdd79af' # lua-socket 5.3.5
 'f45993d0f5d1d84fe0c084433505d3a84babd6f5686fc2c3c7a7119b9727e927' # lua-socket 5.4.7
-'e4ddfc7a2a12bba0fdc880dcb05757fff2c035b2625f721ea1a0383bdc6ad1bf'
-'92563c563a9781592d1e119117e3b7a899addfabd733648986b97db999386821'
+'70f46a29703b822ddff8b502c07697a05e478b7de51b9e55d67c4dc37e1bb80f' # quik
+'758f427eccd973964ce6fcf8d0dd3064bf694096ee56f6d49e27e165ecab54c4' # quik-keygen
 'd981ee4cc35d33a3b37c43fb7343bde5c24e15e003dbb67907b602d22f60a469'
 '49aa53c38ceb5c3029398203a68bbb1b3cc9819d01ecb57a6ce13c31b344fe03' # ip.cfg
 )
