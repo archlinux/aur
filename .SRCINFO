@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell
 	pkgdesc = The desktop shell for the Caelestia dotfiles
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
@@ -24,7 +24,6 @@ pkgbase = caelestia-shell
 	depends = power-profiles-daemon
 	depends = ttf-rubik-vf
 	depends = ttf-cascadia-code-nerd
-	depends = grim
 	depends = swappy
 	depends = libqalculate
 	depends = bash
@@ -32,7 +31,7 @@ pkgbase = caelestia-shell
 	depends = qt6-declarative
 	provides = caelestia-shell
 	conflicts = caelestia-shell
-	source = https://github.com/caelestia-dots/shell/releases/download/v1.0.0/caelestia-shell-v1.0.0.tar.gz
+	source = https://github.com/caelestia-dots/shell/releases/download/v1.1.0/caelestia-shell-v1.1.0.tar.gz
 	sha256sums = e260448a62c853e2f7e2f49e4196a36e7f4a004f82295519d5d1c89b3f94a24e
 
 pkgname = caelestia-shell
