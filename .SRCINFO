@@ -1,0 +1,18 @@
+pkgbase = simd-git
+pkgdesc = Dashboards and Telemetry Monitoring for Racing Sims
+pkgver = 0.1.0
+pkgrel = 1
+url = https://github.com/spacefreak18/simapi/simd
+arch = x86_64
+license = GPL3
+makedepends = git
+makedepends = cmake
+depends = argtable
+depends = libconfig
+depends = libxdg-basedir
+depends = libuv
+depends = yder
+source = git+https://github.com/spacefreak18/simapi.git
+sha256sums = SKIP
+
+pkgname = simd-git
