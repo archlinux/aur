@@ -3,7 +3,7 @@
 pkgname=winboat-arjix
 _pkgname=winboat
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Windows apps on 🐧 Linux with ✨ seamless integration"
 arch=('x86_64')
 url="https://github.com/TibixDev/winboat"
@@ -39,10 +39,10 @@ package() {
     cd "$_pkgname"
 
     install -d "$pkgdir/usr/lib"
-    mv "dist/linux-unpacked" "$pkgdir/usr/lib/$pkgname"
+    mv "dist/linux-unpacked" "$pkgdir/usr/lib/$_pkgname"
 
     install -d "$pkgdir/usr/bin"
-    ln -s "/usr/lib/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm644 "icons/icon.png" "${pkgdir}/usr/share/pixmaps/winboat.png"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/winboat/LICENSE"
