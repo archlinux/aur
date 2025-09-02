@@ -1,6 +1,6 @@
 pkgbase = jlivertool
 	pkgdesc = Simple Bilibili Danmaku Tool.(Use system-wide electron)Bilibili 弹幕机.
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = http://jlivertool.xinrea.cn/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = jlivertool
 	depends = electron35
 	provides = jlivertool
 	conflicts = jlivertool
-	source = jlivertool-2.4.2::git+https://github.com/Xinrea/JLiverTool#tag=v2.4.2
+	source = jlivertool-2.4.3::git+https://github.com/Xinrea/JLiverTool#tag=v2.4.3
 	source = jlivertool.sh
-	sha256sums = ec547660280838b793d0a69e259bbe407d2aaa3ad3860289237599c78b6227aa
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 66bdb55eb7315f9ed7afb8a6ab256f4bb41d64013339b7615f1c5083dc9e1241
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = jlivertool
