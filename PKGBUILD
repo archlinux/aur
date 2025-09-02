@@ -2,7 +2,7 @@
 
 pkgbase=dosr
 pkgname=('dosr')
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='A better alternative to sudo(-rs)/su • Fast • Memory-safe • Security-oriented'
 url='https://lechatp.github.io/RootAsRole/'
@@ -10,7 +10,7 @@ license=('LGPL-3.0-or-later')
 arch=('x86_64')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v${pkgver}.tar.gz")
-sha256sums=('2d707bbfa0d7be87e44739f6caf5f23ead088b497ffce187f4e8b2b60b2f59af')
+sha256sums=('b54cb9c68d054d312b24a840c6320cbaa73d6b0bbd860ee028ca52a90bfadd36')
 depends=('pcre2' 'pam' 'libseccomp' 'glibc' 'gcc-libs')
 makedepends=(cargo e2fsprogs)
 optdepends=('pandoc: for building man pages')
@@ -20,6 +20,7 @@ backup=('usr/share/rootasrole/dosr' 'usr/share/rootasrole/default.json')
 
 prepare() {
     cd RootAsRole-$pkgver
+    rm Cargo.lock || true
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
