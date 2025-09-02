@@ -6,7 +6,7 @@ pkgver=0.192.0.dev.r980.gadb21022b5
 pkgrel=3
 pkgdesc="Zed fork focused on privacy and being local-first"
 url="https://github.com/zedless-editor/zedless"
-license=("GPL-3.0-or-later")
+license=("AGPL" "APACHE" "GPL")
 source=("git+https://github.com/zedless-editor/zedless.git")
 sha512sums=("SKIP")
 arch=("x86_64")
@@ -82,4 +82,6 @@ package() {
   install -D --mode=0755 --no-target-directory "target/release/zed" "${pkgdir}/usr/bin/${_binname}"
   install -D --mode=0644 --target-directory "${pkgdir}/usr/share/applications/" "${_appid}.desktop"
   install -D --mode=0644 --no-target-directory crates/zed/resources/app-icon.png "${pkgdir}/usr/share/pixmaps/zed.png"
+  install -D --mode=0444 --target-directory "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE-*
+  install -D --mode=0444 --target-directory "${pkgdir}/usr/share/doc/${pkgname}/" README.md
 }
