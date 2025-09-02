@@ -3,12 +3,11 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6351
+pkgver=b6356
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
-api_url='https://api.github.com/repos/ggml-org/llama.cpp/releases/latest'
 license=('MIT')
 depends=(
   curl
@@ -35,25 +34,11 @@ optdepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
-source=()
-sha256sums=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2a33306ce8dab8eb05a701692374f4d5ed5834bed6a2aed47756a48ee1a9d17a')
 
 prepare() {
-  cd "$srcdir"
-
-  local _latest_tag
-  _latest_tag=$(curl -s "${api_url}" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-
-  # 仅使用刚获取的标签进行浅克隆, 避免脱离 Head 提示
-  msg2 "Cloning the latest release tag: ${_latest_tag}"
-  git -c advice.detachedHead=false clone --depth 1 --single-branch --branch "${_latest_tag}" "${url}" "${_pkgname}"
-}
-
-pkgver() {
-  # 使用 API 获取最新发布的标签
-  curl -s "${api_url}" | \
-    grep '"tag_name":' | \
-    sed -E 's/.*"([^"]+)".*/\1/'
+  ln -sf "${_pkgname}-${pkgver}" llama.cpp
 }
 
 build() {
