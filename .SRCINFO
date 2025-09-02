@@ -1,0 +1,15 @@
+pkgbase = logu-bin
+	pkgdesc = Extract patterns from unstructured log messages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ynqa/logu
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = logu
+	conflicts = logu
+	source_x86_64 = logu-x86_64-0.1.0.tar.gz::https://github.com/ynqa/logu/releases/download/v0.1.0/logu-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 10664c4037da9da16df63961775b382514fdbf52c384431c9a887e2202edd686
+
+pkgname = logu-bin
