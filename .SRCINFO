@@ -1,15 +1,20 @@
 pkgbase = gonchill
 	pkgdesc = A CLI tool for streaming content
-	pkgver = 1.0.10
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kbwhodat/gonchill
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
+	makedepends = python
+	makedepends = python-pip
+	depends = mpv
+	depends = vlc
 	depends = peerflix
+	depends = python-selenium-driverless
 	options = !debug
-	source = gonchill-1.0.10.tar.gz::https://github.com/kbwhodat/gonchill/releases/download/1.0.10/gonchill-1.0.10.tar.gz
+	source = gonchill-1.1.0.tar.gz::https://github.com/kbwhodat/gonchill/releases/download/1.1.0/gonchill-1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = gonchill
