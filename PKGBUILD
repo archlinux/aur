@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-eversolo-nowplaying-git
 _pkgdesc='Extension for GNOME Shell to control and show now playing on Eversolo devices'
 pkgver=r5.7ae86bd
-pkgrel=1
+pkgrel=2
 pkgdesc="$_pkgdesc"
 arch=(any)
 url='https://gitlab.com/teraflops/eversolo-nowplaying'
