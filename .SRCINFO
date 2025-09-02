@@ -6,6 +6,7 @@ pkgbase = omnissa-horizon-client
 	arch = x86_64
 	license = custom
 	makedepends = resvg
+	makedepends = oxipng
 	options = !debug
 	source = omnissa-horizon-client-2506-8.16.0-16536624989.tar.gz::https://download3.omnissa.com/software/CART26FQ2_LIN_2506_TARBALL/Omnissa-Horizon-Client-Linux-2506-8.16.0-16536624989.tar.gz
 	source = horizon-icon.svg

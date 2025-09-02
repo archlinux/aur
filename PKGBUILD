@@ -16,7 +16,7 @@ _cart="CART26FQ2_LIN_${pkgver}_TARBALL"
 pkgrel=2
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
-makedepends=('resvg')
+makedepends=('resvg' 'oxipng')
 options=('!debug')
 url='https://customerconnect.omnissa.com/downloads/info/slug/virtual_desktop_and_apps/omnissa_horizon_clients/8'
 license=('custom')
@@ -67,9 +67,8 @@ build() {
 	# prepare high(er) quality icons
 	install -d "${srcdir}/icons"
 	for SIZE in 16 24 32 48 64 96 128; do
-		resvg --height "${SIZE}" --width "${SIZE}" \
-			"${srcdir}/horizon-icon.svg" \
-			"${srcdir}/icons/horizon-client-${SIZE}.png"
+		resvg --height "${SIZE}" --width "${SIZE}" "${srcdir}/horizon-icon.svg" -c | \
+			oxipng - > "${srcdir}/icons/horizon-client-${SIZE}.png"
 	done
 }
 
