@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -32,7 +32,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 [[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('57d33524697003399f28f6da740b9474ef295d028663cb33760c58b64c6e2beb'
+sha256sums=('3d1076beffb56dbfa70b6f7125e508de4c62a16b181b53fd467f40c045511500'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -96,9 +96,6 @@ build() {
       msg2 "${_arch}-${_cfg}"
       mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
       local additional_flags=()
-      if [[ $_cfg == static ]]; then
-        additional_flags+=(-DSQLite3_LIBRARY="/usr/$_arch/lib/libsqlite3.a")
-      fi
       ${_arch}-cmake \
         -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
