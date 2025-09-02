@@ -9,7 +9,7 @@
 # source package configuration and crates.io publishing approach.
 
 pkgname=awesome-omarchy-tui-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A beautiful terminal UI for browsing the awesome-omarchy repository with search, navigation, and GitHub integration (binary package)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ license=('MIT')
 provides=('awesome-omarchy-tui')
 conflicts=('awesome-omarchy-tui')
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://github.com/aorumbayev/awesome-omarchy-tui/releases/download/v${pkgver}/awsomarchy-standard-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('3848d264df8405002f244ca5be8203c21a8d2aadbcdedbe61a3c1822f37388c0')
+sha256sums_x86_64=('325e1455eb6b622ebe3113c2b3c01d03a6198aba415e3c9f213c0eab9b82721e')
 
 package() {
     # Install binary (built without updater feature for proper package manager integration)
