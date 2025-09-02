@@ -1,12 +1,16 @@
 [Unit]
 Description=Wayclip Daemon
-PartOf=graphical-session.target
-After=graphical-session.target
+After=graphical.target
+Wants=graphical.target
 
 [Service]
 ExecStart=/usr/bin/wayclip-daemon
 Restart=always
 RestartSec=3
 
+Environment=XDG_RUNTIME_DIR=%t
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+PassEnvironment=DISPLAY WAYLAND_DISPLAY XAUTHORITY
+
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
