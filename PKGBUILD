@@ -55,14 +55,15 @@ package_zoom-system-qt() {
 package_zoom-system-qt-cef(){
   pkgdesc="CEF for vebview of ${pkgbase}"
   depends+=(${pkgbase} sqlite chromium-ffmpeg-legacy)
-  optdepends=(vulkan-driver)
+  optdepends=(chromium)
   # Prebuilt libcef.so is not stripped which fills BUILDDIR
-  # Don't replace libffmpeg.so by avcodecs with different soname
   cd "$pkgdir"
   bsdtar -xf "$srcdir"/zoom_orig-${pkgver}.pkg.tar.xz \
     --exclude opt/zoom/cef/libsqlite3.so* --exclude opt/zoom/cef/locales opt/zoom/cef
   bsdtar -xf "$srcdir"/zoom_orig-${pkgver}.pkg.tar.xz opt/zoom/cef/locales/en-US.pak
-  rm -f "$pkgdir"/opt/zoom/cef/libvulkan.so.1
   ln -sf /usr/lib/libffmpeg.so.61 "$pkgdir"/opt/zoom/cef/libffmpeg.so
-  echo Please add SUID to /opt/zoom/cef/chrome-sandbox if your kernel does not have namespace sandbox.
+
+  ln -svf /usr/lib/chromium/chrome-sandbox "$pkgdir"/opt/zoom/cef/chrome_sandbox
+  install -d "$pkgdir"/opt/zoom/cef/glibc-hwcaps
+  ln -svf /usr/lib/chromium "$pkgdir"/opt/zoom/cef/glibc-hwcaps/x86-64-v2
 }

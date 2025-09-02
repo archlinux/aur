@@ -42,4 +42,4 @@ pkgname = zoom-system-qt-cef
 	depends = zoom-system-qt
 	depends = sqlite
 	depends = chromium-ffmpeg-legacy
-	optdepends = vulkan-driver
+	optdepends = chromium
