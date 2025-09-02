@@ -2,7 +2,7 @@
 
 _pkgname=cookiecloud-api
 pkgname="${_pkgname}-git"
-pkgver=20250506.201513
+pkgver=20250820.230645
 pkgrel=1
 pkgdesc="Synchronizing browser cookies and LocalStorage with a self-hosted server (API Server)"
 arch=("any")
