@@ -8,6 +8,7 @@ pkgbase = python-cdp-socket
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	source = cdp-socket-1.2.8.tar.gz::https://files.pythonhosted.org/packages/source/c/cdp-socket/cdp-socket-1.2.8.tar.gz
 	sha256sums = d8a3d55883205c7c45c05292cf5ef5a5c74534873e369e258e61213cce15be1a
