@@ -6,15 +6,15 @@
 
 _pkgbase=rtw88
 pkgname=rtw88-dkms-git
-pkgver=r667.fa96fd4
+pkgver=r675.52072d8
 pkgrel=1
-pkgdesc='Driver for Realtek 802.11ac wireless chips'
+pkgdesc='Drivers for Realtek 802.11n/802.11ac wireless chips'
 license=('GPL2')
 arch=('any')
 url='https://github.com/lwfinger/rtw88'
 depends=('dkms' 'linux-firmware-realtek')
 makedepends=('git')
-optdepends=('usb_modeswitch: A tool which can switch the adapter from CD-ROM mode to wifi mode')
+optdepends=('usb_modeswitch: A tool that can switch the adapter from CD-ROM mode to Wi-Fi mode')
 source=("git+https://github.com/lwfinger/rtw88.git")
 sha256sums=('SKIP')
 
