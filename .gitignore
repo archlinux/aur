@@ -1,0 +1,4 @@
+# Tarballs and other stuff that get's downloaded while testing
+*.tar.*
+pkg
+src
