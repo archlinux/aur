@@ -2,7 +2,7 @@
 
 pkgname=elephant-symbols
 pkgver=1.0.0
-pkgrel=18
+pkgrel=19
 pkgdesc='symbols provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -10,15 +10,15 @@ license=('MIT')
 makedepends=('go')
 conflicts=('elephant-symbols')
 provides=('elephant-symbols')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-18.tar.gz")
-sha256sums=('6b076a88f902c1d669556fd64cf95dde5d1d1156ddec02690e00a6252307e897')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-19.tar.gz")
+sha256sums=('29c2c66c935aa9395b13e3f67cf325b8c4133af23793e862a7430d0b7acb0f07')
 
 build() {
-    cd elephant-${pkgver}-beta-18/internal/providers/symbols
+    cd elephant-${pkgver}-beta-19/internal/providers/symbols
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-18/internal/providers/symbols
+    cd elephant-${pkgver}-beta-19/internal/providers/symbols
     install -Dm 755 symbols.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
