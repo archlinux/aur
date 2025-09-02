@@ -14,6 +14,8 @@ depends=('python'
 makedepends=('git'
              'python-build'
              'python-installer'
+             'python-setuptools'
+             'python-setuptools-scm'
              'python-wheel'
              'python-poetry-core')
 checkdepends=('python-pytest'
