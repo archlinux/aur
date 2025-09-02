@@ -13,9 +13,10 @@ pkgbase = noctalia-shell
 	depends = brightnessctl
 	depends = ddcutil
 	optdepends = cliphist: For clipboard history support
-	optdepends = swww: Wallpaper animations and effects
 	optdepends = matugen-bin: Material You color scheme generation
 	optdepends = cava: Audio visualizer component
+	optdepends = wlsunset: For supporting NightLight
+	conflicts = noctalia-shell-git
 	source = git+https://github.com/noctalia-dev/noctalia-shell.git#tag=v2.4.0
 	sha256sums = af70377e4c8ee6a754dbcf7a83df7030de9daba7eb9f9e3a6092a115f1c6ac87
 
