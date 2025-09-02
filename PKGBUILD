@@ -1,5 +1,5 @@
 pkgname=archiso-systemd-boot
-pkgver=2025.08.01
+pkgver=2025.09.01
 pkgrel=1
 pkgdesc='archiso as systemd-boot loader entry'
 arch=('x86_64')
@@ -11,7 +11,7 @@ backup=("boot/loader/entries/arch-rescue.conf")
 source=("https://geo.mirror.pkgbuild.com/iso/${pkgver}/archlinux-${pkgver}-${arch}.iso"
         "arch-rescue.conf")
 noextract=("archlinux-${pkgver}-${arch}.iso")
-b2sums=('84abee28cf68eef02f2ebf83ff440967cdc4c550312a83bcc9c57feb7820f1ca0f9e47aaf1f54b912d105fb9564341dc9bfc490497161bedf8ef784b49a80019'
+b2sums=('3961e1ec201c2dc476d3a0c9c0a1abfcc02c05b02e2bbdba7b71468c8b84d69e356d8510c67a28459238a7ed5d6205e46a3c9f0b0911d363609a714862312228'
         'f55abf33fbcb7d462d175c16dbe43e4f3bcb7c3ec60ad19a2d31a733c6f8948792b539c48f85dfc7ebe24e136ff74212a129c61605471ce0009c3b62f081a221')
 
 prepare() {
