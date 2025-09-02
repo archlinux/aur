@@ -3,7 +3,7 @@
 pkgname=3x-ui
 pkgver=2.6.7
 _xrayver=25.8.29
-pkgrel=2
+pkgrel=3
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
@@ -38,35 +38,37 @@ b2sums_armv7h=('75ea1373cb510858912cfea89eda790d49a5df90fb3e5aa73d9aebe98e397c7c
 b2sums_i686=('b40144e8d695fc61d0fbe415c6c723e3a70d45f2e0c87ccd227c1e37af75ab61daca1892dd730ec35548909a5b09e699a1377a2b014bed1ef551edab6d636a5a')
 b2sums_x86_64=('fac02ce3846b97e39cb651c393bd33513f5526eb571546fc411a7f3b2730319fce5b3deffac7d9480671e1e1caee8ec3deb47a2a38df89ea81b2689c5eef5b2e')
 
-build() {
+prepare() {
   cd $pkgname-$pkgver
-  export GOPATH="$srcdir"
+  sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g'                    ${pkgname:1}.sh
+  sed -i -E 's|wget -O ([^ ]+) ?-?N? (https?://[^ ]+)|curl -L -o \1 \2|g'       ${pkgname:1}.sh
+  sed -i -E 's|wget -N (https?://[^ ]+/([^/ ]+))|curl -L -o \2 \1|g'            ${pkgname:1}.sh
+  sed -i 's|/usr/local/|/usr/lib/|g'                                            ${pkgname:1}.sh
+  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|' ${pkgname:1}.service
+  sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'       ${pkgname:1}.service
+}
+
+build() {
+  export TMPDIR="$srcdir"/tmp
+  mkdir -p "$TMPDIR"
+
+  cd $pkgname-$pkgver
+  export GOCACHE="$srcdir"/go-build
+  export GOPATH="$srcdir"/go
   export CGO_CPPFLAGS=$CPPFLAGS
   export CGO_CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE"
   export CGO_CXXFLAGS=$CXXFLAGS
   export CGO_LDFLAGS=$LDFLAGS
   export CGO_ENABLED=1
-  export GOCACHE="$srcdir"/go-build
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/${pkgname:1} main.go
-}
-
-prepare() {
-  cd $pkgname-$pkgver
-  sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g'                      ${pkgname:1}.sh
-  sed -i 's|/usr/local/x-ui/bin|/usr/share/x-ui/bin|g'                            ${pkgname:1}.sh
-  sed -i -E 's|wget -O ([^ ]+) ?-?N? (https?://[^ ]+)|curl -L -o \1 \2|g'         ${pkgname:1}.sh
-  sed -i -E 's|wget -N (https?://[^ ]+/([^/ ]+))|curl -L -o \2 \1|g'              ${pkgname:1}.sh
-  sed -i 's|/usr/local/|/usr/lib/|g'                                              ${pkgname:1}.sh
-  sed -i 's|WorkingDirectory=/usr/local/x-ui/|WorkingDirectory=/usr/lib/x-ui/|' ${pkgname:1}.service
-  sed -i 's|ExecStart=/usr/local/x-ui/x-ui|ExecStart=/usr/lib/x-ui/x-ui|'         ${pkgname:1}.service
+  go build -o build/$pkgname main.go
 }
 
 package() {
   cd $pkgname-$pkgver
-  install -vDm 755 ${pkgname:1}.sh           "$pkgdir"/usr/bin/${pkgname:1}
-  install -vDm 755 build/${pkgname:1}     -t "$pkgdir"/usr/lib/${pkgname:1}/
-  install -vDm 644 ${pkgname:1}.service   -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm 755 ${pkgname:1}.sh          "$pkgdir"/usr/bin/${pkgname:1}
+  install -vDm 755 build/$pkgname           "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
+  install -vDm 644 ${pkgname:1}.service  -t "$pkgdir"/usr/lib/systemd/system/
   case ${CARCH} in
     aarch64) _xrayarch="arm64";;
     armv7h)  _xrayarch="arm32";;
