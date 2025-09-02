@@ -9,7 +9,7 @@
 # This ensures consistency with standard Linux package management practices.
 
 pkgname=awesome-omarchy-tui
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A beautiful terminal UI for browsing the awesome-omarchy repository with search, navigation, and GitHub integration"
 arch=('x86_64')
@@ -17,7 +17,7 @@ url="https://github.com/aorumbayev/awesome-omarchy-tui"
 license=('MIT')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aorumbayev/awesome-omarchy-tui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1983e7376d0db8e03cc9a34cdb8b04c78604120edbde8f029d100f13d537d4c2')
+sha256sums=('5f81faaedee4fe197ec4958408a9da260a90f82ca38b9b3d4a910cf28f6d690f')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
