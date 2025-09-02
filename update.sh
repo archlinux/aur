@@ -44,3 +44,5 @@ makepkg --printsrcinfo > .SRCINFO
 
 git commit -a -m 'Updated PKGBUILD'
 git push
+
+rm src *.tar.gz
