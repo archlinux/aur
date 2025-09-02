@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox-git
 _pkgname=FFBox
-pkgver=4.4.r0.gfb6719a
+pkgver=5.0.r0.g5ac6ddb
 _electronversion=24
 _nodeversion=16
 pkgrel=1
@@ -42,8 +42,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
