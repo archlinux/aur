@@ -1,6 +1,6 @@
 pkgbase = tageditor-cli
 	pkgdesc = A tag editor with command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (GUI disabled)
-	pkgver = 3.9.6
+	pkgver = 3.9.7
 	pkgrel = 1
 	url = https://github.com/Martchus/tageditor
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = tageditor-cli
 	depends = tagparser
 	provides = tageditor
 	conflicts = tageditor
-	source = tageditor-3.9.6.tar.gz::https://github.com/Martchus/tageditor/archive/v3.9.6.tar.gz
-	sha256sums = 09757de04ad41e325398a9a1954ec9e5278366923ba1fa4ef1f0677f4d26fd72
+	source = tageditor-3.9.7.tar.gz::https://github.com/Martchus/tageditor/archive/v3.9.7.tar.gz
+	sha256sums = 312251248715f91e935481aa07a0fba532565e35d58a30b973cd269fff89d9b5
 
 pkgname = tageditor-cli
 	depends = c++utilities
