@@ -35,7 +35,6 @@ makedepends=(
   cmake
   pkgconf
 )
-checkdepends=(cargo)
 conflicts=("zed" "zed-preview" "zed-preview-bin" "zedless" "zedless-bin")
 provides=("zed")
 options=('!lto')
@@ -52,7 +51,6 @@ pkgver() {
 prepare() {
   cd "zedless"
   export RUSTUP_TOOLCHAIN=stable
-  # cargo update # not our responsibility
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   export APP_NAME="Zed"
   export APP_CLI="${_binname}"
@@ -69,16 +67,8 @@ build() {
   cargo build --frozen --release --all-features
 }
 
-check() {
-  cd "zedless"
-  export RUSTUP_TOOLCHAIN=stable
-  # cargo test --frozen --all-features # not our responsibility
-}
-
 package() {
   cd "zedless"
-  # export RUSTUP_TOOLCHAIN=stable
-  # cargo install --no-track --all-features --root "${pkgdir}/usr/" --frozen --path .
   install -D --mode=0755 --no-target-directory "target/release/zed" "${pkgdir}/usr/bin/${_binname}"
   install -D --mode=0644 --target-directory "${pkgdir}/usr/share/applications/" "${_appid}.desktop"
   install -D --mode=0644 --no-target-directory crates/zed/resources/app-icon.png "${pkgdir}/usr/share/pixmaps/zed.png"
