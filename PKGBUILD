@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -12,57 +12,26 @@ provides=('wayclip-cli')
 conflicts=('wayclip-cli')
 
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
-        "wayclip-core.tar.gz::https://github.com/Wayclip/core/archive/refs/tags/v0.1.1.tar.gz"
-        "wayclip-daemon.service")
-
-sha256sums=('8a4e90a2dd1b516d38d9ce64012fbfa9d5b0ec9e58fe7294115a28faef46dfc7'
-            'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8'
-            'ea6d66b8f244c7a4b602f7e29e4f12090c1346a1e82f31e41899a79e17b55ea9')
+        "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.1/wayclip-v0.1.1-x86_64-unknown-linux-gnu.tar.gz")
 
 prepare() {
   tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir/"
   tar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/"
-
-  local core_dir="core-0.1.1"
-  local cli_dir="cli-$pkgver"
-
-  cd "$srcdir/$core_dir"
-  cargo update
+  cd "$srcdir/cli-$pkgver"
   cargo fetch
-
-  cd "$srcdir/$cli_dir"
-  cargo update
 }
 
 build() {
-  local core_dir="core-0.1.1"
-  local cli_dir="cli-$pkgver"
-
-  export CFLAGS+=" -ffat-lto-objects"
-  export CXXFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
-
-  cd "$srcdir/$core_dir"
+  cd "$srcdir/cli-$pkgver"
   cargo build --release --frozen
-  mv target/release/daemon "$srcdir/daemon"
-  mv target/release/trigger "$srcdir/trigger"
-
-  cd "$srcdir/$cli_dir"
-  cargo build --release --frozen
-  mv target/release/wayclip_cli "$srcdir/wayclip-cli"
-}
-
-check() {
-  local cli_dir="cli-$pkgver"
-  cd "$srcdir/$cli_dir"
-  cargo test --frozen
 }
 
 package() {
-  install -Dm755 "$srcdir/wayclip-cli" "$pkgdir/usr/bin/wayclip-cli"
-
-  install -Dm755 "$srcdir/daemon" "$pkgdir/usr/bin/wayclip-daemon"
-  install -Dm755 "$srcdir/trigger" "$pkgdir/usr/bin/wayclip-trigger"
-
-  install -Dm644 "$srcdir/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
+  install -Dm755 "$srcdir/cli-$pkgver/target/release/wayclip_cli" "$pkgdir/usr/bin/wayclip-cli"
+  install -Dm755 "$srcdir/wayclip-binaries/daemon" "$pkgdir/usr/bin/wayclip-daemon"
+  install -Dm755 "$srcdir/wayclip-binaries/trigger" "$pkgdir/usr/bin/wayclip-trigger"
+  install -Dm644 "$srcdir/cli-$pkgver/assets/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
 }
+sha256sums=('5599b0dddc98cded46df00afac38546a0bce59937ab65b707ed0e25c486ea431'
+            'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8')
