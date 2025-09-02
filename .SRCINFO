@@ -1,17 +1,17 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.6.2
+	pkgver = 6.6.3
 	pkgrel = 1
 	url = https://dbgate.org/
 	arch = x86_64
 	license = MIT
 	depends = electron30
-	provides = dbgate=6.6.2
+	provides = dbgate=6.6.3
 	conflicts = dbgate
-	source = dbgate-6.6.2.deb::https://github.com/dbgate/dbgate/releases/download/v6.6.2/dbgate-6.6.2-linux_amd64.deb
-	source = LICENSE-6.6.2::https://raw.githubusercontent.com/dbgate/dbgate/v6.6.2/LICENSE
+	source = dbgate-6.6.3.deb::https://github.com/dbgate/dbgate/releases/download/v6.6.3/dbgate-6.6.3-linux_amd64.deb
+	source = LICENSE-6.6.3::https://raw.githubusercontent.com/dbgate/dbgate/v6.6.3/LICENSE
 	source = dbgate.sh
-	sha256sums = efaa113d01e5a679ea1931416fbe52c146e7f02c72488dc67258746197d85c83
+	sha256sums = a7f8ad179433f748f44cf6e7fb38321658854ce599e49ab502915a9465c6547c
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
