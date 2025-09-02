@@ -1,0 +1,23 @@
+pkgbase = atrust-bin
+	pkgdesc = Sangfor ssl sdp client.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.5.16.20
+	pkgrel = 1
+	url = https://www.sangfor.com/
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = libxss
+	depends = qt5-base
+	depends = openssl-1.1
+	depends = java-runtime
+	provides = atrust=2.5.16.20
+	conflicts = atrust
+	options = !strip
+	options = !emptydirs
+	source = atrust-2.5.16.20.deb::https://atrustcdn.sangfor.com/standard/linux/2.5.16.20/uos/amd64/aTrustInstaller_amd64.deb
+	source = bsod_checker.js
+	source = atrust.sh
+	sha256sums = fea38f63297e2c9bf853f33c566130a2f62f406926f60cf4e87f6d24a8e397d9
+	sha256sums = ae82a7e0575d2ed8778134fc7d5c9c85001c955a7d26710a13101ff2363c53e6
+	sha256sums = 28e008479e0ddba50ab98baa97c9e27c22cfe8aaac3812f7d4552a75453068da
+
+pkgname = atrust-bin
