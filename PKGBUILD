@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(python python-dbus-fast)
 install="config.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CelDaemon/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("adcaf0cd424fb8187afbba52a75adad71d948931d5e51c97cc6804c8c41b1a72")
+sha256sums=("f9feaa61b3c734bcb33568fff1c2abe944e4667e2ef88f285c2dd343db379fe5")
 
 
 package() {
