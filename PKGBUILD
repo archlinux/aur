@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=soundcloud
 pkgname="${_appname}-rpc-bin"
-pkgver=0.1.3
+pkgver=0.1.4
 _electronversion=37
 pkgrel=1
 pkgdesc="🎵 A SoundCloud Client with Discord Rich Presence, Dark Mode, Last.fm, and AdBlock Support.(Prebuilt version.Use system-wide electron)"
@@ -13,20 +13,17 @@ provides=("${pkgname%-bin}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-installer-linux.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('46385aa48480b84c6404ed576a23bd5b7be74e1ab02d3dbbe68785e651d76de8'
+sha256sums=('419a2da3664ca603ead352b6bbd1e5cde3cc5f4ed85695bf8970a7b8abc1b1f0'
             'de7ae1038162d14df6bc9ec2a6f717a46d0c57deba4e4fffe4cea07595b0c68d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
