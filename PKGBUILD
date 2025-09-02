@@ -1,8 +1,8 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=purrcrypt
-pkgver=r7.116f168
-pkgrel=4
+pkgver=r13.c9094e0
+pkgrel=1
 pkgdesc='A fur-ociously secure encryption tool that encodes your secrets as adorable cat and dog sounds, using real elliptic curve cryptography with a playful disguise'
 arch=('x86_64')
 url="https://github.com/vxfemboy/$pkgname"
@@ -11,8 +11,8 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 provides=('purr')
 conflicts=('purr')
-source=("$pkgname-$pkgver::git+$url.git#commit=116f168")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver::git+$url.git#commit=c9094e0")
+b2sums=('644ca8693b495e1f6058c5f2b061759a973ad5f2ec79b20e8ab31bbac4e44ac11b67858d4acf922a4fa4de2f5577459b951bfb589cf4fc9bb01c575318edb2ef')
 
 pkgver() {
     cd $pkgname-$pkgver
