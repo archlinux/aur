@@ -1,7 +1,7 @@
 pkgbase = niri-dinit
 	pkgdesc = A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)
 	pkgver = 25.08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/YaLTeR/niri
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,6 +21,7 @@ pkgbase = niri-dinit
 	depends = libxkbcommon
 	depends = gcc-libs
 	depends = glibc
+	depends = dbus-dinit-user
 	optdepends = alacritty: suggested cross-platform OpenGL terminal emulator
 	optdepends = fuzzel: suggested Wayland application launcher
 	optdepends = gnome-keyring: org.freedesktop.secrets portal implementation
