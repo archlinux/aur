@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -17,7 +17,7 @@ depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-ddgs' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'python-genai-prices' 'ruff' 'deno')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('8ad929b9789358cc53a4d563c3cab007f9c7311b123a4948ce5da20c5c6b49db')
+sha256sums=('8279c4813435e57b2b1311ca50a5d40f23b90065d5f1b43ec20b428181ae372d')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
