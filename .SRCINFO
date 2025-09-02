@@ -1,0 +1,25 @@
+pkgbase = winboat-arjix
+	pkgdesc = Run Windows apps on 🐧 Linux with ✨ seamless integration
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://github.com/TibixDev/winboat
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = libxss
+	depends = libsecret
+	provides = winboat
+	conflicts = winboat
+	source = git+https://github.com/TibixDev/winboat.git#tag=v0.6.10
+	source = winboat.desktop
+	source = electron-builder.json.patch
+	sha256sums = cb5fbdc1148e3662089577d5a7b1dec0f716f9b3e9332e9cdd2db945ab7d6998
+	sha256sums = e1d52f52541e628574c5cb675d43bfae964c73e0e0c634543683bcb2c147f930
+	sha256sums = 22250af9f24d9bec706d52d8a3254ecbf3701ee150aa8d0b3031326dbb693e31
+
+pkgname = winboat-arjix

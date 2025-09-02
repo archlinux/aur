@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Winboat
+Comment=Windows for Penguins
+Exec=winboat
+Icon=winboat
+Terminal=false
+Type=Application
+Categories=System;
+
