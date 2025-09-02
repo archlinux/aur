@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-bin
 _pkgname=MKEditor
-pkgver=3.5.1
+pkgver=3.6.0
 _electronversion=37
 pkgrel=1
 pkgdesc="The simple markdown editor.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkeditorOSS/mkeditor/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9b55f2387b236fab3ad7cc2081a7b58d176b865e13e232ebc358a336320140a7'
+sha256sums=('d4774f8ffff530a21494cf8e219ab599f791c318e7769dfe966ab69a11a2d543'
             'df04ed7c37e0fac99d5fc54e9e2b9095fd3982b25013afdf9472f23bc571965c'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
