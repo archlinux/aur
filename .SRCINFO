@@ -1,0 +1,17 @@
+pkgbase = python-selenium-driverless
+	pkgdesc = Undetected Selenium without chromedriver usage (non-commercial license)
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = https://github.com/kaliiiiiiiiii/Selenium-Driverless
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = google-chrome: required at runtime for launching Chrome (Chromium not tested)
+	source = selenium-driverless-1.9.4.tar.gz::https://files.pythonhosted.org/packages/source/s/selenium-driverless/selenium-driverless-1.9.4.tar.gz
+	sha256sums = 151ccf57d399691ec4e943a941a496dbe575d0154a520cc2eca988ebe5d07a76
+
+pkgname = python-selenium-driverless
