@@ -1,0 +1,80 @@
+diff '--color=auto' -Naru sendmail-8.18.1.10-orig/devtools/M4/UNIX/links.m4 sendmail-8.18.1.10-new/devtools/M4/UNIX/links.m4
+--- sendmail-8.18.1.10-orig/devtools/M4/UNIX/links.m4	2023-02-09 20:24:38.000000000 +0200
++++ sendmail-8.18.1.10-new/devtools/M4/UNIX/links.m4	2025-09-02 20:01:06.000000000 +0200
+@@ -27,3 +27,12 @@
+ 	done'
+ )dnl
+ 
++define(`bldMAKE_SHARED_LINKS', `
++ifelse(bldOS, `Linux', `
++	rm -f ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_LINK}
++	${LN} ${LNOPTS} ${SHAREDLIB} ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_SONAME}
++	${LN} ${LNOPTS} ${SHAREDLIB_SONAME} ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_LINK}
++', `
++	rm -f ${SHAREDLIB_LINK}
++	ln -s ${SHAREDLIB} ${SHAREDLIB_LINK}
++')')dnl
+diff '--color=auto' -Naru sendmail-8.18.1.10-orig/devtools/M4/UNIX/sharedlib.m4 sendmail-8.18.1.10-new/devtools/M4/UNIX/sharedlib.m4
+--- sendmail-8.18.1.10-orig/devtools/M4/UNIX/sharedlib.m4	2023-02-09 20:24:38.000000000 +0200
++++ sendmail-8.18.1.10-new/devtools/M4/UNIX/sharedlib.m4	2025-09-02 20:08:34.519141663 +0200
+@@ -14,8 +14,23 @@
+ #
+ divert(0)dnl
+ 
++divert(-1)
++#
++# For the sake of version numbering for Linux, the following small C programme (source: Fedora, slightly modified) will extract the milter version number from the file `include/libmilter/mfapi.h'
++# SUFFIX has to be the FULL VERSION, as it is used for building the final library file. It starts with a "."
++# SOVER is the library's major version number, used for the SONAME and for one of the symlinks.
++
++define(`runCtest', `esyscmd(`echo -e "#include <stdio.h>\n#include <stdbool.h>\n#include \"../include/libmilter/mfapi.h\"\nint main(void){'$1`;return 0;}" | cc -x c -I../include -o ctest - && ./ctest && rm -f ctest')')dnl
++define(`confSHAREDLIB_SUFFIX', runCtest(`printf(\".%d.%d.%d\", SM_LM_VRS_MAJOR(SMFI_VERSION), SM_LM_VRS_MINOR(SMFI_VERSION), SM_LM_VRS_PLVL(SMFI_VERSION))'))dnl
++define(`confSHAREDLIB_SOVER', runCtest(`printf(\"%d\", SM_LM_VRS_MAJOR(SMFI_VERSION))'))dnl
++
++define(`confSONAME_LINUX', `-Wl,-soname,')dnl
++divert(0)
++
+ define(`confLIBEXT', `a')dnl
+ 
++SHAREDLIB_SOVER= ifdef(`confSHAREDLIB_SOVER', `.'`confSHAREDLIB_SOVER', `')
++SHAREDLIB_SONAME= bldCURRENT_PRODUCT${SHAREDLIB_EXT}${SHAREDLIB_SOVER}
+ SHAREDLIB_SUFFIX= ifdef(`confSHAREDLIB_SUFFIX', `confSHAREDLIB_SUFFIX', `')
+ SHAREDLIB_EXT= ifdef(`confSHAREDLIB_EXT', `confSHAREDLIB_EXT', `.so')
+ SHAREDLIB= bldCURRENT_PRODUCT${SHAREDLIB_EXT}${SHAREDLIB_SUFFIX}
+@@ -24,6 +39,7 @@
+ DEPLIBS= ifdef(`confDEPLIBS', `confDEPLIBS', `') ${bldCURRENT_PRODUCT`SMDEPLIBS'}
+ 
+ CONFIG_SONAME= ifdef(`confSONAME', `confSONAME ${SHAREDLIB}', `')
++CONFIG_SONAME_LINUX= ifdef(`confSONAME_LINUX', `confSONAME_LINUX${SHAREDLIB_SONAME}', `')
+ 
+ include(confBUILDTOOLSDIR`/M4/'bldM4_TYPE_DIR`/links.m4')dnl
+ bldLIST_PUSH_ITEM(`bldC_PRODUCTS', bldCURRENT_PRODUCT)dnl
+@@ -40,7 +56,7 @@
+ divert(bldTARGETS_SECTION)
+ 
+ ${SHAREDLIB}: ${BEFORE} ${bldCURRENT_PRODUCT`OBJS'} ifelse(bldOS, `AIX', `bldCURRENT_PRODUCT.a')
+-	${LD} ${LDOPTS_SO} ${CONFIG_SONAME} -o ${SHAREDLIB} ${bldCURRENT_PRODUCT`OBJS'} ${LIBDIRS} ${DEPLIBS}
++	${LD} ${LDOPTS_SO} ifelse(bldOS, `Linux', `${CONFIG_SONAME_LINUX}', `${CONFIG_SONAME}') -o ${SHAREDLIB} ${bldCURRENT_PRODUCT`OBJS'} ${LIBDIRS} ${DEPLIBS}
+ 	ifelse(bldOS, `AIX', `${CP} ${SHAREDLIB} shr.o
+ 	${AR} ${AROPTS} bldCURRENT_PRODUCT.a shr.o
+ 	${CP} bldCURRENT_PRODUCT.a ${SHAREDLIB}',`rm -f bldCURRENT_PRODUCT${SHAREDLIB_EXT}
+@@ -52,13 +68,17 @@
+ 
+ ifdef(`bldLINK_SOURCES', `bldMAKE_SOURCE_LINKS(bldLINK_SOURCES)')
+ 
+-install-`'bldCURRENT_PRODUCT: ${SHAREDLIB}
++install-`'bldCURRENT_PRODUCT: ${SHAREDLIB} bldCURRENT_PRODUCT.a
+ 	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${SHAREDLIBDIR} ]; then confMKDIR -p ${DESTDIR}${SHAREDLIBDIR}; else :; fi ')
+ 	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} ${SHAREDLIB} ${DESTDIR}${SHAREDLIBDIR}
++	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} bldCURRENT_PRODUCT.a ${DESTDIR}${SHAREDLIBDIR}
+ 	ifelse(bldOS, `AIX', `${AR} ${AROPTS} ${DESTDIR}${SHAREDLIBDIR}bldCURRENT_PRODUCT.a ${SHAREDLIB}', `rm -f ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_LINK}
+ 	${LN} ${LNOPTS} ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB} ${DESTDIR}${SHAREDLIBDIR}${SHAREDLIB_LINK}')
++	bldMAKE_SHARED_LINKS
+ 
+ bldCURRENT_PRODUCT-clean:
+ 	rm -f ${OBJS} ${SHAREDLIB} bldCURRENT_PRODUCT.a ${MANPAGES} ifelse(bldOS, `AIX', `shr.o', `bldCURRENT_PRODUCT${SHAREDLIB_EXT}')
+-
++	ifdef(`bldOS', `Linux', `
++		rm -f ${SHAREDLIB_SONAME} ${SHAREDLIB_LINK}
++	')
+ divert(0)

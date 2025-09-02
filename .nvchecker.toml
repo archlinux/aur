@@ -1,3 +1,10 @@
+[libmilter_checks-sendmail-SNAPSHOT]
+source = "regex"
+#regex = "(\\d+\\.\\d+\\.\\d+)"
+regex = "sendmail.(\\d+\\.\\d+\\.\\d+).tar.gz"
+#url = "https://www.proofpoint.com/us/products/email-protection/open-source-email-solution"
+url = "https://ftp.sendmail.org/snapshots/"
+
 [libmilter_checks-sendmail]
 source = "regex"
 #regex = "(\\d+\\.\\d+\\.\\d+)"
