@@ -1,7 +1,7 @@
 pkgbase = sparkle-bin
 	pkgdesc = Another Mihomo GUI
 	pkgver = 1.6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xishang0128/sparkle
 	arch = x86_64
 	arch = aarch64

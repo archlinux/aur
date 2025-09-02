@@ -1,7 +1,7 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="sparkle-bin"
 pkgver="1.6.11"
-pkgrel=1
+pkgrel=2
 pkgdesc="Another Mihomo GUI"
 arch=("x86_64" "aarch64")
 url="https://github.com/xishang0128/sparkle"
@@ -30,4 +30,7 @@ package() {
         cd $srcdir
         cp -R usr ${pkgdir}
         cp -R opt ${pkgdir}
+        chmod +x ${pkgdir}/opt/sparkle/resources/files/sysproxy
+        chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo
+        chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo-alpha
 }
