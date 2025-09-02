@@ -27,6 +27,7 @@ pkgbase = llama.cpp-hip
 	conflicts = llama.cpp
 	conflicts = libggml
 	conflicts = ggml
+	conflicts = stable-diffusion.cpp
 	options = lto
 	options = !debug
 
