@@ -1,0 +1,25 @@
+pkgbase = backhand-bin
+	pkgdesc = Read, create and modify SquashFS File Systems
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/wcampbell0x2a/backhand
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = add-backhand
+	provides = replace-backhand
+	provides = unsquashfs-backhand
+	conflicts = backhand
+	source = README-0.23.0.md::https://raw.githubusercontent.com/wcampbell0x2a/backhand/v0.23.0/README.md
+	source = LICENSE-MIT-0.23.0::https://raw.githubusercontent.com/wcampbell0x2a/backhand/v0.23.0/LICENSE-MIT
+	source = LICENSE-APACHE-0.23.0::https://raw.githubusercontent.com/wcampbell0x2a/backhand/v0.23.0/LICENSE-APACHE
+	sha256sums = 41914bbb1aeba2373232fe052efec578b82643f80444613a7c80ecd77c66d67a
+	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
+	sha256sums = fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42
+	source_x86_64 = backhand-x86_64-0.23.0.tar.gz::https://github.com/wcampbell0x2a/backhand/releases/download/v0.23.0/backhand-v0.23.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 440954956fb06817cb5d329ae0ef1102ce9b62f77f64bc323a2b8649acfde259
+	source_aarch64 = backhand-aarch64-0.23.0.tar.gz::https://github.com/wcampbell0x2a/backhand/releases/download/v0.23.0/backhand-v0.23.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 84b164b6e1005b575fab5b43da4b491115512ca1df2eb1deed27edd38891fc0f
+
+pkgname = backhand-bin
