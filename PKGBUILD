@@ -1,7 +1,7 @@
 # Maintainer: Arda Yılmaz <fijarom at fijarom dot com>
 
 pkgname=steam-hide-whats-new
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Bash script for hiding the \"What's New\" section in Steam"
 arch=('x86_64')
