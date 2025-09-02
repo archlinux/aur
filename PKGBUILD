@@ -28,7 +28,6 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    -n 0
   )
   cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
