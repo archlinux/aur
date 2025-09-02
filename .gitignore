@@ -1,0 +1,4 @@
+clash-exporter
+pkg
+src
+*.pkg.tar.zst

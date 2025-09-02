@@ -1,0 +1,21 @@
+pkgbase = clash-exporter-git
+	pkgdesc = Prometheus exporter for Clash proxy
+	pkgver = v0.0.4.r3.ge89e2c8
+	pkgrel = 1
+	url = https://github.com/zxh326/clash-exporter
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = clash-exporter
+	conflicts = clash-exporter
+	source = git+https://github.com/zxh326/clash-exporter.git
+	source = clash-exporter.service
+	sha256sums = SKIP
+	sha256sums = 8968996facc6d863ee38683a87b53d446b78bfdfca211e2731cbdff1aea73d53
+
+pkgname = clash-exporter-git

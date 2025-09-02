@@ -1,0 +1,16 @@
+[Unit]
+Description=Clash Prometheus Exporter
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nobody
+ExecStart=/usr/bin/clash-exporter -collectDest=true -collectTracing=false -port=2112
+Restart=on-failure
+RestartSec=5s
+Environment=CLASH_HOST=127.0.0.1:9090
+Environment=CLASH_TOKEN=
+
+[Install]
+WantedBy=multi-user.target
