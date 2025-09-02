@@ -1,7 +1,7 @@
 pkgbase = winboat-arjix
 	pkgdesc = Run Windows apps on 🐧 Linux with ✨ seamless integration
 	pkgver = 0.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TibixDev/winboat
 	arch = x86_64
 	license = MIT
