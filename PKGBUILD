@@ -6,7 +6,7 @@
 : ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp
-pkgver=b6355
+pkgver=b6356
 pkgrel=1
 _build_number=6355
 _commit_id=25f1045
@@ -35,7 +35,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('c547270adf69482b90d0db159c1f0704710e8afd722c830304a667fb9acd6b7b'
+sha256sums=('2a33306ce8dab8eb05a701692374f4d5ed5834bed6a2aed47756a48ee1a9d17a'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
