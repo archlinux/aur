@@ -1,0 +1,15 @@
+pkgbase = wormhole
+	pkgdesc = Simple decentralized file storage
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Agartha-Software/Wormhole
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = fuse3
+	depends = gcc-libs
+	source = git+https://github.com/Agartha-Software/Wormhole.git#commit=f709c6897238bf735a61f277b5cd2ab397490e21
+	b2sums = SKIP
+
+pkgname = wormhole
