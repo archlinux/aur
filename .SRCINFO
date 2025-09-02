@@ -1,6 +1,6 @@
 pkgbase = zoom-system-qt
 	pkgver = 6.5.11.4015
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoom.us/
 	arch = x86_64
 	license = LicenseRef-zoom
@@ -16,8 +16,6 @@ pkgbase = zoom-system-qt
 	optdepends = qt5-remoteobjects
 	optdepends = ffmpeg
 	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
-	noextract = zoom-system-qt-6.5.11.4015-1-x86_64.pkg.tar.zst
-	noextract = zoom-system-qt-cef-6.5.11.4015-1-x86_64.pkg.tar.zst
 	noextract = zoom_orig-6.5.11.4015.pkg.tar.xz
 	options = !strip
 	options = emptydirs
