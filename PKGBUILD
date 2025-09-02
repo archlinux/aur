@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -100,7 +100,7 @@ package() {
     install -Dm 755 -t "$pkgdir/usr/bin" setup_dxvk
 }
 
-sha256sums=('aab98d6d4e7dd591bccc2d550478bdccef5e885357516fd55e5bede9edd3f29c'
+sha256sums=('1a2ec0f93f4ef744b55e3ad084431f3ea6cf44eec9cd6853a4581a1401b41a00'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             'b562e8dc9539ef3cd1554c6679eef10aacf21103403d7390a141a41ae146b7a6'
             'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
