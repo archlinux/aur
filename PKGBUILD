@@ -12,15 +12,29 @@ sha512sums=("SKIP")
 arch=("x86_64")
 depends=(
   alsa-lib
+  fontconfig
   gcc-libs
+  git
   glibc
+  jq
   libgit2
   libx11
   libxcb
   libxkbcommon
   libxkbcommon-x11
+  mold
+  musl
+  openssl
+  sqlite
+  wayland
+  zstd
 )
-makedepends=(cargo)
+makedepends=(
+  cargo
+  clang
+  cmake
+  pkgconf
+)
 checkdepends=(cargo)
 conflicts=("zed" "zed-preview" "zed-preview-bin" "zedless" "zedless-bin")
 provides=("zed")
