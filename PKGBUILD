@@ -3,7 +3,7 @@
 # Contributor: Brody <archfan at brodix dot de>
 
 pkgname=netbird-ui
-pkgver=0.55.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc='Official GUI for the Netbird client'
 url='https://netbird.io'
@@ -38,7 +38,7 @@ makedepends=(go)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('76233ce303b93d48bb6a359430eba946bd3a77b7b505fcf36f5f374aca499f1a')
+sha256sums=('e41e9722a9a980144f40f67eaa73954dbfb09ffc2a5911031f12d1f15d580621')
 
 prepare() {
   cd "$srcdir/netbird-$pkgver"
