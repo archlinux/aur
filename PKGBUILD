@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=utask-bin
-pkgver=1.33.1
+pkgver=1.33.3
 pkgrel=1
 pkgdesc="An automation engine that models and executes business processes declared in yaml.(Prebuilt version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_${CARCH}.tar.gz"
 )
-sha256sums=('733709ccd24e3b27bfc7f780d4c10792a56c03bfc3c52c66097ae0c9b6e555a4')
+sha256sums=('47a9681e1da238d1990601afd0b74200090164df1df27d95c02b82d9bf56c84f')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
