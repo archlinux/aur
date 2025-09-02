@@ -1,6 +1,6 @@
 pkgbase = plasticity-bin
 	pkgdesc = 3D modeling software for concept artists
-	pkgver = 25.2.6
+	pkgver = 25.2.7
 	pkgrel = 1
 	url = https://github.com/nkallen/plasticity
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = plasticity-bin
 	optdepends = apparmor: Extra protection
 	optdepends = pulseaudio: For sound
 	options = !strip
-	source = https://github.com/nkallen/plasticity/releases/download/v25.2.6/plasticity_25.2.6_amd64.deb
-	source = https://raw.githubusercontent.com/nkallen/plasticity/refs/tags/v25.2.6/LICENSE
-	sha512sums = 69e92c367bc0bd2575f1dfb98d093adeddfcc818921695bce0d51a3fc17cee81d93f6dcd395bc1f4049388226ad90c8dd587fcfa80bf32de27a18607ea7fb7af
+	source = https://github.com/nkallen/plasticity/releases/download/v25.2.7/plasticity_25.2.7_amd64.deb
+	source = https://raw.githubusercontent.com/nkallen/plasticity/refs/tags/v25.2.7/LICENSE
+	sha512sums = af94dcd15240f2e5ff4ab7b50bc50896a1754b6969baf44d03170ee4bee74f8940177a0921f56bd789ed4f4352aa8d4ab1f03459feab94a975af8ab213a5dcd3
 	sha512sums = 1fbd6b24b4022331307ee3b8266fc6eee956238b5854633071848c145a044127f6d6eadc8c07c288c4dcd16c0de10e933ff21c5d8c715c273902cdeffded4bcd
 
 pkgname = plasticity-bin
