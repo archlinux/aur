@@ -1,6 +1,6 @@
 # Maintainer: Sam Toxopeus <sam@toxopeus.it>
 pkgname=kubectl-cnpg
-pkgver=1.26.1 # renovate: datasource=github-tags depName=cloudnative-pg/cloudnative-pg
+pkgver=1.27.0 # renovate: datasource=github-tags depName=cloudnative-pg/cloudnative-pg
 pkgrel=1
 pkgdesc="A kubectl plugin to interact with CloudNativePG"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache 2.0')
 groups=()
 depends=('kubectl')
 source=("$url/releases/download/v$pkgver/${pkgname}_${pkgver}_linux_${arch}.tar.gz")
-sha256sums=('7ccb1d1bc36d7ed552519b1b0e25f4e3512f13c9eb5ef5b91d723b08acf5620f')
+sha256sums=('9c02007cf7203f0aca7de42f2495a645edad72eef8fe46b53b3a8715e870d127')
 
 package() {
     cd "$srcdir"
