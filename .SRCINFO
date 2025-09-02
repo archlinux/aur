@@ -1,7 +1,7 @@
 pkgbase = s-ui
-	pkgdesc = An advanced Web Panel • Built for SagerNet/Sing-Box
+	pkgdesc = Advanced web panel, built for SagerNet/Sing-Box
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alireza0/s-ui
 	arch = aarch64
 	arch = armv7h
@@ -10,6 +10,7 @@ pkgbase = s-ui
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = go
+	makedepends = nodejs-lts-jod
 	makedepends = npm
 	depends = glibc
 	depends = sing-box
