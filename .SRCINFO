@@ -1,0 +1,19 @@
+pkgbase = apptrix
+	pkgdesc = Apptrix.ai is the next step in Fyne Labs
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://apptrix.ai
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = apptrix
+	source_x86_64 = https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-amd64/Apptrix-linux-amd64-v0.2.2.tar.xz
+	sha256sums_x86_64 = 463767730fe5104ba782f6343d912740bed435d1ce763ac32d6e250784b8eead
+	sha512sums_x86_64 = bb38b2d0c11afc0b6d4bad331c5a5e06abe5a675cbbecfad4f63a8734dbf915f311f2c578aa266bf6aba1a4f09c448486f42ed32b470123a4706f2bfe97c6745
+	b2sums_x86_64 = cb6d56870df01b0cb7ca9f6b7886bf220a6069dca39bdea3fce4cdcc2daf88906803cf340e5c72425481b0332f0b5f76d3b951b6256ab25252b025e7fb30afbf
+	source_aarch64 = https://build-artifacts.apptrix.ai/github/andydotxyz/ApptrixAI/Apptrix/latest/linux-arm64/Apptrix-linux-arm64-v0.2.2.tar.xz
+	sha256sums_aarch64 = 0e3aa827e33986eed0d920aa94561aabcbf9a7b3406f15108b0c32e8061d0a7c
+	sha512sums_aarch64 = 1d5b990bfbf8b4b3cce6471b0313b49d87af59c2c3a9b45555ad050a4fb5fd11431726ef675ecaefd01fadb09dcfa2371e48245cfb89a472cbcec0877a50317e
+	b2sums_aarch64 = 35ffb87cd87588ffc7cf2cf38a1b6db5b9fa5d273c401184fdbc48326115d1c993f777ccdf48e7d8c910067a09311d93e03223bc18122a4656537a5beaa2a345
+
+pkgname = apptrix
