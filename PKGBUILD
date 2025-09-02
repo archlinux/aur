@@ -2,7 +2,7 @@
 
 pkgname=edh-logger-cli
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI to log MTG Commander games & view stats (edh --help for usage)"
 arch=('x86_64')
 url=https://github.com/GhelloZ/edh-logger-cli
@@ -30,7 +30,10 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 edh "${pkgdir}/usr/bin/edh"
+  echo "${srcdir}/${pkgname}-${pkgver}"
+
+  install -Dm755 build/edh "${pkgdir}/usr/bin/edh"
+  echo "${pkgdir}/usr/bin/edh"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
