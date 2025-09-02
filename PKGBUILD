@@ -1,0 +1,9 @@
+pkgname=edh-game-logger
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="CLI to log MTG Commander games & view stats (edh --help for usage)"
+arch=('x86_64')
+url=https://github.com/GhelloZ/edhstats/
+license=('GPL-3.0-only')
+makedepends=('make' 'gcc' 'go')
+source=("https://github.com/GhelloZ/edhstats/archive/refs/tags/v${pkgver}.tar.gz")
