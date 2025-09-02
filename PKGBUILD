@@ -3,7 +3,7 @@
 _pkgauthor=sectore
 _pkgname=timr-tui
 pkgname=${_pkgname//-tui}-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A TUI to organize your time: Pomodoro, Countdown, Timer"
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "CHANGELOG-${pkgver}::${_urlraw}/CHANGELOG.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux_${arch[0]}.tar.gz")
 sha256sums=('5e7fe81a6c6ac0a3050262e875a98def21bd3ef20eaad1e760f22f7e41af6fb8'
-            '534c37915739559a6a730f441a22b7c540f0608406e800d6e3d298b1f89cc681'
-            'b571db99ad8c7754e75a4e261edcd2118a28d183ff46fddc1029f561eb43129a')
-sha256sums_x86_64=('27efc6fbd94fc55b78488ba5d210345b1f3df14f27a1825834899f86927decc8')
+            'ca0607ee2f147c46ad20439da4576ae8b4c4988c1cdda2c01e3153a9364f69bf'
+            '2c1685d9108c5ba4bf2a8d56505a5deb43b6c3008f093a7fe0399128cf9d10a8')
+sha256sums_x86_64=('b81d8efb2748e30f1e150f71c343cd8ef45f2da9eec333f7f89deadd7d6c6e7e')
 
 
 build() {
