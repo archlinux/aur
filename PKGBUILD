@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -12,8 +12,17 @@ depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'qt6-webengine' 'brot
 makedepends=('git' 'cmake' 'mold' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 options=('lto' '!debug')
-source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v$pkgver-rc3")
-sha256sums=('509a27a7ae5d7b9a9dad18f020e3ace52a97bf3f8fd7a499ddd9ca1be21aee74')
+source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v$pkgver-rc3"
+		"xbyak_patch.patch"
+		"unordered_dense_patch.patch")
+sha256sums=('509a27a7ae5d7b9a9dad18f020e3ace52a97bf3f8fd7a499ddd9ca1be21aee74'
+            'c80c77b0d7b829a9627f17945f6078555d2fb7df49142852d13b0542e8e90c3f'
+            '1f96277a30507ceb806d2fdb9965b6da3dc3ff5311f1dbb8faab56eab8753afd')
+prepare() {
+	#update unordered_dense & xbyak repos after dependency repo deletion
+	patch $srcdir/eden/src/dynarmic/externals/CMakeLists.txt $srcdir/unordered_dense_patch.patch
+	patch $srcdir/eden/externals/CMakeLists.txt $srcdir/xbyak_patch.patch
+}
 build() {
 	cd "$srcdir"
 	cmake -B build -S $pkgname -GNinja \
