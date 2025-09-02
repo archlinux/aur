@@ -1,36 +1,33 @@
-# Original Maintainer: Lantald  <lantald at Gmx dot com>
-# Maintainer: Danilo <aur at dbrgn dot ch>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Lantald <lantald at Gmx dot com>
+# Contributor: Danilo <aur at dbrgn dot ch>
 
 pkgname=spatialindex
-pkgver=1.8.5
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='An extensible framework that supports robust spatial indexing methods and sophisticated spatial queries.'
-arch=('i686' 'x86_64')
-url="http://libspatialindex.github.com/"
-license=('MIT')
+pkgdesc='Extensible framework that supports robust spatial indexing methods and sophisticated spatial queries'
+arch=(x86_64)
+url="https://libspatialindex.github.io/"
+license=(MIT)
 depends=(gcc-libs)
-provides=(spatialindex)
-conflicts=(libspatialindex-git)
-source=("http://download.osgeo.org/libspatialindex/$pkgname-src-$pkgver.tar.gz"
-        'LICENSE')
-sha256sums=('7caa46a2cb9b40960f7bc82c3de60fa14f8f3e000b02561b36cbf2cfe6a9bfef'
-            '170961cdd7754bed14e465eff7d4f22c5df11d8d104310a56a7ee3ab201bc279')
+makedepends=(git cmake)
+source=("git+https://github.com/libspatialindex/libspatialindex#tag=$pkgver")
+sha256sums=('a0442c281e57e60ce3b91c6a449da835c764c18aa6d6ed59be0b1e38223ad6b7')
 
 build() {
-  cd "$srcdir/$pkgname-src-$pkgver/"
-  ./configure --prefix=/usr
+  mkdir build && cd build
+  cmake ../libspatialindex \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-src-$pkgver/"
-  make -k check
+  cd build
+  make -k test
 }
 
 package() {
-  cd "$srcdir/$pkgname-src-$pkgver/"
-  make DESTDIR="$pkgdir/" install
-  install -D -m644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd build
+  make DESTDIR="$pkgdir" install
+  install -D -m644 "$srcdir"/libspatialindex/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
-# vim:set ts=2 sw=2 et:
