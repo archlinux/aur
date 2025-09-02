@@ -2,8 +2,8 @@
 
 pkgname=proton-authenticator-bin
 _name=${pkgname%-bin}
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='An open source and end-to-end encrypted 2FA app. Securely sync and backup your 2FA codes easily.'
 arch=('x86_64')
 url='https://proton.me/authenticator'
@@ -24,8 +24,8 @@ makedepends=('libarchive')
 provides=("$_name")
 conflicts=("$_name")
 source=("https://proton.me/download/authenticator/linux/ProtonAuthenticator_${pkgver}_amd64.deb")
-sha512sums=('d384ba2c16a342d2acb4a35c654d76123c476289ca41a033c863edd6865efca4140491de3231ac31549e3148f964d9c389fd967ef91b4896e74529f9f494b6e6')
-b2sums=('424e7cf4f8283414d7c7f9b5b4cef0f1ec20eecbacb7d914d155e3a38d82121c8e6c72595d19e676d271962fd13a0992ea5218bfc6082dda896fbe4a8f5f4fb3')
+sha512sums=('a4a92c5f6daa4ae0d841e2519e2b0c5b19cc904ca2789ec7433a59e4035c66c149a79393ed7cbd33350102411bdec46d1c9a59c8153295af29ae1184a8a2a70f')
+b2sums=('036f1c81423cded12232c244eb68a9203a84741d6ddf02768cfa49c6b5f77769738362935552504688eb1e9c90e5689a2cdfc0a6ea1bbe9f1bb6d350a6d6392d')
 
 package() {
     bsdtar -xvf data.tar.gz -C "$pkgdir/"
