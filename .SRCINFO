@@ -7,6 +7,7 @@ pkgbase = python-chws-tool-git
 	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

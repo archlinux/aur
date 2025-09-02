@@ -8,7 +8,8 @@ url="https://github.com/googlefonts/chws_tool"
 license=('Apache-2.0')
 depends=('python'
          'python-east-asian-spacing')
-makedepends=('python-build'
+makedepends=('git'
+             'python-build'
              'python-installer'
              'python-setuptools'
              'python-setuptools-scm'
