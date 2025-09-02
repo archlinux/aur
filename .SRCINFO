@@ -1,0 +1,15 @@
+pkgbase = python-cdp-socket
+	pkgdesc = Socket for handling Chrome DevTools Protocol connections (Python)
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://pypi.org/project/cdp-socket/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = cdp-socket-1.2.8.tar.gz::https://files.pythonhosted.org/packages/source/c/cdp-socket/cdp-socket-1.2.8.tar.gz
+	sha256sums = d8a3d55883205c7c45c05292cf5ef5a5c74534873e369e258e61213cce15be1a
+
+pkgname = python-cdp-socket
