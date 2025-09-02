@@ -17,11 +17,13 @@ backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'update-dependencies.diff'
+	'update-dependencies-beta.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
 b2sums=('99eab3e8eea00ca97ff1679005959c44a73cbe78f8e9c0673dd05fc253cbacb95a06f8c5579559e29e30f82236d77e05fcf77df90f8de8ec2dc40d46ae05105b'
+        '62b08de7d6606f28f189f736cc9f7c9e61d97c721d88b8daa345cfebc9d0bbf8b2526778efd29496914dbb529a6276c27b8426963f1d16c385ed8b318b211ca6'
         '52645c611197fe848be8710681762ecc7bca187205ede14f94a9f83ff281bb5943bf593d4db16ec85d1cac07ce77ba5ddfd51c9df7efbcb7bc178a14d64f83ee'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '6caafba7ce1832cb28acdae886c3bee8f5f4ab8ae3db813ec7f35575576b829e0db1f224baa9919b2fa5b7417d7adc369d1fe0f51e9c17a6e62843b0e72cabe7'
@@ -33,7 +35,11 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Set npm overrides for various dependencies
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	if [[ "$_target" =~ -beta$ ]]; then
+		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
+	else
+		patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	fi
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
