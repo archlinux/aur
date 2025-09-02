@@ -1,9 +1,10 @@
 # Maintainer: envolution
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# ci|forcedep=python-protobuf|
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-posthog
 _name=posthog-python
-pkgver=6.7.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -41,7 +42,7 @@ optdepends=(
   'python-openai: OpenAI SDK support'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a456fa5a17256d7e415c8ad77f4809d8276b8369c56e2288d9b44daa199609b5')
+sha256sums=('8a43f6649fef494f04679fe4fe8eb0e3d60e458739349abf3c4c19159b7a2464')
 
 prepare() {
   cd "$_name-$pkgver"
