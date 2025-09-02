@@ -4,7 +4,7 @@
 
 pkgname=git-buildpackage
 pkgver=0.9.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
 url="https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
@@ -29,6 +29,8 @@ makedepends=(
   'python-mock'
   'python-nose'
   'python-nosexcover'
+  'python-pytest-cov'
+  'python-pytest'
 )
 
 #checkdepends=('devscripts'

@@ -1,7 +1,7 @@
 pkgbase = git-buildpackage
 	pkgdesc = Tools from Debian to integrate the package build system with Git
 	pkgver = 0.9.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://honk.sigxcpu.org/piki/projects/git-buildpackage/
 	arch = any
 	license = GPL-2.0-or-later
@@ -11,6 +11,8 @@ pkgbase = git-buildpackage
 	makedepends = python-mock
 	makedepends = python-nose
 	makedepends = python-nosexcover
+	makedepends = python-pytest-cov
+	makedepends = python-pytest
 	depends = bash
 	depends = git
 	depends = python-dateutil
