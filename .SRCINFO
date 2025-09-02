@@ -1,7 +1,7 @@
 pkgbase = atlas-celeste
 	pkgdesc = Render and visualize paths for Celeste TASes
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakobhellermann/Atlas
 	arch = x86_64
 	arch = armv7h
@@ -14,9 +14,9 @@ pkgbase = atlas-celeste
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/jakobhellermann/Atlas/archive/1.3.3/Atlas-1.3.3.tar.gz
+	source = https://github.com/jakobhellermann/Atlas/archive/refs/tags/v1.3.3.tar.gz
 	source = atlas.desktop
-	sha1sums = dee0a6c7b42a886f9531bb61c88f4d503fbb5032
+	sha1sums = 22bd41f79ce27178ac194ac2633e9b2c0f8276b0
 	sha1sums = 9921557096f013a3ef46ee24773a58e0bdb6a56e
 
 pkgname = atlas-celeste

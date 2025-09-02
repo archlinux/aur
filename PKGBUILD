@@ -1,7 +1,7 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=atlas-celeste
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Render and visualize paths for Celeste TASes'
 url='https://github.com/jakobhellermann/Atlas'
 makedepends=('git' 'rust' 'cargo' 'imagemagick')
@@ -10,10 +10,10 @@ arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 _archive="Atlas-$pkgver"
 source=(
-    "https://github.com/jakobhellermann/Atlas/archive/$pkgver/$_archive.tar.gz"
+    "https://github.com/jakobhellermann/Atlas/archive/refs/tags/v$pkgver.tar.gz"
     "atlas.desktop"
 )
-sha1sums=('dee0a6c7b42a886f9531bb61c88f4d503fbb5032'
+sha1sums=('22bd41f79ce27178ac194ac2633e9b2c0f8276b0'
           '9921557096f013a3ef46ee24773a58e0bdb6a56e')
 
 prepare() {
