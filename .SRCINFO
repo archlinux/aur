@@ -1,6 +1,6 @@
 pkgbase = wine-pure-git
 	pkgdesc = Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)
-	pkgver = 10.12.r205.g5b5f7fa1045
+	pkgver = 10.13.r0.g75b9e1722d1
 	pkgrel = 1
 	url = https://github.com/ventureoo/PKGBUILDs
 	install = wine.install
@@ -61,7 +61,7 @@ pkgbase = wine-pure-git
 	provides = wine-staging
 	provides = wine
 	provides = wine-wow64
-	provides = wine=10.12
+	provides = wine=10.13
 	conflicts = wine
 	options = staticlibs
 	options = !lto
@@ -69,7 +69,7 @@ pkgbase = wine-pure-git
 	source = git+https://gitlab.winehq.org/wine/wine-staging.git
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
-	source = ntsync-10.12-staging.patch
+	source = ntsync-10.13-staging.patch
 	source = 7064.patch
 	source = winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
 	source = 0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
@@ -86,7 +86,7 @@ pkgbase = wine-pure-git
 	sha256sums = SKIP
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
-	sha256sums = dcce6c637ef38e399f6afcf67b4957f353ef793dfc2355fc9336429c41c76eea
+	sha256sums = b0cd33633ed247eef08f08170c50066d9e9e788f6d051688eb220ce941d3acc4
 	sha256sums = a7e69169f2869a71e6eed3fe01116629ea889c26d6a7c80b48945d88d9a2a09c
 	sha256sums = 5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006
 	sha256sums = 13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60
