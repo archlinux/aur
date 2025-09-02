@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=geforce-infinity
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 _nodeversion=22
 _electronversion=37
 pkgdesc="A next-gen application designed to enhance the GeForce NOW experience."
@@ -15,7 +15,7 @@ source=("GeForce-Infinity-$pkgver.tar.gz::https://github.com/AstralVixen/GeForce
         "$pkgname.desktop")
 sha256sums=('0de53385a83797ec377173e30133a470cd3909d4cb027d20d9320cf63e788ed1'
             '426e8f155c4f2273201ad33d0c0521c35bbea2259a11cb018572d6ca8b40b82d'
-            '64c0594c775e7556def0b19431e4dec417e432ae941a81c93fdf8fbb96b66c3a')
+            'ba47bbcd38d72e3b1f92a72aebb89a0dae5782b4650a749d476642f731230865')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean

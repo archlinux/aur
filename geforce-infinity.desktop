@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=GeForceInfinity
-Exec=/opt/GeForceInfinity/geforce-infinity %U
+Exec=geforce-infinity
 Terminal=false
 Type=Application
 Icon=geforce-infinity
