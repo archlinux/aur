@@ -10,11 +10,11 @@ url="https://github.com/TibixDev/winboat"
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxtst' 'libxss' 'libsecret' 'docker' 'docker-compose' 'freerdp')
 makedepends=('npm' 'git')
-provides=(winboat)
-conflicts=(winboat)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(
-  "git+https://github.com/TibixDev/winboat.git#tag=v${pkgver}"
-  "winboat.desktop"
+  "git+${url}.git#tag=v${pkgver}"
+  "${_pkgname}.desktop"
   "electron-builder.json.patch"
 )
 sha256sums=('cb5fbdc1148e3662089577d5a7b1dec0f716f9b3e9332e9cdd2db945ab7d6998'
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    install -Dm644 winboat.desktop "${pkgdir}/usr/share/applications/winboat.desktop"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     cd "$_pkgname"
 
@@ -44,6 +44,6 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-    install -Dm644 "icons/icon.png" "${pkgdir}/usr/share/pixmaps/winboat.png"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/winboat/LICENSE"
+    install -Dm644 "icons/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
