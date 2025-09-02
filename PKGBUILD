@@ -1,12 +1,11 @@
-# Maintainer: demir
-# https://man.archlinux.org/man/PKGBUILD.5
+# Maintainer: demir <iron-actress-music@duck.com>
 
 pkgname="zedless-git"
 pkgver=0.192.0.dev.r980.gadb21022b5
-pkgrel=3
+pkgrel=4
 pkgdesc="Zed fork focused on privacy and being local-first"
 url="https://github.com/zedless-editor/zedless"
-license=("AGPL" "APACHE" "GPL")
+license=("AGPL-3.0-or-later" "APACHE-2.0" "GPL-3.0-or-later")
 source=("git+https://github.com/zedless-editor/zedless.git")
 sha512sums=("SKIP")
 arch=("x86_64")
@@ -31,13 +30,18 @@ depends=(
 )
 makedepends=(
   cargo
-  clang
   cmake
   pkgconf
 )
+optdepends=(
+  "clang: improved C/C++ language support"
+  "eslint: improved Javascript language support"
+  "pyright: improved Python language support"
+  "rust-analyzer: improved Rust language support"
+)
 conflicts=("zed" "zed-preview" "zed-preview-bin" "zedless" "zedless-bin")
 provides=("zed")
-options=('!lto')
+options=("!lto")
 
 _binname=zeditor
 _appid=dev.zed.Zedless
@@ -64,14 +68,16 @@ build() {
   cd "zedless"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  export ZED_UPDATE_EXPLANATION='Updates are handled through AUR'
+  cargo build --frozen --release --package zed --package cli
 }
 
 package() {
   cd "zedless"
-  install -D --mode=0755 --no-target-directory "target/release/zed" "${pkgdir}/usr/bin/${_binname}"
+  install -D --mode=0755 "target/release/cli" "${pkgdir}/usr/bin/${_binname}"
+  install -D --mode=0755 "target/release/zed" "${pkgdir}/usr/lib/zed/zed-editor"
   install -D --mode=0644 --target-directory "${pkgdir}/usr/share/applications/" "${_appid}.desktop"
-  install -D --mode=0644 --no-target-directory crates/zed/resources/app-icon.png "${pkgdir}/usr/share/pixmaps/zed.png"
+  install -D --mode=0644 "crates/zed/resources/app-icon.png" "${pkgdir}/usr/share/pixmaps/zed.png"
   install -D --mode=0444 --target-directory "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE-*
   install -D --mode=0444 --target-directory "${pkgdir}/usr/share/doc/${pkgname}/" README.md
 }
