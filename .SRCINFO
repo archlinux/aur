@@ -25,7 +25,6 @@ pkgbase = caelestia-shell-git
 	depends = power-profiles-daemon
 	depends = ttf-rubik-vf
 	depends = ttf-cascadia-code-nerd
-	depends = grim
 	depends = swappy
 	depends = libqalculate
 	depends = bash
