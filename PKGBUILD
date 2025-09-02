@@ -2,7 +2,7 @@
 # Maintainer: Filip Mikina <filipmikina at gmail dot com>
 
 pkgname='hyprdynamicmonitors-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Dynamic monitor configuration for Hyprland.'
 url='https://github.com/fiffeek/hyprdynamicmonitors'
@@ -12,19 +12,16 @@ provides=('hyprdynamicmonitors-bin')
 conflicts=('hyprdynamicmonitors')
 optdepends=('hyprland' 'upower')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.2/hyprdynamicmonitors_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f9284fa1bc5cb8dd3e7ffc4630192b4ebab04d7d0851cb51d25427236495e132')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.3/hyprdynamicmonitors_Linux_arm64.tar.gz")
+sha256sums_aarch64=('eb9147721f876e99bafd6f59ee713468b0f8dabb4ee54a77325de2cd468ccdae')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.2/hyprdynamicmonitors_Linux_i386.tar.gz")
-sha256sums_i686=('9df82ac5e8f0bb1eda6bf4533405d2a7aaa2a2d1364e45551a87a9037d3311e5')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.3/hyprdynamicmonitors_Linux_i386.tar.gz")
+sha256sums_i686=('8405b07515e2515a1261a61989799f183203c68f72bdbb94dd74d6ef4f6027d1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.2/hyprdynamicmonitors_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('6e4fd1662e3c7016a1a9e3d548d40205e4f6f9255fed6bdc61119d79bbf5449f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.1.3/hyprdynamicmonitors_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('c381fe7b958df85bd66b33c0845454fe0efb4f9a91085fc861c5e3dd477f3180')
 
 package() {
-  local x86_64=x86_64 i686=i386 aarch64=arm64
-  cd "hyprdynamicmonitors-${pkgver}-linux-${!CARCH}"
-
   # bin
   install -Dm755 "./hyprdynamicmonitors" "${pkgdir}/usr/bin/hyprdynamicmonitors"
 
