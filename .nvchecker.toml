@@ -1,0 +1,4 @@
+[tutch]
+source = "regex"
+url = "https://www.cse.chalmers.se/~abela/tutch/"
+regex = "tutch-(\\d+\\.\\d+)\\S+\\.tar\\.gz"
