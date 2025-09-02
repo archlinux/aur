@@ -1,0 +1,13 @@
+pkgbase = python-usbsdmux
+	pkgdesc = Command line tool and library to control the Pengutronix USB-SD-Mux
+	pkgver = 25.08
+	pkgrel = 1
+	url = https://github.com/linux-automation/usbsdmux/
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/linux-automation/usbsdmux/archive/refs/tags/25.08.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-usbsdmux
