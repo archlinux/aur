@@ -1,12 +1,12 @@
 pkgbase = hanguage
 	pkgdesc = H language converter as defined by u/Huesosishe228
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/eshnd/Hanguage
 	arch = any
 	license = MIT
 	depends = python
-	source = Hanguage-1.0.1.tar.gz::https://github.com/eshnd/Hanguage/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = ef4b6696742e5593f331b4ab8cb5d467d0e7b033d22b22c6e3f1f0a4130a3b04
+	source = Hanguage-1.0.2.tar.gz::https://github.com/eshnd/Hanguage/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 41892c0f4e96856692996a8b9111956de289683840f2955072b95300d06d02fe
 
 pkgname = hanguage
