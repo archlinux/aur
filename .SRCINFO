@@ -1,14 +1,14 @@
 pkgbase = rokit-bin
 	pkgdesc = Next-generation toolchain manager for Roblox projects.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/rojo-rbx/rokit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/rojo-rbx/rokit/releases/download/v1.1.0/rokit-1.1.0-linux-x86_64.zip
-	sha512sums_x86_64 = f56ef6c6273cee43b9df7ceef9ec1d9158150bcbd51396a3d526c7612a07a450c789538c470be27cdefc6762a7f8e66746154c08c0e34c5d5339e27e95139c39
-	source_aarch64 = https://github.com/rojo-rbx/rokit/releases/download/v1.1.0/rokit-1.1.0-linux-aarch64.zip
-	sha512sums_aarch64 = e90497cfd46569749546c44db6bb0d0fc9adae6ab2407ce46426c7d8244bbcc323599fd33665f9001d9b691f0de16a754bc94c3868b20e1853ecf8f2796b7179
+	source_x86_64 = https://github.com/rojo-rbx/rokit/releases/download/v1.1.1/rokit-1.1.1-linux-x86_64.zip
+	sha512sums_x86_64 = 8a3793a7ec4061dc6c83c47b544d074a48a00b1508cf58a5ea7d86f2985e4b886e6f2d41bcfc6fe80f2578021b04912918b690a974310145c7b68df31544c2f8
+	source_aarch64 = https://github.com/rojo-rbx/rokit/releases/download/v1.1.1/rokit-1.1.1-linux-aarch64.zip
+	sha512sums_aarch64 = de1639d1b7cca516104a2e463401baf25b4111ae61a914f7dd8263f1676871aa5579f3eaf2b923bb8e42724cdb682da6a3cf305d43b7e67dff99feecc6483bbb
 
 pkgname = rokit-bin
