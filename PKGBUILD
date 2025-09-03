@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=parrot-cli
-pkgver=1.0.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Intelligent CLI command failure assistant with AI-powered responses'
 arch=('x86_64')
@@ -40,4 +40,35 @@ package() {
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     [ -f INSTALLATION_FLOWS.md ] && install -Dm644 INSTALLATION_FLOWS.md "$pkgdir/usr/share/doc/$pkgname/INSTALLATION_FLOWS.md" || true
+}
+
+post_install() {
+    echo "🦜 Parrot has been installed successfully!"
+    echo ""
+    
+    # Check if Ollama is available for automatic setup
+    if command -v ollama >/dev/null 2>&1; then
+        echo "🤖 Ollama detected - setting up local AI backend..."
+        
+        # Pull the model in background if not already present
+        if ! ollama list | grep -q "llama3.2:3b"; then
+            echo "📥 Downloading AI model (this may take a few minutes)..."
+            echo "   You can continue using your terminal - parrot will work when ready"
+            (ollama pull llama3.2:3b >/dev/null 2>&1 && echo "✅ AI model ready!" || echo "❌ Model download failed") &
+        else
+            echo "✅ AI model already available"
+        fi
+        
+        echo "🔧 To enable shell integration, run: parrot install"
+        echo "💡 This adds smart command failure detection to your shell"
+    else
+        echo "🔄 Using built-in responses (no setup required)"
+        echo ""
+        echo "For AI-powered responses, install Ollama:"
+        echo "  https://ollama.com/download"
+        echo "Then run: parrot setup"
+    fi
+    
+    echo ""
+    echo "Run 'parrot --help' to get started!"
 }
