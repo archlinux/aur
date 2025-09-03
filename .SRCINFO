@@ -1,6 +1,6 @@
 pkgbase = nvidia-exec
 	pkgdesc = Run programs in nvidia optimus setups with power management for Xorg and Wayland without log out
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/pedro00dk/nvidia-exec#readme
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nvidia-exec
 	depends = python
 	depends = lshw
 	depends = lsof
-	source = nvidia-exec-0.3.1.tar.gz::https://github.com/pedro00dk/nvidia-exec/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 5d1fb6bcf1c909131ce88fa50ac3ddf5e62a9864786ab5a2a5f3e801d7939708
+	source = nvidia-exec-0.3.2.tar.gz::https://github.com/pedro00dk/nvidia-exec/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = c295ffb9a7510c771455cf293ea52d48646f0ac341a5605444c8a4083fb95765
 
 pkgname = nvidia-exec
