@@ -10,7 +10,12 @@ pkgdesc="KLayout API implementation of gdsfactory"
 arch=("x86_64")
 url='https://pypi.org/project/kfactory/'
 license=("None")
-depends=()
+depends=(
+	"python-klayout"
+	"python-gitpython"
+	"python-loguru"
+	"python-rectangle-packer"
+  )
 makedepends=(
 	"python-build"
 	"python-installer"
