@@ -1,0 +1,16 @@
+pkgbase = gdsfactory
+	pkgdesc = python library to generate GDS layouts
+	pkgver = 9.13.3
+	pkgrel = 1
+	url = https://pypi.org/project/gdsfactory/
+	arch = x86_64
+	license = None
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/fa/e2/99c59fdff8225f2dec32a41a828f14ac6b2faa708537811f2e2fc306d65c/gdsfactory-9.13.3.tar.gz
+	sha256sums = 9d45cc9dc95b22bff26006654ffa58d583d9853a7794eedda60a01af412a42c9
+
+pkgname = gdsfactory
