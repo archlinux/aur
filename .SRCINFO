@@ -16,3 +16,21 @@ pkgbase = ghost-dl-bin
 	sha256sums = SKIP
 
 pkgname = ghost-dl-bin
+pkgbase = ghost-dl-bin
+	pkgdesc = Kingdom Hearts Insider Game OST Archive Dowloader CLI
+	pkgver = v1.1.0
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/ghost-dl
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = gcc
+	depends = python
+	provides = ghost-dl-bin
+	conflicts = ghost-dl-git
+	options = !debug
+	options = !strip
+	source = https://github.com/TheElevatedOne/ghost-dl/releases/download/v1.1.0/ghost-dl_ubuntu-latest.tar.gz
+	sha256sums = SKIP
+
+pkgname = ghost-dl-bin
