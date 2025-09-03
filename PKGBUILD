@@ -5,7 +5,7 @@
 _pkgname='caelestia-shell'
 pkgname="$_pkgname-git"
 pkgver=1.0.0.r17.g95bf6e3
-pkgrel=1
+pkgrel=2
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
@@ -27,7 +27,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DDISTRIBUTOR='AUR (package: caelestia-shell-git)'
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
 }
 
