@@ -16,7 +16,7 @@ makedepends=('cmake' 'ninja')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('e260448a62c853e2f7e2f49e4196a36e7f4a004f82295519d5d1c89b3f94a24e')
+sha256sums=('87876c2922cdc3f204568e94a648aadb5295d2508b79950ae19c968107b348f9')
 
 build() {
     cd "${srcdir}/release"

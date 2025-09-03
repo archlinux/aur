@@ -32,6 +32,6 @@ pkgbase = caelestia-shell
 	provides = caelestia-shell
 	conflicts = caelestia-shell
 	source = https://github.com/caelestia-dots/shell/releases/download/v1.1.0/caelestia-shell-v1.1.0.tar.gz
-	sha256sums = e260448a62c853e2f7e2f49e4196a36e7f4a004f82295519d5d1c89b3f94a24e
+	sha256sums = 87876c2922cdc3f204568e94a648aadb5295d2508b79950ae19c968107b348f9
 
 pkgname = caelestia-shell
