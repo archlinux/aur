@@ -1,4 +1,5 @@
-# Maintainer: Kostas Georgiadis <kot+aur at cons dot gr>
+# Maintainer: Stephan Düsterhaupt <me at stephanduesterhaupt dot de>
+# Maintainer: Ivo Noack <ivo at insonic dot de>
 
 pkgname=cudnn9.3-cuda12.5
 pkgver=9.3.0.75
