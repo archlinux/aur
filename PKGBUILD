@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sherpa-ncnn
-pkgver=2.1.11
+pkgver=2.1.13
 pkgrel=1
 epoch=
 pkgdesc="Real-time speech recognition and voice activity detection (VAD) using next-gen Kaldi with ncnn without Internet connection. "
@@ -34,7 +34,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('a3af3290b4b36a9fce8699189184ccba851aab377ac0829ea2c58e81a30452a4')
+sha256sums=('18d36df3ea874a612dd1c5820cfd4e8d549197b8c52b7be2160f28cb019038a6')
 #validpgpkeys=()
 
 build() {
