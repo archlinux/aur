@@ -2,8 +2,8 @@
 
 pkgname=bootupd-git
 _pkgname=bootupd
-pkgver=0.2.29.r6.gf0fcca8
-pkgrel=3
+pkgver=0.2.29.r10.g42f5536
+pkgrel=1
 pkgdesc="Bootloader updater"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/coreos/bootupd"
@@ -20,7 +20,7 @@ source=("git+$url.git"
   "0001-arch-path.patch"
   "0002-arch-packagesystem.patch")
 sha256sums=('SKIP'
-  '8e7cd49c37192dd395a0c67af5957fb8d47ea5d92d98ce24b4e5e7612720b878'
+  '396a33a7c9fdbcfed76715223a5ef415fa540737596283bd263c6673cb4df767'
   '11b000162975650060f1a2bc9785d250fec0a7bebfdb8b4c36bdd70cff40a813')
 
 prepare() {

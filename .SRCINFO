@@ -1,7 +1,7 @@
 pkgbase = bootupd-git
 	pkgdesc = Bootloader updater
-	pkgver = 0.2.29.r6.gf0fcca8
-	pkgrel = 3
+	pkgver = 0.2.29.r10.g42f5536
+	pkgrel = 1
 	url = https://github.com/coreos/bootupd
 	arch = x86_64
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = bootupd-git
 	depends = glibc
 	depends = grub
 	depends = efibootmgr
-	provides = bootupd=0.2.29.r6.gf0fcca8
+	provides = bootupd=0.2.29.r10.g42f5536
 	conflicts = bootupd
 	source = git+https://github.com/coreos/bootupd.git
 	source = 0001-arch-path.patch
 	source = 0002-arch-packagesystem.patch
 	sha256sums = SKIP
-	sha256sums = 8e7cd49c37192dd395a0c67af5957fb8d47ea5d92d98ce24b4e5e7612720b878
+	sha256sums = 396a33a7c9fdbcfed76715223a5ef415fa540737596283bd263c6673cb4df767
 	sha256sums = 11b000162975650060f1a2bc9785d250fec0a7bebfdb8b4c36bdd70cff40a813
 
 pkgname = bootupd-git

@@ -1,5 +1,5 @@
 diff --git a/src/bios.rs b/src/bios.rs
-index 4b34c20..48b1d4a 100644
+index 4f6764f..d3e53db 100644
 --- a/src/bios.rs
 +++ b/src/bios.rs
 @@ -16,7 +16,7 @@ use crate::model::*;
@@ -25,10 +25,10 @@ index 4b34c20..48b1d4a 100644
          let grub_config = grub_config_path.join(grubconfigs::GRUBCONFIG);
  
 diff --git a/src/bootupd.rs b/src/bootupd.rs
-index 131548b..80bb547 100644
+index 0065300..ba18b72 100644
 --- a/src/bootupd.rs
 +++ b/src/bootupd.rs
-@@ -597,8 +597,8 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
+@@ -602,8 +602,8 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
      // Remount /boot read write just for this unit (we are called in a slave mount namespace by systemd)
      ensure_writable_boot()?;
  
@@ -39,7 +39,7 @@ index 131548b..80bb547 100644
  
      // We mark the bootloader as BLS capable to disable the ostree-grub2 logic.
      // We can do that as we know that we are run after the bootloader has been
-@@ -607,10 +607,10 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
+@@ -612,10 +612,10 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
      // manually overwrites the (soon) static GRUB config by calling `grub2-mkconfig`.
      // We need this until we can rely on ostree-grub2 being removed from the image.
      println!("Marking bootloader as BLS capable...");
@@ -52,7 +52,7 @@ index 131548b..80bb547 100644
      match dirfd.read_link("grub.cfg") {
          Err(_) => {
              println!(
-@@ -626,7 +626,7 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
+@@ -631,7 +631,7 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
              current_config.push(path);
  
              // Backup the current GRUB config which is hopefully working right now
@@ -62,7 +62,7 @@ index 131548b..80bb547 100644
                  "Creating a backup of the current GRUB config '{}' in '{}'...",
                  current_config.display(),
 diff --git a/src/grub2/grub-static-efi.cfg b/src/grub2/grub-static-efi.cfg
-index 3d552c3..8a120b1 100644
+index 3d552c3..8b0f5b7 100644
 --- a/src/grub2/grub-static-efi.cfg
 +++ b/src/grub2/grub-static-efi.cfg
 @@ -13,11 +13,11 @@ else
@@ -70,8 +70,9 @@ index 3d552c3..8a120b1 100644
    fi
  fi
 -if [ -d ($prefix)/grub2 ]; then
+-  set prefix=($prefix)/grub2
 +if [ -d ($prefix)/grub ]; then
-   set prefix=($prefix)/grub2
++  set prefix=($prefix)/grub
    configfile $prefix/grub.cfg
  else
 -  set prefix=($prefix)/boot/grub2
@@ -102,10 +103,10 @@ index a092008..8441bf7 100644
    if [ -f ${config_directory}/bootuuid.cfg ]; then
      source ${config_directory}/bootuuid.cfg
 diff --git a/src/grubconfigs.rs b/src/grubconfigs.rs
-index f686f95..247b700 100644
+index 17be02a..b28d46f 100644
 --- a/src/grubconfigs.rs
 +++ b/src/grubconfigs.rs
-@@ -10,7 +10,7 @@ use openat_ext::OpenatDirExt;
+@@ -11,7 +11,7 @@ use openat_ext::OpenatDirExt;
  use crate::freezethaw::fsfreeze_thaw_cycle;
  
  /// The subdirectory of /boot we use
@@ -114,7 +115,7 @@ index f686f95..247b700 100644
  const CONFIGDIR: &str = "/usr/lib/bootupd/grub2-static";
  const DROPINDIR: &str = "configs.d";
  // The related grub files
-@@ -123,14 +123,14 @@ pub(crate) fn install(
+@@ -138,14 +138,14 @@ pub(crate) fn install(
      Ok(())
  }
  
@@ -132,7 +133,7 @@ index f686f95..247b700 100644
      if !editenv.exists() {
          anyhow::bail!("Failed to find {:?}", editenv);
      }
-@@ -152,29 +152,29 @@ mod tests {
+@@ -167,29 +167,29 @@ mod tests {
          let td = tempfile::tempdir()?;
          let tdp = td.path();
          let td = openat::Dir::open(tdp)?;
@@ -140,7 +141,7 @@ index f686f95..247b700 100644
 +        std::fs::create_dir_all(tdp.join("boot/grub"))?;
          std::fs::create_dir_all(tdp.join("boot/efi/EFI/BOOT"))?;
          std::fs::create_dir_all(tdp.join("boot/efi/EFI/fedora"))?;
-         install(&td, Some("fedora"), false).unwrap();
+         install(&td, None, Some("fedora"), false).unwrap();
  
 -        assert!(td.exists("boot/grub2/grub.cfg")?);
 +        assert!(td.exists("boot/grub/grub.cfg")?);
