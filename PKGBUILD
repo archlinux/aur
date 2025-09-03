@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.31.3
+pkgver=1.31.4
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -7,17 +7,18 @@ url=https://docs.basedpyright.com/
 license=("MIT")
 depends=("nodejs")
 makedepends=(npm
+             uv
              # generateAllDocstubs
              python
              tk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6397befe6feee8150a3b4063f08443cab49ddd7b12d1dceddbf211ec406b204f')
+sha256sums=('52c74d31b1bd6dc1d0ea315c844b8bfa21a466e9035af3e02965ea97158fbd43')
 
 prepare() {
     cd "$pkgname-$pkgver"
     # ./build/generateAllDocstubs.sh
-    ./pw uv sync --only-group=docstubs --no-install-project
-    ./pw uv run --no-sync build/py3_8/generate_docstubs.py
+    uv sync --only-group=docstubs --no-install-project
+    uv run --no-sync build/py3_8/generate_docstubs.py
     npm ci
 }
 
