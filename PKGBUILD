@@ -3,7 +3,7 @@
 # Contributor: Stephen304
 
 pkgname=crowdsec
-pkgver=1.6.11
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/notifications/{email,file,http,sentinel,slack,splunk}.yaml)
 install=crowdsec.install
 source=("git+https://github.com/crowdsecurity/crowdsec.git#tag=v${pkgver}")
-sha256sums=('bbca4d38537c64e9025b957e28068cf96d5244aff2b98508b7ef16637663680c')
+sha256sums=('d5b3d3ace01675121ce69a58f50e543f1f16cc843dcbacfd20a6962fab4f3391')
 
 prepare() {
     cd "${pkgname}/config"
@@ -40,22 +40,21 @@ build() {
 
 package() {
     cd "${pkgname}"
-    install -Dm755 -t "${pkgdir}/usr/bin" cmd/crowdsec/crowdsec cmd/crowdsec-cli/cscli
-    install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" wizard.sh
-    install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" config/crowdsec.service
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}" config/{acquis,config,console,profiles,simulation}.yaml
-    install -Dm600 -t "${pkgdir}/etc/${pkgname}" config/{local_api_credentials,online_api_credentials}.yaml
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/console" config/context.yaml
-    install -Dm644 -t "${pkgdir}/etc/${pkgname}/patterns" config/patterns/*
+    install -Dm755 cmd/crowdsec/crowdsec cmd/crowdsec-cli/cscli -t "${pkgdir}/usr/bin"
+    install -Dm644 config/crowdsec.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm600 config/detect.yaml -t "${pkgdir}/var/lib/${pkgname}/data"
+    install -Dm644 config/{acquis,config,console,profiles,simulation}.yaml -t "${pkgdir}/etc/${pkgname}"
+    install -Dm600 config/{local_api_credentials,online_api_credentials}.yaml -t "${pkgdir}/etc/${pkgname}"
+    install -Dm644 config/context.yaml -t "${pkgdir}/etc/${pkgname}/console"
+    install -Dm644 config/patterns/* -t "${pkgdir}/etc/${pkgname}/patterns"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     for i in email file http sentinel slack splunk; do
-        install -Dm751 -t "${pkgdir}/usr/lib/${pkgname}/plugins" "cmd/notification-${i}/notification-${i}"
-        install -Dm644 -t "${pkgdir}/etc/${pkgname}/notifications" "cmd/notification-${i}/${i}.yaml"
+        install -Dm751 "cmd/notification-${i}/notification-${i}" -t "${pkgdir}/usr/lib/${pkgname}/plugins"
+        install -Dm644 "cmd/notification-${i}/${i}.yaml" -t "${pkgdir}/etc/${pkgname}/notifications"
     done
 
-    install -d "${pkgdir}/var/lib/${pkgname}/data" "${pkgdir}/etc/${pkgname}"/{acquis.d,hub}
+    install -d "${pkgdir}/etc/${pkgname}"/{acquis.d,hub}
 
     install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/cscli"
     install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/cscli.fish"

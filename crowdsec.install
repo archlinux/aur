@@ -1,14 +1,11 @@
 post_install() {
-    source /usr/share/crowdsec/wizard.sh -n
-    SILENT=true detect_services
-    SILENT=true TMP_ACQUIS_FILE_SKIP=skip genacquisition
-
     cscli capi register --error
     cscli machines add --auto --force --error
     cscli hub update
     cscli hub upgrade
 
-    CSCLI_BIN_INSTALLED="/usr/bin/cscli" SILENT=true install_collection
+    echo "Creating acquisition configuration"
+    cscli setup unattended
 }
 
 pre_upgrade() {
