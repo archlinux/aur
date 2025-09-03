@@ -13,6 +13,7 @@ license=("GPL-3.0-or-later")
 depends=()
 makedepends=(
 	"python-build"
+  "klayout"
 	"python-installer"
 	"python-wheel"
 	"python-setuptools"

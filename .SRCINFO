@@ -6,6 +6,7 @@ pkgbase = python-klayout
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = python-build
+	makedepends = klayout
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
