@@ -2,7 +2,7 @@
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
 pkgver=3.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -13,9 +13,10 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"https://gitlab.archlinux.org/archlinux/packaging/packages/protonmail-bridge/-/raw/03d60b89cfb30580ad1bb8bc5c86e28348fa6ad2/remove-vcpkg-dependency.patch"
 	"fix-wayland-icon.patch::$url/commit/75e7bba6e62ef4b0a58334f2bcc7c56b7769c69c.patch"
 	# Patches from https://github.com/mnixry/proton-bridge. They make the app work for free users and only require the patches from this fork to work
-	"1.patch::https://github.com/ProtonMail/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.diff"
-	"2.patch::https://github.com/ProtonMail/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff"
-	"3.patch::https://github.com/ProtonMail/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff"
+	"1.patch::https://github.com/mnixry/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.diff"
+	"2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff"
+	"3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff"
+	"4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff"
 )
 noextract=()
 sha256sums=('17e8014f0d30da4720492d2b68d941ddf6d2be12eb337677acf111a003956bc6'
@@ -24,7 +25,8 @@ sha256sums=('17e8014f0d30da4720492d2b68d941ddf6d2be12eb337677acf111a003956bc6'
             '45a68688cf2a06539d60e3e35b112a67319c58c23c35ec4cf3712d2f0cb50cb2'
             '7438f711a6762a34614bc10be8b54c00691bc72743e14767f0b72e9a11051327'
             '795a17dadbd0ae8b9225c9a279b74097e153c9aea0dd8ec55b1c877864805323'
-            'c5c13843be7b9389882bdedf3e020bcf59d53189fb2eaf3416d2f2c16582e390')
+            'c5c13843be7b9389882bdedf3e020bcf59d53189fb2eaf3416d2f2c16582e390'
+            '11f4edd80f8910abded7e88a98919e4f00d37332f3bbc1f361cda667826fd1c5')
 validpgpkeys=()
 
 prepare() {
@@ -32,9 +34,9 @@ prepare() {
 	patch -Np1 < "$srcdir/remove-vcpkg-dependency.patch"
 	patch -Np1 < "$srcdir/fix-wayland-icon.patch"
 	patch -Np1 < "$srcdir/1.patch"
-	#patch -Np1 < "$srcdir/2.patch"
+	patch -Np1 < "$srcdir/2.patch"
 	patch -Np1 < "$srcdir/3.patch"
-	sed -i 's/5.0.36.17/5.0.282.1/g' "$srcdir/$pkgbase/internal/constants/version_default.go"
+	patch -Np1 < "$srcdir/4.patch"
 
 	# Use system qt because bundling it is cringe n lame
 	cat /dev/null > internal/frontend/bridge-gui/bridge-gui/DeployLinux.cmake
