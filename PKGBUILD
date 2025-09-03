@@ -2,22 +2,24 @@
 pkgname=deadlock-modmanager-git
 _pkgname=${pkgname%-git}
 pkgdesc='A mod manager for the Valve game Deadlock (latest git build)'
-pkgver=0.5.0.r2.g9b88f77
+pkgver=0.5.1.r1.g06a76e0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Stormix/$_pkgname"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
 depends=('webkit2gtk-4.1' 'cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme')
-source=("git+https://github.com/Stormix/$_pkgname.git" 'deadlock-modmanager.desktop')
-sha256sums=('SKIP' '0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4')
+source=("git+$url.git"
+	'deadlock-modmanager.desktop')
+sha256sums=('SKIP'
+	'0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!lto')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long --abbrev=7 --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -39,7 +41,7 @@ build() {
 	export VITE_API_URL="https://api.deadlockmods.app"
 
 	cd "$srcdir/$_pkgname/apps/desktop"
-	env -u RUSTFLAGS cargo tauri build --no-bundle -- --frozen
+	cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
