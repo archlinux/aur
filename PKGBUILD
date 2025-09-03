@@ -1,19 +1,23 @@
-# Maintainer: Tommaso Sardelli <lacapannadelloziotom at gmail dot com>
+# Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
+# Contributor: Tommaso Sardelli <lacapannadelloziotom at gmail dot com>
 pkgname=bpftrace-git
 _pkgname=bpftrace
-pkgver=r2483.d3ca1611
+pkgver=r4397.19ab9e3d
 pkgrel=1
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
-url="https://github.com/iovisor/bpftrace"
-license=('Apache')
-depends=('libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'libbpf')
-makedepends=('cmake' 'git' 'llvm' 'cereal' 'asciidoctor')
+url="https://github.com/bpftrace/bpftrace"
+license=('Apache-2.0')
+# As of 2025-09-03, libbpf-git is required to get a static linked version.
+# The main repo libbpf only provides a dynamic library, which isn't enough.
+depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'libbpf-git' 'libpcap' 'zstd')
+makedepends=('binutils' 'cmake' 'llvm' 'git' 'linux-headers' 'ninja' 'gtest' 'cereal'
+             'asciidoctor' 'xxd')
 conflicts=('bpftrace')
 provides=('bpftrace')
-source=("git+https://github.com/iovisor/bpftrace.git")
+source=("git+https://github.com/bpftrace/bpftrace.git")
 sha512sums=('SKIP')
-options=('!strip')
+options=('!strip' '!debug')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -24,19 +28,19 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake -S bpftrace -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_SYSTEM_BPF_BCC=ON
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
+  depends+=(
+    'binutils' 'libsframe.so'
+  )
 
-  make DESTDIR="$pkgdir/" install
-
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=2 sw=2 et:
