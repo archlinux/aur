@@ -9,6 +9,7 @@ pkgbase = python-kfactory
 	depends = python-gitpython
 	depends = python-loguru
 	depends = python-rectangle-packer-git
+	depends = python-pydantic-extra-types
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

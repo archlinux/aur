@@ -15,6 +15,7 @@ depends=(
 	"python-gitpython"
 	"python-loguru"
 	"python-rectangle-packer-git"
+	"python-pydantic-extra-types"
   )
 makedepends=(
 	"python-build"
