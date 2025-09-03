@@ -1,6 +1,8 @@
 # Maintainer: Max Harmathy <harmathy@secure.mailbox.org>
 # Contributor: Arturo Penen <apenen@gmail.com>
 
+# SPDX-License-Identifier: 0BSD
+
 pkgname=ghorg
 pkgver=1.11.5
 pkgrel=1

@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = [".SRCINFO", "PKGBUILD"]
+SPDX-FileCopyrightText = "Copyright Arch Linux Contributors"
+SPDX-License-Identifier = "0BSD"
