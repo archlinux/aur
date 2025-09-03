@@ -15,7 +15,7 @@ options=(!debug) # Disable debug symbols for a smaller package
 
 # Corrected source URL format for GitHub tags
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jeffser/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('2d177c035d4d69725f07a109ef55456122e1cead27130dc276de9a8a31fc74799bae588d8e869bb80bc0dc7fba53a2231c4efc00d662885cb4c659f226831cd8')
+b2sums=('b3dc963597ab15b2c84f70bfa24bdc753ca2d06f824c31494be5f992f30441aefe562c84081244ef0157fdaf41a153e6dc3c772b40aa35b2df6d3bc7f7c39f29')
 
 # List of runtime dependencies
 depends=(
