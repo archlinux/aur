@@ -78,8 +78,8 @@ prepare() {
     esac
   fi
   if [ ! -d $pkgname ]; then
-    git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \https://codeberg.org/comaps/protobuf
-    $src_url $pkgname
+    git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \
+      $src_url $pkgname
   fi
   git submodule init
 
