@@ -13,6 +13,7 @@ pkgbase = scilab
 	makedepends = gcc-fortran
 	makedepends = libxml2
 	makedepends = ocaml-num
+	makedepends = ocaml-findlib
 	makedepends = pcre
 	makedepends = pkgconf
 	makedepends = rapidjson

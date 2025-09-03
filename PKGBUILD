@@ -24,6 +24,7 @@ makedepends=(ant
   gcc-fortran
   libxml2
   ocaml-num
+  ocaml-findlib
   pcre
   pkgconf
   rapidjson
