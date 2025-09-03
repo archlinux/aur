@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk
 _pkgname=frzr
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -40,4 +40,5 @@ package() {
 
   install -dm755 "$pkgdir/etc"
   install -m644 -t "$pkgdir/etc" "$srcdir/$_pkgname/etc"/*.conf
+  install -m644 -t "$pkgdir/etc" "$srcdir/$_pkgname/etc"/*.json || true
 }
