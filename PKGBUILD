@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-normalize-git
 pkgver=1.33.1.r0.gdd689b5
-pkgrel=1
+pkgrel=2
 pkgdesc='Normalize loudness of audio and video files using FFmpeg'
 arch=(any)
 url=https://github.com/slhck/ffmpeg-normalize
@@ -26,14 +26,14 @@ prepare() {
 
 build() {
   cd $pkgname
-  #python -m build --wheel --no-isolation
+  #python -m build --no-isolation --wheel
   uv --no-cache --offline build --no-build-isolation --out-dir=dist --wheel .
 }
 
 check() {
   cd $pkgname
-  uv venv --system-site-packages
-  uv --offline --no-cache pip install --link-mode=copy --no-deps dist/*.whl
+  uv venv --no-managed-python --system-site-packages
+  uv --no-cache --offline pip install --link-mode=copy --no-deps dist/*.whl
   PATH=".venv/bin:$PATH" ./.venv/bin/python -m pytest tests
 }
 
