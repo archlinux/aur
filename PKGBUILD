@@ -1,4 +1,4 @@
-# Maintainer: Mark Hegreberg <mark@hegreberg.io>
+# Maintainer: Mark Hegreberg <aur@hegreberg.io>
 
 pkgname=doxx-git
 _pkgname="${pkgname%-git}"
