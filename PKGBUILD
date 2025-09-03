@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-bin
 _pkgname=Fishing-Funds
-pkgver=8.6.0
+pkgver=8.6.1
 _electronversion=38
 pkgrel=1
 pkgdesc="Fund, Market, Stocks, Virtual Currency Status Bar Display Small Applications, based on Electron.(Prebuilt version.Use system-wide electron)基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('4626d268a471089b74c2c5d37366b925a88162606fd2ec0e2f6da5369bf97288')
-sha256sums_x86_64=('7797931e0563545620d5a9594eb79475b3632e1d36faf4ae66e558d2060d6beb')
+sha256sums_aarch64=('e763e248507c16af3560a09d3b786911b327467ab5ea2f151fb76af64216c46f')
+sha256sums_x86_64=('0b9fd2ab937330279ebe004ffbe96644896c9cd5c0fa88e10852cd24a40e3fc1')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
