@@ -1,18 +1,17 @@
 pkgbase = python-pure-protobuf
 	pkgdesc = Python implementation of Protocol Buffers data types with dataclasses support.
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://eigenein.github.io/protobuf
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	checkdepends = python-pytest-benchmark
 	checkdepends = python-pydantic
 	makedepends = python-poetry-dynamic-versioning
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://github.com/eigenein/protobuf/archive/refs/tags/3.1.4.tar.gz
-	sha512sums = f04ea36c118f290b20aad00e8fa849330bd416aa9b8574cc8af27ef0124941bd37a9d28219056dcfc86f40dd63a0069a1b0c3fd25b676a332c58c167a11d55fb
+	source = https://github.com/eigenein/protobuf/archive/refs/tags/3.1.5.tar.gz
+	sha512sums = 348ff638daacc38e942f996168f29b30c4c389027f35c663f50e87525f7aac2e4ba1c1707b22e8082e54ee26987ff621fc96af66a5ad5cf3d4291fe857f44549
 
 pkgname = python-pure-protobuf
 	depends = python>=3.9.0

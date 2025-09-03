@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Python implementation of Protocol Buffers data types with dataclasses support.'
 arch=('any')
@@ -21,13 +21,12 @@ makedepends=('python-poetry-dynamic-versioning'
 #            'python-cairosvg'
 #            'mkdocs-autorefs'
 #            'python-pymdown-extensions')
-checkdepends=('python-pytest'
+checkdepends=('python-pytest-benchmark'
 #             'python-pytest-xdist'
-              'python-pytest-benchmark'
               'python-pydantic')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/eigenein/protobuf/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('f04ea36c118f290b20aad00e8fa849330bd416aa9b8574cc8af27ef0124941bd37a9d28219056dcfc86f40dd63a0069a1b0c3fd25b676a332c58c167a11d55fb')
+sha512sums=('348ff638daacc38e942f996168f29b30c4c389027f35c663f50e87525f7aac2e4ba1c1707b22e8082e54ee26987ff621fc96af66a5ad5cf3d4291fe857f44549')
 
 prepare() {
 #   cd ${srcdir}/${_pyname}-${pkgver}
