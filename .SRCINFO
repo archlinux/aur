@@ -1,4 +1,4 @@
-pkgbase = Hanguage
+pkgbase = hanguage
 	pkgdesc = H language converter as defined by u/Huesosishe228
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = Hanguage
 	source = Hanguage-1.0.0.tar.gz::https://github.com/eshnd/Hanguage/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = ef4b6696742e5593f331b4ab8cb5d467d0e7b033d22b22c6e3f1f0a4130a3b04
 
-pkgname = Hanguage
+pkgname = hanguage
