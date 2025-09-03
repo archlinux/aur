@@ -3,20 +3,25 @@
 pkgname=bpftrace-git
 _pkgname=bpftrace
 pkgver=r4397.19ab9e3d
-pkgrel=1
+pkgrel=2
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/bpftrace/bpftrace"
 license=('Apache-2.0')
 # As of 2025-09-03, libbpf-git is required to get a static linked version.
 # The main repo libbpf only provides a dynamic library, which isn't enough.
-depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'libbpf-git' 'libpcap' 'zstd')
-makedepends=('binutils' 'cmake' 'llvm' 'git' 'linux-headers' 'ninja' 'gtest' 'cereal'
+depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'libbpf-git' 'libpcap' 'zstd' 'systemd-libs')
+makedepends=('binutils' 'cmake' 'cargo' 'llvm' 'git' 'linux-headers' 'ninja' 'gtest' 'cereal'
              'asciidoctor' 'xxd')
 conflicts=('bpftrace')
 provides=('bpftrace')
-source=("git+https://github.com/bpftrace/bpftrace.git")
-sha512sums=('SKIP')
+_blazesymver=v0.2.0-rc.5
+# Blazesym is not in the main archives, and the AUR package is very outdated.
+# Once either of those have a version we can depend on, we should switch over.
+source=("https://github.com/libbpf/blazesym/archive/refs/tags/${_blazesymver}.tar.gz"
+        "git+https://github.com/bpftrace/bpftrace.git")
+sha512sums=('ddac1dd51119d99aa09b59c641c7d53803845cfd642856b90a9f4fbd5da0d8e636a2e6cbb916578bbb1586082cc67645a789a0d86ae4a1f4a5fee2df89c0ed63'
+            'SKIP')
 options=('!strip' '!debug')
 
 pkgver() {
@@ -27,11 +32,29 @@ pkgver() {
   )
 }
 
+prepare() {
+    cd blazesym-${_blazesymver/#v/}
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
+  # Build blazesym and copy it to where bpftrace can find it.
+  # We use a static library to not collide with proper packages for blazesym
+  # (which we should switch over to when they are available).
+  (
+    cd blazesym-${_blazesymver/#v/}
+    cargo build --frozen --release --package=blazesym-c
+    mkdir -p ../blazesym-install/{lib,include}
+    cp target/release/libblazesym_c.a ../blazesym-install/lib/
+    cp -r capi/include/* ../blazesym-install/include/
+  )
   cmake -S bpftrace -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SYSTEM_BPF_BCC=ON
+    -DENABLE_SYSTEMD=ON \
+    -DLIBBLAZESYM_INCLUDE_DIRS=${srcdir}/blazesym-install/include \
+    -DLIBBLAZESYM_LIBRARIES=${srcdir}/blazesym-install/lib/libblazesym_c.a
   cmake --build build
 }
 
