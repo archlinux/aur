@@ -10,7 +10,7 @@ license=("GPL-2.0-or-later")
 conflicts=("7k-ambition-data")
 provides=("7k-ambition-data")
 depends=("openal" "desktop-file-utils" "enet" "gcc-libs" "sdl2>=2.0.4" "boost>=1.74")
-makedepends=("base-devel")
+makedepends=("base-devel" "gcc12")
 optdepends=("7k-ambition-music>=3.0.0: for ingame music")
 source=("https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
