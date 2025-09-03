@@ -17,7 +17,7 @@ pkgname=vmware-workstation16
 pkgver=16.2.5
 _buildver=20904516
 _pkgver=${pkgver}_${_buildver}
-pkgrel=15
+pkgrel=16
 _tools_version=11.3.5_18557794
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
@@ -94,6 +94,7 @@ source=(
 	'vmmon.patch'
 	'vmnet.patch'
 	'linux6_15.patch'
+	'linux6_16.patch'
 )
 
 sha256sums=(
@@ -122,6 +123,7 @@ sha256sums=(
 	'273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
 	'e9a2f40a0cb0ca6cad4a562040573c3d8105f0f5f1748a94e907b0fe46e09c6e'
 	'696011a5e97772878f4714325d50e3acb9dabe79c54bd0fcee072e96a7e72a7d'
+	'SKIP'
 	'SKIP'
 )
 
@@ -430,7 +432,7 @@ fi
 		patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
 	done
 	patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_15.patch"
-
+	patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_16.patch"
 	rm -r "$pkgdir/usr/lib/vmware/modules/source"
 
 if [ -n "$_enable_macOS_guests" ]; then
