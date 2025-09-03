@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.28
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -11,20 +11,24 @@ makedepends=('rust' 'cargo')
 provides=('wayclip-cli')
 conflicts=('wayclip-cli')
 
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.1/wayclip-v0.1.1-x86_64-unknown-linux-gnu.tar.gz")
+
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
   tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir/"
   tar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/"
   cd "$srcdir/cli-$pkgver"
-  cargo fetch
+  cargo fetch --locked
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
   cd "$srcdir/cli-$pkgver"
-  cargo build --release
+  export CARGO_TARGET_DIR="$srcdir/target"
+  cargo build --release --locked
 }
 
 package() {
@@ -33,5 +37,3 @@ package() {
   install -Dm755 "$srcdir/wayclip-binaries/trigger" "$pkgdir/usr/bin/wayclip-trigger"
   install -Dm644 "$srcdir/cli-$pkgver/assets/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
 }
-sha256sums=('a736f08052450cdd5580594093252f0ae937ea55344d4ae98a9c984debfca5ca'
-            'bed1151125a7906749eaec504ea085d2406e1022dd26ca49ccb416a4cb88daa8')
