@@ -6,7 +6,7 @@
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 pkgname=scilab
 pkgver=2025.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A scientific software package for numerical computations"
 arch=(i686 x86_64)
 url="https://www.${pkgname}.org"
@@ -30,25 +30,27 @@ makedepends=(ant
   time
   tk
 )
-source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-# hdf5-api.patch ${pkgname}-strict-jar.patch ${pkgname}-LD_LIBRARY_PATH.patch ${pkgname}-num.patch
-sha512sums=('964b2e0dccc46eaf32076b620b530216d9e177a243a6a165509667664f64381bd434abb1d1b7e6cef659ab01f444885c08bd53e6cf78ace8cd673e62d1e72dea')
+source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
+  local://${pkgname}-num.patch)
+# hdf5-api.patch ${pkgname}-strict-jar.patch ${pkgname}-LD_LIBRARY_PATH.patch
+sha512sums=('964b2e0dccc46eaf32076b620b530216d9e177a243a6a165509667664f64381bd434abb1d1b7e6cef659ab01f444885c08bd53e6cf78ace8cd673e62d1e72dea'
+            '6d2e2548e2d33e830dba4a479787cd3f642afa63439d56cee650c50c49d980af9b50b4090732d9ca536322a6ff4a6763d015344f693d7e1d487e37dfb73d9605')
 
-# prepare() {
-#   cd ${pkgname}-${pkgver}
+prepare() {
+  # cd ${pkgname}-${pkgver}
+  # OCaml
+  patch -p0 <"${srcdir}"/${pkgname}-num.patch
 # Linked to: https://codereview.scilab.org/#/c/18089
 # patch <"${srcdir}"/${pkgname}-strict-jar.patch
 # Fix path, to avoid the following error:
 # An error has been detected while loading /usr/share/scilab//modules/functions/.libs/libscifunctions.so: /usr/share/scilab//modules/functions/.libs/libscifunctions.so: cannot open shared object file: No such file or directory
 # patch -p0 <"${srcdir}"/${pkgname}-LD_LIBRARY_PATH.patch
-# OCaml
-# patch -p0 <"${srcdir}"/${pkgname}-num.patch
 # # Jakarta
 # patch -p0 <"${srcdir}"/jar_names_in_configure.patch
 # sed -i 's/gluegen_rt/gluegen2_rt/' configure.ac
 # sed -i 's/gluegen_rt/gluegen2_rt/' modules/gui/src/java/org/scilab/modules/gui/SwingView.java
 # patch -p1 -i ../hdf5-api.patch
-# }
+}
 
 # --with-xcos \
 # --without-modelica \
@@ -84,8 +86,8 @@ build() {
     --disable-debug-java \
     --disable-static-system-lib \
     FFLAGS="-fallow-argument-mismatch" \
-    CFLAGS="$CFLAGS -fcommon" \
-    CXXFLAGS="$CXXFLAGS -fcommon" # -DH5_USE_18_API
+    CFLAGS="$CFLAGS -fcommon -std=gnu11" \
+    CXXFLAGS="$CXXFLAGS -fcommon" # -DH5_USE_18_API -Wno-incompatible-pointer-types
   make
   make doc
 }
