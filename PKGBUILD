@@ -2,7 +2,7 @@
 # Contributor: mark blakeney at bullet dash systems dot net
 _appname=pycharm-community
 pkgname="$_appname-jre"
-pkgver=2025.2.0.1
+pkgver=2025.2.1.1
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64 aarch64)
@@ -23,8 +23,8 @@ source_aarch64=("https://download.jetbrains.com/python/pycharm-community-${pkgve
 options=(!strip)
 sha256sums=('f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
             '81005f7c292a59ebfe0b0905e4dc90c0fa35b491465fde063ccf583860ba33b1')
-sha256sums_x86_64=('2b95c6169c6f9bb00657e24cecdad23281c423b661918c09781894f3508f8672')
-sha256sums_aarch64=('820f8f1a749d2544a4e4511ff23e8b55f3fe5faa4e0b715ba44999f784c5ac94')
+sha256sums_x86_64=('3397ebebc3531eca4c6b866e8223a5d53c04794dd847f2bbd7218c2b5d1b9a24')
+sha256sums_aarch64=('f501a424c1554fb529bc3de3ce7ce49587ef419ebfd85d8ec12ddb5eaf291022')
 
 package() {
   cd "${_appname}-${pkgver}"
