@@ -1,0 +1,146 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index dfa00ff0b..720af36aa 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -333,7 +333,7 @@ endif()
+ # ==============================================================================
+ # OpenImageIO
+ # ==============================================================================
+-find_package(OpenImageIO 2.0.9 REQUIRED)
++find_package(OpenImageIO REQUIRED)
+ if (OPENIMAGEIO_FOUND OR OpenImageIO_FOUND)
+     message(STATUS "OpenImageIO found.")
+ else()
+@@ -448,7 +448,9 @@ endif()
+ # Flann
+ # ==============================================================================
+ if (ALICEVISION_BUILD_SFM)
+-    find_package(lz4 REQUIRED)
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(lz4 REQUIRED IMPORTED_TARGET liblz4)
++    add_library(lz4::lz4 ALIAS PkgConfig::lz4)
+     find_package(flann REQUIRED)
+ 
+     if (TARGET lz4::lz4)
+@@ -618,7 +620,7 @@ endif()
+ # - optional, only external and enabled only if ALICEVISION_USE_UNCERTAINTYTE is ON
+ # ==============================================================================
+ set(ALICEVISION_HAVE_UNCERTAINTYTE 0)
+-
++find_package(UncertaintyTE)
+ if (ALICEVISION_BUILD_SFM)
+     if (NOT ALICEVISION_USE_UNCERTAINTYTE STREQUAL "OFF")
+         find_package(UncertaintyTE)
+@@ -876,6 +878,7 @@ set(ALICEVISION_INCLUDE_DIRS
+         ${COINUTILS_INCLUDE_DIRS}
+         ${CLP_INCLUDE_DIRS}
+         ${OSI_INCLUDE_DIRS}
++        ${Python3_INCLUDE_DIRS}
+ )
+ 
+ include_directories(${ALICEVISION_INCLUDE_DIRS})
+@@ -912,7 +915,7 @@ else()
+             set(SPHINX_HTML_DIR "${CMAKE_CURRENT_BINARY_DIR}/htmlDoc")
+ 
+             configure_file(
+-                "${CMAKE_CURRENT_SOURCE_DIR}/../docs/sphinx/rst/conf.py"
++                "${CMAKE_CURRENT_SOURCE_DIR}/../docs/sphinx/conf.py"
+                 "${CMAKE_CURRENT_BINARY_DIR}/conf.py"
+                 @ONLY
+             )
+@@ -920,7 +923,7 @@ else()
+             add_custom_target(doc ALL
+                 ${SPHINX_EXECUTABLE}
+                 -b html
+-                "${CMAKE_CURRENT_SOURCE_DIR}/../docs/sphinx/rst"
++                "${CMAKE_CURRENT_SOURCE_DIR}/../docs/sphinx/"
+                 "${SPHINX_HTML_DIR}"
+                 COMMENT "Building HTML documentation with Sphinx"
+             )
+diff --git a/src/aliceVision/image/io.cpp b/src/aliceVision/image/io.cpp
+index f335ae457..5682a303c 100644
+--- a/src/aliceVision/image/io.cpp
++++ b/src/aliceVision/image/io.cpp
+@@ -1284,7 +1284,7 @@ void readImage(const std::string& path, Image<RGBColor>& image, const ImageReadO
+ 
+ void logOIIOImageCacheInfo()
+ {
+-    oiio::ImageCache* cache = oiio::ImageCache::create(true);
++    oiio::ImageCache* cache = oiio::ImageCache::create(true).get();
+ 
+     int maxOpenFiles = -1;
+     cache->getattribute("max_open_files", maxOpenFiles);
+diff --git a/src/cmake/FindUncertaintyTE.cmake b/src/cmake/FindUncertaintyTE.cmake
+index bcd4d6bfe..a1fa2b58f 100644
+--- a/src/cmake/FindUncertaintyTE.cmake
++++ b/src/cmake/FindUncertaintyTE.cmake
+@@ -52,7 +52,7 @@ ELSE(UNCERTAINTYTE_INCLUDE_DIR)
+ ENDIF(UNCERTAINTYTE_INCLUDE_DIR)
+ 
+ 
+-GET_FILENAME_COMPONENT(UNCERTAINTYTE_LIBRARY_DIR "${UNCERTAINTYTE_LIBRARY}" PATH)
++cmake_path(GET UNCERTAINTYTE_LIBRARY ROOT_PATH UNCERTAINTYTE_LIBRARY_DIR)
+ 
+ if(UNCERTAINTYTE_INCLUDE_DIR)
+   message(STATUS "UncertaintyTE include directory: ${UNCERTAINTYTE_INCLUDE_DIR}")
+diff --git a/src/software/pipeline/main_panoramaInit.cpp b/src/software/pipeline/main_panoramaInit.cpp
+index ae02b385d..4ae7d75b5 100644
+--- a/src/software/pipeline/main_panoramaInit.cpp
++++ b/src/software/pipeline/main_panoramaInit.cpp
+@@ -91,7 +91,7 @@ class PyramidFloat
+             oiio::ImageBuf buf_src(spec_src, const_cast<float*>(_levels[level - 1].data()));
+             oiio::ImageBuf buf_dst(spec_dst, const_cast<float*>(_levels[level].data()));
+ 
+-            oiio::ImageBufAlgo::resize(buf_dst, buf_src, "gaussian");
++            oiio::ImageBufAlgo::resize(buf_dst, buf_src, {{"filtername", "gaussian"}});
+         }
+ 
+         return true;
+diff --git a/src/software/utils/main_computeUncertainty.cpp b/src/software/utils/main_computeUncertainty.cpp
+index 7949913fb..955d994f1 100644
+--- a/src/software/utils/main_computeUncertainty.cpp
++++ b/src/software/utils/main_computeUncertainty.cpp
+@@ -41,7 +41,8 @@ int aliceVision_main(int argc, char** argv)
+     bool debug = false;
+ 
+     // clang-format off
+-    params.add_options()
++    po::options_description requiredParams("Required parameters");
++    requiredParams.add_options()
+         ("input,i", po::value<std::string>(&sfmDataFilename)->required(),
+          "SfMData file to align.")
+         ("output,o", po::value<std::string>(&outSfMDataFilename)->required(),
+@@ -51,13 +52,11 @@ int aliceVision_main(int argc, char** argv)
+         ("algorithm,a", po::value<std::string>(&algorithm)->default_value(algorithm),
+          "Algorithm.")
+         ("debug,d", po::value<bool>(&debug)->default_value(debug),
+-         "Enable creation of debug files in the current folder.")
+-        ("verboseLevel,v", po::value<std::string>(&verboseLevel)->default_value(verboseLevel),
+-         "Verbosity level (fatal,  error, warning, info, debug, trace).");
++         "Enable creation of debug files in the current folder.");
+     // clang-format on
+ 
+     CmdLine cmdline("AliceVision computeUncertainty");
+-    cmdline.add(params);
++    cmdline.add(requiredParams);
+     if (!cmdline.execute(argc, argv))
+     {
+         return EXIT_FAILURE;
+@@ -71,7 +70,7 @@ int aliceVision_main(int argc, char** argv)
+ 
+     // Load input scene
+     SfMData sfmData;
+-    if (!Load(sfmData, sfmDataFilename, ESfMData(ALL)))
++    if (!load(sfmData, sfmDataFilename, ESfMData(ALL)))
+     {
+         std::cerr << std::endl << "The input SfMData file \"" << sfmDataFilename << "\" cannot be read." << std::endl;
+         return EXIT_FAILURE;
+@@ -148,7 +147,7 @@ int aliceVision_main(int argc, char** argv)
+     std::cout << "Save into \"" << outSfMDataFilename << "\"" << std::endl;
+ 
+     // Export the SfMData scene in the expected format
+-    if (!Save(sfmData, outSfMDataFilename, ESfMData(ALL)))
++    if (!save(sfmData, outSfMDataFilename, ESfMData(ALL)))
+     {
+         std::cerr << std::endl << "An error occurred while trying to save \"" << outSfMDataFilename << "\"." << std::endl;
+         return EXIT_FAILURE;
