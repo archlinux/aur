@@ -1,14 +1,15 @@
 # Maintainer: Thomas Girod <tgirod@altu.fr>
+# Contributor: Chris Arndt <aur -at- chrisarndt -dot- de>
 pkgname=overwitch
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="JACK client for Overbridge devices"
 arch=('x86_64')
 url="https://github.com/dagargo/overwitch"
-license=('GPL')
+license=('GPL-3.0-only')
 groups=()
-depends=('libusb' 'jack' 'libsamplerate' 'libsndfile' 'gettext' 'json-glib' 'gtk3')
+depends=('libusb' 'jack' 'libsamplerate' 'gtk4' 'libsndfile' 'gettext')
 makedepends=('make' 'autoconf')
 checkdepends=()
 optdepends=()
