@@ -19,7 +19,7 @@ pkgname=vmware-workstation-noxsave
 pkgver=17.0.2
 _buildver=21581411
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
+pkgrel=2
 _tools_version=12.1.5_20735119
 _legacy_ver=17.0.2
 _legacy_buildver=21581411
@@ -100,6 +100,7 @@ source=(
 	'vmmon.patch'
 	'vmnet.patch'
 	'linux6_15.patch'
+	'linux6_16.patch'
 )
 
 sha256sums=(
@@ -124,6 +125,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -422,6 +424,7 @@ fi
 		patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
 	done
 	patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_15.patch"
+	patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_16.patch"
 
 	rm -r "$pkgdir/usr/lib/vmware/modules/source"
 
