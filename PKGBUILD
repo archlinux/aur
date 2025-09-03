@@ -3,8 +3,8 @@
 # Contributor: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname=wootility
-pkgver=5.0.6
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 pkgdesc='Utility for configuring Wooting keyboards'
 arch=('x86_64')
 url="https://wooting.io/$pkgname"
@@ -16,7 +16,7 @@ _appimage=$pkgname-$pkgver.AppImage
 source=("$_appimage::https://api.wooting.io/public/$pkgname/download?os=linux&version=$pkgver"
         '70-wooting.rules')
 noextract=("$_appimage")
-b2sums=('01f4997054be96dcbee8bbb6d4f68874d23bb1507898337e4e4165c6c417f183cca947b4d7fb98e2500a4c85011e95b1d2d45c993aa1949bb5122452d97367d9'
+b2sums=('f6da7bb4cf961fa493110ddc918e299602a156aa8222e9354666da555496ab84d039b28b5043cb999fff5e4c9c425703016e67980a08f2fc4789351b66aa12cb'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
