@@ -1,7 +1,7 @@
 pkgbase = python-cmake
 	pkgdesc = CMake is an open-source, cross-platform family of tools designed to build, test and package software
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/cmake
 	arch = x86_64
 	license = Apache-2.0 AND BSD-3-Clause
@@ -11,6 +11,7 @@ pkgbase = python-cmake
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = sh
+	depends = cmake
 	depends = gcc-libs
 	depends = glibc
 	depends = libidn2

@@ -3,7 +3,7 @@
 pkgname=python-cmake
 _name=${pkgname#python-}
 pkgver=4.1.0
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="CMake is an open-source, cross-platform family of tools designed to build, test and package software"
 arch=($CARCH)
@@ -14,6 +14,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     sh
+    cmake
     gcc-libs
     glibc
     libidn2
