@@ -1,4 +1,4 @@
-# Maintainer: Mark <mark@hegreberg.io>
+# Maintainer: Mark <aur@hegreberg.io>
 # Contributor: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
