@@ -4,7 +4,7 @@ __themename=(simp1e-amber simp1e-amber-neron)
 pkgver=0.3
 # simp1e-amber-hyprcursor is using a different version number. No special reason why, sry :p
 __simp1eAmberVer=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Two gold-yellow hyprcursor themes ('simp1e-amber' and 'simp1e-amber-neron'). Xcursor versions also provided as fallback."
 arch=('x86_64')
 url="https://codeberg.org/useless-utils/simp1e-amber-hyprcursor"
@@ -19,7 +19,7 @@ ${__themename[1]}-xcursor.tar.zst::https://codeberg.org/useless-utils/$pkgname/r
 sha256sums=('0f2cdca43f023cde77f3bf13acd84bd1b9a89b0799d7650775dbc5a804f97248'
             'd4aa004dfe3746d1c09a9840c6740d21246acd7f10f3991149804b54bcc82543'
             'efef3f50fe467c2fa8197193d9dbac1ec167dd1a17f4f39b2790847939984593'
-            '94f657af1a84ef2fcf6e4ab6b127b782c63e2d4a12240976b2bc10087543c958')
+            '690a5cc44964d23d65efb15c99c87e3765974be283261ce2164ee90be88befd0')
 
 prepare() {
   bsdtar -xf "$srcdir/${__themename[0]}-hyprcursor-$__simp1eAmberVer.tar.zst"

@@ -1,13 +1,13 @@
 pkgbase = simp1e-amber-hyprcursor
 	pkgdesc = Two gold-yellow hyprcursor themes ('simp1e-amber' and 'simp1e-amber-neron'). Xcursor versions also provided as fallback.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/useless-utils/simp1e-amber-hyprcursor
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = zstd
 	makedepends = libarchive
-	source = simp1e-amber-hyprcursor-0.3.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.3/simp1e-amber-hyprcursor-0.1.tar.zst
+	source = simp1e-amber-hyprcursor-0.1.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.3/simp1e-amber-hyprcursor-0.1.tar.zst
 	source = simp1e-amber-xcursor.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.3/simp1e-amber-xcursor.tar.zst
 	source = simp1e-amber-neron-hyprcursor-0.3.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.3/simp1e-amber-neron-hyprcursor-0.3.tar.zst
 	source = simp1e-amber-neron-xcursor.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.3/simp1e-amber-neron-xcursor.tar.zst
