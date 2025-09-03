@@ -4,7 +4,7 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
-pkgver=2.28.1
+pkgver=2.28.3
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
@@ -14,8 +14,8 @@ license=(BSD-3-Clause)
 depends=(glibc gcc-libs)
 makedepends=(git cuda)
 source=(git+https://github.com/NVIDIA/nccl.git#tag=v$pkgver-$_upstr_pkgrel)
-sha256sums=('cb519ca40e2dea1fd8e9d4008ab855da9d5afd5ceb4e846746cb1aeb6073134f')
-b2sums=('322ef98bc1658b6c3bb07f79fa9a8801d6e95107c4cbf350c4d8781b793abd209f27b5b26a7acdaec8a7cb8abcc8412669b371d56241f1e53c34c52268c1b30a')
+sha256sums=('0e926a88d113851017fb19a4e7a95e36801053e1376d501455b0d4d2eb08c5bc')
+b2sums=('c184ba68bc95ca96862f76a132e0bd8b62eb2a1c4f6047589d5f1b39db281714e210aab17006ed1d249015b4fc67d3fad07aafc6afb8f326671bb2c8dc9dfbf6')
 
 prepare() {
   cd $pkgname
