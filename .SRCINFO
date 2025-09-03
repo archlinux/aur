@@ -16,6 +16,7 @@ pkgbase = python-multiplex
 	depends = python-easyansi
 	depends = python-wcwidth
 	depends = python-pyte
+	provides = mp
 	source = https://files.pythonhosted.org/packages/source/m/multiplex/multiplex-0.6.1.tar.gz
 	source = fix_typo.patch
 	sha256sums = 4fe4a89eaeae6b33d199e772dda211ac1c3de10438c4534b790860a291c722dc

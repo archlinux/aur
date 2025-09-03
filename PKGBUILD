@@ -9,6 +9,7 @@ pkgdesc="View output of multiple processes, in parallel, in the console, with an
 arch=('any')
 url="https://github.com/dankilman/multiplex"
 license=('MIT')
+provides=("${_exec}")
 depends=('python-aiofiles' 'python-aiostream' 'python-click' 'python-easyansi' 'python-wcwidth' 'python-pyte')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
