@@ -1,6 +1,6 @@
 # Maintainer: maot <me@maot.dev>
 pkgname=mapwizard-git
-pkgver=20250525.206388f
+pkgver=20250903.076b9fc
 pkgrel=1
 pkgdesc="MapWizard - An open-source osu! mapping toolset (Git version)"
 arch=('x86_64')
