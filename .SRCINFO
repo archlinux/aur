@@ -1,0 +1,26 @@
+pkgbase = check-nwc-health-git
+	pkgdesc = Monitoring plugin for various network equipment (git version)
+	pkgver = 12.6.r2.g6a1f759
+	pkgrel = 1
+	url = https://labs.consol.de/nagios/check_nwc_health/
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = perl
+	depends = perl-json
+	depends = perl-json-xs
+	depends = perl-file-slurp
+	optdepends = perl-net-snmp: checks based on SNMP
+	optdepends = perl-soap-lite: checks based on UPnP
+	optdepends = perl-xml-libxml: checks based on UPnP
+	optdepends = perl-xml-treebuilder: FritzBox checks
+	provides = check-nwc-health
+	conflicts = check-nwc-health
+	source = check-nwc-health-git::git+https://github.com/lausser/check_nwc_health.git
+	source = GLPlugin::git+https://github.com/lausser/GLPlugin.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = check-nwc-health-git
