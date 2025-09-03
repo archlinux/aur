@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=unofficial-homestuck-collection-git
-pkgver=2.7.1.r0.g8890eff
-pkgrel=2
+pkgver=2.7.2.r0.g6e65920
+pkgrel=1
 pkgdesc="An offline collection of Homestuck and its related works."
 arch=('x86_64')
 url="https://github.com/GiovanH/unofficial-homestuck-collection"
 license=('GPL-3.0-only')
-depends=('nspr' 'hicolor-icon-theme' 'libx11' 'libdrm' 'libxfixes' 'gtk3' 'libxext' 'libxcursor' 'libxrender' 'cairo' 'mesa' 'gcc-libs' 'alsa-lib' 'dbus' 'at-spi2-core' 'libxrandr' 'bash' 'expat' 'libxtst' 'glibc' 'libxcb' 'libxdamage' 'libxcomposite' 'libxi' 'pango' 'libcups' 'libxss' 'glib2' 'nss')
+depends=('nspr' 'hicolor-icon-theme' 'libx11' 'libdrm' 'libxfixes' 'gtk3' 'libxext' 'libxcursor' 'libxrender' 'cairo' 'mesa' 'gcc-libs' 'alsa-lib' 'dbus' 'at-spi2-core' 'libxrandr' 'bash' 'expat' 'libxtst' 'glibc' 'libxcb' 'libxdamage' 'libxcomposite' 'libxi' 'pango' 'libcups' 'libxss' 'glib2' 'nss' 'gdk-pixbuf2')
 makedepends=('nodejs-lts-jod' 'yarn' 'gendesk')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
