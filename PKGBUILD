@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'gcc' 'make')
 source=("https://github.com/Jeyers-Development/paciam-source/releases/download/$pkgver/paciam.tar.gz")
-sha256sums=('cd3e1364a9e4039d494e551a74535a8756a5625e16a569ed93040d47cb11c0ba')
+sha256sums=('bd3a551f74f8964422e1393fe9ce5b6b756fcbc9f1ce62a6fc63f4b423386a7e')
 
 package() {
     install -Dm755 "$srcdir/paciam/paciam" "$pkgdir/usr/bin/paciam"
