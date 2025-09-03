@@ -4,7 +4,7 @@
 #
 pkgname=python-klayout
 _origpkgname=klayout
-pkgver=0.30.3
+pkgver=0.29.9
 pkgrel=1
 pkgdesc="KLayout standalone Python package"
 arch=("x86_64")
