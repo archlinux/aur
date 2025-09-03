@@ -5,7 +5,7 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=1.5.1
+pkgver=1.5.1.12.g480849d
 pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
@@ -50,6 +50,7 @@ package() {
 		operations/ \
 		quickprecache/ \
 		vtfedit/ \
+		useful_scripts/ \
 		"${pkgdir}/usr/lib/${_pkgname}/"
 
 	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                          # symlink the main.py file into the PATH as "${_pkgname}"
