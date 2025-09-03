@@ -2,7 +2,7 @@
 
 pkgname=elephant-unicode
 pkgver=1.0.0
-pkgrel=19
+pkgrel=20
 pkgdesc='unicode provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -10,15 +10,15 @@ license=('MIT')
 makedepends=('go')
 conflicts=('elephant-unicode')
 provides=('elephant-unicode')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-19.tar.gz")
-sha256sums=('29c2c66c935aa9395b13e3f67cf325b8c4133af23793e862a7430d0b7acb0f07')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-20.tar.gz")
+sha256sums=('dc4bf3705843e6800318a7ec74acc99669b5025b9bbcfabf7f1f02e959c0a437')
 
 build() {
-    cd elephant-${pkgver}-beta-19/internal/providers/unicode
+    cd elephant-${pkgver}-beta-20/internal/providers/unicode
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-19/internal/providers/unicode
+    cd elephant-${pkgver}-beta-20/internal/providers/unicode
     install -Dm 755 unicode.so -t "${pkgdir}/etc/xdg/elephant/providers"
 }
