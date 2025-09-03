@@ -10,12 +10,12 @@
 _reponame=Zelda64Recomp
 _pkgname=${_reponame,,}
 pkgname=${_pkgname}-git
-pkgver=1.2.0.r1.g5499743
+pkgver=1.2.2.r0.g54950a1
 _zrecomp_dirname="${_reponame}"
 pkgrel=1
 arch=("x86_64" "aarch64")
 depends=("sdl2" "freetype2" "libx11" "libxrandr" "gtk3" "vulkan-driver" "vulkan-icd-loader")
-makedepends=("git" "cmake" "ninja" "python" "make" "clang" "lld")
+makedepends=("git" "cmake" "ninja" "python" "make" "clang19" "lld" "mold")
 pkgdesc="A port of The Legend of Zelda Majora's Mask made possible by static recompilation (git)"
 license=("GPL-3.0-only")
 provides=("${_pkgname}")
@@ -232,13 +232,12 @@ build() {
   # The entirety of the codebase doesn't care about security at all so we'll remove this flag
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-  # mold linker breaks libSDL2-main.a of sdl2-compat, replace with LLVM ld temporarily
-  export LDFLAGS="$LDFLAGS -fuse-ld=lld"
+  # Use faster mold linker
+  export LDFLAGS="$LDFLAGS -fuse-ld=mold"
+  # Clang 20+ causes compile issues, we'll stay at version 19 for now
+  export PATH="/usr/lib/llvm19/bin/:${PATH}"
 
-  # The official build docs recommends using Clang,
-  # but if you want (just for your own sakes),
-  # you can use GCC.
-
+  # Use recommended clang compiler
   cmake -B build -GNinja . \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
     -DCMAKE_CXX_COMPILER=clang++ \
