@@ -2,7 +2,7 @@
 pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Stormix/$pkgname"
 license=('GPL-3.0-or-later')
@@ -35,7 +35,7 @@ build() {
 	export VITE_API_URL="https://api.deadlockmods.app"
 
 	cd "$srcdir/$pkgname/apps/desktop"
-	env -u RUSTFLAGS cargo tauri build --no-bundle -- --frozen
+	cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
