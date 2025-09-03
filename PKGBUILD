@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=pcsx-redux
-pkgver=r6756.4f4a00fe
+pkgver=r6790.718f0912
 pkgrel=1
 pkgdesc="A collection of tools, research, hardware design, and libraries aiming at development and reverse engineering on the PlayStation 1."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('zlib' 'libluv' 'curl' 'gcc-libs' 'capstone' 'fmt' 'llhttp' 'md4c' 'ffmpeg' 'glibc' 'hicolor-icon-theme' 'libuv' 'libx11' 'freetype2' 'libxcb' 'glfw')
 makedepends=('git' 'imagemagick')
 options=(!lto)
-_commit=4f4a00fe09cd44f9946f6066f2c2768932ad065a
+_commit=718f0912a44320faf2668e71d3ce9cc3207485bd
 source=("git+$url.git#commit=$_commit"
 	"git+https://github.com/ocornut/imgui.git"
 	"git+https://github.com/libuv/libuv.git"
@@ -45,7 +45,7 @@ source=("git+$url.git#commit=$_commit"
 	"git+https://github.com/LuaJIT/LuaJIT.git"
 	"git+https://github.com/lua/lua.git"
 	"git+https://github.com/keplerproject/lua-compat-5.3.git")
-sha256sums=('9c72c6247d3dddc812c8d0d9d87dc3f5fac7d01dec3cb573837770190530a4ed'
+sha256sums=('761a7e4d81416aef976949016a6086275769273c7461bed674043d9443fe4119'
             'SKIP'
             'SKIP'
             'SKIP'
