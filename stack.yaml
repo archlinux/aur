@@ -2,15 +2,13 @@ flags: {}
 extra-package-dbs: []
 packages:
   - .
-resolver: lts-19.32
+resolver: lts-24.8
 extra-deps:
-  - ShellCheck-0.8.0
-  - colourista-0.1.0.1
-  - language-docker-11.0.0
-  - spdx-1.0.0.3
-  - hspec-2.10.6
-  - hspec-core-2.10.6
-  - hspec-discover-2.10.6
-  - stm-2.5.1.0
+  - ShellCheck-0.11.0
+  - colourista-0.1.0.2
+  - language-docker-14.0.1
+  - ilist-0.3.1.0
+  - optparse-applicative-0.19.0.0
+  - spdx-1.1
 ghc-options:
   "$everything": -haddock
