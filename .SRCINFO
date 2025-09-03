@@ -1,6 +1,6 @@
 pkgbase = conversejs
 	pkgdesc = Web-based XMPP/Jabber chat client written in JavaScript
-	pkgver = 11.0.1
+	pkgver = 12.0.0
 	pkgrel = 1
 	url = https://conversejs.org/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = conversejs
 	makedepends = python
 	depends = nodejs
 	backup = usr/share/webapps/converse.js/fullscreen.html
-	source = conversejs-11.0.1.tar.gz::https://github.com/conversejs/converse.js/archive/v11.0.1.tar.gz
-	sha256sums = cb7f809db9a9511d2833f7c01b219896797f17d6049a93e8a00d25c851316176
+	source = conversejs-12.0.0.tar.gz::https://github.com/conversejs/converse.js/archive/v12.0.0.tar.gz
+	sha256sums = 31e28fe83e71697b1c6d8af69ce915b4cc52c5f0f629a84c4401ab2ab6025aea
 
 pkgname = conversejs
