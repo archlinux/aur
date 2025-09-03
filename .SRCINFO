@@ -1,7 +1,7 @@
 pkgbase = woodo
-	pkgdesc = A fun, custom shell script that outputs different ASCII art with and without sudo.
+	pkgdesc = A fun shell script recreating a classic joke.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Manuzz64/woodo
 	arch = any
 	license = MIT
