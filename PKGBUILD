@@ -9,11 +9,10 @@ pkgdesc="Cloud Commander file manager for the web with console and editor."
 arch=("x86_64")
 url="https://github.com/coderaiser/cloudcmd"
 license=("MIT")
-
+replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs" "python")
 makedepends=("npm" "jq")
 provides=("$_npmname")
-conflicts=("$_npmname")
 options=(!strip emptydirs staticlibs zipman)
 changelog="changelog.md"
 
