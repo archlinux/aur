@@ -6,7 +6,7 @@ pkgver=2.24.0
 pkgrel=1
 pkgdesc="Google Cloud Secret Manager API client library"
 arch=('any')
-url="https://libcloud.apache.org"
+url="https://github.com/googleapis/google-cloud-python"
 license=('Apache-2.0')
 depends=('python>=3.7' 'python-google-api-core' 'python-google-auth' 'python-grpc-google-iam-v1' 'python-proto-plus')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
@@ -25,7 +25,7 @@ build() {
 
 check() {
     cd "${_pkgname}-${pkgver}"
-    pytest --noconftest -v # --continue-on-collection-errors || true
+    pytest --noconftest -v
 }
 
 package() {
