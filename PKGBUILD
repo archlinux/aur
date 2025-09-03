@@ -20,8 +20,8 @@ $install ${pkgname}.hook ${url}releases/ffmpeg-${pkgver}.tar.xz
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 
-sha256sums=('90549fe900b87703b86fba8fa5dead8082da9f1c5fcbd2be2e9c39f4879b27ce'
-            '2ba9ace9abe508bcc20c1b565d420a30358b4e9d57a764b6e9ef45bfa5878cec'
+sha256sums=('e8f666371d1b687b222acbd6abd711a7746d4e544d5ca523e281ff55e3c405f8'
+            '8aeba73b916da387ec4578e338393b62bc2ac6f82f993cb430575689e691f10c'
             'b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
@@ -92,11 +92,9 @@ package(){
   install -Dm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
   ln -sf /usr/lib/${_so}.$_avcodec "$pkgdir"/usr/lib/${_so}
   install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  for _n in 7.5 7.6 7.7 7.8 7.9 8.0 ; do
-    ln -sf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi/${_so}.$_n
-    ln -sf /usr/lib/${_so}.${_avcodec} "$pkgdir"/opt/vivaldi-snapshot/${_so}.$_n
-  done
+  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.5,7.6,7.7,7.8,7.9,8.0}
 
   for _n in {37..50} ; do
     install -d "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2
