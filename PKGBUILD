@@ -1,5 +1,5 @@
 # Maintainer: Sašo Živanović <saso.zivanovic@guest.arnes.si>
-pkgname=tandamaster
+pkgname=python-tandamaster
 pkgver=0.3.1
 pkgrel=1
 epoch=
