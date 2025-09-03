@@ -9,7 +9,6 @@ pkgbase = fluffychat-bin
 	depends = jsoncpp
 	depends = libsecret
 	depends = xdg-user-dirs
-	depends = libolm
 	depends = zenity
 	provides = fluffychat
 	conflicts = fluffychat

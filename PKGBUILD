@@ -16,8 +16,6 @@ depends=(
   'libsecret'
   # path_provider
   'xdg-user-dirs'
-  # for e2ee
-  'libolm'
   # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
   'zenity'
 )
