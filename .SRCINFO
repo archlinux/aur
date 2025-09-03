@@ -1,0 +1,22 @@
+pkgbase = lha-git
+	pkgdesc = Compression and archive utility for LH-7 format archives (GIT version)
+	pkgver = 1.14i_ac20220213.g8e301f2
+	pkgrel = 1
+	url = https://github.com/jca02266/lha
+	arch = x86_64
+	license = LicenseRef-lha
+	makedepends = git
+	provides = lha
+	provides = lhasa
+	provides = lha=1.14i_ac20220213
+	conflicts = lhasa
+	conflicts = lhasa-git
+	conflicts = lha
+	source = lha-git::git+https://github.com/jca02266/lha.git?signed
+	source = https://packages.debian.org/changelogs/pool/non-free/l/lha/current/copyright
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = SKIP
+	sha256sums = 5afb178c19472a2528102fff8050d365c4d5b5dda2f8f7b158ba5d9f62a86a7d
+
+pkgname = lha-git
+	depends = glibc
