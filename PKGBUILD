@@ -2,7 +2,7 @@
 
 pkgname=mympc-git
 pkgver=r7.99708e5
-pkgrel=1
+pkgrel=2
 pkgdesc="An mpc wrapper with music library zsh completion and advanced tagging features."
 arch=('any')
 url="https://gitlab.com/teraflops/mympc"
