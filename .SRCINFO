@@ -1,0 +1,23 @@
+pkgbase = tageditor-bin
+	pkgdesc = A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska
+	pkgver = 3.9.7
+	pkgrel = 1
+	url = https://github.com/Martchus/tageditor
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = glibc
+	provides = tageditor
+	conflicts = tageditor
+	source = LICENSE-3.9.7::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.7/LICENSE
+	source = README-3.9.7.md::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.7/README.md
+	source = ICON-3.9.7.svg::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.7/resources/icons/hicolor/scalable/apps/tageditor.svg
+	sha256sums = c03cea027b4b40e4402fabd08557736727ec3d5bc54ad64ab6472de432198cad
+	sha256sums = 3866784d0f45e6160610c619e1d70d23a392c85f33001131c3eb001bb26afd11
+	sha256sums = d12704a39f79dcaaf7f14ac158542b2e5e2d37ec53a4cbd5d5a5f292a8e4228e
+	source_x86_64 = tageditor-x86_64-3.9.7.tar.gz::https://github.com/Martchus/tageditor/releases/download/v3.9.7/tageditor-3.9.7-x86_64-pc-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4bacef24af70c63589d3f4cb3e9080c2d1d8d0ca1494c130beb27974d468a41c
+
+pkgname = tageditor-bin
