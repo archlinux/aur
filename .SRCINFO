@@ -1,14 +1,14 @@
 pkgbase = paciam
 	pkgdesc = A lightweight tool to install AUR packages.
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://jd.pnc3.net
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
-	source = https://github.com/Jeyers-Development/paciam-source/releases/download/1.0/paciam.tar.gz
+	source = https://github.com/Jeyers-Development/paciam-source/releases/download/1.1/paciam.tar.gz
 	sha256sums = cd3e1364a9e4039d494e551a74535a8756a5625e16a569ed93040d47cb11c0ba
 
 pkgname = paciam

@@ -1,7 +1,7 @@
 # Maintainer: Jacob Meyers <jeyersdev@gmail.com>
 pkgname=paciam
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A lightweight tool to install AUR packages."
 arch=('x86_64')
 url="https://jd.pnc3.net"
