@@ -8,6 +8,7 @@ pkgbase = csvtools-git
 	checkdepends = openssl
 	checkdepends = sed
 	makedepends = git
+	makedepends = pcre
 	source = git+https://github.com/DavyLandman/csvtools
 	md5sums = SKIP
 
