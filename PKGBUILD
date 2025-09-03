@@ -1,10 +1,10 @@
 # Maintainer: Eshaan Desh eshaan2031@icloud.com
-pkgname=hanguage
+pkgname=Hanguage
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="H language converter as defined by u/Huesosishe228"
 arch=('any')
-url="https://github.com/eshnd/hanguage"
+url="https://github.com/eshnd/Hanguage"
 license=('MIT')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
