@@ -1,7 +1,7 @@
 pkgbase = pam-ssh-agent
 	pkgdesc = PAM module for ssh-agent based authentication
-	pkgver = 0.9.3
-	pkgrel = 3
+	pkgver = 0.9.4
+	pkgrel = 1
 	url = https://crates.io/crates/pam-ssh-agent
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pam-ssh-agent
 	makedepends = cargo
 	depends = pam
 	depends = sudo
-	source = pam-ssh-agent-0.9.3.tar.gz::https://static.crates.io/crates/pam-ssh-agent/pam-ssh-agent-0.9.3.crate
-	sha256sums = 76de4cb333f1f02b5979b740b1b178c92192a559749ad777a17b0e34ba19e123
+	source = pam-ssh-agent-0.9.4.tar.gz::https://static.crates.io/crates/pam-ssh-agent/pam-ssh-agent-0.9.4.crate
+	sha256sums = bcd47e28faf57c8c600cc01fe250b0354665f0499f02b4cf729183faea54d7a0
 
 pkgname = pam-ssh-agent
