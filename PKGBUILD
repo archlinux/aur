@@ -4,7 +4,7 @@
 #
 pkgname=python-klayout
 _origpkgname=klayout
-pkgver=0.29.9
+pkgver=0.30.3
 pkgrel=1
 pkgdesc="KLayout standalone Python package"
 arch=("x86_64")
@@ -19,7 +19,7 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/da/59/0d37bff2a7706927bbc0bb8a2a4d93ef16ec2e534bfef9d7b53d6452f919/klayout-0.29.9-cp310-cp310-macosx_11_0_arm64.whl")
+source=("https://files.pythonhosted.org/packages/da/59/0d37bff2a7706927bbc0bb8a2a4d93ef16ec2e534bfef9d7b53d6452f919/klayout-0.30.3-cp310-cp310-macosx_11_0_arm64.whl")
 sha256sums=("83fe12ab27a193837ed3970b9c4e70720cdee97850589771efffaec7b2a05503")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
