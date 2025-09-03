@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25462.90a6c53
+pkgver=2.3.1.r25470.266bfeb
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('orca-slicer')
 source=($pkgname::git+https://github.com/SoftFever/OrcaSlicer.git
         orca-slicer-wrapper.sh)
 b2sums=('SKIP'
-        'ea635f7745795d535ddf8cf317b27986ae28c177ea3fd7764c3314f9ca152672d17af22541cd9f6efc08a04fd02b2bda502f867fd2dd6888c58cf9b5d7c6c2a4')
+        'f32c48ed4bdb353c4408aa17fff76fa2bc5988f2b681be2c6f61fb3520cbb4d783649f39bc0f354bc99b127a31e5ee3b1c1a8fc7352a35fb651e0e336dd0ddb5')
 
 pkgver() {
   cd $pkgname
@@ -76,7 +76,7 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -d "$pkgdir/usr/lib/OrcaSlicer/"
   mv "$pkgdir/usr/bin/orca-slicer" "$pkgdir/usr/lib/OrcaSlicer/"
-  install -Dm755 "$srcdir/orca-slicer-wrapper.sh" "$pkgdir/usr/bin/orca-slicer"
+  install -Dm755 ../orca-slicer-wrapper.sh "$pkgdir/usr/bin/orca-slicer"
   install -Dm644 doc/*.md -t "$pkgdir/usr/share/doc/OrcaSlicer/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/OrcaSlicer/LICENSE"
   rm -rf "$pkgdir/usr/LICENSE.txt"
