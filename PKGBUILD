@@ -10,12 +10,12 @@
 _reponame=Zelda64Recomp
 _pkgname=${_reponame,,}
 pkgname=${_pkgname}
-pkgver=1.2.0
+pkgver=1.2.2
 _zrecomp_dirname="${_reponame}"
 pkgrel=1
 arch=("x86_64" "aarch64")
 depends=("sdl2" "freetype2" "libx11" "libxrandr" "gtk3" "vulkan-driver" "vulkan-icd-loader")
-makedepends=("git" "cmake" "ninja" "python" "make" "clang" "lld")
+makedepends=("git" "cmake" "ninja" "python" "make" "clang19" "lld" "mold")
 pkgdesc="A port of The Legend of Zelda Majora's Mask made possible by static recompilation"
 license=("GPL-3.0-only")
 conflicts=("${_pkgname}-bin")  #  i don't have control over this package so i'll append this anyway...
@@ -73,7 +73,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         # Misc. patches and the rom requirement
         "zelda64recomp.desktop"
         "file://baserom.mm.us.rev1.z64")
-sha256sums=('bae3c4391bf25df1972ea81fcf0729c4b3326ef2d1599713e323312ae5a53860'
+sha256sums=('1c164fdaee50b358e63eb4d3ca9c492d892e4c0494c7aaca175165e266eaeb7d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -109,8 +109,8 @@ sha256sums=('bae3c4391bf25df1972ea81fcf0729c4b3326ef2d1599713e323312ae5a53860'
             '59443fba2781cecccf96f76772a04764477c1c57d3226baa43d8cc3c30b085ad'
             'efb1365b3ae362604514c0f9a1a2d11f5dc8688ba5be660a37debf5e3be43f2b')
 
-
 PKG_PREFIX="/opt/${_pkgname}"
+
 
 # -- Print helpers
 _msg_info() {
@@ -173,29 +173,6 @@ _walk_submodules() {
     _msg_info "Leaving directory <${absdir}>"
 }
 
-# _init_submodules() {
-#   dir="$1"
-#   shift 1
-#
-#   for sub in "$@"; do
-#     git submodule init "${dir}/${sub}"
-#     git config "submodule.${dir}/${sub}.url" "${srcdir}/${sub}"
-#     git -c protocol.file.allow=always submodule update "${dir}/${sub}"
-#   done
-# }
-#
-# _symlink_submodules() {
-#   dir="$1"
-#   shift 1
-#
-#   for sub in "$@"; do
-#     if [ ! -L "${dir}/${sub}" ]; then
-#       rm -rf "${dir}/${sub}"
-#       ln -srf "${srcdir}/${sub}" "${dir}/${sub}"
-#     fi
-#   done
-# }
-
 
 prepare() {
   _msg_info "Setting up the submodules..."
@@ -249,13 +226,12 @@ build() {
   # The entirety of the codebase doesn't care about security at all so we'll remove this flag
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-  # mold linker breaks libSDL2-main.a of sdl2-compat, replace with LLVM ld temporarily
-  export LDFLAGS="$LDFLAGS -fuse-ld=lld"
+  # Use faster mold linker
+  export LDFLAGS="$LDFLAGS -fuse-ld=mold"
+  # Clang 20+ causes compile issues, we'll stay at version 19 for now
+  export PATH="/usr/lib/llvm19/bin/:${PATH}"
 
-  # The official build docs recommends using Clang,
-  # but if you want (just for your own sakes),
-  # you can use GCC.
-
+  # Use recommended clang compiler
   cmake -B build -GNinja . \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
     -DCMAKE_CXX_COMPILER=clang++ \
