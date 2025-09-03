@@ -1,6 +1,6 @@
 # Maintainer: Sašo Živanović <saso.zivanovic@guest.arnes.si>
 pkgname=python-tandamaster
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc="A music player specialized for playing music at milongas"
