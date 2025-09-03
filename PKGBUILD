@@ -1,5 +1,6 @@
 # Maintainer: maki <maki@hotmilk.space>
 
+# Previous maintainer: XZS <d dot f dot fischer at web dot de>
 # This PKGBUILD was maintained on GitHub
 # https://github.com/dffischer/gnome-shell-extensions
 
