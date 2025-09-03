@@ -1,4 +1,5 @@
 # Maintainer: xyzzy
+# Maintainer: knoelli
 
 # Adapted from the official virtualbox package by
 # Contributor: Christian Hesse <eworm@archlinux.org>
@@ -7,10 +8,10 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20250207
+pkgver=20250903
 _pkgver=dev-${pkgver}
-_vboxver='7.1.6'
-_vboxsubver='a'
+_vboxver='7.2.0'
+_vboxsubver=''
 pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
@@ -24,7 +25,7 @@ backup=('etc/vbox/vbox.cfg')
 replaces=('virtualbox-ose')
 arch=('x86_64')
 url='https://github.com/cyberus-technology/virtualbox-kvm'
-license=('GPL-3.0-only')
+license=('GPL-3.0-only AND (GPL-3.0-only OR CDDL-1.0)')
 
 makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'glslang' 'iasl'
              'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
@@ -54,15 +55,16 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
         '020-python-3-12.patch'
-        '021-python-3-13.patch')
-sha256sums=('5a7b13066ec71990af0cc00a5eea9c7ec3c71ca5ed99bb549c85494ce2ea395d'
-            '4567190d0f0d4202c57a2a054c37df4afbf8c8c4c3925e12f6f831d07f8b4d6f'
+        '021-python-3-13.patch'
+        '022-FE-Qt-VBox-Manager-Create-destroy-notification-center.patch')
+sha256sums=('4f2804ff27848ea772aee6b637bb1e10ee74ec2da117c257413e2d2c4f670ba0'
+            '2ef6f86c3f56a4f1c10681b057cf448ba00c56c292fce38b01e67d528fecad82'
             'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
             'f876e9f55243eded423fda4fc2ffe3b174dca90380a6315f7c9b3cd1c9d07206'
             '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
-            '0ae014c6bb778a1b079121064f17179c27b8dde9479a37d34ce071fb3b084e25'
+            '4e93d8944a72ff615ccd99d46ea5f426a472cdafd3943c6813fa5e8ade5da7b0'
             'c41a801fe344a4471a7b61a4764d1d857c403e4fb96e2ba6bc89c77a35f2be7a'
             '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
             '83d8f24bff25bb925083cf39b3195236c6136105e62417712cc3f25b92e14b47'
@@ -70,14 +72,15 @@ sha256sums=('5a7b13066ec71990af0cc00a5eea9c7ec3c71ca5ed99bb549c85494ce2ea395d'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d'
             '9ee947c9b5ec5b25f52d3e72340fc3a57ca6e65a604e15b669ac582a3fb0dc1b'
-            'ffd30d1d5c41909518571da02c797102d459ba6dec22fe335b4778db264275e1'
+            'eea2671ca4be1d06d1c8e6903ba4bad90581da9fbeea218023409de298803d58'
             '053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491'
             'd76b52d955215a72c296aa36d173897bcaa357528bf5a73347c52ccec8654ced'
             '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
             '00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff'
-            '73ed7ef243c975227660b9bbe7c576018f2c0216b3a3b5efcc4cc56c44c90914'
+            '2540381de895fabbcc68d820c1f72ba644ef566ff5dab0f60be055c7b45cc06f'
             'ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6'
-            '70245fc3abafbd3b191d87e2910f0f004050672f2d0d056db029a062e80e73bc')
+            'a8e53afe996c3de401824261ac4228eb8960af0832de2a8f101e9aa6ddb442f8'
+            '98c0b249d8b97b8d374f104fbc531ddc71f0b3b67b28261cf950c1f93ca248af')
 
 prepare() {
     cd "VirtualBox-${_vboxver}"

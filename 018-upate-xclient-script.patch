@@ -4,8 +4,8 @@ Date: Wed, 11 Sep 2024 21:14:24 +0200
 Subject: [PATCH 1/1] upate xclient script
 
 ---
- .../Additions/x11/Installer/98vboxadd-xclient     | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ .../Additions/x11/Installer/98vboxadd-xclient     | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
 diff --git a/src/VBox/Additions/x11/Installer/98vboxadd-xclient b/src/VBox/Additions/x11/Installer/98vboxadd-xclient
 index 7a45de98..bcfe024e 100755
@@ -32,9 +32,3 @@ index 7a45de98..bcfe024e 100755
      vbox_wl_check=$(/usr/bin/vboxwl --check 2> /dev/null)
      if test "$vbox_wl_check" = "WL"; then
          /usr/bin/VBoxClient --wayland
-@@ -52,5 +44,4 @@ elif test -z "${SSH_CONNECTION}"; then
-     fi
- 
-     /usr/bin/VBoxClient --checkhostversion
--    /usr/bin/VBoxClient --vmsvga-session # In case VMSVGA emulation is enabled
- fi
