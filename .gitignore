@@ -1,0 +1,11 @@
+# Ignore everything ...
+*
+
+# Allow generally:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE*
+
+# Allow specifically
+!NVIDIA_SLA+cuDNN_Supp_Feb2017_release.pdf
