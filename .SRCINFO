@@ -1,0 +1,15 @@
+pkgbase = socktop
+	pkgdesc = A remote system monitor with a rich TUI interface
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://github.com/jasonwitty/socktop
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = mesa
+	depends = gcc-libs
+	options = !lto
+	source = socktop-1.40.0.tar.gz::https://github.com/jasonwitty/socktop/archive/v1.40.0.tar.gz
+	sha256sums = c75c0866fbf649a83b65c91acb46d02814d96393676b94b0b44c6a2e5551176f
+
+pkgname = socktop
