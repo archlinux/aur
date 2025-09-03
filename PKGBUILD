@@ -1,7 +1,7 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=ghost-dl-git
-pkgver=v1.0.3.0.gf49980f
+pkgver=v1.1.0.0.g71d2dfa
 pkgrel=1
 pkgdesc="Kingdom Hearts Insider Game OST Archive Dowloader CLI"
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
   pip install -r requirements.txt
   pip install nuitka
   if ! ls build; then mkdir build; fi
-  python -m nuitka --onefile --follow-imports --main=ghost-dl.py --output-dir=build
+  python -m nuitka --onefile --follow-imports --main=ghost_dl.py --output-dir=build --output-filename=ghost-dl
   deactivate
   rm -rf venv
   rm -rf build/ghost-dl.build build/ghost-dl.dist build/ghost-dl.onefile-build
