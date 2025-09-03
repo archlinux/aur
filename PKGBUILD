@@ -10,7 +10,7 @@
 
 pkgname=chef-workstation
 pkgver=25.5.1084
-pkgrel=1
+pkgrel=2
 pkgdesc="Chef's developer toolkit that includes Infra, InSpec, Habitat, and tools like knife."
 arch=('x86_64')
 url="https://www.chef.io/downloads/tools/workstation"
