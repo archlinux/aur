@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.7.1.399"
+pkgver="10.7.2.400"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('26eb3ff2dcfc6c96207abca319b8a5249989ed5c0d465963eb2f19059ede25e3')
+sha256sums=('4e1ecebb6a8812368f72c2cae782a605ee07dfbe2961a6efd9652af14dd4da1f')
 
 prepare()
 {
@@ -74,17 +74,12 @@ package()
  install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/GoogleDrive.pvp"
  install -Dm644 "$srcdir/FID_IF64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/IdentifyForms.pvp"
  install -Dm644 "$srcdir/FID_Markdown64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MarkdownPlugin.pvp"
- install -Dm644 "$srcdir/FID_MIP_X64_concrt140_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/concrt140.dll"
  install -Dm644 "$srcdir/FID_MIP_X64_libcrypto_3_x64_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/libcrypto-3-x64.dll"
  install -Dm644 "$srcdir/FID_MIP_X64_libssl_3_x64_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/libssl-3-x64.dll"
  install -Dm644 "$srcdir/FID_MIP_X64_mip_ClientTelemetry_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_ClientTelemetry.dll"
  install -Dm644 "$srcdir/FID_MIP_X64_mip_core_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_core.dll"
  install -Dm644 "$srcdir/FID_MIP_X64_mip_protection_sdk_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_protection_sdk.dll"
  install -Dm644 "$srcdir/FID_MIP_X64_mip_upe_sdk_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_upe_sdk.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_msvcp140_1_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/msvcp140_1.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_msvcp140_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/msvcp140.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_vcruntime140_1_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/vcruntime140_1.dll"
- install -Dm644 "$srcdir/FID_MIP_X64_vcruntime140_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/vcruntime140.dll"
  install -Dm644 "$srcdir/FID_OCR64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCRPlugin.pvp"
  install -Dm644 "$srcdir/FID_OD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OneDrive.pvp"
  install -Dm644 "$srcdir/FID_PDFA64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/PDFAPlugin.pvp"
