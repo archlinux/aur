@@ -2,7 +2,7 @@
 
 pkgname=python-dissect.util
 _name=dissect_util
-pkgver=3.21
+pkgver=3.22
 pkgrel=1
 epoch=
 pkgdesc="A Dissect module implementing various utility functions for the other Dissect modules"
@@ -29,7 +29,7 @@ checkdepends=()
 options=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('fbf6572ed0700e086d9c42bd2cf0faccbe66aea8c4b4c4664a0801c2a09520b0')
+sha256sums=('be6271781a587333ec621f7cd7aff20ee5f21f59de756683aa4e82d8fc5f5b9b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
