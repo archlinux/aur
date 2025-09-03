@@ -1,0 +1,17 @@
+pkgbase = pacenv
+	pkgdesc = Creation and management of lightweight GNU/Linux environments
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/beryll1um/pacenv.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = gcc
+	makedepends = meson
+	depends = pacman
+	depends = json-c
+	source = git+https://github.com/beryll1um/pacenv.git#tag=v0.1.0
+	sha512sums = SKIP
+
+pkgname = pacenv
