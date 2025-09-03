@@ -1,0 +1,24 @@
+pkgbase = tandamaster
+	pkgdesc = A music player specialized for playing music at milongas
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/sasozivanovic/tandamaster
+	arch = any
+	license = GPL
+	makedepends = python-ctypesgen
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = qt5-base
+	depends = python-pyqt5
+	depends = gstreamer
+	depends = python-mutagen
+	depends = python-unidecode
+	depends = python-bidict
+	depends = python-systemd
+	depends = python-pydantic
+	depends = libmp3splt
+	source = https://files.pythonhosted.org/packages/source/t/tandamaster/tandamaster-0.3.1.tar.gz
+	md5sums = 58c184b72dacc1091f06654457f09db2
+
+pkgname = tandamaster
