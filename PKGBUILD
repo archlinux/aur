@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-chex
 _pkgname=${pkgname#python-}
-pkgver=0.1.90
+pkgver=0.1.91
 pkgrel=1
 pkgdesc="A library of utilities for helping to write reliable JAX code"
 arch=('any')
@@ -15,18 +15,8 @@ depends=('python-absl'
          'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-cloudpickle' 'python-dm-tree' 'python-pytest')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/google-deepmind/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        'chex.diff')
-sha256sums=('1cb299491c29d2311939a242919b79c347f5a11ba605fca86a11a55cf3a0aa46'
-            'SKIP')
-
-prepare() {
-    cd "$_pkgname-$pkgver"
-    # There is no dependency on `dm-tree` in `chex`.
-    sed -i '/\(dm[-_]tree\|setuptools\)/d' requirements/requirements.txt
-    # https://github.com/google-deepmind/chex/issues/347
-    patch -p1 -i../chex.diff
-}
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/google-deepmind/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0e67bc74c6914f4515c45927ff396c3d242e7fd9fe5c1da45ec937b85ccfaefc')
 
 build() {
     python -m build -nw "$_pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-chex
 	pkgdesc = A library of utilities for helping to write reliable JAX code
-	pkgver = 0.1.90
+	pkgver = 0.1.91
 	pkgrel = 1
 	url = https://github.com/google-deepmind/chex
 	arch = any
@@ -19,9 +19,7 @@ pkgbase = python-chex
 	depends = python-numpy
 	depends = python-toolz
 	depends = python-typing_extensions
-	source = chex-0.1.90.tar.gz::https://github.com/google-deepmind/chex/archive/refs/tags/v0.1.90.tar.gz
-	source = chex.diff
-	sha256sums = 1cb299491c29d2311939a242919b79c347f5a11ba605fca86a11a55cf3a0aa46
-	sha256sums = SKIP
+	source = chex-0.1.91.tar.gz::https://github.com/google-deepmind/chex/archive/refs/tags/v0.1.91.tar.gz
+	sha256sums = 0e67bc74c6914f4515c45927ff396c3d242e7fd9fe5c1da45ec937b85ccfaefc
 
 pkgname = python-chex
