@@ -1,1 +1,7 @@
-*
+/src
+/pkg
+/*.tar.gz
+/*.log
+/*.pkg.*
+/*.patch
+!/static-off.patch
