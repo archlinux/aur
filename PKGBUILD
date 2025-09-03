@@ -43,6 +43,7 @@ prepare() {
   # cd ${pkgname}-${pkgver}
   # OCaml
   patch -p0 <"${srcdir}"/${pkgname}-num.patch
+  patch -p0 <"${srcdir}"/libxml.patch
 # Linked to: https://codereview.scilab.org/#/c/18089
 # patch <"${srcdir}"/${pkgname}-strict-jar.patch
 # Fix path, to avoid the following error:
