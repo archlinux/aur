@@ -1,6 +1,6 @@
 pkgname=moonasst
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Moonasst Qt application"
 arch=('x86_64')
 url="https://gitee.com/nemozz-hz/moonasst"
@@ -9,7 +9,7 @@ depends=('qt6-base' 'qt6-quicktimeline' 'qt6-webengine' 'qt6-svg' 'vulkan-header
 makedepends=()
 options=('strip' '!debug')
 source=("https://gitee.com/nemozz-hz/moonasst/repository/archive/v$pkgver.tar.gz")
-sha256sums=('28f31bb6de0b159db50c0052bc07f8c7630ee3deeb2c82ce16a20e76fa28f20c')
+sha256sums=('bbaf6ab10a8fa8509f875af1429d6c40de56e72a03965240ab62d8b795e54370')
 
 package() {
 	cd "$srcdir/$pkgname-v$pkgver"
@@ -42,6 +42,7 @@ package() {
 	
 	# 创建目标目录
 	install -dm775 "$pkgdir/opt/exec"
+	install -dm777 "$pkgdir/opt/exec/config"
 	install -dm777 "$pkgdir/opt/exec/Moonlight Game Streaming Project"
 	
 	# 安装二进制文件

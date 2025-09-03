@@ -15,6 +15,6 @@ pkgbase = moonasst
 	options = strip
 	options = !debug
 	source = https://gitee.com/nemozz-hz/moonasst/repository/archive/v1.0.0.tar.gz
-	sha256sums = 28f31bb6de0b159db50c0052bc07f8c7630ee3deeb2c82ce16a20e76fa28f20c
+	sha256sums = bbaf6ab10a8fa8509f875af1429d6c40de56e72a03965240ab62d8b795e54370
 
 pkgname = moonasst
