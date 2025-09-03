@@ -2,7 +2,7 @@
 pkgname=woodo
 pkgver=1.0
 pkgrel=1
-pkgdesc="A fun, custom shell script that outputs different ASCII art with and without sudo."
+pkgdesc="A fun shell script recreating a classic joke."
 arch=('any')
 url="https://github.com/Manuzz64/woodo"
 license=('MIT')
