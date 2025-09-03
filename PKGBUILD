@@ -14,7 +14,7 @@ depends=(
 	"python-klayout"
 	"python-gitpython"
 	"python-loguru"
-	"python-rectangle-packer"
+	"python-rectangle-packer-git"
   )
 makedepends=(
 	"python-build"
