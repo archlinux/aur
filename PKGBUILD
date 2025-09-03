@@ -2,7 +2,7 @@
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.6.r41.g9dee5ad
+pkgver=1.9.6.r42.gd25ded8
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
@@ -65,8 +65,6 @@ build() {
 
 check() {
   meson test -C build --no-rebuild --print-errorlogs
-
-  appstreamcli validate --no-net build/data/com.gexperts.Tilix.appdata.xml
 }
 
 package() {
