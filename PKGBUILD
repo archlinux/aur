@@ -7,8 +7,8 @@ url="https://github.com/kaizokuv/dummiesnmap"
 license=('GPL3')
 depends=('python')
 makedepends=()
-source=("https://github.com/kaizokuv/dummiesnmap/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=('10df19e2e8139e6ab9b5018fc3f8e4738a92ed0962c9860513d71e4d2659bb30')
+source=("https://github.com/kaizokuv/dummiesnmap/archive/refs/tags/v1.0.1.tar.gz")
+sha256sums=('a138c006712192ea78a1f008bd77ab0fa978953b4da785a6f1e6b3007e42e5fa')
 
 package() {
     mkdir -p "$pkgdir/usr/lib/dummiesnmap"
