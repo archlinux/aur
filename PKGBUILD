@@ -1,7 +1,7 @@
 # Maintainer: Manuel Bouças <zz64manu@gmail.com>
 pkgname=woodo
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fun shell script recreating a classic joke."
 arch=('any')
 url="https://github.com/Manuzz64/woodo"
