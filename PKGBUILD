@@ -19,10 +19,10 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/da/59/0d37bff2a7706927bbc0bb8a2a4d93ef16ec2e534bfef9d7b53d6452f919/klayout-0.30.3-cp310-cp310-macosx_11_0_arm64.whl")
-sha256sums=("83fe12ab27a193837ed3970b9c4e70720cdee97850589771efffaec7b2a05503")
+source=("https://files.pythonhosted.org/packages/a7/d9/e10e14113b071a79773088aaceeeed97b27a439c194def9b4e214e2fe73a/klayout-0.30.3.tar.gz")
+sha256sums=("cf28f9b36a478e0ae4eff97672abdcbea0af85dc61edd346eed94b346165397f")
 package() {
-	cd "${_origpkgname}" || exit
+	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
