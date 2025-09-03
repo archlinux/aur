@@ -5,7 +5,7 @@
 # Contributor: Rui ZHAO <renyuneyun@gmail.com>
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 pkgname=linux-enable-ir-emitter
-pkgver=6.1.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 arch=(x86_64)
@@ -30,7 +30,7 @@ conflicts=(
 )
 install=linux-enable-ir-emitter.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/EmixamPP/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('d5579883bed68eef8a8549307fa4ce457cd0739a416ddad79b0c118e6dbfa85e92ec6e212c6e0b777247db85b62e14abc0ca9bf7ea2f7e72e86e95fad1e5d4ba')
+b2sums=('5c332526ecc24f1be9128fe5c18bafd8af035ad870635ca74746b67fbec341cdce7c545a471459d1ae9b2b0c73cd452acefe41dfeeaacdb5dfac6a3ca6245cfd')
 
 build() {
     mkdir -p build
