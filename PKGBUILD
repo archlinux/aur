@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
@@ -16,12 +16,12 @@ makedepends=('cmake' 'ninja')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('87876c2922cdc3f204568e94a648aadb5295d2508b79950ae19c968107b348f9')
+sha256sums=('67e698567cc8774ed1e5a9d53dc9ab2a8627c634fd887bbb9fb391646e4da6ae')
 
 build() {
     cd "${srcdir}/release"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$pkgver -DDISTRIBUTOR='AUR (package: caelestia-shell)'
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$pkgver -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
 }
 
