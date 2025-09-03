@@ -1,6 +1,6 @@
 # Maintainer: Methanium
 pkgname=tensamin-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Super secure messaging app"
 arch=('x86_64')
@@ -11,10 +11,10 @@ optdepends=('pipewire: Screen sharing' 'kdialog: Native dialogs on KDE Plasma' '
 provides=('tensamin')
 conflicts=()
 
-source_x86_64=("https://github.com/Tensamin/Frontend/releases/download/v0.1.1-desktop-apps/tensamin-linux-x64-0.1.1.deb")
-sha256sums_x86_64=("d211cb66324a8b53512fd69d1c43dbfc1a8cab4f4b9f021678fcd64fe26a6e78")
+source_x86_64=("https://github.com/Tensamin/Frontend/releases/download/v0.1.2-desktop-apps/tensamin-linux-x64-0.1.2.deb")
+sha256sums_x86_64=("d648030536a922a4709b144e567e09f91066439ecad4117f3a02cc12ff9af7e0")
 
 package() {
-  bsdtar -O -xf "${srcdir}/tensamin-linux-x64-0.1.1.deb" data.tar.* \
+  bsdtar -O -xf "${srcdir}/tensamin-linux-x64-0.1.2.deb" data.tar.* \
     | bsdtar -C "${pkgdir}" --no-same-owner -xv
 }
