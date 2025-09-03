@@ -2,7 +2,7 @@
 # Maintainer: NucleoFusion <lakshit.singh.mail@gmail.com>
 
 pkgname='cruise-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Cruise is a powerful, intuitive, and fully-featured TUI (Terminal User Interface) for interacting with Docker'
 url='https://nucleofusion.github.io/cruise/'
@@ -10,14 +10,13 @@ arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('cruise')
 conflicts=('cruise')
-depends=('docker')
 optdepends=('trivy' 'grype')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.0.0/cruise_Linux_arm64.tar.gz")
-sha256sums_aarch64=('2ea320cbe61cbd3a47e686115d385694bff02cd06c29fe2af718e8ea8bdfad6d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.0.1/cruise_Linux_arm64.tar.gz")
+sha256sums_aarch64=('9b6084922c2bb28f4a7f2b95a9bcce39ad9071542ae39a2f562597e7cb46f925')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.0.0/cruise_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('90294e4ca75c9ad0fab3998795ee8057be78c7a8288753a8d8f819783ca0f3ad')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.0.1/cruise_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('beeefd0d3d041cc40faf25ea604ee0894971d4ee4d1b9fb37e2542bd5837a56e')
 
 package() {
   install -Dm755 "./cruise" "${pkgdir}/usr/bin/cruise"
