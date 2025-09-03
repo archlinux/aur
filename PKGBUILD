@@ -3,14 +3,14 @@
 pkgname=bpftrace-git
 _pkgname=bpftrace
 pkgver=r4397.19ab9e3d
-pkgrel=2
+pkgrel=3
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/bpftrace/bpftrace"
 license=('Apache-2.0')
 # As of 2025-09-03, libbpf-git is required to get a static linked version.
 # The main repo libbpf only provides a dynamic library, which isn't enough.
-depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'libbpf-git' 'libpcap' 'zstd' 'systemd-libs')
+depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'bpf' 'libbpf-git' 'libpcap' 'zstd' 'systemd-libs')
 makedepends=('binutils' 'cmake' 'cargo' 'llvm' 'git' 'linux-headers' 'ninja' 'gtest' 'cereal'
              'asciidoctor' 'xxd')
 conflicts=('bpftrace')
