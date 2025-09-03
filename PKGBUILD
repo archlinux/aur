@@ -32,10 +32,12 @@ makedepends=(ant
   tk
 )
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
-  local://${pkgname}-num.patch)
+  local://${pkgname}-num.patch
+  local://libxml.patch)
 # hdf5-api.patch ${pkgname}-strict-jar.patch ${pkgname}-LD_LIBRARY_PATH.patch
 sha512sums=('964b2e0dccc46eaf32076b620b530216d9e177a243a6a165509667664f64381bd434abb1d1b7e6cef659ab01f444885c08bd53e6cf78ace8cd673e62d1e72dea'
-            '6d2e2548e2d33e830dba4a479787cd3f642afa63439d56cee650c50c49d980af9b50b4090732d9ca536322a6ff4a6763d015344f693d7e1d487e37dfb73d9605')
+            '6d2e2548e2d33e830dba4a479787cd3f642afa63439d56cee650c50c49d980af9b50b4090732d9ca536322a6ff4a6763d015344f693d7e1d487e37dfb73d9605'
+            'dc067645fd1712733e9283585107191bb787cec3888109707a9ae146c27dca2be5e14790d84dd778705cad78d3d5def869a69628caf1c40059126f4c62b9dfee')
 
 prepare() {
   # cd ${pkgname}-${pkgver}
