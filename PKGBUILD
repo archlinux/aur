@@ -3,7 +3,7 @@
 _author=BKSalman
 _basename=ytdlp-gui
 pkgname=${_basename}-bin
-pkgver=3.0.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="a GUI for yt-dlp written in Rust"
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '800643979e36f17c78cb43871e071e0b1b8f23c6067fded9bbb8aa515b952faf'
-            '801ca6377763438ee69246ff96977eda75a616eddb62698446a207dec2c0f310')
-sha256sums_x86_64=('e6a23262636828ba0b324b466539d8e8a5d95ffb0aadf7287a500160ce336215')
+            'd2eee9ca79897795723f8b12e60feb711c267bd125b9dbc1adf1c9b4a8fab35e'
+            '89ba0749a377a941296019efa663742977e50175c1b48f70139631936115410f')
+sha256sums_x86_64=('eb95078e6b52f982b624e80660aa3445abf7cda9c992d342045f806a7d186cca')
 
 package() {
     cd "${srcdir}" || return 1
@@ -36,4 +36,8 @@ package() {
 
     # this extracts all into the pkgdir
     tar -xf "${srcdir}/data.tar.xz"
+
+    # fix icon
+    install -Dm644 "${pkgdir}/usr/share/icons/hicolor/ytdlp-gui.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ytdlp-gui.png"
+    rm -rf "${pkgdir}/usr/share/icons/hicolor/ytdlp-gui.png"
 } 
