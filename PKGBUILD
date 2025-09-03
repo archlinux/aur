@@ -3,7 +3,7 @@
 # Contributor: Claudio d'Angelis <claudiodangelis at gmail dot com>
 
 pkgname=postman-bin
-pkgver=11.60.4
+pkgver=11.61.5
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -23,9 +23,9 @@ source_aarch64=(
   "postman.desktop"
 )
 
-sha256sums_x86_64=('827c5bd5f900cab043c8f8f4665d8d08bc846bc345fdb2005552b663a7952e80'
+sha256sums_x86_64=('308bea0f46ea5eb228a50b8b5594a892202ed04cc6ec282733df1b5bb347d678'
                    'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_aarch64=('d17635039619d7b7ee5a2386b8fd34c7e7665b25e275729ffcd57fce62ccda7b'
+sha256sums_aarch64=('2d26309c2e11ab0f8189b877fd2f15b416d9c5feafbd35ce1e49f5806ba0bb26'
                     'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
 
 package() {
