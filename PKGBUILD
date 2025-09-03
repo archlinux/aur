@@ -2,7 +2,7 @@
 
 pkgbase=wx-tools
 pkgname=wx-tools
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 groups=()
 pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
@@ -39,7 +39,7 @@ checkdepends=(
 )
 optdepends=()
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('09c294d66c729edbd3d0eb330ba32ca3b53be49bb15fd057a273455eadf01da6')
+sha256sums=('2ec3120e47140b4b1e1776a3eb82443d6b891b730b634d50f0c60bb86900f466')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
