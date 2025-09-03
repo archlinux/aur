@@ -3,14 +3,23 @@
 # Date 2025-09-03 15:33:56
 #
 pkgname=python-gdsfactory
-_origpkgname=python-gdsfactory
+_origpkgname=gdsfactory
 pkgver=9.13.3
 pkgrel=1
 pkgdesc="python library to generate GDS layouts"
 arch=("x86_64")
 url='https://pypi.org/project/gdsfactory/'
 license=("None")
-depends=()
+depends=(
+	"python-toolz"
+	"python-kfactory"
+	"python-aenum"
+	"python-networkx"
+	"python-graphviz"
+	"python-trimesh"
+	"python-orjson"
+	"python-shapely"
+  )
 makedepends=(
 	"python-build"
 	"python-installer"
