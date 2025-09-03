@@ -2,6 +2,7 @@
 
 ## options
 : ${i_swear_to_never_bother_the_developer_about_this_package:=false}
+: ${forbidden_versions_file_path:=/dev/null}
 
 pkgname=duckstation-git
 _pkgname=duckstation
@@ -107,7 +108,16 @@ pkgver() {
 
 prepare() {
     # checkout correct versions of deps
-    deps_script=$srcdir/duckstation/scripts/deps/build-dependencies-linux.sh
+    if [[ "$forbidden_versions_file_path" == "/dev/null" ]]; then
+        cat <<EOF
+Stenzek prohibits using the versions file in this build script.
+Set the path to the dependencies versions file (from scripts/)
+in the forbidden_versions_file_path variable, relative to the project root.
+EOF
+        exit 1
+    fi
+
+    deps_script=$srcdir/duckstation/$forbidden_versions_file_path
     for src in "${source[@]}"; do
         local src_name=${src%%::*}
         for dep in "${_source_var[@]}"; do
@@ -135,7 +145,7 @@ prepare() {
 }
 
 build() {
-    deps_script=$srcdir/duckstation/scripts/deps/build-dependencies-linux.sh
+    deps_script=$srcdir/duckstation/$forbidden_versions_file_path
     for src in "${source[@]}"; do
         local src_name=${src%%::*}
         for dep in "${_source_var[@]}"; do
