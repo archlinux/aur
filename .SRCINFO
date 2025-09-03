@@ -1,0 +1,16 @@
+pkgbase = python-brukeropusreader
+	pkgdesc = reads Bruker opus files
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://pypi.org/project/brukeropusreader/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+        source=https://files.pythonhosted.org/packages/44/5e/06fbba4590c47491c68f70d880ed4c6fc39086a6c8d71d4a491c54032bb0/brukeropusreader-1.3.4.tar.gz
+        sha256sums=c1309d7f40d710ab3ef702b732959697387a8faec1807d7d26d0a4ef60f4a0e0
+
+pkgname = python-brukeropusreader
