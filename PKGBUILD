@@ -2,7 +2,7 @@
 
 pkgname=moribito
 pkgver='0.2.6'
-pkgrel=1
+pkgrel=2
 pkgdesc='a TUI based LDAP server explorer'
 arch=(x86_64 aarch64)
 url='https://github.com/ericschmar/moribito'
@@ -10,10 +10,6 @@ license=('MIT')
 makedepends=(go)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7b07448c6f8f16121232c73f45d8c8c7b59e066f20a00850dde093e724cd98db')
-_COMMIT=$(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-_DATE=$(shell date -u '+%Y-%m-%d_%H:%M:%S_UTC' 2>/dev/null || echo "unknown")
-_LDFLAGS="-X github.com/ericschmar/moribito/internal/version.Version=${pkgver} -X github.com/ericschmar/moribito/internal/version.Commit=${_COMMIT} -X github.com/ericschmar/moribito/internal/version.Date=${_DATE}"
-
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir -p bin/
@@ -29,7 +25,7 @@ build() {
   #taken from make file to set version
   
   go build \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-linkmode external -X github.com/ericschmar/moribito/internal/version.Version=${pkgver}" \
   	-o bin/moribito \
   	cmd/moribito/main.go
       
