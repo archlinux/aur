@@ -9,6 +9,7 @@ pkgbase = cwal-git
 	makedepends = git
 	depends = imagemagick
 	depends = libimagequant
+	depends = lua
 	provides = cwal
 	conflicts = cwal
 	source = git+https://github.com/nitinbhat972/cwal.git#branch=main
