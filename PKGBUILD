@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'ffmpeg' 'libass' 
 makedepends=('ninja' 'clang' 'llvm' 'lld' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
 options=(!lto)
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
-sha256sums=(ba6d70310bf50ac3d12c1fa759ae79ca616a02b73b951f4f4d3c87ae17886956)
+sha256sums=(94f4df855fd8ec6b3c00550d7c86c10d71e97db5c69fd4b98148c88f21ebf1a6)
 
 prepare()
 {
