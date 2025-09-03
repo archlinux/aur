@@ -37,8 +37,7 @@ build() {
   python -m nuitka --onefile --follow-imports --main=ghost_dl.py --output-dir=build --output-filename=ghost-dl
   deactivate
   rm -rf venv
-  rm -rf build/ghost-dl.build build/ghost-dl.dist build/ghost-dl.onefile-build
-  mv build/ghost-dl.bin build/ghost-dl
+  rm -rf build/ghost_dl.build build/ghost_dl.dist build/ghost_dl.onefile-build
   cd ..
 }
 
