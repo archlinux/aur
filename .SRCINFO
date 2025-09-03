@@ -1,7 +1,7 @@
 pkgbase = paciam
 	pkgdesc = A lightweight tool to install AUR packages.
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jd.pnc3.net
 	arch = x86_64
 	license = Apache-2.0
