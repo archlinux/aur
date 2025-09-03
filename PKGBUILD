@@ -10,7 +10,7 @@ license=('custom:BSD-2-clause')
 conflicts=("python-fmpy")
 provides=("python-fmpy")
 depends=(python-attrs python-jinja python-lark python-lxml python-msgpack python-numpy sundials)
-makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
+makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git python-hatchling python-toml)
 # checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
 optdepends=('python-matplotlib: for plot results'
   'python-kaleido: for notebook support'
