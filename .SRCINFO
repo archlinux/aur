@@ -1,0 +1,12 @@
+pkgbase = syncbops-bin
+	pkgdesc = A tool to easily maintain a smaller-size copy of your music library, and keep it in sync with your main library
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Aidavdw/syncbops
+	arch = x86_64
+	license = GPL-3.0
+	provides = syncbops
+	source_x86_64 = https://github.com/Aidavdw/syncbops/releases/download/v1.1.0/syncbops_linux_x86_64
+	sha256sums_x86_64 = 9a29c65d7278d4880cd09d48ade79c8983df1911bab85d1cd9111c3489ada775
+
+pkgname = syncbops-bin
