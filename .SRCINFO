@@ -1,13 +1,16 @@
-pkgbase = moribito
+pkgbase = moribito-git
 	pkgdesc = a TUI based LDAP server explorer
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.2.5.r20.g73bd3f8
+	pkgrel = 1
 	url = https://github.com/ericschmar/moribito
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = go
-	source = https://github.com/ericschmar/moribito/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 7b07448c6f8f16121232c73f45d8c8c7b59e066f20a00850dde093e724cd98db
+	provides = moribito
+	conflicts = moribito
+	source = git+https://github.com/ericschmar/moribito
+	sha256sums = SKIP
 
-pkgname = moribito
+pkgname = moribito-git

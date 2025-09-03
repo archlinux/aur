@@ -1,22 +1,30 @@
 # Maintainer: Mark Hegreberg <aur@hegreberg.io>
 
-pkgname=moribito
-pkgver='0.2.6'
-pkgrel=2
+pkgname=moribito-git
+_pkgname="${pkgname%-git}"
+pkgver=0.2.5.r20.g73bd3f8
+pkgrel=1
 pkgdesc='a TUI based LDAP server explorer'
 arch=(x86_64 aarch64)
 url='https://github.com/ericschmar/moribito'
 license=('MIT')
-makedepends=(go)
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7b07448c6f8f16121232c73f45d8c8c7b59e066f20a00850dde093e724cd98db')
+makedepends=(git go)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+${url}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
   mkdir -p bin/
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -34,14 +42,13 @@ build() {
 check() {
   #tests seem to be broken upstream currently
   # https://github.com/ericschmar/moribito/issues/100
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
   #go test -v ./...
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${_pkgname}"
+  install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  # license isn't in last release
-  #install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 }
