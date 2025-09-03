@@ -1,12 +1,13 @@
 pkgbase = solian-git
 	pkgdesc = Next Generation Network Center (unstable)
-	pkgver = r530.1fe48894
+	pkgver = r582.3aece931
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
-	makedepends = flutter
+	makedepends = unzip
+	makedepends = xz
 	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
