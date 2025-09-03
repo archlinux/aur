@@ -1,7 +1,7 @@
 # Maintainer: savew (savew@savew.dev)
 
 pkgname=ffetch
-pkgver=0.2.16
+pkgver=0.2.17
 pkgrel=1
 pkgdesc='CLI tool to fetch system info.'
 url='https://github.com/0l3d/ffetch'
@@ -9,7 +9,7 @@ license=('GPL3')
 arch=('x86_64')
 depends=('pciutils' 'xorg-xprop' 'coreutils')
 source=("$url/releases/download/v$pkgver/ffetch-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('bd0a1756c36f4ae7ad5010f7392f5229c3fdb7235da60af600b4c3f4e0d263f6')
+sha256sums=('8a5abcc4698f8823ac7c035da0ebec848512ee3e850709c9b24e67773c109b26')
 
 package() {
   tar -xzf "$srcdir/ffetch-v$pkgver-linux-x86_64.tar.gz" -C "$srcdir"
