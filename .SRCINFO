@@ -1,12 +1,12 @@
 pkgbase = ukibak
 	pkgdesc = Unified Kernel Image backup utitlity
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/FlashSystems/ukibak
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = ukibak-1.1.2.tar.gz::https://github.com/FlashSystems/ukibak/archive/v1.1.2.tar.gz
-	sha256sums = 160514fa730a1edbb9edbf324ad995c58e8c70bae3ab81ed7d2df3c34ba8b56a
+	source = ukibak-1.1.3.tar.gz::https://github.com/FlashSystems/ukibak/archive/v1.1.3.tar.gz
+	sha256sums = b5f8c69b04af840df10645ee9b27428d3c97bf3b77d5508932b79be0d30dbded
 
 pkgname = ukibak
