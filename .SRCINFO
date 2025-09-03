@@ -8,6 +8,7 @@ pkgbase = ghost-dl-bin
 	depends = glibc
 	depends = gcc
 	depends = python
+	depends = python-pip
 	provides = ghost-dl-bin
 	conflicts = ghost-dl-git
 	options = !debug
