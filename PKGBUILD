@@ -2,7 +2,7 @@
 
 pkgname=python-wadler-lindig
 _pkgname=wadler_lindig
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='A Wadler–Lindig pretty-printer for Python.'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer'
              'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6e741f738e7ec6b58cd105798382d3c95124e6c280bbc1ddec25acaa75de3e27')
+sha256sums=('75521559dce2e639ace6b52ba37dc5a04c7fbd47399edfd6f7186ef0f114ab76')
 
 build() {
     python -m build -nw $srcdir/$_pkgname-$pkgver
