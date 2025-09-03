@@ -16,7 +16,7 @@ pkgbase = shader-slang
 	depends = lz4
 	depends = miniz
 	depends = spirv-tools
-	source = https://github.com/shader-slang/slang/archive/refs/tags/v2025.15.1.tar.gz
+	source = shader-slang-2025.15.1.tar.gz::https://github.com/shader-slang/slang/archive/refs/tags/v2025.15.1.tar.gz
 	source = lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea
 	source = glslang::git+https://github.com/KhronosGroup/glslang#commit=8b822ee8ac2c3e52926820f46ad858532a895951
 	sha256sums = db81c46c2461f8f1b18df348e30192aa62f029ef708c07a8f80341648f19b7ce
