@@ -1,14 +1,14 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.13.5
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
 url="https://sebastianrzk.github.io/Looksyk"
 license=('AGPL-3.0-or-later')
 groups=()
-depends=(electron glibc bash gcc-libs)
+depends=(electron glibc bash gcc-libs git)
 makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs)
 checkdepends=(cargo glibc gcc-libs)
 provides=(looksyk looksyk-backend)
@@ -53,7 +53,7 @@ package() {
 
 	cp -r "frontend/looksyk/dist/looksyk/browser/" "${pkgdir}/usr/share/${_pkgnameshort}/static/"
 	install -D -m644 "application-wrapper/Looksyk/out/looksyk-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${_pkgnameshort}/app.asar"
-	install -D -m644 "icon/Looksyk_256.png" "${pkgdir}/usr/share/${_pkgnameshort}/icon.png"
+	install -D -m644 "icon/Looksyk_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/de.sebastianruziczka.looksyk.png"
 
 	install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
