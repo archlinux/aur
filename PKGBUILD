@@ -8,10 +8,11 @@ url="https://github.com/Stormix/$pkgname"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
 depends=('webkit2gtk-4.1' 'cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme')
-source=("git+https://github.com/Stormix/$pkgname.git#tag=v$pkgver"
+source=("git+$url.git#tag=v$pkgver"
 	'deadlock-modmanager.desktop')
 sha256sums=('c2e32c2fc131919e39e5b7097143324d7232d1f056e14f7566f82734a00b19ce'
-	'0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4') provides=("$pkgname")
+	'0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4')
+provides=("$pkgname")
 conflicts=("$pkgname-git")
 options=('!lto')
 
