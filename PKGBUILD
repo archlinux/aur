@@ -30,4 +30,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm755 bin/$pkgname $pkgdir/usr/bin/$pkgname
+	install -Dm755 bin/markmark $pkgdir/usr/bin/markmark
 }
