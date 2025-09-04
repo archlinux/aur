@@ -3,7 +3,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=miracle-wm
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Wayland compositor based on mir"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,11 +11,18 @@ url="https://github.com/miracle-wm-org/miracle-wm"
 license=('GPL-3.0-or-later')
 depends=('mir'
          # implicit depends
-         'libglvnd' 'yaml-cpp' 'bash' 'json-c' 'gcc-libs' 'libevdev' 'glib2' 'pcre2' 'glibc' 'python' 'wayland'
+         'libglvnd' 'yaml-cpp' 'bash' 'json-c' 'gcc-libs' 'libevdev' 'glib2' 'pcre2' 'glibc' 'wayland'
+         'python' 'python-tenacity' 'python-dbus-next'
+         'libxkbcommon'
     )
 makedepends=('cmake' 'nlohmann-json' 'ninja' 'glm' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f10f9c0bf03b815a15265171d4926221e45fe0ca2e997d31f69ba34a3839a2b3')
+sha256sums=('d3030ba7b3c2959e8b14810400e61358b9dea08552157889760afd708629ce5d')
+
+prepare() {
+    sed -i 's/python3/python/g' $srcdir/${pkgname}-${pkgver}/session/usr/bin/libexec/miracle-wm-wait-sni-ready
+    sed -i 's/python3/python/g' $srcdir/${pkgname}-${pkgver}/tools/check_license.py
+}
 
 build() {
 
