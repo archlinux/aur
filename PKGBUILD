@@ -2,17 +2,20 @@
 _pkgname=jj-spr
 pkgname=$_pkgname-git
 pkgver=r149.8f2eb88
-pkgrel=1
+pkgrel=2
 pkgdesc="Jujutsu github stacked prs"
 arch=('x86_64')
 url="https://github.com/LucioFranco/jj-spr"
 license=('MIT')
-depends=('jujutsu' 'zlib' 'glibc' 'gcc-libs')
+depends=('jujutsu' 'zlib' 'glibc' 'gcc-libs' 'libgit2')
 makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
 sha256sums=('SKIP')
+# libgit2-sys (as configured in this package) and ring won't compile reliably with LTO
+# see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
+options=(!lto)
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -35,7 +38,7 @@ build() {
 check() {
 	cd "$srcdir/$_pkgname"
 	cargo test --frozen --all-features
-	cargo test --test '*'
+	cargo test --test '*' --frozen --all-features
 }
 
 package() {
