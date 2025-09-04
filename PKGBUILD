@@ -1,6 +1,6 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=krunner-bazaar
-pkgver=1.0.4
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="KRunner plugin for bazaar"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/ublue-os/krunner-bazaar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ab7b891272c633b36ab784a1751b18cb8c2140fdfb03a63d21248350339f7e56')
+sha256sums=('ceef3e7641985af7cafe21fbaa03a3ca6d5d4436f9f8f7cc1f3e64b099791f3b')
 
 build() {
   cd "${pkgname}-${pkgver}"
