@@ -1,12 +1,12 @@
-# Maintainer: Stéphane Meyer <tigerlost at tigerfunk dot tk>
-# Contributor: Stéphane Meyer <tigerlost at tigerfunk dot tk>
+# Maintainer: Stéphane Meyer <teegre at icloud dot com>
+# Contributor: Stéphane Meyer <teegre at icloud dot com>
 
 pkgname=gmi
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Gemini capsule generator."
 arch=('any')
-url="https://gitlab.com/teegre/gmi"
+url="https://github.com/teegre/gmi"
 license=('GPL')
 groups=()
 depends=('bash' 'coreutils' 'findutils' 'fzf' 'openssh' 'rsync' 'sed' 'tar')
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=(331b5b84b9eef350b9bb9ea582e94b15b4be81228353303a2e2cd4731ef1f299)
+sha256sums=(8a1e07156770452110ab1a60503917c577f783d09b87896774a4015e9b0ab760)
 
 package() {
   cd "$pkgname-$pkgver"
