@@ -1,0 +1,19 @@
+pkgbase = jj-spr-git
+	pkgdesc = Jujutsu github stacked prs
+	pkgver = r149.8f2eb88
+	pkgrel = 1
+	url = https://github.com/LucioFranco/jj-spr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = jujutsu
+	depends = zlib
+	depends = glibc
+	depends = gcc-libs
+	provides = jj-spr
+	conflicts = jj-spr
+	source = git+https://github.com/LucioFranco/jj-spr
+	sha256sums = SKIP
+
+pkgname = jj-spr-git
