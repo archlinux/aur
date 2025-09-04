@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
 backup=("etc/${pkgname}/${pkgname}.conf")
-depends=('openblas')
 makedepends=(
   'go'
   'make'

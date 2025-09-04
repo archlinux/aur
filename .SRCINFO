@@ -7,7 +7,6 @@ pkgbase = local-ai
 	license = MIT
 	makedepends = go
 	makedepends = make
-	depends = openblas
 	backup = etc/local-ai/local-ai.conf
 	source = local-ai-3.5.0::git+https://github.com/mudler/LocalAI.git#tag=v3.5.0
 	source = local-ai.conf
