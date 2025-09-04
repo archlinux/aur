@@ -1,5 +1,4 @@
 # Maintainer: robertfoster
-_pkgname=LocalAI
 pkgname=local-ai
 pkgver=3.5.0 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
@@ -13,7 +12,7 @@ makedepends=(
   'go'
   'make'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
   "${pkgname}.conf"
   "${pkgname}.tmpfiles"
   "${pkgname}.sysusers"
@@ -21,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 )
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   export GOPATH="${srcdir}"
   export PATH="${GOPATH}/bin:${PATH}"
 
@@ -29,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm775 "${pkgname}" -t "${pkgdir}/usr/bin/"
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -48,8 +47,10 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
-sha256sums=('b4a1fd12c3691c0e175774257a36d76f5b36503323ae0687ad058719c1513942'
+sha256sums=(
+  'SKIP'
   '8153bc015f138655e08a49183c36d00f7fb661a2b9367110f44af844eab815ae'
   'dd51cf954b60d75e0521a6e58188bcb06981e87d7ca8ac22d7dc4d46a362a671'
   '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
-  '6e4c0e2a2694867a5c27e21855e530a9327ae3658dbaa9b18fe028ab96df915a')
+  '6e4c0e2a2694867a5c27e21855e530a9327ae3658dbaa9b18fe028ab96df915a'
+)
