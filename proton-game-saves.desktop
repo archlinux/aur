@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Proton Game Saves Manager
+Comment=Manage Proton game save files for Steam games
+GenericName=Game Save Manager
+Exec=proton-game-saves
+Icon=application-x-executable
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Keywords=steam;proton;games;saves;manager;
+MimeType=
+StartupWMClass=proton_game_saves
