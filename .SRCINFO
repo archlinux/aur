@@ -6,6 +6,7 @@ pkgbase = local-ai
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = goreleaser
 	makedepends = make
 	makedepends = protoc-gen-go
 	makedepends = protoc-gen-go-grpc

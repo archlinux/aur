@@ -11,6 +11,7 @@ backup=("etc/${pkgname}/${pkgname}.conf")
 depends=('openblas')
 makedepends=(
   'go'
+  'goreleaser'
   'make'
   'protoc-gen-go'
   'protoc-gen-go-grpc'
