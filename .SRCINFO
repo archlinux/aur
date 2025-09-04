@@ -1,11 +1,11 @@
 pkgbase = grub-theme-minegrub
 	pkgdesc = The minegrub theme and related utilities
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lxtharia/minegrub-theme
 	arch = any
 	license = MIT
-	source = minegrub-theme-3.1.0.tar.gz::https://github.com/Lxtharia/minegrub-theme/archive/v3.1.0.tar.gz
+	source = grub-theme-minegrub-3.1.0.tar.gz::https://github.com/Lxtharia/minegrub-theme/archive/v3.1.0.tar.gz
 	source = 0001-fix_update_theme_script_path.patch
 	source = 0002-fix_cachedir_path.patch
 	sha256sums = 127ee3b112014dd6b26e2316ccd018084c300ecf5c401d6047efd0d5d4705112
