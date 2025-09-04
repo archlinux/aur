@@ -3,18 +3,15 @@
 
 pkgname=ack-git
 pkgver=dev.r0.g6a55a6f81
-pkgrel=2
+pkgrel=3
 pkgdesc="The Amsterdam Compiler Kit"
 arch=('i686' 'x86_64')
 url="http://tack.sourceforge.net/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'flex' 'bison' 'ed' 'lua' 'python')
-source=("git+https://github.com/davidgiven/ack"
-        'ack-cpm-aslod.patch'
-        )
-md5sums=('SKIP'
-         'def54bc99c19c95bbfa134ef4d3be9cf')
+source=("git+https://github.com/davidgiven/ack")
+md5sums=('SKIP')
 
 _gitrepo=${pkgname%-git}
 
@@ -24,11 +21,6 @@ pkgver() {
     git describe --tags --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/release.//g' | sed 's/.pre./pre/g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-	cd "${srcdir}/${_gitrepo}"
-#	patch -Np1 < "$srcdir/ack-cpm-aslod.patch"
 }
 
 build() {

@@ -14,8 +14,6 @@ pkgbase = ack-git
 	makedepends = python
 	depends = glibc
 	source = git+https://github.com/davidgiven/ack
-	source = ack-cpm-aslod.patch
 	md5sums = SKIP
-	md5sums = def54bc99c19c95bbfa134ef4d3be9cf
 
 pkgname = ack-git
