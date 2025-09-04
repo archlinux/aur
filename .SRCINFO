@@ -1,6 +1,6 @@
 pkgbase = tailwindcss-bin
 	pkgdesc = Standalone Tailwind CLI without dependency on Node.js
-	pkgver = 4.1.12
+	pkgver = 4.1.13
 	pkgrel = 1
 	url = https://tailwindcss.com
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = tailwindcss-bin
 	provides = tailwindcss
 	conflicts = tailwindcss
 	options = !strip
-	source = LICENSE-4.1.12::https://github.com/tailwindlabs/tailwindcss/raw/refs/tags/v4.1.12/LICENSE
+	source = LICENSE-4.1.13::https://github.com/tailwindlabs/tailwindcss/raw/refs/tags/v4.1.13/LICENSE
 	sha256sums = 60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985
-	source_aarch64 = tailwindcss-4.1.12-aarch64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.12/tailwindcss-linux-arm64
-	sha256sums_aarch64 = 181332974fff1b3423ad75d6a2f1d09adf1ca63eb1324db0afbc4c30ff1ad086
-	source_x86_64 = tailwindcss-4.1.12-x86_64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.12/tailwindcss-linux-x64
-	sha256sums_x86_64 = 5eeee66ea237eae9a160fa3314fd0cf76ab993551a99fafb16fa1db6c6b90289
+	source_aarch64 = tailwindcss-4.1.13-aarch64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.13/tailwindcss-linux-arm64
+	sha256sums_aarch64 = c90529475a398adbf3315898721c0f9fe85f434a2b3ea3eafada68867641819a
+	source_x86_64 = tailwindcss-4.1.13-x86_64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.13/tailwindcss-linux-x64
+	sha256sums_x86_64 = b9ed9f8f640d3323711f9f68608aa266dff3adbc42e867c38ea2d009b973be11
 
 pkgname = tailwindcss-bin
