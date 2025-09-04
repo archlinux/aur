@@ -3,7 +3,7 @@
 _pkgname=vmware-vcenter
 pkgname=python-vmware-vcenter
 pkgver=9.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VMware vCenter Server Python API Bindings"
 arch=('any')
 url="https://pypi.org/project/vmware-vcenter/"
@@ -19,6 +19,7 @@ package() {
     # Remove conflicting CIS files that are already provided by python-vmware-vapi-common-client
     # The common client provides the base CIS functionality that vcenter depends on
     rm -f "$pkgdir"/usr/lib/python*/site-packages/com/vmware/cis_client.py
-    rm -rf "$pkgdir"/usr/lib/python*/site-packages/com/vmware/cis/
+    rm -f "$pkgdir"/usr/lib/python*/site-packages/com/vmware/cis/__init__.py
+    rm -f "$pkgdir"/usr/lib/python*/site-packages/com/vmware/cis/task_client.py
     rm -rf "$pkgdir"/usr/lib/python*/site-packages/com/vmware/__pycache__/cis_client.*
 }
