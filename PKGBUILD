@@ -1,30 +1,35 @@
+# Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.34
+pkgver=0.1.35
 pkgrel=1
-pkgdesc="CLI for Wayclip"
+pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
-url="https://github.com/wayclip/cli"
+url="https://github.com/Wayclip/cli"
 license=('MIT')
-depends=('bzip2' 'elfutils' 'glib2' 'libffi' 'libunwind' 'openssl' 'pcre2' 'util-linux-libs' 'xz' 'zlib' 'zstd' 'pipewire' 'wayland' 'alsa-lib' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'postgresql-libs' 'dbus' 'libxcb')
-makedepends=('rust' 'cargo' 'clang')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.2/wayclip-v0.1.2-x86_64-unknown-linux-gnu.tar.gz")
+depends=('pipewire' 'wayland' 'alsa-lib' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'dbus' 'libxcb')
+makedepends=('rust' 'cargo' 'clang' 'git')
+
+_core_ver="v0.1.2"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v$pkgver.tar.gz"
+        "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/$_core_ver/wayclip-$_core_ver-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-  cd "$srcdir"
-  tar -xzf "$pkgname-$pkgver.tar.gz"
-  mkdir -p wayclip-core
-  tar -xzf "wayclip-core.tar.gz" -C wayclip-core
+    tar -xzf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir" --strip-components=1
+    
+    mkdir -p "$srcdir/wayclip-core-binaries"
+    tar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/wayclip-core-binaries" --strip-components=1
 }
 
 build() {
-  cd "$srcdir/cli-$pkgver"
-  cargo build --release
+    cd "$srcdir"
+    cargo build --release
 }
 
 package() {
-  install -Dm755 "$srcdir/cli-$pkgver/target/release/wayclip_cli" "$pkgdir/usr/bin/wayclip-cli"
-  install -Dm755 "$srcdir/wayclip-core/wayclip-binaries/daemon" "$pkgdir/usr/bin/wayclip-daemon"
-  install -Dm755 "$srcdir/wayclip-core/wayclip-binaries/trigger" "$pkgdir/usr/bin/wayclip-trigger"
+    install -Dm755 "$srcdir/target/release/wayclip_cli" "$pkgdir/usr/bin/wayclip-cli"
+    install -Dm755 "$srcdir/wayclip-core-binaries/wayclip-binaries/daemon" "$pkgdir/usr/bin/wayclip-daemon"
+    install -Dm755 "$srcdir/wayclip-core-binaries/wayclip-binaries/trigger" "$pkgdir/usr/bin/wayclip-trigger"
+    
+    install -Dm644 "$srcdir/assets/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
 }
