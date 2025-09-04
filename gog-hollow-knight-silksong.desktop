@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hollow Knight: Silksong
+Comment=Action-adventure set in a kingdom ruled by silk and song
+Exec=hollow-knight-silksong
+Icon=gog-hollow-knight-silksong
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

@@ -1,0 +1,4 @@
+[gog-hollow-knight-silksong]
+source = "jq"
+url = "https://www.gogdb.org/data/products/1558393671/product.json"
+filter = ".dl_installer | map(select(.os == \"linux\"))[0] | .version"
