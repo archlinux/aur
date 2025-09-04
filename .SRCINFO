@@ -1,6 +1,6 @@
 pkgbase = dosr
 	pkgdesc = A better alternative to sudo(-rs)/su • Fast • Memory-safe • Security-oriented
-	pkgver = 3.2.2
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://lechatp.github.io/RootAsRole/
 	install = rootasrole.install
@@ -17,8 +17,8 @@ pkgbase = dosr
 	options = !debug
 	backup = usr/share/rootasrole/dosr
 	backup = usr/share/rootasrole/default.json
-	source = dosr-3.2.2.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v3.2.2.tar.gz
+	source = dosr-3.2.4.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v3.2.4.tar.gz
 	validpgpkeys = 74F43C5774BE1F3527DEFA4835C155EA0525104D
-	sha256sums = b54cb9c68d054d312b24a840c6320cbaa73d6b0bbd860ee028ca52a90bfadd36
+	sha256sums = 127941467817b58b475b47800628b285ddc14653212139e1ee22fda0595decd3
 
 pkgname = dosr
