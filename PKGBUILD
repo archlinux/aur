@@ -3,8 +3,9 @@
 
 pkgname=ffmpeg-decklink
 pkgver=7.1.1
-pkgrel=3
+pkgrel=4
 epoch=1
+_obs_studio_ver='31.1.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -92,7 +93,6 @@ makedepends=(
   opencl-headers
   vapoursynth
   vulkan-headers
-  decklink-sdk
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
             'frei0r-plugins: for Frei0r video effects support'
@@ -105,12 +105,14 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch'
         '060-ffmpeg-svt-av1-3.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95'
         'LICENSE')
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'SKIP'
+            '11d7b5fbb234e926b04b921203c152517a928032e757689d964c5f9a0a9a4157'
             '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
             '5a3731d1410747703948c87e46bb3aef820c6038f7101ab37f9d072cd1d15d15'
             'b83ba1efdfec19ac54d1b0395a98d02039fe9d45bec1e6473e57a6288a304884'
@@ -126,6 +128,8 @@ prepare() {
 build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
+    
+    export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
     
     # fix build with v4l2-utils 1.30 with gcc 14 and later
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
