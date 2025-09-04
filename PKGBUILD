@@ -18,7 +18,7 @@ pkgname=(
   java-openjfx-src
 )
 _java_ver=24
-_tag='26+5'
+_tag='26+6'
 pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
@@ -35,7 +35,7 @@ makedepends=(
   gdk-pixbuf2
   glib2
   gperf
-  gradle
+  gradle8
   gtk3
   java-environment-openjdk=$_java_ver
   libgl
@@ -60,7 +60,7 @@ source=(
   gradle.properties
   "${pkgbase}-flags.patch"
 )
-b2sums=('8261e59cd5213dafd2d24d9e782f5dfd59ff49a0797e9b30196bc43e595800f488b08953aeb1d355a3111b4ede9854bd627b3ad176e200fd40bfdbe3838eb7be'
+b2sums=('c16d0d67902ae5f114318bba970d02615f0234195c57d2bbd51af5ac926901ae30870d62ec42f8529cfee7ad4633c9921f10634b09b78ee848b6806424de6315'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
@@ -70,7 +70,7 @@ prepare() {
   cd $_jfxdir
 
   # Clean from potential previous runs
-  gradle --stop
+  gradle8 --stop
   rm -rf build
   #gradle clean
 
@@ -88,7 +88,7 @@ build() {
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
 
-  gradle --no-daemon zips
+  gradle8 --no-daemon zips
 }
 
 package_java-openjfx() {
