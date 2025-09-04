@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Check if a file argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <filename>"
+    exit 1
+fi
+
+# Get the file extension
+filename="$1"
+extension="${filename##*.}"
+
+case "$extension" in
+    c)
+        clang "$filename" -o "${filename%.c}" && ./"${filename%.c}"
+        ;;
+    cpp)
+        clang++ "$filename" -o "${filename%.cpp}" && ./"${filename%.cpp}"
+        ;;
+    java)
+        javac "$filename" && java "${filename%.java}"
+        ;;
+    py)
+        python "$filename"
+        ;;
+    *)
+        echo "Unsupported file type: $extension"
+        exit 1
+        ;;
+esac
