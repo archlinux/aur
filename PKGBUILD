@@ -2,7 +2,7 @@
 pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
 pkgver=0.6.0
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Stormix/$pkgname"
 license=('GPL-3.0-or-later')
