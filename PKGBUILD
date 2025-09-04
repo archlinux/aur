@@ -1,5 +1,5 @@
 pkgname=delta-plugin-git
-pkgver=0.22.1.r0.gf1fb214
+pkgver=0.24.1
 pkgrel=1
 pkgdesc='A multi-purpose OMWAddon/ESP tool. Its primary features include a yaml transcoder, minimal diffing functionality, and using the minimal diffing functionality to produce merged plugins'
 url='https://gitlab.com/bmwinger/delta-plugin'
