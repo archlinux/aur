@@ -2,7 +2,7 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='GNU Image Manipulation Program (development release)'
 url='https://www.gimp.org/'
@@ -29,7 +29,7 @@ depends=(
   'libgexiv2'
   'libmypaint'
   'libunwind'
-  'mypaint-brushes1'
+  'mypaint-brushes'
   'pango'
   'python-gobject'
   'zlib'
@@ -89,10 +89,12 @@ optdepends=(
   'luajit: LUA scripting support'
   'lua51-lgi: LUA scripting support'
 )
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
         'linux.gpl'
 )
-sha256sums=('330b1634bec07dc34bec4e7e4109765b7b864a39a3702f6899de4738f2e38c2a'
+sha256sums=('060df415a85bb18bfeca65dceb7377b191b47832f2b608a6fc433e08da2cbcb7'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 build() {
