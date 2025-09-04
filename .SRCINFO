@@ -1,6 +1,6 @@
 pkgbase = cpuid
 	pkgdesc = Linux tool to dump x86 CPUID information about the CPU(s)
-	pkgver = 20250316
+	pkgver = 20250513
 	pkgrel = 1
 	url = http://www.etallen.com/cpuid.html
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = cpuid
 	depends = glibc
 	depends = perl
 	conflicts = msr-tools
-	source = http://www.etallen.com/cpuid/cpuid-20250316.src.tar.gz
-	sha256sums = 3ef849e964a027c9575470c4dcc80944b4cb6ac214aca02feec6b249308fa0f5
+	source = http://www.etallen.com/cpuid/cpuid-20250513.src.tar.gz
+	sha256sums = 6f474a22b5848488e454b01a31db80eb958d55674b5339533fc0e6aeb793626b
 
 pkgname = cpuid
