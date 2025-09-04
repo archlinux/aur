@@ -10,7 +10,7 @@ license=("GPL-2.0-or-later")
 conflicts=("7k-ambition-data")
 provides=("7k-ambition-data")
 depends=("openal" "desktop-file-utils" "enet" "gcc-libs" "sdl2>=2.0.4" "boost>=1.74")
-makedepends=("base-devel" "gcc12")
+makedepends=("base-devel")
 optdepends=("7k-ambition-music>=3.0.0: for ingame music")
 source=("https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
@@ -23,8 +23,7 @@ b2sums=("966ac11a98a6ac0344c729098b1fc0f1e137822cec1be7c0a432d253c9f4f61c48dc115
 
 
 build() {
-    export CC=gcc-12
-    export CXX=g++-12
+    export CXXFLAGS=-fexcess-precision=fast
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./autogen.sh
     ./configure
