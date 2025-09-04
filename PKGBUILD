@@ -5,8 +5,8 @@
 pkgname=gamemaker-beta-bin
 
 # Version
-pkgver=2024.1400.0.880
-pkgrel=2
+pkgver=2024.1400.0.884
+pkgrel=1
 
 # Generic
 pkgdesc="Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals."
@@ -33,13 +33,13 @@ conflicts=('gamemaker-beta')
 options=(!strip)
 
 # Sources
-# https://gms.yoyogames.com/GameMaker-Beta-2024.1400.0.880.deb
+# https://gms.yoyogames.com/GameMaker-Beta-2024.1400.0.884.deb
 source=(
     "https://gms.yoyogames.com/GameMaker-Beta-${pkgver}.deb"
     "LICENSE.txt"    
 )
 sha256sums=(
-    '5544947968a93bd64f2a275ad15cd0a64953559d061d51eb761ffe1850e4d149'
+    'e7112503d37b4f32efaebd3656831616c9c5822025c5b1295cbf00917609921b'
     '9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51'
 )
 
