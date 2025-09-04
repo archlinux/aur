@@ -1,14 +1,15 @@
 pkgbase = droplet-agent
 	pkgdesc = DigitalOcean Droplet Agent for Enhanced Droplet Graphs
-	pkgver = 1.3.0
+	pkgver = 1.2.11
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/digitalocean/droplet-agent
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = https://github.com/digitalocean/droplet-agent/archive/1.3.0.tar.gz
+	source = https://github.com/digitalocean/droplet-agent/archive/1.2.11.tar.gz
 	source = droplet-agent.service
-	sha512sums = 3e290291ebb999f5869d352b748844d4d42a9676fcaad11a56b50a137539783b711ade773ed8f31cdbf93f30f96c0413e187524c24cefb5267ef6f77f6aed3d4
+	sha512sums = 92e52e2852fcd39d5da8f896397dcfaa42cb448b290e97848560051cec90bce0b4d25e785ddbd19bf5c260ca12b0f14416589f65d8448dc9a3129281300a4662
 	sha512sums = 57504535c4387644ba941ce512b8a86aec9ca990b4fae48f43bda1e2abb62b55f68bbc692df32c82b07e0f6a3cd4cbb39f298ba86fab54e00f301b54115cd7b3
 
 pkgname = droplet-agent
