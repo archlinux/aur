@@ -1,11 +1,11 @@
 pkgbase = mangaplace
 	pkgdesc = A CLI tool to download manga.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 3
 	url = https://github.com/uttamkn/mangaplace
 	arch = x86_64
 	license = MIT
-	source = mangaplace-1.0.0.zip::https://github.com/uttamkn/mangaplace/releases/download/v1.0.0/mangaplace-1.0.0.zip
-	sha256sums = dc5cc8978034af93556918d208db5b1aa465b1331bbd352e467d4258bcb9d8f8
+	source = mangaplace-1.0.1.zip::https://github.com/uttamkn/mangaplace/releases/download/v1.0.1/mangaplace-1.0.1.zip
+	sha256sums = e04758576fec0420a96aadb471e28893d8ec416bd8a066feaeb58555e32c6d16
 
 pkgname = mangaplace
