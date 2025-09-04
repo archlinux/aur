@@ -11,10 +11,7 @@ backup=("etc/${pkgname}/${pkgname}.conf")
 depends=('openblas')
 makedepends=(
   'go'
-  'goreleaser'
   'make'
-  'protoc-gen-go'
-  'protoc-gen-go-grpc'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.conf"
@@ -26,15 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  commit=$(git ls-remote --tags https://github.com/mudler/LocalAI.git refs/tags/v${pkgver} | cut -f1)
-
-  make protogen-go
-  CGO_ENABLED=0 \
-    go build \
-    -ldflags "-s -w -X github.com/mudler/LocalAI/internal.Version=v${pkgver} \
-    -X github.com/mudler/LocalAI/internal.Commit=${commit}" \
-    -o local-ai \
-    .
+  make build
 }
 
 package() {
@@ -56,7 +45,7 @@ package() {
 }
 
 sha256sums=('b4a1fd12c3691c0e175774257a36d76f5b36503323ae0687ad058719c1513942'
-            'ad8459c708f6e4413d4d2d0c5dda71dc9a13860c1a8641d72f49cf9cf259768e'
-            '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
-            '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
-            'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c')
+  'ad8459c708f6e4413d4d2d0c5dda71dc9a13860c1a8641d72f49cf9cf259768e'
+  '7e730841684fa86760add2c991105ea2b89d4a43554f41ce8be7b5bcf30a33d3'
+  '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
+  'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c')
