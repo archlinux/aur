@@ -1,17 +1,17 @@
 pkgbase = ionosctl-bin
 	pkgdesc = IONOS Cloud CLI
-	pkgver = 6.9.2
+	pkgver = 6.9.3
 	pkgrel = 1
 	url = https://github.com/ionos-cloud/ionosctl
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	source_aarch64 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.9.2/ionosctl-6.9.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 69109c248c95be1c6323f119f64fe3d158ad36aea1a35aa6ca70b9fde43885b4
-	source_i686 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.9.2/ionosctl-6.9.2-linux-386.tar.gz
-	sha256sums_i686 = 7eabd72c988254a3db6110d1c24090d476c34f9d9a4477751fc924e6d70e4859
-	source_x86_64 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.9.2/ionosctl-6.9.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = 45e9e653281b75158ed87c61bd8177d1c1c92a64528ac1154197312e82c1e35a
+	source_aarch64 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.9.3/ionosctl-6.9.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = dd9a9c263cb278ff140f690ad5797738f0997f9b5027a1f284f5ebc4af8822fb
+	source_i686 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.9.3/ionosctl-6.9.3-linux-386.tar.gz
+	sha256sums_i686 = 6e87d6e61422b47f117fa2da4a1671b59df61e82f5bf4a6fc03f8b7f0f5a758c
+	source_x86_64 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.9.3/ionosctl-6.9.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = c1847e1c1a067bf61de4fb8d2fb1a83f0b415d9c0e47620fde2da479a2717a0a
 
 pkgname = ionosctl-bin
