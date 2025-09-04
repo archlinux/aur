@@ -1,6 +1,6 @@
 pkgbase = dte-git
 	pkgdesc = A small, configurable console text editor
-	pkgver = 1.11.1+714+g5a7945a8
+	pkgver = 1.11.1+1555+gf0dbfc23
 	pkgrel = 1
 	url = https://craigbarnes.gitlab.io/dte/
 	arch = x86_64

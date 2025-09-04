@@ -1,6 +1,6 @@
 # Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname=dte-git
-pkgver=1.11.1+714+g5a7945a8
+pkgver=1.11.1+1555+gf0dbfc23
 pkgrel=1
 pkgdesc='A small, configurable console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
@@ -35,5 +35,5 @@ check() {
 
 package() {
     cd "$srcdir/dte"
-    make install V=1 prefix=/usr DESTDIR="$pkgdir"
+    make install-full V=1 prefix=/usr DESTDIR="$pkgdir"
 }
