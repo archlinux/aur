@@ -1,6 +1,6 @@
 pkgbase = python-bytecode
 	pkgdesc = Python module to generate and modify bytecode
-	pkgver = 0.16.2
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/MatthieuDartiailh/bytecode
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-bytecode
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.org/packages/source/b/bytecode/bytecode-0.16.2.tar.gz
-	sha512sums = 5ab859860743f8096117cb45c7b9c93be86cf99953e7e7b8eb56319dc4c33ecb65c2adff68096a76c67505e529eaa824a5d0bd3cf15f8352bb54fddbf8150b8b
+	source = https://pypi.org/packages/source/b/bytecode/bytecode-0.17.0.tar.gz
+	sha512sums = 80ff6cf348ed3322c019d33556f8621d9e552415d14932648f5388e8927e18697155a0e7eb8dc76ea0f5572caf57b0a2d1e432ec141ef85b1910af5a8f0e6442
 
 pkgname = python-bytecode
