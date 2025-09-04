@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pango-design-suite-bin
-pkgver=2022.2
+pkgver=6.7.1
 pkgrel=1
 # epoch=1
 pkgdesc="Pango Design Suite (PDS) 软件是紫光同创自主研发的从HDL描述到位流生成与下载调试的可编程工具套件，为公司全系列FPGA芯片提供高效友好的集成设计环境。该软件支持业界标准的开发流程，已具备支持大规模FPGA芯片的应用开发能力。"
@@ -27,12 +27,13 @@ backup=(etc/${pkgname%-bin}-license.conf)
 options=(!debug !strip !emptydirs !staticlibs)
 install=${pkgname}.install
 _name=PDS
+_year=2022.2
 _os=CentOS
-_mojar=SP6.7
+_mojar=SP${pkgver}
 _min=7.3
-_file_name=${_name}_${pkgver}-${_mojar}-ads
+_file_name=${_name}_${_year}-${_mojar}-ads
 _pkg_file_name=${_file_name}-${_os}${_min}-x64
-# https://www.pangomicro.com/uploads/soft/PDS/PDS_2022.2-SP6.7-ads-OW/CentOS-64bit/PDS_2022.2-SP6.7-ads-CentOS7.3-x64.tar.gz
+# https://www.pangomicro.com/uploads/soft/PDS/PDS_2022.2-SP6.7.1-ads-OW/CentOS-64bit/PDS_2022.2-SP6.7.1-ads-CentOS7.3-x64.tar.gz
 source=(
   "pango-design-suite-license.conf"
   "pango-design-suite-license.sh"
@@ -44,7 +45,7 @@ sha256sums=('36a132b356038a6497d16bed20dc2c1a5539da6bdacf29a82e7a6e4845ece305'
             '66140ded6003519d378165f0c82f0b53329587a840ce7036c83a4a93b76eb8bd'
             '30ac601f2d44cc86731ee17dc1f8d5d714654fd3e6626d5409e5564684f20c67'
             '06aa1d5b573e6e23f3317cdf740d65929b133e09a8c4c0857243ca721bd360bc'
-            'bf14c81761bfc33e60ed4942ed403d1cf61b0837b697ab50bde2abc5261f7a1e')
+            'd7e00eadd36ce24b1ccef778af6117f6c4a0dcde26ee871a94ef281ba2ec8b92')
 # noextract=(${_pkg_file_name}.tar.gz)
 
 package() {
