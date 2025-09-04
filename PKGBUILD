@@ -2,14 +2,14 @@
 
 _pkgname=xfce4-indicator-plugin
 pkgname=${_pkgname}-git
-pkgver=2.4.2+1+g9535eec
+pkgver=2.5.0+99+g9ae1acd
 pkgrel=1
-pkgdesc="Display indicators in the Xfce4 panel"
+pkgdesc="Display indicators in the Xfce4 panel (git checkout)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://docs.xfce.org/panel-plugins/xfce4-indicator-plugin/start'
 license=('GPL')
 depends=('hicolor-icon-theme' 'libayatana-indicator' 'xfce4-panel' 'xdg-utils')
-makedepends=('intltool' 'xfce4-dev-tools' 'git')
+makedepends=('meson' 'git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/panel-plugins/xfce4-indicator-plugin")
@@ -21,16 +21,13 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static
-  make
+  local meson_options=(
+  )
+
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
