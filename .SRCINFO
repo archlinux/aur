@@ -1,10 +1,10 @@
 pkgbase = lkrg-dkms-git
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
-	pkgver = r539.3760e0e
-	pkgrel = 2
-	url = https://www.openwall.com/lkrg/
+	pkgver = r751.5dae254
+	pkgrel = 1
+	url = https://lkrg.org
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	depends = dkms
 	provides = lkrg-dkms
@@ -13,6 +13,6 @@ pkgbase = lkrg-dkms-git
 	source = lkrg-dkms-git::git+https://github.com/openwall/lkrg/
 	source = dkms.conf
 	sha512sums = SKIP
-	sha512sums = 0a1db587e774003d562b78beb290c5041746c3095696daa713bb1913190076f2578fc66b8efc54c7d698866876b9b62920da750d58665a632ba6ad6014eeb00c
+	sha512sums = 199a1656ed24d9de0a0a7b92deaf20d071fe122202d233f4b58b254d3bb5828267db3fc16ffe0fa5013da3bdb6fd9d1829eedaac1c67f4025cd1d24d3017cb3d
 
 pkgname = lkrg-dkms-git
