@@ -1,13 +1,18 @@
 pkgbase = sff
 	pkgdesc = Simple and fast terminal file manager
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codeberg.org/sylphenix/sff
 	arch = x86_64
-	license = BSD
-	depends = glibc
+	license = BSD-2-Clause
 	depends = ncurses
-	source = sff-1.1.tar.gz::https://codeberg.org/sylphenix/sff/archive/1.1.tar.gz
-	sha256sums = SKIP
+	optdepends = xdg-utils: file opening with default application
+	optdepends = 7zip: additional archive format support
+	optdepends = fzf: fuzzy file search
+	optdepends = chafa: image preview
+	optdepends = poppler: PDF thumbnail generation
+	optdepends = ffmpegthumbnailer: video thumbnail generation
+	source = sff-1.2.tar.gz::https://codeberg.org/sylphenix/sff/archive/1.2.tar.gz
+	sha256sums = 09731b27f6e9d6e9700a38ed24acc749b2972d139535be9394f87e83e9ad894b
 
 pkgname = sff
