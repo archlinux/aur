@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.96
+pkgver=0.8.97
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -44,7 +44,7 @@ install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 )
-b2sums=('3f2b18ebf78edd58c808eda50508db9ed8aad4572bc4225928ac2b40fca571ba69af432bd06fb3930930d12e9462c702a45e94b7ac068a90877e25f6f5182dec')
+b2sums=('4fdb564d88bb0f1f6b2e9c640cc3aaaa8da97e2609e409d1f549a6655da9676bbe01b2407a9298f035d04db1840ffb1bb5b19e686acfa6ee535d4516eeede922')
 
 prepare() {
 	cd $pkgname
