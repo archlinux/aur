@@ -1,21 +1,21 @@
-# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
+# Maintainer: enova
 
-# PKGBUILD forked from doas-sudo-shim [https://aur.archlinux.org/packages/doas-sudo-shim] by
-# Maintainer: Jakub Jirutka <jakub@jirutka.cz>
+# PKGBUILD forked from doas-sudo-shim-k [https://aur.archlinux.org/packages/doas-sudo-shim-k] by
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 _pkgname=doas-sudo-shim
-pkgname=doas-sudo-shim-k
+pkgname=doas-sudo-shim-v
 pkgver=0.1.2.1
 pkgrel=2
-pkgdesc="Sudo wrapper which wields doas (includes -k flag to ensure makepkg compatibility!)"
+pkgdesc="Sudo wrapper which wields doas (includes -k flag and -v flag to ensure makepkg and yay compatibility!)"
 arch=(any)
-url="https://github.com/fclivaz42/doas-sudo-shim"
+url="https://github.com/Enovale/doas-sudo-shim"
 license=(ISC)
 provides=(sudo)
 conflicts=(sudo doas-sudo-shim)
 depends=(awk doas sh)
 optdepends=('asciidoctor: manpage generator')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/mckaygerhard/doas-sudo-shim/archive/refs/tags/v0.1.2.1.tar.gz")
-sha256sums=('32719b1bd71d9f47137723ca8fd40c276aff728a910624bb38e35c66d4f132bc')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/Enovale/doas-sudo-shim/archive/refs/tags/v0.1.2v.tar.gz")
+sha256sums=('da5580f24274f8ed2e87da54252463c98602795ad29dd5b7261502c70ec5dc97')
 
 if [ -n "`pacman -Qs asciidoctor`" ]; then
   build() {
