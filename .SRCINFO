@@ -1,0 +1,12 @@
+pkgbase = apache-gravitino
+	pkgdesc = Apache Gravitino: a high-performance, geo-distributed, federated metadata lake
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://gravitino.apache.org/
+	arch = any
+	license = Apache
+	depends = java-runtime>=11
+	source = https://dlcdn.apache.org/gravitino/0.9.1/gravitino-0.9.1-bin.tar.gz
+	sha256sums = 69e1b1eb6fe603d96c737444687bd558fa6f33c25caf77674f80ebed915129bf
+
+pkgname = apache-gravitino
