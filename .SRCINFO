@@ -1,6 +1,6 @@
 pkgbase = python-openvino-telemetry-git
 	pkgdesc = Pythno library for sending statistics data from the OpenVINO toolkit components (git version)
-	pkgver = r58.g4a7e3b6
+	pkgver = r69.gf3e6d01
 	pkgrel = 1
 	url = https://github.com/openvinotoolkit/telemetry/
 	arch = any

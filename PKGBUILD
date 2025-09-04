@@ -1,14 +1,20 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-openvino-telemetry-git
-pkgver=r58.g4a7e3b6
+pkgver=r69.gf3e6d01
 pkgrel=1
 pkgdesc='Pythno library for sending statistics data from the OpenVINO toolkit components (git version)'
 arch=('any')
 url='https://github.com/openvinotoolkit/telemetry/'
 license=('Apache-2.0')
-depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+    'python')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel')
 provides=('openvino-telemetry')
 conflicts=('openvino-telemetry')
 source=('openvino-telemetry'::'git+https://github.com/openvinotoolkit/telemetry.git')
