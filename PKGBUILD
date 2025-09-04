@@ -6,7 +6,7 @@
 # Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 pkgname=scilab
 pkgver=2025.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A scientific software package for numerical computations"
 arch=(i686 x86_64)
 url="https://www.${pkgname}.org"
@@ -98,4 +98,6 @@ package() {
   make DESTDIR="${pkgdir}" install-data install-html
   install -Dm 644 COPYING* -t "${pkgdir}/usr/share/licenses/${pkgname}"
   rm -r "${pkgdir}"/usr/include/nvector
+  rm -r "${pkgdir}"/usr/include/sundials
+  rm -r "${pkgdir}"/usr/include/sunmatrix
 }
