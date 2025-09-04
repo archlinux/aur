@@ -1,13 +1,13 @@
 pkgbase = librdp
 	pkgdesc = Fast Ramer–Douglas–Peucker and Visvalingam-Whyatt line simplification algorithms
-	pkgver = 0.13.10
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/urschrei/rdp
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = librdp-0.13.10.tar.gz::https://github.com/urschrei/rdp/archive/refs/tags/v0.13.10.tar.gz
-	b2sums = 9966edf33deac41117e5983991f0afee49c623e732920f2a77403480f38512e10d876581f48fde70a42ee6c6f3e84ab0973e8a7b0aab9c5f0819bb92e2b11c05
+	source = librdp-0.14.1.tar.gz::https://github.com/urschrei/rdp/archive/refs/tags/v0.14.1.tar.gz
+	b2sums = afa0f74a48dd3c5ad0487bf6135ab26af74a3f354a125709b3571a09a7d9f41773aaae66b147b93f1ad6b1ade937b99d3041933962bb7b95991053e08fd295d8
 
 pkgname = librdp
