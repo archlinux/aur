@@ -1,7 +1,7 @@
 # Maintainer: teraflops <me@priet.us>  
 pkgname=iso2dsd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI to convert SACD ISO to DSD using iso2dsd, sacd_extract and 2064-byte.c patch for non compliant ISOS"
 arch=('x86_64')
 url="http://dsd.sonore.us/iso2dsd"
