@@ -1,0 +1,17 @@
+pkgbase = niri-screen-time-git
+	pkgdesc = Niri screen time tracker
+	pkgver = r78.ge5e223d
+	pkgrel = 1
+	url = https://github.com/probeldev/niri-screen-time
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = custom:none
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = niri-screen-time
+	source = niri-screen-time::git+https://github.com/probeldev/niri-screen-time
+	sha256sums = SKIP
+
+pkgname = niri-screen-time-git
