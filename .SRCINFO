@@ -1,0 +1,16 @@
+pkgbase = shell-plus-plus-git
+	pkgdesc = A friendly and modern functional object oriented language for shell script.
+	pkgver = r495.516c280
+	pkgrel = 1
+	url = https://github.com/alexst07/shell-plus-plus
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = boost183
+	makedepends = readline
+	makedepends = cmake3-bin
+	makedepends = git
+	depends = boost183-libs
+	source = git+https://github.com/alexst07/shell-plus-plus.git
+	sha256sums = SKIP
+
+pkgname = shell-plus-plus-git
