@@ -1,9 +1,9 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
-pkgver=1.12.3
+pkgver=1.12.4
 pkgbase=windsurf
 pkgname=(windsurf{,-electron-latest})
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://windsurf.com/"
 license=('LicenseRef-Windsurf Editor')
@@ -24,7 +24,7 @@ optdepends=('glib2: Move to trash functionality'
 options=('!strip') # for sing of ext ?
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('07a88b123beb656b588dfe7c17b666388630c7b1c7eed1e2cd5a811fe4bd6ec3'
+sha256sums=('92f837698b62c97a2337f2fdbcced069f2c31e7b647fa6af147366bd38c1d48c'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 build() {
 	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
