@@ -1,0 +1,84 @@
+.TH man 6 "4 Sep 2025" "0.3.6" "minetest-worldmapper man page"
+.SH NAME
+
+minetest-worldmapper – Render a map of a Luanti world
+.SH SYNOPSIS
+minetest-worldmapper --world
+.I
+WORLD PATH
+--config
+.I
+CONFIG FILE
+--output
+.I
+OUTPUT IMAGE FILE
+.SH DESCRIPTION
+\fBminetest-worldmapper\fP is a program that renders the map of a Luanti world into an image file.
+
+For every x,z voxel coordinates, the renderer goes down from the top y coordinates until it reaches a node type associated with a color via the config file.
+
+If a color is transparent, the renderer may go further down until a sufficient transparency or the bottom is reached.
+.SH OPTIONS
+.BI -c\  <CONFIG>,\  --config\  <CONFIG>
+.RS 12
+Specify the config file
+.RE
+
+.B -h, --help
+.RS 12
+Print help information
+.RE
+
+.BI -o\  <OUTPUT>,\  --output\  <OUTPUT>
+.RS 12
+The file in which to write the result
+.RE
+
+.B -V, --version
+.RS 12
+Print version information
+.RE
+
+.BI -w\  <WORLD>,\  --world\  <WORLD>
+.RS 12
+World directory path
+.RE
+
+.SH CONFIG FILE
+The config file is in TOML format. Its top-level keys are:
+
+.B node_colors
+.RS 12
+A Table that maps voxel content IDs to hex colour strings. These strings are either in "RRGGBB" (for opaque colours) format or in "RRGGBBAA" format for colours with an alpha channel.
+.RE
+
+.B background_color
+.RS 12
+A hex colour string that serves as a fallback if there is no voxel at this position or there is trasparency left to fill up.
+.RE
+
+.B sufficient_alpha
+.RS 12
+A value between 0 and 255 that determines until which alpha value nodes at the current pixel position are seeked. If sufficient_alpha is reached, computation will continue with the next pixel.
+.RE
+
+.B hillshading
+.RS 12
+A table describing the relief rendering, visualising heights and depths of the terrain. It has two subkeys:
+
+.B enabled
+.RS 4
+A boolean that determines if relief rendering is activated.
+.RE
+.B min_alpha
+.RS 4
+Determines at which alpha value a node is considered as "terrain".
+.RE
+    
+.SH SEE ALSO
+.BR
+luanti(6), minetest-worldmapper(6)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Jan Ole Zabel (jan.zabel@posteo.de)
