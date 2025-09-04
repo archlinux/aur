@@ -140,6 +140,7 @@ EOF
         cd "$srcdir/duckstation"
         sed -i 's/archlinux/marchlinux/g' CMakeModules/DuckStationBuildSummary.cmake
         sed -i 's/\/usr\/lib/\/usr\/local\/lib/g' src/duckstation-qt/qthost.cpp
+        sed -i 's/StartsWithNoCase/EndsWithNoCase/g' src/duckstation-qt/qthost.cpp
     fi
 
 }
