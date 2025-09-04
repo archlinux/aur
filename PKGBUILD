@@ -1,14 +1,14 @@
 # Maintainer: DanVJ <geral@danvj.pt>
 
 pkgname=uam
-pkgver=1.3.337
+pkgver=1.3.789
 pkgrel=1
 pkgdesc='Utopia Alternative Miner'
 arch=('x86_64')
 url='https://u.is'
 license=('Unknown')
 source=("$pkgname-$pkgver.deb::https://update.u.is/downloads/uam/linux/uam-latest_amd64.deb")
-sha256sums=('e64569936370b2c4a7404c090027d1ec75687161a82d9d2a74d0aee6c773c709')
+sha256sums=('8a3e1091d66963e9bfc8a9da86b0eceb78c0900a5999010aaa023aea51a6f296')
 
 prepare() {
   tar xJf data.tar.xz
