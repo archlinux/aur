@@ -2,16 +2,16 @@
 
 _pkgname=thunar-media-tags-plugin
 pkgname=${_pkgname}-git
-pkgver=0.3.0+106+g8a66300
+pkgver=0.6.0+7+g5e56430
 pkgrel=1
 pkgdesc="Adds special features for media files to the Thunar File Manager (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-license=('GPL')
-url="http://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin"
-groups=('xfce4-goodies')
-depends=('taglib' 'thunar>=1.7.0')
-makedepends=('intltool' 'xfce4-dev-tools' 'git')
-provides=("${_pkgname}=${pkgver%\.r*}")
+license=('GPL-2.0-or-later')
+url="https://docs.xfce.org/xfce/thunar/media-tags"
+groups=('xfce4-goodies-git')
+depends=('taglib' 'thunar')
+makedepends=('meson' 'xfce4-dev-tools' 'git')
+provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/thunar-plugins/${_pkgname}")
 sha256sums=('SKIP')
@@ -22,19 +22,14 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  local meson_options=(
+    --localstatedir=/var
+  )
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }

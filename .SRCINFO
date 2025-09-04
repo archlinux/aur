@@ -1,23 +1,22 @@
 pkgbase = thunar-media-tags-plugin-git
 	pkgdesc = Adds special features for media files to the Thunar File Manager (git checkout)
-	pkgver = 0.3.0+106+g8a66300
+	pkgver = 0.6.0+7+g5e56430
 	pkgrel = 1
-	url = http://goodies.xfce.org/projects/thunar-plugins/thunar-media-tags-plugin
+	url = https://docs.xfce.org/xfce/thunar/media-tags
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	groups = xfce4-goodies
-	license = GPL
-	makedepends = intltool
+	groups = xfce4-goodies-git
+	license = GPL-2.0-or-later
+	makedepends = meson
 	makedepends = xfce4-dev-tools
 	makedepends = git
 	depends = taglib
-	depends = thunar>=1.7.0
-	provides = thunar-media-tags-plugin=0.3.0+106+g8a66300
+	depends = thunar
+	provides = thunar-media-tags-plugin=0.6.0
 	conflicts = thunar-media-tags-plugin
 	source = thunar-media-tags-plugin::git+https://gitlab.xfce.org/thunar-plugins/thunar-media-tags-plugin
 	sha256sums = SKIP
 
 pkgname = thunar-media-tags-plugin-git
-
