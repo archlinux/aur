@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
@@ -52,4 +52,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('a181a84104c270669c694c360e41272c')
+md5sums=('f6f5674b5d7394203c10cb08561497f9')
