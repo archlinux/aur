@@ -1,0 +1,46 @@
+pkgbase = gradle8
+	pkgdesc = Powerful build system for the JVM
+	pkgver = 8.14.3
+	pkgrel = 1
+	url = https://gradle.org/
+	arch = any
+	license = Apache
+	makedepends = asciidoc
+	makedepends = git
+	makedepends = groovy
+	makedepends = java-environment=11
+	makedepends = java-environment=17
+	makedepends = java-environment=21
+	makedepends = xmlto
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = sed
+	depends = which
+	source = https://services.gradle.org/distributions/gradle-8.14.3-src.zip
+	source = https://services.gradle.org/distributions/gradle-8.14.3-all.zip
+	source = gradle.sh
+	sha256sums = 483b6cfbbd0727ed3f141a76b9d1de5f7fbd548dc631360f7182bf1a9caf6ea9
+	sha256sums = ed1a8d686605fd7c23bdf62c7fc7add1c5b23b2bbc3721e661934ef4a4911d7c
+	sha256sums = 1cdf7f30f91a8f81d5608ce2d005ce1105ecae19626db72a56a7b5f426e5609d
+	sha512sums = a85ea6714e60e78344b412756903800f772d3fcf1767e7d7566a77b5036bee76593c365d8ed3f1cb78fa1d08bdaa9f0cb57f5ac4ff39f08e94ba18152de5a47f
+	sha512sums = 3c7a4acaf8382334ea39d55eda737c4399cf02890d02c14718730e401f930ae679b49f88d2a16c1455de58e7f8f396f49207d07cc33e109f40af103c0bc48758
+	sha512sums = 597f72a376e9b582da6ac012acf3d681d21da1a0a3124c70639558737e7adbd937a260bdc5c2a215dfe32493b974fd9096b79710a1e185745f65a700e00091ef
+
+pkgname = gradle8
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = sed
+	depends = which
+	depends = java-environment>=21
+	optdepends = gradle8-doc: gradle8 documentation
+	optdepends = gradle8-src: gradle8 sources
+
+pkgname = gradle8-doc
+	pkgdesc = Powerful build system for the JVM (documentation)
+	options = !strip
+
+pkgname = gradle8-src
+	pkgdesc = Powerful build system for the JVM (sources)
+	options = !strip
