@@ -4,19 +4,19 @@
 
 pkgname=shader-slang
 pkgver=2025.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
 license=('Apache-2.0')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+	"$pkgname-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
-	"glslang::git+https://github.com/KhronosGroup/glslang#commit=8b822ee8ac2c3e52926820f46ad858532a895951"
 )
 sha256sums=(
 	'db81c46c2461f8f1b18df348e30192aa62f029ef708c07a8f80341648f19b7ce'
-	'SKIP'
+	'a1f999ad4493f176131e0b68e58c27c36e659ebd8b01f38fae989f8e1a179154'
 	'SKIP'
 )
 makedepends=(
@@ -28,7 +28,7 @@ makedepends=(
 	vulkan-headers
 )
 depends=(
-	#glslang # TODO https://github.com/shader-slang/slang/issues/8333
+	glslang
 	libx11
 	llvm
 	lz4
@@ -67,10 +67,11 @@ prepare() {
 	perl -0777 -pi -e 's/install\s*\(\s*DIRECTORY\s*"\$\{slang_SOURCE_DIR\}\/include\".*?\)\s*//s' \
 		CMakeLists.txt
 
-	# TODO https://github.com/shader-slang/slang/issues/8333
-	#sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
-	#	-e "/localintermediate.h/d" \
-	#	-i "source/slang-glslang/slang-glslang.cpp"
+	patch -Np1 -i "$srcdir/$pkgname-8369.patch"
+
+	# https://github.com/shader-slang/slang/pull/8369#issuecomment-3255737218
+	sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
+	   -i "source/slang-glslang/slang-glslang.cpp"
 }
 
 build() {
@@ -90,13 +91,10 @@ build() {
 		-DSLANG_USE_SYSTEM_SPIRV_HEADERS=TRUE \
 		-DSLANG_USE_SYSTEM_SPIRV_TOOLS=TRUE \
 		-DSLANG_USE_SYSTEM_UNORDERED_DENSE=TRUE \
-		-DSLANG_OVERRIDE_GLSLANG_PATH="$srcdir" \
+		-DSLANG_USE_SYSTEM_GLSLANG=TRUE \
 		-DSLANG_OVERRIDE_LUA_PATH="$srcdir" \
 		-DSLANG_SLANG_LLVM_FLAVOR=DISABLE \
 		-DSLANG_ENABLE_GFX=FALSE
-
-	# TODO https://github.com/shader-slang/slang/issues/8333
-		#-DSLANG_USE_SYSTEM_GLSLANG=TRUE \
 
 	cmake --build build
 }
