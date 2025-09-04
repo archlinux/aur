@@ -2,7 +2,7 @@
 pkgname=magmatv-git
 _gitname=magmatv
 pkgver=0.1.6.r5.gd73dae3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for manage and play series and films from any compliant torrent rss feed"
 arch=('any')
 url="https://gitlab.com/MagmaTV/magmatv"
