@@ -1,7 +1,7 @@
 pkgbase = ruby-pleaserun
 	pkgdesc = pleaserun
 	pkgver = 0.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/pleaserun
 	arch = any
 	license = Apache-2.0
