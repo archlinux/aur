@@ -4,8 +4,8 @@ _appauthor=ClementNerma
 _appname=ReShell
 _execname=${_appname,,}
 pkgname=${_execname}-bin
-pkgver=0.1.0_1442
-pkgrel=2
+pkgver=0.1.0_1445
+pkgrel=1
 pkgdesc="A modern shell for the future"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_appauthor}/${_appname}"
@@ -32,8 +32,8 @@ sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
             '4de35e1288bd083b3eb3dfa609c13d7f6b270c34d8bff7c8f2bd779591b7eac1'
             '343653a05fb09514b663de3828019ea0ab50df0898ac94789d0bdbff950f935d'
             '306c6c95be38ddc4eb30e1b28413ea3a7e13d1767ff7a85a4802f7b70fbfeba8')
-sha256sums_x86_64=('61eea1cbe9554af15baf2c9ade0be88b362f76afba54211c964437a81e48de96')
-sha256sums_aarch64=('4e37994b72f95cff92798e1291015c8db507ae42685f7a0650aa44732eb84ffc')
+sha256sums_x86_64=('735784500ca53403d8945aa52dd5f9545502e287c6c5ed45b95ea1c9e7fe1b10')
+sha256sums_aarch64=('26c957e2d23c03b841ce9eeff2d40a332618b6129e2bf7df4236300630ca7bff')
 
 prepare() {
 	cd "${srcdir}/" || exit
