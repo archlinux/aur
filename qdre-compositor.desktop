@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=qdre-compositor
+Name=QDRE Compositor
+OnlyShowIn=MATE;OPENBOX;XFCE;LXQt;LXDE;

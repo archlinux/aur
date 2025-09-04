@@ -1,0 +1,55 @@
+pkgbase = qdre
+	pkgver = 0.0.0.r105.ca63c24
+	pkgrel = 1
+	url = https://gitlab.com/zaps166/qdre
+	arch = x86_64
+	groups = qdre
+	license = MIT
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = fakeroot
+	options = !lto
+	source = git+https://gitlab.com/zaps166/qdre.git#branch=master
+	source = qdre-compositor.desktop
+	sha256sums = SKIP
+	sha256sums = 17f77a274e94217d0e7b2712580b0e19569f61b3b9d67e8eb890ed80763ae39c
+
+pkgname = qdre-core-git
+	depends = qt6-base
+	depends = glib2
+
+pkgname = qdre-gui-git
+	depends = qdre-core-git
+	depends = exiv2
+
+pkgname = qdre-compositor-git
+	pkgdesc = Lightweight X11 compositor with dconf settings
+	depends = qdre-core-git
+	depends = libxcb
+	optdepends = xfwm4-z166: silences a lot of error logs
+
+pkgname = qdre-compositor-autostart
+	pkgdesc = Autostart for QDRE Compositor
+	depends = qdre-compositor-git
+
+pkgname = qdre-desktop-git
+	pkgdesc = Lightweight X11 and Wayland desktop with wallpaper and icons in grid layout
+	install = qdre-desktop.install
+	depends = qdre-gui-git
+	depends = layer-shell-qt
+	optdepends = xfce4-terminal: default terminal
+	optdepends = engrampa: archive support
+	optdepends = zensu: run as administrator
+
+pkgname = qdre-viewer-git
+	pkgdesc = Lightweight image viewer
+	depends = qdre-gui-git
+	depends = exiv2
+	optdepends = qt6-imageformats: more image formats
+	optdepends = kimageformats: more image formats

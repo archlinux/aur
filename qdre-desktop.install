@@ -1,0 +1,9 @@
+post_install() {
+    echo 'To use qdre-desktop on Xfce4 X11 session, execute:'
+    echo '    xfconf-query -c xfce4-session -p /sessions/Failsafe/Client4_Command -t string -a -s qdre-desktop'
+}
+
+post_remove() {
+    echo 'To restore default desktop on Xfce4 X11 session, execute:'
+    echo '    xfconf-query -c xfce4-session -p /sessions/Failsafe/Client4_Command -r'
+}
