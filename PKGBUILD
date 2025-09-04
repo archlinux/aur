@@ -1,27 +1,24 @@
 # Maintainer: k8ie <k8ie@mcld.eu>
 pkgname=('libproidplus-gui')
 pkgver=2.5.0
-pkgrel=1
-_filename="libproidplus-gui_${pkgver}-0_amd64"
-_extractedfilename="libproidplus-gui-${pkgver}-0.amd64"
+pkgrel=2
+_filename="libproidplus-gui-${pkgver}-0.amd64"
 pkgdesc="Library for ProID+ SmartCards"
-makedepends=(jq)
+makedepends=(sed curl)
 arch=('x86_64')
 url="https://proid.cz/"
 license=('custom:EULA')
 
 prepare () {
-	_downloadurl=$(curl -X 'GET' 'https://api.appcenter.ms/v0.1/public/sdk/apps/99e7966f-a82f-4930-9ba2-dad36fc61924/distribution_groups/cfb2aaa1-0ae6-4937-8b7e-b99b6e3f03cf/releases/latest' -H 'accept: application/json' | jq '.download_url' | tr -d '"')
-	# echo $_downloadurl
-	curl $_downloadurl -L --insecure --output "$_filename.deb.zip"
-	mkdir "$srcdir/$pkgname"
-	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/${_filename}.deb.zip"
-	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/$pkgname/${_extractedfilename}.deb"
-	echo "$(cat $srcdir/$pkgname/${_extractedfilename}.deb.sha256 | cut -d ' ' -f1) $srcdir/$pkgname/${_extractedfilename}.deb" | sha256sum --check --status
+	_sourceurl=$(curl https://appcenter.proid.cz/download\?solutionId\=0e627b2e-fe68-49e9-aef9-a2ead6a21d9b | grep sasurl | sed -n 's/.*sasurl:"\([^"]*\)".*/\1/p' || exit 1)
+	curl -OJ $_sourceurl
+	bsdtar -xf "$srcdir/${_filename}.deb.zip"
+	echo "$(cat $srcdir/$_filename.deb.sha256 | cut -d ' ' -f1) $srcdir/$_filename.deb" | sha256sum --check --status
+	bsdtar -xf "$srcdir/$_filename.deb"
 }
 
 package () {
-	bsdtar -C "$pkgdir" -xf "$srcdir/$pkgname/data.tar.xz"
+	bsdtar -C "$pkgdir" -xf "$srcdir/data.tar.xz"
 	mv "$pkgdir/usr/lib/x86_64-linux-gnu/pkcs11" "$pkgdir/usr/lib/pkcs11"
 	ln -s "/usr/lib/x86_64-linux-gnu/libproidproxyp11.so" "$pkgdir/usr/lib/pkcs11/"
 	find $pkgdir -type d -exec chmod -c 755 {} +
