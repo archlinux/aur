@@ -15,7 +15,7 @@ pkgbase = tkginstaller-git
 	provides = tkginstaller
 	conflicts = tkginstaller
 	replaces = tkginstaller
-	source = tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/main/tkginstaller.sh
+	source = tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkg_install.sh
 	sha256sums = SKIP
 
 pkgname = tkginstaller-git
