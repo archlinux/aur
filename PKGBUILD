@@ -3,15 +3,15 @@
 
 pkgname=gnome-shell-extension-app-icons-taskbar
 _pkgbase=aztaskbar
-pkgver=30.1
-pkgrel=2
+pkgver=30.2
+pkgrel=1
 pkgdesc="A simple app icon taskbar. Show running apps and favorites on the main panel."
 arch=('any')
 url="https://gitlab.com/AndrewZaech/aztaskbar"
 license=('GPL3')
 depends=('dconf' 'gnome-shell>=1:45')
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-b2sums=('cc038abc5827502d7bd64237d647e02dcf14c148bba95b32f82afccb609d8cb65ca241a51a174b857f203451f353be88357d2eedf0e978855d40e1a107c67705')
+b2sums=('5005a8b06bc0b7063c394d671c464fd8733edce1d697631c12f5614eca486cb5e499ebff767aa07e7f05744ca2c159b60a3b3e294111db0382f9716689e296c8')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
