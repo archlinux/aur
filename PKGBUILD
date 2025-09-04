@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=sdl2
-pkgver=2.32.8
+pkgver=2.32.10
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('alsa-lib: ALSA audio driver'
             'pipewire: PipeWire audio driver'
             'libdecor: Wayland client decorations')
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz")
-sha512sums=('484c33638e7bd1002815bb1f6a47a292d1eaf0b963598dde65f4a3e077dfe75ee35b9ea4b3b767365b3ef4f613c4d69ce55b5e96675de562994344e83a978272')
+sha512sums=('b67ebdb46bc3b41c974113937e15445e47a6e115692761e2812c3965e85b9ca4d804633de6369fa3dd36cc77f5d08655570c1707245b2c46f88114aa3238fd1b')
 
 prepare(){
   cd "$srcdir/SDL2-$pkgver"
