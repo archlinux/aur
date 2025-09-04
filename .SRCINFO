@@ -1,0 +1,13 @@
+pkgbase = zipzap
+	pkgdesc = Shell tool for jumping across directories in terminals
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/27Co/ZipZap
+	install = zipzap.install
+	arch = any
+	license = MIT
+	conflicts = zipzap-git
+	source = zipzap-0.0::https://github.com/27Co/ZipZap/archive/v0.0.tar.gz
+	sha256sums = 75b1b573fd0fc614b938946663660005e283d219ca9ac10c00b228697a554a43
+
+pkgname = zipzap

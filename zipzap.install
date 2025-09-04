@@ -1,0 +1,37 @@
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+    echo -e "\e[1;32mzipzap (version $1) installed successfully!"
+    echo -e "\e[1;34mAdd the following to your shell configuration file (.bashrc, .zshrc, etc):"
+    echo
+    echo -e "\e[0;33msource /usr/share/zipzap/zipzap.sh\e[0m"
+    echo
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+post_remove() {
+    echo -e "\e[1;32mzipzap (version $1) removed successfully"
+    echo -e "\e[1;34mRemove from your shell configuration file: \e[0;33msource /usr/share/zipzap/zipzap.sh\e[0m"
+    echo -e "\e[1;34mTo remove configuration directory, run: \e[0;33mrm -r ~/.config/zipzap\e[0m"
+}
