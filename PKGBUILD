@@ -1,6 +1,6 @@
 # Maintainer: Roy <roymedina@me.com>
 pkgname=observer-ai
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Observer - AI-powered application built with Tauri"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'libappindicator-gtk3' 'librsvg' 'cargo' 'npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Roy3838/Observer/archive/v$pkgver.tar.gz")
-sha256sums=('c1867bcb6dc3f15aeb7a147de6722758d81c078ebd44b44b8861ddc0986a4724')
+sha256sums=('9050e6bdfc7ada89b7c840d1ce818881a81c372203b92200a28c211bdd936f44')
 
 prepare() {
     cd "$srcdir/Observer-$pkgver/app"
