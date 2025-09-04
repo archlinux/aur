@@ -23,7 +23,7 @@ _clangbuild=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.14.1
+pkgver=6.16.4
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -33,11 +33,13 @@ makedepends=(
   bc
   cpio
   gettext
-  git
   libelf
   pahole
-  python
   perl
+  python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 )
@@ -47,32 +49,30 @@ options=(
   !strip
 )
 _srcname=linux-${pkgver}
-_kernel_base_commit=22a8fa206fbb8df658d43dedb2096efc291bc574
+_kernel_base_commit=be15dab9a451155bdf3f5278608fe8dc67e07cc1
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=e1171c31990b347e32f3ffa3db4e4c15a972d62b
-_prjc_version=6.14-r0
+_arch_config_commit=8099cbabbebc6ea4539efa9f0113672f54cdc42b
+_prjc_version=6.16-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
-_gcc_more_v=20241001
+_gcc_more_v=20250818.2
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${_arch_config_commit}/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
-  "sched_numa_hop_mask.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/58a9cabf63a961c5fc501cf1ade12e1dc6029642.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1aa584824d71cf7ac25d3b848aa8c00f7f172dc2491972cb0b4eeebdd491f0f5dc000c55f825da656f3447c3a38eb8d480c5f98927339811247f2cc8c82e3c50'
+b2sums=('251feef2f995c155850eac2fce5b89f37f39e9f13b6a4e6873370fdc69654692c6bf6c92f04ca7c0b5fd6088d74442afb68db71d2cc18691e23c61b0be714f34'
         'SKIP'
-        '5e071c1f919c1af45c262dde4aedfb99f90e1a43696ba023223726f79d757d3389b38b1622bd2f47d02a26c1f931a7d472beed481d30f974f0b0dfd3acdd4432'
-        '2aaf08181d515caf32931a0fa8fa83f22a26364edf7fe9e9820da42125d529f9a6c3c895fd2efe7d0cad881ab3db1ec30fa3953b6e2c7296fb363e4c7202d4f7'
-        '11c6a4b815cd456e0f314b9695890fc5a1c393171d4443a673dc826fb2445359b9678850d17bbd948a294ec9c7757a582faa58a812a888c65f1467bcda63ae60'
-        '441ebd9c8d3f5d23274e6722ba78cb539cd6628a1059c0cc27fb0651a07aeb9a83f8e625ec3897c9ceb42ae1437f770d2f75f6c99d8487d72ccd48be0e0a3c2b'
-        '07318d94a39ffe5fd252836a7a0d872c217bf57da25cab0411f04676273027763237b9eb8c83bf808c77e2f1b211469f740baf28fe8b6b739dcaf556b54a4ddb')
+        '8e28d86a7621302a27c9c817d07d2d7186c3702a458bb21a955cf6cf2a8a52d64e9570b4a43415b575bc85674041baf46f42085602854d74021efe8337dcac2d'
+        '3a4184da40a5b775682c5d2dda323580da090ba2662c3abd0ca2e16eabc7b939ee7787cc83448ba750a4f3448354bafd6c27904a6a8dc1704ba5df30750d27a7'
+        '58b007e983845716a777b81ca459cbb075f8618654eacbff0690581057632eda494a0238034d9f3e84d504a4a223cb6d895074f0acdfe050a5f9b36a9d981c6d'
+        'f748d966f60efbc9e186b81e2cf70a04a351e1f0e414b10d2dca4e351ff33c3a1c880d5a2c8a1dbc69aed454a483ae63d6394b662d2892ced21f75d7c82c618c')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -122,9 +122,6 @@ prepare() {
   echo "Applying patch ${_prjc_patch}..."
   patch -Np1 -i "$srcdir/${_prjc_patch}"
 
-  # https://gitlab.com/alfredchen/linux-prjc/-/merge_requests/33
-  #patch -Np1 -i "$srcdir/sched_numa_hop_mask.patch"
-
   if [[ -n "$_clangbuild" ]]; then
     scripts/config -e LTO_CLANG_THIN
     export _LLVM=1
@@ -142,11 +139,11 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  #patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
 
   # since there are multiple options in the above patch (uarch + ISA setting), the yes method that worked
   # in the past will no long work so remove it
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  _make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
 
   # @@@ this is a sed target for repo-ck build script
 
