@@ -12,7 +12,7 @@
 +    set(OV_CPACK_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
 +    set(OV_CPACK_OPENVINO_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/openvino")
 +    set(OV_CPACK_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/openvino")
-+    set(OV_CPACK_LICENSESDIR "${CMAKE_INSTALL_DATAROOTDIR}/licenses/openvino-git")
++    set(OV_CPACK_LICENSESDIR "${CMAKE_INSTALL_DATAROOTDIR}/licenses/openvino")
 +    set(OV_CPACK_SAMPLESDIR "${CMAKE_INSTALL_DATAROOTDIR}/openvino/samples")
      set(OV_CPACK_WHEELSDIR wheels)
      set(OV_CPACK_DEVREQDIR tools)
@@ -105,7 +105,7 @@
  endif()
 --- a/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
-@@ -78,7 +78,7 @@ ov_add_target(ADD_CPPLINT
+@@ -68,7 +68,7 @@ ov_add_target(ADD_CPPLINT
                LINK_LIBRARIES PRIVATE ${DEPENDENCIES})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -114,7 +114,7 @@
                            CXX_STANDARD 17)
  
  #
-@@ -86,13 +86,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
+@@ -76,13 +76,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
  #
  
  install(TARGETS ${TARGET_NAME}

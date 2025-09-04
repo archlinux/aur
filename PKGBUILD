@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.1.0.r728.g51b00a6ef9a
+pkgver=2025.3.0.r121.g08360718162
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -57,7 +57,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-protobuf23-fix.patch'
-        '050-openvino-gcc15-fix.patch'::'https://github.com/openvinotoolkit/openvino/pull/30403/commits/29fb5d01e58b614f7eb2c3919f737f7f050e8051.patch')
+        '040-openvino-fix-version-check.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -81,10 +81,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f53981fbcd166259eee93b304792fdb8443d539348c781433993998da19574a8'
+            'f595a7d868acf53952b52bcfad598b888bd309306699e52f98e5e96a57304f50'
             'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52'
-            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce'
-            'e384d59631b5c5f69ecfb9589dc053995c901d03d738e2e3da8b5a59bcd34272')
+            'e22a5dae3b99f57a846b9309984403a0af9ce445e6aed0dea1d632116e404aed'
+            '8721d6522af1b3e27379ffa19b1aa6816f59fc92e8f641a1d14313aaedd718df')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -122,11 +122,13 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
-
+    
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-openvino-protobuf23-fix.patch"
-    patch -d openvino -Np1 -i "${srcdir}/050-openvino-gcc15-fix.patch"
+    
+    # # https://github.com/openvinotoolkit/openvino/issues/31618
+    patch -d openvino -Np1 -i "${srcdir}/040-openvino-fix-version-check.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -150,6 +152,7 @@ build() {
     export CXXFLAGS+=" -isystem${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include"
     
     # note: does not accept 'None' build type
+    # note: protopipe currently requires opencv 4.13.0, still unreleased at the time of writing
     cmake -B build -S openvino \
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
@@ -163,7 +166,7 @@ build() {
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_CPPLINT:BOOL='OFF' \
         -DENABLE_INTEL_NPU:BOOL='ON' \
-        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='ON' \
+        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='OFF' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
         -DENABLE_PLUGINS_XML:BOOL='ON' \
         -DENABLE_PYTHON:BOOL='ON' \
@@ -208,14 +211,17 @@ package_openvino-git() {
     
     mv "${pkgdir}/usr/lib/openvino"/libopenvino_intel_gpu_plugin.so intel-gpu-plugin/usr/lib/openvino
     mv "${pkgdir}/usr/lib/openvino"/libopenvino_intel_npu_plugin.so intel-npu-plugin/usr/lib/openvino
-    mv "${pkgdir}/usr/bin"/ov-{compile_tool,protopipe,single-image-test} intel-npu-plugin/usr/bin
-    mv "${pkgdir}/usr/share/doc/openvino"/README-{compile_tool,protopipe,single-image-test}.md intel-npu-plugin/usr/share/doc/openvino
+    #mv "${pkgdir}/usr/bin/ov-protopipe" intel-npu-plugin/usr/bin
+    mv "${pkgdir}/usr/bin"/ov-{compile_tool,single-image-test} intel-npu-plugin/usr/bin
+    #mv "${pkgdir}/usr/share/doc/openvino/README-protopipe.md" intel-npu-plugin/usr/share/doc/openvino
+    mv "${pkgdir}/usr/share/doc/openvino"/README-{compile_tool,single-image-test}.md intel-npu-plugin/usr/share/doc/openvino
     
     local _pyver
     _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     mv "${pkgdir}/usr/lib/python${_pyver}" .
     
-    cp "${pkgdir}/usr/share/licenses/${pkgname}"/* licenses
+    cp "${pkgdir}/usr/share/licenses/openvino"/* licenses
+    mv "${pkgdir}/usr/share/licenses/openvino" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_openvino-intel-gpu-plugin-git() {
