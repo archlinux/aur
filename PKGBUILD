@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-mail-bin
 _pkgname=ElectronMail
-pkgver=5.3.1
-_electronversion=37
+pkgver=5.3.3
+_electronversion=38
 pkgrel=1
 pkgdesc="Unofficial ProtonMail Desktop App.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,11 +20,11 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bdbdd5d251af13a478cdda1c743833d17add08a6b81d3273bfef819a0d638c80'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('d646e02c16c7d2effb3d0a9ff151a266d61cd6048ddb258426705bf6d0a420ac'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
