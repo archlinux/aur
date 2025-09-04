@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=visNetwork
-_pkgver=2.1.2
+_pkgver=2.1.4
 pkgname=r-${_pkgname,,}
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Network Visualization using 'vis.js' Library"
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('47c99d42fc89e6ae929257b2648d998c5ffed60dff97ad7e47613f5a0c1ddc84')
+sha256sums=('483794988dd808424f5457e510e3de212519b690da281f70b14aaf63038963da')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
