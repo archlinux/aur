@@ -2,7 +2,7 @@
 
 pkgname=buildcache
 pkgver=0.31.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced compiler accelerator"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/bits-n-bites/buildcache"
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cmake')
 optdepends=('lua')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/bits-n-bites/buildcache/-/archive/v$pkgver/buildcache-v$pkgver.tar.gz")
-sha256sums=('af751ae880ca260340b24a026646cf62e88b01b3c90d03613bb43120494409b8')
+sha256sums=('d725e89917209d3a90e457cfa2904240790c4f0a5753643884a9b682a55f40be')
 
 
 build() {
