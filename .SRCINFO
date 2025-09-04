@@ -1,6 +1,6 @@
 pkgbase = hhd
 	pkgdesc = Handheld Daemon. A tool for managing the quirks of handheld devices.
-	pkgver = 3.19.7
+	pkgver = 3.19.8
 	pkgrel = 1
 	url = https://github.com/hhd-dev/hhd
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = hhd
 	depends = python-pyserial
 	depends = lsof
 	optdepends = hhd-user: allows running hhd as a user service.
-	source = https://pypi.python.org/packages/source/h/hhd/hhd-3.19.7.tar.gz
-	sha512sums = a2d72327c046963a6b279f553993f1fc6e989d8801f9756428ece723c33f301d451ed6f9f43aa287025ca7083463d179382f002322373b8a961e7b3f2c2e72ff
+	source = https://pypi.python.org/packages/source/h/hhd/hhd-3.19.8.tar.gz
+	sha512sums = 69193430121331ce76d45df1d5a202a8a38e423201b18ccd7147c9874ac98767b93c2b5b86f3ea3738e289981ec6a49455990adae24b8339298d1c01fcea6c11
 
 pkgname = hhd
