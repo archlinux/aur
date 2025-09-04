@@ -1,6 +1,6 @@
 pkgbase = firedragon
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.2.1
+	pkgver = 12.3.0
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -61,11 +61,9 @@ pkgbase = firedragon
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = firedragon-source-v12.2.1.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.2.1/downloads/firedragon-source.tar.zst
+	source = firedragon-source-v12.3.0.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.0/downloads/firedragon-source.tar.zst
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	source = fix-removed-settings-files.patch
-	sha256sums = 2f5807dda0c35303e84945bdba5cdae4783e51ec217c3cdd0b322a5d536d9794
+	sha256sums = 924ef1e351b62c4afc070abaceeea5ff2e067ed180a9314faba0fdecafc7e787
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
-	sha256sums = 9a1f613ef715e60a5c6c6514fb33f1881e5bd670beba1bcfe3af0559038c878f
 
 pkgname = firedragon
