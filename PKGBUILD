@@ -1,7 +1,7 @@
 # Maintainer: Burhanverse <contact@burhanverse.eu.org>
 pkgname=fagram-bin
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram Desktop based messenger with Feature-rich modifications."
 arch=(x86_64)
 url="https://github.com/FajoX1/fagramdesktop"
@@ -19,7 +19,7 @@ options=(!debug)
 
 source=("https://github.com/burhancodes/fagram-rpm/releases/download/v${pkgver}/fagram-v${pkgver}.tar.gz")
 
-sha256sums=('2c35dc131bf17563c14d900a4a2dbadd2a14c65e0b6736feee967976a994d2fc')
+sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/"
@@ -40,7 +40,7 @@ package() {
     chrpath --delete "${pkgdir}/usr/bin/fagram"
 
     # Desktop launcher
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/fagram.png" "${pkgdir}/usr/share/pixmaps/fagram.png"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/org.fagram.png" "${pkgdir}/usr/share/pixmaps/fagram.png"
     install -Dm644 "${srcdir}/usr/share/applications/org.fagram.desktop" "${pkgdir}/usr/share/applications/org.fagram.desktop"
 
     # DBus service
@@ -54,7 +54,13 @@ package() {
     for icon_size in 16 32 48 64 128 256 512; do
         icon_dir="${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
         install -d "${icon_dir}"
-        install -m644 "${srcdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/fagram.png" "${icon_dir}/fagram.png"
+        install -m644 "${srcdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/org.fagram.png" "${icon_dir}/org.fagram.png"
     done
+
+    # Symbolic icons
+    install -d "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
+    install -m644 "${srcdir}/usr/share/icons/hicolor/symbolic/apps/org.fagram-symbolic.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/org.fagram-symbolic.svg"
+    install -m644 "${srcdir}/usr/share/icons/hicolor/symbolic/apps/org.fagram-mute-symbolic.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/org.fagram-mute-symbolic.svg"
+    install -m644 "${srcdir}/usr/share/icons/hicolor/symbolic/apps/org.fagram-attention-symbolic.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/org.fagram-attention-symbolic.svg"
 }
 
