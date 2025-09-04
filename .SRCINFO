@@ -1,11 +1,14 @@
 pkgbase = python-system_hotkey
 	pkgdesc = Python library for system wide hotkeys
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/hhannine/system_hotkey310
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-xcffib
