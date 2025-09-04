@@ -1,13 +1,13 @@
-# Contributor: Kim Scarborough <sluggo@unknown.nu>
+# Contributor: Kim Scarborough <kim@scarborough.kim>
 
 pkgname=treeline
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Outliner and PIM which stores information in a tree structure"
 arch=('any')
 url="http://treeline.bellz.org/";
 license=('GPL2')
-depends=('python-lxml' 'python-pyqt5')
+depends=('python-lxml' 'python-pyqt6')
 optdepends=('aspell' 'ispell' 'hunspell')
 source=("https://github.com/doug-101/TreeLine/releases/download/v${pkgver}/treeline-${pkgver}.tar.gz"
 	"treeline.xml")

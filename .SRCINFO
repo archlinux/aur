@@ -1,12 +1,12 @@
 pkgbase = treeline
 	pkgdesc = Outliner and PIM which stores information in a tree structure
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://treeline.bellz.org/
 	arch = any
 	license = GPL2
 	depends = python-lxml
-	depends = python-pyqt5
+	depends = python-pyqt6
 	optdepends = aspell
 	optdepends = ispell
 	optdepends = hunspell
