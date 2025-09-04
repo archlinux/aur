@@ -1,0 +1,25 @@
+src/
+pkg/
+coolerdash/
+*.pkg.tar.*
+*.tar.*
+*.zip
+*.gz
+*.xz
+*.zst
+
+# OS files
+.directory
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.code-workspace
+*.kate-swp
+*.swp
+*.swo
+.vscode/
+.qodo/
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
