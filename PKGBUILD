@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=25.8.0
+pkgver=25.9.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
@@ -22,12 +22,12 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/actualbudget/actual/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4eaa3e479d60e8e5c4c09bd1613fd6690c9386dcf29c0e2fc76d3a4d38a4e5df'
+sha256sums=('f5e016514be4ba0e98158a0b05f20079568f8294cb6d4d59df03144e82eb0dd9'
             '71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/desktop-electron" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/desktop-electron" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
