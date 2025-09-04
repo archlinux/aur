@@ -1,6 +1,6 @@
 pkgbase = mandarine-git
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
-	pkgver = r10300.9bbb672
+	pkgver = r10301.6ae06c5
 	pkgrel = 1
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = mandarine-git
 	source = git+https://github.com/neobrain/nihstro.git
 	source = git+https://codeberg.org/soundtouch/soundtouch.git
 	source = catch2::git+https://github.com/catchorg/Catch2
-	source = git+https://github.com/PabloMK7/dynarmic.git
+	source = git+https://github.com/lioncash/dynarmic.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/lsalzman/enet.git

@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname="mandarine"
 pkgname=$_pkgname-git
-pkgver=r10300.9bbb672
+pkgver=r10301.6ae06c5
 pkgrel=1
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
@@ -17,7 +17,7 @@ source=("git+https://github.com/mandarine3ds/mandarine"
 	"git+https://github.com/neobrain/nihstro.git"
 	"git+https://codeberg.org/soundtouch/soundtouch.git"
 	"catch2::git+https://github.com/catchorg/Catch2"
-	"git+https://github.com/PabloMK7/dynarmic.git"
+	"git+https://github.com/lioncash/dynarmic.git"
 	"git+https://github.com/herumi/xbyak.git"
 	"git+https://github.com/fmtlib/fmt.git"
 	"git+https://github.com/lsalzman/enet.git"
@@ -147,7 +147,9 @@ build() {
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
 	-DUSE_SYSTEM_BOOST=OFF \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	-DMANDARINE_WARNINGS_AS_ERRORS=OFF \
+	-Wno-dev
     cmake --build build
 }
 package() {
