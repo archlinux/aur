@@ -1,4 +1,5 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=sdl3
 pkgver=3.4.0
 pkgrel=2
@@ -7,42 +8,43 @@ arch=('x86_64')
 url="https://www.libsdl.org"
 license=('Zlib')
 depends=(
+  'alsa-lib'
+  'fribidi'
+  'gcc-libs'
   'glibc'
-  'libxext'
-  'libxrender'
-  'libx11'
-  'libgl'
-  'libxcursor'
   'hidapi'
+  'jack'
+  'libdecor'
+  'libdrm'
+  'libgl'
+  'libpipewire'
+  'libpulse'
+  'libunwind'
   'libusb'
+  'libx11'
+  'libxcursor'
+  'libxext'
+  'libxfixes'
+  'libxi'
+  'libxkbcommon'
+  'libxrandr'
+  'libxrender'
+  'libxss'
+  'libthai'
+  'libxtst'
+  'mesa'
+  'sndio'
+  'wayland'
 )
 makedepends=(
   'cmake'
   'ninja'
-  'jack'
   'wayland-protocols'
-  'alsa-lib'
-  'mesa'
-  'libpulse'
-  'libxrandr'
-  'libxinerama'
-  'wayland'
-  'libxkbcommon'
   'ibus'
-  'libxss'
-  'pipewire'
-  'libdecor'
   'vulkan-headers'
-  'sndio'
 )
 optdepends=(
-  'alsa-lib: ALSA audio driver'
-  'libpulse: PulseAudio audio driver'
-  'jack: JACK audio driver'
-  'pipewire: PipeWire audio driver'
   'vulkan-driver: vulkan renderer'
-  'sndio: sndio audio driver'
-  'libdecor: Wayland client decorations'
 )
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz"{,.sig})
 sha512sums=('b7803fc1a7260a0594644bf81df8c300d63c30c436a2b8c8217d58cd25814faf44e2945a4979c860f81cddc367913cc8c03f0bf6745da2918121f379fd9cb27b'
@@ -56,7 +58,8 @@ build() {
   	-D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D SDL_STATIC=OFF \
-    -D SDL_RPATH=OFF
+    -D SDL_RPATH=OFF \
+    -D SDL_DEPS_SHARED=OFF
   cmake --build build
 }
 
