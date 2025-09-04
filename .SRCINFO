@@ -1,0 +1,19 @@
+pkgbase = ffetch-git
+	pkgdesc = CLI tool to fetch system info. (Git version)
+	pkgver = r123.abcdefg
+	pkgrel = 1
+	url = https://github.com/0l3d/ffetch
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = pciutils
+	depends = xorg-xprop
+	depends = coreutils
+	provides = ffetch
+	conflicts = ffetch-bin
+	source = git+https://github.com/0l3d/ffetch.git
+	sha256sums = SKIP
+
+pkgname = ffetch-git
