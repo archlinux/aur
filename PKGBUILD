@@ -2,8 +2,8 @@
 
 pkgbase=img2kvm-rs-git
 pkgname=img2kvm-rs-git
-pkgver=r1.e742a8f
-pkgrel=2
+pkgver=0.2.0.r0.g1c857ab
+pkgrel=3
 pkgdesc="A utility that convert disk image in Proxmox VE."
 arch=('x86_64')
 url="https://github.com/ywjno/img2kvm-rs"
@@ -16,8 +16,10 @@ depends=(
     gcc-libs
     glibc
     xz)
-makedepends=('git'
-    'cargo')
+makedepends=(
+    'git'
+    'cargo'
+)
 optdepend=('qemu-img: QEMU tooling for manipulating disk images'
     'Proxmox VE: qm')
 backup=()
@@ -58,4 +60,5 @@ package() {
     export CARGO_TARGET_DIR=target
 
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
