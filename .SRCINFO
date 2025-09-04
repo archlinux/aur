@@ -1,0 +1,19 @@
+pkgbase = asmx-g3-git
+	pkgdesc = AsmX G3 Compiler - a compiler for AsmX language
+	pkgver = r17.c89a3ce
+	pkgrel = 1
+	url = https://github.com/AsmXFoundation/AsmX-G3
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = jq
+	makedepends = typescript
+	depends = nodejs
+	depends = bash
+	provides = asmx-g3
+	conflicts = asmx-g3
+	source = git+https://github.com/AsmXFoundation/AsmX-G3.git
+	sha256sums = SKIP
+
+pkgname = asmx-g3-git
