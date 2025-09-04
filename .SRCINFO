@@ -1,0 +1,19 @@
+pkgbase = unshieldv3-git
+	pkgdesc = Extract Installshield V3 (Z) archives (GIT version)
+	pkgver = 0.2.1.r9.g4e5700f
+	pkgrel = 1
+	url = https://github.com/wfr/unshieldv3
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	provides = unshieldv3
+	provides = unshieldv3=0.2.1.r9
+	conflicts = unshieldv3
+	source = unshieldv3-git::git+https://github.com/wfr/unshieldv3.git
+	sha256sums = SKIP
+
+pkgname = unshieldv3-git
+	depends = glibc
+	depends = gcc-libs
