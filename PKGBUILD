@@ -48,7 +48,7 @@ prepare() {
 build() {
   cd ${_base}/native
   python download_binaries.py
-  python build_binaries.py
+  PYTHONPATH=$PWD/../src python build_binaries.py
   cd ..
   python -m build --wheel --skip-dependency-check --no-isolation
 }
