@@ -1,4 +1,4 @@
-# Maintainer: a13xie <rostik.medved@gmail.com>
+# Maintainer: k8ie <k8ie@mcld.eu>
 pkgname=('libproidplus-gui')
 pkgver=2.5.0
 pkgrel=1
