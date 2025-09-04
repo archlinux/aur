@@ -12,7 +12,7 @@ provides=('tensamin')
 conflicts=()
 
 source_x86_64=("https://github.com/Tensamin/Frontend/releases/download/v0.1.2-desktop-apps/tensamin-linux-x64-0.1.2.deb")
-sha256sums_x86_64=("43990a58848cea3c08cda4b31cfd3d5c30075221bb98f241eb418e201ba52331")
+sha256sums_x86_64=("b3a498ebc74404d8dd64db7c6662d15cf91f3ade2c5931655bd3c9357daf95d3")
 
 package() {
   bsdtar -O -xf "${srcdir}/tensamin-linux-x64-0.1.2.deb" data.tar.* \
