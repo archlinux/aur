@@ -1,0 +1,16 @@
+pkgbase = rdr
+	pkgdesc = A tool to simply read Markdown files without the hassle.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/koyuawsmbrtn/rdr
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	depends = vala
+	depends = webkit2gtk
+	depends = cmark
+	depends = glib2
+	source = git+https://github.com/koyuawsmbrtn/rdr.git
+	sha256sums = SKIP
+
+pkgname = rdr
