@@ -2,15 +2,14 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 _base=ray
 pkgname=python-${_base}
-pkgver=2.49.0
+pkgver=2.49.1
 pkgrel=1
 pkgdesc="A fast and simple framework for building and running distributed applications"
 arch=(x86_64)
 url="https://github.com/${_base}-project/${_base}"
 license=(Apache-2.0)
 depends=(psmisc python-click python-filelock python-jsonschema python-msgpack
-  python-packaging python-protobuf python-pyaml python-aiosignal python-frozenlist
-  python-requests python-watchfiles libxcrypt-compat)
+  python-packaging python-protobuf python-pyaml python-requests libxcrypt-compat)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel cython bazelisk git)
 optdepends=('python-pandas: for ray[data, tune, rllib]'
   'python-fsspec: for ray[data, tune, rllib]'
@@ -32,14 +31,13 @@ optdepends=('python-pandas: for ray[data, tune, rllib]'
   'python-dm-tree: for ray[rllib]'
   'python-gymnasium: for ray[rllib]'
   'python-lz4: for ray[rllib]'
-  'python-scikit-image: for ray[rllib]'
   'python-scipy: for ray[rllib]'
   'python-typer: for ray[rllib]'
   'python-rich: for ray[rllib]'
 )
 conflicts=(mesa-demos)
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('faef25b9ba038c13f0bf8fd97f390db6257051e2bf914be4d86d3bae3bb35a3810f12bc97aeb9ad1ed0a0e0e941d686a0dcfe4f79215334ed58c4095a0b23cc7')
+sha512sums=('5a72ba74891d26e92958b19d10a9b28c599a238ca9e1e03649c2089e11e44b6cd5abf8879e9ad9e1fcb46c969bc2c05db1d4837b2871b80efc2cda5ec5d6be43')
 
 build() {
   cd ${_base}-${_base}-${pkgver}/python
