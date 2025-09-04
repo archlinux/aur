@@ -10,7 +10,7 @@ post_upgrade() {
   post_install
 }
 
-post_remove() {
+pre_remove() {
   local install_dir='/usr/share/refind/themes/refind2k'
   cd "$install_dir" || exit 1
   ./setup.sh -u
