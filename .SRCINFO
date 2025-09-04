@@ -1,0 +1,15 @@
+pkgbase = refind-theme-refind2k-git
+	pkgdesc = A minimalist dark theme for rEFInd
+	pkgver = r48.31479b7
+	pkgrel = 1
+	url = https://github.com/2KAbhishek/refind2k
+	install = refind-theme-refind2k-git.install
+	arch = any
+	license = MIT
+	depends = refind
+	provides = refind-theme-refind2k
+	conflicts = refind-theme-refind2k
+	source = refind-theme-refind2k-git::git+https://github.com/2KAbhishek/refind2k.git
+	sha256sums = SKIP
+
+pkgname = refind-theme-refind2k-git
