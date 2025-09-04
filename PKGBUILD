@@ -43,12 +43,10 @@ arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
 depends=('fzf' 'git' 'gcc')
-makedepends=('')
 optdepends=('nano: for editing config files'
             'vim: for editing config files'
             'bat: for syntax highlighting'
             'onefetch: for system info display')
-backup=('')
 source=("tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/main/tkginstaller.sh")
 sha256sums=('SKIP')
 
