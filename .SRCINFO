@@ -1,6 +1,6 @@
 pkgbase = magic-tape.sh-git
 	pkgdesc = Magic-tape is an image supporting fuzzy finder command line interface YouTube client.
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 4
 	url = https://gitlab.com/christosangel/magic-tape
 	install = proto.install
@@ -19,7 +19,7 @@ pkgbase = magic-tape.sh-git
 	optdepends = chafa: Image Support
 	optdepends = ueberzug: Image Support
 	optdepends = ueberzugpp: Image Support
-	source = magic-tape.sh-git-1.3.3.tar.gz::https://gitlab.com/christosangel/magic-tape/-/archive/1.3.3/magic-tape-1.3.3.tar.gz
-	sha256sums = e4492de531e0b8acfd82acb7803f4534bb889fa162555279ce766c2e22465649
+	source = magic-tape.sh-git-1.3.4.tar.gz::https://gitlab.com/christosangel/magic-tape/-/archive/1.3.4/magic-tape-1.3.4.tar.gz
+	sha256sums = c0ec717fc7ff323b0e3d1507514bf4297ca0b9ec36626326cecb7f52abb9e62c
 
 pkgname = magic-tape.sh-git
