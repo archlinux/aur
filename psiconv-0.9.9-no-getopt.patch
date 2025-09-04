@@ -1,0 +1,13 @@
+diff -rauN psiconv-0.9.9/compat/getopt.h psiconv-0.9.9-no-getopt-patch/compat/getopt.h
+--- psiconv-0.9.9/compat/getopt.h	2003-05-04 20:49:56.000000000 +0200
++++ psiconv-0.9.9-no-getopt-patch/compat/getopt.h	2025-09-04 09:58:25.055829724 +0200
+@@ -133,7 +133,8 @@
+    errors, only prototype getopt for the GNU C library.  */
+ extern int getopt (int __argc, char *const *__argv, const char *__shortopts);
+ # else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
++//extern int getopt ();
++extern int getopt (int __argc, char *const *__argv, const char *__shortopts);
+ # endif /* __GNU_LIBRARY__ */
+ 
+ # ifndef __need_getopt
