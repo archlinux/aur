@@ -1,6 +1,7 @@
-# Maintainer: Dawit Abate <dawitabate2@gmail.com>
+# Maintainer LA-MJ [ 4mr.minj at google-mail , com ]
 pkgname=fcast-receiver-bin
-pkgver=23.0.0
+epoch=1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Binary releases of Fcast"
 arch=('x86_64')
@@ -8,32 +9,37 @@ conflicts=("fcast-receiver-bin" "fcast-receiver-git" "fcast-receiver")
 provides=("fcast-receiver")
 url="https://gitlab.futo.org/videostreaming/fcast"
 license=('MIT')
-depends=('nss' 'alsa-lib' 'libxext' 'dbus' 'expat' 'libxcb' 'libxrandr' 'nspr' 'at-spi2-core' 'pango' 'glibc' 'libxkbcommon' 'libx11' 'libxcomposite' 'mesa' 'cairo' 'glib2' 'libdrm' 'gcc-libs' 'libxdamage' 'libcups' 'libxfixes' 'gtk3')
-source=("${pkgname}-${pkgver}.zip::https://releases.grayjay.app/fcastreceiver/fcast-receiver-linux-x64.zip"
-        'fcast-receiver.desktop')
-md5sums=('0b0aef8b4f50c0f1d2a104e699471452'
-         '787f5a72d47c0b654f08204bf6c495e2')
-
-pkgver() {
-    cat "${srcdir}/${pkgname}/version"
-}
-
-noextract=(
-    "${pkgname}-${pkgver}.zip"
+depends=(
+'alsa-lib'
+'at-spi2-core'
+'cairo'
+'dbus'
+'expat'
+'gcc-libs'
+'glib2'
+'glibc'
+'gtk3'
+'libcups'
+'libdrm'
+'libudev.so=1'
+'libx11'
+'libxcb'
+'libxcomposite'
+'libxdamage'
+'libxext'
+'libxfixes'
+'libxkbcommon'
+'libxrandr'
+'mesa'
+'nspr'
+'nss'
+'pango'
 )
-
-prepare() {
-    mkdir -p "${srcdir}/${pkgname}"
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.zip" -C "${srcdir}/${pkgname}"
-}
+source=("${pkgname}.deb::https://dl.fcast.org/electron/${pkgver}/deb/x64/fcast-receiver-${pkgver}-linux-x64.deb")
+sha256sums=('4afacb5861640fa9c9778e75d0d36cf3a3da3eab44c9dc85b60d6037e2650589')
 
 package() {
-    cd "${srcdir}/${pkgname}" 
-    install -d "${pkgdir}/opt/${pkgname}/" "${pkgdir}/usr/bin"
-    cp -r * "${pkgdir}/opt/${pkgname}/"
-    chmod +x "${pkgdir}/opt/${pkgname}/fcast-receiver"
-    ln -s "/opt/${pkgname}/fcast-receiver" "${pkgdir}/usr/bin/fcast-receiver"
-    install -Dm644 "resources/app/dist/app.png" "${pkgdir}/usr/share/pixmaps/fcast-receiver.png"
-    install -Dm644 "${srcdir}/fcast-receiver.desktop" "${pkgdir}/usr/share/applications/fcast-receiver.desktop"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    bsdtar -xf data.tar.xz -C "$pkgdir/"
+    install -Dm644 "${pkgdir}/usr/share/doc/fcast-receiver/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm -r "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/lintian"
 }
