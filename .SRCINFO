@@ -13,5 +13,6 @@ pkgbase = momw-tools-pack
 	depends = s3lightfixes
 	depends = openmw-validator
 	depends = groundcoverify
+	depents = vfstool
 
 pkgname = momw-tools-pack
