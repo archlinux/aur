@@ -2,7 +2,7 @@
 # Contributor: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt
-pkgver=3.8.0.2
+pkgver=3.9.0.0
 pkgrel=1
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64' 'armv7h')
@@ -13,7 +13,7 @@ optdepends=('jna' 'libappindicator-gtk3' 'ttf-dejavu')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-sha256sums=('00695c0012a8ebc08469eb0d32d3974ae70e93d129015dbfe6da128556ab3726')
+sha256sums=('2af185f844954354229c2b882051553134d661896716b813eb7a8df085f080ff')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
@@ -67,7 +67,7 @@ package() {
   rm swt/swt-{bsd,ppc64,ppc64le,x86}.jar
   rm biglybt-lightgray.svg biglybt.png
   rm installer.log
-  rm {,un}registerBiglyBT uninstall updateBiglyBT
+  rm uninstall updateBiglyBT
 
   msg2 "Installing to /opt..."
   mv * "$pkgdir"/opt/$pkgname/
