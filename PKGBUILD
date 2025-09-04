@@ -3,8 +3,8 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-secrets-manager-core
-pkgver=16.6.6
-pkgrel=2
+pkgver=17.0.0
+pkgrel=1
 _pypifilestem=${pkgname//-/_}
 pkgdesc="Python SDK for Keeper Secrets Manager"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_core/keeper_secrets_manager_core-${pkgver}.tar.gz")
-sha256sums=('bda9e733908b34edbac956825fc062e6934894f210d49b0bba1679d167d7be80')
+sha256sums=('f821d114b44ecd992870f4661d1daa5c50901d4abcc6d52c37926c372396d31c')
 
 build() {
   cd "$_pypifilestem-$pkgver"
