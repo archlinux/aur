@@ -3,7 +3,7 @@
 pkgname=7k-ambition
 pkgver=3.2.4
 pkgrel=1
-pkgdesc="Seven Kingdoms: Ambition is a real-time game of epic strategy and empire building featuring economy management, warfare, and intrigue.  It is an updated and enhanced version of 7kaa (7K: Ancient Adversaries) featuring numerous fixes and improvements."
+pkgdesc="Seven Kingdoms: Ambition is an RTS game of epic strategy and empire building, featuring economy management, warfare, and intrigue.  It is an updated and enhanced version of 7kaa (7K: Ancient Adversaries) featuring numerous fixes and improvements."
 url="https://seven-kingdoms-ambition.sourceforge.io/"
 arch=("i686" "x86_64")
 license=("GPL-2.0-or-later")
