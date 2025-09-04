@@ -1,6 +1,6 @@
 pkgbase = persepolis-git
 	pkgdesc = A download manager written in Python (Github version)
-	pkgver = 5.2.0.r2.g801d252
+	pkgver = 5.2.0.r15.g109e952
 	pkgrel = 1
 	url = https://github.com/persepolisdm/persepolis
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = persepolis-git
 	depends = python-requests
 	depends = python-setproctitle
 	depends = python-urllib3
+	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = yt-dlp
 	optdepends = qadwaitadecorations-qt6: for using adwaita style in GTK based Desktops.
