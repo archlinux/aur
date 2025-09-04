@@ -2,7 +2,7 @@
 
 _name=langgraph-sdk
 pkgname=python-$_name
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="SDK for interacting with LangGraph API."
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/langchain-ai/langgraph/refs/tags/${_name//langgraph-/}==$pkgver/docs/docs/cloud/reference/api/openapi.json")
-sha256sums=('b28aa0f485811388465ac5d2a19d728ab84b59a8900cdfcf0f4e8177802cbf62'
-            '37916766f2cda2d4ce194fc253bb53a5c5f584ec0855e61d4a716c745acf28e8')
+sha256sums=('7db27cd86d1231fa614823ff416fcd2541b5565ad78ae950f31ae96d7af7c519'
+            'db5c2ef8dc5dc724d0c1972d35c11f4642cc9d2062d1084601fc2ae6483c5cd5')
 
 prepare(){
   mkdir -p "$srcdir"/../docs/docs/cloud/reference/api
