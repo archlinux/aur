@@ -7,7 +7,7 @@
 #
 
 pkgname=fileobj
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 
 pkgdesc="Ncurses based hex editor with vi interface written in Python "
@@ -20,7 +20,7 @@ optdepends=()
 
 source=(https://github.com/kusumi/${pkgname}/archive/v${pkgver//_/-}.tar.gz)
 
-sha256sums=('3b8d907798bc072faf0afe7b42557f1923080e46d80e0737493f01a08d0c5254')
+sha256sums=('8e1e26219f689827091343efa132bb7fee92d201c1bfbcea22dab0a4c8cf3aa3')
 
 noextract=()
 
