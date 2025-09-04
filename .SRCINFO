@@ -12,6 +12,7 @@ pkgbase = lyrus-git
 	depends = python-wcwidth
 	depends = python-appdirs
 	depends = python-syncedlyrics
+	optdepends = cmus: daemon support for cmus player
 	optdepends = python-mpd2: optional mpd support (allows local)
 	optdepends = playerctl: optional MPRIS support (for other)
 	provides = lyrus
