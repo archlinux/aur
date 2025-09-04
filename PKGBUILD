@@ -2,14 +2,14 @@
 # Submitter: Alastair Feille <me@alastair.se>
 
 pkgname=ack-git
-pkgver=dev.r0.gd43c7bd00
-pkgrel=3
+pkgver=dev.r0.g6a55a6f81
+pkgrel=2
 pkgdesc="The Amsterdam Compiler Kit"
 arch=('i686' 'x86_64')
 url="http://tack.sourceforge.net/"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'flex' 'bison' 'ed' 'lua')
+makedepends=('git' 'flex' 'bison' 'ed' 'lua' 'python')
 source=("git+https://github.com/davidgiven/ack"
         'ack-cpm-aslod.patch'
         )
@@ -28,13 +28,14 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_gitrepo}"
-	patch -Np1 < "$srcdir/ack-cpm-aslod.patch"
+#	patch -Np1 < "$srcdir/ack-cpm-aslod.patch"
 }
 
 build() {
 	cd "${srcdir}/${_gitrepo}"
 
-	make -r CFLAGS="" DEFAULT_PLATFORM="linux386" ACK_TEMP_DIR="${srcdir}" PREFIX=/usr
+	make -r CFLAGS='-DUNREACHABLE_CODE="__builtin_unreachable()" -DNORETURN="__attribute__((noreturn))"' \
+		DEFAULT_PLATFORM="linux386" ACK_TEMP_DIR="${srcdir}" PREFIX=/usr V=1 VERBOSE=1
 }
 
 package(){
@@ -43,7 +44,8 @@ package(){
 
 	cd "${srcdir}/${_gitrepo}"
 
-	make -r PREFIX="${pkgdir}"/usr ACK_TEMP_DIR="${srcdir}" install
+	make -r CFLAGS='-DUNREACHABLE_CODE="__builtin_unreachable()" -DNORETURN="__attribute__((noreturn))"' \
+		PREFIX="${pkgdir}"/usr ACK_TEMP_DIR="${srcdir}" install
 
 	install -D -m0644 "${srcdir}/${_gitrepo}"/Copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
