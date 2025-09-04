@@ -2,8 +2,8 @@
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 pkgname=vieb
 _pkgname=Vieb
-pkgver=12.4.0
-_electronversion=37
+pkgver=12.5.0
+_electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design.(Use system-wide electron)"
@@ -26,16 +26,21 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('83fae1e389909c1f9cec6e38619ba0e8690ab6f8e887d7f6e740375c68002829'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('474f990063c98ae44ebf13a77a97648a9fd4275b0315548215a5491dd744f8e5'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
