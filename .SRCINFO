@@ -1,12 +1,12 @@
 pkgbase = pitone
-	pkgdesc = Linguaggio di programmazione in italiano – eseguibile standalone
-	pkgver = 1.1.0
+	pkgdesc = An italian programming language based on python. Smile, it's amazing!
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Matxe24/Pitone
 	arch = any
 	license = MIT
 	depends = python
-	source = pitone-1.1.0.tar.gz::https://github.com/Matxe24/Pitone/archive/refs/heads/main.tar.gz
-	md5sums = SKIP
+	source = pitone-1.2.0.tar.gz::https://github.com/Matxe24/Pitone/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
 
 pkgname = pitone
