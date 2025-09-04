@@ -4,7 +4,7 @@
 # Contributor: Andrew Shark
 
 pkgname=pycharm-professional
-pkgver=2025.2.1
+pkgver=2025.2.1.1
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64' 'x86_64_v3' 'aarch64')
@@ -30,9 +30,9 @@ source_x86_64_v3=($source_x86_64)
 source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums=('6ff245b42b475a5b97c359d97bc48d573c2988170fc195073c9187d5abe1c576'
             '21e9d192712fb537d9e5abccc54970becb347b32ad2be469a35b2585f45a9116')
-sha256sums_x86_64=('2d62753a2c77dcc268593c28fb965bed6e6e6e89f9739c54e21b01024f91a2c0')
-sha256sums_x86_64_v3=('2d62753a2c77dcc268593c28fb965bed6e6e6e89f9739c54e21b01024f91a2c0')
-sha256sums_aarch64=('39400c3134a74ae653df31e9dae3b464d9bb6970110e9028e81d22175c40f407')
+sha256sums_x86_64=('280da5efe11f17d86e5173fe0cf05af4704b9c858f1c9c2fea6de6b2071ada83')
+sha256sums_x86_64_v3=('280da5efe11f17d86e5173fe0cf05af4704b9c858f1c9c2fea6de6b2071ada83')
+sha256sums_aarch64=('97a359d900e4010a1d1ca57a9ae9f496f16bb377798d8fe0ffbfb071bbbc191c')
 makedepends=('python-setuptools' 'cython')
 optdepends=(
     'ipython: For enhanced interactive Python shell inside Pycharm'
