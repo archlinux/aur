@@ -22,6 +22,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"
+  export PATH="${GOPATH}/bin:${PATH}"
 
   make build
 }
