@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
-echo "Scraping latest aws-iam-authenticator version from https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases"
-latestversion=$(curl -sq https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases | jq -r ".[].tag_name" | head -n 1)
-echo "Latest aws-iam-authenticator version: ${latestversion}"
+PKGNAME="aws-iam-authenticator-bin"
+GHREPO="kubernetes-sigs/aws-iam-authenticator"
 
-echo "==> Updating PKGBUILD version to ${latestversion/v/}-1"
+log() {
+    printf "\e[1m\e[32m==>\e[37m %s\e[0m\n" "$@"
+}
+
+log "Fetching latest ${PKGNAME} release from Github API..."
+latestversion=$(curl -sq https://api.github.com/repos/${GHREPO}/releases/latest | jq -r '.tag_name')
+printf "\e[1m  \e[34m->\e[37m Found version %s\e[0m\n" "${latestversion}"
+
+log "Updating PKGBUILD version to ${latestversion/v/}-1"
 sed -i "s|^pkgver=.*$|pkgver=${latestversion/v/}|; s|^pkgrel=.*$|pkgrel=1|" PKGBUILD
 updpkgsums
 
-echo "==> Generating .SRCINFO"
+log "Generating .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO

@@ -3,7 +3,7 @@
 
 pkgname=aws-iam-authenticator-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}_${pkgver}_x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64")
 source_aarch64=("${_pkgname}_${pkgver}_aarch64::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64")
-sha256sums_x86_64=('aef183b5b92f2cb135107234c7440f43638caa337190190cdd2ad9fd6bc4928e')
-sha256sums_aarch64=('80ab2b0d5a139e55408c785703e8fef8f4974a73409046b3e13df19b2a780a51')
+sha256sums_x86_64=('5b108bcc253229827d1df51788381b81dac92f7352b118bab7dad6b9aeeeaad1')
+sha256sums_aarch64=('28bd013ac497b34987cdd7c965882122ddf9256f6ee2bcb509107f22d126ff94')
 
 package() {
 	install -D --mode 755 \
