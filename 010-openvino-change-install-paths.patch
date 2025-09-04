@@ -105,7 +105,7 @@
  endif()
 --- a/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
-@@ -56,7 +56,7 @@ ov_add_target(ADD_CPPLINT
+@@ -68,7 +68,7 @@ ov_add_target(ADD_CPPLINT
                LINK_LIBRARIES PRIVATE ${DEPENDENCIES})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -114,7 +114,7 @@
                            CXX_STANDARD 17)
  
  #
-@@ -64,13 +64,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
+@@ -76,13 +76,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
  #
  
  install(TARGETS ${TARGET_NAME}
