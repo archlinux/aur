@@ -51,5 +51,5 @@ source=("tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstalle
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/tkg_install.sh" "$pkgdir/opt/tkginstaller/tkg_install.sh"
+    install -Dm755 "$srcdir/tkg_install.sh" "$pkgdir/opt/tkginstaller/tkg_install.sh"
 }
