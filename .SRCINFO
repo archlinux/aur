@@ -1,0 +1,24 @@
+pkgbase = img2kvm-rs
+	pkgdesc = A utility that convert disk image in Proxmox VE.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ywjno/img2kvm-rs
+	install = img2kvm-rs.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = bzip2
+	depends = gcc-libs
+	depends = glibc
+	depends = xz
+	provides = img2kvm-rs
+	provides = img2kvm
+	conflicts = img2kvm
+	options = !strip
+	options = !lto
+	options = !debug
+	source = img2kvm-rs::git+https://github.com/ywjno/img2kvm-rs.git#tag=v0.2.0
+	sha256sums = 55da12e9779b3c5bb8d492a918d9310417f156596adf5928121a3aa7b7da022f
+
+pkgname = img2kvm-rs
