@@ -1,60 +1,70 @@
-# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
-# For ISSUES, REQUESTS, and QUESTIONS:
-# https://github.com/sudoforge/pkgbuilds
-
 pkgname=firebase-tools
-pkgver=11.12.0
+pkgver=14.15.2
 pkgrel=1
-pkgdesc="The Firebase Command Line Tools"
-arch=('any')
-url="https://github.com/firebase/firebase-tools"
+pkgdesc='The Firebase Command Line Tools'
+arch=('x86_64')
+url='https://github.com/firebase/firebase-tools'
 license=('MIT')
 depends=('nodejs')
-makedepends=(
-  'npm'
-  'jq'
-)
-source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('fbdfd10d72a0500fd3fd4a3eda6afec8128d5efe68ce54cd855155d9a703b70f')
+makedepends=('jq' 'npm' 'node-gyp' 'python')
+source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+sha256sums=('e2829c5dfe0775545159145ab2c6a5e33aeb009a1993ade1b2b66d3816851364')
+
+prepare() {
+  # devendor node-gyp
+  cd package
+  jq '.overrides."node-gyp"="/usr/lib/node_modules/node-gyp"' package.json > package.json.tmp
+  mv package.json{.tmp,}
+}
 
 package() {
-  # We throw away output here to keep the build quieter; if issues are
-  # encountered, be sure to remove the output redirection in order to debug.
-  npm install \
-    --global \
-    --prefix "${pkgdir}/usr" \
-    "${srcdir}/${pkgname}-${pkgver}.tgz" &> /dev/null
-  
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/npm/issues/9359 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  local _module_path="/usr/lib/node_modules/$pkgname"
 
-  # Remove references to the package directory
+  # build re2 from source
+  export DEVELOPMENT_SKIP_GETTING_ASSET=1 PYTHONDONTWRITEBYTECODE=1
+
+  # can't use `npm install -g` with overrides
+  cd package
+  npm install --no-save
+  ln -sf /usr/lib/node_modules/node-gyp node_modules/ # fix relative symlink
+  npm_config_prefix="$pkgdir/usr" npm link
+  cd ..
+  rm "$pkgdir/$_module_path"
+  cp -a package "$pkgdir/$_module_path"
+
+  # based on https://wiki.archlinux.org/index.php?title=Node.js_package_guidelines&oldid=782877
+  # fix package containing reference to $srcdir/$pkgdir
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-  # Remove references to the package directory from package.json
-  find "$pkgdir" \
-    -type f \
-    -name 'package.json' \
-    -execdir sh -c "jq '. | delpaths([paths|select(.[0] | test(\"_.*\"))])' {} > {}.new" \; \
-    -exec mv {}.new {} \;
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
 
-  # sshpk contains build references in the `man` attribute...
-  find "${pkgdir}/usr/lib/node_modules/${pkgname}/node_modules/sshpk/package.json" \
-    -execdir sh -c "jq '.man = [[\
-      \"man/man1/sshpk-conv.1\", \
-      \"man/man1/sshpk-sign.1\", \
-      \"man/man1/sshpk-verify.1\" \
-    ]]' {} > {}.new" \; \
-    -exec mv {}.new {} \;
-  
+  find "$pkgdir" -type f -name package.json | while read pkgjson; do
+    local tmppackage="$(mktemp)"
+    jq 'del(.man)' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
+  done
+
+  # package specific
+  # delete leftover re2 build files
+  local _re2="$pkgdir/$_module_path/node_modules/re2"
+  local _re2_addon="$_re2/build/Release/re2.node"
+  [ -f "$_re2_addon" ] || { echo "re2 addon not found"; exit 1; }
+  find "$_re2/build" \( ! -type d ! -path "$_re2_addon" -o -type d -empty \) -delete
+  rm -r "$_re2/vendor"
+
   # Install a symlink for the LICENSE file
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s \
-    "/usr/lib/node_modules/${pkgname}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  local _license_path="/usr/lib/node_modules/$pkgname/LICENSE"
+  [ -f "$pkgdir/$_license_path" ] || { echo "License file not found"; exit 1; }
+  ln -s "$_license_path" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
