@@ -2,7 +2,7 @@
 _pkgname=qiskit-optimization
 pkgname=python-$_pkgname
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Quantum Optimization package for IBM qiskit framework"
 arch=(any)
 url=https://github.com/qiskit-community/qiskit-optimization
@@ -31,7 +31,7 @@ source=(
     fix-test.patch::https://github.com/qiskit-community/qiskit-optimization/pull/682.patch
 )
 b2sums=('4f1116820f1baf360769ce24faeaf5ec6b33d847cdecfea019866bf0ebf727fc6d4e55fd77d10887e20e86d894e549776a17d703d1fc5b06bc7c156de444cec7'
-        'f686117144627990c1f93b7d3e34768a3104e68bd978c0c7d33121e6205aff1b3ec62027e95f8c400dca663c8926c14f6787a2231a33d42592469e536aeed979')
+        'ddbb5c7138dfef28cf02642b2f4f0a3a0607d761f8a9503b9aedafc94c07562f089c819ad62cbb9813209f651b7a4396dca83a66ce4c7d4cd40e013881038e9c')
 
 prepare() {
     # https://github.com/qiskit-community/qiskit-optimization/issues/681
