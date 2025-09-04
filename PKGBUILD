@@ -11,6 +11,12 @@ depends=(
    python
    python-pip
    moab-git
+   python-multimethod
+   python-typish
+   python-ezdxf
+   python-nptyping
+   nlopt
+  
 )
 
 makedepends=(
