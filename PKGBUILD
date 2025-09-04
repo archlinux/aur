@@ -2,7 +2,7 @@
 # Contributor: rzhli <tayuebuliuhen@gmail.com>
 
 pkgname='ftnn-desktop'
-pkgver='15.29.12808'
+pkgver='15.31.13008'
 pkgrel=1
 pkgdesc="FTNN富途牛牛桌面版"
 arch=('x86_64')
