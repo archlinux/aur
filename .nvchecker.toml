@@ -1,0 +1,4 @@
+[opcode-bin]
+source = "git"
+git = "https://github.com/getAsterisk/opcode.git"
+prefix = "v"
