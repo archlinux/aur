@@ -4,7 +4,7 @@
 #
 pkgname=python-hyperspy-gui-traitsui
 pkginst=hyperspy_gui_traitsui
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="traitsui (desktop) GUI elements for HyperSpy" 
 arch=('any')
@@ -42,4 +42,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('23b940dd02438c524f4a2dba460a6982')
+md5sums=('0bddd1e84fad7b0aad7dcfcc6f6ceb62')
