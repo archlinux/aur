@@ -35,6 +35,8 @@ package() {
   install -D -m644 "${srcdir}/${pkgname}.conf" \
     "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
 
+  install -d "${pkgdir}/usr/share/${pkgname}/backends"
+
   # systemd
   install -D -m644 "${srcdir}/${pkgname}.service" \
     -t "${pkgdir}/usr/lib/systemd/system"
@@ -45,7 +47,7 @@ package() {
 }
 
 sha256sums=('b4a1fd12c3691c0e175774257a36d76f5b36503323ae0687ad058719c1513942'
-  'ad8459c708f6e4413d4d2d0c5dda71dc9a13860c1a8641d72f49cf9cf259768e'
-  '7e730841684fa86760add2c991105ea2b89d4a43554f41ce8be7b5bcf30a33d3'
+  '8153bc015f138655e08a49183c36d00f7fb661a2b9367110f44af844eab815ae'
+  'dd51cf954b60d75e0521a6e58188bcb06981e87d7ca8ac22d7dc4d46a362a671'
   '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
-  'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c')
+  '6e4c0e2a2694867a5c27e21855e530a9327ae3658dbaa9b18fe028ab96df915a')

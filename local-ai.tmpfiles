@@ -1,5 +1,4 @@
-d /tmp/local-ai 0755 local-ai local-ai
-d /tmp/local-ai/upload 0755 local-ai local-ai
+d /run/local-ai 0755 local-ai local-ai
 d /var/lib/local-ai 0755 local-ai local-ai
 d /var/log/local-ai 0755 local-ai local-ai
 d /var/lib/local-ai/models 0755 local-ai local-ai
