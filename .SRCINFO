@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-bitwarden
 	pkgdesc = Bitwarden browser extension for Firefox
-	pkgver = 2025.8.1
+	pkgver = 2025.8.2
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = firefox-extension-bitwarden
 	makedepends = unzip
 	makedepends = zip
 	optdepends = firefox
-	source = firefox-extension-bitwarden-2025.8.1.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v2025.8.1.tar.gz
-	b2sums = 8aa68cb18a087c1ac60b735a2d98491a4a8b920a7816d19fab1e569764193f957b4ca3a212dc90c5434c9417270db9d998b1ad0f40e946eafebcad1408c4a47c
+	source = firefox-extension-bitwarden-2025.8.2.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v2025.8.2.tar.gz
+	b2sums = 948e6c334a95a6694f0f9cdb879342702bf27cf43f5b27138f3221e551793efbdd6696fe7b783c4a42865157347d185f2f7cde79c57f1193f1ee12cd00b28417
 
 pkgname = firefox-extension-bitwarden
