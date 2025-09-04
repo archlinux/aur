@@ -1,6 +1,6 @@
 pkgbase = umo-git
 	pkgdesc = An automatic modlist downloader for Modding-OpenMW.com modlists
-	pkgver = 0.8.1.r0.geb55ddb
+	pkgver = 0.10.9
 	pkgrel = 1
 	url = https://modding-openmw.gitlab.io/umo/
 	arch = i686

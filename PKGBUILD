@@ -1,6 +1,6 @@
-# Maintainer: alekulyn
+# Maintainer: S3ctor (corleycomputerrepair@protonmail.ch)
 pkgname=umo-git
-pkgver=0.8.1.r0.geb55ddb
+pkgver=0.10.9
 pkgrel=1
 pkgdesc="An automatic modlist downloader for Modding-OpenMW.com modlists"
 arch=('i686' 'x86_64')
