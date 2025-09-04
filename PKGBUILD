@@ -17,6 +17,7 @@ depends=(
 )
 
 optdepends=(
+    'cmus: daemon support for cmus player'
     'python-mpd2: optional mpd support (allows local)'
     'playerctl: optional MPRIS support (for other)'
 )
