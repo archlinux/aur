@@ -1,18 +1,18 @@
 # Maintainer: Remi Gacogne <rgacogne(at)archlinux(dot)org>
 _pkgbase=lkrg
 pkgname=lkrg-dkms
-pkgver=0.9.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('any')
-url='https://lkrg.org/'
+url='https://lkrg.org'
 license=('GPL-2.0-only')
 source=("${url}/download/${_pkgbase}-${pkgver}.tar.gz"
         "${url}/download/${_pkgbase}-${pkgver}.tar.gz.sign"
         'dkms.conf')
-sha512sums=('165592b74b8d846fc3c04ece68721c09c7b64b8d056ad2dfa0eec3b544d4a86bba7025f5be2f1ec7ee805411672ec1c830f84da71e5b5adb9ac569226fc1a79f'
+sha512sums=('ea4e3527c9fbcd6ead75d90b004aeeda71d489bffefb0215e47ed8b185d67fe46ad839218a8b08555e0aa318723f77b0eff553e275a2d20570b71f9a030483ed'
             'SKIP'
-            '8101dd415ed08edd455989a9b10a3c925b171d3375a6d6872f55805d9aeb355a4ac216cce11afc1b84eeb49de0771932005d74130ffd6f5cdea9fa53fb4f9506')
+            '199a1656ed24d9de0a0a7b92deaf20d071fe122202d233f4b58b254d3bb5828267db3fc16ffe0fa5013da3bdb6fd9d1829eedaac1c67f4025cd1d24d3017cb3d')
 validpgpkeys=('297AD21CF86C948081520C1805C027FD4BDC136E')
 depends=('dkms')
 backup=('etc/sysctl.d/01-lkrg.conf')
@@ -35,8 +35,8 @@ package() {
   install -Dm644 "${_pkgbase}-${pkgver}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
   # Install the default configuration file
-  install -Dm644 "${_pkgbase}-${pkgver}/scripts/bootup/lkrg.conf" "${pkgdir}/etc/sysctl.d/01-lkrg.conf"
+  install -Dpm 644 -o root -g root "${_pkgbase}-${pkgver}/scripts/bootup/lkrg.conf" "${pkgdir}/etc/sysctl.d/01-lkrg.conf"
 
-  # Install the systemd service file
-  install -Dm 644 "${_pkgbase}-${pkgver}/scripts/bootup/systemd/lkrg.service" "${pkgdir}/usr/lib/systemd/system/lkrg.service"
+  # Install the systemd service unit
+  install -Dpm 644 -o root -g root "${_pkgbase}-${pkgver}/scripts/bootup/systemd/lkrg.service" "${pkgdir}/usr/lib/systemd/system/lkrg.service"
 }
