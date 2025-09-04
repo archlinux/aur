@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=252.25557.77
+_buildver=252.26199.7
 _veryear=2025
 _verrelease=2
 _verextra=
@@ -18,7 +18,7 @@ depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 _archive="ideaIC-${_buildver}.tar.gz"
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ce-eap.desktop")
-sha256sums=('e4732ef308c5c34eadcf94d0b5dec13807488c4f7cc658793deed01865b131b0'
+sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
             '977f062d7db3a4c7bd50c24d2426e3226f7350c575f7cea6f5f50ea637bd1348')
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
