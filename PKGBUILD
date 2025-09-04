@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-choreo-git
-pkgver=2025.0.3.r64.ge2b6c93
+pkgver=2025.0.3.r74.ge9d22fa
 pkgrel=1
 pkgdesc="A graphical tool for planning time-optimized trajectories for autonomous mobile robots in the FIRST Robotics Competition"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Choreo'
-depends=('webkit2gtk')
+depends=('webkit2gtk-4.1')
 makedepends=('cargo' 'cmake' 'pnpm')
 license=('BSD')
 provides=('sleipnirgroup-choreo')
