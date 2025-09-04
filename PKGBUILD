@@ -47,7 +47,7 @@ optdepends=('nano: for editing config files'
             'vim: for editing config files'
             'bat: for syntax highlighting'
             'onefetch: for system info display')
-source=("tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/main/tkginstaller.sh")
+source=("tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/main/tkg_installer.sh")
 sha256sums=('SKIP')
 
 package() {
