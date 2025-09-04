@@ -1,9 +1,9 @@
-# Contributor:  Narinas <eatrujillo@protonmail.com>
+# Contributor: Narinas <eatrujillo@protonmail.com>
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=mindomo-bin
 _pkgname=mindomo
-pkgver=11.0.8
+pkgver=11.0.9
 pkgrel=1
 pkgdesc="Mindomo is an online collaborative mind mapping, concept mapping and outlining software for visualizing and organizing information."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('mindomo')
 depends=('fuse2')
 _app_image="Mindomo_v.${pkgver}_x64.AppImage"
 source_x86_64=("$url/download/${pkgver%.*}/${_app_image}")
-sha256sums_x86_64=('14dd8b1af85aba038c54dbd58baedd0a83ee7875ebb413cfe4ef60e56f779aa1')
+sha256sums_x86_64=('b7c2d93e51be065b4f27311a7d8a4cf2deffd78c8e33f1a4f25c5c42c0aa0297')
 options=(!strip)
 
 prepare() {
@@ -44,4 +44,4 @@ package() {
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
+# vim:set noet sts=0 sw=4 ts=4:
