@@ -1,25 +1,24 @@
 pkgbase = xfce4-appfinder-git
 	pkgdesc = An application finder for Xfce (GIT checkout)
-	pkgver = 4.14.0+44+gbfb09ab
+	pkgver = 4.21.0+7+g50fccea
 	pkgrel = 1
-	url = http://www.xfce.org/
+	url = https://docs.xfce.org/xfce/xfce4-appfinder/start
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	groups = xfce4
-	license = GPL2
-	makedepends = intltool
+	groups = xfce4-git
+	license = GPL-2.0-or-later
+	makedepends = meson
 	makedepends = git
 	makedepends = xfce4-dev-tools
-	depends = libxfce4ui
+	depends = libxfce4ui>=4.21.0
 	depends = garcon
+	depends = xfconf
 	depends = hicolor-icon-theme
-	provides = xfce4-appfinder=4.14.0+44+gbfb09ab
+	provides = xfce4-appfinder=4.21.0
 	conflicts = xfce4-appfinder
-	replaces = xfce-utils
 	source = xfce4-appfinder::git+https://gitlab.xfce.org/xfce/xfce4-appfinder
 	sha256sums = SKIP
 
 pkgname = xfce4-appfinder-git
-
