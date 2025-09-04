@@ -1,7 +1,7 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 
 pkgname=numatop
-pkgver=2.3
+pkgver=2.5.1
 pkgrel=2
 pkgdesc="Observation tool for NUMA systems"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/intel/numatop"
 license=('BSD-3-Clause')
 depends=('numactl' 'ncurses' 'check')
 source=("https://github.com/intel/numatop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1bec45a2388c255bd9c65dbc12bb29173c4196e3f4cfa3ca3e8c96647d675e16')
+sha256sums=('c312d4b6cc10d12680aa8ff04db5a02fca7b39a5494b0f41d280a7e1772db9c8')
 #sha256sums=('SKIP')
 
 prepare()
