@@ -1,6 +1,12 @@
 post_install() {
     echo "No user account will be created after fresh installation."
     echo "Please run the following command to know how to manage users:"
+    echo
+    echo "# Switch to a directory that the openwebrx user has permission to read."
+    echo "# OpenWebRX first checks for configuration files in the current directory and will fail and exit if it lacks access."
+    echo "# If no configuration files are found (as expected), it will then fall back to the configuration in /etc/openwebrx/."
+    echo "cd /tmp/"
+    echo
     echo "sudo -u openwebrx openwebrx admin -h"
 }
 
