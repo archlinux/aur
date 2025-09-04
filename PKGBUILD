@@ -1,23 +1,28 @@
-# Maintainer: Jose Carlos Temprado <thempra@overxet.com>
+# Contributor: Jose Carlos Temprado <thempra@overxet.com>
 
 pkgname=python-pycoingecko
-pkgver=2.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Python3 wrapper around the CoinGecko API (V3)'
 arch=('x86_64')
 url="https://github.com/man-c/pycoingecko"
 license=('MIT')
+depends=(python python-requests)
+makedepends=(python-build python-installer python-setuptools)
+checkdepends=(python-pytest python-responses)
 source=("https://github.com/man-c/pycoingecko/archive/refs/tags/$pkgver.zip")
-sha256sums=('b37f7da73e6ef3116491513b78759e8c0aa419cdff85e7d18d4806f0f17d8cbb')
+sha256sums=('9860260c16db4097ca5f72704d8102cd617639e82e7e1d7d9312ed8838ef1017')
 
 build() {
   cd pycoingecko-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
-
+check() {
+  cd pycoingecko-${pkgver}
+  PYTHONPATH="$PWD" pytest
+}
 package() {
   cd pycoingecko-${pkgver}
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests 
-
 }
