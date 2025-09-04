@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 optdepends=('steam: for automatic Steam directory detection')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rahatzamancse/proton-game-saves/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Replace with actual checksum when uploading to AUR
+sha256sums=('e698b5f064f98cf5561af98dcf251e5b7513e55bcf8ef8f6c81ed6ae82aeaaf4')
 backup=()
 options=()
 

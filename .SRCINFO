@@ -13,6 +13,6 @@ pkgbase = proton-game-saves
 	depends = openssl
 	optdepends = steam: for automatic Steam directory detection
 	source = proton-game-saves-0.1.0.tar.gz::https://github.com/rahatzamancse/proton-game-saves/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = e698b5f064f98cf5561af98dcf251e5b7513e55bcf8ef8f6c81ed6ae82aeaaf4
 
 pkgname = proton-game-saves
