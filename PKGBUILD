@@ -2,18 +2,18 @@
 
 _pkgname=xfce4-pulseaudio-plugin
 pkgname=${_pkgname}-git
-pkgver=0.4.3+46+g09f52bd
+pkgver=0.5.1+118+ga2e87eb
 pkgrel=1
 pkgdesc="Pulseaudio plugin for Xfce4 panel"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('GPL2')
 url="https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin"
-groups=('xfce4-goodies')
-depends=('xfce4-panel' 'libpulse' 'libkeybinder3' 'libnotify')
-makedepends=('intltool' 'git' 'xfce4-dev-tools' 'python') #for gdbus-codegen
+groups=('xfce4-goodies-git')
+depends=('xfce4-panel' 'libpulse' 'libkeybinder3' 'libnotify' 'libcanberra')
+makedepends=('git' 'meson' 'xfce4-dev-tools')
 optdepends=('pavucontrol: default pulseaudio mixer')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%.r*}")
+provides=("${_pkgname}=${pkgver%%+*}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/panel-plugins/${_pkgname}")
 sha256sums=('SKIP')
 
@@ -22,29 +22,15 @@ pkgver() {
   git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
-prepare() {
-  cd $_pkgname
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
-  cd "$_pkgname"
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --enable-keybinder \
-    --enable-libnotify \
-    --enable-maintainer-mode
+  local meson_options=(
+    --localstatedir=/var
+  )
 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgname"
-
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
