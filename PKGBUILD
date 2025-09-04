@@ -3,9 +3,10 @@
 
 pkgname=ffmpeg-full
 pkgver=7.1.1
-pkgrel=4
+pkgrel=5
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
+_obs_studio_ver='31.1.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -14,7 +15,7 @@ depends=(
     'alsa-lib'
     'aom'
     'aribb24'
-    'avisynthplus'
+    'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
     'celt'
@@ -24,17 +25,16 @@ depends=(
     'flite1'
     'fontconfig'
     'freetype2'
-    'frei0r-plugins'
+    'frei0r-plugins' # loaded on-demand by dlopen()
     'fribidi'
     'glib2'
     'glslang'
-    'gmp'
     'gnutls'
     'gsm'
     'harfbuzz'
     'jack'
     'kvazaar'
-    'ladspa'
+    'ladspa' # loaded on-demand by dlopen()
     'lame'
     'lcevcdec'
     'lcms2'
@@ -51,7 +51,6 @@ depends=(
     'libdvdread'
     'libfdk-aac'
     'libgcrypt'
-    'libgl'
     'libgme'
     'libiec61883'
     'libilbc'
@@ -59,7 +58,6 @@ depends=(
     'liblc3'
     'libmodplug'
     'libmysofa'
-    'libomxil-bellagio'
     'libopenmpt'
     'libplacebo'
     'libpulse'
@@ -82,7 +80,7 @@ depends=(
     'libxv'
     'libwebp'
     'lilv'
-    'lv2'
+    
     'ocl-icd'
     'openal'
     'opencore-amr'
@@ -109,10 +107,10 @@ depends=(
     'tesseract'
     'twolame'
     'v4l-utils'
-    'vapoursynth'
+    'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'
     'vmaf'
-    'vulkan-icd-loader'
+    'vulkan-icd-loader' # loaded on-demand by dlopen()
     'x264'
     'x265'
     'xvidcore'
@@ -136,24 +134,29 @@ depends=(
     'xevd'
     'xeve'
 )
-optdepends=('nvidia-utils: for NVIDIA NVDEC/NVENC support'
-            'vpl-runtime: for Intel Quick Sync Video'
+optdepends=(
+    'nvidia-utils: for NVIDIA NVDEC/NVENC support'
+    'vpl-runtime: for Intel Quick Sync Video'
 )
-makedepends=('patchutils'
-             'clang'
-             'nasm'
-             'amf-headers'
-             'ffnvcodec-headers'
-             'opencl-headers'
-             'vulkan-headers'
-             # aur:
-             'decklink-sdk'
+makedepends=(
+    'amf-headers'
+    'clang'
+    'ffnvcodec-headers'
+    'gmp'
+    'libgl'
+    'libomxil-bellagio'
+    'lv2'
+    'nasm'
+    'patchutils'
+    'opencl-headers'
+    'vulkan-headers'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
@@ -166,6 +169,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'SKIP'
+            '11d7b5fbb234e926b04b921203c152517a928032e757689d964c5f9a0a9a4157'
             '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
@@ -196,6 +200,7 @@ build() {
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     export CFLAGS+=' -isystem/opt/cuda/include'
+    export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
     export LDFLAGS+=' -L/opt/cuda/lib64'
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
