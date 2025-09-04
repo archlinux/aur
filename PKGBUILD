@@ -2,7 +2,7 @@
 
 pkgname="slippi-mainline"
 pkgver='v4.0.0.mainline.beta.13.r0.g6ddc966074'
-pkgrel=2
+pkgrel=3
 pkgdesc='https://slippi.gg/about'
 arch=('x86_64')
 url="https://github.com/project-slippi/dolphin"
@@ -44,7 +44,7 @@ depends=('alsa-lib'
          'zstd'
 )
 
-makedepends=('cmake3-bin' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'cargo')
+makedepends=('cmake3-bin' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'cargo' 'vulkan-devel')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 
@@ -61,11 +61,15 @@ source=(
         "$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "$pkgname-enet::git+https://github.com/lsalzman/enet.git"
         "$pkgname-cubeb::git+https://github.com/mozilla/cubeb.git"
+        "$pkgname-tinygltf::git+https://github.com/syoyo/tinygltf.git"
+        "$pkgname-minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
         "$pkgname-sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git"
         "$pkgname.svg"
         "$pkgname.desktop"
 )
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -100,6 +104,8 @@ prepare() {
                 [corrosion]='corrosion'
                 [slippi-rust-extensions]='SlippiRustExtensions'
                 [cubeb]='cubeb'
+                [tinygltf]='tinygltf'
+                [minizip-ng]='minizip-ng'
         )
 
         for _submod in "${!_submodules[@]}"; do
