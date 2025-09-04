@@ -6,9 +6,9 @@ pkgbase = python-manga-ocr
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = python-pytest
-	makedepends = python-pip
+	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-installer
 	depends = python>=3.6
 	depends = python-fire
 	depends = python-fugashi
