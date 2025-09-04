@@ -145,7 +145,7 @@ EOF
 }
 
 build() {
-    deps_script=$srcdir/duckstation/$forbidden_versions_file_path
+    deps_script=$srcdir/duckstation/scripts/deps/build-dependencies-linux.sh
     for src in "${source[@]}"; do
         local src_name=${src%%::*}
         for dep in "${_source_var[@]}"; do
