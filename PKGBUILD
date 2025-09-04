@@ -1,6 +1,6 @@
 # Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=base16384
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 epoch=
 pkgdesc="Encode binary files to printable utf16be."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fumiama/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('71ee39510c8c687254315ccc1aa5de601a5e2a2554b6db843f3874c12415a77a')
+sha256sums=('3b612e8ab32e7b108a08cdf4112a04fbebaaa572bc60d386343a954c695e450b')
 validpgpkeys=()
 
 prepare() {
