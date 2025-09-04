@@ -3,19 +3,19 @@
 # Contributor: Cranky Supertoon <crankysupertoon@gmail.com>
 
 pkgname=gdlauncher-bin
-pkgver=2.0.22
+pkgver=2.0.24
 pkgrel=1
 pkgdesc='A simple, yet powerful Minecraft custom launcher with a strong focus on the user experience (binary release)'
 arch=('x86_64')
 url=https://gdlauncher.com
 license=('BUSL-1.1')
-_electron=electron34
+_electron=electron36
 provides=("${pkgname//-bin}")
 conflicts=("${pkgname//-bin}")
 source=("$pkgname-$pkgver.AppImage::https://cdn-raw.gdl.gg/launcher/GDLauncher__${pkgver}__linux__x64.AppImage"
         "${pkgname//-bin}.sh"
         "LICENSE::https://raw.githubusercontent.com/gorilla-devs/GDLauncher-Carbon/develop/LICENSE")
-b2sums=('2dc8a148b9b8fea881c46e82649f7c9b57fba54d27cbb482a0fa0a20ea2c847e2e1dc2f2e98f118a74e97f795aaa010aa5aed3819cd8d7ad5e85fb627978740b'
+b2sums=('64bafa308044ef6e3c92710bc0ae5edc3ac99a77be8bdbae88619095b25fda77d9bb4ac305f7e434ba52c60ca54e7c35201c0668fe6dcf5ec7b7743fcf41daf6'
         '98f4cb1253a1c8b076042bec96ccde6253107491790d79eca04b667358b79b4bf34f698fb7e9790e1924c52cbe317783269700e1268d3039803adcdf2ee2f5bd'
         '93aed8a6736b73bc8ce08847d9dc895c0e14310125811ea43fbfe9977faa186c4d8f8ffcf88a2a17ab8ae34ab82e1ffbe84e1c590456d4bef46e552b5f80cee7')
 
