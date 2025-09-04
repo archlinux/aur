@@ -1,7 +1,7 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=ghost-dl-git
-pkgver=v1.1.2.0.gd16ddd3
+pkgver=v1.1.3.0.gd79199c
 pkgrel=1
 pkgdesc="Kingdom Hearts Insider Game OST Archive Dowloader CLI"
 arch=('x86_64')
