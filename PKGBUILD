@@ -2,14 +2,14 @@
 
 _pkgname=xfce4-panel-profiles
 pkgname=${_pkgname}-git
-pkgver=1.0.14+7+g11fd0b6
+pkgver=1.1.1+116+gca8576e
 pkgrel=1
 pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
 url="https://docs.xfce.org/apps/xfce4-panel-profiles/start"
 license=('GPL3')
 depends=('xfce4-panel' 'python-gobject' 'python-psutil')
-makedepends=('intltool' 'git')
+makedepends=('meson' 'git')
 conflicts=('xfpanel-switch' "${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}")
@@ -21,12 +21,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr
-  make
+  local meson_options=(
+  )
+
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make install DESTDIR="${pkgdir}"
+  meson install -C build --destdir "$pkgdir"
 }
