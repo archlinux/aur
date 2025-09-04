@@ -1,23 +1,23 @@
 pkgbase = thunar-vcs-plugin-git
 	pkgdesc = SVN and GIT integration for Thunar.
-	pkgver = 0.2.0+87+gcf09392
+	pkgver = 0.4.0+13+gb0421a7
 	pkgrel = 1
-	url = https://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
+	url = https://docs.xfce.org/xfce/thunar/thunar-vcs-plugin
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
-	license = GPL
-	makedepends = intltool
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = git
 	makedepends = xfce4-dev-tools
-	depends = thunar>=1.7.0
+	depends = thunar
 	depends = git
 	depends = subversion
 	depends = apr
-	provides = thunar-vcs-plugin=0.2.0
+	provides = thunar-vcs-plugin=0.4.0
 	conflicts = thunar-vcs-plugin
 	source = thunar-vcs-plugin::git+https://gitlab.xfce.org/thunar-plugins/thunar-vcs-plugin
 	sha256sums = SKIP
 
 pkgname = thunar-vcs-plugin-git
-
