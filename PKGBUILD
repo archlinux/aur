@@ -2,14 +2,14 @@
 
 _pkgbin=ytdl-sub
 pkgname=$_pkgbin-bin
-pkgver=2025.08.29.post2
+pkgver=2025.09.01.post2
 pkgrel=1
 pkgdesc="Automate downloading and metadata generation with yt-dlp"
 arch=('x86_64')
 url="https://github.com/jmbannon/ytdl-sub"
 license=('GPL3')
 source=("${_pkgbin}-${pkgver}-${pkgrel}::${url}/releases/download/${pkgver}/${_pkgbin}")
-sha512sums=('f28b22c25ce4a27ddbce9b61aa1788af9ce9cd0382143a6a9dd44fb8a7aaa319067d3e55b8cb9ec7e9e9e70472b0f4146e4b7ce74ad02764756c7665fbdceb0d')
+sha512sums=('3c37957a4e8634d092b16ec6445e871107fc55728e592ebffff478b761f18354f317a1607b2755ec159a1d81d8f0486fce2e869fdecb12e7dacc6a52180dc09f')
 depends=(libxcrypt-compat ffmpeg)
 
 package(){
