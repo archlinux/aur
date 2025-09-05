@@ -20,8 +20,8 @@ $install ${pkgname}.hook ${url}releases/ffmpeg-${pkgver}.tar.xz
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 
-sha256sums=('e8f666371d1b687b222acbd6abd711a7746d4e544d5ca523e281ff55e3c405f8'
-            '8aeba73b916da387ec4578e338393b62bc2ac6f82f993cb430575689e691f10c'
+sha256sums=('c1eb8b1c42aa427e178725e6de448ad56d618a2127aaae80536de93fc3783d10'
+            'f6f7500992d4290723f0d2ffd54d931f25a573794eb23671e4a91bc386b5935b'
             'b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             '65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
@@ -32,7 +32,7 @@ depends=(glibc)
 makedepends=(nasm
 gcc make patch) # base-devel
 _so=libffmpeg.so
-conflicts=({nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs)
+conflicts=({nwjs,opera-developer,vivaldi{,-snapshot}}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
   # List used funcs
