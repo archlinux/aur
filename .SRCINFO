@@ -1,0 +1,21 @@
+pkgbase = pacup-git
+	pkgdesc = Help maintainers update pacscripts
+	pkgver = 3.3.13
+	pkgrel = 1
+	url = https://github.com/pacstall/pacup
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = perl
+	depends = perl-data-compare
+	depends = perl-file-chdir
+	depends = perl-ipc-system-simple
+	depends = perl-json
+	depends = perl-libwww
+	depends = perl-list-moreutils
+	depends = perl-term-progressbar
+	conflicts = pacup
+	source = git+https://github.com/pacstall/pacup.git
+	sha256sums = SKIP
+
+pkgname = pacup-git
