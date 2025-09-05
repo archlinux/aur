@@ -1,14 +1,14 @@
 # Maintainer: Jake Leahy <jake@lowerCaseLastName.dev
 
 pkgname=slint-lsp-bin
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A language server protocol implementation for slint"
 arch=("x86_64")
 url="https://slint-ui.com"
 license=("GPL3")
 source=("slint-lsp-$pkgver.tar.gz::https://github.com/slint-ui/slint/releases/download/v$pkgver/slint-lsp-linux.tar.gz")
-sha256sums=('00bcdff17ed5f37b8fea65ded4f56c7ee3e83e2810e597d084b47ac3f2d1476d')
+sha256sums=('19a7bbbff1c9ea430e364e3f51dec29e733cb957cf5c0b4b223ac1dc3f501395')
 provides=("slint-lsp")
 depends=("qt5-base")
 
