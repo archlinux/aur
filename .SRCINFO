@@ -1,0 +1,18 @@
+pkgbase = headset-charge-indicator-qt-git
+	pkgdesc = Qt6-based system tray application to display battery charge of wireless headsets with enhanced KDE Plasma integration
+	pkgver = 0.r88.5fb2faa
+	pkgrel = 1
+	url = https://github.com/jpsutton/headset-charge-indicator-qt
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = headsetcontrol
+	depends = python
+        depends = pyside6
+        optdepends = kstatusnotifieritem
+	provides = headset-charge-indicator-qt
+	conflicts = headset-charge-indicator-qt
+	source = git+https://github.com/jpsutton/headset-charge-indicator-qt.git
+	sha256sums = SKIP
+
+pkgname = headset-charge-indicator-qt-git
