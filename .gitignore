@@ -1,0 +1,7 @@
+*
+!kerminal-bin.install
+!kerminal.desktop
+!kerminal.png
+!.gitignore
+!PKGBUILD
+!.SRCINFO
