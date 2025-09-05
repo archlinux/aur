@@ -34,10 +34,10 @@ source=(
 )
 sha256sums=('SKIP'
             '4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a'
-            '3226daff68e7576e800ce6486f86add532edd42c03a8a9fa9d8c9737d8ff17d0'
+            '8861d5b248b2f4c6b505e5157e1a52eb7b5f1d1598694fd1a024ade1826681d7'
             'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059'
-            '85fe2ae25283bc388f87a37b33aea0b0beb9985db11a845f60aafaaec829db64'
-            'ae9c09e988ed0c59bbf8f21186185c4f18ccf4c768b2380076641f1fb11ea4ad')
+            'c181747826654c7dc1c6d7c1da4d8678404fffba80dea389c49e1cb78f38dd5d'
+            '668f22e901f4dc79456d70f79681c3891792f8b3432746cdbc0320fa63ccfcdf')
 
 pkgver() {
   cd gr-elster
