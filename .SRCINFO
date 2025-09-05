@@ -1,6 +1,6 @@
 pkgbase = ppr-bin
 	pkgdesc = ppr - CLI tool for creating themed wallpapers from SVG templates
-	pkgver = 1.0.6
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/byteowlz/ppr
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = ppr-bin
 	conflicts = ppr
 	provides = ppr
 	arch = aarch64
-	source_aarch64 = https://github.com/byteowlz/ppr/releases/download/1.0.6/ppr_1.0.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = d47bc5b664c5cbb973170b5f166158afe3f8e51dd38b20d8db3ba1e3d1199fd5
+	source_aarch64 = https://github.com/byteowlz/ppr/releases/download/1.0.8/ppr_1.0.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 21c78144c2e460e91064c5065a7f750556929c41cd2147eac18f0e0d88d6f1a8
 	arch = x86_64
-	source_x86_64 = https://github.com/byteowlz/ppr/releases/download/1.0.6/ppr_1.0.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6b1da47ec16dd4a8b7564c1d9528eaf0f1dfc7fdbc3c508ebb2b9318ab63243e
+	source_x86_64 = https://github.com/byteowlz/ppr/releases/download/1.0.8/ppr_1.0.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = c077939ac2ad1299421c13ea25c0f6acec3923357340fc70e32303e12203805f
 	
 pkgname = ppr-bin
