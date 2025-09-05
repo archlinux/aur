@@ -11,7 +11,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="gyroflow"
 pkgname="$_pkgname"
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
@@ -43,7 +43,7 @@ options=('!lto')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('9aa1c57b094f60302ea10766d3770c6d5db080d863fe787980aea4815716d0de')
+sha256sums=('0b2049d448999fa96647fb6c9e067fd5bfe0a8e5b91da97a6d0aa20fe9f1353f')
 
 prepare() (
   cd "$_pkgsrc"
