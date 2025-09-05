@@ -1,9 +1,9 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=karton
-pkgver=git20250820
+pkgver=git20250905
 pkgrel=1
-_commit=c5a701055f86b5d8060aaa72d190170f7f08b47a
+_commit=9c8cbfb0461e48e77d3ca46bd9311a02f333cb4d
 pkgdesc='A libvirt-based Virtual Machine Manager for KDE'
 arch=('x86_64')
 url='https://invent.kde.org/sitter/karton'
@@ -31,7 +31,7 @@ makedepends=(
   vulkan-headers
 )
 source=("git+https://invent.kde.org/sitter/karton#commit=$_commit")
-sha256sums=('a15c2f2efca8fe33c84a85e66a4d2c8394593fdbc73170c564e7d47f095a772d')
+sha256sums=('1cc7eda6d66dd1055311b23a7ff2ea0032b14da6adbf5695f733329ce23c67b8')
 
 build() {
   cmake -B build -S $pkgname \
