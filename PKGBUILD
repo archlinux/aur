@@ -17,11 +17,9 @@ optdepends=(
     'curlftpfs:  mount ftp shares'
     'cifs-utils: mount samba shares'
     'davfs2:     mount WebDAV shares'
-    'eject:      eject via devmon'
     'spacefm:    devmon popups'
     'zenity:     devmon popups'
     'pmount:     devmon mount without suid udevil'
-    'udisks:     devmon mount without suid udevil'
     'udisks2:    devmon mount without suid udevil'
 )
 conflicts=('udevil' 'devmon' 'devmon-git')
