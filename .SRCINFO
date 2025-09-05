@@ -1,6 +1,6 @@
 pkgbase = jkwm-quote
 	pkgdesc = jkwm-quote is a simple program that generates a random quote that sounds like said by jkwm in polish
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = x86_64
 	license = MIT

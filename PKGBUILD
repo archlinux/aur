@@ -1,5 +1,5 @@
 pkgname=jkwm-quote
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="jkwm-quote is a simple program that generates a random quote that sounds like said by jkwm in polish"
 arch=('x86_64')
