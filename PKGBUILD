@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dbptk-desktop-bin
 _pkgname='DBPTK Desktop'
-pkgver=3.1.3
+pkgver=3.1.5
 _electronversion=34
 pkgrel=1
 pkgdesc="A cross-platform app built on Electron that uses DBPTK UI as a viewer for relational databases.(Prebuilt version.Use system-wide electron)"
@@ -24,11 +24,11 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3510beba5c4ec6d9dae2c69b23ba0bd59c3e0ccf6d0b059ce9c3863ebd0d39a7'
+sha256sums=('96f1e6c0ba010742f0d1bb982038fa62483d25985462f10e28788555fcf1325f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
