@@ -6,7 +6,7 @@
  
 +int is_recovery_key(datum_vmk_t* datum)
 +{
-+	int bRecvoeryKey = FALSE;
++	int bRecoveryKey = FALSE;
 +
 +	if (datum) {
 +		char *pStart = ((char *)datum) + sizeof(datum_vmk_t);
@@ -17,14 +17,14 @@
 +				break;
 +			}
 +			if (*((uint16_t *)(pStart + 4)) == 0x15) {
-+				bRecvoeryKey = TRUE;
++				bRecoveryKey = TRUE;
 +				break;
 +			}
 +			pStart += u32Size;
 +		}
 +	}
 +
-+	return bRecvoeryKey;
++	return bRecoveryKey;
 +}
 +
  void print_datum_vmk(DIS_LOGS level, void* vdatum)
@@ -37,6 +37,7 @@
 -	dis_printf(level, "Recovery Key GUID: '%.39s'\n", extkey_id);
 +	if (is_recovery_key(datum))
 +	{
++		// The '[*' and '*]' are literal characters, not ANSI escape codes for the terminal.
 +		dis_printf(level, "[* Recovery Key GUID *]: '%s'\n", extkey_id);
 +	}
 +	else
