@@ -1,6 +1,6 @@
 pkgbase = openchrom
 	pkgdesc = Visualization and analysis of mass spectrometric and chromatographic data
-	pkgver = 1.5.23
+	pkgver = 1.5.24
 	pkgrel = 1
 	url = https://openchrom.net/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = openchrom
 	depends = org.freedesktop.secrets
 	depends = webkit2gtk
 	options = !strip
-	source = https://products.lablicate.com/openchrom/1.5.23/openchrom-lablicate_linux.x86_64_1.5.23.tar.gz
+	source = https://products.lablicate.com/openchrom/1.5.24/openchrom-lablicate_linux.x86_64_1.5.24.tar.gz
 	source = openchrom.desktop
 	source = openchrom.png
-	sha256sums = 4d9cf6d5dd54b7099bf48223c4d350c31d740daa0646568584bddc1a23660b02
+	sha256sums = 3c21519eca1b3c4aafca293064a64b2d1262952d76633b6baeb81553057b2925
 	sha256sums = SKIP
 	sha256sums = SKIP
 
