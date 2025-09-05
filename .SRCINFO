@@ -1,12 +1,12 @@
 pkgbase = php-codesniffer-phpcsutils
 	pkgdesc = A set of utilities to aid developers of sniffs for PHP_CodeSniffer
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/PHPCSStandards/PHPCSUtils
 	arch = any
 	license = LGPL
 	depends = php-codesniffer
-	source = php-codesniffer-phpcsutils-1.1.1.tar.gz::https://github.com/PHPCSStandards/PHPCSUtils/archive/refs/tags/1.1.1.tar.gz
-	b2sums = 6903f056b409f64a860393e191258ee512b5d74e8e0467414589fd9afcb53b96373cb2e57653e9567592425d1ebac0429928566da57bf252f9679104c3a0c732
+	source = php-codesniffer-phpcsutils-1.1.2.tar.gz::https://github.com/PHPCSStandards/PHPCSUtils/archive/refs/tags/1.1.2.tar.gz
+	b2sums = c3b40da1bcd4ba771374b957be4ef25df089066515aab3715ae2a283f9dee709438ccd37555de85392f9d08c899476e67400f61bef11d73752c20e786585a085
 
 pkgname = php-codesniffer-phpcsutils
