@@ -1,0 +1,14 @@
+diff --git a/src/Edit/Modify/edit_text.cpp b/src/Edit/Modify/edit_text.cpp
+index 92b3b61e2..ac00c6e5d 100644
+--- a/src/Edit/Modify/edit_text.cpp
++++ b/src/Edit/Modify/edit_text.cpp
+@@ -202,7 +202,8 @@ edit_text_rep::prepare_for_insert () {
+ 
+ void
+ edit_text_rep::insert_tree (tree t, path p_in_t) {
+-  if (!as_bool (call ("like-emacs?"))) selection_cut ("none");
++  //if (!as_bool (call ("like-emacs?"))) selection_cut ("none");
++  selection_cut ("none"); // override selected text when typing
+   if (is_atomic (t) && (p_in_t == end (t)) &&
+       is_atomic (subtree (et, path_up (tp))))
+     insert (tp, t);

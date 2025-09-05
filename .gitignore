@@ -4,6 +4,7 @@
 
 # Makepkg
 *.pkg.tar.xz
+*.pkg.tar.zst
 /pkg/
 /src/
 /texmacs
