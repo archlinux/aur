@@ -2,7 +2,7 @@
 pkgname=mubu-bin
 _pkgname=Mubu
 _zhsname='幕布'
-pkgver=5.1.0
+pkgver=5.1.1
 _electronversion=15
 pkgrel=1
 pkgdesc="A mind management tool that combines outline notes and mind maps.(Prebuilt version.Use system-wide electron)一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)"
@@ -24,12 +24,12 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('109385b649df8eec1a1c2f1d5c245318d2e91b3ee12b629970a6c161ff13c848'
+sha256sums=('1e135fd9681ba2253c108101eff68e4eecd1805782e7b4656ae5a240a0814ff7'
             'dbc572392757c2abbb6d6d7ca62337561b46b8f3b403963a3624fa5a4884c4ec'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
