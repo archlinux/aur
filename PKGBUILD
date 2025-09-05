@@ -3,7 +3,7 @@
 _pkgname="mandarine"
 pkgname=$_pkgname-git
 pkgver=r10301.6ae06c5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
@@ -49,7 +49,9 @@ source=("git+https://github.com/mandarine3ds/mandarine"
 	"git+https://github.com/google/googletest" # cubeb
 	"git+https://github.com/arsenm/sanitizers-cmake" # cubeb
 	"git+https://github.com/KhronosGroup/SPIRV-Headers" # sirit
-	"git+https://github.com/bylaws/liblinkernsbypass") # libadrenotools
+	"git+https://github.com/bylaws/liblinkernsbypass" # libadrenotools
+	"https://github.com/username227/mcl/archive/refs/tags/mcl.tar.gz"
+	"sv_SE_patch.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -87,13 +89,15 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'e1276b22b7be39871f5c1eee1e63365e77f818539113e9a9cb0b30c7165abc6c'
+            '22760c3a3704f50e619b8b4592b8c5d3d7dac339aeba48f95138f3596dea00cd')
 pkgver() {
     cd "$srcdir/$_pkgname"
     #echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)" # Get canary version plus commit
 }
-prepare() {
+prepare() {	
     cd "$srcdir/$_pkgname"
     git submodule init
     for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,sdl2,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,SPIRV-Tools};
@@ -118,7 +122,15 @@ prepare() {
     git submodule init
     git config submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
     git -c protocol.file.allow=always submodule update
+
+#fix Dynarmic mcl errors
+	rm -r $srcdir/$_pkgname/externals/dynarmic/externals/mcl
+	mv $srcdir/mcl-mcl $srcdir/$_pkgname/externals/dynarmic/externals/mcl
+
+#fix sv_SE translation parse error
+	patch $srcdir/$_pkgname/dist/languages/sv_SE.ts $srcdir/sv_SE_patch.patch
 }
+
 build() {
     export CFLAGS=$(echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
     export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')

@@ -1,7 +1,7 @@
 pkgbase = mandarine-git
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
 	pkgver = r10301.6ae06c5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -79,6 +79,8 @@ pkgbase = mandarine-git
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers
 	source = git+https://github.com/bylaws/liblinkernsbypass
+	source = https://github.com/username227/mcl/archive/refs/tags/mcl.tar.gz
+	source = sv_SE_patch.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -117,5 +119,7 @@ pkgbase = mandarine-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = e1276b22b7be39871f5c1eee1e63365e77f818539113e9a9cb0b30c7165abc6c
+	sha256sums = 22760c3a3704f50e619b8b4592b8c5d3d7dac339aeba48f95138f3596dea00cd
 
 pkgname = mandarine-git

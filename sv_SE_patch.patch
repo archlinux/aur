@@ -1,0 +1,9 @@
+--- sv_SE.ts	2025-09-04 22:45:22.500911044 -0400
++++ sv_SE2.ts	2025-09-04 22:50:32.517602766 -0400
+@@ -1,6 +1,3 @@
+-// Copyright 2025 Citra Project / Mandarine Project
+-// Licensed under GPLv2 or any later version
+-// Refer to the license.txt file included.
+ <?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv">
+ <context>
+     <name>ARMRegisters</name>
