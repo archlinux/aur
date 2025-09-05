@@ -1,0 +1,20 @@
+pkgbase = kerminal
+	pkgdesc = Terminal app with SSH Profile support
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/klpod221/kerminal
+	install = kerminal.install
+	arch = x86_64
+	license = MIT
+	provides = kerminal
+	conflicts = kerminal
+	source = kerminal-0.6.2.tar.gz::https://github.com/klpod221/kerminal/releases/download/v0.6.2/kerminal-0.6.2.tar.gz
+	source = kerminal.desktop
+	source = kerminal.png
+	source = kerminal.install
+	sha256sums = 44c2321437557eb0143a72d140c58753cbb40657c587b113494805f914883406
+	sha256sums = 2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da
+	sha256sums = eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc
+	sha256sums = 6628d9ee715006d102c7b6fe8108ed6c755f71fa03e948b7f4d0842026645e97
+
+pkgname = kerminal

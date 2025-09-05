@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.2.1
+Type=Application
+Name=Kerminal
+Comment=Modern terminal app with SSH/SFTP support
+Exec=/usr/bin/kerminal
+Icon=kerminal
+Terminal=false
+Categories=Utility;System;TerminalEmulator;
