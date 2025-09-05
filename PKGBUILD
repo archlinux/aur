@@ -2,7 +2,7 @@
 
 _pkgname="safecloset"
 pkgname="${_pkgname}-bin"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Cross-platform Secure TUI Secret Locker"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}.zip")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('7ec41731fa33a864c2094a10ed580596116e9c19946fed7c29f905d2e1c7a5b6')
+sha256sums_x86_64=('9abd288a85c5d458e6794647c89d2a7c3f9de9c2040a370950c8d5a7a9b5aef5')
 
 package() {
   cd "${srcdir}"
