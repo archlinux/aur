@@ -1,6 +1,6 @@
 pkgname=moonasst
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Moonasst Qt application"
 arch=('x86_64')
 url="https://gitee.com/nemozz-hz/moonasst"
@@ -64,7 +64,7 @@ package() {
 [Desktop Entry]
 Name=Moonasst
 Comment=Moonasst Qt application
-Exec=/opt/exec/moonasst
+Exec=/opt/exec/moonasst server="http://wst.needleos.com"
 Icon=/usr/share/icons/moonasst.png
 Terminal=false
 Type=Application
