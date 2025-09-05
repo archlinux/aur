@@ -1,23 +1,23 @@
 pkgbase = tiddlywiki-app-bin
 	pkgdesc = A TiddlyWiki desktop application that provides a silkier desktop experience.(Prebuilt version.Use system-wide electron)一个 TiddlyWiki 桌面应用，提供更加丝滑的桌面端使用体验。
-	pkgver = 4.9.5
+	pkgver = 4.9.6
 	pkgrel = 1
 	url = https://oeyoews.github.io/tiddlywiki-app/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron37
+	depends = electron38
 	depends = pngquant
-	provides = tiddlywiki-app=4.9.5
+	provides = tiddlywiki-app=4.9.6
 	conflicts = tiddlywiki-app
 	options = !emptydirs
-	source = LICENSE-4.9.5::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v4.9.5/LICENSE
+	source = LICENSE-4.9.6::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v4.9.6/LICENSE
 	source = tiddlywiki-app.sh
 	sha256sums = 801cd318b77f7cc43b71e5bf59b79476c94d4981025655f7d1c4f3ef4faaf162
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = tiddlywiki-app-4.9.5-aarch64.pacman::https://github.com/oeyoews/tiddlywiki-app/releases/download/v4.9.5/tiddlywiki-app-4.9.5-aarch64.pacman
-	sha256sums_aarch64 = 6ff5c81ee17089eb9afbdad95efb68b0811198e828d03bfa7cabacf06f52792a
-	source_x86_64 = tiddlywiki-app-4.9.5-x86_64.pacman::https://github.com/oeyoews/tiddlywiki-app/releases/download/v4.9.5/tiddlywiki-app-4.9.5-x64.pacman
-	sha256sums_x86_64 = 2c1736b6d730bfd76f324b2ed06d0df8e5c1b082f06adf125155cffdb64b85a0
+	source_aarch64 = tiddlywiki-app-4.9.6-aarch64.pacman::https://github.com/oeyoews/tiddlywiki-app/releases/download/v4.9.6/tiddlywiki-app-4.9.6-aarch64.pacman
+	sha256sums_aarch64 = c5be3a4688e986f3c8f7a904ccca8544141f21ef279d38213c91818cf77821fe
+	source_x86_64 = tiddlywiki-app-4.9.6-x86_64.pacman::https://github.com/oeyoews/tiddlywiki-app/releases/download/v4.9.6/tiddlywiki-app-4.9.6-x64.pacman
+	sha256sums_x86_64 = 3c691e1bc012b81ab13e2260d79e043124cc086eb441aaab78d1a7590e26dcf3
 
 pkgname = tiddlywiki-app-bin
