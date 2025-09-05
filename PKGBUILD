@@ -57,8 +57,9 @@ build() {
   yarn --offline build
 
   cd ../element-desktop
-  yarn run build:native
-  yarn run build
+  yarn run build:ts
+  yarn run build:res
+  yarn run electron-builder --publish=never
 }
 
 package_element-web-git() {
