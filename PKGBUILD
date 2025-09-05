@@ -3,7 +3,7 @@
 # file COPYING or https://opensource.org/license/mit/.
 
 pkgname=pacenv
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Creation and management of lightweight GNU/Linux environments"
 arch=(any)
