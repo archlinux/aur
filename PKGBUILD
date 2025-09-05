@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.27.5
+pkgver=1.28.2
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -9,9 +9,9 @@ arch=(any)
 url="https://feed-the-beast.com/ftb-app"
 license=("LGPL-2.1-only")
 groups=()
-_electron=electron31
+_electron=electron33
 depends=("$_electron")
-makedepends=(git pnpm java-environment)
+makedepends=(git pnpm "java-environment>=11")
 checkdepends=()
 # FTB App will download Adoptium for itself and Minecraft, althrough system Java can be used for Minecraft too.
 optdepends=("java-runtime: Playing Minecraft with system Java.")
@@ -27,7 +27,7 @@ source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
-sha256sums=('3da22135eb3a9b23dda2b5912ad4308bafbfe7818620dd09cc711d46b05ed28f'
+sha256sums=('ea9ea1921d319456b6eb23eb1ad2988cad9709f610c03bfe1886366e1b0080bf'
             'dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e'
             '26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f')
 validpgpkeys=()
@@ -35,11 +35,11 @@ validpgpkeys=()
 prepare() {
 	cd "$srcdir/FTB-App"
 	# Let renderer process detect meta.json properly when using system Electron. (ftb-app.sh sets FTB_APP_PATH)
-	sed -i 's#process.resourcesPath#global.process.env["FTB_APP_PATH"] || process.resourcesPath#' src/utils/interface/electron.ts
+	sed -i 's#process.resourcesPath#process.env.FTB_APP_PATH || process.resourcesPath#' electron/preload.ts electron/javaVerifier.ts
 	# Passing -c.electronDist=... -c.electronVersion=... cause errors, modify config instead.
 	local _electronDist="/usr/lib/$_electron"
 	local _electronVersion="$(<$_electronDist/version)"
-	sed -e "s/'dir', 'AppImage', 'deb', 'rpm'/'dir'/" -e "/builderOptions: {/a electronDist: \"$_electronDist\", electronVersion: \"$_electronVersion\"," -i vue.config.js
+	sed -e "/- tar\.gz/d;/- appimage/d;/- deb/d;/- rpm/d" -e "1ielectronDist: \"$_electronDist\"\nelectronVersion: \"$_electronVersion\"" -i electron-builder.yml
 	pnpm install
 }
 
