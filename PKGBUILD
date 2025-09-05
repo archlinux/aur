@@ -16,7 +16,7 @@ source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/byteowl
 sha256sums_aarch64=('5b5141b51ef6198ac37be01fe5392779c7425f1bd840433761d154c3a709d820')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.1.3/ppr-1.1.3.tar.gz")
-sha256sums_x86_64=('b5663deab008ff43425cb5e3c64d72bd1313d23d0c299a6b62ca2952c2cfb035')
+sha256sums_x86_64=('b233a1a8b1f1f3885315e82decaad7870226b3e1a8d6a80deda7376524d12570')
 
 package() {
   cd "${srcdir}/ppr-1.1.3"
@@ -24,12 +24,12 @@ package() {
   export CGO_ENABLED=0
   export GOOS=linux
   go build \
-  -trimpath \
-  -buildmode=pie \
-  -mod=readonly \
-  -modcacherw \
-  -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=1.1.3 -X main.commit=9ca141f150c9ab0e90a31c503743b088f27c52a9 -X main.date=2025-09-05T10:00:16Z" \
-  -o ppr .
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=1.1.3 -X main.commit=9ca141f150c9ab0e90a31c503743b088f27c52a9 -X main.date=2025-09-05T10:00:16Z" \
+    -o ppr .
 
   # bin
   install -Dm755 "./ppr" "${pkgdir}/usr/bin/ppr"
