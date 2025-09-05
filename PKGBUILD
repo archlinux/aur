@@ -2,9 +2,9 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.0.0-beta1
+_pkgver=32.0.0-beta2
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=1
 epoch=11
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -42,6 +42,7 @@ depends=(
   "qt6-svg>=$_qtver" # Deps of OBS Studio
   "qt6-wayland>=$_qtver" # Needed to use Qt on Wayland platform
   "rnnoise" # Deps if the filter plugin
+  "simde" # Deps of libobs and its headers
   "speexdsp" # Deps if the filter plugin
   "srt" # Deps of FFmpeg plugin
   "util-linux-libs" # Deps of libobs
@@ -78,7 +79,6 @@ makedepends=(
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
   "libvpl" # Deps of QSV plugin
   "python>=$_pythonver" # Deps of Scripting plugin
-  "simde" # Deps of libobs
   "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
   "systemd-libs" # Deps of V4L2 plugin
