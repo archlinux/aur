@@ -2,7 +2,7 @@
 
 pkgname=elephant
 pkgver=1.0.0
-pkgrel=21
+pkgrel=22
 pkgdesc='general purpose datasource and executor'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -10,16 +10,16 @@ license=('MIT')
 makedepends=('go')
 conflicts=('elephant')
 provides=('elephant')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-21.tar.gz")
-sha256sums=('0f144476574350e1fe48e0ae7368cdb03f658567d791b4d7f601f20815f8b4e9')
+source=("${url}/archive/refs/tags/v${pkgver}-beta-22.tar.gz")
+sha256sums=('7d8c8628878d8170211544ed4b5e7880fe8267d5e2e7f509d1e1fe37f45fca01')
 
 build() {
-    cd ${pkgname}-${pkgver}-beta-21/cmd
+    cd ${pkgname}-${pkgver}-beta-22/cmd
     go build -buildvcs=false -x -o elephant -trimpath
 }
 
 package() {
-    cd ${pkgname}-${pkgver}-beta-21/cmd
+    cd ${pkgname}-${pkgver}-beta-22/cmd
     install -Dm 755 elephant -t "${pkgdir}/usr/bin"
 
     # cd ../
