@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-hip
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)
-	pkgver = b6387
+	pkgver = b6393
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = llama.cpp-hip
 	depends = openmp
 	depends = python
 	depends = rocblas
+	depends = rocwmma
 	optdepends = python-numpy: needed for convert_hf_to_gguf.py
 	optdepends = python-safetensors: needed for convert_hf_to_gguf.py
 	optdepends = python-sentencepiece: needed for convert_hf_to_gguf.py
@@ -30,7 +31,7 @@ pkgbase = llama.cpp-hip
 	conflicts = stable-diffusion.cpp
 	options = lto
 	options = !debug
-	source = llama.cpp-hip-b6387.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b6387.tar.gz
-	sha256sums = 970dbc5994dfee2083a3c7c9ccd6d37802e2aece3fda8568db41afb49b9d4dd0
+	source = llama.cpp-hip-b6393.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b6393.tar.gz
+	sha256sums = c46d6bf0d184bce32c955e9180408497e42ada82c0e562509e2564f752c503ca
 
 pkgname = llama.cpp-hip

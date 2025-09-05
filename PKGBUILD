@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6387
+pkgver=b6393
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -18,6 +18,7 @@ depends=(
   openmp
   python
   rocblas
+  rocwmma
 )
 makedepends=(
   cmake
@@ -35,7 +36,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('970dbc5994dfee2083a3c7c9ccd6d37802e2aece3fda8568db41afb49b9d4dd0')
+sha256sums=('c46d6bf0d184bce32c955e9180408497e42ada82c0e562509e2564f752c503ca')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
@@ -61,6 +62,7 @@ build() {
     -DGGML_RPC=ON
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
+    -DGGML_HIP_ROCWMMA_FATTN=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DGGML_NATIVE=ON
     -Wno-dev
