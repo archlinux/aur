@@ -4,7 +4,7 @@ pkgname=cherry-studio
 _pkgname="Cherry Studio"
 pkgver=1.5.9
 _electron=electron37
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -60,6 +60,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export TMPDIR=${srcdir}
     export npm_config_nodedir=/usr
+    ELECTRON_SKIP_BINARY_DOWNLOAD=1 yarn add node-addon-api node-gyp
     ELECTRON_SKIP_BINARY_DOWNLOAD=1 yarn install
     export NODE_ENV=production
     yarn run build:unpack
