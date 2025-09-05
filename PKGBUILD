@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.4.8
+pkgver=0.4.9
 _electronversion=37
 pkgrel=1
 pkgdesc="Scalable Vector Graphics Manipulation.Prebuilt version.(Prebuilt version.Use system-wide electron)"
@@ -19,11 +19,11 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4bcea48e064fcf20bf9671eafb7408281d21de5f70a3c8c2ed43ec20d9e7e5e1'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('f27d0046a622d98d103ffeb1da9ddd4035c7289938d91a6927db527b9dd14095'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
