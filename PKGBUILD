@@ -3,7 +3,7 @@
 # Contributor: Claudio d'Angelis <claudiodangelis at gmail dot com>
 
 pkgname=postman-bin
-pkgver=11.61.8
+pkgver=11.61.7
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -14,19 +14,13 @@ options=(!strip)
 license=('custom')
 depends=('libcups' 'systemd-libs' 'libxfixes' 'libx11' 'cairo' 'nspr' 'hicolor-icon-theme' 'bash' 'at-spi2-core' 'expat' 'libxkbcommon' 'glib2' 'pango' 'libxcomposite' 'mesa' 'nss' 'gcc-libs' 'gtk3' 'libxrandr' 'libdrm' 'libxcb' 'libxext' 'alsa-lib' 'libxdamage' 'dbus' 'libsecret' 'glibc')
 
-source_x86_64=(
-  "postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download/latest/linux64"
-  "postman.desktop"
-)
-source_aarch64=(
-  "postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/latest/linux_arm64"
-  "postman.desktop"
-)
+source=("postman.desktop")
+source_x86_64=("postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux64")
+source_aarch64=("postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux_arm64")
 
-sha256sums_x86_64=('3b601f2b41cc2af4415d9e454ff55e46464988660fa56d917305d19f008bf8a7'
-                   'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_aarch64=('e3b7b2ef03805d2b8d340a9012a28c3b9fe0f2054b87c5747ca39d0b0bacfb27'
-                    'd87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
+sha256sums=('d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
+sha256sums_x86_64=('3b601f2b41cc2af4415d9e454ff55e46464988660fa56d917305d19f008bf8a7')
+sha256sums_aarch64=('e3b7b2ef03805d2b8d340a9012a28c3b9fe0f2054b87c5747ca39d0b0bacfb27')
 
 package() {
   install -dm755 "${pkgdir}/opt/"
