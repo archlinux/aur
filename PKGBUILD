@@ -21,8 +21,9 @@ options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
 arch=('x86_64')
-depends=('gtk3' 'qt6-base' 'qt5-base' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
+    'qt6-base' 'qt5-base'
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
     'upower: opera battery save'
 )
