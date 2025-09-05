@@ -13,6 +13,6 @@ pkgbase = doas-sudo-shim-v
 	conflicts = sudo
 	conflicts = doas-sudo-shim
 	source = doas-sudo-shim-0.1.2v.tar.gz::https://github.com/Enovale/doas-sudo-shim/archive/refs/tags/v0.1.2v.tar.gz
-	sha256sums = da5580f24274f8ed2e87da54252463c98602795ad29dd5b7261502c70ec5dc97
+	sha256sums = ef8af8e1992ec497763c2922b079c49cd64e3d0151b0d112010d8c57299ddc74
 
 pkgname = doas-sudo-shim-v
