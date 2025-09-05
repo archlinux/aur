@@ -15,6 +15,7 @@ depends=(
 	'perl-libwww'
 	'perl-list-moreutils'
 	'perl-term-progressbar'
+	'perl-lwp-protocol-https'
 )
 makedepends=('git')
 conflicts=('pacup')
