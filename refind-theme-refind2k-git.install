@@ -3,6 +3,10 @@
 post_install() {
   local install_dir='/usr/share/refind/themes/refind2k'
   cd "$install_dir" || exit 1
+  # Don't overwrite refind.conf, add line to the end of the file instead
+  # to avoid getting an unbootable system in some cases
+  # https://github.com/2KAbhishek/refind2k/pull/6
+  grep -q 'sudo tee -a' setup.sh || sed -i 's/sudo tee /sudo tee -a /' setup.sh
   ./setup.sh
 }
 
