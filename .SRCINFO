@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.8.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -25,8 +25,9 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-0.8.1::git+https://github.com/pydantic/pydantic-ai.git#tag=v0.8.1
-	sha256sums = 8279c4813435e57b2b1311ca50a5d40f23b90065d5f1b43ec20b428181ae372d
+	source = pydantic-ai-1.0.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.0.0
+	validpgpkeys = 2EECE5156D8DE0C50636E37621707FBE029E96B5
+	sha256sums = b3118fdd774edd73965cacb3d068667fdb36ad38fd6a2985453d0c65f6cdf45d
 
 pkgname = python-pydantic-graph
 	pkgdesc = Graph and state machine librarys.
@@ -49,6 +50,7 @@ pkgname = python-pydantic-ai-slim
 	depends = python-typing-inspection
 	depends = python-genai-prices
 	optdepends = python-logfire: logfire
+	optdepends = python-opentelemetry-instrumentation-httpx: logfire
 	optdepends = python-openai: openai
 	optdepends = python-cohere: cohere
 	optdepends = python-google-auth: vertexai
@@ -145,8 +147,9 @@ pkgname = python-pydantic-ai
 	depends = python-starlette
 	depends = python-tenacity
 	depends = python-temporalio
+	depends = python-logfire
+	depends = python-opentelemetry-instrumentation-httpx
 	optdepends = python-pydantic-ai-examples: examples
-	optdepends = python-logfire: logfire
 	optdepends = python-fasta2a: a2a
 
 pkgname = python-clai
