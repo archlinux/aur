@@ -2,7 +2,7 @@
 
 pkgname=python-tree-sitter-embedded-template
 _gitpkgname=tree-sitter-embedded-template
-pkgver=0.23.2
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='Tree-sitter grammar for embedded template languages like ERB, EJS'
 arch=('x86_64')
@@ -21,9 +21,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-embedded-template/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'd842e29a980461d4872e74a2ad5ffd9cb2c96e14d811cd39621afc016c250dbcb1aca8c377822e3edeac6e465a7b793b803d0825c151e660394f6a8d6098b46f'
-)
+sha512sums=('259725024c11214f2d9b3e653536112029631f05475e1082cea6bcaf97ba07c5741d55fa031036ba128e0bf92f8fe10a512571b6729035779f7ab3017b001a37')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
