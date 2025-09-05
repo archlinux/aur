@@ -3,7 +3,7 @@
 # Contributor: Claudio d'Angelis <claudiodangelis at gmail dot com>
 
 pkgname=postman-bin
-pkgver=11.61.7
+pkgver=11.61.8
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -15,11 +15,11 @@ license=('custom')
 depends=('libcups' 'systemd-libs' 'libxfixes' 'libx11' 'cairo' 'nspr' 'hicolor-icon-theme' 'bash' 'at-spi2-core' 'expat' 'libxkbcommon' 'glib2' 'pango' 'libxcomposite' 'mesa' 'nss' 'gcc-libs' 'gtk3' 'libxrandr' 'libdrm' 'libxcb' 'libxext' 'alsa-lib' 'libxdamage' 'dbus' 'libsecret' 'glibc')
 
 source_x86_64=(
-  "postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux64"
+  "postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download/latest/linux64"
   "postman.desktop"
 )
 source_aarch64=(
-  "postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux_arm64"
+  "postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/latest/linux_arm64"
   "postman.desktop"
 )
 
