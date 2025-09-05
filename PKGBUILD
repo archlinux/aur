@@ -2,7 +2,7 @@
 # Contributor: ihipop <ihipop at gmail dot com>
 _pkgname=warp-terminal
 pkgname="${_pkgname}-bin"
-pkgver=0.2025.08.13.08.12.stable_02
+pkgver=0.2025.09.03.08.11.stable_03
 pkgrel=1
 pkgdesc="Warp is the intelligent terminal with AI and your dev team's knowledge built-in."
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${_pkgname}-v${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://rel
 source_aarch64=("${_pkgname}-v${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/${_pkgname}-v${pkgver}-${pkgrel}-aarch64.pkg.tar.zst")
 
 sha256sums=('e63485e6dff24dd507ff0caa59eace7cf899f4986d8ddd0c8a53389d6ecd3280')
-sha256sums_x86_64=('c7cec71258414ab874d0b88270a5fd0275a244e54de121194eabbb0f547bd8b2')
-sha256sums_aarch64=('fa5bfc769c797e2d76ae11b6e7ccd28f46adb7fbd38bb0e274a0989540886efa')
+sha256sums_x86_64=('5757834bb4907f8a092e25bd3aba13f5028faf2416bad5e120b0256fbd76e24b')
+sha256sums_aarch64=('a4c62b05d1d2812e3067d117e078f9345888cfe57b080580e31df78396997cb6')
 
 package() {
   mkdir -p "$srcdir/extracted"
