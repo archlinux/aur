@@ -1,0 +1,19 @@
+pkgbase = visualvault-bin
+	pkgdesc = Terminal-based media file organizer
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/mikeleppane/visualvault
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = visualvault
+	conflicts = visualvault
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/mikeleppane/visualvault/v0.8.0/LICENSE
+	source = README-0.8.0.md::https://raw.githubusercontent.com/mikeleppane/visualvault/v0.8.0/README.md
+	sha256sums = 21fb5a5395f0f650feb3688f00c858e59eefa51c3c945a19da2c3ed2a4d8a3d2
+	sha256sums = 5d0963793e7bbe14243a44ec4b00733d87b24aa9ba2e9e3dff8bdc310d4f4134
+	source_x86_64 = visualvault-x86_64-0.8.0::https://github.com/mikeleppane/visualvault/releases/download/v0.8.0/visualvault-linux-amd64
+	sha256sums_x86_64 = e3646abc1a9000fff6711690e49d5767261dbb4e4badade9bc1327a30345a74b
+
+pkgname = visualvault-bin
