@@ -7,7 +7,7 @@ _pkgbase='engauge-digitizer'
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
 pkgver=12.9.1
-pkgrel=1
+pkgrel=2
 epoch=1
 url="https://akhuettel.github.io/engauge-digitizer"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ build() {
 
   qmake6 engauge.pro "CONFIG+=pdf jpeg2000 log4cpp_null"
   make
-  lrelease engauge.pro
+  /usr/lib/qt6/bin/lrelease engauge.pro
   cd help/
   sed -e 's|^qhelpgenerator engauge.qhp|/usr/lib/qt6/qhelpgenerator engauge.qhp engauge.qhcp|' \
       -i ./build.bash
