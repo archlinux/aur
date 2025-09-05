@@ -1,8 +1,8 @@
 # Maintainer: oech3
-# COntributor: kj_sh604
+# Contributor: kj_sh604
 pkgname=coreutils-uutils
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='(Experimental) Use uutils as system core utilities'
 arch=('x86_64')
 license=('MIT')
@@ -10,20 +10,30 @@ url=https://github.com/uutils/coreutils
 conflicts=(coreutils b3sum sha3sum)
 provides=(coreutils b3sum) # missing sha3sum binaries
 depends=(uutils-coreutils=${pkgver}) # protect user from change of packaging layout
-makedepends=(rust-musl)
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8')
+makedepends=(rust patch)
+source=("${url}/archive/${pkgver}.tar.gz" Cargo.toml
+"glibc.patch::https://git.launchpad.net/~juliank/ubuntu/+source/rust-coreutils/plain/debian/patches/glibc-2.42.patch?h=ubuntu/devel&id=a16e77bec0546ee51770a891a24468e8048242e3"
+"nix-rust0.30.1.tar.gz::https://github.com/nix-rust/nix/archive/refs/tags/v0.30.1.tar.gz")
+sha256sums=('55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8'
+            '4b8fb5837b66a180e8d6eeef6498539bd426378a94ed068eea597fae63bc2e13'
+            '3516ae0e2a4fe5fc4996e0f7c9952213f5b7394c739c79f31bafd2ba2a9e2ebb'
+            '31742bef74cad04c8bd8c9a7301323e3df35847f5b776024221cbd2060cd5ed7')
 
 build() {
-  cd coreutils-${pkgver}
-  cargo build -p uu_stty --release --target=x86_64-unknown-linux-musl # workaround for panic
+  cd coreutils-$pkgver
+  cat "${srcdir}"/Cargo.toml >> Cargo.toml
+  mkdir -p rust-vendor
+  rm -rf rust-vendor/nix
+  mv "${srcdir}"/nix-0.30.1 rust-vendor/nix
+  patch -p1 -i "${srcdir}"/glibc.patch
+  cargo build -p uu_stty --release
   #cd src/uu/stdbuf/src/libstdbuf
   #cargo build --release
 }
 
 package() {
   cd coreutils-$pkgver
-  install -Dm755 target/x86_64-unknown-linux-musl/release/stty "$pkgdir"/usr/bin/stty
+  install -Dm755 target/release/stty "$pkgdir"/usr/bin/stty
   # fail if uu-coreutils binary is renamed in the uutils-coreutils
   /usr/bin/uu-coreutils install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
