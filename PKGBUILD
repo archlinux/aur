@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=jsonoid-discovery
-pkgver=0.40.0
+pkgver=0.40.1
 pkgrel=1
 pkgdesc='Distributed JSON schema discovery'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   'jsonoid.sh'
 )
 
-sha512sums=('e4c2f49d2bd682bd394e36db33581ca72623de572ec81b6f02c6d6347f7668a3c3e5e9058d152ed8e76f9fa9a3ebece2d417ec2fb674fe8521367f7d0e290363'
+sha512sums=('c5f788542e60b4e730d0cabf4f7c11349626f6fd3b175e61cf237b1db28b2962f1de72dc74dd14f14cb915e27422342700dfff224648d517f05880cc9d32cf7b'
             'd496e686783c20addf51206e7c8ce5725fceff2816d8f3d5cf54b8bd322bb01d357e07d4103a4f09be1bd7e1ec77d8d6abf3d74cdfd74fc70d7610541e8e1b63')
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  sbt -v --batch --java-home /usr/lib/jvm/java-11-openjdk \
+  sbt -v --batch -J-Xmx4G --java-home /usr/lib/jvm/java-11-openjdk \
     assembly
   pandoc --standalone --to man jsonoid.1.md -o jsonoid.1
 }
