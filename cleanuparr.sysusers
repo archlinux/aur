@@ -1,0 +1,3 @@
+u cleanuparr - "Cleanuparr Daemon" /var/lib/cleanuparr
+g media  -
+m cleanuparr media

@@ -1,0 +1,6 @@
+src
+pkg
+*.tar.zst
+qbittorrent-net-client
+Transmission.API.RPC
+Cleanuparr

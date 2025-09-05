@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /usr/lib/cleanuparr/config   0755 cleanuparr media
+d /usr/lib/cleanuparr/config/logs   0755 cleanuparr media
+L /etc/cleanuparr/config.xml - - - - /var/lib/cleanuparr/config.xml
