@@ -1,7 +1,7 @@
 pkgbase = gz-tools2
 	pkgdesc = Command line tools for the Gazebo libraries
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-tools
 	arch = any
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = gz-tools2
 	makedepends = doxygen
 	makedepends = gz-cmake
 	provides = gz-tools=2
-	source = https://github.com/gazebosim/gz-tools/archive/gz-tools2_2.0.2.tar.gz
-	sha256sums = 5ff30234570d7409b0f6c76a3b8e44762cb51710a0c60d58987b7a8c43fd7cb5
+	source = https://github.com/gazebosim/gz-tools/archive/gz-tools2_2.0.3.tar.gz
+	sha256sums = 1ad95ad989bf986ea1fcd76be6d25b5d08199aa0363073606ff2afc7d62e1c6c
 
 pkgname = gz-tools2

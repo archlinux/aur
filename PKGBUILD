@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-tools2
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Command line tools for the Gazebo libraries"
@@ -17,7 +17,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('5ff30234570d7409b0f6c76a3b8e44762cb51710a0c60d58987b7a8c43fd7cb5')
+sha256sums=('1ad95ad989bf986ea1fcd76be6d25b5d08199aa0363073606ff2afc7d62e1c6c')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
