@@ -12,8 +12,8 @@
 
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
-pkgver=2025.4.0
-pkgrel=2
+pkgver=2025.9.1
+pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('Apache-2.0')
@@ -30,7 +30,7 @@ makedepends=(
 _pkgsrc="jitsi-meet-electron-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('44e6b635c037882b1f8160d45f3213fe12eb6f1c36cc60ec80fc8994eb9af6ac')
+sha256sums=('1c7e3b17fde106c172d658be21e0d8e82ee4e324adb717f849cef21bf7b573c8')
 
 prepare() (
   cd "$_pkgsrc"
@@ -43,6 +43,10 @@ prepare() (
     | jq 'del(.build.mac, .build.mas, .build.deb, .build.win)' \
     | jq '.build.linux.target = "dir"' \
       > package.json
+
+  jq '.build.files = (["!node_modules/fsevents"] + (.build.files // []))' package.json \
+    > package.tmp && mv package.tmp package.json
+
 )
 
 build() (
@@ -54,6 +58,8 @@ build() (
   export XDG_STATE_HOME="$srcdir/tmp_state"
 
   export npm_config_cache="$srcdir/npm_cache"
+
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
   local _electron_version=$(cat /usr/lib/electron/version)
 
@@ -70,11 +76,15 @@ build() (
     -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
     -i package.json package-lock.json
 
-  NODE_ENV=development npm install --no-audit --no-fund --ignore-scripts
+  npm install --no-audit --no-fund --ignore-scripts
 
-  NODE_ENV=production npm exec -c 'webpack --config ./webpack.main.js'
-  NODE_ENV=production npm exec -c 'webpack --config ./webpack.renderer.js'
-  NODE_ENV=production npm exec -c "electron-builder ${_electron_builder_options[*]}"
+  npm ls fsevents || true
+  rm -rf node_modules/fsevents
+  mkdir -p node_modules/fsevents
+
+  npm exec -c 'webpack --config ./webpack.main.js'
+  npm exec -c 'webpack --config ./webpack.renderer.js'
+  npm exec -c "electron-builder ${_electron_builder_options[*]}"
 )
 
 package() {
