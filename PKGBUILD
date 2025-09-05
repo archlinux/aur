@@ -2,7 +2,7 @@
 
 _pkgname=tf-keras
 pkgname=python-${_pkgname}
-pkgver=2.19.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc='TensorFlow-specific implementation of the Keras API, which was the default Keras from 2019 to 2023.'
 arch=('any')
@@ -16,8 +16,8 @@ depends=('absl-py' 'python' 'python-h5py' 'python-optree' 'python-rich'
 optdepends=('python-pytorch')
 source=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
         "${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/keras-team/${_pkgname}/v${pkgver}/LICENSE")
-sha256sums=('4f339e800987b39d1548a8c76a7b33b6801a97ec7fcd89c299ec29741f7890bd'
-            '58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
+b2sums=('a02632a1e4c3bbe7c6a173ca249c52d3f1c00224496c12625c85a185003e99ceea21cd9fb346f144576a90d59e7d1cd031a7c768ca50aad4230d4c22b4b2d860'
+        'dc6395f606b09f8a2fa6e8d28f8436a9b0d2ee7e43b4033542c55eb1bf26e9e6c01fd53770e825b9e996ef15fd2eb77f1e0524d4fc1a3e8bf52d72de3adbd653')
 
 package() {
     python -m installer --destdir="$pkgdir" *.whl
