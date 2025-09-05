@@ -2,7 +2,7 @@
 # Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 
 pkgname='ppr-bin'
-pkgver=1.0.8
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='ppr - CLI tool for creating themed wallpapers from SVG templates'
 url='https://github.com/byteowlz/ppr'
@@ -12,14 +12,14 @@ provides=('ppr')
 conflicts=('ppr')
 depends=('go')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.0.8/ppr_1.0.8_linux_arm64.tar.gz")
-sha256sums_aarch64=('21c78144c2e460e91064c5065a7f750556929c41cd2147eac18f0e0d88d6f1a8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.1.3/ppr-1.1.3.tar.gz")
+sha256sums_aarch64=('5b5141b51ef6198ac37be01fe5392779c7425f1bd840433761d154c3a709d820')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.0.8/ppr_1.0.8_linux_amd64.tar.gz")
-sha256sums_x86_64=('c077939ac2ad1299421c13ea25c0f6acec3923357340fc70e32303e12203805f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/byteowlz/ppr/releases/download/1.1.3/ppr-1.1.3.tar.gz")
+sha256sums_x86_64=('b5663deab008ff43425cb5e3c64d72bd1313d23d0c299a6b62ca2952c2cfb035')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}/ppr-1.1.3"
   go mod download
   export CGO_ENABLED=0
   export GOOS=linux
@@ -28,7 +28,7 @@ package() {
   -buildmode=pie \
   -mod=readonly \
   -modcacherw \
-  -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=1.0.8 -X main.commit=46e149d988b0875a6fd2c4be63a1bf73dc3ecbd0 -X main.date=2025-09-05T08:17:58Z" \
+  -ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.version=1.1.3 -X main.commit=9ca141f150c9ab0e90a31c503743b088f27c52a9 -X main.date=2025-09-05T10:00:16Z" \
   -o ppr .
 
   # bin
