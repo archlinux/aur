@@ -2,8 +2,8 @@
 
 pkgbase=sdl-jstest
 pkgname=('sdl-jstest' 'sdl2-jstest')
-pkgver=0.2.2.r24.60f6e62
-_commit=60f6e62109e100b6ef363841b71c2e37ed714d01
+pkgver=0.2.2.r26.917d27b
+_commit=917d27b3b45a335137bd2c8597f8bcf2bac8a569
 pkgrel=1
 pkgdesc="Simple SDL joystick test application for the console"
 url="https://github.com/Grumbel/sdl-jstest"
@@ -16,10 +16,9 @@ source=(git+https://github.com/Grumbel/sdl-jstest#commit=${_commit}
         git+https://github.com/grumbel/tinycmmc.git
         git+https://github.com/gabomdq/SDL_GameControllerDB.git
 )
-sha256sums=('303f6fcd5eb5e10b6cfe4d6e5c091effbeece0ac761f35cb6b889d9ed897b20c'
+sha256sums=('59e598cf0af8cad17e8ffa35ded636db9727fb7cc0edd72da2b7d0800b6a0a2f'
             'SKIP'
-            'SKIP'
-)
+            'SKIP')
 
 pkgver() {
   cd sdl-jstest
