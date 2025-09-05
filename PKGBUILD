@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -20,8 +20,12 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
 		-DYUZU_CHECK_SUBMODULES=OFF \
-		-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
-		-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=mold" \
+		-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
+		-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
+		-DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+		-DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+		-DCMAKE_C_COMPILER=clang \
+		-DCMAKE_CXX_COMPILER=clang++ \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
