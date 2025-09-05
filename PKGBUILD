@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 _nodeversion=22
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
-url="https://ytmdesktop.app"
+url="https://ytmdesktop.github.io"
 license=('GPL-3.0-or-later')
 depends=(
   'alsa-lib'
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/refs/tags/v$pkgver.tar.gz"
         'youtube-music-desktop-app.desktop')
-sha256sums=('732c63605c88aaeb699eade268554fb6192d750d278fb3f7453b085ecf076445'
+sha256sums=('5ebf7577b5ff64c108a6afc70b32f4cf63d8d7836a4c8e83f150ff02302fdec0'
             '90db79917962cd630c223e54bddd6e4150ec2d399a6cf5e75ffd9f83e926703c')
 
 _ensure_local_nvm() {
@@ -47,6 +47,7 @@ prepare() {
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+  yarn config set enableTelemetry 0
   yarn --immutable
 }
 
