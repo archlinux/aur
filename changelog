@@ -1,3 +1,11 @@
+2025-08-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.2.1.2-1:
+    /Api/NLog/File endpoint now supports non-standard file locations, which fixes ASF-ui logging for custom NLog.config configurations that do not follow standard ASF locations (@JustArchi).
+    Added new GamingDeviceType bot config property, which replaces previously used OnlinePreferences (@JustArchi).
+    Removed OnlinePreferences bot config property, use new GamingDeviceType instead. Existing configs will be automatically migrated by ASF to GamingDeviceType if possible (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-07-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.2.0.5-1:
   This release includes breaking change of NLog v6 update (@JustArchi #3438).
