@@ -1,8 +1,8 @@
 # Maintainer: Jake Leahy <jake (at) lowerCaseLastName (dot) dev
 
 pkgname=cassowary-bin
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Modern cross-platform HTTP load-testing tool written in Go "
 arch=('x86_64' 'i386' 'aarch64')
 url="https://github.com/rogerwelin/cassowary"
@@ -12,9 +12,9 @@ source_aarch64=("cassowary-aarch64-$pkgver.tar.gz::https://github.com/rogerwelin
 source_x86_64=("cassowary-x86_64-$pkgver.tar.gz::https://github.com/rogerwelin/cassowary/releases/download/v$pkgver/cassowary_Linux_x86_64.tar.gz")
 source_i386=("cassowary-i386-$pkgver.tar.gz::https://github.com/rogerwelin/cassowary/releases/download/v$pkgver/cassowary_Linux_i386.tar.gz")
 
-sha256sums_x86_64=('165f4c92811cca1500542d701e3cdef3e2eb74025693dbcee67835c48fd78ae5')
-sha256sums_i386=('47d9cf5cdc3775db6005f1be098b3a595e38e1e65273a209a1173f54e01d26a5')
-sha256sums_aarch64=('cedee821a36d9ea7ef52819ae0a19fc3e7dd1d3674fcdbe6a9dace53dee303d0')
+sha256sums_x86_64=('cb96d4979a316426398d1e637b388cc39c05ca3a69a22752cf345e3d30eb4a84')
+sha256sums_i386=('243139b9295450b7df1f298853d62a6a177da49cd2fcf9105fd3ce838eb94810')
+sha256sums_aarch64=('99f0c04d5913e868afc1601ffc952e9ca90f725435a9d519caeeb39f8dca9a85')
 
 provides=('cassowary')
 
