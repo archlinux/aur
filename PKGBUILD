@@ -31,8 +31,8 @@ package() {
 
   _avcodec=61
   install -Dm644 ${_so}.$_avcodec -t "${pkgdir}"/usr/lib
-  install -d "$pkgdir"/usr/lib/opera-beta/lib_extra
-  for _f in "$pkgdir"/usr/lib/opera-beta/lib_extra
+  install -d "$pkgdir"/usr/lib/opera{,-beta}/lib_extra
+  for _f in "$pkgdir"/usr/lib/opera{,-beta}/lib_extra
     do ln -sf /usr/lib/$_so.${_avcodec} "$_f/$_so"
   done
 }
