@@ -10,7 +10,7 @@ arch=('x86_64')
 url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
-install=on-opera-ffmpeg.install
+install=opera-ffmpeg.install
 source=(${url}releases/ffmpeg-${pkgver}.tar.xz
 "AVFMT_FLAG_NOVIDEOPARSE.patch.base64::${_url}/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT"
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
@@ -18,7 +18,7 @@ source=(${url}releases/ffmpeg-${pkgver}.tar.xz
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
 "aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-block-opera-ldpreload.hook ${install})
+opera-ffmpeg.hook ${install})
 
 sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '40b05c04cca3fa8901fb40bf95e3e3d938c7afd1eaa884209f8667359471246c'
@@ -27,13 +27,13 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
             'bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            'd4d342d5850e98e7749d3642b74b32e3cf97b4f19f65a0429ef9b940601fdb5f'
-            'f243a58140022f927515cba982a2286894159eb0f5ea84992e904872007db820')
+            '37b00efe749c67c66cdd4620fe9a7e67c41d978e23cf4f86b45f686f621f90ed'
+            '8100be6868b0f6202302fd1045e5741fdb3c6be7ea41bb36a72a365979bef56c')
 depends=(glibc)
 makedepends=(nasm
 diffutils gcc make patch) # base-devel
 _so=libffmpeg.so
-conflicts=(opera{,-developer,-beta}-ffmpeg-codecs)
+conflicts=(opera{,-beta}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 replaces=("${conflicts[@]}") # remove at next bump
 prepare() {
@@ -100,11 +100,11 @@ build() {
 
 package(){
   install -Dvm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
-  install -d "$pkgdir"/usr/lib/opera{,-beta,-developer}/lib_extra
-  for _f in "$pkgdir"/usr/lib/opera{,-beta,-developer}/lib_extra
+  install -d "$pkgdir"/usr/lib/opera{,-beta}/lib_extra
+  for _f in "$pkgdir"/usr/lib/opera{,-beta}/lib_extra
     do ln -svf /usr/lib/$_so.${_avcodec} "$_f/$_so"
   done
-  install -Dvm644 block-opera-ldpreload.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dvm644 opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 
   for _n in {31..36} ; do
     install -d "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2
