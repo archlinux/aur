@@ -1,7 +1,7 @@
 # Maintainer: EricLin <ericlin050914@gmail.com>
 
 pkgname=wuming
-pkgver=0.2.beta1
+pkgver=0.2.beta2
 pkgrel=1
 pkgdesc="A simple ClamAV GUI frontend"
 arch=('any')
@@ -11,7 +11,7 @@ depends=("systemd" "clamav" "glib2" "gtk4" "libadwaita")
 makedepends=("git" "meson" "appstream")
 provides=("wuming")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EricLin0509/WuMing/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c68e2f838509b46b325487717e51a9fe880d1bf3ac14677ab24f301e3b82e03c6d55855eabb655d28dd1674a0346b310c327f09a81c5f0bb6fe12367c3213e98')
+b2sums=('9e2b6c064638f0626526d006a37705d1372710ebc09cfdbcbc6d58842104f097795a83924e8057136e8be2ca45bcb6c479bd6da2c6e28e77e83a66a775b793e2')
 
 build() {
   opts=()
