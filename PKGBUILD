@@ -2,7 +2,7 @@
 
 pkgname=python-tradingeconomics
 _pkg="${pkgname#python-}"
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 pkgdesc='A library providing an API allowing access to Trading Economics data.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('python' 'python-pandas' 'python-websocket-client')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-b2sums=('9edd191cc4fb74bbcb78b57567822f62c86873282bf860eb9259c6942a4a75e5744960999c34d326095403ee2ba2f0c5caea6288673868f8afc527d3d1931ec3')
+b2sums=('40b5026bc67f0ba307471c99ded47b0c6af67eb7b12f8e40d13e7dd854c42ea3732ce9b247f325220ee16b1a506fcede808dbfc19342f9fb22e545b74fc511a7')
 
 build() {
 	cd "$_pkg-$pkgver"
