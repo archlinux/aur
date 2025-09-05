@@ -1,0 +1,14 @@
+pkgbase = mensa
+	pkgdesc = A CLI tool to query the menu of canteens from the OpenMensa database.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/MalteT/mensa
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	source = mensa-0.4.2.tar.gz::https://github.com/MalteT/mensa/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 049383d3b9f42a2f1c005022f6c128cb98f7c1e250bb3dd1e5322c1ad3db3fd3
+
+pkgname = mensa
