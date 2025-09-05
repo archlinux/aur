@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://corona.studio/lx"
 provides=("launcherx")
 conflicts=("launcherx" "launcherx-bin")
+makedepends=('jq' 'libarchive' 'curl')
 options=('!strip')
 source=(
         "LauncherX.desktop"
