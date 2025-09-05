@@ -7,7 +7,6 @@ pkgbase = firedragon-catppuccin
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
-	makedepends = deno
 	makedepends = rsync
 	makedepends = cbindgen
 	makedepends = clang
@@ -67,5 +66,9 @@ pkgbase = firedragon-catppuccin
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
 	sha256sums = 924ef1e351b62c4afc070abaceeea5ff2e067ed180a9314faba0fdecafc7e787
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
+	source_x86_64 = deno-x86_64-v2.3.2.zip::https://github.com/denoland/deno/releases/download/v2.3.2/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = fc6311f01566489ac70ab76ba939a24bde0a5c7735a9ca5dcb84d6210e5715c7
+	source_aarch64 = deno-aarch64-v2.3.2.zip::https://github.com/denoland/deno/releases/download/v2.3.2/deno-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 84a3ae2b6f00ad06bdc03337208d88101dbd2897f0fa2295f101bda435a9514b
 
 pkgname = firedragon-catppuccin

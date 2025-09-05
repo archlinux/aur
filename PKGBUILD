@@ -9,6 +9,7 @@
 : ${_build_pgo_xvfb:=false}
 
 _pkgver=12.3.0
+_deno_ver=2.3.2
 
 __pkgname=firedragon
 pkgname=$__pkgname-catppuccin
@@ -30,8 +31,7 @@ depends=(dbus
          mime-types
          nss
          ttf-font)
-makedepends=(deno
-             rsync
+makedepends=(rsync
              cbindgen
              clang
              diffutils
@@ -76,8 +76,12 @@ backup=("usr/lib/${__pkgname}/${__pkgname}.cfg"
         "usr/lib/${__pkgname}/distribution/policies.json")
 source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-source.tar.zst
         firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon)
+source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
+source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
 sha256sums=('924ef1e351b62c4afc070abaceeea5ff2e067ed180a9314faba0fdecafc7e787'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0')
+sha256sums_x86_64=('fc6311f01566489ac70ab76ba939a24bde0a5c7735a9ca5dcb84d6210e5715c7')
+sha256sums_aarch64=('84a3ae2b6f00ad06bdc03337208d88101dbd2897f0fa2295f101bda435a9514b')
 
 # Select the method of profiling
 if [[ "${_build_pgo::1}" == "t" ]]; then
@@ -90,7 +94,7 @@ fi
 
 _deno() {
   pushd "${srcdir}/firedragon-source-v${_pkgver}/firedragon" > /dev/null || return
-  DENO_DIR="${srcdir}/deno" deno "$@"
+  DENO_DIR="${srcdir}/.deno" "${srcdir}/deno" "$@"
   popd > /dev/null || return
 }
 
