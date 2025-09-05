@@ -1,6 +1,6 @@
 pkgbase = python-wayfire
 	pkgdesc = wayfire compositor library
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://github.com/WayfireWM/pywayfire
 	arch = any
