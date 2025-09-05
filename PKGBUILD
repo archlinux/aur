@@ -14,9 +14,9 @@ pkgdesc="Various indicators developed or collected for the Freqtrade."
 arch=("any")
 url="https://github.com/freqtrade/${_pkgname}"
 license=("GPL-3.0-or-later")
-depends=("python" "python-arrow" "python-pandas" "python-ta-lib")
+depends=("python" "python-matplotlib" "python-numpy" "python-pandas" "python-scipy" "python-ta-lib")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
-checkdepends=("python-pytest" "python-mock")
+checkdepends=("python-mock" "python-pytest" "python-syrupy")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("a214fa29acf348f52152c9be45c1bdf8ac2da0313cd4343911c4fab26d3bc3774b20a1dde2e3a1584c6981ae80ecf83ef65c8d99d0271bc0a07b64f54ccd8711")
 
