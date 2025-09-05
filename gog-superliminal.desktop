@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Superliminal
+Comment=First-person puzzle game based on forced perspective and optical illusions
+Exec=superliminal
+Icon=gog-superliminal
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
