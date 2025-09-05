@@ -5,7 +5,7 @@
 
 pkgname=wormhole
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple decentralized file storage'
 url='https://github.com/Agartha-Software/Wormhole'
 license=('AGPL-3.0-only')
