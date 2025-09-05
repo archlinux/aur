@@ -1,6 +1,6 @@
 # Maintainer: klpod221 <klpod221@gmail.com>
 pkgname=kerminal
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=2
 pkgdesc="Terminal app with SSH Profile support"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "kerminal.install"
 )
 
-sha256sums=('44c2321437557eb0143a72d140c58753cbb40657c587b113494805f914883406'
+sha256sums=('3a26043db24e422984244fa3de2d9615eb906e7995c3626856df34ac167a6521'
             '2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da'
             'eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc'
             '6628d9ee715006d102c7b6fe8108ed6c755f71fa03e948b7f4d0842026645e97')
