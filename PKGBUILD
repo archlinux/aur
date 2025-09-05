@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('ncurses' 'glibc')
 makedepends=('cmake' 'gcc' 'git')
 source=("restoHack-${pkgver}.tar.gz::https://github.com/Critlist/restoHack/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('236b93e16cad4a1713ad0ed73debd6f2410396dd5293988fa6f5d3f1b6e6f3f9')
+sha256sums=('9642bb68f28d6d2afa250b5080e981e3b7247dd5b21f32248558181898a481cf')
 keywords=('roguelike' 'hack' 'nethack' 'retro' 'game' 'unix' 'bsd-games''roguelike' 'preservation' 'dungeon''nethack')
 
 build() {
