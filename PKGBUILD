@@ -15,7 +15,7 @@ conflicts=(sudo doas-sudo-shim)
 depends=(awk doas sh)
 optdepends=('asciidoctor: manpage generator')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Enovale/doas-sudo-shim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b0a9da714021019d7d1c34ba474f06f900e01d6d3feccbb74b4db163b9f1be8')
+sha256sums=('ef8af8e1992ec497763c2922b079c49cd64e3d0151b0d112010d8c57299ddc74')
 
 if [ -n "`pacman -Qs asciidoctor`" ]; then
   build() {
