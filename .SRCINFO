@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2025 Kareem Khazem <karkhaz at karkhaz dot com>
+# SPDX-License-Identifier: 0BSD
+
+pkgbase = ratatui-docs
+	pkgdesc = Documentation for Ratatui Rust package
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://ratatui.rs
+	arch = any
+	license = MIT
+
+pkgname = ratatui-docs

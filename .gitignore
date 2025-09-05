@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2025 Kareem Khazem <karkhaz at karkhaz dot com>
+# SPDX-License-Identifier: 0BSD
+
 pkg
 src
 *.pkg.tar.zst
