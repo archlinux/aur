@@ -1,0 +1,20 @@
+pkgbase = rofi-unicode
+	pkgdesc = Unicode character selector plugin for rofi
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/rolv-apneseth/rofi-unicode
+	arch = x86_64
+	license = AGPL v3.0
+	makedepends = rust
+	makedepends = just
+	depends = rofi
+	optdepends = wl-clipboard: Wayland - copy icon to clipboard
+	optdepends = xclip: X11 - copy icon to clipboard
+	optdepends = wtype: Wayland - insert icon
+	optdepends = xdotool: X11 - insert icon
+	options = !debug
+	options = !lto
+	source = rofi-unicode-0.0.1.tar.gz::https://github.com/rolv-apneseth/rofi-unicode/archive/v0.0.1.tar.gz
+	sha512sums = ce5722c9c5a7905647a7d5f06afc09deee4b1e635f4ac7a4f85c6f5fabab013b52928f15c897714c4d81808869438e5822d990f1e385ec304d45b41b14640f7e
+
+pkgname = rofi-unicode
