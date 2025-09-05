@@ -1,13 +1,13 @@
 pkgbase = nautilus-backspace
 	pkgdesc = A simple nautilus extension to bring back the 'Backspace' shortcut.
-	pkgver = 1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/TheWeirdDev/nautilus-backspace
 	arch = any
 	license = GPL-3.0-or-later
-	depends = libnautilus-extension>=47
+	depends = libnautilus-extension>=49rc
 	depends = python
-	depends = nautilus>=47
+	depends = nautilus>=49rc
 	depends = python-nautilus
 	provides = nautilus-backspace
 	conflicts = nautilus-backspace
