@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=2.0.9.r0.gbca5a0d
+pkgver=2.0.10.r0.g68d3e5d
 pkgrel=1
 _nodeversion=22
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
-url="https://ytmdesktop.app"
+url="https://ytmdesktop.github.io"
 license=('GPL-3.0-or-later')
 depends=(
   'alsa-lib'
@@ -55,6 +55,7 @@ prepare() {
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+  yarn config set enableTelemetry 0
   yarn --immutable
 }
 
