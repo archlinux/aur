@@ -1,7 +1,7 @@
 # Maintainer: klpod221 <klpod221@gmail.com>
 pkgname=kerminal-bin
 _pkgname=kerminal
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Modern terminal app with SSH/SFTP support"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "kerminal-bin.install"
 )
 
-sha256sums=('5313de42c4d10af7729b8ba9e46db9169bdfe538cd31c36c4bb0304cbca20c3a'
+sha256sums=('830f355464f47076f4e1b6d99a1047fe336fc3525c4e162fe9be6f14b3bd9618'
             '2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da'
             'eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc'
             '6628d9ee715006d102c7b6fe8108ed6c755f71fa03e948b7f4d0842026645e97')
