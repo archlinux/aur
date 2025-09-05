@@ -1,7 +1,7 @@
 # Maintainer: Vincent B. <vb@luminar.eu.org>
 pkgname=titdb-git
 _pkgname=trackpad-is-too-damn-big
-pkgver=v1.0.0.r5.g78e3e47
+pkgver=v1.0.0.r6.gb4397dc
 pkgrel=1
 epoch=
 pkgdesc="Trackpad Is Too Damn Big (TITDB) is a utility designed to customize trackpad behavior on Linux"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tascvh/trackpad-is-too-damn-big"
 license=('GPL')
 groups=()
-depends=('gcc14')
+depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -44,8 +44,6 @@ build() {
 
   mkdir -p build
   cd build
-  export CC=/usr/bin/gcc-14
-  export CXX=/usr/bin/g++-14
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   cmake --build .
 }
