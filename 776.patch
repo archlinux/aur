@@ -1,0 +1,49 @@
+From c580d022070db426db24eacd6181690286186647 Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Thu, 7 Aug 2025 17:39:19 +0200
+Subject: [PATCH] PROJECT_VERSION{,_*} is defined in CMake v4.1
+
+---
+ base.cmake    | 8 ++++----
+ version.cmake | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/base.cmake b/base.cmake
+index 8a43e291..42764abc 100644
+--- a/base.cmake
++++ b/base.cmake
+@@ -208,13 +208,13 @@ endforeach(VARIABLE)
+ message(STATUS "Configuring \"${PROJECT_NAME}\" (${PROJECT_URL})")
+ 
+ # If the project version number is not set, compute it automatically.
+-if(NOT DEFINED PROJECT_VERSION)
++if(NOT PROJECT_VERSION)
+   VERSION_COMPUTE()
+ else()
+   if(
+-    NOT DEFINED PROJECT_VERSION_MAJOR
+-    AND NOT DEFINED PROJECT_VERSION_MINOR
+-    AND NOT DEFINED PROJECT_VERSION_PATCH
++    NOT PROJECT_VERSION_MAJOR
++    AND NOT PROJECT_VERSION_MINOR
++    AND NOT PROJECT_VERSION_PATCH
+   )
+     SPLIT_VERSION_NUMBER(
+       ${PROJECT_VERSION}
+diff --git a/version.cmake b/version.cmake
+index 162bf1ad..ed093ccc 100644
+--- a/version.cmake
++++ b/version.cmake
+@@ -249,9 +249,9 @@ macro(VERSION_COMPUTE)
+   if(PROJECT_VERSION)
+     # Compute the major, minor and patch version of the project
+     if(
+-      NOT DEFINED PROJECT_VERSION_MAJOR
+-      AND NOT DEFINED PROJECT_VERSION_MINOR
+-      AND NOT DEFINED PROJECT_VERSION_PATCH
++      NOT PROJECT_VERSION_MAJOR
++      AND NOT PROJECT_VERSION_MINOR
++      AND NOT PROJECT_VERSION_PATCH
+     )
+       SPLIT_VERSION_NUMBER(
+         ${PROJECT_VERSION}
