@@ -19,10 +19,12 @@ source=(
   'git+https://github.com/Aorimn/dislocker.git#commit=4572dc727940cc42249c9f967cee9c505f16b121'
   '0001-cmake-2.6-to-3.5.patch'
   '0002-metadata-linear-scan-VIRTUALIZATION-INF.patch'
+  '0003-highlight-recovery-guid.patch'
 )
 sha512sums=('67d9845a02004b740aaf32bd1c381e578dbccc29207cb7373e646010b75717e66424dc5a84de8fec4926c49f18f562e1333ffe2be1185bdb31de1b17fe2337bc'
             '9fbb2ade8f770eb36bedbac120ced21f40a8f6718d68b2983104957ff0d667d95cb8a4621e3d974add61248f02e21ff4351c4ee189adbebd6cc452f6e912ce69'
-            '65552ce0be66df39276970704ace71607a361b9da0e6f5f3095c87e5f8ea9c43e73eed36ef16e77b5d6b65df7dbe318caf736d6ad997e6ea4f894c1e89828674')
+            '65552ce0be66df39276970704ace71607a361b9da0e6f5f3095c87e5f8ea9c43e73eed36ef16e77b5d6b65df7dbe318caf736d6ad997e6ea4f894c1e89828674'
+            'fc9ef042627708a7e92dd9db00fc8294c182383dc4574297d740f4de7b3a0c5177f69b3778420c7a662bc71e92f6b0b6c4d046d4232696b936d98d6f297f4e1f')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -33,6 +35,7 @@ prepare() {
   cd "$srcdir/${_pkgname}"
   patch -p1 -i "${srcdir}/0001-cmake-2.6-to-3.5.patch"
   patch -p1 -i "${srcdir}/0002-metadata-linear-scan-VIRTUALIZATION-INF.patch"
+  patch -p1 -i "${srcdir}/0003-highlight-recovery-guid.patch"
 }
 
 build() {
