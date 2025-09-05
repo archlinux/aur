@@ -1,0 +1,23 @@
+pkgbase = sping
+	pkgdesc = Modern terminal HTTP/TCP latency monitoring tool with real-time visualization.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/dseltzer/sping
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=7.0.0
+	checkdepends = python-pytest-asyncio>=0.21.0
+	checkdepends = python-httpx>=0.27.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling>=1.18.0
+	depends = python>=3.9
+	depends = python-typer>=0.9.0
+	depends = python-httpx>=0.27.0
+	depends = python-rich>=13.0.0
+	source = sping-0.3.0.tar.gz::https://gitlab.com/dseltzer/sping/-/archive/0.3.0/sping-0.3.0.tar.gz
+	source = MIT.txt
+	sha256sums = e94e2cf147a75070a4a0109c832cf13b863fb96ae8dacd9617a538ee2c04b81c
+	sha256sums = bdc505697cc896eb784e38217b8d63d6dc19488c91060a391e1c1cc213cf033d
+
+pkgname = sping
