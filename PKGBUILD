@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
 pkgname=pacdo
-pkgver=2025.06.0401
+pkgver=2025.09.0503
 pkgrel=0
 pkgdesc="a simple cli utility to shorten pacman syntax."
 arch=('any')
