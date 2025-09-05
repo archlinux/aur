@@ -19,29 +19,17 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://updatecdn.meeting.qq.c
 )
 source_aarch64=("${_pkgname}-${_pkgver_arm}-aarch64.deb::https://updatecdn.meeting.qq.com/cos/${_arm_md5}/TencentMeeting_0300000000_${_pkgver_arm}_arm64_default.publish.deb")
 source=("wemeet".sh
-	'wrap.c'
 	portable-config
 	start.sh
+	'git+https://github.com/xuwd1/wemeet-wayland-screenshare.git'
 	)
-depends=(
-    "bash"
-    "qt5-webengine" "qt5-x11extras" "libxinerama"
-    libpulse
-    # dependencies detected by namcap
-    gcc-libs qt5-declarative libglvnd libxfixes alsa-lib qt5-webchannel openssl
-    libxrandr libxext libx11 hicolor-icon-theme glibc zlib libxcomposite
-    qt5-base systemd-libs libxdamage qt5-svg
-    libyuv
-    wireplumber
-    qt5-wayland
-    opencv
-    libxrandr
-)
 makedepends=('patchelf' 'cmake' 'git')
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha512sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	)
 sha512sums_x86_64=('SKIP')
 sha512sums_aarch64=('d84bb40617edf1a97d0fd3b6674df050d62c7ce19e8aff1230a42d47d1887ca641aec20d732fc1bbdecc233781db0be0c9ce8a412fdb68d28eec59d09228f638')
 
@@ -72,31 +60,50 @@ prepare() {
 
     find modules/ -type f -name '*.so' | xargs -I {} patchelf --set-rpath '$ORIGIN:/usr/lib/wemeet' {}
     popd
+	cd "${srcdir}"/wemeet-wayland-screenshare
+	git submodule update --init --recursive
 }
 
-build() {
-    cd "${srcdir}"
-    read -ra openssl_args < <(pkgconf --libs openssl)
-    read -ra libpulse_args < <(pkgconf --cflags --libs libpulse)
-    # Comment out `-D WRAP_FORCE_SINK_HARDWARE` to disable the patch that forces wemeet detects sink as hardware sink
-    "${CC:-cc}" $CFLAGS -Wall -Wextra -fPIC -shared "${openssl_args[@]}" "${libpulse_args[@]}" -o libwemeetwrap.so wrap.c -D WRAP_FORCE_SINK_HARDWARE
+function build() {
+	cd "${srcdir}"/wemeet-wayland-screenshare
+	mkdir -p build
+	cd build
+	cmake .. -DCMAKE_BUILD_TYPE=Release
+	make
 }
 
 package() {
+	install -Dm755 \
+		"${srcdir}/wemeet-wayland-screenshare/build/libhook.so" \
+		"${pkgdir}/usr/lib/wemeet/libhook.so"
+depends=(
+    "bash"
+    "qt5-webengine" "qt5-x11extras" "libxinerama"
+    libpulse
+    # dependencies detected by namcap
+    gcc-libs qt5-declarative libglvnd libxfixes alsa-lib qt5-webchannel openssl
+    libxrandr libxext libx11 hicolor-icon-theme glibc zlib libxcomposite
+    qt5-base systemd-libs libxdamage qt5-svg
+    libyuv
+    wireplumber
+    qt5-wayland
+    opencv
+    libxrandr
+)
 	depends+=(portable "libportal" "xdg-desktop-portal" "xdg-desktop-portal-impl")
 	echo 'https://rule.tencent.com/rule/ab9ea528-0bf1-47b3-a8c3-f001b98912e2' >"${srcdir}/LICENSE"
 	cd "$srcdir"
     cp -r usr "$pkgdir"
     cd opt/$_pkgname
 
-    install -Dm755 "$srcdir/wemeet.sh" "$pkgdir/usr/lib/wemeet/wemeet-x11"
     install -Dm755 "${srcdir}/start.sh" "${pkgdir}/usr/bin/wemeet"
     install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/com.tencent.wemeet/config"
     install -Dm644 $_pkgname.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
     # libbugly is not likely to be necessary
-    install -Dm755 lib/*.so \
-        -t "$pkgdir/usr/lib/$_pkgname"
+	cp -r lib \
+		"$pkgdir/usr/lib/$_pkgname"
+	install -vDm755 "$srcdir/wemeet.sh" "$pkgdir/usr/lib/wemeet/wemeet-x11"
     if [ -f 'lib/libcrbase.so' ]; then
         install -Dm755 lib/libcrbase.so -t "$pkgdir/usr/lib/$_pkgname"
     else
@@ -111,7 +118,6 @@ package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
     cp -r bin "$pkgdir/opt/$_pkgname"
     ln -s raw/xcast.conf "$pkgdir/opt/$_pkgname/bin/xcast.conf"
-    install -Dm755 "$srcdir/libwemeetwrap.so" -t "$pkgdir/usr/lib/$_pkgname"
     rm "${pkgdir}/usr/share/applications/wemeetapp.desktop"
     touch "${pkgdir}/usr/share/applications/com.tencent.wemeet.desktop"
     echo '''[Desktop Entry]
