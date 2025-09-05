@@ -5,6 +5,6 @@ pkgbase = jkwm-quote
 	arch = x86_64
 	license = MIT
 	source = jkwm
-	sha512sums = dc1068b20908574e3a40e966ecbb742f8bdee22ea9711841a9d4c9d238084290f11a0b5f197ceee45077451e0ddd81f6bdc3b6576f9c3e9a550b21f6f31f2807
+	sha512sums = 8a975b67e085dce1038abbc4b627e51bc8e48c6f49db378c891c5746fcd424ec8cb33780cd52d8da8f537d123dfae0fd9c90aa61622607f3603651237c8653f5
 
 pkgname = jkwm-quote
