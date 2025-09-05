@@ -4,6 +4,20 @@
 
 _pkgname=wemeet
 pkgname=$_pkgname-bwrap
+depends=(
+    "bash"
+    "qt5-webengine" "qt5-x11extras" "libxinerama"
+    libpulse
+    # dependencies detected by namcap
+    gcc-libs qt5-declarative libglvnd libxfixes alsa-lib qt5-webchannel openssl
+    libxrandr libxext libx11 hicolor-icon-theme glibc zlib libxcomposite
+    qt5-base systemd-libs libxdamage qt5-svg
+    libyuv
+    wireplumber
+    qt5-wayland
+    opencv
+    libxrandr
+)
 provides=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
 conflicts=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
 pkgver=3.26.10.400
@@ -23,7 +37,7 @@ source=("wemeet".sh
 	start.sh
 	'git+https://github.com/xuwd1/wemeet-wayland-screenshare.git'
 	)
-makedepends=('patchelf' 'cmake' 'git')
+makedepends=('patchelf' 'cmake' 'git' libportal)
 sha512sums=(
 	'SKIP'
 	'SKIP'
@@ -76,20 +90,6 @@ package() {
 	install -Dm755 \
 		"${srcdir}/wemeet-wayland-screenshare/build/libhook.so" \
 		"${pkgdir}/usr/lib/wemeet/libhook.so"
-depends=(
-    "bash"
-    "qt5-webengine" "qt5-x11extras" "libxinerama"
-    libpulse
-    # dependencies detected by namcap
-    gcc-libs qt5-declarative libglvnd libxfixes alsa-lib qt5-webchannel openssl
-    libxrandr libxext libx11 hicolor-icon-theme glibc zlib libxcomposite
-    qt5-base systemd-libs libxdamage qt5-svg
-    libyuv
-    wireplumber
-    qt5-wayland
-    opencv
-    libxrandr
-)
 	depends+=(portable "libportal" "xdg-desktop-portal" "xdg-desktop-portal-impl")
 	echo 'https://rule.tencent.com/rule/ab9ea528-0bf1-47b3-a8c3-f001b98912e2' >"${srcdir}/LICENSE"
 	cd "$srcdir"
