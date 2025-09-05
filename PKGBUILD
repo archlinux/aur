@@ -16,7 +16,7 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pk
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
 sha256sums=(
     "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
-    "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
+    "87fddbcd4a4cc7bda22ec4cadff0040e54395bb13184ee4688b58788c1fa7180"
 )
 sha256sums_x86_64=("7f9e9b08bd0e90d9029ed1bd8a694265d889b4293067bd5c23fddd2488e34ab4")
 sha256sums_aarch64=("cd3f15f86ee8c72ce01ff1e491604357677e8149d78ced9774523d48933a96c3")
