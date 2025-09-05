@@ -1,0 +1,14 @@
+pkgbase = lxtui
+	pkgdesc = A modern terminal user interface for managing LXC/LXD containers with intuitive keyboard shortcuts
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/FoleyBridge-Solutions/lxtui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = lxtui-0.1.1.tar.gz::https://github.com/FoleyBridge-Solutions/lxtui/archive/v0.1.1.tar.gz
+	sha256sums = 33c383538e3595e8a074995194111666ed4705a0d5828b41a38602aeb64e6d37
+
+pkgname = lxtui
