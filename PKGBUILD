@@ -2,7 +2,7 @@
 
 pkgname=python-mixpanel
 _gitpkgname=mixpanel-python
-pkgver=4.10.1
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='Official Mixpanel Python library'
 arch=('any')
@@ -31,9 +31,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '7341dd931ac1d727f0fff8e6ab655f873193658c5c947433599d6ebe579c1698287c3ec3de0ff35ba01d0dbffe265def5d1b42597d34b91e50dc36a71f592b63'
-)
+sha512sums=('81cc1b5a9bfdcbe83b0f9d2c8145a2b5d9a99efe971141789b9ff1a59f8e937c1e4700b2ee8850f3bb911521432f7db43872213bf41bed5398d6e037cb1f3648')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
