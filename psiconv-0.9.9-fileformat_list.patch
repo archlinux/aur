@@ -1,0 +1,33 @@
+diff -rauN psiconv-0.9.9/program/psiconv/psiconv.c psiconv-0.9.9-fileformat_list-patch/program/psiconv/psiconv.c
+--- psiconv-0.9.9/program/psiconv/psiconv.c	2014-10-22 21:45:57.000000000 +0200
++++ psiconv-0.9.9-fileformat_list-patch/program/psiconv/psiconv.c	2025-09-05 08:53:21.659931334 +0200
+@@ -119,6 +119,8 @@
+     str[i] = toupper(str[i]);
+ }
+ 
++psiconv_list fileformat_list;
++
+ int main(int argc, char *argv[])
+ {
+   struct option long_options[] =
+@@ -150,7 +152,7 @@
+   psiconv_buffer buf;
+   psiconv_file file;
+   fileformat ff = NULL;
+-
++  
+   if (!(fileformat_list = psiconv_list_new(sizeof(struct fileformat_s)))) {
+     fputs("Out of memory error",stderr);
+     exit(1);
+diff -rauN psiconv-0.9.9/program/psiconv/psiconv.h psiconv-0.9.9-fileformat_list-patch/program/psiconv/psiconv.h
+--- psiconv-0.9.9/program/psiconv/psiconv.h	2014-10-22 21:46:03.000000000 +0200
++++ psiconv-0.9.9-fileformat_list-patch/program/psiconv/psiconv.h	2025-09-05 08:51:14.705810153 +0200
+@@ -52,7 +52,7 @@
+   output_function *output;
+ } *fileformat;
+ 
+-psiconv_list fileformat_list; /* of struct psiconv_fileformat */
++extern psiconv_list fileformat_list; /* of struct psiconv_fileformat */
+ 
+ 
+ #endif /* PSICONV_H */
