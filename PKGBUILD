@@ -1,6 +1,6 @@
 # Maintainer: Andy Kelk <andy@andykelk.net>
 pkgname=lazyssh
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A terminal-based SSH manager inspired by lazydocker and k9s'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/Adembc/lazyssh'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f22c142b9768f6f763e13532d47109f013b17c961a85a8f6c713f56ebef47568')
+sha256sums=('0364c4fb254a2bc26536a7dadd1da3a7f06951b8800762ff14e6c17dca7cbe07')
 
 prepare() {
     cd "$pkgname-$pkgver"
