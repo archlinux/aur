@@ -106,7 +106,4 @@ package_element-desktop-git() {
 
   # Icons
   install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
-  for i in 16 24 48 64 96 128 256 512; do
-    install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/io.element.Element.png
-  done
 }
