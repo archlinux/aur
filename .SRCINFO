@@ -1,0 +1,15 @@
+pkgbase = envx
+	pkgdesc = A powerful and secure environment variable manager
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/mikeleppane/envx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	options = !lto
+	source = envx-0.5.0.tar.gz::https://github.com/mikeleppane/envx/archive/v0.5.0.tar.gz
+	sha256sums = c404de6e9620844ce32ab86ea32dbaf37bfccfac045802f9cf94f6a7247b74c6
+
+pkgname = envx
