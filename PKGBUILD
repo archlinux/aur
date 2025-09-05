@@ -42,7 +42,10 @@ prepare() {
         --name="${pkgname%-bin}" \
         --exec="${pkgname%-bin} %U"
     asar e "${srcdir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -i "s/pi.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g" "${srcdir}/app.asar.unpacked/dist-electron/main.js"
+    sed -i -e "
+        s/pi.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
+        s/ti.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
+    " "${srcdir}/app.asar.unpacked/dist-electron/main.js"
     asar p  "${srcdir}/app.asar.unpacked"  "${srcdir}/app.asar"
 }
 package() {
