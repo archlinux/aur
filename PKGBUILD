@@ -4,19 +4,21 @@
 
 pkgname=dash-editline-git
 pkgver=0.5.12
-pkgrel=2
-pkgdesc="POSIX compliant shell that aims to be as small as possible. (Dynamic libedit support)"
+pkgrel=3
+pkgdesc='POSIX compliant shell that aims to be as small as possible. (Dynamic libedit support)'
 arch=('x86_64')
-url="http://gondor.apana.org.au/~herbert/dash/"
+url='https://git.kernel.org/pub/scm/utils/dash/dash.git'
 license=('BSD')
 provides=(dash)
 conflicts=(dash)
 depends=(libedit)
-source=("http://gondor.apana.org.au/~herbert/dash/files/dash-${pkgver}.tar.gz")
-sha512sums=('13bd262be0089260cbd13530a9cf34690c0abeb2f1920eb5e61be7951b716f9f335b86279d425dbfae56cbd49231a8fdffdff70601a5177da3d543be6fc5eb17')
+makedepends=(git)
+source=('git://git.kernel.org/pub/scm/utils/dash/dash.git')
+sha256sums=('SKIP')
 
 build(){
-	cd "dash-$pkgver"
+	cd dash
+	./autogen.sh
 	./configure --with-libedit
 	(
 		cd src
@@ -26,9 +28,9 @@ build(){
 }
 
 package(){
-	cd "dash-$pkgver/src"
+	cd dash/src
 	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1
 	cp -- dash "$pkgdir"/usr/bin/
-	gzip dash.1
+	gzip -f dash.1
 	cp -- dash.1.gz "$pkgdir"/usr/share/man/man1
 }

@@ -1,14 +1,15 @@
 pkgbase = dash-editline-git
 	pkgdesc = POSIX compliant shell that aims to be as small as possible. (Dynamic libedit support)
 	pkgver = 0.5.12
-	pkgrel = 2
-	url = http://gondor.apana.org.au/~herbert/dash/
+	pkgrel = 3
+	url = https://git.kernel.org/pub/scm/utils/dash/dash.git
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	depends = libedit
 	provides = dash
 	conflicts = dash
-	source = http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.12.tar.gz
-	sha512sums = 13bd262be0089260cbd13530a9cf34690c0abeb2f1920eb5e61be7951b716f9f335b86279d425dbfae56cbd49231a8fdffdff70601a5177da3d543be6fc5eb17
+	source = git://git.kernel.org/pub/scm/utils/dash/dash.git
+	sha256sums = SKIP
 
 pkgname = dash-editline-git
