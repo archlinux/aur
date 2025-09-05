@@ -2,11 +2,11 @@
 
 _pkgname=gbinder-python
 pkgname=python-gbinder-git
-pkgver=1.1.2.r0.ga2c5093
-pkgrel=5
+pkgver=1.1.1.r14.g5089d76
+pkgrel=1
 pkgdesc="Python bindings for libgbinder - git version"
 arch=('any')
-url="https://github.com/erfanoabdi/gbinder-python"
+url="https://github.com/waydroid/gbinder-python"
 license=('GPL')
 depends=('libgbinder')
 conflicts=('python-gbinder')
@@ -23,8 +23,8 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  cython -a gbinder.pyx
   git -C "${srcdir}/${_pkgname}" clean -dfx
+  cython -a gbinder.pyx
 }
 
 build() {
