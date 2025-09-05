@@ -1,6 +1,6 @@
 pkgbase = fio-git
 	pkgdesc = Scriptable I/O tool for storage benchmarks and drive testing
-	pkgver = 2.11.r14.gf03189f
+	pkgver = 3.40.r97.g83a809b
 	pkgrel = 1
 	url = https://github.com/axboe/fio
 	arch = i686
@@ -8,13 +8,15 @@ pkgbase = fio-git
 	license = GPL2
 	makedepends = git
 	makedepends = gtk2
+	makedepends = curl
 	depends = bash
 	depends = libaio
-	depends = python2
+	depends = python
 	depends = numactl
 	depends = glusterfs
-	depends = ceph
+	depends = gperftools
 	optdepends = gtk2: for gfio - fio GUI frontend
+	optdepends = curl: for gfio - fio GUI frontend
 	optdepends = gnuplot: generating plots using fio_generate_plots
 	provides = fio
 	conflicts = fio
@@ -22,4 +24,3 @@ pkgbase = fio-git
 	sha256sums = SKIP
 
 pkgname = fio-git
-

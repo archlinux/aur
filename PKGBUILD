@@ -2,17 +2,18 @@
 
 pkgname=fio-git
 _pkgname=fio
-pkgver=2.11.r14.gf03189f
+pkgver=3.40.r97.g83a809b
 pkgrel=1
 pkgdesc='Scriptable I/O tool for storage benchmarks and drive testing'
 arch=(i686 x86_64)
 url='https://github.com/axboe/fio'
 license=(GPL2)
 # TODO: enable rdma
-depends=(bash libaio python2 numactl glusterfs ceph)
-makedepends=(git gtk2)
+depends=(bash libaio python numactl glusterfs gperftools)
+makedepends=(git gtk2 curl)
 optdepends=(
   'gtk2: for gfio - fio GUI frontend'
+  'curl: for gfio - fio GUI frontend'
   'gnuplot: generating plots using fio_generate_plots'
 )
 conflicts=('fio')
@@ -23,12 +24,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   git describe --abbrev=7 --long | sed 's/^fio-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgname"
-
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -i tools/plot/fio2gnuplot
 }
 
 build() {
@@ -43,8 +38,9 @@ package() {
 
   # documentation
   install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
-  install -m644 HOWTO README REPORTING-BUGS SERVER-TODO "$pkgdir/usr/share/doc/$_pkgname"
+  install -m644 HOWTO.rst README.rst REPORTING-BUGS SERVER-TODO "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
+  install -Dm644 MORAL-LICENSE "$pkgdir/usr/share/licenses/$_pkgname/MORAL-LICENSE"
 
   # examples
   install -dm755 "$pkgdir/usr/share/doc/$_pkgname/examples"
