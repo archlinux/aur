@@ -41,19 +41,41 @@ class WallpaperManager(Adw.Application):
         self.current_index = 0
         self.cycle_interval = 1800  # Default 30 minutes in seconds
         self.is_random_order = False
+
+        # Multi-monitor support
+        self.monitors = self.get_monitors()
+        self.monitor_wallpapers = {m: None for m in self.monitors}
+        self.is_paused = False
+        self.time_of_day_wallpapers = {
+            'morning': None,
+            'afternoon': None,
+            'evening': None,
+            'night': None
+        }
+        self.cycle_countdown = 0
         
         # Use a dedicated config directory inside the user's home folder
         self.config_dir = str(Path.home() / ".config" / "pyprwall")
         self.config_file = os.path.join(self.config_dir, '.pyprwall_config')
         self.cycle_config_file = os.path.join(self.config_dir, '.pyprwall_cycle_config')
+        self.wallpaper_cache_file = os.path.join(self.config_dir, '.wallpaper_cache')
+        self.wallpaper_cache_meta_file = os.path.join(self.config_dir, '.wallpaper_cache_meta')
+        self.thumbnail_cache_dir = os.path.join(self.config_dir, 'thumbnails')
+        os.makedirs(self.thumbnail_cache_dir, exist_ok=True)
         
         # Create directories if they don't exist
         os.makedirs(self.wallpaper_dir, exist_ok=True)
         os.makedirs(self.hypr_config_dir, exist_ok=True)
         os.makedirs(self.config_dir, exist_ok=True)
+
+        # Cycle state file
+        self.cycle_state_file = os.path.join(self.config_dir, '.pyprwall_cycle_state')
         
         # Load cycle configuration
         self.load_cycle_config()
+
+        # Restore cycling state
+        self.restore_cycle_state()
 
     def load_cycle_config(self):
         """Load cycling configuration from file"""
@@ -248,6 +270,57 @@ WantedBy=default.target
         # Call initialization directly (GTK4: realize/map may not fire reliably)
         self.on_window_realize(self.win)
 
+    def get_monitors(self):
+        """Detect available monitors using hyprctl."""
+        try:
+            result = subprocess.run(['hyprctl', 'monitors', '-j'], capture_output=True, text=True, timeout=5)
+            monitors = []
+            if result.returncode == 0:
+                data = json.loads(result.stdout)
+                for mon in data:
+                    monitors.append(mon.get('name', ''))
+            return monitors if monitors else ['default']
+        except Exception as e:
+            print(f"Error detecting monitors: {e}")
+            return ['default']
+
+    def get_time_of_day(self):
+        import datetime
+        hour = datetime.datetime.now().hour
+        if 6 <= hour < 12:
+            return 'morning'
+        elif 12 <= hour < 17:
+            return 'afternoon'
+        elif 17 <= hour < 21:
+            return 'evening'
+        else:
+            return 'night'
+
+    def show_notification(self, message):
+        try:
+            subprocess.run(['notify-send', 'PyprWall', message], check=False)
+        except Exception as e:
+            print(f"Notification error: {e}")
+
+    def update_cycle_ui(self):
+        # Show next wallpaper and countdown
+        if not self.is_cycling or self.is_paused:
+            self.cycle_status_label.set_label("Cycling paused")
+        else:
+            next_idx = (self.current_index + 1) % len(self.cycling_wallpapers)
+            next_wallpaper = os.path.basename(self.cycling_wallpapers[next_idx]) if self.cycling_wallpapers else "-"
+            self.cycle_status_label.set_label(f"Next: {next_wallpaper} in {self.cycle_countdown}s")
+
+    def pause_cycling(self):
+        self.is_paused = True
+        self.save_cycle_state()
+        self.update_cycle_ui()
+
+    def resume_cycling(self):
+        self.is_paused = False
+        self.save_cycle_state()
+        self.update_cycle_ui()
+
     def create_cycling_controls(self, parent_box):
         """Create the cycling controls UI"""
         # Create a frame for cycling controls
@@ -312,6 +385,12 @@ WantedBy=default.target
         self.next_button.connect("clicked", self.on_next_wallpaper_clicked)
         self.next_button.set_sensitive(False)
         button_box.append(self.next_button)
+
+        # Pause/Resume cycling button
+        self.pause_button = Gtk.Button(label="Pause Cycling")
+        self.pause_button.connect("clicked", self.on_pause_button_clicked)
+        self.pause_button.set_sensitive(False)
+        button_box.append(self.pause_button)
         
         cycling_box.append(button_box)
         
@@ -360,6 +439,14 @@ WantedBy=default.target
         if self.wallpaper_list:
             self.cycle_to_next_wallpaper()
 
+    def on_pause_button_clicked(self, button):
+        if self.is_paused:
+            self.resume_cycling()
+            button.set_label("Pause Cycling")
+        else:
+            self.pause_cycling()
+            button.set_label("Resume Cycling")
+
     def on_systemd_button_clicked(self, button):
         """Handle systemd service enable/disable button"""
         service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
@@ -375,6 +462,34 @@ WantedBy=default.target
                 button.set_label("Disable Auto-Start")
                 self.cycle_status_label.set_label("Auto-start enabled")
 
+    def save_cycle_state(self):
+        state = {
+            'is_cycling': self.is_cycling,
+            'is_paused': self.is_paused,
+            'current_index': self.current_index,
+            'wallpaper_list': self.wallpaper_list,
+            'current_wallpaper': self.current_wallpaper
+        }
+        try:
+            with open(self.cycle_state_file, 'w') as f:
+                json.dump(state, f)
+        except Exception as e:
+            print(f"Error saving cycle state: {e}")
+
+    def restore_cycle_state(self):
+        if not os.path.exists(self.cycle_state_file):
+            return
+        try:
+            with open(self.cycle_state_file, 'r') as f:
+                state = json.load(f)
+            self.is_cycling = state.get('is_cycling', False)
+            self.is_paused = state.get('is_paused', False)
+            self.current_index = state.get('current_index', 0)
+            self.wallpaper_list = state.get('wallpaper_list', [])
+            self.current_wallpaper = state.get('current_wallpaper', None)
+        except Exception as e:
+            print(f"Error restoring cycle state: {e}")
+
     def start_cycling(self):
         """Start the wallpaper cycling"""
         if not self.wallpaper_list:
@@ -385,11 +500,15 @@ WantedBy=default.target
             return
         
         self.is_cycling = True
+        self.is_paused = False
+        self.save_cycle_state()
         
         # Only update UI if not in daemon mode
         if not self.daemon_mode:
             self.cycle_button.set_label("Stop Cycling")
             self.next_button.set_sensitive(True)
+            self.pause_button.set_sensitive(True)
+            self.pause_button.set_label("Pause Cycling")
         
         # Initialize wallpaper list order
         if self.is_random_order:
@@ -421,11 +540,14 @@ WantedBy=default.target
     def stop_cycling(self):
         """Stop the wallpaper cycling"""
         self.is_cycling = False
+        self.is_paused = False
+        self.save_cycle_state()
         
         # Only update UI if not in daemon mode
         if not self.daemon_mode:
             self.cycle_button.set_label("Start Cycling")
             self.next_button.set_sensitive(False)
+            self.pause_button.set_sensitive(False)
         
         # Cancel the timer
         if self.cycle_timeout_id:
@@ -437,17 +559,36 @@ WantedBy=default.target
         else:
             print("Cycling stopped")
 
+    def pause_cycling(self):
+        self.is_paused = True
+        self.save_cycle_state()
+        self.update_cycle_ui()
+
+    def resume_cycling(self):
+        self.is_paused = False
+        self.save_cycle_state()
+        self.update_cycle_ui()
+
     def schedule_next_cycle(self):
         """Schedule the next wallpaper change"""
         if self.cycle_timeout_id:
             GLib.source_remove(self.cycle_timeout_id)
-        
-        # Convert seconds to milliseconds for GLib.timeout_add
-        self.cycle_timeout_id = GLib.timeout_add(self.cycle_interval * 1000, self.on_cycle_timeout)
+        self.cycle_countdown = self.cycle_interval
+        self.cycle_timeout_id = GLib.timeout_add_seconds(1, self.on_cycle_countdown)
+
+    def on_cycle_countdown(self):
+        if not self.is_cycling or self.is_paused:
+            return True
+        self.cycle_countdown -= 1
+        self.update_cycle_ui()
+        if self.cycle_countdown <= 0:
+            self.on_cycle_timeout()
+            self.cycle_countdown = self.cycle_interval
+        return True
 
     def on_cycle_timeout(self):
         """Handle the cycling timeout"""
-        if not self.is_cycling:
+        if not self.is_cycling or self.is_paused:
             return False  # Stop the timeout
         
         self.cycle_to_next_wallpaper()
@@ -468,6 +609,18 @@ WantedBy=default.target
         # Set the new wallpaper
         next_wallpaper = self.cycling_wallpapers[self.current_index]
         self.current_wallpaper = next_wallpaper
+
+        # Multi-monitor: set wallpaper for all monitors
+        for monitor in self.monitors:
+            self.set_wallpaper_for_monitor(monitor, next_wallpaper)
+
+        # Time-of-day: override if set
+        tod = self.get_time_of_day()
+        tod_wallpaper = self.time_of_day_wallpapers.get(tod)
+        if tod_wallpaper:
+            self.current_wallpaper = tod_wallpaper
+            for monitor in self.monitors:
+                self.set_wallpaper_for_monitor(monitor, tod_wallpaper)
         
         # Apply the wallpaper
         try:
@@ -489,6 +642,7 @@ WantedBy=default.target
             wallpaper_name = os.path.basename(next_wallpaper)
             if not self.daemon_mode:
                 self.status_label.set_label(f"Cycled to: {wallpaper_name}")
+                self.show_notification(f"Wallpaper changed to {wallpaper_name}")
             else:
                 print(f"Cycled to: {wallpaper_name}")
                 
@@ -498,6 +652,19 @@ WantedBy=default.target
                 self.status_label.set_label(error_msg)
             else:
                 print(error_msg)
+        self.update_cycle_ui()
+
+    def set_wallpaper_for_monitor(self, monitor, wallpaper):
+        # For hyprpaper, use monitor-specific wallpaper config
+        try:
+            subprocess.run([
+                "hyprctl", "hyprpaper", "preload", f"{wallpaper}"
+            ], check=True, text=True, timeout=10, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run([
+                "hyprctl", "hyprpaper", "wallpaper", f"{monitor},{wallpaper}"
+            ], check=True, text=True, timeout=10, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except Exception as e:
+            print(f"Monitor wallpaper error: {e}")
 
     def update_ui_selection(self):
         """Update the UI to show the currently applied wallpaper as selected"""
@@ -537,6 +704,25 @@ WantedBy=default.target
             self.systemd_button.set_label("Disable Auto-Start")
         else:
             self.systemd_button.set_label("Enable Auto-Start")
+
+        # Update UI based on saved cycle state
+        if self.is_cycling:
+            # Update UI elements to reflect cycling state
+            self.cycle_button.set_label("Stop Cycling")
+            self.next_button.set_sensitive(True)
+            self.pause_button.set_sensitive(True)
+            
+            if self.is_paused:
+                self.pause_button.set_label("Resume Cycling")
+                self.cycle_status_label.set_label("Cycling paused")
+            else:
+                self.pause_button.set_label("Pause Cycling")
+                # Start the cycling timer if not in paused state
+                self.start_cycling()
+        else:
+            self.cycle_button.set_label("Start Cycling")
+            self.next_button.set_sensitive(False)
+            self.pause_button.set_sensitive(False)
 
     def on_open_clicked(self, button):
         """
@@ -616,9 +802,77 @@ WantedBy=default.target
             self.load_wallpapers(folder)
         dialog.destroy()
 
+    def get_wallpaper_folder_meta(self, folder_path):
+        """Return a dict with folder mtime and file list for change detection."""
+        try:
+            stat = os.stat(folder_path)
+            mtime = stat.st_mtime
+            files = sorted([f for f in os.listdir(folder_path)
+                           if os.path.isfile(os.path.join(folder_path, f))])
+            return {"mtime": mtime, "files": files}
+        except Exception:
+            return None
+
+    def is_cache_valid(self, folder_path):
+        """Check if cache meta matches current folder meta."""
+        if not os.path.exists(self.wallpaper_cache_meta_file):
+            return False
+        try:
+            with open(self.wallpaper_cache_meta_file, 'r') as f:
+                cached_meta = json.load(f)
+            current_meta = self.get_wallpaper_folder_meta(folder_path)
+            return cached_meta == current_meta
+        except Exception:
+            return False
+
+    def save_wallpaper_cache(self, folder_path, wallpaper_list):
+        """Save wallpaper list and meta to cache files."""
+        try:
+            with open(self.wallpaper_cache_file, 'w') as f:
+                json.dump(wallpaper_list, f)
+            meta = self.get_wallpaper_folder_meta(folder_path)
+            with open(self.wallpaper_cache_meta_file, 'w') as f:
+                json.dump(meta, f)
+        except Exception as e:
+            print(f"Error saving wallpaper cache: {e}")
+
+    def load_wallpaper_cache(self):
+        """Load wallpaper list from cache file."""
+        try:
+            with open(self.wallpaper_cache_file, 'r') as f:
+                return json.load(f)
+        except Exception:
+            return []
+
+    def get_thumbnail_cache_path(self, wallpaper_path):
+        import hashlib
+        h = hashlib.sha256(wallpaper_path.encode()).hexdigest()
+        return os.path.join(self.thumbnail_cache_dir, f'{h}.png')
+    
+    def load_or_create_thumbnail(self, wallpaper_path):
+        cache_path = self.get_thumbnail_cache_path(wallpaper_path)
+        if os.path.exists(cache_path):
+            try:
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_path)
+                return pixbuf
+            except Exception:
+                pass  # fallback to regeneration
+        try:
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(wallpaper_path, THUMB_WIDTH, THUMB_HEIGHT)
+            # Save to cache as PNG
+            try:
+                pixbuf.savev(cache_path, 'png', [], [])
+            except Exception as e:
+                print(f"Error saving thumbnail cache for {wallpaper_path}: {e}")
+            return pixbuf
+        except Exception as e:
+            print(f"Error generating thumbnail for {wallpaper_path}: {e}")
+            return None
+
     def load_wallpapers(self, folder_path):
         """
         Loads wallpapers from a specified folder and displays them as thumbnails, in a background thread.
+        Uses cache if available and valid.
         """
         self.spinner.start()
         self.status_label.set_label(f"Loading from {os.path.basename(folder_path)}...")
@@ -633,14 +887,23 @@ WantedBy=default.target
             GLib.idle_add(clear_thumbnails)
 
             supported_formats = ['.png', '.jpg', '.jpeg', '.jxl', '.webp']
-            try:
-                wallpapers = [f for f in os.listdir(folder_path)
-                             if os.path.isfile(os.path.join(folder_path, f)) and
-                             os.path.splitext(f)[1].lower() in supported_formats]
-            except Exception as e:
-                GLib.idle_add(self.status_label.set_label, f"Error reading folder: {e}")
-                GLib.idle_add(self.spinner.stop)
-                return
+            use_cache = self.is_cache_valid(folder_path)
+            if use_cache:
+                wallpapers = self.load_wallpaper_cache()
+            else:
+                try:
+                    wallpapers = [f for f in os.listdir(folder_path)
+                                 if os.path.isfile(os.path.join(folder_path, f)) and
+                                 os.path.splitext(f)[1].lower() in supported_formats]
+                except Exception as e:
+                    GLib.idle_add(self.status_label.set_label, f"Error reading folder: {e}")
+                    GLib.idle_add(self.spinner.stop)
+                    return
+                wallpapers.sort()
+                # Save cache with full paths
+                full_paths = [os.path.join(folder_path, f) for f in wallpapers]
+                self.save_wallpaper_cache(folder_path, full_paths)
+                wallpapers = full_paths
 
             if not wallpapers:
                 GLib.idle_add(self.status_label.set_label, "No wallpapers found in selected folder")
@@ -648,18 +911,13 @@ WantedBy=default.target
                 GLib.idle_add(lambda: self.cycle_button.set_sensitive(False))
                 return
 
-            # Sort wallpapers for consistent ordering
-            wallpapers.sort()
-
-            for wallpaper in wallpapers:
-                full_path = os.path.join(folder_path, wallpaper)
-                # Add to wallpaper list for cycling
+            for full_path in wallpapers:
                 GLib.idle_add(lambda p=full_path: self.wallpaper_list.append(p))
-                
                 try:
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(full_path, THUMB_WIDTH, THUMB_HEIGHT)
+                    pixbuf = self.load_or_create_thumbnail(full_path)
+                    if pixbuf is None:
+                        continue
                     thumbnail = Gtk.Image.new_from_pixbuf(pixbuf)
-                    # FIX: Set the size request for the image widget
                     thumbnail.set_size_request(THUMB_WIDTH, THUMB_HEIGHT)
                     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
                     box.set_valign(Gtk.Align.START)
@@ -670,9 +928,8 @@ WantedBy=default.target
                         box.set_margin_end(10)
                     except Exception:
                         pass
-                    box.set_tooltip_text(wallpaper)
-                    # MODIFIED: Cleaner label truncation
-                    label = Gtk.Label(label=os.path.basename(wallpaper))
+                    box.set_tooltip_text(os.path.basename(full_path))
+                    label = Gtk.Label(label=os.path.basename(full_path))
                     label.set_max_width_chars(LABEL_MAX_CHARS)
                     label.set_ellipsize(Pango.EllipsizeMode.END)
                     label.set_wrap(False)
@@ -686,13 +943,19 @@ WantedBy=default.target
                         self.thumbnails[child] = full_path
                     GLib.idle_add(add_child)
                 except Exception as e:
-                    print(f"Error loading thumbnail for {wallpaper}: {e}")
+                    print(f"Error loading thumbnail for {full_path}: {e}")
 
             def finish_loading():
                 self.spinner.stop()
                 self.status_label.set_label("Select a wallpaper to apply or start cycling.")
-                # Enable cycling button if wallpapers were loaded
                 self.cycle_button.set_sensitive(len(self.wallpaper_list) > 0)
+                
+                # If we have a current wallpaper from saved state, select it
+                if self.current_wallpaper and self.current_wallpaper in self.wallpaper_list:
+                    for child in self.flow_box:
+                        if child in self.thumbnails and self.thumbnails[child] == self.current_wallpaper:
+                            self.flow_box.select_child(child)
+                            break
             GLib.idle_add(finish_loading)
 
         thread = self.threading.Thread(target=do_load)
