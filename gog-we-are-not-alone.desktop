@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=We Are Not Alone
+Comment=First-person horror combined with third-person adventure
+Exec=we-are-not-alone
+Icon=gog-we-are-not-alone
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

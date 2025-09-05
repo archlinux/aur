@@ -1,0 +1,27 @@
+pkgbase = gog-we-are-not-alone
+	pkgdesc = First-person horror combined with third-person adventure. GOG version.
+	pkgver = 1.9.3.1
+	pkgrel = 1
+	url = https://www.gog.com/en/game/we_are_not_alone
+	arch = x86_64
+	license = LicenseRef-eula
+	makedepends = lgogdownloader
+	depends = bash
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	depends = zlib
+	options = !debug
+	options = !strip
+	source = we-are-not-alone_1_9_3_1.sh::gogdownloader://we_are_not_alone/en3installer0
+	source = gog-we-are-not-alone.desktop
+	source = we-are-not-alone.bash
+	sha512sums = cbf06c9c61ff117c3af6ddd626ce3e91fd3f66365c445f53458536575be7c746a246cf10a0a6e071f32ee5fab7e575428cc390c82ac0059932a7092894cad6b0
+	sha512sums = 4843f97a977edf7719dc89e6ad17aa584f0c978ad68b6d166b3559409bcbd7e98f67557c2e991071f2297d36a2424a1243b2d8689899f3018b0a1aa2f51695e9
+	sha512sums = e8784cebf629356d92b307a313899c75d1c9d0b3546bf91e18c7bf9a60a77662af49c2954174b46cdcb937f572529793822ab7a45ba26001ffa1cbdb3405070e
+
+pkgname = gog-we-are-not-alone
