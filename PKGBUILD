@@ -1,5 +1,4 @@
-# Maintainer: Victor Häggqvist <aur a snilius d com>
-# https://github.com/victorhaggqvist/archlinux-pkgbuilds
+# Maintainer: atriix <aur a snilius d com>
 
 pkgname=apk-resigner
 pkgver=1
