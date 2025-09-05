@@ -7,7 +7,7 @@
 pkgname=fontmatrix
 pkgver=0.9.100
 pkgrel=3
-pkgdesc="Font manager for Linux"
+pkgdesc="Free font collections manager for Linux, Mac and Windows."
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = fontmatrix
-	pkgdesc = Font manager for Linux
+	pkgdesc = Free font collections manager for Linux, Mac and Windows.
 	pkgver = 0.9.100
 	pkgrel = 3
 	url = https://github.com/fontmatrix/fontmatrix
