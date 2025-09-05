@@ -11,6 +11,7 @@ url="https://github.com/DirtBagXon/hypseus-singe"
 license=('GPL3')
 depends=('zlib' 'libzip' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libvorbis')
 makedepends=('git' 'cmake')
+options=(!lto)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")

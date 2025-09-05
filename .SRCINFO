@@ -17,6 +17,7 @@ pkgbase = hypseus-singe-git
 	depends = libvorbis
 	provides = hypseus-singe
 	conflicts = hypseus-singe
+	options = !lto
 	source = hypseus-singe::git+https://github.com/DirtBagXon/hypseus-singe.git
 	md5sums = SKIP
 
