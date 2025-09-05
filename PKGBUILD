@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Stormix/$pkgname"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
-depends=('webkit2gtk-4.1' 'cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme')
+depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme')
 source=("git+$url.git#tag=v$pkgver"
 	'deadlock-modmanager.desktop')
 sha256sums=('942479ad97c5d24b545ccb5e8031ea570b30c6b69fc40c79d48f354304540251'
