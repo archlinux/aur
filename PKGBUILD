@@ -102,6 +102,8 @@ prepare() {
   rm -rf "${srcdir}/mozbuild"
   mkdir "${srcdir}/mozbuild"
 
+  export PATH="${srcdir}:$PATH"
+
   cd firedragon-source-v"${_pkgver}" || exit
 
   _deno install --allow-scripts --frozen
@@ -140,12 +142,6 @@ END
 build() {
   cd firedragon-source-v"${_pkgver}" || exit
 
-  # Clean source directory from previous build attempts
-  ./mach clobber
-
-  _deno task build --write-buildid2
-  NODE_ENV=production _deno task build --release-build-before
-
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
@@ -167,6 +163,12 @@ build() {
 
   # LTO needs more open files
   ulimit -n 4096
+
+  # Clean source directory from previous build attempts
+  ./mach clobber
+
+  _deno task build --write-buildid2
+  NODE_ENV=production _deno task build --release-build-before
 
   # Do 3-tier PGO
   if [[ "${_build_pgo::1}" == "t" ]]; then
