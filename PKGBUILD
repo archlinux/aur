@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-usb-protocol
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc='Utilities, data structures, constants, parsers, and tools for working with USB data'
 arch=('any')
 url='https://github.com/greatscottgadgets/python-usb-protocol'
@@ -27,7 +27,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/python-usb-protocol/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('70a2ed606b98b09fd088a21a55646a9399ffa70d024d6e1e25bf15d0322c64ce049d662bf0b489d8478abd0fec5b2b745a8e7f17ebf938b21cafb2d4822439b9')
+sha512sums=('187c35c2cd7ae7ac0f246c8c8eba794226718d1c4374cbb605c9645dc1a1ff353feaf8be283ce4ea6d9a3469e2cc022dfd368fe63266ef4ed323181925bbe64f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
