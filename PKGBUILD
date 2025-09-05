@@ -4,7 +4,7 @@
 # Service Author: Stefan Zipproth
 
 pkgname=ditana-koboldcpp
-pkgver=1.93.1
+pkgver=1.98.1
 pkgrel=1
 pkgdesc="A systemd service that runs KoboldCpp with the gemma language model locally, giving you AI chat privately on your PC."
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
     'LICENSE'
 )
 sha256sums=(
-    '193e78751e2ea512f53fd826814497ec344844cdb1b3ba5c119aa8ee7e1b44e6'
+    '56923c49c98b5f633fad81a5b391084b133fbc1b9090dc93010aa86f1c51ecb2'
     'SKIP'
     'SKIP'
     'SKIP'
