@@ -1,7 +1,7 @@
 # Maintainer: klpod221 <klpod221@gmail.com>
 pkgname=kerminal
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal app with SSH Profile support"
 arch=('x86_64')
 url="https://github.com/klpod221/kerminal"
