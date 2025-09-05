@@ -1,0 +1,44 @@
+diff --git a/src/bracketcompletion/bracketcompletion.plugin b/src/bracketcompletion/bracketcompletion.plugin
+index d040a4b..1ccab5d 100644
+--- a/src/bracketcompletion/bracketcompletion.plugin
++++ b/src/bracketcompletion/bracketcompletion.plugin
+@@ -1,5 +1,5 @@
+ [Plugin]
+-Module=bracketcompletion
++Module=bracketcompletion-c
+ IAge=3
+ Name[ar]=إكمال الأقواس
+ Name[be]=Дапаўненне дужак
+diff --git a/src/joinlines/joinlines.plugin b/src/joinlines/joinlines.plugin
+index 4001fec..a442731 100644
+--- a/src/joinlines/joinlines.plugin
++++ b/src/joinlines/joinlines.plugin
+@@ -1,5 +1,5 @@
+ [Plugin]
+-Module=joinlines
++Module=joinlines-c
+ IAge=3
+ Name=Join Lines
+ Name[af]=Verbind Lyne
+diff --git a/src/open-uri-context-menu/open-uri-context-menu.plugin b/src/open-uri-context-menu/open-uri-context-menu.plugin
+index b1f0c7d..8b9f0cd 100644
+--- a/src/open-uri-context-menu/open-uri-context-menu.plugin
++++ b/src/open-uri-context-menu/open-uri-context-menu.plugin
+@@ -1,5 +1,5 @@
+ [Plugin]
+-Module=open-uri-context-menu
++Module=open-uri-context-menu-c
+ IAge=3
+ Name=Open URI
+ Description=Adds context menu item to open an URI at the pointer position.
+diff --git a/src/textsize/textsize.plugin b/src/textsize/textsize.plugin
+index 30ae076..efe5143 100644
+--- a/src/textsize/textsize.plugin
++++ b/src/textsize/textsize.plugin
+@@ -1,5 +1,5 @@
+ [Plugin]
+-Module=textsize
++Module=textsize-c
+ IAge=3
+ Name=Text Size
+ Name[am]=የ ጽሁፍ መጠን

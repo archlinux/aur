@@ -1,0 +1,18 @@
+pkgbase = xed-coreplugins-c
+	pkgdesc = Xed plugins: textsize, joinlines and bracketcompletion rewritten in C (fixing libpeas problems)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/ItsZariep/xed-coreplugins-c
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = glib2
+	depends = xed
+	source = git+https://codeberg.org/ItsZariep/xed-coreplugins-c#branch=main
+	source = changes.diff
+	sha256sums = SKIP
+	sha256sums = ffc40ee0fd1ecf5860a9b38ff94c31a5893657e3588987511088deb1a44b5323
+
+pkgname = xed-coreplugins-c
