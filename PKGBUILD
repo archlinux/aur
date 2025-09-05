@@ -1,7 +1,7 @@
 # Maintainer: Hua <majicdh@gmail.com>
 
 pkgname=server-box-bin
-pkgver=1.0.1241
+pkgver=1.0.1246
 pkgrel=1
 pkgdesc="ServerBox - A flutter app that helps you connect to your server."
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('fuse2')
 conflicts=('server-box')
 provides=('server-box')
 options=(!strip)
-source=("https://github.com/lollipopkit/flutter_server_box/releases/download/v1.0.1241/ServerBox_1241_amd64.AppImage")
-sha256sums=('428742ae958a6c0ff85c1bf95afdb863939b54f781c5cb959dc47133a6cffa50')
+source=("https://github.com/lollipopkit/flutter_server_box/releases/download/v1.0.1246/ServerBox_1246_amd64.AppImage")
+sha256sums=('20380f9ad11a227303b1d41beeeb4a6a0aeca54efa4a9ba52cf642a2c34fc86f')
 
 prepare() {
     # 动态获取 AppImage 文件名
