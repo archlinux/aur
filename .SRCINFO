@@ -1,7 +1,7 @@
 pkgbase = kubebuilder
 	pkgdesc = SDK for building Kubernetes APIs
-	pkgver = 4.7.1
-	pkgrel = 2
+	pkgver = 4.8.0
+	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/kubebuilder
 	arch = x86_64
 	arch = armv7l
@@ -9,7 +9,7 @@ pkgbase = kubebuilder
 	arch = aarch64
 	license = apache
 	makedepends = go
-	source = kubebuilder-4.7.1.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/v4.7.1.tar.gz
-	sha256sums = 4973f7219dbb7dd2759d37bdf4e50411bb43b79531d24a215bab89f524445ffe
+	source = kubebuilder-4.8.0.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/v4.8.0.tar.gz
+	sha256sums = 7ca72b5640eced3cc8ff97c3165c1a0d6cfac1604f62a66d1c9fd389a9d79654
 
 pkgname = kubebuilder

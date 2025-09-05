@@ -2,8 +2,8 @@
 
 pkgname=kubebuilder
 pkgdesc="SDK for building Kubernetes APIs"
-pkgver=4.7.1
-pkgrel=2
+pkgver=4.8.0
+pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('apache')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-    "4973f7219dbb7dd2759d37bdf4e50411bb43b79531d24a215bab89f524445ffe"
+    "7ca72b5640eced3cc8ff97c3165c1a0d6cfac1604f62a66d1c9fd389a9d79654"
 )
 
 build() {
