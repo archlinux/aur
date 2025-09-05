@@ -1,0 +1,26 @@
+From 4af8046acffc479cc96d881474ccc8cec3b67ecf Mon Sep 17 00:00:00 2001
+From: George Tsiamasiotis <gtsiam@windowslive.com>
+Date: Fri, 5 Sep 2025 23:27:22 +0300
+Subject: [PATCH] Fix missing schema check
+
+It should have always done a recursive lookup.
+---
+ src/tractor/db.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tractor/db.py b/src/tractor/db.py
+index 6cba994..1dda756 100644
+--- a/src/tractor/db.py
++++ b/src/tractor/db.py
+@@ -23,7 +23,7 @@ def dconf() -> Gio.Settings:
+     """
+     schema = "org.tractor"
+     schemas = Gio.SettingsSchemaSource.get_default()
+-    if not Gio.SettingsSchemaSource.lookup(schemas, schema, False):
++    if not Gio.SettingsSchemaSource.lookup(schemas, schema, True):
+         gschema_dir = "/usr/share/glib-2.0/schemas/"
+         for directory in GLib.get_system_data_dirs():
+             gdir = f"{directory}/glib-2.0/schemas/"
+-- 
+2.51.0
+
