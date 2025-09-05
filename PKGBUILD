@@ -1,14 +1,14 @@
 # Maintainer: Ben Towali <ben@bentowali.com>
 
 pkgname=raindrop
-pkgver='5.6.90'
+pkgver='5.6.91'
 pkgrel=1
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64')
 url="https://raindrop.io"
 license=('MIT')
 depends=()
-makedepends=('git' 'nodejs' 'jq')
+makedepends=('git' 'nodejs' 'npm' 'jq')
 provides=(raindrop)
 source=('raindrop::git+https://github.com/raindropio/desktop'
 				'remove-sentry.patch'

@@ -1,12 +1,13 @@
 pkgbase = raindrop
 	pkgdesc = All-in-one bookmark manager
-	pkgver = 5.6.90
+	pkgver = 5.6.91
 	pkgrel = 1
 	url = https://raindrop.io
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = jq
 	provides = raindrop
 	source = raindrop::git+https://github.com/raindropio/desktop
