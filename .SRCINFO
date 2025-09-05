@@ -1,11 +1,11 @@
 pkgbase = gvproxy-bin
 	pkgdesc = A new network stack based on gVisor - gvproxy
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 0
 	url = https://github.com/containers/gvisor-tap-vsock/
 	arch = x86_64
 	license = Apache
-	source = gvproxy-0.8.6::https://github.com/containers/gvisor-tap-vsock/releases/download/v0.8.6/gvproxy-linux-amd64
-	sha256sums = 615c9c6a0ee865f7090fcfa9d4666adff9ada9a2f2fce88686d802f03cc65be1
+	source = gvproxy-0.8.7::https://github.com/containers/gvisor-tap-vsock/releases/download/v0.8.7/gvproxy-linux-amd64
+	sha256sums = 4793bf9624e15f5c5fb56ded9ddd3a7a3dcd249f0ddb2d5c07d7691f1de15967
 
 pkgname = gvproxy-bin
