@@ -6,11 +6,11 @@ _pkgname=wemeet
 pkgname=$_pkgname-bwrap
 provides=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
 conflicts=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
-pkgver=3.19.2.400
+pkgver=3.26.10.400
 _pkgver_arm=3.19.1.401 # 两个版本有时候不一样
-_x86_md5=fb7464ffb18b94a06868265bed984007
+_x86_md5=9cfd93b10ee81b2fc3ad26357f27ed13
 _arm_md5=206c30da5545dba38a29ccbc752dec94
-pkgrel=5
+pkgrel=1
 pkgdesc="Sandboxed wemeet, supports screensharing on Wayland / 沙盒化腾讯会议, 支持 Wayland 屏幕共享"
 arch=('x86_64' 'aarch64')
 license=('LicenseRef-proprietary')
@@ -22,7 +22,6 @@ source=("wemeet".sh
 	'wrap.c'
 	portable-config
 	start.sh
-	'git+https://github.com/xuwd1/wemeet-wayland-screenshare.git'
 	)
 depends=(
     "bash"
@@ -33,23 +32,17 @@ depends=(
     libxrandr libxext libx11 hicolor-icon-theme glibc zlib libxcomposite
     qt5-base systemd-libs libxdamage qt5-svg
     libyuv
-    portable
     wireplumber
     qt5-wayland
-    xwaylandvideobridge
     opencv
     libxrandr
-    "libportal"
-    "xdg-desktop-portal"
-    "xdg-desktop-portal-impl"
 )
 makedepends=('patchelf' 'cmake' 'git')
-sha512sums=('2bf3e79ac9867b3ad99de027e36cd2b278db4246163f125222cd4f864d6a1734d81f70f34aa2d5cfee49e6eedbbe1afb269ce591e8963eb083366da041815e86'
-            'f98e9ae5842c05a19ad4f883c8f9d88ef3b64e04b034e7fd8b23ddca81510f0bd38688ad7c63ddf8badaa727a7b599ceede87419e9694c06d7a4b06138b94c15'
-            '6c429d219f87f4a8fd43dd39413a9f52f6dc7fa4dcad97bba6955450fac2ae5120dbe748793618779207ee081bc8d153b28a894a9a8605b7367353e553705521'
-            'd7f5298ce768094eaf2931805897144576c208b33ce7b758703ea7e0cdb1e8a5a5ab0dac2b792fb73702343e4a54280017348cf72d889e226eedfe4dc05004c0'
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
-sha512sums_x86_64=('175a92d412ee3359f93ad84e9344d4317f04e396e40586cfa1f3a7798adbe69e3f2991a5af5163cd99fbb3ad1b3e6e7c5b016d17d022f86b7c3f54a1274b8238')
+sha512sums_x86_64=('SKIP')
 sha512sums_aarch64=('d84bb40617edf1a97d0fd3b6674df050d62c7ce19e8aff1230a42d47d1887ca641aec20d732fc1bbdecc233781db0be0c9ce8a412fdb68d28eec59d09228f638')
 
 prepare() {
@@ -79,8 +72,6 @@ prepare() {
 
     find modules/ -type f -name '*.so' | xargs -I {} patchelf --set-rpath '$ORIGIN:/usr/lib/wemeet' {}
     popd
-    cd "${srcdir}"/wemeet-wayland-screenshare
-    git submodule update --init --recursive
 }
 
 build() {
@@ -89,18 +80,11 @@ build() {
     read -ra libpulse_args < <(pkgconf --cflags --libs libpulse)
     # Comment out `-D WRAP_FORCE_SINK_HARDWARE` to disable the patch that forces wemeet detects sink as hardware sink
     "${CC:-cc}" $CFLAGS -Wall -Wextra -fPIC -shared "${openssl_args[@]}" "${libpulse_args[@]}" -o libwemeetwrap.so wrap.c -D WRAP_FORCE_SINK_HARDWARE
-    cd "${srcdir}"/wemeet-wayland-screenshare
-    mkdir -p build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make
 }
 
 package() {
+	depends+=(portable "libportal" "xdg-desktop-portal" "xdg-desktop-portal-impl")
 	echo 'https://rule.tencent.com/rule/ab9ea528-0bf1-47b3-a8c3-f001b98912e2' >"${srcdir}/LICENSE"
-	install -Dm755 \
-		"${srcdir}/wemeet-wayland-screenshare/build/libhook.so" \
-		"${pkgdir}/usr/lib/wemeet/libhook.so"
 	cd "$srcdir"
     cp -r usr "$pkgdir"
     cd opt/$_pkgname
@@ -111,7 +95,7 @@ package() {
     install -Dm644 $_pkgname.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
     # libbugly is not likely to be necessary
-    install -Dm755 lib/lib{desktop_common,ImSDK,nxui*,qt_*,service*,tms_*,ui*,wemeet*,xcast*,xnn*}.so \
+    install -Dm755 lib/*.so \
         -t "$pkgdir/usr/lib/$_pkgname"
     if [ -f 'lib/libcrbase.so' ]; then
         install -Dm755 lib/libcrbase.so -t "$pkgdir/usr/lib/$_pkgname"
