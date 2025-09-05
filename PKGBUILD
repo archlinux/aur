@@ -14,7 +14,7 @@ install=$_pkgname.install
 source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
-sha256sums=('f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282')
+sha256sums=('242609b1259e999e944b7187f4c03aacba8134a7671ff3a50e2e246b4c4eff48')
 sha256sums_x86_64=("7f9e9b08bd0e90d9029ed1bd8a694265d889b4293067bd5c23fddd2488e34ab4")
 sha256sums_aarch64=("cd3f15f86ee8c72ce01ff1e491604357677e8149d78ced9774523d48933a96c3")
 
