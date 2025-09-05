@@ -1,0 +1,18 @@
+pkgbase = linglong-pica-git
+	pkgdesc = deb package to Linglong package tool.
+	pkgver = 1.2.5.r0.g1a7be60
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/linglong-pica
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	makedepends = pkgconf
+	depends = sh
+	depends = linyaps
+	provides = linglong-pica
+	conflicts = linglong-pica
+	source = linglong-pica-git::git+https://github.com/linuxdeepin/linglong-pica.git
+	sha256sums = SKIP
+
+pkgname = linglong-pica-git
