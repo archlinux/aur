@@ -16,7 +16,7 @@ pkgbase = microchip-mplabxc8-bin
 	options = emptydirs
 	options = !zipman
 	options = staticlibs
-	source = xc8-v3.00-full-install-linux-x64-installer.run::https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc8-v3.00-full-install-linux-x64-installer.run
-	sha256sums = 20b093479e9e344de5662391a79dfef5581a3fc7ebf08d59fe355c620da59fa5
+	source = xc8-v3.10-full-install-linux-x64-installer.run::https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc8-v3.10-full-install-linux-x64-installer.run
+	sha256sums = 628803b96f468a5981d6bc1d0a5e6c7fa809e4d87e3cca961805e2a857f5846e
 
 pkgname = microchip-mplabxc8-bin

@@ -1,10 +1,11 @@
-# Maintainer:
+# Maintainer: Rex McKinnon <0xFF at rexploits dot com>
+# Contributor: xiota
 # Contributor: Grey Christoforo <first name at last name dot net>
 # Contributer: mickael9 <mickael9 at gmail dot com>
 
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=3.00
+pkgver=3.10
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 url="https://www.microchip.com/mplab/compilers"
@@ -25,7 +26,7 @@ _dl_path="downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools"
 _dl_file="xc${_number_of_bits}-v${pkgver}-full-install-linux-x64-installer.run"
 
 source=("$_dl_file"::"$_dl_url/$_dl_path/$_dl_file")
-sha256sums=('20b093479e9e344de5662391a79dfef5581a3fc7ebf08d59fe355c620da59fa5')
+sha256sums=('628803b96f468a5981d6bc1d0a5e6c7fa809e4d87e3cca961805e2a857f5846e')
 
 _instdir="opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
