@@ -1,6 +1,6 @@
 pkgbase = safecloset
 	pkgdesc = Cross-platform Secure TUI Secret Locker
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://dystroy.org/safecloset/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = safecloset
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = safecloset-1.4.0.tar.gz::https://github.com/Canop/safecloset/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = e5ec90a6d8128ce647f77acf0df6d39515abbe7421a09639ac8eaed638b8c332
+	source = safecloset-1.4.1.tar.gz::https://github.com/Canop/safecloset/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = edd9b51b67e4da102558847d42205b1a9bf26895a6bb4707bfa5ec299c337a7e
 
 pkgname = safecloset
