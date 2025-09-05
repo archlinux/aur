@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=gosu
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Simple Go-based setuid+setgid+setgroups+exec"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -9,7 +9,7 @@ url="https://github.com/tianon/${pkgname}"
 license=("Apache-2.0")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d984938705b81b90468a9f471adfdffeffaebd9deeac752d3e3a6060425b5d0d')
+sha256sums=('6090661c127d5692db9e4daac77d0b47effefc65c83979f72f8584de169af01d')
 validpgpkeys=('B42F6819007F00F88E364FD4036A9C25BF357DD4')
 
 build() {
