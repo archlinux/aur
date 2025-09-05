@@ -1,6 +1,6 @@
 # Maintainer: Sašo Živanović <saso.zivanovic@guest.arnes.si>
-pkgname=python-tandamaster
-pkgver=0.3.1
+pkgname=tandamaster
+pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc="A music player specialized for playing music at milongas"
@@ -35,22 +35,21 @@ backup=()
 options=()
 install=
 changelog=
-_name=${pkgname#python-}
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-md5sums=('58c184b72dacc1091f06654457f09db2')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
+md5sums=('619437e810a0e15a3f1a33fc5010792d')
 validpgpkeys=()
 
 prepare() {
-    cd $_name-$pkgver
+    cd $pkgname-$pkgver
     ctypesgen -lmp3splt /usr/include/libmp3splt/mp3splt.h -o src/tandamaster/mp3splt_h.py
 }
 
 build() {
-    cd $_name-$pkgver
+    cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver
+    cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
