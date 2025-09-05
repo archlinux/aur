@@ -62,6 +62,7 @@ build() {
 }
 
 package_element-web-git() {
+  url='https://github.com/vector-im/element-web'
   pkgdesc+="web version."
   #replaces=(riot-web vector-web)
   provides=(element-web)
@@ -78,6 +79,7 @@ package_element-web-git() {
 }
 
 package_element-desktop-git() {
+  url='https://github.com/vector-im/element-desktop'
   pkgdesc+="desktop version."
   #replaces=(riot-desktop)
   depends=("element-web-git=${pkgver}" ${_electron} libsecret)
