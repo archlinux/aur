@@ -1,7 +1,7 @@
 # Maintainer: Gunther Schulz <dev@guntherschulz.de>
 
 pkgname=cursor-bin
-pkgver=1.5.11
+pkgver=1.5.10
 pkgrel=1
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
@@ -11,10 +11,10 @@ license=('LicenseRef-Cursor_EULA')
 depends=('ripgrep' 'xdg-utils'
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
-_commit=2f2737de9aa376933d975ae30290447c910fdf46 # sed'ded at GitHub WF
-source=("https://downloads.cursor.com/production/2f2737de9aa376933d975ae30290447c910fdf46/linux/x64/deb/amd64/deb/cursor_1.5.11_amd64.deb"
+_commit=7ad52fff14641ec6373a31c19463856cace32640 # sed'ded at GitHub WF
+source=("https://downloads.cursor.com/production/7ad52fff14641ec6373a31c19463856cace32640/linux/x64/deb/amd64/deb/cursor_1.5.10_amd64.deb"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh)
-sha512sums=('7c00f358bc37bbc49150f9e12507c6903c3a550358af2690597d07f41b60c643067484f7458c23048ad9e317461cf3bd3df0d400a1c66431466c8f64ba0079f0'
+sha512sums=('2a83e483fbded155f80a857e3bd15d7de93dc86f6402f1ce95900dd54a5d8a54302d12f478b73701f9c26b1dde19761666b397140309a88b473670c8ebe28a85'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 
 _app=usr/share/cursor/resources/app
