@@ -11,5 +11,6 @@ pkgbase = nautilus-scripts
 
 pkgname = nautilus-scripts
 	install = nautilus-scripts.install
+	optdepends = nautilus-scripts-dolphin: dolphin servicemenus
 
 pkgname = nautilus-scripts-dolphin

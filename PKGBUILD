@@ -18,6 +18,7 @@ md5sums=('3afe60c5031b0ad1ebdb98350a4308d0')
 
 package_nautilus-scripts() {
   install="${pkgname}.install"
+  optdepends=('nautilus-scripts-dolphin: dolphin servicemenus')
 
   script_dir=${pkgdir}/opt/${pkgname}
 
@@ -34,8 +35,10 @@ package_nautilus-scripts() {
 package_nautilus-scripts-dolphin() {
   ln -sf nautilus-scripts-${pkgver} nautilus-scripts
   cd nautilus-scripts
+
   sed -i "s|\$HOME/.local/share/kio/servicemenus|${pkgdir}/usr/share/kio/servicemenus|g" install.sh
   sed -i "\$cINSTALL_DIR=${srcdir}/nautilus-scripts/\n_step_install_menus_dolphin" install.sh
   bash install.sh
+
   find ${pkgdir}/usr/share/kio/servicemenus/ -type f -exec sed -i "s|${srcdir}|/opt|g" {} +
 }
