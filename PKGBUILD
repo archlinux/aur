@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro
-_tagname=0.8.53
+_tagname=0.8.54
 pkgver=${_tagname//-/_}
-pkgrel=0
+pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
 url="https://github.com/ecubus/EcuBus-Pro"
@@ -21,28 +21,6 @@ depends=(
     # AUR
     python-udsoncan
     python-doipclient
-    #     alsa-lib
-    #     at-spi2-core
-    #     cairo
-    #     dbus
-    #     expat
-    #     ffmpeg
-    #     glib2
-    #     gtk3
-    #     libdrm
-    #     libcups
-    #     libx11
-    #     libxcb
-    #     libxext
-    #     libxdamage
-    #     libxkbcommon
-    #     libxcomposite
-    #     libxrandr
-    #     libxfixes
-    #     nspr
-    #     nss
-    #     mesa
-    #     pango
 )
 makedepends=(
     git
@@ -56,7 +34,7 @@ backup=()
 options=(!debug !strip)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${_tagname}")
-sha256sums=('710c49ac515c0dfb92ea85fe87c8d273a0b71df222d722b946a7ae0ae8936e39')
+sha256sums=('3ae227fe3deb542c3122b086726e68f396c47a22d4c712339e67d241ec3711ad')
 # noextract=("${pkgname}-${_tagname}.tar.gz")
 
 _pkgname=EcuBus-Pro
