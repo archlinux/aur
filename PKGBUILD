@@ -22,3 +22,7 @@ package(){
 install(){
   ln -sf '/opt/Signal Beta/signal-desktop-beta' '/usr/bin/signal-desktop-beta'
 }
+
+post_remove(){
+  rm -f '/usr/bin/signal-desktop-beta'
+}
