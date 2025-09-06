@@ -1,7 +1,7 @@
 pkgbase = ironpython2-bin
 	pkgdesc = Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)
 	pkgver = 2.7.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ironpython.net
 	arch = any
 	license = Apache-2.0
@@ -14,14 +14,9 @@ pkgbase = ironpython2-bin
 	conflicts = ironpython2.7
 	conflicts = ironpython-bin<3
 	replaces = ironpython-bin<3
-	noextract = ironpython2-2.7.12-any.deb
-	source = ironpython2-2.7.12-any.deb::https://github.com/IronLanguages/ironpython2/releases/download/ipy-2.7.12/ironpython_2.7.12.deb
-	source = ironpython2-2.7.12-README.md::https://github.com/IronLanguages/ironpython2/raw/refs/tags/ipy-2.7.12/README.md
-	source = ironpython2-2.7.12-LICENSE::https://github.com/IronLanguages/ironpython2/raw/refs/tags/ipy-2.7.12/LICENSE
+	source = ironpython2-2.7.12-any.zip::https://github.com/IronLanguages/ironpython2/releases/download/ipy-2.7.12/IronPython.2.7.12.zip
 	source = ironpython.sh
-	sha256sums = b7b90c82cf311dd3faf290ce3f274af5128b96db884a88dd643ce141bbf12fb9
-	sha256sums = eb708d37373989d4f48e3c9993df6a4dd0b376ebb261378a8930fd1302402d47
-	sha256sums = 11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049
+	sha256sums = fe01eb6037411036f7f600736f9557b2eb44874cf1979252a4541349846505d7
 	sha256sums = d0a1515f3a8cfd824cafaa171d9cef11ba0d35939fd430fb900e8bbd4cdd3a2d
 
 pkgname = ironpython2-bin

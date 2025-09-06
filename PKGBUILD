@@ -3,7 +3,7 @@
 _Name="IronPython"
 _basename="${_Name,,}"
 pkgver=2.7.12
-pkgrel=3
+pkgrel=4
 _pkgname="${_basename}${pkgver%%.*}"
 pkgname="${_pkgname}-bin"
 pkgdesc="Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)"
@@ -30,24 +30,14 @@ conflicts=(
   "${replaces[@]}"
 )
 _pkgsrc="${_url##*/}-${pkgver}"
-noextract=("${_pkgsrc}-any.deb")
-source=("${_pkgsrc}-any.deb::${_url}/releases/download/ipy-${pkgver}/${_basename}_${pkgver}.deb"
-        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/ipy-${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/ipy-${pkgver}/LICENSE"
+source=("${_pkgsrc}-any.zip::${_url}/releases/download/ipy-${pkgver}/${_Name}.${pkgver}.zip"
         "${_basename}.sh")
-sha256sums=('b7b90c82cf311dd3faf290ce3f274af5128b96db884a88dd643ce141bbf12fb9'
-            'eb708d37373989d4f48e3c9993df6a4dd0b376ebb261378a8930fd1302402d47'
-            '11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049'
+sha256sums=('fe01eb6037411036f7f600736f9557b2eb44874cf1979252a4541349846505d7'
             'd0a1515f3a8cfd824cafaa171d9cef11ba0d35939fd430fb900e8bbd4cdd3a2d')
 
 prepare() {
   cd "${srcdir}"
   sed -i "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" "${_basename}.sh"
-
-  mkdir -p "${_pkgsrc}-any"
-  bsdtar -xf "${_pkgsrc}-any.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-any"
-  rm -f data.tar.*
 }
 
 package() {
@@ -63,9 +53,10 @@ package() {
     ln -vsf "${_exe}${pkgver%.*}-32"  "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}-32"
   done
 
-  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  cd "${_pkgsrc}-any/usr"
-  cp -a --no-preserve=ownership -t "${pkgdir}/usr" "lib" "share"
+  install -vd "${pkgdir}/usr/lib/${_basename}${pkgver%.*}" "${pkgdir}/usr/share/${_basename}${pkgver%.*}"
+  cp -aT --no-preserve=ownership "Lib"   "${pkgdir}/usr/lib/${_basename}${pkgver%.*}"
+  cp -aT --no-preserve=ownership "net45" "${pkgdir}/usr/share/${_basename}${pkgver%.*}"
 }
