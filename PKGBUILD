@@ -1,5 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-bin'
+_pkgname="winboat"
 pkgver='0.7.3'
 pkgrel='1'
 pkgdesc='Run Windows apps on Linux with seamless integration'
@@ -7,8 +8,8 @@ arch=(x86_64)
 url='https://github.com/TibixDev/winboat'
 license=('MIT')
 depends=('docker' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=("!strip" "!debug")
 source=("https://github.com/TibixDev/winboat/releases/download/v${pkgver}/winboat-${pkgver}-amd64.deb")
 
