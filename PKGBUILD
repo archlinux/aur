@@ -47,9 +47,9 @@ optdepends=('nano: for editing config files'
             'vim: for editing config files'
             'bat: for syntax highlighting'
             'onefetch: for system info display')
-source=("tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkg_install.sh")
+source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "$srcdir/tkg_install.sh" "$pkgdir/usr/bin/tkg_install"
+    install -Dm755 "$srcdir/tkginstaller.sh" "$pkgdir/usr/bin/tkginstaller"
 }
