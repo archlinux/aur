@@ -3,7 +3,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=jql
-pkgver=8.0.7
+pkgver=8.0.8
 pkgrel=1
 pkgdesc="A JSON Query Language CLI tool"
 url="https://github.com/yamafaktory/jql"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("$url/archive/jql-v${pkgver}.tar.gz")
-sha512sums=('a9b2d7f1eb42f1912832838bdfeeeef1786595caf6622c4b8baac522f59d546d2c55a4c5b87f45a30c7c2e0b59c4f9ef1c1db1b92d9d2799ce4ca6c2ba64cb4f')
+sha512sums=('c180083f891872af0a63e5ce8df947ebefba928a6429c083671f52d4e454e20f7edf20dbeb8d80895016b34ccb81d39c0b32b5d75e839fd4ada4cd3b27a6700c')
 
 build() {
   cd "${pkgname}-${pkgname}-v${pkgver}"
