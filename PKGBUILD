@@ -71,9 +71,25 @@ build() {
         -DGGML_VULKAN=ON
         -DGGML_LTO=ON
         -DGGML_RPC=ON
-        -DGGML_NATIVE=ON
         -Wno-dev
     )
+
+    # 检查是否在 CI 环境中构建
+    if [ -n "$CI" ] && [ "$CI" != 0 ]; then
+        msg2 "CI = $CI detected, building universal package"
+        # 启用通用构建
+        _cmake_options+=(
+        -DGGML_BACKEND_DL=ON
+        -DGGML_CPU_ALL_VARIANTS=ON
+        -DGGML_NATIVE=OFF
+        )
+    else
+        # 本地构建, 针对当前设备优化
+        _cmake_options+=(
+        -DGGML_NATIVE=ON
+        )
+    fi
+
     cmake "${_cmake_options[@]}"
     cmake --build build --config Release -- -j $(nproc)
 }
