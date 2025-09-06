@@ -1,0 +1,27 @@
+pkgbase = gcil
+	pkgdesc = Launch .gitlab-ci.yml jobs locally
+	pkgver = 13.0.1
+	pkgrel = 1
+	url = https://gitlab.com/RadianDevCore/tools/gcil
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python>=3.8
+	depends = python-colored
+	depends = python-docker
+	depends = python-importlib-metadata
+	depends = python-packaging
+	depends = python-prompt_toolkit
+	depends = python-dotenv
+	depends = python-yaml
+	depends = python-questionary
+	depends = python-requests
+	depends = python-setuptools
+	depends = python-update-checker
+	source = https://files.pythonhosted.org/packages/source/g/gitlabci-local/gitlabci_local-13.0.1.tar.gz
+	sha256sums = 26a58a01e2b56cbff9c201c6e9f58ae09322fa3db8fd4a624f25fd7a7fcd8ac3
+
+pkgname = gcil
