@@ -23,7 +23,7 @@ b2sums=("966ac11a98a6ac0344c729098b1fc0f1e137822cec1be7c0a432d253c9f4f61c48dc115
 
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     ./autogen.sh
     ./configure CXXFLAGS=-fexcess-precision=fast
     make -j
@@ -32,7 +32,7 @@ build() {
 package() {
     # install data files
     install -dm755 "${pkgdir}/opt/${pkgname}/"
-    cd "${srcdir}/${pkgname}-${pkgver}/data/"
+    cd "${pkgname}-${pkgver}/data/"
     cp -r {ENCYC,ENCYC2,IMAGE,RESOURCE,SCENARI2,SCENARIO,SOUND,SPRITE,TUTORIAL} "${pkgdir}/opt/${pkgname}/"
 
     # fix permissions
