@@ -1,7 +1,7 @@
 # Maintainer: Jan <jan@example.com>
 pkgname=raur
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="AUR + Pacman helper written in Rust"
 arch=('x86_64')
 url="https://github.com/GS-Works/raur"
