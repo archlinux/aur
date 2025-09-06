@@ -1,7 +1,7 @@
 pkgbase = kerminal
 	pkgdesc = Modern Terminal with SSH, Tunneling & Cross-Device Sync
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/klpod221/kerminal
 	install = kerminal.install
 	arch = x86_64
