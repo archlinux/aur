@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=envx
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A powerful and secure environment variable manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c404de6e9620844ce32ab86ea32dbaf37bfccfac045802f9cf94f6a7247b74c6')
+sha256sums=('859d389447576ec93fb54527c18a4021e1953f02807cfc66c5c521f7d0d2a9c3')
 options=('!lto')
 
 prepare() {
