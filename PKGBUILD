@@ -1,7 +1,7 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
 # Co-Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=obsidianctl
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="ObsidianOS's special program to manage A/B Partitions"
 arch=('any')
