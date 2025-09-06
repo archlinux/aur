@@ -24,8 +24,11 @@ b2sums=("966ac11a98a6ac0344c729098b1fc0f1e137822cec1be7c0a432d253c9f4f61c48dc115
 
 build() {
     cd "${pkgname}-${pkgver}"
+    # Add a flag to avoid a desync between versions compiled by GCC14+ and
+    # earlier version.
+    CXXFLAGS+=" -fexcess-precision=fast"
     ./autogen.sh
-    ./configure CXXFLAGS=-fexcess-precision=fast
+    ./configure
     make -j
 }
 
