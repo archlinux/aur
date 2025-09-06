@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -17,7 +17,7 @@
+@@ -17,4 +17,4 @@
 -cmake_minimum_required (VERSION 2.6)
 +cmake_minimum_required (VERSION 3.5)
  project (dislocker C)
