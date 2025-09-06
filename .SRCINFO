@@ -1,6 +1,6 @@
 pkgbase = tkginstaller-git
 	pkgdesc = A user-friendly script for all TKG packages from the Frogging-Family
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tkginstaller-git
 	provides = tkginstaller
 	conflicts = tkginstaller
 	replaces = tkginstaller
-	source = tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkg_install.sh
+	source = tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh
 	sha256sums = SKIP
 
 pkgname = tkginstaller-git
