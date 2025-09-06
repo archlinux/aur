@@ -2,7 +2,7 @@
 
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.6.2
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
     'vapoursynth-plugin-vsakarin'
     'vapoursynth-plugin-resize2'
 )
-makedepends=('python-pip')
+makedepends=('python-installer')
 optdepends=(
     'ffms2'
     'vapoursynth-plugin-adaptivegrain'
@@ -89,9 +89,9 @@ conflicts=(
     vapoursynth-plugin-vssource
     vapoursynth-plugin-vstools
 )
-source=("https://files.pythonhosted.org/packages/0e/49/3d1f91ed546201f646af2d2ecfb8f79b216b76e349645a45da6fb3a9f501/vsjetpack-0.6.2-py3-none-any.whl")
-sha256sums=('288b3574d61ff600d8bffb0c598b37212d69a0a0bfaa39b64880467884a9ebc1')
+source=("https://files.pythonhosted.org/packages/fe/25/b62d23b106c1ecc9b0c741c5aa2312935880f0f2bd5e59f2260944ebab9e/vsjetpack-0.7.1-py3-none-any.whl")
+sha256sums=('4d7341d8ec81ba2820fcf7035f8226272a7fe14bef353d535bb0fc7e42e7dc44')
 
 package() {
-    pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
+    python -m installer --destdir="$pkgdir" "${_plug}-${pkgver}-py3-none-any.whl"
 }
