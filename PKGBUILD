@@ -2,8 +2,8 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.10.11'
-pkgrel=4
+pkgver='3.11.0'
+pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -40,18 +40,16 @@ makedepends=(
 
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
-    "plotjuggler3.10.9-1.patch"
-    "plotjuggler3.10.9-2.patch"
+    "plotjuggler3.11.0-1.patch"
 )
 
 prepare() {
-    patch -d PlotJuggler-$pkgver -Np1 -i "$srcdir/plotjuggler3.10.9-1.patch"
-    patch -d PlotJuggler-$pkgver -Np1 -i "$srcdir/plotjuggler3.10.9-2.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "$srcdir/plotjuggler3.11.0-1.patch"
 }
 
 build() {
     cd "PlotJuggler-${pkgver}"
-    cmake -S . -B build \
+    PJ_PLUGIN_INSTALL_DIRECTORY=/usr/lib; cmake -S . -B build \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX="/usr"
     make -C build
@@ -63,12 +61,16 @@ package() {
 
     # fastcdr should not be installed,
     # but CPM installs dependencies automatically
-    rm -r "${pkgdir}/usr/include/fastcdr"
-    rm -r "${pkgdir}/usr/lib/cmake/fastcdr"
-    rm "${pkgdir}/usr/lib/libfastcdr.a"
-    rm -r "${pkgdir}/usr/share/fastcdr"
+    rm -rf "${pkgdir}/usr/include/fastcdr"
+    rm -rf "${pkgdir}/usr/lib/cmake/fastcdr"
+    rm -f "${pkgdir}/usr/lib/libfastcdr.a"
+    rm -rf "${pkgdir}/usr/share/fastcdr"
+    rm ${pkgdir}/usr/include/zdict.h
+    rm ${pkgdir}/usr/include/zstd.h
+    rm ${pkgdir}/usr/include/zstd_errors.h
+    rm -r ${pkgdir}/usr/lib/cmake/zstd
+    rm ${pkgdir}/usr/lib/pkgconfig/libzstd.pc
 }
 
-sha256sums=('9492e6b5f676a237616db056d1d45cae64d9a880690e8dd6b93784dd205b93bb'
-            'f20a39a311c02973009aabebfd2934afd8db7819ab1be8157039496c88baebcb'
-            '1b0b3c7f774f5736e17b180ccdeb9f5468184e337848ae12efeb7b1b90fcad29')
+sha256sums=('87e2c683c4da93ea21fc28890a07e7139384db09fdc14264e95ca361937ab3a7'
+            '0a187d228596c14e2434c2b5da2e3cbc4c717be38a8567a305f1ecfa493c9bfb')
