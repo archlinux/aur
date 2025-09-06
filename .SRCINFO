@@ -8,7 +8,7 @@ pkgbase = eden-preview-bin
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source_x86_64 = Eden-Linux-v0.0.3-amd64.AppImage::https://github.com/eden-emulator/Releases/releases/download/v0.0.3/Eden-Linux-v0.0.3-amd64.AppImage
+	source_x86_64 = Eden-Linux-0.0.3_release-amd64.AppImage::https://github.com/eden-emulator/Releases/releases/download/v0.0.3/Eden-Linux-v0.0.3-amd64.AppImage
 	sha256sums_x86_64 = 3f6432d55752bca5ef3cd24acf32332f132e992e4143bf5b382d054e0147322c
 
 pkgname = eden-preview-bin
