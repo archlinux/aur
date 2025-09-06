@@ -6,7 +6,7 @@
 
 pkgname=ocaml4-ocamlbuild-noframepointers
 pkgver=0.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Build tool, that has built-in rules for building OCaml library and programs'
 arch=(x86_64 aarch64)
 url='https://github.com/ocaml/ocamlbuild'
@@ -20,12 +20,22 @@ options=(!makeflags)
 
 build() {
   cd "ocamlbuild-$pkgver"
-  make configure OCAML_PREFIX=/usr OCAML_BINDIR=/usr/bin OCAML_LIBDIR=/usr/lib/ocaml OCAML_MANDIR=/usr/share/man
+  make configure \
+    PREFIX=/usr \
+    BINDIR=/usr/bin \
+    LIBDIR=/usr/lib/ocaml \
+    MANDIR=/usr/share/man
   make
 }
 
 package() {
   cd "ocamlbuild-$pkgver"
-  make DESTDIR="$pkgdir" install
+  make \
+    PREFIX="$pkgdir/usr" \
+    BINDIR="$pkgdir/usr/bin" \
+    LIBDIR="$pkgdir/usr/lib/ocaml" \
+    MANDIR="$pkgdir/usr/share/man" \
+    CHECK_IF_PREINSTALLED=false \
+    install
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

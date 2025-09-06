@@ -1,7 +1,7 @@
 pkgbase = ocaml4-ocamlbuild-noframepointers
 	pkgdesc = Build tool, that has built-in rules for building OCaml library and programs
 	pkgver = 0.14.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml/ocamlbuild
 	arch = x86_64
 	arch = aarch64
