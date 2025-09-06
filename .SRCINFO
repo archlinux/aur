@@ -1,16 +1,17 @@
 pkgbase = limine-mkinitcpio-hook
 	pkgdesc = Install kernel for the Limine bootloader.
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = jdk21-openjdk
 	makedepends = maven
 	depends = bash
 	depends = grep
 	depends = tar
-	depends = java-environment>=17
+	depends = java-runtime-headless>=17
 	depends = limine
 	depends = mkinitcpio
 	depends = efibootmgr
