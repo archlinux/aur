@@ -4,16 +4,16 @@
 
 _target=sh3eb-elf
 pkgname=${_target}-binutils
-pkgver=2.42
-pkgrel=3
+pkgver=2.45
+pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
-options=('!libtool' '!buildflags')
+options=('!libtool' '!emptydirs')
 url='https://www.gnu.org/software/binutils/'
-license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later AND FSFAP')
+license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3-only FSFAP)
 depends=('zlib' 'flex')
-source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12')
+source=(https://ftpmirror.gnu.org/binutils/binutils-${pkgver}.tar.bz2)
+sha256sums=('1393f90db70c2ebd785fb434d6127f8888c559d5eeb9c006c354b203bab3473e')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
@@ -24,10 +24,6 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="-O2 -pipe -s -fomit-frame-pointer -ffunction-sections -fdata-sections"
-  export CXXFLAGS=$CFLAGS
-  export LDFLAGS="-Wl,--gc-sections"
-
   cd "${srcdir}/binutils-${pkgver}/binutils-build"
   ../configure --target=${_target} \
     --prefix=/usr \
