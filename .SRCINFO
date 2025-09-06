@@ -1,7 +1,7 @@
 pkgbase = sideloader-bin
 	pkgdesc = Open-source cross-platform iOS app sideloader
 	pkgver = 1.0_pre4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dadoum/Sideloader
 	arch = x86_64
 	arch = aarch64
@@ -15,8 +15,12 @@ pkgbase = sideloader-bin
 	depends = glib2
 	depends = util-linux-libs
 	source_x86_64 = sideloader-gtk-x86_64-linux-1.0_pre4.zip::https://github.com/Dadoum/Sideloader/releases/download/1.0-pre4/sideloader-gtk-x86_64-linux-gnu.zip
+	source_x86_64 = sideloader-cli-x86_64-linux-1.0_pre4.zip::https://github.com/Dadoum/Sideloader/releases/download/1.0-pre4/sideloader-cli-x86_64-linux-gnu.zip
 	sha256sums_x86_64 = 2f22002a370e44fe2d61d520bd905175dead48e70b2dc567390e05d3357a0ae6
+	sha256sums_x86_64 = e193c02d661a5d797af4b44186c8655d078a0bfde419bdeab934c513d1a7b737
 	source_aarch64 = sideloader-gtk-aarch64-linux-1.0_pre4.zip::https://github.com/Dadoum/Sideloader/releases/download/1.0-pre4/sideloader-gtk-aarch64-linux-gnu.zip
+	source_aarch64 = sideloader-cli-aarch64-linux-1.0_pre4.zip::https://github.com/Dadoum/Sideloader/releases/download/1.0-pre4/sideloader-cli-aarch64-linux-gnu.zip
 	sha256sums_aarch64 = 7365d469af544ce21eb8553f7e37c6e0b82aaaf3884477651fa3748f2ff7392f
+	sha256sums_aarch64 = 3bd61364aee655a44a99837e2f8046d4d9f2455b401a8c32aa909b5de9e6de03
 
 pkgname = sideloader-bin
