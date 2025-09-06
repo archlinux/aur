@@ -1,7 +1,7 @@
 pkgbase = steamlink
 	pkgdesc = Steam Link client
-	pkgver = 1.3.16.287
-	pkgrel = 4
+	pkgver = 1.3.18.291
+	pkgrel = 1
 	url = https://store.steampowered.com/remoteplay#anywhere
 	arch = x86_64
 	license = LicenseRef-Steam
@@ -19,7 +19,7 @@ pkgbase = steamlink
 	depends = sdl3
 	depends = systemd-libs
 	depends = zlib
-	provides = steamlink=1.3.16.287
+	provides = steamlink=1.3.18.291
 	conflicts = steamlink-bin
 	replaces = steamlink-bin
 	options = !debug
