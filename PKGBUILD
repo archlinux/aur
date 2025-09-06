@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Benedikt Schlagberger <oorp2bzax@mozmail.com>
 
 pkgname=gcil
 _pyname=gitlabci-local
