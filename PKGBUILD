@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Cebula <tomasz.cebula@gmail.com>
 
 pkgname=nft-blackhole
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Script / Daemon to blocking IP in nftables by country and black lists'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nftables' 'python-yaml')
 backup=('etc/nft-blackhole.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tomasz-c/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a70a6f915d2e4b06421fcc270e3196f5e3270d23d4a9ec7b0e5d4fcaf781dc52')
+sha256sums=('1a5a9fd6cf95ff94541a15a4db21de837b61ee76f7d22a460c272a53c9fa14fe')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,7 @@ package() {
   # Config in yaml
   install -Dm644 nft-blackhole.conf "$pkgdir/etc/nft-blackhole.conf"
   # Systemd unit files
-  install -Dm644 nft-blackhole.service "$pkgdir/usr/lib/systemd/system/nft-blackhole.service"
-  install -Dm644 nft-blackhole-reload.service "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.service"
-  install -Dm644 nft-blackhole-reload.timer "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.timer"
+  install -Dm644 packaging/systemd/nft-blackhole.service "$pkgdir/usr/lib/systemd/system/nft-blackhole.service"
+  install -Dm644 packaging/systemd/nft-blackhole-reload.service "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.service"
+  install -Dm644 packaging/systemd/nft-blackhole-reload.timer "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.timer"
 }
