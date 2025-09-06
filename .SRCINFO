@@ -1,0 +1,18 @@
+pkgbase = kronos-cli-git
+    pkgdesc = Reliable, parallel, checksum-verified file transfers over SSH with one simple command.
+    pkgver = 0
+    pkgrel = 1
+    url = https://github.com/stella-etoile/kronos
+    arch = any
+    license = MIT
+    depends = rsync
+    depends = rclone
+    depends = openssh
+    depends = coreutils
+    makedepends = git
+    provides = kronos-cli
+    conflicts = kronos-cli
+    source = git+https://github.com/stella-etoile/kronos#branch=main
+    sha256sums = SKIP
+
+pkgname = kronos-cli-git
