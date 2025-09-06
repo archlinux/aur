@@ -8,7 +8,7 @@ url="https://github.com/GS-Works/raur"
 license=('MIT')
 depends=('rust' 'git' 'pacman' 'make' 'sudo')
 source=("https://github.com/GS-Works/raur/releases/download/1.0.0/raur-1.0.0-1.tar.xz")
-sha256sums=('cba2b9d57da03ecda2a9acee6b61f15a6df30564c777e7f18ce7f106884b7c9d')
+sha256sums=('3265ea31339e13d5ed42f2928e1a036e8c0887788d2e1f46223ba0515875f1bd')
 
 build() {
     cd "$srcdir"   # Direkt ins entpackte Verzeichnis
