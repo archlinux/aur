@@ -3,7 +3,7 @@
 _Name="IronPython"
 _basename="${_Name,,}"
 pkgver=3.4.2
-pkgrel=3
+pkgrel=4
 _pkgname="${_basename}${pkgver%%.*}"
 pkgname="${_pkgname}-bin"
 pkgdesc="Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)"
@@ -26,24 +26,14 @@ conflicts=(
   "${provides[@]}"
 )
 _pkgsrc="${_url##*/}-${pkgver}"
-noextract=("${_pkgsrc}-any.deb")
-source=("${_pkgsrc}-any.deb::${_url}/releases/download/v${pkgver}/${_basename}_${pkgver}.deb"
-        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
+source=("${_pkgsrc}-any.zip::${_url}/releases/download/v${pkgver}/${_Name}.${pkgver}.zip"
         "${_basename}.sh")
-sha256sums=('03b29046d06f9ddfc6f0b525e0f8ad3cf1e0fefd2482aaaf9b663a9bc0fa0259'
-            'df796578fceb50ec591f80e58e701fc69a1193ea9212705436de7f931a75bf03'
-            '11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049'
+sha256sums=('b12b9d336819f08132338747c53ad4741010044fa56262399a279544be50d285'
             'd0a1515f3a8cfd824cafaa171d9cef11ba0d35939fd430fb900e8bbd4cdd3a2d')
 
 prepare() {
   cd "${srcdir}"
   sed -i "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" "${_basename}.sh"
-
-  mkdir -p "${_pkgsrc}-any"
-  bsdtar -xf "${_pkgsrc}-any.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-any"
-  rm -f data.tar.*
 }
 
 package() {
@@ -59,9 +49,10 @@ package() {
     ln -vsf "${_exe}${pkgver%.*}-32"  "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}-32"
   done
 
-  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  cd "${_pkgsrc}-any/usr"
-  cp -a --no-preserve=ownership -t "${pkgdir}/usr" "lib" "share"
+  install -vd "${pkgdir}/usr/lib/${_basename}${pkgver%.*}" "${pkgdir}/usr/share/${_basename}${pkgver%.*}"
+  cp -aT --no-preserve=ownership "lib"    "${pkgdir}/usr/lib/${_basename}${pkgver%.*}"
+  cp -aT --no-preserve=ownership "net462" "${pkgdir}/usr/share/${_basename}${pkgver%.*}"
 }

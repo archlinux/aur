@@ -1,7 +1,7 @@
 pkgbase = ironpython3-bin
 	pkgdesc = Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)
 	pkgver = 3.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ironpython.net
 	arch = any
 	license = Apache-2.0
@@ -12,14 +12,9 @@ pkgbase = ironpython3-bin
 	provides = ironpython3.4
 	conflicts = ironpython3
 	conflicts = ironpython3.4
-	noextract = ironpython3-3.4.2-any.deb
-	source = ironpython3-3.4.2-any.deb::https://github.com/IronLanguages/ironpython3/releases/download/v3.4.2/ironpython_3.4.2.deb
-	source = ironpython3-3.4.2-README.md::https://github.com/IronLanguages/ironpython3/raw/refs/tags/v3.4.2/README.md
-	source = ironpython3-3.4.2-LICENSE::https://github.com/IronLanguages/ironpython3/raw/refs/tags/v3.4.2/LICENSE
+	source = ironpython3-3.4.2-any.zip::https://github.com/IronLanguages/ironpython3/releases/download/v3.4.2/IronPython.3.4.2.zip
 	source = ironpython.sh
-	sha256sums = 03b29046d06f9ddfc6f0b525e0f8ad3cf1e0fefd2482aaaf9b663a9bc0fa0259
-	sha256sums = df796578fceb50ec591f80e58e701fc69a1193ea9212705436de7f931a75bf03
-	sha256sums = 11c8b015ed198f376fd407aa23091187ee89c0f573d3df844bdd79fa02329049
+	sha256sums = b12b9d336819f08132338747c53ad4741010044fa56262399a279544be50d285
 	sha256sums = d0a1515f3a8cfd824cafaa171d9cef11ba0d35939fd430fb900e8bbd4cdd3a2d
 
 pkgname = ironpython3-bin
