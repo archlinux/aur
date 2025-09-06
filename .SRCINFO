@@ -23,6 +23,6 @@ pkgbase = tensamin-bin
 	optdepends = kwallet: Password storage backend on KDE Plasma
 	provides = tensamin
 	source_x86_64 = https://github.com/Tensamin/Frontend/releases/download/v0.1.2-desktop-apps/tensamin-linux-x64-0.1.2.deb
-	sha256sums_x86_64 = 686e0af9107296cda62f117c483149b4740074995980309264788e9f9429727b
+	sha256sums_x86_64 = 8cca2582a7b7c69e16b159174903c51f5a13ecc1e13593f28dbe25ef0ed3f8a1
 
 pkgname = tensamin-bin
