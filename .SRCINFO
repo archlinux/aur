@@ -1,7 +1,7 @@
 pkgbase = socktop
 	pkgdesc = A remote system monitor with a rich TUI interface
 	pkgver = 1.40.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasonwitty/socktop
 	arch = x86_64
 	license = MIT
