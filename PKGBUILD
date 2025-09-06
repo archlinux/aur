@@ -6,7 +6,7 @@
 pkgbase=ocaml4-noframepointers
 pkgname=(ocaml4-noframepointers ocaml4-noframepointers-compiler-libs)
 pkgver=4.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml 4.x compiler (frame-pointers only on x86_64)"
 arch=(x86_64 aarch64)
 license=(LGPL2.1 'custom: QPL-1.0')
@@ -53,7 +53,7 @@ package_ocaml4-noframepointers-compiler-libs() {
   license=('custom: QPL-1.0')
   depends=(ocaml4-noframepointers)
   provides=("ocaml4-compiler-libs=${pkgver}")
-  conflicts=("ocaml-compiler-libs")
+  conflicts=("ocaml-compiler-libs" "ocaml4-compiler-libs")
 
   cd "${srcdir}/ocaml-${pkgver}"
   make DESTDIR="${pkgdir}" install
