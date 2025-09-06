@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	mvn clean package
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk mvn clean package
 }
 
 package() {
