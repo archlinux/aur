@@ -2,6 +2,11 @@
 # Based on dislocker PKGBUILD maintained by: Rafal Malachowicz <k5hv@archlinux.info>
 # Based on dislocker PKGBUILD maintained by: mrxx <mrxx at cyberhome dot at>
 
+# Sources for patches. They may be slightly modified for improvements.
+# 0001: https://github.com/Aorimn/dislocker/pull/346/commits/337d05dc7447436539f2fb481eef0e528a000b66
+# 0002: https://github.com/Aorimn/dislocker/pull/346/commits/60d6b75cc7965dcf900b9bee769d86e1cb33c48e
+# 0003: https://github.com/Aorimn/dislocker/pull/341/commits/eeb79ba9aacb62ae37898255cf98332ac6368e31
+
 _pkgname=dislocker
 pkgname=dislocker-patched
 pkgver=0.7.3.r46.g4572dc7
