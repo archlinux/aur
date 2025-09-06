@@ -1,16 +1,17 @@
 pkgbase = limine-dracut-support
 	pkgdesc = Install kernel for the Limine bootloader.
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = jdk21-openjdk
 	makedepends = maven
 	depends = bash
 	depends = grep
 	depends = tar
-	depends = java-environment>=17
+	depends = java-runtime-headless>=17
 	depends = limine
 	depends = dracut
 	depends = efibootmgr
@@ -18,7 +19,6 @@ pkgbase = limine-dracut-support
 	optdepends = sbctl: Signs UEFI boot files for Secure Boot when enabled
 	optdepends = journalctl-desktop-notification: Sends desktop notifications when errors occur
 	provides = limine-entry-tool
-	conflicts = limine-dracut-support-git
 	conflicts = limine-entry-tool
 	backup = etc/limine-entry-tool.conf
 	source = limine-entry-tool-1.22.1.tar.gz::https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.22.1/limine-entry-tool-1.22.1.tar.gz
