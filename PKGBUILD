@@ -1,7 +1,7 @@
 pkgname=grabit
 pkgver=1.0.7
-pkgrel=1
-pkgdesc="Screenshot and file uploader for Zipline and other services"
+pkgrel=2
+pkgdesc="Screenshot, screen recording, and file uploader with OCR support for Zipline and other services"
 arch=('any')
 url="https://heliopolis.live/creations/grabit.git"
 license=('BSD')
@@ -10,11 +10,16 @@ optdepends=(
   'grim: Wayland screenshot support'
   'slurp: Wayland region selection'
   'wl-clipboard: Wayland clipboard'
+  'wf-recorder: Wayland screen recording'
   'flameshot: X11 screenshot support'
   'xclip: X11 clipboard'
+  'ffmpeg: X11 screen recording'
+  'slop: X11 region selection for recording'
   'python-pillow: image preview'
   'python-screeninfo: screen placement'
-  'spectacle: KDE screenshot support'
+  'python-pyocr: OCR text extraction'
+  'tesseract: OCR engine'
+  'spectacle: KDE screenshot and recording support'
 )
 source=("git+https://heliopolis.live/creations/grabit.git#tag=v${pkgver}")
 sha256sums=('SKIP')

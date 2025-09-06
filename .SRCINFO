@@ -1,7 +1,7 @@
 pkgbase = grabit
-	pkgdesc = Screenshot and file uploader for Zipline and other services
+	pkgdesc = Screenshot, screen recording, and file uploader with OCR support for Zipline and other services
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://heliopolis.live/creations/grabit.git
 	arch = any
 	license = BSD
@@ -15,11 +15,16 @@ pkgbase = grabit
 	optdepends = grim: Wayland screenshot support
 	optdepends = slurp: Wayland region selection
 	optdepends = wl-clipboard: Wayland clipboard
+	optdepends = wf-recorder: Wayland screen recording
 	optdepends = flameshot: X11 screenshot support
 	optdepends = xclip: X11 clipboard
+	optdepends = ffmpeg: X11 screen recording
+	optdepends = slop: X11 region selection for recording
 	optdepends = python-pillow: image preview
 	optdepends = python-screeninfo: screen placement
-	optdepends = spectacle: KDE screenshot support
+	optdepends = python-pyocr: OCR text extraction
+	optdepends = tesseract: OCR engine
+	optdepends = spectacle: KDE screenshot and recording support
 	source = git+https://heliopolis.live/creations/grabit.git#tag=v1.0.7
 	sha256sums = SKIP
 
