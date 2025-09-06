@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2123.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -56,6 +56,7 @@ build() {
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 	-DENABLE_QT_TRANSLATION=ON \
 	-DENABLE_SSE42=$_SSE \
+	-DENABLE_LTO=OFF \
 	-Wno-dev
 
 	cmake --build build
@@ -68,4 +69,5 @@ package() {
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib"
 	install -Dm644 "$srcdir/$pkgname-unified-source-$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/licenses.txt"
+	sed -i 's/Exec=azahar %f/Exec=env QT_QPA_PLATFORM=xcb azahar %f/g' "$pkgdir/usr/share/applications/org.azahar_emu.Azahar.desktop"
 }
