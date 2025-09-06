@@ -1,7 +1,7 @@
 # Maintainer: klpod221 <klpod221@gmail.com>
 pkgname=kerminal
 pkgver=1.0.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Modern Terminal with SSH, Tunneling & Cross-Device Sync"
 arch=('x86_64')
 url="https://github.com/klpod221/kerminal"
