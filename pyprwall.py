@@ -460,7 +460,7 @@ WantedBy=default.target
         
         # Spin button for interval (in minutes)
         self.interval_spin = Gtk.SpinButton()
-        self.interval_spin.set_range(1, 120)  # 1 minute to 2 hours
+        self.interval_spin.set_range(1, 1440)  # 1 minute to 24 hours
         self.interval_spin.set_increments(1, 5)
         self.interval_spin.set_value(self.cycle_interval // 60)  # Convert seconds to minutes
         self.interval_spin.connect("value-changed", self.on_interval_changed)

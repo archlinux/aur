@@ -1,7 +1,7 @@
 pkgbase = pyprwall
 	pkgdesc = A simple wallpaper manager for Hyprland that syncs wallpapers between hyprpaper and hyprlock.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reeshavmainali/pyprwall
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = pyprwall
 	depends = hyprpaper
 	source = pyprwall.py
 	source = pyprwall.desktop
-	sha256sums = 3a8a2e7061ed4933973e9695716bd50e10d33bf4fc95562cf39aab2e495b7d6c
+	sha256sums = 6ccbf55bfbdbdba029aa3efccddb96e8763444742fdb1eef0adb7a68c05f9b00
 	sha256sums = 3bccc76b438a8cbc9427789c19dabfd39c380424a74fbcac9df063a992308787
 
 pkgname = pyprwall
