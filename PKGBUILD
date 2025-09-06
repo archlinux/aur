@@ -8,12 +8,13 @@ url="https://gitlab.com/Zesko/limine-entry-tool"
 source=(git+$url.git)
 license=("GPL3")
 provides=('limine-entry-tool')
-_java_version=17
+_jre_version=17
+_jdk_version=21
 depends=(
 	'bash'
 	'grep'
 	'tar'
-	'java-runtime-headless>='${_java_version}
+	'java-runtime-headless>='${_jre_version}
 	'limine'
 	'dracut'
 	'efibootmgr')
@@ -22,7 +23,7 @@ optdepends=(
 	'sbctl: Signs UEFI boot files for Secure Boot when enabled'
 	'journalctl-desktop-notification: Sends desktop notifications when errors occur'
 )
-makedepends=('git' 'java-environment=21' 'maven')
+makedepends=('git' 'jdk21-openjdk' 'maven')
 sha256sums=('SKIP')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
@@ -34,35 +35,15 @@ pkgver() {
 
 prepare() {
 	unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
-	local java_version
-
-	if ! command -v javac >/dev/null 2>&1; then
-		echo "Error: JDK not found. You are running with a JRE only." >&2
-		echo "Please install a JDK (e.g. 'jdk21-openjdk') and set it with:" >&2
-		echo "  sudo archlinux-java set java-21-openjdk"
-		return 1
-	fi
-
-	java_version=$(javac -version 2>&1 | awk '{print $2}' | cut -d'.' -f1)
-
-	if [[ -z "$java_version" ]]; then
-		echo "Error: Unable to determine the installed JDK version." >&2
-		return 1
-	fi
-
-	if [[ "$java_version" -lt ${_java_version} ]]; then
-		echo "Error: JDK ${_java_version} or newer is required." >&2
-		echo "Check with: 'archlinux-java status'" >&2
-		echo "Please install a newer JDK (e.g. 'jdk21-openjdk') and set it with:" >&2
-		echo "  sudo archlinux-java set java-21-openjdk"
+	if ! command -v /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac >/dev/null 2>&1; then
+		echo "Error: /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac not found." >&2
 		return 1
 	fi
 }
 
 build() {
 	cd "$srcdir"/limine-entry-tool
-	mvn clean package
-
+	JAVA_HOME=/usr/lib/jvm/java-21-openjdk mvn clean package
 }
 
 package() {

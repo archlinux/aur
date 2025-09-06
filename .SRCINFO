@@ -6,7 +6,7 @@ pkgbase = limine-dracut-support-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = java-environment=21
+	makedepends = jdk21-openjdk
 	makedepends = maven
 	depends = bash
 	depends = grep
