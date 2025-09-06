@@ -1,0 +1,85 @@
+--- a/INSTALL.md
++++ b/INSTALL.md
+@@ -10,7 +10,7 @@ You need:
+ - cmake (at least version 2.6);
+ - make (or gmake, for FreeBSD);
+ - pkg-config;
+-- Headers for FUSE;
++- Headers for FUSE3;
+ - Headers for mbedTLS (previously known as PolarSSL);
+ - A partition encrypted with BitLocker, from Windows Vista, 7 or 8.
+ 
+@@ -46,7 +46,7 @@ For FreeBSD:
+ 
+ For OSX: Follow the instructions in the next section.
+ 
+-Note that the code expects at least FUSE 2.6.
++Note that the code expects at least FUSE 3.14.
+ 
+ For macOS:
+ 
+--- a/cmake/FindFUSE.cmake
++++ b/cmake/FindFUSE.cmake
+@@ -10,6 +10,6 @@ IF (FUSE_INCLUDE_DIRS)
+ ENDIF (FUSE_INCLUDE_DIRS)
+ 
+ FIND_PACKAGE (PkgConfig REQUIRED)
+-pkg_check_modules (FUSE REQUIRED fuse)
++pkg_check_modules (FUSE REQUIRED fuse3)
+ 
+ mark_as_advanced (FUSE_INCLUDE_DIRS FUSE_LIBRARIES FUSE_LIBRARY_DIRS)
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -223,7 +223,7 @@ if(FUSE_FOUND)
+ 	set (BIN_FUSE ${PROJECT_NAME}-fuse)
+ 	add_executable (${BIN_FUSE} ${BIN_FUSE}.c)
+ 	target_link_libraries (${BIN_FUSE} ${FUSE_LIBBRARIES} ${PROJECT_NAME})
+-	set_target_properties (${BIN_FUSE} PROPERTIES COMPILE_DEFINITIONS FUSE_USE_VERSION=26)
++	set_target_properties (${BIN_FUSE} PROPERTIES COMPILE_DEFINITIONS FUSE_USE_VERSION=314)
+ 	set_target_properties (${BIN_FUSE} PROPERTIES LINK_FLAGS "-pie -fPIE")
+ 	add_custom_command (TARGET ${BIN_FUSE} POST_BUILD
+ 		COMMAND mkdir -p ${CMAKE_BINARY_DIR}/man/
+
+--- a/src/dislocker-fuse.c
++++ b/src/dislocker-fuse.c
+@@ -54,8 +54,10 @@ dis_context_t dis_ctx;
+ /**
+  * Stubs used for FUSE operations.
+  */
+-static int fs_getattr(const char *path, struct stat *stbuf)
++static int fs_getattr(const char *path, struct stat *stbuf,
++                      struct fuse_file_info *fi)
+ {
++	(void) fi;
+ 	int res = 0;
+ 
+ 	if(!path || !stbuf)
+@@ -81,11 +83,13 @@ static int fs_getattr(const char *path, struct stat *stbuf)
+ }
+ 
+ static int fs_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+-                      off_t offset, struct fuse_file_info *fi)
++                      off_t offset, struct fuse_file_info *fi,
++                      enum fuse_readdir_flags flags)
+ {
+ 	/* Both variables aren't used here */
+ 	(void) offset;
+ 	(void) fi;
++	(void) flags;
+ 
+ 	if(!path || !buf || !filler)
+ 		return -EINVAL;
+@@ -93,9 +97,9 @@ static int fs_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+ 	if(strcmp(path, "/") != 0)
+ 		return -ENOENT;
+ 
+-	filler(buf, ".", NULL, 0);
+-	filler(buf, "..", NULL, 0);
+-	filler(buf, NTFS_FILENAME, NULL, 0);
++	filler(buf, ".", NULL, 0, 0);
++	filler(buf, "..", NULL, 0, 0);
++	filler(buf, NTFS_FILENAME, NULL, 0, 0);
+ 
+ 	return 0;
+ }

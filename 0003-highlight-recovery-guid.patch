@@ -30,7 +30,7 @@
  void print_datum_vmk(DIS_LOGS level, void* vdatum)
  {
  	datum_vmk_t* datum = (datum_vmk_t*) vdatum;
-@@ -433,7 +456,14 @@ void print_datum_vmk(DIS_LOGS level, void* vdatum)
+@@ -433,7 +456,15 @@ void print_datum_vmk(DIS_LOGS level, void* vdatum)
  
  	format_guid(datum->guid, extkey_id);
  
