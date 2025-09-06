@@ -33,7 +33,7 @@
 # - Please ensure all these tools are installed before using the script.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
