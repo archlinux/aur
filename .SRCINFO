@@ -1,0 +1,19 @@
+pkgbase = zip++
+	pkgdesc = A fully featured ZIP archiver with zlib and LZMA support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://example.com/zip++
+	arch = x86_64
+	groups = archivers
+	license = MIT
+	makedepends = clang
+	makedepends = make
+	makedepends = man-pages
+	depends = zlib
+	depends = xz
+	provides = zip-archiver
+	source = https://github.com/GS-Works/zipplusplus/releases/download/1.0.0/zip++-1.0.0.tar.xz
+	md5sums = 290c9e9b91acaa73954c45cc4cb8414a
+	sha256sums = 07d788432ff699b344615ddb4cd0ee5154f821fa9803718893852fe6867ac71e
+
+pkgname = zip++
