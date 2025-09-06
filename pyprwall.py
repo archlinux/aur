@@ -22,6 +22,102 @@ MAX_CHILDREN_PER_LINE = 5
 LABEL_MAX_CHARS = 30
 
 class WallpaperManager(Adw.Application):
+    def cycle_to_next_wallpaper(self):
+        """Cycle to the next wallpaper"""
+        if not hasattr(self, 'cycling_wallpapers') or not self.cycling_wallpapers:
+            return
+        # Move to next wallpaper
+        self.current_index = (self.current_index + 1) % len(self.cycling_wallpapers)
+        # If we completed a full cycle in random mode, reshuffle
+        if self.is_random_order and self.current_index == 0:
+            random.shuffle(self.cycling_wallpapers)
+        # Set the new wallpaper
+        next_wallpaper = self.cycling_wallpapers[self.current_index]
+        self.current_wallpaper = next_wallpaper
+        # Multi-monitor: set wallpaper for all monitors
+        for monitor in self.monitors:
+            self.set_wallpaper_for_monitor(monitor, next_wallpaper)
+        # Time-of-day: override if set
+        tod = self.get_time_of_day()
+        tod_wallpaper = self.time_of_day_wallpapers.get(tod)
+        if tod_wallpaper:
+            self.current_wallpaper = tod_wallpaper
+            for monitor in self.monitors:
+                self.set_wallpaper_for_monitor(monitor, tod_wallpaper)
+        # Apply the wallpaper
+        try:
+            self.update_hyprpaper_config()
+            self.apply_hyprpaper_via_ipc()
+            self.apply_hyprlock_wallpaper()
+            subprocess.run(["pkill", "hyprlock"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if not self.daemon_mode:
+                self.update_ui_selection()
+            wallpaper_name = os.path.basename(next_wallpaper)
+            if not self.daemon_mode:
+                self.status_label.set_label(f"Cycled to: {wallpaper_name}")
+                self.show_notification(f"Wallpaper changed to {wallpaper_name}")
+            else:
+                print(f"Cycled to: {wallpaper_name}")
+        except Exception as e:
+            error_msg = f"Error cycling wallpaper: {e}"
+            if not self.daemon_mode:
+                self.status_label.set_label(error_msg)
+            else:
+                print(error_msg)
+        self.update_cycle_ui()
+    def __init__(self, **kwargs):
+        # ...existing code...
+        self._restart_timer = None  # For debounce
+        self._restart_delay = 0.5  # seconds
+        self._pending_restart = False
+        self._last_restart_error = None
+        # ...existing code...
+    def reload_daemon(self):
+        """Send SIGHUP to the daemon to reload config, or restart if not running."""
+        import signal
+        import psutil
+        # Find the pyprwall daemon process
+        try:
+            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                if 'pyprwall.py' in ' '.join(proc.info.get('cmdline', [])) and '--cycle-daemon' in proc.info.get('cmdline', []):
+                    os.kill(proc.info['pid'], signal.SIGHUP)
+                    self.show_notification("PyprWall daemon reloaded (SIGHUP)")
+                    return True
+        except Exception as e:
+            print(f"Error sending SIGHUP: {e}")
+        # If not found, fallback to restart
+        return self.restart_systemd_service()
+
+    def restart_systemd_service(self):
+        """Restart the systemd service, with error handling and UI feedback."""
+        try:
+            subprocess.run(["systemctl", "--user", "restart", "pyprwall.service"], check=True)
+            self._last_restart_error = None
+            self.show_notification("PyprWall cycling service restarted")
+            if hasattr(self, 'cycle_status_label'):
+                self.cycle_status_label.set_label("Cycling daemon restarted")
+            return True
+        except subprocess.CalledProcessError as e:
+            msg = f"Failed to restart cycling service: {e}"
+            self._last_restart_error = msg
+            print(msg)
+            if hasattr(self, 'cycle_status_label'):
+                self.cycle_status_label.set_label(msg)
+            self.show_notification(msg)
+            return False
+
+    def debounce_restart_service(self):
+        """Debounce multiple rapid restarts."""
+        import threading
+        if self._restart_timer:
+            self._restart_timer.cancel()
+        self._pending_restart = True
+        def do_restart():
+            self._pending_restart = False
+            self.reload_daemon()
+        self._restart_timer = threading.Timer(self._restart_delay, do_restart)
+        self._restart_timer.daemon = True
+        self._restart_timer.start()
     import threading
     from gi.repository import GLib
     def __init__(self, **kwargs):
@@ -416,16 +512,30 @@ WantedBy=default.target
         """Handle interval spin button changes"""
         self.cycle_interval = int(spin_button.get_value()) * 60  # Convert minutes to seconds
         self.save_cycle_config()
-        
         # If currently cycling, restart with new interval
         if self.is_cycling:
             self.stop_cycling()
             self.start_cycling()
+        # Debounced reload/restart
+        service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
+        if os.path.exists(service_path):
+            self.debounce_restart_service()
 
     def on_random_toggled(self, check_button):
         """Handle random order checkbox toggle"""
         self.is_random_order = check_button.get_active()
         self.save_cycle_config()
+        # Debounced reload/restart
+        service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
+        if os.path.exists(service_path):
+            self.debounce_restart_service()
+    def on_reload_daemon_clicked(self, button):
+        """Manual reload/restart daemon button callback."""
+        service_path = os.path.expanduser("~/.config/systemd/user/pyprwall.service")
+        if os.path.exists(service_path):
+            self.reload_daemon()
+        else:
+            self.show_notification("Cycling service is not enabled.")
 
     def on_cycle_button_clicked(self, button):
         """Handle start/stop cycling button"""
@@ -569,90 +679,112 @@ WantedBy=default.target
         self.save_cycle_state()
         self.update_cycle_ui()
 
-    def schedule_next_cycle(self):
-        """Schedule the next wallpaper change"""
-        if self.cycle_timeout_id:
-            GLib.source_remove(self.cycle_timeout_id)
-        self.cycle_countdown = self.cycle_interval
-        self.cycle_timeout_id = GLib.timeout_add_seconds(1, self.on_cycle_countdown)
+    def create_cycling_controls(self, parent_box):
+        """Create the cycling controls UI"""
+        # Create a frame for cycling controls
+        cycling_frame = Gtk.Frame()
+        cycling_frame.set_label("Automatic Wallpaper Cycling")
+        cycling_frame.set_margin_top(10)
+        cycling_frame.set_margin_bottom(10)
+        cycling_frame.set_margin_start(10)
+        cycling_frame.set_margin_end(10)
 
-    def on_cycle_countdown(self):
-        if not self.is_cycling or self.is_paused:
-            return True
-        self.cycle_countdown -= 1
-        self.update_cycle_ui()
-        if self.cycle_countdown <= 0:
-            self.on_cycle_timeout()
-            self.cycle_countdown = self.cycle_interval
-        return True
+        # Create main cycling box
+        cycling_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        cycling_box.set_margin_top(10)
+        cycling_box.set_margin_bottom(10)
+        cycling_box.set_margin_start(10)
+        cycling_box.set_margin_end(10)
 
-    def on_cycle_timeout(self):
-        """Handle the cycling timeout"""
-        if not self.is_cycling or self.is_paused:
-            return False  # Stop the timeout
-        
-        self.cycle_to_next_wallpaper()
-        return True  # Continue the timeout
+        # First row: interval controls
+        interval_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        interval_box.set_halign(Gtk.Align.CENTER)
 
-    def cycle_to_next_wallpaper(self):
-        """Cycle to the next wallpaper"""
-        if not self.cycling_wallpapers:
-            return
-        
-        # Move to next wallpaper
-        self.current_index = (self.current_index + 1) % len(self.cycling_wallpapers)
-        
-        # If we completed a full cycle in random mode, reshuffle
-        if self.is_random_order and self.current_index == 0:
-            random.shuffle(self.cycling_wallpapers)
-        
-        # Set the new wallpaper
-        next_wallpaper = self.cycling_wallpapers[self.current_index]
-        self.current_wallpaper = next_wallpaper
+        interval_label = Gtk.Label(label="Change wallpaper every:")
+        interval_label.set_tooltip_text("Changing this will restart the cycling daemon.")
+        interval_box.append(interval_label)
 
-        # Multi-monitor: set wallpaper for all monitors
-        for monitor in self.monitors:
-            self.set_wallpaper_for_monitor(monitor, next_wallpaper)
+        # Spin button for interval (in minutes)
+        self.interval_spin = Gtk.SpinButton()
+        self.interval_spin.set_range(1, 120)  # 1 minute to 2 hours
+        self.interval_spin.set_increments(1, 5)
+        self.interval_spin.set_value(self.cycle_interval // 60)  # Convert seconds to minutes
+        self.interval_spin.connect("value-changed", self.on_interval_changed)
+        self.interval_spin.set_tooltip_text("Changing this will restart the cycling daemon.")
+        interval_box.append(self.interval_spin)
 
-        # Time-of-day: override if set
-        tod = self.get_time_of_day()
-        tod_wallpaper = self.time_of_day_wallpapers.get(tod)
-        if tod_wallpaper:
-            self.current_wallpaper = tod_wallpaper
-            for monitor in self.monitors:
-                self.set_wallpaper_for_monitor(monitor, tod_wallpaper)
-        
-        # Apply the wallpaper
-        try:
-            # Always update the hyprpaper config first for persistence
-            self.update_hyprpaper_config()
-            
-            # Then, try to apply via IPC for an immediate change
-            self.apply_hyprpaper_via_ipc()
+        minutes_label = Gtk.Label(label="minutes")
+        interval_box.append(minutes_label)
 
-            # Always update the hyprlock config for persistence and then restart hyprlock
-            self.apply_hyprlock_wallpaper()
-            subprocess.run(["pkill", "hyprlock"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            
-            # Update UI selection to match current wallpaper (only if not in daemon mode)
-            if not self.daemon_mode:
-                self.update_ui_selection()
-            
-            # Update status
-            wallpaper_name = os.path.basename(next_wallpaper)
-            if not self.daemon_mode:
-                self.status_label.set_label(f"Cycled to: {wallpaper_name}")
-                self.show_notification(f"Wallpaper changed to {wallpaper_name}")
-            else:
-                print(f"Cycled to: {wallpaper_name}")
-                
-        except Exception as e:
-            error_msg = f"Error cycling wallpaper: {e}"
-            if not self.daemon_mode:
-                self.status_label.set_label(error_msg)
-            else:
-                print(error_msg)
-        self.update_cycle_ui()
+        cycling_box.append(interval_box)
+
+        # Second row: options
+        options_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+        options_box.set_halign(Gtk.Align.CENTER)
+
+        # Random order checkbox
+        self.random_check = Gtk.CheckButton(label="Random order")
+        self.random_check.set_active(self.is_random_order)
+        self.random_check.connect("toggled", self.on_random_toggled)
+        self.random_check.set_tooltip_text("Changing this will restart the cycling daemon.")
+        options_box.append(self.random_check)
+
+        cycling_box.append(options_box)
+
+        # Third row: control buttons
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        button_box.set_halign(Gtk.Align.CENTER)
+
+        # Start/Stop cycling button
+        self.cycle_button = Gtk.Button(label="Start Cycling")
+        self.cycle_button.connect("clicked", self.on_cycle_button_clicked)
+        self.cycle_button.set_sensitive(False)  # Will be enabled when wallpapers are loaded
+        button_box.append(self.cycle_button)
+
+        # Next wallpaper button (for manual control during cycling)
+        self.next_button = Gtk.Button(label="Next Wallpaper")
+        self.next_button.connect("clicked", self.on_next_wallpaper_clicked)
+        self.next_button.set_sensitive(False)
+        button_box.append(self.next_button)
+
+        # Pause/Resume cycling button
+        self.pause_button = Gtk.Button(label="Pause Cycling")
+        self.pause_button.connect("clicked", self.on_pause_button_clicked)
+        self.pause_button.set_sensitive(False)
+        button_box.append(self.pause_button)
+
+        cycling_box.append(button_box)
+
+        # Systemd service controls
+        systemd_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        systemd_box.set_halign(Gtk.Align.CENTER)
+
+        self.systemd_button = Gtk.Button(label="Enable Auto-Start")
+        self.systemd_button.connect("clicked", self.on_systemd_button_clicked)
+        systemd_box.append(self.systemd_button)
+
+        # Manual reload/restart button
+        self.reload_button = Gtk.Button(label="Reload Daemon")
+        self.reload_button.set_tooltip_text("Manually reload or restart the cycling daemon if needed.")
+        self.reload_button.connect("clicked", self.on_reload_daemon_clicked)
+        systemd_box.append(self.reload_button)
+
+        cycling_box.append(systemd_box)
+
+        # Status for cycling
+        self.cycle_status_label = Gtk.Label(label="")
+        self.cycle_status_label.set_margin_top(5)
+        cycling_box.append(self.cycle_status_label)
+
+        # Help/documentation label
+        doc_label = Gtk.Label(label="Changing cycling settings will automatically restart the background daemon.")
+        doc_label.set_wrap(True)
+        doc_label.set_max_width_chars(60)
+        doc_label.set_margin_top(5)
+        cycling_box.append(doc_label)
+
+        cycling_frame.set_child(cycling_box)
+        parent_box.append(cycling_frame)
 
     def set_wallpaper_for_monitor(self, monitor, wallpaper):
         # For hyprpaper, use monitor-specific wallpaper config
