@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r422.97abea7
+pkgver=r430.ce500e1
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
 arch=('x86_64')
@@ -39,11 +39,12 @@ prepare() {
 		echo "Error: /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac not found." >&2
 		return 1
 	fi
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
 }
 
 build() {
 	cd "$srcdir"/limine-entry-tool
-	JAVA_HOME=/usr/lib/jvm/java-21-openjdk mvn clean package
+	mvn clean package
 }
 
 package() {
