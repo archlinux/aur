@@ -33,7 +33,7 @@
 # - Please ensure all these tools are installed before using the script.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -51,5 +51,5 @@ source=("tkg_install.sh::https://raw.githubusercontent.com/damachine/tkginstalle
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "$srcdir/tkg_install.sh" "$pkgdir/opt/tkginstaller/tkg_install.sh"
+    install -Dm755 "$srcdir/tkg_install.sh" "$pkgdir/usr/bin/tkg_install"
 }
