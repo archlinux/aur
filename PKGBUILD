@@ -12,7 +12,7 @@
 _pkgname=dislocker
 pkgname=dislocker-patched
 pkgver=0.7.3.r46.g4572dc7
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. Includes some patches from Issues and PRs from official Aorimn/dislocker"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
