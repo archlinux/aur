@@ -3,7 +3,6 @@ pkgbase = signal-desktop-beta-bin
 	pkgver = 7.70.0beta.1
 	pkgrel = 1
 	url = https://signal.org
-	install = signal-desktop-beta-bin.install
 	arch = x86_64
 	license = GPL3
 	depends = libnotify
