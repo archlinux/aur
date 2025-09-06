@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b6396
+pkgver=b6397
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -36,7 +36,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('53df2e1479c9d6de5c52db2d970a04bc316a8b4c70b82639e48630f8161105c7')
+sha256sums=('0cd4f35881c57f0de35e3d42c07a792c2c406477b2ef79ed8e94d151e1fb1704')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
@@ -67,9 +67,25 @@ build() {
     -DGGML_HIP_GRAPHS=ON
     -DGGML_HIP_ROCWMMA_FATTN=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
-    -DGGML_NATIVE=ON
     -Wno-dev
   )
+
+  # 检查是否在 CI 环境中构建
+  if [ -n "$CI" ] && [ "$CI" != 0 ]; then
+    msg2 "CI = $CI detected, building universal package"
+    # 启用通用构建
+    _cmake_options+=(
+      -DGGML_BACKEND_DL=ON
+      -DGGML_CPU_ALL_VARIANTS=ON
+      -DGGML_NATIVE=OFF
+    )
+  else
+    # 本地构建, 针对当前设备优化
+    _cmake_options+=(
+      -DGGML_NATIVE=ON
+    )
+  fi
+
   cmake "${_cmake_options[@]}"
   cmake --build build -- -j $(nproc)
 }
