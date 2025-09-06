@@ -1,7 +1,7 @@
 # Maintainer: Talha Altinel <talhaaltinel@hotmail.com>
 
 pkgname=keyboard-app
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cross-platform on-screen keyboard for different languages"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mrwormhole/keyboard-app/archive/v${pkgver}.tar.gz")
-sha256sums=('d22b0eda5866d3f50dbb912a7f983d0557304be37c6761571bd19b2f513f38fa')
-_commit=('439ab6def5db75098e1d3df64359de983677c325')
+sha256sums=('5f19e9e9f3dcc6f6d83e91fdef9e8e06f09f85df5171d24679fa4a8447bba867')
+_commit=('f2aef164a53a3aadea47a15362527c9138cec456')
 
 build() {
   cd "$pkgname-$pkgver"
