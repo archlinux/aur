@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=fjira
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 arch=('x86_64')
