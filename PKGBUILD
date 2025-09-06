@@ -28,7 +28,7 @@ build() {
     -e "s|^Icon=.*|Icon=eden-preview|" \
     -e "s|^TryExec=.*|TryExec=eden-preview|" \
     -e "s|^Name=.*|Name=Eden Preview|" \
-    "squashfs-root/org.eden_emu.eden.desktop"
+    "squashfs-root/dev.eden_emu.eden.desktop"
 }
 
 package() {
@@ -58,11 +58,11 @@ EOF
   install -Dm644 eden-preview.xml "${pkgdir}/usr/share/mime/packages/eden-preview.xml"
 
   install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-  install -Dm644 "squashfs-root/org.eden_emu.eden.desktop" \
+  install -Dm644 "squashfs-root/dev.eden_emu.eden.desktop" \
     "${pkgdir}/usr/share/applications/eden-preview.desktop"
 
   # copy icon
-  install -Dm644 "squashfs-root/org.eden_emu.eden.svg" \
+  install -Dm644 "squashfs-root/dev.eden_emu.eden.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/eden-preview.svg"
 
   install -dm755 "${pkgdir}/usr/bin"
