@@ -3,8 +3,8 @@
 _name=nvidia_gpu_prometheus_exporter
 _pkgname=prometheus-nvidia-gpu-exporter
 pkgname=prometheus-nvidia-gpu-exporter-git
-pkgver=0.2.0.r0.g2ee9a44
-pkgrel=5
+pkgver=0.2.1.r1.g4906510
+pkgrel=1
 pkgdesc="Prometheus exporter for NVIDIA GPU metrics"
 arch=(x86_64)
 url="https://github.com/plazonic/nvidia_gpu_prometheus_exporter"
