@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/adworacz/zsmooth'
 license=('MIT')
 depends=('vapoursynth')
-makedepends=('zig-bin')
+makedepends=('zig')
 source=("https://github.com/adworacz/zsmooth/archive/refs/tags/0.12.tar.gz")
 sha256sums=('87a0375541aca05eadfd1ac0dd90207110173e08a0a036f5119d63af577a8e2d')
 
