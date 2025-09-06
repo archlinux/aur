@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!python2_mtime_workaround.patch
+!stackless2_no_common.patch
