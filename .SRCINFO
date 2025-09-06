@@ -1,6 +1,6 @@
 pkgbase = piximan-bin
 	pkgdesc = Pixiv batch downloader and local collection viewer
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/fekoneko/piximan
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = piximan-bin
 	license = GPL-3.0-only
 	provides = piximan
 	conflicts = piximan
-	source_x86_64 = piximan-bin-0.11.2.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.2/piximan_v0.11.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9dcd04f573ac11c2067c7089923dd6d5d09667cd9c5e06ae6afefe146e96b9e8
-	source_i686 = piximan-bin-0.11.2.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.2/piximan_v0.11.2_linux_386.tar.gz
-	sha256sums_i686 = 9dcd04f573ac11c2067c7089923dd6d5d09667cd9c5e06ae6afefe146e96b9e8
-	source_aarch64 = piximan-bin-0.11.2.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.2/piximan_v0.11.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9dcd04f573ac11c2067c7089923dd6d5d09667cd9c5e06ae6afefe146e96b9e8
+	source_x86_64 = piximan-bin-0.11.3.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.3/piximan_v0.11.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 84e008dc25d66962aaf123e463eb545f911ef1ed62a3875feec402f8fbbad5cc
+	source_i686 = piximan-bin-0.11.3.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.3/piximan_v0.11.3_linux_386.tar.gz
+	sha256sums_i686 = 84e008dc25d66962aaf123e463eb545f911ef1ed62a3875feec402f8fbbad5cc
+	source_aarch64 = piximan-bin-0.11.3.tar.gz::https://github.com/fekoneko/piximan/releases/download/v0.11.3/piximan_v0.11.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 84e008dc25d66962aaf123e463eb545f911ef1ed62a3875feec402f8fbbad5cc
 
 pkgname = piximan-bin

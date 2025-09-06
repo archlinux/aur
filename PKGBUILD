@@ -1,7 +1,7 @@
 # Maintainer: fekoneko <https://github.com/fekoneko>
 
 pkgname='piximan-bin'
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='Pixiv batch downloader and local collection viewer'
 arch=('x86_64' 'i686' 'aarch64')
@@ -15,9 +15,9 @@ _srcurlprefix="https://github.com/fekoneko/piximan/releases/download/v$pkgver/pi
 source_x86_64=("$_srcname::${_srcurlprefix}_linux_amd64.tar.gz")
 source_i686=("$_srcname::${_srcurlprefix}_linux_386.tar.gz")
 source_aarch64=("$_srcname::${_srcurlprefix}_linux_arm64.tar.gz")
-sha256sums_x86_64=('9dcd04f573ac11c2067c7089923dd6d5d09667cd9c5e06ae6afefe146e96b9e8')
-sha256sums_i686=('9dcd04f573ac11c2067c7089923dd6d5d09667cd9c5e06ae6afefe146e96b9e8')
-sha256sums_aarch64=('9dcd04f573ac11c2067c7089923dd6d5d09667cd9c5e06ae6afefe146e96b9e8')
+sha256sums_x86_64=('84e008dc25d66962aaf123e463eb545f911ef1ed62a3875feec402f8fbbad5cc')
+sha256sums_i686=('84e008dc25d66962aaf123e463eb545f911ef1ed62a3875feec402f8fbbad5cc')
+sha256sums_aarch64=('84e008dc25d66962aaf123e463eb545f911ef1ed62a3875feec402f8fbbad5cc')
 
 package() {
   install -Dm755 'piximan' "$pkgdir/usr/bin/piximan"
