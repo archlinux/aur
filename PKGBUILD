@@ -97,7 +97,6 @@ build() {
     cp -a etc/systemd/coolerdash.service "$srcdir/systemd/coolerdash.service"
     mkdir -p "$srcdir/man"
     cp -a man/coolerdash.1 "$srcdir/man/coolerdash.1"
-    echo "================================================================"
 }
 
 check() {
