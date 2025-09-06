@@ -35,6 +35,7 @@ pkgver() {
 
 prepare() {
 	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
 	if ! command -v ${JAVA_HOME}/bin/javac >/dev/null 2>&1; then
 		echo "Error: ${JAVA_HOME}/bin/javac not found." >&2
 		return 1
