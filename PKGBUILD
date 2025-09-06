@@ -5,10 +5,9 @@
 #     Cf.: https://newreleases.io/project/github/aws/aws-lc/release/v1.57.0
 # 2.) Three binaries are installed into /usr/bin/aws-lc so that 'openssl' does not interfere
 #     with the binary from the package 'openssl'. Check with 'which openssl'.
-# 3.) FIPS does work now, see below. Reported upstream.
 
 pkgname=aws-lc
-pkgver=1.59.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='general-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -31,9 +30,23 @@ optdepends=(
   'clang: Alternative for gcc (gcc preferred by upstream)'
 )
 arch=('x86_64')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b094b3f777888559d88b8ce56f29f04c3e0d633bb2664184a65a2d561104b1a4304f7e3e943f6d10ec2a1682541e1643ad124c725273f4d3d7f2f527286246b7')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "Patch01-disable-fortify-sources-jitterentropy.patch"
+)
+b2sums=('fd49992965523eff1b7c14c70c77e4ac80e55d5c53aa9f5da0171b3e450c8607f7358f162ff2ddd3b2969b68c625f651096e9a19bd8337c9c134f1c8a4484258'
+        '84c1e992d09720f77ee34ec951a6a0fe12d060431c22b8d2f567c888147c54472ce6b394d3f63c5e89eaa7d44c2625ed9de74bbb112ff4f8d7694fdb9b80020b')
 options=(!strip !lto)
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+    
+    # 'jitterentropy' has to be built wiht '-O0' (no optimisation). As a
+    # result, the build warns that it cannot apply 'FORTIFY_SOURCES'. With
+    # the patch we make sure that warning is just a warning, not a
+    # build-breaking error.
+    patch -p1 -i ../Patch01-disable-fortify-sources-jitterentropy.patch
+}
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -47,19 +60,18 @@ build() {
     # Remove -no-plt flag from CFLAGS and CXXFLAGS for building with FIPS support:
     CFLAGS="${CFLAGS//-fno-plt/}"
     CXXFLAGS="${CXXFLAGS//-fno-plt/}"
+
     export CFLAGS CXXFLAGS
 
     # CMake does not respect ASFLAGs set in /etc/makepkg.conf, so we have to set CMAKE_ASM_FLAGS here.
     cmake -B build \
 	  -GNinja \
 	  -DCMAKE_BUILD_TYPE=RelWithAssert \
-      -DFIPS=ON \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_INSTALL_SBINDIR:PATH=bin/aws-lc \
 	  -DCMAKE_INSTALL_BINDIR:PATH=bin/aws-lc \
 	  -DCMAKE_INSTALL_LIBDIR:PATH=lib/aws-lc \
 	  -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/aws-lc \
-	  -DCMAKE_INSTALL_RPATH=/usr/lib/aws-lc \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CXXFLAGS"
 
