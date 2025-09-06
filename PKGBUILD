@@ -12,7 +12,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/ocaml/num"
 license=(LGPL-2.1-only)
 depends=(ocaml4)
-makedepends=(ocaml4-findlib-noframepointers)
+makedepends=(ocaml4-findlib)
 provides=("ocaml4-num=${pkgver}")
 conflicts=("ocaml4-num" "ocaml-num")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ocaml/num/archive/v${pkgver}.tar.gz")

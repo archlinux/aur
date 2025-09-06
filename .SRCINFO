@@ -6,7 +6,7 @@ pkgbase = ocaml4-num-noframepointers
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-only
-	makedepends = ocaml4-findlib-noframepointers
+	makedepends = ocaml4-findlib
 	depends = ocaml4
 	provides = ocaml4-num=1.4
 	conflicts = ocaml4-num
