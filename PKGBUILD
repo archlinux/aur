@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Library for building model order reduction applications with Python"
 arch=(any)
 url="https://${_base}.org"
-license=(BSD)
+license=(BSD-2-Clause BSD-3-Clause)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 depends=(python-diskcache python-matplotlib python-packaging python-pillow
   python-pygments python-qtpy python-scipy python-threadpoolctl python-typer)
