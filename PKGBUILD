@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 optdepends=('steam: for automatic Steam directory detection')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rahatzamancse/protongamesaves/archive/v$pkgver.tar.gz")
-sha256sums=('81e656723a0284be5e16ed5d734e09fb21ee33eb651d50ff2f256109472e7ced')
+sha256sums=('c88a60da7659a681a0cbaf3f3c5abc5334ac6888489c4d2c62442cb02bb5a999')
 backup=()
 options=()
 
