@@ -1,0 +1,18 @@
+pkgbase = metaclean-git
+	pkgdesc = App to clean metadata from multiple images
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/simon0302010/metaclean
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = exiftool
+	source = metaclean::git+https://github.com/simon0302010/metaclean.git
+	sha256sums = SKIP
+
+pkgname = metaclean-git
