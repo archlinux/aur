@@ -1,7 +1,7 @@
 # Maintainer: Eran Sandler <eran@sandler.co.il>
 pkgname=hyprmon-bin
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-monitor profile manager for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/erans/hyprmon"
