@@ -1,7 +1,7 @@
 # Maintainer: simon0302010 <simon0302010@gmail.com>
 pkgname=metaclean-git
 _pkgname=metaclean
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="App to clean metadata from multiple images"
 arch=('any')
@@ -25,4 +25,9 @@ build() {
 package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 metaclean.desktop "$pkgdir/usr/share/applications/metaclean.desktop"
+  install -Dm644 metaclean/assets/icon128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/metaclean.png"
+  install -Dm644 metaclean/assets/icon256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/metaclean.png"
+  install -Dm644 metaclean/assets/icon512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/metaclean.png"
 }
