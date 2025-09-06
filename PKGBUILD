@@ -3,29 +3,20 @@
 # Contributor: envolution
 
 pkgname=harsh-bin
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="CLI habit tracking for geeks"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/wakatara/harsh"
 license=('MIT')
 provides=('harsh')
 conflicts=('harsh')
-
-case "$CARCH" in
-    x86_64) _pkgarch="x86_64"
-sha256sums=('36a003f9fd9fb52a8dcb8935f7aa9caeca3ae79572b8176745a69089d715da1a')
-           ;;
-    armv64h) _pkgarch="arm64"
-           ;;
-    i686) _pkgarch="i386"
-           ;;
-esac
-
-source=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/harsh_Linux_$_pkgarch.tar.gz")
+sha256sums_x86_64=('796e9dabacc7e26a96cc59a74d9d18f432d54c6d210a60604d2dc4a1a4b0ad83')
+source_x86_64=("$url/releases/download/v$pkgver/harsh_Linux_x86_64.tar.gz")
 
 package() {
     install -Dm755 harsh -t"$pkgdir/usr/bin/"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
     mkdir -p "$pkgdir/usr/share/bash-completion/completions"
     ./harsh completion bash > "$pkgdir/usr/share/bash-completion/completions/harsh"
 
@@ -35,4 +26,3 @@ package() {
     mkdir -p "$pkgdir/usr/share/zsh/site-functions"
     ./harsh completion zsh > "$pkgdir/usr/share/zsh/site-functions/_harsh"
 }
-
