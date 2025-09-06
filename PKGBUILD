@@ -1,68 +1,54 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool-git"
-pkgver=r407.055229a
+pkgver=r430.ce500e1
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
-arch=('x86_64')
+arch=('any')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=(git+$url.git)
 license=("GPL3")
 provides=('limine-entry-tool')
-_java_version=17
+_jre_version=17
+_jdk_version=21
 depends=(
-    'bash'
-    'grep'
-    'tar'
-    'java-environment>='${_java_version}
-    'limine'
-    'efibootmgr')
-makedepends=('git' 'maven')
+	'bash'
+	'grep'
+	'tar'
+	'java-runtime-headless>='${_jre_version}
+	'limine'
+	'efibootmgr')
+makedepends=('git' 'jdk21-openjdk' 'maven')
 sha256sums=('SKIP')
 backup=(etc/limine-entry-tool.conf)
-conflicts=('limine-dracut-support' 'limine-dracut-support-git')
+conflicts=('limine-entry-tool')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-_check_java_version() {
-    local java_version
-    java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
-
-    if [[ -z "$java_version" ]]; then
-        echo "Error: Java version ${_java_version} is not installed or not set." >&2
-        echo "Please check with: 'archlinux-java status'"
-        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
-        return 1
-    fi
-
-    if [[ "$java_version" -lt ${_java_version} ]]; then
-        echo "Error: Java version $java_version is older than the required ${_java_version}."
-        echo "Please check with: 'archlinux-java status'"
-        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
-        return 1
-    fi
+prepare() {
+	unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
+	if ! command -v /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac >/dev/null 2>&1; then
+		echo "Error: /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac not found." >&2
+		return 1
+	fi
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
 }
 
 build() {
-    unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
-    if _check_java_version; then
-        cd "$srcdir/${pkgname%-git}"
-        mvn clean package
-    else
-        return 1
-    fi
+	cd "$srcdir"/limine-entry-tool
+	mvn clean package
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    src_path="install/arch-linux/${pkgname%-git}"
-    install -dm 755 $src_path/usr/share/java/
-    install -dm 755 $src_path/usr/share/limine-entry-tool.d/
-    install -dm 755 $src_path/etc/limine-entry-tool.d/
-    install -Dm 644 target/limine-entry-tool.jar $src_path/usr/share/java/
-    install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
-    cp -r README.md CHANGELOG.md $src_path/usr/share/doc/${pkgname%-git}/
-    cp -r $src_path/usr $src_path/etc "$pkgdir"
+	cd "$srcdir/${pkgname%-git}"
+	src_path="install/arch-linux/${pkgname%-git}"
+	install -dm 755 $src_path/usr/share/java/
+	install -dm 755 $src_path/usr/share/limine-entry-tool.d/
+	install -dm 755 $src_path/etc/limine-entry-tool.d/
+	install -Dm 644 target/limine-entry-tool.jar $src_path/usr/share/java/
+	install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
+	cp -r README.md CHANGELOG.md $src_path/usr/share/doc/${pkgname%-git}/
+	cp -r $src_path/usr $src_path/etc "$pkgdir"
 }

@@ -1,21 +1,21 @@
 pkgbase = limine-entry-tool-git
 	pkgdesc = Install kernel for the Limine bootloader.
-	pkgver = r407.055229a
+	pkgver = r430.ce500e1
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = jdk21-openjdk
 	makedepends = maven
 	depends = bash
 	depends = grep
 	depends = tar
-	depends = java-environment>=17
+	depends = java-runtime-headless>=17
 	depends = limine
 	depends = efibootmgr
 	provides = limine-entry-tool
-	conflicts = limine-dracut-support
-	conflicts = limine-dracut-support-git
+	conflicts = limine-entry-tool
 	backup = etc/limine-entry-tool.conf
 	source = git+https://gitlab.com/Zesko/limine-entry-tool.git
 	sha256sums = SKIP
