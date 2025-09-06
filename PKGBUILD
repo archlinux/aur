@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-mkinitcpio-hook-git"
-pkgver=r430.ce500e1
+pkgver=r433.d190245
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
 arch=('any')
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"/limine-entry-tool
-	mvn clean package
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk mvn clean package
 }
 
 package() {
