@@ -1,0 +1,7 @@
+*.pkg.tar.xz
+*.pkg.tar.zst
+rtmlib**
+src
+pkg
+prepare.sh
+repo

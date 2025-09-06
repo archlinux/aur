@@ -1,0 +1,26 @@
+pkgbase = python-rtmlib-git
+	pkgdesc = A lightweight library for RTMPose-based pose estimation.
+	pkgver = 0.1.r79.gece30dd
+	pkgrel = 1
+	url = https://github.com/Tau-J/rtmlib
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = patch
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-onnxruntime
+	depends = python-opencv
+	depends = python-tqdm
+	provides = rtmlib
+	conflicts = rtmlib
+	source = rtmlib::git+https://github.com/Tau-J/rtmlib.git
+	source = setup.py.patch
+	sha256sums = SKIP
+	sha256sums = 24cdb9b557b3ed5eab0185bb6132534fe39ce4a8920e296486fd0b1ce6244912
+
+pkgname = python-rtmlib-git
