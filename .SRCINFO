@@ -1,15 +1,15 @@
 pkgbase = python-jetpytools
 	pkgdesc = Python package: jetpytools
-	pkgver = 1.6.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/jetpytools
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = python-installer
 	depends = python
 	provides = python-stgpytools
 	conflicts = python-stgpytools
-	source = https://files.pythonhosted.org/packages/3a/74/e7a2424713172d9c5b7afd8d3a185a1c388e32dcb980d71ce4c69bdfcb9b/jetpytools-1.6.1-py3-none-any.whl
-	sha256sums = e837ec051a2d61decd9934f20101a006b75535e2d5986d6c8db5509514f8af7c
+	source = https://files.pythonhosted.org/packages/8c/36/02e7cc0e8986d3fdf157d903ea148318c3d72ef033dab5a1832fd2eba49b/jetpytools-1.7.2-py3-none-any.whl
+	sha256sums = 1b8a698618acd4c1a92adcdbcf766a7596fdc627204f03c417e4ac0ded148a06
 
 pkgname = python-jetpytools
