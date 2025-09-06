@@ -21,7 +21,7 @@
 #   Do not run as root. Use dedicated user for security.
 #   Ensure all required dependencies are installed.
 #   It uses color output and Unicode icons for better readability. All paths and dependencies are configurable.
-#   See 'README.md' and 'AUR-README.md' for further details.
+#   See 'README.md' for further details.
 #
 # Build:
 #   'makepkg -si'
@@ -32,7 +32,7 @@
 #   All dependencies are documented in 'README.md'.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.47.r0.g54a2fa4
+pkgver=1.48.r0.g7a77c90
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -46,7 +46,7 @@ makedepends=('gcc' 'make' 'pkg-config' 'git' 'openssh')
 optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_tag=v1.47
+_tag=v1.48
 source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag?signed"
         "ssh_allowed_signers")
 sha256sums=('SKIP'
@@ -87,7 +87,6 @@ build() {
 
     # Copy all required files for packaging to $srcdir
     cp -a README.md "$srcdir/README.md"
-    cp -a AUR-README.md "$srcdir/AUR-README.md"
     cp -a CHANGELOG.md "$srcdir/CHANGELOG.md"
     cp -a VERSION "$srcdir/VERSION"
     cp -a LICENSE "$srcdir/LICENSE"
@@ -116,7 +115,6 @@ check() {
 package() {
     # Create necessary directories and install files
     install -dm755 "$pkgdir/opt/coolerdash"
-    install -Dm644 "$srcdir/AUR-README.md" "$pkgdir/opt/coolerdash/AUR-README.md"
     install -Dm644 "$srcdir/README.md" "$pkgdir/opt/coolerdash/README.md"
     install -Dm644 "$srcdir/VERSION" "$pkgdir/opt/coolerdash/VERSION"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/opt/coolerdash/LICENSE"
