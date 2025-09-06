@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r414.b35ca49
+pkgver=r422.97abea7
 pkgrel=1
 pkgdesc="Install kernel for the Limine bootloader."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
     'bash'
     'grep'
     'tar'
-    'java-environment>='${_java_version}
+    'java-runtime-headless>='${_java_version}
     'limine'
     'dracut'
     'efibootmgr')
