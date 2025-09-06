@@ -1,7 +1,7 @@
 pkgbase = kerminal
-	pkgdesc = Terminal app with SSH Profile support
+	pkgdesc = Modern Terminal with SSH, Tunneling & Cross-Device Sync
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/klpod221/kerminal
 	install = kerminal.install
 	arch = x86_64
