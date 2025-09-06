@@ -3,8 +3,8 @@
 _pkgauthor=Audio-Solutions
 _pkgname=pulse-visualizer
 pkgname=${_pkgname}-bin
-pkgver=1.3.2
-pkgrel=3
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="A GPU-accelerated audio visualizer for PulseAudio/PipeWire"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,11 +20,12 @@ source=("${_urlraw}/LICENSE"
         "${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.tar.gz")
 sha256sums=('c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
-            '58a43588304197a9599381f2b2b97fb78364a97d4a3d5595fb7fac575c69c69a')
-sha256sums_x86_64=('c67c3f46823bf1bd31c3ade9fe3f285cda6bca2a7067e500f46b2c1207198601')
+            'f00685045c62bdd53c452d18643e01fdde7d93a019c2b074e1bc611659ad3ce4')
+sha256sums_x86_64=('19d8cf4aea81c6c2a03576e114ef8e7ffe4fda1c43f34a11b7faec1fcb3fccb1')
+
 package() {
   cd "$srcdir" || return
+
   chmod +x ./install.sh
   ./install.sh "$pkgdir/usr" "skip-root"
 }
-
