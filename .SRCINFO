@@ -1,14 +1,14 @@
 pkgbase = ocaml4-camlp-streams-noframepointers
 	pkgdesc = The Stream and Genlex libraries for use with Camlp4 and Camlp5.
 	pkgver = 5.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml/camlp-streams
 	arch = x86_64
 	arch = aarch64
 	license = BSD
 	makedepends = dune
-	depends = ocaml4-noframepointers
-	depends = ocaml4-compiler-libs-noframepointers
+	depends = ocaml4
+	depends = ocaml4-compiler-libs
 	provides = ocaml4-camlp-streams=5.0.1
 	conflicts = ocaml4-camlp-streams
 	conflicts = ocaml-camlp-streams
