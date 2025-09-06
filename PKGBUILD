@@ -4,9 +4,9 @@
 # Contributor: Jürgen Hötzel <juergen@archlinux.org>
 
 pkgbase=ocaml4-noframepointers
-pkgname=(ocaml4-noframepointers ocaml4-noframepointers-compiler-libs)
+pkgname=(ocaml4-noframepointers ocaml4-compiler-libs-noframepointers)
 pkgver=4.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml 4.x compiler (frame-pointers only on x86_64)"
 arch=(x86_64 aarch64)
 license=(LGPL2.1 'custom: QPL-1.0')
@@ -48,7 +48,7 @@ package_ocaml4-noframepointers() {
   rm -rf "${pkgdir}/usr/lib/ocaml/compiler-libs"
 }
 
-package_ocaml4-noframepointers-compiler-libs() {
+package_ocaml4-compiler-libs-noframepointers() {
   pkgdesc="Several modules used internally by the OCaml 4 compiler"
   license=('custom: QPL-1.0')
   depends=(ocaml4-noframepointers)
