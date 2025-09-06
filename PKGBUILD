@@ -2,18 +2,18 @@
 
 _plug=misc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R2.3.gd87e01b
-pkgrel=3
+pkgver=R2.5.g07e0589
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/vapoursynth/vs-miscfilters-obsolete'
-license=('MIT')
+license=('GPL')
 depends=('vapoursynth')
 makedepends=('git'
   'meson'
 )
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
+provides=("vapoursynth-plugin-${_plug}" "vapoursynth-plugin-miscfilters-obsolete")
+conflicts=("vapoursynth-plugin-${_plug}" "vapoursynth-plugin-miscfilters-obsolete")
 source=("${_plug}::git+https://github.com/vapoursynth/vs-miscfilters-obsolete.git")
 sha256sums=('SKIP')
 
