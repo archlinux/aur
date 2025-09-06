@@ -1,7 +1,7 @@
 pkgbase = obsidianctl
 	pkgdesc = ObsidianOS's special program to manage A/B Partitions
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Obsidian-OS/obsidianctl
 	arch = any
 	license = MIT
@@ -20,6 +20,6 @@ pkgbase = obsidianctl
 	provides = obsidianctl
 	conflicts = obsidianctl-git
 	source = https://github.com/Obsidian-OS/obsidianctl/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 59a481a69f4968c7d6e36544731a3aa8b4f2ef8883aefddc0429dfdfe18b018b
+	sha256sums = 51468db8823c7dbde036494d0bd93f40011317d117b009f00cb9d3e4b8beb4a9
 
 pkgname = obsidianctl
