@@ -1,6 +1,6 @@
 # Maintainer: Rahat Zaman <rahatzamancse@gmail.com>
 pkgname=proton-game-saves
-pkgver=0.1.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A GTK4 application to manage Proton game save files for Steam games"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 optdepends=('steam: for automatic Steam directory detection')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rahatzamancse/proton-game-saves/archive/v$pkgver.tar.gz")
-sha256sums=('b6d1c2319f0d98e9b1ee0b549c8dc58f2580c5c466488611537be82ce0c84f8e')
+sha256sums=('97aa880ef0d6e6e21afd9f06f67605a20d394a1faea1ed3c1ca5d6c4b3e90626')
 backup=()
 options=()
 
