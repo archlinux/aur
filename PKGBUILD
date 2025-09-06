@@ -1,5 +1,5 @@
 # Maintainer: Jan <jan@example.com>
-pkgname=zip++
+pkgname=zipplusplus
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A fully featured ZIP archiver with zlib and LZMA support"

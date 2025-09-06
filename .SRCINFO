@@ -1,4 +1,4 @@
-pkgbase = zip++
+pkgbase = zipplusplus
 	pkgdesc = A fully featured ZIP archiver with zlib and LZMA support
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = zip++
 	md5sums = 290c9e9b91acaa73954c45cc4cb8414a
 	sha256sums = 07d788432ff699b344615ddb4cd0ee5154f821fa9803718893852fe6867ac71e
 
-pkgname = zip++
+pkgname = zipplusplus
