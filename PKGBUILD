@@ -8,11 +8,13 @@
 # 0003: https://github.com/Aorimn/dislocker/pull/341/commits/eeb79ba9aacb62ae37898255cf98332ac6368e31
 # 0004: https://github.com/Aorimn/dislocker/pull/340/commits/37284e0c120279867deb6cadd9c33684cbc843f7
 # 0005: https://github.com/Aorimn/dislocker/pull/338/commits/a32a6de8412947f55a7910543442534b4951accb
+# 0006: https://github.com/Aorimn/dislocker/pull/336/commits/e749eade55f242d03fb9d10c05ff4b11c66dcbbe
+#       https://github.com/Aorimn/dislocker/pull/336/commits/e000d91a55b3d4081a8cc5e7acba5bb29deaf83a
 
 _pkgname=dislocker
 pkgname=dislocker-patched
 pkgver=0.7.3.r46.g4572dc7
-pkgrel=7
+pkgrel=8
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. Includes some patches from Issues and PRs from official Aorimn/dislocker"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
