@@ -2,7 +2,7 @@
 
 pkgbase=puppeteer
 pkgname=($pkgbase{,-core}) #,-chromium,-firefox})
-pkgver=24.17.1
+pkgver=24.19.0
 pkgrel=1
 pkgdesc='JavaScript API for Chrome and Firefox'
 arch=(any)
@@ -15,8 +15,8 @@ _archive2="$pkgbase-core-$pkgver"
 source=("https://registry.npmjs.org/$pkgbase/-/$_archive1.tgz"
         "https://registry.npmjs.org/$pkgbase-core/-/$_archive2.tgz")
 noextract=("$_archive.tgz")
-sha256sums=('a24c67ff5f126d1093aa4dead94f05ea08d5624b0ab424cf77e6fcd0b77825e2'
-            '4a9e76d6b94920eb97b2f39c9428a05e0a1176603e9a41a20c7ee4f260b03b90')
+sha256sums=('4db4c95a3e6c141d6a1a83a56978b445022a91546c50d046bf93ef4f9353e20d'
+            'a8d199c615133daa4bf36b7ccccd369b05c6bc832978939e77347a75b58742aa')
 
 _npm_i() {
 	npm install --no-audit --no-fund -g --prefix "$pkgdir/usr" "$1.tgz"
