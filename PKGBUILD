@@ -9,8 +9,7 @@ arch=('x86_64')
 url='https://github.com/dnjulek/vapoursynth-zip'
 license=('MIT')
 depends=('vapoursynth')
-# FIXME: Specifically we need zig 0.14 but I'm not aware of a way to lock the version using PKGBUILD
-makedepends=('zig-bin')
+makedepends=('zig')
 source=("https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/R9.tar.gz")
 sha256sums=('ca0c98d3a15a1f56b85730b0d16d3781bb8688e87c7bbda7d948d8cfc0ffe625')
 
