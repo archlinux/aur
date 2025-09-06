@@ -1,28 +1,29 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r441.5ff8c77
+pkgver=r443.9552a52
 pkgrel=1
 pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
 url="https://gitlab.com/Zesko/limine-snapper-sync"
 source=(git+$url.git)
 license=("GPL3")
-_java_version=17
+_jre_version=17
+_jdk_version=21
 depends=(
-    'bash'
-    'java-environment>='${_java_version}
-    'limine'
-    'snapper'
-    'btrfs-progs'
-    'inotify-tools'
-    'libnotify')
+	'bash'
+	'java-runtime-headless>='${_jre_version}
+	'limine'
+	'snapper'
+	'btrfs-progs'
+	'inotify-tools'
+	'libnotify')
 optdepends=(
-    'limine-dracut-support: It automates kernel installation/removal and Limine boot entry management.'
-    'limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.'
-    'snap-pac: triggers Snapper to create snapshots during system updates.'
-    'rsync: Alternative method for restoring snapshots.'
-    'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
-    'b3sum: Fast Blake3 hash function to prevent duplication.'
+	'limine-dracut-support: It automates kernel installation/removal and Limine boot entry management.'
+	'limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.'
+	'snap-pac: triggers Snapper to create snapshots during system updates.'
+	'rsync: Alternative method for restoring snapshots.'
+	'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
+	'b3sum: Fast Blake3 hash function to prevent duplication.'
 )
 makedepends=('git' 'maven')
 sha1sums=('SKIP')
@@ -30,45 +31,30 @@ backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-_check_java_version() {
-    local java_version
-    java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
-
-    if [[ -z "$java_version" ]]; then
-        echo "Error: Java version ${_java_version} is not installed or not set." >&2
-        echo "Please check with: 'archlinux-java status'"
-        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
-        return 1
-    fi
-
-    if [[ "$java_version" -lt ${_java_version} ]]; then
-        echo "Error: Java version $java_version is older than the required ${_java_version}." >&2
-        echo "Please check with: 'archlinux-java status'"
-        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
-        return 1
-    fi
+prepare() {
+	unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
+	if ! command -v /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac >/dev/null 2>&1; then
+		echo "Error: /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac not found." >&2
+		return 1
+	fi
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
 }
 
 build() {
-    unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
-    if _check_java_version; then
-        cd "$srcdir/${pkgname%-git}"
-        mvn clean package
-    else
-        return 1
-    fi
+	cd "$srcdir/${pkgname%-git}"
+	mvn clean package
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    src_path="install/arch-linux/"
-    install -dm 755 $src_path/usr/share/java/
-    install -Dm 644 target/limine-snapper-sync.jar $src_path/usr/share/java/
-    install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
-    cp -r README.md CHANGELOG.md screenshots $src_path/usr/share/doc/${pkgname%-git}/
-    cp -r $src_path/usr $src_path/etc "$pkgdir"
+	cd "$srcdir/${pkgname%-git}"
+	src_path="install/arch-linux/"
+	install -dm 755 $src_path/usr/share/java/
+	install -Dm 644 target/limine-snapper-sync.jar $src_path/usr/share/java/
+	install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
+	cp -r README.md CHANGELOG.md screenshots $src_path/usr/share/doc/${pkgname%-git}/
+	cp -r $src_path/usr $src_path/etc "$pkgdir"
 }

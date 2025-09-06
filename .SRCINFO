@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = The tool syncs Limine snapshot entries with Snapper snapshots.
-	pkgver = r441.5ff8c77
+	pkgver = r443.9552a52
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = limine-snapper-sync-git
 	makedepends = git
 	makedepends = maven
 	depends = bash
-	depends = java-environment>=17
+	depends = java-runtime-headless>=17
 	depends = limine
 	depends = snapper
 	depends = btrfs-progs
