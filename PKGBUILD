@@ -1,6 +1,6 @@
 # Maintainer: Barikad <arch@coqblin.net>
 pkgname=gitlab-sync
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="[FR] Automatise la configuration d'un miroir GitLab. [EN] Automates the configuration of a GitLab mirror."
 arch=('any')
@@ -11,8 +11,8 @@ depends=('python' 'python-gitlab' 'python-ruamel-yaml')
 makedepends=('pandoc')
 source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "gitlab-sync.1.md")
-sha256sums=('95a586eca64dfe04e27ba70aa8f25c0c4e9c3bc465f5fd652faa8d702d3f8cae'
-            'b42398cc8e76ed53cf224139c8aa27ee5c10f2e17cbadd19df123729feae5cda')
+sha256sums=('cba648d09f7cbcac7b4dc5d94e22230af1a12f4ef46fec3e3a69dd8b76a0e35d'
+            'b98e8ba4aaee461d801d1b90c894c3c5ae2a0c205bed5b42535cf3f1b45527e4')
 
 build() {
   pandoc -s -t man gitlab-sync.1.md -o gitlab-sync.1
