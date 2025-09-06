@@ -2,7 +2,7 @@
 # Contributor: Peter Oehme <oehme.pb at gmail dot com>
 _base=pymor
 pkgname=python-${_base}
-pkgver=2024.2.0
+pkgver=2025.1.1
 pkgrel=1
 pkgdesc="Library for building model order reduction applications with Python"
 arch=(any)
@@ -27,7 +27,7 @@ optdepends=('python-pytorch: PyTorch open source machine learning framework'
   'python-scikit-fem'
 )
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('b23d28fae6f96a28ad57b9f5ebde547c8bf1f749f2d2a0817a61a5ad2f10c9d5d4655fea23b160d1aaeb109b0d1a8b9294951bb49f42038d5b232bb299028441')
+sha512sums=('c1fd11dd0d8599b04b2c9910c8613b61a16a1d9fe6cb73fecd4b569b8f2a583524892ed4fa21bb003dfd0e5c14d564e4636dbc66d666227b61d78fba7a62d0e9')
 
 build() {
   cd ${_base}-${pkgver}

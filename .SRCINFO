@@ -1,6 +1,6 @@
 pkgbase = python-pymor
 	pkgdesc = Library for building model order reduction applications with Python
-	pkgver = 2024.2.0
+	pkgver = 2025.1.1
 	pkgrel = 1
 	url = https://pymor.org
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-pymor
 	optdepends = python-xmljson
 	optdepends = gmsh
 	optdepends = python-scikit-fem
-	source = pymor-2024.2.0.tar.gz::https://github.com/pymor/pymor/archive/2024.2.0.tar.gz
-	sha512sums = b23d28fae6f96a28ad57b9f5ebde547c8bf1f749f2d2a0817a61a5ad2f10c9d5d4655fea23b160d1aaeb109b0d1a8b9294951bb49f42038d5b232bb299028441
+	source = pymor-2025.1.1.tar.gz::https://github.com/pymor/pymor/archive/2025.1.1.tar.gz
+	sha512sums = c1fd11dd0d8599b04b2c9910c8613b61a16a1d9fe6cb73fecd4b569b8f2a583524892ed4fa21bb003dfd0e5c14d564e4636dbc66d666227b61d78fba7a62d0e9
 
 pkgname = python-pymor
