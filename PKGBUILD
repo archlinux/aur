@@ -4,7 +4,7 @@
 _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=5.6.2
+pkgver=5.6.4
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=(any)
@@ -43,7 +43,7 @@ checkdepends=(
     xrootd
 )
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('4915237a8a105290873554c391e14028f984a564f289f1f1d4b2d70adaa2c448')
+sha256sums=('59eb1be67b79ae9a9b198332dc550615a25778b0e3c6cec8c2a3b01b582da873')
 
 build() {
     cd ${_pkgname}5-$pkgver
@@ -68,6 +68,8 @@ check() {
         --deselect tests/test_1254_test_threadpool_executor_for_dask.py::test_decompression_threadpool_executor_for_dask
         --deselect tests/test_1321_pandas_changed_api_again.py::test
         --deselect tests/test_1412_rntuple_dask.py::test_dask
+        # disable tests that fail due to fsspec issues
+        --deselect tests/test_0692_fsspec_writing.py
     )
 
     cd ${_pkgname}5-$pkgver
