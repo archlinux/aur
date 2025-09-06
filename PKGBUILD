@@ -2,7 +2,7 @@
 
 pkgname=walker
 pkgver=1.0.0
-pkgrel=30
+pkgrel=31
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
@@ -11,18 +11,18 @@ makedepends=('cargo' 'gobject-introspection' 'glibc' 'protobuf')
 depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
 conflicts=('walker')
 provides=('walker')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-28.tar.gz")
-sha256sums=("4a197b7d719f45b6cdb850627a2df3cf177d5fe4dbcd80327d37fd1a6777ecc6")
+source=("${url}/archive/refs/tags/v${pkgver}-beta-29.tar.gz")
+sha256sums=("753b508b4249dda3fcb570d04666f4acfd9a68f8d704c928622d2b88b668e833")
 
 build() {
-    cd ${pkgname}-${pkgver}-beta-28
+    cd ${pkgname}-${pkgver}-beta-29
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release
 }
 
 package() {
-    cd ${pkgname}-${pkgver}-beta-28/target/release
+    cd ${pkgname}-${pkgver}-beta-29/target/release
     install -Dm 755 walker -t "${pkgdir}/usr/bin"
 
     cd ../../
