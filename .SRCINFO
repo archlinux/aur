@@ -1,6 +1,6 @@
 pkgbase = wx-tools
 	pkgdesc = wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/x-tools-author/wx-tools
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = wx-tools
 	provides = wx-tools
 	conflicts = wx-tools
 	conflicts = wx-tools
-	source = wx-tools::git+https://github.com/x-tools-author/wx-tools.git#tag=v1.1.0
-	sha256sums = 2ec3120e47140b4b1e1776a3eb82443d6b891b730b634d50f0c60bb86900f466
+	source = wx-tools::git+https://github.com/x-tools-author/wx-tools.git#tag=v1.1.1
+	sha256sums = 1b88d529dab851aae6970dce8f599f557c49387b05a4176a82cb8690eea8676f
 
 pkgname = wx-tools
