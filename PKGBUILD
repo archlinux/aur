@@ -3,7 +3,7 @@
 
 pkgname=gog-thimbleweedpark
 pkgver=1.0.958
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Neo-noir mystery point-and-click adventure set in 1987. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -25,7 +25,7 @@ makedepends=('lgogdownloader')
 options=('!debug' '!strip')
 
 source=(
-  "thimbleweed-park_${pkgver//./_}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
+  "thimbleweed-park_${pkgver//./_}.sh::gogdownloader://thimbleweed_park/en3installer0"
   "${_shortname}.shim"
   "${pkgname}.desktop"
 )
