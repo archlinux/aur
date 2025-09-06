@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=tenere
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='TUI interface for LLMs written in Rust'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('865c9b041faf935545dbb9753b33a8ff09bf4bfd8917d25ca93f5dc0c0cac114')
+sha256sums=('3605fcdff3dbd5d153ed6126e98274994bd00ed83a2a1f5587058d75797257a8')
 
 prepare() {
 	cd "$_archive"
