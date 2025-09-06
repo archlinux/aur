@@ -6,6 +6,7 @@ pkgbase = limine-dracut-support-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = java-environment=21
 	makedepends = maven
 	depends = bash
 	depends = grep
@@ -18,7 +19,6 @@ pkgbase = limine-dracut-support-git
 	optdepends = sbctl: Signs UEFI boot files for Secure Boot when enabled
 	optdepends = journalctl-desktop-notification: Sends desktop notifications when errors occur
 	provides = limine-entry-tool
-	conflicts = limine-dracut-support
 	conflicts = limine-entry-tool
 	backup = etc/limine-entry-tool.conf
 	source = git+https://gitlab.com/Zesko/limine-entry-tool.git
