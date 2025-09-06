@@ -22,6 +22,39 @@ MAX_CHILDREN_PER_LINE = 5
 LABEL_MAX_CHARS = 30
 
 class WallpaperManager(Adw.Application):
+    def on_cycle_countdown(self):
+        if not self.is_cycling or self.is_paused:
+            return True
+        self.cycle_countdown -= 1
+        self.update_cycle_ui()
+        if self.cycle_countdown <= 0:
+            self.on_cycle_timeout()
+            self.cycle_countdown = self.cycle_interval
+        return True
+    def schedule_next_cycle(self):
+        """Schedule the next wallpaper change"""
+        if self.cycle_timeout_id:
+            GLib.source_remove(self.cycle_timeout_id)
+        self.cycle_countdown = self.cycle_interval
+        self.cycle_timeout_id = GLib.timeout_add_seconds(1, self.on_cycle_countdown)
+    def load_config(self):
+        """Load the entire config from the single config file."""
+        if not os.path.exists(self.config_file):
+            return {}
+        try:
+            with open(self.config_file, 'r') as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Error loading config: {e}")
+            return {}
+
+    def save_config(self, config):
+        """Save the entire config to the single config file."""
+        try:
+            with open(self.config_file, 'w') as f:
+                json.dump(config, f, indent=2)
+        except Exception as e:
+            print(f"Error saving config: {e}")
     def cycle_to_next_wallpaper(self):
         """Cycle to the next wallpaper"""
         if not hasattr(self, 'cycling_wallpapers') or not self.cycling_wallpapers:
@@ -152,37 +185,21 @@ class WallpaperManager(Adw.Application):
         
         # Use a dedicated config directory inside the user's home folder
         self.config_dir = str(Path.home() / ".config" / "pyprwall")
-        self.config_file = os.path.join(self.config_dir, '.pyprwall_config')
-        self.cycle_config_file = os.path.join(self.config_dir, '.pyprwall_cycle_config')
-        self.wallpaper_cache_file = os.path.join(self.config_dir, '.wallpaper_cache')
-        self.wallpaper_cache_meta_file = os.path.join(self.config_dir, '.wallpaper_cache_meta')
+        self.config_file = os.path.join(self.config_dir, 'pyprwall.json')
         self.thumbnail_cache_dir = os.path.join(self.config_dir, 'thumbnails')
         os.makedirs(self.thumbnail_cache_dir, exist_ok=True)
-        
         # Create directories if they don't exist
         os.makedirs(self.wallpaper_dir, exist_ok=True)
         os.makedirs(self.hypr_config_dir, exist_ok=True)
         os.makedirs(self.config_dir, exist_ok=True)
-
-        # Cycle state file
-        self.cycle_state_file = os.path.join(self.config_dir, '.pyprwall_cycle_state')
-        
         # Load cycle configuration
         self.load_cycle_config()
-
         # Restore cycling state
         self.restore_cycle_state()
 
     def load_cycle_config(self):
         """Load cycling configuration from file"""
-        try:
-            if os.path.exists(self.cycle_config_file):
-                with open(self.cycle_config_file, 'r') as f:
-                    config = json.load(f)
-                    self.cycle_interval = config.get('interval', 1800)
-                    self.is_random_order = config.get('random_order', False)
-        except Exception as e:
-            print(f"Error loading cycle config: {e}")
+    # All config is now loaded from the single config file
 
     def save_cycle_config(self):
         """Save cycling configuration to file"""
@@ -573,32 +590,24 @@ WantedBy=default.target
                 self.cycle_status_label.set_label("Auto-start enabled")
 
     def save_cycle_state(self):
-        state = {
+        config = self.load_config()
+        config['cycle_state'] = {
             'is_cycling': self.is_cycling,
             'is_paused': self.is_paused,
             'current_index': self.current_index,
             'wallpaper_list': self.wallpaper_list,
             'current_wallpaper': self.current_wallpaper
         }
-        try:
-            with open(self.cycle_state_file, 'w') as f:
-                json.dump(state, f)
-        except Exception as e:
-            print(f"Error saving cycle state: {e}")
+        self.save_config(config)
 
     def restore_cycle_state(self):
-        if not os.path.exists(self.cycle_state_file):
-            return
-        try:
-            with open(self.cycle_state_file, 'r') as f:
-                state = json.load(f)
-            self.is_cycling = state.get('is_cycling', False)
-            self.is_paused = state.get('is_paused', False)
-            self.current_index = state.get('current_index', 0)
-            self.wallpaper_list = state.get('wallpaper_list', [])
-            self.current_wallpaper = state.get('current_wallpaper', None)
-        except Exception as e:
-            print(f"Error restoring cycle state: {e}")
+        config = self.load_config()
+        state = config.get('cycle_state', {})
+        self.is_cycling = state.get('is_cycling', False)
+        self.is_paused = state.get('is_paused', False)
+        self.current_index = state.get('current_index', 0)
+        self.wallpaper_list = state.get('wallpaper_list', [])
+        self.current_wallpaper = state.get('current_wallpaper', None)
 
     def start_cycling(self):
         """Start the wallpaper cycling"""
@@ -814,15 +823,9 @@ WantedBy=default.target
         Handles the 'realize' signal of the window. This is the first time the window is shown.
         """
         print("--- App starting, checking config file... ---")
-        last_folder = None
-        if os.path.exists(self.config_file):
-            try:
-                with open(self.config_file, 'r') as f:
-                    last_folder = f.read().strip()
-            except Exception as e:
-                print(f"Error reading config file: {e}")
+        config = self.load_config()
+        last_folder = config.get('wallpaper_dir')
         print(f"Path read from config: '{last_folder}'")
-
         # Use the last_folder if valid, otherwise use default
         if last_folder and os.path.exists(last_folder):
             self.wallpaper_dir = last_folder
@@ -926,11 +929,9 @@ WantedBy=default.target
             folder = dialog.get_file().get_path()
             self.wallpaper_dir = folder
             # Save the newly selected folder to the config file
-            try:
-                with open(self.config_file, 'w') as f:
-                    f.write(folder)
-            except Exception as e:
-                print(f"Error writing config file: {e}")
+            config = self.load_config()
+            config['wallpaper_dir'] = folder
+            self.save_config(config)
             self.load_wallpapers(folder)
         dialog.destroy()
 
@@ -947,34 +948,22 @@ WantedBy=default.target
 
     def is_cache_valid(self, folder_path):
         """Check if cache meta matches current folder meta."""
-        if not os.path.exists(self.wallpaper_cache_meta_file):
-            return False
-        try:
-            with open(self.wallpaper_cache_meta_file, 'r') as f:
-                cached_meta = json.load(f)
-            current_meta = self.get_wallpaper_folder_meta(folder_path)
-            return cached_meta == current_meta
-        except Exception:
-            return False
+        config = self.load_config()
+        cached_meta = config.get('wallpaper_cache_meta')
+        current_meta = self.get_wallpaper_folder_meta(folder_path)
+        return cached_meta == current_meta
 
     def save_wallpaper_cache(self, folder_path, wallpaper_list):
         """Save wallpaper list and meta to cache files."""
-        try:
-            with open(self.wallpaper_cache_file, 'w') as f:
-                json.dump(wallpaper_list, f)
-            meta = self.get_wallpaper_folder_meta(folder_path)
-            with open(self.wallpaper_cache_meta_file, 'w') as f:
-                json.dump(meta, f)
-        except Exception as e:
-            print(f"Error saving wallpaper cache: {e}")
+        config = self.load_config()
+        config['wallpaper_cache'] = wallpaper_list
+        config['wallpaper_cache_meta'] = self.get_wallpaper_folder_meta(folder_path)
+        self.save_config(config)
 
     def load_wallpaper_cache(self):
         """Load wallpaper list from cache file."""
-        try:
-            with open(self.wallpaper_cache_file, 'r') as f:
-                return json.load(f)
-        except Exception:
-            return []
+        config = self.load_config()
+        return config.get('wallpaper_cache', [])
 
     def get_thumbnail_cache_path(self, wallpaper_path):
         import hashlib
