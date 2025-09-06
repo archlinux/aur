@@ -1,45 +1,65 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
-pkgname='winboat'
-pkgver='0.6.10'
-_pkgver='0.6.10'
-pkgrel='1'
-pkgdesc='Run Windows apps on Linux with seamless integration'
-arch=(x86_64)
-url='https://github.com/TibixDev/winboat'
+pkgname=winboat
+pkgver=0.7.3
+pkgrel=1
+pkgdesc="Run Windows apps on Linux with seamless integration"
+arch=('x86_64')
+url="https://www.winboat.app"
 license=('MIT')
-depends=('docker' 'docker-compose' 'freerdp' 'gtk3' 'alsa-lib' 'nss')
-makedepends=('zip' 'npm' 'go')
-options=("!strip" "!debug")
-source=(
-	"$pkgname.png::https://raw.githubusercontent.com/tibixdev/winboat/refs/heads/main/icons/icon.png"
-	"LICENSE::$url/blob/main/LICENSE"
-	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgver.zip")
-
-sha256sums=('3f733f11d7cc81c51c654901458add642978be5e5c6f1fdd12f45a3ae22b9dcd'
-            '81aef5e6123ddcbb838f915fbff5846b769b68e9ad2fc5d0f1d68370319aed2b'
-            '46d2c3bb5bb6533f23b5732f64f45cc17cc17c23abdf31ea34bf923f24f49df8')
-
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	npm i --cache "${srcdir}/npm-cache" 
-	npm run build:linux-gs
+depends=(
+  'alsa-lib'
+  'docker'
+  'docker-compose'
+  'freerdp'
+  'gtk3'
+  'nss'
+)
+makedepends=(
+  'git'
+  'npm'
+  'go'
+  'zip'
+)
+options=('!strip')
+source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
+sha256sums=('a2ad2819688d1b1dfffeb7810fb7c56fc6c4ae2225955ede17575e14b462d86e')
+prepare(){
+cd "$pkgname"
+sed -i 's/"rpm",//g' electron-builder.json
 }
+build() {
+  cd "$pkgname"
+  export npm_config_cache="$srcdir/npm_cache"
+  export GOPATH="$srcdir/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  npm ci
+  npm run build:linux-gs
+
+  # Clean module cache for makepkg -C
+  go clean -modcache
+}
+
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	cd dist/linux-unpacked	
-	install -d "$pkgdir/opt/$pkgname"
+  cd "$pkgname"
+  install -d "$pkgdir/opt/$pkgname/"
+  cp -a dist/linux-unpacked/* "$pkgdir/opt/$pkgname/"
 
-	cp -a * $pkgdir/opt/$pkgname
+  install -d "$pkgdir/usr/bin"
+  ln -s "opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-	# Icon
-	cd ../..
-	install -D icons/icon.png "$pkgdir/usr/share/icons/$pkgname.png"
+  for i in 16 32 48 64 128 256 512; do
+    install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+  done
 
-	# Licences
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$pkgname.desktop <<EOF
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
-Name=winboat
+Name=WinBoat
 Exec=/opt/$pkgname/$pkgname
 Icon=$pkgname
 Terminal=false
