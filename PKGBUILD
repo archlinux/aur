@@ -3,7 +3,7 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=bkmr
-pkgver=6.2.3
+pkgver=6.2.4
 pkgrel=1
 pkgdesc='A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management'
 url='https://github.com/sysid/bkmr'
@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('glibc' 'gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f7257fdddb7712db063ed48058989ade5858cfa0d0a0ef6154d0d711ba6228de')
+sha256sums=('11bc9d3629c44c84cdb528daafe678f9dba1a07f4eeb7e176800ea5fbb519283')
 options=('!lto' '!strip')
 
 case $CARCH in
@@ -43,10 +43,10 @@ package() {
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
-#   ./target/release/bkmr completion bash > bkmr.sh 2>/dev/null
-#   install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-#   ./target/release/bkmr completion fish > fish.fish 2>/dev/null
-#   install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-#   ./target/release/bkmr completion zsh > zsh.zsh 2>/dev/null
-#   install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  ./target/release/bkmr completion bash > bkmr.sh 2>/dev/null
+  install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  ./target/release/bkmr completion fish > fish.fish 2>/dev/null
+  install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  ./target/release/bkmr completion zsh > zsh.zsh 2>/dev/null
+  install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
