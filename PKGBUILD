@@ -4,13 +4,13 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="A GTK4 application to manage Proton game save files for Steam games"
 arch=('x86_64')
-url="https://github.com/rahatzamancse/proton-game-saves"
+url="https://github.com/rahatzamancse/protongamesaves"
 license=('GPL3')
 depends=('gtk4' 'libadwaita' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 optdepends=('steam: for automatic Steam directory detection')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rahatzamancse/proton-game-saves/archive/v$pkgver.tar.gz")
-sha256sums=('97aa880ef0d6e6e21afd9f06f67605a20d394a1faea1ed3c1ca5d6c4b3e90626')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rahatzamancse/protongamesaves/archive/v$pkgver.tar.gz")
+sha256sums=('81e656723a0284be5e16ed5d734e09fb21ee33eb651d50ff2f256109472e7ced')
 backup=()
 options=()
 
