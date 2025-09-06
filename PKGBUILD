@@ -3,7 +3,7 @@
 # Contributor: BrinkerVII <brinkervii@gmail.com>
 
 pkgname=luau
-pkgver=0.689
+pkgver=0.690
 pkgrel=1
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(cmake)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d03c79ee496b732c72f405283ffec07185050ed993347e45a0c4a1518c8cb886')
+sha256sums=('4d9cde24c565361fdfcd8e200e0f466032b4b24968719608c035a4bacec814d8')
 
 build() {
 	cd $pkgname-$pkgver
