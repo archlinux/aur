@@ -2,7 +2,7 @@
 # Contributor: csantosb <csantosb dot inventati dot org>
 
 pkgname=python-vsg
-pkgver=3.31.0
+pkgver=3.34.0
 pkgrel=1
 pkgdesc="VHDL style guide: coding style enforcement for VHDL"
 arch=('any')
