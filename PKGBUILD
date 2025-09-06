@@ -25,7 +25,7 @@ optdepends=(
 	'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
 	'b3sum: Fast Blake3 hash function to prevent duplication.'
 )
-makedepends=('git' 'maven')
+makedepends=('git' 'jdk21-openjdk' 'maven')
 sha1sums=('SKIP')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync')
@@ -36,12 +36,12 @@ pkgver() {
 }
 
 prepare() {
-	unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
-	if ! command -v /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac >/dev/null 2>&1; then
-		echo "Error: /usr/lib/jvm/java-${_jdk_version}-openjdk/bin/javac not found." >&2
+	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
+	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
+	if ! command -v ${JAVA_HOME}/bin/javac >/dev/null 2>&1; then
+		echo "Error: ${JAVA_HOME}/bin/javac not found." >&2
 		return 1
 	fi
-	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk
 }
 
 build() {

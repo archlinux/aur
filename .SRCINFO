@@ -6,6 +6,7 @@ pkgbase = limine-snapper-sync-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = jdk21-openjdk
 	makedepends = maven
 	depends = bash
 	depends = java-runtime-headless>=17
