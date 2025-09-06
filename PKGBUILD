@@ -75,7 +75,7 @@ build() {
         -Wno-dev
     )
     cmake "${_cmake_options[@]}"
-    cmake --build build --config Release
+    cmake --build build --config Release -- -j $(nproc)
 }
 
 package() {
