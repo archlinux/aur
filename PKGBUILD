@@ -1,37 +1,45 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+#  Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=bkmr
 pkgver=6.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management'
 url='https://github.com/sysid/bkmr'
 license=('BSD-3-Clause')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('glibc' 'gcc-libs' 'openssl')
+depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('cbf076fe31c70ccc279a1b2bf776fa44e331a0ca1fef348803649d6e278c64e6')
-options=('!lto' '!strip')
+options=('!lto')
 
-case $CARCH in
+case "$CARCH" in
   x86_64|i686|aarch64)
     _target="$CARCH-unknown-linux-gnu" ;;
   arm)
     _target="arm-unknown-linux-gnueabi" ;;
+    *)
+    printf 'Architecture %s is not supported\n' "$CARCH" >&2
+    exit 1 ;;
 esac
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo fetch --manifest-path bkmr/Cargo.toml --target $_target
+  cargo fetch --manifest-path bkmr/Cargo.toml --target "$_target"
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
   CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" cargo build --manifest-path bkmr/Cargo.toml --frozen --release
+
+  for _shell in bash fish zsh; do
+    ./target/release/bkmr completion "$_shell" > "_completion.$_shell" 2>/dev/null
+  done
 }
 
 package() {
@@ -43,10 +51,7 @@ package() {
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
-  ./target/release/bkmr completion bash > bkmr.sh 2>/dev/null
-  install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  ./target/release/bkmr completion fish > fish.fish 2>/dev/null
-  install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  ./target/release/bkmr completion zsh > zsh.zsh 2>/dev/null
-  install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 _completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 _completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm644 _completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
