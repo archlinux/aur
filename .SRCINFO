@@ -1,0 +1,17 @@
+pkgbase = python-daff
+	pkgdesc = Align and compare tables
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/paulfitz/daff
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = haxe
+	depends = python
+	source = python-daff-1.4.2.tar.gz::https://github.com/paulfitz/daff/archive/v1.4.2.tar.gz
+	b2sums = 6a66d11de2ac4f466f30f0bb69edaa7cc9c003ef13a4cd3193adc67ec9b38c49dcf5e9404ab01fd26c5ccb0b73d5f46f37b375a44ce20b4e179838e7f66c3ac5
+
+pkgname = python-daff
