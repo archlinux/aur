@@ -1,0 +1,5 @@
+[fjira]
+source = 'github'
+github = 'mk-5/fjira'
+use_max_tag = true
+
