@@ -2,7 +2,7 @@
 # vim: set ts=4 sw=4 et:
 
 pkgname=kellnr
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='The registry for Rust crates'
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kellnr/kellnr/archive/refs/
         "kellnr.service"
         "kellnr.sysusers"
         "kellnr.tmpfiles")
-sha256sums=('191ff6343b133a8baf5339d7f5a486d97cae5c26dc0d702f0bbbda55d45b58e0'
+sha256sums=('bbecc5d5a44c72c1ec8fa25339fe137af626bdb91573e3b7dad96c7b5c93df09'
             '7b5af39e16841e3f1d25072c4b79b0210add6b0797f1758fdce568a1a058c7f7'
             '28c931c3b6c1ab2e16e318a55e137300a9bfdd8581d7d668a3350574094e1c6d'
             'a268b595b0048f3dda5d6cf8dea37d9c60b2333d8f4aae76ac93deb4b6e2e62e'
