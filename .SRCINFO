@@ -1,4 +1,4 @@
-pkgbase = frankenphp
+pkgbase = frankenphp-bin
 	pkgdesc = FrankenPHP is a modern application server for PHP built on top of the Caddy web server.
 	pkgver = 1.9.1
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = frankenphp
 	source_aarch64 = https://github.com/php/frankenphp/releases/download/v1.9.1/frankenphp-linux-aarch64
 	sha256sums_aarch64 = b67387eed2ef1ade728ba77cb63256ddfa5eb35ef878a5f87f104fbdd17ef543
 
-pkgname = frankenphp
+pkgname = frankenphp-bin
