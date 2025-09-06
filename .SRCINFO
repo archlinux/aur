@@ -8,6 +8,8 @@ pkgbase = ocaml4-findlib-noframepointers
 	license = MIT
 	depends = ocaml4-compiler-libs-noframepointers
 	depends = ocaml4-noframepointers
+	provides = ocaml4-findlib=1.9.6
+	conflicts = ocaml4-findlib
 	conflicts = ocaml-findlib
 	options = !makeflags
 	options = !strip

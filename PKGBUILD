@@ -18,7 +18,8 @@ arch=(x86_64 aarch64)
 url='http://projects.camlcity.org/projects/findlib.html'
 license=(MIT)
 depends=(ocaml4-compiler-libs-noframepointers ocaml4-noframepointers)
-conflicts=(ocaml-findlib)
+provides=("ocaml4-findlib=${pkgver}")
+conflicts=("ocaml4-findlib" "ocaml-findlib")
 options=(!makeflags !strip staticlibs zipman)
 # HTTP 504 most of the time
 #source=("http://download.camlcity.org/download/findlib-$pkgver.tar.gz")
