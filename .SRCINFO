@@ -1,7 +1,7 @@
 pkgbase = hyprmon-bin
 	pkgdesc = A multi-monitor profile manager for Hyprland
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/erans/hyprmon
 	arch = x86_64
 	arch = aarch64
