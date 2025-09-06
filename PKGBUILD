@@ -12,7 +12,7 @@
 # Adds AARCH64 and mirror for source tarball
 pkgname=ocaml4-findlib-noframepointers
 pkgver=1.9.6
-pkgrel=4
+pkgrel=5
 pkgdesc='OCaml package manager'
 arch=(x86_64 aarch64)
 url='http://projects.camlcity.org/projects/findlib.html'
