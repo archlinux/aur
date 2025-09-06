@@ -3,8 +3,8 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=2025.15.1
-pkgrel=4
+pkgver=2025.16
+pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
@@ -14,11 +14,9 @@ source=(
 	"$pkgname-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 )
-sha256sums=(
-	'db81c46c2461f8f1b18df348e30192aa62f029ef708c07a8f80341648f19b7ce'
-	'a1f999ad4493f176131e0b68e58c27c36e659ebd8b01f38fae989f8e1a179154'
-	'SKIP'
-)
+sha256sums=('d6076e38ce803d139f40324a93876616ebc01054163399d89940f06880938dd1'
+            'a1f999ad4493f176131e0b68e58c27c36e659ebd8b01f38fae989f8e1a179154'
+            '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598')
 makedepends=(
 	cmake
 	glm
