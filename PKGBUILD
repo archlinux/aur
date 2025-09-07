@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=python-x2go
-pkgver=0.6.1.3
-pkgrel=2
+pkgver=0.6.1.4
+pkgrel=1
 pkgdesc="Python module providing X2Go client API"
 url="http://www.x2go.org/"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python-gevent' 'python-paramiko' 'python-requests'
          'python-simplejson' 'python-xlib' 'nxproxy')
 source=("http://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('08b951b434ba3b0e232fc5d01ab07c4b1d9c0e8d16af9722f78f52dd271a09f8')
+sha256sums=('d1a8b4ebf66ab372dda74a90cbdc9bfd85be7219bdbea12abcb8a0569114e9f2')
 
 build() {
   cd "${pkgname}-${pkgver}"
