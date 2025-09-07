@@ -1,0 +1,13 @@
+pkgbase = ttf-liter
+	pkgdesc = Functional neo-grotesque font designed to be a typesetting workhorse
+	pkgver = 1.004
+	pkgrel = 1
+	url = https://github.com/skugiz/liter
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/skugiz/liter/releases/download/Latest/Stable.Release.1.004.zip
+	source = https://raw.githubusercontent.com/skugiz/liter/refs/heads/main/OFL.txt
+	sha256sums = da8cf5b87bdaa5eb50566f37a8e684f888b0cb9e0d2e1cfda24231df5e7b0997
+	sha256sums = 3e12fb44d6ae7f513c44d182db1bbd0fa075408cda1b7cbdb2b74556be804af2
+
+pkgname = ttf-liter
