@@ -1,39 +1,66 @@
-# Maintainer: Joel Grunbaum <joel@joelg.net>
+# Maintainer:
+# Contributor: Joel Grunbaum <joel@joelg.net>
 # Contributer: Yangtse Su <i@yangtse.me>
-_pkgname=xpadneo
-pkgname=xpadneo-dkms-git
-pkgver=0.9.r54.g7d1e6fd
-pkgrel=4
-pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
-arch=('x86_64' 'armv7l')
-url='https://github.com/atar-axis/xpadneo'
-license=('GPL')
-depends=('dkms' 'bluez' 'bluez-utils')
-makedepends=('git')
-conflicts=('xpadneo-dkms')
-provides=('xpadneo-dkms')
-source=('git+https://github.com/atar-axis/xpadneo.git')
+
+_pkgname="xpadneo-dkms"
+pkgname="$_pkgname-git"
+pkgver=0.9.r226.ga16acb0
+pkgrel=1
+pkgdesc="Advanced Linux Driver for Xbox One Wireless Gamepad"
+url="https://github.com/atar-axis/xpadneo"
+license=('GPL-3.0-only')
+arch=('any')
+
+depends=(
+  'dkms'
+  'bluez'
+  'bluez-utils'
+)
+makedepends=(
+  'git'
+)
+
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+
+_pkgsrc="xpadneo"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "$_pkgsrc/hid-xpadneo"
+  sed -E \
+    -e '/^CLEAN/d' \
+    -e '/^POST_INSTALL/d' \
+    -e '/^POST_REMOVE/d' \
+    -e 's/@DO_NOT_CHANGE@/'"${pkgver}"'/g' \
+    dkms.conf.in > dkms.conf
+
+  rm -f dkms.post_*
+}
+
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'	
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+  _files=(
+    Makefile
+    dkms.conf
+    src/*.c
+    src/*.h
+    src/Makefile
+    src/xpadneo/*.c
+  )
 
-	cd hid-xpadneo
-	VERSION=$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
-	cd ..	
-	echo "* replacing version string if necessary"
-	cp hid-xpadneo/dkms.conf.in hid-xpadneo/dkms.conf
-	sed -i 's/PACKAGE_VERSION="@DO_NOT_CHANGE@"/PACKAGE_VERSION="'$VERSION'"/g' hid-xpadneo/dkms.conf
-	
-	sed -i 's@/etc/udev/rules\.d@/usr/lib/udev/rules\.d@g' hid-xpadneo/dkms.post_install
-	sed -i 's@/etc/udev/rules\.d@/usr/lib/udev/rules\.d@g' hid-xpadneo/dkms.post_remove
+  cd "$_pkgsrc/hid-xpadneo"
+  for i in "${_files[@]}"; do
+    [ -f "$i" ] && install -Dm644 "$i" -t "$pkgdir/usr/src/hid-xpadneo-$pkgver/${i%/*}/"
+  done
 
-	echo "* copying module into /usr/src"
-	install -dm755 ${pkgdir}/usr/src/hid-xpadneo-${VERSION}
-	cp --recursive $PWD/hid-xpadneo/* ${pkgdir}/usr/src/hid-xpadneo-${VERSION}
+  install -Dm644 etc-modprobe.d/xpadneo.conf -t "$pkgdir/usr/lib/modprobe.d/"
+  install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" \
+    etc-udev-rules.d/60-xpadneo.rules \
+    etc-udev-rules.d/70-xpadneo-disable-hidraw.rules
 }
