@@ -1,6 +1,6 @@
 pkgbase = grabit
 	pkgdesc = Screenshot, screen recording, and file uploader with OCR support for Zipline and other services
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit.git
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = grabit
 	optdepends = python-pyocr: OCR text extraction
 	optdepends = tesseract: OCR engine
 	optdepends = spectacle: KDE screenshot and recording support
-	source = git+https://heliopolis.live/creations/grabit.git#tag=v1.0.8
+	source = git+https://heliopolis.live/creations/grabit.git#tag=v1.0.9
 	sha256sums = SKIP
 
 pkgname = grabit
