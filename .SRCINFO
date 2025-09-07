@@ -1,0 +1,17 @@
+pkgbase = theattyr-bin
+	pkgdesc = A terminal theater for playing VT100 art and animations
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/orhun/theattyr
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = theattyr
+	conflicts = theattyr
+	source_x86_64 = theattyr-x86_64-0.1.10.tar.gz::https://github.com/orhun/theattyr/releases/download/v0.1.10/theattyr-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 53b2b27ecddab0585f11813a033723c0da2bf7b277fa900e4536ef263746fc64
+
+pkgname = theattyr-bin
