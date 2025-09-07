@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 _nodeversion=22
 _electronversion=38
@@ -20,7 +20,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('88647c28d56aa7d90006a319281fd53b574f8b916d38d018708609e777e1a0c6'
+sha256sums=('595b5283720cbdaaa67907c2773f6eeb890e57e1244dce98481d47ecf42ffac0'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
             '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654')
 
