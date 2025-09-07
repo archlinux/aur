@@ -41,5 +41,5 @@ pkgname = zoom-system-qt-cef
 	pkgdesc = CEF for vebview of zoom-system-qt
 	depends = zoom-system-qt
 	depends = sqlite
-	depends = chromium-ffmpeg-legacy
 	optdepends = chromium
+	optdepends = chromium-ffmpeg-legacy
