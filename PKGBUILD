@@ -1,6 +1,8 @@
-# Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+
 pkgname=cs-script
-pkgver=3.28.4.0
+pkgver=3.30.5.2
 pkgrel=1
 pkgdesc="Run C# sources like scripts"
 arch=('any')
@@ -8,7 +10,7 @@ url="https://github.com/oleg-shilo/cs-script"
 license=('MIT')
 depends=('mono')
 source=("${url}/releases/download/v${pkgver}/${pkgname}.7z")
-sha256sums=('567ee64bb7e3a9c39494cedf277ea762f80a27b1ddf611457c22581218211572')
+sha256sums=('f24c05f57c179c84ff1ea0b8ff0a072503f2ba83d29d66acf383424ef4400a46')
 
 package() {
   local sharedir="$pkgdir/usr/share/"
