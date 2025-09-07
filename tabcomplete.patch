@@ -1,6 +1,8 @@
---- histedit.c.orig	2020-06-03 04:19:23.000000000 +0300
-+++ histedit.c	2025-07-01 14:25:59.202931897 +0300
-@@ -132,6 +132,8 @@
+diff --git a/src/histedit.c b/src/histedit.c
+index 5ab718b..2e5c7a4 100644
+--- a/src/histedit.c
++++ b/src/histedit.c
+@@ -132,6 +132,8 @@ bad:
  				el_set(el, EL_EDITOR, "vi");
  			else if (Eflag)
  				el_set(el, EL_EDITOR, "emacs");
