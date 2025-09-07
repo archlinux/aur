@@ -1,7 +1,7 @@
 # Maintainer: Stitchless
 pkgname=xremap-kde-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (KDE Wayland Version)'
-pkgver=0.10.16
+pkgver=0.10.17
 pkgrel=1
 provides=('xremap')
 license=('MIT')
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64')
 options=('!debug')
 source=("LICENSE")
 b2sums=('5caf7612d5d1e636a60ad68135f621413b3681e4cda0e2e5d5c76e05d3adf15bc7b5cc030c7b26270fa3dfef181456bfd07d1d3330008564f1e82921eef5d16a')
-b2sums_x86_64=('f3ef301e72be8f185d572f3d2e486b4a9b563d7cca878000d9627cb3f34b54170255532557b483d26d6a7a90812dfe7cbdd9df913562a18762e1a70d29a89c6d')
-b2sums_aarch64=('354d8f4c66765cbc1dbc1d7dff6b260f125d36e6e85945e3df6437e710c9918993debaf844a5d5aa82624666c992c0785c1dafd97419a86854168e2209ee3976')
+b2sums_x86_64=('1535983b1242c52a056d92b6278530b561ea2bde04afa2aec802df7a3fa9a7b5c94e2120630b364cb989c7a3239bc0ec56835834c03ffe95db476927b14088b4')
+b2sums_aarch64=('e49a04e8a6faf106b14652b9cd1d2bef3078e51aec704b328cdd618957ef4912fd269671b649e105c2c77c9cea337f24ce94b3eda19ac0ad1e8ef2b701717494')
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-x86_64-kde.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-aarch64-kde.zip")
 
