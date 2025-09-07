@@ -1,7 +1,7 @@
 pkgbase = elephant-unicode
 	pkgdesc = unicode provider for elephant
 	pkgver = 1.0.0
-	pkgrel = 22
+	pkgrel = 23
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = elephant-unicode
 	makedepends = go
 	provides = elephant-unicode
 	conflicts = elephant-unicode
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-22.tar.gz
-	sha256sums = 7d8c8628878d8170211544ed4b5e7880fe8267d5e2e7f509d1e1fe37f45fca01
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-23.tar.gz
+	sha256sums = 7496af78c6a535a6410abc9f712a7e9331908a7055bdb42335b653aa9acefdbd
 
 pkgname = elephant-unicode
