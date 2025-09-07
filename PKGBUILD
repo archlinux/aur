@@ -2,7 +2,7 @@
 
 pkgname=elephant-files
 pkgver=1.0.0
-pkgrel=23
+pkgrel=24
 pkgdesc='files provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
