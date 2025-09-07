@@ -1,0 +1,3 @@
+[nodejs-neovim]
+source = "npm"
+npm = "neovim"

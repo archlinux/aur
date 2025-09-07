@@ -3,7 +3,7 @@
 
 pkgname=nodejs-neovim
 _npmname=neovim
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Nvim Node.js client and plugin host"
 arch=("any")
@@ -13,7 +13,7 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 optdepends=()
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('fe840cf26b904cb98830fa5723c62b9e04c120a04a8141784377ceecdd5f9661')
+sha256sums=('0f28cc0f83a9ab714627398fca7164614348c3aa53cdf57f1e79fbfeda3418a8')
 noextract=("$_npmname-$pkgver.tgz")
 
 package() {
