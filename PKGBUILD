@@ -1,13 +1,13 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.47
+pkgver=0.1.48
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
 url="https://github.com/Wayclip/cli"
 license=('MIT')
 depends=('pipewire' 'wayland' 'alsa-lib' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'dbus' 'libxcb')
-makedepends=('rust' 'cargo' 'clang' 'git' 'bsdtar')
+makedepends=('rust' 'cargo' 'clang' 'git')
 _core_ver="${CORE_TAG_FULL}"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/${_core_ver}/wayclip-${_core_ver}-x86_64-unknown-linux-gnu.tar.gz")
