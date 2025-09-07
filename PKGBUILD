@@ -2,7 +2,7 @@
 
 _pkgname=PKHeX
 pkgname=pkhex-bin
-pkgver=25.06.09
+pkgver=25.08.30
 pkgrel=1
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
@@ -10,11 +10,11 @@ url="https://github.com/kwsch/PKHeX"
 license=(GPL)
 depends=(wine winetricks)
 conflicts=(pkhex pkhex-git)
-source=("PKHeX.tar.gz::https://downloads.iusearchbtw.nl/PKHeX.tar.gz"
+source=("PKHeX.tar.gz::https://downloads.iusearchbtw.nl/PKHeX-${pkgver}.tar.gz"
         "launcher"
         "icon.png"
         "pkhex.desktop")
-sha256sums=('339768cfcbe166b97c70bc1c777e29f1efd157ebd698ca132d4079cd52486e17'
+sha256sums=('14105bbb6029e0d457ee8010018e04939988356d2be4387c1e47f9e1b38f9dfb'
             'b7f1527516381756e8f14534863a57c03d2d8f22bf57afffe84e49b41886accf'
             '688456b442d51a9cdcffeb053099f23e3333e492c5b9d9266e97da7cd077b89b'
             'aa7d55c6d05a79671d38f8c4133b1fbf01d5106200d97c47658e78421e62b0d4')
