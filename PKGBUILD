@@ -21,8 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/axrona/anitr-cli/archiv
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+  cd "$srcdir/$pkgname-${pkgver//+/-}"
   export GOFLAGS="-mod=mod"
   go mod tidy
   go fmt ./...
@@ -32,6 +31,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-${pkgver//+/-}"
   install -Dm755 build/anitr-cli "${pkgdir}/usr/bin/${pkgname}"
 }
