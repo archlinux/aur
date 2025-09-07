@@ -1,27 +1,38 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 epoch=
-pkgdesc="smooll Color Picker for X11"
-arch=('x86_64')
-url="https://www.github.com/reallySmooll/scolorpicker"
-license=('MIT')
+pkgdesc="smooll's Color Picker"
+arch=("x86_64")
+url="https://www.github.com/smooll-d/scolorpicker"
+license=("BSD-3-Clause")
 groups=()
-depends=('libx11' 'glibc' 'xsel' 'libxext')
-makedepends=('cmake')
+depends=("sdl3" "sdl3_image")
+makedepends=("cmake")
 checkdepends=()
-optdepends=()
+optdepends=("libx11: X11 support"
+            "wayland: Wayland support"
+            "wayland-protocols: Wayland support"
+            "sdbus-cpp: taking screenshots on Wayland"
+            "xdg-desktop-portal: taking screenshots on Wayland"
+            "xdg-desktop-portal-cosmic: taking screenshots on COSMIC"
+            "xdg-desktop-portal-dde: taking screenshots on Deepin"
+            "xdg-desktop-portal-gnome: taking screenshots on GNOME"
+            "xdg-desktop-portal-hyprland: taking screenshots on Hyprland"
+            "xdg-desktop-portal-kde: taking screenshots on KDE Plasma"
+            "xdg-desktop-portal-wlr: taking screenshots on wlroots-based compositors"
+            "xdg-desktop-portal-xapp: taking screenshots on Cinnamon")
 provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!debug)
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=("SKIP")
 validpgpkeys=()
 
 #prepare() {
@@ -30,10 +41,9 @@ validpgpkeys=()
 #}
 
 build() {
-	cmake -B build -S "$pkgname-$pkgver" \
-		-DCMAKE_BUILD_TYPE='None' \
-		-DINSTALL_SYSTEM_WIDE=YES \
-		-Wno-dev
+	cmake -S "$pkgname-$pkgver" -B build \
+		-DCMAKE_BUILD_TYPE="Release" \
+        -DCMAKE_INSTALL_PREFIX="$pkgdir"
 	cmake --build build
 }
 
@@ -43,6 +53,6 @@ build() {
 #}
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
+	cmake --install build
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $pkgname-$pkgver/LICENSE
 }
