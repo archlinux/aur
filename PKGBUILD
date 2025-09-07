@@ -1,39 +1,36 @@
 pkgname=unfs3
-pkgver=0.9.22
-pkgrel=5
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A user-space implementation of the NFSv3 server specification"
-arch=('i686' 'x86_64')
-url="http://unfs3.sourceforge.net/"
+arch=('x86_64')
+url="https://unfs3.github.io/"
 license=("BSD")
 makedepends=("flex")
 depends=('rpcbind' 'flex' 'libtirpc')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
-		"0001-Compile-fix-for-libtirpc-under-Arch-Linux.patch"
+source=("https://github.com/unfs3/unfs3/archive/refs/tags/unfs3-$pkgver.tar.gz"
 		"unfsd.conf"
 		"unfsd"
 		"unfsd.service")
-md5sums=('ddf679a5d4d80096a59f3affc64f16e5'
-		 'b85ec02e508895d490d295a3dd7828c0'
+md5sums=('8aa8e9fe97f28b7bd39a69c4ca1f565a'
 		 '7c28cd320ac4868cc6f0ca089fbf2e75'
 		 'e1010b2da0d5fb962112eed243b2b5ed'
 		 '4dfcdd618b7b2229d9b6082401a52880')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p1 < "../0001-Compile-fix-for-libtirpc-under-Arch-Linux.patch"
+	cd "${srcdir}/unfs3-unfs3-${pkgver}"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/unfs3-unfs3-${pkgver}"
 	./bootstrap
-	./configure CFLAGS="$CFLAGS -I/usr/include/tirpc" --prefix=/usr --sbindir=/usr/bin
+	./configure --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/unfs3-unfs3-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/unfs3/COPYING"
 
 	cd "$srcdir"
 	install -Dm755 unfsd "$pkgdir/etc/rc.d/unfsd"
