@@ -3,17 +3,14 @@
 _pkgname='docopt.rs'
 pkgname='docopt-wordlist'
 pkgver='1.1.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Automated tab completion for Docopt.'
 arch=('x86_64')
 url='https://github.com/docopt/docopt.rs'
 license=('MIT' 'Unlicense')
-makedepends=('cargo'
-			 'auth-tarball-from-git')
+makedepends=('cargo')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'add_lock.patch')
-_pgpkeys=('BurntSushi.gpg')
-source+=(${_pgpkeys[@]})
 
 md5sums=('8322ee987f94f3fae35630c46d6beaf5'
          'ceed5b6ca17960ee47642f022c15c13d'
@@ -23,7 +20,6 @@ sha512sums=('5d60e8893ad91ac95f795930a84dff54c644040b74a05ffdd81097875bc99b5279a
             'ea911e330941281e1533d64b0cb22256e965f1481023f67d616f5b0606b1503763a44bad264541c6223497f796cc76b62406a45df35a852d95d8e4b8f7fea409')
 
 prepare() {
-	auth-tarball-from-git --tag $pkgver --prefix $_pkgname-$pkgver ${_pgpkeys[@]/#/--keyring } $url.git $_pkgname-$pkgver.tar.gz
     cd $_pkgname-$pkgver
     patch --strip=1 --input="$srcdir/add_lock.patch"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
