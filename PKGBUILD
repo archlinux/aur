@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock
@@ -23,12 +23,11 @@ package() {
     tar -xzf fcc-unlock.d.tar.gz
 
     # Fibocom L860R+, Fibocom FM350 5G, Quectel RM520N-GL, Quectel EM160R-GL, Quectel EM061K, Quectel EM05-CN
-    # These two files are now provided by upstream ModemManager
-    #install -D -m755 fcc-unlock.d/14c3:4d75 "$pkgdir"/usr/share/ModemManager/fcc-unlock.available.d/14c3:4d75
-    #install -D -m755 fcc-unlock.d/1eac:1007 "$pkgdir"/usr/share/ModemManager/fcc-unlock.available.d/1eac:1007
-    install -D -m755 fcc-unlock.d/1eac:100d "$pkgdir"/usr/share/ModemManager/fcc-unlock.available.d/1eac:100d
-    install -D -m755 fcc-unlock.d/2c7c:6008 "$pkgdir"/usr/share/ModemManager/fcc-unlock.available.d/2c7c:6008
-    install -D -m755 fcc-unlock.d/8086:7560 "$pkgdir"/usr/share/ModemManager/fcc-unlock.available.d/8086:7560
+    install -D -m755 fcc-unlock.d/14c3:4d75 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/14c3:4d75
+    install -D -m755 fcc-unlock.d/1eac:1007 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/1eac:1007
+    install -D -m755 fcc-unlock.d/1eac:100d "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/1eac:100d
+    install -D -m755 fcc-unlock.d/2c7c:6008 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/2c7c:6008
+    install -D -m755 fcc-unlock.d/8086:7560 "$pkgdir"/usr/lib/ModemManager/fcc-unlock.d/8086:7560
 
     # SAR config files
     tar -xzf sar_config_files.tar.gz
