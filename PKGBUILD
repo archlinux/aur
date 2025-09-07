@@ -1,13 +1,14 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on ocaml4-findlib PKGBUILD by:
+# Based on PKGBUILD by:
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org> 
 # Contributor: Jürgen Hötzel <juergen@hoetzel.info>
 
 pkgname=ocaml4-ocamlbuild-noframepointers
 pkgver=0.14.2
-pkgrel=4
-pkgdesc='Build tool, that has built-in rules for building OCaml library and programs'
+pkgrel=5
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc='Build tool, that has built-in rules for building OCaml library and programs. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.'
 arch=(x86_64 aarch64)
 url='https://github.com/ocaml/ocamlbuild'
 license=('LGPL-2.1-or-later' 'custom: OCaml-LGPL-linking-exception')
