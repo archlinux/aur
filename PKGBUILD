@@ -5,7 +5,7 @@
 
 pkgname=davfs2
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="File system driver that allows you to mount a WebDAV folder"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/alisarctl/${pkgname}"
@@ -19,7 +19,7 @@ sha512sums=('46e37b59069987da0c7a398b6bc8dae56b8ff821aa3c69763f49e9ae018620887b2
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  sed -i 's/31 32 33/31 32 33 34 35/g' configure
+  # sed -i 's/31 32 33/31 32 33 34 35/g' configure
 }
 
 build() {
