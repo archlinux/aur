@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=qsv
 pkgname=qsv-bin
-pkgver=7.0.1
+pkgver=7.1.0
 pkgrel=1
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '215a1bd3fd3d1bca8acdc6d9e9a0ac68d32093153847c7d486d06d8910e8daf7'
             '360b157e3b3fc9b27156c69bc2885bd52c4d21539213cd72052fd5254eec8761'
             '3e9655bdf946b412518fcfe6b628ab2a0c041c918b7302405ceb08a02779425c')
-sha256sums_x86_64=('9c1f1823a1d6c2e23f5da49cd4e29e510410bd7c75b3b3fc4902efa4bec2d448')
+sha256sums_x86_64=('5af393f56a8fadcd9ffb7fa78fed20a99a8d041fa5d84c3e7e4545ef3fc99a90')
 
 package() {
     install -Dm755 "qsvpy313" "$pkgdir/usr/bin/qsv"
@@ -34,4 +34,4 @@ package() {
 	install -Dm644 "$pkgver.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkg.fish"
 	install -Dm644 "$pkgver.zsh" "$pkgdir/usr/share/zsh/site-functions/_$_pkg"
 }
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
+# vim:set noet sts=0 sw=4 ts=4:
