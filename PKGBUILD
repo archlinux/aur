@@ -3,7 +3,7 @@
 _gitauth='jca02266'
 _pkgname='lha'
 pkgname="${_pkgname}-git"
-pkgver=1.14i_ac20220213.g8e301f2
+pkgver=1.14i_ac20220213.gb64f72c
 pkgrel=1
 pkgdesc="Compression and archive utility for LH-7 format archives (GIT version)"
 arch=('x86_64')
@@ -14,9 +14,11 @@ provides=("${_pkgname}" 'lhasa')
 source=(
   "$pkgname::git+${url}.git?signed"
   "https://packages.debian.org/changelogs/pool/non-free/l/lha/current/copyright"
+  "0001-fix-egrep-tests.patch"
 )
 sha256sums=('SKIP'
-            '5afb178c19472a2528102fff8050d365c4d5b5dda2f8f7b158ba5d9f62a86a7d')
+            '5afb178c19472a2528102fff8050d365c4d5b5dda2f8f7b158ba5d9f62a86a7d'
+            '7689646d9e85139f2220ee36d38ae2275aac24ca68e33d3aaf0f4bed2e9bc36b')
 validpgpkeys=(
   968479A1AFF927E37D1A566BB5690EEEBB952194 # GitHub
 )
@@ -36,6 +38,16 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  # apply patch from the source array (should be a pacman feature)
+  local src
+  for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np0 -i "../$src"
+  done
+
   # Stage all license/redistribution information to be added into LICENSE
   {
     # Extract copyright by current author as located in lha (1) manpage
@@ -67,18 +79,13 @@ build() {
   autoreconf --verbose --force --install
 
   # https://gitlab.archlinux.org/pacman/namcap/-/issues/72#note_189964
-  LDFLAGS+='-Wl,-z,shstk'
+  LDFLAGS+=' -Wl,-z,shstk'
   ./configure \
     --prefix=/usr
 
-  # Try sanitizing your CFLAGS if you encounter errors while compiling.
-  # To do so, replace the first CFLAGS+=" as CFLAGS=", e.g.
-  # CFLAGS="-Wno-incompatible-pointer types ...
-  # Do not replace the second CFLAGS+=" if you already did the
-  # previous instance.
   make \
     CFLAGS+="-Wno-incompatible-pointer-types -Wno-unused-result" \
-    CFLAGS+="-std=gnu17 -fpermissive"
+    CFLAGS+="-Wno-old-style-definition"
 }
 
 check() {
