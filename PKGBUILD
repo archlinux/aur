@@ -17,7 +17,6 @@ sha256sums=('b90d02743a1f76927d5d7c4373c3ebcf3da86d97362501035d504c7a008da5ca'
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	cmake -B build \
-		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-Wno-dev
