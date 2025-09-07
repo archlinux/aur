@@ -1,7 +1,7 @@
 pkgbase = ocaml4-lablgtk2-noframepointers
-	pkgdesc = An Objective Caml interface to gtk2
+	pkgdesc = An Objective Caml interface to gtk2. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.
 	pkgver = 2.18.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://garrigue.github.io/lablgtk/
 	arch = x86_64
 	arch = aarch64

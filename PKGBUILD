@@ -5,8 +5,9 @@
 
 pkgname=ocaml4-lablgtk2-noframepointers
 pkgver=2.18.12
-pkgrel=1
-pkgdesc="An Objective Caml interface to gtk2"
+pkgrel=2
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc="An Objective Caml interface to gtk2. Patched for x86_64/aarch64 and no ocaml4 frame-pointers."
 arch=(x86_64 aarch64)
 license=(LGPL2.1)
 url="https://garrigue.github.io/lablgtk/"
