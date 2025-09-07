@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=gemini-cli-bin
-pkgver=0.3.3 # datasource=github-releases depName=google-gemini/gemini-cli
+pkgver=0.3.4 # datasource=github-releases depName=google-gemini/gemini-cli
 pkgrel=1
 pkgdesc='An open-source AI agent that brings the power of Gemini directly into your terminal.'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	"LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 
-sha256sums=('729c50ecf0c8fae023e33089c9d46bec82f7fbf1e7fbe590945b9d64ae8378a6'
+sha256sums=('695722ce96f357584fb2e312191c603065d3c85fb4c81a8693b1303e72850f24'
             '09d2d564b15d1a8be7713524b27aa8b10e55ae7cd8aeaf1e04e6059adda0de10')
 
 package() {
