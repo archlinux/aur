@@ -1,0 +1,12 @@
+pkgbase = mcsr-launcher
+	pkgdesc = Minecraft Speedrunning Launcher
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/MCSRLauncher/Launcher
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	source = https://github.com/MCSRLauncher/Launcher/releases/download/v3.2.0/MCSRLauncher.jar
+	sha256sums = SKIP
+
+pkgname = mcsr-launcher
