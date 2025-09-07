@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=140.0.7339.41
+pkgver=140.0.7339.80
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -35,7 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
         chromium-140.0.7339.41-rust.patch)
-sha256sums=('68876365a4f8c566bb45119a615784f932718d89eb6be0744fd8982de7316c2d'
+sha256sums=('3c59ca1da92a7d1ec2cf152b3c99ebd9348e1db43e8cb782afcb19dfcaeaca2c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
