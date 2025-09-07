@@ -5,7 +5,7 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.15.4b
+pkgver=1.15.5b
 _zen_version=${pkgver//_/-}
 _firefox_version=142.0.1
 pkgrel=1
@@ -89,7 +89,7 @@ source=(
   0004-fix-package-json.zen.patch
   0005-source-firefox-language-packs.patch
   )
-sha256sums=('271ffcd0bd660e09d3679bbd25d50f33756061444100ab799337746e71948aa6'
+sha256sums=('b3940514be08dd3b9cbe579861fda0e0100ca2c45138990207c30f374187c0d1'
             'b0adb44ed4c3383e752a5947adbfb0d03f24172cb468831bd49978de25e810c0'
             'SKIP'
             '523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9'
