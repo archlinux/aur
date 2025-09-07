@@ -1,13 +1,14 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on ocaml4-num PKGBUILD by:
+# Based on PKGBUILD by:
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Baptiste Jonglez <archlinux at bitsofnetworks dot org>
 
 pkgname=ocaml4-num-noframepointers
 pkgver=1.4
-pkgrel=3
-pkgdesc="Library for arbitrary-precision integer and rational arithmetic that used to be part of the OCaml core distribution"
+pkgrel=4
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc="Library for arbitrary-precision integer and rational arithmetic that used to be part of the OCaml core distribution. Patched for x86_64/aarch64 and no ocaml4 frame-pointers."
 arch=(x86_64 aarch64)
 url="https://github.com/ocaml/num"
 license=(LGPL-2.1-only)

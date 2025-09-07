@@ -1,7 +1,7 @@
 pkgbase = ocaml4-num-noframepointers
-	pkgdesc = Library for arbitrary-precision integer and rational arithmetic that used to be part of the OCaml core distribution
+	pkgdesc = Library for arbitrary-precision integer and rational arithmetic that used to be part of the OCaml core distribution. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ocaml/num
 	arch = x86_64
 	arch = aarch64
