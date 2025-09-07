@@ -11,6 +11,7 @@ depends=(
     'python-pyxdg'
     'bubblewrap'
     'python-tomli-w'
+    'python-cattrs'
     'xdg-dbus-proxy'
     'hicolor-icon-theme'
     'python-pyqt6'
