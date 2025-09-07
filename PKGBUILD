@@ -2,10 +2,10 @@
 # Maintainer: Rinne <aur@rinne.in>
 
 _pkgname=animeko
-_appimage=ani-4.11.0-beta01-linux-x86_64.appimage
+_appimage=ani-5.0.0-beta02-linux-x86_64.appimage
 
 pkgname=animeko-appimage-beta
-pkgver=v4.11.0_beta01
+pkgver=v5.0.0_beta02
 pkgrel=1
 pkgdesc="集找番、追番、看番的一站式弹幕追番平台，云收藏同步 (Bangumi)，离线缓存，BitTorrent，弹幕云过滤。100% Kotlin/Compose Multiplatform"
 arch=('x86_64')
@@ -14,9 +14,9 @@ license=('AGPL-3.0-or-later')
 depends=('vlc' 'gvfs')
 provides=('animeko')
 options=(!strip)
-source_x86_64=("${_appimage}::https://github.com/open-ani/animeko/releases/download/v4.11.0-beta01/ani-4.11.0-beta01-linux-x86_64.appimage")
+source_x86_64=("${_appimage}::https://github.com/open-ani/animeko/releases/download/v5.0.0-beta02/ani-5.0.0-beta02-linux-x86_64.appimage")
 noextract=("${_appimage}")
-sha1sums_x86_64=('befd8c74154dcc7819d36b7f2cffbf69d896ea50')
+sha1sums_x86_64=('ea45d0cfb3832ca719d63e7d646046682253393e')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -42,8 +42,8 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-    cp -a "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    cp -a "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
