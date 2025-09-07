@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
@@ -18,11 +18,11 @@ pkgbase = clash-verge-rev-bin
 	conflicts = clash-verge
 	conflicts = clash-verge-bin
 	options = !strip
-	source_x86_64 = clash-verge-rev-2.4.1-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.1/Clash.Verge_2.4.1_amd64.deb
-	sha512sums_x86_64 = d35fc62e879864900164487488b4f3f82c0a58f3036c5b5f2c15b0738898126efdce73194506a720397f21fc8b20bfa5d6f061b379a16874061b9b0c117aeed8
-	source_aarch64 = clash-verge-rev-2.4.1-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.1/Clash.Verge_2.4.1_arm64.deb
-	sha512sums_aarch64 = 05f7d714aa5d9dfceeac99807c67c11ca1b94a6f47dbeee450d0927b26f01f1ba9a178e6e484f6c23b792db075c22225b9f45fab1d1df3ab63919559613cffe0
-	source_armv7h = clash-verge-rev-2.4.1-armv7h.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.1/Clash.Verge_2.4.1_armhf.deb
-	sha512sums_armv7h = 34aee120be008ef9dc2c9de46c858137b9620cbfe65b30dd7079c50402780eae629cc16557f95a9507ff7c60ee540a9f51aebcc6387c5f335449b9dccfee4cb1
+	source_x86_64 = clash-verge-rev-2.4.2-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.2/Clash.Verge_2.4.2_amd64.deb
+	sha512sums_x86_64 = c2bba9af456332a605f4eb8b4b111c9ab3f66570bda0fe2943f4a7a752c3fe2a2ded4f3f47478deefd55c34584bc8df919b2e2e99ef453828fb3189a2c9330f2
+	source_aarch64 = clash-verge-rev-2.4.2-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.2/Clash.Verge_2.4.2_arm64.deb
+	sha512sums_aarch64 = 3a93ca8b5ca34c158eafaba949d198a9d4384129b8d6a854db514c3125f30f716f166e8bf50ad71e3e01b785d2e6a4db1a57034cdc5e3d14439dc390d43c7355
+	source_armv7h = clash-verge-rev-2.4.2-armv7h.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.2/Clash.Verge_2.4.2_armhf.deb
+	sha512sums_armv7h = 81ffc312f5d7b54554d16b98b7e406eb370ab4efbc8210098d0f025f312d9093ca5c380e42bc0d9e2d84b5450a8612bb63f11ff72764cc6b036511ae89b7ff90
 
 pkgname = clash-verge-rev-bin
