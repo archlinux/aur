@@ -28,21 +28,23 @@ source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
+  local VERSION="$(pkgver)"
+
   cd "$_pkgsrc/hid-xpadneo"
   sed -E \
     -e '/^CLEAN/d' \
     -e '/^POST_INSTALL/d' \
     -e '/^POST_REMOVE/d' \
-    -e 's/@DO_NOT_CHANGE@/'"${pkgver}"'/g' \
+    -e 's/@DO_NOT_CHANGE@/'"${VERSION}"'/g' \
     dkms.conf.in > dkms.conf
 
   rm -f dkms.post_*
 }
 
-pkgver() {
-  cd "$_pkgsrc"
+pkgver() (
+  cd "$srcdir/$_pkgsrc"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+)
 
 package() {
   _files=(
