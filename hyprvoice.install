@@ -1,9 +1,19 @@
 post_install() {
     echo "==> Hyprvoice installation complete!"
     echo ""
-    echo "    📋 Next steps (in order):"
+
+    # Auto-enable the service (safe to do during installation)
+    echo "==> Enabling hyprvoice service..."
+    if systemctl --user enable hyprvoice.service 2>/dev/null; then
+        echo "    ✅ Service enabled successfully"
+    else
+        echo "    ⚠️  Service enable failed (you may need to run: systemctl --user enable hyprvoice.service)"
+    fi
+    echo ""
+
+    echo "    📋 Next steps:"
     echo "    1. Configure hyprvoice: hyprvoice configure"
-    echo "    2. Enable the service: systemctl --user enable --now hyprvoice.service"
+    echo "    2. Start the service: systemctl --user start hyprvoice.service"
     echo "    3. Add keybinding to your window manager config"
     echo ""
     echo "    🔑 For Hyprland, add to ~/.config/hypr/hyprland.conf:"
@@ -16,9 +26,24 @@ post_install() {
 post_upgrade() {
     echo "==> Hyprvoice has been upgraded."
     echo ""
-    echo "    📋 Next steps:"
-    echo "    1. Restart the service: systemctl --user restart hyprvoice.service"
-    echo "    2. Check for new options: hyprvoice configure"
+
+    # Check if service was running before upgrade
+    was_active=false
+    if systemctl --user is-active --quiet hyprvoice.service 2>/dev/null; then
+        was_active=true
+        echo "==> Service was running, restarting to apply updates..."
+        if systemctl --user restart hyprvoice.service 2>/dev/null; then
+            echo "    ✅ Service restarted successfully"
+        else
+            echo "    ⚠️  Service restart failed (you may need to run: systemctl --user restart hyprvoice.service)"
+        fi
+    else
+        echo "==> Service was not running (start with: systemctl --user start hyprvoice.service)"
+    fi
+    echo ""
+
+    echo "    📋 Additional steps:"
+    echo "    1. Check for new configuration options: hyprvoice configure"
     echo ""
 }
 
