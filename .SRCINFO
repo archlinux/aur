@@ -1,4 +1,4 @@
-pkgbase = dns_changer
+pkgbase = dns-changer
 	pkgdesc = A Rust-based tool for changing DNS interactively
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = dns_changer
 	source = https://github.com/bishnu7babu/dns_changer.git/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = dns_changer
+pkgname = dns-changer

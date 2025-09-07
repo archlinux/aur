@@ -1,6 +1,6 @@
 # Maintainer: Bishnu Babu Sah <your.email@example.com>
 
-pkgname=dns_changer
+pkgname=dns-changer
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A Rust-based tool for changing DNS interactively"
