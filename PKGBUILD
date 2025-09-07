@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.42
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -14,8 +14,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/ta
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/$_core_ver/wayclip-$_core_ver-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP' 'SKIP')
 
+prepare() {
+    mv "$srcdir/cli-$pkgver" "$srcdir/$pkgname-$pkgver"
+}
+
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     cargo build --release
 }
 
