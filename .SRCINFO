@@ -1,11 +1,11 @@
 pkgbase = elephant-websearch
 	pkgdesc = websearch provider for elephant
 	pkgver = 1.0.0
-	pkgrel = 25
+	pkgrel = 26
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL
 	makedepends = go
 	provides = elephant-websearch
 	conflicts = elephant-websearch
