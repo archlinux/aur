@@ -1,0 +1,22 @@
+pkgbase = python-pytest-docker-tools
+	pkgdesc = Opionated helpers for creating py.test fixtures for Docker integration and smoke testing environments
+	pkgver = 3.1.9
+	pkgrel = 1
+	url = https://github.com/Jc2k/pytest-docker-tools
+	arch = any
+	license = MIT
+	checkdepends = python-requests
+	checkdepends = docker
+	checkdepends = docker-compose
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytest
+	depends = python-attrs
+	depends = python-playwright
+	source = python-pytest-docker-tools-3.1.9.tar.gz::https://github.com/Jc2k/pytest-docker-tools/archive/refs/tags/v3.1.9.tar.gz
+	b2sums = efad20c106bae058a5bf4eb7ced202a0018f7a3a20e3dabe9bcf893d2012b0956cbcf055c660767ed9eef607bd753245b31368c76790129888d172daf349d385
+
+pkgname = python-pytest-docker-tools
