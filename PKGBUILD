@@ -2,11 +2,11 @@
 
 pkgname=elephant-symbols
 pkgver=1.0.0
-pkgrel=25
+pkgrel=26
 pkgdesc='symbols provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
-license=('MIT')
+license=('GPL')
 makedepends=('go')
 conflicts=('elephant-symbols')
 provides=('elephant-symbols')
@@ -21,4 +21,7 @@ build() {
 package() {
     cd elephant-${pkgver}-beta-24/internal/providers/symbols
     install -Dm 755 symbols.so -t "${pkgdir}/etc/xdg/elephant/providers"
+
+    cd ../../../
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
