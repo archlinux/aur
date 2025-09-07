@@ -1,16 +1,18 @@
 pkgbase = wmpiki
 	pkgdesc = Multiping host checker dockapp for Window Maker
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://web.archive.org/web/20121031045821/http://dockapps.windowmaker.org/file.php/id/120
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-1.0-only
 	depends = libxpm
+	options = !debug
 	source = wmpiki-0.2.4.tar.gz
 	source = wmpiki.patch
+	source = docklib.patch
 	md5sums = 119c87de9c0f2aa2e496a9797b1e9055
 	md5sums = c5baaca900e6f9ccc361611d510032c2
+	md5sums = 88c1a7607f976db80e5f9bec3c8b8a73
 
 pkgname = wmpiki
-

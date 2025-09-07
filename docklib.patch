@@ -1,0 +1,20 @@
+--- docklib.h	2005-03-30 19:35:25.000000000 -0500
++++ docklib.h.diff	2025-09-07 16:28:10.876839169 -0400
+@@ -79,7 +79,7 @@ typedef struct {
+ 
+ #define NUM_COLORS  10
+ 
+-enum {          /* don't change the order! */
++static enum {          /* don't change the order! */
+     GRAY = 0,
+     YELLOW,
+     GREEN,
+@@ -92,7 +92,7 @@ enum {          /* don't change the orde
+     WHITE   
+ } led_colors;
+ 
+-enum {
++static enum {
+     F_NOT_AVAILABLE = 0,
+     F_REGULAR,
+     F_DIRECTORY,
