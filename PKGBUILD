@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=nomad-pack
-pkgver=v0.1.1
+pkgver=v0.4.0
 pkgrel=1
 pkgdesc="A templating and packaging tool used with HashiCorp Nomad."
 arch=('x86_64' 'armv7h' 'aarch64')
