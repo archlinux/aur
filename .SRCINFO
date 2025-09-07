@@ -16,7 +16,7 @@ pkgbase = 7k-ambition
 	optdepends = 7k-ambition-music>=3.0.0: for ingame music
 	provides = 7k-ambition-data
 	conflicts = 7k-ambition-data
-	source = https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v3.2.4.tar.gz
+	source = 7k-ambition-3.2.4.tar.gz::https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v3.2.4.tar.gz
 	source = 7k-ambition.sh
 	source = 7k-ambition.desktop
 	source = 7k-ambition.png

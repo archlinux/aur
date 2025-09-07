@@ -12,7 +12,7 @@ provides=("7k-ambition-data")
 depends=("openal" "desktop-file-utils" "enet" "gcc-libs" "sdl2>=2.0.4" "boost>=1.74")
 makedepends=("base-devel")
 optdepends=("7k-ambition-music>=3.0.0: for ingame music")
-source=("https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.png")
