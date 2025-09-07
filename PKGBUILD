@@ -7,7 +7,7 @@
 
 pkgname=zoom-system-qt
 pkgver=6.5.11.4015
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url=https://zoom.us/
@@ -18,7 +18,7 @@ optdepends=(
   qt5-{wayland,3d,x11extras,multimedia,imageformats,remoteobjects} ffmpeg
   chromium chromium-ffmpeg-legacy vulkan-icd-loader
 )
-options=(!strip)
+options=(!strip emptydirs)
 source=("zoom_orig-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
 noextract=(zoom_orig-${pkgver}.pkg.tar.xz) # for small BUILDDIR
 sha512sums=('c150fa1469b9f1bec922a2b47a89a9ebab322427303d37936b364c8b21f2f281debbaa265f52458ea8642df16f49790f8d82fbcbb7c7e947a331f8f91a85e302')
@@ -38,6 +38,7 @@ package() {
     --exclude opt/zoom/cef/libsqlite3.so* --exclude opt/zoom/cef/libvulkan.so*
 
   cd "$pkgdir"/opt/zoom
+  install -d Qt/lib # for ZoomWebviewHost
   #Remove Qt5 symbol ver and insecure RPATH
   for b in zoom zopen Zoom{Launcher,WebviewHost} aomhost libaomagent.so
     do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
