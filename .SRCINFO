@@ -1,7 +1,7 @@
 pkgbase = waifu-generator
 	pkgdesc = A GTK 4 application developed in Rust for generating waifus
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cleboost/waifu-generator
 	arch = x86_64
 	license = MIT
