@@ -1,7 +1,7 @@
 pkgbase = ocaml4-findlib-noframepointers
 	pkgdesc = OCaml package manager. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.
 	pkgver = 1.9.6
-	pkgrel = 8
+	pkgrel = 9
 	url = http://projects.camlcity.org/projects/findlib.html
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = ocaml4-findlib-noframepointers
 	options = !strip
 	options = staticlibs
 	options = zipman
+	backup = etc/findlib.conf
 	source = findlib-1.9.6.tar.gz::https://gentoo.osuosl.org/distfiles/28/findlib-1.9.6.tar.gz
 	b2sums = c9c98b9e92c0cf690e2c8794a1ed606c0288d49a016dfa08592c9f617be1020385f52bf37345a7cbcbc7f0fcb19750a6617036cbf90afef231eccdbc7132baf8
 
