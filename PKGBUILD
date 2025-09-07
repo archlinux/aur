@@ -3,7 +3,7 @@
 pkgname=tini
 pkgdesc='A tiny but valid `init` for containers'
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/krallin/${pkgname}"
 license=('MIT')
@@ -14,7 +14,7 @@ sha512sums=('326fd3c64a1f80abb4a3824b0c1bf0e8ea29fed0afe4d4159508bd39f2159282675
 
 build() {
     cd "${pkgname}"
-    cmake -DCMAKE_INSTALL_PREFIX='/usr' .
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX='/usr' .
     make
 }
 
