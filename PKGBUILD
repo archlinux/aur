@@ -16,7 +16,10 @@ pkgdesc='TOMOYO Linux 2.6.x userspace tools for Linux kernel 5.1 and later'
 arch=('x86_64')
 url='https://sourceforge.net/projects/tomoyo/'
 license=('GPL-2.0-only')
-depends=('ncurses>=6.0')
+depends=(
+         'glibc'
+         'ncurses>=6.0'
+        )
 optdepends=('linux: TOMOYO Linux enabled kernel')
 
 install=tomoyo-tools.install
