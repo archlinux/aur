@@ -1,0 +1,24 @@
+pkgbase = freeshow-lts
+	pkgdesc = Show song lyrics and more for free!
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = https://github.com/ChurchApps/FreeShow
+	install = freeshow-lts.install
+	arch = x86_64
+	license = GNU Lesser General Public License v3.0
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3
+	provides = freeshow
+	conflicts = freeshow
+	source_x86_64 = freeshow-lts-1.4.9.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.4.9/freeshow-1.4.9-amd64.deb
+	sha256sums_x86_64 = d9e5de445ce83fbdaf5e5f179b2b4ff51080764ec9e40fb61b5cc0ff6dd01aed
+
+pkgname = freeshow-lts
