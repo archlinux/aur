@@ -4,9 +4,9 @@ pkgrel=1
 pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
 arch=('x86_64')
 url="http://llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
-depends=("mlir>=${pkgver%%.*}")
-makedepends=('cmake' 'python' 'clang' 'llvm')
+license=('Apache-2.0 WITH LLVM-Exception')
+depends=("mlir>=${pkgver%%.*}" "clang" "llvm-libs")
+makedepends=('cmake' 'python' 'llvm')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
@@ -36,10 +36,10 @@ build() {
     -DMLIR_TABLEGEN_EXE=/usr/bin/mlir-tblgen \
     -DFLANG_INCLUDE_TESTS=OFF \
     -B build -S .
-  make -C build
+  cmake --build build
 }
 
 package() {
   cd flang-$pkgver.src
-  make DESTDIR="${pkgdir}" install -C build
+  DESTDIR="${pkgdir}" cmake --install build
 }
