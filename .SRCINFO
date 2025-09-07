@@ -1,7 +1,7 @@
 pkgbase = scolorpicker
 	pkgdesc = smooll's Color Picker
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.github.com/smooll-d/scolorpicker
 	arch = x86_64
 	license = BSD-3-Clause
