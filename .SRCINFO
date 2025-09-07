@@ -1,0 +1,21 @@
+pkgbase = opencode-git
+	pkgdesc = The AI coding agent built for the terminal.
+	pkgver = 0.6.4.r51.e915a372
+	pkgrel = 1
+	url = https://github.com/sst/opencode
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = bun-bin
+	makedepends = go
+	depends = fzf
+	depends = ripgrep
+	provides = opencode
+	conflicts = opencode-bin
+	options = !debug
+	options = !strip
+	source = opencode::git+https://github.com/sst/opencode.git
+	sha256sums = SKIP
+
+pkgname = opencode-git
