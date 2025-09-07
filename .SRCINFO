@@ -1,6 +1,6 @@
 pkgbase = python-sardana
 	pkgdesc = Instrument control and data acquisition system
-	pkgver = 3.5.2
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://gitlab.com/sardana-org/sardana
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = python-sardana
 	depends = python-pyqt5-datavisualization
 	depends = python-jsonpointer
 	depends = gobject-introspection-runtime
+	depends = python-gobject
 	depends = python-pydantic
 	depends = python-mock
 	depends = python-jsonpatch
@@ -29,7 +30,7 @@ pkgbase = python-sardana
 	optdepends = gst-editing-services
 	optdepends = gom
 	optdepends = libgexiv2
-	source = sardana-3.5.2.tar.gz::https://gitlab.com/sardana-org/sardana/-/archive/3.5.2/sardana-3.5.2.tar.gz
-	sha256sums = 1ab49c266f6e3d3143ca267a342d9a844a417b7839de432430866f8f56422105
+	source = sardana-3.6.0.tar.gz::https://gitlab.com/sardana-org/sardana/-/archive/3.6.0/sardana-3.6.0.tar.gz
+	sha256sums = 73f2849bf5e44e2b83411fe93b0b2cf98deafdf3c35aad6c185e977496a2993b
 
 pkgname = python-sardana
