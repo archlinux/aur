@@ -16,6 +16,7 @@ makedepends=(
 )
 provides=('saber')
 conflicts=('saber')
+conflicts=('saber-bin')
 source=("git+https://github.com/saber-notes/saber.git")
 md5sums=('SKIP')
 

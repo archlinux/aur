@@ -23,7 +23,7 @@ pkgbase = saber-git
 	depends = freetype2
 	depends = wmctrl
 	provides = saber
-	conflicts = saber
+	conflicts = saber-bin
 	source = git+https://github.com/saber-notes/saber.git
 	md5sums = SKIP
 
