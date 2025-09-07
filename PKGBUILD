@@ -1,23 +1,26 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Maintainer: Atarwn <a@qwa.su>
 
 pkgname=tinyfilemanager
-pkgver=2.5.3
-pkgrel=3
-pkgdesc="Web based, simple, fast and small file manager"
+pkgver=2.6
+pkgrel=1
+pkgdesc="Single-file PHP file manager"
 arch=('any')
 url="https://github.com/prasathmani/${pkgname}"
-license=('GPL3')
 depends=('php')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('56a4c46ed11cf01d72675584961e3ad6')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('d48eac2a3f56f904f5f897c63ff281fa40fd44d3bf153e70c9059b219f9d5db4051d5e087c1ab83a71f2e665d5a09bfd83edab5518d078de416e33474b4f86e0')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  install -d "${pkgdir}/usr/share/webapps/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/tinyfilemanager.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/index.php"
 
-    # Install files
-    install -d "${pkgdir}/usr/share/${pkgname}/assets"{/css,/fonts,/js}
-    install -Dm644 "${pkgname}.php" translation.json -t "${pkgdir}/usr/share/${pkgname}"
-    install -Dm644 assets/css/* -t "${pkgdir}/usr/share/${pkgname}/assets/css"
-    install -Dm644 assets/fonts/* -t "${pkgdir}/usr/share/${pkgname}/assets/fonts"
-    install -Dm644 assets/js/* -t "${pkgdir}/usr/share/${pkgname}/assets/js"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/translation.json" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/translation.json"
+
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
