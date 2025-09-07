@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.45
+pkgver=0.1.46
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -26,8 +26,8 @@ build() {
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/wayclip-cli" "$pkgdir/usr/bin/wayclip-cli"
 
-    install -Dm755 "$srcdir/wayclip-binaries/daemon" "$pkgdir/usr/bin/wayclip-daemon"
-    install -Dm755 "$srcdir/wayclip-binaries/trigger" "$pkgdir/usr/bin/wayclip-trigger"
+    install -Dm755 "$srcdir/daemon" "$pkgdir/usr/bin/wayclip-daemon"
+    install -Dm755 "$srcdir/trigger" "$pkgdir/usr/bin/wayclip-trigger"
 
     sed -i 's|__WAYCLIP_DAEMON_PATH__|/usr/bin/wayclip-daemon|' "$srcdir/$pkgname-$pkgver/assets/wayclip-daemon.service"
     install -Dm644 "$srcdir/$pkgname-$pkgver/assets/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
