@@ -1,0 +1,15 @@
+pkgbase = xchpst
+	pkgdesc = A backwards-compatible chpst implementation with new hardening options using namespaces and capabilities
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://gitlab.com/init-tools/xchpst
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = libcap
+	source = https://gitlab.com/init-tools/xchpst/-/archive/v0.6.2/xchpst-v0.6.2.tar.bz2
+	source = symlink-fix.patch::https://gitlab.com/init-tools/xchpst/-/commit/f9441286f2a39f03ecfc2e9fdc7740122dd759a2.patch
+	sha256sums = e955562197d0ef6483c153db4fa561207628ef12ca5bca4e1786af2a833acf85
+	sha256sums = c1e5d7703592011bc92ce0b499288521164028c3461190db8dec2c19ddb9a7ce
+
+pkgname = xchpst
