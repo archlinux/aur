@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "${srcdir}/json-c-json-c-${pkgver}-${pkgdate_}"
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DBUILD_TESTING=OFF -B build-${_arch} .
+    ${_arch}-cmake -DBUILD_TESTING=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build-${_arch} .
     make -C build-${_arch}
   done
 }
