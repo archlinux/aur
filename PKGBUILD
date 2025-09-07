@@ -1,7 +1,7 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="smooll's Color Picker"
 arch=("x86_64")
@@ -54,5 +54,5 @@ build() {
 
 package() {
 	cmake --install build
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $pkgname-$pkgver/LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
