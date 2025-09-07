@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
-pkgver=1.17.3
+pkgver=1.18.1
 pkgrel=1
 options=(!strip)
 pkgdesc="Bookman Cockpit"
@@ -11,13 +11,13 @@ depends=('java-environment=21' 'java21-openjfx' 'ttf-liberation')
 makedepends=('jdk17-openjdk' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
-source=("${pkgname}-${pkgver}.zip::https://bit.ly/3smjJRP"
+source=("${pkgname}-${pkgver}.zip::https://go.bookman.de/Microsoft"
         "https://maven.ej-technologies.com/repository/com/install4j/install4j-runtime/9.0.7/install4j-runtime-9.0.7.jar"
         "OperatingSystemUtil.java"
         "logback.xml"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('77547edd92e9a5ac66a3132a50020ead085a08bf3d5afc75ad138b2b0916a541'
+sha256sums=('82355647466eac428619376aab39729ed4ec5281fe0613d2d19653a868df736f'
             '5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
