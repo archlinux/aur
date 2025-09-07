@@ -6,6 +6,7 @@ pkgbase = chromium-ffmpeg-bin
 	install = chromium-ffmpeg.install
 	arch = x86_64
 	license = LGPL-2.1-or-later
+	depends = glibc
 	provides = nwjs-ffmpeg-codecs
 	provides = vivaldi-ffmpeg-codecs
 	provides = vivaldi-snapshot-ffmpeg-codecs

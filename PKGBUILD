@@ -5,6 +5,7 @@ pkgrel=3
 _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium (libavcodec 62~61 from ffmpeg.org)"
 arch=('x86_64')
+depends=(glibc)
 conflicts=({nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs chromium-ffmpeg{,-legacy}
 opera{,-developer,-beta}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
