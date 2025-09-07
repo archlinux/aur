@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-symbols')
 provides=('elephant-symbols')
 source=("${url}/archive/refs/tags/v${pkgver}-beta-23.tar.gz")
-sha256sums=('7496af78c6a535a6410abc9f712a7e9331908a7055bdb42335b653aa9acefdbd')
+sha256sums=('1f3e774784efddebc03ce3ae618999f06abebe4926e2015854017e7bdd00cfbe')
 
 build() {
     cd elephant-${pkgver}-beta-23/internal/providers/symbols
