@@ -1,7 +1,7 @@
 pkgbase = ocaml4-findlib-noframepointers
-	pkgdesc = OCaml package manager
+	pkgdesc = OCaml package manager. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.
 	pkgver = 1.9.6
-	pkgrel = 7
+	pkgrel = 8
 	url = http://projects.camlcity.org/projects/findlib.html
 	arch = x86_64
 	arch = aarch64

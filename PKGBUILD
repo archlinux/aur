@@ -1,5 +1,5 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on ocaml4-findlib PKGBUILD by:
+# Based on PKGBUILD by:
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
@@ -12,8 +12,9 @@
 # Adds AARCH64 and mirror for source tarball
 pkgname=ocaml4-findlib-noframepointers
 pkgver=1.9.6
-pkgrel=7
-pkgdesc='OCaml package manager'
+pkgrel=8
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc='OCaml package manager. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.'
 arch=(x86_64 aarch64)
 url='http://projects.camlcity.org/projects/findlib.html'
 license=(MIT)
