@@ -1,12 +1,13 @@
 pkgbase = solian
 	pkgdesc = Next Generation Network Center
-	pkgver = 3.2.0+125
+	pkgver = 3.2.0+131
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
-	makedepends = flutter
+	makedepends = unzip
+	makedepends = xz
 	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
@@ -23,7 +24,7 @@ pkgbase = solian
 	conflicts = solian-bin
 	conflicts = solian-bin-git
 	options = !debug
-	source = solian-3.2.0+125.tar.gz::https://github.com/Solsynth/Solian/archive/refs/tags/3.2.0+125.tar.gz
-	sha256sums = b80038d593b7f83b171a0d3e3104dab8881fc045c53f013e3a8e7aee705cbda2
+	source = solian-3.2.0+131.tar.gz::https://github.com/Solsynth/Solian/archive/refs/tags/3.2.0+131.tar.gz
+	sha256sums = 9788cfbeaa2159a74b3b2d58440f8063e26fee02def7fcb6931ec7f2973d807a
 
 pkgname = solian

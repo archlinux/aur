@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian
-pkgver=3.2.0+125
+pkgver=3.2.0+131
 pkgrel=1
 pkgdesc="Next Generation Network Center"
 arch=('x86_64')
@@ -10,27 +10,28 @@ url="https://solsynth.dev"
 license=('AGPL3')
 
 depends=(
-    'gtk3'
-    'libnotify'
-    'gstreamer'
-    'libayatana-appindicator'
-    'libayatana-indicator'
-    'libkeybinder3'
-    'mpv'
-    'libsecret'
+  'gtk3'
+  'libnotify'
+  'gstreamer'
+  'libayatana-appindicator'
+  'libayatana-indicator'
+  'libkeybinder3'
+  'mpv'
+  'libsecret'
 )
 makedepends=(
-    'git'
-    'flutter'
-    'clang'
-    'cmake'
-    'ninja'
+  'git'
+  'unzip'
+  'xz'
+  'clang'
+  'cmake'
+  'ninja'
 )
 provides=('solian')
 conflicts=('solian' 'solian-bin' 'solian-bin-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Solsynth/${_reponame}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b80038d593b7f83b171a0d3e3104dab8881fc045c53f013e3a8e7aee705cbda2')
+sha256sums=('9788cfbeaa2159a74b3b2d58440f8063e26fee02def7fcb6931ec7f2973d807a')
 
 options=('!debug')
 
@@ -38,43 +39,63 @@ _binname="island"
 _pkgver_fixed="${pkgver//+/-}"
 _srcdir="$_reponame-$_pkgver_fixed"
 
-prepare() {
-    export PUB_CACHE="$srcdir/pub_cache"
-    cd "$srcdir/$_srcdir"
-    sed -i 's/-Werror/-Wextra/g' linux/CMakeLists.txt
+_flutter_ver=3.32.8
+_flutter_repo=https://github.com/flutter/flutter.git
 
-    flutter clean
-    flutter pub get
-    flutter precache --linux
+prepare() {
+  cd "$srcdir"
+
+  if [[ ! -d flutter-sdk ]]; then
+    git clone --depth=1 -b "$_flutter_ver" "$_flutter_repo" flutter-sdk
+  else
+    pushd flutter-sdk >/dev/null
+    git fetch --depth=1 origin "refs/tags/$_flutter_ver:refs/tags/$_flutter_ver" || true
+    git checkout -f "tags/$_flutter_ver" || git checkout -f "$_flutter_ver"
+    popd >/dev/null
+  fi
+
+  export PUB_CACHE="$srcdir/.pub_cache"
+
+  cd "$srcdir/$_srcdir"
+  cat > pubspec_overrides.yaml <<'YAML'
+dependency_overrides:
+  vector_math: ^2.2.0
+YAML
 }
 
+
 build() {
-  export PUB_CACHE="$srcdir/pub_cache"
+  export PUB_CACHE="$srcdir/.pub_cache"
+  export PATH="$srcdir/flutter-sdk/bin:$PATH"
   export CMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL:-4}
+  export CFLAGS="${CFLAGS} -Wno-error"
+  export CXXFLAGS="${CXXFLAGS} -Wno-error"
+
   cd "$srcdir/$_srcdir"
 
-  flutter build linux --no-pub --release -v
+  flutter precache --linux
+  flutter pub upgrade --major-versions
+  flutter pub get --enforce-lockfile
+  flutter build linux --no-pub --release
 }
 
 package() {
+  cd "$srcdir/$_srcdir"
 
-    cd "$srcdir/$_srcdir"
+  install -dm755 "$pkgdir/usr/lib/solian"
+  cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/solian/"
 
-    install -dm755 "$pkgdir/usr/lib/solian"
-    cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/solian/"
-
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/solian" << EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/solian" << 'EOF'
 #!/bin/sh
 cd /usr/lib/solian
-exec ./${_binname} "\$@"
+exec ./island "$@"
 EOF
 
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 "assets/icons/icon-padded.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/solian.png"
 
-    install -Dm644 "assets/icons/icon-padded.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/solian.png"
-
-    install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/solian.desktop" << 'EOF'
+  install -dm755 "$pkgdir/usr/share/applications"
+  cat > "$pkgdir/usr/share/applications/solian.desktop" << 'EOF'
 [Desktop Entry]
 Type=Application
 Version=1.0
@@ -86,5 +107,5 @@ Terminal=false
 Categories=Network;InstantMessaging;
 EOF
 
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
