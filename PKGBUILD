@@ -47,7 +47,7 @@ package() {
   cp -a dist/linux-unpacked/* "$pkgdir/opt/$_pkgname/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  ln -s "opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
