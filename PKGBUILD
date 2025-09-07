@@ -1,13 +1,14 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on ocaml4-findlib PKGBUILD by:
+# Based on PKGBUILD by:
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=ocaml4-camlp4-noframepointers
 pkgver=4.14+1
-pkgrel=1
-pkgdesc='Caml preprocessor and pretty-printer'
+pkgrel=2
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc='Caml preprocessor and pretty-printer. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.'
 arch=(x86_64 aarch64)
 url='https://github.com/ocaml/camlp4/releases'
 license=(GPL2)

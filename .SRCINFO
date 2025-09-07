@@ -1,7 +1,7 @@
 pkgbase = ocaml4-camlp4-noframepointers
-	pkgdesc = Caml preprocessor and pretty-printer
+	pkgdesc = Caml preprocessor and pretty-printer. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.
 	pkgver = 4.14+1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml/camlp4/releases
 	arch = x86_64
 	arch = aarch64
