@@ -10,6 +10,6 @@ pkgbase = elephant-todo
 	provides = elephant-todo
 	conflicts = elephant-todo
 	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.0-beta-23.tar.gz
-	sha256sums = 7496af78c6a535a6410abc9f712a7e9331908a7055bdb42335b653aa9acefdbd
+	sha256sums = 1f3e774784efddebc03ce3ae618999f06abebe4926e2015854017e7bdd00cfbe
 
 pkgname = elephant-todo
