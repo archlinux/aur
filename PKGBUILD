@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-botorch
 _pkg="${pkgname#python-}"
-pkgver=0.7.1
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Bayesian Optimization in PyTorch'
 arch=('any')
@@ -11,10 +11,16 @@ url='https://github.com/pytorch/botorch'
 license=('MIT')
 depends=(
 	'python-gpytorch'
+	'python-linear-operator'
 	'python-multipledispatch'
+	'python-numpy'
+	'python-pyre_extensions'
 	'python-pyro-ppl'
 	'python-pytorch'
+	'python-requests'
 	'python-scipy'
+	'python-threadpoolctl'
+	'python-typing_extensions'
 	'python>=3.7')
 makedepends=(
 	'python-build'
@@ -25,7 +31,7 @@ makedepends=(
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73f2f8635fbbf1ea0a3089ea644af409468a0a24d6bdda50b094837f4bf93a28')
+sha256sums=('e1da1fb5f18fe3a2bd905b6e2c6f15f1ae8d9ded262e8816e4166aa347cbc998')
 
 build() {
 	cd "$_pkg-$pkgver"
