@@ -1,8 +1,8 @@
 # Maintainer: L B <leobaldin dot 2000 at gmail dot com>
 
 pkgname=java-openjfx-bin
-_majorver=24.0.1
-pkgver=24.0.1
+_majorver=24.0.2
+pkgver=24.0.2
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=(!strip)
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-javadoc.zip")
-sha256sums=('e12e18292b2aab45517fffa63cc6e442259b9889f4cb7ac21c61e88f2f529942'
-            '425fac742b9fbd095b2ce868cff82d1024620f747c94a7144d0a4879e756146c'
-            '39d8aa15ca13ec453373cae8e90c986357a5adb4d7c2d60936b40dd031826693')
+sha256sums=('d419c2b6e0053ee184530e39448e6abb5962a5c18143201db4adbf40db817420'
+            '20f3d03022f28039e6da2f8dce3fe42fb81e3984bbc63cc732663074fc2ecb1d'
+            '52b714a1f67f4dc04d0e481cb4c4c0d2b61e893bfcd8b1c8ea43b9a706823c0b')
 
 _jvmdir=usr/lib/jvm/java-${pkgver}-openjfx
 
