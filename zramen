@@ -1,0 +1,8 @@
+type            = scripted
+command         = /usr/bin/zramen make
+stop-command    = /usr/bin/zramen toss
+env-file        = /etc/dinit.d/config/zramen.conf
+stop-timeout    = 2
+smooth-recovery = true
+logfile         = /var/log/dinit/zramen.log
+waits-for       = swap

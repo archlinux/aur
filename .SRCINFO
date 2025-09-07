@@ -1,0 +1,18 @@
+pkgbase = zramen-dinit
+	pkgdesc = dinit service scripts for zramen
+	pkgver = 20250908
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = GLWTPL
+	depends = zramen
+	depends = dinit
+	provides = init-zramen
+	conflicts = init-zramen
+	conflicts = zramen-dinit
+	source = zramen
+	source = zramen.conf
+	sha256sums = b1c28559af2aa2000e50fa112d29402bc5cb822d3992d2abb0b97326eec42f00
+	sha256sums = 76f12a9ed0cabec4181582b9390da0bdc9da8d6510d4b81cd7c5161c97ced6c7
+
+pkgname = zramen-dinit
