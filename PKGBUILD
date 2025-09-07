@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.51
+pkgver=0.1.52
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Wayclip/cli"
 license=('MIT')
 depends=('pipewire' 'wayland' 'alsa-lib' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'dbus' 'libxcb')
 makedepends=('rust' 'cargo' 'clang' 'git')
-_core_ver="v0.1.3"
+_core_ver="v0.1.4"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/${_core_ver}/wayclip-${_core_ver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP' 'SKIP')
@@ -48,7 +48,7 @@ package() {
 
   install -Dm755 "target/release/wayclip-cli" "$pkgdir/usr/bin/wayclip-cli"
 
-  core_bin_dir="$srcdir/wayclip-core"
+  core_bin_dir="$srcdir/wayclip-core/wayclip-binaries"
   echo ">>> [package] checking for core binaries inside $core_bin_dir"
   ls -lR "$core_bin_dir" || true
 
@@ -58,13 +58,7 @@ package() {
       echo ">>> [package] found $n directly"
       install -Dm755 "$core_bin_dir/$n" "$pkgdir/usr/bin/wayclip-$n"
     else
-      found=$(find "$srcdir/wayclip-core" -type f -name "$n" -perm -111 2>/dev/null | head -n1)
-      if [ -n "$found" ]; then
-        echo ">>> [package] found $n at $found"
-        install -Dm755 "$found" "$pkgdir/usr/bin/wayclip-$n"
-      else
-        echo ">>> [package] ERROR: did not find $n!"
-      fi
+      echo ">>> [package] ERROR: did not find $n!"
     fi
   done
 
