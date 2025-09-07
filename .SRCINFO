@@ -1,7 +1,7 @@
 pkgbase = treefmt
 	pkgdesc = The formatter multiplexer
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/numtide/treefmt
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = treefmt
 	makedepends = go
 	depends = glibc
 	source = treefmt-2.3.1.tar.gz::https://github.com/numtide/treefmt/archive/refs/tags/v2.3.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 02d29561b92110e83596ec93e19c8787b31f4b3211bd0a9d2c384d1b09f74c94
+	b2sums = ac749a60c0c48f234c9c9a32aec82fb8f0103fc4aaf43d09cd91de7f2b2f8833550c39aa0653c02b81c8386831684418c862f0992bfd826ae6d3a9d97d9ee6e5
 
 pkgname = treefmt
