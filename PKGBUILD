@@ -3,7 +3,7 @@
 pkgname=lobehub-desktop-beta-bin
 _pkgver=1.124.4
 pkgver=${_pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop version of lobe-chat, an open-source, modern design AI chat framework."
 arch=('x86_64')
 url="https://github.com/lobehub/lobe-chat"
