@@ -1,7 +1,7 @@
 # Maintainer: simon0302010 <simon0302010@gmail.com>
 pkgname=metaclean-git
 _pkgname=metaclean
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="App to clean metadata from multiple images"
 arch=('any')
