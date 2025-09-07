@@ -1,13 +1,13 @@
 pkgbase = ocaml4-findlib-noframepointers
 	pkgdesc = OCaml package manager
 	pkgver = 1.9.6
-	pkgrel = 6
+	pkgrel = 7
 	url = http://projects.camlcity.org/projects/findlib.html
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = ocaml4-compiler-libs
-	depends = ocaml4
+	depends = ocaml4-compiler-libs-noframepointers
+	depends = ocaml4-noframepointers
 	provides = ocaml4-findlib=1.9.6
 	conflicts = ocaml4-findlib
 	conflicts = ocaml-findlib

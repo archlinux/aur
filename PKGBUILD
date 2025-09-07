@@ -12,12 +12,12 @@
 # Adds AARCH64 and mirror for source tarball
 pkgname=ocaml4-findlib-noframepointers
 pkgver=1.9.6
-pkgrel=6
+pkgrel=7
 pkgdesc='OCaml package manager'
 arch=(x86_64 aarch64)
 url='http://projects.camlcity.org/projects/findlib.html'
 license=(MIT)
-depends=(ocaml4-compiler-libs ocaml4)
+depends=(ocaml4-compiler-libs-noframepointers ocaml4-noframepointers)
 provides=("ocaml4-findlib=${pkgver}")
 conflicts=("ocaml4-findlib" "ocaml-findlib")
 options=(!makeflags !strip staticlibs zipman)
