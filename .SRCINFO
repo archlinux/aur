@@ -1,7 +1,7 @@
 pkgbase = ocaml4-noframepointers
-	pkgdesc = OCaml 4.x compiler (frame-pointers only on x86_64)
+	pkgdesc = A functional language with OO extensions. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.
 	pkgver = 4.14.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ocaml.org/
 	arch = x86_64
 	arch = aarch64

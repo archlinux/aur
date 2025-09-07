@@ -1,13 +1,14 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on ocaml4 PKGBUILD by:
+# Based on PKGBUILD by:
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Jürgen Hötzel <juergen@archlinux.org>
 
 pkgbase=ocaml4-noframepointers
 pkgname=(ocaml4-noframepointers ocaml4-compiler-libs-noframepointers)
 pkgver=4.14.2
-pkgrel=3
-pkgdesc="OCaml 4.x compiler (frame-pointers only on x86_64)"
+pkgrel=4
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc="A functional language with OO extensions. Patched for x86_64/aarch64 and no ocaml4 frame-pointers."
 arch=(x86_64 aarch64)
 license=(LGPL2.1 'custom: QPL-1.0')
 url="https://ocaml.org/"
