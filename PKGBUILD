@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=0.1.48
+pkgver=${PKG_VER}
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -14,6 +14,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/ta
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
+  echo ">>> [prepare] contents of \$srcdir before anything:"
+  ls -l "$srcdir"
+
   if [ -d "$srcdir/cli-$pkgver" ]; then
     mv "$srcdir/cli-$pkgver" "$srcdir/$pkgname-$pkgver"
   elif [ -d "$srcdir/wayclip-cli-$pkgver" ]; then
@@ -22,23 +25,17 @@ prepare() {
 
   mkdir -p "$srcdir/wayclip-core"
   if [ -f "$srcdir/wayclip-core.tar.gz" ]; then
-    bsdtar -xzf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/wayclip-core"
+    echo ">>> [prepare] extracting wayclip-core.tar.gz"
+    bsdtar -xvf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/wayclip-core"
   else
+    echo ">>> [prepare] looking for fallback core archive..."
     core_archive=$(ls "$srcdir"/wayclip-*-x86_64-unknown-linux-gnu.tar.gz 2>/dev/null | head -n1 || true)
-    if [ -n "$core_archive" ]; then
-      bsdtar -xzf "$core_archive" -C "$srcdir/wayclip-core"
-    fi
+    echo ">>> [prepare] found fallback core archive: $core_archive"
+    [ -n "$core_archive" ] && bsdtar -xvf "$core_archive" -C "$srcdir/wayclip-core"
   fi
 
-  if [ -d "$srcdir/wayclip-core" ]; then
-    subdirs=$(find "$srcdir/wayclip-core" -mindepth 1 -maxdepth 1 -type d | wc -l)
-    if [ "$subdirs" -eq 1 ]; then
-      for d in "$srcdir/wayclip-core"/*/; do
-        mv "$d"* "$srcdir/wayclip-core/" 2>/dev/null || true
-      done
-      find "$srcdir/wayclip-core" -mindepth 1 -maxdepth 1 -type d -exec rmdir {} \; 2>/dev/null || true
-    fi
-  fi
+  echo ">>> [prepare] contents of wayclip-core after extraction:"
+  ls -lR "$srcdir/wayclip-core"
 }
 
 build() {
@@ -52,15 +49,21 @@ package() {
   install -Dm755 "target/release/wayclip-cli" "$pkgdir/usr/bin/wayclip-cli"
 
   core_bin_dir="$srcdir/wayclip-core"
+  echo ">>> [package] checking for core binaries inside $core_bin_dir"
+  ls -lR "$core_bin_dir" || true
+
   for n in daemon trigger; do
+    echo ">>> [package] searching for $n..."
     if [ -x "$core_bin_dir/$n" ]; then
+      echo ">>> [package] found $n directly"
       install -Dm755 "$core_bin_dir/$n" "$pkgdir/usr/bin/wayclip-$n"
     else
-      found=$(find "$srcdir" -type f -name "$n" -perm -111 2>/dev/null | head -n1 || true)
+      found=$(find "$srcdir/wayclip-core" -type f -name "$n" -perm -111 2>/dev/null | head -n1 || true)
       if [ -n "$found" ]; then
+        echo ">>> [package] found $n at $found"
         install -Dm755 "$found" "$pkgdir/usr/bin/wayclip-$n"
       else
-        msg "warning: core binary '$n' not found - skipping (build will still succeed if not required)."
+        echo ">>> [package] ERROR: did not find $n!"
       fi
     fi
   done
