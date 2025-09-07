@@ -8,7 +8,7 @@ pkgname=grafana-bin
 _pkgname=grafana
 pkgver=12.1.1
 _build_id=16903967602
-pkgrel=1
+pkgrel=2
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/grafana/download?edition=oss'
 conflicts=('grafana')
@@ -35,7 +35,7 @@ sha256sums_armv7h=('89c3075e29a374a8d7070c02b53ac87ddcd283479696a2644ab1ee28f28d
 sha256sums_aarch64=('90481950c7854dfb3f941c323da2923a937681f29408f56e2dbcbe04b3dae765')
 
 prepare() {
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   # set arch linux paths
   sed -ri 's,^(\s*data\s*=).*,\1 /var/lib/grafana,' conf/defaults.ini
   sed -ri 's,^(\s*plugins\s*=).*,\1 /var/lib/grafana/plugins,' conf/defaults.ini
@@ -48,7 +48,7 @@ package() {
   install -Dm644 grafana.sysusers "$pkgdir/usr/lib/sysusers.d/grafana.conf"
   install -Dm644 grafana.service "$pkgdir/usr/lib/systemd/system/grafana.service"
 
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
   install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
   install -Dm755 bin/grafana "$pkgdir/usr/bin/grafana"
