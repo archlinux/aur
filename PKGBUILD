@@ -2,7 +2,7 @@
 
 _pkgname=python-bigquery-storage
 pkgname=python-google-cloud-bigquery-storage
-pkgver=2.32.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
@@ -35,28 +35,32 @@ optdepends=(
 # )
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('46a568e0ec8a72b84586f57f61516c032ed3f67e58a879bb024dd05f2392162b16e63d8ad78a3341deb36b413d8fd20f2159d358a6795bde29dd23de93d50cc0')
+b2sums=('9882e4380858bae87945773a5e4f89b403e21e24aac79003cf402f9f600e196fee869a12df1e4f6c7ccee40002225bbd184a0f80f91bddc8788c8db501cc03b5')
 
 build() {
   cd ${_pkgname}-${pkgver}
+
   python -m build \
     --wheel \
     --no-isolation
 
-  cd docs
-  PYTHONPATH=../ sphinx-build -b man ./ _build
+  (
+    cd docs
+
+    PYTHONPATH=../ sphinx-build -b man ./ _build
+  )
 }
 
 ## FIXME: test plugins conflict
 # check() {
 #   cd ${_pkgname}-${pkgver}
+#
 #   PYTHONPATH="{$PWD}" pytest -x --disable-warnings
 # }
 
 package() {
-  local _site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-
   cd ${_pkgname}-${pkgver}
+
   python -m installer \
     --destdir="${pkgdir}" \
     dist/*.whl
@@ -69,6 +73,8 @@ package() {
 
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
 
+  local _site_packages
+  _site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
   ln -sr -t "${pkgdir}"/usr/share/licenses/${pkgname} \
     "${pkgdir}"/${_site_packages}/google_cloud_bigquery_storage-${pkgver}.dist-info/LICENSE
 }
