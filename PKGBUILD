@@ -46,7 +46,7 @@ build() {
   ' sh {} +
 
   svgo . -r --multipass
-  # oxipng -o max -r -p -s -v -t 4 --timeout 150 ./{.github,assets,assets_raw,lib,linux,metadata,packages,submodules,test}
+  oxipng -o max -r -p -s -v -t 4 --timeout 150 ./{.github,assets,assets_raw,lib,linux,metadata,packages,submodules,test}
 
   sh patches/remove_proprietary_dependencies.sh
 
