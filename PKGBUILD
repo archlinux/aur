@@ -4,7 +4,7 @@ _gitname=pvr.hts
 pkgver=21.2.6
 
 _gitver=branch=Omega
-pkgrel=2
+pkgrel=3
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/$_gitname"
@@ -21,7 +21,7 @@ _prefix='/usr'
 
 prepare() {
   cd "$srcdir/$_gitname"
-  git apply ../../0001-Add-missing-include.patch
+  git apply "${srcdir}/0001-Add-missing-include.patch"
 }
 
 build() {
