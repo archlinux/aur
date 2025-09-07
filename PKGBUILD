@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=mdcx
-pkgver=120250810
+pkgver=220250909
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -30,19 +30,23 @@ depends=(
     "xcb-util-renderutil"
     "xcb-util-wm"
 )
-makedepends=("python311")
+makedepends=("python" "uv")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('8060553c239ca85b21c22037a3bdd9d194c844bfd2048dfd6bd9912d1711ebe3'
+sha256sums=('3564556cab3347f7ea49a9d71b086deaade22e4a38bc890e45348a444fe6d46d'
             '90a66bc7a210b3f3d574a5050e27114aa1fc4d60479d359424d57b20b1526f23'
             'bd10755b15288986c03168ba8dd13d9f762fa128ded082d14b036d0934e9f05d')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python3.11 -m venv .venv
+    uv sync \
+        --frozen \
+        --no-cache \
+        --no-editable \
+        --no-install-project \
+        --active
     source .venv/bin/activate
-    pip install -r requirements.txt pyinstaller
     pyi-makespec \
         --add-data "resources:resources" \
         --collect-all "curl_cffi" \
