@@ -1,0 +1,15 @@
+pkgbase = clang-include-graph-bin
+	pkgdesc = A tool to generate include dependency graphs for C/C++ projects.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bkryza/clang-include-graph
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = clang
+	depends = boost-libs
+	source = clang-include-graph-bin-0.2.0-x86_64.tar.gz::https://github.com/ViktorTrojan/clang-include-graph/releases/download/0.2.0/clang-include-graph-0.2.0-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = clang-include-graph-bin
