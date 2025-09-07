@@ -3,8 +3,8 @@
 
 _pkgname="clai"
 pkgname="${_pkgname}-bin"
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/baalimago/${_pkgname}"
@@ -27,9 +27,9 @@ sha256sums=('c8708634e9bd7d9be48915ab42cd58869114df0925af3536c21cf520d9391b28'
             '81abc6b6ae091984b5defa45e236462099a0f95afd211b5a39c7b70c8926decb'
             '824075343fe6b2f0bda7a627bec99f826e86571fee6c393812315f265d82a741'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_aarch64=('103dd8cfe6132384a961b5b4202913321a8ccbfaff50cc52d8e3cc99edecdbb8')
-sha256sums_i686=('655ff232007f77153a3a48fcf175199352d55015f78c2e68bc6cfb46ae82b88c')
-sha256sums_x86_64=('6ba9b7e271616ed5d6118778b8df4f043d3685bf40ab172450fa871a8a4ca734')
+sha256sums_aarch64=('ab07efadf2536922635a84e2a58b8b3d6547878d892ca8f44a75d3c0c49758b5')
+sha256sums_i686=('7321b4ff0efec6efb381eefb5f1fa7bd315f6a8934d9c506c07651903db7b0bf')
+sha256sums_x86_64=('a44409fcfc12054dd665a5d1f8ce52124be38fd66f18a39014ef7982d54c1034')
 
 package() {
   cd "${srcdir}"
