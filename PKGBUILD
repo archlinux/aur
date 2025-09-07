@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-uart
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="UART modules for cocotb"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-cocotb')
 makedepends=('python-setuptools')
 
 source=("cocotbext-uart-$pkgver.tar.gz::https://github.com/alexforencich/cocotbext-uart/archive/v$pkgver.tar.gz")
-sha256sums=('50cc82a39b010c6979fd80784e8966f01b9efe44301a871548eb5350bc6e4561')
+sha256sums=('a1d2d18b6c87b346e3649cd426f328fc219866eb3e113c7b6c60e05ce48a46fd')
 
 build() {
     cd "$srcdir/cocotbext-uart-$pkgver"
