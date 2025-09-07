@@ -6,19 +6,20 @@ pkgbase = zoom-system-qt
 	license = LicenseRef-zoom
 	makedepends = patchelf
 	makedepends = binutils
-	optdepends = qt5-wayland: zoomus.conf xwayland=false
 	optdepends = qt5-webengine: SSO login
-	optdepends = xdg-desktop-portal-impl: Screen sharing,etc... for Wayland
+	optdepends = xdg-desktop-portal-impl: Screen sharing on Wayland
+	optdepends = qt5-wayland
 	optdepends = qt5-3d
 	optdepends = qt5-x11extras
 	optdepends = qt5-multimedia
 	optdepends = qt5-imageformats
 	optdepends = qt5-remoteobjects
 	optdepends = ffmpeg
-	optdepends = zoom-system-qt-cef: zoomus.conf disableCef=false
+	optdepends = chromium
+	optdepends = chromium-ffmpeg-legacy
+	optdepends = vulkan-icd-loader
 	noextract = zoom_orig-6.5.11.4015.pkg.tar.xz
 	options = !strip
-	options = emptydirs
 	source = zoom_orig-6.5.11.4015.pkg.tar.xz::https://zoom.us/client/6.5.11.4015/zoom_x86_64.pkg.tar.xz
 	sha512sums = c150fa1469b9f1bec922a2b47a89a9ebab322427303d37936b364c8b21f2f281debbaa265f52458ea8642df16f49790f8d82fbcbb7c7e947a331f8f91a85e302
 
@@ -27,6 +28,7 @@ pkgname = zoom-system-qt
 	depends = ocl-icd
 	depends = mpg123
 	depends = libxtst
+	depends = sqlite
 	depends = quazip-qt5
 	depends = qt5-base
 	depends = qt5-graphicaleffects
@@ -36,10 +38,4 @@ pkgname = zoom-system-qt
 	depends = qt5-declarative
 	provides = zoom
 	conflicts = zoom
-
-pkgname = zoom-system-qt-cef
-	pkgdesc = CEF for vebview of zoom-system-qt
-	depends = zoom-system-qt
-	depends = sqlite
-	optdepends = chromium
-	optdepends = chromium-ffmpeg-legacy
+	replaces = zoom-system-qt-cef
