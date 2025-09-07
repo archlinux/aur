@@ -1,0 +1,10 @@
+--- chrome/browser/ui/task_manager/BUILD.gn	2025-08-26 22:49:50.000000000 +0200
++++ chrome/browser/ui/task_manager/BUILD.gn	2025-09-07 11:31:08.812271538 +0200
+@@ -27,7 +27,6 @@
+       "//content/public/common",
+       "//content/public/common:result_codes",
+       "//third_party/icu:icui18n",
+-      "//third_party/icu:icui18n_hidden_visibility",
+       "//third_party/icu:icuuc_public",
+     ]
+   }

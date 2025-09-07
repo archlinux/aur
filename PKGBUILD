@@ -4,9 +4,9 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=139.0.7258.154
+pkgver=140.0.7339.41
 pkgrel=1
-_manual_clone=1
+_manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
@@ -23,24 +23,30 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
+        chromium-140.0.7339.41-rust.patch
         abseil-fix-missing-algorithm.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
-        fix-undeclared-isnan.patch)
-sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
+        fix-undeclared-isnan.patch
+        remove-unused-icu-targets.patch
+)
+sha256sums=('68876365a4f8c566bb45119a615784f932718d89eb6be0744fd8982de7316c2d'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
-            'a6507371588ed4d87d6501220249264abfbcd814771cc1ba351e0ac6cc987400'
+            '75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
+            '0eb47afd031188cf5a3f0502f3025a73a1799dfa52dff9906db5a3c2af24e2eb'
             SKIP
             SKIP
             SKIP
             SKIP
             SKIP
             SKIP
-            SKIP)
+            SKIP
+            SKIP
+)
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
@@ -197,6 +203,7 @@ prepare() {
 
   # Fixes from NixOS
   patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
+  patch -Np1 -i ../chromium-140.0.7339.41-rust.patch
 
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
@@ -214,6 +221,8 @@ prepare() {
 
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
+
+  patch -p0 -i ../remove-unused-icu-targets.patch
 
   if (( _system_abseil )); then
     # Fixes building with system Abseil
