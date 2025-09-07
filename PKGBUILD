@@ -1,6 +1,6 @@
 # Maintainer: Leonardo Trapani <leo@trapani.sh>
 pkgname=hyprvoice-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Voice-powered typing for Wayland/Hyprland"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "hyprvoice-${pkgver}::https://github.com/leonardotrapani/hyprvoice/releases/download/${pkgver}/hyprvoice-linux-x86_64"
     "hyprvoice.service"
 )
-sha256sums=('576026ab299d39e2062acb1168a3108d215fbb3d1ec80b3beca76f6206d462fe'
+sha256sums=('aac0ba89ff96104b526bdbca7e70da17b6c77c44925181a1b9dafc65ca9b3da4'
             '8a9a764753c740a6c76e4173ccfb97b6e984ba52978124e307cebc9d62ed2596')
 install=hyprvoice.install
 
