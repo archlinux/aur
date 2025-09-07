@@ -1,7 +1,7 @@
 pkgbase = python-factoriocalc
 	pkgdesc = A python module to help you plan your factory for Factorio.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FactorioCalc/FactorioCalc/
 	arch = any
 	license = AGPL-3.0-or-later
