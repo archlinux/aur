@@ -1,0 +1,16 @@
+pkgbase = gitagrip-bin
+	pkgdesc = A fast TUI application for discovering, grouping, and inspecting multiple Git repositories
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/darksworm/gitagrip
+	license = GPL-3.0
+	conflicts = gitagrip
+	provides = gitagrip
+	arch = aarch64
+	source_aarch64 = https://github.com/darksworm/gitagrip/releases/download/v1.0.5/gitagrip-1.0.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 45e3f01a771ab42e21ec7d0da5c8b8386ce12422f15c4b6205df9bceea5e3117
+	arch = x86_64
+	source_x86_64 = https://github.com/darksworm/gitagrip/releases/download/v1.0.5/gitagrip-1.0.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = f41c53cc3484f51fa994093b273214a1e70f9252c36da2c6fd14c7b0f533b3c3
+	
+pkgname = gitagrip-bin
