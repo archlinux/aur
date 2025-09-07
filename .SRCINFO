@@ -5,7 +5,7 @@ pkgbase = tomoyo-tools
 	url = https://sourceforge.net/projects/tomoyo/
 	install = tomoyo-tools.install
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = ncurses>=6.0
 	optdepends = linux: TOMOYO Linux enabled kernel
 	source = https://sourceforge.net/projects/tomoyo/files/tomoyo-tools/2.6/tomoyo-tools-2.6.1-20250707.tar.gz
