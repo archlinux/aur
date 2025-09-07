@@ -1,0 +1,20 @@
+pkgbase = aee-anoraktrend-git
+	pkgdesc = Another Easy Editor - a simple, easy to use terminal-based screen oriented editor
+	pkgver = 2.2.22.r25.c77b92a
+	pkgrel = 1
+	url = https://helltop.net/projects
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = custom:Artistic
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = libncursesw.so
+	provides = aee
+	conflicts = aee
+	conflicts = aee-git
+	source = git+https://github.com/anoraktrend/aee.git
+	sha256sums = SKIP
+
+pkgname = aee-anoraktrend-git
