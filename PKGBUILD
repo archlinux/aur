@@ -15,7 +15,7 @@ optdepends=('nrf5x-command-line-tools: for flashing the firmware'
 install="${pkgname}.install"
 license=(custom)
 options=(!strip)
-source=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-Sniffer/sw/nrf_sniffer_for_bluetooth_le_${pkgver}.zip"
+source=("https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-sniffer/sw/nrf_sniffer_for_bluetooth_le_${pkgver}.zip"
         'nrf_sniffer_ble.sh'
         '0001-drop-Filelock-use.patch'
         '0002-string-escape-fix.patch'
