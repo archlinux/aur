@@ -1,0 +1,14 @@
+pkgbase = centerpiece
+	pkgdesc = Your trusty omnibox search
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/friedow/centerpiece
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = centerpiece-1.1.1.tar.gz::https://github.com/friedow/centerpiece/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = centerpiece
