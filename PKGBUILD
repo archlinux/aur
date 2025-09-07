@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-i2c-git
-pkgver=0.1.0.r0.gf0188c2
+pkgver=0.1.2.r0.g05b79c0
 pkgrel=1
 pkgdesc="I2C modules for cocotb"
 arch=('any')
