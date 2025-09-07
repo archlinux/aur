@@ -1,12 +1,14 @@
 pkgbase = python-pyedbglib
 	pkgdesc = Low-level protocol library for communicating with Microchip CMSIS-DAP based debuggers
-	pkgver = 2.23.0.14
+	pkgver = 2.24.2.18
 	pkgrel = 1
 	url = https://github.com/microchip-pic-avr-tools/pyedbglib
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/py3/p/pyedbglib/pyedbglib-2.23.0.14-py3-none-any.whl
-	sha256sums = 34ea897d2e1793d970e4a5a4f7d61539cad6f3db255d82c541495323c7e2bfe3
+	depends = python-pyserial
+	depends = python-hidapi
+	source = https://files.pythonhosted.org/packages/py3/p/pyedbglib/pyedbglib-2.24.2.18-py3-none-any.whl
+	sha256sums = 3fee579bad04c71da85de4a2ec68f6f3d4bd8bacded7fb3b671c8831ed3366c2
 
 pkgname = python-pyedbglib
