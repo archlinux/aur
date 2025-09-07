@@ -1,6 +1,6 @@
 pkgbase = fjordlauncher-bin
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
-	pkgver = 9.4.0
+	pkgver = 9.4.1
 	pkgrel = 1
 	url = https://github.com/unmojang/FjordLauncher
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = fjordlauncher-bin
 	optdepends = flite: minecraft voice narration
 	provides = fjordlauncher
 	conflicts = fjordlauncher
-	noextract = FjordLauncher-Linux-Qt6-Portable-9.4.0.tar.gz
-	source = https://github.com/unmojang/FjordLauncher/releases/download/9.4.0/FjordLauncher-Linux-Qt6-Portable-9.4.0.tar.gz
-	sha256sums = b83f7476c64f4db4e2c1a6166d32fb2e8f001720f96093fa9800578e0e33f5f3
+	noextract = FjordLauncher-Linux-Qt6-Portable-9.4.1.tar.gz
+	source = https://github.com/unmojang/FjordLauncher/releases/download/9.4.1/FjordLauncher-Linux-Qt6-Portable-9.4.1.tar.gz
+	sha256sums = 13012c8bb6689bcc25a8ea72d878c286a3648903ccdf283cebce514072ea2f45
 
 pkgname = fjordlauncher-bin
