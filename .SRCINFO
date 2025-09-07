@@ -1,7 +1,7 @@
 pkgbase = grabit
 	pkgdesc = Screenshot, screen recording, and file uploader with OCR support for Zipline and other services
 	pkgver = 1.0.8
-	pkgrel = 2
+	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit.git
 	arch = any
 	license = BSD

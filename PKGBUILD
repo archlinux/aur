@@ -1,6 +1,6 @@
 pkgname=grabit
 pkgver=1.0.8
-pkgrel=2
+pkgrel=1
 pkgdesc="Screenshot, screen recording, and file uploader with OCR support for Zipline and other services"
 arch=('any')
 url="https://heliopolis.live/creations/grabit.git"
