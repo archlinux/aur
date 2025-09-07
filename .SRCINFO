@@ -1,13 +1,13 @@
 pkgbase = python-cocotbext-i2c
 	pkgdesc = I2C modules for cocotb
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-i2c
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-cocotb
-	source = cocotbext-i2c-0.1.0.tar.gz::https://github.com/alexforencich/cocotbext-i2c/archive/v0.1.0.tar.gz
-	sha256sums = ff5d87849a3d8da87942dd465f6bcefb57edfe21e9540c0f5a6c863f2bfa3c83
+	source = cocotbext-i2c-0.1.2.tar.gz::https://github.com/alexforencich/cocotbext-i2c/archive/v0.1.2.tar.gz
+	sha256sums = bfe302e26167121fa9adeb0fa3cf231461f962536bd2f0be4017747f60a710f6
 
 pkgname = python-cocotbext-i2c
