@@ -1,0 +1,43 @@
+pkgbase = mldonkey-noframepointers-git
+	pkgdesc = A multi-network P2P client
+	pkgver = 3.2.1.r14.g0d446356
+	pkgrel = 1
+	url = https://github.com/ygrek/mldonkey
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = gtk2
+	makedepends = librsvg
+	makedepends = ocaml4-noframepointers
+	makedepends = ocaml4-camlp4-noframepointers
+	makedepends = ocaml4-lablgtk2-noframepointers
+	makedepends = ocaml4-num-noframepointers
+	makedepends = wget
+	depends = file
+	depends = gd
+	depends = hicolor-icon-theme
+	depends = libnatpmp
+	depends = miniupnpc
+	depends = crypto++
+	depends = libminiupnpc.so
+	optdepends = librsvg: GUI support
+	optdepends = gtk2: GUI support
+	provides = mldonkey=3.2.1.r14.g0d446356
+	provides = mldonkey-git=3.2.1.r14.g0d446356
+	conflicts = mldonkey
+	conflicts = mldonkey-git
+	options = !lto
+	backup = etc/conf.d/mldonkey
+	source = git+https://github.com/ygrek/mldonkey.git
+	source = mldonkey.conf
+	source = mldonkey.service
+	source = mldonkey.tmpfiles
+	source = mldonkey.sysusers
+	sha256sums = SKIP
+	sha256sums = f1d9401cefd591662d49011c53fdb2788755a6f745a963e46d8037b990edeb6a
+	sha256sums = 778cebe8edcffd63db3594054c2daa62ce571644a96ad235b8c95470b55c0415
+	sha256sums = 9c78fbfbba4f8286e2c2299e4da6f76d0f34f33fde26964922707c34fb75157b
+	sha256sums = 24d7ef8f6af93a8d87a82842b0ed796e35ce2f88d81734d9275eede8f4e10fba
+
+pkgname = mldonkey-noframepointers-git
