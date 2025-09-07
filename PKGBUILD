@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -22,7 +22,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('3169b857336b2d01d06f82b69642ab11704a63888b353338df29bc0a8b5c008a'
+sha256sums=('706cb7f9b50210d6d73c3dcbfe3740be1b51e0dee32dcb6318d728a550782507'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
