@@ -79,6 +79,7 @@ else
       --machine="${user}@.host" \
       --user \
       --no-block \
+      --quiet \
       "$(realpath "${BASH_SOURCE[0]}")" --use-environment --skip-global-config
   done
 fi
