@@ -1,0 +1,17 @@
+pkgbase = python-factoriocalc
+	pkgdesc = A python module to help you plan your factory for Factorio.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/FactorioCalc/FactorioCalc/
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.7
+	source = python-factoriocalc-0.3.0.tar.gz::https://github.com/FactorioCalc/FactorioCalc//archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = f6172a247733bfb3b955bec2f69a6e21c0c6080b4ec9fe5c5fce7a02f57adb67
+
+pkgname = python-factoriocalc
