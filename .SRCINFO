@@ -1,7 +1,7 @@
 pkgbase = gnome-icon-theme
 	pkgdesc = GNOME icon theme
 	pkgver = 3.12.0
-	pkgrel = 7
+	pkgrel = 9
 	url = http://www.gnome.org
 	arch = any
 	license = GPL

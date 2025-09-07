@@ -3,7 +3,7 @@
 
 pkgname=gnome-icon-theme
 pkgver=3.12.0
-pkgrel=7
+pkgrel=9
 pkgdesc="GNOME icon theme"
 arch=(any)
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'gnome-icon-theme-symbolic')
