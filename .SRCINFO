@@ -1,7 +1,7 @@
 pkgbase = winboat-git
 	pkgdesc = Run Windows apps on Linux with seamless integration
-	pkgver = r94.8c04abb
-	pkgrel = 2
+	pkgver = r125.221847b
+	pkgrel = 1
 	url = https://github.com/TibixDev/winboat
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = winboat-git
 	makedepends = go
 	makedepends = git
 	depends = docker
+	depends = electron
 	depends = docker-compose
 	depends = freerdp
 	depends = gtk3
