@@ -2,11 +2,11 @@
 
 pkgname=elephant-calc
 pkgver=1.0.0
-pkgrel=25
+pkgrel=26
 pkgdesc='calc provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
-license=('MIT')
+license=('GPL')
 depends=('libqalculate')
 makedepends=('go')
 conflicts=('elephant-calc')
@@ -22,4 +22,7 @@ build() {
 package() {
     cd elephant-${pkgver}-beta-24/internal/providers/calc
     install -Dm 755 calc.so -t "${pkgdir}/etc/xdg/elephant/providers"
+
+    cd ../../../
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
