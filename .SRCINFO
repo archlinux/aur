@@ -1,6 +1,6 @@
 pkgbase = windowtolayer-git
 	pkgdesc = Modify existing Wayland clients using xdg-shell to draw as a wallpaper instead
-	pkgver = 0.2.0.r1.g5ddb3a2
+	pkgver = 0.3.0.r0.g56687aa
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/windowtolayer
 	arch = i686
