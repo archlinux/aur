@@ -1,7 +1,7 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="intiface-central-bin"
-pkgver="2.6.7"
-pkgrel=2
+pkgver="2.6.8"
+pkgrel=1
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
 url="https://github.com/intiface/intiface-central"
@@ -11,12 +11,12 @@ provides=('intiface-central')
 conflicts=('intiface-central')
 source=(intiface_central.desktop
         run_intiface_central
-        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/intiface-central-v$pkgver-linux-ubuntu-22.04-x64.zip"
+        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/intiface_central_v$pkgver-linux-ubuntu-22.04-x64.zip"
         "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/intiface-central/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md"
 )
 sha256sums=('SKIP'
             'SKIP'
-	    'c3287fc6c28277bf5b71901df492e7c79c885fe3e9837b784eb4bde4216f72f5'
+	    'd673583ac9f55fc3984befafaefac8edbfd2cb1084ef7437c5ea81d0fa960c9c'
             'dc655c315ad5be39813e01861af04a2ef2c153e5bf3011df2c1c1275577e8916'
 )
 
