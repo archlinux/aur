@@ -7,6 +7,6 @@ pkgbase = mcsr-launcher
 	license = GPL3
 	depends = java-runtime
 	source = https://github.com/MCSRLauncher/Launcher/releases/download/v3.2.0/MCSRLauncher.jar
-	sha256sums = SKIP
+	sha256sums = 1a897d4d0f2fda1c7c33bbfde168d70fc81c8494e82f4ad7bb428ac1032e0624
 
 pkgname = mcsr-launcher
