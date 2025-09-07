@@ -1,7 +1,7 @@
 pkgbase = mldonkey-noframepointers-git
-	pkgdesc = A multi-network P2P client
+	pkgdesc = A multi-network P2P client. Patched for x86_64/aarch64 and no ocaml4 frame-pointers
 	pkgver = 3.2.1.r14.g0d446356
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ygrek/mldonkey
 	arch = x86_64
 	arch = aarch64
