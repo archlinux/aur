@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Multi-Level IR Compiler Framework for LLVM"
 arch=('x86_64')
 url="https://mlir.llvm.org/"
-license=("custom:Apache 2.0 with LLVM Exception")
+license=("Apache-2.0 WITH LLVM-exception")
 depends=("llvm-libs")
 makedepends=("cmake" "llvm>=${pkgver%%.*}")
 options=(!lto)
