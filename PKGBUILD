@@ -3,7 +3,7 @@
 
 _name=rofi-blocks
 pkgname=${_name}-git
-pkgver=r5.e46b5a4
+pkgver=r170.d75a9da
 pkgrel=1
 pkgdesc="Rofi modi for controlling rofi content through communication with an external program"
 arch=("any")
@@ -15,6 +15,7 @@ source=("git+https://github.com/OmarCastro/rofi-blocks")
 md5sums=('SKIP')
 
 pkgver() {
+  cd ${_name}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD | sed 's/-/./g')"
 }
 
