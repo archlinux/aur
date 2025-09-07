@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 
-_upstreamver='2.1.2'
+_upstreamver='2.1.3'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='periodic-table-cli'
@@ -19,9 +19,9 @@ optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 conflicts=("${_pypi_package}-js")
 provides=("${_pypi_package}")
-_blake2b_256="f2b3de99f3bd627440d8fddfc3765ec3ca4fca816d6f237e0f0fefe95c065e8f"
+_blake2b_256="fb59de22ad1e6d2a851c042e9ba0beff1cdd1c13236a8887b27f835d4b6941cf"
 source=("https://files.pythonhosted.org/packages/${_blake2b_256:0:2}/${_blake2b_256:2:2}/${_blake2b_256:4}/${_pypi_package//-/_}-${_upstreamver}.tar.gz")
-sha256sums=('1678af018f5131ec466cd6ecd05cf3330572cba65c9ea481e33c4303204ddef3')
+sha256sums=('89ec4d321254fb88b7ff06fc85d0c030961b2523fc7f46cfa0007ec3a0638cf5')
 
 
 build() {
