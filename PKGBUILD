@@ -1,6 +1,6 @@
 pkgname=hdrmerge
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc='HDRMerge fuses two or more raw images into a single raw with an
 extended dynamic range.'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cd ${srcdir}/${pkgname}
-	cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr
+	cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make
 }
 
