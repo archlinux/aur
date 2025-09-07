@@ -1,13 +1,13 @@
 pkgbase = ocaml4-num-noframepointers
 	pkgdesc = Library for arbitrary-precision integer and rational arithmetic that used to be part of the OCaml core distribution
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml/num
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-only
-	makedepends = ocaml4-findlib
-	depends = ocaml4
+	makedepends = ocaml4-findlib-noframepointers
+	depends = ocaml4-noframepointers
 	provides = ocaml4-num=1.4
 	conflicts = ocaml4-num
 	conflicts = ocaml-num
