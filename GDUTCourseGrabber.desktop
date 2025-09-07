@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GDUTCourseGrabber
+Exec=/usr/bin/GDUTCourseGrabber
+Terminal=false
+Type=Application
+Icon=GDUTCourseGrabber
+Comment=GDUTCourseGrabber Desktop App
+Categories=Network

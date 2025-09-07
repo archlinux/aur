@@ -1,0 +1,28 @@
+# Maintainer: xihale <xihale.top@qq.com>
+
+pkgname="gdut_course_grabber"
+pkgver=3.0.0
+pkgrel=0
+pkgdesc="GDUT抢课助手"
+arch=("x86_64" "arm64")
+license=('AGPL3')
+url="https://github.com/GDUTMeow/GDUTCourseGrabber"
+
+source_x86_64=(GDUTCourseGrabber.zip::"https://github.com/GDUTMeow/GDUTCourseGrabber/releases/download/v${pkgver}/GDUTCourseGrabber-v${pkgver}-Linux-x64-gnu.zip")
+sha256sums_x86_64=(400b53ed04fa158459ba9be96c4b8bc1081a24192af60a682dc815e3812b5135)
+source_arm64=(GDUTCourseGrabber.zip::"https://github.com/GDUTMeow/GDUTCourseGrabber/releases/download/v${pkgver}/GDUTCourseGrabber-v${pkgver}-Linux-arm64-gnu.zip")
+sha256sums_arm64=(344c44397a3f2a5d2aeea803b6ced90720ea5859764d8a5cae09a0312a15164a)
+
+source+=("GDUTCourseGrabber.png" "GDUTCourseGrabber.desktop")
+sha256sums+=('5404b56b350d1ef75dfb58087968c5f658e0838e5f8980047a257b6bbf67e730'
+  'fb25f26a362abd7a8a019091f7243638fac139fb1dc81a12efc190775d99570d')
+
+package() {
+
+  _app_name=$pkgname
+
+  install -Dm644 "${srcdir}/GDUTCourseGrabber.png" -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm644 "${srcdir}/GDUTCourseGrabber.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm755 "${srcdir}/GDUTCourseGrabber" "${pkgdir}/usr/bin/GDUTCourseGrabber"
+
+}
