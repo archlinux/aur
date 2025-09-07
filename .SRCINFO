@@ -1,0 +1,20 @@
+pkgbase = lua-luarocks-build-xmake
+	pkgdesc = A luarocks build module based on xmake
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/xmake-io/luarocks-build-xmake
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = luarocks
+	depends = xmake
+	source = https://luarocks.org/manifests/waruqi/luarocks-build-xmake-1.4-1.rockspec
+	sha256sums = 213f85444b990c635f1d96096c40557c0803d7b9b765c0fb8a0c0686b7bd4249
+
+pkgname = lua-luarocks-build-xmake
+
+pkgname = lua51-luarocks-build-xmake
+
+pkgname = lua52-luarocks-build-xmake
+
+pkgname = lua53-luarocks-build-xmake
