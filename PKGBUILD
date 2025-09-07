@@ -52,7 +52,7 @@ build() {
 
   flutter build linux --release
 
-  sed -i 's|^Exec=.*|Exec=sh -c '\''saber \& while ! wmctrl -l \| grep -i saber; do sleep 0.5; done; wmctrl -r saber -b add,maximized_vert,maximized_horz'\''|' flatpak/com.adilhanney.saber.desktop
+  #sed -i 's|^Exec=.*|Exec=sh -c '\''saber \& while ! wmctrl -l \| grep -i saber; do sleep 0.5; done; wmctrl -r saber -b add,maximized_vert,maximized_horz'\''|' flatpak/com.adilhanney.saber.desktop
   sed -i 's|^Icon=.*|Icon=saber|' flatpak/com.adilhanney.saber.desktop
 }
 
