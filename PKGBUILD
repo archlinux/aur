@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Saber Notes – A Flutter-based desktop note-taking app"
 arch=('x86_64')
 url="https://github.com/saber-notes/saber"
-license=('MIT')
+license=('GPL-3.0')
 depends=(
   'gtk3' 'libx11' 'libxcomposite' 'libxrandr' 'libxdamage' 'libxext' 'libxfixes'
   'glib2' 'pango' 'cairo' 'fontconfig' 'freetype2' 'wmctrl'
