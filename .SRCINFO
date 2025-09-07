@@ -1,9 +1,10 @@
 pkgbase = anitr-cli
 	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
-	pkgver = 4.5.5
+	pkgver = 4.5.5.1
 	pkgrel = 1
 	url = https://github.com/axrona/anitr-cli
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = go
 	makedepends = git
@@ -12,7 +13,7 @@ pkgbase = anitr-cli
 	optdepends = rofi-wayland: Wayland kullanıcıları için GUI
 	optdepends = yt-dlp: Anime indirme özelliği için
 	optdepends = youtube-dl: Anime indirme özelliği için
-	source = anitr-cli-4.5.5.tar.gz::https://github.com/axrona/anitr-cli/archive/refs/tags/v4.5.5.tar.gz
+	source = anitr-cli-4.5.5.1.tar.gz::https://github.com/axrona/anitr-cli/archive/refs/tags/v4.5.5.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = anitr-cli
