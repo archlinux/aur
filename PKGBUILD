@@ -1,29 +1,48 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Filipe Nascimento <flipee at tuta dot io>
 # Contributor: Simon Doppler <dop dot simon at gmail dot com>
-
 pkgname=python-colored
 _name=${pkgname#python-}
-pkgver=2.2.4
+pkgver=2.3.1
 pkgrel=1
-pkgdesc="Very simple Python library for color and formatting in terminal"
+pkgdesc="Simple python library for color and formatting to terminal"
 arch=('any')
-url="https://gitlab.com/dslackw/colored"
+url="https://dslackw.gitlab.io/colored"
 license=('MIT')
 depends=('python')
-makedepends=(python-build python-flit python-installer python-wheel)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-        "LICENSE")
-sha256sums=('595e1dd7f3b472ea5f12af21d2fec8a2ea2cf8f9d93e67180197330b26df9b61'
-            '6e38bc085fb26b5aa0db7b77be9893a805cce0badb2c2950d2fd36626b9a8dd1')
+makedepends=(
+  'python-build'
+  'python-flit'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=('python-pytest')
+source=("https://gitlab.com/dslackw/colored/-/archive/$pkgver/$_name-$pkgver.tar.gz"
+        'tests-set-tty-aware-false.patch')
+sha256sums=('225b1c3240eb426525d153b9f98784d4d9b29e662501c8eb135b5e01323346d7'
+            '0946c4592ac78b89f18e88b55717e65e7a55ba48983ee6b086f134c6764514ff')
+
+prepare() {
+  cd "$_name-$pkgver"
+  patch -Np1 -i ../tests-set-tty-aware-false.patch
+
+  # remove shebangs
+  sed -i '/#!\/usr\/bin\/env python/d' colored/*.py
+}
 
 build() {
-    cd $_name-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  pytest
 }
 
 package() {
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-    cd $_name-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -1,18 +1,19 @@
 pkgbase = python-colored
-	pkgdesc = Very simple Python library for color and formatting in terminal
-	pkgver = 2.2.4
+	pkgdesc = Simple python library for color and formatting to terminal
+	pkgver = 2.3.1
 	pkgrel = 1
-	url = https://gitlab.com/dslackw/colored
+	url = https://dslackw.gitlab.io/colored
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-flit
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/colored/colored-2.2.4.tar.gz
-	source = LICENSE
-	sha256sums = 595e1dd7f3b472ea5f12af21d2fec8a2ea2cf8f9d93e67180197330b26df9b61
-	sha256sums = 6e38bc085fb26b5aa0db7b77be9893a805cce0badb2c2950d2fd36626b9a8dd1
+	source = https://gitlab.com/dslackw/colored/-/archive/2.3.1/colored-2.3.1.tar.gz
+	source = tests-set-tty-aware-false.patch
+	sha256sums = 225b1c3240eb426525d153b9f98784d4d9b29e662501c8eb135b5e01323346d7
+	sha256sums = 0946c4592ac78b89f18e88b55717e65e7a55ba48983ee6b086f134c6764514ff
 
 pkgname = python-colored

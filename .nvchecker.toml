@@ -1,0 +1,4 @@
+[python-colored]
+source = "git"
+git = "https://gitlab.com/dslackw/colored.git"
+prefix = "v"
