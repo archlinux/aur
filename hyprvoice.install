@@ -1,0 +1,43 @@
+post_install() {
+    echo "==> Hyprvoice installation complete!"
+    echo ""
+    echo "    📋 Next steps (in order):"
+    echo "    1. Configure hyprvoice: hyprvoice configure"
+    echo "    2. Enable the service: systemctl --user enable --now hyprvoice.service"
+    echo "    3. Add keybinding to your window manager config"
+    echo ""
+    echo "    🔑 For Hyprland, add to ~/.config/hypr/hyprland.conf:"
+    echo "         bind = SUPER, R, exec, hyprvoice toggle"
+    echo ""
+    echo "    💡 The configure step will guide you through API key setup and preferences."
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Hyprvoice has been upgraded."
+    echo ""
+    echo "    📋 Next steps:"
+    echo "    1. Restart the service: systemctl --user restart hyprvoice.service"
+    echo "    2. Check for new options: hyprvoice configure"
+    echo ""
+}
+
+pre_remove() {
+    # Stop and disable service if running
+    if systemctl --user is-active --quiet hyprvoice.service 2>/dev/null; then
+        echo "==> Stopping hyprvoice service..."
+        systemctl --user stop hyprvoice.service 2>/dev/null || true
+    fi
+    
+    if systemctl --user is-enabled --quiet hyprvoice.service 2>/dev/null; then
+        echo "==> Disabling hyprvoice service..."
+        systemctl --user disable hyprvoice.service 2>/dev/null || true
+    fi
+}
+
+post_remove() {
+    echo "==> Hyprvoice has been removed."
+    echo "    Configuration files remain in ~/.config/hyprvoice/"
+    echo "    Cache files remain in ~/.cache/hyprvoice/"
+    echo "    Remove them manually if desired."
+}
