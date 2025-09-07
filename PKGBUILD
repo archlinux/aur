@@ -1,12 +1,13 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on ocaml4-findlib PKGBUILD by:
+# Based on PKGBUILD by:
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Jürgen Hötzel
 
 pkgname=ocaml4-camlp-streams-noframepointers
 pkgver=5.0.1
-pkgrel=5
-pkgdesc="The Stream and Genlex libraries for use with Camlp4 and Camlp5."
+pkgrel=6
+# Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
+pkgdesc="The Stream and Genlex libraries for use with Camlp4 and Camlp5. Patched for x86_64/aarch64 and no ocaml4 frame-pointers."
 arch=(x86_64 aarch64)
 url="https://github.com/ocaml/camlp-streams"
 license=(BSD)
