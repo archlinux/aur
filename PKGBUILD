@@ -1,4 +1,5 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
+# Based on PKGBUILD by:
 # Based on dislocker PKGBUILD maintained by: Rafal Malachowicz <k5hv@archlinux.info>
 # Based on dislocker PKGBUILD maintained by: mrxx <mrxx at cyberhome dot at>
 
@@ -10,12 +11,13 @@
 # 0005: https://github.com/Aorimn/dislocker/pull/338/commits/a32a6de8412947f55a7910543442534b4951accb
 # 0006: https://github.com/Aorimn/dislocker/pull/336/commits/e749eade55f242d03fb9d10c05ff4b11c66dcbbe
 #       https://github.com/Aorimn/dislocker/pull/336/commits/e000d91a55b3d4081a8cc5e7acba5bb29deaf83a
+# 0007: https://github.com/Aorimn/dislocker/pull/333/commits/817116a77c1d769548d6c06cb631ab77e35247e8
 
 _pkgname=dislocker
 pkgname=dislocker-patched
 pkgver=0.7.3.r46.g4572dc7
-pkgrel=8
-pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. Includes some patches from Issues and PRs from official Aorimn/dislocker"
+pkgrel=9
+pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes. Includes some patches from Issues and PRs from official Aorimn/dislocker. Added aarch64."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
 license=('GPL-2.0-or-later')
@@ -32,6 +34,7 @@ source=(
   '0004-switch-to-fuse3.patch'
   '0005-ruby3-file-exist.patch'
   '0006-mbedtls-3.patch'
+  '0007-multibyte-password.patch'
 )
 sha512sums=('67d9845a02004b740aaf32bd1c381e578dbccc29207cb7373e646010b75717e66424dc5a84de8fec4926c49f18f562e1333ffe2be1185bdb31de1b17fe2337bc'
             '53fcc42cd2aea380cecdfb1e64f33e6f143e2e9022bb9511ab829a20b98fdf0f454f8c046592a4e469e61bbf9c0ec505a1812b4d2905bc6bb94f6fcc2b3e4c47'
@@ -39,7 +42,8 @@ sha512sums=('67d9845a02004b740aaf32bd1c381e578dbccc29207cb7373e646010b75717e6642
             '3c694b11740be886855878da2cc217a144540c1067d3fbc5c10695fbf8b51168e35cb0404297fd348f1a6c2b1d1b3785e5719f5e5b40e6becc3cfdd1535151aa'
             '22034ae1aee46397c81b3f265ce05e29f51f581af004b448d27d7859625970428010b29c2f11934b1a42d2d871957c0ecb9c977b6ec432c2b6e238ea95d3a98a'
             'a0f7ebcc1aba31362a6c2d7123858234e5d41bf86eec3e8e3fbeca1908034699b6d8c86b3d98eb78caa34cd48a41ac56719d4a43b85ee49e465b733b2b400726'
-            '7b5d4e3620c9adb510ab30efd53de067bc77b2a796cf963d016fc2da72fd6c9ae37d25e7bf961483bbec0e15830bd582506ab1bad961726be09fa916831ac0a3')
+            '7b5d4e3620c9adb510ab30efd53de067bc77b2a796cf963d016fc2da72fd6c9ae37d25e7bf961483bbec0e15830bd582506ab1bad961726be09fa916831ac0a3'
+            '3f7374a004e26adf9024c52ff751acc375b3bebe0cd0c5882f0f61c5c8ec607b9701b93f72efe5ba1dc34aca41cdffdeb10f623b376bdee6088542c4c28929b4')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -54,6 +58,7 @@ prepare() {
   patch -p1 -i "${srcdir}/0004-switch-to-fuse3.patch"
   patch -p1 -i "${srcdir}/0005-ruby3-file-exist.patch"
   patch -p1 -i "${srcdir}/0006-mbedtls-3.patch"
+  patch -p1 -i "${srcdir}/0007-multibyte-password.patch"
   #mv include/dislocker/ssl_bindings.h.in include/dislocker/ssl_bindings.h
 }
 

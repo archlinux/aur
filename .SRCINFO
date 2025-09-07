@@ -1,7 +1,7 @@
 pkgbase = dislocker-patched
-	pkgdesc = FUSE driver to read/write Windows' BitLocker-ed volumes. Includes some patches from Issues and PRs from official Aorimn/dislocker
+	pkgdesc = FUSE driver to read/write Windows' BitLocker-ed volumes. Includes some patches from Issues and PRs from official Aorimn/dislocker. Added aarch64.
 	pkgver = 0.7.3.r46.g4572dc7
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/Aorimn/dislocker
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = dislocker-patched
 	source = 0004-switch-to-fuse3.patch
 	source = 0005-ruby3-file-exist.patch
 	source = 0006-mbedtls-3.patch
+	source = 0007-multibyte-password.patch
 	sha512sums = 67d9845a02004b740aaf32bd1c381e578dbccc29207cb7373e646010b75717e66424dc5a84de8fec4926c49f18f562e1333ffe2be1185bdb31de1b17fe2337bc
 	sha512sums = 53fcc42cd2aea380cecdfb1e64f33e6f143e2e9022bb9511ab829a20b98fdf0f454f8c046592a4e469e61bbf9c0ec505a1812b4d2905bc6bb94f6fcc2b3e4c47
 	sha512sums = 65552ce0be66df39276970704ace71607a361b9da0e6f5f3095c87e5f8ea9c43e73eed36ef16e77b5d6b65df7dbe318caf736d6ad997e6ea4f894c1e89828674
@@ -30,5 +31,6 @@ pkgbase = dislocker-patched
 	sha512sums = 22034ae1aee46397c81b3f265ce05e29f51f581af004b448d27d7859625970428010b29c2f11934b1a42d2d871957c0ecb9c977b6ec432c2b6e238ea95d3a98a
 	sha512sums = a0f7ebcc1aba31362a6c2d7123858234e5d41bf86eec3e8e3fbeca1908034699b6d8c86b3d98eb78caa34cd48a41ac56719d4a43b85ee49e465b733b2b400726
 	sha512sums = 7b5d4e3620c9adb510ab30efd53de067bc77b2a796cf963d016fc2da72fd6c9ae37d25e7bf961483bbec0e15830bd582506ab1bad961726be09fa916831ac0a3
+	sha512sums = 3f7374a004e26adf9024c52ff751acc375b3bebe0cd0c5882f0f61c5c8ec607b9701b93f72efe5ba1dc34aca41cdffdeb10f623b376bdee6088542c4c28929b4
 
 pkgname = dislocker-patched
