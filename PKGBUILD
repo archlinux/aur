@@ -2,13 +2,13 @@
 
 pkgname=danxi-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.8.r9.g880293e
+pkgver=1.4.8.r57.g2f4722c
 pkgrel=2
 pkgdesc="Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP"
 url="https://github.com/DanXi-Dev/DanXi"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
-depends=('gtk3' 'libsecret')
+depends=('gtk3' 'libsecret' 'gnome-keyring')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'imagemagick')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -30,6 +30,7 @@ prepare() {
 build() (
 	cd DanXi
 	export CXXFLAGS+=" -Wno-error=unused-result"
+	fvm dart --disable-analytics
 	fvm dart run intl_utils:generate
 	fvm dart build_release.dart --target linux --versionCode dummy
 )
