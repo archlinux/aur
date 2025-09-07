@@ -1,12 +1,11 @@
 pkgbase = tinyfilemanager
-	pkgdesc = Web based, simple, fast and small file manager
-	pkgver = 2.5.3
-	pkgrel = 3
+	pkgdesc = Single-file PHP file manager
+	pkgver = 2.6
+	pkgrel = 1
 	url = https://github.com/prasathmani/tinyfilemanager
 	arch = any
-	license = GPL3
 	depends = php
-	source = tinyfilemanager-2.5.3.tar.gz::https://github.com/prasathmani/tinyfilemanager/archive/2.5.3.tar.gz
-	md5sums = 56a4c46ed11cf01d72675584961e3ad6
+	source = tinyfilemanager-2.6.tar.gz::https://github.com/prasathmani/tinyfilemanager/archive/refs/tags/2.6.tar.gz
+	sha512sums = d48eac2a3f56f904f5f897c63ff281fa40fd44d3bf153e70c9059b219f9d5db4051d5e087c1ab83a71f2e665d5a09bfd83edab5518d078de416e33474b4f86e0
 
 pkgname = tinyfilemanager
