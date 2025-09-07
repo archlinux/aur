@@ -2,15 +2,15 @@
 # Contributor: Techcable <Techcable at techcable dot net>
 
 pkgname=mathicsscript
-pkgver=8.0.0
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 pkgdesc="A more advanced command-line interface to Mathics."
 arch=("any")
 url="https://mathics.org/"
 license=('GPL3')
-depends=("mathics>=8.0.0"
-         "mathics-scanner>=1.4.1"
-         "python-click"
+depends=("mathics>=9.0.0"
+         "mathics-scanner>=2.0.0"
+         "python-click>=8.0.0"
          "python-colorama"
          "python-columnize"
          "python-networkx"
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mathics3/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('84a9dc55580d07a9616d7549745583086a5de75ee25cb5f68ae5aab44e1a518b')
+sha256sums=('3115fb57a1311e1fe392428355b740b9b6ec46489339baaeea904554ebda555d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -37,6 +37,8 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # Remove test that require mathicsscript installed before testing
+  rm test/test_returncode.py
   export PYTHONPATH="."
   pytest test
 }

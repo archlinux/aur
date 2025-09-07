@@ -1,7 +1,7 @@
 pkgbase = mathicsscript
 	pkgdesc = A more advanced command-line interface to Mathics.
-	pkgver = 8.0.0
-	pkgrel = 2
+	pkgver = 9.0.0
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -10,9 +10,9 @@ pkgbase = mathicsscript
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-pytest
-	depends = mathics>=8.0.0
-	depends = mathics-scanner>=1.4.1
-	depends = python-click
+	depends = mathics>=9.0.0
+	depends = mathics-scanner>=2.0.0
+	depends = python-click>=8.0.0
 	depends = python-colorama
 	depends = python-columnize
 	depends = python-networkx
@@ -25,7 +25,7 @@ pkgbase = mathicsscript
 	optdepends = python-cairosvg: For rendering plots and graphs as SVGs via matplotlib
 	optdepends = python-cson: for xasy
 	optdepends = python-matplotlib: For rendering SVG plots
-	source = mathicsscript-8.0.0.tar.gz::https://github.com/Mathics3/mathicsscript/releases/download/8.0.0/mathicsscript-8.0.0.tar.gz
-	sha256sums = 84a9dc55580d07a9616d7549745583086a5de75ee25cb5f68ae5aab44e1a518b
+	source = mathicsscript-9.0.0.tar.gz::https://github.com/Mathics3/mathicsscript/releases/download/9.0.0/mathicsscript-9.0.0.tar.gz
+	sha256sums = 3115fb57a1311e1fe392428355b740b9b6ec46489339baaeea904554ebda555d
 
 pkgname = mathicsscript
