@@ -1,4 +1,4 @@
-From 4a6fadd76e3aea41c902e4f5a4e8d05b107743c7 Mon Sep 17 00:00:00 2001
+From 599de5ee1740fa6b9059ba9faf63aa20b018810d Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:00:47 +0200
 Subject: [PATCH 1/4] Arch-Linux-specific: install optdeps via pacman
@@ -90,10 +90,10 @@ index 3d5cfa86..05100044 100755
  
  
 -- 
-2.50.1
+2.51.0
 
 
-From 5647eaac3af596505061fc9e56330b7f5bf1ab1a Mon Sep 17 00:00:00 2001
+From f3b205787f3b340b13c0a7ed453c449b95bac40b Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:01:26 +0200
 Subject: [PATCH 2/4] Arch-Linux-specific: use system Chromium
@@ -125,10 +125,10 @@ index 05100044..bb885daf 100755
                  self.playwright_available = False
                  self.print_error(str(e))
 -- 
-2.50.1
+2.51.0
 
 
-From f663c8497fbb0ec9e5f310e17b9a29b38e13ded0 Mon Sep 17 00:00:00 2001
+From 3422aab980d2daf56d19fa7fd9d367b48454286b Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:02:06 +0200
 Subject: [PATCH 3/4] Arch-Linux-specific: install boto3 via pacman
@@ -139,7 +139,7 @@ Subject: [PATCH 3/4] Arch-Linux-specific: install boto3 via pacman
  2 files changed, 34 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index 2aad5efc..b7e643c7 100644
+index 4a5d86a6..b535d01d 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
@@ -151,7 +151,7 @@ index 2aad5efc..b7e643c7 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -1169,9 +1169,7 @@ def check_for_dependencies(io, model_name):
+@@ -1174,9 +1174,7 @@ def check_for_dependencies(io, model_name):
      """
      # Check if this is a Bedrock model and ensure boto3 is installed
      if model_name.startswith("bedrock/"):
@@ -206,10 +206,10 @@ index 834ffa19..a58fde66 100644
      """
      Convert a list of command arguments to a properly shell-escaped string.
 -- 
-2.50.1
+2.51.0
 
 
-From 217ed0bee12828363a373f3b3eedc5a76277d8f2 Mon Sep 17 00:00:00 2001
+From 53d4d8c53d5215cf79216e097b56ac13a5614bf3 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 7 Aug 2025 23:34:18 +0200
 Subject: [PATCH 4/4] Arch-Linux-specific: install streamlit via pacman
@@ -237,5 +237,5 @@ index afb3f836..8bb4c0fb 100644
  
  
 -- 
-2.50.1
+2.51.0
 

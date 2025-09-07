@@ -7,7 +7,7 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.86.0
+pkgver=0.86.1
 pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
@@ -50,6 +50,7 @@ depends=(
   'python-sounddevice'
   'python-soundfile'
   'python-tqdm'
+  'python-tree-sitter'
   'python-watchfiles'
   'python-yaml'
 )
@@ -88,12 +89,15 @@ source=(
   'archlinux-use-system.patch'
   'aur-install-notice.patch'
   'fix-build-from-tarball.patch'
+  'github-pr-4369.patch'
 )
 
-sha512sums=('efe78e665ab054f2385a6f50a38e8eb04d0b5dd64c6eec17d7c5a766e74755f20b2325d8e13f0d509afbcdd4b16c3d0c932c709543e23505ce3cbbb274b41018'
-            '49dae3d434be051a6bfbc85b9f83e911280638b5d7c392455a05ecf5b1d369d867d99b017c39df6110505270103cdafd28afa2123dfabe167c0a39df290e8299'
-            '43b99463cdf021d6540449e93afb37796978321e57c8f857f16b96636f1a63460f5d82b5db302377eeefdd21e60f218d38fb33e512f6a8d33bd09d5fae146ac8'
-            'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac')
+sha512sums=('0a0c44b5d91db839611f21c8062c2700fe728a1937cf1485375a94aa85c4330e3029547f8e464f2282f3ca21d58d9e1b0e68bc7ffd8190ef93eda2b768697c7f'
+            '18acc792128e0748c099e0daa7061c780a43fdb384251f980ff36424b5450cb35e885a8e84af4990923db76a1f30e39a2e1a178eaf88409c0818e4ee134f1644'
+            '39466f05535330372d3f89a361b3984ef82bfdbf3e1b9f359cc0c039bbe098163c4253634155d74dd3971145131fa12afdfc9aff001f05b8cd0840b870a68555'
+            'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac'
+            'fe4e0a66b853ab00d35be6929d60d5e86463918f51bf9d60c36e3afb3a4ab8857daba8629a3b7c8e6b6e2891bdecfcce98b53ba5c2bbe49d47297b0f7fec3620')
+
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
 
@@ -105,6 +109,12 @@ prepare() {
 
   # Fix issues with incomplete build from source tarball (needs upstreaming)
   patch -p1 < ../fix-build-from-tarball.patch
+
+  # Remove this patch once the upstream author has merged PR #4369 and
+  # included it in a stable release.
+  # See also: https://github.com/Aider-AI/aider/pull/4369
+  echo >&2 'Applying patch to fix tree-sitter integration'
+  patch -p1 < ../github-pr-4369.patch
 
   # Update Gemfile to allow newer version of the dependencies,
   # add undeclared dependencies, and remove dependencies not

@@ -1,0 +1,63 @@
+From c631827f67d786fe25f8dcc8e347057ec680989d Mon Sep 17 00:00:00 2001
+From: Zexin Yuan <git@yzx9.xyz>
+Date: Sun, 20 Jul 2025 21:41:18 +0800
+Subject: [PATCH] chore: bump tree-sitter from 0.24.0 to 0.25.0
+
+- Deprecation: `Language.query(source)`: use `Query(language, source)`
+- Removal: `Query.captures(node, predicate)`: moved to
+  `QueryCursor.captures(node, predicate, progress_callback)`
+---
+ aider/repomap.py            | 9 +++++++--
+ requirements.txt            | 2 +-
+ requirements/tree-sitter.in | 2 +-
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/aider/repomap.py b/aider/repomap.py
+index 23eee239..94d14537 100644
+--- a/aider/repomap.py
++++ b/aider/repomap.py
+@@ -11,6 +11,7 @@ from collections import Counter, defaultdict, namedtuple
+ from importlib import resources
+ from pathlib import Path
+ 
++import tree_sitter
+ from diskcache import Cache
+ from grep_ast import TreeContext, filename_to_lang
+ from pygments.lexers import guess_lexer_for_filename
+@@ -285,8 +286,12 @@ class RepoMap:
+         tree = parser.parse(bytes(code, "utf-8"))
+ 
+         # Run the tags queries
+-        query = language.query(query_scm)
+-        captures = query.captures(tree.root_node)
++        if sys.version_info >= (3, 10):
++            query = tree_sitter.Query(language, query_scm)
++            captures = tree_sitter.QueryCursor(query).captures(tree.root_node)
++        else:
++            query = language.query(query_scm)
++            captures = query.captures(tree.root_node)
+ 
+         saw = set()
+         if USING_TSL_PACK:
+diff --git a/requirements.txt b/requirements.txt
+index 01057219..d4d5526b 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -527,4 +527,4 @@ zipp==3.23.0
+     #   importlib-metadata
+     
+ tree-sitter==0.23.2; python_version < "3.10"
+-tree-sitter==0.24.0; python_version >= "3.10"
++tree-sitter==0.25.1; python_version >= "3.10"
+diff --git a/requirements/tree-sitter.in b/requirements/tree-sitter.in
+index eba2e677..d11dd88d 100644
+--- a/requirements/tree-sitter.in
++++ b/requirements/tree-sitter.in
+@@ -1,3 +1,3 @@
+     
+ tree-sitter==0.23.2; python_version < "3.10"
+-tree-sitter==0.24.0; python_version >= "3.10"
++tree-sitter==0.25.1; python_version >= "3.10"
+-- 
+2.51.0
+

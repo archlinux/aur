@@ -1,4 +1,4 @@
-From 50dae429cb3e1f2e593f13044d9c19def2007445 Mon Sep 17 00:00:00 2001
+From 4eb4163788835a2369913413a1fd26fb8b66ce5f Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:02:50 +0200
 Subject: [PATCH 1/4] AUR-specific: replace auto-updater with a notice
@@ -52,10 +52,10 @@ index ac511a02..be67ef10 100644
  
  def check_version(io, just_check=False, verbose=False):
 -- 
-2.50.1
+2.51.0
 
 
-From d86318cfc63e1fa9728a6d75fd4c8940a6c29e2a Mon Sep 17 00:00:00 2001
+From 801ee7f4a0d08f29463b6e607db21c7f152febf6 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:03:36 +0200
 Subject: [PATCH 2/4] AUR-specific: replace `/help` feature installer
@@ -120,10 +120,10 @@ index a58fde66..deaa7150 100644
      if module:
          try:
 -- 
-2.50.1
+2.51.0
 
 
-From 6cb8ed8c987f73a1856bdf4ad5a665735067f89f Mon Sep 17 00:00:00 2001
+From ac9a439c07aae0dadd1bd8bcf09c61cc6005d92b Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:04:12 +0200
 Subject: [PATCH 3/4] AUR-specific: replace google-aiplatform installer
@@ -133,7 +133,7 @@ Subject: [PATCH 3/4] AUR-specific: replace google-aiplatform installer
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index b7e643c7..85ea63e0 100644
+index b535d01d..021b02d2 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
@@ -145,7 +145,7 @@ index b7e643c7..85ea63e0 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -1173,11 +1173,10 @@ def check_for_dependencies(io, model_name):
+@@ -1178,11 +1178,10 @@ def check_for_dependencies(io, model_name):
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
      elif model_name.startswith("vertex_ai/"):
@@ -160,10 +160,10 @@ index b7e643c7..85ea63e0 100644
  
  
 -- 
-2.50.1
+2.51.0
 
 
-From f83fc4e0ea03f66bf6aeab87ec4e14a8cc552c31 Mon Sep 17 00:00:00 2001
+From 93e522cac16e75b73e695d9c91b251848276381a Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Thu, 3 Jul 2025 14:04:52 +0200
 Subject: [PATCH 4/4] AUR-specific: replace main branch auto-upgrader
@@ -284,5 +284,5 @@ index be67ef10..2a6c18c5 100644
  
  
 -- 
-2.50.1
+2.51.0
 
