@@ -1,27 +1,24 @@
-# Maintainer: Radu Potop <radu@wooptoo.com>
+# Maintainer: Radu Potop <radu at wooptoo dot com>
 
-upstream_name=django-ipware
+origname=django-ipware
 pkgname=python-django-ipware
-pkgver=5.0.0
-pkgrel=5
+pkgver=7.0.1
+pkgrel=1
 pkgdesc='A Django application to retrieve clients IP address'
 arch=(any)
-url="https://github.com/un33k/$upstream_name"
+url="https://github.com/un33k/$origname"
 license=("MIT")
-depends=("python" "python-django")
-conflicts=("python-ipware")
+depends=("python" "python-django" "python-ipware")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a11d83bade679ae1046176df96e5e873fe792932068bdcdd21712493bbae650b')
 
 build() {
-    cd "$upstream_name-$pkgver"
+    cd "$origname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$upstream_name-$pkgver"
+    cd "$origname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-sha256sums=('2d3579bb3fdf966311167bf490f8183ac48f6b8c05cfc845c3b2af7b9db61bc5')
-
