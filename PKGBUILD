@@ -1,7 +1,7 @@
 # Maintainer: someoneelse <lllusion3418@gmail.com>
 
 pkgname=fstl
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A viewer for .stl files"
 url="http://www.mattkeeter.com/projects/fstl/"
@@ -11,8 +11,8 @@ depends=('qt5-base')
 makedepends=("icoutils" "cmake")
 source=("https://github.com/mkeeter/fstl/archive/v${pkgver}.tar.gz"
 	"fstl.desktop")
-sha256sums=('ec1334fa26574b4e8ef28c5cbee461b89c805b5b2616eae4e4236f0b293ad845'
-	'53d2a7911cacc1ca8e9fe823e8ecf2777c1158f51d2b909ebb106d976c70bec5')
+sha256sums=('b90d02743a1f76927d5d7c4373c3ebcf3da86d97362501035d504c7a008da5ca'
+            '53d2a7911cacc1ca8e9fe823e8ecf2777c1158f51d2b909ebb106d976c70bec5')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
