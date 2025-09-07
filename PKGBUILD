@@ -3,7 +3,7 @@
 pkgname=python-mixpanel
 _gitpkgname=mixpanel-python
 pkgver=4.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Mixpanel Python library'
 arch=('any')
 url='https://github.com/mixpanel/mixpanel-python'
@@ -29,9 +29,23 @@ checkdepends=(
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v${pkgver}.tar.gz"
+  'github-pr-143.patch'
 )
 
-sha512sums=('81cc1b5a9bfdcbe83b0f9d2c8145a2b5d9a99efe971141789b9ff1a59f8e937c1e4700b2ee8850f3bb911521432f7db43872213bf41bed5398d6e037cb1f3648')
+sha512sums=(
+  '81cc1b5a9bfdcbe83b0f9d2c8145a2b5d9a99efe971141789b9ff1a59f8e937c1e4700b2ee8850f3bb911521432f7db43872213bf41bed5398d6e037cb1f3648'
+  'e6b0fa2c883b14092078a4cdbb96136ec04996cced572e025f69d88da46664e3134ce989c25ae37059f96370a2cc20edf23692295a1422f36ecb6b2ea0bbbe7c'
+)
+
+prepare() {
+  cd "${_gitpkgname}-${pkgver}"
+
+  # Remove this patch once the upstream author has merged PR #143 and
+  # included it in a stable release.
+  # See also: https://github.com/mixpanel/mixpanel-python/pull/143
+  echo >&2 'Applying patch to remove stray top-level package'
+  patch -p1 < ../github-pr-143.patch
+}
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
