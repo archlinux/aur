@@ -1,0 +1,19 @@
+pkgbase = clang-include-graph-git
+	pkgdesc = A tool to generate include dependency graphs for C/C++ projects.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bkryza/clang-include-graph
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = llvm
+	depends = gcc-libs
+	depends = glibc
+	depends = clang
+	depends = boost-libs
+	source = clang-include-graph-git-0.2.0.tar.gz::https://github.com/bkryza/clang-include-graph/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = clang-include-graph-git
