@@ -2,7 +2,7 @@
 # Contributor: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=velero
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="Backup and migrate Kubernetes applications and their persistent volumes"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc' 'kubectl')
 makedepends=('git' 'go')
 source=("git+https://github.com/vmware-tanzu/velero#tag=v$pkgver"
         "build.patch")
-sha256sums=('3430ac1f8390206bf42355bada9dda6d51fbac07391f2377f04fb702d9e2430e'
+sha256sums=('268b8ab74714dcd1b76b6be1d63b86136647e86abfe2492046dc2335576cd807'
             '8fab0a9386152f94dafaf07aa3d4e23d43924fb279671f0e1988d5b35b20df0d')
 
 prepare() {
