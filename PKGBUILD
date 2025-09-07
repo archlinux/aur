@@ -5,9 +5,9 @@
 
 pkgname=mldonkey-noframepointers-git
 pkgver=3.2.1.r14.g0d446356
-pkgrel=2
+pkgrel=3
 # Not enabling '--enable-frame-pointers' in the ocaml4 configure is required for aarch64 compilation, not for x86_64. This is why all the '-noframepointers' packages exist.
-pkgdesc='A multi-network P2P client. Patched for x86_64/aarch64 and no ocaml4 frame-pointers'
+pkgdesc='A multi-network P2P client. Patched for x86_64/aarch64 and no ocaml4 frame-pointers.'
 arch=(x86_64 aarch64)
 url="https://github.com/ygrek/mldonkey"
 license=(GPL-2.0-or-later)
