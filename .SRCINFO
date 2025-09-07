@@ -1,20 +1,20 @@
 pkgbase = radicle-bin
 	pkgdesc = open source, peer-to-peer code collaboration stack built on Git
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	epoch = 1
 	url = https://radicle.xyz
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0 OR MIT
-	source = radicle-bin-1.3.0-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT
+	source = radicle-bin-1.4.0-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT
 	source = radicle-node.service
 	sha512sums = 76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448
 	sha512sums = 66bd43b60b73fd832a23ad7a280f77d06398c55b4e8572200ad95acc42da84e6a44c7deeb1fec91d11e29678d1abd2f74c45099ae31141ee1b6945568501bceb
-	source_x86_64 = https://files.radicle.xyz/releases/1.3.0/radicle-1.3.0-x86_64-unknown-linux-musl.tar.xz
-	sha512sums_x86_64 = 449f4ba33b4d7edc474577e009184122327dfa2867893be45413bc67c87176da1e8071606a8d43d1ace352cf4318a7970cab9bbf9da1de8f772cdd425d6b3585
-	source_aarch64 = https://files.radicle.xyz/releases/1.3.0/radicle-1.3.0-aarch64-unknown-linux-musl.tar.xz
-	sha512sums_aarch64 = 578b8b58bf00966efd70a663a714abaacbd71d050674014e3ac00f7f8600a4d0bbcf9ac78e78c620eb2f354d4c2a43704173b45d8d8f3e7b130e2c2d65653dac
+	source_x86_64 = https://files.radicle.xyz/releases/1.4.0/radicle-1.4.0-x86_64-unknown-linux-musl.tar.xz
+	sha512sums_x86_64 = 1cba2c71f0cd95201dd63251c2ff53533c85ea664ff9cd8f30a4f8ea57770101f4c50489c1547b3bab7204bf93337e472b1c3fd0609f85564297068f3c47476d
+	source_aarch64 = https://files.radicle.xyz/releases/1.4.0/radicle-1.4.0-aarch64-unknown-linux-musl.tar.xz
+	sha512sums_aarch64 = e90c5a4afb84b30c6912d8fa3566c18a698998bc8d753b32e0fb2be45579d515d32044d6111752137cf01a907afc9ef582f180c0606a19bf3a66d08f2daab62d
 
 pkgname = radicle-bin
 	depends = radicle-cli-bin
