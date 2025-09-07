@@ -1,6 +1,6 @@
 # Maintainer: konyogony <dev@wayclip.com>
 pkgname=wayclip-cli
-pkgver=${PKG_VER}
+pkgver=0.1.51
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -8,14 +8,14 @@ url="https://github.com/Wayclip/cli"
 license=('MIT')
 depends=('pipewire' 'wayland' 'alsa-lib' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'dbus' 'libxcb')
 makedepends=('rust' 'cargo' 'clang' 'git')
-_core_ver="${CORE_TAG_FULL}"
+_core_ver="v0.1.3"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core.tar.gz::https://github.com/Wayclip/core/releases/download/${_core_ver}/wayclip-${_core_ver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   echo ">>> [prepare] contents of \$srcdir before anything:"
-  ls -l "$srcdir"
+  ls -l "$srcdir" || true
 
   if [ -d "$srcdir/cli-$pkgver" ]; then
     mv "$srcdir/cli-$pkgver" "$srcdir/$pkgname-$pkgver"
@@ -29,13 +29,13 @@ prepare() {
     bsdtar -xvf "$srcdir/wayclip-core.tar.gz" -C "$srcdir/wayclip-core"
   else
     echo ">>> [prepare] looking for fallback core archive..."
-    core_archive=$(ls "$srcdir"/wayclip-*-x86_64-unknown-linux-gnu.tar.gz 2>/dev/null | head -n1 || true)
+    core_archive=$(ls "$srcdir"/wayclip-*-x86_64-unknown-linux-gnu.tar.gz 2>/dev/null | head -n1)
+    [ -z "$core_archive" ] || bsdtar -xvf "$core_archive" -C "$srcdir/wayclip-core"
     echo ">>> [prepare] found fallback core archive: $core_archive"
-    [ -n "$core_archive" ] && bsdtar -xvf "$core_archive" -C "$srcdir/wayclip-core"
   fi
 
   echo ">>> [prepare] contents of wayclip-core after extraction:"
-  ls -lR "$srcdir/wayclip-core"
+  ls -lR "$srcdir/wayclip-core" || true
 }
 
 build() {
@@ -58,7 +58,7 @@ package() {
       echo ">>> [package] found $n directly"
       install -Dm755 "$core_bin_dir/$n" "$pkgdir/usr/bin/wayclip-$n"
     else
-      found=$(find "$srcdir/wayclip-core" -type f -name "$n" -perm -111 2>/dev/null | head -n1 || true)
+      found=$(find "$srcdir/wayclip-core" -type f -name "$n" -perm -111 2>/dev/null | head -n1)
       if [ -n "$found" ]; then
         echo ">>> [package] found $n at $found"
         install -Dm755 "$found" "$pkgdir/usr/bin/wayclip-$n"
