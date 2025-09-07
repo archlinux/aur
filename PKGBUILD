@@ -1,23 +1,47 @@
 # Maintainer: Liam Doan <not.lamdn@gmail.com>
 
 pkgname=surfshark-client
-pkgver=3.5.3.6162
+pkgver=3.5.4
 pkgrel=1
-pkgdesc="Surfshark VPN GUI client for Linux. Encrypt your internet activity so no one can track or steal your data. Increase your privacy and avoid tracking by using a different IP address. Keep your digital freedom and security while using unprotected networks."
+pkgdesc="Official Surfshark VPN client"
 arch=('x86_64')
 url="https://surfshark.com"
 license=('custom:surfshark')
-depends=('alsa-lib' 'at-spi2-core' 'gjs' 'nss' 'org.freedesktop.secrets' 'wireguard-tools')
+depends=(
+	'gjs'
+	'nss'
+	'networkmanager'
+	'networkmanager-openvpn'
+)
+optdepends=(
+	'libappindicator-gtk3: for tray icon'
+	'org.freedesktop.secrets: password storage backend'
+	'emoji-font: emoji support'
+)
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_3.5.3_amd64.deb")
-sha512sums=('06a05ab7281ed7bb736aeb24e1d46ac083e854cbe2ef3f68cdd6085d7f27d32b4399565253f37640650d2e40e18dd8cdcf4006685e382133d75f44d969cdf849')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark_${pkgver}_amd64.deb")
+sha512sums=('e51bd526e61aa14bbe2b5a8436f34352e87f00bbfc4913ba29029ca8c1de81bfd3d7667d7787b5b91cd995e4efd92bca80bd8ed6af5930aa5ae58fd63c38a82f')
+
+prepare() {
+    tar xf data.tar.xz
+}
 
 package(){
+    mv usr/ opt/ "${pkgdir}"
 
-	# Extract package data
-	tar -xJ -f data.tar.xz -C "${pkgdir}"
-
+	# Install License file
 	install -D -m644 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd.js.LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+	# Create link for surfshark executable in /bin
+	mkdir -p "${pkgdir}/usr/bin" && ln -sf "${pkgdir}/opt/Surfshark/surfshark" "${pkgdir}/usr/bin/surfshark"
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 "${pkgdir}/opt/Surfshark/chrome-sandbox" || true
+	
+	# Assign correct permissions for systemctl to run surfsharkd service as user
+	# Please note that surfsharkd2 systemd service is run as system user and only
+	# root user executable permission needs to be set
+	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd.js" || true
+	chmod 744 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd2.js" || true
 }
