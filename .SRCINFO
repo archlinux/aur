@@ -10,6 +10,7 @@ pkgbase = vegastrike-git
 	depends = expat
 	depends = vegastrike-engine
 	depends = python-screeninfo
+	depends = python-kivy
 	provides = vegastrike
 	conflicts = vegastrike
 	source = git+https://github.com/vegastrike/Assets-Production
