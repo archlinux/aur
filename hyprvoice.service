@@ -6,10 +6,9 @@ Wants=pipewire.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/hyprvoice serve
+ExecStart=%h/.local/bin/hyprvoice serve
 Restart=on-failure
 RestartSec=5
-Environment=XDG_RUNTIME_DIR=/run/user/%i
 
 [Install]
 WantedBy=default.target
