@@ -6,8 +6,8 @@ pkgname=(
   freetype2-git
   freetype2-demos-git
 )
-pkgver=2.13.3+p68+gb1f478508
-pkgrel=1
+pkgver=2.14.0+p0+g007c46ebb
+pkgrel=2
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 url="https://www.freetype.org/"
@@ -19,15 +19,13 @@ depends=(
   glibc
   libpng
   zlib
-
-  # creates a dependency cycle harfbuzz <-> freetype, wanted by upstream
-  harfbuzz
 )
 makedepends=(
   cairo
   gcc-libs
   git
   glib2
+  harfbuzz
   librsvg
   libx11
   meson
@@ -39,15 +37,13 @@ source=(
   0001-Enable-table-validation-modules.patch
   0002-Enable-subpixel-rendering.patch
   0003-Enable-long-PCF-family-names.patch
-  0001-meson.build-Add-missing-math_dep-for-SVG-support.patch
   freetype2.sh
 )
 b2sums=('SKIP'
         'SKIP'
-        '7ddac82b202db33450af3c8ba59f932206c998fa4706369fb6c536d9b7af5100db03b2d8c1ac5de98d54e3ef3b1262f494437c041f3343f6c9e3ed112d2d1098'
-        '24af9fd7e64d4e95e0438bbc96529c6e37d8407188f3df63ecd36b1270ccd6a196545e60276207fefeb5ea786ad15712004313cbd7e11f31368fe7b930d84bbc'
-        'b3946946c5f46e17339d5c24b2e54d985c410355df8dac8b35c90cef59e7fe0ed8bcac4e27f32bda9f5943495adbb25510dc22c3970c0734f408e9bf2e0aaa5b'
-        '58940d2ecb793a0723767d48676ac55e32f9da313e81cd265477137736693073dc3073713a0cc7578ff1d01b22148f4dd8c3534d890c9d97491f67976e2aaad0'
+        'f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f'
+        'b9481bfe770104b181a59be8cf30c90d329447d3ba04bd7dc641a54057cf2a9024c1a881d096b7ff940e9b467960ff3e08e611686d9a01136523fbb34299d057'
+        '1ced8e4ef522b111759953f6b4b38864b1a705e5b6705222282b0e6857a4ee7ac8bdcec35248f53dd8b628fabb8861ee82c4ac957f4c71229bac94d8aaf82984'
         'a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d')
 validpgpkeys=(
   E30674707856409FF1948010BE6C3AAC63AD8E3F # Werner Lemberg <wl@gnu.org>
@@ -70,12 +66,13 @@ prepare() {
   git -C freetype apply -3 < 0001-Enable-table-validation-modules.patch
   git -C freetype apply -3 < 0002-Enable-subpixel-rendering.patch
   git -C freetype apply -3 < 0003-Enable-long-PCF-family-names.patch
-  git -C freetype-demos apply -3 < 0001-meson.build-Add-missing-math_dep-for-SVG-support.patch
 }
 
 build() {
   local meson_options=(
     -D freetype2:default_library=shared
+    -D freetype2:error_strings=true
+    -D freetype2:harfbuzz=dynamic
   )
 
   # Build FreeType as part of the demos
@@ -100,6 +97,9 @@ _pick() {
 }
 
 package_freetype2-git() {
+  optdepends=(
+    'harfbuzz: Improved autohinting'
+  )
   provides=(
     libfreetype.so
     "freetype2=$pkgver"

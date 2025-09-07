@@ -8,7 +8,7 @@ Subject: [PATCH] Enable table validation modules
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index 948d219bb6b7..a99ebfa54452 100644
+index fa8592b15171..cc97ec1af50a 100644
 --- a/modules.cfg
 +++ b/modules.cfg
 @@ -117,26 +117,26 @@ AUX_MODULES += cache
