@@ -39,7 +39,7 @@ b2sums=(
         '34535df02ff1f9544646f114b5b0d8fdd67cc498ebf40f3a8a75db59c49d9d4ceb7568886c3e48f8b1c0a1f4fa1aff036a86e56882fb0094b2c8d6aef50d657d'
        )
 validpgpkeys=(
-              '43C83369623D7AD3A96C2FC7425F128D0C64F52A' # Tetsuo Handa
+              '43C83369623D7AD3A96C2FC7425F128D0C64F52A' # Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
              )
 
 prepare() {
