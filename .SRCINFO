@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 8.0.1
-	pkgrel = 2
+	pkgver = 9.0.0
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -32,7 +32,7 @@ pkgbase = mathics
 	optdepends = python-scikit-image>=0.17: FindMinimum can use this; used by Image as well
 	optdepends = python-unidecode: Used in Transliterate
 	optdepends = python-wordcloud>=1.9.3: Used in builtin/image.py by WordCloud
-	source = mathics-8.0.1.tar.gz::https://github.com/mathics3/mathics-core/releases/download/8.0.1/mathics3-8.0.1.tar.gz
-	sha256sums = 4ce42e4bbb0aec61ab03ccd537f478dc2eabb953ab69073c07515a6e610c22fb
+	source = mathics-9.0.0.tar.gz::https://github.com/mathics3/mathics-core/releases/download/9.0.0/mathics3-9.0.0.tar.gz
+	sha256sums = 8b49c156b012dd8ac9ebb08963208a7de3651cd1eb048ec60a4e1f9be586e703
 
 pkgname = mathics

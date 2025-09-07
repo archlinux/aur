@@ -7,8 +7,8 @@
 
 pkgname=mathics
 _pkgname=mathics3
-pkgver=8.0.1
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -36,10 +36,17 @@ optdepends=( 'python-ipywidgets: For Manipulate'
              'python-unidecode: Used in Transliterate'
              'python-wordcloud>=1.9.3: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$pkgname-core/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('4ce42e4bbb0aec61ab03ccd537f478dc2eabb953ab69073c07515a6e610c22fb')
+sha256sums=('8b49c156b012dd8ac9ebb08963208a7de3651cd1eb048ec60a4e1f9be586e703')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  sed -i 's/sympy>=1.13,<1.14/sympy>=1.13/g' pyproject.toml
+  # Remove failing tests: https://github.com/Mathics3/mathics-core/issues/1498
+  # Remove test that changed for SymPy 1.14:
+  sed -i '229,$d' test/builtin/numbers/test_calculus.py
+  # Remove tests that require mathics installed before testing:
+  rm test/test_main.py
+  rm test/test_returncode.py
   python -m build --wheel --no-isolation
 }
 
