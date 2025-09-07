@@ -9,16 +9,21 @@ arch=(any)
 url=https://github.com/Neopallium/LuaNativeObjects
 license=(MIT)
 makedepends=(luarocks)
+_revision=1
 source=("https://luarocks.org/manifests/neopallium/luanativeobjects-$pkgver-1.src.rock")
 sha256sums=('86fa6f7e2608800946a171eb809334affdf85a38bad8b7ab505fb618e9f932c4')
 _lua_version=5.4
 
 _package() {
 	optdepends=("lua${1/./}-$_pkgname")
-	luarocks install --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none ./*.rockspec
-	rm "$pkgdir"/usr/lib/luarocks/rocks-*/manifest
-	[[ "$1" == "$_lua_version" ]] ||
-		mv "$pkgdir/usr/bin/native_objects" "$pkgdir/usr/bin/native_objects$1"
+	luarocks install --no-manifest --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none ./*.rockspec
+	rm -r "${pkgdir:?}/usr/bin"
+	local version="$1"
+	local v
+	if [[ "$version" != "$_lua_version" ]]; then
+		v="$version"
+	fi
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/luanativeobjects/$pkgver-$_revision/bin/"native_objects "$pkgdir/usr/bin/native_objects$v"
 }
 
 package_lua51-native-objects() {
