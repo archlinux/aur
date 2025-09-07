@@ -1,6 +1,6 @@
 pkgbase = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities
-	pkgver = 3.3.13
+	pkgver = 3.4.10
 	pkgrel = 1
 	url = https://joplinapp.org/
 	arch = x86_64
@@ -12,16 +12,15 @@ pkgbase = joplin
 	makedepends = python-setuptools
 	makedepends = libxcrypt-compat
 	depends = electron36
-	depends = nodejs<23
 	depends = nodejs>20
 	depends = libvips
 	optdepends = libappindicator-gtk3: for tray icon
 	source = joplin-desktop.sh
 	source = joplin-desktop.desktop
-	source = joplin-3.3.13.tar.gz::https://github.com/laurent22/joplin/archive/v3.3.13.tar.gz
+	source = joplin-3.4.10.tar.gz::https://github.com/laurent22/joplin/archive/v3.4.10.tar.gz
 	sha256sums = 9223cc816f8175ddaf8839f9357d2bd1c4831692504927c98d8e1eefa7df796e
 	sha256sums = ff2232a2e518de7987af2a6d25524d75c2f7d1b343993b5134a341ae8f815dd5
-	sha256sums = c57d7c8a04b0b37f114c9cb38a8389584e30c3ac1cbdbdd3412de7451de7c606
+	sha256sums = 549fb5e0410cedb8d03241e97b07114068fb288387b1cd2731713aa6b7e3cb56
 
 pkgname = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities - CLI App

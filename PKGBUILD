@@ -8,11 +8,11 @@
 pkgbase=joplin
 pkgname=('joplin' 'joplin-desktop')
 pkgdesc="A note taking and to-do application with synchronization capabilities"
-pkgver=3.3.13
+pkgver=3.4.10
 groups=('joplin')
 pkgrel=1
 _electronVersion=36
-depends=("electron${_electronVersion}" "nodejs<23" "nodejs>20" "libvips")
+depends=("electron${_electronVersion}" "nodejs>20" "libvips")
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64')
 makedepends=('npm' 'git' 'rsync' 'python-setuptools' 'libxcrypt-compat')
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('9223cc816f8175ddaf8839f9357d2bd1c4831692504927c98d8e1eefa7df796e'
             'ff2232a2e518de7987af2a6d25524d75c2f7d1b343993b5134a341ae8f815dd5'
-            'c57d7c8a04b0b37f114c9cb38a8389584e30c3ac1cbdbdd3412de7451de7c606')
+            '549fb5e0410cedb8d03241e97b07114068fb288387b1cd2731713aa6b7e3cb56')
 
 _setup_env() {
     export YARN_CACHE_FOLDER="${srcdir}/yarn-cache"
@@ -65,8 +65,9 @@ build() {
     cd "${srcdir}/joplin-${pkgver}/packages/app-cli"
     npx gulp build
 
-    # Build the electron package
+    # Pack the app-desktop electron package
     cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
+    npx gulp before-dist
     electronRoot=/usr/lib/electron${_electronVersion}/
     electronVersion="$(<${electronRoot}/version)"
     npx electron-builder \
