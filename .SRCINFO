@@ -1,7 +1,7 @@
 pkgbase = ecubus-pro
 	pkgdesc = A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support
-	pkgver = 0.8.54
-	pkgrel = 1
+	pkgver = 0.8.55
+	pkgrel = 4
 	url = https://github.com/ecubus/EcuBus-Pro
 	arch = x86_64
 	license = MIT
@@ -11,19 +11,18 @@ pkgbase = ecubus-pro
 	makedepends = ghostscript
 	makedepends = node-gyp
 	makedepends = nodejs
+	makedepends = python
 	depends = sh
 	depends = electron
 	depends = gcc-libs
 	depends = glibc
-	depends = python
-	depends = python-pytest
-	depends = python-udsoncan
-	depends = python-doipclient
+	optdepends = python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2.
+	optdepends = python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry.
 	provides = ecubus-pro
 	conflicts = ecubus-pro
 	options = !debug
 	options = !strip
-	source = ecubus-pro::git+https://github.com/ecubus/EcuBus-Pro.git#tag=v0.8.54
-	sha256sums = 3ae227fe3deb542c3122b086726e68f396c47a22d4c712339e67d241ec3711ad
+	source = ecubus-pro::git+https://github.com/ecubus/EcuBus-Pro.git#tag=v0.8.55
+	sha256sums = fd4fe1f1ff396c1c2dc8d4beec54942e4e677171353e73fc3d57683d26b3f862
 
 pkgname = ecubus-pro
