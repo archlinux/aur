@@ -4,7 +4,7 @@
 # Contributor: Hurricane Pootis <hurricanepootis@protonmail.com>
 
 pkgname=geekbench
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="A cross-platform benchmark that measures processor and memory performance"
 arch=('x86_64')
@@ -25,4 +25,4 @@ package() {
     ln -s /opt/${pkgname}/${pkgname}6 $pkgdir/usr/bin/${pkgname}
 }
 
-sha256sums=('43833053774816178a292331cc205923c5e8168ada378d41b9119532125a50ac')
+sha256sums=('c7156003f3fe7aedc986af7b02fbf654de8ab5e9ff530cab17c088ad3c2b0538')
