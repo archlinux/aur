@@ -1,0 +1,12 @@
+pkgbase = uz80
+	pkgdesc = Small and fast cross-platform Z80 assembler
+	pkgver = 2024.02.24
+	pkgrel = 1
+	url = http://cngsoft.no-ip.org/uz80.htm
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	source = http://cngsoft.no-ip.org/uz80-20240224.zip
+	sha256sums = ff19986fcb9d21f593bac3cba22c70b17255cdd804a89d0c3327bc34bbf25012
+
+pkgname = uz80
