@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202508061
+pkgver=202509071
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/5337d60760a5ebc532e1fcdca250fefa6db900f5/archives/dove-flatpak.zip")
-sha512sums=('41bb666bd9027a309235d612e150f9a630d9511c9f6ad3f7ee7ea6a6f4d8f8bbdc060e0656f8316364f4ba9c14491220caa192924683e2ef20675eb285467a39')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/3b171a9fe657c50608fff779d62d19f7d49506b3/archives/dove-flatpak.zip")
+sha512sums=('075b539790a92060713c8dc701bc799fceb6961081b5cc0d26fd62b0d1989e510eb4e6f5164547c37a5975acf339b1850a277e96bc60c4a62b895569bce7886c')
 makedepends=('unzip')
 
 pkgver() {
@@ -22,7 +22,7 @@ package() {
     install -Dm644 "$tmpdir/defaults/pref/dove.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/defaults/pref/dove.js"
     install -Dm644 "$tmpdir/dove.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/lib/thunderbird/dove.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/policies/policies.json"
-    install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/dove-flatpak/COPYING"
+    install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/dove-flatpak/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/dove-flatpak/README.md"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/123mail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/123mail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/126.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/126.com"
