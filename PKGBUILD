@@ -6,7 +6,7 @@
 pkgbase=rsbackup
 pkgname=('rsbackup' 'rsbackup-graph')
 pkgver=10.0
-pkgrel=5
+pkgrel=6
 pkgdesc="rsync-based backup utility"
 arch=('x86_64' 'aarch64')
 url="https://www.greenend.org.uk/rjk/rsbackup"
@@ -22,6 +22,7 @@ source=(
 	'rsbackup.cron.target'
 	'rsbackup.cron@.service'
 	'rsbackup.cron@.timer'
+	'fix_113.patch::https://github.com/ewxrjk/rsbackup/commit/679cd2b3745a0ce9018f43caf8439aa6f01e24db.patch?full_index=1'
 	'fix_119.patch::https://patch-diff.githubusercontent.com/raw/ewxrjk/rsbackup/pull/121.patch?full_index=1'
 )
 b2sums=(
@@ -31,7 +32,9 @@ b2sums=(
 	'fb906e693181f4eaffaad1972228fe0720ede3d35292d4605027dbc43b35d9abf49d367ee312b7025eda7c29a86435a25beecca3d5259b01f054b358a981c56d'
 	'04a41b59831dc7a040380483a721af59e99d6f12229909287404e9781c3e4a8d94a9a06538e1d09ede8b68f049c1414f5fb84acaaeaf0f10d6e4d2371b8080e3'
 	'54a4a2b3b750b97efad8ee01d6d31cf4d8844cabf88460fa61bc228093d7c1c1568403ddabb09d4e0419aac1363e2f161fdf2aa6ec25ada56a2c7c2c2079dd05'
-	'41b8c2f374f940cd4076d8dbdcd235fb4a437c6dc656ad96d39715b0e191595c2a34b410b9343cd6b8d276b90f6d42945a42f6a3b2603437238a9b481c582d3c')
+	'72895056108b00f8bc4c2c5d33fde36881753f819ec5414f7e69eac2525eac64638ffad5984a99c1a5a91b1fad2a40794834acd721b8e9c5e5e3f2ecb203951f'
+	'41b8c2f374f940cd4076d8dbdcd235fb4a437c6dc656ad96d39715b0e191595c2a34b410b9343cd6b8d276b90f6d42945a42f6a3b2603437238a9b481c582d3c'
+)
 # https://www.greenend.org.uk/rjk/misc/me.html
 validpgpkeys=(
 	'9006B0ED710DB81B76D368D9D3388BA18A741BEF'
@@ -39,6 +42,7 @@ validpgpkeys=(
 )
 
 prepare() {
+	patch --verbose --directory "${pkgbase}-${pkgver}" --strip 1 --ignore-whitespace --input "${srcdir}/fix_113.patch" --unified
 	patch --verbose --directory "${pkgbase}-${pkgver}" --strip 1 --ignore-whitespace --input "${srcdir}/fix_119.patch" --unified
 }
 
