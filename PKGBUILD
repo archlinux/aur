@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=2025.16
+pkgver=2025.16.1
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
@@ -11,10 +11,10 @@ arch=('x86_64')
 license=('Apache-2.0')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-	"$pkgname-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch"
+	"$pkgname-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch?full_index=1"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 )
-sha256sums=('d6076e38ce803d139f40324a93876616ebc01054163399d89940f06880938dd1'
+sha256sums=('6af6d2783ca6065b9f5448cba3993773d3df661426a56cf5ac34cb34ace946e6'
             'a1f999ad4493f176131e0b68e58c27c36e659ebd8b01f38fae989f8e1a179154'
             '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598')
 makedepends=(
@@ -66,7 +66,8 @@ prepare() {
 	perl -0777 -pi -e 's/install\s*\(\s*DIRECTORY\s*"\$\{slang_SOURCE_DIR\}\/include\".*?\)\s*//s' \
 		CMakeLists.txt
 
-	patch -Np1 -i "$srcdir/$pkgname-8369.patch"
+	# Ignore first hunk
+	patch -Np1 -i <(awk '/diff --git/ {diff_n++} diff_n==1 {next} {print}' "$srcdir/$pkgname-8369.patch")
 
 	# https://github.com/shader-slang/slang/pull/8369#issuecomment-3255737218
 	sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
