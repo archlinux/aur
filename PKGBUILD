@@ -3,8 +3,8 @@
 
 pkgname=python-xdoctest
 _name=${pkgname#python-}
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A Python package for executing tests in documentation strings"
 arch=(any)
 url="https://github.com/Erotemic/xdoctest"
@@ -17,7 +17,7 @@ optdepends=(
   'jupyter-nbconvert: for running tests in Jupyter notebooks'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('5593bfa8a2d4ff6ff13db592e83325c6bd30e6614db969aec7b4072ec788a203024a0e4066b69a34782cc99252d0601a0a3db0c2b70cf5b7f58e9f6dad2de89d')
+b2sums=('87a10ae11f94e013191535c45b5e92fb44ed2e3051c4b2d38a7f8eabcf521cd0c5e22a8d40eaa42788e1ecc3b4bc90734f9b29ca1f5df8ef833ca1b3fd39df5e')
 
 build() {
   cd $_name-$pkgver
