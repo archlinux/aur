@@ -10,6 +10,7 @@ pkgbase = python-pyglet1
 	makedepends = python-installer
 	makedepends = python-gobject
 	makedepends = python-pillow
+	makedepends = python-setuptools
 	makedepends = gstreamer
 	depends = python
 	depends = glu

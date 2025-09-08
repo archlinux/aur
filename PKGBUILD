@@ -15,7 +15,7 @@ arch=('any')
 url="https://github.com/pyglet/pyglet"
 license=('BSD-3-Clause')
 depends=('python' 'glu')
-makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-gobject' 'python-pillow' 'gstreamer')
+makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-gobject' 'python-pillow' 'python-setuptools' 'gstreamer')
 optdepends=('ffmpeg: provides audio&video support'
     'openal: live audio')
 conflicts=('python-pyglet' 'python-pyglet-git')
