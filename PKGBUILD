@@ -19,6 +19,8 @@ build() {
 
 package() {
   cd "$srcdir/dns_changer-$pkgver"
+  # Install binary (crate builds dns_changer, we rename it to dns-changer in PATH)
   install -Dm755 "target/release/dns_changer" "$pkgdir/usr/bin/dns-changer"
+  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
