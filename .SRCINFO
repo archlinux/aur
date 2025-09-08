@@ -1,6 +1,6 @@
 pkgbase = python-ipynbname
 	pkgdesc = Retrieve notebook filename and the full path to notebook when run from Jupyter Lab.
-	pkgver = 2024.1.0.0
+	pkgver = 2025.8.0.0
 	pkgrel = 1
 	url = https://github.com/msm1089/ipynbname
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-ipynbname
 	depends = python-ipykernel
 	depends = python-jupyter_core
 	depends = python-traitlets
-	source = https://files.pythonhosted.org/packages/source/i/ipynbname/ipynbname-2024.1.0.0.tar.gz
-	sha256sums = 1d3c69cdee8a97814f456a7204e9cc195b4bbb4b9e45cbe757796b162493f606
+	source = https://files.pythonhosted.org/packages/source/i/ipynbname/ipynbname-2025.8.0.0.tar.gz
+	sha256sums = dcc8367c64c4a9f0baa6acea3e509fd6696bf5d81c9abceb386e2ad6efcac935
 
 pkgname = python-ipynbname
