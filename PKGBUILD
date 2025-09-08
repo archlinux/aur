@@ -1,6 +1,6 @@
 # Maintainer: klpod221 <klpod221@gmail.com>
 pkgname=kerminal
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Modern Terminal with SSH, Tunneling & Cross-Device Sync"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "kerminal.install"
 )
 
-sha256sums=('bf9954aaa32090608ce329c8dbfec4bf00f224a82f8732237cf91ffe373121d9'
+sha256sums=('db6a279ac95cbcd8b8e83282cab8c4de241d75b6e3efd80a5bca4e4ba8fb7f68'
             '2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da'
             'eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc'
             '6628d9ee715006d102c7b6fe8108ed6c755f71fa03e948b7f4d0842026645e97')
