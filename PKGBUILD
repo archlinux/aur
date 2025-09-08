@@ -1,7 +1,7 @@
 # Maintainer: Jacob Aulin <jacob.aulin@proton.me>
 pkgname='qvickbuild'
 pkgver=v0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, lightweight, and fast build system for C, C++, and more"
 arch=('x86_64')
 url="https://gitlab.com/nordtektiger/qvickbuild"
