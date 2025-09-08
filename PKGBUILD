@@ -1,5 +1,5 @@
 # Maintainer: sga013
-pkgname=coreutils-uutils-symlink
+pkgname=uutils-coreutils-symlinks
 pkgver=1
 pkgrel=1
 pkgdesc="WARNING - CONFLICTS WITH COREUTILS ; USE AT YOUR OWN RISK. Symlinks uutils to appropriate binaries, alongside with man pages, and shell completions"
