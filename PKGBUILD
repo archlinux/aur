@@ -1,6 +1,6 @@
 # Maintainer: CelDaemon <celdaemon at voidgroup dot net>
 pkgname=waybar-dunst
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Waybar module for showing dunst's paused status"
 arch=(any)
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(python python-dbus-fast)
 install="config.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CelDaemon/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d008a57bfe5e87a316d458197fb89bfa6d82a128105f2845612be5c0c40f0cff')
+sha256sums=('10d03c22e0901c3eb01b3f55dbbdb2463398d557697d6bd88e78fb1bab00d7af')
 
 
 package() {
