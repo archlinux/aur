@@ -1,8 +1,8 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=bleachbit-admin
 pkgver=0.1
-pkgrel=0
-pkgdesc="Run bleachbit as root for cleaning system files. Patched version."
+pkgrel=1
+pkgdesc="Run BleachBit as root for cleaning system files."
 arch=('any')
 url="https://www.bleachbit.org/"
 license=('GPL3')
@@ -11,7 +11,8 @@ conflicts=("${pkgname}" 'bleachbit-cli' 'bleachbit-root')
 depends=('bleachbit' 'polkit')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/bleachbit-admin/-/raw/main/distrib/bleachbit-admin-0.1-0.tar.gz')
+source=('https://gitlab.com/linux-stuffs/linux-goodies/-/raw/master/run-as-root/bleachbit-admin/distrib/bleachbit-admin-0.1-1.tar.gz')
+
 sha256sums=('SKIP')
 
 package() {
