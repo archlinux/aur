@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-flatpak
-pkgver=202508061
+pkgver=202509071
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/b4e37009ecfa07cc48ffb1142bd4aa0d7d9a12dd/archives/phoenix-flatpak.zip")
-sha512sums=('0502c1d65f8d13a4e8fa7c841b969b2fc1b351e7d023954834683b598bc64083bae6157f0735408b66c57f32b4881ef6aa4058db9d57732a88341e104d668a31')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/269c52bbf930eb3d39ac0f4eb1c55f9382379076/archives/phoenix-flatpak.zip")
+sha512sums=('5e858ab9a5e35284f28e78f0088ad5739b884e990945df61a62bb9e3a0b66b968a766a01016162fc774e47203f59c42240c9b2200b8a41b6e08c4bbe149ae5eb')
 makedepends=('unzip')
 
 pkgver() {
@@ -52,7 +52,7 @@ package() {
     install -Dm644 "$tmpdir/userjs/ui-fix/youtube/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/ui-fix/youtube/user.js"
     install -Dm644 "$tmpdir/userjs/ui-fix-base/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/ui-fix-base/user.js"
     install -Dm644 "$tmpdir/userjs/youtube/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/youtube/user.js"
-    install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/phoenix-flatpak/COPYING"
+    install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/phoenix-flatpak/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/phoenix-flatpak/README.md"
 
     rm -rf "$tmpdir"
