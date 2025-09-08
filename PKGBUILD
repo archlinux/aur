@@ -2,7 +2,7 @@
 
 pkgname=python-p115nano302
 _name=${pkgname#python-}
-pkgver=0.1.2.2
+pkgver=0.1.2.3
 pkgrel=1
 epoch=
 pkgdesc="115 nano 302 backend."
@@ -31,7 +31,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('ec175d28c8a70a9b6926aca720921593be78164c9c6b894ff0f83ab1d798aae4')
+sha256sums=('caa9c26ab095b5f30b041ce0ddef315425c65ade9884efe4f1c2f35f2d3e8408')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
