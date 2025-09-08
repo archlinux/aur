@@ -1,8 +1,8 @@
-# Maintainer: 
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=adbmanager
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="ADB manager for Android devices"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('lazarus')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.png")
-sha256sums=('429ae0a1b8ef2a3194177158718cb59c24287e905a5340cc54831e722e422954'
+sha256sums=('5e97ebfa4b3545aff723158bcad68aa1c31517975ae859f7721a62ccca8ec4c2'
             'dfcea6314f6c08ae8efad0503f15669c20e10589d967718f5f44b313cf4ea922'
             '39cdcaa6d98f543486b6b5720b43007db0e191444f282934405e42ad77ecbbfa')
 
