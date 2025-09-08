@@ -1,0 +1,20 @@
+pkgbase = librem5-flash-image
+	pkgdesc = Image flashing tool for Librem 5 devices and related devices
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/librem5-flash-image
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = help2man
+	depends = python
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-yaml
+	depends = usbutils
+	depends = mfgtools
+	optdepends = python-coloredlogs: for colored logs
+	optdepends = python-python-jenkins: for downloading daily snapshots
+	source = librem5-flash-image-0.0.5.tar.gz::https://source.puri.sm/Librem5/librem5-flash-image/-/archive/v0.0.5/librem5-flash-image-v0.0.5.tar.gz
+	sha256sums = da0598d11aaddeb54b8b181c6e4ba1c9e75f9ba3506496af73352b002beb0bff
+
+pkgname = librem5-flash-image
