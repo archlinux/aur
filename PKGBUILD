@@ -1,7 +1,7 @@
 pkgname=youtube
 _pkgname=Youtube
-pkgver=1.1.5.aurpatch
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-desktop"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('5775e04fde4b4552b63f806d11a56ef3250b46d93d798eaff5ae922b86d16f48')
+sha256sums=('bbda1965f6d1088a3125334a7cdf174868f6afcbc02fa6b3d0a9a86638d8406d')
 
 
 package() {
@@ -25,9 +25,9 @@ package() {
 
 
     # Link to binary
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
-
+    
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$_pkgname.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
