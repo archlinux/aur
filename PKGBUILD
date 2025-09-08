@@ -7,10 +7,10 @@ pkgdesc="A Rust-based tool for changing DNS interactively"
 arch=('x86_64')
 url="https://github.com/bishnu7babu/dns_changer"
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('rust' 'cargo')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b89665210de787d356c7fde607108936be7d332c4efe1b3a5c4137510d408806')
 
 build() {
   cd "$srcdir/dns_changer-$pkgver"
@@ -19,8 +19,6 @@ build() {
 
 package() {
   cd "$srcdir/dns_changer-$pkgver"
-  # Install binary (crate builds dns_changer, we rename it to dns-changer in PATH)
   install -Dm755 "target/release/dns_changer" "$pkgdir/usr/bin/dns-changer"
-  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
