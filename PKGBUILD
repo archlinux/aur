@@ -6,9 +6,10 @@
 # Contributor: Florian Pritz <bluewind at jabber dot ccc dot de>
 # Contributor: Peter Wu <peter@lekensteyn.nl>
 
-pkgbase=wireshark
+_pkgbase=wireshark
+pkgbase="${_pkgbase}-libsmi"
 pkgname=('wireshark-libsmi-cli' 'wireshark-libsmi-qt')
-pkgver=4.4.8
+pkgver=4.4.9
 pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with SNMP OID resolution'
 url='https://www.wireshark.org/'
@@ -61,13 +62,13 @@ source=(
   "git+https://gitlab.com/wireshark/wireshark.git#tag=v${pkgver}"
   wireshark.sysusers
 )
-sha512sums=('dd840eb050645ef3dff3f36be0b701fdef5cca40352043dc608ad90541bba7e07e7f95b7f93eff2a48a9019218780142d384c37e4512981ad5f965a9f2128c5c'
+sha512sums=('8270bb56285c2945e759da9c7c872c283b68f7ed19fdb9916ecd526f047b4199a71c3cbc5102242cb2272b9299dbf94c5c7831fab895519ab0ee2ee17326d335'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
-b2sums=('4744cb986b30d449c1c1e2dd45a556514975e4f1cb80059bd279f7a83c4911d9e970a506f6dfbd10a214d6aa15db64c0952c779e7f406fd4d2cc4a61ceea375a'
+b2sums=('9b41a824e03bac2f04a09855921e1015854b69d5df0ce178a6d11e7ec05eedcdb785dae32f61d66f7080badccf59365b484bdc212567d5b67314a45b124a678c'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
 
 build() {
-  cd ${pkgbase}
+  cd ${_pkgbase}
   cmake \
     -B build \
     -G Ninja \
@@ -122,7 +123,7 @@ package_wireshark-libsmi-cli() {
   conflicts=(wireshark wireshark-cli)
   provides=(libwireshark.so libwiretap.so libwsutil.so wireshark-cli)
 
-  cd ${pkgbase}
+  cd ${_pkgbase}
   DESTDIR="${pkgdir}" ninja -C build install
   DESTDIR="${pkgdir}" cmake --install build --component Development
 
@@ -170,7 +171,7 @@ package_wireshark-libsmi-qt() {
   replaces=(wireshark wireshark-gtk wireshark-common)
   conflicts=(wireshark wireshark-gtk wireshark-common wireshark-qt)
 
-  cd ${pkgbase}
+  cd ${_pkgbase}
   install -d "${srcdir}/staging"
   DESTDIR="${srcdir}/staging" ninja -C build install
 
