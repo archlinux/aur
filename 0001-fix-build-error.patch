@@ -1,7 +1,7 @@
-From f5ddfee0b5a3228d2a2e337e545ce706474651be Mon Sep 17 00:00:00 2001
+From 858ab85c1ccca9e25a9c8580b5a819693dec7f99 Mon Sep 17 00:00:00 2001
 From: kXuan <kxuanobj@gmail.com>
 Date: Wed, 6 Sep 2023 11:52:53 +0800
-Subject: [PATCH] fix build error
+Subject: [PATCH 1/2] fix build error
 
 Signed-off-by: kXuan <kxuanobj@gmail.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: kXuan <kxuanobj@gmail.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/javascript/net/grpc/web/generator/Makefile b/javascript/net/grpc/web/generator/Makefile
-index 44b0196..63a0a0a 100644
+index 44b0196..c57de61 100644
 --- a/javascript/net/grpc/web/generator/Makefile
 +++ b/javascript/net/grpc/web/generator/Makefile
 @@ -14,8 +14,8 @@
@@ -33,5 +33,5 @@ index 44b0196..63a0a0a 100644
  install: protoc-gen-grpc-web
  	mkdir -p $(PREFIX)/bin
 -- 
-2.42.0
+2.49.0
 

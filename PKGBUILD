@@ -1,21 +1,26 @@
 # Maintainer: kXuan <kxuanobj at gmail dot com>
 
 pkgname=protoc-gen-grpc-web
-pkgver=1.5.0
+pkgver=2.0.1
 pkgrel=0
 pkgdesc='Protobuf gRPC compiler for Web Clients'
 arch=('x86_64')
 url='https://github.com/grpc/grpc-web'
 license=('Apache2')
-depends=('protobuf>=3')
+depends=('protobuf>=3' 'protoc-gen-js-bin')
 makedepends=('pkg-config')
-source=("https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz" "0001-fix-build-error.patch")
-sha512sums=('c92180686af250d7b791fd9b0a127f09952cd75ae22224bdd0f9bd134c9c1a3f90e3d91b5f5d6d0ad9236ccef97da317b7010395e6fb7146f50dd91a094de37a'
-            '1b1c0cc0d97a991129a3bf3a9b42d9758630abb88faa05f02dc479ddb64d1d9b002dba692506b913680de143aa210958717de2f469d15be4e3ead3d66a1f8c50')
+source=(
+  "https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz"
+  "0001-fix-build-error.patch"
+  "0002-fix-compatibility-with-protobuf.patch" )
+sha512sums=('7e90fce15bccb3e2e8cd75ce8bf40fff0141dc02700ef06f01e3344a49da289e1cfbd30f4f7199f08283cc78ec2d6d62154ce3ec62256a4350fe7a21657a0c14'
+            '5c7c72191f41e7f4d1da6645b0e433f110f169076e97af365f1c20c7dbfb45782a1700a6ed14c180d629550918b6e86a37ccaf47f6af8f566e17b1003c8ae203'
+            'c768170c7a376265348e426f871e0b0ec618c9a9d819aa296cf658a70faf73021bd3eff0aa2ecdd120c135a269b86ee74cf3f78264ba48e34da712e2344c2857')
 
 prepare() {
     cd "grpc-web-$pkgver"
     patch --forward --strip=1 --input="${srcdir}/0001-fix-build-error.patch"
+    patch --forward --strip=1 --input="${srcdir}/0002-fix-compatibility-with-protobuf.patch"
 }
 build() {
     cd "grpc-web-${pkgver}"
