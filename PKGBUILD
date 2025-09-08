@@ -8,7 +8,7 @@ pkgname="${_pkgname}-git"
 epoch=0
 _pkgver=latest
 pkgver=r35.20200131
-pkgrel=1
+pkgrel=2
 pkgdesc="Airport, train station, ferry terminal, airline and flight routes data as CSV files to be used e.g. in GIS-applications."
 arch=(any)
 url="http://openflights.org/data"
@@ -25,7 +25,7 @@ depends=()
 makedepends=(
  'git'
 )
-repaces=(
+replaces=(
   "${_pkgname}-latest"
 )
 optdepends=()
