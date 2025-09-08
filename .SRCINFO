@@ -1,5 +1,5 @@
 pkgbase = orca-slicer-flatpak-bin
-	pkgdesc = OrcaSlicer Flatpak package tracking the stable release (uninstall with `flatpak uninstall --user io.github.softfever.OrcaSlicer`)
+	pkgdesc = OrcaSlicer Flatpak package for the stable release
 	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
@@ -7,7 +7,9 @@ pkgbase = orca-slicer-flatpak-bin
 	arch = aarch64
 	license = AGPL3
 	depends = flatpak
-	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer-Linux-flatpak_V2.3.0_x86_64.flatpak
-	sha256sums = SKIP
+	source_x86_64 = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer-Linux-flatpak_V2.3.0_x86_64.flatpak
+	sha256sums_x86_64 = e11a76d29dafc02bad5e527967b2dcc11b581677747767dd0dd24e679e2ebd41
+	source_aarch64 = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer-Linux-flatpak_V2.3.0_aarch64.flatpak
+	sha256sums_aarch64 = a8fab49a337cf3e5fdc5a9175c6cf0e90278d4647a9a6c3a32913ee7d288e735
 
 pkgname = orca-slicer-flatpak-bin
