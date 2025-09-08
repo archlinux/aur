@@ -3,7 +3,7 @@
 _gitauth='jca02266'
 _pkgname='lha'
 pkgname="${_pkgname}-git"
-pkgver=1.14i_ac20220213.gb64f72c
+pkgver=1.14i_ac20220213.gc2fa389
 pkgrel=1
 pkgdesc="Compression and archive utility for LH-7 format archives (GIT version)"
 arch=('x86_64')
@@ -14,11 +14,9 @@ provides=("${_pkgname}" 'lhasa')
 source=(
   "$pkgname::git+${url}.git?signed"
   "https://packages.debian.org/changelogs/pool/non-free/l/lha/current/copyright"
-  "0001-fix-egrep-tests.patch"
 )
 sha256sums=('SKIP'
-            '5afb178c19472a2528102fff8050d365c4d5b5dda2f8f7b158ba5d9f62a86a7d'
-            '7689646d9e85139f2220ee36d38ae2275aac24ca68e33d3aaf0f4bed2e9bc36b')
+            '5afb178c19472a2528102fff8050d365c4d5b5dda2f8f7b158ba5d9f62a86a7d')
 validpgpkeys=(
   968479A1AFF927E37D1A566BB5690EEEBB952194 # GitHub
 )
