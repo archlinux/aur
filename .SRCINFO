@@ -1,7 +1,7 @@
 pkgbase = wleave
 	pkgdesc = A Wayland-native logout script written in GTK4
-	pkgver = 0.6.1
-	pkgrel = 5
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://github.com/AMNatty/wleave
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = wleave
 	depends = librsvg
 	depends = libadwaita
 	conflicts = wleave-git
-	source = wleave::git+https://github.com/AMNatty/wleave#tag=0.6.1
+	source = wleave::git+https://github.com/AMNatty/wleave#tag=0.6.2
 	b2sums = SKIP
 
 pkgname = wleave
