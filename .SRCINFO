@@ -1,6 +1,6 @@
 pkgbase = batata
 	pkgdesc = An opinionated tiled stackable terminal emulator
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/hugopl/batata
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = batata
 	depends = gtk4>=1:4.16.2
 	depends = libadwaita>=1:1.6.0
 	depends = vte4>=0.78.0
-	source = batata-0.2.2.tar.gz::https://github.com/hugopl/batata/archive/v0.2.2.tar.gz
-	sha256sums = 43285216a42702801d45b38f834de46c09a7b1cc9342b5d4b898def0db10a7d0
+	source = batata-0.2.3.tar.gz::https://github.com/hugopl/batata/archive/v0.2.3.tar.gz
+	sha256sums = 947010f4418a2b1e533e38fd314eec08e184f3959f8a78b592e4efe7d7829f27
 
 pkgname = batata
