@@ -1,0 +1,12 @@
+pkgbase = tateditor-bin
+	pkgdesc = TATEditor (GTK3 build, binary release)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://drive.google.com/file/d/1nIb3ocWZp7y5NwQt4K_M1F8G_r1YjMdg/view
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	source = tateditor.tar.gz::https://drive.google.com/uc?export=download&id=1nIb3ocWZp7y5NwQt4K_M1F8G_r1YjMdg
+	sha256sums = SKIP
+
+pkgname = tateditor-bin
