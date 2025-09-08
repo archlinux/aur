@@ -8,7 +8,7 @@ url="https://www.bleachbit.org/"
 license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}" 'bleachbit-cli' 'bleachbit-root')
-depends=('bleachbit' 'polkit')
+depends=('bleachbit' 'polkit' 'wmctrl' 'xdotool')
 options=('!strip')
 
 source=('https://gitlab.com/linux-stuffs/linux-goodies/-/raw/master/run-as-root/bleachbit-admin/distrib/bleachbit-admin-0.1-1.tar.gz')
