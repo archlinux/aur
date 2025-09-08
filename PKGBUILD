@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL
 
 pkgname=python-rios
-pkgver=2.0.5
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A set of Python modules which makes it easy to write raster processing code in Python. Built on top of GDAL."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=('python' 'python-numpy' 'gdal')
 makedepends=('python-setuptools')
 source=("https://github.com/ubarsc/rios/releases/download/rios-$pkgver/rios-$pkgver.tar.gz")
-sha256sums=('4bd19c5e08dd03a0552fa4a7081597cd4915e47b938aef7f9a6be2c0da9aeb41')
+sha256sums=('9bc8adf0ce50546cc9c2241f93b47f5d7584be7a5a346f11cf696ec4a6c80498')
 
 build() {
     cd rios-$pkgver

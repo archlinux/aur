@@ -1,6 +1,6 @@
 pkgbase = python-rios
 	pkgdesc = A set of Python modules which makes it easy to write raster processing code in Python. Built on top of GDAL.
-	pkgver = 2.0.5
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://www.rioshome.org
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-rios
 	depends = python
 	depends = python-numpy
 	depends = gdal
-	source = https://github.com/ubarsc/rios/releases/download/rios-2.0.5/rios-2.0.5.tar.gz
-	sha256sums = 4bd19c5e08dd03a0552fa4a7081597cd4915e47b938aef7f9a6be2c0da9aeb41
+	source = https://github.com/ubarsc/rios/releases/download/rios-2.0.8/rios-2.0.8.tar.gz
+	sha256sums = 9bc8adf0ce50546cc9c2241f93b47f5d7584be7a5a346f11cf696ec4a6c80498
 
 pkgname = python-rios
