@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.11.7] - 2025-06-12
+
+### Added
+- Add access to `Page.trimbox`, `Page.bleedbox`, and `Page.artbox` (h/t @samuelbradshaw). ([#1313](https://github.com/jsvine/pdfplumber/issues/1313) + [7e364e6](https://github.com/jsvine/pdfplumber/commit/7e364e6193c6e8bafa9b46587c0fdd4a46405399))
+
+### Changed
+- Upgrade `pdfminer.six` from `20250327` to `20250506`. ([4c7e092](https://github.com/jsvine/pdfplumber/commit/4c7e092))
+
+### Removed
+- Remove `stroking_pattern` and `non_stroking_pattern` object attributes, due to changes in `pdfminer.six`. ([4c7e092](https://github.com/jsvine/pdfplumber/commit/4c7e092))
+
+## [0.11.6] - 2025-03-27
+### Changed
+- Upgrade `pdfminer.six` from `20231228` to `20250327` ([3fcb493](https://github.com/jsvine/pdfplumber/commit/3fcb493) + [12a73a2](https://github.com/jsvine/pdfplumber/commit/12a73a2))
+- Use csv.QUOTE_MINIMAL for .to_csv(...) ([980494a](https://github.com/jsvine/pdfplumber/commit/980494a))
+
+
+### Fixed
+- Fix bug with `use_text_flow=True` text extraction (h/t @samuelbradshaw)([#1279](https://github.com/jsvine/pdfplumber/issues/1279) + [e15ed98](https://github.com/jsvine/pdfplumber/commit/e15ed98))
+- Catch exceptions from pdfminer and malformed PDFs ([43ccc5b](https://github.com/jsvine/pdfplumber/commit/43ccc5b))
+- More broadly handle RecursionError ([748ff31](https://github.com/jsvine/pdfplumber/commit/748ff31))
+
+### Removed
+- Remove test_issue_1089 ([#1263](https://github.com/jsvine/pdfplumber/issues/1263) + [7e28e76](https://github.com/jsvine/pdfplumber/commit/7e28e76))
+
+## [0.11.5] - 2025-01-01
+
+### Added
+
+- Add `--format text` options to CLI (in addition to previously-available `csv` and `json`) (h/t @brandonrobertz). ([#1235](https://github.com/jsvine/pdfplumber/pull/1235))
+- Add `raise_unicode_errors: bool` parameter to `pdfplumber.open()` to allow bypassing `UnicodeDecodeError`s in annotation-parsing and generate warnings instead (h/t @stolarczyk). ([#1195](https://github.com/jsvine/pdfplumber/issues/1195))
+- Add `name` property to `image` objects (h/t @djr2015). ([#1201](https://github.com/jsvine/pdfplumber/discussions/1201))
+
+### Fixed
+
+- Fix `PageImage.debug_tablefinder(...)` so that its main keyword argument is named the same (`table_settings=`) as other related `Page` methods (h/t @n-traore). ([#1237](https://github.com/jsvine/pdfplumber/issues/1237))
+
+
 ## [0.11.4] - 2024-08-18
 
 ### Fixed

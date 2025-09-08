@@ -1,6 +1,6 @@
 pkgbase = python-pdfplumber
 	pkgdesc = Plumb a PDF for detailed information about each char, rectangle, line, et cetera.
-	pkgver = 0.11.4
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://github.com/jsvine/pdfplumber
 	changelog = python-pdfplumber.changelog.md
@@ -8,10 +8,10 @@ pkgbase = python-pdfplumber
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.8.0
-	depends = python-pdfminer>=20231228
+	depends = python-pdfminer>=20250506
 	depends = python-pillow>=9.1.0
 	depends = python-pypdfium2>=4.18.0
-	source = https://files.pythonhosted.org/packages/source/p/pdfplumber/pdfplumber-0.11.4.tar.gz
-	sha256sums = 147b55cde2351fcb9523b46b09cc771eea3602faecfb60d463c6bf951694fbe8
+	source = https://files.pythonhosted.org/packages/source/p/pdfplumber/pdfplumber-0.11.7.tar.gz
+	sha256sums = fa67773e5e599de1624255e9b75d1409297c5e1d7493b386ce63648637c67368
 
 pkgname = python-pdfplumber
