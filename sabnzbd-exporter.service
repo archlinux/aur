@@ -1,0 +1,13 @@
+[Unit]
+Description=A metrics exporter for sending statistics from sabnzbd to prometheus
+
+[Service]
+EnvironmentFile=/etc/sabnzbd-exporter.env
+ExecStart=/bin/python /usr/lib/sabnzbd-exporter/sabnzbd_exporter.py
+User=sabnzbd-exporter
+Group=sabnzbd-exporter
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
