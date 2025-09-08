@@ -1,7 +1,7 @@
 # Maintainer: Kevin Saiger <kevin@saiger.dev>
 
 pkgname=gozer
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Fast, opinionated and simple static site generator in a single static binary."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~dvko/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("27dd6e0e72092e4a946e7e65ec8b36c2869a0ace80730e5ea3739a814159b88e")
+sha256sums=("7adbba4c24635c2312abd9f8db2c92f38c60b497b0860c2591fd7baa03cdc6d0")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
