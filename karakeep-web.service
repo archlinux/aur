@@ -9,9 +9,8 @@ Restart = on-failure
 EnvironmentFile = -/etc/karakeep/karakeep.env
 EnvironmentFile = -/usr/lib/karakeep/version
 Environment = DATA_DIR=/var/lib/karakeep
-WorkingDirectory = /usr/lib/karakeep/db_migrations
-ExecStartPre = /usr/bin/node index.js
-ExecStart = /usr/bin/node /usr/lib/karakeep/apps/web/server.js
+WorkingDirectory = /usr/lib/karakeep/apps/web
+ExecStart = /usr/bin/node server.js
 TimeoutStopSec = 5
 SyslogIdentifier = karakeep-web
 ProtectSystem = yes

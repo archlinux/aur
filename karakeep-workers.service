@@ -9,7 +9,8 @@ Restart = on-failure
 EnvironmentFile = -/etc/karakeep/karakeep.env
 Environment = DATA_DIR=/var/lib/karakeep
 WorkingDirectory = /usr/lib/karakeep/apps/workers
-ExecStart = /usr/bin/pnpm run start:prod
+ExecStartPre = /usr/bin/sh -c 'cd /usr/lib/karakeep/db_migrations ; /usr/bin/node index.js'
+ExecStart = /usr/bin/node dist/index.js
 TimeoutStopSec = 5
 SyslogIdentifier = karakeep-workers
 ProtectSystem = yes

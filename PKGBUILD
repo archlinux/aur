@@ -2,14 +2,14 @@
 
 pkgname=karakeep
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
 replaces=("hoarder")
-depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs-lts-jod" "pnpm")
+depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs-lts-jod")
 makedepends=("git" "jq" "nodejs-lts-jod" "pnpm" "python")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "ollama: for automatic tagging"
@@ -42,19 +42,24 @@ build() {
     export NEXT_TELEMETRY_DISABLED=1
     export PUPPETEER_SKIP_DOWNLOAD="true"
 
-    # build web
+    # Build
     cd "${pkgname}"
     corepack use $(jq -r '.packageManager' package.json)
     pnpm install
+
+    # Build the db migration script
     cd packages/db
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
     cp -R drizzle ../../db_migrations
+
+    # Compile the web app
     cd ../../apps/web
     pnpm exec next build --experimental-build-mode compile
 
-    # build workers
+    # Build the worker code
     cd ../..
     rm -rf workers &>/dev/null
+    pnpm --prefix="apps/workers" build
     pnpm deploy --node-linker=isolated --filter "@${pkgname}/workers" --prod workers
 
     # delete musl files, macos/win/android files, map file

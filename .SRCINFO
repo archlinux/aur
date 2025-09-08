@@ -1,7 +1,7 @@
 pkgbase = karakeep
 	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karakeep-app/karakeep
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,6 @@ pkgbase = karakeep
 	depends = meilisearch
 	depends = monolith
 	depends = nodejs-lts-jod
-	depends = pnpm
 	optdepends = karakeep-cli: karakeep cli tool
 	optdepends = ollama: for automatic tagging
 	optdepends = yt-dlp: for downloading video
