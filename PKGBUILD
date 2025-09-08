@@ -8,7 +8,7 @@
 _gitname="gammu"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=1.42.0+290.r14395.20240812.2df3a8a96
+pkgver=1.42.0+301.r14406.20250131.204a3c6be
 pkgrel=1
 pkgdesc="GNU All Mobile Management Utilities. Latest git checkout."
 arch=(

@@ -1,6 +1,6 @@
 pkgbase = gammu-git
 	pkgdesc = GNU All Mobile Management Utilities. Latest git checkout.
-	pkgver = 1.42.0+290.r14395.20240812.2df3a8a96
+	pkgver = 1.42.0+301.r14406.20250131.204a3c6be
 	pkgrel = 1
 	url = https://github.com/gammu/gammu
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = gammu-git
 	depends = libodbc.so
 	depends = libpq.so
 	depends = libusb-1.0.so
-	provides = gammu=1.42.0+290.r14395.20240812.2df3a8a96
-	provides = gammu-udev=1.42.0+290.r14395.20240812.2df3a8a96
+	provides = gammu=1.42.0+301.r14406.20250131.204a3c6be
+	provides = gammu-udev=1.42.0+301.r14406.20250131.204a3c6be
 	conflicts = gammu
 	conflicts = gammu-udev
 	source = gammu::git+https://github.com/gammu/gammu.git
