@@ -1,0 +1,13 @@
+pkgbase = orca-slicer-flatpak-bin
+	pkgdesc = OrcaSlicer Flatpak package tracking the latest stable release
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/SoftFever/OrcaSlicer
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = flatpak
+	depends = wget
+	depends = jq
+
+pkgname = orca-slicer-flatpak-bin
