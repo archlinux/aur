@@ -8,10 +8,11 @@ pkgdesc="Desktop version of lobe-chat, an open-source, modern design AI chat fra
 arch=('x86_64')
 url="https://github.com/lobehub/lobe-chat"
 license=('Apache-2.0 WITH lobe-chat-exception ')
-source=("lobehub-desktop-beta_1.124.4_amd64.deb::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta_1.124.4_amd64.deb")
-sha256sums=('9423de0c912f1c18a20804fc3be8970db741cee524ea113f8c332999829149e4')
+makedepends=('rpmextract')
+source=("lobehub-desktop-beta-1.124.4.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-1.124.4.x86_64.rpm")
+sha256sums=('c265a93542b3dafa631f32cafaa9f4d10fad273c2eb47c71636db60637dfe214')
 
 package() {
   cd "${pkgdir}"
-  bsdtar -O -xf "${srcdir}/lobehub-desktop-beta_1.124.4_amd64.deb" data.tar.xz | bsdtar -xJf -
+  rpmextract.sh "${srcdir}/lobehub-desktop-beta-1.124.4.x86_64.rpm"
 }
