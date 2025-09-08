@@ -1,3 +1,6 @@
+## Version 0.3.0
+Fixed some bugs. Updated supported Python versions.
+
 ## Version 0.2.0
 * Restructured project ready for initial PyPI upload.
 
