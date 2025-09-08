@@ -5,7 +5,7 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
 pkgver=2025.9
-pkgrel=1
+pkgrel=2
 _nodeversion=22
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -26,6 +26,7 @@ makedepends=(
   'libxcrypt-compat'
   'nvm'
   'protobuf'
+  'typescript'
 )
 optdepends=('libappindicator-gtk3: tray icon')
 install="$pkgname.install"
