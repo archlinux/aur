@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-hotel-manager
-pkgver=24
+pkgver=25
 pkgrel=1
 pkgdesc="Gnome Shell extension to manage Hotel development servers"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("gnome-shell")
 provides=("gnome-shell-extension-hotel-manager")
 conflicts=("gnome-shell-extension-hotel-manager-git")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/hotel-manager-v$pkgver.zip")
-md5sums=('9d8879d39fdd5a95240bbf02decb50a8')
+md5sums=('a8d0fef2cbde0eca90d7c55897042b7a')
 
 package() {
   rm -f "$srcdir/$pkgname-$pkgver.zip"
