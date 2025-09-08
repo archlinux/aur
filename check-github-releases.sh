@@ -13,6 +13,8 @@ fi
 
 sed -i -e 's/pkgrel=.*/pkgrel=1/' PKGBUILD
 
+updpkgsums
+
 if command -v /usr/local/bin/printsrcinfo > /dev/null; then
   /usr/local/bin/printsrcinfo > .SRCINFO
 else
