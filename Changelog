@@ -1,9 +1,24 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 5.7.0 ➙ 6.2.0
-              : 2025-02-28 ➙ 2025-07-10
+ Tags         : 5.7.1 ➙ HEAD
+              : 2025-03-11 ➙ 2025-09-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-09-08   : HEAD
+                It is possible that production certs can occasionally get out of sync.
+                Not sure how this can happen under normal circumstances. One possible
+                scenario is server reboot while production certs are being updated.
+                When sslm-mgr starts, it checks for production certs being
+                out of sync and issues a warning if they are.
+                In previous version, it logged recommended commands to remediate.
+                This change automates that and removes the need for manual
+                intervention.
+                In current version, if production certs are out of sync, this is logged
+                and then they are automatically synced and servers restarted.
+
+ 2025-07-10   : 6.3.0, origin/master
+                update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-07-10   : 6.2.0
                 Make sure all changes to certs/ are properly marked so that production is
@@ -67,13 +82,3 @@
  2025-03-11   : 5.7.1
                 After latex update we needed to fix building latex pdf to avoid error
  2025-02-28     update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-02-28   : 5.7.0
-                DANE update:
-                  for port 25 tlsa records are generated for each MX record same as always.
-                  But now, if port is not 25, then TLSA records are for each subdomain in
-                  the x509 SAN domain list.
-                  There is also a capability to specify this with additional elemein in the
-                  dane_tls item which can be "MX" or "SANS"
-                Expand dane tlsa example config file
- 2025-02-09     update Docs/Changelog.rst Docs/ssl-mgr.pdf
