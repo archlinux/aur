@@ -1,0 +1,12 @@
+pkgbase = php-mago-bin
+	pkgdesc = Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code
+	pkgver = 1.0.0beta.12
+	pkgrel = 1
+	url = https://github.com/carthage-software/mago
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source = https://github.com/carthage-software/mago/releases/download/1.0.0-beta.12/mago-1.0.0-beta.12-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = php-mago-bin
