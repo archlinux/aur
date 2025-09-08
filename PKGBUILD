@@ -3,7 +3,7 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r1274.d4e17153
+pkgver=r1331.18cb267
 pkgrel=1
 arch=('any')
 depends=(
@@ -22,7 +22,10 @@ depends=(
     'python-mdit_py_plugins'
     'python-linkify-it-py'
 )
-optdepends=('python-regex')
+optdepends=(
+    'python-regex'
+    'python-prompt_toolkit'
+)
 license=('MIT')
 makedepends=(
     'git'
