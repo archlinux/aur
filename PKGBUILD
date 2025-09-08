@@ -2,7 +2,7 @@
 
 pkgname=tdns-git
 _pkgname=tdns
-pkgver=v0.4.1.r0.8154b92
+pkgver=v0.5.0.r0.2726837
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -21,8 +21,7 @@ pkgver() {
 
 build() {
   cd $srcdir/$_pkgname
-  # Building a second time will fail as for some reason the makefile doesn't run the $(BIN) section after cleaning.
-  # Building a third time and subsequently ever other time however will run it correctly :shrug:.
+  make clean # Explicitly clean the build dir as it doesn't clean properly on rebuilds
   make build
 }
 
