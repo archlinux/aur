@@ -1,6 +1,6 @@
 pkgbase = foundry
 	pkgdesc = A blazing fast, portable and modular toolkit for Ethereum application development written in Rust.
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://getfoundry.sh
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = foundry
 	provides = anvil
 	provides = chisel
 	options = !lto
-	source = git+https://github.com/foundry-rs/foundry.git#tag=v1.3.4
-	sha256sums = 23d0b7cb309de2cda67a693df87f068932104ea8915a083b6b7a23e258644300
+	source = git+https://github.com/foundry-rs/foundry.git#tag=v1.3.5
+	sha256sums = 4e0a2fa01d7fb44cca68153977b6edcd843963ff17b651fc4f5dd4ebd9748cc7
 
 pkgname = foundry
