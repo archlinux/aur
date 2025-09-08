@@ -1,33 +1,38 @@
-# https://aur.archlinux.org/packages/toggle-git
-groups=('modified')
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: VxlerieUwU
 pkgname=toggle-git
 _app_id=app.drey.Toggle
-pkgver=r126.93f9333
+pkgver=0.99.0.a.r18.ga7bd078
 pkgrel=1
-pkgdesc="Like Tweaks, but with more Libadwaita!"
+pkgdesc="Toggle extra GNOME settings"
 arch=('any')
 url="https://gitlab.gnome.org/World/toggle"
-license=('GPL3')
-depends=('gjs' 'libadwaita')
-makedepends=('blueprint-compiler' 'git' 'meson' 'setconf' 'typescript')
-checkdepends=('appstream-glib')
+license=('GPL-3.0-or-later')
+depends=(
+  'gjs'
+  'gtk4'
+  'libadwaita'
+)
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'meson'
+  'setconf'
+  'typescript'
+)
 optdepends=('gnome-shell-extensions: enable Light Theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/World/toggle.git'
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git'
         'fix-build.patch')
-b2sums=('SKIP'
-        'SKIP'
-        'e8f69a7f9e789251ef7e5060e1c681bbc1806371021f3bc1abf66fadb4dd48535c9e270cf9bf64beb9b6d67d469bc1c92526f9cec81baa2ac50e0862d53c2215')
+sha256sums=('SKIP'
+            'SKIP'
+            'f4724cfe8cc80133af9fbe118682bf8b2259cce1acfdd9caa5533b0f2a9dd52b')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -36,7 +41,7 @@ prepare() {
   git config submodule.src/gi-types.url "$srcdir/gi-typescript-definitions"
   git -c protocol.file.allow=always submodule update
 
-  patch --forward --strip=1 --input="$srcdir/fix-build.patch"
+  patch -Np1 -i "$srcdir/fix-build.patch"
 
   # Correct Exec
   setconf "data/${_app_id}.desktop.in.in" Exec "${pkgname%-git}"
@@ -48,9 +53,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
