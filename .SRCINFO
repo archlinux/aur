@@ -1,6 +1,6 @@
 pkgbase = maretf
 	pkgdesc = A work in progress command-line utility to work with VTF files.
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/craftablescience/MareTF
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = maretf
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = maretf::git+https://github.com/craftablescience/MareTF.git#tag=v0.7.3
+	source = maretf::git+https://github.com/craftablescience/MareTF.git#tag=v0.7.4
 	source = git+https://github.com/craftablescience/cmake-helpers.git
 	source = git+https://github.com/craftablescience/sourcepp.git
 	source = git+https://github.com/p-ranav/argparse.git
@@ -28,7 +28,7 @@ pkgbase = maretf
 	source = git+https://github.com/richgel999/miniz.git
 	source = git+https://github.com/craftablescience/minizip-ng.git
 	source = git+https://github.com/phoboslab/qoi.git
-	sha256sums = 94a4f08e9c7b8212860cf2fc8383b1fd73a7964db6782b1a4f462a9f7a33d6b0
+	sha256sums = ff2c6c3426848a4dcc8644bb94af73946ef4216908184d0c36394b42f877a26d
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
