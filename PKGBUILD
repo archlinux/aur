@@ -13,7 +13,7 @@
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
 pkgver=2025.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('Apache-2.0')
@@ -91,7 +91,9 @@ package() {
   local _electron_version=$(cat /usr/lib/electron/version)
   depends=("electron${_electron_version%%.*}")
 
-  install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname/"
+  cp -r "$_pkgsrc/dist/linux-unpacked/resources"/* "$pkgdir/$_install_path/$_pkgname/"
+
   install -Dm644 "$_pkgsrc/resources/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
@@ -132,4 +134,6 @@ export ELECTRON_FORCE_IS_PACKAGED
 
 exec electron${_electron_version%%.*} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
