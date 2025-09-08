@@ -1,6 +1,6 @@
 # Maintainer: FirstAirBender <noblechuk5 at web dot de>
 pkgname=crowdsec-nginx-bouncer
-pkgver=1.0.8
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
@@ -30,7 +30,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::${_giturl}/releases/download/v${pkgver}/${pkgname}.tgz"
   "cs-nginx-bouncer-nginx-module.conf"
 )
-sha256sums=('a6c600640d15cca3d8909ff1996f4f6df61390b80e13cdaa1e6015a2a3ff4444'
+sha256sums=('8d3b3f1911ead5ca5f309fc57621fee32a613b6af99faa77aa3ed07f780990b9'
             '48b8356f3652ae766496a28714a661c30c9616c12b9cb39ff75dfa78f4677f99')
 
 prepare() {
