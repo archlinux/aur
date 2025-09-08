@@ -1,3 +1,9 @@
 [xkb-ultimatekeys]
 source = "git"
 git = "https://github.com/pieter-degroote/UltimateKEYS.git"
+use_latest_release = true
+include_prereleases = false
+exclude_regex = ".*(pre|a|alpha|b|beta|rc).*"
+prefix = "r"
+from_pattern = "-"
+to_pattern = "."
