@@ -1,0 +1,3 @@
+# Ignore local automation scripts
+update-version.sh
+
