@@ -6,7 +6,7 @@
 # version. Very mutch a work in progress, DO NOT TRUST.
 #
 
-validated_for="6.16.4.arch1"
+validated_for="6.16.4.arch1-1"
 
 # Getting current versions
   curl -s -o .bump-pn https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/PKGBUILD/raw/\?ref\=main
@@ -88,7 +88,7 @@ validated_for="6.16.4.arch1"
               makepkg --printsrcinfo > .SRCINFO
 
             # Update the validated_for variable of this script
-              sed "s|validated_for=\"${validated_for}\"|validated_for=\"${live_ver}\"|" bump.sh > .bump-bsh
+              sed "s|validated_for=\"${validated_for}\"|validated_for=\"${live_ver}-${live_rel}\"|" bump.sh > .bump-bsh
               cp .bump-bsh bump.sh
 
             # Update local repo
