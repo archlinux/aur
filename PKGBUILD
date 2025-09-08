@@ -28,8 +28,15 @@ source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
 
 sha256sums=('SKIP')
 
+pkgver() {
+  cd ulauncher || exit
+  git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd ulauncher || exit
+  # override the version to include the git commit ref
+  echo "version = '$pkgver'" >> ulauncher/__init__.py
   make prefs
   env PATH="$(getconf PATH)" python -m pip wheel --no-build-isolation --no-deps .
 }
@@ -37,11 +44,6 @@ build() {
 check() {
   cd ulauncher || exit
   desktop-file-validate "io.ulauncher.Ulauncher.desktop"
-}
-
-pkgver() {
-  cd ulauncher || exit
-  git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
