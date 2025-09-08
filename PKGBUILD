@@ -1,19 +1,19 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Maintainer: insmtr <insmtr@insmtr.cn>
+# Contributor: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda-edu
-pkgver=1.9.10.03
-pkgrel=3
+pkgver=1.9.11.03
+pkgrel=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
-url="http://www.gowinsemi.com.cn/faq.aspx"
-# url="https://www.gowinsemi.com/en/support/home/"
+url="https://www.gowinsemi.com.cn/software/index"
 license=('unknown')
-source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_Education_linux.tar.gz"
+source=("https://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_Education_Linux.tar.gz"
         "${pkgbase}.png"
         "${pkgbase}-ide-project.xml"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('1cd0b9ce86897509b12f05bebd0ec2a7b193b7168c37d82676584e9211a6e2fa'
+sha256sums=('6fd392f7473b24d847b6f8ebdc7a185c591826ba35d8d0e517961030d446f9f7'
             '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
             'a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2'
             '899042b398f530e30cd566feda5920002422b1face170928c272bf5ebe4be70b'
