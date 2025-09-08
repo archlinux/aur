@@ -1,7 +1,7 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker-legacy
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Legacy (C + X11-only) version of smooll's Color Picker"
 arch=("x86_64")
@@ -30,9 +30,9 @@ validpgpkeys=()
 #}
 
 build() {
-	cmake -B build -S "$pkgname-$pkgver" \
+	cmake -S "$pkgname-$pkgver" -B build \
 		-DCMAKE_BUILD_TYPE="None" \
-		-DINSTALL_SYSTEM_WIDE=YES \
+		-DINSTALL_SYSTEM_WIDE=YES
 	cmake --build build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = scolorpicker-legacy
 	pkgdesc = Legacy (C + X11-only) version of smooll's Color Picker
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smooll-d/scolorpicker/tree/legacy
 	arch = x86_64
 	license = 0BSD
