@@ -3,7 +3,7 @@
 # Contributor: Bitts311 <oceanmail311@gmail.com>
 
 _pkgname=Qogir-theme
-_pkgver=2024-05-22
+_pkgver=2025-08-17
 pkgname="qogir-gtk-theme"
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,7 @@ pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
 license=('GPL3')
-makedepends=('grep' 'sassc')
+makedepends=('grep' 'sassc' 'wget')
 optdepends=(
 	'gtk-engines: For GTK2 support'
 	'gtk-engine-murrine: For GTK2 support'
@@ -27,7 +27,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
-sha256sums=('9ccebe06ef467f2628ddea7e5a6b09f671d486283a06f89eb7e888e01648dd5f'
+sha256sums=('cc7a1a6f7449571251bbfd338e3e671254ba93bee41c5b997bf5a6626faaae8f'
             'fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e')
 
 package() {
@@ -42,6 +42,11 @@ package() {
     install -Dm644 "$srcdir/options.txt" -t "$pkgdir/${backup[0]/%options.txt/}"
     install -dm755 "$pkgdir/usr/share/themes"
     cd "$_pkgname-$_pkgver"
+
+    if (( $(vercmp "$_pkgver" "2025.08.17") < 0 )); then
+        # download fix for https://github.com/vinceliuice/Qogir-theme/issues/354
+        wget --random-wait -LO install.sh https://raw.githubusercontent.com/vinceliuice/Qogir-theme/73208206d8e4bb1bb25828384223cd6d4961c8e1/install.sh
+    fi
     ./install.sh ${INSTALL_OPTS//--logo/--icon} --dest "$pkgdir/usr/share/themes"
     install -D ./install.sh -t "$pkgdir/usr/bin/${pkgname}/"
 }
