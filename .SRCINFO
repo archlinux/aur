@@ -1,7 +1,7 @@
 pkgbase = manx-bin
 	pkgdesc = Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neur0map/manx
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,10 @@ pkgbase = manx-bin
 	conflicts = manx
 	source = LICENSE-0.4.0::https://raw.githubusercontent.com/neur0map/manx/v0.4.0/LICENSE
 	source = README-0.4.0.md::https://raw.githubusercontent.com/neur0map/manx/v0.4.0/README.md
+	source = ABOUT-0.4.0.md::https://raw.githubusercontent.com/neur0map/manx/v0.4.0/about_manx.md
 	sha256sums = b20cf353bcaa7861617f4ef7730e30bf76c065f67f07611aa40c6d09336b9ab4
 	sha256sums = 0f28ded5daea0d7f94e502e087c87834d16412396bce681a3932016c6aa99254
+	sha256sums = 00e7505af04dfe0a9a6fd998dd265c25e01a52a9bf939c90e07b6f3d2ba92e5a
 	source_x86_64 = manx-x86_64-0.4.0::https://github.com/neur0map/manx/releases/download/v0.4.0/manx-x86_64-unknown-linux-gnu
 	sha256sums_x86_64 = 14f6f2d13fb7e94720fbe1d26ff8415b7fd6aedde9d8781d61e919e921aad53d
 
