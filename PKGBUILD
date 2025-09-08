@@ -10,8 +10,8 @@
 
 _pkgname=xfce4-sensors-plugin
 pkgname=xfce4-sensors-plugin-nvidia
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia gpu support"
 arch=('i686' 'x86_64')
 provides=("$_pkgname")
@@ -22,9 +22,9 @@ depends=('xfce4-panel' 'lm_sensors' 'libnotify' 'hicolor-icon-theme' 'libxnvctrl
 makedepends=('intltool' 'hddtemp' 'netcat')
 optdepends=('hddtemp: for monitoring the temperature of hard drives')
 source=(
-  https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
+  https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.xz
 )
-sha256sums=('6c1605a738e5df40e084d08ac93f962cd445093396de1e9bfadc7ab4588c36b6')
+sha256sums=('840442b87fdddcd8595bd9f83ea8b81f771fe296bb9d2abf0e1979e208727ae9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
