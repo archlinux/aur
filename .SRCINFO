@@ -1,0 +1,16 @@
+pkgbase = waybar-niri-windows-git
+	pkgdesc = Niri focus indicator for Waybar
+	pkgver = r5.048bf64
+	pkgrel = 1
+	url = https://github.com/calico32/waybar-niri-windows
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = waybar
+	depends = niri>=25.08
+	depends = glibc
+	source = git+https://github.com/calico32/waybar-niri-windows.git
+	sha256sums = SKIP
+
+pkgname = waybar-niri-windows-git
