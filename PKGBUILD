@@ -1,7 +1,7 @@
 # Maintainer: Eliot_Alderson <eliotjoking at gmail dot com>
 
 pkgname=javcap-bin
-pkgver=0.2.16
+pkgver=0.2.17
 pkgrel=1
 pkgdesc="电影刮削器"
 url="https://github.com/jane-212/javcap"
@@ -11,9 +11,9 @@ license=('MIT')
 
 source_x86_64=("https://github.com/jane-212/javcap/releases/download/$pkgver/javcap-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/jane-212/javcap/releases/download/$pkgver/javcap-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('71a7bee8c3cadc8c33b0269c90d6d8be0b782a187ae8c1ef7c12633ac26c0452')
-sha256sums_aarch64=('f6d2a827c7e8e8048de0ee396b9115c13ea2a9fe0671195d0869eb048fcce360')
+sha256sums_x86_64=('0583640d0a344fa799cc03312c59376241a5b31affb864c065c2201f45570541')
+sha256sums_aarch64=('a69e9cc330f257a07141c130ae1bab7b414e205c99e178ab72bd928849033716')
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
