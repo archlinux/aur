@@ -3,7 +3,7 @@
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
 pkgver=8.3.548
-pkgrel=1
+pkgrel=2
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
 url="http://opencircuitdesign.com/magic/"
@@ -36,10 +36,12 @@ _archive="${pkgname}-${pkgver}"
 source=(
    "${_archive}::git+${_git_url}#tag=${pkgver}"
    "0001-fixup-magsgtty.patch"
+   "0002-fix-save-file-tcl.patch"
 )
 
 b2sums=('538cdc7bce5a5464174adea5b7c5f7008ee8221852d0d824e309976fdc3f24dcd89caf5a26d1fafb04aadf0a9e84e3d7387203b29e82a27020cbec383200903f'
-        '72d1a9742c72041204c05aca45639251ab49768c43b1829bc40e6f0857fd93c0a7e32e433a0090996e17af1fc588e26677c24487bf04d5a14a86c8f5e4a2402c')
+        '72d1a9742c72041204c05aca45639251ab49768c43b1829bc40e6f0857fd93c0a7e32e433a0090996e17af1fc588e26677c24487bf04d5a14a86c8f5e4a2402c'
+        '533edbe10b94874c7fa66d1de54d26d9a52708072ab5da497d5eb99fd5d00a50bd831eec0ddbd3ce50aa8bca600a644584cca5b338ac6abae1718f5e519c2f98')
 
 
 options=()
@@ -50,6 +52,10 @@ prepare() {
    # To compile with Glibc v2.42 we need to patch magsgtty
    # See: https://github.com/RTimothyEdwards/magic/issues/434
    patch -Np1 < "../0001-fixup-magsgtty.patch"
+
+   # Fix segfault
+   # See: https://github.com/RTimothyEdwards/magic/issues/446
+   patch -Np1 < "../0002-fix-save-file-tcl.patch"
 
 }
 
