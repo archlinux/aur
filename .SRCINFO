@@ -1,7 +1,7 @@
 pkgbase = freedroid
 	pkgdesc = a clone of the classic game 'Paradroid' on Commodore 64
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freedroid.sourceforge.net/
 	arch = x86_64
 	license = GPL

@@ -4,7 +4,7 @@
 pkgname=freedroid
 _srcsufix=".apk"
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a clone of the classic game 'Paradroid' on Commodore 64"
 arch=('x86_64')
 url="http://freedroid.sourceforge.net/"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/FreedroidClassic-${pkgname}-${pkgver}${_srcsufix}"
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+  CFLAGS+=' -fcommon -std=c99' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
