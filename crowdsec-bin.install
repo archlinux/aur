@@ -18,25 +18,29 @@ post_install() {
 }
 
 pre_upgrade() {
-    config_backup="/tmp/crowdsec_upgrade_$1_$2"
-    rm -rf "$config_backup"
-    cscli config backup "$config_backup" --error
+    # dashboard deprecated in version 1.7.0
+    # see https://docs.crowdsec.net/blog/cscli_dashboard_deprecation/
+    if (( $(vercmp "$2" '1.7.0') < 0 )); then
+        cscli dashboard stop --error
+    fi
 }
 
 post_upgrade() {
     cscli hub update
-    config_backup="/tmp/crowdsec_upgrade_$1_$2"
-    if [ -d "$config_backup" ]; then
-        cscli config restore "$config_backup" --error &&
-            rm -rf "$config_backup" || echo -e "\n**Config backup restore failed: ${config_backup}**\n"
-    fi
     cscli collections upgrade --error --all
-    systemctl daemon-reload
-    systemctl reload crowdsec
-}
 
-pre_remove() {
-    cscli dashboard stop --error
+    if (( $(vercmp "$2" '1.7.0') < 0 )); then
+        if systemctl is-active -q crowdsec; then
+            systemctl stop crowdsec
+        fi
+        echo -e '\t** Please use the pacdiff command to merge the new configuration files **\n'
+        echo -e '\t** before restarting crowdsec. **\n'
+    fi
+
+    systemctl daemon-reload
+    if systemctl is-active -q crowdsec; then
+        systemctl reload crowdsec
+    fi
 }
 
 post_remove() {
