@@ -1,25 +1,15 @@
 pkgbase = coreutils-uutils
 	pkgdesc = (Experimental) Use uutils as system core utilities
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	makedepends = patch
 	depends = uutils-coreutils
 	provides = coreutils
 	provides = b3sum
 	conflicts = coreutils
 	conflicts = b3sum
 	conflicts = sha3sum
-	source = https://github.com/uutils/coreutils/archive/0.2.0.tar.gz
-	source = Cargo.toml
-	source = glibc.patch::https://git.launchpad.net/~juliank/ubuntu/+source/rust-coreutils/plain/debian/patches/glibc-2.42.patch?h=ubuntu/devel&id=a16e77bec0546ee51770a891a24468e8048242e3
-	source = nix-rust0.30.1.tar.gz::https://github.com/nix-rust/nix/archive/refs/tags/v0.30.1.tar.gz
-	sha256sums = 185be1670bb5091f48d29524c6f81326f12aef5e599fcdb122967a95d017f32a
-	sha256sums = 4b8fb5837b66a180e8d6eeef6498539bd426378a94ed068eea597fae63bc2e13
-	sha256sums = 3516ae0e2a4fe5fc4996e0f7c9952213f5b7394c739c79f31bafd2ba2a9e2ebb
-	sha256sums = 31742bef74cad04c8bd8c9a7301323e3df35847f5b776024221cbd2060cd5ed7
 
 pkgname = coreutils-uutils
