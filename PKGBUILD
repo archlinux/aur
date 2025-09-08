@@ -1,15 +1,21 @@
 _name=pyod
 pkgname="python-$_name"
-pkgver=1.1.3
+pkgver=2.0.5
 pkgrel=1
 arch=('any')
 pkgdesc="A Python 3 Library Outlier Detection or Anomaly Detection"
 url="https://github.com/yzhao062/pyod"
 license=('GPL3')
 source=("https://github.com/yzhao062/pyod/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ec355d8e9b9386faeecb742ec8516ad8c31b9ff2607e5d20c21a8b33ba5b4a6e7ef637e8c6e1b54bd36d58721899d795ef8ba98406f17ba3f2a62ca4676bdddc')
+sha512sums=('f6c181bf3ad6d7af00b0d207c0ae847c099d983dc00d96db4af1f0231d50b92d3dde2f0e7b2cd9f3b727c6b9105fbf52bc052d7fe74407f5bbbe31715a9b1892')
 depends=(
   'python'
+  'python-joblib'
+  'python-numba'
+  'python-numpy'
+  'python-packaging'
+  'python-scikit-learn'
+  'python-scipy'
 )
 makedepends=('python-setuptools')
 
