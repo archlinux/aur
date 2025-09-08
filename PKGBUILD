@@ -3,15 +3,15 @@
 pkgname=alhp-utils
 _name=alhp.utils
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of ALHP utils'
 arch=(x86_64)
 url="https://somegit.dev/ALHP/$_name"
 license=(GPL-2.0-or-later)
 depends=(glibc pacman)
-makedepends=(go)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('1e127a846baa2acf915533b456f7686dc2e74db135504d2868ced7f3d9eda810d1184f8967757f8dd00ef0b51ccede6555085fb1770bd0e06aa6aa55b440590e')
+makedepends=(go git)
+source=("git+$url.git#tag=$pkgver")
+b2sums=('ba2ae7ec96cf656a6a7e4fb0f22c6ce8ffd78074b9bc264ae532bcb36bee0c1acb86764b03ee88aedf81884209beac2acbc90570fb4acc2cb7065cb765d1a798')
 
 build() {
   cd $_name
