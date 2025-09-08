@@ -1,5 +1,20 @@
 # Changelog
 
+## Version 0.9.14
+
+* Add support for uploading through USB (thanks to @sachiniyer in #155)
+* Add support for forcing source type (thanks to @Barabazs in #153)
+* Migrate regex url validation to validators library (thanks to @Barabazs in 
+  #152)
+* Update the Dockerfile (thanks to @Barabazs in #150)
+* Update documentation to link to rmapi fork (thanks to @Barabazs in #149)
+* Various fixes to broken providers and unit tests
+
+## Version 0.9.13
+
+* Add DiVA provider (thanks to @koddas)
+* Fix various broken providers and unit tests
+
 ## Version 0.9.12
 
 * Bugfix for NeurIPS provider
