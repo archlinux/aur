@@ -1,3 +1,5 @@
 [openai-codex]
-source = "npm"
-npm = "@openai/codex"
+source = "github"
+github = "openai/codex"
+prefix = "rust-v"
+use_max_release = true
