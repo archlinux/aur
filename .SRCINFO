@@ -1,0 +1,24 @@
+pkgbase = bootc-git-composefs
+	pkgdesc = Boot and upgrade via container images (composefs branch)
+	pkgver = 1.7.1.r61.g023be10
+	pkgrel = 1
+	url = https://bootc-dev.github.io/bootc
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = ostree
+	depends = bootupd
+	depends = dracut
+	provides = bootc=1.7.1.r61.g023be10
+	conflicts = bootc
+	conflicts = bootc-git
+	source = git+https://www.github.com/bootc-dev/bootc.git#branch=composefs-backend
+	sha256sums = SKIP
+
+pkgname = bootc-git-composefs
