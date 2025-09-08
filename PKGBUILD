@@ -7,10 +7,10 @@
 
 pkgname=zoom-system-qt
 pkgver=6.5.11.4015
-pkgrel=4
+pkgrel=5
 arch=('any')
-depends=(zoom-libs zoom)
+depends=(zoom-natime)
+pkgdesc="Please uninstall ${pkgname} and switch to zoom-native"
 package() {
-  pkgdesc="Please uninstall ${pkgname}"
   echo $pkgdesc
 }

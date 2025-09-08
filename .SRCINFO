@@ -1,9 +1,8 @@
 pkgbase = zoom-system-qt
+	pkgdesc = Please uninstall zoom-system-qt and switch to zoom-native
 	pkgver = 6.5.11.4015
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
-	depends = zoom-libs
-	depends = zoom
+	depends = zoom-natime
 
 pkgname = zoom-system-qt
-	pkgdesc = Please uninstall zoom-system-qt
