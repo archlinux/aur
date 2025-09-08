@@ -1,0 +1,21 @@
+# Ignore build artifacts
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.tar.zst
+
+# Logs and cache
+*.log
+*.cache
+
+# Makepkg state files
+*.SRCINFO.old
+
+# Downloaded binaries
+*.AppImage
+
+# Editor/IDE files
+*.swp
+*~
+.vscode/
+.idea/
