@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
-pkgver=202508061
+pkgver=202509071
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/5337d60760a5ebc532e1fcdca250fefa6db900f5/archives/dove-linux.zip")
-sha512sums=('dd4505083aa8a772828966cb1366d9dce759cfed772acc74bfeebffc9f96c90edb2c084d55925b3a48392f9868265ccd4707022db12e9c64747976cfcf154ee9')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/3b171a9fe657c50608fff779d62d19f7d49506b3/archives/dove-linux.zip")
+sha512sums=('396a3a29bec64fe95163e9750d4aefaed2dd0dfc8f426aa0143f89511854c2494a39581d04a83b8d288f4cc8bc45f2406d15e307fcc57dc2aae523c2799c1765')
 makedepends=('unzip')
 
 pkgver() {
@@ -23,7 +23,7 @@ package() {
     install -Dm644 "$tmpdir/etc/profile.d/dove-env-overrides.sh" "$pkgdir/etc/profile.d/dove-env-overrides.sh"
     install -Dm644 "$tmpdir/dove.cfg" "$pkgdir/usr/lib/thunderbird/dove.cfg"
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/thunderbird/policies/policies.json"
-    install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/dove/COPYING"
+    install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/dove/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/dove/README.md"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/123mail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/123mail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/126.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/126.com"
