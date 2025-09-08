@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-impatience
 	pkgdesc = Speed up the gnome-shell animation speed
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/timbertson/gnome-shell-impatience
 	arch = any
 	license = GPL-3.0-or-later
 	depends = gnome-shell>=1:47
 	depends = gnome-shell<1:48
-	source = gnome-shell-impatience-0.5.2.tar.gz::https://github.com/timbertson/gnome-shell-impatience/archive/version-0.5.2.tar.gz
-	sha256sums = 18637ab1ce1974f20506373dd0f4bb33c329139c6152c06b35d8b333e2921f0c
+	source = gnome-shell-impatience-0.5.3.tar.gz::https://github.com/timbertson/gnome-shell-impatience/archive/version-0.5.3.tar.gz
+	sha256sums = 20671b43654d2390cc5dcc630fd7e972870f4cdd43424e503915076c52204abb
 
 pkgname = gnome-shell-extension-impatience
