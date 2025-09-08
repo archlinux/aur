@@ -5,57 +5,57 @@
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=appimagelauncher
-pkgver=2.2.0
-_pkgver=0f91801
-pkgrel=9
+pkgver=3.0.0_beta_1
+_pkgname=AppImageLauncher
+_pkgver=${pkgver//_/-}
+pkgrel=1
 pkgdesc='Helper for running and integrating AppImages'
 #arch=(x86_64)
 arch=(x86_64 aarch64)
 url=https://github.com/TheAssassin/AppImageLauncher
 license=(MIT)
-depends=(cairo desktop-file-utils hicolor-icon-theme libappimage libbsd libxpm qt5-base shared-mime-info)
-makedepends=(boost cmake git gtest python qt5-tools)
+depends=(
+  cairo desktop-file-utils fuse2 hicolor-icon-theme lib32-glibc lib32-gcc-libs
+  libbsd libxpm nlohmann-json patchelf qt5-base qt5-declarative shared-mime-info
+  # Reported by namcap
+  librsvg libarchive squashfuse) # libappimage xdg-utils
+makedepends=(argagg boost cmake git gtest python qt5-tools xxd)
 source=(
-  "$pkgname-$pkgver-$_pkgver.tar.xz::$url/releases/download/v$pkgver/appimagelauncher-$_pkgver.source.tar.xz"
+  "$pkgname-$pkgver.tag.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
   appimage-binfmt-remove.hook)
-sha256sums=(
-  '2ef58ed3233912677522620bbb1162bedd41206a786d93cbd5e0ff682aed8a75'
-  '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
-
-# Workaround for newer GCCs
-CFLAGS="$CFLAGS -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
+sha256sums=('2763d517d4df5b53f22266c22add4550411abc5b9a7b0b534c342c717f316fea'
+            '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
-  cd $pkgname-$_pkgver.source
-
-  # Optional: avoid 'fatal' git messages for a cleaner build output
-  sed -i 's/COMMAND git rev-parse --short HEAD/COMMAND echo 0/' lib/AppImageUpdate/{CMakeLists.txt,lib/zsync2/CMakeLists.txt}
+  sed -i "s/COMMAND git/COMMAND true/" "$_pkgname-$_pkgver/cmake/versioning.cmake"
+  # shellcheck disable=SC2016
+  sed -i 's|${APPIMAGELAUNCHER_GIT_COMMIT}|release/tag|' "$_pkgname-$_pkgver/cmake/versioning.cmake"
 }
 
 build() {
-  cd $pkgname-$_pkgver.source
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5 # For "make xdg-utils"
 
-  #-DCPR_FORCE_USE_SYSTEM_CURL=ON
-  #-DUSE_SYSTEM_BOOST=ON
-  cmake . \
+  #-DUSE_SYSTEM_BOOST=ON \
+  #-DUSE_SYSTEM_GTEST=ON \
+  #-DUSE_SYSTEM_LIBAPPIMAGE=ON \
+  cmake -B build -S "$_pkgname-$_pkgver" \
     -DBUILD_TESTING=OFF \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -DUSE_SYSTEM_GTEST=ON \
-    -DUSE_SYSTEM_LIBAPPIMAGE=ON \
+    -DCPR_FORCE_USE_SYSTEM_CURL=ON \
+    -DFETCHCONTENT_QUIET=OFF \
+    -DUSE_SYSTEM_SQUASHFUSE=ON \
     -Wno-dev
-
-  make libappimageupdate{,-qt}
-  cmake .
-
-  make
+  #make -C build libappimage libappimageupdate libappimageupdate-qt
+  cmake --build build
+  #make -C build
 }
 
 package() {
-  install -Dm644 appimage-binfmt-remove.hook -t "$pkgdir/usr/share/libalpm/hooks"
+  #make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
-  cd $pkgname-$_pkgver.source
-  make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 appimage-binfmt-remove.hook -t "$pkgdir/usr/share/libalpm/hooks"
+  install -Dm644 "$_pkgname-$_pkgver/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
