@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
-_pkgname=httpx-gssapi
+_pkgname=httpx_gssapi
 pkgname=python-httpx-gssapi
-pkgver=0.3.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="GSSAPI (HTTP Negotiate) authentication for Python httpx"
 url="https://github.com/pythongssapi/httpx-gssapi"
@@ -9,8 +9,8 @@ arch=(any)
 license=(custom:ISC)
 depends=(python-gssapi python-httpx)
 makedepends=(python-build python-installer)
-source=("https://github.com/pythongssapi/httpx-gssapi/releases/download/v$pkgver/httpx-gssapi-$pkgver.tar.gz")
-sha256sums=('8147fc4898768998c7414553d0b3ffe145ee1d9821df23caac4a8ad8fe9bfea9')
+source=("https://github.com/pythongssapi/httpx-gssapi/releases/download/v$pkgver/httpx_gssapi-$pkgver.tar.gz")
+sha256sums=('d1fe7af4c8544303bbb08e5b1bb51d87c5d3b07a1caa6594096660803e40188d')
 
 build() {
   cd $_pkgname-$pkgver
