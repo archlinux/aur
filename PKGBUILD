@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="msmtp-git"
-pkgver=1.8.24.r3.g06aa093
+pkgver=1.8.31.r0.ge63aebf
 pkgrel=1
 pkgdesc="A mini smtp client"
 arch=("x86_64")
@@ -19,12 +19,13 @@ pkgver() {
     git describe --long --tags | sed 's/^msmtp.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname%-*}" || return
+    autoreconf -vfi
+}
+
 build() {
     cd "${srcdir}/${pkgname%-*}" || return
-    aclocal && \
-    autoheader && \
-    autoconf && \
-    automake --add-missing && \
     ./configure --prefix=/usr --sysconfdir=/etc --with-libgsasl && \
     make && \
     make -C doc html pdf
@@ -41,7 +42,13 @@ package() {
     cp -r scripts/{find_alias,msmtpqueue,msmtpq,set_sendmail} "${pkgdir}/usr/share/doc/msmtp/" && \
     install -D -m644 doc/*.example "${pkgdir}/usr/share/doc/msmtp/" && \
 
-    install -D -m644 scripts/vim/msmtp.vim "${pkgdir}/usr/share/vim/vimfiles/syntax/msmtp.vim" && \
+    for d in ftdetect ftplugin syntax; do
+        install \
+            -D \
+            -m644 \
+            "scripts/vim/${d}/msmtp.vim" \
+            "${pkgdir}/usr/share/vim/vimfiles/${d}/msmtp.vim" || return
+    done
 
     chmod 755 "${pkgdir}"/usr/share/doc/msmtp/{find_alias,msmtpqueue,set_sendmail}/*.sh && \
     chmod 755 "${pkgdir}"/usr/share/doc/msmtp/msmtpq/msmtp*
