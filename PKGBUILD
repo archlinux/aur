@@ -25,13 +25,14 @@ pkgver() {
 }
 
 export RUSTONIG_DYNAMIC_LIBONIG=1
-export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS}"
+# release-fast has panic=abort
+export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort ${RUSTFLAGS}"
 
 # How to avoid building twice on packaging guideline?
 
 package() {
   cd $_pkgname
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/uu-coreutils SKIP_UTILS="runcon chcon" # Avoid SELinux bug for build
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib SKIP_UTILS="runcon chcon" # Avoid SELinux bug for build
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
