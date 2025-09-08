@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=livekit-cli
-pkgver=2.5.3
+pkgver=2.5.5
 pkgrel=1
 pkgdesc='LiveKit CLI: command line utilities that interacts with LiveKit'
 arch=(x86_64)
@@ -12,7 +12,7 @@ source=(
   "https://github.com/livekit/livekit-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '0829509fd0f1e92c65249959c53ab65a406e76f88a04f21347323072bc0118dc'
+  '9ccbbda99197b8e8e7518c460f626e80754c9272530d1a7778138b0516638e0d'
 )
 
 build() {
