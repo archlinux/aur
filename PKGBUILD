@@ -88,7 +88,6 @@ fi
 source=(
   # "${_pkgname}-${pkgver}.tar.gz::https://github.com/rsyslog/rsyslog/archive/v${pkgver}.tar.gz"
   "${_pkgname}::git+${_giturl}.git"
-  "https://patch-diff.githubusercontent.com/raw/rsyslog/rsyslog/pull/5406.patch"
   'rsyslog.logrotate'
   'rsyslog.conf'
 )
@@ -96,7 +95,6 @@ source=(
 sha256sums=(
   # '686b9c55342cac7094f41906ceb4dec3c5ed9258ad699649f3177c8e953ffd58'  # rsyslog-8.2408.0.tar.gz
   'SKIP'                                                              # main git repository
-  '6211753b8170cc9b778ddd5159aaff03d72878edecddab52d62a9d4893b7ef4c'  # 5406.patch
   '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'  # rsyslog.logrotate
   'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'  # rsyslog.conf
 )
@@ -104,11 +102,6 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  for _patch in "5406.patch"; do
-    printf '%s\n' "    > Applying patch '${_patch}' ..."
-    patch -N --follow-symlinks -i "${srcdir}/${_patch}" configure.ac
-    printf '\n'
-  done
   printf '%s\n' "    > Running 'NOCONFIGURE=1 ./autogen.sh' ..."
   NOCONFIGURE=1 ./autogen.sh
 

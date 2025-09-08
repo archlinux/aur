@@ -55,11 +55,9 @@ pkgbase = rsyslog-nosystemd-git
 	backup = etc/rsyslog.conf
 	backup = etc/logrotate.d/rsyslog
 	source = rsyslog::git+https://github.com/rsyslog/rsyslog.git
-	source = https://patch-diff.githubusercontent.com/raw/rsyslog/rsyslog/pull/5406.patch
 	source = rsyslog.logrotate
 	source = rsyslog.conf
 	sha256sums = SKIP
-	sha256sums = 6211753b8170cc9b778ddd5159aaff03d72878edecddab52d62a9d4893b7ef4c
 	sha256sums = 0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a
 	sha256sums = bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb
 
