@@ -1,4 +1,4 @@
-pkgbase = pyglet
+pkgbase = python-pyglet1
 	pkgdesc = A cross-platform windowing and multimedia library for Python -- Version 1
 	pkgver = 1.5.30
 	pkgrel = 1
