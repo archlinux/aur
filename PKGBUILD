@@ -3,7 +3,7 @@
 pkgbase=xguipro-git
 # pkgname=(xguipro-gtk{3,4}-git)
 pkgname=(xguipro-git)
-pkgver=0.9.0.r30.gfaeb686
+pkgver=0.9.26.r0.g13b51b6
 pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=($CARCH)
@@ -148,12 +148,8 @@ package() {
     # clang build
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=GTK \
-        -DENABLE_GAMEPAD=OFF \
-        -DENABLE_INTROSPECTION=OFF \
         -DUSE_GTK4=OFF \
         -DUSE_SOUP2=ON \
-        -DUSE_WPE_RENDERER=OFF \
-        -DUSE_LCMS=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
