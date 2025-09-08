@@ -3,13 +3,13 @@
 pkgname=pawbar-git
 _pkgname=pawbar
 pkgver=r314.3aec858
-pkgrel=1
+pkgrel=2
 pkgdesc="A kitten-panel based desktop panel for your desktop"
 arch=("x86_64")
 url="https://github.com/codelif/pawbar"
 license=("BSD-3-Clause")
-depends=("glibc")
-makedepends=("gcc-objc" "go")
+depends=("glibc" "systemd-libs" "librsvg" "glib2" "cairo")
+makedepends=("git" "gcc-objc" "go")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 b2sums=('SKIP')
