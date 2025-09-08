@@ -2,7 +2,7 @@
 
 pkgname=dns-changer
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust-based tool for changing DNS interactively"
 arch=('x86_64')
 url="https://github.com/bishnu7babu/dns_changer"

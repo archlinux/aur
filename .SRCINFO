@@ -1,7 +1,7 @@
 pkgbase = dns-changer
 	pkgdesc = A Rust-based tool for changing DNS interactively
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bishnu7babu/dns_changer
 	arch = x86_64
 	license = MIT
