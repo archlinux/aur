@@ -6,7 +6,7 @@
 
 _pkgname=rsyslog
 pkgname="${_pkgname}-nosystemd-git"
-pkgver=after_big_style_change+2025+233.r18934.20250823.309a46862
+pkgver=8.2508.0+127.r19073.20250906.f21eea8a1
 pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability. Without systemd dependencies and supprt, latest git checkout."
 _giturl="https://github.com/rsyslog/rsyslog"
@@ -111,7 +111,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|^after-big-style-change-||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
