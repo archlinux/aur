@@ -1,12 +1,12 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
 pkgver=2.0.0
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="smooll's Color Picker"
 arch=("x86_64")
 url="https://www.github.com/smooll-d/scolorpicker"
-license=("BSD-3-Clause")
+license=("0BSD")
 groups=()
 depends=("sdl3" "sdl3_image")
 makedepends=("cmake")
@@ -24,7 +24,7 @@ optdepends=("libx11: X11 support"
             "xdg-desktop-portal-wlr: taking screenshots on wlroots-based compositors"
             "xdg-desktop-portal-xapp: taking screenshots on Cinnamon")
 provides=()
-conflicts=()
+conflicts=("scolorpicker-legacy")
 replaces=()
 backup=()
 options=(!debug)
