@@ -26,7 +26,11 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/output_linux/PS2_Manager" "$pkgdir/usr/bin/ps2_manager"
-  install -Dm644 "$srcdir/output_linux/libHarfBuzzSharp.so" "$pkgdir/usr/lib/libHarfBuzzSharp.so"
-  install -Dm644 "$srcdir/output_linux/libSkiaSharp.so" "$pkgdir/usr/lib/libSkiaSharp.so"
+  # Install full output to /opt/ps2_manager
+  install -d "$pkgdir/opt/ps2_manager"
+  cp -r "$srcdir/output_linux/"* "$pkgdir/opt/ps2_manager"
+
+  # Symlink executable to /usr/bin
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/ps2_manager/PS2_Manager "$pkgdir/usr/bin/ps2_manager"
 }
