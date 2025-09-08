@@ -19,8 +19,6 @@ build() {
 
 package() {
   cd "$srcdir/dns_changer-$pkgver"
-  install -Dm755 "target/release/dns-changer" "$pkgdir/usr/bin/dns-changer"
+  install -Dm755 "target/release/dns_changer" "$pkgdir/usr/bin/dns-changer"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  # Optional: include docs
-  # install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
