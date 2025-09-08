@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=nixpacks
-pkgver=1.39.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -21,7 +21,7 @@ optdepends=('go: support go projects'
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ec65a45ddf5a9c33797c1efb73bbcf161c66083ce13c18439d2fb32d50462c21')
+sha256sums=('858781d08b8fae7ca16272883a534b698550a3106539d131c5edcbab47442aa7')
 
 prepare() {
 	cd "$_archive"
