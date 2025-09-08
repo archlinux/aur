@@ -1,6 +1,6 @@
 pkgbase = schildichat-desktop-git
 	pkgdesc = A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout.
-	pkgver = 1.11.109.sc.0.test.0.r545.20250815.3b05766
+	pkgver = 1.11.110.sc.0.test.0.r546.20250902.4fc61c8
 	pkgrel = 1
 	url = https://schildi.chat
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = schildichat-desktop-git
 	depends = libsecret
 	depends = sh
 	optdepends = nodejs: For some utilities.
-	provides = schildichat-desktop=1.11.109.sc.0.test.0.r545.20250815.3b05766
-	provides = schildichat-desktop-custom=1.11.109.sc.0.test.0.r545.20250815.3b05766
-	provides = schildichat-desktop-git=1.11.109.sc.0.test.0.r545.20250815.3b05766
+	provides = schildichat-desktop=1.11.110.sc.0.test.0.r546.20250902.4fc61c8
+	provides = schildichat-desktop-custom=1.11.110.sc.0.test.0.r546.20250902.4fc61c8
+	provides = schildichat-desktop-git=1.11.110.sc.0.test.0.r546.20250902.4fc61c8
 	conflicts = schildichat-desktop
 	conflicts = schildichat-desktop-bin
 	source = schildichat-desktop::git+https://github.com/SchildiChat/schildichat-desktop.git#branch=lite
