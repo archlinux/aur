@@ -92,8 +92,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.15
-pkgver=${_major}.10
+_major=6.16
+pkgver=${_major}.5
 _branch=6.x
 xanmod=1
 _revision=
@@ -139,15 +139,15 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('7586962547803be7ecc4056efc927fb25214548722bd28171172f3599abb9764' # kernel
+sha256sums=('1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83' # kernel
             'SKIP'                                                             # kernel signature
-            'a448fdb20d7ffeb89db10d3c19f38f068b13001cab795e148846314152b4bddd' # xanmod patch
+            '3f965d81ab1126ad9426ae45eee366d2be0610bc7ff754cd2224f460e22f9f4c' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            '22560ef5ec685e51d1a49b010f745af6b449714be45946c7d24a10cc26aab243' # 0001-bore.patch
-            '1cc4102699df878542679f5dcd63ea217eab1a36654a71fa47cac823c3241546' # 0002-sched-fair-Prefer-full-idle-SMT-cores.patch
+            '8b5eaf6ff3817c9bd86321e294d4ef22824b99af03c13af55af51d3a3f984209' # 0001-bore.patch
+            'b94460fe01ea7097d297aa96d6cd93f2dc5824851781983d893f447143b29df7' # 0002-sched-fair-Prefer-full-idle-SMT-cores.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0003-glitched-cfs.patch
-            '5c403ce906b662520647cd9981bc3fe77d074dcd9913e050098a67e33d3126fc' # 0004-glitched-eevdf-additions.patch
-            'd18f17e8519cf6e8208f2276c29f664d7e8cf9fd1e202cdc26e37279102d48c9' # 0005-o3-optimization.patch
+            '4fb0cb0c1562b7920b33ab65162985275ba3d2d2f8869f111b908549ad5debd2' # 0004-glitched-eevdf-additions.patch
+            '2199f011799235fc77e88cfa289682807deec4e91de1ce25f3dbf61705b8f88b' # 0005-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
