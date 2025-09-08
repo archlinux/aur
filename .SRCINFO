@@ -1,14 +1,14 @@
-pkgbase = quickbuild-git
+pkgbase = qvickbuild
 	pkgdesc = A simple, lightweight, and fast build system for C, C++, and more
 	pkgver = v0.8.0
-	pkgrel = 1
-	url = https://github.com/nordtechtiger/quickbuild
+	pkgrel = 2
+	url = https://gitlab.com/nordtektiger/qvickbuild
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = clang
 	makedepends = git
-	source = git+https://github.com/nordtechtiger/quickbuild.git#tag=v0.8.0
+	source = git+https://gitlab.com/nordtektiger/qvickbuild.git#tag=v0.8.0
 	sha256sums = SKIP
 
-pkgname = quickbuild-git
+pkgname = qvickbuild
