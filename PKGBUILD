@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=1.0.0.alpha.7.r11.gd69a50e
+pkgver=1.0.0.alpha.7.r26.gf826e11
 pkgrel=1
 pkgdesc="COSMIC On-Screen Display"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=(
   'libpipewire'
   'libpulse'
   'libxkbcommon'
+  'sound-theme-freedesktop'
   'systemd-libs'
   'wayland'
 )
