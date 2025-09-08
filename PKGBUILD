@@ -1,7 +1,7 @@
 # Maintainer: sga013
 pkgname=uutils-coreutils-symlinks
-pkgver=1
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="WARNING - CONFLICTS WITH COREUTILS ; USE AT YOUR OWN RISK. Symlinks uutils to appropriate binaries, alongside with man pages, and shell completions"
 url='https://uutils.github.io/'
 depends=(uutils-coreutils)

@@ -1,7 +1,7 @@
 pkgbase = uutils-coreutils-symlinks
 	pkgdesc = WARNING - CONFLICTS WITH COREUTILS ; USE AT YOUR OWN RISK. Symlinks uutils to appropriate binaries, alongside with man pages, and shell completions
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://uutils.github.io/
 	arch = any
 	license = MIT
