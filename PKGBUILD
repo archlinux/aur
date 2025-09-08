@@ -13,8 +13,8 @@ VCSCLIENTS+=('git-lfs::git-lfs')
 
 _pkgname=autorestic
 pkgname="${_pkgname}-git"
-pkgver=1.8.3+13.r544.20250322.bb29a98
-pkgrel=2
+pkgver=1.8.3+14.r545.20250831.9cf919b
+pkgrel=1
 pkgdesc='Config driven, easy backup cli for restic. Latest git checkout.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cupcakearmy/$_pkgname"
