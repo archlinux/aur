@@ -5,7 +5,7 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.20.r15.g2235fc0
+pkgver=0.3.20.r15.g2235fc0.pandoc.3.8
 _pandoc_type=version
 _pandoc_ver=3.8
 _pandoc_lua_ver=0.5
@@ -51,7 +51,8 @@ _bumpGH() { _bump "$1" "$(__repo "$(__kv github "$2")" "${@:3}")"; }
 pkgver() {
   cd "$pkgname"
   git describe --tags --long --match='*[0-9]' \
-    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+    | sed "s/$/.pandoc.$_pandoc_ver/"
 }
 
 prepare() {
