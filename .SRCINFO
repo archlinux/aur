@@ -1,0 +1,23 @@
+pkgbase = openflights-data-git
+	pkgdesc = Airport, train station, ferry terminal, airline and flight routes data as CSV files to be used e.g. in GIS-applications.
+	pkgver = r35.20200131
+	pkgrel = 1
+	epoch = 0
+	url = http://openflights.org/data
+	arch = any
+	groups = openflights
+	license = ODbL-1.0
+	license = LicenseRef-DbCL-1.0
+	makedepends = git
+	provides = openflights-data=r35.20200131
+	conflicts = openflights-data
+	source = openflights::git+https://github.com/jpatokal/openflights.git
+	source = info.html::http://openflights.org/data
+	source = License_ODbL_1.0.html::http://opendatacommons.org/licenses/odbl/1.0/
+	source = License_DbCL_1.0.html::http://opendatacommons.org/licenses/dbcl/1.0/
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openflights-data-git
