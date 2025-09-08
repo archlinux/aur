@@ -1,7 +1,7 @@
 
 # Maintainer: Denis Sheremet <aur@lxlz.space>
 pkgname=yson-tools
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A set of tools for working with YSON format"
 arch=('x86_64')
