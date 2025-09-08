@@ -4,7 +4,7 @@
 _pkgauthor=klpod221
 _pkgname=kerminal
 pkgname=${_pkgname}-bin
-pkgver=1.0.3
+pkgver=1.0.4
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Modern terminal app with SSH/SFTP support"
@@ -26,7 +26,7 @@ source=(
   "README-${pkgver}.md::${_urlraw}/README.md"
   "${pkgname}.install"
 )
-sha256sums=('6fd1a6f95c79bdff588a952773e8a92e6378adec7fe51803aeb4323aa6f09e51'
+sha256sums=('bf9954aaa32090608ce329c8dbfec4bf00f224a82f8732237cf91ffe373121d9'
             '05fa10722a11de98ad68c5ab0b63899e9732335209990dc76df006fe26f27800'
             '54de721847fb8607ebfc0985595e1e18dfa7dc656f5ca701f4d741a4a46febec'
             '713199d3cbc25fe611cb9b2e0c4bba00c85946dd8293be197661e9f4bdaee275'
