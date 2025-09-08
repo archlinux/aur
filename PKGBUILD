@@ -27,18 +27,17 @@ build() {
   rm -rf rust-vendor/nix
   mv "${srcdir}"/nix-0.30.1 rust-vendor/nix
   patch -p1 -i "${srcdir}"/glibc.patch
+  RUSTFLAGS+=" -C panic=abort"
   cargo build -p uu_stty --release
-  #cd src/uu/stdbuf/src/libstdbuf
-  #cargo build --release
 }
 
 package() {
   cd coreutils-$pkgver
-  install -Dm755 target/release/stty "$pkgdir"/usr/bin/stty
   # fail if uu-coreutils binary is renamed in the uutils-coreutils
-  /usr/bin/uu-coreutils install -d "$pkgdir"/usr/{bin,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
+  /usr/bin/uu-coreutils install -d "$pkgdir"/usr/{bin,lib/coreutils,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
-  ln -sf /usr/bin/uu-coreutils bin/\[ # avoid completion err
+  ln -sf /usr/lib/libstdbuf.so -t lib/coreutils
+  ln -sf /usr/bin/uu-coreutils bin/\[ # completion err
   # support also -selinux
   for f in $(uu-coreutils --list|grep -v -E '^(kill|more|uptime|hostname|\[)$') chcon runcon ; do
     ln -sf /usr/bin/uu-coreutils bin/"$f"
@@ -46,4 +45,5 @@ package() {
     echo -e "#compdef ${f}=uu-${f}\n_uu-${f}" > share/zsh/site-functions/_$f
     echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
   done
+  install -Dm755 "$srcdir"/coreutils-${pkgver}/target/release/stty "$pkgdir"/usr/bin/stty # workaround for panic
 }
