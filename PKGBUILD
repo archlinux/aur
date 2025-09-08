@@ -74,7 +74,7 @@ source=(
 )
 
 sha256sums=(
-  "3cc7ad3458a0382106871ef7872641154043c94c4040e7a4691f1ba65012d29e"  # TTFONT.ZIP
+  "8ec053eb94fa32130c833a99421f6ea54b14d9d0ca367fa2acc596f1f9012ec3"  # TTFONT.ZIP
   "SKIP"                                                              # IDOS-Licence.pdf
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"  # license-dummy.txt
   "4c021678394399056573ae7f85779a7fde86f0c70fec6e64f6e1a379195ef4da"  # info.url
