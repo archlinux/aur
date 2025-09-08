@@ -1,13 +1,13 @@
 pkgname=snallygaster
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Tool to scan for secret files on HTTP servers"
 url="https://github.com/hannob/snallygaster"
 arch=('any')
 license=('GPL2')
-depends=("python-urllib3" "python-beautifulsoup4" "python-dnspython")
+depends=("python-urllib3" "python-lxml" "python-dnspython")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hannob/snallygaster/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('dd9fc4536036e90f601f438846dd5bc9')
+md5sums=('6001afe139ad960a0ee366e588e6fe45')
 
 package() {
     install -Dm755 "$srcdir/snallygaster-$pkgver/snallygaster" "$pkgdir/usr/bin/snallygaster"

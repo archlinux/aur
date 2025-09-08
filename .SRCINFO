@@ -1,14 +1,14 @@
 pkgbase = snallygaster
 	pkgdesc = Tool to scan for secret files on HTTP servers
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/hannob/snallygaster
 	arch = any
 	license = GPL2
 	depends = python-urllib3
-	depends = python-beautifulsoup4
+	depends = python-lxml
 	depends = python-dnspython
-	source = snallygaster-0.0.13.tar.gz::https://github.com/hannob/snallygaster/archive/refs/tags/v0.0.13.tar.gz
-	md5sums = dd9fc4536036e90f601f438846dd5bc9
+	source = snallygaster-0.0.14.tar.gz::https://github.com/hannob/snallygaster/archive/refs/tags/v0.0.14.tar.gz
+	md5sums = 6001afe139ad960a0ee366e588e6fe45
 
 pkgname = snallygaster
