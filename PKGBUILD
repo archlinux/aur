@@ -2,8 +2,8 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=lib32-apulse
-pkgver=0.1.13
-pkgrel=2
+pkgver=0.1.14
+pkgrel=1
 pkgdesc='PulseAudio emulation for ALSA (32-bit)'
 arch=('x86_64')
 url='https://github.com/i-rinat/apulse'
@@ -12,16 +12,12 @@ depends=('lib32-glib2' 'lib32-alsa-lib')
 makedepends=('cmake' 'gcc-multilib')
 install=lib32-apulse.install
 source=("apulse-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        '0001-cmake.patch'
         'asoundrc.sample')
-sha256sums=('9234ec4e10e408b9c01d5f4ea768ad1fc15494217c932db2c435202a9c7b5efd'
-            '01ef24275a389077a5c15d23a7fc43455e9107c9b660dabec6c6a9cf42cd1db0'
+sha256sums=('9208e71de64579222661945edca16ec1f57d02a58b958f2e654d588a8f4ca3e3'
             'e851197ec9ebff528154210751cd6d5c426abfc2b1aa34343580407b1ea789a4')
 
 prepare() {
 	cd apulse-${pkgver}
-
-	patch -Np1 < ../0001-cmake.patch
 
 	mkdir -p build
 
