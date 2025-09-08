@@ -1,6 +1,6 @@
 pkgbase = waybar-dunst
 	pkgdesc = Waybar module for showing dunst's paused status
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/CelDaemon/waybar-dunst
 	install = config.install
@@ -8,7 +8,7 @@ pkgbase = waybar-dunst
 	license = GPL-3.0-or-later
 	depends = python
 	depends = python-dbus-fast
-	source = waybar-dunst-0.2.1.tar.gz::https://github.com/CelDaemon/waybar-dunst/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 10d03c22e0901c3eb01b3f55dbbdb2463398d557697d6bd88e78fb1bab00d7af
+	source = waybar-dunst-0.2.2.tar.gz::https://github.com/CelDaemon/waybar-dunst/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 9a2d6a1cbe9e6820a45b4e9a064d24a06ff9fb8eb7a81b748c6684560da4dcef
 
 pkgname = waybar-dunst
