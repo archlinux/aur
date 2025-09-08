@@ -4,8 +4,8 @@
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=2.2
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
@@ -17,6 +17,7 @@ conflicts=("tev")
 install=
 source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
 md5sums=("SKIP")
+OPTIONS=(!lto)
 
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
@@ -29,11 +30,6 @@ build() {
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -DOPENEXR_INSTALL=OFF\
-    -DOPENEXR_INSTALL_TOOLS=OFF \
-    -DOPENEXR_INSTALL_PKG_CONFIG=OFF \
-    -DIMATH_INSTALL=OFF \
-    -DIMATH_INSTALL_PKG_CONFIG=OFF \
     -GNinja \
     ..
   cmake --build .
