@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1685.r11.3a35c63
-pkgrel=1
+pkgver=s1685.r173.85930c4
+pkgrel=2
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
 url="http://joewing.net/projects/jwm/"
@@ -26,12 +26,18 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  /usr/bin/cp -f /usr/share/automake-1.16/config.guess .
-  /usr/bin/cp -f /usr/share/automake-1.16/config.sub .
-  /usr/bin/cp -f /usr/share/automake-1.16/install-sh .
+  /usr/bin/cp -f /usr/share/automake-1.18/config.guess .
+  /usr/bin/cp -f /usr/share/automake-1.18/config.sub .
+  /usr/bin/cp -f /usr/share/automake-1.18/install-sh .
+  /usr/bin/cp -f /usr/share/automake-1.18/compile .
+  /usr/bin/cp -f /usr/share/automake-1.18/missing .
   /usr/bin/cp -f /usr/share/gettext/config.rpath .
   /usr/bin/cp -f /usr/share/gettext/po/Makefile.in.in po/
-  autoreconf
+   export ACLOCAL_PATH="/usr/share/aclocal"
+   autopoint -f
+   aclocal -I m4
+   autoheader
+   autoconf
 }
 
 build() {
