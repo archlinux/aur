@@ -1,7 +1,7 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker-legacy
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Legacy (C + X11-only) version of smooll's Color Picker"
 arch=("x86_64")
