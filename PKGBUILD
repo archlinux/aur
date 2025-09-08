@@ -1,4 +1,4 @@
-#  Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer:  Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 # Contributor: tee < teeaur at duck dot com >
@@ -6,10 +6,10 @@
 pkgname=bkmr
 pkgver=6.2.5
 pkgrel=2
-pkgdesc='A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management'
-url='https://github.com/sysid/bkmr'
+pkgdesc="A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management"
+url="https://github.com/sysid/$pkgname"
 license=('BSD-3-Clause')
-arch=('x86_64' 'i686' 'arm' 'aarch64')
+arch=('x86_64' 'i686' 'aarch64' 'arm')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -20,7 +20,7 @@ case "$CARCH" in
   x86_64|i686|aarch64)
     _target="$CARCH-unknown-linux-gnu" ;;
   arm)
-    _target="arm-unknown-linux-gnueabi" ;;
+    _target="$CARCH-unknown-linux-gnueabi" ;;
     *)
     printf 'Architecture %s is not supported\n' "$CARCH" >&2
     exit 1 ;;
@@ -29,23 +29,23 @@ esac
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo fetch --manifest-path bkmr/Cargo.toml --target "$_target"
+  cargo fetch --manifest-path $pkgname/Cargo.toml --target "$_target"
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" cargo build --manifest-path bkmr/Cargo.toml --frozen --release
+  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" cargo build --manifest-path $pkgname/Cargo.toml --frozen --release
 
   for _shell in bash fish zsh; do
-    ./target/release/bkmr completion "$_shell" > "_completion.$_shell" 2>/dev/null
+    ./target/release/$pkgname completion "$_shell" > "_completion.$_shell" 2>/dev/null
   done
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 -t "$pkgdir/usr/bin" target/release/bkmr
+  install -Dm0755 -t "$pkgdir/usr/bin" target/release/$pkgname
 
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
