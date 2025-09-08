@@ -2,7 +2,7 @@
 _pkgname=jj-spr
 pkgname=$_pkgname-git
 pkgver=r149.8f2eb88
-pkgrel=2
+pkgrel=3
 pkgdesc="Jujutsu github stacked prs"
 arch=('x86_64')
 url="https://github.com/LucioFranco/jj-spr"
@@ -18,34 +18,34 @@ sha256sums=('SKIP')
 options=(!lto)
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-	cd "$srcdir/$_pkgname"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "$srcdir/$_pkgname"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$srcdir/$_pkgname"
-	cargo test --frozen --all-features
-	cargo test --test '*' --frozen --all-features
+  cd "$srcdir/$_pkgname"
+  cargo test --frozen --all-features
+  cargo test --test '*' --frozen --all-features
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	install -Dm0755 target/release/jj-spr "$pkgdir/usr/bin/jj-spr"
-	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
+  cd "$srcdir/$_pkgname"
+  install -Dm0755 target/release/jj-spr "$pkgdir/usr/bin/jj-spr"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md CHANGELOG.md
 
-	cp -rv docs "$pkgdir/usr/share/doc/$pkgname"
+  cp -rv docs "$pkgdir/usr/share/doc/$pkgname"
 }
