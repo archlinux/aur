@@ -1,7 +1,7 @@
 pkgbase = voiphopper-git
 	pkgdesc = A security validation tool that tests to see if a PC can mimic the behavior of an IP Phone. It rapidly automates a VLAN Hop into the Voice VLAN.
-	pkgver = 2.04+1kali6+1.r31.20240514.7367693
-	pkgrel = 2
+	pkgver = 2.04+1kali7.r35.20250828.c8385a3
+	pkgrel = 1
 	url = http://voiphopper.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = voiphopper-git
 	makedepends = git
 	depends = glibc
 	depends = libpcap
-	provides = voiphopper=2.04+1kali6+1.r31.20240514.7367693
+	provides = voiphopper=2.04+1kali7.r35.20250828.c8385a3
 	conflicts = voiphopper
 	replaces = voiphopper<=2.04
 	source = voiphopper::git+https://gitlab.com/kalilinux/packages/voiphopper.git
