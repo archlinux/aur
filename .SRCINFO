@@ -1,0 +1,16 @@
+pkgbase = python-snakemake-interface-scheduler-plugins
+	pkgdesc = Stable interface for interactions between Snakemake and its scheduler plugins
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/snakemake/snakemake-interface-scheduler-plugins
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-snakemake-interface-common
+	source = snakemake-interface-scheduler-plugins-2.0.0.tar.gz::https://github.com/snakemake/snakemake-interface-scheduler-plugins/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 2674c1e5085c4fec2e5cbf0e82f994db30c5eafd00922d55b3f3d8b8d00e8f41
+
+pkgname = python-snakemake-interface-scheduler-plugins
