@@ -1,6 +1,6 @@
 # Maintainer: Aaron Roque Fonseca <aaronroquefonseca@gmail.com>
 pkgname=orca-slicer-flatpak-bin
-pkgver=0.0.1      # dummy, replaced dynamically
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="OrcaSlicer Flatpak package tracking the latest stable release (uninstall with \`flatpak uninstall --user io.github.softfever.OrcaSlicer\`)"
 arch=('x86_64' 'aarch64')

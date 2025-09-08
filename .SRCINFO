@@ -1,6 +1,6 @@
 pkgbase = orca-slicer-flatpak-bin
 	pkgdesc = OrcaSlicer Flatpak package tracking the latest stable release (uninstall with `flatpak uninstall --user io.github.softfever.OrcaSlicer`)
-	pkgver = 0.0.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
