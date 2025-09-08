@@ -7,7 +7,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=('python-pyglet1')
-pkgsrcname=pyglet
+_pkgsrcname=pyglet
 pkgver=1.5.30
 pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python -- Version 1"
@@ -19,21 +19,21 @@ makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-gobjec
 optdepends=('ffmpeg: provides audio&video support'
     'openal: live audio')
 conflicts=('python-pyglet' 'python-pyglet-git')
-source=("$pkgsrcname-$pkgver.zip::https://github.com/pyglet/pyglet/archive/refs/tags/v$pkgver.zip")
+source=("$_pkgsrcname-$pkgver.zip::https://github.com/pyglet/pyglet/archive/refs/tags/v$pkgver.zip")
 sha256sums=('14dc58ce38343a8cd950dbaab7628e7736b0692d7b15dd2f25e35af1d6f08f88')
 
 prepare() {
-    cd "$srcdir/$pkgsrcname-$pkgver"
+    cd "$srcdir/$_pkgsrcname-$pkgver"
 }
 
 build() {
-    cd "$srcdir/$pkgsrcname-$pkgver"
+    cd "$srcdir/$_pkgsrcname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package_python-pyglet1() {
     depends=('python' 'glu')
-    cd "$srcdir/$pkgsrcname-$pkgver"
+    cd "$srcdir/$_pkgsrcname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
