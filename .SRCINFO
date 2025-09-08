@@ -1,6 +1,6 @@
 pkgbase = python-itertools-len
 	pkgdesc = Wrapper around the stdlib’ itertools with len() support
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/flying-sheep/itertools-len
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-itertools-len
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/itertools-len/itertools_len-1.2.tar.gz
-	sha256sums = a8eaf34e1d5d35f38ff405a341617b97bfc70f20978626cff425c9e60444dd0e
+	source = https://files.pythonhosted.org/packages/source/i/itertools-len/itertools_len-1.3.tar.gz
+	sha256sums = 149048397bf26ffecf89c26b7809359d76ddbfd01a753f71fc15da074afa0b40
 
 pkgname = python-itertools-len

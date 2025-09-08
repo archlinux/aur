@@ -2,7 +2,7 @@
 
 _name=itertools-len
 pkgname=python-$_name
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Wrapper around the stdlib’ itertools with len() support'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(python)
 checkdepends=(python-pytest)
 makedepends=(python-hatchling python-hatch-vcs python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
-sha256sums=('a8eaf34e1d5d35f38ff405a341617b97bfc70f20978626cff425c9e60444dd0e')
+sha256sums=('149048397bf26ffecf89c26b7809359d76ddbfd01a753f71fc15da074afa0b40')
 
 build() {
 	cd "${_name/-/_}-$pkgver"
