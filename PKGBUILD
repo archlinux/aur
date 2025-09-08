@@ -26,7 +26,9 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/output_linux/Cryptura" "$pkgdir/usr/bin/cryptura"
-  install -Dm644 "$srcdir/output_linux/libHarfBuzzSharp.so" "$pkgdir/usr/lib/libHarfBuzzSharp.so"
-  install -Dm644 "$srcdir/output_linux/libSkiaSharp.so" "$pkgdir/usr/lib/libSkiaSharp.so"
+  install -d "$pkgdir/opt/cryptura"
+  cp -r "$srcdir/output_linux/"* "$pkgdir/opt/cryptura"
+
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/cryptura/Cryptura "$pkgdir/usr/bin/cryptura"
 }
