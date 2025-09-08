@@ -1,0 +1,13 @@
+pkgbase = plymouth-blahaj-git
+	pkgdesc = Plymouth theme with animated spinning blåhaj
+	pkgver = r5.ca3eebd
+	pkgrel = 1
+	url = https://github.com/190n/plymouth-blahaj
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/190n/plymouth-blahaj
+	sha256sums = SKIP
+
+pkgname = plymouth-blahaj-git
