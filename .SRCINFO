@@ -1,0 +1,22 @@
+pkgbase = awcc-git
+	pkgdesc = Alienware Command Center for Dell G-Series Laptops
+	pkgver = r116.66a11a9
+	pkgrel = 1
+	url = https://github.com/tr1xem/AWCC
+	install = awcc.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = acpi_call-dkms
+	depends = libusb
+	depends = pcre2
+	depends = systemd-libs
+	depends = glibc
+	depends = libcap
+	depends = gcc-libs
+	provides = awcc
+	source = awcc::git+https://github.com/tr1xem/AWCC.git
+	sha256sums = SKIP
+
+pkgname = awcc-git
