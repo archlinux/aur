@@ -7,6 +7,7 @@ pkgbase = orca-slicer-appimage-bin
 	license = AGPL3
 	depends = fuse2
 	depends = hicolor-icon-theme
+	depends = webkit2gtk
 	noextract = orca-slicer-appimage-bin-2.3.0.AppImage
 	options = !strip
 	source_x86_64 = orca-slicer-appimage-bin-2.3.0.AppImage::https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer_Linux_AppImage_V2.3.0.AppImage
