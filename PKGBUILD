@@ -4,7 +4,7 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.8
+pkgver=2025.9
 pkgrel=1
 _nodeversion=22
 pkgdesc="The Mullvad VPN client app for desktop"
@@ -35,14 +35,14 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('bee55e8bbd407104df1a873614004d75c52b61aea3c28ce00722633ea55a048f'
+sha256sums=('ec596f1f2db0c86f91a69231a45475a50a30a92781b20b561ffef44b4101f857'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
+              '7ED98188F8F9AFF15D49E41BEB8D8AD83E8DA7BC' # David Lönnhager <david.l@mullvad.net>
               '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
               '049F58CC80D9C78452151EE6EF0CCD68D0E5B9B1' # Emīls Piņķis <emils@mullvad.net>
               )
