@@ -4,7 +4,7 @@
 pkgname=can-utils
 pkgver=2025.01
 _pkgname=can-utils-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux-CAN / SocketCAN user space applications"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64' 'riscv64')
 url="https://github.com/linux-can/can-utils"
@@ -16,11 +16,11 @@ makedepends=('git' 'cmake' 'ninja')
 
 build() {
     cd can-utils
-    cmake -GNinja -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX="/usr" .
     ninja
 }
 
 package() {
     cd can-utils
-    ninja install
+    DESTDIR="$pkgdir/" ninja install
 }
