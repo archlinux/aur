@@ -1,0 +1,23 @@
+pkgbase = gnu-shark-git
+	pkgdesc = GTK UI to install drivers, optimizations, and gaming tools for Arch Linux and derivatives (git)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/gabriel-ruas-santos/gnu-shark
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = polkit
+	optdepends = flatpak: Flatpak/Flathub flows
+	optdepends = gamemode: Performance service
+	optdepends = steam: Game client
+	optdepends = lutris: Game manager
+	optdepends = heroic-games-launcher: Epic/GOG client
+	optdepends = mangohud: FPS/metrics overlay
+	optdepends = goverlay: GUI for MangoHUD
+	source = git+https://github.com/gabriel-ruas-santos/gnu-shark.git
+	sha256sums = SKIP
+
+pkgname = gnu-shark-git
