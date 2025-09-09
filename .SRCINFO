@@ -1,6 +1,6 @@
 pkgbase = scotty-git
 	pkgdesc = Transfer listens and loves between music services
-	pkgver = 0.4.1.r4.g0d9bc74
+	pkgver = 0.7.1.r4.g3770f00
 	pkgrel = 1
 	url = https://git.sr.ht/~phw/scotty
 	arch = x86_64

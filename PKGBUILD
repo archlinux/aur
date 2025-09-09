@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=scotty-git
-pkgver=0.4.1.r4.g0d9bc74
+pkgver=0.7.1.r4.g3770f00
 pkgrel=1
 pkgdesc="Transfer listens and loves between music services"
 arch=('x86_64')
@@ -18,6 +18,11 @@ pkgver() {
 	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd "$srcdir/${pkgname::-4}"
+	GOPATH="${srcdir}" go mod download -modcacherw
+}
+
 build() {
 	cd "$srcdir/${pkgname::-4}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -25,7 +30,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build
+	GOPATH="${srcdir}" go build
 }
 
 package() {
