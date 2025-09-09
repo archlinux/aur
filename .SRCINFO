@@ -11,7 +11,7 @@ pkgbase = berrydash
 	source = https://archive.org/download/berry-dash-archive/Berry-Dash-1.7.1-linux.zip
 	source = berrydash.desktop
 	source = berrydash.png
-	sha256sums = 702d1c46c69724528797ea46d5279fb260e1c2b8fb64a5c75a2112926ebe2d30
+	sha256sums = 381e322ba68e6d750cd345a956ee9eb1ccb01041a6f1aa52dc5916f3e75a37a0
 	sha256sums = a27dae1b8f41d289c04ce9ede426e4938be5ba882cd51d57fee35718ecea2829
 	sha256sums = eac907c8d88390f89d7c1ed56532781c78b750faad07664e1967d8634593a383
 
