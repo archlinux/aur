@@ -1,8 +1,8 @@
 # Maintainer: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-thinc-bin-8.3.2
-pkgver=8.3.2
-pkgrel=2
+pkgver=8.3.6
+pkgrel=1
 pkgdesc="Industrial-strength Natural Language Processing (NLP) in Python"
 arch=('x86_64')
 url='https://github.com/explosion/thinc'
@@ -21,10 +21,10 @@ depends=(
   'python-pydantic'
   'python-srsly'
   'python-wasabi')
-source=(https://files.pythonhosted.org/packages/50/8a/4dcf7aae62c208b2decf65c03ab502d096b848f59f7dade00dbdefd952eb/thinc-8.3.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
-md5sums=('abfbfa05d42977ab6b92075498997a52')
+source=(https://files.pythonhosted.org/packages/e5/42/c87990ca214b9910f33b110d3b1ac213407388d35376bc955ad45e5de764/thinc-8.3.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+md5sums=('ed08301d57ad5d5aa455b64b60421025')
 
 package() {
-  python -m installer --destdir="$pkgdir" "thinc-8.3.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  python -m installer --destdir="$pkgdir" "thinc-8.3.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 }
 # vim:set ts=2 sw=2 et:
