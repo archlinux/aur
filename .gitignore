@@ -1,0 +1,7 @@
+*
+!50-systemd-user.conf
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!sway-ow.install
+!sway-portals.conf
