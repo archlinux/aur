@@ -2,7 +2,7 @@
 
 pkgname=elephant-menus
 pkgver=1.0.0
-pkgrel=26
+pkgrel=27
 pkgdesc='menus provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -10,16 +10,16 @@ license=('GPL')
 makedepends=('go')
 conflicts=('elephant-menus')
 provides=('elephant-menus')
-source=("${url}/archive/refs/tags/v${pkgver}-beta-24.tar.gz")
-sha256sums=('9554bbd219e4012a316ce78ac602a4693f3b8f903a525e4b56ff30686725fcf8')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('54e543f036725f749ebed049e08c9b5997dd3197dbe3e730df435d70a71c3bfd')
 
 build() {
-    cd elephant-${pkgver}-beta-24/internal/providers/menus
+    cd elephant-${pkgver}/internal/providers/menus
     go build -buildvcs=false -buildmode=plugin -trimpath
 }
 
 package() {
-    cd elephant-${pkgver}-beta-24/internal/providers/menus
+    cd elephant-${pkgver}/internal/providers/menus
     install -Dm 755 menus.so -t "${pkgdir}/etc/xdg/elephant/providers"
 
     cd ../../../
