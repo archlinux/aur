@@ -8,18 +8,19 @@ pkgrel=1
 pkgdesc="Cloud Commander file manager for the web with console and editor."
 arch=("x86_64")
 url="https://github.com/coderaiser/cloudcmd"
+_urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
 license=("MIT")
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs" "python")
 makedepends=("npm" "jq")
 provides=("$_npmname")
+
 options=(!strip emptydirs staticlibs zipman)
 changelog="changelog.md"
-
-source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
-		"https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
 
+source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
+		"${_urlraw}/LICENSE")
 b2sums=('0c835f3a88134a8d07b4c9468060c8488ad9925a246df5cd7e489dfe8e585b4d5bd40a421b8f44af72c6c9a8a7b4c0e33b0bc1f014c7e7cb690d3881c65e445d'
         'f925bfc0d0ce5b6542af8c5ba101117da11d4b760c65e8907cc6bf8d5ab443c996090f3ffe207d79e97f6f762e657f49522d5a83e81ad5f41cbcae063e27fe04')
 
