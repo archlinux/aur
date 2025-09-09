@@ -1,5 +1,5 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index f0aa3f2..fa66566 100644
+index 2432a12..66c5033 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -26,6 +26,25 @@ dependencies = [
@@ -37,7 +37,7 @@ index f0aa3f2..fa66566 100644
   "bincode",
   "bootc-internal-blockdev",
 diff --git a/Cargo.toml b/Cargo.toml
-index c3208f8..1ab5a0c 100644
+index d06cb93..df1e845 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -20,6 +20,7 @@ name = "bootupd"
@@ -49,10 +49,10 @@ index c3208f8..1ab5a0c 100644
  bincode = "1.3.2"
  bootc-internal-blockdev = "0.0.0"
 diff --git a/src/packagesystem.rs b/src/packagesystem.rs
-index ceeee8c..9de49fa 100644
+index cc74d96..3dbecff 100644
 --- a/src/packagesystem.rs
 +++ b/src/packagesystem.rs
-@@ -46,7 +46,93 @@ fn rpm_parse_metadata(stdout: &[u8]) -> Result<ContentMetadata> {
+@@ -78,7 +78,101 @@ fn rpm_parse_metadata(stdout: &[u8]) -> Result<ContentMetadata> {
      })
  }
  
@@ -65,33 +65,41 @@ index ceeee8c..9de49fa 100644
 +    fn packages_to_content_metadata<'a>(
 +        packages: impl IntoIterator<Item = &'a alpm::Package>,
 +    ) -> Result<ContentMetadata> {
-+        let pkgs = packages
-+            .into_iter()
++        let mut timestamps = BTreeSet::new();
++        let mut version = String::new();
++        let mut and_x_more = 0;
++        let versions = packages.into_iter()
 +            .map(|pkg| {
-+                let version = format!("{}-{}", pkg.name(), pkg.version());
 +                let timestamp = DateTime::from_timestamp(pkg.build_date(), 0)
 +                    .ok_or(anyhow::Error::msg("alpm: failed to get a valid build date"))?;
-+                Ok((version, timestamp))
++                timestamps.insert(timestamp);
++
++                if version.is_empty() {
++                    version.push_str(pkg.version().as_str());
++                } else {
++                    and_x_more += 1;
++                }
++
++                Ok(Module {
++                    name: pkg.name().to_string(),
++                    rpm_evr: pkg.version().to_string()
++                })
 +            })
-+            .collect::<Result<BTreeMap<String, DateTime<Utc>>>>()?;
-+        if pkgs.is_empty() {
++            .collect::<Result<Vec<Module>>>()?;
++        if versions.is_empty() {
 +            bail!("No packages were found");
++        }
++        let versions = Some(versions);
++        
++        if and_x_more > 0 {
++            version.push_str(&format!(" and {} more", and_x_more));
 +        }
 +
 +        // SAFETY: pkgs has at least one element, as checked above
-+        let timestamp = **pkgs
-+            .values()
-+            .collect::<BTreeSet<&DateTime<Utc>>>()
++        let timestamp = *timestamps
 +            .last()
 +            .unwrap();
-+        let version = pkgs.keys().into_iter().fold(String::new(), |mut acc, ver| {
-+            if !acc.is_empty() {
-+                acc.push(',');
-+            }
-+            acc.push_str(ver);
-+            acc
-+        });
-+        Ok(ContentMetadata { timestamp, version })
++        Ok(ContentMetadata { timestamp, version, versions })
 +    }
 +
 +    fn find_packages<T>(
@@ -147,7 +155,7 @@ index ceeee8c..9de49fa 100644
  pub(crate) fn query_files<T>(
      sysroot_path: &str,
      paths: impl IntoIterator<Item = T>,
-@@ -54,19 +140,7 @@ pub(crate) fn query_files<T>(
+@@ -86,19 +180,7 @@ pub(crate) fn query_files<T>(
  where
      T: AsRef<Path>,
  {
@@ -167,4 +175,4 @@ index ceeee8c..9de49fa 100644
 +    archlinux::query_files_alpm(sysroot_path, paths)
  }
  
- fn parse_evr_map(input: &str) -> BTreeMap<String, Evr> {
+ fn parse_evr(pkg: &str) -> Module {
