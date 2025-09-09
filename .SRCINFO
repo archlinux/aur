@@ -1,6 +1,6 @@
 pkgbase = jzintv
 	pkgdesc = Intellivision Emulator
-	pkgver = 20181225
+	pkgver = 20200712
 	pkgrel = 1
 	url = http://spatula-city.org/~im14u2c/intv/
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = jzintv
 	depends = gcc-libs
 	depends = sdl
 	provides = jzintv
-	source = http://spatula-city.org/~im14u2c/intv/dl/jzintv-20181225-src.zip
-	sha512sums = 2c7a72b925d1765e0857e805dd6d93800bcc516d3eeb40b8dff59d13cedc3aef778588fba0b04321dbbffb7ab1597c4303dedfda1fe37ff83a20f22686f0feaa
+	source = http://spatula-city.org/~im14u2c/intv/dl/jzintv-20200712-src.zip
+	source = jzintv-20200712-termios.patch
+	sha512sums = c7f30018fc5324c48b156b654b9e56b12614f8eb7c67c5a52146241ff985d972fb9d330aafde701e572d355c945e2b9c07145058e7d9e500bf2380b8a78a4ba7
+	sha512sums = 5de6a59e280239983d72989ab16c384d9d8b534d3cf48b795635e7bd3fea9bb0a28366d5542e75b69276b4fd2d2e6efb58d736a82fd1b3d1990659f38f20e909
 
 pkgname = jzintv
-

@@ -1,0 +1,13 @@
+diff -Naur jzintv.orig/src/plat/plat_lib.c jzintv.new/src/plat/plat_lib.c
+--- jzintv.orig/src/plat/plat_lib.c	2020-07-13 02:03:58.000000000 -0300
++++ jzintv.new/src/plat/plat_lib.c	2025-09-09 00:28:22.587272585 -0300
+@@ -18,7 +18,8 @@
+ #include "plat/plat_lib_config.h"
+ 
+ #ifdef USE_TERMIO
+-# include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #endif
+ 
+ #ifdef USE_SYS_IOCTL
