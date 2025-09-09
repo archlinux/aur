@@ -1,0 +1,25 @@
+pkgbase = gnu-shark
+	pkgdesc = HUB de drivers, otimizações e utilitários para jogos no Linux (GTK)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gabriel-ruas-santos/gnu-shark
+	arch = any
+	license = GPL3
+	depends = python
+	depends = gtk3
+	depends = python-gobject
+	depends = polkit
+	depends = flatpak
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = sed
+	optdepends = expect: interação automática com prompts de pacman/pamac
+	optdepends = pamac-gtk: backend alternativo de instalação
+	optdepends = paru: helper AUR
+	optdepends = yay: helper AUR
+	optdepends = zenity: diálogos gráficos adicionais
+	source = gnushark-1.0.0.tar.gz::https://github.com/gabriel-ruas-santos/gnu-shark/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = gnu-shark

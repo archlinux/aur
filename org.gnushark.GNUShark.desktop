@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GNU/Shark
+GenericName=Gaming tools hub
+Comment=HUB de drivers, otimizações e utilitários para jogos no Linux
+Exec=gnushark
+Icon=org.gnushark.GNUShark
+Terminal=false
+Type=Application
+Categories=Utility;Game;Settings;
+StartupWMClass=gnushark
+Keywords=game;gaming;steam;drivers;wine;lutris;proton;
