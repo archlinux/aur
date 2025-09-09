@@ -1,0 +1,24 @@
+pkgbase = ella
+	pkgdesc = A process manager for running and managing services
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/thekhanj/ella
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = loong64
+	arch = mips
+	arch = mips64
+	arch = mips64le
+	arch = mipsle
+	arch = riscv64
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = sed
+	makedepends = awk
+	source = https://github.com/thekhanj/ella/releases/download/v0.0.6/ella_v0.0.6_linux_amd64.tar.gz
+	sha256sums = 1e32d7224aa1d2d924b42b5f319392ea2dffffe4dd83a9ec7ec86596cc43c1c2
+
+pkgname = ella
