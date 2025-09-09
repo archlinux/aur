@@ -1,7 +1,7 @@
 pkgbase = openrct2-appimage
 	pkgdesc = Develop appimages for OpenRCT2
 	pkgver = 0.4.26.47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openrct2.io
 	arch = x86_64
 	license = GPL3

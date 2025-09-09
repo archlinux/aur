@@ -2,11 +2,12 @@
 
 _basename="openrct2"
 _pkgname="${_basename}-appimage"
+_namespace="io.openrct2.${_basename}"
 _version="v0.4.26-47-g845a0c597c"
 pkgname=${_basename}-appimage
 pkgdesc="Develop appimages for OpenRCT2"
 pkgver=0.4.26.47
-pkgrel=1
+pkgrel=2
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 url="https://openrct2.io"
@@ -22,8 +23,8 @@ prepare() {
     "./${_appimage}" --appimage-extract
 
     # Append appimage to appimage in desktop file
-    sed -i -E "s:openrct2:openrct2-appimage:" "${srcdir}/squashfs-root/${_basename}.desktop"
-    sed -i -E "s:OpenRCT2:OpenRCT2 AppImage:" "${srcdir}/squashfs-root/${_basename}.desktop"
+    sed -i -E "s:openrct2:openrct2-appimage:" "${srcdir}/squashfs-root/${_namespace}.desktop"
+    sed -i -E "s:OpenRCT2:OpenRCT2 AppImage:" "${srcdir}/squashfs-root/${_namespace}.desktop"
 
     # Update icon filenames
     for f in ${srcdir}/squashfs-root/usr/share/icons/hicolor/*/apps/*.*; do mv "${f}" "$(echo "${f}" | sed s:/openrct2\\.:/openrct2-appimage.:)"; done
@@ -36,7 +37,7 @@ package() {
     ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_basename}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_namespace}.desktop" "${pkgdir}/usr/share/applications/${_namespace}.desktop"
 
     # Icons
     install -dm755 "${pkgdir}/usr/share/"
