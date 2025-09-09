@@ -2,7 +2,7 @@
 
 pkgname=python-sqlitetools
 _name=${pkgname#python-}
-pkgver=0.0.3.2
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="Python sqlite3 tools."
@@ -24,7 +24,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('8a1f150e926760635e4dd62f534008a36fb86bfbc536aba56c6dea43f1efebde')
+sha256sums=('0c0a11ecb8c6e00a23e2bfc1f849a029836a374ec50c6d0dd2776bab423e9aac')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
