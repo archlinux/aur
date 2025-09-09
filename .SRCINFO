@@ -1,12 +1,12 @@
 pkgbase = rutoken-pkcs
 	pkgdesc = Интерфейс RSALabs PKCS#11
 	pkgver = 2.17.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rutoken.ru/support/download/pkcs/
 	arch = x86_64
-	license = proprietary
+	license = custom:rutoken
 	options = !strip
-	source = librtpkcs11ecp.so.2.17.5.0::http://download.rutoken.ru/Rutoken/PKCS11Lib/2.17.5.0/Linux/x64/librtpkcs11ecp.so
-	sha256sums = f9aeeb433da8bfe9d0fd58b55ae40b901600e999a10d705e948dae6c6f64e016
+	source = http://download.rutoken.ru/Rutoken/PKCS11Lib/2.17.5.0/Linux/x64/librtpkcs11ecp_2.17.5.0-1_amd64.deb
+	sha256sums = 7382ece19a4e6642424db571600f00fccc5cf667eb23f0c90b88c487d7cbe44b
 
 pkgname = rutoken-pkcs

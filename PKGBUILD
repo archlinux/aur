@@ -2,20 +2,20 @@
 
 pkgname=rutoken-pkcs
 pkgver=2.17.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Интерфейс RSALabs PKCS#11'
 arch=('x86_64')
 url='https://www.rutoken.ru/support/download/pkcs/'
-license=('proprietary')
+license=('custom:rutoken')
 options=(!strip)
 
 _file='librtpkcs11ecp.so'
-_dir="/opt/aktivco/rutokenecp/${arch}"
-source=("${_file}.${pkgver}::http://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp.so")
-sha256sums=('f9aeeb433da8bfe9d0fd58b55ae40b901600e999a10d705e948dae6c6f64e016')
+source=("http://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp_${pkgver}-1_amd64.deb")
+sha256sums=('7382ece19a4e6642424db571600f00fccc5cf667eb23f0c90b88c487d7cbe44b')
 
 package() {
-	mkdir -p "${pkgdir}${_dir}" "${pkgdir}/usr/lib"
-	cp -L "${srcdir}/${_file}.${pkgver}" "${pkgdir}${_dir}/${_file}"
-	ln -s "${_dir}/${_file}" "${pkgdir}/usr/lib/${_file}"
+	bsdtar -xf "${srcdir}/data.tar.xz"
+	mkdir -p "${pkgdir}/usr/lib"
+	cp -L "${srcdir}/opt/aktivco/rutokenecp/amd64/librtpkcs11ecp.so" "${pkgdir}/usr/lib"
+	install -Dm644 "${srcdir}/usr/share/doc/rtpkcs11ecp/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
