@@ -2,7 +2,7 @@
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
 pkgver=3.21.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -41,7 +41,7 @@ prepare() {
 	# Use system qt because bundling it is cringe n lame
 	cat /dev/null > internal/frontend/bridge-gui/bridge-gui/DeployLinux.cmake
 
-	GOFLAGS="-mod=readonly" go mod vendor -v
+	GOPATH="${srcdir}" go mod download -modcacherw
 }
 
 build() {
