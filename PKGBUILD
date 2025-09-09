@@ -1,6 +1,6 @@
 # Maintainer: Oliver Gasser <oliver@flowriver.net>
 pkgname=mmdbctl
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="mmdbctl is an MMDB file management CLI by IPinfo.io"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('APACHE')
 provides=('mmdbctl')
 conflicts=('mmdbctl')
 source=("https://github.com/ipinfo/mmdbctl/releases/download/mmdbctl-$pkgver/mmdbctl_${pkgver}.deb")
-sha256sums=('ff0403d1490f47b73782cc3ccfca46b83e88c2d3e4e60540c01feadd576c51ee')
+sha256sums=('3afb02e1ed125bc6b5c0dbcf394b33fefe60603509873dee40c62d39afc73a52')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
