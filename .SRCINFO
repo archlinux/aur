@@ -1,0 +1,13 @@
+pkgbase = xauth
+	pkgdesc = Lightweight PolicyKit GUI authentication agent
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitee.com/vastSky2006/xauth
+	arch = x86_64
+	license = LGPL-3.0
+	depends = qt6-base
+	depends = polkit-qt6
+	source = https://gitee.com/vastSky2006/xauth/releases/download/v0.1.0/xauth-v0.1.0
+	sha256sums = 60f7e087592bb5d1ac6147261625805db19a1d085e088641d2428ba051646aa6
+
+pkgname = xauth
