@@ -1,36 +1,32 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Kim Scarborough <kim@scarborough.kim>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=python-anyascii
-_name=${pkgname#python-}
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Unicode to ASCII transliteration'
 arch=('any')
-url=https://anyascii.com/
+url='https://github.com/anyascii/anyascii'
 license=('ISC')
 depends=('python')
-makedepends=('git' 'python-build' 'python-flit-core' 'python-installer')
+makedepends=('python-build' 'python-flit-core' 'python-installer')
 checkdepends=('python-pytest')
-source=("git+https://github.com/$_name/$_name.git#tag=$pkgver")
-b2sums=('76bd68cfd817592750f686767d5b3426848f688b172520e6a4bb289987ccd480bc26504d36dfef0063580b2012a528091548236795f6476adbe68f8f20533b57')
+source=("https://github.com/anyascii/anyascii/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('cdd3caa392e37bed1d829343050345218a324e5ed2f5c5bd263458bcbe00d337')
 
 build() {
-  cd "$_name"/impl/python
-  python -m build --wheel --skip-dependency-check --no-isolation
+	cd "$srcdir/anyascii-$pkgver/impl/python"
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd "$_name"/impl/python
-  python -m pytest
+	cd "$srcdir/anyascii-$pkgver/impl/python"
+	python -m pytest
 }
 
 package() {
-  cd "$_name"/impl/python
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/"$_name"-$pkgver.dist-info/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$srcdir/anyascii-$pkgver/impl/python"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	cp "$srcdir/anyascii-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
