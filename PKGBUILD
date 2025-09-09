@@ -3,7 +3,7 @@
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-dkms' 'etherlab-ethercat-tools')
 pkgver=1.6.7
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
@@ -21,13 +21,28 @@ prepare() {
 
 build() {
   cd "ethercat-$pkgver"
-  # Only include the generic driver
-  ./configure \
+
+  # This build is shared between `etherlab-ethercat` (that requires
+  # building the modules) and `etherlab-ethercat-dkms` (that does not
+  # require them), so I always forcibly build the modules (if possible)
+  # even for `etherlab-ethercat-dkms`.
+  if test -d /usr/src/linux; then
+    # Package `linux-headers` present: build the kernel modules
+    kernel_args="--enable-kernel --enable-generic --with-linux-dir=/usr/src/linux"
+  else
+    # Package `linux-headers` absent: disable the kernel modules
+    kernel_args="--disable-kernel"
+  fi
+
+  ./configure $kernel_args \
     --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib --sysconfdir=/etc \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --enable-kernel --enable-generic \
     --enable-tool --enable-userlib --disable-initd
   make all
+
+  if test "$kernel_args" != "--disable-kernel"; then
+    make modules
+  fi
 }
 
 check() {
@@ -38,16 +53,11 @@ check() {
 package_etherlab-ethercat() {
   pkgdesc="Kernel modules for IgH EtherCAT(R) Master component"
   license=('GPL-2.0-only')
-  depends=('linux' 'etherlab-ethercat-tools')
+  depends=('linux' 'linux-headers' 'etherlab-ethercat-tools')
   provides=('etherlab-ethercat')
   conflicts=('etherlab-ethercat-dkms')
 
   cd "ethercat-$pkgver"
-  # This step should happen inside `build()` but, AFAIK,
-  # split packages do not support split build functions
-  # and `package_etherlab-ethercat-dkms()` does not require this
-  make modules
-
   # 1. Skip `depmod`: it will be executed automatically
   #    by pacman hooks on the target OS
   # 2. By default kernel modules are installed in `/lib`
