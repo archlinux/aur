@@ -1,0 +1,24 @@
+pkgbase = jzintvimgui
+	pkgdesc = A cross-platform GUI for jzIntv
+	pkgver = 2.3.7
+	pkgrel = 2025
+	url = https://github.com/jenergy/jzIntvImGui
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libgl
+	depends = sdl2_image
+	depends = glfw
+	provides = jzintvimgui
+	conflicts = jzintvimgui
+	source = git+https://github.com/jenergy/jzIntvImGui.git#tag=2.3.7
+	source = jzIntvImGui_linux_ini2home.patch
+	source = jzintvimgui.desktop
+	source = jzIntvImGui-termios.patch
+	sha256sums = SKIP
+	sha256sums = 52e0a46eea598740c2afb2a81f6926258754672aabd30cf4a2c70408a769ef03
+	sha256sums = e55d22264acf170659d045821820b500bf8d3569161a34c67adfd67876bacd0f
+	sha256sums = 41882c2fa69128490fcc174ecc0e2a22318d99c6389dcd8f6f78608eb3829421
+
+pkgname = jzintvimgui
