@@ -14,6 +14,7 @@ depends=(
   'ttf-roboto'
   'inter-font' 
   'ttf-material-symbols-variable-git'
+  'ttf-bootstrap-icons'
   'gpu-screen-recorder'
   'brightnessctl'
   'ddcutil'
