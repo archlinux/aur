@@ -3,7 +3,7 @@
 
 pkgname=zed-git
 _pkgname=${pkgname%-git}
-pkgver=0.186.7.r183.ga1d8e50
+pkgver=0.203.4.r190.gbd0a5dd
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -23,6 +23,7 @@ depends=(alsa-lib libasound.so
          libxkbcommon-x11 # libxkbcommon-x11.so
          netcat
          'nodejs>=18'
+         npm
          openssl libcrypto.so libssl.so
          sqlite
          vulkan-driver
