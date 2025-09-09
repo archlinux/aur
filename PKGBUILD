@@ -5,7 +5,7 @@ _name_gh="lmstudio-python"
 _name_pip="lmstudio"
 pkgname="python-lmstudio"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LM Studio Python SDK "
 arch=('any')
 url="https://github.com/$_user_gh/$_name_gh"
@@ -19,11 +19,12 @@ depends=(
 	'python-typing_extensions>=4.12.2'
 )
 
-#makedepends=(
-#	python-build
-#	python-installer
-#	python-wheel
-#)
+makedepends=(
+	python-build
+	python-installer
+	python-wheel
+	python-pdm-backend
+)
 
 #checkdepends=(
 #	'python-tox>=4.16.0'

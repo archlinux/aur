@@ -1,10 +1,14 @@
 pkgbase = python-lmstudio
 	pkgdesc = LM Studio Python SDK
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lmstudio-ai/lmstudio-python
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pdm-backend
 	depends = python>=3.13
 	depends = python-httpx>=0.27.2
 	depends = python-httpx-ws>=0.7.0
