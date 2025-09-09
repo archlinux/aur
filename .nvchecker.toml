@@ -1,0 +1,4 @@
+[kooha]
+source = "git"
+git = "https://github.com/SeaDve/Kooha.git"
+prefix = "v"
