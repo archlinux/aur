@@ -1,4 +1,4 @@
-pkgbase = gol-game-of-life
+pkgbase = gol
 	pkgdesc = Terminal-based Conway's Game of Life implementation
 	pkgver = 1.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = gol-game-of-life
 	arch = i686
 	license = MIT
 	depends = ncurses
-	source = gol-game-of-life-1.0.tar.gz::https://github.com/RansomDark/gol/archive/v1.0.tar.gz
+	source = gol-1.0.tar.gz::https://github.com/RansomDark/gol/archive/v1.0.tar.gz
 	sha256sums = aec2e131d0ba6fef617f1211511ff5b9
 
-pkgname = gol-game-of-life
+pkgname = gol
