@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=139.0.7258.154
+pkgver=140.0.7339.80
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -40,14 +40,16 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
-        use-oauth2-client-switches-as-default.patch)
-sha256sums=('c97e1982a9f426178364d01e08e6114a4ce02ca17f9efcbb347461f18c57f62d'
+        use-oauth2-client-switches-as-default.patch
+        chromium-140.0.7339.41-rust.patch)
+sha256sums=('3c59ca1da92a7d1ec2cf152b3c99ebd9348e1db43e8cb782afcb19dfcaeaca2c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
-            'a6507371588ed4d87d6501220249264abfbcd814771cc1ba351e0ac6cc987400'
+            '75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374')
+            'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374'
+            '0eb47afd031188cf5a3f0502f3025a73a1799dfa52dff9906db5a3c2af24e2eb')
 
 # ungoogled-chromium-xdg patches
 source=(${source[@]}
@@ -72,7 +74,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            'f70d1e9b180fcf4e65cb07a632c781aee02e11a3f6cb218974287f81a8e7122e')
+            '468a0618f4620860464477d505f516d1305794bcb0354a2241f212ac99e9aa8d')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -141,6 +143,7 @@ prepare() {
 
   # Fixes from NixOS
   patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
+  patch -Np1 -i ../chromium-140.0.7339.41-rust.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
