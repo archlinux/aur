@@ -5,8 +5,8 @@
 pkgname=rapidraw-bin
 _pkgname=RapidRAW
 pkgdesc="GPU-accelerated RAW image editor built with performance in mind"
-pkgver=1.3.11
-pkgrel=2
+pkgver=1.3.12
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/CyberTimon/RapidRAW
 license=('AGPL-3.0-only')
@@ -28,8 +28,8 @@ _debfile="03_${_pkgname}_v${pkgver}_ubuntu-${_ubuntuver}"
 #https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.7/03_RapidRAW_v1.2.7_ubuntu-24.04_amd64.deb
 #https://github.com/CyberTimon/RapidRAW/releases/download/v1.3.1/03_RapidRAW_v1.3.1_ubuntu-24.04-arm_arm64.deb
 source_x86_64=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}_amd64.deb")
-sha256sums_x86_64=('7b558afb01f10d65fbfa68918d974ca1b11e331d3d3b2a75af7d97466db8739a')
-sha256sums_aarch64=('b45013bbd8095d46e517d12f659196bc1336438a0709f119613412393df2f7f3')
+sha256sums_x86_64=('708ec492fe61c1d82299c31058ddbd908758eff02272c2689f994c44432925e3')
+sha256sums_aarch64=('8b5aab354108299e5c583b08375f477e17f0f3866917feebbb75c932e242fc55')
 source_aarch64=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}-arm_arm64.deb")
 
 prepare() {
