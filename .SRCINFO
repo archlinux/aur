@@ -1,0 +1,15 @@
+pkgbase = gtl
+	pkgdesc = Transforms text into properly capitalized titles according to the Chicago Manual of Style
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/keircn/gtl
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/keircn/gtl.git#tag=0.1.1
+	sha256sums = SKIP
+
+pkgname = gtl
