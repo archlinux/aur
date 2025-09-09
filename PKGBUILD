@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-xai-sdk
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The official Python SDK for xAI's APIs"
 arch=(any)
@@ -17,8 +17,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("https://files.pythonhosted.org/packages/04/96/bde4e511f14577106d6060d57090e529b530828fe959adc6b5d67a91db42/xai_sdk-$pkgver.tar.gz")
-sha256sums=('f1a989f6feb74c06598a53ac94c378c525e0b44792e4eb3996e16d6323b6f617')
+source=("https://files.pythonhosted.org/packages/source/x/xai_sdk/xai_sdk-$pkgver.tar.gz")
+sha256sums=('dd5b9309b46d4270843025637f65c0c246b70c9c321aca6cb54f3201238685f8')
 
 build() {
     cd "$srcdir/xai_sdk-$pkgver"
