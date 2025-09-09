@@ -1,5 +1,5 @@
 pkgname=wayclip-cli
-pkgver=0.1.58
+pkgver=0.1.59
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -13,18 +13,18 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/ta
 sha256sums=('SKIP' 'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/cli-$pkgver"
   cargo build --release
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/wayclip-cli" "$pkgdir/usr/bin/wayclip-cli"
+  install -Dm755 "$srcdir/cli-$pkgver/target/release/wayclip-cli" "$pkgdir/usr/bin/wayclip-cli"
   
   install -Dm755 "$srcdir/wayclip-binaries/daemon" "$pkgdir/usr/bin/wayclip-daemon"
   install -Dm755 "$srcdir/wayclip-binaries/trigger" "$pkgdir/usr/bin/wayclip-trigger"
   
-  if [ -f "$srcdir/$pkgname-$pkgver/assets/wayclip-daemon.service" ]; then
-    sed -i 's|ExecStart=.*|ExecStart=/usr/bin/wayclip-daemon|' "$srcdir/$pkgname-$pkgver/assets/wayclip-daemon.service"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/assets/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
+  if [ -f "$srcdir/cli-$pkgver/assets/wayclip-daemon.service" ]; then
+    sed -i 's|ExecStart=.*|ExecStart=/usr/bin/wayclip-daemon|' "$srcdir/cli-$pkgver/assets/wayclip-daemon.service"
+    install -Dm644 "$srcdir/cli-$pkgver/assets/wayclip-daemon.service" "$pkgdir/usr/lib/systemd/user/wayclip-daemon.service"
   fi
 }
