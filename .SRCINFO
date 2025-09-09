@@ -4,7 +4,7 @@ pkgbase = helion-git
 	pkgrel = 1
 	url = https://github.com/Helion-Engine/Helion
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = dotnet-sdk>=9.0
 	makedepends = clang
 	makedepends = git
@@ -14,8 +14,7 @@ pkgbase = helion-git
 	depends = alsa-lib
 	depends = glibc
 	depends = glib2
-	conflicts = helion
-	conflicts = helion-bin
+	provides = helion
 	source = git+https://github.com/Helion-Engine/Helion
 	sha256sums = SKIP
 
