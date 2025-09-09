@@ -2,68 +2,61 @@
 # Contributor: KafCoppelia <k740677208@gmail.com>
 
 pkgbase=xuantie-900-series-toolchain-bin
-_platform_linux_ver1=linux-6.6.0
-_platform_linux_ver2=linux-5.10.4
+_platform_linux_ver=linux-6.6.0
 pkgname=(
     $pkgbase 
-    riscv64-xuantie-900-${_platform_linux_ver1}-glibc-gcc-bin
+    riscv64-xuantie-900-${_platform_linux_ver}-glibc-gcc-bin
     riscv64-xuantie-900-elf-newlib-gcc-bin
-    riscv64-xuantie-900-${_platform_linux_ver1}-musl32-gcc-bin
-    riscv64-xuantie-900-${_platform_linux_ver1}-musl64-gcc-bin
-    riscv64-xuantie-900-${_platform_linux_ver2}-musl32-gcc-bin
-    riscv64-xuantie-900-${_platform_linux_ver2}-musl64-gcc-bin
+    riscv64-xuantie-900-${_platform_linux_ver}-musl32-gcc-bin
+    riscv64-xuantie-900-${_platform_linux_ver}-musl64-gcc-bin
     xuantie-900-series-manual
 )
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 arch=('x86_64')
 url=https://www.xrvm.cn/community/download?id=4460156621967921152
 license=('unknown')
 _dwurl=https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/
+_date=20250627
 source=(
     # Plateform Linux 6.6.0
-    "riscv64-xuantie-900-${_platform_linux_ver1}-glibc-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1749714096626/Xuantie-900-gcc-${_platform_linux_ver1}-glibc-${arch}-V${pkgver}-20250522.tar.gz"
-    "riscv64-xuantie-900-elf-newlib-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1749713644464/Xuantie-900-gcc-elf-newlib-${arch}-V${pkgver}-20250522.tar.gz"
-    "riscv64-xuantie-900-${_platform_linux_ver1}-musl32-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1749714478447/Xuantie-900-gcc-${_platform_linux_ver1}-musl32-${arch}-V${pkgver}-20250522.tar.gz"
-    "riscv64-xuantie-900-${_platform_linux_ver1}-musl64-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1749714731032/Xuantie-900-gcc-${_platform_linux_ver1}-musl64-${arch}-V${pkgver}-20250522.tar.gz"
-    # Plateform Linux 5.10.4
-    "riscv64-xuantie-900-${_platform_linux_ver2}-musl32-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1749719378087/Xuantie-900-gcc-${_platform_linux_ver2}-musl32-${arch}-V${pkgver}-20250522.tar.gz"
-    "riscv64-xuantie-900-${_platform_linux_ver2}-musl64-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1749713312767/Xuantie-900-gcc-${_platform_linux_ver2}-musl64-${arch}-V${pkgver}-20250522.tar.gz"
+    "riscv64-xuantie-900-${_platform_linux_ver}-glibc-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1755679709552/Xuantie-900-gcc-${_platform_linux_ver}-glibc-${arch}-V${pkgver}-${_date}.tar.gz"
+    "riscv64-xuantie-900-elf-newlib-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1751370399722/Xuantie-900-gcc-elf-newlib-${arch}-V${pkgver}-${_date}.tar.gz"
+    "riscv64-xuantie-900-${_platform_linux_ver}-musl32-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1755680614007/Xuantie-900-gcc-${_platform_linux_ver}-musl32-${arch}-V${pkgver}-${_date}.tar.gz"
+    "riscv64-xuantie-900-${_platform_linux_ver}-musl64-gcc-bin-${pkgver}.tar.gz::${_dwurl}/1755680903502/Xuantie-900-gcc-${_platform_linux_ver}-musl64-${arch}-V${pkgver}-${_date}.tar.gz"
     # Documentation
     "ReleaseNote ${pkgver}.pdf::${_dwurl}/1751456888661/ReleaseNote.pdf"
-    "Xuantie 900 Series Assembler Manual ${pkgver}.pdf::${_dwurl}/1749713280665/Xuantie+900+Series+Assembler+Manual.pdf"
-    "Xuantie 900 Series Binutils Manual ${pkgver}.pdf::${_dwurl}/1749713262134/Xuantie+900+Series+Binutils+Manual.pdf"
-    "Xuantie 900 Series Compiler Manual ${pkgver}.pdf::${_dwurl}/1749713246911/Xuantie+900+Series+Compiler+Manual.pdf"
-    "Xuantie 900 Series Linker Manual ${pkgver}.pdf::${_dwurl}/1749713201314/Xuantie+900+Series+Linker+Manual.pdf"
-    "Xuantie 900 Series GDB Manual ${pkgver}.pdf::${_dwurl}/1749713226909/Xuantie+900+Series+GDB+Manual.pdf"
-    "Xuantie 900 Series P-0.9.4 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1749713180262/Xuantie+900+Series+P-0.9.4+Intrinsic+Manual.pdf"
-    "Xuantie 900 Series RVM-0.3 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1749713163469/Xuantie+900+Series+RVM-0.3+Intrinsic+Manual.pdf"
-    "Xuantie 900 Series RVV-0.7.1 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1749713137857/Xuantie+900+Series+RVV-0.7.1+Intrinsic+Manual.pdf"
-    "Xuantie 900 Series RVV-1.0 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1749713118434/Xuantie+900+Series+RVV-1.0+Intrinsic+Manual.pdf"
+    "Xuantie 900 Series Assembler Manual ${pkgver}.pdf::${_dwurl}/1751457183077/Xuantie+900+Series+Assembler+Manual.pdf"
+    "Xuantie 900 Series Binutils Manual ${pkgver}.pdf::${_dwurl}/1751457200530/Xuantie+900+Series+Binutils+Manual.pdf"
+    "Xuantie 900 Series Compiler Manual ${pkgver}.pdf::${_dwurl}/1751457224360/Xuantie+900+Series+Compiler+Manual.pdf"
+    "Xuantie 900 Series Linker Manual ${pkgver}.pdf::${_dwurl}/1751457272624/Xuantie+900+Series+Linker+Manual.pdf"
+    "Xuantie 900 Series GDB Manual ${pkgver}.pdf::${_dwurl}/1751457252777/Xuantie+900+Series+GDB+Manual.pdf"
+    "Xuantie 900 Series P-0.9.4 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1751457311943/Xuantie+900+Series+P-0.9.4+Intrinsic+Manual.pdf"
+    "Xuantie 900 Series RVM-0.3 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1751457332661/Xuantie+900+Series+RVM-0.3+Intrinsic+Manual.pdf"
+    "Xuantie 900 Series RVV-0.7.1 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1751457354757/Xuantie+900+Series+RVV-0.7.1+Intrinsic+Manual.pdf"
+    "Xuantie 900 Series RVV-1.0 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1751457381023/Xuantie+900+Series+RVV-1.0+Intrinsic+Manual.pdf"
 )
 
-sha256sums=('129d8d31ea025183f184b0c652cbd5f7e75ebf53b7d0f736d326348dceb2d7ec'
-            '72784c91c3e6be0d8d312237adac0c565b67bbf8f8c81280b291805da5f75f24'
-            '852d66fdcbd444e067fe69d2bfcfd0f8424e285b15fffff23ae910dca7c2d254'
-            'ca2da7c80cc58d6f06eee5dba91c1b1530a00c19eeafb1eaf274ca06165cad69'
-            'f231d2bcda15a4e7696ca56b681cee6657b42fc422049c43c46d8283c5a57cd9'
-            '395f201713c2be0ea5969c92a1a0fdfe16b17ee98a15e26e8354f750fa14ee18'
+sha256sums=('a5a6a5e517a738baffed091efce984ffa215f78bb11e296d6175bf5896778fdd'
+            '80c174c6445f7565bc082d328045021862a63beddfad8c393c534e2d9523dc3b'
+            '9da3d326ef6ddb6383b95221037e0b5f254ca800f3bb0c0383006781eb89bdb1'
+            'ddb940dd50fe30db654479764ee3fbfcd8e78b697fb4491bb6ceb15c353e997f'
             'c9c8a9846230f0cdc4bc043f1ba3339c34aca4dcfebb46e14a4afd5d1541a6a9'
-            '0455538e62307d3e4bc79cbd8257ed42292c32e31dd7ad4eebcb215a89cdeeff'
-            'cd45c42cab736c413a5ae55c0a620e527ef6e615e113505b65f010beada54e95'
-            '2c4ec6f462cbb8b43ee1233d00aa91173232678662c244850cbdcd7527a87745'
-            'b3221c0563f5eac174193ba251dc7fae5788eb327ee9455c535a9260a35893c5'
-            '7d3f1b686e989651558bf5c2bb8705817c6fc3d2054f184a81cad2416ab0e6c0'
+            'b58245a7f0f21416637362008c91eb287d69111a1dc6c9a0b4371f72aeaa2f2e'
+            '566b3f3bab0b521046451a9ba17d20bfd76f86076a713bdbea266a7f0f6d38ab'
+            'bf7f1dbe78b77af6693b830f4d943c0f1c41faad2628f881c30ec42510caeffc'
+            'e3c6ec78ea7ee56bfb4a73a2f3cf2685fa6cf0c58ce8a07157b293deca0e92bb'
+            '14e973329fc9c6df7812f9ba5f9ca20ad8e243b19bcf5335cbf2677d6c851b06'
             '595aece3631d8c82429c2f95a91bbf8cd908eb89b173b2d2e7f99fd0e45f2076'
-            '7689baeda6498081c5f196f69de8c7f15c4bbbe895d849e51d63bbb7f85d6fbe'
-            'e0f18425e67e036559fdbc61a510278d7e435ef78fce241c83e77face258765f'
-            'cc3b08380991716f8c7c5ed9619130c609ce0a8f89b3d6dafa963520cacdbab7')
+            'a963c36d90cbe00d025ed62a55a051a367007d829c1893456c4dc294f73b74ee'
+            '28722ab42b5531e67ded49a7836352c5435fa0e9a50b574d01ef8a81f26ecf6e'
+            '6b4530fc6665c2fa9db2137226264c7ac423528fd0e2289500038d05152a75ee')
 
 noextract=(
-    riscv64-xuantie-900-${_platform_linux_ver1}-glibc-gcc-bin-${pkgver}.tar.gz
+    riscv64-xuantie-900-${_platform_linux_ver}-glibc-gcc-bin-${pkgver}.tar.gz
     riscv64-xuantie-900-elf-newlib-gcc-bin-${pkgver}.tar.gz
-    riscv64-xuantie-900-${_platform_linux_ver1}-musl32-gcc-bin-${pkgver}.tar.gz
-    riscv64-xuantie-900-${_platform_linux_ver1}-musl64-gcc-bin-${pkgver}.tar.gz
+    riscv64-xuantie-900-${_platform_linux_ver}-musl32-gcc-bin-${pkgver}.tar.gz
+    riscv64-xuantie-900-${_platform_linux_ver}-musl64-gcc-bin-${pkgver}.tar.gz
 )
 options=('!strip')
 _toolchain_name="xuantie-900-gcc"
@@ -71,12 +64,10 @@ _toolchain_name="xuantie-900-gcc"
 package_xuantie-900-series-toolchain-bin() {
     pkgdesc="Xuantie 900 series toolchain"
     depends=(
-        riscv64-xuantie-900-${_platform_linux_ver1}-glibc-gcc-bin
+        riscv64-xuantie-900-${_platform_linux_ver}-glibc-gcc-bin
         riscv64-xuantie-900-elf-newlib-gcc-bin
-        riscv64-xuantie-900-${_platform_linux_ver1}-musl32-gcc-bin
-        riscv64-xuantie-900-${_platform_linux_ver1}-musl64-gcc-bin
-        riscv64-xuantie-900-${_platform_linux_ver2}-musl32-gcc-bin
-        riscv64-xuantie-900-${_platform_linux_ver2}-musl64-gcc-bin
+        riscv64-xuantie-900-${_platform_linux_ver}-musl32-gcc-bin
+        riscv64-xuantie-900-${_platform_linux_ver}-musl64-gcc-bin
         xuantie-900-series-manual
     )
 }
@@ -125,34 +116,6 @@ EOF
 
 package_riscv64-xuantie-900-linux-6.6.0-musl64-gcc-bin() {
     pkgdesc="Xuantie 900 riscv64 musl64 toolchain targetting plateform linux 6.6.0"
-    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
-
-    bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner --no-same-permissions
-
-    install -Dm0755 /dev/stdin ${pkgdir}/etc/profile.d/${pkgname%-bin}.sh << EOF
-#!/bin/sh
-[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
-
-export PATH
-EOF
-}
-
-package_riscv64-xuantie-900-linux-5.10.4-musl32-gcc-bin() {
-    pkgdesc="Xuantie 900 riscv64 musl32 toolchain targetting plateform linux 5.10.4"
-    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
-
-    bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner --no-same-permissions
-
-    install -Dm0755 /dev/stdin ${pkgdir}/etc/profile.d/${pkgname%-bin}.sh << EOF
-#!/bin/sh
-[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
-
-export PATH
-EOF
-}
-
-package_riscv64-xuantie-900-linux-5.10.4-musl64-gcc-bin() {
-    pkgdesc="Xuantie 900 riscv64 musl64 toolchain targetting plateform linux 5.10.4"
     install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 
     bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner --no-same-permissions
