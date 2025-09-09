@@ -23,8 +23,9 @@ makedepends=(argagg boost cmake git gtest python qt5-tools xxd)
 source=(
   "$pkgname-$pkgver.tag.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
   appimage-binfmt-remove.hook)
-sha256sums=('2763d517d4df5b53f22266c22add4550411abc5b9a7b0b534c342c717f316fea'
-            '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
+sha256sums=(
+  '2763d517d4df5b53f22266c22add4550411abc5b9a7b0b534c342c717f316fea'
+  '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
   sed -i "s/COMMAND git/COMMAND true/" "$_pkgname-$_pkgver/cmake/versioning.cmake"
@@ -47,13 +48,13 @@ build() {
     -DFETCHCONTENT_QUIET=OFF \
     -DUSE_SYSTEM_SQUASHFUSE=ON \
     -Wno-dev
-  #make -C build libappimage libappimageupdate libappimageupdate-qt
+  ##make -C build libappimage libappimageupdate libappimageupdate-qt
   cmake --build build
   #make -C build
 }
 
 package() {
-  #make DESTDIR="$pkgdir" install
+  #make DESTDIR="$pkgdir" -C build install
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 appimage-binfmt-remove.hook -t "$pkgdir/usr/share/libalpm/hooks"
