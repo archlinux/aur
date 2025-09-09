@@ -1,12 +1,12 @@
 pkgbase = showiescii
 	pkgdesc = Use showie::to_ascii, Crate in shell.
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/IOU-KR/showiescii
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = showiescii-1.0.0.tar.gz::https://github.com/IOU-KR/showiescii/archive/v1.0.0.tar.gz
-	sha256sums = 6ff10aed963901ab2c6f0aed740d21f071a77c95e556601174c08136f7fb4d13
+	source = showiescii-1.1.0.tar.gz::https://github.com/IOU-KR/showiescii/archive/v1.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = showiescii
