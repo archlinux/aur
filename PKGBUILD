@@ -19,9 +19,15 @@ optdepends=(
   'zenity: diálogos gráficos adicionais'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "gnu-shark-${pkgver}.tar.gz::https://github.com/gabriel-ruas-santos/gnu-shark/archive/refs/tags/v${pkgver}.tar.gz"
+  "org.gnushark.GNUShark.desktop"
+  "org.gnushark.runroot.policy"
+  "gnushark-runroot.sh"
 )
-sha256sums=('e72516ccccc6a4809866289a42638fcd01b58a21298dde73693c75dce1c89e3d')
+sha256sums=('e72516ccccc6a4809866289a42638fcd01b58a21298dde73693c75dce1c89e3d'
+            '0687c1ada77d452ad77e624f47e8bd736a3416a8b89baf0128bf47742d4216f2'
+            'dd5f739fa30a69119c104d4d2fa65e316eeef8ac2636eaeb345c72c53ebcafe2'
+            'af7247d6569fb180affdaa4d2886774d0d1e7e8d3ef8cf2ef7eb4c62cb6ae668')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,22 +35,37 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/gnu-shark-${pkgver}"
 
-  # binário principal (script python)
-  install -Dm755 "gnu-shark.py" "${pkgdir}/usr/bin/gnushark"
+  # 1) Instala todo o projeto em /usr/share/gnushark
+  install -d "${pkgdir}/usr/share/gnushark"
+  cp -r . "${pkgdir}/usr/share/gnushark"
+  find "${pkgdir}/usr/share/gnushark" -type f -name '*.py' -exec chmod 0644 {} +
 
-  # ícones (se existir pasta icons/)
-  if [ -d "icons" ]; then
-    # ícone principal
-    install -Dm644 "icons/org.gnushark.GNUShark.svg" \
-      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.gnushark.GNUShark.svg" || true
-    # demais ícones custom do app (se houver)
-    find icons -type f -name "*.png" -o -name "*.svg" | while read -r f; do
-      base="$(basename "$f")"
-      install -Dm644 "$f" "${pkgdir}/usr/share/gnushark/icons/${base}"
-    done
+  # 2) Cria um launcher robusto em /usr/bin/gnu-shark
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/gnu-shark" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+APPDIR="/usr/share/gnushark"
+export PYTHONPATH="$APPDIR:${PYTHONPATH:-}"
+
+# Tente por módulo (se for pacote Python)
+for mod in gnushark gnu_shark; do
+  if [ -d "$APPDIR/$mod" ]; then
+    exec python3 -m "$mod" "$@"
   fi
+done
+
+# Tente por arquivo comum
+for entry in gnu_shark.py gnushark.py main.py app.py; do
+  if [ -f "$APPDIR/$entry" ]; then
+    exec python3 "$APPDIR/$entry" "$@"
+  fi
+done
+
+echo "GNU/Shark: não encontrei entrypoint em $APPDIR (módulos gnushark/gnu_shark ou arquivos gnu_shark.py/gnushark.py/main.py/app.py)." >&2
+exit 1
+EOF
 
   # desktop + metainfo
   install -Dm644 "packaging/org.gnushark.GNUShark.desktop" \

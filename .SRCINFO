@@ -20,6 +20,12 @@ pkgbase = gnu-shark
 	optdepends = yay: helper AUR
 	optdepends = zenity: diálogos gráficos adicionais
 	source = gnu-shark-1.0.0.tar.gz::https://github.com/gabriel-ruas-santos/gnu-shark/archive/refs/tags/v1.0.0.tar.gz
+	source = org.gnushark.GNUShark.desktop
+	source = org.gnushark.runroot.policy
+	source = gnushark-runroot.sh
 	sha256sums = e72516ccccc6a4809866289a42638fcd01b58a21298dde73693c75dce1c89e3d
+	sha256sums = 0687c1ada77d452ad77e624f47e8bd736a3416a8b89baf0128bf47742d4216f2
+	sha256sums = dd5f739fa30a69119c104d4d2fa65e316eeef8ac2636eaeb345c72c53ebcafe2
+	sha256sums = af7247d6569fb180affdaa4d2886774d0d1e7e8d3ef8cf2ef7eb4c62cb6ae668
 
 pkgname = gnu-shark
