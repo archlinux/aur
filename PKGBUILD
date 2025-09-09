@@ -6,27 +6,27 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=8bd1c73
+_mozc_commit=d3f511d1
 
-_abseil_cpp_commit=9957f27
-_breakpad_commit=78f7ae4
-_gtest_commit=1d17ea1
+_abseil_cpp_commit=26c9126
+_breakpad_commit=9ee62f8
+_gtest_commit=7917641
 _gyp_commit=1615ec3
-_japanese_usage_dictionary_commit=a4a6677
-_jsoncpp_commit=69098a1
-_protobuf_commit=3836fd3
-_dictext_commit=d072c88
+_japanese_usage_dictionary_commit=38d3462
+_jsoncpp_commit=ca98c98
+_protobuf_commit=4fbd1111
+_dictext_commit=574160e
 _neologd_commit=abc61e3
 
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=2.30.5490.102.g8bd1c73
-pkgrel=2
+pkgver=2.31.5851.102.gd3f511d1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
-depends=('qt5-base' 'fcitx5')
+depends=('qt6-base' 'fcitx5')
 makedepends=('pkg-config' 'python' 'curl' 'gtk2' 'mesa' 'subversion' 'bazel' 'git' 'clang' 'python-six' 'zsh' 'ruby' 'xz')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx5-mozc-ut-full' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full' 'fcitx5-mozc')
 provides=('fcitx5-mozc=2.30.5490.102')
@@ -105,7 +105,12 @@ prepare() {
       cd sudachi
       MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
     )
+    (
+      cd byhand
+      MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
+    )
   ) | ruby .dev.utils/uniqword.rb 2> /dev/null >> "$srcdir/mozc/src/data/dictionary_oss/dictionary09.txt"
+  echo "Done."
 
   cd "$srcdir/mozc"
   cd src
@@ -113,12 +118,6 @@ prepare() {
   # disable fcitx4 target
   rm unix/fcitx/fcitx.gyp
   
-  # disable android-ndk requirement, even if we don't need it bazel will complain
-  sed "/android_ndk_repository/d" -i WORKSPACE.bazel
-
-  # adjust QT_BASE_PATH
-  sed 's|path = QT_BASE_PATH|path = "/usr/include/qt"|' -i WORKSPACE.bazel
-
   # Fix @bazel_tools//platforms to @platforms//os
   sed 's$@bazel_tools//platforms:(linux|osx|windows|android|freebsd|ios|os)$@platforms//os:\1$' -E -i third_party/gtest/BUILD.bazel
 }
@@ -131,11 +130,7 @@ build() {
 
   cd mozc/src
 
-  # Temp fix for GCC 14, import from fcitx5-mozc-ut.
-  sed -i -e '/Werror/d' third_party/protobuf/build_defs/cpp_opts.bzl
-
-
-  QT_BASE_PATH=/usr/include/qt ../scripts/build_fcitx5_bazel
+  QT_BASE_PATH="$(pkg-config --variable=prefix Qt6Core)/include/qt6" ../scripts/build_fcitx5_bazel
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
