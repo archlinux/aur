@@ -1,17 +1,18 @@
 pkgbase = youtube-dl-gui-bin
-	pkgdesc = A cross-platform GUI for youtube-dl made in Electron and node.js (binary release)
-	pkgver = 2.5.5
+	pkgdesc = A cross-platform GUI for youtube-dl made in Electron and node.js (binary release, system Electron)
+	pkgver = 2.5.6
 	pkgrel = 1
 	url = https://github.com/StefanLobbenmeier/youtube-dl-gui
 	arch = x86_64
 	license = AGPL3
+	depends = electron
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
 	provides = youtube-dl-gui
 	conflicts = youtube-dl-gui
-	source = https://github.com/StefanLobbenmeier/youtube-dl-gui/releases/download/v2.5.5/Open-Video-Downloader-2.5.5.AppImage
-	sha256sums = 57c5cadb3d1a7c92b1f6ed0c5b0c0ca7417759ebc590b43c5d839220ba06d024
+	source = https://github.com/StefanLobbenmeier/youtube-dl-gui/releases/download/v2.5.6/Open-Video-Downloader-2.5.6.AppImage
+	sha256sums = 758b9f6f3ec456ba70e95208933bdcd952e60167ca9b7d751a3c9f6f80c4d735
 
 pkgname = youtube-dl-gui-bin
