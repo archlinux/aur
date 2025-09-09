@@ -1,0 +1,13 @@
+diff -Naur jzIntvImGui/app/src/main/cpp/jzintv/plat/plat_lib.c jzIntvImGui.new/app/src/main/cpp/jzintv/plat/plat_lib.c
+--- jzIntvImGui/app/src/main/cpp/jzintv/plat/plat_lib.c	2025-09-08 23:13:07.853263801 -0300
++++ jzIntvImGui.new/app/src/main/cpp/jzintv/plat/plat_lib.c	2025-09-08 23:15:52.615957493 -0300
+@@ -18,7 +18,8 @@
+ #include "plat/plat_lib_config.h"
+ 
+ #ifdef USE_TERMIO
+-# include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #endif
+ 
+ #ifdef USE_SYS_IOCTL

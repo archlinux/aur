@@ -1,0 +1,41 @@
+[Desktop Entry]
+Name=jzIntvImGui
+GenericName=Emulador de Intellivision
+Comment=Una interfaz gráfica multiplataforma para jzIntv
+Exec=jzIntvImGui
+Icon=jzIntvImGui
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+StartupNotify=false
+
+# Traducciones
+# Inglés
+Name[en]=jzIntvImGui
+GenericName[en]=Intellivision Emulator
+Comment[en]=A cross-platform GUI for jzIntv
+
+# Español
+Name[es]=jzIntvImGui
+GenericName[es]=Emulador de Intellivision
+Comment[es]=Una interfaz gráfica multiplataforma para jzIntv
+
+# Francés
+Name[fr]=jzIntvImGui
+GenericName[fr]=Émulateur Intellivision
+Comment[fr]=Une interface graphique multiplateforme pour jzIntv
+
+# Alemán
+Name[de]=jzIntvImGui
+GenericName[de]=Intellivision-Emulator
+Comment[de]=Eine plattformübergreifende GUI für jzIntv
+
+# Portugués (Brasil y Portugal)
+Name[pt]=jzIntvImGui
+GenericName[pt]=Emulador Intellivision
+Comment[pt]=Uma interface gráfica multiplataforma para jzIntv
+
+# Italiano
+Name[it]=jzIntvImGui
+GenericName[it]=Emulatore Intellivision
+Comment[it]=Un'interfaccia grafica multipiattaforma per jzIntv

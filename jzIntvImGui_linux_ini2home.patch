@@ -1,0 +1,116 @@
+diff -Naur jzIntvImGui.orig/app/libs/imgui/imgui.cpp jzIntvImGui.new/app/libs/imgui/imgui.cpp
+--- jzIntvImGui.orig/app/libs/imgui/imgui.cpp	2025-09-08 01:00:13.609337465 -0300
++++ jzIntvImGui.new/app/libs/imgui/imgui.cpp	2025-09-08 07:25:16.317197041 -0300
+@@ -764,6 +764,8 @@
+ // [SECTION] INCLUDES
+ //-------------------------------------------------------------------------
+ 
++
++
+ #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_WARNINGS)
+ #define _CRT_SECURE_NO_WARNINGS
+ #endif
+@@ -776,6 +778,11 @@
+ #endif
+ #include "imgui_internal.h"
+ 
++#include <stdlib.h>  // Para getenv
++#include <string>
++#include <sys/stat.h>  // Para mkdir
++#include <cstring>
++
+ // System includes
+ #include <ctype.h>      // toupper
+ #include <stdio.h>      // vsnprintf, sscanf, printf
+@@ -785,6 +792,8 @@
+ #include <stdint.h>     // intptr_t
+ #endif
+ 
++
++
+ // [Windows] On non-Visual Studio compilers, we default to IMGUI_DISABLE_WIN32_DEFAULT_IME_FUNCTIONS unless explicitly enabled
+ #if defined(_WIN32) && !defined(_MSC_VER) && !defined(IMGUI_ENABLE_WIN32_DEFAULT_IME_FUNCTIONS) && !defined(IMGUI_DISABLE_WIN32_DEFAULT_IME_FUNCTIONS)
+ #define IMGUI_DISABLE_WIN32_DEFAULT_IME_FUNCTIONS
+@@ -1070,7 +1079,34 @@
+     DisplaySize = ImVec2(-1.0f, -1.0f);
+     DeltaTime = 1.0f / 60.0f;
+     IniSavingRate = 5.0f;
+-    IniFilename = "imgui.ini";
++    
++     // === CAMBIO: Asignar ruta personalizada para imgui.ini ===
++    const char* home_dir = getenv("HOME");
++    if (home_dir)
++    {
++        std::string config_dir = std::string(home_dir) + "/.config/jzintvimgui";
++        std::string ini_path = config_dir + "/imgui.ini";
++
++        // Crear directorio si no existe
++        #ifdef _WIN32
++            // En Windows usaría _mkdir
++        #else
++            // Usa system("mkdir -p ...") para crear directorios recursivos
++            std::string cmd = "mkdir -p \"" + config_dir + "\"";
++            system(cmd.c_str());
++        #endif
++
++        // Función auxiliar para copiar la cadena (como en el ejemplo que viste)
++        char* allocated_path = (char*)malloc(ini_path.size() + 1);
++        strcpy(allocated_path, ini_path.c_str());
++        IniFilename = allocated_path;  // Ahora apunta a memoria persistente
++    }
++    else
++    {
++        // Fallback: usar ruta relativa si $HOME no existe
++        IniFilename = "imgui.ini";  // malloc no necesario porque es string literal
++    }
++    
+     LogFilename = "imgui_log.txt";
+     MouseDoubleClickTime = 0.30f;
+     MouseDoubleClickMaxDist = 6.0f;
+diff -Naur jzIntvImGui.orig/app/src/main/cpp/main.cpp jzIntvImGui.new/app/src/main/cpp/main.cpp
+--- jzIntvImGui.orig/app/src/main/cpp/main.cpp	2025-09-08 01:00:13.696756043 -0300
++++ jzIntvImGui.new/app/src/main/cpp/main.cpp	2025-09-08 01:37:02.310806520 -0300
+@@ -225,7 +225,26 @@
+     app_config_struct_t *app_conf = &app_config_struct;
+     apply_default_settings();
+ 
+-    sprintf(properties_file_name, "%s%s", app_conf->root_folder_for_configuration, "jzIntvImGui.ini");
++    // Obtener $HOME y construir la ruta ~/.config/jzintvimgui/
++    const char *home = getenv("HOME");
++    if (!home) {
++        // Fallback si no existe $HOME
++        home = ".";
++    }
++    std::string config_dir = std::string(home) + "/.config/jzintvimgui/";
++
++    // Crear el directorio si no existe
++    create_folder(config_dir.c_str());
++
++    // Actualizar root_folder_for_configuration
++    free(app_conf->root_folder_for_configuration);
++    app_conf->root_folder_for_configuration = strdup(config_dir.c_str());
++
++    // Ruta completa del archivo .ini
++    std::string ini_path = config_dir + "jzIntvImGui.ini";
++    strcpy(properties_file_name, ini_path.c_str());
++
++    // Cargar el archivo .ini si existe
+     if (exist_file(properties_file_name)) {
+         size_t file_data_size;
+         char *file_data = (char *) ImFileLoadToMemory(properties_file_name, "rb", &file_data_size);
+@@ -240,12 +259,13 @@
+             ADD_CONFIG_WARNING(ex.str().c_str() << " - Skipping remaining configuration values");
+         }
+         catch (...) {
+-            ADD_CONFIG_WARNING("Error parsing file " << (char *) properties_file_name << " - Skipping remaining configuration values");
++            ADD_CONFIG_WARNING("Error parsing file " << properties_file_name << " - Skipping remaining configuration values");
+         }
+     } else {
+-        ADD_CONFIG_WARNING("Cannot find file " << (char *) properties_file_name);
++        ADD_CONFIG_WARNING("Configuration file not found, will be created at: " << properties_file_name);
+     }
+ 
++    // Recalcular roms_folder_absolute_path basado en el nuevo root
+     free(app_conf->roms_folder_absolute_path);
+     int result;
+     app_conf->roms_folder_absolute_path = get_absolute_path(app_conf->root_folder_for_configuration, app_conf->roms_folder_ini, true, &result);
