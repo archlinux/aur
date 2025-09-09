@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=watchman
-pkgver=2025.09.01.00
+pkgver=2025.09.08.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -47,7 +47,7 @@ source=(
   "watchman.service"
   "watchman.socket"
 )
-sha256sums=('3aafc60e96e164b5a368523f0899eb8daaa79e126b30a6a67f06db1949bcbce0'
+sha256sums=('11d2cd309148eb83be4ec79494eb2b566361e671ad4d72a418fb80e8b9895945'
             'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
             '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
             'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
