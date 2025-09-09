@@ -1,0 +1,22 @@
+pkgbase = zaku-bin
+	pkgdesc = Fast, open-source API client with fangs.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://zaku.app
+	install = zaku-bin.install
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/buildzaku/zaku/releases/download/0.8.1/zaku-x86_64-unknown-linux-gnu.deb
+	sha512sums_x86_64 = 176bf6414b88ab1e3ce9a3f5840db69d60bbb6e89df874ebbb1d47383e02141ff8631e98d361d2919acc2c0afcdb99c435e6f412303168870dae5696c3f02fb5
+
+pkgname = zaku-bin
