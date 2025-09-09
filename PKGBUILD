@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind (git version)"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
-license=('GPL3')
+license=(' GPL-3.0-or-later')
 # Might be a good idea investigating if we can ignore most of the dependencies or not.
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2') # Every other dependency is statically linked into the executable
 makedepends=('dotnet-sdk>=9.0' 'clang' 'git')
-conflicts=('helion' 'helion-bin')
+provides=(helion)
 source=("git+https://github.com/Helion-Engine/Helion")
 sha256sums=('SKIP')
 pkgver() {
