@@ -1,4 +1,7 @@
 all: .SRCINFO
 
-.SRCINFO: PKGBUILD
+.SRCINFO: base.SRCINFO
+	./gensrcinfo $^ > $@
+
+base.SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > $@

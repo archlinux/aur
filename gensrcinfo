@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+source common
+base="$1"
+
+pkgver="$(latest)"
+mapfile -t binnames <<<"$(get_binnames "$pkgver")"
+
+while IFS= read -r line; do
+	if grep -s "^	source = .*" <<<"$line" >/dev/null; then
+		url="$(echo "$line" | grep -o https.*)"
+		dir="$(echo "$url" | rev | cut -d '/' -f2- | rev)"
+
+		for binname in "${binnames[@]}"; do
+			echo "	source = $dir/$binname"
+		done
+		continue
+	elif grep -s "^	sha256sums = .*" >/dev/null <<<"$line"; then
+		url="$(echo "$line" | grep -o https.*)"
+		dir="$(echo "$url" | rev | cut -d '/' -f2- | rev)"
+
+		for binname in "${binnames[@]}"; do
+			echo "	sha256sums = $(get_checksum "$pkgver" "$binname")"
+		done
+		continue
+	fi
+
+	echo "$line"
+done <"$base"
