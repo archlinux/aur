@@ -4,7 +4,7 @@
 # Contributor: Leonidas <marek@xivilization.net>
 
 pkgname=factor-git
-pkgver=0.99.r34513.27b6f73cfb
+pkgver=0.101.r36811.6a8abde67f
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language"
 arch=(i686 x86_64)
@@ -19,7 +19,6 @@ makedepends=(git gcc)
 options=(!strip)
 source=(
   "factor::git+https://github.com/factor/factor.git"
-  "factor.desktop"
 )
 
 pkgver() {
@@ -32,8 +31,7 @@ pkgver() {
   #git describe --tags --long | sed 's/-/.r/; s/-g/./'
 }
 
-md5sums=('SKIP'
-         '59242ddb19a9be927915e489e2bfca27')
+md5sums=('SKIP')
 
 build() {
   cd "factor"
@@ -58,6 +56,7 @@ package() {
   mkdir -p $pkgdir/usr/lib/factor
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
+  mkdir -p $pkgdir/usr/share/applications/
 
   # copy over the stdlib
   cp -a misc extra core basis factor.image $pkgdir/usr/lib/factor/
@@ -81,7 +80,7 @@ package() {
   cp LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
 
   # add the desktop entry and icon
-  install -D $srcdir/factor.desktop $pkgdir/usr/share/applications/factor.desktop
-  install -D misc/icons/Factor.svg $pkgdir/usr/share/pixmaps/factor.svg
+  sed s/Exec=factor/Exec=factor-vm/ misc/factor.desktop > $pkgdir/usr/share/applications/factor.desktop
+  install -D misc/icons/icon.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/factor.svg
 }
 
