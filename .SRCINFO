@@ -1,6 +1,6 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 0
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
@@ -22,11 +22,12 @@ pkgbase = amiberry
 	depends = hicolor-icon-theme
 	depends = enet
 	depends = libpcap
-	provides = amiberry=7.1.0
+	depends = tinyxml2
+	provides = amiberry=7.1.1
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
 	options = !lto
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=787d86881cfaf48574fb55162ad1275c3f4867dd
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=c53d6db770a5580732a7f2bb48abcbfcd95fd0f4
 	sha256sums = SKIP
 
 pkgname = amiberry
