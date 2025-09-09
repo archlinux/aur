@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=zoom-native
+Target=zoom
+
+[Action]
+When=PostTransaction
+Exec=/opt/zoom/zoom-native.sh
