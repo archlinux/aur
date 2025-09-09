@@ -1,15 +1,15 @@
 pkgbase = simple-system-update
 	pkgdesc = One-click update button for Linux users
-	pkgver = 1.0.10
-	pkgrel = 2
+	pkgver = 1.0.11
+	pkgrel = 1
 	url = https://github.com/SeryogaBrigada/SimpleSystemUpdate
 	arch = any
 	license = MIT
 	depends = grep
 	depends = sed
-	depends = curl
 	depends = jq
-	source = simple-system-update-1.0.10.tar.gz::https://github.com/SeryogaBrigada/SimpleSystemUpdate/archive/refs/tags/v1.0.10.tar.gz
-	sha512sums = 99af4704f5b538aeabc6b81424efb29d122a6eca3ff545f673d97879e9dcb73c9737762f48ff868ffb5d770c731a9eeac6cff46804dfdcf762d125716dea58b7
+	depends = wget
+	source = simple-system-update-1.0.11.tar.gz::https://github.com/SeryogaBrigada/SimpleSystemUpdate/archive/refs/tags/v1.0.11.tar.gz
+	sha512sums = 48707368974703f3b8459cb88524aca618e3af2709f34e44b78891a5ab9cb6a730734d2f2b6c3351ae065e777f15658fbe4189fcf1eee581b7e8e71be300ec73
 
 pkgname = simple-system-update
