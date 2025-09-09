@@ -1,7 +1,7 @@
 pkgbase = zoom-system-qt
-	pkgdesc = Will be reborn as a hook for zoom
+	pkgdesc = Please switch to zoom or zoom-native and remove zoom-system-qt.
 	pkgver = 6.5.11.4015
-	pkgrel = 10
+	pkgrel = 11
 	arch = any
 
 pkgname = zoom-system-qt

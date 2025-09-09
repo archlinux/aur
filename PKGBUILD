@@ -7,12 +7,11 @@
 
 pkgname=zoom-system-qt
 pkgver=6.5.11.4015
-pkgrel=10
+pkgrel=11
 arch=('any')
-pkgdesc="Will be reborn as a hook for zoom"
+pkgdesc="Please switch to zoom or zoom-native and remove $pkgname."
 package(){
-  echo "$pkgname will be reborm as a hook for zoom."
-  echo "Please switch to zoom and remove $pkgname."
+  echo $pkgdesc
   depends=(zoom)
   conflicts=(zoom-libs zoom-libs-bin)
   provides=(zoom-libs zoom-libs-bin)
