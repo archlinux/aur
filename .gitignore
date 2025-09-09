@@ -1,3 +1,4 @@
 PortProtonQt
 pkg
 src
+*.pkg.tar.*
