@@ -29,9 +29,6 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    # Add a flag to avoid a desync between versions compiled by GCC14+ and
-    # earlier version.
-    CXXFLAGS+=" -fexcess-precision=fast"
     ./configure
     make -j
 }
