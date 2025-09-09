@@ -1,6 +1,6 @@
 pkgbase = typst-languagetool-lsp-git
 	pkgdesc = Spellcheck typst files with LanguageTool and VSCodium.
-	pkgver = 0.96.9273d4e
+	pkgver = 0.101.a54641f
 	pkgrel = 1
 	url = https://github.com/antonWetzel/typst-languagetool
 	install = post_install.install
