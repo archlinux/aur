@@ -16,8 +16,8 @@ makedepends=("npm" "jq")
 provides=("$_npmname")
 
 options=(!strip emptydirs staticlibs zipman)
-changelog="changelog.md"
 noextract=("${_npmname}-${pkgver}.tgz")
+changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"${_urlraw}/LICENSE")
