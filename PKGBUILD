@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 _pkgname=weylus
 pkgname=weylus-git
-pkgver=0.11.4.r134.g5202806
+pkgver=0.11.4.r137.g76ec892
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
@@ -14,13 +14,12 @@ options=(!debug !lto) # Disabled for rust build
 makedepends=(rust typescript gcc libx11 pkg-config git make cmake nasm)
 depends=(libxtst libxcursor libxinerama libxft libxrandr libxcomposite libdrm libva ffmpeg dbus gst-plugins-base-libs)
 optdepends=("gst-plugin-pipewire: Wayland support")
-source=("$_pkgname::git+$url.git" "cargo_lock.patch")
-sha256sums=("SKIP" "cfa0d21d318e458507a2632bdd8a45d6ebcd69ff26fa9f99c7ac62fb0c6d8867")
+source=("$_pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir/$_pkgname"
-    git apply < ../cargo_lock.patch
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 

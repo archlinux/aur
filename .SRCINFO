@@ -1,6 +1,6 @@
 pkgbase = weylus-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 0.11.4.r134.g5202806
+	pkgver = 0.11.4.r137.g76ec892
 	pkgrel = 1
 	url = https://github.com/H-M-H/Weylus
 	arch = x86_64
@@ -32,8 +32,6 @@ pkgbase = weylus-git
 	options = !debug
 	options = !lto
 	source = weylus::git+https://github.com/H-M-H/Weylus.git
-	source = cargo_lock.patch
 	sha256sums = SKIP
-	sha256sums = cfa0d21d318e458507a2632bdd8a45d6ebcd69ff26fa9f99c7ac62fb0c6d8867
 
 pkgname = weylus-git
