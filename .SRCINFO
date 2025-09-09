@@ -1,6 +1,6 @@
 pkgbase = python-gpt-command-line
 	pkgdesc = Command-line interface for ChatGPT, Claude and Bard
-	pkgver = 0.3.0
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/kharvd/gpt-cli
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-gpt-command-line
 	depends = python-cohere
 	provides = gpt
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/gpt_command_line/gpt_command_line-0.3.0.tar.gz
-	sha256sums = 23ea2b283db8b90231146354905c3fdf85f84651e6c23fdc2076f3656743b33f
+	source = https://files.pythonhosted.org/packages/source/g/gpt_command_line/gpt_command_line-0.4.3.tar.gz
+	sha256sums = e33de61615e59815249902f4901b03c666e40dab0f875adff84bffe1cad499c6
 
 pkgname = python-gpt-command-line
