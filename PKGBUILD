@@ -2,7 +2,7 @@
 
 pkgname='codetantra-sea'
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform for online teaching.'
 arch=('x86_64')
 url='https://www.codetantra.com'
