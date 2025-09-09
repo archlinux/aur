@@ -1,6 +1,6 @@
 # Maintainer: Taha YVR <taha@noiserandom.com>
 pkgname=omarchist-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A GUI app for Omarchy."
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/Omarchist_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Omarchist_${pkgver}_arm64.deb")
-sha256sums_x86_64=('8c1162162cf34f0f08a330cddcc20c90005697656093e30f581b44e61dc4aeae')
-sha256sums_aarch64=('66c2de2e68ed4a8d1ed0f22d5b15d0398e80838b8023df422866204d6bd25422')
+sha256sums_x86_64=('a039321b2388c3a55e1d5503f5bcf08d8c7b3c78c68e2583ca5af7effb7b3bdd')
+sha256sums_aarch64=('4d601d61430bc84ee080acb9c2b1f1538534537ed5c8fc8125100c19fdb6de29')
 package() {
   # Extract package data
   tar -xvf data.tar.gz -C "${pkgdir}"
