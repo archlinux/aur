@@ -1,6 +1,6 @@
 # Maintainer: Frederick Price <fprice@pricemail.ca>
 pkgname=markdown_timesheet
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A tool for processing markdown files to extract and format timesheet data"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/markdown_timesheet/$pkgver/download")
-sha256sums=('4e6f816e69d4a63202e1b8b003c3250dbd8b989c6be09a5179b9662387f93265')
+sha256sums=('07c2a1db879eb6987ef82eeba4be09295b86322763232f37910b37ea01785bde')
 
 prepare() {
     cd "$srcdir/markdown_timesheet-$pkgver"
