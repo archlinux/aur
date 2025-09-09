@@ -1,5 +1,5 @@
 # Maintainer: Gabriel Ruas Santos <gabrielruass@protonmail.com>
-pkgname=gnushark
+pkgname=gnu-shark
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="HUB de drivers, otimizações e utilitários para jogos no Linux (GTK)"
@@ -21,7 +21,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('e72516ccccc6a4809866289a42638fcd01b58a21298dde73693c75dce1c89e3d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

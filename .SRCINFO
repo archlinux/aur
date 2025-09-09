@@ -19,7 +19,7 @@ pkgbase = gnu-shark
 	optdepends = paru: helper AUR
 	optdepends = yay: helper AUR
 	optdepends = zenity: diálogos gráficos adicionais
-	source = gnushark-1.0.0.tar.gz::https://github.com/gabriel-ruas-santos/gnu-shark/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = gnu-shark-1.0.0.tar.gz::https://github.com/gabriel-ruas-santos/gnu-shark/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e72516ccccc6a4809866289a42638fcd01b58a21298dde73693c75dce1c89e3d
 
 pkgname = gnu-shark
