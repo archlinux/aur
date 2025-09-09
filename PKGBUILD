@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fbthrift
-pkgver=2025.09.01.00
+pkgver=2025.09.08.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=(x86_64)
@@ -63,15 +63,12 @@ options=(
 )
 source=(
  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
- "add-missing-include-algorithm.patch::https://patch-diff.githubusercontent.com/raw/facebook/fbthrift/pull/669.patch"
 )
-sha256sums=('c58d4430b0873f4ad41971406832262b3d6d227e505d5885dac46424f3baccae'
-            '956752923474a8b070bbcf910ac992ca5134c10a21e549e888367f00147f2d08')
+sha256sums=('43e7b58913c5e633fd5f33d9bb6c6f8e6d94496112064a7b50ba1632dd497c8d')
 
 prepare() {
   cd "$pkgname-$pkgver"
   # Use system CMake config instead of bundled module
-  patch -Np1 -i ../add-missing-include-algorithm.patch
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
 }
