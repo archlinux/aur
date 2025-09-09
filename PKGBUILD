@@ -1,5 +1,5 @@
 pkgname=asusctltray-upgraded-git
-pkgver=r28.c8ef0ba
+pkgver=r34.cbe3a80
 pkgrel=1
 pkgdesc="Simple tray profile switcher for asusctl with some fixes/improvements"
 url="https://github.com/alexjonker/asusctltray"
