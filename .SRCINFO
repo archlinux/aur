@@ -6,6 +6,7 @@ pkgbase = 7k-ambition
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = autoconf-archive
 	depends = openal
 	depends = desktop-file-utils
 	depends = enet
