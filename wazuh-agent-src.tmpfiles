@@ -1,0 +1,28 @@
+z /opt/wazuh-agent/                                - root  wazuh -
+z /opt/wazuh-agent/VERSION.json                    - wazuh wazuh -
+Z /opt/wazuh-agent/logs/                           - wazuh wazuh -
+Z /opt/wazuh-agent/lib/                            - root  wazuh -
+z /opt/wazuh-agent/queue/                          - root  wazuh -
+Z /opt/wazuh-agent/queue/*                         - wazuh wazuh -
+Z /opt/wazuh-agent/var/                            - root  wazuh -
+Z /opt/wazuh-agent/tmp/                            - root  wazuh -
+
+# Slight deviation from init/inst-functions.sh which uses wazuh:wazuh. This
+# results in errors as the subsequent files would be more restricted.
+z /opt/wazuh-agent/etc/                            - root  wazuh -
+
+z /opt/wazuh-agent/etc/internal_options.conf       - root  wazuh -
+z /opt/wazuh-agent/etc/local_internal_options.conf - root  wazuh -
+z /opt/wazuh-agent/etc/client.keys                 - root  wazuh -
+z /opt/wazuh-agent/etc/ossec.conf                  - root  wazuh -
+z /opt/wazuh-agent/etc/wpk_root.pem                - root  wazuh -
+z /opt/wazuh-agent/etc/localtime                   - root  wazuh -
+z /opt/wazuh-agent/etc/TIMEZONE                    - root  wazuh -
+Z /opt/wazuh-agent/etc/shared/                     - root  wazuh -
+Z /opt/wazuh-agent/ruleset/                        - root  wazuh -
+Z /opt/wazuh-agent/wodles/                         - root  wazuh -
+z /opt/wazuh-agent/var/wodles                      - root  wazuh -
+Z /opt/wazuh-agent/active-response/                - root  wazuh -
+Z /opt/wazuh-agent/agentless/                      - root  wazuh -
+Z /opt/wazuh-agent/.ssh/                           - root  wazuh -
+Z /opt/wazuh-agent/backup/                         - root  wazuh -
