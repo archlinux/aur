@@ -1,7 +1,7 @@
 From dde5f94879204e71b7dc41a861df88ccb3663e05 Mon Sep 17 00:00:00 2001
 From: "M. Greyson Christoforo" <grey@christoforo.net>
 Date: Tue, 19 Aug 2025 02:36:22 -0600
-Subject: [PATCH] some pcap decode improvements
+Subject: [PATCH 1/2] some pcap decode improvements
 
 fix print alignment
 
@@ -104,6 +104,44 @@ index 67cb4a0..9ef9088 100755
 +
 +                print()
 +
+ 
+ if len(sys.argv) < 2:
+     sys.stderr.write("Usage: decode_pcap.py input_file...\n")
+
+From f2c0b3913b0473294a55ecb9d256d5de2cca96f8 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Tue, 9 Sep 2025 15:47:05 -0600
+Subject: [PATCH 2/2] add walrus
+
+---
+ apps/decode_pcap.py | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/apps/decode_pcap.py b/apps/decode_pcap.py
+index 9ef9088..3fd462f 100755
+--- a/apps/decode_pcap.py
++++ b/apps/decode_pcap.py
+@@ -221,15 +221,17 @@ def print_pkt(timestamp, pkt):
+                 print()
+ 
+             elif cmd == 0x23:  # usage message
+-                print()
++                if main_reading := struct.unpack("<i", cmd_payload[15:19])[0]/1000:
++                    print()
+ 
+-                main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/1000
+-                YY, MM, DD, hh, mm, ss = struct.unpack("BBBBBB", cmd_payload[8:14])
+-                ts_theirs = datetime.datetime(2000+YY, MM, DD, hh, mm, ss)
+-                print(f"  Reading for meter number {src} @ {ts_theirs.isoformat()} = {main_reading} kWh")
++                    YY, MM, DD, hh, mm, ss = struct.unpack("BBBBBB", cmd_payload[8:14])
++                    ts_theirs = datetime.datetime(2000+YY, MM, DD, hh, mm, ss)
++                    print(f"  Reading for meter number {src} @ {ts_theirs.isoformat()} = {main_reading} kWh")
+ 
+-                print()
++                    print()
+ 
++# for testing
++#sys.argv= ["junk", "/tmp/elster-042.pcap"]
  
  if len(sys.argv) < 2:
      sys.stderr.write("Usage: decode_pcap.py input_file...\n")

@@ -1,4 +1,4 @@
-From 4a304c385cc0274ca17462be720a8c6d538f7caf Mon Sep 17 00:00:00 2001
+From 720ecacd4ea93db3c6792ed10bc42f8ef6ff989f Mon Sep 17 00:00:00 2001
 From: "M. Greyson Christoforo" <grey@christoforo.net>
 Date: Mon, 18 Aug 2025 11:48:50 -0600
 Subject: [PATCH] add logic to decode the total kWh counter reported by my
@@ -21,12 +21,14 @@ This reverts commit 6e1c2524067f2d46f6dd883e6d7aaa532b89f561.
 use timestamp from the meter reading message
 
 fix scaling
+
+add walrus
 ---
  python/packetize.py | 35 ++++++++++++++++++++++++++++++++++-
  1 file changed, 34 insertions(+), 1 deletion(-)
 
 diff --git a/python/packetize.py b/python/packetize.py
-index b99ee44..8559b19 100644
+index 7a7e07a..3f84aaa 100644
 --- a/python/packetize.py
 +++ b/python/packetize.py
 @@ -19,11 +19,22 @@
@@ -89,10 +91,10 @@ index b99ee44..8559b19 100644
          if pkt[0] >= 2:
              len_bytes = 1
 @@ -131,6 +163,7 @@ def process_packet(self, channel, pkt):
-                     YY, MM, DD, hh, mm, ss = struct.unpack("BBBBBB", cmd_payload[8:14])
-                     ts_theirs = datetime.datetime(2000+YY, MM, DD, hh, mm, ss)
-                     print(f"  Reading for meter number {src} @ {ts_theirs.isoformat()} = {main_reading} kWh")
-+                    self.mqtt_publish(f"elster/{src}", json.dumps({"kWh": main_reading, "timestamp": ts_theirs.isoformat()}))
+                         YY, MM, DD, hh, mm, ss = struct.unpack("BBBBBB", cmd_payload[8:14])
+                         ts_theirs = datetime.datetime(2000+YY, MM, DD, hh, mm, ss)
+                         print(f"  Reading for meter number {src} @ {ts_theirs.isoformat()} = {main_reading} kWh")
++                        self.mqtt_publish(f"elster/{src}", json.dumps({"kWh": main_reading, "timestamp": ts_theirs.isoformat()}))
  
-                     print()
+                         print()
  
