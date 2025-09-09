@@ -1,6 +1,6 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
@@ -11,9 +11,9 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('gerbil')
 conflicts=('gerbil-git')
-source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.0.6/Gerbil-1.0.6.AppImage"
-        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.0.6/assets/gerbil.desktop")
-sha256sums=('2d38f6178465eb91d2f91753b71b770f761437f5b7fdb0a522edd7fcef26a6f6'
+source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.1.0/Gerbil-1.1.0.AppImage"
+        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.1.0/assets/gerbil.desktop")
+sha256sums=('e0e2a0f305b0e7e5d3bc9d17a4e9c4ed6e779928cfb6501ccb385b433acc4f5d'
             'da139b72a1d0965c1fe7749cb93c2ef50c00d551f7b884ed9296db3114283893')
 
 prepare() {
