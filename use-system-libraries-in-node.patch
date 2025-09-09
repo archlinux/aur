@@ -1,0 +1,59 @@
+--- a/third_party/electron_node/BUILD.gn
++++ b/third_party/electron_node/BUILD.gn
+@@ -9,6 +9,14 @@
+ # Please modify the gyp files if you are making changes to build system.
+ 
+ import("unofficial.gni")
++import("//build/config/linux/pkg_config.gni")
+ 
++pkg_config("cares") {
++  packages = [ "libcares" ]
++}
++
++pkg_config("nghttp2") {
++  packages = [ "libnghttp2" ]
++}
+ node_gn_build("node") {
+ }
+--- a/third_party/electron_node/unofficial.gni
++++ b/third_party/electron_node/unofficial.gni
+@@ -137,7 +137,7 @@ template("node_gn_build") {
+                             [ "node.gyp" ])
+ 
+   source_set("libnode") {
+-    configs += [ ":node_internal_config" ]
++    configs += [ ":node_internal_config", ":cares", ":nghttp2" ]
+     public_configs = [
+       ":node_external_config",
+       "deps/googletest:googletest_config",
+@@ -151,10 +151,8 @@ template("node_gn_build") {
+     ]
+     deps = [
+       ":run_node_js2c",
+-      "deps/cares",
+       "deps/histogram",
+       "deps/nbytes",
+-      "deps/nghttp2",
+       "deps/postject",
+       "deps/sqlite",
+       "deps/uvwasi",
+@@ -222,19 +220,6 @@ template("node_gn_build") {
+       sources += node_inspector.node_inspector_sources +
+                  node_inspector.node_inspector_generated_sources
+     }
+-    if (is_linux) {
+-      import("//build/config/linux/pkg_config.gni")
+-        if (use_system_cares) {
+-          pkg_config("cares") {
+-            packages = [ "libcares" ]
+-          }
+-        }
+-      if (use_system_nghttp2) {
+-        pkg_config("nghttp2") {
+-          packages = [ "libnghttp2" ]
+-        }
+-      }
+-    }
+   }
+ 
+   executable(target_name) {
