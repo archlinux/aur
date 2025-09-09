@@ -3,12 +3,12 @@
 pkgname=eclipse-rcp-bin
 _pkgname=eclipse-rcp
 epoch=1
-pkgver=4.36
+pkgver=4.37
 pkgrel=1
-_release=2025-06/R
+_release=2025-09
 pkgdesc="IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP)"
 arch=('x86_64')
-url="https://eclipse.org/ide"
+url="https://eclipseide.org/"
 license=('EPL')
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
@@ -16,10 +16,10 @@ depends=('gtk3')
 optdepends=('libsecret: password storage'
             'webkit2gtk-4.1: HTML tooltips')
 
-_srcfilename="$_pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
-source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
+_srcfilename="$_pkgname-${_release}-R-linux-gtk-$CARCH.tar.gz"
+source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/R/$_srcfilename&r=1"
         "eclipse.desktop::https://raw.githubusercontent.com/eclipse-linuxtools/org.eclipse.linuxtools.eclipse-build/refs/heads/master/desktopintegration/eclipse.desktop")
-sha512sums=('5bd2644f598e5ed216b36dcad5d86eef1847fa7c06424cfbb1291afc4ce4d018ff5dc9524177d38669cc81a80b9a1eabf3a5751b195235da0cbbdfa45d39156c'
+sha512sums=('9d6b9271a46c90633585f3d373ebf6898f0cca3a40f3fde8ca9d049aef09237008fcbf1679eb38e87a693897f8b2eb5e144e398a4343a1d373d901cc722b1456'
             '824875ab1454349a58eb2bb6fd70edd5e7a8e14a9b999372024374a1e04722398095db9bdba91b17bfb424c1e1271446f0370c79596f35fb516dbada31aebec5')
 
 options=(!strip)
