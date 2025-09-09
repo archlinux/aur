@@ -4,7 +4,7 @@
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
 pkgver=0.203.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -23,6 +23,7 @@ depends=(alsa-lib libasound.so
          libxkbcommon-x11 # libxkbcommon-x11.so
          'nodejs>=18'
          netcat
+         npm
          openssl libcrypto.so libssl.so
          sqlite
          vulkan-driver
