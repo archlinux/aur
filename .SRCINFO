@@ -1,0 +1,22 @@
+pkgbase = libcapsule
+	pkgdesc = Load libraries from host system into a container.
+	pkgver = 0.20240916.0
+	pkgrel = 1
+	url = https://gitlab.collabora.com/vivek/libcapsule
+	arch = x86_64
+	license = MIT
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-or-later
+	license = GPL-3.0-or-later
+	license = FSFAP
+	makedepends = libxslt
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gtk-doc
+	depends = glibc
+	depends = libelf
+	options = !emptydirs
+	source = git+https://gitlab.collabora.com/vivek/libcapsule.git#tag=v0.20240916.0
+	sha256sums = 974da4d2f23efed930942d4d0c0c123614cae3d091408bb538bf00123c04f410
+
+pkgname = libcapsule
