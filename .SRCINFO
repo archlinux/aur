@@ -1,11 +1,12 @@
 pkgbase = tmplinux
 	pkgdesc = The tmplinux suite
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	arch = any
 	license = MIT
 	depends = tmparch
 	depends = tmpdebian
 	depends = tmpfedora
+	depends = tmpidlebox
 
 pkgname = tmplinux
