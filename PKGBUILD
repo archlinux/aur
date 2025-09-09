@@ -50,15 +50,10 @@ pkgver() {
 prepare() {
   cd gr-elster
   cat ../doxup.patch | patch -p1  # doxygen -u docs/doxygen/Doxyfile.in
-  msg2 a
   cat ../new_meter.patch | patch -p1
-  msg2 b
   cat ../dev_args.patch | patch -p1
-  msg2 c
   cat ../add_mqtt.patch | patch -p1
-  msg2 d
   cat ../pcap_analysis.patch | patch --batch -p1
-  msg2 e
 }
 
 build() {
