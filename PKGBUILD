@@ -2,7 +2,7 @@
 pkgname=qqmusic-wine
 pkgver=21.21
 pkgrel=1
-pkgdesc="QQ音乐客户端，通过 Wine 运行"
+pkgdesc="QQ Music via Wine"
 arch=('x86_64')
 url="https://y.qq.com/"
 license=('custom')
