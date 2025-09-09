@@ -1,7 +1,7 @@
 pkgbase = ch343ser-git
 	pkgdesc = USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc.
 	pkgver = r54.174cdef
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/WCHSoftGroup/ch343ser_linux
 	arch = any
 	license = GPL-2.0-or-later
@@ -14,6 +14,12 @@ pkgbase = ch343ser-git
 	source = ch343ser-dkms-git.install
 	sha256sums = SKIP
 	sha256sums = 6cd61719a10c54747b9794a684e68eedd8c6b38424b1710940c13434b2ec7d55
+
+pkgname = ch343ser-git
+	depends = ch343ser-dkms-git
+	depends = libch343ser-git
+	provides = ch343ser
+	conflicts = ch343ser
 
 pkgname = ch343ser-dkms-git
 	pkgdesc = USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc.= (dkms).

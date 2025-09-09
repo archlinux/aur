@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ch343ser-git
-pkgname=(ch343ser-dkms-git libch343ser-git)
+pkgname=(ch343ser-git ch343ser-dkms-git libch343ser-git)
 pkgver=r54.174cdef
-pkgrel=1
+pkgrel=3
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -30,6 +30,15 @@ prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
     #cd "${srcdir}/${pkgbase}"
     #git apply -p1 <${srcdir}/49.patch
+}
+
+package_ch343ser-git() {
+	provides=(${pkgname%-git})
+	conflicts=(${pkgname%-git})
+       depends=(
+	       ch343ser-dkms-git
+		libch343ser-git		       
+       )
 }
 
 package_ch343ser-dkms-git() {
