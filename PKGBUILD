@@ -2,12 +2,12 @@
 
 _pkgbase=synapse-admin-etke
 pkgname=${_pkgbase}-git
-pkgver=0.10.3.etke28.r0.gb925c63
+pkgver=0.11.1.etke47.r9.g642667f
 pkgrel=1
 pkgdesc="A Matrix administration panel using react-admin (etke.cc fork)"
 arch=(any)
 license=('Apache-2.0')
-makedepends=(nodejs yarn git)
+makedepends=(npm yarn git)
 optdepends=('nginx: to serve the web application')
 url=https://github.com/etkecc/synapse-admin
 source=("${_pkgbase}::git+${url}")
@@ -21,6 +21,7 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgbase}"
   yarn install
+  # If you need to change homepage location: yarn build --base=/your-location
   yarn build --base=./
 }
 
