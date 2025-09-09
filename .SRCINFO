@@ -1,7 +1,7 @@
 pkgbase = jhentai-bin
 	pkgdesc = A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.
-	pkgver = v8.0.10+299
-	pkgrel = 2
+	pkgver = v8.0.10_299
+	pkgrel = 1
 	url = https://github.com/jiangtian616/JHenTai
 	arch = x86_64
 	license = Apache-2.0
