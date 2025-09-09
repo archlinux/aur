@@ -1,8 +1,8 @@
-# Source and package folders
+# Source and package directories
 src/
 pkg/
 
-# The installer script
+# Installer scripts
 ChomikBox-pl-installer.*.sh
 
 # Archive files

@@ -4,17 +4,17 @@ pkgname=chomikbox
 pkgdesc="A desktop application for Chomikuj.pl integration"
 
 pkgver=2.0.5
-pkgrel=6
+pkgrel=7
 
 arch=(i686 x86_64)
 
 url="http://chomikuj.pl/ChomikBox.aspx"
 license=("LicenseRef-ChomikBox")
 
-depends=(qt4 gstreamer0.10-base)
+depends=(qt4 gstreamer0.10-base libxml2-legacy)
 
-source=("LICENSE.chomikbox" "chomikbox.png" "chomikbox-music-light.png")
-md5sums=("5226a506d93635a3f85bbb23826758b3" "644b11c413a5542b187e7a040b7a0d5e" "0ccd8b3e3ce7fb30a5706f80f4959b5c")
+source=("chomikbox.png" "chomikbox-music-light.png" "LICENSE.chomikbox")
+md5sums=("644b11c413a5542b187e7a040b7a0d5e" "0ccd8b3e3ce7fb30a5706f80f4959b5c" "5226a506d93635a3f85bbb23826758b3")
 
 source_i686=("http://bts.box.chomikuj.pl/repo/all/${pkgver}/linux32/ChomikBox-pl-installer.32.sh")
 source_x86_64=("http://bts.box.chomikuj.pl/repo/all/${pkgver}/linux64/ChomikBox-pl-installer.64.sh")
@@ -23,17 +23,19 @@ md5sums_i686=("0b68fccbfeea249eb17e71375d9778c2")
 md5sums_x86_64=("758911e6ffc6e3c2e83ad7b64a97c603")
 
 prepare() {
-	# get the archive from the shell script
+	# get the tarball from the shell script
 	if [[ "${CARCH}" == "x86_64" ]]; then
 		tail -c 24350255 ChomikBox-pl-installer.64.sh > chomikbox.tar.bz2
-	else
+	elif [[ "${CARCH}" == "i686" ]]; then
 		tail -c 24602730 ChomikBox-pl-installer.32.sh > chomikbox.tar.bz2
+	else
+		echo "Unsupported architecture: ${CARCH}" && exit 1
 	fi
 
-	# extract the archive
+	# extract files from the archive
 	mkdir -p chomikbox && tar -xjf chomikbox.tar.bz2 -C chomikbox
 
-	# replace the template literals in the files
+	# replace template literals in .desktop files
 	for file in chomikbox/desktop/*; do
 		sed -i "s/\${name}/ChomikBox/g" $file
 		sed -i "s/\${version}/${pkgver}/g" $file
@@ -85,6 +87,6 @@ package() {
 	# copy the license to the package directory
 	install -Dm644 ../LICENSE.chomikbox "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	# make a symlink to the executable
+	# create a symlink to the executable
 	ln -s /usr/share/chomikbox/chomikbox "${pkgdir}/usr/bin/chomikbox"
 }
