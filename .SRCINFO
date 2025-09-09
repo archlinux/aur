@@ -1,7 +1,7 @@
 pkgbase = electron37
 	pkgdesc = Build cross platform desktop apps with web technologies
 	pkgver = 37.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://electronjs.org
 	arch = x86_64
 	license = MIT
@@ -73,8 +73,10 @@ pkgbase = electron37
 	options = !lto
 	source = git+https://github.com/electron/electron.git#tag=v37.2.6
 	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/138-1/chromium-patches-138-1.tar.bz2
+	source = build_rust_allocator_lib-rs.patch
 	source = compiler-rt-adjust-paths.patch
 	source = chromium-138-nodejs-version-check.patch
+	source = chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 	source = disable-clang-fextend-variable-liveness.patch
 	source = pdfium-fix-build-with-system-libpng.patch
 	source = default_app-icon.patch
@@ -236,8 +238,10 @@ pkgbase = electron37
 	source = chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
 	sha256sums = 1ea134da21add1fc95a4d49ad2dff806115aa2f2ffdcb91dca1fd01e1f54d71c
 	sha256sums = 6f5067e5f87ac0591295fc3ec0f7e722d0f5eb94ade2fb3e73ae8abcbb674f8a
-	sha256sums = 750fa28c0cbe464a45bab5a1021434e296ad83fef78b927eaec0f82df3aac26c
+	sha256sums = 7e9c6f385460a15e82640b9545ea3c4b32d9c26b94c4e9195215ce8f1b6c8d73
+	sha256sums = 5eb62f142569bd6887396410ad174a4e9e932790361567df0fd9127003d6b2a0
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
+	sha256sums = 5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf
 	sha256sums = 2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a
 	sha256sums = de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d
 	sha256sums = dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4

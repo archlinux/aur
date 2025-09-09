@@ -10,7 +10,7 @@
 
 pkgver=37.2.6
 _gcc_patches=138-1
-pkgrel=2
+pkgrel=3
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -62,8 +62,10 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/$_gcc_patches/chromium-patches-$_gcc_patches.tar.bz2
         # Chromium
+        build_rust_allocator_lib-rs.patch
         compiler-rt-adjust-paths.patch
-	chromium-138-nodejs-version-check.patch
+        chromium-138-nodejs-version-check.patch
+        chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
         disable-clang-fextend-variable-liveness.patch
         pdfium-fix-build-with-system-libpng.patch
         # Electron
@@ -229,8 +231,10 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         )
 sha256sums=('1ea134da21add1fc95a4d49ad2dff806115aa2f2ffdcb91dca1fd01e1f54d71c'
             '6f5067e5f87ac0591295fc3ec0f7e722d0f5eb94ade2fb3e73ae8abcbb674f8a'
+            '7e9c6f385460a15e82640b9545ea3c4b32d9c26b94c4e9195215ce8f1b6c8d73'
             '5eb62f142569bd6887396410ad174a4e9e932790361567df0fd9127003d6b2a0'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
+            '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             '2d98a7a6a553fb5c17c4bfe36f011410f377afa12a6a818ba36543dc9a258f4a'
             'de3222b13d3a49628a00fd74acae633912b830f78c2de452d3bdff3d0e42026d'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
@@ -483,9 +487,13 @@ prepare() {
   # Upstream fixes
   # patch -Np1 -i ../disable-clang-fextend-variable-liveness.patch
   # patch -d third_party/pdfium -Np1 < ../pdfium-fix-build-with-system-libpng.patch
+  patch -Np0 -i ../build_rust_allocator_lib-rs.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-138-nodejs-version-check.patch
+
+  # Fixes from NixOS
+  patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
@@ -541,6 +549,7 @@ build() {
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
+    'fatal_linker_warnings=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
     'ffmpeg_branding="Chrome"'
@@ -566,7 +575,7 @@ build() {
     'clang_base_path="/usr"'
     'clang_use_chrome_plugins=false'
     "clang_version=\"$_clang_version\""
-    'chrome_pgo_phase=2'
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
   )
 
   # Allow the use of nightly features with stable Rust compiler
