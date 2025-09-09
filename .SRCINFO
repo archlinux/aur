@@ -1,6 +1,6 @@
 pkgbase = markdown_timesheet
 	pkgdesc = A tool for processing markdown files to extract and format timesheet data
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://crates.io/crates/markdown_timesheet
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = markdown_timesheet
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = markdown_timesheet-0.6.0.tar.gz::https://crates.io/api/v1/crates/markdown_timesheet/0.6.0/download
-	sha256sums = 0a2156d52621ef375fabc57eeb02da82e59c109b91d2a16b386e19bb0f610606
+	source = markdown_timesheet-0.7.1.tar.gz::https://crates.io/api/v1/crates/markdown_timesheet/0.7.1/download
+	sha256sums = ddd7400b217c8f41a59eef9ea0e5fbc0ea694fbded5391e0aeae2c4257144044
 
 pkgname = markdown_timesheet
