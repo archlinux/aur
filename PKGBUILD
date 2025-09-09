@@ -1,6 +1,6 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=typst-languagetool-lsp-git
-pkgver=0.96.9273d4e
+pkgver=0.101.a54641f
 pkgrel=1
 pkgdesc="Spellcheck typst files with LanguageTool and VSCodium."
 url="https://github.com/antonWetzel/typst-languagetool"
@@ -19,9 +19,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname/lsp"
+  cd "$pkgname"
+  sed -i 's/0.13.0/0.13.1/g' Cargo.toml
+  cd "lsp"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
