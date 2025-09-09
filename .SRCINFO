@@ -1,0 +1,22 @@
+pkgbase = python-jieba3
+	pkgdesc = jieba 3 Chinese Word Segmentation: Building the Best Modern Python 3 Chinese Word Segmentation Component
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/jieba3
+	arch = any
+	license = MIT
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pydantic
+	provides = python-jieba3
+	conflicts = python-jieba3
+	options = !strip
+	options = !debug
+	source = jieba3-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/j/jieba3/jieba3-1.0.1.tar.gz
+	sha256sums = 13537aaf26a3c89758799a2cdfc4b840aed42a12b7bc3af4b00c8297015db4ac
+
+pkgname = python-jieba3
