@@ -8,7 +8,7 @@ url="https://github.com/RansomDark/gol"
 license=('MIT')
 depends=('ncurses')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RansomDark/gol/archive/v$pkgver.tar.gz")
-sha256sums=('aec2e131d0ba6fef617f1211511ff5b9')
+sha256sums=('4c94569bcc7da4f0260fe35f2fbb34fb853ca7ae336386d0ae234df864a2ad96')
 
 build() {
   cd "$srcdir/gol-$pkgver"
