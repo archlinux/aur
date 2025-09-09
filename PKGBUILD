@@ -4,7 +4,7 @@ pkgname=3dslicer-bin
 _pkgname=3dslicer
 _name=Slicer
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -23,11 +23,14 @@ sha512sums=('56a3b278b72124344c6ddd0be4a27f467c996032ae477226b4a9f7a3c64eec4047a
 
 prepare() {
   echo "Creating desktop file"
-  gendesk -f -n --pkgname ${_pkgname} \
-    --pkgdesc "${pkgdesc}" \
+  gendesk -f -n \
     --categories "Graphics;MedicalSoftware;Science;" \
+    --custom="StartupWMClass=Slicer"
+    --exec "Slicer" \
     --icon "${_pkgname}" \
-    --exec "Slicer"
+    --pkgdesc "${pkgdesc}" \
+    --pkgname ${_pkgname} \
+    --startupnotify
 }
 
 package() {
