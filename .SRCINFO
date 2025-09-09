@@ -1,7 +1,7 @@
 pkgbase = pawbar-git
 	pkgdesc = A kitten-panel based desktop panel for your desktop
 	pkgver = r314.3aec858
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/codelif/pawbar
 	arch = x86_64
 	license = BSD-3-Clause
@@ -13,6 +13,7 @@ pkgbase = pawbar-git
 	depends = librsvg
 	depends = glib2
 	depends = cairo
+	depends = kitty
 	source = git+https://github.com/codelif/pawbar.git
 	sha256sums = SKIP
 	b2sums = SKIP
