@@ -1,16 +1,13 @@
 # Maintainer: Jesse Zhu <jesse@itjesse.com>
 pkgname=qqmusic-wine
 pkgver=21.21
-pkgrel=1
+pkgrel=2
 pkgdesc="QQ Music via Wine"
 arch=('x86_64')
 url="https://y.qq.com/"
 license=('custom')
 depends=('wine-staging' 'winetricks' 'wine-gecko')
 makedepends=('wine-staging' 'winetricks')
-optdepends=('lib32-pulse: 音频支持'
-            'lib32-mesa: 图形支持'
-            'lib32-vulkan-icd-loader: DXVK Vulkan 支持')
 source=("QQMusic_Setup_2181.exe::https://c.y.qq.com/cgi-bin/file_redirect.fcg?bid=dldir&file=ecosfile%2Fmusic_clntupate%2Fpc%2Fother%2FQQMusic_Setup_2181.exe&sign=1-f2f6f38fa14d11365c487b508b8cad01dc0358f81e497fe8cee643f79c1b33d8-68b80801"
         "msyh.ttc::https://files.exefiles.com/initial/m/msyh-ttc/d9adc6d2c21171c0f0b8dfbaec764b83/msyh.ttc"
         "msyhbd.ttc::https://files.exefiles.com/initial/m/msyhbd-ttc/db132f98d50f02f0ddb4ce4a5d847c97/msyhbd.ttc"
