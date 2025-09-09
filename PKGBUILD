@@ -25,7 +25,7 @@ prepare() {
   echo "Creating desktop file"
   gendesk -f -n \
     --categories "Graphics;MedicalSoftware;Science;" \
-    --custom="StartupWMClass=Slicer"
+    --custom="StartupWMClass=Slicer" \
     --exec "Slicer" \
     --icon "${_pkgname}" \
     --pkgdesc "${pkgdesc}" \
