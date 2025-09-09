@@ -1,0 +1,22 @@
+pkgbase = libfprint-focaltech
+	pkgdesc = Proprietary driver for the Focaltech fingerprint reader, support with vid:0x2808, pid: 0x9338, 0xd979, 0xc652, 0xa959, 0x0579
+	pkgver = 20250714
+	pkgrel = 1
+	url = https://github.com/ftfpteams/focaltech-linux-fingerprint-driver
+	arch = x86_64
+	groups = fprint
+	license = custom
+	makedepends = tar
+	depends = glib2>=2.56
+	depends = libgusb>=0.3.0
+	depends = nss>=3.13.4
+	depends = pixman>=0.30.0
+	provides = libfprint-2.so
+	provides = libfprint
+	conflicts = libfprint
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/ftfpteams/focaltech-linux-fingerprint-driver/raw/refs/heads/main/Ubuntu_Debian/x86/libfprint-2-2_1.94.4+tod1-0ubuntu1~22.04.2_amd64_20250714.deb
+	sha512sums = 7e51e26b2093e342f760e91a070ceaa4fbb9eb91b512ab76cb4dcc3a62dd7bf107f95713b48a2a743a3d6079b1505a91e25aee4e6a58a3db0e0771f42ff054fe
+
+pkgname = libfprint-focaltech
