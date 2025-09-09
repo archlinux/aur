@@ -1,6 +1,6 @@
 pkgbase = python-pynvml
 	pkgdesc = Python utilities for the NVIDIA Management Library
-	pkgver = 12.0.0
+	pkgver = 13.0.1
 	pkgrel = 1
 	url = https://pypi.org/project/pynvml/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pynvml
 	depends = nvidia-utils
 	depends = python
 	depends = python-nvidia-ml-py
-	source = https://pypi.python.org/packages/source/p/pynvml/pynvml-12.0.0.tar.gz
-	sha256sums = 299ce2451a6a17e6822d6faee750103e25b415f06f59abb8db65d30f794166f5
+	source = https://pypi.python.org/packages/source/p/pynvml/pynvml-13.0.1.tar.gz
+	sha256sums = 1245991d9db786b4d2f277ce66869bd58f38ac654e38c9397d18f243c8f6e48f
 
 pkgname = python-pynvml

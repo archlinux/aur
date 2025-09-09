@@ -3,7 +3,7 @@
 
 _pkgname=pynvml
 pkgname=python-pynvml
-pkgver=12.0.0
+pkgver=13.0.1
 pkgrel=1
 pkgdesc="Python utilities for the NVIDIA Management Library"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 depends=('nvidia-utils' 'python' 'python-nvidia-ml-py')
 makedepends=('python-build' 'python-installer')
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('299ce2451a6a17e6822d6faee750103e25b415f06f59abb8db65d30f794166f5')
+sha256sums=('1245991d9db786b4d2f277ce66869bd58f38ac654e38c9397d18f243c8f6e48f')
 
 # Build the Python wheel
 build() {
