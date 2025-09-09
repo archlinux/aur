@@ -1,11 +1,11 @@
---- ./electron-builder.json	2025-09-02 13:50:43.706871309 +0300
-+++ ./electron-builder.json	2025-09-02 13:51:29.750371609 +0300
+--- ./electron-builder.json	2025-09-09 12:24:12.245205738 +0300
++++ ./electron-builder.json	2025-09-09 12:25:19.747937826 +0300
 @@ -15,7 +15,7 @@
-     },
-     "linux":  {
-         "icon": "icons/winboat.png",
--        "target": ["appimage"]
-+        "target": ["dir"],
-     },
-     "files": [
-         {
+   },
+   "linux": {
+     "icon": "icons/winboat.png",
+-    "target": ["appimage", "deb", "rpm", "tar.gz"],
++    "target": ["dir"],
+     "category": "Utility",
+     "artifactName": "${name}-${version}-${arch}.${ext}"
+   },

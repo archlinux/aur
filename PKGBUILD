@@ -2,7 +2,7 @@
 
 pkgname=winboat-arjix
 _pkgname=winboat
-pkgver=0.7.3
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Run Windows apps on 🐧 Linux with ✨ seamless integration"
 arch=('x86_64')
@@ -17,9 +17,9 @@ source=(
   "${_pkgname}.desktop"
   "electron-builder.json.patch"
 )
-sha256sums=('a2ad2819688d1b1dfffeb7810fb7c56fc6c4ae2225955ede17575e14b462d86e'
+sha256sums=('ce08f785b68df3e77607ee3390abb1a0a585dc55ba4ac5501f236ceb710ad6ca'
             'e1d52f52541e628574c5cb675d43bfae964c73e0e0c634543683bcb2c147f930'
-            '22250af9f24d9bec706d52d8a3254ecbf3701ee150aa8d0b3031326dbb693e31')
+            'd0acbc28c937ba952011a8fc8662a3ad8ae9368fc59b939979be21d239db5a13')
 
 prepare() {
     cd "$_pkgname"
