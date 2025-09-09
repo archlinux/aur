@@ -16,7 +16,7 @@ depends=(
   libxkbcommon
   pcre2
   'libwlroots-0.19.so'
-  'scenefx-git'
+  'libscenefx-0.4.so'
 )
 
 makedepends=(
