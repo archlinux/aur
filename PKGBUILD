@@ -2,7 +2,7 @@
 pkgname=authelia-bin
 _pkgname=authelia
 pkgver=4.39.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
