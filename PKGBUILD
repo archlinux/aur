@@ -2,22 +2,20 @@
 
 pkgname=privatebin-cli-bin
 _binname=privatebin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=2
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease - binary package'
-arch=(x86_64 aarch64 armv7h)
+arch=(x86_64 aarch64)
 url='https://github.com/gearnode/privatebin'
 license=('ISC')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="$pkgname.install"
-source_x86_64=("$pkgname-$pkgver-amd64.tar.gz::$url/releases/download/v${pkgver}/${_binname}_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("$pkgname-$pkgver-arm64.tar.gz::$url/releases/download/v${pkgver}/${_binname}_${pkgver}_linux_arm64.tar.gz")
-source_armv7h=("$pkgname-$pkgver-arm.tar.gz::$url/releases/download/v${pkgver}/${_binname}_${pkgver}_linux_armv7.tar.gz")
+source_x86_64=("$pkgname-$pkgver-amd64.tar.gz::$url/releases/download/v${pkgver}/${_binname}_Linux_x86_64.tar.gz")
+source_aarch64=("$pkgname-$pkgver-arm64.tar.gz::$url/releases/download/v${pkgver}/${_binname}_Linux_arm64.tar.gz")
 
-sha256sums_x86_64=('0f719a072c851bce9b4bdf2225d97519380de70d92e0f11438ba4519e18e458f')
-sha256sums_aarch64=('d8ecb4c1994a037bc6e2a501531eae5680ed86822661d9d10354c5a6a1cb0a02')
-sha256sums_armv7h=('25aff07ca4d688d3d555467c345ad3519d0669cbc66ce3e01f568f968acb6040')
+sha256sums_x86_64=('edfd11a816207e2df9716ca2ba1e98da1b67b6bff89ae68380a52a46c8a5e145')
+sha256sums_aarch64=('006bc22d1c6b0163b97d83c488a19bfc3bd28a79811809eb973ba5e182f54806')
 
 package() {
   install -Dm755 $_binname "$pkgdir"/usr/bin/$_binname
