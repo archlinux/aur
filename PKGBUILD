@@ -20,3 +20,9 @@ package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/gosqlapi" "$pkgdir/usr/bin/gosqlapi"
   install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/gosqlapi/README.md"
 }
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  go test -v -run TestExtractSQLParameter
+  go test -v -run TestSplitSqlLabel
+}
