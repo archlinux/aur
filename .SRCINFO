@@ -1,0 +1,18 @@
+pkgbase = attempt-git
+	pkgdesc = CLI tool for retrying fallible commands (development version)
+	pkgver = 1.0.1.r0.gc083e94
+	pkgrel = 1
+	url = https://github.com/MaxBondABE/attempt
+	arch = aarch64
+	arch = x86_64
+	license = Unlicense
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = attempt
+	conflicts = attempt
+	source = git+https://github.com/MaxBondABE/attempt.git
+	sha256sums = SKIP
+
+pkgname = attempt-git
