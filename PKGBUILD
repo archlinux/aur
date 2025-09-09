@@ -1,8 +1,8 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>, Lakshmanan <lakshmanoni1234@gmail.com>
 
 pkgname=git-donkey
-pkgver=v1.0.1
-pkgrel=3
+pkgver=v1.0.2
+pkgrel=1
 pkgdesc="A CLI tool to help you manage your local git branches/repositories."
 arch=('x86_64')
 url="https://github.com/bupd/git-donkey"
