@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lundin <dln@arity.se>
+# Maintainer: Julius Rüberg <julius.rueberg@protonmail.ch>
 
 pkgname=gnome-ssh-askpass4-git
 _pkgbase=openssh-portable
