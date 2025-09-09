@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vencord-installer
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross platform gui/cli app for installing Vencord"
 arch=('x86_64')
 url="https://github.com/Vencord/Installer"
@@ -13,7 +13,7 @@ sha256sums=('f38ba4bfc9c5f74aebe32a1676eec51356def7aa4621143e467801f9c0ba42bd')
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	go mod tidy
+	GOPATH="$srcdir" go mod download -modcacherw
 }
 
 build() {
@@ -23,6 +23,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOPATH="$srcdir"
 	go build --tags cli -v -ldflags "-s -w -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o vencordinstallercli
 	go build -v -ldflags "-s -w -X 'vencordinstaller/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencordinstaller/buildinfo.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o vencordinstaller
 
