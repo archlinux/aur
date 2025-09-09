@@ -1,7 +1,7 @@
 # Maintainer: Brian Thompson <brianrobt at pm dot me>
 
 pkgname=stable-diffusion.cpp-vulkan-git
-pkgver=r261.4c6475f
+pkgver=r272.abb115c
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=("MIT")
