@@ -3,7 +3,7 @@
 pkgname='awcc-git'
 pkgver=r116.66a11a9
 pkgrel=1
-pkgdesc="Alienware Command Center for Dell G-Series Laptops"
+pkgdesc="An unofficial alternative to Alienware Command Centre of Windows for the Dell G series"
 arch=('x86_64')
 url="https://github.com/tr1xem/AWCC"
 license=('MIT')
