@@ -1,0 +1,20 @@
+pkgbase = repair-usb-disc
+	pkgdesc = Universal filesystem repair tool (NTFS/FAT32/exFAT/ext*/XFS/Btrfs).
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://gitlab.com/linux-stuffs/linux-goodies/-/tree/master/repair-usb-disc
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = ntfs-3g
+	depends = dosfstools
+	depends = exfatprogs
+	depends = xfsprogs
+	depends = btrfs-progs
+	provides = repair-usb-disc
+	conflicts = repair-usb-disc
+	options = !strip
+	source = https://gitlab.com/linux-stuffs/linux-goodies/-/raw/master/repair-usb-disc/distrib/repair-usb-disc-0.1-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = repair-usb-disc
