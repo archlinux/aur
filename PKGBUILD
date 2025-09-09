@@ -19,7 +19,7 @@ optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
   'vapoursynth-plugin-mlrt: frame interpolation functions'
   'vapoursynth-plugin-mlrt-ext-models-rife: frame interpolation functions'
 )
-makedepends=('python-pip')
+makedepends=('python-installer')
 source=("https://files.pythonhosted.org/packages/fb/c6/06022ef57b9f46c566e2188898f43f2f08288e37cfb252f342e899a4348b/soifunc-0.12.0-py3-none-any.whl")
 sha256sums=('97ae447011d7f8afc67f7e34bb50244178c95d68da234523770bfe96e1ea239e')
 
