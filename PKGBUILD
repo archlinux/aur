@@ -2,7 +2,7 @@
 pkgname=python-chex
 _pkgname=${pkgname#python-}
 pkgver=0.1.91
-pkgrel=1
+pkgrel=2
 pkgdesc="A library of utilities for helping to write reliable JAX code"
 arch=('any')
 url="https://github.com/google-deepmind/chex"
@@ -13,7 +13,8 @@ depends=('python-absl'
          'python-numpy'
          'python-toolz'
          'python-typing_extensions')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-flit-core'
+             'python-wheel')
 checkdepends=('python-cloudpickle' 'python-dm-tree' 'python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google-deepmind/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0e67bc74c6914f4515c45927ff396c3d242e7fd9fe5c1da45ec937b85ccfaefc')
