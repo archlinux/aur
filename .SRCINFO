@@ -1,7 +1,7 @@
 pkgbase = intiface-central-bin
 	pkgdesc = Frontend application for the Buttplug Sex Toy Control Library
 	pkgver = 2.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intiface/intiface-central
 	arch = x86_64
 	license = GPL3

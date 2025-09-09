@@ -1,7 +1,7 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="intiface-central-bin"
 pkgver="2.6.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
 url="https://github.com/intiface/intiface-central"
@@ -25,7 +25,7 @@ package() {
 	install -Dm644 "intiface_central.desktop" "$pkgdir/usr/share/applications/intiface_central.desktop"
 	install -Dm644 "intiface-engine-flutter-bridge-license.md" "$pkgdir/usr/share/licenses/$pkgname/intiface-engine-flutter-bridge-license.md"
 
-	cd "intiface-central"
+	cd "intiface_central_v2.6.8"
 	install -Dm755 "intiface_central" "$pkgdir/usr/lib/intiface_central/intiface_central"
 	cp -r "data" "$pkgdir/usr/lib/intiface_central/data"
 	cp -r "lib" "$pkgdir/usr/lib/intiface_central/lib"
