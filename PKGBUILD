@@ -3,16 +3,16 @@
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname='jhentai-bin'
-pkgver='v8.0.10'
 _ver_main='8.0.10'
 _ver_sub='299'
+pkgver=v${_ver_main}+${_ver_sub}
 pkgdesc='A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.'
 conflicts=('jhentai-git')
 
 arch=('x86_64')
 url='https://github.com/jiangtian616/JHenTai'
 license=('Apache-2.0')
-pkgrel='1'
+pkgrel='2'
 options=(!debug)
 depends=(
     'webkit2gtk-4.1'
