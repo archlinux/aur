@@ -1,0 +1,11 @@
+--- old/third-party/lua52/luaconf.h
++++ new/third-party/lua52/luaconf.h
+@@ -100,7 +100,7 @@
+ #else			/* }{ */
+ 
+ #define LUA_VDIR	LUA_VERSION_MAJOR "." LUA_VERSION_MINOR "/"
+-#define LUA_ROOT	"/usr/local/"
++#define LUA_ROOT	"/usr/"
+ #define LUA_LDIR	LUA_ROOT "share/lua/" LUA_VDIR
+ #define LUA_CDIR	LUA_ROOT "lib/lua/" LUA_VDIR
+ #define LUA_PATH_DEFAULT  \

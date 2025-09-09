@@ -1,0 +1,19 @@
+pkgbase = python-lupa-git
+	pkgdesc = Python wrapper around Lua and LuaJIT
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/scoder/lupa
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/lupa/lupa-2.5.tar.gz
+	sha256sums = 69c6a89f2b7b08a3040d7ed2a1eeccba37a31ddc92fa199339c53a2ae3c48c34
+
+pkgname = python-lupa-git
