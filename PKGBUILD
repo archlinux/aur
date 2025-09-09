@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
@@ -8,18 +8,18 @@ url="https://blender.org"
 license=(
   Apache-2.0
   Bitstream-Vera
-  BSL-1.0
   BSD-2-Clause
   BSD-3-Clause
+  BSL-1.0
   bzip2-1.0.6
   FTL
   GPL-2.0-or-later
   GPL-3.0-or-later
+  LGPL-2.1-or-later
   libpng-2.0
   libtiff
-  LGPL-2.1-or-later
-  MIT
   MIT-Khronos-old
+  MIT
   MPL-2.0
   NCSA
   OFL-1.1
@@ -63,7 +63,7 @@ provides=('blender')
 conflicts=('blender')
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('bba5361929491ccd69374b93c547f087f09c9eaac5d8cc96da3210485c13d44f'
+sha256sums=('975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
