@@ -2,7 +2,7 @@
 _pkgname=WiiUDownloader
 pkgname=wiiudownloader
 pkgver=2.66
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to download encrypted wiiu files from nintendo's official servers"
 arch=('x86_64')
 url="https://github.com/Xpl0itU/WiiUDownloader"
@@ -17,6 +17,7 @@ prepare() {
 	cd "$_pkgname-$pkgver"
 	mkdir -p "$srcdir/$_pkgname-$pkgver/build"
 	gendesk -n \
+	-f \
 	--pkgname=$pkgname \
 	--pkgdesc="$pkgdesc" \
 	--name=$_pkgname \
@@ -24,6 +25,9 @@ prepare() {
 	--icon="$pkgname" \
 	--terminal=false
 	python3 grabTitles.py
+	pushd ./cmd/WiiUDownloader
+	GOPATH="$srcdir" go mod download -modcacherw
+	popd
 }
 
 build() {
@@ -33,7 +37,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build ./cmd/WiiUDownloader
+	GOPATH="$srcdir" go build -v -o build ./cmd/WiiUDownloader
 
 }
 
