@@ -1,10 +1,11 @@
 pkgbase = python-getdist
 	pkgdesc = MCMC sample analysis, kernel densities, plotting, and GUI
-	pkgver = 1.6.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/cmbant/getdist
 	arch = any
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-six
@@ -12,7 +13,7 @@ pkgbase = python-getdist
 	depends = pyside6
 	depends = python-pandas
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/getdist/getdist-1.6.0.tar.gz
-	sha256sums = 0309d2b27ae5935f86e3c1097dd89eeca0ad40226858a7bdc82980b8db5a57da
+	source = https://files.pythonhosted.org/packages/source/g/getdist/getdist-1.7.2.tar.gz
+	sha256sums = 1045b0fbc603207cf1cd6febadff796316cbb05542a42b2985d471dff85dd692
 
 pkgname = python-getdist
