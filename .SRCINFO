@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libxml2
 	pkgdesc = XML C parser and toolkit (mingw-w64)
-	pkgver = 2.14.5
+	pkgver = 2.14.6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-libxml2
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://download.gnome.org/sources/libxml2/2.14/libxml2-2.14.5.tar.xz
-	sha256sums = 03d006f3537616833c16c53addcdc32a0eb20e55443cba4038307e3fa7d8d44b
+	source = https://download.gnome.org/sources/libxml2/2.14/libxml2-2.14.6.tar.xz
+	sha256sums = 7ce458a0affeb83f0b55f1f4f9e0e55735dbfc1a9de124ee86fb4a66b597203a
 
 pkgname = mingw-w64-libxml2
