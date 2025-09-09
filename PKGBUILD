@@ -8,12 +8,12 @@ pkgname=(
 )
 _gitpkgname=aider
 pkgver=0.86.1
-pkgrel=1
+pkgrel=2
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
 license=('Apache-2.0')
-depends=(
+_depends=(
   'litellm'
   'python'
   'python-beautifulsoup4'
@@ -66,22 +66,14 @@ makedepends=(
   'ruby-jekyll-sitemap'
   'ruby-just-the-docs'
   'ruby-rake'
+  # We need all runtime deps at build time to generate shell completions
+  "${_depends[@]}"
 )
 checkdepends=(
   'chromium'
   'python-playwright'
   'python-pytest'
   'python-streamlit'
-)
-# shellcheck disable=SC2016  # Not meant to expand
-optdepends=(
-  'aider-chat-docs: offline documentation'
-  'chromium: for web scraping'
-  'python-babel: support for more locales'
-  # Packages are yet to be written, see comment in `check()`
-  # 'python-llama-index-embeddings-huggingface: to use the interactive `/help` feature'
-  'python-playwright: for web scraping'
-  'python-streamlit: for a graphical user interface'
 )
 
 source=(
@@ -196,6 +188,17 @@ check() {
 
 # shellcheck disable=SC2128
 package_aider-chat() {
+  depends=("${_depends[@]}")
+  optdepends=(
+    'aider-chat-docs: offline documentation'
+    'chromium: for web scraping'
+    'python-babel: support for more locales'
+    # Packages are yet to be written, see comment in `check()`
+    # 'python-llama-index-embeddings-huggingface: to use the interactive `/help` feature'
+    'python-playwright: for web scraping'
+    'python-streamlit: for a graphical user interface'
+  )
+
   cd "${_gitpkgname}-${pkgver}"
 
   echo >&2 'Packaging the wheel'
@@ -214,9 +217,6 @@ package_aider-chat() {
 
 # shellcheck disable=SC2128
 package_aider-chat-docs() {
-  depends=()
-  optdepends=()
-
   cd "${_gitpkgname}-${pkgver}"
 
   echo >&2 'Packaging the documentation'
