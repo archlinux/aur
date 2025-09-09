@@ -1,5 +1,5 @@
 pkgname=wayclip-cli
-pkgver=0.1.59
+pkgver=0.1.60
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
