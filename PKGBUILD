@@ -2,7 +2,7 @@
 # Contributor: Clever Cloud CI <ci@clever-cloud.com>
 
 pkgname=clever-tools
-pkgver=3.14.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Command Line Interface for Clever Cloud."
 arch=('any')
@@ -13,24 +13,21 @@ provides=("clever-tools=${pkgver}")
 conflicts=("clever-tools")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CleverCloud/clever-tools/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('941a96ff43fda939624a88bbddcfc25265ace1b2f81f5f96cc4d091bd45f4959')
+sha256sums=('08a6cc6e9b7629e43cd104339cec5ba08c066da09f1b102823adf7bfb1b539c7')
 
 prepare() {
 	cd "${srcdir}/clever-tools-${pkgver}"
 
-	# Only build for Linux, we don't care about the Windows or OSX builds
-	sed -i \
-		-e "s/\(const[[:space:]]\+archList[[:space:]]*=[[:space:]]*\)\[[^]]*\]/\1['linux']/" \
-		scripts/config.js
 	npm install
 }
 build() {
 	cd "${srcdir}/clever-tools-${pkgver}"
 
-	node scripts/job-build.js "${pkgver}"
+	node scripts/bundle-cjs.js "${pkgver}"
+	node scripts/build-binary.js "${pkgver}"
 }
 package() {
-	cd "${srcdir}/clever-tools-${pkgver}/build/${pkgver}/bin/clever-tools-${pkgver}_linux"
+	cd "${srcdir}/clever-tools-${pkgver}/build/${pkgver}/linux/clever-tools-${pkgver}_linux"
 
 	install -Dm 755 "clever" "${pkgdir}/usr/bin/clever"
 	./clever --bash-autocomplete-script /usr/bin/clever \
