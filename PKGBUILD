@@ -1,9 +1,9 @@
 # Maintainer: Thomas Weber <contact at turbowarp dot org>
 
-_electron=36
+_electron=37
 
 pkgname=turbowarp-desktop-bin
-pkgver=1.14.4
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more."
 arch=("any")
@@ -14,7 +14,7 @@ provides=("turbowarp-desktop")
 conflicts=("turbowarp-desktop")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TurboWarp/desktop/releases/download/v$pkgver/TurboWarp-linux-armv7l-$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('1aabe41e6c21d7f71c68f12565406a6ed33a011078e5a9a104b270594157c581')
+sha256sums=('a12569f472becac97fbb7cb14aeaed85444841d06421b31ebead4945dc2b4ba3')
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver"
