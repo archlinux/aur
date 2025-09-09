@@ -1,38 +1,39 @@
 pkgname=charliecloud
-pkgver=0.15
+pkgver=0.40
 pkgrel=1
-pkgdesc="Lightweight user-defined software stacks for high-performance computing"
-arch=('any')
+pkgdesc="A lightweight, fully unprivileged container implementation for HPC applications"
+arch=('x86_64')
 license=('Apache-2.0')
-depends=('python')
 makedepends=(
-	'bash>=4.1'
-	'rsync'
-	'python-sphinx'
+    'bats'
+    'cjson'
+    'fuse3'
+	'python-pip'
 	'python-sphinx_rtd_theme'
+	'shellcheck'
+	'squashfuse'
+	'squashfs-tools'
+	'wget'
 )
 optdepends=(
-	'docker>=17.03'
+    'bats: ch-test'
+    'nvidia-container-toolkit: ch-run inject nVidia GPU libraries'
+    'rsync: ch-image using RSYNC intruction'
+    'shellcheck: ch-test'
+    'wget: ch-test'
 )
-source=("https://github.com/hpc/charliecloud/releases/download/v${pkgver}/charliecloud-${pkgver}.tar.gz")
-sha1sums=('b3ee77c6b60d9288835edf5f81f672d0bb21f0c9')
-url="https://hpc.github.io/charliecloud"
-options+=('!emptydirs')
-
-_distdir="charliecloud-${pkgver}"
+source=("https://gitlab.com/charliecloud/charliecloud/-/archive/v${pkgver}/charliecloud-v${pkgver}.tar.gz")
+sha1sums=('5d4d9f97172f7573ee28ecd49185823e19b28982')
+url="https://charliecloud.io/"
 
 build() {
-	cd "$srcdir/$_distdir"
-	./configure --prefix=/usr
+    cd ${pkgname}-v${pkgver}
+    ./autogen.sh
+	CFLAGS="$CFLAGS -Wno-format-security" ./configure --enable-buggy-build --prefix=/usr
 	make
 }
 
-check() {
-	cd "$srcdir/$_distdir/test"
-#        make test-quick
-}
-
 package() {
-        cd "$srcdir/$_distdir"
-        make DESTDIR=${pkgdir} install
+    cd ${pkgname}-v${pkgver}
+    make DESTDIR=${pkgdir} install
 }

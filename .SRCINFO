@@ -1,19 +1,25 @@
 pkgbase = charliecloud
-	pkgdesc = Lightweight user-defined software stacks for high-performance computing
-	pkgver = 0.15
+	pkgdesc = A lightweight, fully unprivileged container implementation for HPC applications
+	pkgver = 0.40
 	pkgrel = 1
-	url = https://hpc.github.io/charliecloud
-	arch = any
+	url = https://charliecloud.io/
+	arch = x86_64
 	license = Apache-2.0
-	makedepends = bash>=4.1
-	makedepends = rsync
-	makedepends = python-sphinx
+	makedepends = bats
+	makedepends = cjson
+	makedepends = fuse3
+	makedepends = python-pip
 	makedepends = python-sphinx_rtd_theme
-	depends = python
-	optdepends = docker>=17.03
-	options = !emptydirs
-	source = https://github.com/hpc/charliecloud/releases/download/v0.15/charliecloud-0.15.tar.gz
-	sha1sums = b3ee77c6b60d9288835edf5f81f672d0bb21f0c9
+	makedepends = shellcheck
+	makedepends = squashfuse
+	makedepends = squashfs-tools
+	makedepends = wget
+	optdepends = bats: ch-test
+	optdepends = nvidia-container-toolkit: ch-run inject nVidia GPU libraries
+	optdepends = rsync: ch-image using RSYNC intruction
+	optdepends = shellcheck: ch-test
+	optdepends = wget: ch-test
+	source = https://gitlab.com/charliecloud/charliecloud/-/archive/v0.40/charliecloud-v0.40.tar.gz
+	sha1sums = 5d4d9f97172f7573ee28ecd49185823e19b28982
 
 pkgname = charliecloud
-
