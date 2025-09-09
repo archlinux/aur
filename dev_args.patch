@@ -1,7 +1,7 @@
 From 600f1b227bcac93c1abbf513252efac4d8cf5459 Mon Sep 17 00:00:00 2001
 From: "M. Greyson Christoforo" <grey@christoforo.net>
 Date: Mon, 18 Aug 2025 15:58:29 -0600
-Subject: [PATCH] add dev_args config block
+Subject: [PATCH 1/2] add dev_args config block
 
 ---
  apps/elster_rx_multi.grc | 14 +++++++++++++-
@@ -70,5 +70,46 @@ index 5bb57db..f1f2bf1 100644
 -    args: ''
 +    args: dev_args
      bb_gain0: '20'
+     bb_gain1: '20'
+     bb_gain10: '20'
+
+From f782a56d4af144c8766d68f28f4d7534d9e5c0c4 Mon Sep 17 00:00:00 2001
+From: "M. Greyson Christoforo" <grey@christoforo.net>
+Date: Wed, 20 Aug 2025 20:48:26 -0600
+Subject: [PATCH 2/2] also for hackrf
+
+---
+ apps/elster_rx_nogui_hackrf.grc | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/apps/elster_rx_nogui_hackrf.grc b/apps/elster_rx_nogui_hackrf.grc
+index 5655500..023ff07 100644
+--- a/apps/elster_rx_nogui_hackrf.grc
++++ b/apps/elster_rx_nogui_hackrf.grc
+@@ -68,6 +68,18 @@ blocks:
+     coordinate: [8, 292.0]
+     rotation: 0
+     state: enabled
++- name: dev_args
++  id: variable
++  parameters:
++    comment: ''
++    value: '""'
++  states:
++    bus_sink: false
++    bus_source: false
++    bus_structure: null
++    coordinate: [184, 16.0]
++    rotation: 0
++    state: enabled
+ - name: n_channels
+   id: variable
+   parameters:
+@@ -536,6 +548,7 @@ blocks:
+     ant8: ''
+     ant9: ''
+     args: ''
++    args: dev_args
+     bb_gain0: '24'
      bb_gain1: '20'
      bb_gain10: '20'

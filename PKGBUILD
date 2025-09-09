@@ -27,17 +27,17 @@ provides=('gr-elster')
 source=(
 	'git+https://github.com/argilo/gr-elster.git'
 	doxup.patch
-	new_meter.patch  # https://github.com/argilo/gr-elster/pull/12.patch
-	dev_args.patch  # https://github.com/argilo/gr-elster/pull/13.patch
-	add_mqtt.patch  # https://github.com/greyltc/gr-elster/compare/my-meter...greyltc:gr-elster:add-mqtt.patch
+	new_meter.patch      # https://patch-diff.githubusercontent.com/raw/argilo/gr-elster/pull/12.patch
+	dev_args.patch       # https://patch-diff.githubusercontent.com/raw/argilo/gr-elster/pull/13.patch
+	add_mqtt.patch       # https://github.com/greyltc/gr-elster/compare/my-meter...greyltc:gr-elster:add-mqtt.patch
 	pcap_analysis.patch  # https://github.com/argilo/gr-elster/compare/master...greyltc:gr-elster:pcap.patch
 )
 sha256sums=('SKIP'
             '4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a'
-            '8861d5b248b2f4c6b505e5157e1a52eb7b5f1d1598694fd1a024ade1826681d7'
-            'cdff722dee502912ca183c4420482bcc18c3760fccb41d3deff676415abde059'
-            'c181747826654c7dc1c6d7c1da4d8678404fffba80dea389c49e1cb78f38dd5d'
-            '668f22e901f4dc79456d70f79681c3891792f8b3432746cdbc0320fa63ccfcdf')
+            '4d2a4b7c5b10ebd2ee74963b2f549ef8478f26d63536d86c10792e423d7d40de'
+            '60c2a44c6cb59e3f71b2b1afa147ca1396a896a9fc46fa8ba79faafeb3b83bcf'
+            '775a0fd015431d7851e84dbcb0ac27f275458c6e0bb29c286b261e958ab17226'
+            '68e340fa78c326216fe7026ff726fa0992d56f00c8e5c1a6579535668a4b7375')
 
 pkgver() {
   cd gr-elster

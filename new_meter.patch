@@ -1,15 +1,18 @@
-From 3dd4a804e08234168f88b59aba3285210b56aac6 Mon Sep 17 00:00:00 2001
+From 1c8594af0f8060090255c22ed13ede464b6df1b9 Mon Sep 17 00:00:00 2001
 From: "M. Greyson Christoforo" <grey@christoforo.net>
 Date: Mon, 18 Aug 2025 11:48:50 -0600
-Subject: [PATCH 1/2] add logic to decode the total kWh counter reported by my
+Subject: [PATCH] add logic to decode the total kWh counter reported by my
  meter
 
+fix scaling
+
+parse timestamp info from meter reading message
 ---
- python/packetize.py | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ python/packetize.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/python/packetize.py b/python/packetize.py
-index 665dd5d..54e30be 100644
+index 665dd5d..b99ee44 100644
 --- a/python/packetize.py
 +++ b/python/packetize.py
 @@ -105,7 +105,7 @@ def process_packet(self, channel, pkt):
@@ -21,41 +24,20 @@ index 665dd5d..54e30be 100644
                  cmd_payload = payload[cmd_start + 1:cmd_start + 1 + cmd_len]
                  cmd = cmd_payload[1]
                  if cmd == 0xce:  # hourly usage data, every 6 hours
-@@ -124,6 +124,14 @@ def process_packet(self, channel, pkt):
+@@ -124,6 +124,16 @@ def process_packet(self, channel, pkt):
  
                      print()
  
 +                elif cmd == 0x23:  # usage message
 +                    print()
 +
-+                    main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/100
-+                    print(f"  Meter reading for meter #{src}: {main_reading} kWh")
++                    main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/1000
++                    YY, MM, DD, hh, mm, ss = struct.unpack("BBBBBB", cmd_payload[8:14])
++                    ts_theirs = datetime.datetime(2000+YY, MM, DD, hh, mm, ss)
++                    print(f"  Reading for meter number {src} @ {ts_theirs.isoformat()} = {main_reading} kWh")
 +
 +                    print()
 +
      def forecast(self, noutput_items, ninputs):
          return [640] * ninputs
  
-
-From 675054ba0013854eb11cbd07b91940bf7b6e00e9 Mon Sep 17 00:00:00 2001
-From: "M. Greyson Christoforo" <grey@christoforo.net>
-Date: Mon, 25 Aug 2025 22:49:25 -0600
-Subject: [PATCH 2/2] fix scaling
-
----
- python/packetize.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/python/packetize.py b/python/packetize.py
-index 54e30be..09aac53 100644
---- a/python/packetize.py
-+++ b/python/packetize.py
-@@ -127,7 +127,7 @@ def process_packet(self, channel, pkt):
-                 elif cmd == 0x23:  # usage message
-                     print()
- 
--                    main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/100
-+                    main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/1000
-                     print(f"  Meter reading for meter #{src}: {main_reading} kWh")
- 
-                     print()

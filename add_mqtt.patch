@@ -1,8 +1,10 @@
-From 1f3b009ef211aef53613f016d380b62ef83feeab Mon Sep 17 00:00:00 2001
+From 4a304c385cc0274ca17462be720a8c6d538f7caf Mon Sep 17 00:00:00 2001
 From: "M. Greyson Christoforo" <grey@christoforo.net>
-Date: Tue, 19 Aug 2025 12:17:07 -0600
-Subject: [PATCH] add option to publish meter readings to homeassistant via
- MQTT
+Date: Mon, 18 Aug 2025 11:48:50 -0600
+Subject: [PATCH] add logic to decode the total kWh counter reported by my
+ meter
+
+add option to publish meter readings to homeassistant via MQTT
 
 add connection message
 
@@ -15,12 +17,16 @@ fix scaling
 Revert "fix scaling"
 
 This reverts commit 6e1c2524067f2d46f6dd883e6d7aaa532b89f561.
+
+use timestamp from the meter reading message
+
+fix scaling
 ---
  python/packetize.py | 35 ++++++++++++++++++++++++++++++++++-
  1 file changed, 34 insertions(+), 1 deletion(-)
 
 diff --git a/python/packetize.py b/python/packetize.py
-index 54e30be..0a6436c 100644
+index b99ee44..8559b19 100644
 --- a/python/packetize.py
 +++ b/python/packetize.py
 @@ -19,11 +19,22 @@
@@ -82,11 +88,11 @@ index 54e30be..0a6436c 100644
      def process_packet(self, channel, pkt):
          if pkt[0] >= 2:
              len_bytes = 1
-@@ -129,6 +161,7 @@ def process_packet(self, channel, pkt):
- 
-                     main_reading = struct.unpack("<i", cmd_payload[15:19])[0]/100
-                     print(f"  Meter reading for meter #{src}: {main_reading} kWh")
-+                    self.mqtt_publish(f"elster/{src}", json.dumps({"kWh": main_reading, "timestamp": now}))
+@@ -131,6 +163,7 @@ def process_packet(self, channel, pkt):
+                     YY, MM, DD, hh, mm, ss = struct.unpack("BBBBBB", cmd_payload[8:14])
+                     ts_theirs = datetime.datetime(2000+YY, MM, DD, hh, mm, ss)
+                     print(f"  Reading for meter number {src} @ {ts_theirs.isoformat()} = {main_reading} kWh")
++                    self.mqtt_publish(f"elster/{src}", json.dumps({"kWh": main_reading, "timestamp": ts_theirs.isoformat()}))
  
                      print()
  
