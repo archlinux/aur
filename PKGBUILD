@@ -6,7 +6,7 @@
 pkgname=libxmlrpc
 # latest release from https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/
 pkgver=1.59.03
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='XML-RPC for C and C++'
 arch=(x86_64)

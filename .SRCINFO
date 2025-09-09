@@ -1,7 +1,7 @@
 pkgbase = libxmlrpc
 	pkgdesc = XML-RPC for C and C++
 	pkgver = 1.59.03
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://xmlrpc-c.sourceforge.net/
 	arch = x86_64
