@@ -1,4 +1,4 @@
-# Maintainer: Ваше Имя <your@email.com>
+# Maintainer: Ivan Ivanov
 pkgname=gol-game-of-life
 pkgver=1.0
 pkgrel=1
