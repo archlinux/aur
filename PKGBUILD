@@ -2,7 +2,7 @@
 
 pkgname=python-wandb
 _pkgname=${pkgname#python-}
-pkgver=0.19.11
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 options=(!lto)
 depends=(
     'python-click'
-    'python-docker-pycreds'
     'python-gitpython'
+    'python-packaging'
     'python-platformdirs'
     'python-protobuf'
     'python-psutil'
@@ -21,6 +21,7 @@ depends=(
     'python-sentry_sdk'
     'python-setproctitle'
     'python-setuptools'
+    'python-typing_extensions'
     'python-yaml'
 )
 makedepends=('cargo' 'gcc' 'go' 'python-build' 'python-hatchling'
@@ -36,7 +37,7 @@ provides=('python-wandb')
 conflicts=('python-wandb-git')
 install="python-wandb.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1135362efb8e2c1915ab21750935161b1dcbb3bc6b9e7b7ff1c531d49814bfc0')
+sha256sums=('52d01c6842978bec0bb547b600cadeee164444c60b009d7f6aae6ba63030e857')
 
 prepare() {
     cd "$_pkgname-$pkgver"
