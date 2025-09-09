@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-fastkde
 _name=${pkgname#python-}
-pkgver=1.0.26
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="Fast kernel density estimation"
 arch=(any)
 url="https://github.com/LBL-EESA/fastkde"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5dbfd7552040e669fc20ada349f5e9bf023a380851cbe10d30146de845a63693')
+sha256sums=('40e8d1a50ace4df18f23db13ded8920aee805a860c49df488947f02c18830dfb')
 build() {
     cd "$srcdir/$_name-$pkgver"
     sed -i 's/"oldest-supported-numpy.*"/"numpy"/' pyproject.toml
