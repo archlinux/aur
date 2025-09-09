@@ -3,11 +3,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
-url="https://github.com/jxnl/instructor"
+url="https://github.com/567-labs/instructor"
 license=(MIT)
 depends=(
   python
@@ -40,8 +40,8 @@ optdepends=(
   'python-google-generativeai: support for Google Gemini models'
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b0da5f89d5c92502cf6abeb2a75dc0ddfe99f057c92303e33bdd56e1a23e296c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ab4c3a44a01836cf842f41be7091577056d691bd99a5ba9075b946c22cd8812e')
 
 _archive="$_pkgname-$pkgver"
 
