@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.1.0.r541.g97041c9
+	pkgver = 0.2.0.r20.g2b78922
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -14,6 +14,10 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	options = !lto
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
+	source = glibc-2.42.patch::https://git.launchpad.net/~juliank/ubuntu/+source/rust-coreutils/plain/debian/patches/glibc-2.42.patch?h=ubuntu/devel&id=a16e77bec0546ee51770a891a24468e8048242e3
+	source = nix-rust0.30.1.tar.gz::https://github.com/nix-rust/nix/archive/refs/tags/v0.30.1.tar.gz
 	sha256sums = SKIP
+	sha256sums = 3516ae0e2a4fe5fc4996e0f7c9952213f5b7394c739c79f31bafd2ba2a9e2ebb
+	sha256sums = 31742bef74cad04c8bd8c9a7301323e3df35847f5b776024221cbd2060cd5ed7
 
 pkgname = uutils-coreutils-git
