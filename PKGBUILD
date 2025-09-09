@@ -9,7 +9,7 @@
 _pkgauthor=coredns
 _pkgname=coredns
 pkgname=${_pkgname}-bin
-pkgver=1.12.3
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="A DNS server that chains plugins"
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,9 @@ source_aarch64=(coredns_${pkgver}_aarch64.tar.gz::https://github.com/coredns/cor
 sha256sums=('a1cf457df75c9cadc5653cea2471281dc087d727ed784d3558ef76a4a2c31eff'
             '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
             'e3cc35967f12c8bca2961f4d98413958649072492fe37052249a8cbcd2313ed1'
-            'c39141ee571561fc88e260e59bb97a1fb309048c9b2a936895a320bf202b2878')
-sha256sums_x86_64=('3651317764a3f1a75a7b00e8295414c0391f9a6b6a140f0d6d7dd783ac5f3d12')
-sha256sums_aarch64=('1dfc8f56464be64e90b1bf84ec9714ce8ab3a6d265bc7a1307170c28809bc913')
+            '39713a5bfd6fd1a2df1caa7a8296c4327e48c51e964c83d5fea4ed3a5ba4df9f')
+sha256sums_x86_64=('46dcee6d9b406310a2dbf793e414c4a999317ddacbdfc307215a006144592f8f')
+sha256sums_aarch64=('67fdaa45b622eed5d969aad300ce28d37b42da60010672b90fde41e1dceefcaa')
 
 package() {
     install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
