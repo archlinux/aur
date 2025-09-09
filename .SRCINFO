@@ -1,6 +1,6 @@
 pkgbase = wine-pure-git
 	pkgdesc = Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)
-	pkgver = 10.14.r0.g1d1e5fb3e51
+	pkgver = 10.14.r196.g3cfbf9e3cd9
 	pkgrel = 1
 	url = https://github.com/ventureoo/PKGBUILDs
 	install = wine.install
@@ -73,7 +73,7 @@ pkgbase = wine-pure-git
 	sha256sums = SKIP
 	sha256sums = 9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
-	sha256sums = a28375f726f90b266568458fac036f1f1894753793548e070f5115967c8c0bfc
+	sha256sums = d2a05d06ab500da0c344ec5713c022e8e57724d2307373c89d6fce4e049c62b4
 	sha256sums = 5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006
 	sha256sums = 13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60
 	sha256sums = 7f524fff2146871019dd4d8dfb278dec6bb4dec71870d3ddfb5a7004c29a6f57
