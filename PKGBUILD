@@ -3,25 +3,26 @@ pkgname=chromium-ffmpeg-legacy
 _avcodec=61
 _chromium=137.0.7151.138
 _chrff=$(curl -sL https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${_chromium}/DEPS?format=TEXT | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgver=7.1.1
-pkgrel=2
+pkgver=7.1.2
+_commit=84bcf54e92d10982e8635fd6818c5bac49d83410
+pkgrel=0 # pre release
 pkgdesc="Add codecs to Chromium M137- (libavcodec ${_avcodec})"
 arch=('x86_64')
 url=https://ffmpeg.org/
 _url=https://chromium.googlesource.com/chromium/third_party/ffmpeg
 license=('LGPL-2.1-or-later')
 install=opera-ffmpeg.install
-source=(${url}releases/ffmpeg-${pkgver}.tar.xz
-"AVFMT_FLAG_NOVIDEOPARSE.patch.base64::${_url}/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT"
+
+source=( #${url}releases/ffmpeg-${pkgver}.tar.xz
+https://github.com/FFmpeg/FFmpeg/archive/${_commit}.tar.gz
 "no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "${_chromium}sigs.base64::${_url}/+/${_chrff}/chromium/ffmpeg.sigs?format=TEXT"
 "aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
 "aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
-https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 opera-ffmpeg.hook ${install})
 
-sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
-            '40b05c04cca3fa8901fb40bf95e3e3d938c7afd1eaa884209f8667359471246c'
+sha256sums=('cc9c01312dc9b48c8ec4892e4913c7b16021c80698f028b4946eda95f98989a9'
             '95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05'
             'e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01'
             'ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234'
@@ -31,18 +32,18 @@ sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
             '8100be6868b0f6202302fd1045e5741fdb3c6be7ea41bb36a72a365979bef56c')
 depends=(glibc)
 makedepends=(nasm
-diffutils gcc make patch) # base-devel
+gcc make patch) # base-devel
 _so=libffmpeg.so
 conflicts=(opera{,-beta}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
-replaces=("${conflicts[@]}") # remove at next bump
 prepare() {
   # List used funcs
   base64 -d ${_chromium}sigs.base64 | grep -oP '\bav[a-z0-9_]*(?=\s*\()' > sigs.txt
   echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> sigs.txt # only for opera
   echo -e "{\nglobal:\n$(sed 's/$/;/' sigs.txt)\nlocal:\n*;\n};" > export.map
   
-  cd ffmpeg-$pkgver
+  cd FFmpeg-$_commit
+  #cd ffmpeg-$pkgver
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c #diff libavcodec/opus/dec.c{.bak,}||:
   # Chromium patches
@@ -52,30 +53,23 @@ prepare() {
   patch -Np1 -i aac.patch
   base64 -d ../no-xheaac-parser.patch.base64 > no-xheaac-parser.patch
   patch -Np1 -i no-xheaac-parser.patch
-  base64 -d ../AVFMT_FLAG_NOVIDEOPARSE.patch.base64 > AVFMT_FLAG_NOVIDEOPARSE.patch
-  patch -Np1 -i AVFMT_FLAG_NOVIDEOPARSE.patch
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c # buggy or unused
-  #diff libavformat/oggdec.c{.bak,}||:
   sed -i.bak 's/^int av_sscanf(.*/#define av_sscanf sscanf/' libavutil/avstring.h
-  #diff libavutil/avstring.h{.bak,}||:
   # CHROMIUM_NO_LOGGING
   _av_log=$(grep 'void av_log(' libavutil/log.c)
   _av_log_once=$(grep 'void av_log_once(' libavutil/log.c)
   _av_vlog=$(grep 'void av_vlog(' libavutil/log.c)
   sed -i.bak -E "/^void\s+(av_log|av_log_once|av_vlog)\s*\(.*\)\s*$/,/^\s*\}\s*$/d" libavutil/log.c
   echo -e "${_av_log}{}\n${_av_log_once}{}\n${_av_vlog}{}" >> libavutil/log.c
-  #diff libavutil/log.c{.bak,}
   # https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/1464930696f593320352a6f928fad6f50ade8f8b
   sed -i.bak '/check_optflags*.-fno-tree-vectorize/d' configure
-  #diff configure{.bak,}||:
 }
 
 build() {
-  cd ffmpeg-$pkgver
-  # ${_url}/+/refs/heads/master/chromium/config/Chrome/linux/x64/
-  # BUILD.gn
+  #cd ffmpeg-$pkgver
+  cd FFmpeg-$_commit
   ./configure \
     --disable-{debug,all,autodetect,doc,iconv,network,symver,large-tests} \
     --disable-{error-resilience,faan,iamf} \
@@ -91,7 +85,7 @@ build() {
 
   make DESTDIR=.. install
   cd ..
-  _symbols=$(awk '{print "-Wl,-u," $1}' sigs.txt | paste -sd ' ' -)
+  _symbols=$(sed 's/^/-Wl,-u,/' sigs.txt | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script=export.map \
@@ -99,15 +93,15 @@ build() {
 }
 
 package(){
-  install -Dvm644 $_so "${pkgdir}"/usr/lib/${_so}.${_avcodec}
+  install -Dm644 $_so "${pkgdir}"/usr/lib/${_so}.$_avcodec
   install -d "$pkgdir"/usr/lib/opera{,-beta}/lib_extra
   for _f in "$pkgdir"/usr/lib/opera{,-beta}/lib_extra
-    do ln -svf /usr/lib/$_so.${_avcodec} "$_f/$_so"
+    do ln -sf /usr/lib/${_so}.$_avcodec "$_f/$_so"
   done
-  install -Dvm644 opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm644 opera-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
 
   for _n in {31..36} ; do
     install -d "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2
-    ln -svf /usr/lib/${_so}.$_avcodec "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2/$_so
+    ln -sf /usr/lib/${_so}.$_avcodec "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2/$_so
   done  
 }

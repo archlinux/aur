@@ -1,13 +1,12 @@
 pkgbase = chromium-ffmpeg-legacy
 	pkgdesc = Add codecs to Chromium M137- (libavcodec 61)
-	pkgver = 7.1.1
-	pkgrel = 2
+	pkgver = 7.1.2
+	pkgrel = 0
 	url = https://ffmpeg.org/
 	install = opera-ffmpeg.install
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = nasm
-	makedepends = diffutils
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
@@ -16,10 +15,7 @@ pkgbase = chromium-ffmpeg-legacy
 	provides = opera-beta-ffmpeg-codecs
 	conflicts = opera-ffmpeg-codecs
 	conflicts = opera-beta-ffmpeg-codecs
-	replaces = opera-ffmpeg-codecs
-	replaces = opera-beta-ffmpeg-codecs
-	source = https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
-	source = AVFMT_FLAG_NOVIDEOPARSE.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/594bc6d3246fe6b293f253d07c8905c578cb75c9%5E%21/?format=TEXT
+	source = https://github.com/FFmpeg/FFmpeg/archive/84bcf54e92d10982e8635fd6818c5bac49d83410.tar.gz
 	source = no-xheaac-parser.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT
 	source = 137.0.7151.138sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/01f23648c6b84de6c0f717fa4e1816f53b9ee72e/chromium/ffmpeg.sigs?format=TEXT
 	source = aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
@@ -27,8 +23,7 @@ pkgbase = chromium-ffmpeg-legacy
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = opera-ffmpeg.hook
 	source = opera-ffmpeg.install
-	sha256sums = 733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
-	sha256sums = 40b05c04cca3fa8901fb40bf95e3e3d938c7afd1eaa884209f8667359471246c
+	sha256sums = cc9c01312dc9b48c8ec4892e4913c7b16021c80698f028b4946eda95f98989a9
 	sha256sums = 95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05
 	sha256sums = e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01
 	sha256sums = ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234
