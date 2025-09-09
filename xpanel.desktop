@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XPanel
+Exec=xpanel-desktop
+Icon=xpanel-desktop
+Type=Application
+Categories=Utility;
+Comment=Finalmouse XPanel Desktop Application
+Terminal=false
+StartupNotify=true
