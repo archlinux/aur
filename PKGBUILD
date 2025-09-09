@@ -2,19 +2,19 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=citron
 pkgname=citron-git
-pkgver=0.6.1.r62.g046538b
-pkgrel=2
+pkgver=0.7.0.r0.g206d778
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 provides=('citron')
 depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'fmt' 'zydis' 'glibc' 'boost-libs' 'gcc-libs' 'lz4' 'openssl' 'zstd' 'libva' 'zlib')
-makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost' 'qt6-tools' 'qt6-multimedia' 'rapidjson')
+makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost' 'qt6-tools' 'qt6-multimedia' 'rapidjson' 'vulkan-headers' 'vulkan-utility-libraries' 'catch2')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('citron')
 options=(!debug)
-source=(citron::git+https://git.citron-emu.org/citron/emu.git
+source=(citron::git+https://git.citron-emu.org/citron/emulator.git
         cubeb::git+https://github.com/mozilla/cubeb.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
         discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
@@ -109,7 +109,7 @@ prepare() {
     git config submodule.externals/SPIRV-Headers.url "${srcdir}"/SPIRV-Headers
     git -c protocol.file.allow=always submodule update
   popd
-  
+
   # Compatibility Boost 1.88
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service\b/boost::asio::io_context/g'
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service::strand\b/boost::asio::strand<boost::asio::io_context::executor_type>/g'
@@ -123,22 +123,25 @@ build() {
   cmake -B build -GNinja -S "$_pkgname" \
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
-    -DUSE_SYSTEM_QT=ON \
+    -DCITRON_USE_BUNDLED_QT=ON \
+    -DENABLE_QT6=ON \
     -DCITRON_USE_BUNDLED_FFMPEG=OFF \
+    -DCITRON_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+    -DCITRON_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
     -DCITRON_USE_BUNDLED_SDL2=OFF \
     -DCITRON_USE_EXTERNAL_SDL2=OFF \
     -DCITRON_TESTS=OFF \
     -DCITRON_CHECK_SUBMODULES=OFF \
-    -DCITRON_USE_LLVM_DEMANGLE=OFF \
     -DCITRON_ENABLE_LTO=ON \
     -DCITRON_USE_QT_MULTIMEDIA=ON \
     -DCITRON_USE_QT_WEB_ENGINE=ON \
     -DENABLE_QT_TRANSLATION=ON \
+    -DUSE_DISCORD_PRESENCE=ON \
+    -DBUNDLE_SPEEX=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_DISCORD_PRESENCE=ON \
-    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
     -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
     -DBUNDLE_SPEEX=ON \
