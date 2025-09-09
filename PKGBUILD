@@ -3,7 +3,7 @@
 _base=paddlepaddle
 pkgname=${_base}-bin
 pkgdesc="Parallel Distributed Deep Learning"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 arch=(x86_64)
 url="https://${_base}.org.cn"
@@ -14,7 +14,7 @@ makedepends=(python-installer)
 _pyversion=cp313 # $(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
 _wheel="${_base}-${pkgver}-${_pyversion}-${_pyversion}-manylinux1_${CARCH}"
 source=(https://pypi.org/packages/${_pyversion}/${_base::1}/${_base}/${_wheel}.whl)
-sha256sums=('460f64c1a3b6d682ad5bf354db648055e2efaee7d1cec593bf029d6f3d85b46e')
+sha256sums=('fa2aecd061424350f6770a83dda079691f7224635cff276eaef4e3e17440039d')
 noextract=("${_wheel}.whl")
 provides=("${_base}=${pkgver}")
 conflicts=(${_base})
