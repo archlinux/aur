@@ -1,18 +1,18 @@
 pkgbase = privatebin-cli
 	pkgdesc = A powerful CLI for creating and managing PrivateBin pastes with ease
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/gearnode/privatebin
 	install = privatebin-cli.install
 	arch = x86_64
 	arch = aarch64
-	arch = armv7h
 	license = ISC
 	makedepends = go
 	makedepends = pandoc
+	depends = glibc
 	conflicts = privatebin-cli-bin
 	options = !lto
-	source = privatebin-cli-2.1.0.tar.gz::https://github.com/gearnode/privatebin/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = abcd34e93cdd3abc565c9943a9e1642be9bdf22b0fb922bf6f5ba62d0e87bea9
+	source = privatebin-cli-2.1.1.tar.gz::https://github.com/gearnode/privatebin/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = eb143ed6d2ab88d66e615c5a98fb2c3f8b0ee5a8394590b68ddbf59bfb2c39d3
 
 pkgname = privatebin-cli

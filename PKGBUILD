@@ -3,18 +3,19 @@
 pkgname=privatebin-cli
 _binname=privatebin
 _bindate=$(date --rfc-3339=date)
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=(x86_64 aarch64)
 url='https://github.com/gearnode/privatebin'
 license=('ISC')
 conflicts=("${pkgname}-bin")
+depends=(glibc)
 makedepends=('go' 'pandoc')
 options=(!lto)
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('abcd34e93cdd3abc565c9943a9e1642be9bdf22b0fb922bf6f5ba62d0e87bea9')
+sha256sums=('eb143ed6d2ab88d66e615c5a98fb2c3f8b0ee5a8394590b68ddbf59bfb2c39d3')
 
 prepare() {
   cd $_binname-$pkgver
