@@ -1,0 +1,11 @@
+[Unit]
+Description=ios-notif-forward
+After=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/ios-notif-forward
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

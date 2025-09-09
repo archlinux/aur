@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.1.1
+Name=ios-notif-forward
+Icon=ios-notif-forward
+Categories=Utility
+Exec=ios-notif-forward
+Terminal=false
+X-GNOME-UsesNotifications=true

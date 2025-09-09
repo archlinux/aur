@@ -1,0 +1,19 @@
+pkgbase = ios-notif-forward
+	pkgdesc = Forward notifications from Apple devices to your desktop.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/impiaaa/ios-notif-forward
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk3
+	depends = xdotool
+	depends = libappindicator-gtk3
+	source = ios-notif-forward-0.1.1.tar.gz::https://github.com/impiaaa/ios-notif-forward/archive/refs/tags/v0.1.1.tar.gz
+	source = ios-notif-forward.service
+	source = ios-notif-forward.desktop
+	b2sums = 405c05a7fd2ebc3f16f7a4133713d8464b29cef7523243c1ab62c214501da812ebc5673f8d2a1b2279b03a03daa24f51b995a5f92043f1f8329dce042272ee90
+	b2sums = dce610dd9a1b2e292039731da28d1456e258344bfba53972060b7ef7b5b3a0372f5f1843521a970863c4faca864e9a1a03a076315cd19fb3b773409df83e68e5
+	b2sums = dce70aa4e097650a806119a04e85f29442182a2b2aaeaa479e13f10dd3c8d3e88c595cb0056381f67af8d5b06a09ebc4688fb14a03f4657865458496f3f39a16
+
+pkgname = ios-notif-forward
