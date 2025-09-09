@@ -1,7 +1,7 @@
 pkgbase = qqmusic-wine
 	pkgdesc = QQ Music via Wine
 	pkgver = 21.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://y.qq.com/
 	arch = x86_64
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = qqmusic-wine
 	sha256sums = FEBE9BBC2D582ABFA6384E825991F70995C2EB1EF9869FAF09AA84F4FFAC2873
 	sha256sums = d6a1a92bfd1249eccdd18a657189ed1f66704db429053b6d6c93b296eb9ef074
 	sha256sums = 0887451fa52c4685137a6df87720e607098ba81f14e7dd6f3d9c5319a558d59b
-	sha256sums = e6017cdc7d7c1a28a14409ace6cc4c0f18f8e7cfeabef01b593825dc156cf1b7
-	sha256sums = 32573a27a2c820ae94bf537897ea23193a95cd7c0306a679d445e88e7ace996a
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = qqmusic-wine
