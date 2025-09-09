@@ -2,7 +2,7 @@
 
 pkgname=tdns-bin
 _pkgname=tdns
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -12,7 +12,7 @@ license=('MPL-2.0')
 provides=('tdns')
 conflicts=('tdns')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/tdns_${pkgver}_linux_amd64.tar.gz" "tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('c4fe0464f16f58b3fcf25abf9e36fd443e19e29c6c0268f23242cc6aa676b4b5' 'SKIP')
+sha256sums=('723c63482f04c8d2ed2d15b28d45a9aa7f54d6292d386a7bdbddd0d71316e051' 'SKIP')
 
 package() {
   install -Dm 755 tdns -t $pkgdir/usr/bin/
