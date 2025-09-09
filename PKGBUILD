@@ -1,5 +1,5 @@
 # Maintainer: Ivan Ivanov
-pkgname=gol-game-of-life
+pkgname=gol
 pkgver=1.0
 pkgrel=1
 pkgdesc="Terminal-based Conway's Game of Life implementation"
