@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=144.0a1+20250908.1+h4c51153ce626
+pkgver=144.0a1+20250909.1+h1466a52e8c04
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -86,8 +86,7 @@ source=(
   $pkgname.desktop
   org.mozilla.$pkgname.metainfo.xml
   0001-Install-under-remoting-name.patch
-  0002-Bug-1987131-Add-missing-type_traits-include.patch
-  0003-Use-standard-visibility-flags.patch
+  0002-Use-standard-visibility-flags.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -99,14 +98,12 @@ sha256sums=('SKIP'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
             'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c'
-            'c4cfc51d0590e33c64a3054019320e3e7d8af016d35e32cec9e1ba6bc15f4873'
             '726f68d6cd6e23b4aee4a8b051185316fcb9f9860d4541b992c1e399301b0d6a')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
         'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b'
-        '32c3eae89e9418a3f4d724b8075ebb46794dffe45cd089a0a901a2a754ec78bfaabc4bf784610aa0f6b56b9187579b135de2207c0fa096f79c7047c04027233b'
         '3f7a451e402ca94f5340e24d7ff5ce3c2e22fa1b2dd55b520582a9cce5f6b77230684d382ba8e51e7e37b538df33ca2f3973f1b648ad0f65b66871208317d520')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
@@ -143,9 +140,7 @@ prepare() {
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
 
   # Build fix
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1987131
-  patch -Np1 -i ../0002-Bug-1987131-Add-missing-type_traits-include.patch
-  patch -Np1 -i ../0003-Use-standard-visibility-flags.patch
+  patch -Np1 -i ../0002-Use-standard-visibility-flags.patch
 
   echo -n "$_google_api_key" >google-api-key
 
