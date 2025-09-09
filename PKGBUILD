@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='winboat-bin'
 _pkgname="winboat"
-pkgver='0.7.5'
+pkgver='0.7.8'
 pkgrel='1'
 pkgdesc='Run Windows apps on Linux with seamless integration'
 arch=(x86_64)
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 options=("!strip" "!debug")
 source=("https://github.com/TibixDev/winboat/releases/download/v${pkgver}/winboat-${pkgver}-amd64.deb")
 
-sha256sums=('46ec27913bb35b6b1b25d287721b8205383f38b376866eb11bc7c67ee2a0d695')
+sha256sums=('fa81eb55cbd75340dbee5c79b897b0c1d55d47cad38b2db425bca6b5f1d1a119')
 
 
 
