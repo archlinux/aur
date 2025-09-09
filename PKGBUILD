@@ -4,11 +4,11 @@ pkgname=outfox_bin
 #      main  date     sub  codename
 pkgver=5.3.0_20250907_5.0_043
 read main date sub codename <<< $(echo "${pkgver}" | sed 's/_/ /g')
-pkgrel=1
+pkgrel=2
 pkgdesc="fork of open source rhythm game engine StepMania"
 arch=('x86_64')
 options=('!strip')
-url="https://projectmoon.dance/index.php"
+url="https://projectoutfox.com/"
 license=('Apache')
 depends=('libusb-compat' 'ffmpeg' 'lua')
 makedepends=(gendesk)
@@ -34,4 +34,4 @@ package() {
 }
 md5sums=('61c32e56aa3d8e61eb0670df80d3840a'
          '3948603b54b512544490928f7acd07c9'
-         '2b26841e2f3580e5bf2f63218834ec41')
+         '4c2fb0decfe69847f52dfef9ada6a921')
