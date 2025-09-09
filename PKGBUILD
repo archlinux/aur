@@ -1,7 +1,7 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.0.0.r526.gd9989cd
+pkgver=0.0.0.r597.g3593dab
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -48,21 +48,27 @@ build() {
     libdex libdex-build
   ninja -C libdex-build
 
-  # configure bazaar to build against bundled libdex
-  export PKG_CONFIG_PATH="$srcdir/libdex-build/meson-uninstalled"
-  export LD_LIBRARY_PATH="$srcdir/libdex-build"
+  # get system pkg-config path
+  system_pc_path=$(pkg-config --variable pc_path pkg-config)
 
-  # preserve default LDFLAGS and add rpath
-  export LDFLAGS="$LDFLAGS -Wl,-rpath,\$ORIGIN/../lib/bazaar/lib"
+  # create native file
+  cat > "$srcdir/native.ini" <<EOF
+[binaries]
+pkg-config = '/usr/bin/pkg-config'
 
-  meson setup --prefix=/usr --buildtype=release \
+[properties]
+pkg_config_libdir = '$srcdir/libdex-build/meson-uninstalled:$system_pc_path'
+EOF
+
+  # build bazaar using native file
+  meson setup --prefix=/usr --buildtype=release --native-file="$srcdir/native.ini" \
     bazaar bazaar-build
   ninja -C bazaar-build
 }
 
 package() {
-  # install bundled libdex to private dir
+  # Install bundled libdex to private dir
   DESTDIR="$pkgdir" meson install -C "$srcdir/libdex-build"
-  # install bazaar
+  # Install bazaar
   DESTDIR="$pkgdir" meson install -C "$srcdir/bazaar-build"
 }
