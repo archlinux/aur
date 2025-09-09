@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-et
 	pkgdesc = Estonian language pack for Firefox Nightly
-	pkgver = 144.0a1.20250908.082214
+	pkgver = 144.0a1.20250909.092217
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-et
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-et-144.0a1.20250908.082214.xpi
-	source = firefox-nightly-i18n-et-144.0a1.20250908.082214.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-144.0a1.et.langpack.xpi
-	sha256sums = c03cdd528eca8d6c3f510ef4f33e82b541f6ac79e18f13d2984e49d3dec7cbcd
+	noextract = firefox-nightly-i18n-et-144.0a1.20250909.092217.xpi
+	source = firefox-nightly-i18n-et-144.0a1.20250909.092217.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-144.0a1.et.langpack.xpi
+	sha256sums = 80c9fb614d497c9607623b15308e86b4aa51c995454be451296508cce1e5be16
 
 pkgname = firefox-nightly-i18n-et
