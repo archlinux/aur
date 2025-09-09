@@ -5,7 +5,7 @@ pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=stable
 # `$_pkgver` is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.0
+_pkgver=1.21.1
 
 # `makepkg` doesn't support hyphens in `$pkgver`, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
@@ -19,12 +19,10 @@ options=("!strip") # .NET game probably doesn't need symbols stripped or a debug
 source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_pkgver.tar.gz"
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "$pkgname.desktop"
-        "vsmodinstall-handler.desktop"
-        "font.conf")
-md5sums=("f8707ba383b5e0695fb0a23dc05f84b5"
+        "vsmodinstall-handler.desktop")
+md5sums=("607c24bf6ecec4cee7ef5bc7309ee2ca"
          "0cd6360c157fc7dc4d52952e83483e7d"
-         "8ccc9b49290dda21199b14ac3cd4ac7e"
-         "9912e111cef7077cab433290c9995b6f")
+         "8ccc9b49290dda21199b14ac3cd4ac7e")
 
 prepare() {
 	# Remove install script provided by developers
@@ -47,9 +45,6 @@ package() {
 	# Copy all other application files (`/opt` is the right place to dump this)
 	install -dm 755 "$pkgdir"/opt # Create directory first (required)
 	cp -r --preserve=mode -t "$pkgdir"/opt "$pkgname"
-
-	# Override `font.conf` provided by the game, as it is useless
-	install -Dm644 font.conf "$pkgdir"/opt/"$pkgname"/font.conf
 
 	# Create a symlink to run the launch script from terminal
 	install -dm 755 "$pkgdir"/usr/bin # Create directory first (required)
