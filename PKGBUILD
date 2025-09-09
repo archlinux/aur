@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r582.3aece931
+pkgver=r646.215ca705
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -58,8 +58,6 @@ prepare() {
     popd >/dev/null
   fi
 
-  export PUB_CACHE="$srcdir/.pub_cache"
-
   cd "$srcdir/$_reponame"
   cat > pubspec_overrides.yaml <<'YAML'
 dependency_overrides:
@@ -77,8 +75,7 @@ build() {
   cd "$srcdir/$_reponame"
 
   flutter precache --linux
-  flutter pub upgrade --major-versions
-  flutter pub get --enforce-lockfile
+  flutter pub get
   flutter build linux --no-pub --release
 }
 
