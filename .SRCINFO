@@ -1,6 +1,6 @@
 pkgbase = python-pyknos
 	pkgdesc = conditional density estimation
-	pkgver = 0.15.2
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/mackelab/pyknos
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyknos
 	depends = python-nflows
 	provides = lsbi
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/pyknos/pyknos-0.15.2.tar.gz
-	sha256sums = ee09ea841858e79ed9f3e104b6654aea676f3403a2f228ef76151e108968caf3
+	source = https://files.pythonhosted.org/packages/source/p/pyknos/pyknos-0.16.0.tar.gz
+	sha256sums = 4e1db834d8a5fd847882a081937732fea6798668b72293ae052765e7bfc371c3
 
 pkgname = python-pyknos
