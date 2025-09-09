@@ -4,7 +4,7 @@
 # Contributor: Hussam Al-Tayeb <hussam at visp dot net dot lb>
 
 pkgname=htpdate
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="HTTP Time protocol"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   "htpdate.service")
-sha256sums=('52f25811f00dfe714e0bcf122358ee0ad74e25db3ad230d5a4196e7a62633f27'
+sha256sums=('4c771fe3fc5c4ab5f9393dd501bdc51e4c067297cf304ad1e74e1965ac1c066f'
             '2f12bdf0745fbf7c52f465e78b47635fbdc6fa372e63fb94a6063a5f67ff8c8b')
 
 build() {
