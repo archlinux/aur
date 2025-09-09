@@ -1,7 +1,7 @@
 pkgbase = alpaca-ai
 	pkgdesc = An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jeffser/alpaca
 	arch = any
 	license = GPL-3.0-or-later
@@ -53,6 +53,7 @@ pkgbase = alpaca-ai
 	depends = python-duckduckgo-search
 	depends = python-cairo
 	depends = gst-plugin-pipewire
+	depends = webkitgtk-6.0
 	options = !debug
 	source = alpaca-ai-8.0.0.tar.gz::https://github.com/Jeffser/alpaca/archive/refs/tags/8.0.0.tar.gz
 	b2sums = 83d4893b52db36c1ec4a1325d7ea71192fcb31c2b78a4c7487542dec8eb64c1d7759f81f516bf8999164584d3e05b2e168e6047a9b569c8d0b9a8df9010d5f7c

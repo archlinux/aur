@@ -6,7 +6,7 @@
 pkgname=alpaca-ai
 _pkgname=alpaca
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more"
 arch=(any) # 'any' is generally suitable for Python applications, but specific arch (e.g., 'x86_64') might be used if native components are present.
 url="https://github.com/Jeffser/${_pkgname}" # Project URL, clarified to use _pkgname
@@ -62,6 +62,7 @@ depends=(
     python-duckduckgo-search
     python-cairo
     gst-plugin-pipewire
+    webkitgtk-6.0
 )
 
 # List of build-time dependencies
