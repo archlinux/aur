@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ice40-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ice40
-	pkgver = 20250908_nextpnr_0.8_125_g9715a1d5
+	pkgver = 20250909_nextpnr_0.9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -19,7 +19,7 @@ pkgbase = nextpnr-ice40-nightly
 	depends = python
 	depends = boost-libs
 	depends = qt5-base
-	provides = nextpnr-ice40=0.8
+	provides = nextpnr-ice40=0.9
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
 	options = !strip
