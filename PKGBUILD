@@ -34,6 +34,7 @@ package() {
     cp "${srcdir}/dbeaver/readme.txt" "usr/share/doc/${pkgname}/"
     cp -r "${srcdir}/dbeaver/licenses" "usr/share/licenses/${pkgname}"
 
+    cp "${srcdir}/dbeaver.sh" "opt/${pkgname}/"
     ln -s "/opt/${pkgname}/dbeaver.sh" "usr/bin/dbeaver-le"
     install -m 644 "${srcdir}/dbeaver-le.desktop" "usr/share/applications/"
 }
