@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=QQ音乐
+Name[en]=QQ Music
+Comment=腾讯QQ音乐客户端
+Comment[en]=Tencent QQ Music Client
+Exec=qqmusic-wine
+Icon=qqmusic
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Music;Player;
+StartupNotify=true
+StartupWMClass=qqmusic.exe

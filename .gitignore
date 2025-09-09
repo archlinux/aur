@@ -1,0 +1,24 @@
+# Downloaded files during build
+msyh.ttc
+msyhbd.ttc
+*.part
+*.exe
+
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.*
+
+# Wine prefix (if accidentally created in repo)
+wineprefix/
+
+# Makepkg logs
+*.log
+
+# Temporary files
+*.tmp
+*~
+
+# Editor backups
+.vscode/
+.idea/
