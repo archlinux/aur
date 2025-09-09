@@ -8,7 +8,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=ytt
-pkgver=0.52.0
+pkgver=0.52.1
 pkgrel=1
 pkgdesc='YAML templating tool that works on YAML structure instead of text'
 url='https://carvel.dev/ytt'
@@ -17,7 +17,7 @@ license=(apache-2.0)
 install=''
 makedepends=(bash go zip)
 provides=(ytt)
-source=(ytt-0.52.0::https://github.com/carvel-dev/ytt/archive/v0.52.0.tar.gz)
+source=(ytt-0.52.1::https://github.com/carvel-dev/ytt/archive/v0.52.1.tar.gz)
 prepare () 
 { 
     set -eo pipefail;
@@ -49,4 +49,4 @@ package ()
     ./$BIN completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$BIN.fish";
     ./$BIN completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$BIN"
 }
-sha256sums=('130758548c465eb2707813890597e59209cb802a9c47b1196969cae0374a07ea')
+sha256sums=('c02a8dbcff7f7cf3a92ac6a210d299dd5df13946625e092fa2da48622a8e2fec')
