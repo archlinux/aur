@@ -12,7 +12,7 @@
 # https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 pkgname=ffmpeg-cuda
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
@@ -123,22 +123,26 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=(
-  "git+https://git.ffmpeg.org/ffmpeg.git#tag=n7.0"
+  "git+https://git.ffmpeg.org/ffmpeg.git#tag=n8.0"
   "add-av_stream_get_first_dts-for-chromium.patch"
+  "nvcc-stdc++-14.patch"
 )
-sha256sums=("SKIP" "57e26caced5a1382cb639235f9555fc50e45e7bf8333f7c9ae3d49b3241d3f77")
+sha256sums=(
+  "SKIP"
+  "57e26caced5a1382cb639235f9555fc50e45e7bf8333f7c9ae3d49b3241d3f77"
+  "b26219c96c8d1539fbb57a241a45894c2c0d50196f34b6af0929505da8584723"
+)
 
 _dir=ffmpeg
 
 prepare() {
     cd ${srcdir}
     patch -Np0 -i ${srcdir}/add-av_stream_get_first_dts-for-chromium.patch
+    patch -Np0 -i ${srcdir}/nvcc-stdc++-14.patch
 }
 
 build() {
-  
-  local _cflags='-I/opt/cuda/include'
-  local _ldflags='-L/opt/cuda/lib64'
+
   #local _nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
 
 #  local _nvccflags='-arch=sm_52 \
@@ -162,8 +166,12 @@ build() {
     #--nvccflags="$_nvccflags" \
   ./configure \
     --prefix=/usr \
-    --extra-cflags="$_cflags" \
-    --extra-ldflags="$_ldflags" \
+    --cc="/usr/bin/gcc-14" \
+    --cxx="/usr/bin/g++-14" \
+    --stdcxx="c++14" \
+    --nvccflags="-ccbin /usr/bin/g++-14 -O2 -std=c++14" \
+    --extra-cflags="-I/opt/cuda/include" \
+    --extra-ldflags="-L/opt/cuda/lib64" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
@@ -232,7 +240,7 @@ build() {
     --enable-vapoursynth \
     --enable-version3 \
     --enable-vulkan
-  make
+  make -j`nproc`
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
 }
