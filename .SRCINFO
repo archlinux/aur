@@ -23,7 +23,6 @@ pkgbase = coolerdash-git
 	backup = etc/coolerdash/config.ini
 	source = git+https://github.com/damachine/coolerdash.git?signed#tag=3a2b67dfdb2290a33f781e114da55e4b3c6b3175
 	source = ssh_allowed_signers
-	validpgpkeys = 160A147D7BFD360F41C4E52BC841EA18095F5D74
 	sha256sums = SKIP
 	sha256sums = 18b1a6302b369ce01ce5a040046fa609ab045a99890797e9d8c041543ac450d6
 
