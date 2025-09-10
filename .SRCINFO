@@ -9,7 +9,6 @@ pkgbase = noctalia-shell-git
 	depends = quickshell-git
 	depends = ttf-roboto
 	depends = inter-font
-	depends = ttf-material-symbols-variable-git
 	depends = gpu-screen-recorder
 	depends = brightnessctl
 	depends = ddcutil
