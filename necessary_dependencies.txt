@@ -2,6 +2,7 @@ Module: urllib.parse
   Imported in:
     open_webui/config.py
     open_webui/main.py
+    open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/models/external.py
     open_webui/retrieval/utils.py
@@ -38,6 +39,7 @@ Module: pydantic
     open_webui/models/messages.py
     open_webui/models/models.py
     open_webui/models/notes.py
+    open_webui/models/oauth_sessions.py
     open_webui/models/prompts.py
     open_webui/models/tags.py
     open_webui/models/tools.py
@@ -81,6 +83,7 @@ Module: sqlalchemy
     open_webui/migrations/versions/1af9b942657b_migrate_tags.py
     open_webui/migrations/versions/242a2047eae0_update_chat_table.py
     open_webui/migrations/versions/3781e22d8b01_update_message_table.py
+    open_webui/migrations/versions/38d63c18f30f_add_oauth_session_table.py
     open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
     open_webui/migrations/versions/3af16a1c9fb6_update_user_table.py
     open_webui/migrations/versions/4ace53fd72c8_update_folder_table_datetime.py
@@ -109,6 +112,7 @@ Module: sqlalchemy
     open_webui/models/messages.py
     open_webui/models/models.py
     open_webui/models/notes.py
+    open_webui/models/oauth_sessions.py
     open_webui/models/prompts.py
     open_webui/models/tags.py
     open_webui/models/tools.py
@@ -331,6 +335,7 @@ Module: open_webui.internal.db
     open_webui/models/messages.py
     open_webui/models/models.py
     open_webui/models/notes.py
+    open_webui/models/oauth_sessions.py
     open_webui/models/prompts.py
     open_webui/models/tags.py
     open_webui/models/tools.py
@@ -474,6 +479,7 @@ Module: open_webui.env
     open_webui/models/groups.py
     open_webui/models/knowledge.py
     open_webui/models/models.py
+    open_webui/models/oauth_sessions.py
     open_webui/models/tags.py
     open_webui/models/tools.py
     open_webui/models/users.py
@@ -790,6 +796,7 @@ Module: alembic
     open_webui/migrations/versions/1af9b942657b_migrate_tags.py
     open_webui/migrations/versions/242a2047eae0_update_chat_table.py
     open_webui/migrations/versions/3781e22d8b01_update_message_table.py
+    open_webui/migrations/versions/38d63c18f30f_add_oauth_session_table.py
     open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
     open_webui/migrations/versions/3af16a1c9fb6_update_user_table.py
     open_webui/migrations/versions/4ace53fd72c8_update_folder_table_datetime.py
@@ -818,12 +825,23 @@ Module: open_webui.models.auths
     open_webui/routers/users.py
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/utils/oauth.py
+Module: open_webui.models.oauth_sessions
+  Imported in:
+    open_webui/routers/auths.py
+    open_webui/routers/users.py
+    open_webui/utils/oauth.py
 Module: open_webui.models.groups
   Imported in:
+    open_webui/models/knowledge.py
+    open_webui/models/models.py
+    open_webui/models/notes.py
+    open_webui/models/prompts.py
+    open_webui/models/tools.py
     open_webui/models/users.py
     open_webui/routers/auths.py
     open_webui/routers/groups.py
     open_webui/routers/scim.py
+    open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/utils/access_control.py
     open_webui/utils/oauth.py
@@ -1245,11 +1263,15 @@ Module: open_webui.models.files
     open_webui/models/knowledge.py
     open_webui/retrieval/utils.py
     open_webui/routers/files.py
+    open_webui/routers/folders.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
 Module: sqlalchemy.dialects
   Imported in:
     open_webui/models/models.py
+Module: cryptography.fernet
+  Imported in:
+    open_webui/models/oauth_sessions.py
 Module: open_webui.models.tags
   Imported in:
     open_webui/models/chats.py
@@ -1264,6 +1286,13 @@ Module: open_webui.routers.files
 Module: open_webui.utils.images.comfyui
   Imported in:
     open_webui/routers/images.py
+Module: open_webui.models.knowledge
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/retrieval.py
 Module: black
   Imported in:
     open_webui/routers/utils.py
@@ -1276,12 +1305,6 @@ Module: open_webui.retrieval.vector.factory
     open_webui/routers/files.py
     open_webui/routers/knowledge.py
     open_webui/routers/memories.py
-    open_webui/routers/retrieval.py
-Module: open_webui.models.knowledge
-  Imported in:
-    open_webui/retrieval/utils.py
-    open_webui/routers/files.py
-    open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
 Module: open_webui.routers.knowledge
   Imported in:
