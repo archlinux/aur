@@ -10,15 +10,22 @@ is_parent_volatile() {
 	fi
 	local parent_exe
 	parent_exe="$(readlink -f "/proc/$parent_pid/exe" 2>/dev/null || true)"
-	if [[ -z "$parent_exe" ]] || [[ "$parent_exe" == "/usr/bin/fuzzel" ]]; then
+	if [[ -z "$parent_exe" ]]; then
 		return 0
 	fi
-	return 1
+	case "$parent_exe" in
+		/usr/bin/fuzzel|/usr/bin/nwg-drawer|/usr/bin/wofi)
+			return 0
+			;;
+		*)
+			return 1
+			;;
+	esac
 }
 
 # Elevate
 if [[ $EUID -ne 0 ]]; then
-	if parent_is_volatile; then
+	if is_parent_volatile; then
 		pkexec /usr/lib/garuda/pkexec-gui "$@" || { exit "$?"; }
 		exit 0
 	else
@@ -37,6 +44,11 @@ while IFS= read -rd '' var; do export "$var"; done < <(grep --null-data -ae "^\(
 
 # Temporary directory to store overlays
 overlays_dir="$(mktemp -d)"
+if [[ -z "$overlays_dir" ]]; then
+	echo "Failed to create temporary directory" >&2
+	exit 1
+fi
+
 mkdir "$overlays_dir"/{upper,work,home}
 # Overlayfs mount
 mount -t overlay overlay -o lowerdir="$HOME",upperdir="$overlays_dir/upper",workdir="$overlays_dir/work" "$overlays_dir/home"
