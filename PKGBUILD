@@ -2,12 +2,12 @@
 pkgname=kubectl-oomd
 # renovate: datasource=github-releases depName=jdockerty/kubectl-oomd
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='kubectl plugin to display the pods and containers which have recently been OOMKilled'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jdockerty/kubectl-oomd'
-license=('Apache')
-depends=('kubectl')
+license=('Apache-2.0')
+depends=('kubectl' 'glibc')
 makedepends=('git' 'go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
@@ -23,7 +23,7 @@ build() {
   )
 
   cd "${pkgname}-${pkgver}"
-  export CGO_ENABLED=0
+  export CGO_ENABLED=1
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
