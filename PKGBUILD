@@ -6,12 +6,12 @@ pkgdesc="gSlapper, a GStreamer-based video wallpaper application that replaces m
 arch=('x86_64')
 url="https://github.com/Nomadcxx/gSlapper"
 license=('MIT')
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'wayland' 'cairo')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'wayland')
 makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'wayland-protocols')
 optdepends=('gst-plugins-ugly: Additional codec support'
             'gst-libav: Additional codec support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('73a03b3cefc7185c59bc134a05e82a4e19875d47077c8065c1dda48c9502aa74')
+sha256sums=('8087d3b13e1b67c6055551dcf5ebf085908ce65c9cff6ee77066199c50e70da5')
 
 prepare() {
     cd "${srcdir}/gSlapper-${pkgver}"
