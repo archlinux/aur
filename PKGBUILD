@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BatchJobs
-_pkgver=1.9
+_pkgver=1.10
 pkgname=r-${_pkgname,,}
-pkgver=1.9
-pkgrel=3
+pkgver=1.10
+pkgrel=1
 pkgdesc='Batch Computing with R'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5da9c381df461320ed4033523bad1ee97f88a4670d2714fec32be92964115c77')
+sha256sums=('1ecb3e0955d693d923a699579a7a751305e06188ca041735a1195cb7d0a2fef5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

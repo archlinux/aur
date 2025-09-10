@@ -1,7 +1,7 @@
 pkgbase = r-batchjobs
 	pkgdesc = Batch Computing with R
-	pkgver = 1.9
-	pkgrel = 3
+	pkgver = 1.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=BatchJobs
 	arch = any
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = r-batchjobs
 	depends = r-stringi
 	optdepends = r-mass
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/BatchJobs_1.9.tar.gz
-	sha256sums = 5da9c381df461320ed4033523bad1ee97f88a4670d2714fec32be92964115c77
+	source = https://cran.r-project.org/src/contrib/BatchJobs_1.10.tar.gz
+	sha256sums = 1ecb3e0955d693d923a699579a7a751305e06188ca041735a1195cb7d0a2fef5
 
 pkgname = r-batchjobs
