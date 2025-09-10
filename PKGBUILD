@@ -3,8 +3,8 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.0_qsql.r158.gd69a332
-pkgrel=2
+pkgver=1.2.0_qsql.r239.g6a7ba5e
+pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -31,7 +31,6 @@ makedepends=(
 	'ninja'
 	'asio'
 	'pegtl'
-	'ctre'
 	'vulkan-headers'
 )
 optdepends=('qcm-ncm-plugin-git: Netease Cloud Music plugin')
