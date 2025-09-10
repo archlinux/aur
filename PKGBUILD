@@ -11,7 +11,7 @@ makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'wayland-protocols')
 optdepends=('gst-plugins-ugly: Additional codec support'
             'gst-libav: Additional codec support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8087d3b13e1b67c6055551dcf5ebf085908ce65c9cff6ee77066199c50e70da5')
+sha256sums=('4968b10c14549a4a50c64a92d747cd4a97534a5387269d6b8efd20b77663294d')
 
 prepare() {
     cd "${srcdir}/gSlapper-${pkgver}"
