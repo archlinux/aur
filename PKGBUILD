@@ -1,7 +1,7 @@
 # Maintainer: Reeshav Mainali <reeshavmainali12@gmail.com>
 pkgname=pyprwall
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple wallpaper manager for Hyprland that syncs wallpapers between hyprpaper and hyprlock."
 arch=('x86_64')
 url="https://github.com/reeshavmainali/pyprwall"
