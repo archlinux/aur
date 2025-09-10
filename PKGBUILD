@@ -1,4 +1,4 @@
-# Maintainer: Atte Lautanala <atte@lautana.la>
+# Contributor: Atte Lautanala <atte@lautana.la>
 # Contributor: Trevor Mosey <trevor dot mosey at gmail dot com>
 
 pkgname=flyctl
