@@ -1,0 +1,19 @@
+pkgbase = pipeweaver-git
+	pkgdesc = An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind.
+	pkgver = r220.21f0375
+	pkgrel = 1
+	url = https://github.com/pipeweaver/pipeweaver
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = npm
+	depends = pipewire
+	conflicts = pipeweaver
+	options = !lto
+	source = git+https://github.com/pipeweaver/pipeweaver.git
+	sha256sums = SKIP
+
+pkgname = pipeweaver-git

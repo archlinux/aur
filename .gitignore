@@ -1,0 +1,6 @@
+# ignore all
+*
+# add files
+!.gitignore
+!.SRCINFO
+!PKGBUILD
