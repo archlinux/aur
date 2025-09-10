@@ -31,10 +31,10 @@ package() {
 
     install -Dm755 bin/clangd "$pkgdir/usr/bin/clangd"
 
-    dest="$pkgdir/usr/include/clang/21"
+    dest="$pkgdir/usr/local/lib/clang/21"
     mkdir -p "$dest"
 
     # Copiar todo el contenido de include directamente a la ruta final
-    rsync -a /usr/local/lib/clang/21 "$dest/"
+    rsync -a lib/clang/21/include/ "$dest/"
 
 }
