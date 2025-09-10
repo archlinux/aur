@@ -1,6 +1,6 @@
 # Maintainer: Jaime Pando Acedo <jaime at jpandoac dot es>
 pkgname=naviterm-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A cli client for Navidrome (subsonic)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('naviterm')
 options=('!debug')
 source_x86_64=("naviterm-x86_64-$pkgver.tar.gz::https://gitlab.com/detoxify92/naviterm/-/releases/$pkgver/downloads/binaries/naviterm-amd64")
 source_aarch64=("naviterm-aarch64-$pkgver.tar.gz::https://gitlab.com/detoxify92/naviterm/-/releases/$pkgver/downloads/binaries/naviterm-aarch64")
-sha256sums_x86_64=('eeec94be7814d827589b3a57cf377fc13016d28086bd6edc4d8b1e44e806c568')
-sha256sums_aarch64=('e88df1ef5ff04db34e1cb01e364857f40d5629527d519fd6841f8f4c6a4a788b')
+sha256sums_x86_64=('f783b78659ff9fd09e22a784031ff9e40c5e09650c3aca7a57930fd7a33136f6')
+sha256sums_aarch64=('b31b36b527e86dd75b2cae27c7661687b90b2d7f724d3391eede429a7e060be7')
 
 package() {
   cd "$srcdir"
