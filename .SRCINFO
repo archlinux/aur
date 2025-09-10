@@ -1,6 +1,6 @@
 pkgbase = tatuin-bin
 	pkgdesc = Task Aggregator TUI for Obsidian, Todoist, Gitlab TODO and Github Issues
-	pkgver = 0.23.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/panter-dsd/tatuin
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = tatuin-bin
 	depends = openssl
 	provides = tatuin
 	conflicts = tatuin
-	source = LICENSE-0.23.1::https://raw.githubusercontent.com/panter-dsd/tatuin/v0.23.1/LICENSE.txt
-	source = README-0.23.1.md::https://raw.githubusercontent.com/panter-dsd/tatuin/v0.23.1/README.md
+	source = LICENSE-0.23.2::https://raw.githubusercontent.com/panter-dsd/tatuin/v0.23.2/LICENSE.txt
+	source = README-0.23.2.md::https://raw.githubusercontent.com/panter-dsd/tatuin/v0.23.2/README.md
 	sha256sums = 3f9e3e9a1af1c709e4191560ca9b3cb381f0b4c2da2646d5d00f599080682d28
 	sha256sums = 9d4a8d125504fe5b7a7fa30c3727203f141cf48ea91f08db2a3ecf4ee7ffd459
-	source_x86_64 = https://github.com/panter-dsd/tatuin/releases/download/v0.23.1/tatuin-v0.23.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fc150cc9d357b6ef1edc5686a797fb5390e3565f5065dce1af02f8ccb4aba830
+	source_x86_64 = https://github.com/panter-dsd/tatuin/releases/download/v0.23.2/tatuin-v0.23.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b5044234b226666b1403e8c8e70fecdc9958ad11072de54899c48921e0c9c0a5
 
 pkgname = tatuin-bin
