@@ -1,5 +1,5 @@
 pkgname=gtl
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Transforms text into properly capitalized titles according to the Chicago Manual of Style"
 arch=('x86_64' 'i686' 'aarch64')
