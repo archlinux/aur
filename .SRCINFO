@@ -1,6 +1,6 @@
 pkgbase = python-pywikibot
 	pkgdesc = Python library that interfaces with the MediaWiki API
-	pkgver = 10.3.2
+	pkgver = 10.4.0
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Manual:pywikibot
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pywikibot
 	depends = python-requests
 	optdepends = python-wikitextparser: parsing MediaWiki wikicode
 	optdepends = python-stdnum: cosmetic changes for numbers
-	source = pywikibot-10.3.2.tar.gz::https://github.com/wikimedia/pywikibot/archive/10.3.2.tar.gz
-	sha512sums = 7019cd01ca8c5441f9de91bde6c22fd8a2ea5eaab2d3818b30eed74aa54a2a3358d11e30a0c038f88a68517050e9a8184414032de2275e722e741f08efd7b618
+	source = pywikibot-10.4.0.tar.gz::https://github.com/wikimedia/pywikibot/archive/10.4.0.tar.gz
+	sha512sums = 2a107c795f7f1e3021df00f9e7d7006d5790b8326194aead09a208965f75c2776006606020fda4f443627f64244a0d01ae39bbcb6562c609b4ee6df321d552e9
 
 pkgname = python-pywikibot
