@@ -3,7 +3,7 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=25.2.branchpoint.r1058.gf292fae
+pkgver=25.2.branchpoint.r3036.g6fe4b7344
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 depends=('libdisplay-info' 'libdrm' 'libxcb' 'libxshmfence' 'libx11' 'spirv-tools' 'systemd-libs'
@@ -66,7 +66,6 @@ build() {
     -D gallium-extra-hud=false \
     -D gallium-mediafoundation=disabled \
     -D gallium-va=disabled \
-    -D gallium-vdpau=disabled \
     -D gbm=disabled \
     -D gles1=disabled \
     -D gles2=disabled \
