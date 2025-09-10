@@ -20,8 +20,10 @@ noextract=("${_npmname}-${pkgver}.tgz")
 changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
-		"${_urlraw}/LICENSE")
+		"README-${pkgver}.md::${_urlraw}/README.md"
+		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 b2sums=('0c835f3a88134a8d07b4c9468060c8488ad9925a246df5cd7e489dfe8e585b4d5bd40a421b8f44af72c6c9a8a7b4c0e33b0bc1f014c7e7cb690d3881c65e445d'
+        'd4e15924aed7073c3a51df013833f452e991ddfd3d1b8ce553b2acac10a67b0b7bf43e58a519af0a1e7d181c3192d3a3a0bb1d11922b1d775a89b7463d7aa96f'
         'f925bfc0d0ce5b6542af8c5ba101117da11d4b760c65e8907cc6bf8d5ab443c996090f3ffe207d79e97f6f762e657f49522d5a83e81ad5f41cbcae063e27fe04')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
@@ -41,7 +43,7 @@ package() {
 
 	local tmppackage="$(mktemp)"
 	local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
-	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" >"$tmppackage"
+	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
 
@@ -52,6 +54,9 @@ package() {
 		chmod 644 "$pkgjson"
 	done
 
+	# Install README file
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
 	# Install LICENSE file
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
