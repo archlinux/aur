@@ -3,7 +3,7 @@
 _pkgauthor=neur0map
 _pkgname=manx
 pkgname=${_pkgname}-bin
-pkgver=0.4.4
+pkgver=0.4.5
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly"
@@ -32,7 +32,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu")
 
 sha256sums=('b20cf353bcaa7861617f4ef7730e30bf76c065f67f07611aa40c6d09336b9ab4'
-            '5fd2ed20def288339942579c0f9f665f29915f592a7fdf83824b0f633078b7e5'
+            '8b7a09c17b42a2b4ef1a9b0844ea7c6a0bdeecd554bc57db6484f85773e56f00'
             '5f9786bf2f5c1ce1cb5aca7e0bac368594f026a36730be808b7d614e5ff775a1'
             'afb2a90785a6c29d050d601004178e340b77fd826a0fc2057a0f7359d4e26ef8'
             'cae2fcfda8a68281f9cf36b1536428a852d620e32215562c533e9ecb8651424f'
@@ -42,7 +42,7 @@ sha256sums=('b20cf353bcaa7861617f4ef7730e30bf76c065f67f07611aa40c6d09336b9ab4'
             '51e35bbb0a4ce191d9f192ceb21f4dc58963cae750ffadb4810bcce9c74d453e'
             '3d8a4c6506f28e845479885fe6de072c80f409f8a8d2c6a0c91ba883ce607513'
             '2b5f13cc1fc19595065a48286d7d701bdfb3e2ef7098ac19af26fece34fb1756')
-sha256sums_x86_64=('0c43eb37ed3df2e47aeb2d56cc08a4ed320073ca342ebc92836597fad6842d79')
+sha256sums_x86_64=('c985ede6f90d95f075df1313709bd0ec3f175d39025c5eddb0f42bc073573032')
 
 
 package() {
