@@ -2,7 +2,7 @@
 
 pkgname=autopush-rs
 pkgver=1.75.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Push Server in Rust"
 arch=('x86_64')
 provides=('autopush' 'autopush-rs' 'sunup-server')
@@ -29,7 +29,7 @@ build() {
 
 package() {
 	cd "$srcdir/autopush-rs"
-	#install -Dm755 "target/release/autoconnect" "$pkgdir/usr/bin/autoconnect"
+	install -Dm755 "target/release/autoconnect" "$pkgdir/usr/bin/autoconnect"
 	install -Dm755 "target/release/autoendpoint" -t "$pkgdir/usr/bin/"
 
 	# These are missing
