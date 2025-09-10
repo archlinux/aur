@@ -6,7 +6,10 @@
   <img src="https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white" alt="Lua">
   <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Shell Script">
   <img src="https://img.shields.io/badge/DOSBox-000000?style=for-the-badge&logo=dosbox&logoColor=white" alt="DOSBox">
+  <img src="https://img.shields.io/badge/AUR-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="AUR">
+  <img src="https://img.shields.io/badge/Yay-FF8700?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Yay">
 </p>
+
 Neovim assembly development environment for 8088/8086 NASM programming with DOSBox integration.
 
 ## Features
@@ -18,13 +21,29 @@ Neovim assembly development environment for 8088/8086 NASM programming with DOSB
 - Includes AFD (Assembly File Debugger)
 
 ## Quick Start
- <img width="1153" height="642" alt="image" src="https://github.com/user-attachments/assets/ecd1220f-80aa-4862-a25c-6cd14e7a47a5" />
- <img width="849" height="531" alt="250910_20h31m44s_screenshot" src="https://github.com/user-attachments/assets/558b1709-1209-474a-a28a-471e74c71dd2" />
- <img width="1288" height="724" alt="image" src="https://github.com/user-attachments/assets/863c7725-a10c-4e63-b22d-98a888d0264c" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ecd1220f-80aa-4862-a25c-6cd14e7a47a5" width="300" style="margin-right:5px;">
+  <img src="https://github.com/user-attachments/assets/558b1709-1209-474a-a28a-471e74c71dd2" width="300" style="margin-right:5px;">
+  <img src="https://github.com/user-attachments/assets/863c7725-a10c-4e63-b22d-98a888d0264c" width="300">
+</p>
 
 
-```bash
-# clone the repo & Run the installer
+## Using AUR
+Install your dependencies:
+```
+sudo pacman -Syu nasm dosbox neovim wget unzip
+```
+Build and install from AUR with 
+``` yay -S vimasm```
+
+Test vimasm command:
+ ```:Nc```
+ and
+ ```:Nd``` 
+
+
+## Git
+```
 git clone git@github.com:sanecodeguy/vimasm.git   
 chmod +x install.sh
 ./install.sh
@@ -38,27 +57,20 @@ chmod +x install.sh
 ## Requirements
 
     Neovim
-
     NASM (assembler)
-
     DOSBox (DOS emulator)
-
     wget, unzip
+    AFD
 
 ## Installation Details
 
 The installer:
 
     Checks for root privileges (don't run as root)
-
     Installs required packages via pacman
-
     Downloads AFD debugger to /usr/local/vimasm/dos/
-
     Creates DOSBox configuration at ~/.dosbox/dosbox-vimasm.conf
-
     Sets up Neovim plugin in ~/.config/nvim/lua/vimasm/init.lua
-
     Creates demo file at ~/vimasm_demo/welcome.asm
 
 ### File Structure
@@ -91,15 +103,12 @@ nvim ~/vimasm_demo/welcome.asm
 ## Troubleshooting
 ```
     Permission denied: Don't run installer as root
-
     Missing packages: Ensure pacman has internet access
-
     DOSBox errors: Check ~/.dosbox/dosbox-vimasm.conf exists
 ```
 ## Uninstall
 ```
 Remove the installed files:
-
 
 sudo rm -rf /usr/local/vimasm
 rm -rf ~/.config/nvim/lua/vimasm
