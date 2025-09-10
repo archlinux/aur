@@ -1,7 +1,7 @@
 pkgbase = python-hdwallet
 	pkgdesc = Python-based library implementing a Hierarchical Deterministic (HD) Wallet generator for 200+ cryptocurrencies.
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hdwallet.io
 	arch = any
 	license = custom:MIT License
@@ -17,6 +17,7 @@ pkgbase = python-hdwallet
 	depends = python-pynacl
 	depends = python-base58
 	depends = python-cbor2
+	depends = python-bip38
 	source = python-hdwallet-3.6.1.tar.gz::https://github.com/hdwallet-io/python-hdwallet/archive/refs/tags/v3.6.1.tar.gz
 	sha256sums = be186aa911c01cd019deae6769bcfae72f07e3d374f64bd6aacfda2e146f79fa
 
