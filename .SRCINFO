@@ -1,0 +1,20 @@
+pkgbase = danxi
+	pkgdesc = Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/DanXi-Dev/DanXi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = fvm
+	makedepends = imagemagick
+	depends = gtk3
+	depends = libsecret
+	depends = gnome-keyring
+	source = git+https://github.com/DanXi-Dev/DanXi.git#tag=v1.4.8
+	sha256sums = 24bc79baf3a9eda79dc0e768e104b5a608f4a0a73c4e7bc26d9bbdde0969f1f9
+
+pkgname = danxi
