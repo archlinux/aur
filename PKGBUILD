@@ -3,7 +3,7 @@
 _pkgauthor=neur0map
 _pkgname=manx
 pkgname=${_pkgname}-bin
-pkgver=0.4.5
+pkgver=0.4.6
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly"
@@ -42,7 +42,7 @@ sha256sums=('b20cf353bcaa7861617f4ef7730e30bf76c065f67f07611aa40c6d09336b9ab4'
             '51e35bbb0a4ce191d9f192ceb21f4dc58963cae750ffadb4810bcce9c74d453e'
             '3d8a4c6506f28e845479885fe6de072c80f409f8a8d2c6a0c91ba883ce607513'
             '2b5f13cc1fc19595065a48286d7d701bdfb3e2ef7098ac19af26fece34fb1756')
-sha256sums_x86_64=('c985ede6f90d95f075df1313709bd0ec3f175d39025c5eddb0f42bc073573032')
+sha256sums_x86_64=('369fcdf25e88ff6f2ff258b59953f74a08d01e257f1caeb1200e0acb564407a6')
 
 
 package() {
