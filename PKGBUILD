@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.7.3
+pkgver=1.7.4
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -15,9 +15,6 @@ depends=(
     'ffmpeg'
     'python'
 )
-makedepends=(
-    'fuse2'
-)
 options=(
     '!emptydirs'
     '!strip'
@@ -26,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5284c4651ed496e642b64cdb0d3fb38279e06087fac9dacfca336c8007e48bcd'
+sha256sums=('5c7655fb29db82729666612e2176ab408ec5a25f59a68fca64beda23bc6ceaab'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
