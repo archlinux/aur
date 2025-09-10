@@ -1,13 +1,14 @@
 # Maintainer: secext2022 <secext2022 at outlook dot com>
 pkgname=pmbs
 pkgver=0.1.0a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Make btrfs snapshot (every minute), and auto clean"
 arch=('x86_64')
 url="https://crates.io/crates/pmbs"
 license=('MIT')
 depends=('btrfs-progs>=6.16')
 makedepends=('rust>=1:1.89')
+conflicts=('pmbs-bin')
 source=('pmbs.tar.gz::https://crates.io/api/v1/crates/pmbs/0.1.0-a3/download')
 sha256sums=('f9b4377bd35b801132959db394625902dfe70fad58c177ca1aa8124d20b28f8b')
 
