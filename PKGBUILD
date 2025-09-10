@@ -7,7 +7,7 @@ pkgdesc="Zepp OS simulator"
 arch=('x86_64')
 url="https://zeppos.com/developer/simulator/"
 license=('custom')
-depends=('gtk3' 'cyrus-sasl' 'lib32-cyrus-sasl')
+depends=('gtk3' 'cyrus-sasl')
 source=("https://upload-cdn.zepp.com/zepp-applet-and-wechat-applet/20240927/3e688d423cd0cd31a8a589b8325a309e.deb")
 sha256sums=('647a9a10bf05a129d1b6ea865a94f22646bb0f4747b5100366d86af031b6936e')
 
