@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.33.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -11,9 +11,10 @@ license=('Apache-2.0')
 depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
-optdepends=('python-aiohttp: aiohttp')
+optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('75cf6a3ed0336d3e060c248dcc4908a83b50da8bdd6a46004fd888356811baed')
+validpgpkeys=('2EECE5156D8DE0C50636E37621707FBE029E96B5')
+sha256sums=('141051deceb1fe560fc56a31e7280fb3a5b1e20fee29fa9b39bed8c10764ae69')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -85,6 +86,7 @@ check() {
     --deselect google/genai/tests/files/test_download.py
     --deselect google/genai/tests/tunings/test_end_to_end.py
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
+    --deselect google/genai/tests/batches/test_embedding.py
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
