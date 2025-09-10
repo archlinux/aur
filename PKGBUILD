@@ -2,8 +2,8 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=6.6.0
-_electronversion=37
+pkgver=6.7.0
+_electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar.(Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4c92e02f0922a7c93705ecbea8986092592483a8ca270029586a979478efa642'
+sha256sums=('44346e0058b9d9d8e587004d3c39e753f611673c2a622a031c55606991a0d5c3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,8 +35,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
