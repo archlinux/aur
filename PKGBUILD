@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.2.0.r20.g2b78922
+pkgver=0.2.2.r5.g4cf521b
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -11,7 +11,7 @@ license=('MIT')
 arch=('x86_64')
 depends=(gcc-libs glibc oniguruma)
 makedepends=(git rust)
-options=('!lto')
+options=(zipman)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git"
@@ -40,7 +40,7 @@ prepare(){
 package(){
   cd ${pkgname%-git}
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib SKIP_UTILS="runcon chcon"
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
   # missing symlinks
   cd "$pkgdir"/usr/bin
