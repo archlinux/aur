@@ -1,7 +1,7 @@
 pkgbase = ice-cli-bin
-	pkgdesc = Ice CLI streaming player (prebuilt binary release)
+	pkgdesc = Ice CLI streaming player (prebuilt binary - tracks latest GitHub release)
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wraient/ice
 	arch = x86_64
 	arch = aarch64
@@ -12,12 +12,12 @@ pkgbase = ice-cli-bin
 	provides = ice-cli
 	conflicts = ice
 	conflicts = ice-cli
-	source_x86_64 = ice-linux-amd64::https://github.com/Wraient/ice/releases/download/v0.0.1/ice-linux-amd64
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/Wraient/ice/v0.0.1/LICENSE
+	source_x86_64 = ice-linux-amd64::https://github.com/Wraient/ice/releases/latest/download/ice-linux-amd64
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/Wraient/ice/main/LICENSE
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = ice-linux-arm64::https://github.com/Wraient/ice/releases/download/v0.0.1/ice-linux-arm64
-	source_aarch64 = LICENSE::https://raw.githubusercontent.com/Wraient/ice/v0.0.1/LICENSE
+	source_aarch64 = ice-linux-arm64::https://github.com/Wraient/ice/releases/latest/download/ice-linux-arm64
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/Wraient/ice/main/LICENSE
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 

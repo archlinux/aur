@@ -2,8 +2,8 @@
 pkgname=ice-cli-bin
 _upname=ice
 pkgver=0.0.1
-pkgrel=1
-pkgdesc="Ice CLI streaming player (prebuilt binary release)"
+pkgrel=2
+pkgdesc="Ice CLI streaming player (prebuilt binary - tracks latest GitHub release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Wraient/ice"
 license=('MIT')
@@ -15,14 +15,24 @@ conflicts=("${_upname}" "ice-cli")
 _src_linux_amd64="${_upname}-linux-amd64"
 _src_linux_arm64="${_upname}-linux-arm64"
 
-# Versioned (immutable) release tarballs/binaries; adjust when releasing new tag.
-source_x86_64=("${_src_linux_amd64}::https://github.com/Wraient/${_upname}/releases/download/v${pkgver}/${_upname}-linux-amd64" \
-               "LICENSE::https://raw.githubusercontent.com/Wraient/${_upname}/v${pkgver}/LICENSE")
-source_aarch64=("${_src_linux_arm64}::https://github.com/Wraient/${_upname}/releases/download/v${pkgver}/${_upname}-linux-arm64" \
-                "LICENSE::https://raw.githubusercontent.com/Wraient/${_upname}/v${pkgver}/LICENSE")
+source_x86_64=("${_src_linux_amd64}::https://github.com/Wraient/${_upname}/releases/latest/download/${_upname}-linux-amd64" \
+               "LICENSE::https://raw.githubusercontent.com/Wraient/${_upname}/main/LICENSE")
+source_aarch64=("${_src_linux_arm64}::https://github.com/Wraient/${_upname}/releases/latest/download/${_upname}-linux-arm64" \
+                "LICENSE::https://raw.githubusercontent.com/Wraient/${_upname}/main/LICENSE")
 
 sha256sums_x86_64=('SKIP' 'SKIP')
 sha256sums_aarch64=('SKIP' 'SKIP')
+
+pkgver() {
+  command -v curl >/dev/null 2>&1 || { printf '%s' "$pkgver"; return; }
+  local latest
+  latest=$(curl -Is https://github.com/Wraient/${_upname}/releases/latest | sed -n 's/^location: .*\/tag\/v\?\([^[:space:]]*\).*/\1/p' | tr -d '\r')
+  if [[ -n $latest ]]; then
+    printf '%s' "$latest"
+  else
+    printf '%s' "$pkgver"
+  fi
+}
 
 build() { :; }
 
