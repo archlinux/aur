@@ -1,7 +1,7 @@
 # Maintainer: Syed Ali Rizvi <rizvihuihuihui@icloud.com>
 
 pkgname=vimasm
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Vim-based NASM + DOSBox environment for learning x86 Assembly with debugging (AFD)"
 arch=('any')
