@@ -9,9 +9,9 @@ post_install() {
     echo "==> Setting up udev rules..."
 
     cat > /etc/udev/rules.d/99-awcc.rules << 'EOF'
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0551", MODE="0660", GROUP="plugdev"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0550", MODE="0660", GROUP="plugdev"
-    EOF
+SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0551", MODE="0660", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0550", MODE="0660", GROUP="plugdev"
+EOF
 
     if ! getent group plugdev > /dev/null 2>&1; then
         groupadd plugdev
@@ -47,9 +47,9 @@ post_upgrade() {
     if [ ! -f /etc/udev/rules.d/99-awcc.rules ]; then
         echo "==> Setting up missing udev rules..."
         cat > /etc/udev/rules.d/99-awcc.rules << 'EOF'
-        SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0551", MODE="0660",GROUP="plugdev"
-        SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0550", MODE="0660", GROUP="plugdev"
-        EOF
+SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0551", MODE="0660",GROUP="plugdev"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0550", MODE="0660", GROUP="plugdev"
+EOF
         udevadm control --reload-rules
         udevadm trigger
     fi
