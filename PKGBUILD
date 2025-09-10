@@ -7,7 +7,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20250905.14983
+pkgver=20250908.14987
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -48,8 +48,14 @@ build() {
   #       -DCMAKE_BUILD_TYPE=RELEASE \
   #       -DCMAKE_INSTALL_PREFIX=/usr 
 
+  # autotools seems to have trouble with qt if QT_QPA_PLATFORM is not set:
+  # qt.qpa.wayland: Wayland does not support QWindow::requestActivate()
+
+  # check XDG_SESSION_TYPE and set QT_QPA_PLATFORM correspondingly
+  # this problem disappears in later tests
+
   ./configure --prefix=/usr --with-guile=/usr/bin/guile-config1.8 \
-              QMAKE=/usr/bin/qmake6 CC=gcc CXX=g++
+              CC=gcc CXX=g++ QMAKE=/usr/bin/qmake6 
   make -j8
 }
 
@@ -59,7 +65,7 @@ package() {
 
   install -D -m 644 "$pkgdir"/usr/share/TeXmacs/misc/mime/texmacs.xml  "$pkgdir"/usr/share/mime/packages/texmacs.xml
   install -D -m 644 "$pkgdir"/usr/share/TeXmacs/misc/mime/texmacs.desktop  "$pkgdir"/usr/share/applications/texmacs.desktop 
-  sed -i 's/texmacs.bin/texmacs.bin -platform xcb/' "$pkgdir"/usr/bin/texmacs 
+  #sed -i 's/texmacs.bin/texmacs.bin -platform xcb/' "$pkgdir"/usr/bin/texmacs
 
   # fix fig2ps script
   #sed -i 's|${prefix}|/usr|' "$pkgdir"/usr/bin/fig2ps
