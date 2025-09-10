@@ -1,19 +1,22 @@
 pkgname=charliecloud
 pkgver=0.40
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, fully unprivileged container implementation for HPC applications"
 arch=('x86_64')
 license=('Apache-2.0')
+depends=(
+    'python'
+)
 makedepends=(
     'bats'
     'cjson'
     'fuse3'
-	'python-pip'
-	'python-sphinx_rtd_theme'
-	'shellcheck'
-	'squashfuse'
-	'squashfs-tools'
-	'wget'
+    'python-pip'
+    'python-sphinx_rtd_theme'
+    'shellcheck'
+    'squashfuse'
+    'squashfs-tools'
+    'wget'
 )
 optdepends=(
     'bats: ch-test'

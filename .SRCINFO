@@ -1,7 +1,7 @@
 pkgbase = charliecloud
 	pkgdesc = A lightweight, fully unprivileged container implementation for HPC applications
 	pkgver = 0.40
-	pkgrel = 2
+	pkgrel = 3
 	url = https://charliecloud.io/
 	arch = x86_64
 	license = Apache-2.0
@@ -14,6 +14,7 @@ pkgbase = charliecloud
 	makedepends = squashfuse
 	makedepends = squashfs-tools
 	makedepends = wget
+	depends = python
 	optdepends = bats: ch-test
 	optdepends = cjson: JSON features
 	optdepends = fuse3: ch-run internal SquashFS mounting
