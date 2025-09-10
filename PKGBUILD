@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.17.1
-_subver=5
+_subver=6
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 _nodeversion=22
@@ -38,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('5ea05ac71ed58c05f96c80a6262744000c1deda3da994d515e8480f90704e0d6'
+sha256sums=('d1bfe47eea8da9633fca51fbeb9c01b4ff86f6890f27993f7cd724118854a00c'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -47,8 +47,8 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _electronversion="$(grep '^ *"electronVersion": *"' "${srcdir}/${pkgname}-${pkgver}/conf/build.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(grep '^ *"electronVersion": *"' "${srcdir}/${pkgname}-${pkgver}/conf/build.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -86,10 +86,6 @@ prepare() {
         sed -i "s/mkdir tmp/mkdir tmp \&\& cp ..\/..\/..\/.npmrc tmp/g" tools/fix-other.sh
     fi
     sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" conf/build.json
-    sed -i -e "
-        /packageManager/d
-        37s/\},/\}/
-    " package.json
     NODE_ENV=development    pnpm install
 }
 build() {
@@ -97,7 +93,8 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     sh tools/update-bilibili
     sh tools/fix-other.sh
-    sh tools/area-unlimit.sh
+    #sh tools/area-unlimit.sh
+    sh tools/extension.sh
     mv tmp/bili/resources/* app
 }
 package() {
