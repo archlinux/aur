@@ -2,8 +2,8 @@
 
 pkgname=python-pycrashreport
 _pkgname="${pkgname#python-}"
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 pkgdesc="Python3 parser for Apple's crash reports"
 arch=('any')
 url='https://github.com/doronz88/pycrashreport'
@@ -12,7 +12,7 @@ depends=('python' 'python-click' 'python-cached-property' 'python-la_panic')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fbfc667753cec3be7888aeefc8d9c8dba8f7f27fdc24656d10fe6a0e8598ce49')
+sha256sums=('288ff23e2eb7f8cae9e6def71429ca39c504adaec2d6f83f6303ccce70bf2398')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
