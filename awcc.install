@@ -4,7 +4,6 @@ post_install() {
     cp /usr/share/awcc/awccd.service /etc/systemd/system/
 
     systemctl daemon-reload
-    systemctl enable --now awccd.service
 
     echo "==> Setting up udev rules..."
 
@@ -32,6 +31,7 @@ EOF
 
     udevadm control --reload-rules
     udevadm trigger
+    echo "==> Enable the daemon with: systemctl enable --now awccd.service"
     echo "==> Please log out and back in for group changes to take effect"
 }
 
