@@ -19,8 +19,8 @@ conflicts=('codellm-bin')
 source_x86_64=("https://github.com/abacusai/codellm-releases/releases/download/${pkgver}/CodeLLM-linux-x64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/abacusai/codellm-releases/releases/download/${pkgver}/CodeLLM-linux-arm64-${pkgver}.tar.gz")
 
-sha256sums_x86_64=('48976fe601f72bd699e4ede81951ec270ef875018fa24d3803def11d757dd5d7')
-sha256sums_aarch64=('1451303611e72b271e1e005ae34a5a633a79e7024754a784ee6c8cc6e3279cc9')
+sha256sums_x86_64=('9efb89c3526d771c4002eea3feb11253feabb36f4ce3ce15c5ac51514b090abb')
+sha256sums_aarch64=('5863687c58cdee143f9e5c3e3007c688877743380c568b743112c5fa2ecbf154')
 
 package() {
     cd "$srcdir"
