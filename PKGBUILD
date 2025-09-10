@@ -3,7 +3,7 @@
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r271.7838c62
+pkgver=r391.5f0b12d
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
