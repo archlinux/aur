@@ -1,0 +1,16 @@
+pkgbase = gtl-bin
+	pkgdesc = Transforms text into properly capitalized titles according to the Chicago Manual of Style
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/keircn/gtl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gtl
+	conflicts = gtl
+	source_x86_64 = gtl-x86_64-0.2.0.tar.gz::https://github.com/keircn/gtl/releases/download/0.2.0/gtl-0.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = e7d208bd2d1819955a4f57fddb7cdb0079717371ef8cbdb0b75d8d40307121d7
+	source_aarch64 = gtl-aarch64-0.2.0.tar.gz::https://github.com/keircn/gtl/releases/download/0.2.0/gtl-0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 603406d7a08d530e2b025f8297b1986cf981db5f9631867f940e07e2c4ffa397
+
+pkgname = gtl-bin
