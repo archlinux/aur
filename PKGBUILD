@@ -2,7 +2,7 @@
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
-pkgver=12.8.2.21176
+pkgver=12.1.2.22550
 pkgrel=1
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -22,9 +22,9 @@ source_base="https://pubwps-wps365-obs.wpscdn.cn/download/Linux/${pkgver: -5}/wp
 source_x86_64=("${source_base}_amd64.deb")
 source_aarch64=("${source_base}_arm64.deb")
 source_loong64=("${source_base}_loongarch64.deb")
-sha256sums_x86_64=('91cc59e72496629049edaf1b35fa7d868e2f58f65a573d9f70dfb91f04281b2c')
-sha256sums_aarch64=('a5c8fbc50406b59d07b2a5075fbbab04c430cbe9e66ec55605a52458eb3a52ce')
-sha256sums_loong64=('2fd7d542714fbf295febc66958c2cc09b5d386f14cbec0ec6a5546f82f704ed2')
+sha256sums_x86_64=('2df44881e8f490069fb1f384ff426de8e271bfbf34daf0a0bbb18a55416a6c70')
+sha256sums_aarch64=('c1022a5adbed59a65507f83cf681cb54df8d4c911c85b08c14bcfcbf7831f79a')
+sha256sums_loong64=('c2907521f594a1acb2a34fe9045bd46c0e0c96ac529edb9de1babcc892041e4e')
 
 prepare() {
   xz -df data.tar.xz
@@ -45,10 +45,6 @@ package_wps-office-365() {
   # to save typing pkgdir
   cd "${pkgdir}"
 
-  # remove file
-  rm usr/bin/{wps_uninstall.sh,wps_xterm} \
-    usr/share/applications/wps-office-uninstall.desktop
-
   # use system lib
   rm opt/kingsoft/wps-office/office6/lib{jpeg,stdc++}.so*
   if [[ "$CARCH" = "aarch64" ]]; then
@@ -56,6 +52,9 @@ package_wps-office-365() {
     rm opt/kingsoft/wps-office/office6/addons/cef/libm.so*
     rm opt/kingsoft/wps-office/office6/libfreetype.so*
   fi
+
+  # disable wpscloudsvr
+  chmod -x opt/kingsoft/wps-office/office6/wpscloudsvr
 
   # fix template path
   sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.docx|' \
@@ -67,7 +66,6 @@ package_wps-office-365() {
 
   # fix menu category
   sed -i 's|Categories=.*|&Office;|' usr/share/applications/*.desktop
-  sed -i '$a Categories=Office;' usr/share/applications/wps-office-officeassistant.desktop
 
   # fix background process
   sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && export gOptExt=-multiply' \
@@ -82,9 +80,9 @@ package_wps-office-365() {
     usr/bin/{wps,wpp,et,wpspdf}
 
   # fix xxx Njk0QkYtWVVEQkctRUFSNjktQlBSR0ItQVRRWEgK
-  sed -i 's|YUA..=NsbhfV4nLv_oZGENyLSVZA..|YUA..=WHfH10HHgeQrW2N48LfXrA..|' \
-    opt/kingsoft/wps-office/office6/cfgs/oem.ini
-  install -dm777 opt/kingsoft/.auth/
+  #sed -i 's|YUA..=NsbhfV4nLv_oZGENyLSVZA..|YUA..=WHfH10HHgeQrW2N48LfXrA..|' \
+  #  opt/kingsoft/wps-office/office6/cfgs/oem.ini
+  #install -dm777 opt/kingsoft/.auth/
 }
 
 package_wps-office-365-xiezuo() {
