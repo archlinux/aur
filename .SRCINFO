@@ -1,7 +1,7 @@
 pkgbase = wallpaper-engine-linux-gui-git
 	pkgdesc = applies a wallpaper from wallpaper engine.
 	pkgver = r83.ddb264f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Poellebob/wallpaper-engine-linux-gui/
 	arch = any
 	license = GPL-3.0
