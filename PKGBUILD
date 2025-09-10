@@ -1,7 +1,7 @@
 # Maintainer: Relish0171 <aur.such581@aleeas.com>
 _basename=vic3-tiger
 pkgname=${_basename}-bin
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Checks game mod files for common mistakes and warns about them."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/amtep/tiger"
 license=('GPL3')
 depends=()
 source=("https://github.com/amtep/tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
-sha256sums=('cb5d3bc19b2c87907e2ebbd22ebf60366a597517468395c0e7f22376c9ec1fb1')
+sha256sums=('96c629efdeda5197778549b4d4d1b08034ab7cea4fb9dd8d9934de8a0ba89788')
 
 package() {
     cd "${srcdir}/${_basename}-linux-v${pkgver}"

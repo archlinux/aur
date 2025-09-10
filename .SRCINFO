@@ -1,11 +1,11 @@
 pkgbase = vic3-tiger-bin
 	pkgdesc = Checks game mod files for common mistakes and warns about them.
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/amtep/tiger
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/amtep/tiger/releases/download/v1.11.1/vic3-tiger-linux-v1.11.1.tar.gz
-	sha256sums = cb5d3bc19b2c87907e2ebbd22ebf60366a597517468395c0e7f22376c9ec1fb1
+	source = https://github.com/amtep/tiger/releases/download/v1.12.0/vic3-tiger-linux-v1.12.0.tar.gz
+	sha256sums = 96c629efdeda5197778549b4d4d1b08034ab7cea4fb9dd8d9934de8a0ba89788
 
 pkgname = vic3-tiger-bin
