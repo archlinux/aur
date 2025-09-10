@@ -1,0 +1,20 @@
+pkgbase = 7zip
+	pkgdesc = File archiver for extremely high compression
+	pkgver = 25.01
+	pkgrel = 1
+	url = https://www.7-zip.org
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
+	license = LicenseRef-UnRAR
+	makedepends = uasm
+	depends = glibc
+	depends = gcc-libs
+	depends = sh
+	provides = p7zip
+	conflicts = p7zip
+	replaces = p7zip
+	source = https://7-zip.org/a/7z2501-src.tar.xz
+	sha256sums = ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e
+
+pkgname = 7zip
