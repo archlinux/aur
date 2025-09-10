@@ -1,6 +1,6 @@
 pkgbase = nping-bin
 	pkgdesc = 🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/hanshuaikang/nping
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = nping-bin
 	conflicts = nping
 	options = !strip
 	options = !lto
-	source = LICENSE-0.4.0::https://raw.githubusercontent.com/hanshuaikang/nping/v0.4.0/LICENSE
-	source = README-0.4.0.md::https://raw.githubusercontent.com/hanshuaikang/nping/v0.4.0/README.md
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/hanshuaikang/nping/v0.5.0/LICENSE
+	source = README-0.5.0.md::https://raw.githubusercontent.com/hanshuaikang/nping/v0.5.0/README.md
 	sha256sums = 1c199714e88b5705a123cbfd82ea01ebb9278a97187e4cc038e8885489f14a79
 	sha256sums = 552e7da11573eaadf6f629e5da269cbdc2b78b947a83c98e323ab535802d0a4e
-	source_x86_64 = https://github.com/hanshuaikang/nping/releases/download/v0.4.0/nping-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 400b98764f0a306ea83f98991a632f6c32008064ee8bd815e304ba54a04841c1
-	source_aarch64 = https://github.com/hanshuaikang/nping/releases/download/v0.4.0/nping-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f6edba0c3032c7b563960243182e4551e6f7d173c105107486a7ddc2d5cec8fa
+	source_x86_64 = https://github.com/hanshuaikang/nping/releases/download/v0.5.0/nping-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8c7746987234a0504b0565bffd540fab6c67d8a9ae91a6874513e78e16ccbc8a
+	source_aarch64 = https://github.com/hanshuaikang/nping/releases/download/v0.5.0/nping-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 56e593f63716b75a2ecd81b1685ac856847be783d740607a83009d2d9df2a2cd
 
 pkgname = nping-bin
