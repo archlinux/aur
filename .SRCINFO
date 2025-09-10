@@ -1,0 +1,28 @@
+pkgbase = autopush-rs
+	pkgdesc = Push Server in Rust
+	pkgver = 1.75.0
+	pkgrel = 1
+	url = https://github.com/mozilla-services/autopush-rs
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = rustup
+	makedepends = git
+	makedepends = cmake3
+	makedepends = python-virtualenv
+	makedepends = clang
+	depends = gcc-libs
+	depends = openssl
+	depends = pypy
+	depends = libffi
+	depends = grpc
+	provides = autopush
+	provides = autopush-rs
+	provides = sunup-server
+	conflicts = autopush
+	conflicts = autopush-rs
+	conflicts = sunup-server
+	options = !lto
+	source = git+https://github.com/mozilla-services/autopush-rs.git#tag=1.75.0
+	sha256sums = SKIP
+
+pkgname = autopush-rs
