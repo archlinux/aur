@@ -4,7 +4,7 @@ _pkgname=Pharmaspot
 _cfgdirname=PharmaSpot
 pkgver=1.5.0
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.patternsdigital.com/pharmaspot"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/drkNsubuga/PharmaSpot/v${pkgver}/assets/images/favicon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('32f02c8aff573ea4e83228ef7cb7092b2b89b64294c3d9a8fe67f7b983c6e1b2'
+sha256sums=('08c3c3dd7791bcf447ca6f938365ceff021a19e43f358f74659fd96b933fe70b'
             '66d59240c025ee617d78f981b88b1bb53393e657f064f9e8e0d68204644d8e1c'
             'ba44229f6c0a35bb02fe584adb1b33029c78a80b2bdb96877ddff05c3b6ac17a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
