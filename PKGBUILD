@@ -10,15 +10,15 @@
 _pkgname='dtv-scan-tables'
 pkgname='dtv-scan-tables-dvbv5-git'
 pkgver=r1310.15661aa
-pkgrel=1
+pkgrel=2
 pkgdesc='Digital TV scan tables (DVBv5 only)'
 url='https://git.linuxtv.org/dtv-scan-tables.git'
 license=('GPL-2.0-only' 'LGPL-2.0-only')
 arch=('any')
 
 makedepends=('git')                   # v4l-utils not needed when dvbv3 conversion is skipped
-provides=('dtv-scan-tables')          # satisfies packages like nextpvr-bin
-conflicts=('dtv-scan-tables' 'dtv-scan-tables-git' 'dtv-scan-tables-patched')  # all install to /usr/share/dvb
+provides=('dtv-scan-tables' 'dtv-scan-tables-dvbv5')
+conflicts=('dtv-scan-tables-git' 'dtv-scan-tables-patched')
 optdepends=('dtv-scan-tables-dvbv3-git: legacy zap/channels.conf tables')
 
 source=("$_pkgname::git+$url${_commit:+#commit=$_commit}")
