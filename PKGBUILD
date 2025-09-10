@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boxbuddy
 _app_id=io.github.dvlv.boxbuddyrs
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="A Graphical Interface for Distrobox"
 arch=('x86_64')
@@ -9,11 +9,12 @@ url="https://www.dvlv.co.uk/BoxBuddyRS"
 license=('MIT')
 depends=(
   'distrobox'
+  'gtk4'
   'libadwaita'
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('163ccd8349c60c353276f2e4661aa31296854f46ff099eeef75ec8474265c63b')
+sha256sums=('a837f249e01884284208f1c90bae25d39d02c44dc924912de512e6040ecb694f')
 
 prepare() {
   cd "BoxBuddyRS-$pkgver"
@@ -34,6 +35,9 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
+
+  # Make sure translations are compiled
+  make translate
 }
 
 check() {

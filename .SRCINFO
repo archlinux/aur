@@ -1,14 +1,15 @@
 pkgbase = boxbuddy
 	pkgdesc = A Graphical Interface for Distrobox
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://www.dvlv.co.uk/BoxBuddyRS
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = distrobox
+	depends = gtk4
 	depends = libadwaita
-	source = boxbuddy-2.5.4.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/2.5.4.tar.gz
-	sha256sums = 163ccd8349c60c353276f2e4661aa31296854f46ff099eeef75ec8474265c63b
+	source = boxbuddy-2.5.5.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/2.5.5.tar.gz
+	sha256sums = a837f249e01884284208f1c90bae25d39d02c44dc924912de512e6040ecb694f
 
 pkgname = boxbuddy
