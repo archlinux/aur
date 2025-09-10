@@ -1,6 +1,6 @@
 pkgbase = awcc-git
 	pkgdesc = An unofficial alternative to Alienware Command Centre of Windows for the Dell G series
-	pkgver = r116.66a11a9
+	pkgver = r140.748cdff
 	pkgrel = 1
 	url = https://github.com/tr1xem/AWCC
 	install = awcc.install
