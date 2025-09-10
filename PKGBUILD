@@ -7,7 +7,7 @@ pkgname=("${pkgbase}"
          "obs-plugin-${pkgbase}")
 epoch=2
 pkgver=B7
-pkgrel=4
+pkgrel=5
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -15,22 +15,31 @@ license=('GPL-2.0-or-later')
 makedepends=('cmake' 'fontconfig' 'libpipewire' 'libpulse'
              'libsamplerate' 'libxi' 'libxpresent' 'libxss' 'obs-studio'
              'spice-protocol' 'wayland-protocols')
-source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/artifact/${pkgver}/source")
-sha512sums=('a3f0193451c64dbd9ead01538fa53cc78b42d318d54b2eef026fb730811e055bb140b67dcd91c1da5ef09ec74fbb141c791b53264a56a943308b81a6e49e1e93')
+source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/artifact/${pkgver}/source"
+        "1197-backport.patch")
+sha512sums=('a3f0193451c64dbd9ead01538fa53cc78b42d318d54b2eef026fb730811e055bb140b67dcd91c1da5ef09ec74fbb141c791b53264a56a943308b81a6e49e1e93'
+            '7e927d6cae8190dba46be59e64862f327f5226e4baa3116559aa92174d9c8b7e6752a356fe67bb144036c36f1a95b2379d4b2efa5f4f09775bcbbe03107dcaac')
 
 _lgdir="${pkgbase}-${pkgver}"
 
 prepare() {
 	cd "${srcdir}/${_lgdir}"
-	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
-		"host/platform/Linux/capture/pipewire/src/portal.c"
+	for patch in "${srcdir}"/*.patch; do
+		patch -p1 < "${patch}"
+	done
 }
 
 build() {
 	cd "${srcdir}/${_lgdir}"
-	for b in {client,host,obs}/build; do
-		mkdir "${b}"
-		pushd "${b}"
+
+	local components=(
+		"client"
+#		"host"
+		"obs"
+	)
+	for b in "${components[@]}"; do
+		mkdir "${b}/build"
+		pushd "${b}/build"
 		cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 		make
 		popd

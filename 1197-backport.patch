@@ -1,0 +1,136 @@
+diff --git a/AUTHORS b/AUTHORS
+index fc0a956b6..815dc29aa 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -73,2 +73,3 @@ Marco Antonio J. Costa <marco.antonio.costa@gmail.com> (majcosta)
+ rs189 <35667100+rs189@users.noreply.github.com> (rs189)
+ Jérôme Poulin <jeromepoulin@gmail.com> (ticpu)
++Stewart Borle <stewi1014@gmail.com> (stewi1014)
+diff --git a/client/renderers/EGL/shader/convert_24bit.frag b/client/renderers/EGL/shader/convert_24bit.frag
+index 19ff0906e..c1edd7516 100644
+--- a/client/renderers/EGL/shader/convert_24bit.frag
++++ b/client/renderers/EGL/shader/convert_24bit.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ in  vec2  fragCoord;
+ out vec4  fragColor;
+diff --git a/client/renderers/EGL/shader/cursor_mono.frag b/client/renderers/EGL/shader/cursor_mono.frag
+index 99d54d64f..7a0227f09 100644
+--- a/client/renderers/EGL/shader/cursor_mono.frag
++++ b/client/renderers/EGL/shader/cursor_mono.frag
+@@ -1,5 +1,6 @@
+ #version 300 es
+ precision highp float;
++precision highp int;
+ 
+ in  vec2 uv;
+ out vec4 color;
+diff --git a/client/renderers/EGL/shader/cursor_rgb.frag b/client/renderers/EGL/shader/cursor_rgb.frag
+index cc4268a3b..303c1ed11 100644
+--- a/client/renderers/EGL/shader/cursor_rgb.frag
++++ b/client/renderers/EGL/shader/cursor_rgb.frag
+@@ -1,5 +1,6 @@
+ #version 300 es
+ precision highp float;
++precision highp int;
+ 
+ #include "color_blind.h"
+ 
+diff --git a/client/renderers/EGL/shader/damage.frag b/client/renderers/EGL/shader/damage.frag
+index ebc013269..80de1c40a 100644
+--- a/client/renderers/EGL/shader/damage.frag
++++ b/client/renderers/EGL/shader/damage.frag
+@@ -1,5 +1,6 @@
+ #version 300 es
+ precision highp float;
++precision highp int;
+ 
+ out vec4 color;
+ 
+diff --git a/client/renderers/EGL/shader/desktop_rgb.frag b/client/renderers/EGL/shader/desktop_rgb.frag
+index fb8e08795..91cc47acb 100644
+--- a/client/renderers/EGL/shader/desktop_rgb.frag
++++ b/client/renderers/EGL/shader/desktop_rgb.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ #define EGL_SCALE_AUTO    0
+ #define EGL_SCALE_NEAREST 1
+diff --git a/client/renderers/EGL/shader/downscale.frag b/client/renderers/EGL/shader/downscale.frag
+index 1aa608704..4cbe46846 100644
+--- a/client/renderers/EGL/shader/downscale.frag
++++ b/client/renderers/EGL/shader/downscale.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ in  vec2  fragCoord;
+ out vec4  fragColor;
+diff --git a/client/renderers/EGL/shader/downscale_lanczos2.frag b/client/renderers/EGL/shader/downscale_lanczos2.frag
+index e6f81ac7e..1b85f4cf4 100644
+--- a/client/renderers/EGL/shader/downscale_lanczos2.frag
++++ b/client/renderers/EGL/shader/downscale_lanczos2.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ #define PI 3.141592653589793
+ 
+diff --git a/client/renderers/EGL/shader/downscale_linear.frag b/client/renderers/EGL/shader/downscale_linear.frag
+index 9e599acd0..dd2ffbc43 100644
+--- a/client/renderers/EGL/shader/downscale_linear.frag
++++ b/client/renderers/EGL/shader/downscale_linear.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ in  vec2  fragCoord;
+ out vec4  fragColor;
+diff --git a/client/renderers/EGL/shader/ffx_cas.frag b/client/renderers/EGL/shader/ffx_cas.frag
+index 49fc6261c..b98150ad4 100644
+--- a/client/renderers/EGL/shader/ffx_cas.frag
++++ b/client/renderers/EGL/shader/ffx_cas.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ #include "compat.h"
+ 
+diff --git a/client/renderers/EGL/shader/ffx_fsr1_easu.frag b/client/renderers/EGL/shader/ffx_fsr1_easu.frag
+index 1d7da8251..6bae2a139 100644
+--- a/client/renderers/EGL/shader/ffx_fsr1_easu.frag
++++ b/client/renderers/EGL/shader/ffx_fsr1_easu.frag
+@@ -2,6 +2,7 @@
+ #extension GL_OES_EGL_image_external_essl3 : enable
+ 
+ precision highp float;
++precision highp int;
+ 
+ #include "compat.h"
+ 
+diff --git a/client/renderers/EGL/shader/ffx_fsr1_rcas.frag b/client/renderers/EGL/shader/ffx_fsr1_rcas.frag
+index 6233e8890..43651a45f 100644
+--- a/client/renderers/EGL/shader/ffx_fsr1_rcas.frag
++++ b/client/renderers/EGL/shader/ffx_fsr1_rcas.frag
+@@ -1,5 +1,6 @@
+ #version 300 es
+ precision highp float;
++precision highp int;
+ 
+ #include "compat.h"
+ 
