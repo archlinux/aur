@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -16,15 +16,15 @@ source=(
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
-sha256sums=("ae5e89842fbe179b26dc42fd77a00f56670641e355f6f8acb1807aa0606eb173"
+sha256sums=("7d2dc7cf371ca483f484a0a3f7a7b9008fa641b7c497e51c7e0d78fa583379fe"
 "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
 "87fddbcd4a4cc7bda22ec4cadff0040e54395bb13184ee4688b58788c1fa7180"
 )
 options=('!lto')
 
 prepare(){
-    cd $srcdir/${_pkgname}-${pkgver}
-    sed -i "s/productName: Mihomo Party/productName: clash-party/" electron-builder.yml
+    cd $srcdir/clash-party-${pkgver}
+    sed -i "s/productName: Clash Party/productName: clash-party/" electron-builder.yml
     pnpm install
 }
 
@@ -37,12 +37,12 @@ package() {
     asar extract $srcdir/${_pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar ${pkgdir}/opt/mihomo-party
     cp -r $srcdir/${_pkgname}-${pkgver}/extra/sidecar ${pkgdir}/opt/mihomo-party/resources/
     cp -r $srcdir/${_pkgname}-${pkgver}/extra/files ${pkgdir}/opt/mihomo-party/resources/
-    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
-    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
-    chmod +sx ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-smart
+    chmod +sx ${pkgdir}/opt/clash-party/resources/sidecar/mihomo
+    chmod +sx ${pkgdir}/opt/clash-party/resources/sidecar/mihomo-alpha
+    chmod +sx ${pkgdir}/opt/clash-party/resources/sidecar/mihomo-smart
     install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${pkgdir}/opt/mihomo-party/resources/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -Dm644 "${pkgdir}/opt/clash-party/resources/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
     chown -R root:root ${pkgdir}
 }
