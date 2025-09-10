@@ -1,0 +1,7 @@
+[uw-ttyp0-font]
+source = 'htmlparser'
+url = 'https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/'
+xpath = "/html/body//a[starts-with(@href, 'https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/uw-ttyp0-') and contains(@href, '.tar.gz')]/@href"
+prefix = 'https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/uw-ttyp0-'
+from_pattern = '([\d.]+)\.tar\.gz'
+to_pattern = '\1'
