@@ -1,6 +1,6 @@
 _pyname=geo-picture-tag-reader
 pkgname=python-${_pyname}
-pkgver=1.5.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Read and write standardized metadata from geolocated pictures EXIF metadata"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=()
 conflicts=()
 source=("https://gitlab.com/panoramax/server/geo-picture-tag-reader/-/archive/${pkgver}/geo-picture-tag-reader-${pkgver}.tar.gz")
-b2sums=('1cda7b8a422500ce401cb7681b2cd4fb33c6d3d2e51a8742ecb6157fef2e7c0bc2ab8cdd4704da3f05cff9dfa9e8a6b4b4356d989a8c08d44cbac2397a824033')
+b2sums=('fbbbae9b4f4fe47afcd6e5ab2053aa4954fc0e746b529a204991a9f648d829d476207fd8adfe2d275199c33ebb20118f92a7ec06ffcda021d253b36ba3da8633')
 
 build() {
   cd "${_pyname}-${pkgver}"
