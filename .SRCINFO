@@ -1,0 +1,22 @@
+pkgbase = wallpaper-engine-linux-gui-git
+	pkgdesc = applies a wallpaper from wallpaper engine.
+	pkgver = r83.ddb264f
+	pkgrel = 1
+	url = https://github.com/Poellebob/wallpaper-engine-linux-gui/
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = linux-wallpaperengine-git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = gobject-introspection
+	depends = gtk4
+	depends = gdk-pixbuf2
+	provides = wallpaper-engine-linux-gui
+	conflicts = wallpaper-engine-linux-gui
+	replaces = wallpaper-engine-linux-gui
+	source = git+https://github.com/Poellebob/wallpaper-engine-linux-gui/
+	sha256sums = SKIP
+
+pkgname = wallpaper-engine-linux-gui-git
