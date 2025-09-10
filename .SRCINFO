@@ -1,16 +1,12 @@
 pkgbase = vimasm
-	pkgdesc = Neovim assembly development environment for 8088/8086 NASM with DOSBox support
+	pkgdesc = Neovim setup with a default welcome.asm demo
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sanecodeguy/vimasm
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = nasm
-	depends = dosbox
 	depends = neovim
-	depends = wget
-	depends = unzip
 	source = git+https://github.com/sanecodeguy/vimasm.git
 	sha256sums = SKIP
 
