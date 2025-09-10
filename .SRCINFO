@@ -1,10 +1,13 @@
 pkgbase = python-pysptools
 	pkgdesc = A hyperspectral imaging tools box.
 	pkgver = 0.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pysptools.sourceforge.io/
 	arch = x86_64
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy

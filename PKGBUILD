@@ -2,7 +2,7 @@
 _pkgname='pysptools'
 pkgname=("python-$_pkgname")
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A hyperspectral imaging tools box."
 arch=('x86_64')
 depends=('python'
@@ -13,7 +13,11 @@ depends=('python'
          'python-matplotlib'
          'python-cvxopt'
         )
-makedepends=('python-setuptools')
+makedepends=('python-build' 
+	     'python-installer' 
+	     'python-wheel' 
+	     'python-setuptools'
+            )
 optdepends=('jupyter-notebook: if you want to use the notebook display functionality'
             'python-tabulate: use by ml module'
             'python-pandas: use by ml module'
@@ -29,10 +33,10 @@ source=("$_source_url/$_pkgname-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver/"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver/"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 } 
