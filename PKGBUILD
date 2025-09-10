@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2-bootstrap
-pkgver=2.13.3
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
@@ -19,11 +19,11 @@ source=(
   0002-Enable-subpixel-rendering.patch
   0003-Enable-long-PCF-family-names.patch
 )
-b2sums=('f9591c6998df02b072adaf38a968e91deae8ed4d53ea0cb74d08982c4f0e48b1a98c1378a698164e4f730f07a3b0bea308a94fcc2e2b8ce9967dbf9478b599bd'
+b2sums=('70b79290b16bc05e156032dc8a9136bddb21c1f9fc84692959c65f2bc3dc51df681587aee672de9eb393ec77edae05f8e4fdab642a9938dade9eb1186f6d010e'
         'SKIP'
-        'b7e3b72e2d6aed548c1762a16ee08ac47a05caf29c5d37ef03c6791e6dbd109fdfef0b246540c35e968d54f2103b70e80eccff72ac54d34224c6d064aa53d720'
-        'd2b507830adf1bb9db619cd2e0bbb0dfe5b16ba7d4467ad503e954cf91715c5aa5b52b1d3865abc9841990cda56f223eb6f282d4baf7f31fd525cc90aa96b884'
-        'b83a599da8eef1c39a268482db8e82f03a2c9b68850a0ec782e9839e7b45a3b0f989d997647eb55e5b18f2fe0c988e73f0ec6c4eb4c0787689f9e0213faa4320')
+        'f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f'
+        'b9481bfe770104b181a59be8cf30c90d329447d3ba04bd7dc641a54057cf2a9024c1a881d096b7ff940e9b467960ff3e08e611686d9a01136523fbb34299d057'
+        '1ced8e4ef522b111759953f6b4b38864b1a705e5b6705222282b0e6857a4ee7ac8bdcec35248f53dd8b628fabb8861ee82c4ac957f4c71229bac94d8aaf82984')
 validpgpkeys=(
   E30674707856409FF1948010BE6C3AAC63AD8E3F # Werner Lemberg <wl@gnu.org>
 )
@@ -34,6 +34,8 @@ else
   _provides=(${pkgname}-bootstrap)
   # adding harfbuzz for improved OpenType features auto-hinting
   # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
+  # note: The official package uses -D freetype2:harfbuzz=dynamic making this a makedepends/optdepends but not
+  # sure whether this will work with Windows DLLs and for the static library this is not wanted anyway.
   depends+=(mingw-w64-harfbuzz)
 fi
 provides+=(${_provides})
@@ -54,7 +56,14 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/freetype-${pkgver}/build-${_arch}"
     cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    ${_arch}-meson --default-library both -D zlib=enabled -D bzip2=enabled -D png=disabled -D harfbuzz="$harfbuzz_support" -D brotli=enabled -D b_lto=false
+    ${_arch}-meson --default-library both \
+      -D zlib=enabled \
+      -D bzip2=enabled \
+      -D png=disabled \
+      -D harfbuzz="$harfbuzz_support" \
+      -D brotli=enabled \
+      -D b_lto=false \
+      -D freetype2:error_strings=true
     ninja
   done
 }
