@@ -4,7 +4,7 @@ pkgname="${_pkgname}-electron-bin"
 _zhsname='腾讯文档'
 _appname=tdappdesktop
 _cfgname=TDAppDesktop
-pkgver=3.10.6
+pkgver=3.10.10
 _electronversion=25
 pkgrel=1
 pkgdesc="Tencent Docs - Make collaboration more efficient and creation easier.(Prebuilt version.Use system-wide electron)${_zhsname},让协作更高效，创作更轻松."
@@ -30,11 +30,11 @@ makedepends=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname}-${pkgver}-aarch64.rpm::${_dlurl}/releases/download/${_pkgname}-v${pkgver}/${pkgname}-${pkgver}-aarch64.rpm")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::${_dlurl}/releases/download/${_pkgname}-v${pkgver}/${pkgname}-${pkgver}-x86_64.rpm")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.rpm::${_dlurl}/releases/download/${_pkgname}/TencentDocs-${pkgver}-arm64.rpm")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::${_dlurl}/releases/download/${_pkgname}/TencentDocs-${pkgver}-x64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('2ebb9a775fd90a87e6dcd1879a173f3be636bb67b2bb618ccbbba064edbed9c3')
-sha256sums_x86_64=('fe283ce7c6a180d061e1b95c483f991e619169d22ef248d8195f136dd8f26705')
+sha256sums_aarch64=('42106ab9a123079f356071d4ca7e65739a6738ccac16e8a948f44a19204b0135')
+sha256sums_x86_64=('e23ad208184158ff6d055777b6c59c463d764861b164de9cc7f2713e87d6acf8')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_zhsname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
