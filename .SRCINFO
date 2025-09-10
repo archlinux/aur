@@ -1,0 +1,19 @@
+pkgbase = chadtop-bin
+	pkgdesc = TUI process and resource monitor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ethanrutt/chadtop
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = gcc-libs
+	provides = chadtop
+	conflicts = chadtop
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/ethanrutt/chadtop/v0.1.1/LICENSE
+	source = README-0.1.1.md::https://raw.githubusercontent.com/ethanrutt/chadtop/v0.1.1/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = addb0e1c827f124ba74d80604727735c3d28ea8e97f418d87f7fa769e19a3fb4
+	source_x86_64 = chadtop-x86_64-0.1.1::https://github.com/ethanrutt/chadtop/releases/download/v0.1.1/chadtop
+	sha256sums_x86_64 = 52521bdfcc5daf95ccc3a42a49254dd47797709ee5f27d10d75288d97b39bc73
+
+pkgname = chadtop-bin
