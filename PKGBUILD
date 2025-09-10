@@ -3,14 +3,14 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=29.0.r44472
+pkgver=30.0rc1.r46106
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
 url="https://bitcoin.org"
 license=('MIT')
 depends=('qt6-base' 'miniupnpc' 'openssl' 'protobuf' 'boost-libs' 'db4.8' 'qrencode' 'zeromq' 'libevent' 'desktop-file-utils')
-makedepends=('qt6-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'cmake' 'libtool' 'python3')
+makedepends=('qt6-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'cmake' 'libtool' 'python3' 'capnproto')
 provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli' 'bitcoin-core')
 conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' 'bitcoin-core-git' 'bitcoin-cli' 'bitcoin-tx')
 source=('git+https://github.com/bitcoin/bitcoin.git'
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-   cmake -B build -DBUILD_GUI=ON -DWITH_ZMQ=ON -DWITH_QRENCODE=ON -DWITH_BDB=ON
+   cmake -B build -DBUILD_GUI=ON -DWITH_ZMQ=ON -DWITH_QRENCODE=ON -DWITH_BDB=ON -DWITH_MULTIPROCESS=ON
    cmake --build build 
 }
 
