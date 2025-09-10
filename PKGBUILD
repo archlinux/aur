@@ -30,14 +30,14 @@ source=(
 	new_meter.patch      # curl https://patch-diff.githubusercontent.com/raw/argilo/gr-elster/pull/12.patch > new_meter.patch
 	dev_args.patch       # curl https://patch-diff.githubusercontent.com/raw/argilo/gr-elster/pull/13.patch > dev_args.patch
 	add_mqtt.patch       # curl https://github.com/greyltc/gr-elster/compare/my-meter...greyltc:gr-elster:add-mqtt.patch > add_mqtt.patch
-	pcap_analysis.patch  # curl https://github.com/argilo/gr-elster/compare/master...greyltc:gr-elster:pcap.patch > pcap_analysis.patch
+	pcap_analysis.patch  # curl https://github.com/greyltc/gr-elster/compare/my-meter...greyltc:gr-elster:pcap.patch > pcap_analysis.patch
 )
 sha256sums=('SKIP'
             '4df5f8f4011aec787459b1a9bd0d15725ef82f7390590bbb9d76ba37481dca3a'
             'e504e85c1b3fe34b39cf06fef63cfefe4539a08d3f6438a119af9a7ddd683792'
             '60c2a44c6cb59e3f71b2b1afa147ca1396a896a9fc46fa8ba79faafeb3b83bcf'
             '394eacf099227462187e651048352ae60867d787a94e50166fe3d594da62b366'
-            'bf199fd7c40afc829bc5b5b3ca34839370e71793070c49fe7ddc1d4bdbc03548')
+            'c93d2de1a19c753b078e875b41cca65f592c4d3fef3b24523c814de9c3fb62ee')
 
 pkgver() {
   cd gr-elster
@@ -53,7 +53,7 @@ prepare() {
   cat ../new_meter.patch | patch -p1
   cat ../dev_args.patch | patch -p1
   cat ../add_mqtt.patch | patch -p1
-  cat ../pcap_analysis.patch | patch --batch -p1
+  cat ../pcap_analysis.patch | patch -p1
 }
 
 build() {
