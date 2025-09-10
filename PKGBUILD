@@ -1,7 +1,7 @@
 # Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
 # Contributor: Albert Latham <me@albertlatham.com>
 pkgname=codellm
-pkgver=1.101.23405
+pkgver=1.101.23604
 pkgrel=1
 pkgdesc="AI code editor that enhances developer productivity, bundled with the AI super assistant, ChatLLM"
 arch=('x86_64' 'aarch64')
