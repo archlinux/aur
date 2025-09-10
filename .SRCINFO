@@ -1,18 +1,18 @@
 pkgbase = notion-electron-bin
 	pkgdesc = An unofficial desktop application for Notion, built using Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.7.9
+	pkgver = 1.7.10
 	pkgrel = 1
 	url = https://github.com/anechunaev/notion-electron
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron37
-	provides = notion-electron=1.7.9
+	depends = electron38
+	provides = notion-electron=1.7.10
 	conflicts = notion-electron
-	source = notion-electron-1.7.9.rpm::https://github.com/anechunaev/notion-electron/releases/download/v1.7.9/notion-electron-1.7.9.x86_64.rpm
-	source = LICENSE-1.7.9::https://raw.githubusercontent.com/anechunaev/notion-electron/v1.7.9/LICENSE
+	source = notion-electron-1.7.10.rpm::https://github.com/anechunaev/notion-electron/releases/download/v1.7.10/notion-electron-1.7.10.x86_64.rpm
+	source = LICENSE-1.7.10::https://raw.githubusercontent.com/anechunaev/notion-electron/v1.7.10/LICENSE
 	source = notion-electron.sh
-	sha256sums = 9a4773be112ca42326d76a057e8f083d2a27438a035c1e6209f7571fadbb3aa4
+	sha256sums = ca46cf5a2cf8af4136a47da23a230615c161e71d3184587229dcc0fba60f8653
 	sha256sums = f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
