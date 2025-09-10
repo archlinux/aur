@@ -25,7 +25,7 @@
 #   See README.md further details.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
