@@ -1,6 +1,6 @@
 pkgbase = chromium-material-icons-for-github-bin
 	pkgdesc = Browser Addon that enhances file browsers of version controls with material icons.
-	pkgver = 1.10.7
+	pkgver = 1.10.8
 	pkgrel = 1
 	url = https://github.com/material-extensions/material-icons-browser-extension
 	install = chromium-material-icons-for-github.install
@@ -14,7 +14,7 @@ pkgbase = chromium-material-icons-for-github-bin
 	optdepends = brave
 	optdepends = ungoogled-chromium
 	provides = chromium-material-icons-for-github
-	source = chromium-material-icons-for-github-bin-1.10.7.zip::https://github.com/material-extensions/material-icons-browser-extension/releases/download/v1.10.7/github-material-icons-chrome-extension.zip
-	sha256sums = 69f1c422358d54bb55d42e0e99b0f82039d215ea2aaa05685e64f0290eb3bf50
+	source = chromium-material-icons-for-github-bin-1.10.8.zip::https://github.com/material-extensions/material-icons-browser-extension/releases/download/v1.10.8/github-material-icons-chrome-extension.zip
+	sha256sums = 6b215cb19ccc268bf9f4b2017acd0cce8250c256869516ceaa97b84a6bedc6df
 
 pkgname = chromium-material-icons-for-github-bin
