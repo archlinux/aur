@@ -2,21 +2,23 @@
 _pkgname='alphashape'
 pkgname=("python-$_pkgname")
 pkgver=v1.3.0.r23.g8edfd5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolbox for generating n-dimensional alpha shapes."
 arch=('x86_64')
 depends=('python'
-         'python-sphinx'
-         'python-geopandas'
-         'python-cartopy'
-         'python-descartes'
-         'python-networkx'
-         'python-ipympl'
-         'python-trimesh'
-         'python-rtree'
+	 'python-click'
          'python-click-log'
+         'python-shapely'
+	 'python-numpy'
+         'python-trimesh'
+         'python-networkx'
+         'python-rtree'
+	 'python-scipy'
 	)
-makedepends=('python-setuptools'
+makedepends=('python-build'
+	     'python-installer'
+	     'python-wheel' 
+	     'python-setuptools'
              'python-pytest')
 url='https://alphashape.readthedocs.io/en/latest/index.html'
 license=('MIT')
@@ -35,7 +37,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check(){
@@ -45,5 +47,5 @@ check(){
 
 package() {
     cd "$srcdir/$_pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 } 
