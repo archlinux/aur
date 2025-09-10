@@ -1,7 +1,7 @@
 pkgbase = wl-screenrec-git
 	pkgdesc = High performance hardware accelerated wlroots screen recorder
 	pkgver = r210.3a465ea
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/russelltg/wl-screenrec
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = wl-screenrec-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = clang
+	makedepends = vulkan-headers
 	depends = ffmpeg
 	depends = libva-driver
 	depends = gcc-libs
