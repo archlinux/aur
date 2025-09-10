@@ -1,13 +1,13 @@
 pkgbase = plasma6-applets-cursor-eyes
 	pkgdesc = Rolling eyes that follow your mouse pointer, a port of xeyes as a widget for the KDE Plasma Desktop
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/plasma-cursor-eyes
 	arch = any
 	license = GPL3
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
-	source = plasma-cursor-eyes-0.2.1.tar.gz::https://github.com/luisbocanegra/plasma-cursor-eyes/archive/v0.2.1/plasma-cursor-eyes-0.2.1.tar.gz
-	sha256sums = 5f9bc9936130fd58a25ad1f951ee4671f568f9ef10611ce312f5fc5921cd719f
+	source = plasma-cursor-eyes-0.2.2.tar.gz::https://github.com/luisbocanegra/plasma-cursor-eyes/archive/v0.2.2/plasma-cursor-eyes-0.2.2.tar.gz
+	sha256sums = b07e73ef86713da71dec2bd03ed810fd09739fb4e3760d48f1222dee85665979
 
 pkgname = plasma6-applets-cursor-eyes
