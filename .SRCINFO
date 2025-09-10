@@ -1,0 +1,21 @@
+pkgbase = vcard-studio-bin
+	pkgdesc = A contact management application with support for vCard file format (.vcf).
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://app.zdechov.net/vcard-studio
+	arch = x86_64
+	license = CC0
+	depends = at-spi2-core
+	depends = glibc
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libx11
+	depends = cairo
+	depends = pango
+	depends = gtk2
+	provides = vcard-studio=1.5.0
+	conflicts = vcard-studio
+	source = https://svn.zdechov.net/vcard-studio/bin/deb/vcard-studio_1.5.0_amd64.deb
+	sha256sums = 33689bdae3eedf74b29713289e5653fe55c07132bb2f862bf901ffc126c83bb1
+
+pkgname = vcard-studio-bin
