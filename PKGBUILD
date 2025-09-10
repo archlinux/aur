@@ -45,8 +45,8 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-robot
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_tag=3a2b67dfdb2290a33f781e114da55e4b3c6b3175
-source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag")
+_commit=f2ef36aad5f38ad814e045f460ac8e62c3e0677c
+source=("git+https://github.com/damachine/coolerdash.git#commit=$_commit")
 sha256sums=('SKIP')
 
 # https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
