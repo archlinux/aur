@@ -1,8 +1,8 @@
 # Maintainer: KevinCrrl
 
 pkgname=clangd-bin
-pkgver=20.1.8
-pkgrel=2
+pkgver=21.1.0
+pkgrel=1
 pkgdesc='Clangd Language Server'
 arch=('x86_64')
 
@@ -22,17 +22,19 @@ provides=('clangd')
 options=('!debug')
 
 source=("${url}/releases/download/${pkgver}/clangd-linux-${pkgver}.zip")
-sha256sums=('98493005e2c7532e69827987d909c46295e2ee997a48228606e7777547994490')
+sha256sums=('d9a2e8dd5dfbb68d892c2b51f3a735b526148fef89141ffea6ee7ff8637fd1a6')
 
 package() {
-    mkdir -p "$pkgdir/opt/clangd"
-    mkdir -p "$pkgdir/usr/bin"
-
     cd "${srcdir}/clangd_${pkgver}" || exit 1
 
     install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm755 bin/clangd "$pkgdir/opt/clangd/clangd"
+    install -Dm755 bin/clangd "$pkgdir/usr/bin/clangd"
 
-    ln -s /opt/clangd/clangd "$pkgdir/usr/bin/clangd"
+    dest="$pkgdir/usr/include/clang/21"
+    mkdir -p "$dest"
+
+    # Copiar todo el contenido de include directamente a la ruta final
+    rsync -a /usr/local/lib/clang/21 "$dest/"
+
 }

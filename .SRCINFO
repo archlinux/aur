@@ -1,7 +1,7 @@
 pkgbase = clangd-bin
 	pkgdesc = Clangd Language Server
-	pkgver = 20.1.8
-	pkgrel = 2
+	pkgver = 21.1.0
+	pkgrel = 1
 	url = https://github.com/clangd/clangd
 	arch = x86_64
 	license = Apache-2.0 with LLVM Exceptions
@@ -10,7 +10,7 @@ pkgbase = clangd-bin
 	conflicts = clangd
 	conflicts = clang
 	options = !debug
-	source = https://github.com/clangd/clangd/releases/download/20.1.8/clangd-linux-20.1.8.zip
-	sha256sums = 98493005e2c7532e69827987d909c46295e2ee997a48228606e7777547994490
+	source = https://github.com/clangd/clangd/releases/download/21.1.0/clangd-linux-21.1.0.zip
+	sha256sums = d9a2e8dd5dfbb68d892c2b51f3a735b526148fef89141ffea6ee7ff8637fd1a6
 
 pkgname = clangd-bin
