@@ -1,6 +1,6 @@
 pkgbase = ripcalc
 	pkgdesc = ripcalc, an IP network address tool
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://gitlab.com/edneville/ripcalc
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ripcalc
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	source = https://gitlab.com/edneville/ripcalc/-/archive/v0.2.6/ripcalc-v0.2.6.tar.gz
-	sha512sums = 84aabaefffdca20ab7f3771aa7da4da6f739e8df7dfe19636fd3ecabbf12852c83c5ddee65b9e932738ebc860c4a67c552c508b53f3c3a0be8634f7c965114a7
+	source = https://gitlab.com/edneville/ripcalc/-/archive/v0.2.7/ripcalc-v0.2.7.tar.gz
+	sha512sums = 78446fcbb25233c26d8030674e7e8dea196d21c97f3af27964d3866392f1e1683603e524636711c4b517fed261567d27d5d2888e257eaadc83b477f25d4968cc
 
 pkgname = ripcalc

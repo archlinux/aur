@@ -1,7 +1,7 @@
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=ripcalc
 _binary=ripcalc
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="ripcalc, an IP network address tool"
 url="https://gitlab.com/edneville/ripcalc"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
 source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
-sha512sums=('84aabaefffdca20ab7f3771aa7da4da6f739e8df7dfe19636fd3ecabbf12852c83c5ddee65b9e932738ebc860c4a67c552c508b53f3c3a0be8634f7c965114a7')
+sha512sums=('78446fcbb25233c26d8030674e7e8dea196d21c97f3af27964d3866392f1e1683603e524636711c4b517fed261567d27d5d2888e257eaadc83b477f25d4968cc')
 
 prepare() {
   cd ${pkgname}-v${pkgver}
