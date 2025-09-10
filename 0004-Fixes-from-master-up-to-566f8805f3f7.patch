@@ -1,0 +1,122 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Wed, 10 Sep 2025 18:07:12 +0200
+Subject: [PATCH] Fixes from master up to 566f8805f3f7
+
+---
+ src/autofit/afadjust.c  |  1 +
+ src/autofit/afgsub.c    |  8 +++++---
+ src/base/ftmm.c         | 34 ++++++++++++++++++++--------------
+ src/truetype/ttinterp.c |  6 ++++++
+ 4 files changed, 32 insertions(+), 17 deletions(-)
+
+diff --git a/src/autofit/afadjust.c b/src/autofit/afadjust.c
+index f55317bcf9b0..6637cacfccfd 100644
+--- a/src/autofit/afadjust.c
++++ b/src/autofit/afadjust.c
+@@ -1355,6 +1355,7 @@
+ 
+ #ifdef FT_CONFIG_OPTION_USE_HARFBUZZ
+ 
++    if ( ft_hb_enabled( globals ) )
+     {
+       hb_font_t  *hb_font;
+       hb_face_t  *hb_face;
+diff --git a/src/autofit/afgsub.c b/src/autofit/afgsub.c
+index 6cc664ee8ea5..386999d5c528 100644
+--- a/src/autofit/afgsub.c
++++ b/src/autofit/afgsub.c
+@@ -649,19 +649,21 @@
+     {
+       FT_Error  error;
+ 
++      FT_UInt  real_lookupType = lookupType;
++
+       FT_Byte*  subtable = table + FT_NEXT_USHORT( p );
+ 
+ 
+       if ( lookupType == 7 )
+       {
+         FT_Byte*  q = subtable + 2;
+ 
+ 
+-        lookupType = FT_NEXT_USHORT( q );
+-        subtable  += FT_PEEK_ULONG( q );
++        real_lookupType = FT_NEXT_USHORT( q );
++        subtable       += FT_PEEK_ULONG( q );
+       }
+ 
+-      if ( lookupType == 1 )
++      if ( real_lookupType == 1 )
+       {
+         FT_UInt  format = FT_PEEK_USHORT( subtable );
+ 
+diff --git a/src/base/ftmm.c b/src/base/ftmm.c
+index 35b924b1b8b9..9e67001406ca 100644
+--- a/src/base/ftmm.c
++++ b/src/base/ftmm.c
+@@ -307,13 +307,16 @@
+         FT_Bool  is_variation_old = FT_IS_VARIATION( face );
+ 
+ 
+-	if ( error != -1 )
+-	{
+-	  if ( error == -2 ) /* -2 means is_variable. */
+-	    face->face_flags |= FT_FACE_FLAG_VARIATION;
+-	  else
+-	    face->face_flags &= ~FT_FACE_FLAG_VARIATION;
+-	}
++        if ( error != -1 )
++        {
++          if ( error == -2 ) /* -2 means is_variable. */
++          {
++            face->face_flags |= FT_FACE_FLAG_VARIATION;
++            error             = FT_Err_Ok;
++          }
++          else
++            face->face_flags &= ~FT_FACE_FLAG_VARIATION;
++        }
+ 
+         if ( service_mm->construct_ps_name )
+         {
+@@ -485,13 +488,16 @@
+         FT_Bool  is_variation_old = FT_IS_VARIATION( face );
+ 
+ 
+-	if ( error != -1 )
+-	{
+-	  if ( error == -2 ) /* -2 means is_variable. */
+-	    face->face_flags |= FT_FACE_FLAG_VARIATION;
+-	  else
+-	    face->face_flags &= ~FT_FACE_FLAG_VARIATION;
+-	}
++        if ( error != -1 )
++        {
++          if ( error == -2 ) /* -2 means is_variable. */
++          {
++            face->face_flags |= FT_FACE_FLAG_VARIATION;
++            error             = FT_Err_Ok;
++          }
++          else
++            face->face_flags &= ~FT_FACE_FLAG_VARIATION;
++        }
+ 
+         if ( service_mm->construct_ps_name )
+         {
+diff --git a/src/truetype/ttinterp.c b/src/truetype/ttinterp.c
+index 378342bbb114..7b26c9a9df2b 100644
+--- a/src/truetype/ttinterp.c
++++ b/src/truetype/ttinterp.c
+@@ -7521,6 +7521,12 @@
+     exec->func_round = (TT_Round_Func)Round_To_Grid;
+     Compute_Funcs( exec );
+ 
++#ifdef TT_SUPPORT_SUBPIXEL_HINTING_MINIMAL
++    /* Reset IUP tracking bits in the backward compatibility mode. */
++    /* See `ttinterp.h' for details.                               */
++    exec->backward_compatibility &= ~0x3;
++#endif
++
+     /* some glyphs leave something on the stack, */
+     /* so we clean it before a new execution.    */
+     exec->top     = 0;
