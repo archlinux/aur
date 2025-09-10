@@ -1,7 +1,7 @@
 pkgbase = python-pymcr
 	pkgdesc = Multivariate Curve Resolution in Python.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/usnistgov/pyMCR
 	arch = x86_64
 	license = custom
