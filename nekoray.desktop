@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Nekoray
+GenericName=Qt Proxy Client
+Comment=A Qt-based Cross-Platform Proxy Client
+Exec=/opt/nekoray/nekobox  -- -appdata
+Icon=nekoray
+Categories=Network;
+Type=Application
+Terminal=false
+

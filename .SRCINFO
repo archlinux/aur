@@ -1,0 +1,25 @@
+pkgbase = nekoray-qt6
+	pkgdesc = 基于Qt的跨平台GUI代理配置管理器（后端：sing-box）
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/MatsuriDayo/nekoray
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = go
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-tools
+	depends = yaml-cpp
+	depends = zxing-cpp
+	depends = protobuf
+	depends = abseil-cpp
+	depends = openssl
+	optdepends = sing-geoip-db: NekoBox 的 geoip 数据库
+	optdepends = sing-geosite-db: NekoBox 的 geosite 数据库
+	source = git+https://github.com/MatsuriDayo/nekoray.git#tag=4.0.1
+	sha512sums = SKIP
+
+pkgname = nekoray-qt6
