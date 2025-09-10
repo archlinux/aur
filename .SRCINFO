@@ -1,0 +1,15 @@
+pkgbase = python-bip38
+	pkgdesc = A Python library for implementation of Bitcoin Improvement Proposal - 0038 / BIP38 protocol.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://hdwallet.io
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/16/10/7dba5bfef2a9ea90c2f47f20000f9a6a501eef565b6f0f58ef369f3623e8/bip38-1.4.1.tar.gz
+	sha256sums = 9d37f418b833cf1802eef115f9bca085e52368c24c8dcc067d78d53c809dcd53
+
+pkgname = python-bip38
