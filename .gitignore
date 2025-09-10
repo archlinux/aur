@@ -1,0 +1,10 @@
+# AUR packaging repo ignores
+pkg/
+src/
+*.pkg.tar.*
+*.deb
+press.zip
+*.tar.zst
+*.log
+.DS_Store
+.cache/

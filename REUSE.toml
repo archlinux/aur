@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = "PKGBUILD"
+SPDX-FileCopyrightText = "2025 the Arch Linux package maintainers"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "LICENSE"
+SPDX-FileCopyrightText = "2025 the Arch Linux package maintainers"
+SPDX-License-Identifier = "0BSD"
+
+# Add more entries if you add desktop/icon files in-tree later.
