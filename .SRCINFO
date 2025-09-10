@@ -1,6 +1,6 @@
 pkgbase = julefmt-git
 	pkgdesc = Jule code formatter
-	pkgver = rbcfc6ff
+	pkgver = rcc30781
 	pkgrel = 1
 	url = https://github.com/julelang/julefmt
 	arch = x86_64
