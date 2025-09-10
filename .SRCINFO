@@ -1,7 +1,7 @@
 pkgbase = python-pyocd
 	pkgdesc = Programming and debugging Arm Cortex-M microcontrollers
 	pkgver = 0.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/pyocd/pyOCD
 	arch = any
 	license = Apache-2.0
@@ -16,6 +16,7 @@ pkgbase = python-pyocd
 	depends = python-capstone
 	depends = python-cmsis-pack-manager
 	depends = python-colorama
+	depends = python-hidapi
 	depends = python-importlib-metadata
 	depends = python-importlib-resources
 	depends = python-intelhex

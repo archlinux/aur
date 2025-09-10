@@ -3,7 +3,7 @@
 _name=pyOCD
 pkgname=python-pyocd
 pkgver=0.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -13,6 +13,7 @@ depends=(
   python-capstone
   python-cmsis-pack-manager
   python-colorama
+  python-hidapi
   python-importlib-metadata
   python-importlib-resources
   python-intelhex
