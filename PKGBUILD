@@ -14,7 +14,7 @@
 
 _pkgname=zoneminder
 pkgname=zoneminder-git
-pkgver=1.37.63.r1418.g652d71c
+pkgver=1.37.63.r1447.gbf4e873
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system (git version)'
 arch=('any')
@@ -52,7 +52,7 @@ install=${_pkgname}.install
 source=("${pkgname}::git+https://github.com/ZoneMinder/zoneminder.git"
         'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
         'https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
-        'https://github.com/ZoneMinder/RtspServer/archive/055d81fe1293429e496b19104a9ed3360755a440.zip'
+        'https://github.com/ZoneMinder/RtspServer/archive/eab32851421ffe54fec0229c3efc44c642bc8d46.zip'
         'https://github.com/chmike/CxxUrl/archive/eaf46c0207df24853a238d4499e7f4426d9d234c.zip'
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
@@ -61,7 +61,7 @@ source=("${pkgname}::git+https://github.com/ZoneMinder/zoneminder.git"
 b2sums=('SKIP'
         '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
         'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
-        '5c92ee3fe5b0ff351af7a150e946b4168f085e0fce4f795ec0fab7bfb7946897aa7aa82317e84664195d4560d48faf17f51425552d0d63eb36a5ef8b70d474a5'
+        '89f9aeb88d06cad19d1a6d9c223b8291ad486f605bc87d939120d64524a85f2d8a07a0f23c9877833a6fdf03da84b20394e4f2a61c742a6669b6fae03c8af599'
         '5e1078cc7de757a7ae6f24f7cc48998b9e46ec5836c591897f97160d5d916648151b07fdc31c8e453706cd5c882b2ac3eeee8d3c1626fc25ddceab6f998d152e'
         '3886117b5471ab62a291a6d068f2bc168c1467da512a68b049a02046ab15ced1078cd96e342222ff8393858ce206ed03fe102b09db4534b97bd3b95d76c3e8cd'
         '9ce42fe44f2c3c1a1b205d36e08e0703519d3bf955c14538171f4b9eabfeae8847fda37b53bfded8e371e6765ef9ecc6a59d3a719ddc1b0acf4f486a925ed6ba'
@@ -87,7 +87,7 @@ prepare () {
     # Move third-party plugins into place
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
-    mv ../RtspServer-055d81fe1293429e496b19104a9ed3360755a440/* dep/RtspServer
+    mv ../RtspServer-eab32851421ffe54fec0229c3efc44c642bc8d46/* dep/RtspServer
     mv ../CxxUrl-eaf46c0207df24853a238d4499e7f4426d9d234c/* dep/CxxUrl
 }
 
@@ -95,6 +95,7 @@ build() {
     cd ${pkgname}
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DENABLE_INSTALL=OFF \
           -DZM_CONFIG_DIR=/etc/${_pkgname} \
           -DZM_CONFIG_SUBDIR=/etc/${_pkgname}/conf.d \
           -DZM_RUNDIR=/run/${_pkgname} \
@@ -114,6 +115,9 @@ package() {
     cd ${pkgname}
 
     make DESTDIR=${pkgdir} install
+
+    # Remove jwt-cpp's CMake source files
+    rm -r ${pkgdir}/usr/cmake
 
     # Set Polkit directory permissions in accordance with Arch policy
     chmod 750                                                   ${pkgdir}/usr/share/polkit-1/rules.d
