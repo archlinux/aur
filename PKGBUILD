@@ -3,7 +3,7 @@ pkgname=mockoon
 pkgver=9.3.0
 _electronversion=36
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.(Use system-wide electron)"
 arch=('any')
 url="https://mockoon.com/"
@@ -32,8 +32,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/packages/app/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -72,7 +77,7 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build:libs
     NODE_ENV=production     npm run build:desktop:prod
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/desktop"
+    cd "${srcdir}/${pkgname}-${pkgver}/packages/app"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npm run clean-packages
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config ./build-configs/electron-builder.linux.js"
