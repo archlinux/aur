@@ -3,7 +3,7 @@
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.6+r.fd2b1fe4
+pkgver=0.1.6+r.52e51891
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -57,7 +57,7 @@ build() {
         -o "bin/$_pkgname-dev"
 
     echo "Building $_pkgname for $CARCH..."
-    "./bin/$_pkgname-dev" -p --opt L2 -o "bin/$_pkgname" "src/$_pkgname"
+    "./bin/$_pkgname-dev" build -p --opt L2 -o "bin/$_pkgname" "src/$_pkgname"
 }
 
 package() {
