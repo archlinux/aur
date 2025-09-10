@@ -11,6 +11,6 @@ pkgbase = checkpac
 	depends = jq
 	depends = pacman
 	source = checkpac-0.9.5.tar.gz::https://github.com/zeroz41/checkpac/archive/v0.9.5.tar.gz
-	sha256sums = 89e8201e44038dea563b276b81addb861b5832a10a11f40604ee74cb1ea3d358
+	sha256sums = ea41a25f5d15e04f3bd2beb0188f2723e93be1430c80951ec833171028f3cf81
 
 pkgname = checkpac

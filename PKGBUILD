@@ -11,7 +11,7 @@ depends=('bash' 'expac' 'util-linux' 'jq' 'pacman')
 #no optdepends yet
 #optdepends=('')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroz41/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('89e8201e44038dea563b276b81addb861b5832a10a11f40604ee74cb1ea3d358')
+sha256sums=('ea41a25f5d15e04f3bd2beb0188f2723e93be1430c80951ec833171028f3cf81')
 
 package() {
     cd "$pkgname-$pkgver"
