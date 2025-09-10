@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.3.rc3.r62.g2bc792e
+pkgver=0.0.3.git.r7.g9d2681e
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden')
-depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg')
-makedepends=('git' 'cmake' 'clang' 'lld' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
+depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c')
+makedepends=('git' 'cmake' 'clang' 'lld' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen')
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git")
@@ -28,7 +28,6 @@ build() {
 	cmake -B build -S $_pkgname -GNinja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
-		-DYUZU_CHECK_SUBMODULES=OFF \
 		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
@@ -37,7 +36,6 @@ build() {
 		-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
-		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
@@ -47,7 +45,8 @@ build() {
 		-DENABLE_QT_TRANSLATION=ON \
 		-DYUZU_USE_QT_MULTIMEDIA=ON \
 		-DYUZU_USE_QT_WEB_ENGINE=ON \
-		-DCMAKE_DISABLE_FIND_PACKAGE_httplib=ON \
+		-Dhttplib_FORCE_BUNDLED=ON \
+		-DCMAKE_DISABLE_FIND_PACKAGE_mbedtls=ON \
 		-DTITLE_BAR_FORMAT_RUNNING="eden | ${pkgver} {}" \
 		-DTITLE_BAR_FORMAT_IDLE="eden ${pkgver} {}" \
 		-DYUZU_TESTS=OFF \
