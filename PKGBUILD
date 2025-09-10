@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=autopush-rs-p1gp1g-git
-pkgver=1.0
+pkgver=r787.a378707
 pkgrel=1
 pkgdesc="Push Server in Rust. Support Redis."
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd autopush-rs
-	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

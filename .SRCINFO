@@ -1,6 +1,6 @@
 pkgbase = autopush-rs-p1gp1g-git
 	pkgdesc = Push Server in Rust. Support Redis.
-	pkgver = 1.0
+	pkgver = r787.a378707
 	pkgrel = 1
 	url = https://github.com/p1gp1g/autopush-rs
 	arch = x86_64
