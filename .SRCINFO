@@ -1,0 +1,14 @@
+pkgbase = vspolkit-bin
+	pkgdesc = Lightweight PolicyKit GUI authentication agent
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitee.com/vastSky2006/vspolkit
+	arch = x86_64
+	license = LGPL-3.0
+	depends = qt6-base
+	depends = qt6-svg
+	depends = polkit-qt6
+	source = https://gitee.com/vastSky2006/vspolkit/releases/download/v0.1.0/vspolkit-v0.1.0
+	sha256sums = 9345ac62d2e2c77b5139ab778e2f21fe0b489991276fb50cabf168d13559b45f
+
+pkgname = vspolkit-bin
