@@ -1,6 +1,6 @@
 # Maintainer: Ho1Ai
 pkgname=in-editor
-pkgver=0.5.0.3
+pkgver=0.5.0.4
 pkgrel=1
 epoch=
 pkgdesc="small CLI text editor. Inspired by ed"
@@ -13,7 +13,7 @@ replaces=()
 source=("in"
 	"in-mh")
 
-sha256sums=('ed42b1429ee4bb4e4bb3ca3e554c55d987826ef2630100ada9a1b08474be78d3'
+sha256sums=('3e164cb7dba3d268ab8ebf9d75c623d6a4a9b5d47c96d9e6fec5c885c932925f'
             '34cf99367b8902541d40a3859d44a78595fa6becbb3bf76402272414dca52ec8')
 
 package() {
