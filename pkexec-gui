@@ -3,10 +3,28 @@
 # Bash strict mode
 set -euo pipefail
 
+is_parent_volatile() {
+	local parent_pid="$PPID"
+	if [[ "$parent_pid" -eq 1 ]]; then
+		return 0
+	fi
+	local parent_exe
+	parent_exe="$(readlink -f "/proc/$parent_pid/exe" 2>/dev/null || true)"
+	if [[ -z "$parent_exe" ]] || [[ "$parent_exe" == "/usr/bin/fuzzel" ]]; then
+		return 0
+	fi
+	return 1
+}
+
 # Elevate
 if [[ $EUID -ne 0 ]]; then
-	exec pkexec /usr/lib/garuda/pkexec-gui "$@"
-	exit 1
+	if parent_is_volatile; then
+		pkexec /usr/lib/garuda/pkexec-gui "$@" || { exit "$?"; }
+		exit 0
+	else
+		exec pkexec /usr/lib/garuda/pkexec-gui "$@"
+		exit 1
+	fi
 fi
 
 # Launch dbus session if not already running
