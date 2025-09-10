@@ -6,7 +6,7 @@ pkgdesc="Vim-based NASM + DOSBox environment for learning x86 Assembly with debu
 arch=('any')
 url="https://github.com/sanecodeguy/vimasm"
 license=('MIT')
-depends=('nasm' 'dosbox' 'neovim' 'wget' 'unzip')
+depends=('nasm' 'dosbox' 'neovim' 'wget' 'unzip')  # Users should install these manually
 makedepends=('git')
 source=("vimasm.sh"
         "init.lua"
@@ -14,7 +14,7 @@ source=("vimasm.sh"
         "welcome.asm"
         "LICENSE"
         "README.md"
-        "AFD.EXE::https://github.com/soothscier/assembly-nasm/raw/master/AFD.EXE")
+        "AFD.EXE")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
