@@ -6,7 +6,7 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=lib32-libxml2-legacy
-pkgver=2.13.8
+pkgver=2.13.9
 pkgrel=1
 pkgdesc="XML C parser and toolkit (32-bit) (legacy version)"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
@@ -30,7 +30,7 @@ source=(
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
   0001-meson-Build-fixes.patch
 )
-b2sums=('81e02da9df8ca795ab48a26e2c3f6e728f6eb0d24431034cedd62b37704b23c5f2691984b0b6b2db0990db76703f4a312226bfcc3a73719d974f2d975b63a018'
+b2sums=('2ecf342241b35f7949e02b1ababac869d92763957289bac9f5ce6a8d1873fa24cdcf9508baf370645075a9cff8af95e7e9152e81f33f7d1431f8540da47b37f2'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be'
         '57bcee30778b8354b278baa937fd0051536d961aba251682e8df031421122bb53246a5d6285dc4aff7caf27659f39cd4a4a128c750fbe480b1d572243f6b59a1')
 
