@@ -3,7 +3,7 @@
 
 pkgname=python-pytest-recording
 _pkgname=${pkgname#python-}
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='Pytest plugin to record network interactions with VCR.py'
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=(
     python-werkzeug
 )
 source=("$pkgname-$pkgver::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b15eac5aa24bf04d166fba85809029eee74d62113952ba3f132aa2eb760cb157')
+sha256sums=('c86e695e95acbe0ad2576410397950193a78de65be0c91c98f4ba7fa8e705a3e')
 
 build() {
     cd "$_pkgname-$pkgver"
