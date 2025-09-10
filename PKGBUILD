@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=subtitle-translator-electron-bin
 _pkgname=Subtitle-Translator
-pkgver=1.5.0
+pkgver=1.6.0
 _electronversion=29
-pkgrel=3
+pkgrel=1
 pkgdesc="Translate subtitle using ChatGPT.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/gnehs/subtitle-translator-electron"
@@ -13,15 +13,16 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname//-/.}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname//-/.}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('73c9dd11be8bce3ba49c6db95295166f56883d299e3d7253af4ee192cdc9eb41'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('ee6583d475970daaf3e4684826d11f25585ecdde50e014f85b7cea244c7d1d26'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -30,8 +31,11 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
