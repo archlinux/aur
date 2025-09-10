@@ -2,7 +2,7 @@
 
 pkgname=sing-box-alpha
 _pkgname=sing-box
-pkgver=1.13.0alpha.8
+pkgver=1.13.0alpha.11
 _pkgver=$(echo "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+.[0-9]\+\)\(alpha\|beta\|rc\)/\1-\2/')
 pkgrel=1
 epoch=1
@@ -16,7 +16,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/SagerNet/sing-box/archive/v${_pkgver}.tar.gz")
-sha256sums=('f199b4339c42304e6d85e8ae7d15a2153caeb75665d6bb66ad32d853650daa6c')
+sha256sums=('f2726c4e8d5d0374b6a2e1fd17578b2d84a07737392ce9f5c7f7a67b05c36751')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -34,14 +34,16 @@ build() {
     export CGO_ENABLED=1
 
     ldflags=(
-        "-X \"github.com/sagernet/sing-box/constant.Version=${_pkgver}\""
+        "-X"
+        "github.com/sagernet/sing-box/constant.Version=${_pkgver}"
         "-s"
         "-w"
         "-buildid="
         "-linkmode=external"
+        "-checklinkname=0"
     )
     ldflags_string=$(printf "%s " "${ldflags[@]}")
-    echo "${ldflags[@]}"
+    # echo "ldflags: ${ldflags_string}"
 
     go build \
         -v \
@@ -54,9 +56,9 @@ build() {
         ./cmd/sing-box
 
     install -d completions
-    go run ./cmd/sing-box completion bash >completions/bash
-    go run ./cmd/sing-box completion fish >completions/fish
-    go run ./cmd/sing-box completion zsh >completions/zsh
+    "./${_pkgname}" completion bash >completions/bash
+    "./${_pkgname}" completion fish >completions/fish
+    "./${_pkgname}" completion zsh >completions/zsh
 }
 
 package() {
