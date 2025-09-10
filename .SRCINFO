@@ -13,6 +13,7 @@ pkgbase = python-geo-picture-tag-reader
 	depends = python>=3.9
 	depends = python-pyexiv2
 	depends = python-pytz
+	depends = python-rtree
 	depends = python-timezonefinder
 	depends = python-typer
 	depends = python-types-python-dateutil

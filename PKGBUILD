@@ -6,7 +6,7 @@ pkgdesc="Read and write standardized metadata from geolocated pictures EXIF meta
 arch=(any)
 url="https://gitlab.com/panoramax/server/geo-picture-tag-reader"
 license=('MIT')
-depends=('python>=3.9' 'python-pyexiv2' 'python-pytz' 'python-timezonefinder' 'python-typer' 'python-types-python-dateutil' 'python-types-pytz' 'python-xmltodict')
+depends=('python>=3.9' 'python-pyexiv2' 'python-pytz' 'python-rtree' 'python-timezonefinder' 'python-typer' 'python-types-python-dateutil' 'python-types-pytz' 'python-xmltodict')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-flit-core')
 optdepends=()
 conflicts=()
