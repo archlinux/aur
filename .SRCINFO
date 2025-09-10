@@ -1,10 +1,13 @@
 pkgbase = python-py6s
 	pkgdesc = Python interface to the 6S Radiative Transfer Model
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://py6s.readthedocs.io/
 	arch = any
 	license = LGPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = 6sv11
 	depends = python-nose

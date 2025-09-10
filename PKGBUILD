@@ -2,13 +2,13 @@
 _name=Py6S
 pkgname=('python-py6s')
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the 6S Radiative Transfer Model"
 arch=('any')
 url='https://py6s.readthedocs.io/'
 license=('LGPL')
-makedepends=('python-setuptools')
 depends=('6sv11' 'python-nose' 'python-numpy' 'python-scipy' 'python-dateutil')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-matplotlib: only used for plotting spectra'
             'python-pysolar: only required for setting the geometry from a location and time'
             'python-pandas: only required for importing AERONET data')
@@ -20,10 +20,10 @@ source=("$_pypi/$_path/$_name-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir/$_name-$pkgver/"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
