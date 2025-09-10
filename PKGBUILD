@@ -16,14 +16,17 @@ source=(tigervnc-${pkgver}.tar.gz::https://github.com/TigerVNC/tigervnc/archive/
 sha256sums=('7f231906801e89f09a212e86701f3df1722e36767d6055a4e619390570548537'
             '5d825fee354ed7c37bd4aa0558850d3fd17b7e2423b6818afff43ba26ebfb606')
 
+prepare() {
+  cd ${srcdir}/tigervnc-${pkgver}
+  sed -i -e 's/find_package(FLTK REQUIRED)/find_package(FLTK1.3 REQUIRED)/' \
+    -e 's/if(NOT OK_FLTK_VERSION)/if(FALSE)/' CMakeLists.txt
+}
+
 build() {
   cd ${srcdir}/tigervnc-${pkgver}
   cmake -G "Unix Makefiles" \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DFLTK_INCLUDE_DIR=/usr/include/fltk1.3 \
-      -DFLTK_LIBRARIES="/usr/lib/libfltk.so.1.3;/usr/lib/libfltk_images.so.1.3" \
-      -DFLTK_FLUID_EXECUTABLE=/usr/bin/fluid1.3 \
-      -DFLTK_CONFIG_SCRIPT=/usr/bin/fltk-config1.3
+      -DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/fltk1.3"
   cd vncviewer
   make
 }
