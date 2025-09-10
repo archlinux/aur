@@ -1,6 +1,6 @@
 pkgbase = google-calender-widget
 	pkgdesc = An unofficial google calendar desktop widget.(Use system-wide electron)
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/p32929/google-calender-widget
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = google-calender-widget
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron25
+	depends = electron38
 	conflicts = google-calender-widget
-	source = google-calender-widget-1.1.5.tar.gz::https://github.com/p32929/google-calender-widget/archive/refs/tags/1.1.5.tar.gz
+	source = google-calender-widget-1.1.6.tar.gz::https://github.com/p32929/google-calender-widget/archive/refs/tags/1.1.6.tar.gz
 	source = google-calender-widget.sh
-	sha256sums = 15a26b381716bf51198f1164975fe6be40fcc5daacf9a4b328670c41f9ec9d8e
+	sha256sums = 23843d35b9736e1cc170d32be2916965749f6dbda5f1f9e6cee836ebebf7395d
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = google-calender-widget
