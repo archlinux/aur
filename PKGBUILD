@@ -6,15 +6,15 @@ _encodings='uni i15'
 
 pkgname=uw-ttyp0-font
 pkgdesc='Bitmap monospaced font with unicode support and Powerline symbols'
-pkgver=1.3
-pkgrel=8
+pkgver=2.0
+pkgrel=1
 arch=(any)
 url=http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
 source=("${url}/uw-ttyp0-${pkgver}.tar.gz")
 license=(custom)
 conflicts=(uw-ttyp0-otb otb-uw_ttyp0)
 makedepends=(xorg-bdftopcf xorg-mkfontscale perl xorg-fonttosfnt)
-sha512sums=('193966b826cafa313384f20e225d4a0b0057364ed23c2beaf27a59095fdb9079281fdc1d292592038512a56ec0387e531a28449344e2960f0ecd3e64c7a6f6e7')
+sha512sums=('b30d45bbf307ff62b93b433daf9969637a659f52543f8a896eb4a0d29453bde2d08efdbc50237c44f8ff84bb99c857bc9eb534a02f9e37727cfa998f8e2207ac')
 
 prepare () {
 	cd "uw-ttyp0-${pkgver}"
@@ -46,11 +46,6 @@ build () {
 	cd "uw-ttyp0-${pkgver}"
 	./configure --prefix=/usr --pcfdir=/usr/share/fonts/misc
 	make
-	mkdir -p otb
-	for i in genbdf/*.bdf ; do
-		o=${i#*/}
-		fonttosfnt -b -c -g 2 -m 2 -o "otb/${o%.bdf}.otb" "${i}"
-	done
 }
 
 package () {
@@ -58,9 +53,7 @@ package () {
 	make install DESTDIR="${pkgdir}"
 
 	# Remove stray files, those are regenerated on install
-	rm -f "${pkgdir}/usr/share/fonts/misc/fonts.scale" \
-	      "${pkgdir}/usr/share/fonts/misc/fonts.dir"
+	rm -f "$pkgdir/usr/share/fonts"/{misc,OTB/uw-ttyp0}/fonts.{scale,dir}
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -m644 otb/*.otb "${pkgdir}/usr/share/fonts/misc"
 }
