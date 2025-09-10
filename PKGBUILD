@@ -13,7 +13,7 @@ replaces=()
 source=("in"
 	"in-mh")
 
-sha256sums=('9ecffeee9d9804f48d172867e5dc6144bf74a943ffa3caaa4acca5a4b75cbeaf'
+sha256sums=('ed42b1429ee4bb4e4bb3ca3e554c55d987826ef2630100ada9a1b08474be78d3'
             '34cf99367b8902541d40a3859d44a78595fa6becbb3bf76402272414dca52ec8')
 
 package() {
