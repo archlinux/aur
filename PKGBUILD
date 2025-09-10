@@ -1,35 +1,37 @@
-# Maintainer: Alois Nespor <alium@centrum.cz>
-# Conributor: kikadf <kikadf.01@gmail.com>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Alois Nespor <alium@centrum.cz>
+# Contributor: kikadf <kikadf.01@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: thacrazze <thacrazze|googlemail|com>
 
 pkgname=clipgrab
-pkgver=3.8.0
+pkgver=3.9.10
 pkgrel=1
 pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ...'
-arch=('i686' 'x86_64')
-url='http://clipgrab.org'
-license=('GPL3')
-depends=('qt5-webengine')
+arch=(x86_64)
+url='https://clipgrab.org'
+license=(GPL-3.0-only)
+depends=(gcc-libs
+         glibc
+         qt5-base
+         qt5-webengine
+         yt-dlp)
 optdepends=('ffmpeg: for the conversion functionality')
-replaces=('clipgrab-qt5')
-conflicts=('clipgrab-qt5')
 source=(https://download.clipgrab.org/$pkgname-$pkgver.tar.gz
         $pkgname.desktop)
-md5sums=('6573acb32b30a5d160f296a1c06237cf'
-         '9a141791f6952917c441050c3dac81ce')
+sha256sums=('e6c847bf784f71c16010f384f09dd8222d10c73fa3726496d78138f6e7330492'
+            '840910097d8c129ea12c395c4a33f562591e878e521c98fde8a7b3f9403aa23f')
 
 build() {
   cd $pkgname-$pkgver
 
-  qmake QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS" clipgrab.pro
+  qmake-qt5 clipgrab.pro
   make
 }
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 $pkgname -t "$pkgdir"/usr/bin/
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir"/$pkgname.desktop -t "$pkgdir"/usr/share/applications/
 }
