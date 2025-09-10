@@ -1,7 +1,7 @@
 pkgbase = wormhole
 	pkgdesc = Simple decentralized file storage
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Agartha-Software/Wormhole
 	arch = x86_64
 	license = AGPL-3.0-only

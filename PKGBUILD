@@ -5,7 +5,7 @@
 
 pkgname=wormhole
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple decentralized file storage'
 url='https://github.com/Agartha-Software/Wormhole'
 license=('AGPL-3.0-only')
@@ -41,8 +41,6 @@ package() {
         -executable \
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
-
-    install -Dm644 "./wormhole.service" "$pkgdir/usr/lib/systemd/system/wormhole.service"
 }
 
 post_install() {
