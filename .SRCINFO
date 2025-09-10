@@ -1,6 +1,6 @@
 pkgbase = coolerdash-git
 	pkgdesc = Extends CoolerControl with a polished LCD dashboard
-	pkgver = 1.51.r0.g9ef21e8
+	pkgver = 1.52.r0.g6659833
 	pkgrel = 1
 	url = https://github.com/damachine/coolerdash
 	install = coolerdash.install
@@ -21,7 +21,7 @@ pkgbase = coolerdash-git
 	conflicts = coolerdash
 	replaces = coolerdash
 	backup = etc/coolerdash/config.ini
-	source = git+https://github.com/damachine/coolerdash.git?signed#tag=v1.51?signed
+	source = git+https://github.com/damachine/coolerdash.git?signed#tag=v1.52?signed
 	source = ssh_allowed_signers
 	validpgpkeys = 160A147D7BFD360F41C4E52BC841EA18095F5D74
 	sha256sums = SKIP
