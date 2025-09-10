@@ -3,7 +3,7 @@
 _pkgauthor=neurocyte
 _pkgname=zat
 pkgname=${_pkgname}-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Syntax highlighting cat like utility"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[1]}.tar.gz")
 sha256sums=('a94267d8368fada2db5e129000c201ec7c8f58793c79fb26e4872c50bf28e3f8'
             'dad288859bc8b0a3ffc4d10d4eec9a5b06e3cec5eb67a44e3f6f27584148a649')
-sha256sums_x86_64=('469ab17e4b8c5ca1c25f1d0813c30ce88f539b9d70efa9227d56885a7b0d6811')
-sha256sums_aarch64=('5d1d45b57d90b5a2cc4848ede611d6045e44f35c35a9cb61df4d480ef679b235')
+sha256sums_x86_64=('6e5668748e78540ceda48dce4a47194513c395d3f6cb66b65660e267d6099018')
+sha256sums_aarch64=('471287cec5e8c91fc531312894751df9e4b0c98848fb897f62b9aede40b1e19b')
 
 
 package() {
