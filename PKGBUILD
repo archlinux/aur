@@ -3,7 +3,7 @@
 pkgname=clangd-bin
 pkgver=21.1.0
 pkgrel=1
-pkgdesc='Clangd Language Server'
+pkgdesc='Clangd Language Server and headers'
 arch=('x86_64')
 
 # URL del proyecto oficial de clangd
@@ -12,7 +12,7 @@ url="https://github.com/clangd/clangd"
 # Licencia de clangd
 license=('Apache-2.0 with LLVM Exceptions')
 
-depends=()
+depends=('rsync')
 
 optdepends=('gcc: Compiler without conflicts with clangd')
 

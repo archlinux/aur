@@ -1,10 +1,11 @@
 pkgbase = clangd-bin
-	pkgdesc = Clangd Language Server
+	pkgdesc = Clangd Language Server and headers
 	pkgver = 21.1.0
 	pkgrel = 1
 	url = https://github.com/clangd/clangd
 	arch = x86_64
 	license = Apache-2.0 with LLVM Exceptions
+	depends = rsync
 	optdepends = gcc: Compiler without conflicts with clangd
 	provides = clangd
 	conflicts = clangd
