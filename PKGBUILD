@@ -51,7 +51,7 @@ source=("git+https://github.com/damachine/coolerdash.git?signed#tag=$_tag"
         "ssh_allowed_signers")
 sha256sums=('SKIP'
             '18b1a6302b369ce01ce5a040046fa609ab045a99890797e9d8c041543ac450d6')
-validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
+#validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
 # https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
 prepare() {
