@@ -1,8 +1,8 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=pipes-rs
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="An over-engineered rewrite of pipes.sh in Rust"
 arch=('any')
 url="https://github.com/lhvy/pipes-rs"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 source=(
   "https://github.com/lhvy/pipes-rs/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ac7452f5b29e83bea6da14d37cf37efcf0a7c90846001cab55c4c1aea500d6cb')
+sha256sums=('8c2e2b376a571cda6c8c9a38aba068de5c0c89f07417727984524d8c002befc2')
 options=('!lto')
 
 build() {
