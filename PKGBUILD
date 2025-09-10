@@ -1,6 +1,6 @@
 # Maintainer: Syed Ali Rizvi <rizvihuihuihui@icloud.com>
 pkgname=vimasm
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Neovim setup with a default welcome.asm demo"
 arch=('any')
@@ -17,7 +17,7 @@ package() {
     install -Dm644 welcome.asm "$pkgdir/usr/share/$pkgname/welcome.asm"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
+    install -Dm644 init.lua "$pkgdir/usr/share/nvim/site/lua/vimasm/init.lua"
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/vimasm" <<'EOF'
 #!/bin/bash
 # vimasm launcher
