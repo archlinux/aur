@@ -32,7 +32,7 @@
 #   All dependencies are documented in 'README.md'.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.53.r0.g4063bcf
+pkgver=1.54.r0.g9aa9aa9
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -46,12 +46,11 @@ makedepends=('gcc' 'make' 'pkg-config' 'git' 'openssh')
 optdepends=()
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_tag=v1.53
+_tag=v1.54
 source=("git+https://github.com/damachine/coolerdash.git#tag=$_tag"
         "ssh_allowed_signers")
 sha256sums=('SKIP'
             '18b1a6302b369ce01ce5a040046fa609ab045a99890797e9d8c041543ac450d6')
-#validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
 # https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
 prepare() {
