@@ -1,5 +1,5 @@
-pkgbase = 7zip
-	pkgdesc = File archiver for extremely high compression
+pkgbase = 7zip-natspec
+	pkgdesc = File archiver for extremely high compression, using libnatspec patch
 	pkgver = 25.01
 	pkgrel = 1
 	url = https://www.7-zip.org
@@ -12,9 +12,12 @@ pkgbase = 7zip
 	depends = gcc-libs
 	depends = sh
 	provides = p7zip
+	provides = 7zip
 	conflicts = p7zip
-	replaces = p7zip
+	conflicts = 7zip
 	source = https://7-zip.org/a/7z2501-src.tar.xz
+	source = natspec.patch
 	sha256sums = ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e
+	sha256sums = 594bb07a6d35b55e04f9bc4c45c4cebdf497dd4d960e02f440552d2d6df7ec99
 
-pkgname = 7zip
+pkgname = 7zip-natspec

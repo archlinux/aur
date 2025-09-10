@@ -1,19 +1,28 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 
-pkgname=7zip
+pkgname=7zip-natspec
+_pkgname=7zip
 pkgver=25.01
 pkgrel=1
-pkgdesc="File archiver for extremely high compression"
+pkgdesc="File archiver for extremely high compression, using libnatspec patch"
 arch=('x86_64')
 url="https://www.7-zip.org"
 license=('LGPL-2.1-or-later' 'BSD-3-Clause' 'LicenseRef-UnRAR')
 depends=('glibc' 'gcc-libs' 'sh')
 makedepends=('uasm')
-provides=('p7zip')
-conflicts=('p7zip')
-replaces=('p7zip')
-source=(https://7-zip.org/a/7z${pkgver//./}-src.tar.xz)
-sha256sums=('ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e')
+provides=('p7zip' '7zip')
+conflicts=('p7zip' '7zip')
+source=(https://7-zip.org/a/7z${pkgver//./}-src.tar.xz
+       natspec.patch)
+sha256sums=('ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e'
+            '594bb07a6d35b55e04f9bc4c45c4cebdf497dd4d960e02f440552d2d6df7ec99')
+
+
+prepare() {
+  find . -type f -print0 | xargs -0 chmod 644
+  patch -p1 < ../natspec.patch
+}
 
 build() {
   local _platform_flags=()
@@ -51,7 +60,7 @@ package() {
     | install -D /dev/stdin "$pkgdir/usr/bin/$_prog"
   done
 
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" DOC/{,unRar}License.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" DOC/{,unRar}License.txt
 }
 
 # vim:set ts=2 sw=2 et:

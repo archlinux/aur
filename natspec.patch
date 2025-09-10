@@ -1,0 +1,47 @@
+commit 1eafd9404464a8a84414b9b92fd6eeedf72b287e (HEAD -> main)
+Author: Taiki Sugawara <buzz.taiki@gmail.com>
+Date:   Thu Sep 11 01:40:26 2025 +0900
+
+    natspec patch
+
+diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
+index 8fbef14..b041d3d 100755
+--- a/CPP/7zip/7zip_gcc.mak
++++ b/CPP/7zip/7zip_gcc.mak
+@@ -162,7 +162,7 @@ DEL_OBJ_EXE = -$(RM) $(PROGPATH) $(PROGPATH_STATIC) $(OBJS)
+ # LOCAL_LIBS=-lpthread
+ # LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ LIB2 = -lpthread
+-LIB2 = -lpthread -ldl
++LIB2 = -lpthread -ldl -lnatspec
+ 
+ 
+ endif
+diff --git a/CPP/7zip/Archive/Zip/ZipItem.cpp b/CPP/7zip/Archive/Zip/ZipItem.cpp
+index 272e53b..130753a 100755
+--- a/CPP/7zip/Archive/Zip/ZipItem.cpp
++++ b/CPP/7zip/Archive/Zip/ZipItem.cpp
+@@ -1,5 +1,8 @@
+ // Archive/ZipItem.cpp
+ 
++#include <cstdlib>
++#include <natspec.h>
++
+ #include "StdAfx.h"
+ 
+ #include "../../../../C/CpuArch.h"
+@@ -451,6 +454,14 @@ void CItem::GetUnicodeString(UString &res, const AString &s, bool isComment, boo
+     #endif
+   }
+   
++  if (!isUtf8) {
++    const char *oem_charset = natspec_get_charset_by_locale(NATSPEC_DOSCS, "");
++    char *p = natspec_convert(s.Ptr(), NULL, oem_charset, 0);
++    AString utf{p};
++    free(p);
++    if (ConvertUTF8ToUnicode(utf, res))
++      return;
++  }
+   
+   if (isUtf8)
+   {
