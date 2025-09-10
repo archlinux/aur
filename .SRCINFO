@@ -1,0 +1,26 @@
+pkgbase = nanocoder
+	pkgdesc = A beautiful local-first coding agent running in your terminal
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/Mote-Software/nanocoder
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = bash
+	depends = nodejs
+	provides = nanocoder
+	replaces = nodejs-nanocoder
+	noextract = nanocoder-1.9.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = https://registry.npmjs.org/@motesoftware/nanocoder/-/nanocoder-1.9.0.tgz
+	source = README-1.9.0.md::https://raw.githubusercontent.com/Mote-Software/nanocoder/v1.9.0/README.md
+	source = LICENSE-1.9.0::https://raw.githubusercontent.com/Mote-Software/nanocoder/v1.9.0/LICENSE.md
+	b2sums = 02eb4b8b2797ee76e44a857a977be57c416082aaf737dc89be03765e6c0b5b4e1ee24e14fc4773af7cb708124d6796c8c901156b8cdff54c60e60000098decff
+	b2sums = 3e8026e7270d3b9d0e99ee8775fdea0fa18e718c0a8f3c8458902ddf5a2bb996e8e5d3dc76726309bc8c77a4816e21ea946cad56df649ff7a7b736c0022baf35
+	b2sums = 9cde14a5c7909ccaa6db312625e46eb6885097c7e7f70916ed0412037b1418dd8139d5616dcef87fc22ad68fb5632e4b251af562598d076f34c7e46ac7293352
+
+pkgname = nanocoder
