@@ -18,6 +18,8 @@ pkgbase = python-panel
 	depends = python-mdit_py_plugins
 	depends = python-tqdm
 	depends = python-bleach
+	depends = python-packaging
+	depends = python-tqdm
 	source = panel-1.8.0.tar.gz::https://github.com/holoviz/panel/archive/v1.8.0.tar.gz
 	sha512sums = 009abf39107e4a3fd2919b1e053c605ca555c2910b25713717f1b9747eddd90cb181635da51fe0259aeed3308932227194c054889f682a16d37fe320e184cf04
 
