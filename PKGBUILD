@@ -2,8 +2,8 @@
 
 pkgname=clangd-bin
 pkgver=21.1.0
-pkgrel=1
-pkgdesc='Clangd Language Server and headers'
+pkgrel=2
+pkgdesc='Clangd Language Server'
 arch=('x86_64')
 
 # URL del proyecto oficial de clangd
@@ -12,7 +12,7 @@ url="https://github.com/clangd/clangd"
 # Licencia de clangd
 license=('Apache-2.0 with LLVM Exceptions')
 
-depends=('rsync')
+depends=()
 
 optdepends=('gcc: Compiler without conflicts with clangd')
 
@@ -30,11 +30,5 @@ package() {
     install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm755 bin/clangd "$pkgdir/usr/bin/clangd"
-
-    dest="$pkgdir/usr/local/lib/clang/21"
-    mkdir -p "$dest"
-
-    # Copiar todo el contenido de include directamente a la ruta final
-    rsync -a lib/clang/21/include/ "$dest/"
 
 }
