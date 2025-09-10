@@ -1,0 +1,36 @@
+pkgbase = chromium-ffmpeg-git
+	pkgdesc = Add codecs to Chromium (libavcodec ??)
+	pkgver = 8.1.r121028.gd87210745e
+	pkgrel = 1
+	url = https://git.ffmpeg.org/ffmpeg
+	install = chromium-ffmpeg.install
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = nasm
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = glibc
+	provides = nwjs-ffmpeg-codecs
+	provides = opera-developer-ffmpeg-codecs
+	provides = vivaldi-ffmpeg-codecs
+	provides = vivaldi-snapshot-ffmpeg-codecs
+	provides = chromium-ffmpeg
+	conflicts = nwjs-ffmpeg-codecs
+	conflicts = opera-developer-ffmpeg-codecs
+	conflicts = vivaldi-ffmpeg-codecs
+	conflicts = vivaldi-snapshot-ffmpeg-codecs
+	conflicts = chromium-ffmpeg
+	source = sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git
+	source = chromium-ffmpeg.install
+	source = chromium-ffmpeg.hook
+	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
+	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
+	sha256sums = SKIP
+	sha256sums = c1eb8b1c42aa427e178725e6de448ad56d618a2127aaae80536de93fc3783d10
+	sha256sums = f6f7500992d4290723f0d2ffd54d931f25a573794eb23671e4a91bc386b5935b
+
+pkgname = chromium-ffmpeg-git
