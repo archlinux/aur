@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dbptk-desktop-bin
 _pkgname='DBPTK Desktop'
-pkgver=3.1.6
+pkgver=3.1.7
 _electronversion=34
 pkgrel=1
 pkgdesc="A cross-platform app built on Electron that uses DBPTK UI as a viewer for relational databases.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5816ea9d6ae68ca1109f9096668b6683235afaf6c05a2b146b369f8ca85c1663'
+sha256sums=('c36167de22e4154688aa3efde03a1d60bfae1703600949da940a40133aef3aaa'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
