@@ -1,10 +1,12 @@
 # Maintainer: korimitsu <korimitsu_aur.wackiness926@passinbox.com>
-# Based on dislocker PKGBUILD contributor: Olaf Bauer <hydro@freenet.de>
+# Based on PKGBUILD by:
+# Maintainer:
+# Contributor: Olaf Bauer <hydro@freenet.de>
 
 _pkgname='dtv-scan-tables'
 pkgname="dtv-scan-tables-patched"
 pkgver=r1309.caca23f
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital TV scan tables (pinned to good commit to avoid current dvbv3 breakage)"
 url="https://git.linuxtv.org/dtv-scan-tables.git"
 license=('GPL-2.0-only' 'LGPL-2.0-only')
@@ -12,9 +14,8 @@ arch=('any')
 
 makedepends=('git' 'v4l-utils')
 
-# Provide the canonical package, and conflict with both the stable and -git variants
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
+provides=('dtv-scan-tables-dvbv3' 'dtv-scan-tables-legacy')
+conflicts=('dtv-scan-tables' 'dtv-scan-tables-git' 'dtv-scan-tables-patched')
 
 _pkgsrc="$_pkgname"
 # Pin to last good commit that compiles: caca23fb546620433763a3ec04f65e62855b1dbc
