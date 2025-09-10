@@ -7,7 +7,7 @@
 
 pkgname=github-desktop-plus
 pkgver=3.5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of GitHub Desktop with extra features and improvements."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/pol-rivero/github-desktop-plus"
@@ -83,7 +83,7 @@ package() {
     install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/$pkgname"
 
     chmod +x "$INSTALL_DIR/resources/app/static/github"
-    ln -s "$INSTALL_DIR/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
+    ln -s "/opt/$pkgname/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
 
     install -Dm0644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
