@@ -1,13 +1,13 @@
-# Maintainer: jakka <jakkadoujin at gmail dot com>
+# Maintainer: jakka <jakka@jakka.su>
 
 pkgname=hydownloader-git
 _name=hydownloader
-pkgver=r619.0f91dbc
+pkgver=r696.7be4aad
 pkgrel=1
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
 url="https://gitgud.io/thatfuckingbird/hydownloader"
-license=('GNU AGPL')
+license=('AGPL-3.0-or-later')
 depends=(
   python
   python-click
@@ -19,6 +19,7 @@ depends=(
   python-brotli
   gallery-dl
   python-pillow
+  python-pysocks
 )
 makedepends=(
 	python-poetry
