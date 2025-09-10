@@ -5,11 +5,14 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=8.5.3
-_electronversion=37
+pkgver=8.6.0
+_electronversion=38
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Prebuilt version,use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://netron.app/"
 _ghurl="https://github.com/lutzroeder/netron"
 license=('MIT')
@@ -19,15 +22,17 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lutzroeder/netron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('13f66ef576c3d80cfd220d76bfa75ea02c0ae99ea714181e19c9036d5c65c486'
-            '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
+sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('bc5599c9bc3ead38fa53b1cd1471f5bd3077c139e1b98b05b43f7f7c1f3fd943')
+sha256sums_x86_64=('362c0b23777c0b34f2ef932ca7d516f71d6a402e7d513cf456726c6950c724ed')
 _get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
@@ -38,18 +43,13 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ]; then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
