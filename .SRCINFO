@@ -15,6 +15,7 @@ pkgbase = zoom-native
 	optdepends = chromium
 	optdepends = chromium-ffmpeg-legacy
 	optdepends = vulkan-icd-loader
+	replaces = zoom-system-qt
 	options = emptydirs
 	source = zoom-native.hook
 	source = zoom-native.sh

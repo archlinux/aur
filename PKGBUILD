@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Replace Zoom Workspace's libs by system copies"
 arch=(any)
 url=https://zoom.us/
+replaces=(zoom-system-qt)
 optdepends=(
   'qt5-webengine: SSO login'
   'xdg-desktop-portal-impl: Screen sharing on Wayland'
