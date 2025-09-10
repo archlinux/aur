@@ -1,7 +1,7 @@
 # Maintainer: tblFlip <root@tblflip.de>
 
 pkgname=tagstudio
-pkgver=alpha9.5.3
+pkgver=alpha9.5.5
 pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
@@ -33,6 +33,8 @@ depends=(
 	"python-structlog>=24.4.0"
 	"python-toml>=0.10.2"
 	"python-pydantic>=2.9.2"
+    "python-rarfile>=4.2"
+    "python-wcmatch>=10"
 	"qt6-tools"
 	"qt6-multimedia"
 	"qt6-svg"
@@ -61,31 +63,24 @@ source=(
 	"$pkgname.desktop"
 	"$pkgname"
 	"MANIFEST.in"
-    "fix_avif.patch"
 )
 
 sha256sums=(
-	"d422b0b2ca544079ea82996470fe88a10f211fcb1d01954bc6fea30b591c9634"
+	"8903add2a9e6d7d7d49e84d10c72db70a4bb251a38720216e2c13b70d65fe91a"
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
 	"7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
-	"cdc2b1c82b7335e4ff56a0f4d36be69fef541757cad19fe0e08466962dde8e66"
 )
 
 provides=("$pkgname")
 conflicts=("$pkgname")
-
-prepare() {
-    cd "TagStudio-$_pkgver"
-    patch -p1 < ../fix_avif.patch
-}
 
 build() {
 	cd "TagStudio-$_pkgver"
 	# setuptools allegedly does not support PEP-639 yet
 	sed -i 's/license = "GPL-3.0-only"/license = {text = "GPL-3.0-only"}/' pyproject.toml
 	# python-opencv currently does not ship cv2.typing
-	sed -i 's/from cv2.typing import MatLike/class MatLike: pass/' src/tagstudio/qt/widgets/thumb_renderer.py
+	sed -i 's/from cv2.typing import MatLike/class MatLike: pass/' src/tagstudio/qt/previews/renderer.py
 	python -m build --wheel --no-isolation
 }
 

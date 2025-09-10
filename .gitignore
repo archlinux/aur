@@ -4,7 +4,5 @@
 !/.SRCINFO
 !/PKGBUILD
 !/MANIFEST.in
-!/pyproject.toml.patch
 !/tagstudio.desktop
 !/tagstudio
-!/fix_avif.patch
