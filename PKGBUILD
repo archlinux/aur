@@ -1,6 +1,6 @@
 # Maintainer: level666 <lev3l666@gmail.com>
 
-pkgname=simulator
+pkgname=zeppossimulator
 pkgver=2.0.2
 pkgrel=1
 pkgdesc="Zepp OS simulator"
