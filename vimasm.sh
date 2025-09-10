@@ -1,6 +1,5 @@
 #!/bin/bash
 # vimasm launcher
-# Maintainer: Syed Ali Rizvi <rizvihuihuihui@icloud.com>
 
 VIMASM_DIR="$HOME/.config/vimasm"
 VIMASM_DEMO="$HOME/vimasm_demo"
@@ -31,7 +30,19 @@ if [ ! -d "$VIMASM_DEMO" ]; then
     cp /usr/share/vimasm/welcome.asm "$VIMASM_DEMO/" 2>/dev/null || true
 fi
 
-# First run: open welcome.asm
+# 4️⃣ AFD debugger
+if [ ! -d "/usr/local/vimasm/dos" ]; then
+    sudo mkdir -p /usr/local/vimasm/dos
+fi
+sudo cp /usr/share/vimasm/AFD.EXE /usr/local/vimasm/dos/AFD.EXE
+
+# 5️⃣ DOSBox config
+if [ ! -f "$DOSBOX_CFG" ]; then
+    mkdir -p "$(dirname "$DOSBOX_CFG")"
+    cp /usr/share/vimasm/dosbox-vimasm.conf "$DOSBOX_CFG"
+fi
+
+# 6️⃣ First run: open welcome.asm
 if [ ! -f "$VIMASM_DIR/.initialized" ]; then
     mkdir -p "$VIMASM_DIR"
     touch "$VIMASM_DIR/.initialized"
@@ -40,6 +51,6 @@ if [ ! -f "$VIMASM_DIR/.initialized" ]; then
     fi
 fi
 
-# Otherwise open nvim normally
+# 7️⃣ Otherwise open nvim normally
 exec nvim "$@"
 
