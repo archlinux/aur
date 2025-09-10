@@ -1,10 +1,10 @@
 pkgname='python-hdwallet'
 pkgver='3.6.1'
 _src_folder="${pkgname}-${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Python-based library implementing a Hierarchical Deterministic (HD) Wallet generator for 200+ cryptocurrencies."
 url="https://hdwallet.io"
-depends=('python' 'python-ecdsa' 'python-crcmod' 'python-pycryptodome' 'python-ed25519-blake2b' 'python-coincurve' 'python-pynacl' 'python-base58' 'python-cbor2' 'python-bip38')
+depends=('python' 'python-ecdsa' 'python-crcmod' 'python-pycryptodome' 'python-ed25519-blake2b' 'python-coincurve' 'python-pynacl' 'python-base58' 'python-cbor2' 'python-bip38' 'python-pyaes')
 
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('custom:MIT License')
