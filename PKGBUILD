@@ -3,10 +3,10 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nym-vpn-app
-pkgver=1.14.0
+pkgver=1.15.0
 # upstream version
-_pkgver=1.14.0
-_release_tag=nym-vpn-app-v1.14.0
+_pkgver=1.15.0
+_release_tag=nym-vpn-app-v1.15.0
 pkgrel=1
 pkgdesc='NymVPN desktop client'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nym-vpn.desktop'
     'nym-vpn.svg')
 sha256sums=(
-    '6b6b4b45090bd5bc8e17f91ac8a9fab61667abca078ecfa5076752c5cadc27ba' 
+    '3c8b0536c84c04f25da3d33e44e4087c5522315e4a9a0f48a7cd816dfde05165' 
     '143fd3eb05ccc8d714cda55c83221ffe6c5f83d85d5cce8407c188a8e72952d8' 
     '8058039c52c588e38285971c4c37d50fdb8e05e50bbc19d7ffeb89d662a21f1e')
 _srcdir="nym-vpn-client-$_release_tag"
