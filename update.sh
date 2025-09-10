@@ -7,8 +7,8 @@ latest=$(curl -s https://api.github.com/repos/$repo/releases/latest | awk -F\" '
 sed -i -e "s/^pkgver=.*/pkgver=${latest}/" PKGBUILD
 
 if (git diff --exit-code PKGBUILD); then
-	echo "Package has most recent version ${latest}"
-	exit 0
+  echo "Package has most recent version ${latest}"
+  exit 0
 fi
 
 sed -i -e 's/pkgrel=.*/pkgrel=1/' PKGBUILD
