@@ -3,11 +3,11 @@ pkgname=kubectl-rakkess
 _pkgname=rakkess
 # renovate: datasource=github-releases depName=corneliusweig/rakkess
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='kubectl plugin to show an access matrix for server resources'
 arch=('x86_64' 'aarch64')
 url='https://github.com/corneliusweig/rakkess'
-license=('Apache')
+license=('Apache-2.0')
 depends=('kubectl')
 makedepends=('git' 'go')
 provides=('kubectl-access-matrix')
@@ -25,14 +25,13 @@ build() {
   )
 
   cd "${_pkgname}-${pkgver}"
-  export CGO_ENABLED=0
+  export CGO_ENABLED=1
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
   export GO111MODULE=on
-  # -ldflags="-linkmode=external ${_x[*]/#/-X=${url/https:\/\/}/pkg/util.}" \
   mkdir bin
   go mod tidy
   go build \
