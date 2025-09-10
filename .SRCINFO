@@ -1,6 +1,6 @@
-pkgbase = dtv-scan-tables-dvbv5
+pkgbase = dtv-scan-tables-dvbv5-git
 	pkgdesc = Digital TV scan tables (DVBv5 only)
-	pkgver = r0.0000000
+	pkgver = r1310.15661aa
 	pkgrel = 1
 	url = https://git.linuxtv.org/dtv-scan-tables.git
 	arch = any
@@ -15,4 +15,4 @@ pkgbase = dtv-scan-tables-dvbv5
 	source = dtv-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git
 	sha256sums = SKIP
 
-pkgname = dtv-scan-tables-dvbv5
+pkgname = dtv-scan-tables-dvbv5-git
