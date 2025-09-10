@@ -1,4 +1,4 @@
 *.pkg.*
 src/
 pkg/
-kubectl-argo-rollouts
+kubectl-argo-rollouts*
