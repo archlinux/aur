@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=140.0.7339.80
+pkgver=140.0.7339.127
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-undeclared-isnan.patch
         remove-unused-icu-targets.patch
 )
-sha256sums=('3c59ca1da92a7d1ec2cf152b3c99ebd9348e1db43e8cb782afcb19dfcaeaca2c'
+sha256sums=('02a0d17f811bb780e5b81bb457200bf1c95a49a78ce7e023d0367c30c38fda7c'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             '75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
