@@ -25,7 +25,7 @@ source=("${_appimage}::${url}/releases/download/v${pkgver}/${_upstream_base}-${p
 
 # These placeholders are auto-updated by the GitHub Actions workflow.
 sha256sums=('38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf'
-            '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf'
+            'cf28318f07ae199b593f91c8b1d3145dffa4194022a955c4d7322a068df16a70'
             '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf')
 
 _install_dir="opt/${pkgname}"
