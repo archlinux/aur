@@ -59,7 +59,7 @@ prepare() {
   if git -C "$srcdir/coolerdash" -c gpg.ssh.allowedSignersFile="$srcdir/ssh_allowed_signers" verify-tag "$_tag" 2>/dev/null; then
     echo "✅ Tag signature verified successfully"
   else
-    echo "⚠️  Warning: Could not verify tag signature (this is non-fatal)"
+    echo "⚠️ Could not verify tag signature (this is non-fatal)"
   fi
 }
 
