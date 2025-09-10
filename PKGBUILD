@@ -24,9 +24,9 @@ source=("${_appimage}::${url}/releases/download/v${pkgver}/${_upstream_base}-${p
   "lobe-chat.png::https://raw.githubusercontent.com/lobehub/lobe-chat/v${pkgver}/apps/desktop/resources/tray.png")
 
 # These placeholders are auto-updated by the GitHub Actions workflow.
-sha256sums=(''dfd904ce34157148df39ce2c0e5e5fa5b0e9fe2f9010f3f055dbbae10a7715b4''
-            ''cf28318f07ae199b593f91c8b1d3145dffa4194022a955c4d7322a068df16a70''
-            ''38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf'')
+sha256sums=('dfd904ce34157148df39ce2c0e5e5fa5b0e9fe2f9010f3f055dbbae10a7715b4'
+            'cf28318f07ae199b593f91c8b1d3145dffa4194022a955c4d7322a068df16a70'
+            '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf')
 
 _install_dir="opt/${pkgname}"
 _exec_name="lobe-chat" # Symlink /usr/bin/lobe-chat -> AppImage
