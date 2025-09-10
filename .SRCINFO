@@ -19,6 +19,7 @@ pkgbase = python-hdwallet
 	depends = python-cbor2
 	depends = python-bip38
 	depends = python-pyaes
+	depends = python-click-aliases
 	source = python-hdwallet-3.6.1.tar.gz::https://github.com/hdwallet-io/python-hdwallet/archive/refs/tags/v3.6.1.tar.gz
 	sha256sums = be186aa911c01cd019deae6769bcfae72f07e3d374f64bd6aacfda2e146f79fa
 
