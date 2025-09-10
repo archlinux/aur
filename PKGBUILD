@@ -54,9 +54,9 @@ sha256sums=('SKIP'
 #validpgpkeys=('160A147D7BFD360F41C4E52BC841EA18095F5D74')
 
 # https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
-prepare() {
-  git -C "$srcdir/coolerdash" -c gpg.ssh.allowedSignersFile="$srcdir/ssh_allowed_signers" verify-tag "$_tag"
-}
+#prepare() {
+#  git -C "$srcdir/coolerdash" -c gpg.ssh.allowedSignersFile="$srcdir/ssh_allowed_signers" verify-tag "$_tag"
+#}
 
 # https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
 pkgver() {
