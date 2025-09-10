@@ -13,16 +13,16 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=25.3.0_devel.210054.c11f47481a4
+pkgver=25.3.0_devel.211804.08a3497223f
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
                             wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
-                            rust rust-bindgen spirv-tools spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
+                            rust rust-bindgen-git spirv-tools spirv-llvm-translator-minimal-git systemd-libs clang-opencl-headers-minimal-git
                             python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml libdisplay-info)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio mesa-vdpau vulkan-driver opengl-driver)
+provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio vulkan-driver opengl-driver)
 conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-virtio
                 vulkan-nouveau mesa-libgl vulkan-gfxstream vulkan-dzn
 )
@@ -33,8 +33,10 @@ license=("MIT AND BSD-3-Clause AND SGI-B-2.0")
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
 )
 
-md5sums=('SKIP')
-sha512sums=('SKIP')
+md5sums=('SKIP'
+)
+sha512sums=('SKIP'
+)
 options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
@@ -68,7 +70,6 @@ build() {
        -D egl=enabled \
        -D gallium-extra-hud=true \
        -D gallium-va=enabled \
-       -D gallium-vdpau=enabled \
        -D gbm=enabled \
        -D gles1=disabled \
        -D gles2=enabled \
