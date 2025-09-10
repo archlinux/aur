@@ -7,10 +7,9 @@ gi.require_version('Gdk', '4.0')
 import subprocess
 import shutil
 from pathlib import Path
-from gi.repository import Gtk, Gio, Gdk, GdkPixbuf, GObject, Adw, Pango
+from gi.repository import Gtk, Gio, Gdk, GdkPixbuf, GObject, Adw, Pango, GLib
 
 import threading
-from gi.repository import GLib
 import json
 import random
 import argparse
@@ -23,20 +22,24 @@ LABEL_MAX_CHARS = 30
 
 class WallpaperManager(Adw.Application):
     def on_cycle_countdown(self):
+        print(f"[DEBUG] on_cycle_countdown: is_cycling={self.is_cycling}, is_paused={self.is_paused}, countdown={self.cycle_countdown}")
         if not self.is_cycling or self.is_paused:
             return True
         self.cycle_countdown -= 1
         self.update_cycle_ui()
         if self.cycle_countdown <= 0:
-            self.on_cycle_timeout()
+            print("[DEBUG] Timer hit zero, cycling to next wallpaper.")
+            self.cycle_to_next_wallpaper()
             self.cycle_countdown = self.cycle_interval
         return True
     def schedule_next_cycle(self):
         """Schedule the next wallpaper change"""
+        print(f"[DEBUG] schedule_next_cycle: Setting countdown to {self.cycle_interval}s")
         if self.cycle_timeout_id:
             GLib.source_remove(self.cycle_timeout_id)
         self.cycle_countdown = self.cycle_interval
         self.cycle_timeout_id = GLib.timeout_add_seconds(1, self.on_cycle_countdown)
+        print(f"[DEBUG] schedule_next_cycle: Timer scheduled, id={self.cycle_timeout_id}")
     def load_config(self):
         """Load the entire config from the single config file."""
         if not os.path.exists(self.config_file):
@@ -198,20 +201,21 @@ class WallpaperManager(Adw.Application):
         self.restore_cycle_state()
 
     def load_cycle_config(self):
-        """Load cycling configuration from file"""
-    # All config is now loaded from the single config file
+        """Load cycling configuration from config file (interval, random order)"""
+        config = self.load_config()
+        interval = config.get('interval')
+        if interval is not None:
+            self.cycle_interval = int(interval)
+        random_order = config.get('random_order')
+        if random_order is not None:
+            self.is_random_order = bool(random_order)
 
     def save_cycle_config(self):
-        """Save cycling configuration to file"""
-        try:
-            config = {
-                'interval': self.cycle_interval,
-                'random_order': self.is_random_order
-            }
-            with open(self.cycle_config_file, 'w') as f:
-                json.dump(config, f)
-        except Exception as e:
-            print(f"Error saving cycle config: {e}")
+        """Save cycling configuration (interval, random order) to config file"""
+        config = self.load_config()
+        config['interval'] = self.cycle_interval
+        config['random_order'] = self.is_random_order
+        self.save_config(config)
 
     def create_systemd_service(self):
         """Create a systemd user service file for automatic wallpaper cycling"""
@@ -417,6 +421,15 @@ WantedBy=default.target
 
     def update_cycle_ui(self):
         # Show next wallpaper and countdown
+        if self.daemon_mode:
+            if not self.is_cycling or self.is_paused:
+                print("Cycling paused")
+            else:
+                next_idx = (self.current_index + 1) % len(self.cycling_wallpapers)
+                next_wallpaper = os.path.basename(self.cycling_wallpapers[next_idx]) if self.cycling_wallpapers else "-"
+                print(f"Next: {next_wallpaper} in {self.cycle_countdown}s")
+            return
+        # UI mode
         if not self.is_cycling or self.is_paused:
             self.cycle_status_label.set_label("Cycling paused")
         else:
@@ -617,40 +630,38 @@ WantedBy=default.target
             else:
                 print("No wallpapers available for cycling")
             return
-        
+
         self.is_cycling = True
         self.is_paused = False
         self.save_cycle_state()
-        
+
+        # Always initialize cycling_wallpapers, even in daemon mode
+        if self.is_random_order:
+            self.cycling_wallpapers = self.wallpaper_list.copy()
+            random.shuffle(self.cycling_wallpapers)
+            self.current_index = 0
+        else:
+            self.cycling_wallpapers = self.wallpaper_list.copy()
+            if self.current_wallpaper and self.current_wallpaper in self.cycling_wallpapers:
+                self.current_index = self.cycling_wallpapers.index(self.current_wallpaper)
+            else:
+                self.current_index = 0
+
         # Only update UI if not in daemon mode
         if not self.daemon_mode:
             self.cycle_button.set_label("Stop Cycling")
             self.next_button.set_sensitive(True)
             self.pause_button.set_sensitive(True)
             self.pause_button.set_label("Pause Cycling")
-        
-        # Initialize wallpaper list order
-        if self.is_random_order:
-            # Create a shuffled copy of the list
-            self.cycling_wallpapers = self.wallpaper_list.copy()
-            random.shuffle(self.cycling_wallpapers)
-            self.current_index = 0
-        else:
-            self.cycling_wallpapers = self.wallpaper_list.copy()
-            # Start from current wallpaper if it exists in the list
-            if self.current_wallpaper and self.current_wallpaper in self.cycling_wallpapers:
-                self.current_index = self.cycling_wallpapers.index(self.current_wallpaper)
-            else:
-                self.current_index = 0
-        
+
         # Start the cycling timer
         self.schedule_next_cycle()
-        
+
         # Update status
         minutes = self.cycle_interval // 60
         time_str = f"{minutes} minute{'s' if minutes != 1 else ''}"
         order_str = "random" if self.is_random_order else "sequential"
-        
+
         if not self.daemon_mode:
             self.cycle_status_label.set_label(f"Cycling every {time_str} in {order_str} order")
         else:
