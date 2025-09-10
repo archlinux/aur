@@ -1,14 +1,14 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=2.6.7
-_xrayver=25.8.29
-pkgrel=3
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
 license=(GPL-3.0-only)
 depends=(
+  3x-ui-xray-core
   glibc
   sh
 )
@@ -23,20 +23,8 @@ optdepends=(
 options=(!debug)
 install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-source_aarch64=(https://github.com/XTLS/Xray-core/releases/download/v${_xrayver}/Xray-linux-arm64-v8a.zip)
-source_armv7h=(https://github.com/XTLS/Xray-core/releases/download/v${_xrayver}/Xray-linux-arm32-v7a.zip)
-source_i686=(https://github.com/XTLS/Xray-core/releases/download/v${_xrayver}/Xray-linux-32.zip)
-source_x86_64=(https://github.com/XTLS/Xray-core/releases/download/v${_xrayver}/Xray-linux-64.zip)
-sha256sums=('204209ab672a4262b1919aeaf885ad217e901d6a9d4043c0fe6dfe0ded5c46f6')
-sha256sums_aarch64=('94374589c7208e4531022e406cdaefc1c875697c458f558a1bfbc34235ea6ba9')
-sha256sums_armv7h=('6460457e2dac9f0373c871c8b8e089815fb0e3f9508a52d52816e585b7b735e4')
-sha256sums_i686=('24bc8aab5427793556cbcb626f40102e48d69cb71936972944d6869e4ccf1256')
-sha256sums_x86_64=('19cb6e45f5974032c81880423b85a4a04dffdbdf6b26367f4330b28e620a020a')
-b2sums=('12681726fc442f958eafd859a8e40798211ff0faed39dc0debe362c1f486ab487755c77136bc111bca1aa52fd5ad8e78c1f2a42112c165391a741df3ff96b4ad')
-b2sums_aarch64=('36161430b7291fc402413f831f3eb33b5609af92e78451ebb9774339e2f74651e3d61d52d13180c56a93a8770eb97fbd7099d4e68d83dae2b8d4a94b9c88fbc2')
-b2sums_armv7h=('75ea1373cb510858912cfea89eda790d49a5df90fb3e5aa73d9aebe98e397c7c11862a978c57e225ef1d07ae8436c2adff76cadca5763fa4b091481f85a9cda8')
-b2sums_i686=('b40144e8d695fc61d0fbe415c6c723e3a70d45f2e0c87ccd227c1e37af75ab61daca1892dd730ec35548909a5b09e699a1377a2b014bed1ef551edab6d636a5a')
-b2sums_x86_64=('fac02ce3846b97e39cb651c393bd33513f5526eb571546fc411a7f3b2730319fce5b3deffac7d9480671e1e1caee8ec3deb47a2a38df89ea81b2689c5eef5b2e')
+sha256sums=('6b87b107e1289584b552bc221ce1bc7f30848adae60fe4a60af525159a1a0ab5')
+b2sums=('89b70bfb6ab47afedabbc920f7d9236bbe2b6b8c2c4bd31177b634d848bd969651abf545203f881fd25a8532c5ff74aa03d57ebfb53cfbb19900c650b62c5226')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -49,9 +37,6 @@ prepare() {
 }
 
 build() {
-  export TMPDIR="$srcdir"/tmp
-  mkdir -p "$TMPDIR"
-
   cd $pkgname-$pkgver
   export GOCACHE="$srcdir"/go-build
   export GOPATH="$srcdir"/go
@@ -69,11 +54,4 @@ package() {
   install -vDm 755 ${pkgname:1}.sh          "$pkgdir"/usr/bin/${pkgname:1}
   install -vDm 755 build/$pkgname           "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
   install -vDm 644 ${pkgname:1}.service  -t "$pkgdir"/usr/lib/systemd/system/
-  case ${CARCH} in
-    aarch64) _xrayarch="arm64";;
-    armv7h)  _xrayarch="arm32";;
-    i686)    _xrayarch="i386";;
-    x86_64)  _xrayarch="amd64";;
-  esac
-  install -vDm 755 ../xray                    "$pkgdir"/usr/lib/${pkgname:1}/bin/xray-linux-${_xrayarch}
 }
