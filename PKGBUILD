@@ -3,8 +3,8 @@
 _pkgname=RTKLIB
 pkgname=rtklib-qt
 provides=("rtklib-qt")
-pkgver=b34k
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="An Open Source Program Package for GNSS Positioning. QT port."
 arch=('x86_64')
 url="https://github.com/rtklibexplorer/RTKLIB"
@@ -13,8 +13,8 @@ groups=('GNSS')
 depends=('glibc' 'gcc-libs' 'libglvnd' 'qt6-base')
 optdepends=('qt6-serialport' 'qt6-webchannel' 'qt6-webengine' 'qt6-location' 'qt6-declarative')
 conflicts=('rtklib-qt-git')
-source=("https://github.com/rtklibexplorer/RTKLIB/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('32b9c7db6e0455e13fa0287b2fe2138c3c27b6c51d35a33b4bfcb92212ae0f66')
+source=("https://github.com/rtklibexplorer/RTKLIB/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2229dadd2e71c7ef3a2cc97c11903a900a661e56c39fd0be7450d932685ce249')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/app/qtapp"
