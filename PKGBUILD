@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde6' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=5.1.4.31268
+pkgver=5.1.5.31310
 pkgrel=1
 arch=('x86_64')
 url='https://www.scootersoftware.com'
@@ -21,7 +21,7 @@ groups=('utility')
 depends=('qt5-x11extras' 'fontconfig' 'zlib')
 makedepends=('sed')
 source=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
-sha256sums=('5aba55c5aceba5cbeff0fbde4871ccbf32703820c46139f6ce29c3a536af3087')
+sha256sums=('e02ab7a917d2ec7436565898af400ecb319ece744759042f99b7017ccc38994e')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
