@@ -2,22 +2,23 @@
 # Contributor: Andreas Hübner <andhu@gmx.de>
 
 pkgname=unicode
-pkgver=2.9
-pkgrel=4
+pkgver=3.2
+_commit=fa4fa6118d68c693ee14b97df6bf12d2fdbb37df
+pkgrel=1
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
 arch=('any')
 license=('GPL-3.0-only')
 depends=('python')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/garabik/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("git+https://github.com/garabik/${pkgname%-git}.git#commit=$_commit"
         UnicodeData-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
         Blocks-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/Blocks.txt')
-sha256sums=('87df5fa2c346928984e4e3767d194a0332bdb5526eb8f8665075db9a76f50ce4'
-            'ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f'
-            'f3907b395d410f1b97342292ca6bc83dd12eb4b205f2a0c48efdef99e517d7b0')
+sha256sums=('2997e87f7f45de9750d027de9d9d94c5343eab6e0e4051c5fc6f53ca84f932f9'
+            '2e1efc1dcb59c575eedf5ccae60f95229f706ee6d031835247d843c11d96470c'
+            'c0edefaf1a19771e830a82735472716af6bf3c3975f6c2a23ffbe2580fbbcb15')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   install -Dm755 unicode "$pkgdir/usr/bin/unicode"
   install -Dm755 paracode "$pkgdir/usr/bin/paracode"
