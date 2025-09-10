@@ -1,0 +1,24 @@
+pkgbase = gslapper
+	pkgdesc = gSlapper, a GStreamer-based video wallpaper application that replaces mpvpaper with better NVIDIA & Wayland support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/gSlapper
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = wayland
+	depends = cairo
+	optdepends = gst-plugins-ugly: Additional codec support
+	optdepends = gst-libav: Additional codec support
+	source = gslapper-1.0.0.tar.gz::https://github.com/Nomadcxx/gSlapper/archive/v1.0.0.tar.gz
+	sha256sums = 73a03b3cefc7185c59bc134a05e82a4e19875d47077c8065c1dda48c9502aa74
+
+pkgname = gslapper
