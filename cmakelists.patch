@@ -1,0 +1,45 @@
+From ef7e06fac85121ae1c14b84095297a004526473b Mon Sep 17 00:00:00 2001
+From: Lukas Spies <Lukas@photoqt.org>
+Date: Wed, 10 Sep 2025 09:43:09 +0200
+Subject: [PATCH] Make built library shared, add install instructions
+
+---
+ CMakeLists.txt | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 78feeac..73f4c0f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,7 +76,7 @@ endif()
+ 
+ ### libsai
+ add_library(
+-	sai
++	sai SHARED
+ 	source/document.cpp
+ 	source/ifstream.cpp
+ 	source/ifstreambuf.cpp
+@@ -142,4 +142,20 @@ if( MASTER_PROJECT )
+ 		PRIVATE
+ 		sai
+ 	)
+-endif()
+\ No newline at end of file
++
++	install(
++		TARGETS Thumbnail Decrypt Tree Document
++		DESTINATION bin/
++	)
++
++	install(
++		TARGETS sai
++		DESTINATION lib/
++	)
++
++	install(
++		FILES include/sai.hpp
++		DESTINATION include/
++	)
++
++endif()
