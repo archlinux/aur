@@ -3,14 +3,17 @@ _pkgname='pymcr'
 _pkgfolder='pyMCR'
 pkgname=("python-$_pkgname")
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multivariate Curve Resolution in Python."
 arch=('x86_64')
 depends=('python'
          'python-numpy'
          'python-scipy'
 	    )
-makedepends=('python-setuptools'
+makedepends=('python-build' 
+	     'python-installer' 
+	     'python-wheel' 
+	     'python-setuptools'
              'python-pytest')
 optdepends=('python-scikit-learn: Provide more efficient regression methods')
 url='https://github.com/usnistgov/pyMCR'
@@ -27,7 +30,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgfolder-$pkgver/"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check(){
@@ -37,5 +40,5 @@ check(){
 
 package() {
     cd "$srcdir/$_pkgfolder-$pkgver/"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 } 
