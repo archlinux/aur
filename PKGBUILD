@@ -82,7 +82,7 @@ build() {
 package(){
   _avcodec=$(grep -oP 'LIBAVCODEC_VERSION_MAJOR\s+\K\d+' ffmpeg/libavcodec/version_major.h)
   install -Dvm644 $_so "${pkgdir}"/usr/lib/${_so}.$_avcodec
-  ln -sf ${_so}.$_avcodec $_so
+  ln -sf ${_so}.$_avcodec "${pkgdir}"/usr/lib/$_so
   install -Dm644 ${pkgname%-git}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
