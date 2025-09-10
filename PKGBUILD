@@ -1,6 +1,6 @@
 # Maintainer: Ho1Ai
 pkgname=in-editor
-pkgver=0.5.0.1.1
+pkgver=0.5.0.2
 pkgrel=1
 epoch=
 pkgdesc="small CLI text editor. Inspired by ed"
