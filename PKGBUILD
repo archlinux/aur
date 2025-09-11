@@ -4,7 +4,7 @@
 
 _pkgname='moor'
 pkgname="$_pkgname-git"
-pkgver=2.0.4.r0.g1f924ff
+pkgver=2.1.1.r0.g36e76c6
 pkgrel=1
 pkgdesc='Pager designed to just do the right thing without any configuration (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -22,8 +22,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
 
-  git describe --tags --dirty --always --long \
-  | sed 's/^v//;s/-rc\d*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 2>/dev/null \
+  | sed 's/\([^-]*-g\)/r\1/;s/^v//;s/-/./g'
 }
 
 prepare() {
