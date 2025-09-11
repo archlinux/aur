@@ -1,0 +1,18 @@
+pkgbase = datacmd-bin
+	pkgdesc = Fastest and coolest way to turn raw data into stunning terminal dashboards
+	pkgver = 0.0.3.1
+	pkgrel = 1
+	url = https://github.com/VincenzoManto/Datacmd
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = Datacmd
+	conflicts = Datacmd
+	source = LICENSE-0.0.3.1::https://raw.githubusercontent.com/VincenzoManto/Datacmd/v0.0.3.1/LICENSE.md
+	source = README-0.0.3.1.md::https://raw.githubusercontent.com/VincenzoManto/Datacmd/v0.0.3.1/README.md
+	sha256sums = 2d9c4055ad200a9d2961d2405a4015a969a76ee0af9c80e71511e0455d5a7ecb
+	sha256sums = 111811d177b43364216346b5f736184a6e2160d8299acde45e71137d2c82e1a6
+	source_x86_64 = datacmd-0.0.3.1::https://github.com/VincenzoManto/Datacmd/releases/download/v0.0.3.1/datacmd-linux
+	sha256sums_x86_64 = a803e97e2c46bd4abed4558a060b54c0005f4700379dbc3f423ab72a8121bdcd
+
+pkgname = datacmd-bin
