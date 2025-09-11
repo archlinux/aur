@@ -7,7 +7,7 @@ pkgver=20241108
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
-url='https://phabricator.kde.org/T3722'
+url='https://kde.org'
 license=(LGPL-2.1-or-later)
 source=(org.kde.development.appdata.xml
         kdesdk-devenv-dependencies.svg)
