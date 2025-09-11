@@ -6,7 +6,7 @@
 # Contributor: dsboger <https://github.com/dsboger>
 pkgname=gtkd
 pkgver=3.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="D bindings for GTK+ and related libraries."
 arch=('x86_64')
 url="https://gtkd.org"
@@ -37,7 +37,7 @@ prepare() {
 
 build() {
   cd GtkD-$pkgver
-  export _ldFlags="$(echo -ne $LDFLAGS | sed -e 's/-Wl,/-L=/g' -e 's/=auto/=full')"
+  export _ldFlags="$(echo -ne $LDFLAGS | sed -e 's/-Wl,/-L=/g' -e 's/=auto/=full/')"
 
   make \
     DC='ldc' \
