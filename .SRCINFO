@@ -1,7 +1,7 @@
 pkgbase = render50
 	pkgdesc = Render source code as PDFs
 	pkgver = 9.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cs50/render50
 	arch = any
 	license = GPL3
@@ -17,6 +17,6 @@ pkgbase = render50
 	depends = python-termcolor
 	depends = python-weasyprint
 	source = https://files.pythonhosted.org/packages/source/r/render50/render50-9.2.10.tar.gz
-	sha256sums = 24749cfc404ab8acb10f812ad8b9e3c8c5caa1c9004a1e8042d9b0624c9c5a9f
+	sha256sums = fea7953c74dedfbeeb35b437952675aa6564a01965ff16cce0a47a501c0cc5f6
 
 pkgname = render50
