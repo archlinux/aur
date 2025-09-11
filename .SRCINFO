@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-catwalk
 	pkgdesc = A simple plasmoid showing the total CPU usage. Visually made like RunCat.
-	pkgver = 2.3
+	pkgver = None
 	pkgrel = 1
 	url = https://store.kde.org/p/2137844
 	arch = any
