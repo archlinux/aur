@@ -29,6 +29,7 @@ depends=(
   qt6-multimedia
   qt6-tools
   qt6-wayland
+  sdl3
   sqlite
   ttf-liberation
   woff2
