@@ -18,6 +18,12 @@ provides=("${pkgname%-git}")
 source=("$_pkgname"::"git+$url.git")
 b2sums=('SKIP')
 
+pkgver() (
+    cd "${_pkgname}"
+
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+)
+
 prepare() {
     cd "${_pkgname}/${_dkmsname}"
 
@@ -30,12 +36,6 @@ prepare() {
 
     rm -f dkms.post_*
 }
-
-pkgver() (
-    cd "${_pkgname}"
-
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-)
 
 package() {
     cd "${_pkgname}/${_dkmsname}"
