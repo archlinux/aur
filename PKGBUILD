@@ -1,7 +1,7 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=2.0.0
-pkgrel=9
+pkgver=2.0.1
+pkgrel=1
 epoch=
 pkgdesc="smooll's Color Picker"
 arch=("x86_64")
@@ -41,10 +41,12 @@ validpgpkeys=()
 #}
 
 build() {
-	cmake -S "$pkgname-$pkgver" -B build \
-		-DCMAKE_BUILD_TYPE="Release" \
+    cmake -S "$pkgname-$pkgver" -B build \
+        -DSCP_BUILD_DOCUMENTATION=ON \
+        -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX=/usr
-	cmake --build build
+    cmake --build build
+    cmake --build build --target dist
 }
 
 #check() {
@@ -53,6 +55,6 @@ build() {
 #}
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $pkgname-$pkgver/LICENSE
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $pkgname-$pkgver/LICENSE
 }
