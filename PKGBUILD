@@ -1,29 +1,30 @@
 pkgname=mnemo
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Note-taking app designed to enhance the retention of information."
 arch=('x86_64')
 url="https://github.com/lemueldls/mnemo"
 license=('AGPL-3.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl')
-makedepends=('cargo' 'nodejs' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
+makedepends=('cargo' 'nodejs' 'pnpm' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("mnemo-v$pkgver.tar.gz::https://github.com/lemueldls/mnemo/archive/refs/tags/mnemo-v$pkgver.tar.gz")
-sha256sums=('35ad8188e9fad86ea91cb097cee0dd89a9983468ead817897239732621b5d57a')
+sha256sums=('d6e06f55b088463fe31b239fb3db2058c248ac854000af1c8ed6165bbc6770c6')
 _builddir="mnemo-mnemo-v$pkgver/platform"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     export RUSTUP_TOOLCHAIN=stable
-    rustup toolchain install $RUSTUP_TOOLCHAIN --target wasm32-unknown-unknown --profile minimal --no-self-update
+    rustup toolchain install $RUSTUP_TOOLCHAIN --profile minimal --no-self-update # --target wasm32-unknown-unknown
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-    cargo fetch --locked --target wasm32-unknown-unknown
+    # cargo fetch --locked --target wasm32-unknown-unknown
+    pnpm install
 }
 build() {
     cd "$srcdir/$_builddir" || exit 1
     # unfortunately LTOFLAGS -flto=auto set by /etc/makepkg.conf break linking as those are added to CFLAGS automatically
     # building will bail out with something like: undefined reference to 'ring_core_0_17_8_OPENSSL_ia32cap_P' when -flto=auto is set
     export CFLAGS="${CFLAGS//-flto=auto//}"
+    export NODE_OPTIONS=--max-old-space-size=8192
     export NUXT_PUBLIC_API_BASE_URL="https://notes.lemueldls.workers.dev"
-    pnpm install
     pnpm tauri build -b deb -c "${srcdir}/${_builddir}/tauri/tauri.package.conf.json" || true
 }
 package() {
