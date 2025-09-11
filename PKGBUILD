@@ -1,7 +1,7 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 
 pkgname=(micropython)
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, with stdlib. (UNIX version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python' 'python-setuptools' 'git')
 options=('!emptydirs' '!debug')
 changelog="ChangeLog"
 source=("https://micropython.org/resources/source/micropython-$pkgver.tar.xz")
-md5sums=('72da7472e8155dfb3e43180d7e039029')
+md5sums=('0d80e45d9e77ddb50b4a4b1d5705b3ad')
 
 build() {
   cd "$srcdir/micropython-$pkgver/mpy-cross"
