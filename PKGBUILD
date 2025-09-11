@@ -7,7 +7,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=142.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -54,6 +54,7 @@ makedepends=(
   mesa
   nasm
   nodejs
+  onnxruntime
   python
   rust
   unzip
@@ -259,6 +260,11 @@ app.distributor=archlinux
 app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
+
+  # Link up system ONNX runtime
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$pkgdir/usr/lib/$pkgname"
+
+  # Install desktop icons and metadata
 
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do

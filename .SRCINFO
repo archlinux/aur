@@ -1,7 +1,7 @@
 pkgbase = firefox-vaapi
 	pkgdesc = Fast, Private & Safe Web Browser (with VA-API patches)
 	pkgver = 142.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL-2.0
@@ -15,6 +15,7 @@ pkgbase = firefox-vaapi
 	makedepends = mesa
 	makedepends = nasm
 	makedepends = nodejs
+	makedepends = onnxruntime
 	makedepends = python
 	makedepends = rust
 	makedepends = unzip
