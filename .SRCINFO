@@ -1,0 +1,15 @@
+pkgbase = moonlight-media-fetcher-git
+	pkgdesc = Provides MPRIS info to Media Controls for Moonlight (Discord)
+	pkgver = r30.gee13270
+	pkgrel = 1
+	url = https://github.com/NotNite/$_reponame
+	arch = x86_64
+	license = MIT-0
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	provides = media-fetcher
+	source = git+https://github.com/NotNite/my-moonlight-extensions
+	sha256sums = SKIP
+
+pkgname = moonlight-media-fetcher-git
