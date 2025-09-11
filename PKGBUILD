@@ -2,7 +2,7 @@
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=rsiedit-bin
-pkgver=0.6.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="C# GUI application for manipulation of RSI files used in SS14."
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=("!strip")
 source=("Editor_Linux_$pkgver.zip::$url/releases/download/v$pkgver/Editor_Linux.zip"
         "RSIEdit.desktop"
         "RSIEdit.png")
-sha256sums=('29a838a87ebdf915e3c54b9590de4540f53a8862cb89ddc7d4be0686a4f73097'
+sha256sums=('7be776daf898b650df7bb63f271be7080f64d9729683ca795908e4afc185aabb'
             '58c4554c6ada6b33d16f82a87301a2975f8ef2ca6247b3bab6bd8b8d76b92898'
             '56b7069383f1e839ce9aa14c8ca5e00bd089e3da85dd3ca774788d214c1fedea')
 
