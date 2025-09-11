@@ -2,17 +2,17 @@
 # Contributor: ArchimedeOS Development Team <hi@archimedeos.org>
 
 pkgname=arch-shell
-pkgver=1.0
-pkgrel=2
+pkgver=0.1
+pkgrel=4
 pkgdesc="Outil pour créer des environnements chroot Arch jetables, façon nix-shell, basé sur devtools."
 arch=('any')
-url="https://github.com/ArchimedeOS-Development/arch-shell"
+url="https://github.com/0xbbuddha/arch-shell"
 license=('GPL3')
 depends=('devtools' 'bash')
 provides=('arch-shell')
 backup=()
 source=('arch-shell')
-sha256sums=('e87d09ba98853b781a94aa51597bebba83e5264595495183e153c9c3fd08e5f9')
+sha256sums=('310bd5737f2348774d7353d48e0b8896c0fc57293bf93391aa8138dfd5a2d5f1')
 
 package() {
     install -Dm755 "${srcdir}/arch-shell" "${pkgdir}/usr/bin/arch-shell"

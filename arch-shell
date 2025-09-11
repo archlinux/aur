@@ -2,7 +2,7 @@
 
 # =============================================
 # Script : arch-shell
-# Description : Gestion des environnements Arch Linux pour ArchimedeOS
+# Description : Gestion des environnements Arch Linux
 # Auteur : Killian Prin-abeil <killian@archimedeos.org>
 # Date : $(date +%Y-%m-%d)
 # =============================================
@@ -35,7 +35,7 @@ spinner() {
 }
 
 usage() {
-    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | enter <env> | delete <env> | list | info <env>"
+    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | -R <env> <pkg...> | enter <env> | delete <env> | list | info <env>"
     exit 1
 }
 
@@ -78,6 +78,36 @@ add_package() {
         else
             sed -i "s/\"packages\": \[\([^]]*\)\]/\"packages\": [\1, \"$package\"]/" "$infofile"
         fi
+    fi
+}
+
+remove_package() {
+    local envname="$1"
+    local package="$2"
+    local infofile="${ARCHSHELL_DIR}/${envname}/.arch-shell-env"
+    
+    if [ -f "$infofile" ]; then
+        if command -v jq >/dev/null 2>&1; then
+            jq ".packages -= [\"$package\"]" "$infofile" > "${infofile}.tmp" && mv "${infofile}.tmp" "$infofile"
+        else
+            sed -i "s/\"$package\",\?//g; s/,\s*]/]/g; s/\[,/[/g" "$infofile"
+        fi
+    fi
+}
+
+check_package_in_env() {
+    local envname="$1"
+    local package="$2"
+    local infofile="${ARCHSHELL_DIR}/${envname}/.arch-shell-env"
+    
+    if [ -f "$infofile" ]; then
+        if command -v jq >/dev/null 2>&1; then
+            jq -e ".packages | index(\"$package\")" "$infofile" >/dev/null 2>&1
+        else
+            grep -q "\"$package\"" "$infofile"
+        fi
+    else
+        return 1
     fi
 }
 
@@ -156,6 +186,44 @@ case "$1" in
     update_last_used "$ENVNAME"
     for pkg in "$@"; do
       add_package "$ENVNAME" "$pkg"
+    done
+    ;;
+  -R)
+    if [ $# -lt 3 ]; then
+      echo "Usage: $0 -R <env> <pkg...>"
+      exit 1
+    fi
+    ENVNAME="$2"
+    shift 2
+    if [ ! -d "${ARCHSHELL_DIR}/${ENVNAME}" ]; then
+      echo "Environnement inexistant : ${ENVNAME}"; exit 3;
+    fi
+    
+    missing_packages=()
+    for pkg in "$@"; do
+      if ! check_package_in_env "$ENVNAME" "$pkg"; then
+        missing_packages+=("$pkg")
+      fi
+    done
+    
+    if [ ${#missing_packages[@]} -gt 0 ]; then
+      echo -e "${RED}[!] Les paquets suivants ne sont pas installés dans l'environnement ${ENVNAME} :${NC}"
+      for pkg in "${missing_packages[@]}"; do
+        echo "  - $pkg"
+      done
+      echo -e "${YELLOW}[!] Seuls les paquets présents dans .arch-shell-env peuvent être supprimés.${NC}"
+      exit 4
+    fi
+    
+    echo -e "${BLUE}[*] Suppression de(s) paquet(s) $* dans $ENVNAME...${NC}"
+    (
+      sudo arch-nspawn -c /var/cache/pacman/pkg "${ARCHSHELL_DIR}/${ENVNAME}" pacman -R --noconfirm "$@" > /dev/null 2>&1
+    ) &
+    spinner $! "Suppression des paquets"
+    echo -e "${GREEN}[*] Suppression terminée.${NC}"
+    update_last_used "$ENVNAME"
+    for pkg in "$@"; do
+      remove_package "$ENVNAME" "$pkg"
     done
     ;;
   enter)
