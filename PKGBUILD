@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.2.2.r5.g4cf521b
+pkgver=0.2.2.r13.gd6d5e63
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -29,7 +29,6 @@ export RUSTONIG_DYNAMIC_LIBONIG=1
 # release-fast has panic=abort
 export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) -C panic=abort ${RUSTFLAGS}"
 
-# Difficult to land on packaging guideline to avoid double build.
 prepare(){
   cd ${pkgname%-git}
   rm -rf rust-vendor; mkdir -p rust-vendor
@@ -37,10 +36,11 @@ prepare(){
   patch -Np1 -i "${srcdir}/glibc-2.42.patch"
   echo -e "[patch.crates-io]\nnix = { path = \"rust-vendor/nix\" }" >> Cargo.toml
 }
+# Difficult to land on packaging guideline to avoid double build.
 package(){
   cd ${pkgname%-git}
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
   # missing symlinks
   cd "$pkgdir"/usr/bin
