@@ -1,13 +1,13 @@
 pkgbase = perl-net-mqtt-simple
 	pkgdesc = Net::MQTT::Simple - Very simple MQTT implementation
-	pkgver = 1.32
+	pkgver = 1.33
 	pkgrel = 1
 	url = https://search.cpan.org/dist/Net-MQTT-Simple/
 	arch = any
 	license = unknown
 	depends = perl
 	options = !emptydirs
-	source = https://search.cpan.org/CPAN/authors/id/J/JU/JUERD/Net-MQTT-Simple-1.32.tar.gz
-	sha256sums = e6d91945b43fe472171bec2fb0f737ee3f55770fc478068bee0f6a990faf8d7d
+	source = https://search.cpan.org/CPAN/authors/id/J/JU/JUERD/Net-MQTT-Simple-1.33.tar.gz
+	sha256sums = 58539c1c2794d25872652d78a26c9fd26b627bdad1b9134a159869c1b2822aa7
 
 pkgname = perl-net-mqtt-simple
