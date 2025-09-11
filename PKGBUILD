@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitbutler
-pkgver=0.15.8
+pkgver=0.16.0
 pkgrel=1
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
@@ -16,11 +16,12 @@ makedepends=(cargo
              cmake
              jq
              nodejs-lts-jod
+             npm
              pnpm)
 options=(!lto)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
-sha256sums=('03509b4b2981398d8354cf884a73cd5161e495064b39d6e423e3137a8455ee82')
+sha256sums=('3733746ab20118b815c46c72700ac1f4cd935e7a1100b9acdcd8f1ed38acd34e')
 
 prepare() {
 	cd "$_archive"
@@ -49,6 +50,7 @@ build() {
 	export CARGO_TARGET_DIR="$PWD/target"
 	export OPENSSL_NO_VENDOR=true
 	export LIBGIT2_NO_VENDOR=1
+	export TURBO_TELEMETRY_DISABLED=1
 
 	# keep in sync with crates/gitbutler-tauri/tauri.conf.release.json
 	pnpm build:desktop -- --mode production
