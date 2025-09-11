@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-bigger
-pkgver=4.20
+pkgver=4.21
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (2400x1440 version)"
@@ -26,7 +26,7 @@ source=(
   "hamclock.desktop"
 )
 noextract=()
-sha256sums=('612a49653ae4d4edd43e6840d1de513b536772ffc6d347821fed76a962cfbd0f'
+sha256sums=('0349f395e3b889280dc30bf5d285b168b10f65459de08c0aab06882e76b1144b'
             'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d')
 validpgpkeys=()
 
