@@ -3,7 +3,7 @@
 # Contributor: matt kasun <matt at netmaker dot io>
 
 pkgname=netclient
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(Apache)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('9626cdc0daa565b7c55a2e59d040dd19bd609463e845b066b7416cc63957401a0466045f178848e428e6c825b136bcd763b5d983371e875e4e92e703a2e88200')
+b2sums=('528475ff3eb08fc61fe330a6fee89e099e3e0de81ae0f1a6056f1cc16e69d4a5e2bda4f32da287f4755088f4f3cd86774ccb7b82c49c72a4b2e2d09604e7ca71')
 
 build() {
 	cd $pkgname-$pkgver
