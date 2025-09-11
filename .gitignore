@@ -4,3 +4,4 @@
 !.gitignore
 !.pre-commit-config.yaml
 !boost-1.88.patch
+!warnings.patch
