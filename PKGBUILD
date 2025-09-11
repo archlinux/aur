@@ -1,6 +1,6 @@
 # Maintainer: Stan-breaks <stanleymwendwa03@email.com>
 pkgname=ytsurf
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Search and play YouTube videos from the terminal using fzf or rofi and mpv"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=(
 	'rofi: GUI launcher alternative to fzf'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3caac1ec676664fe2e15cafaa6504580797f22bf308cfb6e77448b7f8f9cde3e')
+sha256sums=('35f4adfa648deead37085a8ca2f1942b5420de4037c20b1dcc7aaf4cd5f21891')
 
 package() {
 	cd "$pkgname-$pkgver"
