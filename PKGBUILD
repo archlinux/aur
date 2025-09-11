@@ -3,7 +3,7 @@ pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
 pkgver=2.0_beta55
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/threema-ch/threema-desktop"
 license=('AGPL-3.0-only')
@@ -87,6 +87,7 @@ build() {
   rustup target add wasm32-unknown-unknown
 
   # Build libthreema
+  export CARGO_TARGET_DIR=target
   npm run libthreema:build
 
   # Build application
