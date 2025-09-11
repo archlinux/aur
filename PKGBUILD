@@ -4,8 +4,8 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r70619.8303a558f1a
-pkgrel=1
+pkgver=r71618.4a5c3740848
+pkgrel=2
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
@@ -70,7 +70,7 @@ build() {
     -DLADYBIRD_CACHE_DIR=Build/caches \
     -DCMAKE_BUILD_TYPE=Release \
     $use_linker \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_PREFIX='/opt/ladybird/usr' \
     -DENABLE_INSTALL_HEADERS=OFF \
     -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname%-git}" \
     -GNinja \
@@ -86,5 +86,13 @@ package() {
   find "$pkgdir" -name '*.a' -delete
   find "$pkgdir" -name '*.cmake' -delete
 
-  install -Dm644 ladybird/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  find "$pkgdir" -type f -executable -exec sh -c '
+    for exe; do
+      r=$(patchelf --print-rpath "$exe" 2>/dev/null)
+      [ "${r%%/opt/angle/lib*}" = "$r" ] && patchelf --set-rpath "/opt/angle/lib${r:+:$r}" "$exe"
+    done
+  ' sh {} +
+
+
+  install -Dm644 ladybird/LICENSE -t "${pkgdir}/opt/ladybird/usr/share/licenses/${pkgname}/"
 }
