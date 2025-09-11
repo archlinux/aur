@@ -1,6 +1,6 @@
 pkgbase = zuban
 	pkgdesc = A Mypy-compatible Python Language Server built in Rust
-	pkgver = v0.0.21
+	pkgver = v0.0.22
 	pkgrel = 1
 	url = https://zubanls.com
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = zuban
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-maturin
-	source = zuban::git+https://github.com/zubanls/zuban#tag=v0.0.21
+	source = zuban::git+https://github.com/zubanls/zuban#tag=v0.0.22
 	sha256sums = SKIP
 
 pkgname = zuban

@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=zuban
-pkgver=v0.0.21
+pkgver=v0.0.22
 pkgrel=1
 pkgdesc="A Mypy-compatible Python Language Server built in Rust"
 arch=("i686" "x86_64" "aarch64")
