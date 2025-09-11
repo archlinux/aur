@@ -31,7 +31,7 @@ source=(
 )
 
 
-md5sums=('296f2e5ffb6582f49f6c0d349998ea97'
+md5sums=('c8d1dd71c3fdd6c1b00c3054e65a948e'
          '74f522c8064ad0d2f87541e133dc4d1e')
 
 function package() {
