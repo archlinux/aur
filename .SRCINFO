@@ -1,0 +1,13 @@
+pkgbase = makima-bin
+	pkgdesc = Linux daemon to remap and create macros for keyboards, mice and controllers.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/cyber-sushi/makima
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = makima
+	conflicts = makima
+	source = https://github.com/cyber-sushi/makima/releases/download/v${pkgver}/makima
+	sha256sums = ad8255f44a8a619f7d300bbf81463b61e3e6e7af37697fac8d53f6c7f937edaf
+
+pkgname = makima-bin
