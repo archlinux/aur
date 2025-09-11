@@ -6,7 +6,7 @@
 # Contributor: Azure Zeng (weedycn at outlook dot com)
 
 pkgname=rime-pinyin-moegirl
-pkgver=20250810
+pkgver=20250909
 pkgrel=1
 pkgdesc="Rime Pinyin Dictionary from moegirl.org wiki"
 arch=('any')
@@ -14,7 +14,7 @@ url="https://github.com/outloudvi/mw2fcitx"
 license=('MIT License' 'cc-by-nc-sa-3.0')
 source=("moegirl-${pkgver}.dict.yaml::${url}/releases/download/${pkgver}/moegirl.dict.yaml"
         "${url}/raw/refs/heads/pkg-moegirl/LICENSE")
-sha256sums=('fd8bffda48a0b6936f9d694761324131494c5798b9b68b5e68b883274903a198'
+sha256sums=('c2cc6d8933a0f7fcb3764853b8bc1d7cb7afd0c0335d6203f7a6ead40c8937a9'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {
