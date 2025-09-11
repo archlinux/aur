@@ -1,0 +1,25 @@
+pkgbase = mkdocs-llmstxt
+	pkgdesc = MkDocs plugin to generate an /llms.txt file.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pawamoy.github.io/mkdocs-llmstxt
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	checkdepends = mdformat-tables
+	checkdepends = python-markdownify
+	checkdepends = python-griffe
+	checkdepends = mkdocstrings
+	makedepends = python-pdm-backend
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_llmstxt/mkdocs_llmstxt-0.3.1.tar.gz
+	sha256sums = 123119d9b984c1d1224ed5af250bfbc49879ad83decdaff59d8b0ebb459ddc54
+
+pkgname = mkdocs-llmstxt
+	depends = python>=3.9
+	depends = mdformat-tables>=1.0
+	depends = python-markdownify>=0.14
+	provides = python-mkdocs-llmstxt=0.3.1
+	conflicts = python-mkdocs-llmstxt
+	replaces = python-mkdocs-llmstxt
