@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hayase-bin
 _pkgname=Hayase
-pkgver=6.4.28
+pkgver=6.4.29
 _electronversion=32
 pkgrel=1
 pkgdesc="Formerly Miru. Torrent streaming made simple. Watch anime torrents, real-time with no waiting for downloads.(Prebuilt version.Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hayase-app/ui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0e6f82197c50dade752018a8964ab8b047c7641e1f825577d05c8579d16b6b41'
+sha256sums=('9988d2bcf5f8fcf92c30b465301cb0efb22e917f4d3c3c821728c00f1e52cb1e'
             '2ce1355094b25dd0c0d777b33d610dbe669e2e3a13659637d41e9a096ab65e9b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
