@@ -11,6 +11,7 @@ pkgbase = ladybird-git
 	makedepends = git
 	makedepends = nasm
 	makedepends = ninja
+	makedepends = patchelf
 	makedepends = tar
 	makedepends = unzip
 	makedepends = zip

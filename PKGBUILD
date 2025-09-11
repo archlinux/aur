@@ -38,7 +38,7 @@ depends=(
   angle # AUR
   simdutf-git # 'simdutf' is v6, we need v7.
 )
-makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
+makedepends=(autoconf-archive automake cmake git nasm ninja patchelf tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
