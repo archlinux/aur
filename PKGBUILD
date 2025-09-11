@@ -2,8 +2,9 @@
 _pkgname=GitVersion
 pkgname=gitversion
 # renovate: datasource=github-releases depName=GitTools/GitVersion
-pkgver=6.2.0
-pkgrel=3
+pkgver=6.4.0
+pkgrel=4
+_dotnet_version=9.0
 pkgdesc='From git log to SemVer in no time'
 arch=('x86_64')
 url="https://github.com/GitTools/GitVersion"
@@ -15,10 +16,10 @@ options=('!strip' 'staticlibs')
 license=('MIT')
 depends=('glibc')
 makedepends=(
-  'dotnet-sdk>=9.0'
+  "dotnet-sdk>=${_dotnet_version}"
 )
-sha512sums=('055fb8470f81132b6181f2b01a81ff8855c751827e42e1b20a6d18253144e36f7e549e2c98fd19ef8e44d46f1a0147f5557245df041bb814ad869d5818abf31a'
-            '82007a00342b36c70e1b431485a484d51a23a8b034065d71ca7779cd77d685bb9bb93df581624e828473d2adafb894e6f24ca9468a0b6dc8bf130992af4d3789')
+sha512sums=('0f15df3c339e978a34e7b5d6ee77af1ccb6be7e702099003faf6ebba23f41e9bbbb0e69199e734ce2cd05f225b39d6c783d151f10e745b98c5e11739750b3c60'
+            '323ad7b23bed74b8b2530a3555f0ca4d350244d1cda5603217393f661754cfa193806886fe4d24efda1d96779bbfa7097603850bb778ca9b906518778e06c77e')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -28,11 +29,16 @@ prepare() {
 build() {
   mkdir "${srcdir}/build"
   cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  export NUGET_PACKAGES="$PWD/nuget"
+  export DOTNET_NOLOGO=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
   dotnet publish \
     src/GitVersion.App/GitVersion.App.csproj \
     --runtime linux-x64 \
+    --framework "net${_dotnet_version}" \
     --sc \
-    --framework net9.0 \
+    --configuration release \
     -o "${srcdir}/build" \
     /p:DebugType=None \
     /p:DebugSymbols=false \
@@ -41,6 +47,21 @@ build() {
     -p:PublishSingleFile=true \
     -p:IncludeNativeLibrariesForSelfExtract=true
 }
+
+#check() {
+#  cd "${srcdir}/${_pkgname}-${pkgver}"
+#
+#  export NUGET_PACKAGES="$PWD/nuget"
+#  export DOTNET_NOLOGO=true
+#  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+#  for i in src/*.Tests
+#  do
+#    dotnet test \
+#      --runtime linux-x64 \
+#      --framework "net${_dotnet_version}" \
+#      ./${i}
+#  done
+#}
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
