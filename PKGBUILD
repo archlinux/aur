@@ -13,8 +13,8 @@ license=('GPL-3.0-or-later')
 arch=('any')
 depends=('dkms' 'bluez' 'bluez-utils')
 makedepends=('git')
-conflicts=("$_pkgname")
-provides=("$_pkgname")
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("$_pkgname"::"git+$url.git"
         '0001-drop-etc-files.patch')
 b2sums=('SKIP'

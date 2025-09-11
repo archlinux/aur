@@ -2,3 +2,4 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!0001-drop-etc-files.patch
