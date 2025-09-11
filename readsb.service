@@ -17,5 +17,18 @@ Restart=on-failure
 RestartSec=30
 Nice=-5
 
+# Hardening configulation
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=disconnected
+PrivateMounts=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectProc=ptraceable
+LockPersonality=true
+ProtectClock=true
+MemoryDenyWriteExecute=true
 [Install]
 WantedBy=default.target

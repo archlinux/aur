@@ -1,15 +1,20 @@
-# Maintainer Jonas Wunderlich <aur[at]03j[dot]de>
+# Maintainer kris57 <kris319[at]protonmail[dot]com>
+# Contributor Jonas Wunderlich <aur[at]03j[dot]de>
 # Based on PKGBUILD from aur package `readsb-git`, maintainer was:
 # Maintainer: Donald Webster <fryfrog[at]gmail[dot]com>
 _pkgname=readsb
 pkgname="${_pkgname}-wiedehopf-git"
-pkgver=3.14.1605.r1.gd2320d0
+pkgver=3.16.2.r0.g4c1459a
 pkgrel=1
 pkgdesc="ADS-B decoder swiss knife."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/wiedehopf/readsb"
 license=('GPL3')
 depends=(
+  'glibc'
+  'bash'
+  'zlib'
+  'zstd'
   'rtl-sdr'
   'ncurses'
 )
@@ -20,12 +25,14 @@ makedepends=('git')
 backup=('etc/default/readsb')
 
 source=('git+https://github.com/wiedehopf/readsb'
+		'readsb.service'
         'readsb.sysusers'
         'readsb-gain'
         'readsb-set-location'
 	      'readsb.tmpfiles')
 
 sha256sums=('SKIP'
+            '34cfcbae44710d62171edca5838c38e177677659a3c2210fbfa1c67283130eab'
             '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
             'dd27b1326d2454d9965e55bcfb7d736e5660123346843a343b28fd901f4ede78'
             'e07e4a59d2739cba531b61d06b2bf52ce2fe3d12f4ffeb2740bdc7de63515e04'
@@ -46,8 +53,6 @@ package() {
   install -D -m 755 "${srcdir}/${_pkgname}/viewadsb" "${pkgdir}/usr/bin/viewadsb"
   install -D -m 644 "${srcdir}/${_pkgname}/debian/readsb.default" "${pkgdir}/etc/default/readsb"
   install -D -m 644 "${srcdir}/${_pkgname}/debian/readsb.service" "${pkgdir}/usr/lib/systemd/system/readsb.service"
-  install -D -m 644 "${srcdir}/${_pkgname}/debian/readsb.1" "${pkgdir}/usr/share/man/man1/readsb.1"
-  install -D -m 644 "${srcdir}/${_pkgname}/debian/viewadsb.1" "${pkgdir}/usr/share/man/man1/viewadsb.1"
   install -D -m 644 readsb.sysusers "${pkgdir}/usr/lib/sysusers.d/readsb.conf"
   install -D -m 644 readsb.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/readsb.conf"
   install -D -m 755 readsb-gain "${pkgdir}/usr/bin/readsb-gain"
