@@ -3,8 +3,8 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgbase="lombok"
-pkgname=('lombok-common' 'lombok-eclipse-java' 'lombok-eclipse-jee' 'lombok-spring-tool-suite')
-pkgver=1.18.38
+pkgname=('lombok-common' 'lombok-eclipse-java' 'lombok-eclipse-jee' 'lombok-spring-tools-for-eclipse')
+pkgver=1.18.40
 pkgrel=1
 pkgdesc="Project Lombok integrated with several Eclipse-based installations."
 makedepends=('java-runtime')
@@ -12,7 +12,7 @@ arch=("any")
 url="https://projectlombok.org"
 license=('MIT')
 source=("https://projectlombok.org/downloads/lombok-${pkgver}.jar")
-sha256sums=('1e1e427c36ff63c44fd30ef292d9e773ea3154460ab6265d3fed7e6f5bc50fb9')
+sha256sums=('1b2d6609ff332e7082fed397b3aaa5d125812f7bf0a07a7d86ffea15b71cbfdd')
 noextract=("lombok.jar")
 
 build() {
@@ -39,8 +39,10 @@ package_lombok-eclipse-jee() {
     install=lombok-eclipse.install
 }
 
-package_lombok-spring-tool-suite() {
-    pkgdesc="Lombok integration with Spring Tool Suite (STS)."
-    depends=(lombok-common=$pkgver-$pkgrel 'spring-tool-suite')
+package_lombok-spring-tools-for-eclipse() {
+    pkgdesc="Lombok integration with Spring Tools (aka Spring Tool Suite)."
+    depends=(lombok-common=$pkgver-$pkgrel 'spring-tools-for-eclipse')
+    provides=('lombok-spring-tool-suite')
+    conflicts=('lombok-spring-tool-suite')
     install=lombok-sts.install
 }
