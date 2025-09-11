@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde6' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=5.1.5.31310
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.scootersoftware.com'
 license=('custom')
@@ -123,7 +123,7 @@ package_bcompare-kde6() {
 
 package_bcompare-kde5() {
   pkgdesc="KDE Plasma 5 service menus for Beyond Compare 5."
-  depends=('bcompare' 'kinit')
+  depends=('bcompare' 'kinit5')
   install=${pkgbase}-kde-plasma.install
 
   # Set up service menus
