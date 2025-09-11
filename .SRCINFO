@@ -12,8 +12,6 @@ pkgbase = xpadneo-dkms-git
 	provides = xpadneo-dkms
 	conflicts = xpadneo-dkms
 	source = xpadneo::git+https://github.com/atar-axis/xpadneo.git
-	source = 0001-drop-etc-files.patch
 	b2sums = SKIP
-	b2sums = 72d59fc99c8fdd66b3b6bfa45a302114e54e7d1621addde8086723a7c18a6ecc080da7497ac7d43de19c460424a05bba35c51ea0d92cf86498fe9223aceba453
 
 pkgname = xpadneo-dkms-git

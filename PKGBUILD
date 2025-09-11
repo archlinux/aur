@@ -15,27 +15,26 @@ depends=('dkms' 'bluez' 'bluez-utils')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("$_pkgname"::"git+$url.git"
-        '0001-drop-etc-files.patch')
-b2sums=('SKIP'
-        '72d59fc99c8fdd66b3b6bfa45a302114e54e7d1621addde8086723a7c18a6ecc080da7497ac7d43de19c460424a05bba35c51ea0d92cf86498fe9223aceba453')
+source=("$_pkgname"::"git+$url.git")
+b2sums=('SKIP')
 
 prepare() {
     cd "${_pkgname}/${_dkmsname}"
 
-    # Upstream uses dkms.post_install to create modprobe and udev files in
-    # /etc. In Arch, it makes more sense to create these files in /usr/lib
-    # and let pacman take care of them.
-    patch -i "${srcdir}/0001-drop-etc-files.patch"
+    sed -E \
+      -e '/^CLEAN/d' \
+      -e '/^POST_INSTALL/d' \
+      -e '/^POST_REMOVE/d' \
+      -e 's/@DO_NOT_CHANGE@/'"v${pkgver}"'/g' \
+      dkms.conf.in > dkms.conf
 
-    # Set the current version in DKMS config file.
-    sed "s/@DO_NOT_CHANGE@/v${pkgver}/" dkms.conf.in > dkms.conf
+    rm -f dkms.post_*
 }
 
 pkgver() (
-  cd "${_pkgname}"
+    cd "${_pkgname}"
 
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 )
 
 package() {
@@ -45,11 +44,8 @@ package() {
 
     # Module source
     cp -a src/* "${pkgdir}/usr/src/${_dkmsname}-v${pkgver}/src"
-
     # DKMS files
     install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-v${pkgver}" Makefile dkms.conf
-    install -Dm0755 -t "${pkgdir}/usr/src/${_dkmsname}-v${pkgver}" dkms.post_install dkms.post_remove
-
     # Module dependencies
     install -Dm0644 -t "${pkgdir}/usr/lib/modprobe.d" etc-modprobe.d/*
     install -Dm0644 -t "${pkgdir}/usr/lib/udev/rules.d" etc-udev-rules.d/*
