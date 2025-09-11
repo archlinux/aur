@@ -1,6 +1,6 @@
 pkgbase = cubeb
 	pkgdesc = Cross platform audio library
-	pkgver = 20250813
+	pkgver = 20250911
 	pkgrel = 1
 	url = https://github.com/mozilla/cubeb
 	arch = aarch64
@@ -19,12 +19,12 @@ pkgbase = cubeb
 	makedepends = sndio
 	makedepends = speexdsp
 	conflicts = cubeb-git
-	source = git+https://github.com/mozilla/cubeb#commit=46b2f23a2929fc367a8cd07a43975dda1e2ebc69
+	source = git+https://github.com/mozilla/cubeb#commit=6f5a5986d356da246475e152132f62c0b556da52
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/mozilla/cubeb-coreaudio-rs.git
 	source = git+https://github.com/mozilla/cubeb-pulse-rs.git
-	b2sums = 8b4e9e070b7b9786e5c5db0cf3704f6454c84b0797ef23326cd7df06eefe18c8c0bb0485ac54e0470a6b104bc9505a885f7f241ef25947bcd2e9124520615ff5
+	b2sums = 19ed11a96d2bc7ee7301de558765331d6b93597ab7147960757202117856854aa02456ac136d9270c2a6249297846cf711200815707a501b51a7f52e0c64846e
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -38,7 +38,7 @@ pkgname = cubeb
 	optdepends = jack: for JACK backend
 	optdepends = libpulse: for PulseAudio backend
 	optdepends = sndio: for sndio backend
-	provides = cubeb=20250813
+	provides = cubeb=20250911
 	provides = libcubeb.so
 
 pkgname = cubeb-docs
