@@ -1,6 +1,4 @@
-# Adapted from original PKGBUILD by Harry Walker
 # Maintainer: Erwin Iosef <erwiniosef@gmail.com>
-# Contributer: Harry Walker <me@harrywalker.uk>
 
 pkgname=libfprint-focaltech
 pkgver=20250714
@@ -9,7 +7,8 @@ pkgrel=1
 pkgdesc="Proprietary driver for the Focaltech fingerprint reader, support with vid:0x2808, pid: 0x9338, 0xd979, 0xc652, 0xa959, 0x0579"
 arch=('x86_64')
 url="https://github.com/ftfpteams/focaltech-linux-fingerprint-driver"
-depends=('glib2>=2.56' 'libgusb>=0.3.0' 'nss>=3.13.4' 'pixman>=0.30.0')
+depends=('gcc-libs' 'glibc' 'glib2>=2.56' 'libgudev' 'libgusb>=0.3.0'
+	 'nss>=3.13.4' 'openssl' 'pixman>=0.30.0')
 makedepends=('tar')
 conflicts=('libfprint')
 provides=('libfprint-2.so' 'libfprint')

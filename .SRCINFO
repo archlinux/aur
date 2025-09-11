@@ -7,9 +7,13 @@ pkgbase = libfprint-focaltech
 	groups = fprint
 	license = custom
 	makedepends = tar
+	depends = gcc-libs
+	depends = glibc
 	depends = glib2>=2.56
+	depends = libgudev
 	depends = libgusb>=0.3.0
 	depends = nss>=3.13.4
+	depends = openssl
 	depends = pixman>=0.30.0
 	provides = libfprint-2.so
 	provides = libfprint
