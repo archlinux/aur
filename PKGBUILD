@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
-sha256sums=('ce08f785b68df3e77607ee3390abb1a0a585dc55ba4ac5501f236ceb710ad6ca')
+sha256sums=('924a69902846cf7529d11b120b7443e2a44ee1248005bd15f5c87d4fb580becc')
 prepare(){
 cd "$pkgname"
 sed -i 's/"rpm",//g' electron-builder.json
