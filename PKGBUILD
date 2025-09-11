@@ -2,7 +2,7 @@
 _base=gmsh_interop
 pkgname=python-${_base}
 pkgdesc="Interoperability with Gmsh for Python"
-pkgver=2024.1
+pkgver=2025.1
 pkgrel=1
 arch=(x86_64)
 url="https://documen.tician.de/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel git)
 checkdepends=(python-pytest)
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
 validpgpkeys=('900A958D9A0ACA58B1468F2471AA298BCA171145') # Andreas Kloeckner
-sha512sums=('05f7c14f8ea5fb21552f6bcfc72e864f2e4c935c2864b8431657c4d8db68289736e44e43091f9a161e31f3c434aee5ff8496f5d591cd63241f94640f44944e56')
+sha512sums=('817263866bf433e84abed9f04844b55f400c7a0b62c7c145b0cc15450539596d203958a1e001dafc7773add90af07a6897f00a8186a1ccb4762e4b8aa23ca993')
 
 build() {
   cd ${_base}
