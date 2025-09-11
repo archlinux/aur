@@ -3,7 +3,7 @@
 
 pkgname=cpprestsdk
 pkgver=2.10.19
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Microsoft/cpprestsdk/"
@@ -19,6 +19,7 @@ sha256sums=('4b0d14e5bfe77ce419affd253366e861968ae6ef2c35ae293727c1415bd145c8'
             '09db07f231f1de91f32b34bda34d251a64473b65b1f7496a1b6f57462c028b28'
             '6f714ecbfa9483cb289bba28cf7bc7d345b33bbc6d780685d92a83cd5c2fd5a4'
             '198b354d5fab857813d8db3fdb0a056cc1f717149b1488e18491957fa85910b3')
+options=(!lto)
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
