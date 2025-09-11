@@ -1,8 +1,8 @@
 pkgbase = python-morethemes
 	pkgdesc = More themes for matplotlib
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
-	url = https://github.com/JosephBARBIERDARNAL/morethemes
+	url = https://github.com/y-sunflower/morethemes
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
@@ -10,7 +10,7 @@ pkgbase = python-morethemes
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	depends = python-pyfonts
-	source = morethemes-0.4.0.tar.gz::https://github.com/JosephBARBIERDARNAL/morethemes/archive/v0.4.0.tar.gz
-	sha512sums = b6ef5e573ac81f0be2931ec2b1c897d1c240994285647a9267288c108da353aaf1dc50a96f012bec58b44b9e9b897b5ec87faf4579ad4821eff0a726d006db30
+	source = morethemes-0.5.1.tar.gz::https://github.com/y-sunflower/morethemes/archive/v0.5.1.tar.gz
+	sha512sums = 6b2b9d0ed89cab933f4f9b2f92a1ba37b0528fc0683720b4db7d38cfa56d63fe919061c983e181522d675e2952dd8af7f7c6c4c075a089491daab7ad41d4483f
 
 pkgname = python-morethemes

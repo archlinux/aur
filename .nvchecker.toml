@@ -1,5 +1,5 @@
 [python-morethemes]
 source = "github"
-github = "JosephBARBIERDARNAL/morethemes"
+github = "y-sunflower/morethemes"
 use_latest_release = "true"
 prefix = "v"
