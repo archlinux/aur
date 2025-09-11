@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=codenest-bin
 _pkgname=CodeNest
-pkgver=0.0.3
-_electronversion=33
-pkgrel=2
+pkgver=0.0.4
+_electronversion=37
+pkgrel=1
 pkgdesc="A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version.Use system-wide electron)一款本地项目管理工具，可整理分散在磁盘各处的项目"
 arch=('x86_64')
 url="https://github.com/MidnightCrowing/CodeNest"
@@ -15,16 +15,19 @@ depends=(
 )
 makedepends=(
     'asar'
-    'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/MidnightCrowing/CodeNest/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/MidnightCrowing/CodeNest/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5f667152d1da51a8917c5346b44ae6718d68d42bc8d0a51ba3024cec028acaa7'
-            '8cf7267cd882457956da741fe96d80d8392d6dbb707c0739447550632ec010ea'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('f46a03582f45eaf38c019ad6ad9efb6fb7a74fb6fa1a654110c2de620b8692db'
+            'fa2ce613f35af27497fb5c984f5596efcbc067434c47f7826c184155289906ba'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,10 +36,11 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type f \( -name "*macos*" -o -name "windows.js" \) -exec rm -rf {} +
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
@@ -47,5 +51,5 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/2048x2048/apps/${pkgname%-bin}.png" "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
