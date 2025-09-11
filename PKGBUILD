@@ -11,7 +11,7 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
-: ${_use_bundled_gradle:=0}
+: ${_use_gradle_wrapper:=0}
 
 pkgbase=java-openjfx
 pkgname=(
@@ -55,7 +55,7 @@ makedepends=(
   #ruby-yaml
   #ruby-fileutils
 )
-if (( !_use_bundled_gradle )); then
+if (( !_use_gradle_wrapper )); then
   makedepends+=(gradle8)
 fi
 options=(!lto)
@@ -69,7 +69,7 @@ b2sums=('0ea25752ea1ed358ce4e347ef1b396982583d50b0df1e5b401f8c9c0b7457d4d7aad832
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
 _jfxdir="jfx-${_tag//+/-}"
-if (( _use_bundled_gradle )); then
+if (( _use_gradle_wrapper )); then
   _gradle=(sh ./gradlew)
 else
   _gradle=(gradle8)
