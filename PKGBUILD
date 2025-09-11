@@ -6,6 +6,7 @@ _pkgname='moor'
 pkgname="$_pkgname-git"
 pkgver=2.1.1.r0.g36e76c6
 pkgrel=1
+epoch=1
 pkgdesc='Pager designed to just do the right thing without any configuration (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/walles/moor'
@@ -49,12 +50,14 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
-  go build \
-    -buildmode=pie \
-    -trimpath \
-    -ldflags="-linkmode=external -X main.versionString=$pkgver" \
-    -mod=readonly -modcacherw \
-      ./cmd/moor
+  _opts=(
+    -buildmode=pie
+    -trimpath
+    -ldflags="-linkmode=external -X main.versionString=$pkgver"
+    -mod=readonly
+    -modcacherw
+  )
+  go build "${_opts[@]}" ./cmd/moor
 }
 
 check() {
