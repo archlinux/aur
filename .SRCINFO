@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.3.0
+	pkgver = 12.3.1
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -62,13 +62,13 @@ pkgbase = firedragon-catppuccin
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = firedragon-source-v12.3.0.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.0/downloads/firedragon-source.tar.zst
+	source = firedragon-source-v12.3.1.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.1/downloads/firedragon-source.tar.zst
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	sha256sums = 924ef1e351b62c4afc070abaceeea5ff2e067ed180a9314faba0fdecafc7e787
+	sha256sums = ff5748dc22c15630ca998e489d686b821ed151c71612feec92b33926133deec6
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
-	source_x86_64 = deno-x86_64-v2.3.2.zip::https://github.com/denoland/deno/releases/download/v2.3.2/deno-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = fc6311f01566489ac70ab76ba939a24bde0a5c7735a9ca5dcb84d6210e5715c7
-	source_aarch64 = deno-aarch64-v2.3.2.zip::https://github.com/denoland/deno/releases/download/v2.3.2/deno-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 84a3ae2b6f00ad06bdc03337208d88101dbd2897f0fa2295f101bda435a9514b
+	source_x86_64 = deno-x86_64-v2.4.5.zip::https://github.com/denoland/deno/releases/download/v2.4.5/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 6f9d8115bb3df582c0c5674507e906323b680be0f0b15e735d0cd5ec6be44444
+	source_aarch64 = deno-aarch64-v2.4.5.zip::https://github.com/denoland/deno/releases/download/v2.4.5/deno-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 4e3e86739fe527c6891dbfa73799a5ec1b11f45898aaebf73bf3247c2e6a53dd
 
 pkgname = firedragon-catppuccin
