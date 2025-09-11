@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.4.27
+pkgver=5.4.28
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,16 @@ optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
 sha256sums=('SKIP'
+            'd9eeecd9ef4acef9106f089f3e84b0c9842ca4733344d264d0f8433d37e08e65'
+            'd2b4ab803ca9df63052b4c3ae85c469271abd1257ce6d463ac280b7363e1dec3'
             '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
             '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
             '23ac94f40a185dcd829bd71220056c0591cf50e640b787ec26bb832c3de6f055'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
             'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=18785521a99c4336e4575deb515260f232cce6b9
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=24cb65cd7fe0cd5934da8991655e563c42d2307b
+		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.3-py3-none-any.whl
+		https://pub.cellframe.net/python/python-cellframe/pycftools/master/pycftools-1.0.0-py3-none-any.whl
 		cellframe-node.logrotate
 		cellframe-node.service
 		cellframe-node-asan.service
@@ -29,7 +33,7 @@ _executables=("$pkgname-cli" "$pkgname-tool" "$pkgname" "$pkgname-config")
 
 prepare() {
 	local patchver="${pkgver##*.}"
-	sed -i "s/^VERSION_PATCH=.*/VERSION_PATCH=$patchver/" "$srcdir/$pkgname/version.mk"
+	sed -i "s|^VERSION_PATCH=.*|VERSION_PATCH=$patchver|" "$srcdir/$pkgname/version.mk"
 	sed -i 's|url = \.\./\.\./|url = https://gitlab.demlabs.net/|g' "$srcdir/$pkgname/.gitmodules"
 	sed -i 's|url = \.\./|url = https://gitlab.demlabs.net/cellframe/|g' "$srcdir/$pkgname/.gitmodules"
 	cd "$pkgname" && git submodule update --init --recursive --progress
@@ -55,6 +59,7 @@ build() {
 			echo ":: Building with Address Sanitizer (ASAN) enabled, without optimization..."
 			cmake -B build \
 				-DBUILD_DIAGTOOL=OFF \
+				-DPYTHON_WHEELS_PREBUILD=OFF \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=Debug \
 				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
@@ -65,6 +70,7 @@ build() {
 			echo ":: Building without optimization..."
 			cmake -B build \
 				-DBUILD_DIAGTOOL=OFF \
+				-DPYTHON_WHEELS_PREBUILD=OFF \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
 				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
@@ -75,6 +81,7 @@ build() {
 		echo ":: Building with Address Sanitizer (ASAN) enabled..."
 		cmake -B build \
 			-DBUILD_DIAGTOOL=OFF \
+			-DPYTHON_WHEELS_PREBUILD=OFF \
 			-DCMAKE_BUILD_TYPE=Debug \
 			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
@@ -85,6 +92,7 @@ build() {
 		echo ":: Building with normal optimization..."
 		cmake -B build \
 			-DBUILD_DIAGTOOL=OFF \
+			-DPYTHON_WHEELS_PREBUILD=OFF \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
 			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
@@ -97,14 +105,19 @@ build() {
 package() {
 	cd "$pkgname"
 	DESTDIR="$pkgdir" cmake --install build
-	mkdir -p "$pkgdir/usr/bin"
 
 	install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 "$srcdir/$pkgname.logrotate" "$pkgdir/etc/logrotate.d/$pkgname"
 	install -Dm644 "$srcdir/$pkgname-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 	install -Dm644 "$srcdir/$pkgname-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
+	install -d "$pkgdir/usr/bin"
 	for executable in "${_executables[@]}"; do
-		ln -sf "/opt/cellframe-node/bin/$executable" "$pkgdir/usr/bin/$executable"
+		ln -sf "/opt/$pkgname/bin/$executable" "$pkgdir/usr/bin/$executable"
 	done
+
+	install -d "$pkgdir/opt/$pkgname/share/wheels/"
+  	for wheel in "$srcdir"/*.whl; do
+    	install -Dm644 "$wheel" "$pkgdir/opt/$pkgname/share/wheels/"
+  	done
 }
