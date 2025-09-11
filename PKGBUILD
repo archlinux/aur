@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rclone-ui-bin
 _pkgname='Rclone UI'
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="The cross-platform desktop GUI for rclone & S3.(Prebuilt version)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://rcloneui.com/"
 _ghurl="https://github.com/rclone-ui/rclone-ui"
 license=('Apache-2.0')
@@ -16,10 +19,10 @@ depends=(
     'webkit2gtk-4.1'
     'rclone'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
-)
-sha256sums=('d23647715286a6d800c845495272c0dbf200cc60e62c765f8c64117f119088de')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.x86_64.rpm")
+sha256sums_aarch64=('86657df4d22307ceb33bedc0a76f7b82df19013a258054ffc21288530bc691e7')
+sha256sums_x86_64=('87c24c51298fb7438e343662c68d0dfa70277505098163950d324b519cb4f549')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
