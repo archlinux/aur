@@ -1,0 +1,25 @@
+pkgbase = tauri-system-monitor
+	pkgdesc = Lightweight system monitor
+	pkgver = r29.a41b5bf
+	pkgrel = 1
+	url = https://github.com/JackpotMachine777/tauri-system-monitor
+	arch = x86_64
+	license = GPL
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = pkg-config
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	depends = linuxdeploy
+	options = !strip
+	source = git+https://github.com/JackpotMachine777/tauri-system-monitor#branch=main
+	sha256sums = SKIP
+
+pkgname = tauri-system-monitor
