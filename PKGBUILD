@@ -2,9 +2,9 @@
 # Contributor: kj_sh604
 pkgname=coreutils-uutils
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='(Experimental) Use uutils as system core utilities'
-arch=('x86_64') # any?
+arch=('any')
 license=('MIT')
 url=https://github.com/uutils/coreutils
 conflicts=(coreutils b3sum sha3sum)
