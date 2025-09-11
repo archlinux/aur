@@ -1,14 +1,14 @@
 pkgbase = toolshed
 	pkgdesc = Utilities for Tandy Color Computer and Dragon microcomputers cross-development.
-	pkgver = 2.2
+	pkgver = 2.4.2
 	pkgrel = 1
-	url = http://toolshed.sourceforge.net
+	url = https://github.com/nitros9project/toolshed
 	arch = x86_64
 	license = PerlArtistic
 	makedepends = discount
+	makedepends = git
 	depends = fuse2
-	source = https://downloads.sourceforge.net/toolshed/toolshed-2.2.tar.gz
-	sha256sums = ab7201970e9c13e1cbdb9c8398bd888f870e75e33055b7a308bb039f67614c69
+	source = git+https://github.com/nitros9project/toolshed.git#tag=v2_4_2
+	sha256sums = SKIP
 
 pkgname = toolshed
-
