@@ -1,4 +1,4 @@
-From f86243abb7f515583e8fa81d04e1ad2d7d719255 Mon Sep 17 00:00:00 2001
+From 729a976f0987c3956f38b328f8f37ad407423b57 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -40,7 +40,7 @@ Co-authored-by: zhaose <weiliang1503@outlook.com>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/build.gradle.kts b/HMCL/build.gradle.kts
-index 4cee3f790..1e2a13d8f 100644
+index a86c6b085..fb4811c6a 100644
 --- a/HMCL/build.gradle.kts
 +++ b/HMCL/build.gradle.kts
 @@ -12,22 +12,18 @@ plugins {
@@ -138,7 +138,7 @@ index 4cee3f790..1e2a13d8f 100644
          }
      }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 548c3c368..f7b37dbd2 100644
+index b8da9da44..f74a90f99 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 @@ -31,8 +31,6 @@ import org.jackhuang.hmcl.util.FileSaver;
@@ -150,7 +150,7 @@ index 548c3c368..f7b37dbd2 100644
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
-@@ -116,8 +114,6 @@ public final class Launcher extends Application {
+@@ -120,8 +118,6 @@ public final class Launcher extends Application {
                  Platform.setImplicitExit(false);
                  Controllers.initialize(primaryStage);
  
@@ -159,7 +159,7 @@ index 548c3c368..f7b37dbd2 100644
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -220,11 +216,6 @@ public final class Launcher extends Application {
+@@ -224,11 +220,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
@@ -172,7 +172,7 @@ index 548c3c368..f7b37dbd2 100644
          AsyncTaskExecutor.setUncaughtExceptionHandler(new CrashReporter(false));
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-index 7b545d35f..780a61a56 100644
+index a42bca287..e55146bee 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 @@ -47,16 +47,13 @@ public final class Metadata {
@@ -193,7 +193,7 @@ index 7b545d35f..780a61a56 100644
      public static final Path CURRENT_DIRECTORY = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
      public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 2661f1261..732c77072 100644
+index 5e9deca32..78036b05d 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 @@ -428,12 +428,6 @@ public final class Controllers {
@@ -1982,5 +1982,5 @@ index 36ab72ee2..eae748add 100644
      }
  }
 -- 
-2.50.0
+2.51.0
 
