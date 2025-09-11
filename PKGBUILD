@@ -3,7 +3,7 @@
 # Contributor: hyknn <hyknn@protonmail.com>
 pkgname=hayase-desktop-bin
 _pkgname=Hayase
-pkgver=6.4.26
+pkgver=6.4.27
 pkgrel=1
 pkgdesc="Formerly Miru. Torrent streaming made simple. Watch anime torrents, real-time with no waiting for downloads (prebuilt binary), successor to miru-bin"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hayase-app/ui/v${pkgver}/LICENSE"
     "${pkgname}.install"
 )
-sha512sums=('90ec69b47cb2c8953c7eeb266ef9bca8a0d29ed4b11adad34f747ffdf5d070eb5d764f4c079e3473ebe5b8c46e23e743fbb2f17841c360cbd19c6502d01c73d0'
+sha512sums=('bb0b55896bd632e7d1db24e4a571bdbf8ffe763e5a12533b31e978f144d55f5c19b2be74569861be59d0f1e84719bbccadd6f0cc5ff921d2e8425c7f8620f529'
             '28eb0f95d44512e9b901dbcf6c75d9d1fd21d60728d0958f3936f7071a16d62b4999470462b637fc5ba4a35b5fe99838510289f8ba017255e0f13a8dad2e9f29'
             '67b9bf7da2fc891442b8bfd441a12203717c1f9e96ef94eae62c53138b4e4442b26da9ad4a41a40f79de5f5c93383e092db3629e249c9a04e3f24c415a6a1ba1')
 
@@ -34,5 +34,6 @@ package() {
     # Extract package data
     tar -xJ -f data.tar.xz -C "${pkgdir}"
 
-    install -D -m644 "${pkgdir}/opt/${_pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -D -m644 "${pkgdir}/opt/${_pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    chmod 755 "${pkgdir}/opt/Hayase/hayase"
 }
