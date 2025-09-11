@@ -1,7 +1,7 @@
 # Maintainer: Olivier Michaelis <michaelis.olivier [at] gmail [dot] com>
 
 pkgname=sloth-bin
-pkgver=0.12.0 # renovate: datasource=github-releases depName=slok/sloth
+pkgver=0.13.0 # renovate: datasource=github-releases depName=slok/sloth
 pkgrel=1
 pkgdesc="Easy and simple Prometheus SLO (service level objectives) generator"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,9 +12,9 @@ source_x86_64=(sloth-${pkgver}-x86_64::https://github.com/slok/sloth/releases/do
 source_aarch64=(sloth-$pkgver-aarch64::https://github.com/slok/sloth/releases/download/v${pkgver}/sloth-linux-arm64)
 source_armv7h=(sloth-${pkgver}-armv7h::https://github.com/slok/sloth/releases/download/v$pkgver/sloth-linux-arm-v7)
 
-sha256sums_x86_64=('e2eb99b9b10a5e9f773326323b3fd43bb24907df79a42c0125671e1394df5d59')
-sha256sums_aarch64=('fd4153a665698a7b62a9c95107b6774f5d9fa5c99cbfa1066119b89d96a260ec')
-sha256sums_armv7h=('0a4d10df1471208cb215b9b0229f3c3d7ad07750fc92feeb69be32f6d0100ade')
+sha256sums_x86_64=('8fb845e6f1ab2c0af2b48e0b4849b42b72ecb422fadabc8a800d3d6deeca3ff2')
+sha256sums_aarch64=('e51d6ac2bf7fb331cb484e7ac2fe520b8e3983f46c3f8108ddb060188d8de957')
+sha256sums_armv7h=('183f072dce8e2bd171506994ae2a55bb282251b01fc5cecc0a2839789910a3ce')
 
 package() {
   install -Dm755 sloth-${pkgver}-${arch} "$pkgdir/usr/bin/sloth"
