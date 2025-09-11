@@ -5,7 +5,7 @@
 # basic info
 pkgname="vinyl-git"
 _pkgname="vinyl"
-pkgver=r97.52332eb
+pkgver=r108.981417a
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
@@ -41,7 +41,8 @@ depends=(
   'kdoctools'
   'kpackage'
   'frameworkintegration'
-  'inkscape'
+  'python-cairosvg'
+  'python-lxml'
   'xorg-xcursorgen'
 )
 
