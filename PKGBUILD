@@ -5,7 +5,7 @@
 _base=birdseye
 pkgname=python-${_base}
 pkgdesc="Graphical Python debugger which lets you view the values of all evaluated expressions"
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 arch=(any)
 url="https://github.com/alexmojaki/${_base}"
@@ -16,7 +16,7 @@ makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest python-markupsafe python-pandas python-beautifulsoup4
   python-selenium python-flask) # chromedriver
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('fdd95e85302f75162edd1e8fb1f1530674da0fdd9b5f29a6b4d0d0c46a91ce12932b92e6d35b256d90cd8260c76dd3f692e8d53e303fd4dac835da35615bf2ae')
+sha512sums=('f1641ce59796e67311af13435ec30a50f05852b7a92a120dcab235f736edf1561e352f608bc6355b73c3f81ec4bae5d5d680070a5323d81773a085ac4d17ea12')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
