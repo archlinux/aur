@@ -1,4 +1,4 @@
-# PKGBUILD (converted from hyprviz-bin)
+# PKGBUILD (converted from hyprviz)
 pkgname=hyprviz
 pkgver=0.4.4
 pkgrel=1
