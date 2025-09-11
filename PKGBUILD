@@ -191,7 +191,7 @@ build () {
         -D vulkan-drivers=amd,intel,swrast,virtio,intel_hasvk \
         -D egl=enabled \
         -D gallium-extra-hud=true \
-        -D vulkan-layers=device-select,overlay,anti-lag \
+        -D vulkan-layers=device-select,overlay \
         -D gallium-va=enabled \
         -D gbm=enabled \
         -D gles1=disabled \
