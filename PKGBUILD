@@ -12,7 +12,7 @@ depends=('devtools' 'bash')
 provides=('arch-shell')
 backup=()
 source=('arch-shell')
-sha256sums=('310bd5737f2348774d7353d48e0b8896c0fc57293bf93391aa8138dfd5a2d5f1')
+sha256sums=('e10b154cc8e70523880569704e485389c4965fd12d0b128b0372119aef1a8c90')
 
 package() {
     install -Dm755 "${srcdir}/arch-shell" "${pkgdir}/usr/bin/arch-shell"
