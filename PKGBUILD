@@ -1,4 +1,4 @@
-# Maintainer: Behnam Lal <dev at behnamlal dot xyz>
+# Contributor: Behnam Lal <dev at behnamlal dot xyz>
 # Contributor: Carson Rueter <roachh at proton mail dot com>
 
 pkgname=vscodium-features
@@ -8,21 +8,18 @@ pkgrel=1
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
-license=('unknown')
 depends=('vscodium' 'python' 'python-requests')
 optdepends=('org.freedesktop.secrets: for settings sync feature')
-provides=('vscodium-features')
-conflicts=('vscodium-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.py'
         'patch.json')
-md5sums=('c6fcb99a315f5957bc1472597360d8b2'
-         '8407481e2fc01c483957ca2bdd6dda9b'
-         '5cdf96d72d223e73827626bc3bb3e176')
+sha256sums=('25cc203f7c49f665ff460417768955c5bf308cfc82940a245e6636d8aa2c013e'
+            '5539afacf560f9d5b14f9aea087b9f320922bf702877086d7886af91d632e659'
+            '18266dd33e987ad007ea56da2533925d3ddb84e1bac9c013cb2d513b79c0d59b')
 
 package() {
-  install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
-  install -Dm 755 "${srcdir}/patch.py" "${pkgdir}/usr/share/${pkgname}/patch.py"
-  install -Dm 644 "${srcdir}/patch.json" "${pkgdir}/usr/share/${pkgname}/patch.json"
+  install -Dm 644 ${pkgname}.hook "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
+  install -Dm 755 patch.py "${pkgdir}/usr/share/${pkgname}/patch.py"
+  install -Dm 644 patch.json "${pkgdir}/usr/share/${pkgname}/patch.json"
 }
