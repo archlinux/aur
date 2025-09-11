@@ -3,7 +3,7 @@
 
 pkgname=nmctl
 _name=netmaker
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="cli to control netmaker, a platform for modern, blazing fast wg virtual networks"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('Apache')
 depends=(glibc)
 makedepends=(go)
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e741eddcb9e266cb0de7bf52b847055551061f6e5484836822501ffbd2283a77')
+sha256sums=('30114ff17559118f9f5b28dfe5c441b2da03c3f129d6f38539525df44539635a')
 
 
 build() {
