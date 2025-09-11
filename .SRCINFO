@@ -1,6 +1,6 @@
 pkgbase = xlayoutdisplay
 	pkgdesc = Detects and arranges linux display outputs, using XRandR for detection and xrandr for arrangement.
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/alex-courtis/xlayoutdisplay
 	install = install
@@ -12,7 +12,7 @@ pkgbase = xlayoutdisplay
 	depends = xorg-xrandr
 	depends = xorg-xrdb
 	depends = libxcursor
-	source = https://github.com/alex-courtis/xlayoutdisplay/archive/v1.5.0.tar.gz
-	sha256sums = 40b832e2845689dfc2bb5b8b53e9f5300f22fbbb0698830d8ff73562d47a6b84
+	source = https://github.com/alex-courtis/xlayoutdisplay/archive/v1.5.1.tar.gz
+	sha256sums = 6580688ee1cbe2f0c8ed500d7048e1fa96550c3e7fd711d419f437cbe3ddec49
 
 pkgname = xlayoutdisplay
