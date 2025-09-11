@@ -1,6 +1,6 @@
 pkgbase = grist-desktop
 	pkgdesc = Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database.(Use system-wide electron)
-	pkgver = 0.3.4
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/gristlabs/grist-desktop
 	arch = any
@@ -11,15 +11,14 @@ pkgbase = grist-desktop
 	makedepends = curl
 	makedepends = yarn
 	depends = electron30
-	depends = python-colorama
 	depends = python-lxml
 	depends = python-gobject
 	depends = python-typing_extensions
 	depends = python-tornado
 	options = !strip
-	source = grist-desktop-0.3.4::git+https://github.com/gristlabs/grist-desktop.git#tag=v0.3.4
+	source = grist-desktop-0.3.6::git+https://github.com/gristlabs/grist-desktop.git#tag=v0.3.6
 	source = grist-desktop.sh
-	sha256sums = e2a76bfdfe90d5a12605d5567ed9c6385be7685e8d68ece1f925b2a5ae83f38a
+	sha256sums = 07036c19b804a073f36f90b54c83137b6eac32431865ea944e12d00299f8e329
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = grist-desktop
