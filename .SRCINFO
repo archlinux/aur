@@ -1,0 +1,16 @@
+pkgbase = tascam-control-panel-git
+	pkgdesc = Control Panel for TASCAM US-144MKII
+	pkgver = r131.44a15c5df1ea
+	pkgrel = 1
+	url = https://github.com/serifpersia/us144mkii
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = qt6-base
+	depends = alsa-lib
+	provides = tascam-control-panel
+	conflicts = tascam-control-panel
+	source = git+https://github.com/serifpersia/us144mkii
+	sha256sums = SKIP
+
+pkgname = tascam-control-panel-git
