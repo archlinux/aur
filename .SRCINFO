@@ -14,6 +14,7 @@ pkgbase = tauri-system-monitor
 	makedepends = git
 	makedepends = clang
 	makedepends = lld
+	makedepends = llvm
 	depends = glibc
 	depends = webkit2gtk
 	depends = gtk3
