@@ -1,5 +1,509 @@
 Changelog for AirVPN Suite
 
+Version 2.0.0 - 22 July 2025
+
+- [ProMIND] no change
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 RC 3 - 16 July 2025
+
+network
+
+- [ProMIND] scanLocalInterfaces() is now protected
+- [ProMIND] scanGateway() is now protected
+- [ProMIND] revised method getGatewayFromRouteTable()
+- [ProMIND] added operators == and != for Gateway type
+
+
+wireguardclient
+
+- [ProMIND] start(): set gateway in case it was not provided at construction time
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 RC 2 - 9 June 2025
+
+netfilter
+
+- [ProMIND] added method checkFirewalldNftablesTableOwner()
+- [ProMIND] init(): in case firewalld is running and owns Nftables, issue warning to log
+
+
+wireguardclient
+
+- [ProMIND] onConnectedEvent(): set clientStatus to WAIT
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 RC 1 - 14 April 2025
+
+build-*
+
+- [ProMIND] moved to standard C++20
+
+
+airvpntools
+
+- [ProMIND] requestAirVPNDocument(): in case of server connection failure, wait CONNECTIVITY_FAIL_WAIT_TIME before trying the next server
+
+
+execproc
+
+- [ProMIND] exec_cmd_error_description(): prevent _exec_errdesc overflow
+- [ProMIND] exec_cmd_args_error_description(): prevent _exec_errdesc overflow
+
+
+semaphore
+
+- [ProMIND] wait_for(): return Status after wait
+
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 beta 5 - 3 April 2025
+
+build-*
+
+- [ProMIND] added "debug" and "-d" options
+
+
+airsu
+
+- [ProMIND] bash is now verified upon the existence of $BASH_VERSION variable
+
+
+airvpntools
+
+- [ProMIND] checkAirVPNConnectivity(): changed socket flags and connectivity procedure
+
+
+dbusconnector
+
+- [ProMIND] readWriteDispatch(): check whether the connection is still alive before calling dbus_connection_read_write_dispatch()
+
+
+execproc.c
+
+- [ProMIND] added function ep_trim()
+- [ProMIND] exec_cmd_error_description(): call ep_trim on both stdout and stderr
+- [ProMIND] exec_cmd_args_error_description(): call ep_trim on both stdout and stderr
+
+
+netfilter
+
+- [ProMIND] added enum class TrafficMode
+- [ProMIND] setup(): added arguments ping and ipv6ndp
+- [ProMIND] added methods setPingMode() and pingMode()
+- [ProMIND] added methods allowIPv6Ndp() and isIPv6NdpAllowed()
+- [ProMIND] initItemList(): rules revision and implementation of rules for ping and ipv6ndp modes
+- [ProMIND] translateItemToNFTables(): improved translation for item RULE
+- [ProMIND] added overloaded operator <<
+- [ProMIND] NetFilter(): properly determine paths of systemctl and shell binaries
+
+
+openvpnclient
+
+- [ProMIND] added ping and ipv6ndp arguments to first case contructor
+
+
+vpnclient
+
+- [ProMIND] added ping and ipv6ndp arguments to first case contructor
+
+
+wireguardclient
+
+- [ProMIND] added ping and ipv6ndp arguments to first case contructor
+- [ProMIND] added method exemptPrivateNetwork()
+- [ProMIND] start(): call exemptPrivateNetwork() in case private networks are alloved in NetFilter
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 beta 4 - 14 February 2025
+
+- [ProMIND] no change
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 beta 3 - 11 February 2025
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.11 20250206
+
+
+airsu.sh (airsu)
+
+- [ProMIND] added auto completion scripts for bash and zsh
+- [ProMIND] Append $DISPLAY to "unix:" in case it is missing in the main entry of xauth list
+- [ProMIND] Shebang changed to /bin/bash
+
+
+airvpnmanifest
+
+- [ProMIND] added local class BootServer
+- [ProMIND] added AirVPN boot server management based on ranking and connectivity quality
+- [ProMIND] added AirVPN boot server management based on ranking and connectivity quality
+- [ProMIND] added resolveBootServerList(): resolve boot server URLs, if needed
+- [ProMIND] loadManifest(): call resolveBootServerList() in case manifest has been downloaded from server
+- [ProMIND] loadManifest(): improved error management
+
+
+airvpnserver
+
+- [ProMIND] destructor is set to default
+
+
+airvpnservergroup
+
+- [ProMIND] destructor is set to default
+
+
+airvpntools
+
+- [ProMIND] added method checkAirVPNConnectivity()
+- [ProMIND] added method isIPAddress()
+- [ProMIND] added method extractIPAddress()
+- [ProMIND] added method resolveHostname()
+- [ProMIND] boot server processing is now managed by AirVPNManifest class
+- [ProMIND] requestAirVPNDocument(): boot server list and use are now implemented via new AirVPNManifest Boot Server facilities
+- [ProMIND] destructor is set to default
+
+
+airvpnuser
+
+- [ProMIND] destructor is set to default
+
+
+cipherdatabase
+
+- [ProMIND] destructor is set to default
+
+
+dnsmanager
+
+- [ProMIND] destructor is set to default
+
+
+netfilter
+
+- [ProMIND] added methods scanSystemDNS(), allowSystemDNS(), rejectSystemDNS() and isSystemDNSAllowedInNetFilter()
+
+
+network
+
+- [ProMIND] getAddressCount(): added argument IPFamily
+
+
+openvpnclient
+
+- [ProMIND] all event methods now call parent VPNClient method
+- [ProMIND] getConnectionStats(): added client_name, client_user and connection_start_time fields
+- [ProMIND] methods tun_builder_add_dns_options() has been replaced by the new OpenVPN3 tun_builder_set_dns_options()
+- [ProMIND] removed deleted methods tun_builder_add_dns_options(), tun_builder_add_search_domain() and tun_builder_set_adapter_domain_suffix()
+
+
+semaphore
+
+- [ProMIND] destructor is set to default
+
+
+vpnclient
+
+- [ProMIND] added methods setMacOSTunIPv6DNSLookup() and unsetMacOSTunIPv6DNSLookup() (set/unset AAAA flag to DNS resolvers)
+- [ProMIND] added method setTunInterface()
+- [ProMIND] added event methods
+- [ProMIND] added method getStartConnectionTime()
+- [ProMIND] added methods getClientName(), setClientName(), getClientUser() and setClientUser()
+- [ProMIND] removed method saveSystemDNS() (delegated to NetFilter class)
+- [ProMIND] allowSystemDNS() and rejectSystemDNS() now uses their equivalent NetFilter's methods
+
+
+wireguardclient
+
+- [ProMIND] all event methods now call parent VPNClient method
+- [ProMIND] getConnectionStats(): added client_name, client_user and connection_start_time fields
+- [ProMIND] tagged as version 2.0.0
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 beta 2 - 12 December 2024
+
+airsu.sh (airsu)
+
+- [ProMIND] initial release
+
+
+optionparser
+
+- [ProMIND] added overloaded method formatOption
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 beta 1 - 13 May 2024
+
+- [ProMIND] updated install.sh and uninstall.sh scripts for suspend and resume services
+
+airvpnmanifest
+
+- [ProMIND] searchServer(): pattern is now searched in continent code and name as well
+
+
+airvpnserver
+
+- [ProMIND] method getContinent() renamed to getContinentCode()
+- [ProMIND] method setContinent() renamed to setContinentCode()
+- [ProMIND] added method getContinentName()
+- [ProMIND] implemented boolean comparison methods for std::sort
+
+
+airvpnserverprovider
+
+- [ProMIND] getFilteredServerList(): added handling for continents in country white and black lists
+- [ProMIND] method compareServerScore() moved to AirVPNServer class
+
+
+airvpntools
+
+- [ProMIND] added method directoryExists()
+- [ProMIND] added method startsWith()
+- [ProMIND] method getLoad() renamed to getTrafficLoad()
+- [ProMIND] split() fixed bug in case string does not contain delimiter
+- [ProMIND] SERVER_READ_TIMEOUT is now set to 15 seconds
+- [ProMIND] requestAirVPNDocument(): vector bootServerList is now shuffled before starting the document request
+- [ProMIND] requestAirVPNDocument(): added software, arch and version keys to document request
+
+
+airvpnuser
+
+- [ProMIND] added/revised methods getExpirationDate(), getExpirationDateTS(), getFormattedExpirationDate(), setExpirationDate(), getDaysToExpiration() and setDaysToExpiration(int d)
+- [ProMIND] processXmlUserProfile(): added processing for user's expiration date
+
+
+countrycontinent
+
+- [ProMIND] Added method realCountryName()
+- [ProMIND] Added constants EARTH, AFRICA, AMERICA, NORTH_AMERICA, SOUTH_AMERICA, ASIA, EUROPE and OCEANIA
+
+
+dnsmanager
+
+- [ProMIND] All binary paths are now searched at construction time
+- [ProMIND] Added DNSManagerException class
+
+
+execproc.c
+
+- [ProMIND] Added function exec_error_description()
+- [ProMIND] Added function exec_cmd_error_description()
+- [ProMIND] Added function exec_cmd_args_error_description()
+
+
+loadmod.c
+
+- [ProMIND] Added function is_module_loaded()
+
+
+netfilter
+
+- [ProMIND] All binary paths are now searched at construction time
+- [ProMIND] Added method isNftUsingIptables()
+- [ProMIND] Added iptables-nft support to iptablesSave() and iptablesRestore() methods
+- [ProMIND] Added method isPfEnabled()
+- [ProMIND] Added methods allowPrivateNetwork() and isPrivateNetworkAllowed()
+- [ProMIND] Added local and service IPv6 network classes to the default initialization of netfilter
+- [ProMIND] setup(): added optional argument for private network management
+
+
+network
+
+- [ProMIND] struct Gateway: added isDefault field
+- [ProMIND] method scanDefaultGateway() renamed to scanGateway()
+- [ProMIND] added method getGatewayFromRouteTable()
+- [ProMIND] added method getGateway()
+- [ProMIND] removed member defaultGateway
+- [ProMIND] added members IPv4Gateway and IPv6Gateway
+
+
+openvpnclient
+
+- [ProMIND] implemented OpenVpnClient::acc_event() in order to comply to new master specifications. Event is ignored.
+- [ProMIND] Added private network option for constructors using a private NetFilter
+
+
+optionparser
+
+- [ProMIND] added mode to OptionConfig and Option structures
+- [ProMIND] added function getOptionsForMode()
+- [ProMIND] added function getInvalidOptionsForMode()
+
+
+trafficsplit
+
+- [ProMIND] added methods removeNamespaceDirectory(), namespaceConfigurationExists(), isDirty() and recover()
+- [ProMIND] removed methods removeDefaultNamespaceDirectory(), defaultNamespaceConfigurationExists()
+- [ProMIND] added methods getIPv4Gateway(), setIPv4Gateway(), getIPv6Gateway() and setIPv6Gateway()
+
+
+wireguardclient
+
+- [ProMIND] added method setEndPointPort()
+- [ProMIND] added method removeDevice()
+- [ProMIND] added methods createInterfaceDevice(), setDeviceConfiguration(), getDeviceList(), changeWgFilesOwnership() ands restoreWgFilesOwnership() (macOS support)
+- [ProMIND] Added private network option for constructors using a private NetFilter
+- [ProMIND] Implemented event management
+- [ProMIND] Improved handshake timeout management
+
+
+vpnclient
+
+- [ProMIND] Added private network option for constructors using a private NetFilter
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 alpha 2 - 24 November 2023
+
+execproc.c
+
+- [ProMIND] added macros EXEC_MODE_VECTOR, EXEC_MODE_VECTOR_PATH, EXEC_MODE_VECTOR_PATH_ENV and EXEC_MODE_DEFAULT
+- [ProMIND] added functions exec_set_mode(), exec_set_environ() and exec_reset()
+- [ProMIND] do_execute(): added mode and environment handling
+- [ProMIND] execute_process(), execute_process_args(): call exec_reset() before returning
+- [ProMIND] get_exec_path(): renamed to exec_get_path() and added an extra argument to specify a colon separated search path
+
+airvpntools
+
+- [ProMIND] method architecture() now uses GCC macros only
+- [ProMIND] added method platform()
+
+
+dnsmanager
+
+- [ProMIND] addAddressToResolvDotConf() now requires IPAddress type
+
+
+logger
+
+- [ProMIND] added overloaded log metoths for std::ostringstream
+
+
+network
+
+- [ProMIND] added methods setupInterface(), enableInterface() and setInterfaceMtu()
+- [ProMIND] added method setIPAddress() to Interface class
+- [ProMIND] scanLocalIpAddresses() renamed to scanLocalInterfaces()
+- [ProMIND] Interface: added method getAddressCount()
+
+
+openvpnclient
+
+- [ProMIND] added inheritance from vpnclient class
+- [ProMIND] get_connection_stats(): added timestamp item
+- [ProMIND] function openVPNInfo() renamed to getInfo()
+- [ProMIND] function openVPNCopyright() renamed to getCopyright()
+
+
+wireguardclient
+
+- [ProMIND] added inheritance from vpnclient class
+- [ProMIND] implemented connection management methods
+
+
+vpnclient
+
+- [ProMIND] new class
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 2.0.0 alpha 1 - 15 September 2023
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.9
+- [ProMIND] updated install.sh and uninstall.sh scripts
+- [ProMIND] updated bluetit.rc template
+- [ProMIND] updated nsswitch.conf template
+- [ProMIND] added cuckoo tool to the project
+
+
+airvpntools
+
+- [ProMIND] formatTransferRate(): replaced sprintf with snprintf
+- [ProMIND] formatDataVolume(): replaced sprintf with snprintf
+- [ProMIND] formatTime(): replaced sprintf with snprintf
+
+
+execproc.c
+
+- [ProMIND] execute_process(): added stderr redirection to char *error argument
+- [ProMIND] do_execute(): renamed parent_pipe and child_pipe to stdin_pipe and stdout_pipe respectively
+- [ProMIND] do_execute(): added stderr_pipe array
+- [ProMIND] do_execute(): added stderr redirection to char *error argument
+
+
+localnetwork
+
+- [ProMIND] Class renamed to Network
+
+
+netfilter
+
+- [ProMIND] translateItemToNFTables(): added dormant flag to table creation
+- [ProMIND] added method getSystemFirewallBackend()
+- [ProMIND] added TARGET_IPTABLES_LEGACY and TARGET_UNKNOWN members
+- [ProMIND] added method itemToCommandRule()
+
+
+network
+
+- [ProMIND] added method interfaceExists()
+- [ProMIND] added overloaded method incrementIpAddress()
+- [ProMIND] added new public class Interface
+- [ProMIND] removed old interface and IP address collection in favor of class Interface
+- [ProMIND] removed methods scanIpAddresses() and scanInterfaces()
+- [ProMIND] default gateway is now evaluated at object construction and stored in member defaultGateway
+- [ProMIND] struct Gateway member address is now defined as IPAddress
+- [ProMIND] added excludeIpAddresses() and worker methods to compute a route by excluding an IP address range
+- [ProMIND] added getIpAddressNetmask(), getIpAddressHostmask() and getIpAddressNetwork() methods
+- [ProMIND] added internetChecksum() method
+- [ProMIND] added getNextUnusedIpAddress() method and worker methods
+- [ProMIND] added LocalNetworkException class
+
+
+openvpnclient
+
+- [ProMIND] profileNeedsResolution(): added check for ClientAPI::EvalConfig.reouteList
+- [ProMIND] resolveProfile(): added resolution for ClientAPI::EvalConfig.reouteList
+- [ProMIND] onResolveEvent(): removed log display of local interfaces/addresses
+- [ProMIND] saveSystemDNS(): replaced deprecated inet_ntoa() with inet_ntop()
+- [ProMIND] added new method getSystemDnsTable()
+
+
+trafficsplit
+
+- [ProMIND] new class
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.3.0 - 1 June 2023
 
 - [ProMIND] updated to OpenVPN3 AirVPN 3.8.4

@@ -1,7 +1,8 @@
+# Maintainer: rvid <contact at rvid dot eu>
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-bin
 _pkgname=AirVPN-Suite
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt stable"
 arch=('x86_64' 'armv7l' 'aarch64')

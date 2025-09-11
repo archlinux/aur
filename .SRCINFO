@@ -1,6 +1,6 @@
 pkgbase = airvpn-suite-bin
 	pkgdesc = AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt stable
-	pkgver = 1.3.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://airvpn.org/linux/suite
 	install = airvpn-suite-bin.install
@@ -23,7 +23,11 @@ pkgbase = airvpn-suite-bin
 	conflicts = hummingbird-bin
 	conflicts = airvpn-suite
 	conflicts = airvpn-suite-beta-bin
-	source = https://eddie.website/repository/AirVPN-Suite/1.3.0/AirVPN-Suite-x86_64-1.3.0.tar.gz
-	sha512sums = 2e95f97be1dd3e279c97510a7ee39d7734030d1d20aca77187d6470c0a057ffedc91d75dc341931ba551818d526a88d342065758a25c6d9dc3ea15e84ba4aa79
+	source_x86_64 = https://eddie.website/repository/AirVPN-Suite/2.0.0/AirVPN-Suite-x86_64-2.0.0.tar.gz
+  source_armv7l = https://eddie.website/repository/AirVPN-Suite/2.0.0/AirVPN-Suite-armv7l-2.0.0.tar.gz
+  source_aarch64 = https://eddie.website/repository/AirVPN-Suite/2.0.0/AirVPN-Suite-aarch64-2.0.0.tar.gz
+	sha512sums_x86_64 = e2e92b3e4715aca565ab79d6647fd7b7d2066c19b64f68e64cde3ace82ac2d78b9ad706af23d3fc7ee3adb9a8711912ddce92fb39f7031b307fa0d67fced5805
+  sha512sums_armv7l = 93aeeaf506a25301fd3c94cbb5c65eedd75e57e8c38e832e7d1ce5a3d2c08537b2faaf2839db3884928286916c2b98c3f07055c90eebf59c707141f2974d4f88
+  sha512sums_aarch64 = 0e76443c5ba2386eb1f86fa3bc3d6abfc6b79c81bdeaf0158bf86b178e2bedea02ab0d45eeff2ef9996cd6aed76b8247259408860d5242f39fd1bf03d64caf15
 
 pkgname = airvpn-suite-bin
