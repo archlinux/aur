@@ -7,7 +7,7 @@ pkgbase = makima-bin
 	license = GPL-3.0-or-later
 	provides = makima
 	conflicts = makima
-	source = https://github.com/cyber-sushi/makima/releases/download/v${pkgver}/makima
+	source = https://github.com/cyber-sushi/makima/releases/download/v0.10.2/makima
 	sha256sums = ad8255f44a8a619f7d300bbf81463b61e3e6e7af37697fac8d53f6c7f937edaf
 
 pkgname = makima-bin
