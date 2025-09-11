@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+    ".pre-commit-config.yaml",
+    ".gitignore"
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "boost-1.88.patch",
+    "fix-clang-dllimport.patch",
+    "warnings.patch",
+]
+SPDX-FileCopyrightText = "cpprestsdk contributors"
+SPDX-License-Identifier = "MIT"
