@@ -1,6 +1,6 @@
 pkgbase = someclick
 	pkgdesc = Patched kgx (GNOME Console): right-click to copy/paste (as in Windows)
-	pkgver = 48.1_someclick
+	pkgver = 48.1
 	pkgrel = 1
 	url = https://github.com/ndiuky/someclick
 	arch = x86_64
