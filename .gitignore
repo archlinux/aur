@@ -1,0 +1,9 @@
+cat <<'EOF' > .gitignore
+# Quellen, die nicht im AUR hinterlegt werden sollen
+*.src
+*.diff
+*.patch
+*.tar.gz
+*.zip
+*.xz
+EOF

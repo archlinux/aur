@@ -11,8 +11,8 @@ depends=('glibc' 'gtk3' 'webkit2gtk' 'xdg-utils')
 makedepends=('dpkg')
 options=()
 
-source=('NoRiskClient-Linux.deb::https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.9-beta.6/NoRiskClient-Linux.deb')
-sha256sums=('cbe547cf8a1411cffd0de6668274dd6bb4c9a99224e97c5644cc9b92bb47bd02')
+source=('https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.9-beta.9/NoRiskClient-Linux.deb')
+sha256sums=('5cfdf33fae112a3eca22ef6d258169cae64d352d4cf14daebed1288c0bca1a7c')
 
 prepare() {
   dpkg-deb -x "$srcdir/NoRiskClient-Linux.deb" "$srcdir/pkg"
