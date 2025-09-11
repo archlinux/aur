@@ -1,7 +1,7 @@
 # Maintainer: schnur[at]i2pmail.org
 
 pkgname=nrc
-pkgver=0.6.9beta6
+pkgver=0.6.9beta9
 pkgrel=1
 pkgdesc="NoRiskClient Launcher – A Minecraft client from the YouTuber of the same name"
 arch=('x86_64')

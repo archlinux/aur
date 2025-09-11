@@ -1,6 +1,6 @@
 pkgbase = nrc
 	pkgdesc = NoRiskClient Launcher – A Minecraft client from the YouTuber of the same name
-	pkgver = 0.6.9beta6
+	pkgver = 0.6.9beta9
 	pkgrel = 1
 	url = https://github.com/NoRiskClient/noriskclient-launcher
 	arch = x86_64
