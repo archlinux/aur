@@ -1,7 +1,7 @@
 pkgbase = anitr-cli
 	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 	pkgver = 4.5.6+patch.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axrona/anitr-cli
 	arch = x86_64
 	arch = aarch64

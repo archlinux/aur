@@ -2,7 +2,7 @@
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
 pkgver=4.5.6+patch.1
-pkgrel=1
+pkgrel=2
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('x86_64' 'aarch64')
 url="https://github.com/axrona/anitr-cli"
