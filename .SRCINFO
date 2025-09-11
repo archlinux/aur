@@ -1,0 +1,21 @@
+pkgbase = plasma6-applets-background-apps-git
+	pkgdesc = An Plasma applet to list XDG Desktop Background Apps
+	pkgver = r14.94fa3fa
+	pkgrel = 1
+	url = https://github.com/jinliu/plasma-applet-background-apps
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = libplasma
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = kservice
+	depends = gcc-libs
+	depends = glibc
+	source = plasma6-applets-background-apps-git::git+https://github.com/jinliu/plasma-applet-background-apps.git
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-background-apps-git
