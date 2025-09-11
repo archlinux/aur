@@ -1,5 +1,5 @@
 pkgbase = bomdia-git
-	pkgver = r11.e73eda7
+	pkgver = v0.1.0.r0.g276dc67
 	pkgrel = 1
 	url = https://codeberg.org/Phosphenius/bomdia
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = bomdia-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
 	depends = python>=3.13
+	depends = python-argcomplete
 	conflicts = bomdia
 	source = git+https://codeberg.org/Phosphenius/bomdia.git
 	sha256sums = SKIP
