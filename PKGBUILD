@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2123.rc2.r1.g8fe05d5
+pkgver=2123.rc2.r29.g34d4652
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -90,6 +90,8 @@ prepare() {
 	sed -i 's|zstd/contrib/seekable_format/\(zstd_seekable\.h\)|\1|' ../../src/common/zstd_compression.cpp
 	# use system spirv-tools
 	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
+	# fix cmake error
+	sed -i 's/ SYSTEM / /' ../../externals/CMakeLists.txt
 }
 
 build() {
