@@ -2,13 +2,13 @@
 
 pkgname=factorio-yafc-ce-git
 pkgdesc="Yet Another Factorio Calculator (Community Edition): Powerful calculator/analyser that works with mods"
-pkgver=2.13.0.2.g7039c41
+pkgver=v2.15.0.0.gfcb32ce
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/have-fun-was-taken/yafc-ce
 license=(GPL)
-depends=(sdl2 sdl2_ttf sdl2_image dotnet-runtime)
-makedepends=(git dotnet-sdk)
+depends=(sdl2 sdl2_ttf sdl2_image dotnet-runtime-8.0)
+makedepends=(git dotnet-sdk-8.0)
 optdepends=()
 provides=()
 conflicts=()
@@ -32,10 +32,8 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname/Yafc"
-    # workaround for https://github.com/shpaass/yafc-ce/issues/478
-    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet build ../Yafc.I18n.Generator
 
-    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet publish --use-current-runtime --self-contained false -o "../publish"
+    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet publish --self-contained false -o "../publish"
 }
 
 package() {
