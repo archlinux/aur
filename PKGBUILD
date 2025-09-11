@@ -12,14 +12,13 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=25.3.0_devel.210150.f23d211b164.d41d8cd
+pkgver=25.3.0_devel.211812.0fe652971e9.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=(
     'git'
     'xorgproto'
     'libxml2'
-    'libvdpau'
     'libva'
     'elfutils'
     'libxrandr'
@@ -70,7 +69,6 @@ provides=(
     'vulkan-swrast'
     'vulkan-virtio'
     'libva-mesa-driver'
-    'mesa-vdpau'
     'mesa-libgl'
     'mesa'
 )
@@ -83,7 +81,6 @@ conflicts=(
     'vulkan-swrast'
     'vulkan-virtio'
     'libva-mesa-driver'
-    'mesa-vdpau'
     'mesa-libgl'
     'mesa'
 )
@@ -261,7 +258,6 @@ build () {
         -D gallium-extra-hud=true
         -D gallium-rusticl=${_rusticl}
         -D gallium-va=enabled
-        -D gallium-vdpau=enabled
         -D gbm=enabled
         -D gles1=disabled
         -D gles2=enabled
