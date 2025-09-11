@@ -2,7 +2,7 @@
 # Maintainer: Marek Grzelak <marek.grzelak@seqre.dev>
 
 pkgname=cot
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="The Rust web framework for lazy developers - CLI tool"
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=('MIT OR Apache-2.0')
 makedepends=('cargo')
 checkdepends=('cargo')
 source=("cot-cli-$pkgver.tar.gz::https://github.com/cot-rs/cot/archive/cot-cli-v$pkgver.tar.gz")
-md5sums=('34dc29984374ab2f75099d75ffde8154')
-sha256sums=('170c37b3c7edba6b1aed6432fe3247cc33e3083631cbb7e5adb2e21251411f85')
-b2sums=('c438ed5c3efcde8ef953d61bfee60c7d8b13440c5188b2b5a56dc6f4cbf7fde2efdec371dbe5d6d599567034bcad2c7ed182238429c96dad5ab154e4256a2b9f')
+md5sums=('8dc51cdbd0bbe2592e7fb4cea5fb20e0')
+sha256sums=('bf5bd31cd4b4ac405c994912dad45a51d23c2b6941bee2b05f77da76449392d7')
+b2sums=('0fdd6a763d6b5a29241a8d340ef20c9e483069b27e35571931a58eef1fdcf9a920faa04af890a7e7dce722f9e314f1af85e6b654696807fdb3adb7dadb272fde')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
