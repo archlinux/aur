@@ -2,8 +2,8 @@
 
 _name=pyOCD
 pkgname=python-pyocd
-pkgver=0.38.0
-pkgrel=3
+pkgver=0.39.0
+pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -49,7 +49,7 @@ replaces=(pyocd)
 source=(
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
 )
-sha512sums=('e864847b207c95faf9edb3aff7bdc3158abab7755dc6c41eba4c7887ab6f9928c88ed9786241f892c711bdbb77fba28d6a5a29b55296153516462a5679299ad2')
+sha512sums=('8b396efc264ba254755c5522f66570d02153c77aab40bece454c78552b972c12ad6dec985262d875c35fe528ebbbc585322dbd690c0e2bf5a3b50e014d4bf08c')
 
 prepare() {
   cd $_name-$pkgver
