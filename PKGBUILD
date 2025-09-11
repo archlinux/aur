@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-box-git
-pkgver=2.1.0.r3.g2a8c21b
-pkgrel=3
+pkgver=2.1.1.rc.1.r3.g3b94fbc
+pkgrel=1
 pkgdesc='玲珑（Linglong） is the container application toolkit of deepin.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps-box'
@@ -20,14 +20,13 @@ depends=(
   libcap
 )
 makedepends=(
+  cli11
   cmake
   git
   gtest
   ninja
-  libseccomp
   nlohmann-json
   pkgconf
-  yaml-cpp
 )
 checkdepends=()
 optdepends=()
@@ -49,11 +48,10 @@ prepare() {
 
 build() {
   cd "${srcdir}"/${pkgname}/
-
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -Dlinyaps-box_STATIC=OFF \
+    -Dlinyaps-box_CPM_LOCAL_PACKAGES_ONLY=ON \
     -Wno-dev \
     -B build \
     -G Ninja
