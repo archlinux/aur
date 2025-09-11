@@ -1,17 +1,17 @@
 # Maintainer: Stefanistkuhl <stefanistkuhl@example.com>
 pkgname=gns3util
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="GNS3 API utility for managing GNS3v3 servers"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Stefanistkuhl/gns3-api-util"
+url="https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.0.3/gns3util-linux-amd64.tar.gz"
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
-source_x86_64=("https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v${pkgver}/gns3util-linux-amd64.tar.gz")
-source_aarch64=("https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v${pkgver}/gns3util-linux-arm64.tar.gz")
-sha256sums_x86_64=('2ab3ba906d83e7bd66e59dad26065b7d28e6324bcfa7d630ca67c014f7bde8c5')
-sha256sums_aarch64=('7ea74a4c7e7c7217c258ba2c0af99f2490ed6e4e9bc4230088b7da0c153ee46a')
+source_x86_64=("gns3util-linux-amd64.tar.gz")
+source_aarch64=("gns3util-linux-arm64.tar.gz")
+sha256sums_x86_64=("2f215eabba6e59501aab4b856148ae0dc15d7d93ac18b33a128cbccc5b2e53b5")
+sha256sums_aarch64=("c1056e7e2b7eedded4359ee9870428f09d3c5aa4bd81552809c8d1cd886788c5")
 
 package() {
     # Install binary (rename from platform-specific name to generic name)
