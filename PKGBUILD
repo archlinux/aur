@@ -2,19 +2,19 @@
 # Contributor: kj_sh604
 pkgname=coreutils-uutils
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='(Experimental) Use uutils as system core utilities'
 arch=('x86_64') # any?
 license=('MIT')
 url=https://github.com/uutils/coreutils
 conflicts=(coreutils b3sum sha3sum)
 provides=(coreutils b3sum)
-depends=(uutils-coreutils) #=$pkgver is useless. Should be managed by maintainer.
+depends=(uutils-coreutils) #=$pkgver is safer
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib/coreutils,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
-  ln -sf /usr/lib/libstdbuf.so -t lib/coreutils
+  ln -sf /usr/lib/${depends[0]}/libstdbuf.so -t lib/coreutils
   ln -sf uu-coreutils bin/\[ # completion err
   # support also -selinux
   # fail if uu-coreutils is renamed at Extra/uutils-coreutils
