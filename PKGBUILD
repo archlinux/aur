@@ -2,8 +2,8 @@
 
 pkgname=winboat-arjix
 _pkgname=winboat
-pkgver=v0.7.9
-pkgrel=1
+pkgver=0.7.9
+pkgrel=2
 pkgdesc="Run Windows apps on 🐧 Linux with ✨ seamless integration"
 arch=('x86_64')
 url="https://github.com/TibixDev/winboat"
@@ -13,7 +13,7 @@ makedepends=('npm' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "git+${url}.git#tag=${pkgver}"
+  "git+${url}.git#tag=v${pkgver}"
   "${_pkgname}.desktop"
   "electron-builder.json.patch"
 )
