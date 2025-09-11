@@ -1,7 +1,7 @@
 # Maintainer: Lncvrt <lncvrtreal@gmail.com>
 
 pkgname=berrydash
-pkgver=1.7.1
+pkgver=1.8
 pkgrel=1
 pkgdesc="A simple game where you catch berries with a leaderboard system and more."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "berrydash.png"
 )
 sha256sums=(
-  '381e322ba68e6d750cd345a956ee9eb1ccb01041a6f1aa52dc5916f3e75a37a0'
+  '4e4825619184b564af8246632600b204f609332a9696d0e51659061de5b0256e'
   'a27dae1b8f41d289c04ce9ede426e4938be5ba882cd51d57fee35718ecea2829'
   'eac907c8d88390f89d7c1ed56532781c78b750faad07664e1967d8634593a383'
 )
