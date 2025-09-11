@@ -11,6 +11,8 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
+: ${_use_bundled_gradle:=0}
+
 pkgbase=java-openjfx
 pkgname=(
   java-openjfx
@@ -18,7 +20,7 @@ pkgname=(
   java-openjfx-src
 )
 _java_ver=24
-_tag='26+6'
+_tag='26+7'
 pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
@@ -35,7 +37,6 @@ makedepends=(
   gdk-pixbuf2
   glib2
   gperf
-  gradle8
   gtk3
   java-environment-openjdk=$_java_ver
   libgl
@@ -54,25 +55,32 @@ makedepends=(
   #ruby-yaml
   #ruby-fileutils
 )
+if (( !_use_bundled_gradle )); then
+  makedepends+=(gradle8)
+fi
 options=(!lto)
 source=(
   "${pkgbase}-${pkgver}.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/${_tag}.tar.gz"
   gradle.properties
   "${pkgbase}-flags.patch"
 )
-b2sums=('c16d0d67902ae5f114318bba970d02615f0234195c57d2bbd51af5ac926901ae30870d62ec42f8529cfee7ad4633c9921f10634b09b78ee848b6806424de6315'
+b2sums=('0ea25752ea1ed358ce4e347ef1b396982583d50b0df1e5b401f8c9c0b7457d4d7aad832bad2c57026bf0bcb16781c30d7a7b0535c98a956c36d55995473751a8'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
 _jfxdir="jfx-${_tag//+/-}"
+if (( _use_bundled_gradle )); then
+  _gradle=(sh ./gradlew)
+else
+  _gradle=(gradle8)
+fi
 
 prepare() {
   cd $_jfxdir
 
   # Clean from potential previous runs
-  gradle8 --stop
+  "${_gradle[@]}" --stop
   rm -rf build
-  #gradle clean
 
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
@@ -88,7 +96,7 @@ build() {
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
 
-  gradle8 --no-daemon zips
+  "${_gradle[@]}" --no-daemon zips
 }
 
 package_java-openjfx() {
