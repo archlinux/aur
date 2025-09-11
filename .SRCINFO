@@ -1,13 +1,13 @@
 pkgbase = perl-net-sip
 	pkgdesc = SIP (Voice Over IP, RFC3261) packet handling
-	pkgver = 0.838
-	pkgrel = 2
+	pkgver = 0.839
+	pkgrel = 1
 	url = https://github.com/noxxi/p5-net-sip
 	arch = any
 	license = Artistic-2.0
 	depends = perl-net-dns
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SU/SULLR/Net-SIP-0.838.tar.gz
-	sha512sums = b6a99b6cba42f4c7d2b27d975ecba95638e6a936b113442df9fe9eab2c57460d7f7ef26514ddae0c33e898a74092e790b6f6c8493d34f06cd2fe8ca6dc1c10e7
+	source = https://cpan.metacpan.org/authors/id/S/SU/SULLR/Net-SIP-0.839.tar.gz
+	sha512sums = af1365115547d2715ea0b6c8dac8a6c7eb105bb80dd3ee72651aad48f00cfe83cf10418a3b7b1cd99cfdc79255c39adb15a95ee295be35d3b07e1915a2e03d90
 
 pkgname = perl-net-sip
