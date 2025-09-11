@@ -11,5 +11,6 @@ pkgbase = rustmius
 	depends = libadwaita
 	depends = gtk4
 	source = rustmius-0.1.0.tar.gz::https://github.com/Cleboost/Rustmius/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = rustmius
