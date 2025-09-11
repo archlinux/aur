@@ -2,7 +2,7 @@
 # Contributor: Antoien Viallon <antoine+aur@lesviallon.fr>
 # Contributor: Jan Baudisch <dev@baudisch.xyz>
 pkgname=z88dk-git
-pkgver=2.3.r1547.g404d79e
+pkgver=2.3.r1703.g442f4e9
 pkgrel=1
 pkgdesc="The development kit for over fifty z80 machines - c compiler, assembler, linker, libraries."
 arch=("x86_64")
