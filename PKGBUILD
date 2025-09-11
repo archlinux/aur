@@ -2,8 +2,8 @@
 
 pkgname=snd-hdspe-dkms-git
 _pkgname=snd-hdspe
-pkgver=r218.5f205c3
-pkgrel=2
+pkgver=r227.e0d2b60
+pkgrel=1
 pkgdesc='A linux kernel module for RME HDSPe sound cards and extension modules (development branch)'
 url='https://github.com/Schroedingers-Cat/snd-hdspe'
 arch=('any')
@@ -14,19 +14,12 @@ provides=("snd-hdspe-dkms")
 conflicts=("snd-hdspe-dkms")
 source=(
   "git+https://github.com/Schroedingers-Cat/snd-hdspe.git#branch=develop"
-  "fix-timer-api.patch"
 )
-sha256sums=('SKIP'
-            '55b1f2b4359d3f8a00fa78ab005795d25f52259f39081a2c716dcaaf8ed1fc3b')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}"
-    patch -Np1 -i fix-timer-api.patch
 }
 
 package() {
