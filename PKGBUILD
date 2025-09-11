@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=30.0rc1.r46106
+pkgver=30.0rc1.r46108
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-   cmake -B build -DBUILD_GUI=ON -DWITH_ZMQ=ON -DWITH_QRENCODE=ON -DWITH_BDB=ON -DWITH_MULTIPROCESS=ON
+   cmake -B build -DBUILD_GUI=ON -DWITH_ZMQ=ON -DWITH_QRENCODE=ON -DWITH_BDB=ON -DENABLE_IPC=ON
    cmake --build build 
 }
 
