@@ -4,11 +4,11 @@ Date: Tue, 18 Feb 2025 20:21:01 +0100
 Subject: [PATCH] meson: Build fixes
 
 ---
- meson.build | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+ meson.build | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index de29cf310752..80706b5b41ec 100644
+index 60ab17d17452..7dc86286d297 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -316,6 +316,7 @@ xml_check_functions = [
@@ -77,11 +77,3 @@ index de29cf310752..80706b5b41ec 100644
      dependencies: xml_deps,
      include_directories: config_dir,
      install: true,
-@@ -763,6 +780,7 @@ pkgmod.generate(
-     description: 'libXML library version2.',
-     filebase: 'libxml-2.0',
-     name: 'libXML',
-+    subdirs: meson.project_name(),
-     variables: 'modules=' + dl_dep.found().to_string('1', '0'),
- )
- 
