@@ -1,6 +1,6 @@
 pkgname=moonasst
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Moonasst Qt application"
 arch=('x86_64')
 url="https://gitee.com/nemozz-hz/moonasst"
