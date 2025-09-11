@@ -1,6 +1,6 @@
 pkgbase = drawboard-pdf
 	pkgdesc = Electron wrapper for Drawboard PDF software
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
@@ -8,8 +8,11 @@ pkgbase = drawboard-pdf
 	makedepends = npm
 	depends = electron
 	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = ffmpeg
 	options = !debug
-	source = https://github.com/bjorkbjork/DrawboardPDF-Linux/releases/download/v1.0.0/drawboard-pdf-1.0.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/bjorkbjork/DrawboardPDF-Linux/releases/download/v1.0.1/drawboard-pdf-1.0.1.tar.gz
+	sha256sums = d842fb19d1f148c91aa5971c91462f10757f25f93b7e855db195c9adf4256091
 
 pkgname = drawboard-pdf
