@@ -1,6 +1,6 @@
 # Maintainer: Adam Chovanec <git@adamchovanec.cz>
 pkgname='grype-db-bin'
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc='Application to create a Grype vulnerability database from upstream vulnerability data sources'
 url='https://github.com/anchore/grype-db'
