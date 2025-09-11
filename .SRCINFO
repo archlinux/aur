@@ -1,0 +1,14 @@
+pkgbase = wfreq
+	pkgdesc = DESC
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Vitalij-Burk/wfreq
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	depends = python-rich
+	source = wfreq-0.1.4::git+https://github.com/Vitalij-Burk/wfreq.git#tag=v0.1.4
+	sha256sums = SKIP
+
+pkgname = wfreq
