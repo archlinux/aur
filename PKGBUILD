@@ -32,14 +32,14 @@ source=(
 
 
 md5sums=('296f2e5ffb6582f49f6c0d349998ea97'
-         'cbefeb42addf418f0a7164391d308ebf')
+         '74f522c8064ad0d2f87541e133dc4d1e')
 
 function package() {
 	install -Dm644 portable-config \
-		"${pkgdir}/usr/lib/wechat/portable-config"
+		"${pkgdir}/usr/lib/portable/info/com.qq.weixin/config"
 	install -d "${pkgdir}/usr/bin"
 	echo '''#!/usr/bin/bash
-export _portableConfig=/usr/lib/wechat/portable-config
+export _portableConfig="com.qq.weixin"
 portable $@
 ''' >"${pkgdir}/usr/bin/wechat.sh"
 	chmod 755 "${pkgdir}/usr/bin/wechat.sh"

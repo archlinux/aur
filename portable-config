@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+terminateImmediately="true"
+
 # This is your Application ID, avoid conflict
 appID="com.qq.weixin"
 
