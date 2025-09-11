@@ -3,9 +3,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
-pkgver=6.4.4
+pkgver=6.4.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=6
+pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -71,7 +71,7 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('987e207c2f2ab60e51421b5846ca03e69ef875ac20698022f5e8bdd1e1055ed9'
+sha256sums=('cea91879467afdfa2caf0ec6dd7256eae78defa970cdc9a947fefd85d417acb1'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
