@@ -35,7 +35,7 @@ spinner() {
 }
 
 usage() {
-    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | -R <env> <pkg...> | enter <env> | delete <env> | list | info <env>"
+    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | -R <env> <pkg...> | enter <env> | delete <env> | list | info <env> | export <env> <file> | import <file> <env>"
     exit 1
 }
 
@@ -109,6 +109,157 @@ check_package_in_env() {
     else
         return 1
     fi
+}
+
+export_env() {
+    local envname="$1"
+    local export_file="$2"
+    local envdir="${ARCHSHELL_DIR}/${envname}"
+    local infofile="${envdir}/.arch-shell-env"
+    
+    if [ ! -d "$envdir" ]; then
+        echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
+        return 1
+    fi
+    
+    if [ ! -f "$infofile" ]; then
+        echo -e "${RED}[!] Fichier de métadonnées manquant : ${infofile}${NC}"
+        return 1
+    fi
+    
+    if [ -d "$export_file" ]; then
+        echo -e "${RED}[!] Le fichier d'export ne peut pas être un répertoire : ${export_file}${NC}"
+        echo -e "${YELLOW}[?] Utilisez un nom de fichier comme : ${envname}-backup.tar.gz${NC}"
+        return 1
+    fi
+    
+    if [ -f "$export_file" ]; then
+        echo -e "${YELLOW}[?] Le fichier ${export_file} existe déjà${NC}"
+        read -p "Écraser le fichier existant ? [o/N] " -r
+        if [[ ! $REPLY =~ ^[oOyY]$ ]]; then
+            echo -e "${YELLOW}[!] Export annulé${NC}"
+            return 1
+        fi
+    fi
+    
+    export_file=$(realpath "$export_file" 2>/dev/null || echo "$export_file")
+    
+    local temp_dir
+    temp_dir=$(mktemp -d)
+    local export_dir="${temp_dir}/export"
+    mkdir -p "$export_dir"
+    
+    echo -e "${BLUE}[*] Préparation de l'export de ${envname}...${NC}"
+    
+    cp "$infofile" "${export_dir}/arch-shell-env.json"
+    
+    cat > "${export_dir}/metadata.json" << EOF
+{
+  "arch_shell_version": "$(grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+' "$0" 2>/dev/null || echo 'unknown')",
+  "export_date": "$(date -Iseconds)",
+  "environment_name": "$envname",
+  "exported_by": "$(whoami)",
+  "hostname": "$(hostname)",
+  "arch": "$(uname -m)"
+}
+EOF
+    
+    local total_size
+    total_size=$(sudo du -sb "$envdir" | awk '{print $1}')
+    echo -e "${BLUE}[*] Création de l'archive ($(numfmt --to=iec $total_size))...${NC}"
+    
+    (
+        cd "$envdir"
+        sudo tar cf - . | gzip > "${export_dir}/environment.tar.gz"
+    ) &
+    spinner $! "Compression de l'environnement"
+    
+    echo -e "${BLUE}[*] Finalisation de l'export...${NC}"
+    (
+        cd "$temp_dir"
+        tar czf "$export_file" export/
+    ) &
+    spinner $! "Création de l'archive finale"
+    
+    local checksum
+    checksum=$(sha256sum "$export_file" | awk '{print $1}')
+    
+    rm -rf "$temp_dir"
+    
+    echo -e "${GREEN}[*] Export terminé : ${export_file}${NC}"
+    echo -e "${GREEN}[*] Checksum SHA256 : ${checksum}${NC}"
+    
+    local archive_size
+    archive_size=$(du -h "$export_file" | awk '{print $1}')
+    echo -e "${GREEN}[*] Taille de l'archive : ${archive_size}${NC}"
+}
+
+import_env() {
+    local import_file="$1"
+    local envname="$2"
+    local envdir="${ARCHSHELL_DIR}/${envname}"
+    
+    if [ ! -f "$import_file" ]; then
+        echo -e "${RED}[!] Fichier d'import inexistant : ${import_file}${NC}"
+        return 1
+    fi
+    
+    if [ -d "$envdir" ]; then
+        echo -e "${RED}[!] L'environnement ${envname} existe déjà${NC}"
+        echo -e "${YELLOW}[?] Utilisez 'arch-shell delete ${envname}' pour le supprimer d'abord${NC}"
+        return 1
+    fi
+    
+    local temp_dir
+    temp_dir=$(mktemp -d)
+    
+    echo -e "${BLUE}[*] Vérification de l'archive...${NC}"
+    
+    if ! tar xzf "$import_file" -C "$temp_dir" 2>/dev/null; then
+        echo -e "${RED}[!] Erreur lors de l'extraction de l'archive${NC}"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+    
+    local export_dir="${temp_dir}/export"
+    if [ ! -d "$export_dir" ]; then
+        echo -e "${RED}[!] Format d'archive invalide${NC}"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+    
+    if [ ! -f "${export_dir}/metadata.json" ] || [ ! -f "${export_dir}/arch-shell-env.json" ] || [ ! -f "${export_dir}/environment.tar.gz" ]; then
+        echo -e "${RED}[!] Archive incomplète ou corrompue${NC}"
+        rm -rf "$temp_dir"
+        return 1
+    fi
+    
+    echo -e "${BLUE}[*] Informations de l'archive :${NC}"
+    if command -v jq >/dev/null 2>&1; then
+        echo -e "${BLUE}    Archive :${NC} $(jq -r '.export_date' "${export_dir}/metadata.json")"
+        echo -e "${BLUE}    Environnement :${NC} $(jq -r '.environment_name' "${export_dir}/metadata.json")"
+        echo -e "${BLUE}    Exporté par :${NC} $(jq -r '.exported_by' "${export_dir}/metadata.json")"
+    fi
+    
+    echo -e "${BLUE}[*] Import de l'environnement ${envname}...${NC}"
+    
+    mkdir -p "$envdir"
+    
+    (
+        cd "$envdir"
+        gzip -dc "${export_dir}/environment.tar.gz" | sudo tar xf -
+    ) &
+    spinner $! "Extraction de l'environnement"
+    
+    cp "${export_dir}/arch-shell-env.json" "${envdir}/.arch-shell-env"
+    
+    sudo chown -R $USER: "$envdir"
+    
+    update_last_used "$envname"
+
+    rm -rf "$temp_dir"
+    
+    echo -e "${GREEN}[*] Import terminé : environnement ${envname} créé${NC}"
 }
 
 if [ $# -lt 1 ]; then
@@ -286,6 +437,24 @@ case "$1" in
     else
       cat "$INFOFILE"
     fi
+    ;;
+  export)
+    if [ $# -lt 3 ]; then
+      echo "Usage: $0 export <env> <file>"
+      exit 1
+    fi
+    ENVNAME="$2"
+    EXPORT_FILE="$3"
+    export_env "$ENVNAME" "$EXPORT_FILE"
+    ;;
+  import)
+    if [ $# -lt 3 ]; then
+      echo "Usage: $0 import <file> <env>"
+      exit 1
+    fi
+    IMPORT_FILE="$2"
+    ENVNAME="$3"
+    import_env "$IMPORT_FILE" "$ENVNAME"
     ;;
   *)
     usage
