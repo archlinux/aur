@@ -1,7 +1,7 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.0.0.r597.g3593dab
+pkgver=v0.4.9.r627.ga7a0b7c
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -37,9 +37,10 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd bazaar
-  printf "0.0.0.r%s.g%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s\n' \
+      "$(git describe --tags --abbrev=0)" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -53,9 +54,6 @@ build() {
 
   # create native file
   cat > "$srcdir/native.ini" <<EOF
-[binaries]
-pkg-config = '/usr/bin/pkg-config'
-
 [properties]
 pkg_config_libdir = '$srcdir/libdex-build/meson-uninstalled:$system_pc_path'
 EOF
