@@ -1,6 +1,6 @@
 pkgbase = python-chama
 	pkgdesc = sensor placement optimization
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/sandialabs/chama
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-chama
 	depends = python-pandas
 	depends = python-numpy
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/c/chama/chama-0.2.0.tar.gz
-	sha256sums = 7233d74328fc16a3ede066f1b7a927aa8874be69c271803b72dc0615a2f29f96
+	source = https://files.pythonhosted.org/packages/source/c/chama/chama-0.3.0.tar.gz
+	sha256sums = 66ce018b901e4efb89318be344024ef0b30624743a562bb28d6d94699db03eb1
 
 pkgname = python-chama
