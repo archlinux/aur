@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -84,8 +84,7 @@ checkdepends=('python-httpx'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-validpgpkeys=('2EECE5156D8DE0C50636E37621707FBE029E96B5')
-sha256sums=('7854dce3af4e9b47c4a69fc13aef51074f83002bafecc60abc647ffb2779f089')
+sha256sums=('7a93f4af6d000a54c1391041a5b45e957b672b84a0516e2dd74beb01cf72d7d6')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
