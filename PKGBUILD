@@ -2,7 +2,7 @@
 pkgname=kubectl-swiftnp
 # renovate: datasource=github-releases depName=bmuschko/kubectl-swiftnp
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='kubectl plugin for rendering details of network policies'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bmuschko/kubectl-swiftnp'
@@ -22,7 +22,6 @@ build() {
     commit="${_commit:?}"
   )
 
-  cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -30,11 +29,18 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
   export GO111MODULE=on
-  # -ldflags="-linkmode=external ${_x[*]/#/-X=${url/https:\/\/}/pkg/util.}" \
+
+  # Support -debug package
+  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  then
+    export GOFLAGS="${GOFLAGS//-trimpath/}"
+    export GOPATH="${srcdir}"
+  fi
+
+  cd "${pkgname}-${pkgver}"
   mkdir bin
-  go mod tidy
   go build \
-    -ldflags="-s -w ${_x[*]/#/-X=${url/https:\/\/}/pkg/version.}" \
+    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -linkmode external" \
     -o bin/ \
     ./...
 }
@@ -48,7 +54,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
   for i in *.adoc
   do
     install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}"
