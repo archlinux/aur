@@ -1,6 +1,6 @@
 pkgbase = harlequin-postgres
 	pkgdesc = The Postgres adapter for Harlequin
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://harlequin.sh/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = harlequin-postgres
 	depends = harlequin
 	depends = python-psycopg-pool
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/h/harlequin_postgres/harlequin_postgres-1.2.1.tar.gz
-	b2sums = 5f521493d3b5f5239abb197780ff47ce9cc77cfc014dc3f0ea2b3073f52fff088a774bec4a29d84bbd85f0df377a6ab08696c1c2b019e828e0f54aa8b5e08f31
+	source = https://files.pythonhosted.org/packages/source/h/harlequin_postgres/harlequin_postgres-1.2.2.tar.gz
+	b2sums = 50d771b4e441184c15136f20348e108e0e670e449291b4dc8f620e45ee3a105f86501ff0a04ea66df8ebf2c8f33baf34620469739ae37647139a0760852b6978
 
 pkgname = harlequin-postgres
