@@ -2,14 +2,14 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.57b0
+pkgver=0.58b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('40877dec1ba2ce52fc6e6a43e057a788b06766665aa72b15e54d35547d56c760ca2edfd5b0a73d637c46f753e1573f9edf559ea7ecc7874176694ccde28da562')
+b2sums=('2e65b7e72a1d295dacdd20479943cb262d44f45589c9358e41d6ad6d3c7e90ac0703bdf36d0a536387c40f4bd023012ae1a1ba78187ea324152f6b1ce8fb3515')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
@@ -19,6 +19,7 @@ pkgname=(
     "python-opentelemetry-instrumentation-langchain"
     "python-opentelemetry-instrumentation-openai-v2"
     "python-opentelemetry-instrumentation-vertexai"
+    "python-opentelemetry-instrumentation-weaviate"
     "python-opentelemetry-instrumentation-aiohttp-client"
     "python-opentelemetry-instrumentation-aiohttp-server"
     "python-opentelemetry-instrumentation-aiokafka"
@@ -79,6 +80,7 @@ pkgname=(
     "python-opentelemetry-resource-detector-azure"
     "python-opentelemetry-resource-detector-containerid"
     "python-opentelemetry-sdk-extension-aws"
+    "python-opentelemetry-util-genai"
     "python-opentelemetry-util-http"
 )
 _pkgdescs=(
@@ -88,6 +90,7 @@ _pkgdescs=(
     "OpenTelemetry Official Langchain instrumentation"
     "OpenTelemetry Official OpenAI instrumentation"
     "OpenTelemetry Official VertexAI instrumentation"
+    "OpenTelemetry Official Weaviate Client Instrumentation"
     "OpenTelemetry aiohttp client instrumentation"
     "Aiohttp server instrumentation for OpenTelemetry"
     "OpenTelemetry aiokafka instrumentation"
@@ -148,6 +151,7 @@ _pkgdescs=(
     "Azure Resource Detector for OpenTelemetry"
     "Container Resource Detector for OpenTelemetry"
     "AWS SDK extension for OpenTelemetry"
+    "OpenTelemetry GenAI Utils"
     "Web util for OpenTelemetry"
 )
 _urls=(
@@ -157,6 +161,7 @@ _urls=(
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-langchain"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai"
+    "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-weaviate"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-client"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-server"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiokafka"
@@ -217,11 +222,13 @@ _urls=(
     "${_url}/tree/main/resource/opentelemetry-resource-detector-azure"
     "${_url}/tree/main/resource/opentelemetry-resource-detector-containerid"
     "${_url}/tree/main/sdk-extension/opentelemetry-sdk-extension-aws"
+    "${_url}/tree/main/util/opentelemetry-util-genai"
     "${_url}/tree/main/util/opentelemetry-util-http"
 )
 _depends=(
     "python-opentelemetry-api python-opentelemetry-sdk python-protobuf python-requests python-snappy"
     "python-opentelemetry-api python-opentelemetry-sdk python-opentelemetry-semantic-conventions python-rich"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
@@ -285,7 +292,8 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-sdk"
     "python-opentelemetry-instrumentation python-opentelemetry-sdk"
     "python-opentelemetry-sdk"
-    "python-opentelemetry-sdk"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-sdk python-opentelemetry-semantic-conventions python-requests"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python"
 )
 _optdepends=(
@@ -295,6 +303,7 @@ _optdepends=(
     "python-langchain"
     "python-openai"
     "python-google-cloud-aiplatform"
+    "python-weaviate-client"
     "python-aiohttp"
     "python-aiohttp"
     "python-aiokafka"
@@ -355,6 +364,7 @@ _optdepends=(
     ""
     ""
     ""
+    "python-pytest"
     ""
 )
 
