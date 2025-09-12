@@ -1,7 +1,7 @@
 pkgbase = amphi-music
 	pkgdesc = Cross-platform music player with support for syncing libraries via a self-hosted server
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://amphi.site
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = amphi-music
 	depends = mimalloc
 	depends = zenity
 	options = !debug
-	source_x86_64 = https://amphi.site/releases/music/music-linux-x64-1.0.0.deb
+	source_x86_64 = https://github.com/amphi2024/music/releases/download/v1.0.0/music-linux-x64-1.0.0.deb
 	sha256sums_x86_64 = 59c96eacf38de396a1451ccc0b1232cd2b91ed5496526a7b55dc43546f0fdb70
-	source_aarch64 = https://amphi.site/releases/music/music-linux-arm64-1.0.0.deb
+	source_aarch64 = https://github.com/amphi2024/music/releases/download/v1.0.0/music-linux-arm64-1.0.0.deb
 	sha256sums_aarch64 = 54451f25f2e79efa3bbf2231a755f6ae8fc80bc60f3e3a4c78027c4f9810cb2e
 
 pkgname = amphi-music
