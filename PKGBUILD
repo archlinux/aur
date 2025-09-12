@@ -6,8 +6,8 @@
 pkgname=hid-apple-patched-dkms-git
 _pkgname=hid-apple-patched
 
-pkgver=20230422.46f3457
-pkgrel=2
+pkgver=20250909.1c6b787
+pkgrel=1
 
 url="https://github.com/free5lot/hid-apple-patched"
 arch=('any')
@@ -20,13 +20,11 @@ makedepends=('git')
 install=hid-apple-patched-dkms.install
 
 source=("git+https://github.com/free5lot/$_pkgname#branch=master"
-        "https://patch-diff.githubusercontent.com/raw/free5lot/hid-apple-patched/pull/100.patch"
         "hid_apple.depmod"
         "hid_apple.modprobe"
         "dkms.conf")
 
 sha256sums=('SKIP'
-            '57eff38b68430e87680671ca216ebe34e4627fa56ba6dfbccc84e32f3219bec8'
             '4b94f1f55febddad5ff60a8918487b883ceadd4e6c3fb280e98e4e235cd09663'
             'bf214ca80aa4abb6fe85c1108ea7c941684a5bc57891982b0aefafd5a6339a26'
             '659d94d4b569efe2d3b5dfc4345417be516198423ecc113d7c31e682045db69f')
@@ -34,11 +32,6 @@ sha256sums=('SKIP'
 pkgver() {
   cd "$srcdir"/"$_pkgname"
   git log -1 --format=%cd.%h --date=short|tr -d -
-}
-
-prepare() {
-  ## Patch for >= 6.12 (upstream has not accepted the PR yet)
-  patch -p1 -d "$srcdir"/"$_pkgname" < 100.patch
 }
 
 package() {
