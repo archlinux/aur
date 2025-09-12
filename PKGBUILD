@@ -1,6 +1,6 @@
 
 pkgname=chromium-ffmpeg-git
-pkgver=8.1.r121028.gd87210745e
+pkgver=8.1.r121031.g799c133273
 pkgver(){
   printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') \
     $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
@@ -21,15 +21,16 @@ git+${url}.git $install ${pkgname%-git}.hook
 sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             'SKIP'
-            'c1eb8b1c42aa427e178725e6de448ad56d618a2127aaae80536de93fc3783d10'
-            'f6f7500992d4290723f0d2ffd54d931f25a573794eb23671e4a91bc386b5935b')
+            '684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005'
+            'cb315e46384975a1f455ae8213f3425e7225e0a11fbc1642ad22c8bb485a569e')
 #sha256sums[0]=SKIP
 #sha256sums[1]=SKIP
 depends=(glibc)
 makedepends=(nasm git
 gcc make patch) # base-devel
 _so=libffmpeg.so
-conflicts=({nwjs,opera-developer,vivaldi{,-snapshot}}-ffmpeg-codecs ${pkgname%-git})
+conflicts=(${pkgname%-git}
+{nwjs,opera{,-beta,-developer},vivaldi{,-snapshot}}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
   # List used funcs

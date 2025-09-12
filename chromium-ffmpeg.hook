@@ -2,13 +2,15 @@
 Operation=Install
 Operation=Upgrade
 Type=Package
-Target=chromium-ffmpeg
+Target=chromium-ffmpeg-git
 Target=nwjs
 Target=nwjs-bin
 Target=vivaldi
 Target=vivaldi-snapshot
+Target=opera
+Target=opera-beta
 Target=opera-developer
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-developer/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera{,-beta,-developer}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:'
