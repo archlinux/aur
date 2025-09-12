@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.44.1
+pkgver=5.45.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fa
 checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-gradio-pdf' 'python-matplotlib' 'python-hypothesis' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-mcp' 'python-tf-keras' 'python-itsdangerous')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth' 'python-mcp: mcp' 'python-pydantic: mcp' 'ruff: needed for custom component docs generation')
 source=("${url}/archive/refs/tags/$_name@$pkgver.tar.gz")
-sha256sums=('226ae1b57064363e3d6ac701d39e83cb51ca2fc8b96020dcedaa70c40358b07c')
+sha256sums=('e1ba903225d4c6d96e3a12e5a2da760989c9894c39ca47a1f321cd710b8a85da')
 
 prepare(){
   cd "$srcdir"/$_name-$_name-$pkgver
