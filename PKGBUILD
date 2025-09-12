@@ -3,10 +3,10 @@
 # Maintainer:
 # Contributor: Olaf Bauer <hydro@freenet.de>
 
-_pkgname='dtv-scan-tables'
+_pkgname='dtv-scan-tables-patched'
 pkgname="dtv-scan-tables-patched"
 pkgver=r1309.caca23f
-pkgrel=4
+pkgrel=5
 pkgdesc="Digital TV scan tables (pinned to good commit to avoid current dvbv3 breakage)"
 url="https://git.linuxtv.org/dtv-scan-tables.git"
 license=('GPL-2.0-only' 'LGPL-2.0-only')

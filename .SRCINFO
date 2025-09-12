@@ -1,7 +1,7 @@
 pkgbase = dtv-scan-tables-patched
 	pkgdesc = Digital TV scan tables (pinned to good commit to avoid current dvbv3 breakage)
 	pkgver = r1309.caca23f
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.linuxtv.org/dtv-scan-tables.git
 	arch = any
 	license = GPL-2.0-only
@@ -12,7 +12,7 @@ pkgbase = dtv-scan-tables-patched
 	conflicts = dtv-scan-tables-git
 	conflicts = dtv-scan-tables-dvbv3
 	conflicts = dtv-scan-tables-dvbv5
-	source = dtv-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#commit=caca23fb546620433763a3ec04f65e62855b1dbc
+	source = dtv-scan-tables-patched::git+https://git.linuxtv.org/dtv-scan-tables.git#commit=caca23fb546620433763a3ec04f65e62855b1dbc
 	sha256sums = 72bafd8e940735be28206797327a59e466d7c6e2a3c68c5bd4a8ee99dfc21912
 
 pkgname = dtv-scan-tables-patched
