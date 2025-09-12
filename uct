@@ -10,15 +10,18 @@ fi
 filename="$1"
 extension="${filename##*.}"
 
+# Get the base name without the extension
+base_name=$(basename "$filename")
+
 case "$extension" in
     c)
-        clang "$filename" -o "${filename%.c}" && ./"${filename%.c}"
+        clang "$filename" -o "${base_name%.c}" && ./"${base_name%.c}"
         ;;
     cpp)
-        clang++ "$filename" -o "${filename%.cpp}" && ./"${filename%.cpp}"
+        clang++ "$filename" -o "${base_name%.cpp}" && ./"${base_name%.cpp}"
         ;;
     java)
-        javac "$filename" && java "${filename%.java}"
+        javac "$filename" && java "${base_name%.java}"
         ;;
     py)
         python "$filename"
@@ -28,3 +31,4 @@ case "$extension" in
         exit 1
         ;;
 esac
+

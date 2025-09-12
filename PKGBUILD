@@ -1,7 +1,7 @@
 # Maintainer: ayu2805
 
 pkgname=uct
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=(any)
 url="https://aur.archlinux.org/cgit/aur.git/tree/?h=uct"
