@@ -24,7 +24,7 @@ package() {
   install -d "$pkgdir"{/usr/lib/opera{,-beta,-developer}/lib_extra,/opt/vivaldi{,-snapshot}}
   _avcodec=62
   mv ${_so}.$_avcodec "$pkgdir"/usr/lib
-  ln -sf /usr/lib/${_so}.$_avcodec "$pkgdir"/usr/lib/$_so
+  ln -sf ${_so}.$_avcodec "$pkgdir"/usr/lib/$_so
   install -Dm644 chromium-ffmpeg.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL and LD_PRELOAD
   touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.5,7.6,7.7,7.8,7.9,8.0}
