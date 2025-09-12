@@ -4,12 +4,12 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=ella
-pkgver="0.0.8"
-pkgrel=1
-pkgdesc="A process manager for running and managing services"
+pkgver='0.0.8'
+pkgrel=2
+pkgdesc='A process manager for running and managing services'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
-url="https://github.com/thekhanj/ella"
-conflicts=("ella-bin")
+url='https://github.com/thekhanj/ella'
+conflicts=('ella-bin')
 license=('MIT')
 makedepends=('go>=1.24.5')
 
