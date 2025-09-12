@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=flatpost-git
-pkgver=1.1.0.r0.g54fb9bf
+pkgver=1.1.1.r0.gae844b9
 pkgrel=1
 pkgdesc="Desktop Environment agnostic flatpak-only shop gui"
 arch=('any')
@@ -21,4 +21,7 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 	DESTDIR="$pkgdir" make install
+	install -Dm644 "$pkgdir/usr/share/icons/hicolor/64x64/apps/com.flatpost.flatpostapp.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.flatpost.flatpostapp.svg"
+	rm -rf "$pkgdir/usr/share/icons/hicolor/64x64" "$pkgdir/usr/share/icons/hicolor/1024x1024"
+	sed -i 's/64x64\/apps/scalable\/apps/g' "$pkgdir/usr/bin/${pkgname::-4}"
 }
