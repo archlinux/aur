@@ -4,7 +4,7 @@ pkgbase=tensorrt
 pkgname=(
     'tensorrt'
     'python-tensorrt')
-pkgver=10.13.2.6
+pkgver=10.13.3.9
 _cudaver=12.9
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
@@ -40,8 +40,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('63282a5338afa724142d58cc0c87a9f0e89460ef05d6f37ef52e5468aee8ae5b'
-            'c909817579cfdef5ea64a1628b5f57e59773b9157960c18b454d0be801eeb156'
+sha256sums=('a40650fd51f096969db072edf216a5026e61c71157bc87f475a8549681e09d34'
+            '1e4212f419a02957ef67f7abf24b4b7fb7c10bd10a48d7a2f8e4ae9b6fae3972'
             'SKIP'
             'SKIP'
             'SKIP'
