@@ -12,7 +12,7 @@ pkgver=v4.6.0.r12.ge5da6b3
 pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 
-arch=('i686' 'x86_64' 'x86_64_v3')
+arch=('x86_64')
 url="http://sonic-pi.net/"
 license=('MIT')
 
@@ -21,13 +21,13 @@ groups=('pro-audio')
 conflicts=('sonic-pi')
 provides=('sonic-pi')
 
-depends=('aubio' 'elixir' 'gcc-libs'
-'qscintilla-qt6' 'qt6-base' 'qt6-svg' 'qt6-tools'
-'qt6-webengine' 'ruby' 'ruby-ffi' 'ruby-erb' 'ruby-racc' 'ruby-i18n' 'ruby-kramdown' 'ruby-minitest' 'ruby-mocha' 'ruby-multi_json'
-'ruby-rugged' 'ruby-rexml' 'stk' 'libxext' 'libxft' 'libx11' 'opus-tools' 'opus'
-'sc3-plugins' 'sox' 'supercollider')
-
-makedepends=('git' 'boost' 'cmake' 'patchelf')
+# depends=('aubio' 'elixir' 'gcc-libs'
+# 'sc3-plugins' 'sox' 'supercollider')
+depends=('ruby'  'aubio')
+makedepends=('ruby-prime' 'ruby-racc' 'ruby-erb' 'ruby-rexml'
+    'qt5-base' 'qt5-svg' 'qt6-base' 'qt6-svg' 'qt6-tools'
+    'elixir' 'erlang-asn1' 'erlang-public_key' 'erlang-ssl' 'erlang-parsetools' 'erlang-sasl'
+    'git' 'boost' 'cmake' 'gendesk' 'patchelf')
 
 source=('git+https://github.com/sonic-pi-net/sonic-pi.git'
         "${_name}.sh")
