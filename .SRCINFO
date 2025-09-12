@@ -1,14 +1,18 @@
 pkgbase = python-pyshp
 	pkgdesc = Python read/write support for ESRI Shapefile format
-	pkgver = 2.3.1
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/GeospatialPython/pyshp
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	options = !emptydirs
-	source = python-pyshp-2.3.1.tar.gz::https://github.com/GeospatialPython/pyshp/archive/2.3.1.tar.gz
-	sha512sums = 08844492b8d1d824c639844f7f314909d946bd4d3703a4f8d4cb64d400729671b42ff5b0f80aa68d9469f3939a3c7619ba13c9efdcba3b244ec01d7be3a371c5
+	source = python-pyshp-3.0.1.tar.gz::https://github.com/GeospatialPython/pyshp/archive/3.0.1.tar.gz
+	sha512sums = c9ae842e04531234300b7cc0c245e5b9cfd26cfbfd3360b1fb9c4b525bec62e5dd615600a8975c9f70388d1a47c408c3a47546579f57eae3bd57e709369b90b3
 
 pkgname = python-pyshp

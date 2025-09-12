@@ -3,20 +3,30 @@
 
 pkgname=python-pyshp
 _pkgname=pyshp
-pkgver=2.3.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Python read/write support for ESRI Shapefile format"
 arch=('any')
 url="https://github.com/GeospatialPython/${_pkgname}"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=(
+    'python-build'
+    'python-hatchling'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('08844492b8d1d824c639844f7f314909d946bd4d3703a4f8d4cb64d400729671b42ff5b0f80aa68d9469f3939a3c7619ba13c9efdcba3b244ec01d7be3a371c5')
+sha512sums=('c9ae842e04531234300b7cc0c245e5b9cfd26cfbfd3360b1fb9c4b525bec62e5dd615600a8975c9f70388d1a47c408c3a47546579f57eae3bd57e709369b90b3')
 
+build() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
