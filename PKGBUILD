@@ -2,7 +2,7 @@
 pkgname=coppwr-bin
 _pkgname=coppwr
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
 url='https://dimtpap.ovh/coppwr'
@@ -11,13 +11,13 @@ depends=('pipewire' 'libpipewire' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-ico
 optdepends=('xdg-desktop-portal: Camera and Screencast XDP support')
 provides=('coppwr')
 conflicts=('coppwr')
-source=("$_pkgname::https://github.com/dimtpap/coppwr/releases/download/$pkgver/coppwr"
+source=("$_pkgname-$pkgver-bin::https://github.com/dimtpap/coppwr/releases/download/$pkgver/coppwr"
         "$_pkgname-$pkgver.tar.gz::https://github.com/dimtpap/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("7c3fd556e9cdcd1d74c9f66d8885a7f14e09e4f2e86a561cc9c44542e2cdbac2"
             "a2079048eaed887a04f25cad2ec51d574c93b0d6131a5853b44b9247496fb07e")
 
 package() {
-	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$_pkgname-$pkgver-bin" "$pkgdir/usr/bin/$_pkgname"
 
 	cd "$_pkgname-$pkgver"
 
