@@ -1,0 +1,22 @@
+pkgbase = python-t61codec
+	pkgdesc = Pure Python X.690 implementation
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/t61codec
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-importlib-metadata
+	provides = python-t61codec
+	conflicts = python-t61codec
+	options = !strip
+	options = !debug
+	source = t61codec-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/t/t61codec/t61codec-2.0.0.tar.gz
+	sha256sums = 21c238fbf897b32e5fe9450b71193a1d223abb591dd84b5da8fbc50a2c9277db
+
+pkgname = python-t61codec
