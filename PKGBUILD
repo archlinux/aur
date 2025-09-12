@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=mat73
 pkgname="python-$_name"
-pkgver=0.63
+pkgver=0.65
 pkgrel=1
 pkgdesc="load MATLAB 7.3 .mat files into Python"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-h5py' 'python-numpy')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c7e901e302d8172e6f1871819fb3f5f3d4a723c08c5aebde5d8d7b45e687d20b')
+sha256sums=('ad38a06af3d483632bd939ee572b3724ea8c03d37916765d7278f9de95541ade')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
