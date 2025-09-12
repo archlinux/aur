@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=wiso-steuer-2025
-pkgver=32.10.2760
+pkgver=32.10.2790
 pkgrel=1
 pkgdesc='File your German tax return for the tax year 2024'
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
 
 sha512sums=('SKIP'
             'SKIP'
-            'ec81e075e4bcbaeaf848a830a1a57627f4b6828c0a9d6bccf1a745d4b75a3a4b689e0191f1e2a78dca1e8ccaf4856949c322a51982b6027041adc3d1c4da5a48'
+            'c1033f14dfaa28d50a6f23ef64dceae84de732cff0fde8ce687ae4983e406c631827beb8d3b0bfd3d0cbd5ce0a29588522576af434a987eaa6bac8c4ad75bd0f'
             '5a4f740a89c70c2dfd721142dd8b0135ee1e503686d4efcf6b59f9a0984d0a9f4d9780a3261988a51c068ef1ede2e4c98803095fd44ba52f1cb08b0f4f47e2dd'
             'ede44188da134d5d120c6c8c4d619d91e998a1b9f28497e82307a99a65a7791e492d9c3e7ae2d6c297ef7a12e87a5579cd86bd36b805a5bc0ad1ff7197addaaa')
 
