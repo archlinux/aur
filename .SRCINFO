@@ -1,7 +1,7 @@
 pkgbase = kubectl-topology
 	pkgdesc = kubectl plugin that provides insight into the topology of a Kubernetes cluster
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bmcustodio/kubectl-topology
 	arch = x86_64
 	arch = aarch64
