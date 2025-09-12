@@ -3,12 +3,11 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r18.g244b0454
+pkgver=1.0.16.r66.gc3b6b3c0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
-backup=('etc/default/scx')
 license=('GPL-2.0-only')
 depends=(
   bash
