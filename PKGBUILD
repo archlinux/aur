@@ -15,7 +15,7 @@ depends=('opera-developer')
 provides=('opera-developer-ffmpeg-codecs')
 conflicts=('opera-developer-ffmpeg-codecs')
 source=(
-  "https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.103.0/0.103.0-linux-x64.zip"
+  "https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.103.1/0.103.1-linux-x64.zip"
   disable-opera-developer-default-ffmpeg.hook
   enable-opera-developer-default-ffmpeg.install
 )
