@@ -19,7 +19,7 @@ license=("BSD-4-Clause")
 depends=("gcc-libs" "glibc" "fontconfig" "mpv" "libappindicator-gtk3" "libepoxy" "libsecret" "libnotify"
          "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator" "gtk3" "cairo" "glib2" "pango"
          "at-spi2-core")
-makedepends=("clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp" "patchelf")
+makedepends=("clang" "cmake" "ninja" "pkgconf" "rustup" "imagemagick" "jsoncpp" "patchelf")
 optdepends=("avahi: required if using remote controlling"
             "nss-mdns: required if using remote controlling"
             "mdns-scan: required if using remote controlling"

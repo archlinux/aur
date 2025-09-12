@@ -10,7 +10,6 @@ pkgbase = spotube
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = pkgconf
-	makedepends = gtk3
 	makedepends = rustup
 	makedepends = imagemagick
 	makedepends = jsoncpp
