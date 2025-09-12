@@ -1,6 +1,6 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 epoch=
 pkgdesc="Command line utility for container images"
