@@ -5,7 +5,7 @@
 
 pkgname=opentrack
 pkgver=2023.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
@@ -30,6 +30,12 @@ prepare() {
 
 build() {
   cd opentrack-opentrack-$pkgver
+
+  # Check for onnxruntime availability
+  if ! pkg-config --exists onnxruntime 2>/dev/null && [ ! -d "/usr/include/onnxruntime" ]; then
+    echo "WARNING: onnxruntime not found. Neuralnet tracker support will not be available."
+    echo "Install onnxruntime package before building if you want neuralnet tracker functionality."
+  fi
 
   mkdir -p build
   cd build
