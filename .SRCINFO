@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-pyocd
 	pkgdesc = PyOCD SW Debugger. A debugger probe plugin for SPSDK.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/spsdk-pyocd
 	arch = any
 	license = BSD-3-Clause
@@ -23,7 +23,7 @@ pkgbase = python-spsdk-pyocd
 	provides = spsdk-pyocd
 	conflicts = spsdk-pyocd
 	replaces = spsdk-pyocd
-	source = spsdk_pyocd-0.3.3.tar.gz::https://files.pythonhosted.org/packages/e3/f9/3d8b254856227f5796aa2ab0b5d3556cde70f40a488c48f46aaa07d17b22/spsdk_pyocd-0.3.3.tar.gz
+	source = spsdk-pyocd-0.3.3.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk-pyocd/spsdk_pyocd-0.3.3.tar.gz
 	sha512sums = faa0b1d2fad41f9a7794982d1cce643e5d142b7734648a7a98238f8ace58cbd6e4812398284a3b383b638d630b12da53972a4eb63c9b0453c13b06d3f2e4ad39
 
 pkgname = python-spsdk-pyocd
