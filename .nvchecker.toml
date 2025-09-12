@@ -1,0 +1,4 @@
+[cpp-peglib]
+source = "git"
+git = "https://github.com/yhirose/cpp-peglib.git"
+prefix = "v"
