@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-mcu-link
 	pkgdesc = SPSDK MCU-Link. A debugger probe plugin for SPSDK supporting LPC-Link/MCU-Link from NXP.
 	pkgver = 0.6.6
-	pkgrel = 3
+	pkgrel = 5
 	url = https://pypi.org/project/spsdk-mcu-link
 	arch = any
 	license = BSD-3-Clause
@@ -16,6 +16,7 @@ pkgbase = python-spsdk-mcu-link
 	depends = python
 	depends = python-hid
 	depends = python-pyusb
+	depends = python-spsdk
 	depends = python-libusb-package
 	depends = python-wasmtime
 	depends = pyinstaller
