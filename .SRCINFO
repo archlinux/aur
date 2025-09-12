@@ -1,7 +1,7 @@
 pkgbase = ella-bin
 	pkgdesc = A process manager for running and managing services
 	pkgver = 0.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thekhanj/ella
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = ella-bin
 	arch = armv6l
 	arch = riscv64
 	license = MIT
+	provides = ella
 	conflicts = ella
 	source_x86_64 = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_amd64.tar.gz
 	sha256sums_x86_64 = b41ff2d957e93cce2c3746b39876443b4482225bf664a4e99964a98d8eeea667
