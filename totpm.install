@@ -1,0 +1,9 @@
+post_install() {
+  chown totpm:root /usr/bin/totpm
+  chmod 4755 /usr/bin/totpm
+  chown totpm:root /var/lib/totpm
+}
+
+post_upgrade() {
+  post_install
+}
