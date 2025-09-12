@@ -27,7 +27,7 @@ depends=('aubio' 'elixir' 'gcc-libs'
 'ruby-rugged' 'ruby-rexml' 'stk' 'libxext' 'libxft' 'libx11' 'opus-tools' 'opus'
 'sc3-plugins' 'sox' 'supercollider')
 
-makedepends=('boost' 'cmake' 'patchelf')
+makedepends=('git' 'boost' 'cmake' 'patchelf')
 
 source=('git+https://github.com/sonic-pi-net/sonic-pi.git'
         "${_name}.sh")
