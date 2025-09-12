@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=coova-chilli-arch
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='An open-source software access controller'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://coova.github.io/"
 license=('GPL')
 depends=('curl' 'libpcap' 'openssl')
 makedepends=('gengetopt')
-optdepends=('python2')
+optdepends=('python')
 options=(!libtool)
 replaces=(coova-chilli)
 source=("https://github.com/coova/coova-chilli/archive/$pkgver.tar.gz"
@@ -53,5 +53,5 @@ package() {
   rm -rf "${pkgdir}/etc/init.d"
 }
 
-sha256sums=('26b2bead6fd9c18eb736fb0a0f8709922de4e4fedee1122193f82706eb2b9305'
-  'cf4e9d610b22729a4dd6257b732d7ed4b01367cde6a330205a5f5c33cdbee578')
+sha256sums=('ca69a6da19021b1823ad39fd19b5693266d08d909a6f1b53c7c78baffd78b6ca'
+            'cf4e9d610b22729a4dd6257b732d7ed4b01367cde6a330205a5f5c33cdbee578')
