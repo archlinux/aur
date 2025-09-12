@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2025 Pooyan Khanjankhani <pooyankhan@gmail.com>
+#
+# SPDX-License-Identifier: 0BSD
+
+/src
+/pkg
+/*.tar.gz
+/*.tar.zst
