@@ -2,7 +2,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-weekly-appimage
 pkgver=1.1.0_2025.09.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecad.org/"
@@ -28,7 +28,6 @@ prepare() {
   ./freecad-${pkgver}.AppImage --appimage-extract usr/share/mime/packages
 
   ./freecad-${pkgver}.AppImage --appimage-extract usr/share/icons/hicolor
-  rm squashfs-root/usr/share/icons/hicolor/icon-theme.cache
   rm squashfs-root/usr/share/icons/hicolor/index.theme
 
   patch -Np0 <./org.freecad.FreeCAD.desktop.patch
