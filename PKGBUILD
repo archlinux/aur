@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-hollow-knight-silksong
-pkgver=1.0.28324
+pkgver=1.0.28561
 pkgrel=1
 pkgdesc='Action-adventure set in a kingdom ruled by silk and song. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -31,11 +31,9 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=(
-  '632ae327ed1acabfb077cbafc53b958e494fedbf03177eb7f14241cbf2ffe18a5d4337e5671fc364d49a8cf563908c1d4e16d4129f217fcd333b9d72ac359199'
-  'c6791651a2d8e7ac9d5009f411def4554afce0701f917d3a79f64efd429f7dea07b22bea7caa265255c71ffb30f899ace2bf984aab6ab0c7b5a4fa9d86f625e4'
-  '6e7e6ac1c0e141c8d681dc881472aa8b45379c250fd969b3475dcf19e8ddcceccc0cc64fdb80c6d584b00fa1069c89786d8a3784dba7448ed546aecf0c83ab2d'
-)
+sha512sums=('e0f89008bd15829cea5b56e7010eb3c1447f366236af080d5a9c4cdffa052bfe71f70bf6325ec5ed731b09588ae2931abdf8f5b3a7cdc016dafddbfc3d82cec0'
+            'c6791651a2d8e7ac9d5009f411def4554afce0701f917d3a79f64efd429f7dea07b22bea7caa265255c71ffb30f899ace2bf984aab6ab0c7b5a4fa9d86f625e4'
+            '6e7e6ac1c0e141c8d681dc881472aa8b45379c250fd969b3475dcf19e8ddcceccc0cc64fdb80c6d584b00fa1069c89786d8a3784dba7448ed546aecf0c83ab2d')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
