@@ -28,7 +28,7 @@ source_x86_64=("$_pkgname.zip::$url/releases/download/v$_pkgver/release-linux-x8
 source_aarch64=("$_pkgname.zip::$url/releases/download/v$_pkgver/release-linux-arm64.zip")
 
 sha256sums=('a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188'
-	'e81d9e0dd9233995aa95aabc59ad45121435d6d1c747c51251a7e93a4c9bf4f7')
+            'dafa14cd15da311293e3fab60528703ded28ea2eff30dc304c7a716ee5793e81')
 sha256sums_x86_64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
 sha256sums_aarch64=('7a372f7dbd81103338f0faaba80f3b91e80b154db19c2fc4a11f0361852fe784')
 
