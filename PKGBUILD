@@ -3,20 +3,20 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
-depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'cava' 'networkmanager'
+depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'libcava' 'networkmanager'
          'lm_sensors' 'fish' 'aubio' 'libpipewire' 'glibc' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
          'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'ninja')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('67e698567cc8774ed1e5a9d53dc9ab2a8627c634fd887bbb9fb391646e4da6ae')
+sha256sums=('19811bfeec1d8b54341a76a5ac5c76e08d3f1904531c4341173593206e9fe552')
 
 build() {
     cd "${srcdir}/release"

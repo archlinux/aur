@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell
 	pkgdesc = The desktop shell for the Caelestia dotfiles
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = caelestia-shell
 	depends = ddcutil
 	depends = brightnessctl
 	depends = app2unit
-	depends = cava
+	depends = libcava
 	depends = networkmanager
 	depends = lm_sensors
 	depends = fish
@@ -31,7 +31,7 @@ pkgbase = caelestia-shell
 	depends = qt6-declarative
 	provides = caelestia-shell
 	conflicts = caelestia-shell
-	source = https://github.com/caelestia-dots/shell/releases/download/v1.1.1/caelestia-shell-v1.1.1.tar.gz
-	sha256sums = 67e698567cc8774ed1e5a9d53dc9ab2a8627c634fd887bbb9fb391646e4da6ae
+	source = https://github.com/caelestia-dots/shell/releases/download/v1.2.0/caelestia-shell-v1.2.0.tar.gz
+	sha256sums = 19811bfeec1d8b54341a76a5ac5c76e08d3f1904531c4341173593206e9fe552
 
 pkgname = caelestia-shell
