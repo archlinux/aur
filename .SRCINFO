@@ -1,0 +1,27 @@
+pkgbase = ella-bin
+	pkgdesc = A process manager for running and managing services
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/thekhanj/ella
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = armv6l
+	arch = riscv64
+	license = MIT
+	conflicts = ella
+	source_x86_64 = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = b41ff2d957e93cce2c3746b39876443b4482225bf664a4e99964a98d8eeea667
+	source_aarch64 = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = a9ebdfd0f062a79603ec90d08d885e1b543017ef97b2cccd5ee31cd1c8811af4
+	source_armv7h = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_arm_hf.tar.gz
+	sha256sums_armv7h = 7dd2b07c61a69bc6183a2308bc7aebea591866944a84fbf5041d73e44dacc5cc
+	source_armv6h = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_arm_hf.tar.gz
+	sha256sums_armv6h = 7dd2b07c61a69bc6183a2308bc7aebea591866944a84fbf5041d73e44dacc5cc
+	source_armv6l = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_arm.tar.gz
+	sha256sums_armv6l = b6dd65e4aaa33b49f9aafafaadebb6513926cdf57784ee23b9c4149896d33bfd
+	source_riscv64 = https://github.com/thekhanj/ella/releases/download/v0.0.8/ella_v0.0.8_linux_riscv64.tar.gz
+	sha256sums_riscv64 = 46d751b2f0b8db2a7b35bd576a2d3407fa708c602568f87ebfc1c57bb0878680
+
+pkgname = ella-bin
