@@ -1,0 +1,16 @@
+pkgbase = max-appimage
+	pkgdesc = MAX is a multifunctional digital platform with a fully integrated messenger.
+	pkgver = 25.8.0.490
+	pkgrel = 0
+	url = https://max.ru
+	arch = x86_64
+	license = custom:max
+	optdepends = libappindicator-gtk3: tray icon
+	optdepends = libayatana-appindicator: tray icon
+	provides = max
+	conflicts = max
+	options = !strip
+	source_x86_64 = http://download.max.ru/electron/MAX.AppImage
+	sha256sums_x86_64 = d9996fdbfff69169f8c36892427e0638bffab3d2d5cbf4a4c207f2d0eda6502f
+
+pkgname = max-appimage
