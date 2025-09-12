@@ -1,11 +1,16 @@
 pkgbase = totpm
 	pkgdesc = A TPM-backed command line TOTP/2FA client, using fprintd for user presence checking.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/koditoriet/totpm
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = dbus
+	depends = tpm2-tss
+	depends = sqlite
 	source = https://github.com/koditoriet/totpm/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = eed4e1c8f13908731dc11ed667765652bc176ac30afa478f81056c1434f750ba
 
