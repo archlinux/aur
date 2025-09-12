@@ -7,7 +7,7 @@
 
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=25.08.0
+pkgver=25.08.1
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -33,10 +33,13 @@ makedepends=(
 )
 optdepends=(
   'ffmpegthumbs: video thumbnails'
+  'filelight: detailed disk usage statistics'
   'kde-cli-tools: for editing file type options'
   'kdegraphics-thumbnailers: PDF and PS thumbnails'
   'kdenetwork-filesharing: samba usershare properties menu'
+  'kdf: view disk usage'
   'kio-admin: for managing files as administrator'
+  'kompare: comparing files menu action'
   'konsole: terminal panel'
   'purpose: share context menu'
 )
@@ -44,14 +47,13 @@ optdepends=(
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
-_dl_url="https://invent.kde.org/system/dolphin.git#tag=v$pkgver"
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+$_dl_url"
+  "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git#tag=v$pkgver"
   "dolphin-tabopts-${_commit_patch::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_commit_patch}.patch"
 )
 sha256sums=(
-  '5ae8bcb1777da5f66024967e6803c9096a840d9fbd5bbce71bb920bc0dc4c454'
+  '7b25cadfed37402597df111f3c0c8b344425e99fab5e32b66643d738dfa04f64'
   'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
 )
 
