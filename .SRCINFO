@@ -1,0 +1,18 @@
+pkgbase = kubectl-terminate
+	pkgdesc = kubectl plugin to remove finalizers and finally delete k8s resources
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xcoulon/kubectl-terminate
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	source = https://github.com/xcoulon/kubectl-terminate/archive/v0.1.0/kubectl-terminate-0.1.0.tar.gz
+	sha512sums = 20db19ac7b36979fe69a5007f831d92852c8932ffca2453f8926a144d03b218b09a313f0ded5a98aa50e5964b28d7d966c371fbe2424d13f4d474a44fda3c1ce
+	b2sums = 6794ee063f098aee26c34a0656dcb8b9a3bdfdc38e45f947536c18caf8f4d8ee8c9d6805158fe4cd67df27d1f2e1b58231302fa91d74ce89c7b4cbbaf3cb9686
+
+pkgname = kubectl-terminate
