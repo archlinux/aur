@@ -1,7 +1,7 @@
 pkgbase = kubectl-count
 	pkgdesc = kubectl plugin to list and count resources by kind
 	pkgver = 0.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chenjiandongx/kubectl-count
 	arch = x86_64
 	arch = aarch64

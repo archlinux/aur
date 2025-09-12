@@ -2,7 +2,7 @@
 pkgname=kubectl-count
 # renovate: datasource=github-releases depName=chenjiandongx/kubectl-count
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='kubectl plugin to list and count resources by kind'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chenjiandongx/kubectl-count'
@@ -27,7 +27,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
+  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly"
   export GO111MODULE=on
 
   # Support -debug package
@@ -40,8 +40,8 @@ build() {
   cd "${pkgname}-${pkgver}"
   mkdir bin
   go mod tidy
-  go build \
-    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -compressdwarf=false -linkmode external" \
+  go build -v \
+    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -linkmode external" \
     -o bin/ \
     ./...
 }
