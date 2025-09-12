@@ -12,11 +12,11 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=25.3.0_devel.210054.c11f47481a4
-pkgrel=2
+pkgver=25.3.0_devel.211889.1eb4a2f5cd5
+pkgrel=1
 arch=('x86_64')
 makedepends=(python-mako python-packaging lib32-libxml2 lib32-libx11 xorgproto lib32-gcc-libs lib32-libelf git lib32-libglvnd
-                        wayland-protocols lib32-wayland meson lib32-libva lib32-libxrandr mesa-minimal-git lib32-llvm-minimal-git lib32-libvdpau 
+                        wayland-protocols lib32-wayland meson lib32-libva lib32-libxrandr mesa-minimal-git lib32-llvm-minimal-git 
                         libclc-minimal-git lib32-spirv-tools lib32-spirv-llvm-translator-minimal-git lib32-clang-libs-minimal-git clang-minimal-git
                         clang-opencl-headers-minimal-git lib32-clang-opencl-headers-minimal-git python-pyaml
 )
@@ -24,7 +24,7 @@ depends=(mesa-minimal-git lib32-gcc-libs lib32-libdrm lib32-wayland lib32-libxxf
             lib32-libelf lib32-libunwind lib32-lm_sensors glslang lib32-vulkan-icd-loader lib32-zstd lib32-llvm-libs-minimal-git
             lib32-spirv-tools lib32-systemd lib32-expat lib32-zlib lib32-libxcb lib32-libx11 lib32-glibc lib32-libxext lib32-libdisplay-info)
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(lib32-mesa lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-virtio lib32-vulkan-mesa-layers lib32-mesa-vdpau lib32-opengl-driver lib32-vulkan-driver)
+provides=(lib32-mesa lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-virtio lib32-vulkan-mesa-layers lib32-opengl-driver lib32-vulkan-driver)
 conflicts=(lib32-mesa lib32-vulkan-intel lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-mesa-layers lib32-mesa-vdpau 
                 lib32-vulkan-nouveau lib32-mesa-libgl lib32-vulkan-virtio lib32-opencl-mesa lib32-vulkan-dzn lib32-vulkan-gfxstream
 )
@@ -70,7 +70,6 @@ build () {
         -D gallium-extra-hud=true \
         -D vulkan-layers=device-select,overlay,anti-lag \
         -D gallium-va=enabled \
-        -D gallium-vdpau=enabled \
         -D gbm=enabled \
         -D gles1=disabled \
         -D gles2=enabled \
