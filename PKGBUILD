@@ -2,7 +2,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 pkgname="harlequin"
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="The SQL IDE for Your Terminal"
 url="https://harlequin.sh/"
@@ -30,7 +30,7 @@ optdepends=('harlequin-mysql: MySQL support'
             'harlequin-odbc: ODBC support')
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('d8bb58657fbd13580a22b7df29a8b22a325a54ad7ddd68837687231d0211d344ab72e40c468077da051a8d33ae659e266e8c141439992f160b87474d21692df0')
+b2sums=('ad3d155c7ca58b7b9978ee2b7bc88caf011552d1806142830f6458042df9b7f551a0ee785fa7e471f3e942b9d6315525bd0cd6bc9ef568a54198f0ddeef23201')
 
 build(){
     cd "$pkgname-$pkgver"
