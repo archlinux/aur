@@ -1,7 +1,7 @@
 pkgbase = opentrack
 	pkgdesc = Head tracking software
 	pkgver = 2023.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/opentrack/opentrack/
 	arch = x86_64
 	license = ISC
