@@ -1,6 +1,6 @@
 post_install() {
 
-	local eula=/usr/share/licenses/CEWE/EULA.txt
+	local eula=/usr/share/licenses/logiciel_de_creation_cewe/EULA.txt
 
 	if [ -n "$DISPLAY" ]
 	then
