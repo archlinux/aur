@@ -8,6 +8,7 @@ url="https://github.com/bartolli/codanna"
 license=('Apache-2.0')
 depends=('openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
+options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('8fa2846005a9bac01d5a0a6b3a723fa24aadf0f50ad34d439d942442dde3b43f')
 
