@@ -1,6 +1,7 @@
 # Maintainer: Anton Hvornum <torxed@archlinux.org>
 # Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Ingo Meyer <i.meyer@fz-juelich.de>
+# Contributor: Shresth Paul <shresthpaul133@gmail.com>
 
 # importlib_metadata is a false positive warning from namcap due to
 # backwards compatability import of the script entrypoint.
@@ -9,7 +10,7 @@
 # backwards compatability attempt in script entrypoint.
 
 pkgname=python-simple-term-menu
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=3
 pkgdesc='A Python package which creates simple interactive menus on the command line.'
 arch=('any')
@@ -21,24 +22,23 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
-source=("https://pypi.python.org/packages/source/s/simple-term-menu/simple-term-menu-${pkgver}.tar.gz")
-sha512sums=('7787c557467c0e8a44fdf61cc094de1e1171c2f9fc82f0607128ca9ad14ce95037b2f4d1cd7e258480415f2704256af36421d389c5c0ca5280d01d5cc675f05a')
-b2sums=('6d4e498ee342fe4634944f0281b45ef7af7914eb8b3ceab7e7291b451e26757100c0002f9959150445eb752ca8b5e44ee00436d75ea326bafa2767894dbf7ead')
+source=("https://files.pythonhosted.org/packages/d8/80/f0f10b4045628645a841d3d98b584a8699005ee03a211fc7c45f6c6f0e99/simple_term_menu-1.6.6.tar.gz")
+sha256sums=('9813d36f5749d62d200a5599b1ec88469c71378312adc084c00c00bfbb383893')
+
+# Optional but cleaner
+_srcname="simple_term_menu"
 
 pkgver() {
-  echo $pkgver
+  echo "$pkgver"
 }
 
 build() {
-  cd "simple-term-menu-$pkgver"
-
+  cd "$_srcname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "simple-term-menu-$pkgver"
-
-  cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
+  cd "${srcdir}/${_srcname}-${pkgver}" || return
   python setup.py install --optimize=1 \
                           --prefix=/usr \
                           --root="${pkgdir}" \
