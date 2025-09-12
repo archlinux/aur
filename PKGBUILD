@@ -4,7 +4,7 @@
 
 pkgname='hentaiathome'
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries"
 arch=('x86_64')
 url="https://ehwiki.org/wiki/Hentai@Home"
