@@ -1,7 +1,7 @@
 pkgbase = kubectl-oomd
 	pkgdesc = kubectl plugin to display the pods and containers which have recently been OOMKilled
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jdockerty/kubectl-oomd
 	arch = x86_64
 	arch = aarch64
