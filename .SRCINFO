@@ -1,7 +1,7 @@
 pkgbase = moonasst
 	pkgdesc = Moonasst Qt application
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitee.com/nemozz-hz/moonasst
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = moonasst
 	options = strip
 	options = !debug
 	source = https://gitee.com/nemozz-hz/moonasst/repository/archive/v1.0.1.tar.gz
-	sha256sums = dc3fbeda2a0e03ab1a9998a905743d70d973f8c9d80ca3f4c593455787c98cff
+	sha256sums = ea9c3bab45d4a34b81d9104ae3ab1a7c25a4d9bede4cb5c6585105641cb56fc8
 
 pkgname = moonasst
