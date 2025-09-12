@@ -2,8 +2,7 @@
 
 pkgname=tclient-ddnet
 pkgver=10.4.0
-shortened_ver=${pkgver%??}
-pkgrel=3
+pkgrel=4
 pkgdesc="Extended DDNet Teeworlds client."
 arch=('x86_64')
 url="https://tclient.app/"
@@ -19,9 +18,11 @@ sha256sums=('18b9b5ef9a0877183e914e70ab668f35de8b4baa524799646a2764785f635fbf'
             '29ecb3376c3fe0a56af495f71754c72c54f3e7f97031446e23a355833b954b65')
 
 prepare() {
-    mkdir -p tclient
+    mkdir -p tclient/game
     bsdtar -xf "TClient-ubuntu.tar.xz" -C tclient
-    chmod +x tclient/TClient-$shortened_ver-linux_x86_64/DDNet
+    cp -r tclient/TClient-*-linux_x86_64/* tclient/game
+    rm -rf tclient/TClient-*-linux_x86_64
+    chmod +x tclient/game/DDNet
 }
 
 
@@ -32,7 +33,7 @@ package() {
     install -dm0755 "$pkgdir/usr/share/applications/"
     cat > "$pkgdir/usr/bin/tclient" << EOF
 #!/bin/bash
-exec /opt/$pkgname/TClient-$shortened_ver-linux_x86_64/DDNet
+exec /opt/$pkgname/game/DDNet
 EOF
     chmod +x $pkgdir/usr/bin/tclient
     cat > "$pkgdir/usr/share/applications/tclient.desktop" << EOF
