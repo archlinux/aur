@@ -1,5 +1,4 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
-# Co-Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=obsidianctl-git
 pkgver=r25.e924876
 pkgrel=1
@@ -8,6 +7,7 @@ arch=('any')
 url="https://github.com/Obsidian-OS/obsidianctl"
 license=('MIT')
 depends=('python' 'efibootmgr' 'parted' 'dosfstools' 'squashfs-tools' 'rsync' 'coreutils' 'e2fsprogs' 'systemd' 'util-linux' 'procps-ng')
+optdepends=('libobsidianos_overlays: For ObsidianOS Extensions support')
 makedepends=('git' 'make')
 provides=('obsidianctl')
 source=("$pkgname::git+$url")

@@ -18,6 +18,7 @@ pkgbase = obsidianctl-git
 	depends = systemd
 	depends = util-linux
 	depends = procps-ng
+	optdepends = libobsidianos_overlays: For ObsidianOS Extensions support
 	provides = obsidianctl
 	source = obsidianctl-git::git+https://github.com/Obsidian-OS/obsidianctl
 	sha256sums = SKIP
