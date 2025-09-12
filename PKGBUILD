@@ -3,7 +3,8 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Tech <technetium1337 at gmail dot com>
-# Contributor: patlefort
+
+# rm -rf ~/.cache/vcpkg ~/.cargo
 
 # 0 for PKGBUILD commands which may go out of date
 # 1 for build.py which should stay current
@@ -106,15 +107,17 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.4.1.r10636.gf32591c
+pkgver=1.4.2.r10726.g878e1ff
 pkgrel=1
-_sfx='-pr3'
+_sfx='-pr1-5c9b4ab'
+#_sfx=''
 _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
   '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
   '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
   '1.3.9:20250328-81b932b7bfa2ff8bc60189625fd6538db2fa9ea1'
   '1.4.0:20250509-6e556f7e1751a3a709cd5cca0df7268ba3cb1c48'
   '1.4.1:20250718-f91459c4ab80fc3cfdef0882b2af51f984bc914c'
+  '1.4.2:20250904-9e7696c7d4e346508ba68e801a53c6d1f1748fb5'
 )
 _pkgver="${pkgver%.r*}"
 _pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(_vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" || exit 1
@@ -169,17 +172,18 @@ if :; then
     '1.3.0:#commit=20240712-1de2026f28ead93ff1773e6e680387643e914ea1'
     '1.3.6:#commit=20241115-b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c'
     '1.3.8:#commit=20250113-6f29f12e82a8293156836ad81cc9bf5af41fe836'
+    '1.4.2:#commit=20250827-120deac3062162151622ca4860575a33844ba10b' # date comes from commit (tig)
   )
-  _opt_VCPKG_COMMIT_ID="$(_fn_VCL "${_pkgver}" -ge "${_VCL[@]}")"
+  _opt_VCPKG_COMMIT_ID="$(_fn_VCL "${_pkgver}" -ge "${_VCL[@]}")"; unset _VCL
   #source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
   _srcdirvc="vcpkg-${_opt_VCPKG_COMMIT_ID##*-}"
   source+=("vcpkg-${_opt_VCPKG_COMMIT_ID##*=}.tgz::https://github.com/microsoft/vcpkg/archive/${_opt_VCPKG_COMMIT_ID##*-}.tar.gz")
-  _meaver='1.6.1'
-  _pcfver='2.3.0'
-  _aomver='d6f30ae474dd6c358f26de0a0fc26a0d7340a84c'
-  _jpgver='3.1.0'
+  _meaver='1.8.2'
+  _pcfver='2.5.1'
+  _aomver='10aece4157eb79315da205f39e19bf6ab3ee30d0'
+  _jpgver='3.1.1'
   _yuvver='0faf8dd0e004520a61a603a4d2996d5ecc80dc3f'
-  _wbmver='1.15.0'
+  _wbmver='1.15.2'
   _xipver='1.5.2'
   _vcs+=(
     "meson-${_meaver}.tar.gz::https://github.com/mesonbuild/meson/archive/refs/tags/${_meaver}.tar.gz" # meason and pkgconf versions are found in clean chroot
@@ -192,9 +196,11 @@ if :; then
     "webmproject-libvpx-v${_wbmver}.tar.gz::https://github.com/webmproject/libvpx/archive/refs/tags/v${_wbmver}.tar.gz"
     "xiph-opus-v${_xipver}.tar.gz::https://github.com/xiph/opus/archive/refs/tags/v${_xipver}.tar.gz"
   )
+  unset _meaver _pcfver _aomver _jpgver _yuvver _wbmver _xipver
   if [ "${#_opt_hwcodec_vc[@]}" -ne 0 ]; then
     _ffmver='7.1'
     _vcs+=("ffmpeg-ffmpeg-n${_ffmver}.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n${_ffmver}.tar.gz")
+    unset _ffmver
   fi
 fi
 source+=("${_vcs[@]}")
@@ -211,6 +217,8 @@ else
     source+=(
       "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUVER}-stable.tar.xz"
     )
+  else
+    makedepends+=('fvm')
   fi
   if :; then
     _FRBVER='1.80.1'
@@ -221,34 +229,34 @@ else
   fi
 fi
 ####
-md5sums=('621663863c75196f2611a1165573390e'
-         'd7dd05d0ca5709c328ba8e0b15f180e1'
+md5sums=('a9a69bc93c29e1aeb38c77839c025661'
+         '030607b35c8d70d62f42e3a82b68b1da'
          '6acc4b5b14befec55ef84006b60c7ff5'
          'a77a4586f30f77de2eed63e160b3a051'
          '379cfba8479c2a92e05e3b855d1e6901'
-         '4d782be2571f14e7b74b10a385f74e15'
-         'e86ff4df372dd1819ea45c540d5be13f'
-         '5dd9f68970c677d6e6951df55e343635'
-         'a45fa99b7f1a972e364cc68f1ebf949c'
-         '1695d39ba38a9593f4107722f3459fe0'
+         '56b134202b1ea88389d24d1c99635f6a'
+         '7887064dc9ce1cf7ae1c869bacd8e27e'
+         '7745ca9bd6d05af8af0afd209375e209'
+         '9b056bb94ba70d6ec3f5901544239268'
+         '4cc83d985db61e64bfa352388bb447ec'
          'f2f3868524b82915da3700267d116cdf'
-         '6d2b7b8e1c06f4b10ae63ca22491f8a4'
+         '4c7a93808c12b359733430c8377b7fcf'
          '557a08d88aa605ee6cf4156686ce4cc2'
          '03485098fb64a000a4f7cd97e468dfff'
          'a3efc04e00cede00296f1a0dc323e8d1'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('c6b9f1160e7ec4ebf604c15145cb0146ae5ff658a530060a89807dc2af086b32'
-            '1506802672283c3f9b39a7c81f7f880cae320553a59335f033919e93ec42e729'
+sha256sums=('8c7575780e44d3503e1d753b431a239135309e71ffbdf96eaaae1ba2986f2724'
+            'b064a3796aa6284190a73489eb4a997f3ecfd7e9b1fc176fc4c08b576fc3c8c6'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
             '359046f24f8a81b96a198000a1cfd7934c1f4870b2a1306e13f65694cefef68f'
-            '3df9359a39b91929868265090b97d7e2365dc8cdd5aaa1473a717720b4598f55'
-            '4889795777b536ea1a351982f3ef7c7b06a786ccb47036daba63cc5757c59edb'
-            '0ee103cd390c3ee0e77a7a1c71dcb79a50a426fa2a648f6d07f2678c23adc5e3'
-            '06b9ea2f20a216fffac0c3991ea517ad4159df976bb7cd05084c8bfba3608fba'
-            '35fec2e1ddfb05ecf6d93e50bc57c1e54bc81c16d611ddf6eff73fff266d8285'
+            'f3b1ec711fa1ba291efd75e27983898a37be15760dfe129a406448fa7377b31d'
+            '6b878fb0f6f0318cbd54e13539f89a1a8305791668e8e93ffd59d82722888dac'
+            '79721badcad1987dead9c3609eb4877ab9b58821c06bdacb824f2c8897c11f2a'
+            '2399c0f128ef148a785c139d631a204458b1715bb2cfb54acc65613c22d89d5c'
+            '304165ae11e64ab752e9cfc07c37bfdc87abd0bfe4bc699e59f34036d9c84f72'
             '73a4ecb598cd6824cb7a0a0d934d81b866e2762acd8eb465e1510063b4649659'
-            'e935eded7d81631a538bfae703fd1e293aad1c7fd3407ba00440c95105d2011e'
+            '26fcd3db88045dee380e581862a6ef106f49b74b6396ee95c2993a260b4636aa'
             '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
             '7ddad2d992bd250a6c56053c26029f7e728bebf0f37f80cf3f8a0e6ec706431a'
             'a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae'
