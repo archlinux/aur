@@ -3,7 +3,7 @@ _pkgname=ketall
 pkgname="${_pkgname}-git"
 #_ renovate: datasource=github-releases depName=corneliusweig/ketall
 pkgver=1.3.8.r7.16390bd
-pkgrel=2
+pkgrel=3
 pkgdesc='Kubectl plugin to show really all kubernetes resources'
 arch=('x86_64')
 url="https://github.com/corneliusweig/${_pkgname}"
@@ -53,9 +53,8 @@ build() {
   fi
 
   mkdir bin
-  go mod tidy
   go build -v \
-    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -compressdwarf=false -linkmode external" \
+    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -linkmode external" \
     -o bin/ \
     ./...
 }
