@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/serifpersia/us144mkii"
 license=('GPL-2.0-only')
 depends=('dkms')
+provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=(
 	"git+$url"

@@ -6,6 +6,7 @@ pkgbase = us144mkii-dkms-git
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = dkms
+	provides = us144mkii
 	conflicts = us144mkii
 	source = git+https://github.com/serifpersia/us144mkii
 	source = dkms.conf
