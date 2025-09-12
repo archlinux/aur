@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=bazaar
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=('krunner-bazaar: krunner integration')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9306923a4e9f6bbf12b464ad4e4c2651cfbc0871c6182a898a740290d2c5ac80')
+sha256sums=('c0d9420cf7ba276dd9d4ddd13e76dac3ce4c14cb68133dabe16a0f5257eeff09')
 
 build() {
 	cd "${pkgname}-${pkgver}"
