@@ -1,12 +1,13 @@
 pkgbase = libobsidianos_overlays-git
 	pkgdesc = ObsidianOS's Overlay library for overlaying ObsidianOS Extensions without OverlayFS
-	pkgver = r25.e924876
+	pkgver = r3.b74d866
 	pkgrel = 1
 	url = https://github.com/Obsidian-OS/overlays
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = make
+	makedepends = cargo
+	makedepends = rust
 	depends = glibc
 	provides = libobsidianos_overlays
 	source = libobsidianos_overlays-git::git+https://github.com/Obsidian-OS/overlays
