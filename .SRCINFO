@@ -1,12 +1,12 @@
 pkgbase = okpanel-git
 	pkgdesc = A custom AGS panel for hyprland
 	pkgver = 0.1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/JohnOberhauser/OkPanel
 	arch = any
 	license = GPL3
 	makedepends = rsync
-	depends = aylurs-gtk-shell
+	depends = aylurs-gtk-shell-git
 	depends = bluez
 	depends = bluez-utils
 	depends = brightnessctl

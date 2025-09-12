@@ -1,13 +1,13 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okpanel-git
 pkgver=0.1.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A custom AGS panel for hyprland"
 license=('GPL3')
 arch=('any')
 url="https://github.com/JohnOberhauser/OkPanel"
 depends=(
-    'aylurs-gtk-shell'
+    'aylurs-gtk-shell-git'
     'bluez'
     'bluez-utils'
     'brightnessctl'
