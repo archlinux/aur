@@ -1,7 +1,7 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox (www.openfoam.org)
-	pkgver = 13.20250706+65eda17
-	pkgrel = 2
+	pkgver = 13.20250911+cde978a
+	pkgrel = 1
 	url = http://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
@@ -38,10 +38,10 @@ pkgbase = openfoam
 	depends = zlib
 	provides = openfoam
 	options = !strip
-	source = OpenFOAM-13-20250706::git+https://github.com/OpenFOAM/OpenFOAM-13.git#commit=65eda17
+	source = OpenFOAM-13-20250911::git+https://github.com/OpenFOAM/OpenFOAM-13.git#commit=cde978a
 	source = paraview.arch
 	source = openfoam.install
-	sha256sums = 0819222f24fa6395181684058ccb2397579fdb015b60ae3a9cc992757f4c79db
+	sha256sums = c7371730f61b12147e5ae85561b2d0d25747dd310ab0a11ef5f598ace0c61ab3
 	sha256sums = bbec057b1153a616ea388dc80fdaeb6337edc6150e0601f140a1304f82a10ddb
 	sha256sums = a94080d4e5bc4736868269d66f61f5430dec961c70bdcdaa1c9a402dba5203d2
 
