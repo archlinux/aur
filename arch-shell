@@ -35,7 +35,68 @@ spinner() {
 }
 
 usage() {
-    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | -R <env> <pkg...> | enter <env> | delete <env> | list | info <env> | export <env> <file> | import <file> <env>"
+    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | -R <env> <pkg...> | enter <env> | delete <env> | list | info <env> | export <env> <file> | import <file> <env> | run <env> <command> [options] | clean <env> [options] | snapshot <env> [options]"
+    exit 1
+}
+
+usage_run() {
+    echo "Usage: $0 run <env> <command> [options]"
+    echo ""
+    echo "Exécute une commande ou un script dans un environnement."
+    echo ""
+    echo "Options:"
+    echo "  --script <file>     Exécuter un script dans l'environnement"
+    echo "  --env <VAR=value>   Définir une variable d'environnement"
+    echo ""
+    echo "Exemples:"
+    echo "  $0 run mon-env \"ls -la\""
+    echo "  $0 run mon-env \"make clean && make\""
+    echo "  $0 run mon-env --script build.sh"
+    echo "  $0 run mon-env --env DEBUG=1 \"./mon-programme\""
+    echo "  $0 run mon-env --env BUILD_TYPE=release --script deploy.sh"
+    exit 1
+}
+
+usage_snapshot() {
+    echo "Usage: $0 snapshot <env> [nom] | $0 snapshot <env> <option>"
+    echo ""
+    echo "Gère les snapshots (sauvegardes) d'un environnement."
+    echo ""
+    echo "Options:"
+    echo "  --list              Lister tous les snapshots de l'environnement"
+    echo "  --restore <snap>    Restaurer un snapshot (par nom ou numéro)"
+    echo "  --delete <snap>     Supprimer un snapshot (par nom)"
+    echo ""
+    echo "Exemples:"
+    echo "  $0 snapshot mon-env                       # Créer un snapshot avec nom automatique"
+    echo "  $0 snapshot mon-env \"avant-test\"          # Créer un snapshot nommé"
+    echo "  $0 snapshot mon-env --list                # Lister les snapshots"
+    echo "  $0 snapshot mon-env --restore \"avant-test\"  # Restaurer par nom"
+    echo "  $0 snapshot mon-env --restore 1           # Restaurer par numéro"
+    echo "  $0 snapshot mon-env --delete \"avant-test\"   # Supprimer un snapshot"
+    exit 1
+}
+
+usage_clean() {
+    echo "Usage: $0 clean <env> [options]"
+    echo ""
+    echo "Nettoie les fichiers temporaires et caches d'un environnement."
+    echo ""
+    echo "Options:"
+    echo "  --cache             Nettoyer seulement les caches pacman"
+    echo "  --logs              Nettoyer seulement les logs système"
+    echo "  --tmp               Nettoyer seulement les fichiers temporaires"
+    echo "  --all               Nettoyer tout (cache + logs + tmp)"
+    echo "  --dry-run           Afficher ce qui serait nettoyé sans le faire"
+    echo "  --all-envs          Nettoyer tous les environnements"
+    echo ""
+    echo "Exemples:"
+    echo "  $0 clean mon-env                    # Nettoyage standard (cache + tmp)"
+    echo "  $0 clean mon-env --all              # Nettoyage complet"
+    echo "  $0 clean mon-env --dry-run          # Aperçu du nettoyage"
+    echo "  $0 clean mon-env --cache            # Seulement les caches"
+    echo "  $0 clean --all-envs                 # Nettoyer tous les environnements"
+    echo "  $0 clean --all-envs --dry-run       # Aperçu pour tous les environnements"
     exit 1
 }
 
@@ -262,6 +323,420 @@ import_env() {
     echo -e "${GREEN}[*] Import terminé : environnement ${envname} créé${NC}"
 }
 
+clean_env() {
+    local envname="$1"
+    local clean_cache=false
+    local clean_logs=false
+    local clean_tmp=false
+    local clean_all=false
+    local dry_run=false
+    local all_envs=false
+    
+    # Analyser les options
+    shift 1
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --cache)
+                clean_cache=true
+                shift
+                ;;
+            --logs)
+                clean_logs=true
+                shift
+                ;;
+            --tmp)
+                clean_tmp=true
+                shift
+                ;;
+            --all)
+                clean_all=true
+                shift
+                ;;
+            --dry-run)
+                dry_run=true
+                shift
+                ;;
+            --all-envs)
+                all_envs=true
+                shift
+                ;;
+            *)
+                echo -e "${RED}[!] Option inconnue : $1${NC}"
+                return 1
+                ;;
+        esac
+    done
+    
+    if [ "$clean_cache" = false ] && [ "$clean_logs" = false ] && [ "$clean_tmp" = false ] && [ "$clean_all" = false ]; then
+        clean_cache=true
+        clean_tmp=true
+    fi
+    
+    if [ "$clean_all" = true ]; then
+        clean_cache=true
+        clean_logs=true
+        clean_tmp=true
+    fi
+    
+    clean_single_env() {
+        local env="$1"
+        local envdir="${ARCHSHELL_DIR}/${env}"
+        
+        if [ ! -d "$envdir" ]; then
+            echo -e "${RED}[!] Environnement inexistant : ${env}${NC}"
+            return 1
+        fi
+        
+        echo -e "${BLUE}[*] Nettoyage de l'environnement ${env}...${NC}"
+        
+        local total_freed=0
+        local files_removed=0
+        
+        if [ "$clean_cache" = true ]; then
+            local cache_dir="${envdir}/var/cache/pacman/pkg"
+            if [ -d "$cache_dir" ]; then
+                local cache_size=$(sudo du -sb "$cache_dir" 2>/dev/null | awk '{print $1}' || echo "0")
+                local cache_files=$(sudo find "$cache_dir" -name "*.pkg.tar.*" 2>/dev/null | wc -l || echo "0")
+                
+                if [ "$dry_run" = true ]; then
+                    echo -e "${YELLOW}[DRY-RUN] Cache pacman : ${cache_files} fichiers ($(numfmt --to=iec $cache_size))${NC}"
+                else
+                    sudo find "$cache_dir" -name "*.pkg.tar.*" -delete 2>/dev/null
+                    echo -e "${GREEN}[✓] Cache pacman nettoyé : ${cache_files} fichiers ($(numfmt --to=iec $cache_size))${NC}"
+                    total_freed=$((total_freed + cache_size))
+                    files_removed=$((files_removed + cache_files))
+                fi
+            fi
+        fi
+        
+        if [ "$clean_logs" = true ]; then
+            local log_dir="${envdir}/var/log"
+            if [ -d "$log_dir" ]; then
+                local log_size=$(sudo du -sb "$log_dir" 2>/dev/null | awk '{print $1}' || echo "0")
+                local log_files=$(sudo find "$log_dir" -type f -name "*.log*" 2>/dev/null | wc -l || echo "0")
+                
+                if [ "$dry_run" = true ]; then
+                    echo -e "${YELLOW}[DRY-RUN] Logs système : ${log_files} fichiers ($(numfmt --to=iec $log_size))${NC}"
+                else
+                    sudo find "$log_dir" -type f -name "*.log*" -delete 2>/dev/null
+                    sudo find "$log_dir" -type f -name "*.old" -delete 2>/dev/null
+                    echo -e "${GREEN}[✓] Logs nettoyés : ${log_files} fichiers ($(numfmt --to=iec $log_size))${NC}"
+                    total_freed=$((total_freed + log_size))
+                    files_removed=$((files_removed + log_files))
+                fi
+            fi
+        fi
+        
+        if [ "$clean_tmp" = true ]; then
+            local tmp_dir="${envdir}/tmp"
+            if [ -d "$tmp_dir" ]; then
+                local tmp_size=$(sudo du -sb "$tmp_dir" 2>/dev/null | awk '{print $1}' || echo "0")
+                local tmp_files=$(sudo find "$tmp_dir" -type f 2>/dev/null | wc -l || echo "0")
+                
+                if [ "$dry_run" = true ]; then
+                    echo -e "${YELLOW}[DRY-RUN] Fichiers temporaires : ${tmp_files} fichiers ($(numfmt --to=iec $tmp_size))${NC}"
+                else
+                    sudo find "$tmp_dir" -type f -delete 2>/dev/null
+                    echo -e "${GREEN}[✓] Temporaires nettoyés : ${tmp_files} fichiers ($(numfmt --to=iec $tmp_size))${NC}"
+                    total_freed=$((total_freed + tmp_size))
+                    files_removed=$((files_removed + tmp_files))
+                fi
+            fi
+        fi
+        
+        if [ "$dry_run" = false ] && [ $total_freed -gt 0 ]; then
+            echo -e "${GREEN}[*] Environnement ${env} : ${files_removed} fichiers supprimés, $(numfmt --to=iec $total_freed) libérés${NC}"
+            update_last_used "$env"
+        fi
+    }
+    
+    if [ "$all_envs" = true ]; then
+        echo -e "${BLUE}[*] Nettoyage de tous les environnements...${NC}"
+        local env_count=0
+        for env_path in "$ARCHSHELL_DIR"/*; do
+            [ -d "$env_path" ] || continue
+            local env_basename=$(basename "$env_path")
+            [ "$env_basename" = "store" ] && continue
+            [ -f "$env_path/.arch-shell-env" ] || continue
+            
+            clean_single_env "$env_basename"
+            env_count=$((env_count + 1))
+        done
+        
+        if [ $env_count -eq 0 ]; then
+            echo -e "${YELLOW}[!] Aucun environnement trouvé à nettoyer${NC}"
+        else
+            echo -e "${GREEN}[*] Nettoyage terminé pour ${env_count} environnement(s)${NC}"
+        fi
+    else
+        if [ -z "$envname" ]; then
+            echo -e "${RED}[!] Nom d'environnement requis ou utilisez --all-envs${NC}"
+            return 1
+        fi
+        clean_single_env "$envname"
+    fi
+}
+
+run_command() {
+    local envname="$1"
+    local command=""
+    local script_file=""
+    local env_vars=""
+    
+    shift 1
+    
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --script)
+                script_file="$2"
+                shift 2
+                ;;
+            --env)
+                env_vars="$env_vars $2"
+                shift 2
+                ;;
+            *)
+                if [ -z "$command" ]; then
+                    command="$1"
+                else
+                    command="$command $1"
+                fi
+                shift
+                ;;
+        esac
+    done
+    
+    local envdir="${ARCHSHELL_DIR}/${envname}"
+    
+    if [ ! -d "$envdir" ]; then
+        echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
+        return 1
+    fi
+    
+    update_last_used "$envname"
+    
+    if [ -n "$script_file" ]; then
+        if [ ! -f "$script_file" ]; then
+            echo -e "${RED}[!] Script inexistant : ${script_file}${NC}"
+            return 1
+        fi
+        
+        echo -e "${BLUE}[*] Exécution du script ${script_file} dans ${envname}...${NC}"
+        
+        local script_name=$(basename "$script_file")
+        sudo mkdir -p "${envdir}/root"
+        sudo cp "$script_file" "${envdir}/root/${script_name}"
+        sudo chmod +x "${envdir}/root/${script_name}"
+        
+        sudo arch-nspawn -c /var/cache/pacman/pkg "$envdir" /bin/bash -c "cd /root && ./${script_name}"
+        local exit_code=$?
+        
+        sudo rm -f "${envdir}/root/${script_name}"
+        
+        if [ $exit_code -eq 0 ]; then
+            echo -e "${GREEN}[*] Script exécuté avec succès${NC}"
+        else
+            echo -e "${RED}[!] Script terminé avec le code d'erreur ${exit_code}${NC}"
+        fi
+        
+        return $exit_code
+    else
+        if [ -z "$command" ]; then
+            echo -e "${RED}[!] Aucune commande spécifiée${NC}"
+            return 1
+        fi
+        
+        echo -e "${BLUE}[*] Exécution de '${command}' dans ${envname}...${NC}"
+        
+        if [ -n "$env_vars" ]; then
+            sudo arch-nspawn -c /var/cache/pacman/pkg "$envdir" /bin/bash -c "export $env_vars >/dev/null 2>&1; $command"
+        else
+            sudo arch-nspawn -c /var/cache/pacman/pkg "$envdir" /bin/bash -c "$command"
+        fi
+        
+        local exit_code=$?
+        
+        if [ $exit_code -eq 0 ]; then
+            echo -e "${GREEN}[*] Commande exécutée avec succès${NC}"
+        else
+            echo -e "${RED}[!] Commande terminée avec le code d'erreur ${exit_code}${NC}"
+        fi
+        
+        return $exit_code
+    fi
+}
+
+SNAPSHOTS_DIR="${ARCHSHELL_DIR}/snapshots"
+
+create_snapshot() {
+    local envname="$1"
+    local snapshot_name="$2"
+    local envdir="${ARCHSHELL_DIR}/${envname}"
+    local env_snapshots_dir="${SNAPSHOTS_DIR}/${envname}"
+    
+    if [ ! -d "$envdir" ]; then
+        echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
+        exit 3
+    fi
+    
+    mkdir -p "$env_snapshots_dir"
+    
+    if [ -z "$snapshot_name" ]; then
+        snapshot_name="$(date +%Y-%m-%d_%H-%M-%S)"
+    fi
+    
+    local snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+    
+    if [ -f "$snapshot_file" ]; then
+        echo -e "${RED}[!] Le snapshot '${snapshot_name}' existe déjà${NC}"
+        exit 4
+    fi
+    
+    echo -e "${BLUE}[*] Création du snapshot '${snapshot_name}' pour ${envname}...${NC}"
+    
+    (
+        cd "${ARCHSHELL_DIR}" && \
+        tar -cJf "$snapshot_file" "${envname}" 2>/dev/null
+    ) &
+    spinner $! "Création du snapshot"
+    
+    local metadata_file="${env_snapshots_dir}/snapshots.json"
+    local snapshot_size=$(du -h "$snapshot_file" | cut -f1)
+    local snapshot_date=$(date -Iseconds)
+    
+    if [ ! -f "$metadata_file" ]; then
+        echo "[]" > "$metadata_file"
+    fi
+    
+    if command -v jq >/dev/null 2>&1; then
+        jq ". += [{\"name\": \"$snapshot_name\", \"date\": \"$snapshot_date\", \"size\": \"$snapshot_size\"}]" "$metadata_file" > "${metadata_file}.tmp" && mv "${metadata_file}.tmp" "$metadata_file"
+    else
+        echo "  {\"name\": \"$snapshot_name\", \"date\": \"$snapshot_date\", \"size\": \"$snapshot_size\"}" >> "$metadata_file.simple"
+    fi
+    
+    echo -e "${GREEN}[*] Snapshot '${snapshot_name}' créé (${snapshot_size})${NC}"
+}
+
+list_snapshots() {
+    local envname="$1"
+    local env_snapshots_dir="${SNAPSHOTS_DIR}/${envname}"
+    
+    if [ ! -d "${ARCHSHELL_DIR}/${envname}" ]; then
+        echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
+        exit 3
+    fi
+    
+    if [ ! -d "$env_snapshots_dir" ] || [ -z "$(ls -A "$env_snapshots_dir"/*.tar.xz 2>/dev/null)" ]; then
+        echo -e "${YELLOW}[*] Aucun snapshot trouvé pour l'environnement ${envname}${NC}"
+        return
+    fi
+    
+    echo -e "${BLUE}📸 Snapshots pour l'environnement '${envname}':${NC}"
+    
+    local i=1
+    for snapshot_file in "$env_snapshots_dir"/*.tar.xz; do
+        if [ -f "$snapshot_file" ]; then
+            local snapshot_name=$(basename "$snapshot_file" .tar.xz)
+            local snapshot_size=$(du -h "$snapshot_file" | cut -f1)
+            local snapshot_date=$(stat -c %y "$snapshot_file" | cut -d. -f1)
+            
+            echo -e "  ${GREEN}${i}.${NC} ${snapshot_name} - ${snapshot_size} (${snapshot_date})"
+            ((i++))
+        fi
+    done
+}
+
+restore_snapshot() {
+    local envname="$1"
+    local snapshot_name="$2"
+    local envdir="${ARCHSHELL_DIR}/${envname}"
+    local env_snapshots_dir="${SNAPSHOTS_DIR}/${envname}"
+    
+    if [ ! -d "$envdir" ]; then
+        echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
+        exit 3
+    fi
+    
+    local snapshot_file
+    if [[ "$snapshot_name" =~ ^[0-9]+$ ]]; then
+        local i=1
+        for file in "$env_snapshots_dir"/*.tar.xz; do
+            if [ -f "$file" ] && [ "$i" -eq "$snapshot_name" ]; then
+                snapshot_file="$file"
+                break
+            fi
+            ((i++))
+        done
+    else
+        snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+    fi
+    
+    if [ ! -f "$snapshot_file" ]; then
+        echo -e "${RED}[!] Snapshot '${snapshot_name}' introuvable${NC}"
+        exit 5
+    fi
+    
+    echo -e "${YELLOW}[!] ATTENTION: Cette opération va remplacer l'environnement actuel${NC}"
+    read -p "Continuer ? [o/N] " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[oOyY]$ ]]; then
+        echo "Annulé."
+        exit 0
+    fi
+    
+    echo -e "${BLUE}[*] Restauration du snapshot pour ${envname}...${NC}"
+    
+    local backup_name="backup-avant-restore-$(date +%Y%m%d%H%M%S)"
+    mv "$envdir" "${envdir}.${backup_name}"
+    
+    (
+        cd "${ARCHSHELL_DIR}" && \
+        tar -xJf "$snapshot_file" 2>/dev/null
+    ) &
+    spinner $! "Restauration du snapshot"
+    
+    if [ -d "$envdir" ]; then
+        sudo rm -rf "${envdir}.${backup_name}"
+        echo -e "${GREEN}[*] Snapshot restauré avec succès${NC}"
+    else
+        mv "${envdir}.${backup_name}" "$envdir"
+        echo -e "${RED}[!] Échec de la restauration, environnement restauré${NC}"
+        exit 6
+    fi
+}
+
+delete_snapshot() {
+    local envname="$1"
+    local snapshot_name="$2"
+    local env_snapshots_dir="${SNAPSHOTS_DIR}/${envname}"
+    local snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+    
+    if [ ! -d "${ARCHSHELL_DIR}/${envname}" ]; then
+        echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
+        exit 3
+    fi
+    
+    if [ ! -f "$snapshot_file" ]; then
+        echo -e "${RED}[!] Snapshot '${snapshot_name}' introuvable${NC}"
+        exit 5
+    fi
+    
+    read -p "Supprimer définitivement le snapshot '${snapshot_name}' ? [o/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[oOyY]$ ]]; then
+        rm -f "$snapshot_file"
+        
+        local metadata_file="${env_snapshots_dir}/snapshots.json"
+        if [ -f "$metadata_file" ] && command -v jq >/dev/null 2>&1; then
+            jq "map(select(.name != \"$snapshot_name\"))" "$metadata_file" > "${metadata_file}.tmp" && mv "${metadata_file}.tmp" "$metadata_file"
+        fi
+        
+        echo -e "${GREEN}[*] Snapshot '${snapshot_name}' supprimé${NC}"
+    else
+        echo "Annulé."
+    fi
+}
+
 if [ $# -lt 1 ]; then
     usage
 fi
@@ -455,6 +930,53 @@ case "$1" in
     IMPORT_FILE="$2"
     ENVNAME="$3"
     import_env "$IMPORT_FILE" "$ENVNAME"
+    ;;
+  run)
+    if [ $# -lt 2 ]; then
+      usage_run
+    fi
+    ENVNAME="$2"
+    shift 2
+    run_command "$ENVNAME" "$@"
+    ;;
+  clean)
+    if [ $# -lt 1 ]; then
+      usage_clean
+    fi
+    if [ $# -ge 2 ] && [ "$2" = "--all-envs" ]; then
+      shift 1
+      clean_env "" "$@"
+    else
+      if [ $# -lt 2 ]; then
+        usage_clean
+      fi
+      ENVNAME="$2"
+      shift 2
+      clean_env "$ENVNAME" "$@"
+    fi
+    ;;
+  snapshot)
+    if [ $# -lt 2 ]; then
+      usage_snapshot
+    fi
+    
+    if [ $# -ge 3 ] && [ "$3" = "--list" ]; then
+      list_snapshots "$2"
+    elif [ $# -ge 3 ] && [ "$3" = "--restore" ]; then
+      if [ $# -lt 4 ]; then
+        echo "Usage: $0 snapshot <env> --restore <snapshot>"
+        exit 1
+      fi
+      restore_snapshot "$2" "$4"
+    elif [ $# -ge 3 ] && [ "$3" = "--delete" ]; then
+      if [ $# -lt 4 ]; then
+        echo "Usage: $0 snapshot <env> --delete <snapshot>"
+        exit 1
+      fi
+      delete_snapshot "$2" "$4"
+    else
+      create_snapshot "$2" "${3:-}"
+    fi
     ;;
   *)
     usage

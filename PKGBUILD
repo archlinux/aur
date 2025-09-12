@@ -3,7 +3,7 @@
 
 pkgname=arch-shell
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Outil pour créer des environnements chroot Arch jetables, façon nix-shell, basé sur devtools."
 arch=('any')
 url="https://github.com/0xbbuddha/arch-shell"
@@ -12,7 +12,7 @@ depends=('devtools' 'bash')
 provides=('arch-shell')
 backup=()
 source=('arch-shell')
-sha256sums=('031b1e6ad31926f67f48f066a7f1a7c76d96d66f9b2a35c68091e8667441ae76')
+sha256sums=('ceb09edfe4f59563be6103f080667e378af563d8d1f6107364db93f44ff8a497')
 
 package() {
     install -Dm755 "${srcdir}/arch-shell" "${pkgdir}/usr/bin/arch-shell"
