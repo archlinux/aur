@@ -1,11 +1,12 @@
 pkgbase = shef
 	pkgdesc = CLI framework for cooking up dynamic shell recipes
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eduardoagarcia/shef
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
+	makedepends = git
 	depends = glibc
 	provides = shef
 	conflicts = shef-git
