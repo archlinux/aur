@@ -1,7 +1,7 @@
 # Maintainer: akku <akkun11.open [at] gmail.com>
 pkgname=tascam-control-panel-git
 pkgver=r132.aefc02d715cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Control Panel for TASCAM US-144MKII"
 arch=(x86_64)
 url="https://github.com/serifpersia/us144mkii"
