@@ -2,9 +2,9 @@
 
 pkgname=ammo-git
 _pkgname=ammo
-pkgver=0.1.0.r541.7d05c60
+pkgver=0.1.0.r542.4787cc4
 _pkgver=0.1.0
-_commit=7d05c601a69678e5e760cd83be92ac3b2637db8c
+_commit=4787cc4988658562b3f46ec9538c9ea289670467
 pkgrel=1
 pkgdesc="Almost Manual Mod Organizer - The Definitive CLI Mod Manager for Linux"
 url="https://github.com/cyberrumor/ammo"
