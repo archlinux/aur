@@ -1,0 +1,23 @@
+pkgbase = python-x690
+	pkgdesc = Pure Python X.690 implementation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/x690
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-importlib-metadata
+	depends = python-pytest
+	depends = python-t61codec
+	provides = python-x690
+	conflicts = python-x690
+	options = !strip
+	options = !debug
+	source = x690-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/x/x690/x690-1.0.0.tar.gz
+	sha256sums = d20068d3891c5710d6f25fc4db85d62b4b46bbcd07a4b994c5751ea777aa4fc0
+
+pkgname = python-x690
