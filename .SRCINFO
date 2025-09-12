@@ -1,7 +1,7 @@
 pkgbase = pg_flame
 	pkgdesc = A flamegraph generator for Postgres EXPLAIN ANALYZE output.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/mgartner/pg_flame
 	arch = i686
 	arch = pentium4

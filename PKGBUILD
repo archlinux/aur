@@ -1,7 +1,8 @@
-# Maintainer: Fuero <fuerob@gmail.com>
+# Maintainer: fuero <fuerob@gmail.com>
 pkgname=pg_flame
+# renovate: datasource=github-releases depName=mgartner/pg_flame
 pkgver=1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="A flamegraph generator for Postgres EXPLAIN ANALYZE output."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mgartner/pg_flame"
@@ -22,16 +23,25 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_ENABLED=1
-  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -x -v"
+  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
+  export GO111MODULE=on
+  export GOPROXY=direct
 
-  cd "$srcdir/$pkgname-$pkgver"
-  go build -o ${pkgname} -ldflags "-linkmode=external -extldflags=${LDFLAGS}" .
-  strip "${pkgname}"
+  cd "${pkgname}-${pkgver}"
+  go build \
+    -ldflags="-s -w ${_x[*]/#/-X=main.}" \
+    -o bin/ \
+    ./...
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  go test -short ./...
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dpm0755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  cd "${pkgname}-${pkgver}"
+  install -Dpm0755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
