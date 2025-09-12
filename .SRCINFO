@@ -18,6 +18,7 @@ pkgbase = caelestia-shell-git
 	depends = lm_sensors
 	depends = fish
 	depends = aubio
+	depends = libpipewire
 	depends = glibc
 	depends = gcc-libs
 	depends = ttf-material-symbols-variable
