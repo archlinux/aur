@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pyocd
 _name=${pkgname#python-}
 pkgver=0.3.3
-pkgrel=3
+pkgrel=5
 pkgdesc="PyOCD SW Debugger. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/spsdk-pyocd"
@@ -12,7 +12,7 @@ depends=(
   python
   python-importlib-metadata
   # AUR
-  # python-spsdk
+  python-spsdk
   python-pyocd
   pyinstaller
 )
@@ -23,8 +23,6 @@ makedepends=(
   python-setuptools-scm
   python-toml
   python-wheel
-  jq
-  curl
 )
 checkdepends=(
   python-pytest
