@@ -1,35 +1,9 @@
 pkgbase = chromium-ffmpeg-legacy
-	pkgdesc = Add codecs to Chromium M137- (libavcodec 61)
-	pkgver = 7.1.2
+	pkgdesc = Old libavcodec 61 ABI is no longer used by any packages
+	pkgver = 8.0
 	pkgrel = 0
 	url = https://ffmpeg.org/
-	install = opera-ffmpeg.install
 	arch = x86_64
-	license = LGPL-2.1-or-later
-	makedepends = nasm
-	makedepends = gcc
-	makedepends = make
-	makedepends = patch
-	depends = glibc
-	provides = opera-ffmpeg-codecs
-	provides = opera-beta-ffmpeg-codecs
-	conflicts = opera-ffmpeg-codecs
-	conflicts = opera-beta-ffmpeg-codecs
-	source = https://github.com/FFmpeg/FFmpeg/archive/84bcf54e92d10982e8635fd6818c5bac49d83410.tar.gz
-	source = no-xheaac-parser.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT
-	source = 137.0.7151.138sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/01f23648c6b84de6c0f717fa4e1816f53b9ee72e/chromium/ffmpeg.sigs?format=TEXT
-	source = aac.patch.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT
-	source = aacREADME.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-7.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-	source = opera-ffmpeg.hook
-	source = opera-ffmpeg.install
-	sha256sums = cc9c01312dc9b48c8ec4892e4913c7b16021c80698f028b4946eda95f98989a9
-	sha256sums = 95381d849385ed1038ef122722d18340b74609cd6317f9679fb4029a09a54d05
-	sha256sums = e1f511613c739870ae886a7814d876c179b0938bc331656342a24fbefe0eac01
-	sha256sums = ef5afc6ea3e9874dec5139725e17215bd0402d88a27426ac2b707f4484bba234
-	sha256sums = bd6b1bbb42370b8443e1b18732fe434d134a7e8344e92befdfb9b514f6167660
-	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
-	sha256sums = 37b00efe749c67c66cdd4620fe9a7e67c41d978e23cf4f86b45f686f621f90ed
-	sha256sums = 8100be6868b0f6202302fd1045e5741fdb3c6be7ea41bb36a72a365979bef56c
 
 pkgname = chromium-ffmpeg-legacy
+	depends = chromium-ffmpeg
