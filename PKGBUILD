@@ -2,9 +2,9 @@
 
 pkgname=max-appimage
 pkgver=25.8.0.490
-pkgrel=0
+pkgrel=1
 
-pkgdesc="MAX is a multifunctional digital platform with a fully integrated messenger."
+pkgdesc="MAX messenger."
 arch=("x86_64")
 url='https://max.ru'
 license=("custom:max")
