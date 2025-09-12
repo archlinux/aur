@@ -1,11 +1,11 @@
 pkgname=jugglinglab-git
-pkgver=1.6.3.r13.g1457959
+pkgver=1.6.5.r5.gbd06e62
 pkgrel=1
 pkgdesc="A program for animating juggling patterns"
 arch=('any')
 url="https://jugglinglab.org/"
 _giturl="https://github.com/jkboyce/jugglinglab"
-makedepends+=('git' 'ant' 'java-environment>=11')
+makedepends+=('git' 'maven' 'java-environment>=11')
 depends+=('java-runtime>=11')
 source+=("git+${_giturl}.git")
 for integ in $(get_integlist)
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd jugglinglab
-  ant
+  mvn package
 }
 
 package() {
