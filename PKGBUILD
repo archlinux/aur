@@ -4,7 +4,7 @@ pkgname=zalo-macos
 replaces=(zalo-unofficial-git)
 provides=(zalo-unofficial-git)
 conflicts=(zalo-unofficial-git)
-pkgver=25.8.1
+pkgver=25.8.3
 pkgrel=1
 pkgdesc="Unofficial Zalo client for Linux, ported from MacOS version"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "LICENSE.html::https://zalo.vn/dieukhoan"
 )
 noextract=("zalo.dmg")
-sha256sums=('86b8657f090da7f5313ce64c4fedaf03aa1212e6995311541d8a2e342fe61f6f'
+sha256sums=('432cf162995e33c083ff09869b92a6b28b05c0751244e1807d4fc0c0720c1546'
             '3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9'
             '7d8618d47839107e19978d68dbbb34cb1fa166607ff4762dea6cfc15d0c0a804'
             '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
