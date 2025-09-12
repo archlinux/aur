@@ -12,7 +12,7 @@ license=('EPL')
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop"
         "openchrom.png")
-sha256sums=('b12ff833e7bbaae1fed3c1fafba569035c8d855f269c28eca75d7c5ada23ffeb'
+sha256sums=('f28185b26dc47a93f2fe20baf40584a34166e68f7bc925ee626373308ea3e5f7'
             '700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1'
             '5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f')
 depends=('org.freedesktop.secrets' 'webkit2gtk')
