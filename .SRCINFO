@@ -1,7 +1,7 @@
 pkgbase = dtv-scan-tables-dvbv3-git
 	pkgdesc = Digital TV scan tables (legacy DVBv3 only - ATSC/DVB-C/DVB-S/DVB-T filtered for v3 compatibility)
 	pkgver = r1310.15661aa
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.linuxtv.org/dtv-scan-tables.git
 	arch = any
 	license = GPL-2.0-only
