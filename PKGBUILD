@@ -3,14 +3,8 @@
 # Contributor: Julio Gutierrez <bubuntux at gmail dot com>
 # Contributor: Martoko <mbastholm at gmail dot com>
 
-#——————————————————————————————————————————————————————————————————————————————
-## NOTE ##
-### This version requires to logging in on NordVPN again ###
-### in order to accept/deny new policies regarding data collection ###
-#——————————————————————————————————————————————————————————————————————————————
-
 pkgname=nordvpn-bin
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'armeabi')
@@ -25,11 +19,11 @@ source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/no
 source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${pkgver//_/-}_armhf.deb")
 source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${pkgver//_/-}_arm64.deb")
 source_armeabi=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${pkgver//_/-}_armel.deb")
-sha256sums_x86_64=('7a529110a885af1d938093c9975011b4479bb2fe0f346f5f32ada6ad5f719e0b')
-sha256sums_i686=('092a02500ef9b34cd0c244d7f8863cf2659d4140dac731d0260da4e202520665')
-sha256sums_armv7h=('fcfe0c090d19ba8e57ff8ca86296a11dbe554654a0b7ec2751e509b5778b4f44')
-sha256sums_aarch64=('69ee4bbe4d4ea498f64ea1f80a1cfcab74709f3b2f15df0b1ac9d654de5beba8')
-sha256sums_armeabi=('646df9b6806fc1b65a9e210972298760363561a9ce208f632a866a06af5fd8e4')
+sha256sums_x86_64=('90247034965215c893cb782d917b33b3a21b79d47ed443cbf619d3b64ff3f314')
+sha256sums_i686=('2cbc50f3f1c4fb34af161012b76155a4de9ff13d33205e8b2bd7a14eb1e7879c')
+sha256sums_armv7h=('b1c9669f3c2af66f37def0fb595fac4be52ab49c74d11687cf4a4ec35c0dbd0b')
+sha256sums_aarch64=('d8eae88aa5ece6338f9103434a23bd5fac15e2fdb1e5b6a01e38e8f104877acf')
+sha256sums_armeabi=('2fe698e576f3d93bd5838f9595c1c55a8ea09f3f18bcdbc69f1005f2ee764f26')
 
 package() {
     bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
