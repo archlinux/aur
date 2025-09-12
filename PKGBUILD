@@ -1,7 +1,7 @@
 
 _prams=(fr_FR 7884 'Logiciel de création CEWE' 8.0.4 "CEWE France")
 
-pkgname="$(echo ${_prams[2]} | iconv -t ascii//TRANSLIT | sed 's/[ .]/_/g')"
+pkgname="cewe-france"
 pkgver=8.0.4
 pkgrel=1
 
