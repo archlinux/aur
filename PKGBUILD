@@ -1,26 +1,41 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-libusb-package
-pkgver=1.0.26.2
+_name=${pkgname#python-}
+pkgver=1.0.26.3
 pkgrel=1
-pkgdesc='Packaged libusb shared libraries for Python.'
-arch=('x86_64')
+pkgdesc='Package containing libusb so it can be installed via Python package managers'
+arch=($CARCH)
 url='https://github.com/pyocd/libusb-package'
 license=('Apache-2.0')
-depends=('python' 'libusb')
-makedepends=('python-build' 'python-installer' 'python-wheel'
-             'python-setuptools' 'python-setuptools-scm' 'libusb')
-source=("$pkgname-$pkgver::https://github.com/pyocd/libusb-package/archive/v$pkgver.tar.gz")
-sha256sums=('00060efe95fd9034b3fe1e959269e5c45be0324e459ef1c7171229bde66223c4')
-
-_pkgname=libusb-package
+provides=(${_name})
+conflicts=(${_name})
+depends=(
+  'python'
+  'python-importlib_resources'
+  'python-pyusb'
+  # AUR
+  pyinstaller
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'python-tomli'
+  'libusb'
+)
+source=("$pkgname-$pkgver::${url}/archive/v$pkgver.tar.gz")
+sha256sums=('c83823b244bb153a0bb8d1e1d86cd4553d354dd6fbfc87ed2aae8d3a3acd6df8')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }

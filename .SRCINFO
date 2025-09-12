@@ -1,6 +1,6 @@
 pkgbase = python-libusb-package
-	pkgdesc = Packaged libusb shared libraries for Python.
-	pkgver = 1.0.26.2
+	pkgdesc = Package containing libusb so it can be installed via Python package managers
+	pkgver = 1.0.26.3
 	pkgrel = 1
 	url = https://github.com/pyocd/libusb-package
 	arch = x86_64
@@ -10,10 +10,15 @@ pkgbase = python-libusb-package
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-tomli
 	makedepends = libusb
 	depends = python
-	depends = libusb
-	source = python-libusb-package-1.0.26.2::https://github.com/pyocd/libusb-package/archive/v1.0.26.2.tar.gz
-	sha256sums = 00060efe95fd9034b3fe1e959269e5c45be0324e459ef1c7171229bde66223c4
+	depends = python-importlib_resources
+	depends = python-pyusb
+	depends = pyinstaller
+	provides = libusb-package
+	conflicts = libusb-package
+	source = python-libusb-package-1.0.26.3::https://github.com/pyocd/libusb-package/archive/v1.0.26.3.tar.gz
+	sha256sums = c83823b244bb153a0bb8d1e1d86cd4553d354dd6fbfc87ed2aae8d3a3acd6df8
 
 pkgname = python-libusb-package
