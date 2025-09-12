@@ -1,10 +1,11 @@
 pkgbase = python-pyffms2
 	pkgdesc = pyffms2 – Python bindings for FFMS2
-	pkgver = 0.4.5.5
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/bubblesub/pyffms2/
 	arch = any
-	license = LGPL3
+	license = LGPL-3.0-or-later
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,7 +13,7 @@ pkgbase = python-pyffms2
 	depends = python
 	depends = ffms2
 	depends = python-numpy
-	source = pyffms2-0.4.5.5.tar.gz::https://github.com/bubblesub/pyffms2/archive/refs/tags/0.4.5.5.tar.gz
-	sha256sums = bc06b2f0460a05e542f7612d05a10b9954ac99c392674f94adbb89e2bcdb3571
+	source = pyffms2-0.5.tar.gz::https://github.com/bubblesub/pyffms2/archive/refs/tags/0.5.tar.gz
+	sha256sums = b36398a26223ec658687d426ecb6fcaf541517fa230e9721529cc631a18cbd2a
 
 pkgname = python-pyffms2

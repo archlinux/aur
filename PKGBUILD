@@ -1,16 +1,17 @@
 # Maintainer: Vekhir <vekhir AT yahoo DOT com>
 
 pkgname='python-pyffms2'
-pkgver=0.4.5.5
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc='pyffms2 – Python bindings for FFMS2'
 arch=('any')
 url='https://github.com/bubblesub/pyffms2/'
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=('python' 'ffms2' 'python-numpy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest')
 source=("pyffms2-${pkgver}.tar.gz::https://github.com/bubblesub/pyffms2/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bc06b2f0460a05e542f7612d05a10b9954ac99c392674f94adbb89e2bcdb3571')
+sha256sums=('b36398a26223ec658687d426ecb6fcaf541517fa230e9721529cc631a18cbd2a')
 
 build() {
   cd pyffms2-${pkgver}/
@@ -20,7 +21,7 @@ build() {
 check() {
   cd pyffms2-${pkgver}/
   export PYTHONPATH="."
-  python -m unittest
+  python -m pytest
 }
 
 package() {
