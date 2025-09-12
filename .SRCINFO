@@ -1,12 +1,10 @@
 pkgbase = max-bin
-	pkgdesc = MAX is a multifunctional digital platform with a fully integrated messenger.
+	pkgdesc = MAX messenger.
 	pkgver = 25.8.0.490
-	pkgrel = 0
+	pkgrel = 1
 	url = https://max.ru
 	arch = x86_64
 	license = custom:max
-	makedepends = tar
-	makedepends = binutils
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -20,7 +18,7 @@ pkgbase = max-bin
 	optdepends = libayatana-appindicator: tray icon
 	provides = max
 	conflicts = max
-	source = https://download.max.ru/electron/MAX.deb
-	sha256sums = 133d3e4c2194cf6f2adc0e4c3ba0fccc367928a5c6cb6e644ff0947967c612a3
+	source_x86_64 = https://download.max.ru/electron/MAX.rpm
+	sha256sums_x86_64 = c26585c7c142eec1d16ddbb2ca6a5956599f6f52497732c31550ed5591ed5164
 
 pkgname = max-bin
