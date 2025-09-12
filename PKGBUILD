@@ -2,19 +2,19 @@
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=openchrom
-pkgver=1.5.24
+pkgver=1.5.25
 pkgrel=1
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
 license=('EPL')
 # Don't build from source as there are no tagged releases and the marketplace is missing.
-source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_linux.x86_64_${pkgver}.tar.gz"
+source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop"
         "openchrom.png")
-sha256sums=('3c21519eca1b3c4aafca293064a64b2d1262952d76633b6baeb81553057b2925'
-            'SKIP'
-            'SKIP')
+sha256sums=('b12ff833e7bbaae1fed3c1fafba569035c8d855f269c28eca75d7c5ada23ffeb'
+            '700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1'
+            '5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f')
 depends=('org.freedesktop.secrets' 'webkit2gtk')
 options=(!strip)
 
