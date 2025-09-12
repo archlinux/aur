@@ -3,13 +3,14 @@
 pkgname=python-spsdk-mcu-link
 _name=${pkgname#python-}
 pkgver=0.6.6
-pkgrel=1
+pkgrel=3
 pkgdesc="SPSDK MCU-Link. A debugger probe plugin for SPSDK supporting LPC-Link/MCU-Link from NXP."
 arch=(any)
 url="https://pypi.org/project/${_name}"
 license=(BSD-3-Clause)
 depends=(
   python
+  python-hid
   python-pyusb
   # AUR
   python-libusb-package
