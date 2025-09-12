@@ -1,6 +1,6 @@
 pkgbase = python-scipy-mkl-tbb
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = http://www.scipy.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-scipy-mkl-tbb
 	provides = python-scipy
 	conflicts = python-scipy
 	conflicts = python-scipy-mkl
-	source = https://pypi.python.org/packages/source/s/scipy/scipy-1.16.1.tar.gz
-	sha256sums = 44c76f9e8b6e8e488a586190ab38016e4ed2f8a038af7cd3defa903c0a2238b3
+	source = https://pypi.python.org/packages/source/s/scipy/scipy-1.16.2.tar.gz
+	sha256sums = af029b153d243a80afb6eabe40b0a07f8e35c9adc269c019f364ad747f826a6b
 
 pkgname = python-scipy-mkl-tbb
