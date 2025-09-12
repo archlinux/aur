@@ -6,7 +6,7 @@
 _pkgname='dtv-scan-tables'
 pkgname="dtv-scan-tables-patched"
 pkgver=r1309.caca23f
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital TV scan tables (pinned to good commit to avoid current dvbv3 breakage)"
 url="https://git.linuxtv.org/dtv-scan-tables.git"
 license=('GPL-2.0-only' 'LGPL-2.0-only')
@@ -14,8 +14,7 @@ arch=('any')
 
 makedepends=('git' 'v4l-utils')
 
-provides=('dtv-scan-tables-dvbv3' 'dtv-scan-tables-legacy')
-conflicts=('dtv-scan-tables' 'dtv-scan-tables-git' 'dtv-scan-tables-patched')
+conflicts=('dtv-scan-tables' 'dtv-scan-tables-git' 'dtv-scan-tables-dvbv3' 'dtv-scan-tables-dvbv5')
 
 _pkgsrc="$_pkgname"
 # Pin to last good commit that compiles: caca23fb546620433763a3ec04f65e62855b1dbc
