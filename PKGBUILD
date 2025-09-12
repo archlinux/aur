@@ -4,14 +4,14 @@
 
 pkgname='hentaiathome'
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries"
 arch=('x86_64')
 url="https://ehwiki.org/wiki/Hentai@Home"
 license=('GPL3')
-provides=('hentaiathome-bin' 'hentaiathome-cli' 'hentaiathome-gui')
+provides=('hentaiathome' 'hentaiathome-cli' 'hentaiathome-gui')
 conflicts=('hentaiathome-bin' 'hentaiathome-cli' 'hentaiathome-gui')
-depends=('java-runtime>=8' 'sqlite-jdbc')
+depends=('java-runtime>=8')
 source=("HentaiAtHome_${pkgver}.zip::https://repo.e-hentai.org/hath/HentaiAtHome_${pkgver}_src.zip"
         "hentaiathome@.service"
         "hentaiathome.desktop"
@@ -25,9 +25,8 @@ sha256sums=('4d3f7d67b05089dab0c6d774999605cd121997f36d0ef5f75a380d90f73df29d'
 
 build(){
     cd "${srcdir}"
-    ln -s /usr/share/java/sqlite-jdbc/sqlite-jdbc.jar sqlite-jdbc.jar
-    make hath
-    make jar
+    make
+    make all
 }
 package(){
     cd "${srcdir}"
@@ -39,6 +38,5 @@ package(){
     install -Dm644 hentaiathome@.service "${pkgdir}/usr/lib/systemd/system/hentaiathome@.service"
     install -Dm755 hentaiathome-cli "${pkgdir}/usr/bin/hentaiathome-cli"
     install -Dm755 hentaiathome-gui "${pkgdir}/usr/bin/hentaiathome-gui"
-    ln -sf /usr/share/java/sqlite-jdbc/sqlite-jdbc.jar "${pkgdir}/usr/lib/hath/sqlite-jdbc.jar"
 }
 

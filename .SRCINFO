@@ -1,13 +1,12 @@
 pkgbase = hentaiathome
 	pkgdesc = An open-source Peer-2-Peer gallery distribution system which reduces the load on the E-Hentai Galleries
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ehwiki.org/wiki/Hentai@Home
 	arch = x86_64
 	license = GPL3
 	depends = java-runtime>=8
-	depends = sqlite-jdbc
-	provides = hentaiathome-bin
+	provides = hentaiathome
 	provides = hentaiathome-cli
 	provides = hentaiathome-gui
 	conflicts = hentaiathome-bin
