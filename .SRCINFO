@@ -1,7 +1,7 @@
 pkgbase = mynav
 	pkgdesc = terminal-based workspace navigator and session manager
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GianlucaP106/mynav
 	arch = x86_64
 	arch = aarch64
