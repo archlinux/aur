@@ -1,6 +1,6 @@
 pkgbase = winboat
 	pkgdesc = Run Windows apps on Linux with seamless integration
-	pkgver = 0.7.9
+	pkgver = 0.7.10
 	pkgrel = 1
 	url = https://www.winboat.app
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = winboat
 	depends = gtk3
 	depends = nss
 	options = !strip
-	source = git+https://github.com/TibixDev/winboat.git#tag=v0.7.9
-	sha256sums = 924a69902846cf7529d11b120b7443e2a44ee1248005bd15f5c87d4fb580becc
+	source = git+https://github.com/TibixDev/winboat.git#tag=v0.7.10
+	sha256sums = 44ad59c155656d9f923cb1f0ffa3ebe3b80c1dfda120b48e7c58664e19cd5d54
 
 pkgname = winboat
