@@ -1,0 +1,6 @@
+zed/
+LICENSE
+*.asc
+*.tar.*
+src/
+pkg/

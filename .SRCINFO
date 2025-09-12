@@ -1,0 +1,18 @@
+pkgbase = authzed-zed
+	pkgdesc = Official command-line tool for managing SpiceDB
+	pkgver = v0.31.1
+	pkgrel = 1
+	url = https://github.com/
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	optdepends = bash-completion
+	provides = authzed-zed
+	source = git+https://github.com/authzed/zed.git#commit=5faad1c6355039270bc578243a919bdca8915c0d
+	validpgpkeys = 968479a1aff927e37d1a566bb5690eeebb952194
+	sha256sums = c68375b0863a322bab02e5c1900c953458d8aaedbb008cba5088c937fb906e98
+
+pkgname = authzed-zed
