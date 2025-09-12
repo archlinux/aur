@@ -1,19 +1,18 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-spsdk-pyocd
 _name=${pkgname#python-}
-pkgver=0.3.2
-pkgrel=0
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="PyOCD SW Debugger. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/spsdk-pyocd"
-_name=${_name//-/_}
 license=(BSD-3-Clause)
 depends=(
   python
   python-importlib-metadata
   # AUR
-  python-spsdk
+  # python-spsdk
   python-pyocd
   pyinstaller
 )
@@ -37,9 +36,10 @@ optdepends=(
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
-_real_url=$(curl -s "https://pypi.org/pypi/${_name//_/-}/${pkgver}/json" | jq -r '.urls[] | select(.packagetype == "sdist") | .url')
+_real_url=$(curl -s "https://pypi.org/pypi/${_name}/${pkgver}/json" | jq -r '.urls[] | select(.packagetype == "sdist") | .url')
+_name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::${_real_url}")
-sha512sums=('d4a49989ecb5ff46ded385a71546bb13df13721f67981adbcaf372f68a7bf10a089985c6a5b5e0cd9761d850fe40c7e5232ebc6e11a1ff6afd96b9be2cc952e0')
+sha512sums=('faa0b1d2fad41f9a7794982d1cce643e5d142b7734648a7a98238f8ace58cbd6e4812398284a3b383b638d630b12da53972a4eb63c9b0453c13b06d3f2e4ad39')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
