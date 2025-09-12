@@ -10,7 +10,7 @@ pkgname="$_pkgname"
 pkgver=25.9.0
 pkgrel=1
 pkgdesc="A wayland native, highly customizable runner"
-url="https://github.com/Kirottu/anyrun"
+url="https://github.com/anyrun-org/anyrun"
 license=('GPL-3.0-only')
 arch=("x86_64")
 
