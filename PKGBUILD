@@ -3,10 +3,10 @@
 
 pkgname=aften
 pkgver=0.0.8
-pkgrel=3
-arch=('i686' 'x86_64')
+pkgrel=5
+arch=('x86_64')
 pkgdesc="Audio encoder which generates compressed audio streams based on ATSC A/52 specification."
-url="http://aften.sourceforge.net/"
+url='http://aften.sourceforge.net'
 license=('GPL')
 depends=('glibc')
 makedepends=('cmake')
@@ -20,9 +20,11 @@ prepare() {
 build() {
   cd build
   cmake "../${pkgname}-${pkgver}" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSHARED=ON
+    -DSHARED=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+
   make
 }
 
