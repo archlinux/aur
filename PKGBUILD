@@ -1,5 +1,5 @@
 pkgname='linuxtoys-bin'
-pkgver='5.2.0'
+pkgver='5.3.0'
 pkgrel=1
 arch=('x86_64')
 depends=(bash git curl wget zenity python python-gobject gtk3 jq)
@@ -8,7 +8,7 @@ conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 install=linuxtoys.install
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('fbd42a7715150148c7e4ecb2d0b84190562a41a88a41a654187232bbf11e8c63')
+sha256sums=('b60a2ab78863ab7f626daf34f38744b970d9d6f99b92632926dce746d8ec2c45')
 
 package() {
     mkdir -p ${pkgdir}/usr
