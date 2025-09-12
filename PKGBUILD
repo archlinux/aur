@@ -2,8 +2,8 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.13.1
-pkgrel=4
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'p
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv' 'ruff')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 source=("$_name-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('bc1584396da89eaa374be9cc3ae9f895d012a90a58b72be6f85467740e3c4bb5')
+sha256sums=('9760df35f845dd98dae31b43824df681e243c2a2aa223955d0773cc0774726ed')
 
 prepare(){
   cd "$srcdir"/$_name-$pkgver
