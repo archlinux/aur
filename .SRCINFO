@@ -1,6 +1,6 @@
 pkgbase = tascam-control-panel-git
 	pkgdesc = Control Panel for TASCAM US-144MKII
-	pkgver = r131.44a15c5df1ea
+	pkgver = r132.aefc02d715cc
 	pkgrel = 1
 	url = https://github.com/serifpersia/us144mkii
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = tascam-control-panel-git
 	makedepends = git
 	depends = qt6-base
 	depends = alsa-lib
+	optdepends = us144mkii: us144mkii ALSA driver (it will be merged on Linux 6.18)
 	provides = tascam-control-panel
 	conflicts = tascam-control-panel
 	source = git+https://github.com/serifpersia/us144mkii
