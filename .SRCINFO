@@ -1,10 +1,10 @@
 pkgbase = bashhub-server
 	pkgdesc = a private cloud alternative for bashhub-client with some added features like regex search.
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nicksherron/bashhub-server
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = go-pie
 	depends = glibc
