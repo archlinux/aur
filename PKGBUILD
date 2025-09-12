@@ -3,21 +3,17 @@
 pkgbase=python-firefly
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A browser-based particle visualization platform"
 arch=('any')
 url="https://firefly.rcs.northwestern.edu"
 license=('AGPL-3.0-or-later')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
-             'python-installer')
+             'python-installer')  # wheel required by new setuptools
 checkdepends=('python-pytest'
-              'python-h5py'
-              'python-pandas'
-              'python-requests'
-              'python-abg')
+              'python-abg') # h5py, matplotlib, pandas(scipy,requests) <- abg
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('ad4d7cf7954769489fdc15453cc760c4')
 
@@ -36,7 +32,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-firefly() {

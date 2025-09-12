@@ -1,20 +1,16 @@
 pkgbase = python-firefly
 	pkgdesc = A browser-based particle visualization platform
-	pkgver = 3.3.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://firefly.rcs.northwestern.edu
 	arch = any
 	license = AGPL-3.0-or-later
 	checkdepends = python-pytest
-	checkdepends = python-h5py
-	checkdepends = python-pandas
-	checkdepends = python-requests
 	checkdepends = python-abg
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/f/firefly/firefly-3.3.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/firefly/firefly-3.4.0.tar.gz
 	md5sums = ad4d7cf7954769489fdc15453cc760c4
 
 pkgname = python-firefly
