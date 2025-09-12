@@ -6,7 +6,7 @@
 # Contributor: bender02 at archlinux dot us
 
 pkgname=aespipe
-pkgver=2.4i
+pkgver=2.4j
 pkgrel=1
 pkgdesc="Encrypts data from stdin to stdout"
 arch=('i686' 'x86_64' 'armv7h')
@@ -14,7 +14,7 @@ url="http://loop-aes.sourceforge.net"
 license=('GPL')
 depends=('sharutils')
 source=(http://loop-aes.sourceforge.net/${pkgname}/${pkgname}-v${pkgver}.tar.bz2{,.sign})
-sha384sums=('28ea48b86f9c59d04438eefd973131eb18033645c6df1eea0fc4b4dee74125cfa32509c8c72ae4259e387efe0bfa5a90'
+sha384sums=('dfe83afe6993a5c32536f81e1c1f064a980dd56e8483a45c1bcd0992b9ea8045bfe4f5e6a1b1ced8663e621e1768fe00'
             'SKIP')
 # Please manually verify that the Signer PGP key is the correct one.
 # If you are lazy and don't care about security you can enable
