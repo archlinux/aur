@@ -45,7 +45,7 @@ makedepends=(
   'extra-cmake-modules'
   'kdoctools5'
   'kdesignerplugin'
-  'kinit'
+  'kinit5'
   'doxygen'
   'python'
 )
@@ -94,7 +94,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_INSTALL_PREFIX="${srcdir}/fakeroot/usr" \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build-libkcddb
   cmake --install build-libkcddb
@@ -103,7 +104,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_INSTALL_PREFIX="${srcdir}/fakeroot/usr" \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build-libkcompactdisc
   cmake --install build-libkcompactdisc
@@ -115,7 +117,8 @@ build() {
     -DKF5Cddb_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5Cddb" \
     -DKF5CompactDisc_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5CompactDisc" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build-audiocd-kio
 
@@ -126,7 +129,8 @@ build() {
     -DBUILD_TESTING=ON \
     -DKF5Cddb_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5Cddb" \
     -DKF5CompactDisc_DIR="${srcdir}/fakeroot/usr/lib/cmake/KF5CompactDisc" \
-    -DSERVICES_INSTALL_DIR=/usr/share/kio
+    -DSERVICES_INSTALL_DIR=/usr/share/kio \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build
 }
