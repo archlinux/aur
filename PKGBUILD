@@ -1,7 +1,7 @@
 # Maintainer: Ossian Winter <ossian@winter.vg>
 
 pkgname=sway-ow
-pkgver=1.12.r7599.8ed7a32
+pkgver=1.12.r7608.62b4e8e
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
