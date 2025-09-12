@@ -1,8 +1,8 @@
 # Maintainer: archlinuxauruser <archlinuxauruser at messagebox dot email>
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=f2
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/ayoisaiah/${pkgname}"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}-LICENCE::${url/github/raw.githubusercontent}/v${pk
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 b2sums=('1375f8eb689085b7735551ce0f5f19167df905bdf8f105ac72479ae6214666f74a03ce24766bc08a9407c878ecd8078ca3e81013ecf4fd8c80a52dc308e29d78')
-b2sums_x86_64=('7083915839ef70828e98a08836f9b515dd9e179307078a963e7b375e1e9450e1b2492a1e578e556d4a3c50fc0ca3f7a0702221c6db733f2c4383101e5eadce12')
+b2sums_x86_64=('518ae14e058e9f0b55bf873235932734f4bb0567d570db2fa3d6e0e69a16724c1908874f503f391b8e180ec5affd2483ea8c1af2e088a314e2804a30997df1d0')
 
 build() {
 	declare -x CGO_CPPFLAGS="${CPPFLAGS}"
