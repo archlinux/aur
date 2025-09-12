@@ -14,14 +14,14 @@
 _pkgname='dtv-scan-tables-dvbv3'
 pkgname='dtv-scan-tables-dvbv3-git'
 pkgver=r1310.15661aa
-pkgrel=5
+pkgrel=6
 pkgdesc='Digital TV scan tables (legacy DVBv3 only - ATSC/DVB-C/DVB-S/DVB-T filtered for v3 compatibility)'
 url='https://git.linuxtv.org/dtv-scan-tables.git'
 license=('GPL-2.0-only' 'LGPL-2.0-only')
 arch=('any')
 makedepends=('git' 'v4l-utils')   # dvb-format-convert is used by `make dvbv3`
 provides=('dtv-scan-tables-dvbv3' 'dtv-scan-tables-legacy')
-# Conflict 'dtv-scan-tables' has to be removed, when the metapackage 'dtv-scan-tables' including "dtv-scan-tables-dvbv*-git" is created. Currently that package is already owned so it's incompatible.
+# Conflict 'dtv-scan-tables-git' has to be removed, when the metapackage 'dtv-scan-tables' including "dtv-scan-tables-dvbv*-git" is created. Currently that package is already owned so it's incompatible.
 conflicts=('dtv-scan-tables' 'dtv-scan-tables-git' 'dtv-scan-tables-patched')
 optdepends=('dtv-scan-tables-dvbv5-git: current DVBv5 scan tables')
 source=("$_pkgname::git+https://git.linuxtv.org/dtv-scan-tables.git${_commit:+#commit=$_commit}")
