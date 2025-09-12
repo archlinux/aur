@@ -3,7 +3,7 @@
 
 pkgname=onedrivegui
 _pkgname=OneDriveGUI
-pkgver=1.2.1
+pkgver=1.2.2
 _commit=eb4c39375e04b02e669a7826c9d12174c6a3f08c
 pkgrel=1
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
