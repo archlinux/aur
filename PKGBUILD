@@ -20,8 +20,9 @@ source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://docs.qq.com
 
 
 sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
-sha256sums_x86_64=('6f8488d3a38d689fee32e7cdd2db5aa8409d9b727c2d1057e4179f1c1adf07e3')
-sha256sums_aarch64=('df81d50ac880cd57a2dee2a058fc64ac307adcac996fbcbc57d30031dab7bf2b')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+
 
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
