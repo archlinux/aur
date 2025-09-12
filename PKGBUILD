@@ -11,10 +11,10 @@
 #   only filters keys inside each section before converting to dvbv3.
 
 : ${_commit=}   # optionally pin to a specific rev (empty = tip)
-_pkgname='dtv-scan-tables'
+_pkgname='dtv-scan-tables-dvbv3'
 pkgname='dtv-scan-tables-dvbv3-git'
 pkgver=r1310.15661aa
-pkgrel=3
+pkgrel=4
 pkgdesc='Digital TV scan tables (legacy DVBv3 only - ATSC/DVB-C/DVB-S/DVB-T filtered for v3 compatibility)'
 url='https://git.linuxtv.org/dtv-scan-tables.git'
 license=('GPL-2.0-only' 'LGPL-2.0-only')
