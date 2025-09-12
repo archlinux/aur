@@ -1,7 +1,7 @@
 pkgbase = us144mkii-dkms-git
-	pkgdesc = The Example kernel modules (DKMS)
+	pkgdesc = Linux kernel driver for TASCAM US-144MKII (This driver will be merged on Linux 6.18)
 	pkgver = r132.aefc02d715cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serifpersia/us144mkii
 	arch = x86_64
 	license = GPL-2.0-only
