@@ -6,7 +6,8 @@ _so=libffmpeg.so
 pkgdesc="Add codecs to Chromium (libavcodec 62 from ffmpeg.org)"
 arch=('x86_64')
 depends=(glibc)
-conflicts=({nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs chromium-ffmpeg{,-legacy}
+conflicts=(${pkgname%-bin}
+{nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs
 opera{,-developer,-beta}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 url=https://github.com/oech3/Chromium-FFmpeg/releases
@@ -14,7 +15,6 @@ license=('LGPL-2.1-or-later')
 install=chromium-ffmpeg.install
 source=($install chromium-ffmpeg.hook
 "${url}/download/${pkgver%_*}/ffmpeg-${pkgver%_*}-linux-x64.tar.zst"
-#"${url}/download/${pkgver#*_}/ffmpeg-${pkgver#*_}-linux-x64.tar.zst"
 )
 sha256sums=('684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005'
             '6873b38d05e884f3f7fa1c2019ce380d717b3f95af75a1218fbd94a1054f65ad'
