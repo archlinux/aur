@@ -12,9 +12,7 @@ arch=('any')
 url="https://github.com/burningtnt/HMCL"
 license=('GPL-3.0-or-later')
 depends=('java-runtime' 'hicolor-icon-theme')
-provides=('hmcl')
-conflicts=('hmcl')
-replaces=('hmcl-stable-bin')
+conflicts=('hmcl' 'hmcl-bin' 'hmcl-dev-bin' 'hmcl-beta-bin')
 source=("hmcl-pr.desktop"
         "hmcl-pr-launch-script"
         "${pkgname}-${pkgver//_/-}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/81837d0ae79f94d275462b07213f703b31a6ade4/HMCL-${pkgver//_/-}.jar")
