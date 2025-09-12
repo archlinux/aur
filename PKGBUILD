@@ -2,14 +2,14 @@
 
 pkgname=totpm
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A TPM-backed command line TOTP/2FA client, using fprintd for user presence checking."
 url="https://github.com/koditoriet/totpm"
 license=("MIT")
 arch=("x86_64")
 depends=('gcc-libs' 'glibc' 'dbus' 'tpm2-tss' 'sqlite')
 makedepends=('rust')
-source=("https://github.com/koditoriet/totpm/archive/refs/tags/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz:https://github.com/koditoriet/totpm/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("eed4e1c8f13908731dc11ed667765652bc176ac30afa478f81056c1434f750ba")
 
 build() {
@@ -21,4 +21,5 @@ package() {
     cd totpm-$pkgver
     install -Dm755 target/release/totpm -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 totpm.conf "$pkgdir/etc/totpm.conf"
 }
