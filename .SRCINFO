@@ -1,9 +1,9 @@
-pkgbase = cewe-france
+pkgbase = logiciel_de_creation_cewe
 	pkgdesc = un client hors ligne pour créer des livres photo et d'autres produits photo et les commander auprès de CEWE ou de partenaires
-	pkgver = 7.4.4
+	pkgver = 8.0.4
 	pkgrel = 1
 	url = http://www.cewe.de/
-	install = cewe-france.install
+	install = logiciel_de_creation_cewe.install
 	arch = i686
 	arch = x86_64
 	license = custom:eula
@@ -17,11 +17,8 @@ pkgbase = cewe-france
 	depends = libxcrypt-compat
 	conflicts = cewe-fotowelt
 	conflicts = cewe-fotobuch
-	conflicts = cewe-fotoservice
 	options = !strip
-	source = https://dls.photoprintit.com/download/Data/16523-de_DE/hps/setup_Mein_CEWE_FOTOBUCH.tgz
-	source = updater.pl
-	md5sums = SKIP
-	md5sums = SKIP
+	source = https://dls.photoprintit.com/download/Data/7884-fr_FR/hps/setup_Logiciel_de_creation_CEWE.tgz
+	md5sums = d85225335c8980f9648192e30e1167f9
 
-pkgname = cewe-france
+pkgname = logiciel_de_creation_cewe
