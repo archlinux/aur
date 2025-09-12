@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Display other columns in the unit browser
+- Expand filter to other unit properties
+
+### Added
+- Fix Flatpak save file in home directory (make a warning)
+
+## [1.32.3] - 2025-09-12
+
+### Fixed
+- Saving file (without privilege elevation) doesn't overwrite completely the old file. https://github.com/plrigaux/sysd-manager/issues/21
+
 ## [1.32.2] - 2025-09-11
 
 ### Changed
@@ -37,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.31.1] - 2025-08-14
 
 ### Fixed
-- Filter UI behaviour
+- Filter UI behavior
 
 ## [1.31.0] - 2025-08-13
 
