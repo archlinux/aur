@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=graphomaly
 pkgname="python-$_name"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 
 pkgdesc="Find abnormal data in graph and network structures"
@@ -29,7 +29,7 @@ depends=(python
 makedepends=(python-build python-installer python-wheel)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d9e541ff6420b17e2f0bca26faabe768e1b7724e956948d6cdf678d0259f56cb')
+sha256sums=('7cdf8b64eb8e9d7c110d47a53b12c5d3483275b7743c95708f1be3ddf4d2f30a')
 
 build() {
   cd "$srcdir/$_name-$pkgver"

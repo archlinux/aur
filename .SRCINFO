@@ -1,6 +1,6 @@
 pkgbase = python-graphomaly
 	pkgdesc = Find abnormal data in graph and network structures
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://gitlab.com/unibuc/graphomaly/graphomaly
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-graphomaly
 	depends = python-scipy
 	depends = python-tensorflow
 	depends = python-wrapt-timeout-decorator
-	source = https://files.pythonhosted.org/packages/source/g/graphomaly/graphomaly-0.3.1.tar.gz
-	sha256sums = d9e541ff6420b17e2f0bca26faabe768e1b7724e956948d6cdf678d0259f56cb
+	source = https://files.pythonhosted.org/packages/source/g/graphomaly/graphomaly-0.3.2.tar.gz
+	sha256sums = 7cdf8b64eb8e9d7c110d47a53b12c5d3483275b7743c95708f1be3ddf4d2f30a
 
 pkgname = python-graphomaly
