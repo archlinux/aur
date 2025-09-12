@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
 depends=(libxss nss gtk3)
-makedepends=(nodejs npm libxcrypt-compat unzip)
+makedepends=(nodejs npm libxcrypt-compat python unzip)
 source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
         "luna-${_tidalunaver}.zip::https://github.com/Inrixia/TidaLuna/releases/download/${_tidalunaver}/luna.zip"
         "tidal-hifi-tidaluna.desktop")

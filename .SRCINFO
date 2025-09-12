@@ -8,6 +8,7 @@ pkgbase = tidal-hifi-tidaluna
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = libxcrypt-compat
+	makedepends = python
 	makedepends = unzip
 	depends = libxss
 	depends = nss
