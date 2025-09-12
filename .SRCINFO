@@ -6,7 +6,7 @@ pkgbase = flyctl
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	source = https://github.com/superfly/flyctl/archive/v0.3.177/flyctl-0.3.177.tar.gz
+	source = https://github.com/superfly/flyctl/archive/v0.3.178/flyctl-0.3.178.tar.gz
   b2sums = 45cbe11a6620db9a4555cdd88f2aee84ecbcce91c44ec2dbaf8ff995e26bbb48903223b5ec9acd4a873de4f8382419823f0489df313c66d767aa2db7033c8996
 
 pkgname = flyctl
