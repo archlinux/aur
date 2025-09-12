@@ -3,7 +3,7 @@ _pkgname=ls-lint
 pkgname="${_pkgname}-git"
 # renovate: pkgName=https://github.com/loeffel-io/ls-lint depName=ls-lint-git
 pkgver=2.3.1.r5.421070a
-pkgrel=2
+pkgrel=3
 pkgdesc='directory and filename linter'
 arch=('x86_64')
 url="https://github.com/loeffel-io/ls-lint"
@@ -32,7 +32,6 @@ build () {
     Date="$(date -u +%Y%m%d.%H%M%S)"
     Version="$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)"
   )
-  set -xv
   export CGO_ENABLED=1
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -40,7 +39,6 @@ build () {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
   export GO111MODULE=on
-  set +xv
 
   go build \
     -ldflags="${_x[*]/#/-X=main.} -compressdwarf=false -linkmode external" \
