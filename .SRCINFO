@@ -1,0 +1,17 @@
+pkgbase = us144mkii-dkms-git
+	pkgdesc = The Example kernel modules (DKMS)
+	pkgver = r132.aefc02d715cc
+	pkgrel = 1
+	url = https://github.com/serifpersia/us144mkii
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = dkms
+	conflicts = us144mkii
+	source = git+https://github.com/serifpersia/us144mkii
+	source = dkms.conf
+	source = blacklist-us122l.conf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = us144mkii-dkms-git
