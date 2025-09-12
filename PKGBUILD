@@ -1,10 +1,11 @@
-# Maintainer:  Davide Ferrero <bad dot deid at gmail dot com>
+# Maintainer: Michael Wigham <michael at wigham dot net>
+# Contributor:  Davide Ferrero <bad dot deid at gmail dot com>
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=20.2.0
-_bldver=00012
+_semver=20.3.0
+_bldver=00014
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -19,16 +20,19 @@ depends=('python' 'gtk2' 'gtk3' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'libusb-
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS_${pkgver}_linux
-source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip"
-"LICENSE"
-"61-msp430uif.rules"
-"71-sd-permissions.rules"
+source=(
+    "https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/${_semver}/CCS_${_semver}.${_bldver}_linux.zip"
+    "LICENSE"
+    "61-msp430uif.rules"
+    "71-sd-permissions.rules"
 )
 
-md5sums=('1746d85b2295f95ed31195e224c71b35'
-         'cf7222e486f8f1d2a0f99d3d946e1f01'
-         '7c570e9f93da6f01986285db81d497ef'
-         'af8a8c199be432919b4ca66106591c25')
+sha256sums=(
+    'eb36576473a1e245efc6157869dbd361980c6e32a2f91da8eaadde8aa7db9909'
+    'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
+    '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
+    'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a'
+)
 
 install=$pkgname.install
 
@@ -56,11 +60,9 @@ build() {
     # NOTE: ti_cgt_c2000_16.9.3.LTS_linux_installer_x86.bin is executed under fakeroot, this error is simply printed,
     #       but is not fatal. But, when the whole CCS installer is run under fakeroot is
     HOME="$srcdir/fakehome" ./ccs_setup_${pkgver}.run --mode unattended --prefix $srcdir/$_installpath
-
 }
 
 package() {
-
     # correct the files that refer to the srcdir because the setup didn't run under fakeroot
     sed -i "s#$srcdir/$_installdir##g" "$srcdir/$_installpath/$_desktop"
     find $srcdir/$_installpath/ccs/install_scripts/uninstall_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
@@ -85,11 +87,13 @@ package() {
 
     # Udev rules for hardware
     # NOTE: not installing Blackhawk rules, since it also requires kernel module
-    _rules=("${_scriptsdir}/71-ti-permissions.rules"
+    _rules=(
+        "${_scriptsdir}/71-ti-permissions.rules"
         "${_scriptsdir}/70-mm-no-ti-emulators.rules"
         "${_scriptsdir}/99-jlink.rules"
         "61-msp430uif.rules"
-        "71-sd-permissions.rules")
+        "71-sd-permissions.rules"
+    )
 
     for _rule in "${_rules[@]}"; do
         if [ -e "$_rule" ]; then
@@ -104,4 +108,3 @@ package() {
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
