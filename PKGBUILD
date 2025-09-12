@@ -6,8 +6,8 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.4.5.r8.e8e9042
-pkgrel=2
+pkgver=1.4.8.r13.69e4e45
+pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ source=("${pkgname}::git+https://github.com/PXLogic/PXView"
         "0002-simplify-qt-version-detection.patch")
 sha1sums=('SKIP'
           '8ad9e29163c60579a668c424f47a82c0c0275182'
-          '57350dbf49986724ab6f5767f570dfcc6138e870')
+          'e41decc1160dd42d86ee26c81a458fd93b8aa6a8')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"

@@ -1,7 +1,7 @@
 pkgbase = pxview-git
 	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
-	pkgver = 1.4.5.r8.e8e9042
-	pkgrel = 2
+	pkgver = 1.4.8.r13.69e4e45
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/PXLogic/PXView
 	arch = i686
@@ -26,6 +26,6 @@ pkgbase = pxview-git
 	source = 0002-simplify-qt-version-detection.patch
 	sha1sums = SKIP
 	sha1sums = 8ad9e29163c60579a668c424f47a82c0c0275182
-	sha1sums = 57350dbf49986724ab6f5767f570dfcc6138e870
+	sha1sums = e41decc1160dd42d86ee26c81a458fd93b8aa6a8
 
 pkgname = pxview-git
