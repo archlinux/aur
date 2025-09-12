@@ -2,7 +2,7 @@
 
 pkgname=rofi-reddit
 _pkgname=rofi-reddit
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Browse reddit threads from rofi using the Reddit API'
 url='https://github.com/valdebrutal/rofi-reddit'

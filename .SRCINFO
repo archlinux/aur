@@ -1,6 +1,6 @@
 pkgbase = rofi-reddit
 	pkgdesc = Browse reddit threads from rofi using the Reddit API
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/valdebrutal/rofi-reddit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rofi-reddit
 	depends = jansson
 	depends = glibc
 	options = !debug
-	source = git+https://github.com/valdebrutal/rofi-reddit.git#tag=0.1.1
+	source = git+https://github.com/valdebrutal/rofi-reddit.git#tag=0.1.2
 	sha256sums = SKIP
 
 pkgname = rofi-reddit
