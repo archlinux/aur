@@ -2,8 +2,8 @@
 # Reference: https://wiki.archlinux.org/title/PKGBUILD
 
 pkgname='sunshine'
-pkgver=v2025.628.4510
-pkgrel=4
+pkgver=2025.628.4510
+pkgrel=5
 pkgdesc="Self-hosted game stream host for Moonlight"
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev/Sunshine
