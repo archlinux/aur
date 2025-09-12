@@ -7,18 +7,19 @@
 
 : ${_commit=}   # optionally pin: pass _commit=HEAD~1 to makepkg/paru
 
-_pkgname='dtv-scan-tables'
+_pkgname='dtv-scan-tables-dvbv5'
 pkgname='dtv-scan-tables-dvbv5-git'
 pkgver=r1310.15661aa
-pkgrel=2
+pkgrel=5
 pkgdesc='Digital TV scan tables (DVBv5 only)'
 url='https://git.linuxtv.org/dtv-scan-tables.git'
 license=('GPL-2.0-only' 'LGPL-2.0-only')
 arch=('any')
 
-makedepends=('git')                   # v4l-utils not needed when dvbv3 conversion is skipped
-provides=('dtv-scan-tables' 'dtv-scan-tables-dvbv5')
-conflicts=('dtv-scan-tables-git' 'dtv-scan-tables-patched')
+makedepends=('git')           # v4l-utils not needed when dvbv3 conversion is skipped
+provides=('dtv-scan-tables-dvbv5')
+# Conflict 'dtv-scan-tables-git' has to be removed, when the metapackage 'dtv-scan-tables' including "dtv-scan-tables-dvbv*-git" is created. Currently that package is already owned so it's incompatible.
+conflicts=('dtv-scan-tables' 'dtv-scan-tables-git' 'dtv-scan-tables-patched')
 optdepends=('dtv-scan-tables-dvbv3-git: legacy zap/channels.conf tables')
 
 source=("$_pkgname::git+$url${_commit:+#commit=$_commit}")

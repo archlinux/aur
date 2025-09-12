@@ -1,18 +1,18 @@
 pkgbase = dtv-scan-tables-dvbv5-git
 	pkgdesc = Digital TV scan tables (DVBv5 only)
 	pkgver = r1310.15661aa
-	pkgrel = 2
+	pkgrel = 5
 	url = https://git.linuxtv.org/dtv-scan-tables.git
 	arch = any
 	license = GPL-2.0-only
 	license = LGPL-2.0-only
 	makedepends = git
 	optdepends = dtv-scan-tables-dvbv3-git: legacy zap/channels.conf tables
-	provides = dtv-scan-tables
 	provides = dtv-scan-tables-dvbv5
+	conflicts = dtv-scan-tables
 	conflicts = dtv-scan-tables-git
 	conflicts = dtv-scan-tables-patched
-	source = dtv-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git
+	source = dtv-scan-tables-dvbv5::git+https://git.linuxtv.org/dtv-scan-tables.git
 	sha256sums = SKIP
 
 pkgname = dtv-scan-tables-dvbv5-git
