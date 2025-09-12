@@ -1,0 +1,18 @@
+pkgbase = kubectl-kubesec
+	pkgdesc = kubectl plugin for scanning Kubernetes pods, deployments, daemonsets and statefulsets with kubesec.io
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/controlplaneio/kubectl-kubesec
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	source = https://github.com/controlplaneio/kubectl-kubesec/archive/v1.1.0/kubectl-kubesec-1.1.0.tar.gz
+	sha512sums = 8b142dac898e89ad8d6e246299c509973e0e110c3c3c89f24d206c32afe5a1fd66da1ab5d96fba42faf6c026f3fd227733f5b382930ca6b571045a28da09b0ba
+	b2sums = 05273f831837b3d9a31109a951cf10d6928112832a68a21d35f60c56c74587238b75de24bca3f2202f14a6194556ced951476f01363aa009a7b15d5816637c98
+
+pkgname = kubectl-kubesec
