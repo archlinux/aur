@@ -4,24 +4,43 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=7.2.3.r137.g5d78eebcd
+pkgver=7.1.7.r937.gad1ae4dd7
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL-3.0-only')
-depends=('fftw' 'libfmt.so' 'gsl' 'gtk4' 'ladspa' 'libadwaita-1.so'
-         'libbs2b.so' 'libebur128' 'libsamplerate.so'
-         'libsigc-3.0.so' 'libsndfile.so' 'liblilv-0.so'
-         'pipewire' 'rnnoise' 'soundtouch'
-         'speexdsp' 'tbb' 'zita-convolver')
-makedepends=('appstream-glib' 'itstool' 'meson' 'nlohmann-json' 'speex' 'lv2')
+depends=(
+  'breeze-icons'
+  'gsl'
+  'kconfigwidgets'
+  'kiconthemes'
+  'kirigami'
+  'kirigami-addons'
+  'libbs2b'
+  'libebur128'
+  'libportal-qt6'
+  'libsamplerate'
+  'libsndfile'
+  'lilv'
+  'nlohmann-json'
+  'pipewire-pulse'
+  'qqc2-desktop-style'
+  'qt6-base'
+  'qt6-graphs'
+  'rnnoise'
+  'soundtouch'
+  'speexdsp'
+  'tbb'
+  'zita-convolver'
+)
+makedepends=('appstream-glib' 'cmake' 'extra-cmake-modules' 'git' 'intltool' 'ladspa' 'ninja')
 optdepends=(
   'calf: limiter, exciter, bass enhancer and others'
-  'lsp-plugins-lv2: equalizer, compressor, delay, loudness'
-  'zam-plugins-lv2: maximizer'
-  'mda.lv2: bass loudness plugin'
-  'yelp: in-app help'
+  'lsp-plugins: equalizer, compressor, delay, loudness'
+  'zam-plugins: maximizer'
+  'mda.lv2: bass loudness'
+  'libdeep_filter_ladspa: noise remover'
 )
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
@@ -34,10 +53,18 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${pkgname%%-git}" build
-  ninja -C build
+  local cmake_options=(
+    -B build
+    -S "${pkgname%%-git}"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -G Ninja
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja install -C build
+  DESTDIR="${pkgdir}" cmake --install build
 }
