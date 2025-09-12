@@ -4,10 +4,10 @@
 
 gitname=mat2
 pkgname=${gitname}-git
-pkgver=0.12.3.1.g3509256
+pkgver=0.13.5.10.g235403b
 pkgrel=1
 pkgdesc='Metadata removal tool, supporting a wide range of commonly used file formats'
-url='https://0xacab.org/jvoisin/mat2'
+url='https://github.com/jvoisin/mat2'
 arch=('any')
 license=('LGPL3')
 depends=('python' 'python-mutagen' 'python-cairo' 'python-gobject' 'gdk-pixbuf2' 'poppler-glib' 'librsvg' 'perl-image-exiftool' 'mailcap')
