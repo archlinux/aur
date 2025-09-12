@@ -6,7 +6,7 @@
 
 pkgname=hmcl-pr-bin
 pkgver=3.6.unofficial_657410b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular | PR Collection"
 arch=('any')
 url="https://github.com/burningtnt/HMCL"
