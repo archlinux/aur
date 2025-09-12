@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=flatpost-bin
-pkgver=1.1.0
+pkgver=1.1.1
 _fedora=42
 pkgrel=1
 pkgdesc="Desktop Environment agnostic flatpak-only shop gui"
@@ -11,10 +11,13 @@ depends=('gdk-pixbuf2' 'gtk3' 'glib2' 'flatpak' 'hicolor-icon-theme' 'python-dbu
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
 source=("$url/releases/download/$pkgver/flatpost-$pkgver.fc${_fedora}.rpm")
-sha256sums=('5ef9ce82f36c4b5afc85bacfa73dcabc8bd652a524f52e8587422ffaa58b56fd')
+sha256sums=('28a583a9cf61def49d46eeea14c9d7223c710a59936445b20c4a10190576ed24')
 validpgpkeys=()
 
 package() {
 	cd "$srcdir"
 	cp -a --no-preserve=ownership usr "$pkgdir"
+	install -Dm644 "$pkgdir/usr/share/icons/hicolor/64x64/apps/com.flatpost.flatpostapp.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.flatpost.flatpostapp.svg"
+	rm -rf "$pkgdir/usr/share/icons/hicolor/64x64"
+	sed -i 's/64x64\/apps/scalable\/apps/g' "$pkgdir/usr/bin/${pkgname::-4}"
 }
