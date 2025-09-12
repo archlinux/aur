@@ -29,7 +29,6 @@ pkgbase = caelestia-shell-git
 	depends = bash
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-multimedia
 	provides = caelestia-shell
 	conflicts = caelestia-shell
 	source = caelestia-shell-git::git+https://github.com/caelestia-dots/shell.git

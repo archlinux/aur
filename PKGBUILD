@@ -12,8 +12,7 @@ url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
 depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'libcava' 'networkmanager'
          'lm_sensors' 'fish' 'aubio' 'glibc' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
-         'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative'
-         'qt6-multimedia')
+         'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative')
 makedepends=('git' 'cmake' 'ninja')
 provides=($_pkgname)
 conflicts=($_pkgname)
