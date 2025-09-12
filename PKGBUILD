@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -16,9 +16,10 @@ license=('MIT')
 depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-ddgs' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'python-genai-prices' 'ruff' 'deno')
-source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-validpgpkeys=('2EECE5156D8DE0C50636E37621707FBE029E96B5')
-sha256sums=('0d204c6941b126e64cb1b1e5253db3014c51a06a239a0c423be504ee6fc30701')
+source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver"
+        "git+https://github.com/pydantic/mcp-run-python.git")
+sha256sums=('164d5b8dd77c703f068ab59c77d2ce7c5892bc370db5f9b9b16022eb47d21491'
+            'SKIP')
 
 build() {
   cd "$srcdir"/$_name0-$pkgver
@@ -28,17 +29,20 @@ build() {
   python -m build --wheel --no-isolation $_name1
   python -m build --wheel --no-isolation
   python -m build --wheel --no-isolation $_name00
+  cd "$srcdir"/mcp-run-python
+  python build/build.py
+  python -m build --wheel --no-isolation
 }
 
 check() {
   local pytest_options=(
     -vv
     -n auto
-    # Failed with opentelemetry>=1.35.0 and Need mcp-run-python
+    # Failed with opentelemetry>=1.35.0
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
     --deselect tests/models/test_instrumented.py::test_instrumented_model
-    -k "not instrumentation_settings_event_mode.py and not instrument3 and not mcp_stdio_client.py and not mcp.py:398"
+    -k "not instrumentation_settings_event_mode.py and not instrument3"
     # Failed
     --deselect tests/test_tools.py
   )
@@ -52,7 +56,9 @@ check() {
   test-env/bin/python -m installer $_name1/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer $_name00/dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  test-env/bin/python -m installer ../mcp-run-python/dist/*.whl
+  test-env/bin/mcp-run-python example --deps=numpy
+  PATH="$srcdir"/$_name0-$pkgver/test-env/bin:$PATH test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package_python-pydantic-graph() {
