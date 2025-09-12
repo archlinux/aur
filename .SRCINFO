@@ -1,0 +1,19 @@
+pkgbase = mirror-go
+	pkgdesc = A 12-Factor, dynamic, multi-host Go vanity server
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://hg.sr.ht/~ser/mirror
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	license = 3-clause
+	makedepends = go
+	depends = glibc
+	source = mirror-0.2.0.tar.gz::https://hg.sr.ht/~ser/mirror/archive/v0.2.0.tar.gz
+	sha256sums = eafb921cfe4ec259214fa2f7c52b9c8fc907ac549f9cca469dc235e34adceeb4
+
+pkgname = mirror-go
