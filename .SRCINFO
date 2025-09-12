@@ -1,0 +1,17 @@
+pkgbase = tmpsuse
+	pkgdesc = Part of the tmplinux suite. Temporary OpenSUSE
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/TheOddCell/tmpsuse
+	arch = any
+	license = MIT
+	depends = bash
+	depends = zypper
+	depends = shadow
+	depends = util-linux
+	depends = systemd
+	depends = squashfs-tools
+	source = https://github.com/TheOddCell/tmpsuse/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = tmpsuse
