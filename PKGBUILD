@@ -3,8 +3,8 @@
 pkgbase=libstring-util
 pkgname=libstring-util
 _tagname=1.2.9
-pkgver="${_tagname//-/_}"
-pkgrel=0
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="C++ lib of useful string manipulation functions"
 arch=($CARCH)
 url="https://gitlab.com/links_and_nodes/libstring_util"
