@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SAIGEgds
-_pkgver=2.8.0
+_pkgver=2.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Scalable Implementation of Generalized mixed models using GDS files in Phenome-Wide Association Studies"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-snprelate
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6af4067c784be8427a793cde222b78b0')
-b2sums=('e01b897be3442c5c84cec495c81922fc48b7471b1ef1d2658fc463c09f907fca10e70dc534a6bd5ae20379edf889414b2a759db44086827e2f2897a5394e47b8')
+md5sums=('589bf458efed530fc3e34ec420dd2127')
+b2sums=('95088949cc3d59a7ef43891d304f99200d165193f5b3b71a5413560944b7841c9ce74badc8f87fcf229ac9bf87f3ff2b66504e2a012d3accf626733139a9a142')
 
 prepare() {
   sed -i "$_pkgname"/src/Makevars \
