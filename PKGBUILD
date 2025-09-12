@@ -1,11 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
 _upstreamver='0.0.15'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='invocation-tree'
-
 
 pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
