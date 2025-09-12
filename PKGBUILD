@@ -1,4 +1,5 @@
-# Maintainer: Zhang Hua <zhanghuadedn at gmail dot com>
+# Maintainer: kris57 <kris319 at protonmail dot com>
+# Contributor: Zhang Hua <zhanghuadedn at gmail dot com>
 # Contributor: Coelacanthus <coelacanthus@outlook.com.com>
 # Contributor: yjun <jerrysteve1101@gmail.com>
 
