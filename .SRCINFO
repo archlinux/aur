@@ -1,7 +1,7 @@
 pkgbase = chromium-ffmpeg-bin
-	pkgdesc = Add codecs to Chromium (libavcodec 62~61 from ffmpeg.org)
-	pkgver = 8.0_7.1.2
-	pkgrel = 0
+	pkgdesc = Add codecs to Chromium (libavcodec 62 from ffmpeg.org)
+	pkgver = 8.0
+	pkgrel = 1
 	url = https://github.com/oech3/Chromium-FFmpeg/releases
 	install = chromium-ffmpeg.install
 	arch = x86_64
@@ -26,10 +26,8 @@ pkgbase = chromium-ffmpeg-bin
 	source = chromium-ffmpeg.install
 	source = chromium-ffmpeg.hook
 	source = https://github.com/oech3/Chromium-FFmpeg/releases/download/8.0/ffmpeg-8.0-linux-x64.tar.zst
-	source = https://github.com/oech3/Chromium-FFmpeg/releases/download/7.1.2/ffmpeg-7.1.2-linux-x64.tar.zst
 	sha256sums = 684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005
 	sha256sums = 6873b38d05e884f3f7fa1c2019ce380d717b3f95af75a1218fbd94a1054f65ad
 	sha256sums = 6dfcc8da692f3b0e9617d0cca0eb9e309bb54738153abb4f07d5c6e6fdefdffa
-	sha256sums = 042882f5fe987b76137d1291344e46879fc6cf6cf7bc554aedc6d8685294e315
 
 pkgname = chromium-ffmpeg-bin
