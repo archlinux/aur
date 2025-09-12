@@ -1,7 +1,7 @@
 # Maintainer: dobedobedo <dobe0331 at gmail dot com>
 _pkgname='alphashape'
 pkgname=("python-$_pkgname")
-pkgver=v1.3.0.r23.g8edfd5e
+pkgver=1.3.1
 pkgrel=2
 pkgdesc="Toolbox for generating n-dimensional alpha shapes."
 arch=('x86_64')
@@ -22,30 +22,27 @@ makedepends=('python-build'
              'python-pytest')
 url='https://alphashape.readthedocs.io/en/latest/index.html'
 license=('MIT')
-sha256sums=('SKIP')
-#_source_url="https://files.pythonhosted.org/packages/2e/83/67ff905694df5b34a777123b59fdfd05998d5a31766f188aafbf5b340055"
-#source=("$_source_url/$_pkgname-$pkgver.tar.gz")
-source=(git+https://github.com/bellockk/alphashape.git)
+sha256sums=('36538deb1d1d799416d6b5ac2b9e74d35695cc5d63a83110cfe53f257581e724'
+            '3366d76a2f9b92bd8547bab96de169f9781b85209ade191132a407e6f2354a7e')
+_source_url="https://github.com/bellockk/alphashape/archive/refs/tags"
+source=("$_pkgname-$pkgver.tar.gz::$_source_url/v$pkgver.tar.gz"
+	"c719566.patch")
 
-pkgver() {
-    cd "$_pkgname"
-    ( set -o pipefail
-      git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    )
+prepare() {
+    patch -d "$srcdir/$_pkgname-$pkgver" -Np1 -i "$srcdir/c719566.patch"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 check(){
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname-$pkgver"
     pytest
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 } 

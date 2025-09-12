@@ -1,0 +1,115 @@
+diff --git a/alphashape/alphashape.py b/alphashape/alphashape.py
+index b4177a6..7190f34 100644
+--- a/alphashape/alphashape.py
++++ b/alphashape/alphashape.py
+@@ -4,7 +4,7 @@ Tools for working with alpha shapes.
+ __all__ = ['alphashape']
+ 
+ import itertools
+-import logging
++import warnings
+ from shapely.ops import unary_union, polygonize
+ from shapely.geometry import MultiPoint, MultiLineString
+ from scipy.spatial import Delaunay
+@@ -76,8 +76,8 @@ def alphasimplices(points: Union[List[Tuple[float]], np.ndarray]) -> \
+         try:
+             yield simplex, circumradius(simplex_points)
+         except np.linalg.LinAlgError:
+-            logging.warn('Singular matrix. Likely caused by all points '
+-                         'lying in an N-1 space.')
++            warnings.warn('Singular matrix. Likely caused by all points '
++                          'lying in an N-1 space.')
+ 
+ 
+ def alphashape(points: Union[List[Tuple[float]], np.ndarray],
+diff --git a/alphashape/optimizealpha.py b/alphashape/optimizealpha.py
+index 6c0b72f..b228c86 100644
+--- a/alphashape/optimizealpha.py
++++ b/alphashape/optimizealpha.py
+@@ -1,8 +1,9 @@
+ __all__ = ['optimizealpha']
+ import sys
+-import logging
++import warnings
+ import shapely
+ from shapely.geometry import MultiPoint
++from packaging import version
+ import trimesh
+ from typing import Union, Tuple, List
+ import rtree  # Needed by trimesh
+@@ -37,7 +38,11 @@ def _testalpha(points: Union[List[Tuple[float]], np.ndarray], alpha: float):
+     polygon = alphashape(points, alpha)
+     if isinstance(polygon, shapely.geometry.polygon.Polygon):
+         if not isinstance(points, MultiPoint):
+-            points = MultiPoint(list(points))
++            # workaround for different versions of shapely
++            if version.parse(shapely.__version__) < version.parse('2.0.0'):
++                points = MultiPoint(list(points))
++            else:
++                points = MultiPoint(list(points)).geoms
+         return all([polygon.intersects(point) for point in points])
+     elif isinstance(polygon, trimesh.base.Trimesh):
+         return len(polygon.faces) > 0 and all(
+@@ -86,7 +91,7 @@ def optimizealpha(points: Union[List[Tuple[float]], np.ndarray],
+ 
+     if _testalpha(points, upper):
+         if not silent:
+-            logging.error('the max float value does not bound the alpha '
++            warnings.warn('the max float value does not bound the alpha '
+                           'parameter solution')
+         return 0.
+ 
+@@ -106,8 +111,8 @@ def optimizealpha(points: Union[List[Tuple[float]], np.ndarray],
+         counter += 1
+         if counter > max_iterations:
+             if not silent:
+-                logging.warning('maximum allowed iterations reached while '
+-                                'optimizing the alpha parameter')
++                warnings.warn('maximum allowed iterations reached while '
++                              'optimizing the alpha parameter')
+             lower = 0.
+             break
+     return lower
+diff --git a/requirements_dev.txt b/requirements_dev.txt
+index 6d8ebc3..523f9d1 100644
+--- a/requirements_dev.txt
++++ b/requirements_dev.txt
+@@ -1,6 +1,6 @@
+-pip==20.2.2
++pip==23.3
+ bumpversion==0.6.0
+-wheel==0.35.1
++wheel==0.38.1
+ watchdog==0.10.3
+ flake8==3.8.3
+ tox==3.19.0
+@@ -9,7 +9,7 @@ codecov==2.1.8
+ Sphinx==3.2.1
+ twine==3.2.0
+ shapely==1.7.0
+-scipy==1.5.2
++scipy==1.10.0
+ m2r2==0.2.7
+ geopandas==0.8.1
+ trimesh==3.9.8
+diff --git a/tests/test_optimizealpha.py b/tests/test_optimizealpha.py
+index 32901ca..6609cad 100644
+--- a/tests/test_optimizealpha.py
++++ b/tests/test_optimizealpha.py
+@@ -26,3 +26,16 @@ class TestOptimizeAlapha(unittest.TestCase):
+             [(0., 0.), (0., 1.), (1., 1.), (1., 0.),
+              (0.5, 0.25), (0.5, 0.75), (0.25, 0.5), (0.75, 0.5)])
+         assert alpha > 3. and alpha < 3.5
++
++    def test_reach_max_iterations(self):
++        """
++        Given a non-trivial set of points, a non-trivial interval of possible
++        alpha values and allowing only 2 iterations, the optimizealpha function
++        should reach max_iterations and return 0
++        """
++        with self.assertWarns(Warning):
++            alpha = optimizealpha(
++                [(0., 0.), (0., 1.), (1., 1.), (1., 0.),
++                 (0.5, 0.25), (0.5, 0.75), (0.25, 0.5), (0.75, 0.5)],
++                max_iterations=2, lower=0.0, upper=1000.0)
++        self.assertEqual(alpha, 0.0)
