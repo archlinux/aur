@@ -14,32 +14,30 @@ provides=("$pkgname")
 validpgpkeys=(968479a1aff927e37d1a566bb5690eeebb952194)
 source=("git+https://github.com/authzed/zed.git#commit=5faad1c6355039270bc578243a919bdca8915c0d")
 sha256sums=('c68375b0863a322bab02e5c1900c953458d8aaedbb008cba5088c937fb906e98')
+_binname="zed"
 
 build() {
   cd "$srcdir/zed"
   export CGO_ENABLED=0
-  go build -trimpath -o "$pkgname" ./cmd/zed
-  "./$pkgname" completion bash > bash-completion.sh
-  sed -i "s/__start_zed zed/__start_zed $pkgname/g" bash-completion.sh
-  "./$pkgname" completion fish > fish-completion.fish
-  sed -i "s/-c zed/-c $pkgname/g" fish-completion.fish
-  "./$pkgname" completion zsh > zsh-completion.zsh
-  sed -i "s/compdef _zed zed/compdef _zed $pkgname/g" zsh-completion.zsh
+  go build -trimpath -o "$_binname" "./cmd/$_binname"
+  "./$_binname" completion bash > bash-completion.sh
+  "./$_binname" completion fish > fish-completion.fish
+  "./$_binname" completion zsh > zsh-completion.zsh
 }
 
 package() {
-  install -D -m755 "$srcdir/zed/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -D -m755 "$srcdir/zed/$_binname" "$pkgdir/usr/bin/$_binname"
 
   local bash_completions_dir="$pkgdir/usr/share/bash-completion/completions"
   install -D -d -m755 "$bash_completions_dir" 
-  install -m644 "$srcdir/zed/bash-completion.sh" "$bash_completions_dir/$pkgname" 
+  install -m644 "$srcdir/zed/bash-completion.sh" "$bash_completions_dir/$_binname" 
 
   local zsh_completions_dir="$pkgdir/usr/share/zsh/site-functions/"
   install -D -d -m755 "$zsh_completions_dir" 
-  install -m644 "$srcdir/zed/zsh-completion.zsh" "$zsh_completions_dir/_$pkgname" 
+  install -m644 "$srcdir/zed/zsh-completion.zsh" "$zsh_completions_dir/_$_binname" 
 
   local fish_completions_dir="$pkgdir/usr/share/fish/vendor_completions.d"
   install -D -d -m755 "$fish_completions_dir" 
-  install -m644 "$srcdir/zed/fish-completion.fish" "$fish_completions_dir/$pkgname.fish" 
+  install -m644 "$srcdir/zed/fish-completion.fish" "$fish_completions_dir/$_binname.fish" 
 }
 
