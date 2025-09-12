@@ -20,7 +20,6 @@ pkgbase = tauri-system-monitor
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
-	depends = linuxdeploy
 	options = !strip
 	source = git+https://github.com/JackpotMachine777/tauri-system-monitor#branch=main
 	sha256sums = SKIP
