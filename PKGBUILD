@@ -3,14 +3,17 @@
 _pkgname=git-draft
 pkgname="$_pkgname-git"
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Git-centric code assistant'
 arch=(any)
 url=https://github.com/mtth/git-draft
 license=(MIT)
 
-depends=(git)
+depends=(git python)
 makedepends=(asciidoctor python-build python-installer python-wheel)
+optdepends=(
+	'python-openai: OpenAI API bots'
+)
 
 source=("git+https://github.com/mtth/$_pkgname.git#branch=main")
 sha256sums=(SKIP)
@@ -18,6 +21,10 @@ sha256sums=(SKIP)
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	git describe --tags --long | sed -e 's/-/_/g' -e 's/^v//'
+}
+
+prepare() {
+	git -C "$srcdir/$_pkgname" clean -dfx
 }
 
 build() {

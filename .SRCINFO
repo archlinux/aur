@@ -1,7 +1,7 @@
 pkgbase = git-draft-git
 	pkgdesc = Git-centric code assistant
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtth/git-draft
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = git-draft-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = git
+	depends = python
+	optdepends = python-openai: OpenAI API bots
 	source = git+https://github.com/mtth/git-draft.git#branch=main
 	sha256sums = SKIP
 
