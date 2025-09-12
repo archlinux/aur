@@ -2,12 +2,12 @@
 pkgname=kubectl-dfi
 # renovate: datasource=github-releases depName=makocchi-git/kubectl-dfi
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Print disk usage of container image on Kubernetes node(s) like a linux "df" command'
 arch=('x86_64' 'aarch64')
 url='https://github.com/makocchi-git/kubectl-dfi'
 license=('MIT')
-depends=('kubectl')
+depends=('kubectl' 'glibc')
 makedepends=('git' 'go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
@@ -29,7 +29,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
+  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly"
   export GO111MODULE=on
   export GOPROXY=direct
   # -ldflags="-linkmode=external ${_x[*]/#/-X=${url/https:\/\/}/pkg/util.}" \
@@ -38,9 +38,17 @@ build() {
     -e '/github.com\/golangci\/golangci-lint/d' \
     go.mod
   go mod tidy
+
+  # Support -debug package
+  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  then
+    export GOFLAGS="${GOFLAGS//-trimpath/}"
+    export GOPATH="${srcdir}"
+  fi
+
   mkdir bin
-  go build \
-    -ldflags="-s -w ${_x[*]/#/-X=main.}" \
+  go build -v \
+    -ldflags="${_x[*]/#/-X=main.} -linkmode external" \
     -o bin/ \
     ./...
 }
@@ -54,7 +62,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   for i in *.md
   do
     install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}"

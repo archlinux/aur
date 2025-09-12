@@ -1,7 +1,7 @@
 pkgbase = kubectl-dfi
 	pkgdesc = Print disk usage of container image on Kubernetes node(s) like a linux "df" command
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/makocchi-git/kubectl-dfi
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = kubectl-dfi
 	makedepends = git
 	makedepends = go
 	depends = kubectl
+	depends = glibc
 	source = https://github.com/makocchi-git/kubectl-dfi/archive/v0.1.2/kubectl-dfi-0.1.2.tar.gz
 	sha512sums = a36c841aaddb13ca69a4f40073d5cbf6a2c785e2ab24b5b1c22cc2acc3ff6f3e5be8acd27b147335aef43599a7c01c5e8db2753bf495d5eaa555338965d106a7
 	b2sums = 8576c3a8e590ef77df79b45b352b1d78e74a77994395ded5b09539ca809943f9de72ae1a637abe30f90efebe9a6674fee9d0398e59567f411d06f53b3554bcc0
