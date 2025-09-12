@@ -5,7 +5,7 @@
 
 pkgname=ella-bin
 pkgver="0.0.8"
-pkgrel=2
+pkgrel=3
 pkgdesc="A process manager for running and managing services"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
 url="https://github.com/thekhanj/ella"
@@ -27,10 +27,6 @@ aarch64) _binname="ella_v${pkgver}_linux_arm64" ;;
 armv7h | armv6h) _binname="ella_v${pkgver}_linux_arm_hf" ;;
 armv6l) _binname="ella_v${pkgver}_linux_arm" ;;
 riscv64) _binname="ella_v${pkgver}_linux_riscv64" ;;
-*)
-	echo "unsupported arch: ${CARCH}"
-	exit 1
-	;;
 esac
 
 source_x86_64=("${_baseurl}/${_binname}.tar.gz")
