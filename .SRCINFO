@@ -1,6 +1,6 @@
 pkgbase = python-pyomo
 	pkgdesc = Pyomo: Python Optimization Modeling Objects
-	pkgver = 6.9.2
+	pkgver = 6.9.4
 	pkgrel = 1
 	url = https://github.com/Pyomo/pyomo
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-pyomo
 	optdepends = glpk: GNU Linear Programming Kit support
 	optdepends = gurobi: Gurobi solver support
 	optdepends = mosek: MOSEK solver support
-	source = https://files.pythonhosted.org/packages/source/p/pyomo/pyomo-6.9.2.tar.gz
-	sha256sums = 81b2b14ea619244824e1c547cc12602fe9a6e19309cbf0742868c5b1ef37cb35
+	source = https://files.pythonhosted.org/packages/source/p/pyomo/pyomo-6.9.4.tar.gz
+	sha256sums = 34ad22cd6bf9956de9c0d3842d01c1f92dee0515b25aa3e8f113b326549b1231
 
 pkgname = python-pyomo

@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=pyomo
 pkgname="python-${_name,,}"
-pkgver=6.9.2
+pkgver=6.9.4
 pkgrel=1
 
 pkgdesc="Pyomo: Python Optimization Modeling Objects"
@@ -19,7 +19,7 @@ optdepends=('cplex: IBM ILOG CPLEX Optimization Studio'
 makedepends=(python-setuptools cython)
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('81b2b14ea619244824e1c547cc12602fe9a6e19309cbf0742868c5b1ef37cb35')
+sha256sums=('34ad22cd6bf9956de9c0d3842d01c1f92dee0515b25aa3e8f113b326549b1231')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
