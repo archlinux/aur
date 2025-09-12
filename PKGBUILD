@@ -5,24 +5,51 @@
 pkgname=python-httpx-git
 _pkgname=httpx
 # https://github.com/encode/httpx/blob/master/CHANGELOG.md
-pkgver=0.27.0.r22.gfa6dac83
+pkgver=0.28.1.r18.g652f051f
 pkgrel=1
 pkgdesc="A next generation HTTP client for Python"
 arch=('any')
 url="https://github.com/encode/${_pkgname}"
 license=('BSD')
-depends=('python-certifi' 'python-httpcore' 'python-idna' 'python-rfc3986' 'python-sniffio')
-optdepends=(
-  'python-brotlicffi: for brotli response decompression'
-  'python-h2: HTTP/2 support'
-  'python-socksio: SOCKS proxy support'
-  'python-click: command line client support'
-  'python-rich: command line client support'
-  'python-trio: alternative async library'
+depends=(
+    'python-anyio'
+    'python-certifi'
+    'python-httpcore'
+    'python-idna'
+    'python-sniffio'
 )
-makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-fancy-pypi-readme' 'git')
-checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-typing_extensions' 'python-brotlicffi' 'python-h2' 'python-trustme' 'uvicorn' 'python-socksio' python-brotli
-              'python-rich' 'python-chardet' 'python-zstandard' 'python-anyio')
+optdepends=(
+    'python-brotli: for brotli response decompression'
+    'python-brotlicffi: for brotli response decompression'
+    'python-zstandard: for zstd response decompression'
+    'python-h2: HTTP/2 support'
+    'python-socksio: SOCKS proxy support'
+    'python-click: command line client support'
+    'python-rich: command line client support'
+    'python-pygments: command line client support'
+    'python-trio: alternative async library'
+)
+makedepends=(
+    'git'
+    'python-build'
+    'python-hatch-fancy-pypi-readme'
+    'python-hatchling'
+    'python-installer'
+    'python-pygments'
+)
+checkdepends=(
+    'python-brotli'
+    'python-brotlicffi'
+    'python-chardet'
+    'python-h2'
+    'python-pytest-asyncio'
+    'python-pytest-trio'
+    'python-rich'
+    'python-socksio'
+    'python-trustme'
+    'python-zstandard'
+    'uvicorn'
+)
 provides=(python-httpx=$pkgver)
 conflicts=(python-httpx)
 replaces=(python-httpx)
@@ -45,7 +72,7 @@ prepare() {
   patch -Np1 -i ../uvicorn-test-server-use-h11.diff
 
   # disable -Werror, which often causes failures due to newer dependencies in Arch
-  #sed -i '/\berror\b/d' setup.cfg
+  sed -i '/"error",/d' pyproject.toml
 }
 
 build() {
@@ -56,7 +83,6 @@ build() {
 
 check() {
   cd ${_pkgname}
-
   pytest
 }
 
