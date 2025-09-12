@@ -1,0 +1,16 @@
+pkgbase = salsa-bin
+	pkgdesc = TCP load balancer proxy with health checks
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/TheKhanj/salsa
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = salsa
+	conflicts = salsa
+	source = README-0.0.5.md::https://raw.githubusercontent.com/TheKhanj/salsa/v0.0.5/README.md
+	sha256sums = 7362543def8c5f14537fc9852ea6b4fc1c13113d247098b5bb0ef0aa9f63828f
+	source_x86_64 = salsa-x86_64-0.0.5.tgz::https://github.com/TheKhanj/salsa/releases/download/v0.0.5/salsa.tar.gz
+	sha256sums_x86_64 = 67973bb7951c12c695f2dd2289be978b04e6abb13c333d0cd7ebc45f45c3c7ae
+
+pkgname = salsa-bin
