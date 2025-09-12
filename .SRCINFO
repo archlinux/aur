@@ -1,6 +1,6 @@
 pkgbase = ddns-watchdog
 	pkgdesc = 简单快速的可常驻的 Dynamic DNS 客户端，自动更新域名解析记录值
-	pkgver = 1.5.12
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/yzy613/ddns-watchdog
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = ddns-watchdog
 	license = Apache
 	makedepends = go
 	replaces = watchdog-ddns
-	source = ddns-watchdog-1.5.12.tar.gz::https://github.com/yzy613/ddns-watchdog/archive/v1.5.12.tar.gz
+	source = ddns-watchdog-1.6.2.tar.gz::https://github.com/yzy613/ddns-watchdog/archive/v1.6.2.tar.gz
 	source = ddns-watchdog-server.service
 	source = ddns-watchdog-client.service
-	sha256sums = fb348391c97d3cbd40eaac4035824d1b5c73107646e292f815c274d9a32c759c
+	sha256sums = 290c7861e4d964d1f7ccdadbb3278b7433cd1a992b5e40e756288b82701f323f
 	sha256sums = 61a4ffbfa76731c06b4c1744f3b5eb00f39009af0913f135670e1f7cc05aa9fe
 	sha256sums = 2ba36324b6b433d0256e097f990386d43b638358835d7cbbcca5e00cb890b1dc
 
