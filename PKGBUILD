@@ -15,7 +15,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
               'python-abg') # h5py, matplotlib, pandas(scipy,requests) <- abg
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ad4d7cf7954769489fdc15453cc760c4')
+md5sums=('d9a528c24d02ef0f01163a876018474a')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}

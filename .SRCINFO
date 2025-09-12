@@ -11,7 +11,7 @@ pkgbase = python-firefly
 	makedepends = python-build
 	makedepends = python-installer
 	source = https://files.pythonhosted.org/packages/source/f/firefly/firefly-3.4.0.tar.gz
-	md5sums = ad4d7cf7954769489fdc15453cc760c4
+	md5sums = d9a528c24d02ef0f01163a876018474a
 
 pkgname = python-firefly
 	depends = python>=3.6
