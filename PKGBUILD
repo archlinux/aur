@@ -5,7 +5,7 @@
 
 pkgname=ella-bin
 pkgver="0.0.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="A process manager for running and managing services"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
 url="https://github.com/thekhanj/ella"
@@ -21,14 +21,26 @@ sha256sums_armv6h=('7dd2b07c61a69bc6183a2308bc7aebea591866944a84fbf5041d73e44dac
 sha256sums_armv6l=('b6dd65e4aaa33b49f9aafafaadebb6513926cdf57784ee23b9c4149896d33bfd')
 sha256sums_riscv64=('46d751b2f0b8db2a7b35bd576a2d3407fa708c602568f87ebfc1c57bb0878680')
 
-source_x86_64=("${_baseurl}/ella_v${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("${_baseurl}/ella_v${pkgver}_linux_arm64.tar.gz")
-source_armv7h=("${_baseurl}/ella_v${pkgver}_linux_arm_hf.tar.gz")
-source_armv6h=("${_baseurl}/ella_v${pkgver}_linux_arm_hf.tar.gz")
-source_armv6l=("${_baseurl}/ella_v${pkgver}_linux_arm.tar.gz")
-source_riscv64=("${_baseurl}/ella_v${pkgver}_linux_riscv64.tar.gz")
+case "$CARCH" in
+x86_64) _binname="ella_v${pkgver}_linux_amd64" ;;
+aarch64) _binname="ella_v${pkgver}_linux_arm64" ;;
+armv7h | armv6h) _binname="ella_v${pkgver}_linux_arm_hf" ;;
+armv6l) _binname="ella_v${pkgver}_linux_arm" ;;
+riscv64) _binname="ella_v${pkgver}_linux_riscv64" ;;
+*)
+	echo "unsupported arch: ${CARCH}"
+	exit 1
+	;;
+esac
+
+source_x86_64=("${_baseurl}/${_binname}.tar.gz")
+source_aarch64=("${_baseurl}/${_binname}.tar.gz")
+source_armv7h=("${_baseurl}/${_binname}.tar.gz")
+source_armv6h=("${_baseurl}/${_binname}.tar.gz")
+source_armv6l=("${_baseurl}/${_binname}.tar.gz")
+source_riscv64=("${_baseurl}/${_binname}.tar.gz")
 
 package() {
-	cd "${srcdir}/${_binname%.tar.gz}"
-	./install "$pkgdir" false
+	cd "${srcdir}/${_binname}"
+	./install "${pkgdir}" false
 }

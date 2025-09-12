@@ -2,4 +2,7 @@
 #
 # SPDX-License-Identifier: 0BSD
 
+/src
+/pkg
 /*.tar.gz
+/*.tar.zst
