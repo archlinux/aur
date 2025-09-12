@@ -2,7 +2,7 @@
 
 pkgname=getgauge
 pkgver=1.6.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Light weight cross-platform test automation tool for authoring test cases in the business language."
 arch=('x86_64' 'i686')
 url="https://getgauge.org"
@@ -24,7 +24,7 @@ prepare() {
 build() {
     export GOPATH="$srcdir"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-trimpath"
+    export GOFLAGS="-trimpath -modcacherw"
 
     cd "$srcdir/$_gauge_path/$binname-$pkgver"
     go run build/make.go build
