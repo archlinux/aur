@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openapv
-pkgver=0.2.0.2
+pkgver=0.2.0.3
 pkgrel=1
 pkgdesc='The reference implementation of the APV codec'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://github.com/AcademySoftwareFoundation/openapv/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0519bd151a04ec19384e038bad55d6ddf6d8948e378c0cf62d29d5ef4ba8c672')
+sha256sums=('9da0f758534d6243cd6e5c5ca46404e6fdd7e298a17da50b676b71c53ce6a083')
 
 build() {
     CFLAGS+=' -ffat-lto-objects'
