@@ -1,23 +1,9 @@
 pkgbase = chromium-ffmpeg-legacy-bin
-	pkgdesc = Add codecs to Chromium 137- (libavcodec 61)
+	pkgdesc = Old libavcodec 61 ABI. No longer used by any packages
 	pkgver = 7.1.2
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 1
-	url = https://github.com/oech3/Chromium-FFmpeg/
-	install = opera-ffmpeg.install
 	arch = x86_64
-	license = LGPL-2.1-or-later
-	provides = opera-ffmpeg-codecs
-	provides = opera-beta-ffmpeg-codecs
-	provides = chromium-ffmpeg-legacy
-	conflicts = opera-ffmpeg-codecs
-	conflicts = opera-beta-ffmpeg-codecs
-	conflicts = chromium-ffmpeg-legacy
-	source = opera-ffmpeg.install
-	source = opera-ffmpeg.hook
-	source = https://github.com/oech3/Chromium-FFmpeg/releases/download/7.1.2/ffmpeg-7.1.2-linux-x64.tar.zst
-	sha256sums = 8100be6868b0f6202302fd1045e5741fdb3c6be7ea41bb36a72a365979bef56c
-	sha256sums = f85a68c58468eb0fa312ac94cc07b5f33b9d22f53c2d2bc9d888511fb7ca6c9f
-	sha256sums = 042882f5fe987b76137d1291344e46879fc6cf6cf7bc554aedc6d8685294e315
 
 pkgname = chromium-ffmpeg-legacy-bin
+	depends = chromium-ffmpeg
