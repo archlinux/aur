@@ -1,7 +1,7 @@
 pkgbase = kubectl-count
 	pkgdesc = kubectl plugin to list and count resources by kind
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chenjiandongx/kubectl-count
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = kubectl-count
 	makedepends = git
 	makedepends = go
 	depends = kubectl
+	depends = glibc
 	source = https://github.com/chenjiandongx/kubectl-count/archive/v0.2.6/kubectl-count-0.2.6.tar.gz
 	sha512sums = 9754a69f8c5c3f9bec3f1e8b02a0937381a410a23d213fc00318b5e10a3f930a9574b322c4ae3435a9747ae5dc939fbf5644331b636c689630628d014bd02477
 	b2sums = b168edebef6da091b341a999440f16dd7e98fba2654ab11232f48b96b2588ac04fc78130ccc8af97c124f7a4413b4315ed596f1940ba0a596f169acb98f880c2

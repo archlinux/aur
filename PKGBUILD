@@ -2,12 +2,12 @@
 pkgname=kubectl-count
 # renovate: datasource=github-releases depName=chenjiandongx/kubectl-count
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='kubectl plugin to list and count resources by kind'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chenjiandongx/kubectl-count'
 license=('MIT')
-depends=('kubectl')
+depends=('kubectl' 'glibc')
 makedepends=('git' 'go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
@@ -22,7 +22,6 @@ build() {
     commit="${_commit:?}"
   )
 
-  cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -30,11 +29,19 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
   export GO111MODULE=on
-  # -ldflags="-linkmode=external ${_x[*]/#/-X=${url/https:\/\/}/pkg/util.}" \
+
+  # Support -debug package
+  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  then
+    export GOFLAGS="${GOFLAGS//-trimpath/}"
+    export GOPATH="${srcdir}"
+  fi
+
+  cd "${pkgname}-${pkgver}"
   mkdir bin
   go mod tidy
   go build \
-    -ldflags="-s -w ${_x[*]/#/-X=${url/https:\/\/}/pkg/version.}" \
+    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -compressdwarf=false -linkmode external" \
     -o bin/ \
     ./...
 }
@@ -48,7 +55,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   for i in *.md
   do
     install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}"
