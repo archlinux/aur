@@ -11,7 +11,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=b650210ed3027b224969d148aa377452a9aad3ae7f2851abedd31adfef16bdae}
+: ${_cksum:=e82fe40871743048226987bd349ef107168b15aab90140e872ca4ed470922e25}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -23,7 +23,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.44
+pkgver=6.12.47
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
