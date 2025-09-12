@@ -1,0 +1,32 @@
+diff --git a/meshroom/ui/components/clipboard.py b/meshroom/ui/components/clipboard.py
+index aaee965a..bee84336 100644
+--- a/meshroom/ui/components/clipboard.py
++++ b/meshroom/ui/components/clipboard.py
+@@ -1,5 +1,5 @@
+ from PySide6.QtCore import Slot, QObject
+-from PySide6.QtGui import QClipboard
++from PySide6.QtGui import QGuiApplication, QClipboard
+ 
+ 
+ class ClipboardHelper(QObject):
+@@ -9,7 +9,7 @@ class ClipboardHelper(QObject):
+ 
+     def __init__(self, parent=None):
+         super(ClipboardHelper, self).__init__(parent)
+-        self._clipboard = QClipboard(parent=self)
++        self._clipboard = QGuiApplication.clipboard()
+ 
+     def __del__(self):
+         # Workaround to avoid the "QXcbClipboard: Unable to receive an event from the clipboard manager
+diff --git a/meshroom/ui/qml/Viewer3D/MediaLoader.qml b/meshroom/ui/qml/Viewer3D/MediaLoader.qml
+index 4c5606ea..a1323e72 100644
+--- a/meshroom/ui/qml/Viewer3D/MediaLoader.qml
++++ b/meshroom/ui/qml/Viewer3D/MediaLoader.qml
+@@ -76,6 +76,7 @@ import Utils 1.0
+ 
+         // Media loader available
+         if (component) {
++            console.debug(component.errorString())
+             object = component.createObject(root, {"source": source})
+         }
+     }

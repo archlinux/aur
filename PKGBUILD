@@ -1,45 +1,50 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: sfn
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=meshroom
-pkgver=2023.3.0
+pkgver=2025.1.0
 pkgrel=1
 pkgdesc="A free, open-source 3D Reconstruction Software based on the AliceVision framework"
 arch=('x86_64')
-url="https://alicevision.github.io/"
+url="https://alicevision.org/#meshroom"
 license=('MPL2')
 depends=('alice-vision' 'alembic' 'openimageio' 'python-psutil' 'popsift'
-         'pyside2' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-3d' 'qt5-graphicaleffects'
-         'qt5-imageformats' 'qt5-location' 'qt5-svg' 'qt5-charts')
-makedepends=('git' 'cmake' 'python-idna' 'python-setuptools' 'ninja' 'boost' 'coin-or-lemon')
-optdepends=('alice-vision-cuda: for DepthMap nodes')
+         'pyside6' 'opencv' 'python-pyseq'
+         'qt6-imageformats' 'qt6-location' 'qt6-svg' 'qt6-charts' 'qt6-3d' 'qt6-quick3d' 'qt6-shadertools' 'qt6-declarative' 'qt6-5compat')
+makedepends=('git' 'cmake' 'python-idna' 'python-setuptools' 'boost' 'coin-or-lemon')
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git#tag=v${pkgver}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
-        "git+https://github.com/alicevision/QtAliceVision.git#tag=v${pkgver}")
+        "git+https://github.com/alicevision/QtAliceVision.git#tag=v${pkgver}"
+        "fix-qt-errors.patch"
+        "meshroom.sh")
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '3fc0237907ace26474cfba9ff6ab7f1f2d96c1bd56ecdb1a6361812657f0b3de'
+            '81665eb7a36e5b7ccd6fd4031c275c6e6aaf32a15c31d85a012e44236501c67b')
 
 prepare() {
   cd meshroom
 
-  # Hardcode camera_database and voctree default value
-  sed -i "s:'ALICEVISION_VOCTREE', '':'ALICEVISION_VOCTREE', '/usr/share/${pkgname}/vlfeat_K80L3.SIFT.tree':g" meshroom/nodes/aliceVision/*.py
-  sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/cameraSensors.db':g" meshroom/nodes/aliceVision/*.py
+  # Patch qt6/pyside6 bug
+  patch -p1 -i ../fix-qt-errors.patch
+
 }
 
 build() {
   cd "${srcdir}"/QtAliceVision
   cmake \
     -Bbuild \
-    -GNinja \
     -DCMAKE_INSTALL_PREFIX="/usr/lib/qt" \
     -DCMAKE_BUILD_TYPE=None
-  ninja -C build
+  make -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C QtAliceVision/build install
+  install -vDm 644 "${srcdir}"/meshroom.sh -t "${pkgdir}"/etc/profile.d/
+
+  DESTDIR="${pkgdir}" make -C QtAliceVision/build install
 
   cd meshroom
   install -Dm755 meshroom/ui/__main__.py "${pkgdir}"/usr/bin/meshroom
@@ -50,6 +55,6 @@ package() {
   mkdir -p "${pkgdir}"/usr/lib/python"${python_version}"
   cp -r meshroom "${pkgdir}"/usr/lib/python"${python_version}"
 
-  install -Dm644 -t "${pkgdir}"/usr/share/meshroom "${srcdir}"/voctree/vlfeat_K80L3.SIFT.tree
+  install -Dm644 -t "${pkgdir}"/usr/share/aliceVision "${srcdir}"/voctree/vlfeat_K80L3.SIFT.tree
 }
 # vim:set ts=2 sw=2 et:
