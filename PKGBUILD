@@ -1,24 +1,22 @@
 # Maintainer: fuero <fuerob@gmail.com>
-pkgname=ls-lint-git
+_pkgname=ls-lint
+pkgname="${_pkgname}-git"
 # renovate: pkgName=https://github.com/loeffel-io/ls-lint depName=ls-lint-git
-_commit=421070a54c8bda0a5b1aa464bf151f4718c19263
 pkgver=2.3.1.r5.421070a
-pkgrel=1
+pkgrel=2
 pkgdesc='directory and filename linter'
 arch=('x86_64')
-_repo_prefix='github.com/loeffel-io'
-_repo_name="${pkgname%-git}"
-url="https://${_repo_prefix}/${_repo_name}"
-source=("${_repo_name}.git::git+https://${_repo_prefix}/${_repo_name}")
+url="https://github.com/loeffel-io/ls-lint"
+source=("${_pkgname}::git+${url}")
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go-pie')
-conflicts=("${_repo_name}")
-provides=("${_repo_name}")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_repo_name}.git"
+  cd "${_pkgname}"
   (
     set -o pipefail
     git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
@@ -27,16 +25,38 @@ pkgver() {
 }
 
 build () {
-  cd "${srcdir}/${_repo_name}.git"
-  go build -x -v \
-    -ldflags "-extldflags '${LDFLAGS}' -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" \
-    -o "${_repo_name}.bin" \
-    ./cmd/ls_lint  
+  cd "${_pkgname}"
+
+  _x=(
+    Commit="$(git rev-parse --short HEAD)"
+    Date="$(date -u +%Y%m%d.%H%M%S)"
+    Version="$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)"
+  )
+  set -xv
+  export CGO_ENABLED=1
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
+  export GO111MODULE=on
+  set +xv
+
+  go build \
+    -ldflags="${_x[*]/#/-X=main.} -compressdwarf=false -linkmode external" \
+    -o bin/ \
+    "./cmd/${_pkgname//-/_}"
+}
+
+check() {
+  cd "${_pkgname}"
+  go test -short ./...
 }
 
 package () {
-  cd "${srcdir}/${_repo_name}.git"
-  install -Dm0755 "${_repo_name}.bin" "${pkgdir}/usr/bin/${_repo_name}"
+  cd "${_pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm0755 "bin/${_pkgname//-/_}" "${pkgdir}/usr/bin/${_pkgname}"
   for _file in *.md
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
