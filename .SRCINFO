@@ -1,0 +1,14 @@
+pkgbase = kotlin-debug-adapter-bin
+	pkgdesc = Kotlin/JVM debugging for any editor/IDE using the Debug Adapter Protocol
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/fwcd/kotlin-debug-adapter
+	arch = x86_64
+	license = MIT License
+	provides = kotlin-debug-adapter
+	conflicts = kotlin-debug-adapter
+	options = !debug
+	source_x86_64 = kotlin-debug-adapter-0.4.4-1.zip::https://github.com/fwcd/kotlin-debug-adapter/releases/download/0.4.4/adapter.zip
+	sha256sums_x86_64 = 3874cbaded0fdb8229a381167895b0a6caf88b7adffabc690fcf5a6fb65d11b6
+
+pkgname = kotlin-debug-adapter-bin
