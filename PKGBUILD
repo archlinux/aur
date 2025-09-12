@@ -1,7 +1,7 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=v0.4.9.r627.ga7a0b7c
+pkgver=0.4.9.r9.g88d4fe3
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -37,10 +37,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd bazaar
-  printf '%s.r%s.g%s\n' \
-      "$(git describe --tags --abbrev=0)" \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 build() {
