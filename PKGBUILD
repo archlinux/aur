@@ -3,7 +3,7 @@ _pkgname=ketall
 pkgname="${_pkgname}-git"
 #_ renovate: datasource=github-releases depName=corneliusweig/ketall
 pkgver=1.3.8.r7.16390bd
-pkgrel=3
+pkgrel=4
 pkgdesc='Kubectl plugin to show really all kubernetes resources'
 arch=('x86_64')
 url="https://github.com/corneliusweig/${_pkgname}"
@@ -42,7 +42,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
+  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly"
   export GO111MODULE=on
 
   # Support -debug package
