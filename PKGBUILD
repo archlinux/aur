@@ -16,7 +16,9 @@ pkgdesc="Open source music client! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
-depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator")
+depends=("gcc-libs" "glibc" "fontconfig" "mpv" "libappindicator-gtk3" "libepoxy" "libsecret" "libnotify"
+         "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator" "gtk3" "cairo" "glib2" "pango"
+         "at-spi2-core")
 makedepends=("clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp" "patchelf")
 optdepends=("avahi: required if using remote controlling"
             "nss-mdns: required if using remote controlling"
@@ -97,12 +99,7 @@ package() {
     cd "$srcdir/spotube-$pkgver"
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share/icons/hicolor/512x512/apps"
     cp -a --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/usr/lib/spotube"
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/spotube" << EOF
-#!/usr/bin/bash
-
-export LD_LIBRARY_PATH=/usr/lib/spotube/lib
-exec /usr/lib/spotube/spotube "$@"
-EOF
+    ln -srf "$pkgdir/usr/lib/spotube/spotube" "$pkgdir/usr/bin/spotube"
     sed "s@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=$appid@;s@/usr/bin/spotube@/usr/bin/spotube %u@" \
         linux/spotube.desktop | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$appid.desktop"
     sed "s|%{{APPDATA_RELEASE}}%|<release version=\"$pkgver\" date=\"$_release_date\"/>|" \
@@ -112,5 +109,6 @@ EOF
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/spotube/LICENSE"
 
     echo "Removing RPATH for usr/lib/spotube/lib/lib*_plugin.so..."
-    patchelf --remove-rpath "$pkgdir"/usr/lib/spotube/lib/lib*_plugin.so
+    patchelf --shrink-rpath --allowed-rpath-prefixes "\$ORIGIN" \
+        "$pkgdir"/usr/lib/spotube/lib/lib*_plugin.so
 }
