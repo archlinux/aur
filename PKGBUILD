@@ -1,7 +1,7 @@
 # Maintainer: Clem Lorteau <spam at lorteau dot fr>
 pkgname=prasmoid
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="The All in One Development Toolkit for KDE Plasmoids. Build, test, and manage your plasmoids with unparalleled ease and efficiency."
 arch=("x86_64")
 url='https://github.com/PRASSamin/prasmoid'
@@ -16,11 +16,11 @@ makedepends=(
 )
 
 source=(
-	"${pkgname}-${pkgver}::git+https://github.com/PRASSamin/prasmoid.git#tag=v0.0.3"
+	"${pkgname}-${pkgver}::git+https://github.com/PRASSamin/prasmoid.git#tag=v0.0.4"
 )
 
 sha256sums=(
-	'7044508f97f1e4030adaf974aaaa0e19ff4f850b60731ed691cbe4873a12fdd5'
+	'2a4d67734ede4275377e4896916b366d7dbc5d8886d1bcb980f9713ef767c4a2'
 )
 
 build() {
@@ -34,7 +34,7 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-s -w -X github.com/PRASSamin/prasmoid/internal.Version={pkgver}" -o prasmoid ./src
+		-ldflags "-s -w -X github.com/PRASSamin/prasmoid/internal.Version={pkgver}" -o prasmoid .
 }
 
 package() {
