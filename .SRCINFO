@@ -1,10 +1,12 @@
 pkgbase = libudfread-git
 	pkgdesc = UDF reader. (GIT version)
-	pkgver = 1.1.2.2.gb3e6936
+	pkgver = 1.2.0.3.g139a219
 	pkgrel = 1
 	url = https://git.videolan.org/?p=libudfread.git;a=summary
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = meson
+	makedepends = ninja
 	makedepends = git
 	depends = glibc
 	provides = libudfread
