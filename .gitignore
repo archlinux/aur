@@ -1,0 +1,6 @@
+spicedb/
+LICENSE
+*.asc
+*.tar.*
+src/
+pkg/

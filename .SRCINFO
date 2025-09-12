@@ -1,0 +1,17 @@
+pkgbase = spicedb
+	pkgdesc = Open Source, Google Zanzibar-inspired database for scalably storing and querying fine-grained authorization data
+	pkgver = v1.45.3
+	pkgrel = 1
+	url = https://github.com/authzed/spicedb
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	provides = spicedb
+	source = git+https://github.com/authzed/spicedb.git#commit=2aac899128bde57bc4b6cb94b2e68e7fdd3b815d
+	validpgpkeys = 968479a1aff927e37d1a566bb5690eeebb952194
+	sha256sums = fb4e745c86c4ffcaf69589c85a9dace8c6dad817ccd8f4b2c264a09f35d110ab
+
+pkgname = spicedb
