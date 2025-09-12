@@ -1,6 +1,6 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar-bin
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 epoch=
 pkgdesc="Command line utility for container images"
@@ -23,13 +23,13 @@ source_x86_64=(
     "https://github.com/cnrancher/hangar/releases/download/v${pkgver}/hangar_Linux_x86_64.tar.gz"
 )
 sha256sums_x86_64=(
-    "06480fd2800d27e4c7fba1115b1d236061e68b3aa043e87504518679ef48c770"
+    "a6d0df8a90fe293d3927553af3a99232b7dd6e5819a9343e9b7ca75f5d3016ac"
 )
 source_aarch64=(
     "https://github.com/cnrancher/hangar/releases/download/v${pkgver}/hangar_Linux_arm64.tar.gz"
 )
 sha256sums_aarch64=(
-    "09b41861fe9f043b91516e3cdd4f428357e1962c4ccecd57fd7620f377e3ef4c"
+    "a1dcc9b30a5a9221f42090d7e1680ad683b39de33a6947d77dc001200f5ce328"
 )
 
 build() {
