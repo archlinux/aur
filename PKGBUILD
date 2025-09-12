@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=prophet
 pkgname="python-$_name"
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Automatic Forecasting Procedure"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python'
 makedepends=('python-setuptools')
 license=('BSD')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('92238aa584da69abe5c43e9426e6a4176064465e8424196655915ff86316a680')
+sha256sums=('97ef633a7d2d3bb7237f58b6990a68467c3c8089f605ea364b03f842ab3ea9cf')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
