@@ -1,7 +1,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname='openjkdf2-git'
-pkgver=0.9.6.r2.gcd88c33
+pkgver=0.9.6.r87.g1baa1e8
 pkgrel=1
 pkgdesc="A function-by-function reimplementation of DF2 (Dark Forces 2) in C."
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ makedepends=(
   'at-spi2-core'
   'cairo'
   'clang'
-  'cmake'
   'gdk-pixbuf2'
   'git'
   'glew'
@@ -42,7 +41,6 @@ source=("${pkgname}::git+https://github.com/shinyquagsire23/OpenJKDF2.git"
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/libsdl-org/SDL.git'
         'git+https://github.com/libsdl-org/SDL_mixer.git'
-        'openjkdf2-git-json-CMakeLists.txt.patch'
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -54,7 +52,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6b20a3f7795058e19bf3801aff1fe87384a6cac50bdb814f8ee80fb5e82cd076a4bf420984302fcc180c5c7f25d8ae94ee94dd5b4f444102569749d93fcdb904'
 )
 
 pkgver() {
@@ -64,7 +61,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}" || exit
-  patch -Np1 < ../openjkdf2-git-json-CMakeLists.txt.patch
 
   git submodule init lib/freeglut
   git submodule init lib/glew
@@ -96,6 +92,9 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init lib/SDL
   git -c protocol.file.allow=always submodule update --init lib/SDL_mixer
 
+  export CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
+  export CXXFLAGS
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export LDFLAGS
   cmake -B ../"${pkgname}"-build -S . \
     -DCMAKE_CXX_COMPILER:STRING=clang++ \
