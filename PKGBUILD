@@ -1,6 +1,6 @@
 # Maintainer: Christian Holme (Nordwin) <hcmh [at] mailbox [dot] org>
 pkgname=systemrescue-systemd-boot
-pkgver="12.01"
+pkgver="12.02"
 pkgrel=1
 pkgdesc="SystemRescue as systemd-boot loader entry"
 url="https://www.system-rescue.org/"
@@ -15,7 +15,7 @@ source=(
 )
 noextract=(systemrescue-"${pkgver}"-amd64.iso)
 
-sha256sums=('bee16490622c07fb628b8051acd0b2882b5b575dd7abd62e6c8df282b4fd0ed1'
+sha256sums=('b8794685d2e6f235946383e73cd6d6e8eec724e922341f13d7297b03143a5a5b'
             '84428f63795e4bfb6d96c36c3decca742809063f6a6488f59e5e3e7c92e00b11')
 
 prepare() {
