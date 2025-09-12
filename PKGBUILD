@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -85,7 +85,7 @@ checkdepends=('python-httpx'
               'litellm')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
 validpgpkeys=('2EECE5156D8DE0C50636E37621707FBE029E96B5')
-sha256sums=('d29295a1d04b27f56f531ea9752888e4fe9d5d905114496c50892a59edac9698')
+sha256sums=('7854dce3af4e9b47c4a69fc13aef51074f83002bafecc60abc647ffb2779f089')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
