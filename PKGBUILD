@@ -29,7 +29,7 @@ depends=('aubio' 'elixir' 'gcc-libs'
 
 makedepends=('boost' 'cmake' 'patchelf')
 
-source=('git+https://github.com/samaaron/sonic-pi.git'
+source=('git+https://github.com/sonic-pi-net/sonic-pi.git'
         "${_name}.sh")
 
 sha512sums=('SKIP'
