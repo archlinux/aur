@@ -1,12 +1,12 @@
 pkgbase = testlib-git
 	pkgdesc = C++ implementation of the testlib used on many programming contests in Russia (Russian National Olympiad in Informatics, different stages of ACM-ICPC).
-	pkgver = r229.f28d528
+	pkgver = r444.9ecb111
 	pkgrel = 1
 	url = https://github.com/MikeMirzayanov/testlib
 	arch = any
-	license = MIT
+	license = GPL
 	makedepends = git
-	source = testlib-git::git+https://github.com/MikeMirzayanov/testlib.git
+	source = testlib::git+https://github.com/MikeMirzayanov/testlib.git
 	md5sums = SKIP
 
 pkgname = testlib-git

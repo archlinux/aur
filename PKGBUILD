@@ -8,7 +8,7 @@
 
 # Maintainer: Xiaoxu Guo <ftiasch0@gmail.com>
 pkgname=testlib-git
-pkgver=r314.7fd543d
+pkgver=r444.9ecb111
 pkgrel=1
 pkgdesc='C++ implementation of the testlib used on many programming contests in Russia (Russian National Olympiad in Informatics, different stages of ACM-ICPC).'
 arch=('any')
