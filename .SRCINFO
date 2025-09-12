@@ -1,0 +1,19 @@
+pkgbase = obs-wayland-hotkeys-git
+	pkgdesc = OBS Studio plugin that implements the global shortcuts portal
+	pkgver = r9.e77f8b6
+	pkgrel = 1
+	url = https://github.com/leia-uwu/obs-wayland-hotkeys
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio
+	provides = obs-wayland-hotkeys
+	conflicts = obs-wayland-hotkeys
+	source = git+https://github.com/leia-uwu/obs-wayland-hotkeys.git
+	sha256sums = SKIP
+
+pkgname = obs-wayland-hotkeys-git

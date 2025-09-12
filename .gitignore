@@ -1,0 +1,4 @@
+pkg/
+src/
+obs-wayland-hotkeys/
+*.pkg*
