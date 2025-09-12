@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bilateralgpu-git
 	pkgdesc = Plugin for Vapoursynth: bilateralgpu (GIT version)
-	pkgver = 8.5.g5b10bd2
+	pkgver = 13.0.g9361732
 	pkgrel = 1
 	url = https://github.com/WolframRhodium/VapourSynth-BilateralGPU
 	arch = x86_64

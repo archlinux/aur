@@ -1,20 +1,22 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=bilateralgpu
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=8.5.g5b10bd2
+pkgver=13.0.g9361732
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BilateralGPU'
 license=('MIT')
-depends=('vapoursynth'
-         'nvidia-utils'
-         )
-makedepends=('git'
-             'cmake'
-             'cuda'
-             )
+depends=(
+  'vapoursynth'
+  'nvidia-utils'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'cuda'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-BilateralGPU.git")
@@ -27,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  source /etc/profile.d/cuda.sh
+  source /etc/profile /etc/profile.d/cuda.sh
 
   cmake -S "${_plug}" -B build \
     -DCMAKE_BUILD_TYPE=None \
