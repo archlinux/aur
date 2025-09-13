@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=bartib
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple timetracker for the command line"
 arch=('x86_64')
@@ -10,14 +10,14 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ba66195bf6bc382cf366de95aadb3b6c49c5d27bf772cd2cdbe082740df181c6efdd12d04a05cde6afe5c3b732226ba806981d27d275924e1b2c2545fd67cd3b')
-b2sums=('74389818de8c16c91bdbc76070a32918170497520e1ad43eb20353cf04c65f2605b23bd101dd4a6c1f7f14d443332fedebc1e75f03fb0b9f3b795070b20ff3e8')
+sha512sums=('5df3872aeb9795a6180bc0d2bed949f9b01f37b99e8b81ba02e5ca72897fd50cf241341037c9f37acdb079918ff9b5c6e18934801a2618cdaa16fafd856b50c8')
+b2sums=('8602f2fdbe2740eceb4742a21af980c82748150813966927e4016050285e411f86442106bbe150aa8071dccb8a2ed1b0f9bb4e527329aca9ed65e04430c5a7ab')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   # download dependencies
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
