@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.3.4.0.gbb5bc108
+pkgver=1.4.0.7.gd41111c1
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback. (GIT version)'
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
   'fontconfig'
   'freetype2'
   'libudfread'
+  'glibc' # libc.so
 )
 makedepends=(
   'git'
@@ -22,7 +23,10 @@ optdepends=(
   'libaacs: Enable AACS decryption'
   'java-runtime: BD-J library'
 )
-provides=('libbluray')
+provides=(
+  'libbluray'
+  'libbluray.so'
+)
 conflicts=('libbluray')
 source=('git+https://code.videolan.org/videolan/libbluray.git')
 sha256sums=('SKIP')
@@ -32,21 +36,14 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build
-
-  sed -e 's|java_version_asm=1.5|java_version_asm=1.8|g' \
-      -e 's|java_version_bdj=1.4|java_version_bdj=1.8|g' \
-      -i libbluray/Makefile.am
+build() {
+ arch-meson libbluray build \
+    -D embed_udfread=false -D enable_tools=true
+  ninja -C build
 }
 
-build() {
-  cd libbluray
-  ./bootstrap
-  cd "${srcdir}/build"
-  ../libbluray/configure \
-    --prefix=/usr \
-    --disable-static
+package() {
+  DESTDIR="$pkgdir" meson install -C build
 
   make
 }
@@ -59,5 +56,5 @@ package() {
     'libudfread.so'
   )
 
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" meson install -C build
 }
