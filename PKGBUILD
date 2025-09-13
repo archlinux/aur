@@ -2,7 +2,7 @@
 # Contributor: leotheleon <71839579+leo-the-leon@users.noreply.github.com>
 
 pkgname=firealpaca
-pkgver=2.13.20
+pkgver=2.13.25
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="Simple and easy digital painting software"
@@ -14,7 +14,7 @@ makedepends=('gendesk' 'icoutils')
 source=("${pkgname}-${pkgver}.zip"::"https://firealpaca.com/download/win64_zip"
         "${pkgname}"
         "LICENSE")
-sha256sums=('cd6a4111862e8fb6d9ec52c09f5855e555b7868bf37997c3e5446554c5ebfa58'
+sha256sums=('67eb6d1d54f8d0e2cbfb38937fea3a1e4bb10802c49832fe5d4379887b6f82e9'
             '4874184eef2414d48ab2903e52c65f46f5dc19571666e71d326f2051b28e16eb'
             '719e661613f89866257efa0aff7dd262cc101f83d47b97c4f54b052625a4ead4')
 
