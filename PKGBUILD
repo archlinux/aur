@@ -1,12 +1,12 @@
 pkgname=glace-git
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=8
 pkgdesc="Glace is a GObject library to manage Wayland clients and retrieve information about them"
 arch=('any')
 url="https://github.com/Fabric-Development/glace"
 license=('AGPL-3.0')
 depends=('glibc' 'gtk3')
-makedepends=('meson' 'ninja' 'git' 'vala')  # Only make dependencies
+makedepends=('meson' 'ninja' 'git')  # Only make dependencies
 maintainer="Rubin Bhandari <roobin.bhandari@gmail.com>"
 source=('git+https://github.com/Fabric-Development/glace') # Git repository URL
 sha256sums=('SKIP')  # Skip checksum verification for git sources
