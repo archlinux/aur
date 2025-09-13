@@ -2,12 +2,12 @@
 
 pkgname="rusticlone"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="3-2-1 backups using Rustic and RClone"
 url="https://github.com/AlphaJack/rusticlone"
 license=("GPL-3.0-or-later")
 arch=("any")
-depends=("python" "rclone>=1.67.0" "rustic>=0.10.0" "rustic<=0.11.0" "python-importlib-metadata" "python-configargparse")
+depends=("python" "rclone>=1.67.0" "rustic>=0.10.0" "rustic<0.11.0" "python-importlib-metadata" "python-configargparse")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 # https://wiki.archlinux.org/title/Python_package_guidelines#Source
 _real_url=$(curl -s "https://pypi.org/pypi/${pkgname}/${pkgver}/json" | jq -r '.urls[] | select(.packagetype == "sdist") | .url')
