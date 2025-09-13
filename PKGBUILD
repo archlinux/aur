@@ -2,7 +2,7 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=15.0.0
+pkgver=15.2.1
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('e-search-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/xushengfeng/eSearch/releases/download/${pkgver}/eSearch_${pkgver}.aur")
-sha512sums=('6265b3b1be2cadc0a81d8cc493861152329b86811553a9a018d45712105ef022787ff0fbe1b2bafc6ac929d239701d2dec4a5c76eee20fe9dcb023d0d48f2f5a')
+sha512sums=('2fe6af2f15d33f77998c2eb6664a2fbf19649522061df672faa2c30d5d370885d60656d755c07604fde8cae6ce9ac7672bfe860b0a6647f65e543b4a9220efe9')
 
 package(){
 
