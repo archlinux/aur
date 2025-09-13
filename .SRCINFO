@@ -1,0 +1,13 @@
+pkgbase = baseer
+	pkgdesc = Binary analysis tool (ELF, TAR, disassembler, debugger)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thxa/baseer
+	arch = x86_64
+	license = MIT
+	depends = gcc
+	depends = make
+	source = https://github.com/thxa/baseer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0cc3b382b4ec0cd41c1da6c3701810905d7e7e7a7465e9af66fbf692d0f20f93
+
+pkgname = baseer
