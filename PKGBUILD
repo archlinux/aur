@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=taskfinder-bin
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='A terminal user interface that extracts and displays tasks from notes files'
 url='https://codeberg.org/kdwarn/taskfinder'
@@ -14,8 +14,8 @@ conflicts=(taskfinder)
 source=("$url/archive/v$pkgver.tar.gz")
 source_x86_64=("bin-$pkgver-x86_64::$url/releases/download/v$pkgver/tf-linux")
 
-sha256sums=('ead604a731b1fd5ce0926e29c10b03340444b6ad13751c37e053ecfe46408131')
-sha256sums_x86_64=('e47327f3c759e019e29d7f4e1f31ba6a6c90d751b5b19deb545b38cc937377c2')
+sha256sums=('b817ac290025d437ec310c94cbdde3a9cf1a9212bf37cd54fa6be44fe41de280')
+sha256sums_x86_64=('4e6e871b2a2f6f9ae352a3e05fce41042148d4da3175909c78265bb019715d81')
 
 package() {
   install -Dm755 "bin-$pkgver-$CARCH" "$pkgdir/usr/bin/taskfinder"
