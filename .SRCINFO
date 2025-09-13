@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Fast, Private & Safe Web Browser (Nightly version)
-	pkgver = 144.0a1+20250910.1+h929fad231438
+	pkgver = 144.0a1+20250913.1+h1172f45a3c14
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/channel/desktop/#nightly
 	arch = x86_64
@@ -72,19 +72,16 @@ pkgbase = firefox-nightly
 	source = firefox-nightly.desktop
 	source = org.mozilla.firefox-nightly.metainfo.xml
 	source = 0001-Install-under-remoting-name.patch
-	source = 0002-Bug-1987546-Add-sys-single_threaded.h-as-a-system-he.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = SKIP
 	sha256sums = a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9
 	sha256sums = 4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f
 	sha256sums = 9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0
 	sha256sums = ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c
-	sha256sums = 553fb3a7b89256127c096149f7a5548790bcb23c17c1b30ec6f15fb509fcf19b
 	b2sums = SKIP
 	b2sums = 63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34
 	b2sums = 9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9
 	b2sums = 561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14
 	b2sums = ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b
-	b2sums = 55f247ee7cab08aac03c7466129267f37d23ccd4e4c58ee3725412d2084894ce0e57ffb8a0fcd4a0a3cafe95a17a61da03cbae165c09318e5403dd15a4ccd88c
 
 pkgname = firefox-nightly
