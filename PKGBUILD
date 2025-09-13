@@ -2,15 +2,16 @@
 pkgname="river-uiuatile-git"
 _cmdname="uiuatile"
 pkgver=r4.1e26809
-pkgrel=1
+pkgrel=2
 pkgdesc="Write your own river layout generator using uiua"
 arch=('x86_64')
 url="https://codeberg.org/ireozar/river-uiuatile"
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'libffi')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+options=(!lto)
 
 pkgver() {
     cd "$pkgname"
