@@ -1,6 +1,6 @@
 pkgbase = marmite-bin
 	pkgdesc = Markdown makes sites - A Static Site Generator for Blogs. Binary From GitHub Release
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://rochacbruno.github.io/marmite/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = marmite-bin
 	depends = glibc
 	provides = marmite
 	conflicts = marmite
-	source = https://github.com/rochacbruno/marmite/releases/download/0.2.5/marmite-0.2.5-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums = af4a27b2c69f658020f7a9f0ed24c78853de06668e9a847aa8298e05b0a53a71167a471dd5b0bb9d716c004ddada9f84e595279d3de1a36d18c49cd0ab960e5d
+	source = https://github.com/rochacbruno/marmite/releases/download/0.2.6/marmite-0.2.6-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums = 5ce4a63fb0b6602c69941c00624f2016f7449b297eb5c149545cdf7c6f61233d8781c6452de75890eaf2fff52badc21bf5a7ccf0db58c6e33001195445364e95
 
 pkgname = marmite-bin
