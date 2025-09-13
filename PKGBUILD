@@ -1,10 +1,10 @@
-# Maintainer:  Orhun Parmaksız <orhun@archlinux.org>
+# Maintainer: Orhun Parmaksız <orhun@archlinux.org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: bbx0 <39773919+bbx0@users.noreply.github.com>
 # Contributor: Raphael Amorim <rapha850@gmail.com>
 
 pkgname=rio
-pkgver=0.2.29
+pkgver=0.2.30
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
@@ -13,6 +13,7 @@ license=('MIT')
 # https://raphamorim.io/rio/install/#arch-linux
 options=('!lto')
 depends=(
+  'alsa-lib'
   'gcc-libs'
   'fontconfig'
   'freetype2'
@@ -28,7 +29,7 @@ makedepends=(
   'python'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4324661d1d2c193eeaabd8fad62eb42629310d97be971301618f8690347221df533c5cbc608b3c51a7bd00d1ea5155ad870eacefd3c409cf983399d2fd602b23')
+sha512sums=('bc17ede011457c99adfe4efb0162cef5de69640d9cc1c1d91ae11883a5c9cd80648a9a54e5871b83ec29e4dab5abc0e5fd1de3ee1d6f9dffea118ad6beed2c0b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
