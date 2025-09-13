@@ -4,7 +4,7 @@
 pkgname=feishin-bin
 pkgdesc='Rewrite of Sonixd'
 pkgver=0.20.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
 license=('GPL3')
