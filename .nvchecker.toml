@@ -5,5 +5,8 @@ use_latest_release = true
 include_prereleases = true
 #include_regex = '.*nightly.*'
 prefix = 'v'
-from_pattern = '-nightly.'
-to_pattern = 'n'
+#incremental versioning changed sep12-2025 so now 0.11 < 0.11-nightly.7, it was the reverse for 0.10 and earlier
+#from_pattern = '-nightly.'
+#to_pattern = 'n'
+from_pattern = '-nightly'
+to_pattern = '.nightly'
