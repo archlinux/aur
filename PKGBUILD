@@ -1,26 +1,20 @@
-# Maintainer: Sujal Vijayaraghavan <sujal at usf dot edu>
+# Maintainer: Sujal Vijayaraghavan
 
 pkgname=matlock
 pkgver=1.0.0
-pkgrel=4
-pkgdesc='Screen lock program for X like The Matrix'
+pkgrel=5
+pkgdesc='Screen lock program for X like in The Matrix (1999)'
 arch=('x86_64' 'aarch64')
-url="https://git.sujal.tv/tvsujal/matlock"
+url="https://github.com/sujaltv/matlock"
 license=('MIT')
-makedepends=('git')
 depends=('libxext' 'libxrandr')
-source=("https://git.sujal.tv/tvsujal/matlock/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar")
-sha256sums=('d45a52ce530b9b49977d1f8f6cf13fcac9d295234f57dbff37be3cd56c3557cb')
-
-build() {
-    rm -rf ${pkgname}
-    tar xf ${pkgname}-v${pkgver}.tar --one-top-level=$pkgname --strip-components=1
-    cd ${pkgname}
-    make
-}
+makedepends=('make' 'git')
+source=("https://github.com/sujaltv/matlock/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e4287b3cea10ee8e0b65b2086b61dbe321727a58a8d17832c0611dad3c3cbb75')
 
 package() {
-    cd $pkgname
+    cd $pkgname-${pkgver}
     make PREFIX=/usr DESTDIR="$pkgdir" instal
     install -m 644 -D LICENCE "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
+    pwd
 }
