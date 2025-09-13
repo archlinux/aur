@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=UABEAvalonia
+GenericName=UABEA
+Exec=uabea
+Type=Application
+Terminal=false
+Categories=Application;Development;
+Icon=uabea
+Comment=C# UABE for newer versions of Unity engine
+StartupWMClass=UABEAvalonia

@@ -1,0 +1,39 @@
+From 6a06e0513c0d87672db279f8ded655d667b7d798 Mon Sep 17 00:00:00 2001
+From: Damglador <vse.stopchanskyi@gmail.com>
+Date: Wed, 1 Oct 2025 21:16:11 +0200
+Subject: [PATCH] Fix config path
+
+---
+ UABEAvalonia/Config/ConfigurationManager.cs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/UABEAvalonia/Config/ConfigurationManager.cs b/UABEAvalonia/Config/ConfigurationManager.cs
+index ca7ef4a..d5a9f0a 100644
+--- a/UABEAvalonia/Config/ConfigurationManager.cs
++++ b/UABEAvalonia/Config/ConfigurationManager.cs
+@@ -6,11 +6,11 @@ namespace UABEAvalonia
+ {
+     public static class ConfigurationManager
+     {
+-        public const string CONFIG_FILENAME = "config.json";
++        public const string CONFIG_FILENAME = "uabea.json";
+         public static ConfigurationSettings Settings { get; }
+         static ConfigurationManager()
+         {
+-            string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CONFIG_FILENAME);
++            string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), CONFIG_FILENAME);
+             if (!File.Exists(configPath))
+             {
+                 Settings = new ConfigurationSettings()
+@@ -28,7 +28,7 @@ namespace UABEAvalonia
+ 
+         public static void SaveConfig()
+         {
+-            string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CONFIG_FILENAME);
++            string configPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), CONFIG_FILENAME);
+             if (Settings != null) // ConfigLoaded
+             {
+                 string configText = JsonConvert.SerializeObject(Settings);
+-- 
+2.51.0
+
