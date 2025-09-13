@@ -2,8 +2,8 @@
 # Contributor: Li Junhao <l@x-cmd.com>
 # Maintainer: Li Junhao <l@x-cmd.com>
 pkgname=x-cmd
-pkgver=v0.5.5
-_pkgsum=.369a6a4b
+pkgver=v0.6.13
+_pkgsum=.c9805c8c
 pkgrel=1
 pkgdesc="Bootstrap 1000+ command line tools in seconds"
 url="https://www.x-cmd.com"
@@ -12,7 +12,7 @@ license=("AGPL-3.0")
 source=("$pkgname-$pkgver.tgz::https://raw.githubusercontent.com/x-cmd/release/main/dist/$pkgver/allinone.tgz")
 install="$pkgname.install"
 options=(!debug)
-sha512sums=("97186f820be557ed7b7e21b19a5aee183c21f5122739971137703c8c9cd266c296cc0143eb0db434e5fe1069bdc5481bc441b0ef1ed489c7bd9172f60d94f5b9")
+sha512sums=("c9805c8c2bb6b92f65f20aa0021600062c7d5131cb88150d6b37606736638b7aca8f9bbea0f9fa67883b62215396ffd02a54d4dff2f6e30c3ca36798271fbfb3")
 
 package() {
 	mkdir -p "$pkgdir/usr/share/$pkgname/v"
