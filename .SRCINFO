@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-jsdoc
 	pkgdesc = JSDoc grammar for tree-sitter
-	pkgver = 0.23.2
-	pkgrel = 2
+	pkgver = 0.25.0
+	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-jsdoc
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tree-sitter-jsdoc
 	depends = glibc
 	provides = libtree-sitter-jsdoc.so
 	options = staticlibs
-	source = tree-sitter-jsdoc-0.23.2-src.tar.gz::https://github.com/tree-sitter/tree-sitter-jsdoc/archive/refs/tags/v0.23.2.tar.gz
-	sha256sums = d119278466266c23f237b8826dc049e56311937a5e647ab99d7200e0e3c36299
+	source = tree-sitter-jsdoc-0.25.0-src.tar.gz::https://github.com/tree-sitter/tree-sitter-jsdoc/archive/refs/tags/v0.25.0.tar.gz
+	sha256sums = ca870c983c51bfb6b25c4cf316e28c685d0f6e9847e359c7da8d16eedd60d623
 
 pkgname = tree-sitter-jsdoc

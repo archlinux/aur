@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-jsdoc
-pkgver=0.23.2
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc="JSDoc grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-jsdoc"
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-jsdoc.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-jsdoc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d119278466266c23f237b8826dc049e56311937a5e647ab99d7200e0e3c36299')
+sha256sums=('ca870c983c51bfb6b25c4cf316e28c685d0f6e9847e359c7da8d16eedd60d623')
 
 
 build() {
