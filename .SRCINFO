@@ -1,6 +1,6 @@
 pkgbase = torrcli
 	pkgdesc = A cli based torrent client built with libtorrent
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/aayushkdev/torrcli
 	install = torrcli.install
@@ -14,12 +14,13 @@ pkgbase = torrcli
 	depends = python-pip
 	depends = libtorrent-rasterbar
 	depends = python-rich
+	depends = python-torrfetch
 	depends = systemd
-	source = https://github.com/aayushkdev/torrcli/archive/refs/tags/v0.2.1.tar.gz
+	source = https://github.com/aayushkdev/torrcli/archive/refs/tags/v0.3.1.tar.gz
 	source = torrcli.service
 	source = torrcli.install
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = d3ea39fd2d26320e00910c94c80d4220549ef9157810c1dba6949e04ec0a5fd4
+	sha256sums = 5f79a8abcb505673e8f9527daf5196ecaa17282404ff8587efb7f4508c50661e
+	sha256sums = e8be9c3c96a21d8586dfb30ab6218fd0d57299efee59edb9c889aaf89018ef1d
 
 pkgname = torrcli
