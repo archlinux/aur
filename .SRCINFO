@@ -1,7 +1,7 @@
 pkgbase = rustmius
 	pkgdesc = Full local Termius alternative for Linux
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://github.com/Cleboost/Rustmius
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = rustmius
 	depends = pkg-config
 	depends = libadwaita
 	depends = gtk4
-	source = rustmius-0.1.0.tar.gz::https://github.com/Cleboost/Rustmius/archive/v0.1.0.tar.gz
+	source = rustmius-0.2.0.tar.gz::https://github.com/Cleboost/Rustmius/archive/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = rustmius
