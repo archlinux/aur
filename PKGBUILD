@@ -3,7 +3,7 @@
 
 branch=stable
 pkgname=lrz-syncshare
-pkgver=23.1.100
+pkgver=23.2.100
 pkgrel=1
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
