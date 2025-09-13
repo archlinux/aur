@@ -1,7 +1,7 @@
 #!/bin/sh
 
 post_install() {
-    local _pkgsum=.369a6a4b
+    local _pkgsum=.c9805c8c
     local _pkgdir="/usr/share/x-cmd/v/$_pkgsum"
     local _pkgfile="/usr/share/x-cmd/v/$_pkgsum.tgz"
     if [ ! -f "$_pkgfile" ]; then
