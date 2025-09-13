@@ -1,5 +1,5 @@
 pkgname=bonsai
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=2
 pkgdesc="Terminal-based disk usage analyzer, TUI remake of GNOME Baobab"
 arch=('x86_64')
