@@ -1,0 +1,20 @@
+pkgbase = krunner-pinyin-search
+	pkgdesc = 一个krunner插件，为KDE提供了用拼音搜索应用程序的功能。支持全拼/首字母/汉字混合输入。
+	pkgver = r4.47f1440
+	pkgrel = 1
+	url = https://github.com/AOSC-Dev/krunner-pinyin-search
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = git
+	depends = qt6-base
+	depends = krunner
+	depends = ki18n
+	depends = kcoreaddons
+	depends = kio
+	source = git+https://github.com/AOSC-Dev/krunner-pinyin-search.git
+	sha256sums = SKIP
+
+pkgname = krunner-pinyin-search
