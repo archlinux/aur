@@ -1,4 +1,4 @@
-pkgbase = bas-tui-git
+pkgbase = bas-tui
 	pkgdesc = Bootstrap Any System (BAS) TUI
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -9,8 +9,8 @@ pkgbase = bas-tui-git
 	makedepends = go
 	makedepends = git
 	provides = bas-tui
-	conflicts = bas-tui
-	source = git+https://github.com/DarkBones/arch-setup.git#branch=main
+	conflicts = arch-tui
+	source = https://github.com/DarkBones/arch-setup/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = bas-tui-git
+pkgname = bas-tui

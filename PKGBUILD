@@ -10,25 +10,21 @@ license=('MIT')
 depends=()
 makedepends=('go' 'git')
 provides=('bas-tui')
-conflicts=('bas-tui')
-source=("git+${url}.git#branch=main")
-sha256sums=('SKIP')
+conflicts=('arch-tui')
 
-_repo=arch-setup
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')  # you can replace SKIP with the real checksum later
 
-pkgver() {
-  cd "${srcdir}/${_repo}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+_builddir="${srcdir}/arch-setup-${pkgver}"  # GitHub tag v1.0.1 extracts to arch-setup-1.0.1
 
 build() {
-  cd "${srcdir}/${_repo}"
+  cd "${_builddir}"
   export CGO_ENABLED=0
   go build -trimpath -ldflags "-s -w" -o bas-tui ./cmd/archsetup
 }
 
 package() {
-  cd "${srcdir}/${_repo}"
+  cd "${_builddir}"
   install -Dm755 bas-tui "${pkgdir}/usr/bin/bas-tui"
   [[ -f LICENSE ]] && install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
