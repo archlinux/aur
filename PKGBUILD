@@ -1,7 +1,7 @@
 # Maintainer: dmitrysvd
 pkgname=yandex-music-native
 pkgver=5.68.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Official Yandex Music App for Linux"
 arch=('x86_64')
 url="https://music.yandex.ru/download/"
