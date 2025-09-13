@@ -8,7 +8,7 @@ _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
 pkgver=7.6.45.5062501
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -71,5 +71,5 @@ package() {
     rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac,web_content/NativeWebContent_*.zip},libstdc*}
 
     # remove unused lib
-    rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libcurl.so.4,libz*}
+    rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libcurl.so.4,libz*,libGL*}
 }
