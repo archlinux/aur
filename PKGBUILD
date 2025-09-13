@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-cli-git'
-pkgver=r337.2eda287
+pkgver=1.0.0.r0.g54f7611
 pkgrel=1
 pkgdesc='The main cli for the Caelestia dotfiles'
 arch=('any')
@@ -24,7 +24,7 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
