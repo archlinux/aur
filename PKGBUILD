@@ -15,8 +15,6 @@ source=(
     "torrcli.install"
 )
 
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
@@ -30,3 +28,6 @@ package() {
 
     install -Dm644 torrcli.conf.example "$pkgdir/usr/share/torrcli/torrcli.conf.example"
 }
+sha256sums=('d3ea39fd2d26320e00910c94c80d4220549ef9157810c1dba6949e04ec0a5fd4'
+            '5f79a8abcb505673e8f9527daf5196ecaa17282404ff8587efb7f4508c50661e'
+            'e8be9c3c96a21d8586dfb30ab6218fd0d57299efee59edb9c889aaf89018ef1d')
