@@ -5,7 +5,7 @@
 
 pkgname=ella
 pkgver='0.0.8'
-pkgrel=4
+pkgrel=5
 pkgdesc='A process manager for running and managing services'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
 url='https://github.com/thekhanj/ella'
@@ -31,7 +31,7 @@ build() {
 	}
 
 	cd "${srcdir}/ella-${pkgver}"
-	make || {
+	PATH="$GOPATH/bin:$PATH" make || {
 		_go_cleanup
 		exit 1
 	}
