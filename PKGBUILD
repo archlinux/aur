@@ -1,7 +1,7 @@
 # Maintainer: Jerzy Mansarliński <jerzy at mansar dot eu>
 
 pkgname=got-your-back
-pkgver=1.90
+pkgver=1.95
 pkgrel=1
 pkgdesc="A command line tool for backing up Gmail messages. Known as GYB."
 arch=(any)
@@ -24,7 +24,7 @@ source=(
     "001-default-config-dir.patch"
     )
 sha256sums=(
-    '9f090cb5b1b4b1209801e2cae1d2d0065581c0d2d366682db1e2e74cc4609ec9'
+    '96d8ec7c63bb33e5484f5ad6ac28c5762e9f2a2296d55955e0f48527ebcde45c'
     'e89329299e2040d0f565a69f05dcda0da7465d0f795d39c59a7b0646ab9c858b'
     )
 
@@ -41,5 +41,5 @@ package () {
     install -dm700 ${pkgdir}/var/lib/gyb/
 
     cd "${pkgname}-${pkgver}"
-    find . -type f -name "*.py" -exec install -Dm644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
+    find . -type f -name "*.py" -not -path "./tools/hooks/*" -exec install -Dm644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
 }
