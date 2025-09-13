@@ -1,11 +1,12 @@
-# Maintainer: Haoyang Liu <tttturtleruss@gmail.com>
+# Maintainer: Sebastian Frysztak <sebastian@frysztak.dev>
+# Contributor: Haoyang Liu <tttturtleruss@gmail.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Torsten Wagner <tottiwagner@yahoo.de>
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=r11416.f891a73
+pkgver=r11700.d38a625
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
@@ -14,30 +15,26 @@ url='https://github.com/openscad/openscad'
 provides=("$_pkg")
 conflicts=("$_pkg")
 depends=(
-	'boost-libs'
-	'cgal'
-	'libzip'
-	'opencsg'
-	'qscintilla-qt5'
-	'qt5-base'
-	'qt5-svg'
-	'qt5-multimedia'
-<<<<<<< HEAD
-	'qt5-gamepad'
-=======
->>>>>>> 97f7f6b079d8cdf1c758ddbbd4ef122e8e565905
-	'double-conversion'
-	'freetype2'
-	'glib2'
-	'harfbuzz'
-	'fontconfig'
-	'opencsg'
-	'gmp'
-	'mpfr'
-	'tbb'
-	'lib3mf'
+    'boost-libs'
+    'cgal'
+    'libzip'
+    'qscintilla-qt6'
+    'qt6-base'
+    'qt6-svg'
+    'qt6-multimedia'
+    'qt6-5compat'
+    'double-conversion'
+    'glew'
+    'freetype2'
+    'glib2'
+    'harfbuzz'
+    'fontconfig'
+    'gmp'
+    'mpfr'
+    'tbb'
+    'lib3mf'
 )
-makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python' 'glu')
+makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python' 'ninja')
 source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
@@ -57,10 +54,14 @@ build() {
 	cmake \
 		-B build \
 		-S "$_pkg" \
+		-G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DEXPERIMENTAL=ON \
-		-DOFFLINE_DOCS=ON \
+		-DOFFLINE_DOCS=OFF \
+		-DUSE_QT6=ON \
+		-DENABLE_TESTS=OFF \
+		-DUSE_BUILTIN_OPENCSG=ON \
 		-Wno-dev
 	cmake --build build
 	cd "$_pkg/resources/icons/"
