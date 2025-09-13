@@ -5,15 +5,17 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.13.2
-pkgrel=2
+pkgver=1.8.14pre1
+pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
 license=(IPL-1.0)
-depends=('krb5' 'libxcrypt')
+depends=('bash' 'glibc' 'krb5' 'libxcrypt')
+makedepends=('ncurses')
 optdepends=('openafs-modules: Kernel module for OpenAFS'
-            'openafs-modules-dkms: Kernel module for OpenAFS, built automatically using dkms')
+            'openafs-modules-dkms: Kernel module for OpenAFS, built automatically using dkms'
+            'ncurses: Required for scout and afsmonitor')
 conflicts=('openafs-features')
 backup=(etc/conf.d/openafs
 	etc/openafs/ThisCell
@@ -21,18 +23,14 @@ backup=(etc/conf.d/openafs
         etc/openafs/CellServDB)
 options=(!emptydirs)
 install=openafs.install
-source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
-        http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
+source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
+        http://openafs.org/dl/openafs/candidate/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
-        0001-Adjust-RedHat-config-and-service-files.patch
-        0002-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
-        0003-ubik-Use-typedef-for-ubik_call-function-parameter.patch)
-sha256sums=('59ab4f60cb925c5779c93e233621186c1226d4770239fb2b544942d49cebd976'
-            'b3c0d5b5bae8dd421899ca100d1a6ae25865b8016212c7457e0fc9f791b153e4'
+        0001-Adjust-RedHat-config-and-service-files.patch)
+sha256sums=('9e9e59ad4e94c8aba8e51522db75ff792803ad297afda32a3a7c526dac3d0b8d'
+            '281f825ce56af00eaa044dd137dddaaa7fa4e1042791fdc844fbed8216d160c1'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
-            '050598bb766c01501ad271d70e5d0d1ef195ae29ab108d634cd15ebe50179a20'
-            '312fcdd13b77bea54d52af19bc6ab31287a7261a45e1a58b6b06aebf5b5fcee1'
-            'e30ecdd5dd1eb68c3f703979b019ead3f4fa55e2b98c842169522073407fe26b')
+            'd65589a3caaa0ea4a3d11664b347f0fb25f9a1acb6d25d4a550c46ea318c9565')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003! This also affects the PAM libs.
@@ -43,10 +41,6 @@ prepare() {
 
   # Adjust RedHat config and service files to our needs
   patch -p1 < "${srcdir}"/0001-Adjust-RedHat-config-and-service-files.patch
-
-  # Patches for GCC 15
-  patch -p1 < "${srcdir}"/0002-lwp-Replace-the-typedefed-bool-datatype-with-int.patch
-  patch -p1 < "${srcdir}"/0003-ubik-Use-typedef-for-ubik_call-function-parameter.patch
 
   # Only needed when changes to configure were made
   #./regen.sh -q
@@ -90,6 +84,7 @@ package() {
   # install systemd service files
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-client.service" "${pkgdir}/usr/lib/systemd/system/openafs-client.service"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-server.service" "${pkgdir}/usr/lib/systemd/system/openafs-server.service"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/packaging/RedHat/openafs-client-systemd-helper.sh" "${pkgdir}/usr/lib/openafs/openafs-client-systemd-helper.sh"
 
   # install default configs
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/afsd/CellServDB" "${pkgdir}/etc/${pkgname}/CellServDB"
