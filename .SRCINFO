@@ -1,0 +1,17 @@
+pkgbase = shotmd
+	pkgdesc = A Screenshot tool for easy insert picture to markdown
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/k88936/Shotmd
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = qt6-base
+	depends = openssl
+	source = git+https://github.com/k88936/Shotmd.git
+	sha256sums = SKIP
+
+pkgname = shotmd
