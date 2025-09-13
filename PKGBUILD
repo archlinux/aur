@@ -1,7 +1,7 @@
 # Maintainer: Standa Lukeš <archpkg@exyi.cz>
 _pyname="pybind11-stubgen"
 pkgname="python-${_pyname}"
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="PEP 561 type stubs generator for pybind11 modules"
 arch=(x86_64)
@@ -13,7 +13,7 @@ checkdepends=()
 #source=("${_pyname}-${pkgver}.tgz::https://github.com/sizmailov/pybind11-stubgen/archive/v${pkgver}.tar.gz")
 # The build complains about "listing git files failed - pretending there aren't any", so we clone the git repo
 source=("${_pyname}-${pkgver}::git+https://github.com/sizmailov/pybind11-stubgen.git#tag=v${pkgver}")
-sha256sums=('5448e72da3e78424c9e1d1e81c8540ff7f0487d42150ffc7c5c5bdc024f638a6')
+sha256sums=('1f4d789cf57a72d8850381d3f84de5e88b9eb6ff5e22314106a3816e0ca703d3')
 
 build() {
     cd "${srcdir}/${_pyname}-${pkgver}"
