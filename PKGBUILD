@@ -1,6 +1,6 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch-git"
-pkgver=r365.1a7dd36
+pkgver=r368.33cf25c
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
@@ -28,5 +28,5 @@ prepare() {
 
 package() {
     install -Dm755 "$srcdir"/NerdFetch/nerdfetch "$pkgdir/usr/bin/nerdfetch"
-    install -Dm644 "$srcdir"/NerdFetch/README.md "$pkgdir/usr/share/doc/nerdfetch"
+    install -Dm644 "$srcdir"/NerdFetch/README.md "$pkgdir/usr/share/licenses/nerdfetch"
 }
