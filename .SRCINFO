@@ -1,0 +1,20 @@
+pkgbase = kernelpatch
+	pkgdesc = Patching and hooking the Linux kernel with only a stripped Linux kernel image.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/bmax121/KernelPatch
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = aarch64-linux-gnu-gcc
+	makedepends = aarch64-linux-gnu-binutils
+	depends = glibc
+	depends = zlib
+	provides = kpimg
+	provides = kptools
+	conflicts = kpimg
+	conflicts = kptools
+	source = kernelpatch-0.12.0.tar.gz::https://github.com/bmax121/KernelPatch/archive/0.12.0.tar.gz
+	sha512sums = 9053dd60e0d2b1eede62a42602a16c5a94826dcc77bde41f51646447465265d127731f20cb5bf8a18f8938dc73d10153635cf8ef578118c4e4843967af56461b
+
+pkgname = kernelpatch
