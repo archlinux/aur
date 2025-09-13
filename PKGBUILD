@@ -1,14 +1,14 @@
 # Maintainer: Grady Link <aur@grady.link>
 pkgname=seec
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Scratch Everywhere! Extension Compiler"
 arch=(any)
 url="https://github.com/gradylink/seec"
 license=('LGPL-3.0')
 makedepends=(go)
 source=("https://github.com/gradylink/seec/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7a362f487b7de8b7670400405f9fa82aeb9f527571a7be46252fe1a5137ade10')
+sha256sums=('66892a64a794887759142d080e84912e0fbbd181abab481bcbda58312208e77c')
 
 build() {
 	cd "$pkgname-$pkgver"
