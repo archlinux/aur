@@ -1,6 +1,6 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=bomdia-git
-pkgver=v0.1.0.r0.g276dc67
+pkgver=v0.1.0.r10.g9b7c70f
 pkgrel=1
 pkgdesc=""
 arch=(any)
@@ -15,9 +15,13 @@ makedepends=(
 	python-build
 	python-installer
 	python-setuptools
+	python-sphinx
+	python-myst-parser
 )
+checkdepends=()
 conflicts=("${pkgname%-git}")
 backup=()
+options=(zipman)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -34,6 +38,8 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 
 	python3 -m build --wheel --no-isolation
+
+	make man
 }
 
 package() {
