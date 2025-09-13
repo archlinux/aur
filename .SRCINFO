@@ -1,6 +1,6 @@
 pkgbase = python-uv-dynamic-versioning
 	pkgdesc = PDynamic versioning based on VCS tags for uv/hatch project
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/ninoseki/uv-dynamic-versioning
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-uv-dynamic-versioning
 	depends = python-jinja
 	depends = python-hatchling
 	depends = python-dunamai
-	source = uv-dynamic-versioning-0.11.0.tar.gz::https://github.com/ninoseki/uv-dynamic-versioning/archive/refs/tags/v0.11.0.tar.gz
-	sha512sums = fe614d0e1bbf2264438c3044400776e0f4f56461f93db33ddbef45b1940f31deba0e31f92e70a12d3a345d7dc24fc1dfbeef6f50f6825436098e2caa9970d0b1
+	source = uv-dynamic-versioning-0.11.1.tar.gz::https://github.com/ninoseki/uv-dynamic-versioning/archive/refs/tags/v0.11.1.tar.gz
+	sha512sums = c75a66a0c86871f72235023025453bc6de67235abbf81e83b9372ff48a4945e7d25135207a6a8d6b353cf9ee0927b785cc9d732f12e01c0487509f46eefe5ff4
 
 pkgname = python-uv-dynamic-versioning
