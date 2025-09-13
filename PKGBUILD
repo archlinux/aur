@@ -2,7 +2,7 @@
 _base=clawpack
 pkgname=python-${_base}
 pkgdesc="Finite volume methods for hyperbolic conservation laws"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=(x86_64)
 url="https://www.${_base}.org"
@@ -12,19 +12,19 @@ makedepends=(python-build python-installer meson-python python-wheel gcc-fortran
 optdepends=('petsc: for petclaw support'
   'python-scipy: for euler support')
 source=(${_base}-${pkgver}::git+https://github.com/${_base}/${_base}.git#tag=v${pkgver}
-  github.com-clawpack-amrclaw::git+https://github.com/${_base}/amrclaw.git#commit=6ffd3aa1a9d99607a5ac0a7a6fc45a96017fb6a3
+  github.com-clawpack-amrclaw::git+https://github.com/${_base}/amrclaw.git#commit=686c73304d1f442cbd6e0b37eea0b4648151da91
   github.com-clawpack-classic::git+https://github.com/${_base}/classic.git#commit=b89c96df32bbf3e00738baea54a7dd78a6c00318
-  github.com-clawpack-clawutil::git+https://github.com/${_base}/clawutil.git#commit=5d37867f75543d03baebfc0aee98df02edc3bdb1
-  github.com-clawpack-geoclaw::git+https://github.com/${_base}/geoclaw.git#commit=d26daee266c08485c6ea6f5671d1a45044fc5d04
-  github.com-clawpack-pyclaw::git+https://github.com/${_base}/pyclaw.git#commit=de24cc83a3e988e2dedab8147df6a987fdae0477
+  github.com-clawpack-clawutil::git+https://github.com/${_base}/clawutil.git#commit=336e422f9cfca7c4cf659bc5ffcb694ee4e234eb
+  github.com-clawpack-geoclaw::git+https://github.com/${_base}/geoclaw.git#commit=6b765c7da750172328a6654977fa478d73a9a0c7
+  github.com-clawpack-pyclaw::git+https://github.com/${_base}/pyclaw.git#commit=885407160cd85737289ef0685e6175c86de03bd1
   github.com-clawpack-riemann::git+https://github.com/${_base}/riemann.git#commit=3f529f0f5cbfb87343bc289c31e2b48193785687
   github.com-clawpack-visclaw::git+https://github.com/${_base}/visclaw.git#commit=c6a13abfecf94e8e5ba8fd6594de22e2cd95e2ae)
-sha512sums=('35d76b7ddd60c02a6d4bb597129300a38a27e8aaeab717a60c1c32ee5df6a9fa9e8ce4889ee2e6e213b5d655d96498b0d0b055566f9a14782a5da7a891cc8440'
-            '83da13e69a4d4a0b566068156fdb0b2ab7b05fd46b2cd8c6d4374d97c5a5e99cfd48a9c21b58c91d2b8695f730d02fd822779c75cdcce1ca8c2f20fc2a1800d2'
+sha512sums=('a5e47de472989730511b5e7795e5ea4180865bc5b38f6518a92bcc7e7275f4e779400809067d8e6f1d15a98930a95a757ccf516b3a185c390fc91e719164d006'
+            '8dca151325f8f9ab1083b4a57ece24ef06e41b7a83eebbb3437dd2981f820387cd0aaaa5a611b86d00de77fb1c4ffca138ff825c5e77832ddd5ac32a878e6b83'
             '3924882cb020d598f795eedf527ee9fcca392900c8401794e9d7eb1c8b23912a25664f0c891da4b4d43521072cac9fceb2f0569245b24efe5d30255ab02d6af4'
-            '15139ef522d279c079e7fdd94d5d70abffb63d10348b8148e0d4dbfdf806596c058d90756916071d82087a96230946ab7cd0948348cbfc1a345d4f1aee4a66c2'
-            'e7ded10018b774c800e75cd4d31fa42543cddfcc95bc4b32fc41e631ca498b1369f54999c00984ae45b12e25f649728c7766e8782999c26110a37d2273ed4e7a'
-            '135dbbe0f5a194c4f4f6c1b8ee9d4990171c6c754af7974a5aa82a57062e92fbee8b57562cd9570b09ddfc53f07f66c7f300bf3a6ecccb48d10d1ae9fc18e63e'
+            '9f7359df2c8113771789777247926eee5e055aafd7c1dfd363c8dfad35a723d565d0695818b26623c7c639b8157e0b9aff911081361fc168fdaace06f9c9ff63'
+            '3f00dabc5930c675e55430df0246db1e30a3d30f1ba6249072b2a277c7dff2ac7d41bc7eb8e028b4d7072b45383712d2aefc553e18b409ba4563b9acf0f4d6f8'
+            '1b27d7cf616fb1f300ac6c82a5879975fee7a4dd8bee80748d34819b17087b0d214276395486457c94fef690b664c52dcefb78ec1b7e4edecc2cc105c883395d'
             '2f19bbf668fa575afe95c2ebbfcdc21fdcaf6de3ade6818941ddd4097d4ba2ac483a10a2b9bd2c1373c15d80be3c1710432f2d6a29af0d61793cbf775382258a'
             'f41b69cf6da9c269e43535eed8e2f9a6700f414dc5664e2e9d14b688f1c46a3e4cff2d8b948d26b7d5a1c0543a30665cceebb0993b4b91f6b6713b2a72a4424b')
 
