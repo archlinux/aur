@@ -1,7 +1,7 @@
 pkgbase = python-misaki
 	pkgdesc = G2P engine for TTS
 	pkgver = 0.9.4
-	pkgrel = 2
+	pkgrel = 4
 	url = https://pypi.org/project/misaki
 	arch = any
 	license = MIT
@@ -19,6 +19,12 @@ pkgbase = python-misaki
 	sha256sums = 3960fa3e6de179a90ee8e628446a4a4f6b8c730b6e3410999cf396189f4d9c40
 
 pkgname = python-misaki
+	optdepends = python-misaki-en
+	optdepends = python-misaki-ja
+	optdepends = python-misaki-ko
+	optdepends = python-misaki-zh
+	optdepends = python-misaki-vi
+	optdepends = python-misaki-he
 	provides = python-misaki
 	conflicts = python-misaki
 

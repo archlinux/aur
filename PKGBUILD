@@ -4,7 +4,7 @@ pkgbase=python-misaki
 pkgname=(python-misaki{,-{en,ja,ko,zh,vi,he}})
 _name=misaki
 pkgver=0.9.4
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="G2P engine for TTS"
 arch=('any')
@@ -38,6 +38,8 @@ build() {
 package_python-misaki() {
     provides=(${pkgname})
     conflicts=(${pkgname})
+    optdepends=(python-misaki-{en,ja,ko,zh,vi,he})
+
 
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
