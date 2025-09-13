@@ -1,7 +1,7 @@
 pkgbase = ella
 	pkgdesc = A process manager for running and managing services
 	pkgver = 0.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thekhanj/ella
 	arch = x86_64
 	arch = aarch64
