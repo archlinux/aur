@@ -1,8 +1,8 @@
 pkgbase = intel-media-sdk-git
 	pkgdesc = Legacy API for hardware video acceleration on Intel GPUs (Broadwell to Rocket Lake) (git version)
 	pkgver = 2023.2.2.r1.g7a72de33
-	pkgrel = 5
-	url = https://software.intel.com/en-us/media-sdk/
+	pkgrel = 6
+	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
