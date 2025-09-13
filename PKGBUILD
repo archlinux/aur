@@ -1,6 +1,6 @@
 
 pkgname=chromium-ffmpeg-git
-pkgver=8.1.r121031.g799c133273
+pkgver=8.1.r121039.ga4fd3f27f4
 pkgver(){
   printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') \
     $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
@@ -69,8 +69,8 @@ build() {
     --enable-decoder=vorbis,opus,flac,pcm_s16le,mp3,aac,h264 \
     --enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp9 \
     --extra-cflags="-fno-math-errno -fno-signed-zeros -fno-semantic-interposition -fomit-frame-pointer ${LTOFLAGS}" \
-    --enable-{pic,asm} \
-    --libdir=/ # hardcoded-tables with pcm_s16le is unbuildable
+    --enable-{pic,asm,hardcoded-tables} \
+    --libdir=/
   make DESTDIR=.. install
   cd ..
   _symbols=$(sed 's/^/-Wl,-u,/' sigs.txt | paste -sd ' ' -)
