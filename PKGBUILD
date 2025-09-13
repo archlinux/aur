@@ -5,7 +5,7 @@ _pkgname=fileoptimizer
 
 # This is only the initial version
 # The pkgver() function below will always fetch the latest version
-pkgver=17.00.2842
+pkgver=17.10.2857
 
 # Always fetch the latest version
 pkgver() {
@@ -25,8 +25,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$_pkgname-$pkgver.7z.exe::https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/${pkgver}/FileOptimizerFull.7z.exe/download"
         "$_pkgname.desktop")
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('5fe38b7848fc5dac00aa063ce67cdd956c43913420cef8851aed846182ff3dce'
+            'a84498b533c5acff60d98cd413df3c63f4408fddd9eb235e6c25c58931655ff5')
 options=(!strip)
 
 prepare() {
