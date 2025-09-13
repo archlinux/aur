@@ -1,0 +1,101 @@
+From da26c2b97cb203b35e9ab382d466cd52b2fcde97 Mon Sep 17 00:00:00 2001
+From: Maks Verver <maks@verver.ch>
+Date: Sat, 13 Sep 2025 20:12:43 +0200
+Subject: [PATCH] Fix test failures caused by `warns(None)`.
+
+With pytest>=7.0, `warns(None)` fails with:
+
+  TypeError: exceptions must be derived from Warning, not <class 'NoneType'>
+
+The recommended solution is to use `warnings.simplefilter("error")` instead. See:
+https://docs.pytest.org/en/latest/how-to/capture-warnings.html#additional-use-cases-of-warnings-in-tests
+---
+ tests/nn/pipe/test_pipe.py         | 13 +++++--------
+ tests/nn/pipe_process/test_pipe.py | 13 +++++--------
+ 2 files changed, 10 insertions(+), 16 deletions(-)
+
+diff --git a/tests/nn/pipe/test_pipe.py b/tests/nn/pipe/test_pipe.py
+index f1a9f77..3edf13b 100644
+--- a/tests/nn/pipe/test_pipe.py
++++ b/tests/nn/pipe/test_pipe.py
+@@ -20,6 +20,7 @@
+ from collections import OrderedDict
+ from copy import deepcopy
+ import time
++import warnings
+ 
+ import pytest
+ import torch
+@@ -123,23 +124,19 @@ def test_batch_size_indivisible():
+     model = nn.Sequential(nn.Linear(1, 1))
+     model = Pipe(model, balance=[1], devices=["cpu"], chunks=4)
+ 
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings(action="error"):
++        # Indivisible batch size is legal.
+         model(torch.rand(7, 1))
+ 
+-    # Indivisible batch size is legal.
+-    assert not record
+-
+ 
+ def test_batch_size_small():
+     model = nn.Sequential(nn.Linear(1, 1))
+     model = Pipe(model, balance=[1], devices=["cpu"], chunks=4)
+ 
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings(action="error"):
++        # Batch size smaller than chunks is legal.
+         model(torch.rand(2, 1))
+ 
+-    # Batch size smaller than chunks is legal.
+-    assert not record
+-
+ 
+ def test_checkpoint_mode():
+     def count_grad_fn(grad_fn, name, visited=set()):
+diff --git a/tests/nn/pipe_process/test_pipe.py b/tests/nn/pipe_process/test_pipe.py
+index 19de13a..6832016 100644
+--- a/tests/nn/pipe_process/test_pipe.py
++++ b/tests/nn/pipe_process/test_pipe.py
+@@ -21,6 +21,7 @@ from collections import OrderedDict
+ from copy import deepcopy
+ import os
+ import time
++import warnings
+ 
+ import pytest
+ import torch
+@@ -222,12 +223,10 @@ def batch_size_indivisible(pipe_class):
+     model = nn.Sequential(nn.Linear(1, 1))
+     model = pipe_class(model, balance=[1], worker_map=get_worker_map(), chunks=4)
+ 
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings(action="error"):
++        # Indivisible batch size is legal.
+         model(torch.rand(7, 1))
+ 
+-    # Indivisible batch size is legal.
+-    assert not record
+-
+ 
+ @torch_spawn([1])
+ @pytest.mark.parametrize("pipe_class", [AsyncPipe])
+@@ -235,12 +234,10 @@ def batch_size_small(pipe_class):
+     model = nn.Sequential(nn.Linear(1, 1))
+     model = pipe_class(model, balance=[1], worker_map=get_worker_map(), chunks=4)
+ 
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings(action="error"):
++        # Batch size smaller than chunks is legal.
+         model(torch.rand(2, 1))
+ 
+-    # Batch size smaller than chunks is legal.
+-    assert not record
+-
+ 
+ @torch_spawn([1])
+ @pytest.mark.parametrize("pipe_class", [AsyncPipe])
+-- 
+2.51.0
+

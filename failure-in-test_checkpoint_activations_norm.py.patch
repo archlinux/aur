@@ -1,0 +1,35 @@
+From f52d2de1af12d3c8df1a6c0e5475b147fc761345 Mon Sep 17 00:00:00 2001
+From: Maks Verver <maks@verver.ch>
+Date: Sat, 13 Sep 2025 20:11:05 +0200
+Subject: [PATCH] Fix failure in test_checkpoint_activations_norm.py
+
+This test expected to fail with mixed_precision == 'fp16' but it works
+just fine on my system (and then the test fails because the expected
+exception is not thrown). I suspect the test is out of date.
+---
+ tests/nn/checkpoint/test_checkpoint_activations_norm.py | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/tests/nn/checkpoint/test_checkpoint_activations_norm.py b/tests/nn/checkpoint/test_checkpoint_activations_norm.py
+index 504c9c5..67af758 100644
+--- a/tests/nn/checkpoint/test_checkpoint_activations_norm.py
++++ b/tests/nn/checkpoint/test_checkpoint_activations_norm.py
+@@ -70,14 +70,7 @@ def test_norm(device, norm_type, mixed_precision):
+     in_data.requires_grad = True
+     for model in (m_ref, m_cpt):
+         optim = SGD(model.parameters(), lr=0.1)
+-        if device == "cpu" and mixed_precision != "fp32":
+-            # Got: RuntimeError: "batch_norm"/"layer_norm" not implemented for 'Half'.
+-            with pytest.raises(RuntimeError):
+-                out = model(in_data)
+-            return
+-        else:
+-            # Everything else work.
+-            out = model(in_data)
++        out = model(in_data)
+         out.sum().backward()
+         optim.step()
+ 
+-- 
+2.51.0
+
