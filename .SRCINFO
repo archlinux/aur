@@ -1,6 +1,6 @@
 pkgbase = openscad-qt6-git
 	pkgdesc = The programmers solid 3D CAD modeller, Qt6-enabled
-	pkgver = r11129.dbd7d4f
+	pkgver = r11704.ee40fe5
 	pkgrel = 1
 	url = https://github.com/openscad/openscad
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = openscad-qt6-git
 	depends = libzip
 	depends = opencsg
 	depends = qscintilla-qt6
+	depends = qt6-5compat
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qt6-multimedia

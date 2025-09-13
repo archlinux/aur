@@ -6,7 +6,7 @@
 
 pkgname=openscad-qt6-git
 _pkg="${pkgname%-qt6-git}"
-pkgver=r11129.dbd7d4f
+pkgver=r11704.ee40fe5
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller, Qt6-enabled"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
     'libzip'
     'opencsg'
     'qscintilla-qt6'
+    'qt6-5compat'
     'qt6-base'
     'qt6-svg'
     'qt6-multimedia'
