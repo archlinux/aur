@@ -1,15 +1,15 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2025.05.1.513
+	pkgver = 2025.09.0.387
 	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = apache-ant
+	makedepends = java-environment=17
+	makedepends = ant
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = java-environment
 	makedepends = libcups
 	makedepends = ninja
 	makedepends = nvm
@@ -43,14 +43,18 @@ pkgbase = rstudio-desktop
 	optdepends = subversion: for subversion support
 	provides = rstudio-desktop
 	conflicts = rstudio-desktop
+	noextract = gwt-2.12.2.tar.gz
 	options = !emptydirs
 	options = !debug
-	source = rstudio-2025.05.1.513-ab7c1bc.tar.gz::https://github.com/rstudio/rstudio/archive/ab7c1bc795c7dcff8f26215b832a3649a19fc16c.tar.gz
+	options = !strip
+	source = rstudio-2025.09.0.387-af5fc22.tar.gz::https://github.com/rstudio/rstudio/archive/af5fc22a687c0f462ee27c6afeeee38ee46507b9.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
+	source = https://rstudio-buildtools.s3.us-east-1.amazonaws.com/gwt/gwt-2.12.2.tar.gz
 	source = soci-4.0.3.tar.gz::https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
-	source = https://github.com/github/copilot-language-server-release/releases/download/1.300.0/copilot-language-server-linux-x64-1.300.0.zip
+	source = https://github.com/github/copilot-language-server-release/releases/download/1.371.0/copilot-language-server-linux-x64-1.371.0.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 27284accdad05ff8919a7ac6dc5f939a511a90842a35f6393517506d74809e76
 	sha256sums = 4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928
 	sha256sums = SKIP
 
