@@ -2,9 +2,9 @@
 
 pkgname=drawnix
 _tagname=0.2.1
-pkgver=${_tagname//-/_}
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="All in one open-source whiteboard tool with mind, flowchart, freehand and etc.All in one open-source whiteboard tool with mind, flowchart, freehand and etc."
+pkgdesc="All in one open-source whiteboard tool with mind, flowchart, freehand and etc."
 arch=('any')
 url="https://github.com/plait-board/drawnix"
 license=('MIT')
