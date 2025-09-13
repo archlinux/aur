@@ -14,7 +14,7 @@ sha256sums=('6aebb88e9b0abc763cc4540ed54a4eef947666c5e9bcc6bfedab1a35d9196a2b')
 
 build() {
     cd $pkgname-${pkgver}
-    make PREFIX=/usr DESTDIR="$pkgdir" build
+    make build
 }
 
 package() {
