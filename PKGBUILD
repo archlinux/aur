@@ -4,7 +4,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.5.r187.g6b9adf0
+pkgver=2.6.1.r186.geac0307
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -36,6 +36,7 @@ makedepends=(
   evince
   fbida
   gawk
+  git
   glib2-devel
   graphviz
   imagemagick
@@ -63,7 +64,7 @@ optdepends=(
   'perl-image-exiftool: for the jpeg extraction plugin'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -71,9 +72,6 @@ source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
-  # force xwayland
-  sed -E 's&^Exec=&Exec=env WAYLAND_DISPLAY= &' -i "$_pkgsrc"/org.geeqie.Geeqie.desktop.in
-
   # skip failing tests
   sed -E '/[Aa]ncillary.files/s&^&#&' -i "$_pkgsrc"/meson.build
 }
@@ -98,7 +96,4 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-
-  # not useful yet
-  rm -f "$pkgdir/usr/share/applications"/*cache-maintenance*.desktop
 }
