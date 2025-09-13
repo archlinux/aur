@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd $pkgname-${pkgver}
-    make PREFIX=/usr DESTDIR="$pkgdir" instal
+    install -m 644 -D LICENCE "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
 }
