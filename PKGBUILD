@@ -2,8 +2,8 @@
 
 _plug=eedi3m
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=4.7.gd11bdb3
-pkgrel=3
+pkgver=6.0.g152f83b
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3'
@@ -12,13 +12,9 @@ depends=(
   'vapoursynth'
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # libc.so
-  'opencl-icd-loader' # libOpenCL.so
-  'boost-libs' 'libboost_filesystem.so'
 )
 makedepends=(
   'git'
-  'opencl-headers'
-  'boost'
   'meson'
 )
 provides=("vapoursynth-plugin-${_plug}")
