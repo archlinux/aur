@@ -1,4 +1,4 @@
-pkgbase = moonasst
+pkgbase = moonasst-a
 	pkgdesc = Moonasst Qt application
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = moonasst
 	source = https://gitee.com/nemozz-hz/moonasst-a/repository/archive/v1.0.0.tar.gz
 	sha256sums = bbaf6ab10a8fa8509f875af1429d6c40de56e72a03965240ab62d8b795e54370
 
-pkgname = moonasst
+pkgname = moonasst-a

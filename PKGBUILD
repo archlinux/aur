@@ -1,4 +1,4 @@
-pkgname=moonasst
+pkgname=moonasst-a
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Moonasst Qt application"
