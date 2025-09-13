@@ -1,4 +1,5 @@
 [tenere-bin]
-source = "git"
-git = "https://github.com/pythops/tenere.git"
+source = "github"
+github = "pythops/tenere"
+use_latest_release = true
 prefix = "v"
