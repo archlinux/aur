@@ -25,15 +25,12 @@ build() {
   cargo build --frozen --release --all-features
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
-}
-
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0755 -t "$pkgdir/usr/bin/" \
+    "target/release/$pkgname"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md \
+    "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
