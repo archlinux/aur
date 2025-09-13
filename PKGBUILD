@@ -4,7 +4,7 @@
 
 pkgname='caelestia-shell'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
@@ -14,7 +14,7 @@ depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' '
          'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'ninja')
 provides=($pkgname)
-conflicts=($pkgname)
+conflicts=($pkgname-git)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('19811bfeec1d8b54341a76a5ac5c76e08d3f1904531c4341173593206e9fe552')
 
