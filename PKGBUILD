@@ -19,5 +19,7 @@ build() {
 
 package() {
     cd $pkgname-${pkgver}
+    install -m 755 -D matlock "/usr/bin/"
     install -m 644 -D LICENCE "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
+    install -m 644 -D matlock.1.gz "$pkgdir/usr/share/man/man1/"
 }
