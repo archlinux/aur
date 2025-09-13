@@ -1,6 +1,6 @@
 pkgbase = frame0
 	pkgdesc = A Balsamiq-alternative wireframming tool for modern apps
-	pkgver = 1.0.0~beta.17
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://frame0.app
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = frame0
 	depends = libxcb
 	depends = glib2
 	optdepends = pulseaudio
-	source = https://files.frame0.app/releases/linux/x64/frame0_1.0.0~beta.17_amd64.deb
-	sha256sums = 3f1f2009dbaca16f3bf7a44359e46cb3dd2accd95b01cf9ed5abf81184e98087
+	source = https://files.frame0.app/releases/linux/x64/frame0_1.0.1_amd64.deb
+	sha256sums = 045910d3be7d5430f1f17dda2dedee1a04036c64e52a7209ae9cd6eef3ca33ad
 
 pkgname = frame0
