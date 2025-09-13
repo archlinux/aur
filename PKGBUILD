@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-unicode
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='unicode provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-unicode')
 provides=('elephant-unicode')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4825e551f4f471894e34a0b903d1f01f513c7b8ff70d4405066021786b60568c')
+sha256sums=('a39cadfa7ac5f54b44457e64af47dae5347044fa1758e53ff7544b2d40b4de55')
 
 build() {
     cd elephant-${pkgver}/internal/providers/unicode
