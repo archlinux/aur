@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.27.0
-pkgrel=2
+pkgver=0.27.1
+pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -22,14 +22,14 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('706cb7f9b50210d6d73c3dcbfe3740be1b51e0dee32dcb6318d728a550782507'
+sha256sums=('b8236f283390314ad698091cd88e4248db95824a0faf9221ec8aca523af588f5'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
             '15ec782d5dc557a6aad15140a1b8098438e57012291f2a0f3542686f5eda93ea'
             'dc4ce21d936b7442e84eb521d8c519e02322808fbbadf23c27aa1bf4994fccf5'
-            'a54472075f050b9d60083c8086da9b196391cf666bd6734f411df80cef806626'
-            'b70f0a4ba817a00bc378ee9df5dbeb1098b1d98a747d7f53a53593f69af3585e')
+            'ebb75b25fda53a07cc1965b8e706383aa1c9ea7953b44d49544ffccf761ff744'
+            'd8c1a6caeec190c2e5fe1fd97666f55450cbf61516424ca250a4b4c21608a748')
 
 prepare() {
     echo "After upgrading 'nodejs', you need to recompile '${pkgname}'..."
