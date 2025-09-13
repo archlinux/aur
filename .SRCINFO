@@ -1,0 +1,22 @@
+pkgbase = openspeedrun-git
+	pkgdesc = Modern and minimalistic open-source speedrun timer
+	pkgver = r108.519ceeb
+	pkgrel = 1
+	url = https://github.com/SrWither/OpenSpeedRun
+	arch = x86_64
+	license = BSD-3
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = wayland
+	depends = mesa
+	depends = libx11
+	depends = oniguruma
+	conflicts = openspeedrun
+	options = !lto
+	source = openspeedrun-git::git+https://github.com/SrWither/OpenSpeedRun.git
+	sha256sums = SKIP
+
+pkgname = openspeedrun-git
