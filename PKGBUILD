@@ -7,8 +7,8 @@ pkgrel=1
 arch=(any)
 url="https://github.com/jorenham/${_base}"
 license=(BSD-3-Clause)
-depends=(python-jinja uv)
-makedepends=(python-build python-installer python-numpy python-wheel)
+depends=(python)
+makedepends=(python-build python-installer python-numpy python-uv-build python-jinja python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('513a167566b91c25bd1a7aed289caefa145b3e9f9ac32668ceb8f1ff08de5b8a94b4572d894ac32139d6472003d03129f5c2499a82b238c7b1bcd97ad6dea3ca')
 
