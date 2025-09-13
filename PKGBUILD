@@ -15,6 +15,5 @@ sha256sums=('6aebb88e9b0abc763cc4540ed54a4eef947666c5e9bcc6bfedab1a35d9196a2b')
 package() {
     cd $pkgname-${pkgver}
     sudo make PREFIX=/usr DESTDIR="$pkgdir" instal
-    install -m 644 -D LICENCE "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
     pwd
 }
