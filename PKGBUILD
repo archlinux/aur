@@ -1,14 +1,14 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-pak128.cs
-pkgver=2019
+pkgver=2096
 pkgrel=1
 pkgdesc="High resolution graphics set for Simutrans, with a czech theme"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-source=(http://list.extended.simutrans.org/pak128.CS.zip)
-sha256sums=('dca8d7ff2b245c5543cb0024b30ea93ac6892971d829501d88f833913686bfe2')
+source=(https://sourceforge.net/projects/simutrans/files/Pak128.CS/nightly%20builds/pak128.CS-r2096.zip)
+sha256sums=('43338823d027fc6a2d330e77033f3be6f0f08916b5d97d89766d58879289efe4')
 
 package() {
   #data
