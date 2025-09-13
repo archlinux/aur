@@ -1,14 +1,15 @@
 pkgbase = pmbs
 	pkgdesc = Make btrfs snapshot (every minute), and auto clean
-	pkgver = 0.1.0a3
-	pkgrel = 2
+	pkgver = 0.1.0a4
+	pkgrel = 1
 	url = https://crates.io/crates/pmbs
 	arch = x86_64
 	license = MIT
 	makedepends = rust>=1:1.89
 	depends = btrfs-progs>=6.16
+	optdepends = rsync: send snapshot to remote machine
 	conflicts = pmbs-bin
-	source = pmbs.tar.gz::https://crates.io/api/v1/crates/pmbs/0.1.0-a3/download
-	sha256sums = f9b4377bd35b801132959db394625902dfe70fad58c177ca1aa8124d20b28f8b
+	source = pmbs.tar.gz::https://crates.io/api/v1/crates/pmbs/0.1.0-a4/download
+	sha256sums = 1714bbe8ce2b1065c871a2c92b6853c61cbca75f01251b26c5492a84faa2e4cc
 
 pkgname = pmbs
