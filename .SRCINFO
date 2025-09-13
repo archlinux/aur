@@ -1,0 +1,11 @@
+pkgbase = always-bin
+	pkgdesc = A tiny script that aesthetically types out text
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	source = always
+	sha256sums = SKIP
+
+pkgname = always-bin
