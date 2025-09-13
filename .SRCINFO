@@ -1,12 +1,12 @@
 pkgbase = emu80-qt
 	pkgdesc = Emulator for bunch of Soviet PCs
 	pkgver = 4.0.535
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emu80.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = base-devel
-	depends = emu80-base
+	depends = emu80-base>=4.0.535
 	depends = qt6-base
 	depends = qt6-multimedia
 	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.535.tar.gz
