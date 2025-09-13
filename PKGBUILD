@@ -1,6 +1,6 @@
 # Maintainer: DarkBones
 
-pkgname=bas-tui-git
+pkgname=bas-tui
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Bootstrap Any System (BAS) TUI"
