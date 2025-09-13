@@ -1,6 +1,6 @@
 # Maintainer: rocksalt
 pkgname=nvcards
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Card-based note-taking application with local database file (sqlite database with egui frontend)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/nacl42/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('eaba70b7280ed006d6f9e31584842e92c9e1cfaf9001c868fc1f7e6aebda43fa')
+sha256sums=('9aae39106ad8ca7b08e976e851f986bd02d6f3fe9fd602cb9a08c2808407d10e')
 
 _features="pdf,json_tree,jp_font,inter_font"
 
