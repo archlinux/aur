@@ -2,7 +2,7 @@
 
 
 pkgname=gdx-liftoff
-pkgver=1.13.1.3
+pkgver=1.13.5.2
 pkgrel=1
 #epoch=1
 pkgdesc="LibGDX project setup"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/libgdx/gdx-liftoff/archive/
         "gdx-liftoff.desktop"
 )
 
-sha256sums=('99ae379756a422bd666768f03fd4399bcebd281c35e550dc5bad6657e79c6d6a'
+sha256sums=('52ba5218bc6485d8079751ebec18f017708d3d6a6605b37d4acfa1a29a248bef'
             'b646f91c9504b229c8a59bbb05a7fc410e5284f1e4cdbbf6fcb258eea8056a8b'
             '3756dc0f908f8616d00cd077891a5e8c1b1f72e575227bcfc72db38e2e57c1b6')
 
