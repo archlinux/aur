@@ -1,6 +1,6 @@
 pkgbase = tmpstali
 	pkgdesc = Part of the tmplinux suite. Temporary Stali
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/TheOddCell/tmpstali
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tmpstali
 	depends = util-linux
 	depends = systemd
 	depends = squashfs-tools
-	source = https://github.com/TheOddCell/tmpstali/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/TheOddCell/tmpstali/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = tmpstali

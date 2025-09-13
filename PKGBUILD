@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmpstali
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Part of the tmplinux suite. Temporary Stali"
 arch=('any')
