@@ -2,7 +2,7 @@
 
 pkgname=parrot-cli
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Intelligent CLI command failure assistant with AI-powered responses'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/parrot'
@@ -58,17 +58,20 @@ post_install() {
         else
             echo "✅ AI model already available"
         fi
-        
-        echo "🔧 To enable shell integration, run: parrot install"
-        echo "💡 This adds smart command failure detection to your shell"
+        echo ""
     else
         echo "🔄 Using built-in responses (no setup required)"
         echo ""
         echo "For AI-powered responses, install Ollama:"
         echo "  https://ollama.com/download"
-        echo "Then run: parrot setup"
+        echo ""
     fi
     
+    echo "🚀 NEXT STEP: Run this command to enable shell integration:"
+    echo "    parrot install"
     echo ""
-    echo "Run 'parrot --help' to get started!"
+    echo "💡 This adds smart command failure detection to your shell"
+    echo "   After running it, failed commands will trigger helpful responses!"
+    echo ""
+    echo "📖 For more options, run: parrot --help"
 }
