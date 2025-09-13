@@ -1,0 +1,16 @@
+pkgbase = hottgo-bin
+pkgdesc = Hypergraph & HoTT tooling in Go (prebuilt binary)
+pkgver = 0.1.2
+pkgrel = 1
+url = https://github.com/watchthelight/HypergraphGo
+arch = x86_64
+arch = aarch64
+license = MIT
+provides = hottgo
+conflicts = hottgo
+source_x86_64 = https://github.com/watchthelight/HypergraphGo/releases/download/v0.1.2/hottgo_0.1.2_linux_amd64.tar.gz
+source_aarch64 = https://github.com/watchthelight/HypergraphGo/releases/download/v0.1.2/hottgo_0.1.2_linux_arm64.tar.gz
+sha256sums_x86_64 = SKIP
+sha256sums_aarch64 = SKIP
+
+pkgname = hottgo-bin
