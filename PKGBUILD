@@ -1,11 +1,10 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: xantares < xantares09 at hotmail dot com >
 
-_commit=0dd113361057e477f40ff4d8788f3e7e400af5f9  # 0.25.5
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
-pkgver=0.25.5
+pkgver=0.25.8
 pkgrel=1
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
@@ -18,8 +17,8 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-meson'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://github.com/p11-glue/p11-kit?#commit=${_commit}")
-sha256sums=('SKIP')
+source=("git+https://github.com/p11-glue/p11-kit?#tag=${pkgver}")
+sha256sums=('919ee995b72f2189fb1d1d2ee9b7331e6e3574eb432f72545591a0be188cb100')
 
 pkgver() {
   cd "${srcdir}/p11-kit"
