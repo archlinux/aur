@@ -14,7 +14,8 @@ _image="$(basename ${source[0]})"
 prepare() {
   cd "${srcdir}"
   chmod +x "${_image}"
-  ./"${_image}" --appimage-extract
+  ./"${_image}" --appimage-extract 
+  rm "${srcdir}/squashfs-root/usr/bin/libcrypt.so.1"
   cat > "${srcdir}/ehentai-qt.desktop" <<EOF
 [Desktop Entry]
 Type=Application
@@ -28,7 +29,6 @@ EOF
 
 package() {
   install -d "${pkgdir}/opt"
-  rm "${pkgdir}/opt/ehentai-qt/libcrypto.so.1.1"
   install -d "${pkgdir}/usr/bin"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/bin" "${pkgdir}/opt/ehentai-qt"
   chmod +x "${pkgdir}/opt/ehentai-qt/EHentai"
