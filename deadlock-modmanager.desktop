@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Game;
 Comment=A mod manager for the Valve game Deadlock
-Exec=WEBKIT_DISABLE_COMPOSITING_MODE=1 deadlock-modmanager
+Exec=deadlock-modmanager
 Icon=deadlock-modmanager
 Name=Deadlock Mod Manager
 Terminal=false

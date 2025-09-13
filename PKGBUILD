@@ -3,16 +3,18 @@ pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
 _pkgver=0.7.0
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/Stormix/$pkgname"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
-depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme')
+depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme' 'mesa-utils')
 source=("git+$url.git#tag=v$_pkgver"
-	'deadlock-modmanager.desktop')
+	'deadlock-modmanager.desktop'
+	'nvidia-webkit-wrapper.sh')
 sha256sums=('dfbd17fd5d2c7a20945896cac200bce1b87540337fca829ccf1cd7c571854d5d'
-            '0e5b83e284a6a02291a6c25c56c9d7568f95f3274c6a35b8ddde4783ff3edaf4')
+            'dd89c63a33b66b3d91b2530a035e09090131b4508ea17d84f2d5f8c0df052dd0'
+            'db8eb404d073aca83fb6a587989c67e062f3c29d03e966fbdc567fdc133440e9')
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 options=('!lto')
@@ -41,13 +43,14 @@ build() {
 
 package() {
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm755 "$srcdir/nvidia-webkit-wrapper.sh" "$pkgdir/usr/bin/$pkgname"
 
-	cd "$srcdir/$pkgname/apps/desktop"
+	cd "$srcdir/$pkgname/apps/desktop/src-tauri"
 
-	install -Dm755 "src-tauri/target/release/deadlock-mod-manager" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-	install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-	install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+	install -Dm755 "target/release/deadlock-mod-manager" "$pkgdir/usr/bin/$pkgname-bin"
+	install -Dm644 "icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+	install -Dm644 "icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+	install -Dm644 "icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 }
 
 post_install() {
