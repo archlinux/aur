@@ -13,9 +13,9 @@ provides=('bas-tui')
 conflicts=('arch-tui')
 
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')  # you can replace SKIP with the real checksum later
+sha256sums=('SKIP')
 
-_builddir="${srcdir}/arch-setup-${pkgver}"  # GitHub tag v1.0.1 extracts to arch-setup-1.0.1
+_builddir="${srcdir}/arch-setup-${pkgver}"
 
 build() {
   cd "${_builddir}"
