@@ -1,13 +1,16 @@
 pkgbase = danmakufactory-git
 	pkgdesc = A tool for converting XML danmaku to ass subtitles.
-	pkgver = r99.3f49956
+	pkgver = r123.4bb8774
 	pkgrel = 1
 	url = https://github.com/hihkm/DanmakuFactory
 	arch = x86_64
 	license = MIT
+	makedepends = xmake
 	provides = danmakufactory
 	conflicts = danmakufactory
 	source = danmakufactory::git+https://github.com/hihkm/DanmakuFactory.git
+	source = c11-fix.patch
 	md5sums = SKIP
+	md5sums = 2f63a9b01ec24d6406e2e6a59fee5b07
 
 pkgname = danmakufactory-git

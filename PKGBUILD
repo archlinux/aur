@@ -1,18 +1,23 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 
 pkgname=danmakufactory-git
-pkgver=r99.3f49956
+pkgver=r123.4bb8774
 pkgrel=1
 pkgdesc='A tool for converting XML danmaku to ass subtitles.'
 url="https://github.com/hihkm/DanmakuFactory"
 arch=(x86_64)
+makedepends=('xmake')
 provides=(danmakufactory)
 conflicts=(danmakufactory)
 license=(MIT)
 source=(
   "${pkgname%-git}::git+https://github.com/hihkm/DanmakuFactory.git"
+  "c11-fix.patch"
 )
-md5sums=('SKIP')
+md5sums=(
+  'SKIP'
+  '2f63a9b01ec24d6406e2e6a59fee5b07'
+)
 
 pkgver() {
   cd $srcdir/${pkgname%-git}
@@ -23,9 +28,14 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  patch -Np1 -i "$srcdir/c11-fix.patch"
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make
+  xmake -y -v
 }
 
 package() {
