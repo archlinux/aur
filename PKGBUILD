@@ -3,14 +3,17 @@
 
 _gitname=dput-ng
 pkgname="${_gitname}-git"
-pkgver=1.43.r0.g90c5965
+pkgver=1.44.r0.ga051387
 pkgrel=1
 pkgdesc='Like dput but better'
 url='https://salsa.debian.org/debian/dput-ng'
 makedepends=(
     'git'
+    'python-build'
+    'python-installer'
     'python-setuptools'
     'python-sphinx'
+    'python-wheel'
 )
 depends=(
     'distro-info'
@@ -19,6 +22,10 @@ depends=(
     'python-jsonschema'
     'python-paramiko'
     'python-pyxdg'
+)
+optdepends=(
+    'hy: Hy support'
+    'clojure: Clojure support'
 )
 license=('GPL-2.0-or-later')
 arch=('any')
@@ -46,8 +53,7 @@ prepare()
 build()
 {
     cd "${srcdir}/${_gitname}"
-    python setup.py build
-
+    python -m build --wheel --no-isolation
     cd docs
     make man
 }
@@ -56,7 +62,7 @@ package()
 {
     cd "${srcdir}/${_gitname}"
 
-    python setup.py install --skip-build -O1 --root="$pkgdir"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Binaries
     install -Dm755 bin/dcut "${pkgdir}/usr/bin/dcut"
