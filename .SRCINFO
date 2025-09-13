@@ -1,0 +1,24 @@
+pkgbase = sysmedic-ui
+	pkgdesc = Cross-platform desktop application for monitoring multiple Linux servers running SysMedic daemon
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/ahur-system/sysmedic-desktop-client
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = git
+	depends = gtk3
+	depends = glib2
+	depends = libgee
+	depends = json-glib
+	depends = libsoup
+	optdepends = systemd: for daemon integration
+	optdepends = openssh: for SSH server connections
+	optdepends = openssl: for secure connections
+	conflicts = sysmedic-ui-git
+	source = sysmedic-ui-0.0.2.tar.gz::https://github.com/ahur-system/sysmedic-desktop-client/archive/v0.0.2.tar.gz
+	sha256sums = 477a0fa78df3c7c2c01b717ea91746d430a26f0ac2e8c4ed9a27cb5366447d9f
+
+pkgname = sysmedic-ui

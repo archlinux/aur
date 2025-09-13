@@ -1,0 +1,218 @@
+# SysMedic UI - Arch Linux Installation Script
+# This file handles post-installation and pre-removal tasks
+
+post_install() {
+    echo "==> SysMedic UI has been installed successfully!"
+    echo ""
+    echo "Quick Start:"
+    echo "  1. Launch from applications menu or run: sysmedic-ui"
+    echo "  2. Add your first server using the 'Add Server' button"
+    echo "  3. Configure connection details and test connectivity"
+    echo ""
+    echo "Dependencies:"
+    echo "  - Ensure SysMedic daemon is running on target servers"
+    echo "  - Default daemon port is 8080 (HTTP) or 8443 (HTTPS)"
+    echo ""
+    echo "Documentation:"
+    echo "  - README: /usr/share/doc/sysmedic-ui/README.md"
+    echo "  - Changelog: /usr/share/doc/sysmedic-ui/CHANGELOG.md"
+    echo "  - Project: https://github.com/ahur-system/sysmedic-desktop-client"
+    echo ""
+
+    # Update desktop database for proper menu integration
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        echo "==> Updating desktop database..."
+        update-desktop-database -q /usr/share/applications
+    fi
+
+    # Update icon cache for proper icon display
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        echo "==> Updating icon cache..."
+        gtk-update-icon-cache -q /usr/share/icons/hicolor
+    fi
+
+    # Update mime database if needed
+    if command -v update-mime-database >/dev/null 2>&1; then
+        echo "==> Updating MIME database..."
+        update-mime-database /usr/share/mime >/dev/null 2>&1
+    fi
+
+    echo "==> Installation complete!"
+}
+
+post_upgrade() {
+    echo "==> SysMedic UI has been upgraded!"
+    echo ""
+    echo "What's new in this version:"
+    echo "  - Check /usr/share/doc/sysmedic-ui/CHANGELOG.md for details"
+    echo ""
+    echo "Configuration:"
+    echo "  - Your server configurations are preserved in ~/.config/sysmedic-ui/"
+    echo "  - No manual configuration migration needed"
+    echo ""
+
+    # Update desktop database
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        echo "==> Updating desktop database..."
+        update-desktop-database -q /usr/share/applications
+    fi
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        echo "==> Updating icon cache..."
+        gtk-update-icon-cache -q /usr/share/icons/hicolor
+    fi
+
+    # Update mime database
+    if command -v update-mime-database >/dev/null 2>&1; then
+        echo "==> Updating MIME database..."
+        update-mime-database /usr/share/mime >/dev/null 2>&1
+    fi
+
+    echo "==> Upgrade complete!"
+}
+
+pre_remove() {
+    echo "==> Preparing to remove SysMedic UI..."
+    echo ""
+    echo "Your configuration will be preserved:"
+    echo "  - Server configurations: ~/.config/sysmedic-ui/"
+    echo "  - Application preferences: ~/.config/sysmedic-ui/"
+    echo ""
+    echo "To completely remove all data:"
+    echo "  rm -rf ~/.config/sysmedic-ui/"
+    echo ""
+}
+
+post_remove() {
+    echo "==> SysMedic UI has been removed."
+    echo ""
+    echo "Cleanup tasks:"
+
+    # Update desktop database
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        echo "==> Updating desktop database..."
+        update-desktop-database -q /usr/share/applications
+    fi
+
+    # Update icon cache
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        echo "==> Updating icon cache..."
+        gtk-update-icon-cache -q /usr/share/icons/hicolor
+    fi
+
+    # Update mime database
+    if command -v update-mime-database >/dev/null 2>&1; then
+        echo "==> Updating MIME database..."
+        update-mime-database /usr/share/mime >/dev/null 2>&1
+    fi
+
+    echo ""
+    echo "User data preservation:"
+    echo "  - Configuration files remain in ~/.config/sysmedic-ui/"
+    echo "  - Remove manually if no longer needed: rm -rf ~/.config/sysmedic-ui/"
+    echo ""
+    echo "Thank you for using SysMedic UI!"
+}
+
+# Handle any special cases based on old/new versions
+pre_upgrade() {
+    # Get the old version from the parameter
+    local old_version="$1"
+
+    echo "==> Upgrading SysMedic UI from version ${old_version}..."
+
+    # Handle any version-specific migration tasks
+    case "$old_version" in
+        "0.0.1")
+            echo "==> Migrating from development version..."
+            echo "    No special migration needed"
+            ;;
+        "0.1."*)
+            echo "==> Migrating from version 0.1.x..."
+            echo "    Configuration format is compatible"
+            ;;
+        "0.2."*)
+            echo "==> Migrating from version 0.2.x..."
+            echo "    All settings will be preserved"
+            ;;
+        *)
+            echo "==> Standard upgrade process"
+            ;;
+    esac
+
+    # Backup user configuration before major version changes
+    if [[ -d "$HOME/.config/sysmedic-ui" ]]; then
+        echo "==> Backing up user configuration..."
+        cp -r "$HOME/.config/sysmedic-ui" "$HOME/.config/sysmedic-ui.backup.$(date +%Y%m%d)" 2>/dev/null || true
+        echo "    Backup created at: ~/.config/sysmedic-ui.backup.$(date +%Y%m%d)"
+    fi
+}
+
+# Utility function to check if SysMedic daemon is accessible
+check_daemon_connectivity() {
+    echo ""
+    echo "==> Checking for common SysMedic daemon configurations..."
+
+    # Check localhost
+    if command -v curl >/dev/null 2>&1; then
+        if curl -s --connect-timeout 2 "http://localhost:8080/api/status" >/dev/null 2>&1; then
+            echo "    ✓ Found SysMedic daemon on localhost:8080"
+            return 0
+        elif curl -s --connect-timeout 2 "https://localhost:8443/api/status" >/dev/null 2>&1; then
+            echo "    ✓ Found SysMedic daemon on localhost:8443 (HTTPS)"
+            return 0
+        else
+            echo "    ✗ No SysMedic daemon found on localhost"
+            echo "      Make sure SysMedic daemon is running on your servers"
+            return 1
+        fi
+    else
+        echo "    ! curl not available for daemon connectivity check"
+        echo "      Install curl package to enable connectivity testing"
+        return 1
+    fi
+}
+
+# Extended post-install that includes connectivity check
+post_install() {
+    echo "==> SysMedic UI has been installed successfully!"
+    echo ""
+    echo "Quick Start:"
+    echo "  1. Launch from applications menu or run: sysmedic-ui"
+    echo "  2. Add your first server using the 'Add Server' button"
+    echo "  3. Configure connection details and test connectivity"
+    echo ""
+    echo "Dependencies:"
+    echo "  - Ensure SysMedic daemon is running on target servers"
+    echo "  - Default daemon port is 8080 (HTTP) or 8443 (HTTPS)"
+    echo ""
+    echo "Documentation:"
+    echo "  - README: /usr/share/doc/sysmedic-ui/README.md"
+    echo "  - Changelog: /usr/share/doc/sysmedic-ui/CHANGELOG.md"
+    echo "  - Project: https://github.com/ahur-system/sysmedic-desktop-client"
+    echo ""
+
+    # Update system databases
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        echo "==> Updating desktop database..."
+        update-desktop-database -q /usr/share/applications
+    fi
+
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        echo "==> Updating icon cache..."
+        gtk-update-icon-cache -q /usr/share/icons/hicolor
+    fi
+
+    if command -v update-mime-database >/dev/null 2>&1; then
+        echo "==> Updating MIME database..."
+        update-mime-database /usr/share/mime >/dev/null 2>&1
+    fi
+
+    # Optional daemon connectivity check
+    check_daemon_connectivity
+
+    echo "==> Installation complete!"
+    echo ""
+    echo "Enjoy monitoring your servers with SysMedic UI! 🚀"
+}
