@@ -11,10 +11,6 @@ pkgbase = python-mpsplots
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-matplotlib
-	depends = python-pydantic
-	depends = python-pathvalidate
-	depends = python-pyvista
-	depends = python-shapely
 	source = MPSPlots-1.8.1.tar.gz::https://github.com/MartinPdeS/MPSPlots/archive/v1.8.1.tar.gz
 	sha512sums = f2d5ff3e1c8bdd912f748f21c657be415be7efcb474f7de840239141e151636760a0eb666fec2f80d34ae8fb2826c111559ea7e6454995d9529bd94e39938f09
 
