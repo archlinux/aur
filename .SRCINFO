@@ -1,6 +1,6 @@
 pkgbase = vopono
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = 0.10.14
+	pkgver = 0.10.15
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = vopono
 	optdepends = trojan: for Trojan Wireguard forwarding support
 	provides = vopono
 	conflicts = vopono
-	source = vopono-0.10.14.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.14.tar.gz
-	sha256sums = 5e67b66817b0eef6792b7064164a6ce0a6eb4c46361dbb5e118f505a425d7d05
+	source = vopono-0.10.15.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.15.tar.gz
+	sha256sums = 9394a3b1c68cacac09c6d9e9ae71fca9c9229a5bf381ccb0b5e408aeb77b5ff9
 
 pkgname = vopono
