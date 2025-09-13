@@ -1,0 +1,16 @@
+pkgbase = bas-tui-git
+	pkgdesc = Bootstrap Any System (BAS) TUI
+	pkgver = r3.1b6aebc
+	pkgrel = 1
+	url = https://github.com/DarkBones/arch-setup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = bas-tui
+	conflicts = bas-tui
+	source = git+https://github.com/DarkBones/arch-setup.git#branch=main
+	sha256sums = SKIP
+
+pkgname = bas-tui-git
