@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 pkgname="nerdfetch"
 pkgver=8.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
 url="https://github.com/thatonecalculator/NerdFetch"
@@ -19,5 +19,5 @@ sourcedir="NerdFetch-${pkgver}"
 package() {
 	install -Dm755 "${srcdir}/${sourcedir}/nerdfetch" "$pkgdir/usr/bin/nerdfetch"
 	install -Dm644 "${srcdir}/${sourcedir}/README.md" "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 "${srcdir}/${sourcedir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm644 "${srcdir}/${sourcedir}/LICENSE" -t "${pkgdir}/usr/share/licenses/$pkgname"
 }
