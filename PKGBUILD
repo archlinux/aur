@@ -1,16 +1,16 @@
-# Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
 # Maintainer: taotieren <admin@taotieren.com>
+# Contributor: b00rt00s <b00rt00s.aur@gmail.com>
 # Contributor: Markus Theil <aur@thillux.de>
 # Contributor: Oleg Smirnov <oleg.smirnov@gmail.com>
 # Contributor: Jason Taylor <jftaylor21@gmail.com>
 # Contributor: Christophe Gueret <tolgam@homegnu.net>
 
 pkgname=blt-git
-pkgver=r1904.0857004
-pkgrel=2
+pkgver=r1906.bcbf356
+pkgrel=1
 pkgdesc="Adds new commands and widgets to the Tcl interpreter."
 url="http://blt.sourceforge.net"
-license=("custom")
+license=("LicenseRef-custom")
 depends=('glibc' 'expat' 'tcl' 'tk' 'libnsl' 'libx11' 'libxau' 'libxcomposite' 'libxcursor' 'libxdmcp' 'libxext' 'libxft' 'libxpm' 'libxrandr' 'libxrender' 'libtiff' 'libjpeg-turbo' 'libpng' 'libssh2' 'freetype2' 'fontconfig' 'sqlite' 'zlib')
 # 'postgresql-libs'
 # 'libmariadbclient'
@@ -21,7 +21,7 @@ arch=($CARCH)
 source=("${pkgname}::git+git://git.code.sf.net/p/blt/src"
   "fix-build.patch")
 sha256sums=('SKIP'
-  '4c274da7a995c31fbbc99bca2804b9fda58c8ce02470eaf853cff836a7d48ae4')
+            '4c274da7a995c31fbbc99bca2804b9fda58c8ce02470eaf853cff836a7d48ae4')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -40,6 +40,16 @@ build() {
   # configure
   cd ${srcdir}/${pkgname}
   patch configure <${srcdir}/fix-build.patch
+  sed -i '46s/#define __USE_GNU/\/\/ #define __USE_GNU/' src/bltString.h
+  find src/ -type f -name "*.c" -exec sed -i -e 's/\<int bool\>/int boolVar/g' \
+       -e 's/\<bool = /boolVar = /g' \
+       -e 's/!bool\b/!boolVar/g' \
+       -e 's/(bool\b)/(boolVar)/g' \
+       -e 's/, bool\b/, boolVar/g' \
+       -e 's/; bool\b/; boolVar/g' \
+       -e 's/\<bool\b/boolVar/g' {} +
+
+  CFLAGS+=" -D_GNU_SOURCE"
   #   autoreconf -i
   ./configure \
     --prefix=/usr \
@@ -75,6 +85,6 @@ package() {
   make DESTDIR=${pkgdir} install
 
   # Delete man file, it is still owned by extra/tk
-  rm ${pkgdir}/usr/share/man/mann/bitmap.n
-  rm ${pkgdir}/usr/share/man/mann/busy.n
+ #  rm ${pkgdir}/usr/share/man/mann/bitmap.n
+ #  rm ${pkgdir}/usr/share/man/mann/busy.n
 }

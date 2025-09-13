@@ -1,10 +1,10 @@
 pkgbase = blt-git
 	pkgdesc = Adds new commands and widgets to the Tcl interpreter.
-	pkgver = r1904.0857004
-	pkgrel = 2
+	pkgver = r1906.bcbf356
+	pkgrel = 1
 	url = http://blt.sourceforge.net
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = git
 	makedepends = pkgconf
 	depends = glibc
