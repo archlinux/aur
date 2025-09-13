@@ -4,10 +4,10 @@
 
 _browser=vivaldi-snapshot
 pkgname=${_browser}-ffmpeg-codecs
-pkgver=140.0.7339.23
+pkgver=140.0.7339.136
 _vivaldi_major_version=7.6
 _commit=d2d06b12c22d27af58114e779270521074ff1f85
-#_commit=$(curl -sL https://raw.githubusercontent.com/chromium/chromium/refs/tags/${pkgver}/DEPS | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
+#_commit=$(curl -sL "https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${pkgver}/DEPS?format=TEXT" | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for ${_browser}"
 arch=('x86_64')
@@ -37,7 +37,7 @@ build() {
   # See BUILD.gn and chromium/config/Chrome/linux/x64/
   # removed codecs: pcm_alaw,pcm_f32le,pcm_mulaw,pcm_s16be,pcm_s24be,pcm_s24le,pcm_s32le,pcm_u8
   ./configure \
-    --disable-{debug,all,autodetect,doc,iconv,network,symver} \
+    --disable-{debug,all,autodetect,doc,iconv,network,symver,large-tests} \
     --disable-{error-resilience,faan,iamf} \
     --enable-static --disable-shared \
     --enable-av{format,codec,util} \
@@ -52,7 +52,7 @@ build() {
 
   make DESTDIR="${srcdir}" install
   cd "${srcdir}"
-  _symbols=$(cat "${srcdir}/sigs.txt" | awk '{print "-Wl,-u," $1}'|paste -sd ' ' -)
+  _symbols=$(sed 's/^/-Wl,-u,/' "${srcdir}/sigs.txt" | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
     ${_symbols} -Wl,--version-script="${srcdir}/export.map" \
