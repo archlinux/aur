@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-rm
 	pkgdesc = Romansh language pack for Firefox Nightly
-	pkgver = 144.0a1.20250912.162349
+	pkgver = 144.0a1.20250913.092312
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-rm
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-rm-144.0a1.20250912.162349.xpi
-	source = firefox-nightly-i18n-rm-144.0a1.20250912.162349.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-144.0a1.rm.langpack.xpi
-	sha256sums = 986ba0aed53f646e7242dbe039b017ecd7add487d30b1c1f01e321fca647f862
+	noextract = firefox-nightly-i18n-rm-144.0a1.20250913.092312.xpi
+	source = firefox-nightly-i18n-rm-144.0a1.20250913.092312.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-144.0a1.rm.langpack.xpi
+	sha256sums = f00d29ebf6f7fd812cfbe9d2cff17671942019df4dab9e86cdb74c971f83ed8d
 
 pkgname = firefox-nightly-i18n-rm
