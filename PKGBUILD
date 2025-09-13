@@ -12,7 +12,7 @@ license=("AGPL-3.0")
 source=("$pkgname-$pkgver.tgz::https://raw.githubusercontent.com/x-cmd/release/main/dist/$pkgver/allinone.tgz")
 install="$pkgname.install"
 options=(!debug)
-sha512sums=("c9805c8c2bb6b92f65f20aa0021600062c7d5131cb88150d6b37606736638b7aca8f9bbea0f9fa67883b62215396ffd02a54d4dff2f6e30c3ca36798271fbfb3")
+sha512sums=("588b5d71d7516995673ef370895dd46666bbdd9eecc927fc371f017bab712ba4a37501343e8fc360ee4eff59a17a2d05255da23f3d0d7d832c1a24490f49ac28")
 
 package() {
 	mkdir -p "$pkgdir/usr/share/$pkgname/v"
