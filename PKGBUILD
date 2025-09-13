@@ -3,14 +3,20 @@
 _pkgname=git-draft
 pkgname="$_pkgname-git"
 pkgver=0.0.0
-pkgrel=2
-pkgdesc='Git-centric code assistant'
+pkgrel=3
+pkgdesc='git-centric code assistant'
 arch=(any)
 url=https://github.com/mtth/git-draft
 license=(MIT)
 
 depends=(git python)
-makedepends=(asciidoctor python-build python-installer python-wheel)
+makedepends=(
+	asciidoctor
+	python-build
+	python-installer
+	python-poetry
+	python-wheel
+)
 optdepends=(
 	'python-openai: OpenAI API bots'
 )
