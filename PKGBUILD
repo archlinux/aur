@@ -1,7 +1,7 @@
 # Maintainer: Jakub Klinkovský <lahwaacz@archlinux.org>
 
 pkgname=prometheus-slurm-exporter
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Prometheus exporter for slurm metrics"
 arch=(x86_64)
@@ -14,7 +14,7 @@ source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
         $pkgname.conf
         $pkgname.service
         $pkgname.sysusers)
-b2sums=('dca43fd719044dae745a921c554543f8964157d8fb26c98f215cb4ef8d35951c29168b30b30d6bca7484052c36f2373c2385ac75987ad0beef40279618a00242'
+b2sums=('e3ceda1748e3f00692794cd0a576a978189bd1968949dd98df4a9d88be7ca31cc1ea860f19c7607ee443e69de4bc62dbe950d0403856fc82dff9b7452f0a8e3d'
         '6d0d7a3cfb9563553440f2dd1c7bf0c09ad2583fd6a7b471a9d6b7a32f46f8dae04b4a6abbbd271e1c21c888f959aa071d627b642511998f8d8410be34f34646'
         'a760ee6c1af298ccc77a2b4bc09e8d3442141d6b42e0d4b3e374731edddeb4c6eac3882b7abab3718e736f2c770084dd5f7455e296b19e69665a3934bc9afaea'
         '62b1e255175c7b9475c2bbf2860696200a79891de00706a6e42283cadea17193042f96aacc4f06f27bb2643554f31d1f5244dc4f301cce31393d239bbc35e70a')
