@@ -18,8 +18,15 @@ build() {
 }
 
 package() {
-    cd $pkgname-${pkgver}
-    install -m 755 -D matlock "/usr/bin/"
-    install -m 644 -D LICENCE "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
-    install -m 644 -D matlock.1.gz "$pkgdir/usr/share/man/man1/"
+    local tag=$pkgname-v$pkgver-$pkgrel-$arch
+    local archive=$TMPDIR/$tag.tar.gz
+    tar xzf $archive
+    rm $archive
+
+    # install -m 755 -D $tag/matlock "$pkgdir/bin/matlock"
+    install -m 644 -D $tag/LICENCE "$pkgdir/share/licenses/${pkgname}/LICENCE"
+    install -m 644 -D $tag/README.md "$pkgdir/share/licenses/${pkgname}/README.md"
+    install -m 644 -D $tag/matlock.1.gz "$pkgdir/share/man/man1/matlock.1.gz"
+
+    rm -rf $tag
 }
