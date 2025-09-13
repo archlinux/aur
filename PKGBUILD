@@ -6,7 +6,7 @@
 
 pkgname=proton-pass
 pkgver=1.32.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -15,15 +15,23 @@ depends=('bash' 'gcc-libs' 'glibc' 'electron')
 makedepends=('rust' 'yarn')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
-        "proton-pass.desktop")
+        "proton-pass.desktop"
+        "7d910a0ebe6bc69dc145fa7569c0094748d280cd.patch")
 sha256sums=('67a5b939f0131974c7a3845a91737c55939de872f5415eb4d660f50508abf893'
-            '501210c67fc921a2fb4ba591980192ad1da60e26fb6b2fd7d68aad4075eafac7')
+            '501210c67fc921a2fb4ba591980192ad1da60e26fb6b2fd7d68aad4075eafac7'
+            '7f576b4db49378fedf722f6dc8c13b09a62cda0d6c7b86948a9717352c02610b')
 
 prepare() {
     cd WebClients-${pkgname}-${pkgver}
 
+    # Fix collect-metrics workspace error (https://github.com/ProtonMail/WebClients/commit/7d910a0ebe6bc69dc145fa7569c0094748d280cd)
+    patch --no-backup-if-mismatch -Np1 -i ../7d910a0ebe6bc69dc145fa7569c0094748d280cd.patch
+
     # Limit workspace applications to avoid mysterious dependency issues
     sed -i 's@"applications/\*",@"applications/pass*",@' package.json
+
+    # Use the NPM version of the Drive SDK (because the Proton (Tech) servers are inaccessible)
+    sed -i -e 's@proton/drive-sdk@protontech/drive-sdk@' -e 's@0.0.9@0.0.10@' packages/drive/package.json
 
     # Disable the rustup command (because we don't use that tool)
     sed -i 's@execSync(`rustup@//execSync(`rustup@' applications/pass-desktop/native/build.js
