@@ -40,6 +40,7 @@ prepare() {
 }
 
 build() {
+  CXXFLAGS+=" -DCL_TARGET_OPENCL_VERSION=120"
   arch-meson "${_plug}" build \
     --buildtype=release \
     --libdir /usr/lib/vapoursynth \
