@@ -1,7 +1,7 @@
 pkgbase = bas-tui
 	pkgdesc = Bootstrap Any System (BAS) TUI
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DarkBones/arch-setup
 	arch = x86_64
 	arch = aarch64

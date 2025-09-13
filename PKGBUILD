@@ -17,14 +17,17 @@ sha256sums=('SKIP')
 
 _builddir="${srcdir}/arch-setup-${pkgver}"
 
+pkgrel=2
+
 build() {
   cd "${srcdir}/arch-setup-${pkgver}"
   export CGO_ENABLED=0
-  go build -trimpath -ldflags "-s -w" -o bas-tui ./cmd/archsetup
+  go build -trimpath -ldflags "-s -w" -o "${srcdir}/bas-tui" ./cmd/archsetup
 }
 
 package() {
-  cd "${srcdir}/arch-setup-${pkgver}"
-  install -Dm755 bas-tui "${pkgdir}/usr/bin/bas-tui"
-  [[ -f LICENSE ]] && install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/bas-tui" "${pkgdir}/usr/bin/bas-tui"
+  [[ -f "${srcdir}/arch-setup-${pkgver}/LICENSE" ]] &&
+    install -Dm644 "${srcdir}/arch-setup-${pkgver}/LICENSE" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
