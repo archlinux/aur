@@ -1,6 +1,6 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=bomdia-git
-pkgver=v0.1.0.r10.g9b7c70f
+pkgver=v0.1.0.r21.gd4089a3
 pkgrel=1
 pkgdesc=""
 arch=(any)
@@ -49,4 +49,11 @@ package() {
 
 	# Install licenses and docs/man
 	make -f install.mk DESTDIR="$pkgdir" install
+
+	# Install bash completion
+	mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
+	activate-global-python-argcomplete --dest \
+		"$pkgdir"/usr/share/bash-completion/completions/
+	mv "$pkgdir"/usr/share/bash-completion/completions/_python-argcomplete \
+		"$pkgdir"/usr/share/bash-completion/completions/bomdia
 }
