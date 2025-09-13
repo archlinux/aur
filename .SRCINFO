@@ -1,6 +1,6 @@
 pkgbase = lightnovel-crawler-bin
 	pkgdesc = An app to download novels from online sources and generate e-books (standalone bundle)
-	pkgver = 3.9.4
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/dipu-bd/lightnovel-crawler
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lightnovel-crawler-bin
 	optdepends = calibre: Output suport for docx, mobi, pdf, rtf, azw3, txt, fb2, lit, lrf, oeb, pdb, rb, snb, tcr
 	provides = lncrawl
 	conflicts = lncrawl
-	source = https://github.com/dipu-bd/lightnovel-crawler/releases/download/v3.9.4/lncrawl-linux
-	sha256sums = 6c01f8c18a8a491ff2713248c98960b41c1866f2b77d812c2d3d0cc3e458e77a
+	source = https://github.com/dipu-bd/lightnovel-crawler/releases/download/v3.10.1/lncrawl-linux
+	sha256sums = 86fe3fe64d5d6d0389f5a54eb2b9b81f80f5618766bafae9a61696fdc012aecb
 
 pkgname = lightnovel-crawler-bin

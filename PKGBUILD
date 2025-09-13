@@ -2,7 +2,7 @@
 # Contributor: Robert Manning <duckz@protonmail.ch>
 
 pkgname=lightnovel-crawler-bin
-pkgver=3.9.4
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="An app to download novels from online sources and generate e-books (standalone bundle)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('calibre: Output suport for docx, mobi, pdf, rtf, azw3, txt, fb2, li
 provides=(lncrawl)
 conflicts=(lncrawl)
 source=("${url}/releases/download/v$pkgver/lncrawl-linux")
-sha256sums=('6c01f8c18a8a491ff2713248c98960b41c1866f2b77d812c2d3d0cc3e458e77a')
+sha256sums=('86fe3fe64d5d6d0389f5a54eb2b9b81f80f5618766bafae9a61696fdc012aecb')
 
 package() {
   install -Dm755 ${srcdir}/lncrawl-linux ${pkgdir}/usr/bin/lncrawl
