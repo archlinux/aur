@@ -1,7 +1,7 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
@@ -15,7 +15,6 @@ depends=(
     'python'
     'python-gobject>=3.48.0'
     'python-pillow'
-    'python-pillow-avif-plugin'
     'python-cairo'
 )
 makedepends=(
@@ -25,16 +24,11 @@ makedepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
-    'pillow_avif.patch'
 )
-sha256sums=('fbb1f57b94877f83d6168259b52a48dddd18797247631a666f21cc452c7de265'
-            '5080f87f3b2f2b7360c6afebe333e7b8b09ef2017cc0f20b95d364df83bf3528')
+sha256sums=('fbb1f57b94877f83d6168259b52a48dddd18797247631a666f21cc452c7de265')
 
 prepare() {
   mv Gradia-$pkgver $pkgname-$pkgver
-
-# pillow for arch has no avif support (yet)
-  patch -p1 -l -F5 -d "$srcdir/$pkgname-$pkgver" -i "$srcdir/pillow_avif.patch"
 }
 
 build() {
