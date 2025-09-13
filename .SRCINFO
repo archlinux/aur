@@ -1,0 +1,11 @@
+pkgbase = kvantum-theme-arcdarker-git
+	pkgdesc = Arc Darker for Kvantum
+	pkgver = r2.acb92e8
+	pkgrel = 1
+	url = https://github.com/maggster165/Kvantum-Arc-Darker
+	arch = any
+	depends = kvantum
+	source = git+https://github.com/maggster165/Kvantum-Arc-Darker.git
+	sha256sums = SKIP
+
+pkgname = kvantum-theme-arcdarker-git
