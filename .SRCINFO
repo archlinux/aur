@@ -1,0 +1,17 @@
+pkgbase = clipyank
+	pkgdesc = Track clip history for vim
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ISanviI/clipyank
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	provides = clipyank
+	conflicts = clipyank
+	source = clipyank-1.0.0.tar.gz::https://github.com/ISanviI/clipyank/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4ae4341d69ec23775c1763e88f715eef04ed4c4c76d5ccd87a869c8a6754ec50
+
+pkgname = clipyank
