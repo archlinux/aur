@@ -3,7 +3,7 @@
 pkgname=python-kokoro
 _name=${pkgname#python-}
 pkgver=0.9.4
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="TTS An inference library for Kokoro-82M"
 arch=('any')
@@ -14,13 +14,14 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
+    python-attrs
     python-huggingface-hub
     python-loguru
     python-numpy
     python-pytorch
     python-transformers
     # AUR
-    python-misaki-en
+    python-misaki
 )
 makedepends=(
     python-hatchling
