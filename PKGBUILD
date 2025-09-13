@@ -1,25 +1,8 @@
 # Maintainer:
 
-## useful links:
-# https://tuba.geopjr.dev/
-# https://github.com/GeopJr/Tuba
-
-## options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
-  : ${_autoupdate:=false}
-else
-  : ${_autoupdate:=true}
-fi
-
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgname="tuba"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.7.0.r3.g9a449ef
+pkgname="$_pkgname-git"
+pkgver=0.10.2.r0.g4ec7c8d
 pkgrel=1
 pkgdesc='Browse the Fediverse'
 url="https://github.com/GeopJr/Tuba"
@@ -31,71 +14,38 @@ arch=(
   x86_64  #Arch Linux
 )
 
-# main package
-_main_package() {
-  depends=(
-    gtk4
-    gtksourceview5
-    libadwaita
-    libgee
-    libicuuc.so # icu
-    libsecret
-    libspelling
-    webp-pixbuf-loader # gdk-pixbuf2
+depends=(
+  gtk4
+  gtksourceview5
+  libadwaita
+  libclapper-gtk
+  libgee
+  libgexiv2
+  libicuuc.so # icu
+  libsecret
+  libspelling
+  webkitgtk-6.0
+  webp-pixbuf-loader # gdk-pixbuf2
+)
+makedepends=(
+  git
+  meson
+  vala
+)
 
-    ## implicit
-    #dconf
-    #gdk-pixbuf2
-    #glib2
-    #glibc
-    #graphene
-    #json-glib
-    #libsoup3
-    #libxml2
-    #pango
-  )
-  makedepends=(
-    git
-    meson
-    vala
-  )
+provides+=("$_pkgname=${pkgver%%.r*}")
+conflicts+=("$_pkgname")
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _update_version
-    _main_stable
-  else
-    _main_git
-  fi
-}
+_pkgsrc="$_pkgname"
+source+=("$_pkgsrc"::"git+$url.git")
+sha256sums+=('SKIP')
 
-# stable package
-_main_stable() {
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
-  sha256sums+=('SKIP')
+pkgver() (
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+)
 
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  provides+=("$_pkgname=${pkgver%%.r*}")
-  conflicts+=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() (
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  )
-}
-
-# common functions
 build() {
   arch-meson "$_pkgsrc" build
   meson compile -C build
@@ -113,29 +63,3 @@ package() {
   meson install -C build --destdir "$pkgdir"
   ln -sf "dev.geopjr.Tuba" "$pkgdir/usr/bin/tuba"
 }
-
-## auto update
-_update_version() {
-  : ${_pkgver:=$pkgver}
-
-  if [[ "${_autoupdate::1}" != "t" ]] ; then
-    return
-  fi
-
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep '/releases/tag/' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -V | tail -1
-  )
-  local _pkgver_new="${_tag#v}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ] ; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-# execute
-_main_package
