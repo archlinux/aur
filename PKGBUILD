@@ -5,7 +5,7 @@
 
 pkgname=ella
 pkgver='0.0.8'
-pkgrel=1
+pkgrel=3
 pkgdesc='A process manager for running and managing services'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
 url='https://github.com/thekhanj/ella'
