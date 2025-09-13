@@ -1,6 +1,6 @@
 pkgbase = python-selenium-bin
-	pkgdesc = Python language bindings for Selenium WebDriver
-	pkgver = 4.29.0
+	pkgdesc = Python language bindings for Selenium WebDriver (build from wheel)
+	pkgver = 4.35.0
 	pkgrel = 1
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-selenium-bin
 	provides = python-selenium
 	conflicts = python-selenium
 	options = !lto
-	source = https://files.pythonhosted.org/packages/2f/a6/fc66ea71ec0769f72abdf15cb9ec9269517abe68a160839383ddff7478f1/selenium-4.29.0-py3-none-any.whl
-	sha256sums = ce5d26f1ddc1111641113653af33694c13947dd36c2df09cdd33f554351d372e
+	source = https://files.pythonhosted.org/packages/17/ef/d0e033e1b3f19a0325ce03863b68d709780908381135fc0f9436dea76a7b/selenium-4.35.0-py3-none-any.whl
+	sha256sums = 90bb6c6091fa55805785cf1660fa1e2176220475ccdb466190f654ef8eef6114
 
 pkgname = python-selenium-bin
