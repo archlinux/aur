@@ -23,10 +23,10 @@ package() {
     tar xzf $archive
     rm $archive
 
-    # install -m 755 -D $tag/matlock "$pkgdir/bin/matlock"
-    install -m 644 -D $tag/LICENCE "$pkgdir/share/licenses/${pkgname}/LICENCE"
-    install -m 644 -D $tag/README.md "$pkgdir/share/licenses/${pkgname}/README.md"
-    install -m 644 -D $tag/matlock.1.gz "$pkgdir/share/man/man1/matlock.1.gz"
+    install -D -m 755 $tag/matlock "$pkgdir/usr/bin/matlock"
+    install -D -m 644 $tag/LICENCE "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
+    install -D -m 644 $tag/README.md "$pkgdir/usr/share/licenses/${pkgname}/README.md"
+    install -D -m 644 $tag/matlock.1.gz "$pkgdir/usr/share/man/man1/matlock.1.gz"
 
     rm -rf $tag
 }
