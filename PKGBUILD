@@ -3,7 +3,7 @@
 _pkgname="slsa-verifier"
 pkgname="${_pkgname}-bin"
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Verify provenance from SLSA compliant builders"
 arch=('aarch64' 'x86_64')
 url="https://github.com/slsa-framework/${_pkgname}"
@@ -35,7 +35,7 @@ verify() {
   if ! which "${_pkgname}" >/dev/null 2>&1; then
     echo "  -> WARNING: Using the downloaded artifact as its own checker!"
     _slsa_verifier_bin="./${_pkgsrc}-${CARCH}"
-    chmod +x "./${_slsa_verifier_bin}"
+    chmod +x "${_slsa_verifier_bin}"
   fi
 
   "${_slsa_verifier_bin}" verify-artifact "${_pkgsrc}-${CARCH}" \
