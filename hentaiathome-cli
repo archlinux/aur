@@ -9,15 +9,15 @@ for i in "$@"; do
       ;;
   esac
 done
-if [ -z $WORKING_DIR ]
+if [ -z "$WORKING_DIR" ]
 then
     WORKING_DIR=${XDG_CACHE_HOME:-${HOME}/.cache}/hath;
 fi
-mkdir -p ${WORKING_DIR}
-cd ${WORKING_DIR}
+mkdir -p "${WORKING_DIR}"
+cd "${WORKING_DIR}" || return
 for file in HentaiAtHome.jar HentaiAtHomeGUI.jar
 do
     [[ ! -f ${WORKING_DIR}/${file} ]] && \
-        ln -s /usr/lib/hath/${file} ${WORKING_DIR}/${file}
+        ln -s "/usr/lib/hath/${file}" "${WORKING_DIR}/${file}"
 done
-java -jar HentaiAtHome.jar $@
+java -jar HentaiAtHome.jar "$@"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd /var/lib/hath || return
+for file in HentaiAtHome.jar HentaiAtHomeGUI.jar
+do
+    [[ ! -f /var/lib/hath/${file} ]] && \
+        ln -s "/usr/lib/hath/${file}" "/var/lib/hath/${file}"
+done
+java -jar HentaiAtHome.jar

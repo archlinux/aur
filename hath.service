@@ -1,0 +1,15 @@
+[Unit]
+Description=Hentai@Home
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=hath
+WorkingDirectory=/var/lib/hath
+SuccessExitStatus=143
+ExecStart=/usr/bin/hathd
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
