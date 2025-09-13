@@ -1,7 +1,7 @@
 pkgbase = slsa-verifier-bin
 	pkgdesc = Verify provenance from SLSA compliant builders
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slsa-framework/slsa-verifier
 	arch = aarch64
 	arch = x86_64

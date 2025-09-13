@@ -3,7 +3,7 @@
 _pkgname="slsa-verifier"
 pkgname="${_pkgname}-bin"
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Verify provenance from SLSA compliant builders"
 arch=('aarch64' 'x86_64')
 url="https://github.com/slsa-framework/${_pkgname}"
@@ -30,18 +30,16 @@ b2sums_aarch64=('10d98e8996a80888b05ba84958966afbd0f29ae5f874d885c7775312a325bdd
 b2sums_x86_64=('b538e5a54c3fddeb5c8b3b5ebbfeab7a59bcf60c1b1bcf2289378f4c4dbefb7df6cd5a8d6c603e1ef0134c922f7ea964ac0878e3f984b0980bae54ca6518a80e'
                'b03d3b65cf63f43ef2657233dd12760d8c380b21bd76cc9e005260aecdd2813b0d971474713d8c67e136550e01375f22622a100387758402ec956fa0b083248f')
 
-# verify() {
-prepare() {
-  cd "${srcdir}"
+verify() {
   _slsa_verifier_bin="${_pkgname}"
   if ! which "${_pkgname}" >/dev/null 2>&1; then
     echo "  -> WARNING: Using the downloaded artifact as its own checker!"
-    chmod +x "./${_pkgsrc}-${CARCH}"
     _slsa_verifier_bin="./${_pkgsrc}-${CARCH}"
+    chmod +x "./${_slsa_verifier_bin}"
   fi
 
-  "${_slsa_verifier_bin}" verify-artifact "./${_pkgsrc}-${CARCH}" \
-    --provenance-path "./${_pkgsrc}-${CARCH}.intoto.jsonl" \
+  "${_slsa_verifier_bin}" verify-artifact "${_pkgsrc}-${CARCH}" \
+    --provenance-path "${_pkgsrc}-${CARCH}.intoto.jsonl" \
     --source-uri "${url#https://}" \
     --source-tag "v${pkgver}"
 }
