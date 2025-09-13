@@ -1,11 +1,12 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+#  Maintainer: Your Name Here <your email address here>
+# Contributor: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=6.4.4
+pkgver=6.4.5
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
@@ -30,7 +31,7 @@ _skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 # https://keys.openpgp.org/search?q=chat%40simplex.chat
 validpgpkeys=('FB44AF81A45BDE327319797C85107E357D4A17FC')
 sha256sums=(
-  'f135da3a37f9e2a68b2f89f40f22e47457cdba61e2274dd439c27932a2dbe7bc'
+  'e387de94e190df83859e0b1b917bc7724b32a11362ce140a9ea3078a89c44304'
   "${_skip[@]}"
 )
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
