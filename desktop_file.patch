@@ -9,7 +9,7 @@ index 0000000..c28d1a9
 +GenericName=Amateur Radio HPSDR software
 +Comment=Amateur Radio HPSDR software
 +Exec=pihpsdr
-+Icon=/usr/share/pihpsdr/hpsdr_icon.png
++Icon=/usr/share/pihpsdr/piHPSDR_logo.png
 +Terminal=false
 +Type=Application
 +Categories=Network;HamRadio;
