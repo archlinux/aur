@@ -1,7 +1,7 @@
 pkgbase = ehentai-qt-bin
 	pkgdesc = e-hentai, exhentai，看图，搜索，下载器
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/tonquer/ehentai-qt
 	arch = x86_64
 	license = LGPL3

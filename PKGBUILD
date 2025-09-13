@@ -1,6 +1,6 @@
 pkgname=ehentai-qt-bin
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="e-hentai, exhentai，看图，搜索，下载器"
 arch=("x86_64")
 url="https://github.com/tonquer/ehentai-qt"
@@ -28,6 +28,7 @@ EOF
 
 package() {
   install -d "${pkgdir}/opt"
+  rm "${pkgdir}/opt/ehentai-qt/libcrypto.so.1.1"
   install -d "${pkgdir}/usr/bin"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/bin" "${pkgdir}/opt/ehentai-qt"
   chmod +x "${pkgdir}/opt/ehentai-qt/EHentai"
