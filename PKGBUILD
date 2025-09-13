@@ -1,7 +1,7 @@
 # Maintainer: Cornelius Hoffmann <coding@volucra.de>
 pkgname=prometheus-opnsense-exporter
-pkgver=0.0.10
-pkgrel=2
+pkgver=0.0.11
+pkgrel=1
 
 pkgdesc="OPNsense Exporter for Prometheus"
 url="https://github.com/AthennaMind/opnsense-exporter"
@@ -15,7 +15,7 @@ makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AthennaMind/opnsense-exporter/archive/refs/tags/v$pkgver.tar.gz"
         "prometheus-opnsense-exporter.conf"
         "prometheus-opnsense-exporter@.service")
-sha256sums=('f3b7143d900711a6f3cfa3bbc7eb42b2becd9b62999f74a73699d25f86871713'
+sha256sums=('72a5a0bf2ceca308b5a587b68cf16964f6e01d2dea5d829cefa29fa14424b26b'
             'c5b527fe6a6a8c9aec49a4a84093fa29c978cbce8378dd9dd16cf4223adb8683'
             '20b4e2f14955549f29f53eff5b58a3d8d5613b93cce27ee1e6ef7354d6da06d1')
 
