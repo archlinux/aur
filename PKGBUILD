@@ -27,7 +27,8 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/bas-tui" "${pkgdir}/usr/bin/bas-tui"
-  [[ -f "${srcdir}/arch-setup-${pkgver}/LICENSE" ]] &&
+  if [[ -f "${srcdir}/arch-setup-${pkgver}/LICENSE" ]]; then
     install -Dm644 "${srcdir}/arch-setup-${pkgver}/LICENSE" \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
