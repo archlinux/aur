@@ -1,0 +1,28 @@
+From 53a306d2f78a678454d784a25622e2419677b9d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Denilson=20S=C3=A1=20Maia?= <denilsonsa@gmail.com>
+Date: Mon, 28 Apr 2025 00:42:33 +0200
+Subject: [PATCH] Bumping minimum cmake version to 3.5
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+CMake v4.0 dropped support for versions older than 3.5: https://cmake.org/cmake/help/latest/release/4.0.html#id12
+
+Version 3.5 was released in 2018, 6½ years ago: https://cmake.org/cmake/help/latest/release/4.0.html#id12
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 25d2f7a3..a20f6c33 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -143,7 +143,7 @@
+ #
+ #-------------------------------------------------------------------------------------
+ 
+-cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ message(STATUS "Using cmake version ${CMAKE_VERSION}")
+ 
+ # project name

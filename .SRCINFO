@@ -1,7 +1,7 @@
 pkgbase = lenmus
 	pkgdesc = A free program for learning music
 	pkgver = 6.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.lenmus.org/
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = lenmus
 	source = https://github.com/lenmus/lenmus/archive/Release_6.0.1.tar.gz
 	source = 0002-PortTime-included.patch
 	source = 0003-fix-freetype-breaking-change.patch
+	source = 0004-bump-cmake-to-3.5.patch
 	sha256sums = 1fa5b8edc468c800598845aa809b4a4e93058ed13af40bfacd037c44d1c4bc1d
 	sha256sums = 7e23b83488bce81489f063dd59a625ed3fdd5be545e10cecd256794be80a2fcf
 	sha256sums = 777b055785058063b5348f516a81e0899c880aff67c136595b597208b138e9f5
+	sha256sums = 4922136b87b8d22ea32ca111024c6f0034aa5e2cb10f74a9ace2aedbc4e03e46
 
 pkgname = lenmus
