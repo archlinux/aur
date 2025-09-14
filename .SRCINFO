@@ -1,6 +1,6 @@
 pkgbase = bas-tui
 	pkgdesc = Bootstrap Any System (BAS) TUI
-	pkgver = 1.0.7
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/DarkBones/arch-setup
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bas-tui
 	makedepends = git
 	provides = bas-tui
 	conflicts = arch-tui
-	source = https://github.com/DarkBones/arch-setup/archive/refs/tags/v1.0.7.tar.gz
-	sha256sums = 53f093943c489af4634267e7b9e5a5f565783aedcc00cc4255e9fff3ba99b9a8
+	source = https://github.com/DarkBones/arch-setup/archive/refs/tags/v1.0.9.tar.gz
+	sha256sums = de562598de21f35de4a4d077099df817210ed8506279d36586c40ee00389a901
 
 pkgname = bas-tui
