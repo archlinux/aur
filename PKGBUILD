@@ -1,6 +1,6 @@
 # Maintainer: Josh Andrews <joshurtree@yahoo.com>
 pkgname=hyprsession
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A session manager for Hyprland"
 url="https://github.com/joshurtree/hyprsession"
@@ -27,4 +27,4 @@ package() {
     cd ${pkgname}-${pkgver}
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('15b1020cf00bff62295180d2111668b816709a97e121be830c1c4358c766eb6b')
+sha256sums=('b05e0bbf528eb2e9f6ad3c0c57dfe21d2f4c501516efb43b83257b861157581a')
