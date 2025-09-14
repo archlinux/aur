@@ -4,7 +4,7 @@
 
 pkgname=udisken-bin
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A small Linux automounter'
 arch=(x86_64)
 url="https://codeberg.org/blackma9ick/${pkgname%-bin}"
@@ -21,8 +21,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 install=service.install
 source_x86_64=(
-	"${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.pkg.tar.zst"
-	"${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.pkg.tar.zst.sig"
+	"${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-x86_64.pkg.tar.zst"
+	"${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-x86_64.pkg.tar.zst.sig"
 )
 b2sums_x86_64=(
 	'89be53f4d16dcfb94569827be7bd1c0593516147fc1d0c984367ff8a4c0fd0b290ada203af6dbef88c9a0af3ec5b3726a206ad608afc16c3f81db9fdc498ea8f'
