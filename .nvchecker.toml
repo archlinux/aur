@@ -1,0 +1,12 @@
+[stardict-wikt-en-all]
+source = 'regex'
+url = 'https://www.dictinfo.com/'
+# Not sure why but test shows if use sth. like \., must use single quote '
+# instead of double quote ", else error: "jq: parse error: Invalid literal at
+# line 1, column 7"; if want to use double quote ", must use sth. like \\.
+regex = 'stardict/wikt-en-ALL-([0-9]+-[0-9]+-[0-9]+)\.7z'
+# convert the version name from sth. like 2024-10-05 to 2024_10_05 to match
+# PKGBUILD version name, so `pkgctl version upgrade` can correctly upgrade
+# PKGBUILD version
+from_pattern = '-'
+to_pattern = '_'
