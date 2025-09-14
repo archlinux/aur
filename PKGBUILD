@@ -34,12 +34,12 @@ sha512sums=('c5bc714fb9674651739b7bb423a35af9a24ced3db0347cf214872d8169997b51a58
 b2sums=('9ba9f4069c021d00af8305ca832480eda8d4ceba4e626e5791c49b4bc54090b7c1430930c57fefc862af3ae5e694b76d5cd926fd7bce2e53d3aef3a46a80cff3')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -v -m755 -d "${pkgdir}/usr/share/licenses/subliminal"
