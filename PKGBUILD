@@ -1,17 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-pkgname=source2viewer-bin
+pkgbase=source2viewer-bin
+pkgname=(source2viewer-bin source2viewer-cli-bin)
 pkgver=14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
 depends=('glibc' 'gcc-libs' 'zlib')
-depends_x86_64=('wine' 'bash' 'hicolor-icon-theme')
 makedepends=('gendesk')
-conflicts=(valveresourceformat source2viewer)
-provides=(source2viewer)
-replaces=(valveresourceformat)
 options=(!strip !debug)
 install=$pkgname.install
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
@@ -26,9 +23,21 @@ sha256sums_armv7h=('d751f6bd0c96fb51d6b3c976145f2d6e7b126912ffd3b0da44ff4cc8e532
 sha256sums_aarch64=('9e37b08e1d3606fe95cf4d20d4ae01afa715c7cde336a45107daa1f97b9905b6')
 
 
-package() {
+package_source2viewer-cli-bin() {
+	depends=(glibc gcc-libs)
+	provides=(${pkgname::-4})
+	conflicts=(${pkgname::-4})
 	cd "$srcdir"
-	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgname::-3}cli"
+	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgbase::-3}cli"
+}
+
+
+package_source2viewer-bin() {
+	install=$pkgbase.install
+	provides=(${pkgbase::-4})
+	conflicts=(${pkgbase::-4})
+	depends_x86_64+=( 'wine' 'bash' 'hicolor-icon-theme')
+	cd "$srcdir"
 	case $CARCH in
 		x86_64)
 	gendesk -f --pkgname=source2viewer \
@@ -43,6 +52,7 @@ package() {
 
 
 	install -Dm644 "$srcdir/Source2Viewer-${pkgver}.exe" "$pkgdir/usr/lib/$pkgname/${pkgname::-4}.exe"
+	install -dm755 "$pkgdir/usr/bin"
 	cat >> "$pkgdir/usr/bin/${pkgname::-4}" <<-EOF
 #!/usr/bin/env bash
 export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
