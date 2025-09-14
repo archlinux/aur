@@ -1,0 +1,8 @@
+# shellcheck shell=bash
+
+post_install() {
+	printf '======================================================================================\n'
+	printf 'If you want to run UDISKEN at boot or when a disk is plugged, enable the user service:\n'
+	printf '\tsystemctl --user enable udisken.service\n'
+	printf '======================================================================================\n'
+}
