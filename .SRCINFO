@@ -1,7 +1,7 @@
 pkgbase = python-x690
 	pkgdesc = Pure Python X.690 implementation
 	pkgver = 1.0.0.post1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/x690
 	arch = any
 	license = MIT

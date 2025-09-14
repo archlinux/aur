@@ -3,7 +3,7 @@
 pkgname=python-x690
 _name=${pkgname#python-}
 pkgver=1.0.0.post1
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Pure Python X.690 implementation"
 arch=('any')
@@ -33,6 +33,12 @@ sha256sums=('3a2a8a4e479079188aa6e847814981286b8f1c19569898fa3fe573ee0ce05349')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    mv tests x690
+    install -Dm644 /dev/stdin pytest.ini <<EOF
+[pytest]
+testpaths = x690/tests
+pythonpath = x690
+EOF
     python -m build --wheel --no-isolation
 }
 
