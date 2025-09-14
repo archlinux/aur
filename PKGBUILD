@@ -2,24 +2,23 @@
 _base=numpy-typing-compat
 pkgname=python-${_base}
 pkgdesc="Static typing compatibility layer for older versions of NumPy"
-pkgver=20250818
+pkgver=20250818.2.3
 pkgrel=1
 arch=(any)
 url="https://github.com/jorenham/${_base}"
 license=(BSD-3-Clause)
 depends=(python)
 makedepends=(python-build python-installer python-numpy python-uv-build python-jinja python-wheel)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('513a167566b91c25bd1a7aed289caefa145b3e9f9ac32668ceb8f1ff08de5b8a94b4572d894ac32139d6472003d03129f5c2499a82b238c7b1bcd97ad6dea3ca')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base//-/_}-${pkgver}.tar.gz)
+sha512sums=('3397e429ce923952b47ec4b42d0e4c3369bbc4fe8bd4655034b48925aba040ca562a80c2963ae2f74671ff2c612a304dc0d1403aa1b45038a870ce2ad693ce37')
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${_base//-/_}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  _numpy_version=$(pacman -Q python-numpy | sed -e 's/.* //; s/-.*//g')
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="$pkgdir" dist/${_base//-/_}-${_numpy_version::3}.*py3-none-any.whl
+  cd ${_base//-/_}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
