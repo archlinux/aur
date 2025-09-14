@@ -1,9 +1,8 @@
 pkgbase = mozillavpn-git
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.25.0.r88.g0dd8fc8
+	pkgver = 2.30.0.r95.g58c3ca0
 	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
-	install = mozillavpn.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
@@ -26,30 +25,10 @@ pkgbase = mozillavpn-git
 	depends = qt6-websockets
 	depends = wireguard-tools
 	optdepends = qt6-wayland: for Wayland support
-	provides = mozillavpn=2.25.0
+	provides = mozillavpn=2.30.0.r95
 	conflicts = mozillavpn
 	options = !lto
 	source = mozillavpn::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git
-	source = c-ares::git+https://github.com/c-ares/c-ares.git
-	source = getsentry.sentry-native::git+https://github.com/getsentry/sentry-native.git
-	source = mozilla-l10n.mozilla-vpn-client-l10n::git+https://github.com/mozilla-l10n/mozilla-vpn-client-l10n.git
-	source = mozilla.glean::git+https://github.com/mozilla/glean.git
-	source = wireguard.wireguard-go::git+https://github.com/WireGuard/wireguard-go.git
-	source = wireguard.wireguard-tools::git+https://github.com/WireGuard/wireguard-tools.git
-	source = chromium.googlesource.com.linux-syscall-support::git+https://chromium.googlesource.com/linux-syscall-support.git
-	source = getsentry.breakpad::git+https://github.com/getsentry/breakpad.git
-	source = getsentry.crashpad::git+https://github.com/getsentry/crashpad.git
-	source = getsentry.libunwindstack-ndk::git+https://github.com/getsentry/libunwindstack-ndk.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mozillavpn-git
