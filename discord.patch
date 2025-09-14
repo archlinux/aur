@@ -1,0 +1,249 @@
+From ed3df1379329340f61cec072605400899827f9b9 Mon Sep 17 00:00:00 2001
+From: Brett Ryland <b.n.ryland@gmail.com>
+Date: Thu, 4 Sep 2025 16:08:03 +0200
+Subject: [PATCH 1/3] Adjustments to compile properly on Ubuntu 25.04.
+
+---
+ CMakeLists.txt     | 2 +-
+ src/CMakeLists.txt | 2 ++
+ src/enet/unix.c    | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cfae29a..a9f6bb9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -57,7 +57,7 @@ option(DUNELEGACY_STATIC_RUNTIME "Use static runtime libraries" OFF)
+ 
+ # Check for required packages with specific versions
+ find_package(PkgConfig REQUIRED)
+-pkg_check_modules(SDL2 REQUIRED sdl2>=2.32.4)
++pkg_check_modules(SDL2 REQUIRED sdl2>=2.32.2)
+ pkg_check_modules(SDL2_MIXER REQUIRED SDL2_mixer>=2.8.1)
+ pkg_check_modules(SDL2_TTF REQUIRED SDL2_ttf>=2.24.0)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 95743fa..72a9593 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -60,6 +60,7 @@ target_sources(dunelegacy
+         Choam.cpp
+         Command.cpp
+         CommandManager.cpp
++        CursorManager.cpp
+         Explosion.cpp
+         Game.cpp
+         GameInitSettings.cpp
+@@ -363,4 +364,5 @@ install(TARGETS dunelegacy
+ target_compile_definitions(dunelegacy
+     PRIVATE
+         DATA_DIRECTORY="${CMAKE_INSTALL_DATADIR}/dunelegacy"
++        DUNELEGACY_DATADIR="${CMAKE_INSTALL_FULL_DATADIR}/dunelegacy"
+ ) 
+\ No newline at end of file
+diff --git a/src/enet/unix.c b/src/enet/unix.c
+index 88fe088..7bfb8f5 100644
+--- a/src/enet/unix.c
++++ b/src/enet/unix.c
+@@ -52,7 +52,7 @@ typedef int avoid_warning_that_ISO_C_forbids_an_empty_translation_unit;
+ #endif
+ 
+ #ifndef HAS_SOCKLEN_T
+-typedef int socklen_t;
++typedef unsigned int socklen_t;
+ #endif
+ 
+ #ifndef MSG_NOSIGNAL
+-- 
+2.48.1
+
+
+From 045711c9e0aa9dcafd6eabccae0968ae26990560 Mon Sep 17 00:00:00 2001
+From: Brett Ryland <b.n.ryland@gmail.com>
+Date: Fri, 5 Sep 2025 15:03:30 +0200
+Subject: [PATCH 2/3] Remove redundant (and incorrect) data install command.
+ Fix resume after pause speed. Optimise (somewhat) power/spice indicators and
+ draw low power in light yellow.
+
+---
+ CMakeLists.txt        | 10 +++++-----
+ src/Game.cpp          |  2 +-
+ src/GameInterface.cpp | 25 +++++++++++--------------
+ 3 files changed, 17 insertions(+), 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a9f6bb9..35e95d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,11 +174,11 @@ if(WIN32)
+     endif()
+ endif()
+ 
+-# Install data files
+-install(DIRECTORY data/
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
+-    PATTERN "*.svn" EXCLUDE
+-)
++# # Install data files
++# install(DIRECTORY data/
++#     DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
++#     PATTERN "*.svn" EXCLUDE
++# )
+ 
+ # Install desktop file and icons on Linux
+ if(UNIX AND NOT APPLE)
+diff --git a/src/Game.cpp b/src/Game.cpp
+index f27a1ab..c6f7a77 100644
+--- a/src/Game.cpp
++++ b/src/Game.cpp
+@@ -922,7 +922,7 @@ void Game::runMainLoop() {
+             wasMenuOpen = isMenuOpen;
+         }
+         
+-        if (!isMenuOpen) {
++        if (!isMenuOpen && !bPause) {
+             accumulator += std::min(frameTime, Uint32(200));  // Cap at 200ms to prevent spiral of death
+         }
+         
+diff --git a/src/GameInterface.cpp b/src/GameInterface.cpp
+index e64d086..be7a451 100644
+--- a/src/GameInterface.cpp
++++ b/src/GameInterface.cpp
+@@ -96,7 +96,6 @@ void GameInterface::draw(Point position) {
+     SDL_Rect spiceIndicatorPos = {  getRendererWidth() - sideBar.getSize().x + 20, 146, 4, getRendererHeight() - 146 - 2 };
+     renderFillRect(renderer, &spiceIndicatorPos, COLOR_BLACK);
+ 
+-    int xCount = 0, yCount = 0;
+     int yCount2 = 0;
+ 
+     //draw power level indicator
+@@ -114,13 +113,12 @@ void GameInterface::draw(Point position) {
+         yCount2 = powerIndicatorPos.h + 1;
+     }
+ 
+-    setRenderDrawColor(renderer, COLOR_GREEN);
+-    for (yCount = 0; yCount < yCount2; yCount++) {
+-        for (xCount = 1; xCount < powerIndicatorPos.w - 1; xCount++) {
+-            if(((yCount/2) % 3) != 0) {
+-                SDL_RenderDrawPoint(renderer, xCount + powerIndicatorPos.x, powerIndicatorPos.y + powerIndicatorPos.h - yCount);
+-            }
+-        }
++    setRenderDrawColor(renderer, yCount2 >= powerIndicatorPos.h / 2 ? COLOR_GREEN : COLOR_LIGHTYELLOW);
++    for (int yCount = 0, xPos1 = powerIndicatorPos.x + 1, xPos2 = powerIndicatorPos.x + powerIndicatorPos.w - 2; yCount < yCount2; yCount++) {
++        if(((yCount/2) % 3) == 0)
++            continue;
++        int yPos = powerIndicatorPos.y + powerIndicatorPos.h - yCount;
++        SDL_RenderDrawLine(renderer, xPos1, yPos, xPos2, yPos);
+     }
+ 
+     //draw spice level indicator
+@@ -135,12 +133,11 @@ void GameInterface::draw(Point position) {
+     }
+ 
+     setRenderDrawColor(renderer, COLOR_ORANGE);
+-    for (yCount = 0; yCount < yCount2; yCount++) {
+-        for (xCount = 1; xCount < spiceIndicatorPos.w - 1; xCount++) {
+-            if(((yCount/2) % 3) != 0) {
+-                SDL_RenderDrawPoint(renderer, xCount + spiceIndicatorPos.x, spiceIndicatorPos.y + spiceIndicatorPos.h - yCount);
+-            }
+-        }
++    for (int yCount = 0, xPos1 = spiceIndicatorPos.x + 1, xPos2 = spiceIndicatorPos.x + spiceIndicatorPos.w - 2; yCount < yCount2; yCount++) {
++        if(((yCount/2) % 3) == 0)
++            continue;
++        int yPos = spiceIndicatorPos.y + spiceIndicatorPos.h - yCount;
++        SDL_RenderDrawLine(renderer, xPos1, yPos, xPos2, yPos);
+     }
+ 
+     //draw credits
+-- 
+2.48.1
+
+
+From 811a2eb573ccc36deb8d85fb5c02829cc06bd564 Mon Sep 17 00:00:00 2001
+From: Brett Ryland <b.n.ryland@gmail.com>
+Date: Sat, 6 Sep 2025 16:42:32 +0200
+Subject: [PATCH 3/3] Don't center a structure when using 'g'/'f' hotkeys
+ unless holding 'shift'.
+
+---
+ include/Game.h |  2 +-
+ src/Game.cpp   | 22 ++++++++++++++++------
+ 2 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/include/Game.h b/include/Game.h
+index b5d36f3..1e67f7d 100644
+--- a/include/Game.h
++++ b/include/Game.h
+@@ -499,7 +499,7 @@ private:
+         Selects the next structure of any of the types specified in itemIDs. If none of this type is currently selected the first one is selected.
+         \param  itemIDs  the ids of the structures to select
+     */
+-    void selectNextStructureOfType(const std::set<Uint32>& itemIDs);
++    void selectNextStructureOfType(const std::set<Uint32>& itemIDs, bool center = false);
+ 
+     /**
+         Returns the game speed of this game: The number of ms per game cycle.
+diff --git a/src/Game.cpp b/src/Game.cpp
+index c6f7a77..28f405b 100644
+--- a/src/Game.cpp
++++ b/src/Game.cpp
+@@ -1955,7 +1955,7 @@ void Game::handleKeyInput(SDL_KeyboardEvent& keyboardEvent) {
+             // select next construction yard
+             std::set<Uint32> itemIDs;
+             itemIDs.insert(Structure_ConstructionYard);
+-            selectNextStructureOfType(itemIDs);
++            selectNextStructureOfType(itemIDs, keyboardEvent.keysym.mod & KMOD_SHIFT);
+         } break;
+ 
+         case SDLK_f: {
+@@ -1967,7 +1967,7 @@ void Game::handleKeyInput(SDL_KeyboardEvent& keyboardEvent) {
+             itemIDs.insert(Structure_HeavyFactory);
+             itemIDs.insert(Structure_HighTechFactory);
+             itemIDs.insert(Structure_StarPort);
+-            selectNextStructureOfType(itemIDs);
++            selectNextStructureOfType(itemIDs, keyboardEvent.keysym.mod & KMOD_SHIFT);
+         } break;
+ 
+         case SDLK_p: {
+@@ -2316,8 +2316,7 @@ void Game::takeScreenshot() const {
+     currentGame->addToNewsTicker(_("Screenshot saved") + ": '" + screenshotFilename + "'");
+ }
+ 
+-
+-void Game::selectNextStructureOfType(const std::set<Uint32>& itemIDs) {
++void Game::selectNextStructureOfType(const std::set<Uint32> &itemIDs, bool center) {
+     bool bSelectNext = true;
+ 
+     if(selectedList.size() == 1) {
+@@ -2350,6 +2349,15 @@ void Game::selectNextStructureOfType(const std::set<Uint32>& itemIDs) {
+                 break;
+             }
+         }
++        // If we didn't find anything else to switch to and centering is enabled, re-select the current structure.
++        if (pStructure2Select == nullptr && center) {
++            for(StructureBase* pStructure : structureList) {
++                if( (itemIDs.count(pStructure->getItemID()) == 1) && (pStructure->getOwner() == pLocalHouse) && pStructure->isSelected() ) {
++                    pStructure2Select = pStructure;
++                    break;
++                }
++            }
++        }
+     }
+ 
+     if(pStructure2Select != nullptr) {
+@@ -2360,8 +2368,10 @@ void Game::selectNextStructureOfType(const std::set<Uint32>& itemIDs) {
+         selectedList.insert(pStructure2Select->getObjectID());
+         currentGame->selectionChanged();
+ 
+-        // we center around the newly selected construction yard
+-        screenborder->setNewScreenCenter(pStructure2Select->getLocation()*TILESIZE);
++        if (center) {
++            // we center around the newly selected construction yard
++            screenborder->setNewScreenCenter(pStructure2Select->getLocation() * TILESIZE);
++        }
+     }
+ }
+ 
+-- 
+2.48.1
+

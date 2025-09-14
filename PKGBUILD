@@ -2,7 +2,7 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=dunelegacy
-pkgver=0.98.4
+pkgver=0.98.5
 pkgrel=1
 pkgdesc="Updated clone of Westood Studios' Dune2"
 arch=('i686' 'x86_64')
@@ -11,18 +11,18 @@ license=('GPL-2.0-or-later')
 depends=('sdl2_mixer' 'sdl2_ttf' 'xdg-utils' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 changelog=dunelegacy.changelog
-source=($pkgname::git+https://git.code.sf.net/p/dunelegacy/code#commit=3edb7922a8188913b522b118feba2a1e6749ebf8 enet_unix.patch)
-md5sums=('SKIP' '66e94d1bca32a9b1819ea63336bd7f03')
+source=($pkgname::git+https://git.code.sf.net/p/dunelegacy/code#commit=df3075e348413a3e7888125a86830517a966fd91 discord.patch)
+md5sums=('SKIP' 'fb0e143ffae552f5f8864b078e50ba64')
 
 prepare() {
   cd $pkgname
-  patch --forward --strip=1 --input="${srcdir}/enet_unix.patch"
+  patch --forward --strip=1 --input="${srcdir}/discord.patch"
 }
 
 build() {
   cd $pkgname
 
-  cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
+  cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
