@@ -2,7 +2,7 @@
 # Contributor: Sebastian Krebs <sebastian[at]krebs[dot]one>
 
 pkgname=telegraf-bin
-pkgver=1.35.4
+pkgver=1.36.1
 pkgrel=1
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -22,11 +22,11 @@ source=('telegraf.sysusers' 'telegraf.tmpfiles' 'LICENSE')
 sha256sums=('31c038721ff674519a506418b0d70045e2c51115a78a5939743886c44ef5e1bb'
             '36b309e79422ddbaf6067f814c8bd69bd842cc662c3c9dbbf507ee5716282779'
             'bece49bfc61abbb9d0b69bebb47955a44617ada83186c95db5651cd40c0a867a')
-sha256sums_i686=('4a2283c0b5b5f519011bf8ffd7dcb97cd91f90c07c215240c06f33953e357715')
-sha256sums_x86_64=('a22769949523de3c0fbca5b9cb2264e93e56a8655af802f80fbcbfd1a789cd37')
-sha256sums_armv6h=('43a23b121a2786c109ded2752edb47a9feff38d101feecf8ea2838ce9a611c29')
-sha256sums_armv7h=('43a23b121a2786c109ded2752edb47a9feff38d101feecf8ea2838ce9a611c29')
-sha256sums_aarch64=('b7b5991409ae93f7dd74ed1032047aba63a96fd71a2480219889381d3b65cda2')
+sha256sums_i686=('9398c96f4a64c6e6cf855c96ee495ae41ce5544186dd400041d3e123ed77aa4f')
+sha256sums_x86_64=('0c0ec522dbcbce3bf50d3e94484885b4ef8e875b3f7ab863d2c8e04b9f5a01fd')
+sha256sums_armv6h=('964732550a6c116925c0e9e249c27b1166a55b0a9c786f20f5e106b470ec4c0d')
+sha256sums_armv7h=('964732550a6c116925c0e9e249c27b1166a55b0a9c786f20f5e106b470ec4c0d')
+sha256sums_aarch64=('9f003edee168944148abfbb7c4d1a154297e1fd45ce325137c6af4c3fba4ec53')
 
 package() {
   cd "$srcdir"
