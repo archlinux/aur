@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r443.9552a52
+pkgver=r453.9cb83c4
 pkgrel=1
 pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
@@ -24,6 +24,7 @@ optdepends=(
 	'rsync: Alternative method for restoring snapshots.'
 	'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
 	'b3sum: Fast Blake3 hash function to prevent duplication.'
+	'xxhash: Fast hashing utility for deduplication with shorter hashes.'
 )
 makedepends=('git' 'jdk21-openjdk' 'maven')
 sha1sums=('SKIP')
