@@ -1,6 +1,6 @@
 pkgbase = delance-langserver
 	pkgdesc = A spear to the Python language server built with black magic
-	pkgver = 2025.7.6.r102
+	pkgver = 2025.7.6.r103
 	pkgrel = 1
 	url = https://sr.ht/~self/delance/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = delance-langserver
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	source = https://git.sr.ht/~self/delance-runtime/archive/v2025.7.102.tar.gz
-	sha256sums = 8c76054577aa7072b346eb516c066278702b5532409bb95e3cfd59805881872d
+	source = https://git.sr.ht/~self/delance-runtime/archive/v2025.7.103.tar.gz
+	sha256sums = d7c41ff8abfa923f56c30c3aea67ef9894cc5a1d7a6956462fcef087f5a7e550
 
 pkgname = delance-langserver
