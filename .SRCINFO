@@ -1,7 +1,7 @@
 pkgbase = python-phonemizer-fork
 	pkgdesc = Simple text to phones converter for multiple languages
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/phonemizer-fork
 	arch = any
 	license = MIT
