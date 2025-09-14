@@ -33,7 +33,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
     -DUSE_CURL_SSL=OFF
-    -DBUILD_TESTING=OFF
     -Wno-dev
   )
 
