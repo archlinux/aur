@@ -1,0 +1,18 @@
+pkgbase = python-lauterbach
+	pkgdesc = Python Lauterbach Automation
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-loguru
+	depends = python-lauterbach-trace32-rcl
+	source = python_lauterbach-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_lauterbach/python_lauterbach-0.0.2.tar.gz
+	sha512sums = b461ea7ee17b921ee620599cca82d375e296665b64d5ea4df413e9fecd04c63731a8f436b5ebdacc043b60cfe09c868559f10b4ea1d60638ddedb47ee7cfea21
+
+pkgname = python-lauterbach
