@@ -2,14 +2,9 @@
 # Contributor: dreieck
 # Contributor: éclairevoyant
 
-## links
-# https://rinigus.github.io/pure-maps
-# https://github.com/rinigus/pure-maps
-
-## basic info
 _pkgname="pure-maps"
 pkgname="$_pkgname-git"
-pkgver=3.4.0.r0.gb594d2f
+pkgver=3.4.1.r1.g63020fa
 pkgrel=1
 pkgdesc="Display vector and raster maps, places, routes, etc."
 url="https://github.com/rinigus/pure-maps"
@@ -38,58 +33,22 @@ makedepends=(
   'qt5-tools'
 )
 
-_source_main() {
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.g*}")
+conflicts=("$_pkgname")
 
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-_source_pure_maps() {
-  source+=(
-    'rinigus.geomag'::'git+https://github.com/rinigus/geomag.git'
-    'tkrajina.gpxpy'::'git+https://github.com/tkrajina/gpxpy.git'
-    'heremaps.flexible-polyline'::'git+https://github.com/heremaps/flexible-polyline.git'
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
-
-  _prepare_pure_maps() (
-    cd "$_pkgsrc"
-    local _submodules=(
-      'rinigus.geomag'::'thirdparty/geomag'
-      'tkrajina.gpxpy'::'thirdparty/gpxpy'
-      'heremaps.flexible-polyline'::'thirdparty/flexible-polyline'
-    )
-    _submodule_update
-  )
-}
-
-_source_main
-_source_pure_maps
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
+  cd "$_pkgsrc"
+  git submodule update --init --recursive --depth=1
+}
 
-  _prepare_pure_maps
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {

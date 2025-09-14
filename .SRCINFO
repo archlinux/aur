@@ -1,6 +1,6 @@
 pkgbase = pure-maps-git
 	pkgdesc = Display vector and raster maps, places, routes, etc.
-	pkgver = 3.4.0.r0.gb594d2f
+	pkgver = 3.4.1.r1.g63020fa
 	pkgrel = 1
 	url = https://github.com/rinigus/pure-maps
 	arch = x86_64
@@ -19,15 +19,9 @@ pkgbase = pure-maps-git
 	depends = qt5-sensors
 	depends = mapbox-gl-qml
 	depends = s2geometry
-	provides = pure-maps=3.4.0
+	provides = pure-maps=3.4.1.r1
 	conflicts = pure-maps
 	source = pure-maps::git+https://github.com/rinigus/pure-maps.git
-	source = rinigus.geomag::git+https://github.com/rinigus/geomag.git
-	source = tkrajina.gpxpy::git+https://github.com/tkrajina/gpxpy.git
-	source = heremaps.flexible-polyline::git+https://github.com/heremaps/flexible-polyline.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pure-maps-git
