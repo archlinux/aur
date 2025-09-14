@@ -6,7 +6,8 @@
 # version. Very mutch a work in progress, DO NOT TRUST.
 #
 
-validated_for="6.16.5.arch1-1"
+validated_for="6.16.7.arch1-1"
+forceupd="n"
 
 # Getting current versions
   curl -s -o .bump-pn https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/PKGBUILD/raw/\?ref\=main
@@ -61,7 +62,7 @@ validated_for="6.16.5.arch1-1"
       fi
 
     # Continue only if all the conditions are met
-      if [ "$upd" == "y" ]; then
+      if [ "$upd" == "y" ] || [ "$forceupd" == "y" ]; then
 
         # Writing new PKGBUILD proposal (TODO: something not hardcoded)
           head -n51 PKGBUILD > .bump-up1
@@ -88,16 +89,23 @@ validated_for="6.16.5.arch1-1"
               makepkg --printsrcinfo > .SRCINFO
 
             # Update the validated_for variable of this script
-              sed "s|validated_for=\"${validated_for}\"|validated_for=\"${live_ver}-${live_rel}\"|" bump.sh > .bump-bsh
-              cp .bump-bsh bump.sh
+              sed "s|validated_for=\"${validated_for}\"|validated_for=\"${live_ver}-${live_rel}\"|" bump.sh > .bump-shv
+              cp .bump-shv bump.sh
 
             # Update local repo
-              git commit -asm "$live_ver-$live_rel (no changes, auto-updated)"
-              git tag -s "$live_ver-$live_rel" -m "no changes, auto-updated"
+              if [ "$forceupd" == "y" ]; then
+                echo "TODO: git commit -asm \"$live_ver-$live_rel [message]\""
+                echo "TODO: git tag -s \"$live_ver-$live_rel\" -m \"message\""
+                sed "s|forceupd=\"y\"|forceupd=\"n\"|" bump.sh > .bump-shf
+                cp .bump-shf bump.sh
+              else
+                git commit -asm "$live_ver-$live_rel (no changes, auto-updated)"
+                git tag -s "$live_ver-$live_rel" -m "no changes, auto-updated"
+              fi
 
             # Update remote
               echo "Check the commit content AND the changes made to the kernel repo before pushing."
-
+              echo "TODO: git push"
           fi
       fi
   else
