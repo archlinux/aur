@@ -1,7 +1,7 @@
 pkgbase = tclient-ddnet
 	pkgdesc = Extended DDNet Teeworlds client.
-	pkgver = 10.4.0
-	pkgrel = 4
+	pkgver = 10.5.1
+	pkgrel = 1
 	url = https://tclient.app/
 	arch = x86_64
 	checkdepends = gmock
@@ -19,9 +19,9 @@ pkgbase = tclient-ddnet
 	optdepends = ddnet-maps-git: All the maps used on the official DDNet Servers.
 	optdepends = discord-game-sdk: Enable rich presence in Discord desktop client.
 	backup = usr/share/ddnet/data/autoexec_server.cfg
-	source = https://github.com/sjrc6/TaterClient-ddnet/releases/download/V10.4.0/TClient-ubuntu.tar.xz
+	source = https://github.com/sjrc6/TaterClient-ddnet/releases/download/V10.5.1/TClient-ubuntu.tar.xz
 	source = tclient.png
-	sha256sums = 18b9b5ef9a0877183e914e70ab668f35de8b4baa524799646a2764785f635fbf
+	sha256sums = 0eb58cec34066588e81c1f470a86d717de7796bcc2f1f9a39e0a7b0ebb0b907c
 	sha256sums = 29ecb3376c3fe0a56af495f71754c72c54f3e7f97031446e23a355833b954b65
 
 pkgname = tclient-ddnet
