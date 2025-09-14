@@ -1,12 +1,11 @@
 pkgbase = sshpilot
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
 	pkgver = 3.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mfat/sshpilot
 	arch = any
 	license = GPL-3.0-only
 	depends = python
-	optdepends = sshpass: non-interactive password prompt.
 	source = sshpilot-3.8.3.tar.gz::https://github.com/mfat/sshpilot/archive/refs/tags/v3.8.3.tar.gz
 	sha256sums = 86a052f5efb88f6dda35a8b8b0aac32c74f1ee471818003827726182968dcf63
 
@@ -20,3 +19,4 @@ pkgname = sshpilot
 	depends = python-matplotlib
 	depends = libadwaita
 	depends = vte4
+	depends = sshpass
