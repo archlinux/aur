@@ -1,7 +1,7 @@
 pkgbase = source2viewer-cli-bin
 	pkgdesc = Browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds
 	pkgver = 14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://s2v.app
 	arch = aarch64
 	arch = armv7h
@@ -18,6 +18,8 @@ pkgbase = source2viewer-cli-bin
 	noextract = source2viewer-cli-14.1-aarch64.zip
 	noextract = source2viewer-cli-14.1-armv7h.zip
 	noextract = source2viewer-cli-14.1-x86_64.zip
+	options = !strip
+	options = !debug
 	source = source2viewer-cli-14.1-README.md::https://github.com/ValveResourceFormat/ValveResourceFormat/raw/refs/tags/14.1/README.md
 	source = source2viewer-cli-14.1-LICENSE::https://github.com/ValveResourceFormat/ValveResourceFormat/raw/refs/tags/14.1/LICENSE
 	sha256sums = 6b8628ee22b46d7db400cabe7dd17057e9e941f74712a808f98564b923db1941

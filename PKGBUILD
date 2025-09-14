@@ -4,7 +4,7 @@ _Name="Source2Viewer-CLI"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://s2v.app"
@@ -26,6 +26,7 @@ conflicts=(
 replaces=(
   'vrf-decompiler-bin'
 )
+options=('!strip' '!debug')
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/${pkgver}/LICENSE")
