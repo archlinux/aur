@@ -2971,7 +2971,7 @@ index 2212d4b..ef74b29 100755
  					[ -z "$ibpb_enabled"   ] && ibpb_enabled=1
  				fi
  				# when IBRS_FW is enabled on 4.15+, we can see it in sysfs
- 				if echo "$fullmsg" | grep -q ', IBRS_FW'; then
+ 				if echo "$fullmsg" | grep -q 'IBRS_FW'; then
 -					_debug "ibrs: found IBRS_FW in sysfs"
 -					[ -z "$ibrs_supported" ] && ibrs_supported='found IBRS_FW in sysfs'
 +					_debug "ibrs: encontrado IBRS_FW em sysfs"
@@ -3008,7 +3008,7 @@ index 2212d4b..ef74b29 100755
  		if [ -z "$ibrs_supported" ] && [ -n "$kernel" ]; then
 @@ -4247,16 +4247,16 @@ check_CVE_2017_5715_linux()
  				ibrs_can_tell=1
- 				ibrs_supported=$("${opt_arch_prefix}strings" "$kernel" | grep -Fw -e ', IBRS_FW' | head -1)
+ 				ibrs_supported=$("${opt_arch_prefix}strings" "$kernel" | grep -Fw -e 'IBRS_FW' | head -1)
  				if [ -n "$ibrs_supported" ]; then
 -					_debug "ibrs: found ibrs evidence in kernel image ($ibrs_supported)"
 -					ibrs_supported="found '$ibrs_supported' in kernel image"
