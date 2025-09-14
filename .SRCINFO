@@ -1,0 +1,14 @@
+pkgbase = coq-stdpp
+	pkgdesc = An extended "Standard Library" for Coq
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://coqhammer.github.io/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = dune
+	depends = coq
+	options = !strip
+	source = https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.12.0/stdpp-coq-stdpp-1.12.0.tar.gz
+	md5sums = 1ef912b07d2d5ca6b71ab2007c8d2c2c
+
+pkgname = coq-stdpp
