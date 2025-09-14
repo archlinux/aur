@@ -3,7 +3,7 @@
 
 _pkgname="glaxnimate"
 pkgname="$_pkgname-git"
-pkgver=0.5.4.r582.gb7a2f57
+pkgver=0.5.4.r640.ge878910
 pkgrel=1
 pkgdesc="Simple vector animation program"
 url="https://invent.kde.org/graphics/glaxnimate"
@@ -32,55 +32,16 @@ makedepends=(
   'ninja'
 )
 
-_source_main() {
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-  _pkgsrc="kde.$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-}
-
-_source_glaxnimate() {
-  source+=(
-    'mattbas.cmake-lib'::'git+https://gitlab.com/mattbas/CMake-Lib.git'
-    'mattbas.python-lottie'::'git+https://gitlab.com/mattbas/python-lottie.git'
-    'mattbas.qt-color-widgets'::'git+https://gitlab.com/mattbas/Qt-Color-Widgets.git'
-    'pybind.pybind11'::'git+https://github.com/pybind/pybind11.git'
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
-
-  _prepare_glaxnimate() (
-    cd "$_pkgsrc"
-    local _submodules=(
-      'mattbas.cmake-lib'::'cmake'
-      'mattbas.python-lottie'::'data/lib/python-lottie'
-      'mattbas.qt-color-widgets'::'external/Qt-Color-Widgets'
-      'pybind.pybind11'::'external/QtAppSetup/external/pybind11'
-    )
-    _submodule_update
-  )
-}
-
-_source_main
-_source_glaxnimate
+_pkgsrc="kde.$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
-  _run_if_exists _prepare_glaxnimate
+  cd "$_pkgsrc"
+  git submodule update --init --recursive --depth=1
 }
 
 pkgver() {
@@ -109,10 +70,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
