@@ -2,13 +2,13 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 
 _pkgname=86Box
-_build=b7600
+_build=b7777
 
 pkgname=86box-appimage
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
-arch=('x86_64' 'aarch64') # check 4.2.1-1 for pentium4 and armv7h
+arch=('x86_64' 'aarch64') # check https://ci.86box.net/job/86Box/6138/ for pentium4 and armv7h
 url='https://86box.net/'
 license=('GPL-2.0-or-later')
 depends=('fuse2')
@@ -20,8 +20,8 @@ _source="https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
 
-sha512sums_x86_64=('a5c0c9448f9c675bfdfdc41e9830009c0d2c8444b3ba1691d3890c1065ffb9d2bfbd8f53ddfecf62ca727afa4cd1df8782b5dce27924534614d42c0cc31674e0')
-sha512sums_aarch64=('50d772055b715b943c9c57fceed4a0e8b03248d5f4e6dd311c951621055f4a3f946b55d82105bebde97d80a6ca7888bf67c1baa58efcb86d2b5f8bd676b7a9f7')
+sha512sums_x86_64=('5344014d6e6a182e51a518831732cb2cd5bfe548f6fbf584720210bb3577caf3d9a0c38cdc7696a7927e1fbd85179a86561cfc3ee993b32aa909ada1847f2e82')
+sha512sums_aarch64=('553783da5d24e79c3f5e634ed1bd8109e521c7d729b8878d34bb205fce839117c69f3c0b60edf04baa7f994ff151e49af949041c0485362fcecafe6a8aba6059')
 
 
 prepare() {
@@ -50,7 +50,4 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/86Box"
-
-    # Symlink to roms folder from 86box-roms
-    ln -s "/usr/share/86Box/roms" "${pkgdir}/opt/${pkgname}/roms"
 }
