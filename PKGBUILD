@@ -2,7 +2,7 @@
 
 _pkgname="annotator"
 pkgname="$_pkgname-git"
-pkgver=2.0.0.r7.g935cb65
+pkgver=2.0.0.r18.gee5f900
 pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url='https://github.com/phase1geo/Annotator'
@@ -35,6 +35,11 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  # fix missing headers
+  sed -E -e 's&(cname = )&cheader_filename = "webp/encode.h", \1&' -i "$_pkgsrc/vapi/libwebp.vapi"
+}
 
 pkgver() {
   cd "$_pkgsrc"
