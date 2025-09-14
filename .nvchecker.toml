@@ -1,0 +1,4 @@
+[source2viewer-cli]
+source = "git"
+git = "https://github.com/ValveResourceFormat/ValveResourceFormat.git"
+prefix = "v"

@@ -1,0 +1,20 @@
+pkgbase = source2viewer-cli
+	pkgdesc = Browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds
+	pkgver = 14.1
+	pkgrel = 1
+	url = https://s2v.app
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-9.0
+	makedepends = git
+	depends = dotnet-runtime-9.0
+	provides = vrf-decompiler
+	conflicts = vrf-decompiler
+	replaces = vrf-decompiler
+	options = !strip
+	options = !debug
+	source = ValveResourceFormat::git+https://github.com/ValveResourceFormat/ValveResourceFormat.git#tag=14.1?signed
+	validpgpkeys = E58081FB804DF24DF217AB772B6E7BF31D171C61
+	b2sums = 3eff16231584cfef151f3bd6e76cc8255d9b315ae6664e477861f4db7621a586dbe646d4cf83dbff30ddd8c83d9a056f89e2cff11fbe516762367ba18f21405c
+
+pkgname = source2viewer-cli
