@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=ella
-pkgver='0.0.8'
-pkgrel=5
+pkgver='0.0.9'
+pkgrel=1
 pkgdesc='A process manager for running and managing services'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
 url='https://github.com/thekhanj/ella'
@@ -14,7 +14,7 @@ license=('MIT')
 makedepends=('go>=1.24.5')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('cf5420f1fa53230f698675324741f4f519343bcdc72666ca455a0abe36da95ff1173e608cbd1f2f0234f9288e47b24047dbd9a6b48c3a2f0c99fd9bb0732202f')
+sha512sums=('a43d9c1f65048d1c3bffefa0ca7e7a32d6f73500ba5c369f315eba01f0cf185846dc1d53fbdd84c79794f119f2c3eff4ec4ad5c66bbedd8c7b0ff31940818b3d')
 
 _go_cleanup() {
 	chmod 700 "${srcdir}/gopath" -R
