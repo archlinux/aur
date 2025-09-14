@@ -14,7 +14,7 @@ if [ -n "$1" ]; then
 fi
 
 if [ "$latest_version" = "latest" ]; then
-    latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
+    latest_version=$(curl -s "https://api.modlabs.cc/opera-versions" | grep -oP '(?<="latest":")[^"]*')
     echo "Latest Opera Version: v${latest_version}"
 else
     latest_version="$1"
