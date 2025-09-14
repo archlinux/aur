@@ -1,0 +1,26 @@
+pkgbase = python-spsdk-keyfactor
+	pkgdesc = SPSDK Signature Provider plugin using Keyfactor's API
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/spsdk-keyfactor
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-click
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-dotenv
+	depends = python-requests
+	depends = python-requests-pkcs12
+	depends = python-spsdk
+	depends = pyinstaller
+	provides = spsdk-keyfactor
+	conflicts = spsdk-keyfactor
+	replaces = spsdk-keyfactor
+	source = spsdk_keyfactor-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk_keyfactor/spsdk_keyfactor-0.3.1.tar.gz
+	sha512sums = 2ae0e61dbd95acf19ad41a04845bfe8c64f1256ce7ce82acdf91757145f11858a36244b6edc2ae941489bc9b46da7ae01b7935704173445b6fa2c202845b6d63
+
+pkgname = python-spsdk-keyfactor
