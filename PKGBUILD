@@ -15,7 +15,7 @@
 
 pkgname=git-gone
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
 url="https://codeberg.org/swsnr/git-gone"
@@ -26,8 +26,15 @@ makedepends=('rust' 'cargo' 'git')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('1b41b172418f22aed98c6b7c92e41dcfc0ecaa1e94ea94869912d6caaa6e484a')
 
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
     cd "${pkgname}" || return 1
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --release --locked
 }
 
