@@ -49,4 +49,7 @@ export DEV_TOOLS=${DEV_TOOLS:-0}
 # Combine all flags into a single string
 ALL_FLAGS="$ELECTRON_ARGS $SESSION_FLAGS"
 
+# Prepend bundled vendor libraries to loader path (fallback for missing system libs)
+export LD_LIBRARY_PATH="/usr/lib/perplexity/vendor-libs:${LD_LIBRARY_PATH}"
+
 exec "$ELECTRON_BIN" "/usr/lib/perplexity" $ALL_FLAGS "$@"

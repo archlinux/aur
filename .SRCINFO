@@ -11,7 +11,7 @@ pkgbase = perplexity
 	optdepends = libappindicator-gtk3: for tray icon support
 	optdepends = desktop-file-utils: update desktop database for URL scheme
 	provides = perplexity
-	source = git+https://github.com/mazixs/perplexity.git#commit=7cfa3fb58be86c5128c4b1332350213b716734a3
+	source = git+https://github.com/mazixs/perplexity.git#commit=4488ca58f4e6c9dcbb446cadf03d22df710545cc
 	source = perplexity.desktop
 	source = perplexity.png
 	source = launcher.sh

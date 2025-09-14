@@ -3,7 +3,7 @@
 pkgname=perplexity
 pkgver=1.3.0
 pkgrel=1
-commit='7cfa3fb58be86c5128c4b1332350213b716734a3'
+commit='4488ca58f4e6c9dcbb446cadf03d22df710545cc'
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
