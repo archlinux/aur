@@ -6,7 +6,10 @@ pkgbase = subliminal
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
+	makedepends = python-installer
 	depends = python-guessit>=3.0.0
 	depends = python-babelfish>=0.6.1
 	depends = python-knowit>=0.5.5

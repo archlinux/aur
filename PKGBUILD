@@ -23,7 +23,11 @@ depends=('python-guessit>=3.0.0'
          'python-tomlkit>=0.13.2'
          'python-rarfile>=2.7')
 makedepends=('git'
-             'python-setuptools')
+             'python-build'
+             'python-hatch-vcs'
+             'python-hatchling'
+             'python-installer'
+)
 source=("https://github.com/Diaoul/subliminal/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('73df6d1940166ef0e2cdeb4f8d655a4afe1082d481ec090ad2a9e66b1a1621fc')
 sha512sums=('c5bc714fb9674651739b7bb423a35af9a24ced3db0347cf214872d8169997b51a5897018954ccba0210c10853951606a87dd15c8ccaf28830de1d27d81e912b9')
