@@ -1,12 +1,12 @@
 # Maintainer: mr2meows <mr2meows@disroot.org>
 pkgname=lib32-freearc-bin
 pkgver=0.51
-pkgrel=1
+pkgrel=2
 pkgdesc='free and open-source high-performance file archiver'
 arch=('x86_64')
 url=https://sourceforge.net/projects/freearc/
 license=('GPL-2.0')
-depends=('lib32-ncurses5-compat-libs' 'lib32-gmp')
+depends=('lib32-ncurses5-compat-libs' 'lib32-gmp' 'lib32-gtk2' 'lib32-libpng12')
 conflicts=('unarc')
 source=("https://sourceforge.net/projects/freearc/files/FreeArc/FreeArc%20$pkgver/FreeArc-$pkgver-linux-i386.tar.bz2/download")
 package() {
