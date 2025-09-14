@@ -1,11 +1,12 @@
 pkgbase = lalalai
 	pkgdesc = Vocal remover and instrumental AI splitter
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lalal.ai/
 	arch = x86_64
 	license = freeware-proprietary
 	depends = libmediainfo
+	depends = libcurl-gnutls
 	provides = lalalai
 	conflicts = lalalai
 	options = !strip
