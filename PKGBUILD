@@ -27,6 +27,7 @@ source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('1b41b172418f22aed98c6b7c92e41dcfc0ecaa1e94ea94869912d6caaa6e484a')
 
 prepare() {
+    cd "${pkgname}" || return 1
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
