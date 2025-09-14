@@ -1,8 +1,9 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=ValveResourceFormat
-pkgname=source2viewer
+pkgbase=source2viewer
+pkgname=(source2viewer source2viewer-cli)
 pkgver=14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -12,7 +13,6 @@ makedepends=('dotnet-sdk-bin' 'gendesk')
 options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
-install=$pkgname.install
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('af6c63af72f0673a61c0e73d275df39fad146af9ef8b36871145f6c0a70cdf1f')
 
@@ -23,6 +23,11 @@ prepare() {
 
 
 build() {
+	export NUGET_PACKAGES="${srcdir}/.nuget"
+	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+	export DOTNET_NOLOGO=true
+	export DOTNET_CLI_TELEMETRY_OPTOUT=true
+
 	cd "$srcdir/$_pkgname-$pkgver/CLI"
 	dotnet publish -r linux-x64 --self-contained false
 
@@ -44,12 +49,10 @@ build() {
 	--mimetypes="application/x-source2viewer-vpk"
 }
 
-package() {
-	cd "$srcdir/$_pkgname-$pkgver/CLI/bin/Release/linux-x64/publish"
-	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgname}-cli"
-
-
+package_source2viewer() {
+	install=$pkgbase.install
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
+	install -dm755 "$pkgdir/usr/bin"
 	cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
 #!/usr/bin/env bash
 export WINEPREFIX="\$HOME/.$pkgname/wine"
@@ -91,4 +94,10 @@ EOF
 	</mime-type>
 </mime-info>
 EOF
+}
+
+package_source2viewer-cli() {
+	depends=('glibc' 'gcc-libs')
+	cd "$srcdir/$_pkgname-$pkgver/CLI/bin/Release/linux-x64/publish"
+	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgbase}-cli"
 }
