@@ -6,16 +6,16 @@
 
 pkgname=windowmaker-git
 pkgver=0.96.0.r14.gda676c9e
-pkgrel=1
+pkgrel=2
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
-license=('GPL' 'custom')
+license=('GPL-2.0-or-later')
 provides=('windowmaker' 'windowmaker-crm' 'windowmaker-crm-git')
 conflicts=('windowmaker')
 options+=('!debug')
 makedepends=('git')
-depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif' 'perl')
+depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif' 'libx11' 'libpng' 'libxres' 'pango' 'perl' 'libtiff' 'fontconfig' 'bash' 'glibc' 'libxext' 'giflib' 'libjpeg-turbo')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git"
         'wmaker.desktop')
 
@@ -26,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-# patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
   
   autoreconf -fi
   
