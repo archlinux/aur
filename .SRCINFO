@@ -16,7 +16,6 @@ pkgbase = bapctools-git
 	optdepends = gcc: for compiling c++ sources,
 	optdepends = clang: for compiling c++ sources,
 	optdepends = pypy3: for running python submissions with pypy,
-	optdepends = python2: for running python2 submissions,
 	optdepends = pypy: for running python2 submissions with pypy,
 	optdepends = jdk11-openjdk: for running java submissions,
 	optdepends = kotlin: for running kotlin submissions,

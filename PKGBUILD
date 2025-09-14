@@ -11,7 +11,6 @@ depends=('python3' 'python-yaml' 'python-colorama' 'python-argcomplete' 'python-
 optdepends=('gcc: for compiling c++ sources',
 	'clang: for compiling c++ sources',
 	'pypy3: for running python submissions with pypy',
-	'python2: for running python2 submissions',
 	'pypy: for running python2 submissions with pypy',
 	'jdk11-openjdk: for running java submissions',
 	'kotlin: for running kotlin submissions',
