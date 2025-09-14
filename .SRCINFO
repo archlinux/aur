@@ -1,17 +1,21 @@
 pkgbase = wayback-machine-archiver-git
 	pkgdesc = Submit web pages to the Wayback Machine for archiving
-	pkgver = 1.9.0.r1.g1dfe329
-	pkgrel = 2
+	pkgver = 3.3.1.r0.gc8d6ecf
+	pkgrel = 1
 	url = https://github.com/agude/wayback-machine-archiver
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dotenv
 	depends = python-requests
+	depends = python-urllib3
 	provides = wayback-machine-archiver
 	conflicts = wayback-machine-archiver
-	source = git+https://github.com/agude/wayback-machine-archiver.git
+	source = wayback-machine-archiver-git::git+https://github.com/agude/wayback-machine-archiver
 	sha256sums = SKIP
 
 pkgname = wayback-machine-archiver-git
-
