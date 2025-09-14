@@ -1,0 +1,28 @@
+From a08acfcee0261ae9b084c217dd70dd52eea2904a Mon Sep 17 00:00:00 2001
+From: DreamMaoMao <2523610504@qq.com>
+Date: Thu, 29 May 2025 17:38:32 +0800
+Subject: [PATCH] render/pass: Ensure the precision is consistent during
+ comparison
+
+---
+ render/pass.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/render/pass.c b/render/pass.c
+index 90222827..23bdf96d 100644
+--- a/render/pass.c
++++ b/render/pass.c
+@@ -21,8 +21,8 @@ void wlr_render_pass_add_texture(struct wlr_render_pass *render_pass,
+ 	if (!wlr_fbox_empty(&options->src_box)) {
+ 		const struct wlr_fbox *box = &options->src_box;
+ 		assert(box->x >= 0 && box->y >= 0 &&
+-			box->x + box->width <= options->texture->width &&
+-			box->y + box->height <= options->texture->height);
++		(uint32_t)(box->x + box->width) <= options->texture->width &&
++		(uint32_t)(box->y + box->height) <= options->texture->height);
+ 	}
+ 
+ 	render_pass->impl->add_texture(render_pass, options);
+-- 
+2.51.0
+
