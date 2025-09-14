@@ -1,7 +1,7 @@
 pkgbase = scolorpicker
 	pkgdesc = smooll's Color Picker
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://www.github.com/smooll-d/scolorpicker
 	arch = x86_64
 	license = 0BSD
@@ -22,7 +22,7 @@ pkgbase = scolorpicker
 	optdepends = xdg-desktop-portal-xapp: taking screenshots on Cinnamon
 	conflicts = scolorpicker-legacy
 	options = !debug
-	source = scolorpicker-2.0.2.tar.gz
+	source = scolorpicker-2.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = scolorpicker
