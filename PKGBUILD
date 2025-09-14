@@ -1,8 +1,7 @@
 # Maintainer: let <let@notlet.dev>
-# Please note that this is my first AUR package ever, let me know if I made any mistakes or you have any improvements.
 
 pkgname=stabilitymatrix
-pkgver=2.14.2
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
@@ -12,7 +11,6 @@ license=('AGPL3')
 depends=('dotnet-runtime' 'libxcrypt-compat')
 makedepends=(
     'dotnet-sdk'
-    'dotnet-sdk-8.0' # Needed for Husky to work
 )
 
 options=('!strip')
