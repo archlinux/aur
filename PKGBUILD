@@ -6,7 +6,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r9717.gcb7c33cf2
+pkgver=0.1.r9727.g66bef3e3e
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -139,8 +139,7 @@ EOF
     if [ "$i_swear_to_never_bother_the_developer_about_this_package" = "true" ]; then
         cd "$srcdir/duckstation"
         sed -i 's/archlinux/marchlinux/g' CMakeModules/DuckStationBuildSummary.cmake
-        sed -i 's/\/usr\/lib/\/usr\/local\/lib/g' src/duckstation-qt/qthost.cpp
-        sed -i 's/StartsWithNoCase/EndsWithNoCase/g' src/duckstation-qt/qthost.cpp
+        sed -i '/#ifdef __linux__/,/#endif/d' src/core/system.cpp
     fi
 
 }
