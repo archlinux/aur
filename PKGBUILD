@@ -3,7 +3,7 @@
 pkgbase=wx-tools
 pkgname=wx-tools
 pkgver=1.2.0
-pkgrel=1
+pkgrel=3
 groups=()
 pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
 arch=($CARCH)
@@ -13,12 +13,19 @@ provides=(${pkgname} wx-tools)
 conflicts=(${pkgname} wx-tools)
 depends=(
     sh
+    cairo
     gcc-libs
+    gdk-pixbuf2
+    glib2
     glibc
+    gtk3
     hicolor-icon-theme
+    libpng
     libunwind
-    wxwidgets-common
-    wxwidgets-gtk3
+    libx11
+    libxkbcommon
+    pango
+    pcre2
 )
 makedepends=(
     git
