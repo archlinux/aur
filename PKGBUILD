@@ -1,103 +1,97 @@
-# Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
+# Maintainer: Aeonik Chaos
+# Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 # Contributor: Scott Tincman <sctincman at gmail dot com>
 
 _pkgname=nwchem
 pkgname="${_pkgname}-git"
-pkgver=r28217.efdd7b6c36
+pkgver=r30696.39ce3184b2
 pkgrel=1
-pkgdesc="Ab initio computational chemistry software package (SVN trunk via Git)"
-arch=('i686' 'x86_64')
-url="http://www.nwchem-sw.org/index.php/Main_Page"
+pkgdesc="Ab initio computational chemistry software (NWChem 7.2 hotfix branch)"
+arch=('x86_64')
+url="https://nwchemgit.github.io/"
 license=('custom:ECL')
-depends=('openmpi' 'python')
-makedepends=('git' 'gcc' 'gcc-fortran' 'bash' 'lapack' 'subversion')
+depends=('openmpi' 'openblas' 'python')        # use system OpenBLAS (LP64)
+makedepends=('git' 'gcc' 'gcc-fortran' 'bash') # subversion not needed now
 conflicts=("${_pkgname}" "${_pkgname}-data")
 provides=("${_pkgname}")
 install=nwchem.install
-source=("${_pkgname}::git://github.com/NWChem/svn-trunk-import.git"
-        "config.sh"
-        "nwchemrc"
-        "get-tools.diff")
+
+source=(
+  "nwchem-7.2.3t::git+https://github.com/nwchemgit/nwchem.git#branch=hotfix/release-7-2-0"
+  "config.sh"
+  "nwchemrc"
+)
 sha256sums=('SKIP'
-            '200ccb7c39c55cb3fa04b17063b31138d3f434b424f712983892ddce046bb1bc'
-            'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f'
-            '0f7e349c204f9775e2fcf232969d7a922d51433bf65bf4c92647e02d3bb7d70f')
+  '200ccb7c39c55cb3fa04b17063b31138d3f434b424f712983892ddce046bb1bc'
+  'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
+
+_srcdir="nwchem-7.2.3t"
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" \
-         "$(git rev-list --count HEAD)" \
-         "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  # For now, there is no Global Arrays package, so we allow checking
-  # out an SVN copy.
-  patch -p1 < "${srcdir}"/get-tools.diff
+  cd "${srcdir}/${_srcdir}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_srcdir}"
 
-  source "${srcdir}"/config.sh
+  # NWChem env
+  export NWCHEM_TOP="${PWD}"
+  export NWCHEM_TARGET=LINUX64
+  export NWCHEM_MODULES="all python"
 
-  if test "$CARCH" == x86_64; then
-    export TARGET=LINUX64
-    export NWCHEM_TARGET=LINUX64
-  else
-    export TARGET=LINUX
-    export NWCHEM_TARGET=LINUX
-  fi
+  # MPI
+  export USE_MPI=y
+  export USE_MPIF=y
+  export USE_MPIF4=y
+  export ARMCI_NETWORK=MPI-PR # good default with OpenMPI
 
+  # Python (Arch is usually 3.12+; NWChem wants MAJOR.MINOR)
+  export PYTHONVERSION="$(python -c 'import sys;print(f"{sys.version_info[0]}.{sys.version_info[1]}")')"
+
+  # BLAS/LAPACK (LP64) — system OpenBLAS, 64->32 shim
+  export USE_64TO32=y
+  export BLAS_SIZE=4
+  export BLASOPT="-lopenblas"
+  export LAPACK_LIB="${BLASOPT}"
+
+  # Honor any user overrides in config.sh (optional)
+  [[ -f "${srcdir}/config.sh" ]] && source "${srcdir}/config.sh"
+
+  # Configure & build
   cd src
   make nwchem_config
+  make 64_to_32
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_srcdir}"
+  local TARGET=LINUX64
 
-  if test "$CARCH" == x86_64; then
-    export TARGET=LINUX64
-  else
-    export TARGET=LINUX
-  fi
+  install -d -m 755 "${pkgdir}/usr/bin"
+  install -m 755 "bin/${TARGET}/nwchem" "${pkgdir}/usr/bin/"
 
-  install -d -m 755 "${pkgdir}"/usr/bin
-  install -m 755 "${srcdir}/${_pkgname}"/bin/${TARGET}/nwchem "${pkgdir}"/usr/bin/
+  install -d -m 755 "${pkgdir}/usr/share/nwchem/"
+  cp -r src/basis/libraries "${pkgdir}/usr/share/nwchem/"
+  cp -r src/data "${pkgdir}/usr/share/nwchem/"
 
-  install -d -m 755 "${pkgdir}"/usr/share/nwchem/
-  cp -r "${srcdir}/${_pkgname}"/src/basis/libraries "${pkgdir}"/usr/share/nwchem/
-  cp -r "${srcdir}/${_pkgname}"/src/data "${pkgdir}"/usr/share/nwchem/
+  install -d -m 755 "${pkgdir}/usr/share/nwchem/libraryps"
+  cp -r src/nwpw/libraryps/{development_psps,HGH_LDA,library1,library2,ofpw_default,paw_default,pspw_default,pspw_new,pspw_old,Spin_Orbit,TETER,TM} \
+    "${pkgdir}/usr/share/nwchem/libraryps"
 
-  install -d -m 755 "${pkgdir}"/usr/share/nwchem/libraryps
-  cp -r "${srcdir}/${_pkgname}"/src/nwpw/libraryps/{development_psps,HGH_LDA,library1,library2,ofpw_default,paw_default,pspw_default,pspw_new,pspw_old,Spin_Orbit,TETER,TM} "${pkgdir}"/usr/share/nwchem/libraryps
-  # ugh...
-  chmod -R go=rX "${pkgdir}"/usr/share/nwchem/
-  chmod -R u=wrX "${pkgdir}"/usr/share/nwchem/
+  chmod -R go=rX "${pkgdir}/usr/share/nwchem/"
+  chmod -R u=wrX "${pkgdir}/usr/share/nwchem/"
 
-  install -d -m 755 "${pkgdir}"/etc/skel/
-  install -m 644 $srcdir/nwchemrc "${pkgdir}"/etc/skel/.nwchemrc
+  install -d -m 755 "${pkgdir}/etc/skel/"
+  install -m 644 "${srcdir}/nwchemrc" "${pkgdir}/etc/skel/.nwchemrc"
 
-  install -d -m 755 "${pkgdir}"/usr/share/licenses/nwchem
-  install -m 0644 "${srcdir}/${_pkgname}"/LICENSE.TXT "${pkgdir}"/usr/share/licenses/nwchem/
+  install -d -m 755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -m 0644 "LICENSE.TXT" "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
-
-  source "${srcdir}"/config.sh
-
-  if test "$CARCH" == x86_64; then
-    export TARGET=LINUX64
-    export NWCHEM_TARGET=LINUX64
-  else
-    export TARGET=LINUX
-    export NWCHEM_TARGET=LINUX
-  fi
-
-  cd QA
-  bash doqmtests_bash
+  cd "${srcdir}/${_srcdir}"
+  export NWCHEM_TARGET=LINUX64
+  [[ -d QA ]] && (cd QA && bash doqmtests_bash || true)
 }
