@@ -5,7 +5,7 @@
 
 pkgname=ella
 pkgver='0.0.9'
-pkgrel=1
+pkgrel=2
 pkgdesc='A process manager for running and managing services'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'armv6l' 'riscv64')
 url='https://github.com/thekhanj/ella'
@@ -23,20 +23,8 @@ _go_cleanup() {
 
 build() {
 	export GOPATH="${srcdir}/gopath"
-
-	go install github.com/atombender/go-jsonschema@latest &&
-		go install golang.org/x/tools/cmd/stringer@latest || {
-		_go_cleanup
-		exit 1
-	}
-
 	cd "${srcdir}/ella-${pkgver}"
-	PATH="$GOPATH/bin:$PATH" make || {
-		_go_cleanup
-		exit 1
-	}
-
-	_go_cleanup
+	PATH="$GOPATH/bin:$PATH" make
 }
 
 package() {
