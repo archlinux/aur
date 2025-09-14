@@ -1,3 +1,23 @@
+2025.09.13, v18.8.8
+
+feature:
+- 03631d95 cloudcmd: aleman v1.7.0
+
+2025.09.12, v18.8.7
+
+feature:
+- 09408af5 cloudcmd: aleman v1.6.1
+
+2025.09.12, v18.8.6
+
+feature:
+- 4fcaf288 cloudcmd: aleman v1.6.0
+
+2025.09.10, v18.8.5
+
+feature:
+- c69ec16e cloudcmd: aleman v1.5.0
+
 2025.09.09, v18.8.4
 
 feature:
@@ -7404,3 +7424,4 @@ post-processing functions passed like this {'client.js': function(){}}
 
 - Changed the passing MoreProcessing agrument to jsScripts function Minify module, 
 no it passes with a file name, and js file name writing only once.
+
