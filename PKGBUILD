@@ -1,17 +1,9 @@
 # Maintainer:
 # Contributor: éclairevoyant
 
-## links
-# https://rinigus.github.io/pure-maps
-# https://github.com/rinigus/pure-maps
-
-## options
-: ${_commit:=b594d2f5c480686a2b7df15eb565df3c2f51adff} # 3.4.0
-
-## basic info
 _pkgname="pure-maps"
 pkgname="$_pkgname"
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Display vector and raster maps, places, routes, etc."
 url="https://github.com/rinigus/pure-maps"
@@ -35,55 +27,14 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'git'
   'ninja'
   'qt5-tools'
 )
 
-_source_main() {
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-  sha256sums=('SKIP')
-}
-
-_source_pure_maps() {
-  source+=(
-    'rinigus.geomag'::'git+https://github.com/rinigus/geomag.git'
-    'tkrajina.gpxpy'::'git+https://github.com/tkrajina/gpxpy.git'
-    'heremaps.flexible-polyline'::'git+https://github.com/heremaps/flexible-polyline.git'
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
-
-  _prepare_pure_maps() (
-    cd "$_pkgsrc"
-    local _submodules=(
-      'rinigus.geomag'::'thirdparty/geomag'
-      'tkrajina.gpxpy'::'thirdparty/gpxpy'
-      'heremaps.flexible-polyline'::'thirdparty/flexible-polyline'
-    )
-    _submodule_update
-  )
-}
-
-_source_main
-_source_pure_maps
-
-prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
-  _prepare_pure_maps
-}
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/releases/download/$pkgver/$_pkgsrc.$_pkgext")
+sha256sums=('1f0f331cbea99ed91166ea88f86f76795dbe23e7457cfec22baa04e34285c283')
 
 build() {
   local _cmake_options=(
