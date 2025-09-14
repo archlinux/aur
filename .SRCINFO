@@ -1,12 +1,12 @@
 pkgbase = lobehub-desktop-beta-bin
 	pkgdesc = Desktop version of lobe-chat, an open-source, modern design AI chat framework.
-	pkgver = 1.128.0
+	pkgver = 1.128.7
 	pkgrel = 1
 	url = https://github.com/lobehub/lobe-chat
 	arch = x86_64
 	license = Apache-2.0 WITH lobe-chat-exception
 	makedepends = rpmextract
-	source = lobehub-desktop-beta-1.128.0.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v1.128.0/lobehub-desktop-beta-1.128.0.x86_64.rpm
-	sha256sums = 130791652ccc4670b816f1babb0e086da4e408ef15822273d77565e53a94b714
+	source = lobehub-desktop-beta-1.128.7.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v1.128.7/lobehub-desktop-beta-1.128.7.x86_64.rpm
+	sha256sums = 5aae3480714751b7c6dbbc2254bd27d8da886cc4d362a7ec69d8081e8c3764e0
 
 pkgname = lobehub-desktop-beta-bin
