@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=6.2.1.3044
+pkgver=6.2.2.3203
 _pkgver="${pkgver%.*}"
 pkgrel=1
 epoch=1
@@ -12,15 +12,45 @@ arch=('x86_64')
 url="https://www.creality.com"
 _url="https://github.com/CrealityOfficial/${_Name}"
 license=('AGPL-3.0-only')
-depends=('at-spi2-core' 'bzip2' 'cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs'
-         'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer'
-         'gtk3' 'harfbuzz' 'libdeflate' 'libgl' 'libice' 'libsecret' 'libsm'
-         'libsoup3' 'libx11' 'libxext' 'nspr' 'nss' 'pango' 'sh'
-         'webkit2gtk-4.1' 'zlib' 'zstd')
-makedepends=('patchelf')
-optdepends=('python'
-            'slicer-udev: 3D printer connection rules'
-            'wayland')
+depends=(
+  'at-spi2-core'
+  'bzip2'
+  'cairo'
+  'dbus'
+  'expat'
+  'fontconfig'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gst-plugins-base-libs'
+  'gstreamer'
+  'gtk3'
+  'harfbuzz'
+  'libdeflate'
+  'libgl'
+  'libice'
+  'libsecret'
+  'libsm'
+  'libsoup3'
+  'libx11'
+  'libxext'
+  'nspr'
+  'nss'
+  'pango'
+  'sh'
+  'webkit2gtk-4.1'
+  'zlib'
+  'zstd'
+)
+makedepends=(
+  'patchelf'
+)
+optdepends=(
+  'python'
+  'slicer-udev: 3D printer connection rules'
+  'wayland'
+)
 provides=("${_pkgname}=${_pkgver}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
@@ -29,9 +59,9 @@ source=("${_pkgname}.sh"
         "${_pkgname}-${_pkgver}-LICENSE.txt::${_url}/raw/refs/tags/v${_pkgver}/LICENSE.txt")
 source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${_pkgver}/${_Name}_Ubuntu2404-V${pkgver}-x86_64-Release.AppImage")
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
-            '4477dda5e6d2b3e53018b180469716c199d953675dd787b3afe48ed6995557e4'
+            'a087787e8a3239bfbc0dc051565236dad4ff34ead1a3396c9cd17984fe898884'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('f395cdae08da53bf930a81ad9641afb58c61bd5655280aa1ba8344fbdad49cb1')
+sha256sums_x86_64=('e53645779dcd591f83fd670cc152a22bc854aecdc065f9f6e3f0b93bf23cb37b')
 
 prepare() {
   cd "${srcdir}"
