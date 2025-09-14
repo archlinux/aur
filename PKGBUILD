@@ -8,7 +8,7 @@ url="https://github.com/Firstp1ck/UsrGrp-Manager-TUI"
 license=('MIT')
 depends=('glibc' 'shadow')
 provides=("usrgrp-manager=${pkgver}")
-conflicts=('usrgrp-manager')
+conflicts=('usrgrp-manager' 'usrgrp-manager-git')
 
 _binname=usrgrp-manager
 # Release assets expected as:
