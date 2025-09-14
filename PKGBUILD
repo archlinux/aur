@@ -5,11 +5,11 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Screenshot tool for easy insert picture to markdown"
 arch=('x86_64')
-url="https://github.com/k88936/Shotmd"
+url="https://github.com/k88936/shotmd"
 license=('GPL3')
 depends=('openssl')
 makedepends=('base-devel' 'git' 'cmake' 'gcc' 'qt6-base')
-source=("git+https://github.com/k88936/Shotmd.git")
+source=("git+https://github.com/k88936/shotmd.git")
 sha256sums=('SKIP')
 
 build() {
