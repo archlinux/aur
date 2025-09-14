@@ -1,13 +1,13 @@
 pkgbase = lazyssh
 	pkgdesc = A terminal-based SSH manager inspired by lazydocker and k9s
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Adembc/lazyssh
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = lazyssh-0.2.0.tar.gz::https://github.com/Adembc/lazyssh/archive/v0.2.0.tar.gz
-	sha256sums = 0364c4fb254a2bc26536a7dadd1da3a7f06951b8800762ff14e6c17dca7cbe07
+	source = lazyssh-0.2.1.tar.gz::https://github.com/Adembc/lazyssh/archive/v0.2.1.tar.gz
+	sha256sums = ada257fb07db602e92c9c2a3183f267b63fb8e1bf80c4d3292461a003aa794d5
 
 pkgname = lazyssh
