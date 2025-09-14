@@ -4,10 +4,10 @@
 
 _pkgname=audiveris
 pkgname="$_pkgname"
-pkgver=5.5.3
-_tag=5.5.3
-_gitcommit=226a503
-_name="${_pkgname}-${pkgver/_/-}"
+pkgver=5.6
+_tag=5.6.0
+_gitcommit=49e5934
+_name="${_pkgname}-${_tag/_/-}"
 pkgrel=1
 pkgdesc="Music score OMR engine"
 arch=('any')
@@ -33,7 +33,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'd695ec4eddf4323fc00bf66a151a7ad2d8030b595128467877dcce6476cddbcb'
+  'ddff03f9524f38e2df124acac889c04031256d16f7c80784a0ee32be44c44306'
   '3f5f7b788f32f74f3ae97b4c0e43d66a7664a94e2fcf262ea2b049c03265403a'
   'a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa'
 )
