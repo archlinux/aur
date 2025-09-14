@@ -10,7 +10,7 @@ groups=('NoRiskClient')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'openssl' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/NoRiskClient/noriskclient-launcher/releases/latest/download/NoRiskClient-Linux.deb")
-sha512sums_x86_64=('638da484f8035b583df6923a004ed0c631d2ae2c7f3b8dd849224a98132a7035d95c48a50c4d7b18ab870f36fc24acf8731f2f4ba19382ddd06d8016fb0d784a')
+
 
 package(){
 
@@ -18,3 +18,4 @@ package(){
 	tar -xz -f data.tar.gz -C "${pkgdir}"
 
 }
+sha256sums_x86_64=('77902a81af2e7bd925c17d43816bb313ab3d14826d012170289a31bac402feb7')
