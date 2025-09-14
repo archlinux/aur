@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-pylint-plugins
 _name=${pkgname#python-}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="PyLint plugins coverity SPSDK-specific coding rules."
 arch=(any)
@@ -26,7 +26,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//_/-}/$_name-$pkgver.tar.gz")
-sha512sums=('b1ea3a3eabfedce9cb52fc00e1f5a619ed769f3d9cf9e948b00b63cc9fd4aad73e59f614ff6578bde1be42ef259b557c5350f28f6706ae09e307f104fc10113e')
+sha512sums=('d776921b27f2691547b64acf35f92d96f8070577152ca9d4989fefdb288e9ad4225245cc7ee1455acb8bd95a55cedb9ce17be1adb02b7b5cee0b692acab99a35')
 
 build() {
   cd ${srcdir}/$_name-$pkgver

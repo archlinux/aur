@@ -1,6 +1,6 @@
 pkgbase = python-spsdk-pylint-plugins
 	pkgdesc = PyLint plugins coverity SPSDK-specific coding rules.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://pypi.org/project/spsdk-pylint-plugins
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-spsdk-pylint-plugins
 	provides = spsdk-pylint-plugins
 	conflicts = spsdk-pylint-plugins
 	replaces = spsdk-pylint-plugins
-	source = spsdk_pylint_plugins-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk-pylint-plugins/spsdk_pylint_plugins-0.2.1.tar.gz
-	sha512sums = b1ea3a3eabfedce9cb52fc00e1f5a619ed769f3d9cf9e948b00b63cc9fd4aad73e59f614ff6578bde1be42ef259b557c5350f28f6706ae09e307f104fc10113e
+	source = spsdk_pylint_plugins-0.2.2.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk-pylint-plugins/spsdk_pylint_plugins-0.2.2.tar.gz
+	sha512sums = d776921b27f2691547b64acf35f92d96f8070577152ca9d4989fefdb288e9ad4225245cc7ee1455acb8bd95a55cedb9ce17be1adb02b7b5cee0b692acab99a35
 
 pkgname = python-spsdk-pylint-plugins
