@@ -6,7 +6,7 @@ _encodings='uni i15'
 
 pkgname=uw-ttyp0-font
 pkgdesc='Bitmap monospaced font with unicode support and Powerline symbols'
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 arch=(any)
 url=http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
@@ -14,7 +14,7 @@ source=("${url}/uw-ttyp0-${pkgver}.tar.gz")
 license=(custom)
 conflicts=(uw-ttyp0-otb otb-uw_ttyp0)
 makedepends=(xorg-bdftopcf xorg-mkfontscale perl xorg-fonttosfnt)
-sha512sums=('b30d45bbf307ff62b93b433daf9969637a659f52543f8a896eb4a0d29453bde2d08efdbc50237c44f8ff84bb99c857bc9eb534a02f9e37727cfa998f8e2207ac')
+sha512sums=('18cb64afd73f64ccfaad5b6b01eef4e50c7d13165a20a14e47e2d66523f80941e3fdf01aeb3c0061ba197d0664123824647e250253f0bf2049055846c5d5d98c')
 
 prepare () {
 	cd "uw-ttyp0-${pkgver}"
