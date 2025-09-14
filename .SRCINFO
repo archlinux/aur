@@ -1,0 +1,24 @@
+pkgbase = python-spsdk-jlink
+	pkgdesc = J-Link Debug probe. A debugger probe plugin for SPSDK.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/spsdk-jlink
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-click
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-spsdk
+	depends = python-pylink-square
+	depends = pyinstaller
+	provides = spsdk-jlink
+	conflicts = spsdk-jlink
+	replaces = spsdk-jlink
+	source = spsdk_jlink-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk_jlink/spsdk_jlink-0.3.1.tar.gz
+	sha512sums = c8b6bd2ddfd2f03f3ccc1d6ff3f74b71126ad8f527d72fcdeda45c8ddac1e063dad9a5e1cd1dca7f3275fdce7f447f8be28127372a9d5ff7dc1a32e30643051e
+
+pkgname = python-spsdk-jlink
