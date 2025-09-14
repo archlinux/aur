@@ -1,0 +1,15 @@
+pkgbase = runitor
+	pkgdesc = Command runner with healthchecks.io integration
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/bdd/runitor
+	arch = x86_64
+	license = 0BSD
+	makedepends = go
+	depends = glibc
+	provides = runitor
+	conflicts = runitor
+	source = runitor-1.4.1.tar.gz::https://github.com/bdd/runitor/archive/v1.4.1.tar.gz
+	sha256sums = 192665c623bc96ed77f122510510c017197e1673ab92bb84546d652afe4416c0
+
+pkgname = runitor

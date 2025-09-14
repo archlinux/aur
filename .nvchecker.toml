@@ -1,0 +1,5 @@
+[runitor]
+source = "git"
+git = "https://github.com/bdd/runitor.git"
+prefix = "v"
+
