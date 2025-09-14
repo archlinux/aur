@@ -1,0 +1,9 @@
+post_install() {
+  echo "Running post-install script..."
+	cd /opt/kohighlights && uv sync --quiet
+}
+
+post_remove() {
+  echo "Running post-remove script..."
+	rm -rf /opt/kohighlights
+}

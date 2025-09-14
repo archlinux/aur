@@ -1,0 +1,12 @@
+[project]
+name = "kohighlights"
+version = "2.3.1.0"
+description = "KoHilights"
+requires-python = ">=3.7"
+dependencies = [
+  "beautifulsoup4",
+  "future",
+  "packaging",
+  "PySide6",
+  "requests",
+]

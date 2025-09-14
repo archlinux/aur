@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=KoHighlights
+GenericName=E-book highlighter and note manager
+Comment=Highlight and manage notes for your e-books
+StartupWMClass=KoHighlights
+Exec=/opt/kohighlights/kohighlights
+Icon=/opt/kohighlights/KoHighlights.png
+Terminal=false
+Type=Application
+Categories=Office;Education;Books
