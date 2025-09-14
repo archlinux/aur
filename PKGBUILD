@@ -1,7 +1,7 @@
 # Maintainer: DarkBones
 
 pkgname=bas-tui
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Bootstrap Any System (BAS) TUI"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('bas-tui')
 conflicts=('arch-tui')
 
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7f81ba780917c87790ed1a6c7a017dc8bc543465c5861bbcda20f12c835980ab')
+sha256sums=('22529efacdc909d88b4582db0a3b7d8b0b344f74fbe3e9826c18b88bbf1eb6e2')
 
 _builddir="${srcdir}/arch-setup-${pkgver}"
 
