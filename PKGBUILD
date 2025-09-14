@@ -3,7 +3,7 @@
 pkgbase=wx-tools
 pkgname=wx-tools
 pkgver=1.2.0
-pkgrel=3
+pkgrel=5
 groups=()
 pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
 arch=($CARCH)
@@ -67,9 +67,9 @@ build() {
 }
 
 package() {
-    install -Dm0755 "${srcdir}/${pkgname}/build/assets/wxTools/wxTools" -t "${pkgdir}/usr/share/${pkgname}/"
     cd "${srcdir}/${pkgname}/"
-    cp -r res/{files,i18n} "${pkgdir}/usr/share/${pkgname}/"
+    install -dm0755 "${pkgdir}/usr/share/${pkgname}/"
+    cp -R build/assets/wxTools/* "${pkgdir}/usr/share/${pkgname}/"
 
     install -Dm644 "LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "wxTools.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.x-tools-author.wx-tools.svg"
