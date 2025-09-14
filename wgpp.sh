@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 2025-08-10
+# rev.date: 2025-09-14
 
-VERSION="5.4.0"
+VERSION="5.5.0"
 
 # Variables
 WGPP_USR=$(whoami)
@@ -22,15 +22,14 @@ Usage: $WGPP_EXE [options]
 Options:
   -d, --dir <CUSTOM_DIR>   Run from custom configuration folder <CUSTOM_DIR>.
   -g, --generate           Create new configuration folder 'wg++' in user's home directory.
-  -u, --update             Update to the latest 'siteini.pack' and channel list files.
   -h, --help               Show this help message.
 
 Examples:
   $WGPP_EXE                       Run using the default configuration directory ($WGPP_USR_HOME/wg++).
   $WGPP_EXE -d <CUSTOM_DIR>       Run using a custom configuration directory.
   $WGPP_EXE -d <CUSTOM_DIR> -g    Create a custom configuration folder.
-  $WGPP_EXE -d <CUSTOM_DIR> -u    Update the custom configuration folder.
-  $WGPP_EXE -u                    Update the default configuration folder.
+
+Note: SiteIni.Pack updates are now handled automatically by the dotnet binaries.
 
 EOF
     exit 0
@@ -63,31 +62,6 @@ missingSysFiles() {
             exit 1
         fi
         printf "[ info ] Restored missing script files 'install.sh' and/or 'run.net.sh'.\n"
-    fi
-}
-
-updateSiteIni() {
-    # Update siteini.pack directory or recreate it if missing
-    if [[ -d "$WGPP_CFGDIR/siteini.pack" ]]; then
-        printf "[ info ] Starting update of '%s/siteini.pack' to the latest release.\n" "$WGPP_CFGDIR"
-        cd "$WGPP_CFGDIR/bin.net" || {
-            printf "[ critical ] Cannot access '%s/bin.net' directory\n" "$WGPP_CFGDIR"
-            exit 1
-        }
-        
-        if ! ./SiteIni.Pack.Update.sh; then
-            printf "[ critical ] SiteIni.Pack update failed\n"
-            exit 1
-        fi
-        printf "[ info ] SiteIni.Pack update completed successfully\n"
-    else
-        printf "[ info ] Cannot find folder 'siteini.pack'. Creating directory...\n"
-        if ! mkdir -p "$WGPP_CFGDIR/siteini.pack"; then
-            printf "[ critical ] Failed to create directory '%s/siteini.pack'\n" "$WGPP_CFGDIR"
-            exit 1
-        fi
-        printf "[ info ] Please re-run '%s --update' to populate 'siteini.pack'.\n" "$WGPP_EXE"
-        exit 1
     fi
 }
 
@@ -141,6 +115,7 @@ genFolder() {
         
         printf "[ info ] Configuration folder '%s' created successfully.\n" "$WGPP_CFGDIR"
         printf "[ info ] Configure 'WebGrab++.config.xml' and run '%s' to generate EPG data.\n" "$WGPP_EXE"
+        printf "[ info ] SiteIni.Pack updates are now handled automatically by the application.\n"
         exit 0
     else
         printf "[ info ] Configuration folder '%s' already exists.\n" "$WGPP_CFGDIR"
@@ -157,6 +132,7 @@ runScript() {
     }
     
     printf "[ info ] Running WebGrab++ from '%s'...\n" "$WGPP_CFGDIR"
+    printf "[ info ] SiteIni.Pack updates will be handled automatically if needed.\n"
     
     # Create temporary file for capturing output
     local tmp_output
@@ -207,10 +183,9 @@ runScript() {
     exit 0
 }
 
-# Argument Parsing with Improvements
+# Argument Parsing
 cust_dir=""
 do_generate=0
-do_update=0
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -231,7 +206,10 @@ while [[ $# -gt 0 ]]; do
         do_generate=1
         ;;
     -u | --update)
-        do_update=1
+        printf "[ info ] The '--update' option is no longer needed in v${VERSION}.\n"
+        printf "[ info ] SiteIni.Pack updates are now handled automatically by the dotnet binaries.\n"
+        printf "[ info ] Simply run the application normally and updates will be managed automatically.\n"
+        exit 0
         ;;
     -h | --help)
         helpMsg
@@ -245,24 +223,11 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
-# Ensure valid combinations of options
-if [[ $do_generate -eq 1 && $do_update -eq 1 ]]; then
-    printf "[ critical ] The options '--generate' and '--update' cannot be used together\n" >&2
-    exit 1
-fi
-
 # Main Execution
 checkReq
 
 if [[ $do_generate -eq 1 ]]; then
     genFolder
-elif [[ $do_update -eq 1 ]]; then
-    if ! checkWGPPDir; then
-        printf "[ critical ] Configuration directory '%s' does not exist\n" "$WGPP_CFGDIR"
-        printf "[ info ] Use '%s --generate' to create it first, or specify a different directory with -d\n" "$WGPP_EXE"
-        exit 1
-    fi
-    updateSiteIni
 else
     # Default execution path (no arguments)
     if ! checkWGPPDir; then
