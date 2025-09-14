@@ -9,8 +9,6 @@ url='https://github.com/bdd/runitor'
 license=('0BSD')
 depends=('glibc')
 makedepends=('go')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('192665c623bc96ed77f122510510c017197e1673ab92bb84546d652afe4416c0')
 
@@ -39,3 +37,4 @@ package() {
   install -Dm755 "build/${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
   install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
