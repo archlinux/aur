@@ -1,7 +1,7 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
-pkgver=1.9.3
-pkgrel=4
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="A new daemon controlling the G15 Logitech Gaming Keyboard for x11 and
 wayland"
 arch=('x86_64')
@@ -59,4 +59,12 @@ package() {
 
     # Install Service-file for systemd
     install -Dm 644 "$srcdir/g15ctrld/g15ctrld.service" "$pkgdir/usr/lib/systemd/system/g15ctrld.service"
+
+    # 🔹 Systemd-Override für lcdd.service hinzufügen
+    install -d "$pkgdir/etc/systemd/system/lcdd.service.d"
+    install -Dm644 /dev/stdin "$pkgdir/etc/systemd/system/lcdd.service.d/override.conf" <<'EOF'
+[Service]
+ExecStart=
+ExecStart=/usr/bin/LCDd-menu -c /etc/LCDd.conf
+EOF
 }
