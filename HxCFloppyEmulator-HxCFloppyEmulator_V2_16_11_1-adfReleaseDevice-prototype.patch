@@ -1,0 +1,12 @@
+diff -rauN HxCFloppyEmulator-HxCFloppyEmulator_V2_16_11_1/libhxcfe/sources/thirdpartylibs/adflib/Lib/adf_nativ.h HxCFloppyEmulator-HxCFloppyEmulator_V2_16_11_1-adfReleaseDevice-prototype-patch/libhxcfe/sources/thirdpartylibs/adflib/Lib/adf_nativ.h
+--- HxCFloppyEmulator-HxCFloppyEmulator_V2_16_11_1/libhxcfe/sources/thirdpartylibs/adflib/Lib/adf_nativ.h	2025-02-20 08:33:15.000000000 +0100
++++ HxCFloppyEmulator-HxCFloppyEmulator_V2_16_11_1-adfReleaseDevice-prototype-patch/libhxcfe/sources/thirdpartylibs/adflib/Lib/adf_nativ.h	2025-09-07 08:45:40.044195814 +0200
+@@ -54,7 +54,7 @@
+     /* called by adfMount() */
+     BOOL (*adfIsDevNative)(char*);
+     /* called by adfUnMount() */
+-    RETCODE (*adfReleaseDevice)();
++    RETCODE (*adfReleaseDevice)(struct Device *);
+ };
+ 
+ void adfInitNativeFct();
