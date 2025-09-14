@@ -2,7 +2,7 @@
 
 pkgname=autogit
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto build, update, install PKGBUILDS from Github, Gitlab and AUR"
 arch=('any')
 url="https://github.com/puxplaying/autogit"
@@ -16,7 +16,6 @@ depends=(
   'sudo'
 )
 optdepends=(
-  'manjaro-chrootbuild: Needed for Manjaro clean chroot package building'
   'devtools: Needed for Arch Linux clean chroot package building'
 )
 backup=("etc/$pkgname/$pkgname.conf")

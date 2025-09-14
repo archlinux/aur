@@ -1,7 +1,7 @@
 pkgbase = autogit
 	pkgdesc = Auto build, update, install PKGBUILDS from Github, Gitlab and AUR
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/puxplaying/autogit
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,7 +11,6 @@ pkgbase = autogit
 	depends = pacman
 	depends = rsync
 	depends = sudo
-	optdepends = manjaro-chrootbuild: Needed for Manjaro clean chroot package building
 	optdepends = devtools: Needed for Arch Linux clean chroot package building
 	backup = etc/autogit/autogit.conf
 	source = autogit-2.1.0.tar.gz::https://github.com/puxplaying/autogit/archive/2.1.0.tar.gz
