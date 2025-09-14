@@ -1,0 +1,26 @@
+diff --git a/tests/Tests_Core/CMakeLists.txt b/tests/Tests_Core/CMakeLists.txt
+index 4d1f6a41..7f508061 100644
+--- a/tests/Tests_Core/CMakeLists.txt
++++ b/tests/Tests_Core/CMakeLists.txt
+@@ -30,7 +30,6 @@ target_link_libraries(
+     PRIVATE
+     Qt::Gui
+     Qt::Test
+-    cache
+ )
+ 
+ target_include_directories(Tests_Core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+diff --git a/tests/Tests_Graph/CMakeLists.txt b/tests/Tests_Graph/CMakeLists.txt
+index 447d1e19..690e40b4 100644
+--- a/tests/Tests_Graph/CMakeLists.txt
++++ b/tests/Tests_Graph/CMakeLists.txt
+@@ -30,7 +30,8 @@ target_link_libraries(
+     PRIVATE
+     Qt::Gui
+     Qt::Test
+-    Graph
++    core
+ )
+ 
+ target_include_directories(Tests_Graph PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
++target_include_directories(Tests_Graph PUBLIC ${CMAKE_SOURCE_DIR}/app/core/include/core/graph)

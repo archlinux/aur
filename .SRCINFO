@@ -1,15 +1,18 @@
 pkgbase = gitqlient-git
 	pkgdesc = Development branch of GitQlient
-	pkgver = v1.5.0.r14.6c076511
+	pkgver = 1.6.3.r144.f634298d
 	pkgrel = 1
 	url = https://github.com/francescmm/GitQlient
 	arch = x86_64
 	license = LGPL
+	makedepends = vulkan-headers
 	depends = git
-	depends = qt5-base
+	depends = qt6-base
 	provides = gitqlient
 	conflicts = gitqlient
-	source = git+https://github.com/francescmm/GitQlient#branch=master
+	source = git+https://github.com/francescmm/GitQlient#branch=future/2.0.0
+	source = fix_include_in_test_graph.patch
 	sha256sums = SKIP
+	sha256sums = 3f18f24933fae8faff8f4d950f82e16a959dbab94db27ea742023cea4dd2d8a1
 
 pkgname = gitqlient-git
