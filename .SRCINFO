@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2025.9.2
+	pkgver = 2025.9.3
 	pkgrel = 1
 	epoch = 1
 	url = https://home-assistant.io/
@@ -23,17 +23,17 @@ pkgbase = home-assistant
 	depends = python
 	depends = tzdata
 	depends = zlib
-	source = home-assistant::git+https://github.com/home-assistant/core.git#tag=2025.9.2
+	source = home-assistant::git+https://github.com/home-assistant/core.git#tag=2025.9.3
 	source = remove-setuptools-constraint.patch
 	source = home-assistant.service
 	source = home-assistant.sysusers
 	source = home-assistant.tmpfiles
-	sha512sums = 2118d3294a846f81d7da1d06059aed294d9f40a4e63c7479b17ad1671e762089cb0cd5bc060478ad98d9f81492461062e2541f678179c1b37d92f89507fb84b3
+	sha512sums = 0c2e1b6602982df73e68261fb3eccdc26879c59da6b8c567033c23565d5a5b239e8396bbcd805200f253b064f7bde441cf69b2a1c119da4d75e5e6ebe141d2b1
 	sha512sums = 1157121d245b6c7471048144e04325b5e1fc422e5ea5b45dc63c3d5d7efd2757a6930514fb35d4e0b8650b7541ef0fadf8f0eba12586d380d931c502e3acfeb4
 	sha512sums = 0a421907c1f53426fa42245bd90823e7d0d2ccbd11cc479a87f9d7cfd5d96bf3de37d10865c00233ef175e6274d4b2bf31cf7915870eb29b279a575235373647
 	sha512sums = ec05b47011adea19ee71a7793968c20a95648f45e581dab1462faec85ff31d968acd5eac35729e52c46a7eeb046a2961093283160167622d4da9773562ec8273
 	sha512sums = 8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad
-	b2sums = f6e40e12faf3237a0379c43cd33ac8f820afe306fa84247575416e16d800795a8cb2706ba465fde5e55cf8db95c48c25c172e6b6ea3a8c531117fd8e5811fd1b
+	b2sums = 20ea1c178ffbf4094a86df52c64b3e78c258d01209d5558f0e7c0e4c398b09e2a67df75e4ba02bbd6907552994f6ce82713a69a9f1659241e00db9b29338bbca
 	b2sums = 913c766df2ed4a4f5984c3ea75746e380f370ba9b3d6009d329b2089d1f00a538a18608f037593d43bbbc3f9a2c88d2290dfdef3a15094575c28b5a55e8ec1a9
 	b2sums = 20b1847203eb236c58ce29b6d502fbad2804479dc31edc8f6a5da0a5a0bfaa22519f7262afe503d06c6c2efd26ee7819a549efb0096b661ed6eb277b441533f9
 	b2sums = 8a023a2215712044fb5115d1b81e55fad2c74f2e836cfe7f3f1e7c3778e4903c25ba7e429aedfd74b566be542aa50ea0d486b616c6d5b0315d993a9599e454f8
