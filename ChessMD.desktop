@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ChessMD
+Exec=ChessMD
+Comment=PGN database viewer and analysis tool
+Icon=ChessMD.png
+Type=Application
+Categories=Game;

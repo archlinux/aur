@@ -1,0 +1,16 @@
+pkgbase = chessmd
+	pkgdesc = A lightweight chess PGN database viewer and analysis tool.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://chessmd.org/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	depends = qt6-charts
+	depends = qt6-svg
+	source = chessmd-1.0.tar.gz::https://github.com/ChessMD/ChessMD/archive/refs/tags/v1.0.tar.gz
+	source = ChessMD.desktop
+	sha256sums = ad95cfba4152ce7ab0c700b9c00a3b07d997c59558237e676f54a51a92d1265d
+	sha256sums = cd247a7aaf776e0129127a3bd712ac33cde16d9453d7ac4ab311b2ce3016d4d2
+
+pkgname = chessmd
