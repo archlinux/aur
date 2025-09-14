@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libxext' 'libxrandr')
 makedepends=('make' 'git')
 source=("https://github.com/sujaltv/matlock/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6aebb88e9b0abc763cc4540ed54a4eef947666c5e9bcc6bfedab1a35d9196a2b')
+sha256sums=('13c50cd76c1a7f451584f933e993dee961f6a63e')
 
 package() {
     cd $pkgname-${pkgver}
