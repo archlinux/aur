@@ -1,0 +1,20 @@
+pkgbase = jank-bin
+	pkgdesc = The native Clojure dialect hosted on LLVM with seamless C++ interop. Debain package.
+	pkgver = 20250914
+	pkgrel = 1
+	url = https://jank-lang.org/
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = patchelf
+	depends = gcc
+	depends = libzip
+	depends = lbzip2
+	depends = libxml2-legacy
+	depends = libedit
+	depends = python3
+	provides = jank
+	conflicts = jank
+	source = https://ppa.jank-lang.org/jank_0.1-1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = jank-bin
