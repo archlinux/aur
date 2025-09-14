@@ -2,24 +2,21 @@
 # Contributor: quellen <lodgerz@gmail.com>
 
 pkgname='epub2txt'
-_pkgname="${pkgname}2"
 pkgver=2.08
 pkgrel=1
 pkgdesc='Extract text from EPUB documents'
 arch=('x86_64')
 url='https://github.com/kevinboone/epub2txt2'
 license=('GPL-3.0-or-later')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('0936a6344754881543ec6b9d79ca2a0f89c3348f82688f485283e547c5fecfe1')
 
 build() {
-  make -C "${_pkgname}-${pkgver}"
+  make -C "${pkgname}-${pkgver}"
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm644 "man1/${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
   install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
