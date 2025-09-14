@@ -1,4 +1,5 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 
 _sdk=9.0
 _Name="Source2Viewer-CLI"
