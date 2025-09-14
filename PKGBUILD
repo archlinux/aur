@@ -1,6 +1,6 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Maintainer: Yar Cohen <yardenack@gmail.com>
 
-pkgname='perl-test-modern'
+pkgname='perl-test-modern-tmp'
 pkgver=0.013
 pkgrel=1
 pkgdesc='precision testing for modern perl'

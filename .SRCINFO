@@ -1,4 +1,4 @@
-pkgbase = perl-test-modern
+pkgbase = perl-test-modern-tmp
 	pkgdesc = precision testing for modern perl
 	pkgver = 0.013
 	pkgrel = 1
@@ -20,5 +20,4 @@ pkgbase = perl-test-modern
 	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Test-Modern-0.013.tar.gz
 	sha256sums = 63ebc04b761c5748a121006d0e2672a6836d39cfb9e0b42dda80c8161f7a1246
 
-pkgname = perl-test-modern
-
+pkgname = perl-test-modern-tmp
