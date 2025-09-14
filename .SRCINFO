@@ -1,0 +1,11 @@
+pkgbase = arch-systemd-presets
+	pkgdesc = systemd presets that more closely match archlinux service policy
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = systemd
+	source = 89-archlinux.preset
+	sha256sums = c2665bd0b3c5b5cc68faa84e86021b33fb2ea6c9be0371eca65cd989d1588e7b
+
+pkgname = arch-systemd-presets
