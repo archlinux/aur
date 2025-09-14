@@ -9,7 +9,7 @@ pkgver=0.7.4
 pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
-url="https://github.com/${_appautohor}/${_appname}"
+url="https://github.com/${_appauthor}/${_appname}"
 license=('MIT')
 options=('!strip' '!emptydirs')
 
