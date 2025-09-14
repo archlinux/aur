@@ -1,7 +1,7 @@
 pkgbase = no-risk-client-bin
 	pkgdesc = NoRiskClient Launcher to install and launch Minecraft with several new features
-	pkgver = 0.6.9-beta.10
-	pkgrel = 1
+	pkgver = 0.6.9
+	pkgrel = beta.10
 	url = norisk.gg
 	arch = x86_64
 	groups = NoRiskClient
