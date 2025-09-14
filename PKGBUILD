@@ -1,8 +1,8 @@
 pkgname=llama-swap
 
-: "${_fragment:=tag=v158}"
+: "${_fragment:=tag=v159}"
 
-pkgver=158
+pkgver=159
 pkgrel=1
 pkgdesc='Model swapping for llama.cpp (or any local OpenAPI compatible server)'
 
@@ -16,7 +16,7 @@ source=(
 	"git+$url.git#$_fragment"
 	llama-swap.service
 )
-sha256sums=('8b193001fb5822bce785aa205125af5c05607a5696d17e627a29819063ff4ad3'
+sha256sums=('64df0afd0f9043d9eb886827b9a3127e154f8f10e17c322f8466f736473fdba3'
             'd2831c1b96875b12ec3140841175cd0039ca9bf9b73e71bfdf198b85a8cc858e')
 
 pkgver() {
@@ -32,10 +32,10 @@ prepare() {
 build() {
 	cd "$pkgname"
 
-	export CGO_CPPFLAGS=$CPPFLAGS
-	export CGO_CFLAGS=$CFLAGS
-	export CGO_CXXFLAGS=$CXXFLAGS
-	export CGO_LDFLAGS=$LDFLAGS
+	# export CGO_CPPFLAGS=$CPPFLAGS
+	# export CGO_CFLAGS=$CFLAGS
+	# export CGO_CXXFLAGS=$CXXFLAGS
+	# export CGO_LDFLAGS=$LDFLAGS
 
 	local BUILD_OPTS=(
 		-v
@@ -43,8 +43,9 @@ build() {
 		-mod=vendor
 		-buildmode=pie
 		-ldflags="
-			-linkmode=external
-			-X main.version=$pkgver
+			-linkmode external
+			-extldflags \"${LDFLAGS}\"
+			-X main.version=\"$pkgver\"
 			-X main.commit=$(git rev-parse --short HEAD)
 			-X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 		"
