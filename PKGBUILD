@@ -15,7 +15,7 @@ source=(
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 )
 sha256sums=('6af6d2783ca6065b9f5448cba3993773d3df661426a56cf5ac34cb34ace946e6'
-            'a1f999ad4493f176131e0b68e58c27c36e659ebd8b01f38fae989f8e1a179154'
+            'SKIP'
             '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598')
 makedepends=(
 	cmake
