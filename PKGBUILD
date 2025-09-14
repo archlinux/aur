@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
 pkgver=0.7.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -19,16 +19,21 @@ makedepends=(
   'npm'
   'go'
   'zip'
+  'imagemagick'
 )
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
 sha256sums=('18692106d7d68182864c25e65fd15f1097b435fc63c1ae4c7c5f630d37c77b37')
+
 prepare(){
-cd "$pkgname"
-sed -i 's/"rpm",//g' electron-builder.json
+  cd "$pkgname"
+
+  sed -i 's/electron-builder --linux/electron-builder --linux dir/' package.json
 }
+
 build() {
   cd "$pkgname"
+
   export npm_config_cache="$srcdir/npm_cache"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -36,11 +41,17 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   npm ci
   npm run build:linux-gs
 
   # Clean module cache for makepkg -C
   go clean -modcache
+
+  mkdir dist/.icon-set
+  for i in 16 32 48 64 128 256 512; do
+    magick icons/icon.png -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
+  done
 }
 
 package() {
