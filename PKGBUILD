@@ -1,50 +1,57 @@
-pkgname=kimageannotator-git
-pkgver=r1096.c2919a5
+# Maintainer:
+
+_pkgname="kimageannotator"
+pkgname="$_pkgname-git"
+pkgver=0.7.1.r13.gb8b8734
 pkgrel=1
-pkgdesc='Tool for annotating images'
-arch=('i686' 'x86_64')
-url='https://github.com/DamirPorobic/kimageannotator'
-license=('GPL')
+pkgdesc="Tool for annotating images"
+url="https://github.com/ksnip/kImageAnnotator"
+license=('LGPL-3.0-only')
+arch=('x86_64')
+
 depends=(
-  qt5-base
-  qt5-svg
+  'kcolorpicker'
+  'qt6-svg'
 )
 makedepends=(
-  git
-  cmake
-  extra-cmake-modules
-  qt5-tools
-  kcolorpicker-git
-  chrpath
+  'cmake'
+  'git'
+  'ninja'
+  'qt6-tools'
 )
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
-source=("git+$url.git")
+
+provides=("$_pkgname")
+conflicts=(
+  "$_pkgname"
+  "$_pkgname-qt6"
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
-prepare(){
-  cd ${pkgname%-git}
-  test -d build || mkdir build
-  sed 's@^add_subdirectory.*kColorPicker@#&@' -i CMakeLists.txt
-}
-pkgver(){
-  cd ${pkgname%-git}
-  set -o pipefail
-  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-build(){
-  cd ${pkgname%-git}/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON ..
-  make
-}
-package(){
-  cd ${pkgname%-git}/build
-  make DESTDIR="$pkgdir" install
-  cd "$pkgdir"/usr
-  install -dm755 bin
-  install -Dm555 "$srcdir/kimageannotator/build/example/kImageAnnotator-example" bin/kImageAnnotator-example
-  strip "$pkgdir/usr/bin/kImageAnnotator-example"
-  chrpath -d "$pkgdir/usr/bin/kImageAnnotator-example"
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_WITH_QT6=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
