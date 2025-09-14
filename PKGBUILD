@@ -3,7 +3,7 @@
 pkgname=python-spsdk-keyfactor
 _name=${pkgname#python-}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="SPSDK Signature Provider plugin using Keyfactor's API"
 arch=(any)
 url="https://pypi.org/project/${_name}"
@@ -25,6 +25,7 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
