@@ -1,0 +1,16 @@
+post_install() {
+  # Update desktop database for MimeType handlers
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q || true
+  fi
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q || true
+  fi
+}

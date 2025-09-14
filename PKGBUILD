@@ -2,13 +2,13 @@
 
 pkgname=perplexity
 pkgver=1.3.0
-pkgrel=1
-commit='4488ca58f4e6c9dcbb446cadf03d22df710545cc'
+pkgrel=2
+commit='ab9df55674e59469e3db5cf093ac6e23d505aea2'
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
 license=('Apache 2.0')
-depends=('electron')
+depends=('electron' 'desktop-file-utils')
 makedepends=('git' 'npm')
 provides=('perplexity')
 optdepends=('libappindicator-gtk3: for tray icon support' 'desktop-file-utils: update desktop database for URL scheme')
