@@ -1,6 +1,6 @@
 pkgbase = revanced-patches-bin
 	pkgdesc = Patches for ReVanced
-	pkgver = 5.35.0
+	pkgver = 5.36.0
 	pkgrel = 1
 	url = https://github.com/revanced/revanced-patches
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = revanced-patches-bin
 	depends = java-environment>=17
 	provides = revanced-patches
 	conflicts = revanced-patches
-	source = https://github.com/revanced/revanced-patches/releases/download/v5.35.0/patches-5.35.0.rvp
-	source = https://github.com/revanced/revanced-patches/raw/v5.35.0/LICENSE
-	sha256sums = 63660e572e41a2d1ab30446d078a98a1968504d0f5df0f57ee668a7412408cee
+	source = https://github.com/revanced/revanced-patches/releases/download/v5.36.0/patches-5.36.0.rvp
+	source = https://github.com/revanced/revanced-patches/raw/v5.36.0/LICENSE
+	sha256sums = 7072eb21738d306fd29f34524f0b00816f1fa127f9e5310385a51f3756dff52a
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = revanced-patches-bin
