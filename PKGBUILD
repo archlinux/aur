@@ -3,7 +3,7 @@
 pkgname=python-phonemizer
 _name=${pkgname#python-}
 pkgver=3.3.0
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="Simple text to phones converter for multiple languages"
 arch=('any')
@@ -36,6 +36,12 @@ sha256sums=('5e0c38122effe0b331a24e674aff256874ece169d70a9cf1120337b56f8e3d0c')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    mv test phonemizer
+    install -Dm644 /dev/stdin pytest.ini <<EOF
+[pytest]
+testpaths = phonemizer/test
+pythonpath = phonemizer
+EOF
     python -m build --wheel --no-isolation
 }
 
