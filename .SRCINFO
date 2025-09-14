@@ -7,6 +7,7 @@ pkgbase = haveno
 	license = AGPL-3.0-or-later
 	makedepends = java-environment>=21
 	depends = bash
+	depends = gtk3
 	depends = java-runtime>=21
 	source = haveno-v1.2.1.tar.gz::https://github.com/haveno-dex/haveno/archive/refs/tags/v1.2.1.tar.gz
 	source = haveno.desktop
