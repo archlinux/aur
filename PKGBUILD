@@ -4,8 +4,8 @@
 
 _pkgname=audiveris
 pkgname="$_pkgname"
-pkgver=5.7
-_tag=5.7.0
+pkgver=5.7.1
+_tag=5.7.1
 _gitcommit=85cdc9e
 _name="${_pkgname}-${_tag/_/-}"
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '5107925c1a3e9003442dcdde9bf0d576de39cf364f2f4282514063c4d44bb3f9'
+  '0c6e3e1907ff630764ec2b4dc9f3e2638477067b1cb0c6d08be07eb35e3cb0b6'
   '3f5f7b788f32f74f3ae97b4c0e43d66a7664a94e2fcf262ea2b049c03265403a'
   'a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa'
 )
