@@ -18,7 +18,7 @@ pkgbase = no-risk-client-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.5.10/NoRiskClient-Linux.deb
-	sha512sums_x86_64 = 18378591ff3c4381614638a3c4cf3eb5e726d8a21120132085233eddd755487cfc96451da1af5ea60b80c50b60cc58f0fcdb008a14a0365a7f1838581dd5e851
+	source_x86_64 = https://github.com/NoRiskClient/noriskclient-launcher/releases/latest/download/NoRiskClient-Linux.deb
+	sha256sums_x86_64 = 77902a81af2e7bd925c17d43816bb313ab3d14826d012170289a31bac402feb7
 
 pkgname = no-risk-client-bin
