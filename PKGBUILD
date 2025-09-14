@@ -3,7 +3,7 @@
 
 _pkgname='superproductivity'
 pkgname="${_pkgname}-bin"
-pkgver=15.0.0
+pkgver=15.0.1
 pkgrel=1
 pkgdesc="ToDo list and Time Tracking"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}"
 		   "${_pkgname}-git")
 source=("superproductivity-${pkgver}-amd64.deb::https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity-amd64.deb")
-sha256sums=('aff34ce482899d1e0bb4b40faa1d5097158980977144e9dd46fe194f5cb6ae61')
+sha256sums=('da5724cedc9db2bc800545b98979f949624b9ba4c5df5f620480a87a3e153bfb')
 
 package() {
 	tar -xvf data.tar.xz -C "${pkgdir}"
