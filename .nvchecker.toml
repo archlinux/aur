@@ -1,0 +1,5 @@
+[epub2txt]
+source = "git"
+git = "https://github.com/kevinboone/epub2txt2.git"
+prefix = "v"
+
