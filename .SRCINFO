@@ -19,7 +19,7 @@ pkgbase = bitwig-studio-earlyaccess
 	conflicts = bitwig-8-track
 	conflicts = bitwig-studio
 	options = !strip
-	source = bitwig-studio-6.0-beta-3.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%203/installer_linux//
+	source = bitwig-studio-6.0-beta-3.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%203/installer_linux/
 	sha256sums = e925f848e42ed8d1266a55dc422c113d9c759bcb1f300be7887cf43bc7bdb43b
 
 pkgname = bitwig-studio-earlyaccess

@@ -16,7 +16,7 @@ provides=('clap-host' 'vst-host' 'vst3-host')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
 options=(!strip)
-source=("bitwig-studio-6.0-beta-3.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%203/installer_linux//")
+source=("bitwig-studio-6.0-beta-3.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%203/installer_linux/")
 #source=("bitwig-studio-${_pkgver}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_pkgver}/installer_linux/")
 
 
