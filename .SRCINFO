@@ -1,6 +1,6 @@
 pkgbase = wayclip-cli
 	pkgdesc = The CLI interface for Wayclip, an instant replay tool built for the Linux community.
-	pkgver = 0.1.64
+	pkgver = 0.1.65
 	pkgrel = 1
 	url = https://github.com/Wayclip/cli
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = wayclip-cli
 	depends = gst-plugins-base
 	depends = dbus
 	depends = libxcb
-	source = wayclip-cli-0.1.64.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v0.1.64.tar.gz
-	source = wayclip-core-binaries.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.8/wayclip-v0.1.8-x86_64-unknown-linux-gnu.tar.gz
+	source = wayclip-cli-0.1.65.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v0.1.65.tar.gz
+	source = wayclip-core-binaries.tar.gz::https://github.com/Wayclip/core/releases/download/v0.1.10/wayclip-v0.1.10-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -1,5 +1,5 @@
 pkgname=wayclip-cli
-pkgver=0.1.64
+pkgver=0.1.65
 pkgrel=1
 pkgdesc="The CLI interface for Wayclip, an instant replay tool built for the Linux community."
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/Wayclip/cli"
 license=('MIT')
 depends=('pipewire' 'wayland' 'alsa-lib' 'ffmpeg' 'gstreamer' 'gst-plugins-base' 'dbus' 'libxcb')
 makedepends=('rust' 'cargo')
-_core_ver="v0.1.8"
+_core_ver="v0.1.10"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Wayclip/cli/archive/refs/tags/v$pkgver.tar.gz"
         "wayclip-core-binaries.tar.gz::https://github.com/Wayclip/core/releases/download/${_core_ver}/wayclip-${_core_ver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP' 'SKIP')
