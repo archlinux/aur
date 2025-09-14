@@ -1,0 +1,24 @@
+pkgbase = udisken-git
+	pkgdesc = A small Linux automounter
+	pkgver = 0.1.r5.g3bad18b
+	pkgrel = 1
+	url = https://codeberg.org/blackma9ick/udisken
+	install = service.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = argparse>=3.2
+	depends = sdbus-cpp>=2.1.0
+	depends = sdbus-cpp<3.0.0
+	depends = spdlog>=1.15.0
+	depends = udisks2>=2.10.0
+	depends = udisks2<3.0.0
+	optdepends = xdg-utils: for opening drives in default file manager
+	provides = udisken=0.1
+	conflicts = udisken
+	source = udisken-git::git+https://codeberg.org/blackma9ick/udisken.git?signed
+	validpgpkeys = F7DE7133F2CB6A18A0A9FCD8333CACEDE4C06716
+	sha256sums = SKIP
+
+pkgname = udisken-git
