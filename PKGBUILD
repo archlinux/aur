@@ -9,7 +9,7 @@ pkgname=(
   libgdm-prime
 )
 pkgver=48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://gitlab.gnome.org/GNOME/gdm"
 arch=(x86_64)
@@ -60,10 +60,12 @@ checkdepends=(check)
 source=(
   "git+https://gitlab.gnome.org/GNOME/gdm.git#tag=${pkgver/[a-z]/.&}"
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-  0002-nvidia-prime.patch
+  0002-gdm-settings-utils-rename-variable-to-fix-build-with.patch
+  0003-nvidia-prime.patch
 )
 b2sums=('d08d2137f630999b2f36bd8b798805e145fd7350fc4a092056cfdddd2170ae57b3b17a3a8f44f4c08a7e527a165fdce0dfa7a934188bc487d2a6d5bd848497b0'
         'f7e868fdd7cc121433de1572583eb728f4d186cd4f52c6d6c8f2ccf4a3cf781144ff71f704f13571ddb97a1ff4ec55cfa3df25d38737ad19da21e84ddc2d3ee4'
+        'c704138b5f6be3ebb7d6606a78d2008cff1116bb033a0ba531b21e2b0cfc7c631c7c0720aa35694c1f0e36d9d6b81e9186f8e3f9fa12e885fe522cfcd2d98d63'
         'b02edd38bb178b457379717633f935f18bea153470905d34675a587c807a4c0de79e48cc82c53ec5a139d667f57c13e652ea6d9cb3a7fcd05bdd59b9cf715b45')
 
 prepare() {
@@ -72,7 +74,10 @@ prepare() {
   # Don't start ssh-agent by default
   git apply -3 ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 
-  git apply -3 ../0002-nvidia-prime.patch
+  # https://gitlab.gnome.org/GNOME/gdm/-/merge_requests/273
+  git apply -3 ../0002-gdm-settings-utils-rename-variable-to-fix-build-with.patch
+
+  git apply -3 ../0003-nvidia-prime.patch
 }
 
 build() {
@@ -131,9 +136,6 @@ package_gdm-prime() {
   install -d -o 120 -g 120 -m 1770 var/lib/gdm
   install -d -o 120 -g 120 -m 0700 var/lib/gdm/.config
   install -d -o 120 -g 120 -m 0700 var/lib/gdm/.config/pulse
-  install -d -o 120 -g 120 -m 0700 var/lib/gdm/.local
-  install -d -o 120 -g 120 -m 0755 var/lib/gdm/.local/share
-  install -d -o 120 -g 120 -m 0755 var/lib/gdm/.local/share/applications
 
   # https://src.fedoraproject.org/rpms/gdm/blob/master/f/default.pa-for-gdm
   install -o120 -g120 -m644 /dev/stdin var/lib/gdm/.config/pulse/default.pa <<END
