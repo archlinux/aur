@@ -19,8 +19,6 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('a8347cc9ba306e7be1f92283e8801a1db9427aeb2ec7b51f8a0e9728e9cf8e65')
 

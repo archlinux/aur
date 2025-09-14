@@ -1,0 +1,5 @@
+[wayback-machine-archiver]
+source = "git"
+git = "https://github.com/agude/wayback-machine-archiver.git"
+prefix = "v"
+
