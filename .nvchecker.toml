@@ -1,0 +1,5 @@
+[glaxnimate]
+source = "git"
+git = "https://invent.kde.org/graphics/glaxnimate.git"
+prefix = "v"
+include_regex = '^v?[0-9]+\.[0-9]+\.[0-9]$'

@@ -1,8 +1,8 @@
 pkgbase = glaxnimate
 	pkgdesc = Simple vector animation program
 	pkgver = 0.5.4
-	pkgrel = 6
-	url = https://glaxnimate.mattbas.org/
+	pkgrel = 7
+	url = https://invent.kde.org/graphics/glaxnimate
 	arch = x86_64
 	arch = i686
 	arch = armv7h
@@ -24,20 +24,6 @@ pkgbase = glaxnimate
 	depends = qt6-svg
 	depends = qt6-tools
 	source = kde.glaxnimate::git+https://invent.kde.org/graphics/glaxnimate.git#tag=0.5.4
-	source = kde.breeze-icons::git+https://github.com/KDE/breeze-icons.git
-	source = mattbas.cmake-lib::git+https://gitlab.com/mattbas/CMake-Lib.git
-	source = mattbas.python-lottie::git+https://gitlab.com/mattbas/python-lottie.git
-	source = mattbas.qt-color-widgets::git+https://gitlab.com/mattbas/Qt-Color-Widgets.git
-	source = mattbas.qt-history-lineedit::git+https://gitlab.com/mattbas/Qt-History-LineEdit.git
-	source = pybind.pybind11::git+https://github.com/pybind/pybind11.git
-	source = rpavlik.cmake-modules::git+https://github.com/rpavlik/cmake-modules.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = f17f3cce6978932b88c80c9a0db3ee86992bc193014c315af12df825fa5ef2cb
 
 pkgname = glaxnimate
