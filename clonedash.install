@@ -1,0 +1,4 @@
+post_install() {
+    echo -e "\tYou need to install Muse Dash from steam so Clone Dash can use its resourses."
+    echo -e "\tNormal steam and flatpak steam are both supported, but it needs to be installed into default library."
+}

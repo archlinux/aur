@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CloneDash
+Comment=CloneDash Game
+Exec=CloneDash
+Icon=CloneDash
+Categories=Game;
+Terminal=false

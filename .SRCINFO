@@ -1,0 +1,22 @@
+pkgbase = clonedash-git
+	pkgdesc = An open-source, from scratch clone of Muse Dash (a parkour rhythm game).
+	pkgver = r1568.g49ba8d5
+	pkgrel = 1
+	url = https://github.com/marchc1/CloneDash
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk-8.0
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = clonedash
+	conflicts = clonedash
+	source = git+https://github.com/marchc1/CloneDash.git#branch=dev
+	source = 0001-pr-63.diff::https://github.com/marchc1/CloneDash/pull/63.diff
+	source = CloneDash.desktop
+	sha256sums = SKIP
+	sha256sums = 8860f84e5384a7f4a751ce25c73188bb6320cbe5525d17c89883394b88ff0b1e
+	sha256sums = 85f0cc3b17ab6d7cc2fc3cc6f396d22edfd4efbd7d204552a0947b39de1baeee
+
+pkgname = clonedash-git
