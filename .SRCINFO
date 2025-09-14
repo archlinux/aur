@@ -1,0 +1,13 @@
+pkgbase = apex-launcher
+	pkgdesc = The Fastest, Lightest, Most Reliable Application Launcher for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/reza-ygb/apex-launcher
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	source = apex-launcher-1.0.0.tar.gz::https://github.com/reza-ygb/apex-launcher/archive/v1.0.0.tar.gz
+	sha256sums = 25ad485528f1cc5b814c8f5606ac6868f30acd6b55f06cd45f66a10302e614d0
+
+pkgname = apex-launcher
