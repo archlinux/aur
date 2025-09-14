@@ -2,7 +2,7 @@
 pkgname=ersatztv-bin
 _pkgname=ersatztv
 pkgnamecaps=ErsatzTV
-pkgver=25.5.0
+pkgver=25.6.0
 pkgrel=1
 pkgdesc="Software for configuring and streaming custom live channels using your media library"
 url="https://ersatztv.org/"
@@ -17,8 +17,8 @@ source_aarch64=("https://github.com/$pkgnamecaps/$pkgnamecaps/releases/download/
 sha256sums=('27b89ea376c06600ae7871f4e9db6cafb446e38e59334bdf31983bfa9f8bc550'
             'b8fc55ba6da728a51e2d0ce5add05e8a9500a0e7626c55b042d6b55763bc1ad5'
             '95bb7e34c04af1288af7765940fd73c6807bba3fd276a9cb32f243b029d20d66')
-sha256sums_x86_64=('9f158c761ea172d6f668c67f27f1ae554ed1af881618c70eb8ca5dd81e70d200')
-sha256sums_aarch64=('45258dc8d9a5c045996d245417ca2d38a4aee35f1e8f0fdf8963e873dc1fc591')
+sha256sums_x86_64=('d131fbeb3fc392808748d65a643a354f5d6a938ea7d0b9f764f775fae562ed98')
+sha256sums_aarch64=('886e0e09d923cc3e01f63b425b1d8b6dd8ccd9c55d96508a06cc9682a34440d8')
 
 package() {
 	cd "$srcdir"
