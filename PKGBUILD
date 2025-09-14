@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=inaparc
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Initialization Algorithms for Partitioning Cluster Analysis'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-lhs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6e60d43ec71c289805102f95a675dc2a8445ed891e471e9c22928be0cb137578')
+sha256sums=('e615dffe07abc8ca357e123243b93acc7c17fbaddb14fe2075e33fc15bad19ac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
