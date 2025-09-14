@@ -7,7 +7,7 @@ export CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="tuc"
 pkgname="$_pkgname"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A more powerful alternative to cut"
 url="https://github.com/riquito/tuc"
@@ -25,7 +25,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('bb6d16772ed0728f396d32066d391206420497a4f902071b0229790a8c844307')
+sha256sums=('81dc5f4a0355ecdf9515c88c34c365d20f339d316df7dbe72667cd2b18445c61')
 
 prepare() {
   cd "$_pkgsrc"
