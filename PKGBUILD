@@ -2,7 +2,7 @@
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname="python-pyln-proto"
 _name=${pkgname#python-}
-pkgver="25.05"
+pkgver="25.09"
 pkgrel=1
 pkgdesc="This package implements some of the Lightning Network protocol in pure python. It is intended for protocol testing and some minor tooling only. It is not deemed secure enough to handle any amount of real funds (you have been warned!)."
 arch=("any")
@@ -11,7 +11,7 @@ license=("custom:BSD-MIT")
 depends=("python" "python-base58" "python-bitstring" "python-coincurve" "python-cryptography" "python-pysocks")
 makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
 source=("https://github.com/ElementsProject/lightning/releases/download/v${pkgver}/clightning-v${pkgver}.zip")
-sha256sums=("00d633a63570f6419db0dbd75b503bb04ba0f6eb469894da6fced2a8949d8007")
+sha256sums=("a97f44647b83b44718094f1838c6c74e8dc90c0009f2773a37b17ff80004a67e")
 
 build() {
 	cd "clightning-v$pkgver"/"contrib"/"pyln-proto"
