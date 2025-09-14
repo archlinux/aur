@@ -1,0 +1,23 @@
+pkgbase = udisken-bin
+	pkgdesc = A small Linux automounter
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/blackma9ick/udisken
+	install = service.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = sdbus-cpp>=2.1.0
+	depends = sdbus-cpp<3.0.0
+	depends = spdlog>=1.15.0
+	depends = udisks2>=2.10.0
+	depends = udisks2<3.0.0
+	optdepends = xdg-utils: for opening drives in default file manager
+	provides = udisken=0.1
+	conflicts = udisken
+	validpgpkeys = F7DE7133F2CB6A18A0A9FCD8333CACEDE4C06716
+	source_x86_64 = https://codeberg.org/blackma9ick/udisken/releases/download/0.1/udisken-0.1-.pkg.tar.zst
+	source_x86_64 = https://codeberg.org/blackma9ick/udisken/releases/download/0.1/udisken-0.1-.pkg.tar.zst.sig
+	b2sums_x86_64 = 89be53f4d16dcfb94569827be7bd1c0593516147fc1d0c984367ff8a4c0fd0b290ada203af6dbef88c9a0af3ec5b3726a206ad608afc16c3f81db9fdc498ea8f
+	b2sums_x86_64 = SKIP
+
+pkgname = udisken-bin
