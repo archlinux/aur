@@ -1,0 +1,22 @@
+pkgbase = python-spsdk-pemicro
+	pkgdesc = P&E Micro debugger probe plugin. A debugger probe plugin for SPSDK.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://pypi.org/project/spsdk-pemicro
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-spsdk
+	depends = python-pypemicro
+	depends = pyinstaller
+	provides = spsdk-pemicro
+	conflicts = spsdk-pemicro
+	replaces = spsdk-pemicro
+	source = spsdk_pemicro-0.3.2.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk_pemicro/spsdk_pemicro-0.3.2.tar.gz
+	sha512sums = 86a977369f597af4b465ec8267391ce865b9252109812e69516a079ff72af19b019cc38b811bbb5ac5615a833047a33c3e5fd75a656e34c37eb0a7d6f32a7444
+
+pkgname = python-spsdk-pemicro
