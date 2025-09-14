@@ -1,0 +1,19 @@
+pkgbase = reskin-git
+	pkgdesc = A modern Linux desktop theming app for browsing, applying, and managing custom themes (nightly build)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/iamnotmega/reskin
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = desktop-file-utils
+	depends = webkit2gtk-4.1
+	depends = xdg-utils
+	source = git+https://github.com/iamnotmega/reskin.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = reskin-git
