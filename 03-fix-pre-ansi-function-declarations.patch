@@ -1,0 +1,23 @@
+Author: Jeremy Sowden <jeremy@azazel.net>
+Last-Update: 2025-02-27
+Bug-Debian: https://bugs.debian.org/1098102
+Forwarded: yes
+Applied-Upstream: commit:d430aa6d6c7d125fca3fd6f97b65bf09cb00f9bd
+Description: remove pre-ANSI function declaration
+ Pre-ANSI function declarators which do not declare their parameters have been
+ removed in C23 and the syntax reused for declaring functions with no parameters
+ (like C++).  GCC 15 defaults to C23, so these declarators will cause an FTBFS.
+ .
+ Replace an obsolete declaration with its modern equivalent.
+
+--- a/wmcube/wmcube.c
++++ b/wmcube/wmcube.c
+@@ -96,7 +96,7 @@
+ void BlitString(char *name, int x, int y);
+ void BlitNum(int num, int x, int y);
+ void clearscr();
+-void draw();
++void draw(int color);
+ void set_plugin();
+ void startup_seq();
+ int  red = 0;

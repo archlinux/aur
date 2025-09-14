@@ -1,0 +1,16 @@
+Description: remove root chown from Makefile.
+Author: Jeremy Sowden <jeremy@azazel.net>
+Forwarded: https://groups.google.com/g/wmaker-dev/c/im4o_NHBSmQ/m/U45ZRus_AgAJ
+Applied-Upstream: commit:6194584d5309f22f1adb0060dfafa7993fe71fe9
+Last-Updated: 2025-02-22
+
+--- a/wmcube/Makefile
++++ b/wmcube/Makefile
+@@ -39,7 +39,6 @@
+ install:: wmcube
+ 	cp -f wmcube $(BINDIR)
+ 	chmod 755 $(BINDIR)/wmcube
+-	chown root:root $(BINDIR)/wmcube
+ 	mkdir -p $(DOCDIR)
+ 	cp -p ../CHANGES ../COPYING ../INSTALL ../README ../THANKS $(DOCDIR)
+ 	cp -pr ../3D-objects $(DOCDIR)

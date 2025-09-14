@@ -1,16 +1,23 @@
 pkgbase = wmcube
 	pkgdesc = 3D objects tumbling about representing CPU load
-	pkgver = 0.98
-	pkgrel = 3
-	url = http://web.archive.org/web/20121116163211/http://dockapps.windowmaker.org/file.php/id/162
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.dockapps.net/wmcube
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	depends = libxpm
-	source = wmcube-0.98.tar.gz
-	source = wmcube.patch
-	md5sums = efc6f484c53f0a98a76925a6e1a74cd3
-	md5sums = 83d0ba27b2122d248123c677e2713e07
+	depends = libx11
+	depends = glibc
+	depends = libdockapp
+	options = !debug
+	source = https://www.dockapps.net/download/wmcube-1.0.2.tar.gz
+	source = 01-use_libdockapp.patch
+	source = 02-no_root_chown.patch
+	source = 03-fix-pre-ansi-function-declarations.patch
+	md5sums = a81939fc13043ce8f95365a6c2ad27ce
+	md5sums = 53d49d5268117f1d3448c5a3c685c8d7
+	md5sums = f36ef952fe4f29b8f70ed6cb70c4b3fd
+	md5sums = eb10671e2b7169ee1e3e2c01dfaf8247
 
 pkgname = wmcube
-

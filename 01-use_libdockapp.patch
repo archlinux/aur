@@ -1,0 +1,37 @@
+Description: use wmgeneral functions from libdockapp
+Author: Jeremy Sowden <jeremy@azazel.net>
+Forwarded: https://groups.google.com/g/wmaker-dev/c/im4o_NHBSmQ/m/VAiYHes_AgAJ
+Applied-Upstream: commit:99f6e622c5e90e357865f6b90f2c3d7ce9edd143
+Last-Updated: 2025-02-22
+
+--- a/wmcube/Makefile
++++ b/wmcube/Makefile
+@@ -16,13 +16,10 @@
+ # Edit OSLIBS as appropriate to include OS specific libraries.
+ 
+ OSLIBS =
+-LIBS   = -lXpm -lXext -lX11 -lm $(OSLIBS)
++LIBS   = -lXpm -lXext -lX11 -ldockapp -lm $(OSLIBS)
+ CFLAGS = -Wall -O2
+ 
+-OBJS =	wmcube.o \
+-	../wmgeneral/wmgeneral.o \
+-	../wmgeneral/misc.o \
+-	../wmgeneral/list.o
++OBJS =	wmcube.o
+ 
+ .c.o:
+ 	$(CC) $(OS) $(CPPFLAGS) $(CFLAGS) $(INCDIR) -c $< -o $*.o
+--- a/wmcube/wmcube.c
++++ b/wmcube/wmcube.c
+@@ -69,8 +69,8 @@
+ #include <errno.h>
+ #endif
+ 
+-#include "../wmgeneral/wmgeneral.h"
+-#include "../wmgeneral/misc.h"
++#include <libdockapp/wmgeneral.h>
++#include <libdockapp/misc.h>
+ 
+ #include "wmcube.xpm"
+ #include "wmcubered.xpm"
