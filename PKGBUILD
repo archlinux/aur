@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=('aarch64' 'x86_64')
@@ -13,15 +13,14 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('304077de7b1ec1b0273d5caed5b8ae4edf2abb3faaf46822ea90a9165b3a31b0792b17fb572c73b68646d2378f25f595a3d78025358cb130f65753e1a39f7089')
+b2sums=('83b39a12fd807566845611d33567f5161f8dd27ef676535a2433eb602db965670b2858d905a31d85aaa18781ab92ebc2c59ee19aecec41c9c590cf33cf9ef1a9')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build"
 }
@@ -34,11 +33,12 @@ build() {
   export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  local buildDate="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%Y-%m-%dT%H:%M:%SZ")"
 
   cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${_binname}" -ldflags "\
     -X ${_url#https://}.version=${pkgver} \
-    -X ${_url#https://}.buildDate=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+    -X ${_url#https://}.buildDate=${buildDate}" \
     ./"cmd/${_binname}"
 }
 
