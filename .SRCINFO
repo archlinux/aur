@@ -1,9 +1,10 @@
 pkgbase = python-spsdk-jlink
 	pkgdesc = J-Link Debug probe. A debugger probe plugin for SPSDK.
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/spsdk-jlink
 	arch = any
+	groups = spsdk-plugins
 	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-click

@@ -3,7 +3,7 @@
 pkgname=python-spsdk-jlink
 _name=${pkgname#python-}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc="J-Link Debug probe. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/${_name}"
@@ -26,6 +26,7 @@ checkdepends=(
   python-click
 )
 optdepends=()
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
