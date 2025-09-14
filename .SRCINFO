@@ -1,4 +1,4 @@
-pkgbase = tclient-ddnet
+pkgbase = tclient-bin
 	pkgdesc = Extended DDNet Teeworlds client.
 	pkgver = 10.5.1
 	pkgrel = 1

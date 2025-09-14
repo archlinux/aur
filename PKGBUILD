@@ -1,6 +1,6 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
-pkgname=tclient-ddnet
+pkgname=tclient-bin
 pkgver=10.5.1
 pkgrel=1
 pkgdesc="Extended DDNet Teeworlds client."
