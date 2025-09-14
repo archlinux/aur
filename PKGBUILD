@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -49,7 +49,7 @@ package() {
   cp -a dist/linux-unpacked/* "$pkgdir/opt/$pkgname/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
