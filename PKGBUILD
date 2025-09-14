@@ -53,6 +53,7 @@ prepare() {
   export echo=echo
 
   ./configure --silent --with-php-config=${PHPCONFIG_BIN} --enable-phalcon
+  sed -i 's/CPPFLAGS = -DPHALCON_RELEASE -DHAVE_CONFIG_H/CPPFLAGS = -DPHALCON_RELEASE -DHAVE_CONFIG_H -Wno-error=incompatible-pointer-types/g' Makefile
 }
 
 build() {
