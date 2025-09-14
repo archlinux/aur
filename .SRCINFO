@@ -1,6 +1,6 @@
 pkgbase = stegano
 	pkgdesc = A CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding.
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/steganogram/stegano-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stegano
 	makedepends = cargo
 	depends = bzip2
 	options = !lto
-	source = stegano-0.5.3.tar.gz::https://github.com/steganogram/stegano-rs/archive/v0.5.3.tar.gz
-	sha512sums = 7da01de742b7de3887c368e955c2047aa49017ed354d933fc6ef9a85afaf83f1a0a48b54e01ff9c7d01d38c5a05b482154bf0b2b7e6101d8d92a82e1740ed425
+	source = stegano-0.6.0.tar.gz::https://github.com/steganogram/stegano-rs/archive/v0.6.0.tar.gz
+	sha512sums = 866db3b8da6d03abb0eddf225a934051442573ac670e78629073a6a32036e1ed497041fa3bab91007b84898846dd1f7a12a9938472fbb3784df31b241ab9af29
 
 pkgname = stegano

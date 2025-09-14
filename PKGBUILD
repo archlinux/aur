@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=stegano
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding."
 arch=('x86_64')
@@ -11,21 +11,21 @@ license=('GPL3')
 depends=('bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7da01de742b7de3887c368e955c2047aa49017ed354d933fc6ef9a85afaf83f1a0a48b54e01ff9c7d01d38c5a05b482154bf0b2b7e6101d8d92a82e1740ed425')
+sha512sums=('866db3b8da6d03abb0eddf225a934051442573ac670e78629073a6a32036e1ed497041fa3bab91007b84898846dd1f7a12a9938472fbb3784df31b241ab9af29')
 options=('!lto')
 
 prepare() {
-  cd "$pkgname-rs-$pkgver/$pkgname-cli"
+  cd "$pkgname-rs-$pkgver/crates/$pkgname-cli"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname-rs-$pkgver/$pkgname-cli"
+  cd "$pkgname-rs-$pkgver/crates/$pkgname-cli"
   cargo build --release --frozen
 }
 
 check() {
-  cd "$pkgname-rs-$pkgver/$pkgname-cli"
+  cd "$pkgname-rs-$pkgver/crates/$pkgname-cli"
   cargo test --frozen
 }
 
