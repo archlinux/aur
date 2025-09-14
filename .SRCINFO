@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-f3kdb-sauruuwu-git
+	pkgdesc = A deband library and filter for avisynth/vapoursynth (sauruuwu fork)
+	pkgver = 2.0.1.r424.652974d
+	pkgrel = 1
+	url = https://github.com/sauruuwu/flash3kyuu_deband
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python
+	depends = vapoursynth
+	provides = vapoursynth-plugin-f3kdb
+	conflicts = vapoursynth-plugin-f3kdb-git
+	source = vapoursynth-plugin-f3kdb-sauruuwu-git::git+https://github.com/sauruuwu/flash3kyuu_deband
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-f3kdb-sauruuwu-git
