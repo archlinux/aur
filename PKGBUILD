@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=journalctl-desktop-notification
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Displays notifications for journalctl error messages."
 arch=('any')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4e7c857970105279e7a4969dcef4c9dd72e4c6cc6c9f157d24b213009362c305')
+sha256sums=('9cde27333c58d4fa4b4e64b1fd0becb68b09e23034cd955e621bf403a91cfbbb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
