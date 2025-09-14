@@ -1,7 +1,7 @@
 # Maintainer: Koulmoir <lord.cheesev2@gmail.com>
 pkgname=no-risk-client-bin
-pkgver=0.6.9.beta.10
-pkgrel=1
+pkgver=0.6.9
+pkgrel=beta.10
 pkgdesc="NoRiskClient Launcher to install and launch Minecraft with several new features"
 arch=('x86_64')
 url=""norisk.gg""
