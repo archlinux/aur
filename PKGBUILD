@@ -72,7 +72,7 @@ package() {
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules_doc.mk"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules_util.mk"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_variables"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/src/binding/slepc4py/src/slepc4py/lib/slepc.cfg"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc4py/lib/slepc.cfg"
 
   # remove logs containing references to the build dir
   rm -f "${_dest_dir}/lib/slepc/conf/configure.log"
