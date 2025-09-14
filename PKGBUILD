@@ -18,8 +18,7 @@ sha256sums=('7f231906801e89f09a212e86701f3df1722e36767d6055a4e619390570548537'
 
 prepare() {
   cd ${srcdir}/tigervnc-${pkgver}
-  sed -i -e 's/find_package(FLTK REQUIRED)/find_package(FLTK1.3 REQUIRED)/' \
-    -e 's/if(NOT OK_FLTK_VERSION)/if(FALSE)/' CMakeLists.txt
+  sed -i -e 's/find_package(FLTK REQUIRED)/find_package(FLTK1.3 REQUIRED)/' CMakeLists.txt
 }
 
 build() {
