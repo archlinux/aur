@@ -6,7 +6,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r9409.g168b80dd4
+pkgver=0.1.r9717.gcb7c33cf2
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -194,14 +194,16 @@ build() {
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DCMAKE_PREFIX_PATH="$srcdir/deps/usr" \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/lib/duckstation" \
-        -DALLOW_INSTALL=ON \
         -Wno-dev
     ninja -C build
 }
 
 package() {
-    ninja -C build install
+    # Install everything into /usr/lib/duckstation
+    install -m 755 -d "${pkgdir}/usr/lib"
+    cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
+    # Install bundled libraries
+    find "${srcdir}/deps/usr/lib" -name '*.so*' -exec cp -dv --no-preserve='ownership' '{}' "${pkgdir}/usr/lib/${_pkgname}/" \;
 
     # patch rpath
     patchelf --force-rpath --set-rpath "/usr/lib/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/$_pkgname-qt"
