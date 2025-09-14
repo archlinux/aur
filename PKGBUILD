@@ -4,8 +4,8 @@
 
 _pkgname=audiveris
 pkgname="$_pkgname"
-pkgver=5.6.2
-_tag=5.6.2
+pkgver=5.7
+_tag=5.7.0
 _gitcommit=85cdc9e
 _name="${_pkgname}-${_tag/_/-}"
 pkgrel=1
@@ -14,7 +14,7 @@ arch=('any')
 url="https://github.com/Audiveris/$_pkgname"
 license=('AGPL3')
 depends=(
-  'java-runtime>=21'
+  'java-runtime>=24'
   'tesseract'
   'freetype2'
   'hicolor-icon-theme'
@@ -33,7 +33,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'c5f540930c5dfb3812ef8f3736c7d480f1eec470661658939dce8e1bbc9ac820'
+  '5107925c1a3e9003442dcdde9bf0d576de39cf364f2f4282514063c4d44bb3f9'
   '3f5f7b788f32f74f3ae97b4c0e43d66a7664a94e2fcf262ea2b049c03265403a'
   'a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa'
 )
