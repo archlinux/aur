@@ -1,5 +1,5 @@
 pkgname=foamshot-bin
-pkgver=v0.2.6
+pkgver=v0.2.7
 pkgrel=1
 pkgdesc="foamshot is wayland screenshot utility build by rust"
 arch=('x86_64')
