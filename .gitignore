@@ -1,0 +1,5 @@
+pkg
+src
+*.pkg.tar.*
+v8_killer
+*.log

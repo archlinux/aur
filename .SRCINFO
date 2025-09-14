@@ -1,0 +1,20 @@
+pkgbase = v8_killer-git
+	pkgdesc = A powerful and highly customizable universal V8 virtual machine injector.
+	pkgver = r84.gceff389
+	pkgrel = 1
+	url = https://shellwen.github.io/v8_killer/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	provides = v8_killer
+	conflicts = v8_killer
+	options = !lto
+	source = git+https://github.com/ShellWen/v8_killer.git
+	sha256sums = SKIP
+
+pkgname = v8_killer-git
