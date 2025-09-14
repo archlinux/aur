@@ -1,7 +1,7 @@
 # Maintainer: Luke Wilkinson <wilkinsonluke@proton.me>
 
 pkgname=fmp-bin
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple secure password manager written in rust."
 arch=('x86_64')
@@ -10,16 +10,24 @@ conflicts=('fmp-git')
 license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
 makedepends=('curl')
-source=("fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v${pkgver}/fmp-linux")
-sha512sums=('075ab22c04a307a38e396cbc03360f9158c1a93fea7fa6e1137bf4a454073c0a8416ee642da75940379c2b3b8551a6698eff624313b7944bb4607edfebef13e4')
+source=(
+  "fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v${pkgver}/fmp-linux"
+  "com.fmp.desktop::https://codeberg.org/lwilko/fmp/raw/branch/main/data/com.fmp.desktop"
+  "com.fmp.svg::https://codeberg.org/lwilko/fmp/raw/branch/main/data/com.fmp.svg"
+  "LICENSE::https://codeberg.org/lwilko/fmp/raw/branch/main/LICENSE"
+  "README.md::https://codeberg.org/lwilko/fmp/raw/branch/main/README.md"
+)
+sha512sums=('abe00aa8ae2165311896fc3f6ae338b5670ac64d5f330c0cd5abe362c192fd2c1ae23e8a8072864dcf14e8d6d5df8e5de1d0aed236e28993c58cbde2247a1695' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-build() {
-  curl -fsSL https://codeberg.org/lwilko/fmp/src/branch/main/LICENSE > LICENSE
-  curl -fsSL https://codeberg.org/lwilko/fmp/src/branch/main/README.md > README.md
-}
 package() {
-  install -Dm755 "fmp-linux" "$pkgdir/usr/bin/fmp"
+  install -Dm755 "$srcdir/fmp-linux" "$pkgdir/usr/bin/fmp"
 
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "$srcdir/com.fmp.desktop" \
+    "$pkgdir/usr/share/applications/com.fmp.desktop"
+
+  install -Dm644 "$srcdir/com.fmp.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.fmp.svg"
+
+  install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

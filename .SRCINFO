@@ -1,6 +1,6 @@
 pkgbase = fmp-bin
 	pkgdesc = A simple secure password manager written in rust.
-	pkgver = 1.4.6
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://codeberg.org/lwilko/fmp
 	arch = x86_64
@@ -9,7 +9,15 @@ pkgbase = fmp-bin
 	depends = gpgme
 	depends = libgpg-error
 	conflicts = fmp-git
-	source = fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v1.4.6/fmp-linux
-	sha512sums = 0a67b3abcbe598c81a800ebc381025f9ab2fd430b2575372be0f502e2af4e0b6825a8b369e02c511b39f95b0df819748446b7c6fe4e71fb67a1a06a6eb67797b
+	source = fmp-linux::https://codeberg.org/lwilko/fmp/releases/download/v1.5.0/fmp-linux
+	source = com.fmp.desktop::https://codeberg.org/lwilko/fmp/raw/branch/main/data/com.fmp.desktop
+	source = com.fmp.svg::https://codeberg.org/lwilko/fmp/raw/branch/main/data/com.fmp.svg
+	source = LICENSE::https://codeberg.org/lwilko/fmp/raw/branch/main/LICENSE
+	source = README.md::https://codeberg.org/lwilko/fmp/raw/branch/main/README.md
+	sha512sums = abe00aa8ae2165311896fc3f6ae338b5670ac64d5f330c0cd5abe362c192fd2c1ae23e8a8072864dcf14e8d6d5df8e5de1d0aed236e28993c58cbde2247a1695
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = fmp-bin
