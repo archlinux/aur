@@ -1,6 +1,6 @@
 pkgbase = untmp
 	pkgdesc = Take an tmplinux container and make it no longer temporary.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/TheOddCell/untmp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = untmp
 	depends = util-linux
 	depends = systemd
 	depends = squashfs-tools
-	source = https://github.com/tmplinux/untmp/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/tmplinux/untmp/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = untmp

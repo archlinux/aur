@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=untmp
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Take an tmplinux container and make it no longer temporary."
 arch=('any')
@@ -14,4 +14,5 @@ sha256sums=('SKIP')
 package() {
   cd "$srcdir/untmp-$pkgver" 
   install -Dm755 untmp "$pkgdir/usr/bin/untmp"
+  install -Dm755 qboot "$pkgdir/usr/bin/qboot"
 }
