@@ -4,8 +4,8 @@
 
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
-pkgver=5.2.5.r532.g7c034fb
-_tag=5.4
+pkgver=5.2.5.r843.g6579168
+_tag=5.7.1
 _name="${_pkgname}-git"
 pkgrel=1
 pkgdesc="Music score OMR engine - current"
@@ -13,7 +13,7 @@ arch=('any')
 url="https://github.com/Audiveris/$_pkgname"
 license=('AGPL3')
 depends=(
-  'java-runtime>=21'
+  'java-runtime>=24'
   'tesseract'
   'freetype2'
   'hicolor-icon-theme'
