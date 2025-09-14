@@ -1,7 +1,7 @@
 # Maintainer: ChadAPSheridan <your-email@example.com>
 
 pkgname=rivalcfg-tray
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A GTK-based GUI for Rivalcfg tray indicator"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('GPL')
 depends=('gtk3' 'libayatana-appindicator' 'hidapi' 'rivalcfg' 'librsvg')
 makedepends=('cargo' 'rust')
 # Use GitHub release tarball (uploaded by the workflow)
-source=("https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v0.9.0/RivalCfgGuiGTK-0.9.0.tar.gz")
-sha256sums=(f3c0b5cca8274221487dde6895e13dcc538b9edfb4172f5eec7e8862d1de451d)  # Replace with the actual checksum
+source=("https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v0.9.1/RivalCfgGuiGTK-0.9.1.tar.gz")
+sha256sums=(b06823cde9ff136571a987720e185ea27fdc828c4fce79557d1705833acdc73c)  # Replace with the actual checksum
 
 build() {
   cd "$srcdir/RivalCfgGuiGTK-$pkgver"
