@@ -1,0 +1,4 @@
+[winboat-bin]
+source = "git"
+git = "https://github.com/TibixDev/winboat.git"
+prefix = "v"
