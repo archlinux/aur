@@ -1,6 +1,6 @@
 # Maintainer: Lunix (David Hess) <davidhess336@gmx.de>
 pkgname='dimethoxy-disflux-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Transient Smearing Audio Effect for VST3, LV2 and CLAP compatible hosts"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Dimethoxy/Disflux"
 license=('GPL3')
 provides=('dimethoxy-disflux')
 source=("https://github.com/Dimethoxy/Disflux/releases/download/v$pkgver/disflux-v$pkgver-linux-vanilla.zip")
-sha256sums=('56f419f8f29c8a5e7c6e6638e47f6ba32d46e0a463c3e6c711ca53b15dc851c7')
+sha256sums=('8e022b4dab7a04c6941b5ebd167ec287a32caec6c41b39be70fe25c5c78db617')
 
 package() {
   # Define new directories
