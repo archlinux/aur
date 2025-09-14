@@ -1,2 +1,3 @@
-PerlX-Assert-*.tar.gz
-perl-perlx-assert-*.log
+/PerlX-Assert-*.tar.gz
+/perl-perlx-assert-*.log
+/src/
