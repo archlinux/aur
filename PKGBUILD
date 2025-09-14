@@ -1,7 +1,7 @@
 # Maintainer: wintrx1155 <wintrx1155@proton.me>
 
 pkgname=clara-verse
-pkgver=0.1.46
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A privacy-first, All in one AI workspace featuring LLMs, ComfyUI, n8n, and more"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('clara-verse')
 conflicts=('clara-verse')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/badboysm890/ClaraVerse/archive/refs/tags/v${pkgver}.tar.gz"
         "clara-verse.desktop")
-sha256sums=('98af758708fa469726b4f39d4c7862528f942075496970384d50cb2878fd0a22'
+sha256sums=('6914fe79f0802670874a96b4541be04577a82e8dc400409f6151ae6dc8f86c58'
             '61d260b4f6d79bf09311cd026ef4cdcba0c49b3857bc5bbeed30885d00423ad3')
 
 prepare() {

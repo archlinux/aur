@@ -1,6 +1,6 @@
 pkgbase = clara-verse
 	pkgdesc = A privacy-first, All in one AI workspace featuring LLMs, ComfyUI, n8n, and more
-	pkgver = 0.1.46
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/badboysm890/ClaraVerse
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = clara-verse
 	optdepends = ollama: For local LLM support
 	provides = clara-verse
 	conflicts = clara-verse
-	source = clara-verse-0.1.46.tar.gz::https://github.com/badboysm890/ClaraVerse/archive/refs/tags/v0.1.46.tar.gz
+	source = clara-verse-0.2.0.tar.gz::https://github.com/badboysm890/ClaraVerse/archive/refs/tags/v0.2.0.tar.gz
 	source = clara-verse.desktop
-	sha256sums = 98af758708fa469726b4f39d4c7862528f942075496970384d50cb2878fd0a22
+	sha256sums = 6914fe79f0802670874a96b4541be04577a82e8dc400409f6151ae6dc8f86c58
 	sha256sums = 61d260b4f6d79bf09311cd026ef4cdcba0c49b3857bc5bbeed30885d00423ad3
 
 pkgname = clara-verse
