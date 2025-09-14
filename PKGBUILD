@@ -1,7 +1,7 @@
 # Maintainer: Maxim De Clercq <maximdeclercq00@gmail.com>
 
 pkgname=cmsis-toolbox
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="CMSIS Toolbox for ARM Cortex-M software development"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "cmsis-toolbox-linux-amd64.tar.gz::https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases/download/$pkgver/cmsis-toolbox-linux-amd64.tar.gz"
   "cmsis-toolbox.sh"
 )
-sha256sums=('1240b8f612708366baa2521e8abe93e73158a34088c18f0914829912ccf26077'
+sha256sums=('b56106265e622e211241384388d7aa1293339833181131761f1d1485d0496800'
             'ec235e9755441204824c02334a1851bcbde687e660beb9ccf9e1edbff7541422')
 
 package() {
