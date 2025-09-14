@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-pkcs11
 _name=${pkgname#python-}
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Signature Provider plugin for SPSDK using PKCS#11 interface"
 arch=(any)
@@ -24,12 +24,13 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('8eb896ccd2f3623f2bfe620f1dd5740edb41c3352e24ae1ce9498257ef87fba409a9d2520de3c9f3b079f1018891b5bdedc597cc863f70cc1a83626b4c058822')
+sha512sums=('422e82f412bfd8b395f118a39389c203ceef24b6a744a42f6b35224d1f8c8a08681b1c8fbf568a3d912d8d6ed027eddfe35ffe75981ce5881ee572ed48b69e2e')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
