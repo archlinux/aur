@@ -1,29 +1,26 @@
-# Maintainer: Sir-Photch < sir-photch ate posteo dote me >
+# Contributor: Sir-Photch < sir-photch ate posteo dote me >
 # PKGBUILD adapted from mautrix-telegram
 
 pkgname=mautrix-linkedin-git
 _pkgname=mautrix-linkedin
-pkgver=0.5.4.r94.g169f1ab
-pkgrel=2
+pkgver=0.5.4.r115.gcb37838
+pkgrel=1
 pkgdesc="A LinkedIn Messaging Matrix Bridge"
 url="https://github.com/beeper/linkedin"
 depends=(
 	'python' 
 	'python-asyncpg' 
-	'python-ruamel-yaml'
+	'python-attrs'
 	'python-magic' 
-	'python-commonmark' 
 	'python-aiohttp' 
 	'python-yarl'
 	'python-mautrix'
 	'python-beautifulsoup4'
 	'python-dataclasses-json'
-	'python-pycryptodome'
 )
 makedepends=(
 	'git'
 	'python-setuptools' 
-	'python-pytest-runner'
 )
 optdepends=(
 	'python-pysocks: proxy'
