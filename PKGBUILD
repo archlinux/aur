@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pyocd
 _name=${pkgname#python-}
 pkgver=0.3.3
-pkgrel=5
+pkgrel=7
 pkgdesc="PyOCD SW Debugger. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/spsdk-pyocd"
@@ -31,6 +31,7 @@ checkdepends=(
 optdepends=(
   'stlink: for stlink device detection via udev'
 )
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
