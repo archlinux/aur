@@ -5,8 +5,8 @@
 # Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-sqlite
-_srcver=3500300
-pkgver=3.50.3
+pkgver=3.50.4
+_srcver=$(echo "$pkgver" | awk -F. '{ printf "%d%02d%02d00", $1, $2, $3 }')
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 source=(https://www.sqlite.org/2025/sqlite-src-${_srcver}.zip)
-sha256sums=('119862654b36e252ac5f8add2b3d41ba03f4f387b48eb024956c36ea91012d3f')
+sha256sums=('b7b4dc060f36053902fb65b344bbbed592e64b2291a26ac06fe77eec097850e9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _cflags=(
@@ -25,7 +25,6 @@ _cflags=(
   -DSQLITE_ENABLE_COLUMN_METADATA=1
   -DSQLITE_ENABLE_UNLOCK_NOTIFY
   -DSQLITE_ENABLE_DBSTAT_VTAB=1
-  -DSQLITE_ENABLE_FTS3_TOKENIZER=1
   -DSQLITE_ENABLE_FTS3_PARENTHESIS
   -DSQLITE_SECURE_DELETE
   -DSQLITE_ENABLE_STMTVTAB
@@ -48,7 +47,7 @@ build() {
 
     # remove '--target=...' from mingw's configure
     bash <(sed 's/--target[^ ]* //' $(command -v "${_arch}-configure")) \
-      --fts3 \
+      --enable-fts3 \
       --fts4 \
       --fts5 \
       --rtree \
