@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.chadapsheridan.rivalcfgtray</id>
+  <name>RivalCfg Tray</name>
+  <summary>System tray application for SteelSeries mouse configuration</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>
+      RivalCfg Tray is a system tray application that provides easy access to SteelSeries mouse configuration.
+      It displays battery status and allows quick access to mouse settings directly from your system tray.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>System tray icon showing battery level</li>
+      <li>Quick access to mouse settings</li>
+      <li>Wayland compatibility</li>
+      <li>GTK4-based interface</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Battery status in system tray</caption>
+      <image>https://raw.githubusercontent.com/ChadAPSheridan/RivalCfgGuiGTK/main/screenshots/tray.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/ChadAPSheridan/RivalCfgGuiGTK</url>
+  <url type="bugtracker">https://github.com/ChadAPSheridan/RivalCfgGuiGTK/issues</url>
+  <developer_name>Chad Sheridan</developer_name>
+  <releases>
+    <release version="0.9.0" date="2025-09-14">
+      <description>
+        <p>Initial release of RivalCfg Tray</p>
+        <ul>
+          <li>System tray integration</li>
+          <li>Battery level monitoring</li>
+          <li>Basic mouse configuration</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
+</component>

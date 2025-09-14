@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=RivalCfg Tray
+Comment=SteelSeries Mouse Tray & Config GUI
+Exec=rivalcfg-tray
+Icon=io.github.chadapsheridan.rivalcfgtray
+Terminal=false
+Categories=Utility;

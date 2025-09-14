@@ -1,0 +1,18 @@
+pkgbase = rivalcfg-tray
+	pkgdesc = A GTK-based GUI for Rivalcfg tray indicator
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/ChadsAPSheridan/RivalCfgGuiGTK
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = rust
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hidapi
+	depends = rivalcfg
+	depends = librsvg
+	source = rivalcfg-tray-0.9.0.tar.gz::https://github.com/ChadsAPSheridan/RivalCfgGuiGTK/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 904e9a7cd7ab6e59df99fff425af99c9f6222e15f0275a9dc8cbdd666c9f6e87
+
+pkgname = rivalcfg-tray
