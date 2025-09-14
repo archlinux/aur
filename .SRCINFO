@@ -1,7 +1,7 @@
 pkgbase = gemini-cli-bin
 	pkgdesc = An open-source AI agent that brings the power of Gemini directly into your terminal.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google-gemini/gemini-cli
 	arch = any
 	license = Apache-2.0
