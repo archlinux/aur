@@ -1,0 +1,19 @@
+pkgbase = python-lauterbach-trace32-pystart
+	pkgdesc = start Lauterbach TRACE32
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/lauterbach-trace32-pystart
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = lauterbach-trace32-pystart
+	conflicts = lauterbach-trace32-pystart
+	replaces = lauterbach-trace32-pystart
+	source = lauterbach-trace32-pystart-0.4.0.tar.gz::https://files.pythonhosted.org/packages/source/l/lauterbach-trace32-pystart/lauterbach-trace32-pystart-0.4.0.tar.gz
+	sha512sums = 607cb189b8360f516860abafe2a6f2a0f9efaf1a3cd12dd525cd5b5bd4612860807871715ceaee6bf7c5b9c10a9c5d3617e833865909e42049487c2568288970
+
+pkgname = python-lauterbach-trace32-pystart
