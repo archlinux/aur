@@ -1,32 +1,62 @@
-# Maintainer: éclairevoyant
+# Maintainer:
+# Contributor: éclairevoyant
 
-pkgname=s2geometry
-pkgver=0.10.0
+_pkgname="s2geometry"
+pkgname="$_pkgname"
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A library for manipulating geometric shapes"
+url="https://github.com/google/s2geometry"
+license=('Apache-2.0')
 arch=("x86_64" "aarch64")
-url="https://s2geometry.io/"
-license=(Apache)
-depends=(abseil-cpp gcc-libs openssl)
-makedepends=(cmake)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        0007-Fix-DCMAKE_CXX_STANDARD-ignored-by-CMakeLists-273.patch)
-b2sums=('c5beef41f0d7a68be2242901d58107dfb303ddce7ab5cc0cd292cc20affdcca5fc0c7fdec2282861f62c3dc3577b2fb5ebc83bb33ae56da7e5d3e9a3e9127c10'
-        '64bc0593be906d7c56bccc669f898bf4d79797b7239e08d04deb133ebb2fe86a798ab725c796f21bce0ba85d14aa1cc27c32f4507fe81c7040105bae374d3072')
+
+depends=(
+  'abseil-cpp'
+  'openssl'
+)
+makedepends=(
+  'cmake'
+  'python'
+  'ninja'
+)
+
+provides=('libs2.so')
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=(
+  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
+  "nullability_deprecated-9d51fa7.h"::"https://github.com/abseil/abseil-cpp/raw/9d51fa78353589138570e03a89601da24ebbc099/absl/base/internal/nullability_deprecated.h"
+)
+sha256sums=(
+  'c09ec751c3043965a0d441e046a73c456c995e6063439a72290f661c1054d611'
+  'c8d3f503d09425ef1d5cc2fe1d69633ce36c31921705dbd71bb07497960d59b0'
+)
 
 prepare() {
-	cd $pkgname-$pkgver
-	patch -Np1 -i ../0007-Fix-DCMAKE_CXX_STANDARD-ignored-by-CMakeLists-273.patch
+  # https://github.com/abseil/abseil-cpp/commit/e4c43850ad008b362b53622cb3c88fd915d8f714
+  cp "nullability_deprecated-9d51fa7.h" "$_pkgsrc/src/s2/nullability_deprecated.h"
+  sed '1i #include "nullability_deprecated.h"' -i \
+    "$_pkgsrc/src/s2/s2density_tree.h" \
+    "$_pkgsrc/src/s2/s2edge_tessellator.h"
 }
 
 build() {
-	cmake -B build -S $pkgname-$pkgver \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_CXX_STANDARD=17 # use the same C++ standard as abseil-cpp
-	make -C build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DBUILD_TESTS=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }

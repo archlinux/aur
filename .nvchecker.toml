@@ -1,0 +1,4 @@
+[s2geometry]
+source = "git"
+git = "https://github.com/google/s2geometry.git"
+prefix = "v"
