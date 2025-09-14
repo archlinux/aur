@@ -4,7 +4,7 @@ _pkgauthor=steganogram
 _pkgname=stegano-rs
 _appname=${_pkgname%-rs}
 pkgname=${_pkgname%-rs}-bin
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A CLI tool for steganography. Supports hiding data in PNG and WAV format via LSB Encoding."
 arch=('x86_64' 'aarch64')
@@ -22,10 +22,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_appname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_appname}-v${pkgver}-${arch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'b685ba5b60e2d0505b7a4974349ae2b44330f3d88de10b499bc8ad6e549b0dd4'
+            '5abd67e58915b32aa1f38dbe42b5658a1c1aad76db12b2a163685f80b2a83a37'
             '05bbf2d49abe5e72b28ffce945e7c49e887960076fc9b3dda5c962a3040f1e93')
-sha256sums_x86_64=('389d9382f93d1c76df46bf6d6065dce9a7bd1302f115b40f641c13dd73e19d9c')
-sha256sums_aarch64=('f934637ebfd7c4d6dc79b2ac5e128206ba127aec14a77e60b632d94c3abf565b')
+sha256sums_x86_64=('e9993faca49f7987a98c38fc3c29dedd2d95be255d3192d7dab92fddbac6b262')
+sha256sums_aarch64=('d694f754972061d8aef94a4cbe0d3651e4c238662c900acdf391edc7bde7090b')
 
 
 build() {
