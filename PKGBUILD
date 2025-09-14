@@ -25,10 +25,12 @@ depends=(
   'dconf'
   'cairo'
 )
-makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'git' 'glib2-devel')
+makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'git' 'glib2-devel' 'blueprint-compiler')
 optdepends=('krunner-bazaar: krunner integration')
+
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
+
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c0d9420cf7ba276dd9d4ddd13e76dac3ce4c14cb68133dabe16a0f5257eeff09')
 
