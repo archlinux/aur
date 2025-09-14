@@ -1,5 +1,5 @@
 pkgname=mpv-uosc
-pkgver=5.11.0
+pkgver=5.12.0
 pkgrel=1
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("x86_64")
@@ -8,7 +8,7 @@ license=("LGPL-2.1-or-later")
 optdepends=("mpv-thumbfast: for showing thumbnails on-the-fly on seek")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tomasklaen/uosc/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('59381356dcf2b9c7416cb92db7c98411f84631099c58201939af3cfaf8f1e927')
+sha256sums=('a84476d6826406f1eb0815c2ce0c1318858f18de8d77c47b4387175641a13ba9')
 
 prepare(){
     cd "${srcdir}/uosc-${pkgver}"
