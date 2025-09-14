@@ -1,9 +1,9 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-git
-pkgver=5.0.r85.g09691b873
+pkgver=5.1.r14.gb490e2fe9
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
-arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64') # use 86box-5.1 for pentium4 and armv7h
 url='https://86box.net/'
 license=('GPL-2.0-or-later')
 depends=('fluidsynth' 'hicolor-icon-theme' 'libserialport' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2
 optdepends=(
     '86box-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
-	'ghostscript: Printing with Generic PostScript Printer'
+    'ghostscript: Printing with Generic PostScript Printer'
     'libpcap: Networking not limited to TCP/IP'
 )
 provides=('86box')
@@ -27,13 +27,14 @@ pkgver() {
 }
 
 build() {
-    case "$CARCH" in
-        pentium4) _NDR=off; _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
-        x86_64)   _NDR=off; _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
-        armv7h)   _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
-        aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
-    esac
-    LDFLAGS='-z now -z shstk' cmake -S$pkgname -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR" -DEMU_GIT_HASH="$(GIT_DIR=86box-git/.git git rev-parse --short HEAD)"
+	if [ "$CARCH" = x86_64 ]
+	then
+		_NDR=off
+	else
+		_NDR=on
+	fi
+
+    LDFLAGS='-z now -z shstk' cmake -S$pkgname -Bbuild --preset regular --toolchain "cmake/flags-gcc-${CARCH}.cmake" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR" -DEMU_GIT_HASH="$(GIT_DIR=86box-git/.git git rev-parse --short HEAD)"
     cmake --build build
 }
 
