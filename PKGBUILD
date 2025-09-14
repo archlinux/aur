@@ -1,13 +1,13 @@
 # Maintainer: Kevin Schoon <kevinschoon@pm.me>
 _pkgname=pomo
 pkgname=${_pkgname}-git
-pkgver=r135.eb08755
+pkgver=r182.ce6a267
 pkgrel=1
 pkgdesc='Pomodoro Command Line Interface'
-url='https://github.com/kevinschoon/pomo'
+url='https://codeberg.org/kevinschoon/pomo'
 arch=(x86_64 aarch64)
 license=('MIT')
-source=("$pkgname::git+https://github.com/kevinschoon/pomo")
+source=("$pkgname::git+https://codeberg.org/kevinschoon/pomo")
 sha512sums=('SKIP')
 makedepends=('git' 'go')
 conflicts=('pomo')
