@@ -1,0 +1,23 @@
+pkgbase = python-spsdk-pkcs11
+	pkgdesc = Signature Provider plugin for SPSDK using PKCS#11 interface
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://pypi.org/project/spsdk-pkcs11
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-asn1crypto
+	depends = python-python-pkcs11
+	depends = python-spsdk
+	depends = pyinstaller
+	provides = spsdk-pkcs11
+	conflicts = spsdk-pkcs11
+	replaces = spsdk-pkcs11
+	source = spsdk_pkcs11-0.3.3.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk_pkcs11/spsdk_pkcs11-0.3.3.tar.gz
+	sha512sums = 8eb896ccd2f3623f2bfe620f1dd5740edb41c3352e24ae1ce9498257ef87fba409a9d2520de3c9f3b079f1018891b5bdedc597cc863f70cc1a83626b4c058822
+
+pkgname = python-spsdk-pkcs11
