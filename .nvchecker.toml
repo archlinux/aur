@@ -1,0 +1,4 @@
+[lerc-bin]
+source = "git"
+git = "https://github.com/Esri/lerc.git"
+prefix = "v"
