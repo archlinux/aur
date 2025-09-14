@@ -1,7 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=breathing
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Relax and meditate"
 arch=(x86_64)
@@ -22,7 +22,7 @@ python-gobject
 makedepends=(meson)
 checkdepends=('appstream-glib')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('1eed3b8b6e17135bd1e2c55c2a5f07cba298b93614e1005e157c9e404c7fc695ebb27b74d579306942a34f870e7b5554d03b5223881dc30da1375fd3beb8b6a1')
+sha512sums=('9497af224aef659cb81734ed3405b8f520cff08b52567aece2cacc62bf363ed06a2fcfbb0c5e3953d39ff8ec84fe8aea742d4906973db691984e964ab1caacc5')
 
 build() {
 	arch-meson Breathing-$pkgver build
