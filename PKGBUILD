@@ -1,6 +1,6 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=8.38
+pkgver=9.00
 pkgrel=1
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
@@ -14,14 +14,16 @@ source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/cubicdaiya/dtl
         ldflags-adjustments.patch
         fix-finding-hdr10plus.patch
-        use-system-AMF-headers.patch)
-sha256sums=('31d060e202591507742e35208368c35f16b07beb3fa8bfc69630bdbdabb5a544'
+        use-system-AMF-headers.patch
+        fix-build-with-opencl-headers-2025.07.22.patch)
+sha256sums=('1945d5c69811f5b96ff9c950f91dd0adeabb66a3ad4377d48b9eb1d879dc79e3'
             'SKIP'
             'SKIP'
             'SKIP'
             '8e6a15e88584bf1bdaa931d010c877b627c706086e449da141dedde95efc8aa4'
             '58d3b689ef7fa067d5023c44793774661bf12d65514e69136dfc79fc102bd771'
-            '6a220c869f96750231b87c82faa485a38a715055b09a1de427e8b216e316390f')
+            '6a220c869f96750231b87c82faa485a38a715055b09a1de427e8b216e316390f'
+            '70cdf3cc97e953ddda1010aceca52afeee4ae970b3b7c09f7275810e7ead8d93')
 
 prepare() {
   cd $_UpstreamPkgName
@@ -35,6 +37,7 @@ prepare() {
   patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
   patch --forward --strip=1 --input="${srcdir}/fix-finding-hdr10plus.patch"
   patch --forward --strip=1 --input="${srcdir}/use-system-AMF-headers.patch"
+  patch --forward --strip=1 --input="${srcdir}/fix-build-with-opencl-headers-2025.07.22.patch"
 }
 
 build() {
