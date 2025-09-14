@@ -1,7 +1,7 @@
 # Maintainer: XielQ <offical.gamerboytr@yandex.com>
 pkgname=bombkurdistan-git
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc='A simple game where you can bomb kurdistan'
 arch=('x86_64')
 url='https://github.com/XielQs/BombKurdistan'
