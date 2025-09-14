@@ -1,11 +1,11 @@
 pkgbase = it-tools-web
 	pkgdesc = Collection of handy online tools for developers, with great UX
-	pkgver = 2025.8.6_0325b117
+	pkgver = 2025.8.31_13b8f041
 	pkgrel = 1
 	url = https://github.com/sharevb/it-tools
 	arch = any
 	license = GPL-3.0-only
-	source = https://github.com/sharevb/it-tools/releases/download/v2025.8.6-0325b117/it-tools-2025.8.6-0325b117.zip
-	b2sums = c863cbd6c6467d329ffdbf27d6668ed126bb72c187252e6bdd52cd82ccca98fed49cada013e31e722045f44024bd3454f24b292bd048d9e988bc12c729509d47
+	source = https://github.com/sharevb/it-tools/releases/download/v2025.8.31-13b8f041/it-tools-2025.8.31-13b8f041.zip
+	b2sums = a01e6e189fb608f22a3fbc1d4b00c439eb93b6520de5baf909d855ccfe70d83420ebd6c761740e99bad968ebc093c193dd063264938c6048377f1a5dee94b9a6
 
 pkgname = it-tools-web
