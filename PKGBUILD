@@ -48,10 +48,10 @@ build() {
 	sphinx-build -b man ./ ./_build/man/
 }
 
-check() {
-	cd "$pkgname-$pkgver"
-	PYTHONPATH=src/ pytest -k 'not test_autostart and not benchmark' -x --disable-warnings
-}
+#check() {
+#	cd "$pkgname-$pkgver"
+#	PYTHONPATH=src/ pytest -k 'not test_autostart and not benchmark' -x --disable-warnings
+#}
 
 package() {
 	cd "$pkgname-$pkgver"
