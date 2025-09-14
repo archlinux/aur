@@ -1,12 +1,7 @@
-# Maintainer: TTsdzb <ttsdzb at outlook dot com>
-# Maintainer: Jia Yin<lok-ation at outlook dot com>
-# Contributor: Rowisi < nomail <at> private <dot> com >
-# Contributor: So1ar <so1ar114514@gmail.com>
-# Contributor: Bot-wxt1221 <3264117476@qq.com>
-
 pkgname=hmcl-pr-bin
-pkgver=3.6.unofficial_657410b
-pkgrel=2
+pkgver=3.6.unofficial_c6e1af4
+_pkgver=3.6.unofficial-c6e1af4
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular | PR Collection"
 arch=('any')
 url="https://github.com/burningtnt/HMCL"
@@ -15,24 +10,24 @@ depends=('java-runtime' 'hicolor-icon-theme')
 conflicts=('hmcl' 'hmcl-bin' 'hmcl-dev-bin' 'hmcl-beta-bin')
 source=("hmcl-pr.desktop"
         "hmcl-pr-launch-script"
-        "${pkgname}-${pkgver//_/-}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/81837d0ae79f94d275462b07213f703b31a6ade4/HMCL-${pkgver//_/-}.jar")
+        "${pkgname}-${_pkgver}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/81837d0ae79f94d275462b07213f703b31a6ade4/HMCL-${_pkgver}.jar")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-noextract=("${pkgname}-${pkgver//_/-}-${pkgrel}.jar")
+noextract=("${pkgname}-${_pkgver}-${pkgrel}.jar")
 
 prepare() {
   # extract icons from jar
   # Thanks to @Misaka13514
   local _iconfile
   for _iconfile in icon.png icon@2x.png icon@4x.png icon@8x.png; do
-    jar -xf "${pkgname}-${pkgver//_/-}-${pkgrel}.jar" "assets/img/${_iconfile}"
+    jar -xf "${pkgname}-${_pkgver}-${pkgrel}.jar" "assets/img/${_iconfile}"
   done
 }
 
 package() {
-  install -Dm644 "${pkgname}-${pkgver//_/-}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+  install -Dm644 "${pkgname}-${_pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
   install -Dm755 "hmcl-pr-launch-script" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "hmcl-pr.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
