@@ -1,14 +1,14 @@
 # Maintainer: Felix Schindler <aut at felixschindler dot net>
 
 pkgname=keep-presence
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Moves the mouse on inactivity to emulate activity"
 arch=('any')
 url="https://github.com/carrot69/keep-presence/"
 license=('custom')
 depends=('python' 'python-pynput')
-source=(git+https://github.com/carrot69/keep-presence.git#commit=a6cf97405d154d2c0decbdb155aeb3c1bb305648)
+source=("git+https://github.com/carrot69/keep-presence.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
