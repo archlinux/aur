@@ -1,6 +1,6 @@
 pkgname=rustmius
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Full local Termius alternative for Linux"
 arch=('x86_64')
 url="https://github.com/Cleboost/Rustmius"
