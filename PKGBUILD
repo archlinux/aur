@@ -3,7 +3,7 @@
 pkgname=python-nxp-codecheck
 _name=${pkgname#python-}
 pkgver=0.3.13
-pkgrel=1
+pkgrel=3
 pkgdesc="Simple set of checking tools for accepting code quality for NXP python projects"
 arch=(any)
 url="https://pypi.org/project/${_name}"
@@ -13,6 +13,8 @@ depends=(
   python-click
   python-colorama
   python-defusedxml
+  python-gitpython
+  python-jinja
   python-packaging
   python-prettytable
   python-pygithub
@@ -28,6 +30,7 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
