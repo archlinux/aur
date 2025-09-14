@@ -1,14 +1,14 @@
 pkgbase = swaydim
 	pkgdesc = Dims your display using brightnessctl
 	pkgver = 1
-	pkgrel = 2
-	url = https://codeberg.org/fossdd/swaydim
+	pkgrel = 3
+	url = https://codeberg.org/achill/swaydim
 	arch = any
 	license = Unlicense
 	makedepends = git
 	depends = python
 	depends = brightnessctl
-	source = git+https://codeberg.org/fossdd/swaydim?tag=1
+	source = git+https://codeberg.org/achill/swaydim?tag=1
 	md5sums = SKIP
 
 pkgname = swaydim

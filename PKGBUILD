@@ -2,10 +2,10 @@
 
 pkgname=swaydim
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Dims your display using brightnessctl"
 arch=('any')
-url="https://codeberg.org/fossdd/swaydim"
+url="https://codeberg.org/achill/swaydim"
 license=('Unlicense')
 depends=('python' 'brightnessctl')
 makedepends=('git')
