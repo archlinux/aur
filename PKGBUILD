@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pylint-plugins
 _name=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=3
 pkgdesc="PyLint plugins coverity SPSDK-specific coding rules."
 arch=(any)
 url="https://pypi.org/project/${_name}"
@@ -21,6 +21,7 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
