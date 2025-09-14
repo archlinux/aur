@@ -3,7 +3,7 @@
 pkgname=python-spsdk-mcu-link
 _name=${pkgname#python-}
 pkgver=0.6.6
-pkgrel=5
+pkgrel=7
 pkgdesc="SPSDK MCU-Link. A debugger probe plugin for SPSDK supporting LPC-Link/MCU-Link from NXP."
 arch=(any)
 url="https://pypi.org/project/${_name}"
@@ -33,6 +33,7 @@ checkdepends=(
 optdepends=(
   'stlink: for stlink device detection via udev'
 )
+groups=(spsdk-plugins)
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
