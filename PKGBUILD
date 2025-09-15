@@ -8,7 +8,7 @@
 # 4. Build
 
 pkgname=modustoolbox-eclipse
-pkgver=2025.4.0.647
+pkgver=2025.8.0.775
 pkgrel=1
 pkgdesc="Custom Eclipse IDE for ModusToolbox development."
 arch=('x86_64')
@@ -17,14 +17,14 @@ depends=('alsa-lib' 'python' 'perl' 'libx11' 'glibc' 'libxtst' 'libxi' 'java-run
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.mtbeclipse"
 _source="mtbeclipse_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('1b56385b09117c4afa5f332a6954dff70b92e119df616828211be16c7407d27f')
+sha256sums=('f667951cbafc1e99578f7d3e3a94578f854187783105c6f35267306ae9e1762f')
 options=('!strip')
 
 
 prepare() {
     cd ${srcdir}
-    bsdtar -xf data.tar.xz -C ./
-    rm data.tar.xz
+    bsdtar -xf data.tar.zst -C ./
+    rm data.tar.zst
     mv ./opt/Tools/ModusToolboxEclipse ./opt/
     # Remove the empty directory
     rm -r ./opt/Tools
