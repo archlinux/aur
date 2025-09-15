@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.8.0
+pkgver=3.8.1
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('d86206b750d5c1b82e02e4a1e2a40391f2976f86cf7c7287cce93599eea46786'
+sha256sums=('ec8794f106593a49995e99c0a9ac18d4f376501de7717cb41bfb032f36ff42c2'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
@@ -34,7 +34,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
