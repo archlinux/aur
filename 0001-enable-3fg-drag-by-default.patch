@@ -1,17 +1,17 @@
-From 4852593c91a5dad1a473c374b67e6a7a764f1a30 Mon Sep 17 00:00:00 2001
-From: Jasper van Bourgognie <van.bourgognie@gmail.com>
-Date: Tue, 8 Apr 2025 20:51:51 +0200
-Subject: [PATCH 2/2] enable 3fg-drag by default
+From 0cf683c0f91b7dca32b2efe0d9f1e9ca421680d3 Mon Sep 17 00:00:00 2001
+From: Jasper van Bourgognie <jasper@knoop.je>
+Date: Mon, 15 Sep 2025 07:42:51 +0200
+Subject: [PATCH] enable 3fg-drag by default
 
 ---
  src/evdev-mt-touchpad-gestures.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/evdev-mt-touchpad-gestures.c b/src/evdev-mt-touchpad-gestures.c
-index 39880eff..a4108d83 100644
+index 72bc6f2e..d0c29ddb 100644
 --- a/src/evdev-mt-touchpad-gestures.c
 +++ b/src/evdev-mt-touchpad-gestures.c
-@@ -2147,7 +2147,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
+@@ -2135,7 +2135,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
  static enum libinput_config_3fg_drag_state
  tp_3fg_drag_default(struct tp_dispatch *tp)
  {
@@ -21,5 +21,5 @@ index 39880eff..a4108d83 100644
  
  static enum libinput_config_3fg_drag_state
 -- 
-2.47.1
+2.51.0
 

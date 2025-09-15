@@ -1,6 +1,6 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
-	pkgver = 1.28.1
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/libinput/libinput
 	arch = x86_64
@@ -19,14 +19,12 @@ pkgbase = libinput-three-finger-drag
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
 	optdepends = python-yaml: used by various tools
-	provides = libinput=1.28.1
+	provides = libinput=1.29.1
 	conflicts = libinput
-	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.28.1
-	source = 0001-gestures-fix-acceleration-in-3fg-drag.patch
-	source = 0002-enable-3fg-drag-by-default.patch
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.29.1
+	source = 0001-enable-3fg-drag-by-default.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	b2sums = SKIP
-	b2sums = ce6e69d41343dbbcee4757b174cf0fb9db6b2dd665a5b0ec248dbb5e76ac9afa38c599d65dc8e86f78475ec518c366a6358c2181a44e7fa629d28a62cf5db9b3
-	b2sums = 3332b93d09da6d1c0150c365257aee1f6be7d4ce961849a312e62113ade3eda3c1b01e916e6482f1023641055af3899cab70dee431ca4b2c61ae5d35d4329918
+	b2sums = 4cab0e36984cb4f08d1fcbe126e049b3b7906a98e37786dc1fdb2d84a0aa5bc748a181e1bd5c814b7d25503b6600f801dd3d9dc089096a4277dbe25d92825572
 
 pkgname = libinput-three-finger-drag

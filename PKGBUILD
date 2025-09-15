@@ -3,7 +3,7 @@
 
 _pkgname=libinput
 pkgname="$_pkgname-three-finger-drag"
-pkgver=1.28.1
+pkgver=1.29.1
 pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput/libinput"
@@ -20,30 +20,27 @@ optdepends=('gtk4: libinput debug-gui'
             'python-libevdev: libinput measure'
             'python-yaml: used by various tools')
 source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git?signed#tag=$pkgver"
-        0001-gestures-fix-acceleration-in-3fg-drag.patch
-        0002-enable-3fg-drag-by-default.patch
+        0001-enable-3fg-drag-by-default.patch
         )
 b2sums=('SKIP'
-        'ce6e69d41343dbbcee4757b174cf0fb9db6b2dd665a5b0ec248dbb5e76ac9afa38c599d65dc8e86f78475ec518c366a6358c2181a44e7fa629d28a62cf5db9b3'
-        '3332b93d09da6d1c0150c365257aee1f6be7d4ce961849a312e62113ade3eda3c1b01e916e6482f1023641055af3899cab70dee431ca4b2c61ae5d35d4329918'
+        '4cab0e36984cb4f08d1fcbe126e049b3b7906a98e37786dc1fdb2d84a0aa5bc748a181e1bd5c814b7d25503b6600f801dd3d9dc089096a4277dbe25d92825572'
         )
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
     cd $_pkgname
-    patch -Np1 -i "$srcdir/0001-gestures-fix-acceleration-in-3fg-drag.patch"
-    patch -Np1 -i "$srcdir/0002-enable-3fg-drag-by-default.patch"
+    patch -Np1 -i "$srcdir/0001-enable-3fg-drag-by-default.patch"
 }
 
 build() {
-  arch-meson $_pkgname build \
-    -D udev-dir=/usr/lib/udev \
-    -D documentation=false
-  meson compile -C build
+    arch-meson $_pkgname build \
+        -D udev-dir=/usr/lib/udev \
+        -D documentation=false
+    meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+    meson test -C build --print-errorlogs
 }
 
 package() {
