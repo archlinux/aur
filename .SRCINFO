@@ -1,0 +1,20 @@
+pkgbase = zig0.2-bin
+	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://ziglang.org
+	arch = x86_64
+	license = MIT
+	makedepends = minisign
+	provides = zig0.2
+	conflicts = zig0.2
+	source = zig-0.2.0-README.md::https://github.com/ziglang/zig/raw/refs/tags/0.2.0/README.md
+	source = zig-0.2.0-LICENSE::https://github.com/ziglang/zig/raw/refs/tags/0.2.0/LICENSE
+	sha256sums = a0ac3410325a38cd99ab640385748ae9a5dfea0c3cf621445d5819bc0639080d
+	sha256sums = 12043f8e6dfb42e979158fbecbbeeb0cf70d2721ea2864f627379331b95c58e6
+	source_x86_64 = https://ziglang.org/download/0.2.0/zig-linux-x86_64-0.2.0.tar.xz
+	source_x86_64 = https://ziglang.org/download/0.2.0/zig-linux-x86_64-0.2.0.tar.xz.minisig
+	sha256sums_x86_64 = 209c6fb745d42474c0a73d6f291c7ae3a38b6a1b6b641eea285a7f840cc1a890
+	sha256sums_x86_64 = SKIP
+
+pkgname = zig0.2-bin
