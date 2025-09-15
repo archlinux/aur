@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lotti-bin
 _pkgname=Lotti
-pkgver=0.9.645_3178
+pkgver=0.9.663_3263
 pkgrel=1
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('f75372280013889fd22897a9502204f62885448b5500619985d71fd563d52c18'
+sha256sums=('1c70707c14d2bfd8f1bb1e870246c4d360a0eeb317b2a9bce7240e194aac7479'
             '306adaeff6c8613e536db665d24cab8551b4a3774c5729492dd132dc690256c6'
             '6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7')
 prepare() {
