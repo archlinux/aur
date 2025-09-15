@@ -1,0 +1,15 @@
+pkgbase = route-rnd-svn
+	pkgdesc = free/open source, flexible, modular autorouter for Printed Circuit Boards
+	pkgver = r1531
+	pkgrel = 1
+	url = http://www.repo.hu/projects/route-rnd/
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = subversion
+	depends = glibc
+	provides = route-rnd
+	conflicts = route-rnd
+	source = svn://svn.repo.hu/route-rnd/trunk
+	sha256sums = SKIP
+
+pkgname = route-rnd-svn
