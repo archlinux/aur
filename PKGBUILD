@@ -4,7 +4,7 @@
 pkgname="orca-slicer-unstable-bin"
 pkgver=2.3.1_beta
 _pkgver=2.3.1-beta
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (versions including beta, release candidates and stable versions)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
