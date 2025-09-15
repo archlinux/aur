@@ -3,7 +3,7 @@
 
 pkgname=gwenhywfar-git
 pkgver=5.12.2+1+g2ffb0f3d
-pkgrel=1
+pkgrel=2
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
 url='https://www.aquamaniac.de/rdm/'
@@ -56,7 +56,7 @@ prepare() {
 build() {
   cd $_sourcedir
   GPGRT_CONFIG='/usr/bin/gpgrt-config' \
-    PATH="/usr/lib/qt6/bin:$PATH" \
+    PATH="/usr/lib/qt6:/usr/lib/qt6/bin:$PATH" \
     ./configure --prefix=/usr --sysconfdir=/etc --enable-system-certs --with-guis="gtk3 qt5"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make

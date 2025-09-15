@@ -1,7 +1,7 @@
 pkgbase = gwenhywfar-git
 	pkgdesc = OS abstraction functions for various projects
 	pkgver = 5.12.2+1+g2ffb0f3d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aquamaniac.de/rdm/
 	arch = x86_64
 	arch = i686
