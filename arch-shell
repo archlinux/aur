@@ -9,9 +9,11 @@
 
 set -euo pipefail
 
+DEBUG=false
 ARCHSHELL_DIR="${HOME}/.arch-shell"
 ARCHSHELL_STORE="${ARCHSHELL_DIR}/store"
 BASE_TEMPLATE="${ARCHSHELL_STORE}/base-template"
+SHARED_CACHE="${ARCHSHELL_DIR}/cache"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -34,8 +36,48 @@ spinner() {
   tput cnorm
 }
 
+debug_log() {
+    if [ "$DEBUG" = true ]; then
+        echo -e "${BLUE}[DEBUG]${NC} $*" >&2
+    fi
+}
+
+debug_run() {
+    local cmd="$*"
+    debug_log "Exécution: $cmd"
+    
+    if [ "$DEBUG" = true ]; then
+        eval "$cmd"
+        return $?
+    else
+        eval "$cmd" > /dev/null 2>&1
+        return $?
+    fi
+}
+
 usage() {
-    echo "Usage: $0 init | regen-base | create <env> | -S <env> <pkg...> | -R <env> <pkg...> | enter <env> | delete <env> | list | info <env> | export <env> <file> | import <file> <env> | run <env> <command> [options] | clean <env> [options] | snapshot <env> [options]"
+    echo "Usage: $0 [--debug] <command> [options]"
+    echo ""
+    echo "Options globales:"
+    echo "  --debug             Afficher les commandes et sorties en temps réel"
+    echo ""
+    echo "Commandes:"
+    echo "  init                Initialiser arch-shell"
+    echo "  regen-base          Régénérer le template de base"
+    echo "  create <env>        Créer un nouvel environnement"
+    echo "  -S <env> <pkg...>   Installer des paquets dans un environnement"
+    echo "  -R <env> <pkg...>   Supprimer des paquets d'un environnement"
+    echo "  enter <env>         Entrer dans un environnement"
+    echo "  delete <env>        Supprimer un environnement"
+    echo "  list                Lister tous les environnements"
+    echo "  info <env>          Afficher les informations d'un environnement"
+    echo "  export <env> <file> Exporter un environnement"
+    echo "  import <file> <env> Importer un environnement"
+    echo "  run <env> <command> Exécuter une commande dans un environnement"
+    echo "  clean <env>         Nettoyer un environnement"
+    echo "  snapshot <env>      Gérer les snapshots d'un environnement"
+    echo "  cache --stats       Afficher les statistiques du cache partagé"
+    echo "  cache --clean       Nettoyer le cache partagé"
     exit 1
 }
 
@@ -98,6 +140,92 @@ usage_clean() {
     echo "  $0 clean --all-envs                 # Nettoyer tous les environnements"
     echo "  $0 clean --all-envs --dry-run       # Aperçu pour tous les environnements"
     exit 1
+}
+
+init_shared_cache() {
+    debug_log "Initialisation du cache partagé dans $SHARED_CACHE"
+    mkdir -p "$SHARED_CACHE/pkg"
+    mkdir -p "$SHARED_CACHE/db"
+    
+    local stats_file="$SHARED_CACHE/cache-stats.json"
+    if [ ! -f "$stats_file" ]; then
+        cat > "$stats_file" << EOF
+{
+  "created": "$(date -Iseconds)",
+  "total_downloads": 0,
+  "cache_hits": 0,
+  "total_size": 0,
+  "packages_count": 0,
+  "last_updated": "$(date -Iseconds)"
+}
+EOF
+        debug_log "Fichier de statistiques du cache créé"
+    fi
+}
+
+update_cache_stats() {
+    local stats_file="$SHARED_CACHE/cache-stats.json"
+    local pkg_count=$(find "$SHARED_CACHE/pkg" -name "*.pkg.tar.*" 2>/dev/null | wc -l || echo "0")
+    local total_size=$(du -sb "$SHARED_CACHE/pkg" 2>/dev/null | awk '{print $1}' || echo "0")
+    
+    if [ -f "$stats_file" ] && command -v jq >/dev/null 2>&1; then
+        jq ".packages_count = $pkg_count | .total_size = $total_size | .last_updated = \"$(date -Iseconds)\"" "$stats_file" > "${stats_file}.tmp" && mv "${stats_file}.tmp" "$stats_file"
+    fi
+}
+
+track_cache_hit() {
+    local pkg="$1"
+    local stats_file="$SHARED_CACHE/cache-stats.json"
+    
+    if find "$SHARED_CACHE/pkg" -name "${pkg}-*.pkg.tar.*" -type f 2>/dev/null | head -1 | grep -q .; then
+        echo -e "${GREEN}[*] Cache hit pour ${pkg}${NC}"
+        
+        if [ -f "$stats_file" ] && command -v jq >/dev/null 2>&1; then
+            local hits=$(jq -r '.cache_hits // 0' "$stats_file" 2>/dev/null || echo "0")
+            if [ "$hits" != "null" ] && [ -n "$hits" ]; then
+                jq ".cache_hits = $((hits + 1))" "$stats_file" > "${stats_file}.tmp" && mv "${stats_file}.tmp" "$stats_file" 2>/dev/null || true
+            fi
+        fi
+        return 0
+    fi
+    return 1
+}
+
+track_download() {
+    local stats_file="$SHARED_CACHE/cache-stats.json"
+    local packages_count="$1"
+    
+    if [ -f "$stats_file" ] && command -v jq >/dev/null 2>&1; then
+        local downloads=$(jq -r '.total_downloads // 0' "$stats_file" 2>/dev/null || echo "0")
+        if [ "$downloads" != "null" ] && [ -n "$downloads" ]; then
+            jq ".total_downloads = $((downloads + packages_count))" "$stats_file" > "${stats_file}.tmp" && mv "${stats_file}.tmp" "$stats_file" 2>/dev/null || true
+        fi
+    fi
+}
+
+show_cache_stats() {
+    local stats_file="$SHARED_CACHE/cache-stats.json"
+    local cache_size=$(du -sh "$SHARED_CACHE/pkg" 2>/dev/null | awk '{print $1}' || echo "0")
+    local pkg_count=$(find "$SHARED_CACHE/pkg" -name "*.pkg.tar.*" 2>/dev/null | wc -l || echo "0")
+    
+    echo -e "${BLUE}[*] Statistiques du cache partagé arch-shell :${NC}"
+    echo -e "${GREEN}  Paquets en cache : ${pkg_count}${NC}"
+    echo -e "${GREEN}  Taille du cache : ${cache_size}${NC}"
+    
+    if [ -f "$stats_file" ] && command -v jq >/dev/null 2>&1; then
+        local hits=$(jq -r '.cache_hits // 0' "$stats_file" 2>/dev/null || echo "0")
+        local downloads=$(jq -r '.total_downloads // 0' "$stats_file" 2>/dev/null || echo "0")
+        local created=$(jq -r '.created // "N/A"' "$stats_file" 2>/dev/null || echo "N/A")
+        
+        echo -e "${GREEN}  Cache hits : ${hits}${NC}"
+        echo -e "${GREEN}  Téléchargements : ${downloads}${NC}"
+        echo -e "${GREEN}  Créé le : ${created}${NC}"
+        
+        if [ "$downloads" -gt 0 ]; then
+            local hit_rate=$((hits * 100 / (hits + downloads)))
+            echo -e "${GREEN}  Taux de cache hits : ${hit_rate}%${NC}"
+        fi
+    fi
 }
 
 update_env_info() {
@@ -212,9 +340,7 @@ export_env() {
     
     echo -e "${BLUE}[*] Préparation de l'export de ${envname}...${NC}"
     
-    cp "$infofile" "${export_dir}/arch-shell-env.json"
-    
-    cat > "${export_dir}/metadata.json" << EOF
+    cat > "${envdir}/.arch-shell-export-metadata.json" << EOF
 {
   "arch_shell_version": "$(grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+' "$0" 2>/dev/null || echo 'unknown')",
   "export_date": "$(date -Iseconds)",
@@ -227,20 +353,15 @@ EOF
     
     local total_size
     total_size=$(sudo du -sb "$envdir" | awk '{print $1}')
-    echo -e "${BLUE}[*] Création de l'archive ($(numfmt --to=iec $total_size))...${NC}"
+    echo -e "${BLUE}[*] Création de l'archive optimisée ($(numfmt --to=iec $total_size))...${NC}"
     
     (
         cd "$envdir"
-        sudo tar cf - . | gzip > "${export_dir}/environment.tar.gz"
+        debug_run "sudo tar --zstd -cf '$export_file' ."
     ) &
-    spinner $! "Compression de l'environnement"
+    spinner $! "Compression directe avec zstd"
     
-    echo -e "${BLUE}[*] Finalisation de l'export...${NC}"
-    (
-        cd "$temp_dir"
-        tar czf "$export_file" export/
-    ) &
-    spinner $! "Création de l'archive finale"
+    rm -f "${envdir}/.arch-shell-export-metadata.json"
     
     local checksum
     checksum=$(sha256sum "$export_file" | awk '{print $1}')
@@ -274,50 +395,56 @@ import_env() {
     local temp_dir
     temp_dir=$(mktemp -d)
     
-    echo -e "${BLUE}[*] Vérification de l'archive...${NC}"
+    echo -e "${BLUE}[*] Vérification et extraction de l'archive optimisée...${NC}"
     
-    if ! tar xzf "$import_file" -C "$temp_dir" 2>/dev/null; then
-        echo -e "${RED}[!] Erreur lors de l'extraction de l'archive${NC}"
-        rm -rf "$temp_dir"
-        return 1
+    if tar --zstd -tf "$import_file" >/dev/null 2>&1; then
+        echo -e "${BLUE}[*] Archive zstd détectée (format optimisé)${NC}"
+        
+        mkdir -p "$envdir"
+        (
+            cd "$envdir"
+            debug_run "sudo tar --zstd -xf '$import_file'"
+        ) &
+        spinner $! "Extraction directe avec zstd"
+        
+        if [ -f "${envdir}/.arch-shell-export-metadata.json" ] && command -v jq >/dev/null 2>&1; then
+            echo -e "${BLUE}[*] Informations de l'archive :${NC}"
+            echo -e "${BLUE}    Archive :${NC} $(jq -r '.export_date' "${envdir}/.arch-shell-export-metadata.json" 2>/dev/null || echo 'unknown')"
+            echo -e "${BLUE}    Environnement :${NC} $(jq -r '.environment_name' "${envdir}/.arch-shell-export-metadata.json" 2>/dev/null || echo 'unknown')"
+            echo -e "${BLUE}    Exporté par :${NC} $(jq -r '.exported_by' "${envdir}/.arch-shell-export-metadata.json" 2>/dev/null || echo 'unknown')"
+            rm -f "${envdir}/.arch-shell-export-metadata.json"
+        fi
+        
+    else
+        echo -e "${BLUE}[*] Archive gzip détectée (ancien format)${NC}"
+        
+        if ! tar xzf "$import_file" -C "$temp_dir" 2>/dev/null; then
+            echo -e "${RED}[!] Erreur lors de l'extraction de l'archive${NC}"
+            rm -rf "$temp_dir"
+            return 1
+        fi
+        
+        local export_dir="${temp_dir}/export"
+        if [ ! -d "$export_dir" ] || [ ! -f "${export_dir}/environment.tar.gz" ]; then
+            echo -e "${RED}[!] Archive incomplète ou corrompue${NC}"
+            rm -rf "$temp_dir"
+            return 1
+        fi
+        
+        mkdir -p "$envdir"
+        (
+            cd "$envdir"
+            gzip -dc "${export_dir}/environment.tar.gz" | sudo tar xf -
+        ) &
+        spinner $! "Extraction de l'environnement (ancien format)"
+        
+        if [ -f "${export_dir}/arch-shell-env.json" ]; then
+            cp "${export_dir}/arch-shell-env.json" "${envdir}/.arch-shell-env"
+        fi
     fi
-    
-    local export_dir="${temp_dir}/export"
-    if [ ! -d "$export_dir" ]; then
-        echo -e "${RED}[!] Format d'archive invalide${NC}"
-        rm -rf "$temp_dir"
-        return 1
-    fi
-    
-    if [ ! -f "${export_dir}/metadata.json" ] || [ ! -f "${export_dir}/arch-shell-env.json" ] || [ ! -f "${export_dir}/environment.tar.gz" ]; then
-        echo -e "${RED}[!] Archive incomplète ou corrompue${NC}"
-        rm -rf "$temp_dir"
-        return 1
-    fi
-    
-    echo -e "${BLUE}[*] Informations de l'archive :${NC}"
-    if command -v jq >/dev/null 2>&1; then
-        echo -e "${BLUE}    Archive :${NC} $(jq -r '.export_date' "${export_dir}/metadata.json")"
-        echo -e "${BLUE}    Environnement :${NC} $(jq -r '.environment_name' "${export_dir}/metadata.json")"
-        echo -e "${BLUE}    Exporté par :${NC} $(jq -r '.exported_by' "${export_dir}/metadata.json")"
-    fi
-    
-    echo -e "${BLUE}[*] Import de l'environnement ${envname}...${NC}"
-    
-    mkdir -p "$envdir"
-    
-    (
-        cd "$envdir"
-        gzip -dc "${export_dir}/environment.tar.gz" | sudo tar xf -
-    ) &
-    spinner $! "Extraction de l'environnement"
-    
-    cp "${export_dir}/arch-shell-env.json" "${envdir}/.arch-shell-env"
     
     sudo chown -R $USER: "$envdir"
-    
     update_last_used "$envname"
-
     rm -rf "$temp_dir"
     
     echo -e "${GREEN}[*] Import terminé : environnement ${envname} créé${NC}"
@@ -332,7 +459,6 @@ clean_env() {
     local dry_run=false
     local all_envs=false
     
-    # Analyser les options
     shift 1
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -524,14 +650,14 @@ run_command() {
         echo -e "${BLUE}[*] Exécution du script ${script_file} dans ${envname}...${NC}"
         
         local script_name=$(basename "$script_file")
-        sudo mkdir -p "${envdir}/root"
-        sudo cp "$script_file" "${envdir}/root/${script_name}"
-        sudo chmod +x "${envdir}/root/${script_name}"
+        debug_run "sudo mkdir -p '${envdir}/root'"
+        debug_run "sudo cp '$script_file' '${envdir}/root/${script_name}'"
+        debug_run "sudo chmod +x '${envdir}/root/${script_name}'"
         
-        sudo arch-nspawn -c /var/cache/pacman/pkg "$envdir" /bin/bash -c "cd /root && ./${script_name}"
+        debug_run "sudo arch-nspawn -c '$SHARED_CACHE/pkg' '$envdir' /bin/bash -c 'cd /root && ./${script_name}'"
         local exit_code=$?
         
-        sudo rm -f "${envdir}/root/${script_name}"
+        debug_run "sudo rm -f '${envdir}/root/${script_name}'"
         
         if [ $exit_code -eq 0 ]; then
             echo -e "${GREEN}[*] Script exécuté avec succès${NC}"
@@ -549,9 +675,9 @@ run_command() {
         echo -e "${BLUE}[*] Exécution de '${command}' dans ${envname}...${NC}"
         
         if [ -n "$env_vars" ]; then
-            sudo arch-nspawn -c /var/cache/pacman/pkg "$envdir" /bin/bash -c "export $env_vars >/dev/null 2>&1; $command"
+            debug_run "sudo arch-nspawn -c '$SHARED_CACHE/pkg' '$envdir' /bin/bash -c 'export $env_vars >/dev/null 2>&1; $command'"
         else
-            sudo arch-nspawn -c /var/cache/pacman/pkg "$envdir" /bin/bash -c "$command"
+            debug_run "sudo arch-nspawn -c '$SHARED_CACHE/pkg' '$envdir' /bin/bash -c '$command'"
         fi
         
         local exit_code=$?
@@ -585,7 +711,7 @@ create_snapshot() {
         snapshot_name="$(date +%Y-%m-%d_%H-%M-%S)"
     fi
     
-    local snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+    local snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.zst"
     
     if [ -f "$snapshot_file" ]; then
         echo -e "${RED}[!] Le snapshot '${snapshot_name}' existe déjà${NC}"
@@ -596,7 +722,7 @@ create_snapshot() {
     
     (
         cd "${ARCHSHELL_DIR}" && \
-        tar -cJf "$snapshot_file" "${envname}" 2>/dev/null
+        debug_run "tar --zstd -cf '$snapshot_file' '${envname}'"
     ) &
     spinner $! "Création du snapshot"
     
@@ -626,7 +752,7 @@ list_snapshots() {
         exit 3
     fi
     
-    if [ ! -d "$env_snapshots_dir" ] || [ -z "$(ls -A "$env_snapshots_dir"/*.tar.xz 2>/dev/null)" ]; then
+    if [ ! -d "$env_snapshots_dir" ] || [ -z "$(ls -A "$env_snapshots_dir"/*.tar.{zst,xz} 2>/dev/null)" ]; then
         echo -e "${YELLOW}[*] Aucun snapshot trouvé pour l'environnement ${envname}${NC}"
         return
     fi
@@ -634,13 +760,20 @@ list_snapshots() {
     echo -e "${BLUE}📸 Snapshots pour l'environnement '${envname}':${NC}"
     
     local i=1
-    for snapshot_file in "$env_snapshots_dir"/*.tar.xz; do
+    for snapshot_file in "$env_snapshots_dir"/*.tar.{zst,xz}; do
         if [ -f "$snapshot_file" ]; then
-            local snapshot_name=$(basename "$snapshot_file" .tar.xz)
+            local snapshot_name=$(basename "$snapshot_file")
+            snapshot_name=${snapshot_name%.tar.*}
             local snapshot_size=$(du -h "$snapshot_file" | cut -f1)
             local snapshot_date=$(stat -c %y "$snapshot_file" | cut -d. -f1)
+            local format=""
+            if [[ "$snapshot_file" == *.tar.zst ]]; then
+                format=" (zstd)"
+            else
+                format=" (legacy xz)"
+            fi
             
-            echo -e "  ${GREEN}${i}.${NC} ${snapshot_name} - ${snapshot_size} (${snapshot_date})"
+            echo -e "  ${GREEN}${i}.${NC} ${snapshot_name} - ${snapshot_size} (${snapshot_date})${format}"
             ((i++))
         fi
     done
@@ -660,7 +793,7 @@ restore_snapshot() {
     local snapshot_file
     if [[ "$snapshot_name" =~ ^[0-9]+$ ]]; then
         local i=1
-        for file in "$env_snapshots_dir"/*.tar.xz; do
+        for file in "$env_snapshots_dir"/*.tar.{zst,xz}; do
             if [ -f "$file" ] && [ "$i" -eq "$snapshot_name" ]; then
                 snapshot_file="$file"
                 break
@@ -668,7 +801,13 @@ restore_snapshot() {
             ((i++))
         done
     else
-        snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+        if [ -f "${env_snapshots_dir}/${snapshot_name}.tar.zst" ]; then
+            snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.zst"
+        elif [ -f "${env_snapshots_dir}/${snapshot_name}.tar.xz" ]; then
+            snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+        else
+            snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.zst"
+        fi
     fi
     
     if [ ! -f "$snapshot_file" ]; then
@@ -691,9 +830,17 @@ restore_snapshot() {
     
     (
         cd "${ARCHSHELL_DIR}" && \
-        tar -xJf "$snapshot_file" 2>/dev/null
+        if [[ "$snapshot_file" == *.tar.zst ]]; then
+            debug_run "tar --zstd -xf '$snapshot_file'"
+        else
+            debug_run "tar -xJf '$snapshot_file'"
+        fi
     ) &
-    spinner $! "Restauration du snapshot"
+    if [[ "$snapshot_file" == *.tar.zst ]]; then
+        spinner $! "Restauration du snapshot (zstd)"
+    else
+        spinner $! "Restauration du snapshot (legacy xz)"
+    fi
     
     if [ -d "$envdir" ]; then
         sudo rm -rf "${envdir}.${backup_name}"
@@ -709,7 +856,7 @@ delete_snapshot() {
     local envname="$1"
     local snapshot_name="$2"
     local env_snapshots_dir="${SNAPSHOTS_DIR}/${envname}"
-    local snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.xz"
+    local snapshot_file="${env_snapshots_dir}/${snapshot_name}.tar.zst"
     
     if [ ! -d "${ARCHSHELL_DIR}/${envname}" ]; then
         echo -e "${RED}[!] Environnement inexistant : ${envname}${NC}"
@@ -737,6 +884,12 @@ delete_snapshot() {
     fi
 }
 
+if [ $# -gt 0 ] && [ "$1" = "--debug" ]; then
+    DEBUG=true
+    shift
+    debug_log "Mode debug activé"
+fi
+
 if [ $# -lt 1 ]; then
     usage
 fi
@@ -744,12 +897,13 @@ fi
 case "$1" in
   init)
     mkdir -p "$ARCHSHELL_STORE"
+    init_shared_cache
     if [ -d "$BASE_TEMPLATE" ]; then
       echo "Template de base existe déjà. Utilisez 'regen-base' pour le régénérer."
     else
       echo -e "${BLUE}[*] Création du template de base...${NC}"
       (
-        sudo mkarchroot "$BASE_TEMPLATE" base > /dev/null 2>&1
+        debug_run "sudo mkarchroot '$BASE_TEMPLATE' base"
       ) &
       spinner $! "Création du template de base"
       echo -e "${GREEN}[*] Template de base créé.${NC}"
@@ -757,12 +911,13 @@ case "$1" in
     ;;
   regen-base)
     mkdir -p "$ARCHSHELL_STORE"
+    init_shared_cache
     echo -e "${BLUE}[*] Régénération du template de base...${NC}"
     if [ -d "$BASE_TEMPLATE" ]; then
-      sudo rm -rf "$BASE_TEMPLATE"
+      debug_run "sudo rm -rf '$BASE_TEMPLATE'"
     fi
     (
-      sudo mkarchroot "$BASE_TEMPLATE" base > /dev/null 2>&1
+      debug_run "sudo mkarchroot '$BASE_TEMPLATE' base"
     ) &
     spinner $! "Régénération du template de base"
     echo -e "${GREEN}[*] Template de base régénéré.${NC}"
@@ -784,10 +939,8 @@ case "$1" in
     mkdir -p "${ARCHSHELL_DIR}/${ENVNAME}"
     total=$(sudo du -sb "$BASE_TEMPLATE" | awk '{print $1}')
     (
-      n=0
-      sudo tar cf - -C "$BASE_TEMPLATE" . | \
-      sudo tar xf - -C "${ARCHSHELL_DIR}/${ENVNAME}"
-    ) 2> >(grep -v 'socket ignorée' >&2) &
+      debug_run "sudo rsync -a --info=progress2 '$BASE_TEMPLATE/' '${ARCHSHELL_DIR}/${ENVNAME}/'"
+    ) &
     spinner $! "Copie du template"
     sudo chown -R $USER: "${ARCHSHELL_DIR}/${ENVNAME}"
     update_env_info "$ENVNAME"
@@ -803,16 +956,39 @@ case "$1" in
     if [ ! -d "${ARCHSHELL_DIR}/${ENVNAME}" ]; then
       echo "Environnement inexistant : ${ENVNAME}"; exit 3;
     fi
+    init_shared_cache
+    cache_hits=0
+    total_packages=$#
+    for pkg in "$@"; do
+        if track_cache_hit "$pkg"; then
+            cache_hits=$((cache_hits + 1))
+        fi
+    done
+    new_downloads=$((total_packages - cache_hits))
+    
     echo -e "${BLUE}[*] Installation de(s) paquet(s) $* dans $ENVNAME...${NC}"
     (
-      sudo arch-nspawn -c /var/cache/pacman/pkg "${ARCHSHELL_DIR}/${ENVNAME}" pacman -S --noconfirm "$@" > /dev/null 2>&1
+      debug_run "sudo arch-nspawn -c '$SHARED_CACHE/pkg' '${ARCHSHELL_DIR}/${ENVNAME}' pacman -S --noconfirm $*"
     ) &
-    spinner $! "Installation des paquets"
-    echo -e "${GREEN}[*] Installation terminée.${NC}"
-    update_last_used "$ENVNAME"
-    for pkg in "$@"; do
-      add_package "$ENVNAME" "$pkg"
-    done
+    install_pid=$!
+    spinner $install_pid "Installation des paquets"
+    wait $install_pid
+    install_result=$?
+    
+    if [ $install_result -eq 0 ]; then
+      echo -e "${GREEN}[*] Installation terminée.${NC}"
+      update_last_used "$ENVNAME"
+      for pkg in "$@"; do
+        add_package "$ENVNAME" "$pkg"
+      done
+      if [ $new_downloads -gt 0 ]; then
+        track_download $new_downloads
+      fi
+      update_cache_stats
+    else
+      echo -e "${RED}[!] Installation échouée (code: $install_result)${NC}"
+      exit $install_result
+    fi
     ;;
   -R)
     if [ $# -lt 3 ]; then
@@ -824,6 +1000,7 @@ case "$1" in
     if [ ! -d "${ARCHSHELL_DIR}/${ENVNAME}" ]; then
       echo "Environnement inexistant : ${ENVNAME}"; exit 3;
     fi
+    init_shared_cache
     
     missing_packages=()
     for pkg in "$@"; do
@@ -843,14 +1020,23 @@ case "$1" in
     
     echo -e "${BLUE}[*] Suppression de(s) paquet(s) $* dans $ENVNAME...${NC}"
     (
-      sudo arch-nspawn -c /var/cache/pacman/pkg "${ARCHSHELL_DIR}/${ENVNAME}" pacman -R --noconfirm "$@" > /dev/null 2>&1
+      debug_run "sudo arch-nspawn -c '$SHARED_CACHE/pkg' '${ARCHSHELL_DIR}/${ENVNAME}' pacman -R --noconfirm $*"
     ) &
-    spinner $! "Suppression des paquets"
-    echo -e "${GREEN}[*] Suppression terminée.${NC}"
-    update_last_used "$ENVNAME"
-    for pkg in "$@"; do
-      remove_package "$ENVNAME" "$pkg"
-    done
+    remove_pid=$!
+    spinner $remove_pid "Suppression des paquets"
+    wait $remove_pid
+    remove_result=$?
+    
+    if [ $remove_result -eq 0 ]; then
+      echo -e "${GREEN}[*] Suppression terminée.${NC}"
+      update_last_used "$ENVNAME"
+      for pkg in "$@"; do
+        remove_package "$ENVNAME" "$pkg"
+      done
+    else
+      echo -e "${RED}[!] Suppression échouée (code: $remove_result)${NC}"
+      exit $remove_result
+    fi
     ;;
   enter)
     if [ $# -lt 2 ]; then
@@ -861,9 +1047,10 @@ case "$1" in
     if [ ! -d "${ARCHSHELL_DIR}/${ENVNAME}" ]; then
       echo "Environnement inexistant : ${ENVNAME}"; exit 3;
     fi
+    init_shared_cache
     echo "Entrée dans l'environnement $ENVNAME."
     update_last_used "$ENVNAME"
-    sudo arch-nspawn -c /var/cache/pacman/pkg "${ARCHSHELL_DIR}/${ENVNAME}"
+    sudo arch-nspawn -c "$SHARED_CACHE/pkg" "${ARCHSHELL_DIR}/${ENVNAME}"
     ;;
   delete)
     if [ $# -lt 2 ]; then
@@ -977,6 +1164,35 @@ case "$1" in
     else
       create_snapshot "$2" "${3:-}"
     fi
+    ;;
+  cache)
+    case "${2:-}" in
+      --stats)
+        init_shared_cache
+        show_cache_stats
+        ;;
+      --clean)
+        init_shared_cache
+        days_old="${3:-30}"
+        echo -e "${BLUE}[*] Nettoyage du cache partagé (paquets > ${days_old} jours)...${NC}"
+        before_count=$(find "$SHARED_CACHE/pkg" -name "*.pkg.tar.*" 2>/dev/null | wc -l || echo "0")
+        before_size=$(du -sb "$SHARED_CACHE/pkg" 2>/dev/null | awk '{print $1}' || echo "0")
+        
+        find "$SHARED_CACHE/pkg" -name "*.pkg.tar.*" -mtime +$days_old -delete 2>/dev/null
+        
+        after_count=$(find "$SHARED_CACHE/pkg" -name "*.pkg.tar.*" 2>/dev/null | wc -l || echo "0")
+        after_size=$(du -sb "$SHARED_CACHE/pkg" 2>/dev/null | awk '{print $1}' || echo "0")
+        freed=$((before_size - after_size))
+        removed=$((before_count - after_count))
+        
+        echo -e "${GREEN}[*] Cache nettoyé : ${removed} paquets supprimés ($(numfmt --to=iec $freed) libérés)${NC}"
+        update_cache_stats
+        ;;
+      *)
+        echo "Usage: $0 cache --stats|--clean [jours]"
+        exit 1
+        ;;
+    esac
     ;;
   *)
     usage
