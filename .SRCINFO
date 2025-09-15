@@ -1,0 +1,16 @@
+pkgbase = zoekt-git
+	pkgdesc = Fast trigram-based code search engine (latest git)
+	pkgver = 20250915.r1866.g4e4a529c
+	pkgrel = 1
+	url = https://github.com/sourcegraph/zoekt
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = go
+	provides = zoekt
+	conflicts = zoekt
+	source = git+https://github.com/sourcegraph/zoekt.git
+	sha256sums = SKIP
+
+pkgname = zoekt-git
