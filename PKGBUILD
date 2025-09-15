@@ -1,7 +1,7 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DOOM-style animated fire wallpaper for Hyprland using hyprwinwrap"
 arch=('x86_64')
 url="https://github.com/Leafmun-certii/doom_fire_wallpaper"
@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 "target/release/doom-fire-wallpaper" "$pkgdir/usr/bin/doom-fire-wallpaper"
+  install -Dm755 "target/release/doomfire-wallpaper" "$pkgdir/usr/bin/doomfire-wallpaper"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/doomfire-wallpaper/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
