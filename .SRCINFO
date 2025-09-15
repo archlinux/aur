@@ -1,0 +1,17 @@
+pkgbase = cloudflare-warp-minimal-bin
+	pkgdesc = Minimal Cloudflare WARP client
+	pkgver = 2025.6.1335.0
+	pkgrel = 1
+	url = https://developers.cloudflare.com/warp-client
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = nspr
+	depends = nss
+	provides = cloudflare-warp-minimal-bin
+	conflicts = cloudflare-warp-bin
+	conflicts = cloudflare-warp
+	source = https://pkg.cloudflareclient.com/pool/bookworm/main/c/cloudflare-warp/cloudflare-warp_2025.6.1335.0_amd64.deb
+	sha256sums = f1be243ada8c3257bc4efee3bd576e85fa6d713a9dc2d58fddd067600bf866ce
+
+pkgname = cloudflare-warp-minimal-bin
