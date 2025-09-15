@@ -1,8 +1,8 @@
 # Maintainer: yhshzh0 <yhshzh0@gmail.com>
-pkgname=tang-dynasty-bin
+pkgname=tang-dynasty
 pkgver=5.6.5_SP5
 pkgrel=1
-pkgdesc="Tang Dynasty FPGA/EDA toolchain (binary release, DR1 2025.7)"
+pkgdesc="Tang Dynasty FPGA/EDA toolchain"
 arch=('x86_64')
 url="https://www.anlogic.com/"
 conflicts=('tang-dynasty')

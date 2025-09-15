@@ -1,5 +1,5 @@
-pkgbase = tang-dynasty-bin
-	pkgdesc = Tang Dynasty FPGA/EDA toolchain (binary release, DR1 2025.7)
+pkgbase = tang-dynasty
+	pkgdesc = Tang Dynasty FPGA/EDA toolchain
 	pkgver = 5.6.5_SP5
 	pkgrel = 1
 	url = https://www.anlogic.com/
@@ -17,4 +17,4 @@ pkgbase = tang-dynasty-bin
 	sha256sums = c7518eb2fe0ebafbeadba36a80616892403e89338eb8392aedaeb24ecfbb6040
 	sha256sums = a4fe58538e15635dc3ed8688d312c006ba959b2d456c57fd0e445975632ef7e0
 
-pkgname = tang-dynasty-bin
+pkgname = tang-dynasty
