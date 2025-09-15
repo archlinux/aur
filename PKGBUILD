@@ -2,7 +2,7 @@
 
 pkgname=surfshark-client
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Surfshark VPN client"
 arch=('x86_64')
 url="https://surfshark.com"
@@ -28,20 +28,26 @@ prepare() {
 }
 
 package(){
-    mv usr/ opt/ "${pkgdir}"
+    mv usr/ opt/ etc/ "${pkgdir}"
 
 	# Install License file
 	install -D -m644 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd.js.LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# Create link for surfshark executable in /bin
-	mkdir -p "${pkgdir}/usr/bin" && ln -sf "${pkgdir}/opt/Surfshark/surfshark" "${pkgdir}/usr/bin/surfshark"
+	mkdir -p "${pkgdir}/usr/bin" && ln -sf "/opt/Surfshark/surfshark" "${pkgdir}/usr/bin/surfshark"
+
+	# Correct permissions on OpenVPN secrets
+	chmod 750 "${pkgdir}/etc/openvpn/client"
 
 	# SUID chrome-sandbox for Electron 5+
 	chmod 4755 "${pkgdir}/opt/Surfshark/chrome-sandbox" || true
 	
 	# Assign correct permissions for systemctl to run surfsharkd service as user
-	# Please note that surfsharkd2 systemd service is run as system user and only
-	# root user executable permission needs to be set
 	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd.js" || true
 	chmod 744 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd2.js" || true
+
+	# Permissions for update and diagnostics
+	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/update" || true
+	chmod 755 "${pkgdir}/opt/Surfshark/resources/dist/resources/diagnostics" || true
+	 
 }

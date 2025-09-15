@@ -1,7 +1,7 @@
 pkgbase = surfshark-client
 	pkgdesc = Official Surfshark VPN client
 	pkgver = 3.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://surfshark.com
 	install = surfshark-client.install
 	arch = x86_64

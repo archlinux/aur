@@ -1,6 +1,6 @@
 post_install() {
 	echo -e "  sudo systemctl daemon-reload" 
-	echo -e "  sudo systemctl enable surfsharkd2.service && sudo systemctl start surfsharkd2.service\n"
+	echo -e "  sudo systemctl enable surfsharkd2.service && sudo systemctl start surfsharkd2.service"
 }
 
 post_upgrade() {
