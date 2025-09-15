@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cmake -B build -S "${srcdir}/${_pkgname}" -DCMAKE_BUILD_TYPE=Release
-  cmake --build build
+  cmake --build build --parallel "$(nproc)"
 }
 
 package() {
