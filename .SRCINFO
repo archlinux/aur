@@ -1,14 +1,16 @@
 pkgbase = python-reparser
 	pkgdesc = Simple regex-based lexer/parser for inline markup
-	pkgver = 1.4.3
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/xmikos/reparser
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/xmikos/reparser/archive/v1.4.3.tar.gz
-	md5sums = 06f6321a8c6f0bd247d85db2eeb644ea
+	source = https://files.pythonhosted.org/packages/08/fe/2822999b3ae6295ae91fb67d7feb640a26138714bd1f64551a1a87a4dfc5/reparse-3.0.tar.gz
+	sha256sums = 6188c2306c20867ed2c464667c3835cb47c6b217ed5f659b53756dba253b28ce
 
 pkgname = python-reparser
-
