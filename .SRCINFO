@@ -1,6 +1,6 @@
 pkgbase = usrgrp-manager-git
 	pkgdesc = Keyboard-driven TUI to view and manage UNIX users and groups (git version)
-	pkgver = 0.2.0.r1.45a2a7c
+	pkgver = 0.2.0.r1.44b8f7f
 	pkgrel = 1
 	url = https://github.com/Firstp1ck/UsrGrp-Manager-TUI
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = usrgrp-manager-git
 	makedepends = cargo
 	depends = glibc
 	depends = shadow
-	provides = usrgrp-manager=0.2.0.r1.45a2a7c
+	provides = usrgrp-manager=0.2.0.r1.44b8f7f
 	conflicts = usrgrp-manager
 	conflicts = usrgrp-manager-bin
 	source = usrgrp-manager-git::git+https://github.com/Firstp1ck/UsrGrp-Manager-TUI.git
