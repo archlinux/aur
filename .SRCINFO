@@ -1,14 +1,15 @@
 pkgbase = zhparser
 	pkgdesc = A PostgreSQL extension for full-text search of Chinese language (Mandarin Chinese)
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/amutu/zhparser
 	arch = x86_64
 	license = PostgreSQL
 	makedepends = llvm
+	makedepends = clang
 	depends = postgresql
 	depends = scws
-	source = zhparser-2.2.tar.gz::https://github.com/amutu/zhparser/archive/refs/tags/V2.2.tar.gz
-	sha256sums = 1d0b0e834a3d0406a1c520e5b80886cd1c0bf3649d59f13b5f60e8c872a54a31
+	source = zhparser-2.3.tar.gz::https://github.com/amutu/zhparser/archive/refs/tags/v2.3.tar.gz
+	sha256sums = 96fe19f1b72c922eab19ecfc305384381562ff840da4d3b77452e21fefe8f0d2
 
 pkgname = zhparser
