@@ -1,16 +1,15 @@
-# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
-# Contributor: Josh Hebert <aksr at t-com dot me>
+# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
 pkgname=msi-keyboard-git
-pkgver=r19.fb57be9
-pkgrel=2
+pkgver='r6.9336442'
+pkgrel=1
 pkgdesc="Utility to control MSI Steelseries keyboards, written in C++"
-arch=('i686' 'x86_64')
-url="https://github.com/bparker06/msi-keyboard"
+arch=('x86_64')
+url="https://github.com/makkarpov/msi-keyboard"
 license=('BSD')
 depends=('hidapi')
-makedepends=('git' 'unzip' 'libusb' 'qt5-base')
+makedepends=('git')
 provides=('msi-keyboard')
-source=("$pkgname::git+https://github.com/bparker06/msi-keyboard")
+source=("$pkgname::git+https://github.com/makkarpov/msi-keyboard.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -18,15 +17,19 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/$pkgname"
+    sed -i '/#include <iostream>/a #include <cstring>' main.cpp 
+}
+
 build() {
     cd "$srcdir/$pkgname"
-    qmake
     make
 }
 
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 msi-keyboard "$pkgdir/usr/bin/msi-keyboard"
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-    install -Dm644 99-msi.rules "$pkgdir/usr/lib/udev/rules.d/99-msi.rules"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+    install -Dm644 99-msi-keyboard.rules "$pkgdir/usr/lib/udev/rules.d/99-msi-keyboard.rules"
 }
