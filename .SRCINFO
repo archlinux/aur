@@ -1,4 +1,4 @@
-pkgbase = ptui-bin
+pkgbase = ptui
 	pkgdesc = Picture TUI
 	pkgver = 1.0.4
 	pkgrel = 1
