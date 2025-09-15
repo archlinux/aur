@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=phiola-bin
 pkgver=2.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast audio player, recorder, converter.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -34,18 +34,13 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    icotool -x "${srcdir}/${pkgname%-bin}-2/mod/gui/${pkgname%-bin}.ico" -o "${srcdir}/${pkgname%-bin}-2/mod/gui"
     sed -i "s/\~\/bin\/${pkgname%-bin}-2\/mod\/gui\/${pkgname%-bin}.ico/${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}-2/mod/gui/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}-2/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(16x16 32x32 48x48 64x64 256x256)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname%-bin}-2/mod/gui/${pkgname%-bin}_"*_"${_icons}x32.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname%-bin}-2/mod/gui/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/${pkgname%-bin}-2/mod/gui/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}-2/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
