@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.4.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -12,7 +12,7 @@ optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
 sha256sums=('SKIP'
-            'd9eeecd9ef4acef9106f089f3e84b0c9842ca4733344d264d0f8433d37e08e65'
+            'da410e643bae9cdf5a1863cbcc64e0fcc6d14496864338766df47eb1be78c305'
             'd2b4ab803ca9df63052b4c3ae85c469271abd1257ce6d463ac280b7363e1dec3'
             '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
             '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
