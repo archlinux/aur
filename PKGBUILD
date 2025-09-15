@@ -15,6 +15,32 @@ arch=('x86_64' 'aarch64')
 url='https://apps.ankiweb.net/'
 license=('AGPL-3.0-or-later' '0BSD' 'MIT' 'BSD-3-Clause' 'Apache-2.0' 'GPL-3.0-or-later' 'CC-BY-4.0')
 depends=(
+	# anki and aqt
+	'python-beautifulsoup4'
+	'python-requests'
+
+	# aqt
+	'python-flask'
+	'python-flask-cors'
+	'python-jsonschema'
+	'python-pyqt6'
+	'python-pyqt6-webengine'
+	'python-send2trash'
+	'python-waitress'
+
+	# anki
+	'python-decorator'
+	'python-distro'
+	'python-markdown'
+	'python-orjson'
+	'python-protobuf'
+
+
+	# requests
+	'python-pysocks'
+
+	# pyqt6
+	'qt6-svg'
 )
 makedepends=(
 	'python-installer'
@@ -57,35 +83,6 @@ sha256sums_aarch64=('7726933f17abf4f5a14af10b91629599d69a98052e3867e1bfcce033355
 
 
 package() {
-	depends=(
-	# anki and aqt
-	'python-beautifulsoup4'
-	'python-requests'
-
-	# aqt
-	'python-flask'
-	'python-flask-cors'
-	'python-jsonschema'
-	'python-pyqt6'
-	'python-pyqt6-webengine'
-	'python-send2trash'
-	'python-waitress'
-
-	# anki
-	'python-decorator'
-	'python-distro'
-	'python-markdown'
-	'python-orjson'
-	'python-protobuf'
-
-
-	# requests
-	'python-pysocks'
-
-	# pyqt6
-	'qt6-svg'
-)
-
 	python -m installer --destdir="$pkgdir" $(eval echo "\${_anki_whl_$CARCH}")
 	python -m installer --destdir="$pkgdir" $_aqt_whl
 
