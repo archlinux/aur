@@ -11,8 +11,7 @@ pkgbase = csview-git
 	depends = glibc
 	provides = csview
 	conflicts = csview
-	conflicts = csview-bin
-	source = csview::git+https://github.com/wfxr/csview
+	source = csview-git::git+https://github.com/wfxr/csview
 	sha256sums = SKIP
 
 pkgname = csview-git
