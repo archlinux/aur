@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd minilang-libs
-	rabs -p$(nproc) gir
+	rabs -p$(nproc) gtk
 }
 
 check() {
@@ -40,5 +40,5 @@ check() {
 
 package() {
 	cd minilang-libs
-	rabs gir -DPREFIX="$pkgdir/usr" -DINSTALL
+	rabs gtk -DPREFIX="$pkgdir/usr" -DINSTALL
 }
