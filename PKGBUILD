@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.6.r68.gc1c2962
+pkgver=2.6.r85.g492116a
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 	'libx11'
 	'pugixml'
 	'sdl2'
-	'wxwidgets-gtk3>=3.2'
+	'wxwidgets-gtk3>=3.3'
 )
 makedepends=(
 	'bluez-libs'

@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.6.r68.gc1c2962
+	pkgver = 2.6.r85.g492116a
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = cemu-git
 	depends = libx11
 	depends = pugixml
 	depends = sdl2
-	depends = wxwidgets-gtk3>=3.2
+	depends = wxwidgets-gtk3>=3.3
 	provides = cemu
 	conflicts = cemu
 	source = cemu::git+https://github.com/cemu-project/Cemu.git
@@ -53,7 +53,7 @@ pkgname = cemu-git
 	depends = libx11
 	depends = pugixml
 	depends = sdl2
-	depends = wxwidgets-gtk3>=3.2
+	depends = wxwidgets-gtk3>=3.3
 	depends = libbluetooth.so
 	depends = libboost_program_options.so
 	depends = libcrypto.so
