@@ -2,7 +2,7 @@
 # Maintainer: Victor Hang <vhvictorhang@gmail.com>
 
 pkgname='ytui-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='ytui is a TUI tool that allows users to query videos on youtube and play them in their local player.'
 url='https://github.com/banh-canh/ytui'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('ytui')
 conflicts=('ytui')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Banh-Canh/ytui/releases/download/v1.0.0/ytui_v1.0.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('03410355a63f8b771d6de4ea206ae3ab65ef605123daa49e09e7ef927ccecace')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Banh-Canh/ytui/releases/download/v1.0.1/ytui_v1.0.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('8354b0ec22c63587f0b188bc33ba53c78883a22788701a8353395b563968babb')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Banh-Canh/ytui/releases/download/v1.0.0/ytui_v1.0.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d25fadd79d0471ebe04f69bbe242c284919df4037d1883045d74812643b16e5a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Banh-Canh/ytui/releases/download/v1.0.1/ytui_v1.0.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('2eb0618da80c1484739958efb860af38395f6f54e31b348763fbfc6ae721a779')
 
 package() {
   install -Dm755 "./ytui" "${pkgdir}/usr/bin/ytui"
