@@ -5,7 +5,7 @@ _zhsname='猫猫弹幕姬'
 pkgver=2.0.1
 _electronversion=23
 _nodeversion=18
-pkgrel=5
+pkgrel=6
 pkgdesc="Cat Cat DanMu.(Use system-wide electron)哔哩哔哩直播弹幕姬:查看直播间弹幕。"
 arch=('any')
 url="https://github.com/kokolokksk/catcat-dm-react"
@@ -80,6 +80,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     npm run build

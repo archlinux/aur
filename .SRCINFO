@@ -1,7 +1,7 @@
 pkgbase = catcat-dm-react
 	pkgdesc = Cat Cat DanMu.(Use system-wide electron)哔哩哔哩直播弹幕姬:查看直播间弹幕。
 	pkgver = 2.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kokolokksk/catcat-dm-react
 	arch = any
 	license = MIT
