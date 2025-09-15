@@ -1,0 +1,23 @@
+pkgbase = qt6-interfaceframework
+	pkgdesc = Tools and core APIs for implementing Middleware APIs, Middleware Back ends, and Middleware Services
+	pkgver = 6.9.2
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	license = LicenseRef-Qt-Commercial
+	license = Qt-GPL-exception-1.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = python3
+	makedepends = python-virtualenv
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	source = git+https://code.qt.io/qt/qtinterfaceframework#tag=v6.9.2
+	sha256sums = SKIP
+
+pkgname = qt6-interfaceframework
