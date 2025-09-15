@@ -18,4 +18,4 @@ package(){
 	tar -xz -f data.tar.gz -C "${pkgdir}"
 
 }
-sha256sums_x86_64=('77902a81af2e7bd925c17d43816bb313ab3d14826d012170289a31bac402feb7')
+sha256sums_x86_64=('735a4008498be89d5c7bc8434a0b77041db506109cf17314a32528d75465c1fe')
