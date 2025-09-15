@@ -1,0 +1,12 @@
+pkgbase = podman-docker-registry
+	pkgdesc = Set podman's unqualified registry to docker.io
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	depends = containers-common
+	optdepends = podman: this package is mostly useless without podman
+	source = docker-io.conf
+	sha256sums = dd2e70735917f35cd6ff8e1d68925f51ef5062c7eda3f3e79011053a14710511
+
+pkgname = podman-docker-registry
