@@ -1,11 +1,11 @@
 pkgbase = cernbox-overlay-icons
 	pkgdesc = Desktop integration icons for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk.
-	pkgver = 5.2.1_13464
+	pkgver = 5.3.2_15486
 	pkgrel = 1
 	url = http://cernbox.web.cern.ch/
 	arch = x86_64
 	license = GPL
-	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_39/cernbox-client-overlays-icons-5.2.1-13464.x86_64.rpm
-	md5sums = 4de54bec1e447dfef7ed296b48ed78b7
+	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_39/cernbox-client-overlays-icons-5.3.2-15486.x86_64.rpm
+	md5sums = 4f6c0e2c85b7ec089cd856ee1e9d31c6
 
 pkgname = cernbox-overlay-icons
