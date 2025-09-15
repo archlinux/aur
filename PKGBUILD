@@ -7,9 +7,9 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.2.3
+pkgver=3.2.4
 _electronversion=34
-_nodeversion=23
+_nodeversion=22
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
@@ -37,17 +37,22 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('5c3cf15433ff032f6529a7e68cad90c332771659c16124e57e0d2f24e6eb88fd'
+sha256sums=('dff0badf1b669ffabd51ff9f45f861e2b454ab748b44a45bca4334145f94a772'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/apps/desktop/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
