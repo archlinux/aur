@@ -1,7 +1,7 @@
 # Maintainer: whiteman808 <whiteman808@paraboletancza.org>
 pkgname=msi-keyboard-git
 pkgver='r6.9336442'
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to control MSI Steelseries keyboards, written in C++"
 arch=('x86_64')
 url="https://github.com/makkarpov/msi-keyboard"
