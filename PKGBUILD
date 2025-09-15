@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=archiveweb.page-appimage
-pkgver=0.15.4
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="An Electron based application for interactive, high-fidelity web archiving"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('fuse2'
          'zlib')
 source=("${url}/releases/download/v${pkgver}/ArchiveWeb.page-${pkgver}.AppImage"
         "ArchiveWeb.page.desktop")
-sha256sums=('d12d7767e04ff0ef9362cb52b7710a61a548c2e46066e2cbd4e2874656f0e260'
+sha256sums=('c56234901778bbe0d825baba32797be84c82533e602391b71cb2cd6bccb9f057'
             '62b378eaad8f542f85c8c0a90b6ab6f9bec8f48d0924eb0cafb1521403573cb1')
 options=(!strip !debug)
 
