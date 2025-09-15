@@ -1,6 +1,6 @@
 pkgbase = switchtube-dl-bin
 	pkgdesc = Simple CLI for downloading videos from SwitchTube
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/panmona/switchtube-dl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = switchtube-dl-bin
 	depends = zlib
 	provides = switchtube-dl
 	options = !strip
-	source = switchtube-dl-bin-1.0.0.tar.gz::https://github.com/panmona/switchtube-dl/releases/download/1.0.0/switchtube-dl.1.0.0.linux-x64.tar.gz
+	source = switchtube-dl-bin-1.0.3.tar.gz::https://github.com/panmona/switchtube-dl/releases/download/1.0.3/switchtube-dl.1.0.3.linux-x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = switchtube-dl-bin
