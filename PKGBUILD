@@ -2,7 +2,7 @@
 
 pkgname=surfshark-client
 pkgver=3.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Surfshark VPN client"
 arch=('x86_64')
 url="https://surfshark.com"
@@ -28,7 +28,7 @@ prepare() {
 }
 
 package(){
-    mv usr/ opt/ etc/ "${pkgdir}"
+    cp -rp usr/ opt/ etc/ "${pkgdir}"
 
 	# Install License file
 	install -D -m644 "${pkgdir}/opt/Surfshark/resources/dist/resources/surfsharkd.js.LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
