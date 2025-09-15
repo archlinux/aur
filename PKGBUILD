@@ -20,10 +20,12 @@ source=(
   "nwchem-7.2.3t::git+https://github.com/nwchemgit/nwchem.git#branch=hotfix/release-7-2-0"
   "config.sh"
   "nwchemrc"
+  "selci-fortchar-proto.patch"
 )
 sha256sums=('SKIP'
-  '200ccb7c39c55cb3fa04b17063b31138d3f434b424f712983892ddce046bb1bc'
-  'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
+            '9ee86d9d4fba752d930b4cc7a88a497d5316ad69aae9a76b969a4322a69e8db7'
+            'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f'
+            '039f30ca4a56a35729a96827a5b1bf4aec320ac7b2cb86898ccfbc8f0f316dc7')
 
 _srcdir="nwchem-7.2.3t"
 
@@ -34,6 +36,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_srcdir}"
+  patch -Np1 -i "${srcdir}/selci-fortchar-proto.patch"
 
   # NWChem env
   export NWCHEM_TOP="${PWD}"
