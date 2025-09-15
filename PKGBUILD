@@ -1,14 +1,13 @@
-pkgname=musing
-pkgver=1.0.1
+pkgname=amusing
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="An MPD-inspired music server"
+pkgdesc="A Musing client"
 arch=("x86_64")
 url="https://github.com/alfazet/musing"
 license=("MIT")
 makedepends=("rust")
-depends=("alsa-lib")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alfazet/musing/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("cfd1c9b9bf101141b8da9b2f17c5302a3cd714867b41e0efc37ec2ff16c49b38")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alfazet/amusing/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("85119a1f9b594756e98c6ebfa4598f85205c9285be1dae1967e4380e99345e15")
 
 build() {
     cd "${pkgname}-${pkgver}"
