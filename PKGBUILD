@@ -4,14 +4,14 @@ pkgname=xunlei-bin
 _appname=thunder
 _debname="com.${pkgname%-bin}.download"
 pkgver=1.0.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Xunlei download, 迅雷"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://www.xunlei.com/"
-_dlurl="https://com-store-packages.uniontech.com/appstore"
+_dlurl="https://archive2.kylinos.cn/DEB/KYLIN_DEB/pool/all"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -22,7 +22,6 @@ depends=(
     'alsa-lib'
     'nss'
     'libxss'
-    'nodejs'
 )
 options=(
     '!strip'
@@ -31,18 +30,23 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/pool/appstore/c/${_debname}/${_debname}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/pool/appstore/c/${_debname}/${_debname}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/${_debname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/${_debname}_${pkgver}_amd64.deb")
 sha256sums=('b548c4f5388c460335cc5672c132f4dd31930c6d1cad25b0e410a69d3a9d2272'
             'a1d15b342d2c3f3a4e4dce5b978f40f814a96ab4fd7f724cde499cfbb7bcff64')
-sha256sums_aarch64=('880f666e9d3049eebaa82e65a6131314fce63898f31df58ab9b1913e229c55d8')
-sha256sums_x86_64=('2be7873e61b6b53e59f915b18a0834de2b70e9172793931994e0ea4bf26d0279')
+sha256sums_aarch64=('09c88aa1b6a175bb9bf9d185632fc46370d248fe867b9fdb662fcb0ee63630ec')
+sha256sums_x86_64=('ef9e7cfe9d22c971dd7a53af350bdb16a039901a6bbfca0926fd7bf32b287978')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/apps/${_debname}/files/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_appname}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -e "
         s/\/opt\/apps\/${_debname}\/files\/start.sh/${pkgname%-bin}/g
         s/\/opt\/apps\/${_debname}\/entries\/icons\/hicolor\/256x256\/apps\/${_debname}.png/${pkgname%-bin}/g
