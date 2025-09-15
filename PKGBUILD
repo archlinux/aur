@@ -3,8 +3,8 @@
 pkgname=python-papis-scihub-git
 _plugname="${pkgname%-git}"
 _plugname="${_plugname#python-}"
-pkgver=1.4.0.r0.gcf099a3
-pkgrel=3
+pkgver=1.4.0.r0.gf7bb665.PR62
+pkgrel=1
 pkgdesc='Papis plugin to import from Sci-Hub (incorporates upstream PR #62)'
 arch=('any')
 url='https://github.com/papis/scripts/tree/master/papis-scihub'
@@ -15,26 +15,29 @@ makedepends=('git'
 )
 _url="${url%/tree/master/$_plugname}"
 source=("$pkgname::git+$_url.git")
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'c5a70ccdd2295903085ff9474fd955153345d1d752a30b9871be90c4002b67d0')
 provides=("${pkgname%-git}")
+prs=(
+    62 # Update to new papis plugin framework
+    )
+for pr in "${prs[@]}"; do
+    source+=("${pkgname}-PR$pr.patch::$_url/pull/$pr.patch")
+done
+
 
 prepare() {
     cd "$pkgname"
-    git config get user.name 2>/dev/null \
-        || git config set user.name "$PACKAGER"
-    git config get user.email 2>/dev/null \
-        || git config set user.email "$PACKAGER"
-    if ! git remote add upstream "$_url" 2>/dev/null; then
-        test "$(git remote get-url upstream)" != "$_url" && exit 1
-    fi
-    git fetch upstream pull/62/head:pr62
-    git merge pr62
-    git tag -f papis-scihub-1.4.0 pr62
+    git tag -f papis-scihub-1.4.0
+
+    for pr in "${prs[@]}"; do
+        git apply "../${pkgname}-PR$pr.patch"
+    done
 }
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags \
+    git describe --long --tags --dirty=-PR"$(export IFS=+; echo "${prs[*]}")" \
         | sed 's/^papis-scihub-//' \
         | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
