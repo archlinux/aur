@@ -1,7 +1,7 @@
 pkgbase = meshroom
 	pkgdesc = A free, open-source 3D Reconstruction Software based on the AliceVision framework
 	pkgver = 2025.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alicevision.org/#meshroom
 	arch = x86_64
 	license = MPL2
@@ -28,14 +28,15 @@ pkgbase = meshroom
 	depends = qt6-shadertools
 	depends = qt6-declarative
 	depends = qt6-5compat
+	optdepends = vulkan-headers: vulkan acceleration support
 	source = meshroom::git+https://github.com/alicevision/meshroom.git#tag=v2025.1.0
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
 	source = git+https://github.com/alicevision/QtAliceVision.git#tag=v2025.1.0
 	source = fix-qt-errors.patch
 	source = meshroom.sh
+	sha256sums = 9020b17317e416990f27c8a2214f2b9274ae1e2e5412f10bac76534517f48814
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 73109e38f6383ea3749f2a863166b43cd8c9e7e6fab421193489fe562f85b843
 	sha256sums = 3fc0237907ace26474cfba9ff6ab7f1f2d96c1bd56ecdb1a6361812657f0b3de
 	sha256sums = 81665eb7a36e5b7ccd6fd4031c275c6e6aaf32a15c31d85a012e44236501c67b
 
