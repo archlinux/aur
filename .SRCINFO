@@ -1,6 +1,6 @@
 pkgbase = tsukimi-git
-	pkgdesc = A simple third-party Emby client
-	pkgver = 25.5.0.r1264.g955bcb5
+	pkgdesc = A simple third-party Jellyfin client for Linux
+	pkgver = 25.5.0.r1281.gc4eab8f
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64

@@ -2,9 +2,9 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=25.5.0.r1264.g955bcb5
+pkgver=25.5.0.r1281.gc4eab8f
 pkgrel=1
-pkgdesc='A simple third-party Emby client'
+pkgdesc='A simple third-party Jellyfin client for Linux'
 arch=('x86_64')
 url="https://github.com/tsukinaha/tsukimi"
 license=('GPL-3.0-or-later')
