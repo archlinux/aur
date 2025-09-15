@@ -1,7 +1,7 @@
 # Maintainer: Kevin Schoon <me at kevinschoon dot com>
 
 pkgname=tree-sitter-go
-pkgver=0.23.4
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Go grammar for tree-sitter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 provides=('libtree-sitter-go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('967870d7d120e9b760e538aeb8331a72f70ffcca4f1eaf1e1dea5375886d25d2')
+sha256sums=('2dc241b97872c53195e01b86542b411a3c1a6201d9c946c78d5c60c063bba1ef')
 
 prepare() {
     cd "$pkgname-$pkgver"
