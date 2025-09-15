@@ -1,7 +1,7 @@
 # Maintainer: Sauru <sauruuwu at gmail dot com>
 
 pkgname=vapoursynth-plugin-f3kdb-sauruuwu-git
-pkgver=2.0.1.r424.652974d
+pkgver=2.0.1.r0.g652974d
 pkgrel=1
 pkgdesc='A deband library and filter for avisynth/vapoursynth (sauruuwu fork)'
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
