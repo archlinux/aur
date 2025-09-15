@@ -1,0 +1,637 @@
+--- slaoutput.cpp.orig	2025-09-15 20:06:42.239668359 +0200
++++ slaoutput.cpp	2025-09-15 20:07:37.317445063 +0200
+@@ -294,9 +294,9 @@
+ }
+ 
+ /* get Actions not implemented by Poppler */
+-LinkAction* SlaOutputDev::SC_getAction(AnnotWidget *ano)
++std::unique_ptr<LinkAction> SlaOutputDev::SC_getAction(AnnotWidget *ano)
+ {
+-	LinkAction *linkAction = nullptr;
++	std::unique_ptr<LinkAction> linkAction;
+ 	Object obj;
+ 	Ref refa = ano->getRef();
+ 
+@@ -311,11 +311,11 @@
+ 			Object actionObject = additionalActionsObject.dictLookup("S");
+ 			if (actionObject.isName("ImportData"))
+ 			{
+-				linkAction = new LinkImportData(&additionalActionsObject);
++				linkAction.reset(new LinkImportData(&additionalActionsObject));
+ 			}
+ 			else if (actionObject.isName("SubmitForm"))
+ 			{
+-				linkAction = new LinkSubmitForm(&additionalActionsObject);
++				linkAction.reset(new LinkSubmitForm(&additionalActionsObject));
+ 			}
+ 		}
+ 	}
+@@ -1065,12 +1065,12 @@
+ 			}
+ 			else
+ 			{
+-				LinkAction* scact = SC_getAction(ano);
++				std::unique_ptr<LinkAction> scact = SC_getAction(ano);
+ 				if (scact)
+ 				{
+ 					if (actString == "ImportData")
+ 					{
+-						auto *impo = (LinkImportData*) scact;
++						auto *impo = (LinkImportData*) scact.get();
+ 						if (impo->isOk())
+ 						{
+ 							ite->annotation().setActionType(5);
+@@ -1079,7 +1079,7 @@
+ 					}
+ 					else if (actString == "SubmitForm")
+ 					{
+-						auto *impo = (LinkSubmitForm*) scact;
++						auto *impo = (LinkSubmitForm*) scact.get();
+ 						if (impo->isOk())
+ 						{
+ 							ite->annotation().setActionType(3);
+@@ -1364,14 +1364,22 @@
+ 	m_graphicStack.restore();
+ }
+ 
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++void SlaOutputDev::beginTransparencyGroup(GfxState *state, const std::array<double, 4>& bbox, GfxColorSpace * /*blendingColorSpace*/, bool isolated, bool knockout, bool forSoftMask)
++#else
+ void SlaOutputDev::beginTransparencyGroup(GfxState *state, const double *bbox, GfxColorSpace * /*blendingColorSpace*/, bool isolated, bool knockout, bool forSoftMask)
++#endif
+ {
+ // 	qDebug() << "SlaOutputDev::beginTransparencyGroup isolated:" << isolated << "knockout:" << knockout << "forSoftMask:" << forSoftMask;
+ 	pushGroup("", forSoftMask);
+ 	m_groupStack.top().isolated = isolated;
+ }
+ 
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++void SlaOutputDev::paintTransparencyGroup(GfxState *state, const std::array<double, 4>& bbox)
++#else
+ void SlaOutputDev::paintTransparencyGroup(GfxState *state, const double *bbox)
++#endif
+ {
+ // 	qDebug() << "SlaOutputDev::paintTransparencyGroup";
+ 	if (m_groupStack.count() != 0)
+@@ -1470,7 +1478,11 @@
+ 	m_tmpSel->clear();
+ }
+ 
+-void SlaOutputDev::setSoftMask(GfxState * /*state*/, const double * bbox, bool alpha, Function *transferFunc, GfxColor * /*backdropColor*/)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++void SlaOutputDev::setSoftMask(GfxState* /*state*/, const std::array<double, 4>& bbox, bool alpha, Function* transferFunc, GfxColor* /*backdropColor*/)
++#else
++void SlaOutputDev::setSoftMask(GfxState* /*state*/, const double* bbox, bool alpha, Function* transferFunc, GfxColor* /*backdropColor*/)
++#endif
+ {
+ 	if (m_groupStack.count() <= 0)
+ 		return;
+@@ -1529,6 +1541,7 @@
+ 	QString output = convertPath(state->getPath());
+ 	if (output.isEmpty())
+ 		return;
++
+ 	FPointArray out;
+ 	out.parseSVG(output);
+ 	out.svgClosePath();
+@@ -1552,6 +1565,7 @@
+ {
+ //	qDebug() << "Stroke";
+ 	const double *ctm = state->getCTM();
++	m_ctm = QTransform(ctm[0], ctm[1], ctm[2], ctm[3], ctm[4], ctm[5]);
+ 	double xCoor = m_doc->currentPage()->xOffset();
+ 	double yCoor = m_doc->currentPage()->yOffset();
+ 	getPenState(state);
+@@ -1560,7 +1574,14 @@
+ 	graphicState.strokeColor = getColor(state->getStrokeColorSpace(), state->getStrokeColor(), &graphicState.strokeShade);
+ 
+ 	QString output = convertPath(state->getPath());
+-	if ((m_Elements->count() != 0) && (output == m_coords))			// Path is the same as in last fill
++
++	FPointArray out;
++	out.parseSVG(output);
++	out.map(m_ctm);
++
++	// Path is the same as in last fill
++	if (!m_Elements->isEmpty() &&
++	    ((m_Elements->last()->PoLine == out) || (m_pathIsClosed && (m_coords == output))))
+ 	{
+ 		PageItem* ite = m_Elements->last();
+ 		ite->setLineColor(graphicState.strokeColor);
+@@ -1574,10 +1595,6 @@
+ 		return;
+ 	}
+ 
+-	FPointArray out;
+-	out.parseSVG(output);
+-	m_ctm = QTransform(ctm[0], ctm[1], ctm[2], ctm[3], ctm[4], ctm[5]);
+-	out.map(m_ctm);
+ 	FPoint wh = out.widthHeight();
+ 	if ((out.size() <= 3) || ((wh.x() <= 0.0) && (wh.y() <= 0.0)))
+ 		return;
+@@ -1678,40 +1695,40 @@
+ 	mm.rotate(angle);
+ 	clippedPath = mm.map(clippedPath);
+ 
+-	m_coords = output;
+ 	QRectF bbox = clippedPath.boundingRect();
+-	if (!clippedPath.isEmpty() && !bbox.isNull())
++	if (clippedPath.isEmpty() || bbox.isNull())
++		return;
++	m_coords = output;
++
++	graphicState.fillColor = getColor(state->getFillColorSpace(), state->getFillColor(), &graphicState.fillShade);
++	int z;
++	if (m_pathIsClosed)
++		z = m_doc->itemAdd(PageItem::Polygon, PageItem::Unspecified, xCoor, yCoor, 10, 10, 0, graphicState.fillColor, CommonStrings::None);
++	else
++		z = m_doc->itemAdd(PageItem::PolyLine, PageItem::Unspecified, xCoor, yCoor, 10, 10, 0, graphicState.fillColor, CommonStrings::None);
++	PageItem* ite = m_doc->Items->at(z);
++	ite->PoLine.fromQPainterPath(clippedPath, m_pathIsClosed);
++	ite->ClipEdited = true;
++	ite->FrameType = 3;
++	ite->setFillShade(graphicState.fillShade);
++	ite->setLineShade(100);
++	ite->setRotation(-angle);
++	// Only the new path has to be interpreted according to fillRule. QPainterPath
++	// could decide to create a final path according to the other rule. Thus
++	// we have to set this from the final path.
++	ite->setFillEvenOdd(clippedPath.fillRule() == Qt::OddEvenFill);
++	ite->setFillTransparency(1.0 - state->getFillOpacity());
++	ite->setFillBlendmode(getBlendMode(state));
++	ite->setLineEnd(m_lineEnd);
++	ite->setLineJoin(m_lineJoin);
++	ite->setWidthHeight(bbox.width(),bbox.height());
++	ite->setTextFlowMode(PageItem::TextFlowDisabled);
++	m_doc->adjustItemSize(ite);
++	m_Elements->append(ite);
++	if (m_groupStack.count() != 0)
+ 	{
+-		graphicState.fillColor = getColor(state->getFillColorSpace(), state->getFillColor(), &graphicState.fillShade);
+-		int z;
+-		if (m_pathIsClosed)
+-			z = m_doc->itemAdd(PageItem::Polygon, PageItem::Unspecified, xCoor, yCoor, 10, 10, 0, graphicState.fillColor, CommonStrings::None);
+-		else
+-			z = m_doc->itemAdd(PageItem::PolyLine, PageItem::Unspecified, xCoor, yCoor, 10, 10, 0, graphicState.fillColor, CommonStrings::None);
+-		PageItem* ite = m_doc->Items->at(z);
+-		ite->PoLine.fromQPainterPath(clippedPath, true);
+-		ite->ClipEdited = true;
+-		ite->FrameType = 3;
+-		ite->setFillShade(graphicState.fillShade);
+-		ite->setLineShade(100);
+-		ite->setRotation(-angle);
+-		// Only the new path has to be interpreted according to fillRule. QPainterPath
+-		// could decide to create a final path according to the other rule. Thus
+-		// we have to set this from the final path.
+-		ite->setFillEvenOdd(clippedPath.fillRule() == Qt::OddEvenFill);
+-		ite->setFillTransparency(1.0 - state->getFillOpacity());
+-		ite->setFillBlendmode(getBlendMode(state));
+-		ite->setLineEnd(m_lineEnd);
+-		ite->setLineJoin(m_lineJoin);
+-		ite->setWidthHeight(bbox.width(),bbox.height());
+-		ite->setTextFlowMode(PageItem::TextFlowDisabled);
+-		m_doc->adjustItemSize(ite);
+-		m_Elements->append(ite);
+-		if (m_groupStack.count() != 0)
+-		{
+-			m_groupStack.top().Items.append(ite);
+-			applyMask(ite);
+-		}
++		m_groupStack.top().Items.append(ite);
++		applyMask(ite);
+ 	}
+ }
+ 
+@@ -2220,11 +2237,20 @@
+ 	return true;
+ }
+ 
+-bool SlaOutputDev::tilingPatternFill(GfxState *state, Gfx * /*gfx*/, Catalog *cat, GfxTilingPattern *tPat, const double *mat, int x0, int y0, int x1, int y1, double xStep, double yStep)
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++bool SlaOutputDev::tilingPatternFill(GfxState *state, Gfx* /*gfx*/, Catalog *cat, GfxTilingPattern *tPat, const std::array<double, 6>& mat, int x0, int y0, int x1, int y1, double xStep, double yStep)
++#else
++bool SlaOutputDev::tilingPatternFill(GfxState *state, Gfx* /*gfx*/, Catalog *cat, GfxTilingPattern *tPat, const double *mat, int x0, int y0, int x1, int y1, double xStep, double yStep)
++#endif
+ {
+ //	qDebug() << "SlaOutputDev::tilingPatternFill";
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++	const std::array<double, 4>& bbox = tPat->getBBox();
++	const std::array<double, 6>& pmat = tPat->getMatrix();
++#else
+ 	const double *bbox = tPat->getBBox();
+ 	const double *pmat = tPat->getMatrix();
++#endif
+ 	Dict *resDict = tPat->getResDict();
+ 
+ 	PDFRectangle box;
+@@ -2352,7 +2378,14 @@
+ {
+ //	qDebug() << "Draw Image Mask";
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, 1, 1);
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++	bool resetDone = imgStr->reset();
++	if (!resetDone)
++		return;
++#else
+ 	imgStr->reset();
++#endif
++
+ #ifdef WORDS_BIGENDIAN
+ 	QImage image(width, height, QImage::Format_Mono);
+ #else
+@@ -2426,7 +2459,14 @@
+ {
+ //	qDebug() << "SlaOutputDev::drawSoftMaskedImage Masked Image Components" << colorMap->getNumPixelComps();
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++	bool resetDone = imgStr->reset();
++	if (!resetDone)
++		return;
++#else
+ 	imgStr->reset();
++#endif
++
+ 	unsigned int *dest = nullptr;
+ 	unsigned char * buffer = new unsigned char[width * height * 4];
+ 	for (int y = 0; y < height; y++)
+@@ -2444,7 +2484,14 @@
+ 	}
+ 
+ 	auto mskStr = std::make_unique<ImageStream>(maskStr, maskWidth, maskColorMap->getNumPixelComps(), maskColorMap->getBits());
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++	bool mskResetDone = mskStr->reset();
++	if (!mskResetDone)
++		return;
++#else
+ 	mskStr->reset();
++#endif
++
+ 	unsigned char *mdest = nullptr;
+ 	unsigned char * mbuffer = new unsigned char[maskWidth * maskHeight];
+ 	memset(mbuffer, 0, maskWidth * maskHeight);
+@@ -2502,7 +2549,14 @@
+ {
+ //	qDebug() << "SlaOutputDev::drawMaskedImage";
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++	bool resetDone = imgStr->reset();
++	if (resetDone)
++		return;
++#else
+ 	imgStr->reset();
++#endif
++
+ 	unsigned int *dest = nullptr;
+ 	unsigned char * buffer = new unsigned char[width * height * 4];
+ 	for (int y = 0; y < height; y++)
+@@ -2520,7 +2574,14 @@
+ 	}
+ 
+ 	auto mskStr = std::make_unique<ImageStream>(maskStr, maskWidth, 1, 1);
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++	bool mskResetDone = mskStr->reset();
++	if (!mskResetDone)
++		return;
++#else
+ 	mskStr->reset();
++#endif
++
+ 	unsigned char *mdest = nullptr;
+ 	int invert_bit = maskInvert ? 1 : 0;
+ 	unsigned char * mbuffer = new unsigned char[maskWidth * maskHeight];
+@@ -2557,7 +2618,7 @@
+ 		}
+ 	}
+ 
+-	createImageFrame(res, state, colorMap->getNumPixelComps());
++	createImageFrame(res, state, 3);
+ 
+ 	delete[] buffer;
+ 	delete[] mbuffer;
+@@ -2566,7 +2627,13 @@
+ void SlaOutputDev::drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, bool interpolate, const int* maskColors, bool inlineImg)
+ {
+ 	auto imgStr = std::make_unique<ImageStream>(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 02, 0)
++	bool resetDone = imgStr->reset();
++	if (!resetDone)
++		return;
++#else
+ 	imgStr->reset();
++#endif
+ 
+ 	QImage image(width, height, QImage::Format_ARGB32);
+ 	if (image.isNull())
+@@ -3293,75 +3360,73 @@
+ 	// Invisible or only used for clipping
+ 	if (textRenderingMode == 3)
+ 		return;
+-	if (textRenderingMode < 8)
++	if (textRenderingMode >= 8)
++		return;
++
++	SplashPath * fontPath = m_font->getGlyphPath(code);
++	if (!fontPath)
++		return;
++
++	QPainterPath qPath;
++	qPath.setFillRule(Qt::WindingFill);
++	for (int i = 0; i < fontPath->getLength(); ++i)
++	{
++		unsigned char f;
++		fontPath->getPoint(i, &x1, &y1, &f);
++		if (f & splashPathFirst)
++			qPath.moveTo(x1,y1);
++		else if (f & splashPathCurve)
++		{
++			double x3, y3;
++			++i;
++			fontPath->getPoint(i, &x2, &y2, &f);
++			++i;
++			fontPath->getPoint(i, &x3, &y3, &f);
++			qPath.cubicTo(x1, y1, x2, y2, x3, y3);
++		}
++		else
++			qPath.lineTo(x1, y1);
++		if (f & splashPathLast)
++			qPath.closeSubpath();
++	}
++	const double * ctm = state->getCTM();
++	m_ctm = QTransform(ctm[0], ctm[1], ctm[2], ctm[3], ctm[4], ctm[5]);
++	double xCoor = m_doc->currentPage()->xOffset();
++	double yCoor = m_doc->currentPage()->yOffset();
++	FPointArray textPath;
++	textPath.fromQPainterPath(qPath);
++	FPoint wh = textPath.widthHeight();
++	if (textRenderingMode > 3)
+ 	{
+-		SplashPath * fontPath;
+-		fontPath = m_font->getGlyphPath(code);
+-		if (fontPath)
+-		{
+-			QPainterPath qPath;
+-			qPath.setFillRule(Qt::WindingFill);
+-			for (int i = 0; i < fontPath->getLength(); ++i)
+-			{
+-				unsigned char f;
+-				fontPath->getPoint(i, &x1, &y1, &f);
+-				if (f & splashPathFirst)
+-					qPath.moveTo(x1,y1);
+-				else if (f & splashPathCurve)
+-				{
+-					double x3, y3;
+-					++i;
+-					fontPath->getPoint(i, &x2, &y2, &f);
+-					++i;
+-					fontPath->getPoint(i, &x3, &y3, &f);
+-					qPath.cubicTo(x1, y1, x2, y2, x3, y3);
+-				}
+-				else
+-					qPath.lineTo(x1, y1);
+-				if (f & splashPathLast)
+-					qPath.closeSubpath();
+-			}
+-			const double * ctm = state->getCTM();
+-			m_ctm = QTransform(ctm[0], ctm[1], ctm[2], ctm[3], ctm[4], ctm[5]);
+-			double xCoor = m_doc->currentPage()->xOffset();
+-			double yCoor = m_doc->currentPage()->yOffset();
+-			FPointArray textPath;
+-			textPath.fromQPainterPath(qPath);
+-			FPoint wh = textPath.widthHeight();
+-			if (textRenderingMode > 3)
+-			{
+-				QTransform mm;
+-				mm.scale(1, -1);
+-				mm.translate(x, -y);
+-				// Remember the glyph for later clipping
+- 				m_clipTextPath.addPath(m_ctm.map(mm.map(qPath)));
+-			}
+-			if ((textPath.size() > 3) && ((wh.x() != 0.0) || (wh.y() != 0.0)) && (textRenderingMode != 7))
+-			{
+-				int z = m_doc->itemAdd(PageItem::Polygon, PageItem::Unspecified, xCoor, yCoor, 10, 10, 0, CommonStrings::None, CommonStrings::None);
+-				PageItem* ite = m_doc->Items->at(z);
+-
+-				// todo: merge this between vector and text implementations.
+-				QTransform mm;
+-				mm.scale(1, -1);
+-				mm.translate(x, -y);
+-				textPath.map(mm);
+-				textPath.map(m_ctm);
+-				ite->PoLine = textPath.copy();
+-				setItemFillAndStroke(state, ite);
+-				// Fill text rendering modes. See above
+-				m_doc->adjustItemSize(ite);
+-				m_Elements->append(ite);
+-				if (m_groupStack.count() != 0)
+-				{
+-					m_groupStack.top().Items.append(ite);
+-					applyMask(ite);
+-				}
+-			}
+-			delete fontPath;
++		QTransform mm;
++		mm.scale(1, -1);
++		mm.translate(x, -y);
++		// Remember the glyph for later clipping
++ 		m_clipTextPath.addPath(m_ctm.map(mm.map(qPath)));
++	}
++	if ((textPath.size() > 3) && ((wh.x() != 0.0) || (wh.y() != 0.0)) && (textRenderingMode != 7))
++	{
++		int z = m_doc->itemAdd(PageItem::Polygon, PageItem::Unspecified, xCoor, yCoor, 10, 10, 0, CommonStrings::None, CommonStrings::None);
++		PageItem* ite = m_doc->Items->at(z);
+ 
++		// todo: merge this between vector and text implementations.
++		QTransform mm;
++		mm.scale(1, -1);
++		mm.translate(x, -y);
++		textPath.map(mm);
++		textPath.map(m_ctm);
++		ite->PoLine = textPath.copy();
++		setItemFillAndStroke(state, ite);
++		// Fill text rendering modes. See above
++		m_doc->adjustItemSize(ite);
++		m_Elements->append(ite);
++		if (m_groupStack.count() != 0)
++		{
++			m_groupStack.top().Items.append(ite);
++			applyMask(ite);
+ 		}
+ 	}
++	delete fontPath;
+ }
+ 
+ 
+@@ -3595,7 +3660,11 @@
+ 		return CommonStrings::None;
+ 	if (color->getSpace() == AnnotColor::colorRGB)
+ 	{
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++		const std::array<double, 4>& color_data = color->getValues();
++#else
+ 		const double *color_data = color->getValues();
++#endif
+ 		double Rc = color_data[0];
+ 		double Gc = color_data[1];
+ 		double Bc = color_data[2];
+@@ -3604,7 +3673,11 @@
+ 	}
+ 	else if (color->getSpace() == AnnotColor::colorCMYK)
+ 	{
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++		const std::array<double, 4>& color_data = color->getValues();
++#else
+ 		const double *color_data = color->getValues();
++#endif
+ 		double Cc = color_data[0];
+ 		double Mc = color_data[1];
+ 		double Yc = color_data[2];
+@@ -3614,7 +3687,11 @@
+ 	}
+ 	else if (color->getSpace() == AnnotColor::colorGray)
+ 	{
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++		const std::array<double, 4>& color_data = color->getValues();
++#else
+ 		const double *color_data = color->getValues();
++#endif
+ 		double Kc = 1.0 - color_data[0];
+ 		tmp.setCmykColorF(0, 0, 0, Kc);
+ 		fNam = m_doc->PageColors.tryAddColor(namPrefix+tmp.name(), tmp);
+@@ -3636,32 +3713,31 @@
+ 	for (int i = 0; i < path->getNumSubpaths(); ++i)
+ 	{
+ 		const GfxSubpath * subpath = path->getSubpath(i);
+-		if (subpath->getNumPoints() > 0)
+-		{
+-			output += QString("M %1 %2").arg(subpath->getX(0)).arg(subpath->getY(0));
+-			int j = 1;
+-			while (j < subpath->getNumPoints())
+-			{
+-				if (subpath->getCurve(j))
+-				{
+-					output += QString("C %1 %2 %3 %4 %5 %6")
+-					.arg(subpath->getX(j)).arg(subpath->getY(j))
+-					.arg(subpath->getX(j + 1)).arg(subpath->getY(j + 1))
+-					.arg(subpath->getX(j + 2)).arg(subpath->getY(j + 2));
+-					j += 3;
+-				}
+-				else
+-				{
+-					output += QString("L %1 %2").arg(subpath->getX(j)).arg(subpath->getY(j));
+-					++j;
+-				}
++		if (subpath->getNumPoints() <= 0)
++			continue;
++		output += QString("M %1 %2").arg(subpath->getX(0)).arg(subpath->getY(0));
++		int j = 1;
++		while (j < subpath->getNumPoints())
++		{
++			if (subpath->getCurve(j))
++			{
++				output += QString("C %1 %2 %3 %4 %5 %6")
++				.arg(subpath->getX(j)).arg(subpath->getY(j))
++				.arg(subpath->getX(j + 1)).arg(subpath->getY(j + 1))
++				.arg(subpath->getX(j + 2)).arg(subpath->getY(j + 2));
++				j += 3;
+ 			}
+-			if (subpath->isClosed())
++			else
+ 			{
+-				output += QString("Z");
+-				m_pathIsClosed = true;
++				output += QString("L %1 %2").arg(subpath->getX(j)).arg(subpath->getY(j));
++				++j;
+ 			}
+ 		}
++		if (subpath->isClosed())
++		{
++			output += QString("Z");
++			m_pathIsClosed = true;
++		}
+ 	}
+ 	return output;
+ }
+@@ -3692,21 +3768,11 @@
+ 			m_lineJoin = Qt::BevelJoin;
+ 			break;
+ 	}
+-#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(22, 9, 0)
+ 	const auto& dashPattern = state->getLineDash(&m_dashOffset);
+ 	QVector<double> pattern(dashPattern.size());
+ 	for (size_t i = 0; i < dashPattern.size(); ++i)
+ 		pattern[i] = dashPattern[i];
+ 	m_dashValues = pattern;
+-#else
+-	double* dashPattern;
+-	int dashLength;
+-	state->getLineDash(&dashPattern, &dashLength, &m_dashOffset);
+-	QVector<double> pattern(dashLength);
+-	for (int i = 0; i < dashLength; ++i)
+-		pattern[i] = dashPattern[i];
+-	m_dashValues = pattern;
+-#endif
+ }
+ 
+ int SlaOutputDev::getBlendMode(GfxState *state) const
+--- slaoutput.h.orig	2025-01-25 22:57:14.000000000 +0100
++++ slaoutput.h	2025-09-15 20:07:37.317599294 +0200
+@@ -20,6 +20,7 @@
+ #include <QTextStream>
+ #include <QTransform>
+ 
++#include <array>
+ #include <memory>
+ 
+ #include "fpointarray.h"
+@@ -164,7 +165,7 @@
+ 	SlaOutputDev(ScribusDoc* doc, QList<PageItem*> *Elements, QStringList *importedColors, int flags);
+ 	~SlaOutputDev() override;
+ 
+-	LinkAction* SC_getAction(AnnotWidget *ano);
++	std::unique_ptr<LinkAction> SC_getAction(AnnotWidget *ano);
+ 	std::unique_ptr<LinkAction> SC_getAdditionalAction(const char *key, AnnotWidget *ano);
+ 	static bool annotations_callback(Annot *annota, void *user_data);
+ 	bool handleTextAnnot(Annot* annota, double xCoor, double yCoor, double width, double height);
+@@ -195,7 +196,12 @@
+ 	void stroke(GfxState *state) override;
+ 	void fill(GfxState *state) override;
+ 	void eoFill(GfxState *state) override;
++
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++	bool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat, GfxTilingPattern *tPat, const std::array<double, 6>& mat, int x0, int y0, int x1, int y1, double xStep, double yStep) override;
++#else
+ 	bool tilingPatternFill(GfxState *state, Gfx *gfx, Catalog *cat, GfxTilingPattern *tPat, const double *mat, int x0, int y0, int x1, int y1, double xStep, double yStep) override;
++#endif
+ 	bool functionShadedFill(GfxState * /*state*/, GfxFunctionShading * /*shading*/) override { qDebug() << "Function Shaded Fill";  return false; }
+ 	bool axialShadedFill(GfxState *state, GfxAxialShading *shading, double tMin, double tMax) override;
+ 	bool axialShadedSupportExtend(GfxState *state, GfxAxialShading *shading)  override { return (shading->getExtend0() == shading->getExtend1()); }
+@@ -254,10 +260,20 @@
+ 				   bool maskInvert, bool maskInterpolate) override;
+ 
+ 	//----- transparency groups and soft masks
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++	void beginTransparencyGroup(GfxState *state, const std::array<double, 4>& bbox, GfxColorSpace* /*blendingColorSpace*/, bool /*isolated*/, bool /*knockout*/, bool /*forSoftMask*/) override;
++	void paintTransparencyGroup(GfxState *state, const std::array<double, 4>& bbox) override;
++#else
+ 	void beginTransparencyGroup(GfxState *state, const double *bbox, GfxColorSpace * /*blendingColorSpace*/, bool /*isolated*/, bool /*knockout*/, bool /*forSoftMask*/) override;
+ 	void paintTransparencyGroup(GfxState *state, const double *bbox) override;
++#endif
+ 	void endTransparencyGroup(GfxState *state) override;
++
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(25, 9, 0)
++	void setSoftMask(GfxState * /*state*/, const std::array<double, 4> & /*bbox*/, bool /*alpha*/, Function * /*transferFunc*/, GfxColor * /*backdropColor*/) override;
++#else
+ 	void setSoftMask(GfxState * /*state*/, const double * /*bbox*/, bool /*alpha*/, Function * /*transferFunc*/, GfxColor * /*backdropColor*/) override;
++#endif
+ 	void clearSoftMask(GfxState * /*state*/) override;
+ 
+ 	void updateFillColor(GfxState *state) override;
+@@ -394,7 +410,7 @@
+ 	QTransform m_ctm;
+ 	struct F3Entry
+ 	{
+-		bool colored;
++		bool colored = false;
+ 	};
+ 	QStack<F3Entry> m_F3Stack;
+ 	struct mContent
