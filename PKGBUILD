@@ -2,7 +2,7 @@
 # Contact about package issues tho. <bjoel2@i2pmail.org>
 
 pkgname="prismlauncher-themes-git"
-pkgver=2025.03.07_1741339143.r0.g6c79978
+pkgver=2025.06.06_1749223820.r0.g8832f3d
 pkgrel=1
 pkgdesc="PrismLauncher themes from their official github"
 arch=('any')
