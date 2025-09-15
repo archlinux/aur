@@ -4,8 +4,8 @@
 
 _name=fibers
 pkgname=guile-$_name
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Concurrent ML-like concurrency for Guile"
 arch=(x86_64)
 license=(LGPL-3.0-or-later)
@@ -13,7 +13,7 @@ makedepends=(git)
 depends=("guile")
 source=(git+https://codeberg.org/${_name}/${_name}.git#tag=v${pkgver})
 url="https://codeberg.org/wingo/fibers"
-md5sums=('59fa2e0240d1142df5edca71e743732a')
+md5sums=('cf4bbb4ba88a8ae3a21c78e82788944f')
 
 build() {
   cd "$srcdir/$_name"

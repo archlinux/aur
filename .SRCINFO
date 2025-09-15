@@ -1,13 +1,13 @@
 pkgbase = guile-fibers
 	pkgdesc = Concurrent ML-like concurrency for Guile
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://codeberg.org/wingo/fibers
 	arch = x86_64
 	license = LGPL-3.0-or-later
 	makedepends = git
 	depends = guile
-	source = git+https://codeberg.org/fibers/fibers.git#tag=v1.4.0
-	md5sums = 59fa2e0240d1142df5edca71e743732a
+	source = git+https://codeberg.org/fibers/fibers.git#tag=v1.4.1
+	md5sums = cf4bbb4ba88a8ae3a21c78e82788944f
 
 pkgname = guile-fibers
