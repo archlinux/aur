@@ -1,6 +1,6 @@
 pkgbase = aptos
 	pkgdesc = Aptos is a layer 1 blockchain built to support the widespread use of blockchain through better technology and user experience.
-	pkgver = 7.8.0
+	pkgver = 7.8.1
 	pkgrel = 1
 	url = https://aptos.dev
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = aptos
 	depends = libcrypto.so
 	depends = systemd-libs
 	options = !lto
-	source = git+https://github.com/aptos-labs/aptos-core#tag=aptos-cli-v7.8.0
-	sha512sums = 95d8b150a0f12783a50b6fa6d239e7482bca1c3ba0890447941d5635055dcabd8fec2730e42bafe48d3d7600cd0fa22c606ee737af9347c4d7c79202ed89c7a3
+	source = git+https://github.com/aptos-labs/aptos-core#tag=aptos-cli-v7.8.1
+	sha512sums = ef7dd43f8f1c53c10f5230123988dfd17a0cca79a8def0b006f71a1bed67888787ea680afdf3f432423db0787895b5edddcebbb953210bc1887f2a8b0760ec30
 
 pkgname = aptos
