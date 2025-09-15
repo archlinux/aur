@@ -1,6 +1,6 @@
 pkgbase = ruby-cucumber-compatibility-kit
 	pkgdesc = Kit to check compatibility with official cucumber implementation
-	pkgver = 22.0.1
+	pkgver = 23.0.0
 	pkgrel = 1
 	url = https://github.com/cucumber/compatibility-kit
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ruby-cucumber-compatibility-kit
 	depends = ruby
 	depends = ruby-cucumber-messages
 	options = !emptydirs
-	source = git+https://github.com/cucumber/compatibility-kit.git#tag=v22.0.1
-	sha512sums = b41d3f38c9b6efb50b6707667eefecf2c71588ec8d1f90a1e4708c8406cedd618c8dd7ee887886193f3eaa9099c64e2ea9cb7264a554f5b9f544e722b5819119
-	b2sums = d113c45a1e534fa88a25777012c98ff680131d11ccd2354340f39bfe79a7c376ec76bda3064cc3ab1372a26b5ebe29b1d85562f1ebcde0bc7a34c02c5ce605ef
+	source = git+https://github.com/cucumber/compatibility-kit.git#tag=v23.0.0
+	sha512sums = 9e9143f371894643511928d717c1adc1547b2d9f3f74ab0b5913348b4a12a6aa5f71fe53a572847d1bb9652674af8e9629fb67527051149aedefe3686e607b5f
+	b2sums = 1b43553d129e1a16c17a9bab2cf0332c1de530cc24ad76b94c4a2a0a2667033d16a004c08004f8250e84ef51228736e0cbe479b274cabd6bdae2c35adb12f27b
 
 pkgname = ruby-cucumber-compatibility-kit
