@@ -1,0 +1,18 @@
+pkgbase = nuru-browser-bin
+	pkgdesc = A modern Electron-based web browser with minimalistic UI.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ackimcu/Nuru-Browser
+	arch = x86_64
+	license = MIT
+	depends = electron38
+	provides = nuru-browser=1.0.2
+	conflicts = nuru-browser
+	source = nuru-browser-1.0.2-x86_64.AppImage::https://github.com/ackimcu/Nuru-Browser/releases/download/v1.0.2/NuruBrowser-1.0.2.AppImage
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/ackimcu/Nuru-Browser/v1.0.2/LICENSE
+	source = nuru-browser.sh
+	sha256sums = c789c62406e61f56a404e52f9c43cee4c73c73334f868743bf4cc7c1145055ef
+	sha256sums = 473d9e686494f84c28345d1d7a417cc9a1f9b402ad1860a401926fb9618064df
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = nuru-browser-bin
