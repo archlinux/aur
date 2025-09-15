@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=XPanel
-Exec=xpanel-desktop
+Exec=xpanel
 Icon=xpanel-desktop
 Type=Application
 Categories=Utility;
