@@ -5,7 +5,7 @@ options=(!strip) # Otherwise all libraries will be stripped from the executable 
 
 pkgname=$_pkgbasename-bin
 pkgver=1.0.3
-pkgrel=1 # Increment when PKGBUILD is changed
+pkgrel=2 # Increment when PKGBUILD is changed
 pkgdesc="Simple CLI for downloading videos from SwitchTube"
 arch=('x86_64')
 url="https://github.com/panmona/switchtube-dl"
