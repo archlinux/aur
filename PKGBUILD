@@ -23,5 +23,5 @@ package() {
     install -Dm755 bin/warp-cli          "$pkgdir/usr/bin/warp-cli"
     install -Dm755 bin/warp-svc          "$pkgdir/usr/bin/warp-svc"
     install -Dm644 lib/systemd/system/warp-svc.service "$pkgdir/usr/lib/systemd/system/warp-svc.service"
-    sudo sed -i 's|^ExecStart=/bin/warp-svc|ExecStart=/usr/bin/warp-svc|' /usr/lib/systemd/system/warp-svc.service
+    sudo sed -i 's|^ExecStart=/bin/warp-svc|ExecStart=/usr/bin/warp-svc|' "$pkgdir/usr/lib/systemd/system/warp-svc.service"
 }
