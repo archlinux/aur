@@ -4,7 +4,7 @@
 pkgname=doh-proxy
 reponame=doh-server
 pkgver=0.9.14
-pkgrel=0
+pkgrel=3
 pkgdesc="A DNS-over-HTTP server proxy written in Rust by jedisct1"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jedisct1/$reponame"
