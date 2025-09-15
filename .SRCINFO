@@ -1,16 +1,17 @@
 pkgbase = keyfinder-cli
 	pkgdesc = Estimate the musical key of many different audio file formats
-	pkgver = 1.1.2
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/evanpurkhiser/keyfinder-cli
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL-3.0-only
+	makedepends = cmake
 	depends = ffmpeg
 	depends = libkeyfinder
 	depends = fftw
-	source = https://github.com/evanpurkhiser/keyfinder-cli/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 144539cd7fee223dca3a052435c1b2df0ab8b8c3170753ecc7f9c4d915d2bb07
+	source = https://github.com/evanpurkhiser/keyfinder-cli/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = 7826eab103bf925804cd6b522a8e61cdc51e89991770e46cb765f8d7f7fc3809
 
 pkgname = keyfinder-cli
