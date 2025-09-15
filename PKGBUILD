@@ -1,6 +1,6 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
-pkgver=r39.gd633fd6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="DOOM-style animated fire wallpaper for Hyprland using hyprwinwrap"
 arch=('x86_64')
@@ -13,15 +13,23 @@ source=("$pkgname::git+https://github.com/Leafmun-certii/doom_fire_wallpaper.git
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.g%s" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  printf "r%s.g%s" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --release --locked --bin doom-fire-wallpaper
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --locked --frozen
 }
 
 package() {
