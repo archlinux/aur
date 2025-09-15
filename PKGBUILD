@@ -4,7 +4,7 @@
 # Contributor: liberodark Frederic Bezies
 
 pkgname=stacer-bin
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux System Optimizer and Monitoring"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('stacer' 'stacer-git')
 options=('!strip')
 
 source_x86_64=("https://launchpad.net/~quentiumyt/+archive/ubuntu/${pkgname%-bin}/+files/${pkgname%-bin}_${pkgver}-${pkgrel}+noble_amd64.deb")
-sha512sums_x86_64=('398d26ae3b8bdb7a288210c4a9ce0de10a8e4133689ef1cfae51a327d690cf901d0c16234ced68041d598533abb4c495cd93ad86089ebc841560ad80fb473278')
+sha512sums_x86_64=('e3ed3e824634ee2a0292b7fbe5f04245e70548b63f073fe0aefe7a95593efdd388f52532f49d9487028940a09ae8ad1f7a1ea522631ae6024d532759b9055dcb')
 
 
 package() {
