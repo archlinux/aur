@@ -2,7 +2,7 @@
 
 pkgname=star-system
 pkgver=6.00
-pkgrel=1
+pkgrel=2
 pkgdesc="STAR-System is the new driver and API system provided with all new and future STAR-Dundee interface and router devices."
 arch=('x86_64')
 url="http://www.star-dundee.com"
@@ -32,7 +32,7 @@ prepare() {
 
 	cd ${srcdir}/tmp
 	patch -Np0 -i ${srcdir}/kbuild.patch
-	#patch -Np3 -i ${srcdir}/version.patch
+	patch -Np3 -i ${srcdir}/version.patch
 }
 
 
@@ -40,22 +40,29 @@ build() {
 	# pci
 	cd ${srcdir}/tmp/driver_src/pci_driver
 	cp objects/x86-64/*.o_shipped .
+	for file in *.o_shipped; do
+		mv -- "$file" "${file%.o_shipped}.o"
+	done
 
 	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
 	cp star_spw_pci.ko ../
 
 	# pcie
-	#
 	cd ${srcdir}/tmp/driver_src/ultra_pcie_driver
 	cp objects/x86-64/*.o_shipped .
+	for file in *.o_shipped; do
+		mv -- "$file" "${file%.o_shipped}.o"
+	done
 
 	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
 	cp star_ultra_pcie.ko ../
 
-
 	#usb
 	cd ${srcdir}/tmp/driver_src/usb_driver
 	cp objects/x86-64/*.o_shipped .
+	for file in *.o_shipped; do
+		mv -- "$file" "${file%.o_shipped}.o"
+	done
 
 	make -f Kbuild EXTRA_CFLAGS=-DSTAR_TRY_NEWER_KERNEL CONFIG_WERROR=n
 	cp star_spw_usb.ko ../
@@ -101,10 +108,10 @@ package() {
 	chmod 775  ${pkgdir}/run/lock/subsys
 
 }
-md5sums=('b540f74aa865ddf54976b41dc4f932c8'
-         '27cdc9e2194c607bd3dddd836436d1b5'
-         'ff68ba2ba6f66417be61b665ee9c640c'
-         'a199b4efd164a0624069a890af16e919'
-         'bf755f1b4bf51a6f21084627ce0160ee'
-         '93aade04088f34ae486ff6dc131b4e43'
-         'c41c13d299012654ff431500e12febca')
+sha256sums=('5deb178ac143ad36f478f1ed01375608a23b7e8f1e04d9ef0b39033ade975c83'
+            '842d55fd08515bbec1882f80c20fc29a9c28e32aa222718280e37f07794386da'
+            'a6f626e79014761d4d86359b7ed08a5f41add4d8d2a04e0c111b83406e97e465'
+            '23529acb5a7bc2a6ee9a5370f658dbff1822960daf8257ca940d8c2dbec50f42'
+            'ad92ae049b9c6ac3c9a39a23b66b523f970e28aae0348f78dd2362ac5dd15fa7'
+            'a8ff051b5ccb1dfbfe4a74c4213a93f8bb81760e6dee4144ab5c300521959947'
+            'af73cda3af22bf2e2fa16e3790ca56693c6a18d6ea7d159bc47faace694307f4')
