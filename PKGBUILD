@@ -3,7 +3,7 @@
 pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
-pkgver=0.76.3
+pkgver=0.80.2
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -17,7 +17,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('2cc73d507d7e21ba2314ca17890b6fff1a4b372618945089d5e3ea754ed0f390278df850f00112cefdd8930d5898985b9fb66a165c5bdba860c50bac4fbd1aba')
+sha512sums=('59c913764b8218be491ba7d48de1a821eb7a20c412f31f75a61949a5727469cd593a23400717ac7fc61ffc50743939127e1bd15a949ed1baee9174df3d5dc112')
 
 prepare() {
   tar xf "${_pkgname}-$pkgver.tar.gz"
@@ -39,7 +39,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   ./build_jni.sh desktop
-  GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon :client:assemble -PskipAndroid=true
+  GRADLE_USER_HOME="${srcdir}/.gradle" ./gradlew --no-daemon :client:assemble -PskipAndroid=true
 
   zip -d "client/build/libs/libsignal-client-${pkgver}.jar" "${_libname}*.so"
 }
