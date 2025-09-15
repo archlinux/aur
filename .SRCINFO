@@ -1,6 +1,6 @@
 pkgbase = discimagecreator
 	pkgdesc = A disk image creation tool supporting a large number of formats
-	pkgver = 20250501
+	pkgver = 20250901
 	pkgrel = 1
 	url = https://github.com/saramibreak/DiscImageCreator
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = discimagecreator
 	depends = gcc-libs
 	depends = glibc
 	optdepends = unscrambler: Unscramble GC/Wii optical disks
-	source = discimagecreator-20250501.tar.gz::https://github.com/saramibreak/DiscImageCreator/archive/refs/tags/20250501.tar.gz
-	sha256sums = 21579a4b18c7d3272be9655d989094ef8db4b682906b6a9d387853c74a9a4821
+	source = discimagecreator-20250901.tar.gz::https://github.com/saramibreak/DiscImageCreator/archive/refs/tags/20250901.tar.gz
+	sha256sums = e74970ab1009b69384e722f08b71df478533f5757ccb9a1b8c200bfdb628b290
 
 pkgname = discimagecreator

@@ -3,7 +3,7 @@
 
 _pkgname="discimagecreator"
 pkgname="$_pkgname"
-pkgver=20250501
+pkgver=20250901
 pkgrel=1
 pkgdesc="A disk image creation tool supporting a large number of formats"
 url="https://github.com/saramibreak/DiscImageCreator"
@@ -26,7 +26,7 @@ optdepends=(
 _pkgsrc="DiscImageCreator-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext")
-sha256sums=('21579a4b18c7d3272be9655d989094ef8db4b682906b6a9d387853c74a9a4821')
+sha256sums=('e74970ab1009b69384e722f08b71df478533f5757ccb9a1b8c200bfdb628b290')
 
 build() {
   arch-meson build "$_pkgsrc"
