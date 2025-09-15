@@ -1,6 +1,6 @@
 # Maintainer: Damian Dimanov <damian.dimanov@gmail.com>
 
-pkgname=zoekt-git
+pkgname=zoekt
 pkgver=20250915.r1866.g4e4a529c
 pkgrel=1
 pkgdesc="Fast trigram-based code search engine (latest git)"
