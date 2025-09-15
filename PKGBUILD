@@ -28,7 +28,7 @@ arch=('any')
 url='https://github.com/Trepan-Debuggers/bashdb'
 license=('GPL')
 depends=("bash>=${_ver%%-*}" 'python-pygments')
-makedepends=('texi2html' 'git')
+makedepends=('texi2html' 'git' 'perl')
 provides=('bashdb')
 conflicts=('bashdb' 'bashdb-git')
 
