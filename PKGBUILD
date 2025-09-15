@@ -1,6 +1,6 @@
 # Maintainer: liammmcauliffe <https://github.com/liammmcauliffe>
 pkgname=hyprworm
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A fast and lightweight window switcher for Hyprland built in C"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cjson')
 makedepends=('git' 'make' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/liammmcauliffe/hyprworm/archive/v$pkgver.tar.gz")
-sha256sums=('7af416f24823959bc162806d846782c98dc5616994a0bfa8bc3cbc15ff345d77')
+sha256sums=('88f00654568080b6c4e0bed3b557996f6929238b3f23a66f3e695b07c292a4d6')
 
 build() {
     cd "$pkgname-$pkgver"
