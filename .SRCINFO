@@ -1,0 +1,17 @@
+pkgbase = obsidianospm-git
+	pkgdesc = ObsidianOS Package Manager, install pacman packages as ObsidianOS Overlays.
+	pkgver = r3.b74d866
+	pkgrel = 1
+	url = https://github.com/Obsidian-OS/opm
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = libobsidianos_overlays-git
+	depends = obsidianctl-git
+	provides = opm
+	source = obsidianospm-git::git+https://github.com/Obsidian-OS/opm
+	sha256sums = SKIP
+
+pkgname = obsidianospm-git
