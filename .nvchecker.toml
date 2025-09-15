@@ -1,0 +1,5 @@
+[netsleuth]
+source = "git"
+git = "https://github.com/vmkspv/netsleuth.git"
+prefix = "v"
+

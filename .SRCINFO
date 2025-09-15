@@ -1,0 +1,16 @@
+pkgbase = netsleuth
+	pkgdesc = Simple utility for calculating and analyzing IP subnet values
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/vmkspv/netsleuth
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = python-gobject
+	source = netsleuth-1.1.1.tar.gz::https://github.com/vmkspv/netsleuth/archive/v1.1.1.tar.gz
+	sha256sums = d4e769ce26a31ce18b6b4a9b38a04160f593ad93389f38fcca4adcf4ed9d2dd4
+
+pkgname = netsleuth
