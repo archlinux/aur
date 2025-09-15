@@ -1,10 +1,11 @@
-# Maintainer: sem.z <sem.z at protonmail dot com>
+# Maintainer: AndyHazz <andyhazz at protonmail dot com>
+# Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-unstable-bin"
 pkgver=2.3.1_beta
 _pkgver=2.3.1-beta
 pkgrel=1
-pkgdesc="G-code generator for 3D printers (all versions including alpha, beta, release candidates and stable versions)"
+pkgdesc="G-code generator for 3D printers (versions including beta, release candidates and stable versions)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
@@ -18,7 +19,7 @@ prepare() {
 	chmod +x OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage
 	./OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage --appimage-extract
 
-	sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-unstable/bin/orca-slicer|g' \
+	sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-unstable/bin/orca-slicer %U|g' \
 		"squashfs-root/OrcaSlicer.desktop"
 }
 
@@ -28,12 +29,13 @@ package() {
 	install -d "$pkgdir/opt/${pkgname%-bin}/"
 	cp -av squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
-	rm "$pkgdir/opt/${pkgname%-bin}"/{OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
+	rm -f "$pkgdir/opt/${pkgname%-bin}"/{OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
 
 	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/${pkgname%-bin}/bin/orca-slicer" "$pkgdir/usr/bin/"
+	ln -s "/opt/${pkgname%-bin}/bin/orca-slicer" "$pkgdir/usr/bin/orca-slicer"
 
-	install -Dm644 "squashfs-root/OrcaSlicer.desktop" -t \
+    install -d "$pkgdir/usr/share/applications"
+	install -Dm644 "squashfs-root/OrcaSlicer.desktop" \
 		"$pkgdir/usr/share/applications/"
 
 	install -d "$pkgdir/usr/share/icons/"
