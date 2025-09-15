@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-bin
 _pkgname=vllm
-pkgver=0.10.1.1
-pkgrel=2
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -75,29 +75,14 @@ makedepends=(
 )
 options=(!strip)
 _cpy=38
-#_cuda=126
+_cuda=129
+_whl="vllm-${pkgver}+cu${_cuda}-cp${_cpy}-abi3-manylinux1_x86_64.whl"
 source=(
-  "https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl"
-  "add-python-313-support.patch")
-noextract=("vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl")
-sha256sums=('8ca0dd985e1ceac8540e7719c654f1553b3ba8a43c685ac8d3fa1366ffb6443a'
-            '5f466eaeb18d73474045a97a8bd7afb3ebe6581a32194b254783803686190080')
-prepare() {
-  rm -rf vllm patch
-  unzip -q "vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
-    "vllm/config/__init__.py"
-  patch -Np1 -i ../add-python-313-support.patch
-  mkdir -p patch
-  cp "vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" patch/
-  # force zip to update the file even if timestamps match - by first removing and then re-adding
-  zip -d "patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
-    "vllm/config/__init__.py"
-  zip -u "patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl" \
-    "vllm/config/__init__.py"
-}
-
+  "https://github.com/vllm-project/vllm/releases/download/v${pkgver}/${_whl}"
+)
+noextract=("${_whl}")
+sha256sums=('a69daadd6a87f991aa9aef13a56d3c9832679181ce9307d2aadc312dc3244662')
 package() {
-  python -m installer --destdir="${pkgdir}" "$srcdir/patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl"
-  rm "$srcdir/patch/vllm-${pkgver}-cp${_cpy}-abi3-manylinux1_x86_64.whl"
+  python -m installer --destdir="${pkgdir}" "${_whl}"
 }
 # vim:set ts=2 sw=2 et:
