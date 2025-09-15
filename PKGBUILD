@@ -3,7 +3,7 @@ pkgname=mockoon
 pkgver=9.3.0
 _electronversion=36
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.(Use system-wide electron)"
 arch=('any')
 url="https://mockoon.com/"
@@ -84,10 +84,10 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/desktop/packages/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/app/packages/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/desktop/build-res/icon_${_icons}x32.png" \
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/app/build-res/icon_${_icons}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"

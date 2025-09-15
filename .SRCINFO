@@ -1,7 +1,7 @@
 pkgbase = mockoon
 	pkgdesc = The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.(Use system-wide electron)
 	pkgver = 9.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mockoon.com/
 	arch = any
 	license = MIT
