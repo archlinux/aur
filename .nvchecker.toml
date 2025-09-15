@@ -1,0 +1,3 @@
+[retro95-greeter]
+source = "git"
+git = "https://gitlab.com/lumi200/retro95-greeter.git"
