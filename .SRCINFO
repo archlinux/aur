@@ -1,0 +1,18 @@
+pkgbase = zig0.4-bin
+	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://ziglang.org
+	arch = x86_64
+	license = MIT
+	makedepends = minisign
+	provides = zig0.4
+	conflicts = zig0.4
+	source = zig-0.4.0-README.md::https://github.com/ziglang/zig/raw/refs/tags/0.4.0/README.md
+	sha256sums = 58b7945f23f66b053534e1af8aa9b8a289cc573729e6dc2fe5ce3cd093d3808e
+	source_x86_64 = https://ziglang.org/download/0.4.0/zig-linux-x86_64-0.4.0.tar.xz
+	source_x86_64 = https://ziglang.org/download/0.4.0/zig-linux-x86_64-0.4.0.tar.xz.minisig
+	sha256sums_x86_64 = fb1954e2fb556a01f8079a08130e88f70084e08978ff853bb2b1986d8c39d84e
+	sha256sums_x86_64 = SKIP
+
+pkgname = zig0.4-bin
