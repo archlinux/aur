@@ -5,19 +5,22 @@
 
 pkgname='alice-vision'
 pkgver=3.3.0
-pkgrel=2
-options=('!lto' '!debug') # debug package is kinda big -- needs investigation!
-pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
+pkgrel=3
+options=('!debug') # debug package is kinda big -- needs investigation!
+pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
-url="https://alicevision.github.io/"
+url="https://alicevision.org/"
 license=('MPL-2.0' 'MIT')
-depends=('boost-libs' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag' 'openmesh' 'libe57format' 'apriltag' 'opensubdiv' 'opencolorio'
+depends=('boost-libs' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag' 'openmesh' 'opensubdiv' 'opencolorio'
          'alembic' 'opengv' 'opencv' 'popsift' 'uncertainty-framework' 'assimp' 'onnx' 'onnxruntime' 'cuda' 'swig' 'openimageio' 'usd')
 makedepends=('boost' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon'
-             'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann')
+             'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'libe57format')
+optdepends=('apriltag: Recognition of Apriltags'
+			'libe57format: e57 3d imaging format I/O')
 source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
-        "OpenImageIO.tar.gz::https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v2.5.18.0.tar.gz"
+        "OpenImageIO::https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v2.5.18.0.tar.gz"
+        "LibPNG::https://download.sourceforge.net/libpng/libpng-1.6.39.tar.gz"
         "FindCoinUtils.cmake"
         "FindClp.cmake"
         "FindOsi.cmake"
@@ -25,14 +28,15 @@ source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
         "fix-build.patch"
         "alicevision.sh")
 
-sha256sums=('SKIP'
+sha256sums=('abdd3b872de2d42d089728fc1ee151c24a1ed78297fc8713c9efd02801bdcc90'
             'SKIP'
             'f57481435cec18633d3eba9b2e8c483fc1df6f0a01c5c9f98cbae6d1c52928e5'
+            'af4fb7f260f839919e5958e5ab01a275d4fe436d45442a36ee62f73e5beb75ba'
             'd21691bfd9c2561cea52b5f48caf885ec6f8c2a0603ce594914bff610e77a0c5'
             '6523435334eec6e39a244371287504cd0a0e88aa0cbe5dcac38b819ea881074e'
             'fbb87c86bc0b2ee2c98abfbecb0d555f75f01ccf5d4c59c22bb598e7f2897bf9'
             '3f02c715f27498ac8982edee3e3af151b0cd2a9cb83da37fef3b7fec1e34b169'
-            '7b6e1aa141d51b5f303472f7d25ff919594e2734a2ad985a65238c704b1851f0'
+            'cdaaeb77f59125f43a4ea6158d1e8442027feb22fe635f0b4124ecd25a3308a9'
             'b474a12823b1fb0e1613bba0d7bd455f63124aa8c29b3d00df94f0a3c00ab900')
 
 prepare() {
@@ -52,6 +56,9 @@ prepare() {
   # fix build
   patch -p1 -i ../fix-build.patch
 
+  # cmake masks envvars for some stupid reason
+  sed -e "s|SEDNVCC_CCBINHERE|${NVCC_CCBIN}|g" -i src/CMakeLists.txt
+
   # fix default OCIO config path
   patch -p1 -i ../fix-default-ocio-path.patch
   # fix doc build
@@ -62,20 +69,18 @@ build() {
   cd ${srcdir}/AliceVision
 
   cmake \
-    --fresh \
    	-Bbuild \
     -DALICEVISION_BUILD_DEPENDENCIES=ON \
     -DALICEVISION_INSTALL_MESHROOM_PLUGIN=ON \
     -DAV_BUILD_DEPENDENCIES_PARALLEL=0 \
-    -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=TRUE \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_RPATH=/opt/alicevision/lib/ \
+    -DCMAKE_INSTALL_RPATH=/opt/alicevision/lib \
     -DAV_BUILD_CUDA=OFF \
 	-DAV_BUILD_ZLIB=OFF \
 	-DAV_BUILD_ASSIMP=OFF \
 	-DAV_BUILD_TIFF=OFF \
 	-DAV_BUILD_JPEG=OFF \
-	-DAV_BUILD_PNG=OFF \
+	-DAV_BUILD_PNG=ON \
 	-DAV_BUILD_LIBRAW=OFF \
 	-DAV_BUILD_POPSIFT=OFF \
 	-DAV_BUILD_CCTAG=OFF \
@@ -108,7 +113,7 @@ build() {
 	-DAV_BUILD_SWIG=OFF \
 	-DAV_BUILD_PYBIND11=OFF \
 	-DAV_BUILD_OPENMESH=OFF \
-	-DAV_BUILD_ALICEVISION=ON \
+	-DAV_BUILD_ALICEVISION=ON
 
   make -C build
 
@@ -125,7 +130,7 @@ package() {
   DESTDIR="${pkgdir}" make -C build/external/aliceVision_build install
 
   mkdir -p "${pkgdir}"/opt/alicevision/
-  cp -r build/external/tmpinstall/* "${pkgdir}"/opt/alicevision/
+  cp -r build/external/tmpinstall/{include,lib} "${pkgdir}"/opt/alicevision/
   
   mv "${pkgdir}"/usr/lib/python "${pkgdir}"/usr/lib/python"${python_version}"
 

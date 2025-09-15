@@ -1,5 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 313a704c8..1e39e8dbf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.14)
+-project(aliceVision LANGUAGES C CXX)
++project(aliceVision LANGUAGES C CXX CUDA)
+ 
+ option(ALICEVISION_BUILD_DEPENDENCIES "Build all AliceVision dependencies" OFF)
+ option(AV_BUILD_ALICEVISION "Enable building of AliceVision" ON)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index dfa00ff0b..19ac3ffb0 100644
+index dfa00ff0b..06ec7bc79 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -123,7 +123,7 @@ if (ALICEVISION_USE_RPATH)
@@ -11,23 +22,18 @@ index dfa00ff0b..19ac3ffb0 100644
      endif()
  endif()
  
-@@ -334,6 +334,15 @@ endif()
- # OpenImageIO
+@@ -180,8 +180,8 @@ endmacro(add_target_properties)
  # ==============================================================================
- find_package(OpenImageIO 2.0.9 REQUIRED)
-+find_package(GIF REQUIRED)
-+find_package(Ptex REQUIRED)
-+find_package(WebP REQUIRED)
-+find_package(JPEG REQUIRED)
-+find_package(TIFF REQUIRED)
-+find_package(PNG REQUIRED)
-+find_package(TBB REQUIRED)
-+find_package(OpenColorIO REQUIRED)
-+find_package(Freetype REQUIRED)
- if (OPENIMAGEIO_FOUND OR OpenImageIO_FOUND)
-     message(STATUS "OpenImageIO found.")
- else()
-@@ -448,7 +457,9 @@ endif()
+ set(CMAKE_MODULE_PATH
+     ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+-include(OptimizeForArchitecture)
+-OptimizeForArchitecture()
++#include(OptimizeForArchitecture)
++#OptimizeForArchitecture() #we don't want this as it causes a segfault and anyway we want to refer to makepkg config
+ set(ALICEVISION_HAVE_SSE 0)
+ if (SSE2_FOUND OR TARGET_ARCHITECTURE STREQUAL "native")
+     if (MSVC AND NOT ${CMAKE_CL_64})
+@@ -448,7 +448,9 @@ endif()
  # Flann
  # ==============================================================================
  if (ALICEVISION_BUILD_SFM)
@@ -38,17 +44,25 @@ index dfa00ff0b..19ac3ffb0 100644
      find_package(flann REQUIRED)
  
      if (TARGET lz4::lz4)
-@@ -583,7 +594,8 @@ set(ALICEVISION_HAVE_USD 0)
+@@ -583,6 +585,8 @@ set(ALICEVISION_HAVE_USD 0)
  
  if (NOT ALICEVISION_USE_USD STREQUAL "OFF")
      find_package(pxr CONFIG)
--
 +    find_package(X11 REQUIRED)
 +    find_package(hdf5 REQUIRED)
+ 
      if (pxr_FOUND)
          set(ALICEVISION_HAVE_USD 1)
-         message(STATUS "USD version ${PXR_VERSION} found.")
-@@ -876,6 +888,7 @@ set(ALICEVISION_INCLUDE_DIRS
+@@ -733,7 +737,7 @@ if (ALICEVISION_HAVE_CUDA)
+     list(GET ALICEVISION_CUDA_CC_LIST ${ALICEVISION_CC_LIST_LEN} ALICEVISION_CUDA_CC_LIST_LAST)
+     set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS};-gencode;arch=compute_${ALICEVISION_CUDA_CC_LIST_LAST},code=compute_${ALICEVISION_CUDA_CC_LIST_LAST}")
+ 
+-    set(CUDA_NVCC_FLAGS         "${CUDA_NVCC_FLAGS};-std=c++20")
++    set(CUDA_NVCC_FLAGS         "${CUDA_NVCC_FLAGS};-std=c++20;-ccbin=SEDNVCC_CCBINHERE;-Xcompiler=-fno-lto")
+ 
+     # default stream legacy implies that the 0 stream synchronizes all streams
+     set(CUDA_NVCC_FLAGS         "${CUDA_NVCC_FLAGS};--default-stream;legacy")
+@@ -876,6 +880,7 @@ set(ALICEVISION_INCLUDE_DIRS
          ${COINUTILS_INCLUDE_DIRS}
          ${CLP_INCLUDE_DIRS}
          ${OSI_INCLUDE_DIRS}
@@ -56,7 +70,7 @@ index dfa00ff0b..19ac3ffb0 100644
  )
  
  include_directories(${ALICEVISION_INCLUDE_DIRS})
-@@ -912,7 +925,7 @@ else()
+@@ -912,7 +917,7 @@ else()
              set(SPHINX_HTML_DIR "${CMAKE_CURRENT_BINARY_DIR}/htmlDoc")
  
              configure_file(
@@ -65,7 +79,7 @@ index dfa00ff0b..19ac3ffb0 100644
                  "${CMAKE_CURRENT_BINARY_DIR}/conf.py"
                  @ONLY
              )
-@@ -920,7 +933,7 @@ else()
+@@ -920,7 +925,7 @@ else()
              add_custom_target(doc ALL
                  ${SPHINX_EXECUTABLE}
                  -b html
@@ -75,30 +89,10 @@ index dfa00ff0b..19ac3ffb0 100644
                  COMMENT "Building HTML documentation with Sphinx"
              )
 diff --git a/src/aliceVision/image/CMakeLists.txt b/src/aliceVision/image/CMakeLists.txt
-index cd4b4bc87..87b81adf5 100644
+index cd4b4bc87..f432fc281 100644
 --- a/src/aliceVision/image/CMakeLists.txt
 +++ b/src/aliceVision/image/CMakeLists.txt
-@@ -42,6 +42,12 @@ alicevision_add_library(aliceVision_image
-         aliceVision_numeric
-         OpenImageIO::OpenImageIO
-         OpenImageIO::OpenImageIO_Util
-+        OpenColorIO::OpenColorIO
-+        TIFF::TIFF
-+        JPEG::JPEG
-+        PNG::PNG
-+        tbb
-+        Freetype::Freetype
-     PRIVATE_LINKS
-         aliceVision_system
-         ${OPENEXR_LIBRARIES}
-@@ -62,12 +68,14 @@ alicevision_add_test(resampling_test.cpp   NAME "image_resampling" LINKS aliceVi
- 
- # SWIG Binding
- if (ALICEVISION_BUILD_SWIG_BINDING)
-+    #message(FATAL_ERROR "${ALICEVISION_ROOT}/external/tmpinstall/include")
-     alicevision_swig_add_library(image
-         SOURCES image.i
-         PUBLIC_LINKS
+@@ -68,9 +68,10 @@ if (ALICEVISION_BUILD_SWIG_BINDING)
              aliceVision_image
              ${Python3_LIBRARIES}
          PRIVATE_INCLUDE_DIRS
@@ -106,33 +100,55 @@ index cd4b4bc87..87b81adf5 100644
              ../include
              ${ALICEVISION_ROOT}/include
              ${Python3_INCLUDE_DIRS}
+             ${Python3_NumPy_INCLUDE_DIRS}
+     )
+-endif()
+\ No newline at end of file
++endif()
 diff --git a/src/cmake/AliceVisionConfig.cmake.in b/src/cmake/AliceVisionConfig.cmake.in
-index 8dc4a0d12..06d89f9aa 100644
+index 8dc4a0d12..6315227b4 100644
 --- a/src/cmake/AliceVisionConfig.cmake.in
 +++ b/src/cmake/AliceVisionConfig.cmake.in
-@@ -48,7 +48,16 @@ include(CMakeFindDependencyMacro)
+@@ -48,7 +48,7 @@ include(CMakeFindDependencyMacro)
  set(Ceres_DIR @Ceres_DIR@)
  find_dependency(Ceres)
  
 -find_dependency(OpenImageIO 2.1)
 +find_dependency(OpenImageIO 2.1 PATHS /opt/alicevision)
-+find_dependency(GIF REQUIRED)
-+find_dependency(Ptex REQUIRED)
-+find_dependency(WebP REQUIRED)
-+find_dependency(JPEG REQUIRED)
-+find_dependency(TIFF REQUIRED)
-+find_dependency(PNG REQUIRED)
-+find_dependency(TBB REQUIRED)
-+find_dependency(OpenColorIO REQUIRED)
-+find_dependency(Freetype REQUIRED)
  
  # whether it is built with CCTags
  set(ALICEVISION_HAVE_CCTAG @ALICEVISION_HAVE_CCTAG@)
 diff --git a/src/cmake/Dependencies.cmake b/src/cmake/Dependencies.cmake
-index c14b5c430..3aab0c84c 100644
+index c14b5c430..02d368712 100644
 --- a/src/cmake/Dependencies.cmake
 +++ b/src/cmake/Dependencies.cmake
-@@ -1136,36 +1136,31 @@ if(AV_BUILD_OPENIMAGEIO)
+@@ -514,21 +514,20 @@ if(AV_BUILD_PNG)
+ 
+     ExternalProject_Add(
+         ${PNG_TARGET}
+-        URL https://download.sourceforge.net/libpng/libpng-1.6.39.tar.gz
+-        URL_HASH MD5=93b8e79a008747e70f7704f600349559
+-        DOWNLOAD_DIR ${BUILD_DIR}/download/libpng
+         PREFIX ${BUILD_DIR}
+         BUILD_IN_SOURCE 0
+         BUILD_ALWAYS 0
+         UPDATE_COMMAND ""
+-        SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/png
++        SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/../../libpng-1.6.39
+         BINARY_DIR ${BUILD_DIR}/png_build
+-        INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
++        INSTALL_DIR ${BUILD_DIR}/tmpinstall
+ 
+         CONFIGURE_COMMAND ${CMAKE_COMMAND} ${CMAKE_CORE_BUILD_FLAGS}
+             ${ZLIB_CMAKE_FLAGS}
+             -DPNG_ARM_NEON=${AV_PNG_ARM_NEON}
+             -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
++            -DCMAKE_INSTALL_RPATH=/opt/alicevision/lib
++            -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+             <SOURCE_DIR>
+         BUILD_COMMAND $(MAKE) -j${AV_BUILD_DEPENDENCIES_PARALLEL}
+         DEPENDS ${ZLIB_TARGET}
+@@ -1136,36 +1135,32 @@ if(AV_BUILD_OPENIMAGEIO)
      set(OPENIMAGEIO_TARGET openimageio)
  
      ExternalProject_Add(${OPENIMAGEIO_TARGET}
@@ -152,8 +168,8 @@ index c14b5c430..3aab0c84c 100644
              ${CMAKE_COMMAND}
              ${CMAKE_CORE_BUILD_FLAGS}
              -DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}
--            -DBOOST_ROOT=${CMAKE_INSTALL_PREFIX}
-+            -DBUILD_SHARED_LIBS=ON
+             -DBOOST_ROOT=${CMAKE_INSTALL_PREFIX}
++            -DPNG_ROOT=${BUILD_DIR}/tmpinstall
              -DOIIO_BUILD_TESTS:BOOL=OFF
              -DOIIO_BUILD_TOOLS:BOOL=OFF
 -            -DILMBASE_HOME=${CMAKE_INSTALL_PREFIX}
@@ -179,7 +195,7 @@ index c14b5c430..3aab0c84c 100644
              # TODO: build with libheif
          BUILD_COMMAND $(MAKE) -j${AV_BUILD_DEPENDENCIES_PARALLEL}
          DEPENDS ${BOOST_TARGET} ${OPENEXR_TARGET} ${TIFF_TARGET} ${PNG_TARGET} ${JPEG_TARGET} ${LIBRAW_TARGET} ${ZLIB_TARGET} ${FFMPEG_TARGET} ${PYBIND11_TARGET}
-@@ -1434,18 +1429,32 @@ if(AV_BUILD_ALICEVISION)
+@@ -1434,18 +1429,30 @@ if(AV_BUILD_ALICEVISION)
          BINARY_DIR ${BUILD_DIR}/aliceVision_build
          INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
          CONFIGURE_COMMAND ${CMAKE_COMMAND}
@@ -204,7 +220,7 @@ index c14b5c430..3aab0c84c 100644
 -        -DALICEVISION_USE_POPSIFT=${AV_BUILD_POPSIFT}
 -        -DALICEVISION_USE_CUDA=${AV_USE_CUDA}
 -        -DALICEVISION_BUILD_SWIG_BINDING=${AV_USE_SWIG}
--        -DALICEVISION_BUILD_DOC=OFF
+         -DALICEVISION_BUILD_DOC=OFF
 +        -DALICEVISION_USE_CUDA=ON
 +        -DALICEVISION_USE_CCTAG=ON
 +        -DALICEVISION_USE_POPSIFT=ON
@@ -213,16 +229,13 @@ index c14b5c430..3aab0c84c 100644
 +        -DALICEVISION_USE_OPENGV=ON
 +        -DALICEVISION_USE_OPENCV=ON
 +        -DALICEVISION_USE_ONNX=ON
-+        -DALICEVISION_USE_APRILTAG=ON
 +        -DALICEVISION_USE_USD=ON
 +        -DALICEVISION_BUILD_SWIG_BINDING=ON
 +        -DCMAKE_CXX_STANDARD=17
-+        -DCMAKE_C_COMPILER=gcc-14
-+        -DCMAKE_CXX_COMPILER=g++-14
  
          ${ZLIB_CMAKE_FLAGS}
          ${ASSIMP_CMAKE_FLAGS}
-@@ -1476,5 +1485,6 @@ if(AV_BUILD_ALICEVISION)
+@@ -1476,5 +1483,6 @@ if(AV_BUILD_ALICEVISION)
  
          -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR> <SOURCE_DIR>
          DEPENDS ${AV_DEPS}
