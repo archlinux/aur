@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang-libs-gir
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
