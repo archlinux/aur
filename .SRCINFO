@@ -1,6 +1,6 @@
 pkgbase = jinx
 	pkgdesc = A meta-build-system for building OS distributions
-	pkgver = 0.6.24
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://codeberg.org/Mintsuki/jinx
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = jinx
 	depends = libarchive
 	depends = openssl
 	depends = zlib
-	source = git+https://codeberg.org/Mintsuki/jinx.git#tag=v0.6.24?signed
+	source = git+https://codeberg.org/Mintsuki/jinx.git#tag=v0.7.3?signed
 	validpgpkeys = 05D29860D0A0668AAEFB9D691F3C021BECA23821
-	b2sums = c54039a4a557c13a7e4dc6cebce9fa56ee031742afc4043eaa2f76c4cdc60e9936d6748b2729bf6805fb9c40da54380881af5c2035e4602d47143cb79de0ceee
+	b2sums = 1c83ea0acbea999169e5bc4d36a3657b9945e3ca9020b9e6190403f2fa5a7a63b3d555d69b159f38580ebbc962590a68f66cd173715a37f18dda935516909c6a
 
 pkgname = jinx
