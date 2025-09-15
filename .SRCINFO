@@ -1,0 +1,22 @@
+pkgbase = wayback-git
+	pkgdesc = Web archiving and playback tool that allows users to capture and preserve web content
+	pkgver = 0.20.1.r16.g1a7f080
+	pkgrel = 1
+	url = https://github.com/wabarc/wayback
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	optdepends = chromium
+	optdepends = ffmpeg
+	optdepends = libwebp
+	optdepends = nss
+	optdepends = tor
+	optdepends = youtube-dl
+	optdepends = wget
+	provides = wayback
+	conflicts = wayback
+	source = wayback-git::git+https://github.com/wabarc/wayback
+	sha256sums = SKIP
+
+pkgname = wayback-git
