@@ -1,0 +1,28 @@
+pkgbase = python-ultraplot-git
+	pkgdesc = A succint python wrapper for matplotlib (development version)
+	pkgver = 1.60.2.r12.g6ab74347
+	pkgrel = 1
+	url = https://github.com/Ultraplot/UltraPlot
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.12
+	depends = python-cycler
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-packaging
+	optdepends = python-cartopy: matplotlib support for visualisation
+	optdepends = python-icecream: for sweet and creamy print debugging
+	optdepends = python-networkx: for working with complex networks
+	optdepends = python-seaborn: for visualisation of scientific data
+	optdepends = python-xarray: for N-D labeled arrays and datasets
+	provides = python-ultraplot
+	conflicts = python-ultraplot
+	source = ultraplot::git+https://github.com/Ultraplot/UltraPlot.git
+	sha256sums = SKIP
+
+pkgname = python-ultraplot-git
