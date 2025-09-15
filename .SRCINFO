@@ -1,6 +1,6 @@
 pkgbase = riven-remake-gog-bin
 	pkgdesc = 2024 remake of the game 'Riven', a puzzle adventure game with superb landscape immersion. It is different from the original also in content. You need a GOG account and have purchased the file through GOG; PKGBUILD might ask you for GOG login.
-	pkgver = 1.7.1+gog81557
+	pkgver = 1.7.4+gog82922
 	pkgrel = 1
 	epoch = 0
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgname = riven-remake-data-gog-bin
 	optdepends = riven-remake-companion: For a strategy guide with hints and storytelling.
 	optdepends = the-art-of-riven-remake: For artwork and concept sketches.
 	optdepends = riven-original-data: To also play the original (1997) game 'Riven: The Sequel to Myst'.
-	provides = riven-remake-data=1.7.1+gog81557
+	provides = riven-remake-data=1.7.4+gog82922
 	provides = the-art-of-riven-remake
 	provides = riven-remake-companion
 	conflicts = riven-remake-data
@@ -44,5 +44,5 @@ pkgname = riven-remake-launcher
 	depends = riven-remake-data
 	depends = wine
 	optdepends = riven-original: To also play the original (1997) game 'Riven: The Sequel to Myst'.
-	provides = riven-remake=1.7.1+gog81557
+	provides = riven-remake=1.7.4+gog82922
 	conflicts = 
