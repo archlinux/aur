@@ -2,15 +2,15 @@
 
 pkgname=httpjail-bin
 pkgdesc='Monitor and restrict HTTP/HTTPS requests from processes'
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 url='https://github.com/coder/httpjail'
 arch=('x86_64' 'aarch64')
 license=('CC0-1.0')
 source_x86_64=("httpjail.${pkgver}.tar.gz::https://github.com/coder/httpjail/releases/download/v$pkgver/httpjail-$pkgver-linux-$CARCH.tar.gz")
 source_aarch64=("httpjail.${pkgver}.tar.gz::https://github.com/coder/httpjail/releases/download/v$pkgver/httpjail-$pkgver-linux-$CARCH.tar.gz")
-sha256sums_x86_64=('43a62dcbd1c9162ce9f600e6df0c00e3efcceb61927af9b73633a3d44f2788d6')
-sha256sums_aarch64=('f3a9f995f555d3f14b2125a397de31d034adc0761d7b93cdec7d443cdfc5d01d')
+sha256sums_x86_64=('c66c0ca19a99176512b08e13968776133b4957534fde887774d4f29833792f0f')
+sha256sums_aarch64=('c2c833ba5f0735f7f452209eaa1864253bcc85c4982996ab924a4b3cea37cefe')
 
 package() {
     cd "$srcdir/httpjail-$pkgver-linux-$CARCH"
