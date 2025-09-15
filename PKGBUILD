@@ -3,21 +3,22 @@
 _pkgname="tsukimi"
 pkgname="${_pkgname}-bin"
 pkgver=0.21.0
-pkgrel=1
-pkgdesc='A simple third-party Emby client'
+pkgrel=2
+pkgdesc='A simple third-party Jellyfin client for Linux'
 arch=('x86_64')
 url="https://github.com/tsukinaha/tsukimi"
 license=('GPL-3.0-or-later')
 provides=('tsukimi')
 conflicts=('tsukimi-git')
 depends=(
+	'mpv'
 	'ffmpeg'
 	'libadwaita'
 	'gstreamer'
 	'gtk4')
 makedepends=(
 	'git'
-	'cargo')
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsukimi-x86_64-linux.tar.gz"
 	"tsukimi.desktop"
 	"tsukimi.png")

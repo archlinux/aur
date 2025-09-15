@@ -1,12 +1,12 @@
 pkgbase = tsukimi-bin
-	pkgdesc = A simple third-party Emby client
+	pkgdesc = A simple third-party Jellyfin client for Linux
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = cargo
+	depends = mpv
 	depends = ffmpeg
 	depends = libadwaita
 	depends = gstreamer
