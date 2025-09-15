@@ -1,7 +1,6 @@
 [__config__]
 oldver = "old_ver.json"
 newver = "new_ver.json"
-http_timeout = 60
 
 [AlJalilDot]
 name = "AlJalilDot"

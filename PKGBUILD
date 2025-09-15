@@ -1,8 +1,8 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
 pkgname=ttf-qurancomplex-fonts
-pkgver=20241221
-pkgrel=2
+pkgver=20250915
+pkgrel=1
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
 url="http://fonts.qurancomplex.gov.sa"
@@ -25,7 +25,7 @@ source=(https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/AlJalilDot_
         https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/KSARegular_B.ttf
         https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/Outlinedv001.otf
         https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/ShadatainVer01.otf
-        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/Symbols1_Ver02.otf
+        https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/Symbols1_Ver20.ttf
         https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTNB_v2-0.ttf
         https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTN_v2-0.ttf
         https://fonts.qurancomplex.gov.sa/wp-content/uploads/2022/12/UthmanTSBVer1.ttf
@@ -57,7 +57,7 @@ sha256sums=('b66cf99d27741479dc526a72ff7759ce9f2f7f0509e97dbb3198af47044a0028'
             '7bc29584df72fbefe32f7b607b3720a0e6f72753c32857cf1ad77d442b4a8710'
             'b9abd8c47cfa7496670075eb9e1bc07f4c046dabfa5f6633945ca1d22915110b'
             '4512f7e37484c4ebeb4ea0d4d29a8469aa60fecb69c5b9e53d49c75065b7d3a5'
-            '3f7746014ff9e4124882e66b4f0e2c11629bbc99f3c42be4ea324988f7572809'
+            '1e7134459a5dec076fc3c62ff680b87fd954b4079f00ac4255c7ac250947d1d6'
             'c881678c4f9628e20ee7411652fb8c0db457e22ea4b279bcfdd0763312a5ee38'
             'f4a2b776261e390089ee108029d9a5f1ee862435ea52f571af2c5e0817c361ba'
             'a4b9d8ca8d14d0b1237d6fd7881462b66f30970767faae992ee3d7a0cd74671a'
