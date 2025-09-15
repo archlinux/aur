@@ -1,7 +1,7 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="DOOM-style animated fire wallpaper for Hyprland using hyprwinwrap"
 arch=('x86_64')
 url="https://github.com/Leafmun-certii/doom_fire_wallpaper"
@@ -11,13 +11,6 @@ makedepends=('git' 'cargo')
 optdepends=('grim: for the screen_burn feature')
 source=("$pkgname::git+https://github.com/Leafmun-certii/doom_fire_wallpaper.git")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.g%s" \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
   cd "$srcdir/$pkgname"
