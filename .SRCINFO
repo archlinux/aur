@@ -1,11 +1,12 @@
 pkgbase = cloudflare-warp-minimal-bin
 	pkgdesc = Minimal Cloudflare WARP client
 	pkgver = 2025.6.1335.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.cloudflare.com/warp-client
 	arch = x86_64
 	license = custom
 	depends = glibc
+	depends = nftables
 	depends = nspr
 	depends = nss
 	provides = cloudflare-warp-minimal-bin
