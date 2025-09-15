@@ -1,0 +1,11 @@
+pkgbase = dinfo
+	pkgdesc = A simple program that gives you informations about a file/directory, support .yaml and .json output
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/SCSDC-co/DINFO
+	arch = x86_64
+	license = GPL 3.0
+	source = https://github.com/SCSDC-co/DINFO/releases/download/v1.0.6/dinfo-linux-x64-self-contained.zip
+	sha256sums = 80bda057b56f804bfacc17cc14d4ad03d5bb2ca78f201513ef34317d46145c40
+
+pkgname = dinfo
