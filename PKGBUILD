@@ -4,8 +4,8 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r71618.4a5c3740848
-pkgrel=2
+pkgver=r71683.7b3465ab551
+pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
@@ -35,11 +35,10 @@ depends=(
   woff2
   
   libpng-apng # AUR
-  skia # AUR
   angle # AUR
   simdutf-git # 'simdutf' is v6, we need v7.
 )
-makedepends=(autoconf-archive automake cmake git nasm ninja patchelf tar unzip zip)
+makedepends=(autoconf-archive automake cmake git nasm ninja patchelf skia-static tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
