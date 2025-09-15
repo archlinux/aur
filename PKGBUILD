@@ -17,7 +17,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.2.0_devel.207057.b4b65822203.d41d8cd
+pkgver=25.3.0_devel.212049.1c57f889082.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -36,7 +36,6 @@ makedepends=(
   'libelf'
   'libglvnd'
   'libva'
-  'libvdpau'
   'libx11'
   'libxdamage'
   'libxml2'
@@ -132,7 +131,6 @@ build() {
     -D gallium-extra-hud=true
     -D gallium-rusticl=true
     -D gallium-va=enabled
-    -D gallium-vdpau=enabled
     -D gallium-mediafoundation=disabled
     -D gbm=enabled
     -D gles1=disabled
@@ -286,10 +284,8 @@ package_amdonly-gaming-mesa-git() {
     "mesa"
     "libva-mesa-driver=$epoch:$pkgver-$pkgrel"
     "mesa-libgl=$epoch:$pkgver-$pkgrel"
-    "mesa-vdpau=$epoch:$pkgver-$pkgrel"
     "libva-driver"
     "opengl-driver"
-    "vdpau-driver"
   )
   conflicts=(
     'mesa'
@@ -305,9 +301,6 @@ package_amdonly-gaming-mesa-git() {
 
   _install fakeinstall/$_libdir/libgbm.so*
   _install fakeinstall/$_libdir/libgallium*.so*
-
-  # vdpau drivers
-  _install fakeinstall/$_libdir/vdpau/*.so*
 
   # dri
   _install fakeinstall/$_libdir/dri/*.so*
