@@ -1,0 +1,18 @@
+pkgbase = zig0.3-bin
+	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://ziglang.org
+	arch = x86_64
+	license = MIT
+	makedepends = minisign
+	provides = zig0.3
+	conflicts = zig0.3
+	source = zig-0.3.0-README.md::https://github.com/ziglang/zig/raw/refs/tags/0.3.0/README.md
+	sha256sums = 8798751cb3d4ea24ea4338b0f2ffa2d0718dd40c11a6a9493c0414fb35ac00b2
+	source_x86_64 = https://ziglang.org/download/0.3.0/zig-linux-x86_64-0.3.0.tar.xz
+	source_x86_64 = https://ziglang.org/download/0.3.0/zig-linux-x86_64-0.3.0.tar.xz.minisig
+	sha256sums_x86_64 = b378d0aae30cb54f28494e7bc4efbc9bfb6326f47bfb302e8b5287af777b2f3c
+	sha256sums_x86_64 = SKIP
+
+pkgname = zig0.3-bin
