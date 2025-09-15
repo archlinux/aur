@@ -17,8 +17,8 @@ conflicts=("${pkgname%-bin}")
 optdepends=(
     'bash: For auto-completions'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.tar.gz")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.tar.gz")
 sha256sums_aarch64=('d41c0aa03c5c6137437f4cae01a2d9b3399ade79669bda0e8912edd904c153e7')
 sha256sums_x86_64=('01ce362f56ad4187bd106bec5311f421083b3942c3a3f2d866c6b3d508101d9a')
 package() {

@@ -9,9 +9,9 @@ pkgbase = minify-bin
 	optdepends = bash: For auto-completions
 	provides = minify=2.24.3
 	conflicts = minify
-	source_x86_64 = minify-2.24.3-x86_64.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.24.3/minify_linux_amd64.tar.gz
+	source_x86_64 = minify-2.24.3-x86_64.tar.gz::/releases/download/v2.24.3/minify_linux_amd64.tar.gz
 	sha256sums_x86_64 = 01ce362f56ad4187bd106bec5311f421083b3942c3a3f2d866c6b3d508101d9a
-	source_aarch64 = minify-2.24.3-aarch64.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.24.3/minify_linux_arm64.tar.gz
+	source_aarch64 = minify-2.24.3-aarch64.tar.gz::/releases/download/v2.24.3/minify_linux_arm64.tar.gz
 	sha256sums_aarch64 = d41c0aa03c5c6137437f4cae01a2d9b3399ade79669bda0e8912edd904c153e7
 
 pkgname = minify-bin
