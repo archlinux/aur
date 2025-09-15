@@ -1,6 +1,6 @@
 pkgbase = vnite-git
 	pkgdesc = A versatile game management software designed to provide a unified interface for recording, managing, and synchronizing your gaming journey.(Use system-wide electron)
-	pkgver = 4.0.1.r1.ga160cb2
+	pkgver = 4.3.1.r0.ga3ff975
 	pkgrel = 1
 	url = https://vnite.ximu.dev/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vnite-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron35
-	provides = vnite=4.0.1
+	provides = vnite=4.3.1
 	conflicts = vnite
 	source = vnite.git::git+https://github.com/ximu3/vnite.git
 	source = vnite.sh
