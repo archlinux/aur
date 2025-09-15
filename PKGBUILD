@@ -4,7 +4,7 @@
 pkgname=directx-shader-compiler-git
 _pkgname=DirectXShaderCompiler
 pkgdesc="A compiler for HLSL to DXIL (DirectX Intermediate Language)."
-pkgver=r3885.ba1b4cfbd
+pkgver=r5040.9c8b79b27
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -20,6 +20,9 @@ sha256sums=(
   'SKIP'
   'a6bce372d524a7cd48b0e7a40d51198e29cd6ccf897f5839e040f21aa25de037'
 )
+
+provides=('directx-shader-compiler')
+conflicts=('directx-shader-compiler')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
