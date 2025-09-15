@@ -1,14 +1,14 @@
 pkgbase = ttf-sarasa_ui
-	pkgver = 1.0.30
+	pkgver = 1.0.33
 	pkgrel = 2
 	url = https://github.com/be5invis/Sarasa-Gothic/
 	arch = any
 	license = OFL
 	provides = ttf-fonts
 	source = https://github.com/be5invis/Sarasa-Gothic/raw/refs/heads/main/LICENSE
-	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.30/SarasaUi-TTF-1.0.30.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.33/SarasaUi-TTF-1.0.33.7z
 	sha256sums = 32c932e0dbae4f6e6386964bbc2d04178707665a05ca65cf636241af13d50a53
-	sha256sums = 226ea2aa6249f55c76fe2268147e14581f3e5c87949624a29a2c34d5e9ee86b1
+	sha256sums = 9a6452f0d433a1ad2be1989c91a4dd1e26f0dc6410e6a00e55a9251168977c94
 
 pkgname = ttf-sarasa_ui-all
 	pkgdesc = Sarasa UI (CJK)
