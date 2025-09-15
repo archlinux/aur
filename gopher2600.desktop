@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Gopher2600
+Comment=Atari 2600 emulator
+Categories=Game;
+Keywords=Atari;2600;Emulator;
+Icon=gopher2600
+Exec=/usr/bin/gopher2600 %f
+Terminal=false
+StartupNotify=false
+

@@ -1,0 +1,5 @@
+[gopher2600]
+source = "git"
+git = "https://github.com/JetSetIlly/Gopher2600.git"
+prefix = "v"
+
