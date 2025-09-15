@@ -2,7 +2,7 @@
 
 pkgname=linear-cli
 _pypi_name=linearator
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A comprehensive CLI tool for Linear issue management with advanced search, bulk operations, and team collaboration features"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
     'keyrings.alt: Alternative keyring backends for credential storage'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
-sha256sums=('ae9f73ce1a9846675edf28fd5450adf5864a997a64f7dfaa0c39d41b50e14319')
+sha256sums=('ef313f8cf3abbc8b31419cf2efac455c108e1137730f75ead78e93216fb6b441')
 
 build() {
     # No build step needed - we'll install directly from PyPI
