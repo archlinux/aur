@@ -1,7 +1,7 @@
 pkgbase = eden-git
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
-	pkgver = 0.0.3.git.r8.g2502352
-	pkgrel = 2
+	pkgver = 0.0.3.git.r14.g4c5d03f
+	pkgrel = 1
 	epoch = 1
 	url = https://eden-emulator.github.io/
 	arch = x86_64
@@ -42,6 +42,7 @@ pkgbase = eden-git
 	depends = zydis
 	depends = zycore-c
 	depends = quazip-qt6
+	depends = mbedtls
 	optdepends = gamemode: Gamemoded support
 	provides = eden
 	conflicts = eden

@@ -5,15 +5,15 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.3.git.r8.g2502352
-pkgrel=2
+pkgver=0.0.3.git.r14.g4c5d03f
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden')
-depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6')
+depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls')
 makedepends=('git' 'cmake' 'clang' 'lld' 'catch2' 'boost' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt' 'cubeb')
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
@@ -36,9 +36,7 @@ build() {
 		-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
-		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
-		-DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
 		-DYUZU_USE_EXTERNAL_SDL2=OFF \
 		-DYUZU_USE_BUNDLED_QT=OFF \
@@ -46,7 +44,6 @@ build() {
 		-DYUZU_USE_QT_MULTIMEDIA=ON \
 		-DYUZU_USE_QT_WEB_ENGINE=ON \
 		-Dhttplib_FORCE_BUNDLED=ON \
-		-DCMAKE_DISABLE_FIND_PACKAGE_mbedtls=ON \
 		-DTITLE_BAR_FORMAT_RUNNING="eden | ${pkgver} {}" \
 		-DTITLE_BAR_FORMAT_IDLE="eden ${pkgver} {}" \
 		-DYUZU_TESTS=OFF \
