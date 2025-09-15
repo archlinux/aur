@@ -1,0 +1,13 @@
+pkgbase = vsocks-git
+	pkgdesc = Make a wifi hotspot with IP/TCP traffic redirected over SOCKS5 Proxy
+	pkgver = 14.7d826e2
+	pkgrel = 1
+	url = https://github.com/ecnx/vsocks
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/ecnx/vsocks.git
+	sha256sums = SKIP
+
+pkgname = vsocks-git
