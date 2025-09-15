@@ -2,7 +2,7 @@
 # Contributor: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=0.26.2
+pkgver=0.26.7
 pkgrel=1
 pkgdesc="The cross-platform notes app built for handwriting"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL-3.0-only')
 depends=('at-spi2-core'
          'bash'
          'cairo'
+         'curl'
          'fontconfig'
          'gcc-libs'
          'glib2'
@@ -24,17 +25,18 @@ depends=('at-spi2-core'
          'libxmu'
          'pango'
          'webkit2gtk-4.1'
-         'zenity')
-makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'ninja')
+         'zenity'
+         'zlib')
+makedepends=('clang' 'cmake' 'fvm' 'gst-plugins-base-libs' 'java-runtime' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "saber.sh")
-sha256sums=('116b2aa14983a469cd62679ad8ea53207c9d3894bff25641b05388c921a79ed8'
+sha256sums=('b5f2d259114afa784ab616c9ef4d6cf48fc011c9d1c18d22fad6d0e32e9c2b5e'
             '2429585c739f6da2d2068fd44d5868bb9a0ef6657d8117ca32fd8e0b78942a10')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    fvm install 3.32.8
-    fvm global 3.32.8
+    fvm install 3.35.3
+    fvm global 3.35.3
 
     # Disable analytics
     fvm flutter config --no-analytics
