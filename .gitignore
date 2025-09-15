@@ -1,0 +1,8 @@
+src/
+pkg/
+*.pkg.tar*
+*.src.tar.gz
+.git
+*.swp
+*.pyc
+__pycache__/
