@@ -2,7 +2,7 @@
 
 _pkgname=spacy-transformers
 pkgname=python-${_pkgname}
-pkgver=1.3.7
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="spaCy pipelines for pre-trained BERT and other transformers"
 arch=(x86_64 aarch64)
@@ -22,16 +22,16 @@ makedepends=(
 	python-wheel
 	python-setuptools
 )
-source=("https://github.com/explosion/${_pkgname}/archive/refs/tags/release-v${pkgver}.zip")
-b2sums=("03ee12c0c50218259f53036ea6c6ece26a9e4a982f8f3a981ae9449b3179524a051bd743f523772fbae06f983f07047aa77476f52e9110b71adc2299400576b8")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/explosion/${_pkgname}/archive/refs/tags/release-v${pkgver}.tar.gz")
+b2sums=("91db967e6f8269c09f5773da4e8c1c3c9b4315cf9a1123016683ad0a6912d69d39ac4b476df4835d702284cd6ca8a5c7fbd5439f33f9567dfa7d56ef8728cef0")
 
 build() {
-    cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}-release-v${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}-release-v${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
