@@ -1,7 +1,7 @@
 # Maintainer: Oscar Rodriguez a.k.a mester <mester@disroot.org> 
 pkgname="arashi-icon-theme"
-pkgver=25.08.3
-pkgrel=3
+pkgver=25.09
+pkgrel=1
 arch=("any")
 license=('CC-BY-4.0')
 pkgdesc="Arashi a smooth, modern icon set with a twist!"
@@ -12,24 +12,12 @@ options=('!strip' '!debug')
 
 source=(Arashi-$pkgver::"$url/releases/download/$pkgver/Arashi-$pkgver.zip")
 
-sha256sums=("efa7e4c94a05cd5103dab814c157c4514adaebd7bda36c77a239489b3d00a3ea")
+sha256sums=("20cfb7d720b0fa261f34007c1c7a56f06309798033f56cc531a474d5fbf00ac2")
 
 package() {
-	cd "${srcdir}/Arashi"
+	cd "${srcdir}/Arashi-$pkgver"
 	rm -rf .github
 	rm -rf .git
-	for dir in */; do
-        # Excluye la carpeta 128x128 para no crear enlaces en ella misma.
-        if [ "$dir" != "128x128/" ]; then
-            # Entra en el directorio de destino
-            (
-                cd "$dir"
-                # Crea los enlaces: los archivos de origen son ../128x128/*
-                # y el destino es el directorio actual (.).
-                ln -s ../128x128/* . 2>/dev/null
-            )
-        fi
-    done
 	install -d -m755 "${pkgdir}/usr/share/icons/Arashi"
 	cp -a --no-preserve=ownership . "${pkgdir}/usr/share/icons/Arashi"
 }
