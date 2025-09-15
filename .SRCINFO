@@ -1,0 +1,18 @@
+pkgbase = bashdb-github-latest
+	pkgdesc = A debugger for Bash scripts (latest GitHub release)
+	pkgver = 5.2_1.2.0
+	pkgrel = 1
+	url = https://github.com/Trepan-Debuggers/bashdb
+	arch = any
+	license = GPL
+	makedepends = texi2html
+	makedepends = git
+	depends = bash>=5.2
+	depends = python-pygments
+	provides = bashdb
+	conflicts = bashdb
+	conflicts = bashdb-git
+	source = bashdb-5.2-1.2.0.tar.gz::https://github.com/Trepan-Debuggers/bashdb/archive/refs/tags/5.2-1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = bashdb-github-latest
