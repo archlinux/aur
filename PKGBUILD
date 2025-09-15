@@ -2,7 +2,7 @@
 
 pkgname=python-hoymiles-wifi
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Commandline tool and library for Hoymiles DTUs with HMS microinverters'
 url='https://github.com/suaveolent/hoymiles-wifi'
 license=('MIT')
@@ -10,6 +10,7 @@ arch=('any')
 depends=(
 	'python-protobuf'
 	'python-crcmod'
+	'python-cryptography'
 )
 makedepends=(
 	'python-setuptools'
