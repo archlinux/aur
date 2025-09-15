@@ -1,31 +1,37 @@
-# Maintainer zhanghua <zhanghua.00@qq.com>
+# Maintainer taotieren <admin@taotieren.com>
+# Contributor zhanghua <zhanghua.00@qq.com>
 # Contributor lyswhut <lyswhut@qq.com>
-# Contributor taotieren <admin@taotieren.com>
 
 pkgbase=lx-music-desktop-git
 pkgname=(lx-music-desktop-git lx-music-desktop-electron-git)
 pkgdesc=一个免费的音乐查找助手
-pkgver=2.9.0.cb16bd03
-pkgrel=4
+pkgver=2.11.0.c1e7faa7
+pkgrel=1
 arch=($CARCH)
 url=https://github.com/lyswhut/lx-music-desktop
 licence=(Apache-2.0)
+_electron=electron35
 conflicts=('lx-music-desktop')
 provides=('lx-music-desktop')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 makedepends=(
+ 	$_electron
 	git
-	npm)
+	jq
+	moreutils
+	python-setuptools
+	npm
+	zip
+)
 source=(
 	${pkgbase}::git+${url}
 	lx-music-desktop.desktop
 	lxmusic-url.desktop
 	lx-music-desktop)
 sha256sums=('SKIP'
-	'34342d437c59c6ae352123272daa1819e275c843170bbb8b467cbbc1c4c63dac'
-	'83083f9febee2332f9d038bcf5693128f3bde17b41ed094f005265eafe1eb94f'
-	'47bc117b8137990e538ab4049f1b2d8b04d3d495432c4002c5343a9331dc59c7')
-_electron=electron16
+            '34342d437c59c6ae352123272daa1819e275c843170bbb8b467cbbc1c4c63dac'
+            '83083f9febee2332f9d038bcf5693128f3bde17b41ed094f005265eafe1eb94f'
+            '47bc117b8137990e538ab4049f1b2d8b04d3d495432c4002c5343a9331dc59c7')
 
 pkgver() {
 	cd "${srcdir}/${pkgbase}"
@@ -36,11 +42,22 @@ prepare() {
 	git -C "${srcdir}/${pkgbase}" clean -dfx
 
 	cd "${srcdir}/${pkgbase}"
-	npm install
+	local electronDist="/usr/lib/${_electron}"
+	local electronVersion="$(<$electronDist/version)"
+	electronVersion="${electronVersion%.*}.0"
+	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
+	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+
+	# disable autoupdater
+	sed -i "/common.tryAutoUpdate/s/true/false/" src/common/defaultSetting.ts
 }
 
 build() {
 	cd "${srcdir}/${pkgbase}"
+	export HOME=${srcdir}
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	npm install
 	npm run pack:dir
 }
 
