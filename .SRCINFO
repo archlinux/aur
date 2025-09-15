@@ -1,0 +1,17 @@
+pkgbase = bookmark-cd
+	pkgdesc = Bookmark directories and move to them
+	pkgver = 1.0.25
+	pkgrel = 1
+	url = https://github.com/a1ecbr0wn/bcd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	optdepends = bash: shell integration
+	optdepends = zsh: shell integration
+	optdepends = ksh: shell integration
+	optdepends = fish: shell integration
+	source = bookmark-cd-1.0.25.tar.gz::https://static.crates.io/crates/bookmark-cd/bookmark-cd-1.0.25.crate
+	sha256sums = a4d41a6017c62a6eabb15a3a9f7b02abb6f6c07021b1b5573a81d3384c197e87
+
+pkgname = bookmark-cd
