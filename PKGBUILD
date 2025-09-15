@@ -1,7 +1,7 @@
 # Maintainer: firstpick <you@example.com>
 pkgname=usrgrp-manager-git
-pkgver=0.1.0.r0.ga7a2ea1
-pkgrel=2
+pkgver=0.1.0.r0.ccdf2eb
+pkgrel=1
 pkgdesc="Keyboard-driven TUI to view and manage UNIX users and groups (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/UsrGrp-Manager-TUI"
