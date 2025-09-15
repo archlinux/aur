@@ -3,7 +3,7 @@
 _pkgauthor=neur0map
 _pkgname=manx
 pkgname=${_pkgname}-bin
-pkgver=0.4.6
+pkgver=0.5.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly"
@@ -31,18 +31,18 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "SIMPLE_EMBEDDING_SETUP-${pkgver}.md::${_urlraw}/docs/SIMPLE_EMBEDDING_SETUP.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu")
 
-sha256sums=('b20cf353bcaa7861617f4ef7730e30bf76c065f67f07611aa40c6d09336b9ab4'
-            '8b7a09c17b42a2b4ef1a9b0844ea7c6a0bdeecd554bc57db6484f85773e56f00'
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '4a1240e01d1065997b3454517bc8139390ad28d5ba4fed4c2eb20c4e1a29769b'
             '5f9786bf2f5c1ce1cb5aca7e0bac368594f026a36730be808b7d614e5ff775a1'
-            'afb2a90785a6c29d050d601004178e340b77fd826a0fc2057a0f7359d4e26ef8'
-            'cae2fcfda8a68281f9cf36b1536428a852d620e32215562c533e9ecb8651424f'
-            '02a1524b2ab4eede491d237f498c0050ef7de23178dbf4b07fe231ced1a793d9'
-            'd584d93c3e0f96f72f28469afd4ad577351830fd2a377dd0c7cdfe7178372a4a'
-            'd984b4096fa3d27a13ddbd3f0c33907dd2b3b7ccdfd5ba99142a88e041e9d331'
-            '51e35bbb0a4ce191d9f192ceb21f4dc58963cae750ffadb4810bcce9c74d453e'
-            '3d8a4c6506f28e845479885fe6de072c80f409f8a8d2c6a0c91ba883ce607513'
-            '2b5f13cc1fc19595065a48286d7d701bdfb3e2ef7098ac19af26fece34fb1756')
-sha256sums_x86_64=('369fcdf25e88ff6f2ff258b59953f74a08d01e257f1caeb1200e0acb564407a6')
+            'c1ca97ab0e0c6caaf7c27e98a43e777582c1695b1b73e8a465ee3f88ebf4d41d'
+            '6705623346f4c736fca7bad16c59e51c55b6a743fa0a6d23b9b2a5cfcc6b17ce'
+            '829a8b7f9c952aaa7b9a429e8f5c2e88770008c867061bc93bcb71e6829deebf'
+            '0c6d805c460333011f92510d55210e6b6da630c811aa147d430031412287e947'
+            'c0c0f90f37b2e7c1a33a931a939ef2d0285e4952300d3a458b11fca1f5abf8ba'
+            'b341cf118788b8b8840e532332aac1869a4c9e0be74addb2b48fb4e9aca924cc'
+            '1af915cd758b9b54f201e5444057f4813abd4be4dea39f2583b6b858db05847a'
+            '42a63ac0dc3dfa2893ba41526774e82ba87ec85f579888c054f6dfbc0623e7dc')
+sha256sums_x86_64=('3a167bb184fbc6fa85b590b2b5dc034266130c0db69a3d5bd5398541043b404e')
 
 
 package() {
