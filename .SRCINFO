@@ -1,19 +1,14 @@
 pkgbase = msi-keyboard-git
 	pkgdesc = Utility to control MSI Steelseries keyboards, written in C++
-	pkgver = r19.fb57be9
-	pkgrel = 2
-	url = https://github.com/bparker06/msi-keyboard
-	arch = i686
+	pkgver = r6.9336442
+	pkgrel = 1
+	url = https://github.com/makkarpov/msi-keyboard
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = unzip
-	makedepends = libusb
-	makedepends = qt5-base
 	depends = hidapi
 	provides = msi-keyboard
-	source = msi-keyboard-git::git+https://github.com/bparker06/msi-keyboard
+	source = msi-keyboard-git::git+https://github.com/makkarpov/msi-keyboard.git
 	md5sums = SKIP
 
 pkgname = msi-keyboard-git
-
