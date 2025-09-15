@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
 pkgver=0.16.9
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Mikoshi-nyudo/iptvnator-electron"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Mikoshi-nyudo/iptvnator-electron/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2a02c91cec56feca4bb351a939d90be04fbb8172ce113d0af1e41625a3c03307'
+sha256sums=('d00fb3643eb356da7b3e11170c60ea6899c835c9e36254d5e8d80032f8610a15'
             '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -47,7 +47,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(16x16 192x192 256x256 512x512)
+    _icon_sizes=(192x192 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
