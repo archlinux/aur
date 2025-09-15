@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification (32-bit)
-	pkgver = 25.3.0_devel.209833.e9292306dcd.d41d8cd
+	pkgver = 25.3.0_devel.212049.1c57f889082.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = lib32-mesa-amdonly-gaming-git
 	makedepends = lib32-libelf
 	makedepends = lib32-libglvnd
 	makedepends = lib32-libva
-	makedepends = lib32-libvdpau
 	makedepends = lib32-libx11
 	makedepends = lib32-libxdamage
 	makedepends = lib32-libxml2
@@ -106,12 +105,10 @@ pkgname = lib32-amdonly-gaming-mesa-git
 	depends = amdonly-gaming-mesa-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
-	provides = lib32-libva-mesa-driver=:25.3.0_devel.209833.e9292306dcd.d41d8cd-1
-	provides = lib32-mesa-libgl=:25.3.0_devel.209833.e9292306dcd.d41d8cd-1
-	provides = lib32-mesa-vdpau=:25.3.0_devel.209833.e9292306dcd.d41d8cd-1
+	provides = lib32-libva-mesa-driver=:25.3.0_devel.212049.1c57f889082.d41d8cd-1
+	provides = lib32-mesa-libgl=:25.3.0_devel.212049.1c57f889082.d41d8cd-1
 	provides = lib32-libva-driver
 	provides = lib32-opengl-driver
-	provides = lib32-vdpau-driver
 	provides = lib32-opengl-driver
 	conflicts = lib32-mesa
 	conflicts = lib32-mesa-libgl

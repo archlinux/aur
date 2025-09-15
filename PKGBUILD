@@ -15,7 +15,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=25.3.0_devel.209833.e9292306dcd.d41d8cd
+pkgver=25.3.0_devel.212049.1c57f889082.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -36,7 +36,6 @@ makedepends=(
   'lib32-libelf'
   'lib32-libglvnd'
   'lib32-libva'
-  'lib32-libvdpau'
   'lib32-libx11'
   'lib32-libxdamage'
   'lib32-libxml2'
@@ -128,7 +127,6 @@ build() {
     -D gallium-extra-hud=true
     -D gallium-rusticl=true
     -D gallium-va=enabled
-    -D gallium-vdpau=enabled
     -D gallium-mediafoundation=disabled
     -D gbm=enabled
     -D gles1=disabled
@@ -296,10 +294,8 @@ package_lib32-amdonly-gaming-mesa-git() {
     "lib32-mesa"
     "lib32-libva-mesa-driver=$epoch:$pkgver-$pkgrel"
     "lib32-mesa-libgl=$epoch:$pkgver-$pkgrel"
-    "lib32-mesa-vdpau=$epoch:$pkgver-$pkgrel"
     "lib32-libva-driver"
     "lib32-opengl-driver"
-    "lib32-vdpau-driver"
     "lib32-opengl-driver"
   )
   conflicts=(
@@ -319,9 +315,6 @@ package_lib32-amdonly-gaming-mesa-git() {
 
   # only needed when gallium-xa is enabled
   #_install fakeinstall/$_libdir/libxatracker.so*
-
-  # vdpau drivers
-  _install fakeinstall/$_libdir/vdpau/*.so*
 
   # dri
   _install fakeinstall/$_libdir/dri/*.so*
