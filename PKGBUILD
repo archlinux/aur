@@ -1,7 +1,7 @@
 pkgname=wfreq
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="DESC"
+pkgdesc="A package for text anlyzing"
 arch=('any')
 url="https://github.com/Vitalij-Burk/wfreq"
 license=('MIT')
