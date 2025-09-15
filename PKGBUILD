@@ -3,7 +3,7 @@
 # This PKGBUILD is heavily inspired by the cudatext-qt5-bin package
 pkgname=cudatext-qt6-bin
 _pkgname=cudatext
-pkgver=1.228.0.0
+pkgver=1.228.0.3
 pkgrel=0
 pkgdesc="Cross-platform text editor, written in Lazarus. Qt6 edition."
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('cudatext')
 conflicts=('cudatext')
 options=('!strip')
 source=("https://sourceforge.net/projects/cudatext/files/release/${pkgver}/cudatext-linux-qt6-amd64-${pkgver}.tar.xz")
-sha256sums=('5cdf62fd5e78a7a52da9c9c473e2ffc4bfcfd8e113087d6e854dee0a29da7b69')
+sha256sums=('b81ea3a6b4f7e6cfdbc3753e47ff862545e40c4091e2853d7affe27c8fb56e45')
 
 prepare() {
 	echo "Creating desktop file"
