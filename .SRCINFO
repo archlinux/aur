@@ -1,0 +1,13 @@
+pkgbase = musing
+	pkgdesc = An MPD-inspired music server
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/alfazet/musing
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = alsa-lib
+	source = musing-1.0.1.tar.gz::https://github.com/alfazet/musing/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = cfd1c9b9bf101141b8da9b2f17c5302a3cd714867b41e0efc37ec2ff16c49b38
+
+pkgname = musing
