@@ -1,0 +1,18 @@
+pkgbase = zig0.5-bin
+	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://ziglang.org
+	arch = x86_64
+	license = MIT
+	makedepends = minisign
+	provides = zig0.5
+	conflicts = zig0.5
+	source = zig-0.5.0-README.md::https://github.com/ziglang/zig/raw/refs/tags/0.5.0/README.md
+	sha256sums = 01983cc237edff03fb2a6438aa4bf4a9d0b39a48f887c1681ef7b2311e1c9bae
+	source_x86_64 = https://ziglang.org/download/0.5.0/zig-linux-x86_64-0.5.0.tar.xz
+	source_x86_64 = https://ziglang.org/download/0.5.0/zig-linux-x86_64-0.5.0.tar.xz.minisig
+	sha256sums_x86_64 = 43e8f8a8b8556edd373ddf9c1ef3ca6cf852d4d09fe07d5736d12fefedd2b4f7
+	sha256sums_x86_64 = SKIP
+
+pkgname = zig0.5-bin
