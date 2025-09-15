@@ -10,7 +10,7 @@ arch=(
     'aarch64'
 )
 url="https://go.tacodewolff.nl/minify"
-url="https://github.com/tdewolff/minify"
+_ghurl="https://github.com/tdewolff/minify"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
