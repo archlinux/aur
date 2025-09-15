@@ -16,6 +16,10 @@ broker:
     - fronted:
         front: https://vuejs.org/
         host: svitania-naidallszei-2.netlify.app
+    - aws_lambda:
+        function_name: geph-lambda-bouncer
+        region: us-east-1
+        obfs_key: 855MJGAMB58MCPJBB97NADJ36D64WM2T:C4TN2M1H68VNMRVCCH57GDV2C5VN6V3RB8QMWP235D0P4RT2ACV7GVTRCHX3EC37
 
 credentials:
   secret: "your-account-secret"
