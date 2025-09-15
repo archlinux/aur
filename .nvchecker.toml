@@ -1,4 +1,4 @@
 [anyrun]
 source = "git"
-git = "https://github.com/Kirottu/anyrun.git"
+git = "https://github.com/anyrun-org/anyrun.git"
 prefix = "v"
