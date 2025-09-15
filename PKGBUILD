@@ -15,7 +15,7 @@ sha256sums=('f1be243ada8c3257bc4efee3bd576e85fa6d713a9dc2d58fddd067600bf866ce')
 
 prepare() {
     cd "$srcdir"
-    tar -xf data.tar.gz -C "$srcdir"
+    bsdtar -xzf data.tar.gz -C "$srcdir"
 }
 
 package() {
