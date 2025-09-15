@@ -9,7 +9,7 @@
 _name=naiveproxy
 pkgname=${_name}-bin
 
-pkgver=139.0.7258.62_1
+pkgver=140.0.7339.123_1
 pkgrel=1
 _pkgver=${pkgver//_/-}
 
@@ -35,9 +35,7 @@ _source=(
 declare -Ag _archmap=(
 #   [ARCH]=SRCARCH
     ['x86_64']='x64'
-    ['i686']='x86'
     ['aarch64']='arm64'
-    ['armv7h']='arm'
 )
 
 backup=('etc/naiveproxy/config.json')
@@ -65,19 +63,11 @@ for _a in "${!_archmap[@]}"; do
     declare -ag "source_${_a}="'("${_s[@]}")'
 done
 
-sha256sums_aarch64=('5750b33203fe75eccb38166e76925f5ead16001e1074333ec4a0774339c91226'
+sha256sums_aarch64=('33bbecaf5e59401003d6f831f4b7b75f34780323488d992f29bf1f1872dd34e0'
                     '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                     '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                     '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_i686=('a51ce3cb08aa95ffaeadaa0005312ed1ed41852efc4034458069734efeae4d21'
-                 '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
-                 '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
-                 '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_x86_64=('8ebc03c173cf06d9f9810d029567f93ffdfd992735d14245f40a8a0a2ec234a4'
-                   '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
-                   '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
-                   '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
-sha256sums_armv7h=('7f4f6a50e0352c35a24a60608425776ef2011314e3c7b38c3e3c55deded94c5a'
+sha256sums_x86_64=('32aac15b7feffaddbbff50c7341cc1cc23a35b923a77f174c3eba070b877c0ad'
                    '2f4cfc749771104a70b422d4ea6536a2acd38e1124ce37bc0fa46cb1e96e6cca'
                    '8502732d60224d9d46c6f16ad64b59d6c46dd44d283f3b3f52696ce38f3c144c'
                    '8124ab508627d36a73167e30c1a7912489b6a08124e3ef71234b1fca2656cd3c')
