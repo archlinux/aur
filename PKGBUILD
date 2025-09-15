@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=KernelKnn
-_pkgver=1.1.5
+_pkgver=1.1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f67b9a401d36132a78e36f09bbe8be2')
-b2sums=('6d7db2dde893e6c3bacea87b6bb34748b5bd01d62064bc41215186bdc02a3f61646a7cebb0845d3d92a8006b47c55addd2a732507111b7fd3d877731a2323ff4')
+md5sums=('706d5a5239d98fbd74c25a8bd85b7a9a')
+b2sums=('067c9982af7e3b76b6b32aac1f2a0136f204d4ed4dd26193c08b59e6bcdbf4f7187da18383aaad5d6b05bc53914ad893eb4932a64aec5bea9a0609d2e6d0d07c')
 
 build() {
   mkdir build
