@@ -1,0 +1,29 @@
+post_install() {
+  echo "==> Downloading latest geo files..."
+
+  repos=(
+    "Loyalsoldier/v2ray-rules-dat"
+    "chocolate4u/Iran-v2ray-rules:_IR"
+    "runetfreedom/russia-v2ray-rules-dat:_RU"
+  )
+
+  for repo in "${repos[@]}"; do
+    user_suffix="${repo%%:*}"
+    suffix="${repo#*:}"
+    [ "$suffix" = "$repo" ] && suffix=""
+
+    for f in geoip geosite; do
+      curl -fSL "https://github.com/$user_suffix/releases/latest/download/$f.dat" \
+        -o "/usr/lib/x-ui/bin/${f}${suffix}.dat" || echo "Failed to fetch $f from $user_suffix"
+    done
+  done
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  find /usr/lib/x-ui/bin -maxdepth 1 -type f -name 'geoip{,_IR,_RU}.dat'   -delete
+  find /usr/lib/x-ui/bin -maxdepth 1 -type f -name 'geosite{,_IR,_RU}.dat' -delete
+}
