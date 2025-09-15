@@ -19,8 +19,8 @@ prepare() {
 	chmod +x OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage
 	./OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage --appimage-extract
 
-	sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-unstable/bin/orca-slicer %U|g' \
-		"squashfs-root/OrcaSlicer.desktop"
+    sed -i 's|Exec=.*|Exec=/opt/orca-slicer-unstable/bin/orca-slicer %U|g' \
+        "squashfs-root/OrcaSlicer.desktop"
 }
 
 package() {
