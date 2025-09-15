@@ -5,7 +5,7 @@ options=(!strip) # Otherwise all libraries will be stripped from the executable 
 
 pkgname=$_pkgbasename-bin
 pkgver=1.0.3
-pkgrel=3 # Increment when PKGBUILD is changed
+pkgrel=4 # Increment when PKGBUILD is changed
 pkgdesc="Simple CLI for downloading videos from SwitchTube"
 arch=('x86_64')
 url="https://github.com/panmona/switchtube-dl"
@@ -20,8 +20,4 @@ package() {
     mkdir -p "$pkgdir/usr/share"
     install -Dm755 -t "$pkgdir/usr/bin" \
         $_pkgbasename
-    install -Dm644 ./LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 ./README.md \
-        "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
