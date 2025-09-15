@@ -382,7 +382,9 @@ _download()
 		_git clone --origin=origin -s "$flutter_dir" "$cached_flutter_engine_dir/flutter"
 	fi
 	_git -C '.engine-src/flutter' checkout --force --no-track -B makepkg "$engine_version"
+
 	_clone_src "$ARCH_FLUTTER_DEPOT_TOOL_URL" "$fvm_cache_dir/depot_tools"
+	sed -i 's/import httplib2.socks/import socks/' '.engine-src/depot_tools/gerrit_util.py'
 }
 
 build_engine()

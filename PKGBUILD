@@ -4,7 +4,7 @@
 _pkgname=fvm
 pkgname=${_pkgname}-sourcebuild
 pkgver=3.2.1
-pkgrel=3
+pkgrel=4
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions. (Build engine from sources)"
@@ -18,7 +18,7 @@ source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/$pkgver.tar.gz"
 	"${pkgname}-wrapper")
 sha256sums=('d4d524a5e1d7c5160b17ee9c3b2dd4482224d2e1c27c8d494fa0290ae818cd41'
-            'eca1f94a591767a387d40403fbf0593635dfa1a914704e5096082e7c1ec590d2')
+            '0fc63820607260487b854bfe3cd76d7164fa22ccbf64eea3bd4470200bff3db1')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
@@ -49,6 +49,7 @@ package() {
 		'gn'
 		'llvm'
 		'python-httplib2'
+		'python-pysocks'
 		'python-six'
 		'python311'
 	)
