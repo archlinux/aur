@@ -6,3 +6,4 @@ Icon=deadlock-modmanager
 Name=Deadlock Mod Manager
 Terminal=false
 Type=Application
+StartupWMClass=deadlock-modmanager-bin
