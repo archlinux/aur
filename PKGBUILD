@@ -21,7 +21,7 @@ prepare() {
 	cd "${srcdir}"
 	cd "${pkgname}-${pkgver}"
 
-	echo ';plugins { id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0" }' >> settings.gradle.kts
+	echo ';plugins { id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0" }' >> settings.gradle.kts
 }
 
 build() {
