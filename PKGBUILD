@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-symbols
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='symbols provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-symbols')
 provides=('elephant-symbols')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a39cadfa7ac5f54b44457e64af47dae5347044fa1758e53ff7544b2d40b4de55')
+sha256sums=('2f55c7efdde9a553b3b28d178ac1557eec9d4b9578bcc42ba19d51ccd289167f')
 
 build() {
     cd elephant-${pkgver}/internal/providers/symbols
