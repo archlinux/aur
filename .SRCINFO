@@ -1,0 +1,14 @@
+pkgbase = python-sudoku-engine
+	pkgdesc = A simple Python package that generates and solves m x n Sudoku puzzles.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sepehr-rs/sudoku-engine
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.8
+	source = https://github.com/sepehr-rs/sudoku-engine/archive/69d95689956d5cb0cc16c3811b197932e8451815/sudoku-engine-1.0.0.tar.gz
+	sha256sums = e2d117e8ae739e9b9af28f64383bed72381a40548b7bed56e3a5b03031b7e251
+
+pkgname = python-sudoku-engine
