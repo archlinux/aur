@@ -3,7 +3,7 @@
 # Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
-pkgver=26.7
+pkgver=26.8
 pkgrel=1
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
@@ -12,10 +12,10 @@ license=('custom')
 conflicts=('teigha-file-converter')
 replaces=('teigha-file-converter')
 depends=('qt5-base' 'hicolor-icon-theme')
-source=('ODAFileConverter_QT6_lnxX64_8.3dll_26.7.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_8.3dll_26.7.deb'
+source=('ODAFileConverter_QT6_lnxX64_8.3dll_26.8.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_8.3dll_26.8.deb'
         'oda-file-converter'
         'oda-file-converter.desktop')
-md5sums=('e9711ebfcf2011f63ff5d24ff8db3bcd'
+md5sums=('82392bc0993ab300e871a1653baa5e59'
          '9c4ac254a0fc8bbe099bc938f236ee64'
          'cf41b2da616f6d7b124cba80f644ecbe')
 _ogname='ODAFileConverter'
