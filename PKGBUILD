@@ -2,7 +2,7 @@
 
 pkgname=mediawarp-git
 _name=MediaWarp
-pkgver=0.0.6.r16.g22b828d
+pkgver=0.1.2.r2.gf369448
 pkgrel=1
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
 arch=($CARCH)
@@ -32,7 +32,25 @@ source=(
     "${pkgname%-git}.tmpfiles"
     "${pkgname%-git}.sysusers"
 )
+source=(
+    "${pkgname}::git+${url}.git"
+    "embyExternalUrl::git+https://github.com/bpking1/embyExternalUrl.git"
+    "dd-danmaku::git+https://github.com/9channel/dd-danmaku.git"
+    "emby-web-mod::git+https://github.com/newday-life/emby-web-mod.git"
+    "jellyfin-crx::git+https://github.com/newday-life/jellyfin-crx.git"
+    "emby-crx::git+https://github.com/Nolovenodie/emby-crx.git"
+    "jellyfin-danmaku::git+https://github.com/Izumiko/jellyfin-danmaku.git"
+    "${pkgname%-git}.service"
+    "${pkgname%-git}.tmpfiles"
+    "${pkgname%-git}.sysusers"
+)
 sha256sums=('SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     '162fb09f8009c356fb60a6f2c23c1c910768aa4191d0f625400cbe9f7d275a3d'
     '5e93ba0a2c59cf2c0b35fa61ef3818a7d1dd41a966f5547c8faaf4b197d8066c'
     '7f0393bb6d622ad51b72c82df9a2313f378bf2d20019fee36671ffcc5878453e')
@@ -47,6 +65,15 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git submodule init
+    git config submodule.static/embyExternalUrl.url "$srcdir/embyExternalUrl"
+    git config submodule.static/dd-danmaku.url "$srcdir/dd-danmaku"
+    git config submodule.static/emby-web-mod.url "$srcdir/emby-web-mod"
+    git config submodule.static/jellyfin-crx.url "$srcdir/jellyfin-crx"
+    git config submodule.static/emby-crx.url "$srcdir/emby-crx"
+    git config submodule.static/jellyfin-danmaku.url "$srcdir/jellyfin-danmaku"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -56,8 +83,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    export GO111MODULE=on
-    export GOPROXY=https://goproxy.cn,direct
+    #     export GO111MODULE=on
+    #     export GOPROXY=https://goproxy.cn,direct
 
     #     go clean -modcache
     #     go mod init "${url#https://}"
