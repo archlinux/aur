@@ -1,25 +1,25 @@
 post_install() {
-	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mInstall Complete\e[0m -- Enable and start the openlinkhub service:"
-	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[3msudo systemctl enable --now openlinkhub\e[0m"
-	echo -e "\e[1;7m[OpenLinkHub]\e[0m: The OpenLinkHub WebUI will be located at \e[1;7m http://127.0.0.1:27003 \e[0m after starting the service."
+	udevadm control --reload-rules
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mInstall Complete\e[0m "
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: WebUI-> \e[1;7mhttp://127.0.0.1:27003\e[0m"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: Start Service: \e[92msudo systemctl enable --now openlinkhub\e[0m"
 }
 
 pre_upgrade() {
-	systemctl stop openlinkhub
-	systemctl disable openlinkhub
+	systemctl disable --now openlinkhub
 }
 
 post_upgrade() {
-	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mUpgrade Complete\e[0m -- Restart the openlinkhub service:"
-	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[3msudo systemctl restart openlinkhub\e[0m"
-	echo -e "\e[1;7m[OpenLinkHub]\e[0m: The OpenLinkHub WebUI will be located at \e[1;7m http://127.0.0.1:27003 \e[0m after restarting the service."
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mUpgrade Complete\e[0m"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: WebUI-> \e[1;7mhttp://127.0.0.1:27003\e[0m"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: Restart Service: \e[92msudo systemctl restart openlinkhub\e[0m"
 }
 
 pre_remove() {
-	systemctl stop openlinkhub
-	systemctl disable openlinkhub
+	systemctl disable --now openlinkhub
 }
 
 post_remove() {
+	udevadm control --reload-rules
 	systemctl daemon-reload
 }
