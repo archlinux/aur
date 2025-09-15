@@ -5,7 +5,7 @@ _zhsname='猫猫弹幕姬'
 pkgver=2.0.1
 _electronversion=23
 _nodeversion=18
-pkgrel=4
+pkgrel=5
 pkgdesc="Cat Cat DanMu.(Use system-wide electron)哔哩哔哩直播弹幕姬:查看直播间弹幕。"
 arch=('any')
 url="https://github.com/kokolokksk/catcat-dm-react"
@@ -26,14 +26,20 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('c6a22d620f20456e6ff3555e49be08be48ab2a83e4122627ee292a1821d93f3e'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -42,9 +48,13 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname}.desktop"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    gendesk -f -n -q \
+        --pkgname="${pkgname}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname} %U" \
+        --custom="Name[zh_CN]=${_zhsname}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -79,7 +89,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership  "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${_icons}.png" \

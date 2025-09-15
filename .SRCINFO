@@ -1,7 +1,7 @@
 pkgbase = catcat-dm-react
 	pkgdesc = Cat Cat DanMu.(Use system-wide electron)哔哩哔哩直播弹幕姬:查看直播间弹幕。
 	pkgver = 2.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kokolokksk/catcat-dm-react
 	arch = any
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = catcat-dm-react
 	source = catcat-dm-react-2.0.1::git+https://github.com/kokolokksk/catcat-dm-react#tag=v2.0.1
 	source = catcat-dm-react.sh
 	sha256sums = c6a22d620f20456e6ff3555e49be08be48ab2a83e4122627ee292a1821d93f3e
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = catcat-dm-react
