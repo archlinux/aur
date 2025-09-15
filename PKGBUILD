@@ -4,7 +4,7 @@ _pkgname=browser-stable
 pkgname=yandex-browser
 pkgver=25.8.1.844
 _pkgver=25.8.1.844-1
-pkgrel=1
+pkgrel=2
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -16,9 +16,9 @@ categories=("network")
 provides=(yandex-browser)
 conflicts=("yandex-browser" "yandex-browser-stable" "yandex-browser-corporate")
 
-depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "mesa" "gdbm" "gtk4" "nspr" "nss" "pango"
-"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu"
-"vulkan-driver" "vulkan-icd-loader" "ffmpeg")
+depends=("binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "curl" "dbus" "expat" "libcups" "mesa" "gtk4" "nss" "squashfs-tools" "wget" "xdg-utils"
+"vulkan-icd-loader")
+
 optdepends=(
     "speech-dispatcher" 
     "gstreamer-meta"
