@@ -1,7 +1,7 @@
 pkgbase = wolvenkit-cli-bin
 	pkgdesc = A modding tool for Cyberpunk 2077
 	pkgver = 8.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WolvenKit/WolvenKit
 	arch = x86_64
 	license = GPL3
