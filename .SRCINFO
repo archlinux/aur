@@ -1,6 +1,6 @@
 pkgbase = fdtd-vulkan-git
 	pkgdesc = A C++26 vulkan based gui for fdtd
-	pkgver = r104.06d469f
+	pkgver = r245.54b625b
 	pkgrel = 1
 	url = https://github.com/fdtd-lucuma/fdtd-vulkan
 	arch = x86_64
@@ -19,13 +19,17 @@ pkgbase = fdtd-vulkan-git
 	makedepends = vulkan-validation-layers
 	depends = gcc-libs
 	depends = glfw
+	depends = libxrandr
 	depends = vulkan-icd-loader
+	depends = yaml-cpp
 	provides = fdtd-vulkan
 	conflicts = fdtd-vulkan
 	source = fdtd-vulkan-git::git+https://github.com/fdtd-lucuma/fdtd-vulkan
 	source = imgui-git::git+https://github.com/ocornut/imgui#branch=docking
+	source = imgui-module-git::git+https://github.com/stripe2933/imgui-module#branch=docking
 	source = vma-hpp-git::git+https://github.com/YaaZ/VulkanMemoryAllocator-Hpp#tag=v3.2.1
 	source = vkfw-git::git+https://github.com/Cvelth/vkfw#branch=main
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

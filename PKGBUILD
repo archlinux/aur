@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=fdtd-vulkan-git
-pkgver=r104.06d469f
+pkgver=r245.54b625b
 pkgrel=1
 epoch=
 pkgdesc="A C++26 vulkan based gui for fdtd"
@@ -14,7 +14,9 @@ groups=()
 depends=(
 	'gcc-libs'
 	'glfw'
+	'libxrandr'
 	'vulkan-icd-loader'
+	'yaml-cpp'
 )
 makedepends=(
 	'bash-completion'
@@ -37,10 +39,12 @@ conflicts=("${pkgname%-git}")
 source=(
 	"$pkgname::git+$url"
 	"imgui-git::git+https://github.com/ocornut/imgui#branch=docking"
+	"imgui-module-git::git+https://github.com/stripe2933/imgui-module#branch=docking"
 	"vma-hpp-git::git+https://github.com/YaaZ/VulkanMemoryAllocator-Hpp#tag=v3.2.1"
 	"vkfw-git::git+https://github.com/Cvelth/vkfw#branch=main"
 )
 sha256sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -64,6 +68,7 @@ build() {
 		-DUSE_SYSTEM_LIBS=ON \
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
 		-DFETCHCONTENT_SOURCE_DIR_IMGUI="$srcdir/imgui-git" \
+		-DFETCHCONTENT_SOURCE_DIR_IMGUI-MODULE="$srcdir/imgui-module-git" \
 		-DFETCHCONTENT_SOURCE_DIR_VULKANMEMORYALLOCATOR-HPP="$srcdir/vma-hpp-git" \
 		-DFETCHCONTENT_SOURCE_DIR_VKFW="$srcdir/vkfw-git"
 
