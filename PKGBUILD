@@ -9,7 +9,7 @@ license=("MIT")
 arch=("x86_64")
 depends=('gcc-libs' 'glibc' 'dbus' 'tpm2-tss' 'sqlite')
 makedepends=('rust')
-source=("${pkgname}-${pkgver}.tar.gz:https://github.com/koditoriet/totpm/archive/refs/tags/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koditoriet/totpm/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("eed4e1c8f13908731dc11ed667765652bc176ac30afa478f81056c1434f750ba")
 install=$pkgname.install
 
