@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin, Yamashiro <dev cosmicheron com>
 
 pkgname='yamagi-quake2'
-pkgver='8.51'
+pkgver='8.60'
 pkgrel='1'
 pkgdesc='Enhanced Quake II engine optimized for modern systems'
 url='https://www.yamagi.org/quake2/'
@@ -18,7 +18,7 @@ install="${pkgname}.install"
 source=("https://deponie.yamagi.org/quake2/quake2-${pkgver}.tar.xz"
     "${pkgname}.desktop")
 b2sums=(
-    'e8bac5f5216d81d70cb8bf493a0748ac1ff425dc57bdd2b820cf61538a87ad3c7d6d236c45dadb1767990f6dc7979fd908af86ba293f036c9c7c60c7f448f457'
+    '96917bc78c1f1aeffed1e7b471ed96ed80826ee8f8fe0b44e290b0dd180e49bc43ee70dc0f8632dc1495de3af7aa3b569a99e2112b39d5a52a866d6a71977e7c'
     'bfd3220b0bf1a59cac844940d6d7953f5e0de03e5444d8e3c1e2f6260882cc46409c40ec2d1e54fd62a1163c8f287d7394419566952711df2c31a9ddcb385000'
 )
 
