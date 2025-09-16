@@ -1,13 +1,13 @@
 # Maintainer: Sasha Romijn <arch at mxsasha.eu>
 pkgname=bgpq4
-pkgver=1.12
+pkgver=1.15
 pkgrel=1
 pkgdesc="BGP filtering automation tool based on IRR data"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bgp/bgpq4"
 license=('BSD')
 source=("${pkgver}.tar.gz::https://github.com/bgp/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('501714dca3aa7f27f0f56c581c5d82fb1b609f5bad1254b453517f821ef99e673a0a118c6b2aa6e2430167fe322656d2e20ead9a09ec834709e586d07ec8abbc')
+sha512sums=('61e7621baf0de9dc2375393affe5bcbe0a7494ce3edded90c05e60975c359b9b1322fb8a2ade5c91b720cecef363c293fb16fe426f29074d558148c4d68924a5')
 depends=('glibc')
 makedepends=('python-markdown')
 
