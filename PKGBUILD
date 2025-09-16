@@ -37,5 +37,13 @@ EOF
 
     # File .desktop
     install -Dm644 "$srcdir/Arch-Store/arch-store.desktop" "$pkgdir/usr/share/applications/arch-store.desktop"
+
+
+    #version type
+    install -Dm644 /dev/null "$pkgdir/usr/share/arch-store/beta"
+
+    rm -f "$pkgdir/usr/share/arch-store/script"
+
+
 }
 
