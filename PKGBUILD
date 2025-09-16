@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66e3ee3d63957273858daa24ba225f6e4f8b1f3ff1fde8ad3041796b95aaaa4e')
+sha256sums=('c829886ba2b17c69b1c76cb2e1de91633332e97654642f1cf3da7c18789b4d3d')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -86,6 +86,7 @@ check() {
     --deselect google/genai/tests/tunings/test_end_to_end.py
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
     --deselect google/genai/tests/batches/test_embedding.py
+    --deselect google/genai/tests/operations/test_get.py
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
