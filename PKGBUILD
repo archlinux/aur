@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=subtitle-translator-electron-bin
 _pkgname=Subtitle-Translator
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Translate subtitle using ChatGPT.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname//-/.}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('53f40a6b75fae5d6197bda753f05b75deba81a333077801b76a8e6fa0de35cf3'
+sha256sums=('65e2ff6dfa8fb20d0509fd49a1d586dcab592673e1eb9513ecfb24b4c68b8f3b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname//-/ }" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
