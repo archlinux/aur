@@ -31,6 +31,8 @@ sha256sums=('8c157c3d509572a2cd92b75f68c2303d3334366bd8e73c7756f668175e71558a')
 
 build() {
     cd "$_pypi_name-$pkgver"
+    rm -rf dist/  # ensure we are not using prebuilt wheels
+
     python -m build --wheel --no-isolation
 }
 
