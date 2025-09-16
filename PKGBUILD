@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=mmm
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown Mixed Media - A powerful terminal markdown viewer with image support, Mermaid diagrams, and PDF/ODT export"
 arch=('any')
 url="https://github.com/aaronsb/markdown-mixed-media"
@@ -13,6 +13,7 @@ optdepends=(
     'chromium: PDF generation support'
 )
 makedepends=('npm' 'git')
+options=('!strip')  # Don't strip binaries to avoid fakeroot issues
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/markdown-mixed-media/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
@@ -38,8 +39,19 @@ package() {
 
     # Copy built files
     cp -r dist "$pkgdir/usr/lib/$pkgname/"
-    cp -r node_modules "$pkgdir/usr/lib/$pkgname/"
     cp package.json "$pkgdir/usr/lib/$pkgname/"
+
+    # Copy node_modules but exclude problematic binaries
+    cp -r node_modules "$pkgdir/usr/lib/$pkgname/"
+
+    # Remove problematic binary files that cause fakeroot issues
+    find "$pkgdir/usr/lib/$pkgname/node_modules" -type f -name "*.node" -delete 2>/dev/null || true
+    find "$pkgdir/usr/lib/$pkgname/node_modules" -type f -name "*.so" -delete 2>/dev/null || true
+    find "$pkgdir/usr/lib/$pkgname/node_modules" -type f -name "*.dylib" -delete 2>/dev/null || true
+
+    # Remove puppeteer's chromium download to save space (PDF generation will need system chromium)
+    rm -rf "$pkgdir/usr/lib/$pkgname/node_modules/puppeteer/.local-chromium" 2>/dev/null || true
+    rm -rf "$pkgdir/usr/lib/$pkgname/node_modules/puppeteer-core/.local-chromium" 2>/dev/null || true
 
     # Create wrapper script
     cat > "$pkgdir/usr/bin/$pkgname" << EOF
