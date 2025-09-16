@@ -5,6 +5,7 @@ pkgbase = perl-asterisk-ami
 	url = https://github.com/rrb3942/perl-Asterisk-AMI
 	arch = any
 	license = PerlArtistic
+	makedepends = git
 	depends = perl-anyevent
 	depends = perl-crypt-ssleay
 	provides = perl-asterisk-ami
@@ -12,4 +13,4 @@ pkgbase = perl-asterisk-ami
 	source = git+https://github.com/rrb3942/perl-Asterisk-AMI.git
 	md5sums = SKIP
 
-pkgname = perl-asterisk-ami-git
+pkgname = perl-asterisk-ami
