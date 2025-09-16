@@ -39,3 +39,9 @@ Changes since 2.3.3
     names
 18. src/slconfig.h: Do not define HAVE_FLOCK for VMS systems (Hartmut
     Becker)
+19. Misc updates:
+    * timestamp.sl: In a comment, mispelled Australian (Klaus Alexander Seistrup)
+    * modules/tm/Makefile: fcntlfuns.hlp was not getting installed
+    * utf8/tools/mktables: Added some comments/usage, changed to use slsh_main
+    * src/sltermin.c: Added a comment
+20. configure: Typo: -export-dynamic --> --export-dynamic (Sam James)
