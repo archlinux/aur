@@ -11,7 +11,6 @@ depends=('python' 'python-pyqt6')
 makedepends=('git' 'python-setuptools')
 source=("git+$url.git")
 md5sums=('SKIP')
-install=$pkgname.install 
 
 pkgver() {
     cd Arch-Store
@@ -39,6 +38,6 @@ EOF
     # File .desktop
     install -Dm644 "$srcdir/Arch-Store/arch-store.desktop" "$pkgdir/usr/share/applications/arch-store.desktop"
 
-
+    install -Dm644 /dev/null "$pkgdir/usr/share/arch-store/AUR"
 }
 

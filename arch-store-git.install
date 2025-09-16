@@ -1,9 +1,0 @@
-post_install() {
-    echo ">> Removing leftover script marker..."
-    rm -f /usr/share/arch-store/script
-}
-
-post_upgrade() {
-    echo ">> Removing leftover script marker after upgrade..."
-    rm -f /usr/share/arch-store/script
-}
