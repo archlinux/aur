@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.5.0.r2.2268aec
+pkgver=0.10.2.r0.51b7306
 pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://git.sr.ht/~jmcantrell/${pkgname%-git}"
 license=('MIT')
 depends=('python')
 optdepends=()
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 checkdepends=('python-pytest' 'python-pytest-cov')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
