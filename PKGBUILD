@@ -44,8 +44,8 @@ check() {
 package() {
     cd "$_pypi_name-$pkgver"
     
-    # Install with pip to respect system dependencies
-    python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
+    # Install the built wheel using installer
+    python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install license and docs from source
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
