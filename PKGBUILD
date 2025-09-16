@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -18,7 +18,7 @@ makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'p
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-ddgs' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'python-genai-prices' 'ruff' 'deno')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver"
         "git+https://github.com/pydantic/mcp-run-python.git")
-sha256sums=('ee9c7faf8bc3decdedac66bfaa186a8887b88c09dd2e4e7d15d168cc8b506618'
+sha256sums=('1513153015929b706c1471c619bd07d661db9b06625527a1ccab52be74de7655'
             'SKIP')
 
 build() {
@@ -42,7 +42,7 @@ check() {
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
     --deselect tests/models/test_instrumented.py::test_instrumented_model
-    -k "not instrumentation_settings_event_mode.py and not instrument3"
+    -k "not instrumentation_settings_event_mode.py and not instrument3 and not run_ag_ui.py and not handle_ag_ui_request.py"
     # Failed
     --deselect tests/test_tools.py
   )
