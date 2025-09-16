@@ -1,6 +1,6 @@
 # Maintainer: Tyrolyean <tyrolyean@tyrolyean.net>
 
-pkgname='perl-asterisk-ami-git'
+pkgname='perl-asterisk-ami'
 provides=('perl-asterisk-ami')
 pkgbase='perl-asterisk-ami'
 pkgver='0'
@@ -10,7 +10,7 @@ arch=('any')
 license=('PerlArtistic')
 options=('!emptydirs')
 depends=('perl-anyevent' 'perl-crypt-ssleay')
-makedepends=()
+makedepends=('git')
 url='https://github.com/rrb3942/perl-Asterisk-AMI'
 source=("git+https://github.com/rrb3942/perl-Asterisk-AMI.git")
 md5sums=('SKIP')
