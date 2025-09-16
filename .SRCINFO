@@ -1,0 +1,17 @@
+pkgbase = zigdown-bin
+	pkgdesc = A Markdown toolset in Zig
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/JacobCrabill/zigdown
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = zigdown
+	conflicts = zigdown
+	source_x86_64 = zigdown-1.0.2-x86_64.tar.gz::https://github.com/JacobCrabill/zigdown/releases/download/v1.0.2/x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9331f3f05afc8127a35f9e80a3a8db3d881cf2da337e7963c0a72dc66444eb10
+	source_aarch64 = zigdown-1.0.2-x86_64.tar.gz::https://github.com/JacobCrabill/zigdown/releases/download/v1.0.2/x86_64-linux-musl.tar.gz
+	sha256sums_aarch64 = 4146c1c497867ae2c503e78c62b5b1efc17d3c650b9709f54a4ef8af0fbcc33a
+
+pkgname = zigdown-bin
