@@ -1,8 +1,8 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=0
-pkgrel=1
+pkgver=1.1.0.r48.gd85e55ef
+pkgrel=2
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
