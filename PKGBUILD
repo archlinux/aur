@@ -2,8 +2,8 @@
 
 pkgname=nginx-mod-cgi
 _upstream=nginx-cgi
-pkgver=0.13
-pkgrel=2
+pkgver=0.14.1
+pkgrel=1
 pkgdesc='Nginx CGI support module'
 arch=('x86_64')
 url="https://github.com/pjincz/$_upstream"
@@ -14,7 +14,7 @@ backup=('etc/nginx/modules.d/20-cgi.conf')
 conflicts=('nginx-mainline-mod-cgi')
 
 source=(https://github.com/pjincz/$_upstream/archive/v$pkgver/$_upstream-$pkgver.tar.gz)
-sha512sums=('8efdb948d1eecb070bf66befd8f4f038407ee1d97061e1e1a4f677f4b9a405255974856894e49d14b9b644c752b133851a4204944a32819a6e014c5589ff0864')
+sha512sums=('b250dd3e26b54017807f70ddace6bb98fd05ec3590a30a2d1a8fd9fb4daf6f9a0f2b9b1143d38362331aa3e608a2c42ab90b9d49e27b10591b080581b70b2407')
 
 prepare() {
   mkdir -p build
