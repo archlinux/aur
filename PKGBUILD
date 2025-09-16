@@ -2,7 +2,7 @@
 
 _name=resend-python
 pkgname=python-resend
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Resend's Python SDK"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python>=3.6' 'python-typing_extensions' 'python-requests')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=("https://github.com/resend/resend-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f6c8e58b9411c9b37a065704c4f52cd41ee3d0d3ac6f965be94b4fb82a7e06e4fbf76cac1864060c3c0b05c9a9075e931fcd9f5f75cd6ec6a176f0423989cc54')
-b2sums=('b66c3ddccb369af1d9ba90449d74ec9ff16b5f4da8766af7ba1c6c13d4be0b9be0e942a072b9fd2bf782fc67b009c6993aa8a407619339f8de8665eb8fe697f6')
+sha512sums=('2f8cd3a05b8b118a7a56c713ae54d8b2d9fa991f58a572bee4bfd596c1c6e2aa10faec4d4ec886fd754a500ae95e1da18dc864f578b1939f4707f3294ae6de98')
+b2sums=('980eebb6ad7bfcc1724cb6d71cace1072d5f5e9f233c876da37a07b56b9dba78325dbbe3852acaa8b80f597623b43a632f469e902117bbd6d824d3789a2fbe84')
 
 build() {
 	cd "$_name-$pkgver"
