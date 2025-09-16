@@ -16,13 +16,13 @@ makedepends=('curl' 'jq' 'minisign')
 options=('!strip')
 
 _index_json=$(curl -s "${url}/download/index.json")
-_master_version=$(echo "${_index_json}" | jq -r '.master.version')
-_tarball_url=$(echo "${_index_json}" | jq -r ".master.\"${CARCH}-linux\".tarball")
-_tarball_sha256=$(echo "${_index_json}" | jq -r ".master.\"${CARCH}-linux\".shasum")
+_master_version=$(jq -r '.master.version' <<< "${_index_json}")
+_tarball_url=$(jq -r ".master.\"${CARCH}-linux\".tarball" <<< "${_index_json}")
+_tarball_sha256=$(jq -r ".master.\"${CARCH}-linux\".shasum" <<< "${_index_json}")
 _tarball=$(basename "${_tarball_url}")
 
 pkgver() {
-    echo "${_master_version}" | sed 's/-/_/g; s/+/.g/g'
+    sed 's/-/_/g; s/+/.g/g' <<< "${_master_version}"
 }
 
 source=("${_tarball_url}" "${_tarball_url}.minisig")
