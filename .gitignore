@@ -1,4 +1,6 @@
-pkg/
-*.pkg.tar.zst
-*.tar.gz
 src/
+pkg/
+recon-ng-git/
+*.tar.zst
+*.tar.zst.sig
+*.log

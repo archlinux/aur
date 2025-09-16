@@ -1,10 +1,12 @@
-# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
+# Contributor: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 # Contributor: M0ustach3 <pablobondialuttiau@gmail.com>
 # Contributor: kpcyrd <git@rxv.cc>
 
-pkgname=recon-ng
-pkgver=5.1.2
-pkgrel=2
+pkgname=recon-ng-git
+_pkgname=recon-ng
+pkgver=r1028.c08acee
+pkgrel=1
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 url="https://github.com/lanmaster53/recon-ng"
 license=('GPL3')
@@ -12,22 +14,28 @@ arch=('any')
 depends=('python' 'python-pyaml' 'python-dnspython' 'python-lxml' 'python-mechanize'
          'python-requests' 'python-flask' 'python-flask-restful' 'python-flasgger'
          'python-dicttoxml' 'python-xlsxwriter' 'python-unicodecsv' 'python-rq')
-source=("https://github.com/lanmaster53/${pkgname}/archive/v${pkgver}/recon-ng-${pkgver}.tar.gz"
+makedepends=('git')
+source=("$pkgname::git+https://github.com/lanmaster53/recon-ng.git"
         opt-in-analytics.patch)
-sha256sums=('18d05030b994c9b37f624628251d3376d590f3d1eec155f67aca88fa5f3490cc'
+sha256sums=('SKIP'
             '03ec8c0bb7437e7fd2a070b78b76a7dad5a9a0b4c13de0a427dbc0e395130594')
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname"
   # change analytics from opt-out to opt-in
   patch -Np1 -i ../opt-in-analytics.patch
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname"
 
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -ra --no-preserve=owner . "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/opt/${_pkgname}"
+  cp -ra --no-preserve=owner . "${pkgdir}/opt/${_pkgname}"
 
   install -d "${pkgdir}/usr/bin"
   for bin in recon-ng recon-cli recon-web; do
@@ -39,7 +47,7 @@ EOF
     chmod +x "${pkgdir}/usr/bin/${bin}"
   done
 
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
