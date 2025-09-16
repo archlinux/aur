@@ -24,6 +24,9 @@ _package() {
 		v="$version"
 	fi
 	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/luanativeobjects/$pkgver-$_revision/bin/"native_objects "$pkgdir/usr/bin/native_objects$v"
+	if [[ "$version" != "$_lua_version" ]]; then
+		sed -i '1s/$/'"$v"/ "$pkgdir/usr/bin/native_objects$v"
+	fi
 }
 
 package_lua51-native-objects() {
