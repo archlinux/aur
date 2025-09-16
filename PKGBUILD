@@ -1,8 +1,8 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 pkgname=kitops
 pkgver=1.7.0
-pkgrel=2
-pkgdesc="KitOps CLI tool"
+pkgrel=3
+pkgdesc="An open source DevOps tool from the CNCF for packaging and versioning AI/ML models, datasets, code, and configuration into an OCI Artifact."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/kitops-ml/kitops"
 license=('Apache-2.0')

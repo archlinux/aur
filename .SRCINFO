@@ -1,7 +1,7 @@
 pkgbase = kitops
-	pkgdesc = KitOps CLI tool
+	pkgdesc = An open source DevOps tool from the CNCF for packaging and versioning AI/ML models, datasets, code, and configuration into an OCI Artifact.
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kitops-ml/kitops
 	arch = x86_64
 	arch = i686
