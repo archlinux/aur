@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname='opencode-git'
-pkgver=0.6.4.r51.e915a372
+pkgver=0.9.3
 options=('!debug' '!strip')
 pkgrel=1
 pkgdesc='The AI coding agent built for the terminal.'

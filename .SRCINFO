@@ -1,6 +1,6 @@
 pkgbase = opencode-git
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 0.6.4.r51.e915a372
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/sst/opencode
 	arch = aarch64
