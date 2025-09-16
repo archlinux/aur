@@ -1,8 +1,8 @@
 pkgbase = pass-secret-service
 	pkgdesc = An org.freedesktop.secrets provider with a pass backend.
 	pkgver = 0.5.1
-	pkgrel = 2
-	url = https:////
+	pkgrel = 3
+	url = https://github.com/grimsteel/pass-secret-service
 	arch = aarch64
 	arch = x86_64
 	groups = pass
