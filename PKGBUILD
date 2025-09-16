@@ -3,13 +3,13 @@
 prj='ghostmirror'
 pkgname=($prj)
 pkgdesc='modern alternative to reflector, true check mirror status, mirror download speed and more.'
-pkgver='0.14.7'
+pkgver='0.15.0'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vbextreme/${prj}/archive/v${pkgver}.tar.gz")
 license=('GPL3')
-sha256sums=('f354c5d25836c79a0d89bfb6f34574f662649d4f6cb1c14379d32c9455cd9a59')
+sha256sums=('11fc77bc3f015020253946e2c4ab7b6dba070c5fe3e66abf4be1e1bd42de9855')
 makedepends=('meson' 'perl' 'ninja')
 depends=('curl' 'zlib-ng' 'systemd-libs')
 
