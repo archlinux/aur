@@ -29,7 +29,7 @@ prepare() {
   cd "$srcdir/wayfire-plugins-extra"
   git submodule update --init --recursive
 
-  cd "$srcdir"
+  cd ..
   rm -rf build
   arch-meson wayfire-plugins-extra build \
     -Denable_wayfire_shadows=true \
