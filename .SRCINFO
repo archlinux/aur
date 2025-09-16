@@ -1,0 +1,22 @@
+pkgbase = inspector-git
+	pkgdesc = Gives information about your system
+	pkgver = 0.2.0.r27.g80bcbfa
+	pkgrel = 1
+	url = https://github.com/Nokse22/inspector
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-markdown-it-py
+	depends = python-weasyprint
+	provides = inspector
+	conflicts = inspector
+	source = inspector-git::git+https://github.com/Nokse22/inspector
+	sha256sums = SKIP
+
+pkgname = inspector-git
