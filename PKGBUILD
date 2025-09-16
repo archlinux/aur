@@ -2,7 +2,7 @@
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
 pkgver=0
-pkgrel=2
+pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
