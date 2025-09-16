@@ -1,0 +1,18 @@
+pkgbase = ryelang-git
+	pkgdesc = Rye — a language trying to be flexible about expression, but strict about state (development version)
+	pkgver = 0.0.81.r117.g529fc65
+	pkgrel = 1
+	url = https://ryelang.org/
+	install = ryelang-git.install
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = ryelang
+	conflicts = ryelang
+	source = git+https://github.com/refaktor/rye.git
+	sha256sums = SKIP
+
+pkgname = ryelang-git

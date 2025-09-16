@@ -1,0 +1,14 @@
+# -*- sh -*-
+
+post_install() {
+  cat <<__EOT__
+»  NB: The executable is called ‘ryelang’
+»      because ‘rye’ was already taken.
+__EOT__
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
