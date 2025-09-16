@@ -1,13 +1,13 @@
 pkgbase = r-rpdb
 	pkgdesc = Read, Write, Visualize and Manipulate PDB Files
-	pkgver = 2.3.4
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Rpdb
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-rgl
-	source = https://cran.r-project.org/src/contrib/Rpdb_2.3.4.tar.gz
-	sha256sums = 058d79f6f1978dea451b53dbcffaa3418f4360ac3c05df6732e6143d9a5fd25a
+	source = https://cran.r-project.org/src/contrib/Rpdb_2.4.1.tar.gz
+	sha256sums = 154d69c0751e29abe108079445d1a7eb2bbeb30babd2af0b3b00ba47b3865403
 
 pkgname = r-rpdb
