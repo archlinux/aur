@@ -2,7 +2,7 @@
 
 _pyname=nbclassic
 pkgname=jupyter-$_pyname
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
@@ -31,7 +31,7 @@ makedepends=(bower
 checkdepends=(python-pytest-jupyter
               python-pytest-tornasync)
 source=(git+https://github.com/jupyter/nbclassic#tag=v$pkgver)
-sha256sums=('c936d2a471307d44fad6a9d26a6fd839835d0816d2e0c66243f105f1b4972ab4')
+sha256sums=('44fba34a96c0c029d074254cc7706d28b36f532b774857b2ad3cae04532f2ede')
 
 build() {
   cd $_pyname
