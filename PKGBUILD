@@ -2,7 +2,7 @@
 # Contributor: Yamashiro <dev cosmicheron com>
 
 pkgname='yamagi-quake2-ref_vk'
-pkgver='1.0.10'
+pkgver='1.0.11'
 pkgrel='1'
 arch=('i686' 'x86_64')
 pkgdesc='Vulkan renderer for yamagi-quake2'
@@ -12,7 +12,7 @@ depends=('glibc' 'yamagi-quake2' 'sdl3')
 makedepends=('vulkan-headers')
 optdepends=('vulkan-validation-layers')
 source=("${pkgname##*-}-${pkgver}.tar.gz"::"https://github.com/yquake2/${pkgname##*-}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('a9616a081ce5793e9e2b4070eab5d1d34d111a9c3946aa8a870f96f25c7b264ec1a6fe99b06590bcd470813533b10809ab764fe7322927e9d8323af68e68fdfd')
+b2sums=('c6c26202f6853019ed41978eabe3635e4ee5e5f990d3cb8d267c5bdb746138643867f3842791f133764dd462936e5030b733e5794f008fca106d8124d4e4a629')
 
 build() {
     make -C "${pkgname##*-}-${pkgver}" WITH_SDL3=yes
