@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.36.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -57,6 +57,12 @@ build() {
 
   # Fix privilege issue with crontab -u
   patch -p1 -i "${srcdir}/scheduler-docker-local.patch"
+
+  # Fix post extract issue with builder-xxxx
+  patch -p1 -i "$srcdir/builder-dockerfile-core-post-extract-fix.patch"
+  patch -p1 -i "$srcdir/builder-lambda-core-post-extract-fix.patch"
+  patch -p1 -i "$srcdir/builder-nixpacks-core-post-extract-fix.patch"
+  patch -p1 -i "$srcdir/builder-pack-core-post-extract-fix.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do

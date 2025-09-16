@@ -1,0 +1,17 @@
+--- a/plugins/builder-dockerfile/core-post-extract
++++ b/plugins/builder-dockerfile/core-post-extract
+@@
+-trigger-builder-dockerfile-core-post-extract() {
+-  declare desc="builder-dockerfile post-extract plugin trigger"
+-  declare trigger="post-extract"
+-  declare APP="$1" SOURCECODE_WORK_DIR="$2"
+-  local NEW_DOCKERFILE="$(fn-builder-dockerfile-computed-dockerfile-path "$APP")"
+-
+-  pushd "$TMP_WORK_DIR" >/dev/null
++trigger-builder-dockerfile-core-post-extract() {
++  declare desc="builder-dockerfile post-extract plugin trigger"
++  declare trigger="post-extract"
++  declare APP="$1" TMP_WORK_DIR="$2"
++  local NEW_DOCKERFILE="$(fn-builder-dockerfile-computed-dockerfile-path "$APP")"
++
++  pushd "$TMP_WORK_DIR" >/dev/null
