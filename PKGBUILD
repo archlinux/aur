@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
-pkgver=202509071
+pkgver=202509161
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/3b171a9fe657c50608fff779d62d19f7d49506b3/archives/dove-linux.zip")
-sha512sums=('396a3a29bec64fe95163e9750d4aefaed2dd0dfc8f426aa0143f89511854c2494a39581d04a83b8d288f4cc8bc45f2406d15e307fcc57dc2aae523c2799c1765')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/5f3272332929909049a568b0461e5fca561edc68/archives/dove-linux.zip")
+sha512sums=('e55f1fbbc8b809531e7fc00ed86da73fde8e9043604fc25925cde8aae6c001898f118bf374fe1839d0c0c8840d7f819bdb174e225c99035b8c6a4db4120ad161')
 makedepends=('unzip')
 
 pkgver() {
@@ -25,6 +25,7 @@ package() {
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/etc/thunderbird/policies/policies.json"
     install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/dove/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/dove/README.md"
+    install -Dm644 "$tmpdir/assets/autoconfig/LICENSE.txt" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/LICENSE.txt"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/123mail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/123mail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/126.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/126.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/12fuel.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/12fuel.dk"
@@ -250,7 +251,6 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/frederiksen.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/frederiksen.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/free.fr" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/free.fr"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/freeler.nl" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/freeler.nl"
-    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/freenet.de" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/freenet.de"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/funkymail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/funkymail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/gadefejer.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/gadefejer.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/gaf-net.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/gaf-net.dk"
@@ -969,6 +969,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zohomail.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/zohomail.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zoomail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/zoomail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zybermail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/zybermail.dk"
+    install -Dm644 "$tmpdir/assets/uBlock/LICENSE.txt" "$pkgdir/etc/thunderbird/dove/assets/uBlock/LICENSE.txt"
     install -Dm644 "$tmpdir/assets/uBlock.xpi" "$pkgdir/etc/thunderbird/dove/assets/uBlock.xpi"
 
     rm -rf "$tmpdir"
