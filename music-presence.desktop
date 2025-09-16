@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Music Presence
+Comment=The Discord music status that works with any media player 
+Exec=musicpresence
+Icon=preferences-desktop-multimedia
+Terminal=false
+Type=Application
+Categories=Internet;
