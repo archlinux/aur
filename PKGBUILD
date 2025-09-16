@@ -1,6 +1,6 @@
 # Maintainer: Clement Vassaux <locoxduturfu@gmail.com>
 pkgname=kotofetch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimalist fetch tool for Japanese quotes (written in Rust)"
 arch=('x86_64')
