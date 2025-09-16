@@ -1,12 +1,12 @@
 pkgname=ark-pixel-font-12px-proportional
-pkgver=2023.11.26
+pkgver=2025.08.24
 pkgrel=1
 pkgdesc="Open source Pan-CJK pixel font / 开源的泛中日韩像素字体 (12px proportional)"
 arch=('any')
 url="https://github.com/TakWolf/ark-pixel-font"
 license=('OFL')
-source=("https://github.com/TakWolf/ark-pixel-font/releases/download/2023.11.26/ark-pixel-font-12px-proportional-otf-v2023.11.26.zip")
-sha256sums=('ee3499ef90f18b88f579f44859e76099a01996fb0ad6688940dd2b343ee34597')  # Calculated SHA256 checksum of the zip file
+source=("https://github.com/TakWolf/ark-pixel-font/releases/download/2025.08.24/ark-pixel-font-12px-proportional-otf-v2025.08.24.zip")
+sha256sums=('7a3d68fd5af1f00f716f2d6cd2da3673f713cccbacd05dda8b8d9674b07b7b13')  # Calculated SHA256 checksum of the zip file
 
 package() {
   cd "${srcdir}"
