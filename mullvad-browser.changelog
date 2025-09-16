@@ -1,3 +1,13 @@
+Mullvad Browser 14.5.7 - September 16 2025
+ * All Platforms
+   * Updated uBlock Origin to 1.66.0
+   * Bug 44199: Backport Security Fixes from Firefox 143 [tor-browser]
+   * Bug 41462: Backport #40994 and #41280: Add support in signing scripts to sign release for some archs only & Update download-android-*.json files for android-only releases [tor-browser-build]
+   * Bug 41543: mmdebstrap-image fails to build bookworm images on maint-14.5 [tor-browser-build]
+ * Build System
+   * Linux
+     * Bug 41560: Backport mullvad-browser#463: Fix typo in MimeType entry in .desktop file  included in deb/rpm package [tor-browser-build]
+
 Mullvad Browser 14.5.6 - August 19 2025
  * All Platforms
    * Updated Firefox to 128.14.0esr
