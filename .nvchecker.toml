@@ -2,4 +2,4 @@
 source = "git"
 git = "https://github.com/stripe/stripe-python.git"
 prefix = "v"
-exclude_regex = "v[0-9.]*b[0-9]"
+exclude_regex = "v[0-9.]*[ab][0-9]"
