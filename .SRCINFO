@@ -1,7 +1,7 @@
 pkgbase = python-clawpack
 	pkgdesc = Finite volume methods for hyperbolic conservation laws
 	pkgver = 5.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.clawpack.org
 	arch = x86_64
 	license = BSD-3-Clause
