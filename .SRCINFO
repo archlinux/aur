@@ -1,0 +1,15 @@
+pkgbase = perl-asterisk-ami
+	pkgdesc = a flexible, powerful, andreliable way to interact with Asterisk
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/rrb3942/perl-Asterisk-AMI
+	arch = any
+	license = PerlArtistic
+	depends = perl-anyevent
+	depends = perl-crypt-ssleay
+	provides = perl-asterisk-ami
+	options = !emptydirs
+	source = git+https://github.com/rrb3942/perl-Asterisk-AMI.git
+	md5sums = SKIP
+
+pkgname = perl-asterisk-ami-git
