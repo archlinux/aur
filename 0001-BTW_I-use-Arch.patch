@@ -1,11 +1,11 @@
 diff --color --unified --recursive --text --color -r aml-flash-tool-4.9-old/aml-flash-tool/flash-tool aml-flash-tool-4.9/aml-flash-tool/flash-tool
 --- aml-flash-tool-4.9-old/aml-flash-tool/flash-tool	2025-04-08 22:26:45.305132909 +0800
 +++ aml-flash-tool-4.9/aml-flash-tool/flash-tool	2025-04-08 22:28:02.131992920 +0800
-@@ -440,7 +440,7 @@
+@@ -453,7 +453,7 @@
  	source /etc/lsb-release
  fi
  
--if [ $host_os = Linux ] && linux-version compare $DISTRIB_RELEASE ge 19.10; then
+-if [ $host_os = Linux ] && [ -n "$DISTRIB_RELEASE" ] && linux-version compare $DISTRIB_RELEASE ge 19.10; then
 +if [ $host_os = Linux ] && echo "BTW, I use Arch" >> /dev/null 2>&1; then
  	platform_conf_name=`awk '/sub_type="platform"/{gsub("file=","",$1); gsub(/"/,"",$1); print $1}' $tmp_dir/image.cfg`
  	print_debug "platform_conf_name  = $platform_conf_name"
