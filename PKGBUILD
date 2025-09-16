@@ -46,6 +46,16 @@
 #  
 #  7. copy the content of the my.patch file and post it in the discussion of
 #     the AUR: https://aur.archlinux.org/packages/flameshot-git/
+#
+#
+# To make the life easier, we have provided a makefile. You can use it to do the steps above:
+#  1. "make deps"
+#  2. apply the changes you think necessary
+#  3. "make build"
+#  4. fix possible errors and repleat step 3 and 4 until there is no error
+#  5. "make test"
+#  6. fix possible errors and repleat step 5 and 6 until there is no error
+#  7. "make patch" to create the patch, and then submit it for maintainers
 
 
 
