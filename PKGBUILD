@@ -113,6 +113,12 @@ EOF
         sed -i -E 's/if\(!([a-zA-Z]+)[[:space:]]*&&[[:space:]]*([a-zA-Z]+)\)/if(\1 \&\& \2)/g' "$js_file"
     fi
 
+    # Fix locale path - replace electron resources path with app's locale path
+    find app.asar.contents -name "*.js" -type f -exec sed -i \
+        -e 's|/usr/lib/electron[0-9]*/resources/|/usr/lib/claude-desktop-bin-arch/locales/|g' \
+        -e 's|process\.resourcesPath,"en-US\.json"|"/usr/lib/claude-desktop-bin-arch/locales","en-US.json"|g' \
+        -e 's|process\.resourcesPath,"\([^"]*\.json\)"|"/usr/lib/claude-desktop-bin-arch/locales","\1"|g' {} \;
+
     # Repack app.asar
     asar pack app.asar.contents app.asar
     rm -rf app.asar.contents
