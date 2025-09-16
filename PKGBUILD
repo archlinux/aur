@@ -4,7 +4,7 @@
 pkgname=maxx-desktop
 _name="MaXX"
 pkgver=2.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="MaXX Interactive Desktop"
 arch=(x86_64)
 url="https://docs.maxxinteractive.com/"
@@ -52,7 +52,7 @@ depends=(
   libxi
   libxinerama
   libxkbfile
-  libxml2
+  libxml2-legacy
   libxmu
   libxp
   libxpm
@@ -88,7 +88,6 @@ optdepends=(
   'lightdm: Login manager'
   'pavucontrol: Sound audio mixer'
   'vlc: Multi-media'
-  'xorg-apps: Useful X11 apps'
   'xpdf: PDF viewer'
 )
 options=(!debug)
