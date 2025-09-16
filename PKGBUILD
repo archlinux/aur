@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-zstd-static
 _pkgname=zstd
-pkgver=1.5.2
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Zstandard - Fast real-time compression algorithm (mingw-w64)"
 url="http://www.zstd.net/"
@@ -17,8 +17,7 @@ conflicts=('mingw-w64-zstd')
 provides=("mingw-w64-zstd=$pkgver")
 options=('staticlibs' '!buildflags' '!strip')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/facebook/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f7de13462f7a82c29ab865820149e778cbfe01087b3a55b5332707abf9db4a6e')
-
+sha256sums=('37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -33,7 +32,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DZSTD_BUILD_CONTRIB=OFF \
-      -DZSTD_BUILD_SHARED=OFF \
+      -DZSTD_BUILD_SHARED=ON \
       -DZSTD_BUILD_STATIC=ON \
       -DZSTD_BUILD_TESTS=OFF \
       -DZSTD_PROGRAMS_LINK_SHARED=OFF \
