@@ -1,7 +1,7 @@
 # Maintainer: Joel Köper <foss@joelkoeper.de>
 
 pkgname=hp-bios-fetcher
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A simple tool for fetching HP BIOS updates'
 url='https://gitlab.com/QuantumToaster/hp-bios-fetcher'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=()
 arch=('x86_64')
 source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/QuantumToaster/hp-bios-fetcher/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('242603c3a06dfaf5d3cb7f40c269aeff33782a47699e40fc401d1f65e8c9bbe85761979d84813cf57352aa3fb2b62f8f58dc4a4e20ff75d7e4c4a5cd2a1c3a08')
+b2sums=('c938219b54b2dd7cb22ae028b6de8d47283d160226c825e06eeb1421f37a204001f20a1f052b5ef2dcabf16e990be728f2e23ea04d762c5be370172dbfe4295f')
 
 prepare() {
 	cd $pkgname-v$pkgver
