@@ -11,6 +11,7 @@ url="https://ziglang.org/"
 license=('MIT')
 provides=('zig' 'zig-master')
 conflicts=('zig')
+replaces=('zig-nightly-bin')
 makedepends=('curl' 'jq' 'minisign')
 options=('!strip')
 
