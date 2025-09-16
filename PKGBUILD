@@ -4,32 +4,35 @@
 
 pkgname=sawfish
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible window manager using a Lisp-based scripting language"
 arch=('i686' 'x86_64')
 url="http://sawfish.wikia.com/wiki/Main_Page"
 license=('GPL')
 depends=('libsm' 'rep-gtk' 'hicolor-icon-theme' 'gdk-pixbuf-xlib>=2.24.0')
-source=(http://download.tuxfamily.org/${pkgname}/${pkgname}_${pkgver}.tar.xz arch_poweroff_defaults.patch)
-sha256sums=('816b3c5bfa4cb508db1fc14489fccd023dec899cf13ddeb19bc3e65d7872af5d'
-            '34092f761f89fa3db90841e3fd270f42c06f769c53ed524deccdf48f204f611e')
+source=(https://github.com/SawfishWM/sawfish/archive/refs/tags/sawfish-${pkgver}.zip arch_poweroff_defaults.patch NEWS)
+sha256sums=(039a61311a1fc9290d5567aeff7ba9ff7029e7ecbd4be01d641691743af4453a
+            34092f761f89fa3db90841e3fd270f42c06f769c53ed524deccdf48f204f611e
+	    e0bbb48147ece401fe92341968ef2e978e1a32642caa27f191f7646995d0df76)
 options=('!libtool')
 
 
 prepare() {
-  cd ${pkgname}_${pkgver}
+  cd sawfish-${pkgname}-${pkgver}
   patch -p1 < "$srcdir"/arch_poweroff_defaults.patch
 }
 
 build() {
-  cd ${pkgname}_${pkgver}
+  cd sawfish-${pkgname}-${pkgver}
   ./autogen.sh
-  CFLAGS+=" -fcommon" ./configure --prefix=/usr --libexecdir=/usr/lib 
+  # can compile with either of -std= c99 c11 c17
+  # but current default c23 needs (minor) code changes which might occur upstream
+  CFLAGS+=" -fcommon -std=c17" ./configure --prefix=/usr --libexecdir=/usr/lib 
   make
 }
 
 package() {
-  cd ${pkgname}_${pkgver}
+  cd sawfish-${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -Dm644 sawfish.el "$pkgdir"/usr/share/emacs/site-lisp/sawfish.el
   install -Dm644 lisp/sawfish/wm/tile/readme.org \

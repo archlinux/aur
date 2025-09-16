@@ -1,7 +1,7 @@
 pkgbase = sawfish
 	pkgdesc = An extensible window manager using a Lisp-based scripting language
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sawfish.wikia.com/wiki/Main_Page
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = sawfish
 	depends = hicolor-icon-theme
 	depends = gdk-pixbuf-xlib>=2.24.0
 	options = !libtool
-	source = http://download.tuxfamily.org/sawfish/sawfish_1.13.0.tar.xz
+	source = https://github.com/SawfishWM/sawfish/archive/refs/tags/sawfish-1.13.0.zip
 	source = arch_poweroff_defaults.patch
-	sha256sums = 816b3c5bfa4cb508db1fc14489fccd023dec899cf13ddeb19bc3e65d7872af5d
+	source = NEWS
+	sha256sums = 039a61311a1fc9290d5567aeff7ba9ff7029e7ecbd4be01d641691743af4453a
 	sha256sums = 34092f761f89fa3db90841e3fd270f42c06f769c53ed524deccdf48f204f611e
+	sha256sums = e0bbb48147ece401fe92341968ef2e978e1a32642caa27f191f7646995d0df76
 
 pkgname = sawfish
