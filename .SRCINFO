@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-curl-http-only
+	pkgdesc = cURL package for mingw-w64 with only HTTP support (minimal dependencies)
+	pkgver = 8.11.1
+	pkgrel = 1
+	url = https://curl.haxx.se
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	conflicts = mingw-w64-curl
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://curl.haxx.se/download/curl-8.11.1.tar.xz
+	sha256sums = c7ca7db48b0909743eaef34250da02c19bc61d4f1dcedd6603f109409536ab56
+
+pkgname = mingw-w64-curl-http-only
