@@ -1,0 +1,115 @@
+--- test/tst_perf.c
++++ test/tst_perf.c
+@@ -33,7 +33,7 @@
+ 
+ /* This must be an even number. Set to 18 to test all 9 zlib
+  * levels. Set to 2 to speed CI testing. */
+-#define NCOMPRESSION 3
++#define NCOMPRESSION 1
+ #define MAX_COMPRESSION_STR 4
+ 
+ #define NX_BIG 1000
+@@ -45,14 +45,9 @@
+ /* #define NY_REALLY_BIG 50 */
+ #define NUM_REC 5
+ 
+-#define MIN_ZSTD 0
+-#define MAX_ZSTD 9
+-#define MIN_ZLIB 1
+ #define MIN_LZ4 1
+ 
+-#define COMPRESS_ZSTD 1
+-#define COMPRESS_ZLIB 2
+-#define COMPRESS_LZ4 3
++#define COMPRESS_LZ4 1
+ 
+ /* Err is used to keep track of errors within each set of tests,
+  * total_err is the number of errors in the entire test program, which
+@@ -67,7 +62,7 @@
+ main()
+ {
+     struct stat st;
+-    
++
+     printf("\n*** Checking Performance of filters.\n");
+     printf("*** Checking zlib performance on large float data set...");
+     printf("\ncompression, level, write time (s), file size (MB)\n");
+@@ -75,10 +70,10 @@
+         float *data_out;
+         size_t x;
+ 	int f;
+-	int level = MIN_ZSTD;
++	int level = MIN_LZ4;
+ 	char compression[MAX_COMPRESSION_STR + 1];
+ 	float a = 5.0;
+-    
++
+         if (!(data_out = malloc(NX_REALLY_BIG * NY_REALLY_BIG * sizeof(int)))) ERR;
+ 
+ 	/* We will write NCOMPRESSION compressed file, and 1 uncompressed
+@@ -95,13 +90,9 @@
+ 	    struct timeval start_time, end_time, diff_time;
+ 	    int meta_write_us;
+ 	    int ret;
+-	    
++
+ 	    if (!(data_in = malloc(NX_REALLY_BIG * NY_REALLY_BIG * sizeof(float)))) ERR;
+ 
+-	    if (f == COMPRESS_ZSTD)
+-		strcpy(compression, "zstd");
+-	    if (f == COMPRESS_ZLIB)
+-		strcpy(compression, "zlib");
+ 	    if (f == COMPRESS_LZ4)
+ 		strcpy(compression, "lz4");
+ 
+@@ -120,20 +111,7 @@
+ 	    if (nc_def_var(ncid, VAR_NAME_2, NC_FLOAT, NDIM3, dimid, &varid)) ERR;
+ 	    if (f)
+ 	    {
+-		if (f == COMPRESS_ZSTD)
+-		{
+-		    if ((ret = nc_def_var_zstandard(ncid, varid, level)))
+-		    {
+-			printf("ret %d\n", ret);
+-			ERR;
+-		    }
+-		}
+-		else if (f == COMPRESS_ZLIB)
+-		{
+-		    level = MIN_ZLIB;
+-		    if (nc_def_var_deflate(ncid, varid, 0, 1, level)) ERR;
+-		}
+-		else if (f == COMPRESS_LZ4)
++		if (f == COMPRESS_LZ4)
+ 		{
+ 		    level = MIN_LZ4;
+ 		    if (nc_def_var_lz4(ncid, varid, level)) ERR;
+@@ -148,10 +126,10 @@
+ 		{
+ 		    data_out[x] = 1014 + 1/(x%10000);
+ 		}
+-		
++
+ 		if (nc_put_vara_float(ncid, varid, start, count, data_out)) ERR;
+ 	    }
+-	    
++
+ 	    if (nc_close(ncid)) ERR;
+ 	    if (gettimeofday(&end_time, NULL)) ERR;
+ 	    if (nc4_timeval_subtract(&diff_time, &end_time, &start_time)) ERR;
+@@ -159,13 +137,13 @@
+ 	    stat(file_name, &st);
+ 	    printf("%s, %d, %.2f, %.2f\n", (f ? compression : "none"), level, (float)meta_write_us/MILLION,
+ 		   (float)st.st_size/MILLION);
+-	    
++
+ 	    /* /\* Check file. *\/ */
+ 	    /* { */
+ 	    /* 	int ncid; */
+ 	    /* 	int varid = 0; */
+ 	    /* 	int level_in, deflate; */
+-		
++
+ 	    /* 	if (nc_open(file_name, NC_NOWRITE, &ncid)) ERR; */
+ 	    /* 	if (nc_inq_var_deflate(ncid, varid, &deflate, &level_in)) ERR; */
+ 	    /* 	if (f) */
