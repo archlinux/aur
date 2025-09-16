@@ -5,13 +5,13 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-flatpak
-pkgver=11.7.2
-_commit=71ced277e5931ccea2433ece291430481a2694ee
-pkgrel=2
+pkgver=11.7.3
+_commit=06c846c0310030ee45870b190359553b1c105f77
+pkgrel=1
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/manjaro/pamac"
-license=('GPL3')
+url="https://github.com/manjaro/$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
     'desktop-file-utils'
     'gnutls'
@@ -19,7 +19,8 @@ depends=(
     'libadwaita'
     'libhandy'
     'libnotify'
-    'libpamac-flatpak' 
+    'libpamac-flatpak'
+    'pamac-cli'
 )
 optdepends=(
     'lxsession: needed for authentification in Xfce, LXDE etc.'
@@ -46,7 +47,7 @@ conflicts=(
 )
 options=(!emptydirs)
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('b7166976642b21e9ce22c9f0a0b6a2708ffe4f1c91cf9ec3b52231d2eb13d66e')
+sha256sums=('d9df19c697a000de65514617545323ed7e7ada162aaceed6d91827d0775b9d56')
 
 #_srcdir="$_pkgname-$pkgver"
 
