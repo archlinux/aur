@@ -1,7 +1,7 @@
 # Maintainer: haoyuanli <lihaoyuan0506@gmail.com>
 
 pkgname=browseros-bin
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="An open-source agentic browser that runs AI agents locally"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=('browseros')
 conflicts=('browseros')
 options=('!strip')
 
-source=("browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.24.0/BrowserOS_v0.24.0_x64.AppImage")
+source=("browseros.AppImage::https://github.com/browseros-ai/BrowserOS/releases/download/v0.24.1/BrowserOS_v0.24.0_x64.AppImage")
 sha256sums=('70460997f29f1f9fd6128aee077ba27a0989761e53d395ac6c731ebce10e84b7')
 
 package() {
