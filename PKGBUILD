@@ -15,7 +15,8 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('MIT')
 
 depends=('glibc')
-provides=("${_pkgname}" "${_pkgexec}")
+provides=("${_pkgexec}")
+replaces=("${_pkgname}-bin")
 conflicts=("${_pkgname}"{,-bin,-git} "${_pkgexec}"{,-git})
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
