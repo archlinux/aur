@@ -1,0 +1,3 @@
+post_install() {
+    /usr/lib/garuda/garuda-update/update-helper-scripts update-intervention-sequence
+}

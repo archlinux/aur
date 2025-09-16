@@ -221,6 +221,8 @@ fi
 
 do_update
 
+/usr/lib/garuda/garuda-update/update-helper-scripts update-intervention-sequence
+
 if [[ -v UPDATE_AUR ]] && [[ -z "$GARUDA_UPDATE_RANI" ]]; then
   # Check for AUR helper
   if [ -x /usr/bin/paru ] && [[ -n "$SUDO_UID" ]]; then

@@ -39,6 +39,7 @@ array set auto_replace_conflicts {
     plasma-applet-window-buttons garuda-dr460nized
     alpm_octopi_utils octopi
     scenefx swayfx
+    gnu-netcat openbsd-netcat
 }
 
 if { $::conflictsfile_set } {
