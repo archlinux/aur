@@ -5,8 +5,8 @@
 _pkgname='ryelang'
 pkgname="${_pkgname}-git"
 pkgver=0.0.81.r117.g529fc65
-pkgrel=1
-pkgdesc='Rye — a language trying to be flexible about expression, but strict about state (development version)'
+pkgrel=2
+pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
 arch=('aarch64' 'x86_64')
 url='https://ryelang.org/'
 _url='https://github.com/refaktor/rye'
@@ -45,12 +45,12 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
 
   _opts=(
-    -tags=seccomp
     -buildmode=pie
-    -trimpath
     -ldflags="-linkmode=external -X github.com/refaktor/rye/runner.Version=$_ver"
     -mod=readonly
     -modcacherw
+    -trimpath
+    -tags=seccomp
   )
   go build "${_opts[@]}" -o bin/ryelang
 }
@@ -64,12 +64,18 @@ check() {
 package() {
   cd rye
 
+  # executable
   install -vDm0755 -t "$pkgdir/usr/bin" bin/ryelang
 
+  # README and examples
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   cp -va examples "$pkgdir/usr/share/doc/$pkgname/"
+  # cruft
   rm -vf "$pkgdir/usr/share/doc/$pkgname/examples/webapp_1/.#temp.rye"
+  rm -vf "$pkgdir/usr/share/doc/$pkgname/examples/webapp_1/#temp.rye#"
+  rm -vf "$pkgdir/usr/share/doc/$pkgname/examples/webapp_2/#main_0.8.rye#"
 
+  # license
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
