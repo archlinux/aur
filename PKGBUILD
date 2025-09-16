@@ -2,9 +2,9 @@
 # Modified from poi's PKGBUILD
 # Contributor: Jianfeng Zhang <swordfeng123@gmail.com>
 _pkgname=poi
-_electron=electron29
+_electron=electron36
 pkgname=${_pkgname}_arch_electron
-pkgver=11.0.0.beta.6.1.g271b4c6d
+pkgver=11.0.0.beta.9.0.6999595
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool, using the system provided electron"
 arch=('any')
