@@ -1,6 +1,6 @@
 # Maintainer: AspirinZ <aspirin000@sjtu.edu.cn>
 pkgname=sjtu-canvas-helper
-pkgver=1.3.32
+pkgver=1.3.33
 pkgrel=1
 pkgdesc="Helping you use the SJTU course platform more quickly and easily"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 source=("${pkgname}_${pkgver}_amd64.AppImage::https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/releases/download/app-v${pkgver}/${pkgname}_${pkgver}_amd64.AppImage"
   "${pkgname}.desktop"
   "LICENSE::https://raw.githubusercontent.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/main/LICENSE")
-sha256sums=('0b4c30f8cefe3afc59ac14c91334fb6b87c2013aefa033fe0a6700619b9e0d0f'
+sha256sums=('b60fdb0a95e00762261c3550dfba8c7b3f54f31c9497dd0636c7088bc7f2c671'
             'e7a0ae6af81be8039e3cff6079a4607a722af41012b8d24844583e07a9293065'
             'd78852e5fb84b91fa0dddd826ff37103d40f680a2a00d6725d7d3fbe0b68288c')
 prepare() {
