@@ -33,8 +33,8 @@ makedepends=(
   ninja
   pkgconf
 )
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(rhythmgame)
+conflicts=(rhythmgame)
 source=(
   "${_pkgname}::git+https://github.com/Bobini1/RhythmGame.git"
   "vcpkg::git+https://github.com/microsoft/vcpkg.git"
@@ -83,7 +83,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   DESTDIR="${pkgdir}" cmake --install build
   
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/rhythmgame/LICENSE"
 
   install -Dm644 staticAssets/RhythmGame.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
