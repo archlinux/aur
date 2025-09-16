@@ -16,7 +16,12 @@ pkgbase = python-click-prompt
 	depends = python-click>=8.0.4
 	depends = python-click<9.0
 	depends = python-questionary>=1.10.0
+	depends = python-validators>=0.22
 	source = https://files.pythonhosted.org/packages/34/17/addbe2d5058d3368f48679d757e32954dfd831b8c46c423ac88e7dfabf5a/click_prompt-0.6.5.tar.gz
+	source = https://raw.githubusercontent.com/markusgrotz/click-prompt/v0.6.5/LICENSE.md
+	source = https://raw.githubusercontent.com/markusgrotz/click-prompt/v0.6.5/README.md
 	sha256sums = eb493274fe4415ddd2ec9f6dc2706fa9dc16b72e6982d1f621b1e370e3d46345
+	sha256sums = 5061afc6ba9d8284c7e71207215a9c9a8d89929cf2e51848e7984d82b70c21c0
+	sha256sums = 45c4495be54a492baec4f491464deb72ee9c186193119e21c863ebbb1f2f1f92
 
 pkgname = python-click-prompt
