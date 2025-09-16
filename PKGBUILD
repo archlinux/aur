@@ -1,10 +1,10 @@
-# Maintainer: Aeonik Chaos
+# Maintainer: Aeonik Chaos <aeonik dot chaos at gmail dot com>
 # Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 # Contributor: Scott Tincman <sctincman at gmail dot com>
 
 _pkgname=nwchem
 pkgname="${_pkgname}-git"
-pkgver=r30696.39ce3184b2
+pkgver=r31441.3d4fadd528
 pkgrel=1
 pkgdesc="Ab initio computational chemistry software"
 arch=('x86_64')
@@ -15,34 +15,29 @@ makedepends=('git' 'gcc' 'gcc-fortran' 'bash')
 conflicts=("${_pkgname}" "${_pkgname}-data")
 provides=("${_pkgname}")
 install=nwchem.install
+
 source=(
-  "nwchem-7.2.3t::git+https://github.com/nwchemgit/nwchem.git#branch=hotfix/release-7-2-0"
+  "nwchem::git+https://github.com/nwchemgit/nwchem.git"
   "config.sh"
   "nwchemrc"
 )
 sha256sums=('SKIP'
-            '78245bd2cd0f858e6bd22d7cb03ded757d865a385a8be77e88788d34808668e6'
+            '27df009d5d0e76852963d25abef0fcfc31d5d02effe9cb86f069ac148a89466a'
             'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
 
-_srcdir="nwchem-7.2.3t"
-
 pkgver() {
-  cd "${srcdir}/${_srcdir}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${_srcdir}"
-
-  # No patches needed - using compiler flags for legacy code compatibility
-
+  cd "${srcdir}/${_pkgname}"
   msg2 "Setting up build environment..."
 }
 
 build() {
-  cd "${srcdir}/${_srcdir}"
+  cd "${srcdir}/${_pkgname}"
 
-  # Source the configuration
   source "${srcdir}/config.sh"
 
   msg2 "Building NWChem with configuration:"
@@ -76,7 +71,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_srcdir}"
+  cd "${srcdir}/${_pkgname}"
 
   # Source the configuration again for tests
   source "${srcdir}/config.sh"
@@ -86,7 +81,7 @@ check() {
     msg2 "Running basic tests (this may take a while)..."
     cd QA
     # Run only quick tests, not the full suite
-    export NWCHEM_EXECUTABLE="${srcdir}/${_srcdir}/bin/${NWCHEM_TARGET}/nwchem"
+    export NWCHEM_EXECUTABLE="${srcdir}/${_pkgname}/bin/${NWCHEM_TARGET}/nwchem"
     # You might want to run only specific quick tests
     # bash doqmtests_bash 1 || true
     msg2 "Tests completed (check output for failures)"
@@ -94,7 +89,7 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${_srcdir}"
+  cd "${srcdir}/${_pkgname}"
 
   # Source configuration to get NWCHEM_TARGET
   source "${srcdir}/config.sh"

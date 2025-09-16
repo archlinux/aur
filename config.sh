@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CC="gcc -std=gnu89"
+export CC=gcc
 export CFLAGS="${CFLAGS} -Wno-old-style-definition -Wno-implicit-function-declaration -std=gnu89"
 export FFLAGS="${FFLAGS} -std=legacy"
 export CXX=g++
@@ -8,7 +8,7 @@ export FC=gfortran
 export F77=gfortran
 
 # Essential NWChem build variables
-export NWCHEM_TOP="${srcdir}/${_srcdir}"
+export NWCHEM_TOP="${srcdir}/${_pkgname}"
 export NWCHEM_TARGET=LINUX64
 export NWCHEM_MODULES="all python"
 
