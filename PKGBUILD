@@ -1,29 +1,45 @@
+# Maintainer:  Noor Christensen <archlinux_AT_technopragmatics_DOT_org>
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
 url="https://github.com/darrenburns/${pkgname}"
 license=('MIT')
-depends=('python>=3.11' 'python-click>=8.1.7' 'python-click-default-group>=1.2.4'
-         'python-dotenv>=1.0.1' 'python-httpx>=0.27.2' 'python-linkify-it-py'
-         'python-pydantic>=2.9.2' 'python-pydantic-settings>=2.4' 'python-pyperclip>=1.9'
-         'python-rich' 'python-textual' 'python-textual-autocomplete' 'python-typing_extensions'
-         'python-watchfiles>=0.24' 'python-xdg-base-dirs>=6.0.1' 'python-yaml>=6.0.2')
-makedepends=('python-build' 'python-hatchling' 'python-installer')
-# checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov>=5' 'python-pytest-xdist>=3.6.1')
+depends=(
+  'python>=3.11'
+  'python-click>=8.1.7'
+  'python-click-default-group>=1.2.4'
+  'python-dotenv>=1.0.1'
+  'python-httpx>=0.28.1'
+  # 'python-linkify-it-py'
+  'python-openapi-pydantic>=0.5'
+  'python-pydantic>=2.9.2'
+  'python-pydantic-settings>=2.4'
+  'python-pyperclip>=1.9'
+  'python-rich'
+  'python-textual>=6.1'
+  'python-textual-autocomplete>=4.0.4'
+  'python-typing_extensions'
+  'python-watchfiles>=0.24'
+  'python-xdg-base-dirs>=6.0.1'
+  'python-yaml>=6.0.2'
+)
+makedepends=(
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+)
+# checkdepends=(
+#   'python-pytest>=8.3.1'
+#   'python-pytest-cov>=5'
+#   'python-pytest-xdist>=3.6.1'
+# )
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8afec9056ec23541faeab5a406cfe784cc3ebbebd3814c50e4d1aa7539eaa4dc')
-
-# prepare() {
-#   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
-#   mv types.py posting_types.py
-#   find . -type f -name '*.py' -exec sed -i 's/from posting.types/from posting.posting_types/g' {} +
-#   find . -type f -name '*.py' -exec sed -i 's/import posting.types/import posting.posting_types/g' {} +
-# }
+sha256sums=('0673ed70e6cd93a25923720a2b728b3074a809da7e1b2f3e56c351b95109ef99')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -32,7 +48,7 @@ build() {
 
 # check() {
 #   cd "${srcdir}/${_pkgsrc}"
-#   PYTHONPATH="src/${pkgname}" pytest tests/ -m "not serial"
+#   pytest tests/ -m "not serial"
 # }
 
 package() {
@@ -44,7 +60,8 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" "LICENSE"
-  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE"  "NOTICE"
+  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -vsf "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE"  \
+    "${pkgdir}/usr/share/doc/${pkgname}/NOTICE"
 }
