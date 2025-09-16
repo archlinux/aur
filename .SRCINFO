@@ -1,0 +1,26 @@
+pkgbase = gmc-bin
+	pkgdesc = CLI that writes git commit messages for you with Google Gemini AI
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/tfkhdyt/geminicommit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = geminicommit
+	provides = gmc
+	conflicts = geminicommit
+	conflicts = geminicommit-bin
+	conflicts = geminicommit-git
+	conflicts = gmc
+	conflicts = gmc-git
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/tfkhdyt/geminicommit/v0.5.0/LICENSE
+	source = README-0.5.0.md::https://raw.githubusercontent.com/tfkhdyt/geminicommit/v0.5.0/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = e81d2329b8a94627efd32426b53392b71d1ad0917e565ce4468138479281558c
+	source_x86_64 = geminicommit-x86_64-0.5.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.5.0/gmc-v0.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 356f89421670bfeeba9a0fccda477bbaa238885e6bc656a3856f4bd8f3301bde
+	source_aarch64 = geminicommit-aarch64-0.5.0.tar.gz::https://github.com/tfkhdyt/geminicommit/releases/download/v0.5.0/gmc-v0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = f1c73bdc4851d3128e5e8a233f6282e255c48d87d343bfef1d6219ed98601018
+
+pkgname = gmc-bin
