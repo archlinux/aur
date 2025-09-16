@@ -1,6 +1,6 @@
 pkgbase = evil-helix-bin
 	pkgdesc = Helix fork with Vim keybindings and more
-	pkgver = 20250823
+	pkgver = 20250915
 	pkgrel = 1
 	url = https://github.com/usagi-flow/evil-helix
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = evil-helix-bin
 	conflicts = helix
 	options = !debug
 	options = !lto
-	source = https://github.com/usagi-flow/evil-helix/releases/download/release-20250823/evil-helix-amd64-linux.tar.gz
-	sha512sums = 7bab44b495e03b45d0876565c599611991e36ee80a1d505a6cef7dc1da44a313b53b3c69b2dd6b2f08422b551241f6668c0f23527acc95af52c70fd590f84c03
+	source = https://github.com/usagi-flow/evil-helix/releases/download/release-20250915/evil-helix-amd64-linux.tar.gz
+	sha512sums = bf8b8c6dda156e888d0695c570750357713c0881bf2e44396a696c27c416992d63ee1214e0c3851c58f53e7835d370912bd10974489c5808a38f7a6e68b92831
 
 pkgname = evil-helix-bin
