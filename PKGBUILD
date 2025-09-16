@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tongo
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="A TUI for MongoDB"
 arch=('x86_64')
 url="https://github.com/drewzemke/tongo"
 license=('GPL-3.0-only')
-depends=('gcc-libs')
+depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fb63c9fd1ebd8ff72897b4baf58bd4e875b4ed88d0b907e655ecbfe3d2e0b6d5')
+sha256sums=('1659dec1cad385079ce30c57c8b74692595e8c372e3cc21b26a2ddd9cb05a169')
 options=('!lto')
 
 prepare() {
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTONIG_SYSTEM_LIBONIG=1
   cargo build --release --frozen
 }
 

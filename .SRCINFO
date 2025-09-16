@@ -1,14 +1,15 @@
 pkgbase = tongo
 	pkgdesc = A TUI for MongoDB
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/drewzemke/tongo
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = gcc-libs
+	depends = oniguruma
 	options = !lto
-	source = tongo-0.15.1.tar.gz::https://github.com/drewzemke/tongo/archive/v0.15.1.tar.gz
-	sha256sums = fb63c9fd1ebd8ff72897b4baf58bd4e875b4ed88d0b907e655ecbfe3d2e0b6d5
+	source = tongo-0.15.2.tar.gz::https://github.com/drewzemke/tongo/archive/v0.15.2.tar.gz
+	sha256sums = 1659dec1cad385079ce30c57c8b74692595e8c372e3cc21b26a2ddd9cb05a169
 
 pkgname = tongo
