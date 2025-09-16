@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSEABase
-_pkgver=1.70.0
+_pkgver=1.70.1
 pkgname=r-${_pkgname,,}
-pkgver=1.70.0
+pkgver=1.70.1
 pkgrel=1
 pkgdesc='Gene set enrichment data structures and methods'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8563fc1a7fe13682c2fe3dcb2a85ac362392a5bb76112bd9ba9354a7da9d4a88')
+sha256sums=('760d4f18355386691d7f56a5e8aded4ee40cc31092bd4433df6a451e3bce045b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
