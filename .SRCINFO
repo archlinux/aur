@@ -1,11 +1,11 @@
 pkgbase = ark-pixel-font-16px-proportional
 	pkgdesc = Open source Pan-CJK pixel font / 开源的泛中日韩像素字体 (16px proportional)
-	pkgver = 2023.11.26
+	pkgver = 2025.08.24
 	pkgrel = 1
 	url = https://github.com/TakWolf/ark-pixel-font
 	arch = any
 	license = OFL
-	source = https://github.com/TakWolf/ark-pixel-font/releases/download/2023.11.26/ark-pixel-font-16px-proportional-otf-v2023.11.26.zip
-	sha256sums = 037ffe9587cb228c26d0e4ac92d75308799311d30b104bc05090f8de90dd89eb
+	source = https://github.com/TakWolf/ark-pixel-font/releases/download/2025.08.24/ark-pixel-font-16px-proportional-otf-v2025.08.24.zip
+	sha256sums = 206fdb16017e1c608b5356970164a8c2b443fa18da8e405b62db2a3774facb56
 
 pkgname = ark-pixel-font-16px-proportional
