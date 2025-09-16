@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=ais-catcher
-pkgver=0.61
+pkgver=0.62
 _commit=bd9aec9
 pkgrel=1
 pkgdesc='Receiver for Automatic Identifaction System of boats using an SDR device (RTL-SDR, AirSpy, HackRF, ...)'
@@ -26,7 +26,7 @@ source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 build() {
 	cd "$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
 	cd build
 	cmake --build .
 }
