@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202509071
+pkgver=202509161
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/3b171a9fe657c50608fff779d62d19f7d49506b3/archives/dove-flatpak.zip")
-sha512sums=('075b539790a92060713c8dc701bc799fceb6961081b5cc0d26fd62b0d1989e510eb4e6f5164547c37a5975acf339b1850a277e96bc60c4a62b895569bce7886c')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/5f3272332929909049a568b0461e5fca561edc68/archives/dove-flatpak.zip")
+sha512sums=('336649ba98d9ba409ada1f1f3f49ad8b9ea2fd506d15e71d38c1970bdfee267686e8d8fc3cb851a2b6790e7d2c1079215f98a3c9b92301aca4c929760c6104c7')
 makedepends=('unzip')
 
 pkgver() {
@@ -24,6 +24,7 @@ package() {
     install -Dm644 "$tmpdir/policies/policies.json" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/policies/policies.json"
     install -Dm644 "$tmpdir/COPYING.txt" "$pkgdir/usr/share/doc/dove-flatpak/COPYING.txt"
     install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/dove-flatpak/README.md"
+    install -Dm644 "$tmpdir/assets/autoconfig/LICENSE.txt" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/LICENSE.txt"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/123mail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/123mail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/126.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/126.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/12fuel.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/12fuel.dk"
@@ -249,7 +250,6 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/frederiksen.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/frederiksen.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/free.fr" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/free.fr"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/freeler.nl" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/freeler.nl"
-    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/freenet.de" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/freenet.de"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/funkymail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/funkymail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/gadefejer.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/gadefejer.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/gaf-net.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/gaf-net.dk"
@@ -968,6 +968,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zohomail.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/zohomail.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zoomail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/zoomail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/zybermail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/zybermail.dk"
+    install -Dm644 "$tmpdir/assets/uBlock/LICENSE.txt" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/uBlock/LICENSE.txt"
     install -Dm644 "$tmpdir/assets/uBlock.xpi" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/uBlock.xpi"
 
     rm -rf "$tmpdir"
