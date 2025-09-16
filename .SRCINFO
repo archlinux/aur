@@ -1,6 +1,6 @@
 pkgbase = linear-cli
 	pkgdesc = A comprehensive CLI tool for Linear issue management with advanced search, bulk operations, and team collaboration features
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/AdiKsOnDev/linearator
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = linear-cli
 	depends = python>=3.12
 	depends = python-pip
 	optdepends = keyrings.alt: Alternative keyring backends for credential storage
-	source = https://files.pythonhosted.org/packages/source/l/linearator/linearator-1.2.1.tar.gz
-	sha256sums = f88f541160c330f03a0e056171fc105fbbc5b9118e53c51938f704f25f04ac22
+	source = https://files.pythonhosted.org/packages/source/l/linearator/linearator-1.3.0.tar.gz
+	sha256sums = 8c157c3d509572a2cd92b75f68c2303d3334366bd8e73c7756f668175e71558a
 
 pkgname = linear-cli
