@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.2.21
+pkgver=1.2.22
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
@@ -14,8 +14,8 @@ conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
 		        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64.zip # add "baseline" here to download the avx2-less build of bun!
         brotliFlag.patch)
-b2sums=('741689378e3e5673229d43d33dcbc3c6233d3a7a877aec4d6181392699338945e80638efac58bd6e3d9c8cf7fa45d2ff5bccb242ecace483df5fbfcd23fc4e07'
-        '73aeac0b83ce59c2f82165860a246ee4e443f647e565426deeff0e97670459233dee80e8c0cae358615c9355f6487fa0e4d5ccbae81569a37608cd2bf8b594c5'
+b2sums=('a44e6aeda3a92d42243f9db59ea958b530f7e53467486753bcf23e642cce5649705554eede280c7aa2e4d15c9ff9cff0c4122fc93f3da1f664d360ffe90714e1'
+        'd3f01dc8e900a37895e9e1550d968cd59e53818dce5b82384db5bc43178d5673e936d3d0a549222e565ad1930e544351724f7f359636760bd6a471bebe40675c'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
 options=(ccache lto)
 
@@ -27,7 +27,7 @@ prepare() {
   if ! [[ -d WebKit ]]; then
       git clone --filter=tree:0 https://github.com/oven-sh/WebKit.git -b autobuild-$_webkitver
   else
-      # git -C WebKit fetch --filter=tree:0
+      git -C WebKit fetch --filter=tree:0
       git -C WebKit switch --detach autobuild-$_webkitver
   fi
 
@@ -75,7 +75,7 @@ build_webkit(){
   # Adapted from https://github.com/oven-sh/WebKit/blob/main/Dockerfile#L109
 
   export DEFAULT_CFLAGS="-mno-omit-leaf-frame-pointer -g -fno-omit-frame-pointer -ffunction-sections -fdata-sections -faddrsig -fno-unwind-tables -fno-asynchronous-unwind-tables -DU_STATIC_IMPLEMENTATION=1 -DNDEBUG=1 "
-  export LTO_FLAG="" #"-flto=full -fwhole-program-vtables -fforce-emit-vtables "
+  export LTO_FLAG="-flto=full -fwhole-program-vtables -fforce-emit-vtables "
 
   export CFLAGS="${DEFAULT_CFLAGS} $CFLAGS $LTO_FLAG "
   export CXXFLAGS="${DEFAULT_CFLAGS} $CXXFLAGS $LTO_FLAG -fno-c++-static-destructors "
