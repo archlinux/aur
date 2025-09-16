@@ -2,7 +2,7 @@
 
 pkgname="pass-secret-service"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An org.freedesktop.secrets provider with a pass backend."
 arch=(
   'aarch64'
@@ -21,9 +21,6 @@ makedepends=(
 )
 optdepends=(
   "pass:            To init and manage password store"
-)
-checkdepends=(
-  "cargo"
 )
 provides=(
   "pass-secret-service"
