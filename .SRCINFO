@@ -1,0 +1,19 @@
+pkgbase = claude-desktop-appimage
+	pkgdesc = Claude Desktop for Linux - AppImage version
+	pkgver = 1.1.5+claude0.13.11
+	pkgrel = 1
+	url = https://github.com/aaddrick/claude-desktop-debian
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = fuse2
+	provides = claude-desktop
+	conflicts = claude-desktop
+	noextract = claude-desktop-0.13.11-amd64.AppImage
+	options = !strip
+	source = claude-desktop-0.13.11-amd64.AppImage::https://github.com/aaddrick/claude-desktop-debian/releases/download/v1.1.5+claude0.13.11/claude-desktop-0.13.11-amd64.AppImage
+	source = claude-desktop.desktop
+	sha256sums = 90a9edcd5cbde4d5dea61f5940cd56bc03ee3561a3badcf51cd0d6dd4303aed8
+	sha256sums = 1daf44b74b900926ff64574a43ccb59b8c1ee4ba3318bfd1bce8d87fbb681050
+
+pkgname = claude-desktop-appimage

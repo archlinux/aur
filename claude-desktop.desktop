@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Claude
+Comment=AI assistant by Anthropic
+Exec=/usr/bin/claude-desktop %U
+Terminal=false
+Type=Application
+Icon=claude-desktop
+Categories=Network;Utility;
+MimeType=x-scheme-handler/claude;
+StartupNotify=true
+StartupWMClass=Claude
