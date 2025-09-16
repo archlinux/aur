@@ -1,13 +1,14 @@
 pkgbase = quake2rtx-bin
 	pkgdesc = Ray-traced version of Quake II.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/Q2RTX
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = zlib
 	depends = curl
 	depends = sdl2
+	depends = sndio
 	depends = vulkan-headers
 	depends = vulkan-driver
 	provides = quake2rtx
