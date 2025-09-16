@@ -2,7 +2,7 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-gnome-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (Gnome Wayland Version)'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 
 provides=('xremap')
@@ -14,10 +14,10 @@ source=("LICENSE")
 sha256sums=("60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343")
 
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-x86_64-gnome.zip")
-sha256sums_x86_64=('14d6c4d2a04ef0b6001070cee55202e1c32691dea786c3412cec04246d354a42')
+sha256sums_x86_64=('9395de2ce76f562f01834b31af657aeb1860bdd6fe4e83544ff1bd1edcafe952')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-aarch64-gnome.zip")
-sha256sums_aarch64=('f4e781eb60a77fe27f1e8737db0744440d40a24bab13a3b43855068644f72ea7')
+sha256sums_aarch64=('495b79b2df91073745aab148efce259bda5cf4e2494fd55ab33e62d8c7c2b2a5')
 
 package() {
 	cd "$srcdir/"
