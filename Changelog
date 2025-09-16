@@ -1,33 +1,74 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 7.2.0 ➙ 7.5.1
-              : 2024-10-22 ➙ 2025-08-19
+ Tags         : 7.3.0 ➙ 8.0.rc2
+              : 2024-12-31 ➙ 2025-09-16
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
+ 2025-09-16   : 8.0.rc2
+              - **Major Version 8.0.0**
+            
+                * Re-write pretty much from scratch. New design and fresh start.
+                * Modern coding standards: PEP-8, PEP-257 and PEP-484 style and type annotations
+                * Can now manage multiple VPNs
+                * Each VPN has a number of *accounts* and each account may have multiple profiles.
+                  Some profiles may be gateways (can be connected to) while others are clients
+                  (connect to one or more gateways).
+                * Support more use cases than earlier versions.
+                * Provide walk through working examples of 3 common use cases
+                * The enhancements require significant data format changes.
+            
+                  To make the upgrade as simple and easy as possble,
+                  existing data from earlier versions can be auto migrated to
+                  the new format with the *-migrate* option.
+            
+                * Network manipulations are now built on the *py-cidr* module.
+            
+                * New way to modify profiles.
+            
+                  The *--edit* option creates a text file. The file
+                  uses standard TOML (key = value) format. Simply edit the file and then
+                  use the *--merge* option to incorporate those changes.
+            
+                  This is simple and clean and makes it easy to modify whatever may be needed
+                  in one quick edit and merge.
+            
+                  There are still many command line options which can be particularly helpful
+                  making bulk changes.
+            
+                * Improved command line help.
+            
+                  Command line option help is now organized by category:
+            
+                    migrate, edit/merge, reporting, general and stored options.
+            
+                * Document most features including migration, importing, and
+                  making modifications.
+ 2025-08-19
+              - update Docs/Changelogs Docs/wg_tool.pdf
+
  2025-08-19   : 7.5.1
-                update pyproject version
-                update Docs/Changelogs Docs/wg_tool.pdf
+              - update pyproject version
+              - update Docs/Changelogs Docs/wg_tool.pdf
 
  2025-08-19   : 7.5.0
-                update arch PKGBUILD to 7.5.0
-                Fix bug for --init. Issue #18 Reported by @Crisp-Casper
- 2025-03-08     update Docs/Changelog.rst Docs/wg_tool.pdf
+              - update arch PKGBUILD to 7.5.0
+              - Fix bug for --init. Issue #18 Reported by @Crisp-Casper
+ 2025-03-08
+              - update Docs/Changelog.rst Docs/wg_tool.pdf
 
  2025-03-08   : 7.4.0
-                New option to set PersistentKeepAlive for user profiles.
+              - New option to set PersistentKeepAlive for user profiles.
                 Sort options list printed by --help
                 Update README
                 Add user_keepalive (seconds) to saved options
                 Server config : drop unused mod_time
- 2024-12-31     update Docs/Changelog.rst Docs/wg_tool.pdf
+ 2024-12-31
+              - update Docs/Changelog.rst Docs/wg_tool.pdf
 
  2024-12-31   : 7.3.0
-                Git tags are now signed.
+              - Git tags are now signed.
                 Add git signing key to Arch Package
                 Bump python vers
- 2024-10-22     update Docs/Changelog.rst Docs/wg_tool.pdf
-
- 2024-10-22   : 7.2.0
-                Additional input protections in cidr utils
- 2024-10-20     update Docs/Changelog.rst Docs/wg_tool.pdf
+ 2024-10-22
+              - update Docs/Changelog.rst Docs/wg_tool.pdf

@@ -7,16 +7,16 @@
 # Contributor: 
 # 
 pkgname='wg_tool'
-pkgdesc='Tool to administer wireguard VPN (server and user configs)'
+pkgdesc='Manages wireguard VPN configuration (servers and users).'
 _gitname='wg_tool'
 
-pkgver=7.5.1
+pkgver=8.0.rc2
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
-license=(MIT)
-depends=('python>=3.13' 'python-cryptography'
+license=('GPL-2.0-or-later')
+depends=('python>=3.13' 'python-cryptography' 'py-cidr'
          'python-tomli-w' 'python-qrcode' 'wireguard-tools'
          'nftables'
         )
