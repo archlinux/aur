@@ -1,6 +1,6 @@
 pkgbase = amsel_suite-bin
 	pkgdesc = TTRPG Game Master companion
-	pkgver = 1.5.5_L155_T155
+	pkgver = 1.6.0_L160_T160
 	pkgrel = 1
 	url = https://www.amsel-suite.com/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = amsel_suite-bin
 	provides = amsel_lore
 	provides = amsel_tome
 	conflicts = amsel_suite
-	source = https://github.com/OllamTechnologies/launcher-releases/releases/download/v1.5.5/amsel-suite_1.5.5_amd64.deb
-	source = https://github.com/OllamTechnologies/lore-releases/releases/download/v1.5.5/Lore-linux-x64-1.5.5.zip
-	source = https://github.com/OllamTechnologies/tome-releases/releases/download/v1.5.5/Tome-linux-x64-1.5.5.zip
-	sha256sums = e043e80ed60b7be1f52a025cb7a3f777dfd004d6e301095a47cea6d09cfe0f9f
-	sha256sums = b89576f88193b86b11b4aeba401379bf01b600efb935709f33b7fa8d69300c5a
-	sha256sums = 5c0552b4d700d44221628d20b24fd4cd11f7dd93e5f52782e6da11f6bed6c11d
+	source = https://github.com/OllamTechnologies/launcher-releases/releases/download/v1.6.0/amsel-suite_1.6.0_amd64.deb
+	source = https://github.com/OllamTechnologies/lore-releases/releases/download/v1.6.0/Lore-linux-x64-1.6.0.zip
+	source = https://github.com/OllamTechnologies/tome-releases/releases/download/v1.6.0/Tome-linux-x64-1.6.0.zip
+	sha256sums = da81c8bee77e8661ea522b1d44882878bb948aa097105ec18d723426ac0d4dae
+	sha256sums = 2311a77b8250b447cba3cd507415180a817787fd0408eb478e0d833ebfbacabc
+	sha256sums = 1b1ca645d5d75166a800146b7c63c8f5eabb08d970d4ded34438287ab75e82bb
 
 pkgname = amsel_suite-bin
