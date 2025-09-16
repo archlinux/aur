@@ -40,3 +40,4 @@ package() {
 
   chmod -R ugo+rX $pkgdir/opt
 }
+ 
