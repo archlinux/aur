@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-anyevent-http'
-pkgver='2.22'
+pkgver='2.25'
 pkgrel='1'
 pkgdesc="simple but non-blocking HTTP/HTTPS client"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-anyevent>=5.33' 'perl-common-sense>=3.3')
 makedepends=()
 url='https://metacpan.org/release/AnyEvent-HTTP'
-source=('http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-HTTP-2.22.tar.gz')
-md5sums=('e27736c4592031adccfa0638419a3b70')
-sha512sums=('3408b5339cc85e8d37dc6c4f40a0f1ad9436fb9b261e6a14b5a7913f8ee6c2ba7e80aec376af48190c76219fbcadf9c68c2d67c4ab60c77044093f6ec70f4aac')
-_distdir="AnyEvent-HTTP-2.22"
+source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-HTTP-${pkgver}.tar.gz")
+md5sums=('3e5f864cc48dae6bce0dcfc9e536c4e6')
+sha512sums=('bc189a6a37cb3c3b6f1c36bd965911e110019fec5b8f82bea60dab2e3cf0dda0117a83a5f0608f7865f457b016f94f1ccc78939e22849bceb82a096edc24de9c')
+_distdir="AnyEvent-HTTP-2.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
