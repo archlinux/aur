@@ -8,13 +8,14 @@ pkgver=140.0.7339.136
 _vivaldi_major_version=7.6
 _commit=d2d06b12c22d27af58114e779270521074ff1f85
 #_commit=$(curl -sL "https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${pkgver}/DEPS?format=TEXT" | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for ${_browser}"
 arch=('x86_64')
 url='https://chromium.googlesource.com/chromium/third_party/ffmpeg'
 license=('LGPL-2.1-or-later')
 depends=(glibc)
 makedepends=(nasm git)
+options=(!debug)
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}")
 sha256sums=('491c843c8d3a1ce935d835ea1b20687e8537c1eb888cb9d53ddd7f5c4844ab5f')
 
