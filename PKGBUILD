@@ -32,7 +32,7 @@ sha256sums=('8c157c3d509572a2cd92b75f68c2303d3334366bd8e73c7756f668175e71558a')
 
 build() {
     cd "$_pypi_name-$pkgver"
-    python -m build --wheel --no-isolation
+    python -m build --wheel
 }
 
 check() {
@@ -43,12 +43,11 @@ check() {
 
 package() {
     cd "$_pypi_name-$pkgver"
-    
-    # Install the built wheel using installer
     python -m installer --destdir="$pkgdir" dist/*.whl
-    
+
     # Install license and docs from source
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
+
