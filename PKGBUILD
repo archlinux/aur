@@ -1,6 +1,6 @@
 # Maintainer: fish4terrisa-MSDSM <fish4terrisa@fishinix.org>
 pkgname=urnetwork-provider-git
-pkgver=753b3eb
+pkgver=v2025.9.12.728916620.r0.g8f63359
 pkgrel=1
 pkgdesc="A web-standards VPN marketplace with an emphasis on fast, secure internet everwhere."
 arch=("x86_64")
