@@ -30,7 +30,7 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
     ./configure
-    make -j
+    make
 }
 
 package() {
