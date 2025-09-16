@@ -67,7 +67,7 @@ pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/flameshot-org/flameshot"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-svg' 'hicolor-icon-theme' 'kguiaddons')
+depends=('qt6-base' 'qt6-svg' 'hicolor-icon-theme' 'kguiaddons' 'kdsingleapplication')
 makedepends=('git' 'qt6-tools' 'cmake' 'ninja')
 optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work'
@@ -96,6 +96,7 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DUSE_WAYLAND_CLIPBOARD=1 \
           -DDISABLE_UPDATE_CHECKER=1 \
+          -DUSE_BUNDLED_KDSINGLEAPPLICATION=0
 
     cmake --build build
 }

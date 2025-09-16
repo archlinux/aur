@@ -16,6 +16,7 @@ pkgbase = flameshot-git
 	depends = qt6-svg
 	depends = hicolor-icon-theme
 	depends = kguiaddons
+	depends = kdsingleapplication
 	optdepends = xdg-desktop-portal: To make Sway, Hyprland, and wlroots work
 	optdepends = xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work
 	optdepends = xdg-desktop-portal-kde: For KDE Plasma
