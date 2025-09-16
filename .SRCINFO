@@ -1,6 +1,6 @@
 pkgbase = flameshot-git
 	pkgdesc = Powerful yet simple to use screenshot software
-	pkgver = r2057.58afdce7
+	pkgver = r2181.1e182887
 	pkgrel = 1
 	url = https://github.com/flameshot-org/flameshot
 	arch = i686
