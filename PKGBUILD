@@ -16,6 +16,12 @@ depends=(
     'python-dotenv'
     'python-pydantic'
     'python-rich'
+    'python-pygments'
+    'python-secretstorage'
+    'python-typing_extensions'
+    'python-yarl'
+    'python-typing-inspection'
+    'python-sniffio'
 )
 depends+=('python-gql')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
@@ -27,7 +33,7 @@ sha256sums=('8c157c3d509572a2cd92b75f68c2303d3334366bd8e73c7756f668175e71558a')
 
 build() {
     cd "$_pypi_name-$pkgver"
-    python -m build --wheel
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -39,11 +45,8 @@ check() {
 package() {
     cd "$_pypi_name-$pkgver"
     
-    # Install the built wheel, excluding bundled dependencies
-    PYTHONDONTWRITEBYTECODE=1 python -m installer --destdir="$pkgdir" dist/*.whl
-    
-    # Remove bundled dependencies that conflict with system packages
-    rm -rf "$pkgdir"/usr/lib/python*/site-packages/{pygments,secretstorage,typing_extensions}*
+    # Install with pip to respect system dependencies
+    python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/*.whl
     
     # Install license and docs from source
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
