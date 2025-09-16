@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan233@163.com>
 pkgname=ziniaobrowser-bin
 pkgver=6.9.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="紫鸟浏览器 - 基于 Chromium 的浏览器"
 arch=('x86_64')
 url="https://www.ziniao.com/"
@@ -31,4 +31,16 @@ package() {
         find "$pkgdir/opt" -name "env-kit" -exec chmod 755 {} \;
         find "$pkgdir/opt" -name "ziniao-gateway" -exec chmod 755 {} \;
     fi
+    
+    # 创建启动脚本
+    mkdir -p "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/ziniao" << 'EOF'
+#!/bin/bash
+exec /opt/ziniao/ziniaobrowser "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/ziniao"
+    
+    # 修改桌面文件
+    sed -i 's|Name=ziniao|Name=紫鸟浏览器\nName[en]=ziniao|' "$pkgdir/usr/share/applications/ziniaobrowser.desktop"
+    sed -i 's|Exec=/opt/ziniao/ziniaobrowser %U|Exec=ziniao %U|' "$pkgdir/usr/share/applications/ziniaobrowser.desktop"
 }

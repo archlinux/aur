@@ -1,7 +1,7 @@
 pkgbase = ziniaobrowser-bin
 	pkgdesc = 紫鸟浏览器 - 基于 Chromium 的浏览器
 	pkgver = 6.9.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ziniao.com/
 	arch = x86_64
 	license = custom
