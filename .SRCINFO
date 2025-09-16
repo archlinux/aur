@@ -1,0 +1,17 @@
+pkgbase = svarog
+	pkgdesc = Network Dashboard - Terminal system monitor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SrWyatt/svarog
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = coreutils
+	depends = procps
+	depends = iproute2
+	depends = curl
+	depends = iw
+	source = svarog.sh
+	sha256sums = SKIP
+
+pkgname = svarog
