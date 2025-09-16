@@ -6,8 +6,8 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=142.0.1
-pkgrel=2
+pkgver=143.0
+pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -70,6 +70,7 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
+  'onnxruntime: Local machine learning features such as smart tab groups'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
@@ -90,26 +91,24 @@ source=(
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
-
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('b0adb44ed4c3383e752a5947adbfb0d03f24172cb468831bd49978de25e810c0'
+sha256sums=('6c45ca38091820c2c9925a85c80c04120de0ced98589065358c34d257e1edf83'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'a0a236be070594f576b670a0988449b7bc1eaf5b94ba2ca15807e484c794d4dc'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85')
-b2sums=('ec132591ade9a8c8a4bfcede9a0764ae5f505ed47bc49a905c1222646052873ce1cea975bf21e885f618a505f763e1461318bb90ebe1dc9b205b242734fb1c26'
+b2sums=('3e71ba1d711c2f48efb693738efac3dbede6625c2c3a038c777128635ea39e39836569c205540561e5f65a26eb460f3aa84a60d70df4ff728add043e10d62fde'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '6b7638446d4c262363af460382204e6d82138a5a22009969b198b7c4f58f9d9951330869a37e393885293733746d8790cd71e42f4e81004d533beed9e97816a7'
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
         'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778')
 
-# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
-# more information.
+# get your own set of keys.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
@@ -161,7 +160,6 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
-
 }
 
 build() {
@@ -171,6 +169,9 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
+
+  # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
+  export RUST_MIN_STACK=16777216
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
@@ -214,7 +215,6 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build --priority normal
-
 }
 
 package() {
@@ -262,10 +262,9 @@ app.partner.archlinux=archlinux
 END
 
   # Link up system ONNX runtime
-  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$pkgdir/usr/lib/$pkgname"
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$pkgdir/usr/lib/$_pkgname"
 
   # Install desktop icons and metadata
-
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
