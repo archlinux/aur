@@ -1,0 +1,22 @@
+pkgbase = ziniaobrowser-bin
+	pkgdesc = 紫鸟浏览器 - 基于 Chromium 的浏览器
+	pkgver = 6.9.0.9
+	pkgrel = 1
+	url = https://www.ziniao.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: for system tray support
+	noextract = ziniaobrowser-bin-6.9.0.9.deb
+	source = ziniaobrowser-bin-6.9.0.9.deb::https://cdn-superbrowser-web.ziniao.com/v6/ziniao_x64_6.9.0.9_production.deb
+	sha256sums = 8c3ef239674bc861618059dc8d792bb2c762ba7dd1a58af7af3cbdb7d6d1486b
+
+pkgname = ziniaobrowser-bin
