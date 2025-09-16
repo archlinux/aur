@@ -1,5 +1,5 @@
 pkgname=contextlite
-pkgver=2.0.7
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Ultra-fast context engine for retrieval and AI applications"
 arch=('x86_64')

@@ -1,11 +1,11 @@
 pkgbase = contextlite
 	pkgdesc = Ultra-fast context engine for retrieval and AI applications
-	pkgver = 2.0.7
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://contextlite.com
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Michael-A-Kuykendall/contextlite/releases/download/v2.0.7/contextlite-2.0.7-linux-amd64.tar.gz
+	source = https://github.com/Michael-A-Kuykendall/contextlite/releases/download/v3.0.0/contextlite-3.0.0-linux-amd64.tar.gz
 	sha256sums = SKIP
 
 pkgname = contextlite
