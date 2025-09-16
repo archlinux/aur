@@ -1,0 +1,20 @@
+pkgbase = bushuray-git
+	pkgdesc = Xray TUI client (builds bushuray, bushuray-core and v2parser)
+	pkgver = 0.1.7.r1.ge679087
+	pkgrel = 1
+	url = https://github.com/Keivan-sf/Bushuray-tui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = cargo
+	makedepends = git
+	depends = xray-bin
+	depends = tun2socks-bin
+	source = bushuray-tui::git+https://github.com/Keivan-sf/Bushuray-tui.git
+	source = bushuray-core::git+https://github.com/Keivan-sf/Bushuray-core.git
+	source = v2parser::git+https://github.com/Keivan-sf/v2-uri-parser
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bushuray-git
