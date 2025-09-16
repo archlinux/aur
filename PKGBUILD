@@ -3,10 +3,10 @@
 # Contributor: M A <morealaz at gmail dot com>
 
 pkgname='java-openjdk-bin'
-_majorver='24'
-_fullver='24.0.2'
-_buildver='12'
-_hash='fdc5d0102fe0414db21410ad5834341f'
+_majorver='25'
+_fullver="${_majorver}"
+_buildver='36'
+_hash='bd75d5f9689641da8e1daabeccb5528b'
 pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
@@ -22,10 +22,12 @@ provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
 )
-source_x86_64=("https://download.java.net/java/GA/jdk${_fullver}/${_hash}/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
-source_aarch64=("https://download.java.net/java/GA/jdk${_fullver}/${_hash}/${_buildver}/GPL/openjdk-${_fullver}_linux-aarch64_bin.tar.gz")
-sha256sums_x86_64=('635050717feab0e4c283c8e90e79e944a2b65a3b6b21f1d37dcaadad4cc29548')
-sha256sums_aarch64=('1c2164216387c2f5cbacc7e96ecaa51168d954ac3805312b0a7d4d1e2726f58a')
+_sourcePrefix="https://download.java.net/java/GA/jdk${_fullver}/${_hash}/${_buildver}/GPL/openjdk-${_fullver}_linux-"
+_sourceSuffix="_bin.tar.gz"
+source_x86_64=("${_sourcePrefix}x64${_sourceSuffix}")
+source_aarch64=("${_sourcePrefix}aarch64${_sourceSuffix}")
+sha256sums_x86_64=('59cdcaf255add4721de38eb411d4ecfe779356b61fb671aee63c7dec78054c2b')
+sha256sums_aarch64=('f4a8d27429458a529148f90ebafcd1ae9b1968fa323f9e5e40d579a5c8c0288f')
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 
 package() {
