@@ -15,7 +15,7 @@ optdepends=("7k-ambition-music>=3.0.0: for ingame music")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Infiltrator/7k-ambition/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.desktop"
-        "https://sourceforge.net/projects/seven-kingdoms-ambition/files/${pkgname}.png/download")
+        "${pkgname}.png::https://sourceforge.net/projects/seven-kingdoms-ambition/files/${pkgname}.png/download")
 b2sums=("cc7f6e94098f78085cabc8feb1398a0b6cc8264c7cd6e6082fadb87f1bd7cddf507df641103812a0dfcf7f6b43068e07a49ee0b00a1165021624c831b1754366"
         "833ff931d205e7c2c2d2f5f4af6bc1b854344128d4377bb68d694722d1e4af6bdd822280134705286d1fb5fc4f0945d1f38fb24831c31c57c0c8a821765d54f2"
         "e6c5054c5066df0e3afe5d3b2ddea66c6bb20473caa9b223427dc959d9f5161e3ef72fb09c36fedf422ee90b3d919920dcf0887d4048515dc4096e2168afa502"
