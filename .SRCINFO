@@ -1,6 +1,6 @@
 pkgbase = libpoco-basic
 	pkgdesc = C++ class libraries for network-centric, portable applications, basic edition
-	pkgver = 1.14.1
+	pkgver = 1.14.2
 	pkgrel = 1
 	url = http://www.pocoproject.org
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libpoco-basic
 	conflicts = poco
 	conflicts = poco-devel
 	conflicts = poco-git
-	source = http://www.pocoproject.org/releases/poco-1.14.1/poco-1.14.1.tar.gz
-	sha256sums = 58e386e48bf82ca84005eb7f5fbf543e1d55ebf2e86c5914185c643cd3951632
+	source = http://www.pocoproject.org/releases/poco-1.14.2/poco-1.14.2.tar.gz
+	sha256sums = 9cab5a8ae3663899eb1b1b3b93fded8ccd5a564f7836b6fabd89a614a97ecacb
 
 pkgname = libpoco-basic
