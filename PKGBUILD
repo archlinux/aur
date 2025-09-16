@@ -131,7 +131,7 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/claude-desktop" << 'EOF'
 #!/bin/bash
-exec electron /usr/lib/claude-desktop-bin/app.asar "$@"
+exec electron /usr/lib/claude-desktop-bin-arch/app.asar "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/claude-desktop"
 
