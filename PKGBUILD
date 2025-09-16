@@ -1,6 +1,6 @@
 # Maintainer: Alfonso² Peterssen <a2peterssen+aur ÅT gmail DÖT com>
 pkgname=('jbang')
-pkgver=0.130.0
+pkgver=0.131.0
 pkgrel=1
 pkgdesc="Unleash the (scripting) power of Java"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash'
 optdepends=('java-environment>=9: jshell support')
 source=("https://github.com/jbangdev/jbang/releases/download/v${pkgver}/jbang-${pkgver}.tar"
         "https://raw.githubusercontent.com/jbangdev/jbang/v${pkgver}/LICENSE")
-sha256sums=('2cd4159ad2b1d9ae1f908e24a444aae12e7bb9e790074a0a010d889caf25024d'
+sha256sums=('279c73f1c8f8ea8285e31ba826751def0385c5de4adbd8b9b69e47b9ab48d3dd'
             '7c1797962764ae89b1774c44b7ad449e6eaaa83a8e4e4804d965978fe7231d9c')
 
 package() {
