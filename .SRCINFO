@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
@@ -12,9 +12,8 @@ pkgbase = python-photutils
 	checkdepends = python-bottleneck
 	checkdepends = python-regions
 	checkdepends = python-gwcs
-	makedepends = cython>=3.0.0
-	makedepends = python-setuptools-scm>=6.2
-	makedepends = python-wheel
+	makedepends = cython>=3.1.0
+	makedepends = python-setuptools-scm>=8.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-extension-helpers>=1
@@ -30,22 +29,22 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-shapely
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-2.2.0.tar.gz
-	md5sums = 7388fe16ed89c727766e7b4e46eedc50
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-2.3.0.tar.gz
+	md5sums = fefccde77604ac430826636fd46814c2
 
 pkgname = python-photutils
 	depends = python>=3.11
-	depends = python-numpy>=1.24
+	depends = python-numpy>=1.25
 	depends = python-astropy>=5.3
-	depends = python-scipy>=1.10
-	optdepends = python-scikit-image>=0.20: Required to deblend segmented sources
-	optdepends = python-matplotlib>=3.7: To power a variety of plotting features (e.g. plotting apertures)
+	depends = python-scipy>=1.11.1
+	optdepends = python-scikit-image>=0.21: Required to deblend segmented sources
+	optdepends = python-matplotlib>=3.8: To power a variety of plotting features (e.g. plotting apertures)
 	optdepends = python-gwcs>=0.20: Required in make_gwcs to create a simple celestial gwcs object.
 	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
-	optdepends = python-tqdm: Required to display optional progress bars
-	optdepends = python-rasterio: Required to convert source segments into polygon objects
+	optdepends = python-tqdm>=4.65: Required to display optional progress bars
+	optdepends = python-rasterio>=1.3.7: Required to convert source segments into polygon objects
 	optdepends = python-regions>=0.9: Required to perform aperture photometry using region objects
-	optdepends = python-shapely: Required to convert source segments into polygon objects
+	optdepends = python-shapely>=2.0.0: Required to convert source segments into polygon objects
 	optdepends = python-photutils-doc: Documentation for python-photutils
 
 pkgname = python-photutils-doc

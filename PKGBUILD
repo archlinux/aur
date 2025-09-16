@@ -3,16 +3,15 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.2.0
+pkgver=2.3.0
 #_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
 url="http://photutils.readthedocs.io"
 license=('BSD-3-Clause')
-makedepends=('cython>=3.0.0'
-             'python-setuptools-scm>=6.2'
-             'python-wheel'
+makedepends=('cython>=3.1.0'
+             'python-setuptools-scm>=8.0'
              'python-build'
              'python-installer'
              'python-extension-helpers>=1'
@@ -27,7 +26,8 @@ makedepends=('cython>=3.0.0'
              'python-scipy'
              'python-scikit-image'
              'python-shapely'
-             'graphviz')
+             'graphviz')  # wheel required by new setuptools
+# header: photutils/conftest.py
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
@@ -49,7 +49,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('7388fe16ed89c727766e7b4e46eedc50')
+md5sums=('fefccde77604ac430826636fd46814c2')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -57,10 +57,10 @@ get_pyver() {
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
-#    cd ${srcdir}/${_pyname}-${_pkgver}
+##   cd ${srcdir}/${_pyname}-${_pkgver}
 #
-#    sed -e "/bool8/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning" \
-#        -i setup.cfg
+##   sed -e "/bool8/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning" \
+##       -i setup.cfg
 #    install -Dm644 "${srcdir}"/{*.fit*,*.txt,*.xml} -t ${_pyname}/datasets/data
 #    patch -Np1 -i "${srcdir}/datasets-use-local.patch"
 #}
@@ -68,7 +68,7 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
-    python -m build --wheel --no-isolation #--skip-dependency-check
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
@@ -84,15 +84,15 @@ check() {
 }
 
 package_python-photutils() {
-    depends=('python>=3.11' 'python-numpy>=1.24' 'python-astropy>=5.3' 'python-scipy>=1.10')
-    optdepends=('python-scikit-image>=0.20: Required to deblend segmented sources'
-                'python-matplotlib>=3.7: To power a variety of plotting features (e.g. plotting apertures)'
+    depends=('python>=3.11' 'python-numpy>=1.25' 'python-astropy>=5.3' 'python-scipy>=1.11.1')
+    optdepends=('python-scikit-image>=0.21: Required to deblend segmented sources'
+                'python-matplotlib>=3.8: To power a variety of plotting features (e.g. plotting apertures)'
                 'python-gwcs>=0.20: Required in make_gwcs to create a simple celestial gwcs object.'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
-                'python-tqdm: Required to display optional progress bars'
-                'python-rasterio: Required to convert source segments into polygon objects'
+                'python-tqdm>=4.65: Required to display optional progress bars'
+                'python-rasterio>=1.3.7: Required to convert source segments into polygon objects'
                 'python-regions>=0.9: Required to perform aperture photometry using region objects'
-                'python-shapely: Required to convert source segments into polygon objects'
+                'python-shapely>=2.0.0: Required to convert source segments into polygon objects'
                 'python-photutils-doc: Documentation for python-photutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
