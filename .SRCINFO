@@ -1,11 +1,11 @@
 pkgbase = ark-pixel-font-10px-monospaced
 	pkgdesc = Open source Pan-CJK pixel font / 开源的泛中日韩像素字体 (10px monospaced)
-	pkgver = 2023.11.26
+	pkgver = 2025.08.24
 	pkgrel = 1
 	url = https://github.com/TakWolf/ark-pixel-font
 	arch = any
 	license = OFL
-	source = https://github.com/TakWolf/ark-pixel-font/releases/download/2023.11.26/ark-pixel-font-10px-monospaced-otf-v2023.11.26.zip
-	sha256sums = 0ee398b6cc191d6f7d0d0c79ea23588b1e775dc810752979b0e89b8088e2323a
+	source = https://github.com/TakWolf/ark-pixel-font/releases/download/2025.08.24/ark-pixel-font-10px-monospaced-otf-v2025.08.24.zip
+	sha256sums = 36c65ca07e81f393f4ba1d8da672c2899ce645f5da729aac3aca08cbdf6780e5
 
 pkgname = ark-pixel-font-10px-monospaced
