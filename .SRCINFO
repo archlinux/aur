@@ -1,6 +1,6 @@
 pkgbase = urnetwork-provider-git
 	pkgdesc = A web-standards VPN marketplace with an emphasis on fast, secure internet everwhere.
-	pkgver = 753b3eb
+	pkgver = v2025.9.12.728916620.r0.g8f63359
 	pkgrel = 1
 	url = https://ur.io
 	arch = x86_64
