@@ -1,54 +1,35 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=meteor-bin
-_pkgname=Meteor
-pkgver=2.0.1
-pkgrel=4
-pkgdesc="A meter based ToDo List. used Electron-Vue"
-arch=("x86_64")
-url="https://hideko.f5.si/project/meteor.html"
-_ghurl="https://github.com/Hideko-Dev/Meteor"
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_pkgauthor=stefanlogue
+_pkgname=meteor
+pkgname=${_pkgname}-bin
+pkgver=0.28.2
+_pkgvername=v${pkgver}
+pkgrel=1
+pkgdesc="A highly configurable CLI tool for writing conventional commits"
+arch=('x86_64' 'i686' 'aarch64')
+_barch=('amd64' '386' 'arm64')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('MIT')
-provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
-depends=(
-    'libxext'
-    'libx11'
-    'hicolor-icon-theme'
-    'libxrandr'
-    'gtk3'
-    'nss'
-    'libxcomposite'
-    'pango'
-    'cairo'
-    'libdrm'
-    'nspr'
-    'alsa-lib'
-    'at-spi2-core'
-    'libxfixes'
-    'expat'
-    'libxdamage'
-    'dbus'
-    'libcups'
-    'mesa'
-    'libxkbcommon'
-    'libxcb'
-)
-makedepends=(
-    'gendesk'
-)
-source=("${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${_pkgname}-linux-x64.zip")
-sha256sums=('890bc15a4b63ced7fe71f0e18936280de582960ecde0bb91d62dfcd7544a9394')
-build() {
-    gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
-}
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.zip")
+source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.zip")
+source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[2]}.zip")
+sha256sums_x86_64=('9d0b9f65be39ef1fa7fd7b91aca1368d9ce433e87d48728a27fc8c4308a0899a')
+sha256sums_i686=('cbdd43c3bf021b76be4c5eb3fbda550107ec77aa36e6b611bb7bee1d5379d480')
+sha256sums_aarch64=('974fbd5c8c2dd3f78b335b7f3532febac4642d3a577b61130f5e69b45bdd7054')
+
+
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/${_pkgname}-linux-x64/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/assets/png/${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
-    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
