@@ -1,7 +1,7 @@
 # Maintainer: Samuobe samuobe@ik.me
 
 pkgname=arch-store-git
-pkgver=2.0.1
+pkgver=2.0.2.26.g224ca52
 pkgrel=1
 pkgdesc="A graphical app for managing your programs with pacman, AUR, flatpak, and appimage"
 arch=('any')
@@ -11,6 +11,7 @@ depends=('python' 'python-pyqt6')
 makedepends=('git' 'python-setuptools')
 source=("git+$url.git")
 md5sums=('SKIP')
+install=$pkgname.install 
 
 pkgver() {
     cd Arch-Store
@@ -37,12 +38,6 @@ EOF
 
     # File .desktop
     install -Dm644 "$srcdir/Arch-Store/arch-store.desktop" "$pkgdir/usr/share/applications/arch-store.desktop"
-
-
-    #version type
-    install -Dm644 /dev/null "$pkgdir/usr/share/arch-store/beta"
-
-    rm -f "$pkgdir/usr/share/arch-store/script"
 
 
 }
