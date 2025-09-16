@@ -10,20 +10,19 @@ url="https://github.com/AdiKsOnDev/linearator"
 license=('MIT')
 depends=(
     'python>=3.12'
-    'python-httpx'
-    'python-keyring'
-    'python-tomli-w'
-    'python-dotenv'
+    'python-click'
+    'python-gql'
+    'python-aiohttp'
     'python-pydantic'
+    'python-keyring'
+    'python-cryptography'
     'python-rich'
-    'python-pygments'
-    'python-secretstorage'
-    'python-typing_extensions'
-    'python-yarl'
-    'python-typing-inspection'
-    'python-sniffio'
+    'python-dotenv'
+    'python-pyjwt'
+    'python-httpx'
+    'python-tomli'
+    'python-tomli-w'
 )
-depends+=('python-gql')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=(
     'keyrings.alt: Alternative keyring backends for credential storage'
