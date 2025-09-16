@@ -1,0 +1,21 @@
+pkgbase = pwarden-git
+	pkgdesc = Bitwarden CLI helper that searches items and copies the password to clipboard
+	pkgver = r5.06951af
+	pkgrel = 1
+	url = https://github.com/edupr91/pwarden
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = bitwarden-cli
+	depends = python
+	depends = python-inquirerpy
+	depends = python-pyperclip
+	depends = python-setuptools
+	optdepends = xclip: clipboard on X11
+	optdepends = wl-clipboard: clipboard on Wayland
+	provides = pwarden
+	conflicts = pwarden
+	source = pwarden-git::git+https://github.com/edupr91/pwarden.git#branch=main
+	sha256sums = SKIP
+
+pkgname = pwarden-git
