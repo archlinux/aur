@@ -4,7 +4,7 @@
 pkgname=claude-desktop-bin-arch
 pkgver=0.13.11
 pkgrel=1
-pkgdesc="Claude AI Desktop Application (Official Binary)"
+pkgdesc="Claude AI Desktop Application (Official Binary - Arch Linux Compatible)"
 arch=('x86_64' 'aarch64')
 url="https://claude.ai"
 license=('custom:Claude')
