@@ -1,5 +1,5 @@
 pkgname=ttop
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="System monitoring tool with historical data service, triggers and top-like TUI"
 url="https://github.com/inv2004/ttop"
@@ -8,21 +8,21 @@ arch=('x86_64')
 depends=("glibc")
 makedepends=("git" "nim")
 source=("git+$url.git#tag=v$pkgver"
-        ".INSTALL")
+  ".INSTALL")
 sha256sums=('SKIP'
-            'SKIP')
+  'SKIP')
 install=".INSTALL"
 backup=("etc/ttop.toml")
 
 prepare() {
-# Shortcut
+  # Shortcut
   echo -e "[Desktop Entry]
 Name=ttop
 Exec=ttop
 Icon=ttop
 Terminal=true
 Type=Application
-Comment=System monitoring tool with historical data service, triggers and top-like TUI" > ttop.desktop
+Comment=System monitoring tool with historical data service, triggers and top-like TUI" >ttop.desktop
 }
 
 build() {
