@@ -16,12 +16,6 @@ depends=(
     'python-dotenv'
     'python-pydantic'
     'python-rich'
-    'python-pygments'
-    'python-secretstorage'
-    'python-typing_extensions'
-    'python-yarl'
-    'python-typing-inspection'
-    'python-sniffio'
 )
 depends+=('python-gql')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
