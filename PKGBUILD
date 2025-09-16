@@ -2,11 +2,10 @@
 
 # shellcheck shell=bash
 pkgname=zig-master-bin
-pkgver=0.15.0_dev.1572.g47e652876
-pkgver=0.15.1
+pkgver=0.16.0_dev.238.g580b6d1fa
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
-arch=('x86_64' 'arm' 'aarch64' 'riscv64')
+arch=('aarch64' 'armv7h' 'i686' 'powerpc64le' 'riscv64' 'x86_64')
 url="https://ziglang.org/"
 license=('MIT')
 provides=('zig' 'zig-master')
@@ -15,10 +14,20 @@ replaces=('zig-nightly-bin')
 makedepends=('curl' 'jq' 'minisign')
 options=('!strip')
 
+case "${CARCH}" in
+    'aarch64'     ) _arch='aarch64';;
+    'armv7h'      ) _arch='arm';;
+    'i686'        ) _arch='x86';;
+    'powerpc64le' ) _arch='powerpc64le';;
+    'riscv64'     ) _arch='riscv64';;
+    'x86_64'      ) _arch='x86_64';;
+    *             ) echo "Unsupported architecture: ${CARCH}"; return 1;;
+esac
+
 _index_json=$(curl -s "${url}/download/index.json")
 _master_version=$(jq -r '.master.version' <<< "${_index_json}")
-_tarball_url=$(jq -r ".master.\"${CARCH}-linux\".tarball" <<< "${_index_json}")
-_tarball_sha256=$(jq -r ".master.\"${CARCH}-linux\".shasum" <<< "${_index_json}")
+_tarball_url=$(jq -r ".master.\"${_arch}-linux\".tarball" <<< "${_index_json}")
+_tarball_sha256=$(jq -r ".master.\"${_arch}-linux\".shasum" <<< "${_index_json}")
 _tarball=$(basename "${_tarball_url}")
 
 pkgver() {
