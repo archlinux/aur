@@ -1,17 +1,11 @@
---- a/plugins/builder-lambda/core-post-extract
-+++ b/plugins/builder-lambda/core-post-extract
-@@
--trigger-builder-lambda-core-post-extract() {
--  declare desc="builder-lambda post-extract plugin trigger"
--  declare trigger="post-extract"
--  declare APP="$1" SOURCECODE_WORK_DIR="$2"
--  local NEW_lambda_YML="$(fn-builder-lambda-computed-lambdatoml-path "$APP")"
--
+--- a/plugins/builder-lambda/core-post-extract 2025-09-16 23:02:16.791027084 +0200
++++ b/plugins/builder-lambda/core-post-extract 2025-09-16 23:02:09.600984239 +0200
+@@ -10,7 +10,7 @@
+   declare APP="$1" SOURCECODE_WORK_DIR="$2"
+   local NEW_LAMBDA_YML="$(fn-builder-lambda-computed-lambdayml-path "$APP")"
+
 -  pushd "$TMP_WORK_DIR" >/dev/null
-+trigger-builder-lambda-core-post-extract() {
-+  declare desc="builder-lambda post-extract plugin trigger"
-+  declare trigger="post-extract"
-+  declare APP="$1" TMP_WORK_DIR="$2"
-+  local NEW_lambda_YML="$(fn-builder-lambda-computed-lambdatoml-path "$APP")"
-+
-+  pushd "$TMP_WORK_DIR" >/dev/null
++  pushd "$SOURCECODE_WORK_DIR" >/dev/null
+
+   if [[ -z "$NEW_LAMBDA_YML" ]]; then
+     return
