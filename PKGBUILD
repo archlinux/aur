@@ -1,6 +1,6 @@
 pkgname="storyfork"
-pkgver="1.1.0"
-pkgrel="2"
+pkgver="1.2.0"
+pkgrel="1"
 pkgdesc="A tool for reading CYOA stories written in text files"
 arch=("x86_64")
 url="https://codeberg.org/wayfarer/StoryFork"
@@ -8,7 +8,7 @@ license=("GPL-3.0-only")
 groups=("wayfarer")
 depends=("python-pyqt6" "python3")
 source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip")
-sha512sums=("c05be823edde55ccd36f3546d674b05aefb6b314f76ad93ccad7886c7efe2f093f144783a8e5a0e460194324e8b20e5031081e75d7fc483df2d39825b6088b00")
+sha512sums=("8d34a76e862cc91e253b83512667d26d9af6618557edc7eae117710dfa0de62f743a4c0f532b9a5565519ee591d3c3fcc9815a78ea533416a1fb65a8643870d8")
 
 package() {
 	install -Dm755 "${srcdir}/storyfork/src/storyfork.py" "${pkgdir}/usr/bin/storyfork"
