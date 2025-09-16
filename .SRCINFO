@@ -10,7 +10,6 @@ pkgbase = python-symfem
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-flit-core
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-sympy
 	depends = python-appdirs
