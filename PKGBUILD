@@ -4,7 +4,7 @@ pkgname=python-papis-scihub-git
 _plugname="${pkgname%-git}"
 _plugname="${_plugname#python-}"
 pkgver=1.4.0.r0.gf7bb665.PR62
-pkgrel=1
+pkgrel=2
 pkgdesc='Papis plugin to import from Sci-Hub (incorporates upstream PR #62)'
 arch=('any')
 url='https://github.com/papis/scripts/tree/master/papis-scihub'
@@ -16,7 +16,7 @@ makedepends=('git'
 _url="${url%/tree/master/$_plugname}"
 source=("$pkgname::git+$_url.git")
 sha256sums=('SKIP'
-            'c5a70ccdd2295903085ff9474fd955153345d1d752a30b9871be90c4002b67d0')
+            '5c44e77d787bfc54f473f057777369bdcf3978d9c5a62883dcabd7a015438cca')
 provides=("${pkgname%-git}")
 prs=(
     62 # Update to new papis plugin framework
