@@ -1,0 +1,13 @@
+--- ./usr/bin/harlequin	2025-09-16 20:23:09.000000000 -0300
+@@ -2,7 +2,11 @@
+ # -*- coding: utf-8 -*-
+ import re
+ import sys
++import warnings
+ from harlequin.cli import harlequin
++
+ if __name__ == "__main__":
++    warnings.filterwarnings("ignore")
++
+     sys.argv[0] = re.sub(r"(-script\.pyw|\.exe)?$", "", sys.argv[0])
+     sys.exit(harlequin())
