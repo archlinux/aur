@@ -4,7 +4,7 @@
 # Contributor: Sven Pfleiderer <pfleidi@roothausen.de>
 
 pkgname=newsboat-git
-pkgver=2.23.r225.g643dae9d
+pkgver=2.40.r210.g14232f13
 pkgrel=1
 pkgdesc="An RSS/Atom feed reader for text terminals"
 arch=('x86_64')
@@ -29,6 +29,8 @@ pkgver() {
 }
 
 build() {
+  export CXXFLAGS+=" -fpermissive"
+
   cd newsboat
 
   make prefix=/usr
