@@ -3,7 +3,7 @@
 pkgbase=python-jwst
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.19.0
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="Library for calibration of science observations from the James Webb Space Telescope"
 arch=('i686' 'x86_64')
@@ -36,9 +36,9 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'python-pysiaf'
 ##             'python-requests-mock'
 #              'rsync'
-#              ) # stpipe, gwcs <- tweakwcs <- stcal, jsonschem, stdatamodel, photutils, synphot, wiimatch, bayesicfitting already in makedepends
+#              ) # stpipe, gwcs <- tweakwcs <- stcal, jsonschema, stdatamodel, photutils, synphot, wiimatch, bayesicfitting already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0239fc482ab401cb2f3509a28c3d53db')
+md5sums=('b35dfeb5b3e46f7990434a24dfe67b12')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -76,9 +76,22 @@ build() {
 #        --ignore=jwst/assign_wcs/tests/test_nirspec.py \
 #        --ignore=jwst/extract_1d/tests/test_expected_skips.py \
 #        --ignore=jwst/regtest \
+#        --deselect=jwst/ami/tests/test_ami_analyze.py::test_ami_analyze_even_oversample_fail \
+#        --deselect=jwst/ami/tests/test_ami_analyze.py::test_ami_analyze_step \
+#        --deselect=jwst/ami/tests/test_ami_average.py::test_ami_average_deprecated \
 #        --deselect=jwst/ami/tests/test_ami_interface.py::test_ami_analyze_even_oversample_fail \
 #        --deselect=jwst/ami/tests/test_ami_interface.py::test_ami_analyze_step \
+#        --deselect=jwst/ami/tests/test_ami_normalize.py::test_ami_normalize \
+#        --deselect=jwst/ami/tests/test_bp_fix.py::test_fix_bad_pixels \
+#        --deselect=jwst/ami/tests/test_find_affine2d_parameters.py::test_find_rotation \
+#        --deselect=jwst/ami/tests/test_instrument_data.py::test_niriss \
+#        --deselect=jwst/ami/tests/test_lg_model.py::test_simulate \
+#        --deselect=jwst/ami/tests/test_lg_model.py::test_make_model \
+#        --deselect=jwst/ami/tests/test_lg_model.py::test_fit_image \
+#        --deselect=jwst/ami/tests/test_mask_definition_ami.py::test_NRMDefinition \
+#        --deselect=jwst/ami/tests/test_nrm_core.py::test_fringe_fitter \
 #        --deselect=jwst/assign_wcs/tests/test_wcs.py::test_sip_approx \
+#        --deselect=jwst/background/tests/test_background.py::test_asn_input \
 #        --deselect=jwst/background/tests/test_background.py::test_miri_subarray_full_overlap \
 #        --deselect=jwst/background/tests/test_background.py::test_miri_subarray_full_overlap \
 #        --deselect=jwst/background/tests/test_background.py::test_miri_subarray_full_overlap \
@@ -88,16 +101,26 @@ build() {
 #        --deselect=jwst/background/tests/test_background.py::test_miri_subarray_full_overlap \
 #        --deselect=jwst/background/tests/test_background.py::test_miri_subarray_full_overlap \
 #        --deselect=jwst/background/tests/test_background.py::test_miri_subarray_partial_overlap \
+#        --deselect=jwst/background/tests/test_background_soss.py::test_subtract_soss_bkg \
+#        --deselect=jwst/background/tests/test_background_wfss.py::test_nrc_wfss_full_run \
+#        --deselect=jwst/background/tests/test_background_wfss.py::test_nis_wfss_full_run \
+#        --deselect=jwst/background/tests/test_background_wfss.py::test_wfss_asn_input \
 #        --deselect=jwst/flatfield/tests/test_flatfield.py::test_nirspec_flatfield_step_interface \
 #        --deselect=jwst/clean_flicker_noise/tests/test_clean_flicker_noise.py::test_postprocess_rate_nirspec \
 #        --deselect=jwst/clean_flicker_noise/tests/test_clean_flicker_noise.py::test_postprocess_rate_miri \
 #        --deselect=jwst/cube_build/tests/test_cube_build_step.py::test_call_cube_build_nirspec \
 #        --deselect=jwst/cube_build/tests/test_offset.py::test_read_offset_file \
+#        --deselect=jwst/background/tests/test_background.py::test_bg_file_list \
 #        --deselect=jwst/background/tests/test_background.py::test_nrc_wfss_background \
 #        --deselect=jwst/background/tests/test_background.py::test_nirspec_gwa \
 #        --deselect=jwst/background/tests/test_background.py::test_nis_wfss_background \
 #        --deselect=jwst/background/tests/test_background_wfss.py::test_nrc_wfss_background \
 #        --deselect=jwst/background/tests/test_background_wfss.py::test_nis_wfss_background \
+#        --deselect=jwst/badpix_selfcal/tests/test_badpix_selfcal.py::test_input_parsing \
+#        --deselect=jwst/badpix_selfcal/tests/test_badpix_selfcal.py::test_background_flagger_mrs \
+#        --deselect=jwst/badpix_selfcal/tests/test_badpix_selfcal.py::test_apply_flags \
+#        --deselect=jwst/badpix_selfcal/tests/test_badpix_selfcal.py::test_badpix_selfcal_step \
+#        --deselect=jwst/barshadow/tests/test_barshadow_step.py::test_barshadow_step \
 #        --deselect=jwst/combine_1d/tests/test_dq.py::test_dq \
 #        --deselect=jwst/dark_current/tests/test_dark_sub.py::test_basic_step \
 #        --deselect=jwst/dark_current/tests/test_dark_sub.py::test_average_dark_current \
@@ -147,7 +170,7 @@ package_python-jwst() {
              'python-scipy>=1.14.1'
              'python-spherical_geometry>=1.3'
              'python-stcal>=1.14.0'
-             'python-stdatamodels>=4.0.0'
+             'python-stdatamodels>=4.0.1'
              'python-stpipe>=0.10.0'
              'python-stsci.imagestats>=1.6.3'
              'python-synphot>=1.3'
