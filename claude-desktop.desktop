@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Claude
-Comment=AI assistant by Anthropic
+Name=Claude Desktop
+Comment=Claude AI assistant by Anthropic
 Exec=/usr/bin/claude-desktop %U
 Terminal=false
 Type=Application

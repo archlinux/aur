@@ -1,0 +1,9 @@
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar*
+*.AppImage
+*.deb
+*.log
+src/
+pkg/
