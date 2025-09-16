@@ -43,7 +43,7 @@ check() {
 
 package() {
     cd "$_pypi_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --skip-dependency-check --destdir="$pkgdir" dist/*.whl
 
     # Install license and docs from source
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
