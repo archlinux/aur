@@ -45,8 +45,11 @@ check() {
 package() {
     cd "$_pypi_name-$pkgver"
     
-    # Install the built wheel
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    # Install the built wheel, excluding bundled dependencies
+    PYTHONDONTWRITEBYTECODE=1 python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    # Remove bundled dependencies that conflict with system packages
+    rm -rf "$pkgdir"/usr/lib/python*/site-packages/{pygments,secretstorage,typing_extensions}*
     
     # Install license and docs from source
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
