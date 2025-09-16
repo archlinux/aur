@@ -1,0 +1,8 @@
+{
+  "name": "rhythmgame-arch",
+  "dependencies": [
+    "foonathan-lexy",
+    "llfio",
+    "stb"
+  ]
+}
