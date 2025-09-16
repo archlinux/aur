@@ -1,5 +1,5 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.8.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.8/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = 70bbf2053a8903a9075cfcdfa0b50039278e6c8ccd22c6b92ccfaf56d72d0e9b
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.9.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.9/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = 4d145dee43d5d6858f402b3452d6d2c810387fb87e4d3430b14db66b5e21f582
 	sha256sums = 597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004
 
 pkgname = python-livekit-agents
@@ -91,6 +91,7 @@ pkgname = python-livekit-agents
 	optdepends = python-livekit-plugins-tavus: tavus
 	optdepends = python-livekit-plugins-turn-detector: turn-detector
 	optdepends = python-livekit-plugins-upliftai: upliftai
+	optdepends = python-livekit-plugins-ultravox: ultravox
 
 pkgname = python-livekit-plugins-anam
 	pkgdesc = Agent Framework plugin for anam.
@@ -384,6 +385,14 @@ pkgname = python-livekit-plugins-turn-detector
 	depends = python-numpy
 	depends = python-onnxruntime
 	depends = python-jinja
+	optdepends = 
+
+pkgname = python-livekit-plugins-ultravox
+	pkgdesc = Agent Framework plugin for services from Ultravox.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-ultravox
+	depends = python-livekit-agents
+	depends = python-av
+	depends = python-numpy
 	optdepends = 
 
 pkgname = python-livekit-plugins-upliftai

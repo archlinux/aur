@@ -2,10 +2,10 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector upliftai)
+_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -46,6 +46,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'spitch plugin template for LiveKit Agents.'
                   'Agent Framework plugin for Tavus.'
                   'End of utterance detection for LiveKit Agents.'
+                  'Agent Framework plugin for services from Ultravox.'
                   'Agent Framework plugin for speech synthesis with the Uplift AI.')
 _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-anthropic' 'python-httpx'"
@@ -86,6 +87,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-spitch'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-transformers' 'python-numpy' 'python-onnxruntime' 'python-jinja'"
+                  "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'")
 _plugins__optdepends=(""
                       ""
@@ -126,6 +128,7 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
+                      ""
                       "")
 arch=('x86_64' 'aarch64')
 _repo='https://github.com/livekit/agents'
@@ -135,7 +138,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('70bbf2053a8903a9075cfcdfa0b50039278e6c8ccd22c6b92ccfaf56d72d0e9b'
+sha256sums=('4d145dee43d5d6858f402b3452d6d2c810387fb87e4d3430b14db66b5e21f582'
             '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
@@ -232,7 +235,8 @@ package_python-livekit-agents() {
               'python-livekit-plugins-spitch: spitch'
               'python-livekit-plugins-tavus: tavus'
               'python-livekit-plugins-turn-detector: turn-detector'
-              'python-livekit-plugins-upliftai: upliftai')
+              'python-livekit-plugins-upliftai: upliftai'
+              'python-livekit-plugins-ultravox: ultravox')
   cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   python -m installer --destdir="$pkgdir" $_name0/dist/*.whl
 }
