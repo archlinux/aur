@@ -1,9 +1,9 @@
 
 # Maintainer: Rafael Senties Martinelli <rafael@rsm92.fr>
 
-pkgver=v2.0.1.r15.g8d35f3e # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
-_commit=8d35f3e4ee0ae91dae8ce911c741a3f32d5c7bc0
-_commit_sha256=317a826414d95e8a43050b5bdd551f32be0da9795f7bd581cc9eb898b853e1a7
+pkgver=v2.0.1.r22.gfc15e03 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
+_commit=fc15e0333a789e9a971b9225ba04374118260722
+_commit_sha256=780976c31a26464ae56957167c94edacb2541b137496f023f4f0d19d036ee35d
 
 # Static content
 
@@ -26,13 +26,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/rsm-gh/phantom-player/archive/${_commit}.zip")
+source=("https://codeberg.org/rsm92/phantom-player/archive/${_commit}.zip")
 noextract=()
 sha256sums=("${_commit_sha256}")
 validpgpkeys=()
 
 package() {
-	cd "phantom-player-${_commit}"
+	cd "phantom-player"
 	ls -la
 	cp -r ./usr "$pkgdir" 
 }
