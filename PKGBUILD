@@ -33,7 +33,7 @@ build() {
     cd "$_pypi_name-$pkgver"
     rm -rf dist/  # ensure we are not using prebuilt wheels
 
-    python -m build --wheel --no-isolation
+    python -m build --skip-dependency-check --wheel --no-isolation
 }
 
 check() {
@@ -44,7 +44,7 @@ check() {
 package() {
     cd "$_pypi_name-$pkgver"
     # Only install your package files, don't reinstall dependencies
-    python -m installer --skip-dependency-check --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
