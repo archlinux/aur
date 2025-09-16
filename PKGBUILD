@@ -1,5 +1,5 @@
 pkgname=ark-pixel-font
-pkgver=1
+pkgver=2025.08.24
 pkgrel=1
 pkgdesc="Open source Pan-CJK pixel font / 开源的泛中日韩像素字体 (All size and styles)"
 arch=('any')
