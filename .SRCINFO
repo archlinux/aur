@@ -1,6 +1,6 @@
 pkgbase = python-fmpy
 	pkgdesc = Simulate Functional Mockup Units (FMUs) in Python
-	pkgver = 0.3.25
+	pkgver = 0.3.26
 	pkgrel = 1
 	url = https://github.com/CATIA-Systems/FMPy
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = python-fmpy
 	checkdepends = python-plotly
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
 	makedepends = python-wheel
 	makedepends = python-requests
 	makedepends = cmake
 	makedepends = git
+	makedepends = python-toml
 	depends = python-attrs
 	depends = python-jinja
 	depends = python-lark-parser
@@ -30,10 +31,10 @@ pkgbase = python-fmpy
 	optdepends = python-plotly: for plot results
 	optdepends = python-dash-bootstrap-components: for webapp support
 	optdepends = python-pyqtgraph: for graphical user interface
-	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=9ff00189086598b208e3736ad414af88b7ccc1d4
+	source = git+https://github.com/CATIA-Systems/FMPy.git#commit=22ad62fa4e721e6609aceb2501ebcb7693fa798d
 	source = git+https://github.com/ludocode/mpack.git
 	source = git+https://github.com/modelica/Reference-FMUs.git
-	sha512sums = 67405c482c921bb8ce344a0642f37223e8b0dba8fba9027f705c8cff72e3ba9574ecaa55aaf85e0fed1d172701986b917a983f47dae037794fb059ff2d5cf5d2
+	sha512sums = fa641ade8eabb827b3c5c0fedeaea76aeb176cb31e2fbadcfa07ac7acdd80e991b307bb4f72a10d518d319dcdf7dc07a8e33db4e9675fa678396abf570ae5e4f
 	sha512sums = SKIP
 	sha512sums = SKIP
 
