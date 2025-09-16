@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCX
-_pkgver=1.12.0
+_pkgver=1.12.1
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='R package implementing the Cytoscape Exchange (CX) format'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56c84e6d7c8d2a5cceca6c5038a5aea3f7c347ec273278cb246f9440d37f526e')
+sha256sums=('a8332842b10406ec73d70cf6d831bb27fccc7922d48e45a6ef6098fc95efa403')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
