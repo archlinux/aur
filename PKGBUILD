@@ -28,10 +28,7 @@ package() {
         find "$pkgdir/opt" -name "ziniaobrowser" -exec chmod 755 {} \;
         find "$pkgdir/opt" -name "chrome_crashpad_handler" -exec chmod 755 {} \;
         find "$pkgdir/opt" -name "chrome-sandbox" -exec chmod 4755 {} \;
-    fi
-    
-    # 设置桌面文件和可执行文件权限
-    if [ -f "$pkgdir/usr/bin/ziniaobrowser" ]; then
-        chmod 755 "$pkgdir/usr/bin/ziniaobrowser"
+        find "$pkgdir/opt" -name "env-kit" -exec chmod 755 {} \;
+        find "$pkgdir/opt" -name "ziniao-gateway" -exec chmod 755 {} \;
     fi
 }
