@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=cleanuparr
-pkgver=2.2.3
+pkgver=2.3.0
 _pkgver_qbittorrent=1.0.2
 _pkgver_transmission=1.0.3
 pkgrel=1
@@ -28,13 +28,13 @@ source=(
   cleanuparr.tmpfiles
   cleanuparr.install
 )
-sha256sums=('ad09f6df6a17f450012ef6e255b751b2e83443bc9b3a10e330e050b7bff620b6'
-  'SKIP'
-  'SKIP'
-  'e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
-  '4606d163398bbfa37f8f6b8967c0bee7c950823f766983699194828f0f8b008e'
-  '9a16872bfaeb80898641efc70a92a559c49f3893b792b2ce9be9a4cf7143dbe4'
-  '19f295bd0b4d3bb046a4e1bef2808277cdf033297aace97b9e719eec4d2c045e')
+sha256sums=('0023686ff82bf4e5cab3f4a4cc8a4a3fed4d86adb6ec6be41512aadc1db594f0'
+            'SKIP'
+            'SKIP'
+            'e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188'
+            '4606d163398bbfa37f8f6b8967c0bee7c950823f766983699194828f0f8b008e'
+            '9a16872bfaeb80898641efc70a92a559c49f3893b792b2ce9be9a4cf7143dbe4'
+            '19f295bd0b4d3bb046a4e1bef2808277cdf033297aace97b9e719eec4d2c045e')
 
 case ${CARCH} in
   x86_64) _CARCH='x64' ;;
