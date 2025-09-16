@@ -9,7 +9,7 @@ pkgbase = linear-cli
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python>=3.12
+	depends = python
 	depends = python-click
 	depends = python-gql
 	depends = python-aiohttp
