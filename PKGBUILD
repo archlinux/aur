@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://claude.ai"
 license=('custom:Claude')
 depends=('electron' 'nodejs')
-makedepends=('p7zip' 'wget' 'asar')
+makedepends=('p7zip' 'wget' 'asar' 'python')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 source_x86_64=("https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-x64/Claude-Setup-x64.exe")
@@ -113,11 +113,49 @@ EOF
         sed -i -E 's/if\(!([a-zA-Z]+)[[:space:]]*&&[[:space:]]*([a-zA-Z]+)\)/if(\1 \&\& \2)/g' "$js_file"
     fi
 
-    # Fix locale path - replace electron resources path with app's locale path
-    find app.asar.contents -name "*.js" -type f -exec sed -i \
-        -e 's|/usr/lib/electron[0-9]*/resources/|/usr/lib/claude-desktop-bin-arch/locales/|g' \
-        -e 's|process\.resourcesPath,"en-US\.json"|"/usr/lib/claude-desktop-bin-arch/locales","en-US.json"|g' \
-        -e 's|process\.resourcesPath,"\([^"]*\.json\)"|"/usr/lib/claude-desktop-bin-arch/locales","\1"|g' {} \;
+    # Fix locale file loading using Python for more precise string replacement
+    echo "Patching locale file paths..."
+
+    python3 << 'EOF'
+import os
+import re
+
+# Find the main index.js file
+for root, dirs, files in os.walk("app.asar.contents"):
+    for file in files:
+        if file == "index.js" and ".vite/build" in root:
+            filepath = os.path.join(root, file)
+            print(f"Found index.js at: {filepath}")
+
+            # Read the file
+            with open(filepath, 'rb') as f:
+                content = f.read()
+
+            # Replace process.resourcesPath with our locale path
+            # This handles the actual runtime value
+            original_content = content
+            content = content.replace(
+                b'process.resourcesPath',
+                b'"/usr/lib/claude-desktop-bin-arch/locales"'
+            )
+
+            # Also try to replace any hardcoded electron paths
+            content = re.sub(
+                rb'/usr/lib/electron\d+/resources',
+                b'/usr/lib/claude-desktop-bin-arch/locales',
+                content
+            )
+
+            # Write back if changed
+            if content != original_content:
+                with open(filepath, 'wb') as f:
+                    f.write(content)
+                print("Locale path patch applied successfully")
+            else:
+                print("Warning: No changes made to locale paths")
+
+            break
+EOF
 
     # Repack app.asar
     asar pack app.asar.contents app.asar
