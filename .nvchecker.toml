@@ -1,0 +1,6 @@
+[kitops]
+source = "git"
+git = "https://github.com/kitops-ml/kitops.git"
+prefix = "v"
+use_max_tag = true
+exclude_regex = ".*(rc|beta).*"
