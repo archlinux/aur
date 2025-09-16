@@ -1,0 +1,25 @@
+pkgbase = pass-secret-service
+	pkgdesc = An org.freedesktop.secrets provider with a pass backend.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/grimsteel/pass-secret-service
+	arch = aarch64
+	arch = x86_64
+	groups = pass
+	license = GPL-3.0-or-later
+	checkdepends = cargo
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = dbus
+	optdepends = pass: To init and manage password store directory.
+	provides = pass-secret-service
+	provides = org.freedesktop.secrets
+	conflicts = pass-secret-service-git
+	conflicts = pass-secret-service-bin
+	conflicts = gnome-keyring
+	source = pass-secret-service-0.5.1.tar.gz::https://github.com/grimsteel/pass-secret-service/archive/v0.5.1.tar.gz
+	sha256sums = 04eb97a3432d24e1fea59174681de77c66406ddd90c1ec0e5222ca14c505760f
+
+pkgname = pass-secret-service
