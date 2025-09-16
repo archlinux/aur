@@ -2,7 +2,7 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 
 pkgbase=coder
-pkgver=2.23.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc="Provision remote development environments via Terraform"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -190,5 +190,5 @@ if test $_package_agent -eq 0 ; then
 fi
 
 
-sha512sums=('98bbef8e186b5a625554921871296ec162c4bdb437819364abd3f69896df3a4429dc489e442c86de662aa9dda99cb4f23386008aebff789195d44250254a8f6f'
+sha512sums=('26fb007ebe913547e2114cfc8608d406bec3fb5f37e97bbd3d0fb03c5f8ab4f837588167cd84a8692103013a34c88327fcd108ea0803a34508776ebf31fe2a96'
             '2882e905971ace0722f4e28dcabaacab8f9ab0eb555fd71448a71725dbc8d397f52467c522aa982e50239bd2486c6448cc8bb5a2b23891312520a425038e14f4')
