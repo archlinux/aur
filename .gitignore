@@ -4,3 +4,4 @@ src/
 pkg/
 *.tar.gz
 prjtrellis
+prjtrellis-db
