@@ -3,7 +3,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.18.3
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('any')
@@ -11,11 +11,11 @@ url='https://rptools.net/tools/maptool'
 license=('AGPL-3.0-or-later')
 depends=()
 _java_ver=24
-makedepends=('git' 'dpkg' "jdk-openjdk" 'gradle' 'xdg-utils' 'rpm-tools')
+makedepends=('git' 'dpkg' "jdk-openjdk" 'gradle8' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
-sha256sums=('269afaf0808c7b5b4e58d565d90173d768c0b38532727258254111d6b272c981'
+sha256sums=('bc4cf6e044fddd52b5d4513fa42b9bc5d83ba229a3e352946ddb76bbf401329c'
             '16720b6f986f79eed2a9517433a6c0880c2b80f0d7c8611fb1359c85d1b372bc')
 install="${pkgname}.install"
 
@@ -32,7 +32,7 @@ build() {
 	cd "${pkgname}"
 	export JAVA_HOME="$_java_home"
 	export PATH="$_java_home/bin:$PATH"
-	gradle --no-daemon --parallel jpackage -x spotlessJavaCheck
+	gradle8 --no-daemon --parallel jpackage -x spotlessJavaCheck
 }
 
 #check() {
