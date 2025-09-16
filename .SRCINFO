@@ -1,0 +1,22 @@
+pkgbase = claude-desktop-bin-arch
+	pkgdesc = Claude AI Desktop Application (Official Binary)
+	pkgver = 0.13.11
+	pkgrel = 1
+	url = https://claude.ai
+	arch = x86_64
+	arch = aarch64
+	license = custom:Claude
+	makedepends = p7zip
+	makedepends = wget
+	makedepends = asar
+	depends = electron
+	depends = nodejs
+	provides = claude-desktop
+	conflicts = claude-desktop
+	options = !strip
+	source_x86_64 = https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-x64/Claude-Setup-x64.exe
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-arm64/Claude-Setup-arm64.exe
+	sha256sums_aarch64 = SKIP
+
+pkgname = claude-desktop-bin-arch
