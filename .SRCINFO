@@ -1,0 +1,13 @@
+pkgbase = ftpgrab
+	pkgdesc = Grab your files periodically from a remote FTP or SFTP server easily
+	pkgver = 7.10.0
+	pkgrel = 1
+	url = https://github.com/crazy-max/ftpgrab
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = ftpgrab-7.10.0.tar.gz::https://github.com/crazy-max/ftpgrab/archive/v7.10.0.tar.gz
+	sha256sums = e25d520fac94080e04cb6459f7ec704b60fc98dee2f9acd91a4dd6dd53277889
+
+pkgname = ftpgrab
