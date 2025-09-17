@@ -1,0 +1,10 @@
+[Unit]
+Description=ble2mqtt bridge
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ble2mqtt
+
+[Install]
+WantedBy=multi-user.target
