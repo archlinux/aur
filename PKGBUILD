@@ -4,7 +4,7 @@
 
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=8
+pkgrel=9
 # epoch=2
 pkgdesc="Chess database browser: chess, chess960, etc engines; import Chessbase, PGN, Scid; CQL"
 arch=('x86_64' 'i686')
@@ -43,9 +43,9 @@ source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
         'dankuser-20250914-agg_font.patch'
         'dankuser-20250914-db.patch'
         'dankuser-20250914-html.patch'
-        )
+        )78377c73042e5212278bc25cd2a9c267
 md5sums=('SKIP'
-         '0890bf5963e14ba39734608edd43cf27'
+         '78377c73042e5212278bc25cd2a9c267'
          '47f44f0eec5d9e0a9e7e1bb25adea3b4'
          '68c9d47e5af84ac25c87045e3388c6f1'
          'ef91ffeceab48c260bb1c2af7d02cd9c'
