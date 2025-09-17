@@ -43,7 +43,7 @@ source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
         'dankuser-20250914-agg_font.patch'
         'dankuser-20250914-db.patch'
         'dankuser-20250914-html.patch'
-        )78377c73042e5212278bc25cd2a9c267
+        )
 md5sums=('SKIP'
          '78377c73042e5212278bc25cd2a9c267'
          '47f44f0eec5d9e0a9e7e1bb25adea3b4'
