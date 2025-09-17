@@ -1,5 +1,5 @@
 pkgbase = tvb-recorder
-	pkgdesc = record and switch for tvbrowser
+	pkgdesc = TV-recording und live-switch with TV-Browser plugin
 	pkgver = 1.7
 	pkgrel = 2
 	url = https://codeberg.org/tuxnix/tv-recorder
