@@ -1,20 +1,32 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
+
 _projectname='utop'
 pkgname="ocaml-$_projectname"
-pkgver='2.15.0'
-pkgrel='2'
+pkgver='2.16.0'
+pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD-3-Clause')
-depends=('ocaml>=4.11.0' 'dune>=3.9.0' 'cppo>=1.1.2' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocaml-logs_lwt' 'ocaml-lwt' 'ocaml-react>=1.0.0' 'ocaml-zed>=3.2.0')
+depends=(
+    'cppo>=1.1.2'
+    'dune>=3.9.0'
+    'ocaml-findlib>=1.7.2'
+    'ocaml-lambda-term>=3.1.0'
+    'ocaml-logs_lwt'
+    'ocaml-lwt'
+    'ocaml-react>=1.0.0'
+    'ocaml-zed>=3.2.0'
+    'ocaml>=4.11.0'
+)
 checkdepends=('ocaml-alcotest')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('76339509d363f36375b8c4bd84f3f17e1c9df514e1b9753d0fa5773aedb1114a2a4fd483fa5aec6a8aed25314dadf69b445c3eb387642013283c09e3dbebcf17')
+b2sums=('cbba69b7d90e25250f1a47a2cef6863ac59bc38ab2fe27c5108dcd0e9e36757a5e4368bd918cd444fcc48163e181521814c39e67cd47116f3bbbfea32af90f32')
 
 _sourcedirectory="$_projectname-$pkgver"
 

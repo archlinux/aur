@@ -1,23 +1,23 @@
 pkgbase = ocaml-utop
 	pkgdesc = Universal toplevel for OCaml
-	pkgver = 2.15.0
-	pkgrel = 2
+	pkgver = 2.16.0
+	pkgrel = 1
 	url = https://github.com/ocaml-community/utop
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
 	checkdepends = ocaml-alcotest
-	depends = ocaml>=4.11.0
-	depends = dune>=3.9.0
 	depends = cppo>=1.1.2
+	depends = dune>=3.9.0
 	depends = ocaml-findlib>=1.7.2
 	depends = ocaml-lambda-term>=3.1.0
 	depends = ocaml-logs_lwt
 	depends = ocaml-lwt
 	depends = ocaml-react>=1.0.0
 	depends = ocaml-zed>=3.2.0
+	depends = ocaml>=4.11.0
 	options = !strip
-	source = ocaml-utop-2.15.0.tar.gz::https://github.com/ocaml-community/utop/archive/2.15.0.tar.gz
-	b2sums = 76339509d363f36375b8c4bd84f3f17e1c9df514e1b9753d0fa5773aedb1114a2a4fd483fa5aec6a8aed25314dadf69b445c3eb387642013283c09e3dbebcf17
+	source = ocaml-utop-2.16.0.tar.gz::https://github.com/ocaml-community/utop/archive/2.16.0.tar.gz
+	b2sums = cbba69b7d90e25250f1a47a2cef6863ac59bc38ab2fe27c5108dcd0e9e36757a5e4368bd918cd444fcc48163e181521814c39e67cd47116f3bbbfea32af90f32
 
 pkgname = ocaml-utop
