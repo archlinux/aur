@@ -1,4 +1,4 @@
-From e7105c2039ad3b01ae80f9d49c73efbf135de433 Mon Sep 17 00:00:00 2001
+From 37934e9a9f54ed8073b7320af2d4749fb828049f Mon Sep 17 00:00:00 2001
 From: Jerzy Kolosowski <jerzy@kolosowscy.pl>
 Date: Tue, 16 Sep 2025 19:52:41 +0200
 Subject: [PATCH] Add Display Presets feature to KScreen
@@ -29,7 +29,7 @@ CHANGELOG: Add display preset functionality with save/load/preview capabilities
 Signed-off-by: Jerzy Kołosowski <jerzy@kolosowscy.pl>
 ---
  CMakeLists.txt                         |   2 +
- common/CMakeLists.txt                  |   2 +-
+ common/CMakeLists.txt                  |   3 +-
  common/presets.cpp                     | 498 ++++++++++++++++++++++++
  common/presets.h                       | 107 ++++++
  kcm/CMakeLists.txt                     |   1 +
@@ -43,7 +43,7 @@ Signed-off-by: Jerzy Kołosowski <jerzy@kolosowscy.pl>
  kcm/ui/ScreenView.qml                  |   7 +
  kcm/ui/main.qml                        |  19 +-
  kded/CMakeLists.txt                    |   1 +
- plasmoid/CMakeLists.txt                |   4 +
+ plasmoid/CMakeLists.txt                |  13 +
  plasmoid/PresetList.qml                | 232 +++++++++++
  plasmoid/PresetOutput.qml              | 179 +++++++++
  plasmoid/PresetView.qml                |  96 +++++
@@ -60,7 +60,7 @@ Signed-off-by: Jerzy Kołosowski <jerzy@kolosowscy.pl>
  tests/presets/CMakeLists.txt           |  28 ++
  tests/presets/testpresets.cpp          | 507 +++++++++++++++++++++++++
  tests/presets/testsimple.cpp           | 121 ++++++
- 32 files changed, 3926 insertions(+), 7 deletions(-)
+ 32 files changed, 3936 insertions(+), 7 deletions(-)
  create mode 100644 common/presets.cpp
  create mode 100644 common/presets.h
  create mode 100644 kcm/preset_manager.cpp
@@ -102,18 +102,20 @@ index ccc882f0..29c3aa4f 100644
  add_subdirectory(tests)
  add_subdirectory(console)
 diff --git a/common/CMakeLists.txt b/common/CMakeLists.txt
-index f7341866..16185ee7 100644
+index f7341866..1c61817f 100644
 --- a/common/CMakeLists.txt
 +++ b/common/CMakeLists.txt
-@@ -1,4 +1,4 @@
+@@ -1,5 +1,6 @@
 -add_library(kscreen_common OBJECT control.cpp globals.cpp orientation_sensor.cpp osdaction.cpp output.cpp utils.cpp)
 +add_library(kscreen_common OBJECT control.cpp globals.cpp orientation_sensor.cpp osdaction.cpp output.cpp utils.cpp presets.cpp)
  ecm_qt_declare_logging_category(kscreen_common HEADER kscreen_daemon_debug.h IDENTIFIER KSCREEN_KDED CATEGORY_NAME kscreen.kded DESCRIPTION "kscreen kded (kscreen)" EXPORT KSCREEN)
++ecm_qt_declare_logging_category(kscreen_common HEADER kscreen_common_debug.h IDENTIFIER KSCREEN_COMMON CATEGORY_NAME kscreen.common DESCRIPTION "kscreen common library (kscreen)" EXPORT KSCREEN)
  set_property(TARGET kscreen_common PROPERTY POSITION_INDEPENDENT_CODE ON)
  target_link_libraries(kscreen_common PRIVATE Qt::Core Qt::Sensors KF6::Screen KF6::CoreAddons KF6::I18n)
+ target_include_directories(kscreen_common PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>")
 diff --git a/common/presets.cpp b/common/presets.cpp
 new file mode 100644
-index 00000000..e09644d0
+index 00000000..03958fec
 --- /dev/null
 +++ b/common/presets.cpp
 @@ -0,0 +1,498 @@
@@ -123,7 +125,7 @@ index 00000000..e09644d0
 +    SPDX-License-Identifier: GPL-2.0-or-later
 +*/
 +#include "presets.h"
-+#include "kscreen_daemon_debug.h"
++#include "kscreen_common_debug.h"
 +
 +#include <QDebug>
 +#include <QDir>
@@ -216,13 +218,13 @@ index 00000000..e09644d0
 +bool Presets::isPresetAvailable(const QString &presetId) const
 +{
 +    if (!m_screenConfiguration) {
-+        qCDebug(KSCREEN_KDED) << "No screen configuration available for preset" << presetId;
++        qCDebug(KSCREEN_COMMON) << "No screen configuration available for preset" << presetId;
 +        return false;
 +    }
 +
 +    const auto preset = getPreset(presetId);
 +    if (preset.id.isEmpty()) {
-+        qCDebug(KSCREEN_KDED) << "Preset not found:" << presetId;
++        qCDebug(KSCREEN_COMMON) << "Preset not found:" << presetId;
 +        return false;
 +    }
 +
@@ -248,12 +250,12 @@ index 00000000..e09644d0
 +        }
 +
 +        if (!found) {
-+            qCDebug(KSCREEN_KDED) << "Output not found or not connected:" << presetOutputName << "for preset" << presetId;
++            qCDebug(KSCREEN_COMMON) << "Output not found or not connected:" << presetOutputName << "for preset" << presetId;
 +            return false;
 +        }
 +    }
 +
-+    qCDebug(KSCREEN_KDED) << "Preset available:" << presetId;
++    qCDebug(KSCREEN_COMMON) << "Preset available:" << presetId;
 +    return true;
 +}
 +
@@ -400,7 +402,7 @@ index 00000000..e09644d0
 +
 +    if (!file.open(QIODevice::ReadOnly)) {
 +        const QString error = QStringLiteral("Could not open presets file for reading: %1").arg(filePath);
-+        qCWarning(KSCREEN_KDED) << error;
++        qCWarning(KSCREEN_COMMON) << error;
 +        Q_EMIT loadingFailed(error);
 +        return;
 +    }
@@ -409,7 +411,7 @@ index 00000000..e09644d0
 +    const QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &parseError);
 +    if (parseError.error != QJsonParseError::NoError) {
 +        const QString error = QStringLiteral("Error parsing presets file: %1").arg(parseError.errorString());
-+        qCWarning(KSCREEN_KDED) << error;
++        qCWarning(KSCREEN_COMMON) << error;
 +        Q_EMIT loadingFailed(error);
 +        return;
 +    }
@@ -457,7 +459,7 @@ index 00000000..e09644d0
 +
 +    if (!file.open(QIODevice::WriteOnly)) {
 +        const QString error = QStringLiteral("Could not open presets file for writing: %1").arg(filePath);
-+        qCWarning(KSCREEN_KDED) << error;
++        qCWarning(KSCREEN_COMMON) << error;
 +        Q_EMIT savingFailed(error);
 +        return;
 +    }
@@ -2135,10 +2137,23 @@ index d06fd6c1..43e16d69 100644
  
  if(WITH_X11)
 diff --git a/plasmoid/CMakeLists.txt b/plasmoid/CMakeLists.txt
-index a428b184..6e8fade9 100644
+index a428b184..a5bf2ca1 100644
 --- a/plasmoid/CMakeLists.txt
 +++ b/plasmoid/CMakeLists.txt
-@@ -6,12 +6,16 @@ plasma_add_applet(org.kde.kscreen
+@@ -1,17 +1,30 @@
+ add_definitions(-DTRANSLATION_DOMAIN=\"plasma_applet_org.kde.kscreen\")
+ 
++ecm_qt_declare_logging_category(org.kde.kscreen
++  HEADER kscreen_applet_debug.h
++  IDENTIFIER KSCREEN_APPLET
++  CATEGORY_NAME kscreen.applet
++  DESCRIPTION "kscreen plasmoid (kscreen)"
++  EXPORT KSCREEN
++)
++
+ plasma_add_applet(org.kde.kscreen
+   QML_SOURCES
+     main.qml
      InhibitionHint.qml
      PresentationModeItem.qml
      ScreenLayoutSelection.qml
@@ -2147,6 +2162,7 @@ index a428b184..6e8fade9 100644
 +    PresetOutput.qml
    CPP_SOURCES
      kscreenapplet.cpp
++    kscreen_applet_debug.cpp
  )
  
  target_link_libraries(org.kde.kscreen PRIVATE
@@ -2684,14 +2700,14 @@ index 00000000..4f051a92
 +}
 \ No newline at end of file
 diff --git a/plasmoid/kscreenapplet.cpp b/plasmoid/kscreenapplet.cpp
-index b0864093..e6ab8131 100644
+index b0864093..63bdf94b 100644
 --- a/plasmoid/kscreenapplet.cpp
 +++ b/plasmoid/kscreenapplet.cpp
 @@ -6,6 +6,7 @@
  */
  
  #include "kscreenapplet.h"
-+#include "common/kscreen_daemon_debug.h"
++#include "kscreen_applet_debug.h"
  
  #include <QMetaEnum>
  #include <QQmlEngine> // for qmlRegisterType
@@ -2778,7 +2794,7 @@ index b0864093..e6ab8131 100644
 +{
 +    // Connect to D-Bus signal for preset availability changes
 +    if (m_presetsInterface && m_presetsInterface->isValid()) {
-+        qCDebug(KSCREEN_KDED) << "PresetModel: D-Bus interface is valid, connecting signals and loading presets";
++        qCDebug(KSCREEN_APPLET) << "PresetModel: D-Bus interface is valid, connecting signals and loading presets";
 +        QDBusConnection::sessionBus().connect(QStringLiteral("org.kde.kscreen.presets"),
 +                                              QStringLiteral("/"),
 +                                              QStringLiteral("org.kde.kscreen.presets"),
@@ -2789,11 +2805,11 @@ index b0864093..e6ab8131 100644
 +        // Load initial presets
 +        refreshPresets();
 +    } else {
-+        qCWarning(KSCREEN_KDED) << "PresetModel: D-Bus interface is NOT valid!"
-+                                << "Interface exists:" << (m_presetsInterface != nullptr)
-+                                << "Is valid:" << (m_presetsInterface ? m_presetsInterface->isValid() : false)
-+                                << "Service:" << (m_presetsInterface ? m_presetsInterface->service() : "null")
-+                                << "Last error:" << (m_presetsInterface ? m_presetsInterface->lastError().message() : "no interface");
++        qCWarning(KSCREEN_APPLET) << "PresetModel: D-Bus interface is NOT valid!"
++                                  << "Interface exists:" << (m_presetsInterface != nullptr)
++                                  << "Is valid:" << (m_presetsInterface ? m_presetsInterface->isValid() : false)
++                                  << "Service:" << (m_presetsInterface ? m_presetsInterface->service() : "null")
++                                  << "Last error:" << (m_presetsInterface ? m_presetsInterface->lastError().message() : "no interface");
 +    }
 +}
 +
@@ -2829,8 +2845,8 @@ index b0864093..e6ab8131 100644
 +        QVariant configVar = preset[QStringLiteral("configuration")];
 +        if (configVar.toMap().contains(QStringLiteral("outputs"))) {
 +            QVariantList outputs = configVar.toMap()[QStringLiteral("outputs")].toList();
-+            qCDebug(KSCREEN_KDED) << "PresetModel: Returning configuration with" << outputs.count() << "outputs for preset"
-+                                  << preset[QStringLiteral("name")].toString();
++            qCDebug(KSCREEN_APPLET) << "PresetModel: Returning configuration with" << outputs.count() << "outputs for preset"
++                                    << preset[QStringLiteral("name")].toString();
 +        }
 +        return configVar;
 +    }
@@ -2861,7 +2877,7 @@ index b0864093..e6ab8131 100644
 +void PresetModel::refreshPresets()
 +{
 +    if (!m_presetsInterface || !m_presetsInterface->isValid()) {
-+        qCWarning(KSCREEN_KDED) << "PresetModel::refreshPresets() - interface not valid";
++        qCWarning(KSCREEN_APPLET) << "PresetModel::refreshPresets() - interface not valid";
 +        return;
 +    }
 +
@@ -2889,13 +2905,13 @@ index b0864093..e6ab8131 100644
 +        m_presets = presets;
 +        endResetModel();
 +    } else {
-+        qCWarning(KSCREEN_KDED) << "PresetModel::refreshPresets() - D-Bus call failed:" << reply.error().message();
++        qCWarning(KSCREEN_APPLET) << "PresetModel::refreshPresets() - D-Bus call failed:" << reply.error().message();
 +    }
 +}
 +
 +void PresetModel::onPresetAvailabilityChanged()
 +{
-+    qCDebug(KSCREEN_KDED) << "PresetModel: Received presetsChanged signal, refreshing presets";
++    qCDebug(KSCREEN_APPLET) << "PresetModel: Received presetsChanged signal, refreshing presets";
 +    refreshPresets();
 +}
 +
@@ -2918,13 +2934,13 @@ index b0864093..e6ab8131 100644
 +                if (outputsVar.canConvert<QDBusArgument>()) {
 +                    QVariantList outputsList = deserializeOutputsList(outputsVar.value<QDBusArgument>());
 +                    configMap[QStringLiteral("outputs")] = outputsList;
-+                    qCDebug(KSCREEN_KDED) << "PresetModel: Deserialized" << outputsList.count() << "outputs from QDBusArgument";
++                    qCDebug(KSCREEN_APPLET) << "PresetModel: Deserialized" << outputsList.count() << "outputs from QDBusArgument";
 +                } else if (outputsVar.canConvert<QVariantList>()) {
 +                    configMap[QStringLiteral("outputs")] = outputsVar.toList();
-+                    qCDebug(KSCREEN_KDED) << "PresetModel: Got" << outputsVar.toList().count() << "outputs as QVariantList";
++                    qCDebug(KSCREEN_APPLET) << "PresetModel: Got" << outputsVar.toList().count() << "outputs as QVariantList";
 +                }
 +            } else {
-+                qCDebug(KSCREEN_KDED) << "PresetModel: Configuration does not contain outputs";
++                qCDebug(KSCREEN_APPLET) << "PresetModel: Configuration does not contain outputs";
 +            }
 +
 +            preset[QStringLiteral("configuration")] = configMap;

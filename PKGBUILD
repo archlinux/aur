@@ -5,7 +5,7 @@
 pkgname=kscreen-display-presets
 pkgver=6.4.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE screen management software with display presets support'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -43,7 +43,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/kscreen-$pkgver.tar.xz{,
         display-presets.patch)
 sha256sums=('b92bde8238b1e7f3d6521cc4b1ba8bba60047a64fff129b2011dff5ff3431037'
             'SKIP'
-            '841dc84c5a8e27a6a77c681d4b61e83ac12ab4d959a66329f767f662c9874bd8')
+            'fac407e4e8b85423f958a44f666eac212bfd6dc066769fda3e9997f313276bd6')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
