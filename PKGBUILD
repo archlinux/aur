@@ -3,13 +3,13 @@
 
 pkgname=cypher-shell
 pkgver="2025.08.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line shell where you can execute Cypher against an instance of Neo4j"
 arch=('any')
 url="https://github.com/neo4j/${pkgname}"
 license=('GPL3')
 _java_version=21
-depends=("java-runtime=$_java_version" "neo4j-community=$pkgver")
+depends=("java-runtime>=$_java_version" "neo4j-community=$pkgver")
 source=(
   "https://dist.neo4j.org/neo4j-community-${pkgver}-unix.tar.gz"
   "wrapper.sh"
