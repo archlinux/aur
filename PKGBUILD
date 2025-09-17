@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=pk_web
 pkgname=${_pkgname}-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Web UI for plakar backup tool"
 arch=(any)
@@ -14,7 +14,7 @@ url="https://spn109.fr/pk_web"
 license=('Apache-2')
 groups=()
 provides=("$_pkgname")
-depends=("python" "python-flask" "python-pyaml" "python-pytz" "gunicorn" "plakar_cleaner-git>=0.2.5")
+depends=("python" "python-flask" "python-pyaml" "python-pytz" "gunicorn" "plakar>=1.0.4" "plakar_cleaner-git>=0.2.5")
 optdepends=()
 makedepends=('git')
 conflicts=("$_pkgname")
