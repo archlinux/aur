@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=37.5.0
+pkgver=37.5.1
 _gcc_patches=138-1
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -229,7 +229,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
         # END managed sources
         )
-sha256sums=('e12a57ed5a86291492a01fc9e36c90f50e70ec757f9bcce84f38816f21d4672e'
+sha256sums=('dd13a1c5ee8e34352b0f7e5133c22d7c8d84d5d309c2ac089b00dd59c6e75ba0'
             '6f5067e5f87ac0591295fc3ec0f7e722d0f5eb94ade2fb3e73ae8abcbb674f8a'
             '7e9c6f385460a15e82640b9545ea3c4b32d9c26b94c4e9195215ce8f1b6c8d73'
             '5eb62f142569bd6887396410ad174a4e9e932790361567df0fd9127003d6b2a0'
