@@ -1,0 +1,197 @@
+pkgbase = java24-openjdk
+	pkgver = 24.0.2.u12
+	pkgrel = 1
+	url = https://openjdk.java.net/
+	arch = x86_64
+	license = LicenseRef-Java
+	makedepends = java-environment>=23
+	makedepends = alsa-lib
+	makedepends = bash
+	makedepends = cpio
+	makedepends = freetype2
+	makedepends = gcc-libs
+	makedepends = giflib
+	makedepends = glibc
+	makedepends = graphviz
+	makedepends = harfbuzz
+	makedepends = lcms2
+	makedepends = libcups
+	makedepends = libelf
+	makedepends = libjpeg-turbo
+	makedepends = libnet
+	makedepends = libpng
+	makedepends = libx11
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = libxrender
+	makedepends = libxt
+	makedepends = libxtst
+	makedepends = pandoc
+	makedepends = unzip
+	makedepends = zip
+	optdepends = gvfs: open links e.g. hyperlinks
+	source = https://github.com/openjdk/jdk24u/archive/jdk-24.0.2+12.tar.gz
+	source = freedesktop-24-java.desktop
+	source = freedesktop-24-jconsole.desktop
+	source = freedesktop-24-jshell.desktop
+	source = https://github.com/openjdk/jdk25u/commit/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch
+	sha256sums = 947087e85c4222f25e1b9a707cea89b04c00a0a9eb79ded489f0bab92ea42beb
+	sha256sums = ad877c65ac7e752369407f4af8fd9a20a377f2a55e62224e44df1c9a9af407a3
+	sha256sums = 3544325a47fd7f9854d2ee4a0a6eb17d729af20889b641838aceb58837fb2d58
+	sha256sums = 5d6beeeac3d097b2c85099fceeba4a5e48e07fd286ad438f57936ebcd7bfbdbb
+	sha256sums = a3698606cd871bd9a2b2fa1cd62eb18d27394ee536747334818502e21d41823c
+
+pkgname = jdk24-openjdk
+	pkgdesc = OpenJDK Java 24 development kit
+	install = install_jdk-openjdk.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = harfbuzz
+	depends = lcms2
+	depends = libfreetype.so
+	depends = libharfbuzz.so
+	depends = libjpeg.so
+	depends = libjpeg-turbo
+	depends = liblcms2.so
+	depends = libnet
+	depends = nss
+	depends = java-environment-common=3
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = lcms2
+	depends = libelf
+	depends = libfreetype.so
+	depends = libgif.so
+	depends = libharfbuzz.so
+	depends = libjpeg.so
+	depends = libjpeg-turbo
+	depends = liblcms2.so
+	depends = libnet
+	depends = libpng
+	depends = nss
+	optdepends = java-rhino: for some JavaScript support
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-environment=24
+	provides = java-environment-openjdk=24
+	provides = jdk24-openjdk=24.0.2.u12-1
+	provides = java-runtime=24
+	provides = java-runtime-openjdk=24
+	provides = jre24-openjdk=24.0.2.u12-1
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-openjdk=24
+	provides = jre24-openjdk-headless=24.0.2.u12-1
+	conflicts = jre-openjdk
+	conflicts = jre-openjdk-headless
+	backup = etc/java24-openjdk/logging.properties
+	backup = etc/java24-openjdk/management/jmxremote.access
+	backup = etc/java24-openjdk/management/jmxremote.password.template
+	backup = etc/java24-openjdk/management/management.properties
+	backup = etc/java24-openjdk/net.properties
+	backup = etc/java24-openjdk/security/java.policy
+	backup = etc/java24-openjdk/security/java.security
+	backup = etc/java24-openjdk/security/policy/README.txt
+	backup = etc/java24-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java24-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java24-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java24-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java24-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java24-openjdk/sound.properties
+
+pkgname = jre24-openjdk
+	pkgdesc = OpenJDK Java 24 full runtime environment
+	install = install_jre-openjdk.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = harfbuzz
+	depends = lcms2
+	depends = libfreetype.so
+	depends = libharfbuzz.so
+	depends = libjpeg.so
+	depends = libjpeg-turbo
+	depends = liblcms2.so
+	depends = libnet
+	depends = nss
+	depends = giflib
+	depends = libgif.so
+	depends = libpng
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=24
+	provides = java-runtime-openjdk=24
+	provides = jre24-openjdk=24.0.2.u12-1
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-openjdk=24
+	provides = jre24-openjdk-headless=24.0.2.u12-1
+	conflicts = jdk-openjdk
+	conflicts = jre-openjdk-headless
+	backup = etc/java24-openjdk/logging.properties
+	backup = etc/java24-openjdk/management/jmxremote.access
+	backup = etc/java24-openjdk/management/jmxremote.password.template
+	backup = etc/java24-openjdk/management/management.properties
+	backup = etc/java24-openjdk/net.properties
+	backup = etc/java24-openjdk/security/java.policy
+	backup = etc/java24-openjdk/security/java.security
+	backup = etc/java24-openjdk/security/policy/README.txt
+	backup = etc/java24-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java24-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java24-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java24-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java24-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java24-openjdk/sound.properties
+
+pkgname = jre24-openjdk-headless
+	pkgdesc = OpenJDK Java 24 headless runtime environment
+	install = install_jre-openjdk-headless.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = harfbuzz
+	depends = lcms2
+	depends = libfreetype.so
+	depends = libharfbuzz.so
+	depends = libjpeg.so
+	depends = libjpeg-turbo
+	depends = liblcms2.so
+	depends = libnet
+	depends = nss
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-openjdk=24
+	provides = jre24-openjdk-headless=24.0.2.u12-1
+	conflicts = jdk-openjdk
+	conflicts = jre-openjdk
+	backup = etc/java24-openjdk/logging.properties
+	backup = etc/java24-openjdk/management/jmxremote.access
+	backup = etc/java24-openjdk/management/jmxremote.password.template
+	backup = etc/java24-openjdk/management/management.properties
+	backup = etc/java24-openjdk/net.properties
+	backup = etc/java24-openjdk/security/java.policy
+	backup = etc/java24-openjdk/security/java.security
+	backup = etc/java24-openjdk/security/policy/README.txt
+	backup = etc/java24-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java24-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java24-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java24-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java24-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java24-openjdk/sound.properties
+
+pkgname = openjdk24-doc
+	pkgdesc = OpenJDK Java 24 documentation
+	depends = jdk24-openjdk=24.0.2.u12-1
+	provides = openjdk24-doc=24.0.2.u12-1
+
+pkgname = openjdk24-src
+	pkgdesc = OpenJDK Java 24 sources
+	depends = jdk24-openjdk=24.0.2.u12-1
+	provides = openjdk24-src=24.0.2.u12-1
