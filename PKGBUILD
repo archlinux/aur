@@ -62,7 +62,7 @@ else _arch=DUMMY;
 fi
 
 verify() {
-  # https://zigtools.org/zls/releases/0.13.0/
+  # https://zigtools.org/zls/releases/0.12.0/
   local ziglang_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
 
   minisign -V \
