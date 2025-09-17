@@ -6,7 +6,7 @@
 pkgname=bluetuith
 pkgver=0.2.5
 pkgrel=1
-epoch=2
+epoch=1
 pkgdesc="TUI-based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/bluetuith-org/bluetuith"
