@@ -1,6 +1,6 @@
 pkgbase = sshm-bin
 	pkgdesc = A modern, interactive SSH Manager for your terminal
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Gu1llaum-3/sshm
 	arch = x86_64
@@ -8,13 +8,9 @@ pkgbase = sshm-bin
 	license = MIT
 	provides = sshm
 	conflicts = sshm
-	source = LICENSE-1.6.0::https://raw.githubusercontent.com/Gu1llaum-3/sshm/v1.6.0/LICENSE
-	source = README-1.6.0.md::https://raw.githubusercontent.com/Gu1llaum-3/sshm/v1.6.0/README.md
-	sha256sums = 7fbff3585259c05587ea073e09a627d67d2fea3d759e7c715a49e80e5039907f
-	sha256sums = 4af2770ad7ebace2b7a25d289f334c0418722a6a869df0790b96821c37815c0f
-	source_x86_64 = sshm-x86_64-1.6.0.tar.gz::https://github.com/Gu1llaum-3/sshm/releases/download/v1.6.0/sshm-linux-amd64.tar.gz
-	sha256sums_x86_64 = 2ce853cee798282513e11045c2691a8f916ea78a225e8c47282f77f9c3da6557
-	source_aarch64 = sshm-aarch64-1.6.0.tar.gz::https://github.com/Gu1llaum-3/sshm/releases/download/v1.6.0/sshm-linux-arm64.tar.gz
-	sha256sums_aarch64 = b07f78b7b3545510455c9b0bc1e6d65a6a63ca1f5d1620cdd136bc9b7236f25e
+	source_x86_64 = sshm-x86_64-1.7.0.tar.gz::https://github.com/Gu1llaum-3/sshm/releases/download/v1.7.0/sshm_linux_x86_64.tar.gz
+	sha256sums_x86_64 = dc38ed5addb74b86e4aeb4caa240f91b8a762d06c53523203136cbc94c2b6b1e
+	source_aarch64 = sshm-aarch64-1.7.0.tar.gz::https://github.com/Gu1llaum-3/sshm/releases/download/v1.7.0/sshm_linux_arm64.tar.gz
+	sha256sums_aarch64 = f75da585e1237753f8696e78178fb6e30ac42ddd45982ff93a9cabc77473b6a9
 
 pkgname = sshm-bin
