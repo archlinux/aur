@@ -1,14 +1,14 @@
 pkgbase = maptool
 	pkgdesc = An open source virtual tabletop program
 	pkgver = 1.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rptools.net/tools/maptool
 	install = maptool.install
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = dpkg
-	makedepends = jdk-openjdk
+	makedepends = java-environment-openjdk=24
 	makedepends = gradle8
 	makedepends = xdg-utils
 	makedepends = rpm-tools
