@@ -1,0 +1,18 @@
+post_install() {
+	systemctl enable --now atd.service
+}
+
+
+pre_upgrade() {
+	systemctl disable --now atd.service
+}
+
+
+post_upgrade() {
+	systemctl enable --now atd.service
+}
+
+
+pre_remove() {
+	systemctl disable --now atd.service
+}
