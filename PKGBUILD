@@ -1,13 +1,13 @@
-# Maintainer: Tobias Frisch <thejackimonster@gmail.com>
+# Maintainer: Tobias Frisch <jacki AT thejackimonster DOT de>
 
 _name=language_tool_python
 pkgname=python-languagetool-git
-pkgver=2.7.0
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="A free grammar checker for Python"
 url="https://pypi.org/project/language-tool-python"
-depends=('python' 'python-tqdm' 'python-requests')
-makedepends=('git' 'python')
+depends=('python' 'python-tqdm' 'python-requests' 'python-psutil' 'python-toml')
+makedepends=('git' 'python' 'python-build' 'python-installer' 'python-wheel')
 optdepends=()
 license=('GPL3')
 arch=('any')
@@ -17,15 +17,15 @@ provides=('python-languagetool')
 
 pkgver() {
 	cd "$srcdir/${_name}"
-	git tag | grep '^[0-9]' | sort -V -r | head -n1
+	cat pyproject.toml | grep '^version = ' | tr '"' ' ' | awk '{print $3}'
 }
 
 build() {
 	cd "$srcdir/${_name}"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${_name}"
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --destdir="$pkgdir" dist/${_name}-${pkgver}-py3-none-any.whl
 }
