@@ -1,6 +1,6 @@
 pkgbase = valot
 	pkgdesc = A modern time tracking application built with GTK4 and Adwaita
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://gitlab.com/Valo27/valot
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = valot
 	depends = libadwaita
 	depends = libgda6
 	depends = gjs
-	source = valot-0.6.1.tar.gz::https://gitlab.com/Valo27/valot/-/archive/v0.6.1/valot-v0.6.1.tar.gz
-	sha256sums = 5442efdb548dca8cf0898729bc6a8b9c7beaf528be07de026a64e1d76060bd95
+	source = valot-0.6.2.tar.gz::https://gitlab.com/Valo27/valot/-/archive/v0.6.2/valot-v0.6.2.tar.gz
+	sha256sums = c6df0e246cf56473a18266f14e650428935806e5e28eb9b6a0162689724a72f0
 
 pkgname = valot
