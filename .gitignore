@@ -1,6 +1,5 @@
 src/
 pkg/
-coolerdash/
 *.pkg.tar.*
 *.tar.*
 *.zip
@@ -19,6 +18,7 @@ Thumbs.db
 *.swp
 *.swo
 .vscode/
+.idea/
 .qodo/
 
 #Ignore vscode AI rules
