@@ -6,18 +6,20 @@
 
 _pkgname=godot-mono
 pkgname=godot-mono-git
-pkgver=4.2.r6531.ga48b99a
+pkgver=4.5.r76.gadb2ec0
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=(x86_64 i686)
 url="https://godotengine.org/"
 license=(MIT)
-depends=(embree freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd libsquish
+depends=(embree freetype2 graphite libglvnd libspeechd libsquish
          libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama libxrandr
-         mbedtls miniupnpc pcre2 dotnet-sdk hicolor-icon-theme bash)
-makedepends=(alsa-lib pulseaudio scons yasm xorg-server-xvfb nuget python git rsync gzip)
+         mbedtls pcre2 dotnet-sdk hicolor-icon-theme bash)
+makedepends=(alsa-lib pulse-native-provider scons yasm xorg-server-xvfb nuget python git rsync gzip)
 provides=(godot-mono)
 conflicts=(godot-mono)
+optdepends=('pipewire-alsa: for audio support'
+	    'pulse-native-provider: for audio support')
 source=("git+https://github.com/godotengine/godot.git")
 sha256sums=('SKIP')
 
@@ -42,13 +44,16 @@ build() {
     CXXFLAGS="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
     LINKFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" \
     arch="$CARCH" \
+    builtin_brotly=no \
+    builtin_certs=no \
+    builtin_clipper2=yes \
     builtin_embree=no \
     builtin_enet=yes \
     builtin_freetype=no \
     builtin_msdfgen=yes \
     builtin_glslang=yes \
     builtin_graphite=no \
-    builtin_harfbuzz=no \
+    builtin_harfbuzz=yes \
     builtin_icu4c=yes \
     builtin_libogg=no \
     builtin_libpng=no \
@@ -81,26 +86,24 @@ build() {
   # https://github.com/godotengine/godot/issues/93907
   # builtin_miniupnpc=no \
 
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.linuxbsd.editor.x86_64.mono --generate-mono-glue modules/mono/glue
+    bin/godot.linuxbsd.editor.$CARCH.mono --headless --generate-mono-glue modules/mono/glue
 
-    # Build normal binaries and use proper NuGet packages #78257
-    tempfolder=$(mktemp -d) 
-    modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd --push-nupkgs-local="$tempfolder" && rm -rf "$tempfolder"
+    modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd
 }
 
 
 package() {
     install -d \
-        "${pkgdir}/opt/${_pkgname}/" \
+        "${pkgdir}/usr/lib/${_pkgname}/" \
         "${pkgdir}/usr/bin/" \
         "${pkgdir}/usr/share/applications/"
 
     rsync -a \
-        "${srcdir}/godot/bin" "${pkgdir}/opt/${_pkgname}"
+        "${srcdir}/godot/bin" "${pkgdir}/usr/lib/${_pkgname}"
 
     cat > "${pkgdir}/usr/bin/${_pkgname}" <<-EOF
 		#!/usr/bin/env sh
-		/opt/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono
+		/usr/lib/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono
 	EOF
     sed -i 's/x86_64.mono/x86_64.mono "$@"/g' "${pkgdir}/usr/bin/${_pkgname}"
 
