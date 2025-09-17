@@ -5,8 +5,8 @@ pkgbase = ttf-sbl-biblit
 	url = https://www.sbl-site.org/educational/BiblicalFonts_SBLBibLit.aspx
 	arch = any
 	license = custom
-	source = https://www.sbl-site.org/Fonts/SBL_BLit.ttf
-	source = https://www.sbl-site.org/assets/pdfs/SBL_Font_End_User_License_Agreement.pdf
+	source = https://www.sbl-site.org/wp-content/themes/basket/fonts/bib-fonts/SBL_BLit.ttf
+	source = https://www.sbl-site.org/wp-content/uploads/2024/05/SBL_Font_End_User_License_Agreement.pdf
 	sha256sums = bfd1ed38833f112d9998d5631c533ef347ad0affc6b600220d50123a7816a814
 	sha256sums = 70c6d5d0f95a97c80f348e5dc22ac647a4b591a5cf6d5021a0588563eed844ed
 
