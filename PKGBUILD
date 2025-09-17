@@ -4,9 +4,9 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-glibc
-pkgver=2.42+r3+gbc13db739377
+pkgver=2.42+r17+gd7274d718e6f
 pkgrel=1
-_commit=bc13db73937730401d592b33092db6df806d193e
+_commit=d7274d718e6f3655eabe311d4eb70fabb5ffa7ef
 pkgdesc="GNU C Library for armv7l"
 arch=(any)
 url='https://www.gnu.org/software/libc/'
@@ -18,7 +18,7 @@ source=(git+https://sourceware.org/git/glibc.git#commit=${_commit})
 
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-b2sums=('e3b06cd0f8d34a3f9d5d7c01cd87aec1b14eaaa0d501c242c7a54f63299bf10afa7d9ddc4a071c2295c500af4e750fe62107d0570ddaffccfeb216675a8b913e')
+b2sums=('98401875ecbbbe0f3aae2f4a41e6eb495da789b07a1de00daade6019d715dad9c5693c1b2d60764a547e0276084441c9d42e50b591fa77ad9735afc25bcf8282')
 
 prepare() {
   mkdir -p glibc-build
