@@ -1,1 +1,1 @@
-d /var/lib/changedetection.io 0755 changedetectionio changedetectionio -
+d /var/lib/changedetection.io 0750 changedetectionio changedetectionio -
