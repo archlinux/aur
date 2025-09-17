@@ -1,0 +1,25 @@
+pkgbase = clickup-fixed
+	pkgdesc = Desktop app for clickup.com with GTK3 and icon fixes
+	pkgver = 3.5.139
+	pkgrel = 1
+	url = https://clickup.com
+	arch = x86_64
+	license = CustomLicense
+	makedepends = sed
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = gtk3
+	depends = libdbusmenu-gtk2
+	depends = libindicator-gtk2
+	depends = libsecret
+	depends = libxkbfile
+	depends = nss
+	provides = clickup
+	conflicts = clickup
+	options = !strip
+	source = clickup-desktop-3.5.139-x86_64.AppImage::https://desktop.clickup.com/linux
+	source = terms.html::https://clickup.com/terms
+	sha256sums = 2a01642451610460a84a34e9c7cd6f79eb6b9ab8590b975bb440aff6b426a51e
+	sha256sums = SKIP
+
+pkgname = clickup-fixed
