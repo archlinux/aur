@@ -1,0 +1,16 @@
+pkgbase = opaquefiles
+	pkgdesc = File encryption program
+	pkgver = 0.9.9.3
+	pkgrel = 1
+	url = https://codeberg.org/cozyOwl/OpaqueFiles
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = java-runtime=17
+	depends = bash
+	optdepends = hicolor-icon-theme
+	source = opaquefiles::git+https://codeberg.org/cozyOwl/OpaqueFiles.git?signed#tag=v0.9.9.3
+	validpgpkeys = 85A129CD038220C44227EAB9C28D02D181F83532
+	sha256sums = SKIP
+
+pkgname = opaquefiles
