@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=wlmaker
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Wayland compositor inspired by WindowMaker'
 _libbase_commit=f44570ee4d15528a9a2753b7527938c0cdf5ed7f
@@ -12,7 +12,7 @@ makedepends=(cmake doxygen git wayland-protocols)
 depends=(bash cairo libxkbcommon wlroots0.18 xorg-xwayland)
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver-libbase::git+https://github.com/phkaeser/libbase#commit=$_libbase_commit")
-b2sums=('965a3352087265eb55df54346b0f1350188bf73828e94b942c5b48b2e9a89b5e3aa1e1301aa4338151771fc0225e576a4c2e868e86f58f30db86e342e39d9c2f'
+b2sums=('d30ff826e448763f5993a5dc5d690ffa336b5edc3e8223be4028043c79b1d273d5d5ba1c796fae99272fb1a9b98408d8dbcba612a65a92a0b124885323800c8b'
         'a498f45b267136baf15a21d83720e03a84605a395811486d1dbad0382cc86ad426324a62cda8fe039a43a16d270095cc124b39019c23cb23c79f0c15aa143cce')
 
 prepare() {
