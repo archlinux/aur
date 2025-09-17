@@ -1,7 +1,7 @@
 pkgbase = neosu-bin
 	pkgdesc = Third-party McOsu fork, with additional features
 	pkgver = 41.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kiwec/neosu
 	arch = x86_64
 	license = GPL-3.0-only

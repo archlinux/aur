@@ -3,7 +3,7 @@
 pkgname=neosu-bin
 _pkgname=${pkgname%-bin}
 pkgver=41.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Third-party McOsu fork, with additional features"
 arch=(x86_64)
 url="https://github.com/kiwec/neosu"
