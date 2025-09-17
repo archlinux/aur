@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBSeq
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,13 +16,11 @@ depends=(
   r-rcpp
   r-rcppeigen
   r-testthat
-)
-makedepends=(
   r-bh
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('31e2325303d52aadc8a034eec7cab8cd')
-b2sums=('d913d31bff9b7037fc65f1d4a2bcae6d3755b87cbe78f18d48fea23302e602e850285cdda1c33004ef397631ad5f0ec79248ccccef9e576f53ffcb25c6d4df70')
+md5sums=('f0be7deaf336818f3933addbbe66809e')
+b2sums=('0e1d2f7c3c41cc17cc6afb84a30a76b461691ab6cb3b3e11d56c97e9f28766ec4898a2ffbe8ba2622f3f656cb0feab07c4e815de11296c1484b0a6902ba39ca4')
 
 build() {
   mkdir build
