@@ -46,5 +46,5 @@ package() {
     # Install pixmap and desktop files
     install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/neosu.png"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/neosu.desktop"
-    install -Dm644 "$_pkgname-soloud.desktop" "$pkgdir/usr/share/applications/neosu-soloud.desktop"
+    install -Dm644 "$_pkgname-bass.desktop" "$pkgdir/usr/share/applications/neosu-bass.desktop"
 }
