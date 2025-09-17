@@ -2,13 +2,13 @@
 
 pkgname=cursor-bin
 pkgver=1.6.26
-pkgrel=1
+pkgrel=2
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
-# electron* is added at package()
-depends=('ripgrep' 'xdg-utils'
+_electron=electron34
+depends=('ripgrep' 'xdg-utils' $_electron
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
 _commit=6af2d906e8ca91654dd7c4224a73ef17900ad735 # sed'ded at GitHub WF
@@ -20,22 +20,14 @@ sha512sums=('a6eb038ba9ac027cf2d9f05362c1bd2af7da3d88fcb1965212272a43aab72d1d201
 _app=usr/share/cursor/resources/app
 package() {
   # Exclude electron
-  bsdtar -xf data.tar.xz --exclude 	'usr/share/cursor/[^r]*' --exclude 'usr/share/windsurf/*.pak'
+  tar -xf data.tar.xz -C "$pkgdir" --exclude 'usr/share/cursor/[^r]*' --exclude 'usr/share/cursor/*.pak'
+  cd "$pkgdir"
   mv usr/share/zsh/{vendor-completions,site-functions}
   ln -svf /usr/bin/rg ${_app}/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
 
-  # Electron version determined during build process
-  _electron=electron34
-  echo $_electron
-  depends+=($_electron)
-  mv usr "${pkgdir}"/usr
   sed -e "s|code-flags|cursor-flags|" -e "s|/usr/lib/code|/${_app}|" -e "s|/usr/lib/code/code.mjs|--app=/${_app}|" \
     -e "s|name=electron|name=${_electron}|" "${srcdir}"/code.sh | install -Dm755 /dev/stdin "${pkgdir}"/usr/share/cursor/cursor
   install -d "$pkgdir"/usr/bin
   ln -sf /usr/share/cursor/cursor "$pkgdir"/usr/bin/cursor
-
-  # Fix native title bar
-  # https://github.com/cursor/cursor/issues/3108
-  sed -i 's|l\.frame=!1|(!On(o, i?.forceNativeTitlebar ? "native" : void 0) \&\& (l.frame = !1))|g' "${pkgdir}"/usr/share/cursor/resources/app/out/main.js
 }
