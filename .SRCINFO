@@ -1,6 +1,6 @@
 pkgbase = python-sedbgmux-git
 	pkgdesc = DebugMux client for [Sony] Ericsson phones and modems
-	pkgver = r85.5252e54
+	pkgver = r115.63c16fc
 	pkgrel = 1
 	url = https://gitea.osmocom.org/fixeria/sedbgmux
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = python-sedbgmux-git
 	makedepends = python-wheel
 	depends = python-construct
 	depends = python-pyserial
-	depends = python-crcmod
 	depends = python-cmd2
 	optdepends = python-pyshark: btpcap dump format support
 	conflicts = python-sedbgmux

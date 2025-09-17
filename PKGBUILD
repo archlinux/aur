@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=python-sedbgmux-git
-pkgver=r85.5252e54
+pkgver=r115.63c16fc
 pkgrel=1
 pkgdesc="DebugMux client for [Sony] Ericsson phones and modems"
 arch=('any')
@@ -9,7 +9,6 @@ url="https://gitea.osmocom.org/fixeria/sedbgmux"
 license=('GPL-3.0-or-later')
 depends=('python-construct'
          'python-pyserial'
-         'python-crcmod'
          'python-cmd2')
 optdepends=('python-pyshark: btpcap dump format support')
 makedepends=('git'
