@@ -1,5 +1,9 @@
-mautrix-whatsapp/
-pkg/
-src/
-*.gz
-*.zst
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!mautrix-whatsapp.service
+!mautrix-whatsapp.tmpfiles
+!sysusers-mautrix-whatsapp.conf
