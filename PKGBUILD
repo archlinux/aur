@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio"
-pkgver=8.18
+pkgver=8.24
 pkgrel=1
 pkgdesc="Segger Embedded Studio"
 arch=('x86_64' 'aarch64')
@@ -13,14 +13,13 @@ url="https://www.segger.com/products/development-tools/embedded-studio/"
 license=('Commercial')
 options=(!strip)
 
-source_x86_64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz")
-source_aarch64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz")
-	
-md5sums_x86_64=('c3d41efd41656a2aae1bd7a74097f74f')
-md5sums_aarch64=('82bde3134eef58c4de62b1cf94568d24')
-
 source=("embedded-studio.desktop")
-sha256sums=('SKIP')
+source_x86_64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_x64.tar.gz::https://www.segger.com/fd/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_Linux_x86_64.tar.gz")
+source_aarch64=("Setup_EmbeddedStudio_v${pkgver/./}_linux_arm64.tar.gz::https://www.segger.com/fd/embedded-studio/Setup_EmbeddedStudio_v${pkgver/./}_Linux_arm64.tar.gz")
+
+sha256sums=('89c05734c2ef04a44767e73c7d48f9feba104338e0ca87dfe4ab5e67e90628f6')
+md5sums_x86_64=('61748d6abe688e4af92e17d2af3fccca')
+md5sums_aarch64=('0ab50900692113ee0857c17e8ec068db')
 
 prepare(){
 	# Delete potential previous build
