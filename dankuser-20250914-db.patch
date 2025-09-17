@@ -1,0 +1,12 @@
+--- src/scidb-svn/src/db/db_tag_set.cpp	2025-09-14 12:56:26.203835415 +0200
++++ src.base/scidb-svn/src/db/db_tag_set.cpp	2025-09-14 13:59:19.326769189 +0200
+@@ -83,8 +83,7 @@
+ # include "m_utility.h"
+ 
+ TagSet::TagSet(TagSet&& set)
+-	:m_values(mstl::move(set.m_values))
+-	,m_extra(mstl::move(set.m_extra))
++    :m_extra(mstl::move(set.m_extra))
+ 	,m_isUserSupplied(set.m_isUserSupplied)
+ 	,m_set(mstl::move(set.m_set))
+ {

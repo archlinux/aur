@@ -1,0 +1,12 @@
+--- src/scidb-svn/src/tk/svg/agg/agg_font_freetype.cpp	2025-09-14 12:56:25.260948337 +0200
++++ src.base/scidb-svn/src/tk/svg/agg/agg_font_freetype.cpp	2025-09-14 14:07:24.728344555 +0200
+@@ -179,7 +179,8 @@
+             v_control = v_start;
+ 
+             point = outline.points + first;
+-            tags  = outline.tags  + first;
++            //tags  = outline.tags  + first;
++            tags  = reinterpret_cast <char*> (outline.tags  + first);
+             tag   = FT_CURVE_TAG(tags[0]);
+ 
+             // A contour cannot start with a cubic control point!

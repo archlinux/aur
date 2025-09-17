@@ -1,0 +1,11 @@
+--- src/scidb-svn/src/tk/html/html.h	2025-09-14 12:56:24.888354499 +0200
++++ src.base/scidb-svn/src/tk/html/html.h	2025-09-14 14:03:15.062215443 +0200
+@@ -864,7 +864,7 @@
+ 
+ void HtmlFloatListAdd(HtmlFloatList*, int, int, int, int);
+ HtmlFloatList *HtmlFloatListNew();
+-void HtmlFloatListDelete();
++void HtmlFloatListDelete(HtmlFloatList *pList);
+ int HtmlFloatListPlace(HtmlFloatList*, int, int, int, int);
+ int HtmlFloatListClear(HtmlFloatList*, int, int);
+ int HtmlFloatListClearTop(HtmlFloatList*, int);

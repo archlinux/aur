@@ -1,8 +1,10 @@
 # Maintainer: 2022-04-04 blacktav <blacktav at gmail dot com>
-# Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
+# Contributors: Original submitter q9 <qqqqqqqqq9 at web dot de>
+#               dankuser 
+
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=7
+pkgrel=8
 # epoch=2
 pkgdesc="Chess database browser: chess, chess960, etc engines; import Chessbase, PGN, Scid; CQL"
 arch=('x86_64' 'i686')
@@ -27,6 +29,7 @@ makedepends=(
            # needed for build purposes
            'patch'
            'subversion'
+           'gcc14'
             )
 conflicts=('scidb')
 #options=('!buildflags' '!makeflags' '!debug' )
@@ -37,13 +40,19 @@ source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
         'engines.Sjeng.Makefile.patch'
         'sys_info.cpp.patch'
         'tcl.Makefile.patch'
+        'dankuser-20250914-agg_font.patch'
+        'dankuser-20250914-db.patch'
+        'dankuser-20250914-html.patch'
         )
 md5sums=('SKIP'
-         '3dd938a3a7f744813ccb76fe4826d167'
+         '0890bf5963e14ba39734608edd43cf27'
          '47f44f0eec5d9e0a9e7e1bb25adea3b4'
          '68c9d47e5af84ac25c87045e3388c6f1'
          'ef91ffeceab48c260bb1c2af7d02cd9c'
          'a2025bd063a9f18615dba96c09e3bc99'
+         '386b2c4f924df42a3326fc798cd44a4f'
+         'a0c2dfe24315ae6f6b163568686d3b69'
+         'b3c0437c06eb996e928c3301e35cf1db'
         )
 pkgver() {
   cd $srcdir/$pkgname
@@ -71,6 +80,9 @@ build() {
   patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
   patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
   patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
+  patch -u $srcdir/$pkgname/src/db/db_tag_set.cpp -i dankuser-20250914-db.patch
+  patch -u $srcdir/$pkgname/src/tk/html/html.h -i dankuser-20250914-html.patch
+  patch -u $srcdir/$pkgname/src/tk/svg/agg/agg_font_freetype.cpp -i dankuser-20250914-agg_font.patch
   # Set switches for configure script
   # Default switches had debugging turned on
   #     deployment is below /usr/local/bin
@@ -95,8 +107,7 @@ build() {
 #  SWITCHES+=("--enable-gcov-coverage=yes")      # default=no
 #  SWITCHES+=("--enable-inline-text=no")         # default=yes
   SWITCHES+=("--suppress-insane-message")
-#  SWITCHES+=("")
-#  SWITCHES+=("")
+  SWITCHES+=("--gcc-version=14")                # gcc15 too intolerant of old code
   SWITCHSTRING=""
   for SWITCH in "${SWITCHES[@]}" ; do
     SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
@@ -109,3 +120,4 @@ package() {
   cd $srcdir/$pkgname
   make install
 }
+
