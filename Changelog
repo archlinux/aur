@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 7.3.0 ➙ 8.0.rc2
-              : 2024-12-31 ➙ 2025-09-16
+ Tags         : 7.4.0 ➙ 8.0.0
+              : 2025-03-08 ➙ 2025-09-17
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-09-17   : 8.0.0
+              - Release 8.0.0
+                New vpn info variable: dns_lookup_ipv6
+                  When true, hostnames listed in "dns" lists are now queried for
+                  IPv6 as well as IPv4 address(es). These are used in the wireguard configs.
+                  Defaults to false.
+ 2025-09-16
+              - fix couple typos
+              - Add html link in Docs pointing to pre-build html docs.
+                Remove old license file
+              - update Docs/wg_tool.pdf Docs/Changelogs
 
  2025-09-16   : 8.0.rc2
               - **Major Version 8.0.0**
@@ -64,11 +76,4 @@
                 Add user_keepalive (seconds) to saved options
                 Server config : drop unused mod_time
  2024-12-31
-              - update Docs/Changelog.rst Docs/wg_tool.pdf
-
- 2024-12-31   : 7.3.0
-              - Git tags are now signed.
-                Add git signing key to Arch Package
-                Bump python vers
- 2024-10-22
               - update Docs/Changelog.rst Docs/wg_tool.pdf
