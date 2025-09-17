@@ -45,7 +45,7 @@ source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
         'dankuser-20250914-html.patch'
         )
 md5sums=('SKIP'
-         '78377c73042e5212278bc25cd2a9c267'
+         '0890bf5963e14ba39734608edd43cf27'
          '47f44f0eec5d9e0a9e7e1bb25adea3b4'
          '68c9d47e5af84ac25c87045e3388c6f1'
          'ef91ffeceab48c260bb1c2af7d02cd9c'
