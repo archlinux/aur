@@ -1,0 +1,15 @@
+pkgbase = gativideo
+	pkgdesc = Minimal TUI app to download YTS movies and opensubtitles subtitles.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/javiorfo/gativideo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = transmission-cli
+	provides = gativideo
+	conflicts = gativideo
+	source = gativideo-0.1.0.tar.gz::https://github.com/javiorfo/gativideo/releases/download/0.1.0/gativideo-0.1.0-x86_64.tar.gz
+	sha512sums = d258fa7b7b29aadc6f540ab270d43c1a8b58a9cae0778091ccb7c387f6cd232f1905ee4c189d93db5948b4879e41516af1f5dd504444f140a9738cbada66da75
+
+pkgname = gativideo
