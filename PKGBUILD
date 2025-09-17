@@ -10,7 +10,7 @@ url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
 
 depends=(
-  'quickshell-git'
+  'quickshell'
   'ttf-roboto'
   'inter-font'
   'gpu-screen-recorder'
