@@ -1,0 +1,19 @@
+pkgbase = ia-get-bin
+	pkgdesc = File downloader for archive.org
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/wimpysworld/ia-get
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = ia-get
+	conflicts = ia-get
+	options = !strip
+	source_x86_64 = https://github.com/wimpysworld/ia-get/releases/download/0.1.2/ia-get-0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ea01bd16c1b760ae33ccac3f4c045b9c7791b6bd7bf9aea431dd200c28f8f38d
+	source_aarch64 = https://github.com/wimpysworld/ia-get/releases/download/0.1.2/ia-get-0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ed913f6aec7b8b67f949b00d8ed2dfdd32e3e3e4b8c6e5666df7dbac4775ea6c
+
+pkgname = ia-get-bin
