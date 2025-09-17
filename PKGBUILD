@@ -1,16 +1,15 @@
 pkgname=youtube
 _pkgname=Youtube
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-desktop"
 license=('GPL')
-depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('bbda1965f6d1088a3125334a7cdf174868f6afcbc02fa6b3d0a9a86638d8406d')
-
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
@@ -23,9 +22,8 @@ package() {
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/youtubeapp.svg" "$pkgdir/usr/share/pixmaps"  
 
-
     # Link to binary
-    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
+    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
     
     # Desktop Entry
