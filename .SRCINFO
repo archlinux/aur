@@ -1,7 +1,7 @@
 pkgbase = perlnavigator
 	pkgdesc = Perl language server that includes syntax checking, perl critic, and code navigation
 	pkgver = 0.8.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bscan/PerlNavigator
 	arch = any
 	license = MIT
