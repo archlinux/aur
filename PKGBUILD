@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-bin
 _pkgname=Handbook
-pkgver=0.24.1
-_electronversion=37
+pkgver=0.25.0
+_electronversion=38
 pkgrel=1
 pkgdesc="Create small, movable, and easily concealable windows for quick use.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,12 +20,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ECRomaneli/Handbook/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5de93545cd08c1c54b80ec8cd35037610a243839d2a1d2022090229d3c28f966'
+sha256sums=('00d35c0480ebb8d9f8ce40f7d6a2a434fc939df8934f01d71d6a1996d84a9bc7'
             'f95781392d074cd6a4f9de8e5ea6625bee7df3678dc98be6c56358ee527a18c8'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/usr/lib/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
