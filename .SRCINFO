@@ -1,7 +1,7 @@
 pkgbase = twitter
 	pkgdesc = Unnofficial Twitter desktop application
 	pkgver = 1.0.8.aur.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/twitterdesktop/application
 	arch = x86_64
 	arch = aarch64
