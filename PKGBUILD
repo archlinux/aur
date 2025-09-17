@@ -1,15 +1,15 @@
 # Maintainer: Maykel Moya <mmoya [at] mmoya [dot] org>
 
-_pkgver=0.0.1-pre-alpha-2
+_pkgver=0.0.1-pre-alpha-4
 pkgname=robrix-bin
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="A Matrix chat client written using Makepad + Robius app dev framework in Rust."
+pkgdesc="A multi-platform Matrix chat client written in Rust, using the Makepad UI toolkit and the Robius app dev framework"
 arch=('x86_64')
 url="https://github.com/project-robius/robrix"
-options=(!lto)
-source=("https://github.com/project-robius/robrix/releases/download/v${_pkgver}/robrix-${_pkgver#*-}-x86_64.tar.gz")
-sha512sums=("a8d24e2f699c227cf189f784c50afc40f59d527ec6b174b0875f3860207ae7989f6ee5983e7ac07954a04a35066f6494611ae71abea1384530828946ca6f4d20")
+options=(!debug !lto)
+source=("https://github.com/project-robius/robrix/releases/download/v${_pkgver}/robrix_${_pkgver}_x86_64.tar.gz")
+sha512sums=("e76b98b410ce4086ae5543a180c9047af1b9a073a889d5d67c31042df02a6a128f9bb77586d5a5b50c68ef53a1e7b63b8afa5f36adccc0d2cd9646491c6e9926")
 package() {
     cp -r ${srcdir}/* ${pkgdir}/
 }
