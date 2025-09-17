@@ -15,14 +15,14 @@ source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/kiwec/neosu/releases/download/v$pkgver/neosu-linux-x64.tar.gz"
   "$_pkgname.png"
   "$_pkgname.desktop"
-  "$_pkgname-soloud.desktop"
+  "$_pkgname-bass.desktop"
   "$_pkgname.sh"
 )
 
 sha256sums=('a9b36c98599d064226a655532d5751739244bdbbd83e3b4080d5398f44ec6da4'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
             'f545fb2ea01de0e0fd9acbdaea1a125bbc769b3eeda11e1dffa6ae5c03568bf2'
-            '80b16b47231dd1c0ba47e53842178b8bd0165d376500223ca3a1c9ee19cdcf08'
+            '1d8c2291f5f82f330d9b9238bbd32d0d2c54f0fe530a11c60e7b7e0bea0cd5dc'
             '8dda2b45ea02d6f259ff452b4e45ba91b35a15a31976131e1da558ec962980c2')
 
 package() {

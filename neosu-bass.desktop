@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=neosu (soloud)
+Name=neosu (BASS)
 Icon=/usr/share/pixmaps/neosu.png
 Comment=Third-party McOsu fork, with additional features
-Exec=/usr/bin/neosu -sound soloud
+Exec=/usr/bin/neosu -sound bass
 Categories=Game;
