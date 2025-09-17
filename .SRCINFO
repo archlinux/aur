@@ -1,12 +1,13 @@
 pkgbase = suwayomi-server-preview-bin
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
-	pkgver = 2.1.1932
-	pkgrel = 1.2
+	pkgver = 2.1.1933
+	pkgrel = 1.3
 	url = https://github.com/Suwayomi/Suwayomi-Server-preview
 	arch = any
 	license = MPL2
 	depends = java-runtime>=21
 	depends = libc++
+	depends = gcc
 	optdepends = electron: running in Electron
 	optdepends = xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode
 	provides = suwayomi
@@ -14,11 +15,13 @@ pkgbase = suwayomi-server-preview-bin
 	provides = tachidesk
 	provides = tachidesk-server
 	conflicts = tachidesk
-	noextract = Suwayomi-Server-v2.1.1932.jar
+	noextract = Suwayomi-Server-v2.1.1933.jar
 	backup = etc/suwayomi/server.conf
-	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v2.1.1932/Suwayomi-Server-v2.1.1932.jar
-	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v2.1.1932/Suwayomi-Server-v2.1.1932-linux-assets.tar.gz
+	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v2.1.1933/Suwayomi-Server-v2.1.1933.jar
+	source = https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v2.1.1933/Suwayomi-Server-v2.1.1933-linux-assets.tar.gz
+	source = https://raw.githubusercontent.com/Suwayomi/Suwayomi-Server/refs/heads/master/scripts/resources/catch_abort.c
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = c08aa53d12d6b9944bed6e624ed271c94c771e24e9578600b5718b9754a39d3c
 
 pkgname = suwayomi-server-preview-bin
