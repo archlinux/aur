@@ -1,17 +1,19 @@
 pkgbase = mew
 	pkgdesc = Efficient dynamic menu for Wayland, an effective port of dmenu to Wayland
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/sewn/mew
 	arch = x86_64
 	license = MIT
 	makedepends = tllist
 	makedepends = wayland-protocols
 	depends = fcft
+	depends = glibc
 	depends = libxkbcommon
 	depends = pixman
+	depends = sh
 	depends = wayland
-	source = https://codeberg.org/sewn/mew/archive/1.0.tar.gz
+	source = mew-1.0.tar.gz::https://codeberg.org/sewn/mew/archive/1.0.tar.gz
 	sha256sums = 01452fb92c6c5f792327ed8328bb2cbba55fa491260ccdf1b49db7960583c70b
 
 pkgname = mew
