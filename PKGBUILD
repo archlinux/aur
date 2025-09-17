@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.6.0
+pkgver=0.7.0
 _electronversion=30
 pkgrel=1
 pkgdesc="Music player inspired by Lyric Speaker.(Prebuilt version.Use system-wide electron)"
@@ -22,12 +22,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c379a0625ed7e1ef8c867af8b57049bbe7a5616b6d4702257e339505e6761779'
-            'ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a'
+            'c74748ff891e15f7295841ef76d2b8aee5fbc296652b72fb948f274d89fa3fae'
             '9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/${_pkgname}-linux-x64/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
