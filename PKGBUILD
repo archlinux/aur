@@ -2,7 +2,7 @@
 
 pkgname=mew
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Efficient dynamic menu for Wayland, an effective port of dmenu to Wayland'
 arch=('x86_64')
 url='https://codeberg.org/sewn/mew'
@@ -30,4 +30,5 @@ package() {
 	cd "$pkgname"
 
 	make PREFIX="${pkgdir}/usr" install
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
