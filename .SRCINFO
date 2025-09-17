@@ -1,18 +1,18 @@
 pkgbase = colony-player-bin
 	pkgdesc = An application that allows you to play Colony without the need of Flash Projector!(Prebuild version.Use system-wide electron)
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/SynthKittenDev/Colony-Player
 	arch = x86_64
 	license = LicenseRef-unknown
 	makedepends = asar
 	depends = electron11
-	provides = colony-player=1.3.1
+	provides = colony-player=1.4.0
 	conflicts = colony-player
 	options = !emptydirs
-	source = colony-player-1.3.1.deb::https://github.com/SynthKittenDev/Colony-Player/releases/download/v1.3.1/colony-player_1.3.1_amd64.deb
+	source = colony-player-1.4.0.deb::https://github.com/SynthKittenDev/Colony-Player/releases/download/v1.4.0/colony-player_1.4.0_amd64.deb
 	source = colony-player.sh
-	sha256sums = 9bcf50b71271a7957b980e8918138a18d49c00f54a2a8394b0da484bf678fdeb
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = b807011938965722138dccaa6145f002d0105c307a12dbe4455400d2c394d6f9
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = colony-player-bin
