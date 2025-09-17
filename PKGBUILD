@@ -13,7 +13,7 @@ url="https://github.com/lext-next/lext-theme-lubuntu-arc"
 license=('GPL-2.0')                                                          
 depends=('lxqt-session')
 conflicts=('lubuntu-artwork' 'lubuntu-artwork-18-04')
-source=("https://github.com/lext-next/lext-theme-lubuntu-arc/lext-theme-lubuntu-arc.tar.xz")
+source=("https://github.com/lext-next/lext-theme-lubuntu-arc/blob/main/lext-theme-lubuntu-arc.tar.xz")
                                                                                    
 sha256sums=('SKIP')  # for testing; replace with real checksum later                 
                                 
