@@ -3,9 +3,9 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 _base=halide
 pkgname=${_base}-bin
-pkgver=19.0.0
+pkgver=21.0.0
 pkgrel=1
-_noise="5f17d6f8a35e7d374ef2e7e6b2d90061c0530333"
+_noise="b629c80de18f1534ec71fddd8b567aa7027a0876"
 pkgdesc="A language for fast and portable data-parallel computation"
 url="https://github.com/${_base}/${_base/h/H}"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -17,10 +17,10 @@ source_i686=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-x86-32-
 source_armv7h=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-arm-32-linux-${_noise}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-arm-64-linux-${_noise}.tar.gz")
 
-sha512sums_x86_64=('4370f770838c3a7a6c20c361fe07cf04d3f01b82fa2334eb25ce68493e3f57e2a5644a816428ad9902db514e58c9a43c7ad8943ab0a7e39a460b282f4f00b55f')
-sha512sums_i686=('55c003c17675aafac484ed63151f1ee2a55d3bad7d51c8b3119c015754364c3a24e55601a88279b26d2c8daa4b8c8053b2dd98967e482fc4eaee1283c8e0af2f')
-sha512sums_armv7h=('fae1195ba30e68005a501442ce341fede64afe6d77004c8d6dda5cb50228363dde76bd075ec04b690f727aa01c70dbfbd637bfbfc126485dc97c79ceae5d1bb1')
-sha512sums_aarch64=('f7377351d5cd620467d6ad4f6c7fd91cdef1cabf0114d6f2040748f2ed5d8efb7e9f2fd0e4ffa933402799c492175ce06918dc1194d70249b262bc48ae6d2696')
+sha512sums_x86_64=('361918b7f7cb67229dc4436a9db6b41790b274fffa861a31ad17e3c73298bc6bff7fc7524c00af492c2758a6231e8a02e3b42f060e7ac24822e26011e8bd0034')
+sha512sums_i686=('547353d5899d4cc5b9847c445c5b9d157c2df1a719c34e1c4ccfdf4f5029e7ad9645173e82fb78070e88a876670f941beb0de662d8409d3634e25c8d45e4fc70')
+sha512sums_armv7h=('3557827de0ab06281aeac76eecf4b6492fd8c5c08ff807d72f358bc4a4db37e612040b61405cb2478f6c5a64b4f6507d3b5e35c22dec103bec65ea35cb0b1cc5')
+sha512sums_aarch64=('6c5eb62191ce449b6db062cbd70a44951468cb74f34223d96c33bf453ba8cf3e85b572fa2ad619f62797aa6c01f6973f9017e1b313cd9479e7e075eff75e7479')
 
 if [[ "$CARCH" == "x86_64" ]]; then _tar_arch='x86-64'; fi
 if [[ "$CARCH" == "i686" ]]; then _tar_arch='x86-32'; fi
