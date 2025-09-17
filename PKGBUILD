@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=plakar_cleaner
 pkgname=${_pkgname}-git
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Tool for retain plakar backup by retention policies"
 arch=(any)
