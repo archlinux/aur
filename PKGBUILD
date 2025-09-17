@@ -19,7 +19,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${_npmname}-${pkgver}.tgz")
 changelog="changelog.md"
 
-source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
+source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 b2sums=('7fc4ee75034e37255bc969dce12836bbb13fb899a4a3e185afb190cbed423e41ef996f5055a91ba8910fe23c0f72c4fe803a21a192d4522097f396148d1cd502'
