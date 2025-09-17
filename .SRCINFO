@@ -1,15 +1,14 @@
 pkgbase = sile-smartquotes
 	pkgdesc = Typographic quotation marks with the SILE typesetting system
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/Omikhleia/smartquotes.sile
 	arch = any
 	license = MIT
 	makedepends = lua51
 	makedepends = luarocks
 	depends = sile
-	depends = sile-silex
-	source = https://github.com/Omikhleia/smartquotes.sile/archive/v1.0.0/smartquotes.sile-1.0.0.tar.gz
-	sha256sums = 4cfaabfa9f789bc2e04195f2a9aba6d2cf4523b029dcb594297aa414916f7469
+	source = https://github.com/Omikhleia/smartquotes.sile/archive/v2.0.0/smartquotes.sile-2.0.0.tar.gz
+	sha256sums = 6d7409a0f063385e3c0c930393e0469b0ddab67ac9e5dffa5303afad6d7388d0
 
 pkgname = sile-smartquotes
