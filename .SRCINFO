@@ -1,0 +1,20 @@
+pkgbase = puffin-bin
+	pkgdesc = TUI for hledger to manage personal finances
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/siddhantac/puffin
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = hledger
+	provides = puffin
+	conflicts = puffin
+	source_x86_64 = puffin-x86_64-2.1.5.tar.gz::https://github.com/siddhantac/puffin/releases/download/v2.1.5/puffin_2.1.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3c84692d9fc360004f4cc969eee0c4c8a8d9c8e035e271d9a2b150fa30e9b9c8
+	source_i686 = puffin-i686-2.1.5.tar.gz::https://github.com/siddhantac/puffin/releases/download/v2.1.5/puffin_2.1.5_Linux_i386.tar.gz
+	sha256sums_i686 = 4da849c6fc433594b66d8633d1d222db5dce518e1d0252e9977a5e940f2d8a2d
+	source_aarch64 = puffin-aarch64-2.1.5.tar.gz::https://github.com/siddhantac/puffin/releases/download/v2.1.5/puffin_2.1.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a77b5ee0684cffbc053126e17ee7e06846bd394931a42d3d5e1ce228db1e8d38
+
+pkgname = puffin-bin
