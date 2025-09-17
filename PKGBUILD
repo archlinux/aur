@@ -105,6 +105,6 @@ package() {
 	# Install examples
 	cd ./examples
 	for art in *.art; do
-		install -Dm644 "${art}" "${pkgdir}/usr/share/doc/${pkgname}/examples/${art}"
+		install -Dm644 "${art}" "${pkgdir}/usr/share/${pkgname}/examples/${art}"
 	done
 }
