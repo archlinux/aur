@@ -1,6 +1,6 @@
 pkgbase = rudder-agent
 	pkgdesc = Configuration management and audit tool - agent for Rudder managed systems
-	pkgver = 8.3.3
+	pkgver = 8.3.4
 	pkgrel = 1
 	url = https://www.rudder.io
 	install = .install
@@ -38,10 +38,10 @@ pkgbase = rudder-agent
 	depends = augeas
 	depends = python
 	depends = lmdb
-	noextract = rudder-sources-8.3.3.tar.bz2
-	source = rudder-packages-8.3.3::git+https://github.com/Normation/rudder-packages.git#branch=branches/rudder/8.3
-	source = rudder-sources-8.3.3.tar.bz2::https://repository.rudder.io/sources/8.3/rudder-sources-8.3.3.tar.bz2
+	noextract = rudder-sources-8.3.4.tar.bz2
+	source = rudder-packages-8.3.4::git+https://github.com/Normation/rudder-packages.git#branch=branches/rudder/8.3
+	source = rudder-sources-8.3.4.tar.bz2::https://repository.rudder.io/sources/8.3/rudder-sources-8.3.4.tar.bz2
 	sha256sums = SKIP
-	sha256sums = 66a3a2a7948cf7eedf113cdd67e9f10046acc04972939903c54adb7fd58c7708
+	sha256sums = d6ebc5b468660816e9d3165bd13bb9d8f4f5a45fa5f0510e95ca283ca1d6bf48
 
 pkgname = rudder-agent

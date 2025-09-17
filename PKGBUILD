@@ -1,7 +1,7 @@
 # Maintainer: Swâmi Petaramesh <swami AT petaramesh DOT org>
 
 pkgname=rudder-agent
-pkgver=8.3.3
+pkgver=8.3.4
 pkgrel=1
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-pack
 	"rudder-sources-${pkgver}.tar.bz2::https://repository.rudder.io/sources/${pkgver%.*}/rudder-sources-${pkgver}.tar.bz2")
 noextract=("rudder-sources-${pkgver}.tar.bz2")
 sha256sums=('SKIP'
-            '66a3a2a7948cf7eedf113cdd67e9f10046acc04972939903c54adb7fd58c7708')
+            'd6ebc5b468660816e9d3165bd13bb9d8f4f5a45fa5f0510e95ca283ca1d6bf48')
 
 prepare() {
   mv rudder-sources-${pkgver}.tar.bz2 ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
