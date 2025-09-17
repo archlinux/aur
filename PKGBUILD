@@ -1,13 +1,13 @@
 # Maintainer: Sankalp Gambhir <sankalp.gambhir42@gmail.com>
 pkgname=stainless-git
-pkgver=v0.9.9.0.r12.5181f09b
+pkgver=v0.9.9.1.r2.29e2f052
 pkgrel=1
 pkgdesc="Verification framework and tool for higher-order Scala programs"
 arch=(x86_64)
 url="https://github.com/epfl-lara/stainless"
 license=('Apache-2.0')
 groups=()
-depends=('java-runtime>=11')
+depends=('java-runtime>=17')
 makedepends=(git sbt)
 optdepends=('z3: for using as a solver backend' 'cvc4: for using as a solver backend' 'cvc5: for using as a solver backend')
 provides=("${pkgname%-*}")
