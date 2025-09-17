@@ -1,4 +1,4 @@
-pkgbase = notes-cli
+pkgbase = zettli
 	pkgdesc = A fuzzy CLI note manager with fzf + bat + ripgrep
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = notes-cli
 	depends = fzf
 	depends = ripgrep
 	depends = bat
-	source = notes-cli::git+https://github.com/danieledema/zettli.git#tag=v1.0.0
+	source = zettli::git+https://github.com/danieledema/zettli.git#tag=v1.0.0
 	sha256sums = SKIP
 
-pkgname = notes-cli
+pkgname = zettli
