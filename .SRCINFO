@@ -1,0 +1,25 @@
+pkgbase = karere
+	pkgdesc = A modern, native GTK4/LibAdwaita wrapper for WhatsApp Web
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/tobagin/karere
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
+	makedepends = desktop-file-utils
+	makedepends = appstream-glib
+	makedepends = gettext
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = libsecret
+	depends = hicolor-icon-theme
+	optdepends = gspell: spell checking support
+	provides = karere
+	source = karere-0.8.0.tar.gz::https://github.com/tobagin/karere/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 301c87d965c2f848c8798370c18af3a42625f4ffb5ac70102d6f02e1cb031bf7
+
+pkgname = karere
