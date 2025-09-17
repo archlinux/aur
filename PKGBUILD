@@ -3,32 +3,41 @@
 
 pkgname=microsoft-identity-broker-bin
 _pkgname=microsoft-identity-broker
-pkgver=2.0.1
-pkgrel=5
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Broker for authentication between device and Microsoft Intune"
 url="https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/${_pkgname}"
 license=("Unknown")
 arch=('x86_64')
 depends=(
+        'at-spi2-core'
+        'cairo'
+        'curl'
         'dbus'
-        'gnome-keyring'
+        'gdk-pixbuf2'
+        'glibc'
+        'gtk3'
+        'harfbuzz'
+        'hicolor-icon-theme'
+        'libsecret'
+        'libsoup3'
+        'libx11'
+        'openssl'
+        'pango'
         'systemd'
-        'jre11-openjdk'
+        'webkit2gtk-4.1'
 )
 provides=("msft-identity-broker=${pkgver}" "${_pkgname}")
 conflicts=("msft-identity-broker" "${_pkgname}")
 replaces=("msft-identity-broker" "${_pkgname}")
 source=("$url/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('2617899ecbb567125b729b74dfaec5a9f1d5770596bcf7a6d9f9b48bcb3b3061')
+sha256sums=('6b2d1673f0cdea1f71ca8e5f1e8b5725c67569a5e4477f21bfd52f96e313031f')
 install=${pkgname}.install
 
 package() {
   cd "$srcdir"
   tar xvzf data.tar.gz
-  echo ">>> Patching... (Hardcode archlinux java11 JAVA_HOME into xxx.service)"
-  echo 'Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk"' >> "$srcdir/usr/lib/systemd/system/microsoft-identity-device-broker.service"
-  echo 'Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk"' >> "$srcdir/usr/lib/systemd/user/${_pkgname}.service"
-  cp -r "$srcdir/usr" "$srcdir/opt" "$pkgdir/"
+  cp -r "$srcdir/usr" "$pkgdir/"
 }
 
 

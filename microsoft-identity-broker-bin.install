@@ -3,7 +3,7 @@ post_install() {
     # I don't know why they are doing this. just leave them there. 
     if [ -d /run/systemd/system ]; then
         systemctl --system daemon-reload || true
-        # systemctl restart microsoft-identity-device-broker.service || true
+        # systemctl restart microsoft-identity-devicebroker.service || true
     fi
 }
 
@@ -13,7 +13,7 @@ post_upgrade() {
 
 pre_remove() {
     if [ -d /run/systemd/system ]; then
-        systemctl stop microsoft-identity-device-broker.service || true
+        systemctl stop microsoft-identity-devicebroker.service || true
     fi
 }
 
