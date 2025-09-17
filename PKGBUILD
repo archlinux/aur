@@ -1,7 +1,7 @@
 # Maintainer: Sam Hansen <samhansen.dev@gmail.com>
 pkgname=fuzzel-rbw
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Bitwarden RBW frontend for Fuzzel"
 arch=('x86_64')
 url="https://github.com/sammhansen/fuzzel-rbw"
