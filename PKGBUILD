@@ -8,6 +8,7 @@ url="https://github.com/furudbat/wayland-vpets"
 license=('MIT')
 depends=('wayland' 'glibc')
 makedepends=('gcc' 'cmake' 'make' 'wayland-protocols' 'pandoc-cli')
+keywords=('wayland' 'virtual-pet' 'overlay' 'bongo-cat' 'cat' 'wpets' 'desktop-toy' 'bongo' 'bongocat-keyboard' 'cat' 'vpet')
 source=("wayland-vpets-$pkgver.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v$pkgver.tar.gz")
 sha256sums=('10aca3e47af0aff20884be78eb3772f2b28b3a28ab6b69622dece529c325a1b2')
 
