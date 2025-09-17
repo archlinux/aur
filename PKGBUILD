@@ -1,7 +1,7 @@
 # Maintainer: Sam Hansen <samhansen.dev@gmail.com>
 pkgname=fuzzel-rbw
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="A simple Bitwarden RBW frontend for Fuzzel"
 arch=('x86_64')
 url="https://github.com/sammhansen/fuzzel-rbw"
@@ -11,16 +11,15 @@ makedepends=()
 source=("$url/releases/download/v$pkgver/frbw"
         "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('e0462139c932c578a9cd3a6ee5a0a352a83483c93227248ae1c24400b4b15591'
-            'b3c2254fbc2d65f6ee209e0d0d1b30eb1879f5b3e3d1f972ef6dee67d0220db4')
+sha256sums=('878477ec924a1cc9fa3f7f6de6a1be3ec317c513b972fd7aedacf5504618a12f'
+            '7dc33652b3f4f75f55399d205243febe98b8748fcb0a60a544cf5f77c04a6022')
 
 package() {
   # Install the binary
   install -Dm755 "$srcdir/frbw" "$pkgdir/usr/bin/frbw"
 
   # Install the assets from the source tarball
-  install -d "$pkgdir/usr/share/fuzzel-rbw/assets"
-  cp -r "$srcdir/fuzzel-rbw-$pkgver/.assets/"* \
-        "$pkgdir/usr/share/fuzzel-rbw/assets/"
+  install -d "$pkgdir/usr/share/pixmaps"
+  cp -r "$srcdir/fuzzel-rbw-$pkgver/.assets/bitwarden.png" \
+        "$pkgdir/usr/share/pixmaps/"
 }
-
