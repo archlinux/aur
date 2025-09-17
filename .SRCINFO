@@ -7,7 +7,6 @@ pkgbase = voidsprite-git
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
-	makedepends = meson
 	makedepends = gcc
 	makedepends = ninja
 	makedepends = python

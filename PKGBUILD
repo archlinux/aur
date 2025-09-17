@@ -1,6 +1,6 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-git
-pkgver=2025.03.18+git
+pkgver=2025.09.15+git
 pkgrel=1
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
@@ -10,7 +10,7 @@ conflicts=('voidsprite')
 provides=('voidsprite')
 sha256sums=(SKIP)
 depends=(sdl3 sdl3_image sdl3_ttf libpng pugixml xdg-utils libjxl brotli)
-makedepends=(git meson gcc ninja python)
+makedepends=(git gcc ninja python)
 license=(GPL-2.0-only)
 
 pkgver() {
@@ -20,15 +20,14 @@ pkgver() {
 }
 
 build() {
-    arch-meson voidsprite build
-    meson compile -C build
-}
-
-check() {
-    meson test -C build --print-errorlogs
+    (cd "$srcdir/voidsprite/cmake" && ./setup_cmake.sh && cmake -G Ninja -B build . && cd build && ninja)
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+    mkdir -p "$pkgdir/usr/share/voidsprite" "$pkgdir/usr/bin"
+    for x in voidsprite appfont-MPLUSRounded1c-Medium.ttf appfontcyr-ZenKakuGothicNew-Medium.ttf appfontjp-NotoSansJP-Medium.ttf assets; do
+        mv "$srcdir/voidsprite/cmake/build/src/$x" "$pkgdir/usr/share/voidsprite/$x"
+    done
+    ln -s '/usr/share/voidsprite/voidsprite' "$pkgdir/usr/bin/voidsprite"
 }
 
