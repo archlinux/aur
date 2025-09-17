@@ -1,23 +1,33 @@
 post_install() {
-read -rd '' disclaimer <<EOF
-\033[1;5;38;5;1m*******************************************************************************\033[25;39m
-Konaste Linux is an UNOFFICIAL script for running KONAMI Amusement Game Station
-(Konaste) games on Linux-based operating systems, using Wine. This script has
-ABSOLUTELY NO affiliation, endorsement, nor support from KONAMI Amusement, and
-all games REQUIRE an active KONAMI ID, with most REQUIRING a subscription to
-the game's basic course to play outside of their respective trial modes.
+	case "${LANG}" in
+		ja*) DISCLAIMER="Konaste Linuxは、Wineを使用してLinux環境でコナステゲームをプレイ可能にする非公式プロジェクトです。したがって、KONAMI Amusementによる承認やサポートは一切ありません。Konaste Linuxをご利用になる場合、発生する可能性のある問題についてKONAMIがサポートを提供しないことに同意したものとみなされます。" ;;
+		*) DISCLAIMER="Konaste Linux is an unofficial project to allow users to play KONAMI Amusement Game Station (Konaste) games on Linux-based operating systems using Wine. As such, it is not affiliated with, endorsed, nor supported by KONAMI Amusement. By using this script, you agree that KONAMI will not provide support for any problems that may arise." ;;
+	esac
 
-Be sure to run \033[1mkonaste init\033[0m before installing any games!
-\033[1;5;38;5;1m*******************************************************************************\033[0m
-EOF
+	echo -e "\033[1m\n${DISCLAIMER}\n\033[22m"
+	unset DISCLAIMER
 
-	echo -e "\n${disclaimer}\n"
-	unset disclaimer
+	echo -e "Run \033[1mkonaste init\033[22m to create the Wineprefix!"
 }
 
+# post_upgrade() {
+# 	if [[ "$2" == 0.[1-2].[0-9]-* ]]; then
+# 		case "${LANG}" in
+# 			ja*) V03_UPDATE_WARN="v0.3より、Konaste Linuxの全ファイルは\033[1m~/.local/share/konaste-linux\033[22mに保存されます。起動前に以下のコマンドを実行してください：\n  \033[1m\$ konaste --fix-old-directory\033[22m" ;;
+# 			*) V03_UPDATE_WARN="Starting with v0.3, all files for Konaste Linux are now stored in \033[1m~/.local/share/konaste-linux\033[22m. Before launching any games, run the following command:\n  \033[1m\$ konaste --fix-old-directory\033[22m" ;;
+# 		esac
+# 	fi
+#
+# 	echo -e "\n${V03_UPDATE_WARN}\n"
+# 	unset V03_UPDATE_WARN
+# }
+
 post_remove() {
-cat <<EOF
-To complete the uninstallation of Konaste Linux, remove the Wineprefix located
-at: ~/.local/share/konaste
-EOF
+	case "${LANG}" in
+		ja*) UNINSTALL_TIP="Konaste Linux のアンインストールを完了するには、\033[1m~/.local/share/konaste-linux\033[22m にあるデータディレクトリを削除してください。" ;;
+		*) UNINSTALL_TIP="To complete the uninstall of Konaste Linux, remove the data directory at \033[1m~/.local/share/konaste-linux\033[22m." ;;
+	esac
+
+	echo -e "\033[1m\n${UNINSTALL_TIP}\n\033[22m"
+	unset UNINSTALL_TIP
 }
