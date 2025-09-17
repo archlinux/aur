@@ -1,0 +1,27 @@
+pkgbase = apl-bin
+  pkgdesc = GNU APL interpreter and library for array programming (ISO 13751)
+  pkgver = 1.9
+  pkgrel = 1
+  url = https://www.gnu.org/software/apl/
+  arch = x86_64
+  license = GPL-3.0-or-later
+  depends = glibc
+  depends = gcc-libs
+  depends = ncurses
+  depends = cairo
+  depends = fftw
+  depends = gtk3
+  depends = pcre2
+  depends = libpng
+  depends = sqlite3
+  depends = libx11
+  depends = libxcb
+  depends = postgresql-libs
+  provides = apl
+  provides = gnu-apl
+  conflicts = apl
+  conflicts = gnu-apl
+  source = https://ftpmirror.gnu.org/gnu/apl/apl_1.9-1_amd64.deb
+  sha256sums = 5018e1c96a320fc2746c9d0129f53b8ab16f984fddb47e2e475b8b84dc08a365
+
+pkgname = apl-bin
