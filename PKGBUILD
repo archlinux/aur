@@ -12,7 +12,7 @@ depends=('lapack' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 options=('!lto')
 source=("git+${_giturl}#tag=v${pkgver}")
-sha1sums=('9d69793526a302df8cb1d79dcc261684dcd8af19')
+sha1sums=('SKIP')
 
 prepare() {
   cd "$srcdir/OpenModelica"

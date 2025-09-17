@@ -15,6 +15,6 @@ pkgbase = openmodelica-omc
 	conflicts = openmodelica
 	options = !lto
 	source = git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.25.2
-	sha1sums = 9d69793526a302df8cb1d79dcc261684dcd8af19
+	sha1sums = SKIP
 
 pkgname = openmodelica-omc
