@@ -1,18 +1,18 @@
 # Maintainer: Daniel Reibl <janos.daniel.reibl@pm.me>
 pkgname=firecapture
-pkgver=2.7.14
+pkgver=2.7.15
 pkgrel=1
 pkgdesc="Astrophotography/planetary image capture software"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://firecapture.de/"
 license=('custom:firecapture')
 depends=('libusb')
 source=()
 sha256sums=()
-source_x86_64=('https://github.com/riblee/ppa/raw/7f61fe51b8d603d81deeecf630a4a9a2a4f026a7/FireCapture_v2.7.14.deb')
-sha256sums_x86_64=('e0150c060dd32d5239ef7f47cebcbbec91dd0eef9d1db414cb22e1d97d7e4909')
-source_aarch64=('https://github.com/devDucks/astroarch-pkgs/raw/c7ff89bcbab5d6601bfcf74004076f2593072d7e/packages/fire_capture/firecapture_2.7.14a_aarch64.deb')
-sha256sums_aarch64=('576126579f4e747805c2a30068c595403da8634403c7c29af8b179e17c55fb87')
+source_x86_64=('https://github.com/riblee/ppa/raw/3444cffcf5ceb18d47766e5108c91f66723dcf30/FireCapture_v2.7.15.deb')
+sha256sums_x86_64=('5b555735f85cb85da36bd29fb1a1690eae45f555cdb909d5e724f6402619ebba')
+source_aarch64=('https://github.com/devDucks/astroarch-pkgs/raw/95942313cf1629f4bff2ef6557ffaaface638823/packages/fire_capture/firecapture_2.7.15_aarch64.deb')
+sha256sums_aarch64=('03f6030ec96578d0317166d7be178c34fc7d69f8b0391dcb3c8681ad3f3ad0c4')
 
 package() {
     tar -xf "${srcdir}/data.tar.xz" -C "$pkgdir/"

@@ -1,15 +1,15 @@
 pkgbase = firecapture
 	pkgdesc = Astrophotography/planetary image capture software
-	pkgver = 2.7.14
+	pkgver = 2.7.15
 	pkgrel = 1
 	url = https://firecapture.de/
 	arch = x86_64
 	arch = aarch64
 	license = custom:firecapture
 	depends = libusb
-	source_x86_64 = FireCapture_v2.7.14.deb::http://www.firecapture.de/download.php?file=FireCapture_v2.7.14.deb
-	sha256sums_x86_64 = e0150c060dd32d5239ef7f47cebcbbec91dd0eef9d1db414cb22e1d97d7e4909
-	source_aarch64 = firecapture_2.7.14a_aarch64.deb::http://www.firecapture.de/download.php?file=firecapture_2.7.14a_aarch64.deb
-	sha256sums_aarch64 = 576126579f4e747805c2a30068c595403da8634403c7c29af8b179e17c55fb87
+	source_x86_64 = FireCapture_v2.7.15.deb::http://www.firecapture.de/download.php?file=FireCapture_v2.7.15.deb
+	sha256sums_x86_64 = 5b555735f85cb85da36bd29fb1a1690eae45f555cdb909d5e724f6402619ebba
+	source_aarch64 = firecapture_2.7.15_aarch64.deb::http://www.firecapture.de/download.php?file=firecapture_2.7.15_aarch64.deb
+	sha256sums_aarch64 = 03f6030ec96578d0317166d7be178c34fc7d69f8b0391dcb3c8681ad3f3ad0c4
 
 pkgname = firecapture
