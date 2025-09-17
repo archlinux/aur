@@ -1,5 +1,5 @@
 # Maintainer: Eddi Sanchez <eddi at heyeddi dot com>
-pkgname=clickup-fixed
+pkgname=clickup-desktop-fixed
 pkgver=3.5.139
 pkgrel=1
 pkgdesc="Desktop app for clickup.com with GTK3 and icon fixes"

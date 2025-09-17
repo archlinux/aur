@@ -1,4 +1,4 @@
-pkgbase = clickup-fixed
+pkgbase = clickup-desktop-fixed
 	pkgdesc = Desktop app for clickup.com with GTK3 and icon fixes
 	pkgver = 3.5.139
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = clickup-fixed
 	sha256sums = 2a01642451610460a84a34e9c7cd6f79eb6b9ab8590b975bb440aff6b426a51e
 	sha256sums = SKIP
 
-pkgname = clickup-fixed
+pkgname = clickup-desktop-fixed
