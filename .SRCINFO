@@ -1,0 +1,20 @@
+pkgbase = python-aio-mqtt-mod-git
+	pkgdesc = Asynchronous MQTT client for 3.1.1 protocol version (devbis fork)
+	pkgver = r10.c9473b3
+	pkgrel = 1
+	url = https://github.com/devbis/aio-mqtt
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	provides = python-aio-mqtt-mod
+	conflicts = python-aio-mqtt-mod-git
+	conflicts = python-aio-mqtt-mod
+	conflicts = python-aio-mqtt
+	source = git+https://github.com/devbis/aio-mqtt.git
+	md5sums = SKIP
+
+pkgname = python-aio-mqtt-mod-git
