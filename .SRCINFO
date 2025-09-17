@@ -1,6 +1,6 @@
 pkgbase = caelestia-meta
 	pkgdesc = A metapackage containing all dependencies for the Caelestia dotfiles
-	pkgver = r149.8fd43cb
+	pkgver = r151.cadf1e2
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/caelestia
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = caelestia-meta
 	depends = trash-cli
 	depends = foot
 	depends = fish
+	depends = eza
 	depends = fastfetch
 	depends = starship
 	depends = btop
@@ -36,5 +37,7 @@ pkgbase = caelestia-meta
 	optdepends = uwsm: uwsm session
 	optdepends = gnome-keyring: keyring daemon
 	optdepends = polkit-gnome: gnome polkit client
+	optdepends = direnv: isolated dev envs
+	optdepends = zoxide: better cd
 
 pkgname = caelestia-meta
