@@ -2,14 +2,14 @@
 
 _fedoraver=43
 pkgname=f$_fedoraver-backgrounds
-pkgver=$_fedoraver.0.1
+pkgver=$_fedoraver.0.2
 pkgrel=1
 pkgdesc="Desktop backgrounds of the Fedora $_fedoraver default theme for GNOME, KDE, Mate and Xfce desktops"
 arch=('any')
 url="https://github.com/fedoradesign/backgrounds"
 license=('CC-BY-SA-4.0')
 source=("https://github.com/fedoradesign/backgrounds/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-b2sums=('b63cda04b9b9df25d1f686db3ba9e83d850e0e642cd79974ba3f7b3f5da55ad5c6c4a8d2c7c45e59db1a06e65f9640e2091856e13eb12d7b429382b0db746f63')
+b2sums=('18518a0f73563a33a87fd20572365945d1fb697c36af85515c2d5ca811d8912936fb20184274bed5fbe57f1a720018323bd11a2d28d56e9968e4bafcccfd513e')
 
 build() {
     cd $pkgname
