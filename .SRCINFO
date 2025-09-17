@@ -1,0 +1,25 @@
+pkgbase = artemis-lang
+	pkgdesc = TypeScript-Powered Scripting Language
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/chaqchase/artemis
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = artemis-lang
+	replaces = nodejs-artemis-lang
+	noextract = artemis-lang-0.3.3.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = artemis-lang-0.3.3.tgz::https://registry.npmjs.org/@artemis-lang/cli/-/cli-0.3.3.tgz
+	source = README-0.3.3.md::https://raw.githubusercontent.com/chaqchase/artemis/@artemis-lang/cli@0.3.3/README.md
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/chaqchase/artemis/@artemis-lang/cli@0.3.3/LICENSE
+	b2sums = 2bcf75ba79f7fb97d937a55b734519125409ea65238667c0c240d1a7c6b3f87f894b2506f4e3dca25eaa63dd113be7d1d4414447e1b30f2102d6604196c0a1b6
+	b2sums = 4e70d2d4421dfa3a9ab7cdc07199e26c605d2d80b138c5674497708c5a780b3727a14f3ae38eecf419f9dc5f2b35626da92746778f0614da1727a0dd4331e298
+	b2sums = 26d0c38dc2a158ab297c8b83b12d6b6cf95b889fb6467b970fb22dd7add0bbe67a59d5dd5b4cdc92e328437d524c720d8dcc1ec888f4d9bd2d7020d4e69b90a4
+
+pkgname = artemis-lang
