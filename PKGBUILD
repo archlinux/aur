@@ -2,19 +2,19 @@
 
 pkgname=btrfs-snapshots
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
-url="https://git.sr.ht/~jmcantrell/$pkgname"
+url="https://github.com/jmcantrell/$pkgname"
 license=('MIT')
 depends=('btrfs-progs')
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('492b60e74ff54d699f82886d53df61562e65c16ffaf210d49c44727c7d1ec602')
+sha256sums=('2fa012ed34f118932468d9da31f3a46e87d9c5f47efc46adfbe964e3f574a6f7')
 
 check() {
-    cd "$srcdir/$pkgname-refs/tags/v$pkgver"
+    cd "$srcdir/$pkgname-$pkgver" || return
     ./scripts/test
 }
 
@@ -28,11 +28,11 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname-refs/tags/v$pkgver"
+    cd "$srcdir/$pkgname-$pkgver" || return
     ./scripts/build
 }
 
 package() {
-    cd "$srcdir/$pkgname-refs/tags/v$pkgver"
+    cd "$srcdir/$pkgname-$pkgver" || return
     DEST_DIR=$pkgdir PREFIX=/usr ./scripts/install
 }
