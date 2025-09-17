@@ -54,3 +54,8 @@ post_upgrade() {
 post_remove() {
   post_install "$1"
 }
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/^v//'
+}
