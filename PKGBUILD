@@ -4,7 +4,7 @@
 # https://wiki.archlinux.org/title/User:SergeyK/AppImage_package_guidelines - Very helpful
 
 pkgname=vrchat-photo-manager
-pkgver=0.2.6-hot1
+pkgver="0.2.6.1"
 pkgrel=1
 pkgdesc="A photo manager for VRChat"
 arch=('x86_64')
@@ -13,9 +13,10 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 
-_appimage="vrcpm-${pkgver}.AppImage"
+_appver="0.2.6-hot1"
+_appimage="vrcpm-${_appver}.AppImage"
 
-source_x86_64=("${url}/releases/download/${pkgver}/${_appimage}")
+source_x86_64=("${url}/releases/download/${_appver}/${_appimage}")
 b2sums_x86_64=("574dcc5c71d38396b51eaacb5cf3523d15fe2c7d0cc8b7736e67907734733bbbe24058d2249827b4ec5a5871a6d8866a03407873f44c14c34ec997c82fff29ae")
 
 prepare() {
