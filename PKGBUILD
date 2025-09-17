@@ -4,13 +4,13 @@ _basename="zls"
 _pkgname="${_basename}-master"
 pkgname="${_pkgname}-bin"
 pkgver=0.16.0_dev.3+1840a4b8
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'
   'armv7h'
   'i686'
-  'powerpc64le'
+  # 'powerpc64le'
   'riscv64'
   'x86_64'
 )
@@ -26,7 +26,7 @@ makedepends=(
 )
 
 if   [ "${CARCH}" = 'aarch64'     ]; then _arch=aarch64;
-elif [ "${CARCH}" = 'armv7h'      ]; then _arch=armv7a;
+elif [ "${CARCH}" = 'armv7h'      ]; then _arch=arm;
 elif [ "${CARCH}" = 'i686'        ]; then _arch=x86;
 elif [ "${CARCH}" = 'powerpc64le' ]; then _arch=powerpc64le;
 elif [ "${CARCH}" = 'riscv64'     ]; then _arch=riscv64;
@@ -35,7 +35,7 @@ else _arch=DUMMY;
 fi
 
 _zig_version="$(zig version | tr -d '\n' | jq -sRr @uri)"
-_json_index="$(curl -s https://releases.zigtools.org/v1/zls/select-version?zig_version=${_zig_version}\&compatibility=only-runtime)"
+_json_index="$(curl -s "https://releases.zigtools.org/v1/zls/select-version?zig_version=${_zig_version}&compatibility=only-runtime")"
 _artifact_tarball="$(jq -r ".\"${_arch}-linux\".\"tarball\"" <<< "${_json_index}")"
 _artifact_shasum="$(jq -r ".\"${_arch}-linux\".\"shasum\"" <<< "${_json_index}")"
 _artifact_name="$(basename "${_artifact_tarball}")"
