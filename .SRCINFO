@@ -1,5 +1,5 @@
 pkgbase = cargo-pkgbuild-git
-	pkgdesc = ArchLinux PKGBUILD generator from Cargo.toml manifest
+	pkgdesc = PKGBUILD generator from Cargo.toml manifest
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/kstep/cargo-pkgbuild
