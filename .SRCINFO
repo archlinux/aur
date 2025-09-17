@@ -1,6 +1,6 @@
 pkgbase = hydownloader
 	pkgdesc = Alternative download system for Hydrus
-	pkgver = 0.63.0
+	pkgver = 0.64.0
 	pkgrel = 1
 	url = https://gitgud.io/thatfuckingbird/hydownloader
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = hydownloader
 	optdepends = hydrus: Danbooru-like image tagging and searching system for the desktop
 	provides = hydownloader
 	conflicts = hydownloader-git
-	source = git+https://gitgud.io/thatfuckingbird/hydownloader.git#commit=7be4aad1a13953c64377b2e841c51453eb6905de
-	sha512sums = fb176b7fbe4c5c0cb23be3bb972ec838f880c09c5aa60e6c00f16cd84316cf0caa18dd7640bac3f8ed83f5b92add78a92f8dc1eb5f8dc97aa3089d771eeba322
+	source = git+https://gitgud.io/thatfuckingbird/hydownloader.git#commit=28f54d184c9e7a3b90c3311c4e3cce240f78508e
+	sha512sums = 3fd0d432860c7d398743f625b75da6cb7e279f15894c5f0b1d6fc09551db3d3c45f2e73afdc233a5ada5d57d4eff7e5334832d542f332d7e75a3e7f941a66328
 
 pkgname = hydownloader
