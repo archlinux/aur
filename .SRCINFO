@@ -11,9 +11,9 @@ pkgbase = ddev-bin
 	provides = ddev
 	arch = aarch64
 	source_aarch64 = https://github.com/ddev/ddev/releases/download/v1.24.8/ddev_linux-arm64.v1.24.8.tar.gz
-	sha256sums_aarch64 = ad4e08329b5bba6f1a0aad2fac818335966493b483203068e86da2696d30f7e8
+	sha256sums_aarch64 = 69b724e5594e1148336e9855d0fb0f31c7319e1a52fc573f46acaec3bc59d809
 	arch = x86_64
 	source_x86_64 = https://github.com/ddev/ddev/releases/download/v1.24.8/ddev_linux-amd64.v1.24.8.tar.gz
-	sha256sums_x86_64 = c81b8d02728811347633f680d225dfe7dedc3427a104f559d1ddb9dd7e9c7d56
+	sha256sums_x86_64 = fd4b025ccb47bc9d81fe1b3416dbe02008ea3271177dd2d55c261e646cf3c49b
 	
 pkgname = ddev-bin
