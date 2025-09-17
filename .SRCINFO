@@ -1,7 +1,7 @@
 pkgbase = zoom-native
 	pkgdesc = Replace Zoom Workspace's libs by system copies
-	pkgver = 6.5.11.4015
-	pkgrel = 3
+	pkgver = 6.6.0
+	pkgrel = 1
 	url = https://zoom.us/
 	arch = any
 	optdepends = qt5-webengine: SSO login
@@ -14,12 +14,11 @@ pkgbase = zoom-native
 	optdepends = ffmpeg
 	optdepends = chromium
 	optdepends = vulkan-icd-loader
-	replaces = zoom-system-qt
 	options = emptydirs
 	source = zoom-native.hook
 	source = zoom-native.sh
 	sha256sums = 9f48ca19071e4bf370781f7b339247e291c575511589f7648c29b31ae38f68b4
-	sha256sums = e7ff3aee3f39d1d0061d0e26551bfa58b6ce393b9f0b3f4cb5c54b6b31734c0c
+	sha256sums = 1e7f13e3b9c2922cad4c1932a2407a42e5ccc61239e11d38b83c6267c0e62fcd
 
 pkgname = zoom-native
 	depends = zoom

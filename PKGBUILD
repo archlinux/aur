@@ -1,12 +1,11 @@
 
 
 pkgname=zoom-native
-pkgver=6.5.11.4015
-pkgrel=3
+pkgver=6.6.0
+pkgrel=1
 pkgdesc="Replace Zoom Workspace's libs by system copies"
 arch=(any)
 url=https://zoom.us/
-replaces=(zoom-system-qt)
 optdepends=(
   'qt5-webengine: SSO login'
   'xdg-desktop-portal-impl: Screen sharing on Wayland'
@@ -16,7 +15,7 @@ optdepends=(
 options=(emptydirs) # for CEF
 source=(${pkgname}.hook ${pkgname}.sh)
 sha256sums=('9f48ca19071e4bf370781f7b339247e291c575511589f7648c29b31ae38f68b4'
-            'e7ff3aee3f39d1d0061d0e26551bfa58b6ce393b9f0b3f4cb5c54b6b31734c0c')
+            '1e7f13e3b9c2922cad4c1932a2407a42e5ccc61239e11d38b83c6267c0e62fcd')
 package(){
   depends=(zoom binutils patchelf fd
     ocl-icd mpg123 libxtst sqlite
