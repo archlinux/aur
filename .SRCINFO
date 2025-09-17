@@ -1,15 +1,15 @@
 pkgbase = plakar_cleaner-git
 	pkgdesc = Tool for retain plakar backup by retention policies
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://spn109.fr/pc
 	arch = any
 	license = Apache-2
 	makedepends = git
-	depends = plakar
+	depends = plakar>=1.0.4
 	provides = plakar_cleaner
 	conflicts = plakar_cleaner
-	source = plakar_cleaner-git::git+https://codeberg.org/spn109/plakar_cleaner.git#tag=v0.2.5
+	source = plakar_cleaner-git::git+https://codeberg.org/spn109/plakar_cleaner.git#tag=v0.2.6
 	md5sums = SKIP
 
 pkgname = plakar_cleaner-git
