@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Atlas
+Exec=/usr/bin/UABEANext
+Terminal=false
+Type=Application
+# Icon=todo
+StartupWMClass=uabea
+Comment=A research and modding tool for SerializedFiles and Asset Bundles
