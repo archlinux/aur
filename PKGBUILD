@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-luwen-git
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.7.13
+pkgrel=1
 pkgdesc="Python package for the tenstorrent system interface library"
 arch=('x86_64')
 url='https://github.com/tenstorrent/luwen'
