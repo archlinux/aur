@@ -1,4 +1,4 @@
-pkgbase = aura-vz-eevdf-lto-madvise
+pkgbase = aura-core-eevdf-lto-madvise
 	pkgdesc = Linux EEVDF scheduler + Cachy Sauce Kernel by CachyOS with other patches and improvements
 	pkgver = 6.16.7
 	pkgrel = 1
@@ -35,7 +35,7 @@ pkgbase = aura-vz-eevdf-lto-madvise
 	b2sums = 776cd6368077a6504e781b2a5db3c9b82b1b0fa496bef9f24ba417dfea0d192bf9664f0dcce9822050f6bf064f991ea3883683536f74a808c3b76d4bfa364028
 	b2sums = c7294a689f70b2a44b0c4e9f00c61dbd59dd7063ecbe18655c4e7f12e21ed7c5bb4f5169f5aa8623b1c59de7b2667facb024913ecb9f4c650dabce4e8a7e5452
 
-pkgname = aura-vz-eevdf-lto-madvise
+pkgname = aura-core-eevdf-lto-madvise
 	pkgdesc = The Linux EEVDF scheduler + Cachy Sauce Kernel by CachyOS with other patches and improvements kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -52,7 +52,7 @@ pkgname = aura-vz-eevdf-lto-madvise
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
 
-pkgname = aura-vz-eevdf-lto-madvise-headers
+pkgname = aura-core-eevdf-lto-madvise-headers
 	pkgdesc = Headers and scripts for building modules for the Linux EEVDF scheduler + Cachy Sauce Kernel by CachyOS with other patches and improvements kernel
 	depends = pahole
-	depends = aura-vz-eevdf-lto-madvise
+	depends = aura-core-eevdf-lto-madvise

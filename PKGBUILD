@@ -41,7 +41,7 @@
 # the ARCH defaults. Useful when the package gets updated and you already went
 # through the trouble of customizing your config options.  NOT recommended when
 # a new kernel is released, but again, convenient for package bumps.
-: "${_use_current:=yes}"
+: "${_use_current:=no}"
 
 ### Enable KBUILD_CFLAGS -O3
 : "${_cc_harder:=yes}"
@@ -125,15 +125,7 @@ _is_lto_kernel() {
     return $?
 }
 
-if _is_lto_kernel && [ "$_use_lto_suffix" = "yes"  ]; then
-    _pkgsuffix="vz-${_cpusched}-lto-madvise"
-elif ! _is_lto_kernel && [ "$_use_gcc_suffix" = "yes" ]; then
-    _pkgsuffix="vz-${_cpusched}-gcc-madvise"
-else
-    _pkgsuffix="vz-${_cpusched}-madvise"
-fi
-
-pkgbase="aura-$_pkgsuffix"
+pkgbase="aura-core-eevdf-lto-madvise"
 _major=6.16
 _minor=7
 #_minorc=$((_minor+1))

@@ -1,0 +1,8 @@
+# Ignore everything by default
+*
+
+# Keep only the files required for AUR
+!PKGBUILD
+!.SRCINFO
+!config
+!.gitignore
