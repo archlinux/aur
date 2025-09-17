@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 638
+	pkgver = 639
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -46,7 +46,7 @@ pkgbase = hydrus
 	optdepends = swftools: to display SWF thumbnails
 	conflicts = hydrus-docs-dummy
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=fea23f482b5b0fbee6ed04b7ce9ef48c0e8a9134
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=f5058a09eccc1f58f9a047a9b36352c44cc8345d
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server
