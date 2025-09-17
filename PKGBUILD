@@ -3,7 +3,7 @@
 _basename="zls"
 pkgver=0.10.0
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 
 _pkgname="${_basename}${_pkgver}"
 pkgname="${_pkgname}-bin"
@@ -45,7 +45,7 @@ sha256sums_x86_64=('9a6cda8a9dc4b536f76439285541ad197eb30f67b0df47746411043c4809
                    'SKIP')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _arch=aarch64;
-elif [ "${CARCH}" = 'i686'    ]; then _arch=i386;
+elif [ "${CARCH}" = 'i686'    ]; then _arch=x86; # i386
 elif [ "${CARCH}" = 'riscv64' ]; then _arch=riscv64;
 elif [ "${CARCH}" = 'x86_64'  ]; then _arch=x86_64;
 else _arch=DUMMY;
