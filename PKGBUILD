@@ -68,7 +68,7 @@ else _arch=DUMMY;
 fi
 
 verify() {
-  # https://zigtools.org/zls/install/?zig_version=0.14.0&compatibility=only-runtime
+  # https://zigtools.org/zls/releases/0.14.0/
   local ziglang_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
 
   minisign -V \
