@@ -2,7 +2,7 @@
 
 pkgname='python-citeproc-py'
 _module='citeproc-py'
-pkgver='0.8.2'
+pkgver='0.9.0'
 pkgrel=1
 pkgdesc="Citations and bibliography formatter"
 url="https://github.com/citeproc-py/citeproc-py"
@@ -18,7 +18,7 @@ makedepends=(
 license=('BSD-2-Clause-Views')
 arch=('any')
 source=("$pkgname::git+${url}.git#tag=v$pkgver")
-sha256sums=('c4ace67054888cdaecaf282c6cf05ea6784b6f02c400c34d312cf7b609a5dd9a'
+sha256sums=('5a5bc0b652c8a3f51e7078b022778be11bd5b78993629133d33d5dc28c69a1b6'
             'SKIP'
             'SKIP')
 
