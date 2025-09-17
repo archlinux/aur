@@ -1,6 +1,6 @@
 pkgbase = ruqola-git
 	pkgdesc = Rocket.Chat client for the KDE desktop
-	pkgver = 2.5.1.r887.g6d2e760
+	pkgver = 2.5.1.r956.ga3bbc4e
 	pkgrel = 1
 	url = https://invent.kde.org/network/ruqola/
 	arch = x86_64
