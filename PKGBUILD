@@ -2,7 +2,7 @@
 
 pkgname=calibre-bin
 pkgver=8.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop version Calibre"
 arch=(x86_64)
 url="https://github.com/kovidgoyal/calibre"
@@ -12,6 +12,7 @@ makedepends=()
 optdepends=()
 conflicts=(calibre calibre-git)
 provides=()
+options=('!strip')
 
 # Sources
 #   Since there doesn't seem to be a simple way to generate desktop
