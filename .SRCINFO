@@ -1,0 +1,15 @@
+pkgbase = clisweeper
+	pkgdesc = CLI client for minesweeper multiplayer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/WithoutAName25/clisweeper
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = clisweeper-1.0.0.tar.gz::https://github.com/WithoutAName25/clisweeper/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 2c37fb9a6279b2d8433d55175a3008dc8942e3b3da907ff63da60acdafb99307
+
+pkgname = clisweeper
