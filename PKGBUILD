@@ -7,7 +7,7 @@ pkgname=('perlnavigator'
 pkgbase=perlnavigator
 _pkgname=PerlNavigator
 pkgver=0.8.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl language server that includes syntax checking, perl critic, and code navigation"
 arch=('any')
 url="https://github.com/bscan/PerlNavigator"
@@ -58,6 +58,8 @@ prepare() {
 
 build() {
     cd "${_pkgname}-${pkgver}"
+    npm run ci-all
+    cd server
     npx tsc
 }
 
@@ -70,9 +72,13 @@ package_perlnavigator() {
     options=("!strip")
 
     cd "${_pkgname}-${pkgver}"
+    install -d "${pkgdir}/usr/lib/node_modules"
+    cp -a server "${pkgdir}/usr/lib/node_modules/perlnavigator-server"
 
+    install -d "${pkgdir}/usr/bin"
+    ln -s ../lib/node_modules/perlnavigator-server/bin/perlnavigator \
+        "${pkgdir}/usr/bin/perlnavigator"
 
-    install -Dm755 server/bin/perlnavigator "${pkgdir}/usr/bin/perlnavigator"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
