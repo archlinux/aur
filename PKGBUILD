@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.17.1
-_subver=6
+_subver=7
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 epoch=5
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('529fb72fc1ecce950e85bda2f59438180dd096c85d3169852e1d02e1ec522b74')
-sha256sums_x86_64=('a8000c8f0d03f30733da6bbb39fb888fbcfad3cf819c0c41f737cdc42c8c22b8')
+sha256sums_aarch64=('8ad43646bef0170a231e69e4dd36793195455a763b3d844e9c85398fe681f9b8')
+sha256sums_x86_64=('80790c5752ed8621a9ae97892d57b550322fed598c896d359ec64bff62dee41f')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
