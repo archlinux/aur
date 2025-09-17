@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FSMExpress
+Exec=/usr/bin/FSMExpress
+Terminal=false
+Type=Application
+# Icon=todo
+StartupWMClass=fsmexpress
+Comment=PlayMaker FSM viewer

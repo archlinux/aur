@@ -1,0 +1,21 @@
+pkgbase = fsmexpress-git
+	pkgdesc = PlayMaker FSM Viewer
+	pkgver = 0.0.0.r39.891fed1
+	pkgrel = 1
+	url = https://github.com/nesrak1/FSMExpress
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = dotnet-runtime
+	source = fsmexpress-git::git+https://github.com/nesrak1/FSMExpress#branch=skong
+	source = fsmexpress.desktop
+	sha1sums = SKIP
+	sha1sums = 0c34fa087ad9698f351ffac5cc9df5675a07ba5d
+
+pkgname = fsmexpress-git
