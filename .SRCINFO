@@ -1,0 +1,23 @@
+pkgbase = spark-store-console-bin
+	pkgdesc = Spark Store, A community powered app store, based on DTK. (Console version)
+	pkgver = 4.8.1
+	pkgrel = 1
+	url = https://www.spark-app.store/
+	arch = x86_64
+	license = GPL-3.0
+	depends = wget
+	depends = aria2
+	depends = zenity
+	depends = polkit
+	depends = libnotify
+	depends = python
+	depends = desktop-file-utils
+	depends = curl
+	depends = sudo
+	depends = lsb-release
+	depends = gnupg
+	provides = spark-store-console
+	source_x86_64 = spark-store-console_4.8.1-console_all.deb::https://gitee.com/spark-store-project/spark-store/releases/download/4.8.1/spark-store-console_4.8.1-console_all.deb
+	sha256sums_x86_64 = d034d46ef246d69c4fa950a54a4e8a91857816edf267bd2817b0ff52911d2360
+
+pkgname = spark-store-console-bin
