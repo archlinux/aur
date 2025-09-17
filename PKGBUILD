@@ -19,8 +19,7 @@ sha256sums=('3d8653792da483242644132771d5b9403b471cafdf5fe26b605c05fe0ba3fccc'
 
 build() {
     cd "LightningView-$pkgver"
-    # --locked ensures we use the versions from Cargo.lock for a reproducible build
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
