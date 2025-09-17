@@ -1,6 +1,6 @@
 pkgbase = plakar-git
 	pkgdesc = Backup for lazy^W smart engineers.
-	pkgver = 1.0.0.beta.6.r1068.g59a7fb5b
+	pkgver = 1.0.3.r97.g700a7872
 	pkgrel = 1
 	url = https://plakar.io/
 	arch = x86_64
