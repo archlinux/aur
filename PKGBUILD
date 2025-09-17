@@ -4,15 +4,15 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 ## options
-: ${_plugin_aja:=true}
+: ${_plugin_aja:=false}
 
 # build-aux/modules/99-cef.json
 : ${_cef_branch:=6533}
-: ${_cef_ver=_v5}
+: ${_cef_ver=_v6}
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.1.2.r69.g86f98be
+pkgver=31.1.2.r183.g1e28153
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
@@ -24,6 +24,7 @@ depends=(
   'ffmpeg'
   'jack'
   'jansson'
+  'libdatachannel'
   'libpipewire'
   'librist'
   'libvpl'
@@ -41,7 +42,6 @@ makedepends=(
   'extra-cmake-modules'
   'ffnvcodec-headers'
   'git'
-  'libdatachannel'
   'libfdk-aac'
   'luajit'
   'ninja'
@@ -71,7 +71,7 @@ optdepends=(
 )
 
 if [ "${_plugin_aja::1}" == "t" ]; then
-  makedepends+=('libajantv2') # AUR
+  depends+=('libajantv2') # AUR
   _plugin_aja='ON'
 else
   _plugin_aja='OFF'
