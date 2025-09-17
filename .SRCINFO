@@ -1,0 +1,24 @@
+pkgbase = aerofetch
+	pkgdesc = Universal system information tool with multi-distro support and advanced monitoring
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/driizzyy/AeroFetch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	optdepends = lsb-release: for detailed OS information
+	optdepends = xorg-xrandr: for resolution detection
+	optdepends = util-linux: for additional system info
+	optdepends = pciutils: for GPU detection
+	optdepends = wmctrl: for window manager info
+	optdepends = flatpak: for flatpak package count
+	optdepends = snapd: for snap package count
+	optdepends = nix: for nix package count
+	provides = aerofetch
+	conflicts = aerofetch-git
+	source = aerofetch-2.0.tar.gz::https://github.com/driizzyy/AeroFetch/archive/v2.0.tar.gz
+	sha256sums = b4d84b376fe24e9d2c89eeb108abfa888cd1c795d9615ea2e1567b77b838ad92
+
+pkgname = aerofetch
