@@ -1,5 +1,5 @@
 pkgname=mitogen
-pkgver=0.3.26
+pkgver=0.3.28
 pkgrel=1
 pkgdesc="Distributed self-replicating programs in Python"
 license=("BSD-3-Clause")
@@ -21,7 +21,7 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha1sums=('b88f51abf010e53ec8d0ea01ea03ea541ec1d318')
-sha256sums=('3de2269236933664e6ec5099e5f7c2e5ce664466f2012eabf533fd735862121d')
-sha384sums=('a6a73141fb674b132b15258728a13ea522e597b8c3d423966aa92bdaa54c0b86483e888bb62cf3f33bfd929b7b96d442')
-sha512sums=('0ee3b73eaf755d8299ddf00d39d58fc47c94b3f2a6b571098639bcf3444a930933f4d09c3310af72aec452427812a27b17a07993099d8775ac4c4f2b7ef92cda')
+sha1sums=('053cec8a8dc4c3446091bd7529bb94473b76e893')
+sha256sums=('1c56f72b6eadd8e8227fb5df027d9e0d46abe5a39891e74b23769564eb7acc46')
+sha384sums=('563546faeaf3cac1eb393d36c38f90e7ba989a8d92f6b86ce658ad32a1bf24c52b4118c2678a78f93b2394d092815f66')
+sha512sums=('13e2d3d6c6e4305f625e76e3415d7d3e3e9714028acd06a3965f27003c569a0e8907d34cdc53b79fc166ad587dc220f930568bdf2b3017c07d6ac4d1edf8a02a')
