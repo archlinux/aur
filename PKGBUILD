@@ -3,13 +3,13 @@
 _pkgname=flow
 pkgname=river-flow
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small utility that brings some extra commands to control river'
 arch=('x86_64')
 url='https://github.com/stefur/flow'
 license=('MIT')
 makedepends=('cargo')
-source=("https://github.com/stefur/flow/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/stefur/flow/archive/v${pkgver}.tar.gz")
 sha256sums=('7c4060387d2e4119bebf493ad2a40a49a08b45d5f09f821ad3c5f5cac3f248a4')
 
 prepare() {
