@@ -1,0 +1,14 @@
+pkgbase = upstash-redis-local-bin
+	pkgdesc = A local webserver for testing and development using @upstash/redis
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/DarthBenro008/upstash-redis-local
+	arch = x86_64
+	license = MIT
+	provides = upstash-redis-local
+	conflicts = upstash-redis-local
+	source = upstash-redis-local-bin-1.0.tar.gz::https://github.com/DarthBenro008/upstash-redis-local/releases/download/1.0/upstash-redis-local_1.0_Linux_x86_64.tar.gz
+	sha256sums = 0063812fa26e70fb420b8d41235b4e996fa4de53244928c48f7dbfa465173ce8
+
+pkgname = upstash-redis-local-bin
