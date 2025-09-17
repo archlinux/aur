@@ -1,0 +1,1 @@
+../../lext-theme-lubuntu-arc/PKGBUILD
