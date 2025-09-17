@@ -29,6 +29,6 @@ options=("!strip")
 package() {
   install -Dm755 "${_pkgname}_linux_amd64" "${pkgdir}/usr/bin/gopher2600"
   install -Dm644 'gopher2600.desktop' -t "${pkgdir}/usr/share/applications"
-  install -Dm644 'icon256.png' "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 'icon256.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
 
