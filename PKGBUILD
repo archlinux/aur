@@ -1,11 +1,11 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.8.3.r0.2b0d420
-pkgrel=1
+pkgver=0.10.2.r0.41df0dd
+pkgrel=2
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
-url="https://git.sr.ht/~jmcantrell/${pkgname%-git}"
+url="https://github.com/jmcantrell/${pkgname%-git}"
 license=('MIT')
 depends=('btrfs-progs')
 makedepends=('git' 'scdoc')
@@ -16,17 +16,17 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 check() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     ./scripts/test
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     local file
     while read -r file; do
         sed -i "1s:#\!.*/env \(.*\)$:#\!/usr/bin/\1:" "$file" # use explicit shebang
@@ -36,11 +36,11 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     ./scripts/build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     DEST_DIR=$pkgdir PREFIX=/usr ./scripts/install
 }
