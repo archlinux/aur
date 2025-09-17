@@ -1,10 +1,10 @@
-# Maintainer: AndyHazz <andyhazz at protonmail dot com>
+# Maintainer: AndyHazz <andyhazz at proton dot me>
 # Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-unstable-bin"
 pkgver=2.3.1_beta
 _pkgver=2.3.1-beta
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (versions including beta, release candidates and stable versions)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -14,6 +14,7 @@ provides=("orca-slicer")
 conflicts=("orca-slicer")
 source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${_pkgver}/OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage")
 sha512sums=('24850276fb22af60c5d5fd7768530f6d8b6374ef4f83cb17dd00c4105d4fca1b5c2d6b4944707838ae52667dfb1078bac955e1a811e6da69dcf865255eff37aa')
+options=('!strip')
 
 prepare() {
 	chmod +x OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage
