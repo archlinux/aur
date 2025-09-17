@@ -21,5 +21,5 @@ package() {
 
     install -d "$pkgdir/usr/share/lxqt/themes"
 
-    cp -r "$srcdir"/usr "$pkgdir"
+    cp -r "$srcdir" "$pkgdir"
 }
