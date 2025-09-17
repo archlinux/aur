@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.7.0.0.r21.c82daddb
+pkgver=1.7.2.r29.4b22fde1
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,9 +17,8 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
-  'python-nspektr'
   'python-jaraco.text'
-  'qt5-tools'
+  'qt6-tools'
 )
 depends=(
   'hicolor-icon-theme'
@@ -28,7 +27,7 @@ depends=(
   'python-grpcio'
   'python-protobuf'
   'python-slugify'
-  'python-pyqt5'
+  'python-pyqt6'
   'python-pyinotify'
   'python-notify2'
 )
@@ -97,6 +96,8 @@ prepare() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   sed -i "s|/usr/lib/python3/dist-packages/data/|${site_packages}/pyasn/data/|g" ui/opensnitch/utils/__init__.py
   sed -i "s|/usr/lib/python3/dist-packages/|${site_packages}/|g" ui/bin/opensnitch-ui
+
+  sed -i.orig 's/grpc_tools.protoc/grpc_tools.protoc --experimental_editions/' "${srcdir}/opensnitch/proto/Makefile";
 }
 
 build() {
