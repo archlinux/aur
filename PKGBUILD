@@ -4,7 +4,7 @@
 _pkgname="material-kwin-decoration"
 pkgname="${_pkgname}-git"
 pkgver=r215.38718de
-pkgrel=3
+pkgrel=3.2
 pkgdesc="Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support"
 url="https://github.com/guiodic/material-decoration"
 license=('GPL-2.0-or-later')
@@ -14,6 +14,7 @@ depends=(
   kcmutils
   'kdecoration>=6.4.0'
   'kwin-x11>=6.4.0'
+  'plasma-x11-session'
 )
 makedepends=(
   cmake

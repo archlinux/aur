@@ -1,7 +1,7 @@
 pkgbase = material-kwin-decoration-git
 	pkgdesc = Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support
 	pkgver = r215.38718de
-	pkgrel = 3
+	pkgrel = 3.2
 	url = https://github.com/guiodic/material-decoration
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -13,6 +13,7 @@ pkgbase = material-kwin-decoration-git
 	depends = kcmutils
 	depends = kdecoration>=6.4.0
 	depends = kwin-x11>=6.4.0
+	depends = plasma-x11-session
 	optdepends = appmenu-gtk-module: gtk app support
 	provides = material-kwin-decoration
 	conflicts = material-kwin-decoration
