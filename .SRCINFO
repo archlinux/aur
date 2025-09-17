@@ -1,7 +1,7 @@
 pkgbase = bitwuzla
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitwuzla.github.io
 	arch = x86_64
 	license = MIT
@@ -34,9 +34,11 @@ pkgbase = bitwuzla
 	provides = libbitwuzla.so
 	options = !lto
 	source = bitwuzla-0.8.2.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.8.2.tar.gz
+	source = 0000-aiger-dynamic-build.patch::https://github.com/bitwuzla/bitwuzla/commit/929af621f6fe65c78236df70b8eb9343a5914d9f.patch
 	source = 0001-Use-installed-libraries.patch
 	source = 0002-Skip-Test-based-on-timeout.patch
 	b2sums = 5bc5177930e073ae3d9dcbf5504f25f4af07f67fc03292a85ecc6e709f8e035086307f1aa54be4d2fd17e030049165a4b787e9b2f4270d06c27c27dfe34c1609
+	b2sums = c9e43030ddb20ba1dce8491644c4589091a231f4f36c3c2ee17b5eaa1f9cbbabb06af9668bc726e6c9f1b799fbc89e76b332204badd75410ec777a9fd500df91
 	b2sums = 09f384aaa2ebbec1e70a5122bae2f2019b71a41f691312048dc59dd7c253c2eb07e669ab71decc492fdf58b933b55b0036da7bb54eb1afe0774ee28aca63f199
 	b2sums = af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda
 

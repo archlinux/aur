@@ -3,13 +3,14 @@
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
 license=('MIT')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/${pkgver}.tar.gz"
+    "0000-aiger-dynamic-build.patch::https://github.com/bitwuzla/bitwuzla/commit/929af621f6fe65c78236df70b8eb9343a5914d9f.patch"
     "0001-Use-installed-libraries.patch"
     "0002-Skip-Test-based-on-timeout.patch"
 )
@@ -49,6 +50,7 @@ provides=(
     'libbitwuzla.so'
 )
 b2sums=('5bc5177930e073ae3d9dcbf5504f25f4af07f67fc03292a85ecc6e709f8e035086307f1aa54be4d2fd17e030049165a4b787e9b2f4270d06c27c27dfe34c1609'
+        'c9e43030ddb20ba1dce8491644c4589091a231f4f36c3c2ee17b5eaa1f9cbbabb06af9668bc726e6c9f1b799fbc89e76b332204badd75410ec777a9fd500df91'
         '09f384aaa2ebbec1e70a5122bae2f2019b71a41f691312048dc59dd7c253c2eb07e669ab71decc492fdf58b933b55b0036da7bb54eb1afe0774ee28aca63f199'
         'af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda')
 options=('!lto')
@@ -56,6 +58,7 @@ options=('!lto')
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
+    patch --forward --strip=1 --input=../0000-aiger-dynamic-build.patch
     patch --forward --strip=1 --input=../0001-Use-installed-libraries.patch
     patch --forward --strip=1 --input=../0002-Skip-Test-based-on-timeout.patch
 }
@@ -64,8 +67,8 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     # aiger does not provide a library to link against. bitwuzla uses only .c/.h
-    # files for compiling. Thus, there are no aiger run-time dependencies and
-    # aiger is kept as meson subproject.
+    # files during compilation. aiger is kept as meson subproject. Thus, there
+    # are no aiger run-time dependencies.
 
 
     ./configure.py \
