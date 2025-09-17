@@ -1,0 +1,25 @@
+pkgbase = zls0.9-bin
+	pkgdesc = A language server for Zig
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://zigtools.org/zls
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = minisign
+	depends = sh
+	depends = zig0.9
+	provides = zls0.9
+	conflicts = zls0.9
+	source = zls-versioned.sh
+	sha256sums = 36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7
+	source_i686 = https://builds.zigtools.org/zls-linux-x86-0.9.0.tar.xz
+	source_i686 = https://builds.zigtools.org/zls-linux-x86-0.9.0.tar.xz.minisig
+	sha256sums_i686 = 4596d0fcf236da331fa3afd9f282ac2492f22469f1b673465035b80850f4bd01
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://builds.zigtools.org/zls-linux-x86_64-0.9.0.tar.xz
+	source_x86_64 = https://builds.zigtools.org/zls-linux-x86_64-0.9.0.tar.xz.minisig
+	sha256sums_x86_64 = 0bb16e2e3a1c4dab22b1d6b25deeefd2212abcc2e88702a3f58705164703a7f8
+	sha256sums_x86_64 = SKIP
+
+pkgname = zls0.9-bin
