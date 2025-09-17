@@ -1,0 +1,15 @@
+pkgbase = notes-cli
+	pkgdesc = A fuzzy CLI note manager with fzf + bat + ripgrep
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/danieledema/zettli
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = fzf
+	depends = ripgrep
+	depends = bat
+	source = notes-cli::git+https://github.com/danieledema/zettli.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = notes-cli
