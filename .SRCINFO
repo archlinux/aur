@@ -1,6 +1,6 @@
 pkgbase = lux-cli-bin
 	pkgdesc = A luxurious package manager for Lua
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/nvim-neorocks/lux
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lux-cli-bin
 	provides = lx
 	conflicts = lux-cli-git
 	options = !lto
-	source = lx-0.17.0_x86_64.tar.gz::https://github.com/nvim-neorocks/lux/releases/download/v0.17.0/lx_0.17.0_x86_64.tar.gz
-	sha512sums = 55614e63b8868450ff6876fe2d4fa86673693beef011c31a2cb6a4b63cac7d459b08248b53a5d729c5251bffe6942f30288b479688e4b307c6a6ad86b34ed88c
+	source = lx-0.18.0_x86_64.tar.gz::https://github.com/nvim-neorocks/lux/releases/download/v0.18.0/lx_0.18.0_x86_64.tar.gz
+	sha512sums = 826909ad2a179103f26443e6010188472b0723485fb382f187398857e791946e71797862f234fb6292406ea99e6e047beb4d141f4834ecd22e4f848a0b227af9
 
 pkgname = lux-cli-bin
