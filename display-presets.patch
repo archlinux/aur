@@ -1,4 +1,4 @@
-From 37934e9a9f54ed8073b7320af2d4749fb828049f Mon Sep 17 00:00:00 2001
+From 924cdf31df01beab871596b9fc82282f2a17953a Mon Sep 17 00:00:00 2001
 From: Jerzy Kolosowski <jerzy@kolosowscy.pl>
 Date: Tue, 16 Sep 2025 19:52:41 +0200
 Subject: [PATCH] Add Display Presets feature to KScreen
@@ -44,7 +44,7 @@ Signed-off-by: Jerzy Kołosowski <jerzy@kolosowscy.pl>
  kcm/ui/main.qml                        |  19 +-
  kded/CMakeLists.txt                    |   1 +
  plasmoid/CMakeLists.txt                |  13 +
- plasmoid/PresetList.qml                | 232 +++++++++++
+ plasmoid/PresetList.qml                | 239 ++++++++++++
  plasmoid/PresetOutput.qml              | 179 +++++++++
  plasmoid/PresetView.qml                |  96 +++++
  plasmoid/kscreenapplet.cpp             | 237 ++++++++++++
@@ -60,7 +60,7 @@ Signed-off-by: Jerzy Kołosowski <jerzy@kolosowscy.pl>
  tests/presets/CMakeLists.txt           |  28 ++
  tests/presets/testpresets.cpp          | 507 +++++++++++++++++++++++++
  tests/presets/testsimple.cpp           | 121 ++++++
- 32 files changed, 3936 insertions(+), 7 deletions(-)
+ 32 files changed, 3943 insertions(+), 7 deletions(-)
  create mode 100644 common/presets.cpp
  create mode 100644 common/presets.h
  create mode 100644 kcm/preset_manager.cpp
@@ -2173,10 +2173,10 @@ index a428b184..a5bf2ca1 100644
                        KF6::Screen
 diff --git a/plasmoid/PresetList.qml b/plasmoid/PresetList.qml
 new file mode 100644
-index 00000000..62adfb10
+index 00000000..6cc35c29
 --- /dev/null
 +++ b/plasmoid/PresetList.qml
-@@ -0,0 +1,232 @@
+@@ -0,0 +1,239 @@
 +/*
 +    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
 +
@@ -2185,6 +2185,7 @@ index 00000000..62adfb10
 +
 +import QtQuick
 +import QtQuick.Layouts
++import QtQuick.Controls as QQC2
 +
 +import org.kde.kirigami as Kirigami
 +import org.kde.plasma.components as PlasmaComponents
@@ -2323,9 +2324,11 @@ index 00000000..62adfb10
 +            }
 +
 +            // Preview popup - moved outside the RowLayout to avoid positioning issues
-+            PlasmaComponents.Popup {
++            QQC2.Popup {
 +                id: previewPopup
-+                parent: presetItem
++                parent: QQC2.Overlay.overlay  // Use overlay for unrestricted positioning
++                clip: false  // Disable clipping to allow extension beyond bounds
++                modal: false  // Not modal so it doesn't block interaction
 +
 +                property bool hovered: false
 +
@@ -2360,14 +2363,16 @@ index 00000000..62adfb10
 +                    return Math.max(minPopupHeight, Math.min(maxPopupHeight, idealHeight));
 +                }
 +
-+                // Simple positioning: to the left of preview button with fixed margin
-+                x: previewButton.x - width - Kirigami.Units.largeSpacing
-+                y: previewButton.y + previewButton.height/2 - height/2
++                closePolicy: QQC2.Popup.NoAutoClose
 +
-+                closePolicy: PlasmaComponents.Popup.NoAutoClose
-+
-+                onOpened: {
++                onAboutToShow: {
 +                    hoverArea.forceActiveFocus()
++                    // Set initial position when popup opens
++                    if (previewButton && parent) {
++                        var globalPos = previewButton.mapToItem(parent, 0, 0);
++                        x = globalPos.x - width - Kirigami.Units.largeSpacing;
++                        y = globalPos.y - height/2;
++                    }
 +                }
 +
 +                background: Rectangle {
@@ -2375,6 +2380,7 @@ index 00000000..62adfb10
 +                    border.color: Kirigami.Theme.textColor
 +                    border.width: 1
 +                    radius: 4
++                    clip: false  // Also disable clipping on background
 +
 +                    MouseArea {
 +                        id: hoverArea
@@ -2397,6 +2403,7 @@ index 00000000..62adfb10
 +                    outputs: model.configuration ? model.configuration.outputs : []
 +                    presetAvailable: presetItem.available
 +                    kcm: null // We don't have KCM in plasmoid, but PresetView should handle null
++                    clip: false  // Disable clipping on content too
 +                }
 +            }
 +        }
