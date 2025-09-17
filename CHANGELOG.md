@@ -4,6 +4,27 @@
 
 [1]: https://pypi.org/project/google-cloud-storage/#history
 
+## [3.4.0](https://github.com/googleapis/python-storage/compare/v3.3.1...v3.4.0) (2025-09-15)
+
+
+### Features
+
+* **experimental:** Add async grpc client ([#1537](https://github.com/googleapis/python-storage/issues/1537)) ([ac57b8d](https://github.com/googleapis/python-storage/commit/ac57b8d819a49aef0ed0cb5bb630bf11012f43e3))
+* **experimental:** Add grpc client ([#1533](https://github.com/googleapis/python-storage/issues/1533)) ([5674587](https://github.com/googleapis/python-storage/commit/5674587f2aa347ec2787f2bc1e847eaa294bc1ca))
+
+
+### Bug Fixes
+
+* GAPIC generation failed with 'Directory not empty' ([#1542](https://github.com/googleapis/python-storage/issues/1542)) ([c80d820](https://github.com/googleapis/python-storage/commit/c80d8207a8661b84c56cd66bb34de7b5704675b8))
+
+## [3.3.1](https://github.com/googleapis/python-storage/compare/v3.3.0...v3.3.1) (2025-08-25)
+
+
+### Bug Fixes
+
+* Provide option to user to set entire object checksum at "initiate a resumable upload session" and send the same ([#1525](https://github.com/googleapis/python-storage/issues/1525)) ([a8109e0](https://github.com/googleapis/python-storage/commit/a8109e0d02c62542f1bea20373b53864fb776caa))
+* Send part's checksum for XML MPU part upload ([#1529](https://github.com/googleapis/python-storage/issues/1529)) ([2ad77c7](https://github.com/googleapis/python-storage/commit/2ad77c7d949e84c515c051a0fd4b37b822788dd8))
+
 ## [3.3.0](https://github.com/googleapis/python-storage/compare/v3.2.0...v3.3.0) (2025-08-05)
 
 
