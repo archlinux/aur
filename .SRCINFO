@@ -1,6 +1,6 @@
 pkgbase = nwchem-git
-	pkgdesc = Ab initio computational chemistry software (NWChem 7.2 hotfix branch)
-	pkgver = r30696.39ce3184b2
+	pkgdesc = Ab initio computational chemistry software
+	pkgver = r31441.3d4fadd528
 	pkgrel = 1
 	url = https://nwchemgit.github.io/
 	install = nwchem.install
@@ -13,14 +13,15 @@ pkgbase = nwchem-git
 	depends = openmpi
 	depends = openblas
 	depends = python
+	depends = scalapack
 	provides = nwchem
 	conflicts = nwchem
 	conflicts = nwchem-data
-	source = nwchem-7.2.3t::git+https://github.com/nwchemgit/nwchem.git#branch=hotfix/release-7-2-0
+	source = nwchem::git+https://github.com/nwchemgit/nwchem.git
 	source = config.sh
 	source = nwchemrc
 	sha256sums = SKIP
-	sha256sums = 200ccb7c39c55cb3fa04b17063b31138d3f434b424f712983892ddce046bb1bc
+	sha256sums = 27df009d5d0e76852963d25abef0fcfc31d5d02effe9cb86f069ac148a89466a
 	sha256sums = d63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f
 
 pkgname = nwchem-git
