@@ -1,0 +1,16 @@
+pkgbase = perl-log-any-adapter-dispatch
+	pkgdesc = Adapter to use Log::Dispatch with Log::Any
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/pod/Log::Any::Adapter::Dispatch
+	arch = any
+	license = GPL-1.0
+	depends = perl
+	depends = perl-log-dispatch
+	depends = perl-log-any
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-Adapter-Dispatch-0.08.tar.gz
+	md5sums = 7b6ae20138e1403e1c2f9af8c031226c
+	sha512sums = 44d66c73329df28f526bdea71adb16b6c6440d8c551fe1ffd096f610d1cad9493857a7fefdd5ca2dbfa58b1fb0d409f1d9d2fd18b007a09eef70a736d3bc167f
+
+pkgname = perl-log-any-adapter-dispatch
