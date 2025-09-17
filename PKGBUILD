@@ -68,7 +68,6 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         increase-fortify-level.patch
         chromium-140.0.7339.41-rust.patch
         # Electron
-        default_app-icon.patch
         electron-launcher.sh
         electron.desktop
         jinja-python-3.10.patch
@@ -235,7 +234,6 @@ sha256sums=('82ab6e7a65eae65ae6159d6fbea1c17255cf489b362654bab535cb3f727aaf25'
             '75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '0eb47afd031188cf5a3f0502f3025a73a1799dfa52dff9906db5a3c2af24e2eb'
-            'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '13fcf26193f4417fd5dfbc82a3f24e5c7a1cce82f729f6a73f1b1d3a7b580b34'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
@@ -510,7 +508,6 @@ prepare() {
   # Electron specific fixes
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
   patch -Np1 -i "${srcdir}/use-system-libraries-in-node.patch"
-  # patch -Np1 -i "${srcdir}/default_app-icon.patch"  # Icon from .desktop file
 
   # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
@@ -633,7 +630,7 @@ package() {
   install -Dm755 "${srcdir}/electron-launcher.sh" \
     "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install .desktop and icon file (see default_app-icon.patch)
+  # Install .desktop and icon file
   install -Dm644 electron.desktop \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 src/electron/default_app/icon.png \
