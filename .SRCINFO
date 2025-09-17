@@ -17,4 +17,3 @@ pkgbase = trivy-git
 	sha256sums = SKIP
 
 pkgname = trivy-git
-
