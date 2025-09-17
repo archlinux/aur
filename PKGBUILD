@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-git
 _pkgname=Commas
-pkgver=0.39.2.r0.g466f732
-_electronversion=37
+pkgver=0.39.4.r1.g664abef
+_electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner.(Use system-wide electron)"
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -41,8 +41,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -57,8 +62,6 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -82,15 +85,14 @@ prepare() {
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i -e "
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
         s/\"electron-clipboard-ex\": \"\^1.3.3\"/\"clipboard\": \"\^2.0.8\"/g
-        s/pnpm\": \"\^9.0.0/pnpm\": \"\^10.0.0/g
+        s/pnpm\": \"\^9.0.0/pnpm\": \"\*/g
     " package.json
     NODE_ENV=development    pnpm install --force --no-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    local electronDist="/usr/lib/electron${_electronversion}"
+    _ensure_local_nvm
     NODE_ENV=production     pnpm node build/build.mjs
     NODE_ENV=production     pnpm node build/pack.mjs -- --local
 }
