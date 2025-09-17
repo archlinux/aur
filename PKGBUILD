@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=sacad
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Smart Automatic Cover Art Downloader'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('jpegoptim: for automatic lossless JPEG crunching'
             'oxipng: for automatic lossless PNG crunching')
 makedepends=('python-pip' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('d6615f8834c54e5b10a4bbe210707079f3d783436bb951adebb0d9cbd4354a57f8d62a4e02b7420fcf1b98132feb4d263b5633fe4f148b4adae1291aabf1e413')
+sha512sums=('53dd360c95a0f8220f6d0508a8f456e615491399828f37b0d6fa440c7add2138dfdda6d4d190f6867a43f2360137751457b9fdfddd002e3a6abfe0a608bd626e')
 
 package() {
     cd "${pkgname}-${pkgver}"
