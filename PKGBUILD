@@ -4,12 +4,14 @@
 
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.25.8
+pkgver=1.25.9
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://github.com/artpixls/ART"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
+
+depends=('glibc')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -19,7 +21,7 @@ options=('!strip' '!debug')
 _pkgsrc="ART-$pkgver-linux64"
 _pkgext="tar.xz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('0010c9526e304f4073a02c6e6d00f1719269033df1dbfd5853344af4eba69363')
+sha256sums=('08d4b1b4b979b84e97f6b2bfc61b10577332aa2c376c3d497b9943483f43679c')
 
 prepare() {
   cat "$_pkgsrc/share/applications/ART.desktop" \
@@ -45,15 +47,11 @@ package() {
   install -dm755 "$pkgdir/usr/share/man/man1"
   ln -srf "$pkgdir/$_install_path/$_pkgname/share/man/man1/ART.1" "$pkgdir/usr/share/man/man1/art.1"
 
+  # icon
+  install -Dm644 "$srcdir/$_pkgsrc/share/icons/hicolor/256x256/apps/ART.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
   # launcher
   install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-
-  # icons
-  local SRC_LOC="$srcdir/$_pkgsrc/share/icons/hicolor"
-  local DEST_LOC="$pkgdir/usr/share/icons/hicolor"
-  for i in 16 24 48 128 256; do
-    install -Dm644 "$SRC_LOC/${i}x${i}/apps/ART.png" "$DEST_LOC/${i}x${i}/apps/$_pkgname.png"
-  done
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir"
