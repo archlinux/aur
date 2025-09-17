@@ -1,6 +1,6 @@
 pkgbase = ccdciel
 	pkgdesc = A CCD capture software intended for the amateur astronomer.
-	pkgver = 0.9.91
+	pkgver = 0.9.92
 	pkgrel = 1
 	url = https://www.ap-i.net/ccdciel
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = ccdciel
 	depends = qt5pas
 	optdepends = libraw: to open DSLR raw files
 	conflicts = ccdciel-git
-	source_x86_64 = https://sourceforge.net/projects/ccdciel/files/ccdciel_0.9.91/ccdciel_0.9.91-3734_amd64.deb
-	sha256sums_x86_64 = fea2389d69074da024f7ed23cd2c1d7e6b59d368aed831d8c0d6faed598d58cf
-	source_aarch64 = https://sourceforge.net/projects/ccdciel/files/ccdciel_0.9.91/ccdciel_0.9.91-3734_arm64.deb
-	sha256sums_aarch64 = c71210192b2be89884bda53a988119a781cd001d1f65ee1a803244fcdffdaa7d
-	source_armv7h = https://sourceforge.net/projects/ccdciel/files/ccdciel_0.9.91/ccdciel_0.9.91-3734_armhf.deb
-	sha256sums_armv7h = a44e3d73c1d464a4de98701f379828e1db5bb2e91626444455cb4e9a75b4e0a8
+	source_x86_64 = https://sourceforge.net/projects/ccdciel/files/ccdciel_0.9.92/ccdciel_0.9.92-3775_amd64.deb
+	sha256sums_x86_64 = 7cd9a8a5618c020d65094a9ae891a595e82792a9a079ca4d08b26d744cdc4843
+	source_aarch64 = https://sourceforge.net/projects/ccdciel/files/ccdciel_0.9.92/ccdciel_0.9.92-3775_arm64.deb
+	sha256sums_aarch64 = 766aea10039c3af125c1b21fa59280a49a09eebb64ed7cc77029cb84d3a1a5e4
+	source_armv7h = https://sourceforge.net/projects/ccdciel/files/ccdciel_0.9.92/ccdciel_0.9.92-3775_armhf.deb
+	sha256sums_armv7h = be72fbcb768eabbe1584e4da24e12b49926201305723a3969348790ffee09a3b
 
 pkgname = ccdciel
