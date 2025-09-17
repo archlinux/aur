@@ -8,17 +8,20 @@ pkgver=1.7
 _name="tvb-recorder"
 pkgname="$_name"
 pkgdesc='TV-recording und live-switch with TV-Browser plugin'
-url='https://codeberg.org/tuxnix/tv-recorder'
+url='https://codeberg.org/tuxnix/tvb-recorder'
 arch=('any')
 license=('GLPv2-only')
 depends=('tvbrowser' 'mpv' 'at' 'ffmpeg')
 makedepends=('git')
-source=('git+https://codeberg.org/tuxnix/tv-recorder')
+source=('git+https://codeberg.org/tuxnix/tvb-recorder')
+install="$_name.install"
 sha512sums=('SKIP')
+
 
 package() {
     cd "$srcdir/$_name"
     install -Dm744 $_name "$pkgdir/usr/local/bin/$_name"
     install -Dm744 tvb-switch "$pkgdir/usr/local/bin/tvb-switch"
+    install -Dm744 tvb-cut "$pkgdir/usr/local/bin/tvb-cut"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
