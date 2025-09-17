@@ -1,16 +1,16 @@
 pkgbase = tvb-recorder
-	pkgdesc = recording and switch for tvbrowser
+	pkgdesc = record and switch for tvbrowser
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/tuxnix/streamrecorder
 	arch = any
 	license = GLPv2-only
 	makedepends = git
 	depends = tvbrowser
-	depends = mvp
+	depends = mpv
 	depends = at
 	depends = ffmpeg
-	source = git+https://codeberg.org/tuxnix/streamrecorder
+	source = git+https://codeberg.org/tuxnix/tv-recorder
 	sha512sums = SKIP
 
 pkgname = tvb-recorder
