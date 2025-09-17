@@ -2,7 +2,7 @@
 
 _pkg=kmedoids
 pkgname=python-${_pkg}
-pkgver=0.5.3.1
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Fast K-Medoids clustering in Python with FasterPAM"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=('maturin' 'cargo' 'cmake' 'python-installer' 'git' 'python-pip' 'py
 options=('!lto')
 _tag=v${pkgver}
 source=("${_pkg}::git+https://github.com/kno10/python-kmedoids.git#tag=${_tag}")
-sha256sums=('fbf38b61f29f628fba3ecc915ad339cdb3364706ae54ead61f1a7face6a2d58d')
+sha256sums=('56969de1f87ec7e3dc74f8242e116c0002e8974cee0619dc6b4a72672c05e948')
 
 prepare() {
   cd ${_pkg}

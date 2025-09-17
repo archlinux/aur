@@ -1,6 +1,6 @@
 pkgbase = python-kmedoids
 	pkgdesc = Fast K-Medoids clustering in Python with FasterPAM
-	pkgver = 0.5.3.1
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/kno10/python-kmedoids
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-kmedoids
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = kmedoids::git+https://github.com/kno10/python-kmedoids.git#tag=v0.5.3.1
-	sha256sums = fbf38b61f29f628fba3ecc915ad339cdb3364706ae54ead61f1a7face6a2d58d
+	source = kmedoids::git+https://github.com/kno10/python-kmedoids.git#tag=v0.5.4
+	sha256sums = 56969de1f87ec7e3dc74f8242e116c0002e8974cee0619dc6b4a72672c05e948
 
 pkgname = python-kmedoids
