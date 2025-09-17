@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas
 _pkgname=Commas
-pkgver=0.39.3
-_electronversion=37
+pkgver=0.39.4
+_electronversion=38
 _nodever=22
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner.(Use system-wide electron)"
@@ -29,16 +29,21 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('bd0f3f6346351914d5b3842fbe3afab560bc168c7bdfd5c72fc76387abf7b1ba'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('fba7ad6af447742e3b849038cafd3b44320fff69627cab4144b3f34ccfacc199'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodever}"
     nvm use "${_nodever}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -53,8 +58,6 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
@@ -70,25 +73,28 @@ prepare() {
         echo "network-concurrency=32"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        sed -i "/registry.npmjs.org/d" .npmrc
         {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+            echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i -e "
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
         s/\"electron-clipboard-ex\": \"\^1.3.3\"/\"clipboard\": \"\^2.0.8\"/g
-        s/pnpm\": \"\^9.0.0/pnpm\": \"\^10.0.0/g
+        s/pnpm\": \"\^9.0.0/pnpm\": \"\*/g
     " package.json
     sed -i "s/electron-clipboard-ex/clipboard/g" src/main/lib/message.ts
     NODE_ENV=development    pnpm install --force --no-lockfile
+    node node_modules/electron/install.js
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
+    _ensure_local_nvm
+    msg "Building ${pkgname} package"
     NODE_ENV=production     pnpm node build/build.mjs
+    msg "Packaging ${pkgname} package"
     NODE_ENV=production     pnpm node build/pack.mjs -- --local
 }
 package() {
