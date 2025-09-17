@@ -1,9 +1,9 @@
 # Maintainer: Maks Verver <maks@verver.ch>
 
-pkgname=unzip-p
+pkgname=unzip_p
 pkgver=6.0.2
 _tag=${pkgver}  # add -rc.N for release testing
-_name=${pkgname}-${_tag}
+_name=unzip-p-${_tag}
 pkgrel=2
 pkgdesc='unzip with patches'
 url='https://github.com/maksverver/unzip-p/'
