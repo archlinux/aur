@@ -4,9 +4,9 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=140.0.7339.127
+pkgver=140.0.7339.185
 pkgrel=1
-_manual_clone=0
+_manual_clone=1
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-undeclared-isnan.patch
         remove-unused-icu-targets.patch
 )
-sha256sums=('02a0d17f811bb780e5b81bb457200bf1c95a49a78ce7e023d0367c30c38fda7c'
+sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             '75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
