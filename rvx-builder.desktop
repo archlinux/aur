@@ -1,6 +1,5 @@
 [Desktop Entry]
 Type=Application
-Version=3.9.3
 Name=ReVanced Extended Builder
 Comment=A NodeJS ReVanced Extended Builder
 Exec=rvx-builder
