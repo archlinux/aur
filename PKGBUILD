@@ -5,7 +5,7 @@
 # the upstream generated binary version.
 
 pkgname=mattermost-plugin-playbooks
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='reliable and repeatable processes using checklists, automation, and retrospectives'
 arch=(x86_64)
@@ -16,7 +16,7 @@ options=(!strip)
 _plugin="${pkgname##*-}"
 _archive="$pkgname-v$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
-sha256sums=('7e457d74cc4632748e63ffa631ffbec3b6763f7fc1d2d0884f0b06e560ad126d'
+sha256sums=('40811caabe513d3df9536eb44c0c69a367093ab260b6f4da5bef926d4c7e3da2'
             'SKIP')
 validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
