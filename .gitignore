@@ -1,0 +1,5 @@
+src
+pkg
+*.pkg.tar*
+LICENSE.txt
+wasm4-nightly.zip
