@@ -13,10 +13,9 @@ arch=('any')
 license=('GLPv2-only')
 depends=('tvbrowser' 'mpv' 'at' 'ffmpeg')
 makedepends=('git')
-source=('git+https://codeberg.org/tuxnix/tvb-recorder')
-install="$_name.install"
+source=('git+https://codeberg.org/tuxnix/tvb-recorder' $_name.install)
 sha512sums=('SKIP')
-
+install="$_name.install"
 
 package() {
     cd "$srcdir/$_name"

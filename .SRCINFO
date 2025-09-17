@@ -12,6 +12,7 @@ pkgbase = tvb-recorder
 	depends = at
 	depends = ffmpeg
 	source = git+https://codeberg.org/tuxnix/tvb-recorder
+	source = tvb-recorder.install
 	sha512sums = SKIP
 
 pkgname = tvb-recorder
