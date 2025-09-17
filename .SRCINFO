@@ -1,12 +1,12 @@
 pkgbase = r00t
 	pkgdesc = rt - root, das it
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/theoddcell/rt
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
-	source = https://github.com/TheOddCell/rt/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/TheOddCell/rt/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = r00t

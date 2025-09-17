@@ -1,5 +1,5 @@
 pkgname=r00t
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="rt - root, das it"
 arch=('x86_64')
