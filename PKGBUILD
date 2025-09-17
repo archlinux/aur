@@ -5,9 +5,9 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-gcc-bootstrap
-pkgver=15.1.1+r500+gb1b8d8ce3eea
+pkgver=15.2.1+r22+gc4e96a094636
 # https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git
-_commit=b1b8d8ce3eea34959a63400680ce4bf783a1d337
+_commit=c4e96a094636b3c15b5e3bfde8673ec3b8172993
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for armv7l - bootstrap compiler'
 arch=(x86_64)
@@ -20,7 +20,7 @@ conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 
-sha256sums=('b407ba1cefe9b343dc68e5d3fd51c7752b856621908c96de38f4fd910d51e9a2')
+sha256sums=('d1d0263f7595e2189110dbe5d12608e144637a6a29a247e41c6926915caab8de')
 
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
