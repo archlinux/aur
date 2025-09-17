@@ -1,11 +1,12 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 
 pkgname=python-blessings
 _name=${pkgname#python-}
 pkgver=1.7
-pkgrel=13
+pkgrel=14
 pkgdesc="A thin, practical wrapper around terminal coloring, styling, and positioning"
 url="https://github.com/erikrose/blessings"
 arch=(any)

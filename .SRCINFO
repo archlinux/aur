@@ -1,7 +1,7 @@
 pkgbase = python-blessings
 	pkgdesc = A thin, practical wrapper around terminal coloring, styling, and positioning
 	pkgver = 1.7
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/erikrose/blessings
 	arch = any
 	license = MIT
