@@ -1,7 +1,7 @@
 pkgbase = scidb-svn
 	pkgdesc = Chess database browser: chess, chess960, etc engines; import Chessbase, PGN, Scid; CQL
 	pkgver = 1.0.beta.r1531
-	pkgrel = 9
+	pkgrel = 10
 	url = https://sourceforge.net/projects/scidb
 	install = scidb-svn.install
 	arch = x86_64
