@@ -2,7 +2,7 @@
 pkgname=uabea-next-git
 pkgver=0.0.0.r99.7ae61d2
 pkgrel=1
-pkgdesc=' A research and modding tool for SerializedFiles and Asset Bundles '
+pkgdesc='A research and modding tool for SerializedFiles and Asset Bundles'
 url='https://github.com/nesrak1/UABEANext'
 makedepends=('git' 'dotnet-sdk')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'dotnet-runtime')
