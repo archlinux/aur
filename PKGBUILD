@@ -1,6 +1,6 @@
 # Maintainer: 2022-04-04 blacktav <blacktav at gmail dot com>
+# Co-Maintainer: 2025-09-17 dankuser <dperez388 at gmail dot com>
 # Contributors: Original submitter q9 <qqqqqqqqq9 at web dot de>
-#               dankuser 
 
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
@@ -30,6 +30,7 @@ makedepends=(
            'patch'
            'subversion'
            'gcc14'
+           'gcc14-libs'
             )
 conflicts=('scidb')
 #options=('!buildflags' '!makeflags' '!debug' )
@@ -40,9 +41,9 @@ source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
         'engines.Sjeng.Makefile.patch'
         'sys_info.cpp.patch'
         'tcl.Makefile.patch'
-        'dankuser-20250914-agg_font.patch'
-        'dankuser-20250914-db.patch'
-        'dankuser-20250914-html.patch'
+        'agg_font_freetype.cpp.patch'
+        'db_tag_set.cpp.patch'
+        'html.h.patch'
         )
 md5sums=('SKIP'
          '0890bf5963e14ba39734608edd43cf27'
@@ -68,6 +69,9 @@ prepare() {
   rm $srcdir/$pkgname/src/sys/sys_info.cpp
   rm $srcdir/$pkgname/engines/Sjeng/Makefile
   rm $srcdir/$pkgname/tcl/Makefile
+  rm $srcdir/$pkgname/src/tk/svg/agg/agg_font_freetype.cpp 
+  rm $srcdir/$pkgname/src/tk/html/html.h
+  rm $srcdir/$pkgname/src/db/db_tag_set.cpp 
   # 2 refresh from repo
   cd $srcdir/$pkgname
   svn update
@@ -80,9 +84,10 @@ build() {
   patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
   patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
   patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
-  patch -u $srcdir/$pkgname/src/db/db_tag_set.cpp -i dankuser-20250914-db.patch
-  patch -u $srcdir/$pkgname/src/tk/html/html.h -i dankuser-20250914-html.patch
-  patch -u $srcdir/$pkgname/src/tk/svg/agg/agg_font_freetype.cpp -i dankuser-20250914-agg_font.patch
+   # GCC-14 compatability patches
+  patch -u $srcdir/$pkgname/src/tk/svg/agg/agg_font_freetype.cpp -i agg_font_freetype.cpp.patch
+  patch -u $srcdir/$pkgname/src/db/db_tag_set.cpp -i db_tag_set.cpp.patch
+  patch -u $srcdir/$pkgname/src/tk/html/html.h -i html.h.patch
   # Set switches for configure script
   # Default switches had debugging turned on
   #     deployment is below /usr/local/bin
@@ -106,14 +111,21 @@ build() {
 #  SWITCHES+=("--enable-gprof-profiling=yes")    # default=no
 #  SWITCHES+=("--enable-gcov-coverage=yes")      # default=no
 #  SWITCHES+=("--enable-inline-text=no")         # default=yes
-  SWITCHES+=("--suppress-insane-message")
+#  SWITCHES+=("--suppress-insane-message")      # This doesn't work
   SWITCHES+=("--gcc-version=14")                # gcc15 too intolerant of old code
   SWITCHSTRING=""
   for SWITCH in "${SWITCHES[@]}" ; do
     SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
   done
   export CFLAGS="-fcommon" CXXFLAGS="-fcommon" ; ./configure ${SWITCHSTRING}
-  make
+  
+   # Compile a few objects early. This seems to be some kind of
+   # issue with using multiple threads or with how autotools 
+   # was implemented in the original tarball.
+  for OBJECT in mstl tcl sys app db util/universalchardet tk/text tk/tkdnd tk; do
+    make -j$(nproc) -C src/${OBJECT}
+  done;
+  make -j$(nproc)
 }
 
 package() {
