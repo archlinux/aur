@@ -1,0 +1,32 @@
+# Maintainer: robertfoster
+pkgname=shimmy-bin # renovate: datasource=github-tags depName=Michael-A-Kuykendall/shimmy
+pkgver=1.3.3
+pkgrel=1
+pkgdesc="Lightweight 5MB Ollama alternative with native SafeTensors support. No Python dependencies, 2x faster loading."
+arch=('x86_64' 'aarch64')
+url="https://github.com/Michael-A-Kuykendall/shimmy"
+license=('MIT')
+depends=('gcc-libs')
+provides=('shimmy')
+conflicts=('shimmy' 'shimmy-git')
+
+package() {
+  if [ "$CARCH" = "x86_64" ]; then
+    install -Dm755 "${srcdir}/shimmy-linux-x86_64" "${pkgdir}/usr/bin/shimmy"
+  else
+    install -Dm755 "${srcdir}/shimmy" "${pkgdir}/usr/bin/shimmy"
+  fi
+
+  # Install the license
+  install -Dm644 "${srcdir}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+source_x86_64=("shimmy-linux-x86_64::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy-linux-x86_64"
+  "LICENSE::https://raw.githubusercontent.com/Michael-A-Kuykendall/shimmy/v${pkgver}/LICENSE")
+source_aarch64=("shimmy::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy"
+  "LICENSE::https://raw.githubusercontent.com/Michael-A-Kuykendall/shimmy/v${pkgver}/LICENSE")
+sha256sums_x86_64=('SKIP'
+  'SKIP')
+sha256sums_aarch64=('SKIP'
+  'SKIP')
