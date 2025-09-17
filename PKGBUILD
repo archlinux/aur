@@ -1,6 +1,6 @@
 pkgname=r00t
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="rt - root, das it"
 arch=('x86_64')
 url="https://github.com/theoddcell/rt"
@@ -12,7 +12,7 @@ sha256sums=('SKIP')  # replace 'SKIP' with actual sha256sum if you want verifica
 
 build() {
     cd "$srcdir/rt-${pkgver}"
-    gcc -O2 -pipe -Wall -Wextra -std=gnu11 -o rt rt.c
+    gcc -O2 -pipe -Wall -Wextra -std=gnu11 -o rt rt.c -lpam -lpam_misc
 }
 
 package() {
