@@ -1,14 +1,15 @@
-from collections import OrderedDict
-from importlib.util import spec_from_loader, module_from_spec
-from importlib.machinery import SourceFileLoader
-from tempfile import NamedTemporaryFile
-from heapq import heappush
-from hashlib import sha1
-import sys
-import requests
 import base64
-import re
 import os
+import re
+import sys
+from collections import OrderedDict
+from hashlib import sha1
+from heapq import heappush
+from importlib.machinery import SourceFileLoader
+from importlib.util import module_from_spec, spec_from_loader
+from tempfile import NamedTemporaryFile
+
+import requests
 
 
 def eprint(*args, **kwargs):
@@ -106,6 +107,7 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
         "checkout_mips",
         "checkout_ppc",
         "checkout_arm",
+        "checkout_riscv64",
     ):
         deps_module.vars[k] = False
     deps_module.vars["checkout_linux"] = True
@@ -175,6 +177,7 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
                     continue
                 add_dep(dep_name, dep_value["url"])
         elif isinstance(dep_value, str):
+            eprint(f"Adding dep {dep_name} with {dep_value}")
             add_dep(dep_name, dep_value)
         else:
             raise Exception(f"Unknown DEP {dep_name} = {dep_value}")
@@ -216,7 +219,7 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
 repos_with_changed_url = {
     "https://chromium.googlesource.com/chromium/llvm-project/compiler-rt/lib/fuzzer.git",
     "https://chromium.googlesource.com/external/github.com/google/pthreadpool.git",
-    "https://chromium.googlesource.com/external/github.com/google/perfetto.git"
+    "https://chromium.googlesource.com/external/github.com/google/perfetto.git",
 }
 
 
@@ -413,7 +416,7 @@ if __name__ == "__main__":
             print(f"cipd: {name} = {value}")
     elif action == "update":
         update_pkgbuild(git_deps, reverse_map, [])
-    
+
     if action == "generate" or action == "update":
         garg_cmd = generate_gclient_args(gargs)
         # cipd dependencies are usually binary blobs. Only add the necessary parts.
