@@ -16,5 +16,5 @@ source=(
 sha256sums=('0063812fa26e70fb420b8d41235b4e996fa4de53244928c48f7dbfa465173ce8')
 
 package() {
-  install -D -m755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/upstash-redis-local"
+  install -D -m755 "${srcdir}/upstash-redis-local" "${pkgdir}/usr/bin/upstash-redis-local"
 }
