@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.61.0
+pkgver=0.61.2
 _electronversion=38
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -30,9 +30,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('7adc070ee85e27961d3dd1ea244169d4353d33a492eb35477f4516ed6770f703')
-sha256sums_armv7h=('28cb5837e82b2e9e1a2f338f30d67476baeb6795a520948f84a5bbaf3ad3fe36')
-sha256sums_x86_64=('7b9809eb0e0c94918ebab6a9f0f0efb5f11115d12f3b0601530539117616fa13')
+sha256sums_aarch64=('4da4fdda60632c36df82b06b13646844bd30910aa82eb6543d52c72fbe6c638d')
+sha256sums_armv7h=('069152d9ee7863fad36318d6aed4edc1e43ebf9a248ffa087fd338deb91410f0')
+sha256sums_x86_64=('89a13a0b9c666dc21c7c830ca24505d20615dc1cd02b38d8944a2a8c9a89134a')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -52,6 +52,26 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     _get_electron_version
     sed -i "s/\/usr\/lib\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    PATTERNS=(
+        "**/android-*"
+        "**/darwin-*"
+        "**/ios-*"
+        "**/win32-*"
+    )
+    for pattern in "${PATTERNS[@]}"; do
+        find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -path "${pattern}" -exec rm -rf {} +
+    done
+    case "${CARCH}" in
+        aarch64)
+            find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -name "linux-x64" -exec rm -rf {} +
+            ;;
+        armv7h)
+            find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -name "linux-arm64" -o -name "linux-x64" -exec rm -rf {} +
+            ;;
+        x86_64)
+            find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -name "linux-arm*" -exec rm -rf {} +
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
