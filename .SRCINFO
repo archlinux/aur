@@ -1,0 +1,13 @@
+pkgbase = boot-repair-andres
+	pkgdesc = Swiss-army live rescue tool: GRUB repair, display reset, initramfs, kernel, system update, boot freedom, diagnostics.
+	pkgver = 2.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git
+	source = git+https://github.com/AndresDev859674/boot-repair.git
+	sha256sums = SKIP
+
+pkgname = boot-repair-andres
