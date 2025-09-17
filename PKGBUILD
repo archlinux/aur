@@ -1,6 +1,6 @@
 # Maintainer: Boris Drazhzhov <bdrazhzhov@gmail.com>
 pkgname=ya-player
-pkgver=0.5.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Yandex Music player"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=(
   'gst-plugins-good' 'gst-plugins-bad'
   'libsoup3' 'webkit2gtk-4.1' 
 )
-source=('https://github.com/bdrazhzhov/ya-player/releases/download/preparing-for-aur/ya-player-v0.5.0.tar.zst')
-sha256sums=('de5323de1d28bf38252aa9bdf190cda2971253adc874310813d58ca88c4250de')
+source=("https://github.com/bdrazhzhov/ya-player/releases/download/v$pkgver/ya-player-v$pkgver.tar.zst")
+sha256sums=('4b82ed120254227e57b5c2d76276b43233a2958aba06a2c90d0bd04927c97b6a')
 
 build() {
   patchelf --set-rpath '$ORIGIN' "$srcdir/lib/libaudio_player_gst_plugin.so"
