@@ -1,0 +1,17 @@
+pkgbase = pu-git
+	pkgdesc = Cross-platform POSIX utilities for development workflows
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/asd-xiv/posix-utils
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	optdepends = git: for pu-git-has-changed command
+	optdepends = pacman: for pu-install command on Arch Linux
+	provides = pu
+	conflicts = pu
+	source = pu::git+https://github.com/asd-xiv/posix-utils.git
+	b2sums = SKIP
+
+pkgname = pu-git
