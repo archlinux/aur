@@ -1,0 +1,15 @@
+pkgbase = gittype
+	pkgdesc = Turn your source code into typing challenges
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/unhappychoice/gittype
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = zlib
+	options = !lto
+	source = gittype-0.6.2.tar.gz::https://github.com/unhappychoice/gittype/archive/v0.6.2.tar.gz
+	sha256sums = bbfd039d609855bd13b893933800dc04459221e419ed1ba721155b7c7566b8a2
+
+pkgname = gittype
