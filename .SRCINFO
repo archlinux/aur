@@ -7,7 +7,7 @@ pkgbase = nautilus-scripts
 	license = MIT
 	depends = bash
 	source = https://github.com/cfgnunes/nautilus-scripts/archive/refs/tags/17.4.tar.gz
-	md5sums = d41d8cd98f00b204e9800998ecf8427e
+	md5sums = 41cb08599a4a08e519596db804b1138c
 
 pkgname = nautilus-scripts
 	install = nautilus-scripts.install

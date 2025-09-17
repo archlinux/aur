@@ -14,7 +14,7 @@ depends=(
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-md5sums=('d41d8cd98f00b204e9800998ecf8427e')
+md5sums=('41cb08599a4a08e519596db804b1138c')
 
 package_nautilus-scripts() {
   install="${pkgname}.install"
