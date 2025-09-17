@@ -1,0 +1,25 @@
+pkgbase = zls0.10-bin
+	pkgdesc = A language server for Zig
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://zigtools.org/zls
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = minisign
+	depends = sh
+	depends = zig0.10
+	provides = zls0.10
+	conflicts = zls0.10
+	source = zls-versioned.sh
+	sha256sums = 36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7
+	source_i686 = https://builds.zigtools.org/zls-linux-x86-0.10.0.tar.xz
+	source_i686 = https://builds.zigtools.org/zls-linux-x86-0.10.0.tar.xz.minisig
+	sha256sums_i686 = dfc6f2d791b84ff7bd7bfe24e17bc1fed430b6f2db7d8a31735fa19c892334e4
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://builds.zigtools.org/zls-linux-x86_64-0.10.0.tar.xz
+	source_x86_64 = https://builds.zigtools.org/zls-linux-x86_64-0.10.0.tar.xz.minisig
+	sha256sums_x86_64 = 9a6cda8a9dc4b536f76439285541ad197eb30f67b0df47746411043c48091351
+	sha256sums_x86_64 = SKIP
+
+pkgname = zls0.10-bin
