@@ -1,6 +1,6 @@
 pkgbase = jre-jetbrains
 	pkgdesc = OpenJDK Java 21 runtime with some fixes and enhancements by JetBrains
-	pkgver = 21.0.8b1097.42
+	pkgver = 21.0.8b1115.48
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	install = jre-jetbrains.install
@@ -18,7 +18,7 @@ pkgbase = jre-jetbrains
 	provides = jetbrains-jre
 	conflicts = jetbrains-jre
 	replaces = jetbrains-jre
-	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-21.0.8-linux-x64-b1097.42.tar.gz
-	b2sums = a02f252cf31174c77b36e5f194e52530042684c1ff8123284eb8b168a336c9336e7f4b5ea586b2769189449e8c37612021d3651b82049be1b9465cc12f7ce693
+	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-21.0.8-linux-x64-b1115.48.tar.gz
+	b2sums = 6f89b64243f80bebe355f71826f3b8b1abcecb0b48af803a791161c4bec4e0d730592f2641b0064691e649451c464b947224ca2c3a9437e235949c1c029915b5
 
 pkgname = jre-jetbrains
