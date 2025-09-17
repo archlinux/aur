@@ -1,7 +1,7 @@
 pkgbase = musescore3
 	pkgdesc = Create, play and print beautiful sheet music -- Version 3; End-of-life
 	pkgver = 3.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://musescore.org/
 	arch = x86_64
 	groups = pro-audio
@@ -36,6 +36,7 @@ pkgbase = musescore3
 	source = newwizard-cpp.patch
 	source = mscore3-desktop.patch
 	source = org-musescore-MuseScore3-appdata-xml.patch
+	source = Diff-hpp.patch
 	sha256sums = SKIP
 	sha256sums = 4dbd0a685b2efc76ff9ec62dc08744ef706aeddeb3202e8a3ef1c10ef6745bbb
 	sha256sums = 4e2b0a0cf88b96403e1403bb3c03eb679aaa9bd8af898d48da911dbb38237e64
@@ -43,5 +44,6 @@ pkgbase = musescore3
 	sha256sums = 614f0be56acbc1039b9ce1b37922ebf476b953c632538de7dd94e28fbce95cd2
 	sha256sums = 699f1ad0eb8dcc4979e1b88101ed9c4c7cea38a61a2a1b3ca21681b40db82a0b
 	sha256sums = 1d4f34815968e8efd28bef961a72871c617348c256b07be050a1d7f1b91b8307
+	sha256sums = f61e636f8e31b9419dd0748b2983cd20a2f6ae92bc044004b879fdf24e649bf4
 
 pkgname = musescore3

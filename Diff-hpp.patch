@@ -1,0 +1,11 @@
+--- MuseScore/thirdparty/dtl/dtl/Diff.hpp.orig	2025-09-17 12:16:28.000000000 -0400
++++ MuseScore/thirdparty/dtl/dtl/Diff.hpp	2025-09-17 12:27:06.678753706 -0400
+@@ -162,7 +162,7 @@
+             return trivial;
+         }
+         
+-        void enableTrivial () const {
++        void enableTrivial () {
+             this->trivial = true;
+         }
+         
