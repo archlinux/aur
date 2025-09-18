@@ -2,7 +2,7 @@
 # Contributor: Alfredo Beaumont <alfredo.beaumont@gmail.com>
 
 pkgname='picat'
-pkgver='3.8.7'
+pkgver='3.9'
 pkgrel=1
 pkgdesc='A simple, and yet powerful, logic-based multi-paradigm programming language aimed for general-purpose applications.'
 arch=('x86_64')
@@ -18,13 +18,18 @@ license=('MPL-2.0')
 
 _pkgver=$(echo ${pkgver} | sed 's/\.//;s/#//')
 source=("https://picat-lang.org/download/${pkgname}${pkgver//\./}_src.tar.gz")
-b2sums=('b5c3ce7d3ac1d2d9c5d87c1329c835e01b053f357e58a447b4b4d7f12b8afb5ff1bc5da5ff3a19b5446e1d5d95f2a108419e6085cf2f62e5046bab58143c5c48')
+b2sums=('ae49ddd20810c2a05af338ff0ad226ce0c0dad7af9bbbc690dab9c54c3fd9c0e90588e376593a68a6c725840e73c56f9a4dfcbc30c574faf989c841d0a4ed63c')
 
 prepare() {
   # Inherit system-wide CFLAGS and LDFLAGS (/etc/makepkg.conf):
   cd "$srcdir/Picat/emu"
   sed -i 's/CFLAGS = /CFLAGS += /' Makefile.linux64
   sed -i 's/LFLAGS = /&$(LDFLAGS) -Wl,-z,shstk /' Makefile.linux64
+
+  # As of GCC 15 (?), gnu23 is the default, but it seems like Picat
+  # may require the older gnu17. Check in the future if this is still
+  # the case. (2025-09-18)
+  sed -i '/^CC *= gcc/aCC += -std=gnu17' Makefile.linux64
 }
 
 build() {
