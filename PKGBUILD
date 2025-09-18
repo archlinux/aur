@@ -1,8 +1,8 @@
 # Maintainer: vghbjc
 
 pkgname=edh-logger-cli
-pkgver=0.2.11
-pkgrel=2
+pkgver=404:NotFound
+pkgrel=1
 pkgdesc="CLI to log MTG Commander games & view stats (edh --help for usage)"
 arch=('x86_64')
 url=https://github.com/GhelloZ/edh-logger-cli

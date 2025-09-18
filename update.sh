@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # URL to fetch the new version number from
-version_url="https://raw.githubusercontent.com/GhelloZ/edh-logger-cli/refs/heads/releases/metadata/version"
+version_url="https://raw.githubusercontent.com/GhelloZ/edh-logger-cli/refs/heads/releases/metadata/VERSION"
 
 # Fetch the new version
 new_ver=$(curl -s "$version_url" | tr -d '[:space:]')
