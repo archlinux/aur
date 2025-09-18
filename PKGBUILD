@@ -1,11 +1,15 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname="elia"
-pkgver=1.8.0
+_pkgauthor=darrenburns
+_pkgname=elia
+pkgname=${_pkgname}
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A powerful terminal user interface for interacting with large language models"
 arch=('any')
-url="https://github.com/darrenburns/${pkgname}"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('Apache-2.0')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 depends=('python>=3.11' 'python-textual' 'python-sqlmodel>=0.0.9'
@@ -15,12 +19,15 @@ depends=('python>=3.11' 'python-textual' 'python-sqlmodel>=0.0.9'
          'python-google-generativeai>=0.5.3' 'python-pyperclip>=1.8.2'
          'litellm>=1.37.19' 'python-tiktoken' 'python-rich' 'python-sqlalchemy'
          'python-pydantic')
+
 _pkgsrc="${pkgname}-${pkgver}"
+
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('dd6d3168ba7130cb938854ebdf948ce5cfd8815a609d6695bb9c3c5fcf478bb5')
+sha256sums=('203663a38afe052238883cfba7c5dd83810765f848960c37e16a4e8d3f31bccc')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
+
   python -m build --wheel --no-isolation
 }
 
@@ -28,10 +35,11 @@ package () {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd "${srcdir}/${_pkgsrc}"
+
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${pkgname}_chat-${pkgver}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -s "${pkgdir}${site_packages}/${pkgname}_chat-${pkgver}.dist-info/licenses/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
