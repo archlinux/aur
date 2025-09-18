@@ -1,7 +1,7 @@
 # Maintainer: Vince Liem <vincepaul.liem@gmail.com>
 
 pkgname=oxidizr-arch
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Arch CLI to safely switch coreutils/findutils/sudo to Rust replacements via Switchyard (dry-run by default)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('oxidizr-arch')
 conflicts=('oxidizr-arch-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/veighnsche/oxidizr-arch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8a47337bf880efc17e6c1f7f851ddbcce5aa0220f118c05cb2cc9327402b8fdf')
+sha256sums=('f821d1a3302f237535f56324e9d10aa59fafef883ccd3856588999753009a410')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}" 2>/dev/null || cd "${srcdir}/${pkgname}-v${pkgver}"
