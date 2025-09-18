@@ -1,16 +1,18 @@
 pkgbase = zig-waybar-contrib
 	pkgdesc = Lightweight Waybar modules built with Zig
 	pkgver = 0.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/erffy/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = zig>=0.14.0
-	optdepends = rocm-smi-lib: AMD GPU BACKEND
-	optdepends = amdsmi: AMD GPU BACKEND
-	optdepends = cuda: NVIDIA GPU BACKEND
-	source = zig-waybar-contrib::git+https://github.com/erffy/zig-waybar-contrib.git
+	optdepends = rocm-smi-lib: AMD GPU backend
+	optdepends = amdsmi: AMD GPU backend
+	optdepends = cuda: NVIDIA GPU backend
+	provides = zig-waybar-contrib
+	conflicts = zig-waybar-contrib
+	source = git+https://github.com/erffy/zig-waybar-contrib.git
 	md5sums = SKIP
 
 pkgname = zig-waybar-contrib
