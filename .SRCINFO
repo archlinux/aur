@@ -1,8 +1,9 @@
 pkgbase = threema-desktop
 	pkgdesc = Threema Desktop (Threema Web in Electron).
 	pkgver = 1.2.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/threema-ch/threema-web-electron
+	install = threema-desktop.install
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = git

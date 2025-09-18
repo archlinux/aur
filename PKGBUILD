@@ -5,7 +5,7 @@ _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 pkgver=1.2.49
-pkgrel=1
+pkgrel=2
 _threema_web_ver=2.6.2 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
@@ -13,6 +13,7 @@ license=('AGPL-3.0-only')
 _electron=electron37
 depends=(${_electron})
 makedepends=(git nodejs-lts-iron npm)
+install="${pkgname}.install"
 source=(
   "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/${pkgver}.tar.gz"
   "threema-web-v${_threema_web_ver}.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"

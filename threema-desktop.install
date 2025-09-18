@@ -1,0 +1,10 @@
+YEL='\033[0;33m'
+RST='\033[0m'
+
+post_upgrade() {
+	echo -e "${YEL}Note: Check out the Threema 2.0 for desktop beta for a better user experience: https://three.ma/md (AUR: threema-desktop-beta)${RST}"
+}
+
+post_install() {
+    post_upgrade
+}
