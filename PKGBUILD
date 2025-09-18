@@ -1,7 +1,7 @@
 # Maintainer: crimist <aur at crim dot ist>
 
 pkgname=freetype2-qdoled
-pkgver=2.13.3
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="freetype optimized for QD-OLED subpixel layout"
 url="https://www.freetype.org/"
@@ -30,7 +30,7 @@ source=(
   0004-QD-OLED-subpixel.patch
   freetype2.sh
 )
-b2sums=('f9591c6998df02b072adaf38a968e91deae8ed4d53ea0cb74d08982c4f0e48b1a98c1378a698164e4f730f07a3b0bea308a94fcc2e2b8ce9967dbf9478b599bd'
+b2sums=('1dc62d337a93ca94f93496e60bdf9cbabed5867d66bb2f07669f1b5f81ef16f6cc57c401f51bb62d919680316f73902fafb6a167c45183872faaf984840b5ec7'
         'b7e3b72e2d6aed548c1762a16ee08ac47a05caf29c5d37ef03c6791e6dbd109fdfef0b246540c35e968d54f2103b70e80eccff72ac54d34224c6d064aa53d720'
         'b83a599da8eef1c39a268482db8e82f03a2c9b68850a0ec782e9839e7b45a3b0f989d997647eb55e5b18f2fe0c988e73f0ec6c4eb4c0787689f9e0213faa4320'
         '374f8cbd415cbe020f6ff581bc5fdb7d119d814f29a7b6b370668b1a8580151a95b99be858e467e5414144a91a966df233907ffe136d135b460339036e1d11b8'
