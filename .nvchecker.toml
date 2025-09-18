@@ -1,0 +1,4 @@
+[extension-manager]
+source = "git"
+git = "https://github.com/mjakeman/extension-manager.git"
+prefix = "v"
