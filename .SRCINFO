@@ -1,6 +1,6 @@
 pkgbase = python314
 	pkgdesc = Major release 3.14 of the Python high-level programming language
-	pkgver = 3.14.0rc2
+	pkgver = 3.14.0rc3
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = python314
 	optdepends = tk: for tkinter
 	optdepends = xz: for lzma
 	options = !emptydirs
-	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0rc2.tar.xz
-	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0rc2.tar.xz.sigstore
-	md5sums = ee7ae62b6ddc66eeca1591730be0f1c4
+	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0rc3.tar.xz
+	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0rc3.tar.xz.sigstore
+	md5sums = d86ab97a18b7665ca3bb9d2495a0eeb2
 	md5sums = SKIP
 
 pkgname = python314

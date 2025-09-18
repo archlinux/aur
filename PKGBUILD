@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python314
-pkgver=3.14.0rc2
+pkgver=3.14.0rc3
 pkgrel=1
 _pyver=3.14.0
 _pybasever=3.14
@@ -41,7 +41,7 @@ source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.sigstore}
 )
 md5sums=(
-  'ee7ae62b6ddc66eeca1591730be0f1c4'
+  'd86ab97a18b7665ca3bb9d2495a0eeb2'
   'SKIP'
 )
 
