@@ -36,7 +36,6 @@ check() {
 }
 
 package() {
-  cd "$pkgname" || exit
-  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm755 "$pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
