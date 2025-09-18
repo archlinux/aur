@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
 makedepends=(
+    'add-determinism'
     'asciidoc'
     'brotli'
     'cmake'
@@ -109,6 +110,10 @@ package_libjxl() {
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/java"/{org.jpeg.jpegxl,jpegxl}.jar
+    
+    # Clamp timestamps to SOURCE_DATE_EPOCH and strip other metadata, to make
+    # the package reproducible.
+    add-det "${pkgdir}/usr/share/java"/jpegxl.jar
 }
 
 package_libjxl-doc() {
