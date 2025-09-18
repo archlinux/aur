@@ -1,6 +1,6 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('wayland' 'glibc')
 makedepends=('gcc' 'cmake' 'make' 'wayland-protocols' 'pandoc-cli')
 keywords=('wayland' 'virtual-pet' 'overlay' 'bongo-cat' 'cat' 'wpets' 'desktop-toy' 'bongo' 'bongocat-keyboard' 'cat' 'vpet')
 source=("wayland-vpets-$pkgver.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v$pkgver.tar.gz")
-sha256sums=('10aca3e47af0aff20884be78eb3772f2b28b3a28ab6b69622dece529c325a1b2')
+sha256sums=('5cc05979715a0eaefbae3b1f1d8dc9309efbf4e5023d6fcce1c135df6dfa764f')
 
 build() {
     cd "$srcdir/wayland-vpets-$pkgver"
