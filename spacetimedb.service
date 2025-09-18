@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=exec
-ExecStart=/usr/bin/spacetimedb start --data-dir=/var/lib/spacetimedb/data --jwt-key-dir=/var/lib/spacetimedb/config
+ExecStart=/usr/bin/spacetimedb-standalone start --data-dir=/var/lib/spacetimedb/data --jwt-key-dir=/var/lib/spacetimedb/config
 User=spacetimedb
 Group=spacetimedb
 RuntimeDirectory=spacetimedb
