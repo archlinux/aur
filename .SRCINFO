@@ -1,6 +1,6 @@
 pkgbase = python-csvw
 	pkgdesc = Python library to work with CSVW described tabular data
-	pkgver = 3.5.1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://pypi.org/project/csvw
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-csvw
 	conflicts = python-csvw
 	options = !strip
 	options = !debug
-	source = csvw-3.5.1.tar.gz::https://files.pythonhosted.org/packages/source/c/csvw/csvw-3.5.1.tar.gz
-	sha256sums = e13dfcbf56a51f66bd4c6b442b8b32b3fee4b615dcd9436149832b41572938f3
+	source = csvw-3.6.0.tar.gz::https://files.pythonhosted.org/packages/source/c/csvw/csvw-3.6.0.tar.gz
+	sha256sums = ae4ea6735f27bb6c20b4f5cac197f24b0130a631550c7fc0b09fd5f6a8720d4e
 
 pkgname = python-csvw
