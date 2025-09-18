@@ -10,6 +10,7 @@ license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python-elasticsearch python-pydantic python-tt-tools-common python-networkx)
 provides=("tt-topology")
+conflicts=("tt-topology")
 source=("tt-topology::git+https://github.com/tenstorrent/tt-topology.git")
 sha256sums=('SKIP')
 
