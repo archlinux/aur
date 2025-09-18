@@ -1,7 +1,7 @@
 pkgbase = ambiente-backup
 	pkgdesc = Sistema completo de backup e restauração de ambiente Linux com interface gráfica
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pombaa/Backup-e-restaurador-de-ambiente
 	arch = any
 	license = MIT

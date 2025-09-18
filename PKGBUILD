@@ -1,7 +1,7 @@
 # Maintainer: Pombaa <your-email@example.com>
 pkgname=ambiente-backup
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sistema completo de backup e restauração de ambiente Linux com interface gráfica"
 arch=('any')
 url="https://github.com/Pombaa/Backup-e-restaurador-de-ambiente"
