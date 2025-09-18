@@ -1,5 +1,5 @@
 pkgname=boot-repair-andres
-pkgver=2.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Swiss-army live rescue tool: GRUB repair, display reset, initramfs, kernel, system update, boot freedom, diagnostics."
 arch=('any')
