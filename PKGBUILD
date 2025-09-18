@@ -28,5 +28,6 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname#python-}-$pkgver" || return
+    install -pm644 -Dt "$pkgdir"/usr/share/licenses/"$pkgname" ./LICENSE
     python -m installer --compile-bytecode=1 --destdir="$pkgdir" dist/*.whl
 }
