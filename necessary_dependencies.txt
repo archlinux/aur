@@ -254,6 +254,7 @@ Module: fastapi.responses
     open_webui/routers/auths.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
+    open_webui/routers/models.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/scim.py
@@ -408,6 +409,7 @@ Module: open_webui.models.chats
     open_webui/main.py
     open_webui/models/feedbacks.py
     open_webui/models/users.py
+    open_webui/retrieval/utils.py
     open_webui/routers/chats.py
     open_webui/routers/folders.py
     open_webui/routers/ollama.py
@@ -572,11 +574,13 @@ Module: open_webui.env
 Module: open_webui.utils.models
   Imported in:
     open_webui/main.py
+    open_webui/routers/channels.py
     open_webui/utils/chat.py
     open_webui/utils/embeddings.py
 Module: open_webui.utils.chat
   Imported in:
     open_webui/main.py
+    open_webui/routers/channels.py
     open_webui/routers/tasks.py
     open_webui/utils/middleware.py
 Module: open_webui.utils.embeddings
@@ -675,6 +679,7 @@ Module: open_webui.tasks
 Module: open_webui.constants
   Imported in:
     open_webui/env.py
+    open_webui/functions.py
     open_webui/main.py
     open_webui/retrieval/web/utils.py
     open_webui/routers/audio.py
@@ -738,6 +743,7 @@ Module: open_webui.utils.misc
     open_webui/functions.py
     open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
     open_webui/models/users.py
+    open_webui/retrieval/utils.py
     open_webui/routers/auths.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
@@ -1105,6 +1111,7 @@ Module: google.cloud.exceptions
 Module: azure.identity
   Imported in:
     open_webui/retrieval/loaders/main.py
+    open_webui/routers/openai.py
     open_webui/storage/provider.py
 Module: azure.storage.blob
   Imported in:
@@ -1331,6 +1338,9 @@ Module: starlette.background
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
 Module: open_webui.models.messages
+  Imported in:
+    open_webui/routers/channels.py
+Module: open_webui.utils.channels
   Imported in:
     open_webui/routers/channels.py
 Module: fastapi.concurrency
