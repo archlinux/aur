@@ -1,9 +1,12 @@
 # Maintainer: schnur[at]i2pmail.org
 
 pkgname=nrc
-pkgver=0.6.9beta13
+_pkgver=0.6.9
+_channel=beta
+_rel=15
+pkgver=${_pkgver}.${_channel}${_rel}  # -> 0.6.9.beta15  (matches Mullvad style)
 pkgrel=1
-pkgdesc="NoRiskClient Launcher – A Minecraft client from the YouTuber of the same name"
+pkgdesc="NoRiskClient Launcher"
 arch=('x86_64')
 url="https://norisk.gg/"
 license=('GPLv3')
@@ -11,8 +14,8 @@ depends=('glibc' 'gtk3' 'webkit2gtk' 'xdg-utils')
 makedepends=('dpkg')
 options=()
 
-source=('https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.9-beta.13/NoRiskClient-Linux.deb')
-sha256sums=('5cfdf33fae112a3eca22ef6d258169cae64d352d4cf14daebed1288c0bca1a7c')
+source=("https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v${_pkgver}-${_channel}.${_rel}/NoRiskClient-Linux.deb")
+sha256sums=('SKIP')
 
 prepare() {
   dpkg-deb -x "$srcdir/NoRiskClient-Linux.deb" "$srcdir/pkg"
