@@ -1,18 +1,18 @@
 pkgbase = qqmusic-electron
 	pkgdesc = Tencent QQMusic, Run with system Electron.
-	pkgver = 1.1.7
-	pkgrel = 5
+	pkgver = 1.1.8
+	pkgrel = 1
 	url = https://y.qq.com/
 	arch = any
 	license = CC0-1.0
 	makedepends = asar
-	depends = electron37
+	depends = electron38
 	provides = qqmusic
 	conflicts = qqmusic-bin
-	source = qqmusic_1.1.7-5.asar::https://q.askk.cc/qqmusic_1.1.7-1.asar
+	source = qqmusic_1.1.8-1.asar::https://q.askk.cc/qqmusic_1.1.8-1.asar
 	source = qqmusic.desktop
 	source = qqmusic.sh
-	sha512sums = c9b77833523264c3831014f1cdfa03b569fe69f3bebadfd7ae234eb4aede6c14e1b2a1918f538984b8bfecca17dc7f683f96f01a3a2d690376526a8006162d8e
+	sha512sums = 293c88c09e2aef36129f9b557e0be20c9f0bde67ac6b0d39007194c3f09cf4759e0786264ab0822f8131cf1d8d1aafccaee1d0cf05f38de16972cd53b4cc7b13
 	sha512sums = a872d410a02700b66ae9c55ee10a59bc6831caf403f3e62a96b7baa3ea39a8d239a1b829d2b13db4947b97daa9b9eb588deeea05ed125a6ac6892f43d6aa300f
 	sha512sums = 609633590f7b00afc9368c0ff7f63d1fcce77e3642a6085514334b6f26d96be1f8f1243c1ddae62b1ecb03cf8c25779446b74af961276311bd178473370afddc
 
