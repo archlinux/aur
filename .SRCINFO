@@ -1,0 +1,20 @@
+pkgbase = shaderbg-git
+	pkgdesc = A live wallpaper program for Sway and other compositors with wlr-layer-shell support
+	pkgver = r8.027d4f8
+	pkgrel = 1
+	url = https://sr.ht/~mstoeckl/shaderbg
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	depends = libglvnd
+	depends = wayland
+	provides = shaderbg
+	conflicts = shaderbg
+	options = !debug
+	source = git+https://git.sr.ht/~mstoeckl/shaderbg
+	sha256sums = SKIP
+
+pkgname = shaderbg-git
