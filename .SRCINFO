@@ -1,13 +1,13 @@
 pkgbase = nodash-bin
 	pkgdesc = A modern terminal-based project launcher and manager for nvm node projects written in Rust
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/MemerGamer/nodash
 	arch = x86_64
 	license = MIT
 	provides = nodash
 	conflicts = nodash
-	source = https://github.com/MemerGamer/nodash/releases/download/v1.0.3/nodash-linux-v1.0.3
-	sha256sums = 484ca9629a3cb9a88c6d2f3e0736d1d5ec8330fafabf5cf114969fe61e104522
+	source = https://github.com/MemerGamer/nodash/releases/download/v1.0.4/nodash-linux-v1.0.4
+	sha256sums = c057312e9e1dfa7b0ca4781a9e574d0637a88b6815bfdb69691f4fd6c3ec2faf
 
 pkgname = nodash-bin
