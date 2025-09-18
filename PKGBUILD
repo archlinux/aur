@@ -14,10 +14,10 @@ arch=(any)
 url="https://droposs.org/"
 license=('AGPL-3.0-only')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'umu-launcher')
-# source=("git+https://github.com/Drop-OSS/drop-app.git#commit=7e70a17a43f54aa6adc71138a49ec18966eaa903")
-source=('https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.3.tar.gz')
+source=("git+https://github.com/Drop-OSS/drop-app.git#commit=7e70a17a43f54aa6adc71138a49ec18966eaa903")
+# source=('https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.3.tar.gz')
 makedepends=('yarn' 'cargo')
-sha256sums=('9e543fc518e76c5bfc2e43391eb297c0420826eada8909ece60f7cfa7f3553ff')
+sha256sums=('9b61a8bd255253e9cf8e7e3955819347853f125aa22a18ffbd690d98ea91b8e8')
 
 _desktop="
 [Desktop Entry]\n
@@ -33,12 +33,13 @@ Terminal=false\n
 
 prepare() {
 	echo $_desktop > drop-oss-app.desktop
-	cd drop-app-0.3.3/
+	cd drop-app/
 	git submodule update --init --recursive
 }
 
 build() {
-	cd drop-app-0.3.3/
+	cd drop-app/
+	git submodule update --init --recursive
 	yarn
 	export RUSTUP_TOOLCHAIN=nightly
 	CFLAGS+=' -ffat-lto-objects'
@@ -48,9 +49,9 @@ build() {
 package() {
 	echo -e "$_desktop" > drop-oss-app.desktop
 	install -Dm0755 -t "$pkgdir/usr/share/applications" "drop-oss-app.desktop" 
-	cd drop-app-0.3.3
+	cd drop-app
 	cp src-tauri/icons/icon.png ./drop-oss-app.png
-        install -Dm0755 -t "$pkgdir/usr/share/pixmaps" "./drop-oss-app.png"
+    install -Dm0755 -t "$pkgdir/usr/share/pixmaps" "./drop-oss-app.png"
 	install -Dm0755 -t "$pkgdir/usr/bin" "src-tauri/target/release/drop-app"
 	#install -Dm0755 -t "$pkgdir/usr/bin" "drop-app"
 }

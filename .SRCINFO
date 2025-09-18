@@ -17,7 +17,7 @@ pkgbase = drop-oss-app
 	depends = pango
 	depends = webkit2gtk-4.1
 	depends = umu-launcher
-	source = https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 9e543fc518e76c5bfc2e43391eb297c0420826eada8909ece60f7cfa7f3553ff
+	source = git+https://github.com/Drop-OSS/drop-app.git#commit=7e70a17a43f54aa6adc71138a49ec18966eaa903
+	sha256sums = 9b61a8bd255253e9cf8e7e3955819347853f125aa22a18ffbd690d98ea91b8e8
 
 pkgname = drop-oss-app
