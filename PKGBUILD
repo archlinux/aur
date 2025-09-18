@@ -1,8 +1,8 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.10.2.r0.51b7306
-pkgrel=2
+pkgver=0.10.2.r1.89f6c9f
+pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
 url="https://github.com/jmcantrell/${pkgname%-git}"
@@ -37,5 +37,6 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}" || return
+    install -pm644 -Dt "$pkgdir"/usr/share/licenses/"$pkgname" ./LICENSE
     python -m installer --compile-bytecode=1 --destdir="$pkgdir" dist/*.whl
 }
