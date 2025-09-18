@@ -1,7 +1,7 @@
 pkgbase = libdxvk
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = Zlib
@@ -17,11 +17,6 @@ pkgbase = libdxvk
 	makedepends = lib32-sdl2
 	makedepends = lib32-sdl3
 	makedepends = lib32-vulkan-icd-loader
-	provides = libdxvk_dxgi.so
-	provides = libdxvk_d3d8.so
-	provides = libdxvk_d3d9.so
-	provides = libdxvk_d3d10core.so
-	provides = libdxvk_d3d11.so
 	source = libdxvk::git+https://github.com/doitsujin/dxvk.git#tag=v2.7.1
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
@@ -39,6 +34,11 @@ pkgname = libdxvk
 	depends = sdl3
 	depends = glfw
 	depends = vulkan-icd-loader
+	provides = libdxvk_dxgi.so
+	provides = libdxvk_d3d8.so
+	provides = libdxvk_d3d9.so
+	provides = libdxvk_d3d10core.so
+	provides = libdxvk_d3d11.so
 
 pkgname = lib32-libdxvk
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux (32-bit)

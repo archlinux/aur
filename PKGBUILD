@@ -5,7 +5,7 @@
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
@@ -13,8 +13,6 @@ license=(Zlib)
 _depends=(glibc sdl2 sdl3 glfw vulkan-icd-loader)
 _32depends=(lib32-glibc lib32-sdl2 lib32-sdl3 lib32-vulkan-icd-loader)
 makedepends=(git glslang meson ${_depends[@]} ${_32depends[@]})
-provides=(libdxvk_dxgi.so libdxvk_d3d8.so libdxvk_d3d9.so libdxvk_d3d10core.so
-	  libdxvk_d3d11.so)
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
@@ -47,10 +45,12 @@ build() {
 
 	meson compile -C build
 
-	arch-meson -Dbuild_id=true \
+	CFLAGS+=" -m32" CXXFLAGS+=" -m32" \
+	LDFLAGS+=" -m32" arch-meson -Dbuild_id=true \
 	--force-fallback-for=libdisplay-info \
-	--cross-file=lib32 \
+	--pkg-config-path='/usr/lib32/pkgconfig' \
 	-Dnative_glfw=disabled \
+	--libdir=lib32 \
 	"$pkgname" build32
 
 	meson compile -C build32
@@ -58,6 +58,8 @@ build() {
 
 package_libdxvk() {
 	depends=(${_depends[@]})
+	provides=(libdxvk_dxgi.so libdxvk_d3d8.so libdxvk_d3d9.so libdxvk_d3d10core.so
+		libdxvk_d3d11.so)
 	cd "$srcdir"
 
 	meson install -C build --destdir "$pkgdir"
