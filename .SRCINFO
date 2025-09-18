@@ -1,7 +1,7 @@
 pkgbase = mopac
 	pkgdesc = Molecular Orbital PACkage
 	pkgver = 23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openmopac/mopac
 	arch = x86_64
 	license = Apache-2.0

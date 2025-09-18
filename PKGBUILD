@@ -3,7 +3,7 @@
 
 pkgname=mopac
 pkgver=23.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Molecular Orbital PACkage'
 arch=(x86_64)
 url='https://github.com/openmopac/mopac'
@@ -26,8 +26,8 @@ build(){
     local options=(
       -DCMAKE_BUILD_TYPE=None
       -DCMAKE_INSTALL_PREFIX=/usr
-      -DCMAKE_SKIP_RPATH=ON
-      -DF2003_INTRINSICS=ON
+      -DCMAKE_SKIP_INSTALL_RPATH=TRUE
+      -DF2003_INTRINSICS=TRUE
     )
     cmake -S. -Bbuild "${options[@]}"
     cmake --build build
