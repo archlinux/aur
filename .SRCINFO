@@ -1,0 +1,19 @@
+pkgbase = tt-topology
+	pkgdesc = Tenstorrent Topology (TT-Topology) is a command line utility used to flash multiple NB cards on a system to use specific eth routing configurations.
+	pkgver = 1.2.13
+	pkgrel = 1
+	url = https://github.com/tenstorrent/tt-topology
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-elasticsearch
+	depends = python-pydantic
+	depends = python-tt-tools-common
+	depends = python-networkx
+	provides = tt-topology
+	source = tt-topology::git+https://github.com/tenstorrent/tt-topology.git
+	sha256sums = SKIP
+
+pkgname = tt-topology
