@@ -6,7 +6,7 @@
 
 pkgname=musescore3
 pkgver=3.6.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Create, play and print beautiful sheet music -- Version 3; End-of-life'
 arch=(x86_64)
 url=https://musescore.org/
@@ -38,7 +38,7 @@ makedepends=(
   texlive-core
 )
 optdepends=('lame: MP3 export')
-provides=('musescore=3.6.2')
+provides=('musescore3=3.6.2')
 conflicts=('musescore3-git')
 _tag=3224f342d12f4af8ea782e929c49f5ce85f97da6
 source=("git+https://github.com/musescore/MuseScore.git#tag=${_tag}"
