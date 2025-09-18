@@ -1,6 +1,5 @@
 src/
-pass-secret-service
-pass-secret-service.service
+pass-secret-service*
 org.freedesktop.secrets.service
 *.pkg.tar.zst
 pkg/
