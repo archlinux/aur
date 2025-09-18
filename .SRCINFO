@@ -1,0 +1,18 @@
+pkgbase = dela-git
+	pkgdesc = A task runner that provides discovery for task definitions in various formats
+	pkgver = r218.90fc83b
+	pkgrel = 1
+	url = https://github.com/aleyan/dela
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = dela
+	conflicts = dela
+	source = dela-git::git+https://github.com/aleyan/dela.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dela-git
