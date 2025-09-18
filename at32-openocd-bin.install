@@ -1,0 +1,7 @@
+
+post_install() {
+    echo "> Reloading udev rules"
+    # https://wiki.archlinux.org/index.php/udev#Loading_new_rules
+    udevadm control --reload
+    udevadm trigger
+}
