@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=tt-flash-git
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.4.5.r3.gc45c7e6
+pkgrel=1
 pkgdesc="Tenstorrent Firmware Update Utility"
 arch=('any')
 url='https://github.com/tenstorrent/tt-flash'
@@ -26,4 +26,5 @@ build() {
 package() {
     cd tt-flash
     python -m installer --destdir="$pkgdir" dist/*.whl
+    rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 }

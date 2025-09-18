@@ -1,7 +1,7 @@
 pkgbase = tt-flash-git
 	pkgdesc = Tenstorrent Firmware Update Utility
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.4.5.r3.gc45c7e6
+	pkgrel = 1
 	url = https://github.com/tenstorrent/tt-flash
 	arch = any
 	license = Apache
