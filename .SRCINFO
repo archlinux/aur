@@ -14,7 +14,7 @@ pkgbase = tt-topology
 	depends = python-networkx
 	provides = tt-topology
 	conflicts = tt-topology
-	source = tt-topology::git+https://github.com/tenstorrent/tt-topology.git
+	source = tt-topology::git+https://github.com/tenstorrent/tt-topology.git#tag=v1.2.13
 	sha256sums = SKIP
 
 pkgname = tt-topology
