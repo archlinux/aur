@@ -1,4 +1,4 @@
-# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Contributor: Ivan Batrakov <blackfan321 at disroot dot org>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
@@ -11,7 +11,7 @@ url="https://github.com/alexanderlukanin13/coolname"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-mock' 'python-six' 'python-pytest-runner')
+checkdepends=('python-six' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/coolname/coolname-$pkgver.tar.gz")
 sha256sums=('6c5d5731759104479e7ca195a9b64f7900ac5bead40183c09323c7d0be9e75c7')
 
@@ -22,7 +22,7 @@ build() {
 
 check() {
 	cd "coolname-$pkgver"
-	python setup.py pytest
+	pytest
 }
 
 package() {
