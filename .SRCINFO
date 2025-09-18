@@ -1,7 +1,7 @@
 pkgbase = python-tt-tools-common-git
 	pkgdesc = Common utilities shared across Tentorrent tools.
 	pkgver = 1.4.28.r0.gf27b17b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenstorrent/tt-tools-common
 	arch = any
 	license = Apache
@@ -21,6 +21,7 @@ pkgbase = python-tt-tools-common-git
 	depends = python-pydantic
 	depends = python-luwen
 	provides = python-tt-tools-common
+	conflicts = python-tt-tools-common
 	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git
 	sha256sums = SKIP
 
