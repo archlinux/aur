@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ssh-list
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A SSH connection manager with a TUI interface"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5bebf8746c13f0ea33b28e2d53fb6afa4fdfa521dfc42514a0cb797fb7e35ae7')
+sha256sums=('edc37f3fba6780e762027a82fa8508e2a9d01351e3402db81de263d47a22d8ae')
 
 prepare() {
   cd "$pkgname-$pkgver"

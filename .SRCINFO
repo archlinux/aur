@@ -1,13 +1,13 @@
 pkgbase = ssh-list
 	pkgdesc = A SSH connection manager with a TUI interface
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/akinoiro/ssh-list
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
-	source = ssh-list-1.4.0.tar.gz::https://github.com/akinoiro/ssh-list/archive/v1.4.0.tar.gz
-	sha256sums = 5bebf8746c13f0ea33b28e2d53fb6afa4fdfa521dfc42514a0cb797fb7e35ae7
+	source = ssh-list-1.5.0.tar.gz::https://github.com/akinoiro/ssh-list/archive/v1.5.0.tar.gz
+	sha256sums = edc37f3fba6780e762027a82fa8508e2a9d01351e3402db81de263d47a22d8ae
 
 pkgname = ssh-list
