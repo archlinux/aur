@@ -1,6 +1,6 @@
 # Maintainer: AndreLeclercq <andre.leclercq.io@protonmail.com>
 pkgname=sshctl-git
-pkgver=0.1.6.2
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="SSH connection manager CLI tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('git' 'rust')
 provides=('sshctl')
 conflicts=('sshctl')
-source=("git+https://github.com/AndreLeclercq/sshctl.git#tag=v0.1.6.2")
+source=("git+https://github.com/AndreLeclercq/sshctl.git")
 sha256sums=('SKIP')
 
 build() {
