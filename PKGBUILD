@@ -14,14 +14,14 @@ pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
-license=(GPL-3.0-or-later MPL-2.0)
+license=(MPL-2.0) # see about:license
 depends=(
   alsa-lib
   at-spi2-core
   bash
   cairo
   dbus
-  dbus-glib
+  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -43,7 +43,6 @@ depends=(
   libxrender
   libxss
   libxt
-  libxtst
   mime-types
   nspr
   nss
