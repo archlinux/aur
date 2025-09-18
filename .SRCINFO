@@ -1,0 +1,18 @@
+pkgbase = auto-editor-bin
+	pkgdesc = A command line application for automatically editing video and audio.
+	pkgver = 29.0.5
+	pkgrel = 1
+	url = https://auto-editor.com/
+	arch = x86_64
+	license = Unlicense
+	depends = glibc
+	depends = gcc-libs
+	optdepends = yt-dlp: download and use URLs as inputs
+	optdepends = xdg-utils: automatically open completed files with xdg-open
+	provides = auto-editor
+	conflicts = auto-editor
+	options = !debug
+	source = auto-editor-29.0.5-bin::https://github.com/WyattBlue/auto-editor/releases/download/29.0.5/auto-editor-linux-x86_64
+	sha256sums = 86ab1e4e38de988e08220363871690535eba9d1a904e4fd92ccf0f139bfeec14
+
+pkgname = auto-editor-bin
