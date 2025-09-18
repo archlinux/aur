@@ -1,7 +1,7 @@
 pkgbase = tt-smi
 	pkgdesc = Tenstorrent console based hardware information program
 	pkgver = 3.0.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tenstorrent/tt-smi
 	arch = any
 	license = Apache
