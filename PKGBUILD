@@ -1,13 +1,13 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
-# jdk-25+36_openj9-0.55.0-m1
+# jdk-25+36_openj9-0.55.0-m2
 pkgname=jdk25-openj9-bin
 _jdkver=25
 _jdkminor=0
 _jdkpatch=0
 _jdksubpatch=0
 _jdkfullver=${_jdkver} #.${_jdkminor}.${_jdkpatch}.${_jdksubpatch}
-_openj9ver=0.55.0-m1
+_openj9ver=0.55.0-m2
 _buildvershort=36
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
@@ -29,7 +29,7 @@ conflicts=("jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('7ba91117d8f63a112d0d93e04669e5f966cb7ecc3633733732f8657f6c16b159')
+sha256sums=('8e6fe1ebe59e8bb21d51f336d371749efda52f01c7f29f9c6d81743fb408c094')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
