@@ -4,14 +4,13 @@ _binname=threema
 _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
-pkgver=1.2.48
-pkgrel=2
+pkgver=1.2.49
+pkgrel=1
 _threema_web_ver=2.6.2 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL-3.0-only')
-# Upstream still uses electron 32.2.0, but electron 32 has been EOL since 2025-03-04
-_electron=electron36
+_electron=electron37
 depends=(${_electron})
 makedepends=(git nodejs-lts-iron npm)
 source=(
@@ -20,7 +19,7 @@ source=(
   "threema.desktop"
 )
 sha256sums=(
-  'bd94de9c014f2f0a6fc96e5a00a15d90a0c049d885c6a16a228eff5d65761c35'
+  '07e8393a32170a96eb40d3e10a9b8f8fed03cc3a41d3411b9baa21db1a9d473d'
   '038b2dbea414020d8bd2a11b18896e6b06348f82c7b963d8b3fe983a23b658eb'
   '9fed7fdd6f9b6e4b53caafc9ef8608b7bd73c1272ab4380d5d6839c3c60deb8b'
 )
