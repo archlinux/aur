@@ -5,71 +5,69 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 # Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: Hiroyuki Komatsu: providing Japan Post zipcode snapshots
 
 ## Mozc compile option
 _bldtype='Release'
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20250816
+_utdicdate=20250910
 _dict=(alt-cannadic
-       edict2
-       jawiki
-       neologd
-       personal-names
-       place-names
-       skk-jisyo
-       sudachidict)
+    edict2
+    jawiki
+    neologd
+    personal-names
+    place-names
+    skk-jisyo
+    sudachidict)
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.31.5851.102.20250816
+pkgver=2.31.5851.102.20250910
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus')
-source=(git+https://github.com/fcitx/mozc.git#commit=9dc82478fb74ffbb5ea4ddde84350db68ee89754
-        # 2023-07-13: osdn.net is unstable due to Amazon
-        # "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
-        # "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
-        git+https://github.com/abseil/abseil-cpp.git
-        git+https://chromium.googlesource.com/breakpad/breakpad
-        git+https://github.com/google/googletest.git
-        git+https://chromium.googlesource.com/external/gyp
-        git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git
-        git+https://github.com/open-source-parsers/jsoncpp.git
-        git+https://github.com/google/protobuf.git
-        git+https://github.com/utuhiro78/merge-ut-dictionaries.git
-        jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2
-        0001-remove-download.patch)
+source=(git+https://github.com/fcitx/mozc.git#commit=d1a070e6611640686979dc22e1308dc5606c8271
+    "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/ken_all.zip"
+    "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/jigyosyo.zip"
+    git+https://github.com/abseil/abseil-cpp.git
+    git+https://chromium.googlesource.com/breakpad/breakpad
+    git+https://github.com/google/googletest.git
+    git+https://chromium.googlesource.com/external/gyp
+    git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git
+    git+https://github.com/open-source-parsers/jsoncpp.git
+    git+https://github.com/google/protobuf.git
+    git+https://github.com/utuhiro78/merge-ut-dictionaries.git
+    jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2
+    0001-remove-download.patch)
 noextract=(jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2)
 for dict in "${_dict[@]}"; do
     source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.bz2")
 done
 sha512sums=('SKIP'
-            'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
-            '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '19ccbab5f66c1473627f12770b9afddc09d4d3f29b66e23b5d9d11d5ae2180e8b92633f5245be2e43f05fcc742df2544e63cd9fcccd61bb0df0e4495ab84beec'
-            '09b86b7527d45423090645a6763bb5d2d2bfe105a1db3736a2b7d48edf73dd2a6a4da4ae8ceb62bf26da210d07a6e6f7260dea7e01539e7746731d898793a07b'
-            'a28e2d4b888a3df58b95bc171ba722477e74a2c0384e977873387a6c507a5c3497a7baf2504ce66b890976dd63a2dc1a60c5158d3bdd5a2e5383b5936023c45d'
-            '1376030304101b45a85f08ba74a366f4ed2f5b80b5abc18ee4f776919acccca0dca652659a6772d38b016341102a6f8530de21cf721de614eb77155996da34db'
-            '2c3317d00faa52980c0069f0655e83681606b6e259044129149bff2ba1b7f17dbfdeeaad832b6d0b2f4935c7fd40bfefec54bbfe04bf189c5868847cc63065f6'
-            'eb240551d9a491c85afc2f1f361118b673572ea995336dad4185835d9e006451ef403a9515254fd9db1863d1ea67907051765f375a288f9c8195fac8ac3efcc4'
-            '99b2a4d8777c693fd9f16ed041b22ef8b96184abcccc25bfa514d96edb0812e448e9b0af146924a3f81a3fe0bccf9dc91c336512cbc2302d7ce0ff921d93d90b'
-            '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d'
-            '743848cdf45a90d040c61c0d1d33915b0b3fc46deb702638668d3b2006b7e822a0729edb63a3bf67ded546f6c6bde2560580eb7eac7c0a3c0b4caaa6df4704a3')
+    '00aef90b785a703d536813616eeec7057eeaf681b83bc35c6c4b597df298ccb6bbd97f97845c7570788e7f063d94b4c62e359ccc698fcaeff17ce472bc1b9225'
+    'ec76f0c9b02a8f0a8633d752ebdb80ac7c4d5c71dfd9916cc9140d446bae8e09755db8d40eca87fbb08d21c31db80ec977f307c497f0d731087c73a1df9ea0c7'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '5d66953bc816aeba63a166e191f7453a561f755bfd57f611f867378583e18c2aaa25d78340b641070e28672659ed241fd9252010df3d9a64dff79f0b68f613c7'
+    '8a91bc01402aee8dc1bc3d572da20d4e787b714b1d4ef8c9fb7fbe56dbc25c3f956e508a663f67bf685af3ef913ec68b0b991116f44d846afdd130251f4a6ba7'
+    '09b86b7527d45423090645a6763bb5d2d2bfe105a1db3736a2b7d48edf73dd2a6a4da4ae8ceb62bf26da210d07a6e6f7260dea7e01539e7746731d898793a07b'
+    'a28e2d4b888a3df58b95bc171ba722477e74a2c0384e977873387a6c507a5c3497a7baf2504ce66b890976dd63a2dc1a60c5158d3bdd5a2e5383b5936023c45d'
+    '2cb20d0e0352278f4651526f45576401a0fd63970c9c6e2623e70b0b00df230b6b2da4f1d316e60836ca0cfd867850a8e401ab8bf3caa7217d9cee92e1239283'
+    '2c3317d00faa52980c0069f0655e83681606b6e259044129149bff2ba1b7f17dbfdeeaad832b6d0b2f4935c7fd40bfefec54bbfe04bf189c5868847cc63065f6'
+    '3ecb1cadde93c8d986378894a3f99df12168b1849acb88e36a75909af16fbbb999ca1c263b719a84d0e0ef8572047d1e2071382d77f17bb6df75fd42d9ef3449'
+    'e4fcd96439328eaade7223bc815ed286057b93029df4088521c4b5f78a7da320a9cd0831443a40aacc883d0b3da386d88a20d7c914f0d5df2d33c5342c3f1718'
+    '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d'
+    '5b036ed1b3ed4f3613bbd936ed7661830a0bb29e8f2f964aabcfb9ffc4c864c1cf775c27fc2f6f79d8b8d7ae2ae2d94b3ccf757fb1a2de0b1e7fc3d2227a0bd1')
 
 pkgver() {
     cd "${srcdir}/mozc" || exit
@@ -78,6 +76,8 @@ pkgver() {
 }
 
 prepare() {
+    mv KEN_ALL.CSV x-ken-all.csv
+
     cd "$srcdir/mozc" || exit
     git config -f .gitmodules submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
     git config -f .gitmodules submodule.src/third_party/breakpad.url "$srcdir/breakpad"
@@ -104,14 +104,16 @@ prepare() {
 
     # UT Dictionary steps, rewrite of `sh make.sh`
     msg 'UT Dictionary steps, rewrite of `sh make.sh`'
-    cd "${srcdir}/merge-ut-dictionaries/src/merge" || exit
+    cd "${srcdir}/merge-ut-dictionaries" || exit
+    patch -Np1 -i "${srcdir}/0001-remove-download.patch"
+    cd "src/merge" || exit
     msg '1. Append dictionaries'
     for dict in "${_dict[@]}"; do
         cat "$srcdir/mozcdic-ut-${dict}-${_utdicdate}.txt" >>mozcdic-ut.txt
     done
     msg '2. Patch python scripts to avoid downloading'
-    patch -Np1 -i "${srcdir}/0001-remove-download.patch"
     mv -v "$srcdir/jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2" jawiki-latest-pages-articles-multistream-index.txt.bz2
+    cp -a "$srcdir/mozc" "./mozc-master"
     msg '3. Run the python scripts as in original make.sh, it may take some time...'
     python merge_dictionaries.py mozcdic-ut.txt
     msg '4. Finally add UT dictionary to mozc source'
