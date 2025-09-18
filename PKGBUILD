@@ -3,8 +3,8 @@
 _pkgname=xlibre-server
 _orgpkgname=xlibre-xserver
 pkgname=$_pkgname-bin
-pkgver=25.0.0.9
-pkgrel=2
+pkgver=25.0.0.11
+pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)"
 arch=(x86_64)
 url="https://github.com/X11Libre/xserver"
