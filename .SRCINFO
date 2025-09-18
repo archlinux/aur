@@ -1,6 +1,6 @@
 pkgbase = tt-burnin-git
 	pkgdesc = Tenstorrent Burnin (TT-Burnin) is a command line utility to run a high power consumption workload on TT devices.
-	pkgver = 0.1.1
+	pkgver = v0.2.4.r0.g809f293
 	pkgrel = 1
 	url = https://github.com/tenstorrent/tt-burnin
 	arch = any

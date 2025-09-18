@@ -1,7 +1,7 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=tt-burnin-git
-pkgver=0.1.1
+pkgver=v0.2.4.r0.g809f293
 pkgrel=1
 pkgdesc="Tenstorrent Burnin (TT-Burnin) is a command line utility to run a high power consumption workload on TT devices."
 arch=('any')
@@ -26,4 +26,5 @@ build() {
 package() {
     cd tt-burnin
     python -m installer --destdir="$pkgdir" dist/*.whl
+    rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 }
