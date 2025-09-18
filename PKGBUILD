@@ -1,7 +1,7 @@
 # Maintainer: poscat
 
 pkgname=mrustc-git
-pkgver=v0.10.1.r259.g1827564
+pkgver=v0.11.2.r59.g06b87d1
 pkgrel=1
 pkgdesc='Alternative rust compiler written in C++'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=(mrustc)
 source=('git+https://github.com/thepowersgang/mrustc.git'
         'mrustc.sh')
 sha256sums=('SKIP'
-            'fdec13fa9f2b75e3950d2874ab1e1d121af556609a4ebca290394d4674530746')
+            '836cbffc4be7c5267465e4887e5336918a5757397405271d9fc6a6e0e6240d5b')
 
 pkgver() {
 	cd "$srcdir/mrustc"
@@ -24,7 +24,8 @@ pkgver() {
 build() {
 	cd "$srcdir/mrustc"
         export PARLEVEL=$(nproc)
-        export RUSTC_VERSION=1.54.0 MRUSTC_TARGET_VER=1.54
+        export RUSTC_VERSION=1.74.0 MRUSTC_TARGET_VER=1.74 OUTDIR_SUF=-1.74.0
+        unset MRUSTC_LIBDIR
         make -f minicargo.mk bin/mrustc bin/minicargo LIBS
 }
 
@@ -33,7 +34,7 @@ package() {
 	install -Dt "$pkgdir/usr/bin" bin/mrustc bin/minicargo
 
         install -d "$pkgdir"/usr/share/mrustc
-        cp -r output-1.54.0/*rlib{,.o,.hir} "$pkgdir"/usr/share/mrustc
+        cp -r output-1.74.0/*rlib{,.o,.hir} "$pkgdir"/usr/share/mrustc
 
         install -Dt "$pkgdir"/etc/profile.d "$srcdir"/mrustc.sh
 }
