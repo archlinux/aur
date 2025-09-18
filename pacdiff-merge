@@ -10,16 +10,18 @@ for cmd in "${REQUIRED_CMDS[@]}"; do
 done
 
 export SUDO_EDITOR="$MERGE_TOOL"
+mapfile -t pacfiles < <(/usr/bin/pacdiff --output)
+if [[ ${#pacfiles[@]} -eq 0 ]]; then
+    echo "No .pacnew files found. Nothing to merge."
+    if [[ -t 0 ]]; then
+        read -rp "Press enter to finish."
+    fi
+    exit 0
+fi
 
 echo "Creating pre-merge snapshot..."
 snap=$(sudo snapper create -d "Before PacDiff merge" -p)
 echo "Created snapshot ${snap}"
-
-mapfile -t pacfiles < <(/usr/bin/pacdiff --output)
-if [[ ${#pacfiles[@]} -eq 0 ]]; then
-    echo "No .pacnew files found."
-    exit 0
-fi
 
 for i in "${pacfiles[@]}"; do
     echo -e "\nMerging ${i} ..."
