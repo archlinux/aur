@@ -1,34 +1,58 @@
 # Maintainer: Peter Cai <peter@typeblog.net>
+# Contributor: septs <github@septs.pw>
+# Contributor: Coelacanthus <uwu@coelacanthus.name>
 
 pkgname=lpac-git
-pkgver=r189.596e78b
+pkgver=r395.57c175d90052
 pkgrel=1
-pkgdesc="Local Profile Agent (LPA) for eSIM cards via PC/SC readers, or AT / APDU commands over stdio."
+pkgdesc="Local Profile Agent (LPA) for eSIM cards."
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/estkme-group/lpac"
 license=('AGPL-3.0-only AND LGPL-2.0-only AND MIT')
-depends=(curl pcsclite)
-makedepends=(cmake)
+depends=(curl cjson)
+optdepends=(
+	'pcsclite: PC/SC support'
+	'libqmi: QMI support'
+	'libmbim: MBIM support'
+)
+makedepends=(
+	cmake
+	pcsclite
+	libqmi
+	libmbim
+	ninja
+)
 provides=(lpac)
 conflicts=(lpac)
-source=($pkgname::git+https://github.com/estkme-group/lpac)
+source=("$pkgname::git+$url.git")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$srcdir/$pkgname"
+	COMMIT_COUNT="$(git rev-list --count HEAD)"
+	HEAD_SHA="$(git rev-parse --short=12 HEAD)"
+	echo "r$COMMIT_COUNT.$HEAD_SHA"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  # Do not leave reference to build path
-  CFLAGS="-fmacro-prefix-map=$PWD=/fake/root" cmake . \
-    -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
-    -DLPAC_DYNAMIC_LIBEUICC=ON -DLPAC_DYNAMIC_DRIVERS=on
-  make
+	local cmake_options=(
+		-B build
+		-S "$pkgname"
+		-G Ninja
+		-DCMAKE_INSTALL_PREFIX=/usr
+		-DUSE_SYSTEM_DEPS=ON
+		-DLPAC_DYNAMIC_DRIVERS=ON
+		-DLPAC_DYNAMIC_LIBEUICC=ON
+		-DLPAC_WITH_APDU_AT=ON
+		-DLPAC_WITH_APDU_MBIM=ON
+		-DLPAC_WITH_APDU_PCSC=ON
+		-DLPAC_WITH_APDU_QMI=ON
+		-DLPAC_WITH_APDU_QMI_QRTR=ON
+	)
+	cmake "${cmake_options[@]}"
+	ninja -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" ninja -C build install
 }
