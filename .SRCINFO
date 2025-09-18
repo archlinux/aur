@@ -1,6 +1,6 @@
 pkgbase = python-anthropic
 	pkgdesc = Python library that provides convenient access to the Anthropic REST API
-	pkgver = 0.67.0
+	pkgver = 0.68.0
 	pkgrel = 1
 	url = https://github.com/anthropics/anthropic-sdk-python
 	arch = any
@@ -25,10 +25,12 @@ pkgbase = python-anthropic
 	depends = python-sniffio
 	depends = python-tokenizers
 	depends = python-typing_extensions
+	depends = python-docstring-parser
+	depends = python-inline-snapshot
 	optdepends = python-boto3: for Anthropic Bedrock API support
 	optdepends = python-botocore: for Anthropic Bedrock API support
 	optdepends = python-google-auth: for Anthropic Vertex API support
-	source = python-anthropic-0.67.0.tar.gz::https://github.com/anthropics/anthropic-sdk-python/archive/v0.67.0.tar.gz
-	sha256sums = d14db3fdf53200fbaac3f83365e3e94e6c7e36990412ab46ceff92c470b1af82
+	source = python-anthropic-0.68.0.tar.gz::https://github.com/anthropics/anthropic-sdk-python/archive/v0.68.0.tar.gz
+	sha256sums = ecd5756d1b8c8421ef7de5640f4d4607a0c357eef67389d8370acb54cee395d6
 
 pkgname = python-anthropic
