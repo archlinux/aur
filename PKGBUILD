@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-xnest
 _orgpkgname=xlibre-xserver-xnest
 pkgname=$_pkgname-bin
-pkgver=25.0.0.9
+pkgver=25.0.0.11
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org nested X server that runs as an X application (binary release)"
 arch=(x86_64)
