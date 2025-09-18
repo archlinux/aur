@@ -11,14 +11,21 @@ url="https://github.com/jason17055/micropolis-java"
 license=("custom:GPL3")
 makedepends=("apache-ant" "java-runtime>=7")
 depends=("java-environment>=7")
+provides=("micropolisj" "micropolis-java-git" "micropolisj-git")
 source=("git+https://github.com/jason17055/micropolis-java.git"
 	"LICENSE"
+	"0001-Update-build.xml.patch"
 	"micropolis-java.sh"
 	"micropolis-java.desktop")
 
 pkgver() {
 	cd "${pkgname}"
 	echo 1.6.r$(git rev-list --count master) | sed 's|-|.|g' | sed 's|v||g'
+}
+
+prepare() {
+	cd "${pkgname}"
+	patch -Np1 < ../0001-Update-build.xml.patch
 }
 
 build() {
@@ -53,5 +60,6 @@ package(){
 
 md5sums=('SKIP'
          'b95118d1c60c6649ab9403cbaa4abb86'
+	 'e86ada5ce25f6016597844816ba41379'
          '666a4f5a7641791379f005b26e4851ff'
          '5d0667a3049111b4e7e9f07f1992bc01')
