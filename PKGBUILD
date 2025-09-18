@@ -2,7 +2,7 @@
 
 _gemname=solargraph
 pkgname=ruby-solargraph
-pkgver=0.56.2
+pkgver=0.57.0
 pkgrel=3
 pkgdesc="A Ruby language server"
 arch=("any")
@@ -18,12 +18,14 @@ depends=(
   ruby-kramdown-parser-gfm
   ruby-observer
   ruby-parser
+  ruby-prism
   ruby-rbs
   ruby-reverse_markdown
   ruby-rubocop
   ruby-thor
   ruby-tilt
   ruby-yard
+  ruby-yard-activesupport-concern
   ruby-yard-solargraph
 )
 makedepends=(rubygems)
@@ -33,12 +35,12 @@ license=("MIT")
 options=(!emptydirs)
 source=(
   https://rubygems.org/downloads/$_gemname-$pkgver.gem
-  remove-prism-gemspec.patch
-  update-rbs-dependency.patch
+  lower-prism-version-requirement.patch
+  lower-rubocop-version-requirement.patch
 )
-sha256sums=('b3cc0b3973071d7206238a2bcea7c254deed3ed37807f4440cadf0452f7752b8'
-            '0b80b3a682cda22e78970a0c9ad75f12eef89d60a2a0a770807a73685093dfe2'
-            '2d6b412e48a526a0e87f2bacb1d645363a1f6e08355c7cfeb5f6378add6eec4c')
+sha256sums=('87a3a0ec974aba63430ea7a23dcf1fda32d705841a2176ffd32394bdc4a1a24c'
+            'dd01bca2f3e4427100da46064570f87776d5d6f2145c1d6e6503ebc2141f2829'
+            'd9ed9b5f646cf329eb6f688817e99f0a3157e18916ec38f0016491d4faaf9ac9')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -53,6 +55,6 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
   cd "$pkgdir"
-  cat "$srcdir/remove-prism-gemspec.patch" | patch -p1
-  cat "$srcdir/update-rbs-dependency.patch" | patch -p1
+  cat "$srcdir/lower-prism-version-requirement.patch" | patch -p1
+  cat "$srcdir/lower-rubocop-version-requirement.patch" | patch -p1
 }
