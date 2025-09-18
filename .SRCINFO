@@ -1,7 +1,7 @@
 pkgbase = dash-editline-git
 	pkgdesc = POSIX compliant shell that aims to be as small as possible. (Dynamic libedit support)
 	pkgver = 0.5.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.kernel.org/pub/scm/utils/dash/dash.git
 	arch = x86_64
 	license = BSD
