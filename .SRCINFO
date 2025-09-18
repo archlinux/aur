@@ -14,6 +14,7 @@ pkgbase = tt-flash-git
 	depends = python-tomli
 	depends = python-tt-tools-common
 	provides = tt-flash
+	conflicts = tt-flash
 	source = tt-flash::git+https://github.com/tenstorrent/tt-flash.git
 	sha256sums = SKIP
 
