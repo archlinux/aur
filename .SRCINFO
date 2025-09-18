@@ -1,6 +1,6 @@
 pkgbase = expert-git
 	pkgdesc = Official Elixir Language Server Protocol implementation
-	pkgver = r786.e9d69dd3
+	pkgver = r788.dca68d8d
 	pkgrel = 1
 	url = https://expert-lsp.org/
 	arch = x86_64
