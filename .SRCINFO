@@ -1,0 +1,18 @@
+pkgbase = sfpi-bin
+	pkgdesc = Tenstorrent SFPU programming interface
+	pkgver = 6.21.0
+	pkgrel = 1
+	url = https://github.com/tenstorrent/sfpi
+	arch = x86_64
+	license = Apache-2.0
+	license = GPLv2
+	makedepends = tar
+	makedepends = xz
+	depends = glibc
+	provides = sfpi
+	conflicts = sfpi
+	options = !strip
+	source = https://github.com/tenstorrent/sfpi/releases/download/v6.21.0/sfpi_6.21.0_x86_64.txz
+	sha256sums = SKIP
+
+pkgname = sfpi-bin
