@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v6.1.1
-Build: posix/66-1529-gdc29bfc0a71 (17)
+Version: v6.2.0
+Build: posix/67-1149-gdd8daba24a1 (30)
 
-Date: 7th April 2025
+Date: 8th September 2025
 
-Extensible Virtual Display Interface version included: v1.14.9-2 (248b223)
+Extensible Virtual Display Interface version included: v1.14.11-0 (34da6e30)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.14.9-2 (248b223)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v6.1.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v6.2.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
 
@@ -45,10 +45,22 @@ I.  Future development
 C.  Bugs fixed in this release
 ==============================
 
+C.12 Changes in 6.2.0 release
+-----------------------------
+- Compatibility with evdi-dkms(>=1.12.0) and libevdi1(>=1.12.0) community debian packages (PS-4882)
+- Support for kernel up to 6.16
+- Added preliminary support for kernel 6.17
+- Weston-DisplayLink session now appears in GDM on Ubuntu when Weston is installed. (PS-4882)
+- DL-7xxx: Some monitors emits noise when changing resolution or frequency (VIFR-6027)
+- DL-7xxx: Resolved an issue where certain monitors could intermittently blink during normal operation (VIFR-6380)
+- DL-7xxx: Addressed an issue preventing some monitors from being activated (VIFR-6412)
+- DL-7xxx: Monitors interoperability issues (VIFR-6199, VIFR-6200, VIFR-6278)
+- DL-7xxx: Fixed driver stability issues that could lead to unexpected splash screen apperance during cold boot (VIFR-5828)
+
 C.11 Changes in 6.1.1 release
 -----------------------------
 - DL-7xxx series: Improved splash screen functionality. (WS-8450, WS-7209, VIFR-5303, VIFR-4658)
-- DL-7xxx series: HDMI cannot output correct resolution. (VIFR-5301)
+- DL-7xxx series: HDMI cannot output correct resoluion. (VIFR-5301)
 - DL-7xxx series: Support for 2.5G LAN connection. (WS-6934)
 - DL-6xxx series: Avoid blanking extended display while host PC is under heavy load. (VIFR-5507)
 
@@ -154,7 +166,7 @@ This release has been prepared to be compatible with Ubuntu 25.04, 24.04, 22.04 
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
-Supported Linux Kernel version range is from 4.15 to 6.14.
+Supported Linux Kernel version range is from 4.15 to 6.15.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
