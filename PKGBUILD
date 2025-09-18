@@ -8,7 +8,7 @@ pkgrel=6
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
-license=(GPL-2.0-only)
+license=(GPL-2.0-or-later)
 depends=(bash
          gcc-libs
          glibc
