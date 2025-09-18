@@ -14,6 +14,7 @@ pkgbase = python-luwen
 	makedepends = python-installer
 	makedepends = protobuf
 	provides = python-luwen
+	conflicts = python-luwen
 	source = luwen::git+https://github.com/tenstorrent/luwen.git
 	sha256sums = SKIP
 

@@ -10,6 +10,7 @@ license=('Apache')
 makedepends=(gcc rust make python python-pip maturin python-installer protobuf)
 depends=()
 provides=("python-luwen")
+conflicts=("python-luwen")
 source=("luwen::git+https://github.com/tenstorrent/luwen.git")
 sha256sums=('SKIP')
 
