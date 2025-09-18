@@ -8,6 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://thijzert123.github.io/packrinth"
 license=('MIT')
 makedepends=(cargo)
+depends=(gcc-libs)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('4dee86d4c9056b4b358cf61cb975650995ed11f9a728b7fa3b97eed77d26d25f')
 

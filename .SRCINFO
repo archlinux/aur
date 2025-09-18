@@ -9,6 +9,7 @@ pkgbase = packrinth
 	arch = armv7h
 	license = MIT
 	makedepends = cargo
+	depends = gcc-libs
 	source = packrinth-0.7.3.tar.gz::https://static.crates.io/crates/packrinth/packrinth-0.7.3.crate
 	sha256sums = 4dee86d4c9056b4b358cf61cb975650995ed11f9a728b7fa3b97eed77d26d25f
 
