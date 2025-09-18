@@ -1,9 +1,9 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 pkgname=shadps4
-pkgver=0.10.0
+pkgver=0.11.0
 _pkgname=shadPS4
-pkgrel=2
+pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
@@ -57,14 +57,19 @@ source=(
 	"git+https://github.com/shadps4-emu/ext-imgui.git"
 	"git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
+	"git+https://github.com/shadps4-emu/ext-hwinfo"
+	"git+https://github.com/shadps4-emu/ext-libusb.git"
 )
-b2sums=('a379a021861c2e87690f9993ac3e6b8951eb712bc18f8dbb14d002a695f70df6414ca819aaafcc334ddb554d4c80417cbfe22a31a9beb6d00a398f5d7eec41b3'
+b2sums=('95f369b4cd97757730b8f0f36c94ab0a7b36a6297e7291643943049733cb05bc939776152d4ddb68941ef948e399b113f59ed3e3773e591c4ef302d622f74def'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP')
+
 
 prepare() {
     cd "$_pkgname"
@@ -74,6 +79,8 @@ prepare() {
 	git config submodule.externals/sirit.url "../sirit"
 	git config submodule.externals/tracy.url "../tracy"
 	git config submodule.externals/zydis.url "../zydis"
+	git config submodule.externals/ext-libusb.url "../ext-libusb"
+	git config submodule.externals/hwinfo.url "../ext-hwinfo"
     git -c protocol.file.allow=always submodule update
 
 }
@@ -101,7 +108,6 @@ package() {
 		'libpng16.so'
 		'libswresample.so'
 		'libswscale.so'
-		'libusb-1.0.so'
 		'libuuid.so'
 		'libxxhash.so'
 		'libz.so'
