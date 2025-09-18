@@ -9,7 +9,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.30.0
+pkgver=2.31.0
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -45,6 +45,7 @@ makedepends=(
   'python-yaml'
   'qt6-tools'
   'rust'
+  'llvm-libs'
 )
 optdepends=(
   'qt6-wayland: for Wayland support'
@@ -52,13 +53,13 @@ optdepends=(
 
 install=mozillavpn.install
 
-_debian_series="plucky1"
+_debian_series="questing1"
 _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
 _pkgsrc="$pkgname-$pkgver"
 source=(
   "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
 )
-sha256sums=('a0c13b1b216b1af7b12af247ff4965557bea10f5f17167d269e7cb76f763ed65')
+sha256sums=('c92c262d674a5a13d4830e3b1c77d74512db70e0a13976d966d753333b999a27')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
