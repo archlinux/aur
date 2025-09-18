@@ -2,8 +2,8 @@
 
 post_install() {
   cat <<__EOT__
-»  NB: The executable is called ‘ryelang’
-»      because ‘rye’ was already taken.
+»  NB: The executable is called ‘ryelang’ because the
+»      name ‘rye’ was already taken by another package.
 __EOT__
 }
 

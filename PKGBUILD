@@ -4,8 +4,8 @@
 
 _pkgname='ryelang'
 pkgname="${_pkgname}-git"
-pkgver=0.0.81.r117.g529fc65
-pkgrel=2
+pkgver=0.0.81.r127.g991a509
+pkgrel=1
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
 arch=('aarch64' 'x86_64')
 url='https://ryelang.org/'
@@ -69,14 +69,10 @@ package() {
 
   # README and examples
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  cp -va examples "$pkgdir/usr/share/doc/$pkgname/"
-  # cruft
-  rm -vf "$pkgdir/usr/share/doc/$pkgname/examples/webapp_1/.#temp.rye"
-  rm -vf "$pkgdir/usr/share/doc/$pkgname/examples/webapp_1/#temp.rye#"
-  rm -vf "$pkgdir/usr/share/doc/$pkgname/examples/webapp_2/#main_0.8.rye#"
+  cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
 
   # license
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+ install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # eof
