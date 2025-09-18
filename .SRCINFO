@@ -1,7 +1,7 @@
 pkgbase = tt-flash
 	pkgdesc = Tenstorrent Firmware Update Utility
 	pkgver = 3.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenstorrent/tt-flash
 	arch = any
 	license = Apache
@@ -15,7 +15,7 @@ pkgbase = tt-flash
 	depends = python-tt-tools-common
 	provides = tt-flash
 	conflicts = tt-flash
-	source = tt-flash::git+https://github.com/tenstorrent/tt-flash.git
+	source = tt-flash::git+https://github.com/tenstorrent/tt-flash.git#tag=v3.4.5
 	sha256sums = SKIP
 
 pkgname = tt-flash
