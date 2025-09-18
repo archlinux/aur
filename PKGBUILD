@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-devel
 _orgpkgname=xlibre-xserver-devel
 pkgname=$_pkgname-bin
-pkgver=25.0.0.9
+pkgver=25.0.0.11
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org development files (binary release)"
 arch=(x86_64)
