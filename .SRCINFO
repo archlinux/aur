@@ -1,6 +1,6 @@
 pkgbase = nerdfetch-git
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = r368.33cf25c
+	pkgver = r369.8fd252b
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/NerdFetch
 	arch = any
