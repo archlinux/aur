@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/sshctl"
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
