@@ -13,7 +13,6 @@ depends=("glibc" "gcc-libs")
 source=("$pkgname::git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
 
 pkgver() {
   cd "$pkgname" || exit
