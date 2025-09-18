@@ -4,7 +4,7 @@
 pkgname=micropolis-java
 _rpkgname=micropolisj
 pkgver=1.6.r505
-pkgrel=1
+pkgrel=2
 pkgdesc="Micropolis, Unix version of SimCity 1 rewrited in Java"
 arch=("any")
 url="https://github.com/jason17055/micropolis-java"

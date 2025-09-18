@@ -1,7 +1,7 @@
 pkgbase = micropolis-java
 	pkgdesc = Micropolis, Unix version of SimCity 1 rewrited in Java
 	pkgver = 1.6.r505
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jason17055/micropolis-java
 	arch = any
 	license = custom:GPL3
