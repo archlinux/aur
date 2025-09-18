@@ -11,13 +11,8 @@ makedepends=('tar' 'xz')
 provides=('sfpi')
 conflicts=('sfpi')
 source=("https://github.com/tenstorrent/sfpi/releases/download/v${pkgver}/sfpi_${pkgver}_x86_64.txz")
-sha256sums=('SKIP')
+b2sums=('80a32b0b969c442178797f67e6e4917d8d6cb6857acabaa41e1641f13d16188a259807f482a5119d2ed26ee258f8ca16f4861edd5ae36fe997230be9469f712c')
 options=('!strip')
-
-build() {
-    #nothing
-    echo
-}
 
 package() {
     cd "$srcdir"/sfpi

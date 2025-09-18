@@ -13,6 +13,6 @@ pkgbase = sfpi-bin
 	conflicts = sfpi
 	options = !strip
 	source = https://github.com/tenstorrent/sfpi/releases/download/v6.21.0/sfpi_6.21.0_x86_64.txz
-	sha256sums = SKIP
+	b2sums = 80a32b0b969c442178797f67e6e4917d8d6cb6857acabaa41e1641f13d16188a259807f482a5119d2ed26ee258f8ca16f4861edd5ae36fe997230be9469f712c
 
 pkgname = sfpi-bin
