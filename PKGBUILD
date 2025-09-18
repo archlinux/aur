@@ -1,7 +1,7 @@
 # Maintainer: JC Olivares <juancri@juancri.com>
 
 pkgname=gnome-console-jc
-pkgver=49.0
+pkgver=48.0.1.2
 pkgrel=1
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop (JC fork)"
 url="https://github.com/juancri/console"
@@ -30,7 +30,7 @@ checkdepends=(
   mutter
 )
 groups=(gnome)
-source=("$pkgname::git+https://github.com/juancri/console.git#branch=48.0.1-jc")
+source=("$pkgname::git+https://github.com/juancri/console.git#tag=jc-48.0.1-r2")
 sha256sums=('SKIP')
 
 prepare() {
