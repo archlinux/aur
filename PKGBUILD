@@ -103,10 +103,13 @@ _commondeps=(
   nss
 )
 
+prepare() {
+  cd ${_jdkdir}
+  patch -p1 -i "${srcdir}/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch"
+}
+
 build() {
   cd ${_jdkdir}
-
-  patch -p1 -i "${srcdir}/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch"
 
   # remove -j from MAKEFLAGS to prevent build fail
   local MAKEFLAG_J=$(echo ${MAKEFLAGS} | sed -En 's/.*-j([0-9]+).*/\1/p')
@@ -118,8 +121,8 @@ build() {
   local _LDFLAGS=${LDFLAGS}
   if [[ ${CARCH} = i686 ]]; then
     echo "Removing '-fno-plt' from CFLAGS and CXXFLAGS to prevent build fail with this architecture"
-    _CFLAGS=${CFLAGS/-fno-plt/}
-    _CXXFLAGS=${CXXFLAGS/-fno-plt/}
+    _CFLAGS=${_CFLAGS/-fno-plt/}
+    _CXXFLAGS=${_CXXFLAGS/-fno-plt/}
   fi
 
   # TODO: Should be rechecked for the next releases
