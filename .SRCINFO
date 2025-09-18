@@ -23,6 +23,7 @@ pkgbase = tt-smi
 	depends = python-tt-tools-common
 	depends = python-tomli
 	provides = tt-smi
+	conflicts = tt-smi
 	source = tt-smi::git+https://github.com/tenstorrent/tt-smi.git
 	sha256sums = SKIP
 
