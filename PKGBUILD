@@ -1,6 +1,6 @@
 pkgname=python-deezer
 _name=deezer_python
-pkgver=7.1.2
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="Deezer-Python: a friendly wrapper around the Deezer API."
 url="https://github.com/browniebroke/deezer-python"
@@ -10,7 +10,7 @@ depends=('python' 'python-httpx')
 makedepends=('python-setuptools' 'python-build' 'python-installer')
 
 source=("${pkgname//-/_}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d6e2fd40091294e81b3e4d0de23675a654ee4902a1db31031e03f5965e828fe3')
+sha256sums=('3d57d4399ea0b075816b93fe7cd86e82e080250f67bdcd230e9431fe85a7cb25')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"

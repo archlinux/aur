@@ -1,6 +1,6 @@
 pkgbase = python-deezer
 	pkgdesc = Deezer-Python: a friendly wrapper around the Deezer API.
-	pkgver = 7.1.2
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://github.com/browniebroke/deezer-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-deezer
 	makedepends = python-installer
 	depends = python
 	depends = python-httpx
-	source = python_deezer-7.1.2.tar.gz::https://github.com/browniebroke/deezer-python/releases/download/v7.1.2/deezer_python-7.1.2.tar.gz
-	sha256sums = d6e2fd40091294e81b3e4d0de23675a654ee4902a1db31031e03f5965e828fe3
+	source = python_deezer-7.2.0.tar.gz::https://github.com/browniebroke/deezer-python/releases/download/v7.2.0/deezer_python-7.2.0.tar.gz
+	sha256sums = 3d57d4399ea0b075816b93fe7cd86e82e080250f67bdcd230e9431fe85a7cb25
 
 pkgname = python-deezer
