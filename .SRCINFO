@@ -1,0 +1,20 @@
+pkgbase = deface
+	pkgdesc = Photo and Video anonymization by face detection
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/ORB-HD/deface
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-imageio
+	depends = python-imageio-ffmpeg
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-scikit-image
+	depends = python-opencv
+	source = https://github.com/ORB-HD/deface/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 6c728a7b0fbb9138352e4ce3f6d47f96650d01ae8befa858172c9b41f7d47ddc
+
+pkgname = deface
