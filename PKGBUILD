@@ -1,6 +1,6 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
-pkgname=python-tt-tools-common-git
+pkgname=python-tt-tools-common
 pkgver=1.4.28
 pkgrel=1
 pkgdesc="Common utilities shared across Tentorrent tools."

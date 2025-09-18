@@ -1,4 +1,4 @@
-pkgbase = python-tt-tools-common-git
+pkgbase = python-tt-tools-common
 	pkgdesc = Common utilities shared across Tentorrent tools.
 	pkgver = 1.4.28
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = python-tt-tools-common-git
 	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git
 	sha256sums = SKIP
 
-pkgname = python-tt-tools-common-git
+pkgname = python-tt-tools-common
