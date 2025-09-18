@@ -1,4 +1,4 @@
-# Maintainer: bendn <bend.n@outlook.com>
+# Maintainer:
 pkgname="kmpsat"
 pkgver='1'
 pkgrel=1
