@@ -5,7 +5,7 @@ pkgname=rest-server-bin
 pkgdesc='Rest Server is a high performance HTTP server that implements restics REST backend API.'
 license=('BSD')
 url='https://github.com/restic/rest-server'
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 package86=rest-server_${pkgver}_linux_386
 package64=rest-server_${pkgver}_linux_amd64
@@ -25,10 +25,10 @@ source_armv7h=(
 source_aarch64=(
   "${url}/releases/download/v${pkgver}/rest-server_${pkgver}_linux_arm64.tar.gz"
 )
-sha256sums_i686=('ba987ed5308ca263cb7ffe8ecf8aae108bef96a96a682bba437040cd8ab4f1e5')
-sha256sums_x86_64=('b7f357628a2cf9bdbce56a44b0ae7125de79b72af55b232a5c1aec3f732f3a49')
-sha256sums_armv7h=('4b7fc3f7a51281b20c580278315f37d83aeb7f76924830da37a26b245efa52df')
-sha256sums_aarch64=('21b19d1d96de99ee6e02af5da6418c8e8559a4a81850916108b184b926d2c6fd')
+sha256sums_i686=('de12ba817a8153be2ba4cbe6ae51ad2ca4c26d8210084659c1f421839bdb49c7')
+sha256sums_x86_64=('4c9c95bc079a0334e81fad379b19dc5c3353c71c2c88d652cafce2081c2b1c66')
+sha256sums_armv7h=('1b01b6a98b59d68ae8cf472189a92c2c17d0a49f8a3542fc986ea7a921e55742')
+sha256sums_aarch64=('cef139cbe8b27b16bda731d17f093b0aa466b8c60b136c12d78b6f2bff3daf22')
 
 package() {
   if [ "$CARCH" = "i686" ] ; then
