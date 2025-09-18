@@ -1,9 +1,10 @@
 
 # Maintainer: Rafael Senties Martinelli <rafael@rsm92.fr>
 
-pkgver=v2.0.1.r22.gfc15e03 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
-_commit=fc15e0333a789e9a971b9225ba04374118260722
-_commit_sha256=780976c31a26464ae56957167c94edacb2541b137496f023f4f0d19d036ee35d
+# git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver=v2.0.1.r26.g98124a4
+_commit=98124a4a932a6a32de8d1e833e9b921867bd2317
+_commit_sha256=025a9423564fbfdb83a928a294e9d796e39c5e8bea782e8d7cb282fe0337074e
 
 # Static content
 
