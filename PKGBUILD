@@ -4,7 +4,7 @@
 # Contributor: Peter Sutton (foxxy) <foxxy@foxdogstudios.com>
 
 pkgname=ngrok
-pkgver=3.28.0
+pkgver=3.29.0
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
@@ -12,15 +12,15 @@ license=('LicenseRef-custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
-source_x86_64=("https://bin.equinox.io/a/hAknv9cDxDf/ngrok-v3-3.28.0-linux-amd64.tar.gz")
-source_i686=("https://bin.equinox.io/a/6HZknu5CNLK/ngrok-v3-3.28.0-linux-386.tar.gz")
-source_armv7h=("https://bin.equinox.io/a/dvaVJ6X45uW/ngrok-v3-3.28.0-linux-arm.tar.gz")
-source_aarch64=("https://bin.equinox.io/a/bzQuxSfmMVS/ngrok-v3-3.28.0-linux-arm64.tar.gz")
+source_x86_64=("https://bin.equinox.io/a/eKRpgFT2bq4/ngrok-v3-3.29.0-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/8PGBpRV6NEP/ngrok-v3-3.29.0-linux-386.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/9ULu9UrTwmG/ngrok-v3-3.29.0-linux-arm.tar.gz")
+source_aarch64=("https://bin.equinox.io/a/xsGxfE6uYJ/ngrok-v3-3.29.0-linux-arm64.tar.gz")
 sha256sums=('d1fce3c7e78d5f7e5307238ee5f371b7a10911aeb249e3358e945eaa8cf2f1b2')
-sha256sums_i686=('bd4a3f33fd6a709281f673eaa86c250636761aa1dc97cdfe4af02f42227f1e7c')
-sha256sums_x86_64=('4be82552239ba419d67bda4417fe5dd37de10d8b95cc1a41357197ad969433bf')
-sha256sums_armv7h=('33cb7db320c427d328d667b30d21ab94e2491d730642bcdbd0cb42ff67b96963')
-sha256sums_aarch64=('6548ff9a52a03a43cb87b5f4ec2b5b2f71477ba27e23a045781664a05ca03d37')
+sha256sums_i686=('ad8eaa4f24de2225d19216520eee4cf039da95061241a23770ef9f9de4f5ed72')
+sha256sums_x86_64=('d7c267f45585da881f9aaa4e0151068603cb3f29beea88d8ba48b003b36b00f3')
+sha256sums_armv7h=('c53f0fd507a56ecf3a51f95b29f2e0cddcca5a1a45669fe7a53fb2e488961213')
+sha256sums_aarch64=('a9321c90b373efdb40acf2998f3fead6d787ea6cd997f1ad6a47b8ad12f511c4')
 
 # In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
 options=(!strip)
