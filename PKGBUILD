@@ -2,7 +2,7 @@
 
 pkgname=python-tt-tools-common
 pkgver=1.4.28
-pkgrel=2
+pkgrel=3
 pkgdesc="Common utilities shared across Tentorrent tools."
 arch=('any')
 url='https://github.com/tenstorrent/tt-tools-common'
@@ -23,5 +23,5 @@ package() {
     cd tt-tools-common
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    rm -rf $pkgdir/usr/lib/python*/site-packages/debian/
+    rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 }

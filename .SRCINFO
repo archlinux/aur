@@ -1,7 +1,7 @@
 pkgbase = python-tt-tools-common
 	pkgdesc = Common utilities shared across Tentorrent tools.
 	pkgver = 1.4.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tenstorrent/tt-tools-common
 	arch = any
 	license = Apache
