@@ -1,23 +1,22 @@
-# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: taotieren <admin@taotieren.com>
 
 pkgname=python-cu2qu-git
 pkgver=1.6.7.post2.r0.g4cbc9b6
-pkgrel=8
+pkgrel=9
 pkgdesc='Cubic-to-quadratic bezier curve conversion'
 url='https://github.com/googlefonts/cu2qu'
 license=('Apache')
 arch=(any)
 _pydeps=(defcon
     fonttools
-    fs)
+    )
 depends=(python
     "${_pydeps[@]/#/python-}")
 makedepends=(cython
     git
     python-{build,installer,wheel}
     python-setuptools-scm)
-checkdepends=(python-coverage
-    python-pytest-runner)
+checkdepends=(python-coverage)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
