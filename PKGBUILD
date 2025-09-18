@@ -2,13 +2,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl' 'openal')
-makedepends=('git' 'cmake' 'boost' 'glslang' 'ninja' 'nlohmann-json' 'zlib' 'zstd' 'rapidjson' 'qt6-multimedia' 'qt6-tools' 'gamemode' 'doxygen' 'vulkan-headers' 'vulkan-utility-libraries')
+makedepends=('git' 'cmake' 'boost' 'glslang' 'ninja' 'nlohmann-json' 'rapidjson' 'qt6-multimedia' 'qt6-tools' 'gamemode' 'doxygen' 'vulkan-headers' 'vulkan-utility-libraries')
 optdepends=('gamemode: Gamemoded support')
 options=(!debug)
 source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkgver}
@@ -112,9 +112,26 @@ prepare() {
 
 build() {
   cd "$srcdir"
+  # Forcing GCC since clang currently fails to compile citron
+  case $LTOFLAGS in
+	  *thin*)
+		  export CFLAGS="${CFLAGS//thin/auto}"
+		  export CXXFLAGS="${CXXFLAGS//thin/auto}"
+		  export LDFLAGS="${LDFLAGS//thin/auto}"
+		  echo "YOU GOT THIN"
+	  ;;
+  esac
+  case $LDFLAGS in
+	  *lld*)
+		  export LDFLAGS="${LDFLAGS//lld/bfd}"
+		  echo "YOU GOT LLD"
+		  ;;
+  esac
+  echo $CFLAGS
+  echo $CXXFLAGS
+  echo $LDFLAGS
   cmake -B build -GNinja -S "$pkgname" \
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
-    -DCITRON_USE_BUNDLED_QT=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
     -DENABLE_QT6=ON \
     -DCITRON_USE_BUNDLED_FFMPEG=OFF \
@@ -136,11 +153,17 @@ build() {
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
     -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
-    -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
+    -DCMAKE_SYSTEM_PROCESSOR=$CARCH \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-    
-  cmake --build build
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS"
+
+    cmake --build build
 }
 
 package() {
