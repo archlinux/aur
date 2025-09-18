@@ -5,7 +5,7 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6942.180eea0da
+pkgver=6943.22534d16c
 pkgrel=1
 pkgdesc="A GTK+ based diagram creation program"
 arch=('x86_64')
@@ -16,10 +16,8 @@ makedepends=('git' 'meson' 'intltool' 'dblatex' 'appstream-glib' 'glib2-devel')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/dia.git"
-        "${pkgname}-pdf-import-fix.patch::https://gitlab.gnome.org/GNOME/dia/-/merge_requests/140.patch")
-sha256sums=('SKIP'
-            '6475a57959cf4bc4c317df2ba9d5016ad5b4dba2f516377bfa09c13b5162ba09')
+source=("git+https://gitlab.gnome.org/GNOME/dia.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -29,7 +27,6 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
-  patch -p1 < ../${pkgname}-pdf-import-fix.patch
 }
 
 build() {

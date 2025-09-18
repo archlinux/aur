@@ -1,6 +1,6 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program
-	pkgver = 6942.180eea0da
+	pkgver = 6943.22534d16c
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/dia
 	arch = x86_64
@@ -24,8 +24,6 @@ pkgbase = dia-git
 	options = docs
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/dia.git
-	source = dia-git-pdf-import-fix.patch::https://gitlab.gnome.org/GNOME/dia/-/merge_requests/140.patch
 	sha256sums = SKIP
-	sha256sums = 6475a57959cf4bc4c317df2ba9d5016ad5b4dba2f516377bfa09c13b5162ba09
 
 pkgname = dia-git
