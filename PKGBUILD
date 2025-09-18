@@ -2,20 +2,20 @@
 
 pkgname=compcert
 _dirname=CompCert
-pkgver=3.15
+pkgver=3.16
 pkgrel=1
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
-url="http://compcert.inria.fr"
+url="https://compcert.org/"
 license=('custom:INRIA Non-Commercial License Agreement')
 depends=('gcc')
-makedepends=('coq>=8.12.0' 'ocaml>=4.05.0'
-             'ocaml-menhir>=20190626'
+makedepends=('coq>=8.15.0' 'ocaml>=4.05.0'
+             'ocaml-menhir>=20200624'
              'ocaml-findlib' # See: https://github.com/AbsInt/CompCert/issues/281
             )
 checkdepends=('parallel')
 source=("https://github.com/AbsInt/CompCert/archive/v$pkgver.tar.gz")
-sha256sums=('6baae8f69bdbf0192d02fae911207cbde73bb1ff6b9790b1e745be0bd9b2342a')
+sha256sums=('78ebd29e0c7d37cede785850100722f1de21464059c5eda14a992c828c4b7d59')
 
 prepare() {
   cd ${srcdir}/${_dirname}-${pkgver}
