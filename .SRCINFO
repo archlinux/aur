@@ -1,7 +1,7 @@
 pkgbase = at32-bootloader-doc
 	pkgdesc = Artery AT MCU Bootloader ISP 协议文档
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.arterytek.com/cn/support/index.jsp?index=5
 	arch = any
 	license = LicenseRef-scancode-commercial-license
@@ -17,7 +17,7 @@ pkgbase = at32-bootloader-doc
 	conflicts = at32-bootloader-doc
 	conflicts = at32-bootloader-doc
 	noextract = Bootloader_V2.0.7.zip
-	source = Bootloader_V2.0.7.zip::https://www.arterytek.com/download/TOOL/Bootloader_V2.0.7.zip
+	source = Bootloader_V2.0.7.zip::https://www.arterytek.com/download/Program%20and%20Debug/Bootloader_V2.0.7.zip
 	sha256sums = cc9e599a29606add6e44364af16ec42e2d444c13a4ca790a290a1647c0d5c67b
 
 pkgname = at32-bootloader-doc
