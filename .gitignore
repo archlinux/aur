@@ -3,6 +3,7 @@ src/
 *.md
 LICENSE*
 *.tar.gz
+*.tgz
 *.zip
 *.tar
 *.zst
