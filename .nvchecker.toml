@@ -1,0 +1,8 @@
+[prometheus-postfix-exporter-hsn723]
+source = "github"
+github = "Hsn723/postfix_exporter"
+prefix = "v"
+use_release_name=false
+use_latest_release=true
+include_prereleases=false
+
