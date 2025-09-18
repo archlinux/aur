@@ -1,6 +1,6 @@
 pkgbase = hqplayer5
 	pkgdesc = The high-end upsampling multichannel software HD-audio player
-	pkgver = 5.15.0
+	pkgver = 5.15.1
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	install = hqplayer5.install
@@ -24,7 +24,7 @@ pkgbase = hqplayer5
 	optdepends = evince: hqplayer manual reading
 	conflicts = hqplayer4
 	options = !strip
-	source = https://www.signalyst.com/bins/noble/hqplayer5desktop_5.15.0-38_amd64.deb
-	sha256sums = cbf70255ea5f6ae9f07baeeacdfeed0f2bf6d03bcbb6091a735099a75b89f5e7
+	source = https://www.signalyst.com/bins/noble/hqplayer5desktop_5.15.1-39_amd64.deb
+	sha256sums = 5cff1dddc5a10b10f235dab3b5ca2d5eae89c9b08f32f94c9bccac0ad1b72fff
 
 pkgname = hqplayer5
