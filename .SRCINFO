@@ -5,7 +5,7 @@ pkgbase = zulip-desktop-electron
 	url = https://zulip.com
 	arch = x86_64
 	license = Apache
-	makedepends = nodejs>=12.10.0
+	makedepends = nvm
 	makedepends = npm
 	depends = electron37
 	depends = libxkbfile

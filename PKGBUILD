@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://zulip.com"
 license=('Apache')
 depends=("electron$_electronversion" 'libxkbfile' 'libxss')
-makedepends=('nodejs>=12.10.0' 'npm')
+makedepends=('nvm' 'npm')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=(
@@ -19,10 +19,16 @@ source=(
   "Zulip.desktop"
   "${pkgname%-*}.sh.in")
 sha256sums=('ffd0473910889797ba8f0944c7819f38c4210c44e2e886ff8cb63a2a2f2b75e5'
-            '8f3440dc9195c6763de16f8b13409a5c130bdf417015e7e27bb64fdb227f4f10'
-            '70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979')
+  '8f3440dc9195c6763de16f8b13409a5c130bdf417015e7e27bb64fdb227f4f10'
+  '70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979')
+
+prepare() {
+  source /usr/share/nvm/init-nvm.sh
+  nvm install 22.19.0
+}
 
 build() {
+  source /usr/share/nvm/init-nvm.sh
   cd "${pkgname%-*}-$pkgver"
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// $electronDist/version)"
