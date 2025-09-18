@@ -5,7 +5,7 @@
 pkgname=rebar
 epoch=1
 pkgver=2.6.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/rebar/rebar"
