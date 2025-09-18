@@ -14,9 +14,9 @@ pkgbase = btcd
 	conflicts = btcd
 	options = !emptydirs
 	source = git+https://github.com/btcsuite/btcd#tag=v0.24.2
-	source = git+https://github.com/btcsuite/btcwallet#tag=v0.16.16
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/btcsuite/btcwallet#tag=v0.16.17
+	sha256sums = 2ec88d1aa12815792f13c6ff1c4fc9ce0694b3b1191f152895af99e64a400f2c
+	sha256sums = 967f843c2b43695d5ea40e2d73920240fe6541a79fa89e3c90646ff0db44918c
 
 pkgname = btcd
 	pkgdesc = An alternative full node Bitcoin implementation written in Go
