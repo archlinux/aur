@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=lune
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="[Latest Stable Source] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=(cargo cmake)
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lune-org/lune/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('56fdb35c99878d4b703d03187455af224a6897e0e80e87119449bd61136a54f5')
+sha256sums=('95b3941773435431125980f25dcea0511f2d49676e4cf0a2e2095d256300d270')
 
 prepare() {
 	cd "lune-${pkgver}"
