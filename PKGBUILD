@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.16.14
+pkgver=3.16.14.3
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -49,12 +49,13 @@ makedepends=(
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-commit=eb620ab0f2ce4c39a1321e8f594c157c2c810c3e
+commit=d2c5701255b7cb359abf951117627e148265790a
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#commit=$commit"
   "subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863"
   "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
   "https://github.com/ValveSoftware/gamescope/pull/1826.patch"
+  "https://github.com/ValveSoftware/gamescope/pull/1867.patch"
   "reverts-bd722f7.patch") # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 
 prepare() {
@@ -115,10 +116,11 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=54e844748029d4874e14d0c086d50092c04c8899') # End
 
-sha512sums=('a7a89a37e7d0ee118858a651046ab1b712bdf3c4666b8147d2e5c22b719bf746952e5977d5c8b4d0f7c8ec4051f1231ab2d2404b63143d024972ddc59d8df2dc'
+sha512sums=('25bc3c805fbf433dab08e6c2a6d0dcd93b2e4924246cfd41f3e1f1a9546da669032fae87424e147ed3661a839dd9c8a898f5d524418bdbd0e39c72302b25a1a9'
             '16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa'
             '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
-            'cb2a27fbb6eb7833f1da9ec8676e660352f385a4ebe55c37d4efca595139f6f8ddc7d1d9f15117489792c2bb8eef34c4079b6da60729e209ceb82d063b70f8b5'
+            '415c94ff0d7561ddc734a177848b99a39efb944800b59e3838bace637ba41fd505bec363c3243d5a168542245f3a1b743178b2eb59def7b3053d5f255cb2c51c'
+            '848a7813ffce045e6785293d0b4e252c39fec386722d1885dc87cc5e1163b06d88d8b93f2dd3e82c715559505287691eafe8535993bd1e816f36f5ccfdce97e5'
             '52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27'
             '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
             '0a6fc80fd713c86117fab40e1b92ba8953bb8e68c4ac933fa8f6c04a4b10edba6ebb19cfc74d560c6007d5bcb3ca9d4de63d6cae800f1d426a97ff25f0b7f0fc'
