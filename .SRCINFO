@@ -1,7 +1,7 @@
 pkgbase = charliecloud
 	pkgdesc = A lightweight, fully unprivileged container implementation for HPC applications
-	pkgver = 0.40
-	pkgrel = 3
+	pkgver = 0.41
+	pkgrel = 1
 	url = https://charliecloud.io/
 	arch = x86_64
 	license = Apache-2.0
@@ -20,11 +20,11 @@ pkgbase = charliecloud
 	optdepends = fuse3: ch-run internal SquashFS mounting
 	optdepends = git: ch-image using build cache
 	optdepends = nvidia-container-toolkit: ch-run inject nVidia GPU libraries
-	optdepends = rsync: ch-image using RSYNC intruction
+	optdepends = rsync: ch-image using RSYNC instruction
 	optdepends = shellcheck: ch-test
 	optdepends = squashfs-tools: internal SquashFS mounting
 	optdepends = wget: ch-test
-	source = https://gitlab.com/charliecloud/charliecloud/-/archive/v0.40/charliecloud-v0.40.tar.gz
-	sha1sums = 5d4d9f97172f7573ee28ecd49185823e19b28982
+	source = https://gitlab.com/charliecloud/charliecloud/-/archive/v0.41/charliecloud-v0.41.tar.gz
+	sha1sums = 372997e05b5f035b00167ca3fe85e303ddbeb78e
 
 pkgname = charliecloud
