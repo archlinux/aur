@@ -8,7 +8,7 @@ pkgbase = lext-theme-lubuntu-arc
 	depends = lxqt-session
 	conflicts = lubuntu-artwork
 	conflicts = lubuntu-artwork-18-04
-	source = https://github.com/lext-next/lext-theme-lubuntu-arc/blob/main/lext-theme-lubuntu-arc.tar.xz
+	source = https://github.com/lext-next/lext-theme-lubuntu-arc/raw/refs/heads/main/lext-theme-lubuntu-arc.tar.xz
 	sha256sums = SKIP
 
 pkgname = lext-theme-lubuntu-arc
