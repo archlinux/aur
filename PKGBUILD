@@ -10,7 +10,7 @@ depends=('spdlog' 'fmt')
 makedepends=('cmake' 'git')
 provides=('tt-logger')
 conflicts=('tt-logger')
-source=("$pkgname::git+https://github.com/tenstorrent/tt-logger.git")
+source=("$pkgname::git+https://github.com/tenstorrent/tt-logger.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {

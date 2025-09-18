@@ -11,7 +11,7 @@ pkgbase = tt-logger
 	depends = fmt
 	provides = tt-logger
 	conflicts = tt-logger
-	source = tt-logger::git+https://github.com/tenstorrent/tt-logger.git
+	source = tt-logger::git+https://github.com/tenstorrent/tt-logger.git#tag=v1.1.5
 	sha256sums = SKIP
 
 pkgname = tt-logger
