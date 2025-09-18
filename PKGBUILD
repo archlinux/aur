@@ -2,7 +2,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=dream-prompter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GIMP Plugin which integrates Google's Nano Banana AI for image creation and editing"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'gettext' 'python')
 provides=('dream-prompter')
 conflicts=('dream-prompter')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zquestz/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('30ffc92a4db58eb64b1cd17d47dc46570421a652c093bee9f86ec0dff0b02793')
+sha256sums=('1c4838231874670e6076775fcad3bbab70fb762a29d9d812c9bc07d54ecc08eb')
 
 build() {
   cd ${pkgname}-${pkgver}
