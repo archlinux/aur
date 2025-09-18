@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-wheel)
 depends=(python-luwen python-tomli python-tt-tools-common)
 provides=("tt-burnin")
 conflicts=("tt-burnin")
-source=("tt-burnin::git+https://github.com/tenstorrent/tt-burnin.git")
+source=("tt-burnin::git+https://github.com/tenstorrent/tt-burnin.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {

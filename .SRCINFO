@@ -13,7 +13,7 @@ pkgbase = tt-burnin
 	depends = python-tt-tools-common
 	provides = tt-burnin
 	conflicts = tt-burnin
-	source = tt-burnin::git+https://github.com/tenstorrent/tt-burnin.git
+	source = tt-burnin::git+https://github.com/tenstorrent/tt-burnin.git#tag=v0.2.4
 	sha256sums = SKIP
 
 pkgname = tt-burnin
