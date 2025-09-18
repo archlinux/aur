@@ -1,0 +1,22 @@
+pkgbase = echoplayer-git
+	pkgdesc = A video player designed for language learners, helping users learn foreign languages efficiently through sentence-by-sentence intensive listening.(Use system-wide electron)
+	pkgver = 1.0.0.r0.g99d327c
+	pkgrel = 1
+	url = https://github.com/mkdir700/EchoPlayer
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = pnpm
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron37
+	provides = echoplayer=1.0.0
+	conflicts = echoplayer
+	source = echoplayer.git::git+https://github.com/mkdir700/EchoPlayer.git
+	source = echoplayer.sh
+	sha256sums = SKIP
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = echoplayer-git
