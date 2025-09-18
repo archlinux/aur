@@ -3,6 +3,6 @@ Name=Beatmap Exporter
 Comment=Export osu!lazer beatmaps to various formats
 Exec=/usr/bin/beatmapexporter
 Icon=beatmapexporter
-Terminal=false
 Type=Application
 Categories=Utility;
+Terminal=false
