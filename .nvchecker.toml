@@ -1,0 +1,3 @@
+[sourcetrail]
+source = "git"
+git = "https://github.com/petermost/Sourcetrail.git"

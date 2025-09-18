@@ -1,7 +1,7 @@
 pkgbase = sourcetrail
 	pkgdesc = Interactive source explorer for C/C++ and Java
-	pkgver = 2025.4.1
-	pkgrel = 2
+	pkgver = 2025.9.9
+	pkgrel = 1
 	url = https://github.com/petermost/Sourcetrail
 	arch = x86_64
 	license = GPL-3.0-only
@@ -27,7 +27,7 @@ pkgbase = sourcetrail
 	depends = sqlite
 	depends = tinyxml
 	optdepends = java-runtime
-	source = petermost.sourcetrail::git+https://github.com/petermost/Sourcetrail.git#commit=59503c7449e9557fa43490f2fa8a0183d05480a2
+	source = petermost.sourcetrail::git+https://github.com/petermost/Sourcetrail.git#commit=a36e95b89b27121c7c1452e5cf1834b9577ad9a7
 	sha256sums = SKIP
 
 pkgname = sourcetrail
