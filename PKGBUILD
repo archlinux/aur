@@ -2,7 +2,7 @@
 
 pkgname=tt-smi-git
 pkgver=3.0.30.r0.g861e805
-pkgrel=2
+pkgrel=3
 pkgdesc="Tenstorrent console based hardware information program"
 arch=('any')
 url='https://github.com/tenstorrent/tt-smi'
@@ -26,5 +26,5 @@ build() {
 package() {
     cd tt-smi
     python -m installer --destdir="$pkgdir" dist/*.whl
-    rm -rf $pkgdir/usr/lib/python*/site-packages/debian/
+    rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 }
