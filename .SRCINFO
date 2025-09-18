@@ -1,6 +1,6 @@
 pkgbase = java22-openjdk
 	pkgver = 22.0.2.u9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = LicenseRef-Java
@@ -35,10 +35,12 @@ pkgbase = java22-openjdk
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
+	source = https://github.com/openjdk/jdk25u/commit/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch
 	sha256sums = f3bc990ed34dd0c9a1467640a9c654df4375ff948e854038b913abec12be6179
 	sha256sums = 228fb453e6c652baad71abf734430cda08c287cb8df935ad3ad6d2e9346c7fdf
 	sha256sums = ed9e43756f450ca01647c495070044276ee9fa7810eb90c99d7e2a29c4a61ef2
 	sha256sums = 93697b752739c1f233cf98f3fa3b945fc775de4d40a31dd21afccda7d0c9d01e
+	sha256sums = a3698606cd871bd9a2b2fa1cd62eb18d27394ee536747334818502e21d41823c
 
 pkgname = jre22-openjdk-headless
 	pkgdesc = OpenJDK Java 22 headless runtime environment
@@ -60,7 +62,7 @@ pkgname = jre22-openjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=22
 	provides = java-runtime-headless-openjdk=22
-	provides = jre22-openjdk-headless=22.0.2.u9-1
+	provides = jre22-openjdk-headless=22.0.2.u9-2
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk
 	backup = etc/java22-openjdk/logging.properties
@@ -102,10 +104,10 @@ pkgname = jre22-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=22
 	provides = java-runtime-openjdk=22
-	provides = jre22-openjdk=22.0.2.u9-1
+	provides = jre22-openjdk=22.0.2.u9-2
 	provides = java-runtime-headless=22
 	provides = java-runtime-headless-openjdk=22
-	provides = jre22-openjdk-headless=22.0.2.u9-1
+	provides = jre22-openjdk-headless=22.0.2.u9-2
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java22-openjdk/logging.properties
@@ -161,13 +163,13 @@ pkgname = jdk22-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=22
 	provides = java-environment-openjdk=22
-	provides = jdk22-openjdk=22.0.2.u9-1
+	provides = jdk22-openjdk=22.0.2.u9-2
 	provides = java-runtime=22
 	provides = java-runtime-openjdk=22
-	provides = jre22-openjdk=22.0.2.u9-1
+	provides = jre22-openjdk=22.0.2.u9-2
 	provides = java-runtime-headless=22
 	provides = java-runtime-headless-openjdk=22
-	provides = jre22-openjdk-headless=22.0.2.u9-1
+	provides = jre22-openjdk-headless=22.0.2.u9-2
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java22-openjdk/logging.properties
@@ -187,10 +189,10 @@ pkgname = jdk22-openjdk
 
 pkgname = openjdk22-src
 	pkgdesc = OpenJDK Java 22 sources
-	depends = jdk22-openjdk=22.0.2.u9-1
-	provides = openjdk22-src=22.0.2.u9-1
+	depends = jdk22-openjdk=22.0.2.u9-2
+	provides = openjdk22-src=22.0.2.u9-2
 
 pkgname = openjdk22-doc
 	pkgdesc = OpenJDK Java 22 documentation
-	depends = jdk22-openjdk=22.0.2.u9-1
-	provides = openjdk22-doc=22.0.2.u9-1
+	depends = jdk22-openjdk=22.0.2.u9-2
+	provides = openjdk22-doc=22.0.2.u9-2
