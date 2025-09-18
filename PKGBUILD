@@ -3,7 +3,7 @@
 
 pkgname="nucleus-gtk4-git"
 _appname="nucleus"
-pkgver=1.r23.g030fb21a
+pkgver=1.r25.g5c39d729
 pkgrel=1
 pkgdesc="Chemistry educational software written in Python"
 url="https://codeberg.org/lo-vely/nucleus"
