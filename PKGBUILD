@@ -10,6 +10,7 @@ license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python-luwen python-tomli python-tt-tools-common)
 provides=("tt-burnin")
+conflicts=("tt-burnin")
 source=("tt-burnin::git+https://github.com/tenstorrent/tt-burnin.git")
 sha256sums=('SKIP')
 
