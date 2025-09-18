@@ -1,6 +1,6 @@
 pkgbase = edh-logger-cli
 	pkgdesc = CLI to log MTG Commander games & view stats (edh --help for usage)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/GhelloZ/edh-logger-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = edh-logger-cli
 	makedepends = make
 	makedepends = sqlite
 	makedepends = gcc
-	source = https://github.com/GhelloZ/edh-logger-cli/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = e1eba9c3e68b5d46575f4fb65f5dc3c8cf2e60d60d2129474d3e3b23a8c53f0e
+	source = https://github.com/GhelloZ/edh-logger-cli/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = ded725eff730ef3dfff8bbf776f387dbaa7c7266c9da163f86d2c05059fba8e9
 
 pkgname = edh-logger-cli
