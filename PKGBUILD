@@ -1,7 +1,7 @@
 # Maintainer: Amolith <amolith@secluded.site>
 pkgname=dela-git
 _pkgname=${pkgname%-git}
-pkgdesc='A task runner that provides discovery for task definitions in various formats'
+pkgdesc='A task runner that delegates the work to other tools'
 arch=("x86_64" "aarch64")
 url="https://github.com/aleyan/dela"
 _branch='main'
