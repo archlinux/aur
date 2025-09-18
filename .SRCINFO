@@ -1,0 +1,18 @@
+pkgbase = ripunzip
+	pkgdesc = Rust rewrite of coreutils
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/google/ripunzip
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = bzip2
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = xz
+	source = https://github.com/google/ripunzip/archive/refs/tags/v2.0.3.tar.gz
+	sha256sums = d44262d390dc3fa41b7de2e28a199aef4343c0197b5a1c9216e13b1aa0f0273f
+
+pkgname = ripunzip
