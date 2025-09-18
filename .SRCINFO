@@ -1,17 +1,20 @@
 pkgbase = python-aiocron
 	pkgdesc = Provide a decorator to run function at time
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/gawel/aiocron
 	changelog = CHANGES.rst
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-runner
 	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-tzlocal
 	depends = python-croniter
-	source = python-aiocron-1.8.tar.gz::https://files.pythonhosted.org/packages/source/a/aiocron/aiocron-1.8.tar.gz
-	sha256sums = 48546513faf2eb7901e65a64eba7b653c80106ed00ed9ca3419c3d10b6555a01
+	depends = python-cronsim
+	depends = python
+	source = python-aiocron-2.1.tar.gz::https://files.pythonhosted.org/packages/source/a/aiocron/aiocron-2.1.tar.gz
+	sha256sums = 1bb65a36aee137e8833592783956e0c7dc478bc3e9273fc2841d5d0c6045e4d2
 
 pkgname = python-aiocron
