@@ -10,6 +10,7 @@ license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python-yaml python-luwen python-tabulate python-tomli python-tt-tools-common)
 provides=("tt-flash")
+conflicts=("tt-flash")
 source=("tt-flash::git+https://github.com/tenstorrent/tt-flash.git")
 sha256sums=('SKIP')
 
