@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Manages wireguard VPN configuration (servers and users).'
 _gitname='wg_tool'
 
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -20,6 +20,10 @@ depends=('python>=3.13' 'python-cryptography' 'py-cidr'
          'python-tomli-w' 'python-qrcode' 'wireguard-tools'
          'nftables'
         )
+optdepends=(
+    'python-argcomplete: For command line option completion'
+    )
+
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
              #'python-sphinx' 'texlive-latexextra' # Docs
@@ -49,8 +53,8 @@ build() {
     # To build Docs - uncomment these and sphinx makedepends above
 #    echo "Build docs"
 #    cd ./Docs
-#    make html
-#    make latexpdf
+#    make latexpdf > /dev/null ; make latexpdf > /dev/null
+#    make html > /dev/null
 }
 
 package() {

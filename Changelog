@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 7.5.0 ➙ 8.1.0
-              : 2025-08-19 ➙ 2025-09-17
+ Tags         : 7.5.1 ➙ 8.2.0
+              : 2025-08-19 ➙ 2025-09-18
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-09-18   : 8.2.0
+              - Command line option completion optionally available
+                  If desired, then python-argcomplete package should be installed.
+ 2025-09-17
+              - update Docs Changelogs
 
  2025-09-17   : 8.1.0
               - Fix bug checking working directory when not in the work dir
@@ -68,9 +74,3 @@
  2025-08-19   : 7.5.1
               - update pyproject version
               - update Docs/Changelogs Docs/wg_tool.pdf
-
- 2025-08-19   : 7.5.0
-              - update arch PKGBUILD to 7.5.0
-              - Fix bug for --init. Issue #18 Reported by @Crisp-Casper
- 2025-03-08
-              - update Docs/Changelog.rst Docs/wg_tool.pdf
