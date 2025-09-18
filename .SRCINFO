@@ -1,5 +1,5 @@
 pkgbase = ripunzip
-	pkgdesc = Rust rewrite of coreutils
+	pkgdesc = Extract zip files in parallel
 	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/google/ripunzip

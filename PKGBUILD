@@ -2,7 +2,7 @@
 pkgname=ripunzip
 pkgver=2.0.3
 pkgrel=1
-pkgdesc="Rust rewrite of coreutils"
+pkgdesc="Extract zip files in parallel"
 url=https://github.com/google/ripunzip
 license=('MIT')
 arch=('x86_64')
