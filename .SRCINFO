@@ -1,0 +1,23 @@
+pkgbase = moonraker-venv-git
+	pkgdesc = Web API Server for Klipper
+	pkgver = 0.9.3.r102.gf20feff
+	pkgrel = 1
+	url = https://github.com/Arksine/moonraker
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = curl
+	provides = moonraker
+	conflicts = moonraker
+	backup = etc/moonraker/moonraker.conf
+	source = git+https://github.com/Arksine/moonraker.git
+	source = moonraker.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = 0812bb0e4fe19df74f845297bf38ce88d86985111db06bb04310888fd14cc077
+	sha256sums = 8112fbcb737d546340e5da10782cec8b6779c9d17ee096056fd0b715b1a09e4d
+	sha256sums = dc098d326b5c72c01592f1eb02ca2405ae71c328bc7d07a7c177c905aa29be01
+
+pkgname = moonraker-venv-git
