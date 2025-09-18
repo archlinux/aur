@@ -1,0 +1,21 @@
+pkgbase = echoplayer-bin
+	pkgdesc = A video player designed for language learners, helping users learn foreign languages through sentence-by-sentence intensive listening.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mkdir700/EchoPlayer
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron37
+	provides = echoplayer=1.0.0
+	conflicts = echoplayer
+	options = !strip
+	options = !emptydirs
+	source = echoplayer.sh
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = echoplayer-1.0.0-aarch64.deb::https://github.com/mkdir700/EchoPlayer/releases/download/v1.0.0/EchoPlayer-1.0.0-arm64.deb
+	sha256sums_aarch64 = 7c6d6a2c5a49e99e72eff21d22c658c50d313598a47f7b6268912ea334d0c3cc
+	source_x86_64 = echoplayer-1.0.0-x86_64.deb::https://github.com/mkdir700/EchoPlayer/releases/download/v1.0.0/EchoPlayer-1.0.0-amd64.deb
+	sha256sums_x86_64 = 3b3d792f3c6b5ab0a923da4f56d02d392dac770ca86f080fdc27d8c44ee01a5e
+
+pkgname = echoplayer-bin
