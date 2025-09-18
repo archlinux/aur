@@ -14,7 +14,7 @@ _securityver=2
 _updatever=7
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 # pkgver=${_majorver}.u${_updatever}
-pkgrel=1
+pkgrel=2
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 # _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -30,11 +30,13 @@ optdepends=(
 source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
-        freedesktop-jshell.desktop)
+        freedesktop-jshell.desktop
+        'https://github.com/openjdk/jdk25u/commit/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch')
 sha256sums=('a5072191906781fc9b6d70e335ae8d23f008739ce58372b0198025b4ba2fbec6'
             '427269f9910ea2b965fd3f4755c16263053414df53020946b27ed9a5b9f98d36'
             'b8e29678081f81057aa6020b74b3299dde5703d0cc43e55807413aed65f0c6e8'
-            'eeb631d0216ccfe885cfaa72bbed44f8d3d9995b3d61e837295e8375f110434f')
+            'eeb631d0216ccfe885cfaa72bbed44f8d3d9995b3d61e837295e8375f110434f'
+            'a3698606cd871bd9a2b2fa1cd62eb18d27394ee536747334818502e21d41823c')
 options=(!lto)
 
 case "${CARCH}" in
@@ -55,6 +57,11 @@ _commondeps=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-tur
            'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
            'glibc' 'gcc-libs')
 
+prepare() {
+  cd ${_jdkdir}
+  patch -p1 -i "${srcdir}/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch"
+}
+
 build() {
   cd ${_jdkdir}
 
@@ -73,8 +80,8 @@ build() {
   local _LDFLAGS=${LDFLAGS}
   if [[ ${CARCH} = i686 ]]; then
     echo "Removing '-fno-plt' from CFLAGS and CXXFLAGS to prevent build fail with this architecture"
-    _CFLAGS=${CFLAGS/-fno-plt/}
-    _CXXFLAGS=${CXXFLAGS/-fno-plt/}
+    _CFLAGS=${_CFLAGS/-fno-plt/}
+    _CXXFLAGS=${_CXXFLAGS/-fno-plt/}
   fi
 
   # TODO: Should be rechecked for the next releases
@@ -82,8 +89,8 @@ build() {
   # /usr/bin/ld: /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/build/linux-x86_64-server-release/hotspot/variant-server/libjvm/objs/zPhysicalMemory.o: in function `ZList<ZMemory>::~ZList()':
   # /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/src/hotspot/share/gc/z/zList.hpp:54: undefined reference to `ZListNode<ZMemory>::~ZListNode()'
   # collect2: error: ld returned 1 exit status
-  _CFLAGS=${CFLAGS/-fexceptions/}
-  _CXXFLAGS=${CXXFLAGS/-fexceptions/}
+  _CFLAGS=${_CFLAGS/-fexceptions/}
+  _CXXFLAGS=${_CXXFLAGS/-fexceptions/}
 
   # CFLAGS, CXXFLAGS and LDFLAGS are ignored as shown by a warning
   # in the output of ./configure unless used like such:
@@ -113,7 +120,7 @@ build() {
     --with-libpng=system \
     --with-lcms=system \
     --with-zlib=system \
-    --with-harfbuzz=system \
+    --with-harfbuzz=bundled \
     --with-jvm-features="${jvm_features}" \
     --with-native-debug-symbols=internal \
     --enable-unlimited-crypto \

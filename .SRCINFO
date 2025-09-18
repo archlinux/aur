@@ -1,6 +1,6 @@
 pkgbase = java23-openjdk
 	pkgver = 23.0.2.u7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = LicenseRef-Java
@@ -35,10 +35,12 @@ pkgbase = java23-openjdk
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
+	source = https://github.com/openjdk/jdk25u/commit/38bb8adf4f632b08af15f2d8530b35f05f86a020.patch
 	sha256sums = a5072191906781fc9b6d70e335ae8d23f008739ce58372b0198025b4ba2fbec6
 	sha256sums = 427269f9910ea2b965fd3f4755c16263053414df53020946b27ed9a5b9f98d36
 	sha256sums = b8e29678081f81057aa6020b74b3299dde5703d0cc43e55807413aed65f0c6e8
 	sha256sums = eeb631d0216ccfe885cfaa72bbed44f8d3d9995b3d61e837295e8375f110434f
+	sha256sums = a3698606cd871bd9a2b2fa1cd62eb18d27394ee536747334818502e21d41823c
 
 pkgname = jre23-openjdk-headless
 	pkgdesc = OpenJDK Java 23 headless runtime environment
@@ -60,7 +62,7 @@ pkgname = jre23-openjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
-	provides = jre23-openjdk-headless=23.0.2.u7-1
+	provides = jre23-openjdk-headless=23.0.2.u7-2
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk
 	backup = etc/java23-openjdk/logging.properties
@@ -102,10 +104,10 @@ pkgname = jre23-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=23
 	provides = java-runtime-openjdk=23
-	provides = jre23-openjdk=23.0.2.u7-1
+	provides = jre23-openjdk=23.0.2.u7-2
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
-	provides = jre23-openjdk-headless=23.0.2.u7-1
+	provides = jre23-openjdk-headless=23.0.2.u7-2
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java23-openjdk/logging.properties
@@ -161,13 +163,13 @@ pkgname = jdk23-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=23
 	provides = java-environment-openjdk=23
-	provides = jdk23-openjdk=23.0.2.u7-1
+	provides = jdk23-openjdk=23.0.2.u7-2
 	provides = java-runtime=23
 	provides = java-runtime-openjdk=23
-	provides = jre23-openjdk=23.0.2.u7-1
+	provides = jre23-openjdk=23.0.2.u7-2
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
-	provides = jre23-openjdk-headless=23.0.2.u7-1
+	provides = jre23-openjdk-headless=23.0.2.u7-2
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java23-openjdk/logging.properties
@@ -187,10 +189,10 @@ pkgname = jdk23-openjdk
 
 pkgname = openjdk23-src
 	pkgdesc = OpenJDK Java 23 sources
-	depends = jdk23-openjdk=23.0.2.u7-1
-	provides = openjdk23-src=23.0.2.u7-1
+	depends = jdk23-openjdk=23.0.2.u7-2
+	provides = openjdk23-src=23.0.2.u7-2
 
 pkgname = openjdk23-doc
 	pkgdesc = OpenJDK Java 23 documentation
-	depends = jdk23-openjdk=23.0.2.u7-1
-	provides = openjdk23-doc=23.0.2.u7-1
+	depends = jdk23-openjdk=23.0.2.u7-2
+	provides = openjdk23-doc=23.0.2.u7-2
