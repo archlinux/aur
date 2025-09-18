@@ -1,6 +1,6 @@
 pkgbase = ambiente-backup
 	pkgdesc = Sistema completo de backup e restauração de ambiente Linux com interface gráfica
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/Pombaa/Backup-e-restaurador-de-ambiente
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ambiente-backup
 	optdepends = php: para backup de configurações PHP
 	optdepends = apache: para backup de configurações Apache
 	optdepends = nginx: para backup de configurações Nginx
-	source = git+https://github.com/Pombaa/Backup-e-restaurador-de-ambiente.git#tag=v1.2.0
+	source = git+https://github.com/Pombaa/Backup-e-restaurador-de-ambiente.git#tag=v1.2.1
 	sha256sums = SKIP
 
 pkgname = ambiente-backup
