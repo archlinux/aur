@@ -4,7 +4,7 @@
 
 pkgname=vpn-unlimited-bin
 _name=${pkgname%-bin}
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="VPN Unlimited client application"
 arch=(x86_64)
@@ -39,13 +39,13 @@ depends=(
 install=$pkgname.install
 
 source=(
-  "https://geo.keepsolidcdn.com/soft/vpn/Linux/vpn-unlimited_$pkgver-amd64_mint.deb"
+  "https://geo.keepsolidcdn.com/soft/vpn/Linux/vpn-unlimited_$pkgver-amd64.deb"
   "vpn-unlimited-daemon.service"
   "vpn-unlimited.desktop"
   "vpn-unlimited-bin.install"
 )
 sha256sums=(
-  'd64566e24c20ad2d139c4d7e54e70bc3376f14b2170855a6b17638e489e8944f'
+  '27e490e6528e776c7d06ec32db5d91edb4f973991043cc49a43f6e0d98150068'
   'dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41'
   '039dd8ab8b49dfe20ce055b0069d018bc16706f5d9005503501a85b918635f7e'
   '6a0678ca143102d631960224826a8b20185a6b27289d6662eb5ae7adb61c8858'
