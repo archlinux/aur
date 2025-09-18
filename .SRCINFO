@@ -1,15 +1,16 @@
 pkgbase = mago
 	pkgdesc = A CLI text viewer tool that works interactively like less command on small pane within the terminal window.
-	pkgver = 1.0.0.beta.14
+	pkgver = 1.0.0_beta.16
 	pkgrel = 1
 	url = https://github.com/carthage-software/mago
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = cargo-nightly
 	makedepends = openssl
 	depends = gcc-libs
 	depends = glibc
-	source = mago-1.0.0-beta.14.tar.gz::https://github.com/carthage-software/mago/archive/refs/tags/1.0.0-beta.14.tar.gz
-	b2sums = c39c2d6057a212df062767a8d405cd76f563f4e5791d959e471ff79d5039049ec57815ffb637eb6b6d9f7a622bec5d92f1e91ea75f5c062a20b4ba31d4451d5c
+	source = git+https://github.com/carthage-software/mago.git#tag=1.0.0-beta.16
+	b2sums = a80dca9032de5be579e63d71299e185a948d9f98447a4f16e20e41e8c13302195e78b070abc6e583246b3f7b110ee1bcf5c51500e3abcabe232295fb00c033a7
 
 pkgname = mago
