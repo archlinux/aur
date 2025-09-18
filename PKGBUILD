@@ -15,13 +15,10 @@ sha256sums=('192665c623bc96ed77f122510510c017197e1673ab92bb84546d652afe4416c0')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir build
-  export GOPATH="${srcdir}"
-  go mod download
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -36,5 +33,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "build/${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
   install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
