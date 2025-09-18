@@ -1,8 +1,8 @@
 # Maintainer: crian <crian84@gmail.com>
 
 pkgname=wooting-udev
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='udev rule for wooting keyboards'
 arch=('any')
 license=('GPL')
