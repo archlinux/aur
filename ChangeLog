@@ -1,3 +1,34 @@
+## Version 6.2.0.0
+
+Fixes:
+
+    Fixed an issue with the save command , when selector is not given along with the save command the command response was NULL.
+    Fixed an issue with appaccount command where the apptoken was getting deleted while product upgrade.
+    Fixed an issue with signing project for RPM products, to reflect new GPG key which is signed by SHA-256.
+    Fixed an issue with the get command & list command where NetworkAdapter property was returning missing data in response for Ids and displaying only settings data.
+    Fixed an issue with flashfwpkg command where warning was being thrown while NVMe and SATA drive components flashing.
+    Fixed an issue with the list command where Bios property was returning NULL in response for @odata.*
+
+Enhancements:
+
+    Enhanced flashfwpkg command to support NVMe DA drive components flashing.
+    Enabled support for RHEL 9 minimal OS install.
+
+## Version 6.1.0.0
+
+Fixes:
+
+    Fixed issues with ServerInfo command where prossesorID was not getting populated in the response and --fans was not giving correct result when --json is supplied, also corrected an issue where the option --software was returning generic error.
+    Fixed an issue with firmwareupdate command where the url with mix of uppercase and lowercase where not getting flashed.
+    Fixed issues with the set command where the setting of WorkLoadProfile , ThermalCooling where not working.
+    Fixed issues with the get command where NetworkAdapter property was returning wrong response, also fixed the issue where ComponentIntegrity was not including TPM info.
+    Corrected an issue with logging mechanism where errors where getting printed twice on stdout.
+
+Enhancements:
+
+    Enabled support for accepting PIN as activationkey for the computeopsmanagement command
+    Enhanced rawget command to not cache anything and not to construct monolith.
+
 ## Version 6.0.0.0
 
 What's New:
