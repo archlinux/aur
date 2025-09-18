@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-xvfb
 _orgpkgname=xlibre-xserver-xvfb
 pkgname=$_pkgname-bin
-pkgver=25.0.0.9
+pkgver=25.0.0.11
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org virtual framebuffer X server (binary release)"
 arch=(x86_64)
