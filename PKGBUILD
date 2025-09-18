@@ -2,7 +2,7 @@ _dotnet_version=8.0
 _system_libs=true
 
 pkgname=clonedash-git
-pkgver=r1569.gcbeb8ac
+pkgver=r1609.g3d287fc
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
@@ -14,12 +14,13 @@ license=("MIT")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme")
 makedepends=("git" "dotnet-sdk-$_dotnet_version")
 source=("git+https://github.com/marchc1/CloneDash.git#branch=dev"
-        # Fix circular dependencies results failure to start game.
-        "0001-pr-63.diff::https://github.com/marchc1/CloneDash/pull/63.diff"
-        "CloneDash.desktop")
+        "com.github.marchc1.CloneDash.desktop"
+        "com.github.marchc1.CloneDash.metainfo.xml"
+        "com.github.marchc1.CloneDash.png")
 sha256sums=('SKIP'
-            'd887a4512e52a0cd99e7b825272e1045dd528a0184664a3780e32550165c34d6'
-            '85f0cc3b17ab6d7cc2fc3cc6f396d22edfd4efbd7d204552a0947b39de1baeee')
+            '75d31ad4e100dff79244be6d5e69d605caa2b2959d9be9ed64bb1f6a75315106'
+            'ebf75e440039888092fc4b46039fc46bdd9fc42e19130baaa45499a64010ab74'
+            '1f342693e6c390c611cc04a9ef93879c3299ecd976bd9958e2cb95b7fe93ffdb')
 
 case "$CARCH" in
     x86_64)
@@ -69,7 +70,12 @@ package() {
     ln -srfv "$pkgdir/usr/lib/clonedash/Clone Dash" "$pkgdir/usr/bin/CloneDash"
     find "$pkgdir/usr/lib/clonedash/runtimes" -maxdepth 1 -mindepth 1 -type d ! -name "$_rid" -exec rm -rf {} \;
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/CloneDash.desktop" "$pkgdir/usr/share/applications/CloneDash.desktop"
+    install -Dm644 "$srcdir/com.github.marchc1.CloneDash.desktop" \
+        "$pkgdir/usr/share/applications/com.github.marchc1.CloneDash.desktop"
+    install -Dm644 "$srcdir/com.github.marchc1.CloneDash.metainfo.xml" \
+        "$pkgdir/usr/share/metainfo/com.github.marchc1.CloneDash.metainfo.xml"
+    install -Dm644 "$srcdir/com.github.marchc1.CloneDash.png" \
+        "$pkgdir/usr/share/icons/hicolor/64x64/apps/com.github.marchc1.CloneDash.png"
     if "$_system_libs"
     then
         rm "$pkgdir/usr/lib/clonedash/libSDL3.so"

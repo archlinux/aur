@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=CloneDash
-Comment=CloneDash Game
+Name=Clone Dash
+Comment=Clone Dash Game
 Exec=CloneDash
-Icon=CloneDash
+Icon=com.github.marchc1.CloneDash
 Categories=Game;
 Terminal=false

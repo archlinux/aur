@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>com.github.marchc1.CloneDash</id>
+  <launchable type="desktop-id">com.github.marchc1.CloneDash.desktop</launchable>
+  <provides>
+    <binary>CloneDash</binary>
+  </provides>
+  <name>Clone Dash</name>
+  <developer id="com.github.marchc1">
+    <name>March</name>
+    <url>https://github.com/marchc1</url>
+  </developer>
+  <summary>An open-source, from scratch clone of Muse Dash (a parkour rhythm game).</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>This is a WIP open-source and cross-platform clone of 'Muse Dash', a parkour-rhythm game combination. It can currently load the base game levels and provides the core gameplay functionality. The goals are to provide various accessibility, training, and customizability features that the base game does not.</p>
+  </description>
+  <keywords>
+    <keyword>rythm</keyword>
+    <keyword>game</keyword>
+    <keyword>parkour</keyword>
+    <keyword>musedash</keyword>
+    <keyword>csharp</keyword>
+    <keyword>dotnet</keyword>
+  </keywords>
+  <content_rating type="oars-1.1"/>
+  <url type="homepage">https://github.com/marchc1/CloneDash</url>
+  <url type="bugtracker">https://github.com/marchc1/CloneDash/issues</url>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://github.com/user-attachments/assets/e87b782b-3a25-4000-acc4-b4b0f3a12877</image>
+      <caption>The Main Menu</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/user-attachments/assets/96cb2dd6-6d88-481c-8e37-2ed1fbb19d3c</image>
+      <caption>Songs selection page</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/user-attachments/assets/bd1d2f4a-c198-4ec5-92a9-33e5605e9103</image>
+      <caption>Levels selection page of a song</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/user-attachments/assets/5ba660e7-eec5-4361-b367-4aa6471c0390</image>
+      <caption>Loading level page</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/user-attachments/assets/992a5a89-3c25-4568-98ae-2fb4190e81ed</image>
+      <caption>Playing a level</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/user-attachments/assets/55139795-eb76-4bed-9a28-984203332c55</image>
+      <caption>Playing a level</caption>
+    </screenshot>
+  </screenshots> 
+</component>
