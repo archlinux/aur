@@ -2,7 +2,7 @@
 
 pkgname=autosuspend
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
@@ -22,7 +22,8 @@ optdepends=('python-dbus: logind session discovery and system timer checks'
   'iputils: ping check'
   'xprintidle: X server idle time check')
 makedepends=('python-setuptools'
-  'python-pytest-runner'
+  'python-build'
+  'python-installer'
   'python-recommonmark'
   'python-sphinx'
   'python-sphinx-furo'
