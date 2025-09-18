@@ -1,6 +1,6 @@
 pkgbase = ofinstaller-beans-git
 	pkgdesc = Installer for Open Fortress
-	pkgver = 1.3.1.r260.g7588aab
+	pkgver = 1.3.1.r313.g471281f
 	pkgrel = 1
 	url = https://github.com/ktwrd/beans-rs
 	arch = x86_64
@@ -8,12 +8,16 @@ pkgbase = ofinstaller-beans-git
 	makedepends = cargo-nightly
 	depends = glibc
 	depends = gcc-libs
-	depends = openssl
+	depends = glib2
+	depends = cairo
+	depends = libxinerama
+	depends = libxfixes
+	depends = pango
+	depends = libxcursor
+	depends = libx11
 	provides = ofinstaller-beans
 	conflicts = ofinstaller-beans
 	source = ofinstaller-beans-git::git+https://github.com/ktwrd/beans-rs.git#branch=develop
-	source = fltk.patch
 	sha256sums = SKIP
-	sha256sums = 8b51d3482aa4750dd51d6bbdc4c2905c7e281c0b280da989c000dd371109dea4
 
 pkgname = ofinstaller-beans-git
