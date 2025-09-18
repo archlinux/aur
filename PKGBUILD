@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: vanyasem
 
 pkgname=python-allpairspy
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc='Python library for test combinations generator'
 arch=('any')
 license=('MIT')
@@ -11,9 +11,9 @@ url='https://github.com/thombashi/allpairspy'
 changelog=CHANGES.txt
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4af06f6af70d53f126daf04fda82ae1dbb8517b0bdad0f55aaa5e04f3d9daa6a')
+sha256sums=('338d876492b9d981015067676d444a6c0ed69e398ed640e84a9e8f310782cb26')
 
 build() {
 	cd "allpairspy-$pkgver"
@@ -22,7 +22,7 @@ build() {
 
 check() {
 	cd "allpairspy-$pkgver"
-	python setup.py pytest
+	PYTHONPATH="$PWD" pytest
 }
 
 package() {
