@@ -1,6 +1,6 @@
 pkgbase = xsystem4-git
 	pkgdesc = This is a cross-platform implementation of AliceSoft's System 4 engine
-	pkgver = alpha.5.1.r126.g441419d
+	pkgver = alpha.5.1.r162.g008d43b
 	pkgrel = 1
 	url = https://github.com/nunuhara/xsystem4
 	arch = x86_64

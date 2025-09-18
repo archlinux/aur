@@ -2,7 +2,7 @@
 
 _pkgname=xsystem4
 pkgname=${_pkgname}-git
-pkgver=alpha.5.1.r126.g441419d
+pkgver=alpha.5.1.r162.g008d43b
 pkgver() {
   cd "$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
