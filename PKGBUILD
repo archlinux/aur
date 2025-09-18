@@ -1,6 +1,6 @@
 # Maintainer: <andrew dot myers at wanadoo  dot fr>
 pkgname=vpacman
-pkgver=1.4.10
+pkgver=1.4.11
 pkgrel=1
 pkgdesc="A Graphical front end for pacman and the AUR"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('pkgfile: for faster retrieval of package files'
 			'xterm: preconfigured terminal emulator (default)'
 			)
 source=(https://gitlab.com/AndyM48/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('6e483e0da574c90059d0799b96e6db78')
+md5sums=('7e5373a6e530eaf421f6674e41519a3d')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
