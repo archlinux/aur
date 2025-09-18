@@ -1,13 +1,13 @@
 pkgbase = nom
 	pkgdesc = RSS reader for the terminal
-	pkgver = 2.14.0
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://github.com/guyfedwards/nom
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3
 	makedepends = go
-	source = https://github.com/guyfedwards/nom/archive/v2.14.0/nom-2.14.0.tar.gz
-	sha256sums = 575207aad706ebdbbde648a6948f073a202bd4b5810031ceb3a7de5eeae938b0
+	source = https://github.com/guyfedwards/nom/archive/v2.15.0/nom-2.15.0.tar.gz
+	sha256sums = 6097e96980e7de401e699f2608635e6bb57c09884f2d04d9dadd57a6374f330b
 
 pkgname = nom
