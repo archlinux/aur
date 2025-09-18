@@ -1,6 +1,6 @@
 pkgbase = packetry-git
 	pkgdesc = USB 2.0 protocol analysis app for use with Cynthion
-	pkgver = 0.4.0.r875.12a867b
+	pkgver = 0.4.0.r1047.3d39650
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/packetry
 	arch = x86_64
