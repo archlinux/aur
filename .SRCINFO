@@ -1,7 +1,7 @@
 pkgbase = packrinth
 	pkgdesc = CLI tool for creating and maintaining your own Minecraft modpack.
 	pkgver = 0.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://thijzert123.github.io/packrinth
 	arch = i686
 	arch = x86_64

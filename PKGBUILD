@@ -2,7 +2,7 @@
 
 pkgname=packrinth
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool for creating and maintaining your own Minecraft modpack."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://thijzert123.github.io/packrinth"
