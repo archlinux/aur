@@ -8,6 +8,6 @@ pkgbase = beatmapexporter-cli-bin
 	makedepends = curl
 	options = !strip
 	source = BeatmapExporterCLI::https://github.com/kabiiQ/BeatmapExporter/releases/download/v2.6.0/linux-BeatmapExporterCLI
-	sha256sums = 833912e69ca409d160bc459bbb6101bef82a3506e392f75ef702bd9076c103a9
+	sha256sums = f4ae8474ceedef675a5f06e1102ca87fe5b13be33052d25b5157e8a5dd3947c9
 
 pkgname = beatmapexporter-cli-bin
