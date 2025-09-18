@@ -1,11 +1,12 @@
 [Desktop Entry]
-Name=Claude Desktop
-Comment=Claude AI assistant by Anthropic
-Exec=/usr/bin/claude-desktop %U
-Terminal=false
 Type=Application
+Name=Claude Desktop
+Comment=Claude Desktop Application
+Exec=/usr/bin/claude-desktop %U
 Icon=claude-desktop
+Terminal=false
 Categories=Network;Utility;
 MimeType=x-scheme-handler/claude;
+StartupWMClass=claude-desktop
 StartupNotify=true
-StartupWMClass=Claude
+Keywords=claude;ai;chat;anthropic;

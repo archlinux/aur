@@ -2,26 +2,26 @@
 # Implementation to AUR from aaddrick/claude-desktop-debian github repository
 
 pkgname=claude-desktop-appimage
-pkgver=1.1.5+claude0.13.11
-pkgrel=3
+pkgver=1.1.5+claude0.13.19
+pkgrel=1
 pkgdesc="Claude Desktop for Linux - AppImage version from aaddrick/claude-desktop-debian"
 arch=('x86_64')
 url="https://github.com/aaddrick/claude-desktop-debian"
 license=('MIT' 'Apache')
-depends=('fuse2')
+depends=('fuse2' 'qt5-base' 'qt6-base')
 options=(!strip)
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 
 # AppImage source
-_appimage_name="claude-desktop-0.13.11-amd64.AppImage"
+_appimage_name="claude-desktop-0.13.19-amd64.AppImage"
 source=("${_appimage_name}::https://github.com/aaddrick/claude-desktop-debian/releases/download/v${pkgver}/${_appimage_name}"
         "claude-desktop.desktop")
 noextract=("${_appimage_name}")
 
 # File checksums
-sha256sums=('90a9edcd5cbde4d5dea61f5940cd56bc03ee3561a3badcf51cd0d6dd4303aed8'
-            '6cb35430398ef6b534ec5ee2d50c90a6d370d318f40b9f7d42e9545b196af56e')
+sha256sums=('a74fbcebec116808ea0d3171124cb1eca57858bfa58452408caaef0d7a187780'
+            'ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d')
 
 prepare() {
     # Make the AppImage executable
@@ -46,8 +46,15 @@ package() {
     if [ -d "${srcdir}/squashfs-root" ]; then
         # Install the icon if it exists
         if [ -f "${srcdir}/squashfs-root/io.github.aaddrick.claude-desktop-debian.png" ]; then
+            # Install in pixmaps
             install -Dm644 "${srcdir}/squashfs-root/io.github.aaddrick.claude-desktop-debian.png" \
                 "${pkgdir}/usr/share/pixmaps/claude-desktop.png"
+            # Install in hicolor icon theme
+            install -Dm644 "${srcdir}/squashfs-root/io.github.aaddrick.claude-desktop-debian.png" \
+                "${pkgdir}/usr/share/icons/hicolor/256x256/apps/claude-desktop.png"
+            # Install with original name too
+            install -Dm644 "${srcdir}/squashfs-root/io.github.aaddrick.claude-desktop-debian.png" \
+                "${pkgdir}/usr/share/pixmaps/io.github.aaddrick.claude-desktop-debian"
         fi
     fi
 }
