@@ -3,7 +3,7 @@
 
 pkgname=linear-cli
 _pypi_name=linearator
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A comprehensive CLI tool for Linear issue management with advanced search, bulk operations, and team collaboration features"
 arch=('any')
@@ -27,7 +27,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('keyrings.alt: Alternative keyring backends for credential storage')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
-sha256sums=('8c157c3d509572a2cd92b75f68c2303d3334366bd8e73c7756f668175e71558a')
+sha256sums=('2672b44d8a101c965a1273d6dd8868f17f4f5f418149957f7d71e5decde7908e')
 
 build() {
     cd "$_pypi_name-$pkgver"
