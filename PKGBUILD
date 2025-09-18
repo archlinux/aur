@@ -4,7 +4,7 @@ pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 
