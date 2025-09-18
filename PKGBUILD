@@ -1,7 +1,7 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=mgccli
-pkgver=0.31.1
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="Magalu Cloud CLI"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/MagaluCloud/mgccli"
 license=("GPL3")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MagaluCloud/mgccli/releases/download/v${pkgver}/mgccli_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('3dbcc713933d5b65cbfd10400d165fcb0b72e94b82f92b73b874e998c6a24a27')
+sha256sums=('afd091d53774e1cf6ef040b730fbd9e6d82cd23651b6756bcd5055a00e730134')
 
 build() {
   ./mgc completion basg > mgc.bash
