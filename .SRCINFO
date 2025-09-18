@@ -6,6 +6,7 @@ pkgbase = mrustc-git
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = gcc
 	depends = zlib
 	depends = python
