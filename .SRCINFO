@@ -12,7 +12,7 @@ pkgbase = rocketchat-client-bin
 	provides = rocketchat-desktop
 	conflicts = rocketchat-desktop
 	source = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/4.8.1/rocketchat-4.8.1-linux-amd64.deb
-	source = LICENSE
+	source = upstream-license
 	sha256sums = 5b32902c984fe69005dae4fdb5e0c80d9f7e161ff0ba0ca63b75c2c974ce337a
 	sha256sums = 362e3ce451a4aa3e51e5728a2102b01135827d3a4af0a450b672c54540dec5c5
 
