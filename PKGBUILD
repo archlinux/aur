@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools python
 depends=(python-distro python-elasticsearch python-psutil python-pyyaml python-rich python-textual python-requests python-tqdm python-pydantic python-luwen)
 provides=("python-tt-tools-common")
 conflicts=("python-tt-tools-common")
-source=("tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git")
+source=("tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {

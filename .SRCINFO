@@ -22,7 +22,7 @@ pkgbase = python-tt-tools-common
 	depends = python-luwen
 	provides = python-tt-tools-common
 	conflicts = python-tt-tools-common
-	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git
+	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git#tag=v1.4.28
 	sha256sums = SKIP
 
 pkgname = python-tt-tools-common
