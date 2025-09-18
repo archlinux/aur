@@ -1,0 +1,16 @@
+pkgbase = dela
+	pkgdesc = A task runner that delegates the work to other tools
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/aleyan/dela
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	conflicts = dela-git
+	source = dela-0.0.6.crate::https://crates.io/api/v1/crates/dela/0.0.6/download
+	b2sums = 65872d3adf4ac06efde03bbd0930781478b7f5e124760b5777de1ea377212ebc10ad956c5d128651e92b5b5b3ab40bbaa755fb7979519ce61db5b83105cf53e2
+
+pkgname = dela
