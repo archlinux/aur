@@ -1,19 +1,20 @@
-# Maintainer: entriphy <t4ils.dev@gmail.com>
+# Contributor: entriphy <t4ils.dev@gmail.com>
 # Contributor: Pierre Chapuis <arch@catwell.info>
 
 pkgname=python-airtable-wrapper
 _pkgname=pyairtable
-pkgver=0.15.3
-pkgrel=4
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Python Airtable Client Wrapper"
 arch=("any")
 url="https://github.com/gtalarico/$_pkgname"
 license=("MIT")
 options=(!emptydirs)
-depends=("python" "python-requests")
-makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-pytest-runner")
+depends=("python" "python-click" "python-inflection" "python-pydantic" "python-requests" "python-typing_extensions" "python-urllib3")
+makedepends=("python-build" "python-installer" "python-setuptools")
+
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("9426679c08d397345179307890e5dde05cfe05b6bf6c7d2b0764806c947ab2c7")
+sha256sums=("baca26f3b0cc1956b4c0a46aadfc87573b34337a622865a3be9ca4f9f3307c72")
 
 build() {
     cd "$_pkgname-$pkgver"
