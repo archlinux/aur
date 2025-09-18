@@ -2,14 +2,14 @@
 
 pkgname=swaystatus
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
 url="https://github.com/jmcantrell/$pkgname"
 license=('MIT')
 depends=('python')
 optdepends=()
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-uv-build')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 checkdepends=('python-pytest')
 provides=()
 conflicts=()

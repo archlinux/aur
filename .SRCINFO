@@ -1,12 +1,11 @@
 pkgbase = swaystatus
 	pkgdesc = Generate a status line for swaybar
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jmcantrell/swaystatus
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
