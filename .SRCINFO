@@ -1,22 +1,25 @@
 pkgbase = youtube-dl-git
-	pkgdesc = A small command-line program to download videos from YouTube.com and a few more sites (git version)
-	pkgver = 2021.02.22.r6.g1631fca1e
-	pkgrel = 1
-	url = http://ytdl-org.github.io/youtube-dl/
+	pkgdesc = A command-line program to download videos from YouTube.com and a few more sites
+	pkgver = 2021.12.17.r440.ga084c80
+	pkgrel = 2
+	url = https://github.com/ytdl-org/youtube-dl
 	arch = any
-	license = custom
+	license = Unlicense
 	makedepends = git
 	makedepends = pandoc
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	optdepends = ffmpeg: for video post-processing
-	optdepends = rtmpdump: for rtmp streams support
 	optdepends = atomicparsley: for embedding thumbnails into m4a files
+	optdepends = ffmpeg: for video post-processing
 	optdepends = phantomjs: for some less common extractors to work
+	optdepends = python-pycryptodome: for hlsnative downloader
+	optdepends = rtmpdump: for rtmp streams support
 	provides = youtube-dl
 	conflicts = youtube-dl
-	source = git+https://github.com/ytdl-org/youtube-dl.git
-	md5sums = SKIP
+	source = youtube-dl::git+https://github.com/ytdl-org/youtube-dl.git
+	sha256sums = SKIP
 
 pkgname = youtube-dl-git
-
