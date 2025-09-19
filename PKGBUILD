@@ -3,10 +3,10 @@
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor
 pkgver=r54.b473243
-pkgrel=4
+pkgrel=5
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
-provides=("internet-usage-monitor=${pkgver}")
+provides=("internet-usage-monitor=1.0.0")
 conflicts=('internet-usage-monitor')
 url="https://github.com/YahyaZekry/internet-usage-monitor"
 license=('MIT')
@@ -50,7 +50,7 @@ package() {
   sed -i 's|cp "\$source_dir"/fix_conky_kde.sh "\$bin_dir/"|cp "\$source_dir"/fix_conky_kde.sh "\$bin_dir/"|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
   # Add AUR-specific symlink creation in the else clause
-  sed -i '/chmod +x "\$bin_dir"\/\*.sh/a\    else\n        # AUR installation: create symlinks to system files\n        print_status "$BLUE" "$INFO" "Creating symlinks to system-installed files..."\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor.sh" "$bin_dir/internet_monitor.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor_daemon.sh" "$bin_dir/internet_monitor_daemon.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/conky_usage_helper.sh" "$bin_dir/conky_usage_helper.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/fix_conky_kde.sh" "$bin_dir/fix_conky_kde.sh"\n        chmod +x "$bin_dir"/*.sh' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  sed -i '/chmod +x "\$bin_dir"\/\*.sh/a\    else\n        # AUR installation: create symlinks to system files\n        print_status "$BLUE" "$INFO" "Creating symlinks to system-installed files..."\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor.sh" "$bin_dir/internet_monitor.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor_daemon.sh" "$bin_dir/internet_monitor_daemon.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/conky_usage_helper.sh" "$bin_dir/conky_usage_helper.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/fix_conky_kde.sh" "$bin_dir/fix_conky_kde.sh"\n        # No need to chmod symlinks - they inherit permissions from target' "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
   chmod +x "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
