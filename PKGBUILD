@@ -2,7 +2,7 @@
 
 pkgname=stremio-linux-shell-git
 pkgver=v1.0.0.beta.11.r5.gca88264
-pkgrel=1
+pkgrel=2
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
 url="https://github.com/Stremio/stremio-linux-shell"
@@ -62,6 +62,8 @@ package() {
   install -Dm755 "target/release/stremio-linux-shell" "$pkgdir/usr/bin/stremio"
 
   install -Dm644 "data/com.stremio.Stremio.desktop" \
+    "$pkgdir/usr/share/applications/com.stremio.Stremio.desktop"
+  sed -i '/^[[:space:]]*DBusActivatable[[:space:]]*=[[:space:]]*true[[:space:]]*$/d' \
     "$pkgdir/usr/share/applications/com.stremio.Stremio.desktop"
   install -Dm644 "data/icons/com.stremio.Stremio.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.stremio.Stremio.svg"
