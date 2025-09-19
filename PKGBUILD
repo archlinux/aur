@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-bin
 _pkgname=Serial-Studio
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program.(Prebuilt version)"
 arch=(
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Pro-${pkgver}-Linux-x64.AppImage")
 sha256sums=('bc8a79ec026bf93f896e5aecc1334b2b093bbc17745b1a71adad3c2fa98ad93a'
             '382dfc92c53dd659fb6644b4ab93915bff23075d0a2368147d8096c22533db8b')
-sha256sums_aarch64=('89f01ce3453ab11c156ecaf7322018911af5bfe9eac41549d9846b89665c6963')
-sha256sums_x86_64=('77fca8e2e36f70e863a887bed1f6d002b90aaec057a9f11595f08495f681e4f2')
+sha256sums_aarch64=('baae2fbf3a55c857e8aaa1c78d09bc978e8a0c559ef4462f1c655f93e9ab6a44')
+sha256sums_x86_64=('299f10dadeb3cb7a81f1c9646c3572bdffaf7a0dc52abe42573cabf9e3b77de9')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
