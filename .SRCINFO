@@ -1,0 +1,47 @@
+pkgbase = python-ttnn-git
+	pkgdesc = TT-NN operator and Tensor library for Tenstorrent hardware
+	pkgver = 0.62.0.dev20250919.r11.ge84fdf563aa
+	pkgrel = 1
+	url = https://github.com/tenstorrent/tt-metal
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = gcc>=12
+	makedepends = cmake>=3.29
+	makedepends = ninja
+	makedepends = wget
+	makedepends = pkg-config
+	makedepends = xz
+	makedepends = curl
+	makedepends = mold
+	depends = python>=3.10
+	depends = hwloc
+	depends = numactl
+	depends = boost
+	depends = tbb
+	depends = capstone
+	depends = sfpi
+	depends = python
+	depends = python-loguru
+	depends = python-networkx
+	depends = python-graphviz
+	depends = python-numpy
+	provides = python-ttnn
+	conflicts = python-ttnn
+	source = tt-metal::git+https://github.com/tenstorrent/tt-metal
+	source = cmake-disable-tools.patch
+	source = ttmetal-disable-tools.patch
+	source = pyptoject-hack-deps.patch
+	source = setup-py-set-flags.patch
+	source = cmake-enable-advanced-linking.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-ttnn-git
