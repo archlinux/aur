@@ -1,6 +1,6 @@
 pkgbase = wasabi
 	pkgdesc = A modern and fast real-time MIDI player written in Rust.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/BlackMIDIDevs/wasabi
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wasabi
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	source = wasabi-1.0.3.tar.gz::https://github.com/BlackMIDIDevs/wasabi/archive/refs/tags/v1.0.3.tar.gz
-	b2sums = 0f44f662f895c8330e0c35513db3146012237fc37bda55f2c68d30444066968a5530d792ab7bdd49da8190e3d55292a86431cbd9c0700bc8d14c8cba69c862f5
+	source = wasabi-1.0.4.tar.gz::https://github.com/BlackMIDIDevs/wasabi/archive/refs/tags/v1.0.4.tar.gz
+	b2sums = bfed0862cc865e410bce15c1dc24ad126eb4a7028bf54d3884e56e650bf7da6fb9d906d6d2d4ea6e81ac4bf88933bf102c5b9facae7e1fe2651dc029ec691b89
 
 pkgname = wasabi
