@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=3.10.0.r2.g5925b76
+pkgver=3.11.0.r47.g8de5599
 pkgrel=1
 _nodeversion=22
 _electronversion=38
@@ -22,10 +22,12 @@ conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 source=('git+https://github.com/th-ch/youtube-music.git'
         "${pkgname%-git}.sh"
-        "${pkgname%-git}.desktop")
+        "${pkgname%-git}.desktop"
+        "${pkgname%-git}.png")
 sha256sums=('SKIP'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
-            '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654')
+            '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654'
+            '340f4645d69c399a612fb06123b3405113e9e5cc34c965b20a5c8c94c653e7ae')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -72,10 +74,6 @@ package() {
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/${pkgname%-git}.png" -t "$pkgdir/usr/share/pixmaps/"
   install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
-
-  for i in 16 24 32 48 64 128 256 512 1024; do
-    install -Dm644 "assets/generated/icons/png/${i}x${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-git}.png"
-  done
 }
