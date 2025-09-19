@@ -2,7 +2,7 @@
 
 _basename="zls"
 pkgname="${_basename}-mach"
-pkgver=0.14.0_dev.336+a9e651a2
+pkgver=0.14.0dev.336+a9e651a2
 pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
@@ -58,7 +58,7 @@ pkgver() {
   # 0.16.0-dev
   build_version="$(grep -Po '(?<=\.version = ")[^"]+' build.zig.zon)"
   # 0.16.0_dev
-  build_version_normalized="${build_version//-/_}"
+  build_version_normalized="${build_version//-/}"
   # 0.15.0-3-g1840a4b8
   git_describe="$(git describe --match "*.*.*" --tags)"
   # 3-g1840a4b8
