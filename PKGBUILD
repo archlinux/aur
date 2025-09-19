@@ -2,8 +2,8 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 pkgname=whalebird-git
 _pkgname=Whalebird
-pkgver=6.2.1.r0.gf548a2d
-_electronversion=36
+pkgver=6.2.5.r0.g134d914
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop.(Use system-wide electron)"
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -41,8 +41,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -79,6 +84,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn nextron build --no-pack
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
