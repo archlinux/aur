@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -33,6 +33,7 @@ makedepends=(
   go
   nlohmann-json
 )
+changelog=$pkgname.changelog
 
 # use any of:
 #   gpg --keyserver keyserver.ubuntu.com --search-keys me@fkoehler.org
@@ -44,7 +45,7 @@ validpgpkeys=(
 
 # git tag is used by the cmake script to determine app version
 source=(git+$url.git#tag=v$pkgver?signed)
-sha256sums=('a04a37880c846700ce9d0ac5149383348277a0fda1382a9cd6007f42fd7c7ef0')
+sha256sums=('45d5bd4909a0c313b1b9e4998794c6a2563771ebf48b74c517c586b463864806')
 
 prepare() {
   cd KTailctl/src/wrapper

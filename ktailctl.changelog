@@ -1,0 +1,9 @@
+# KTailctl v0.21.2
+
+Fixes account switching and uses nicknames for accounts.
+
+## Chores
+
+Go:
+
+- Update `golang.org/x/net` from `v0.43.0` to `v0.44.0`
