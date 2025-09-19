@@ -1,7 +1,13 @@
 # Maintainer: Alexander Fetting <deeznuts420692@proton.me>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: Deon Spengler <deon at spengler dot co dot za>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: William Rea <sillywilly@gmail.com>
+# Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 pkgname=simgear
 pkgver=2024.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 provides=('simgear=${pkgver}')
 conflicts=('simgear-git')
