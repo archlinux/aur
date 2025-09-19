@@ -2,7 +2,7 @@
 pkgname=cyme-bin
 _pkgname=cyme
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="List system USB buses and devices; a modern cross-platform lsusb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuna-f1sh/cyme"
