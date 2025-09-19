@@ -6,12 +6,12 @@ set:
 	git remote add github git@github.com:maykonmjunior/gmail-tray.git
 
 commit:
+	git remote set-url --add --push origin ssh://aur@aur.archlinux.org/gmail-tray.git
+	git remote set-url --add --push origin git@github.com:maykonmjunior/gmail-tray.git
 	git remote -v
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
 	git commit -m "new version"
-	ssh-add ~/.ssh/arch/arch
-	git push origin master   # AUR
-	ssh-add ~/.ssh/id_ed25519
-	git push github main   # GitHub
+	git push
+
 
