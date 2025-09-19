@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=1.2.9.8
+pkgver=2025.1.1
 _libgit2ver=1.8.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
 arch=('x86_64')
 url="https://mogan.app/"
@@ -15,8 +15,8 @@ depends=(
     'gawk'
     'freetype2'
     'libpng'
-    'qt6-svg'
-    'qt6-base'
+    'qt5-svg'
+    'qt5-base'
     'python'
     'mimalloc'
 )
@@ -28,12 +28,13 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-fedora41.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-ubuntu22.04.deb"
     "libgit2-${_libgit2ver}.tar.gz::${_libgit2url}/archive/refs/tags/v${_libgit2ver}.tar.gz"
 )
-sha256sums=('578fe5e76b71a61851b22bbf478a782f6b0f4dbc97d508b473243e3a81ab2b13'
+sha256sums=('b92de16a4c37d8120f139d473286a28a5a2f99feff5797cbec8b8dc98c44862e'
             '9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4')
 build() {
+    bsdtar -xf "${srcdir}/data."*
     cd "${srcdir}/libgit2-${_libgit2ver}"
     local cmake_options=(
         -B build
