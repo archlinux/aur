@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wnacg-downloader
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="绅士漫画 wnacg.com wnacg 的多线程下载器，带图形界面 支持导出 cbz 和 pdf"
 arch=($CARCH)
@@ -32,7 +32,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('e1e09cd5a8252998126ba75b2f1781182d567cc9dbad77db869c3094206356ab')
+sha256sums=('11e04392e23b62058a8341ad7cc335cd38dc88bcec909ddeeac39fda74f1b171')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
