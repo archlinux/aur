@@ -117,13 +117,12 @@ provides=(
   libavfilter.so
   libavformat.so
   libavutil.so
-  libpostproc.so
   libswresample.so
   libswscale.so
 )
-_commit=140fd653aed8cad774f991ba083e2d01e86420c7
+_tag=a4044e04486d1136022498891088a90baf5b2775
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git?signed#commit=${_commit}
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 b2sums=('7c71ec5f098e248b584fd3e28e7f648e5929ff7c5a6cfc5dcce8300a8a0b91de804cd92ef72963ef86dc57a73d15ab03aeab61d99d1872baad1163462730d7d6'
