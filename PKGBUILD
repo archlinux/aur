@@ -22,7 +22,7 @@
 #   See README.md further details.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -37,6 +37,7 @@ optdepends=('nano: for editing config files'
             'wget: for downloading files'
             'vim: for editing config files'
             'bat: for syntax highlighting'
+            'glow: for markdown converting and viewing'
             'onefetch: for system info display')
 source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
 sha256sums=('SKIP')
