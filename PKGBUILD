@@ -2,7 +2,7 @@
 # Maintainer: Denis Sheremet <aur@lxlz.space>
 pkgname=yson-tools
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools for working with YSON format"
 arch=('x86_64')
 url="https://github.com/lesf0/yson-tools"
