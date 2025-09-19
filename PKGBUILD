@@ -1,5 +1,5 @@
 pkgname=gitlab-agent
-pkgver=18.1.1
+pkgver=18.4.0
 pkgrel=1
 pkgdesc='GitLab agentk, kas daemons'
 url="https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent"
@@ -10,7 +10,7 @@ backup=("etc/gitlab-kas/config.yaml")
 #source=("https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/archive/v$pkgver/gitlab-agent-v$pkgver.tar.gz"
 source=("git+https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent.git/#tag=v$pkgver"
         "gitlab-kas.service")
-sha256sums=('a5d8b7541409d976d3935472156e4c41d6c8ef5000f168324a3c7c9fe9526b3a'
+sha256sums=('3ebb1ff117140b588ecd1d00f4d6ed922c429b3a2251203b5f72e510258bc887'
             'f0a39b60b799a3be043de9574451656e416e924d7f0e5441ca5db5440465c84c')
 
 build() {
