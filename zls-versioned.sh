@@ -2,4 +2,4 @@
 
 export PATH="@@ZIG_PATH@@:$PATH"
 
-exec /usr/lib/zls@@ZIG_VERSION@@/zls@@ZIG_VERSION@@ "$@"
+exec @@ZLS_PATH@@/zls "$@"

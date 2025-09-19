@@ -3,7 +3,7 @@
 _basename="zls"
 pkgver=0.9.0
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 
 pkgname="${_basename}${_pkgver}"
 pkgdesc="A language server for Zig"
@@ -24,7 +24,7 @@ depends=(
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_basename}-versioned.sh"
         "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7'
+sha256sums=('b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68'
             '4c8993ee8bc652cd015a95e8e5e5b35a7670baa7033bf01d7f0620328ac671aa'
             '76817bd8e7261a60a0871a5ad350c79cb8d95543b66d810a2d16273e48045b74'
             '88fd69cb071693cec2a0ff22b71489c49ff056f53fd43e321ffe314b44975cce')
@@ -98,7 +98,7 @@ unset _source_str _uri
 prepare() {
   cd "${srcdir}"
   sed -e "s|@@ZIG_PATH@@|/opt/zig${_pkgver}|g" \
-      -e "s|@@ZIG_VERSION@@|${_pkgver}|g" \
+      -e "s|@@ZLS_PATH@@|/usr/lib/zls${_pkgver}|g" \
       -i "${_basename}-versioned.sh"
 
   cd "${_pkgsrc}"
@@ -153,5 +153,5 @@ package() {
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "build/usr/bin"
-  install -vDm755 "${_basename}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+  install -vDm755 "${_basename}" "${pkgdir}/usr/lib/${pkgname}/${_basename}"
 }
