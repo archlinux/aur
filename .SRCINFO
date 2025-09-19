@@ -24,6 +24,9 @@ pkgbase = elia
 	depends = python-rich
 	depends = python-sqlalchemy
 	depends = python-pydantic
+	depends = python-yaml
+	depends = python-tree-sitter-yaml
+	depends = python-tree-sitter-markdown
 	source = elia-1.10.0.tar.gz::https://github.com/darrenburns/elia/archive/1.10.0.tar.gz
 	sha256sums = 203663a38afe052238883cfba7c5dd83810765f848960c37e16a4e8d3f31bccc
 

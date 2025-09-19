@@ -18,7 +18,8 @@ depends=('python>=3.11' 'python-textual' 'python-sqlmodel>=0.0.9'
          'python-click-default-group>=1.2.4' 'python-greenlet>=3.0.3'
          'python-google-generativeai>=0.5.3' 'python-pyperclip>=1.8.2'
          'litellm>=1.37.19' 'python-tiktoken' 'python-rich' 'python-sqlalchemy'
-         'python-pydantic')
+         'python-pydantic' 'python-yaml' 'python-tree-sitter-yaml'
+         'python-tree-sitter-markdown')
 
 _pkgsrc="${pkgname}-${pkgver}"
 
@@ -40,6 +41,5 @@ package () {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${pkgname}_chat-${pkgver}.dist-info/licenses/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
