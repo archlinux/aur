@@ -1,0 +1,19 @@
+pkgbase = soprano-git
+	pkgdesc = Soprano is a library which provides a highly usable object-oriented C++/Qt6 framework for RDF data.
+	pkgver = v2.9.3.r95.g8d4fca7
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = clucene
+	makedepends = rasqal
+	makedepends = raptor
+	makedepends = redland
+	makedepends = qt6-base
+	depends = qt6-base
+	provides = soprano
+	conflicts = soprano
+	source = git+file:///home/domson/git/kde/soprano
+	sha256sums = SKIP
+
+pkgname = soprano-git
