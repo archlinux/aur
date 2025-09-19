@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
-pkgname=novanav-py
-pkgver=0.0.10
+pkgname=novanav
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="NovaNav: Lightweight browser for Linux and macOS, delivering fast, distraction-free browsing experience."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-pyqt5-webengine')
 
 source=("https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('f36ccb22da164236cb7fce8b97bc15c0a46ba0973bf33d9a26b8b9a84c215e80')
+sha256sums=('a134a47a7c2395831984127d046e132e18d0b20557d4edbc5fdf1de7b959b6b5')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
@@ -18,7 +18,7 @@ prepare() {
 
 package() {
   # Install the Python script
-  install -Dm755 "$srcdir"/NovaNav-v."${pkgver}"/src/python/novanav_linux.py "${pkgdir}/usr/local/bin/novanav.py"
+  install -Dm755 "$srcdir"/NovaNav-v."${pkgver}"/src/python/novanav.py "${pkgdir}/usr/local/bin/novanav.py"
   
   # Create a shell script to execute novanav.py and copy it to /usr/local/bin
   echo '#!/bin/bash' > novanav
