@@ -22,11 +22,6 @@ optdepends=(
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 
-pkgver() {
-  cd "$srcdir/$_pkgbase"
-  git describe --tags --long --always 2>/dev/null | sed 's/^v//; s/-/./g'
-}
-
 build() {
   cd "$srcdir/$_pkgbase"
   zig build
