@@ -1,19 +1,20 @@
 pkgbase = git-series-git
-	pkgdesc = Git extension that tracks changes to a patch series over time
-	pkgver = 0.9.1.r0.gb5fd4af
+	pkgdesc = Track changes to a patch series over time
+	pkgver = 0.9.1.r34.g9c5d40e
 	pkgrel = 1
-	url = http://github.com/git-series/git-series
-	arch = i686
+	url = https://github.com/git-series/git-series
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
-	makedepends = cmake
-	depends = git
+	makedepends = git
+	makedepends = libgit2
+	makedepends = libssh2
+	depends = libgit2
+	depends = libssh2
+	depends = openssl
 	provides = git-series
 	conflicts = git-series
-	source = git+https://github.com/git-series/git-series.git
-	md5sums = SKIP
+	source = git+https://github.com/git-series/git-series.git#branch=master
+	sha256sums = SKIP
 
 pkgname = git-series-git
-

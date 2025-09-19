@@ -1,0 +1,5 @@
+# Built package
+*.pkg.tar.*
+
+# Git repository
+git-series/
