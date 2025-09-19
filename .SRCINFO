@@ -1,0 +1,22 @@
+pkgbase = tquic-git
+	pkgdesc = A high-performance, lightweight, and cross-platform QUIC library
+	pkgver = 1.6.0.r13.gb62863a
+	pkgrel = 1
+	url = https://github.com/Tencent/tquic
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = tquic
+	conflicts = tquic
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/Tencent/tquic.git
+	source = git+https://github.com/google/boringssl.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = tquic-git
