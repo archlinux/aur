@@ -2,13 +2,13 @@
 
 _pkgbase="zig-waybar-contrib"
 pkgname="$_pkgbase"
-pkgver=0.0.1.r0.g0000000
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Lightweight Waybar modules built with Zig (latest git)"
+pkgdesc="High-performance Waybar modules written in Zig for efficient system monitoring"
 arch=('x86_64')
 url="https://github.com/erffy/${_pkgbase}"
 license=('GPL3')
-source=("git+$url.git")
+source=("git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
 depends=()
@@ -32,15 +32,8 @@ build() {
   zig build
 }
 
-check() {
-  cd "$srcdir/$_pkgbase"
-  zig build test || echo "No tests available"
-}
-
 package() {
-  cd "$srcdir/$_pkgbase/zig-out/bin"
-
-  for bin in *; do
+  for bin in "$srcdir/$_pkgbase/zig-out/bin/*"; do
     [[ -x "$bin" && ! -d "$bin" ]] || continue
     install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-$bin"
   done
