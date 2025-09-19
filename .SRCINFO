@@ -1,6 +1,6 @@
 pkgbase = python-spin
 	pkgdesc = A developer tool for scientific Python libraries
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/scientific-python/spin
 	arch = any
@@ -12,8 +12,10 @@ pkgbase = python-spin
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-click
-	depends = python-tomli
-	source = spin-0.14::git+https://github.com/scientific-python/spin#tag=v0.14
-	b2sums = 94979a5c796047dfe33eccabc557e2632178c8d6ef571bc3f3f04900688bd3e7a209e52ed2a4d7f86240d155cab9c29f49ed0879efe6cafbf54ab68866016584
+	depends = python-importlib-metadata
+	optdepends = python-pygments: For syntax highlighting
+	optdepends = python-pytest: For running the unit-tests
+	source = spin::git+https://github.com/scientific-python/spin#tag=v0.15
+	b2sums = dbfe9700bfa9365ce67bb42a40ad405b52e321d46f864c0639112f2761cfa1115385c97e3e5d897bbfa0840eb8baf0019f87728a57882c37add9bcefa6fd8b8e
 
 pkgname = python-spin

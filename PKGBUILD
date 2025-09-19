@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="spin"
 pkgname="python-${_name}"
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=(
   "python>=3.9"
   "python-click"
-  "python-tomli"
+  "python-importlib-metadata"
 )
 makedepends=(
   "git"
@@ -19,17 +19,20 @@ makedepends=(
   "python-installer"
   "python-wheel"
 )
-source=("${_name}-${pkgver}::git+${url}#tag=v${pkgver}")
-b2sums=('94979a5c796047dfe33eccabc557e2632178c8d6ef571bc3f3f04900688bd3e7a209e52ed2a4d7f86240d155cab9c29f49ed0879efe6cafbf54ab68866016584')
+optdepends=(
+  "python-pygments: For syntax highlighting"
+  "python-pytest: For running the unit-tests"
+)
+source=("${_name}::git+${url}#tag=v${pkgver}")
+b2sums=('dbfe9700bfa9365ce67bb42a40ad405b52e321d46f864c0639112f2761cfa1115385c97e3e5d897bbfa0840eb8baf0019f87728a57882c37add9bcefa6fd8b8e')
 
-_archive="${_name}-${pkgver}"
 build() {
-  cd "${_archive}"
+  cd "${_name}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_archive}"
+  cd "${_name}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
