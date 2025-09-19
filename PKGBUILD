@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.7.r21.g3f72461
+pkgver=1.0.0.alpha.7.r31.g99a6adc
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -44,10 +44,6 @@ prepare() {
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Use wheel instead of sudo group
-  # https://github.com/pop-os/cosmic-settings-daemon/issues/42
-  sed -i 's|sudo|wheel|g' "data/polkit-1/rules.d/${pkgname%-git}.rules"
 }
 
 build() {
