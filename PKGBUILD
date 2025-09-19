@@ -63,7 +63,7 @@ pkgver() {
   git_describe="$(git describe --match "*.*.*" --tags)"
   # 3-g1840a4b8
   git_describe_tail="${git_describe#*-}"
-  # 3+g1840a4b8
+  # 3+1840a4b8
   git_describe_normalized="${git_describe_tail//-g/+}"
   # 0.16.0_dev.3+1840a4b8
   printf '%s.%s' "${build_version_normalized}" "${git_describe_normalized}"
