@@ -1,5 +1,5 @@
 pkgbase = python-tree-sitter-markdown
-	pkgdesc = Ruby Grammar for tree-sitter
+	pkgdesc = Markdown Grammar for tree-sitter
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
