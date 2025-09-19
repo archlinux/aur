@@ -1,0 +1,21 @@
+pkgbase = zls-master
+	pkgdesc = A language server for Zig
+	pkgver = 0.16.0dev.3+1840a4b8
+	pkgrel = 1
+	url = https://zigtools.org/zls
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = riscv64
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = git
+	makedepends = jq
+	depends = zig-master
+	provides = zls=0.16.0dev.3+1840a4b8
+	conflicts = zls
+	source = zls::git+https://github.com/zigtools/zls.git
+	sha256sums = SKIP
+
+pkgname = zls-master
