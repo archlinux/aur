@@ -5,8 +5,8 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=proton-pass
-pkgver=1.32.6
-pkgrel=2
+pkgver=1.32.7.0
+pkgrel=1
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -15,26 +15,15 @@ depends=('bash' 'gcc-libs' 'glibc' 'electron')
 makedepends=('rust' 'yarn')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
-        "proton-pass.desktop"
-        "7d910a0ebe6bc69dc145fa7569c0094748d280cd.patch")
-sha256sums=('67a5b939f0131974c7a3845a91737c55939de872f5415eb4d660f50508abf893'
-            '501210c67fc921a2fb4ba591980192ad1da60e26fb6b2fd7d68aad4075eafac7'
-            '7f576b4db49378fedf722f6dc8c13b09a62cda0d6c7b86948a9717352c02610b')
+        "proton-pass.desktop")
+sha256sums=('b66802cb6a8239ee8e535d72f668cae7ebd5996c1db826cd79799fd11ab91739'
+            '501210c67fc921a2fb4ba591980192ad1da60e26fb6b2fd7d68aad4075eafac7')
 
 prepare() {
     cd WebClients-${pkgname}-${pkgver}
 
-    # Fix collect-metrics workspace error (https://github.com/ProtonMail/WebClients/commit/7d910a0ebe6bc69dc145fa7569c0094748d280cd)
-    patch --no-backup-if-mismatch -Np1 -i ../7d910a0ebe6bc69dc145fa7569c0094748d280cd.patch
-
     # Limit workspace applications to avoid mysterious dependency issues
     sed -i 's@"applications/\*",@"applications/pass*",@' package.json
-
-    # Use the NPM version of the Drive SDK (because the Proton (Tech) servers are inaccessible)
-    sed -i -e 's@proton/drive-sdk@protontech/drive-sdk@' -e 's@0.0.9@0.0.10@' packages/drive/package.json
-
-    # Disable the rustup command (because we don't use that tool)
-    sed -i 's@execSync(`rustup@//execSync(`rustup@' applications/pass-desktop/native/build.js
 
     # Bypass pass-desktop-native build script
     sed -i 's@build:multi@build@' applications/pass-desktop/package.json
@@ -52,7 +41,7 @@ build() {
     yarn install
     yarn run build:desktop
 
-    # HACK: Move Rust target directory to avoid asset-relocator including it
+    # HACK: Move Rust target directory to avoid asset-relocator including it (reduces size of .asar file)
     {
         mv native/target ../rust-target
         yarn exec 'NODE_ENV=production electron-forge package'
