@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vis-launcher-bin
 _pkgname=VI-Software-Launcher
-pkgver=2.1.9
+pkgver=2.1.10
 _electronversion=38
 pkgrel=1
 pkgdesc="Modded Minecraft launcher for servers on the VI Software Platform.(Prebuilt version.Use system-wide electron)"
@@ -16,14 +16,13 @@ depends=(
     'java-runtime'
 )
 makedepends=(
-    'fuse2'
     'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-setup-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee879ce6c22ee1df84d06e2e7adf2b24fc0ed24b68ff1bd5146f6be5d686d3fb'
+sha256sums=('4dee2b620f586349f10f54db0d83a6b923216c5b0b0e4bdce202fe15f8e5c73e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -46,6 +45,7 @@ prepare() {
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/app" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
