@@ -1,7 +1,7 @@
 pkgbase = zls0.11
 	pkgdesc = A language server for Zig
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = zls0.11
 	depends = zig0.11
 	source = zls-versioned.sh
 	source = zls-0.11.0.tar.gz::https://github.com/zigtools/zls/archive/refs/tags/0.11.0.tar.gz
-	sha256sums = 36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7
+	sha256sums = b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68
 	sha256sums = 09fee5720fed9f3e1f494236ba88bf9176d3a01304feaa355b9f4726a574431b
 
 pkgname = zls0.11
