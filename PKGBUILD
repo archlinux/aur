@@ -1,7 +1,7 @@
 # Maintainer: goatvisuals <goat@iusevimbtw.com>
 
 pkgname=auto-big-picture-git
-pkgver=r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
+pkgver=0
 pkgrel=1
 pkgdesc="Auto launch Steam Big Picture on controller connect (Bluetooth/USB)"
 arch=('any')
