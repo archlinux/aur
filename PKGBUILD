@@ -1,7 +1,7 @@
 #  Maintainer: crl <crl18039102576@126.com>
 
 pkgname=python-torchrl
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A modular, primitive-first, python-first PyTorch library for Reinforcement Learning."
 url="https://github.com/pytorch/rl"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python python-cloudpickle python-tensordict python-numpy python-pytorch python-packaging)
 makedepends=(python-wheel python-installer python-setuptools gcc)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f6ec41227711515961d7c6457bdcaa532f053239719a624e6bd292628c129f1f')
+sha256sums=('5f255a696ddb658421d6ce3045893d8d49b20f48c0e55f6d24d42f4a3800a9da')
 
 build() {
     cd rl-$pkgver
