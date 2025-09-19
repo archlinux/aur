@@ -1,11 +1,11 @@
-# Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
+# Maintainer: NorthWestWind <wsyn148@gmail.com>
 _pkgname=cls
 pkgname=$_pkgname-rs-git
-pkgver=1.1.0.r0.gcefd340
+pkgver=2.0.1.r0.ge510566
 pkgrel=1
 pkgdesc="cls - Command-Line Soundboard written in Rust"
 arch=("i686" "x86_64")
-url="https://github.com/North-West-Wind/cls"
+url="https://codeberg.org/NorthWestWind/cls"
 license=('GPL3')
 depends=("ffmpeg" "pulse-native-provider")
 makedepends=("cargo")
