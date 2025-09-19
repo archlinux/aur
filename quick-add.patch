@@ -1,10 +1,10 @@
-diff --unified --recursive --text a/src/Dialogs/Preferences/PreferencesWindow.vala b/src/Dialogs/Preferences/PreferencesWindow.vala
---- a/src/Dialogs/Preferences/PreferencesWindow.vala	2025-08-09 09:52:35.696226452 -0600
-+++ b/src/Dialogs/Preferences/PreferencesWindow.vala	2025-08-09 09:54:11.994475682 -0600
-@@ -888,11 +888,7 @@
-     private Adw.NavigationPage get_quick_add_page () {
-         var settings_header = new Dialogs.Preferences.SettingsHeader (_("Quick Add"));
+diff --unified --recursive --text a/src/Dialogs/Preferences/Pages/QuickAdd.vala b/src/Dialogs/Preferences/Pages/QuickAdd.vala
+--- a/src/Dialogs/Preferences/Pages/QuickAdd.vala	2025-09-19 11:36:55.128346924 -0600
++++ b/src/Dialogs/Preferences/Pages/QuickAdd.vala	2025-09-19 11:37:38.078759500 -0600
+@@ -32,11 +32,7 @@
+     }
  
+     construct {
 -        string quick_add_command =
 -            "flatpak run --command=io.github.alainm23.planify.quick-add %s".printf (Build.APPLICATION_ID);
 -        if (GLib.Environment.get_variable ("SNAP") != null) {
@@ -14,3 +14,10 @@ diff --unified --recursive --text a/src/Dialogs/Preferences/PreferencesWindow.va
  
          var description_label = new Gtk.Label (
              _(
+@@ -144,4 +140,4 @@
+ 
+         signal_map.clear ();
+     }
+-}
+\ No newline at end of file
++}

@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id="io.github.alainm23.$pkgname"
-pkgver=4.13.4
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Task manager with Todoist and Nextcloud support"
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
   'libportal-gtk4'
   'libsecret'
   'libsoup3'
+  'libspelling'
   'sqlite'
   'webkitgtk-6.0'
 )
@@ -33,8 +34,8 @@ makedepends=(
 conflicts=('elementary-planner')
 source=("git+https://github.com/alainm23/planify.git#tag=$pkgver"
         'quick-add.patch')
-sha256sums=('331f0a24cdd90c79aecc8168858e1e4a95b2f035b15083921e36e0ec6f52dff9'
-            '3b775adef8b7df3cf9543175e93e1f4a1fcde0301b265f72aa670a8b4b52ea1e')
+sha256sums=('0ecbf56dd01395f7588e6e3223e084aa901853469ba0de7bee13263229ba311c'
+            'd604c920c18d40a2ba5f972494c56095c369d04f305ea3523f90813ed978a038')
 
 prepare() {
   cd "$pkgname"
@@ -44,7 +45,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "$pkgname" build -Dprofile=default
+  arch-meson "$pkgname" build
   meson compile -C build
 }
 
