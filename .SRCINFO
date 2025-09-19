@@ -6,6 +6,7 @@ pkgbase = oq-openapi-viewer-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = go
 	provides = oq-openapi-viewer
 	conflicts = oq-openapi-viewer
 	source = oq-openapi-viewer-git::git+https://github.com/plutov/oq

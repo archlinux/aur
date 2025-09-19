@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 conflicts=('oq-openapi-viewer')
 provides=('oq-openapi-viewer')
-makedepends=('git')
+makedepends=('git' 'go')
 source=("${pkgname}"::"git+https://github.com/plutov/oq")
 sha512sums=('SKIP')
 
