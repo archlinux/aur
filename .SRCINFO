@@ -1,0 +1,15 @@
+pkgbase = neonatox-stopwatch
+	pkgdesc = A simple gtk 4 stopwatch.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cargabsj175/neonatox-stopwatch
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	source = git+https://github.com/cargabsj175/neonatox-stopwatch.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = neonatox-stopwatch
