@@ -1,31 +1,29 @@
 pkgbase = serial-studio-bin
 	pkgdesc = Multi-purpose serial data visualization & processing program.(Prebuilt version)
-	pkgver = 3.1.6
+	pkgver = 3.1.9
 	pkgrel = 1
-	url = https://serial-studio.github.io/
+	url = https://serial-studio.com/
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = e2fsprogs
-	depends = qt6-positioning
 	depends = libglvnd
 	depends = qt6-declarative
 	depends = libgpg-error
 	depends = qt6-quick3d
 	depends = qt6-multimedia
-	depends = qt6-location
 	depends = qt6-virtualkeyboard
 	depends = qt6-webengine
-	provides = serial-studio=3.1.6
+	provides = serial-studio=3.1.9
 	conflicts = serial-studio
 	options = !strip
-	source = LICENSE-3.1.6.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v3.1.6/LICENSE.md
+	source = LICENSE-3.1.9.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v3.1.9/LICENSE.md
 	source = serial-studio.sh
-	sha256sums = b690696d937a66bf5876f1da26c616e59e1735ac1d062d91d6f99037cf86cfb5
+	sha256sums = bc8a79ec026bf93f896e5aecc1334b2b093bbc17745b1a71adad3c2fa98ad93a
 	sha256sums = 382dfc92c53dd659fb6644b4ab93915bff23075d0a2368147d8096c22533db8b
-	source_aarch64 = serial-studio-3.1.6-aarch64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.1.6/Serial-Studio-3.1.6-Linux-arm64.AppImage
-	sha256sums_aarch64 = a1b126ab5dfd789ef9c9566ec61661879b6da430089745a82737d1e53a6dee99
-	source_x86_64 = serial-studio-3.1.6-x86_64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.1.6/Serial-Studio-3.1.6-Linux-x86_64.AppImage
-	sha256sums_x86_64 = 66ebfec7cd997c15a2bf1798ca83b8d171ba949887250136360c99979eaba911
+	source_aarch64 = serial-studio-3.1.9-aarch64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.1.9/Serial-Studio-Pro-3.1.9-Linux-arm64.AppImage
+	sha256sums_aarch64 = 89f01ce3453ab11c156ecaf7322018911af5bfe9eac41549d9846b89665c6963
+	source_x86_64 = serial-studio-3.1.9-x86_64.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.1.9/Serial-Studio-Pro-3.1.9-Linux-x64.AppImage
+	sha256sums_x86_64 = 77fca8e2e36f70e863a887bed1f6d002b90aaec057a9f11595f08495f681e4f2
 
 pkgname = serial-studio-bin
