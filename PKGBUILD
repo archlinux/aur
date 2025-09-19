@@ -2,7 +2,7 @@
 
 _pkgname="sonyheadphonesclient-bluetooth"
 pkgname="$_pkgname"
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Desktop client recreating the functionality of the Sony Headphones app (Bluetooth/TWS/XM5+)"
 url="https://github.com/mos9527/SonyHeadphonesClient"
@@ -26,7 +26,7 @@ makedepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
-sha256sums=('b150b02ee91a48f817e607b13a548f1dd3edee860498fa18770d2dceb337ea94')
+sha256sums=('eab3888c1b7262681503d1c6f02572b6c1ca9363535edd66fe57079b72a953e6')
 
 prepare() {
   cd "$_pkgsrc"

@@ -1,6 +1,6 @@
 pkgbase = sonyheadphonesclient-bluetooth
 	pkgdesc = Desktop client recreating the functionality of the Sony Headphones app (Bluetooth/TWS/XM5+)
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/mos9527/SonyHeadphonesClient
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = sonyheadphonesclient-bluetooth
 	depends = bluez-libs
 	depends = dbus
 	depends = libglvnd
-	source = sonyheadphonesclient-bluetooth::git+https://github.com/mos9527/SonyHeadphonesClient.git#tag=1.4.2
-	sha256sums = b150b02ee91a48f817e607b13a548f1dd3edee860498fa18770d2dceb337ea94
+	source = sonyheadphonesclient-bluetooth::git+https://github.com/mos9527/SonyHeadphonesClient.git#tag=1.4.3
+	sha256sums = eab3888c1b7262681503d1c6f02572b6c1ca9363535edd66fe57079b72a953e6
 
 pkgname = sonyheadphonesclient-bluetooth
