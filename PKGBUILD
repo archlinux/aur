@@ -15,7 +15,6 @@ depends=(
   'sdl_gfx'
   'sdl12-compat'
 )
-makedepends=('sdl')
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"

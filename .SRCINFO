@@ -6,7 +6,6 @@ pkgbase = quirc
 	arch = i686
 	arch = x86_64
 	license = ISC
-	makedepends = sdl
 	depends = libjpeg
 	depends = sdl_gfx
 	depends = sdl12-compat
