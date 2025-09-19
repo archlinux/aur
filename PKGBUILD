@@ -5,9 +5,9 @@
 pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
-pkgver=2025.3
-_pkgver=253.20558.12
-#_pkgver=${pkgver}
+pkgver=253.20558.12
+#_pkgver=2025.3
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('any')
