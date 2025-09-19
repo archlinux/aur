@@ -1,0 +1,15 @@
+pkgbase = nitchrevived
+	pkgdesc = Incredibly fast system fetch written in nim! NiTch Revived is project supposed to continue the NiTch after it become not maintained.
+	pkgver = 0.1.7.1
+	pkgrel = 3
+	url = https://git.teto.party/pkgs/nitchrevived
+	arch = x86_64
+	license = MIT
+	makedepends = nim
+	makedepends = git
+	makedepends = openssl-1.1
+	depends = glibc
+	source = git+https://git.teto.party/pkgs/nitchrevived#commit=3de8fbddd852bcc2005a463ef1fb9bea27e4640b
+	md5sums = SKIP
+
+pkgname = nitchrevived
