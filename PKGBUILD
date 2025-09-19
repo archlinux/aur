@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rewaita
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for recoloring GTK4/LibAdwaita apps to popular color schemes."
 arch=('any')
 url="https://github.com/SwordPuffin/Rewaita"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
+  'gtksourceview5'
   'libadwaita'
   'libportal'
   'python-gobject'
