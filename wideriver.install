@@ -29,20 +29,12 @@ author() {
 }
 
 post_install() {
-	printf "$(title '1.1.0')\n"
-	printf "$(section 'New Features:')\n"
-	printf "  $(issue '#4'): add inner, outer and smart gaps by $(author '@kyechou') in $(pr '#8')\n"
-	printf "$(section "Bug Fixes:")\n"
-	printf "  $(issue '#9'): ensure border-width 0 is always applied at startup by $(author '@alex-courtis') in $(pr '#10')\n"
-	printf "$(title '1.2.0')\n"
-	printf "$(section 'New Features:')\n"
-	printf "  $(issue '#11'): add --border-width-smart-gaps by $(author '@kyechou') in $(pr '#12')\n"
-	printf "$(title '1.2.1')\n"
-	printf "$(section "Bug Fixes:")\n"
-	printf "  $(issue '#38'): SIGSEGV following output disconnection, when compiled with -flto by $(author '@alex-courtis') in $(pr '#40')\n"
 	printf "$(title '1.3.0')\n"
 	printf "$(section 'New Features:')\n"
 	printf "  $(issue '#41'): set --border-color-* to an empty string to prevent border colors being set by $(author '@leo-210') in $(pr '#43')\n"
+	printf "$(title '1.3.1')\n"
+	printf "$(section "Bug Fixes:")\n"
+	printf "  $(issue '#44'): retain output state following disconnection or switching to TTY by $(author '@alex-courtis') in $(pr '#46')\n"
 }
 
 post_upgrade() {
