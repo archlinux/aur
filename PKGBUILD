@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/datuns/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3767501240240b0b3bfabd5d0c4cc88687f10c32b7d3042ddaa1e95d82a0c93a')
+sha256sums=('4abe948d69fe4ae080f1efe6cf64e684963d4daa32a8e30e507f6bddc45bdd20')
 
 build() {
   cd "$pkgname-$pkgver"
