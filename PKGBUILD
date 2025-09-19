@@ -1,7 +1,7 @@
 # Maintainer: Jeremiah Ticket <seashellpromises@gmail.com>
 # Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 pkgname=('teamtalk')
-pkgver=5.19
+pkgver=5.20
 pkgrel=1
         pkgdesc='a software conferencing system server which enables a group of people to collaborate and share information using voice and video'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 url='http://www.bearware.dk'
 source=("https://bearware.dk/${pkgname}/v${pkgver}/${pkgname}-v${pkgver}-ubuntu22-${arch}.tgz"
         "${pkgname}.install")
-sha256sums=('d0c9e2fb59c8aa1d472536541d951ee556789fe26a4988b02702b0667872c74f'
+sha256sums=('317bd9a841175c4ade878612ec35cf8771a4308e1142af3b5c936dc67247b13a'
             '621938e7a6b07988ff05a032ba098e5d7e8a10040c6dac3c1f3255ac89938a6e')
 
 package() {
