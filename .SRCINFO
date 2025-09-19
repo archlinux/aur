@@ -1,4 +1,4 @@
-pkgbase = auto-big-picture
+pkgbase = auto-big-picture-git
 	pkgdesc = Auto launch Steam Big Picture on controller connect (Bluetooth/USB)
 	pkgver = 0
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = auto-big-picture
 	source = git+https://github.com/goatvisuals/Auto-Big-Picture
 	sha256sums = SKIP
 
-pkgname = auto-big-picture
+pkgname = auto-big-picture-git
