@@ -7,7 +7,7 @@ url="https://github.com/nihui/vkpeak"
 license=('MIT')
 source=("${pkgname}::git+https://github.com/nihui/vkpeak.git"
         "ncnn::git+https://github.com/Tencent/ncnn.git")
-depends=('vulkan-icd-loader')
+depends=('vulkan-icd-loader' 'gcc-libs' 'glibc')
 makedepends=('cmake' 'glslang' 'ninja' 'protobuf' 'vulkan-headers')
 sha256sums=('SKIP' 'SKIP')
 provides=("vkpeak")
