@@ -7,13 +7,13 @@
 # Official arch linux binaries: https://subtitlecomposer.kde.org/download.html
 
 pkgname=subtitlecomposer
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${pkgname}"
-license=('GPL')
-depends=('qt6-declarative' 'qt6-5compat' 'kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg4.4' 'openal')
+license=(GPL-2.0-only)
+depends=('qt6-declarative' 'qt6-5compat' 'kcoreaddons' 'ktextwidgets' 'kio' 'sonnet' 'kcodecs' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
 checkdepends=('xorg-server-xvfb')
 makedepends=('extra-cmake-modules' 'jack' 'blas')
 
@@ -36,7 +36,7 @@ optdepends=(
 _tar=${pkgname}-${pkgver}
 source=("https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz"
         "https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz.sig")
-sha256sums=('23c022768d7422c092149f41d51ebea80f54b27655573cf43f736efb88c30027'
+sha256sums=('72e9307f0c7669029f27178cee07395b3dae4cef99accc6720e41fa511b40fe5'
             'SKIP')
 validpgpkeys=('76F79007A54A4B68F1547928E2418746EF9D9B26')
 
