@@ -5,4 +5,4 @@ Exec=autosubsync
 Icon=/opt/autosubsync/_internal/assets/icon.ico
 Terminal=false
 Type=Application
-Categories=Video;
+Categories=AudioVideo;

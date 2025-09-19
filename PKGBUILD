@@ -1,7 +1,7 @@
 # Maintainer: Julianmb <julianmboruta@gmail.com>
 # Generate .SRCINFO file: makepkg --printsrcinfo > .SRCINFO
 pkgname=autosubsync-bin
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="AutoSubSync is a user-friendly Python tool that helps you easily synchronize subtitle files."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=(
-  'fee2507d213bc3825b85833c2670c81a5806d012d4d99804814ce243fa44e97b'
+  '6204986ff8610333c46ac7b796e17652e24768ed23e72c6f53c7206c358acc92'
   'f5ad7e8cc84efe46566e1ceb73de2f202188583c0d4116f4c21aa75f43f5b855'
 )
 
