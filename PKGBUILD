@@ -3,7 +3,7 @@ pkgname=plexamp-bin
 _pkgname=Plexamp
 pkgver=4.12.4
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern music client for Plex.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.plex.tv/plexamp"
@@ -23,11 +23,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c11a74fd5141db11b11579da649a7a8c539ba81d20104987ada56b86e061f9d2'
-            'bb12961bd55b81119cd50be4ef1a3df915c738b06e3ec634122fed47dc5af632'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '6b37bc7f8a9e282ecd87b1c3cfa8e62248db3ff75cc62a53de00855a2de6350f'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
