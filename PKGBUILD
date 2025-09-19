@@ -17,10 +17,11 @@ prepare() {
     git config submodule."ncnn".url "${srcdir}/ncnn"
     git -c protocol.file.allow=always submodule update --init --recursive
 }
+
 build(){
     cd "${srcdir}/${pkgname}"
-    cmake -B build -DCMAKE_BUILD_TYPE=Release
-    cmake --build . -j $(nproc)
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+    ninja -C build
 }
 
 package() {
