@@ -1,11 +1,11 @@
 pkgbase = zulucrypt
 	pkgdesc = A cli and gui frontend to cryptsetup
 	pkgver = 7.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://mhogomchungu.github.io/zuluCrypt
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = cryptsetup
 	depends = qt5-base

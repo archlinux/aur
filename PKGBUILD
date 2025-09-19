@@ -3,12 +3,12 @@
 
 pkgname=zulucrypt
 pkgver=7.1.0
-pkgrel=0
+pkgrel=1
 _altpkgname=zuluCrypt
 pkgdesc="A cli and gui frontend to cryptsetup"
 url="https://mhogomchungu.github.io/${_altpkgname}"
 arch=('x86_64' 'i686')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'libxkbcommon-x11' 'util-linux')
 optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
