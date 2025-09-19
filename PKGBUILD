@@ -1,10 +1,10 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine"
-pkgver="0.17"
+pkgver="0.18"
 pkgrel=1
 pkgdesc="Download and apply live wallpapers with swww"
 arch=("x86_64")
-depends=("vlc" "ffmpeg")
+depends=("mpv" "ffmpeg")
 optdepends=("swww-git: For wallpapers on wlroots compositors")
 makedepends=("dotnet-sdk" "git")
 url="https://www.github.com/eugenenoble2005/swengine"
@@ -13,7 +13,7 @@ url="https://www.github.com/eugenenoble2005/swengine"
 prepare(){
     rm -rf swengine
     #this is probably not the right way to do this
-    git clone https://www.github.com/eugenenoble2005/swengine.git
+    git clone https://www.github.com/eugenenoble2005/swengine.git --recursive
 }
 build(){
     cd "$srcdir/swengine/swengine.desktop" 
