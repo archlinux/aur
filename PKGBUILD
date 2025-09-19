@@ -3,7 +3,7 @@
 pkgname=ecubus-pro-bin
 _tagname=0.8.56
 pkgver=${_tagname//-/_}
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
 url="https://github.com/ecubus/EcuBus-Pro"
@@ -19,6 +19,8 @@ depends=(
     glib2
     glibc
     hicolor-icon-theme
+    systemd-libs
+    python
 )
 makedepends=(
     libarchive
