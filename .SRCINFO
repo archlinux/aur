@@ -1,13 +1,13 @@
-pkgbase = PanDepth
+pkgbase = pandepth
 	pkgdesc = PanDepth, an ultrafast and efficient genomic tool for coverage calculation
 	pkgver = 2.26
 	pkgrel = 1
 	url = https://github.com/HuiyangYu/PanDepth
 	arch = x86_64
 	license = MIT
-	provides = PanDepth
-	conflicts = PanDepth
+	provides = pandepth
+	conflicts = pandepth
 	source = https://mirrors.sustech.edu.cn/git/fc-ibb105/aur/-/raw/main/pandepth-2.26.xz
 	sha512sums = 126907e912abc6d2f37931502f2599af2174addae8dddbdb26573909da797c85b3c8587ee4da5bebb1b5a7b4ac13c2ac7c9fb46e3c44fae9d81b2690a34104e7
 
-pkgname = PanDepth
+pkgname = pandepth
