@@ -1,0 +1,23 @@
+pkgbase = wild-git
+	pkgdesc = A linker with the goal of being very fast for iterative development
+	pkgver = 0.5.0.r267.g8cb0bcc
+	pkgrel = 1
+	url = https://github.com/davidlattimore/wild
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	checkdepends = clang
+	checkdepends = lld
+	checkdepends = rust-musl
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = wild=0.5.0.r267.g8cb0bcc
+	conflicts = wild
+	options = !lto
+	source = git+https://github.com/davidlattimore/wild.git
+	sha256sums = SKIP
+
+pkgname = wild-git
