@@ -1,0 +1,4 @@
+[quirc]
+source = "git"
+git = "https://github.com/dlbeer/quirc.git"
+prefix = "v"

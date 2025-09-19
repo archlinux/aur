@@ -1,5 +1,4 @@
-Makefile
-*.pkg.tar.zst
-*.tar.gz
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

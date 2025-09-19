@@ -1,14 +1,16 @@
 pkgbase = quirc
-	pkgdesc = QR decoder library.
+	pkgdesc = QR decoder library
 	pkgver = 1.2
-	pkgrel = 2
-	url = https://github.com/dlbeer/quirc/
+	pkgrel = 3
+	url = https://github.com/dlbeer/quirc
 	arch = i686
 	arch = x86_64
 	license = ISC
 	makedepends = sdl
-	depends = libjpeg-turbo
-	source = quirc-1.2::https://github.com/dlbeer/quirc/archive/v1.2.tar.gz
-	md5sums = 9fdda44c5b12cc721c2ca85abddf48de
+	depends = libjpeg
+	depends = sdl_gfx
+	depends = sdl12-compat
+	source = quirc-1.2.tar.gz::https://github.com/dlbeer/quirc/archive/v1.2.tar.gz
+	sha256sums = 73c12ea33d337ec38fb81218c7674f57dba7ec0570bddd5c7f7a977c0deb64c5
 
 pkgname = quirc

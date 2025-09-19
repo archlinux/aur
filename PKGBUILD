@@ -1,31 +1,41 @@
-# Maintainer: Fabio Comuni <fabrix.xm@gmail.com>
-pkgname=quirc
-_libver=1.2
+# Maintainer:
+# Contributor: Fabio Comuni <fabrix.xm@gmail.com>
+
+_pkgname="quirc"
+pkgname="$_pkgname"
 pkgver=1.2
-pkgrel=2
-pkgdesc="QR decoder library."
-arch=('i686' 'x86_64')
-url="https://github.com/dlbeer/quirc/"
+pkgrel=3
+pkgdesc="QR decoder library"
+url="https://github.com/dlbeer/quirc"
 license=('ISC')
-depends=('libjpeg-turbo')
+arch=('i686' 'x86_64')
+
+depends=(
+  'libjpeg'
+  'sdl_gfx'
+  'sdl12-compat'
+)
 makedepends=('sdl')
-checkdepends=()
-source=("$pkgname-$pkgver"::"https://github.com/dlbeer/quirc/archive/v${pkgver}.tar.gz")
-md5sums=('9fdda44c5b12cc721c2ca85abddf48de')
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
+sha256sums=('73c12ea33d337ec38fb81218c7674f57dba7ec0570bddd5c7f7a977c0deb64c5')
 
 build() {
-    cd "$pkgname-$pkgver"
-    CFLAGS="$CFLAGS -fPIC"
-    make libquirc.so quirc-scanner
+  cd "$_pkgsrc"
+  CFLAGS+=" -fPIC" make libquirc.so quirc-demo quirc-scanner
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-	   
-    install -Dm644 "lib/quirc.h" "${pkgdir}/usr//include/quirc.h"
-    install -Dm0755 "libquirc.so.${_libver}" "${pkgdir}/usr/lib/libquirc.so.${_libver}"
-	ln -s "libquirc.so.${_libver}" "${pkgdir}/usr/lib/libquirc.so"
-    install -Dm0755 quirc-scanner "${pkgdir}/usr//bin/quirc-scanner"
-	install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-}
+  cd "$_pkgsrc"
+  install -Dm644 "lib/quirc.h" "$pkgdir/usr/include/quirc.h"
 
+  install -Dm644 "libquirc.so.$pkgver" -t "$pkgdir/usr/lib/"
+  ln -s "libquirc.so.$pkgver" "$pkgdir/usr/lib/libquirc.so"
+
+  install -Dm755 quirc-demo -t "$pkgdir/usr/bin/"
+  install -Dm755 quirc-scanner -t "$pkgdir/usr/bin/"
+
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
