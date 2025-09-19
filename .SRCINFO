@@ -1,7 +1,7 @@
 pkgbase = gmail-tray
 	pkgdesc = Minimal Gmail tray notifier with unread counter
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 2.0
+	pkgrel = 2
 	url = https://github.com/maykonmjunior/gmail-tray
 	arch = any
 	license = MIT
