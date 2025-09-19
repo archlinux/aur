@@ -1,6 +1,6 @@
 pkgbase = metube-git
 	pkgdesc = Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)
-	pkgver = r426.d40786f
+	pkgver = r542.33c6908
 	pkgrel = 1
 	url = https://github.com/alexta69/metube
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = metube-git
 	depends = python-pycryptodomex
 	depends = python-simple-websocket
 	depends = python-socketio
+	depends = python-watchfiles
 	depends = yt-dlp
 	provides = metube
 	conflicts = metube
