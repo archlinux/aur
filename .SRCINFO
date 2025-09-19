@@ -1,7 +1,7 @@
 pkgbase = zls0.14-bin
 	pkgdesc = A language server for Zig
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = zls0.14-bin
 	provides = zls0.14
 	conflicts = zls0.14
 	source = zls-versioned.sh
-	sha256sums = 36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7
+	sha256sums = b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68
 	source_aarch64 = https://builds.zigtools.org/zls-linux-aarch64-0.14.0.tar.xz
 	source_aarch64 = https://builds.zigtools.org/zls-linux-aarch64-0.14.0.tar.xz.minisig
 	sha256sums_aarch64 = d85f4679af3961db149ead8a355eab4652c3e738eecaad69174cab5f1a1196cc
