@@ -1,13 +1,13 @@
 pkgbase = chromap
 	pkgdesc = An ultrafast method for aligning and preprocessing high throughput chromatin profiles.
-	pkgver = 0.2.7
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://haowenz.github.io/chromap/
 	arch = x86_64
 	license = custom:"Copyright (c) 2019 Haowen Zhang, Li Song, X. Shirley Liu, Heng Li"
 	provides = chromap
 	conflicts = chromap
-	source = https://gh.api.99988866.xyz/https://github.com/haowenz/chromap/releases/download/v0.2.7/chromap-0.2.7_x64-linux.tar.bz2
-	sha512sums = 5f8090c83e0aece3abc954dcc7ae5c80cd3e509d6c9922c6a41d35aa1e8c0b7ffabc52bedc538b86396538b646be564739e9fc04cdbfe2c34b658c9de44b4b66
+	source = https://mirrors.sustech.edu.cn/git/fc-ibb105/aur/-/raw/main/chromap-0.3.2.xz
+	sha512sums = 489706456caceb5ed23b854429efd82c9dc6517992b3c9075aaffcfc3e7e8f8beb6cad2d6c7e07839057861b02787549be9d02e884c8397686141a81f1c214e9
 
 pkgname = chromap

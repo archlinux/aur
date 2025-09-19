@@ -1,5 +1,5 @@
 pkgname=chromap
-chromap_ver=0.2.7
+chromap_ver=0.3.2
 pkgver=$chromap_ver
 pkgrel=1
 pkgdesc="An ultrafast method for aligning and preprocessing high throughput chromatin profiles. "
@@ -11,12 +11,14 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 optdepends=()
 
-file_name=${pkgname}-${pkgver}_x64-linux.tar.bz2
+file_name=${pkgname}-${pkgver}
+xz_name=$file_name.xz
+
 source=(
-	"https://gh.api.99988866.xyz/https://github.com/haowenz/chromap/releases/download/v${pkgver}/$file_name"
+	"https://mirrors.sustech.edu.cn/git/fc-ibb105/aur/-/raw/main/$xz_name"
 )
 
-chromap_sum=5f8090c83e0aece3abc954dcc7ae5c80cd3e509d6c9922c6a41d35aa1e8c0b7ffabc52bedc538b86396538b646be564739e9fc04cdbfe2c34b658c9de44b4b66
+chromap_sum=489706456caceb5ed23b854429efd82c9dc6517992b3c9075aaffcfc3e7e8f8beb6cad2d6c7e07839057861b02787549be9d02e884c8397686141a81f1c214e9
 sha512sums=(
 	$chromap_sum
 )
@@ -24,6 +26,8 @@ sha512sums=(
 package() {
 	export LC_ALL=en_US.UTF-8
 
-	mkdir -p "$pkgdir/usr/bin"
-	tar -xf $file_name -C "$pkgdir/usr/bin"
+	mkdir -p $pkgdir/usr/bin
+	#xz -d $xz_name
+	mv $file_name $pkgdir/usr/bin/$pkgname
+	chmod 755 $pkgdir/usr/bin/$pkgname
 }
