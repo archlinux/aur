@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbase"
-  zig build -Drelease-safe
+  zig build
 }
 
 check() {
