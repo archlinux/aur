@@ -1,4 +1,5 @@
-# Maintainer: Jiuyang Liu <liu@jiuyang.me>
+# Maintainer: toby <toby.bro+arch@pm.me>
+# Contributor: Jiuyang Liu <liu@jiuyang.me>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Jeffrey Tolar <tolar.jeffrey at gmail dot com>
@@ -14,7 +15,7 @@ license=('LGPL')
 depends=('perl')
 optdepends=('systemc')
 # lsb-release is used by configure script to enable usage of c++17
-makedepends=('python' 'systemc' 'lsb-release' 'git' 'help2man' 'python-distro')
+makedepends=('python' 'systemc' 'lsb-release' 'git' 'python-distro')
 conflicts=('verilator')
 provides=('verilator')
 source=(

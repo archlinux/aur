@@ -9,7 +9,6 @@ pkgbase = verilator-git
 	makedepends = systemc
 	makedepends = lsb-release
 	makedepends = git
-	makedepends = help2man
 	makedepends = python-distro
 	depends = perl
 	optdepends = systemc
