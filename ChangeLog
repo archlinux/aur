@@ -1287,3 +1287,8 @@ Fixes:
 - Fixed a bug where the “New task” button could disappear with certain task list configurations.
 - Fixed an issue where some Inbox tasks were not visible.
 - Frame filters now display task list colors, making it easier to select the right one.
+
+
+=== Morgen 3.6.18
+Improvements: 
+- With Morgen v4 fast approaching, this release eases the transition. With v4, Morgen's internal architecture will be simplified, allowing us to port Morgen to the web too. Morgen v4 will drop support for Exchange on Premise and some CalDAV providers that do not support modern features for query and synchronization. Learn more on our blog about how this may impact you.
