@@ -4,7 +4,7 @@
 
 pkgname=gay
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Gayer version of lolcat"
 arch=('any')
 url="https://github.com/ms-jpq/gay"
