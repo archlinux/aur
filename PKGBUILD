@@ -57,7 +57,7 @@ pkgver() {
   local git_describe git_describe_tail git_describe_normalized
   # 0.16.0-dev
   build_version="$(grep -Po '(?<=\.version = ")[^"]+' build.zig.zon)"
-  # 0.16.0_dev
+  # 0.16.0dev
   build_version_normalized="${build_version//-/}"
   # 0.15.0-3-g1840a4b8
   git_describe="$(git describe --match "*.*.*" --tags)"
