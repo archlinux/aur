@@ -1,6 +1,6 @@
 pkgbase = ryelang-git
 	pkgdesc = Rye — a programming language trying to be flexible about expression, but strict about state (development version)
-	pkgver = 0.0.81.r127.g991a509
+	pkgver = 0.0.84.r0.g8c56efd
 	pkgrel = 1
 	url = https://ryelang.org/
 	install = ryelang-git.install

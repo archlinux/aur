@@ -4,7 +4,7 @@
 
 _pkgname='ryelang'
 pkgname="${_pkgname}-git"
-pkgver=0.0.81.r127.g991a509
+pkgver=0.0.84.r0.g8c56efd
 pkgrel=1
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
 arch=('aarch64' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd rye
 
-  git describe --tag --abbrev=7 2>/dev/null \
+  git describe --tag --long --abbrev=7 2>/dev/null \
   | sed 's/\([^-]*-g\)/r\1/;s/^v//;s/-/./g'
 }
 
@@ -72,7 +72,7 @@ package() {
   cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
 
   # license
- install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # eof
