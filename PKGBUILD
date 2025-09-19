@@ -1,6 +1,6 @@
 # Maintainer: Vincent B <vb@luminar.eu.org>
 pkgname=pqrs
-pkgver=0.2.2
+pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc="Command line tool for inspecting Parquet files"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/manojkarthick/pqrs"
 license=('MIT' 'Apache')
 groups=()
-depends=()
+depends=(zstd)
 makedepends=(cargo)
 checkdepends=()
 optdepends=()
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/manojkarthick/pqrs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('df23a9e3c33b5f3f4f7cd66fc579c0a5ccc2b9d1d20c4f612f9a51c3a73024e7')
+sha256sums=('10424171488a720c0252d510f9d8e70ece270dbdf0c0c5907a5574096bca1146')
 noextract=()
 
 prepare() {
@@ -32,6 +32,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="-C link-arg=-lzstd"
   cargo build --frozen --release --all-features
 }
 
