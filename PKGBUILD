@@ -1,7 +1,7 @@
 # Maintainer: gladon4 <mcgoldhand at gmail dot com>
 pkgname=typstwriter
 pkgver=0.3   
-pkgrel=1
+pkgrel=2
 pkgdesc="Typstwriter: GUI frontend/writer using Typst + Qt"
 arch=('any')
 url="https://github.com/Bzero/typstwriter"
@@ -12,6 +12,7 @@ depends=(
   'python-pyqt6'    
   'pyside6'
   'python-pygments'
+  'qt6-webengine'
 )
 makedepends=(
   'git'
