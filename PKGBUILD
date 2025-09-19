@@ -1,6 +1,6 @@
 # Maintainer: Alex Pylypenko <macaquedev@gmail.com>
 pkgname=zyzzyva-git
-pkgver=44f0113
+pkgver=r0.1.0
 pkgrel=1
 pkgdesc="Collins Zyzzyva word study/search tool (Qt5) - git build"
 arch=('x86_64')
