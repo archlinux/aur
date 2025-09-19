@@ -1,13 +1,13 @@
 pkgbase = rhai-tools
 	pkgdesc = Tools for the Rhai language, including rhai-repl, rhai-run, and rhai-dbg
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://rhai.rs/
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	makedepends = cargo
-	source = rhai-1.22.0.tar.gz::https://github.com/rhaiscript/rhai/archive/v1.22.0.tar.gz
-	sha256sums = 16c60ab5428e4ef1e4df55edb43914dd7f4fcee5615b3399b1a96aa2e9d9fe79
+	source = rhai-1.23.0.tar.gz::https://github.com/rhaiscript/rhai/archive/v1.23.0.tar.gz
+	sha256sums = 11220505d2cd1882da22a40496f2d0f92d7a1842495b20e2750f2a4cfec1d9a5
 
 pkgname = rhai-tools
