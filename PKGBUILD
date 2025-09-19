@@ -27,4 +27,5 @@ build() {
 package() {
     install -Dm755 "go/src/github.com/lesf0/yson-tools/yson-convert/yson-convert" "${pkgdir}/usr/bin/yson-convert"
     install -Dm755 "${srcdir}/yson-tools/ysonq" "${pkgdir}/usr/bin/ysonq"
+    install -Dm755 "${srcdir}/yson-tools/yson-format" "${pkgdir}/usr/bin/yson-format"
 }
