@@ -1,20 +1,15 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=NAME
-pkgver=VERSION
+# Maintainer: Edinei Cavalcanti <hi@edinei.dev>
+pkgname=oq-openapi-viewer-git
+pkgver=187854389ae313ba4a77075f6154883cca57abc8
 pkgrel=1
 epoch=
-pkgdesc=""
-arch=()
-url=""
-license=('GPL')
+pkgdesc="Terminal OpenAPI Spec viewer"
+arch=('x86_64')
+url="https://github.com/plutov/oq"
+license=('MIT')
 groups=()
 depends=()
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -30,6 +25,11 @@ noextract=()
 sha256sums=()
 validpgpkeys=()
 
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
@@ -39,11 +39,6 @@ build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
 	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
 }
 
 package() {
