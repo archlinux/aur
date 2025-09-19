@@ -1,6 +1,6 @@
 pkgbase = helium-browser-appimage
 	pkgdesc = Helium web browser (AppImage) repackaged for Arch
-	pkgver = 0.4.6.1
+	pkgver = 0.4.7.1
 	pkgrel = 1
 	url = https://github.com/imputnet/helium-linux
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = helium-browser-appimage
 	optdepends = fuse2: run AppImage
 	provides = helium-browser
 	options = !strip
-	source = helium-0.4.6.1-x86_64.AppImage::https://github.com/imputnet/helium-linux/releases/download/0.4.6.1/helium-0.4.6.1-x86_64.AppImage
+	source = helium-0.4.7.1-x86_64.AppImage::https://github.com/imputnet/helium-linux/releases/download/0.4.7.1/helium-0.4.7.1-x86_64.AppImage
 	source = helium.desktop
 	source = helium.svg
 	sha256sums = b725fb77c177ac3999371263f1d75d4fbe737389842de50b718bdd75e6ea81dd
