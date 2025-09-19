@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226@outlook.com>
 
 pkgname=r2modman
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 epoch=
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/ebkr/r2modmanPlus"
 license=("MIT")
 groups=()
-_electron=electron24
+_electron=electron36
 depends=("$_electron")
 makedepends=(yarn node-gyp python)
 checkdepends=()
@@ -24,7 +24,7 @@ changelog=
 source=("r2modmanPlus-$pkgver.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v$pkgver.tar.gz"
         "r2modman.desktop")
 noextract=()
-sha256sums=('cf07b8683d61de8f71fce28fe5cb442ac16358b01142e2d49b455c0625ef43f0'
+sha256sums=('3b04b617e831a4b8aca88b9dc9ba8688f8339a03839bce26c0523ca38a07a805'
             '6cd96385f1ad7bf6fec0f9a70b429305e6f20153528e415d3c943ff19a45fd0f')
 validpgpkeys=()
 
@@ -33,7 +33,7 @@ prepare() {
 	# Modify electron-builder config
 	local _electronDist="/usr/lib/$_electron"
 	local _electronVersion="$(<$_electronDist/version)"
-	sed -e "s/'AppImage', 'tar.gz', 'deb', 'rpm', 'pacman'/'dir'/" -e "/builder: {/a electronDist: \"$_electronDist\", electronVersion: \"$_electronVersion\"," -i quasar.conf.js
+	sed -e "s/'AppImage', 'tar.gz', 'deb', 'rpm', 'pacman'/'dir'/" -e "/builder: {/a electronDist: \"$_electronDist\", electronVersion: \"$_electronVersion\"," -i quasar.config.ts
 	yarn install
 }
 
@@ -45,7 +45,7 @@ build() {
 check() {
 	cd "r2modmanPlus-$pkgver"
 	node test/folder-structure-testing/populator.mjs
-	yarn test:unit
+	yarn test
 }
 
 package() {
