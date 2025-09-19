@@ -54,7 +54,7 @@ sha256sums=('dce5e7f9ba85741b1ffba3ced6423cc54bc9beab21611a5747cd19cdab6d6682'
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
-    tar -xJf "$srcdir/OneTagger-linux.tar.xz" -C "$pkgdir/usr/bin"
+    tar -xJf "$srcdir/onetagger.tar.xz" -C "$pkgdir/usr/bin"
     chmod +x "$pkgdir/usr/bin/onetagger"
     install -Dm 644 "${srcdir}/onetagger.png" -t "${pkgdir}/usr/share/pixmaps/"
     install -Dm 644 "${srcdir}/onetagger.desktop" -t "${pkgdir}/usr/share/applications/"
