@@ -2,7 +2,7 @@
 
 _name=ddgs
 pkgname=python-$_name
-pkgver=9.5.5
+pkgver=9.6.0
 pkgrel=1
 pkgdesc="Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-click' 'python-primp' 'python-lxml')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-dependency')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9a09aa9ba24173d14321137c8c1bc54040ed0bf3bad956cb2f9feeda77968770')
+sha256sums=('8caf555d4282c1cf5c15969994ad55f4239bd15e97cf004a5da8f1cad37529bf')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
@@ -22,11 +22,9 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    # Failed
-    -k "not image"
   )
   cd "$srcdir"/$_name-$pkgver
-  PYTHONPATH="$srcdir"/$_name-$pkgver pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
