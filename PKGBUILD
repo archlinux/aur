@@ -40,7 +40,7 @@ prepare() {
   
   cd "${srcdir}"
   sed -e "s|@@ZIG_PATH@@|/opt/zig-mach|g" \
-      -e "s|@@ZLS_PATH@@|/usr/lib/zls-mach|g" \
+      -e "s|@@ZLS_PATH@@|/usr/lib/${pkgname}|g" \
       -i "${_basename}-versioned.sh"
 
   cd "${_pkgsrc}"
