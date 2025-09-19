@@ -11,26 +11,28 @@ license=('GPL-3.0-only')
 depends=('rofi' 'curl' 'jansson' 'glibc')
 makedepends=('git' 'meson')
 options=('!debug')
-source=("git+https://github.com/valdebrutal/rofi-reddit.git#tag=${pkgver}")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  git fetch --tags >/dev/null 2>&1
-  git describe --tags --abbrev=0
+  curl -s "https://api.github.com/repos/valdebrutal/rofi-reddit/tags" |
+  grep -m1 '"name":' |
+  sed -E 's/.*"name": "([^"]+)".*/\1/'
 }
 
 prepare() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   meson subprojects download tomlc17
 }
 
 build() {
-  meson setup "${pkgname}" build -Dtests=false
+  cd "${srcdir}"
+  meson setup "${pkgname}-${pkgver}" build -Dtests=false
   meson compile -C build
 }
 
 package() {
+  cd "${srcdir}"
   meson install -C build --destdir "${pkgdir}"
 }
 
