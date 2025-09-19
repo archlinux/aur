@@ -1,6 +1,6 @@
 # Maintainer: killown
 pkgname=waypanel-git
-pkgver=0.9.7.1.2.g8ebc9de
+pkgver=0.9.7.2.7.g34740a8
 pkgrel=1
 pkgdesc="A lightweight, modular status panel for Wayfire written in Python with GTK4"
 arch=('any')
@@ -43,23 +43,21 @@ build() {
 }
 
 package() {
-
   cd "$srcdir/waypanel"
 
-  # Install app files
-  install -Dm755 "$srcdir/waypanel/main.py" "$pkgdir/usr/lib/waypanel/main.py"
-  install -Dm755 "$srcdir/waypanel/run.py" "$pkgdir/usr/lib/waypanel/run.py"
-  cp -r "$srcdir/" "$pkgdir/usr/lib/waypanel/"
-  cp -r "config" "$pkgdir/usr/lib/waypanel/"
-  cp -r "$srcdir/waypanel/config" "$pkgdir/usr/lib/waypanel/"
+  # Install application files and modules
+  install -d "$pkgdir/usr/lib/waypanel"
+  cp -r ./* "$pkgdir/usr/lib/waypanel/"
+  rm -rf "$pkgdir/usr/lib/waypanel/.git"
 
-  # Install wrapper script (from repo root)
+  # Install default configuration files
+  install -d "$pkgdir/usr/share/waypanel"
+  cp -r "config" "$pkgdir/usr/share/waypanel/"
+
+  # Install wrapper script
   install -Dm755 /dev/null "$pkgdir/usr/bin/waypanel"
   {
     echo '#!/bin/sh'
     echo 'python /usr/lib/waypanel/run.py'
   } >"$pkgdir/usr/bin/waypanel"
-
-  # Install requirements.txt
-  install -Dm644 "requirements.txt" "$pkgdir/usr/lib/waypanel/requirements.txt"
 }
