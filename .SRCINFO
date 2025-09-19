@@ -1,0 +1,12 @@
+pkgbase = shared-desktop-ontologies-git
+	pkgdesc = Ontologies necessary for the Nepomuk semantic desktop
+	pkgver = r86.8fc794d
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = cmake
+	conflicts = shared-desktop-ontologies
+	source = git+file:///home/domson/git/kde/shared-desktop-ontologies
+	sha256sums = SKIP
+
+pkgname = shared-desktop-ontologies-git
