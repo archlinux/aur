@@ -2,8 +2,8 @@
 
 _pkgname=3dslicer
 pkgname=3dslicer-git
-pkgver=5.8.1.r324.8a9fd675f0
-pkgrel=1
+pkgver=5.8.1.r482.c93da36af3
+pkgrel=2
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -85,7 +85,9 @@ prepare() {
     --categories "Graphics;MedicalSoftware;Science;" \
     --exec "Slicer" \
     --icon "${_pkgname}" \
-    --pkgdesc "${pkgdesc}"
+    --pkgdesc "${pkgdesc}" \
+    --startupnotify \
+    --custom="StartupWMClass=Slicer"
 }
 
 build() {
