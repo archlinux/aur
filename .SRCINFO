@@ -1,0 +1,14 @@
+pkgbase = notifyme
+	pkgdesc = A simple Python tool to send Linux notifications at a given time
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/notifyme
+	arch = any
+	license = MIT
+	depends = python
+	depends = libnotify
+	source = notifyme.py
+	md5sums = SKIP
+
+pkgname = notifyme
+
