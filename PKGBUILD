@@ -66,7 +66,7 @@ verify() {
 prepare() {
   cd "${srcdir}"
   sed -e "s|@@ZIG_PATH@@|/opt/zig-mach|g" \
-      -e "s|@@ZLS_PATH@@|/usr/lib/zls-mach|g" \
+      -e "s|@@ZLS_PATH@@|/usr/lib/${_pkgname}|g" \
       -i "${_basename}-versioned.sh"
 
   chmod +x ./"${_basename}"
