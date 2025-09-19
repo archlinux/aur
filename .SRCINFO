@@ -1,6 +1,6 @@
 pkgbase = envx
 	pkgdesc = A powerful and secure environment variable manager
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/mikeleppane/envx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = envx
 	makedepends = clang
 	depends = gcc-libs
 	options = !lto
-	source = envx-0.6.1.tar.gz::https://github.com/mikeleppane/envx/archive/v0.6.1.tar.gz
-	sha256sums = 3dd1ad50ea68dc24e835fa3368b79707cb3b69181d487124487c12f6cf9af4ee
+	source = envx-0.6.2.tar.gz::https://github.com/mikeleppane/envx/archive/v0.6.2.tar.gz
+	sha256sums = d6c53b29acd23760c78c56d5a8f35589187b5fbf13859ee5c95dd8733b1b652c
 
 pkgname = envx
