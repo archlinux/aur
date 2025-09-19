@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-tiling-shell-git
 pkgdesc="Extend GNOME Shell with advanced tiling window management"
-pkgver=r55.fa36325
+pkgver=r56.c12f6ee
 pkgrel=1
 
 source=("git+https://github.com/domferr/tilingshell.git")
@@ -23,15 +23,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  export npm_config_cache="$srcdir/npm_cache"
-  npm install
-}
-
 build() {
   cd "${srcdir}/${_pkgname}"
   export npm_config_cache="$srcdir/npm_cache"
+  npm install
   npm run build:package
 }
 
