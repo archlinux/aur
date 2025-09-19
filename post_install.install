@@ -1,0 +1,10 @@
+post_install() {
+  echo ""
+  echo "note nocodb binary is only for quick testing locally"
+  echo "to use a different port use:"
+  echo "env PORT=8080 nocodb"
+  echo ""
+}
+post_upgrade() {
+  post_install $1
+}
