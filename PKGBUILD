@@ -3,15 +3,15 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=11
+pkgrel=12
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'zstd' 'cubeb' 'spirv-tools' 'ffmpeg')
-makedepends=('git' 'cmake' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'clang' 'lld')
+makedepends=('git' 'cmake' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
-options=('lto' '!debug')
+options=('!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v$pkgver")
 sha256sums=('2697bc264c47bde89125366ca43d252ec79713bfbda8e59e9ad95ef27dfc1d72')
 build() {
@@ -20,12 +20,6 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
 		-DYUZU_CHECK_SUBMODULES=OFF \
-		-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
-		-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld" \
-		-DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
-		-DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
-		-DCMAKE_C_COMPILER=clang \
-		-DCMAKE_CXX_COMPILER=clang++ \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \

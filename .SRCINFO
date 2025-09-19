@@ -1,7 +1,7 @@
 pkgbase = eden
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.0.3
-	pkgrel = 11
+	pkgrel = 12
 	url = https://eden-emulator.github.io/
 	arch = x86_64
 	arch = aarch64
@@ -22,8 +22,6 @@ pkgbase = eden
 	makedepends = qt6-tools
 	makedepends = nasm
 	makedepends = opencl-headers
-	makedepends = clang
-	makedepends = lld
 	depends = enet
 	depends = fmt
 	depends = opus
@@ -44,7 +42,6 @@ pkgbase = eden
 	depends = spirv-tools
 	depends = ffmpeg
 	optdepends = gamemode: Gamemoded support
-	options = lto
 	options = !debug
 	source = git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v0.0.3
 	sha256sums = 2697bc264c47bde89125366ca43d252ec79713bfbda8e59e9ad95ef27dfc1d72
