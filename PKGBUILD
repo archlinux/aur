@@ -29,6 +29,7 @@ makedepends=(
   "libutf8proc"
   "python-pip"
   "python-wheel"
+  "python-installer"
   "python-setuptools-scm"
 )
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v$pkgver.tar.gz"
