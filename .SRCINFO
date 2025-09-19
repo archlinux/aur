@@ -1,4 +1,4 @@
-pkgbase = zig-waybar-contrib-git
+pkgbase = zig-waybar-contrib
 	pkgdesc = Lightweight Waybar modules built with Zig (latest git)
 	pkgver = 0.0.1.r0.g0000000
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = zig-waybar-contrib-git
 	source = git+https://github.com/erffy/zig-waybar-contrib.git
 	md5sums = SKIP
 
-pkgname = zig-waybar-contrib-git
+pkgname = zig-waybar-contrib
