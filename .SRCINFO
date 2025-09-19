@@ -1,0 +1,19 @@
+pkgbase = python-tree-sitter-markdown
+	pkgdesc = Ruby Grammar for tree-sitter
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tree-sitter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = tree-sitter-markdown-0.5.0.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/releases/download/v0.5.0/tree-sitter-markdown.tar.gz
+	sha512sums = d4a7818ad84c0ad73e4a4357faae595f1e76720c0ea18128726669176f703163cc718e9f94b4f890bf1eafc6c76ad0b304ca6a0c09e3ba439c46e27df73fc9b9
+
+pkgname = python-tree-sitter-markdown
