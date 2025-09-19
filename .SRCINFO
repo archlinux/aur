@@ -1,6 +1,6 @@
 pkgbase = code2prompt
 	pkgdesc = CLI tool to convert your codebase into a single LLM prompt
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://code2prompt.dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = code2prompt
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	source = code2prompt-4.0.1.crate::https://static.crates.io/crates/code2prompt/code2prompt-4.0.1.crate
-	sha256sums = 00224d29873f645e59990b925100e1919969b96c33d08f4d38339c57357a9ae8
+	source = code2prompt-4.0.2.crate::https://static.crates.io/crates/code2prompt/code2prompt-4.0.2.crate
+	sha256sums = f936a95ba3f47bf445624b7ed620bcbcddf0dcddf49dbb9549bb54bd87e41dd4
 
 pkgname = code2prompt
