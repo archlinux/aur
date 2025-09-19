@@ -3,14 +3,14 @@
 _pkgname=metube
 pkgname="${_pkgname}-git"
 pkgver=r426.d40786f
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)"
 arch=("any")
 url="https://github.com/alexta69/${_pkgname}"
 license=("AGPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=(aria2 ffmpeg python-aiohttp python-brotli python-mutagen python-pycryptodomex python-simple-websocket python-socketio yt-dlp)
+depends=(aria2 ffmpeg python-aiohttp python-brotli python-mutagen python-pycryptodomex python-simple-websocket python-socketio python-watchfiles yt-dlp)
 makedepends=("git" "npm")
 source=("${_pkgname}::git+${url}"
         "${_pkgname}.service"
