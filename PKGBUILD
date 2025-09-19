@@ -2,7 +2,7 @@
 
 _pkgname="sponge"
 pkgname="${_pkgname}-bin"
-pkgver=1.14.6
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.zip")
-sha256sums_x86_64=('8bee43794187fa961b2335fa099d798c9ecb28517bbc1e2de312e444178b5ad8')
+sha256sums_x86_64=('26e0a1fc25c38adff251c00ce582819990b810c2a2bb43259f3baf90e2ece8c7')
 
 package() {
   cd "${srcdir}"
