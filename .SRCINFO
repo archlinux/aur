@@ -1,7 +1,7 @@
 pkgbase = zls0.13
 	pkgdesc = A language server for Zig
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = zls0.13
 	source = zls-0.13.0.tar.gz::https://github.com/zigtools/zls/archive/refs/tags/0.13.0.tar.gz
 	source = known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz::https://github.com/ziglibs/known-folders/archive/0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz
 	source = diffz-ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz::https://github.com/ziglibs/diffz/archive/ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz
-	sha256sums = 36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7
+	sha256sums = b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68
 	sha256sums = 2e8046b6b0de765a4bf4bb828345e2badc8b828bc257dc931d0f56b147684d9f
 	sha256sums = a8457bc9d3ca509a1db8b46a0d402fecae2b17d4fe0f454f5d51a63cc2aa1a7b
 	sha256sums = 1dd8f4678171bfd2476aa74743e48bce10aad2b90c2df038d3ac6b0ef37fc3ba
