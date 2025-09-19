@@ -1,26 +1,23 @@
 pkgbase = flightgear
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 2024.1.1
-	pkgrel = 2
+	pkgver = 2024.1.2
+	pkgrel = 1
 	url = http://www.flightgear.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
-	makedepends = boost174
-	makedepends = qt5-svg
+	makedepends = boost
+	makedepends = qt6-svg
 	makedepends = plib
 	depends = openxr
-	depends = qt5-declarative
 	depends = qt6-declarative
-	depends = qt5-base
 	depends = zlib
 	depends = openscenegraph
 	depends = openal
-	depends = simgear
+	depends = simgear=${pkgver}
 	optdepends = flightgear-data: Base data package
-	source = https://gitlab.com/flightgear/flightgear/-/archive/v2024.1.1/flightgear-v2024.1.1.tar.gz
-	source = fix-openal-header.patch
-	sha256sums = 8a5410d7894d942bd2feed60c09d601bc46a670707ded771c6daf6ee7114655a
-	sha256sums = 1869a10b8e6cd39128ec07115daeef01a6f586926bd4e1e8c4253426f885d1a7
+	conflicts = flightgear-git
+	source = https://gitlab.com/flightgear/flightgear/-/archive/2024.1.2/flightgear-2024.1.2.tar.gz
+	sha256sums = ce6ed9d655fc53e5c6017034fcd1cbb2c71813023fb2427bd6f77049d7e1e415
 
 pkgname = flightgear
