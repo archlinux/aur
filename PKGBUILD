@@ -19,12 +19,7 @@ prepare() {
 }
 build(){
     cd "${srcdir}/${pkgname}"
-
-    rm -rf build
-    mkdir build
-
-    cd build
-    cmake ..
+    cmake -B build -DCMAKE_BUILD_TYPE=Release
     cmake --build . -j $(nproc)
 }
 
