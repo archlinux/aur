@@ -20,14 +20,15 @@ prepare() {
     git submodule update --init --recursive
 
     # Dirty sortce patches (patching using the patch command is not stable enough)
-    sed -i 's/\(add_subdirectories(tools)\)/#\1/' CMakeLists.txt
-    sed -i 's/\(add_subdirectories(tools)\)/#\1/' tt_metal/CMakeLists.txt
-    sed -i 's/#\(include(linking)\)/\1/' CMakeLists.txt
-    sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml
-    sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml
-    sed -i 's/--release"/--release", "--cxx-compiler-path=g++", "--c-compiler-path=gcc", "--without-distributed"/' setup.py
-    sed -i 's/"lib64" if/"lib" if/' setup.py
-    sed -i 's|copy_tree_with_patterns(build_dir / get_lib_dir(), self.build_lib + f"/ttnn/build/lib", lib_patterns)|copy_tree_with_patterns(build_dir / get_lib_dir(), self.build_lib + f"/ttnn/build/lib", lib_patterns);copy_tree_with_patterns(build_dir / "ttnn", self.build_lib + f"/ttnn/build/lib", lib_patterns)|' setup.py
+    sed -i '/add_subdirectory(tools)/d' CMakeLists.txt # Does not build (most likely LTO)
+    sed -i '/add_subdirectory(tools)/d' tt_metal/CMakeLists.txt # Does not build (most likely LTO)
+    sed -i '/add_subdirectory(examples)/d' ttnn/CMakeLists.txt # Not used in output
+    sed -i 's/#\(include(linking)\)/\1/' CMakeLists.txt # Arch is new enough that we can use the better linking parameters
+    sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml # Forced version but it doesn't really need it
+    sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml # DITTO
+    sed -i 's/--release"/--release", "--cxx-compiler-path=g++", "--c-compiler-path=gcc", "--without-distributed"/' setup.py # Need more flags but no palce to invoke from build() - hack script
+    sed -i 's/"lib64" if/"lib" if/' setup.py # Bad assumption. Arch installs to lib even if lib64 exist
+    sed -i '/copy_tree_with_patterns(build_dir \/ get_lib_dir(), self.build_lib + f"\/ttnn\/build\/lib", lib_patterns)/{p; s|get_lib_dir()|"ttnn"| }' setup.py # Additional install needed
 
 }
 
