@@ -2,7 +2,7 @@ _dotnet_version=8.0
 _system_libs=true
 
 pkgname=clonedash-git
-pkgver=r1609.g3d287fc
+pkgver=r1611.g133ed67
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=("git+https://github.com/marchc1/CloneDash.git#branch=dev"
         "com.github.marchc1.CloneDash.png")
 sha256sums=('SKIP'
             '75d31ad4e100dff79244be6d5e69d605caa2b2959d9be9ed64bb1f6a75315106'
-            'ebf75e440039888092fc4b46039fc46bdd9fc42e19130baaa45499a64010ab74'
+            '0be4e9f7817e35e286d43f9732cc82fb2749e6db66883cfa784bf0a05896bba9'
             '1f342693e6c390c611cc04a9ef93879c3299ecd976bd9958e2cb95b7fe93ffdb')
 
 case "$CARCH" in
