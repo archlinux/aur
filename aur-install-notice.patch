@@ -1,0 +1,288 @@
+From 4eb4163788835a2369913413a1fd26fb8b66ce5f Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:02:50 +0200
+Subject: [PATCH 1/4] AUR-specific: replace auto-updater with a notice
+
+---
+ aider/versioncheck.py | 27 ++++-----------------------
+ 1 file changed, 4 insertions(+), 23 deletions(-)
+
+diff --git a/aider/versioncheck.py b/aider/versioncheck.py
+index ac511a02..be67ef10 100644
+--- a/aider/versioncheck.py
++++ b/aider/versioncheck.py
+@@ -1,5 +1,4 @@
+ import os
+-import sys
+ import time
+ from pathlib import Path
+ 
+@@ -36,29 +35,11 @@ def install_upgrade(io, latest_version=None):
+     else:
+         new_ver_text = "Install latest version of aider?"
+ 
+-    docker_image = os.environ.get("AIDER_DOCKER_IMAGE")
+-    if docker_image:
+-        text = f"""
+-{new_ver_text} To upgrade, run:
+-
+-    docker pull {docker_image}
++    text = f"""
++{new_ver_text} To upgrade, use the latest version available on the AUR.
+ """
+-        io.tool_warning(text)
+-        return True
+-
+-    success = utils.check_pip_install_extra(
+-        io,
+-        None,
+-        new_ver_text,
+-        ["aider-chat"],
+-        self_update=True,
+-    )
+-
+-    if success:
+-        io.tool_output("Re-run aider to use new version.")
+-        sys.exit()
+-
+-    return
++    io.tool_warning(text)
++    return True
+ 
+ 
+ def check_version(io, just_check=False, verbose=False):
+-- 
+2.51.0
+
+
+From 801ee7f4a0d08f29463b6e607db21c7f152febf6 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:03:36 +0200
+Subject: [PATCH 2/4] AUR-specific: replace `/help` feature installer
+
+The interactive `/help` feature requires an optional package from the
+AUR. Replace the automatic installer with a notice that asks the user
+to download and install the package by themselves.
+---
+ aider/help.py  | 11 ++---------
+ aider/utils.py | 15 +++++++++++++++
+ 2 files changed, 17 insertions(+), 9 deletions(-)
+
+diff --git a/aider/help.py b/aider/help.py
+index c76188d1..c8772f0b 100755
+--- a/aider/help.py
++++ b/aider/help.py
+@@ -16,18 +16,11 @@ warnings.simplefilter("ignore", category=FutureWarning)
+ 
+ 
+ def install_help_extra(io):
+-    pip_install_cmd = [
+-        "aider-chat[help]",
+-        "--extra-index-url",
+-        "https://download.pytorch.org/whl/cpu",
+-    ]
+-    res = utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         "llama_index.embeddings.huggingface",
+-        "To use interactive /help you need to install the help extras",
+-        pip_install_cmd,
++        "python-llama-index-embeddings-huggingface",
+     )
+-    return res
+ 
+ 
+ def get_package_files():
+diff --git a/aider/utils.py b/aider/utils.py
+index a58fde66..deaa7150 100644
+--- a/aider/utils.py
++++ b/aider/utils.py
+@@ -292,6 +292,21 @@ def touch_file(fname):
+         return False
+ 
+ 
++def check_aur_package(io, module, aur_package):
++    if module:
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError):
++            pass
++
++    io.tool_error(f"""
++    This feature requires the following package from the AUR:
++
++        {aur_package}
++""")
++
++
+ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
+     if module:
+         try:
+-- 
+2.51.0
+
+
+From ac9a439c07aae0dadd1bd8bcf09c61cc6005d92b Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:04:12 +0200
+Subject: [PATCH 3/4] AUR-specific: replace google-aiplatform installer
+
+---
+ aider/models.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/aider/models.py b/aider/models.py
+index b535d01d..021b02d2 100644
+--- a/aider/models.py
++++ b/aider/models.py
+@@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
+ from aider.llm import litellm
+ from aider.openrouter import OpenRouterModelManager
+ from aider.sendchat import ensure_alternating_roles, sanity_check_messages
+-from aider.utils import check_archlinux_package, check_pip_install_extra
++from aider.utils import check_archlinux_package, check_aur_package
+ 
+ RETRY_TIMEOUT = 60
+ 
+@@ -1178,11 +1178,10 @@ def check_for_dependencies(io, model_name):
+ 
+     # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
+     elif model_name.startswith("vertex_ai/"):
+-        check_pip_install_extra(
++        check_aur_package(
+             io,
+             "google.cloud.aiplatform",
+-            "Google Vertex AI models require the google-cloud-aiplatform package.",
+-            ["google-cloud-aiplatform"],
++            "python-google-cloud-aiplatform",
+         )
+ 
+ 
+-- 
+2.51.0
+
+
+From 93e522cac16e75b73e695d9c91b251848276381a Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:04:52 +0200
+Subject: [PATCH 4/4] AUR-specific: replace main branch auto-upgrader
+
+Ask user to download and install the `aider-chat-git` package if they
+wish to follow the main development branch.
+---
+ aider/utils.py        | 62 -------------------------------------------
+ aider/versioncheck.py |  6 ++---
+ 2 files changed, 2 insertions(+), 66 deletions(-)
+
+diff --git a/aider/utils.py b/aider/utils.py
+index deaa7150..43918482 100644
+--- a/aider/utils.py
++++ b/aider/utils.py
+@@ -1,5 +1,4 @@
+ import os
+-import platform
+ import subprocess
+ import sys
+ import tempfile
+@@ -193,31 +192,10 @@ def split_chat_history_markdown(text, include_tool=False):
+     return messages
+ 
+ 
+-def get_pip_install(args):
+-    cmd = [
+-        sys.executable,
+-        "-m",
+-        "pip",
+-        "install",
+-        "--upgrade",
+-        "--upgrade-strategy",
+-        "only-if-needed",
+-    ]
+-    cmd += args
+-    return cmd
+-
+-
+ def run_install(cmd):
+     print()
+     print("Installing:", printable_shell_command(cmd))
+ 
+-    # First ensure pip is available
+-    ensurepip_cmd = [sys.executable, "-m", "ensurepip", "--upgrade"]
+-    try:
+-        subprocess.run(ensurepip_cmd, capture_output=True, check=False)
+-    except Exception:
+-        pass  # Continue even if ensurepip fails
+-
+     try:
+         output = []
+         process = subprocess.Popen(
+@@ -307,46 +285,6 @@ def check_aur_package(io, module, aur_package):
+ """)
+ 
+ 
+-def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
+-    if module:
+-        try:
+-            __import__(module)
+-            return True
+-        except (ImportError, ModuleNotFoundError, RuntimeError):
+-            pass
+-
+-    cmd = get_pip_install(pip_install_cmd)
+-
+-    if prompt:
+-        io.tool_warning(prompt)
+-
+-    if self_update and platform.system() == "Windows":
+-        io.tool_output("Run this command to update:")
+-        print()
+-        print(printable_shell_command(cmd))  # plain print so it doesn't line-wrap
+-        return
+-
+-    if not io.confirm_ask("Run pip install?", default="y", subject=printable_shell_command(cmd)):
+-        return
+-
+-    success, output = run_install(cmd)
+-    if success:
+-        if not module:
+-            return True
+-        try:
+-            __import__(module)
+-            return True
+-        except (ImportError, ModuleNotFoundError, RuntimeError) as err:
+-            io.tool_error(str(err))
+-            pass
+-
+-    io.tool_error(output)
+-
+-    print()
+-    print("Install failed, try running this command manually:")
+-    print(printable_shell_command(cmd))
+-
+-
+ def check_archlinux_package(io, module, archlinux_package):
+     if module:
+         try:
+diff --git a/aider/versioncheck.py b/aider/versioncheck.py
+index be67ef10..2a6c18c5 100644
+--- a/aider/versioncheck.py
++++ b/aider/versioncheck.py
+@@ -16,12 +16,10 @@ def install_from_main_branch(io):
+     Install the latest version of aider from the main branch of the GitHub repository.
+     """
+ 
+-    return utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         None,
+-        "Install the development version of aider from the main branch?",
+-        ["git+https://github.com/Aider-AI/aider.git"],
+-        self_update=True,
++        "aider-chat-git",
+     )
+ 
+ 
+-- 
+2.51.0
+

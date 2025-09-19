@@ -1,0 +1,241 @@
+From 599de5ee1740fa6b9059ba9faf63aa20b018810d Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:00:47 +0200
+Subject: [PATCH 1/4] Arch-Linux-specific: install optdeps via pacman
+
+---
+ aider/scrape.py | 42 +++++++++++++++++-------------------------
+ 1 file changed, 17 insertions(+), 25 deletions(-)
+
+diff --git a/aider/scrape.py b/aider/scrape.py
+index 3d5cfa86..05100044 100755
+--- a/aider/scrape.py
++++ b/aider/scrape.py
+@@ -18,9 +18,9 @@ def check_env():
+     try:
+         from playwright.sync_api import sync_playwright
+ 
+-        has_pip = True
++        has_python_package = True
+     except ImportError:
+-        has_pip = False
++        has_python_package = False
+ 
+     try:
+         with sync_playwright() as p:
+@@ -29,50 +29,42 @@ def check_env():
+     except Exception:
+         has_chromium = False
+ 
+-    return has_pip, has_chromium
++    return has_python_package, has_chromium
+ 
+ 
+ def has_playwright():
+-    has_pip, has_chromium = check_env()
+-    return has_pip and has_chromium
++    has_python_package, has_chromium = check_env()
++    return has_python_package and has_chromium
+ 
+ 
+ def install_playwright(io):
+-    has_pip, has_chromium = check_env()
+-    if has_pip and has_chromium:
++    has_python_package, has_chromium = check_env()
++    if has_python_package and has_chromium:
+         return True
+ 
+-    pip_cmd = utils.get_pip_install(["aider-chat[playwright]"])
+-    chromium_cmd = "-m playwright install --with-deps chromium"
+-    chromium_cmd = [sys.executable] + chromium_cmd.split()
+-
+-    cmds = ""
+-    if not has_pip:
+-        cmds += " ".join(pip_cmd) + "\n"
++    packages = []
++    if not has_python_package:
++        packages.append("python-playwright")
+     if not has_chromium:
+-        cmds += " ".join(chromium_cmd) + "\n"
++        packages.append("chromium")
++    pacman_cmd = ["sudo", "pacman", "-Syu", "--asdeps", "--noconfirm", *packages]
+ 
+-    text = f"""For the best web scraping, install Playwright:
++    text = f"""For the best web scraping, run pacman as follows:
+ 
+-{cmds}
++{" ".join(pacman_cmd)}
+ See {urls.enable_playwright} for more info.
+ """
+ 
+     io.tool_output(text)
+-    if not io.confirm_ask("Install playwright?", default="y"):
++    if not io.confirm_ask(f"Install {" and ".join(packages)}?", default="y"):
+         return
+ 
+-    if not has_pip:
+-        success, output = utils.run_install(pip_cmd)
++    if packages:
++        success, output = utils.run_install(pacman_cmd)
+         if not success:
+             io.tool_error(output)
+             return
+ 
+-    success, output = utils.run_install(chromium_cmd)
+-    if not success:
+-        io.tool_error(output)
+-        return
+-
+     return True
+ 
+ 
+-- 
+2.51.0
+
+
+From f3b205787f3b340b13c0a7ed453c449b95bac40b Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:01:26 +0200
+Subject: [PATCH 2/4] Arch-Linux-specific: use system Chromium
+
+---
+ aider/scrape.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aider/scrape.py b/aider/scrape.py
+index 05100044..bb885daf 100755
+--- a/aider/scrape.py
++++ b/aider/scrape.py
+@@ -24,7 +24,7 @@ def check_env():
+ 
+     try:
+         with sync_playwright() as p:
+-            p.chromium.launch()
++            p.chromium.launch(executable_path="/usr/bin/chromium")
+             has_chromium = True
+     except Exception:
+         has_chromium = False
+@@ -140,7 +140,7 @@ class Scraper:
+ 
+         with sync_playwright() as p:
+             try:
+-                browser = p.chromium.launch()
++                browser = p.chromium.launch(executable_path="/usr/bin/chromium")
+             except Exception as e:
+                 self.playwright_available = False
+                 self.print_error(str(e))
+-- 
+2.51.0
+
+
+From 3422aab980d2daf56d19fa7fd9d367b48454286b Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 3 Jul 2025 14:02:06 +0200
+Subject: [PATCH 3/4] Arch-Linux-specific: install boto3 via pacman
+
+---
+ aider/models.py |  6 ++----
+ aider/utils.py  | 32 ++++++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+), 4 deletions(-)
+
+diff --git a/aider/models.py b/aider/models.py
+index 4a5d86a6..b535d01d 100644
+--- a/aider/models.py
++++ b/aider/models.py
+@@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
+ from aider.llm import litellm
+ from aider.openrouter import OpenRouterModelManager
+ from aider.sendchat import ensure_alternating_roles, sanity_check_messages
+-from aider.utils import check_pip_install_extra
++from aider.utils import check_archlinux_package, check_pip_install_extra
+ 
+ RETRY_TIMEOUT = 60
+ 
+@@ -1174,9 +1174,7 @@ def check_for_dependencies(io, model_name):
+     """
+     # Check if this is a Bedrock model and ensure boto3 is installed
+     if model_name.startswith("bedrock/"):
+-        check_pip_install_extra(
+-            io, "boto3", "AWS Bedrock models require the boto3 package.", ["boto3"]
+-        )
++        check_archlinux_package(io, "boto3", "python-boto3")
+ 
+     # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
+     elif model_name.startswith("vertex_ai/"):
+diff --git a/aider/utils.py b/aider/utils.py
+index 834ffa19..a58fde66 100644
+--- a/aider/utils.py
++++ b/aider/utils.py
+@@ -332,6 +332,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
+     print(printable_shell_command(cmd))
+ 
+ 
++def check_archlinux_package(io, module, archlinux_package):
++    if module:
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError):
++            pass
++
++    cmd = ["sudo", "pacman", "-Syu", "--asdeps", "--noconfirm", archlinux_package]
++    io.tool_warning("Using this feature requires a package to be installed.")
++
++    if not io.confirm_ask("Run pacman?", default="y", subject=printable_shell_command(cmd)):
++        return
++
++    success, output = run_install(cmd)
++    if success:
++        if not module:
++            return True
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError) as err:
++            io.tool_error(str(err))
++            pass
++
++    io.tool_error(output)
++
++    print()
++    print("Install failed, try running this command manually:")
++    print(printable_shell_command(cmd))
++
++
+ def printable_shell_command(cmd_list):
+     """
+     Convert a list of command arguments to a properly shell-escaped string.
+-- 
+2.51.0
+
+
+From 53d4d8c53d5215cf79216e097b56ac13a5614bf3 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 7 Aug 2025 23:34:18 +0200
+Subject: [PATCH 4/4] Arch-Linux-specific: install streamlit via pacman
+
+---
+ aider/main.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/aider/main.py b/aider/main.py
+index afb3f836..8bb4c0fb 100644
+--- a/aider/main.py
++++ b/aider/main.py
+@@ -206,11 +206,10 @@ def check_gitignore(git_root, io, ask=True):
+ 
+ 
+ def check_streamlit_install(io):
+-    return utils.check_pip_install_extra(
++    return utils.check_archlinux_package(
+         io,
+         "streamlit",
+-        "You need to install the aider browser feature",
+-        ["aider-chat[browser]"],
++        "python-streamlit",
+     )
+ 
+ 
+-- 
+2.51.0
+
