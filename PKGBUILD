@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=phytools
-_pkgver=2.4-4
+_pkgver=2.5-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7c7c37a58b4adee64c47946cbaa4ff56')
-b2sums=('b5db8928658bedecafc3b669ff5d449b3a20adc8a8fa4a9e58cf3ae785a5a82f3ab03918d065fd90085c6c9f87b49a752147183dd25487dfe993072bd43952d3')
+md5sums=('7bc29b50ce24eef00ba94ff28a3d0eee')
+b2sums=('5fb3421dd8a226d7deab39fefe1d2aaae1a58c918232da185a72229ac445cab5539c8baf33c5ad25a5e50917d2939142de8b87b2fb15201267291285ee832058')
 
 build() {
   mkdir build
