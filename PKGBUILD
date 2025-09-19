@@ -1,11 +1,12 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Juan Francisco Miranda <jfmiranda at gmail dot com>
 
 pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
-pkgver=251.26094.87
-_pkgver=2025.1.3
+pkgver=253.20558.12
+_pkgver=2025.3
 #_pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
@@ -18,7 +19,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${_pkgver}.tar.gz"
         jetbrains-datagrip-eap.desktop
         LICENSE)
-b2sums=('e4c562de680e515aa076e460ef1e81dd4888fbb7b0c97fbf33a966a5e6b853141b0ee8e6844d58f7fa818fb707481f6dba3246eb7c56cf1df38229bc812ea164'
+b2sums=('7a3568903fcb6e2eb787433357e5e300bb67c01705b08b67c83dcf911eadce69eb402a52fcc2ee27f9a7491df8142fb61ba1d8ef6c7d51415bf10c169334e739'
         '780569cb12b9f5d2475363c7b9c28d903f5a79806aaeea634973664b7cdac0ef281519024fa784b20d7e0062bf9b69e2bca3036bca58e6ee43a475609ea42a1c'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
