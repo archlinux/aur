@@ -1,5 +1,5 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.2.9
+	pkgver = 1.2.11
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.9.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.9/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = 4d145dee43d5d6858f402b3452d6d2c810387fb87e4d3430b14db66b5e21f582
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.11.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.11/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = 5bc90646b5d64a6e39fb25fdd854ae1ada60bfb8e111436cdd987497e67de9b6
 	sha256sums = 597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004
 
 pkgname = python-livekit-agents
@@ -49,6 +49,7 @@ pkgname = python-livekit-agents
 	depends = python-opentelemetry-sdk
 	depends = python-opentelemetry-exporter-otlp
 	depends = python-prometheus_client
+	depends = python-openai
 	optdepends = python-mcp: mcp
 	optdepends = python-av: codecs
 	optdepends = python-numpy: codecs
