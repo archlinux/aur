@@ -2,7 +2,7 @@
 
 pkgname=python-ttnn
 pkgver=0.62.2
-pkgrel=3
+pkgrel=4
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -13,6 +13,7 @@ provides=("python-ttnn")
 conflicts=("python-ttnn")
 source=("tt-metal::git+https://github.com/tenstorrent/tt-metal.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+options=(!strip)
 
 prepare() {
     cd "$srcdir/tt-metal"
