@@ -15,14 +15,16 @@ options=(!lto !strip)   # avoid post-build strip and LTO for safety
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   pnpm install --frozen-lockfile
-  # export CARGO_PROFILE_RELEASE_LTO="off"   # or "false"
-  # export RUSTFLAGS="${RUSTFLAGS//-Clto=*}" # scrub any -Clto from env
-  # export RUSTFLAGS="$RUSTFLAGS -Clinker-plugin-lto=no"
-  pnpm tauri build --no-bundle
+  export NO_STRIP=1
+  pnpm tauri build --bundles=appimage
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 "src-tauri/target/release/scriptorium" \
     "$pkgdir/usr/bin/scriptorium"
+  install -Dm644 "src-tauri/target/release/bundle/appimage/$pkgname.AppDir/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "src-tauri/target/release/bundle/appimage/$pkgname.AppDir/$pkgname.png" \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 }
