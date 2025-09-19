@@ -6,7 +6,7 @@ _pkgname=valve-parsers
 
 pkgname="python-${_pkgname}-git"
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Some parsers for Valve game files - written in python.'
 arch=('x86_64')
