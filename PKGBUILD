@@ -1,9 +1,9 @@
-# Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
+# Maintainer: Jan Eil <aur@janeil.de>
 
 _pkgbase=pivccu-modules
 pkgname=${_pkgbase}-dkms
 pkgver=1.0.85
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules needed for Homematic"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/alexreinert/piVCCU/"
