@@ -1,0 +1,14 @@
+pkgbase = yorsiur
+	pkgdesc = YORSIUR - Your friend for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/datuns/yorsiur
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = make
+	depends = gcc-libs
+	source = yorsiur-1.0.0.tar.gz::https://github.com/datuns/yorsiur/archive/v1.0.0.tar.gz
+	sha256sums = 3767501240240b0b3bfabd5d0c4cc88687f10c32b7d3042ddaa1e95d82a0c93a
+
+pkgname = yorsiur
