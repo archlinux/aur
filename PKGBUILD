@@ -1,7 +1,7 @@
 # Maintainer: realdanvanth <realdanvanth@gmail.com>
 pkgname=realvim
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight terminal text editor"
 arch=('x86_64')
 url="https://github.com/realdanvanth/realvim"
@@ -23,13 +23,13 @@ build() {
     export CARGO_TARGET_DIR=target
     export ONIG_SYS_STATIC=false
     export RUSTONIG_SYSTEM_LIBONIG=1
-    cargo build --frozen --release --all-features
+    cargo build --release --all-features
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --all-features
 }
 
 package() {

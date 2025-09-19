@@ -1,7 +1,7 @@
 pkgbase = realvim
 	pkgdesc = A lightweight terminal text editor
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realdanvanth/realvim
 	arch = x86_64
 	license = custom
