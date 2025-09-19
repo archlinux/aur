@@ -27,9 +27,9 @@ source=(
 "${amsel_repo}/${tome_rel}/v${tomeVer}/Tome-linux-x64-${tomeVer}.zip"
 )
 
-sha256sums=('bb7246d014b8902828dbc70b26efda3707639aa3f742784c2c6d6e72c8622701'
-            'c6455390b8d0e6749fb484654b6e13c154d9676800cb86b9b4f715eedfffed14'
-            'e9f098102be06bfd1a2f8d591aef05746edc6be693aee1593a808346d2ab23bf')
+sha256sums=('da981490b8feddb974d9891d5d05aa94062662c32584293de6789f7fc5dff60c'
+            'f88ce60ef3e5fb60f9eafdd57f0d1ba4c7d63c07a3e0893ed9ff03fadac31e68'
+            '6217bfc976647a44a0145cfdd4a16d933dda34e1193e786b00e3dde7a029ced4')
 
 package() {
   cd ${pkgdir}

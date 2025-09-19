@@ -23,8 +23,8 @@ pkgbase = amsel_suite-bin
 	source = https://github.com/OllamTechnologies/launcher-releases/releases/download/v1.6.1/amsel-suite_1.6.1_amd64.deb
 	source = https://github.com/OllamTechnologies/lore-releases/releases/download/v1.6.1/Lore-linux-x64-1.6.1.zip
 	source = https://github.com/OllamTechnologies/tome-releases/releases/download/v1.6.1/Tome-linux-x64-1.6.1.zip
-	sha256sums = bb7246d014b8902828dbc70b26efda3707639aa3f742784c2c6d6e72c8622701
-	sha256sums = c6455390b8d0e6749fb484654b6e13c154d9676800cb86b9b4f715eedfffed14
-	sha256sums = e9f098102be06bfd1a2f8d591aef05746edc6be693aee1593a808346d2ab23bf
+	sha256sums = da981490b8feddb974d9891d5d05aa94062662c32584293de6789f7fc5dff60c
+	sha256sums = f88ce60ef3e5fb60f9eafdd57f0d1ba4c7d63c07a3e0893ed9ff03fadac31e68
+	sha256sums = 6217bfc976647a44a0145cfdd4a16d933dda34e1193e786b00e3dde7a029ced4
 
 pkgname = amsel_suite-bin
