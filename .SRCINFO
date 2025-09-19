@@ -1,0 +1,23 @@
+pkgbase = akbl-git
+	pkgdesc = AKBL is a software to control the lights of Alienware computers (The keyboard, the logo, the speakers, etc...).
+	pkgver = v3.0.0.r0.g571aab9
+	pkgrel = 1
+	url = https://codeberg.org/rsm92/akbl
+	install = akbl.install
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = systemd
+	depends = usbutils
+	depends = python
+	depends = python-pyusb
+	depends = python-pyro
+	optdepends = webkit2gtk: for the graphical interphase
+	optdepends = python-gobject: for the graphical interphase
+	optdepends = python-cairo: for the graphical interphase
+	optdepends = libayatana-appindicator: for the system try indicator
+	provides = akbl
+	source = https://codeberg.org/rsm92/akbl/archive/571aab9850da168198eb62c75662997bf0345e11.zip
+	sha256sums = aa43e897839652bfd52cef13b45bfe17775e0baee7e7858ccae77637c67489ed
+
+pkgname = akbl-git

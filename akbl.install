@@ -1,0 +1,89 @@
+
+post_install() {
+
+  # Code taken from
+  # https://codeberg.org/rsm92/akbl/raw/branch/master/install.bash
+
+  NUMBER_OF_STEPS=6 			# installation steps
+
+  ##
+  ## Post installation
+  ##
+
+  echo -e "\e[00;33m\n[3/$NUMBER_OF_STEPS] Creating the python links...\e[00m"
+
+  for python_directory in /usr/lib/python3*; do
+
+    if [[ "$python_directory" != "/usr/lib/python3" ]]; then
+
+      if [ -d "$python_directory" ]; then
+          ln -s /usr/lib/python3/AKBL "$python_directory/AKBL" && echo -e "Linked $python_directory"
+      fi
+    fi
+
+  done
+
+  # Interactive prompts should not run in pkg installers
+  #echo -e "\e[00;33m\n[4/$NUMBER_OF_STEPS] Choosing the computer model...\e[00m"
+  #python3 /usr/share/AKBL/ModelChooser/cmd.py
+
+
+  echo -e "\e[00;33m\n[5/$NUMBER_OF_STEPS] Enabling the daemon...\e[00m"
+  if [ -f /bin/systemctl ]; then
+      systemctl daemon-reload
+      systemctl enable akbl
+      systemctl restart akbl
+      sleep 2
+  else
+    echo -e "\e[00;31m Warning: systemd seems to be missing. The daemon will have to be manually launched.\e[00m"
+  fi
+
+  echo -e "\e[00;33m\n[6/$NUMBER_OF_STEPS] Testing the installation...\e[00m"
+  echo -e "AKBL version: $(akbl --version)"
+
+  ping=$(akbl --ping)
+
+  if [[ "$ping" == "False" ]]; then
+    echo -e "\e[00;31mThe daemon ping is OFF, to make the software work you need to correct this problem.\e[00m"
+  elif [[ "$ping" == "True" ]]; then
+    echo -e "\033[0;32The installation has finished. If you have any window of the software (GUI, BlockTesting, Bindings script, etc..) or the indicator is running, you must restart them.\e[00m\n"
+  else
+    echo -e "\e[00;31mThe installation was not successful.\e[00m"
+  fi
+
+}
+
+post_remove() {
+
+  # Code taken from
+  #
+
+  if [ -f /bin/systemctl ]; then
+    echo -e "\e[00;33mDisabling the systemd daemon...\033[0m"
+      systemctl stop akbl
+      systemctl disable akbl
+      echo ""
+  fi
+
+  echo -e "\e[00;33mRemoving the python links..\033[0m"
+
+  for python_directory in /usr/lib/python3*; do
+
+      echo -e "Checking $python_directory"
+
+      if [[ -L "$python_directory/AKBL" ]]; then
+        rm -f "$python_directory/AKBL" && echo -e "- Link removed"
+      fi
+
+      if [ -f "$python_directory/AKBL" ] || [ -f "$python_directory/AKBL.py" ]; then
+          rm -f "$python_directory/AKBL" && echo -e "- File removed"
+      fi
+
+      if [ -d "$python_directory/AKBL" ] || [ -d "$python_directory/AKBL.py" ]; then
+          rm -rf "$python_directory/AKBL.py" && echo -e "- Directory removed"
+      fi
+
+  done
+
+  echo ""
+}
