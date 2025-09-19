@@ -1,15 +1,15 @@
 # Maintainer: dr460nf1r3 <root at dr460nf1r3 dot org>
 
 pkgname=garuda-rani
-pkgver="3.1.0"
-_commit='bf8e95552e2ace3d1988402888a3abb285ba2005'
-pkgrel=3
-_electronversion=36
+pkgver="3.2.0"
+_commit='ba3d582fcd538c628076e07c8a4131ddef3f442d'
+pkgrel=1
+_electronversion=38
 pkgdesc="Garuda's Reliable Assistant for Native Installations"
 arch=('any')
 url="https://gitlab.com/garuda-linux/applications/rani"
 license=('GPL-3.0-or-later')
-depends=('bash' 'curl' "electron${_electronversion}" 'pacman-contrib' 'garuda-libs>=1.6.0' 'garuda-update')
+depends=('bash' 'curl' "electron${_electronversion}" 'pacman-contrib' 'garuda-libs>=1.6.0')
 makedepends=('git' 'base-devel' 'nodejs-lts-jod' 'pnpm')
 optdepends=('paru: show pending AUR updates'
   'meld: compare pacdiff files via a GUI on GTK systems'
@@ -19,6 +19,8 @@ optdepends=('paru: show pending AUR updates'
 options=('!strip' '!emptydirs' '!debug')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
+# Replaces all of garuda-settings-manager
+replaces=('garuda-settings-manager' 'garuda-settings-manager-git' 'garuda-settings-manager-kcm' 'garuda-settings-manager-kcm-git' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
 
 prepare() {
   cd rani || exit
@@ -53,9 +55,6 @@ build() {
 }
 
 package() {
-  # Replaces all of garuda-settings-manager
-  replaces=('garuda-settings-manager' 'garuda-settings-manager-git' 'garuda-settings-manager-kcm' 'garuda-settings-manager-kcm-git' 'garuda-settings-manager-notifier' 'garuda-settings-manager-knotifier' 'garuda-settings-manager-knotifier-git' 'garuda-settings-manager-notifier-git')
-
   install -Dm755 "${srcdir}/rani/assets/garuda-rani.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/rani/dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
   install -Dm644 "${srcdir}/rani/assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"

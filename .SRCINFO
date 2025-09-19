@@ -1,6 +1,6 @@
 pkgbase = garuda-rani
 	pkgdesc = Garuda's Reliable Assistant for Native Installations
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/rani
 	arch = any
@@ -11,21 +11,26 @@ pkgbase = garuda-rani
 	makedepends = pnpm
 	depends = bash
 	depends = curl
-	depends = electron36
+	depends = electron38
 	depends = pacman-contrib
 	depends = garuda-libs>=1.6.0
-	depends = garuda-update
 	optdepends = paru: show pending AUR updates
 	optdepends = meld: compare pacdiff files via a GUI on GTK systems
 	optdepends = pace: manage Pacman repositories via a GUI
 	optdepends = reflector-simple: update Arch mirrorlists interactively
 	optdepends = btrfs-assistant: easily manage Btrfs snapshots and further settings
-	provides = garuda-rani
-	conflicts = garuda-rani
+	replaces = garuda-settings-manager
+	replaces = garuda-settings-manager-git
+	replaces = garuda-settings-manager-kcm
+	replaces = garuda-settings-manager-kcm-git
+	replaces = garuda-settings-manager-notifier
+	replaces = garuda-settings-manager-knotifier
+	replaces = garuda-settings-manager-knotifier-git
+	replaces = garuda-settings-manager-notifier-git
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source = git+https://gitlab.com/garuda-linux/applications/rani.git#commit=beec8bfc3bc01bd744c38a2c03b2cac43a29858d
+	source = git+https://gitlab.com/garuda-linux/applications/rani.git#commit=ba3d582fcd538c628076e07c8a4131ddef3f442d
 	sha256sums = SKIP
 
 pkgname = garuda-rani
