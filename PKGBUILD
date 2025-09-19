@@ -1,5 +1,5 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
-pkgname=novanav
+pkgname=novanav-py
 pkgver=0.1.11
 pkgrel=1
 pkgdesc="NovaNav: Lightweight browser for Linux and macOS, delivering fast, distraction-free browsing experience."
