@@ -3,10 +3,10 @@
 pkgname=nrc
 _pkgver=0.6.9
 _channel=beta
-_rel=15
-pkgver=${_pkgver}.${_channel}${_rel}  # -> 0.6.9.beta15  (matches Mullvad style)
+_rel=22
+pkgver=${_pkgver}.${_channel}${_rel}  
 pkgrel=1
-pkgdesc="NoRiskClient Launcher"
+pkgdesc="NoRiskClient Launcher – A Minecraft client from the YouTuber of the same name"
 arch=('x86_64')
 url="https://norisk.gg/"
 license=('GPLv3')
