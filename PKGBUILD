@@ -1,9 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro
-_tagname=0.8.55
-pkgver=${_tagname//-/_}
-pkgrel=4
+pkgver=0.8.56
+pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
 url="https://github.com/ecubus/EcuBus-Pro"
@@ -16,6 +15,7 @@ depends=(
     electron
     gcc-libs
     glibc
+    python
 )
 makedepends=(
     git
@@ -24,7 +24,6 @@ makedepends=(
     ghostscript
     node-gyp
     nodejs
-    python
 )
 optdepends=(
     "python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
@@ -33,9 +32,9 @@ optdepends=(
 backup=()
 options=(!debug !strip)
 install=
-source=("${pkgname}::git+${url}.git#tag=v${_tagname}")
-sha256sums=('fd4fe1f1ff396c1c2dc8d4beec54942e4e677171353e73fc3d57683d26b3f862')
-# noextract=("${pkgname}-${_tagname}.tar.gz")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('ae239b6a8ad7266cf7e6339a60cf70583ac3cd726bd94d55821035a9a83fe0c7')
+# noextract=("${pkgname}-${pkgver}.tar.gz")
 
 _pkgname=EcuBus-Pro
 prepare() {
@@ -52,9 +51,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${pkgname}/
-    npm run docan
-    npm run dolin
-    npm run someip
+    npm run native
     npm run worker
     npm run api
     npm run cli:build:linux
@@ -64,9 +61,9 @@ build() {
 package() {
     cd ${srcdir}/${pkgname}/
     install -dm0755 "${pkgdir}/usr/lib/${pkgname}/"
-
-    cp -r dist/linux-unpacked/locales ${pkgdir}/usr/lib/${pkgname}
-    cp -r dist/linux-unpacked/resources ${pkgdir}/usr/lib/${pkgname}
+    rm -rf dist/linux-unpacked/resources/bin/esbuild{.exe,_mac}
+    cp -R dist/linux-unpacked/locales ${pkgdir}/usr/lib/${pkgname}
+    cp -R dist/linux-unpacked/resources ${pkgdir}/usr/lib/${pkgname}
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/ecubus-pro.desktop" <<EOF
 [Desktop Entry]
 Name=EcuBus-Pro
