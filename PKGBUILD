@@ -43,7 +43,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/kscreen-$pkgver.tar.xz{,
         display-presets.patch)
 sha256sums=('b92bde8238b1e7f3d6521cc4b1ba8bba60047a64fff129b2011dff5ff3431037'
             'SKIP'
-            'b48932ce237a25a3b60daebc9ad51c1fa38bac0c7e4dadfa4188daf58e6b2c9d')
+            '337b1b76120ddb89bc234c01308a608c639de9c25badb7715050d50abdec395f')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
