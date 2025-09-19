@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 4.7.0
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = any
@@ -80,8 +80,8 @@ pkgbase = python-logfire
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = logfire-4.7.0::git+https://github.com/pydantic/logfire.git#tag=v4.7.0
-	sha256sums = 7a93f4af6d000a54c1391041a5b45e957b672b84a0516e2dd74beb01cf72d7d6
+	source = logfire-4.8.0::git+https://github.com/pydantic/logfire.git#tag=v4.8.0
+	sha256sums = ba1361df32da18b512393ed368b48ad0fd5276de91e4df0dbb32d5e7968e72cd
 
 pkgname = python-logfire-api
 	pkgdesc = Shim for the Logfire SDK which does nothing unless Logfire is installed.
@@ -120,3 +120,5 @@ pkgname = python-logfire
 	optdepends = python-opentelemetry-instrumentation-mysql: mysql
 	optdepends = python-opentelemetry-instrumentation-sqlite3: sqlite3
 	optdepends = python-opentelemetry-instrumentation-aws-lambda: aws-lambda
+	optdepends = python-opentelemetry-instrumentation-google-genai: google-genai
+	optdepends = python-openinference-instrumentation-litellm: litellm

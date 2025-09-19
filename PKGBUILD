@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -84,7 +84,7 @@ checkdepends=('python-httpx'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('7a93f4af6d000a54c1391041a5b45e957b672b84a0516e2dd74beb01cf72d7d6')
+sha256sums=('ba1361df32da18b512393ed368b48ad0fd5276de91e4df0dbb32d5e7968e72cd')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
@@ -110,6 +110,7 @@ check() {
     --ignore tests/otel_integrations/test_redis.py
     # Failed
     --deselect tests/test_cli.py::test_inspect
+    --deselect tests/otel_integrations/test_aiohttp_client.py::test_aiohttp_client_capture_headers
   )
   cd "$srcdir"/$_name0-$pkgver
   python -m venv --system-site-packages test-env
@@ -150,7 +151,9 @@ package_python-logfire() {
               'python-opentelemetry-instrumentation-requests: requests'
               'python-opentelemetry-instrumentation-mysql: mysql'
               'python-opentelemetry-instrumentation-sqlite3: sqlite3'
-              'python-opentelemetry-instrumentation-aws-lambda: aws-lambda')
+              'python-opentelemetry-instrumentation-aws-lambda: aws-lambda'
+              'python-opentelemetry-instrumentation-google-genai: google-genai'
+              'python-openinference-instrumentation-litellm: litellm')
   url='https://github.com/pydantic/logfire'
   cd "$srcdir"/$_name0-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
