@@ -1,0 +1,16 @@
+pkgbase = zyzzyva-git
+	pkgdesc = Collins Zyzzyva word study/search tool (Qt5) - git build
+	pkgver = 44f0113
+	pkgrel = 1
+	url = https://github.com/macaquedev/zyzzyva
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = zyzzyva
+	conflicts = zyzzyva
+	source = zyzzyva::git+https://github.com/macaquedev/zyzzyva.git#branch=main
+	sha256sums = SKIP
+
+pkgname = zyzzyva-git
