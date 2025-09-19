@@ -1,6 +1,6 @@
 pkgbase = rqlite-bin
 	pkgdesc = A lightweight, distributed relational database, which uses SQLite as its storage engine
-	pkgver = 9.0.1
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://github.com/rqlite/rqlite
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = rqlite-bin
 	provides = rqlited
 	conflicts = rqlite
 	conflicts = rqlite-git
-	source = LICENSE-9.0.1::https://raw.githubusercontent.com/rqlite/rqlite/v9.0.1/LICENSE
-	source = README-9.0.1.md::https://raw.githubusercontent.com/rqlite/rqlite/v9.0.1/README.md
+	source = LICENSE-9.1.0::https://raw.githubusercontent.com/rqlite/rqlite/v9.1.0/LICENSE
+	source = README-9.1.0.md::https://raw.githubusercontent.com/rqlite/rqlite/v9.1.0/README.md
 	sha256sums = 8d629d1b758f9c3615bf75e9a7f1032b45eebd5973c577eb1e9f109c383d53f8
-	sha256sums = 6d6c99ad945dc3273a2b477d3f10d2df53330a637614f8079d3faa82b86f65da
-	source_x86_64 = https://github.com/rqlite/rqlite/releases/download/v9.0.1/rqlite-v9.0.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 266525b2f0d16cd4099bff4b9017cc844b62cb74a64d284e831b404a0ec8cb78
+	sha256sums = 0a32b8b67a465a2970ead5455bb6fd76888ac12ae08b232bcb24923076a19b49
+	source_x86_64 = https://github.com/rqlite/rqlite/releases/download/v9.1.0/rqlite-v9.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8d12f6404ebbfa917ad9dba6f0e0ffc4ee1cef653e3e97accfe3f951657628e1
 
 pkgname = rqlite-bin
