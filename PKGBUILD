@@ -1,6 +1,6 @@
 # Maintainer: Athan Clark <athan.clark@gmail.com>
 pkgname=scriptorium
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Note-taking application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('rust' 'cargo' 'pnpm')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('045aee5d68af3acbeaf7f3fa5ba2602cd28ec010cbd2d5c9535333287312303d')  # Replace with real checksum
+sha256sums=('80d9c6200c2875487c01a24a0dfcaf505c804cb0d89b331dcd1720c5a65b4599')  # Replace with real checksum
 options=(!lto !strip)   # avoid post-build strip and LTO for safety
 
 build() {

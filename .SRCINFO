@@ -1,6 +1,6 @@
 pkgbase = scriptorium
 	pkgdesc = Note-taking application
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/athanclark/scriptorium
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = scriptorium
 	depends = libayatana-appindicator
 	options = !lto
 	options = !strip
-	source = https://github.com/athanclark/scriptorium/archive/refs/tags/v0.0.2.tar.gz
-	sha256sums = 045aee5d68af3acbeaf7f3fa5ba2602cd28ec010cbd2d5c9535333287312303d
+	source = https://github.com/athanclark/scriptorium/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 80d9c6200c2875487c01a24a0dfcaf505c804cb0d89b331dcd1720c5a65b4599
 
 pkgname = scriptorium
