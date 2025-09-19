@@ -20,7 +20,7 @@ do
 	fi
 done
 
-for f in drl {core,drl}.wad drl_{gnome-terminal,konsole,xterm} *.txt data
+for f in drl {core,drl}.wad drl_{gnome-terminal,konsole,xterm} {manual,unix_notes,version_api,version}.txt data
 do
   [ -L "$personal/$f" ] || (rm -f "$personal/$f" && ln -s $sys/$f "$personal/$f")
 done
