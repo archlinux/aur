@@ -1,0 +1,13 @@
+diff --git a/tt_metal/CMakeLists.txt b/tt_metal/CMakeLists.txt
+index f8f0ba7d108..ca8f34b29dc 100644
+--- a/tt_metal/CMakeLists.txt
++++ b/tt_metal/CMakeLists.txt
+@@ -204,7 +204,7 @@ add_subdirectory(hostdevcommon)
+ add_subdirectory(common)
+ add_subdirectory(jit_build)
+ add_subdirectory(llrt)
+-add_subdirectory(tools)
++#add_subdirectory(tools)
+ add_subdirectory(impl)
+ add_subdirectory(detail)
+ add_subdirectory(distributed)
