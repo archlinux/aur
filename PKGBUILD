@@ -3,9 +3,9 @@
 # Contributor: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # Contributor: <asamk(at)gmx.de>
 
-pkgver=24.0.1
+pkgver=24.0.2
 java_=${pkgver%%.*}
-graal_=${pkgver}+9.1
+graal_=${pkgver}+11.1
 pkgname="jdk${java_}-graalvm-bin"
 pkgrel=3
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
@@ -23,8 +23,8 @@ options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('eae72b5a2a2826eed7e4be5710d33f82934622a390ab6a9f009ed7753359e02e')
-sha256sums_x86_64=('d2c544de672e400476a09c8f1da79ecc6b774a9441e234948542c3b3e6a84bde')
-sha256sums_aarch64=('a3d1be8fadfb0d3df632252301f79a9b02b47e523da66539d370c62e683d762e')
+sha256sums_x86_64=('6d62846c826ddb9307deec71e7661c26fa5a5e3985d7bb9005ea42163a390720')
+sha256sums_aarch64=('c54d951a858791483d58270ecbc0946f28c4742c7fac74a4ebb2764bbf66d6f5')
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${pkgver}/graalvm-community-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${pkgver}/graalvm-community-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 
