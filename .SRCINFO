@@ -1,11 +1,12 @@
 pkgbase = the-honkers-railway-launcher-bin
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-anime-team/the-honkers-railway-launcher
 	arch = x86_64
 	license = GPL3
 	depends = libadwaita
+	depends = libwebp-utils
 	depends = xdg-desktop-portal
 	depends = git
 	depends = gtk4
