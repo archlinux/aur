@@ -1,14 +1,14 @@
 pkgbase = ecsta
 	pkgdesc = ECS Task Assistant tool
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/fujiwara/ecsta
 	arch = aarch64
 	arch = x86_64
 	license = Apache
-	source_aarch64 = https://github.com/fujiwara/ecsta/releases/download/v0.7.0/ecsta_0.7.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e7634f8171c407501e7a6c5d6fca23acf99867b9319be0b6686c96f05655aad0
-	source_x86_64 = https://github.com/fujiwara/ecsta/releases/download/v0.7.0/ecsta_0.7.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 30abfd39d02c78774a2b47eee0a89aadc3a06e01deadff7fdc9abccb56576702
+	source_aarch64 = https://github.com/fujiwara/ecsta/releases/download/v0.7.1/ecsta_0.7.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 09247d9e67fd6b71f566a5b3377570ec324e8e561c74c72cf407caf676a05087
+	source_x86_64 = https://github.com/fujiwara/ecsta/releases/download/v0.7.1/ecsta_0.7.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b37075bd67e6b8327b299ba280c82fec81253f402bb08f855eb6bbae7043a3e
 
 pkgname = ecsta
