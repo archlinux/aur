@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-mammoth
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Convert Word documents (.docx files) to HTML"
 arch=(any)
@@ -29,7 +29,7 @@ checkdepends=(
   python-tempman
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwilliamson/python-mammoth/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4e9ac42960f986a29f92619ee5b82c9111a79592e10a841fc7f3e228a64eb04d')
+sha256sums=('c89a093800e89be86e4c4d635bccf616f62e94072c8036c730a67f042f888429')
 
 prepare() {
   cd "$pkgname-$pkgver"
