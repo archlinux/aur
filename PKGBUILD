@@ -3,8 +3,8 @@
 _basename="zls"
 _pkgname="${_basename}-master"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0_dev.3+1840a4b8
-pkgrel=2
+pkgver=0.16.0dev.3+1840a4b8
+pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'
@@ -69,7 +69,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}"
-  ./"${_basename}" version | sed 's/-/_/g'
+  ./"${_basename}" version | sed 's/-//g'
 }
 
 package() {
