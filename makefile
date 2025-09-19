@@ -10,6 +10,8 @@ commit:
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
 	git commit -m "new version"
+	ssh-add ~/.ssh/arch/arch
 	git push origin master   # AUR
-	git push github master   # GitHub
+	ssh-add ~/.ssh/id_ed25519
+	git push github main   # GitHub
 
