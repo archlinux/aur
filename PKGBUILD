@@ -3,7 +3,7 @@
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor
 pkgver=r54.b473243
-pkgrel=6
+pkgrel=7
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
 provides=("internet-usage-monitor=1.0.0")
@@ -41,41 +41,94 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   
-  # Create the missing common.sh file that the daemon scripts expect
+  # Create the common.sh file that the daemon scripts expect
+  # Using the proper upstream version with XDG compliance and better functionality
   cat > "$pkgdir/usr/share/$pkgname/src/common.sh" << 'EOF'
 #!/bin/bash
 
-# Common configuration and functions for Internet Usage Monitor
-# This file provides shared variables and functions used by all scripts
+# Internet Usage Monitor - Common Functions and Configuration
+# This script is sourced by other scripts to provide shared functionality.
 
-# Configuration variables
-DAEMON_UPDATE_INTERVAL=${DAEMON_UPDATE_INTERVAL:-30}  # seconds between checks
+# --- XDG and Application Path Configuration ---
+
+# The application name, used for directory structures.
 APP_NAME="internet-usage-monitor-git"
-RUNTIME_DIR="$HOME/.local/share/$APP_NAME"
-LOG_FILE="$RUNTIME_DIR/usage_log"
-USAGE_DATA_FILE="$RUNTIME_DIR/usage_data"
 
-# Ensure runtime directory exists
-mkdir -p "$RUNTIME_DIR"
+# Determine effective XDG directories with fallbacks for non-standard environments.
+XDG_CONFIG_HOME_EFFECTIVE="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_DATA_HOME_EFFECTIVE="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_RUNTIME_DIR_EFFECTIVE="${XDG_RUNTIME_DIR:-/run/user/$UID}"
 
-# Function to log messages
-log_message() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S'): $1" >> "$LOG_FILE"
-}
+# Define application-specific directories.
+CONFIG_DIR="$XDG_CONFIG_HOME_EFFECTIVE/$APP_NAME"
+DATA_DIR="$XDG_DATA_HOME_EFFECTIVE/$APP_NAME"
+RUNTIME_DIR="$XDG_RUNTIME_DIR_EFFECTIVE/$APP_NAME"
 
-# Function to check for required dependencies  
+# Define primary configuration file paths.
+USER_CONFIG_FILE="$CONFIG_DIR/config.sh"
+DEFAULT_CONFIG_FILE="/usr/share/$APP_NAME/config.sh"
+PROJECT_CONFIG_FILE="$(dirname "${BASH_SOURCE[0]}")/../config/config.sh"
+
+# --- Configuration Loading ---
+
+# Load the configuration file, prioritizing user, then system, then project.
+if [ -f "$USER_CONFIG_FILE" ]; then
+    source "$USER_CONFIG_FILE"
+elif [ -f "$DEFAULT_CONFIG_FILE" ]; then
+    source "$DEFAULT_CONFIG_FILE"
+elif [ -f "$PROJECT_CONFIG_FILE" ]; then
+    source "$PROJECT_CONFIG_FILE"
+else
+    echo "Error: Configuration file could not be found." >&2
+    exit 1
+fi
+
+# --- Directory Initialization ---
+
+# Ensure all necessary application directories exist.
+mkdir -p "$CONFIG_DIR" "$DATA_DIR" "$RUNTIME_DIR"
+
+# --- Dependency Checks ---
+
+# Function to check for required command-line tools.
 check_dependencies() {
     local missing_deps=()
     for dep in "$@"; do
-        if ! command -v "$dep" >/dev/null 2>&1; then
+        if ! command -v "$dep" &> /dev/null; then
             missing_deps+=("$dep")
         fi
     done
-    
+
     if [ ${#missing_deps[@]} -gt 0 ]; then
         echo "Error: Missing required dependencies: ${missing_deps[*]}" >&2
-        echo "Please install the missing packages and try again." >&2
+        echo "Please install them using your system's package manager." >&2
         exit 1
+    fi
+}
+
+# --- Common Utility Functions ---
+
+# Function to log messages to the application's log file.
+log_message() {
+    # LOG_FILE is defined in config.sh
+    echo "$(date '+%Y-%m-%d %H:%M:%S'): $1" >> "$LOG_FILE"
+}
+
+# Function to convert bytes to a human-readable format.
+bytes_to_human() {
+    local bytes=${1:-0}
+    if ! [[ "$bytes" =~ ^[0-9]+$ ]]; then
+        bytes=0
+    fi
+
+    if [ "$bytes" -ge 1073741824 ]; then
+        awk -v b="$bytes" 'BEGIN {printf "%.2f GB", b/1073741824}'
+    elif [ "$bytes" -ge 1048576 ]; then
+        awk -v b="$bytes" 'BEGIN {printf "%.2f MB", b/1048576}'
+    elif [ "$bytes" -ge 1024 ]; then
+        awk -v b="$bytes" 'BEGIN {printf "%.2f KB", b/1024}'
+    else
+        echo "$bytes B"
     fi
 }
 EOF
