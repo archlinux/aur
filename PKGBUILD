@@ -2,7 +2,7 @@
 
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor
-pkgver=r49.17451d8
+pkgver=r54.b473243
 pkgrel=1
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')

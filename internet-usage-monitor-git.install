@@ -6,7 +6,7 @@ post_install() {
   echo
   echo "TO COMPLETE SETUP, RUN THIS COMMAND:"
   echo
-  echo "    /usr/bin/internet-monitor-setup"
+  echo "    /usr/bin/internet-monitor-setup --aur"
   echo
   echo "(Just copy and paste the above command)"
   echo
