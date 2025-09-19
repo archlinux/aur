@@ -1,15 +1,22 @@
-pkgname=vkpeak
-pkgver=20250531
+pkgname=vkpeak-git
+pkgver=20250531.r5.gc810bd2
 pkgrel=1
-pkgdesc="A tool which profiles Vulkan devices to find their peak capacities"
+pkgdesc="A tool which profiles Vulkan devices to find their peak capacities. Git version."
 arch=('x86_64')
 url="https://github.com/nihui/vkpeak"
 license=('MIT')
-source=("${pkgname}::git+https://github.com/nihui/vkpeak.git#tag=${pkgver}"
+source=("${pkgname}::git+https://github.com/nihui/vkpeak.git"
         "ncnn::git+https://github.com/Tencent/ncnn.git")
 depends=('vulkan-icd-loader')
 makedepends=('cmake' 'glslang' 'ninja' 'protobuf' 'vulkan-headers')
 sha256sums=('SKIP' 'SKIP')
+provides=("vkpeak")
+conflicts=('vkpeak')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 prepare() {
     cd "${srcdir}/${pkgname}"
