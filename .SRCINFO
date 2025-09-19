@@ -1,17 +1,17 @@
 pkgbase = chaterm-bin
 	pkgdesc = A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Prebuilt version,use system-wide electron)
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://chaterm.ai/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = asar
 	depends = electron30
-	provides = chaterm=0.4.1
+	provides = chaterm=0.4.3
 	conflicts = chaterm
-	source = chaterm-0.4.1-x86_64.deb::https://github.com/chaterm/Chaterm/releases/download/v0.4.1/chaterm-0.4.1-linux-amd64.deb
+	source = chaterm-0.4.3-x86_64.deb::https://github.com/chaterm/Chaterm/releases/download/v0.4.3/chaterm-0.4.3-linux-amd64.deb
 	source = chaterm.sh
-	sha256sums = 9aff446d57e6f5d275c0a7875b066d289ee16db071bf1f609623a212cf6c307f
+	sha256sums = bde1863996d12d36adbda34653254a59c0b63077b5b952b22184528717eea215
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = chaterm-bin
