@@ -1,6 +1,6 @@
 pkgbase = python-django-htmx
 	pkgdesc = Extensions for using Django with htmx
-	pkgver = 1.24.1
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://github.com/adamchainz/django-htmx
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-django-htmx
 	depends = python
 	depends = python-asgiref
 	depends = python-django
-	source = https://github.com/adamchainz/django-htmx/archive/1.24.1/django-htmx-1.24.1.tar.gz
-	sha256sums = 961a233dfd64442c16414a484e095bfe725206f3763de711c06029749d011cac
+	source = https://github.com/adamchainz/django-htmx/archive/1.25.0/django-htmx-1.25.0.tar.gz
+	sha256sums = 00628346df373a98dc9b3ada4c1f50260d864ddc7e795e4ca6f866400f43d111
 
 pkgname = python-django-htmx
