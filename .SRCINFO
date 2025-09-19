@@ -1,0 +1,19 @@
+pkgbase = scriptorium
+	pkgdesc = Note-taking application
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/athanclark/scriptorium
+	arch = x86_64
+	license = GPL-3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pnpm
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	options = !lto
+	options = !strip
+	source = https://github.com/athanclark/scriptorium/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 045aee5d68af3acbeaf7f3fa5ba2602cd28ec010cbd2d5c9535333287312303d
+
+pkgname = scriptorium
