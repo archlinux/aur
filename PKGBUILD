@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-ttnn-git
-pkgver=0.62.0.dev20250919.r11.ge84fdf563aa
-pkgrel=1
+pkgver=0.62.0.dev20250919.r12.g3168af4a952
+pkgrel=2
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -11,14 +11,8 @@ makedepends=(python-build python-installer python-wheel python-setuptools 'gcc>=
 depends=('python>=3.10' hwloc numactl boost tbb capstone sfpi python python-loguru python-networkx python-graphviz python-numpy)
 provides=("python-ttnn")
 conflicts=("python-ttnn")
-source=("tt-metal::git+https://github.com/tenstorrent/tt-metal"
-    'cmake-disable-tools.patch'
-    'ttmetal-disable-tools.patch'
-    'pyptoject-hack-deps.patch'
-    'setup-py-set-flags.patch'
-    'cmake-enable-advanced-linking.patch'
-)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("tt-metal::git+https://github.com/tenstorrent/tt-metal")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/tt-metal"
@@ -30,17 +24,23 @@ prepare() {
     cd "$srcdir/tt-metal"
     git submodule update --init --recursive
 
-    patch -Np1 -i ../cmake-disable-tools.patch
-    patch -Np1 -i ../ttmetal-disable-tools.patch
-    patch -Np1 -i ../pyptoject-hack-deps.patch
-    patch -Np1 -i ../setup-py-set-flags.patch
-    patch -i ../cmake-enable-advanced-linking.patch
+    # Dirty sortce patches (patching using the patch command is not stable enough)
+    sed -i 's/\(add_subdirectories(tools)\)/#\1/' CMakeLists.txt
+    sed -i 's/\(add_subdirectories(tools)\)/#\1/' tt_metal/CMakeLists.txt
+    sed -i 's/#\(include(linking)\)/\1/' CMakeLists.txt
+    sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml
+    sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml
+    sed -i 's/--release"/--release", "--cxx-compiler-path=g++", "--c-compiler-path=gcc", "--without-distributed"/' setup.py
+    sed -i 's/"lib64" if/"lib" if/' setup.py
+    sed -i 's|copy_tree_with_patterns(build_dir / get_lib_dir(), self.build_lib + f"/ttnn/build/lib", lib_patterns)|copy_tree_with_patterns(build_dir / get_lib_dir(), self.build_lib + f"/ttnn/build/lib", lib_patterns);copy_tree_with_patterns(build_dir / "ttnn", self.build_lib + f"/ttnn/build/lib", lib_patterns)|' setup.py
 }
 
 build() {
     # patch deps
     cd "$srcdir/tt-metal"
 
+    
+    
     ln -s build_Release build || true
     [[ -d dist ]] && (rm -r dist && mkdir dist)
     python -m build --wheel --no-isolation
