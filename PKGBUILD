@@ -2,7 +2,7 @@
 
 pkgname=python-ttnn
 pkgver=0.62.2
-pkgrel=2
+pkgrel=3
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -34,7 +34,7 @@ build() {
     # patch deps
     cd "$srcdir/tt-metal"
 
-    ln -s build_Release build || true
+    # ln -s build_Release build || true
     [[ -d dist ]] && (rm -r dist && mkdir dist)
     python -m build --wheel --no-isolation
 }
