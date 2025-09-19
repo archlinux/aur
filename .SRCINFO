@@ -1,7 +1,7 @@
 pkgbase = python-ttnn-git
 	pkgdesc = TT-NN operator and Tensor library for Tenstorrent hardware
 	pkgver = 0.62.0.dev20250919.r12.g3168af4a952
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tenstorrent/tt-metal
 	arch = x86_64
 	license = Apache-2.0
@@ -31,6 +31,7 @@ pkgbase = python-ttnn-git
 	depends = python-numpy
 	provides = python-ttnn
 	conflicts = python-ttnn
+	options = !strip
 	source = tt-metal::git+https://github.com/tenstorrent/tt-metal
 	sha256sums = SKIP
 
