@@ -1,0 +1,11 @@
+[Unit]
+Description=Zotero–WPSJS bridge
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/office6/jsaddons/wps-zotero_1.0.0/runPY.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+post_install() {
+  echo "Run 'systemctl --user enable --now zotero-wpsjs.service' to start the bridge."
+}
+
+post_remove() {
+  echo "Run 'systemctl --user disable zotero-wpsjs.service' to remove dead symlink."
+  echo "Run 'systemctl --user stop zotero-wpsjs.service' to stop removed service."
+}
