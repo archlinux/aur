@@ -1,11 +1,12 @@
 pkgbase = onetagger-bin
 	pkgdesc = The ultimate cross-platform tagger for DJs
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 0
 	url = https://onetagger.github.io/
 	arch = x86_64
 	license = GPL3
 	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = glib2
 	depends = glibc
@@ -39,10 +40,10 @@ pkgbase = onetagger-bin
 	optdepends = gst-plugins-good: For good GStreamer plugins
 	optdepends = gst-plugins-bad: For additional GStreamer plugins
 	conflicts = onetagger
-	source = https://github.com/XCroatoanX/onetagger/releases/download/1.7.1/OneTagger-linux.tar.gz
+	source = https://github.com/XCroatoanX/onetagger/releases/download/1.7.2/onetagger.tar.xz
 	source = onetagger.png
 	source = onetagger.desktop
-	sha256sums = 8bc400eadcdd5bcc72ce8bf9e91d1faa6e6b2f8f85deac4b87f12cfe97888726
+	sha256sums = dce5e7f9ba85741b1ffba3ced6423cc54bc9beab21611a5747cd19cdab6d6682
 	sha256sums = 6a0ecc9b2f8d4f2ebb7f168c3158feadaa0a391837034df8856a0c0bde3219aa
 	sha256sums = 308891e4556f602afedfbc5bd9c0ef35b49ff56329cb53ffeb870017b52cbf3d
 
