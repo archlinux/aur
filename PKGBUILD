@@ -6,7 +6,7 @@
 pkgname=qwen-code
 pkgver=0.0.12.nightly.2
 _pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="cli coding agent (fork of gemini-cli)"
 arch=(any)
 url="https://github.com/QwenLM/qwen-code"

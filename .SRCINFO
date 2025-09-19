@@ -1,7 +1,7 @@
 pkgbase = qwen-code
 	pkgdesc = cli coding agent (fork of gemini-cli)
 	pkgver = 0.0.12.nightly.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QwenLM/qwen-code
 	arch = any
 	license = Apache-2.0
