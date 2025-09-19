@@ -1,0 +1,21 @@
+pkgbase = scriptorium-git-2
+	pkgdesc = Note-taking application - latest git
+	pkgver = 0.0.2.r0.gc9782d5
+	pkgrel = 1
+	url = https://github.com/athanclark/scriptorium
+	arch = x86_64
+	license = GPL-3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pnpm
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = scriptorium
+	conflicts = scriptorium
+	options = !lto
+	options = !strip
+	source = scriptorium::git+https://github.com/athanclark/scriptorium.git#branch=master
+	sha256sums = SKIP
+
+pkgname = scriptorium-git-2
