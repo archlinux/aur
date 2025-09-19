@@ -1,0 +1,14 @@
+pkgbase = oq-openapi-viewer-git
+	pkgdesc = Terminal OpenAPI Spec viewer
+	pkgver = 36.1878543
+	pkgrel = 1
+	url = https://github.com/plutov/oq
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = oq-openapi-viewer
+	conflicts = oq-openapi-viewer
+	source = oq-openapi-viewer-git::git+https://github.com/plutov/oq
+	sha512sums = SKIP
+
+pkgname = oq-openapi-viewer-git
