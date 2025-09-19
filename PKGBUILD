@@ -4,7 +4,7 @@
 _slug=CVfunk
 _name=CVfunk-Modules
 pkgname=vcvrack-cv-funk
-pkgver=2.0.23
+pkgver=2.0.25
 pkgrel=1
 pkgdesc='CV funk VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/codygeary/$_name#tag=v$pkgver")
-sha256sums=('39890004a4e5ac3c0b9da7f7b8ff5947d717b4b27baa09846e10377d25888fb2')
+sha256sums=('3a2f34f8d69488f0ada1c8408f7f9f26227f9d42f609e2866e4d2a9497256e94')
 
 prepare() {
   cd $_name
