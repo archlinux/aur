@@ -1,6 +1,6 @@
 pkgbase = vocalshaper-git
 	pkgdesc = A JUCE-based Open Source DAW
-	pkgver = r1219.4d138f5
+	pkgver = r1231.9e90ecd
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/Do-sth-sharp/VocalShaper
@@ -20,7 +20,13 @@ pkgbase = vocalshaper-git
 	depends = patchelf
 	provides = vocalshaper
 	conflicts = vocalshaper
-	source = git+https://github.com/Do-sth-sharp/VocalShaper
+	source = git+https://github.com/Do-sth-sharp/VocalShaper#branch=develop
+	source = git+https://github.com/Remix-Design/RemixIcon.git
+	source = git+https://github.com/Do-sth-sharp/vcpkg-overlay.git
+	source = git+https://github.com/microsoft/vcpkg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vocalshaper-git
