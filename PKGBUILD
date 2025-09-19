@@ -18,7 +18,7 @@ depends=('bash' 'python' 'python-argcomplete' 'python-pyperclip' 'python-rich' '
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 #checkdepends=('mypy' 'python-pylint' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-forked' 'python-pytest-xdist' 'python-pytest-textual-snapshot')
-source=("${_pypi_package}-${_upstreamver}.tar.gz::https://github.com/xavierog/moulti/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7b260b8febddf278fc9c917c6eb3081016a0c7532c93696dc03322854af70a90')
 
 #prepare() {
