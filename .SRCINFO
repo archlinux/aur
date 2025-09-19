@@ -1,13 +1,15 @@
-pkgbase = novanav
-	pkgdesc = NovaNav: Lightweight browser for Linux written in C++, delivering fast, distraction-free browsing experience.
-	pkgver = 0.0.9
+pkgbase = novanav-py
+	pkgdesc = NovaNav: Lightweight browser for Linux and macOS, delivering fast, distraction-free browsing experience.
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/NovaNav
 	arch = x86_64
 	license = BSD-3-Clause
-	depends = qt5-base
-	depends = qt5-webengine
-	source = https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.0.0.9.tar.gz
-	sha256sums = 027cd824e9c2e6eeaf59138018288ff3290d32d9978e2640aa0b7527a16f9f5f
+	depends = python
+	depends = python-pip
+	depends = python-pyqt5
+	depends = python-pyqt5-webengine
+	source = https://github.com/felipealfonsog/NovaNav/archive/refs/tags/v.0.1.11.tar.gz
+	sha256sums = a134a47a7c2395831984127d046e132e18d0b20557d4edbc5fdf1de7b959b6b5
 
-pkgname = novanav
+pkgname = novanav-py
