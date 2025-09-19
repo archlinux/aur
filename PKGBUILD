@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-ttnn-git
-pkgver=0.62.0.dev20250919.r12.g3168af4a952
-pkgrel=3
+pkgver=0.62.0.dev20250919.r28.ga7ce66c29d4
+pkgrel=2
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -26,8 +26,8 @@ prepare() {
     git submodule update --init --recursive
 
     # Dirty sortce patches (patching using the patch command is not stable enough)
-    sed -i 's/\(add_subdirectories(tools)\)/#\1/' CMakeLists.txt
-    sed -i 's/\(add_subdirectories(tools)\)/#\1/' tt_metal/CMakeLists.txt
+    sed -i 's/\(add_subdirectory(tools)\)/#\1/' CMakeLists.txt
+    sed -i 's/\(add_subdirectory(tools)\)/#\1/' tt_metal/CMakeLists.txt
     sed -i 's/#\(include(linking)\)/\1/' CMakeLists.txt
     sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml
     sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml
@@ -40,8 +40,6 @@ build() {
     # patch deps
     cd "$srcdir/tt-metal"
 
-    
-    
     ln -s build_Release build || true
     [[ -d dist ]] && (rm -r dist && mkdir dist)
     python -m build --wheel --no-isolation
@@ -52,6 +50,9 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
+
+    strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
+    strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/build/lib/*.so
 
     # Delete pyc
     find "$pkgdir" -name '*.pyc' -delete
