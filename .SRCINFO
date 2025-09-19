@@ -1,0 +1,14 @@
+pkgbase = uz80as
+	pkgdesc = Z80 assembler compatible with the Telemark (TASM) syntax
+	pkgver = 2.02
+	pkgrel = 1
+	url = https://jorgicor.niobe.org/uz80as
+	arch = x86_64
+	license = MIT
+	makedepends = automake
+	makedepends = autoconf
+	depends = glibc
+	source = https://jorgicor.niobe.org/uz80as/uz80as-2.02.tar.gz
+	sha256sums = c487d0ada4b39f747d1cc5cf3cc83a404e71e3e2a4e909ce3b6020ca0eb4dc51
+
+pkgname = uz80as

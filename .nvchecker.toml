@@ -1,0 +1,6 @@
+[uz80as]
+source = "htmlparser"
+url = "https://jorgicor.niobe.org/uz80as/"
+xpath = "/html/body//a[starts-with(@href, 'uz80as-') and contains(@href, '.tar.gz')]"
+from_pattern = 'uz80as-([\d.]+).tar.gz'
+to_pattern = '\1'
