@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-ui
 	pkgdesc = Minecraft: PE Linux launcher UI
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/minecraft-linux/mcpelauncher-ui-manifest
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,7 +10,6 @@ pkgbase = mcpelauncher-ui
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt6-tools
-	makedepends = clang
 	makedepends = vulkan-headers
 	makedepends = qt6-svg
 	makedepends = libxinerama
