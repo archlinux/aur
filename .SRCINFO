@@ -1,7 +1,7 @@
 pkgbase = zls0.14
 	pkgdesc = A language server for Zig
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = armv7h
@@ -22,7 +22,7 @@ pkgbase = zls0.14
 	source = diffz-ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz::https://github.com/ziglibs/diffz/archive/ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz
 	source = zig-lsp-codegen-063a98c13a2293d8654086140813bdd1de6501bc.tar.gz::https://github.com/zigtools/zig-lsp-codegen/archive/063a98c13a2293d8654086140813bdd1de6501bc.tar.gz
 	source = tracy-0.11.1.tar.gz::https://github.com/wolfpld/tracy/archive/refs/tags/v0.11.1.tar.gz
-	sha256sums = 36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7
+	sha256sums = b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68
 	sha256sums = 44cae74073b2f75cf627755398afadafaa382cccf7555b5b66b147dcaa6cef0d
 	sha256sums = 500d9df2df8b44060dac523b0402126c0341e01d77f59101e1335654b8ae25a1
 	sha256sums = 1dd8f4678171bfd2476aa74743e48bce10aad2b90c2df038d3ac6b0ef37fc3ba
