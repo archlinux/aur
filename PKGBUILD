@@ -3,7 +3,7 @@
 _basename="zls"
 pkgver=0.12.0
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 
 pkgname="${_basename}${_pkgver}"
 pkgdesc="A language server for Zig"
@@ -32,7 +32,7 @@ noextract=("${_zigdepends[@]%%::*}")
 source=("${_basename}-versioned.sh"
         "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${_zigdepends[@]}")
-sha256sums=('36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7'
+sha256sums=('b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68'
             'c8c59dc6a708f3857ffbc1f593db4f6409e50e5ff1319b84dc65b84271e5a3d8'
             'f93ef6c14192bf79fba608f3c37bc31e85c4c7370fb855e9afa930a17cd85ff2'
             'b7978837f68c73d46f3f3ec6d12420d9ee52999d9da09cfa833ed974a7ad20e0')
@@ -40,7 +40,7 @@ sha256sums=('36111aa1d50fc4cfc90b730c591639d5882a1013f15ef5507b89a55730df19f7'
 prepare() {
   cd "${srcdir}"
   sed -e "s|@@ZIG_PATH@@|/opt/zig${_pkgver}|g" \
-      -e "s|@@ZIG_VERSION@@|${_pkgver}|g" \
+      -e "s|@@ZLS_PATH@@|/usr/lib/${pkgname}|g" \
       -i "${_basename}-versioned.sh"
 
   for dep in "${_zigdepends[@]}"; do
@@ -94,5 +94,5 @@ package() {
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "build/usr/bin"
-  install -vDm755 "${_basename}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+  install -vDm755 "${_basename}" "${pkgdir}/usr/lib/${pkgname}/${_basename}"
 }
