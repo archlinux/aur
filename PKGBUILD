@@ -1,7 +1,7 @@
 # Maintainer: Artem Stasyuk <stasyukartem2@gmail.com>
 pkgname=onetagger-bin
 pkgver=1.7.2
-pkgrel=0
+pkgrel=1
 pkgdesc="The ultimate cross-platform tagger for DJs"
 arch=('x86_64')
 url="https://onetagger.github.io/"
