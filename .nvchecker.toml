@@ -1,5 +1,5 @@
 [solidity-bin]
 source = "github"
-github = "ethereum/solidity"
+github = "argotorg/solidity"
 use_latest_release = true
 prefix = "v"
