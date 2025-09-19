@@ -1,0 +1,19 @@
+pkgbase = python-tree-sitter-python
+	pkgdesc = Python Grammar for tree-sitter
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-ruby
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tree-sitter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = tree-sitter-python-0.25.0.tar.gz::https://github.com/tree-sitter/tree-sitter-python/releases/download/v0.25.0/tree-sitter-python.tar.gz
+	sha512sums = ef62e026cca497aa0462d24dfcc1484ba9160d02b1f6d47ba64ebed32c4a75f2f9ec61526841be595900f11bccf7d0b5961a5362aec7d6d73a9d38ffa34fb46e
+
+pkgname = python-tree-sitter-python
