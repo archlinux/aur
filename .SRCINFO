@@ -1,6 +1,6 @@
 pkgbase = zls-mach-bin
 	pkgdesc = A language server for Zig
-	pkgver = 0.14.0_dev.406+336f468
+	pkgver = 0.14.0dev.406+336f468
 	pkgrel = 1
 	url = https://zigtools.org/zls
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = zls-mach-bin
 	makedepends = minisign
 	depends = sh
 	depends = zig-mach
-	provides = zls-mach=0.14.0_dev.406+336f468
+	provides = zls-mach=0.14.0dev.406+336f468
 	conflicts = zls-mach
 	source = zls-versioned.sh
 	source = https://builds.zigtools.org/zls-linux-x86_64-0.14.0-dev.406+336f468.tar.xz
