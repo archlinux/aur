@@ -3,7 +3,7 @@
 
 pkgname=honkers-launcher-bin
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
 conflicts=("honkers-launcher")
@@ -13,6 +13,7 @@ license=("GPL3")
 
 depends=(
     "libadwaita"
+    "libwebp-utils"
     "xdg-desktop-portal"
     "p7zip"
     "git"
