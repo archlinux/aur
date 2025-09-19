@@ -2,49 +2,41 @@
 
 pkgname=serial-studio
 _pkgname=Serial-Studio
-pkgver=3.0.6
-pkgrel=7
+pkgver=3.1.10
+pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
-license=('MIT')
+license=('GPL-3.0-only')
 groups=()
 _qt=qt6
 depends=(
-    avahi
     brotli
     bzip2
     curl
     e2fsprogs
     expat
-    dbus
     duktape
     gcc-libs
     glib2
     glibc
-    gmp
     graphite
-    gnutls
-    harfbuzz
     freetype2
     icu
     libcap
-    libcups
     libdrm
     libevdev
     libffi
     libglvnd
     libgudev
-    libjpeg-turbo
+    libldap
     libice
-    libp11-kit
     libpng
     libpsl
     libidn2
     libnghttp2
     libnghttp3
     libssh2
-    libtasn1
     libunistring
     libwacom
     libx11
@@ -55,18 +47,12 @@ depends=(
     keyutils
     krb5
     systemd-libs
-    mesa
     mtdev
-    nettle
     $_qt-base
     $_qt-declarative
     $_qt-connectivity
-    $_qt-location
     $_qt-graphs
-    $_qt-quick3d
-    $_qt-positioning
     $_qt-serialport
-    $_qt-svg
     openssl
     pcre2
     util-linux-libs
@@ -78,12 +64,16 @@ depends=(
 )
 makedepends=(
     cmake
+    git
     ninja
     $_qt-5compat
     $_qt-charts
+    $_qt-location
     $_qt-shadertools
-    #     $_qt-quickcontrols2
+    $_qt-quick3d
     $_qt-quickeffectmaker
+    $_qt-positioning
+    $_qt-svg
     $_qt-translations
     $_qt-tools
 )
@@ -93,12 +83,12 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3141605fae37869f4375349bbfa0242ae66b3914ead31ea11866ab3fac2f20e4')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('6d3fb24a2cfed6d64c1961cf9af8f12969d167b09427c93bb396f5f1bb37c4b8')
 noextract=()
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}"
 
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DPRODUCTION_OPTIMIZATION=ON \
@@ -112,5 +102,6 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install "${srcdir}"/${_pkgname}-${pkgver}/build
+    DESTDIR="$pkgdir" cmake --install "${srcdir}"/${pkgname}/build
 }
+
