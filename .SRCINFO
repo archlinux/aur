@@ -1,6 +1,6 @@
 pkgbase = wine-manager
 	pkgdesc = Um software que ajuda a gerenciar o wine
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/pedrodev2025/wine-manager
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = wine-manager
 	depends = bash
 	depends = wine
 	depends = winetricks
-	source = git+https://github.com/pedrodev2025/wine-manager.git#tag=1.0
+	source = git+https://github.com/pedrodev2025/wine-manager.git#tag=1.2
 	sha256sums = SKIP
 
 pkgname = wine-manager
