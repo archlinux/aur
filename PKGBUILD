@@ -3,7 +3,7 @@
 _pkgname=metube
 pkgname="${_pkgname}-git"
 pkgver=r542.33c6908
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)"
 arch=("any")
 url="https://github.com/alexta69/${_pkgname}"
