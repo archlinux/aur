@@ -8,7 +8,7 @@ pkgbase = zotero-wpsjs
 	license = GPL3
 	makedepends = git
 	depends = python
-	depends = wps-office
+	depends = wps-office-cn
 	depends = zotero
 	source = zotero-wpsjs::git+https://gitee.com/wangrui5015/Zotero-WPSJS.git#tag=v1.6.2
 	source = zotero-wpsjs.service
