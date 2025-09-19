@@ -1,7 +1,7 @@
 # Maintainer: Erffy <https://github.com/erffy>
 
 _pkgbase="zig-waybar-contrib"
-pkgname="${_pkgbase}-git"
+pkgname="$_pkgbase"
 pkgver=0.0.1.r0.g0000000
 pkgrel=1
 pkgdesc="Lightweight Waybar modules built with Zig (latest git)"
