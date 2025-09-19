@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -25,9 +25,9 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-1.0.8::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.0.8
+	source = pydantic-ai-1.0.9::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.0.9
 	source = git+https://github.com/pydantic/mcp-run-python.git
-	sha256sums = 252c1a9e54f931902acc39849713b1aa822b2bf556228bb9f95bcc8fb2063f4e
+	sha256sums = 1838a042164371b18eb069c7ffad424c182e942158caff1569f71d3fa42f4590
 	sha256sums = SKIP
 
 pkgname = python-pydantic-graph
