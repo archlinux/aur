@@ -12,7 +12,7 @@ license=('MIT')
 depends=(
   'quickshell'
   'ttf-roboto'
-  'inter-font' 
+  'inter-font'
   'gpu-screen-recorder'
   'brightnessctl'
   'ddcutil'
