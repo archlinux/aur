@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=blacken-docs
 pkgdesc="Run black on python code blocks in documentation files"
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 arch=(any)
 url="https://github.com/asottile/${pkgname}"
@@ -10,7 +10,7 @@ depends=(python-black)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('32a5ab9de66726fb1ea36d06e263c764339f6fd86839ed261d23aeaa4134ce9a8107c7c9e6d7b7d8becb706272f7425b0e88f5d4cb02d3ce1127a734b3b1c88d')
+sha512sums=('492133bfa1e059bc620b506d9c9058b569f58562322466d479f324f68c37255523224c9c880d03b44d6b17b855f00e1c71e26f461744c5098eb7f887e8aebf5b')
 
 build() {
   cd ${pkgname}-${pkgver}
