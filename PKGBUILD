@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=140.0.7339.132
+pkgver=140.0.7339.185
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -31,7 +31,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet5: support for storing passwords in KWallet on Plasma'
+            'kwallet: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
         chromium-140.0.7339.41-rust.patch)
-sha256sums=('e08746b02c08adbea49c5cf0483095ca514430de2281d762ceefac345a2cefe4'
+sha256sums=('a7b9a8dd5ddd65fb756bf35fb9180fca26ec59e1d55bbb105e05483ff15135b8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
@@ -74,7 +74,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            '4ce570764f48493cf0c182df0ca755e8c26548da91b5e9636663140ef600c6a0')
+            'cb7861ba6b47fd1bb00dd84981c34cc29a9792d6eb115149a905453f1159fdb8')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
