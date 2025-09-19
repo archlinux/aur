@@ -3,13 +3,13 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=1.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'libusb' 'hidapi' 'mbedtls2' 'hicolor-icon-theme')
-makedepends=('qt6-tools')
+depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls2' 'hicolor-icon-theme')
+makedepends=('qt5-tools')
 optdepends=('i2c-tools: mainboard & RAM access'
             'openrazer-driver-dkms: for Razer devices')
 # Using Link Time Optimization can cause segment fault at runtime. Disabled until upstream fix
@@ -35,7 +35,7 @@ build() {
 
   cd "$srcdir/OpenRGB-release_candidate_$pkgver"
   sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
-  qmake6 INCLUDEPATH+="/usr/include/mbedtls2" OpenRGB.pro
+  qmake INCLUDEPATH+="/usr/include/mbedtls2" OpenRGB.pro
   make
 }
 
