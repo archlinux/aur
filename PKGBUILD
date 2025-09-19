@@ -6,16 +6,23 @@
 
 pkgname=verilator-git
 _pkgname=verilator
-pkgver=r8433.d26fccaa4
+pkgver=r8438.bbcb9315f
 pkgrel=1
 pkgdesc='The fastest free Verilog HDL simulator'
 url='https://www.veripool.org/projects/verilator/wiki/Intro'
 arch=('x86_64')
 license=('LGPL')
 depends=('perl')
-optdepends=('systemc')
+optdepends=(
+    'ccache: to speed up compilation'
+    'mold: to speed up linking'
+    'numactl: to optimize memory access'
+    'gperftools: for performance'
+    'z3: optionnal solver for contraints support'
+)
 # lsb-release is used by configure script to enable usage of c++17
-makedepends=('python' 'systemc' 'lsb-release' 'git' 'python-distro')
+makedepends=('python' 'systemc' 'lsb-release' 'git' 'help2man' 'flex' 'autoconf')
+checkdepends=('python-distro')
 conflicts=('verilator')
 provides=('verilator')
 source=(
