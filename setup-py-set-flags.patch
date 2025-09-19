@@ -1,0 +1,30 @@
+diff --git a/setup.py b/setup.py
+index 897c8af252e..86a9e0fdc23 100644
+--- a/setup.py
++++ b/setup.py
+@@ -30,7 +30,7 @@ def get_lib_dir():
+     if sys.platform == "win32":
+         return "bin"  # Windows DLLs go in bin directory
+     elif sys.platform.startswith("linux"):
+-        return "lib64" if os.path.exists("/usr/lib64") else "lib"
++        return "lib" if os.path.exists("/usr/lib64") else "lib"
+     else:  # macOS and others
+         return "lib"
+ 
+@@ -217,7 +217,7 @@ class CMakeBuild(build_ext):
+             build_dir = source_dir / "build_Release"
+             # We indirectly set a wheel build for our CMake build by using BUILD_SHARED_LIBS. This does the following things:
+             # - Bundles (most) of our libraries into a static library to deal with a potential singleton bug error with tt_cluster (to fix)
+-            build_script_args = ["--build-static-libs", "--release"]
++            build_script_args = ["--build-static-libs", "--release", "--cxx-compiler-path=g++", "--c-compiler-path=gcc", "--without-distributed"]
+ 
+             if "CIBUILDWHEEL" in os.environ:
+                 cmake_args = [
+@@ -345,6 +345,7 @@ class CMakeBuild(build_ext):
+             "soc_descriptors/*.yaml",
+         ]
+         copy_tree_with_patterns(build_dir / get_lib_dir(), self.build_lib + f"/ttnn/build/lib", lib_patterns)
++        copy_tree_with_patterns(build_dir / "ttnn", self.build_lib + f"/ttnn/build/lib", lib_patterns)
+         copy_tree_with_patterns(build_dir, self.build_lib + "/ttnn/build/lib", ["sfpi-version.json"])
+         copy_tree_with_patterns(
+             source_dir / "runtime", self.build_lib + "/ttnn/runtime", runtime_patterns, runtime_exclude_files
