@@ -55,10 +55,10 @@ fi
 
 verify() {
   # https://zigtools.org/zls/releases/0.9.0/
-  local ziglang_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
+  local zls_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
 
   minisign -V \
-    -P "${ziglang_minisign}" \
+    -P "${zls_minisign}" \
     -m "${_basename}-linux-${_arch}-${pkgver}.tar.xz"
 }
 
