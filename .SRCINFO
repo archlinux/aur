@@ -1,6 +1,6 @@
 pkgbase = envx-bin
 	pkgdesc = A powerful and secure environment variable manager
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/mikeleppane/envx
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = envx-bin
 	depends = gcc-libs
 	provides = envx
 	conflicts = envx
-	source = LICENSE-0.6.1::https://raw.githubusercontent.com/mikeleppane/envx/v0.6.1/LICENSE
-	source = README-0.6.1.md::https://raw.githubusercontent.com/mikeleppane/envx/v0.6.1/README.md
+	source = LICENSE-0.6.2::https://raw.githubusercontent.com/mikeleppane/envx/v0.6.2/LICENSE
+	source = README-0.6.2.md::https://raw.githubusercontent.com/mikeleppane/envx/v0.6.2/README.md
 	sha256sums = 21fb5a5395f0f650feb3688f00c858e59eefa51c3c945a19da2c3ed2a4d8a3d2
 	sha256sums = e180e84eb87619b82bfaa858cd855c507e2cb1f21c51664164eb85cbe8bfb5dd
-	source_x86_64 = envx-x86_64-0.6.1::https://github.com/mikeleppane/envx/releases/download/v0.6.1/envx-linux-amd64
-	sha256sums_x86_64 = 0a248c2622da8226ba6ee2783e773f5292313014f0614c979b01229092695139
-	source_aarch64 = envx-aarch64-0.6.1::https://github.com/mikeleppane/envx/releases/download/v0.6.1/envx-linux-arm64
-	sha256sums_aarch64 = 5e2646c42883bdb43331997665c57d2e1a693921b748a9862e4d7e77511989cb
+	source_x86_64 = envx-x86_64-0.6.2::https://github.com/mikeleppane/envx/releases/download/v0.6.2/envx-linux-amd64
+	sha256sums_x86_64 = 414f64383ec9663f74b242ebe09c697f2cab32c1e95dac8cdf47e5360d292f42
+	source_aarch64 = envx-aarch64-0.6.2::https://github.com/mikeleppane/envx/releases/download/v0.6.2/envx-linux-arm64
+	sha256sums_aarch64 = ac50601cc695160c01a0225fa9a267a4a1ee90f34c588e14d500aa20eb84dac8
 
 pkgname = envx-bin

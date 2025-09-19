@@ -3,7 +3,7 @@
 _pkgauthor=mikeleppane
 _pkgname=envx
 pkgname=${_pkgname}-bin
-pkgver=0.6.1
+pkgver=0.6.2
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A powerful and secure environment variable manager"
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('21fb5a5395f0f650feb3688f00c858e59eefa51c3c945a19da2c3ed2a4d8a3d2'
             'e180e84eb87619b82bfaa858cd855c507e2cb1f21c51664164eb85cbe8bfb5dd')
-sha256sums_x86_64=('0a248c2622da8226ba6ee2783e773f5292313014f0614c979b01229092695139')
-sha256sums_aarch64=('5e2646c42883bdb43331997665c57d2e1a693921b748a9862e4d7e77511989cb')
+sha256sums_x86_64=('414f64383ec9663f74b242ebe09c697f2cab32c1e95dac8cdf47e5360d292f42')
+sha256sums_aarch64=('ac50601cc695160c01a0225fa9a267a4a1ee90f34c588e14d500aa20eb84dac8')
 
 
 package() {
