@@ -1,21 +1,21 @@
 pkgbase = dis4irc
 	pkgdesc = A modern Discord <-> IRC bridge
-	pkgver = 1.6.2
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/zachbr/Dis4IRC
 	install = dis4irc.install
 	arch = any
 	license = MIT
 	depends = java-runtime>=11
-	noextract = Dis4IRC-1.6.2.jar
+	noextract = Dis4IRC-1.6.5.jar
 	options = !strip
 	backup = etc/dis4irc/config.hocon
-	source = https://github.com/zachbr/Dis4IRC/releases/download/v1.6.2/Dis4IRC-1.6.2.jar
-	source = https://raw.githubusercontent.com/zachbr/Dis4IRC/v1.6.2/LICENSE.md
+	source = https://github.com/zachbr/Dis4IRC/releases/download/v1.6.5/Dis4IRC-1.6.5.jar
+	source = https://raw.githubusercontent.com/zachbr/Dis4IRC/v1.6.5/LICENSE.md
 	source = dis4irc-sysusers.conf
 	source = dis4irc.service
-	sha256sums = 631bd64425a66561816d5deacb63cd8b0cc7ca089487f8dabb65584623b79a32
-	sha256sums = 3b0e019e48300b84a62273422b1deda67d548d38d5037fd94a0f2af54c96d4c8
+	sha256sums = 1d19581b2c950397c62da57bc80e45e72f33742dccd03bf3815fc7790b3c24d8
+	sha256sums = 83b67788944ef1f866a6f1bbaac495b4ea10a9ebed850e9747ba05389216c6d3
 	sha256sums = d8c07815db79c8e9e6d9dec5fe2bca2fe3d1ed11470f4eb232c0bce7c87e2a4d
 	sha256sums = fe49b0c125e69433b91be596cd627424f464e609d39996693ae017889f2b31c4
 
