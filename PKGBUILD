@@ -43,8 +43,9 @@ prepare() {
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
-    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-avx128"
-    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-avx128"
+    MORONFLAGS="-mprefer-vector-width=128 -fipa-pta -fvect-cost-model=cheap"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-vector-width=128 $MORONFLAGS"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-vector-width=128 $MORONFLAGS"
     LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # These flags are taken from Proton
