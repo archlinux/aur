@@ -43,11 +43,16 @@ fi
 
 ELECTRON_BIN=${ELECTRON_CUSTOM_BIN:-/usr/bin/electron}
 
-export TRAY_ENABLED=${TRAY_ENABLED:-0}
 export DEV_TOOLS=${DEV_TOOLS:-0}
 
 # Combine all flags into a single string
 ALL_FLAGS="$ELECTRON_ARGS $SESSION_FLAGS"
+
+# Enable DevTools automatically if requested via config
+if [ "${DEV_TOOLS}" = "1" ] || [ "${DEV_TOOLS}" = "true" ]; then
+    DEBUG_PORT=${DEVTOOLS_PORT:-9223}
+    ALL_FLAGS="--remote-debugging-port=${DEBUG_PORT} --auto-open-devtools-for-tabs ${ALL_FLAGS}"
+fi
 
 # Prepend bundled vendor libraries to loader path (fallback for missing system libs)
 export LD_LIBRARY_PATH="/usr/lib/perplexity/vendor-libs:${LD_LIBRARY_PATH}"
