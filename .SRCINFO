@@ -1,7 +1,7 @@
 pkgbase = internet-usage-monitor-git
 	pkgdesc = Monitors internet usage in real-time via Conky with desktop notifications (git version)
 	pkgver = r54.b473243
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/YahyaZekry/internet-usage-monitor
 	install = internet-usage-monitor-git.install
 	arch = any

@@ -3,7 +3,7 @@
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor
 pkgver=r54.b473243
-pkgrel=3
+pkgrel=4
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
 provides=("internet-usage-monitor=${pkgver}")
@@ -41,9 +41,17 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   
-  # Create a patched install script that works correctly with AUR
-  # Fix the file copy issue for AUR installations
-  sed 's|cp "\$source_dir"/src/\*.sh "\$bin_dir/"|# AUR: Create symlinks to system-installed files\n        mkdir -p "\$bin_dir"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor.sh" "\$bin_dir/internet_monitor.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor_daemon.sh" "\$bin_dir/internet_monitor_daemon.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/conky_usage_helper.sh" "\$bin_dir/conky_usage_helper.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/fix_conky_kde.sh" "\$bin_dir/fix_conky_kde.sh"|' install.sh > "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  # Copy the original install script first
+  cp install.sh "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  
+  # Patch it to create symlinks for AUR installation instead of skipping file setup
+  sed -i 's|if \[ "\$is_aur_install" = false \]; then|# Always set up files for both manual and AUR installations\n    if [ "$is_aur_install" = false ]; then|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  sed -i 's|cp "\$source_dir"/src/\*.sh "\$bin_dir/"|cp "\$source_dir"/src/*.sh "\$bin_dir/"|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  sed -i 's|cp "\$source_dir"/fix_conky_kde.sh "\$bin_dir/"|cp "\$source_dir"/fix_conky_kde.sh "\$bin_dir/"|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  
+  # Add AUR-specific symlink creation in the else clause
+  sed -i '/chmod +x "\$bin_dir"\/\*.sh/a\    else\n        # AUR installation: create symlinks to system files\n        print_status "$BLUE" "$INFO" "Creating symlinks to system-installed files..."\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor.sh" "$bin_dir/internet_monitor.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor_daemon.sh" "$bin_dir/internet_monitor_daemon.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/conky_usage_helper.sh" "$bin_dir/conky_usage_helper.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/fix_conky_kde.sh" "$bin_dir/fix_conky_kde.sh"\n        chmod +x "$bin_dir"/*.sh' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  
   chmod +x "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
   # Create a wrapper script that uses the patched version
