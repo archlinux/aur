@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro-bin
-_tagname=0.8.54
+_tagname=0.8.56
 pkgver=${_tagname//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
 url="https://github.com/ecubus/EcuBus-Pro"
@@ -32,7 +32,7 @@ options=(!debug !strip)
 install=
 _pkgname=EcuBus-Pro
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('fabf9a6ef42219c058a1d18fb1a4541095757855d14db4d3d6c9e0eecf2c5c7f')
+sha256sums=('5986ea2ab723ad59ef3254f4d12f567527547ac7de83ce4804707b6d8736394c')
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
 
 package() {
@@ -43,6 +43,7 @@ package() {
     install -dm0755 "${pkgdir}/usr/lib/${pkgname%-bin}/"
 
     mv ${pkgdir}/opt/EcuBus-Pro/* ${pkgdir}/usr/lib/${pkgname%-bin}
+    rm -rf ${pkgdir}/usr/lib/${pkgname%-bin}/resources/bin/esbuild{.exe,_mac}
     rm -rf ${pkgdir}/opt
 
     sed -i 's|/opt/EcuBus-Pro/ecubuspro|/usr/bin/ecubus-pro|g' ${pkgdir}/usr/share/applications/ecubuspro.desktop
