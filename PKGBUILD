@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=sftime
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Classes and Methods for Simple Feature Objects that Have a Time Column'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-trajectories
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('adadd4d5f6ef388b7145d83896fcc020ad03475eae9d86a100d6207611ded7b7')
+sha256sums=('d1df6a2f611059e1949a3b2ef75ec5310e7cca4289dcf7af369197f4d5c68874')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
