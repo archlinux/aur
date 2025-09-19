@@ -1,7 +1,7 @@
 # Maintainer: wjsoj <wjs@wjsphy.top>
 
 pkgname=lobe-chat-appimage
-pkgver=1.130.1
+pkgver=1.131.0
 pkgrel=1
 pkgdesc="An open-source, modern-design LLMs/AI chat framework (AppImage)"
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=("${_appimage}::${url}/releases/download/v${pkgver}/${_upstream_base}-${p
   "lobe-chat.png::https://raw.githubusercontent.com/lobehub/lobe-chat/v${pkgver}/apps/desktop/resources/tray.png")
 
 # These placeholders are auto-updated by the GitHub Actions workflow.
-sha256sums=('3a736efa1b3975c7981f1b320f2d6d54c75adb2d75fd7a0faaa89205658e0b5c'
+sha256sums=('4d625d8658acece442877172a225cfe6ac4332558b619ce85cc44b62300911c9'
             'cf28318f07ae199b593f91c8b1d3145dffa4194022a955c4d7322a068df16a70'
             '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf')
 
