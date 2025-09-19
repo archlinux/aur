@@ -1,14 +1,15 @@
-# Maintainer: Vlad Frolov <frolvlad@gmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=owlink-git
 pkgver=r44.8e4e840
-pkgrel=10
+pkgrel=12
 pkgdesc='An open Apple Wireless Direct Link (AWDL) implementation written in C'
 arch=($CARCH)
 url=https://owlink.org/
 license=('GPL-3.0-only')
 depends=('glibc' 'libpcap' 'libev' 'libnl')
-makedepends=('cmake' 'git' 'ninja')
+makedepends=('cmake' 'git' 'ninja' 'python')
 provides=('owlink' 'owl' 'owl-git')
 conflicts=('owlink' 'owl' 'owl-git')
 source=(
@@ -17,8 +18,8 @@ source=(
   "git+https://github.com/radiotap/radiotap-library.git"
 )
 sha512sums=('SKIP'
-  'SKIP'
-  'SKIP')
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -40,10 +41,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
+  find . -name gtest-death-test.cc -exec sed -i "1i #include <cstdint>" {} \;
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -B build \
-    -G Ninja
+    -G Ninja \
+    -Wno-dev
   ninja -C build
 }
 
