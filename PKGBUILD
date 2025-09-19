@@ -1,14 +1,14 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-picard
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Preconditioned ICA for Real Data"
 arch=('any')
 url="https://github.com/pierreablin/picard"
 license=('BSD')
 groups=()
 depends=('python' 'python-numpy' 'python-scikit-learn' 'python-scipy')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 optdepends=()
 provides=()
 conflicts=()
