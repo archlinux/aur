@@ -25,7 +25,7 @@ prepare() {
     cd "$srcdir/tt-metal"
     git submodule update --init --recursive
 
-    # Dirty sortce patches (patching using the patch command is not stable enough)
+    # Dirty source patches (patching using the patch command is not stable enough)
     sed -i '/add_subdirectory(tools)/d' CMakeLists.txt # Does not build (most likely LTO)
     sed -i '/add_subdirectory(tools)/d' tt_metal/CMakeLists.txt # Does not build (most likely LTO)
     sed -i '/add_subdirectory(examples)/d' ttnn/CMakeLists.txt # Not used in output
