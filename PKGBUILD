@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
