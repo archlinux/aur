@@ -1,6 +1,6 @@
 pkgbase = cosmic-osd-git
 	pkgdesc = COSMIC On-Screen Display
-	pkgver = 1.0.0.alpha.7.r26.gf826e11
+	pkgver = 1.0.0.alpha.7.r30.ge7e1555
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-osd
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = cosmic-osd-git
 	makedepends = clang
 	makedepends = git
 	makedepends = mold
+	depends = libinput
 	depends = libpipewire
 	depends = libpulse
 	depends = libxkbcommon

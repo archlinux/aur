@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=1.0.0.alpha.7.r26.gf826e11
+pkgver=1.0.0.alpha.7.r30.ge7e1555
 pkgrel=1
 pkgdesc="COSMIC On-Screen Display"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
 license=('GPL-3.0-only')
 depends=(
+  'libinput'
   'libpipewire'
   'libpulse'
   'libxkbcommon'
