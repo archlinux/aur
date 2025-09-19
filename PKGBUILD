@@ -3,7 +3,7 @@
 pkgname=internet-usage-monitor-git
 _pkgname_src=internet-usage-monitor
 pkgver=r54.b473243
-pkgrel=5
+pkgrel=6
 pkgdesc="Monitors internet usage in real-time via Conky with desktop notifications (git version)"
 arch=('any')
 provides=("internet-usage-monitor=1.0.0")
@@ -41,6 +41,46 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   
+  # Create the missing common.sh file that the daemon scripts expect
+  cat > "$pkgdir/usr/share/$pkgname/src/common.sh" << 'EOF'
+#!/bin/bash
+
+# Common configuration and functions for Internet Usage Monitor
+# This file provides shared variables and functions used by all scripts
+
+# Configuration variables
+DAEMON_UPDATE_INTERVAL=${DAEMON_UPDATE_INTERVAL:-30}  # seconds between checks
+APP_NAME="internet-usage-monitor-git"
+RUNTIME_DIR="$HOME/.local/share/$APP_NAME"
+LOG_FILE="$RUNTIME_DIR/usage_log"
+USAGE_DATA_FILE="$RUNTIME_DIR/usage_data"
+
+# Ensure runtime directory exists
+mkdir -p "$RUNTIME_DIR"
+
+# Function to log messages
+log_message() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S'): $1" >> "$LOG_FILE"
+}
+
+# Function to check for required dependencies  
+check_dependencies() {
+    local missing_deps=()
+    for dep in "$@"; do
+        if ! command -v "$dep" >/dev/null 2>&1; then
+            missing_deps+=("$dep")
+        fi
+    done
+    
+    if [ ${#missing_deps[@]} -gt 0 ]; then
+        echo "Error: Missing required dependencies: ${missing_deps[*]}" >&2
+        echo "Please install the missing packages and try again." >&2
+        exit 1
+    fi
+}
+EOF
+  chmod +x "$pkgdir/usr/share/$pkgname/src/common.sh"
+  
   # Copy the original install script first
   cp install.sh "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
@@ -48,9 +88,10 @@ package() {
   sed -i 's|if \[ "\$is_aur_install" = false \]; then|# Always set up files for both manual and AUR installations\n    if [ "$is_aur_install" = false ]; then|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
   sed -i 's|cp "\$source_dir"/src/\*.sh "\$bin_dir/"|cp "\$source_dir"/src/*.sh "\$bin_dir/"|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
   sed -i 's|cp "\$source_dir"/fix_conky_kde.sh "\$bin_dir/"|cp "\$source_dir"/fix_conky_kde.sh "\$bin_dir/"|' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  # Note: common.sh is already included in src/*.sh wildcard above
   
   # Add AUR-specific symlink creation in the else clause
-  sed -i '/chmod +x "\$bin_dir"\/\*.sh/a\    else\n        # AUR installation: create symlinks to system files\n        print_status "$BLUE" "$INFO" "Creating symlinks to system-installed files..."\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor.sh" "$bin_dir/internet_monitor.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor_daemon.sh" "$bin_dir/internet_monitor_daemon.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/conky_usage_helper.sh" "$bin_dir/conky_usage_helper.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/fix_conky_kde.sh" "$bin_dir/fix_conky_kde.sh"\n        # No need to chmod symlinks - they inherit permissions from target' "$pkgdir/usr/share/$pkgname/install_aur.sh"
+  sed -i '/chmod +x "\$bin_dir"\/\*.sh/a\    else\n        # AUR installation: create symlinks to system files\n        print_status "$BLUE" "$INFO" "Creating symlinks to system-installed files..."\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor.sh" "$bin_dir/internet_monitor.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/internet_monitor_daemon.sh" "$bin_dir/internet_monitor_daemon.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/conky_usage_helper.sh" "$bin_dir/conky_usage_helper.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/src/common.sh" "$bin_dir/common.sh"\n        ln -sf "/usr/share/internet-usage-monitor-git/fix_conky_kde.sh" "$bin_dir/fix_conky_kde.sh"\n        # No need to chmod symlinks - they inherit permissions from target' "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
   chmod +x "$pkgdir/usr/share/$pkgname/install_aur.sh"
   
