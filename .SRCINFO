@@ -6,6 +6,7 @@ pkgbase = blacken-docs
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-pytokens
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
