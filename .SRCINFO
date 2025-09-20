@@ -1,6 +1,6 @@
 pkgbase = aquagpusph
 	pkgdesc = Free CFD software based on SPH and accelerated with OpenCL
-	pkgver = 5.0.3
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = http://canal.etsin.upm.es/aquagpusph/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = aquagpusph
 	depends = openmpi
 	depends = python-scipy
 	depends = python-matplotlib
-	source = git+https://github.com/sanguinariojoe/aquagpusph.git#tag=v5.0.3
-	sha256sums = SKIP
+	source = git+https://github.com/sanguinariojoe/aquagpusph.git#tag=v5.1.0
+	sha256sums = 98666ec13dd21c5a9576a91d1d764808076f3814e0e0c59e6323de0c2eede318
 
 pkgname = aquagpusph

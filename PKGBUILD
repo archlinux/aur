@@ -1,6 +1,6 @@
 # Maintainer: Jose Luis Cercos Pita <jlcercos@gmail.com>
 pkgname=aquagpusph
-pkgver=5.0.3
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Free CFD software based on SPH and accelerated with OpenCL"
 arch=('x86_64')
@@ -19,7 +19,7 @@ _tag=v${pkgver}
 _sourceName="aquagpusph"
 source=("git+https://github.com/sanguinariojoe/aquagpusph.git#tag=${_tag}")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('98666ec13dd21c5a9576a91d1d764808076f3814e0e0c59e6323de0c2eede318')
 
 pkgver() {
   cd "${_sourceName}"
