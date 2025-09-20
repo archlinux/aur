@@ -1,12 +1,11 @@
 pkgbase = passphrase
 	pkgdesc = Small, simple passphrase generator
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~alva/passphrase
 	arch = x86_64
 	license = MIT
-	makedepends = zig>=0.13
-	makedepends = zig<0.14
+	makedepends = zig0.13
 	noextract = zig-clap-0.9.1.tar.gz
 	noextract = zig-zg-0a9c8f1418ecd54ffaabf4b5256e2d77502700ba.tar.gz
 	source = passphrase-2.1.tar.gz::https://git.sr.ht/~alva/passphrase/archive/2.1.tar.gz
