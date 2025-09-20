@@ -1,8 +1,8 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.1.0.r48.gd85e55ef
-pkgrel=2
+pkgver=1.1.0.r55.gb6799062
+pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
@@ -69,10 +69,7 @@ build() {
     -DRhythmGame_DEVELOPER_MODE=OFF \
     -DVCPKG_FEATURE_FLAGS=manifests \
     -DCMAKE_CXX_STANDARD=23 \
-    -DPORTABLE_BUILD=OFF \
-    -DDATA_FOLDER_PREFIX=/usr/share/RhythmGame \
-    -DDATA_PATH=/usr/share/RhythmGame \
-    -DPORTABLE_BUILD=OFF \
+    -DUSE_SYSTEM_LIBRARIES=ON \
     -Wno-dev \
     -DCMAKE_TOOLCHAIN_FILE="${srcdir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
