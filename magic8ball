@@ -1,0 +1,14 @@
+############################
+## My First Bash Command! ##
+############################
+
+#!/bin/bash
+responses=(
+	"No"
+	"Yes"
+	"Maybe"
+	"Maybe Not"
+	"I don't know"
+	"Think about it yourself"
+)
+echo "🎱 ${responses[$RANDOM % ${#responses[@]}]}"

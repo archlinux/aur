@@ -1,0 +1,11 @@
+pkgbase = magic8ball
+	pkgdesc = A fun Magic 8-Ball command-line tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	source = magic8ball
+	md5sums = SKIP
+
+pkgname = magic8ball
