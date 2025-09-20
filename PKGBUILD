@@ -1,6 +1,6 @@
 # Maintainer: rootuserbino <king_all_in_hills@protonmail.com>
-pkgname=python-multidl
-pkgbase=python-multidl
+pkgname=multidl
+pkgbase=multidl
 pkgver=2.1.1
 pkgrel=1
 pkgdesc="A CLI tool for downloading media from various platforms"
