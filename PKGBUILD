@@ -2,9 +2,9 @@
 pkgname=r-quick-share
 _pkgname=rquickshare
 pkgver=0.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Martichou/rquickshare"
 license=('GPL-3.0-or-later')
 depends=(
@@ -79,7 +79,14 @@ package() {
   install -Dm644 icons/icon.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
-  install -Dm644 "target/release/bundle/deb/RQuickShare_${pkgver}_amd64/data/usr/share/applications/RQuickShare.desktop" -t \
+  local deb_arch
+  if [ "$CARCH" = "x86_64" ]; then
+    deb_arch="amd64"
+  elif [ "$CARCH" = "aarch64" ]; then
+    deb_arch="arm64"
+  fi
+
+  install -Dm644 "target/release/bundle/deb/RQuickShare_${pkgver}_${deb_arch}/data/usr/share/applications/RQuickShare.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
   # Set StartupWMClass

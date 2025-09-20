@@ -1,9 +1,10 @@
 pkgbase = r-quick-share
 	pkgdesc = Rust implementation of NearbyShare/QuickShare from Android for Linux.
 	pkgver = 0.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martichou/rquickshare
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = pnpm
