@@ -1,11 +1,10 @@
-# Maintainer: Your Name <youremail@example.com>
-install=tiny-dfr.install
-pkgname=tiny-dfr
+install=mac-touchbar-plus.install
+pkgname=mac-touchbar-plus
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Tiny DFR: A small Rust app with helpers"
+pkgdesc="mac-touchbar-plus: A small Rust app with helpers"
 arch=('x86_64')
-url="https://github.com/dev-muhammad-adel/tiny-dfr"
+url="https://github.com/dev-muhammad-adel/mac-touchbar-plus"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')

@@ -1,0 +1,16 @@
+post_install() {
+    cat <<'EOF'
+===================================================================
+mac-touchbar-plus has been installed successfully!
+Configuration files: /usr/share/tiny-dfr
+
+Compatibility:
+  - Xorg: works natively
+  - Wayland: Niri, Sway, Hyprland, GNOME (with WindowMonitorPro extension)
+    required for the Window Focus Helper to work correctly
+
+Start the service: sudo systemctl start tiny-dfr
+===================================================================
+EOF
+}
+
