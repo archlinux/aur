@@ -5,7 +5,7 @@
 
 pkgname=nncp
 pkgver=8.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -13,6 +13,8 @@ license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
 makedepends=('go')
 optdepends=(
+  'hjson-cli: for manipulation HJSON files'
+  'python-hjson: for manipulation HJSON files'
   'pinfo: for reading the package documentation'
   'texinfo: for reading the package documentation'
 )
@@ -38,8 +40,6 @@ sha256sums=(
   '319b302a4613b541d1feeb5ad19a290be79d5ac619a6800ed77580c7c8d34801'
 )
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
-provides=('hjson-cli' 'nncp')
-conflicts=('hjson-cli')
 
 install='nncp.install'
 backup=('etc/nncp/nncp.hjson')
@@ -76,20 +76,14 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  # See ./config for these variables
   export PREFIX="/usr"
+
+  # See ./config for these variables:
   export CFGPATH="/etc/nncp/nncp.hjson"
   export DESTDIR="$pkgdir"
   export INFODIR="$pkgdir/usr/share/info"
 
   ./install
-
-  # The build script also compiles a hjson-cli binary, that can
-  # come in handy when working with HJSON files. What do you
-  # think, should I package it with nncp, or do you prefer a
-  # separate package with hjson-cli? Let me know in the comments.
-  test -x bin/hjson-cli \
-  && install -vDm0755 bin/hjson-cli "$pkgdir/usr/bin"
 
   install -vDm0644 "$srcdir/nncp.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/nncp.conf"
