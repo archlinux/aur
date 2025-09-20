@@ -1,6 +1,6 @@
 pkgbase = qqmusic-bin
 	pkgdesc = 腾讯QQ音乐
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://y.qq.com/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = qqmusic-bin
 	depends = gtk3
 	depends = alsa-lib
 	provides = qqmusic
-	source = qqmusic_1.1.7_amd64.deb::https://dldir1.qq.com/music/clntupate/linux/qqmusic_1.1.7_amd64.deb
+	source = qqmusic_1.1.8_amd64.deb::https://c.y.qq.com/cgi-bin/file_redirect.fcg?bid=dldir&file=ecosfile_plink%2Fmusic_clntupate%2Flinux%2Fother%2Fqqmusic_1.1.8_amd64.deb&sign=1-d1ca4d5c5a8369b26af88e881ba3ac544066a899dcaea29778b35c9f648e6fee-68cb7c1c
 	source = https://y.qq.com//i/user_terms.html
 	source = qqmusic.sh
-	sha512sums = 32ca33965e13b7e7faae9e49c8c4d02ae6cf293e53f4842fb2f08237f0423bbbf3bc243eb00f12a2dbff99623fc12bbcaa598f285acb3f97a656d8623d16ddda
+	sha512sums = 0da75cddd70340dfb3551af39200b6c90a3b506db539a0276d4a4f50d593f3559dcfa16819a68634ef0b85247d1add1737f699fd24942f1da8915ee867f4b2ee
 	sha512sums = 7ec79376e96b6f3839719e568e8f96c5ec2a3d084ea50538b5ffb15a839b3a1a763460d5b4dce69cbe5d0516cc1305198a58d3fee8ca618430272c102e9617a2
 	sha512sums = bd04c44159d1cdbf1a248e919802c8459a859ac29f4e3a94c04d1b32e1677fd5c0bb068a2d69778a966936d500c9e66e76ac2c435bfadff67a96ea859f1f18c2
 
