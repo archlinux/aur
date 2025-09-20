@@ -1,6 +1,6 @@
 pkgname=nitchrevived
-pkgver=0.1.7.1
-_commit=3de8fbddd852bcc2005a463ef1fb9bea27e4640b
+pkgver=0.1.7.2
+_commit=67503380583858a1051a2a3e8c513b1bddc300fe
 pkgrel=3
 pkgdesc="Incredibly fast system fetch written in nim! NiTch Revived is project supposed to continue the NiTch after it become not maintained."
 arch=(x86_64)
