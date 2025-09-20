@@ -1,6 +1,6 @@
 # Maintainer: Vitaly Odnoyko <kontakt@odnoyko.com>
 pkgname=valot
-pkgver=0.6.3
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A modern time tracking application built with GTK4 and Adwaita"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'libgda6' 'gjs')
 makedepends=('meson' 'blueprint-compiler')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('78d56c7a2eae571fa1cf34c4ea1cc95f3fd9d21ad27be9f2c4900834a04482c7')
+sha256sums=('9c73d804dc4f675d5c2e2f7426209c602a08963c9a46791be943eced9d7d5afa')
 
 build() {
     cd "$pkgname-v$pkgver"
