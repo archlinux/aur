@@ -1,13 +1,13 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = v0.7.0.0pre.r1094.gd4150dea
+	pkgver = 0.6.5.1.r219.g4312b4a1
 	pkgrel = 2
 	url = https://opentabletdriver.net
 	install = notes.install
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=8.0
 	makedepends = jq
 	depends = dotnet-runtime-8.0
 	depends = gtk3
@@ -22,7 +22,7 @@ pkgbase = opentabletdriver-git
 	conflicts = digimend-kernel-drivers
 	options = !strip
 	options = !debug
-	source = git+https://github.com/OpenTabletDriver/OpenTabletDriver
+	source = git+https://github.com/OpenTabletDriver/OpenTabletDriver#branch=0.6.x
 	source = notes.install
 	sha256sums = SKIP
 	sha256sums = 5b9db850e29b66a218a165f2d109375e15416069d2c759cac79cc6af6b04688a
