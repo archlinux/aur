@@ -1,0 +1,17 @@
+pkgbase = mdviewer-bin
+	pkgdesc = Rendered display of markdown on terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/noborus/mdviewer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mdviewer
+	conflicts = mdviewer
+	conflicts = mdviewer-git
+	source_x86_64 = mdviewer-x86_64-0.1.1.zip::https://github.com/noborus/mdviewer/releases/download/v0.1.1/mdviewer_0.1.1_linux_amd64.zip
+	sha256sums_x86_64 = 4184fe5601f21b56fd7c63437a0f2f636c5412bddfe0b8ce7e3337272633ee42
+	source_aarch64 = mdviewer-aarch64-0.1.1.zip::https://github.com/noborus/mdviewer/releases/download/v0.1.1/mdviewer_0.1.1_linux_arm64.zip
+	sha256sums_aarch64 = 937232bec97d1f3af06fa8e6e50550459a3660eb4f550cf22abf05bd3330428e
+
+pkgname = mdviewer-bin
