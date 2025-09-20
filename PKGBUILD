@@ -1,26 +1,23 @@
 pkgname=yaknewtab
-commit_hash=52192368063cbc676c15006c539367c7375704aa
-pkgver=${commit_hash}
-pkgrel=3
+pkgver=1.0
+pkgrel=1
+epoch=1
 pkgdesc='A shell script for opening new Yakuake tabs/sessions'
 arch=(any)
-url='https://github.com/RogueScholar/yaknewtab'
+url=https://github.com/RogueScholar/yaknewtab
 license=(GPL-3.0)
 
-depends=(
-    'bash'
-)
+source=(yaknewtab.sh yaknewtab-run.desktop)
+sha256sums=('cb040bb3b1882494bd20f31981c3e0965fd7deb3ec6486ff548d1275be12238c'
+            '2703fbc0fc55acc5a4055823f829e8eeddab629597ae6d12c46cd76aaffbf4f4')
 
-makedepends=(
-    'coreutils'
-)
+depends=( bash qt6-tools yakuake )
+makedepends=( coreutils )
 
-source=(https://github.com/RogueScholar/yaknewtab/archive/${pkgver}.tar.gz)
-sha256sums=('298431e08bd9179c082fd7b9b2d81cae41e57f6b6b07fee62a9b6f0b54afcc9d')
-
-provides=(yaknewtab)
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
 package() {
-  cd "yaknewtab-${pkgver}"
-  install -Dp --mode=755 --owner=root --group=root yaknewtab "${pkgdir}/usr/local/bin/yaknewtab"
+  install -Dm755 yaknewtab.sh "${pkgdir}/usr/local/bin/yaknewtab"
+  install -Dm644 yaknewtab-run.desktop "${pkgdir}/usr/share/kio/servicemenus/yaknewtab-run.desktop"
 }

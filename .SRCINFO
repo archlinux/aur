@@ -1,13 +1,20 @@
 pkgbase = yaknewtab
 	pkgdesc = A shell script for opening new Yakuake tabs/sessions
-	pkgver = 52192368063cbc676c15006c539367c7375704aa
-	pkgrel = 3
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/RogueScholar/yaknewtab
 	arch = any
 	license = GPL-3.0
 	makedepends = coreutils
+	depends = bash
+	depends = qt6-tools
+	depends = yakuake
 	provides = yaknewtab
-	source = https://github.com/RogueScholar/yaknewtab/archive/52192368063cbc676c15006c539367c7375704aa.tar.gz
-	sha256sums = 298431e08bd9179c082fd7b9b2d81cae41e57f6b6b07fee62a9b6f0b54afcc9d
+	conflicts = yaknewtab
+	source = yaknewtab.sh
+	source = yaknewtab-run.desktop
+	sha256sums = cb040bb3b1882494bd20f31981c3e0965fd7deb3ec6486ff548d1275be12238c
+	sha256sums = 2703fbc0fc55acc5a4055823f829e8eeddab629597ae6d12c46cd76aaffbf4f4
 
 pkgname = yaknewtab
