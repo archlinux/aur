@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=brightnessztl
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="A CLI to control device backlight written in Zig"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('zig')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/hspak/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('965c9abdb7ee63160a9b95fc31ead078a648e6abee0880a7618574727a81a4e6')
+sha256sums=('8d36da69c5fcbcc886a4967487b533d623e619a3dc035e78764fb2816217112d')
 
 build() {
   cd "${pkgname}-${pkgver}"
