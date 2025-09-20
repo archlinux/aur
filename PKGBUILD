@@ -1,7 +1,7 @@
 # Maintainer: Viachaslau Khalikin <viachaslavic'at'outlook'dot'com>
 
 pkgname=icecat-ublock-origin
-pkgver=1.65.0
+pkgver=1.66.4
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
@@ -10,23 +10,20 @@ license=('GPL-3.0-or-later')
 groups=('icecat-addons')
 makedepends=('git' 'npm' 'python' 'strip-nondeterminism' 'zip')
 source=("git+$url.git#commit=$pkgver?signed")
-b2sums=('de6a6cd5bacafac61eb1fc5bd4ff0f8d653dd2b5eb44c9ac0b40ca3b8e33685ef08b338f01515c5fcb6810172432218841bbe6fee20bda1d08603175a493c048')
+b2sums=('cf299735ba8400ab1942cf357048d4e0c7cd64488ba87d40243af6410d10ed08eecc635b00d3f76206f3e9de058f9ef5b4485e9546dd5f7a26416b67344bcc40')
 validpgpkeys=('603B28AA5D6CD687A554347425E1490B761470C2')  # Raymond Hill <rhill@raymondhill.net>
 
 build() {
   cd uBlock
   make firefox
-  strip-nondeterminism -t zip dist/build/uBlock0.firefox.xpi
-}
 
-check() {
-  cd uBlock
-  make test
+  cd dist/build
+  strip-nondeterminism -t zip uBlock0.firefox.xpi
 }
 
 package() {
-  cd uBlock
-  install -Dm644 dist/build/uBlock0.firefox.xpi \
+  cd uBlock/dist/build
+  install -Dm644 uBlock0.firefox.xpi \
     "$pkgdir"/usr/lib/icecat/browser/extensions/uBlock0@raymondhill.net.xpi
 
   # symlinks for `icecat-bin`
