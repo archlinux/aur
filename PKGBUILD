@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-space-bar-git
-pkgver=33.r0.gb228b3a
+pkgver=34.r0.g6f1df60
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
@@ -10,6 +10,7 @@ depends=('gnome-shell')
 makedepends=(
   'git'
   'jq'
+  'pnpm'
   'typescript'
 )
 provides=("${pkgname%-git}")
@@ -24,6 +25,8 @@ pkgver() {
 
 build() {
   cd space-bar
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install
   sh scripts/build.sh
 }
 
