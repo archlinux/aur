@@ -1,0 +1,15 @@
+pkgbase = hx-lsp
+	pkgdesc = One LSP server support snippets and actions for helix editor.
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/erasin/hx-lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = hx-lsp
+	conflicts = hx-lsp
+	source = https://github.com/erasin/hx-lsp/archive/refs/tags/0.2.10.tar.gz
+	sha256sums = de46ac122a0129f88121675a9da196c27512219edebaec4c9bb34e84cce719b2
+
+pkgname = hx-lsp
