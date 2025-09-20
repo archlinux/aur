@@ -1,4 +1,6 @@
-#Maintainer: GT610 <myddz1005@163.com>
+# Maintainer: Thien An Dang Thanh <thienandangthanh@gmail.com>
+# Contributor: GT610 <myddz1005@163.com>
+# Contributor: gabriel <gabriwinter@gmail.com>
 
 pkgname=gnome-shell-extension-zorin-taskbar
 _name=zorin-taskbar
