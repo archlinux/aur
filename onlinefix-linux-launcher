@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export GDK_BACKEND=x11
+exec /lib/jvm/java-8-jre/jre/bin/java -Dprism.forceGPU=true -jar '/usr/share/java/OFMELauncher.jar' "$@"
