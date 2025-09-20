@@ -1,0 +1,4 @@
+[minizign]
+source = "git"
+git = "https://github.com/jedisct1/zig-minisign.git"
+prefix = "v"
