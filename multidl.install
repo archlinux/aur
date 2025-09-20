@@ -1,0 +1,20 @@
+#!/bin/bash
+
+post_install() {
+    echo "==> multidl has been installed successfully!"
+    echo "==> Make sure you have FFmpeg installed and available in your PATH"
+    echo "==> Configuration file will be created at: ~/.config/multidl/config.toml"
+    echo "==> Run 'multidl config --docs' for configuration help"
+    echo "==> For Spotify support, you'll need to provide client credentials"
+    echo "==> Visit https://github.com/swayam25/Multi-DL for more information"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> multidl has been removed"
+    echo "==> Configuration files in ~/.config/multidl/ have been preserved"
+    echo "==> Remove them manually if desired"
+}
