@@ -2,7 +2,7 @@
 
 _pkgname=highlite
 pkgname=${_pkgname}-appimage
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Open-source game client for High Spell'
 arch=('x86_64') # TODO: check if other architectures work
@@ -10,7 +10,7 @@ license=('GPLv3')
 url='https://github.com/Highl1te/HighliteDesktop'
 _appimage="HighLite-${pkgver}.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/HighLite-${pkgver}.AppImage" highlite.desktop)
-sha256sums=('8a9ae0e728b6bab6a9580e591b5f6313c0a6754309f6e8ab5f03ad6b4500d156'
+sha256sums=('66a333cd7bb7192778f91fae50bdbd513e784f93e9cd535d83fe27e5868373eb'
             'cc333c4e700dd66d6c409599f1f8861d9dea8c318947bda95b1d4bc4b8c05bc0')
 options+=(!strip) # Necessary for packages with AppImage sources
 
