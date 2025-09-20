@@ -1,0 +1,20 @@
+pkgbase = mdtsql-bin
+	pkgdesc = Execute SQL to markdown table and convert to other formats
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/noborus/mdtsql
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = mdtsql
+	conflicts = mdtsql
+	source_x86_64 = mdtsql-x86_64-0.1.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.1.0/mdtsql_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0911dab1c834ac0a863f22aa91c7718b725af7962aae537fdbb301b9f71e43a2
+	source_i686 = mdtsql-i686-0.1.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.1.0/mdtsql_0.1.0_Linux_i386.tar.gz
+	sha256sums_i686 = d4810bf2ad3bf38e13b9a5b1d5948bb30ca1a2494abeac78437853b851c7ced5
+	source_aarch64 = mdtsql-aarch64-0.1.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.1.0/mdtsql_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ceca8f52e4026a06fd4f2be101e649b958f2e99c898fd80508a32bc4924d8476
+
+pkgname = mdtsql-bin
