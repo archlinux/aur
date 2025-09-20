@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='dygma-indicator-bin'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A simple CLI utility to get the battery level of Dygma keyboards'
 url='https://github.com/coolapso/dygma-indicator'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('dygma-indicator')
 conflicts=('dygma-indicator')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/dygma-indicator/releases/download/v1.1.1/dygma-indicator_1.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('398a8f1bd39ee9b0114034d477e3609cef0065d940142f85d84b7f63195b1362')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/dygma-indicator/releases/download/v1.1.2/dygma-indicator_1.1.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('f84002f1a28900205e803af7f66ef6af6f55a26f08916873a449a7fefcfcd0f5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/dygma-indicator/releases/download/v1.1.1/dygma-indicator_1.1.1_linux_386.tar.gz")
-sha256sums_i686=('175426e527fe0a4ae612325e726e2a4fe5e7dc7bdfd91c57604f437bc8ebe5bc')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/dygma-indicator/releases/download/v1.1.2/dygma-indicator_1.1.2_linux_386.tar.gz")
+sha256sums_i686=('057d33ab282950ee1774940172c28d20133fef678b9f28b6f3636568190f18f8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/dygma-indicator/releases/download/v1.1.1/dygma-indicator_1.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('4243b7d4f0e83387f37e33d95ac543f46f8988830e5f03c92e56cddf781b4a82')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/dygma-indicator/releases/download/v1.1.2/dygma-indicator_1.1.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('1da718603881a9049707d9539cb3cdeb3fc15793c5103d9cc9b34fd0be4aff22')
 
 package() {
   install -Dm755 "./dygma-indicator" "${pkgdir}/usr/bin/dygma-indicator"
