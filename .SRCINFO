@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-kdefix
 	pkgdesc = Telegram Desktop client with KDE unread counter bug reverted
-	pkgver = 6.0.2
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	install = telegram-desktop.install
@@ -55,10 +55,10 @@ pkgbase = telegram-desktop-kdefix
 	provides = telegram-desktop
 	conflicts = telegram-desktop
 	options = !debug
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v6.0.2/tdesktop-6.0.2-full.tar.gz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v6.1.3/tdesktop-6.1.3-full.tar.gz
 	source = git+https://github.com/tdlib/td.git#tag=6d74326c5ce53aeb52496f157f0080d9b8515970
 	source = 0001-kde-theme-injection-fix.patch
-	sha512sums = 782e2c1f508e9328532622d84ff9c48fac700d3f8022d86b224ac791103e2a534ae0b51c79673102760af0e2a855bee17f3eb7c68662af460617f08a8f073fce
+	sha512sums = 951fbf4a9e0a5929130614aefdf2ac18d8d8e65b2d8d4d55da857136f17114e6a17677db9bb0585cfed121c3fe73e13b4db47b6da30fca7c276f33127eb3dba7
 	sha512sums = 6dc6e684a0bf35bb83f6fa6579a0da82d604190b222f2cd2de9b8ef5b93f5f18ac9a8733e2c5cf2a64ed9933b346ea31e26a4bcc0039956280ec2deef9649457
 	sha512sums = 6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a
 
