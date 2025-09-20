@@ -1,4 +1,7 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+*~
+debian-keyring*.deb
+debian-keyring-*.tar.*
+*.log
