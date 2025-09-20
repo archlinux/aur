@@ -1,0 +1,17 @@
+node_modules/
+dist/
+pkg/
+src/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+*.pacman
+*.tar.gz
+*.pkg.tar.zst
+*.deb
+*.rpm
+
+.DS_Store
+Thumbs.db
