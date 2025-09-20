@@ -3,13 +3,13 @@
 
 pkgname=cosmic-bg-git
 pkgver=1.0.0.beta.1.r0.g40254a7
-pkgrel=1
+pkgrel=2
 pkgdesc="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
 license=('MPL-2.0')
 depends=(
-  'cosmic-icon-theme-git'
+  'cosmic-icons-git'
   'libxkbcommon'
 )
 makedepends=(
