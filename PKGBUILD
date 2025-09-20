@@ -13,7 +13,7 @@ source=(
     "uabea.desktop"
 )
 sha1sums=('SKIP'
-          'c777f2fc50900ad4b3be907914c30050d588b7df')
+          '5a5a0440206e498bfdafcf4039485c5f69d7f33f')
 
 
 pkgver() {
@@ -41,7 +41,7 @@ package() {
     cp -r "$pkgname/UABEANext4.Desktop/bin/Release/net8.0" "$pkgdir/usr/lib/UABEANext"
 
     install -d "$pkgdir/usr/bin"
-    ln -sf "$pkgdir/usr/lib/UABEA/UABEANext4.Desktop" "$pkgdir/usr/bin/UABEANext"
+    ln -sf "/usr/lib/UABEANext/UABEANext4.Desktop" "$pkgdir/usr/bin/UABEANext"
     # install -Dm644 "$pkgname/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{'256x256/apps','48x48/apps','32x32/apps','16x16/apps'}
