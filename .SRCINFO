@@ -1,6 +1,6 @@
 pkgbase = cosmic-bg-git
 	pkgdesc = COSMIC session service which applies backgrounds to displays.
-	pkgver = 1.0.0.alpha.7.r4.gf5cf3a6
+	pkgver = 1.0.0.beta.1.r0.g40254a7
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-bg
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cosmic-bg-git
 	makedepends = just
 	makedepends = mold
 	makedepends = nasm
-	depends = hicolor-icon-theme
+	depends = cosmic-icon-theme-git
 	depends = libxkbcommon
 	provides = cosmic-bg
 	conflicts = cosmic-bg

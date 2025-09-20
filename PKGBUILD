@@ -2,14 +2,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-bg-git
-pkgver=1.0.0.alpha.7.r4.gf5cf3a6
+pkgver=1.0.0.beta.1.r0.g40254a7
 pkgrel=1
 pkgdesc="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
 license=('MPL-2.0')
 depends=(
-  'hicolor-icon-theme'
+  'cosmic-icon-theme-git'
   'libxkbcommon'
 )
 makedepends=(
