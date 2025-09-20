@@ -1,0 +1,15 @@
+pkgbase = terminalist
+	pkgdesc = A terminal-based Todoist client with modern TUI interface
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/romaintb/terminalist
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = sqlite
+	depends = gcc-libs
+	depends = glibc
+	source = terminalist-0.3.0.tar.gz::https://github.com/romaintb/terminalist/archive/v0.3.0.tar.gz
+	sha256sums = 609babdccb2ae43c2590a39ddad1d93ca5bebd05706d448b6d7b8c4a05aa17d5
+
+pkgname = terminalist
