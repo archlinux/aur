@@ -22,7 +22,6 @@ usage() {
 		  suggest       completion results via the AUR HTTP RPC API.
 		  completion    generate completion for the specified shell.
 		  list          search for all locally installed AUR packages.
-		  version       display current version and exit.
 		
 		Options:
 		  general:
@@ -33,6 +32,7 @@ usage() {
 		  -t --tmp-path [PATH]                 temp filesystem for various operations. ("/tmp/aurx")
 		     --verbosity [LEVEL]               level of verbosity. (2)
 		                                       0 - none, 1 - stderr, 2 - all.
+		  -v --version                         display current version and exit.
 		
 		  install:
 		     --cleanup                         delete sources after successful installs.
@@ -237,6 +237,10 @@ print_error() {
 			echo "[-] No error message found for error ${GIVEN_ERROR}."
 			;;
 	esac
+}
+
+print_version() {
+	echo "${INTERNAL_VERSION}"
 }
 
 generate_config_json() {
@@ -557,10 +561,10 @@ load_explicit_opts() {
 	fi
 
 	LONGOPTS=''
-	LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,maintained,no-mark-installed,no-mark-update,no-out-of-date,overwrite-existing,verify-versions,wipe-existing'
+	LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,maintained,no-mark-installed,no-mark-update,no-out-of-date,overwrite-existing,verify-versions,version,wipe-existing'
 	LONGOPTS+=',comparison-criteria:,curl-opts:,executable-name:,git-opts:,makepkg-opts:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
 	OPTIONS=''
-	OPTIONS+='adfhV'
+	OPTIONS+='adfhvV'
 	OPTIONS+='e:G:C:M:o:p:R:t:x:'
 	if ! PARSED_OPTIONS=$(getopt --options="${OPTIONS}" --longoptions="${LONGOPTS}" --name "${0}" -- "${@}"); then
 		print_error 51
@@ -706,6 +710,10 @@ load_explicit_opts() {
 			-V|--verify-versions )
 				VERIFY_VERSIONS=true
 				shift
+				;;
+			-v|--version )
+				print_version
+				exit 0
 				;;
 			--wipe-existing )
 				WIPE_EXISTING=true
@@ -1180,10 +1188,6 @@ launch_execution() {
 				exit 62
 			fi
 			;;
-		version )
-			echo "${INTERNAL_VERSION}"
-			exit 0
-			;;
 		* )
 			print_error 71
 			exit 71
@@ -1214,8 +1218,8 @@ INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARI
 	"PARALLEL" "PERSISTENT_PATH" "SEARCH_CRITERIA" "SEARCH_RESULTS" "SORT_BY" "SOURCE_PATH" "TMP_PATH" \
 	"VERBOSITY" "VERIFY_VERSIONS" "WIPE_EXISTING")
 INTERNAL_ARRAYS=("CURL_OPTS" "GIT_OPTS" "MAKEPKG_OPTS" "REMOVE_OPTS")
-POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest" "version")
-GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "--persistent-path" "-t" "--tmp-path" "--verbosity")
+POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest")
+GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "--persistent-path" "-t" "--tmp-path" "--verbosity" "-v" "--version")
 INSTALL_OPTIONS=("--cleanup" "--clean-operation" "-x" "--comparison-criteria" "-d" "--download-only" "-G" \
 	"--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "--source-path" "-V" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
