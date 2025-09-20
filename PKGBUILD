@@ -22,12 +22,12 @@
 #   See README.md further details.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
 conflicts=('tkginstaller')
-pkgdesc="Install the popular TKG builds (Kernel, Nvidia, Mesa, Wine, Proton) from the Frogging-Family repositories in a simple and user-friendly way. 🐸"
+pkgdesc="Manage the popular TKG builds (Kernel, Nvidia, Mesa, Wine, and Proton) from the Frogging-Family repositories in a simple, user-friendly way. 🐸"
 arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
