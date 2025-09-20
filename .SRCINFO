@@ -1,0 +1,17 @@
+pkgbase = goxray-cli-git
+	pkgdesc = CLI Xray VPN client
+	pkgver = 0.0.8.0.g5c8f308
+	pkgrel = 1
+	url = https://github.com/goxray/tun
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = goxray-cli
+	conflicts = goxray-cli
+	source = goxray-cli-git::git+https://github.com/goxray/tun
+	sha256sums = SKIP
+
+pkgname = goxray-cli-git
