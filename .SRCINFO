@@ -12,6 +12,8 @@ pkgbase = nvim-treesitter-parsers-main-git
 	depends = neovim
 	provides = nvim-treesitter-parsers-main
 	conflicts = nvim-treesitter-parsers-main
+	conflicts = nvim-treesitter-parsers
+	conflicts = nvim-treesitter-parsers-git
 	source = nvim-treesitter::git+https://github.com/nvim-treesitter/nvim-treesitter#branch=main
 	sha256sums = SKIP
 
