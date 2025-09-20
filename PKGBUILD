@@ -37,7 +37,8 @@ pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
 conflicts=('coolerdash')
-pkgdesc="Extends CoolerControl with a polished LCD dashboard"
+pkgdesc="CoolerDash enables real-time sensor monitoring of an AIO liquid cooler with integrated LCD displays. It extends the LCD functionality of CoolerControl with additional features, support for additional sensor values, and a sophisticated, customizable user interface.
+"
 arch=('x86_64')
 url="https://github.com/damachine/coolerdash"
 license=('MIT')
