@@ -1,7 +1,7 @@
-# Maintainer: bunburya (dev at bunburya dot eu))
+# Contributor: bunburya (dev at bunburya dot eu))
 pkgname='python-piecash'
 _name=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Python library providing a simple and pythonic interface to GnuCash files stored in SQL."
 arch=('any')
@@ -9,14 +9,15 @@ url="https://pypi.org/project/piecash/"
 license=('MIT')
 depends=(
     'python'
-    'python-sqlalchemy1.3'
+    'python-babel'
+    'python-sqlalchemy1.4'
     'python-sqlalchemy-utils'
     'python-pytz'
     'python-tzlocal'
     'python-click'
 )
 makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-runner')
+checkdepends=('python-pandas' 'python-pytest')
 optdepends=(
     'gnucash: to create, view and edit GnuCash files'
     'python-pandas: view data in Pandas DataFrame'
@@ -25,11 +26,14 @@ optdepends=(
     'python-requests: retrieve quotes/prices from Yahoo Finance'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('89639f0661d492242783f39c8d147ea45c321dc4111f93eca2979f070f5f176d')
+sha256sums=('7f9c5c7342df3b9cd1457adf4b82fea430f14fa93be17e52c7dd41c02abf7104')
 
 check() {
     cd "$_name-$pkgver"
-    python setup.py pytest
+    #these checks require specific locales
+    PYTHONPATH="$PWD" pytest \
+    --deselect tests/test_session.py::test_get_system_currency_mnemonic[fr_FR.UTF-8] \
+    --deselect tests/test_ledger.py::test_out_write[options1]
 }
 
 build() {
