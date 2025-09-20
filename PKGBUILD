@@ -3,17 +3,18 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=12
+pkgrel=13
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
-depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'zydis' 'sdl2' 'gcc-libs' 'lz4' 'zlib' 'zstd' 'cubeb' 'spirv-tools' 'ffmpeg')
+depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'zydis' 'lz4' 'zlib' 'zstd' 'spirv-tools' 'cubeb' 'libusb'
+	'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg')
 makedepends=('git' 'cmake' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
 options=('!debug')
-source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v$pkgver")
-sha256sums=('2697bc264c47bde89125366ca43d252ec79713bfbda8e59e9ad95ef27dfc1d72')
+source=("https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz")
+sha256sums=('5e97058e43b0c8780caba7f549f5fdf50a08cfbb478289c86e0dd7c2d1c27aaa')
 build() {
 	cd "$srcdir"
 	cmake -B build -S $pkgname -GNinja \
@@ -38,6 +39,7 @@ build() {
 		-DYUZU_TESTS=OFF \
 		-DDYNARMIC_TESTS=OFF \
 		-DBUILD_TESTING=OFF \
+		-DYUZU_USE_FASTER_LD=OFF \
 		-Wno-dev
 	cmake --build build
 }
@@ -45,6 +47,7 @@ package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir/" cmake --install build
 	install -Dm644 "$srcdir/$pkgname/dist/72-yuzu-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
+	sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules" # systemd 258 fix
 	cd "$srcdir/$pkgname/LICENSES"
 	for file in *.txt;
 	do
