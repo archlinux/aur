@@ -5,7 +5,7 @@
 
 pkgname=nncp
 pkgver=8.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -81,6 +81,9 @@ package() {
   export INFODIR="$pkgdir/usr/share/info"
 
   ./install
+
+  test -x bin/hjson-cli \
+  && install -vDm0755 bin/hjson-cli "$pkgdir/usr/bin"
 
   install -vDm0644 "$srcdir/nncp.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/nncp.conf"
