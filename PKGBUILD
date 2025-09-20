@@ -1,11 +1,11 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Mantas <grawity at gmail dot com>
 
 pkgname=nncp
-pkgver=8.11.0
-pkgrel=5
+pkgver=8.12.0
+pkgrel=1
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -27,8 +27,9 @@ source=(
   nncp-uucp.socket
   nncp-uucp@.service
 )
+changelog="$pkgname.changelog"
 sha256sums=(
-  'ec4114bcd9184aa8781f38dbaa3aa04255dfbba9c3536bf75969e66bc334aff2'
+  '263750598efb5d9b14bfd3de79515226daaafad285cc8ddaad0f30a5f6b7975e'
   'SKIP'
   '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
   'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71'
@@ -61,7 +62,7 @@ build() {
   export PREFIX="/usr"
   export CFGPATH="/etc/nncp/nncp.hjson"
 
-  bin/build
+  ./build
 }
 
 check() {
