@@ -1,13 +1,16 @@
 pkgbase = python-tr064
 	pkgdesc = Lightweight and Straight-Forward TR-064 Client
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bfueldner/tr064
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = git
 	makedepends = python-pytest-runner
-	makedepends = python-wheel
 	depends = python-requests
 	depends = python-lxml
 	source = git+https://github.com/bfueldner/tr064#commit=6b12f879fa5ccec4cd2d68fac48db1c2815f131c
