@@ -13,6 +13,8 @@ sha256sums=('78176ca90749b7fff8df0b886df6f7d878d18dab713415d18f59ec29f505b2f6')
 package() {
   cd "$srcdir"
   for bin in reliquary-*; do
-    install -Dm755 $bin "$pkgdir/usr/bin/$bin"
+    if [[ $bin != "reliquary-cli.tar" ]]; then
+      install -Dm755 $bin "$pkgdir/usr/bin/$bin"
+    fi
   done
 }
