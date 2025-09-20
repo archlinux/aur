@@ -8,6 +8,6 @@ pkgbase = traccar-bin
 	license = APACHE
 	backup = opt/traccar/conf/traccar.xml
 	source = https://github.com/tananaev/traccar/releases/download/v6.10.0/traccar-linux-64-6.10.0.zip
-	sha256sums = 3d6df38263a9e2e2437461998569d1810db22591e6c54fcbf6da0837cc478c09
+	sha256sums = 616c169429b3101d94f9688992ab0fb891192cf036ba058e25f3c655a086fcfc
 
 pkgname = traccar-bin
