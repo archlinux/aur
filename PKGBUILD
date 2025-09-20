@@ -1,6 +1,6 @@
 # Maintainer: Rohan Kumar Singh <rohankrsingh125@gmail.com>
 pkgname=ai-pkg-bin
-pkgver=0.0.0   # placeholder; workflow will update this dynamically
+pkgver=0.0.0       # placeholder; workflow will replace with tag version
 pkgrel=1
 pkgdesc="AI-powered package recommender and installer for Arch Linux"
 arch=('x86_64')
@@ -11,6 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 provides=('ai-pkg')
 conflicts=('ai-pkg')
 
+# Workflow will update this dynamically
 source=("${url}/releases/download/v${pkgver}/ai-pkg-${pkgver}-py3-none-any.whl")
 sha256sums=('REPLACE_ME')
 
