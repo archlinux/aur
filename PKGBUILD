@@ -5,7 +5,7 @@
 
 pkgname=nncp
 pkgver=8.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -13,8 +13,8 @@ license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
 makedepends=('go')
 optdepends=(
-  'hjson-cli: for manipulation HJSON files'
-  'python-hjson: for manipulation HJSON files'
+  'hjson-cli: for manipulating HJSON files'
+  'python-hjson: for manipulating HJSON files'
   'pinfo: for reading the package documentation'
   'texinfo: for reading the package documentation'
 )
