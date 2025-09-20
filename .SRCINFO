@@ -1,0 +1,24 @@
+pkgbase = hyper8-bin
+	pkgdesc = A static site generator for video publishing
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://simonrepp.com/hyper8
+	install = hyper8-bin.install
+	arch = x86_64
+	license = AGPL3
+	depends = ffmpeg
+	depends = rsync
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !lto
+	source_x86_64 = https://simonrepp.com/hyper8/packages/hyper8_0.24.0-1+deb12_amd64.deb
+	sha256sums_x86_64 = c3142d42be723d418178cabc5824a3647c92cd49cee145d470270737818e2ab8
+
+pkgname = hyper8-bin
