@@ -1,13 +1,13 @@
 pkgbase = anyrun
 	pkgdesc = A wayland native, highly customizable runner
-	pkgver = 25.9.2
+	pkgver = 25.9.3
 	pkgrel = 1
 	url = https://github.com/anyrun-org/anyrun
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = gtk4-layer-shell
-	source = anyrun-25.9.2.tar.gz::https://github.com/anyrun-org/anyrun/archive/refs/tags/v25.9.2.tar.gz
-	sha256sums = 76adfd5e0f0de1f7c6e760a7cbb6cba5054a931160bd5848cc949832928d3730
+	source = anyrun-25.9.3.tar.gz::https://github.com/anyrun-org/anyrun/archive/refs/tags/v25.9.3.tar.gz
+	sha256sums = 189c6d7965a67b93a3b7e2f084604a549e94ae9bc94d851d857cc9d1b21eb5ed
 
 pkgname = anyrun
