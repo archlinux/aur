@@ -1,5 +1,5 @@
 # Maintainer: rootuserbino <king_all_in_hills@protonmail.com>
-pkgname=python-multidl
+pkgname=multidl
 pkgver=2.1.1
 pkgrel=1
 pkgdesc="A CLI tool for downloading media from various platforms"
@@ -71,4 +71,3 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CODE_OF_CONDUCT.md "$pkgdir/usr/share/doc/$pkgname/CODE_OF_CONDUCT.md"
 }
-
