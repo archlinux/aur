@@ -1,6 +1,6 @@
 pkgbase = codetracer
 	pkgdesc = A user-friendly time-traveling debugger for a variety of programming languages
-	pkgver = 25.07.1
+	pkgver = 25.09.1
 	pkgrel = 1
 	url = https://codetracer.com
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = codetracer
 	depends = openssl
 	depends = xdg-desktop-portal
 	provides = ct
-	noextract = CodeTracer-25.07.1-amd64.AppImage
+	noextract = CodeTracer-25.09.1-amd64.AppImage
 	options = !strip
-	source = https://github.com/metacraft-labs/codetracer/releases/download/25.07.1/resources.tar.xz
-	source = https://downloads.codetracer.com/CodeTracer-25.07.1-amd64.AppImage
-	sha256sums = e0e6927697da31f342878385ce07ccec890be25fb94129c31beb0fcd4d64607d
-	sha256sums = 3cbf401306ab816b89f322dadd3d0a9f52b7517f0494c973bc01c42903f3d18d
+	source = https://github.com/metacraft-labs/codetracer/releases/download/25.09.1/resources.tar.xz
+	source = https://downloads.codetracer.com/CodeTracer-25.09.1-amd64.AppImage
+	sha256sums = bcc5263349f11a35eb6d6c239445cfdcea858fa7becb3cc609ac05b9760371a4
+	sha256sums = 3720f1bfa7ebb09e0d558fd3ff0d3bf7f32ae86bf48e06c64335fa6b97659be7
 
 pkgname = codetracer

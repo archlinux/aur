@@ -1,7 +1,7 @@
 # Maintainer: Metacraft Labs Ltd. <support@codetracer.com>
 
 pkgname=codetracer
-pkgver=25.07.1
+pkgver=25.09.1
 pkgrel=1
 pkgdesc="A user-friendly time-traveling debugger for a variety of programming languages"
 url="https://codetracer.com"
@@ -12,8 +12,8 @@ makedepends=("base-devel")
 provides=("ct")
 source=("https://github.com/metacraft-labs/$pkgname/releases/download/${pkgver}/resources.tar.xz" "https://downloads.codetracer.com/CodeTracer-${pkgver}-amd64.AppImage")
 noextract=("CodeTracer-${pkgver}-amd64.AppImage")
-sha256sums=('e0e6927697da31f342878385ce07ccec890be25fb94129c31beb0fcd4d64607d'
-            '3cbf401306ab816b89f322dadd3d0a9f52b7517f0494c973bc01c42903f3d18d')
+sha256sums=('bcc5263349f11a35eb6d6c239445cfdcea858fa7becb3cc609ac05b9760371a4'
+            '3720f1bfa7ebb09e0d558fd3ff0d3bf7f32ae86bf48e06c64335fa6b97659be7')
 options=(!strip)
 
 package() {
