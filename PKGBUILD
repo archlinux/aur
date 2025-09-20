@@ -17,8 +17,8 @@ depends=('ov')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}"{,-git})
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.zip")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.zip")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.zip")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.zip")
 sha256sums_x86_64=('81f652b76e538907577d0946640492f24fdd8c2ca5dd66c9ae1101fb301f103b')
 sha256sums_aarch64=('3b7319ca20825f5f8ffc24b45240fa3b65825e8f056d1c786abc336ac148e316')
 
