@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -18,7 +18,7 @@ makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'p
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-ddgs' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'python-genai-prices' 'ruff' 'deno')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver"
         "git+https://github.com/pydantic/mcp-run-python.git")
-sha256sums=('1838a042164371b18eb069c7ffad424c182e942158caff1569f71d3fa42f4590'
+sha256sums=('023da58d5d6e269f774b473a86853421fa64793f6d809890a7e2b145a843c9c6'
             'SKIP')
 
 build() {
