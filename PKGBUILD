@@ -13,7 +13,7 @@ conflicts=('ai-pkg')
 
 # Workflow will update this dynamically
 source=("https://github.com/rohankrsingh/ai-pkg/releases/tag/v0.1.3/ai-pkg-0.1.3-py3-none-any.whl")
-sha256sums=('37bebf099a88657da1f11f8114ddfada322bba0239869e6066612b508166d7b9')
+sha256sums=('3bb33923a185056f20f8fa2bc83469f663f21199a458d4131364203768912e99')
 
 package() {
     cd "$srcdir"
