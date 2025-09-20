@@ -1,13 +1,14 @@
-# Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
+# Maintainer: NorthWestWind <wsyn148@gmail.com>
 # Maintainer: Dennis Rijsdijk, dennisrijsdijk <hello@dennis.gg>
 _mainver=5
 pkgname=firebot
 pkgver="${_mainver}.64.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
 license=('GPL3')
+makedepends=("desktop-file-utils")
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux-x64.tar.gz"
         "${pkgname}.sh"
         "logo.svg"
