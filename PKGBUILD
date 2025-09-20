@@ -1,7 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=nip4
-pkgver=9.0.12
+pkgver=9.0.13
 pkgrel=1
 pkgdesc="image processing spreadsheet"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
   'glib2-devel'
 )
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('f778f5c7183c30048d1297820aff051a3248d039af6ed96bbd214b5fc7b7a91c')
+sha256sums=('10330eb7f470b8774326d8a05698829e858af9c5f70d4392433abd7f2abfd56e')
 
 build() {
   meson setup build $pkgname-$pkgver --prefix=/usr
