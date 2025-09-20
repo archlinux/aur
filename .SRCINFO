@@ -1,0 +1,16 @@
+pkgbase = pnmixer-bin
+	pkgdesc = A lightweight modular system tray volume mixer for ALSA/Pulseaudio/Pipewire (binary)
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/nicklan/pnmixer
+	arch = x86_64
+	license = GPL
+	depends = alsa-utils
+	depends = gtk3
+	depends = libnotify
+	provides = pnmixer
+	conflicts = pnmixer
+	source = pnmixer-bin-0.7.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = pnmixer-bin
