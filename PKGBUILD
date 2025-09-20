@@ -1,26 +1,40 @@
 pkgname=eigen-git
-pkgver=3.4.r1234.gc01ff45
+_pkgname=eigen
+pkgver=5.0.0.r0.ga627f72
 pkgrel=1
-pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra."
-arch=('any')
+pkgdesc='Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra'
+arch=(x86_64)
 url='https://eigen.tuxfamily.org'
-license=('GPL3' 'LGPL2.1' 'BSD' 'custom:MPL2' 'custom:MINPACK')
-makedepends=('cmake' 'pkg-config' 'freeglut' 'gcc-fortran' 'fftw' 'suitesparse' 'boost' 'git')
-source=("git+https://gitlab.com/libeigen/eigen.git")
+license=(MPL-2.0 Apache-2.0
+         BSD-3-Clause Minpack
+         'LGPL-2.1-only OR LGPL-2.1-or-later')
+depends=(gcc-libs
+         glibc)
+makedepends=(cmake
+             fftw
+             freeglut
+             gcc-fortran
+             git
+             suitesparse)
+source=(git+https://gitlab.com/libeigen/eigen)
 sha1sums=('SKIP')
 provides=('eigen')
 conflicts=('eigen')
 
 pkgver() {
-  cd "${srcdir}/eigen"
+  cd "${srcdir}/$_pkgname"
   printf "$(git describe --long --tags --abbrev=7 --exclude=nightly | sed 's/^before-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  cmake -B build -S eigen
+  cmake -B build -S $_pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
 package() {
-  cmake --install build --prefix "$pkgdir"/usr
+  DESTDIR="$pkgdir" cmake --install build
+
+  # install custom licenses
+  install -Dm644 $_pkgname/COPYING.* -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
