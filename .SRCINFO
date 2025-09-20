@@ -1,7 +1,7 @@
 pkgbase = sleepy-launcher
 	pkgdesc = Sleepy game launcher for Linux with telemetry disabling
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/an-anime-team/sleepy-launcher
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,7 +21,7 @@ pkgbase = sleepy-launcher
 	optdepends = mangohud: FPS Overlay
 	optdepends = gamescope: Micro-compositor
 	optdepends = gamemode: CPU Scaling Control
-	source = https://github.com/an-anime-team/sleepy-launcher/archive/refs/tags/1.3.0.tar.gz
-	sha256sums = 7285b698d219066855e2b6c51c0f186bef5e6dbe98e4aceb25c0cb87a2adbcc4
+	source = https://github.com/an-anime-team/sleepy-launcher/archive/refs/tags/1.4.0.tar.gz
+	sha256sums = c5943f7038862619d7c37be6a3b74b543d9c9cd52c368ae2ca2540bd483a2cb8
 
 pkgname = sleepy-launcher
