@@ -1,7 +1,7 @@
 pkgbase = mapserver
 	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
-	pkgver = 8.4.0
-	pkgrel = 2
+	pkgver = 8.4.1
+	pkgrel = 1
 	url = http://www.mapserver.org
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = mapserver
 	depends = python-pillow
 	depends = postgresql-libs
 	provides = python-mapserver
-	source = http://download.osgeo.org/mapserver/mapserver-8.4.0.tar.gz
-	md5sums = 3686508a575938c8eaaa6000296151a2
+	source = http://download.osgeo.org/mapserver/mapserver-8.4.1.tar.gz
+	md5sums = 45f933ed9fd521e80018cd4bf25a3f4e
 
 pkgname = mapserver
