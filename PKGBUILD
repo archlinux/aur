@@ -4,7 +4,7 @@ pkgrel=1
 epoch=1
 pkgdesc='A shell script for opening new Yakuake tabs/sessions'
 arch=(any)
-url=https://github.com/RogueScholar/yaknewtab
+url=https://aur.archlinux.org/cgit/aur.git/tree/yaknewtab.sh?h=yaknewtab
 license=(GPL-3.0)
 
 source=(yaknewtab.sh yaknewtab-run.desktop)

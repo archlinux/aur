@@ -3,7 +3,7 @@ pkgbase = yaknewtab
 	pkgver = 1.0
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/RogueScholar/yaknewtab
+	url = https://aur.archlinux.org/cgit/aur.git/tree/yaknewtab.sh?h=yaknewtab
 	arch = any
 	license = GPL-3.0
 	makedepends = coreutils
