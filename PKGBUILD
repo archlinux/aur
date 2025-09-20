@@ -1,7 +1,7 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=erasmus
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='Minimal zettelkasten-inspired note-taking'
 arch=('x86_64')
 url='https://git.sr.ht/~subsetpark/erasmus'
@@ -10,11 +10,11 @@ license=('BSD3')
 
 source=("${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('5e9000dc9d67d5cd91c4eeb9794cfe7bdbb5d81af3be97fd349cf9c9918c64a9')
+sha256sums=('1528600ab000eca12846290cfc1d56763918e204f4f5111d796f528cb98446f5')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
-        zig build -Drelease-fast=true -fstage1
+        zig build -Doptimize=ReleaseFast
 }
 
 package() {
