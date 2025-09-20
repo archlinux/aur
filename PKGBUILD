@@ -1,7 +1,7 @@
 # Maintainer: Demitrius Belai <demitriusbelai at gmail dot com>
 
 pkgname=anycubicslicernext-bin
-pkgver=1.3.629
+pkgver=1.3.7156
 pkgrel=1
 pkgdesc="Anycubic Slicer is an open source slicer for FDM printers"
 arch=('x86_64')
@@ -11,14 +11,14 @@ license=("AGPL-3.0")
 depends=('webkit2gtk-4.1' 'libxml2-legacy' 'libbsd' 'gtk3' 'zlib' 'wayland' 'libglvnd'
     'gst-plugins-base-libs' 'dbus' 'libsoup3')
 
-source=("${_url_source}/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb"
+source=("${_url_source}/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu74_74.2-1ubuntu3.1_amd64.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/libs/libselinux/libselinux1_3.5-2ubuntu2.1_amd64.deb"
     "AnycubicSlicerNext.sh")
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('396f52f270fb45c24aae1b14407fd1f2bdf8beadfafcbfb9c0b4d89fb2155818'
+sha256sums=('2ca3da24d76c60d0e7a8222646ff23fdb868394dbe0ff111202a5d2959a0b851'
     'c9a70989678660eed9a1e904c74fa043da8bec8e2036856fc16e31ced79b04f8'
     '6abaa6c26f46ef17764c4a753e0e84de1cdadde5634fd2987621fdc617988d19'
     '20a2e851c8914af6a4098f9718b7462f9f108430b498483f9c04eba81e695fc2')
