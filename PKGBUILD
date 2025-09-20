@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -175,4 +175,6 @@ package() {
     install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
   done
   install -Dm644 "$srcdir/$pkgname/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  # Fix udev rules for systemd 258
+  sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
 }
