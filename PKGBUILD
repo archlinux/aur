@@ -2,7 +2,7 @@
 
 pkgname=python-quiffen
 _pkgname=${pkgname#python-}
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Quiffen is a Python package for parsing QIF (Quicken Interchange Format) files.'
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 	python-wheel
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3b6bd9e706f0334e9ef8e85f87a15b047735cf89f933d6915626ad67e2e259d7')
+sha256sums=('2393ce25d3f12f48e7739f719c17a8d21daa7730fde0423e767550da802fcad5')
 
 build() {
 	cd ${_pkgname}-${pkgver}
