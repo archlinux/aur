@@ -1,7 +1,7 @@
 pkgbase = niji-git
 	pkgdesc = A customizable tool for theming linux systems
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lina-roether/niji
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = niji-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = jq
+	depends = luajit
 	provides = niji
 	conflicts = niji
 	source = git+https://github.com/lina-roether/niji.git
