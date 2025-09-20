@@ -1,6 +1,6 @@
 pkgbase = dream-background-remover
 	pkgdesc = GIMP Plugin which integrates Replicate's AI for image background removal
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/zquestz/dream-background-remover
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dream-background-remover
 	depends = python-replicate-git
 	provides = dream-background-remover
 	conflicts = dream-background-remover
-	source = dream-background-remover-1.0.1.tar.gz::https://github.com/zquestz/dream-background-remover/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = c309de234314701eff216b58eee1e4c0559d42c1aa2d314ba39836d17ea265fc
+	source = dream-background-remover-1.0.2.tar.gz::https://github.com/zquestz/dream-background-remover/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = b32d97450aa0ba02b7a21c62f988538a81068f82b54b3b71d9f6c52a1fce6056
 
 pkgname = dream-background-remover
