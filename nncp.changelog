@@ -1,4 +1,11 @@
 
+Release 8.12.1
+==============
+
+   * Update 'hjson' and 'compress' dependant libraries.
+
+   * Set 'hjson-cli' utility's version during the build process.
+
 Release 8.12.0
 ==============
 

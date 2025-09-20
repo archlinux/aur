@@ -4,8 +4,8 @@
 # Contributor: Mantas <grawity at gmail dot com>
 
 pkgname=nncp
-pkgver=8.12.0
-pkgrel=3
+pkgver=8.12.1
+pkgrel=1
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -29,7 +29,7 @@ source=(
 )
 changelog="$pkgname.changelog"
 sha256sums=(
-  '263750598efb5d9b14bfd3de79515226daaafad285cc8ddaad0f30a5f6b7975e'
+  'c93c27750e376810a779dee228f666ef4cc20b7ccc6a97f6197b68ae78e2668b'
   'SKIP'
   '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
   'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71'
@@ -38,6 +38,8 @@ sha256sums=(
   '319b302a4613b541d1feeb5ad19a290be79d5ac619a6800ed77580c7c8d34801'
 )
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
+provides=('hjson-cli' 'nncp')
+conflicts=('hjson-cli')
 
 install='nncp.install'
 backup=('etc/nncp/nncp.hjson')
@@ -82,6 +84,10 @@ package() {
 
   ./install
 
+  # The build script also compiles a hjson-cli binary, that can
+  # come in handy when working with HJSON files. What do you
+  # think, should I package it with nncp, or do you prefer a
+  # separate package with hjson-cli? Let me know in the comments.
   test -x bin/hjson-cli \
   && install -vDm0755 bin/hjson-cli "$pkgdir/usr/bin"
 
