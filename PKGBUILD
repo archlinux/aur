@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
-pkgname=shimmy-bin # renovate: datasource=github-tags depName=Michael-A-Kuykendall/shimmy
-pkgver=1.4.1
+pkgname=shimmy-bin
+pkgver=1.5.1 # renovate: datasource=github-tags depName=Michael-A-Kuykendall/shimmy
 pkgrel=1
 pkgdesc="Lightweight 5MB Ollama alternative with native SafeTensors support. No Python dependencies, 2x faster loading."
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ conflicts=('shimmy' 'shimmy-git')
 
 package() {
   if [ "$CARCH" = "x86_64" ]; then
-    install -Dm755 "${srcdir}/shimmy-linux-x86_64" "${pkgdir}/usr/bin/shimmy"
+    install -Dm755 "${srcdir}/shimmy-x86_64-${pkgver}" "${pkgdir}/usr/bin/shimmy"
   else
-    install -Dm755 "${srcdir}/shimmy" "${pkgdir}/usr/bin/shimmy"
+    install -Dm755 "${srcdir}/shimmy-${pkgver}" "${pkgdir}/usr/bin/shimmy"
   fi
 
   # Install the license
@@ -22,11 +22,11 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-source_x86_64=("shimmy-linux-x86_64::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy-linux-x86_64"
+source_x86_64=("shimmy-x86_64-${pkgver}::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy-linux-x86_64"
   "LICENSE::https://raw.githubusercontent.com/Michael-A-Kuykendall/shimmy/v${pkgver}/LICENSE")
-source_aarch64=("shimmy::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy"
+source_aarch64=("shimmy-${pkgver}::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy"
   "LICENSE::https://raw.githubusercontent.com/Michael-A-Kuykendall/shimmy/v${pkgver}/LICENSE")
-sha256sums_x86_64=('fa740c7410b5e87430457ce80d5a7807d044574a5cec5fd1545eb06efe75196e'
+sha256sums_x86_64=('1adfcf9ca02b0cca63396075126208a3edfec0269c8a9cd31c427716614d6280'
   'ebee25b6399a49518bfb24ab186d3b15a34145fd7b11205d26f25a0a4c5db013')
-sha256sums_aarch64=('fa740c7410b5e87430457ce80d5a7807d044574a5cec5fd1545eb06efe75196e'
+sha256sums_aarch64=('1adfcf9ca02b0cca63396075126208a3edfec0269c8a9cd31c427716614d6280'
   'ebee25b6399a49518bfb24ab186d3b15a34145fd7b11205d26f25a0a4c5db013')
