@@ -20,6 +20,7 @@ depends=(
   'python-six'
   'python-textual'
   'yt-dlp'
+  'ffmpeg'
 )
 makedepends=(
   'python-build'
