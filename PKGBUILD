@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-zorin-taskbar
 _name=zorin-taskbar
-pkgver=40.20
+pkgver=69.2
 pkgrel=1
 pkgdesc="Various settings and changes for the panel in Zorin Desktop."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('gnome-shell')
 options=('!emptydirs' '!strip')
 install=${pkgname}.install
 source=(${_name}-${pkgver}.tar.gz::https://github.com/ZorinOS/${_name}/archive/refs/tags/${pkgver}.tar.gz)
-md5sums=('6c7d47fc8021dd2e5fca1871595ee2a4')
-sha256sums=('b88c44dfc50fed9f20da2adff52245c41c6a5df7d3ddd6fba2c2f5a8077472af')
+md5sums=('3eaeeb4101b35854ac536c7a25bd5057')
+sha256sums=('f26736ec301eed9bffee34ca8493b2cf014c95618caf611d9e6c5d669f384a57')
 
 build() {
   cd "${srcdir}"/${_name}-${pkgver}
