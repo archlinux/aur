@@ -1,6 +1,6 @@
 pkgbase = logseq-desktop
 	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management
-	pkgver = 0.10.13
+	pkgver = 0.10.14
 	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	install = logseq-desktop.install
@@ -32,7 +32,7 @@ pkgbase = logseq-desktop
 	depends = nspr
 	depends = nss
 	depends = pango
-	source = logseq-0.10.13.tar.gz::https://github.com/logseq/logseq/archive/refs/tags/0.10.13.tar.gz
-	sha256sums = 46ffc538dbd29adc69d5f96580fd893f7063db6601da5afce974e5b91ef9f84f
+	source = logseq-0.10.14.tar.gz::https://github.com/logseq/logseq/archive/refs/tags/0.10.14.tar.gz
+	sha256sums = 365f1dec3565b8c96c10ea9913f7adc4d83b1d5da4a905a16aef7a944c06e10d
 
 pkgname = logseq-desktop

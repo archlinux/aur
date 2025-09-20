@@ -9,7 +9,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.13
+pkgver=0.10.14
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -52,7 +52,7 @@ install="$_pkgname.install"
 _pkgsrc="logseq-${pkgver}"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
-sha256sums=('46ffc538dbd29adc69d5f96580fd893f7063db6601da5afce974e5b91ef9f84f')
+sha256sums=('365f1dec3565b8c96c10ea9913f7adc4d83b1d5da4a905a16aef7a944c06e10d')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
