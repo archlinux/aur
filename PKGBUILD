@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.8.0
-pkgrel=3
+pkgrel=4
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -200,6 +200,33 @@ prepare() {
   git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
   cd ../..
 
+  # Fix build with CUDA 13 (CCCL headers path changed)
+  sed -i 's|${CUDA_TOOLKIT_INCLUDE}|${CUDA_TOOLKIT_INCLUDE}/cccl|' cmake/Modules/FindCUB.cmake
+
+  # [ATen][CUDA][cuFFT] Guard against deprecated error codes
+  # https://github.com/pytorch/pytorch/commit/25343b343e6dd87f89ae0f37d5d44bf9344b8cff
+  git cherry-pick -X theirs --no-commit 25343b343e6dd87f89ae0f37d5d44bf9344b8cff
+
+  # [ATen][CUDA][CUB] Implement changes to CCCL (CUB/Thrust/LibCUDACXX) usage in ATen (#153373)
+  # https://github.com/pytorch/pytorch/commit/51eb8e8f84bb9aa901cff17dd649e18b17a8908c
+  git cherry-pick -X theirs --no-commit 51eb8e8f84bb9aa901cff17dd649e18b17a8908c
+
+  # [ATen][CUDA] Use new CCCL API in v2.8 (#160554)
+  # https://github.com/pytorch/pytorch/commit/d670304001429a1a833255a918ed788d7ec4989a
+  git cherry-pick -X theirs --no-commit d670304001429a1a833255a918ed788d7ec4989a
+
+  # Update tensorpipe submodule for CUDA 13
+  # https://github.com/pytorch/pytorch/commit/691d17a5c6f52b0bfec94ade1ac60d2956db65c0
+  cd third_party/tensorpipe
+  git cherry-pick -X theirs --no-commit af0118d13e52f5a08841464a768e01a0bf3e3075
+  cd ../..
+
+  # Update flash-attention module for CUDA 13
+  # https://github.com/Dao-AILab/flash-attention/commit/dfb664994c1e5056961c90d5e4f70bf7acc8af10
+  cd third_party/flash-attention
+  git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
+  cd ../..
+
   cd "${srcdir}"
 
   cp -r "${_pkgname}" "${_pkgname}-opt"
@@ -245,9 +272,7 @@ _prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-
-  # This list is from ./Dockerfile
-  export TORCH_CUDA_ARCH_LIST="6.1 7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a 12.0"
+  export TORCH_CUDA_ARCH_LIST="7.5 8.0 8.6 8.7 8.8 8.9 9.0 10.0 10.3 11.0 12.0 12.1"
 
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
