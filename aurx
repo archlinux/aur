@@ -359,7 +359,7 @@ aurx_completion() {
 	esac
 }
 
-launch_aurx_sanity_checks() {
+launch_sanity_checks() {
 	if [[ ! "${POSSIBLE_OPERATIONS[*]}" =~ ${CURRENT_OPERATION} ]]; then
 		print_error 55
 		exit 55
@@ -442,7 +442,7 @@ launch_aurx_sanity_checks() {
 	esac
 }
 
-launch_aurx_system_checks() {
+launch_system_checks() {
 	case "${CURRENT_OPERATION}" in
 		install | update )
 			REQUIRED_PACKAGES=('curl' 'echo' 'git' 'grep' 'jq' 'pacman' 'sed' 'tee')
@@ -490,7 +490,7 @@ launch_aurx_system_checks() {
 	done
 }
 
-apply_aurx_all_opt() {
+apply_all_opt() {
 	if ${ALL}; then
 		while IFS= read -r TARGET_PACKAGE; do
 			if [[ -n "${TARGET_PACKAGE}" ]]; then
@@ -500,7 +500,7 @@ apply_aurx_all_opt() {
 	fi
 }
 
-load_aurx_config() {
+load_config() {
 	CONFIG_JSON_STRING="${*}"
 	for CFG_ENV_VAR in $(echo "${CONFIG_JSON_STRING}" | jq -cr 'to_entries | .[]'); do
 		CFG_VAR=$(echo "${CFG_ENV_VAR}" | jq -cr '.key')
@@ -530,7 +530,7 @@ load_aurx_config() {
 	done
 }
 
-load_aurx_env_vars() {
+load_env_vars() {
 	for INTERNAL_VARIABLE in "${INTERNAL_VARIABLES[@]}"; do
 		TEST_EVALUATION=$(eval "echo \${AURX_${INTERNAL_VARIABLE}}")
 		if [[ -n "${TEST_EVALUATION}" ]]; then
@@ -549,7 +549,7 @@ load_aurx_env_vars() {
 	done
 }
 
-load_aurx_explicit_opts() {
+load_explicit_opts() {
 	getopt --test 1> /dev/null && true
 	if [[ ${?} -ne 4 ]]; then
 		print_error 50
@@ -561,7 +561,7 @@ load_aurx_explicit_opts() {
 	LONGOPTS+=',comparison-criteria:,curl-opts:,executable-name:,git-opts:,makepkg-opts:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
 	OPTIONS=''
 	OPTIONS+='adfhV'
-	OPTIONS+='e:G:C:M:o:p:R:x:'
+	OPTIONS+='e:G:C:M:o:p:R:t:x:'
 	if ! PARSED_OPTIONS=$(getopt --options="${OPTIONS}" --longoptions="${LONGOPTS}" --name "${0}" -- "${@}"); then
 		print_error 51
 		exit 51
@@ -734,7 +734,7 @@ load_aurx_explicit_opts() {
 	TARGET_PACKAGES=("${@}")
 }
 
-load_aurx_piped_packages() {
+load_piped_packages() {
 	if ! [[ -t 0 ]]; then
 		while read -r STDIN_OPT; do
 			TARGET_PACKAGES+=("${STDIN_OPT}")
@@ -1108,7 +1108,7 @@ suggest_aur_package() {
 
 # Tier 3 functions.
 
-launch_aurx_early_execution() {
+process_pseudofunctions() {
 	case "${CURRENT_OPERATION}" in
 		update )
 			SOURCE_PATH="${TMP_PATH?TMP_PATH not defined.}"
@@ -1130,16 +1130,12 @@ launch_aurx_early_execution() {
 			CURRENT_OPERATION="search"
 			SEARCH_CRITERIA="provides"
 			;;
-		version )
-			echo "${INTERNAL_VERSION}"
-			exit 0
-			;;
 		* )
 			;;
 	esac
 }
 
-launch_aurx_execution() {
+launch_execution() {
 	case "${CURRENT_OPERATION}" in
 		install|remove|suggest )
 			for SELECTED_PACKAGE in "${TARGET_PACKAGES[@]}"; do
@@ -1184,6 +1180,10 @@ launch_aurx_execution() {
 				exit 62
 			fi
 			;;
+		version )
+			echo "${INTERNAL_VERSION}"
+			exit 0
+			;;
 		* )
 			print_error 71
 			exit 71
@@ -1191,25 +1191,23 @@ launch_aurx_execution() {
 	esac
 }
 
-execute_aurx_script() {
-	load_aurx_config "$(generate_config_json)"
-	load_aurx_env_vars
-	load_aurx_explicit_opts "${@}"
-	load_aurx_piped_packages
-	launch_aurx_sanity_checks
-	launch_aurx_system_checks
-	launch_aurx_early_execution
-	apply_aurx_all_opt
-	# No packages and all left operations need them.
-	if [[ -z "${TARGET_PACKAGES[*]}" ]]; then
-		print_error 56
-		exit 56
-	fi
-	launch_aurx_execution
+# Tier 4 functions.
+
+execute_script() {
+	load_config "$(generate_config_json)"
+	load_env_vars
+	load_explicit_opts "${@}"
+	load_piped_packages
+	launch_sanity_checks
+	launch_system_checks
+	process_pseudofunctions
+	apply_all_opt
+	[[ -z "${TARGET_PACKAGES[*]}" ]] && print_error 56 && exit 56
+	launch_execution
 }
 
 # Metadata.
-INTERNAL_VERSION="1.0.4-2"
+INTERNAL_VERSION="1.0.4-3"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" "MAINTAINED" \
 	"NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
@@ -1217,7 +1215,7 @@ INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARI
 	"VERBOSITY" "VERIFY_VERSIONS" "WIPE_EXISTING")
 INTERNAL_ARRAYS=("CURL_OPTS" "GIT_OPTS" "MAKEPKG_OPTS" "REMOVE_OPTS")
 POSSIBLE_OPERATIONS=("install" "remove" "update" "search" "completion" "list" "suggest" "version")
-GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "--persistent-path" "--tmp-path" "--verbosity")
+GENERAL_OPTIONS=("-a" "--all" "-f" "--force" "-h" "--help" "--persistent-path" "-t" "--tmp-path" "--verbosity")
 INSTALL_OPTIONS=("--cleanup" "--clean-operation" "-x" "--comparison-criteria" "-d" "--download-only" "-G" \
 	"--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "--source-path" "-V" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
@@ -1242,4 +1240,4 @@ declare "${INTERNAL_VARIABLES[@]}"
 declare -a "${INTERNAL_ARRAYS[@]}"
 
 # Run.
-execute_aurx_script "${@}"
+execute_script "${@}"
