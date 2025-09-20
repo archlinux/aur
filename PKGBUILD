@@ -10,7 +10,7 @@ license=('Apache')
 depends=('tree-sitter' 'neovim')
 makedepends=('git' 'npm' 'tree-sitter-cli')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "nvim-treesitter-parsers" "nvim-treesitter-parsers-git")
 _dirname="nvim-treesitter"
 source=("${_dirname}::git+https://github.com/nvim-treesitter/nvim-treesitter#branch=main")
 sha256sums=('SKIP')
