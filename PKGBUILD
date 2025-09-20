@@ -45,7 +45,6 @@ prepare() {
 }
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   cmake -S "${srcdir}/${_tar}" -B "${srcdir}/build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
