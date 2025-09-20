@@ -1,23 +1,25 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine"
-pkgver="0.18"
+pkgver="0.19"
 pkgrel=1
 pkgdesc="Download and apply live wallpapers with swww"
 arch=("x86_64")
 depends=("mpv" "ffmpeg")
 optdepends=("swww-git: For wallpapers on wlroots compositors")
 makedepends=("dotnet-sdk" "git")
-url="https://www.github.com/eugenenoble2005/swengine"
+url="https://www.github.com/saverinonrails/swengine"
+source=("git+https://github.com/saverinonrails/swengine?recursive=1")
+sha256sums=("SKIP")
 
-
-prepare(){
-    rm -rf swengine
-    #this is probably not the right way to do this
-    git clone https://www.github.com/eugenenoble2005/swengine.git --recursive
+prepare() {
+    cd "$srcdir/swengine"    
+    git submodule update --init --remote
 }
+
 build(){
     cd "$srcdir/swengine/swengine.desktop" 
     dotnet publish --output dist
+    rm dist/swengine.desktop.dbg
 }
 package(){
     cd "$srcdir/swengine/swengine.desktop"
