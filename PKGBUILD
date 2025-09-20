@@ -1,25 +1,62 @@
 # Maintainer: Simon Repp <simon@fdpl.io>
 
-arch=('x86_64')
-depends=('ffmpeg' 'rsync')
+arch=('aarch64' 'x86_64')
+conflicts=('hyper8-bin' 'hyper8-cli')
+depends=(
+    # hyper8-core dependencies
+    'ffmpeg'
+    'rsync'
+    # hyper8-desktop dependencies
+    'cairo'
+    'desktop-file-utils'
+    'gdk-pixbuf2'
+    'glib2'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libsoup'
+    'pango'
+    'webkit2gtk-4.1'
+)
 license=('AGPL3')
-makedepends=('cmake' 'git' 'rust')
+makedepends=(
+    # hyper8-core dependencies
+    'cargo'
+    'cmake'
+    'git'
+    # Tauri dependencies
+    'appmenu-gtk-module'
+    'libappindicator-gtk3'
+    'librsvg'
+    'openssl'
+)
 options=('!lto')
 pkgdesc='A static site generator for video publishing'
 pkgname=hyper8
 pkgrel=1
-pkgver=0.23.0
-sha256sums=('e247fe016579be6654c6fdf12c9e05e60b3178011628292b2d4fe83bd397de56')
+pkgver=0.24.0
+provides=('hyper8')
+sha256sums=('88af4055f15ca9a19739e00c3e7ddd35e2dd9f916236089fea1d58b136212ed8')
 url='https://simonrepp.com/hyper8'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/${pkgver}.tar.gz")
 
 build() {
-	cd "$srcdir/$pkgname"
-	cargo build --locked --release
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "$srcdir/$pkgname"
+    cargo tauri build --bundles deb
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	install -Dm755 "$srcdir/$pkgname/target/release/hyper8" "$pkgdir/usr/bin/hyper8"
+    # Note that "cargo tauri build …" places the target directory inside the
+    # desktop crate subdirectory (adjacent to tauri.conf.json) for reasons
+    # unknown, hence we copy from there
+    cp -a ${srcdir}/${pkgname}/desktop/target/release/bundle/deb/Hyper\ 8_${pkgver}_*/data/* "${pkgdir}"
+}
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir/$pkgname"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo install tauri-cli --locked --version "^2.0.0"
 }
