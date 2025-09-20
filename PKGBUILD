@@ -2,14 +2,14 @@
 
 pkgname=anycubicslicernext-bin
 pkgver=1.3.7156
-pkgrel=1
+pkgrel=2
 pkgdesc="Anycubic Slicer is an open source slicer for FDM printers"
 arch=('x86_64')
 url="https://github.com/ANYCUBIC-3D/AnycubicSlicer"
 _url_source="https://cdn-universe-slicer.anycubic.com/prod"
 license=("AGPL-3.0")
 depends=('webkit2gtk-4.1' 'libxml2-legacy' 'libbsd' 'gtk3' 'zlib' 'wayland' 'libglvnd'
-    'gst-plugins-base-libs' 'dbus' 'libsoup3')
+    'gst-plugins-base' 'gst-plugins-good' 'dbus' 'libsoup3')
 
 source=("${_url_source}/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu74_74.2-1ubuntu3.1_amd64.deb"
