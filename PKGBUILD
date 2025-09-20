@@ -13,20 +13,35 @@ source=("pnmixer-bin-0.7.2.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  # Copy all shared files
-  cp -r "$srcdir/pnmixer-bin/usr/share/pnmixer" "$pkgdir/usr/share/"
+    # Create directories
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/pnmixer"
+    install -d "$pkgdir/usr/share/applications"
+    install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+    install -d "$pkgdir/usr/share/locale"
+    install -d "$pkgdir/usr/share/man/man1"
 
-  # Copy the .desktop, icons, locales, man page
-  cp -r "$srcdir/pnmixer-bin/usr/share/applications" "$pkgdir/usr/share/"
-  cp -r "$srcdir/pnmixer-bin/usr/share/icons" "$pkgdir/usr/share/"
-  cp -r "$srcdir/pnmixer-bin/usr/share/locale" "$pkgdir/usr/share/"
-  cp -r "$srcdir/pnmixer-bin/usr/share/man" "$pkgdir/usr/share/"
+    # Copy the binary into /usr/share/pnmixer
+    install -Dm755 "$srcdir/usr/bin/pnmixer" "$pkgdir/usr/share/pnmixer/pnmixer"
 
-  # Install a small wrapper script in /usr/bin
-  install -Dm755 "$srcdir/pnmixer-bin/usr/bin/pnmixer" "$pkgdir/usr/share/pnmixer/pnmixer"
-  cat << 'EOF' > "$pkgdir/usr/bin/pnmixer"
-#!/bin/bash
-# Start pnmixer from its data folder so it finds the UI files
-exec /usr/share/pnmixer/pnmixer "$@"
-EOF
+    # Copy UI folder
+    cp -r "$srcdir/usr/share/pnmixer/ui" "$pkgdir/usr/share/pnmixer/"
+
+    # Copy pixmaps/icons
+    cp -r "$srcdir/usr/share/pnmixer/pixmaps" "$pkgdir/usr/share/pnmixer/"
+
+    # Copy .desktop file
+    cp "$srcdir/usr/share/applications/pnmixer.desktop" "$pkgdir/usr/share/applications/"
+
+    # Copy icons
+    cp "$srcdir/usr/share/icons/hicolor/128x128/apps/pnmixer.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
+
+    # Copy locales
+    cp -r "$srcdir/usr/share/locale" "$pkgdir/usr/share/"
+
+    # Copy man page
+    cp "$srcdir/usr/share/man/man1/pnmixer.1.gz" "$pkgdir/usr/share/man/man1/"
+
+    # Create symlink in /usr/bin for normal users
+    ln -s /usr/share/pnmixer/pnmixer "$pkgdir/usr/bin/pnmixer"
 }
