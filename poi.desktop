@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=poi
+Icon=/usr/share/pixmaps/poi_icon.png
+Exec=/usr/bin/poi
+Categories=Game;Application;
