@@ -1,6 +1,6 @@
 pkgbase = elephant-desktopapplications
 	pkgdesc = desktopapplications provider for elephant
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-desktopapplications
 	makedepends = go
 	provides = elephant-desktopapplications
 	conflicts = elephant-desktopapplications
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.6.tar.gz
-	sha256sums = 791a9f6832509de480d4c87093ef80ee358faa7bc82a4578a876fee536b921fd
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.7.tar.gz
+	sha256sums = d275d5955ec0e967968db2dfb3f3f71842f2d1c6927b366cf4ac9836acdef511
 
 pkgname = elephant-desktopapplications
