@@ -2,11 +2,11 @@
 
 pkgname=wpimath
 pkgver=2025.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('fmt' 'eigen-git' 'protobuf')
+depends=('fmt' 'eigen' 'protobuf')
 makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')

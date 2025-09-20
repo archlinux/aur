@@ -1,14 +1,14 @@
 pkgbase = wpimath
 	pkgdesc = WPILib's mathematics and controls library
 	pkgver = 2025.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = x86_64
 	license = BSD
 	license = MIT
 	makedepends = cmake
 	depends = fmt
-	depends = eigen-git
+	depends = eigen
 	depends = protobuf
 	options = !strip
 	options = staticlibs
