@@ -1,7 +1,7 @@
 # Maintainer: Tournesol <bonjour@tournesol.me>
 
 pkgname=hx-lsp
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="One LSP server support snippets and actions for helix editor."
 url="https://github.com/erasin/hx-lsp"
@@ -13,7 +13,7 @@ conflicts=("$pkgname")
 depends=()
 makedepends=("cargo")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('de46ac122a0129f88121675a9da196c27512219edebaec4c9bb34e84cce719b2')
+sha256sums=('65a6a1ad81c46a21e319ab2f3695269a7c046962d4d942cd6f5edacf71d17e82')
 
 prepare() {
     cd ${pkgname}-${pkgver}
