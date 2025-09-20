@@ -1,8 +1,8 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.11.0.r5.gea2a761
-pkgrel=2
+pkgver=0.11.0.r227.g67c5c7e
+pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
 url=https://github.com/tramhao/termusic
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd $pkgname
-  cargo update
+  #cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
