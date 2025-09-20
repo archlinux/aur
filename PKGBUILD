@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.0.3.git.r27.gcf634d4
+pkgver=0.0.3.r30.g6510818
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=("git+https://git.eden-emu.dev/eden-emu/eden.git")
 sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
  }
 build() {
 	cd "$srcdir"
@@ -43,6 +43,7 @@ build() {
 		-DYUZU_TESTS=OFF \
 		-DDYNARMIC_TESTS=OFF \
 		-DBUILD_TESTING=OFF \
+		-DYUZU_USE_FASTER_LD=OFF \
 		-Wno-dev
 	cmake --build build
 }
@@ -50,6 +51,7 @@ package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir/" cmake --install build
 	install -Dm644 "$srcdir/$_pkgname/dist/72-yuzu-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
+	sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
 	cd "$srcdir/$_pkgname/LICENSES"
 	for file in *.txt;
 	do
