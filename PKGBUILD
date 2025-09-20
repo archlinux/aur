@@ -1,7 +1,7 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="smooll's Color Picker"
 arch=("x86_64")
@@ -12,9 +12,11 @@ depends=("sdl3" "sdl3_image")
 makedepends=("cmake")
 checkdepends=()
 optdepends=("libx11: X11 support"
+            "xsel: copying to clipboard on X11"
             "wayland: Wayland support"
             "wayland-protocols: Wayland support"
             "sdbus-cpp: taking screenshots on Wayland"
+            "wl-clipboard: copying to clipboard on Wayland"
             "xdg-desktop-portal: taking screenshots on Wayland"
             "xdg-desktop-portal-cosmic: taking screenshots on COSMIC"
             "xdg-desktop-portal-dde: taking screenshots on Deepin"
