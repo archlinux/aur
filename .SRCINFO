@@ -1,0 +1,14 @@
+pkgbase = kshook-wine
+	pkgdesc = A helper for setting up and injecting kshook into SDVX KONASTE running in a Wine environment
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/pinapelz/kshook-wine
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = wine>=9.0
+	depends = curl
+	source = https://github.com/pinapelz/kshook-wine/archive/refs/tags/1.1.zip
+	sha256sums = 9f0e083bcb985120e733cf200e5ac4db498816671877a6acc72be25d6610587a
+
+pkgname = kshook-wine
