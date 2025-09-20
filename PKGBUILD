@@ -2,7 +2,7 @@
 
 pkgname=hx-lsp
 pkgver=0.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="One LSP server support snippets and actions for helix editor."
 url="https://github.com/erasin/hx-lsp"
 license=("MIT")
@@ -12,7 +12,7 @@ conflicts=("$pkgname")
 # depends=("gcc-libs","glibc")
 depends=()
 makedepends=("cargo")
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=(${pkgname}-${pkgver}::"${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('65a6a1ad81c46a21e319ab2f3695269a7c046962d4d942cd6f5edacf71d17e82')
 
 prepare() {
