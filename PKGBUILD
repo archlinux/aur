@@ -30,7 +30,8 @@ package() {
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
 
   # Install shell completions
-  install -Dm644 "completions/symm.bash" "$pkgdir/usr/share/bash-completion/completions/symm"
-  install -Dm644 "completions/symm.fish" "$pkgdir/usr/share/fish/vendor_completions.d/symm.fish"
-  install -Dm644 "completions/_symm" "$pkgdir/usr/share/zsh/site-functions/_symm"
+  cd "target/completions"
+  install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 "$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
