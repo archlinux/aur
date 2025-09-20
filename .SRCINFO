@@ -1,7 +1,7 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications
-	pkgver = 2.49.1
-	pkgrel = 2
+	pkgver = 2.49.2
+	pkgrel = 1
 	url = https://github.com/ray-project/ray
 	arch = x86_64
 	license = Apache-2.0
@@ -46,7 +46,7 @@ pkgbase = python-ray
 	optdepends = python-scipy: for ray[rllib]
 	optdepends = python-typer: for ray[rllib]
 	optdepends = python-rich: for ray[rllib]
-	source = ray-ray-2.49.1.tar.gz::https://github.com/ray-project/ray/archive/ray-2.49.1.tar.gz
-	sha512sums = 5a72ba74891d26e92958b19d10a9b28c599a238ca9e1e03649c2089e11e44b6cd5abf8879e9ad9e1fcb46c969bc2c05db1d4837b2871b80efc2cda5ec5d6be43
+	source = ray-ray-2.49.2.tar.gz::https://github.com/ray-project/ray/archive/ray-2.49.2.tar.gz
+	sha512sums = bd2ad98d0b68c59dfff0d2e54dcad572357d8b8dbafaf69b26498a05dea196068af563a73d33e8318708bcc7b7a0e604729ab7c4f6cef42cbbd480324872ebca
 
 pkgname = python-ray
