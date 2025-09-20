@@ -23,6 +23,7 @@ pkgbase = multidl
 	depends = python-six
 	depends = python-textual
 	depends = yt-dlp
+	depends = ffmpeg
 	source = multidl-2.1.1.tar.gz::https://github.com/swayam25/Multi-DL/archive/v2.1.1.tar.gz
 	source = spotipy-2.23.0.tar.gz::https://files.pythonhosted.org/packages/source/s/spotipy/spotipy-2.23.0.tar.gz
 	source = trogon-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/t/trogon/trogon-0.6.0.tar.gz
