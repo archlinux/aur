@@ -11,7 +11,7 @@ optdepends=('intel-ucode: For automatic detection and inclusion of Intel microco
             'amd-ucode: For automatic detection and inclusion of AMD microcode'
             'limine-snapper-sync: For BTRFS snapshot integration')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('477293dcacbdb592c872fd7b38d3b6e7890e653f8a4237c9589302c1c9cd4a88')
+sha256sums=('0505350058a3164786b62eb62fc90035947f46d91fdee4740d98857edcb5bfc0')
 
 prepare() {
     cd "$pkgname-$pkgver"
