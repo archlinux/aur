@@ -1,0 +1,14 @@
+pkgbase = tiny-dfr
+	pkgdesc = Tiny DFR: A small Rust app with helpers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dev-muhammad-adel/tiny-dfr
+	install = tiny-dfr.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/dev-muhammad-adel/tiny-dfr/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3b10ffb237cf8a6828984dc25f3fd1763835c50b9db6effc6a032b78feff545d
+
+pkgname = tiny-dfr
