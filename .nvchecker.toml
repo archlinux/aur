@@ -1,0 +1,5 @@
+[python-nox-poetry]
+source = "github"
+github = "cjolowicz/nox-poetry"
+use_max_tag = true
+prefix = "v"

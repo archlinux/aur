@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-nox-poetry
-pkgver=1.0.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Use Poetry inside Nox sessions'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('SKIP')
+b2sums=('b99152d95a8a17434d9fd0b2e846c3fa5acc7fa77fc685b73622c6af71919fb2b8287bcd0f0cb4975fcff9d38e2f1648c2d3ccf913eec4b4b999a2228088b349')
 
 pkgver() {
   cd "$pkgname"
