@@ -4,7 +4,7 @@ _suffix=rc
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.0-rc1
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 epoch=11
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _qtver=6.6.2
-_libajantv2ver=17.0.1
+_libajantv2ver=17.5.0
 _libdatachannelver=0.22
 _mbedtlsver=3.6.1
 _pythonver=3.13
@@ -25,27 +25,37 @@ depends=(
   "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C related binary
+  "jack" # Deps of JACK plugin
   "jansson" # Deps of libobs and rtmp-services plugin
+  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
+  "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
+  "libfdk-aac" # Deps of FDK AAC plugin
   "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
   "libva" # Deps of FFmpeg plugin and QSV plugin
+  "libvpl" # Deps of QSV plugin
   "libx11" # Deps of libobs, libobs-opengl, X11 Capture plugin, frontend tools plugin, obs-browser and CEF
   "libxcb" # Deps of libobs-opengl, X11 Capture plugin and CEF
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
+  "luajit" # Deps of Scripting plugin
   "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
+  "python>=$_pythonver" # Deps of Scripting plugin
   "qrcodegencpp-cmake" # Deps of Websocket plugin
   "qt6-base>=$_qtver" # Deps of OBS Studio and any frontend plugin
   "qt6-svg>=$_qtver" # Deps of OBS Studio
   "qt6-wayland>=$_qtver" # Needed to use Qt on Wayland platform
   "rnnoise" # Deps if the filter plugin
   "simde" # Deps of libobs and its headers
+  "sndio" # Deps of sndio plugin
   "speexdsp" # Deps if the filter plugin
   "srt" # Deps of FFmpeg plugin
+  "systemd-libs" # Deps of V4L2 plugin
   "util-linux-libs" # Deps of libobs
+  "v4l-utils" # Deps of V4L2 plugin
   "vlc-luajit" # Deps of VLC Plugin ("vlc" issue crashes)
   "wayland" # Deps of libobs, libobs-opengl and CEF
   "x264" # Deps of the X264 plugin
@@ -69,40 +79,19 @@ makedepends=(
   "cmake"
   "extra-cmake-modules"
   "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
-  "jack" # Deps of JACK plugin
   "git"
-  "uthash" # Deps of libobs
-  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
-  "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
-  "libfdk-aac" # Deps of FDK AAC plugin
-  "luajit" # Deps of Scripting plugin
+  "uthash" # Deps of libobs (headers-only lib)
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
-  "libvpl" # Deps of QSV plugin
-  "python>=$_pythonver" # Deps of Scripting plugin
-  "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
-  "systemd-libs" # Deps of V4L2 plugin
-  "v4l-utils" # Deps of V4L2 plugin
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
 )
 optdepends=(
-  "jack: JACK support"
-  "libfdk-aac: FDK AAC codec support"
-  "libvpl: QSV encoder support"
   "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
   "vpl-gpu-rt: QSV encoder support (>= Alder Lake)"
   "intel-media-driver: VAAPI encoder support (>= Broadwell)"
   "libva-intel-driver: VAAPI encoder support (<= Haswell)"
   "libva-mesa-driver: VAAPI encoder support"
-  "swig: Scripting"
-  "luajit: Lua scripting"
-  "python>=$_pythonver: Python scripting"
-  "sndio: Sndio input client"
-  "v4l-utils: V4L2 support"
-  "systemd-libs: V4L2 support"
   "v4l2loopback-dkms: V4L2 virtual camera output"
-  "libdatachannel>=$_libdatachannelver: WHIP Support"
-  "libajantv2>=$_libajantv2ver: AJA support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
