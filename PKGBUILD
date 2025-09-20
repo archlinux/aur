@@ -1,7 +1,7 @@
 # Maintainer: Eslam Allam eslamallam73@gmail.com
 pkgname=zotero-wpsjs
 pkgver=1.6.2 
-pkgrel=1
+pkgrel=2
 pkgdesc="Zotero plugin for WPS Office Writer with background Python bridge"
 arch=('x86_64')
 url="https://gitee.com/wangrui5015/Zotero-WPSJS"

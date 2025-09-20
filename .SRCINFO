@@ -1,7 +1,7 @@
 pkgbase = zotero-wpsjs
 	pkgdesc = Zotero plugin for WPS Office Writer with background Python bridge
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/wangrui5015/Zotero-WPSJS
 	install = zotero-wpsjs.install
 	arch = x86_64
