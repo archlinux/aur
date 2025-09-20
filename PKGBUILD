@@ -2,19 +2,20 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=citron
 pkgname=citron-git
-pkgver=0.7.0.r0.g206d778
+pkgver=0.7.0.r20.g42bc6b7
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 provides=('citron')
-depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'fmt' 'zydis' 'glibc' 'boost-libs' 'gcc-libs' 'lz4' 'openssl' 'zstd' 'libva' 'zlib')
+depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'fmt' 'zydis' 'glibc' 'boost-libs' 'gcc-libs' 'lz4' 'openssl' 'zstd' 'libva' 'zlib' 'openal')
 makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost' 'qt6-tools' 'qt6-multimedia' 'rapidjson' 'vulkan-headers' 'vulkan-utility-libraries' 'catch2')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('citron')
 options=(!debug)
 source=(citron::git+https://git.citron-emu.org/citron/emulator.git
+	moc.diff
         cubeb::git+https://github.com/mozilla/cubeb.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
         discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
@@ -39,6 +40,7 @@ source=(citron::git+https://git.citron-emu.org/citron/emulator.git
         tz::git+https://github.com/eggert/tz.git)
 
 b2sums=('SKIP'
+        '576ca5e15146ac54676eda4c4f0f722f995081369a648608f5f427a6f87f66c7ff2b5008712f0d1a55e6971739aa62712f30524dbff9796af352649b0828d461'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -69,7 +71,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  
+
+  patch -Rp1 < "$srcdir/moc.diff"
   git rm -f externals/SDL
   git rm -f externals/ffmpeg/ffmpeg
   git rm -f externals/enet
@@ -115,9 +118,27 @@ prepare() {
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service::strand\b/boost::asio::strand<boost::asio::io_context::executor_type>/g'
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's|#include *<boost/process/async_pipe.hpp>|#include <boost/process/v1/async_pipe.hpp>|g'
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
+
+  # Ensure cubeb is used from externals
+  sed -is 's/if (ENABLE_CUBEB/if (ENABLE_SWAG/' CMakeLists.txt
 }
 
 build() {
+  # Forcing GCC since clang currently fails to compile citron
+  case $LTOFLAGS in
+	  *thin*)
+		  export CFLAGS="${CFLAGS//thin/auto}"
+		  export CXXFLAGS="${CXXFLAGS//thin/auto}"
+		  export LDFLAGS="${LDFLAGS//thin/auto}"
+		  echo "YOU GOT THIN"
+	  ;;
+  esac
+  case $LDFLAGS in
+	  *lld*)
+		  export LDFLAGS="${LDFLAGS//lld/bfd}"
+		  echo "YOU GOT LLD"
+		  ;;
+  esac
   cd "$srcdir"
   
   cmake -B build -GNinja -S "$_pkgname" \
@@ -147,6 +168,8 @@ build() {
     -DBUNDLE_SPEEX=ON \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
     -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_COMPILER=gcc \
+    -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     
   cmake --build build
@@ -162,5 +185,6 @@ package() {
   done
 
   install -Dm644 "$srcdir/$_pkgname/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
 
 }
