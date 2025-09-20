@@ -1,6 +1,6 @@
 pkgbase = cosmic-initial-setup-git
 	pkgdesc = COSMIC Initial Setup
-	pkgver = r28.25a77b7
+	pkgver = 1.0.0.beta.1.r0.g55c6006
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-initial-setup
 	install = cosmic-initial-setup.install
