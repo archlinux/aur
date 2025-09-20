@@ -26,7 +26,7 @@ package() {
     new_prefix="${pkgdir}/usr/lib/office6/"
 
     echo 'Patching settings file location...'
-    sed -i "s|wps.Env.GetHomePath() + \`/.local/share/Kingsoft/wps/jsaddons/wps-zotero_1.0.0\`|/usr/lib/office6/jsaddons/wps-zotero_1.0.0|g" js/util.js
+    sed -i "s|wps.Env.GetHomePath() + \`/.local/share/Kingsoft/wps/jsaddons/wps-zotero_1.0.0\`|'/usr/lib/office6/jsaddons/wps-zotero_1.0.0'|g" js/util.js
     
     mkdir -p "${prefix}"
     if [ -e /usr/lib/office6/jsaddons ]; then
