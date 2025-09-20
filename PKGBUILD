@@ -5,7 +5,7 @@
 
 pkgname=nncp
 pkgver=8.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -68,15 +68,15 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  bin/nncp-daemon -version
+  bin/nncp -version
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
+  # See ./config for these variables
   export PREFIX="/usr"
   export CFGPATH="/etc/nncp/nncp.hjson"
-
   export DESTDIR="$pkgdir"
   export INFODIR="$pkgdir/usr/share/info"
 
