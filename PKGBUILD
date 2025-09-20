@@ -5,7 +5,7 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.10.13
+pkgver=0.10.14
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
@@ -26,8 +26,8 @@ _pkgext="zip"
 source_x86_64=("$url/releases/download/$pkgver/Logseq-linux-x64-$pkgver.$_pkgext")
 source_aarch64=("$url/releases/download/$pkgver/Logseq-linux-arm64-$pkgver.$_pkgext")
 
-sha256sums_x86_64=('7b9ccfee35a24cc67955439f4e482c3c28683a43e01a3b7730e41c3bbbdfe3cc')
-sha256sums_aarch64=('4c28f56d5810706b6baa884d2667e51ad97855184feb2f637e02371eb86e1029')
+sha256sums_x86_64=('11b3837d3549e43db24a4211e5b589559f554e4a10d59f03e13a26f30e1b8db6')
+sha256sums_aarch64=('0986b9cad64ba81544a3de7f9cd03fb3baabf078e2b12cf0fcd4ea48d4b13485')
 
 # appimage - missing icon
 if [[ "${_pkgext::1}" == "A" ]]; then
