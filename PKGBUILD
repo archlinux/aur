@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A simple task runner."
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=('python-pytest'
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-demo.svg::https://github.com/pawamoy/duty/raw/${pkgver}/demo.svg")
-sha256sums=('222ee72df3fa2c07c71d3e3c6d8ed58613cd40f3bacf529f10a10fe95ce50956'
+sha256sums=('006f09863b8550ea62b0f8a4a52591dc61a82abe9c2b1c0407f8ba55c9c67f18'
             '59726640b93e61a9e70d3dedb79d6dc441fdbf5e43b2862895ee1d9449414893')
 
 #prepare() {
