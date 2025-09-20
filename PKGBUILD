@@ -3,42 +3,29 @@
 pkgbase=libajantv2
 pkgname=('libajantv2' 'ajantv2-tools'  'ajantv2-dkms')
 pkgdesc="Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc"
-_pkgver=17.1.0
+_pkgver=17.5.0
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=1
 arch=("x86_64" "aarch64")
 url="https://github.com/aja-video/libajantv2"
 license=(MIT)
 makedepends=("cmake" "git")
 options=('debug')
-source=(
-  "libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=7a53c590243868b76e5401fdcb23ec743bc07f7a"
-  "0001-fix_build_with_kernel_6_10_and_newer.patch"
-)
-sha256sums=(
-  "SKIP"
-  "728b175a8249dfbdbf3513384e24d652313914f2d382ee60a2e58f48af3ebde1"
-)
+source=("libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=792732f6893998daa869564f0f60f4c83b9ffbc5")
+sha256sums=("SKIP")
 
 prepare() {
   cd libajantv2
 
-  # Fix build with kernel 6.10 and newer (https://github.com/aja-video/libajantv2/pull/30)
-  patch -Np1 -i "$srcdir"/0001-fix_build_with_kernel_6_10_and_newer.patch
+  # Properly make CNTV2DeviceScanner::GetDeviceInfoList a class method (https://github.com/aja-video/libajantv2/pull/57)
+  sed -i "s|NTV2DeviceInfoList	GetDeviceInfoList|NTV2DeviceInfoList CNTV2DeviceScanner::GetDeviceInfoList|g" ajantv2/src/ntv2devicescanner.cpp
+
+  # Use ccflags-y instead of EXTRA_CFLAGS (https://github.com/aja-video/libajantv2/pull/55)
+  sed -i "s|EXTRA_CFLAGS|ccflags-y|g" driver/linux/Makefile
 
   # Add fixup VERSION and add SOVERSION
   sed -i 's|VERSION "${AJA_NTV2_VER_STR}"|VERSION "${AJA_NTV2_VER_STR}" SOVERSION "${AJA_NTV2_SDK_VERSION_MAJOR}"|g' ajantv2/CMakeLists.txt
-
-  # Break NVIDIA "support" in the driver, looks like a licensing hell.
-  # If someone wants to package a variant of the dkms modules requiring NVIDIA's module, feel free.
-  # This package disables everything related to NVIDIA
-  sed -e 's|Makefile \\|Makefile #\\|g' \
-      -e 's|\tnvidia-ko-to-module-symvers|\t#nvidia-ko-to-module-symvers|g' \
-      -i driver/linux/Makefile
-
-  # Fix missing header
-  sed -i '19 a #include <linux/serial_core.h>\n#include <linux/circ_buf.h>' driver/linux/ntv2serial.h
 }
 
 # TODO: Add Qt deps ("qt6-base" "qt6-multimedia") and create the demo package
@@ -114,11 +101,6 @@ package_ajantv2-dkms()
   make dkms-pkg
 
   _dkmsdir="$(ls tmp)"
-
-  # Enable HEVC since files are under MIT
-  sed -e 's/KVERSION=$kernelver/KVERSION=$kernelver AJA_HEVC=y/g' \
-      -i tmp/${_dkmsdir}/dkms.conf
-  cp hevc*.{c,h} tmp/${_dkmsdir}/libajantv2/driver/linux/.
 
   install -dm 755 "${pkgdir}"/usr/src
   cp -dr --no-preserve='ownership' tmp/${_dkmsdir} "${pkgdir}/usr/src/."

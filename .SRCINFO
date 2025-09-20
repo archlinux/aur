@@ -1,7 +1,7 @@
 pkgbase = libajantv2
 	pkgdesc = Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc
-	pkgver = 17.1.0
-	pkgrel = 2
+	pkgver = 17.5.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/aja-video/libajantv2
 	arch = x86_64
@@ -10,10 +10,8 @@ pkgbase = libajantv2
 	makedepends = cmake
 	makedepends = git
 	options = debug
-	source = libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=7a53c590243868b76e5401fdcb23ec743bc07f7a
-	source = 0001-fix_build_with_kernel_6_10_and_newer.patch
+	source = libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=792732f6893998daa869564f0f60f4c83b9ffbc5
 	sha256sums = SKIP
-	sha256sums = 728b175a8249dfbdbf3513384e24d652313914f2d382ee60a2e58f48af3ebde1
 
 pkgname = libajantv2
 	depends = gcc-libs
