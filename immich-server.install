@@ -8,26 +8,22 @@ post_install() {
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * initialise postgres and create a database called 'immich' (https://wiki.archlinux.org/title/PostgreSQL)\033[0m"
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * enable an nginx config then start nginx.service, an example that servers immich on port 8080 is given at /usr/share/doc/immich/examples/nginx.conf\033[0m"
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * ensure immich-server resolves to 127.0.0.1 and/or ::1, e.g. through /etc/hosts\033[0m"
-    echo -e "\033[1;34mINFO\033[0m\033[1m:     * start/enable immich-server.service\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * start/enable immich-server.service (and immich-machine-learning.service if installed)\033[0m"
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * make sure firewall allows traffic through port 2283 ONLY ON SECURE NETWORKS\033[0m"
 }
 
 pre_upgrade() {
-	if [ "$(printf '%s\n' "$1" "1.133.1" | sort -V | tail -n1)" = "1.133.1" ]; then
-		if pacman -Qi pgvecto.rs &> /dev/null; then # This part probably doesn't work since pacman refuses to resolve those and even get here without a conflicts array, but alas
-			echo -e "\033[1;31mERROR\033[0m: Manual intervention needed for immich-server."
-			echo -e "\tNewer versions of immich server have deprecated pgvecto.rs in favor of vectorchord."
-			echo -e "\tPlease follow steps 1 and 2 of the *manual* migration steps at https://immich.app/docs/administration/postgres-standalone/#migrating-to-vectorchord and uninstall pgvecto.rs."
-			exit 1
-		fi
-		echo -e "\033[1;34mINFO\033[0m\033[1m: Assuming manual migration steps 1 and 2 for immich-server have been completed."
-	fi
+	:
 }
 
 post_upgrade() {
-    if [ "$(printf '%s\n' "$1" "1.133.1" | sort -V | tail -n1)" = "1.133.1" ]; then
+    if [ "$(printf '%s\n' "$2" "1.133.1" | sort -V | tail -n1)" = "1.133.1" ]; then
         echo -e "\033[1;33mIMPORTANT\033[0m\033[1m: Newer versions of immich server have deprecated pgvecto.rs in favor of vectorchord."
         echo -e "\tPlease follow the *manual* migration steps at https://immich.app/docs/administration/postgres-standalone/#migrating-to-vectorchord."
+    fi
+    if [ "$(printf '%s\n' "$2" "1.142.0" | sort -V | tail -n1)" = "1.142.0" ]; then
+        echo -e "\033[1;33mIMPORTANT\033[0m\033[1m: immich-machine-learning is now packaged separately. It is required for features such as smart search, duplicate detection, and facial recognition."
+        echo -e "\tInstall and enable immich-machine-learning to continue using these features."
     fi
 }
 
