@@ -1,0 +1,25 @@
+pkgbase = wayfire-plugin-focus-request-git
+	pkgdesc = 3D wayland compositor focus request plugin
+	pkgver = 0.9.0.r0.b5c5029
+	pkgrel = 1
+	url = https://gitlab.com/wayfireplugins/focus-request.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = libdisplay-info
+	makedepends = yyjson
+	makedepends = boost
+	makedepends = vulkan-headers
+	depends = wayfire-git
+	depends = glibmm
+	depends = wayland-protocols
+	depends = glm
+	optdepends = wcm: GTK3-based configuration tool for the Wayfire compositor
+	provides = wayfire-plugin-focus-request
+	conflicts = wayfire-plugin-focus-request
+	source = git+https://gitlab.com/wayfireplugins/focus-request.git
+	sha256sums = SKIP
+
+pkgname = wayfire-plugin-focus-request-git
