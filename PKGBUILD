@@ -1,54 +1,68 @@
-# Ruijie Yu (first.last@outlook.com)
-pkgname=semver-cpp
-_pkgname="$pkgname"
-__pkgname="${_pkgname%-cpp}"
-pkgver=0.2.2
-pkgrel=1
-pkgdesc='Semantic Versioning for modern C++'
-url="https://github.com/Neargye/semver"
-arch=(any)
-license=(MIT)
-depends=()
-optdepends=(
-'gcc: c++ compiler'
-'clang: c++ compiler'
-)
-makedepends=(cmake make)
-source=(
-    # extracted: semver-0.2.2
-    "$url/archive/v$pkgver.tar.gz"
-)
-sha512sums=('f299e6d74f0232f40e20959ed3d7138d5faff924f60748827849e21951d76d34070bac2479a35f3ea6e801ec5e23ebf8391adedc70d778c4aa5e4c89b20c332c')
-_cmake_config=Release
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# The PKGBUILD for semver.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Ruijie Yu
+readonly _pkgname="semver"
 
-_extracted="$__pkgname-$pkgver"
-prepare() {
-    cd "$srcdir/$_extracted"
-    cmake \
-        --warn-uninitialized \
-        --warn-unused-vars \
-        -S . -B build
+pkgname="semver-cpp"
+pkgver="0.3.1"
+pkgrel="1"
+pkgdesc="Semantic versioning for modern C++."
+arch=("x86_64")
+url="https://github.com/Neargye/${_pkgname}"
+license=("MIT")
+makedepends=("cmake")
+checkdepends=("cmake")
+conflicts=("semver-cpp-git")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=("4757043fe7395d8167fccaf1c1ef91cc321348e21cd5503a05af8cfa57b93d256071f80527545ebc48aad572a90ffb2ad80b613d913b4c3ec7efe0b197c6c669")
+
+_compile()
+{
+    cmake -B "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/ \
+        -D CMAKE_BUILD_TYPE=None \
+        -D CMAKE_INSTALL_PREFIX=/usr/ \
+        -D SEMVER_OPT_BUILD_EXAMPLES=OFF \
+        -D SEMVER_OPT_BUILD_TESTS="$1" \
+        -D SEMVER_OPT_INSTALL="$2" \
+        -S "${srcdir}"/"${_pkgname}"-"${pkgver}"/ \
+        -Wno-dev
+    cmake --build "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/
 }
 
-build() {
-    cmake \
-        --build "$srcdir/$_extracted/build" \
-        --config "$_cmake_config" \
-        -j
+build()
+{
+    for ((i = 0; i < 2; ++i)); do
+        if [[ ${i} -eq 0 ]]; then
+            _compile "OFF" "OFF"
+        elif [[ ${i} -eq 1 ]]; then
+            _compile "ON" "OFF"
+        fi
+    done
 }
 
-check() {
-    cd "$srcdir/$_extracted/build"
-    ctest \
-        --no-tests=ignore \
-        --output-on-failure \
-        --progress
+check()
+{
+    _compile "ON" "OFF"
+    ctest --output-on-failure --test-dir "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/
+    _compile "OFF" "ON"
 }
 
-package() {
-    cmake \
-        --install "$srcdir/$_extracted/build" \
-        --prefix "$pkgdir/usr/" \
-        --config "$_cmake_config"
-}
+package()
+{
+    # Assure that the directories exist.
+    mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
+    # Install the software.
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/
+
+    # Install the documentation.
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    # Install the license.
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}
