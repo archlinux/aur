@@ -13,9 +13,9 @@ conflicts=('ai-pkg')
 
 # Workflow will update this dynamically
 source=("https://github.com/rohankrsingh/ai-pkg/releases/tag/v0.1.3/ai-pkg-0.1.3-py3-none-any.whl")
-sha256sums=('b1e56f529bb3f223f51f9001e016320669186faaf94203549195d6e1033e35c3')
+sha256sums=('0530573d6e05e3abc51139625c987ea31bf5f54e96235e81ae3747e85b9d611a')
 
 package() {
     cd "$srcdir"
-    python -m installer --destdir="$pkgdir" ai_pkg-${pkgver}-py3-none-any.whl
+    python -m installer --destdir="$pkgdir" ai-pkg-${pkgver}-py3-none-any.whl
 }
