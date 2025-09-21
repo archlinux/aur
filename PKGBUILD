@@ -2,13 +2,13 @@
 
 pkgname=walker
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
 license=('GPL')
 makedepends=('cargo' 'gobject-introspection' 'glibc' 'protobuf')
-depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
+depends=('gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant' 'elephant-desktopapplications' 'elephant-providerlist')
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
