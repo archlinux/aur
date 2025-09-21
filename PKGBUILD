@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r18947.g04f8d9dda'
+pkgver='r19049.g266375ed9'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -25,7 +25,7 @@ source=(
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        '52645c611197fe848be8710681762ecc7bca187205ede14f94a9f83ff281bb5943bf593d4db16ec85d1cac07ce77ba5ddfd51c9df7efbcb7bc178a14d64f83ee'
+        '78862c8d4eaaef8eda8c519316f7a2c242662f56e6b1e8d9cbe5f5fe0a029055bf2ee1381486eff7812bd38a2f29ea2d686052aee818cf4e4cd50a897c737151'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '6caafba7ce1832cb28acdae886c3bee8f5f4ab8ae3db813ec7f35575576b829e0db1f224baa9919b2fa5b7417d7adc369d1fe0f51e9c17a6e62843b0e72cabe7'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
