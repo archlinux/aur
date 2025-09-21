@@ -1,8 +1,9 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=moneymanagerex
+# HINT: ! ALSO UPDATE COMMIT HASHES IN source !
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -18,12 +19,12 @@ source=("git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v${pkgver}
               "git+https://github.com/moneymanagerex/LuaGlue.git#commit=ccffa36799596cc2e9a179fe18d2bf6ce07ff09a"
               "git+https://github.com/apexcharts/apexcharts.js.git#commit=2e3dcd08948d6d92517b7b9fec3aa2100ada3a57"
               "git+https://github.com/moneymanagerex/html-template.git#commit=e43bec4c0e648a5311aaae4211834cdc085178a4"
-              "git+https://github.com/fmtlib/fmt.git#commit=b6f4ceaed0a0a24ccf575fab6c56dd50ccf6f1a9"
+              "git+https://github.com/fmtlib/fmt.git#commit=e3ddede6c4ee818825c4e5a6dfa1d384860c27d9"
               "git+https://github.com/lua/lua.git#commit=d71a548685eb3ac5ea598d6a9e7481389c558808"
               "git+https://github.com/Tencent/rapidjson.git#commit=8f4c021fa2f1e001d2376095928fc0532adf2ae6"
               "git+https://github.com/utelle/wxsqlite3.git#commit=7bbd8a15f9fc0fdb81e3421a0fab90a63a6f0461"
-              "git+https://github.com/moneymanagerex/database.git#commit=1aa59e11d2f57339247be85c793507faf239e08a"
-              "git+https://github.com/moneymanagerex/general-reports.git#commit=a84b292b301b79cb7e5145bf8b1bed285235c620"
+              "git+https://github.com/moneymanagerex/database.git#commit=ff23b007c6e788b9cce10ce4e1c285053a1e51c7"
+              "git+https://github.com/moneymanagerex/general-reports.git#commit=2d87da4a4fdb9a539766ab07acc5ae24bda81729"
               "git+https://github.com/moneymanagerex/themes.git#commit=9704a6a597bafebe0048d2f8aa8b08aaaf42c62f")
 sha512sums=('SKIP'
                         'SKIP'
