@@ -1,7 +1,7 @@
 # Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
 # Contributor: Albert Latham <me@albertlatham.com>
 pkgname=codellm
-pkgver=1.101.23604
+pkgver=1.101.23707
 pkgrel=1
 pkgdesc="AI code editor that enhances developer productivity, bundled with the AI super assistant, ChatLLM"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=('codellm-bin')
 source_x86_64=("https://github.com/abacusai/codellm-releases/releases/download/${pkgver}/CodeLLM-linux-x64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/abacusai/codellm-releases/releases/download/${pkgver}/CodeLLM-linux-arm64-${pkgver}.tar.gz")
 
-sha256sums_x86_64=('9efb89c3526d771c4002eea3feb11253feabb36f4ce3ce15c5ac51514b090abb')
-sha256sums_aarch64=('5863687c58cdee143f9e5c3e3007c688877743380c568b743112c5fa2ecbf154')
+sha256sums_x86_64=('ae35e26cfe6a5f01facfc265c649cc6e32ea4c64cfa60be2ea2017aafb5987a2')
+sha256sums_aarch64=('59ff6981ac38a0e7f2b8d655b9c4d0f1c2c192b041c67f7c2210015803f03f87')
 
 package() {
     cd "$srcdir"
