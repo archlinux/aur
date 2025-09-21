@@ -1,6 +1,6 @@
 install=mac-touchbar-plus.install
 pkgname=mac-touchbar-plus
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="mac-touchbar-plus: A small Rust app with helpers"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release 
 }
 
 
@@ -40,4 +40,4 @@ package() {
 
 }
 
-sha256sums=('906ef7cd13b14df6fc0f3719745c83be5153be34345dc426de7bcd2cb368ed81')
+sha256sums=('fc5634af446132225b2388c74f8c72d7225fabbcd9ad97d64507ba241e9d716d')

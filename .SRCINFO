@@ -1,6 +1,6 @@
 pkgbase = mac-touchbar-plus
 	pkgdesc = mac-touchbar-plus: A small Rust app with helpers
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/dev-muhammad-adel/mac-touchbar-plus
 	install = mac-touchbar-plus.install
@@ -8,7 +8,7 @@ pkgbase = mac-touchbar-plus
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/dev-muhammad-adel/mac-touchbar-plus/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 906ef7cd13b14df6fc0f3719745c83be5153be34345dc426de7bcd2cb368ed81
+	source = https://github.com/dev-muhammad-adel/mac-touchbar-plus/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = fc5634af446132225b2388c74f8c72d7225fabbcd9ad97d64507ba241e9d716d
 
 pkgname = mac-touchbar-plus
