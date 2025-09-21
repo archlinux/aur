@@ -1,9 +1,10 @@
-# Maintainer: William Gathoye <william + aur at gathoye dot be>
-# Maintainer: Corey Richardson <corey at octayn dot net>
+# Maintainer: Brany <code@garage-c0.re>
+# Contributor: William Gathoye <william + aur at gathoye dot be>
+# Contributor: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
 pkgver=1.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Asciidoc FX is a book / document editor to build PDF, Epub, Mobi and HTML books, documents and slides"
 arch=('any')
 
