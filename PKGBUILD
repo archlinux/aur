@@ -1,7 +1,7 @@
 # Maintainer: Eslam Allam eslamallam73@gmail.com
 pkgname=zotero-wpsjs
 pkgver=1.6.2 
-pkgrel=2
+pkgrel=3
 pkgdesc="Zotero plugin for WPS Office Writer with background Python bridge"
 arch=('x86_64')
 url="https://gitee.com/wangrui5015/Zotero-WPSJS"
@@ -10,7 +10,7 @@ depends=('python' 'wps-office-cn' 'zotero')   # adjust names if different in AUR
 makedepends=('git')
 install="${pkgname}.install"
 source=(
-  "${pkgname}::git+https://gitee.com/wangrui5015/Zotero-WPSJS.git#tag=v${pkgver}"
+  "${pkgname}::git+https://github.com/eslam-allam/zotero-wpsjs-mirror.git#tag=v${pkgver}"
   "${pkgname}.service"
 )
 sha256sums=('SKIP' 'SKIP')
