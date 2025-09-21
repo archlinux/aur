@@ -1,6 +1,6 @@
 pkgbase = meowpad-configurator-v2-git
 	pkgdesc = Meowpad v2 配置器
-	pkgver = 1.1.0.r153.24027a1
+	pkgver = 1.2.0.r160.b2886a0
 	pkgrel = 1
 	url = https://desu.life/
 	install = udev.install
