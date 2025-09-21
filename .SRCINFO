@@ -1,7 +1,7 @@
 pkgbase = kio5-extras
 	pkgdesc = Additional components to increase the functionality of KIO
 	pkgver = 24.02.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.kde.org/
 	arch = x86_64
 	license = LGPL-2.0-or-later
