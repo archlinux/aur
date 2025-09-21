@@ -24,10 +24,10 @@
 : ${_build_limit_cores:=false}
 
 ## update
-_icver="128.14.0"
-_commit="ba161be3de71bb556be951ac4dbb81c807f68770"
-_icsum="6466f02ab24c33b558e61e2a927b2700fc95c8a3fe4a304c2d0cf7a1ccc8cd0b"
-_ffsum="93b9ef6229f41cb22ff109b95bbf61a78395a0fe4b870192eeca22947cb09a53"
+_icver="140.3.0"
+_commit="c939d76c33294791cce8ce1722bd6747dadbe31f"
+_icsum="1b7e531f781573c6476561f8a0781f99335e93e760916b6bd0e148872ae22bdd"
+_ffsum="efc6eb3c93756311bd2f9db3796c0bbee6e3f182975d857284168b3dec672316"
 
 ## package
 _pkgname="icecat"
