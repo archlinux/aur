@@ -1,8 +1,8 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 
 pkgname=chezetc
-pkgver=202509.1
-pkgrel=1
+pkgver=202509.3
+pkgrel=3
 pkgdesc='Extending chezmoi to manage files under /etc and other root-owned directories'
 arch=(any)
 url='https://silverrainz.me/chezetc'
@@ -13,7 +13,7 @@ source=(
     chezetc
     )
 
-sha256sums=('ac94238493c8f1135d8f1bdf938f38019f06fa3d0aa9070c005f4ae2769f608a'
+sha256sums=('b04764d1e6a899642241ebd214a1001f9133ed1fd116ce650d7bada302fb3e68'
             '10c022dc7f78dc00e1aeaad816a932fad7271bc2d2d0e8a4c12d14106471843b')
 
 package() {
@@ -32,6 +32,10 @@ package() {
     for i in commands completions hooks utils; do
         install -Dm644 $i/* -t "$pkgdir/usr/lib/$pkgname/$i"
     done
+
+    chmod +x "$pkgdir/usr/lib/$pkgname/utils/toml-merge.py"
+    chmod +x "$pkgdir/usr/lib/$pkgname/commands/cd"
+    chmod +x "$pkgdir/usr/lib/$pkgname/commands/editor"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
