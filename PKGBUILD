@@ -1,7 +1,7 @@
 # Maintainer: Daniël van de Giessen <aur@dvdgiessen.nl>
 pkgname=pipemixer-git
 pkgver=0.2.4.r272.d1a67c1
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI volume control app for pipewire'
 arch=('x86_64')
 url='https://github.com/heather7283/pipemixer'
