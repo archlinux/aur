@@ -1,10 +1,11 @@
-# Current Maintainer: John A. Leuenhagen <john@zlima12.com>
+# Current Maintainer: Ming Di Leom
+# Previous Maintainer: John A. Leuenhagen <john@zlima12.com>
 # Previous Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Vinay Shastry <vinayshastry at gmail dot com>
 
 _pkgname='wormhole-william'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Securely transfer files between devices. Go implementation of magic wormhole.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -21,9 +22,9 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgv
 
 sha256sums=('ac9d28222e6760081504a4a6cc89d64b5185e05e7fb232e86587cd399f479fae'
             'ee47201dec4798fed875d8768ebfd04f186a74f1bbffe315a0c96b423331f462')
-sha256sums_x86_64=('31ca027b4ebc487cb691a61f8efd35428c30ece5fbc9fd50eabf18835395f523')
-sha256sums_armv7h=('71c897e75cbfa4ec797d203b25a96535209599277f32569e7b8b94f58cd2ba8d')
-sha256sums_aarch64=('e55c0aadf64436e1bd327efc805b72760a8e26552e762fe1be26082668aae383')
+sha256sums_x86_64=('a6e501a9f3555617d980d8de49fb2f91783c27cfd875cb42a1ac5cf8fc11205d')
+sha256sums_armv7h=('fafa84260572e00bc46d179b4857195c54ade365b7bf80669dc40dc8a6ab86ed')
+sha256sums_aarch64=('d1b727288bda91463e35e0312c102d35a95c77eb638aa6567eb6f2cc6f2759e8')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
