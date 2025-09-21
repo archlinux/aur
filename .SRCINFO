@@ -1,7 +1,7 @@
 pkgbase = cockpit-navigator
 	pkgdesc = A Featureful File Browser for Cockpit.
-	pkgver = 0.5.10
-	pkgrel = 2
+	pkgver = 0.5.12
+	pkgrel = 1
 	url = https://github.com/45Drives/cockpit-navigator
 	arch = x86_64
 	license = GPL
@@ -9,10 +9,7 @@ pkgbase = cockpit-navigator
 	depends = python
 	depends = rsync
 	depends = zip
-	source = https://github.com/45Drives/cockpit-navigator/archive/refs/tags/v0.5.10.tar.gz
-	source = https://github.com/45Drives/cockpit-navigator/releases/download/v0.5.10/LICENSE
-	b2sums = d1d4765933c957e4d11136acad8ae5b5fa0dc95cbe15bcc10816037e6c4ec4fa606f5c633d4eebbc7dd10d935a888c3840dfef9ea68c828afcbc5a21f8744430
-	b2sums = c29bf15b0698ef971345b2059236d094b9ed76f926c52f85ca4f06d1d451378e9d5d7edd2db835e864b8c3289ed508bd00815b83baa206a8d1196aaf0661587f
-	b2sums = 74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd
+	source = https://github.com/45Drives/cockpit-navigator/archive/refs/tags/v0.5.12.tar.gz
+	b2sums = b1a121410b6f62236c030e5ee90fc627f7f6b3de0b0a3bf7e53b2c7ba91d4e1e261c620944e6ec6dafb129c02903f35a5f297f6774ebc57d25646f9745aa53ee
 
 pkgname = cockpit-navigator
