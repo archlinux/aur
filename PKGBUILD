@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=libnick
-pkgver=2025.8.0
+pkgver=2025.9.2
 _maddyver=1.5.0
 pkgrel=1
 pkgdesc="A cross-platform base for native Nickvision applications"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('boost' 'cmake' 'cpr' 'libmaddy' 'sqlcipher')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b4bac255257de9877f8a243729d3aea30259dea36d505237ee6150b1b826e0e7')
+sha256sums=('b778249b5e07681b42b3b51da9a504eff703b3404cedbff8fe1388cb39e87cd0')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
