@@ -1,6 +1,6 @@
 pkgbase = ai-pkg-bin
 	pkgdesc = AI-powered package recommender and installer for Arch Linux
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/rohankrsingh/ai-pkg
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ai-pkg-bin
 	depends = python-rich
 	provides = ai-pkg
 	conflicts = ai-pkg
-	source = https://github.com/rohankrsingh/ai-pkg/releases/download/v0.1.3/ai-pkg-0.1.3-py3-none-any.whl
-	sha256sums = 77c67575b39c87edd6fd1b7c14479d3a32f67f7a55f75f4a11a9fd4d365d5497
+	source = https://github.com/rohankrsingh/ai-pkg/releases/download/v0.1.4/ai_pkg-0.1.4-py3-none-any.whl
+	sha256sums = 8b413afd9ab1d9e6675583be915d8c76846560060e96485229171eeb38180dc6
 
 pkgname = ai-pkg-bin
