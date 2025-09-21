@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libxml2
-pkgver=2.14.6
+pkgver=2.15.0
 pkgrel=1
 arch=('any')
 pkgdesc='XML C parser and toolkit (mingw-w64)'
@@ -9,7 +9,7 @@ makedepends=('git' 'mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 license=(MIT)
 source=("https://download.gnome.org/sources/libxml2/${pkgver::4}/libxml2-${pkgver}.tar.xz")
-sha256sums=('7ce458a0affeb83f0b55f1f4f9e0e55735dbfc1a9de124ee86fb4a66b597203a')
+sha256sums=('5abc766497c5b1d6d99231f662e30c99402a90d03b06c67b62d6c1179dedd561')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
