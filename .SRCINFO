@@ -5,6 +5,7 @@ pkgbase = solidity
 	url = https://github.com/ethereum/solidity
 	arch = x86_64
 	license = GPL-3.0-or-later
+	checkdepends = cmake
 	checkdepends = evmone
 	makedepends = boost
 	makedepends = cmake

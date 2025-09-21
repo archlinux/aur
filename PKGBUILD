@@ -18,7 +18,7 @@ depends=("gcc-libs" "glibc")
 optdepends=("cvc5: SMT checker"
     "z3: SMT checker")
 makedepends=("boost" "cmake" "fmt" "nlohmann-json" "range-v3")
-checkdepends=("evmone")
+checkdepends=("cmake" "evmone")
 conflicts=("solidity-bin" "solidity-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
 sha512sums=("b08733619a4c1398a2b80d0fec83d56b3769af8dfa01a028c71ff89985f5c93d12c3c7d8bbcec29bb0816a9cc1d56bb099010e59a203bcf917b87ff1b0cf0241")
@@ -43,9 +43,7 @@ _compile()
 
 build()
 {
-    for build_tests in "OFF" "ON"; do
-        _compile "${build_tests}"
-    done
+    _compile "OFF"
 }
 
 check()
