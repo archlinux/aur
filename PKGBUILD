@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui-bin
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -22,14 +22,14 @@ source_aarch64=($url/releases/download/v$pkgver/${pkgname:1:4}-linux-arm64.tar.g
 source_armv7h=( $url/releases/download/v$pkgver/${pkgname:1:4}-linux-armv7.tar.gz)
 source_i686=(   $url/releases/download/v$pkgver/${pkgname:1:4}-linux-386.tar.gz)
 source_x86_64=( $url/releases/download/v$pkgver/${pkgname:1:4}-linux-amd64.tar.gz)
-sha256sums_aarch64=('157fbcae2c775233643b4775a4afd8708a0f623b5aaa83e5de0ba1751ed5692f')
-sha256sums_armv7h=('490529c8759962ea58032f3152e32b13c8a2030abbd6d4abdd981c9f04aef6ea')
-sha256sums_i686=('f86a244eade7d9e49cc1156a461efd788b12d82424b47037f4b3b2c24bffd2e2')
-sha256sums_x86_64=('8a010d881dd8fb57cacab7c080a57fb7e4a4c6c94c266a903b0cb84ee4a86bf5')
-b2sums_aarch64=('be804f9e0169b6c1e8c6f0da05dba419e27ab785d4340f44943cfdaef5e7cc1ef48de595336e9960f2724cb3c16728117f9726b6ae9f22a5ab39ab97a6c63ccb')
-b2sums_armv7h=('a84c1d403119ca485075049c6d5993ca740c7029c71ed56d0afef197c9c780b061871bf27c117efbc693351f8ca64f882b6e786090f640642fd4eafc93f2817a')
-b2sums_i686=('b5f7d5b31b1f2b85f0b2e500fea1af313f7d656488297ce6f0b08417b6cbabd412db919eeb09a5bd52e9323678c04630ff4410506c2122f16def130f3d155940')
-b2sums_x86_64=('3a550f0933c2deedd5f392114b994765908abd7ccccae8676c714a0ff8e4905299abede979e4b850fa355b887aa8d707d97058c679189b0098b84497f1a6e151')
+sha256sums_aarch64=('af50567393a4eb2965f05d73a00d180190549c85ae020d8768b1e30ecc9a6421')
+sha256sums_armv7h=('c1ab2627b124d495bb8601798506a15ab298a0daef71556d20afa707f92883e2')
+sha256sums_i686=('87288cb7294ab2c472afa6bbd2f9fc4a1b9ac8e11e07954c26e3c1f6e6eb327c')
+sha256sums_x86_64=('4dbf6968483ac658b735d7c0c272df50c5289e65497148a10031105af7d81416')
+b2sums_aarch64=('1b45355638a9a8078277e89409eedd9c9386da6f6e6fac50e78d16f9e75825634817f17261f240ac46236759f504cfc359f8de58be3e3f65b5f028cba625146f')
+b2sums_armv7h=('93920cc904eb92853c8e3cdbaebaf141e06755a8312b97e1c6dda9ed626cc2ae63317fa797b16084b6bcd682218fda735229d25b6ce1766e57832cc5c0e2bc83')
+b2sums_i686=('f70434a4d7d06a32dcf1100c4eb2f463eb3a1ded53317ed44f936aaa993f48a5e05901a947a78d043b778addc04ccc5cc73549fecf0535bd68a03dbdc0eae3a3')
+b2sums_x86_64=('c1e92b8d73e89cb507564e499c80b3f4841ff4de9fbbc89a979bf97fdd330a745a39679878de1684f69c4ddfbdf2efccea065540f409d0c57211e9a3ee6831a7')
 
 prepare() {
   sed -i 's|/etc/systemd/system/|/usr/lib/systemd/system/|g'                    ${pkgname:1:4}/${pkgname:1:4}.sh
