@@ -1,0 +1,14 @@
+pkgbase = chalbik
+	pkgdesc = Klingon Rain TUI - Terminal-based rain animation using pIqaD (Klingon script) characters
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dandenkijin/chalbik
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = rust
+	source = git+https://github.com/dandenkijin/chalbik.git#tag=v0.1.0
+	sha256sums = fef744853f0b20be3a157f3822263ab5cb5f30f03e41a1d9186f44e0e41d595b
+
+pkgname = chalbik
