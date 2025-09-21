@@ -15,6 +15,7 @@ url="https://github.com/karastojko/${pkgname}"
 license=("BSD-2-Clause")
 depends=("gcc-libs" "glibc" "openssl")
 makedepends=("boost" "cmake" "doxygen")
+checkdepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("550ab52400e3085d9dfeb1405ad34a5d26c65f9d0a9321933300da78e56e0469d2b79d1dd67559e3bdbf1f73899370d8feb7a9e9996bd309cbf4f8f9fd645605")
 
@@ -35,9 +36,7 @@ _compile()
 
 build()
 {
-    for build_tests in "OFF" "ON"; do
-        _compile "${build_tests}"
-    done
+    _compile "OFF"
 }
 
 check()

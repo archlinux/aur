@@ -5,6 +5,7 @@ pkgbase = mailio
 	url = https://github.com/karastojko/mailio
 	arch = x86_64
 	license = BSD-2-Clause
+	checkdepends = cmake
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
