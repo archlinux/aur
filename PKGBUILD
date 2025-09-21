@@ -35,13 +35,7 @@ _compile()
 
 build()
 {
-    for ((i = 0; i < 2; ++i)); do
-        if [[ ${i} -eq 0 ]]; then
-            _compile "OFF" "OFF"
-        elif [[ ${i} -eq 1 ]]; then
-            _compile "ON" "OFF"
-        fi
-    done
+    _compile "OFF" "ON"
 }
 
 check()
