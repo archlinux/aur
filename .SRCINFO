@@ -1,0 +1,13 @@
+pkgbase = cpuinfo-git
+	pkgdesc = cpuinfo is a simple tool to check your cpu specs. (git version)
+	pkgver = 2025.09.21.rc40647b
+	pkgrel = 1
+	url = https://github.com/Szerwigi1410/cpuinfo
+	arch = any
+	license = MIT
+	depends = bash
+	depends = util-linux
+	source = cpuinfo-git::git+https://github.com/Szerwigi1410/cpuinfo
+	sha256sums = SKIP
+
+pkgname = cpuinfo-git
