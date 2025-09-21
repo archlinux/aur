@@ -1,7 +1,7 @@
 pkgbase = r8126-dkms
 	pkgdesc = Kernel module for Realtek RTL8126
-	pkgver = 10.015.00
-	pkgrel = 3
+	pkgver = 10.016.00
+	pkgrel = 1
 	url = https://www.realtek.com/Download/List?cate_id=584
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -10,9 +10,9 @@ pkgbase = r8126-dkms
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
 	conflicts = r8126
-	source = https://github.com/openwrt/rtl8126/releases/download/10.015.00/r8126-10.015.00.tar.bz2
+	source = https://github.com/openwrt/rtl8126/releases/download/10.016.00/r8126-10.016.00.tar.bz2
 	source = dkms.conf
-	sha256sums = fac513aa925264a95b053e7532fcda56022d29db288f6625fafee2759a8a6124
-	sha256sums = e14ab919e5d71f530d906d06a9b2c35985833b12d9854825877d0151347399df
+	sha256sums = 50c8d3d49592d2e8f372bd7ece8e7df9b50a71b055c077d42eacc42302914440
+	sha256sums = 360ddef7c8beb5156f272ae816bd2a9c6b0edcda0e2e9159d01208c91ae93b2c
 
 pkgname = r8126-dkms
