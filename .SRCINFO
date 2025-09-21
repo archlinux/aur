@@ -1,6 +1,6 @@
 pkgbase = python-skyfield
 	pkgdesc = Elegant astronomy for Python
-	pkgver = 1.52
+	pkgver = 1.53
 	pkgrel = 1
 	url = https://rhodesmill.org/skyfield/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-skyfield
 	depends = python-pandas
 	depends = python-sgp4
 	depends = python-sympy
-	source = https://files.pythonhosted.org/packages/source/s/skyfield/skyfield-1.52.tar.gz
-	sha256sums = 3d0d335a81b8db36d4a658636f211fe51122cda43908ec2573a956ec93e91dec
+	source = https://files.pythonhosted.org/packages/source/s/skyfield/skyfield-1.53.tar.gz
+	sha256sums = 24099855f3ba3906663ac1c10e650041e747680b986e807400eddedc0be4a8b4
 
 pkgname = python-skyfield
