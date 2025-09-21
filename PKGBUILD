@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='golangci-lint-bin'
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Fast linters runner for Go.'
 url='https://golangci.com'
@@ -11,17 +11,17 @@ license=('GPL-3.0')
 provides=('golangci-lint-bin')
 conflicts=('golangci-lint')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.4.0/golangci-lint-2.4.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('70ac11f55b80ec78fd3a879249cc9255121b8dfd7f7ed4fc46ed137f4abf17e7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.5.0/golangci-lint-2.5.0-linux-arm64.tar.gz")
+sha256sums_aarch64=('48693a98a7f4556d1117300aae240d0fe483df8d6f36dfaba56504626101a66e')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.4.0/golangci-lint-2.4.0-linux-armv7.tar.gz")
-sha256sums_armv7h=('2a68749568fa22b4a97cb88dbea655595563c795076536aa6c087f7968784bf3')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.5.0/golangci-lint-2.5.0-linux-armv7.tar.gz")
+sha256sums_armv7h=('c5e44741666612ed0b4abeacb244c85ee74aa402678af02bb152f1b5fa5a7a69')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.4.0/golangci-lint-2.4.0-linux-386.tar.gz")
-sha256sums_i686=('a15a000a8981ef665e971e0f67e2acda9066a9e37a59344393b7351d8fb49c81')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.5.0/golangci-lint-2.5.0-linux-386.tar.gz")
+sha256sums_i686=('e10b50d646a0c4d507e8adb4cc84bb631db93bed65c8809afb1f177cdf524477')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.4.0/golangci-lint-2.4.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('fae792524c04424c0ac369f5b8076f04b45cf29fc945a370e55d369a8dc11840')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v2.5.0/golangci-lint-2.5.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('c77313a77e19b06123962c411d9943cc0d092bbec76b956104d18964e274902e')
 
 package() {
   local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
