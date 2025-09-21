@@ -3,14 +3,14 @@
 # Contributor: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-plugin-pixdecor-git
-pkgver=r165.7ed784a
+pkgver=r167.1bf8953
 pkgrel=1
 pkgdesc="3D wayland compositor pixdecor plugin"
 arch=('x86_64')
 url="https://github.com/soreau/pixdecor"
 license=('MIT')
-depends=('wayfire-git' 'glibmm' 'wayland-protocols' 'glm')
-makedepends=('git' 'meson' 'ninja' 'libdisplay-info' 'yyjson' 'boost' 'vulkan-headers')
+depends=('wayfire-git' 'glm')
+makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('wcm: GTK3-based configuration tool for the Wayfire compositor')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
