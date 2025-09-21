@@ -3,14 +3,14 @@
 pkgname=ds9-bin  
 _pkgname=ds9
 pkgver=8.6
-pkgrel=3
+pkgrel=4
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-3.0-or-later')
 options=(!strip)
 provides=(${_pkgname})
-depends=()
+depends=(gcc-libs fontconfig libxft libx11 icu xz zlib glibc libxext libxss freetype2 libxml2-legacy)
 makedepends=('patchelf')
 conflicts=(ds9)
 replaces=()
