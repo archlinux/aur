@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 _nodeversion=22
 _electronversion=38
-pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
+pkgdesc="YouTube Music Desktop App bundled with custom plugins"
 arch=('x86_64')
-url="https://th-ch.github.io/youtube-music"
+url="https://github.com/ytmd-devs/ytmd"
 license=('MIT')
 depends=(
   "electron${_electronversion}"
@@ -17,10 +17,10 @@ makedepends=(
   'pnpm'
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmd-devs/ytmd/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('595b5283720cbdaaa67907c2773f6eeb890e57e1244dce98481d47ecf42ffac0'
+sha256sums=('a015c0d1b1a23c08038b8b33859b8631562d5f568242dbdf7c07a10bbfdf6bfe'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
             '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654')
 
@@ -36,7 +36,7 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "ytmd-$pkgver"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
@@ -44,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "ytmd-$pkgver"
   export PNPM_HOME="$srcdir/pnpm-home"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
@@ -58,7 +58,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "ytmd-$pkgver"
   install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/$pkgname/"
   cp -r pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/$pkgname"
 
