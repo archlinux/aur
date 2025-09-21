@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  cabal update
+  cabal update hackage.haskell.org,$(TZ=UTC date +@%s --date='today 00:00')
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
     --enable-tests
   cabal build --only-dependencies
