@@ -4,7 +4,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r42590.452ba49e16d4
+pkgver=3.r43379.30cf01b12439
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -12,17 +12,17 @@ pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('enchant' 'libgadu' 'gplugin-hg' 'gmime3' 'qt5-base'
+depends=('enchant' 'gplugin-hg' 'gmime3' 'qt5-base'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
    'libsasl' 'libidn' 'nss' 'kwallet5' 'hasl-hg'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
    'libxss' 'libsm' 'dbus-glib' 'json-glib' 'libadwaita' 'birb-hg' 'xeme-hg')
-optdepends=('avahi: Bonjour protocol support'
+optdepends=(
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
     'tk: Tcl/Tk scripting support'
     'aspell: for spelling correction')
-makedepends=('mercurial' 'avahi' 'tk' "gobject-introspection" 'ca-certificates' 'intltool'
+makedepends=('mercurial' 'tk' "gobject-introspection" 'ca-certificates' 'intltool'
              'tk' 'ca-certificates' 'intltool' 'networkmanager'
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
              'hicolor-icon-theme' 'dbus-glib' 'json-glib' 'vala'
@@ -47,9 +47,7 @@ build() {
      -Dkwallet=enabled \
      -Dlibsecret=enabled \
      -Ddoc=true \
-     -Dunity-integration=disabled \
-     -Davahi=enabled \
-     -Dlibgadu=enabled
+     -Dunity-integration=disabled
 
   ninja -C build
 }
