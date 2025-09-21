@@ -1,0 +1,18 @@
+pkgbase = jaqalmixer-git
+	pkgdesc = Soundcard configuration tool for pro-audio use, made in Qt. Includes alsamixer's functionality.
+	pkgver = r1
+	pkgrel = 1
+	url = https://codeberg.org/zynskeyfolf/JaqalMixer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = qt6-base
+	makedepends = alsa-lib
+	depends = qt6-base
+	depends = alsa-lib
+	source = git+https://codeberg.org/zynskeyfolf/JaqalMixer
+	sha256sums = SKIP
+
+pkgname = jaqalmixer-git
