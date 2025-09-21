@@ -1,6 +1,6 @@
 pkgbase = r-lavaan
 	pkgdesc = Latent Variable Analysis
-	pkgver = 0.6.19
+	pkgver = 0.6.20
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lavaan
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-lavaan
 	depends = r-numderiv
 	depends = r-pbivnorm
 	depends = r-quadprog
-	source = https://cran.r-project.org/src/contrib/lavaan_0.6-19.tar.gz
-	sha256sums = 47b137e3c164d33a433698bd5da82157cc8d9bfa8b04711d10a1745a57e8b785
+	source = https://cran.r-project.org/src/contrib/lavaan_0.6-20.tar.gz
+	sha256sums = c3df7b2ceb5b0c23c685beaad112e8160c0466c48518b8a83974ca025dc1c1c6
 
 pkgname = r-lavaan
