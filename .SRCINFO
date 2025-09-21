@@ -6,6 +6,7 @@ pkgbase = python-nostalgiaforinfinity
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = git
+	checkdepends = python-pytest
 	depends = bash
 	depends = python
 	depends = python-attrs

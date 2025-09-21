@@ -15,7 +15,7 @@ arch=("any")
 url="https://github.com/iterativv/${_pkgname}"
 license=("GPL-3.0-or-later")
 depends=("bash" "python" "python-attrs" "python-freqtrade" "python-numpy" "python-pandas" "python-pandas-ta" "python-pytest" "python-rapidjson" "python-ta-lib" "python-technical")
-checkdepends=("git")
+checkdepends=("git" "python-pytest")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("5642613f06a10e587c402876a08ba67293516274db5031f8e3fe7aaf90dbf94961e3e784faf652c8f0ff502c47b345302e0c0422246c49a975488e89354bd031")
 
