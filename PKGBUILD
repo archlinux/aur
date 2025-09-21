@@ -2,27 +2,28 @@
 # Maintainer: Corey Richardson <corey at octayn dot net>
 
 pkgname=asciidocfx
-pkgver=1.7.4
-pkgrel=2
-pkgdesc="Asciidoc Editor and Toolchain written with JavaFX"
+pkgver=1.8.10
+pkgrel=1
+pkgdesc="Asciidoc FX is a book / document editor to build PDF, Epub, Mobi and HTML books, documents and slides"
 arch=('any')
 
 url='http://asciidocfx.com/'
-license=('Apache')
+license=('Apache-2.0')
 
-makedepends=('maven>=3.3.9' 'java-environment>=12' 'gendesk')
-depends=('java-environment=17' 'java-openjfx')
+makedepends=('gendesk')
+depends=('bash')
 
 source=(
-    "https://github.com/asciidocfx/AsciidocFX/archive/v${pkgver}.tar.gz"
-    'asciidocfx'
-)
-sha512sums=(
-    'deb6a1a3140ce25974d96301e070ef7735d6253bcfd55abf97e5c6dc66c6ca7e03b7a4cc49f135923939d801b0c00692ea2cb3f7b968cbd21d0094b055ba59e2'
-    'f185cdbb7ac4866160dc88c17373e668a0f37c0d380783f84e6138ba5f775347242a24e9a1ca97d9200ff601edb756e0944f27a2e1e53239b4d16d253605b0fa'
+    "https://github.com/asciidocfx/AsciidocFX/releases/download/v${pkgver}/AsciidocFX_Linux.tar.gz"
+    "asciidocfx"
 )
 
+sha256sums=('527de8696678650ccd98e4aed604cf4e64ef2c54c3e1c0c4010c034141d00a75'
+            'e773f39bdc3fec42e37c1086752ac7d25f09b31c8e221053554ba791534b19c6')
+
+
 prepare() {
+    cd "${srcdir}"
     # Generate a desktop entry
     # -f: forces and overrides the file if any
     # -n: do not download an icon
@@ -36,25 +37,14 @@ prepare() {
         --categories "Development;Office;WordProcessor;TextTools;ComputerScience;Documentation;Java"
 }
 
-build() {
-    cd "AsciidocFX-${pkgver}"
-
-    # "install" seemingly means "build and ready for installation"
-    mvn clean install
-}
-
 package() {
-    cd "AsciidocFX-${pkgver}"
 
-    install -dm755 "${pkgdir}/usr/share/java/asciidocfx"
-    install -dm755 "${pkgdir}/usr/bin"
-    mv -t "${pkgdir}/usr/share/java/asciidocfx" target/appassembler/{conf,lib}
-    install -m755 '../asciidocfx' "${pkgdir}/usr/bin/asciidocfx"
+    # install luncher script
+    install -Dm 755 ${srcdir}/asciidocfx ${pkgdir}/usr/bin/asciidocfx
 
-    install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 './src/main/resources/logo.png' "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    # install tarball script
+    install -dDm 755 ${srcdir}/AsciidocFX ${pkgdir}/opt/
+    cp -r ${srcdir}/AsciidocFX ${pkgdir}/opt/
 
-    # Workaround for FS#64121
-    install -dm755 "${pkgdir}/usr/share/java/asciidocfx/lib/java-openjfx"
-    cp -t "${pkgdir}/usr/share/java/asciidocfx/lib/java-openjfx" /usr/lib/jvm/java-17-openjdk/lib/javafx*
+    install -Dm 755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
