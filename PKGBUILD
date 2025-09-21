@@ -69,7 +69,7 @@ build() {
 		-DENABLE_TESTS=OFF \
 		-DUSE_BUILTIN_OPENCSG=ON \
 		-Wno-dev
-	cmake --build build
+	cmake --build build --parallel $(expr $(nproc) / 2)
 	cd "$_pkg/resources/icons/"
 	convert openscad.png -resize 128x128\> openscad-128.png
 }
