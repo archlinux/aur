@@ -9,8 +9,8 @@ pkgdesc="3D wayland compositor shadows plugin"
 arch=('x86_64')
 url="https://github.com/timgott/wayfire-shadows.git"
 license=('MIT')
-depends=('wayfire-git' 'glibmm' 'wayland-protocols' 'glm')
-makedepends=('git' 'meson' 'ninja' 'libdisplay-info' 'yyjson' 'boost' 'vulkan-headers')
+depends=('wayfire-git')
+makedepends=('git' 'meson' 'ninja')
 optdepends=('wcm: GTK3-based configuration tool for the Wayfire compositor')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -40,4 +40,6 @@ build() {
 
 package() {
         DESTDIR="$pkgdir/" ninja -C build install
+        install -Dm644 "$srcdir/wayfire-shadows/LICENSE" \
+                "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
