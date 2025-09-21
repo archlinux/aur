@@ -1,0 +1,25 @@
+pkgbase = wayfire-plugin-pixdecor-git
+	pkgdesc = 3D wayland compositor pixdecor plugin
+	pkgver = r165.7ed784a
+	pkgrel = 1
+	url = https://github.com/soreau/pixdecor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = libdisplay-info
+	makedepends = yyjson
+	makedepends = boost
+	makedepends = vulkan-headers
+	depends = wayfire-git
+	depends = glibmm
+	depends = wayland-protocols
+	depends = glm
+	optdepends = wcm: GTK3-based configuration tool for the Wayfire compositor
+	provides = wayfire-plugin-pixdecor
+	conflicts = wayfire-plugin-pixdecor
+	source = git+https://github.com/soreau/pixdecor
+	sha256sums = SKIP
+
+pkgname = wayfire-plugin-pixdecor-git
