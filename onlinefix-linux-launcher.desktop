@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=OnlineFix Linux Launcher
 GenericName=Launch OnlineFixes on Linux!
-Exec=/usr/share/onlinefix-linux-launcher
+Exec=/usr/bin/onlinefix-linux-launcher
 Icon=onlinefix-linux-launcher
 Type=Application
 StartupWMClass=org.develnext.jphp.ext.javafx.classes.UXApplication$CustomApplication
