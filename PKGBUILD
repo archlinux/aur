@@ -4,7 +4,7 @@
 
 pkgname=lidarr-develop
 _pkgname=Lidarr
-pkgver=2.14.2.4785
+pkgver=2.14.3.4791
 pkgrel=1
 pkgdesc='Music collection manager for newsgroup and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
@@ -46,7 +46,7 @@ source=(
   lidarr.tmpfiles
   package_info
 )
-sha256sums=('a67a66e4aec6c691d4a040991a1779df4c20264e44ffd6baa525a2107753b119'
+sha256sums=('e7a261fb8ed5c2ba248be39ec5011d4238101fc5fab566c0f9ce9add9eceebf7'
             '48f4cc5040b1a51e624f5be4977078b77bf7f87b9c1fb7fa34e844da4c831401'
             '85098d47734e8087480f8a29eafec50faa453487221ef01173888155d2b06e42'
             'd71e37213ac65722e42f6f2c5772d4515c2d28a77b9f7608dc05c787d86ebaa5'
