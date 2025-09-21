@@ -144,6 +144,8 @@ EOF
         cd "$srcdir/duckstation"
         sed -i 's/archlinux/marchlinux/g' CMakeModules/DuckStationBuildSummary.cmake
         sed -i '/#ifdef __linux__/,/#endif/d' src/core/system.cpp
+        sed -i '/CMAKE_FIND_ROOT_PATH/d' CMakeModules/DuckStationDependencies.cmake
+        sed -i 's/NOT Qt6_DIR MATCHES/Qt6_DIR MATCHES/' CMakeModules/DuckStationDependencies.cmake
     fi
 
 }
@@ -197,6 +199,7 @@ build() {
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DCMAKE_PREFIX_PATH="$srcdir/deps/usr" \
+        -Dzstd_INCLUDE_DIR="/usr/include/" \
         -Wno-dev
     ninja -C build
 }
