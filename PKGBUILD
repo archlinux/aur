@@ -1,6 +1,6 @@
 # Maintainer: Pu Anlai
 pkgname=pacupdate
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Simple but hopefully complete pacman update script"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-aioresponses')
 install=
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('2a9766953d88b96801054fc67c5355124b5c03e71172443dcdb397db6a62f769')
+sha256sums=('87bdcbce1ebfe748f7d9e410b0f637791c6b5e8c51873ccc278e7ae259336c25')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || return 1

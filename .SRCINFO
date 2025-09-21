@@ -1,6 +1,6 @@
 pkgbase = pacupdate
 	pkgdesc = Simple but hopefully complete pacman update script
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/Pu-Anlai/pacupdate
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = pacupdate
 	depends = python-feedparser
 	depends = pyalpm
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/p/pacupdate/pacupdate-0.2.tar.gz
-	sha256sums = 2a9766953d88b96801054fc67c5355124b5c03e71172443dcdb397db6a62f769
+	source = https://files.pythonhosted.org/packages/source/p/pacupdate/pacupdate-0.3.tar.gz
+	sha256sums = 87bdcbce1ebfe748f7d9e410b0f637791c6b5e8c51873ccc278e7ae259336c25
 
 pkgname = pacupdate
