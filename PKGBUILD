@@ -6,7 +6,7 @@
 _pkgname='wormhole-william'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Securely transfer files between devices. Go implementation of magic wormhole.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/psanford/wormhole-william'
