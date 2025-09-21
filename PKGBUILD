@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='iomux'
 pkgname="ocaml-$_projectname"
-pkgver='0.3'
+pkgver='0.4'
 pkgrel='1'
 pkgdesc='Io multiplexers bindings for ocaml (poll/kqueue/epoll and so on)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$pkgname"
 license=('ISC')
-depends=('ocaml>=4.08.0' 'dune>=3.6.0')
+depends=('ocaml>=4.08.0' 'dune>=3.19.0')
 checkdepends=('ocaml-alcotest')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('519ca3a16609e8f6fa815983312baf1a5dbb828e2d9eb709e32a09e2632f2b18679961eb3de7e78c11a0dfab5cb217ffd996166e008f67bdd732c5bca6c0ac50')
+b2sums=('81f810daf04c3b93c8816caa471e46f478fe8e246eac2ba9f4adbb74cbfc4ef8500636667ed2c8f4d4e838abd9bde5dff839861d79de19c1e6ea02d3b643bf6b')
 
 _sourcedirectory="$pkgname-$pkgver"
 
