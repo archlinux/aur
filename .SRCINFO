@@ -1,6 +1,6 @@
 pkgbase = wayfire-plugin-filters-git
 	pkgdesc = 3D wayland compositor filters plugin
-	pkgver = r37.00024b5
+	pkgver = r38.33f4778
 	pkgrel = 1
 	url = https://github.com/soreau/filters
 	arch = x86_64

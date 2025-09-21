@@ -3,7 +3,7 @@
 # Contributor: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-plugin-filters-git
-pkgver=r37.00024b5
+pkgver=r38.33f4778
 pkgrel=1
 pkgdesc="3D wayland compositor filters plugin"
 arch=('x86_64')
@@ -39,4 +39,6 @@ build() {
 
 package() {
         DESTDIR="$pkgdir/" ninja -C build install
+        install -Dm644 "$srcdir/filters/LICENSE" \
+                "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
