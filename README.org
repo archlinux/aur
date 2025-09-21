@@ -1,0 +1,60 @@
+#+TITLE: MusicLyricApp AUR Package
+#+AUTHOR: wang1zhen
+#+EMAIL: wang1zhen07@gmail.com
+
+This is the AUR package for MusicLyricApp (163MusicLyrics), a cross-platform music lyrics downloader.
+
+* Description
+
+MusicLyricApp is a powerful lyrics downloading application that supports:
+- NetEase Cloud Music (网易云音乐)
+- QQ Music (QQ音乐)
+- Multiple search types: Songs, Albums, Playlists
+- Batch downloading
+- Multiple output formats (LRC, SRT)
+- Translation support
+- Karaoke mode support
+
+* Installation
+
+** Manual Installation
+#+BEGIN_SRC bash
+# Clone the AUR repository
+git clone https://aur.archlinux.org/musiclyricapp.git
+cd musiclyricapp
+
+# Build and install
+makepkg -si
+#+END_SRC
+
+** Using AUR Helper
+#+BEGIN_SRC bash
+yay -S musiclyricapp
+#+END_SRC
+
+* Usage
+
+After installation, you can run the application with:
+
+#+BEGIN_SRC bash
+musiclyricapp
+#+END_SRC
+
+Or find it in your application menu under "AudioVideo" category.
+
+* Configuration
+
+The application stores its configuration files in:
+- =~/.config/MusicLyricApp/= - User configuration and settings
+- =~/.local/share/MusicLyricApp/= - User data and cache
+
+No additional setup is required after installation.
+
+* Upstream
+
+- [[https://github.com/jitwxs/163MusicLyrics][GitHub Repository]]
+- [[https://github.com/jitwxs/163MusicLyrics/wiki][Documentation Wiki]]
+
+* License
+
+Apache License 2.0
