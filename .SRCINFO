@@ -1,10 +1,10 @@
 pkgbase = cockpit-navigator
 	pkgdesc = A Featureful File Browser for Cockpit.
 	pkgver = 0.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/45Drives/cockpit-navigator
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL-3.0
 	depends = cockpit
 	depends = python
 	depends = rsync
