@@ -1,6 +1,6 @@
 pkgbase = hyperion-hercules
 	pkgdesc = Software implementation of System/370 and ESA/390
-	pkgver = 4.7
+	pkgver = 4.8
 	pkgrel = 1
 	url = https://sdl-hercules-390.github.io/html/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hyperion-hercules
 	optdepends = x3270: terminal support
 	conflicts = hercules
 	options = !makeflags
-	source = https://github.com/SDL-Hercules-390/hyperion/archive/refs/tags/Release_4.7.tar.gz
-	sha256sums = 74c747773e0b5639164f6f69ce9220e1bd1d4853c5c4f18329da21c03aebe388
+	source = https://github.com/SDL-Hercules-390/hyperion/archive/refs/tags/Release_4.8.tar.gz
+	sha256sums = 91ac45a1cce8196f32a7d7918db6f935c29a891cd0baedeec70f9290bce91de9
 
 pkgname = hyperion-hercules
