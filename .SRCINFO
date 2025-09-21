@@ -9,6 +9,6 @@ pkgbase = mac-touchbar-plus
 	makedepends = rust
 	makedepends = cargo
 	source = https://github.com/dev-muhammad-adel/mac-touchbar-plus/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = fe04a99311073fb891c04e2435c1cbec1355fb35f507514a73b193096de48ca0
+	sha256sums = 906ef7cd13b14df6fc0f3719745c83be5153be34345dc426de7bcd2cb368ed81
 
 pkgname = mac-touchbar-plus
