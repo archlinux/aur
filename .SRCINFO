@@ -22,10 +22,10 @@ pkgbase = chromium-ffmpeg-bin
 	conflicts = opera-developer-ffmpeg-codecs
 	conflicts = opera-beta-ffmpeg-codecs
 	source = chromium-ffmpeg.install
-	source = chromium-ffmpeg.hook
+	source = chromium-ffmpeg.hook::https://aur.archlinux.org/cgit/aur.git/plain/chromium-ffmpeg.hook?h=chromium-ffmpeg
 	source = https://github.com/oech3/Chromium-FFmpeg/releases/download/8.0/ffmpeg-8.0-linux-x64.tar.zst
 	sha256sums = 684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005
-	sha256sums = 6873b38d05e884f3f7fa1c2019ce380d717b3f95af75a1218fbd94a1054f65ad
+	sha256sums = c6ce8624456bad1e34941af3fa4f0f21fed5f8c6f9687ee1e0daee10a72a0bbd
 	sha256sums = 6dfcc8da692f3b0e9617d0cca0eb9e309bb54738153abb4f07d5c6e6fdefdffa
 
 pkgname = chromium-ffmpeg-bin
