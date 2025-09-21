@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-bin
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - binary version
-	pkgver = 1.46.8
+	pkgver = 1.46.11
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -31,13 +31,13 @@ pkgbase = mongodb-compass-readonly-bin
 	depends = krb5
 	depends = libsecret
 	optdepends = org.freedesktop.secrets
-	provides = mongodb-compass-readonly=1.46.8
+	provides = mongodb-compass-readonly=1.46.11
 	conflicts = mongodb-compass-readonly
 	options = !debug
 	backup = etc/mongodb-compass.conf
-	source = mongodb-compass-readonly-bin-1.46.8.rpm::https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.46.8.x86_64.rpm
+	source = mongodb-compass-readonly-bin-1.46.11.rpm::https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.46.11.x86_64.rpm
 	source = mongodb-compass.conf
-	b2sums = e372727db43752a0546c5c653497728479bb23392a979f4cedd9fb83973915586b3d2d2662889cf8280e2c391f5eb6f68aa541a35e05031664606f55bd97b82f
+	b2sums = 068e8817172d11ef5bdae8bd85325fe5ec5f4e68b9c51dc2f07b7668585bd2788a07b109c5c4b85dbf94823656d3729a44ee1db6175368d69c88eca0ff1a4c97
 	b2sums = 42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec
 
 pkgname = mongodb-compass-readonly-bin
