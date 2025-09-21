@@ -5,8 +5,8 @@
 pkgname="bizhawk-bin"
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting"
 
-pkgver=2.10
-pkgrel=4
+pkgver=2.11
+pkgrel=1
 
 arch=(x86_64)
 
@@ -22,11 +22,14 @@ source=(
 	"https://github.com/TASEmulators/BizHawk/releases/download/${pkgver}/BizHawk-${pkgver}-linux-x64.tar.gz"
 	"LICENSE.bizhawk::https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
 )
-md5sums=("2b8c640051a61be44d67d701948f6b4a" "2d15d8df1b4ec039a8fac3202a418a3c")
+md5sums=("23c56e8016aff7ef377b9f4cfcd54d03" "2d15d8df1b4ec039a8fac3202a418a3c")
 
 install="${pkgname}.install"
 
 prepare() {
+	# move to the source directory
+	cd "BizHawk-${pkgver}-linux-x64"
+
 	# extract the icon out of the executable
 	wrestool -x -R -n 6 EmuHawk.exe -o logo.png
 
@@ -40,6 +43,9 @@ prepare() {
 }
 
 package() {
+	# move to the source directory
+	cd "BizHawk-${pkgver}-linux-x64"
+
 	# copy all files to the package directory
 	find . -type d -exec install -Dm775 -ggames -d "${pkgdir}/opt/bizhawk/{}" \;
 	find . -type f \
@@ -56,5 +62,5 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin" && ln -s /opt/bizhawk/EmuHawkMono.sh "${pkgdir}/usr/bin/bizhawk"
 
 	# copy the license file
-	install -Dm644 LICENSE.bizhawk "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 ../LICENSE.bizhawk "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

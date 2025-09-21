@@ -1,7 +1,7 @@
 pkgbase = bizhawk-bin
 	pkgdesc = A multi-platform emulator with full re-recording support and Lua scripting
-	pkgver = 2.10
-	pkgrel = 4
+	pkgver = 2.11
+	pkgrel = 1
 	url = https://tasvideos.org/BizHawk
 	install = bizhawk-bin.install
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = bizhawk-bin
 	depends = lua>=5.4
 	depends = lsb-release
 	provides = bizhawk
-	source = https://github.com/TASEmulators/BizHawk/releases/download/2.10/BizHawk-2.10-linux-x64.tar.gz
-	source = LICENSE.bizhawk::https://raw.githubusercontent.com/TASEmulators/BizHawk/2.10/LICENSE
-	md5sums = 2b8c640051a61be44d67d701948f6b4a
+	source = https://github.com/TASEmulators/BizHawk/releases/download/2.11/BizHawk-2.11-linux-x64.tar.gz
+	source = LICENSE.bizhawk::https://raw.githubusercontent.com/TASEmulators/BizHawk/2.11/LICENSE
+	md5sums = 23c56e8016aff7ef377b9f4cfcd54d03
 	md5sums = 2d15d8df1b4ec039a8fac3202a418a3c
 
 pkgname = bizhawk-bin
