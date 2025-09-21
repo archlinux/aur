@@ -1,7 +1,7 @@
 pkgbase = chezetc
 	pkgdesc = Extending chezmoi to manage files under /etc and other root-owned directories
-	pkgver = 202509.3
-	pkgrel = 3
+	pkgver = 202509.6
+	pkgrel = 1
 	url = https://silverrainz.me/chezetc
 	arch = any
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = chezetc
 	depends = python
 	depends = python-tomli
 	depends = python-tomli-w
-	source = chezetc-202509.3.tar.gz::https://github.com/SilverRainZ/chezetc/archive/refs/tags/202509.3.tar.gz
+	source = chezetc-202509.6.tar.gz::https://github.com/SilverRainZ/chezetc/archive/refs/tags/202509.6.tar.gz
 	source = chezetc
-	sha256sums = b04764d1e6a899642241ebd214a1001f9133ed1fd116ce650d7bada302fb3e68
+	sha256sums = d10f0f0892ebd00b2a196191ea1e227da160c66d3b1d863425584fcce1926bd8
 	sha256sums = 10c022dc7f78dc00e1aeaad816a932fad7271bc2d2d0e8a4c12d14106471843b
 
 pkgname = chezetc
