@@ -2,7 +2,7 @@
 pkgname=realvim
 pkgver=1.0
 pkgrel=2
-pkgdesc="A lightweight terminal text editor"
+pkgdesc="A lightweight terminal text editor written in rust"
 arch=('x86_64')
 url="https://github.com/realdanvanth/realvim"
 license=('custom')

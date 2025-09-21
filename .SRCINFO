@@ -1,5 +1,5 @@
 pkgbase = realvim
-	pkgdesc = A lightweight terminal text editor
+	pkgdesc = A lightweight terminal text editor written in rust
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://github.com/realdanvanth/realvim
