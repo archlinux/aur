@@ -1,7 +1,7 @@
 pkgbase = python-glasgow-git
 	pkgdesc = Software for the Glasgow Interface Explorer, the Scots Army Knife for electronics
 	pkgver = 0.2253
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GlasgowEmbedded/glasgow.git
 	arch = any
 	license = 0BSD
@@ -9,6 +9,7 @@ pkgbase = python-glasgow-git
 	makedepends = python-build
 	makedepends = python-pdm
 	makedepends = python-pdm-backend
+	makedepends = git
 	depends = python
 	depends = python-pyvcd
 	depends = python-libusb1
