@@ -1,6 +1,6 @@
 pkgbase = crosscode
 	pkgdesc = Cross platform iOS IDE
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/nab138/CrossCode
 	install = crosscode.install
@@ -17,6 +17,6 @@ pkgbase = crosscode
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/nab138/CrossCode/releases/download/v0.0.4/CrossCode_0.0.4_amd64.deb
+	source_x86_64 = https://github.com/nab138/CrossCode/releases/download/v0.0.5/CrossCode_0.0.5_amd64.deb
 
 pkgname = crosscode
