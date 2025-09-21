@@ -1,10 +1,11 @@
 pkgbase = python-cx-freeze
 	pkgdesc = Create standalone executables from Python scripts
-	pkgver = 8.4.0
+	pkgver = 8.4.1
 	pkgrel = 1
 	url = https://marcelotduarte.github.io/cx_Freeze
 	arch = x86_64
 	license = PSF-2.0
+	checkdepends = uv
 	checkdepends = python-uv
 	checkdepends = python-packaging
 	checkdepends = python-pytest
@@ -39,7 +40,7 @@ pkgbase = python-cx-freeze
 	optdepends = rpm-tools: RPM Package Manager RPM.org support
 	provides = python-cx_freeze
 	conflicts = python-cx_freeze
-	source = https://github.com/marcelotduarte/cx_Freeze/archive/8.4.0/python-cx-freeze-8.4.0.tar.gz
-	sha512sums = 6f9858d19cbfa8f565dae311a2882a0a495310c8e7f242426a9b2f3f59735cda8f8542fb8b4edf7ab5c4c3c0e4ed428a187790a9d3c3d9fd716361ddbee5c13f
+	source = https://github.com/marcelotduarte/cx_Freeze/archive/8.4.1/python-cx-freeze-8.4.1.tar.gz
+	sha512sums = 6efa67cc5b6fd20614bff4abb1e55e7cb3eaf8fc0334d7c643606f1a55898083e578f499432e71ad4dc7a16702e44c58aa743bcd034b5762b3a794fe1fad23d8
 
 pkgname = python-cx-freeze

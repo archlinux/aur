@@ -12,96 +12,101 @@
 
 pkgname=python-cx-freeze
 _pkgname=cx_Freeze
-pkgver=8.4.0
+pkgver=8.4.1
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url="https://marcelotduarte.github.io/$_pkgname"
 license=('PSF-2.0')
 depends=(
-glibc 
-patchelf 
-python
-python-filelock
-python-tomli
-pyside6
-python-pyqt6)
+  glibc
+  patchelf
+  python
+  python-filelock
+  python-tomli
+  pyside6
+  python-pyqt6)
 makedepends=(
-python-wheel
-python-setuptools
-python-packaging
-python-build
-python-installer)
+  python-wheel
+  python-setuptools
+  python-packaging
+  python-build
+  python-installer)
 checkdepends=(
-python-uv
-python-packaging
-python-pytest 
-python-pluggy 
-python-pytest-cov 
-python-coverage 
-python-pytest-timeout 
-python-typeguard 
-python-anyio 
-python-typeguard 
-python-hypothesis 
-python-faker 
-python-pytest-asyncio 
-python-respx 
-python-pytest-mock 
-python-pytest-xdist 
-python-pytest-examples 
-python-pytest-datafiles)
+  uv
+  python-uv
+  python-packaging
+  python-pytest
+  python-pluggy
+  python-pytest-cov
+  python-coverage
+  python-pytest-timeout
+  python-typeguard
+  python-anyio
+  python-typeguard
+  python-hypothesis
+  python-faker
+  python-pytest-asyncio
+  python-respx
+  python-pytest-mock
+  python-pytest-xdist
+  python-pytest-examples
+  python-pytest-datafiles)
 optdepends=(
-'perl-alien-build: Alien support for rpm, dpkg, stampede slp, and slackware tgz file formats'
-'rpm-tools: RPM Package Manager RPM.org support')
+  'perl-alien-build: Alien support for rpm, dpkg, stampede slp, and slackware tgz file formats'
+  'rpm-tools: RPM Package Manager RPM.org support')
+# pypi module alternate naming
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
 source=("https://github.com/marcelotduarte/$_pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('6f9858d19cbfa8f565dae311a2882a0a495310c8e7f242426a9b2f3f59735cda8f8542fb8b4edf7ab5c4c3c0e4ed428a187790a9d3c3d9fd716361ddbee5c13f')
+sha512sums=('6efa67cc5b6fd20614bff4abb1e55e7cb3eaf8fc0334d7c643606f1a55898083e578f499432e71ad4dc7a16702e44c58aa743bcd034b5762b3a794fe1fad23d8')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  sed -i 's/77.0.3,<=80.4.0/77.0.3/g' pyproject.toml
+  # substitute multi-line requires with single line
+  sed -i '/^requires = \[/,/^\]/crequires = ["setuptools"]' pyproject.toml
+
 }
 build() {
   cd "$_pkgname-$pkgver"
   python setup.py build_ext --inplace
   python -m build --wheel --no-isolation
 }
-
 check() {
-  cd "$_pkgname-$pkgver"
-  # Create a temporary bin directory with the cxfreeze wrapper
-  mkdir -p test-bin
-  cat >test-bin/cxfreeze <<EOF
-#!/usr/bin/env python
-from cx_Freeze.cli import main
-main()
-EOF
-  chmod +x test-bin/cxfreeze
-  # Run tests with the wrapper script available in PATH
-  PATH="$PWD/test-bin:$PATH" \
-    PYTHONPATH="$PWD" \
-    TMPDIR="$PWD/.pytest-tmp" \
-    pytest --venv-backend=uv -rpfEsXx \
-    --basetemp="$PWD/.pytest-tmp" \
-    --ignore=tests/test_command_bdist_deb.py \
-    --ignore=tests/test_command_bdist_rpm.py \
-    --ignore=tests/hooks/test_av.py \
-    --ignore=tests/hooks/test_numpy.py \
-    --ignore=tests/hooks/test_mkl.py \
-    --ignore=tests/hooks/test_scikit.py \
-    --ignore=tests/hooks/test_module.py \
-    --ignore=tests/hooks/test_multiprocessing.py \
-    --ignore=tests/hooks/test_multiprocess.py \
-    --ignore=tests/hooks/test_stdlib.py \
-    --deselect tests/test_executables.py::test_valid_sys_path \
-    --deselect tests/test_module.py::test_egg_info \
-    --deselect tests/test_modulefinder.py::test_editable_packages
+    cd "$_pkgname-$pkgver"
+    export UV_CACHE_DIR="$PWD/.uv-cache"
+    export UV_LINK_MODE=copy
+    # temporary install location for testing
+    rm -rf test-install ; mkdir -p test-install
+    uv run --no-project --python /usr/bin/python python -m installer --destdir="$PWD/test-install" dist/cx*freeze-${pkgver}-*-linux_x86_64.whl
+    # python path for pytest
+    python_version=$(/usr/bin/python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+    export PYTHONPATH="$PWD/test-install/usr/lib/python${python_version}/site-packages:$PYTHONPATH"    
+
+    deselect_tests=(
+        "tests/test_module.py::test_egg_info"
+        "tests/test_modulefinder.py::test_editable_packages"
+    )
+    ignore_files=(
+        "tests/test_command_bdist_rpm.py"
+    )
+    
+    deselect_args=()
+    for test in "${deselect_tests[@]}"; do
+        deselect_args+=(--deselect="$test")
+    done
+    
+    ignore_args=()
+    for file in "${ignore_files[@]}"; do
+        ignore_args+=(--ignore="$file")
+    done
+    
+    # run tests excluding venv-marked tests, deselected tests, and ignored files
+    uv run --no-project --python /usr/bin/python pytest -v -m "not venv" "${deselect_args[@]}" "${ignore_args[@]}"
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/cx*freeze-${pkgver}-*-linux_x86_64.whl
 }
 # vim:set ts=2 sw=2 et:
