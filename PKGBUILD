@@ -1,7 +1,7 @@
 pkgname=simplelogin
 _pkgname=SimpleLogin
-pkgver=1.0.5.aurpatch
-pkgrel=2
+pkgver=1.0.6.aur.1 
+pkgrel=1
 pkgdesc="Unofficial Simple Login desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/simplelogin"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('02a3e8ad2dad4a6f92ab55ac0ed0df30e25cc8cb64e7ccb88fc0f7c9b8f6736b')
+sha256sums=('fe64286fd0c9161deed6b30747e143a3bf82d0a9f0967be372624e8e666d27a3')
 
 
 package() {
