@@ -40,4 +40,6 @@ build() {
 
 package() {
         DESTDIR="$pkgdir/" ninja -C build install
+        install -Dm644 "$srcdir/focus-request/LICENSE" \
+                "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
