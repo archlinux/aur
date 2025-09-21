@@ -1,6 +1,6 @@
 pkgbase = f1multiviewer-bin
 	pkgdesc = Unofficial motorsports desktop client
-	pkgver = 2.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://multiviewer.app
 	install = f1multiviewer-bin.install
@@ -14,9 +14,9 @@ pkgbase = f1multiviewer-bin
 	depends = xdg-utils
 	provides = f1multiviewer
 	conflicts = f1multiviewer
-	source = https://releases.multiviewer.app/download/289869948/MultiViewer-linux-x64-2.1.0.zip
+	source = https://releases.multiviewer.app/download/295039430/MultiViewer-linux-x64-2.2.1.zip
 	source = f1multiviewer.desktop
-	sha256sums = 10981fd32c4494ad1ed4aea7cea67ff311b84f96a9b6fb0a6d21d304984c13fd
+	sha256sums = a635f3381bc20c7608fcf24fb765461d83ceef1b23f46bcea1768fa5f233d2e7
 	sha256sums = 00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a
 
 pkgname = f1multiviewer-bin
