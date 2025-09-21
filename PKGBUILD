@@ -13,6 +13,6 @@ install=$pkgname.install
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 ttybatd "$pkgdir/usr/bin/ttybatd"
-    install -Dm600 ttybatd.service "$pkgdir/usr/lib/systemd/system/ttybatd.service"
+    install -Dm644 ttybatd.service "$pkgdir/usr/lib/systemd/system/ttybatd.service"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
