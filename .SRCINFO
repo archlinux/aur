@@ -1,7 +1,7 @@
 pkgbase = imgpdfsquisher
 	pkgdesc = A Python GUI application for reducing the filesize of PDF with high resolution images
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pierspad/imgpdfsquisher
 	arch = any
 	license = MIT
