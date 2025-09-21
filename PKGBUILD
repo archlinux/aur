@@ -5,8 +5,8 @@
 # -*- sh -*-
 
 pkgname='nb'
-pkgver=7.20.1
-pkgrel=2
+pkgver=7.21.3
+pkgrel=1
 pkgdesc="A command-line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -69,7 +69,7 @@ package() {
   done
 }
 
-sha256sums=('66ecc7b016c71152b260c589db61374fa9bfbb825f00ebea482b867727f1731d')
-b2sums=('5d0e9032ae54f9392e7fdb96db4bd9650d96ca8d587447a9cfb5a3c519ac745f73102811853c5182136f28be80ba205310cd48f2fec6092abc1ad031b129bdfd')
+sha256sums=('c65dd9d1cd010158967e832fa98bfe8cfd6934ac18964674d40d8905436d5a6c')
+b2sums=('c80f4a33a7fb9b67ddd52cc66b3fc9ef77193f78e10b21a855aa71bf8a5e8698db3639e3e2b9d0529fe44c930ddafa012183081af98628f291981ac028858929')
 
 # eof
