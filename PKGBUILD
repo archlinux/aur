@@ -1,4 +1,5 @@
-# Maintainer: Nocifer <apmichalopoulos at gmail dot com>
+# Maintainer: Riedler <lib32xvidcore.aur@riedler.wien>
+# Contributor: Nocifer <apmichalopoulos at gmail dot com>
 # Contributor: Tod Jackson <tod.jackson@gmail.com>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarah@archlinux.org>
