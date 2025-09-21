@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gganimate
-_pkgver=1.0.9
+_pkgver=1.0.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9be9453ae809aa81f1722f2215681edb')
-b2sums=('d52f9ec98be6b095ae5f735c23525d76174b61ada1ef88ac7c9bc767396757903d6214849293bfc9318992fb46e356b6e59368a247b6ef20b27644fe15d4fb9b')
+md5sums=('66d42eedb4dc79f23558e016fac07b63')
+b2sums=('0ba8988eb5489cd3d7f5c256e700126640042281944c37aac7af921c8af0e99f23a3a60d1e9f66734846d559a6ad66587ba206edd8569a35a318c757ed2c0806')
 
 build() {
   mkdir build
