@@ -1,12 +1,11 @@
 # Maintainer: whiteman808 <whiteman808@paraboletancza.org>
-# Contributor: Jeff Henson <jeff@henson.io>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Old Maintainer: Jeff Henson <jeff@henson.io>
+# Old Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: darkhz <kmachanwenw at gmail dot com>
 
 pkgname=bluetuith
-pkgver=0.2.5
+pkgver=0.2.5_rc1
 pkgrel=1
-epoch=1
 pkgdesc="TUI-based bluetooth manager"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/bluetuith-org/bluetuith"
@@ -15,7 +14,7 @@ depends=('bluez' 'dbus')
 optdepends=("bluez-obex: send and receive files via OBEX")
 makedepends=('git' 'go')
 source=("$pkgname::git+$url.git#tag=v${pkgver/_/-}")
-sha256sums=('b19ef6f9903c01a1e47b1b7446bd53778beb5e258d4d96fd4ea4f40e8ea3ca65')
+sha256sums=('8c5961fa0ea46f90a18847048b817788cface1a10ca02a4688228e03dc6e62b3')
 
 prepare() {
 	cd "$pkgname"
@@ -46,3 +45,4 @@ package() {
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
+
