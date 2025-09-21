@@ -1,6 +1,6 @@
 pkgbase = f2c
 	pkgdesc = Fortran to C code translator
-	pkgver = 20240504
+	pkgver = 20250921
 	pkgrel = 1
 	url = https://www.netlib.org/f2c
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = f2c
 	makedepends = unzip
 	depends = glibc
 	noextract = libf2c.zip
-	source = f2c-20240504.tar.gz::https://www.netlib.org/f2c/src.tgz
-	source = libf2c-20240504.zip::https://www.netlib.org/f2c/libf2c.zip
-	sha512sums = 93b3c3fe0231d99e64df5fc067c60218854fd015b5f84f9e42ca12ef310b7b8448936f900f5d7c2ecd42737c8250dc45664a580ad67ce8289ffb5e2347a7793e
+	source = f2c-20250921.tar.gz::https://www.netlib.org/f2c/src.tgz
+	source = libf2c-20250921.zip::https://www.netlib.org/f2c/libf2c.zip
+	sha512sums = 184304f3bdc18e2d9a5ceb6a8abb51087490b33fd1b00e99b92cb7ea792d3c0a56587d7db7429e30896059782f4838d4bc1765d615d953d268694c7a3a5b990e
 	sha512sums = 596bd0017e0c4b61191200a0bc788777585049eb939c528625349404cc8d9bbd0957efecd79077c487fdff5fc7e435189574b2c495cafaa6006dd2585b13960a
 
 pkgname = f2c
