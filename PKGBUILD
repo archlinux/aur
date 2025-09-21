@@ -3,7 +3,7 @@
 
 pkgname='python-zulip-api'
 pkgver="0.9.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Pyhton bindings for Zulip API."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/zulip/python-zulip-api"
