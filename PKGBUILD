@@ -34,9 +34,9 @@ makedepends=(
     'git'
     'cargo'
     'clang'
+    'jq'
     'llvm'
     'pkgconf'
-    'valgrind'
 )
 
 source=("git+https://github.com/koverstreet/bcachefs-tools.git")
@@ -85,12 +85,14 @@ package() {
 
     make "${make_args[@]}" install
 
+    # replace incompatible initcpio hooks
+    rm -rf "$pkgdir"/usr/lib/initcpio/*
+    install -Dm644 arch/etc/initcpio/hooks/bcachefs -t "$pkgdir/usr/lib/initcpio/hooks"
+    install -Dm644 arch/etc/initcpio/install/bcachefs -t "$pkgdir/usr/lib/initcpio/install"
+
     # Remove DKMS sources installed by upstream makefile.
     # Userspace tools stay here; kernel module is provided elsewhere to avoid mismatches.
     rm -rf "$pkgdir/usr/src"
-
-    # License
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Shell completions
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
