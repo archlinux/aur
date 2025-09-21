@@ -1,7 +1,7 @@
 pkgbase = r-ggsurvfit
 	pkgdesc = Flexible Time-to-Event Figures
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggsurvfit
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = r-ggsurvfit
 	optdepends = r-tidycmprsk
 	optdepends = r-vdiffr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/ggsurvfit_1.1.0.tar.gz
-	sha256sums = 25670e2b7eeb1f61a2b7e8f76a48d5066e7afa4240773b6ec4cd8e185fda7830
+	source = https://cran.r-project.org/src/contrib/ggsurvfit_1.2.0.tar.gz
+	sha256sums = 99d2381eab75699450d6fe2fe134ce33f581bb87b4e6bb58ce375b8d0d9d2e36
 
 pkgname = r-ggsurvfit
