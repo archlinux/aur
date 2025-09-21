@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=GitHub Desktop Plus
-Comment=Extend your GitHub workflow beyond your browser with GitHub Desktop
+Comment=GitHub Desktop fork with advanced functionality and Bitbucket integration.
 Comment[es]=Trabaja con GitHub desde tu escritorio.
 Comment[eu]=GitHub-ekin lan egin zure ordenagailutik.
 Exec=/usr/bin/github-desktop-plus %U
