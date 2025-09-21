@@ -1,13 +1,13 @@
 pkgbase = goscrobble
 	pkgdesc = A simple music scrobbler daemon for MPRIS-based music players.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/p-mng/goscrobble
 	arch = x86_64
 	license = custom:MIT
 	makedepends = go
 	depends = dbus
-	source = goscrobble-v0.3.2.tar.gz::https://github.com/p-mng/goscrobble/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = a4a34ee7a19dd32be0dfc8b31eab8966128b74a07b6b9fb61f7a038a6f717dc5
+	source = goscrobble-v0.3.3.tar.gz::https://github.com/p-mng/goscrobble/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 5b67b196d7528bb37b3321f922b1f5b35cb76b271299c496b20a97b6d49128c8
 
 pkgname = goscrobble
