@@ -1,13 +1,13 @@
 diff --git a/package.json b/package.json
-index 29889cb13..290491daa 100644
+index 6c84e549a..9ff5169e8 100644
 --- a/package.json
 +++ b/package.json
-@@ -110,6 +110,10 @@
-       "eslint-plugin-jsx-a11y": "^6.10.2",
-       "eslint-plugin-react": "^7.37.5",
-       "eslint-plugin-react-hooks": "^5.2.0"
--    }
-+    },
+@@ -131,6 +131,10 @@
+     "@leafygreen-ui/code": "^16.0.2",
+     "@leafygreen-ui/text-area": "^10.0.2",
+     "@leafygreen-ui/card": "^12.0.2",
+-    "@leafygreen-ui/logo": "^10.0.2"
++    "@leafygreen-ui/logo": "^10.0.2",
 +    "electron": "%%ELECTRON_VERSION%%",
 +    "electron-to-chromium": "latest",
 +    "ssh2": "1.16.0",
