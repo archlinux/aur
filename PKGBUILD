@@ -1,12 +1,12 @@
 # Maintainer: Daniël van de Giessen <aur@dvdgiessen.nl>
 pkgname=pipemixer-git
-pkgver=0.1.2.r202.efa00fe
+pkgver=0.2.4.r272.d1a67c1
 pkgrel=1
 pkgdesc='TUI volume control app for pipewire'
 arch=('x86_64')
 url='https://github.com/heather7283/pipemixer'
 license=('GPL-3.0-or-later')
-depends=('glibc' 'libpipewire' 'ncurses')
+depends=('glibc' 'libinih' 'libpipewire' 'ncurses')
 makedepends=('git' 'meson')
 source=('git+https://github.com/heather7283/pipemixer.git')
 sha256sums=('SKIP')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
 	cd pipemixer
-	arch-meson -D system_libraries=disabled build
+	arch-meson build
 	meson compile -C build
 }
 
