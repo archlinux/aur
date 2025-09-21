@@ -5,6 +5,6 @@ Comment=A simple SakuraLLM launcher
 Comment[zh_CN]=一个简单的 Sakura 启动器
 Keywords=launcher;sakura;llm
 Icon=sakura-launcher-gui
-Exec=/opt/sakura-launcher-gui/sakura_launcher
+Exec=cd /opt/sakura-launcher-gui/ && /opt/sakura-launcher-gui/sakura_launcher
 Categories=Utility;Translation
 Terminal=false

@@ -4,7 +4,7 @@
 
 pkgname=sakura-launcher-gui
 pkgver=v1.2.0_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple SakuraLLM launcher"
 arch=(x86_64)
 url='https://github.com/PiDanShouRouZhouXD/Sakura_Launcher_GUI'

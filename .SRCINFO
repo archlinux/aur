@@ -1,7 +1,7 @@
 pkgbase = sakura-launcher-gui
 	pkgdesc = A simple SakuraLLM launcher
 	pkgver = v1.2.0_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PiDanShouRouZhouXD/Sakura_Launcher_GUI
 	arch = x86_64
 	license = GPL-3.0-or-later
