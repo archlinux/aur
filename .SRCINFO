@@ -1,6 +1,6 @@
 pkgbase = r-ggside
 	pkgdesc = Side Grammar Graphics
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggside
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-ggside
 	optdepends = r-tidyr
 	optdepends = r-vdiffr
 	optdepends = r-viridis
-	source = https://cran.r-project.org/src/contrib/ggside_0.3.2.tar.gz
-	sha256sums = 6a74bf050ec745d449861ba01775436ab4c490e150272b0d2ea25b65d5391a7d
+	source = https://cran.r-project.org/src/contrib/ggside_0.4.0.tar.gz
+	sha256sums = 2156a1650cff6a57d46a2633fdf431d5c190e663c69f22edfe9f7be1d822377f
 
 pkgname = r-ggside
