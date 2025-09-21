@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="A user-friendly time-traveling debugger for a variety of programming languages"
 url="https://codetracer.com"
 arch=(x86_64)
-license=("AGPL-3-only")
+license=("AGPL-3.0-only")
 depends=("fuse" "openssl" "xdg-desktop-portal")
-makedepends=("base-devel")
+makedepends=()
 provides=("ct")
-source=("https://github.com/metacraft-labs/$pkgname/releases/download/${pkgver}/resources.tar.xz" "https://downloads.codetracer.com/CodeTracer-${pkgver}-amd64.AppImage")
+source=("codetracer-resources-${pkgver}.tar.xz::https://github.com/metacraft-labs/$pkgname/releases/download/${pkgver}/resources.tar.xz" "https://downloads.codetracer.com/CodeTracer-${pkgver}-amd64.AppImage")
 noextract=("CodeTracer-${pkgver}-amd64.AppImage")
 sha256sums=('bcc5263349f11a35eb6d6c239445cfdcea858fa7becb3cc609ac05b9760371a4'
             '3720f1bfa7ebb09e0d558fd3ff0d3bf7f32ae86bf48e06c64335fa6b97659be7')
