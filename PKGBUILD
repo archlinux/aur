@@ -2,7 +2,7 @@
 # Maintainer: serverbread <serverbread-DEV@qq.com>
 pkgname="meowpad-configurator-v2-bin"
 pkgver="1.2.0"
-pkgrel=2
+pkgrel=1
 pkgdesc="Meowpad v2 配置器"
 arch=('x86_64')
 license=('MIT')
