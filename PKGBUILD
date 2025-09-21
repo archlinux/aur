@@ -118,6 +118,10 @@ EOF
     fi
 
     deps_script=$srcdir/duckstation/$forbidden_versions_file_path
+
+    # unbreak the build
+    sed -i 's/3ebbfd45645650c4940bf0f3b4d25ab913466bb0/cdcd4afba44326d12206493620b3e0aa4935f311/g' "$deps_script"
+
     for src in "${source[@]}"; do
         local src_name=${src%%::*}
         for dep in "${_source_var[@]}"; do
