@@ -1,0 +1,25 @@
+pkgbase = wayfire-plugin-filters-git
+	pkgdesc = 3D wayland compositor filters plugin
+	pkgver = r37.00024b5
+	pkgrel = 1
+	url = https://github.com/soreau/filters
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = libdisplay-info
+	makedepends = yyjson
+	makedepends = boost
+	makedepends = vulkan-headers
+	depends = wayfire-git
+	depends = glibmm
+	depends = wayland-protocols
+	depends = glm
+	optdepends = wcm: GTK3-based configuration tool for the Wayfire compositor
+	provides = wayfire-plugin-filters
+	conflicts = wayfire-plugin-filters
+	source = git+https://github.com/soreau/filters
+	sha256sums = SKIP
+
+pkgname = wayfire-plugin-filters-git
