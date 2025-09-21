@@ -1,6 +1,6 @@
 pkgbase = chromium-ffmpeg-git
 	pkgdesc = Add codecs to Chromium (libavcodec ??)
-	pkgver = 8.1.r121039.ga4fd3f27f4
+	pkgver = 8.1.r121159.g0bd5a7d371
 	pkgrel = 1
 	url = https://git.ffmpeg.org/ffmpeg
 	install = chromium-ffmpeg.install
@@ -11,6 +11,7 @@ pkgbase = chromium-ffmpeg-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
+	makedepends = sed
 	depends = glibc
 	provides = chromium-ffmpeg
 	provides = nwjs-ffmpeg-codecs
@@ -30,11 +31,11 @@ pkgbase = chromium-ffmpeg-git
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = git+https://git.ffmpeg.org/ffmpeg.git
 	source = chromium-ffmpeg.install
-	source = chromium-ffmpeg.hook
+	source = chromium-ffmpeg.hook::https://aur.archlinux.org/cgit/aur.git/plain/chromium-ffmpeg.hook?h=chromium-ffmpeg
 	sha256sums = 65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341
 	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
 	sha256sums = SKIP
 	sha256sums = 684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005
-	sha256sums = cb315e46384975a1f455ae8213f3425e7225e0a11fbc1642ad22c8bb485a569e
+	sha256sums = c6ce8624456bad1e34941af3fa4f0f21fed5f8c6f9687ee1e0daee10a72a0bbd
 
 pkgname = chromium-ffmpeg-git

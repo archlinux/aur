@@ -1,6 +1,6 @@
 
 pkgname=chromium-ffmpeg-git
-pkgver=8.1.r121039.ga4fd3f27f4
+pkgver=8.1.r121159.g0bd5a7d371
 pkgver(){
   printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') \
     $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
@@ -15,19 +15,20 @@ install=${pkgname%-git}.install
 source=(
 "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/main/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-git+${url}.git $install ${pkgname%-git}.hook 
+git+${url}.git $install
+${pkgname%-*}.hook::https://aur.archlinux.org/cgit/aur.git/plain/${pkgname%-*}.hook?h=${pkgname%-*}
 )
 
 sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             'SKIP'
             '684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005'
-            'cb315e46384975a1f455ae8213f3425e7225e0a11fbc1642ad22c8bb485a569e')
+            'c6ce8624456bad1e34941af3fa4f0f21fed5f8c6f9687ee1e0daee10a72a0bbd')
 #sha256sums[0]=SKIP
 #sha256sums[1]=SKIP
 depends=(glibc)
 makedepends=(nasm git
-gcc make patch) # base-devel
+gcc make patch sed) # base-devel
 _so=libffmpeg.so
 conflicts=(${pkgname%-git}
 {nwjs,opera{,-beta,-developer},vivaldi{,-snapshot}}-ffmpeg-codecs)
@@ -76,7 +77,7 @@ build() {
   _symbols=$(sed 's/^/-Wl,-u,/' sigs.txt | paste -sd ' ' -)
   gcc $LTOFLAGS -shared $LDFLAGS \
     -Wl,--start-group libav{codec,format,util}.a libswresample.a -Wl,--end-group \
-    ${_symbols} -Wl,--version-script=export.map \
+    $_symbols -Wl,--version-script=export.map \
     -lm -Wl,-Bsymbolic -o $_so
 }
 
@@ -84,7 +85,8 @@ package(){
   _avcodec=$(grep -oP 'LIBAVCODEC_VERSION_MAJOR\s+\K\d+' ffmpeg/libavcodec/version_major.h)
   install -Dvm644 $_so "${pkgdir}"/usr/lib/${_so}.$_avcodec
   ln -sf ${_so}.$_avcodec "${pkgdir}"/usr/lib/$_so
-  install -Dm644 ${pkgname%-git}.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  sed "s/^Target=${pkgname%-*}.*/Target=${pkgname}/" ${pkgname%-*}.hook > ${pkgname}.hook
+  install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
   touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.5,7.6,7.7,7.8,7.9,8.0}
