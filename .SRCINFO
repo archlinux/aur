@@ -1,0 +1,18 @@
+pkgbase = chezetc-git
+	pkgdesc = Extending chezmoi to manage files under /etc and other root-owned directories
+	pkgver = 202509.5
+	pkgrel = 1
+	url = https://silverrainz.me/chezetc
+	arch = any
+	license = MIT
+	depends = bash
+	depends = gettext
+	depends = python
+	depends = python-tomli
+	depends = python-tomli-w
+	provides = chezetc
+	conflicts = chezetc
+	source = git+https://github.com/SilverRainZ/chezetc.git#branch=master
+	sha256sums = SKIP
+
+pkgname = chezetc-git
