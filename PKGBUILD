@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=ndecrypt
 pkgname=$_pkgname-git
-pkgver=0.2.5.r20.g450f6fb
+pkgver=0.4.2.r0.g415b3f1
 pkgrel=1
 pkgdesc="DS/3DS Encryption Tool"
 arch=('x86_64')
 url="https://github.com/SabreTools/NDecrypt"
 license=('MIT')
-depends=('dotnet-runtime-8.0' 'gcc-libs' 'glibc')
-makedepends=('dotnet-sdk>=8' 'git')
+depends=('gcc-libs' 'glibc')
+makedepends=('dotnet-sdk>=9' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -16,21 +16,24 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags --exclude=rolling | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 --exclude=rolling | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 build() {
-	export DOTNET_CLI_TELEMETRY_OPTOUT=true
-	export DOTNET_NOLOGO=true
-	dotnet publish $_pkgname/NDecrypt \
-		--configuration Release \
-		--framework net8.0 \
-		--output build \
-		--runtime linux-x64 \
+	local options=(
+		--configuration Release
+		--framework net9.0
+		--output build
+		--runtime linux-x64
 		--self-contained false
+	)
+	export DOTNET_CLI_TELEMETRY_OPTOUT=1
+	export DOTNET_NOLOGO=1
+	dotnet publish $_pkgname/NDecrypt "${options[@]}"
 }
 
 package() {
+	depends+=('dotnet-runtime-9.0')
 	# shellcheck disable=SC2154
 	install -d "$pkgdir"/usr/{bin,lib}
 	cp -dr --no-preserve=ownership build "$pkgdir"/usr/lib/$_pkgname

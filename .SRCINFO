@@ -1,18 +1,20 @@
 pkgbase = ndecrypt-git
 	pkgdesc = DS/3DS Encryption Tool
-	pkgver = 0.2.5.r20.g450f6fb
+	pkgver = 0.4.2.r0.g415b3f1
 	pkgrel = 1
 	url = https://github.com/SabreTools/NDecrypt
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk>=8
+	makedepends = dotnet-sdk>=9
 	makedepends = git
-	depends = dotnet-runtime-8.0
 	depends = gcc-libs
 	depends = glibc
-	provides = ndecrypt=0.2.5.r20.g450f6fb
+	provides = ndecrypt=0.4.2.r0.g415b3f1
 	conflicts = ndecrypt
 	source = ndecrypt::git+https://github.com/SabreTools/NDecrypt.git
 	b2sums = SKIP
 
 pkgname = ndecrypt-git
+	depends = gcc-libs
+	depends = glibc
+	depends = dotnet-runtime-9.0
