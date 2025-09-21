@@ -1,7 +1,7 @@
 # Maintainer: jwr1
 
 pkgname=interstellar-bin
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.'
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ conflicts=(interstellar)
 options=(!debug)
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/interstellar-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/interstellar-linux-aarch64.tar.gz")
-sha256sums_x86_64=('29f6f56c5e78c02c1bde28d1b8280eb831c534801ad55c8a67a563a3d0adaab8')
-sha256sums_aarch64=('3f08b58d9384dd856f9bb4857a8bcefd0dd0da732ea4ba9cb41e9f223e9111dd')
+sha256sums_x86_64=('69c3c9876043a85f97b25b5c6f53bf64709e4943043ff2f7f0e34011a7b859c5')
+sha256sums_aarch64=('5c54fa8c7180fc31a55b619ee51d4a2d82019dd5b2eceaab7e554bd2c5c2eca7')
 
 package() {
 	# Setup directories
