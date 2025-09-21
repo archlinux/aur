@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -11,7 +11,8 @@ depends=(
     'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
-    'vulkan-icd-loader')
+    'vulkan-icd-loader'
+    'wayland')
 makedepends=(
     'alsa-lib'
     'cargo'
@@ -49,12 +50,11 @@ makedepends=(
     'sndio'
     'systemd-libs'
     'vulkan-headers'
-    'wayland'
     'wayland-protocols')
 source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'git+https://github.com/gopher64/parallel-rdp-standalone.git'
         'gopher64.desktop')
-sha256sums=('6c5601ee85d92bafa6d52915355cc9c20a26f1afda8ccd82acbd26cff9be98ff'
+sha256sums=('01229c1a13336155e4b3affc8dc6d8c8afd0cc2b95c7145f5dc001e267639cd6'
             'SKIP'
             '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10')
 
