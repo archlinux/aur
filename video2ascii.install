@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "╔══════════════════════════════════════════╗"
+  echo "║          video2ascii installed!          ║"
+  echo "║                                          ║"
+  echo "║  Usage: video2ascii --video file.mp4     ║"
+  echo "╚══════════════════════════════════════════╝"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

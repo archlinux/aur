@@ -1,0 +1,16 @@
+pkgbase = video2ascii
+	pkgdesc = Convert videos to ASCII art in terminal with 30fps 150x75 resolution
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cristofer528yt/video2ascii
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	depends = opencv
+	source = git+https://github.com/cristofer528yt/video2ascii.git
+	sha256sums = SKIP
+
+pkgname = video2ascii
