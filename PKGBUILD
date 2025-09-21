@@ -20,6 +20,7 @@ url="https://github.com/SOCI/${_pkgname}"
 license=("BSL-1.0")
 depends=("boost" "gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite" "unixodbc")
 makedepends=("cmake" "git")
+checkdepends=("cmake")
 optdepends=("libfbclient: Firebird"
     "mariadb: MariaDB"
     "postgresql: PostgreSQL")
@@ -60,9 +61,7 @@ pkgver()
 
 build()
 {
-    for build_tests in "OFF" "ON"; do
-        _compile "${build_tests}"
-    done
+    _compile "OFF"
 }
 
 check()

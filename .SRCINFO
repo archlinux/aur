@@ -5,6 +5,7 @@ pkgbase = soci-git
 	url = https://github.com/SOCI/soci
 	arch = x86_64
 	license = BSL-1.0
+	checkdepends = cmake
 	makedepends = cmake
 	makedepends = git
 	depends = boost
