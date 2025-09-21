@@ -2,7 +2,7 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.46.9-beta.4'
+_pkgver='1.46.11-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
@@ -17,14 +17,12 @@ backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'update-dependencies.diff'
-	'update-dependencies-beta.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('2da7d768157268d0b8141f43e8556f50e6170259e8484a3c9600666a4d2abca9a9c7c42f9325f25525c0525a94bc5e2c4c0fdb16ee442eca4f95ea8d66e1b5ae'
-        '62b08de7d6606f28f189f736cc9f7c9e61d97c721d88b8daa345cfebc9d0bbf8b2526778efd29496914dbb529a6276c27b8426963f1d16c385ed8b318b211ca6'
-        '52645c611197fe848be8710681762ecc7bca187205ede14f94a9f83ff281bb5943bf593d4db16ec85d1cac07ce77ba5ddfd51c9df7efbcb7bc178a14d64f83ee'
+b2sums=('b889550a0972875e0b55f575d802764502afa1f8f189dd676704b592e710fe31a07c7eb89844e5e04ee77c0166cce70c7dad033c60141490a34d72a2e7914cde'
+        '78862c8d4eaaef8eda8c519316f7a2c242662f56e6b1e8d9cbe5f5fe0a029055bf2ee1381486eff7812bd38a2f29ea2d686052aee818cf4e4cd50a897c737151'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '6caafba7ce1832cb28acdae886c3bee8f5f4ab8ae3db813ec7f35575576b829e0db1f224baa9919b2fa5b7417d7adc369d1fe0f51e9c17a6e62843b0e72cabe7'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
@@ -35,11 +33,7 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Set npm overrides for various dependencies
-	if [[ "$_target" =~ -beta$ ]]; then
-		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
-	else
-		patch --forward -p1 < "$srcdir/update-dependencies.diff"
-	fi
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
