@@ -15,7 +15,7 @@ pkgbase = ai-pkg-bin
 	depends = python-rich
 	provides = ai-pkg
 	conflicts = ai-pkg
-	source = https://github.com/rohankrsingh/ai-pkg/releases/tag/v0.1.3/ai-pkg-0.1.3-py3-none-any.whl
-	sha256sums = 1bc4e93f452a9ef80078fd21f672bc56838231b61afe02fbdc21ec955caf4e4c
+	source = https://github.com/rohankrsingh/ai-pkg/releases/download/v0.1.3/ai-pkg-0.1.3-py3-none-any.whl
+	sha256sums = 77c67575b39c87edd6fd1b7c14479d3a32f67f7a55f75f4a11a9fd4d365d5497
 
 pkgname = ai-pkg-bin
