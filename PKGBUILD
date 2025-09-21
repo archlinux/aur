@@ -2,13 +2,13 @@
 
 pkgname=freetube-git
 _pkgname=FreeTube
-pkgver=0.23.5.beta.r8748.4f5b932
+pkgver=0.23.9.beta.r9221.0763a06
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://freetubeapp.io"
 license=('AGPL-3.0-or-later')
-depends=('electron36')
+depends=('electron37')
 makedepends=('git' 'yarn')
 provides=('freetube')
 conflicts=('freetube')
@@ -23,14 +23,14 @@ pkgver() {
 }
 
 prepare() {
-  sed -i "5i electronDist: '/usr/lib/electron36'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
+  sed -i "5i electronDist: '/usr/lib/electron37'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  yarn --cache-folder "${srcdir}/yarn-cache" install
-  yarn --cache-folder "${srcdir}/yarn-cache" run build
+  npm install --cache "${srcdir}/npm-cache"
+  npm run build
 }
 
 package() {
