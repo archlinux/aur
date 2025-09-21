@@ -6,7 +6,7 @@
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=r11700.d38a625
+pkgver=r11722.da8418b
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
@@ -47,6 +47,12 @@ pkgver() {
 prepare() {
 	cd "$_pkg"
 	sed -i 's/ping files.openscad.org/ping archlinux.org/' resources/CMakeLists.txt
+
+	# Eigen5 compat, thanks DarioP
+	sed -i 's/Eigen3 3.0/Eigen3 5.0/' CMakeLists.txt
+	sed -i 's/target_include_directories(OpenSCAD SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})/target_link_libraries(OpenSCAD PRIVATE Eigen3::Eigen)/' CMakeLists.txt
+	sed -i 's/target_compile_definitions(OpenSCAD PRIVATE EIGEN_DONT_ALIGN)//' CMakeLists.txt
+
 	git submodule update --init --recursive
 }
 
