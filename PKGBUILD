@@ -23,7 +23,7 @@ makedepends=(
     lld
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/superg/redumper/archive/refs/tags/b$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/superg/redumper/archive/refs/tags/build_$pkgver.tar.gz"
 )
 
 build() {
