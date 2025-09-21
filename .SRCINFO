@@ -1,6 +1,6 @@
 pkgbase = tkginstaller-git
 	pkgdesc = Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) from the Frogging-Family repositories in a simple, user-friendly way. 🐸
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
 	arch = x86_64
