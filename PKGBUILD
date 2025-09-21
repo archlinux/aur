@@ -1,13 +1,13 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.79.1
+pkgver=0.80.0
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="https://github.com/portfolio-performance/portfolio"
-license=('EPL')
-depends=('java-environment=21' 'webkit2gtk')
-makedepends=('maven' 'archlinux-java-run' 'gendesk')
+license=('EPL-1.0')
+depends=('archlinux-java-run' 'java-environment=21' 'webkit2gtk')
+makedepends=('gendesk')
 
 _DEST="/usr/share/portfolio"
 
@@ -17,9 +17,11 @@ _DEST="/usr/share/portfolio"
 _mvnver=3.9.11
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
-        "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz")
-sha1sums=('2383b68b19e968e45766560021b76bb9876e41ef'
-          'c084cde986ba878da4370bde009ab0a0a1936343')
+        "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz"
+        "portfolio.sh")
+sha1sums=('fd1b80bfd66fd8006589d6370535bfbcf10ad247'
+          'c084cde986ba878da4370bde009ab0a0a1936343'
+          '044c48a939e20311b27a1bbbd98d4866ee3eff3c')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -31,7 +33,6 @@ prepare() {
 		--startupnotify="False" \
 		--custom="Icon=/usr/share/portfolio/icon.xpm"
 	sed -i '0,/Icon/{//d}' $pkgname.desktop
-
 }
 
 build() {
@@ -51,10 +52,7 @@ package() {
     cp -r ./* ${pkgdir}${_DEST}
     chmod a+x ${pkgdir}${_DEST}/PortfolioPerformance
 
-    #msg2 "Symlink /usr/bin/portfolio -> ${_DEST}/PortfolioPerformance"
-    
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "${_DEST}/PortfolioPerformance" "${pkgdir}/usr/bin/portfolio"
+    install -Dm755 "${srcdir}/$pkgname.sh" "${pkgdir}/usr/bin/$pkgname"
     
     install -Dm644 "${srcdir}/$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
 }
