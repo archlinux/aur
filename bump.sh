@@ -6,7 +6,7 @@
 # version. Very mutch a work in progress, DO NOT TRUST.
 #
 
-validated_for="6.16.7.arch1-1"
+validated_for="6.16.8.arch1-1"
 forceupd="n"
 
 # Getting current versions
@@ -104,7 +104,7 @@ forceupd="n"
               fi
 
             # Update remote
-              echo "Check the commit content AND the changes made to the kernel repo before pushing."
+              echo "Check everything before pushing."
               echo "TODO: git push"
           fi
       fi
