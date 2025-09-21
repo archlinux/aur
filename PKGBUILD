@@ -1,7 +1,7 @@
 # Maintainer: GDucpm <ducpm2306@gmail.com>
 pkgname=ttybatd
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A basic battery monitor that yells at you when you have 15% left, then yells at you again when you have 7% left with a dramatic 20-second-countdown-till-suspension twist."
 arch=('any')
 url="https://github.com/gducpm/ttybatd"
