@@ -1,13 +1,13 @@
 pkgbase = git-today
 	pkgdesc = A tool to recap your daily git work
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/bitSheriff/git-today
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = git-today-v0.1.3.tar.gz::https://github.com/bitSheriff/git-today/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = d2baf8b4aa39090008ccc7cfd57f6680915c9fda8b17b1b713f7790cc5d58c13
+	source = git-today-v0.1.4.tar.gz::https://github.com/bitSheriff/git-today/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 6e09a19397e57472f39b0547d7dc741221e61872a7d5e08fd8c36a5124824947
 
 pkgname = git-today
