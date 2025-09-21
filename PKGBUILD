@@ -1,7 +1,7 @@
 # Maintainer: Makus Koch <markus@notsyncing.net>
 
 pkgname=python-cocotb
-pkgver=1.9.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('any')
