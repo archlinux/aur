@@ -30,7 +30,7 @@ build() {
     unset CFLAGS CXXFLAGS LDFLAGS CC CXX
     CC=clang CXX=clang++ LDFLAGS=-fuse-ld=lld cmake \
         -G Ninja \
-        -S $pkgname-build_$pkgver \
+        -S $pkgname-b$pkgver \
         -B $pkgname-dist \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DCMAKE_BUILD_TYPE=None \
@@ -45,10 +45,10 @@ package() {
     install -o root -g root -m 755 -t $pkgdir/usr/bin $pkgname-dist/redumper
 
     install -o root -g root -m 755 -d $pkgdir/usr/share/doc/redumper
-    install -o root -g root -m 644 -t $pkgdir/usr/share/doc/redumper $pkgname-build_$pkgver/README.md
+    install -o root -g root -m 644 -t $pkgdir/usr/share/doc/redumper $pkgname-b$pkgver/README.md
 
     install -o root -g root -m 755 -d $pkgdir/usr/share/licenses/redumper
-    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/redumper $pkgname-build_$pkgver/LICENSE
+    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/redumper $pkgname-b$pkgver/LICENSE
 }
 
 sha256sums=('581ea1b474d47da34500fa9b04b7d0339770510954ac9cc43c8f0b86a8b63e4f')
