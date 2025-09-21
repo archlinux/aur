@@ -26,8 +26,21 @@ sha256sums_x86_64=('a6e501a9f3555617d980d8de49fb2f91783c27cfd875cb42a1ac5cf8fc11
 sha256sums_armv7h=('fafa84260572e00bc46d179b4857195c54ade365b7bf80669dc40dc8a6ab86ed')
 sha256sums_aarch64=('d1b727288bda91463e35e0312c102d35a95c77eb638aa6567eb6f2cc6f2759e8')
 
+prepare() {
+  _wh="${_pkgname}-${pkgver}-${CARCH}"
+  chmod u+x "$_wh"
+  ./"$_wh" completion bash > "bash"
+  ./"$_wh" completion zsh > "zsh"
+  ./"$_wh" completion fish > "fish"
+}
+
 package() {
   install -Dm755 "${_pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  # Shell autocompletion script
+  install -Dm644 "bash" "${pkgdir}/usr/share/bash-completion/completions/wormhole-william"
+  install -Dm644 "zsh" "${pkgdir}/usr/share/zsh/site-functions/_wormhole-william"
+  install -Dm644 "fish" "${pkgdir}/usr/share/fish/vendor_completions.d/wormhole-william.fish"
 }
