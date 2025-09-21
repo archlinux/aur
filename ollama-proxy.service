@@ -1,0 +1,16 @@
+[Unit]
+Description=Ollama Proxy Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/
+ExecStart=/usr/bin/ollama-proxy
+Restart=always
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target

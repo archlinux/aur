@@ -1,0 +1,15 @@
+pkgbase = ollama-proxy
+	pkgdesc = Proxy to wrap local Ollama requests with basic auth and HTTPS to remote auth-required service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/k88936/ollama-proxy
+	arch = x86_64
+	arch = aarch64
+	license = custom:unknown
+	makedepends = cargo
+	source = ollama-proxy::git+https://github.com/k88936/ollama-proxy.git
+	source = ollama-proxy.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ollama-proxy
