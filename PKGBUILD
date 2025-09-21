@@ -12,7 +12,7 @@ pkgname="${_jdkname}-bin"
 _java_ver=25
 _pkgver=${_java_ver}+37
 pkgver=${_pkgver/+/.0.0.u}
-pkgrel=1
+pkgrel=2
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 x86_64)
 url='https://bell-sw.com/'
@@ -57,9 +57,9 @@ source=(freedesktop-java.desktop.in
         ${_jdkname}24.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
         ${_jdkname}32.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
         ${_jdkname}48.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=('19873c53aaf234d215b9892450bfd4e95c13ed7c'
-          '5347a8c12c16a29aada0babdfda5dbef236717c0'
-          '8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b'
+sha1sums=('a00825362b7bc4320f88abf4b1b832682dd2b542'
+          '9e93c3a5b920c6e1785ac86c74a30b3ffddd5d57'
+          '0f11c63504f7c7a038c84f1761723aac39e7e45a'
           '36096a57cebd346e08efc68326fe77960d43726f'
           'b8233f9ff931ce97a265827fac18ed90f4e248c6'
           'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
