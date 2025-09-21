@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-bin
 	pkgdesc = A multi-platform launcher for your anime games
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = twintaillauncher-bin
 	depends = gstreamer
 	depends = gstreamer-vaapi
 	options = !debug
-	source = twintaillauncher-1.1.4.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.1.4/twintaillauncher_1.1.4_amd64.deb
-	sha256sums = 3d6d1f35a912795d06ddf10cb9b79ab396db23aeee597c614eace4b4c4dde045
+	source = twintaillauncher-1.1.5.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v1.1.5/twintaillauncher_1.1.5_amd64.deb
+	sha256sums = 775e9c519aedaf2c6b41e2243978e04f78008671d1ef22dc40b19b3b0448b26d
 
 pkgname = twintaillauncher-bin
