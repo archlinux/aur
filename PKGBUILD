@@ -137,7 +137,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF scheduler + Cachy Sauce Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -739,6 +739,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('5a88c591468ab2afc708475c76b87c1028c184208c0c4c9c4f7fb481b5e724bdd3ef7a0c9f46d079009832010cd3131a5dbe6902e970359a0fde9a820bf76a04'
-        '93ea6202fddc1f177ae9f3d239c4ec9f28e40bbff0575309750ad20e4b8536ae29ae38ed8def58028aeb3b2ede1113f33b8757cc5eb2366bb62ddda103aac842'
+        '9c48a38f5985523a35cf4d495ba3b06faa72d006194b16c30bb5b0f69fe5fd249244f39b8ce8f56437085a35ac341d91065055ce67cc26d8327c3d745f7a7079'
         '776cd6368077a6504e781b2a5db3c9b82b1b0fa496bef9f24ba417dfea0d192bf9664f0dcce9822050f6bf064f991ea3883683536f74a808c3b76d4bfa364028'
         'c7294a689f70b2a44b0c4e9f00c61dbd59dd7063ecbe18655c4e7f12e21ed7c5bb4f5169f5aa8623b1c59de7b2667facb024913ecb9f4c650dabce4e8a7e5452')
