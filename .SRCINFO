@@ -1,14 +1,13 @@
 pkgbase = auto-big-picture
 	pkgdesc = Auto launch Steam Big Picture on controller connect (Bluetooth/USB)
-	pkgver = 0
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/goatvisuals/Auto-Big-Picture
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = python
 	optdepends = bluez-utils: for Bluetooth mode
-	source = git+https://github.com/goatvisuals/Auto-Big-Picture
-	sha256sums = SKIP
+	source = https://github.com/goatvisuals/Auto-Big-Picture/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 92848c60a1605cf23937bde4c24c7b1c27c2cf650877e3bb1e7a452a71ffb0e7
 
 pkgname = auto-big-picture
