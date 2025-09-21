@@ -1,7 +1,7 @@
 pkgbase = github-desktop-plus
 	pkgdesc = Fork of GitHub Desktop with extra features and improvements.
-	pkgver = 3.5.3.2
-	pkgrel = 2
+	pkgver = 3.5.3.7
+	pkgrel = 1
 	url = https://github.com/pol-rivero/github-desktop-plus
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = github-desktop-plus
 	optdepends = hub: CLI interface for GitHub
 	provides = github-desktop-plus
 	conflicts = github-desktop-plus
-	source = github-desktop-plus::git+https://github.com/pol-rivero/github-desktop-plus.git#tag=v3.5.3.2
+	source = github-desktop-plus::git+https://github.com/pol-rivero/github-desktop-plus.git#tag=v3.5.3.7
 	source = git+https://github.com/github/gemoji.git
 	source = git+https://github.com/github/gitignore.git
 	source = git+https://github.com/github/choosealicense.com.git
@@ -36,6 +36,6 @@ pkgbase = github-desktop-plus
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a
-	sha256sums = ef93d32f46b31818ffea85959f5ac67353df2c4da351b273108765b80c7f080d
+	sha256sums = 480742d5e68d1e64e3732b521ebfdd40944573a8f43c187eb24c6109c21a37fe
 
 pkgname = github-desktop-plus
