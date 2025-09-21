@@ -1,6 +1,6 @@
 pkgbase = birb-hg
 	pkgdesc = GObject based library that implements a reusable plugin system
-	pkgver = 45.3bc56c946f64
+	pkgver = 60.0535be8c8e72
 	pkgrel = 1
 	url = https://keep.imfreedom.org/birb/birb/
 	arch = i686
