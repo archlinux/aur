@@ -19,6 +19,9 @@ steps:
     commands:
       # Install all required tools (including GUI and screenshot support)
       - pacman -Syu --noconfirm --needed git base-devel devtools nvchecker pacman-contrib namcap sudo gnupg xorg-server-xvfb ttf-dejavu curl imagemagick
+      # Enforce jre21-openjdk - workaround for currently unsupported version jre25 (remove once supported)
+      - pacman -S --noconfirm --needed jre21-openjdk
+      - archlinux-java set java-21-openjdk
       # Allow broken git ownerships
       - git config --global --add safe.directory "$(pwd)"
       # Create build user
