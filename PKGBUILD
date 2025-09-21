@@ -3,7 +3,7 @@
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
 _projectname='azure-identity'
 pkgname="python-$_projectname"
-pkgver='1.24.0'
+pkgver='1.25.0'
 pkgrel='1'
 pkgdesc='Microsoft Azure Identity Client Library for Python'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python>=3.9.0' 'python-azure-core>=1.31.0' 'python-cryptography>=2.5.0
 makedepends=('python-setuptools')
 # $pkgrel added to make sure our cached source file doesn't get used, as the previous pkgrels were invalid
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/${_projectname}_$pkgver.tar.gz")
-b2sums=('8adb63e330e37753670a250a79e6bd6e3b45061e4080bffec141b2db5044fbeef722d47636781cf6fee9116ce46b683cc8336480b61d45cd32ff474217b643d8')
+b2sums=('766982b4c15870767d4c1b583dff83e58a309a876262c097124d0b19e165eb089cb9631236d320db3098f57dcbe67cd2e9456c55a4eb6596e1a497d33fc357a5')
 
 _sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/identity/$_projectname"
 
