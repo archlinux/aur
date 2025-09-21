@@ -15,7 +15,7 @@ arch=("x86_64")
 url="https://github.com/CLIUtils/${_pkgname}"
 license=("BSD-3-Clause")
 makedepends=("cmake" "doxygen")
-checkdepends=("catch2")
+checkdepends=("catch2" "cmake")
 conflicts=("cli11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=("!strip")
@@ -43,9 +43,7 @@ _compile()
 
 build()
 {
-    for build_tests in "OFF" "ON"; do
-        _compile "${build_tests}"
-    done
+    _compile "OFF"
 }
 
 check()

@@ -6,6 +6,7 @@ pkgbase = cli11-compiled
 	arch = x86_64
 	license = BSD-3-Clause
 	checkdepends = catch2
+	checkdepends = cmake
 	makedepends = cmake
 	makedepends = doxygen
 	conflicts = cli11
