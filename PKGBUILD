@@ -1,8 +1,8 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-_pkgbase=ms-edit
+_pkgbase=msedit
 pkgname="$_pkgbase-git"
-pkgver=1.0.0.r1.ge8d40f6
+pkgver=1.2.0.r37.gbb56984
 pkgrel=1
 pkgdesc="A simple editor for simple needs (Microsoft Edit)"
 arch=('x86_64' 'aarch64')
