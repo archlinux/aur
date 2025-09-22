@@ -20,8 +20,11 @@ depends=(
 makedepends=()
 optdepends=('python-pip: per installare plugin opzionali')
 
-source=("$pkgname-$pkgver.tar.gz")
-# Lo script di build aggiornerà automaticamente questo valore con updpkgsums
+# Scarica il tarball della release da GitHub e rinominalo a $pkgname-$pkgver.tar.gz
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/pierspad/imgpdfsquisher/archive/refs/tags/v$pkgver.tar.gz"
+)
+# Lo script di build aggiornerà automaticamente questo valore
 sha256sums=('cbc5a6eaad2600353e2b096f71f70846a8d04fb13ae2b0be1cee68da2d8e6a1d')
 
 prepare() {

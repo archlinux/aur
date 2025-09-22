@@ -13,7 +13,7 @@ pkgbase = imgpdfsquisher
 	depends = pyside6
 	depends = python-pdf2image
 	optdepends = python-pip: per installare plugin opzionali
-	source = imgpdfsquisher-1.3.0.tar.gz
+	source = imgpdfsquisher-1.3.0.tar.gz::https://github.com/pierspad/imgpdfsquisher/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = cbc5a6eaad2600353e2b096f71f70846a8d04fb13ae2b0be1cee68da2d8e6a1d
 
 pkgname = imgpdfsquisher
