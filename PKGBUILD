@@ -4,14 +4,14 @@
 
 pkgname=qtel
 _pkgname=svxlink
-pkgver=19.09.2
+pkgver=25.05.1
 pkgrel=1
 arch=('x86_64')
 url="http://www.github.com/sm0svx/svxlink/"
 license=('GPL')
 source=("https://github.com/sm0svx/${_pkgname}/archive/${pkgver}.tar.gz")
 conflicts=("svxlink")
-sha256sums=('47e9bf098cef19a8f0a3bf567e96d70447cb028e0fcfc3bbeb692ae5bae05a70')
+sha256sums=('1cf152511394158f9ead60aff092a5f8fb0d0da5378a68e0a641652ef752887f')
 depends=('alsa-utils' 'alsa-lib' 'libsigc++' 'gsm' 'libgcrypt' 'popt' 'tcl' 'speex' 'opus' 'qt5-tools')
 makedepends=('cmake')
 pkgdesc="Graphical Userinteface for Echolink written in QT"
