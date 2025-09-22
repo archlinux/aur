@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Bill Sideris <bill88t@feline.gr>
 pkgname=extension-manager
-pkgver=0.6.3
-pkgrel=4
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mjakeman/extension-manager"
@@ -22,7 +22,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/mjakeman/$pkgname.git#tag=v$pkgver")
-sha256sums=('2483b26fbbc947bae36a81cbcc2f0440ea340dd5b85c52fe2c6dfd82a1f0c5e6')
+sha256sums=('a8c9fa24f005d670ee6676015c3069a311295490791621b45a4a68c7e0fd33c3')
 
 build() {
   arch-meson "$pkgname" build -Dbacktrace=false
