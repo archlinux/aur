@@ -1,7 +1,7 @@
 pkgbase = sakura-launcher-gui
 	pkgdesc = A simple SakuraLLM launcher
 	pkgver = v1.2.0_beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PiDanShouRouZhouXD/Sakura_Launcher_GUI
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,8 +13,8 @@ pkgbase = sakura-launcher-gui
 	source = sakura-launcher-gui.desktop
 	source = sakura-launcher-gui.png
 	sha256sums = fef9109ecf0a0b9effd98a816d805dd20dde5763beea03cf11fb434ee55542cf
-	sha256sums = bf1bbb947272facbfcd85988d333fee754b166b4b79579b77ab1b4c448f7907b
-	sha256sums = 7ab67138f78271b1e35454dcbd542f0db6b3908cc0f1607ee67e259994bbe021
+	sha256sums = 659da701e5c4e5b92f5737c433c54decc892e52c8911d29ac34935cd2bd92590
+	sha256sums = dc4ecb769e489538a308c6626a305b173c01216f97d570ff52828532cee6f3be
 	sha256sums = 307a4a88fcc2c62b11e7ca8cf9310ed0f755d8a5f8f4820d76c5874a980ba3d9
 
 pkgname = sakura-launcher-gui
