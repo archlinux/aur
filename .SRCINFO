@@ -1,0 +1,18 @@
+pkgbase = uni-synci-bin
+	pkgdesc = Uni-Sync : A Synchronization Tool for Lian Li Fan Controllers
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/EightB1ts/uni-sync.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = systemd-libs
+	depends = libudev0-shim
+	depends = hidapi
+	depends = libusb
+	provides = uni-sync
+	source = LICENSE
+	sha256sums = c8fe62ed278d3c8b6e9ab88c9e5b5d8db131a65b2040eb0f6e38e25b8f0fc6c9
+
+pkgname = uni-synci-bin
