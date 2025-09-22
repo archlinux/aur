@@ -4,7 +4,7 @@
 
 _pkgname="powershell-editor-services"
 pkgname="$_pkgname"
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='A common platform for PowerShell development support in any editor or application'
 url="https://github.com/PowerShell/PowerShellEditorServices"
@@ -25,7 +25,7 @@ source=(
   "LICENSE-$pkgver"::"$url/raw/v$pkgver/LICENSE"
 )
 
-sha256sums=('cbe2f11f0076b05d44f148f0c7bbd38a3b30eeeae99c45c6d0c309edff50136a'
+sha256sums=('690b91092989a0f66e6f43986166aaef69d64b559a9fda51feed882e1103fbcc'
             '99bc3308d3b5f2018c5d7af9239548c6853a01f08db0a1d9247d16be647c5658')
 
 package() {
