@@ -1,10 +1,9 @@
-# Maintainer: artist for Artix Linux
+# Maintainer: artist for XLibre
 
 pkgname=kwin-x11-lite
 _pkgname=kwin-x11
 pkgver=6.4.5
 pkgrel=1
-_commit=bc7303af963b6b79ecc9153a0cb09b9152fc4c2d
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
 url='https://github.com/KDE-Lite/kwin-x11-lite'
@@ -51,30 +50,27 @@ depends=(aurorae
          libxkbcommon-x11
          mesa
          libplasma=$pkgver
+         plasma-x11-session
          qt6-5compat
          qt6-base
          qt6-declarative
          qt6-sensors
          qt6-svg
          qt6-tools
-         qt6-wayland
          systemd-libs
-         wayland
          xcb-util-cursor
          xcb-util-keysyms
          xcb-util-wm)
 makedepends=(extra-cmake-modules
              git
              kdoctools
-             plasma-wayland-protocols
-             python
-             wayland-protocols)
-groups=(plasma)
+             python)
 provides=($_pkgname $_pkgname-improved)
 conflicts=($_pkgname $_pkgname-improved)
-source=("git+${url}.git#commit=${_commit}")
+source=("git+${url}.git#tag=${pkgver}")
 install="$pkgname.install"
-sha256sums=('551a55917beb4390d8b2a8d0b929f6d71fc29dd54d846a932f0f1954dc0220d5')
+options=(!debug)
+sha256sums=('8c169941ab0c329b85108b49ff2eefc2f88cdc48ab4da720417d6397cb77ae6f')
 
 build() {
   cmake -B build -S $pkgname \
