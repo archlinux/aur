@@ -1,0 +1,25 @@
+pkgbase = voicevox-bin
+	pkgdesc = Frontend for VOICEVOX TTS Engine
+	pkgver = 0.24.2
+	pkgrel = 1
+	url = https://github.com/VOICEVOX/voicevox
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = voicevox
+	conflicts = voicevox
+	noextract = voicevox-linux-cpu-x64-0.24.2.tar.gz
+	options = !debug
+	source = voicevox.desktop
+	source = voicevox.sh.in
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.24.2/voicevox-linux-cpu-x64-0.24.2.tar.gz
+	sha256sums = 8b7c50e71175dd35e286ab2f672ff3dd137669d2cda4c556febcf9c6f005c148
+	sha256sums = e77f4d2a733e28026e86d4425cd0fefa8b920584f3033437ec6045fb4862fa81
+	sha256sums = aae06c0a90e565e102e67e3823323a445bede5b525cbdc507bc87c12aea74390
+
+pkgname = voicevox-bin
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = bash
+	depends = libsndfile
+	depends = electron36

@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /usr/bin/@ELECTRON@ --app=/usr/lib/voicevox/resources/app.asar "$@"
