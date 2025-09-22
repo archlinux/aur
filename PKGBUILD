@@ -1,18 +1,16 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="rusticlone"
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="3-2-1 backups using Rustic and RClone"
 url="https://github.com/AlphaJack/rusticlone"
 license=("GPL-3.0-or-later")
 arch=("any")
 depends=("python" "rclone>=1.67.0" "rustic>=0.10.0" "rustic<0.11.0" "python-importlib-metadata" "python-configargparse")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-# https://wiki.archlinux.org/title/Python_package_guidelines#Source
-_real_url=$(curl -s "https://pypi.org/pypi/${pkgname}/${pkgver}/json" | jq -r '.urls[] | select(.packagetype == "sdist") | .url')
-source=("${pkgname}-${pkgver}.tar.gz::${_real_url}")
-b2sums=('d332fa91cd36791f23e34031aeab258e5b80ad4bd4f5cb802a3639bd5e18253170103137d7e142a0b9252a625de6e0bef374866ce08d97a1e1b4a708b98d8e7c')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('c87ac32999468da775d6d5ae8ee33a2f3ea1d9007cfdcaba85cdde09d630a327e8db47ddd2183bce1687ef573d9f5cebdf8f658a1846cb5b5bd70c58ff3881b9')
 
 build(){
  cd "$pkgname-$pkgver"
