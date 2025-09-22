@@ -1,6 +1,6 @@
 pkgbase = watchman
 	pkgdesc = Watches files and records, or triggers actions, when they change
-	pkgver = 2025.09.15.00
+	pkgver = 2025.09.22.00
 	pkgrel = 1
 	url = https://github.com/facebook/watchman
 	arch = x86_64
@@ -8,17 +8,17 @@ pkgbase = watchman
 	makedepends = boost
 	makedepends = cmake
 	makedepends = cpptoml
-	makedepends = fizz=2025.09.15.00
+	makedepends = fizz=2025.09.22.00
 	makedepends = gtest
-	makedepends = mvfst=2025.09.15.00
+	makedepends = mvfst=2025.09.22.00
 	makedepends = python-setuptools
 	makedepends = rust
 	depends = boost-libs
-	depends = edencommon=2025.09.15.00
-	depends = fb303=2025.09.15.00
-	depends = fbthrift=2025.09.15.00
+	depends = edencommon=2025.09.22.00
+	depends = fb303=2025.09.22.00
+	depends = fbthrift=2025.09.22.00
 	depends = fmt
-	depends = folly=2025.09.15.00
+	depends = folly=2025.09.22.00
 	depends = gcc-libs
 	depends = glibc
 	depends = google-glog
@@ -27,13 +27,13 @@ pkgbase = watchman
 	depends = pcre2
 	depends = python
 	backup = etc/watchman.json
-	source = watchman-2025.09.15.00.tar.gz::https://github.com/facebook/watchman/archive/v2025.09.15.00.tar.gz
+	source = watchman-2025.09.22.00.tar.gz::https://github.com/facebook/watchman/archive/v2025.09.22.00.tar.gz
 	source = watchman-destdir.patch::https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch
 	source = watchman.conf
 	source = watchman.json
 	source = watchman.service
 	source = watchman.socket
-	sha256sums = 28995fc5f68baa339f9db81f7d8e3136e5a3fe0e282c64f24459ea479929460d
+	sha256sums = a8f6c90a4e7cd8612852b9a727b25f04487852ef96326617f3aa266698b4471a
 	sha256sums = d40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b
 	sha256sums = 3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8
 	sha256sums = ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356
