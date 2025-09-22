@@ -8,7 +8,6 @@ pkgbase = python-systemctl-mqtt
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = git-lfs
 	depends = python-aiomqtt
 	source = https://github.com/fphammerle/systemctl-mqtt/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = c75620a3b86b74a321594ef01cc3587f36e312ba94360b45513bffaf45c216b7

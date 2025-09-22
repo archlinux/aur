@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/fphammerle/${_pkgname}"
 license=('GPL-3.0')
 depends=('python-aiomqtt')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'git-lfs')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(
 	"https://github.com/fphammerle/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
