@@ -1,6 +1,6 @@
 pkgbase = imgpdfsquisher
 	pkgdesc = A Python GUI application for reducing the filesize of PDF with high resolution images
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/pierspad/imgpdfsquisher
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = imgpdfsquisher
 	depends = pyside6
 	depends = python-pdf2image
 	optdepends = python-pip: per installare plugin opzionali
-	source = imgpdfsquisher-1.3.0.tar.gz::https://github.com/pierspad/imgpdfsquisher/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = cbc5a6eaad2600353e2b096f71f70846a8d04fb13ae2b0be1cee68da2d8e6a1d
+	source = imgpdfsquisher-1.3.1.tar.gz::https://github.com/pierspad/imgpdfsquisher/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 49ac2a0474932fe001db671473342ff34a54c09793f0c4a50c3a8d923e59a862
 
 pkgname = imgpdfsquisher
