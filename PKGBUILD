@@ -2,11 +2,12 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=easyepg-lite-git
-pkgver=r20.5d1c3ba
+pkgver=r87.475a818
 pkgrel=1
 pkgdesc="XMLTV grabber tool using Gracenote's TMS API"
 url="https://github.com/sunsettrack4/script.service.easyepg-lite"
 depends=(
+	python-beautifulsoup4
 	python-bottle
 	python-requests
 	python-xmltodict

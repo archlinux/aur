@@ -1,11 +1,12 @@
 pkgbase = easyepg-lite-git
 	pkgdesc = XMLTV grabber tool using Gracenote's TMS API
-	pkgver = r20.5d1c3ba
+	pkgver = r87.475a818
 	pkgrel = 1
 	url = https://github.com/sunsettrack4/script.service.easyepg-lite
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = python-beautifulsoup4
 	depends = python-bottle
 	depends = python-requests
 	depends = python-xmltodict
