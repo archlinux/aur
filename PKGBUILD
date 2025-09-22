@@ -32,7 +32,7 @@
 #   All dependencies are documented in 'README.md'.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.72.r0.g2ca00b0
+pkgver=1.73.r0.gd1b8270
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -45,7 +45,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-robot
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_commit=2ca00b0065d4eb473da30191c5628aff5b2a81f7
+_commit=d1b8270d5673bc9e0cb04f7f25cde9d62e17c46d
 source=("git+https://github.com/damachine/coolerdash.git#commit=$_commit")
 sha256sums=('SKIP')
 
