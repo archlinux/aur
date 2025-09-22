@@ -10,10 +10,12 @@ pkgbase = ibus-lotus
 	makedepends = libx11
 	makedepends = libxtst
 	depends = ibus
+	optdepends = kdotool: for switching modes on KDE Plasma
 	provides = ibus-lotus
 	conflicts = ibus-bamboo-git
 	conflicts = ibus-bamboo
 	conflicts = ibus-lotus-git
+	conflicts = ibus-lotus-bin
 	source = ibus-lotus-1.0.2.tar.gz::https://github.com/LotusInputEngine/ibus-lotus/archive/v1.0.2.tar.gz
 	sha256sums = a15b7febdb5b3f0280ffc4efbfab4d3e55db135f0be860660735bc641a1710e4
 
