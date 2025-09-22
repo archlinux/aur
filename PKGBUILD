@@ -1,7 +1,7 @@
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
-pkgver=5.1.9.113
-pkgrel=3
+pkgver=5.1.11.388
+pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
 arch=('x86_64')
@@ -19,10 +19,10 @@ license=('custom')
 options=('!strip')
 
 source=(
-    "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::https://archive.org/download/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz"
+    "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::https://archive.org/download/cisco-secure-client-linux64-5.1.11.388/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz"
 )
 
-sha256sums=('76982a8d23743610e00e9a4790d6a5acc6605f26fb7866faff4b6f1e00096551')
+sha256sums=('066815d05c2547e3cab02167e7ed85c2adcbab95f6942aa94561db8395e01c69')
 
 package() {
     mkdir -p "${pkgdir}/opt/cisco/anyconnect"
