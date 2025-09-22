@@ -1,6 +1,6 @@
 pkgbase = ossia-score-appimage
 	pkgdesc = an interactive sequencer for the intermedia arts.
-	pkgver = 3.7.0
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://ossia.io/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = ossia-score-appimage
 	optdepends = bluez
 	optdepends = onnxruntime
 	optdepends = ndi-sdk
-	source = score.AppImage::https://github.com/ossia/score/releases/download/v3.7.0/ossia.score-3.7.0-linux-x86_64.AppImage
+	source = score.AppImage::https://github.com/ossia/score/releases/download/v3.7.1/ossia.score-3.7.1-linux-x86_64.AppImage
 	source = ossia-score
-	sha512sums = cc4a0ab5c70272ad9c60fcb26380527b281c1117438f451be0d6e44586c750d6cb2061b788c5d7cbf45ffcc54c51a5c57b4d692e84a9290e848b66212340d338
+	sha512sums = cddb0010e153f9aadd22e2c8e92648ffd2193b72617e4cf96018d23261bb1eeefb4d219a8d565d482ac1f0e88d0d4689a61c7bc59668dca527a57f4cae3cb368
 	sha512sums = 2a78deed52bf1bcb1abad9b0319c483aef91c16648e45a96a58162f536fb79ce06f92c5f622b547e9cef63e4cf751ce2142fc1f29ae29e470944d35b3d192ba2
 
 pkgname = ossia-score-appimage
