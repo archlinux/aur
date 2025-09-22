@@ -3,7 +3,7 @@ pkgname=pdf4qt-bin
 _pkgname=PDF4QT
 _appname=Pdf4qt
 _runname=Pdf4Qt
-pkgver=1.5.1.0
+pkgver=1.5.2.0
 pkgrel=1
 pkgdesc="Open source PDF editor(Prebuilt version)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
 source=(
 	"${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
 )
-sha256sums=('74fb5be1e17555e3a5f5c4584c95273a737dc104bd227cd18a7d4fde624e36f1')
+sha256sums=('23e230ba8b089d6882c62cc77df6ded14b2a9e441697b55e3fdda65ed7cc2173')
 prepare() {
 	if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
