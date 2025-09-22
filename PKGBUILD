@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=byedpi
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="Bypass DPI"
 arch=(aarch64 armv7h i686 x86_64)
@@ -12,8 +12,8 @@ depends=(glibc)
 options=(!debug)
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('3e06498c95ffac895c4ad68bf1d45db5ed4ea028a068da71473cb7583f23b499f963f59028f5541d6381c265893d47245cd8e62ea76d36c44910f05199f1a407')
-b2sums=('e60d3ca1ee202b369cb25d7e8d36577907515d448495146b545138281d73bf7f09567c293371ccb7bf7607c602486d3c16c0a0665729dfd78f4f46c02197729b')
+sha512sums=('ae1bba213cf4db1cfa87389323bc3cb5d9588da86a68fc73669771ea613ce49fe6085c4a836b10a4fe03c318592a8139ed25bafc55c00acfb4b9fa4cc0cdf071')
+b2sums=('778444e7918d2987b076e6fbb9fe43921e5d7cd837d62acb05e6bd099d63eef0cad5163644016476b2b90422e02c0337d6c0a8c60aa3e502b87115e72b687480')
 
 prepare() {
   sed -i 's|ciadpi|/usr/bin/ciadpi|' $pkgname-$pkgver/dist/linux/$pkgname.service
