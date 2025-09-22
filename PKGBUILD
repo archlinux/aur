@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=asset-ripper
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='Tool for extracting assets from Unity serialized files and asset bundles.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('firefox' 'chromium')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AssetRipper/AssetRipper/archive/refs/tags/$pkgver.tar.gz")
 
-sha256sums=('bb933f4b62d0857e6d1f39648ac1fc3cdcaab2bb3f94d2b6538262b29b2d55a7')
+sha256sums=('89a465f755dcb41d1487c99323a0f28c22e63d3ff06d86e49d82fbd5f1b4cf59')
 
 _srcdir="AssetRipper-$pkgver"
 _exeName="AssetRipper.GUI.Free"
@@ -27,7 +27,7 @@ build() {
   cd "${_srcdir}/Source/AssetRipper.GUI.Free"
 
   dotnet publish --self-contained -c Release -o "${srcdir}/build"
-  #ls -lha "${srcdir}/build"
+  ls -lha "${srcdir}/build"
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
   cd 'build'
 
   install -dm755 "$pkgdir/opt/${pkgname}"
-	for _file in "$_exeName" "crunch.dll" "crunchunity.dll" "libcapstone.so" "libTexture2DDecoderNative.so"; do
+	for _file in "$_exeName" 'libcapstone.so'; do
 		install -Dm755 "$_file" -t "$pkgdir/opt/$pkgname"
 	done
 
