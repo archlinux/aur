@@ -1,7 +1,7 @@
 pkgbase = fooyin-bin
 	pkgdesc = A customisable music player.Binary version.
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9.2
+	pkgrel = 1
 	url = https://www.fooyin.org/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,9 +23,9 @@ pkgbase = fooyin-bin
 	optdepends = libsndfile: For the GME audio input plugin
 	optdepends = libarchive: For the libarchive archive plugin
 	optdepends = libebur128: For the ReplayGain scanner plugin
-	provides = fooyin=0.8.1
+	provides = fooyin=0.9.2
 	conflicts = fooyin
-	source = fooyin-0.8.1.deb::https://github.com/ludouzi/fooyin/releases/download/v0.8.1/fooyin_0.8.1-noble_amd64.deb
-	sha256sums = ac887c33283d3d127c008d512695937b7fb42b5797274b8d7a47b8ee9089552a
+	source = fooyin-0.9.2.rpm::https://github.com/ludouzi/fooyin/releases/download/v0.9.2/fooyin-0.9.2.fc43.x86_64.rpm
+	sha256sums = 52a43c1d02fc59af28ee04a980abc51f1b84f39c8afa53493695a7b5b472d2cc
 
 pkgname = fooyin-bin
