@@ -13,7 +13,7 @@ depends=('gtk3' 'libayatana-appindicator' 'hidapi' 'rivalcfg' 'librsvg')
 makedepends=('cargo' 'rust')
 # Use GitHub release tarball (uploaded by the workflow)
 source=("https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v0.9.3/RivalCfgGuiGTK-0.9.3.tar.gz")
-sha256sums=(95964f994c7fe91a86fd1df9a46665b1739dce0f93a5cbc62e86dae473e9d742)  # Replace with the actual checksum
+sha256sums=(a0e906a2e2d2692b10a48bf5ba1c4460eb48f713edcbd8e4e4368605229705de)  # Replace with the actual checksum
 
 build() {
   cd "$srcdir/RivalCfgGuiGTK-$pkgver"
