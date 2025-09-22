@@ -27,10 +27,3 @@ path = [
 ]
 SPDX-FileCopyrightText = "Debian contributors"
 SPDX-License-Identifier = "GPL-2.0-or-later"
-
-[[annotations]]
-path = [
-    "Fix-assert-induced-crashes.patch"
-]
-SPDX-FileCopyrightText = "Wlroots contributors"
-SPDX-License-Identifier = "MIT"
