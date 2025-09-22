@@ -6,7 +6,7 @@ diff -aur a/src/utils/dumplibs.cpp b/src/utils/dumplibs.cpp
  #endif  // LIBXML_TEST_VERSION
  #ifdef ENABLE_LIBXML
 -    const char **xmlVersion = __xmlParserVersion();
-+    const char* const* xmlVersion = __xmlParserVersion();
++    const char* const* xmlVersion = &xmlParserVersion;
      if (xmlVersion != nullptr)
          logger->log(" libxml2: %s", *xmlVersion);
  #endif  // ENABLE_LIBXML
