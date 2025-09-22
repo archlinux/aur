@@ -1,0 +1,17 @@
+pkgbase = unfocol
+	pkgdesc = Unfocused Focus TUI timer that uses colors from your terminal theme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MrOnijohn/unfocol
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	source = unfocol-0.1.0.tar.gz::https://github.com/MrOnijohn/unfocol/archive/refs/tags/v0.1.0.tar.gz
+	source = unfocol.desktop
+	sha256sums = 5147084155a481552dc6b68494092ca4920a869cc72690bdc16acc08c4bb4c44
+	sha256sums = 30c0fa6dace499918159b534510488cf1ec1b22d5502071c16fe92ddb2ff8f85
+
+pkgname = unfocol
