@@ -1,7 +1,7 @@
 pkgbase = helium-browser-appimage
 	pkgdesc = Helium web browser (AppImage) repackaged for Arch
 	pkgver = 0.4.7.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/imputnet/helium-linux
 	arch = x86_64
 	license = GPL3
