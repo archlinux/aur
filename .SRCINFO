@@ -1,0 +1,28 @@
+pkgbase = pwmenu-git
+	pkgdesc = Launcher-driven audio manager for Linux
+	pkgver = 0.3.0.r0.g3111309
+	pkgrel = 1
+	url = https://github.com/e-tho/pwmenu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libpipewire
+	depends = pipewire
+	depends = gcc-libs
+	optdepends = dmenu: launcher for options navigation via stdin
+	optdepends = rofi: launcher for options navigation via stdin
+	optdepends = fuzzel: launcher for options navigation via stdin
+	optdepends = walker: launcher for options navigation via stdin
+	optdepends = nerd-fonts: for font-based icons (default mode)
+	provides = pwmenu=0.3.0.r0.g3111309
+	conflicts = pwmenu-bin
+	conflicts = pwmenu
+	options = !debug
+	options = !strip
+	source = pwmenu::git+https://github.com/e-tho/pwmenu.git
+	sha256sums = SKIP
+
+pkgname = pwmenu-git
