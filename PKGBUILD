@@ -2,14 +2,16 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=lyrionmusicserver-git
-pkgver=9.0.2.r191.gb0aa22c
-pkgrel=1
-pkgdesc="Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server)"
+pkgver=9.0.2.r414.gcea2f0c
+pkgrel=2
+pkgdesc="Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server, port 9002)"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/LMS-Community/slimserver"
 license=(GPL-2.0-only)
-depends=('perl>=5.40' 'perl<=5.42' glibc gcc-libs zlib)
-makedepends=(git rsync yasm clang)
+depends=(perl glibc gcc-libs zlib
+		 'perl>=5.40' 'perl<5.43'
+		 )
+makedepends=(git rsync yasm)
 install=lyrionmusicserver.install
 options=(!strip)
 source=("git+https://github.com/LMS-Community/slimserver.git"
@@ -17,7 +19,7 @@ source=("git+https://github.com/LMS-Community/slimserver.git"
         'lyrionmusicserver-git.service')
 sha256sums=('SKIP'
             'SKIP'
-            '9f639d3bd5c389bd64578093a67a5b7d951db588ef50769e599722a225bcf365')
+            '67bd97e1b7b30f6edcc65a8bcd15c0ec5f63c3f80f2b08ee13019d2031af9b1b')
 
 prepare() {
     cd "slimserver/Bin"
@@ -40,6 +42,9 @@ pkgver() {
 }
 
 build() {
+  # default to GCC, LMS prefer clang if both are installed
+  export CC=/usr/bin/gcc CXX=/usr/bin/g++
+
   cd "slimserver-vendor/CPAN"
   ./buildme.sh -t
 }
@@ -54,5 +59,8 @@ package() {
   cp -a * "${pkgdir}/opt/${pkgname}"
   cd "${srcdir}/slimserver-vendor"
   cp -a CPAN/build/5.*/lib/*/*linux*/* "${pkgdir}/opt/${pkgname}/CPAN"
-    #printf "ARCH-AUR-GIT.%s\n%s" "${pkgver}" "$(date)" > "${pkgdir}/opt/${pkgname}/revision.txt"
+  printf "ARCH-AUR-GIT.%s\n%s" "${pkgver}" "$(date)" > "${pkgdir}/opt/${pkgname}/revision.txt"
+
+  #touch "${pkgdir}"/opt/lyrionmusicserver-git/Logs/server.log
+  #touch "${pkgdir}"/opt/lyrionmusicserver-git/Logs/perfmon.log
 }
