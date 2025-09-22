@@ -2,7 +2,7 @@
 
 _pkgname="aescrypt"
 pkgname="${_pkgname}-bin"
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=('x86_64')
@@ -16,12 +16,11 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md")
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/download/v${pkgver%%.*}/linux/${_pkgname}_cli-${pkgver}-Linux-x86_64.tar.gz"
-               "${_pkgsrc}-x86_64.tar.gz.sig::${url}/download/v${pkgver%%.*}/linux/${_pkgname}_cli-${pkgver}-Linux-x86_64.tar.gz.sig")
-sha256sums=('846606505383e1ba8420c6813a4d437d1fb15402938c4ed0b97e867537bc6444'
-            '9fedd1e2b2347322619fa4072ac6a9369fd2db8d59f537e276cfa0e3516f97d6')
-sha256sums_x86_64=('46ee1a779c8dd0c5b8b88618130d9f57ab8a67bfaac1faa83f0aca544f2fa284'
-                   'SKIP')
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/download/v${pkgver%%.*}/linux/${_pkgname}_cli-${pkgver}-Linux-x86_64.tar.gz")
+               # "${_pkgsrc}-x86_64.tar.gz.sig::${url}/download/v${pkgver%%.*}/linux/${_pkgname}_cli-${pkgver}-Linux-x86_64.tar.gz.sig")
+sha256sums=('79b2ef06ab8ac68dcd05a7525b128cabd476a1c3882c2ebda6aeb74be418e8b5'
+            'de5692a10137d14b015a5e02adaf8e03653b91424237e8b5607c84788193f347')
+sha256sums_x86_64=('53246badd0732958b2b1574b3898b88403929c2a75fb580245b347f5db441fc1')
 validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://www.aescrypt.com/download/)
 
 prepare() {
