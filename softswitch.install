@@ -1,0 +1,50 @@
+# This is an install scriptlet for a pacman package.
+# It will be run automatically by pacman on install/upgrade/remove.
+
+C_RESET='\033[0m'
+C_GREEN='\033[0;32m'
+C_YELLOW='\033[0;33m'
+C_BLUE='\033[0;34m'
+
+SYMLINK_DIR="/usr/local/bin"
+PHP_BIN_DIR="/usr/bin"
+SYMLINKS=("$SYMLINK_DIR/php" "$SYMLINK_DIR/php-cgi" "$SYMLINK_DIR/php-fpm")
+
+post_install() {
+  echo -e "${C_BLUE}------------------------------------------------------------${C_RESET}"
+  echo -e "${C_GREEN} Softswitch was successfully installed!${C_RESET}"
+  echo ""
+  echo " This tool helps you switch between PHP versions by managing"
+  echo " symlinks in '$SYMLINK_DIR'."
+  echo ""
+  echo -e " ${C_YELLOW}Common Commands:${C_RESET}"
+  echo "   - To see available PHP versions:  ${C_GREEN}softswitch list${C_RESET}"
+  echo "   - To switch your active version:  ${C_GREEN}sudo softswitch use php81${C_RESET}"
+  echo -e "${C_BLUE}------------------------------------------------------------${C_RESET}"
+}
+
+post_upgrade() {
+  echo -e "${C_GREEN}Softswitch has been upgraded.${C_RESET}"
+  echo "Run 'softswitch help' for commands."
+}
+
+pre_remove() {
+  echo -e "${C_YELLOW}Uninstalling Softswitch... preparing to remove symlinks.${C_RESET}"
+  for link in "${SYMLINKS[@]}"; do
+    if [ -L "$link" ]; then
+      local target
+      target=$(readlink "$link")
+      if [[ "$target" == "$PHP_BIN_DIR"/php* ]]; then
+        echo " -> Removing symlink: $link"
+        rm "$link"
+      else
+        echo " -> Skipping non-softswitch symlink: $link"
+      fi
+    fi
+  done
+}
+
+post_remove() {
+  echo -e "${C_GREEN}Softswitch has been successfully uninstalled and cleaned up.${C_RESET}"
+}
+
