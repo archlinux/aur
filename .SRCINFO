@@ -1,7 +1,7 @@
 pkgbase = common-proxies
 	pkgdesc = Gateways and Rewrite Proxies for UnifiedPush written in Go
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://codeberg.org/UnifiedPush/common-proxies.git
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = common-proxies
 	makedepends = git
 	depends = glibc
 	provides = common-proxies
-	source = git+https://codeberg.org/UnifiedPush/common-proxies.git#tag=v3.0.0
-	sha256sums = b8b7872d638fa3a3125c4f0d35c914dad5c17fc6795a1fedf8d452f16940bab1
+	source = git+https://codeberg.org/UnifiedPush/common-proxies.git#tag=3.1.0
+	sha256sums = be8700433b22ca7ecdb537a44bf9f9ffd205e145077f3d361e7cf7e1c0bc8ddb
 
 pkgname = common-proxies
