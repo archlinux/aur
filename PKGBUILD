@@ -1,17 +1,17 @@
 # Maintainer: Stefan Fürst <stefan20fuerst12@gmail.com>
 pkgname=gns3util
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="GNS3 API utility for managing GNS3v3 servers"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.1.0/gns3util-linux-amd64.tar.gz"
+url="https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.1.1/gns3util-linux-amd64.tar.gz"
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source_x86_64=("https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v${pkgver}/gns3util-linux-amd64.tar.gz")
 source_aarch64=("https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v${pkgver}/gns3util-linux-arm64.tar.gz")
-sha256sums_x86_64=("cd4935e3ac9f06ff78b231367a507e01b15051158c402bcd16c97e95e2333d04")
-sha256sums_aarch64=("f2fe9af4ac137c8dee6413db9a6c424e03e5ae1eaf313eac4e2d2adcddfe9beb")
+sha256sums_x86_64=("b889a1e5b32aab8c276d8347ab938ba87b8c23bfd0f7c925872c059201178fc4")
+sha256sums_aarch64=("35d86d81e223d1734654226f6e9553114f1850f55e6b180e56023aa1ee5c13dd")
 
 package() {
     if [ -f "gns3util-linux-amd64" ]; then
