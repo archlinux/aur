@@ -2,7 +2,7 @@
 pkgbase=decklink
 pkgname=(decklink mediaexpress)
 _pkgname=decklink
-pkgver=15.0
+pkgver=15.1
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/fb93016534354f8cb9c1da89bf384dde"
+_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/b257d20e85a54327844cfa54ec07ceeb"
 _pkgsrc_file=${_pkgname}-${pkgver}.tar.gz
 
 DLAGENTS=("https::/usr/bin/curl \
@@ -33,9 +33,9 @@ source=("${_pkgsrc_file}"::"${_pkgsrc_url}"
         "01-makefile-clang.patch"
         "02-remove-dkms-warnings.patch"
     )
-sha256sums=('4d27768706dcd5d6f51003296f9abd03e4c878632fc40ae75cdb3149d483f306'
-            '03b0a41e0c35e6e619f30648c49df9759c79ad4c6b564fdacfda9534dd24c959'
-            '52ce759edeba9416f636674eed2825051971fb02ec6eb0f1f785d07be2c6ff69')
+sha256sums=('e8ce2383404701da9da2bfc824581f1952b3bb4445d1eb13eaf8cea567123573'
+            'ce17e7ec6a08e76d4d152fda678daad4bd35b632196d37f55badf43e102b4863'
+            'f9a2677908cb7e57e1e9abcc318877742c489eb31848143841ab0641e66bafbb')
 
 prepare() {
   cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
