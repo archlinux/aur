@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PKGNAME="kconnect"
+PKGNAME="kconnect-bin"
 GHREPO="fidelity/kconnect"
 
 log() {
