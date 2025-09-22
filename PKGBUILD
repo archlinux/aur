@@ -3,7 +3,7 @@
 pkgname=neosu-bin
 _pkgname=${pkgname%-bin}
 pkgver=41.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Third-party McOsu fork, with additional features"
 arch=(x86_64)
 url="https://github.com/kiwec/neosu"
@@ -21,8 +21,8 @@ source=(
 
 sha256sums=('a9f7cd215859e5b8c29654d17a734cee4fb7647008a166d12736d2c62363511b'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
-            'f545fb2ea01de0e0fd9acbdaea1a125bbc769b3eeda11e1dffa6ae5c03568bf2'
-            '1d8c2291f5f82f330d9b9238bbd32d0d2c54f0fe530a11c60e7b7e0bea0cd5dc'
+            '252d4dbae95fa0959c86420c9814f942bd925ef72660568bf0a493b75ae726d8'
+            'b4aa9f29b1c079781c542f367a2fab6ee0793eeebe5791ae883df7e6ef7ec0e9'
             '8dda2b45ea02d6f259ff452b4e45ba91b35a15a31976131e1da558ec962980c2')
 
 package() {

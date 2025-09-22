@@ -3,5 +3,6 @@ Type=Application
 Name=neosu (BASS)
 Icon=/usr/share/pixmaps/neosu.png
 Comment=Third-party McOsu fork, with additional features
-Exec=/usr/bin/neosu -sound bass
+Exec=/usr/bin/neosu -sound bass %u
 Categories=Game;
+MimeType=x-scheme-handler/neosu;

@@ -3,5 +3,6 @@ Type=Application
 Name=neosu
 Icon=/usr/share/pixmaps/neosu.png
 Comment=Third-party McOsu fork, with additional features
-Exec=/usr/bin/neosu
+Exec=/usr/bin/neosu %u
 Categories=Game;
+MimeType=x-scheme-handler/neosu;
