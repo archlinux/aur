@@ -1,0 +1,13 @@
+diff --git a/src/keys.rs b/src/keys.rs
+index 4abbbb9..7e97eb0 100644
+--- a/src/keys.rs
++++ b/src/keys.rs
+@@ -15,7 +15,7 @@ use std::fs;
+ use thiserror::Error;
+ 
+ #[cfg(unix)]
+-use fs::os::unix::fs::PermissionsExt;
++use std::os::unix::fs::PermissionsExt;
+ 
+ #[derive(Error, Debug)]
+ pub enum KeyError {

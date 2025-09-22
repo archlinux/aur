@@ -2,7 +2,7 @@
 
 pkgname=purrcrypt
 pkgver=r13.c9094e0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fur-ociously secure encryption tool that encodes your secrets as adorable cat and dog sounds, using real elliptic curve cryptography with a playful disguise'
 arch=('x86_64')
 url="https://github.com/vxfemboy/$pkgname"
@@ -11,8 +11,10 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 provides=('purr')
 conflicts=('purr')
-source=("$pkgname-$pkgver::git+$url.git#commit=c9094e0")
-b2sums=('644ca8693b495e1f6058c5f2b061759a973ad5f2ec79b20e8ab31bbac4e44ac11b67858d4acf922a4fa4de2f5577459b951bfb589cf4fc9bb01c575318edb2ef')
+source=("$pkgname-$pkgver::git+$url.git#commit=c9094e0"
+        unix-fs-perm-import.patch)
+b2sums=('644ca8693b495e1f6058c5f2b061759a973ad5f2ec79b20e8ab31bbac4e44ac11b67858d4acf922a4fa4de2f5577459b951bfb589cf4fc9bb01c575318edb2ef'
+        '35cd224f83edcac85f99fc9f819796dc0723a6da2d79047a8f7d0fff1c9938817446c7295fc7c3260412e3cf54eec316af86f702ba0c45061df37845007acfa4')
 
 pkgver() {
     cd $pkgname-$pkgver
@@ -21,6 +23,7 @@ pkgver() {
 
 prepare() {
     cd $pkgname-$pkgver
+    patch -Np1 -i "$srcdir/unix-fs-perm-import.patch"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
