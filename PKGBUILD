@@ -17,7 +17,7 @@ depends=('enchant' 'gplugin-hg' 'gmime3' 'qt5-base'
    'libsasl' 'libidn' 'nss' 'kwallet5' 'hasl-hg'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
    'libxss' 'libsm' 'dbus-glib' 'json-glib' 'libadwaita'
-   'birb-hg' 'xeme-hg' 'seagull-hg')
+   'birb-hg' 'xeme-hg' 'seagull-hg' 'ibis-hg')
 optdepends=(
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
