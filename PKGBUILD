@@ -22,7 +22,7 @@
 #   See README.md further details.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -35,7 +35,7 @@ depends=('fzf' 'git' 'gcc')
 optdepends=('bat: for syntax highlighting'
             'curl: for downloading files'
             'glow: for markdown converting and viewing'
-            'llvm: for non-Arch distributions'
+            'llvm: for building some TKG packages'
             'nano: for editing config files'
             'onefetch: for git info display'
             'vim: for editing config files'
