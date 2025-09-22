@@ -5,7 +5,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=8.6.4
+pkgver=8.6.5
 _electronversion=38
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Prebuilt version,use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('334998cdd0a306e7bf4cc9b902abec575534ddc90e092813f3aaf05d04f11729')
-sha256sums_x86_64=('93b36022cc9372441f07da705fb7cd6d3625539310af1e1b0b9b9ae742455cc5')
+sha256sums_aarch64=('009060296269c1b879ac1e97dbb090f4b534dc40dabc887804efdebf55f4da96')
+sha256sums_x86_64=('52f70325f9365f0a5dfff8c452a5f6aadff045d5356ddbae433dc9123dd5afda')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
