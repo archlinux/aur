@@ -1,6 +1,6 @@
 # Maintainer: Valery Nosareu <cstrp.dev@gmail.com>
 pkgname=translatego
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A terminal-based multi-service translation tool written in Go"
 arch=('x86_64')
