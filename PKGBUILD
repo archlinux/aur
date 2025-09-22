@@ -12,7 +12,7 @@ pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('enchant' 'gplugin-hg' 'gmime3' 'qt5-base'
+depends=('enchant' 'gplugin' 'gmime3' 'qt5-base'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
    'libsasl' 'libidn' 'nss' 'kwallet5' 'hasl-hg'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
