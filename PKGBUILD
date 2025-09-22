@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Matsaa93 <matsaa93@gmail.com>
-pkgname=uni-synci-bin
+pkgname=uni-sync-bin
 _pkgname=uni-sync
 pkgver=0.3.1
 #pkgver() {

@@ -1,4 +1,4 @@
-pkgbase = uni-synci-bin
+pkgbase = uni-sync-bin
 	pkgdesc = Uni-Sync : A Synchronization Tool for Lian Li Fan Controllers
 	pkgver = 0.3.1
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = uni-synci-bin
 	source = LICENSE
 	sha256sums = c8fe62ed278d3c8b6e9ab88c9e5b5d8db131a65b2040eb0f6e38e25b8f0fc6c9
 
-pkgname = uni-synci-bin
+pkgname = uni-sync-bin
