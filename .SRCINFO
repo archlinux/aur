@@ -1,6 +1,6 @@
 pkgbase = python-systemctl-mqtt
 	pkgdesc = MQTT client triggering & reporting shutdown on systemd-based systems
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/fphammerle/systemctl-mqtt
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-systemctl-mqtt
 	makedepends = python-wheel
 	makedepends = git-lfs
 	depends = python-aiomqtt
-	source = https://github.com/fphammerle/systemctl-mqtt/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = a9a9a2e3b4dfb43a047fa338461735aec7e493ca34a9085adf5ba159497a5c7c
+	source = https://github.com/fphammerle/systemctl-mqtt/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = c75620a3b86b74a321594ef01cc3587f36e312ba94360b45513bffaf45c216b7
 
 pkgname = python-systemctl-mqtt
