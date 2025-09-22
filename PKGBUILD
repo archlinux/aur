@@ -1,7 +1,7 @@
-# Maintainer: Luke Taylor <luket1@proton.me>
+# Maintainer: Luke Taylor <luket@pm.me>
 
 pkgname=fooyin-git
-pkgver=0.7.3.r137.g7284fc1
+pkgver=0.9.2.r6.g460c4c3
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -45,24 +45,13 @@ provides=('fooyin')
 conflicts=('fooyin')
 source=(
   "$pkgname"::"git+https://github.com/fooyin/fooyin.git"
-  "libvgm"::"git+https://github.com/ValleyBell/libvgm.git"
 )
-sha256sums=(
-            'SKIP'
-            'SKIP'
-)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$pkgname"
-  git submodule init
-  git config submodule.3rdparty/libvgm.url "${srcdir}/libvgm"
-  git -c protocol.file.allow=always submodule update
 }
 
 build() {

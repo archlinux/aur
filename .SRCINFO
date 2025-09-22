@@ -1,6 +1,6 @@
 pkgbase = fooyin-git
 	pkgdesc = A customisable music player
-	pkgver = 0.7.3.r137.g7284fc1
+	pkgver = 0.9.2.r6.g460c4c3
 	pkgrel = 1
 	url = https://github.com/fooyin/fooyin
 	arch = x86_64
@@ -36,8 +36,6 @@ pkgbase = fooyin-git
 	provides = fooyin
 	conflicts = fooyin
 	source = fooyin-git::git+https://github.com/fooyin/fooyin.git
-	source = libvgm::git+https://github.com/ValleyBell/libvgm.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = fooyin-git
