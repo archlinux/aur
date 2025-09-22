@@ -2,8 +2,8 @@
 
 pkgname=python-ubelt
 _pkgname=ubelt
-pkgver=1.3.7
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A Python utility belt containing simple tools"
 arch=('any')
 url="https://github.com/Erotemic/ubelt"
@@ -13,7 +13,7 @@ optdepends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-requests python-xdoctest)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('41837abc852ce01bbaea8eb3da15f49c4c0d68340f546c6e2ee00fbc5be75f39')
+sha256sums=('84e146c1c3ba13a2425eea5d5748bf33ab3f9dbe7ce237eb11e130116ba17441')
 
 build(){
   cd "$_pkgname-$pkgver"
