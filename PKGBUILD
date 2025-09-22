@@ -3,7 +3,7 @@ pkgname=colony-player-bin
 _pkgname=Colony-Player
 pkgver=1.4.0
 _electronversion=11
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that allows you to play Colony without the need of Flash Projector!(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SynthKittenDev/Colony-Player"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b807011938965722138dccaa6145f002d0105c307a12dbe4455400d2c394d6f9'
+sha256sums=('7c2fd4c8a59c4974f878bda3b0502382b1692cc5f19f3677e09d6c380e6f6980'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname//-/ }/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
