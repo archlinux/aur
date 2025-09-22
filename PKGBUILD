@@ -3,7 +3,7 @@
 #
 pkgname='terabox-bin'
 _pkgname="$(echo $pkgname |cut -d - -f 1 | tr 'tb' 'TB')"
-pkgver='1.41.5'
+pkgver='1.42.2'
 pkgrel='1'
 pkgdesc='Baidu netdisc international version'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 # DEB package
 source=("https://data.nephobox.com/issue/terabox/Linux/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('27f6bfd1c3f96f380a09577ba7aa1e1b7871f7236cff681a1ab92281b4fa2e4c')
+sha256sums=('9bd4c247a2bf4d080d4cc338a81c3d927b6290b521026ad9239d5be1f215690d')
 
 options=(!strip)
 
