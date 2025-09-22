@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bmp
-_pkgver=0.3
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Read Windows Bitmap (BMP) Images"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8602a66ba473b9648f7ae87fecaf43bb')
-b2sums=('57e7d94dba79b34efedf89a42e83345cfd426c58ce9167ddef291734c6217ca9c974e90e491438fc429ac05e17137616e6a925aeef572d3755a782bbe99c542a')
+md5sums=('2fcfe09f7ef8d18454a3efb0d9b4263f')
+b2sums=('dd7e82a3f642c2641340423378593e98dadc6f6842b58380a855dc58e82f3f8fe0335509de5081c5381bd99179062f3ea2da16ed8b89d1b70a84ad946b2c67f2')
 
 build() {
   mkdir build
