@@ -1,0 +1,19 @@
+pkgbase = kubectl-plugin_completion
+	pkgdesc = kubectl plugin for allowing kubectl plugin completions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/MartinSimango/kubectl-plugin_completion
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = MIT
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	optdepends = bash: for bash completion
+	optdepends = zsh: for zsh completion
+	source = https://github.com/MartinSimango/kubectl-plugin_completion/archive/v0.1.2/kubectl-plugin_completion-0.1.2.tar.gz
+	sha512sums = d88ae9c044db64ca0ebe4fe7d20b8cbeed9d136eb83b8db19ed4f23d4ec136dd7084bbbb38103072243c7df306287804b521c1ad35616f28f694fb6f59713fbe
+	b2sums = d190c41aba60ceb9e50c525665b535f0d6dfb51ca96f662b7cb7457d979cc7d56e7e4e16c94a4376869eec204c8cd1e17b5ebbf613c739acf0824c9dc339265b
+
+pkgname = kubectl-plugin_completion
