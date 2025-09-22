@@ -1,4 +1,4 @@
-pkgbase = filesystem-full-text-search-indexer
+pkgbase = filesystem-indexer
 	pkgdesc = Full-text search indexer for filesystem
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = filesystem-full-text-search-indexer
 	source = https://github.com/lhilfiker/filesystem-full-text-search-indexer/archive/refs/heads/main.tar.gz
 	sha256sums = 35a3f2c9ac69406b10b434a641de90281537c9f88c931c4edc841788cc77a16f
 
-pkgname = filesystem-full-text-search-indexer
+pkgname = filesystem-indexer

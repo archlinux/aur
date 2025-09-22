@@ -1,5 +1,5 @@
 # Maintainer: reazn reazn.dev@proton.me
-pkgname=filesystem-full-text-search-indexer
+pkgname=filesystem-indexer
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Full-text search indexer for filesystem"
