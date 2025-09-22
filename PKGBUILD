@@ -2,7 +2,7 @@
 
 pkgname=python-mijia-api
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python API for Xiaomi Mijia"
 arch=('any')
 url='https://github.com/Do1e/mijia-api'
@@ -20,9 +20,10 @@ sha256sums=('350f5630569a3b2f9b566b7809fe56471a6a2dae5561e2e9092eb9b999a2c105')
 
 build() {
   cd "mijiaapi-$pkgver"
+  original_venv_setting=$(poetry config virtualenvs.create --local)
   poetry config virtualenvs.create false
   poetry build
-  poetry config virtualenvs.create true
+  poetry config virtualenvs.create "$original_venv_setting"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = python-mijia-api
 	pkgdesc = A Python API for Xiaomi Mijia
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Do1e/mijia-api
 	arch = any
 	license = GPL-3.0
