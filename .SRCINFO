@@ -1,6 +1,6 @@
 pkgbase = coolerdash-git
 	pkgdesc = Displays real-time sensor on an AIO liquid cooler with integrated LCD displays. 🐧
-	pkgver = 1.73.r0.gd1b8270
+	pkgver = 1.74.r0.g7f4af41
 	pkgrel = 1
 	url = https://github.com/damachine/coolerdash
 	install = coolerdash.install
@@ -20,7 +20,7 @@ pkgbase = coolerdash-git
 	conflicts = coolerdash
 	replaces = coolerdash
 	backup = etc/coolerdash/config.ini
-	source = git+https://github.com/damachine/coolerdash.git#commit=d1b8270d5673bc9e0cb04f7f25cde9d62e17c46d
+	source = git+https://github.com/damachine/coolerdash.git#commit=7f4af4119196cd52bbe7f20c3076436b78ee4a4c
 	sha256sums = SKIP
 
 pkgname = coolerdash-git
