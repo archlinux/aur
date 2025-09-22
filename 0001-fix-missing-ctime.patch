@@ -1,0 +1,26 @@
+diff -aur a/src/progs/dyecmd/client.cpp b/src/progs/dyecmd/client.cpp
+--- a/src/progs/dyecmd/client.cpp
++++ b/src/progs/dyecmd/client.cpp
+@@ -88,9 +88,7 @@
+ #undef ERROR
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #ifdef ANDROID
+ #ifndef USE_SDL2
+diff -aur a/src/resources/wallpaper.cpp b/src/resources/wallpaper.cpp
+--- a/src/resources/wallpaper.cpp
++++ b/src/resources/wallpaper.cpp
+@@ -39,9 +39,7 @@
+ #include <sys/time.h>
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #include "debug.h"
+ 

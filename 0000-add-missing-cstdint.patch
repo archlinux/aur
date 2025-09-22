@@ -1,0 +1,24 @@
+diff -aur a/src/net/ea/chatrecv.h b/src/net/ea/chatrecv.h
+--- a/src/net/ea/chatrecv.h
++++ b/src/net/ea/chatrecv.h
+@@ -27,6 +27,8 @@
+ #if defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #if defined(__APPLE__)
+ #include <tr1/cstdint>
++#else  // defined(__APPLE__)
++#include <cstdint>
+ #endif  // defined(__APPLE__)
+ #else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #include <stdint.h>
+diff -aur a/src/net/ea/traderecv.h b/src/net/ea/traderecv.h
+--- a/src/net/ea/traderecv.h
++++ b/src/net/ea/traderecv.h
+@@ -27,6 +27,8 @@
+ #if defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #if defined(__APPLE__)
+ #include <tr1/cstdint>
++#else  // defined(__APPLE__)
++#include <cstdint>
+ #endif  // defined(__APPLE__)
+ #else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #include <stdint.h>

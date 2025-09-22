@@ -1,0 +1,23 @@
+diff -aur a/src/utils/dumplibs.cpp b/src/utils/dumplibs.cpp
+--- a/src/utils/dumplibs.cpp
++++ b/src/utils/dumplibs.cpp
+@@ -140,7 +140,7 @@
+     LIBXML_TEST_VERSION
+ #endif  // LIBXML_TEST_VERSION
+ #ifdef ENABLE_LIBXML
+-    const char **xmlVersion = __xmlParserVersion();
++    const char* const* xmlVersion = &xmlParserVersion;
+     if (xmlVersion != nullptr)
+         logger->log(" libxml2: %s", *xmlVersion);
+ #endif  // ENABLE_LIBXML
+diff -aur a/src/utils/xml/libxml.inc b/src/utils/xml/libxml.inc
+--- a/src/utils/xml/libxml.inc
++++ b/src/utils/xml/libxml.inc
+@@ -24,6 +24,7 @@
+ 
+ #ifdef ENABLE_LIBXML
+ 
++#include <libxml/parser.h>
+ #include <libxml/xmlwriter.h>
+ 
+ __XML_XMLWRITER_H__
