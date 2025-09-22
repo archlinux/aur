@@ -3,13 +3,13 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 # Three-stage profile-guided optimization
-: ${_build_pgo:=true}
+: ${_build_pgo:=false}
 
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.3.1
-_deno_ver=2.4.5
+_pkgver=12.4.0
+_deno_ver=2.5.0
 
 pkgname=firedragon
 _pkgname=FireDragon
@@ -75,10 +75,10 @@ source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/f
         firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon)
 source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
 source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
-sha256sums=('ff5748dc22c15630ca998e489d686b821ed151c71612feec92b33926133deec6'
+sha256sums=('bef96d1f6eb65d34aa02053ca99d792abfd4392b8e64865cf35498d8f79f1f71'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0')
-sha256sums_x86_64=('6f9d8115bb3df582c0c5674507e906323b680be0f0b15e735d0cd5ec6be44444')
-sha256sums_aarch64=('4e3e86739fe527c6891dbfa73799a5ec1b11f45898aaebf73bf3247c2e6a53dd')
+sha256sums_x86_64=('4561adb06b13f287a3785276cb29f377b7ffb49d54290178223b037e161446d3')
+sha256sums_aarch64=('81d2ef446954429f0dcbcb24cdce115e5bb2c3a3548b79c01b49ec959682ac9b')
 
 # Select the method of profiling
 if [[ "${_build_pgo::1}" == "t" ]]; then
