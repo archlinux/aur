@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bouncer
 pkgver=49.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to help you choose the correct firewall zone for wireless connections."
 arch=('any')
 url="https://github.com/justinrdonnelly/bouncer"
