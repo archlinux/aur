@@ -5,7 +5,7 @@
 
 pkgname=rr
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
@@ -20,8 +20,16 @@ options=(!strip)
 
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/rr-debugger/${pkgname}/archive/${pkgver}.tar.gz
+    6251648873b9e1ed23536beebbaa5d6fead3d5be.diff
 )
-sha1sums=('3875953ac5cfff02c029b2c10a4d8addd39d20e1')
+sha1sums=('3875953ac5cfff02c029b2c10a4d8addd39d20e1'
+          '9c34d1723ae235093b0d3bdde6ffcd66382f05c3')
+
+prepare() {
+    cd "${srcdir}/rr-${pkgver}"
+
+    patch -Np1 -i "${srcdir}/6251648873b9e1ed23536beebbaa5d6fead3d5be.diff"
+}
 
 build() {
 	cmake \
