@@ -1,6 +1,6 @@
 pkgbase = pk_web-git
 	pkgdesc = Web UI for plakar backup tool
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://spn109.fr/pk_web
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pk_web-git
 	depends = plakar_cleaner-git>=0.2.5
 	provides = pk_web
 	conflicts = pk_web
-	source = pk_web-git::git+https://codeberg.org/spn109/pk_web.git#tag=v0.3.2
+	source = pk_web-git::git+https://codeberg.org/spn109/pk_web.git#tag=v0.3.3
 	md5sums = SKIP
 
 pkgname = pk_web-git

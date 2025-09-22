@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=pk_web
 pkgname=${_pkgname}-git
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Web UI for plakar backup tool"
 arch=(any)
