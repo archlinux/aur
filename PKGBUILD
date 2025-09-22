@@ -3,7 +3,7 @@
 
 pkgname=mozregression-gui-bin
 _pkgname=mozregression-gui
-pkgver=6.3.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='Regression range finder for Firefox'
 arch=('any')
@@ -12,10 +12,10 @@ url="https://github.com/mozilla/mozregression"
 options=('!strip')
 depends=("gtk3" "qt5-wayland" "qt5-multimedia" "libbsd" "libyaml" "qt5-webengine" "qt5-quickcontrols2" "qt5-sensors" "qt5-virtualkeyboard" "python")
 provides=("${_pkgname}=${pkgver}")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mozilla/mozregression/releases/download/${pkgver}/${_pkgname}-ubuntu-22.04.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mozilla/mozregression/releases/download/${pkgver}/${_pkgname}-ubuntu-24.04.tar.gz"
         "${_pkgname}.desktop"
         "https://raw.githubusercontent.com/mozilla/mozregression/master/gui/icons/app_icon.png")
-sha256sums=('1a237b5b5c62c3e40b5b2365fadc15f45e44b57e06f3b5f30a1f8932bd37f0a4'
+sha256sums=('bfe8ddd01896d3a5992464cfa113c0ee3e2154c1ddb17e9250a2899f461b85a8'
             '0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb'
             'eec9a7ab76d757b7f03ceea4a65623337a6625989f4aa801d07f71aa37175e23')
 
