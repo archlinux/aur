@@ -1,6 +1,6 @@
 pkgbase = krita-git
 	pkgdesc = A full-featured free digital painting studio. Qt 6 git version.
-	pkgver = 6.0.0.prealpha.r64523.e088026ad5
+	pkgver = 6.0.0.prealpha.r64810.a11121827f
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -72,7 +72,7 @@ pkgbase = krita-git
 	optdepends = libmypaint: support for MyPaint brushes
 	optdepends = krita-plugin-gmic: GMic plugin
 	optdepends = libjxl: JPEG-XL filter
-	provides = krita=6.0.0.prealpha.r64523.e088026ad5
+	provides = krita=6.0.0.prealpha.r64810.a11121827f
 	conflicts = krita
 	conflicts = krita-qt6-git
 	source = git+https://invent.kde.org/graphics/krita.git

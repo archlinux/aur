@@ -8,7 +8,7 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=6.0.0.prealpha.r64523.e088026ad5
+pkgver=6.0.0.prealpha.r64810.a11121827f
 pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Qt 6 git version.'
 arch=('x86_64')
@@ -43,8 +43,14 @@ conflicts=("${_pkgname}" "${_pkgname}-qt6-git")
 source=("git+https://invent.kde.org/graphics/${_pkgname}.git")
 sha512sums=('SKIP')
 
+prepare() {
+	cd "${_pkgname}"
+	# Fix for Eigen3 5
+	sed -Ei 's/(Eigen3)\s+3\.3/\1 5/i' CMakeLists.txt
+}
+
 pkgver() {
-	cd ${_pkgname}
+	cd "${_pkgname}"
 	printf "%s.r%s.%s" \
 		"$(
 			grep 'set(KRITA_VERSION_STRING' CMakeLists.txt | \
@@ -56,7 +62,7 @@ pkgver() {
 }
 
 build() {
-	cmake -B build -S ${_pkgname} -G Ninja \
+	cmake -B build -S "${_pkgname}" -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
