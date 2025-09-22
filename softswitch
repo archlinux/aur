@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# Softswitch - A simple PHP version switcher for Arch Linux
+# Author: Ismoiljon Umarov
+# Version: 1.1.0
+# License: MIT
+
+# --- Configuration ---
+# Directory where PHP versions are installed.
+PHP_BIN_DIR="/usr/bin"
+
+# Directory for our symlinks. This must be in the user's PATH before /usr/bin.
+# /usr/local/bin is the standard for this purpose.
+SYMLINK_DIR="/usr/local/bin"
+SYMLINK_PHP="$SYMLINK_DIR/php"
+SYMLINK_PHPCGI="$SYMLINK_DIR/php-cgi"
+SYMLINK_PHPFPM="$SYMLINK_DIR/php-fpm"
+
+# --- Colors for output ---
+C_RESET='\033[0m'
+C_RED='\033[0;31m'
+C_GREEN='\033[0;32m'
+C_YELLOW='\033[0;33m'
+C_BLUE='\033[0;34m'
+
+# --- Helper Functions ---
+error_exit() {
+    echo -e "${C_RED}Error: $1${C_RESET}" >&2
+    exit 1
+}
+
+check_sudo() {
+    if [ "$EUID" -ne 0 ]; then
+        error_exit "This command requires root privileges. Please run with sudo."
+    fi
+}
+
+# --- Core Functions ---
+list_versions() {
+    echo -e "${C_BLUE}Available PHP versions found in $PHP_BIN_DIR:${C_RESET}"
+    local found=0
+    
+    find "$PHP_BIN_DIR" -maxdepth 1 -regextype posix-extended -regex '.*/php[0-9]*(\.[0-9]+)?$' -executable | sort -V | while read -r php_exe; do
+        found=1
+        local version_name
+        version_name=$(basename "$php_exe")
+        
+        if [ -L "$SYMLINK_PHP" ] && [ "$(readlink "$SYMLINK_PHP")" == "$php_exe" ]; then
+            echo -e " ${C_GREEN}* $version_name (active)${C_RESET}"
+        else
+            echo "   $version_name"
+        fi
+    done
+
+    if [ $found -eq 0 ]; then
+        echo -e " ${C_YELLOW}No PHP versions found.${C_RESET}"
+        echo "   Install some from the official repositories, e.g., 'sudo pacman -S php php81'"
+    fi
+}
+
+switch_version() {
+    local version_name="$1"
+    local target_php_bin="$PHP_BIN_DIR/$version_name"
+
+    if [ -z "$version_name" ]; then
+        error_exit "No PHP version specified. Usage: sudo softswitch use <version>"
+    fi
+
+    if [ ! -x "$target_php_bin" ]; then
+        error_exit "PHP version '$version_name' not found or is not executable."
+    fi
+
+    echo -e "${C_YELLOW}Switching to $version_name...${C_RESET}"
+
+    mkdir -p "$SYMLINK_DIR"
+    rm -f "$SYMLINK_PHP" "$SYMLINK_PHPCGI" "$SYMLINK_PHPFPM"
+
+    ln -s "$target_php_bin" "$SYMLINK_PHP"
+    echo " -> Linked php to $target_php_bin"
+
+    local target_cgi_bin="$PHP_BIN_DIR/${version_name}-cgi"
+    if [ -x "$target_cgi_bin" ]; then
+        ln -s "$target_cgi_bin" "$SYMLINK_PHPCGI"
+    fi
+
+    local target_fpm_bin="$PHP_BIN_DIR/${version_name}-fpm"
+    if [ -x "$target_fpm_bin" ]; then
+        ln -s "$target_fpm_bin" "$SYMLINK_PHPFPM"
+    fi
+
+    echo -e "${C_GREEN}Successfully switched to $version_name.${C_RESET}"
+    current_status
+}
+
+current_status() {
+    if [ -L "$SYMLINK_PHP" ]; then
+        local current_link
+        current_link=$(readlink "$SYMLINK_PHP")
+        local current_version
+        current_version=$("$SYMLINK_PHP" -v | head -n 1)
+        echo -e "\n${C_BLUE}Current active version:${C_RESET}"
+        echo -e " ${C_GREEN}* $(basename "$current_link")${C_RESET} --> $current_version"
+    else
+        echo -e "\n${C_YELLOW}No active PHP version is managed by softswitch.${C_RESET}"
+        echo "   Use 'sudo softswitch use <version>' to set one."
+    fi
+}
+
+show_help() {
+    echo "Softswitch - A simple PHP version switcher for Arch Linux"
+    echo ""
+    echo -e "${C_BLUE}Usage:${C_RESET}"
+    echo "  softswitch <command> [options]"
+    echo ""
+    echo -e "${C_BLUE}Available Commands:${C_RESET}"
+    echo -e "  ${C_GREEN}list${C_RESET}          List all available PHP versions."
+    echo -e "  ${C_GREEN}use <version>${C_RESET}   Switch to a specified PHP version (e.g., 'php81'). Requires sudo."
+    echo -e "  ${C_GREEN}status${C_RESET}        Show the currently active PHP version."
+    echo -e "  ${C_GREEN}help${C_RESET}          Show this help message."
+}
