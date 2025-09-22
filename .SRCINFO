@@ -1,6 +1,6 @@
 pkgbase = python-lineprofiler
 	pkgdesc = Line-by-line profiler
-	pkgver = 4.2.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/line_profiler
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-lineprofiler
 	depends = ipython
 	depends = python
 	optdepends = python-rich
-	source = line_profiler-4.2.0.tar.gz::https://github.com/pyutils/line_profiler/archive/v4.2.0.tar.gz
-	sha256sums = 50e84e3abed7e845a77641fc7751688f6eb23b11c93f1715c56afd10eb187602
+	source = line_profiler-5.0.0.tar.gz::https://github.com/pyutils/line_profiler/archive/v5.0.0.tar.gz
+	sha256sums = 6cb285cbf477bb4da1e6d9e23e26833b158563b082bdd370a305d4a4369a00a9
 
 pkgname = python-lineprofiler
