@@ -3,7 +3,7 @@
 # Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
 
 pkgname=xmcl-launcher
-pkgver=0.52.0
+pkgver=0.52.1
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern Minecraft Launcher"
 arch=('x86_64' 'aarch64')
