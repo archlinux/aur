@@ -1,6 +1,6 @@
 pkgname=stingray
 _pkgname=Stingray
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Custom client for a private Jellyfin server."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('509ff68752561ebbfb057fe8f6dfa08d42cd54116f215c2a6e595041d98a3622')
+sha256sums=('f49d0faf7c213cbead9f09cda615d3791acff698749de3e7c104d0f931e2f11a')
 
 
 package() {
@@ -20,7 +20,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
-
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
