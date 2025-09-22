@@ -2,7 +2,7 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=mozregression-gui
-pkgver=6.3.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='Regression range finder for Firefox'
 arch=('any')
@@ -21,7 +21,7 @@ build() {
   cd mozregression || exit
   python -m venv env
   source env/bin/activate
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --ignore-installed --no-deps -r requirements/requirements-3.11-Linux.txt
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --ignore-installed --no-deps -r requirements/requirements-3.13-Linux.txt
   PIP_CONFIG_FILE=/dev/null pip install --isolated -e .
   python gui/build.py bundle
 }
