@@ -1,6 +1,6 @@
 # Maintainer: Stefan Fürst <stefan20fuerst12@gmail.com>
 pkgname=gns3util
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="GNS3 API utility for managing GNS3v3 servers"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('glibc')
 makedepends=('go')
 source_x86_64=("https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v${pkgver}/gns3util-linux-amd64.tar.gz")
 source_aarch64=("https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v${pkgver}/gns3util-linux-arm64.tar.gz")
-sha256sums_x86_64=("b889a1e5b32aab8c276d8347ab938ba87b8c23bfd0f7c925872c059201178fc4")
-sha256sums_aarch64=("35d86d81e223d1734654226f6e9553114f1850f55e6b180e56023aa1ee5c13dd")
+sha256sums_x86_64=("cbf662e5b237e4e3d90f89b336ac88bea4cbe221a62fea16b23ce840f126fe36")
+sha256sums_aarch64=("1e4a8813a1d2725c74b94c88350e397b1e78ec07e619cc9cd885ab6b3cdcad78")
 
 package() {
     if [ -f "gns3util-linux-amd64" ]; then
