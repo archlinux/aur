@@ -1,0 +1,20 @@
+pkgbase = ibus-lotus
+	pkgdesc = A Vietnamese IME for IBus - fork of ibus-bamboo
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/LotusInputEngine/ibus-lotus
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = gtk3
+	makedepends = libx11
+	makedepends = libxtst
+	depends = ibus
+	provides = ibus-lotus
+	conflicts = ibus-bamboo-git
+	conflicts = ibus-bamboo
+	conflicts = ibus-lotus-git
+	source = ibus-lotus-1.0.2.tar.gz::https://github.com/LotusInputEngine/ibus-lotus/archive/v1.0.2.tar.gz
+	sha256sums = a15b7febdb5b3f0280ffc4efbfab4d3e55db135f0be860660735bc641a1710e4
+
+pkgname = ibus-lotus
