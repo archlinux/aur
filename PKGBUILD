@@ -2,7 +2,7 @@
 
 _pkgname="matlab-mpm-input"
 pkgname="${_pkgname}-git"
-pkgver=R2025a+r116.992d217
+pkgver=R2025b+r121.1c3c73b
 _release="${pkgver%%+*}"
 _version="${pkgver##*+}"
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://www.mathworks.com/products/mpm.html"
 _url="https://github.com/mathworks-ref-arch/matlab-dockerfile"
 license=('custom:MATLAB EULA')
 depends=(
-  "matlab-mpm-release>=${_release}"
+  'matlab-mpm'
 )
 makedepends=(
   'git'
