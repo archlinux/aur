@@ -2,7 +2,7 @@
 
 pkgname=neosu-bin
 _pkgname=${pkgname%-bin}
-pkgver=41.02
+pkgver=41.03
 pkgrel=1
 pkgdesc="Third-party McOsu fork, with additional features"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   "$_pkgname.sh"
 )
 
-sha256sums=('41feafd2276e5bdf11ca54c01ee542f9f07f3e9f5d9e6d48b8c64a1f6be2613c'
+sha256sums=('a9f7cd215859e5b8c29654d17a734cee4fb7647008a166d12736d2c62363511b'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
             'f545fb2ea01de0e0fd9acbdaea1a125bbc769b3eeda11e1dffa6ae5c03568bf2'
             '1d8c2291f5f82f330d9b9238bbd32d0d2c54f0fe530a11c60e7b7e0bea0cd5dc'
