@@ -3,7 +3,7 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 
-pkgrel=1
+pkgrel=2
 pkgver=0.9.5
 _name="ureminder"
 pkgname="$_name"
