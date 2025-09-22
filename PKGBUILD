@@ -2,16 +2,21 @@
 _name=wntr
 pkgname="python-$_name"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Water Network Tool for Resilience"
 url="https://github.com/USEPA/WNTR"
 arch=('any')
 license=('Revised BSD')
 
-depends=(python python-numpy python-scipy python-networkx python-pandas
+depends=(python
+  python-numpy
+  python-setuptools
+  python-scipy
+  python-networkx
+  python-pandas
   python-matplotlib)
-makedepends=(python-setuptools swig)
+makedepends=(swig)
 
 # Clone Github for evaluator.i and other files needed by swig.
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")

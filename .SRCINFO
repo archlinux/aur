@@ -1,14 +1,14 @@
 pkgbase = python-wntr
 	pkgdesc = Water Network Tool for Resilience
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/USEPA/WNTR
 	arch = any
 	license = Revised BSD
-	makedepends = python-setuptools
 	makedepends = swig
 	depends = python
 	depends = python-numpy
+	depends = python-setuptools
 	depends = python-scipy
 	depends = python-networkx
 	depends = python-pandas
