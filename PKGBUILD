@@ -1,4 +1,4 @@
-# Maintainer: Stefanistkuhl <stefanistkuhl@example.com>
+# Maintainer: Stefan Fürst <stefan20fuerst12@gmail.com>
 pkgname=gns3util
 pkgver=1.1.0
 pkgrel=1
@@ -19,6 +19,7 @@ package() {
     elif [ -f "gns3util-linux-arm64" ]; then
         install -Dm755 gns3util-linux-arm64 "${pkgdir}/usr/bin/gns3util"
     fi
+    
     # Install shell completions
     # if [ -d "completions" ]; then
     #     # Bash completion
@@ -37,12 +38,10 @@ package() {
     #     fi
     # fi
     
-    # Install man page if it exists
     if [ -f "man/gns3util.1" ]; then
         install -Dm644 man/gns3util.1 -t "${pkgdir}/usr/share/man/man1"
     fi
     
-    # Install license
     if [ -f "LICENSE" ]; then
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
