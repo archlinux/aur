@@ -1,11 +1,12 @@
 pkgbase = zig-mach-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
 	pkgver = 0.14.0dev.2577+271452d22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ziglang.org
 	arch = aarch64
 	arch = armv7h
 	arch = i686
+	arch = loong64
 	arch = powerpc64le
 	arch = riscv64
 	arch = x86_64

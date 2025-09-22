@@ -4,12 +4,13 @@ _basename="zig"
 _pkgname="${_basename}-mach"
 pkgname="${_pkgname}-bin"
 pkgver=0.14.0dev.2577+271452d22
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   'aarch64'
   'armv7h'
   'i686'
+  'loong64'
   'powerpc64le'
   'riscv64'
   'x86_64'
@@ -31,6 +32,7 @@ conflicts=(
 if   [ "${CARCH}" = 'aarch64'     ]; then _arch=aarch64;
 elif [ "${CARCH}" = 'armv7h'      ]; then _arch=armv7a; # TODO: arm
 elif [ "${CARCH}" = 'i686'        ]; then _arch=x86;
+elif [ "${CARCH}" = 'loong64'     ]; then _arch=loongarch64;
 elif [ "${CARCH}" = 'powerpc64le' ]; then _arch=powerpc64le;
 elif [ "${CARCH}" = 'riscv64'     ]; then _arch=riscv64;
 elif [ "${CARCH}" = 'x86_64'      ]; then _arch=x86_64;
