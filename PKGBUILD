@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-cospend
-pkgver=3.0.11
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Shared budget manager Nextcloud app"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm' 'nodejs' 'rsync' 'yq' 'composer')
 options=('!strip')
 groups=('nextcloud-apps')
 source=("cospend-nc-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a02b23c0c1fd387e51300bb0452a71ce0e01ca5ed38b0c1820db734680839bde54cbbb6d151db08cdb9afd321d60bde7a63cd4dfa32df1c3522b7735b3dbeb6f')
+sha512sums=('21b13784cfd241aee0a6e205804e2993b25ee588f29174308dec3c27fa3d91e8445fc617576f1f16bb2edf3522f2bc37ad4035b8765cb6a774d3cf0229251e70')
 _releasename=cospend-nc
 _appname=cospend
 
@@ -42,7 +42,7 @@ package() {
 
     cd "$srcdir/$_releasename-$pkgver"
     _destdir="$pkgdir/usr/share/webapps/nextcloud/apps"
-    make build_dir=build sign_dir="$_destdir" version="v$pkgver" build_release
+    make -j1 build_dir=build sign_dir="$_destdir" version="v$pkgver" build_release < /dev/null
 
     # Remove auxiliary script
     rm -f "$_destdir/$_appname/l10n/descriptions/gen_info.xml.sh"
