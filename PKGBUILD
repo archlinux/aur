@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.20.0.r0.g63ff484
-_electronversion=37
-_nodeversion=24
+pkgver=2.6.0.r2.g4bd5eb8
+_electronversion=38
+_nodeversion=22
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.(Use system-wide electron)"
 arch=('any')
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -42,8 +42,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -89,7 +94,6 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build
-    NODE_ENV=development    pnpm prepare:remove-source-maps
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config config/electron-builder.js"
 }
 package() {
