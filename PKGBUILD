@@ -13,8 +13,8 @@ depends=(
   'dconf'
   'flatpak'
   'glib2'
-  'glycin'
-  'glycin-gtk4'
+  'glycin1'
+  'glycin1-gtk4'
   'graphene'
   'gtk4'
   'json-glib'
@@ -31,19 +31,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "bazaar::git+https://github.com/kolunmi/bazaar.git"
-  "glycin-2.0-compat.patch::https://github.com/kolunmi/bazaar/commit/b9c07d28e87d243ba99d6fa7365dc6ad8abccb73.patch"
 )
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd bazaar
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd bazaar
-  patch -p1 -i ../glycin-2.0-compat.patch
 }
 
 build() {
