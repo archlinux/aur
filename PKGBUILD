@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ptree-bin
 _pkgname=PTree
-pkgver=2.3.0
+pkgver=2.3.1
 _electronversion=11
-pkgrel=2
+pkgrel=1
 pkgdesc="Design power tree and estimate consumptions.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://smariel.github.io/PTree"
@@ -22,8 +22,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('346bffc05e90f6659cebf1910d4ca740f97ebe72f07ab39db1478d1ac1ed65f2'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('f5d04632a07a2c83525f973d70e36b5d7094854f9ec25a72533a32c4b6d08d55'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,7 +36,13 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    _get_electron_version
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
     asar e "${srcdir}/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
 }
 package() {
