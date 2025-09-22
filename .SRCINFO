@@ -1,14 +1,14 @@
 pkgbase = lext-theme-lubuntu-arc
 	pkgdesc = LXQt theme: Lubuntu-Arc (from Lubuntu 25.10-2)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lext-next/lext-theme-lubuntu-arc
 	arch = any
 	license = GPL-2.0
-	depends = lxqt-session
+	depends = lxqt-panel
 	conflicts = lubuntu-artwork
 	conflicts = lubuntu-artwork-18-04
-	source = https://github.com/lext-next/lext-theme-lubuntu-arc/raw/refs/heads/main/lext-theme-lubuntu-arc.tar.xz
+	source = http://lext-store.duckdns.org/aur/lext-next/lext-theme-lubuntu-arc.tar.xz
 	sha256sums = SKIP
 
 pkgname = lext-theme-lubuntu-arc

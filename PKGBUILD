@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/lext-next/lext-theme-lubuntu-arc"
 license=('GPL-2.0')
 
-depends=('lxqt-session')
+depends=('lxqt-panel')
 conflicts=('lubuntu-artwork' 'lubuntu-artwork-18-04')
 source=("http://lext-store.duckdns.org/aur/lext-next/lext-theme-lubuntu-arc.tar.xz")
 
