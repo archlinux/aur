@@ -1,6 +1,6 @@
 pkgbase = nocodb-bin
 	pkgdesc = Open Source Airtable Alternative: Turns any MySQL, PostgreSQL, SQL Server, SQLite & MariaDB into a smart spreadsheet.
-	pkgver = 0.264.8
+	pkgver = 0.264.9
 	pkgrel = 1
 	url = https://nocodb.com
 	install = post_install.install
@@ -9,9 +9,9 @@ pkgbase = nocodb-bin
 	provides = nocodb
 	conflicts = nocodb
 	options = !strip
-	source = https://github.com/nocodb/nocodb/raw/0.264.8/LICENSE
+	source = https://github.com/nocodb/nocodb/raw/0.264.9/LICENSE
 	sha256sums = d8de517917a591daa447d6be28ffb2fac866703e4feb65e86221be9a22d3033a
-	source_x86_64 = nocodb-bin-0.264.8-x86_64::https://github.com/nocodb/nocodb/releases/download/0.264.8/Noco-linux-x64
-	sha256sums_x86_64 = 7ef6f9d97ef3b9efe2f4868a6de41cd0e71b46605f553761c206ab3b65370b3a
+	source_x86_64 = nocodb-bin-0.264.9-x86_64::https://github.com/nocodb/nocodb/releases/download/0.264.9/Noco-linux-x64
+	sha256sums_x86_64 = 3d2644c95341377ba51c1a797b93c445aa0e8266cec870b0229285519abb3a02
 
 pkgname = nocodb-bin
