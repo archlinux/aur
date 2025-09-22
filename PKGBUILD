@@ -1,6 +1,6 @@
 # Maintainer: Rafael Epplée <aur (at) rafa (dot) ee>
 pkgname=gonic
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='A lightweight music streaming server which implements the Subsonic API'
 arch=('x86_64' 'armv7h')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkg
         "$pkgname.service.patch"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('1611721d9324096eb01e688fdcfa56c9'
+md5sums=('b1ce1c80ef9864e04e00d196e1ee710e'
          'd6e8eda0411af60e613819ac957fcc56'
          'ff0d388a71398a4a9906ee068283f57e'
          '6ca6715be2cdd424846f7b37b98905f6'
