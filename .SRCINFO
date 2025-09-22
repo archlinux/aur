@@ -1,0 +1,16 @@
+pkgbase = uni-sync-timer
+	pkgdesc = a script that lets you control Lian-Li fans with a profile.json with Uni-Sync from EightB1ts
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/matsaa93/uni-sync-timer
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = uni-sync
+	provides = uni-sync
+	options = !strip
+	source = LICENSE
+	validpgpkeys = A90CF879EC922C4751F26A61258971F7992C02F6
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+
+pkgname = uni-sync-timer
