@@ -1,13 +1,10 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
+_branch=v17.0 # Don't forget to reset back to main after 49.x work merge
 pkgname=gnome-shell-extension-tiling-shell-git
 pkgdesc="Extend GNOME Shell with advanced tiling window management"
-pkgver=r56.c12f6ee
+pkgver=r61.2cd15c7
 pkgrel=1
-
-source=("git+https://github.com/domferr/tilingshell.git")
-sha256sums=(SKIP)
-
 arch=('any')
 url="https://github.com/domferr/tilingshell"
 license=('GPL2')
@@ -15,23 +12,23 @@ depends=('gnome-shell>=42')
 makedepends=('nodejs' 'npm' 'zip')
 provides=('gnome-shell-extension-tiling-shell' 'gnome-shell-extension-tilingshell')
 conflicts=('gnome-shell-extension-tiling-shell' 'gnome-shell-extension-tilingshell')
-
-_pkgname=tilingshell
+source=("${pkgname}::git+${url}.git#branch=${_branch}")
+sha256sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   export npm_config_cache="$srcdir/npm_cache"
   npm install
   npm run build:package
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
 
   _uuid="tilingshell@ferrarodomenico.com"
   _install_dir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
