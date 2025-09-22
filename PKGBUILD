@@ -3,7 +3,7 @@
 pkgname=meshsense-beta-appimage
 _pkgname="${pkgname%-appimage}"
 _pkgname_stable="${_pkgname%-beta}"
-pkgver=1.1.0b7
+pkgver=1.1.0b8
 pkgrel=1
 pkgdesc="Simple, open-source application that monitors, maps and graphically displays all the vital stats of your area Meshtastic network (AppImage)."
 arch=('x86_64')
@@ -17,7 +17,7 @@ _appimage_src="$_pkgname-$arch.AppImage"
 _appimage="$_pkgname-$arch-$pkgver.appimage"
 source=("$_appimage::$url/download/meshsense/$_appimage_src"
         "https://raw.githubusercontent.com/Affirmatech/MeshSense/refs/heads/master/LICENSE")
-sha512sums=('61d77e24f6271cd762b97e4dea0f92076138cd7a4e8566b23db726ff2b44b74b0c8ed5794f1fc372cdb7c35afb0cf1c6f5d84df46d401c39f18686c2f37912e2'
+sha512sums=('eba3584e126d3ef7fc2495ad4163da39ed86ad9639613d0a9de40b332d875cc9777bbbace52cfa702d33923f5c77bdc3ee31549efd2f95c887cfcf94af18e9ce'
             'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686')
 
 prepare() {
