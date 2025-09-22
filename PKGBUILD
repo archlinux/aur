@@ -1,7 +1,7 @@
 # Maintainer: Alexey Makhmutov <makhmutov at gmail dot com>
 pkgname=gnome-shell-extension-quick-lang-switch
 pkgver=15
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly switch keyboard language layout without showing the switcher popup."
 arch=("any")
 url="https://github.com/ankostis/gnome-shell-quick-lang-switch"
@@ -10,10 +10,17 @@ groups=("gnome-shell-extensions")
 depends=("gnome-shell>=1:45")
 options=("!strip" "!debug")
 _commit=af1aa83dddece116eae8a382459b16016ad9b55c
-source=("src-$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=("eaf5f66e477a08707ee91fd6c43fbc8511ce8d7f9967a0d28cd55d700d59dd7bc251c1f198fd9a7e34449ff4bf81ce01d9389c2bbc9fbc6e292146ce67eeffd6")
+source=("src-$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        "gnome-shell-quick-lang-switch-gnome49.patch")
+b2sums=("eaf5f66e477a08707ee91fd6c43fbc8511ce8d7f9967a0d28cd55d700d59dd7bc251c1f198fd9a7e34449ff4bf81ce01d9389c2bbc9fbc6e292146ce67eeffd6"
+        "fee58a1c714bb3d96971eed2ab9ae69b5ce22443eb0903e4a404691486fbe5246e0d6e37596848d543988604c2bf542f9a864dbb48946aa7e3bc803bcb6c3f0c")
 
 _uuid="quick-lang-switch@ankostis.gmail.com"
+
+prepare() {
+  cd gnome-shell-quick-lang-switch-$pkgver
+  patch -Np1 -i ../gnome-shell-quick-lang-switch-gnome49.patch
+}
 
 package() {
   cd gnome-shell-quick-lang-switch-$pkgver

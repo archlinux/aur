@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-quick-lang-switch
 	pkgdesc = Quickly switch keyboard language layout without showing the switcher popup.
 	pkgver = 15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ankostis/gnome-shell-quick-lang-switch
 	arch = any
 	groups = gnome-shell-extensions
@@ -10,6 +10,8 @@ pkgbase = gnome-shell-extension-quick-lang-switch
 	options = !strip
 	options = !debug
 	source = src-gnome-shell-extension-quick-lang-switch-15.tar.gz::https://github.com/ankostis/gnome-shell-quick-lang-switch/archive/refs/tags/v15.tar.gz
+	source = gnome-shell-quick-lang-switch-gnome49.patch
 	b2sums = eaf5f66e477a08707ee91fd6c43fbc8511ce8d7f9967a0d28cd55d700d59dd7bc251c1f198fd9a7e34449ff4bf81ce01d9389c2bbc9fbc6e292146ce67eeffd6
+	b2sums = fee58a1c714bb3d96971eed2ab9ae69b5ce22443eb0903e4a404691486fbe5246e0d6e37596848d543988604c2bf542f9a864dbb48946aa7e3bc803bcb6c3f0c
 
 pkgname = gnome-shell-extension-quick-lang-switch

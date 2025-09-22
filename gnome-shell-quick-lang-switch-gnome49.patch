@@ -1,0 +1,11 @@
+diff -ura gnome-shell-quick-lang-switch-15/metadata.json gnome-shell-quick-lang-switch-15.new/metadata.json
+--- gnome-shell-quick-lang-switch-15/metadata.json	2025-02-12 21:11:43.000000000 +0300
++++ gnome-shell-quick-lang-switch-15.new/metadata.json	2025-09-22 21:29:44.357642889 +0300
+@@ -2,6 +2,6 @@
+   "name": "Quick Lang Switch",
+   "description": "Quickly switch keyboard language layout without showing the switcher popup.\n\nThe language switcher popup by default takes ~0.7sec to appear, meaning that roughly 2-4 strokes are lost till the switch completes. This affects heavily users typing languages with non-latin based alphabets (e.g. Greek, Cyrilic, Arabic, Japanese), particularly when writting technical documents.\nThis extension reduces the switching time to 1/10th of a second (on a 2019 PC).  It fixes also focus issues with the active window.",
+   "uuid": "quick-lang-switch@ankostis.gmail.com",
+-  "shell-version": ["45", "46", "47", "48"],
++  "shell-version": ["45", "46", "47", "48", "49"],
+   "url": "https://github.com/ankostis/gnome-shell-quick-lang-switch"
+ }
