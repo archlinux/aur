@@ -1,7 +1,7 @@
 # Maintainer: dbgbgtf <dudududumaxver@outlook.com>
 # Maintainer: RocketDev <ma2014119@outlook.com>
 pkgname=ceccomp
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="A C-based seccomp analysis tool"
 arch=(x86_64)
@@ -16,10 +16,11 @@ makedepends=(
     python # for configure
     git
     util-linux # for flock to display a progress
+    gettext # for i18n/l10n
 )
 
 source=("$pkgname"::git+https://github.com/dbgbgtf1/Ceccomp.git#tag=v${pkgver}?signed)
-b2sums=('37666cd2c2dad947cc5fe6de90fe20675e040c3c5d8ddc71d10bb7eecc01095ad4f3428593ea717a7f8e58a4b3ebc98b05515d00f7c81aeb1bf614b107b81488')
+b2sums=('e4f6106a0a141f8e617abf3d1502dad1eac2764c7ee9b8aa714c5ea5a1cf62c5a9a283195e5a693628e9c5f8dad23137aa21770fe278b6008a99674c03292f28')
 
 validpgpkeys=(
     '0816A179BB09248F30468BD6542A0969B5CEDCDB' # dbgbgtf1 <dudududumaxver@outlook.com>
@@ -34,7 +35,8 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    make
+    # force program to load locale in system
+    make LOCALE_DIR=/usr/share/locale
 }
 
 package() {
