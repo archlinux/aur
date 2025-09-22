@@ -11,6 +11,12 @@ _name=pagmo2
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/esa/${_name}/archive/v${pkgver}.tar.gz")
 sha256sums=('ecc180e669fa6bbece959429ac7d92439e89e1fd1c523aa72b11b6c82e414a1d')
 
+prepare() {
+  cd "${srcdir}/pagmo2-$pkgver"
+  # eigen 5.x compat
+  sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
+}
+
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
     cmake \
