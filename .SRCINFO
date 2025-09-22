@@ -1,6 +1,6 @@
 pkgbase = cosmic-comp-git
 	pkgdesc = Compositor for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.6.r8.gaac8166
+	pkgver = 1.0.0.beta.1.r1.gf339e21
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-comp
 	arch = x86_64
@@ -22,6 +22,8 @@ pkgbase = cosmic-comp-git
 	provides = cosmic-comp
 	conflicts = cosmic-comp
 	source = git+https://github.com/pop-os/cosmic-comp.git
+	source = update_to_libdisplay-info_3.patch
 	sha256sums = SKIP
+	sha256sums = 2a762c10af946a033f8781e3ac433c2291c9f67256ec37776d33b76ca37615d8
 
 pkgname = cosmic-comp-git

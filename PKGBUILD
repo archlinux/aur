@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=1.0.0.alpha.6.r8.gaac8166
+pkgver=1.0.0.beta.1.r1.gf339e21
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,10 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-comp.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-comp.git'
+        'update_to_libdisplay-info_3.patch')
+sha256sums=('SKIP'
+            '2a762c10af946a033f8781e3ac433c2291c9f67256ec37776d33b76ca37615d8')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -36,6 +38,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Update dependencies to libdisplay-info/libdisplay-info-sys to v0.3.0
+  patch -Np1 -i "$srcdir/update_to_libdisplay-info_3.patch"
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
