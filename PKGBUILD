@@ -1,6 +1,6 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=mikusays
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A 'cowsay' clone with Hatsune Miku ASCII art and speech bubbles."
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('MIT')
 source_x86_64=("$url/releases/download/v$pkgver/mikusays-linux-x64")
 source_aarch64=("$url/releases/download/v$pkgver/mikusays-linux-arm64")
 
-sha256sums_x86_64=('ba16cda3572ac1097cae53f042ffacd6883d9c38f2a5c708301c76b8f5d0a95d')
-sha256sums_aarch64=('a87e0f765b140b12284f2bd2fc6abeda6feab52245b413e074eae495ca09a0d6')
+sha256sums_x86_64=('52a38f4ca13e90bf93b2dd90502a4c04cd8c903ed4fb9200e1f15d1d009f05d9')
+sha256sums_aarch64=('06d5f9012d6b4c9b011f148724a15affb71e5fd4a71eff908a35fa832f674e0b')
 
 package() {
 	# Install the correct binary based on the architecture
