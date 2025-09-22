@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r7909.58f2aa3f5
+pkgver=r8122.9e7b0f44c
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=(x86_64)
@@ -53,6 +53,7 @@ pkgver() {
 }
 
 build() {
+  local cuda_archs="75;80;86;87;88;89;90;100;103;110;120;121;121-virtual"
   cmake -B build -S "$_pkgname" -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -60,7 +61,7 @@ build() {
     -DTNL_USE_OPENMP=ON \
     -DTNL_USE_MPI=ON \
     -DTNL_USE_CUDA=ON \
-    -DCMAKE_CUDA_ARCHITECTURES="all"
+    -DCMAKE_CUDA_ARCHITECTURES="$cuda_archs"
   cmake --build build --target benchmarks examples tools
 
   # TNL_BUILD_DOC=ON executes the built examples, so we need to check if the build
