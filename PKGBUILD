@@ -1,6 +1,6 @@
 pkgname=mingw-w64-pagmo
 pkgver=2.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (mingw-w64)"
 arch=('any')
 url="https://github.com/esa/pagmo2"
@@ -12,6 +12,12 @@ source=("https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz")
 sha256sums=('ecc180e669fa6bbece959429ac7d92439e89e1fd1c523aa72b11b6c82e414a1d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/pagmo2-$pkgver"
+  # eigen 5.x compat
+  sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
+}
 
 build() {
   cd "${srcdir}/pagmo2-$pkgver"

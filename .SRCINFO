@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pagmo
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (mingw-w64)
 	pkgver = 2.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esa/pagmo2
 	arch = any
 	license = GPLv3
