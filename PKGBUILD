@@ -2,7 +2,7 @@
 # Maintainer: ArjixWasTaken <me@arjix.dev>
 
 pkgname=winboat-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=(x86_64)
@@ -18,7 +18,7 @@ options=("!strip" "!debug")
 source=(
   "https://github.com/TibixDev/winboat/releases/download/v${pkgver}/winboat-${pkgver}-amd64.deb"
 )
-sha256sums=('10f4c53d2cd4852d2ee0093995de92b9d786a3cabd730561d67ac2211b593f71')
+sha256sums=('363f5ce2de0787aeee4c40601cbf787f50ab0b372269dd4b0ea542a7c8deee1a')
 
 prepare() {
     bsdtar -xf data.tar.xz
