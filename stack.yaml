@@ -7,7 +7,6 @@ extra-deps:
   - ShellCheck-0.11.0
   - colourista-0.1.0.2
   - language-docker-14.0.1
-  - ilist-0.3.1.0
   - optparse-applicative-0.19.0.0
   - spdx-1.1
 ghc-options:
