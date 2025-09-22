@@ -2,7 +2,7 @@
 
 pkgname=stack-wallet-appimage
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Stack Wallet is a fully open source cryptocurrency wallet."
 provides=('stack-wallet')
 conflicts=('stack-wallet')
@@ -24,6 +24,7 @@ prepare() {
   chmod +x ${_filename}
   ./${_filename} --appimage-extract
   sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/StackWallet.AppImage|" squashfs-root/${_desktop_name}
+  echo "StartupWMClass=stack_wallet" >> squashfs-root/${_desktop_name}
 }
 
 package() {

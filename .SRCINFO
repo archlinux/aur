@@ -1,7 +1,7 @@
 pkgbase = stack-wallet-appimage
 	pkgdesc = Stack Wallet is a fully open source cryptocurrency wallet.
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stackwallet.com/
 	arch = x86_64
 	depends = fuse2
