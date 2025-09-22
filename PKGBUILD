@@ -1,9 +1,9 @@
 # Maintainer: FloofyPlasma <aur@floofyplasma.com>
 # Contributor: Julia DeMille <me@jdemille.com>
 pkgname=libobjc2
-pkgver=2.2.1+r1375.8c4b6e9
+pkgver=2.3
 _majorver=${pkgver%%.*}
-_commit=8c4b6e9d3dfc2f16396da304da0b35a9321de19a
+_commit=v2.3
 pkgrel=1
 pkgdesc="Objective-C runtime library intended for use with Clang."
 arch=("x86_64" "i686" "aarch64")
