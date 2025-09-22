@@ -1,5 +1,5 @@
 
-# Maintainer: Rafael Senties Martinelli <rafael@rsm92.fr>
+# Maintainer: Rafael Senties Martinelli <contact@rsm92.fr>
 
 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
 pkgver=v3.0.0.r0.g571aab9
