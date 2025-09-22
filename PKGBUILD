@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="RedHat and Fedora Core Bluecurve icon and gtk theme ported to GTK 3/4. Designed for the MATE and Xfce desktop environments."
 url="https://github.com/neeeeow/Bluecurve.git"
 licence=('GPL-3.0')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('ttf-luxi: Fonstset recomended from the developers..')
 options=('!strip')
 source=('Bluecurve::git+https://github.com/neeeeow/Bluecurve.git')
@@ -45,7 +45,7 @@ package_gtk-engine-bluecurve-git() {
   pkgdesc="Bluecurve GTK2 engine."
   provides=('bluecurve-gtk-engine' 'gtk-engine-bluecurve' 'gtk-bluecurve-engine')
   conflict=('bluecurve-gtk-engine' 'gtk-engine-bluecurve' 'gtk-bluecurve-engine')
-  arch=('i686' 'x86_64')
+  arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 
   cd "${srcdir}/Bluecurve/engine/src/build"
   make
