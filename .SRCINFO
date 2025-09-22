@@ -1,6 +1,6 @@
 pkgbase = liblogger
 	pkgdesc = a simple, elegent log library in C
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/shinmorisawa/liblogger
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = liblogger
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gcc
-	source = https://files.tryh4rd.dev/liblogger-releases/liblogger-0.0.2.tar.gz
-	sha256sums = 0e413a654debb0afa08539668bd8549d06702a55bb50c5a3c4a2a4eba9d02ae7
+	source = https://files.tryh4rd.dev/liblogger-releases/liblogger-0.0.3.tar.gz
+	sha256sums = 0a2cda70de12cc686bdd221397881d6f8fa32ce4ec896d51e71f2fbdeb009c93
 
 pkgname = liblogger
