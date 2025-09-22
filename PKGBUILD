@@ -3,7 +3,7 @@ pkgname=kubectl-rakkess
 _pkgname=rakkess
 # renovate: datasource=github-releases depName=corneliusweig/rakkess
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='kubectl plugin to show an access matrix for server resources'
 arch=('x86_64' 'aarch64')
 url='https://github.com/corneliusweig/rakkess'
@@ -57,6 +57,13 @@ package() {
   install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   ln -snf "${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   ln -snf "${pkgname}" "${pkgdir}/usr/bin/kubectl-access_matrix"
+
+  "bin/${_pkgname}" completion bash \
+    | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  "bin/${_pkgname}" completion zsh \
+    | install -Dpm0644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  "bin/${_pkgname}" completion fish \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 
   for i in *.md
   do
