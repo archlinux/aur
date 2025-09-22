@@ -1,0 +1,20 @@
+pkgbase = kwin-minimize2tray-git
+	pkgdesc = Hide windows to the system tray, similar to KDocker but in the form of a KWin Script that works on Wayland
+	pkgver = r27.33eb2f2
+	pkgrel = 1
+	url = https://github.com/luisbocanegra/kwin-minimize2tray
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kservice
+	depends = gcc-libs
+	depends = glibc
+	depends = kstatusnotifieritem
+	source = kwin-minimize2tray-git::git+https://github.com/luisbocanegra/kwin-minimize2tray.git
+	sha256sums = SKIP
+
+pkgname = kwin-minimize2tray-git
