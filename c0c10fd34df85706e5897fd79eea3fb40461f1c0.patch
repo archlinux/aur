@@ -1,0 +1,384 @@
+From c0c10fd34df85706e5897fd79eea3fb40461f1c0 Mon Sep 17 00:00:00 2001
+From: Korcan Hussein <korcan.hussein@collabora.com>
+Date: Mon, 22 Sep 2025 11:56:59 +0100
+Subject: [PATCH] cmake: fix eigen cmake packages for v5.0 (3.5)
+
+Eigen changed from 3.x versioning to semver (3.5 became 5.0) and
+dropped FindEigen3.cmake module support (deprecated in prior versions)
+for config discovery.
+
+Switch from find_package version constraints to manual version checking
+to maintain compatibility with both versioning schemes (>= 3.3 old or
+>= 5.0 new).
+
+See: https://gitlab.com/libeigen/eigen/-/merge_requests/485
+Part-of: <https://gitlab.freedesktop.org/monado/monado/-/merge_requests/2583>
+---
+ .gitlab-ci.yml                                |   4 +-
+ .gitlab-ci/config.yml                         |   4 +-
+ CMakeLists.txt                                |  14 ++-
+ build.gradle                                  |   4 +-
+ cmake/FindEigen3.cmake                        | 108 ------------------
+ src/xrt/auxiliary/math/CMakeLists.txt         |   3 +-
+ src/xrt/auxiliary/tracking/CMakeLists.txt     |   1 -
+ src/xrt/auxiliary/util/CMakeLists.txt         |   3 -
+ src/xrt/drivers/CMakeLists.txt                |   3 +-
+ src/xrt/targets/openxr_android/build.gradle   |  10 +-
+ src/xrt/tracking/hand/mercury/CMakeLists.txt  |  13 +--
+ .../hand/mercury/kine_lm/CMakeLists.txt       |   2 -
+ tests/CMakeLists.txt                          |   3 -
+ 13 files changed, 27 insertions(+), 145 deletions(-)
+ delete mode 100644 cmake/FindEigen3.cmake
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 9bca59e1b2..b5bb3085b2 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -433,7 +433,7 @@ ndk:armeabi-v7a:
+   script:
+ 
+     - .gitlab-ci/prebuild.sh
+-    - .gitlab-ci/ci-cmake-build.sh -DANDROID_ABI=armeabi-v7a -DANDROID_PLATFORM=26 -DCMAKE_TOOLCHAIN_FILE=/opt/android-ndk/build/cmake/android.toolchain.cmake -DEigen3_DIR=/usr/lib/cmake/eigen3/ -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
++    - .gitlab-ci/ci-cmake-build.sh -DANDROID_ABI=armeabi-v7a -DANDROID_PLATFORM=26 -DCMAKE_TOOLCHAIN_FILE=/opt/android-ndk/build/cmake/android.toolchain.cmake -DEigen3_DIR=/usr/share/eigen3/cmake/
+ 
+ ndk:arm64-v8a:
+   stage: build
+@@ -443,7 +443,7 @@ ndk:arm64-v8a:
+   script:
+ 
+     - .gitlab-ci/prebuild.sh
+-    - .gitlab-ci/ci-cmake-build.sh -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=26 -DCMAKE_TOOLCHAIN_FILE=/opt/android-ndk/build/cmake/android.toolchain.cmake -DEigen3_DIR=/usr/lib/cmake/eigen3/ -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
++    - .gitlab-ci/ci-cmake-build.sh -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=26 -DCMAKE_TOOLCHAIN_FILE=/opt/android-ndk/build/cmake/android.toolchain.cmake -DEigen3_DIR=/usr/share/eigen3/cmake/
+ 
+ android:spotlessCheck:
+   stage: build
+diff --git a/.gitlab-ci/config.yml b/.gitlab-ci/config.yml
+index b03389406a..68632c213f 100644
+--- a/.gitlab-ci/config.yml
++++ b/.gitlab-ci/config.yml
+@@ -60,8 +60,8 @@ fdo_ci_templates_sha: 185ede0e9b9b1924b92306ab8b882a6294e92613
+ .android_cmake_defines: &android_cmake_defines
+   ANDROID_PLATFORM: 26
+   CMAKE_TOOLCHAIN_FILE: /opt/android-ndk/build/cmake/android.toolchain.cmake
+-  Eigen3_DIR: /usr/lib/cmake/eigen3/
+-  EIGEN3_INCLUDE_DIR: /usr/include/eigen3
++  Eigen3_DIR: /usr/share/eigen3/cmake/
++
+ 
+ # Which build job do we use to build the documentation.
+ documentation_build: "debian:cmake"
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d64bce6d4..0e69331881 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -83,9 +83,17 @@ else()
+ 	endif()
+ endif()
+ 
+-# Redundant mention of version is required because module defaults to looking for 2.91-compatible,
+-# which the config file for a 3.x says it's not compatible with.
+-find_package(Eigen3 3 REQUIRED)
++#
++# For backwards compatibility with both version schemes,
++# we find any Eigen3 package (in config mode) and check
++# the version manually rather than using find_package
++# version constraints.
++#
++find_package(Eigen3 REQUIRED NO_MODULE)
++if(Eigen3_VERSION VERSION_LESS "3.3")
++	message(FATAL_ERROR "Eigen3 version ${Eigen3_VERSION} is too old, need at least 3.3")
++endif()
++
+ find_package(Vulkan MODULE)
+ find_package(HIDAPI MODULE)
+ find_package(bluetooth MODULE)
+diff --git a/build.gradle b/build.gradle
+index 611775f1a4..1ad4494a70 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -80,9 +80,9 @@ ext {
+     sharedTargetSdk = 31
+     sharedMinSdk = 26
+ 
+-    // If you are building on Windows, you will need to explicitly set eigenIncludeDir in your
++    // If you are building on Windows, you will need to explicitly set eigenCMakeDir in your
+     // local.properties file since the default value provided below only makes sense on *nix
+-    eigenIncludeDir = project.findProperty('eigenIncludeDir') ?: '/usr/include/eigen3'
++    eigenCMakeDir = project.findProperty('eigenCMakeDir') ?: '/usr/share/eigen3/cmake'
+ 
+     // If you're having trouble with a "can't find python" CMake error, you can specify the path to
+     // Python 3 explicitly in local.properties with a property named "pythonBinary"
+diff --git a/cmake/FindEigen3.cmake b/cmake/FindEigen3.cmake
+deleted file mode 100644
+index b46df1c1bd..0000000000
+--- a/cmake/FindEigen3.cmake
++++ /dev/null
+@@ -1,108 +0,0 @@
+-# - Try to find Eigen3 lib
+-#
+-# This module supports requiring a minimum version, e.g. you can do
+-#   find_package(Eigen3 3.1.2)
+-# to require version 3.1.2 or newer of Eigen3.
+-#
+-# Once done this will define
+-#
+-#  EIGEN3_FOUND - system has eigen lib with correct version
+-#  EIGEN3_INCLUDE_DIR - the eigen include directory
+-#  EIGEN3_VERSION - eigen version
+-#
+-# and the following imported target:
+-#
+-#  Eigen3::Eigen - The header-only Eigen library
+-#
+-# This module reads hints about search locations from
+-# the following environment variables:
+-#
+-# EIGEN3_ROOT
+-# EIGEN3_ROOT_DIR
+-
+-# Copyright (c) 2006, 2007 Montel Laurent, <montel@kde.org>
+-# Copyright (c) 2008, 2009 Gael Guennebaud, <g.gael@free.fr>
+-# Copyright (c) 2009 Benoit Jacob <jacob.benoit.1@gmail.com>
+-# Redistribution and use is allowed according to the terms of the 2-clause BSD license.
+-# SPDX-License-Identifier: BSD-2-Clause
+-
+-if(NOT Eigen3_FIND_VERSION)
+-  if(NOT Eigen3_FIND_VERSION_MAJOR)
+-    set(Eigen3_FIND_VERSION_MAJOR 2)
+-  endif()
+-  if(NOT Eigen3_FIND_VERSION_MINOR)
+-    set(Eigen3_FIND_VERSION_MINOR 91)
+-  endif()
+-  if(NOT Eigen3_FIND_VERSION_PATCH)
+-    set(Eigen3_FIND_VERSION_PATCH 0)
+-  endif()
+-
+-  set(Eigen3_FIND_VERSION "${Eigen3_FIND_VERSION_MAJOR}.${Eigen3_FIND_VERSION_MINOR}.${Eigen3_FIND_VERSION_PATCH}")
+-endif()
+-
+-macro(_eigen3_check_version)
+-  file(READ "${EIGEN3_INCLUDE_DIR}/Eigen/src/Core/util/Macros.h" _eigen3_version_header)
+-
+-  string(REGEX MATCH "define[ \t]+EIGEN_WORLD_VERSION[ \t]+([0-9]+)" _eigen3_world_version_match "${_eigen3_version_header}")
+-  set(EIGEN3_WORLD_VERSION "${CMAKE_MATCH_1}")
+-  string(REGEX MATCH "define[ \t]+EIGEN_MAJOR_VERSION[ \t]+([0-9]+)" _eigen3_major_version_match "${_eigen3_version_header}")
+-  set(EIGEN3_MAJOR_VERSION "${CMAKE_MATCH_1}")
+-  string(REGEX MATCH "define[ \t]+EIGEN_MINOR_VERSION[ \t]+([0-9]+)" _eigen3_minor_version_match "${_eigen3_version_header}")
+-  set(EIGEN3_MINOR_VERSION "${CMAKE_MATCH_1}")
+-
+-  set(EIGEN3_VERSION ${EIGEN3_WORLD_VERSION}.${EIGEN3_MAJOR_VERSION}.${EIGEN3_MINOR_VERSION})
+-  if(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION})
+-    set(EIGEN3_VERSION_OK FALSE)
+-  else()
+-    set(EIGEN3_VERSION_OK TRUE)
+-  endif()
+-
+-  if(NOT EIGEN3_VERSION_OK)
+-
+-    message(STATUS "Eigen3 version ${EIGEN3_VERSION} found in ${EIGEN3_INCLUDE_DIR}, "
+-                   "but at least version ${Eigen3_FIND_VERSION} is required")
+-  endif()
+-endmacro()
+-
+-if (EIGEN3_INCLUDE_DIR)
+-
+-  # in cache already
+-  _eigen3_check_version()
+-  set(EIGEN3_FOUND ${EIGEN3_VERSION_OK})
+-  set(Eigen3_FOUND ${EIGEN3_VERSION_OK})
+-
+-else ()
+-
+-  # search first if an Eigen3Config.cmake is available in the system,
+-  # if successful this would set EIGEN3_INCLUDE_DIR and the rest of
+-  # the script will work as usual
+-  find_package(Eigen3 ${Eigen3_FIND_VERSION} NO_MODULE QUIET)
+-
+-  if(NOT EIGEN3_INCLUDE_DIR)
+-    find_path(EIGEN3_INCLUDE_DIR NAMES signature_of_eigen3_matrix_library
+-        HINTS
+-        ENV EIGEN3_ROOT
+-        ENV EIGEN3_ROOT_DIR
+-        PATHS
+-        ${CMAKE_INSTALL_PREFIX}/include
+-        ${KDE4_INCLUDE_DIR}
+-        PATH_SUFFIXES eigen3 eigen
+-      )
+-  endif()
+-
+-  if(EIGEN3_INCLUDE_DIR)
+-    _eigen3_check_version()
+-  endif()
+-
+-  include(FindPackageHandleStandardArgs)
+-  find_package_handle_standard_args(Eigen3 DEFAULT_MSG EIGEN3_INCLUDE_DIR EIGEN3_VERSION_OK)
+-
+-  mark_as_advanced(EIGEN3_INCLUDE_DIR)
+-
+-endif()
+-
+-if(EIGEN3_FOUND AND NOT TARGET Eigen3::Eigen)
+-  add_library(Eigen3::Eigen INTERFACE IMPORTED)
+-  set_target_properties(Eigen3::Eigen PROPERTIES
+-    INTERFACE_INCLUDE_DIRECTORIES "${EIGEN3_INCLUDE_DIR}")
+-endif()
+diff --git a/src/xrt/auxiliary/math/CMakeLists.txt b/src/xrt/auxiliary/math/CMakeLists.txt
+index af963fc90d..ac66cf689c 100644
+--- a/src/xrt/auxiliary/math/CMakeLists.txt
++++ b/src/xrt/auxiliary/math/CMakeLists.txt
+@@ -46,10 +46,9 @@ add_library(
+ 	)
+ target_link_libraries(
+ 	aux_math
+-	PUBLIC aux-includes aux_util
++	PUBLIC aux-includes aux_util Eigen3::Eigen
+ 	PRIVATE xrt-optimized-math
+ 	)
+-target_include_directories(aux_math SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})
+ 
+ if(MSVC)
+ 	get_target_property(options aux_math COMPILE_OPTIONS)
+diff --git a/src/xrt/auxiliary/tracking/CMakeLists.txt b/src/xrt/auxiliary/tracking/CMakeLists.txt
+index 4f13ea7c16..ed35980b1f 100644
+--- a/src/xrt/auxiliary/tracking/CMakeLists.txt
++++ b/src/xrt/auxiliary/tracking/CMakeLists.txt
+@@ -23,7 +23,6 @@ target_link_libraries(
+ 		xrt-external-hungarian
+ 		xrt-optimized-math
+ 	)
+-target_include_directories(aux_tracking SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})
+ 
+ if(XRT_HAVE_OPENCV)
+ 	target_sources(
+diff --git a/src/xrt/auxiliary/util/CMakeLists.txt b/src/xrt/auxiliary/util/CMakeLists.txt
+index f915c7c0a0..4d39e4db4d 100644
+--- a/src/xrt/auxiliary/util/CMakeLists.txt
++++ b/src/xrt/auxiliary/util/CMakeLists.txt
+@@ -166,9 +166,6 @@ if(ANDROID)
+ 	target_link_libraries(aux_util PUBLIC ${ANDROID_LOG_LIBRARY})
+ endif()
+ 
+-# Internal dependency and doesn't bring in any DSO.
+-target_include_directories(aux_util PRIVATE ${EIGEN3_INCLUDE_DIR})
+-
+ ####
+ # Debug UI library
+ #
+diff --git a/src/xrt/drivers/CMakeLists.txt b/src/xrt/drivers/CMakeLists.txt
+index 90dc4970f1..3ad8359447 100644
+--- a/src/xrt/drivers/CMakeLists.txt
++++ b/src/xrt/drivers/CMakeLists.txt
+@@ -279,7 +279,6 @@ if(XRT_BUILD_DRIVER_RIFT_S)
+ 		rift_s/rift_s.c
+ 		rift_s/rift_s.h
+ 		)
+-	target_include_directories(drv_rift_s SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})
+ 	target_link_libraries(
+ 		drv_rift_s
+ 		PRIVATE
+@@ -354,7 +353,7 @@ if(XRT_BUILD_DRIVER_HANDTRACKING)
+ 			hand_async
+ 		)
+ 
+-	target_include_directories(drv_ht PRIVATE ${OpenCV_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
++	target_include_directories(drv_ht PRIVATE ${OpenCV_INCLUDE_DIRS})
+ 	list(APPEND ENABLED_DRIVERS ht)
+ endif()
+ 
+diff --git a/src/xrt/targets/openxr_android/build.gradle b/src/xrt/targets/openxr_android/build.gradle
+index 434efca8e5..ea68b8cab1 100644
+--- a/src/xrt/targets/openxr_android/build.gradle
++++ b/src/xrt/targets/openxr_android/build.gradle
+@@ -81,11 +81,11 @@ tasks.register('unpackEigen', Copy) {
+     into eigenUnpackDir
+ }
+ 
+-if (!(new File(project.file(project.eigenIncludeDir), "Eigen/Core")).exists()) {
+-    println "project.eigenIncludeDir not set or not valid, so downloading Eigen at build time"
+-    project.ext.eigenIncludeDir = "${eigenUnpackDir}/eigen-${project.eigenFetchVersion}"
++if (!(new File(project.file(project.eigenCMakeDir), "Eigen3Config.cmake")).exists()) {
++    println "project.eigenCMakeDir not set or not valid, so downloading Eigen at build time"
++    project.ext.eigenCMakeDir = "${eigenUnpackDir}/eigen-${project.eigenFetchVersion}/cmake"
+ } else {
+-    println "Using Eigen as specified/detected in project.eigenIncludeDir: ${project.eigenIncludeDir}"
++    println "Using Eigen as specified/detected in project.eigenCMakeDir: ${project.eigenCMakeDir}"
+     downloadEigen.enabled = false
+     unpackEigen.enabled = false
+ }
+@@ -176,7 +176,7 @@ android {
+ 
+         externalNativeBuild {
+             cmake {
+-                arguments "-DEIGEN3_INCLUDE_DIR=${project.eigenIncludeDir}",
++                arguments "-DEigen3_DIR=${project.eigenCMakeDir}",
+                     "-DANDROID_PLATFORM=${project.sharedMinSdk}",
+                     "-DANDROID_STL=${project.stl}",
+                     "-DANDROID_ARM_NEON=TRUE"
+diff --git a/src/xrt/tracking/hand/mercury/CMakeLists.txt b/src/xrt/tracking/hand/mercury/CMakeLists.txt
+index b30575047a..9ac7b8cbad 100644
+--- a/src/xrt/tracking/hand/mercury/CMakeLists.txt
++++ b/src/xrt/tracking/hand/mercury/CMakeLists.txt
+@@ -12,10 +12,7 @@ add_library(t_ht_mercury_model STATIC hg_model.cpp)
+ 
+ target_link_libraries(t_ht_mercury_model PRIVATE aux_math aux_tracking aux_os aux_util)
+ 
+-target_include_directories(
+-	t_ht_mercury_model SYSTEM PRIVATE ${OpenCV_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR}
+-	)
+-
++target_include_directories(t_ht_mercury_model SYSTEM PRIVATE ${OpenCV_INCLUDE_DIRS})
+ target_link_libraries(
+ 	t_ht_mercury_model
+ 	PRIVATE
+@@ -33,9 +30,7 @@ add_library(t_ht_mercury_distorter STATIC hg_image_distorter.cpp)
+ 
+ target_link_libraries(t_ht_mercury_distorter PRIVATE aux_math aux_tracking aux_os aux_util)
+ 
+-target_include_directories(
+-	t_ht_mercury_distorter SYSTEM PRIVATE ${OpenCV_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR}
+-	)
++target_include_directories(t_ht_mercury_distorter SYSTEM PRIVATE ${OpenCV_INCLUDE_DIRS})
+ 
+ target_link_libraries(
+ 	t_ht_mercury_distorter
+@@ -71,9 +66,7 @@ target_link_libraries(
+ target_include_directories(t_ht_mercury INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ if(XRT_HAVE_OPENCV)
+-	target_include_directories(
+-		t_ht_mercury SYSTEM PRIVATE ${OpenCV_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR}
+-		)
++	target_include_directories(t_ht_mercury SYSTEM PRIVATE ${OpenCV_INCLUDE_DIRS})
+ 	target_link_libraries(t_ht_mercury PUBLIC ${OpenCV_LIBRARIES})
+ endif()
+ 
+diff --git a/src/xrt/tracking/hand/mercury/kine_lm/CMakeLists.txt b/src/xrt/tracking/hand/mercury/kine_lm/CMakeLists.txt
+index 8fa42dc1a4..90a2a329a1 100644
+--- a/src/xrt/tracking/hand/mercury/kine_lm/CMakeLists.txt
++++ b/src/xrt/tracking/hand/mercury/kine_lm/CMakeLists.txt
+@@ -19,8 +19,6 @@ target_link_libraries(
+ 		xrt-optimized-math
+ 	)
+ 
+-target_include_directories(t_ht_mercury_kine_lm SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})
+-
+ if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+ 	target_compile_options(t_ht_mercury_kine_lm PRIVATE -ftemplate-backtrace-limit=20)
+ endif()
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index acffe8a360..1e6686abc6 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -68,9 +68,6 @@ target_link_libraries(tests_quat_change_of_basis PRIVATE aux_math)
+ target_link_libraries(tests_quat_swing_twist PRIVATE aux_math)
+ target_link_libraries(tests_vec3_angle PRIVATE aux_math)
+ 
+-target_include_directories(tests_quat_change_of_basis SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})
+-target_include_directories(tests_quat_swing_twist SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})
+-
+ if(XRT_BUILD_DRIVER_HANDTRACKING)
+ 	target_link_libraries(
+ 		tests_levenbergmarquardt
+-- 
+GitLab
+
