@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit
 pkgname=python-${_pkgname}
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 epoch=1
 pkgdesc="An open-source SDK for working with (IBM) quantum computers"
 arch=(x86_64)
@@ -39,6 +39,7 @@ makedepends=(
     cargo
     cbindgen
     cmake
+    git
     python-build
     python-installer
     python-setuptools
@@ -51,11 +52,20 @@ checkdepends=(
     python-stestr
 )
 provides=(libqiskit.so)
-source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('01f5789f20d1c73e73000ec87579981380d201b4d614dbfd7974d603c031de2a567e42c41f4552442805eb38b729784442a1e04e36054ba0c0a44a68b7410ad4')
+source=($_pkgname::git+https://github.com/Qiskit/$_pkgname#tag=$pkgver)
+b2sums=('3ea130b8710d1415f554df605a74a2b1ff39f67464713a0e773fffe2266a2f99b0554a7403ad919c2a71f15c3f6c7e57191db0d1c41ec863429d81a5bd100165')
+
+prepare() {
+    cd $_pkgname
+    export GIT_COMMITTER_NAME="Iyán Méndez Veiga"
+    export GIT_COMMITTER_EMAIL="me@iyanmv.com"
+    # https://github.com/Qiskit/qiskit/issues/15030
+    git fetch origin pull/15049/head:fix-test
+    git cherry-pick a7e610a3ae4794a7151dee41961e5ef2f628085b
+}
 
 build() {
-    cd $_pkgname-$pkgver
+    cd $_pkgname
     # Python wheel package
     export CARGO_TARGET_DIR=target
     python -m build --wheel --no-isolation
@@ -64,7 +74,7 @@ build() {
 }
 
 check() {
-    cd $_pkgname-$pkgver
+    cd $_pkgname
     # Python unit tests
     local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
     python -m installer --destdir=../test_dir dist/*.whl
@@ -76,7 +86,7 @@ check() {
 }
 
 package() {
-    cd $_pkgname-$pkgver
+    cd $_pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm755 dist/c/lib/libqiskit.so "$pkgdir"/usr/lib/libqiskit.so
     install -Dm644 dist/c/include/qiskit.h "$pkgdir"/usr/include/qiskit.h
