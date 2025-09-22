@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('gcc' 'cmake' 'make')
 source=("https://github.com/lhilfiker/filesystem-full-text-search-indexer/archive/refs/heads/main.tar.gz")
-sha256sums=(35a3f2c9ac69406b10b434a641de90281537c9f88c931c4edc841788cc77a16f)
+sha256sums=(65ea9213c1cd995516beec7f1bca0870b5042973efca7206e79259d43e6515a7)
 
 prepare() {
   cd "${srcdir}/filesystem-full-text-search-indexer-main"
