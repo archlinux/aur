@@ -1,4 +1,4 @@
-# Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
+# Maintainer: Voxan24 <admin "at" hessfr "dot" fr>
 
 # To enable macOS guests support, uncomment the line below:
 #_enable_macOS_guests=y
@@ -70,15 +70,15 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-freebsd-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-freebsd-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/14/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -169,8 +169,8 @@ makedepends+=(
 )
 
 source+=(
-  "darwinPre15-tools-${_vmware_fusion_ver_full}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver_full/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
-  "darwin-tools-${_vmware_fusion_ver_full}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver_full/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
+  "darwinPre15-tools-${_vmware_fusion_ver_full}.zip.tar::https://voxhost.fr/vmware-aur/14/com.vmware.fusion.tools.darwinPre15.zip.tar"
+  "darwin-tools-${_vmware_fusion_ver_full}.zip.tar::https://voxhost.fr/vmware-aur/14/com.vmware.fusion.tools.darwin.zip.tar"
   "unlocker.py"
   "efi-patches.txt"
 )
