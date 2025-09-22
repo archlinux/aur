@@ -7,6 +7,6 @@ pkgbase = makepass
 	license = MIT
 	makedepends = go
 	source = makepass-0.2.0.tar.gz::https://github.com/core6quad/makepass/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 2c975c38522c156235a101a92caf93a2c5a4129d1e0191d90711882f7effb4d9
 
 pkgname = makepass
