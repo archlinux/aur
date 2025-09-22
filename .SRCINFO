@@ -1,6 +1,6 @@
 pkgbase = r-apcluster
 	pkgdesc = Affinity Propagation Clustering
-	pkgver = 1.4.13
+	pkgver = 1.4.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=apcluster
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-apcluster
 	depends = r
 	depends = r-rcpp
 	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/apcluster_1.4.13.tar.gz
-	sha256sums = 5e975baa427def9944ec0a3ea5f8f92f4ebce4e98689b4019525d25b54d5a1a7
+	source = https://cran.r-project.org/src/contrib/apcluster_1.4.14.tar.gz
+	sha256sums = dac14db3b5d2d165537b14d4082cb004563474d406d13abd2ac0fbcac4063942
 
 pkgname = r-apcluster
