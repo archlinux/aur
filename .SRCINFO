@@ -1,7 +1,7 @@
 pkgbase = softswitch
 	pkgdesc = A simple command-line PHP version switcher for Arch Linux.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/umaarov/softswitch
 	install = softswitch.install
 	arch = any
