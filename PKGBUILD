@@ -1,6 +1,6 @@
 pkgname=mingw-w64-ceres-solver
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Solver for nonlinear least squares problems (mingw-w64)"
 arch=('any')
 url="http://ceres-solver.org/"
@@ -12,6 +12,13 @@ source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
 sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd $srcdir/ceres-solver-$pkgver
+  # eigen 5.x compat
+  sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
+  sed -i "s|Eigen3 \${CERES_EIGEN_VERSION}|Eigen3|g" cmake/CeresConfig.cmake.in
+}
 
 build() {
   cd $srcdir/ceres-solver-$pkgver
