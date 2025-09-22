@@ -1,7 +1,7 @@
 pkgbase = shader-slang
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
 	pkgver = 2025.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
 	license = Apache-2.0
@@ -19,10 +19,10 @@ pkgbase = shader-slang
 	depends = miniz
 	depends = spirv-tools
 	source = shader-slang-2025.17.tar.gz::https://github.com/shader-slang/slang/archive/refs/tags/v2025.17.tar.gz
-	source = shader-slang-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch?full_index=1
+	source = shader-slang-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch?full_index=2
 	source = lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea
 	sha256sums = 5f654086d5b99bb1fda3f741bbab7e7e7c9da96db2c680ebdf68a91cae247cb4
-	sha256sums = SKIP
+	sha256sums = c864d213419040ba694bb88013e67206ec8d380034ad1ba5eaa7c9a20c94b1d1
 	sha256sums = 265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598
 
 pkgname = shader-slang

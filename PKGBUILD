@@ -4,18 +4,18 @@
 
 pkgname=shader-slang
 pkgver=2025.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
 license=('Apache-2.0')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-	"$pkgname-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch?full_index=1"
+	"$pkgname-8369.patch::https://github.com/shader-slang/slang/pull/8369.patch?full_index=2"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 )
 sha256sums=('5f654086d5b99bb1fda3f741bbab7e7e7c9da96db2c680ebdf68a91cae247cb4'
-            'SKIP'
+            'c864d213419040ba694bb88013e67206ec8d380034ad1ba5eaa7c9a20c94b1d1'
             '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598')
 makedepends=(
 	cmake
@@ -67,7 +67,7 @@ prepare() {
 		CMakeLists.txt
 
 	# Ignore first hunk
-	patch -Np1 -i <(awk '/diff --git/ {diff_n++} diff_n==1 {next} {print}' "$srcdir/$pkgname-8369.patch")
+	patch -Np1 -i "$srcdir/$pkgname-8369.patch"
 
 	# https://github.com/shader-slang/slang/pull/8369#issuecomment-3255737218
 	sed -e 's/#include "\(SPIRV\/.*\)"/#include <glslang\/\1>/g' \
