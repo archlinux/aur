@@ -1,9 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 
 pkgname=hadolint-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Dockerfile linter, validate inline bash, written in Haskell"
 arch=('x86_64')
@@ -12,11 +12,11 @@ license=('GPL-3.0-or-later')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hadolint-Linux-x86_64")
-sha256sums=('f8b05e4c724cdeb84c0dca07e40936c3d875c0af5d120a27c94026a0f370b2cf')
+source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hadolint-Linux-$CARCH")
+sha256sums=('6bf226944684f56c84dd014e8b979d27425c0148f61b3bd99bcc6f39e9dc5a47')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+  install -vDm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
