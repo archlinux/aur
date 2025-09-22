@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/e-tho/${pkgname%-git}"
 license=('GPL-3.0-or-later')
 depends=('pipewire' 'gcc-libs')
-makedepends=('git' 'cargo' 'clang' 'libpipewire')
+makedepends=('git' 'cargo' 'clang' 'llvm' 'libpipewire')
 optdepends=(
   'dmenu: launcher for options navigation via stdin'
   'rofi: launcher for options navigation via stdin'
@@ -53,4 +53,3 @@ package() {
   install -Dm755 "target/release/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.md"
 }
-
