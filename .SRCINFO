@@ -1,0 +1,47 @@
+pkgbase = bluecurve-theme-git
+	pkgdesc = RedHat and Fedora Core Bluecurve icon and gtk theme ported to GTK 3/4. Designed for the MATE and Xfce desktop environments.
+	pkgver = 3.0.0.r238
+	pkgrel = 1
+	url = https://github.com/neeeeow/Bluecurve.git
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	optdepends = ttf-luxi: Fonstset recomended from the developers..
+	options = !strip
+	source = Bluecurve::git+https://github.com/neeeeow/Bluecurve.git
+	md5sums = SKIP
+
+pkgname = bluecurve-gtk-theme-git
+	pkgdesc = RedHat/Fedora Bluecurve theme ported over to GTK 3/4.
+	arch = any
+	depends = gtk2
+	provides = bluecurve-gtk-theme
+
+pkgname = gtk-engine-bluecurve-git
+	pkgdesc = Bluecurve GTK2 engine.
+	arch = i686
+	arch = x86_64
+	provides = bluecurve-gtk-engine
+	provides = gtk-engine-bluecurve
+	provides = gtk-bluecurve-engine
+
+pkgname = bluecurve-icon-theme-git
+	pkgdesc = RedHat/Fedora Bluecurve iconset made it work for other desktops.
+	arch = any
+	provides = bluecurve-icon-theme
+	provides = xcursor-bluecurve
+	conflicts = bluecurve-icon-theme
+	conflicts = xcursor-bluecurve
+
+pkgname = bluecurve-wallpapers-git
+	pkgdesc = RedHat 4 and Fedora Core 1,2,3 classic wallpapers.
+	arch = any
+	provides = rhel4-wallpapers
+	provides = f1-backgrounds
+	provides = f2-backgrounds
+	provides = f3-backgrounds
+	conflicts = rhel4-wallpapers
+	conflicts = f1-backgrounds
+	conflicts = f2-backgrounds
+	conflicts = f3-backgrounds
