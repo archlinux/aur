@@ -11,8 +11,8 @@ depends=('postgresql')
 options=('!strip')
 _appimage="CS-Demo-Manager-$pkgver.AppImage"
 noextract=("$_appimage")
-source=("$_appimage::https://github.com/akiver/cs-demo-manager/releases/download/v$pkgver/$_appimage"
-    "https://raw.githubusercontent.com/akiver/cs-demo-manager/v$pkgver/LICENSE"
+source=("$_appimage::https://github.com/akiver/$_pkgname/releases/download/v$pkgver/$_appimage"
+    "https://raw.githubusercontent.com/akiver/$_pkgname/v$pkgver/LICENSE"
     )
 sha256sums=('18c88d0cf79ccd06fa018f42f8de2b5af7470d3b2892225445ea3b0cabadddda'
             '13c63653c5aab89a5515ebb31b6c1dd518006cf7bd8d30e157007ab04aee1f93')
