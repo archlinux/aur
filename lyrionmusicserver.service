@@ -1,5 +1,5 @@
 [Unit]
-Description=Lyrion Media Server Daemon
+Description=Lyrion Music Server Daemon
 After=network.target
 
 [Service]
