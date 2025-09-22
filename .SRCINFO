@@ -1,16 +1,26 @@
 pkgbase = mbrola-voices-cz1
-	pkgdesc = A Czech male voice for the MBROLA synthesizer
-	pkgver = 991020
+	pkgdesc = A Czech female voice for the MBROLA synthesizer
+	pkgver = 16.fe05a0c
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-cz
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
-	license = custom
+	license = LicenseRef-custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/cz1/cz1-991020.zip
-	md5sums = e9ffbbc4411e247d505e760773d11b31
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/cz1
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/TEST/jedna.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/TEST/pokud1.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/TEST/tojsou1.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/fe05a0ccef6a941207fd6aaad0b31294a1f93a51/data/cz1/TEST/vojvoda2.pho
+	sha256sums = 1e2f577c35f7a13629087c92b58679c27a2e1b04bd7700805c6094e814ee182e
+	sha256sums = 268dc3a51fa73f39ceda7956c350e7fc9352c568c87d336cd32314daee023b9a
+	sha256sums = c4b3157c116d96e7cd7bcf25f07ec878c60f4f751e369eeb56510c9d234a85d4
+	sha256sums = 2a4b6a2c124885b2b4cdf4e9bf016a05fd499974a8faf2df86d37a2f8a065808
+	sha256sums = 3daf60d9bf1c4a8dd207a011aed50948a1e05d7dd0185a58abd574f1bf0a6084
+	sha256sums = aa36ce4db8223d598222f876fea7f8c35005968158e3c1246447a5a726dec698
+	sha256sums = 67e816cd690bf4a1cf5dc490575e69d3b503aedab6d576748651933d367168c5
 
 pkgname = mbrola-voices-cz1
-
