@@ -21,7 +21,7 @@ source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgv
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_arm64.deb")
 sha512sums=('191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4')
 
-sha512sums_x86_64=('SKIP')
+sha512sums_x86_64=('393a26800672f3aa6838c076e629b6299b49428872ee198c50c30cb6f02a235c8b44c5873d8e9ed4d927da3a2d9645c42b548a13b399ca6ca5f03a6d0a662168')
 sha512sums_aarch64=('3582370c8e7f290f4045a162f885b203497ea7d0b541801d0d0cbcc063205f9564ae1b53c75df543d20a9c99fb7b81fde3629270dfe1260a5c73d823f718aeac')
 
 prepare() {
