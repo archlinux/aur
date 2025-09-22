@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lzmusic-bin
 _pkgname='LZ Music'
-pkgver=1.0.7_beta
+pkgver=1.0.8_beta
 _electronversion=36
 pkgrel=1
 pkgdesc="Bilibili API-based music player.(Prebuilt version.Use system-wide electron)基于 Bilibili API 的音乐播放器 "
@@ -24,8 +24,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver//_/-}/${_pkgname// /-}-${pkgver//_/-}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f215a30537611194b219a014ea07353a92870e9189cb3fa0e7cab8124aee9b4'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('958fd79a8b0d39a44cbecaeeb4b5919993f3283c61d1f88ff80de273fa17dbcc'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -34,6 +38,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/const dataDir = path.dirname(dbPath);/const dataDir = path.join(process.env.XDG_CONFIG_HOME, '${pkgname%-bin}', 'data');/g" "${srcdir}/app.asar.unpacked/main.js"
