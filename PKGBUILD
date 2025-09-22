@@ -2,13 +2,11 @@
 
 # https://www.mathworks.com/help/install/ug/get-mpm-os-command-line.html
 
-_commit="8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87" # 2025.1
-_release=R2025a
-
 _name="mpm"
 pkgname="matlab-${_name}"
+_commit="8d84924e79d5d0caa42892a2d4c85c0d3b3fdf87" # 2025.1
 pkgver=2025.1
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="MATLAB Package Manager"
 arch=('x86_64')
@@ -22,10 +20,6 @@ depends=(
 )
 optdepends=(
   "${pkgname}-input: input files used with '--inputfile'"
-)
-provides=(
-  "${pkgname}-release=${_release}"
-  "${pkgname}-version=${pkgver}"
 )
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${_url}/raw/${_commit}/MPM.md"
