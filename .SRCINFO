@@ -1,7 +1,7 @@
 pkgbase = cargo-typify
 	pkgdesc = JSON schema to rust type code generator
-	pkgver = 0.4.1
-	pkgrel = 3
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://github.com/oxidecomputer/typify
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = cargo-typify
 	makedepends = cargo
 	depends = gcc-libs
 	depends = rustfmt
-	source = cargo-typify-0.4.1.tar.gz::https://static.crates.io/crates/cargo-typify/cargo-typify-0.4.1.crate
-	sha512sums = ae6408af50249119522b54e53f370d245c16f7617723ce458ce7ea5e03292b46b99ac2c008c22e0c1f168d00976691e15398dd419e452911b298b38643134e86
+	source = cargo-typify-0.4.3.tar.gz::https://static.crates.io/crates/cargo-typify/cargo-typify-0.4.3.crate
+	sha512sums = b044ef5c55d6cd7d2fb065c3f306a5e0730290b7b2d3f06e04076877d11282f7cbd67c97afd6c908209822b7c4763aabe2614d3f0e80876353ac1c6b8ef72fe0
 
 pkgname = cargo-typify
