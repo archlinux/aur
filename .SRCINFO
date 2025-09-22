@@ -6,8 +6,9 @@ pkgbase = wfreq
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-build
 	depends = python
-	depends = python-pip
 	depends = python-rich
 	depends = python-beautifulsoup4
 	source = wfreq-0.1.6::git+https://github.com/Vitalij-Burk/wfreq.git#tag=v0.1.6
