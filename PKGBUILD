@@ -7,11 +7,11 @@
 pkgname=uni-sync-bin
 _pkgname=uni-sync
 pkgver=0.3.1
+pkgrel=2
 #pkgver() {
 #  cd "${_sourceName}"
 #  git describe --tags | sed 's/^v//'
 #}
-pkgrel=1
 pkgdesc="Uni-Sync : A Synchronization Tool for Lian Li Fan Controllers"
 arch=("any")
 url="https://github.com/EightB1ts/uni-sync.git"
@@ -26,7 +26,7 @@ provides=("${_pkgname}")
 #conflicts=()
 #replaces=()
 #backup=()
-#options=()
+options=(!strip)
 #install=
 #changelog=
 source_x86_64=(uni-sync-bin.tar.xz::https://github.com/matsaa93/AUR-uni-sync-bin/releases/download/$pkgver/uni-sync-bin.tar.xz)
