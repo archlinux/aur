@@ -2,7 +2,7 @@
 pkgname=jackify-bin
 _pkgname=Jackify
 _appimage_name=com.jackify.app
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Jackify - Simplifying Wabbajack modlist installation and configuration on Linux"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}.AppImage"
     "LICENSE-${pkgver}::${_rawurl}/v${pkgver}/LICENSE"
 )
-sha256sums=('b288c5d65b20948dcfb9255e90d7b8a46e80bd012c6a8383ed94581968385196'
+sha256sums=('95a444ce2e653a48de842219655088a5bf05fada8f0bcd23fff6224109e6ab03'
             'ba4feaea2dc97aa54d3510d203c9180105cda05ed23d26c5253a75f2869bd069')
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
