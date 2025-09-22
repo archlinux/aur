@@ -1,7 +1,7 @@
 # Maintainer: Pujan Modha <pujan.pm@hotmail.com>
 pkgname=helium-browser-appimage
 pkgver=0.4.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Helium web browser (AppImage) repackaged for Arch"
 arch=('x86_64')
 url="https://github.com/imputnet/helium-linux"
