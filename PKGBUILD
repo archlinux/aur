@@ -6,7 +6,7 @@
 
 _pkgname="waifu2x-ncnn-vulkan"
 pkgname="$_pkgname-git"
-pkgver=20220728.r0.g93ed2bc
+pkgver=20250915.r0.ga86cfb0
 pkgrel=1
 pkgdesc="ncnn implementation of waifu2x converter"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
@@ -14,8 +14,11 @@ arch=('i686' 'x86_64' 'aarch64')
 license=('MIT')
 
 depends=(
+  'libjpeg'
+  'libpng'
   'libwebp'
   'ncnn'
+  'zlib-ng'
 )
 makedepends=(
   'cmake'
@@ -29,14 +32,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  "0001-glslang.patch"
-)
-sha256sums=(
-  'SKIP'
-  'd0a08ac4673d84c956e7114385678ebe024ab63e048f0214a01d5cb76666eeeb'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -46,8 +43,6 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-
-  patch -Np1 -F100 -i "../0001-glslang.patch"
 
   # Fix default model path
   sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' src/main.cpp
@@ -60,8 +55,11 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DUSE_SYSTEM_JPEG=ON
     -DUSE_SYSTEM_NCNN=ON
+    -DUSE_SYSTEM_PNG=ON
     -DUSE_SYSTEM_WEBP=ON
+    -DUSE_SYSTEM_ZLIB=ON
     -Wno-dev
   )
 
