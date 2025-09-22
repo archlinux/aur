@@ -1,0 +1,4 @@
+ibus-lotus-git/
+pkg/
+src/
+*.tar.*
