@@ -2,7 +2,7 @@
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics-git
-pkgver=0.11.1.r190.0c1aba1d
+pkgver=0.11.1.r418.ec349c55
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -24,6 +24,7 @@ makedepends=(
   lld
   python
   asciidoc
+  # plugins disabled for now because https://github.com/libjxl/libjxl/issues/4037
   #gdk-pixbuf2 # for building gdk-pixbuf loader
   #gimp # for building GIMP plugin
   #java-environment # for building JNI bindings
@@ -31,6 +32,7 @@ makedepends=(
 provides=(
   $_pkgname
   libjxl.so
+  libjxl_cms.so
   libjxl_threads.so
   butteraugli
   ssimulacra
@@ -47,7 +49,6 @@ conflicts=(
 optdepends=(
   'libjxl-doc: for documentation'
 )
-options=(!lto) # Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/$_pkgname.git
   git+https://skia.googlesource.com/skcms.git
@@ -70,15 +71,14 @@ prepare() {
 }
 
 pkgver() {
-  local _tag=$(git -C $_pkgname tag --list --sort=-v:refname 'v[[:digit:]]*' | \
+  local _tag=$(git -C $_pkgname tag --list --sort=-v:refname 'v[[:digit:]]*' |
                sed 's/^v//;/[[:alpha:]]/d' | head -n1)
   printf $_tag.r%s.%s $(git -C $_pkgname rev-list --count v$_tag..HEAD) \
-                       $(git -C $_pkgname rev-parse --short HEAD)
+    $(git -C $_pkgname rev-parse --short HEAD)
 }
 
 build() {
   export CC=clang CXX=clang++
-  export CFLAGS+=' -flto=thin' CXXFLAGS+=' -flto=thin'
   export LDFLAGS+=' -fuse-ld=lld'
   cmake -S $_pkgname -B build \
     -DBUILD_TESTING=OFF \
