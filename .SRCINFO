@@ -1,8 +1,7 @@
 pkgbase = hudkit-wayland
 	pkgdesc = Transparent click-through web browser overlay, using WebKit (Wayland fork)
 	pkgver = 4.1.0
-	pkgrel = 1
-	epoch = 0
+	pkgrel = 2
 	url = https://github.com/SparxySys/hudkit-wayland
 	arch = x86_64
 	license = ISC
