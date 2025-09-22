@@ -347,6 +347,20 @@ build() (
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
 
+  # workaround for cargo lock
+  install -Dm755 /dev/stdin "$srcdir/cargo-nofrozen" << 'END'
+#!/usr/bin/env bash
+real=$(command -v cargo | grep -v "cargo-nofrozen" | head -n1)
+args=()
+for a in "$@"; do
+  [[ "$a" == "--frozen" ]] && continue
+  args+=("$a")
+done
+exec "$real" "${args[@]}"
+END
+
+  export CARGO="$srcdir/cargo-nofrozen"
+
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
