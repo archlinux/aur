@@ -5,14 +5,15 @@ pkgver=0.18.0
 pkgrel=1
 pkgdesc="A luxurious package manager for Lua"
 arch=('x86_64' 'aarch64')
-url="https://github.com/lumen-oss/lux"
-license=('MIT')
+url="https://lux.lumen-labs.org"
+repo_url="https://github.com/lumen-oss/lux"
+license=('LGPLv3')
 depends=('glibc' 'gcc-libs' 'libgpg-error' 'gpgme' 'bzip2' 'xz')
 makedepends=('cargo' 'perl')
 provides=('lx')
-conflicts=('lux-cli-git')
+conflicts=('lux-cli-git' 'lux-cli-bin')
 options=('!lto')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${repo_url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('394a161562862cabcb8d872ff80d572218d7c486ecd86d52819d1f6752e55921')
 
 prepare() {
