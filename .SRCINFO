@@ -1,0 +1,13 @@
+pkgbase = davinci-alac-scripts
+	pkgdesc = Davinci Scripts to convert your footage audio to ALAC (crouch)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/GMDProjectL/davinci-alac-scripts
+	arch = any
+	license = MIT
+	depends = python
+	depends = ffmpeg
+	source = davinci-alac-scripts::git+file:///home/relative/Coding/aur/davinci-alac-scripts
+	md5sums = SKIP
+
+pkgname = davinci-alac-scripts
