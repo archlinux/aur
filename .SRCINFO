@@ -1,14 +1,14 @@
 pkgbase = aescrypt-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES)
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aescrypt.com
 	arch = x86_64
 	license = custom:Commercial
 	makedepends = gzip
 	depends = gcc-libs
 	depends = glibc
-	provides = aescrypt
+	provides = aescrypt=4.4.0
 	conflicts = aescrypt
 	source = aescrypt-4.4.0-CHANGELOG.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.4.0/CHANGELOG.md
 	source = aescrypt-4.4.0-README.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.4.0/README.md

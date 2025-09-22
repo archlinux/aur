@@ -3,7 +3,7 @@
 _pkgname="aescrypt"
 pkgname="${_pkgname}-bin"
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=('x86_64')
 url="https://www.aescrypt.com"
@@ -11,8 +11,12 @@ _url="https://github.com/terrapane/aescrypt_cli"
 license=('custom:Commercial')
 depends=('gcc-libs' 'glibc')
 makedepends=('gzip')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=(
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md")
