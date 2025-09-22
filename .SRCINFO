@@ -1,7 +1,7 @@
 pkgbase = fooyin
 	pkgdesc = A customisable music player.
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgver = 0.9.2
+	pkgrel = 1
 	url = https://www.fooyin.org/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -29,7 +29,7 @@ pkgbase = fooyin
 	optdepends = libsndfile: For the GME audio input plugin
 	optdepends = libarchive: For the libarchive archive plugin
 	optdepends = libebur128: For the ReplayGain scanner plugin
-	source = fooyin-0.9.1.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 3559e2ffcd6ad82d72b90bcba3a3e607437329702339a3a3c989e28d28199b1d
+	source = fooyin-0.9.2.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = a3b0e880047790d169223983d4f9a26a2196499275d57321b15e9578dd716a94
 
 pkgname = fooyin
