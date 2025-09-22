@@ -11,7 +11,7 @@ _vcs=git
 _feat=('sdl2')
 pkgbase=$_srcname-$_vcs
 pkgname=("${_srcname}-${_vcs}" "${_feat[@]/*/${_srcname}-&-${_vcs}}")
-pkgver=1.0r12841.4f7bcdb
+pkgver=1.0r13075.655bf6d
 pkgrel=1
 pkgdesc="A ManaPlus fork and official game client for The Mana World."
 arch=('x86_64')
@@ -39,15 +39,11 @@ prepare() {
   git reset --hard
   git clean -fx
   # Rebrand to ManaVerse in more places
-  sed -i 's/\[ManaPlus\]/\[ManaVerse\]/;s/\[manaplus\]/\[manaverse\]/' 'configure.ac'
-  sed -E -i \
-  	's/^(#define PACKAGE_EXTENDED_VERSION ")ManaPlus/\1ManaVerse/;s/(#define FULL_VERSION ")ManaPlus/\1ManaVerse/' \
-  	'src/main.h'
+  sed -i 's/\[manaplus\]/\[manaverse\]/' 'configure.ac'
   sed -i 's/ManaPlus/ManaVerse/g;s/manaplus/manaverse/g' 'manaplus'{,'test'}'.desktop' 'docs/manaplus'{,'test'}'.6'
   sed -E -i \
-    "s#(<id .*>).*\\.desktop</id>#\\1manaverse.desktop</id>#;s#(<url .*>)http://.*</url>#\\1${url}</url>#" \
+    's#(<id .*>).*\\.desktop</id>#\\1manaverse.desktop</id>#' \
     'manaplus.metainfo.xml'
-  sed -i 's/("manaplus"/("manaverse"/g' 'src/utils/gettexthelper.cpp'
   autoreconf -i
 }
 
@@ -56,13 +52,13 @@ _build() {
   _lfeat=""
   _args=()
   if [ -n "$1" ]; then
-  	_lfeat="-$1"
-  	_args+=(--with"$_lfeat")
+    _lfeat="-$1"
+    _args+=(--with"$_lfeat")
   fi
   ./configure --prefix=/usr "${_args[@]}"
   make
   for _dist in manaplus dyecmd; do
-  	mv -f src/$_dist src/$_dist"$_lfeat".bak
+    mv -f src/$_dist src/$_dist"$_lfeat".bak
   done
 }
 
@@ -70,14 +66,14 @@ _package() {
   local _lfeat _dist _bname _rbnd
   [ -n "$1" ] && _lfeat="-$1" || _lfeat=""
   for _dist in manaplus dyecmd; do
-  	cp -f src/$_dist"$_lfeat".bak src/$_dist
+    cp -f src/$_dist"$_lfeat".bak src/$_dist
   done
   make DESTDIR="${pkgdir}" install
   # Rename files to avoid conflicts with manaplus
   # (continuation of rebranding done in prepare())
   mv -T "${pkgdir}/usr/bin/dyecmd" "${pkgdir}/usr/bin/dyecmd_mv"
   mv -T "${pkgdir}/usr/bin/manaplus" "${pkgdir}/usr/bin/manaverse"
-  for _rbnd in "${pkgdir}/usr/share/"{applications,metainfo,man/man6,icons/hicolor/scalable/apps,locale/*/LC_MESSAGES}'/manaplus'*; do
+  for _rbnd in "${pkgdir}/usr/share/"{applications,metainfo,man/man6,icons/hicolor/scalable/apps}'/manaplus'*; do
     mv -T "$_rbnd" "${_rbnd%/*}/manaverse${_rbnd##*manaplus}"
   done
 }

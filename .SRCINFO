@@ -1,6 +1,6 @@
 pkgbase = manaverse-git
 	pkgdesc = A ManaPlus fork and official game client for The Mana World.
-	pkgver = 1.0r12841.4f7bcdb
+	pkgver = 1.0r13075.655bf6d
 	pkgrel = 1
 	url = https://manaplus.germantmw.de/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = manaverse-git
 	depends = physfs
 	depends = curl
 	optdepends = xdg-utils: open in-game urls in browser
-	provides = manaverse=1.0r12841.4f7bcdb
+	provides = manaverse=1.0r13075.655bf6d
 	conflicts = manaverse
 	replaces = tmw
 	source = manaverse::git+https://git.themanaworld.org/mana/plus.git/
