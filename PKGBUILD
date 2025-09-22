@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 # Contributor: Martino Pilia <martino.pilia@gmail.com>
 pkgname=hadolint
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
 url='https://github.com/hadolint/hadolint/'
@@ -14,7 +14,7 @@ source=(
     "https://github.com/hadolint/hadolint/archive/refs/tags/v${pkgver}.tar.gz"
     "stack.yaml"
 )
-sha256sums=('5df6d6b7c20c28588488665206259d3c9bb326d06401d5b8ce37fcfefb1a2e0e'
+sha256sums=('002a411ac608696327d65aaa6e77c8fafe2561429ce56cca0ccb67c2956f8dd5'
             '146501f7d4820023fe832e3191fee38df41d6e0ce668b5fe6305106488dfa960')
 
 build() {
