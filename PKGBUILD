@@ -1,6 +1,6 @@
 # Maintainer: Shin Morisawa <me@tryh4rd.dev>
 pkgname=liblogger
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="a simple, elegent log library in C"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('pkgconf' 'meson' 'ninja' 'gcc')
 source=("https://files.tryh4rd.dev/liblogger-releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0e413a654debb0afa08539668bd8549d06702a55bb50c5a3c4a2a4eba9d02ae7')
+sha256sums=('0a2cda70de12cc686bdd221397881d6f8fa32ce4ec896d51e71f2fbdeb009c93')
 
 build() {
     cd "$srcdir/liblogger-$pkgver"
