@@ -1,16 +1,17 @@
 pkgbase = realvim
 	pkgdesc = A lightweight terminal text editor written in rust
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/realdanvanth/realvim
 	arch = x86_64
 	license = custom
 	makedepends = rust
 	makedepends = cargo
 	makedepends = pkgconf
+	makedepends = git
 	depends = gcc-libs
 	depends = oniguruma
-	source = realvim-1.0.tar.gz::https://github.com/realdanvanth/realvim/archive/v1.0.tar.gz
+	source = git+https://github.com/realdanvanth/realvim.git
 	sha256sums = SKIP
 
 pkgname = realvim
