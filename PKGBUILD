@@ -5,7 +5,7 @@ pkgdesc="A package for text anlyzing"
 arch=('any')
 url="https://github.com/Vitalij-Burk/wfreq"
 license=('MIT')
-depends=('python' 'python-pip' 'python-rich')
+depends=('python' 'python-pip' 'python-rich' 'python-beautifulsoup4')
 source=("$pkgname-$pkgver::git+https://github.com/Vitalij-Burk/wfreq.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

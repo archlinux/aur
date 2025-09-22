@@ -8,6 +8,7 @@ pkgbase = wfreq
 	depends = python
 	depends = python-pip
 	depends = python-rich
+	depends = python-beautifulsoup4
 	source = wfreq-0.1.6::git+https://github.com/Vitalij-Burk/wfreq.git#tag=v0.1.6
 	sha256sums = SKIP
 
