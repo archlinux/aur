@@ -1,7 +1,7 @@
 pkgbase = libjxl-metrics
 	pkgdesc = JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics
 	pkgver = 0.11.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -21,6 +21,7 @@ pkgbase = libjxl-metrics
 	optdepends = libjxl-doc: for documentation
 	provides = libjxl
 	provides = libjxl.so=0.11
+	provides = libjxl_cms.so=0.11
 	provides = libjxl_threads.so=0.11
 	provides = butteraugli
 	provides = ssimulacra
@@ -31,7 +32,6 @@ pkgbase = libjxl-metrics
 	conflicts = ssimulacra
 	conflicts = ssimulacra2
 	conflicts = jpegli
-	options = !lto
 	source = git+https://github.com/libjxl/libjxl.git#tag=v0.11.1
 	source = git+https://skia.googlesource.com/skcms.git#commit=42030a771244ba67f86b1c1c76a6493f873c5f91
 	source = git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf

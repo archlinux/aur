@@ -3,7 +3,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.11.1
-pkgrel=6
+pkgrel=7
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -32,6 +32,7 @@ makedepends=(
 provides=(
   $_pkgname
   libjxl.so=0.11
+  libjxl_cms.so=0.11
   libjxl_threads.so=0.11
   butteraugli
   ssimulacra
@@ -48,7 +49,6 @@ conflicts=(
 optdepends=(
   'libjxl-doc: for documentation'
 )
-options=(!lto) # Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/$_pkgname.git#tag=v$pkgver
   git+https://skia.googlesource.com/skcms.git#commit=42030a771244ba67f86b1c1c76a6493f873c5f91
@@ -72,7 +72,6 @@ prepare() {
 
 build() {
   export CC=clang CXX=clang++
-  export CFLAGS+=' -flto=thin' CXXFLAGS+=' -flto=thin'
   export LDFLAGS+=' -fuse-ld=lld'
   cmake -S $_pkgname -B build \
     -DBUILD_TESTING=OFF \
