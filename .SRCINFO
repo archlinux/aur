@@ -1,0 +1,16 @@
+pkgbase = fooyin-plugin-libvgm-git
+	pkgdesc = A libvgm plugin for fooyin
+	pkgver = r3.d800a9e
+	pkgrel = 1
+	url = https://github.com/fooyin/fooyin-plugin-libvgm
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = fooyin
+	source = fooyin-plugin-libvgm-git::git+https://github.com/fooyin/fooyin-plugin-libvgm.git
+	source = libvgm::git+https://github.com/ValleyBell/libvgm.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fooyin-plugin-libvgm-git
