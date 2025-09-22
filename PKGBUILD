@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-screen-autorotate
-pkgver=24.1
-_pkgver=24
+pkgver=26
+_pkgver=26
 pkgrel=1
 pkgdesc="A GNOME extension to auto-rotate screen regardless of touch mode"
 arch=("any")
@@ -8,11 +8,8 @@ url="https://github.com/shyzus/gnome-shell-extension-screen-autorotate"
 license=("GPL")
 depends=("gnome-shell" "iio-sensor-proxy")
 conflicts=("gnome-shell-extension-screen-autorotate-git")
-source=("$pkgname-${_pkgver}.tar.gz::$url/archive/v${_pkgver}.tar.gz"
-        "0001-Add-GNOME-48-supported.patch"
-        )
-sha256sums=('1ea2469b5d87af792435806b5d200549cf63c0df453c6c7483360e2ab0cfeb6b'
-            'db0d51bf2d955c9a1bd8857df2351131a1a216619b34ca961127b6490dfb110d')
+source=("$pkgname-${_pkgver}.tar.gz::$url/archive/v${_pkgver}.tar.gz")
+sha256sums=('7e384c17221b7702ceb2887a275ecbe38814c933e04d4be02b1122e6065cb4d5')
 
 _uuid="screen-rotate@shyzus.github.io"
 
