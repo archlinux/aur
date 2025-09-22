@@ -7,9 +7,9 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=24
-_completever=24.0.2
-_updatever=12
+_majorver=25
+_completever=25
+_updatever=36
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
@@ -42,7 +42,6 @@ backup=(etc/java-temurin/logging.properties
         etc/java-temurin/management/management.properties
         etc/java-temurin/net.properties
         etc/java-temurin/sdp/sdp.conf.template
-        etc/java-temurin/security/java.policy
         etc/java-temurin/security/java.security
         etc/java-temurin/security/policy/limited/default_local.policy
         etc/java-temurin/security/policy/limited/default_US_export.policy
@@ -58,10 +57,10 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('aea1cc55e51cf651c85f2f00ad021603fe269c4bb6493fa97a321ad770c9b096'
-            'ce49e3435f1e229260f429d61896be9a6f9d2b0cdc72d2c0091fed6ac55c388a'
-            'decb720bd8d5e8628e836af8813bfbcf7fec00a4d119765e993a19cf235d8784'
-            'a71dbdb6f769bf33a55e78ef0fe2300929a9a291b6e5ccba4245c67f679321a5')
+sha256sums=('ee04de95ab9da7287d40bd2173076ecc2a6dd662f007bedfc6eb0380c0ef90e8'
+            '3dfaf29b2913adfb993fc07f3963b6d0f737e8c5f4d2b1b73bb8fcf96bba896b'
+            '4898a30b713aef4cbda17727a99a5337ec467126891474454ed8010f4ce8dc7e'
+            'dcc9cc253e1ceb14f8ebda2b047c1ec2a412eac16da574bd587bd2d5f0a53afe')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}

@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Temurin Java 24 Console
-Comment=Temurin Java 24 Monitoring & Management Console
+Name=Temurin Java 25 Console
+Comment=Temurin Java 25 Monitoring & Management Console
 Keywords=java;console;monitoring
-Exec=/usr/lib/jvm/java-24-temurin/bin/jconsole
+Exec=/usr/lib/jvm/java-25-temurin/bin/jconsole
 Terminal=false
 Type=Application
 Categories=Application;System;
