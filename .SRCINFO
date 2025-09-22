@@ -1,6 +1,6 @@
 pkgbase = klive-ide-bin
 	pkgdesc = Versatile emulator and developer environment for all Sinclair machines.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.49.2
+	pkgver = 0.49.3
 	pkgrel = 1
 	url = https://github.com/Dotneteer/kliveide
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = klive-ide-bin
 	makedepends = asar
 	makedepends = fuse2
 	depends = electron35
-	provides = klive-ide=0.49.2
+	provides = klive-ide=0.49.3
 	conflicts = klive-ide
-	source = LICENSE-0.49.2::https://raw.githubusercontent.com/Dotneteer/kliveide/v0.49.2/LICENSE
+	source = LICENSE-0.49.3::https://raw.githubusercontent.com/Dotneteer/kliveide/v0.49.3/LICENSE
 	source = klive-ide.sh
 	sha256sums = ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = klive-ide-0.49.2-aarch64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.49.2/KliveIdeSetup-0.49.2-arm64.AppImage
-	sha256sums_aarch64 = 1e2c75d3859bcbdf65d783b8a203118c43b8eb662ac07504fa8f8d1529cd3190
-	source_x86_64 = klive-ide-0.49.2-x86_64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.49.2/KliveIdeSetup-0.49.2-x86_64.AppImage
-	sha256sums_x86_64 = bf25852047b9b2728b9d525b9138372f1d3e7482f00fe59414e4c992bf097df6
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = klive-ide-0.49.3-aarch64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.49.3/KliveIdeSetup-0.49.3-arm64.AppImage
+	sha256sums_aarch64 = df1d24797c41fe41c1de841c3f709d48bdb4d5de112f572ff11866b6d15b1d07
+	source_x86_64 = klive-ide-0.49.3-x86_64.AppImage::https://github.com/Dotneteer/kliveide/releases/download/v0.49.3/KliveIdeSetup-0.49.3-x86_64.AppImage
+	sha256sums_x86_64 = 0c14f54e9e634de68972acccbdbc3e599f32ce0cf298798411cd78245f3a1684
 
 pkgname = klive-ide-bin
