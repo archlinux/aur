@@ -16,7 +16,7 @@ _appimage="gozen-v${pkgver}-alpha-x86_64.AppImage"
 source=(
   "${_appimage}::https://github.com/VoylinsGamedevJourney/GoZen/releases/download/v${pkgver}-alpha/${_appimage}"
 )
-sha256sums=('SKIP') # You should update with real checksum per release
+sha256sums=('071390478e29bf37283fc130c82e9a0a54bad94ef39081dbab8510b625614600')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
