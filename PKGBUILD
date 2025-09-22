@@ -1,4 +1,4 @@
-# Maintainer: Rafael Senties Martinelli <rafael@rsm92.fr>
+# Maintainer: Rafael Senties Martinelli <contact@rsm92.fr>
 # Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
 
 # This package was updated from: https://aur.archlinux.org/packages/python2-cssmin
