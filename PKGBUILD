@@ -1,36 +1,37 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.4.9.r9.g88d4fe3
+pkgver=0.4.11.r24.gf9c8d49
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
 url="https://github.com/kolunmi/bazaar"
 license=('GPL-3.0-only')
 depends=(
-  'gtk4'
-  'libadwaita'
-  'flatpak'
   'appstream'
-  'libxmlb'
-  'glycin'
-  'libyaml'
-  'libsoup3'
-  'json-glib'
-  'glib2'
-  'pango'
-  'graphene'
-  'dconf'
   'cairo'
+  'dconf'
+  'flatpak'
+  'glib2'
+  'glycin'
+  'glycin-gtk4'
+  'graphene'
+  'gtk4'
+  'json-glib'
+  'libadwaita'
   'libdex'
+  'libsoup3'
+  'libxmlb'
+  'libyaml'
+  'pango'
 )
-makedepends=('meson' 'ninja' 'glib2-devel' 'blueprint-compiler' 'git')
+makedepends=('blueprint-compiler' 'git' 'glib2-devel' 'meson' 'ninja')
 optdepends=('krunner-bazaar: krunner integration')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "bazaar::git+https://github.com/kolunmi/bazaar.git"
-  "libdex::git+https://gitlab.gnome.org/GNOME/libdex.git#tag=0.11.1"
+  "glycin-2.0-compat.patch::https://github.com/kolunmi/bazaar/commit/b9c07d28e87d243ba99d6fa7365dc6ad8abccb73.patch"
 )
 sha256sums=('SKIP'
             'SKIP')
@@ -38,33 +39,20 @@ sha256sums=('SKIP'
 pkgver() {
   cd bazaar
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
+prepare() {
+  cd bazaar
+  patch -p1 -i ../glycin-2.0-compat.patch
 }
 
 build() {
-  # build bundled libdex
-  meson setup --prefix="/usr/lib/${_pkgname}" --libdir=lib --buildtype=release \
-    libdex libdex-build
-  ninja -C libdex-build
-
-  # get system pkg-config path
-  system_pc_path=$(pkg-config --variable pc_path pkg-config)
-
-  # create native file
-  cat > "$srcdir/native.ini" <<EOF
-[properties]
-pkg_config_libdir = '$srcdir/libdex-build/meson-uninstalled:$system_pc_path'
-EOF
-
-  # build bazaar using native file
-  meson setup --prefix=/usr --buildtype=release --native-file="$srcdir/native.ini" \
-    bazaar bazaar-build
-  ninja -C bazaar-build
+  cd bazaar
+  meson setup --prefix=/usr --buildtype=release build
+  ninja -C build
 }
 
 package() {
-  # Install bundled libdex to private dir
-  DESTDIR="$pkgdir" meson install -C "$srcdir/libdex-build"
-  # Install bazaar
-  DESTDIR="$pkgdir" meson install -C "$srcdir/bazaar-build"
+  cd bazaar
+  DESTDIR="$pkgdir" meson install -C build
 }
