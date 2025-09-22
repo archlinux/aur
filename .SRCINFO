@@ -1,6 +1,6 @@
 pkgbase = ossia-score
 	pkgdesc = ossia score, an interactive sequencer for the intermedia arts
-	pkgver = 3.7.0
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://ossia.io
 	arch = x86_64
@@ -37,10 +37,10 @@ pkgbase = ossia-score
 	optdepends = avahi
 	optdepends = onnxruntime
 	optdepends = hdf5
-	provides = ossia-score=3.7.0
+	provides = ossia-score=3.7.1
 	conflicts = ossia-score-git
 	replaces = i-score
-	source = https://github.com/ossia/score/releases/download/v3.7.0/ossia.score-3.7.0-src.tar.xz
-	sha512sums = b990c32c8b58853f6c83fb67dedb55515ab9fa3b6f07239a6e3e5a3ebb4e140a52ce56559ba2ec6dc808f864d491d0523717d1d3cbd44a756a873aa6e066b66e
+	source = https://github.com/ossia/score/releases/download/v3.7.1/ossia.score-3.7.1-src.tar.xz
+	sha512sums = 19dee017b911a04374b4ed797bbeb792a69548deaa05d5fa34de89cda1d0ba723c160170a7f1f80ee33286457d1967566f2f55ac2d5362c5c7ee6a08f92add52
 
 pkgname = ossia-score
