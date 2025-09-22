@@ -2,12 +2,12 @@
 
 pkgname=docformatter
 pkgver=1.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Formats docstrings to follow PEP 257"
 arch=(any)
 url="https://github.com/PyCQA/$pkgname"
 license=(MIT)
-depends=(python python-charset-normalizer python-untokenize python-tomli)
+depends=(python python-charset-normalizer python-untokenize)
 makedepends=(python-build python-installer python-poetry-core python-wheel python-sphinx)
 checkdepends=(python-pytest python-mock)
 provides=(python-docformatter)

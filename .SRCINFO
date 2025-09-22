@@ -1,7 +1,7 @@
 pkgbase = docformatter
 	pkgdesc = Formats docstrings to follow PEP 257
 	pkgver = 1.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PyCQA/docformatter
 	arch = any
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = docformatter
 	depends = python
 	depends = python-charset-normalizer
 	depends = python-untokenize
-	depends = python-tomli
 	provides = python-docformatter
 	source = docformatter-1.7.7.tar.gz::https://github.com/PyCQA/docformatter/archive/v1.7.7.tar.gz
 	sha512sums = 0863846e5b226eb93a2e23b351328aead9ba5dd8ee578d2d1f0529c7c934a26b46086a47f5edf0efe359dd2f21c76d0f6a8ed2064048c103f537d183a667064a
