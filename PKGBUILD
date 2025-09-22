@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=rbspy
-pkgver=0.37.0
+pkgver=0.37.1
 pkgrel=1
 pkgdesc="Sampling profiler for Ruby"
 url="https://rbspy.github.io"
@@ -13,7 +13,7 @@ source=(
   "https://github.com/rbspy/rbspy/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '2daf337be9db6d3ba17c0a6a7339c2bbd4424ac68c98739bd01c3b4e45a4d947'
+  'ca5146b36c74e9bb305e3cbf9e583c4b9cff0de5c8eec821d1ec5b52008e4202'
 )
 
 build() {
