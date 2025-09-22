@@ -2,19 +2,22 @@
 
 pkgname=bazaar
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub"
 arch=('x86_64')
 url="https://github.com/kolunmi/bazaar"
 license=('GPL-3.0-only')
 depends=(
+  'glibc'
+  'gcc-libs'
   'gtk4'
   'libadwaita'
   'libdex'
   'flatpak'
   'appstream'
   'libxmlb'
-  'glycin'
+  'glycin1'
+  'glycin1-gtk4'
   'libyaml'
   'libsoup3'
   'json-glib'
