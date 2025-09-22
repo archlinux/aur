@@ -1,4 +1,4 @@
-# Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
+# Maintainer: Voxan24 <admin "at" hessfr "dot" fr>
 
 # To enable macOS guests support, uncomment the line below:
 #_enable_macOS_guests=y
@@ -67,15 +67,16 @@ backup=(
   'etc/pam.d/vmware-authd'
   'etc/conf.d/vmware'
 )
+#Mirrored from VMWare CDN Archive
 source=(
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://voxhost.fr/vmware-aur/15/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -154,11 +155,11 @@ _isoimages=(linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
 _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
-
+#old var, the VMWare Broadcom don't exist anymore :c
 _vmware_fusion_ver=11.5.7
 _vmware_fusion_buildver=17130923
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
-# List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
+# Mirrored from archive version of: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
   python
@@ -167,7 +168,7 @@ makedepends+=(
 )
 
 source+=(
-  "VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver}/${_vmware_fusion_buildver}/core/com.vmware.fusion.zip.tar"
+  "VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.zip.tar::https://voxhost.fr/vmware-aur/15/com.vmware.fusion.zip.tar"
   "unlocker.py"
   "efi-patches.txt"
 )
