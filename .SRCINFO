@@ -1,0 +1,14 @@
+pkgbase = goose-desktop-bin
+	pkgdesc = Goose Desktop (prebuilt .deb repack) — co-installable with codename-goose-bin
+	pkgver = 1.8.0
+	pkgrel = 2
+	url = https://github.com/block/goose
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = goose-desktop
+	conflicts = goose-desktop
+	source = goose_1.8.0_amd64.deb::https://github.com/block/goose/releases/download/v1.8.0/goose_1.8.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = goose-desktop-bin
