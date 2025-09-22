@@ -48,8 +48,8 @@ depends=(aurorae
          libxi
          libxkbcommon
          libxkbcommon-x11
-         mesa
          libplasma=$pkgver
+         mesa
          plasma-x11-session
          qt6-5compat
          qt6-base
@@ -57,14 +57,18 @@ depends=(aurorae
          qt6-sensors
          qt6-svg
          qt6-tools
+         qt6-wayland
          systemd-libs
+         wayland
          xcb-util-cursor
          xcb-util-keysyms
          xcb-util-wm)
 makedepends=(extra-cmake-modules
              git
              kdoctools
-             python)
+             plasma-wayland-protocols
+             python
+             wayland-protocols)
 provides=($_pkgname $_pkgname-improved)
 conflicts=($_pkgname $_pkgname-improved)
 source=("git+${url}.git#tag=${pkgver}")
