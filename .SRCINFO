@@ -1,6 +1,6 @@
 pkgbase = gplugin
 	pkgdesc = A GObject based library that implements a reusable plugin system
-	pkgver = 0.39.1
+	pkgver = 0.44.2
 	pkgrel = 3
 	url = https://keep.imfreedom.org/gplugin/gplugin
 	arch = i868
@@ -26,7 +26,7 @@ pkgbase = gplugin
 	options = strip
 	options = !debug
 	options = staticlibs
-	source = gplugin::hg+https://keep.imfreedom.org/gplugin/gplugin/#tag=v0.39.1
+	source = gplugin::hg+https://keep.imfreedom.org/gplugin/gplugin/#tag=v0.44.2
 	sha256sums = SKIP
 
 pkgname = gplugin
