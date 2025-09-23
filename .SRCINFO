@@ -1,6 +1,6 @@
 pkgbase = libsignal-client
 	pkgdesc = Library for the Signal Protocol.
-	pkgver = 0.80.2
+	pkgver = 0.81.0
 	pkgrel = 1
 	url = https://github.com/signalapp/libsignal
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = libsignal-client
 	makedepends = python
 	depends = gcc-libs
 	options = !lto
-	source = libsignal-0.80.2.tar.gz::https://github.com/signalapp/libsignal/archive/refs/tags/v0.80.2.tar.gz
-	sha512sums = 59c913764b8218be491ba7d48de1a821eb7a20c412f31f75a61949a5727469cd593a23400717ac7fc61ffc50743939127e1bd15a949ed1baee9174df3d5dc112
+	source = libsignal-0.81.0.tar.gz::https://github.com/signalapp/libsignal/archive/refs/tags/v0.81.0.tar.gz
+	sha512sums = 8d0c4253baa53f6805670a7306a2a57cab41aaaa8db0438009b1450d07383429f241f752f7c3b212974d24a57edaf12273fd9596816447f7bb695688e2e8a691
 
 pkgname = libsignal-client
