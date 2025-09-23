@@ -1,0 +1,3 @@
+[quisk]
+source = 'pypi'
+pypi = 'quisk'

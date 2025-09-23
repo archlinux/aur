@@ -1,11 +1,13 @@
-# Maintainer: neolouker <neolouker@gmail.com>
+# Maintainer: envolution
+# Contributor: neolouker <neolouker@gmail.com>
 # Contributor: ramen <hendrik@hndrkk.sh>
-# Contributor: ra1nb0w 
+# Contributor: ra1nb0w
 # Contributor: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=quisk
-pkgver=4.2.40
+pkgver=4.2.44
 pkgrel=1
 pkgdesc='Software Defined Radio (SDR) transceiver that can control various radio hardware.'
 arch=('x86_64' 'aarch64')
@@ -14,14 +16,14 @@ license=('GPL-2.0-only')
 depends=('python' 'python-pyusb' 'python-wxpython')
 depends+=('portaudio' 'alsa-lib' 'libpulse' 'fftw' 'python-pyserial')
 optdepends=('codec2: Enable FreeDV open digital voice codec'
-            'soapysdr: Enable SoapySDR support')
+  'soapysdr: Enable SoapySDR support')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/q/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   'icon.png'
   'quisk.desktop'
 )
-b2sums=('fde9ecc6ca1e1a5985dd8d37170b7cb95b36ad999b1f90d80c5c3d3eb5c93f874d9833221f442f320165f52f8b0cf603cc6845767a33771e7c7eceb089a87e09'
+b2sums=('af58dfaea97902e1a1f9bdb3417f2e9e2687af91944e35b6c65975c30f84a53aafdb6196f577809758cdbe65136ce6a65fb4ee24b8e4efad424a9da9e423435f'
         '11e81951156ed35888ccdd1a528a4adab29dc0a5d4b5aa1e3cc64e476ec7770ce034e7f403ad93e374a169d0f5df7e4e9080cd837f756a3b9de67a8d0613a00a'
         'c54e29d4595a31b4f33203396b84808c00a91db58416c8b25ec6e4ded0635a53146d11d21b4ac41bf9b4897711413f35c921d39e2c7e820b4b69ffb303354014')
 
@@ -38,3 +40,4 @@ package() {
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+# vim:set ts=2 sw=2 et:
