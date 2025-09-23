@@ -1,7 +1,7 @@
 pkgbase = vocalshaper-git
 	pkgdesc = A JUCE-based Open Source DAW
 	pkgver = r1231.9e90ecd
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/Do-sth-sharp/VocalShaper
 	arch = x86_64

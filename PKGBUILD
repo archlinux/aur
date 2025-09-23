@@ -2,7 +2,7 @@
 
 pkgname='vocalshaper-git'
 pkgver=r1231.9e90ecd
-pkgrel=2
+pkgrel=3
 epoch=0
 conflicts=('vocalshaper')
 provides=("vocalshaper")
@@ -40,20 +40,29 @@ prepare() {
 
 build() {
     cd VocalShaper
-    cmake --preset "Ninja Release Linux LLVM"
+    cmake --preset "Ninja Release Linux LLVM"\
+            -DCMAKE_INSTALL_RPATH='$ORIGIN' \
+            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+            -DCMAKE_SKIP_BUILD_RPATH=OFF
     cmake --build "build/ninja-release-linux-llvm" --target VocalShaper
 }
 
 package() {
-    install -d -m755 $pkgdir/usr/bin
-    install -d -m755 $pkgdir/opt
-    cp -r $srcdir/VocalShaper/build/ninja-release-linux-llvm/bin $pkgdir/opt/VocalShaper
-    ln -s /opt/VocalShaper/VocalShaper "$pkgdir/usr/bin/VocalShaper"
+    install -d -m755 "$pkgdir/usr/bin"
+    install -d -m755 "$pkgdir/usr/lib"
+    install -d -m755 "$pkgdir/opt"
+    cp -r "$srcdir/VocalShaper/build/ninja-release-linux-llvm/bin" "$pkgdir/opt/VocalShaper"
+    # The following 2 libraries are not provided by any package, so manually copy them
+    cp "$srcdir/VocalShaper/vcpkg/installed/x64-linux-llvm/lib/libvsp4.so" "$pkgdir/opt/VocalShaper/libvsp4.so"
+    cp "$srcdir/VocalShaper/vcpkg/installed/x64-linux-llvm/lib/libjuce-full.so" "$pkgdir/opt/VocalShaper/libjuce-full.so"
+    # The following library actually is provided by extra/protobuf, but the file name is libprotobuf.so.32.0.0, which can not be found by VocalShaper.
+    cp "$srcdir/VocalShaper/vcpkg/installed/x64-linux-llvm/lib/libprotobuf.so.32" "$pkgdir/opt/VocalShaper/libprotobuf.so.32"
+    ln -s "/opt/VocalShaper/VocalShaper" "$pkgdir/usr/bin/VocalShaper"
     if [ -f "$pkgdir/opt/VocalShaper/FileRegistrar" ]; then
-        ln -s /opt/VocalShaper/FileRegistrar "$pkgdir/usr/bin/FileRegistrar"
-        ln -s /opt/VocalShaper/FileRegistrar "$pkgdir/usr/bin/FileRegistrator"
+        ln -s "/opt/VocalShaper/FileRegistrar" "$pkgdir/usr/bin/FileRegistrar"
+        ln -s "/opt/VocalShaper/FileRegistrar" "$pkgdir/usr/bin/FileRegistrator"
     elif [ -f "$pkgdir/opt/VocalShaper/FileRegistrator" ]; then
-        ln -s /opt/VocalShaper/FileRegistrator "$pkgdir/usr/bin/FileRegistrator"
+        ln -s "/opt/VocalShaper/FileRegistrator" "$pkgdir/usr/bin/FileRegistrator"
     fi
-    ln -s /opt/VocalShaper/PluginSearcher "$pkgdir/usr/bin/PluginSearcher"
+    ln -s "/opt/VocalShaper/PluginSearcher" "$pkgdir/usr/bin/PluginSearcher"
 }
