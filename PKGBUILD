@@ -4,7 +4,7 @@
 
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r1241.9bfd5008d
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -36,6 +36,7 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-lsmashsource: VapourSynth plugin used by default (LWLibavSource)'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
+options=('!lto')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
         "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R8"
         "${pkgname}-libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6"
