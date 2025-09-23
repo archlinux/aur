@@ -2,7 +2,7 @@
 
 _npmname=cloudcmd
 pkgname=$_npmname
-pkgver=19.0.9
+pkgver=19.0.10
 pkgrel=1
 
 pkgdesc="Cloud Commander file manager for the web with console and editor."
@@ -22,8 +22,8 @@ changelog="changelog.md"
 source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
-b2sums=('222cc4642be2f1071fc1a095dc0e9fbd3454321dae74e1ae8ec119ffb36fcacce81701230fd81fbe38b885d947694b9d35d674919568aaf1538c1ead51d8055c'
-        '4627d6f12b881264fd8d75d36eb17d94e71d27f1f9f7c2f69c13b0e9ec61ccd172461ea7084f4ab127d6ff7ec8951cf4af9d5b922a5128377c3e7393a3df9d98'
+b2sums=('6a64467b724b57f3ba228f4bcc764cd9be450c65d7a3776fed35d8f863dba61392cdbef9c4be48e8f29c6b67759ec3ea2ea7ba80654868dab65caf006f939b03'
+        'bf0117ca16c7ecd50af3f3ac5c15ed1c2e02adc43231f6500e5658982e684bdfa87f40144bb17c3a5beff9fb112209a07580fdda031aff70520420d7f25557e0'
         'f925bfc0d0ce5b6542af8c5ba101117da11d4b760c65e8907cc6bf8d5ab443c996090f3ffe207d79e97f6f762e657f49522d5a83e81ad5f41cbcae063e27fe04')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
