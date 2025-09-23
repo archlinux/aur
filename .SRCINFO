@@ -1,0 +1,16 @@
+pkgbase = xc
+	pkgdesc = Markdown defined task runner.
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/joerdav/xc
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = xc-0.8.6.tar.gz::https://github.com/joerdav/xc/archive/refs/tags/v0.8.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = xc
