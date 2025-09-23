@@ -24,6 +24,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "Revert-layer-shell-error-on-0-dimension-without-anch.patch",
+    "0001-backend-output-send-commit-events-after-applying-all.patch",
 ]
 SPDX-FileCopyrightText = "Debian contributors"
 SPDX-License-Identifier = "GPL-2.0-or-later"

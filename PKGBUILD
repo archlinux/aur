@@ -6,7 +6,7 @@
 pkgname=wlroots0.19
 _pkgname=wlroots
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular Wayland compositor library"
 url="https://gitlab.freedesktop.org/wlroots/wlroots"
 license=('MIT')
@@ -18,9 +18,11 @@ makedepends=('git' 'glslang' 'meson' 'ninja' 'systemd' 'vulkan-headers' 'wayland
 optdepends=('xorg-xwayland: Xwayland support')
 provides=("libwlroots-${pkgver%.*}.so")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}?signed"
-        'Revert-layer-shell-error-on-0-dimension-without-anch.patch')
+        'Revert-layer-shell-error-on-0-dimension-without-anch.patch'
+		'0001-backend-output-send-commit-events-after-applying-all.patch')
 sha256sums=('678039c968edf45266b2742b3612de41d59defedab19282e930603d24f94850c'
-            '75fef991c636b1f285c1020bd653dd7239c9c276aea56b4937db5d412a3a13dd')
+            '75fef991c636b1f285c1020bd653dd7239c9c276aea56b4937db5d412a3a13dd'
+            '592b61f80faaa3a8a1ed59cdce51fc1ca7b589f49d3cd39ce54111e2285eab42')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
               '9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A'  # Drew DeVault
               '4100929B33EEB0FD1DB852797BC79407090047CA') # Sway signing key)
@@ -32,6 +34,8 @@ prepare() {
 	# See https://gitlab.gnome.org/World/Phosh/phoc/-/merge_requests/294
 	# Patch taken from https://sources.debian.org/patches/wlroots/0.19.0-1/Revert-layer-shell-error-on-0-dimension-without-anchors.patch/
 	patch -Np1 -i "${srcdir}/Revert-layer-shell-error-on-0-dimension-without-anch.patch"
+	# https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/5134
+	patch -Np1 -i "${srcdir}/0001-backend-output-send-commit-events-after-applying-all.patch"
 }
 
 build() {
