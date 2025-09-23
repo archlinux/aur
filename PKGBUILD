@@ -2,11 +2,12 @@
 # Contributor: Brad Johnson <bradsk88@gmail.com>
 
 : ${_install_path:=usr/share}
+: ${_electron_version=}
 
 _pkgname="gitify"
 pkgname="$_pkgname-git"
-pkgver=6.2.0.r75.g111e9d0
-pkgrel=2
+pkgver=6.8.0.r22.gea6c591
+pkgrel=1
 pkgdesc="GitHub tray icon and notifications"
 url="https://github.com/gitify-app/gitify"
 license=('MIT')
@@ -18,7 +19,7 @@ depends=(
 makedepends=(
   'git'
   'libicns'
-  'nvm' # AUR
+  'nvm'
 )
 
 provides=("$_pkgname")
@@ -28,7 +29,7 @@ conflicts=(
 )
 
 _pkgsrc="$_pkgname"
-source=("git+$url.git")
+source=("git+$url.git${_commit:+#commit=$_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -50,6 +51,8 @@ _nvm_env() {
   export XDG_DATA_HOME="$HOME/.local/share"
 
   export NVM_DIR="$srcdir/node-nvm"
+
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
   export NODE_ENV=production
   _nodeversion=$(cat "$_pkgsrc/.nvmrc")
@@ -79,9 +82,7 @@ build() (
   npm install -g pnpm
   NODE_ENV=development pnpm install --ignore-scripts
 
-  pnpm run build:main
-  pnpm run build:renderer
-  pnpm run prepare:remove-source-maps
+  pnpm run build
   pnpm -c exec "electron-builder ${_electron_builder_options[*]}"
 )
 
@@ -90,7 +91,8 @@ package() {
 
   depends=("electron${_electron_version%%.*}")
 
-  install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
+  cp "$_pkgsrc/dist/linux-unpacked/resources"/* "$pkgdir/$_install_path/$_pkgname/"
 
   install -Dm644 "$_pkgname.png" -t "$pkgdir/$_install_path/pixmaps/"
 
