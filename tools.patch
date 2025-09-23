@@ -1,15 +1,16 @@
-diff -ruN enca-1.19/tools/Makefile.am patched/tools/Makefile.am
---- enca-1.19/tools/Makefile.am	2016-01-04 19:12:05.000000000 +0100
-+++ patched/tools/Makefile.am	2020-05-23 19:25:02.733333268 +0200
-@@ -30,7 +30,11 @@
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 217e2c4..1aa49b6 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -31,7 +31,11 @@ encodings.sed: $(top_builddir)/iconvenc.h
  	sed -e 's/^#define \([A-Z0-9_]*\) \(.*\)/@\1@ \2/' -e 's/"//g' -e 's/NULL$$//' -e 's/ /\//' -e 's/^\(.*\)$$/s\/\1\//' $(top_builddir)/iconvenc.h >encodings.sed
  
- encodings.h: encodings.sed $(srcdir)/encodings.dat make_hash
--	sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash >encodings.h
+ encodings.h: encodings.sed $(srcdir)/encodings.dat make_hash$(EXEEXT)
+-	sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash$(EXEEXT) >encodings.h
 +	@if test "$(EXEEXT)" == ".exe"; then \
-+	  sed -f encodings.sed $(srcdir)/encodings.dat | $(target_alias)-wine ./make_hash.exe >encodings.h; \
++	  sed -f encodings.sed $(srcdir)/encodings.dat | $(target_alias)-wine ./make_hash$(EXEEXT) >encodings.h; \
 +	else \
-+	  sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash >encodings.h; \
++	  sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash$(EXEEXT) >encodings.h; \
 +	fi
  
  # Normally there's no need to regenerate tables, they are copy-and-pasted

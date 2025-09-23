@@ -1,12 +1,13 @@
-diff -ruN enca-1.19/autogen.sh patched/autogen.sh
---- enca-1.19/autogen.sh	2016-07-28 16:35:31.000000000 +0200
-+++ patched/autogen.sh	2016-10-29 10:26:05.544998284 +0200
-@@ -139,7 +139,7 @@
- }
+diff --git a/m4/libiconv.m4 b/m4/libiconv.m4
+index fc8c6f8..7ea1bc1 100644
+--- a/m4/libiconv.m4
++++ b/m4/libiconv.m4
+@@ -17,7 +17,7 @@ AC_REQUIRE([AC_C_CONST])dnl
+ dnl
  
- if test -z "$NO_LIBTOOL"; then
--  LT_VERSION=`libtoolize --version | sed -e '2,$ d' -e 's/ *([^()]*)$//' -e 's/.* \(.*\)/\1/' -e 's/-p[0-9]\+//' -e 's/^[a-zA-z]*-//'`
-+  LT_VERSION=`libtoolize --version | sed -e '2,$ d' -e 's/ *([^()]*)$//' -e 's/.* \(.*\)/\1/' -e 's/-p[0-9]\+//' -e 's/^[a-zA-Z]*-//'`
-   if ! version_check "1.4" "$LT_VERSION" ; then
-     echo
-     echo "**ERROR**: You need at least libtool-1.4 installed to re-generate"
+ dnl Use standard iconv test
+-AM_ICONV
++#AM_ICONV
+ CONVERTER_LIBS="$CONVERTER_LIBS $LIBICONV"
+ 
+ dnl Compile iconvcap.c and run it to determine what encodings iconv actually

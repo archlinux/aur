@@ -1,24 +1,8 @@
-diff -ru enca-1.18/configure.ac patched/configure.ac
---- enca-1.18/configure.ac	2016-01-07 09:40:26.000000000 +0100
-+++ patched/configure.ac	2016-03-20 09:56:42.073076423 +0100
-@@ -38,13 +38,15 @@
- AC_GNU_SOURCE
- AC_AIX
- AC_ISC_POSIX
--AC_PROG_LIBTOOL
-+#AC_PROG_LIBTOOL
- AC_PROG_CC
- AM_PROG_CC_C_O
- AC_PROG_INSTALL
- AC_PROG_LN_S
- AC_PATH_PROG(MKTEMP_PROG, mktemp)
- 
-+LT_INIT
-+
- dnl With GCC, be paranoiac.  It should compile really cleanly.
- dnl Except -Wno-sign-compare, but older gcc's don't know it.
- if test "$GCC" = yes; then
-@@ -96,6 +98,14 @@
+diff --git a/configure.ac b/configure.ac
+index 67cb476..d97e9c6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,6 +97,14 @@ done
  dnl And for gtk-doc
  gtk_CHECK_GTK_DOC
  
@@ -33,10 +17,11 @@ diff -ru enca-1.18/configure.ac patched/configure.ac
  dnl Checks for libraries.
  ye_CHECK_LIBM
  
-diff -ru enca-1.18/lib/Makefile.am patched/lib/Makefile.am
---- enca-1.18/lib/Makefile.am	2016-01-04 19:12:05.000000000 +0100
-+++ patched/lib/Makefile.am	2016-03-20 09:53:54.120087567 +0100
-@@ -6,7 +6,7 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 9771adb..bbbe344 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -6,7 +6,7 @@ lib_LTLIBRARIES = libenca.la
  # Any iface change    C++: 0:   A
  # Adding ifaces       C:   R:   A++
  # Changing ifaces     C:   R:   0
