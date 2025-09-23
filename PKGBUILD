@@ -2,7 +2,7 @@
 
 pkgname=gozen-bin
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -26,16 +26,19 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/gozen.AppImage" "${pkgdir}/usr/bin/gozen"
 
+	wget -O gozen.desktop "https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/assets/linux/gozen.desktop"
+	wget -O gozen.png https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.png
+	wget -O gozen.svg https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.svg
 
 	# Make a different desktop file for the -git build.
-	sed -i 's/^Name=GoZen$/Name=GoZen-bin/' assets/linux/gozen.desktop
-	sed -i "s/^Exec=gozen$/Exec=${pkgname}/" assets/linux/gozen.desktop
-	sed -i "s/^Icon=gozen$/Icon=${pkgname}/" assets/linux/gozen.desktop
+	sed -i 's/^Name=GoZen$/Name=GoZen-bin/' gozen.desktop
+	sed -i "s/^Exec=gozen$/Exec=${pkgname}/" gozen.desktop
+	sed -i "s/^Icon=gozen$/Icon=${pkgname}/" gozen.desktop
 
 	# Desktop integration (optional, if your repo includes .desktop and icons)
-	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
-	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
-	install -Dm644 "assets/linux/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
+	install -Dm644 "gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
+	install -Dm644 "gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
+	install -Dm644 "gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
