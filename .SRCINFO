@@ -1,7 +1,7 @@
 pkgbase = python-hierplace
 	pkgdesc = This PCBNEW plugin arranges the parts into groups that reflect the hierarchy in the design.
 	pkgver = 1.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.org/project/hierplace
 	arch = any
 	license = MIT

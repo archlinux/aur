@@ -3,7 +3,7 @@
 pkgname=python-hierplace
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="This PCBNEW plugin arranges the parts into groups that reflect the hierarchy in the design."
 arch=('any')
@@ -31,4 +31,5 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
