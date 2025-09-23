@@ -3,7 +3,7 @@
 _pkgauthor=stefanlogue
 _pkgname=meteor
 pkgname=${_pkgname}-bin
-pkgver=0.28.2
+pkgver=0.29.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A highly configurable CLI tool for writing conventional commits"
@@ -19,9 +19,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.zip")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.zip")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[2]}.zip")
-sha256sums_x86_64=('9d0b9f65be39ef1fa7fd7b91aca1368d9ce433e87d48728a27fc8c4308a0899a')
-sha256sums_i686=('cbdd43c3bf021b76be4c5eb3fbda550107ec77aa36e6b611bb7bee1d5379d480')
-sha256sums_aarch64=('974fbd5c8c2dd3f78b335b7f3532febac4642d3a577b61130f5e69b45bdd7054')
+sha256sums_x86_64=('05d942e07be28f59bb432ebdc04f16bca9164a188fba6ff7ea08e1cbdc0550c6')
+sha256sums_i686=('08f2c7ee56e930852b37dc8ee0b25fb1a917fe7cbb161a30ee36d6f1547c07e5')
+sha256sums_aarch64=('3637580ae6d286795d46120842b8ffcadca98c3d6b9791b33fef52013b2bbea0')
 
 
 package() {

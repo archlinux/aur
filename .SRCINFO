@@ -1,6 +1,6 @@
 pkgbase = meteor-bin
 	pkgdesc = A highly configurable CLI tool for writing conventional commits
-	pkgver = 0.28.2
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/stefanlogue/meteor
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = meteor-bin
 	license = MIT
 	provides = meteor
 	conflicts = meteor
-	source_x86_64 = meteor-x86_64-0.28.2.tar.gz::https://github.com/stefanlogue/meteor/releases/download/v0.28.2/meteor-linux-amd64.zip
-	sha256sums_x86_64 = 9d0b9f65be39ef1fa7fd7b91aca1368d9ce433e87d48728a27fc8c4308a0899a
-	source_i686 = meteor-i686-0.28.2.tar.gz::https://github.com/stefanlogue/meteor/releases/download/v0.28.2/meteor-linux-386.zip
-	sha256sums_i686 = cbdd43c3bf021b76be4c5eb3fbda550107ec77aa36e6b611bb7bee1d5379d480
-	source_aarch64 = meteor-aarch64-0.28.2.tar.gz::https://github.com/stefanlogue/meteor/releases/download/v0.28.2/meteor-linux-arm64.zip
-	sha256sums_aarch64 = 974fbd5c8c2dd3f78b335b7f3532febac4642d3a577b61130f5e69b45bdd7054
+	source_x86_64 = meteor-x86_64-0.29.0.tar.gz::https://github.com/stefanlogue/meteor/releases/download/v0.29.0/meteor-linux-amd64.zip
+	sha256sums_x86_64 = 05d942e07be28f59bb432ebdc04f16bca9164a188fba6ff7ea08e1cbdc0550c6
+	source_i686 = meteor-i686-0.29.0.tar.gz::https://github.com/stefanlogue/meteor/releases/download/v0.29.0/meteor-linux-386.zip
+	sha256sums_i686 = 08f2c7ee56e930852b37dc8ee0b25fb1a917fe7cbb161a30ee36d6f1547c07e5
+	source_aarch64 = meteor-aarch64-0.29.0.tar.gz::https://github.com/stefanlogue/meteor/releases/download/v0.29.0/meteor-linux-arm64.zip
+	sha256sums_aarch64 = 3637580ae6d286795d46120842b8ffcadca98c3d6b9791b33fef52013b2bbea0
 
 pkgname = meteor-bin
