@@ -5,7 +5,7 @@
 pkgname="ruby-cabin"
 #0.9.0 gem never made a tag release on github
 #https://github.com/jordansissel/ruby-cabin/issues/51
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Experiments in structured and contextual logging'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=('rubygems')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${pkgname#*-}-$pkgver.gem)
 noextract=("${pkgname#*-}-$pkgver.gem")
-sha256sums=('91c5394289e993e7037a6c869e3f212f31a5984d2b1811ac934f591c87446b2c')
+sha256sums=('dcc9385af8039ba8fb6e33f0a9036e9e9fedec71c842343ce8e6101776e0322d')
 
 package() {
   local _gemdir
