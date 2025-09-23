@@ -19,8 +19,8 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags="-s -w" -o weather-bar .
+  export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  go build -ldflags="-s -w -extldflags '-static'" -o weather-bar .
 }
 
 package() {
