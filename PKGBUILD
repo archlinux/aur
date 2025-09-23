@@ -1,17 +1,17 @@
 # Maintainer: Victor A. Santos  <victoraur.santos at gmail dot com>
 pkgname=opensoundmeter
-pkgver=1.5
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Crossplatform measurement software for tuning sound systems"
 arch=('x86' 'x86_64')
 url="https://opensoundmeter.com"
 license=('GPL-3.0-only')
 depends=('alsa-lib' 'desktop-file-utils' 'qt5-base' 'qt5-declarative'
-         'qt5-quickcontrols2' 'qt5-graphicaleffects')
+         'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-quickcontrols')
 makedepends=('qt5-base')
-source=("https://github.com/psmokotnin/osm/archive/refs/tags/v1.5.tar.gz"
+source=("https://github.com/psmokotnin/osm/archive/refs/tags/v${pkgver}.tar.gz"
         "disable-appimage.patch")
-md5sums=('a58a2468e0d4ee1686ce4bf123c5f332'
+md5sums=('1d025fe5ebf56c9a076fe177d9e28535'
          '010792657489e32e28d4f22205bde460')
 
 prepare() {

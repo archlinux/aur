@@ -1,6 +1,6 @@
 pkgbase = opensoundmeter
 	pkgdesc = Crossplatform measurement software for tuning sound systems
-	pkgver = 1.5
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://opensoundmeter.com
 	arch = x86
@@ -13,9 +13,10 @@ pkgbase = opensoundmeter
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
-	source = https://github.com/psmokotnin/osm/archive/refs/tags/v1.5.tar.gz
+	depends = qt5-quickcontrols
+	source = https://github.com/psmokotnin/osm/archive/refs/tags/v1.5.2.tar.gz
 	source = disable-appimage.patch
-	md5sums = a58a2468e0d4ee1686ce4bf123c5f332
+	md5sums = 1d025fe5ebf56c9a076fe177d9e28535
 	md5sums = 010792657489e32e28d4f22205bde460
 
 pkgname = opensoundmeter
