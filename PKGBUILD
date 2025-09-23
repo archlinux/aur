@@ -1,7 +1,7 @@
 # Maintainer: vgs vldmr.lshnk@gmail.com
 pkgname=rclone-bisync-service
 pkgver=20250923
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd user service wrapper over rclone bisync. Rclone bisync is command that provide two side syncronization with offline access to files."
 arch=('any')
 depends=('systemd' 'rclone')
