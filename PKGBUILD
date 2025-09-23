@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flclash-bin
 _pkgname=FlClash
-pkgver=0.8.87
+pkgver=0.8.88
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=(
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('d57d8696f67b65164687f1b02c8b2cb7b157fb2fb697397d6fbea234d5a4e55b')
-sha256sums_x86_64=('eba232b188b0251df26891a1242b0265587fb671d3025641da54bd39d949a5c5')
+sha256sums_aarch64=('fae639cedfa49787976d2bd555eced92c0979d85f9811ef2390315d25db21c1d')
+sha256sums_x86_64=('d3292993616db7012a937f5f2d5656b80fb95bec6e3be0f1ac17b61dffb82b77')
 prepare() {
     sed -i -e "
       s/@appname@/${pkgname%-bin}/g
