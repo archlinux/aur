@@ -5,9 +5,9 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.15.5b
+pkgver=1.16b
 _zen_version=${pkgver//_/-}
-_firefox_version=142.0.1
+_firefox_version=143.0.1
 pkgrel=1
 pkgdesc='Experience tranquillity while browsing the web without people tracking you'
 url='https://zen-browser.app/'
@@ -89,8 +89,8 @@ source=(
   0004-fix-package-json.zen.patch
   0005-source-firefox-language-packs.patch
   )
-sha256sums=('b3940514be08dd3b9cbe579861fda0e0100ca2c45138990207c30f374187c0d1'
-            'b0adb44ed4c3383e752a5947adbfb0d03f24172cb468831bd49978de25e810c0'
+sha256sums=('20275d3200adc8f914f895ea81c2d155f9ec2e87cbe9d7206518d9bc40e14912'
+            '17f1dc1ece789ee81f1a3e9ee9bc7619de3a5481e802d83f2a3160f2f60c3957'
             'SKIP'
             '523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9'
             '36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a'
