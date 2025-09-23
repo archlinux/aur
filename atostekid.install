@@ -93,5 +93,5 @@ post_upgrade() {
         deprecate_certificates
     fi
 
-    check_pcscd_status
+    post_install
 }
