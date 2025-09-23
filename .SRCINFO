@@ -1,6 +1,6 @@
 pkgbase = gosu
 	pkgdesc = Simple Go-based setuid+setgid+setgroups+exec
-	pkgver = 1.18
+	pkgver = 1.19
 	pkgrel = 1
 	url = https://github.com/tianon/gosu
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = gosu
 	arch = riscv64
 	license = Apache-2.0
 	makedepends = go
-	source = gosu-1.18.tar.gz::https://github.com/tianon/gosu/archive/refs/tags/1.18.tar.gz
+	source = gosu-1.19.tar.gz::https://github.com/tianon/gosu/archive/refs/tags/1.19.tar.gz
 	validpgpkeys = B42F6819007F00F88E364FD4036A9C25BF357DD4
-	sha256sums = 6090661c127d5692db9e4daac77d0b47effefc65c83979f72f8584de169af01d
+	sha256sums = cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164
 
 pkgname = gosu
