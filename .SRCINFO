@@ -1,6 +1,6 @@
 pkgbase = rider-eap
 	pkgdesc = A cross-platform .NET IDE by JetBrains.
-	pkgver = 253.17525.91
+	pkgver = 253.20558.59
 	pkgrel = 1
 	epoch = 1
 	url = https://www.jetbrains.com/rider/eap/
@@ -9,9 +9,9 @@ pkgbase = rider-eap
 	optdepends = mono: .NET runtime
 	optdepends = msbuild: build .NET Core projects
 	options = !strip
-	source = https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2025.3-EAP1-253.17525.91.Checked.tar.gz
+	source = https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2025.3-EAP2-253.20558.59.Checked.tar.gz
 	source = rider-eap.desktop
-	sha256sums = 75431de0897ccd4d1c63331a52c820f198b510e72465a34c161763a97e7ea214
+	sha256sums = 02711da3d8a08f4c26850e580193984838101dff5a1f35cc5eafab39aa6cf451
 	sha256sums = cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8
 
 pkgname = rider-eap
