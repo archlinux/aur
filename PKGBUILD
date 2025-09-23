@@ -1,12 +1,11 @@
 _pkgname="aiolimiter"
 pkgname="python-$_pkgname"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient implementation of a rate limiter for asyncio"
 arch=('any')
 depends=(
     python
-    python-importlib-metadata
 )
 makedepends=(
     python-build
