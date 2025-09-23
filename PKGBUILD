@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="anyrun"
 pkgname="$_pkgname"
 pkgver=25.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A wayland native, highly customizable runner"
 url="https://github.com/anyrun-org/anyrun"
 license=('GPL-3.0-only')
@@ -20,6 +20,8 @@ depends=(
 makedepends=(
   'cargo'
 )
+
+options=('!lto' '!strip')
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
@@ -41,7 +43,7 @@ package() {
   install -Dm755 "$CARGO_TARGET_DIR/release/$_pkgname" -t "$pkgdir/usr/bin/"
 
   for i in "$CARGO_TARGET_DIR/release"/*.so; do
-    install -Dm644 "$CARGO_TARGET_DIR/release"/*.so -t "$pkgdir/usr/lib/anyrun/"
+    install -Dm644 "$i" -t "$pkgdir/usr/lib/anyrun/"
   done
 
   install -Dm644 examples/config.ron -t "$pkgdir/etc/xdg/anyrun/"
