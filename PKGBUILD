@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.7.2.400"
+pkgver="10.7.3.401"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('4e1ecebb6a8812368f72c2cae782a605ee07dfbe2961a6efd9652af14dd4da1f')
+sha256sums=('34488fd42210c76f6e2b67b09b04701d26aa26add6dae5bade1e19dd76070445')
 
 prepare()
 {
@@ -242,6 +242,7 @@ package()
  install -Dm644 "$srcdir/FID_CSV_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CSV_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_CSV_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_CSV_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.it-IT.xcl"
  install -Dm644 "$srcdir/FID_CSV_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CSV_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CSV_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.lt-LT.xcl"
@@ -373,6 +374,7 @@ package()
  install -Dm644 "$srcdir/FID_HTML_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_HTML_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_HTML_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_HTML_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.it-IT.xcl"
  install -Dm644 "$srcdir/FID_HTML_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_HTML_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_HTML_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.lt-LT.xcl"
