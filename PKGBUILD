@@ -1,7 +1,7 @@
 #Maintainer: d.r.vanrossum at gmx dot de
 
 pkgname=minidsp-rs
-pkgver=0.1.9
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Alternative control software for certain MiniDSP products"
 arch=(x86_64)
