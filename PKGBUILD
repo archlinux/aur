@@ -2,14 +2,14 @@
 # Maintainer: moetayuko <loli at yuko dot moe>
 # Contributor: FabioLolix
 # Contributor: éclairevoyant
-# Contributor: alba4k <blaskoazzolaaaron@gmail.com>
+# Contributor: alba4k <blaskoazzolaaaron[at]gmail.com>
 # Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 # Contributor: lilydjwg <lilydjwg@gmail.com>
 
 _pkgname="hyprland"
 pkgname="$_pkgname-hidpi-xprop-git"
-pkgver=0.48.0.r168.g22b12e3
+pkgver=0.51.0.r28.g70a7047
 pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -74,8 +74,9 @@ makedepends=(
 optdepends=(
   'cmake: to build and install plugins using hyprpm'
   'cpio: to build and install plugins using hyprpm'
-  'meson: to build and install plugins using hyprpm'
   'glaze: to build and install plugins using hyprpm'
+  'hyprqt6engine-git: the recommended way to manage qt styles'
+  'meson: to build and install plugins using hyprpm'
   'uwsm: the recommended way to start Hyprland'
 )
 

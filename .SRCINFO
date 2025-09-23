@@ -1,6 +1,6 @@
 pkgbase = hyprland-hidpi-xprop-git
 	pkgdesc = Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks
-	pkgver = 0.48.0.r168.g22b12e3
+	pkgver = 0.51.0.r28.g70a7047
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = i686
@@ -61,10 +61,11 @@ pkgbase = hyprland-hidpi-xprop-git
 	depends = xorg-xwayland-hidpi-xprop
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
-	optdepends = meson: to build and install plugins using hyprpm
 	optdepends = glaze: to build and install plugins using hyprpm
+	optdepends = hyprqt6engine-git: the recommended way to manage qt styles
+	optdepends = meson: to build and install plugins using hyprpm
 	optdepends = uwsm: the recommended way to start Hyprland
-	provides = hyprland=0.48.0
+	provides = hyprland=0.51.0
 	provides = wayland-compositor
 	conflicts = hyprland
 	options = debug
