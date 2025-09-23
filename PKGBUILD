@@ -5,7 +5,7 @@
 
 pkgname=gnudatalanguage
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -17,12 +17,17 @@ makedepends=("cmake" "eigen" "python-numpy" "qhull")
 checkdepends=("openssh")
 optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
+        "FindEigen3.patch"
         "gdl.profile")
 sha512sums=("1bdbc0793d7bd025e120e8e44a091ad853ff524dab2bcb897146d4e59b58e81ad5c0c73ce08294ec9b41aec059b7ee0ba4d29f7d557f5635b2098027bf73bd1a"
+            "77342c4065653d7a4805feb867f860bd6685147bbd5f8066218f29bc603ded7629bdb1c43797613c538dbc4144050d49be1c754d68c7416afa848f7e10fd9dba"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
 build() {
     cd "${srcdir}/gdl-v${pkgver}"
+
+    patch -p 1 -i ../FindEigen3.patch
+
     if [[ -d build ]]; then
         rm -r build
     fi
