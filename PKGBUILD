@@ -2,8 +2,8 @@
 pkgname=easytv-bin
 _pkgname=easyTV
 _zhsname='极简TV'
-pkgver=2.9.8
-pkgrel=2
+pkgver=2.9.9
+pkgrel=1
 pkgdesc="A lightweight IPTV player, supports all platforms and Android TV big screens. Welcome to download and experience!(Prebuilt version)一款轻量级IPTV播放器"
 arch=('x86_64')
 url="https://github.com/aiyakuaile/easy_tv_live"
@@ -20,11 +20,11 @@ makedepends=(
 )
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.zip"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/aiyakuaile/easy_tv_live/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1650cad769d95550bc945f770d408e5a550dc0d98cae23ad01df6b1ee13c39a4'
+sha256sums=('152c152e6ff1e683c98a711f6035844de21b8f1105fbe8425068f2d8931c911a'
             'ed29e69fccc7077eb337382e4b22599586eadb471e18198e59ad0c8219752be8'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
@@ -32,20 +32,16 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/easy_tv_live/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-bin}" \
-        --custom=Name[zh-CN]="${_zhsname}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="AudioVideo;Video" \
-        --name="${pkgname%-bin}" \
-        --exec="${pkgname%-bin} %U"
+    sed -i -e "
+        s/Exec=\/usr\/bin\/easy_tv_live/Exec=${pkgname%-bin}/g
+        s/Icon=easytv-live/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}-live.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/data/flutter_assets/assets/images/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/bin/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/bin/data/flutter_assets/assets/images/app_logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}-live.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
