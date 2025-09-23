@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=xc-git
 _pkgname=xc
 pkgver=0.8.6.r4.a1fec24f # will be set automatically
