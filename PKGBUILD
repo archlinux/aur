@@ -30,8 +30,14 @@ pkgver() {
 
 build() {
     cd "$srcdir/whisker-cli"
+    
+    export HAXELIB="$srcdir/haxelib"
+    haxelib setup "$HAXELIB"
+    haxelib install hxcpp
+    
     haxe release.hxml
 }
+
 
 package() {
     # we install the `whisker` command
