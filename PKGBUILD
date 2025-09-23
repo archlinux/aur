@@ -2,10 +2,10 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=7.1.1
-pkgrel=4
+pkgver=7.1.2
+pkgrel=1
 epoch=1
-_obs_studio_ver='31.1.2'
+_obs_studio_ver='32.0.0'
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -19,6 +19,7 @@ depends=(
   fontconfig
   freetype2
   fribidi
+  gcc-libs
   glib2
   glibc
   glslang
@@ -108,21 +109,18 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch'
-        '060-ffmpeg-svt-av1-3.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95'
         'LICENSE')
-sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
+sha256sums=('089bc60fb59d6aecc5d994ff530fd0dcb3ee39aa55867849a2bbc4e555f9c304'
             'SKIP'
-            '11d7b5fbb234e926b04b921203c152517a928032e757689d964c5f9a0a9a4157'
+            '6c73099d53aee7b57faa624431891901d9c84b2d93e284d27799fdc33868d113'
             '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
             '5a3731d1410747703948c87e46bb3aef820c6038f7101ab37f9d072cd1d15d15'
-            'b83ba1efdfec19ac54d1b0395a98d02039fe9d45bec1e6473e57a6288a304884'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-svt-av1-3.0.0-fix.patch"
 }
 
 build() {
