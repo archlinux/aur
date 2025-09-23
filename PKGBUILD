@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.3.2
+pkgver=3.3.3
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f938500ea0177ca442e43aa31e9c928ecfe2a4c376cc68800344537dbf2e9f67'
+sha256sums=('441c9fa85206b2068af2cedd2782cf3968e44341adea9fe803b2ff11a9a465a1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/app/package.json" | cut -d'"' -f4 | cut -d. -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
@@ -56,7 +56,6 @@ prepare() {
         s/@cfgdirname@/SiYuan-Electron/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -88,6 +87,7 @@ prepare() {
         } >> .npmrc
         export GOPROXY="https://goproxy.cn,direct"
     fi
+    _ensure_local_nvm
     sed -i -e "
         /build:mobile/d
         s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
@@ -96,6 +96,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/app"
+    _ensure_local_nvm
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/kernel"
     export CGO_ENABLED=1
@@ -115,6 +116,7 @@ build() {
     esac
     go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=${_CFG_FILE} "
 }
