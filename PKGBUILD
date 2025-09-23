@@ -2,7 +2,7 @@
 # Co-Maintainer: Cp Dong <cp-dong at outlook dot com>
 
 pkgname=apple-fonts
-pkgver=7.0.1.1751334179
+pkgver=7.0.2
 pkgrel=1
 pkgdesc='Fonts for Apple platforms, including San Francisco and New York typefaces'
 arch=(any)
@@ -16,8 +16,8 @@ source=("${_baseurl}SF-Pro.dmg"
         "${_baseurl}SF-Compact.dmg"
         "${_baseurl}SF-Mono.dmg"
         "${_baseurl}NY.dmg")
-sha256sums=('d3dd07c2d8082ed2bf286a0ecdcc33d6202da224a128056388d8540d0b4efa04'
-            'cfbd26b6cee815a313b78abba7a33b3f34b0e1ab8e11a89a24f22d62a5293740'
+sha256sums=('2e4d7853988b734dc1af33b921d8d4c0e4400eac312924a0eab4b73a51fd69ae'
+            '08c34ffac2f99ec8702b4946044469f92dd88a7b1c0864e2d4b559565f8fb8e3'
             '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
             '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4')
 noextract=("${source[@]##*/}")
