@@ -1,6 +1,6 @@
 # Maintainer: Spark Xia <legion_REMOVE_THIS_20220808&#64;gmail&#46;com>
 pkgname=longbridge-pro
-pkgver=0.6.0        # upstream "v0.6.0"
+pkgver=0.7.0        # upstream "v0.6.0"
 pkgrel=1
 pkgdesc="Longbridge Pro – professional trading platform"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "https://pub.lbkrs.com/static/offline/202508/FN9DnQt1WuLR5Wmz/LBPL_Platform_TnCs_3_December_2024.pdf"
 )
 sha256sums=(
-  'f0c76337cfe292202050e84d8a4a9f89f546a3d5ebc99b9287f265528bfb9aa9' # .deb
+  '9d746e9ce96100255d2e570c8c7e3006614501d1c732c610ec6b8234501f80f4' # .deb
   'c7ed0deafa4570da6fd7d173f8be759645673ee55d3a41ef9473e0d6658ad231' # EULA
 )
 

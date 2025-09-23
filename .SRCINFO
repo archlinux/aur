@@ -1,6 +1,6 @@
 pkgbase = longbridge-pro
 	pkgdesc = Longbridge Pro – professional trading platform
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://longbridge.com/desktop
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = longbridge-pro
 	depends = alsa-lib
 	options = !emptydirs
 	options = !debug
-	source = https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.6.0-linux-x86_64.deb
+	source = https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.7.0-linux-x86_64.deb
 	source = https://pub.lbkrs.com/static/offline/202508/FN9DnQt1WuLR5Wmz/LBPL_Platform_TnCs_3_December_2024.pdf
-	sha256sums = f0c76337cfe292202050e84d8a4a9f89f546a3d5ebc99b9287f265528bfb9aa9
+	sha256sums = 9d746e9ce96100255d2e570c8c7e3006614501d1c732c610ec6b8234501f80f4
 	sha256sums = c7ed0deafa4570da6fd7d173f8be759645673ee55d3a41ef9473e0d6658ad231
 
 pkgname = longbridge-pro
