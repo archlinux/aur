@@ -4,7 +4,7 @@
 
 pkgname=onvif-gui
 pkgver=3.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A client side implementation of the ONVIF specification - GUI app'
 url='https://github.com/sr99622/libonvif'
 license=('Apache-2.0')
@@ -24,16 +24,9 @@ makedepends=('git'
              'python-wheel')
 # _prjrel=3.1.10
 source=("git+${url}.git#commit=9f74ed54342f8c5fdb2be162b9c1e6224c3bd8d2"
-        'onvif-gui-no-spli-attribute.patch'
         "${pkgname}.desktop")
 sha256sums=('84f97c62b612fbf5dd3d5c8916be0a423ad785391814e987c1ac0bf8975dc58d'
-            '0b4fee9b8dfd8d7cdeae1e60139bbf2b2b77c2e1e03bec20ada240cd268337b5'
             'dc6d193827628215ccf66c0617c6ce2150e2fc3a5ee66afc35fb9c0c7d571d88')
-
-prepare() {
-	cd ${srcdir}/libonvif
-	patch -p1 -i ${srcdir}/onvif-gui-no-spli-attribute.patch
-}
 
 pkgver() {
 	cd ${srcdir}/libonvif/${pkgname}
