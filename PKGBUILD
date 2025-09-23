@@ -3,7 +3,7 @@
 _basename="zls"
 pkgver=0.14.0
 _pkgver="${pkgver%.*}"
-pkgrel=2
+pkgrel=3
 
 _pkgname="${_basename}${_pkgver}"
 pkgname="${_pkgname}-bin"
@@ -12,6 +12,7 @@ arch=(
   'aarch64'
   'armv7h'
   'i686'
+  'loong64'
   'powerpc64le'
   'riscv64'
   'x86_64'
@@ -38,6 +39,8 @@ source_armv7h=("https://builds.zigtools.org/${_basename}-linux-armv7a-${pkgver}.
                "https://builds.zigtools.org/${_basename}-linux-armv7a-${pkgver}.tar.xz.minisig")
 source_i686=("https://builds.zigtools.org/${_basename}-linux-x86-${pkgver}.tar.xz"
              "https://builds.zigtools.org/${_basename}-linux-x86-${pkgver}.tar.xz.minisig")
+source_loong64=("https://builds.zigtools.org/${_basename}-linux-loongarch64-${pkgver}.tar.xz"
+                "https://builds.zigtools.org/${_basename}-linux-loongarch64-${pkgver}.tar.xz.minisig")
 source_powerpc64le=("https://builds.zigtools.org/${_basename}-linux-powerpc64le-${pkgver}.tar.xz"
                     "https://builds.zigtools.org/${_basename}-linux-powerpc64le-${pkgver}.tar.xz.minisig")
 source_riscv64=("https://builds.zigtools.org/${_basename}-linux-riscv64-${pkgver}.tar.xz"
@@ -51,6 +54,8 @@ sha256sums_armv7h=('34a41ddf6790959b220724957dedd2919f276298277f3e985dc68c7f9b47
                    'SKIP')
 sha256sums_i686=('79ca762b6cd5cffc165d473636fe0e1b225d2a4f75e5fed555261be4f046166b'
                  'SKIP')
+sha256sums_loong64=('ce006e31084451a8cdb493965f93f8355485ec4693f54fcba377766ed61597f2'
+                    'SKIP')
 sha256sums_powerpc64le=('c5d88b19017d8b9904a03cb088521f5bbd17171214b84bf2e712947f975b5b9f'
                         'SKIP')
 sha256sums_riscv64=('892915a4b06b0503681e45eb45d7bf67a7d7d48daeb73c4ffd0bfb0d59b27a4b'
@@ -61,6 +66,7 @@ sha256sums_x86_64=('661f8d402ba3dc9b04b6e9bc3026495be7b838d2f18d148db2bd98bd699c
 if   [ "${CARCH}" = 'aarch64'     ]; then _arch=aarch64;
 elif [ "${CARCH}" = 'armv7h'      ]; then _arch=armv7a;
 elif [ "${CARCH}" = 'i686'        ]; then _arch=x86;
+elif [ "${CARCH}" = 'loong64'     ]; then _arch=loongarch64;
 elif [ "${CARCH}" = 'powerpc64le' ]; then _arch=powerpc64le;
 elif [ "${CARCH}" = 'riscv64'     ]; then _arch=riscv64;
 elif [ "${CARCH}" = 'x86_64'      ]; then _arch=x86_64;
