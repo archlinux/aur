@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rmzqc
-_pkgver=0.6.0
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ depends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a1251a1207219d86d6c8b853453565ac')
-b2sums=('b5d0a05d88e491e32971fd262eb2d485edd765d3a9f0ec4d08bccffe451b8cace0b8050745232b42bf5d0b3d9f23ea5d582fead8c22c7101038c3521035268dd')
+md5sums=('8540ea51954eac00caffc9fc53d70290')
+b2sums=('ec08f7d7e8bf723ee984a85dd50c6c4318e625cabd3b6f38472e4c627f86e007ff4024216001ebb6f791749e6f9090cbe9c1b8b7af98d1bd1df1d5dbf17d80de')
 
 build() {
   mkdir build
