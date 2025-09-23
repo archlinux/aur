@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r71683.7b3465ab551
+pkgver=r71807.719a50c9bf4
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -93,6 +93,11 @@ package() {
     done
   ' sh {} +
 
+  # Make the desktop file point to the file in /opt
+  RELATIVE_DESKTOP_FILE_PATH='usr/share/applications/org.ladybird.Ladybird.desktop'
+  sed -i -e 's#Exec=Ladybird #Exec=/opt/ladybird/usr/bin/Ladybird #' "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}"
+
 
   install -Dm644 ladybird/LICENSE -t "${pkgdir}/opt/ladybird/usr/share/licenses/${pkgname}/"
+  install -Dm644 "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}" "${pkgdir}/${RELATIVE_DESKTOP_FILE_PATH}"
 }
