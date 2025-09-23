@@ -10,7 +10,7 @@ Where name is name of your provider. This makes creates folder `~/rclone-bisync/
 
 After indexing you have to start timer and path, to syncronyze in background with:
 ```bash
-systemctl daemon-reload
+systemctl --user daemon-reload
 systemctl --user enable rclone-bisync@name.{path,timer}
 ```
 
