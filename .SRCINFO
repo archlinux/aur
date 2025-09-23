@@ -1,6 +1,6 @@
 pkgbase = vencoder-bin
 	pkgdesc = A graphical tool to transcode video
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitskette.dailitation.xyz/linesofcodes/vencoder
 	arch = x86_64
@@ -9,7 +9,10 @@ pkgbase = vencoder-bin
 	license = GPL-3.0-or-later
 	depends = ffmpeg
 	depends = gtk3
-	source = https://gitskette.dailitation.xyz/linesofcodes/vencoder/releases/download/0.1.0/vencoder-release.zip
-	b2sums = 360e7a02ac37dc0fe01d78eb079cfb9665a97299ccc846c7facc58e4e4c22685f571582f0234d4b641542d55902e8ebb5eaba47c896848c3a97cbe717eff486c
+	options = !strip
+	source = https://gitskette.dailitation.xyz/linesofcodes/vencoder/releases/download/0.1.1/vencoder-release.zip
+	source = https://gitskette.dailitation.xyz/linesofcodes/vencoder/archive/0.1.1.tar.gz
+	b2sums = 2e841eef92c9e5b400dc471a2ec818ecdb2475e32aafa64f18201d8a4a566905057f039b88b97ca86c5c7559ccf3db2052f6e9a8c622d0e9aff6fdd03141a092
+	b2sums = c07c2b23cd3602f19f5add8aeaa3c9f7a5277cf89a34e6c7cb9ba060f5ab2a7e1b6e482c40882c3bcd8c1184dbccfc4f49372b50f115bf91845f252fb53d40b9
 
 pkgname = vencoder-bin
