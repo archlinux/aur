@@ -1,0 +1,16 @@
+pkgbase = libkar-qt5
+	pkgdesc = An extremely simple Qt based archiver
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kipr/libkar
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake>=2.8.12
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	provides = libkar_qt5.so
+	source = libkar-1.0.0.tar.gz::https://github.com/kipr/libkar/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = 4318d76885b440625d978c5bd9c195c12febc1ee56c094a50605a20a54bf0356c625dd7cb2f20c4798afde364e7c0ab80bfbe1b64938a879a21ab6a31b170998
+
+pkgname = libkar-qt5
