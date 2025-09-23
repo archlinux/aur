@@ -1,7 +1,7 @@
 # Maintainer: Nima Askarian <nimaaskarian.work@outlook.com>
 pkgname=potato-c
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 _gitname=potato-c
 pkgdesc="A featureful, modular and fast pomodoro timer with server-client structure, written in C."
 url="https://github.com/nimaaskarian/${_gitname}"
@@ -28,5 +28,5 @@ build () {
 
 package () {
   cd "${pkgname}-${pkgver/v/}" || exit
-  make install CONFIG_DIR="$pkgdir/usr/share/potato-c" DESTDIR="$pkgdir" PREFIX="/usr"
+  make install CONFIG_DIR="$pkgdir/usr/share/potato-c" DESTDIR="$pkgdir" PREFIX="/usr" CONFIG_DIR="$pkgdir/usr/share/$pkgname"
 }
