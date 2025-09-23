@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=throne
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
@@ -10,11 +10,16 @@ license=('GPL-3.0-or-later')
 depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base')
 makedepends=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "${pkgname}.sh")
-sha256sums=('b01b2a3d7010fe0de2b0669334f29560632dda4352c59b4e0f586a44116f0b29'
-            'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62')
+        "${pkgname}.sh"
+        "https://github.com/throneproj/routeprofiles/raw/refs/heads/rule-set/srslist.h")
+sha256sums=('98a54ee2ecb082c0f6dfd0d2551e141adbde1fbd56444ee7fcf40603879b35ee'
+            'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62'
+            'SKIP')
 
 prepare() {
+    mkdir -p build
+    mv srslist.h build
+
     gendesk -f -n \
         --pkgname "${pkgname}" \
         --pkgdesc "${pkgdesc}" \
@@ -46,10 +51,9 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
-    TAGS="with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale"
     go build -o "${srcdir}/build" \
         -ldflags="-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}'" \
-        -tags="${TAGS}"
+        -tags="with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale"
 }
 
 package() {
