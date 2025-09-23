@@ -1,7 +1,7 @@
 # Maintainer: Alexey Makhmutov <makhmutov at gmail dot com>
 pkgname=gnome-shell-extension-wiggle
 pkgver=5
-pkgrel=4
+pkgrel=5
 pkgdesc="Gnome extension that highlights the cursor position when the mouse is moved rapidly."
 arch=("any")
 url="https://github.com/mechtifs/wiggle"
@@ -12,7 +12,7 @@ options=("!strip" "!debug")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "wiggle-gnome49.patch")
 b2sums=("ca12266b5efbea310e4a7cb214791472566ada4e95cbc38baec5cba2ab0467780e3288dcdd1f9c9e71e95aecf8a075c11ade8682eb3cd141c5f452079988ee57"
-        "a6df9ae47d60250087092563694b6882155eab8dbe7be043bcbec7201de1ab2ac5e071510b9782f6ddbf08b8c3d2a6660a394e634fb9ac3e75f0f84f0575821f")
+        "7c9bdd57949b599831161449ed221f738b8b1b2a950b5555aed6d0f7ec14cb6809d59b96d9886917963c7673464a9b65c16e2b664448c25ed7e5cb3b4f31e717")
 
 _uuid="wiggle@mechtifs"
 
