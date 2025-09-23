@@ -14,6 +14,7 @@ build() {
   cd openturns-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
+        -DBLA_VENDOR=Generic \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
         -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=32 \
         -DSWIG_COMPILE_FLAGS="-O1" \
