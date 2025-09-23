@@ -1,8 +1,8 @@
 pkgbase = hyprupld
-	pkgdesc = A versatile screenshot and file upload utility for Linux and MacOS with multi-platform support
+	pkgdesc = A versatile screenshot and file upload utility for Linux with multi-platform support
 	pkgver = r0.g0000000
 	pkgrel = 1
-	url = https://github.com/PhoenixAceVFX/hyprupld
+	url = https://github.com/Numeri-Dev/hyprupld
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = hyprupld
 	depends = pango
 	provides = hyprupld
 	conflicts = hyprupld
-	source = git+https://github.com/PhoenixAceVFX/hyprupld.git
+	source = git+https://github.com/Numeri-Dev/hyprupld.git
 	sha256sums = SKIP
 
 pkgname = hyprupld-git
