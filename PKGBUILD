@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matchingR
-_pkgver=1.3.3
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.3
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Matching Algorithms in R and C++'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2fdaa4a49d6835f0df31eaeb98a002332152dd76523cc44467bad81e957221f3')
+sha256sums=('49463f4265dddb2cc61ece771f6ff0f05293cb1f00122f97af3de894e895d3b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
