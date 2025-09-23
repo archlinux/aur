@@ -8,6 +8,8 @@ pkgbase = par3cmdline-git
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
+	provides = par3cmdline
+	conflicts = par3cmdline
 	source = git+https://github.com/parchive/par3cmdline
 	sha256sums = SKIP
 

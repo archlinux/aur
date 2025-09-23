@@ -10,6 +10,8 @@ arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=('gcc-libs')
 makedepends=('cmake' 'git')
+conflicts=('par3cmdline')
+provides=('par3cmdline')
 source=('git+https://github.com/parchive/par3cmdline')
 sha256sums=('SKIP')
 
