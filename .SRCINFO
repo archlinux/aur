@@ -1,6 +1,6 @@
 pkgbase = cef-minimal-obs-bin
 	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs
-	pkgver = 127.3.4+ga0ca18e+chromium_127.0.6533.100_5
+	pkgver = 127.3.4+ga0ca18e+chromium_127.0.6533.100_6
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/tytan652/cef/tree/6533-fix-stutter-and-osr-extra-info
@@ -31,14 +31,14 @@ pkgbase = cef-minimal-obs-bin
 	depends = nss
 	depends = pango
 	depends = wayland
-	provides = cef-minimal-obs=127.3.4+ga0ca18e+chromium_127.0.6533.100_5
+	provides = cef-minimal-obs=127.3.4+ga0ca18e+chromium_127.0.6533.100_6
 	conflicts = cef-minimal-obs
 	options = !lto
 	options = !strip
 	options = debug
-	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v5.tar.xz
-	sha256sums_x86_64 = df38ef6d8078895953d224a58dd811b83110b4f8644c5cd2b6246d04b0023ee6
-	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v5.tar.xz
-	sha256sums_aarch64 = b1ebcedbe63657c7f38a4d547398a4759544f75d955777eea386052abc9c9228
+	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz
+	sha256sums_x86_64 = 7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146
+	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz
+	sha256sums_aarch64 = 642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999
 
 pkgname = cef-minimal-obs-bin
