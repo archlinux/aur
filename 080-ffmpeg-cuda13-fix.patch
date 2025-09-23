@@ -1,6 +1,6 @@
 --- a/configure
-+++ b/configure
-@@ -4705,7 +4705,7 @@ set_default nvcc
++++ a/configure
+@@ -4711,7 +4711,7 @@ set_default nvcc
  
  if enabled cuda_nvcc; then
      if $nvcc $nvccflags_default 2>&1 | grep -qi unsupported; then

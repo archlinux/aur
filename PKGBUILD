@@ -2,11 +2,11 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=7.1.1
-pkgrel=7
+pkgver=7.1.2
+pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
-_obs_studio_ver='31.1.2'
+_obs_studio_ver='32.0.0'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -164,24 +164,22 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "031-ffmpeg-add-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch'
-        '060-ffmpeg-svt-av1-3.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95'
-        '070-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
-        '080-ffmpeg-lcevcdec4.0.0-fix.patch'
-        '090-ffmpeg-cuda13-fix.patch'
+        '060-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
+        '070-ffmpeg-lcevcdec4.0.0-fix.patch'
+        '080-ffmpeg-cuda13-fix.patch'
         'LICENSE')
-sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
+sha256sums=('089bc60fb59d6aecc5d994ff530fd0dcb3ee39aa55867849a2bbc4e555f9c304'
             'SKIP'
-            '11d7b5fbb234e926b04b921203c152517a928032e757689d964c5f9a0a9a4157'
+            '6c73099d53aee7b57faa624431891901d9c84b2d93e284d27799fdc33868d113'
             '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
             'aa0daffc4d234b6621b63c298dc165d29522c5087f8905a923d23ee2d164e9ad'
             '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
             '5a3731d1410747703948c87e46bb3aef820c6038f7101ab37f9d072cd1d15d15'
-            'b83ba1efdfec19ac54d1b0395a98d02039fe9d45bec1e6473e57a6288a304884'
-            'e670e6ed4e6e614a248cedd9de461ddce2321d2fef982861c86639eaa65dce23'
+            'f749aeb2f5afd9920cb4e3e3e4a64d014b01bce374cf5c593df728611f898e7e'
             '2ff4ba31e43d6d397542ec25df224cef01cf501409e202255e9414e482ba14cf'
-            '24976a8d632e4540350fbe25d3debc0305b5d1116cc79b176144957c157dbcf8'
+            '9c3b4bc1c5e8687f610b5d251c2ec759c4fa1ddda999863e908e6046b9bab3bf'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -193,10 +191,9 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-svt-av1-3.0.0-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-lcevcdec4.0.0-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-cuda13-fix.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-lcevcdec4.0.0-fix.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-cuda13-fix.patch"
 }
 
 build() {
