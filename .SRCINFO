@@ -1,6 +1,6 @@
 pkgbase = unblockneteasemusic-bin
 	pkgdesc = Revive unavailable songs for Netease Cloud Music
-	pkgver = 0.27.10
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/UnblockNeteaseMusic/server
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = unblockneteasemusic-bin
 	sha256sums = 59dc25365cc6ea9e0f0e4e2b66b8b079eb74d542c5548c1c1b2722aef2f94270
 	sha256sums = 855d3b27684803b726a3415732d9cc1788f1baa835d8016017b390c711b4624f
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = unblockneteasemusic-x86_64::https://github.com/UnblockNeteaseMusic/server/releases/download/v0.27.10/unblockneteasemusic-linux-x64
-	sha256sums_x86_64 = 43937dc2292d99605b1162b11e63c639c9a696d88eb13a753407b35db8ecdda4
-	source_aarch64 = unblockneteasemusic-aarch64::https://github.com/UnblockNeteaseMusic/server/releases/download/v0.27.10/unblockneteasemusic-linux-arm64
-	sha256sums_aarch64 = e2eb896f4b099986ffe2a5938948828668daef4c88eeea52891c21d3ab29d96b
+	source_x86_64 = unblockneteasemusic-x86_64::https://github.com/UnblockNeteaseMusic/server/releases/download/v0.28.0/unblockneteasemusic-linux-x64
+	sha256sums_x86_64 = d761ed23743e996a4bbece40de3039e2d4d30f2dfeab3f5b76061bffd726e13a
+	source_aarch64 = unblockneteasemusic-aarch64::https://github.com/UnblockNeteaseMusic/server/releases/download/v0.28.0/unblockneteasemusic-linux-arm64
+	sha256sums_aarch64 = 208e87d48f321f26291d6b57292e0a0d0bf1ce2082b2d5a1420fd977c6f769de
 
 pkgname = unblockneteasemusic-bin
