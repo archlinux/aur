@@ -12,7 +12,7 @@ pkgrel=1
 epoch=3
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio beta release in /opt/cef-obs"
 arch=("x86_64" "aarch64")
-url="https://github.com/obsproject/cef/tree/6533-fix-stutter"
+url="https://github.com/tytan652/cef/tree/6533-fix-stutter-and-osr-extra-info"
 license=(BSD-3-Clause)
 depends=(
   "alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
