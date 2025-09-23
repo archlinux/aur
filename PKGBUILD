@@ -1,14 +1,15 @@
+# maintainer: Collins Kimutai <ngenocollins599@gmail.com>
 # Contributor: fossdd <fossdd@tutanota.com>
 pkgname=boa-git
 _pkgname=boa
-pkgver=0.19.r64.g94d08fe
+pkgver=0.20.r228.g3bf25a6
 pkgrel=1
 pkgdesc="Boa is an embeddable and experimental Javascript engine written in Rust. Currently, it has support for some of the language."
 arch=('i686' 'x86_64')
 url="https://github.com/boa-dev/boa"
-license=(MIT)
+license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('rust' 'git')
+makedepends=('rust' 'git' 'cargo')
 options=(!lto)
 source=('git+https://github.com/boa-dev/boa.git')
 sha256sums=('SKIP')
