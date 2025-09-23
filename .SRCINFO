@@ -1,6 +1,6 @@
 pkgbase = r-ggsci
 	pkgdesc = Scientific Journal and Sci-Fi Themed Color Palettes for 'ggplot2'
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggsci
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-ggsci
 	optdepends = r-ragg
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ggsci_3.2.0.tar.gz
-	sha256sums = 41d8ed4c01c3740028bdf2ba9c5550f1142061e4a40c93b1d2160719c59c3c4a
+	source = https://cran.r-project.org/src/contrib/ggsci_4.0.0.tar.gz
+	sha256sums = 680d9040715a52aa182d23370c49ae0dbdbe598081911acafd88b0fe17ce98e0
 
 pkgname = r-ggsci
