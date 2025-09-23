@@ -1,0 +1,15 @@
+pkgbase = xc-bin
+	pkgdesc = Markdown defined task runner (binary release).
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/joerdav/xc
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source = xc-bin-0.8.6.tar.gz::https://github.com/joerdav/xc/releases/download/v0.8.6/xc_0.8.6_linux_amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = xc-bin
