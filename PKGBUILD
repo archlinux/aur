@@ -5,7 +5,7 @@ _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
-pkgrel=1
+pkgrel=11
 pkgver=nightly.r0.ge6ee6cc31
 pkgdesc="Opensource, self-hosted AI coding assistant"
 arch=("x86_64")
