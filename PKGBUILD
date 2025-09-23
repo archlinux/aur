@@ -2,7 +2,7 @@
 
 _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.1.2
+_pkgver=32.0.0
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
@@ -11,7 +11,7 @@ url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _qtver=6.6.2
-_libajantv2ver=17.0.1
+_libajantv2ver=17.5.0
 _libdatachannelver=0.22
 _mbedtlsver=3.6.1
 _pythonver=3.13
@@ -24,26 +24,37 @@ depends=(
   "gcc-libs" # Deps of any C++ related binary
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C related binary
+  "jack" # Deps of JACK plugin
   "jansson" # Deps of libobs and rtmp-services plugin
+  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
+  "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
+  "libfdk-aac" # Deps of FDK AAC plugin
   "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
   "libva" # Deps of FFmpeg plugin and QSV plugin
+  "libvpl" # Deps of QSV plugin
   "libx11" # Deps of libobs, libobs-opengl, X11 Capture plugin, frontend tools plugin, obs-browser and CEF
   "libxcb" # Deps of libobs-opengl, X11 Capture plugin and CEF
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
+  "luajit" # Deps of Scripting plugin
   "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
+  "python>=$_pythonver" # Deps of Scripting plugin
   "qrcodegencpp-cmake" # Deps of Websocket plugin
   "qt6-base>=$_qtver" # Deps of OBS Studio and any frontend plugin
   "qt6-svg>=$_qtver" # Deps of OBS Studio
   "qt6-wayland>=$_qtver" # Needed to use Qt on Wayland platform
   "rnnoise" # Deps if the filter plugin
+  "simde" # Deps of libobs and its headers
+  "sndio" # Deps of sndio plugin
   "speexdsp" # Deps if the filter plugin
   "srt" # Deps of FFmpeg plugin
+  "systemd-libs" # Deps of V4L2 plugin
   "util-linux-libs" # Deps of libobs
+  "v4l-utils" # Deps of V4L2 plugin
   "vlc-luajit" # Deps of VLC Plugin ("vlc" issue crashes)
   "wayland" # Deps of libobs, libobs-opengl and CEF
   "x264" # Deps of the X264 plugin
@@ -67,40 +78,19 @@ makedepends=(
   "cmake"
   "extra-cmake-modules"
   "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
-  "jack" # Deps of JACK plugin
   "git"
-  "uthash" # Deps of libobs
-  "libajantv2>=$_libajantv2ver" # Deps of AJA plugins
-  "libdatachannel>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
-  "libfdk-aac" # Deps of FDK AAC plugin
-  "luajit" # Deps of Scripting plugin
+  "uthash" # Deps of libobs (headers-only lib)
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
-  "libvpl" # Deps of QSV plugin
-  "python>=$_pythonver" # Deps of Scripting plugin
-  "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
-  "systemd-libs" # Deps of V4L2 plugin
-  "v4l-utils" # Deps of V4L2 plugin
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
 )
 optdepends=(
-  "jack: JACK support"
-  "libfdk-aac: FDK AAC codec support"
-  "libvpl: QSV encoder support"
   "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
   "vpl-gpu-rt: QSV encoder support (>= Alder Lake)"
   "intel-media-driver: VAAPI encoder support (>= Broadwell)"
   "libva-intel-driver: VAAPI encoder support (<= Haswell)"
   "libva-mesa-driver: VAAPI encoder support"
-  "swig: Scripting"
-  "luajit: Lua scripting"
-  "python>=$_pythonver: Python scripting"
-  "sndio: Sndio input client"
-  "v4l-utils: V4L2 support"
-  "systemd-libs: V4L2 support"
   "v4l2loopback-dkms: V4L2 virtual camera output"
-  "libdatachannel>=$_libdatachannelver: WHIP Support"
-  "libajantv2>=$_libajantv2ver: AJA support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
@@ -114,19 +104,17 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed3
-  "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
 )
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v5.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v5.tar.xz")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz")
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "f98822ce22f53c83df36a3db888762598a62092daf2f45fd982e0242789cf10f"
-  "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
+  "fba1355b2e451007cc6ec14d0f662b4a289874dde6eb3f4001a90c414bbf0c13"
 )
-sha256sums_x86_64=("df38ef6d8078895953d224a58dd811b83110b4f8644c5cd2b6246d04b0023ee6")
-sha256sums_aarch64=("b1ebcedbe63657c7f38a4d547398a4759544f75d955777eea386052abc9c9228")
+sha256sums_x86_64=("7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146")
+sha256sums_aarch64=("642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999")
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
@@ -148,6 +136,8 @@ prepare() {
 build() {
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_FLAGS="-DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="-DNDEBUG" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_LIBFDK=ON \

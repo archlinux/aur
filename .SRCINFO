@@ -1,6 +1,6 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes
-	pkgver = 31.1.2
+	pkgver = 32.0.0
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -10,20 +10,10 @@ pkgbase = obs-studio-tytan652
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = ffnvcodec-headers
-	makedepends = jack
 	makedepends = git
 	makedepends = uthash
-	makedepends = libajantv2>=17.0.1
-	makedepends = libdatachannel>=0.22
-	makedepends = libfdk-aac
-	makedepends = luajit
 	makedepends = nlohmann-json
-	makedepends = libvpl
-	makedepends = python>=3.13
-	makedepends = sndio
 	makedepends = swig
-	makedepends = systemd-libs
-	makedepends = v4l-utils
 	makedepends = websocketpp
 	depends = alsa-lib
 	depends = curl
@@ -33,26 +23,37 @@ pkgbase = obs-studio-tytan652
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
+	depends = jack
 	depends = jansson
+	depends = libajantv2>=17.5.0
+	depends = libdatachannel>=0.22
+	depends = libfdk-aac
 	depends = libgl
 	depends = libpipewire
 	depends = libpulse
 	depends = librist
 	depends = libva
+	depends = libvpl
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
 	depends = libxkbcommon
+	depends = luajit
 	depends = mbedtls>=3.6.1
 	depends = pciutils
+	depends = python>=3.13
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.6.2
 	depends = qt6-svg>=6.6.2
 	depends = qt6-wayland>=6.6.2
 	depends = rnnoise
+	depends = simde
+	depends = sndio
 	depends = speexdsp
 	depends = srt
+	depends = systemd-libs
 	depends = util-linux-libs
+	depends = v4l-utils
 	depends = vlc-luajit
 	depends = wayland
 	depends = x264
@@ -71,25 +72,14 @@ pkgbase = obs-studio-tytan652
 	depends = nspr
 	depends = nss
 	depends = pango
-	optdepends = jack: JACK support
-	optdepends = libfdk-aac: FDK AAC codec support
-	optdepends = libvpl: QSV encoder support
 	optdepends = intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)
 	optdepends = vpl-gpu-rt: QSV encoder support (>= Alder Lake)
 	optdepends = intel-media-driver: VAAPI encoder support (>= Broadwell)
 	optdepends = libva-intel-driver: VAAPI encoder support (<= Haswell)
 	optdepends = libva-mesa-driver: VAAPI encoder support
-	optdepends = swig: Scripting
-	optdepends = luajit: Lua scripting
-	optdepends = python>=3.13: Python scripting
-	optdepends = sndio: Sndio input client
-	optdepends = v4l-utils: V4L2 support
-	optdepends = systemd-libs: V4L2 support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
-	optdepends = libdatachannel>=0.22: WHIP Support
-	optdepends = libajantv2>=17.0.1: AJA support
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=31.1.2
+	provides = obs-studio=32.0.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -100,19 +90,17 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=31.1.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=32.0.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = bind_iface_eyeballed.patch
-	source = v4l2_by-path.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f98822ce22f53c83df36a3db888762598a62092daf2f45fd982e0242789cf10f
-	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
-	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v5.tar.xz
-	sha256sums_x86_64 = df38ef6d8078895953d224a58dd811b83110b4f8644c5cd2b6246d04b0023ee6
-	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v5.tar.xz
-	sha256sums_aarch64 = b1ebcedbe63657c7f38a4d547398a4759544f75d955777eea386052abc9c9228
+	sha256sums = fba1355b2e451007cc6ec14d0f662b4a289874dde6eb3f4001a90c414bbf0c13
+	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz
+	sha256sums_x86_64 = 7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146
+	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz
+	sha256sums_aarch64 = 642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999
 
 pkgname = obs-studio-tytan652
