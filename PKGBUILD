@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=7.1.1
-pkgrel=6
+pkgrel=7
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
 _obs_studio_ver='31.1.2'
@@ -20,7 +20,6 @@ depends=(
     'cairo'
     'celt'
     'codec2'
-    'cuda'
     'dav1d'
     'flite1'
     'fontconfig'
@@ -82,7 +81,6 @@ depends=(
     'libxv'
     'libwebp'
     'lilv'
-    
     'ocl-icd'
     'openal'
     'opencore-amr'
@@ -143,6 +141,7 @@ optdepends=(
 makedepends=(
     'amf-headers'
     'clang'
+    'cuda'
     'ffnvcodec-headers'
     'gmp'
     'libgl'
