@@ -1,0 +1,13 @@
+post_install() {
+    echo ">>> DKMS module for asix-ax88279 installed."
+    echo ">>> The module will be built for your current kernel."
+    echo ">>> You can check the status with: dkms status"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ">>> DKMS module for asix-ax88279 removed."
+}

@@ -1,0 +1,19 @@
+pkgbase = asix-ax88279-dkms
+	pkgdesc = Patched ASIX AX88279 USB 3.2 to 2.5G Ethernet Adapter DKMS driver (supports modern kernels)
+	pkgver = 3.5.0
+	pkgrel = 3
+	url = https://www.asix.com.tw/en/product/USBEthernet/Super-Speed_USB_Ethernet/AX88279
+	install = asix-ax88279-dkms.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	source = asix-ax88279-dkms-3.5.0::git+https://github.com/stephenjkhsieh/ASIX-USB-NIC-Linux-Driver-Source.git#tag=v3.5.0-3
+	source = dkms.conf
+	source = asix-ax88279-dkms.install
+	sha256sums = SKIP
+	sha256sums = b4e08dd9852af71af70f5cc899bd165eea3a7df4fb7b3df733e369c6fea232e2
+	sha256sums = 527706a8ef1d6408f665319be64ab8cf5eb11910291dfcdddb19eb23f3fb9d44
+
+pkgname = asix-ax88279-dkms
