@@ -1,11 +1,12 @@
 pkgbase = zls-master
 	pkgdesc = A language server for Zig
 	pkgver = 0.16.0dev.3+1840a4b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = armv7h
 	arch = i686
+	arch = loong64
 	arch = riscv64
 	arch = x86_64
 	license = MIT

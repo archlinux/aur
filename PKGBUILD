@@ -3,12 +3,13 @@
 _basename="zls"
 pkgname="${_basename}-master"
 pkgver=0.16.0dev.3+1840a4b8
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'
   'armv7h'
   'i686'
+  'loong64'
   # 'powerpc64le'
   'riscv64'
   'x86_64'
