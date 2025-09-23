@@ -19,17 +19,23 @@ source=(
 sha256sums=('071390478e29bf37283fc130c82e9a0a54bad94ef39081dbab8510b625614600')
 
 package() {
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/gozen.AppImage"
+	install -d "${pkgdir}/opt/${pkgname}"
+	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/gozen.AppImage"
 
-  # Symlink into PATH
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/gozen.AppImage" "${pkgdir}/usr/bin/gozen"
+	# Symlink into PATH
+	install -d "${pkgdir}/usr/bin"
+	ln -s "/opt/${pkgname}/gozen.AppImage" "${pkgdir}/usr/bin/gozen"
 
-  # Desktop integration (optional, if your repo includes .desktop and icons)
-  install -Dm644 "${srcdir}/gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
-  install -Dm644 "${srcdir}/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
-  install -Dm644 "${srcdir}/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Make a different desktop file for the -git build.
+	sed -i 's/^Name=GoZen$/Name=GoZen-bin/' assets/linux/gozen.desktop
+	sed -i "s/^Exec=gozen$/Exec=${pkgname}/" assets/linux/gozen.desktop
+	sed -i "s/^Icon=gozen$/Icon=${pkgname}/" assets/linux/gozen.desktop
+
+	# Desktop integration (optional, if your repo includes .desktop and icons)
+	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
+	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
+	install -Dm644 "assets/linux/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
