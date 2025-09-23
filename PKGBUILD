@@ -6,10 +6,10 @@ pkgrel=1
 license=('GPL')
 depends=('texlive-core')
 pkgdesc="BibTeX style files used in Astronomy journals"
-url="http://ads.harvard.edu/pubs/bibtex/astronat/doc/html/astronat_1.html"
+url="https://ads.harvard.edu/pubs/bibtex/astronat/doc/html/astronat_1.html"
 arch=('any')
 install=texlive-astronat.install
-source=(http://ads.harvard.edu/pubs/bibtex/astronat/astronat.tar.gz)
+source=(https://web.archive.org/web/20160811093147/http://ads.harvard.edu/pubs/bibtex/astronat/astronat.tar.gz)
 md5sums=('9f26cf9c2ac16ddeb7ac3aa677eab730')
 
 package()
