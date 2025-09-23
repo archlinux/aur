@@ -1,0 +1,4 @@
+[gruyere-bin]
+source = "git"
+git = "https://github.com/savannahostrowski/gruyere.git"
+prefix = "v"

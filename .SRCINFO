@@ -1,0 +1,17 @@
+pkgbase = gruyere-bin
+	pkgdesc = A tiny (and pretty) program for viewing + killing listening ports
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/savannahostrowski/gruyere
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	source_x86_64 = gruyere-bin-1.1.5-x86_64.tar.gz::https://github.com/savannahostrowski/gruyere/releases/download/v1.1.5/gruyere_1.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 70f51ae649be7e75045c2ba19de2cf60deb8f6eda3380ba4630b7dbc93ef0bb2
+	source_aarch64 = gruyere-bin-1.1.5-aarch64.tar.gz::https://github.com/savannahostrowski/gruyere/releases/download/v1.1.5/gruyere_1.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6a459f6d0fb1f9455e027958dd4381d473a1018993b723d399fec1f18d592257
+	source_i686 = gruyere-bin-1.1.5-i686.tar.gz::https://github.com/savannahostrowski/gruyere/releases/download/v1.1.5/gruyere_1.1.5_linux_386.tar.gz
+	sha256sums_i686 = 500ad50ae86dded315ce1044c059511de2c37ed328d09d44aa0e303e9fc9417d
+
+pkgname = gruyere-bin
