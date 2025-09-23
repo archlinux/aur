@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://gitlab.com/libeigen/eigen/-/archive/${pkgver}/eigen-${pkgver}.tar.bz2")
-sha256sums=('bc5888a4e8538af18d4734c4266a538c7490200f76bc978b66299600189d51c2')
+sha256sums=('d2771c18e3e35b88b38dfb2fef7ea547515d3b6c2f2a9c1f96631a046ff80c6c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
