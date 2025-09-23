@@ -1,0 +1,6 @@
+[Path]
+Unit=rclone-bisynk@%i.service
+PathChanged=%h/rclone-bisync/%I
+
+[Install]
+WantedBy=default.target

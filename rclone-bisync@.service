@@ -1,0 +1,12 @@
+[Unit]
+Description=rclone bisync for %I
+Documentation=man:rclone(1)
+After=network-online.target 
+Wants=network-online.target
+
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rclone bisync "%I:" "%h/rclone-bisync/%I" \
+  --log-level INFO \
+  --log-file /tmp/rclone-bisync-%i.log 

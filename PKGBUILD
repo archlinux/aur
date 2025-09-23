@@ -1,18 +1,15 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: vgs vldmr.lshnk@gmail.com
+pkgname=rclone-bisync-service
+pkgver=20250923
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="Systemd user service wrapper over rclone bisync. Rclone bisync is command that provide two side syncronization with offline access to files."
 arch=('any')
-url="https://github.com/philc/vimium"
+depends=('systemd' 'rclone')
+source=('rclone-bisync@.service' 'rclone-bisync@.path' 'rclone-bisync@.timer' 'rclone-bisync-init.sh')
+md5sums=('SKIP')
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+    install -Dm "$src/rclone-bisync@.{service,timer,path}" "$pkgdir/usr/lib/systemd/user/rclone-bisync@.{service,timer,path}"
+    install -Dm "$src/rclone-bisync-init.sh" "$pkgdir/usr/bin/rclone-bisync-init.sh"
 }

@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for rclone sync for %I
+Requires=rclone-bisync@%i.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
