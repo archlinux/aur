@@ -8,6 +8,8 @@ pkgbase = httpdiff
 	license = GPL2
 	makedepends = git
 	makedepends = go
+	provides = httpdiff
+	conflicts = httpdiff-git
 	source = httpdiff::git+https://github.com/jgrahamc/httpdiff.git#tag=v1.0.0
 	sha256sums = SKIP
 
