@@ -6,6 +6,8 @@ pkgdesc="Perform the same request against two HTTP servers and diff the results"
 arch=("i686" "x86_64")
 url="https://github.com/jgrahamc/httpdiff"
 license=("GPL2")
+provides=('httpdiff')
+conflicts=('httpdiff')
 makedepends=("git" "go")
 source=("${pkgname}::git+https://github.com/jgrahamc/httpdiff.git")
 
