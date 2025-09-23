@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=waiter
-_pkgver=0.2.5
+_pkgver=0.2.5.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.5
-pkgrel=4
+pkgver=0.2.5.1
+pkgrel=1
 pkgdesc="Loading Screen for 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ac25e979db9242598bd0492ff862360009b51ce672184ec9f4eeb2232164979')
+sha256sums=('7b114c8c2a4050584f0c50951376d3b1f14498b6c3792b0d0295771c02d240d4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
