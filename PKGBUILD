@@ -1,10 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"
+_CUDA_ARCH_LIST="7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;12.0;12.1;12.1+PTX"
 _pkgname=mmcv
 pkgname=(python-mmcv python-mmcv-full)
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='OpenMMLab Computer Vision Foundation'
 arch=('x86_64')
@@ -36,6 +36,9 @@ sha512sums=('e2899272a2b9015f8a73af15d36b7d2ccf2a56a69dbd9f02186b31a5939a2b8e257
 prepare() {
   # fix glog error
   sed -i "s/define_macros = \[\]/define_macros = [('GLOG_USE_GLOG_EXPORT', None)]/g" "${_pkgname}-${pkgver}/setup.py"
+  # dirty hack
+  sed -i 's,THC/THCAtomics.cuh,ATen/cuda/Atomic.cuh,' "${_pkgname}-${pkgver}/mmcv/ops/csrc/common/pytorch_cuda_helper.hpp"
+  sed -i 's,THC/THCAtomics.cuh,ATen/cuda/Atomic.cuh,' "${_pkgname}-${pkgver}/mmcv/ops/csrc/pytorch/cuda/ms_deform_attn_cuda.cu"
   # setting version
   sed -i "s/version=get_version()/version='$pkgver'/" "${_pkgname}-${pkgver}/setup.py"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-full-${pkgver}"
