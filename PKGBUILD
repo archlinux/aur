@@ -3,9 +3,9 @@
 pkgname=museeks
 _pkgname=Museeks
 _flatpakname="io.${pkgname}.app"
-pkgver=0.23.0
-_nodeversion=24
-pkgrel=2
+pkgver=0.23.1
+_nodeversion=22
+pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
 arch=('any')
 url="https://museeks.io"
@@ -16,7 +16,7 @@ depends=(
 	'gtk3'
 )
 makedepends=(
-    'bun'
+	'npm'
     'nvm'
     'curl'
 	'rust'
@@ -25,39 +25,44 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('21715fcb77b28fee6cbdcda265a4671ac667b7c3b24842533c306cd86f9bbbde')
+sha256sums=('c6133f3a05e1539ed3debb664f8fbc80d858fe9f7b42a5e2b899fdefe3c810c7')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_ensure_rust_toolchain() {
+    export RUSTUP_HOME="${srcdir}/.rustup"
+    rustup default stable
+}
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-    _ensure_local_nvm
 	export CARGO_HOME="${srcdir}/.cargo"
 	HOME="${srcdir}/.electron-gyp"
-	if [ -f bunfig.toml ]; then
-		rm -rf bunfig.toml
-	fi
-		if [ -f bun.lockb ];then
-		rm -rf bun.lockb
-	fi
+	{
+		echo -e '\n'
+		#echo 'build_from_source=true'
+		echo "cache=${srcdir}/.npm_cache"
+		echo "maxsockets=32"
+	} >> .npmrc
 	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
 		{
 			echo 'registry=https://registry.npmmirror.com'
 		} >> .npmrc
-		export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-		export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-		export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+		export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+		export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
 		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
 	fi
-    bun install --frozen-lockfile
+	_ensure_local_nvm
+    _ensure_rust_toolchain
+    NODE_ENV=development    npm install
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	_ensure_local_nvm
 	sed -i 's/"dmg", "nsis", "appimage", "deb", "rpm"/"deb"/g' src-tauri/tauri.conf.json
-	bun tauri build
+	NODE_ENV=production     npm run tauri build
 	sed -i "s/${_flatpakname}/${pkgname}/g" src-tauri/release/flatpak.metainfo.xml
 }
 package() {
