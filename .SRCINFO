@@ -1,0 +1,23 @@
+pkgbase = beekeeper-qt
+	pkgdesc = Deduplicate redundant data in your disk and save space
+	pkgver = a0339c8
+	pkgrel = 1
+	url = https://github.com/techmanwalker/beekeeper-qt
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = qt6-tools
+	depends = polkit-qt6
+	depends = systemd
+	depends = btrfs-progs
+	depends = bees
+	optdepends = util-linux
+	optdepends = doxygen
+	provides = beekeeper
+	source = beekeeper-qt::git+https://github.com/techmanwalker/beekeeper-qt.git
+	md5sums = SKIP
+
+pkgname = beekeeper-qt
