@@ -1,0 +1,12 @@
+pkgbase = lext-theme-narc-colors
+	pkgdesc = LXQt theme: Narc-Colors, incl. palettes and wallpapers (a3008f8)
+	pkgver = 1
+	pkgrel = 1
+	url = https://codeberg.org/MrReplikant/Narc-Colors-Theme
+	arch = any
+	license = GPL-2.0
+	depends = lxqt-panel
+	source = http://lext-store.duckdns.org/aur/lext-next/lext-theme-narc-colors.txz
+	sha256sums = SKIP
+
+pkgname = lext-theme-narc-colors
