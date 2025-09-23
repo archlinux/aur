@@ -10,7 +10,7 @@ index 313a704c8..1e39e8dbf 100644
  option(ALICEVISION_BUILD_DEPENDENCIES "Build all AliceVision dependencies" OFF)
  option(AV_BUILD_ALICEVISION "Enable building of AliceVision" ON)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index dfa00ff0b..06ec7bc79 100644
+index dfa00ff0b..122c42b46 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -123,7 +123,7 @@ if (ALICEVISION_USE_RPATH)
@@ -53,7 +53,18 @@ index dfa00ff0b..06ec7bc79 100644
  
      if (pxr_FOUND)
          set(ALICEVISION_HAVE_USD 1)
-@@ -733,7 +737,7 @@ if (ALICEVISION_HAVE_CUDA)
+@@ -705,7 +709,9 @@ if (ALICEVISION_HAVE_CUDA)
+ 
+     set(CUDA_NVCC_FLAGS_DEBUG   "${CUDA_NVCC_FLAGS_DEBUG};-G;-g")
+     # set(CUDA_NVCC_FLAGS_RELEASE "${CUDA_NVCC_FLAGS_RELEASE};-O3")
+-    if (CUDA_VERSION_MAJOR VERSION_GREATER_EQUAL 12)
++	if (CUDA_VERSION_MAJOR VERSION_GREATER_EQUAL 13)
++		set(ALICEVISION_CUDA_CC_LIST_BASIC 75 80 86 87 89 90)
++    elseif (CUDA_VERSION_MAJOR VERSION_GREATER_EQUAL 12)
+         set(ALICEVISION_CUDA_CC_LIST_BASIC 50 52 60 61 62 70 72 75 80 86 87 89 90)
+     elseif (CUDA_VERSION VERSION_GREATER_EQUAL 11.8)
+         set(ALICEVISION_CUDA_CC_LIST_BASIC 35 50 52 60 61 62 70 72 75 80 86 87 89 90)
+@@ -733,7 +739,7 @@ if (ALICEVISION_HAVE_CUDA)
      list(GET ALICEVISION_CUDA_CC_LIST ${ALICEVISION_CC_LIST_LEN} ALICEVISION_CUDA_CC_LIST_LAST)
      set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS};-gencode;arch=compute_${ALICEVISION_CUDA_CC_LIST_LAST},code=compute_${ALICEVISION_CUDA_CC_LIST_LAST}")
  
@@ -62,7 +73,7 @@ index dfa00ff0b..06ec7bc79 100644
  
      # default stream legacy implies that the 0 stream synchronizes all streams
      set(CUDA_NVCC_FLAGS         "${CUDA_NVCC_FLAGS};--default-stream;legacy")
-@@ -876,6 +880,7 @@ set(ALICEVISION_INCLUDE_DIRS
+@@ -876,6 +882,7 @@ set(ALICEVISION_INCLUDE_DIRS
          ${COINUTILS_INCLUDE_DIRS}
          ${CLP_INCLUDE_DIRS}
          ${OSI_INCLUDE_DIRS}
@@ -70,7 +81,7 @@ index dfa00ff0b..06ec7bc79 100644
  )
  
  include_directories(${ALICEVISION_INCLUDE_DIRS})
-@@ -912,7 +917,7 @@ else()
+@@ -912,7 +919,7 @@ else()
              set(SPHINX_HTML_DIR "${CMAKE_CURRENT_BINARY_DIR}/htmlDoc")
  
              configure_file(
@@ -79,7 +90,7 @@ index dfa00ff0b..06ec7bc79 100644
                  "${CMAKE_CURRENT_BINARY_DIR}/conf.py"
                  @ONLY
              )
-@@ -920,7 +925,7 @@ else()
+@@ -920,7 +927,7 @@ else()
              add_custom_target(doc ALL
                  ${SPHINX_EXECUTABLE}
                  -b html
@@ -88,6 +99,19 @@ index dfa00ff0b..06ec7bc79 100644
                  "${SPHINX_HTML_DIR}"
                  COMMENT "Building HTML documentation with Sphinx"
              )
+diff --git a/src/aliceVision/gpu/gpu.cpp b/src/aliceVision/gpu/gpu.cpp
+index afb6e8756..ff8d5636c 100644
+--- a/src/aliceVision/gpu/gpu.cpp
++++ b/src/aliceVision/gpu/gpu.cpp
+@@ -113,7 +113,7 @@ std::string gpuInformationCUDA()
+                      << "\t- id:                      " << i << std::endl
+                      << "\t- name:                    " << deviceProperties.name << std::endl
+                      << "\t- compute capability:      " << deviceProperties.major << "." << deviceProperties.minor << std::endl
+-                     << "\t- clock frequency (kHz):   " << deviceProperties.clockRate << std::endl
++                     //<< "\t- clock frequency (kHz):   " << deviceProperties.clockRate << std::endl
+                      << "\t- total device memory:     " << deviceProperties.totalGlobalMem / (1024 * 1024) << " MB " << std::endl
+                      << "\t- device memory available: " << avail / (1024 * 1024) << " MB " << std::endl
+                      << "\t- per-block shared memory: " << deviceProperties.sharedMemPerBlock << std::endl
 diff --git a/src/aliceVision/image/CMakeLists.txt b/src/aliceVision/image/CMakeLists.txt
 index cd4b4bc87..f432fc281 100644
 --- a/src/aliceVision/image/CMakeLists.txt
@@ -119,10 +143,44 @@ index 8dc4a0d12..6315227b4 100644
  # whether it is built with CCTags
  set(ALICEVISION_HAVE_CCTAG @ALICEVISION_HAVE_CCTAG@)
 diff --git a/src/cmake/Dependencies.cmake b/src/cmake/Dependencies.cmake
-index c14b5c430..02d368712 100644
+index c14b5c430..2c68a5031 100644
 --- a/src/cmake/Dependencies.cmake
 +++ b/src/cmake/Dependencies.cmake
-@@ -514,21 +514,20 @@ if(AV_BUILD_PNG)
+@@ -295,16 +295,13 @@ if(AV_BUILD_EIGEN)
+     set(EIGEN_TARGET eigen)
+ 
+     ExternalProject_Add(${EIGEN_TARGET}
+-        URL https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
+-        URL_HASH MD5=132dde48fe2b563211675626d29f1707
+-        DOWNLOAD_DIR ${BUILD_DIR}/download/eigen
+         PREFIX ${BUILD_DIR}
+         BUILD_IN_SOURCE 0
+         BUILD_ALWAYS 0
+         UPDATE_COMMAND ""
+-        SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/eigen
++        SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/../../eigen-3.4.0
+         BINARY_DIR ${BUILD_DIR}/eigen_build
+-        INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
++        INSTALL_DIR ${BUILD_DIR}/tmpinstall
+         CONFIGURE_COMMAND ${CMAKE_COMMAND} 
+             -DCMAKE_CXX_STANDARD=20
+             ${EIGEN_CMAKE_ALIGNMENT_FLAGS}
+@@ -315,10 +312,10 @@ if(AV_BUILD_EIGEN)
+ 
+     set(EIGEN_CMAKE_FLAGS
+         ${EIGEN_CMAKE_ALIGNMENT_FLAGS}
+-        -DEigen3_DIR:PATH=${CMAKE_INSTALL_PREFIX}/share/eigen3/cmake
+-        -DEIGEN3_INCLUDE_DIR=${CMAKE_INSTALL_PREFIX}/include/eigen3
+-        -DEIGEN_INCLUDE_DIR=${CMAKE_INSTALL_PREFIX}/include/eigen3
+-        -DEigen_INCLUDE_DIR=${CMAKE_INSTALL_PREFIX}/include/eigen3
++        -DEigen3_DIR:PATH=${BUILD_DIR}/tmpinstall/share/eigen3/cmake
++        -DEIGEN3_INCLUDE_DIR=${BUILD_DIR}/tmpinstall/include/eigen3
++        -DEIGEN_INCLUDE_DIR=${BUILD_DIR}/tmpinstall/include/eigen3
++        -DEigen_INCLUDE_DIR=${BUILD_DIR}/tmpinstall/include/eigen3
+     )
+ endif()
+ 
+@@ -514,21 +511,20 @@ if(AV_BUILD_PNG)
  
      ExternalProject_Add(
          ${PNG_TARGET}
@@ -148,7 +206,7 @@ index c14b5c430..02d368712 100644
              <SOURCE_DIR>
          BUILD_COMMAND $(MAKE) -j${AV_BUILD_DEPENDENCIES_PARALLEL}
          DEPENDS ${ZLIB_TARGET}
-@@ -1136,36 +1135,32 @@ if(AV_BUILD_OPENIMAGEIO)
+@@ -1136,36 +1132,32 @@ if(AV_BUILD_OPENIMAGEIO)
      set(OPENIMAGEIO_TARGET openimageio)
  
      ExternalProject_Add(${OPENIMAGEIO_TARGET}
@@ -195,7 +253,7 @@ index c14b5c430..02d368712 100644
              # TODO: build with libheif
          BUILD_COMMAND $(MAKE) -j${AV_BUILD_DEPENDENCIES_PARALLEL}
          DEPENDS ${BOOST_TARGET} ${OPENEXR_TARGET} ${TIFF_TARGET} ${PNG_TARGET} ${JPEG_TARGET} ${LIBRAW_TARGET} ${ZLIB_TARGET} ${FFMPEG_TARGET} ${PYBIND11_TARGET}
-@@ -1434,18 +1429,30 @@ if(AV_BUILD_ALICEVISION)
+@@ -1434,18 +1426,30 @@ if(AV_BUILD_ALICEVISION)
          BINARY_DIR ${BUILD_DIR}/aliceVision_build
          INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
          CONFIGURE_COMMAND ${CMAKE_COMMAND}
@@ -235,7 +293,7 @@ index c14b5c430..02d368712 100644
  
          ${ZLIB_CMAKE_FLAGS}
          ${ASSIMP_CMAKE_FLAGS}
-@@ -1476,5 +1483,6 @@ if(AV_BUILD_ALICEVISION)
+@@ -1476,5 +1480,6 @@ if(AV_BUILD_ALICEVISION)
  
          -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR> <SOURCE_DIR>
          DEPENDS ${AV_DEPS}
