@@ -1,0 +1,22 @@
+pkgbase = mcuviewer-bin
+	pkgdesc = Real-time embedded variable & trace viewer
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://mcuviewer.com
+	arch = x86_64
+	license = comercial
+	depends = libusb
+	depends = glfw
+	depends = gtk3
+	depends = glib2
+	optdepends = jlink-software-and-documentation
+	optdepends = stlink
+	optdepends = arm-none-eabi-gdb
+	provides = mcuviewer
+	conflicts = mcuviewer
+	conflicts = mcuviewer-git
+	options = !strip
+	source = mcuviewer-bin.zip::https://download.mcuviewer.com/releases/stable/1.2.4_7a22eaa/MCUViewer_Linux.zip
+	sha256sums = 601f5f9e86c03e608e925cda988378782c52580027476ee2b35a2ec7a894a37c
+
+pkgname = mcuviewer-bin
