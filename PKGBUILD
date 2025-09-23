@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=autopush-rs-p1gp1g-git
-pkgver=r787.a378707
+pkgver=r789.ce573a8
 pkgrel=1
 pkgdesc="Push Server in Rust. Support Redis."
 arch=('x86_64')
@@ -23,13 +23,14 @@ pkgver() {
 prepare() {
 	rustup default stable
 	cd "$srcdir/autopush-rs"
-    	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	git checkout "feat/redis"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$srcdir/autopush-rs"
-    	export CARGO_TARGET_DIR=target
-    	cargo build --frozen --no-default-features --features redis --release --target-dir target
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --no-default-features --features redis --release --target-dir target
 }
 
 package() {
