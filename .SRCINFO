@@ -1,7 +1,7 @@
 pkgbase = winboat-bin
 	pkgdesc = Run Windows apps on Linux with seamless integration
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.winboat.app
 	arch = x86_64
 	license = MIT

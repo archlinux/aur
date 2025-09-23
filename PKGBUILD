@@ -3,7 +3,7 @@
 
 pkgname=winboat-bin
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=(x86_64)
 url="https://www.winboat.app"
