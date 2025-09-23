@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.2.2.r13.gd6d5e63
+pkgver=0.2.2.r126.g5287738
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -42,9 +42,4 @@ package(){
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y \
     PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
-  # missing symlinks
-  cd "$pkgdir"/usr/bin
-  for _i in $(./uu-coreutils --list)
-    do ln -sf uu-coreutils uu-$_i
-  done
 }
