@@ -1,11 +1,12 @@
 pkgbase = hunspell-fr
 	pkgdesc = French Hunspell dictionary
 	pkgver = 7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grammalecte.net/home.php?prj=fr
 	arch = any
 	license = MPL2
-	makedepends = qt5-webengine
+	makedepends = python-setuptools
+	makedepends = qt6-webengine
 	provides = hunspell-fr
 	conflicts = hunspell-fr
 	source = http://grammalecte.net:8080/tarball/e22005d53f/Grammalecte-e22005d53f.tar.gz

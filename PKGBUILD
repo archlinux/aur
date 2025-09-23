@@ -1,3 +1,7 @@
+
+
+
+
 # Maintainer: ariasuni <aria@ariasuni.eu>
 
 pkgbase='hunspell-fr'
@@ -5,12 +9,12 @@ pkgname=($pkgbase-{'classical','comprehensive','revised'})
 _commit=e22005d53f
 # http://grammalecte.net:8080/finfo?name=gc_lang/fr/oxt/Dictionnaires/dictionaries/README_dict_fr.txt
 pkgver="7.7"
-pkgrel=1
+pkgrel=2
 pkgdesc="French Hunspell dictionary"
 arch=(any)
 url="https://grammalecte.net/home.php?prj=fr"
 license=('MPL2')
-makedepends=('qt5-webengine')
+makedepends=('python-setuptools' 'qt6-webengine')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
 source=("http://grammalecte.net:8080/tarball/$_commit/Grammalecte-$_commit.tar.gz"
