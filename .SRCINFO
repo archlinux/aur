@@ -12,4 +12,3 @@ pkgbase = httpdiff
 	sha256sums = SKIP
 
 pkgname = httpdiff
-
