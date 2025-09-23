@@ -1,6 +1,6 @@
 pkgbase = siun
 	pkgdesc = siun stands for, and tries to answer, the question Should I upgrade now?
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/t4k1t/siun
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = siun
 	depends = python-click
 	depends = python-pydantic
 	provides = siun
-	source = https://github.com/t4k1t/siun/archive/refs/tags/v1.5.0.tar.gz
-	b2sums = 8a93771b5d8d8d04818458c4905e25f1689b57c82e21acb115fe3b0e5ce5f7908416efb4183a1216b84da77c69a2ce281d40704bc6fccab4e407f224dc1a26e3
+	source = https://github.com/t4k1t/siun/archive/refs/tags/v1.5.1.tar.gz
+	b2sums = 16442225e86f897003cc34ebe864fdd44858e88736a2d0c8ee10b3a249f6eac74ffb08f6103577b2326c7ed8ba649714c21d11de45cd29050bdc2af58efaabb2
 
 pkgname = siun
