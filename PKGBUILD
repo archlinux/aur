@@ -2,7 +2,7 @@
 
 pkgname=gozen-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
