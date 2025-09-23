@@ -3,18 +3,18 @@
 # Contributor: Lazaros Koromilas <koromilaz@gmail.com>
 
 pkgname=basex
-pkgver=9.7.1
+pkgver=12.0
 pkgrel=1
 pkgdesc="Light-weight, high-performance XML database system and XPath/XQuery processor."
 arch=('i686' 'x86_64')
-url="http://basex.org/"
+url="https://basex.org/"
 license=('BSD')
 makedepends=('java-environment')
 depends=('java-runtime' 'bash')
 source=("http://files.basex.org/releases/${pkgver}/BaseX${pkgver//./}.zip" 
         "basex.sh" 
         "BaseX.desktop")
-sha1sums=('e71eb81c14a60a37ac96b7333fc73e5069e5618b'
+sha1sums=('0a40850f7e01238ae9994d7319774088f990b78f'
           'b82c43d2f247d65b93b2f073543b8ceee038bfd1'
           '1f2e10e989258cc41e8d516efa80801038142358')
 
