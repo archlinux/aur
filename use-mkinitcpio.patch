@@ -1,17 +1,7 @@
-diff --git a/src/graphics.rs b/src/graphics.rs
-index 4fecb8b..5974717 100644
---- a/src/graphics.rs
-+++ b/src/graphics.rs
-@@ -95,7 +95,7 @@ const EXTERNAL_DISPLAY_REQUIRES_NVIDIA: &[&str] = &[
- ];
- 
- const SYSTEMCTL_CMD: &str = "systemctl";
--const UPDATE_INITRAMFS_CMD: &str = "update-initramfs";
-+const UPDATE_INITRAMFS_CMD: &str = "mkinitcpio";
- 
- #[derive(Debug, thiserror::Error)]
- pub enum GraphicsDeviceError {
-@@ -127,7 +127,7 @@ pub enum GraphicsDeviceError {
+diff --unified --recursive --text a/src/graphics.rs b/src/graphics.rs
+--- a/src/graphics.rs	2025-09-23 10:07:35.000000000 -0600
++++ b/src/graphics.rs	2025-09-23 11:39:57.133696948 -0600
+@@ -137,7 +137,7 @@
      SysFs(io::Error),
      #[error("failed to unbind {} on PCI driver {}: {}", func, driver, why)]
      Unbind { func: String, driver: String, why: io::Error },
@@ -20,12 +10,12 @@ index 4fecb8b..5974717 100644
      UpdateInitramfs(ExitStatus),
      #[error("failed to access Xserver config: {}", _0)]
      XserverConf(io::Error),
-@@ -535,7 +535,7 @@ impl Graphics {
- 
-         log::info!("Updating initramfs");
-         let status = process::Command::new(UPDATE_INITRAMFS_CMD)
--            .arg("-u")
-+            .arg("-P")
-             .status()
-             .map_err(|why| GraphicsDeviceError::Command { cmd: UPDATE_INITRAMFS_CMD, why })?;
+@@ -686,7 +686,7 @@
+     if path::Path::new("/usr/bin/dracut").exists() {
+         ("dracut", "--force")
+     } else {
+-        ("update-initramfs", "-u")
++        ("mkinitcpio", "-P")
+     }
+ }
  
