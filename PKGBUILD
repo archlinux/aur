@@ -12,12 +12,12 @@ source=("httpdiff::git+https://github.com/jgrahamc/httpdiff.git#tag=v1.0.0")
 sha256sums=("SKIP")
 
 build() {
-    cd ${srcdir}/${_pkgname}
-    make all
+    cd ${srcdir}/${pkgname}
+    make
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}
-    install -Dm 755 "${srcdir}/${_pkgname}/httpdiff" "${pkgdir}/usr/bin/httpdiff"
-    install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd ${srcdir}/${pkgname}
+    install -Dm 755 "${srcdir}/${pkgname}/httpdiff" "${pkgdir}/usr/bin/httpdiff"
+    install -Dm 644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
