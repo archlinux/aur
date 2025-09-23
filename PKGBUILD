@@ -2,7 +2,7 @@
 
 pkgname=ble2mqtt-git
 _gitname=ble2mqtt
-pkgver=r325.7e51f81
+pkgver=0.2.5.r1.g9ec2940
 pkgrel=1
 pkgdesc='Bluetooth to MQTT bridge, add your bluetooth-capable devices to your smart home'
 url='https://github.com/devbis/ble2mqtt'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$_gitname"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = ble2mqtt-git
 	pkgdesc = Bluetooth to MQTT bridge, add your bluetooth-capable devices to your smart home
-	pkgver = r325.7e51f81
+	pkgver = 0.2.5.r1.g9ec2940
 	pkgrel = 1
 	url = https://github.com/devbis/ble2mqtt
 	arch = any
