@@ -6,18 +6,18 @@ _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
 pkgrel=1
-pkgver=nightly.r5.gaabc22e
+pkgver=nightly.r0.ge6ee6cc31
 pkgdesc="Opensource, self-hosted AI coding assistant"
 arch=("x86_64")
 url="https://tabby.tabbyml.com"
 license=("MIT")
 groups=()
-depends=("python311" "protobuf" "sqlite3" "graphviz")
-makedepends=("git" "make" "rust" "sqlite3")
+depends=("python" "protobuf" "sqlite" "graphviz")
+makedepends=("git" "make" "rust" "base-devel")
 provides=("tabby")
 source=(
-    "${pkgname}::git+https://github.com/TabbyML/tabby"
-    "git+https://github.com/ggerganov/llama.cpp"
+    "${pkgname}::git+https://github.com/TabbyML/tabby.git"
+    "git+https://github.com/ggerganov/llama.cpp.git"
     "tabbyml-server.service"
     "server.conf"
     "config.toml"
@@ -33,15 +33,53 @@ options=("!strip" "!debug")
 export GIT_LFS_SKIP_SMUDGE=1
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/$pkgname" || return 1
+
+    # try to fetch tags so git-describe can use them (harmless if already present)
+    git fetch --tags --quiet 2>/dev/null || true
+
+    # get a descriptive ref: <tag>-<commits>-g<sha> OR <sha>
+    desc=$(git describe --tags --long --always 2>/dev/null) || desc=""
+
+    # strip leading v if present
+    desc=${desc#v}
+
+    if [ -z "$desc" ]; then
+        # fallback: use commit count + short sha
+        sha=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+        count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+        echo "0.r${count}.g${sha}"
+        return 0
+    fi
+
+    # if desc contains '-' (tag-N-gSHA), convert to tag.rN.gSHA
+    if printf '%s' "$desc" | grep -q -- '-'; then
+        # example: 1.2.3-4-gabc1234  -> 1.2.3.r4.gabc1234
+        ver=$(printf '%s' "$desc" | sed -E 's/^([^-]+)-([0-9]+)-g([0-9a-f]+)$/\1.r\2.g\3/')
+        # if sed failed to transform, fallback to safe form:
+        if [ -n "$ver" ]; then
+            echo "$ver"
+            return 0
+        fi
+    fi
+
+    # else desc is either a tag (like 1.2.3) or a raw sha
+    if printf '%s' "$desc" | grep -Eq '^[0-9]+(\.[0-9]+)*$'; then
+        # pure numeric dotted tag -> use as-is (1.2.3)
+        echo "$desc"
+    else
+        # likely a short sha -> convert to 0.r<count>.g<sha>
+        sha=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+        count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+        echo "0.r${count}.g${sha}"
+    fi
 }
 
 prepare() {
     cd "$srcdir/$pkgname"
-    git submodule init
-    git config submodule.crates/llama-cpp-server/llama.cpp.url "$srcdir/llama.cpp"
-    git -c protocol.file.allow=always submodule update
+    # init and update submodules (allow file:// if AUR provides llama.cpp as separate source)
+    git submodule sync --recursive || true
+    git -c protocol.file.allow=always submodule update --init --recursive --depth 1
 }
 
 build() {
