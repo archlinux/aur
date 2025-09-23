@@ -1,0 +1,8 @@
+post_install() {
+    echo "AdGuard CLI (nightly) has been installed."
+    echo ""
+    echo "Use the following commands to set it up:"
+    echo "  adguard-cli activate                 - to enter your license information"
+    echo "  adguard-cli configure                - to make necessary settings, note path & name of the certfile"
+    echo "  adguard-install_cert -c <certfile>   - to install the certificate, use <certfile> from previous step"
+}
