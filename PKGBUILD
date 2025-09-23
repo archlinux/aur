@@ -1,16 +1,16 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
 # Co-Maintainer: lapsus <yakov.till@gmail.com>
 pkgname=ccusage
-pkgver=16.2.5
+pkgver=17.0.2
 pkgrel=1
 pkgdesc="A CLI tool for analyzing Claude Code token usage and costs from local JSONL files"
 arch=('any')
 url="https://github.com/ryoppippi/ccusage"
 license=('MIT')
 depends=('nodejs')
-makedepends=('bun-bin' 'curl' 'jq')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ryoppippi/ccusage/archive/v$pkgver.tar.gz")
-sha256sums=('abc002dcb097796e56497089e9fb02c157ec5c70ff4ebeff655de4c114f4784d')
+makedepends=('npm' 'curl' 'jq')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+sha256sums=('SKIP')
 
 pkgver() {
     curl -s "https://api.github.com/repos/ryoppippi/ccusage/releases/latest" | 
@@ -18,25 +18,14 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    bun install --ignore-scripts
-    bun run build
+    # No build needed - using pre-built npm package
+    true
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    
-    # Install to /usr/lib/node_modules
-    install -dm755 "$pkgdir/usr/lib/node_modules/$pkgname"
-    cp -r dist package.json "$pkgdir/usr/lib/node_modules/$pkgname/"
-    
-    # Create symlink for binary
-    install -dm755 "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/node_modules/$pkgname/dist/index.js" "$pkgdir/usr/bin/$pkgname"
-    
-    # Make binary executable
-    chmod +x "$pkgdir/usr/lib/node_modules/$pkgname/dist/index.js"
-    
+    # Install using npm from the downloaded tarball
+    npm install --cache "$srcdir/npm-cache" --prefix="$pkgdir/usr" --global "$srcdir/$pkgname-$pkgver.tgz"
+
     # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$pkgdir/usr/lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
