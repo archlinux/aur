@@ -1,0 +1,13 @@
+diff --git a/session/mate-wayland.sh b/session/mate-wayland.sh
+index 458ef22..c7f813e 100755
+--- a/session/mate-wayland.sh
++++ b/session/mate-wayland.sh
+@@ -10,7 +10,7 @@ create_initial_config()
+         cp "/home/$USER/.config/wayfire.ini" "/home/$USER/.config/mate/wayfire.ini"
+     else
+         #User has not configured wayfire. Look for the default .ini file where the package manager put it 
+-        cp /usr/share/doc/wayfire/examples/wayfire.ini "/home/$USER/.config/mate/wayfire.ini"
++        cp /usr/share/doc/wayfire/wayfire.ini "/home/$USER/.config/mate/wayfire.ini"
+         #Ensure the file is writable as we try to alter it later
+         chmod u+w "/home/$USER/.config/mate/wayfire.ini"
+         #Don't use wobbly windows by default, users can readily enable them with wcm

@@ -1,0 +1,31 @@
+diff --git a/session/mate-wayland-components.sh b/session/mate-wayland-components.sh
+index 7209c6d..8b20103 100755
+--- a/session/mate-wayland-components.sh
++++ b/session/mate-wayland-components.sh
+@@ -23,7 +23,7 @@ done) &
+ 
+ (pgrep "wayfire"
+ while true; do
+-polkit-mate-authentication-agent-1
++/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+ 
+ if ! pgrep "wayfire" ; then
+        break
+@@ -32,7 +32,7 @@ done) &
+ 
+ (pgrep "wayfire"
+ while  true; do
+-mate-notification-daemon
++/usr/lib/mate-notification-daemon/mate-notification-daemon
+ 
+ if ! pgrep "wayfire" ; then
+        break
+@@ -41,7 +41,7 @@ done) &
+ 
+ (pgrep "wayfire"
+ while  true; do
+-GDK_BACKEND=x11 mate-settings-daemon
++GDK_BACKEND=x11 /usr/lib/mate-settings-daemon/mate-settings-daemon
+ 
+ if ! pgrep "wayfire" ; then
+        break
