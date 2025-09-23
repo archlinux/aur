@@ -1,0 +1,17 @@
+pkgbase = xc-git
+	pkgdesc = Markdown defined task runner (latest git).
+	pkgver = 0.8.6.r4.a1fec24f
+	pkgrel = 1
+	url = https://github.com/joerdav/xc
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = xc
+	conflicts = xc
+	conflicts = xc-bin
+	source = git+https://github.com/joerdav/xc.git
+	sha256sums = SKIP
+
+pkgname = xc-git
