@@ -1,0 +1,16 @@
+pkgbase = python-tzfpy
+	pkgdesc = Probably the fastest Python package to convert longitude/latitude to timezone name
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/tzfpy/
+	arch = x86_64
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = maturin
+	provides = python-tzfpy
+	source = https://files.pythonhosted.org/packages/source/t/tzfpy/tzfpy-1.0.0.tar.gz
+	md5sums = c835e14042c7b2681830303f55367d28
+
+pkgname = python-tzfpy
