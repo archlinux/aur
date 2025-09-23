@@ -19,7 +19,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('SKIP')
+b2sums=('1fdec29c1759ce45b099e6c154d8f3cc0ce62fc067235c74ac4029050d33c4a118ce013eb29a969c9dc3b84088793b1a7692244d31f7d036812aef9391317cab')
 
 prepare() {
   cd "${srcdir}"
