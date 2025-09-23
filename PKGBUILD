@@ -5,10 +5,11 @@ pkgver=0.24.2
 pkgrel=1
 pkgdesc='Frontend for VOICEVOX TTS Engine'
 arch=('x86_64')
-license=('GPL-3.0-only')
+license=('nonfree+GPL-3.0-only')
 url=https://github.com/VOICEVOX/voicevox
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
+replaces=(voicevox-appimage)
 source=(voicevox.{desktop,sh.in}
 ${url}/releases/download/${pkgver}/voicevox-linux-cpu-x64-${pkgver}.tar.gz)
 noextract=(voicevox-linux-cpu-x64-${pkgver}.tar.gz)
