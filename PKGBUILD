@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 pkgname=sddm-theme-greenleaf
 _themename=greenleaf
-pkgver=1.0
+pkgver=1.1
 pkgrel=2
 pkgdesc="GreenLeaf theme for SDDM"
 arch=("any")
