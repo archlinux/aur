@@ -1,18 +1,18 @@
 pkgbase = codenest-bin
 	pkgdesc = A local project management tool that helps organize projects scattered across different locations on your disk.(Prebuilt version.Use system-wide electron)一款本地项目管理工具，可整理分散在磁盘各处的项目
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/MidnightCrowing/CodeNest
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron37
-	provides = codenest=0.0.4
+	depends = electron38
+	provides = codenest=0.0.5
 	conflicts = codenest
-	source = codenest-0.0.4-x86_64.AppImage::https://github.com/MidnightCrowing/CodeNest/releases/download/v0.0.4/CodeNest-0.0.4.AppImage
-	source = LICENSE-0.0.4.txt::https://raw.githubusercontent.com/MidnightCrowing/CodeNest/v0.0.4/LICENSE.txt
+	source = codenest-0.0.5-x86_64.AppImage::https://github.com/MidnightCrowing/CodeNest/releases/download/v0.0.5/CodeNest-0.0.5.AppImage
+	source = LICENSE-0.0.5.txt::https://raw.githubusercontent.com/MidnightCrowing/CodeNest/v0.0.5/LICENSE.txt
 	source = codenest.sh
-	sha256sums = f46a03582f45eaf38c019ad6ad9efb6fb7a74fb6fa1a654110c2de620b8692db
+	sha256sums = 0b29d0a6d58d0e8f76d7334d1ea2b3872877392e149bc5ba424a7f5fd63f3c39
 	sha256sums = fa2ce613f35af27497fb5c984f5596efcbc067434c47f7826c184155289906ba
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
