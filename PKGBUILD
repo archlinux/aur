@@ -2,7 +2,7 @@
 
 pkgname='vocalshaper-git'
 pkgver=r1231.9e90ecd
-pkgrel=1
+pkgrel=2
 epoch=0
 conflicts=('vocalshaper')
 provides=("vocalshaper")
@@ -48,12 +48,12 @@ package() {
     install -d -m755 $pkgdir/usr/bin
     install -d -m755 $pkgdir/opt
     cp -r $srcdir/VocalShaper/build/ninja-release-linux-llvm/bin $pkgdir/opt/VocalShaper
-    ln -s $pkgdir/opt/VocalShaper/VocalShaper $pkgdir/usr/bin/VocalShaper
+    ln -s /opt/VocalShaper/VocalShaper "$pkgdir/usr/bin/VocalShaper"
     if [ -f "$pkgdir/opt/VocalShaper/FileRegistrar" ]; then
-        ln -s $pkgdir/opt/VocalShaper/FileRegistrar $pkgdir/usr/bin/FileRegistrar
-        ln -s $pkgdir/opt/VocalShaper/FileRegistrar $pkgdir/usr/bin/FileRegistrator
+        ln -s /opt/VocalShaper/FileRegistrar "$pkgdir/usr/bin/FileRegistrar"
+        ln -s /opt/VocalShaper/FileRegistrar "$pkgdir/usr/bin/FileRegistrator"
     elif [ -f "$pkgdir/opt/VocalShaper/FileRegistrator" ]; then
-        ln -s $pkgdir/opt/VocalShaper/FileRegistrator $pkgdir/usr/bin/FileRegistrator
+        ln -s /opt/VocalShaper/FileRegistrator "$pkgdir/usr/bin/FileRegistrator"
     fi
-    ln -s $pkgdir/opt/VocalShaper/PluginSearcher $pkgdir/usr/bin/PluginSearcher
+    ln -s /opt/VocalShaper/PluginSearcher "$pkgdir/usr/bin/PluginSearcher"
 }
