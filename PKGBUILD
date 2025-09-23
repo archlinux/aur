@@ -1,7 +1,7 @@
 # Maintainer: ocus
 
 pkgname=tixeoclient
-pkgver=17.1.11.2
+pkgver=17.1.11.3
 pkgrel=1
 pkgdesc="Tixeo secure video conferencing client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libxss' 'libsecret' 'libappindicator-gtk3' 'zlib' 'dbus-glib' 'gtk3' '
 makedepends=()
 optdepends=('vlc: MediaPlayer')
 source=("http://packages.tixeo.com/debian/pool/non-free/t/tixeoclient/${pkgname}_${pkgver}_amd64.deb")
-md5sums=('7f54552d8a9bfc3292411da9928b1b8b')
+md5sums=('da1713fdafbc31e3da25c38d7f2f27f0')
 
 package() {
 	tar -C "${pkgdir}" -xf data.tar.gz
