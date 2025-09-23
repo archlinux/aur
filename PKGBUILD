@@ -5,7 +5,7 @@
 pkgbase=libavio
 pkgname=('python-avio')
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 url='https://github.com/sr99622/libavio'
 license=('Apache-2.0')
 arch=('i686' 'x86_64')
@@ -17,18 +17,21 @@ makedepends=('cmake'
              'libavutil.so'
              'libswresample.so'
              'libswscale.so'
-             'pybind11'
              'python-build'
              'python-installer'
              'python-setuptools'
              'python-wheel'
              'sdl2')
-source=("git+${url}.git#commit=6b1b89db63b5c3b516a38685fc36b264970c97fd")
-sha256sums=('bf3f87c9756ed121e7658435958739f1127558a81c3c430ed6d49c4c7448c923')
+source=("git+${url}.git#commit=0fa1ccb5e7ec77199c9365e6a6e681a2570506ed"
+        'git+https://github.com/pybind/pybind11.git')
+sha256sums=('18876404d0cb7fdecb498aae9d7ad956053e981755cc198ae0268da4279b056e'
+            'SKIP')
 
 prepare() {
 	cd ${srcdir}/${pkgbase}
-	sed -e 's,add_subdirectory(pybind11),find_package(pybind11 REQUIRED),' -i CMakeLists.txt
+	git submodule init pybind11
+	git config submodule.pybind11.url "${srcdir}/pybind11"
+	git -c protocol.file.allow=always submodule update pybind11
 }
 
 pkgver() {
