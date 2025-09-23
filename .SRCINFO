@@ -1,7 +1,7 @@
 pkgbase = yaak-beta-bin
 	pkgdesc = Offline and Git friendly API client for HTTP, GraphQL, WebSockets, SSE, and gRPC (Pre-compiled version)
 	pkgver = 2025.6.0
-	pkgrel = 0.2
+	pkgrel = 0.5
 	url = https://yaak.app/
 	arch = x86_64
 	license = MIT
@@ -24,9 +24,9 @@ pkgbase = yaak-beta-bin
 	conflicts = yaak-git
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = yaak-beta-bin-2025.6.0-beta.2.deb::https://github.com/mountain-loop/yaak/releases/download/v2025.6.0-beta.2/yaak_2025.6.0-beta.2_amd64.deb
-	source_x86_64 = yaak-beta-bin-2025.6.0.LICENSE::https://raw.githubusercontent.com/mountain-loop/yaak/refs/tags/v2025.6.0-beta.2/LICENSE
-	b2sums_x86_64 = 56488cf0b737ec50a85ce910dedbba6300b141f4bf74ac265d06010255d66365e2b8a363c3634f729470439f2f3174a5fd1abe09c3c16ee9c4316c9dc3c079f6
+	source_x86_64 = yaak-beta-bin-2025.6.0-beta.5.deb::https://github.com/mountain-loop/yaak/releases/download/v2025.6.0-beta.5/yaak_2025.6.0-beta.5_amd64.deb
+	source_x86_64 = yaak-beta-bin-2025.6.0.LICENSE::https://raw.githubusercontent.com/mountain-loop/yaak/refs/tags/v2025.6.0-beta.5/LICENSE
+	b2sums_x86_64 = fb4e17c0582e7a16739c79c240515128ce8766cec19484453f33eb2eb68c182a421a816bf69822575f3cb4a73c230dcafbd6498c32f02acb09ca2624b3f1965d
 	b2sums_x86_64 = 011fb406bfe4a8944efbae1f9cfa420fe421f1de3ae628802548676a1fe1318850a5f98c60cd29899efe3946dec329b6607f04917e966808f62f9e4ecaaea13b
 
 pkgname = yaak-beta-bin
