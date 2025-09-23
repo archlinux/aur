@@ -18,7 +18,7 @@ options=("!strip" "!debug")
 source=(
   "https://github.com/TibixDev/winboat/releases/download/v${pkgver}/winboat-${pkgver}-amd64.deb"
 )
-sha256sums=('363f5ce2de0787aeee4c40601cbf787f50ab0b372269dd4b0ea542a7c8deee1a')
+sha256sums=('0498fe0151764d40a734e50ff4383866413c7382013500d82d5e1f6cc43f8e23')
 
 prepare() {
     bsdtar -xf data.tar.xz
