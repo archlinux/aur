@@ -1,0 +1,17 @@
+pkgbase = cyphernetes
+	pkgdesc = A Kubernetes Query Language
+	pkgver = 0.18.2
+	pkgrel = 1
+	url = https://github.com/AvitalTamir/cyphernetes
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	source = https://github.com/AvitalTamir/cyphernetes/archive/v0.18.2/cyphernetes-0.18.2.tar.gz
+	sha512sums = 6fb948ac74f9fb9dd87ff730fdee8305b0d967e5eaee94853f407148070f15fb4fa91692841d02c61d02180accbf8cbd30a88dd20cc5a70aa102519836e9d284
+	b2sums = e0e58992b2392db4f79476168a81fc047d9c8bbf3f9ae69924cd9693f65f7f07d91fd859a1da14a9c0c2a4d28232dbfeccbd59d6fab71889b21f00b462aaf590
+
+pkgname = cyphernetes
