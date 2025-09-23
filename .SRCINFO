@@ -7,7 +7,6 @@ pkgbase = python-ffmpeg-python
 	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-mock
-	checkdepends = python-pytest-runner
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

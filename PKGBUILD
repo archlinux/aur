@@ -27,7 +27,6 @@ makedepends=(
 checkdepends=(
   'python-pytest'
   'python-pytest-mock'
-  'python-pytest-runner' # AUR
 )
 
 conflicts=('python-python-ffmpeg')
