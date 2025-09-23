@@ -2,13 +2,14 @@
 
 pkgname=gozen-bin
 pkgver=0.4.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
 license=('GPL3')
 provides=('gozen')
 conflicts=('gozen' 'gozen-git')
+options=(!strip)
 
 # Adjust this to match the current release file
 _appimage="gozen-v${pkgver}-alpha-x86_64.AppImage"
