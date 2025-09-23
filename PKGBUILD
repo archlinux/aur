@@ -1,6 +1,6 @@
 # Maintainer: killab33z <killab33z @ hispagatos-dot-org>
 pkgname=usenet_reborn
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A terminal‑based (TUI) NNTP (Usenet) client written in Rust."
 arch=('any')
@@ -8,14 +8,14 @@ url="https://git.sr.ht/~rek2/usenet_reborn"
 license=(GPL-3.0-only)
 makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('2b7f0b376815048c2244a2a61b5492c7eeefe98ee782db58cabdd4424208eeb49eca6bce71029d60a8268ff25ceabded69d82964b197e3a7d690624834df156d')
+sha512sums=('5dd51b2c3667e141172dacd8d78728d8cbd24385a58f1afbbc8d8a9e475c41297f2c4ec4176449121ca9311ef72f0f89f9a36422eb98d8fb709bdab9c31e2057')
 options=(!debug !lto)
 
 # https://wiki.archlinux.org/title/Rust_package_guidelines
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
