@@ -11,5 +11,8 @@ pkgbase = rclone-bisync-service
 	source = rclone-bisync@.timer
 	source = rclone-bisync-init.sh
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = rclone-bisync-service
