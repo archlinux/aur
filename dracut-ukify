@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/usr/bin/bash
+set -e
 
 source /usr/share/makepkg/util/message.sh
 
@@ -125,11 +126,57 @@ function sanity_check() {
 }
 
 function parse_cmdline() {
-	grep --invert-match '^[[:blank:]]*#[^!]' "$1" | tr '\n' ' '
+  grep --invert-match '^[[:blank:]]*#[^!]' "$1" | tr '\n' ' '
+}
+
+function remove_uki() {
+  local pkgbase="$1"
+
+  path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
+  version=$(basename "${path%/pkgbase}")
+  for variant in "${!ukify_variants[@]}"; do
+    IMAGE="$(uki_path "$pkgbase" "$version" "$variant")"
+    if [ -f "$IMAGE" ]; then
+      msg "Removing $IMAGE..."
+      rm -f "$IMAGE"
+    fi
+  done
+}
+
+function cleanup() {
+  local exitcode=$?
+  for file in "$@"; do
+    rm -f "$file" 
+  done
+  return $exitcode
 }
 
 declare -A kernels
-update_all=0
+kernels_all=0
+
+function match_kernels() {
+  check_root
+
+  (( kernels_all )) || while read -r line; do
+    if [[ $line =~ ^usr/lib/modules/([^/]+)/pkgbase$ ]]; then
+	  read -r pkgbase < "/${line}"
+	  kernels["${pkgbase}"]="${BASH_REMATCH[1]}"
+	else
+	  kernels_all=1
+	  break 
+	fi
+  done
+  
+  if (( kernels_all )); then
+    declare -gA kernels=()
+    for candidate in /usr/lib/modules/*; do
+      [ -f "$candidate/pkgbase" ] || continue
+      if read -r pkgbase &> /dev/null < "$candidate/pkgbase"; then      
+        kernels["${pkgbase}"]="$(basename "$candidate")"
+      fi
+    done
+  fi
+}
 
 while getopts ":hag:sxyz" arg; do
   case ${arg} in
@@ -149,7 +196,8 @@ while getopts ":hag:sxyz" arg; do
       fi
       ;;
     a)
-      update_all=1
+      kernels_all=1
+      match_kernels
       ;;
     x)
       check_root
@@ -160,21 +208,10 @@ while getopts ":hag:sxyz" arg; do
       exit 0
       ;;
     y)
-      check_root
       sanity_check 0
-      while read -r line; do
-        if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-          read -r pkgbase < "/${line}"
-          path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
-          version=$(basename "${path%/pkgbase}")
-          for variant in "${!ukify_variants[@]}"; do
-            IMAGE="$(uki_path "$pkgbase" "$version" "$variant")"
-            if [ -f "$IMAGE" ]; then
-              msg "Removing $IMAGE..."
-              rm -f "$IMAGE"
-            fi
-          done
-        fi
+      match_kernels
+      for kernel in "${!kernels[@]}"; do
+        remove_uki "$kernel"
       done
       exit 0
       ;;
@@ -183,16 +220,8 @@ while getopts ":hag:sxyz" arg; do
       exit 0
       ;;
     z)
-      check_root
-      while read -r line; do
-        if [[ $line =~ ^usr/lib/modules/([^/]+)/pkgbase$ ]]; then
-          read -r pkgbase < "/${line}"
-          kernels["${pkgbase}"]="${BASH_REMATCH[1]}"
-        else
-          update_all=1
-          break 
-        fi
-      done
+      sanity_check 0   
+      match_kernels
       ;;
     h)
       usage
@@ -202,18 +231,6 @@ while getopts ":hag:sxyz" arg; do
       ;;
   esac
 done
-
-sanity_check 0
-
-if (( update_all )); then
-  declare -A kernels=()
-  for candidate in /usr/lib/modules/*; do
-    [ -f "$candidate/pkgbase" ] || continue
-    if read -r pkgbase &> /dev/null < "$candidate/pkgbase"; then
-      kernels["${pkgbase}"]="$(basename "$candidate")"
-    fi
-  done
-fi
 
 function gen_image() {
   check_root
@@ -231,11 +248,14 @@ function gen_image() {
     read -r pkgbase < "$path"
 
     local initrd=$(mktemp --tmpdir ukify.XXXXXXXXXX)
+    trap "cleanup \"$initrd\"" ERR EXIT
 
     msg2 "Building initrd image %s (%s)" "$kernel" "$version_name"
     dracut -q -f --no-hostonly-cmdline --no-uefi --kver "${version}" ${ukify_variants[$variant]} "$initrd"
 
     local os_release=$(mktemp --tmpdir ukify.XXXXXXXXXX)
+    trap "cleanup \"$initrd\" \"$os_release\"" ERR EXIT
+
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
@@ -287,6 +307,7 @@ function gen_image() {
     # Remove temporary files
     rm "$initrd"
     rm "$os_release"
+    trap - ERR EXIT
 
     # Mark image as default if needed
     if [[ "$pkgbase" == "$default_kernel_package" && "$variant" == "default" ]]; then
