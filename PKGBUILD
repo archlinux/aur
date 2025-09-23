@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder
-pkgver=r1171.e4b801f
+pkgver=r1173.037b215
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
     'linux-firmware-intel: Required to record your screen on Intel Skylake or later iGPUs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('863ad1910ad7a14048d7bd35093c9b60028589c07c097baca30d9c1303467ccd52235e9e1933c1e817c1fd25119e3c785e633e4b39a123a026efd28aa48d8f89')
+sha512sums=('0962cf1e77a2e8b4043bf2c077685995a230cf7ed3a9716af7fc095cb57a3cad1490e4490d2febab61d7668b926a17f3f60f12de49490f9506e038f265aaff6e')
 install="${pkgname}.install" # setcap cap_sys_admin (gsr-kms-server)
 
 build() {
