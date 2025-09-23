@@ -1,4 +1,5 @@
 [winboat-bin]
-source = "git"
-git = "https://github.com/TibixDev/winboat.git"
+source = "github"
+github = "TibixDev/winboat"
 prefix = "v"
+use_latest_release = true
