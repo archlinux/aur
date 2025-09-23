@@ -2,7 +2,7 @@
 # https://wiki.archlinux.org/index.php/Rust_package_guidelines
 
 pkgname=agate
-pkgver=3.3.18
+pkgver=3.3.19
 pkgrel=1
 pkgdesc="Simple static file server for the Gemini network protocol, written in Rust"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "agate.service"
 )
 options=("!lto") # see: https://github.com/briansmith/ring/issues/1444
-b2sums=('d27c91df01050967dbb7ef3374939231054d5f4bdeaab446d55932518d6a3a1dc1fc4f43739e1b0318d829b23392773ede01c551ee5320dc3788e21434e7eafa'
+b2sums=('2868bf5c4b4fee9b9fd07e20def823545d2e5c46e7b91a4dd795c9d03dad06fd761b2a6bc19a720b2723c407fc5ff6f0b2b7acb2106b00703ce76de6811359d8'
         'f60db8626a23def1801293eb6e7b3a0431fddcf8691fb886b32dcb9dc3f1931c252b967794899e557d8f8b8f33e14ef785cc38f22bae95981ba6929823b5293e'
         'c11461e5f4a3b5dd156fa0be507752f11174acc0b558e76afbccb1e5d5f6d507b6b3c4708142535b872c7380d1a3f47165e5abe89571b8e6b092d0a7c2fdad4f'
         '1365e0b682948035a31a85add493c0a0f9adba2fb6c93958e1693917eb1980e3a35aa08033f2475223654113d35e7136107fbf206c41cd0ca721ed0eaf5354fb'
