@@ -2,7 +2,7 @@
 
 pkgname=gozen-bin
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -29,6 +29,7 @@ package() {
 	wget -O gozen.desktop "https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/assets/linux/gozen.desktop"
 	wget -O gozen.png https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.png
 	wget -O gozen.svg https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.svg
+	wget -O LICENSE https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/LICENSE
 
 	# Make a different desktop file for the -git build.
 	sed -i 's/^Name=GoZen$/Name=GoZen-bin/' gozen.desktop

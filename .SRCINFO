@@ -1,7 +1,7 @@
 pkgbase = gozen-bin
 	pkgdesc = A minimalistic video editor (binary AppImage release)
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
 	license = GPL3
