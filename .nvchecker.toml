@@ -1,0 +1,4 @@
+[pcompiler-qt5]
+source = "git"
+git = "https://github.com/kipr/pcompiler.git"
+prefix = "v"

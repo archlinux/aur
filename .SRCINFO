@@ -1,0 +1,19 @@
+pkgbase = pcompiler-qt5
+	pkgdesc = Precedence compiler will attempt to automatically compile source code
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kipr/pcompiler
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake>=2.8.12
+	depends = gcc-libs
+	depends = glibc
+	depends = libkar-qt5
+	depends = qt5-base
+	provides = libpcompiler_qt5.so
+	source = pcompiler-1.0.0.tar.gz::https://github.com/kipr/pcompiler/archive/refs/tags/v1.0.0.tar.gz
+	source = pcompiler_qt5.patch
+	b2sums = 0c1a00b1e1ae31eb00a4070ed49e5a371af4b8645902e74cc1ec8a019b004b6abb109f46528f64ac9428a9f4bc582b1901c72de92dc6fdb7df67f290ed55bd82
+	b2sums = 6a4b12be396f5c42619dcec2b40c24942cbe991227c9fc5f811e33a392cfec765ac3def9856cdd31b461ad80237fc1f1e9dfa78269814c53b84a10aa837ae299
+
+pkgname = pcompiler-qt5

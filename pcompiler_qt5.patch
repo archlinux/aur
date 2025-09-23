@@ -1,0 +1,95 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ option(docker_cross "Cross compile option for docker container" OFF)
+ cmake_minimum_required(VERSION 2.8.12)
+ 
+-find_package(Qt6 REQUIRED COMPONENTS Core)
++find_package(Qt5 REQUIRED COMPONENTS Core)
+ 
+ include_directories(/usr/local/include)
+ 
+@@ -20,7 +20,7 @@
+ set(SOURCES ${SOURCES} ${COMPILER_SOURCES})
+ set(MOC_SOURCES ${INCLUDES})
+ set(LIBKAR_ROOT ${CMAKE_SOURCE_DIR}/../libkar)
+-qt6_wrap_cpp(SOURCES ${MOC_SOURCES})
++qt5_wrap_cpp(SOURCES ${MOC_SOURCES})
+ 
+ add_definitions(-Wall)
+ 
+@@ -33,8 +33,8 @@
+ endif(docker_cross)
+ 
+ set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
+-add_library(pcompiler SHARED ${SOURCES} ${INCLUDES})
+-target_link_libraries(pcompiler Qt6::Core)
++add_library(pcompiler_qt5 SHARED ${SOURCES} ${INCLUDES})
++target_link_libraries(pcompiler_qt5 Qt5::Core)
+ 
+ 
+ link_directories(${pcompiler_SOURCE_DIR}/lib)
+@@ -54,8 +54,8 @@
+ set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/../prefix)
+ endif()
+ 
+-install(FILES ${INCLUDES} DESTINATION include/pcompiler)
+-install(TARGETS pcompiler DESTINATION lib)
++install(FILES ${INCLUDES} DESTINATION include/pcompiler_qt5)
++install(TARGETS pcompiler_qt5 DESTINATION lib)
+ 
+ add_subdirectory(tools)
+ 
+--- a/src/options.cpp
++++ b/src/options.cpp
+@@ -24,7 +24,7 @@
+ 	);
+ 
+ 	foreach(const QString &key, settings.childKeys()) {
+-		if(settings.value(key).typeId() == QVariant::String) {
++		if(settings.value(key).type() == QVariant::String) {
+ 			const QString previous = ret.take(key).toString();
+ 			ret.insert(key, previous + " " + settings.value(key).toString());
+ 		}
+@@ -80,7 +80,7 @@
+ void Options::replace(const QString &str, const QString &value)
+ {
+ 	foreach(const QString &key, keys()) {
+-		if(this->value(key).typeId() != QVariant::String) continue;
++		if(this->value(key).type() != QVariant::String) continue;
+ 		const QString replacement = take(key).toString().replace(str, value);
+ 		insert(key, replacement);
+ 	}
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -2,15 +2,15 @@
+ 
+ cmake_minimum_required(VERSION 2.8.12)
+ 
+-find_package(Qt6Core REQUIRED)
++find_package(Qt5Core REQUIRED)
+ 
+ if(WIN32)
+ include_directories(${CMAKE_INSTALL_PREFIX}/include)
+ link_directories(${CMAKE_INSTALL_PREFIX}/lib)
+ endif()
+ 
+-add_executable(pco pco.cpp)
+-target_link_libraries(pco kar pcompiler)
++add_executable(pco-qt5 pco.cpp)
++target_link_libraries(pco-qt5 kar_qt5 pcompiler_qt5)
+ #qt6_use_modules(pco Core)
+ 
+-install(TARGETS pco RUNTIME DESTINATION bin)
++install(TARGETS pco-qt5 RUNTIME DESTINATION bin)
+--- a/tools/pco.cpp
++++ b/tools/pco.cpp
+@@ -5,7 +5,7 @@
+ #include <pcompiler/compilers.hpp>
+ #include <pcompiler/output.hpp>
+ 
+-#include <kar/kar.hpp>
++#include <kar_qt5/kar.hpp>
+ 
+ #include <QCoreApplication>
+ #include <QCommandLineParser>
