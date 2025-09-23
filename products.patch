@@ -1,7 +1,7 @@
 diff --unified --recursive --text a/system76driver/products.py b/system76driver/products.py
---- a/system76driver/products.py	2025-07-30 17:39:21.889460448 -0600
-+++ b/system76driver/products.py	2025-07-30 17:41:18.664643668 -0600
-@@ -29,33 +29,28 @@
+--- a/system76driver/products.py	2025-09-23 11:25:11.048039603 -0600
++++ b/system76driver/products.py	2025-09-23 11:31:11.823037391 -0600
+@@ -29,26 +29,22 @@
      'addw1': {
          'name': 'Adder WS',
          'drivers': [
@@ -26,8 +26,9 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
          'drivers': [
 -            actions.blacklist_nvidia_i2c,
              actions.blacklist_psmouse,
+             actions.nvidia_coarse_power_management,
          ],
-     },
+@@ -56,7 +52,6 @@
      'addw5': {
          'name': 'Adder WS',
          'drivers': [
@@ -35,7 +36,7 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
          ],
      },
  
-@@ -376,63 +371,54 @@
+@@ -381,63 +376,54 @@
      'gaze14': {
          'name': 'Gazelle',
          'drivers': [
@@ -99,7 +100,7 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
          ],
      },
      'gazu1': {
-@@ -801,27 +787,23 @@
+@@ -806,27 +792,23 @@
          'name': 'Oryx Pro',
          'drivers': [
              actions.hda_probe_mask,
@@ -127,7 +128,7 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
              actions.blacklist_psmouse,
              actions.i915_initramfs,
          ],
-@@ -829,7 +811,6 @@
+@@ -834,7 +816,6 @@
      'oryp9': {
          'name': 'Oryx Pro',
          'drivers': [
@@ -135,7 +136,7 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
              actions.i915_initramfs,
              actions.blacklist_psmouse,
          ],
-@@ -837,7 +818,6 @@
+@@ -842,7 +823,6 @@
      'oryp10': {
          'name': 'Oryx Pro',
          'drivers': [
@@ -143,7 +144,7 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
              actions.i915_initramfs,
              actions.blacklist_psmouse,
          ],
-@@ -845,7 +825,6 @@
+@@ -850,7 +830,6 @@
      'oryp11': {
          'name': 'Oryx Pro',
          'drivers': [
@@ -151,7 +152,7 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
              actions.i915_initramfs,
              actions.remove_blacklist_psmouse,
          ],
-@@ -853,7 +832,6 @@
+@@ -858,7 +837,6 @@
      'oryp12': {
          'name': 'Oryx Pro',
          'drivers': [
@@ -159,7 +160,22 @@ diff --unified --recursive --text a/system76driver/products.py b/system76driver/
              actions.i915_initramfs,
              actions.remove_blacklist_psmouse,
          ],
-@@ -1131,7 +1109,6 @@
+@@ -866,7 +844,6 @@
+     'oryp13': {
+         'name': 'Oryx Pro',
+         'drivers': [
+-            actions.blacklist_nvidia_i2c,
+         ],
+     },
+ 
+@@ -1135,14 +1112,12 @@
+         'drivers': [
+             actions.firefox_framerate144,
+             actions.firefox_unsetwebrender,
+-            actions.nvidia_forcefullcompositionpipeline,
+             actions.i8042_nomux,
+         ],
+     },
      'serw13': {
          'name': 'Serval WS',
          'drivers': [
