@@ -1,7 +1,7 @@
 pkgbase = par3cmdline-git
 	pkgdesc = PAR 3.0 compatible file verification and repair tool
 	pkgver = 0.0.1.r289.a347d92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Parchive/par3cmdline/
 	arch = x86_64
 	license = LGPL-2.1-or-later
