@@ -1,5 +1,5 @@
-*** /dev/null	2025-09-20 04:00:36.477747926 +0200
---- Roo-Code-3.28.4-patched/packages/types/src/providers/gemini-cli.ts	2025-09-20 12:28:03.752562532 +0200
+*** /dev/null	2025-09-23 19:18:40.589312942 +0200
+--- Roo-Code-3.28.7-patched/packages/types/src/providers/gemini-cli.ts	2025-09-24 08:23:34.084001235 +0200
 ***************
 *** 0 ****
 --- 1,120 ----
@@ -123,8 +123,8 @@
 + 		requiredReasoningBudget: true,
 + 	},
 + } as const satisfies Record<string, ModelInfo>
-*** Roo-Code-3.28.4/packages/types/src/providers/index.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/packages/types/src/providers/index.ts	2025-09-20 12:28:03.752606462 +0200
+*** Roo-Code-3.28.7/packages/types/src/providers/index.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/packages/types/src/providers/index.ts	2025-09-24 08:23:34.084001235 +0200
 ***************
 *** 8,13 ****
 --- 8,14 ----
@@ -135,8 +135,8 @@
   export * from "./glama.js"
   export * from "./groq.js"
   export * from "./huggingface.js"
-*** Roo-Code-3.28.4/src/api/index.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/api/index.ts	2025-09-20 12:28:03.752665827 +0200
+*** Roo-Code-3.28.7/src/api/index.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/api/index.ts	2025-09-24 08:23:34.084001235 +0200
 ***************
 *** 15,20 ****
 --- 15,21 ----
@@ -158,8 +158,8 @@
   		case "openai-native":
   			return new OpenAiNativeHandler(options)
   		case "deepseek":
-*** /dev/null	2025-09-20 04:00:36.477747926 +0200
---- Roo-Code-3.28.4-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-09-20 12:28:03.752791682 +0200
+*** /dev/null	2025-09-23 19:18:40.589312942 +0200
+--- Roo-Code-3.28.7-patched/src/api/providers/__tests__/gemini-cli.spec.ts	2025-09-24 08:23:34.084001235 +0200
 ***************
 *** 0 ****
 --- 1,329 ----
@@ -492,8 +492,8 @@
 + 		})
 + 	})
 + })
-*** /dev/null	2025-09-20 04:00:36.477747926 +0200
---- Roo-Code-3.28.4-patched/src/api/providers/gemini-cli.ts	2025-09-20 12:28:03.752937720 +0200
+*** /dev/null	2025-09-23 19:18:40.589312942 +0200
+--- Roo-Code-3.28.7-patched/src/api/providers/gemini-cli.ts	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 0 ****
 --- 1,419 ----
@@ -916,8 +916,8 @@
 + 		return super.countTokens(content)
 + 	}
 + }
-*** Roo-Code-3.28.4/src/api/providers/index.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/api/providers/index.ts	2025-09-20 12:28:03.752988775 +0200
+*** Roo-Code-3.28.7/src/api/providers/index.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/api/providers/index.ts	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 9,14 ****
 --- 9,15 ----
@@ -928,8 +928,8 @@
   export { GlamaHandler } from "./glama"
   export { GroqHandler } from "./groq"
   export { HuggingFaceHandler } from "./huggingface"
-*** Roo-Code-3.28.4/src/i18n/locales/ca/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/ca/common.json	2025-09-20 12:28:03.753060013 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/ca/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/ca/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 105,110 ****
 --- 105,120 ----
@@ -949,8 +949,8 @@
   		"cerebras": {
   			"authenticationFailed": "Ha fallat l'autenticació de l'API de Cerebras. Comproveu que la vostra clau d'API sigui vàlida i no hagi caducat.",
   			"accessForbidden": "Accés denegat a l'API de Cerebras. La vostra clau d'API pot no tenir accés al model o funcionalitat sol·licitats.",
-*** Roo-Code-3.28.4/src/i18n/locales/de/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/de/common.json	2025-09-20 12:28:03.753173994 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/de/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/de/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -970,8 +970,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API-Authentifizierung fehlgeschlagen. Bitte überprüfe, ob dein API-Schlüssel gültig und nicht abgelaufen ist.",
   			"accessForbidden": "Cerebras API-Zugriff verweigert. Dein API-Schlüssel hat möglicherweise keinen Zugriff auf das angeforderte Modell oder die Funktion.",
-*** Roo-Code-3.28.4/src/i18n/locales/en/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/en/common.json	2025-09-20 12:28:03.753244045 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/en/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/en/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -991,8 +991,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API authentication failed. Please check your API key is valid and not expired.",
   			"accessForbidden": "Cerebras API access forbidden. Your API key may not have access to the requested model or feature.",
-*** Roo-Code-3.28.4/src/i18n/locales/es/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/es/common.json	2025-09-20 12:28:03.753312909 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/es/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/es/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1012,8 +1012,8 @@
   		"cerebras": {
   			"authenticationFailed": "Falló la autenticación de la API de Cerebras. Verifica que tu clave de API sea válida y no haya expirado.",
   			"accessForbidden": "Acceso prohibido a la API de Cerebras. Tu clave de API puede no tener acceso al modelo o función solicitada.",
-*** Roo-Code-3.28.4/src/i18n/locales/fr/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/fr/common.json	2025-09-20 12:28:03.753388897 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/fr/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/fr/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1033,8 +1033,8 @@
   		"cerebras": {
   			"authenticationFailed": "Échec de l'authentification de l'API Cerebras. Vérifiez que votre clé API est valide et n'a pas expiré.",
   			"accessForbidden": "Accès interdit à l'API Cerebras. Votre clé API peut ne pas avoir accès au modèle ou à la fonction demandée.",
-*** Roo-Code-3.28.4/src/i18n/locales/hi/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/hi/common.json	2025-09-20 12:28:03.753466071 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/hi/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/hi/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1054,8 +1054,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API प्रमाणीकरण विफल हुआ। कृपया जांचें कि आपकी API कुंजी वैध है और समाप्त नहीं हुई है।",
   			"accessForbidden": "Cerebras API पहुंच निषेध। आपकी API कुंजी का अनुरोधित मॉडल या सुविधा तक पहुंच नहीं हो सकती है।",
-*** Roo-Code-3.28.4/src/i18n/locales/id/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/id/common.json	2025-09-20 12:28:03.753540872 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/id/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/id/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1075,8 +1075,8 @@
   		"cerebras": {
   			"authenticationFailed": "Autentikasi API Cerebras gagal. Silakan periksa apakah kunci API Anda valid dan belum kedaluwarsa.",
   			"accessForbidden": "Akses API Cerebras ditolak. Kunci API Anda mungkin tidak memiliki akses ke model atau fitur yang diminta.",
-*** Roo-Code-3.28.4/src/i18n/locales/it/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/it/common.json	2025-09-20 12:28:03.753622796 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/it/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/it/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1096,8 +1096,8 @@
   		"cerebras": {
   			"authenticationFailed": "Autenticazione API Cerebras fallita. Verifica che la tua chiave API sia valida e non scaduta.",
   			"accessForbidden": "Accesso API Cerebras negato. La tua chiave API potrebbe non avere accesso al modello o alla funzione richiesta.",
-*** Roo-Code-3.28.4/src/i18n/locales/ja/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/ja/common.json	2025-09-20 12:28:03.753695221 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/ja/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/ja/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1117,8 +1117,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API認証が失敗しました。APIキーが有効で期限切れではないことを確認してください。",
   			"accessForbidden": "Cerebras APIアクセスが禁止されています。あなたのAPIキーは要求されたモデルや機能にアクセスできない可能性があります。",
-*** Roo-Code-3.28.4/src/i18n/locales/ko/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/ko/common.json	2025-09-20 12:28:03.753768834 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/ko/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/ko/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1138,8 +1138,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API 인증에 실패했습니다. API 키가 유효하고 만료되지 않았는지 확인하세요.",
   			"accessForbidden": "Cerebras API 액세스가 금지되었습니다. API 키가 요청된 모델이나 기능에 액세스할 수 없을 수 있습니다.",
-*** Roo-Code-3.28.4/src/i18n/locales/nl/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/nl/common.json	2025-09-20 12:28:03.753836511 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/nl/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/nl/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1159,8 +1159,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API-authenticatie mislukt. Controleer of je API-sleutel geldig is en niet verlopen.",
   			"accessForbidden": "Cerebras API-toegang geweigerd. Je API-sleutel heeft mogelijk geen toegang tot het gevraagde model of de functie.",
-*** Roo-Code-3.28.4/src/i18n/locales/pl/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/pl/common.json	2025-09-20 12:28:03.753901813 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/pl/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/pl/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1180,8 +1180,8 @@
   		"cerebras": {
   			"authenticationFailed": "Uwierzytelnianie API Cerebras nie powiodło się. Sprawdź, czy twój klucz API jest ważny i nie wygasł.",
   			"accessForbidden": "Dostęp do API Cerebras zabroniony. Twój klucz API może nie mieć dostępu do żądanego modelu lub funkcji.",
-*** Roo-Code-3.28.4/src/i18n/locales/pt-BR/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/pt-BR/common.json	2025-09-20 12:28:03.753970676 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/pt-BR/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/pt-BR/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 106,111 ****
 --- 106,121 ----
@@ -1201,8 +1201,8 @@
   		"cerebras": {
   			"authenticationFailed": "Falha na autenticação da API Cerebras. Verifique se sua chave de API é válida e não expirou.",
   			"accessForbidden": "Acesso à API Cerebras negado. Sua chave de API pode não ter acesso ao modelo ou recurso solicitado.",
-*** Roo-Code-3.28.4/src/i18n/locales/ru/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/ru/common.json	2025-09-20 12:28:03.754052600 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/ru/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/ru/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1222,8 +1222,8 @@
   		"cerebras": {
   			"authenticationFailed": "Ошибка аутентификации Cerebras API. Убедитесь, что ваш API-ключ действителен и не истек.",
   			"accessForbidden": "Доступ к Cerebras API запрещен. Ваш API-ключ может не иметь доступа к запрашиваемой модели или функции.",
-*** Roo-Code-3.28.4/src/i18n/locales/tr/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/tr/common.json	2025-09-20 12:28:03.754139274 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/tr/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/tr/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1243,8 +1243,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API kimlik doğrulama başarısız oldu. API anahtarınızın geçerli olduğunu ve süresi dolmadığını kontrol edin.",
   			"accessForbidden": "Cerebras API erişimi yasak. API anahtarınız istenen modele veya özelliğe erişimi olmayabilir.",
-*** Roo-Code-3.28.4/src/i18n/locales/vi/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/vi/common.json	2025-09-20 12:28:03.754218823 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/vi/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/vi/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 102,107 ****
 --- 102,117 ----
@@ -1264,8 +1264,8 @@
   		"cerebras": {
   			"authenticationFailed": "Xác thực API Cerebras thất bại. Vui lòng kiểm tra khóa API của bạn có hợp lệ và chưa hết hạn.",
   			"accessForbidden": "Truy cập API Cerebras bị từ chối. Khóa API của bạn có thể không có quyền truy cập vào mô hình hoặc tính năng được yêu cầu.",
-*** Roo-Code-3.28.4/src/i18n/locales/zh-CN/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/zh-CN/common.json	2025-09-20 12:28:03.754285312 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/zh-CN/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/zh-CN/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 107,112 ****
 --- 107,122 ----
@@ -1285,8 +1285,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API 身份验证失败。请检查你的 API 密钥是否有效且未过期。",
   			"accessForbidden": "Cerebras API 访问被禁止。你的 API 密钥可能无法访问请求的模型或功能。",
-*** Roo-Code-3.28.4/src/i18n/locales/zh-TW/common.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/i18n/locales/zh-TW/common.json	2025-09-20 12:28:03.754350614 +0200
+*** Roo-Code-3.28.7/src/i18n/locales/zh-TW/common.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/i18n/locales/zh-TW/common.json	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 101,106 ****
 --- 101,116 ----
@@ -1306,8 +1306,8 @@
   		"cerebras": {
   			"authenticationFailed": "Cerebras API 驗證失敗。請檢查您的 API 金鑰是否有效且未過期。",
   			"accessForbidden": "Cerebras API 存取被拒絕。您的 API 金鑰可能無法存取所請求的模型或功能。",
-*** Roo-Code-3.28.4/src/shared/checkExistApiConfig.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/src/shared/checkExistApiConfig.ts	2025-09-20 12:28:03.754414729 +0200
+*** Roo-Code-3.28.7/src/shared/checkExistApiConfig.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/src/shared/checkExistApiConfig.ts	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 5,14 ****
   		return false
@@ -1331,8 +1331,8 @@
   	) {
   		return true
   	}
-*** Roo-Code-3.28.4/webview-ui/src/components/settings/ApiOptions.tsx	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-09-20 12:28:03.754490716 +0200
+*** Roo-Code-3.28.7/webview-ui/src/components/settings/ApiOptions.tsx	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/components/settings/ApiOptions.tsx	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 19,24 ****
 --- 19,25 ----
@@ -1376,8 +1376,8 @@
   			{selectedProvider === "openai" && (
   				<OpenAICompatible
   					apiConfiguration={apiConfiguration}
-*** Roo-Code-3.28.4/webview-ui/src/components/settings/constants.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/components/settings/constants.ts	2025-09-20 12:28:03.754584513 +0200
+*** Roo-Code-3.28.7/webview-ui/src/components/settings/constants.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/components/settings/constants.ts	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 8,13 ****
 --- 8,14 ----
@@ -1408,8 +1408,8 @@
   	{ value: "doubao", label: "Doubao" },
   	{ value: "deepseek", label: "DeepSeek" },
   	{ value: "moonshot", label: "Moonshot" },
-*** /dev/null	2025-09-20 04:00:36.477747926 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-09-20 12:28:03.754642691 +0200
+*** /dev/null	2025-09-23 19:18:40.589312942 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/components/settings/providers/GeminiCli.tsx	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 0 ****
 --- 1,81 ----
@@ -1494,8 +1494,8 @@
 + 		</>
 + 	)
 + }
-*** /dev/null	2025-09-20 04:00:36.477747926 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-09-20 12:28:03.754724615 +0200
+*** /dev/null	2025-09-23 19:18:40.589312942 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/components/settings/providers/__tests__/GeminiCli.spec.tsx	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 0 ****
 --- 1,169 ----
@@ -1668,8 +1668,8 @@
 + 		expect(codeElement).toHaveClass("text-vscode-textPreformat-foreground")
 + 	})
 + })
-*** Roo-Code-3.28.4/webview-ui/src/components/settings/providers/index.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/components/settings/providers/index.ts	2025-09-20 12:28:03.754763796 +0200
+*** Roo-Code-3.28.7/webview-ui/src/components/settings/providers/index.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/components/settings/providers/index.ts	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 6,11 ****
 --- 6,12 ----
@@ -1680,8 +1680,8 @@
   export { Glama } from "./Glama"
   export { Groq } from "./Groq"
   export { HuggingFace } from "./HuggingFace"
-*** Roo-Code-3.28.4/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-09-20 12:28:03.754816038 +0200
+*** Roo-Code-3.28.7/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/components/ui/hooks/useSelectedModel.ts	2025-09-24 08:23:34.087334563 +0200
 ***************
 *** 14,19 ****
 --- 14,21 ----
@@ -1707,11 +1707,11 @@
   		case "deepseek": {
   			const id = apiConfiguration.apiModelId ?? deepSeekDefaultModelId
   			const info = deepSeekModels[id as keyof typeof deepSeekModels]
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/ca/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-09-20 12:28:03.754896775 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/ca/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/ca/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Per defecte: claude",
   			"maxTokensLabel": "Tokens màxims de sortida",
   			"maxTokensDescription": "Nombre màxim de tokens de sortida per a les respostes de Claude Code. El valor per defecte és 8000."
@@ -1733,11 +1733,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/de/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/de/settings.json	2025-09-20 12:28:03.755028566 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/de/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/de/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Standard: claude",
   			"maxTokensLabel": "Maximale Ausgabe-Tokens",
   			"maxTokensDescription": "Maximale Anzahl an Ausgabe-Tokens für Claude Code-Antworten. Standard ist 8000."
@@ -1759,11 +1759,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/en/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/en/settings.json	2025-09-20 12:28:03.755149671 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/en/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/en/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 474,479 ****
---- 474,494 ----
+*** 484,489 ****
+--- 484,504 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximum number of output tokens for Claude Code responses. Default is 8000."
@@ -1785,11 +1785,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/es/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/es/settings.json	2025-09-20 12:28:03.755257715 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/es/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/es/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Por defecto: claude",
   			"maxTokensLabel": "Tokens máximos de salida",
   			"maxTokensDescription": "Número máximo de tokens de salida para las respuestas de Claude Code. El valor predeterminado es 8000."
@@ -1811,11 +1811,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/fr/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-09-20 12:28:03.755364573 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/fr/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/fr/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Défaut : claude",
   			"maxTokensLabel": "Jetons de sortie max",
   			"maxTokensDescription": "Nombre maximum de jetons de sortie pour les réponses de Claude Code. La valeur par défaut est 8000."
@@ -1837,11 +1837,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/hi/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-09-20 12:28:03.755507050 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/hi/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/hi/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "डिफ़ॉल्ट: claude",
   			"maxTokensLabel": "अधिकतम आउटपुट टोकन",
   			"maxTokensDescription": "Claude Code प्रतिक्रियाओं के लिए आउटपुट टोकन की अधिकतम संख्या। डिफ़ॉल्ट 8000 है।"
@@ -1863,11 +1863,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/id/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/id/settings.json	2025-09-20 12:28:03.755641215 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/id/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/id/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 479,484 ****
---- 479,499 ----
+*** 483,488 ****
+--- 483,503 ----
   			"placeholder": "Default: claude",
   			"maxTokensLabel": "Token Output Maks",
   			"maxTokensDescription": "Jumlah maksimum token output untuk respons Claude Code. Default adalah 8000."
@@ -1889,11 +1889,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/it/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/it/settings.json	2025-09-20 12:28:03.755746885 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/it/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/it/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Predefinito: claude",
   			"maxTokensLabel": "Token di output massimi",
   			"maxTokensDescription": "Numero massimo di token di output per le risposte di Claude Code. Il valore predefinito è 8000."
@@ -1915,11 +1915,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/ja/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-09-20 12:28:03.755856117 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/ja/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/ja/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "デフォルト：claude",
   			"maxTokensLabel": "最大出力トークン",
   			"maxTokensDescription": "Claude Codeレスポンスの最大出力トークン数。デフォルトは8000です。"
@@ -1941,11 +1941,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/ko/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-09-20 12:28:03.755962975 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/ko/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/ko/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "기본값: claude",
   			"maxTokensLabel": "최대 출력 토큰",
   			"maxTokensDescription": "Claude Code 응답의 최대 출력 토큰 수. 기본값은 8000입니다."
@@ -1967,11 +1967,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/nl/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-09-20 12:28:03.756082893 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/nl/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/nl/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Standaard: claude",
   			"maxTokensLabel": "Max Output Tokens",
   			"maxTokensDescription": "Maximaal aantal output-tokens voor Claude Code-reacties. Standaard is 8000."
@@ -1993,11 +1993,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/pl/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-09-20 12:28:03.756200436 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/pl/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/pl/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Domyślnie: claude",
   			"maxTokensLabel": "Maksymalna liczba tokenów wyjściowych",
   			"maxTokensDescription": "Maksymalna liczba tokenów wyjściowych dla odpowiedzi Claude Code. Domyślnie 8000."
@@ -2019,11 +2019,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-09-20 12:28:03.756306106 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/pt-BR/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Padrão: claude",
   			"maxTokensLabel": "Tokens de saída máximos",
   			"maxTokensDescription": "Número máximo de tokens de saída para respostas do Claude Code. O padrão é 8000."
@@ -2045,11 +2045,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/ru/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-09-20 12:28:03.756414151 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/ru/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/ru/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "По умолчанию: claude",
   			"maxTokensLabel": "Макс. выходных токенов",
   			"maxTokensDescription": "Максимальное количество выходных токенов для ответов Claude Code. По умолчанию 8000."
@@ -2071,11 +2071,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/tr/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-09-20 12:28:03.756528132 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/tr/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/tr/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Varsayılan: claude",
   			"maxTokensLabel": "Maksimum Çıktı Token sayısı",
   			"maxTokensDescription": "Claude Code yanıtları için maksimum çıktı token sayısı. Varsayılan 8000'dir."
@@ -2097,11 +2097,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/vi/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-09-20 12:28:03.756650425 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/vi/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/vi/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "Mặc định: claude",
   			"maxTokensLabel": "Số token đầu ra tối đa",
   			"maxTokensDescription": "Số lượng token đầu ra tối đa cho các phản hồi của Claude Code. Mặc định là 8000."
@@ -2123,11 +2123,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-09-20 12:28:03.756756095 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/zh-CN/settings.json	2025-09-24 08:23:34.087334563 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "默认：claude",
   			"maxTokensLabel": "最大输出 Token",
   			"maxTokensDescription": "Claude Code 响应的最大输出 Token 数量。默认为 8000。"
@@ -2149,11 +2149,11 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-09-20 12:28:03.756853454 +0200
+*** Roo-Code-3.28.7/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/i18n/locales/zh-TW/settings.json	2025-09-24 08:23:34.090667890 +0200
 ***************
-*** 475,480 ****
---- 475,495 ----
+*** 479,484 ****
+--- 479,499 ----
   			"placeholder": "預設：claude",
   			"maxTokensLabel": "最大輸出 Token",
   			"maxTokensDescription": "Claude Code 回應的最大輸出 Token 數量。預設為 8000。"
@@ -2175,8 +2175,8 @@
   		}
   	},
   	"browser": {
-*** Roo-Code-3.28.4/webview-ui/src/utils/validate.ts	2025-09-19 22:54:49.000000000 +0200
---- Roo-Code-3.28.4-patched/webview-ui/src/utils/validate.ts	2025-09-20 12:28:03.756950813 +0200
+*** Roo-Code-3.28.7/webview-ui/src/utils/validate.ts	2025-09-24 01:13:31.000000000 +0200
+--- Roo-Code-3.28.7-patched/webview-ui/src/utils/validate.ts	2025-09-24 08:23:34.090667890 +0200
 ***************
 *** 88,93 ****
 --- 88,96 ----
