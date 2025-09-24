@@ -1,7 +1,7 @@
 pkgbase = xtensa-lx106-elf-gcc-bin
 	pkgdesc = ESP8266 GCC Cross-compiler Toolchain
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espressif/ESP8266_RTOS_SDK
 	install = xtensa-lx106-elf-gcc.install
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = xtensa-lx106-elf-gcc-bin
 	sha256sums = 0a1804b5e2231c6db8b72af6bc2a0f9a5b6994cfba29956d412651109f13fe7e
 
 pkgname = xtensa-lx106-elf-gcc-bin
-

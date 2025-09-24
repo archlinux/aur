@@ -1,9 +1,9 @@
-﻿# Maintainer: Chenss 'ufbycd@163.com'
+# Maintainer: Chenss 'ufbycd@163.com'
 
 _pkgname=xtensa-lx106-elf-gcc
 pkgname=$_pkgname-bin
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 _espver=2020r3
 pkgdesc="ESP8266 GCC Cross-compiler Toolchain"
 arch=('x86_64')
