@@ -1,0 +1,257 @@
+#!/bin/bash
+
+set -e
+
+message() {
+    echo "[${pkg_name}]: ${1}"
+}
+warning() {
+    echo "[${pkg_name}] WARNING: ${1}"
+}
+error() {
+    echo "[${pkg_name}] ERROR: ${1}"
+}
+
+##############################################################################################
+# Template Errors
+##############################################################################################
+
+check_template() {
+    [[ "${1}" == *"\@"* || "${1}" == *"\@" || "${1}" == "\@"*  ]] 
+}
+template_errored=0
+template_error() {
+    error "\`{$1}\` not specified!"
+    template_errored=1
+}
+template_warned=0
+template_warning_default() {
+    if [ check_template "${2}" ]; then
+        template_error ${1}
+    fi
+    warning "\`${1}\` not specified! Defaulting to '${2}'"
+    template_warned=1
+}
+
+##############################################################################################
+# Templates
+##############################################################################################
+
+# These are variables that the packager should insert values for.
+# If you're installing this software manually without the package manager:
+# ...then make sure to fill in these values before you try to run this script.
+
+# Should be 'calcesara'
+pkg_name='@pkgname@'
+if check_template "${pkg_name}"; then
+    pkg_name='calcesara'
+    template_warning_default 'pkg_name' "${pkg_name}"
+fi
+
+# Version triplet on the form 'x.x.x'.
+# Installer is probably named "install_calceSARAv${pkg_version}.exe"
+pkg_version='@pkgver@'
+if check_template "${pkg_version}"; then
+    template_error 'pkg_version'
+fi
+
+# The name of the folders that CalceSARA uses inside AppData in wine.
+# Installer is probably named "install_${exe_name}.exe"
+exe_name='@exe_name@'
+if check_template "${pkg_version}" && check_template "${exe_name}"; then
+    exe_name="calceSARAv${pkg_version}"
+    template_warning_default 'exe_name' "${exe_name}"
+fi
+
+# License keys are XOR'ed with this key. The key can be found in the source-code.
+# Last time i checked, it's 0xD4.
+keygen_cryptkey=@keygen_cryptkey@
+if check_template "${keygen_cryptkey}"; then
+    template_error 'keygen_cryptkey'
+fi
+
+# Should be 'calce.key'.
+# Name of .key-file that CalceSARA looks for in "${exe_location}".
+keyfile_name='@keyfile_name@'
+if check_template "${keyfile_name}"; then
+    keyfile_name="calce.key"
+    template_warning_default 'keyfile_name' "${keyfile_name}"
+fi
+
+# Common data will be stored under this directory.
+# If you're installing this locally, maybe use "$HOME/.local/share"
+# If you're installing it globally, "/opt" is a good choice
+shared_data_prefix='@shared_data_prefix@'
+if check_template "${shared_data_prefix}"; then
+    template_error 'shared_data_prefix'
+fi
+
+# List of command options shown for CLI help.
+option_help_list='@option_help_list@'
+if check_template "${option_help_list}"; then
+    template_warning 'option_help_list'
+fi
+
+##############################################################################################
+# Check templates
+##############################################################################################
+
+template_tip='Please fill in all templated values (surrounded by @) in the launch-script!'
+if [ ${template_errored} -eq 1 ]; then
+    error ${template_tip}
+    exit 1
+elif [ ${template_warned} -eq 1 ]; then
+    warning ${template_tip}
+fi
+
+##############################################################################################
+# Usage
+##############################################################################################
+
+usage_message() {
+    message "${output_prefix}Available options for `${pkg_name}` are:${option_help_list}"
+}
+usage_error() {
+    error "${1}"
+    usage_message
+    exit 1
+}
+
+###############################################################################################
+# Checkpoint
+###############################################################################################
+
+#@check@
+
+###############################################################################################
+# Parse arguments
+###############################################################################################
+
+if [ "${#}" -ne 1 ]; then
+    usage_error "${pkg_name} expects 1 argument."
+fi
+
+# CLI options are also templated!
+case ${1} in #Options:@option_cases@ 
+    *) usage_error "Invalid argument `${1}`.";;
+esac
+
+###############################################################################################
+# Environment
+###############################################################################################
+
+export WINEPREFIX="${HOME}/.local/share/wineprefixes/${pkg_name}"
+export WINEDEBUG="${WINEDEBUG:-fixme-all}"
+
+###############################################################################################
+# Shared data
+###############################################################################################
+
+shared_data_location="${shared_data_prefix}/${pkg_name}"
+installer_exe="install_${exe_name}.exe"
+installer_exe_location="${shared_data_location}/${installer_exe}"
+key_template_location="${shared_data_location}/${keyfile_name}.template"
+
+###############################################################################################
+# User data
+###############################################################################################
+
+fonts_location="${WINEPREFIX}/drive_c/windows/Fonts"
+appdata="${WINEPREFIX}/drive_c/users/${USER}/AppData"
+start_menu_location="${appdata}/Roaming/Microsoft/Windows/Start Menu"
+lnk_full="${start_menu_location}/Programs/${exe_name}/${lnk}.lnk"
+exe_location="${appdata}/Local/${exe_name}"
+key_destination="${exe_location}/${keyfile_name}"
+
+###############################################################################################
+# Keygen
+###############################################################################################
+
+xor_cipher() {
+    plaintext="${1}"
+    ciphertext=""
+    for ((i=0; i < ${#plaintext}; i++ ))
+    do
+        printf -v ord "%d" "'${plaintext:$i:1}"
+        printf -v tmp '%03o' "$((ord ^ ${keygen_cryptkey}))"
+        printf -v tmp "\\${tmp}"
+        ciphertext+=${tmp}
+    done
+    echo "${ciphertext}"
+}
+
+machine_id() {
+    # Workaround because sometimes the official keys don't work in wine for some reason.
+    # The key needs to match the output of `wmic csproduct get UUID` exactly.
+    # Asking for a key by email will give you an invalid key when this function misbehaves in wine.
+    # (...which it does, sometimes)
+    # Sorry CALCE, University of Maryland. This has to be done because otherwise it wont work.
+    # You can either make your encryption more difficult to reverse-engineer,
+    # ...and as a consequense, break support with wine,
+    # ...or fix your own damn keygen.
+    wine cmd /c wmic csproduct get UUID \
+        | tail -n 1 \
+        | sed 's/^[[:space:]]*\|[[:space:]]*$//g'
+}
+
+keygen_cleartext() {
+    machine_id="$(machine_id | sed 's/[]\\/$*.^[]/\\&/g')"
+    # Merry christmas
+    year=9999 
+    month=12
+    day=24
+    cat ${key_template_location} \
+        | sed "s/£machine_id£/${machine_id}/g" \
+        | sed "s/£year£/${year}/g" \
+        | sed "s/£month£/${month}/g" \
+        | sed "s/£day£/${day}/g"
+}
+
+keygen() {
+    xor_cipher "$(keygen_cleartext)"
+}
+
+###############################################################################################
+# Installation
+###############################################################################################
+
+install_key() {
+    echo "$(keygen)" > ${key_destination}   
+}
+
+install_fonts() {
+    if [[ ! -f "${fonts_location}/corefonts.installed" ]]; then
+        # Otherwise all text will just be rectangles
+        echo "${output_prefix}Installing corefonts in WINEPREFIX=${WINEPREFIX}..."
+        winetricks corefonts
+    fi
+}
+
+install() {
+    echo "${output_prefix}Installing CalceSARA in WINEPREFIX=${WINEPREFIX}..."
+    install_fonts &
+    wine "${installer_exe_location}" /S
+    install_key
+    wait
+}
+
+###############################################################################################
+# Launch
+###############################################################################################
+
+launch() {
+    wine "${lnk_full}"
+}
+
+install_launch() {
+    install && launch
+}
+
+if [[ ! -f "${lnk_full}" ]]; then
+    install_launch
+else
+    install_key &
+    install_fonts
+    wait
+    launch || install_launch
+fi
