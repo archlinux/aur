@@ -4,7 +4,7 @@
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
 
 pkgname=kibana
-pkgver=9.1.3
+pkgver=9.1.4
 pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
@@ -20,7 +20,7 @@ source=(https://artifacts.elastic.co/downloads/${pkgname}/${pkgname}-${pkgver}-l
         tmpfile.conf
         user.conf)
 
-sha512sums=('6d03ea126367c282d4965c0afc0959f4e433be2506238c10a94b69e55d44d97592d35e66e6e83b2f313d9f404f5b57cf8b06b78e37a2d15026adf999a55b9e44'
+sha512sums=('f6e248253254bc30a96c63d28547459cc8c2dd957abb764fdf2a7ef71a060996bdb62b5a2636934d46802c8b0c2f805576cabc4a8d162270c786fe718673bb9f'
             'SKIP'
             '3002f529c0960f1a0c233f7589819ed9c06c8ec6539ef416529d212bd1657d61bf0662b954b2b2dbff8a33cea2d545ea34e06df9088590156564e08bfc20216b'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
