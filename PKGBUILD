@@ -1,19 +1,18 @@
-
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=dream-prompter
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="GIMP Plugin which integrates Google's Nano Banana AI for image creation and editing"
+pkgdesc="AI-powered GIMP plugin for image generation and editing using multiple Replicate models"
 arch=('x86_64')
 url='https://github.com/zquestz/dream-prompter'
 license=('MIT')
-depends=('gimp>=3.0' 'python>=3.8' 'python-google-genai')
+depends=('gimp>=3.0' 'python>=3.8' 'python-replicate-git')
 makedepends=('git' 'gettext' 'python')
 provides=('dream-prompter')
 conflicts=('dream-prompter')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zquestz/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('94a986874b86b61e340ca0f0def28813e9239506ed67277e21e4c7798d732ac7')
+sha256sums=('0d31c025722276e10328b017330c9363a0b64c89873d4c22afacac28822a5603')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -26,6 +25,7 @@ package() {
 
   install -d "${pkgdir}/usr/lib/gimp/3.0/plug-ins/${pkgname}"
   install -m644 *.py "${pkgdir}/usr/lib/gimp/3.0/plug-ins/${pkgname}/"
+  cp -r models "${pkgdir}/usr/lib/gimp/3.0/plug-ins/${pkgname}/"
   cp -r locale "${pkgdir}/usr/lib/gimp/3.0/plug-ins/${pkgname}/"
   chmod +x "${pkgdir}/usr/lib/gimp/3.0/plug-ins/${pkgname}/dream-prompter.py"
 
