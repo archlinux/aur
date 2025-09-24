@@ -1,0 +1,17 @@
+pkgbase = tsh
+	pkgdesc = A Rust CLI tool that fetches a random top post from r/twosentencehorror.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/i0f/tsh
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	depends = gcc-libs
+	source = git+https://codeberg.org/i0f/tsh.git#tag=v0.1.0
+	b2sums = cb2e06c26fae4a0b064b78eb7ea7d7ab3af40906a8895816a1e439c9cab52c5d63b882663631daba4b6da60659c2ec3c5bc29c713b0b7066f5f7d9db25d0927d
+
+pkgname = tsh
