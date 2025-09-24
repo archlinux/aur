@@ -1,6 +1,6 @@
 pkgbase = r-jaspmachinelearning
 	pkgdesc = Machine Learning Module for JASP
-	pkgver = 0.19.3
+	pkgver = 0.95.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspMachineLearning
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-jaspmachinelearning
 	depends = r-rtsne
 	depends = r-signal
 	depends = r-kknn
-	source = jaspMachineLearning_0.19.3.tar.gz::https://github.com/jasp-stats/jaspMachineLearning/archive/refs/tags/v0.19.3.tar.gz
-	sha256sums = c48653e42ca2a979c71ebcc77456913b7d6092bf2a0bae26c176d62b46c396c9
+	source = jaspMachineLearning_0.95.0.tar.gz::https://github.com/jasp-stats/jaspMachineLearning/archive/refs/tags/v0.95.0.tar.gz
+	sha256sums = eb95ceef6563e51a9f2dd336c65bd4c5bd41f17ca4da3a958c895c3e782594e4
 
 pkgname = r-jaspmachinelearning
