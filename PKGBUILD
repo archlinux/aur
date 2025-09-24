@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=cucollections-git
-pkgver=r1530.162b99e
+pkgver=r1546.64f57e4
 pkgrel=1
 pkgdesc="cuCollections (cuco) is an open-source, header-only library of GPU-accelerated, concurrent data structures."
 url="https://github.com/NVIDIA/cuCollections"
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'c690f206c8f278f28474764568138a284e6372945bf60632f83ef0d9950dbb5c'
+    'fd1beafd00132c5e6b8cee8de928e157b1103c1ab1dcfe6c0f588b29a39a4168'
 )
 
 pkgver() {

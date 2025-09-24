@@ -3,3 +3,5 @@ pkg
 *.pkg.tar.zst
 *.tar.gz
 *.tar.xz
+
+cuCollections

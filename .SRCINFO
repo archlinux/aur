@@ -1,6 +1,6 @@
 pkgbase = cucollections-git
 	pkgdesc = cuCollections (cuco) is an open-source, header-only library of GPU-accelerated, concurrent data structures.
-	pkgver = r1530.162b99e
+	pkgver = r1546.64f57e4
 	pkgrel = 1
 	url = https://github.com/NVIDIA/cuCollections
 	arch = any
@@ -12,6 +12,6 @@ pkgbase = cucollections-git
 	source = git+https://github.com/NVIDIA/cuCollections.git
 	source = cuco.patch
 	sha256sums = SKIP
-	sha256sums = c690f206c8f278f28474764568138a284e6372945bf60632f83ef0d9950dbb5c
+	sha256sums = fd1beafd00132c5e6b8cee8de928e157b1103c1ab1dcfe6c0f588b29a39a4168
 
 pkgname = cucollections-git
