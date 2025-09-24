@@ -1,8 +1,8 @@
 # Maintainer: Aleksandr Mezin <mezin.alexander@gmail.com>
 # Contributor: Amiel Kyamko <junkfactory@gmail.com>
 pkgname=gnome-shell-extension-ddterm
-pkgver=61
-pkgrel=2
+pkgver=62.0.0
+pkgrel=1
 pkgdesc='Another Drop Down Terminal Extension for GNOME Shell'
 arch=('any')
 url='https://github.com/ddterm/gnome-shell-extension-ddterm'
@@ -10,23 +10,12 @@ license=('GPL-3.0-or-later')
 depends=('gjs' 'gtk3')
 makedepends=('meson' 'git' 'gtk4' 'libxslt' 'xorg-server-xvfb')
 checkdepends=('jq')
-_max_gnome_shell_version=48
+_max_gnome_shell_version=49
 install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ddterm/gnome-shell-extension-ddterm/archive/refs/tags/v${pkgver}.tar.gz"
-  'https://github.com/ddterm/gnome-shell-extension-ddterm/commit/e8d8f6b0d79082ed5e601af1b7beb0917fa44b52.patch'
-  '0001-shell-wm-don-t-activate-hidden-window-on-X11-too.patch'
 )
-sha256sums=('6a4fab55c736a1297fa97926ebb274d8abd7d575c7c6b3489a988f7d6edde368'
-            '93746c67ef893b0d5d5a6447318bdee4ec0d0bc1a4f3b207084465de1239ff6f'
-            '2a95dd005e9b379a744d42ff66d1aec8ee71cfb9c2ef437a56014cddb651e2e0')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-
-    patch -p1 -i ../e8d8f6b0d79082ed5e601af1b7beb0917fa44b52.patch
-    patch -p1 -i ../0001-shell-wm-don-t-activate-hidden-window-on-X11-too.patch
-}
+sha256sums=('5ff5dd1b65ae57a45a5983a4d94d47f980a26d717ef7c670925d6254e1ff2729')
 
 build() {
     arch-meson "${pkgname}-${pkgver}" build -Dtests=disabled
