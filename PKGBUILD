@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=shimmy-bin
-pkgver=1.5.1 # renovate: datasource=github-tags depName=Michael-A-Kuykendall/shimmy
+pkgver=1.5.6 # renovate: datasource=github-releases depName=Michael-A-Kuykendall/shimmy
 pkgrel=1
 pkgdesc="Lightweight 5MB Ollama alternative with native SafeTensors support. No Python dependencies, 2x faster loading."
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ source_x86_64=("shimmy-x86_64-${pkgver}::https://github.com/Michael-A-Kuykendall
   "LICENSE::https://raw.githubusercontent.com/Michael-A-Kuykendall/shimmy/v${pkgver}/LICENSE")
 source_aarch64=("shimmy-${pkgver}::https://github.com/Michael-A-Kuykendall/shimmy/releases/download/v${pkgver}/shimmy"
   "LICENSE::https://raw.githubusercontent.com/Michael-A-Kuykendall/shimmy/v${pkgver}/LICENSE")
-sha256sums_x86_64=('1adfcf9ca02b0cca63396075126208a3edfec0269c8a9cd31c427716614d6280'
-  'ebee25b6399a49518bfb24ab186d3b15a34145fd7b11205d26f25a0a4c5db013')
-sha256sums_aarch64=('1adfcf9ca02b0cca63396075126208a3edfec0269c8a9cd31c427716614d6280'
-  'ebee25b6399a49518bfb24ab186d3b15a34145fd7b11205d26f25a0a4c5db013')
+sha256sums_x86_64=('1f9997dac87761ffb3405da0cc33cf0ffe7db55273947203fbb28a246caf6168'
+                   'ebee25b6399a49518bfb24ab186d3b15a34145fd7b11205d26f25a0a4c5db013')
+sha256sums_aarch64=('1f9997dac87761ffb3405da0cc33cf0ffe7db55273947203fbb28a246caf6168'
+                    'ebee25b6399a49518bfb24ab186d3b15a34145fd7b11205d26f25a0a4c5db013')
