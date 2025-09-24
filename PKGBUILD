@@ -7,13 +7,13 @@
 
 pkgname=itk-lite
 pkgver=5.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
 url="https://itk.org/"
 license=(Apache-2.0)
 depends=(glibc gcc-libs libjpeg-turbo libpng zlib libtiff gdcm expat hdf5)
-makedepends=(cmake git eigen gtest gcc14)
+makedepends=(cmake git eigen3 gtest gcc14)
 #options=(!lto)
 provides=(itk insight-toolkit)
 conflicts=(itk insight-toolkit)
