@@ -1,3 +1,4 @@
+# Maintainer: Firebleudark <fire@firebleudark.xyz>
 pkgname=autoinstallpackages
 pkgver=5.0.0
 pkgrel=1
@@ -58,4 +59,3 @@ EOF
   install -Dm644 "$srcdir/$srcdir_name/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
