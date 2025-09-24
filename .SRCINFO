@@ -1,0 +1,14 @@
+pkgbase = noxdir
+	pkgdesc = Terminal utility for visualizing file system usage.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/crumbyte/noxdir
+	arch = x86_64
+	license = MIT
+	depends = go
+	provides = noxdir
+	conflicts = noxdir
+	source = noxdir-0.8.0.tar.gz::https://github.com/crumbyte/noxdir/archive/v0.8.0.tar.gz
+	sha256sums = 8b8beecdef57f8fd84e424c3619fc5b62004aec9601d7a16f12d9429efe43e03
+
+pkgname = noxdir
