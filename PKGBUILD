@@ -9,12 +9,15 @@ pkgdesc="X.Org Autotools macros"
 arch=(any)
 license=('custom')
 url="https://xorg.freedesktop.org/"
-source=(${url}/releases/individual/util/util-macros-${pkgver}.tar.bz2{,.sig})
-b2sums=('e1e0b78248ecf889aa8d0bad2e98ad26377ab7d559b4b7f82a63be53052b615983220ce6fac18c44ee26d550a650795672d0b0a4d545cf77174bfeb7d7314c83'
+source=(${url}/releases/individual/util/util-macros-${pkgver}.tar.gz{,.sig})
+b2sums=('57c880e87b7714234d220897736864401277a609a2038a018b551f495868c6ac9ef3257a8df367369635a304440386877f287dd7d27e42616def00ec1dc1b55e'
             'SKIP')
 validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A')
 validpgpkeys+=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
 
+prepare(){
+  gpg --recv-keys CFDF148828C642A7
+}
 build() {
   cd util-macros-${pkgver}
   ./configure --build $_target --prefix=/usr/$_target
