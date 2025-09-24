@@ -1,0 +1,4 @@
+[python-fugashi]
+source = 'git'
+git = 'https://github.com/polm/fugashi.git'
+prefix = 'v'

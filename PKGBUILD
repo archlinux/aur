@@ -1,14 +1,16 @@
-# Maintainer: Attila Fidan <archlinux-buildsystem@print0.net>
+# Maintainer: envolution
+# Contributor: Attila Fidan <archlinux-buildsystem@print0.net>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-fugashi
 _gitname=${pkgname#python-}
-pkgver=1.3.0
+pkgver=1.5.1
 pkgrel=1
 
-pkgdesc="Cython MeCab wrapper for fast, pythonic Japanese tokenization and morphological analysis"
+pkgdesc="MeCab wrapper for pythonic Japanese tokenization and morphological analysis"
 url="https://github.com/polm/fugashi"
 license=(MIT)
-arch=(any)
+arch=(x86_64)
 
 depends=(
   cython
@@ -34,30 +36,23 @@ checkdepends=(
 
 install="$pkgname.install"
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('56da2551c6f1183ca8627cd8126ea5fb48b403cc64b6d95fcb2c833c9159a65bbe851dc5bf74f4d6fad106951b7d1f7ea2703b7bf6a88fd82a65221698e6a93b')
+b2sums=('d4a68ee74358e006b1553f14d8d8cfe12d387a510bcc9283e38b7ae08f8d61b700b9d5071b274c68fa0acd1b804cadc2c51647b0b2d316a2fd3e18aeb1c94ebc')
 
-prepare() {
+build() {
   cd "$_gitname"
-  # it's pinned to 0.29.35 because it "causes macos CI to fail"
-  # https://github.com/polm/fugashi/commit/eea9ba663d0a6a02fc166c47f361e7206e642f77
-  sed -i 's/Cython~=0.29.35/Cython/g' setup.py
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-build(){
-  cd "$_gitname"
-  python setup.py build
-}
-
-check(){
+check() {
   cd "$_gitname"
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest
 }
 
-package(){
+package() {
   cd "$_gitname"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+# vim:set ts=2 sw=2 et:
