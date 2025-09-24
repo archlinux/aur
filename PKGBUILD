@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspBfpack
-_pkgver=0.19.3
+_pkgver=0.95.0
 pkgname=r-${_pkgname,,}
-pkgver=0.19.3
+pkgver=0.95.0
 pkgrel=1
 pkgdesc="BFpack Module for JASP"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('e7b55567223a0b02cfc10ae260bbc78baca5d38e8c67c6f3758a0c87fc6668e5')
+sha256sums=('bf5e43919374dbdaed221e496ab9fe28fdc6acaca89a3b023597bc8b7f5ee817')
 
 
 build() {
@@ -30,6 +30,4 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  mkdir -p  ${pkgdir}/usr/lib/jasp-desktop/Modules
-  ln -s /usr/lib/R/library ${pkgdir}/usr/lib/jasp-desktop/Modules/${_pkgname}
 }

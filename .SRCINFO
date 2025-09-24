@@ -1,6 +1,6 @@
 pkgbase = r-jaspbfpack
 	pkgdesc = BFpack Module for JASP
-	pkgver = 0.19.3
+	pkgver = 0.95.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspBfpack
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-jaspbfpack
 	depends = r-jaspbase
 	depends = r-jaspgraphs
 	depends = r-coda
-	source = jaspBfpack_0.19.3.tar.gz::https://github.com/jasp-stats/jaspBfpack/archive/refs/tags/v0.19.3.tar.gz
-	sha256sums = e7b55567223a0b02cfc10ae260bbc78baca5d38e8c67c6f3758a0c87fc6668e5
+	source = jaspBfpack_0.95.0.tar.gz::https://github.com/jasp-stats/jaspBfpack/archive/refs/tags/v0.95.0.tar.gz
+	sha256sums = bf5e43919374dbdaed221e496ab9fe28fdc6acaca89a3b023597bc8b7f5ee817
 
 pkgname = r-jaspbfpack
