@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 140.0.7339.185
+	pkgver = 140.0.7339.207
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ungoogled-chromium
 	makedepends = gperf
 	makedepends = nodejs
 	makedepends = pipewire
-	makedepends = rust
+	makedepends = rustup
 	makedepends = rust-bindgen
 	makedepends = qt6-base
 	makedepends = java-runtime-headless
@@ -57,13 +57,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=140.0.7339.185
-	provides = chromedriver=140.0.7339.185
+	provides = chromium=140.0.7339.207
+	provides = chromedriver=140.0.7339.207
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
 	source = fetch-chromium-release
-	source = ungoogled-chromium-140.0.7339.185-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/140.0.7339.185-1.tar.gz
+	source = ungoogled-chromium-140.0.7339.207-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/140.0.7339.207-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -77,7 +77,7 @@ pkgbase = ungoogled-chromium
 	source = chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 	source = chromium-140.0.7339.41-rust.patch
 	sha256sums = 720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661
-	sha256sums = cb7861ba6b47fd1bb00dd84981c34cc29a9792d6eb115149a905453f1159fdb8
+	sha256sums = 6592c09f06a2adcbfc8dba3e216dc3a08ca2f8c940fc2725af90c5d042404be9
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
