@@ -7,7 +7,7 @@
 _pkgname=zenpower3
 pkgname=zenpower3-dkms-clang
 pkgver=0.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs. Works with Clang compiled kernels'
 arch=('x86_64' 'i686')
 url='https://github.com/AliEmreSenel/zenpower3'
