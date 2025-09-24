@@ -1,6 +1,6 @@
 pkgbase = r-jaspqualitycontrol
 	pkgdesc = Quality Control Module for JASP
-	pkgver = 0.19.3
+	pkgver = 0.95.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspQualityControl
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-jaspqualitycontrol
 	depends = r-weibullness
 	depends = r-car
 	replaces = r-jaspprocesscontrol
-	source = jaspQualityControl_0.19.3.tar.gz::https://github.com/jasp-stats/jaspQualityControl/archive/refs/tags/v0.19.3.tar.gz
-	sha256sums = 1466d07ddacbeef60b34682cf6641802d84d1acbda3f02f52319cf57630aad03
+	source = jaspQualityControl_0.95.0.tar.gz::https://github.com/jasp-stats/jaspQualityControl/archive/refs/tags/v0.95.0.tar.gz
+	sha256sums = b0e4ae150227e9136e23a16b840995410e459870e57af7655ad7ddd34b9e2773
 
 pkgname = r-jaspqualitycontrol
