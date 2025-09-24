@@ -1,65 +1,91 @@
-# Maintainer: Yuuki Rika <yvvki@duck.com>
+# Maintainer: Ottatop <ottatop1227@gmail.com>
+# Contributor: Yuuki Rika <yvvki@duck.com>
 
+pkgname=pinnacle-comp-git
 _pkgname=pinnacle
-pkgname=$_pkgname-comp-git # there's another package without the -comp suffix lol
-pkgver=r1221.a53c0f1
-pkgrel=3
-pkgdesc='A WIP Smithay-based Wayland compositor, inspired by AwesomeWM'
-arch=(any)
-url='https://github.com/pinnacle-comp/pinnacle'
-license=(GPL-3.0-or-later)
+pkgver=0.1.0.r1547.1b165ca
+pkgrel=1
+pkgdesc="A Wayland compositor inspired by AwesomeWM (git version)"
+arch=(x86_64)
+url="https://github.com/pinnacle-comp/${_pkgname}"
+license=("GPL-3.0-or-later")
 depends=(
-  wayland # libwayland
-  libxkbcommon
-  systemd-libs # libudev libsystemd
-  libinput
-  mesa # libgbm
-  seatd # libseat
-  libglvnd # libEGL
+    wayland
+    libxkbcommon
+    libinput
+    mesa
+    seatd
+    systemd-libs
+    libdisplay-info
+    xorg-xwayland
+    protobuf
+    # Lua API
+    lua
+    lua-cqueues
+    lua-http
+    lua-protobuf
+    lua-posix
 )
+makedepends=(cargo git luarocks)
 optdepends=(
-  'libdisplay-info: for monitor display information'
-  'xorg-xwayland: for Xwayland support' # xwayland
-  'protobuf: for the API' # protoc
-  'lua: To configure Pinnacle using Lua'
+    "xdg-desktop-portal-gtk: a suggested XDG desktop portal"
+    "xdg-desktop-portal-wlr: for portal-based screencasting and screenshotting"
 )
-makedepends=(
-  git
-  cargo
-)
-
-_pkgsrc=$_pkgname
-source=($_pkgsrc::git+$url)
-b2sums=('SKIP')
+provides=(pinnacle-comp)
+conflicts=(pinnacle-comp)
+source=("git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd $_pkgsrc
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | tr '-' '_'
 }
 
 prepare() {
-  cd $_pkgsrc
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked
+	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $_pkgsrc
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo build --frozen --release
+
+    mkdir completions
+    ./target/release/$_pkgname gen-completions --shell bash > completions/$_pkgname
+    ./target/release/$_pkgname gen-completions --shell fish > completions/$_pkgname.fish
+    ./target/release/$_pkgname gen-completions --shell zsh > completions/_$_pkgname
+    ./target/release/$_pkgname gen-completions --shell elvish > completions/$_pkgname.elv
+
+    cd "api/lua"
+    luarocks --lua-version 5.4 make --pack-binary-rock --deps-mode none --no-manifest pinnacle-api-dev-1.rockspec
 }
 
 package() {
-  cd $_pkgsrc
-  install -vDm 755 {target/release/$_pkgname,resources/$_pkgname-session} -t "$pkgdir/usr/bin/"
-  install -vDm 644 resources/$_pkgname{.service,-shutdown.target} -t "$pkgdir/usr/lib/systemd/user/"
-  install -vDm 644 resources/$_pkgname.desktop -t "$pkgdir/usr/share/wayland-sessions/"
-  install -vDm 644 resources/$_pkgname-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
+	cd "$_pkgname"
+	install -Dm755 target/release/${_pkgname} -t "$pkgdir/usr/bin/"
+    install -Dm755 resources/${_pkgname}-session -t "$pkgdir/usr/bin/"
+    install -Dm644 resources/${_pkgname}.desktop -t "$pkgdir/usr/share/wayland-sessions/"
+    install -Dm644 resources/${_pkgname}-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
+    install -Dm644 resources/${_pkgname}{.service,-shutdown.target} -t "$pkgdir/usr/lib/systemd/user/"
 
-  # lua
-  install -vd "$pkgdir/usr/share/$_pkgname"
-  install -vd "$pkgdir/usr/share/$_pkgname/snowcap"
-  cp -vR api/protobuf "$pkgdir/usr/share/$_pkgname"
-  cp -vR snowcap/api/protobuf "$pkgdir/usr/share/$_pkgname/snowcap"
+    install -Dm644 completions/$_pkgname -t "$pkgdir/usr/share/bash-completion/completions/"
+    install -Dm644 completions/$_pkgname.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+    install -Dm644 completions/_$_pkgname -t "$pkgdir/usr/share/zsh/site-functions/"
+    install -Dm644 completions/$_pkgname.elv -t "$pkgdir/usr/share/elvish/lib/"
+
+    cd "$srcdir/$_pkgname/api/protobuf"
+    for proto in $(find . -type f -name *.proto); do
+        install -Dm644 $proto "$pkgdir/usr/share/$_pkgname/protobuf/${proto#\./}"
+    done
+
+    cd "$srcdir/$_pkgname/snowcap/api/protobuf"
+    for proto in $(find . -type f -name *.proto); do
+        install -Dm644 $proto "$pkgdir/usr/share/$_pkgname/snowcap/protobuf/${proto#\./}"
+    done
+
+    cd "$srcdir/$_pkgname/api/lua"
+    luarocks --lua-version 5.4 --tree "$pkgdir/usr/" install --deps-mode none --no-manifest *.rock
 }
