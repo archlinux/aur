@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-tt-tools-common
-pkgver=1.4.28
-pkgrel=3
+pkgver=1.4.29
+pkgrel=1
 pkgdesc="Common utilities shared across Tentorrent tools."
 arch=('any')
 url='https://github.com/tenstorrent/tt-tools-common'
@@ -12,7 +12,7 @@ depends=(python-distro python-elasticsearch python-psutil python-pyyaml python-r
 provides=("python-tt-tools-common")
 conflicts=("python-tt-tools-common")
 source=("tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('eb8fe0daaa3c753ba98fd69c417d0fbbaa0ae0ad2fce6aa1026efa91e1e9ac7d')
 
 build() {
     cd tt-tools-common
