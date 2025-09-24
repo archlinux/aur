@@ -3,7 +3,7 @@
 
 pkgname=libpeas138
 pkgver=1.38.0.alpha
-pkgrel=3
+pkgrel=4
 pkgdesc="GObject Plugin System"
 url="https://wiki.gnome.org/Projects/Libpeas"
 arch=(x86_64)
@@ -25,9 +25,13 @@ makedepends=(
   luajit
   meson
   vala
+  python
+  python-gobject
+  python-setuptools
 )
 optdepends=(
   'lua51-lgi: Lua loader'
+  'python-gobject: Python loader'
 )
 conflicts=(libpeas)
 provides=(

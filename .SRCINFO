@@ -1,7 +1,7 @@
 pkgbase = libpeas138
 	pkgdesc = GObject Plugin System
 	pkgver = 1.38.0.alpha
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/Libpeas
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -16,11 +16,15 @@ pkgbase = libpeas138
 	makedepends = luajit
 	makedepends = meson
 	makedepends = vala
+	makedepends = python
+	makedepends = python-gobject
+	makedepends = python-setuptools
 	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
 	optdepends = lua51-lgi: Lua loader
+	optdepends = python-gobject: Python loader
 	provides = libpeas-1.0.so
 	provides = libpeas-gtk-1.0.so
 	provides = libpeas=1.38.0.alpha
