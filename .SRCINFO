@@ -1,6 +1,6 @@
 pkgbase = r-automap
 	pkgdesc = Automatic Interpolation Package
-	pkgver = 1.1.16
+	pkgver = 1.1.20
 	pkgrel = 1
 	url = https://cran.r-project.org/package=automap
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-automap
 	depends = r-sf
 	depends = r-sp
 	depends = r-stars
-	source = https://cran.r-project.org/src/contrib/automap_1.1-16.tar.gz
-	md5sums = ac0c9079ecd70cbb304a10c4d92983a5
-	b2sums = 906a6329a89613eff71b53560a796868e9560914bcffa836acaffe4f4ac5d5a2fbadb685b56636025fa0e0b021537ad9c6af63c113eb81e7d4e2f74b0792adcb
+	source = https://cran.r-project.org/src/contrib/automap_1.1-20.tar.gz
+	md5sums = 2d89a7f00e6a8e11e4c1a87a7aea6c21
+	b2sums = f79051afb53ef92889803890f62eb2560daf1d2cc57b5948bf5103a9873548c211526a5b3169b43e8c004715bb668cdf1d45aea2457a6bb281233ec0c6ca6205
 
 pkgname = r-automap
