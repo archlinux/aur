@@ -1,0 +1,6 @@
+/pkg/
+/src/
+k3s-*.pkg.tar.gz
+k3s-*-aarch64
+k3s-*-armv7h
+k3s-*-x86_64
