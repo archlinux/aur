@@ -1,0 +1,15 @@
+pkgbase = nofan
+	pkgdesc = (No)fan controller for the Framework 16
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/laktak/nofan
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = fw-ectool-git
+	provides = nofan
+	source = nofan-1.0.0::git+https://github.com/laktak/nofan
+	sha256sums = SKIP
+
+pkgname = nofan
