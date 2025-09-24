@@ -3,7 +3,7 @@
 pkgbase=python-stdatamodels
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Core support for DataModel classes used in calibration pipelines"
 arch=('any')
@@ -15,6 +15,7 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-asdf'
              'graphviz')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
+              'python-pytest-asdf-plugin'
 #             'python-pytest-xdist'
               'python-asdf-astropy'
 #             'python-jwst'
@@ -22,7 +23,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-requests')   # asdf, astropy, already in makedepends
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0a8f35a7caedb22361172f296fef45d6')
+md5sums=('e21eabc1cc34426a8e816ae95ebf3502')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
