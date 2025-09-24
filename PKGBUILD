@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspPower
-_pkgver=0.19.3
+_pkgver=0.95.0
 pkgname=r-${_pkgname,,}
-pkgver=0.19.3
+pkgver=0.95.0
 pkgrel=1
 pkgdesc="Power Module for JASP"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('8a328109eb28f06cfc93cd3c82a56f86426e7b0361ec28c076d5b49e283dc60c')
+sha256sums=('17740e12e0530d36c6659c2a4e5b793533617ba97a72460720379a1b07f5d844')
 
 
 build() {
@@ -26,6 +26,4 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  mkdir -p  ${pkgdir}/usr/lib/jasp-desktop/Modules
-  ln -s /usr/lib/R/library ${pkgdir}/usr/lib/jasp-desktop/Modules/${_pkgname}
 }
