@@ -30,6 +30,7 @@ build()
     --target=${_target} \
     --enable-lto \
     --enable-multilib \
+    --enable-newlib-io-c99-formats \
     --enable-newlib-multithread \
     --enable-newlib-retargetable-locking \
     --disable-libssp \
