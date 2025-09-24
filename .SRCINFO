@@ -1,0 +1,13 @@
+pkgbase = ccr-plus-bin
+	pkgdesc = A simple judging environment for Olympiad in Informatics
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/sxyzccr/CCR-Plus
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	provides = ccr-plus
+	source = https://github.com/sxyzccr/CCR-Plus/releases/download/v1.1.0/CCR-Plus_v1.1.0_linux_x64.zip
+	md5sums = 3a2d9e320d04ee15d2dd2f61b4ea8eff
+
+pkgname = ccr-plus-bin
