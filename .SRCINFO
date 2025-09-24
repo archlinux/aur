@@ -1,6 +1,6 @@
 pkgbase = ptui
 	pkgdesc = Picture TUI
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/narbs/ptui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ptui
 	depends = imagemagick
 	provides = ptui
 	conflicts = ptui
-	source = https://github.com/narbs/ptui/releases/download/v1.0.5/ptui-1.0.5-x86_64.tar.gz
-	sha256sums = b0fdca277409cb78538f5ad5f06e1b34b80e2b7a2339a32e765d6b98032478ba
+	source = https://github.com/narbs/ptui/releases/download/v1.0.6/ptui-1.0.6-x86_64.tar.gz
+	sha256sums = 56eca156736ad28a66002494f84ce383baf237be24c5ca0fcb7cfa50004c7e16
 
 pkgname = ptui-bin
