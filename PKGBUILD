@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=coreutils-arch
-pkgver=9.7
+pkgver=9.8
 pkgrel=1
 pkgdesc="GNU arch command (from coreutils)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('coreutils')
 makedepends=('gettext' 'gperf' 'gzip' 'perl' 'rsync' 'tar' 'texinfo')
 source=("https://ftp.gnu.org/gnu/coreutils/coreutils-$pkgver.tar.xz")
-sha256sums=('e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf')
+sha256sums=('e6d4fd2d852c9141a1c2a18a13d146a0cd7e45195f72293a4e4c044ec6ccca15')
 
 build() {
 	cd "coreutils-$pkgver"
