@@ -1,7 +1,7 @@
 pkgbase = gerbil
 	pkgdesc = Run Large Language Models locally
-	pkgver = 1.5.1
-	pkgrel = 3
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = https://github.com/lone-cloud/gerbil
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -11,11 +11,11 @@ pkgbase = gerbil
 	optdepends = libxss: Screen saver detection support
 	provides = gerbil
 	conflicts = gerbil-git
-	source = gerbil-1.5.1.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.1/Gerbil-1.5.1.AppImage
-	source = gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.1/assets/gerbil.desktop
-	source = LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.1/LICENSE
-	sha256sums = f2abe5ec42dddbd7e554bb7c8f39ffa0e7fa615d14646de7851dbec6de1138d0
-	sha256sums = da139b72a1d0965c1fe7749cb93c2ef50c00d551f7b884ed9296db3114283893
+	source = gerbil-1.5.2.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.2/Gerbil-1.5.2.AppImage
+	source = gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.2/assets/gerbil.desktop
+	source = LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.2/LICENSE
+	sha256sums = feb732cc54c18894a59c5b0b8a3811bb38638c69c004ccdf6f78f0f0832a7e94
+	sha256sums = 591f288d75ae6d043c1d95c2e2e1f345188473180e709e7d894f09667d3ae5e9
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = gerbil
