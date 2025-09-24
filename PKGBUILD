@@ -1,7 +1,7 @@
 # Maintainer: KafCoppelia <k740677208@gmail.com>
 
 pkgname=grass-desktop-node
-pkgver=5.6.2
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="The Grass Desktop Node is a lightweight standalone application that is designed to run on any desktop.
     Users of the desktop node are awarded priority network traffic and are able to earn additional rewards for
@@ -13,7 +13,7 @@ depends=('glibc' 'hicolor-icon-theme' 'gdk-pixbuf2' 'cairo' 'gtk3' 'gcc-libs' 'p
     'glib2' 'webkit2gtk-4.1' 'libappindicator-gtk3')
 conflicts=("${pkgname}")
 source=("https://files.getgrass.io/file/grass-extension-upgrades/v${pkgver}/Grass_${pkgver}_amd64.deb")
-sha256sums=('c913d6a477234ee5fda89e1416d551beebb1002f10010c71219ad5a4ea76a9d2')
+sha256sums=('dc6d18d348cd3170822c4b5c236cd35bcc56ba6ed1021f2b9bd1fc4f9e5a8457')
 
 prepare() {
     cd ${srcdir}
