@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=godot
 pkgname=godot3-bin
-pkgver=3.6
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch)"
 arch=("x86_64")
@@ -11,8 +11,8 @@ depends=(libglvnd libxcursor libxi libxinerama libxrandr hicolor-icon-theme glib
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_x11.64.zip"
 	"https://github.com/godotengine/godot/archive/refs/tags/${pkgver}-stable.tar.gz")
-sha256sums=('154a0a7700b38a7272d97616c3a8f48a556d51a9a278b5197235ebeee19d4a3e'
-            '771ae03e20f74907a11c12c8d0de046952d12593aafde99ffb2feb55c4866cd5')
+sha256sums=('b6c0760382f90f15fcff5f5a08834c3dd61fbc0e8ba7927869593c5bedd48342'
+            'cfed6125b59bfdf66e2abcd6d53a4ea79440f972bb6c32b2a12112f66af4d7e1')
 
 package() {
 	cd "${srcdir}"
