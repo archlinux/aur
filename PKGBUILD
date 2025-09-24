@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
 url="https://popcorn-time.site/"
@@ -38,7 +38,7 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 
 # Get sources only here
 source=(
-    "${_pkgname}::git+https://github.com/popcorn-official/${_pkgname}/#${_commit_hash}"
+    "${_pkgname}::git+https://github.com/popcorn-time-ru/${_pkgname}/#${_commit_hash}"
     "popcorntime.desktop"
     "yarn_lock-fixes.patch"
     "copy-libatomic_fixes.patch"
