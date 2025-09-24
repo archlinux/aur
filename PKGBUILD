@@ -1,16 +1,14 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-# _releases=(R2020b R2021a R2021b R2022a R2022b R2023a R2023b R2024a R2024b
-_releases=(R2025a)
-
+# _releases=(R2020b R2021a R2021b R2022a R2022b R2023a R2023b R2024a R2024b R2025a)
 _name="batch"
 pkgbase="matlab-${_name}"
-pkgname=("matlab-common-${_name}" "${pkgbase}")
-for rel in "${_releases[@]}"; do
-  pkgname+=("matlab-${rel,,}-${_name}")
-done
-pkgver=2025.03.1
-pkgrel=6
+pkgname=(
+  "matlab-common-${_name}" 
+  "${pkgbase}"
+)
+pkgver=2025.09.1
+pkgrel=1
 pkgdesc="CLI tool that starts MATLAB non-interactively using a batch licensing token and any MATLAB startup options"
 arch=('x86_64')
 _url="https://github.com/mathworks-ref-arch/matlab-dockerfile"
@@ -51,24 +49,37 @@ package_matlab-common-batch() {
 
 package_matlab-batch() {
   arch=('any')
-  depends=('matlab' "matlab-common-${_name}=${pkgver}-${pkgrel}" "matlab-release>=${_releases[-1]}") # "matlab-release=${_releases[-1]}"
+  depends=(
+    'matlab-release>=R2020b'
+    # "matlab-release>=${_releases[0]}"
+    "matlab-common-${_name}=${pkgver}-${pkgrel}"
+    # "matlab-release>=${_releases[-1]}"
+  )
 
   install -vd "${pkgdir}/usr/bin"
   ln -vsf "/usr/lib/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
 }
 
-for rel in "${_releases[@]}"; do
+for _release in "${_releases[@]}"; do
+  pkgname+=("matlab-${_release,,}-${_name}")
+
   eval "
-package_matlab-${rel,,}-${_name}() {
-  pkgdesc+=' (${rel})'
+package_matlab-${_release,,}-${_name}() {
+  pkgdesc+=' (${_release})'
   arch=('any')
-  depends=('matlab-release=${rel}' 'matlab-common-${_name}=${pkgver}-${pkgrel}' 'sh')
-  provides=('${pkgbase}-release=${rel}')
+  depends=(
+    'matlab-release=${_release}'
+    'matlab-common-${_name}=${pkgver}-${pkgrel}'
+    'sh'
+  )
+  provides=(
+    '${pkgbase}-release=${_release}'
+  )
 
-  install -vd \"\${pkgdir}/usr/lib/${pkgbase}/${rel}\"
-  ln -vsf '/usr/bin/matlab-${rel}' \"\${pkgdir}/usr/lib/${pkgbase}/${rel}/matlab\"
+  install -vd \"\${pkgdir}/usr/lib/${pkgbase}/${_release}\"
+  ln -vsf '/usr/bin/matlab-${_release}' \"\${pkgdir}/usr/lib/${pkgbase}/${_release}/matlab\"
 
-  install -vDm755 '${pkgbase}.sh' \"\${pkgdir}/usr/bin/matlab-${rel}-${_name}\"
-  sed -i 's/@@RELEASE@@/${rel}/g' \"\${pkgdir}/usr/bin/matlab-${rel}-${_name}\"
+  install -vDm755 '${pkgbase}.sh' \"\${pkgdir}/usr/bin/matlab-${_release}-${_name}\"
+  sed -i 's/@@RELEASE@@/${_release}/g' \"\${pkgdir}/usr/bin/matlab-${_release}-${_name}\"
 }"
 done
