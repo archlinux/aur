@@ -1,6 +1,6 @@
 # Maintainer: Your Name <ikunji@duck.com>
 pkgname=krunner-pinyin-search
-pkgver=r4.47f1440
+pkgver=r5.8759888
 pkgrel=1
 pkgdesc="一个krunner插件，为KDE提供了用拼音搜索应用程序的功能。支持全拼/首字母/汉字混合输入。"
 arch=(x86_64)
