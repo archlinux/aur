@@ -20,7 +20,7 @@ prepare() {
 build() {
   cd "$srcdir"/eigen-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DBUILD_SHARED_LIBS=OFF -B build-${_arch} .
+    ${_arch}-cmake -B build-${_arch} .
     make -C build-${_arch}
   done
 }
