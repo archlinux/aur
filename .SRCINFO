@@ -1,0 +1,19 @@
+pkgbase = obs-plugin-browser
+	pkgdesc = Official OBS Studio browser plugin, packaged to work with the official Arch package.
+	pkgver = 2.26.1
+	pkgrel = 1
+	url = https://github.com/ItachiSan/obs-browser-standalone
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cmake
+	depends = obs-studio
+	depends = nlohmann-json
+	depends = at-spi2-core
+	depends = libxdamage
+	depends = libxrandr
+	source = obs-browser_9f42f966235ef1c1117b67bfa9ce0216a9e137cf.tar.gz::https://github.com/ItachiSan/obs-browser-standalone/archive/9f42f966235ef1c1117b67bfa9ce0216a9e137cf.tar.gz
+	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v5.tar.xz
+	sha256sums = 53e67dd2148c7502bad6e5c59651087f6fa88d7ec037ab1f71630bdba33b677e
+	sha256sums = df38ef6d8078895953d224a58dd811b83110b4f8644c5cd2b6246d04b0023ee6
+
+pkgname = obs-plugin-browser
