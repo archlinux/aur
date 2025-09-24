@@ -1,7 +1,7 @@
 pkgbase = libpeas138
 	pkgdesc = GObject Plugin System
 	pkgver = 1.38.0.alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/Libpeas
 	arch = x86_64
 	license = LGPL-2.1-or-later

@@ -3,7 +3,7 @@
 
 pkgname=libpeas138
 pkgver=1.38.0.alpha
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject Plugin System"
 url="https://wiki.gnome.org/Projects/Libpeas"
 arch=(x86_64)
