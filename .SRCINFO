@@ -1,7 +1,7 @@
 pkgbase = caelestia-shell-git
 	pkgdesc = The desktop shell for the Caelestia dotfiles
 	pkgver = 1.2.0.r0.g2bd7089
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
 	license = GPL-3.0-only
