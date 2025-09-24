@@ -1,6 +1,6 @@
 pkgbase = cockpit-file-sharing
 	pkgdesc = A Cockpit plugin to easily manage samba and NFS file sharing.
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/45Drives/cockpit-file-sharing
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = cockpit-file-sharing
 	optdepends = samba
 	optdepends = nfs-utils
 	provides = cockpit-file-sharing
-	source = git+https://github.com/45Drives/cockpit-file-sharing.git#commit=0a954dde193b7d192ccb41ea60fe232908853b09
-	source = git+https://github.com/45Drives/houston-common.git#commit=ce261b32117d1b483f3677d328c51807510bcd1e
-	b2sums = 647bb113a7ba9bb4c5ab6923d80e84f51b192dfc837d50a49eaeb41d303dcd3509df2da37d9e57f3268c2daf0cf5cf377d2c24d3c4bee0905075b94e158a525f
-	b2sums = 64770107f1d2c525d069a5e6204178b2fa2941a90d721c620323d174d2344c79a2da786dcc90f8206ad518298180ca5274a29f5c0754be905a2be9d22dc1d835
+	source = git+https://github.com/45Drives/cockpit-file-sharing.git#commit=1b65cafc9592f556d28740fbdaf6324a899c7539
+	source = git+https://github.com/45Drives/houston-common.git#commit=efc71c7f15af30e1e7d5c06dadc8b12ccc76206c
+	b2sums = 4f55a54123d0a35f16128fdb45070cdc92c08ddffcaf2826a053114c1c41d3f2ad6d43fbdb46b23c603b451b5a7a55ec698071c1c6c3b0e3e6d7d585f02b5c42
+	b2sums = a5a568cd5aa23bb9772266643d4b5a2546c5193b2759bd95ae8c0100c2c1b22a81d5f2e9e355b684be386dd8566ce420fd9f45ba944a0cddb77bcd266d2e4663
 
 pkgname = cockpit-file-sharing
