@@ -8,9 +8,9 @@ pkgbase = q-dns-bin
 	license = GPL-3.0
 	provides = q-dns
 	conflicts = q-dns-git
-	source_x86_64 = https://github.com/natesales/q/releases/download/v0.19.2/q_0.19.2_linux_amd64.deb
+	source_x86_64 = https://github.com/natesales/q/releases/download/v0.19.9/q_0.19.9_linux_amd64.deb
 	sha256sums_x86_64 = f58e8f2ff8afa23c41f732301b3c5907fc01638707c5b7c13de999665f4de92f
-	source_aarch64 = https://github.com/natesales/q/releases/download/v0.19.2/q_0.19.2_linux_arm64.deb
+	source_aarch64 = https://github.com/natesales/q/releases/download/v0.19.9/q_0.19.9_linux_arm64.deb
 	sha256sums_aarch64 = 6719541ee0215c9634978d6f3c6c51bbb826e473b2f0b809bdeeac43cb376980
 
 pkgname = q-dns-bin
