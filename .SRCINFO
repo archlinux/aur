@@ -1,19 +1,20 @@
 pkgbase = phonon-qt6-mpv-git
-	pkgdesc = Phonon MPV backend for Qt6 (git)
+	pkgdesc = Phonon MPV backend for Qt6
 	pkgver = 0.1.0.r0.g069aca4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenProgger/phonon-mpv
 	arch = x86_64
 	license = LGPL-2.1-only
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = ninja
 	depends = glibc
 	depends = mpv
 	depends = phonon-qt6
 	provides = phonon-qt6-mpv
 	provides = phonon-qt6-backend
 	conflicts = phonon-qt6-mpv
-	source = git+https://github.com/OpenProgger/phonon-mpv
+	source = phonon-qt6-mpv::git+https://github.com/OpenProgger/phonon-mpv.git
 	sha256sums = SKIP
 
 pkgname = phonon-qt6-mpv-git
