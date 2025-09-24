@@ -2,7 +2,7 @@
 # Contributor: ml <>
 
 pkgname=svu
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=(i686 x86_64 armv7h armv6h aarch64 riscv64)
@@ -11,18 +11,24 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('213da0927e6ca3ffeaa86c757aed632b39a14ffbf1a1771bfbbbcac67d0015bb')
+sha256sums=('af3a98547e826199c9bde316a0702b1268f33c0881969417643535237a229534')
 _go_flags=(-ldflags "-linkmode=external -X main.version=v$pkgver")
 
 build() {
   cd "$pkgname-$pkgver"
+
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+
   go build -o "$pkgname" "${_go_flags[@]}" main.go
+
+  for sh in bash zsh fish; do
+    ./$pkgname completion $sh >$pkgname.$sh
+  done
 }
 
 check() {
@@ -35,4 +41,7 @@ package() {
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 "$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm644 "$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
