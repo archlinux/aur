@@ -2,8 +2,8 @@
 # Maintainer: caoticofanegas<>
 _pkgname=metube
 pkgname="${_pkgname}-git"
-pkgver=r542.33c6908
-pkgrel=2
+pkgver=r547.aa8d9eb
+pkgrel=1
 pkgdesc="Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)"
 arch=("any")
 url="https://github.com/alexta69/${_pkgname}"
