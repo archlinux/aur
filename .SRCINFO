@@ -1,12 +1,15 @@
 pkgbase = signato-font
 	pkgdesc = Cursive font based on the Act of Independence of Lithuania
 	pkgver = 03.2019
-	pkgrel = 1
-	url = http://signato.lt
+	pkgrel = 2
+	url = https://web.archive.org/web/20230606100230/http://signato.lt/
 	arch = any
-	license = custom
-	source = signato.zip::http://signato.lt/wp-content/uploads/2019/03/Signato_font.zip
-	md5sums = 5d4075fe9b9fedd937e5be414e017727
+	license = LicenseRef-Signato-Font-License
+	source = LICENSE.en.rtf
+	source = LICENSE.lt.rtf
+	source = Signato-Regular.otf
+	sha256sums = 7d7c90812fdbb86b8acae682b5dbb9ffbbf825d64d6e5e8e6c57c8fe72facdf6
+	sha256sums = 7e37718578afc61e77d33fd9fc4fb898f807a06fb480ca8d03a0911d3dbdb2c9
+	sha256sums = eb9fa0d32709b416841c425ecc84eebbe415d37c5dcf4c75c361cf55ffaf4235
 
 pkgname = signato-font
-
