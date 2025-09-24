@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="$_pkgbase"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance Waybar modules written in Zig for efficient system monitoring"
 arch=('x86_64')
 url="https://github.com/erffy/${_pkgbase}"
@@ -28,7 +28,9 @@ build() {
 }
 
 package() {
-  for bin in $srcdir/$_pkgbase/zig-out/bin/*; do
+  cd "$srcdir/$_pkgbase/zig-out/bin"
+
+  for bin in *; do
     [[ -x "$bin" && ! -d "$bin" ]] || continue
     install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-$bin"
   done
