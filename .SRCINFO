@@ -1,13 +1,13 @@
 pkgbase = processing-examples
 	pkgdesc = Examples for Processing
-	pkgver = 4.4.5
+	pkgver = 4.4.7
 	pkgrel = 1
 	url = https://www.processing.org/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = gradle
-	source = https://github.com/processing/processing4/archive/processing-1305-4.4.5.tar.gz
-	sha256sums = 90442160640ee3a8434e23373d0bde3431aa5d78d4387adddb0e635eeddf1af1
+	makedepends = gradle8
+	source = https://github.com/processing/processing4/archive/processing-1307-4.4.7.tar.gz
+	sha256sums = b0f908ffd219ef35394f7df72a8df00ca78aa89946d387bf0a4b2997852689d8
 
 pkgname = processing-examples
