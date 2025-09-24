@@ -2,7 +2,7 @@
 
 _pkgname="cvise"
 pkgname="$_pkgname-git"
-pkgver=2.11.0.r124.g07b1d05
+pkgver=2.12.0.r172.gfbbe8fc
 pkgrel=1
 pkgdesc="Super-parallel Python port of the C-Reduce"
 url="https://github.com/marxin/cvise"
@@ -17,7 +17,6 @@ depends=(
   'python-msgspec' # AUR
   'python-pebble'  # AUR
   'python-psutil'
-  'python-pytest'
   'python-zstandard'
   'tree-sitter-cli'
   'unifdef'
@@ -29,6 +28,11 @@ makedepends=(
   'ninja'
   'python'
 )
+checkdepends=(
+  'python-pytest'
+  'python-pytest-mock'
+  'python-pytest-subprocess'
+)
 optdepends=('colordiff')
 
 provides=("$_pkgname")
@@ -38,11 +42,16 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
+pkgver() (
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
+  local _tmp _tag _version _revision _hash
+  _tmp=$(git tag | grep -Ev '[A-Za-z][A-Za-z]' | sed -E 's&([^0-9]*)(\S+)$&\2 \1\2&' | sort -rV | head -1)
+  _version=$(cut -f1 -d' ' <<< ${_tmp:?})
+  _tag=$(cut -f2 -d' ' <<< ${_tmp:?})
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_commit:?}"
+)
 
 build() {
   local _cmake_options=(
@@ -66,6 +75,9 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # remove tests
+  rm -rf "$pkgdir/usr/share/cvise/tests"
 
   # specify python version to prevent untracked pyc files
   local _pyver_major _pyver_minor
