@@ -1,12 +1,11 @@
-# Maintainer: Rchips22 <rchips22@outlook.com> 
-# Contributor: Senge Dev <sengedev@gmail.com>
+# Maintainer: Voxan24 <admin@hessfr.fr>
 
 pkgname=1panel
-pkgver=1.10.26_lts
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
-url="https://1panel.cn"
+url="https://1panel.pro"
 license=('GPL-3.0-or-later')
 install=1panel.install
 makedepends=('go' 'nodejs' 'npm' 'python')
@@ -18,7 +17,7 @@ source=(
     "1panel.service"
 )
 b2sums=(
-    "9299b7d431c9b727ef3ad4781d7cd73e5b8324a04dccb0312f3cc901bb4ed002367914cb090287104da754886756532e90de7e8ea0b3aca08702bb0bc9d2b40b"
+    "d678e83480a045b76d04b4ad4492c9b216d6cbf8e5036906834eba6e1b85607bbf1819e509ef5b6d4dd03b57ccdf936198b1229d2c1d4f424a3fa6e0c1637ef0"
     "8276ffae854ad7ae4d6ca35bd673b2401dd8e59bff8515921f76fc83a65db672d2de9167ccd32d5b4bb2b5cc4a646f5047c04baf295050dd64fd1370c490680e"
     "b4ca01c4f5027fc121e293df86e9caeaabce732f5d93ea4f0c6b670aceb851943d1f32d11e76f1b1a5780774d35d3b04c1abb9c84d2b0695d04d9938c8771845"
 )
