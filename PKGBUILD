@@ -1,7 +1,7 @@
 # Maintainer: Wrxn <arch at rnny dot xyz>
 pkgname=exiled-exchange-2-bin
 _pkgname=Exiled-Exchange-2
-pkgver=0.12.4
+pkgver=0.12.5
 _electronversion=31
 pkgrel=1
 pkgdesc="Path of Exile 2 trading app for price checking"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kvan7/Exiled-Exchange-2/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ec7e5f33103a55f8ed5ba024405d2c763426f0680669e5ddf7c3bd5e5d321f24'
+sha256sums=('40a366087b6fba394b24fde38847985f6098e9aa330bd45faf932ad4b7d5512b'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
