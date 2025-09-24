@@ -1,6 +1,6 @@
 pkgbase = r-jaspbff
 	pkgdesc = A Bayes factor function module for JASP
-	pkgver = 0.19.3
+	pkgver = 0.95.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspBFF
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-jaspbff
 	depends = r-bff
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspBFF_0.19.3.tar.gz::https://github.com/jasp-stats/jaspBFF/archive/refs/tags/v0.19.3.tar.gz
-	sha256sums = 0747e1591ee120d48af77980de84794580016e29be1fbff5fdb97a9d0eca0053
+	source = jaspBFF_0.95.0.tar.gz::https://github.com/jasp-stats/jaspBFF/archive/refs/tags/v0.95.0.tar.gz
+	sha256sums = 608617e61371c322738cb12148e8b7ba6519d7cb8767710af3c3739b93e86553
 
 pkgname = r-jaspbff
