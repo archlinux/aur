@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=143.0
+pkgver=143.0.1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -26,15 +26,15 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/143.0/linux-x86_64/en-US/thunderbird-143.0.tar.xz
+  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/143.0.1/linux-x86_64/en-US/thunderbird-143.0.1.tar.xz
 #thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/142.0/linux-x86_64/thunderbird-$pkgver.tar.xz.asc
 )
 source_pentium4=(
-  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/143.0/linux-i686/en-US/thunderbird-143.0.tar.xz
+  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/143.0.1/linux-i686/en-US/thunderbird-143.0.1.tar.xz
 #thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/142.0/linux-i686/thunderbird-$pkgver.tar.xz.asc
 )
 source_i686=(
-  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/143.0/linux-i686/en-US/thunderbird-143.0.tar.xz
+  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/143.0.1/linux-i686/en-US/thunderbird-143.0.1.tar.xz
 #thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/142.0/thunderbird-$pkgver.tar.xz.asc
 )
 
@@ -42,9 +42,9 @@ validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Relea
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('7ca143bed4ce9f4bd336df11c5044805c91f6f0caf2a8d70ca574a6e095ef091273a58112a2e3c017c46135673bfa93598a96c8e05309999c768c5f7eb62f150')
-sha512sums_pentium4=('35958e7ce9a95acbc5855cafe6f704868c8d730b9c216207534fb98968f7406558d5ab0e60a8116090150dd8dbac8bc6f30186abd936fae60349abe26b2f719e')
-sha512sums_i686=('35958e7ce9a95acbc5855cafe6f704868c8d730b9c216207534fb98968f7406558d5ab0e60a8116090150dd8dbac8bc6f30186abd936fae60349abe26b2f719e')
+sha512sums_x86_64=('58bc7749ce2f63e9234b44450d8f76a1f1d394461e230c798ef3deece1064003661c34544cc24fe8e2611e8fa3134aae017b432f843ce7456109b2996b8008ba')
+sha512sums_pentium4=('cd7d95a47ddf4893c97f78e58f8fb9cb7a7844a37bb415c0f05369d968ffeb0b8bac05076185a0cb053cb9fe98d83009173871feecf55fef380b37543082d800')
+sha512sums_i686=('cd7d95a47ddf4893c97f78e58f8fb9cb7a7844a37bb415c0f05369d968ffeb0b8bac05076185a0cb053cb9fe98d83009173871feecf55fef380b37543082d800')
 
 
 
