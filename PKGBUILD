@@ -1,20 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tensor
-_pkgver=1.5
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
-pkgdesc="Tensor product of arrays"
-arch=(any)
+pkgrel=1
+pkgdesc="Tensor Product of Arrays"
+arch=('any')
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('067d8ce235aa25756d178f5548b39328')
-b2sums=('2d0c14938aded2884d6033ab10614269898c3ceff8e933c403d580f70c57207853d57bdfbaefe8e3c3cc9a7fd4dee14c1135ace6c4529a25198bc4a9499fb769')
+md5sums=('bd550e30b1f17722a87feec6f88b393e')
+b2sums=('35c2f19ad6bcd64a9cd13170792f3ec0c87acd793098c9d86512680625c102826d940bca121745362b6195a6a880bfede19cc58aebd95117b7cc12cffa6c1a37')
 
 build() {
   mkdir build
