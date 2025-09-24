@@ -3,7 +3,7 @@
 
 pkgname=libpeas138
 pkgver=1.38.0.alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject Plugin System"
 url="https://wiki.gnome.org/Projects/Libpeas"
 arch=(x86_64)
@@ -13,7 +13,6 @@ depends=(
   glibc
   gtk3
   hicolor-icon-theme
-  libgirepository
 )
 makedepends=(
   gi-docgen
@@ -27,6 +26,15 @@ makedepends=(
   meson
   vala
 )
+optdepends=(
+  'lua51-lgi: Lua loader'
+)
+conflicts=(libpeas)
+provides=(
+  libpeas{,-gtk}-1.0.so
+  "libpeas=$pkgver"
+)
+
 checkdepends=(xorg-server-xvfb)
 source=("git+https://gitlab.gnome.org/GNOME/libpeas.git#branch=1.38")
 b2sums=('SKIP')
@@ -50,14 +58,7 @@ check() {
     meson test -C build --print-errorlogs
 }
 
-package_libpeas138() {
-  optdepends=(
-    'lua51-lgi: Lua loader'
-  )
-  provides=(
-    libpeas{,-gtk}-1.0.so
-    "libpeas=$pkgver"
-  )
+package() {
 
   meson install -C build --destdir "$pkgdir"
 
