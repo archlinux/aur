@@ -12,9 +12,9 @@ pkgbase = gerbil
 	provides = gerbil
 	conflicts = gerbil-git
 	source = gerbil-1.5.2.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.2/Gerbil-1.5.2.AppImage
-	source = gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.2/assets/gerbil.desktop
-	source = LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.2/LICENSE
-	sha256sums = feb732cc54c18894a59c5b0b8a3811bb38638c69c004ccdf6f78f0f0832a7e94
+	source = gerbil.desktop::https://github.com/lone-cloud/gerbil/releases/download/v1.5.2/gerbil.desktop
+	source = LICENSE::https://github.com/lone-cloud/gerbil/releases/download/v1.5.2/LICENSE
+	sha256sums = 255f0080c444a3e973d0d1f1822b9dae03d6d291b5d9a4abfdae48cf9bc77291
 	sha256sums = 591f288d75ae6d043c1d95c2e2e1f345188473180e709e7d894f09667d3ae5e9
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
