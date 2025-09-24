@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-calculator-git
-pkgver=r76.277343e
+_app_id=dev.edfloreshz.Calculator
+pkgver=0.2.0.r4.g36e3c2e
 pkgrel=1
 pkgdesc="Calculator for the COSMIC desktop."
 arch=('x86_64' 'aarch64')
@@ -24,13 +25,23 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd calculator
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd calculator
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  
+  # Variable `APPID` not defined
+  sed -i 's/appid/APPID/g' justfile
+
+  # fix typo
+  sed -i 's/icon-dst/icons-dst/g' justfile
+
+  # correct file names
+  mv -v res/app.desktop "res/${_app_id}.desktop"
+  mv -v res/metainfo.xml "res/${_app_id}.metainfo.xml"
 }
 
 build() {
