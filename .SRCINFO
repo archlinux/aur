@@ -1,0 +1,18 @@
+pkgbase = vanissh-git
+	pkgdesc = Generate vanity SSH public keys that start or end with specified strings
+	pkgver = r4.c2ee470
+	pkgrel = 1
+	url = https://github.com/k4yt3x/vanissh
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = libssh
+	provides = vanissh
+	conflicts = vanissh
+	source = git+https://github.com/k4yt3x/vanissh.git
+	sha256sums = SKIP
+
+pkgname = vanissh-git
