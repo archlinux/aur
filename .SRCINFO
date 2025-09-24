@@ -1,6 +1,6 @@
 pkgbase = hmcl-bin
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular.
-	pkgver = 3.6.17
+	pkgver = 3.6.18
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = hmcl-bin
 	provides = hmcl
 	conflicts = hmcl
 	replaces = hmcl-stable-bin
-	noextract = hmcl-bin-3.6.17-1.jar
+	noextract = hmcl-bin-3.6.18-1.jar
 	source = hmcl.desktop
 	source = hmcl-launch-script
-	source = hmcl-bin-3.6.17-1.jar::https://github.com/HMCL-dev/HMCL/releases/download/release-3.6.17/HMCL-3.6.17.jar
+	source = hmcl-bin-3.6.18-1.jar::https://github.com/HMCL-dev/HMCL/releases/download/release-3.6.18/HMCL-3.6.18.jar
 	sha256sums = 9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b
 	sha256sums = fe8c663bd3aaee7c70dff4da75781a078993c665e5492883d708e46658e6c0ec
-	sha256sums = 2cd11be58a6fb8c4063f2d75d78fb2fb9f5964d7c1b82fc897cd77364a870cc8
+	sha256sums = c7c51c1dd0585dd9d369b261da1c6c927622a58341256daf2b124a1e1af230b4
 
 pkgname = hmcl-bin
