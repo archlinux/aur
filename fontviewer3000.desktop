@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FontViwer3000
+Comment=Visualiser les polices TTF/OTF
+Exec=/usr/bin/fontVeiwer3000 %f
+Icon=font
+Terminal=false
+Type=Application
+MimeType=application/x-font-ttf;application/x-font-opentype;
+Categories=Utility;
+
