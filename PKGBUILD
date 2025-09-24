@@ -1,6 +1,6 @@
-pkgver=3.6.15
-pkgrel=290
-sha256sums=("2631f88b198d96f490b80dd218577c16ecdd7b5e3487bf824d6d3961596cd3c3"
+pkgver=3.6.17
+pkgrel=296
+sha256sums=("31dc3d4c1d8bb0aa71b8fb23e841e14e1f79c4b10befc7cb9dc20554fed87f65"
             "b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d"
             "65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d")
 _pkgname=hmcl-dev
