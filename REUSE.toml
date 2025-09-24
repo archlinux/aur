@@ -26,4 +26,4 @@ path = [
     "xdialog-2.3.1-gtk2.patch",
 ]
 SPDX-FileCopyrightText = "xdialog contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-2.0-or-later"
