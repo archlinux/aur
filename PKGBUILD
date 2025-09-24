@@ -1,12 +1,11 @@
 pkgname=multicast-mtools
-pkgver=2.3
-_pkgrev=db665a4303c38cee908eba4dac50873c3f1d899c
+pkgver=3.2
 pkgrel=1
 pkgdesc="Tools for multicast testing (msend and mreceive)"
 url="https://github.com/troglobit/mtools"
 arch=(i686 x86_64)
-source=("git+https://github.com/troglobit/mtools.git#commit=$_pkgrev")
-sha256sums=('SKIP')
+source=("git+https://github.com/troglobit/mtools.git#tag=v$pkgver")
+sha256sums=('65a06e768653272533e4701938edd4655aa9c75819181cf9fbece99a8d1f1c61')
 
 pkgver() {
 	cd "$srcdir/mtools"
