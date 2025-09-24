@@ -1,6 +1,6 @@
 pkgbase = ssh-studio
 	pkgdesc = Easy, GUI SSH config editor and validator built with Python, GTK 4 and libadwaita
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/BuddySirJava/SSH-Studio
 	arch = any
@@ -10,12 +10,11 @@ pkgbase = ssh-studio
 	makedepends = git
 	makedepends = meson
 	depends = gtk4
+	depends = gtksourceview5
 	depends = libadwaita
 	depends = python-cairo
 	depends = python-gobject
-	source = ssh-studio::git+https://github.com/BuddySirJava/SSH-Studio.git#tag=1.2.3
-	source = ssh-studio-gresource.patch
-	b2sums = f132560bae370096f635102922f5b090a5e46766b3381964c65c1f43ee7bb84204dc61e607e9f985ba283b5b48f82b09397eba755686501757d67f05224985f7
-	b2sums = 9544df1ff21520e7dcc849838695118a0b5846e0809ae3a97bf5d00d392499903af8c325405487b0171fdac7fc8a6a35b8b46cc768936e37d9c0417f98abad55
+	source = ssh-studio::git+https://github.com/BuddySirJava/SSH-Studio.git#tag=1.3.0
+	b2sums = 3103b61f8370b89d95cd17b14fdfe114aa275ac0acf76ba62344005df3f78c09ad52f3fd2a1450cb769ef68c8f9a33f10af463d361fc8d2b3ba9faa72853817e
 
 pkgname = ssh-studio
