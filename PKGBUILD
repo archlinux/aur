@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
