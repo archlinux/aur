@@ -26,7 +26,7 @@ provides=(
 )
 conflicts=("$_pkgname")
 
-_pkgsrc="$_pkgname"
+_pkgsrc="phonon-mpv"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 

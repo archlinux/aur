@@ -14,7 +14,7 @@ pkgbase = phonon-qt6-mpv-git
 	provides = phonon-qt6-mpv
 	provides = phonon-qt6-backend
 	conflicts = phonon-qt6-mpv
-	source = phonon-qt6-mpv::git+https://github.com/OpenProgger/phonon-mpv.git
+	source = phonon-mpv::git+https://github.com/OpenProgger/phonon-mpv.git
 	sha256sums = SKIP
 
 pkgname = phonon-qt6-mpv-git
