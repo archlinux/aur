@@ -97,10 +97,12 @@ package() {
   rm -rf "${pkgdir}/${_jvmdir}/legal"
   ln -s "/usr/share/licenses/${_jdkname}" "${pkgdir}/${_jvmdir}/legal"
 
-  # Man pages
-  for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-${_jdkname}.1}"
-  done
+  # Man pages (conditional to avoid errors if not present)
+  if [[ -d man/man1 ]]; then
+    for f in man/man1/*; do
+      install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-${_jdkname}.1}"
+    done
+  fi
   rm -rf "${pkgdir}/${_jvmdir}/man"
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
