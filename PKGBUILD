@@ -2,8 +2,8 @@
 pkgname=python-orderly-set
 _name=${pkgname#python-}
 pkgver=5.5.0
-pkgrel=1
-pkgdesc="Probably the fastest Python package to convert longitude/latitude to timezone name"
+pkgrel=2
+pkgdesc="Orderly Set is a package containing multiple implementations of Ordered Set"
 arch=('x86_64')
 url="https://pypi.org/project/orderly-set/"
 license=('APACHE')

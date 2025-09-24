@@ -1,7 +1,7 @@
 pkgbase = python-orderly-set
-	pkgdesc = Probably the fastest Python package to convert longitude/latitude to timezone name
+	pkgdesc = Orderly Set is a package containing multiple implementations of Ordered Set
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/orderly-set/
 	arch = x86_64
 	license = APACHE
