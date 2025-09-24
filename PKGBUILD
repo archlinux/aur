@@ -1,6 +1,88 @@
 # Maintainer: sigurd4 <sigurd dot spangelo at gmail dot com>
 
-_parts=(
+# Package name without suffix (-git, -bin, -whatever)
+_pkgname=calcesara
+
+DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
+pkgname="${_pkgname}"
+pkgver=8.6.5
+pkgrel=3
+pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
+arch=('x86_64')
+url='https://web.calce.umd.edu/software/releaseSARA'
+license=('LicenseRef-calceSARA')
+depends=(
+    'wine' # Runs CalceSARA
+    'bash' # Runs launch script
+    'sed' # Templating
+    'coreutils' # tail and printf are used in launch script for keygen
+    'winetricks' # Installs fonts from launch script
+)
+#optdepends=('xdg-utils: for launching HTML help files')
+#optdepends=(
+    #'ttf-terminus'
+    #'adobe-base-14-fonts: Helvetica and Times is widely used throught calceSARA.'
+    #'ttf-dejavu: Mentioned in calceSARA license, so we can assume it's used somewhere.'
+#) # TODO!
+makedepends=(
+    'curl' # Downloads sources
+	'imagemagick' # Convert icons to png
+	'gendesk' # Generate desktop entries
+    'sed' # Templating
+    '7zip' # Unzip installer binary
+)
+
+# Template for launch script.
+_launcher_template="${_pkgname}.sh.template"
+_launcher_check="${_pkgname}.sh"
+
+# Keyfile-name
+_keyfile_name='calce.key'
+
+# Keygen template
+_keygen_template="${_keyfile_name}.template"
+
+# Install location folder name.
+_exe_name="calceSARAv${pkgver}"
+
+# Installer filename.
+_installer_exe="install_${_exe_name}.exe"
+
+# License file unpacked from installer exe
+_license_file='calcelicense.txt'
+
+source=(
+    "${_keygen_template}"
+    "${_launcher_template}"
+    "https://web.calce.umd.edu/software/releaseSARA/${pkgver}/${_installer_exe}"
+)
+sha256sums=(
+    826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
+    af6a109d667c4c22ecce40fad5f4a4a82f41fe6aa3b3fa4783923c382ff75ba4
+    3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
+)
+
+#OPTIONS=(!strip) # No need!
+
+# Found in DecryptInputStream and EncryptOutputStream in calce source code.
+# Required for keygens because CALCE's official keys are unreliable when running CalceSARA under wine.
+_keygen_cryptkey=0xD4
+
+# Runner CLI options.
+# Each option corresponds to a different CalceSARA application.
+_options=(
+    'fast'
+    'tce|tcextractor'
+    'docs'
+    'pwa'
+    'wr|whiskerrisk'
+    'updates'
+)
+
+# Shortcut names of start-menu entries.
+# These are needed to launch the different applcations.
+# Each program is launched from its start-menu shortcut, so these are important.
+_lnks=(
     'calceFAST'
     'calceTCExtractor'
     'User Documentation'
@@ -8,7 +90,43 @@ _parts=(
     'calceWhiskerRisk'
     'Updates'
 )
-_part_names=(
+
+# Shared application data will be stored in /opt
+# I think that's ok.
+_shared_data_prefix='/opt'
+_shared_data_location=${_shared_data_prefix}/${_pkgname}
+
+prepare() {
+    cd "${srcdir}"
+
+    # Text replacement on launcher template
+    __option_cases=""
+    __options_help_list=""
+    for i in ${!_lnks[@]}; do
+        __option=${_options[i]}
+        __lnk=${_lnks[i]}
+        __option_cases="${__option_cases}\n\t${__option}) lnk=${__lnk};;"
+        __option_help_list="${__option_help_list}\\n\\t- ${__option}"
+    done
+    sed -i "s/@keygen_cryptkey@/${_keygen_cryptkey}/g" ${_launcher_template}
+    sed -i "s/@pkgver@/${pkgver}/g" ${_launcher_template}
+    sed -i "s/@pkgname@/${_pkgname}/g" ${_launcher_template}
+    sed -i "s/@exe_name@/${_exe_name}/g" ${_launcher_template}
+    sed -i "s/@keyfile_name@/${_keyfile_name}/g" ${_launcher_template}
+    sed -i "s#@shared_data_prefix@#${_shared_data_prefix}#g" ${_launcher_template}
+    sed -i "s/@option_help_list@/${__option_help_list}/g" ${_launcher_template}
+    sed -i "s/@option_cases@/${__option_cases}/g" ${_launcher_template}
+
+    cp ${_launcher_template} ${_launcher_check}
+    sed -i "s/#@check@/# Good to go!/g" ${_launcher_template}
+    sed -i "s/#@check@/exit 0/g" ${_launcher_check}
+    
+    # Extracts installer to obtain icon files for desktop entries.
+    7z e ${_installer_exe} -y
+}
+
+# Desktop entry metadata
+_desk_names=(
     'calceFAST'
     'calceTCExtractor'
     'calceSARA User Documentation'
@@ -16,7 +134,7 @@ _part_names=(
     'calceWhiskerRisk'
     'calceSARA Updates'
 )
-_part_generic_names=(
+_desk_generic_names=(
     'Failure Assessment Toolkit'
     'Temperature Cycle Extraction Module'
     'User Documentation'
@@ -24,7 +142,7 @@ _part_generic_names=(
     'Whisker Risk Calculator'
     'Updater'
 )
-_part_comments=(
+_desk_comments=(
     'Failure Assessment Toolkit'
     'Temperature Cycle Extraction Module'
     'Documentation for calceSARA'
@@ -32,68 +150,33 @@ _part_comments=(
     'Whisker Risk Calculator'
     'Update and validate calceSARA'
 )
-_options=(
-    fast
-    tce
-    docs
-    pwa
-    wr
-    updates
-)
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
-pkgname=calcesara
-pkgver=8.6.5
-pkgrel=2
-pkgdesc="Simulation Assisted Reliability Assessment (SARA) Software"
-arch=('x86_64')
-url="https://web.calce.umd.edu/software/releaseSARA"
-license=('LicenseRef-calceSARA')
-depends=('wine' 'bash')
-#optdepends=('xdg-utils: for launching HTML help files')
-makedepends=(
-    'curl'
-	'imagemagick'
-	'gendesk'
-    'sed'
-    '7zip'
-    'winetricks'
-)
-
-source=(
-    "${pkgname}.sh"
-    "https://web.calce.umd.edu/software/releaseSARA/${pkgver}/install_calceSARAv${pkgver}.exe"
-)
-sha256sums=(
-    9f4ae510895f3fa4d1bc0e206b333e1ca8277c377e1e516c36f006947ea878ec
-    3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
-)
-
-OPTIONS=(!strip)
-
-prepare() {
-    cd "${srcdir}"
-
-    sed -i "s/@pkgver@/${pkgver}/g" ${pkgname}.sh
-
-    7z e install_calceSARAv${pkgver}.exe -y
-}
 
 build() {
     cd "${srcdir}"
 
-    for i in ${!_parts[@]}; do
-        part=${_parts[i]}
-        part_name=${_part_names[i]}
-        part_generic_name=${_part_generic_names[i]}
-        part_comment=${_part_comments[i]}
-        option=${_options[i]}
+    # Generate desktop entries
+    for i in ${!_lnks[@]}; do
+        __lnk=${_lnks[i]}
+        __desk_name=${_desk_names[i]}
+        __desk_generic_name=${_desk_generic_names[i]}
+        __desk_comment=${_desk_comments[i]}
+        __option="$(echo ${_options[i]} | sed 's/|.*//g')" # Strip aliases
 
-        magick "$part.ico" "$part_name.png"
-        rm "$part.ico"
+        # Convert icon to png
+        magick "${__lnk}.ico" "${__desk_name}.png"
+        rm "${__lnk}.ico"
 
-        gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" -n --name="$part_name" --genericname="$part_generic_name" --comment="$part_comment" --icon="$part_name" --terminal=false --exec="/usr/bin/calcesara $option" -f
-        mv "${pkgname}.desktop" "${pkgname}-$part.desktop"
+        # Generate desktop entry
+        gendesk --pkgname "${_pkgname}" --pkgdesc "${__pkgdesc}" -n --name="${__desk_name}" --genericname="${__desk_generic_name}" --comment="${__desk_comment}" --icon="${__desk_name}" --terminal=false --exec="/usr/bin/${_pkgname} ${__option}" -f
+        mv "${_pkgname}.desktop" "${_pkgname}-${__lnk}.desktop"
     done
+}
+
+check()
+{
+    cd "${srcdir}"
+
+    bash ${srcdir}/${_launcher_check}
 }
 
 package()
@@ -101,30 +184,34 @@ package()
     cd "${srcdir}"
 
     # Install License
-    install -Dm644 calcelicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_license_file}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     # Install Desktop files
-    for i in ${!_parts[@]}; do
-        part=${_parts[i]}
-        part_name=${_part_names[i]}
+    for i in ${!_lnks[@]}; do
+        __lnk=${_lnks[i]}
+        __desk_name=${_desk_names[i]}
 
-        install -Dm644 "$part_name.png" "${pkgdir}/usr/share/pixmaps/$part_name.png"
-        install -Dm644 "${pkgname}-$part.desktop" "${pkgdir}/usr/share/applications/${pkgname}-$part.desktop"
+        install -Dm644 "${srcdir}/${__desk_name}.png" "${pkgdir}/usr/share/pixmaps/${__desk_name}.png"
+        install -Dm644 "${srcdir}/${_pkgname}-${__lnk}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-${__lnk}.desktop"
     done
 
+    # Docs are in the wine-bottle. (for now... not ideal)
     # Install docs to /usr/share/doc/
-    #install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-    #cp -r calceSARAHelp/* "${pkgdir}/usr/share/doc/${pkgname}"
+    #install -m755 -d "${pkgdir}/usr/share/doc/${_pkgname}"
+    #cp -r calceSARAHelp/* "${pkgdir}/usr/share/doc/${_pkgname}"
 
-    # Install binary files to /opt
-    install -m755 -d "${pkgdir}/opt/${pkgname}"
-    install -m755 install_calceSARAv${pkgver}.exe "${pkgdir}/opt/${pkgname}"
-    #install -m644 ChangeLog.txt "${pkgdir}/opt/${pkgname}"
+    # Install shared files to /opt/
+    install -Dm755 -d "${pkgdir}${_shared_data_location}"
+    install -Dm644 "${srcdir}/${_keygen_template}" "${pkgdir}${_shared_data_location}/${_keyfile_name}.template"
+    install -Dm644 "${srcdir}/${_installer_exe}" "${pkgdir}${_shared_data_location}/install_${_exe_name}.exe"
+    
+    # N/A
+    #install -m644 ChangeLog.txt "${pkgdir}/opt/${_pkgname}"
 
     # symlink help files
-    #ln -sv "/usr/share/doc/${pkgname}" "${pkgdir}/opt/${pkgname}/calceSARAHelp"
+    #ln -sv "/usr/share/doc/${_pkgname}" "${pkgdir}/opt/${_pkgname}/calceSARAHelp"
 
-    # Install /usr/bin startscript
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    # Install launch script
+    install -Dm755 "${srcdir}/${_launcher_template}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
