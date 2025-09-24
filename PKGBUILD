@@ -2,7 +2,7 @@
 
 _pkgname=uiua
 pkgname=uiua-git
-pkgver=0.14.0.dev.3.r1.ga56d089f
+pkgver=0.17.0.r5.g7f55d31c
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -18,7 +18,7 @@ options=(!lto)
 
 pkgver() {
     cd $_pkgname
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude latest | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -33,7 +33,7 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cd $_pkgname
-    cargo build --frozen --release --features 'full system'
+    cargo build --frozen --release --features 'full no_self_update system'
 }
 
 check() {
@@ -41,7 +41,7 @@ check() {
     export CARGO_TARGET_DIR=target
 
     cd $_pkgname
-    cargo test --frozen --features 'full system'
+    cargo test --frozen --features 'full no_self_update system'
 }
 
 package() {
