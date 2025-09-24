@@ -1,6 +1,6 @@
 pkgbase = r-spatstat.linnet
 	pkgdesc = Linear Networks Functionality of the 'spatstat' Family
-	pkgver = 3.2.6
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.linnet
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-spatstat.linnet
 	optdepends = r-goftest
 	optdepends = r-locfit
 	optdepends = r-spatstat
-	source = https://cran.r-project.org/src/contrib/spatstat.linnet_3.2-6.tar.gz
-	sha256sums = 826fecb077b15f531d2d0ff8e43b02abe9e75a38e3341113833bc699b1b930ba
+	source = https://cran.r-project.org/src/contrib/spatstat.linnet_3.3-2.tar.gz
+	sha256sums = de7b9489699c69086b6d6100b5c044efb179e793ae1ca606b58311c7c968c655
 
 pkgname = r-spatstat.linnet
