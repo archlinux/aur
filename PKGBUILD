@@ -1,69 +1,61 @@
-# Maintainer: Firebleudark <firebleudark@pm.me>
 pkgname=autoinstallpackages
-pkgver=4.1
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="Modern post-installation script for Arch Linux with futuristic GUI interface"
+pkgdesc="Simple Arch post-install tool (CLI + optional Tk GUI)"
 arch=('any')
 url="https://github.com/Firebleudark/Autoinstallpackages"
 license=('GPL3')
-depends=('bash' 'python' 'tk' 'sudo' 'pacman')
+depends=('bash')
 optdepends=(
-    'paru: AUR helper for installing AUR packages (auto-installed if missing)'
-    'git: Required for paru installation and ML4W dotfiles'
-    'base-devel: Required for building AUR packages'
-    'flatpak: Optional Flatpak support'
-    'timeshift: System backup and restore'
-    'gamemode: Gaming performance optimization'
+  'sudo: required for system changes'
+  'python: GUI wrapper runtime'
+  'tk: Tkinter for the GUI'
+  'pciutils: lspci used in checks'
+  'curl: network checks/downloads'
+  'git: AUR helper bootstrap'
+  'flatpak: optional app source'
 )
-provides=('autoinstallpackages')
-conflicts=('autoinstallpackages-git')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/v${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('bd1c9614fc06cb603eb91a1ab26991bbc20a22786b2446066a8e2b60c5f7e01b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('49b3cceb3ab579aaf27502bb04130f444e814008969f89104717fbd06c182bab')
 
 package() {
-    cd "${srcdir}/Autoinstallpackages-${pkgver}-${pkgrel}"
-    
-    # Create directories
-    install -dm755 "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/usr/share/${pkgname}"
-    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -dm755 "${pkgdir}/usr/share/applications"
-    
-    # Install main scripts
-    install -Dm755 autoinstallpackages.sh "${pkgdir}/usr/share/${pkgname}/autoinstallpackages.sh"
-    install -Dm755 autoinstallpackages_gui.py "${pkgdir}/usr/share/${pkgname}/autoinstallpackages_gui.py"
-    
-    # Install documentation
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    
-    # Install license
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Create wrapper script in /usr/bin
-    cat > "${pkgdir}/usr/bin/${pkgname}" << 'EOF'
-#!/bin/bash
-# AutoInstallPackages wrapper script
-if [[ $EUID -eq 0 ]]; then
-    echo "ERROR: Do not run AutoInstallPackages as root!"
-    exit 1
-fi
-cd /usr/share/autoinstallpackages
-exec ./autoinstallpackages.sh "$@"
+  local srcdir_name="Autoinstallpackages-$pkgver"
+
+  # Install project sources required by CLI/GUI
+  install -Dm755 "$srcdir/$srcdir_name/v5/simple-postinstall.sh" \
+    "$pkgdir/usr/share/autoinstallpackages/v5/simple-postinstall.sh"
+  install -Dm755 "$srcdir/$srcdir_name/gui/app.py" \
+    "$pkgdir/usr/share/autoinstallpackages/gui/app.py"
+
+  # CLI wrapper
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/autoinstallpackages" << 'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+exec /usr/share/autoinstallpackages/v5/simple-postinstall.sh "$@"
 EOF
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
-    
-    # Create desktop entry
-    cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << 'EOF'
+
+  # GUI wrapper
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/autoinstallpackages-gui" << 'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+exec /usr/bin/env python3 /usr/share/autoinstallpackages/gui/app.py "$@"
+EOF
+
+  # Desktop entry
+  install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/applications/autoinstallpackages.desktop" << 'EOF'
 [Desktop Entry]
-Name=AutoInstallPackages
-Comment=Modern post-installation script for Arch Linux with futuristic GUI
-Exec=autoinstallpackages --gui
-Icon=system-software-install
-Terminal=false
 Type=Application
-Categories=System;Settings;PackageManager;
-Keywords=install;packages;arch;linux;post-installation;gui;futuristic;
-StartupNotify=true
+Name=Autoinstallpackages (Arch Post-Install)
+Comment=Run the Arch post-install helper
+Exec=autoinstallpackages-gui
+Icon=utilities-system-monitor
+Terminal=false
+Categories=System;Settings;
 EOF
+
+  # License
+  install -Dm644 "$srcdir/$srcdir_name/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
