@@ -1,6 +1,6 @@
 # Maintainer: Sam Hansen <samhansen.dev@gmail.com>
 pkgname=fuzzel-rbw
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=3
 pkgdesc="A simple Bitwarden RBW frontend for Fuzzel"
 arch=('x86_64')
@@ -11,12 +11,13 @@ makedepends=()
 source=("$url/releases/download/v$pkgver/frbw"
         "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('878477ec924a1cc9fa3f7f6de6a1be3ec317c513b972fd7aedacf5504618a12f'
-            '7dc33652b3f4f75f55399d205243febe98b8748fcb0a60a544cf5f77c04a6022')
+sha256sums=('6c49f0bc765269b616e4a2f0d10fa4349acbf1d8ea62fa0c8241ee530aaaeaf6'
+            '4d183685b496d7e413e73ba507d4e8ea9a1fc4b8d981e007c5264162da419c4a')
 
 package() {
   # Install the binary
   install -Dm755 "$srcdir/frbw" "$pkgdir/usr/bin/frbw"
+  install -Dm755 "$srcdir/pinentry-fuzzel" "$pkgdir/usr/bin/pinentry-fuzzel"
 
   # Install the assets from the source tarball
   install -d "$pkgdir/usr/share/pixmaps"
