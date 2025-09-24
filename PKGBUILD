@@ -1,7 +1,7 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=rssnix
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader"
 arch=('any')
@@ -13,10 +13,10 @@ optdepends=('vim: default viewer'
 provides=("${pkgname}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('22ab055d6644121339da0fe810f250f53c2893501fe1845cabd850a76bb8ea17')
+sha256sums=('4123ca1ccd6a1eac8a5817fc5fa2da43a8a9c25fbc3e425fea96e2e49806fe0c')
 
 build() {
-	cd "${srcdir}"/"${pkgname}-${pkgver}"
+  cd "${srcdir}"/"${pkgname}-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -26,8 +26,8 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"/"${pkgname}-${pkgver}"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}"/"${pkgname}-${pkgver}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
   install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
 }

@@ -1,6 +1,6 @@
 pkgbase = rssnix
 	pkgdesc = Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/jafarlihi/rssnix
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = rssnix
 	provides = rssnix
 	conflicts = rssnix-git
 	conflicts = rssnix-bin
-	source = rssnix-0.3.0.tar.gz::https://github.com/jafarlihi/rssnix/archive/refs/tags/0.3.0.tar.gz
-	sha256sums = 22ab055d6644121339da0fe810f250f53c2893501fe1845cabd850a76bb8ea17
+	source = rssnix-0.4.1.tar.gz::https://github.com/jafarlihi/rssnix/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = 4123ca1ccd6a1eac8a5817fc5fa2da43a8a9c25fbc3e425fea96e2e49806fe0c
 
 pkgname = rssnix
