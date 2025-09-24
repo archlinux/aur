@@ -1,13 +1,13 @@
 pkgbase = das-keyboard-q
 	pkgdesc = Software for Das Keyboard 5Q, 5Qs, 4Q
-	pkgver = 4.2.1
-	pkgrel = 4
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://www.daskeyboard.io/get-started/software/
 	arch = x86_64
 	license = LicenseRef-Unknown
 	options = !debug
-	source = das-keyboard-q-4.2.1.deb::https://das-keyboard-q-releases.s3.us-east-2.amazonaws.com/das-keyboard-q/linux/x64/das-keyboard-q_4.2.1_amd64.deb
-	sha256sums = 628793ebdb839d08d0b5eec867dceac25da4f4e20a2d35c1b06eb3ef8760ded0
+	source = das-keyboard-q-4.3.0.deb::https://das-keyboard-q-releases.s3.us-east-2.amazonaws.com/das-keyboard-q/linux/x64/das-keyboard-q_4.3.0_amd64.deb
+	sha256sums = 1a065d5ebd751d26ef96a957e051274fba0bb10df43596b1edd70deafbacd319
 
 pkgname = das-keyboard-q
 	depends = alsa-lib
