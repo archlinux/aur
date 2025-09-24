@@ -8,8 +8,8 @@ url="https://codeberg.org/i0f/tsh"
 license=('MIT')
 depends=('glibc' 'openssl' 'gcc-libs')
 makedepends=('rust' 'cargo' 'git')
-source=("git+$url.git#tag=v$pkgver")
-b2sums=('cb2e06c26fae4a0b064b78eb7ea7d7ab3af40906a8895816a1e439c9cab52c5d63b882663631daba4b6da60659c2ec3c5bc29c713b0b7066f5f7d9db25d0927d')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/i0f/tsh/archive/v$pkgver.tar.gz")
+b2sums=('b4d50e3ba2b5750664bc90139e28c51cbfe60f9e81b464b3f2807f599967b968d9a0f0b0af586ed92c07060bf55b766c1027c4f50602b8ce6750ace15c04dcd2')
 
 build() {
   cd "$srcdir/$pkgname"
