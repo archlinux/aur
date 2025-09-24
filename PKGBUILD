@@ -23,7 +23,7 @@
 #   See https://github.com/damachine/tkginstaller further details.
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
