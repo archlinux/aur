@@ -1,8 +1,6 @@
 /*
 !.gitignore
 !gdl.profile
-!gdl-cmake.patch
-!FindEigen3.patch
 !PKGBUILD
 !.SRCINFO
 !.gitlab-ci.yml
