@@ -1,0 +1,4 @@
+pre_remove() {
+    rm -f usr/lib/gio/modules/giomodule.cache
+    rm -f usr/share/glib-2.0/schemas/gschemas.compiled
+}
