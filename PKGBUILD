@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oppar
-_pkgver=1.36.0
+_pkgver=1.36.1
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.36.1
 pkgrel=1
 pkgdesc='Outlier profile and pathway analysis in R'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa4035904eea44a2b31c67b38f8170e623591f6e01d92387823ebea6e55f249a')
+sha256sums=('732bcdf1cf284ee8b051a9ad29473e15f1af65f066c5926a9e4d82ac4702be38')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
