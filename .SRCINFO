@@ -1,0 +1,19 @@
+pkgbase = fontviwer3000
+	pkgdesc = Simple font viewer using SDL2 and SDL2_ttf
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = ZLIB
+	makedepends = gcc
+	makedepends = make
+	depends = sdl2
+	depends = sdl2_ttf
+	source = main.c
+	source = Makefile
+	source = LICENSE
+	validpgpkeys = 61935d4c56db8559c95c175fab25dde26d490c2d
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fontviwer3000
