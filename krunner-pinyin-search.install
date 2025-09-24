@@ -1,0 +1,13 @@
+post_install() {
+  echo ">>> Please restart KRunner for the plugin to take effect."
+  echo "    You can do this with: kquitapp6 krunner"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ">>> Tip: After removing this plugin, you may need to restart KRunner."
+  echo "    You can do this with: kquitapp6 krunner"
+}

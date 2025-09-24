@@ -1,7 +1,7 @@
 # Maintainer: Your Name <ikunji@duck.com>
 pkgname=krunner-pinyin-search
 pkgver=r5.8759888
-pkgrel=1
+pkgrel=2
 pkgdesc="一个krunner插件，为KDE提供了用拼音搜索应用程序的功能。支持全拼/首字母/汉字混合输入。"
 arch=(x86_64)
 url="https://github.com/AOSC-Dev/krunner-pinyin-search"
@@ -10,6 +10,7 @@ depends=(qt6-base krunner ki18n kcoreaddons kio)
 makedepends=(cmake extra-cmake-modules qt6-tools git)
 source=("git+https://github.com/AOSC-Dev/krunner-pinyin-search.git")
 sha256sums=('SKIP')
+install=${pkgname}.install
 
 pkgver() {
   cd "$pkgname"
