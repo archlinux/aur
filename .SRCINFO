@@ -10,6 +10,6 @@ pkgbase = omazed
 	depends = inotify-tools
 	optdepends = zed: Zed editor for theme switching
 	source = omazed-1.0.0.tar.gz::https://github.com/aps6/omazed/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 656cc6ddfd786cee8ddcd4dca9f706e4d544784159c3e09132dd4c4646264dd3
+	sha256sums = 9c95a09b10b22aba38e771ab896e8a719ed262243c966a989f6cdd41198c71fb
 
 pkgname = omazed
