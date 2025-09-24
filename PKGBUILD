@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=honkers-launcher
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Honkers launcher for Linux with automatic patching and telemetry disabling"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('95421caf59ea6be5e6f1e1d12ecd482819907f9f1ef16b97c891f542765dc556')
+sha256sums=('3a00500d4a006626185ab183108f720cd4a5fa23ae5698abf784546a65b696dd')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
