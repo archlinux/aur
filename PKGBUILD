@@ -1,6 +1,6 @@
 pkgname=eigen-git
 _pkgname=eigen
-pkgver=5.0.0.r0.ga627f72
+pkgver=3.4.r1426.gdbd25f6
 pkgrel=1
 pkgdesc='Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra'
 arch=(x86_64)
