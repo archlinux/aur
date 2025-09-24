@@ -1,6 +1,6 @@
 pkgbase = the-honkers-railway-launcher
 	pkgdesc = The Honkers Railway launcher for Linux with automatic patching and telemetry disabling
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/an-anime-team/the-honkers-railway-launcher
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = the-honkers-railway-launcher
 	optdepends = mangohud: FPS Overlay
 	optdepends = gamescope: Micro-Compositor
 	optdepends = gamemode: CPU Scaling Control
-	source = https://github.com/an-anime-team/the-honkers-railway-launcher/archive/refs/tags/1.11.1.tar.gz
-	sha256sums = 24f0eb0fcfac3b6e794ca28d93e873592e10ad01cd048247c1d27c084b3b33de
+	source = https://github.com/an-anime-team/the-honkers-railway-launcher/archive/refs/tags/1.12.0.tar.gz
+	sha256sums = 9c2ca38c281ff7e0d52f254d233ec207b9ca7f06028753cdd5f896cb0f7563f3
 
 pkgname = the-honkers-railway-launcher
