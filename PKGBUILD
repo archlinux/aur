@@ -4,7 +4,7 @@
 # ci|forcedep=python-libpulse-git|
 pkgname="pa-dlna"
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWire (via 'python-libpulse')"
 arch=(
   'any'
@@ -46,8 +46,6 @@ optdepends=(
   'pulseaudio-dlna: Service file for pa-dlna in systemd format'
 )
 
-checkdepends=(python-pytest)
-
 source=(
   "git+${url}.git#tag=${pkgver}"
 )
@@ -61,7 +59,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  pytest -k 'not test_main'
+  python -m unittest --verbose --catch --failfast
 }
 
 package() {
