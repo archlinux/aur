@@ -5,18 +5,17 @@
 # Contributor: Piotr Beling <qwak@w8.pl>
 
 pkgname=eclipse-texlipse
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
-_build=18
 pkgdesc="LaTeX support plugin for Eclipse IDE"
-url="http://projects.eclipse.org/projects/science.texlipse"
+url="https://projects.eclipse.org/projects/science.texlipse"
 depends=('eclipse>=4.5.0' 'texlive-core')
 conflicts=('texlipse')
 provides=('texlipse')
 arch=('any')
 license=('EPL')
-source=("https://ci.eclipse.org/texlipse/job/release/$_build/org.eclipse.texlipse%24org.eclipse.texlipse-site/artifact/org.eclipse.texlipse/org.eclipse.texlipse-site/${pkgver}-SNAPSHOT/org.eclipse.texlipse-site-${pkgver}-SNAPSHOT.zip")
-sha256sums=('b22a0dd1b98ee58059a8e0ebfdac605066d4c757439f4daa2167f1e68375fe00')
+source=("https://ftp.halifax.rwth-aachen.de/eclipse/texlipse/updates/release/2.0.4/TeXlipse-Updates-2.0.4.zip")
+sha256sums=('d624b13d8e2674107f4fc960d8e1f04eca3e6446ee2f387a9155604fe270237e')
 
 prepare() {
   # remove features and plug-ins containing sources
