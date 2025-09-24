@@ -1,15 +1,13 @@
 pkgbase = processing-git
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.4.4.r4.g3de866177
+	pkgver = 4.4.7.r37.g72db9b7db
 	pkgrel = 1
 	url = https://github.com/processing/processing4
 	install = processing.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = ant
-	makedepends = rsync
-	makedepends = unzip
+	makedepends = gradle8
 	depends = java-environment-openjdk=17
 	depends = ffmpeg
 	depends = bash
@@ -29,6 +27,6 @@ pkgbase = processing-git
 	source = disable_update_check.patch
 	source = no_jdk_download.patch
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
-	sha256sums = 4bb2676426b25b9ef874a334335b50af67224e592456318505fa4612ce02e35b
+	sha256sums = 5ec5c1814c97c2a4d81c3af9129ba2855e9f90b92aa99d9b1cb5b0d0e995021e
 
 pkgname = processing-git

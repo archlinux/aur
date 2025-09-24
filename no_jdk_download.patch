@@ -1,11 +1,6 @@
---- a/app/build.gradle.kts	2025-04-28 09:19:01.183117452 +0200
-+++ b/app/build.gradle.kts	2025-04-28 09:17:50.418146904 +0200
-@@ -414,12 +414,12 @@
- }
- tasks.register("includeProcessingResources"){
-     dependsOn(
--        "includeJdk",
-+        //"includeJdk",
+--- src/processing4-processing-1307-4.4.7/app/build.gradle.kts	2025-08-28 20:00:51.000000000 +0200
++++ src/processing4-processing-1307-4.4.7/app/build.gradle.kts.orig	2025-09-24 09:37:29.661129704 +0200
+@@ -412,12 +412,12 @@
          "includeCore",
          "includeJavaMode",
          "includeSharedAssets",
@@ -16,3 +11,17 @@
          "includeJavaModeResources",
          "renameWindres"
      )
+-    mustRunAfter("includeJdk")
++    //mustRunAfter("includeJdk")
+     finalizedBy("signResources")
+ }
+ 
+@@ -524,7 +524,7 @@
+         dependsOn("includeProcessingResources")
+     }
+     tasks.named("createDistributable").configure {
+-        dependsOn("includeJdk")
++        //dependsOn("includeJdk")
+         finalizedBy("setExecutablePermissions")
+     }
+ }
