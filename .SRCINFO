@@ -1,6 +1,6 @@
 pkgbase = sfpi-bin
 	pkgdesc = Tenstorrent SFPU programming interface
-	pkgver = 6.21.0
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/tenstorrent/sfpi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sfpi-bin
 	provides = sfpi
 	conflicts = sfpi
 	options = !strip
-	source = https://github.com/tenstorrent/sfpi/releases/download/v6.21.0/sfpi_6.21.0_x86_64.txz
-	b2sums = 80a32b0b969c442178797f67e6e4917d8d6cb6857acabaa41e1641f13d16188a259807f482a5119d2ed26ee258f8ca16f4861edd5ae36fe997230be9469f712c
+	source = https://github.com/tenstorrent/sfpi/releases/download/v7.1.0/sfpi_7.1.0_x86_64.txz
+	b2sums = 6a6622a14324d8559eed7736e122956b622e5399eb37b1cd6fe5a88f8c578f853129677078de0f3997d6b51db97f151ebc78668df9baf67f031d439d0ae1fc49
 
 pkgname = sfpi-bin
