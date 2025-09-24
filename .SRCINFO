@@ -1,6 +1,6 @@
 pkgbase = system-bridge
 	pkgdesc = A bridge for your systems
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/timmo001/system-bridge
@@ -15,7 +15,7 @@ pkgbase = system-bridge
 	depends = libxkbcommon-x11
 	provides = system-bridge
 	conflicts = system-bridge-git
-	source = system-bridge-5.1.0.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.1.0.tar.gz
-	sha256sums = c84aedf27e3826dffd1bfbd5f3541c0718f2d13e891f23d57beb6cc684877c50
+	source = system-bridge-5.1.1.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.1.1.tar.gz
+	sha256sums = a04e291936474537a5e02f49a777bf4412e5eba93c7a2bf4f62d4378da3c28f2
 
 pkgname = system-bridge
