@@ -3,8 +3,8 @@
 # Contributor: Evan Bush (PencilShavings) <eb.pencilshavings@protonmail.com>
 
 pkgname=quickemu-git
-pkgver=4.9.7.r14.g3da9edc
-pkgrel=2
+pkgver=4.9.7.r58.g78b938fa
+pkgrel=1
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines"
 arch=(any)
 url="https://github.com/quickemu-project/quickemu"
@@ -49,6 +49,9 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd docs
+  # remove pandoc invocation, manpages are already in repo. Reported by some users
+  sed -i '/include pandoc-man.mk/d' Makefile
+
   # -j1 avoid a race condition reported and confirmed on 2025-02-10
   make -j1 PREFIX=/usr DESTDIR="${pkgdir}" install
 }
