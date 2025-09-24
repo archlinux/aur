@@ -2,7 +2,7 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 pkgname=gnome-shell-extension-background-logo
 _uuid=background-logo@fedorahosted.org
-pkgver=48.0
+pkgver=49.0
 pkgrel=1
 pkgdesc="GNOME Shell extension to overlay a logo over the default background"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
 )
 source=("git+https://pagure.io/background-logo-extension.git#tag=$pkgver"
         'archlinux-gnome.svg')
-sha256sums=('2b00040efc130c4220dba4406ae894391505d8eb4178c23055f9ebba37ae1367'
+sha256sums=('031b84ca231e444f0b3b1b93475cfadf56a87c597c599bf50f70810a8dae7e17'
             'ae3223dab86d51ed54ac22c0518102bcd965fe0576839a038e559301cf94cc2c')
 
 prepare() {
