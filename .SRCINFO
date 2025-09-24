@@ -15,6 +15,7 @@ pkgbase = gstreamer0.10-base
 	makedepends = libvorbis
 	makedepends = libtheora
 	makedepends = pango
+	makedepends = cairo
 	makedepends = gobject-introspection
 	makedepends = glib2-devel
 	options = !emptydirs
