@@ -1,0 +1,6 @@
+[sui-mainnet-bin]
+source = "github"
+github = "MystenLabs/sui"
+prefix = "mainnet-v"
+include_regex = "^mainnet-v.+$"
+use_max_release = true
