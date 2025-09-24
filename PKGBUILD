@@ -5,7 +5,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli' 'immich-machine-learning')
 pkgrel=1
-pkgver=1.143.0
+pkgver=1.143.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -39,7 +39,7 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
     'lcms2'
     'mimalloc'
     'openjpeg2'
-    'openexr>=3.4.0'  # refuses to start rn w/ lower version; not sure where this version's from
+    'openexr>=3.4.0'  # sharp refuses to start rn w/ lower version; not sure where this version's from
     'liblqr'
     'libtool'
     'jellyfin-ffmpeg'  # maintainer advice 28/10/24
@@ -77,7 +77,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt'
         'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('00a9efcfb3870a90b6a9291ff6f60a9833a5ca9689bb7a3289908e45a8a57b9d'
+sha256sums=('21cedcbf832124652e65655881e9abbad8348980cd400acf489f51fcf3df4c2d'
             '475291c45ec0a20b52f7ff927ddd7299f6f9e848e01145817066ff194cd50f07'
             'SKIP'
             '48ba0c1716e4459322f878775bd37d9f8efe80b9c8a830bdb901ee4cba15a402'
