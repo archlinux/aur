@@ -1,6 +1,6 @@
 pkgbase = python-octodns-powerdns
 	pkgdesc = PowerDNS API provider for octoDNS
-	pkgver = 0.0.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/octodns/octodns-powerdns
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-octodns-powerdns
 	depends = python
 	depends = python-octodns
 	depends = python-requests
-	source = https://github.com/octodns/octodns-powerdns/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = 2bb92c0d4123a01683373755a35bdf6d3afc6e65ccf425aa3cd64c15cdb27745
+	source = https://github.com/octodns/octodns-powerdns/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 123363681b304f593dabbd4a807d94e6c13e8ce0cf98c7bae7ef998aa73741fe
 
 pkgname = python-octodns-powerdns

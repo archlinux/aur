@@ -2,7 +2,7 @@
 
 _pkgname=octodns-powerdns
 pkgname="python-${_pkgname}"
-pkgver=0.0.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PowerDNS API provider for octoDNS"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 
 source=("https://github.com/octodns/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2bb92c0d4123a01683373755a35bdf6d3afc6e65ccf425aa3cd64c15cdb27745')
+sha256sums=('123363681b304f593dabbd4a807d94e6c13e8ce0cf98c7bae7ef998aa73741fe')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
