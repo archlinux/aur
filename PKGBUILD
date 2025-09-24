@@ -2,7 +2,7 @@
 
 _pkgname=octodns-bind
 pkgname="python-${_pkgname}"
-pkgver=0.0.6
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="RFC compliant (Bind9) provider for octoDNS"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 
 source=("https://github.com/octodns/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b7868a0768daa7cad69bc56f706cd2e6d4dbd7e9ac1b405f5bd1332ab5411e3')
+sha256sums=('16b632e14dec8b37f87220b1740814580d555ab030a7ec05ae519ff2e80ae6aa')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
