@@ -12,7 +12,7 @@ pkgbase = minidsp-rs
 	depends = gcc-libs
 	depends = libusb
 	options = !lto
-	source = minidsp.tar.gz::https://github.com/mrene/minidsp-rs/archive/refs/tags/v0.1.12.tar.gz
-	sha256sums = caf9db7418bf9e7fccaeb7664af56a70dc67eb7eb31073ace34406c71b6d246f
+	source = minidsp_0.1.12.tar.gz::https://github.com/mrene/minidsp-rs/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 2ab458800db532e3e3d28255ff58e6a6f3a985778970bc07ca172611b775dd18
 
 pkgname = minidsp-rs

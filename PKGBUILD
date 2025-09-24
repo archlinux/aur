@@ -9,9 +9,9 @@ url="https://github.com/mrene/minidsp-rs"
 license=('APACHE')
 depends=('gcc-libs' 'libusb')
 makedepends=('git' 'clang' 'cmake' 'rust')
-source=("minidsp.tar.gz"::"https://github.com/mrene/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
+source=("minidsp_${pkgver}.tar.gz"::"https://github.com/mrene/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
 options=('!lto')
-sha256sums=('caf9db7418bf9e7fccaeb7664af56a70dc67eb7eb31073ace34406c71b6d246f')
+sha256sums=('2ab458800db532e3e3d28255ff58e6a6f3a985778970bc07ca172611b775dd18')
 
 build() {
   cd "$pkgname-$pkgver"
