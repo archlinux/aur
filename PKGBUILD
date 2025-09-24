@@ -4,13 +4,13 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=140.0.7339.185
+pkgver=140.0.7339.207
 pkgrel=1
 _manual_clone=1
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
-_system_clang=1
+_system_clang=0
 _system_stdlib=libc++
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
