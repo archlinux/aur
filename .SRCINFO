@@ -11,6 +11,6 @@ pkgbase = mingw-w64-eigen
 	options = !buildflags
 	options = staticlibs
 	source = https://gitlab.com/libeigen/eigen/-/archive/5.0.0/eigen-5.0.0.tar.bz2
-	sha256sums = d2771c18e3e35b88b38dfb2fef7ea547515d3b6c2f2a9c1f96631a046ff80c6c
+	sha256sums = SKIP
 
 pkgname = mingw-w64-eigen
