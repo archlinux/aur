@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-ttnn-git
-pkgver=0.62.0.dev20250919.r28.ga7ce66c29d4
-pkgrel=3
+pkgver=0.62.0.dev20250924.r17.g6484d835461
+pkgrel=1
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -23,6 +23,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/tt-metal"
+    git fetch --prune
     git submodule update --init --recursive
 
     # Dirty source patches (patching using the patch command is not stable enough)
