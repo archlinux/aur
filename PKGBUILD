@@ -1,4 +1,3 @@
-# Maintainer: aps <aps@omazed.dev>
 pkgname=omazed
 pkgver=1.0.0
 pkgrel=1
@@ -11,8 +10,8 @@ optdepends=('zed: Zed editor for theme switching')
 makedepends=('git')
 backup=()
 install=omazed.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/aps6/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/aps6/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('656cc6ddfd786cee8ddcd4dca9f706e4d544784159c3e09132dd4c4646264dd3')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
