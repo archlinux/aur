@@ -1,15 +1,13 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.4.5
+	pkgver = 4.4.7
 	pkgrel = 1
 	url = https://www.processing.org/
 	install = processing.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = gradle
-	makedepends = rsync
-	makedepends = unzip
+	makedepends = gradle8
 	depends = java-environment-openjdk=17
 	depends = ffmpeg
 	depends = bash
@@ -25,11 +23,11 @@ pkgbase = processing
 	depends = zlib
 	optdepends = processing-examples: Examples for Processing
 	options = !strip
-	source = https://github.com/processing/processing4/archive/processing-1305-4.4.5.tar.gz
+	source = https://github.com/processing/processing4/archive/processing-1307-4.4.7.tar.gz
 	source = disable_update_check.patch
 	source = no_jdk_download.patch
-	sha256sums = 90442160640ee3a8434e23373d0bde3431aa5d78d4387adddb0e635eeddf1af1
+	sha256sums = b0f908ffd219ef35394f7df72a8df00ca78aa89946d387bf0a4b2997852689d8
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
-	sha256sums = 4bb2676426b25b9ef874a334335b50af67224e592456318505fa4612ce02e35b
+	sha256sums = 5ec5c1814c97c2a4d81c3af9129ba2855e9f90b92aa99d9b1cb5b0d0e995021e
 
 pkgname = processing

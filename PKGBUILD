@@ -3,8 +3,8 @@
 # Contributor: F. Rødseth <xyproto@archlinux.org>
 
 pkgname=processing
-pkgver=4.4.5
-_build=1305
+pkgver=4.4.7
+_build=1307
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -12,14 +12,14 @@ url='https://www.processing.org/'
 license=(GPL LGPL)
 depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 optdepends=('processing-examples: Examples for Processing')
-makedepends=(gradle rsync unzip)
+makedepends=(gradle8)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
 	    'disable_update_check.patch'
 	    'no_jdk_download.patch')
-sha256sums=('90442160640ee3a8434e23373d0bde3431aa5d78d4387adddb0e635eeddf1af1'
+sha256sums=('b0f908ffd219ef35394f7df72a8df00ca78aa89946d387bf0a4b2997852689d8'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '4bb2676426b25b9ef874a334335b50af67224e592456318505fa4612ce02e35b')
+            '5ec5c1814c97c2a4d81c3af9129ba2855e9f90b92aa99d9b1cb5b0d0e995021e')
 install='processing.install'
 
 prepare() {
@@ -55,7 +55,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle8 createDistributable
 }
 
 package() {
