@@ -23,4 +23,5 @@ pkgname = voicevox-bin
 	depends = zlib
 	depends = bash
 	depends = libsndfile
+	depends = 7zip
 	depends = electron36

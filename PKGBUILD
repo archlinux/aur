@@ -21,7 +21,7 @@ _electron=electron36
 options=(!debug)
 
 package() {
-  depends=(glibc gcc-libs zlib bash libsndfile $_electron) #onnxruntime
+  depends=(glibc gcc-libs zlib bash libsndfile 7zip $_electron) #onnxruntime
   tar -xf ${noextract[0]} VOICEVOX/{resources,vv-engine,7zzs,README.txt} \
     --exclude VOICEVOX/vv-engine/libgcc_s.so* \
     --exclude VOICEVOX/vv-engine/libmvec.so* \
@@ -30,6 +30,7 @@ package() {
   ln -sf /usr/lib/libgfortran.so VOICEVOX/vv-engine/libgfortran-*.so*
   ln -sf /usr/lib/libquadmath.so VOICEVOX/vv-engine/libquadmath-*.so*
   ln -sf /usr/lib/libsndfile.so VOICEVOX/vv-engine/_soundfile_data/libsndfile*.so*
+  ln -sf /usr/lib/7z VOICEVOX/7zzs
 
   install -Dm644 voicevox.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 VOICEVOX/vv-engine/resources/engine_manifest_assets/icon.png "$pkgdir"/usr/share/pixmaps/voicevox.png
