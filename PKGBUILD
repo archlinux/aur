@@ -1,13 +1,10 @@
-# Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
-
-## links
-# https://flipperzero.one/update
-# https://github.com/flipperdevices/qFlipper
+# Maintainer:
+# Contributor: L. Bradley LaBoon <me@bradleylaboon.com>
 
 _pkgname="qflipper"
 pkgname="$_pkgname-git"
 pkgver=1.3.3.r3.g1d26683
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
 url="https://github.com/flipperdevices/qFlipper"
 license=('GPL-3.0-only')
@@ -29,14 +26,13 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
-
-source+=(
+source=(
+  "$_pkgsrc"::"git+$url.git"
   "libwdi"::"git+https://github.com/pbatard/libwdi"
   "nanopb"::"git+https://github.com/nanopb/nanopb"
 )
-sha256sums+=(
+sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -53,6 +49,9 @@ prepare() {
   git config submodule.driver-tool/libwdi.url "$srcdir/libwdi"
   git config submodule.3rdparty/nanopb.url "$srcdir/nanopb"
   git -c protocol.file.allow=always submodule update
+
+  # https://github.com/flipperdevices/qFlipper/pull/233
+  git cherry-pick -n 57316893037d119931011d9abd4a05ed158c7a24
 
   # Use uucp group instead of dialout for udev rules
   sed -i 's/dialout/uucp/g' installer-assets/udev/42-flipperzero.rules
