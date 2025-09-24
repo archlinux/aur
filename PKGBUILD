@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspLearnBayes
-_pkgver=0.19.3
+_pkgver=0.95.0
 pkgname=r-${_pkgname,,}
-pkgver=0.19.3
+pkgver=0.95.0
 pkgrel=1
 pkgdesc="Learn Bayes Module for JASP"
 arch=('any')
@@ -29,7 +29,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('2fb5405084b181d11cca55620f25b954dcdab057c82a2c856ea4b7e865ef41a6')
+sha256sums=('3a47409dc12c8f4bcfa9b4a267da94ac9717ab9bdd9664d7a28efb9842c7751d')
 
 
 build() {
@@ -40,6 +40,4 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  mkdir -p  ${pkgdir}/usr/lib/jasp-desktop/Modules
-  ln -s /usr/lib/R/library ${pkgdir}/usr/lib/jasp-desktop/Modules/${_pkgname}
 }
