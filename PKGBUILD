@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
@@ -12,9 +12,11 @@ optdepends=('alsa-lib: Audio support for sound effects'
 provides=('gerbil')
 conflicts=('gerbil-git')
 source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.1/Gerbil-1.5.1.AppImage"
-        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.1/assets/gerbil.desktop")
+        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.1/assets/gerbil.desktop"
+        "LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.5.1/LICENSE")
 sha256sums=('f2abe5ec42dddbd7e554bb7c8f39ffa0e7fa615d14646de7851dbec6de1138d0'
-            'da139b72a1d0965c1fe7749cb93c2ef50c00d551f7b884ed9296db3114283893')
+            'da139b72a1d0965c1fe7749cb93c2ef50c00d551f7b884ed9296db3114283893'
+            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 prepare() {
     chmod +x "gerbil-${pkgver}.AppImage"
@@ -37,9 +39,11 @@ exec "/opt/gerbil/Gerbil" "$@"
 WRAPPER
     chmod +x "${pkgdir}/usr/bin/gerbil"
     
-    # Install desktop file from assets
+    # Install desktop file and license
     install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/licenses/gerbil"
     cp "${srcdir}/gerbil.desktop" "${pkgdir}/usr/share/applications/"
+    cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/gerbil/"
     
     # Install icon to hicolor theme directory and pixmaps as fallback
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
@@ -58,4 +62,63 @@ WRAPPER
             fi
         done
     fi
+    
+    # Install shell completions
+    install -dm755 "${pkgdir}/usr/share/bash-completion/completions"
+    install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
+    
+    # Bash completion
+    cat > "${pkgdir}/usr/share/bash-completion/completions/gerbil" << 'BASH_COMP'
+_gerbil() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--version --cli"
+
+    case "${prev}" in
+        --cli)
+            # Don't complete after --cli, let user type kobold args
+            return 0
+            ;;
+        *)
+            COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+            return 0
+            ;;
+    esac
+}
+complete -F _gerbil gerbil
+BASH_COMP
+    
+    # Zsh completion
+    cat > "${pkgdir}/usr/share/zsh/site-functions/_gerbil" << 'ZSH_COMP'
+#compdef gerbil
+
+_gerbil() {
+    local context state line
+    
+    _arguments -C \
+        '1: :->command' \
+        '*: :->args' && return 0
+        
+    case $state in
+        command)
+            local commands=(
+                '--version:Show version information'
+                '--cli:Run in CLI mode (pass remaining args to kobold binary)'
+            )
+            _describe 'commands' commands
+            ;;
+        args)
+            case ${words[2]} in
+                --cli)
+                    # Don't complete after --cli, let user type kobold args
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+_gerbil "$@"
+ZSH_COMP
 }
