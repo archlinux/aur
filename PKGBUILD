@@ -1,6 +1,6 @@
 _pkgname=cyberdrop_dl_patched
 pkgname=cyberdropdownloader
-pkgver=7.5.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
@@ -8,12 +8,12 @@ url="https://github.com/jbsparrow/CyberDropDownloader"
 license=('GPL-3.0-or-later')
 depends=(
     apprise
+    python-aiodns
     python-aiofiles
     python-aiohttp
     python-aiohttp-client-cache
     python-aiolimiter
     python-aiosqlite
-    python-arrow
     python-asyncpraw
     python-beautifulsoup4
     python-browser-cookie3
@@ -23,13 +23,12 @@ depends=(
     python-get-video-properties
     python-inquirerpy
     python-m3u8
-    python-mediafire
     python-myjdapi
     python-packaging
     python-pillow
-    python-platformdirs
     python-psutil
     python-pycares
+    python-pycryptodome
     python-pydantic
     python-rich
     python-send2trash
@@ -49,7 +48,7 @@ optdepends=(
 )
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('77a1ec1e40bbd5e45d58255946fbe87f24e6a846356085cc36662db591162bad')
+sha256sums=('323c4b6f7ced3b77353551e43a3205788d268363193f130910e5e98a832b214d')
 
 build(){
     cd $_pkgname-$pkgver
