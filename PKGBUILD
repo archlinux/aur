@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=bssm
-_pkgver=2.0.2
+_pkgver=2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Bayesian Inference of Non-Linear and Non-Gaussian State Space Models"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -40,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a1235d8be6cfbf742b99a6340863e8c6')
-b2sums=('287273fa35b10ec6554a599c8691b625b6ce9c11fcee9305cae5bd203441f55c6e57bf8257d9d8c31a933c61ceb6f6f5aebb901ab0943e585ca258ee5c59b4fd')
+md5sums=('35c8d50ac5ee61f9a4f6802eba49c41e')
+b2sums=('261e1faf933b1d6b7852b682d470dff678515f77dab064915fab39bbc5909f75aad6afe0c0e02523885788ba7ba365d44f9de478e7912b8397b111b7e5ef7f16')
 
 build() {
   mkdir build
