@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-bluetooth-quick-connect
-pkgver=53
+pkgver=54
 pkgrel=1
 pkgdesc="Allow to connect Bluetooth paired devices from GNOME control panel."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'zip'
 )
 source=("gnome-bluetooth-quick-connect-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a9ef201786e3189d84e7dc2ff70e0f7d083fdce65a8d20eed064e9ae649095c4')
+sha256sums=('6642981c00bf362d7de0d46fe1d65d4216cd2c34d098229d7443bb8c6eb9370a')
 
 build() {
   cd gnome-bluetooth-quick-connect-$pkgver
@@ -37,6 +37,5 @@ package() {
   mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
   install -Dvm644 dist/schemas/*.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
-
   rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
