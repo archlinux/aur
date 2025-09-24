@@ -1,0 +1,12 @@
+pkgbase = hypr-cleaner
+	pkgdesc = Script to remove GNOME Web/Console and replace Dolphin with Nautilus
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = nautilus
+	depends = pacman
+	source = cleaner.sh
+	sha256sums = SKIP
+
+pkgname = hypr-cleaner
