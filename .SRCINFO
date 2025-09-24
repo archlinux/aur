@@ -1,6 +1,6 @@
 pkgbase = python-metpy
 	pkgdesc = collection of tools in Python for reading, visualizing and performing calculations with weather data.
-	pkgver = 1.6.3
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://unidata.github.io/MetPy
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-metpy
 	optdepends = python-cartopy: for the examples
 	optdepends = python-shapely: for the examples
 	optdepends = python-geopandas: for the examples
-	source = python-metpy-1.6.3::https://github.com/Unidata/MetPy/archive/refs/tags/v1.6.3.tar.gz
-	sha256sums = 4348bbb24f8181a89d6d67657717ea15cb8d06f22d78062378c345bdee4aa7b1
+	source = python-metpy-1.7.1::https://github.com/Unidata/MetPy/archive/refs/tags/v1.7.1.tar.gz
+	sha256sums = 61db41df14e3928caef4ab2aa448c02fb924dacef33a6beff260d1d8a36075b3
 
 pkgname = python-metpy

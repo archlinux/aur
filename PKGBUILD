@@ -2,7 +2,7 @@
 # former Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.6.3
+pkgver=1.7.1
 pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
@@ -23,7 +23,7 @@ optdepends=(
 makedepends+=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4' 'python-packaging')
 source=("${pkgname}-${pkgver}::https://github.com/Unidata/${_basename}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4348bbb24f8181a89d6d67657717ea15cb8d06f22d78062378c345bdee4aa7b1')
+sha256sums=('61db41df14e3928caef4ab2aa448c02fb924dacef33a6beff260d1d8a36075b3')
 
 
 build() {
