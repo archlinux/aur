@@ -6,14 +6,14 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=itk-lite-git
-pkgver=6.0a03.r392.gd0b07068a9
+pkgver=6.0a03.r508.g7ca2f0e73e
 pkgrel=1
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
 url="https://itk.org/"
 license=(Apache-2.0)
 depends=(glibc gcc-libs libjpeg-turbo libpng zlib libtiff gdcm expat hdf5)
-makedepends=(cmake git eigen gtest)
+makedepends=(cmake git eigen3 gtest)
 provides=(itk insight-toolkit insight-toolkit-git)
 conflicts=(itk insight-toolkit)
 source=("git+https://github.com/InsightSoftwareConsortium/ITK.git")

@@ -1,13 +1,13 @@
 pkgbase = itk-lite-git
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 6.0a03.r392.gd0b07068a9
+	pkgver = 6.0a03.r508.g7ca2f0e73e
 	pkgrel = 1
 	url = https://itk.org/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = git
-	makedepends = eigen
+	makedepends = eigen3
 	makedepends = gtest
 	depends = glibc
 	depends = gcc-libs
