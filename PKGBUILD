@@ -4,7 +4,7 @@
 _target=mips64-elf
 pkgname=${_target}-newlib
 pkgver=4.4.0.20231231
-pkgrel=4
+pkgrel=5
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
 url='http://sourceware.org/newlib/'
