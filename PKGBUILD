@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nanoarrow
-_pkgver=0.6.0-1
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Interface to the 'nanoarrow' 'C' Library"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(Apache)
+license=('Apache')
 depends=(
   r
 )
@@ -22,6 +22,7 @@ optdepends=(
   r-arrow
   r-bit64
   r-blob
+  r-dplyr
   r-hms
   r-jsonlite
   r-rlang
@@ -31,8 +32,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('82cbfc860ed21f9aaf282f908ba8de22')
-b2sums=('b4b109311a01a30fbaa3dbcc320cf8538d4f1ef59042ab2d30c8b633fc395e6850931e6fb9dfa7b4076d6d59f093a6c6227f9f46b26b4be1cf1c5f8f52871387')
+md5sums=('066732abc7d0442ee237ad32015ccbbc')
+b2sums=('7102574939632ad281f5e7dfa7daf89048ae608f97648ff0fcc4cb51064825fa10ac62f0d0993fb3a807ca5b09d2d89b2922fe0426baaa48a4852fbddd02ac1c')
 
 build() {
   mkdir build
