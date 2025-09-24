@@ -1,5 +1,5 @@
 pkgbase = nautilus-scripts
-	pkgdesc = A set of actions for extending the functionality of the GNOME Files (Nautilus), Dolphin, Caja, Nemo, PCManFM-Qt and Thunar file managers. 
+	pkgdesc = A set of actions for extending the functionality of the GNOME Files (Nautilus), Dolphin, Caja, Nemo, PCManFM-Qt and Thunar file managers.
 	pkgver = 19.0.1
 	pkgrel = 1
 	url = https://github.com/cfgnunes/nautilus-scripts
@@ -14,3 +14,4 @@ pkgname = nautilus-scripts
 	optdepends = nautilus-scripts-dolphin: dolphin servicemenus
 
 pkgname = nautilus-scripts-dolphin
+	depends = nautilus-scripts
