@@ -60,9 +60,9 @@ source_x86_64=(
 )
 
 sha1sums=(
-  'ece0a6c64fe7b5ece556457c9bf768ef3bec1485'  # Update with new sha1sum for freedesktop-java.desktop.in after editing
-  '47084145338ac067418c71bf371ac324bcfe92b6'  # Update with new sha1sum for freedesktop-jconsole.desktop.in
-  '7821b9b4f5463270f15ce8ae7ec970a93d45e8b1'  # Update with new sha1sum for freedesktop-jshell.desktop.in
+  'ece0a6c64fe7b5ece556457c9bf768ef3bec1485'
+  '47084145338ac067418c71bf371ac324bcfe92b6'
+  '7821b9b4f5463270f15ce8ae7ec970a93d45e8b1'
   '36096a57cebd346e08efc68326fe77960d43726f'
   'b8233f9ff931ce97a265827fac18ed90f4e248c6'
   'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
@@ -97,14 +97,14 @@ package() {
   rm -rf "${pkgdir}/${_jvmdir}/legal"
   ln -s "/usr/share/licenses/${_jdkname}" "${pkgdir}/${_jvmdir}/legal"
 
-  # Man pages (conditional to avoid errors if not present)
+  # Man pages (conditional: only if directory exists)
   if [[ -d man/man1 ]]; then
     for f in man/man1/*; do
       install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-${_jdkname}.1}"
     done
+    rm -rf "${pkgdir}/${_jvmdir}/man"
+    ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
   fi
-  rm -rf "${pkgdir}/${_jvmdir}/man"
-  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
