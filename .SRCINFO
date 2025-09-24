@@ -1,6 +1,6 @@
 pkgbase = r-sjmisc
 	pkgdesc = Data and Variable Transformation Functions
-	pkgver = 2.8.10
+	pkgver = 2.8.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sjmisc
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-sjmisc
 	optdepends = r-stringdist
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/sjmisc_2.8.10.tar.gz
-	sha256sums = 2d64ab3551e6ac5993ade0dd269619063018decaa2fd34d56a2541209052c58b
+	source = https://cran.r-project.org/src/contrib/sjmisc_2.8.11.tar.gz
+	sha256sums = 8ed1d6a2fb1555d62a8135465b2af0dbf2ea343010b4eafe817121cbb172152c
 
 pkgname = r-sjmisc
