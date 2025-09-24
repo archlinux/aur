@@ -1,6 +1,6 @@
 pkgbase = folo-git
 	pkgdesc = organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Use system-wide electron)
-	pkgver = 0.2.3.r27.gd3b32d3
+	pkgver = 0.2.3.r587.g87935aa
 	pkgrel = 1
 	url = https://folo.is/
 	arch = any
