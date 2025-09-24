@@ -5,10 +5,10 @@
 # <https://github.com/casey/just>
 #
 
-gh := require("gh")
 jq := require("jq")
 vercmp := require("vercmp")
 makepkg := require("makepkg")
+nvchecker := require("nvchecker")
 
 bump:
   #!/bin/sh
@@ -17,14 +17,8 @@ bump:
   current="$(grep 'pkgver=' PKGBUILD | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
   echo "Current version: $current"
 
-  tag="$(
-    gh release list --repo MystenLabs/sui --exclude-pre-releases --exclude-drafts --json tagName | \
-    jq -re --arg network 'testnet' '.[] | .tagName | select(. | startswith($network))' | \
-    head -1
-  )"
-  echo "Latest tag: $tag"
-
-  latest="$(echo "$tag" | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
+  latest="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.version')"
+  echo "Latest version: $latest"
 
   if [ "$(vercmp "$current" "$latest")" -ne "-1" ]; then
     echo "No version bump needed"
@@ -33,6 +27,13 @@ bump:
 
   echo "Bumping version to $latest"
   sed -i "s/pkgver=.*/pkgver=$latest/" PKGBUILD
+
+  just update-checksums
+  just commit
+
+update-checksums:
+  #!/bin/sh
+  set -e
 
   echo "Updating checksums"
   checksums="$(makepkg -g)"
@@ -44,4 +45,9 @@ bump:
   echo "Updating SRCINFO"
   makepkg --printsrcinfo > .SRCINFO
 
-  git commit -am "feat: sui-$tag"
+commit:
+  #!/bin/sh
+  set -e
+
+  latest="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.version')"
+  git commit -am "chore: bump to sui v$latest"

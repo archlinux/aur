@@ -1,0 +1,6 @@
+[sui-testnet-bin]
+source = "github"
+github = "MystenLabs/sui"
+prefix = "testnet-v"
+include_regex = "^testnet-v.+$"
+use_max_release = true
