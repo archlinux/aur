@@ -1,11 +1,12 @@
 pkgbase = tail-tray-git
 	pkgdesc = Tailscale tray menu and UI for the KDE Plasma Desktop
-	pkgver = v0.2.7.r4.gc5f0a46
+	pkgver = 0.2.23.r10.gd303ac8
 	pkgrel = 1
 	url = https://github.com/SneWs/tail-tray
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = qt6-tools
 	depends = tailscale
