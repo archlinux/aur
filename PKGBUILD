@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("rucola-notes")
 conflicts=("rucola-notes")
 source=("https://github.com/Linus-Mussmaecher/rucola/releases/download/v$pkgver/rucola-notes-$pkgver-x86_64.tar.gz")
-sha256sums=("73f8181c1b054b578fa6bb93ea81340eec39e5ed6849e32e9895f405e001dcf4")
+sha256sums=("9ec650a090b17981c069f462f76242d0260fdab8f5249eb30a4c13cccbfc64ea")
 
 package() {
     install -Dm755 rucola -t "$pkgdir/usr/bin"
