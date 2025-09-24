@@ -1,7 +1,7 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=fblog
-pkgver=4.14.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="command-line JSON Log viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=(!lto)
 license=('custom:WTFPL')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1474b5fc511e52635d0e95ebd3e139f702794c1570286fd01f6b93ce82282c85')
+sha256sums=('c2f56c9e2f4c5fbd8b36cf1611905255a0ec1db51b8eea49d1c0db779a4949d3')
 
 build() {
   cd "$pkgname-$pkgver"
