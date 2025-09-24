@@ -1,6 +1,6 @@
 pkgbase = monetdb
 	pkgdesc = MonetDB: an open source database system
-	pkgver = 11.45.7
+	pkgver = 11.53.13
 	pkgrel = 1
 	url = http://www.monetdb.org/Home
 	install = monetdb.install
@@ -15,7 +15,7 @@ pkgbase = monetdb
 	depends = snappy
 	depends = unixodbc
 	depends = libxml2
-	source = https://dev.monetdb.org/downloads/sources/archive/MonetDB-11.45.7.tar.xz
-	sha256sums = 3707897bb84ecbb73b196bed06a017a7f8a9f50bc8cfca87eb496e87d9254a0e
+	source = https://dev.monetdb.org/downloads/sources/archive/MonetDB-11.53.13.tar.xz
+	sha256sums = ed5093234689d7f0ed5a439bc904388f5b2bd12ad08308cedcbd5faca95e0325
 
 pkgname = monetdb
