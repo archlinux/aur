@@ -1,17 +1,16 @@
 pkgname=omazed
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Live theme switching for Zed in Omarchy - automatically synchronize your Zed editor theme with your Omarchy system theme"
 arch=('any')
 url="https://github.com/aps6/omazed"
 license=('MIT')
 depends=('inotify-tools')
-optdepends=('zed: Zed editor for theme switching')
 makedepends=('git')
 backup=()
 install=omazed.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aps6/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9c95a09b10b22aba38e771ab896e8a719ed262243c966a989f6cdd41198c71fb')
+sha256sums=('1f13f58b3e8acdacb9e6d37f4d00565db20cf9a8f0887b9cfb1917d86c0ca33d')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
