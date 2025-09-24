@@ -1,0 +1,15 @@
+pkgbase = python-orderly-set
+	pkgdesc = Probably the fastest Python package to convert longitude/latitude to timezone name
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = https://pypi.org/project/orderly-set/
+	arch = x86_64
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	provides = python-orderly-set
+	source = https://files.pythonhosted.org/packages/source/o/orderly-set/orderly_set-5.5.0.tar.gz
+	md5sums = bfb6f065e1b646f84636dfab39e0acbd
+
+pkgname = python-orderly-set
