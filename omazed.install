@@ -18,29 +18,28 @@ post_upgrade() {
     echo ""
     echo "==> Omazed updated to $(pacman -Q omazed | cut -d' ' -f2)"
     echo ""
-    echo "==> Updating your installation:"
-    echo "   Run: omazed setup"
+    echo "==> To complete the update:"
+    echo "   omazed reload"
     echo ""
-    echo "   This will update themes and restart the service."
+    echo "   This will restart the service with the new version."
     echo ""
-}
-
-pre_remove() {
-    echo "==> Stopping omazed service..."
-    systemctl --user stop omazed.service 2>/dev/null || true
-    systemctl --user disable omazed.service 2>/dev/null || true
 }
 
 post_remove() {
     echo ""
     echo "==> Omazed removed."
     echo ""
-    echo "📁 Preserved files:"
+    echo "Preserved files:"
     echo "   • Theme files in ~/.config/zed/themes/ (preserved)"
+    echo "   • User configuration files (preserved)"
     echo ""
-    echo "🗑️  To completely remove themes:"
+    echo "To stop the service and clean up:"
+    echo "   systemctl --user stop omazed.service"
+    echo "   systemctl --user disable omazed.service"
+    echo ""
+    echo "To remove themes:"
     echo "   rm ~/.config/zed/themes/{catppuccin,everforest,gruvbox,kanagawa,matte-black,nord,osaka-jade,ristretto,rose-pine,tokyo-night}*.json"
     echo ""
-    echo "Thank you for using Omazed! 🎨"
+    echo "Thank you for using Omazed!"
     echo ""
 }
