@@ -1,16 +1,16 @@
 pkgbase = gns3util
 	pkgdesc = GNS3 API utility for managing GNS3v3 servers
-	pkgver = 1.1.0
+	pkgver = 1.2.4
 	pkgrel = 1
-	url = https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.1.0/gns3util-linux-amd64.tar.gz
+	url = https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.2.4/gns3util-linux-amd64.tar.gz
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source_x86_64 = https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.1.0/gns3util-linux-amd64.tar.gz
-	sha256sums_x86_64 = cd4935e3ac9f06ff78b231367a507e01b15051158c402bcd16c97e95e2333d04
-	source_aarch64 = https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.1.0/gns3util-linux-arm64.tar.gz
-	sha256sums_aarch64 = f2fe9af4ac137c8dee6413db9a6c424e03e5ae1eaf313eac4e2d2adcddfe9beb
+	source_x86_64 = https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.2.4/gns3util-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7453deba0a875c1b6ff2866b465ff6a310815c4474c26b6c585644f0d90a86ae
+	source_aarch64 = https://github.com/Stefanistkuhl/gns3-api-util/releases/download/v1.2.4/gns3util-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9fb456b589784203612cb8056fca209eacc8c287f384cf57641206a810c651df
 
 pkgname = gns3util
