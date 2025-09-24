@@ -1,0 +1,14 @@
+pkgbase = obos-genissue-git
+	pkgdesc = Generate /run/issue dynamically for obsidianOS
+	pkgver = r10.ae79abe
+	pkgrel = 1
+	url = https://github.com/obsidian-os/obos-genissue
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = obsidianctl
+	source = git+https://github.com/obsidian-os/obos-genissue.git
+	sha256sums = SKIP
+
+pkgname = obos-genissue-git
