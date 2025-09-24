@@ -1,7 +1,7 @@
 # Maintainer: eltonff <https://github.com/eltonfabricio10/>
 _pkgname=freeshow
 pkgname=${_pkgname}-lts
-pkgver=1.4.9
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Show song lyrics and more for free!"
 arch=("x86_64")
@@ -20,7 +20,7 @@ depends=("gtk3"
          "libsecret")
 optdepends=("libappindicator-gtk3")
 source_x86_64=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/${provides}-${pkgver}-amd64.deb")
-sha256sums_x86_64=('d9e5de445ce83fbdaf5e5f179b2b4ff51080764ec9e40fb61b5cc0ff6dd01aed')
+sha256sums_x86_64=('fdcd9e64f9f5ce6f87037fdb9b51d370d8090b8e8c84c28ecc98543dfd96319c')
 
 install=${pkgname}.install
 
