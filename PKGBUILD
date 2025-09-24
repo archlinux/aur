@@ -3,7 +3,7 @@
 pkgbase=ideology-git
 pkgname=ideology-git
 pkgver=r3.4c5f8cd
-pkgrel=1
+pkgrel=2
 pkgdesc="IDEology is the IDE for the Snow programming language."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/IDEology"
@@ -28,10 +28,11 @@ makedepends=(
     cmake
     git
     ninja
-    fvm
     clang
     llvm
     pkgconf
+    # AUR
+    fvm
 )
 checkdepends=()
 optdepends=()
