@@ -4,7 +4,7 @@ _bundlepkgname='ompss'
 pkgdesc='Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.'
 pkgver='2.3.0.20190627'
 _bundlepkgver='19.06'
-pkgrel='3'
+pkgrel='4'
 arch=('x86_64')
 url='https://pm.bsc.es/ompss'
 license=('GPL3')
@@ -21,7 +21,7 @@ sha512sums=(159efc17ba446f3f2205a8c0580ed10fab263f8bdb7306d5444d1fc6a592f80d749c
 
 # WORKAROUND: The sources are outdated compared to Arch's environment,
 #             so we have to downgrade/disable some things...
-[[ -n "$LDFLAGS" ]] && export LDFLAGS="$LDFLAGS,--no-as-needed"
+export LDFLAGS="${LDFLAGS:-} -Wl,--no-as-needed"
 
 prepare() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
