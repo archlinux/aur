@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=p4merge-bin
-pkgver=25.2
+pkgver=25.3
 pkgrel=1
 pkgdesc='Perforce three-way merging and side-by-side file comparison tool'
 arch=('x86_64')

@@ -1,13 +1,13 @@
 pkgbase = p4merge-bin
 	pkgdesc = Perforce three-way merging and side-by-side file comparison tool
-	pkgver = 25.2
+	pkgver = 25.3
 	pkgrel = 1
 	url = https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge
 	arch = x86_64
 	license = custom
-	provides = p4merge=25.2
+	provides = p4merge=25.3
 	conflicts = p4merge
-	source = https://www.perforce.com/downloads/perforce/r25.2/bin.linux26x86_64/p4v.tgz
+	source = https://www.perforce.com/downloads/perforce/r25.3/bin.linux26x86_64/p4v.tgz
 	source = p4admin.desktop
 	source = p4merge.desktop
 	sha256sums = 3822deb566d8a1ae00859218bca371ad110c86a81a21757a0a50cc1881b140e5
