@@ -13,16 +13,17 @@ provides=("$_execname")
 depends=('glibc')
 makedepends_x86_64=(fakeroot bubblewrap)
 optdepends=()
-source=("SLA" "fake-lsb-release")
+source=("SLA")
 source_x86_64=(
+  "fake-lsb-release"
   "$pkgname-$pkgver-x86_64.run::https://assets.micron.com/adobe/assets/urn:aaid:aem:f60bf728-a665-4760-b099-31631a1f02bc/renditions/original/as/msecli-linux.run"
 )
 source_aarch64=(
   "$pkgname-$pkgver-aarch64.zip::https://assets.micron.com/adobe/assets/urn:aaid:aem:3faea2e9-b3dd-4e12-9320-02299b15b646/renditions/original/as/msecli-arm.zip"
 )
-sha256sums=('7b385cd18e9b747cf76ac5999dd01768c2931358f6da2751cdb8745d6dde32c7'
-            '1eb68dee6bf93a094389eda90b9f9c963eeb59351c48636d43ed8d0dc7c410e1')
-sha256sums_x86_64=('20e473793afc39cc0b968c79a40c56a6ea8e0676c0f27ccfc72be68b4458318b')
+sha256sums=('7b385cd18e9b747cf76ac5999dd01768c2931358f6da2751cdb8745d6dde32c7')
+sha256sums_x86_64=('1eb68dee6bf93a094389eda90b9f9c963eeb59351c48636d43ed8d0dc7c410e1'
+                   '20e473793afc39cc0b968c79a40c56a6ea8e0676c0f27ccfc72be68b4458318b')
 sha256sums_aarch64=('4d5119e68dc695e4d3441cd50952cc9826d6bc6e2f4d35d8e7a2dc929793ad25')
 
 build() {
