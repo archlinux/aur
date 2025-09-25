@@ -6,6 +6,7 @@ pkgbase = ggc
 	arch = x86_64
 	arch = arm64
 	license = MIT
+	makedepends = go
 	provides = ggc
 	conflicts = ggc-bin
 	conflicts = ggc-git

@@ -7,6 +7,7 @@ pkgdesc="A modern Git CLI tool with both traditional command-line and interactiv
 arch=('x86_64' 'arm64')
 url="https://github.com/bmf-san/ggc"
 license=('MIT')
+makedepends=('go')
 provides=('ggc')
 conflicts=('ggc-bin' 'ggc-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bmf-san/ggc/archive/refs/tags/v$pkgver.tar.gz")
