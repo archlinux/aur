@@ -1,5 +1,5 @@
 pkgbase = gnome-pomodoro-extension
-	pkgdesc = A time management utility for GNOME based on the pomodoro technique
+	pkgdesc = GNOME Shell extension that manages focus and break cycles with the Pomodoro technique
 	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/gnome-pomodoro/gnome-pomodoro
