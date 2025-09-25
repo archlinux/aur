@@ -1,38 +1,44 @@
-# Maintainer: Michael (https://aur.archlinux.org/account/michael_wzq)
-# Maintainer: LittleYe233 <littleye233 at gmail dot com>
+# Maintainer:  Michael     (https://aur.archlinux.org/account/michael_wzq)
+# Contributor: LittleYe233 <littleye233 at gmail dot com>
 # Contributor: BigmenPixel <bigmen dot pixel at tuta dot io>
 # shellcheck disable=SC2034,SC2154
 
 pkgname=tun2socks-bin
 _pkgname=tun2socks
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tun2socks - powered by gVisor TCP/IP stack"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/xjasonlyu/tun2socks"
-license=('GPL3')
+license=('MIT')
 makedepends=()
 conflicts=("tun2socks")
 
-source=("config.yaml" "${_pkgname}.service")
+source=(
+    "config.yaml"
+    "${_pkgname}.service"
+    "https://raw.githubusercontent.com/xjasonlyu/tun2socks/refs/tags/v$pkgver/LICENSE"
+)
 source_x86_64=("${_pkgname}-linux-amd64-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip")
 source_i686=("${_pkgname}-linux-386-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-386.zip")
 source_armv7h=("${_pkgname}-linux-armv7-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-armv7.zip")
 source_aarch64=("${_pkgname}-linux-arm64-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.zip")
 
 b2sums=('10f14b4ff1f862c59b7253a72d42f1e6185318122df9577dee5d0a8bef54f617d1225c535122ac68d613551ec0c5579482ce08f0eb7525a19856558b11a8d9c3'
-        '66a0650d23c4c8587ce2cb23b239091a04049bf649a09d31bb541d97d37eaeed1ca3961dde8cf8f96513cfc650efbf92286c86b35db3ac30648163067e4c1b5c')
+        '66a0650d23c4c8587ce2cb23b239091a04049bf649a09d31bb541d97d37eaeed1ca3961dde8cf8f96513cfc650efbf92286c86b35db3ac30648163067e4c1b5c'
+        '2144834e7c540f805314dc1e3ae5d7897b4c1d87fcef674a4cd702f13cded5c0ec496cdc0e50ebc55daa2863c5f32d9fac20524c7933e85517088c85edf65d23')
 b2sums_x86_64=('c0875d859d9ea71c1e7b580878b71f97f747f53bf0912cf20d413ea1344b5210e19a01733f60175b07944445a126e8def2a384ae718bd74d931918e4d8dac582')
 b2sums_i686=('35d8a85aee7b576c660db7b6eb454772ff010f8a8f8b8fe6c920e730b3aa5df8d0831115c307a83824d5979ba352817e710eec078b87f155fda71d159ac723f3')
 b2sums_armv7h=('11e48b0ca8fe037a3a5c3262b08be5b588b8636ebeb88f5f58e4e8a05d105a72f3104ef19ef17d88e1ba6604ec50f56447304df3fac34e4cf11d87a3e7f2c95a')
 b2sums_aarch64=('5e1e0439006b05f7b5318d820f6c6ea38e52ac9a7e8b927a3ac04d97968159787e33bf4f024a1c6c584cefaa4984ae642fc8c26e5c3238b469221d3d98c60005')
 
 package() {
-  declare -A ARCH_MAP
-  ARCH_MAP=( [x86_64]='amd64' [i686]='386' [armv7h]='armv7' [aarch64]='arm64' )
-  _execname="${_pkgname}-linux-${ARCH_MAP[${CARCH}]}"
+    declare -A ARCH_MAP
+    ARCH_MAP=( [x86_64]='amd64' [i686]='386' [armv7h]='armv7' [aarch64]='arm64' )
+    _execname="${_pkgname}-linux-${ARCH_MAP[${CARCH}]}"
 
-  install -Dm755 "${srcdir}/${_execname}"           "${pkgdir}"/usr/bin/"${_pkgname}"
-  install -Dm644 "${srcdir}"/config.yaml         -t "${pkgdir}"/etc/tun2socks
-  install -Dm644 "${srcdir}/${_pkgname}".service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm755 "${srcdir}/${_execname}"           "${pkgdir}"/usr/bin/"${_pkgname}"
+    install -Dm644 "${srcdir}"/config.yaml         -t "${pkgdir}"/etc/tun2socks
+    install -Dm644 "${srcdir}/${_pkgname}".service -t "${pkgdir}"/usr/lib/systemd/system
+    install -Dm644 "$srcdir/LICENSE"               -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
