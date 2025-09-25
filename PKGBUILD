@@ -6,13 +6,14 @@ _pkgname=calcesara
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
 pkgver=8.6.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
 arch=('x86_64')
 url='https://web.calce.umd.edu/software/releaseSARA'
 license=('LicenseRef-calceSARA')
 depends=(
     'wine' # Runs CalceSARA
+    'wine-mono' # .NET framework
     'bash' # Runs launch script
     'sed' # Templating
     'coreutils' # tail and printf are used in launch script for keygen

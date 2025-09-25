@@ -1,7 +1,7 @@
 pkgbase = calcesara
 	pkgdesc = Simulation Assisted Reliability Assessment (SARA) Software
 	pkgver = 8.6.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://web.calce.umd.edu/software/releaseSARA
 	arch = x86_64
 	license = LicenseRef-calceSARA
@@ -11,6 +11,7 @@ pkgbase = calcesara
 	makedepends = sed
 	makedepends = 7zip
 	depends = wine
+	depends = wine-mono
 	depends = bash
 	depends = sed
 	depends = coreutils
