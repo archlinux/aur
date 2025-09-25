@@ -1,8 +1,8 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 pkgname=gozen-bin
-pkgver=0.4.0
-pkgrel=7
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -17,7 +17,7 @@ _appimage="gozen-v${pkgver}-alpha-x86_64.AppImage"
 source=(
   "${_appimage}::https://github.com/VoylinsGamedevJourney/GoZen/releases/download/v${pkgver}-alpha/${_appimage}"
 )
-sha256sums=('071390478e29bf37283fc130c82e9a0a54bad94ef39081dbab8510b625614600')
+sha256sums=('0cfda2c41730efe8bfd993234475eca5496d7992a07233938f56333f7c2ee1a5')
 
 package() {
 	install -d "${pkgdir}/opt/${pkgname}"
