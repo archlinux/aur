@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/zmnpl/twad"
 license=('MIT')
 makedepends=('go' 'git')
-conflicts('twad-git')
+conflicts=('twad-git')
 source=("git+https://github.com/JustinWayland/twad.git")
 sha256sums=('SKIP')
 
