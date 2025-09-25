@@ -17,7 +17,7 @@ pkgbase = rblx-silver-git
 	depends = libxtst
 	depends = libxrandr
 	depends = alsa-lib
-	source = git+https://github.com/Wookhq/silverr.git#branch=main
+	source = rblx-silver-git::git+https://github.com/Wookhq/silverr.git#branch=main
 	source = silverr.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
