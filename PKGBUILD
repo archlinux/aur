@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=2.44.2
 pkgrel=1
-pkgdesc="An image loading library"
+pkgdesc="An image loading library, without glycin"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
 arch=(x86_64)
 license=(LGPL-2.0-or-later)

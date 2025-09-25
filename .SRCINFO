@@ -1,5 +1,5 @@
 pkgbase = gdk-pixbuf2-noglycin
-	pkgdesc = An image loading library
+	pkgdesc = An image loading library, without glycin
 	pkgver = 2.44.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GdkPixbuf
@@ -35,5 +35,5 @@ pkgname = gdk-pixbuf2-noglycin
 	conflicts = gdk-pixbuf2
 
 pkgname = gdk-pixbuf2-noglycin-docs
-	pkgdesc = An image loading library (documentation)
+	pkgdesc = An image loading library, without glycin (documentation)
 	depends = 
