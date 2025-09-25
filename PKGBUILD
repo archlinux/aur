@@ -1,7 +1,7 @@
 # Maintainer: Martin Schwan <mschwan@posteo.de>
 
 pkgname=partup
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="System initialization program formatting and writing flash devices"
 arch=(x86_64)
@@ -12,6 +12,7 @@ depends=(
   e2fsprogs
   glib2
   libyaml
+  mtd-utils
   parted
   squashfs-tools
   tar
@@ -22,7 +23,7 @@ makedepends=(
   pkgconf
 )
 source=("https://github.com/phytec/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("466cd7e1bd6cdab3a379ec3e46d13432578b8e3ddee7faf32d7af68c58982a64")
+sha256sums=("88d58599d2d78639579599a34810f5347c4363e42b24a86e9250fdeb882afb36")
 
 prepare() {
   cd $pkgname-$pkgver
