@@ -17,7 +17,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/silverr"
 
   npm ci
   npm run build
@@ -25,21 +25,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-
-  export ELECTRON_BUILDER_SKIP_INSTALL=true
+  cd "$srcdir/silverr"
 
   npx electron-builder --linux --dir
 
   mkdir -p "$pkgdir/opt/$pkgname"
   cp -r "dist/linux-unpacked/"* "$pkgdir/opt/$pkgname/"
 
-  # create a symlink to make it executable
   install -Dm755 "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-  # desktop entry
   install -Dm644 "$srcdir/silverr.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  # app icon
-  install -Dm644 "$srcdir/$pkgname/src/lib/assets/silverr.svg" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.svg"
+  install -Dm644 "$srcdir/silverr/src/lib/assets/silverr.svg" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.svg"
 }
