@@ -1,7 +1,7 @@
 pkgbase = hidrd-git
 	pkgdesc = HID report descriptor I/O library and conversion tool
-	pkgver = r391.82c5cdd
-	pkgrel = 2
+	pkgver = r412.6c0ed39
+	pkgrel = 1
 	url = https://github.com/DIGImend/hidrd/
 	arch = i686
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = hidrd-git
 	md5sums = SKIP
 
 pkgname = hidrd-git
-
