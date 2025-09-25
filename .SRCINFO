@@ -1,0 +1,14 @@
+pkgbase = pranshell
+	pkgdesc = A custom Unix shell implementation in C
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/PranavU-Coder/pranshell
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	depends = glibc
+	source = pranshell-1.0.0.tar.gz::https://github.com/PranavU-Coder/pranshell/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pranshell
