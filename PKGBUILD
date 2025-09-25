@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PINA
 pkgname=python-${_base,,}-mathlab
-pkgver=0.2.2.post2508
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Physics-Informed Neural networks for Advanced modeling"
 url="https://github.com/mathLab/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pytorch-lightning)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('1cb6372f0331149237bd1c5a0fb9934d5b10e6dd02bd292b97dd9184c5ceb1125608254789575095f7b44e1763c62441fd45a5ca1b4ad0ccfb70b2ed84a25cb6')
+sha512sums=('cdae84b4b7acd800c0f072f8dc00b2d94934b77af88710e383a1c184c493caf0b24094f95b18abdf7690b6e33f48115296b6b6d70eefad45eeffb3b9c7373ed8')
 
 build() {
   cd ${_base}-${pkgver}
