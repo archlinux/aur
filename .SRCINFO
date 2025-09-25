@@ -1,6 +1,6 @@
 pkgbase = hyprwhenthen-bin
 	pkgdesc = Dynamic monitor configuration for Hyprland.
-	pkgver = 0.0.3
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/fiffeek/hyprwhenthen
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = hyprwhenthen-bin
 	conflicts = hyprwhenthen
 	provides = hyprwhenthen-bin
 	arch = aarch64
-	source_aarch64 = https://github.com/fiffeek/hyprwhenthen/releases/download/v0.0.3/hyprwhenthen_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 19a2be1a592408422dc314649344b8fb574f0cabcaacf2d57467d65aebe5b856
+	source_aarch64 = https://github.com/fiffeek/hyprwhenthen/releases/download/v0.1.0/hyprwhenthen_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1b0f98f667a4defb4dae3b5b5b3ef360a4cb9eefb963d69fc89bb4c949bc7a36
 	arch = i686
-	source_i686 = https://github.com/fiffeek/hyprwhenthen/releases/download/v0.0.3/hyprwhenthen_Linux_i386.tar.gz
-	sha256sums_i686 = 6c16caf73b5989ef08213a2869a43eca5e0fa9a3cfc32f2959a163e4ec15cb72
+	source_i686 = https://github.com/fiffeek/hyprwhenthen/releases/download/v0.1.0/hyprwhenthen_Linux_i386.tar.gz
+	sha256sums_i686 = 5b33d16c11cf4ee7114c6892e570678b50348515ac18c032cdcb4dc58dcabef5
 	arch = x86_64
-	source_x86_64 = https://github.com/fiffeek/hyprwhenthen/releases/download/v0.0.3/hyprwhenthen_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = eb83afb757f78d213144deb2632db4e945262fd1c2ec9428f79236fffc443306
+	source_x86_64 = https://github.com/fiffeek/hyprwhenthen/releases/download/v0.1.0/hyprwhenthen_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c79b8b5d976e279a5a0a00216c56f37153320d8a0b4baaa6223d68c8bd5d0e61
 	
 pkgname = hyprwhenthen-bin
