@@ -1,6 +1,6 @@
 pkgbase = tubeup
 	pkgdesc = Youtube (and other video site) to Internet Archive Uploader
-	pkgver = 2025.5.11
+	pkgver = 2025.9.3
 	pkgrel = 1
 	url = https://github.com/bibanon/tubeup
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = tubeup
 	depends = python-docopt
 	depends = python-internetarchive
 	depends = yt-dlp
-	source = tubeup-2025.5.11.tar.gz::https://github.com/bibanon/tubeup/archive/refs/tags/2025.5.11.tar.gz
-	sha256sums = 6602eeeeed26327d43e2f6a2d26dd45e27eceae561a1a3fffa5fc0f29591e051
+	source = tubeup-2025.9.3.tar.gz::https://github.com/bibanon/tubeup/archive/refs/tags/2025.9.3.tar.gz
+	sha256sums = cf7cdc354fc5fe570dc68859f6471e778c3cd2fb18fa212623a14ecf3e95f54e
 
 pkgname = tubeup
