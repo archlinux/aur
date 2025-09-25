@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
@@ -11,8 +11,8 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('gerbil')
 conflicts=('gerbil-git')
-source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.4/Gerbil-1.5.4.AppImage")
-sha256sums=('6b7a1a9544ad541b7a084baef0d734ead62df47221e0990e31889c80ae60ed55')
+source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.5/Gerbil-1.5.5.AppImage")
+sha256sums=('a900bdcbf43859c3748d7e29ad54c60c6d8f84c3ca9edc1c8c9be030596f0091')
 
 prepare() {
     chmod +x "gerbil-${pkgver}.AppImage"
@@ -43,7 +43,7 @@ WRAPPER
     install -dm755 "${pkgdir}/usr/share/metainfo"
     install -dm755 "${pkgdir}/usr/share/licenses/gerbil"
     install -m644 "${startdir}/gerbil.desktop" "${pkgdir}/usr/share/applications/"
-    install -m644 "${startdir}/assets/gerbil.metainfo.xml" "${pkgdir}/usr/share/metainfo/"
+    install -m644 "${startdir}/gerbil.metainfo.xml" "${pkgdir}/usr/share/metainfo/"
     install -m644 "${startdir}/LICENSE" "${pkgdir}/usr/share/licenses/gerbil/"
     
     # Install icon to hicolor theme directory and pixmaps as fallback
