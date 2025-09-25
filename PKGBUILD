@@ -9,7 +9,7 @@
 _base=METIS
 pkgname=${_base,,}
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc="Serial Graph Partitioning and Fill-reducing Matrix Ordering"
 url="https://github.com/KarypisLab/${_base}"
@@ -25,6 +25,8 @@ prepare() {
   # Increase CMake version
   sed -i 's/2.8/3.10/' CMakeLists.txt
   echo "target_link_libraries(metis PUBLIC \"-lGKlib\")" >>"libmetis/CMakeLists.txt"
+  # Avoid crash with illegal instruction
+  sed -i 's|march=native|march=nocona|g' conf/gkbuild.cmake
 }
 
 build() {
