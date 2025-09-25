@@ -142,6 +142,7 @@ esac
 
 export WINEPREFIX="${HOME}/.local/share/wineprefixes/${pkg_name}"
 export WINEDEBUG="${WINEDEBUG:-fixme-all}"
+mkdir -p "${WINEPREFIX}"
 
 ###############################################################################################
 # Shared data

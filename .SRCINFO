@@ -19,7 +19,7 @@ pkgbase = calcesara
 	source = calcesara.sh.template
 	source = https://web.calce.umd.edu/software/releaseSARA/8.6.5/install_calceSARAv8.6.5.exe
 	sha256sums = 826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
-	sha256sums = af6a109d667c4c22ecce40fad5f4a4a82f41fe6aa3b3fa4783923c382ff75ba4
+	sha256sums = 1455d3c311132dd9eeaf79cbff10c8c16de13e32cd8acb75d238a86004af8d3c
 	sha256sums = 3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
 
 pkgname = calcesara
