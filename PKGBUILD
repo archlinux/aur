@@ -1,7 +1,7 @@
 # Maintainer: Evan Dunbar <evdunbar _ protonmail _ com>
 # Maintainer: Luke Street <luke@street.dev>
 pkgname="objdiff"
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A local diffing tool for decompilation projects"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
     "$pkgname.png"
 )
 b2sums=(
-    "14e654ccda814d865bda6a85f97bc18c8cac6f7c89156221f7eee85c19f0dd368fd3fb0f314869a29aec7a5ac1d138d230d64820d7917f8b41f3c582dca8153d"
+    "a4f59a5799e59df41f6989d0f17f9b7873a2ce4bf5cff4d4a000fd25e09bc31a5bd58bdb3a329c054877c4db4f654fa72774beba394b6d4437af9aa4df1e89e8"
     "SKIP"
     "SKIP"
 )
