@@ -1,7 +1,7 @@
 From c74eb59809599f66c24be2d0b00703569949763f Mon Sep 17 00:00:00 2001
 From: Mike Goeppner <hej@mgoeppner.se>
 Date: Mon, 22 Sep 2025 23:08:39 +0200
-Subject: [PATCH 1/4] Port extension to gnome 49
+Subject: [PATCH 1/6] Port extension to gnome 49
 
 window.get_maximized() was replaced by window.is_maximized() [1]
 
@@ -79,7 +79,7 @@ index 1ca20e7..0a75293 100644
 From eec7360791779521965e6227e4252170b2fd1665 Mon Sep 17 00:00:00 2001
 From: Mike Goeppner <hej@mgoeppner.se>
 Date: Tue, 23 Sep 2025 00:06:45 +0200
-Subject: [PATCH 2/4] Add polyfill for GNOME <= 48
+Subject: [PATCH 2/6] Add polyfill for GNOME <= 48
 
 ---
  src/components/tilingsystem/tilingManager.ts | 11 ++++++-----
@@ -198,7 +198,7 @@ index 96dc42e..31930ce 100644
 From 6c56e46686f2b4af0bb70c25e07b95f347f037c7 Mon Sep 17 00:00:00 2001
 From: Mike Goeppner <hej@mgoeppner.se>
 Date: Tue, 23 Sep 2025 00:09:57 +0200
-Subject: [PATCH 3/4] Prettier fixes
+Subject: [PATCH 3/6] Prettier fixes
 
 ---
  src/components/tilingsystem/tilingManager.ts | 2 +-
@@ -235,7 +235,7 @@ index 31930ce..f573816 100644
 From db8d31aae801d39fae6cc614bb8ef3cc2e075455 Mon Sep 17 00:00:00 2001
 From: Mike Goeppner <hej@mgoeppner.se>
 Date: Tue, 23 Sep 2025 00:11:00 +0200
-Subject: [PATCH 4/4] Add GNOME 49 to metadata.json
+Subject: [PATCH 4/6] Add GNOME 49 to metadata.json
 
 ---
  resources/metadata.json | 3 ++-
@@ -255,3 +255,214 @@ index b60a32f..cd36b86 100644
    ],
    "version": 99,
    "version-name": "16.4",
+
+From 3f2acb6951a0e6ec96f6f65bdc7763f70955f672 Mon Sep 17 00:00:00 2001
+From: Mike Goeppner <hej@mgoeppner.se>
+Date: Thu, 25 Sep 2025 17:50:53 +0200
+Subject: [PATCH 5/6] Add polyfills for get/set_maximize_flags
+
+---
+ src/components/tilingsystem/tilingManager.ts  | 15 +++++-----
+ .../tilingLayoutWithSuggestions.ts            |  3 +-
+ src/extension.ts                              | 10 +++----
+ src/polyfill.ts                               | 28 ++++++++++++++++++-
+ 4 files changed, 42 insertions(+), 14 deletions(-)
+
+diff --git a/src/components/tilingsystem/tilingManager.ts b/src/components/tilingsystem/tilingManager.ts
+index f1809e7..aeaac56 100644
+--- a/src/components/tilingsystem/tilingManager.ts
++++ b/src/components/tilingsystem/tilingManager.ts
+@@ -28,7 +28,7 @@ import TouchPointer from './touchPointer';
+ import { KeyBindingsDirection } from '@keybindings';
+ import TilingShellWindowManager from '@components/windowManager/tilingShellWindowManager';
+ import TilingLayoutWithSuggestions from '../windowsSuggestions/tilingLayoutWithSuggestions';
+-import { getIsMaximized } from '@polyfill';
++import { getIsMaximized, setMaximizeFlags, setMaximizeFlags } from '@polyfill';
+ 
+ const MINIMUM_DISTANCE_TO_RESTORE_ORIGINAL_SIZE = 90;
+ 
+@@ -347,7 +347,7 @@ export class TilingManager {
+                 case KeyBindingsDirection.RIGHT:
+                     break;
+                 case KeyBindingsDirection.DOWN:
+-                    window.unmaximize(Meta.MaximizeFlags.BOTH);
++                    setUnmaximizeFlags(window, Meta.MaximizeFlags.BOTH);
+                     return true;
+                 case KeyBindingsDirection.UP:
+                     return false;
+@@ -360,7 +360,7 @@ export class TilingManager {
+             extWin.assignedTile &&
+             extWin.assignedTile?.y === 0
+         ) {
+-            window.maximize(Meta.MaximizeFlags.BOTH);
++            setMaximizeFlags(window, Meta.MaximizeFlags.BOTH);
+             return true;
+         }
+ 
+@@ -426,7 +426,7 @@ export class TilingManager {
+                 direction === KeyBindingsDirection.UP &&
+                 window.can_maximize()
+             ) {
+-                window.maximize(Meta.MaximizeFlags.BOTH);
++                setMaximizeFlags(window, Meta.MaximizeFlags.BOTH);
+                 return true;
+             }
+             return false;
+@@ -445,7 +445,7 @@ export class TilingManager {
+             );
+         }
+ 
+-        if (isMaximized) window.unmaximize(Meta.MaximizeFlags.BOTH);
++        if (isMaximized) setUnmaximizeFlags(window, Meta.MaximizeFlags.BOTH);
+ 
+         this._easeWindowRect(window, destination.rect, false, force);
+ 
+@@ -813,7 +813,7 @@ export class TilingManager {
+             this._edgeTilingManager.needMaximize() &&
+             window.can_maximize()
+         )
+-            window.maximize(Meta.MaximizeFlags.BOTH);
++            setMaximizeFlags(window, Meta.MaximizeFlags.BOTH);
+ 
+         // disable edge-tiling
+         const wasEdgeTiling = this._edgeTilingManager.isPerformingEdgeTiling();
+@@ -1198,7 +1198,8 @@ export class TilingManager {
+         if (destinationRect.width <= 0 || destinationRect.height <= 0) return;
+ 
+         const rememberOriginalSize = !getIsMaximized(window);
+-        if (getIsMaximized(window)) window.unmaximize(Meta.MaximizeFlags.BOTH);
++        if (getIsMaximized(window))
++            setUnmaximizeFlags(window, Meta.MaximizeFlags.BOTH);
+ 
+         if (rememberOriginalSize && !(window as ExtendedWindow).assignedTile) {
+             (window as ExtendedWindow).originalSize = window
+diff --git a/src/components/windowsSuggestions/tilingLayoutWithSuggestions.ts b/src/components/windowsSuggestions/tilingLayoutWithSuggestions.ts
+index 3363ab3..342a439 100644
+--- a/src/components/windowsSuggestions/tilingLayoutWithSuggestions.ts
++++ b/src/components/windowsSuggestions/tilingLayoutWithSuggestions.ts
+@@ -12,6 +12,7 @@ import LayoutWidget from '@components/layout/LayoutWidget';
+ import SignalHandling from '@utils/signalHandling';
+ import SuggestionsTilePreview from '@components/windowsSuggestions/suggestionsTilePreview';
+ import TilingShellWindowManager from '@components/windowManager/tilingShellWindowManager';
++import { setUnmaximizeFlags } from '@polyfill';
+ 
+ const debug = logger('TilingLayoutWithSuggestions');
+ 
+@@ -196,7 +197,7 @@ export default class TilingLayoutWithSuggestions extends LayoutWidget<Suggestion
+                     nonTiledWin.maximizedHorizontally ||
+                     nonTiledWin.maximizedVertically
+                 )
+-                    nonTiledWin.unmaximize(Meta.MaximizeFlags.BOTH);
++                    setUnmaximizeFlags(nonTiledWin, Meta.MaximizeFlags.BOTH);
+                 if (nonTiledWin.is_fullscreen())
+                     nonTiledWin.unmake_fullscreen();
+                 if (nonTiledWin.minimized) nonTiledWin.unminimize();
+diff --git a/src/extension.ts b/src/extension.ts
+index 6ac2071..bfa9f49 100644
+--- a/src/extension.ts
++++ b/src/extension.ts
+@@ -27,7 +27,7 @@ import Tile from '@components/layout/Tile';
+ import { WindowBorderManager } from '@components/windowBorderManager';
+ import TilingShellWindowManager from '@components/windowManager/tilingShellWindowManager';
+ import ExtendedWindow from '@components/tilingsystem/extendedWindow';
+-import { Extension, getIsMaximized } from '@polyfill';
++import { Extension, getIsMaximized, setUnmaximizeFlags } from '@polyfill';
+ 
+ const debug = logger('extension');
+ 
+@@ -451,7 +451,7 @@ export default class TilingShellExtension extends Extension {
+                 focus_window.maximizedVertically) &&
+             direction === KeyBindingsDirection.DOWN
+         ) {
+-            focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
++            setUnmaximizeFlags(focus_window, Meta.MaximizeFlags.BOTH);
+             return;
+         }
+ 
+@@ -464,7 +464,7 @@ export default class TilingShellExtension extends Extension {
+             (focus_window.maximizedHorizontally ||
+                 focus_window.maximizedVertically)
+         ) {
+-            focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
++            setUnmaximizeFlags(focus_window, Meta.MaximizeFlags.BOTH);
+             return;
+         }
+ 
+@@ -507,7 +507,7 @@ export default class TilingShellExtension extends Extension {
+             direction === KeyBindingsDirection.UP
+         ) {
+             Main.wm.skipNextEffect(focus_window.get_compositor_private());
+-            focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
++            setUnmaximizeFlags(focus_window, Meta.MaximizeFlags.BOTH);
+             (focus_window as ExtendedWindow).assignedTile = undefined;
+         }
+ 
+@@ -653,7 +653,7 @@ export default class TilingShellExtension extends Extension {
+ 
+         // if the window is maximized, unmaximize it
+         if (getIsMaximized(focus_window))
+-            focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
++            setUnmaximizeFlags(focus_window, Meta.MaximizeFlags.BOTH);
+ 
+         const monitorTilingManager =
+             this._tilingManagers[focus_window.get_monitor()];
+diff --git a/src/polyfill.ts b/src/polyfill.ts
+index f573816..b014ddc 100644
+--- a/src/polyfill.ts
++++ b/src/polyfill.ts
+@@ -27,4 +27,30 @@ function getIsMaximized(window: Meta.Window) {
+     return window.is_maximized();
+ }
+ 
+-export { Extension, openPrefs, getIsMaximized };
++function setMaximizeFlags(window: Meta.Window, flags: Meta.MaximizeFlags) {
++    if (!window.set_maximize_flags) {
++        // GNOME <=48
++        return window.maximize(flags);
++    }
++
++    // GNOME 49+
++    return window.set_maximize_flags(flags);
++}
++
++function setUnmaximizeFlags(window: Meta.Window, flags: Meta.MaximizeFlags) {
++    if (!window.set_maximize_flags) {
++        // GNOME <=48
++        return window.unmaximize(flags);
++    }
++
++    // GNOME 49+
++    return window.set_unmaximize_flags(flags);
++}
++
++export {
++    Extension,
++    openPrefs,
++    getIsMaximized,
++    setMaximizeFlags,
++    setUnmaximizeFlags,
++};
+
+From 8eabe02cac674f2db9153e9daf73f6ad7c805976 Mon Sep 17 00:00:00 2001
+From: Mike Goeppner <hej@mgoeppner.se>
+Date: Thu, 25 Sep 2025 17:51:22 +0200
+Subject: [PATCH 6/6] eslint fix
+
+---
+ src/components/windowsSuggestions/suggestedWindowPreview.ts | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/components/windowsSuggestions/suggestedWindowPreview.ts b/src/components/windowsSuggestions/suggestedWindowPreview.ts
+index f8438ff..2f9cd66 100644
+--- a/src/components/windowsSuggestions/suggestedWindowPreview.ts
++++ b/src/components/windowsSuggestions/suggestedWindowPreview.ts
+@@ -242,8 +242,7 @@ export default class SuggestedWindowPreview extends Shell.WindowPreview {
+     }
+ 
+     _addWindow(metaWindow: Meta.Window) {
+-        this.clone =
+-            this.windowContainer.layout_manager.add_window(metaWindow);
++        this.clone = this.windowContainer.layout_manager.add_window(metaWindow);
+         // if (!clone) return;
+ 
+         /* // We expect this to be used for all interaction rather than
