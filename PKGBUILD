@@ -3,12 +3,12 @@
 pkgbase=ideology-git
 pkgname=ideology-git
 pkgver=r3.4c5f8cd
-pkgrel=2
+pkgrel=3
 pkgdesc="IDEology is the IDE for the Snow programming language."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/IDEology"
 license=('Apache-2.0')
-groups=(show-lang-git)
+groups=(snow-lang)
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
 replaces=()
