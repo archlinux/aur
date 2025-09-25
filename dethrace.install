@@ -9,5 +9,7 @@ post_install()
 
   $ DETHRACE_ROOT_DIR=/path/to/carmageddon dethrace -hires
 
+  See https://github.com/dethrace-labs/dethrace?tab=readme-ov-file#running-the-game
+
 EOF
 }
