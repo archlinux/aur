@@ -1,7 +1,7 @@
 # Maintainer: i0f <i0f@posteo.net>
 pkgname=tsh
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Rust CLI tool that fetches a random hot post from r/twosentencehorror."
 arch=('x86_64')
 url="https://codeberg.org/i0f/$pkgname"
