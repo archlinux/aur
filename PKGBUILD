@@ -1,0 +1,29 @@
+# Maintainer: Rodrigo Sakaguchi <rodrigosaka@outlook.com>
+
+pkgname=gnome-pomodoro-extension
+pkgver=0.28.0
+pkgrel=1
+pkgdesc='A time management utility for GNOME based on the pomodoro technique'
+arch=('i686' 'x86_64')
+url='https://github.com/gnome-pomodoro/gnome-pomodoro'
+license=('GPL3')
+depends=('gobject-introspection' 'glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
+makedepends=('meson' 'vala')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/$pkgver.tar.gz")
+sha256sums=('31c0ad477dc4f22e3c4fa284b51a415faa2e807f91aa580798b07f90973b7271')
+
+prepare() {
+  cd "$srcdir/gnome-pomodoro-$pkgver"
+}
+
+build() {
+  cd "$srcdir/gnome-pomodoro-$pkgver"
+  arch-meson build
+  meson compile -C build
+}
+
+package() {
+  cd "$srcdir/gnome-pomodoro-$pkgver"
+  meson install -C build --destdir "$pkgdir"
+}
+
