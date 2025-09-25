@@ -2,7 +2,7 @@
 
 pkgname=dmarc-cat
 pkgver=0.15.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Small utility to decode the report sent by various email providers following the DMARC spec'
 arch=('x86_64')
 url='https://github.com/keltia/dmarc-cat'
@@ -28,7 +28,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -ldflags "-linkmode external -extldflags $LDFLAGS" \
+    -ldflags "-linkmode external -extldflags \"$LDFLAGS\"" \
     -o $pkgname
 }
 
