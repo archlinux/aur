@@ -1,6 +1,6 @@
 # Maintainer: ookami <mail@ookami.one>
 pkgname=proxy-ns
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="Run programs in a network namespace where all traffic go through proxy"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=()
 makedepends=('git' 'make' 'go' 'scdoc')
 source=("git+$url#tag=v$pkgver")
-sha512sums=('a17e669b900352db9c8fe518a1c565738ec94a68c2215f8a18772d7820d401f80e1878b4e668ba62fe232fd3d854dde2d433e5f400ea90cbe2b93ade53bffd87')
+sha512sums=('2320fb62a71c834bac6ac581b0ef6a6b036a5ae7ac0f4204f6702a20050b7fc0168c6216ae12752e681dd191f0b989855e17c541f737f61d374fe804fbc901a2')
 backup=('etc/proxy-ns/config.json')
 
 build() {
