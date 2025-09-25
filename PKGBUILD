@@ -1,7 +1,7 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="smooll's Color Picker"
 arch=("x86_64")
