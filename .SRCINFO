@@ -1,12 +1,12 @@
 pkgbase = symm
 	pkgdesc = Simple dotfiles manager
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/tednaaa/symm
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = symm-0.7.1.tar.gz::https://github.com/tednaaa/symm/archive/v0.7.1.tar.gz
+	source = symm-0.7.2.tar.gz::https://github.com/tednaaa/symm/archive/v0.7.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = symm

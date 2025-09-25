@@ -1,5 +1,5 @@
 pkgname=symm
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Simple dotfiles manager"
 arch=('x86_64')
