@@ -1,0 +1,16 @@
+pkgbase = python-juliapkg
+	pkgdesc = Julia version manager and package manager
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://pypi.org/project/juliapkg/
+	arch = x86_64
+	license = None
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/ce/29/009db4e331dcfae0252f933553671f35f4ecc52d4e0dc6165cd547c8de90/juliapkg-0.1.20.tar.gz
+	sha256sums = bdbd9521399d65b2fda7d9aca82c80da8ffecec53e071d3b5b412064809347c2
+
+pkgname = python-juliapkg
