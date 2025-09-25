@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=hale studio
+Comment=Define, transform and integrate data
+Exec=/opt/hale-studio/HALE
+Icon=hale-studio
+Terminal=false
+Type=Application
+Categories=Science;DataVisualization;

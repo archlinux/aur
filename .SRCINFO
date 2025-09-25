@@ -1,0 +1,15 @@
+pkgbase = hale-studio-bin
+	pkgdesc = An easy-to-use desktop application (spatial) data harmonisation. (binary package)
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = https://github.com/halestudio/hale
+	arch = x86_64
+	license = LGPL-3.0-only
+	provides = hale-studio
+	conflicts = hale-studio
+	source = hale-studio-5.4.0.tar.gz::https://github.com/halestudio/hale/releases/download/v5.4.0/hale-studio-5.4.0-linux.gtk.x86_64.tar.gz
+	source = hale-studio.desktop
+	sha256sums = b508111c5eea3e7b174dc794bc3c4e98be00fd68a0c7f7bc5a62ab2321e04fe9
+	sha256sums = 0ffe21233a8da0dfac96ca93a790b504d8a36417f8a1d734e0980bc13d52804b
+
+pkgname = hale-studio-bin
