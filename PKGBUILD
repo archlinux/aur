@@ -1,8 +1,8 @@
 pkgname=mcp-devtools
 
-: "${_fragment:=tag=v0.35.6}"
+: "${_fragment:=tag=v0.38.3}"
 
-pkgver=0.35.6
+pkgver=0.38.3
 pkgrel=1
 pkgdesc='A modular MCP server that provides commonly used developer tools for AI coding agents'
 
@@ -15,7 +15,7 @@ makedepends=(git go)
 source=(
 	"git+$url.git#$_fragment"
 )
-sha256sums=('b539176fef945e2cf6d7f220214aa3286272d033132327213eadf2834dbf21c2')
+sha256sums=('30014a10478630901248c51498a42efa5e8164a6ef3d2d8967b4886143c188a3')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
@@ -29,22 +29,17 @@ prepare() {
 build() {
 	cd "$pkgname"
 
-	export CGO_CPPFLAGS=$CPPFLAGS
-	export CGO_CFLAGS=$CFLAGS
-	export CGO_CXXFLAGS=$CXXFLAGS
-	export CGO_LDFLAGS=$LDFLAGS
-	export GOPATH=$srcdir
-
 	local BUILD_OPTS=(
 		-v
 		-trimpath
 		-mod=vendor
 		-buildmode=pie
 		-ldflags="
-			-linkmode=external
-			-X main.Version=$pkgver
-			-X main.Commit=$(git rev-parse --short HEAD)
-			-X main.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+			-linkmode external
+			-extldflags \"${LDFLAGS}\"
+			-X main.Version=\"$pkgver\"
+			-X main.Commit=\"$(git rev-parse --short HEAD)\"
+			-X main.BuildDate=\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
 		"
 		# -tags sbom_vuln_tools
 	)
