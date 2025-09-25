@@ -3,7 +3,7 @@
 pkgbase=python-stpipe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Framework for calibration pipeline software"
 arch=('any')
@@ -20,10 +20,10 @@ makedepends=('python-setuptools-scm>=3.4'
 checkdepends=('python-pytest-doctestplus'
 #             'python-pytest-xdist'
               'python-roman-datamodels'
-#             'python-jwst'
+##             'python-jwst'
               'python-stdatamodels')   # crds already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('83966cbcdcca82e0b3c12d132397a69b')
+md5sums=('ef6a773b1776d6fe92e3344460c2884f')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
