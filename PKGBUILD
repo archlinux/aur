@@ -2,7 +2,7 @@
 
 pkgname=ggc
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 arch=('x86_64' 'arm64')
 url="https://github.com/bmf-san/ggc"
@@ -35,7 +35,7 @@ build() {
       -mod=readonly \
       -modcacherw \
       -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X main.version=${VERSION} -X main.commit=${COMMIT}" \
-      -o "$pkgname" ./cmd
+      -o "$pkgname"
 }
 
 check() {
