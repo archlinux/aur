@@ -45,6 +45,6 @@ check() {
 
 package() {
   cd "$srcdir/ggc"
-  install -Dm755 ggc "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 ggc "$pkgdir"/usr/bin/ggc
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/ggc/LICENSE"
 }
