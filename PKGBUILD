@@ -2,7 +2,7 @@
 
 _pkgname=gst-interpipe
 pkgname=gst-plugin-interpipe
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="GStreamer plug-in for interpipeline communication"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gstreamer' 'gst-plugins-base-libs' 'glibc' 'glib2')
 makedepends=('meson' 'ninja' 'gtk-doc')
 options=('!emptydirs')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/RidgeRun/gst-interpipe/archive/v${pkgver}.tar.gz")
-sha256sums=('b65054e1bd2aaab89d4161c4e3faafb8fa77a2d5aeae5a711ee40ab60d2aea18')
+sha256sums=('26a408dd69c95cc8745bf65fd2f2df100988a3b8da99a030440b82f4ed85be5d')
 
 build() {
     cd "${_pkgname}-${pkgver}"
