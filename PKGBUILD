@@ -1,3 +1,4 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-perscache
@@ -27,7 +28,7 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  python-aiohttp
+  python-pytest-asyncio
   python-pytest
 )
 
