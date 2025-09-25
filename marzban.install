@@ -1,0 +1,25 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+noteb() {
+  printf "${blue}  ->${yellow} ${bold}$1${all_off}\n"
+}
+
+note() {
+  printf "${blue}  ->${yellow} $1${all_off}\n"
+}
+
+post_install() {
+  cd /opt/marzban && alembic upgrade head && marzban-cli completion install
+}
+
+post_upgrade() {
+  cd /opt/marzban && alembic upgrade head
+}
+
+post_remove() {
+  note "Old settings are located in /opt/marzban/, skip removing."
+  cd /opt/marzban && find . ! -name '.' ! -name 'db.sqlite3' ! -name *.pacsave -depth -delete
+}
