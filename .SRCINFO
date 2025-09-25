@@ -1,6 +1,6 @@
 pkgbase = python-cantools
 	pkgdesc = Python CAN bus tools in Python 3
-	pkgver = 40.6.0
+	pkgver = 40.7.0
 	pkgrel = 1
 	url = https://github.com/eerimoq/cantools
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-cantools
 	optdepends = python-tox
 	provides = python-cantools
 	conflicts = python-cantools
-	source = python-cantools-40.6.0.tar.gz::https://github.com/eerimoq/cantools/archive/refs/tags/40.6.0.tar.gz
-	md5sums = be4a46cc21ce7e4dbd1ec76e8b05978b
+	source = python-cantools-40.7.0.tar.gz::https://github.com/eerimoq/cantools/archive/refs/tags/40.7.0.tar.gz
+	md5sums = ea7a0535277a6bc439902725d4e91a89
 
 pkgname = python-cantools
