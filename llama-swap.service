@@ -7,14 +7,9 @@ DynamicUser=yes
 # %p - Prefix name = llama-swap
 StateDirectory=%p
 
-# %T - Directory for temporary files = /tmp
-WorkingDirectory=%T
-
-
 # %S - State directory = /var/lib
-# %p - Prefix name = llama-swap
+WorkingDirectory=%S/%p
 Environment=HOME=%S/%p
-
 
 Restart=on-failure
 RestartSec=3
