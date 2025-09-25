@@ -2,7 +2,7 @@
 
 pkgname=ayugram-desktop
 pkgver=5.16.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -55,7 +55,8 @@ optdepends=('geoclue: geoinformation support'
 install=ayugram-desktop.install
 _tdlib_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
 source=("AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
-        "td-$_tdlib_commit.tar.gz::https://github.com/tdlib/td/archive/$_tdlib_commit.tar.gz")
+        "td-$_tdlib_commit.tar.gz::https://github.com/tdlib/td/archive/$_tdlib_commit.tar.gz"
+        "glib2.86.patch")
 declare -Ag _modules_name_map=([cmake]=https://github.com/desktop-app/cmake_helpers/archive/f3d6471bd58dbad727d4f8fbccd0fb36632eee9e.tar.gz
                                [cmake/external/glib/cppgir]=https://gitlab.com/mnauw/cppgir/-/archive/33ee935b39efd03bb7ab8f62ad02f7f2cd018dc8/cppgir-33ee935b39efd03bb7ab8f62ad02f7f2cd018dc8.tar.gz
                                [cmake/external/glib/cppgir/expected-lite]=https://github.com/martinmoene/expected-lite/archive/95b9cb015fa17baa749c2b396b335906e1596a9e.tar.gz
@@ -153,6 +154,7 @@ unset _source_str _uri
 
 sha256sums=('a6342cb3dc5f9112d05942998c50cf0688d6487842541a333b6a94bcbb1bfa8e'
             'f2c6b92533ba41a024b9fdb86d346c8bfc876d5961738ad463effbd844d61405'
+            '57b855e701ed29da039431b2688082e6885c368e20dd38bbedffe1633e5efeda'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '269cc8fe51bd6344d2f3924c999912053d2acf8cfeee53e6f3e1ccc9bb3891f6'
             '6c16c9cc1dea66bdd9340735e447906e191caf87133a10ead077fbf1bd3b0121'
@@ -200,6 +202,7 @@ prepare() {
         Telegram/ThirdParty/cld3/CMakeLists.txt
     #https://github.com/telegramdesktop/tdesktop/issues/26489#issuecomment-1627555107
     #CMAKE_BUILD_TYPE must match libtg_owt's
+    patch -Np1 < ../glib2.86.patch
 }
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
