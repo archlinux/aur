@@ -1,0 +1,16 @@
+pkgbase = vdecapture-git
+	pkgdesc = vdecapture captures packet data from a live VDE network and saves it to an output file in pcap format.
+	pkgver = r4.6cc3a88
+	pkgrel = 1
+	url = https://github.com/virtualsquare/vdecapture
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = make
+	makedepends = coreutils
+	makedepends = cmake
+	provides = vdecapture
+	conflicts = vdecapture
+	source = git+https://github.com/virtualsquare/vdecapture
+	sha256sums = SKIP
+
+pkgname = vdecapture-git
