@@ -79,6 +79,8 @@ fi
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 
+options=('!strip')
+
 _source_main() {
   source=(
     "$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"

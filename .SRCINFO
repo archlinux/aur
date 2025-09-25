@@ -56,6 +56,7 @@ pkgbase = obs-studio-git
 	optdepends = vlc: VLC Media Source
 	provides = obs-studio=32.0.0.r1.g9c79ff7
 	conflicts = obs-studio
+	options = !strip
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-websocket.git
