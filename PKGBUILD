@@ -1,6 +1,6 @@
-# Maintainer: Frederic Van Assche <frederic@fredericva.com>
+# Maintainer: Krzysztof Kucharski <krzysztof85@gmail.com>
 pkgname=esp8266-nonos-sdk
-pkgver=3.0.4
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="ESP8266 nonOS SDK"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('xtensa-lx106-elf-gcc-bin: Toolchain for the ESP8266')
 makedepends=('git')
 options=(!strip)
 source=("https://github.com/espressif/ESP8266_NONOS_SDK/archive/v$pkgver.tar.gz")
-sha256sums=('3bfb8ea34724c91b80481882c080ed04225cfeff7b8c92b7b21120496297ae1b')
+sha256sums=('e07ea77ee6adaf172191d599a42bd5b8d047a3c4b890c1fab76dbbadf6a12c44')
 
 package() {
 	install -d "$pkgdir"/opt/$pkgname
