@@ -1,7 +1,7 @@
 # Maintainer: Samuobe samuobe@ik.me
 
 pkgname=arch-store
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A graphical app for managing your programs with pacman, AUR, flatpak, and appimage"
 arch=('any')
