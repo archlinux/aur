@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.91.r12.g2a8a628a
+pkgver=1.2.93.r0.g2e49cb92
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -104,9 +104,8 @@ package() {
     for config in bands.json bands-*.json bookmarks.json openwebrx.conf; do
         install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
-    for config in bookmarks.d/*; do
-        install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
-    done
+
+    cp -rv bookmarks.d "${pkgdir}"/etc/openwebrx/
 
     install -Dm 0644 ${srcdir}/openwebrx-plus.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
     install -Dm 0644 ${srcdir}/openwebrx-plus.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
