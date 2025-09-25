@@ -17,7 +17,7 @@ cat control | grep -i version
 
 - Now lets download and SHA checksum the actual versioned .deb
 ```
-version=5.4.0.1006
+version=5.5.0.2620
 mkdir /tmp/cato-versioned
 cd /tmp/cato-versioned
 wget https://clients.catonetworks.com/linux/$version/cato-client-install.deb
@@ -27,7 +27,7 @@ sha256sum cato-client-install.deb
 
 Now in the AUR packages source code from ssh://aur@aur.archlinux.org/cato-client-bin.git
 
-- Edit PKGBUILD and bump `pkgver` to the verified version above (5.4.0.1006 as an example).  If all new version, set `pkgrel` back to 1
+- Edit PKGBUILD and bump `pkgver` to the verified version above.  If all new version, set `pkgrel` back to 1
 - Change the FIRST of the 3 checksums to the new sha from the versioned .deb file.
     - The other 2 checksums don't change
 - Create new .SRCINFO `makepkg --printsrcinfo > .SRCINFO`
