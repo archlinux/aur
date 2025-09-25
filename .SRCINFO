@@ -1,0 +1,16 @@
+pkgbase = ggc-git
+	pkgdesc = A modern Git CLI tool with both traditional command-line and interactive incremental-search UI
+	pkgver = r460.1289bf9
+	pkgrel = 1
+	url = https://github.com/bmf-san/ggc
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = git
+	provides = ggc
+	conflicts = ggc
+	conflicts = ggc-bin
+	source = git+https://github.com/bmf-san/ggc.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ggc-git

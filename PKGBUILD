@@ -1,0 +1,62 @@
+# Maintainer: Amolith <amolith@secluded.site>
+
+pkgname=ggc-git
+pkgver=r460.1289bf9
+pkgrel=1
+pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
+arch=('x86_64' 'arm64')
+url="https://github.com/bmf-san/ggc"
+license=('MIT')
+provides=('ggc')
+conflicts=('ggc' 'ggc-bin')
+makedepends=('git')
+source=('git+https://github.com/bmf-san/ggc.git#branch=main')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/ggc" || exit
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+  cd "$srcdir/ggc"
+  export GOPATH="${srcdir}"
+  go mod download -modcacherw
+}
+
+build() {
+  cd "$srcdir/ggc"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  
+  # Filter and convert LDFLAGS for Go
+  local go_ldflags=""
+  for flag in ${LDFLAGS}; do
+    case "${flag}" in
+      -Wl,*) go_ldflags+=" ${flag#-Wl,}" ;;
+      -l*) go_ldflags+=" ${flag}" ;;
+      -L*) go_ldflags+=" ${flag}" ;;
+    esac
+  done
+  
+  VERSION="$(git describe --tags --always --dirty)"
+  COMMIT="$(git rev-parse --short HEAD)"
+  go build -ldflags="-X main.version=${VERSION} -X main.commit=${COMMIT}${go_ldflags}" -o "$pkgname" ./cmd
+}
+
+check() {
+  cd "$srcdir/ggc"
+  go test ./...
+}
+
+package() {
+  cd "$srcdir/ggc"
+  install -Dm755 "$pkgname" "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
