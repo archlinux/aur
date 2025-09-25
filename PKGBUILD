@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.14.0
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -32,9 +32,7 @@ prepare() {
     export GIT_COMMITTER_NAME="Iyán Méndez Veiga"
     export GIT_COMMITTER_EMAIL="me@iyanmv.com"
     # https://github.com/open-quantum-safe/liboqs/pull/2264
-    git fetch origin pull/2264/head:fix-sphincs
-    git cherry-pick e564fcc244b0f5fb0081867fdda80554ffac8ad0
-    git cherry-pick 15cada97d1f8f488bc6ed22150cc7c3c06836f9c
+    git cherry-pick b6c875f196f7d68f93a237b93b224f13824efd3e
 }
 
 build() {
