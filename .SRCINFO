@@ -14,4 +14,3 @@ pkgname = nautilus-scripts
 	optdepends = nautilus-scripts-dolphin: dolphin servicemenus
 
 pkgname = nautilus-scripts-dolphin
-	depends = nautilus-scripts

@@ -33,8 +33,6 @@ package_nautilus-scripts() {
 }
 
 package_nautilus-scripts-dolphin() {
-  depends=('nautilus-scripts')
-
   ln -sf nautilus-scripts-${pkgver} nautilus-scripts
   cd nautilus-scripts
 
