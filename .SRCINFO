@@ -1,6 +1,6 @@
 pkgbase = pysolfc-music
 	pkgdesc = Music for PySol Fan Club Edition
-	pkgver = 4.5
+	pkgver = 4.50
 	pkgrel = 2
 	url = https://pysolfc.sourceforge.io/
 	arch = any

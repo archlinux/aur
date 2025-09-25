@@ -1,7 +1,7 @@
 # Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=pysolfc-music
-pkgver=4.5
+pkgver=4.50
 pkgrel=2
 url="https://pysolfc.sourceforge.io/"
 pkgdesc="Music for PySol Fan Club Edition"
