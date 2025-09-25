@@ -32,7 +32,7 @@
 #   All dependencies are documented in 'README.md'.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.75.r0.g6d8f6cb
+pkgver=1.75.1.r0.g6d8f6cb
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
