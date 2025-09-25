@@ -1,4 +1,4 @@
-pkgbase = silverr
+pkgbase = rblx-silver-git
 	pkgdesc = A bootstrapper for Sober
 	pkgver = 0.0.1.r
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = silverr
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = silverr
+pkgname = rblx-silver-git

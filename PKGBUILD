@@ -1,6 +1,6 @@
 # Maintainer: Chip <itsjustchipoverhere@proton.me>
 
-pkgname=silverr
+pkgname=rblx-silver-git
 pkgver=0.0.1.r
 pkgrel=1
 pkgdesc="A bootstrapper for Sober"
