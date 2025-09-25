@@ -8,7 +8,6 @@ ExecStart=/usr/bin/silverbullet
 StateDirectory=silverbullet
 CacheDirectory=silverbullet
 Environment=DOCS=/var/lib/silverbullet
-Environment=DENO_DIR=/var/cache/silverbullet
 EnvironmentFile=/etc/default/silverbullet
 
 Restart=on-failure

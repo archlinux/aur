@@ -24,9 +24,7 @@ fi
 echo >&2 "using root directory $DOCS"
 mkdir -p "$DOCS"
 
-exec /usr/bin/deno run \
-  --allow-all \
-  /usr/lib/silverbullet/silverbullet.js \
+exec /usr/lib/silverbullet/silverbullet \
   --hostname "$HOST" \
   --port "$PORT" \
   "$DOCS"

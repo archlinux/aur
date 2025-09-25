@@ -1,13 +1,13 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=silverbullet
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Clean Markdown-based writing/note taking application'
-arch=(any)
+arch=('any')
 url='https://github.com/silverbulletmd/silverbullet'
-license=(MIT)
-depends=(deno)
+license=('MIT')
+depends=('bash')
 backup=("etc/default/$pkgname")
 install=$pkgname.install
 source=(
@@ -16,20 +16,31 @@ source=(
   "$pkgname-user.service"
   "$pkgname.sh"
 )
-sha256sums=('997f2d7c69eef7c59bf69f46b11d67bcd26791948f438d5a60191a5dd0fbd65c'
-            'b78a5957a4475ed7173915fea4a7bfb4c3a92008ad85e3e4b4c5ba07430e6c17'
+sha256sums=('ca18127fec7fb7101d33800b45692455cbfb45ebcb48251e056e6d8f2e990c43'
+            '93ac8414f9af3c29e43554468f2f5f5e37cbe0792d57e84a9f5228305aeed89d'
             '5f01fe05f871f60277508f8cf39e879a7db18f1ff45c1ef7b2359089bfe1a0bd'
-            '68671a106bce3883714f4c6f3cc3ea9d5162e18c1d72f28f59b806ed107b2fa6')
+            'c208d9388a720462991bcd4842d33e8fdf43daa3c17751f2801233af9ddd5b33')
 
 build() {
   cd "$pkgname-$pkgver"
+
   deno task build
-  deno task bundle
+
+  go build \
+    -buildmode=pie \
+    -trimpath \
+    -mod=readonly \
+    -modcacherw
+
+  for sh in bash zsh fish; do
+    ./$pkgname completion $sh >$pkgname.$sh
+  done
 }
 
 check() {
   cd "$pkgname-$pkgver"
   TZ=UTC deno task test
+  go test ./...
 }
 
 package() {
@@ -49,9 +60,12 @@ EOF
 
   cd "$pkgname-$pkgver"
 
-  install -Dm644 "dist/$pkgname.js" \
-    "$pkgdir/usr/lib/$pkgname/$pkgname.js"
+  install -Dm755 $pkgname -t "$pkgdir/usr/lib/$pkgname/"
 
   install -Dm644 LICENSE.md \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 "$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  install -Dm644 "$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
