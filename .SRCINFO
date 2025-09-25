@@ -8,7 +8,7 @@ pkgbase = counts
 	arch = riscv64
 	license = Unlicense
 	makedepends = cargo
-	source = counts-1.0.6.tar.gz::https://github.com/nnethercote/counts/archive/refs/tags/v1.0.6.tar.gz
+	source = counts-1.0.6.tar.gz::https://github.com/nnethercote/counts/archive/refs/tags/1.0.6.tar.gz
 	sha256sums = 85a230183f7478dee7c29229d78313ee07b759e596e19292acf024d2e5735efa
 
 pkgname = counts

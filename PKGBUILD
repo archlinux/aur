@@ -8,8 +8,8 @@ arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/nnethercote/${pkgname}"
 license=('Unlicense')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('85a230183f7478dee7c29229d78313ee07b759e596e19292acf024d2e5735efa')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('4d3394b32afa98b91fd624a9c4df690d07fa1d6559cd87bb82a4bde6131fbc5f')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
