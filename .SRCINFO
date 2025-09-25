@@ -1,10 +1,12 @@
 pkgbase = python-puzpy
 	pkgdesc = Python library for reading and writing across lite crossword puzzle .puz files.
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexdej/puzpy
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/puzpy/puzpy-0.2.6.tar.gz
