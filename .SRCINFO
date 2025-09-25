@@ -2,13 +2,13 @@ pkgbase = doomfire-wallpaper
 	pkgdesc = DOOM-style animated fire wallpaper for Hyprland using hyprwinwrap
 	pkgver = 1.1.0
 	pkgrel = 3
-	url = https://github.com/Leafmun-certii/doom_fire_wallpaper
+	url = https://github.com/larry-oates/doom_fire_wallpaper
 	arch = x86_64
 	license = 0BSD
 	makedepends = git
 	makedepends = cargo
 	optdepends = grim: for the screen_burn feature
-	source = doomfire-wallpaper::git+https://github.com/Leafmun-certii/doom_fire_wallpaper.git
+	source = doomfire-wallpaper::git+https://github.com/larry-oates/doom_fire_wallpaper.git
 	md5sums = SKIP
 
 pkgname = doomfire-wallpaper
