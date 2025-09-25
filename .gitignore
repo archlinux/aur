@@ -13,3 +13,4 @@
 !50_org.gnome.mutter.wayland.pop-shell.gschema.override
 !50_org.gnome.settings-daemon.plugins.media-keys.pop-shell.gschema.override
 !50_org.gnome.shell.pop-shell.gschema.override
+!gnome49.patch

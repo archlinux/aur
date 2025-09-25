@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-pop-shell-git
 pkgver=1.2.0.r313.g6fd8c03
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
@@ -26,6 +26,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/shell.git#branch=master_noble'
         '0001-Remove-schema-handling-from-transpile.sh.patch'
+        'gnome49.patch'
         '50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override'
         '50_org.gnome.mutter.pop-shell.gschema.override'
         '50_org.gnome.mutter.wayland.pop-shell.gschema.override'
@@ -33,6 +34,7 @@ source=('git+https://github.com/pop-os/shell.git#branch=master_noble'
         '50_org.gnome.shell.pop-shell.gschema.override')
 sha256sums=('SKIP'
             '84b5132edab34ca1af33e310838ad1e430e2ed796da4ec9d3ab646b9f61a71cf'
+            '918873ebcfc7a1820a2027111712893cec1965845c729127731ae4ea2e9dc4a2'
             '6801f3e12a539167a0c2b64c7deccc1726b51e681b0bc932e8a5f628f86e69df'
             'fcddff7a7689ea0f9ac3d983d224d347e093d5eda1c7c1d875133248f8b812c0'
             'd3a4ac86303c9065fd76dace64283573079c3bdce4b9a2ca18be5f103eb6fd4c'
@@ -50,6 +52,11 @@ prepare() {
 
   # Fix the title bar showing/hiding
   git cherry-pick -n 3386f426b1750a166c767c583dcb69ed2997234f
+
+  # GNOME 49
+  # https://github.com/pop-os/shell/issues/1793
+  # https://github.com/pop-os/shell/pull/1795
+  patch -Np1 -i ../gnome49.patch
 }
 
 build() {
