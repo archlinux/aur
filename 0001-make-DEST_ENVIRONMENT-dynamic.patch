@@ -1,0 +1,13 @@
+diff --git a/lucidglyph.sh b/lucidglyph.sh
+index ee1edfb..e96da2c 100755
+--- a/lucidglyph.sh
++++ b/lucidglyph.sh
+@@ -36,7 +36,7 @@ DEST_USR_USR="${DESTDIR:-$HOME}${DEST_USR_USR:-/.local}"
+ ENABLE_ENVIRONMENT=${ENABLE_ENVIRONMENT:=true}  # Set this env variable to false
+                                                 # to completely disable this group.
+ ENVIRONMENT_DIR="$SRC_DIR/environment"
+-DEST_ENVIRONMENT="$DEST_CONF/environment"
++DEST_ENVIRONMENT="${DEST_ENVIRONMENT:-$DEST_CONF/environment}"
+ 
+ # Fontconfig group
+ ENABLE_FONTCONFIG=${ENABLE_FONTCONFIG:=true}  # Set this env variable to false
