@@ -1,0 +1,13 @@
+pkgbase = arattai-bin
+	pkgdesc = Arattai - Secure messaging with your friends & family.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://www.arattai.in
+	arch = x86_64
+	provides = arattai
+	conflicts = arattai
+	options = !debug
+	source_x86_64 = arattai-1.0.7-1.rpm::https://downloads.zohocdn.com/arattai-desktop/linux/arattai-1.0.7_x86_64.rpm
+	sha256sums_x86_64 = 3bee94c52b70cddd134aac537d277eacafb1ebfc8f4088120065cd0dbbf6113c
+
+pkgname = arattai-bin
