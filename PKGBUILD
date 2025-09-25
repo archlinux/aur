@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/tednaaa/symm"
 license=("GPL3")
 depends=()
-makedepends=('rust')
+makedepends=("rust")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
