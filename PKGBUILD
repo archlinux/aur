@@ -192,7 +192,7 @@
 
 # Kernel version
 _kernel_major=6.16
-_kernel_minor=1
+_kernel_minor=9
 # Tachyon patches version
 _tachyon=6.16.1-1593
 # kernel_compiler_patch version
@@ -228,7 +228,7 @@ source=(
 sha256sums=(
     "1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83"
     "SKIP"
-    "ea642697bed40c9ab1b89d68e094fd03bc5812f9717d23feef62462e1793e661"
+    "7a1a1a2bb6746977e47363e32c7096018ff88e4ecae827714700f13b27bd54ce"
     "SKIP"
     "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
 )
