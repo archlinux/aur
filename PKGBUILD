@@ -3,18 +3,16 @@
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 
 pkgname=gita
-pkgver=0.16.7.2
-pkgrel=3
+pkgver=0.16.7.3
+pkgrel=1
 pkgdesc="Command-line tool to manage multiple git repos"
 arch=('any')
 url="https://github.com/nosarthur/gita"
 license=('MIT')
-depends=('git' 'python' 'python-setuptools' 'python-argcomplete')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "0001-warning.patch")
-sha256sums=('9ae73a3fda7cc242017f496ccc7494d18e2ccc1f1d82eed137a1f7d6c2b7de03'
-            '7ec48fdb6bfbb9849db124de46d09bcd50e9dc1a8dcdef1c6e53317793facf4c')
+depends=('git' 'python' 'python-argcomplete')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7c364ad365f1c745dba2329536b50b59309ebf540676c1c296856f611495312f')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -36,8 +34,4 @@ package() {
 
   install -Dm644 auto-completion/zsh/_gita \
     "$pkgdir/usr/share/zsh/site-functions/_gita"
-
-  # silence the warning, not much we can do about it anyway
-  # it gets really annoying when using bash completion
-  patch "$pkgdir/usr/bin/gita" "$srcdir/0001-warning.patch"
 }
