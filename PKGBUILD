@@ -1,7 +1,7 @@
 # Maintainer: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=mangojuice-git
-pkgver=0.8.3.r35.g970baad
+pkgver=0.8.8.r0.g802baff
 pkgrel=1
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(any)
@@ -9,11 +9,15 @@ url="https://github.com/radiolamp/${pkgname%-git}"
 license=(GPL-3.0-or-later)
 depends=(
   glib2
+  glibc
   gtk4
-  fontconfig
+  hicolor-icon-theme
   libadwaita
   libgee
+  pango
   mangohud
+  fontconfig
+  vulkan-tools
 )
 makedepends=(
   git
@@ -23,7 +27,6 @@ makedepends=(
 
 optdepends=(
   mesa-utils
-  vulkan-tools
 )
 conflicts=(mangojuice)
 provides=(${pkgname%-git})
