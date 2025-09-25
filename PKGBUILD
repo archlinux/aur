@@ -1,12 +1,12 @@
 # Submitter: Jonas Malaco <jonas@protocubo.io>
 # Maintainer: Chris Morgan <aur@chrismorgan.info>
 pkgname=cargo-vet
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Supply-chain security for Rust'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/mozilla/cargo-vet'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 depends=(
     cargo
     gcc-libs
@@ -14,19 +14,18 @@ depends=(
     zlib
 )
 options=(!lto) # see: briansmith/ring#1444 (and #893)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mozilla/cargo-vet/releases/download/v$pkgver/source.tar.gz")
-sha256sums=('6ea308eb97df6356d76335fadf9cd0ab47c49208351ee7c500fc6c47ce204507')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mozilla/cargo-vet/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e997815c03550016426b48170236bcfbac1b5ef45e0ac7297ecfc9df37982253')
 
 prepare() {
     cd "$pkgname-$pkgver"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
 
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
     cargo build --frozen --release
@@ -35,17 +34,11 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
 
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    # The tests depend on the value of Git core.abbrev, and assume it's the default: 7. As that's
-    # not sufficient in larger projects, and users may have set theirs to some other (larger) value,
-    # force core.abbrev=7 when running the tests.
-    export GIT_CONFIG_COUNT=1
-    export GIT_CONFIG_KEY_0=core.abbrev
-    export GIT_CONFIG_VALUE_0=7
-
-    cargo test --frozen
+    # The tests are fragile, assuming no Git config.
+    # See https://github.com/mozilla/cargo-vet/issues/638.
+    GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null cargo test --frozen
 }
 
 package() {

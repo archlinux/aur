@@ -1,20 +1,20 @@
 pkgbase = cargo-vet
 	pkgdesc = Supply-chain security for Rust
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/mozilla/cargo-vet
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
-	license = Apache
+	license = Apache-2.0
 	license = MIT
 	depends = cargo
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
 	options = !lto
-	source = cargo-vet-0.10.0.tar.gz::https://github.com/mozilla/cargo-vet/releases/download/v0.10.0/source.tar.gz
-	sha256sums = 6ea308eb97df6356d76335fadf9cd0ab47c49208351ee7c500fc6c47ce204507
+	source = cargo-vet-0.10.1.tar.gz::https://github.com/mozilla/cargo-vet/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = e997815c03550016426b48170236bcfbac1b5ef45e0ac7297ecfc9df37982253
 
 pkgname = cargo-vet
