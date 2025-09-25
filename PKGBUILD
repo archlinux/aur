@@ -1,6 +1,6 @@
 _pyname=panoramax_cli
 pkgname=${_pyname}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="CLI tool for uploading your pictures to Panoramax"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=()
 conflicts=()
 source=("https://gitlab.com/panoramax/clients/cli/-/archive/${pkgver}/cli-${pkgver}.tar.gz")
-b2sums=('3035167e93af40d8b2bd86478f8bf0953d6774daa49430d1ad6e3512dff444749cc745a63f3be9d808e129b62110481b66bc291700a32f9bd7551456d6623bab')
+b2sums=('537700e7deed5fc7258c940d3414065085c47f7793c972ebee14ab99eb08ffdd810977f2b2035568a7d3b8319b00879d5920de6e0c3002865e2a6399e721a310')
 
 build() {
   cd "cli-${pkgver}"
