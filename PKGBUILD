@@ -1,6 +1,6 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
@@ -11,12 +11,8 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('gerbil')
 conflicts=('gerbil-git')
-source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.3/Gerbil-1.5.3.AppImage"
-        "gerbil.desktop::https://github.com/lone-cloud/gerbil/releases/download/v1.5.3/gerbil.desktop"
-        "LICENSE::https://github.com/lone-cloud/gerbil/releases/download/v1.5.3/LICENSE")
-sha256sums=('c5fe283b9b9f8909fa6c87c30a308255c7990f72c6a8a2b679f862dcdfa40a00'
-            'fa1c8b5029edf44857b517c8a4da95a6900a48b6e2674d1511ee40e292ab6f42'
-            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
+source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.5.4/Gerbil-1.5.4.AppImage")
+sha256sums=('6b7a1a9544ad541b7a084baef0d734ead62df47221e0990e31889c80ae60ed55')
 
 prepare() {
     chmod +x "gerbil-${pkgver}.AppImage"
@@ -31,19 +27,22 @@ package() {
     # Fix permissions on extracted files
     chmod -R 755 "${pkgdir}/opt/gerbil/"
     
+    # Rename the main executable to lowercase
+    mv "${pkgdir}/opt/gerbil/Gerbil" "${pkgdir}/opt/gerbil/gerbil"
+    
     # Create executable wrapper
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/gerbil" << 'WRAPPER'
 #!/bin/bash
-exec "/opt/gerbil/Gerbil" "$@"
+exec "/opt/gerbil/gerbil" "$@"
 WRAPPER
     chmod +x "${pkgdir}/usr/bin/gerbil"
     
     # Install desktop file and license
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/licenses/gerbil"
-    cp "${srcdir}/gerbil.desktop" "${pkgdir}/usr/share/applications/"
-    cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/gerbil/"
+    install -m644 "${startdir}/gerbil.desktop" "${pkgdir}/usr/share/applications/"
+    install -m644 "${startdir}/LICENSE" "${pkgdir}/usr/share/licenses/gerbil/"
     
     # Install icon to hicolor theme directory and pixmaps as fallback
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
