@@ -8,6 +8,7 @@ url="https://codeberg.org/zynskeyfolf/JaqalMixer"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'alsa-lib')
 makedepends=('git' 'cmake' 'make' 'qt6-base' 'alsa-lib')
+optdepends=('alsa-utils: for saving settings persistently')
 source=("git+https://codeberg.org/zynskeyfolf/JaqalMixer")
 sha256sums=(SKIP)
 

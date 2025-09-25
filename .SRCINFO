@@ -12,6 +12,7 @@ pkgbase = jaqalmixer-git
 	makedepends = alsa-lib
 	depends = qt6-base
 	depends = alsa-lib
+	optdepends = alsa-utils: for saving settings persistently
 	source = git+https://codeberg.org/zynskeyfolf/JaqalMixer
 	sha256sums = SKIP
 
