@@ -2,7 +2,7 @@
 
 pkgname=autopush-rs
 pkgver=1.75.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Push Server in Rust"
 arch=('x86_64')
 provides=('autopush' 'autopush-rs' 'sunup-server')
@@ -18,13 +18,13 @@ sha256sums=('824459fb6b5e095907acecfee0df156ec3a62ee76c7eb20fcffcc54436dac8e8')
 prepare() {
 	rustup default stable
 	cd "$srcdir/autopush-rs"
-    	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$srcdir/autopush-rs"
-    	export CARGO_TARGET_DIR=target
-    	cargo build --frozen --release --target-dir target
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --target-dir target
 }
 
 package() {
