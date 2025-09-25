@@ -218,6 +218,9 @@ prepare() (
 )
 
 build() (
+  export JAVA_HOME=/usr/lib/jvm/java-${_java_version:?}-openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
+
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   _nvm_env
