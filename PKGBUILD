@@ -2,15 +2,15 @@
 
 pkgname=3x-ui-xray-core
 pkgver=25.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray, Penetrates Everything. Also the best v2ray-core (for *x-ui)"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/XTLS/Xray-core"
 license=(MPL-2.0)
 depends=(glibc)
 makedepends=(go)
-provides=(v2ray x-ui-xray-core)
-conflicts=(v2ray x-ui-xray-core)
+provides=(x-ui-xray-core)
+conflicts=(x-ui-xray-core)
 options=(!debug)
 install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
