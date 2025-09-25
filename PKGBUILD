@@ -3,7 +3,7 @@
 
 _pkgname="supertuxkart"
 pkgname="$_pkgname-git"
-pkgver=1.4.r384.ge2b2a1c
+pkgver=1.4.r630.g1a8aeed
 pkgrel=1
 pkgdesc="A kart racing game featuring Tux and his friends"
 url="https://github.com/supertuxkart/stk-code"
@@ -13,6 +13,7 @@ arch=('i686' 'x86_64')
 depends=(
   'bluez-libs'
   'freetype2'
+  'harfbuzz'
   'hicolor-icon-theme'
   'libgl'
   'libjpeg-turbo'
@@ -25,7 +26,6 @@ depends=(
 )
 
 makedepends=(
-  'bluez-libs'
   'cmake'
   'git'
   'libvpx'
@@ -70,17 +70,17 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 "$_pkgsrc/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  local _data_path="usr/share/supertuxkart/data"
   local _unwanted=(
-    'optimize_data.sh'
-    'po/update_translation.py'
-    'po/update_desktop_file_appdata.py'
+    "$_data_path/optimize_data.sh"
+    "$_data_path/po/update_desktop_file_appdata.py"
+    "$_data_path/po/update_translation.py"
+    'usr/include'
+    'usr/lib'
   )
 
   local _f
   for _f in ${_unwanted[@]}; do
-    rm -f "$pkgdir/usr/share/supertuxkart/data/$_f"
+    rm -rf "$pkgdir/$_f"
   done
-
-  rm -rf "$pkgdir"/usr/lib
-  rm -rf "$pkgdir"/usr/include
 }
