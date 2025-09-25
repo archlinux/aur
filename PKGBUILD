@@ -26,6 +26,7 @@ install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << 
 Name=CrossPatch
 Comment=An easy to use mod manager for Sonic Racing: Crossworlds
 Exec=$_pkgname
+Path=/opt/CrossPatch/
 Terminal=false
 Categories=Game;
 Type=Application
