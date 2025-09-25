@@ -1,0 +1,17 @@
+pkgbase = silverr
+	pkgdesc = A bootstrapper for Sober
+	pkgver = 0.0.1.r
+	pkgrel = 1
+	url = https://github.com/Wookhq/silverr
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = electron
+	source = git+https://github.com/Wookhq/silverr.git#branch=main
+	source = silverr.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = silverr
