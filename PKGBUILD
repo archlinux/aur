@@ -2,7 +2,7 @@
 
 # Maintainer: Rainer Meier <rainer.meier@gmail.com>
 pkgname=roaming-profiles
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 # epoch=
 pkgdesc="Roaming Profiles for Linux environments."
@@ -22,7 +22,7 @@ depends=('gvfs-smb'
 	'kstart')
 makedepend=('git')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/${pkgver}/linux-roaming-profiles-${pkgver}.tar.bz2")
-sha512sums=(c0a0c1a263f88c0aafd39eed343692024aa4b9ddb73b24fef6423f7566c88d95116597ddb4cba22755fc88722520097ae3e43c7194c59a6af227b986168d7d2a)
+sha512sums=(3b628e316b2bc82e525c7e584ff9b4f5bc06852e8d10d67a0053ca705ed2b974a0bff1ecaed39a0847fc0bd0b17b88f8f18102aea9a3c58171f574d857c5eb93)
 # checkdepends=()
 # optdepends=()
 # provides=()
