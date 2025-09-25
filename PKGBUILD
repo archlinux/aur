@@ -1,7 +1,7 @@
 # Maintainer: truemedian <truemedian at gmail dot com>
 # Contributor: SoniEx2 <endermoneymod at gmail dot com>
 pkgname=lit
-pkgver=3.8.5
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Toolkit for developing, sharing, and running luvit/lua programs and libraries."
 arch=(any)
