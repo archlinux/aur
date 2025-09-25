@@ -2,7 +2,7 @@
 # Contributor Nicole Watterson <poisonimy at protonmail dot com>
 _pkgname=liboqs
 pkgname=$_pkgname-git
-pkgver=0.14.0.r17.g1698d86
+pkgver=0.14.0.r37.gdd942d4
 pkgrel=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -26,7 +26,6 @@ checkdepends=(
 )
 provides=(liboqs)
 conflicts=(liboqs)
-options=(!lto)
 source=($_pkgname::git+https://github.com/open-quantum-safe/$_pkgname.git)
 b2sums=('SKIP')
 
