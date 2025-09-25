@@ -1,7 +1,7 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
 url="https://github.com/lone-cloud/gerbil"
@@ -38,10 +38,12 @@ exec "/opt/gerbil/gerbil" "$@"
 WRAPPER
     chmod +x "${pkgdir}/usr/bin/gerbil"
     
-    # Install desktop file and license
+    # Install desktop file, AppStream metadata, and license
     install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/metainfo"
     install -dm755 "${pkgdir}/usr/share/licenses/gerbil"
     install -m644 "${startdir}/gerbil.desktop" "${pkgdir}/usr/share/applications/"
+    install -m644 "${startdir}/assets/gerbil.metainfo.xml" "${pkgdir}/usr/share/metainfo/"
     install -m644 "${startdir}/LICENSE" "${pkgdir}/usr/share/licenses/gerbil/"
     
     # Install icon to hicolor theme directory and pixmaps as fallback

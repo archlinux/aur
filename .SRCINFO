@@ -1,7 +1,7 @@
 pkgbase = gerbil
 	pkgdesc = Run Large Language Models locally
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lone-cloud/gerbil
 	arch = x86_64
 	license = AGPL-3.0-or-later
