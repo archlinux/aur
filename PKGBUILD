@@ -1,8 +1,8 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 # Contributor: dadav <33197631+dadav@users.noreply.github.com>
 pkgname=go2rtc
-pkgver=1.9.9
-pkgrel=2
+pkgver=1.9.10
+pkgrel=1
 pkgdesc="Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc."
 arch=('x86_64')
 url="https://github.com/AlexxIT/go2rtc"
@@ -12,25 +12,22 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "tmpfile"
         "service"
         "config"
-        "commit-47f32a5f.patch"
         "import-c.patch"
         "remove-main.patch")
-sha512sums=('a41c27c4ff2861c0ff60bb102f44bd03e4e577b56d9bfd54b6f1a66999950be93664b9e01bc573e3d5c6bb614ceb02822a0548e226280586fb50af69151cc958'
+sha512sums=('d2009ed41d804e6a665b6aa37c0b87cfe3f4132a2a88fea167b7affbc124316015d00f8bd0db1e405df457ccd36b244ac60bdad8ea51d2c0051ee74fb5b36d63'
             '8b5c6138cbb4e65395f0f97c7efa12f6811b3a5f9694f855380405c8d00d1e0379281a016fb0877ad15db8fcb9e593d9764ccba1005569d83fed7d343ffd05b3'
             '45f2adc4a17f6cb0252c9cb25adaa8a32d4f198a4d8bc143e00ba185e4a7afd8e45fbb3ce5dbb9238a2f3a84721e1067b641cc6eb2b3a10db72b2f748a1e875f'
             '3d2dead86d903cc37f29d74dc263b760ba52a838b0974fc1cfd46c4a8e4a4eff7afc893fd00774a0fcff734ca2a30b2e58bfe066a38e1eb6baa6c35c4470595f'
             '06e458dad58d837051c1a53d06a8887087b565a036c520381e23f90a7cfe2181ec64f447e0d653c4832a2372056bcee27752e92704dedfe70972b48e156e2af7'
-            'bab4828eb73d8a3daecacb8359246becbccb391b7cf94e6c7ccd9cc9747170aed14558c99e59b4274e998728fcfe6d1de9aa7e8f214f6e8781b6c7442bfe97f6'
-            'a93b05fb38c34a64d1522d903ad5681ea2f5e0b66680e950d7c113632316e5fc78f25c88f47aa3021766227e16cc2a1d46016fadf4b32f2b623919dae6316dfb'
-            '9efe4ffa1001cd0c94078cd8e544e8fddb9869188cfd55da4307b5b2f3e103b97ed84b01deca4fbbc93d0f7448031b5193202b0d6d719662fde5cb191083b430')
+            'cb1cc2c78ed98fbf4a86847568ed713ae91ec2c314fde441ae7ec650dfbe3b6584f23c1c6be51a2d1d6bf7b13d07d82dc57009120006e32189da1499392ff5b5'
+            '06617ae3d07a1aa20ae344a6e9bc551ee9e7eed9c68ae459d6531ce8b490c8f0db74dc3e7d0d2109adb1b21f9491f209368da6ac02f06ac6ff472fe9f143f26c')
 options=(!strip)
 depends=('ffmpeg')
-makedepends=('go' 'v4l-utils')
+makedepends=('go' 'alsa-lib' 'v4l-utils')
 backup=(etc/go2rtc.yaml)
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -Np1 -i ../commit-47f32a5f.patch
   patch -Np1 -i ../import-c.patch
   patch -Np1 -i ../remove-main.patch
 }
