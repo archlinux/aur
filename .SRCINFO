@@ -1,7 +1,7 @@
 pkgbase = ureminder
 	pkgdesc = Reminds to upgrade Arch Linux by desktop-messages, shows Arch Linux News and keeps package mirrors and cache healthy
 	pkgver = 0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/tuxnix/ureminder
 	install = ureminder.install
 	arch = any
