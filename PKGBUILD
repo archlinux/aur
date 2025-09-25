@@ -7,8 +7,8 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=142.0
-pkgrel=1
+pkgver=143.0.1
+pkgrel=2
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
 arch=(x86_64)
@@ -59,14 +59,14 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/8015e4c09153900fa10df3aa05faf6f332eeee43
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/20ba3ab2ce776f04ee6e38fe51a0b6f9e972e9f2
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/vendor-prefs.js
         $commit/distribution.ini
         $commit/mozconfig.cfg
         $commit/metainfo.patch
         $commit/org.mozilla.Thunderbird.desktop
-        1982569-allocator-api2-fix-unsafe-autoref-lint-error.patch
+        $commit/0023-bmo-1982569-allocator-api2-fix-unsafe-autoref-lint-error.patch
 )
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
@@ -170,18 +170,18 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('9a871846fc395c69688310dbf4a4569b75d3b2952a34ba1f7dc9ef5a60a34bd740087b4abb2a1a4d522dfa9d6640f2f4fcc9972a2b72160d1ed3e0df71c2901c'
+sha512sums=('5f4fd5e4f5bc9fee9852d51b8e675f7c9c605660332c24aa0c90e5437301b468153c1788720bc80a53cfc1c3bf95a4bdb622a0533b8f11fb9853b290485c47c6'
             'SKIP'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
             '3a6957380243716065e9dff66cbbee8c5aa6b34b5b19bc6193a23407d33f6e4c23bfca55b929bee4739bdd2c47838cc0fd6667b188de066b795ab55e3bf275a6'
             '7e43b1f25827ddae615ad43fc1e11c6ba439d6c2049477dfe60e00188a70c0a76160c59a97cc01d1fd99c476f261c7cecb57628b5be48874be7cf991c22db290'
             'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
-            '67b61534f92b9872c103bec80fe011a498a3a15ac93e0e3a5cc6391e7090da93cd8c30b32c9cea15ebdde7a9132b8b2cb6afa774b6f19ac2a7403c8e86b93c28'
+            '1570bc8dcd33cdcda5c06827fac1377f1a7c2bd4398671c7270c1d595f2bd0f1e81428aea4e392370097aaa409907e318ac3002ea34ac5734fd94b438b4588cb'
             )
 
 provides=(thunderbird)
 conflicts=(thunderbird)
 
-source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/e8dbaf6/unity-menubar.patch)
-sha512sums+=(f9f435f281cdc3a449de1450053497716d6c26db3fdbfae97e5d9dc232957bd783deda249e0359ebc88738782a2a4c34da8eda72224b34e01ee4c55a0dcb0c4a)
+source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/f44eb33/unity-menubar.patch)
+sha512sums+=(9b945c7f058863d026aa825aa2a4c88f4ac9ae65eaa23240d396b2d45a2354752802ed33e86d3b1483637672df5a0e6ffe67f5031bbb7069cabd69b9a706d5b9)
