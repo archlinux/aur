@@ -2,8 +2,8 @@
 
 pkgname=dmarc-cat-git
 _pkgname=dmarc-cat
-pkgver=0.15.0.r4.g0b3267d
-pkgrel=2
+pkgver=0.15.0.r8.g7001688
+pkgrel=3
 pkgdesc='Small utility to decode the report sent by various email providers following the DMARC spec'
 arch=('x86_64')
 url='https://github.com/keltia/dmarc-cat'
@@ -19,15 +19,24 @@ pkgver() {
   git describe --long --always | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
+prepare(){
+  cd "$srcdir/$_pkgname"
+  export GOPATH="${srcdir}"
+  go mod download
+}
+
 build() {
   cd "$srcdir/$_pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
   go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags $LDFLAGS" \
-    -o $_pkgname
+    -ldflags "-linkmode external -extldflags \"$LDFLAGS\"" \
+    -o $pkgname
 }
 
 package() {
