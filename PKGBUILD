@@ -13,9 +13,13 @@ license=('0BSD')
 depends=('gvfs-smb'
 	'rsync'
 	'bash'
+	'gawk'
+	'coreutils'
 	'sed'
 	'pam'
-	'systemd')
+	'systemd'
+	'pam-krb5'
+	'kstart')
 makedepend=('git')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/-/archive/${pkgver}/linux-roaming-profiles-${pkgver}.tar.bz2")
 sha512sums=(c0a0c1a263f88c0aafd39eed343692024aa4b9ddb73b24fef6423f7566c88d95116597ddb4cba22755fc88722520097ae3e43c7194c59a6af227b986168d7d2a)
