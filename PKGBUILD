@@ -1,9 +1,11 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
+: ${_enable_flatpak:=1}
+
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git ${_pkgname}-client-flatpak-git)
-pkgver=r455.20e1b85
+pkgver=r483.6c32800
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -25,7 +27,8 @@ pkgver() {
 }
 
 build() {
-	cmake -S ${_srcdir} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S ${_srcdir} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
+		-DPATAUR_FLATPAK="$_enable_flatpak"
 	cmake --build build
 }
 
