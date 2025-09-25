@@ -1,12 +1,12 @@
 
 pkgname=btrfs-data-recovery-git
-pkgver=v1.0.0.r4.g882264a
+pkgver=v1.0.0.r6.g03a3070
 pkgrel=1
 pkgdesc="Tools for btrfs data recovery"
 arch=(x86_64)
 url=https://github.com/davispuh/btrfs-data-recovery
 license=(UNLICENSE)
-depends=(liblphobos sqlite ruby ruby-digest-crc ruby-xxhash ruby-sqlite3)
+depends=(liblphobos sqlite ruby ruby-digest-crc ruby-xxhash ruby-sqlite3 ruby-rake)
 makedepends=(git rubygems ldc dub)
 source=("git+https://github.com/davispuh/btrfs-data-recovery")
 sha256sums=('SKIP')
