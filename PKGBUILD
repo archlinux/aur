@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 
 prepare() {
-  cd "${pkgname%}"
+  cd pipewire-soundpad
   
   export CARGO_HOME="${srcdir}/${pkgname%}/.cargo"    # Download all to src directory, not in ~/.cargo
 
@@ -21,7 +21,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname%}"
+  cd pipewire-soundpad
 
   export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}=/"    # Prevent warning: 'Package contains reference to $srcdir'
   [[ -n "${_sccache}" ]] && export RUSTC_WRAPPER=sccache  # If $_sccache not empty, build using binary cache
@@ -34,7 +34,7 @@ build() {
 
 
 package() {
-  cd "${pkgname%}"
+  cd pipewire-soundpad
   
   install -Dm755 "target/release/pwsp-cli" "${pkgdir}/usr/bin/"
   install -Dm755 "target/release/pwsp-daemon" "${pkgdir}}/usr/bin/"
