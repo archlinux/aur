@@ -1,7 +1,7 @@
 pkgbase = selenized-git
 	pkgdesc = Solarized redesigned: fine-tuned color palette for programmers with focus on readability.
 	pkgver = v1.0.r20.048c55e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Phosphenius/selenized
 	arch = any
 	license = MIT
@@ -17,4 +17,3 @@ pkgname = vim-selenized-colors-git
 	pkgdesc = Selenized vim color scheme
 	conflicts = vim-selenized-colors
 	conflicts = vim-selenized-git
-	replaces = vim-selenized-git
