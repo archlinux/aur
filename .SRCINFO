@@ -1,0 +1,17 @@
+pkgbase = genv-git
+	pkgdesc = Portable environment variable manager
+	pkgver = f4711b3
+	pkgrel = 1
+	url = https://github.com/objz/genv
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = genv
+	conflicts = genv
+	source = git+https://github.com/objz/genv.git
+	sha256sums = SKIP
+
+pkgname = genv-git
