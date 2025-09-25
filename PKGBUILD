@@ -1,20 +1,19 @@
-# Maintainer: mr-tanta <sir.tanta@gmail.com>
+# Maintainer: mr-tanta <your-email@example.com>
 pkgname=portkill
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Advanced port management and network analysis tool with performance benchmarking"
 arch=('any')
 url="https://github.com/mr-tanta/portkill"
 license=('MIT')
-depends=('bash' 'coreutils' 'util-linux' 'procps-ng')
+depends=('bash' 'coreutils' 'util-linux' 'procps-ng' 'lsof' 'net-tools')
 optdepends=(
     'bc: for advanced mathematical calculations in benchmarking'
     'netcat: for enhanced network connectivity testing'
-    'lsof: for detailed process information'
     'ss: modern socket statistics (part of iproute2)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mr-tanta/portkill/archive/v${pkgver}.tar.gz")
-sha256sums=('d65211fa00e3d9c993b1acbff91d2449afc51f97083f479f4a0840b71ec32f60')
+sha256sums=('564592566eba34f866decb6261c2d48d797965c8b818766d1bd43b73579ecc8b')
 backup=('etc/portkill/portkill.conf')
 
 package() {
