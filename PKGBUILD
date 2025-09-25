@@ -4,7 +4,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 #
 pkgname="hunspell-ca"
-pkgver="3.0.8"
+pkgver="3.0.9"
 pkgrel="1"
 pkgdesc="Catalan hunspell dictionaries. Includes Valencian ca_ES-valencia"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL2' 'LGPL2')
 makedepends=('hunspell')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("${pkgname}.${pkgver}-all.zip::${_url}/releases/download/v${pkgver}/ca.${pkgver}-all.zip")
-sha256sums=('4ddca1236576d1cec4f3202681d8b02837f870f2e1539b8c326b6ec36178b3a7')
+sha256sums=('2682dacc72be8a170a9479618b1005b900b896e37582be93e9a2e18dd8b3bd87')
 
 package(){
 
