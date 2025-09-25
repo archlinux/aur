@@ -20,7 +20,8 @@ checkdepends=(
   python-docstring-parser
   python-hypothesis
   python-pytest
-  python-typeguard
+# checks that required this are deselected atm
+#  python-typeguard
   python-urllib3
 )
 optdepends=(

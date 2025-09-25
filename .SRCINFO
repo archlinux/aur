@@ -9,7 +9,6 @@ pkgbase = python-deal
 	checkdepends = python-docstring-parser
 	checkdepends = python-hypothesis
 	checkdepends = python-pytest
-	checkdepends = python-typeguard
 	checkdepends = python-urllib3
 	makedepends = python-build
 	makedepends = python-flit-core
