@@ -7,7 +7,7 @@ pkgdesc="A graphical app for managing your programs with pacman, AUR, flatpak, a
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pyqt6')
-source=("https://github.com/Samuobe/Arch-Store/archive/refs/tags/v2.0.2.tar.gz")
+source=("https://github.com/Samuobe/Arch-Store/archive/refs/tags/v2.0.3.tar.gz")
 md5sums=('SKIP')
 
 package() {
@@ -27,4 +27,5 @@ EOF
 
     install -Dm644 "$srcdir/Arch-Store-$pkgver/icon.png" "$pkgdir/usr/share/pixmaps/arch-store.png"
     install -Dm644 "$srcdir/Arch-Store-$pkgver/arch-store.desktop" "$pkgdir/usr/share/applications/arch-store.desktop"
+    install -Dm644 /dev/null "$pkgdir/usr/share/arch-store/AUR"
 }

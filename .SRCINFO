@@ -6,7 +6,7 @@ pkgbase = arch-store
 	license = GPL-3.0-or-later
 	depends = python
 	depends = python-pyqt6
-	source = https://github.com/Samuobe/Arch-Store/archive/refs/tags/v2.0.2.tar.gz
+	source = https://github.com/Samuobe/Arch-Store/archive/refs/tags/v2.0.3.tar.gz
 	md5sums = SKIP
 
 pkgname = arch-store
