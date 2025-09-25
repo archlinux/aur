@@ -1,4 +1,5 @@
 # Maintainer: sigurd4 <sigurd dot spangelo at gmail dot com>
+# Author: M. Osterman
 
 # Package name without suffix (-git, -bin, -whatever)
 _pkgname=calcesara
@@ -17,7 +18,7 @@ depends=(
     'bash' # Runs launch script
     'sed' # Templating
     'coreutils' # tail and printf are used in launch script for keygen
-    'winetricks' # Installs fonts from launch script
+    'ttf-ms-win10-auto' # Required fonts
 )
 #optdepends=('xdg-utils: for launching HTML help files')
 #optdepends=(
@@ -29,7 +30,6 @@ makedepends=(
     'curl' # Downloads sources
 	'imagemagick' # Convert icons to png
 	'gendesk' # Generate desktop entries
-    'sed' # Templating
     '7zip' # Unzip installer binary
 )
 

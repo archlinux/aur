@@ -141,7 +141,6 @@ esac
 ###############################################################################################
 
 export WINEPREFIX="${HOME}/.local/share/wineprefixes/${pkg_name}"
-export WINEDEBUG="${WINEDEBUG:-fixme-all}"
 mkdir -p "${WINEPREFIX}"
 
 ###############################################################################################
@@ -163,6 +162,13 @@ start_menu_location="${appdata}/Roaming/Microsoft/Windows/Start Menu"
 lnk_full="${start_menu_location}/Programs/${exe_name}/${lnk}.lnk"
 exe_location="${appdata}/Local/${exe_name}"
 key_destination="${exe_location}/${keyfile_name}"
+
+###############################################################################################
+# Environment
+###############################################################################################
+
+export JAVA_HOME="${exe_location}/jre"
+export WINEDEBUG="${WINEDEBUG:-fixme-all}"
 
 ###############################################################################################
 # Keygen
@@ -254,5 +260,5 @@ else
     install_key &
     install_fonts
     wait
-    launch || install_launch
+    launch #|| install_launch
 fi
