@@ -1,19 +1,27 @@
-diff --color -ura dethrace-0.8.0.orig/CMakeLists.txt dethrace-0.8.0.new/CMakeLists.txt
---- dethrace-0.8.0.orig/CMakeLists.txt	2024-09-19 21:35:37.000000000 +0200
-+++ dethrace-0.8.0.new/CMakeLists.txt	2025-01-15 14:44:56.250408420 +0100
-@@ -92,7 +92,7 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,7 @@ if(MSVC)
+     set(CMAKE_INSTALL_DOCDIR "." CACHE PATH "Documentation root")
+ endif()
+ 
++include(GNUInstallDirs)
+ include(CheckCCompilerFlag)
+ include(CMakeDependentOption)
+ include(TestBigEndian)
+@@ -152,7 +153,7 @@ endif()
  
  if(DETHRACE_INSTALL)
      install(FILES LICENSE
 -        DESTINATION "."
-+        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}"
++        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
      )
  
      set(DETHRACE_PACKAGE_PLATFORM "" CACHE STRING "Dethrace binary package platform")
-diff --color -ura dethrace-0.8.0.orig/src/DETHRACE/CMakeLists.txt dethrace-0.8.0.new/src/DETHRACE/CMakeLists.txt
---- dethrace-0.8.0.orig/src/DETHRACE/CMakeLists.txt	2024-09-19 21:35:37.000000000 +0200
-+++ dethrace-0.8.0.new/src/DETHRACE/CMakeLists.txt	2025-01-15 15:25:56.276044925 +0100
-@@ -200,7 +200,7 @@
+diff --git a/src/DETHRACE/CMakeLists.txt b/src/DETHRACE/CMakeLists.txt
+--- a/src/DETHRACE/CMakeLists.txt
++++ b/src/DETHRACE/CMakeLists.txt
+@@ -237,7 +237,7 @@ endif()
  if(DETHRACE_INSTALL)
      install(TARGETS dethrace
          BUNDLE DESTINATION . COMPONENT Runtime
