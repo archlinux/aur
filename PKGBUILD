@@ -1,6 +1,6 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 pkgname=tt-logger
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A flexible and performant C++ logging library for Tenstorrent projects"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 provides=('tt-logger')
 conflicts=('tt-logger')
 source=("$pkgname::git+https://github.com/tenstorrent/tt-logger.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('6b55f54502b4dc6348879258d00d752169c5f9a9acd48235039cf9794bb84a60')
 
 build() {
     cd "$pkgname"
