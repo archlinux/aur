@@ -1,6 +1,6 @@
 pkgbase = tjot
 	pkgdesc = A terminal renderer for the djot markup language.
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://hg.sr.ht/~ser/tjot
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tjot
 	license = 3-clause
 	makedepends = go
 	depends = glibc
-	source = tjot-0.0.8.tar.gz::https://hg.sr.ht/~ser/tjot/archive/v0.0.8.tar.gz
-	sha256sums = f6794a966164585c4b9e1f50b4e3cbaadbfbb7cd750e419cbc318443d1503a19
+	source = tjot-0.0.9.tar.gz::https://hg.sr.ht/~ser/tjot/archive/v0.0.9.tar.gz
+	sha256sums = 6cb2b300e47a25c2edafb385cdfee42c683a1f5f0fbe23163f28c73e995724a7
 
 pkgname = tjot

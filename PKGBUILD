@@ -1,7 +1,7 @@
 # Maintainer: Sean E. Russell <ser@ser1.net>
 
 pkgname=tjot
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="A terminal renderer for the djot markup language."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -31,4 +31,4 @@ package() {
   install -Dm644 CHANGELOG.md      "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
 
-sha256sums=('f6794a966164585c4b9e1f50b4e3cbaadbfbb7cd750e419cbc318443d1503a19')
+sha256sums=('6cb2b300e47a25c2edafb385cdfee42c683a1f5f0fbe23163f28c73e995724a7')
