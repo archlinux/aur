@@ -1,8 +1,8 @@
 # Maintainer: adityaphra <aditya.phra@gmail.com>
 
 pkgname=asciinema-agg-bin
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='asciinema gif generator (binary version)'
 provides=('asciinema-agg')
 conflicts=('asciinema-agg')
@@ -12,9 +12,9 @@ license=('Apache')
 source_x86_64=("agg-$pkgver-x86_64::$url/releases/download/v$pkgver/agg-x86_64-unknown-linux-gnu")
 source_armv7h=("agg-$pkgver-armv7h::$url/releases/download/v$pkgver/agg-arm-unknown-linux-gnueabihf")
 source_aarch64=("agg-$pkgver-aarch64::$url/releases/download/v$pkgver/agg-aarch64-unknown-linux-gnu")
-sha512sums_x86_64=('7fb00737b2d4615a7a87e9be400cb75c3361702f4bb6e3131090c4b5cefef5f9d59f1bde7b9664445c3247926c201c8b3b1a2b08fc196bebba3c429989e9f829')
-sha512sums_armv7h=('b035f484452099f88bc880d8390e0bc505393bf078bc40a1406441df24b4c387772bb5dcad996a3d9e1484e42ae3651dae30f356a72a5915a0e6a1f619ea91bb')
-sha512sums_aarch64=('da3c5e63fe869afd36b2b2b0b9f8ed4b48976be70c3818195be80c9157379ac2bec9c978be7508c4e49646845f310f2729f3f99428db620ca89293eae08f153d')
+sha512sums_x86_64=('f5e5b3b65253b651e9e8abc7252a5f0b38d393175383c90af1808c62a811bd6f9466349f1a995320d31479651020010412c40a30bec35a170e685db44adf9a8d')
+sha512sums_armv7h=('754e96793ff09767659a480ee1e89595ca4c770ac93a0537c8f0a7fd8e60f4e78a3c88b57252f79a0bd54071ec96ccbd874fcead458cfc701faddb0ccceccca7')
+sha512sums_aarch64=('03f4e2b51d4f75edbe7d3f36e1e96cb3770042c32b076665eed371e8c17a935cec2a44ebe3e0df2324483e9e4af8d4a5576c848a002f12c97d9058fb1ee21f90')
 
 package() {
     install -Dm755 agg-$pkgver-$CARCH $pkgdir/usr/bin/agg
