@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
 makedepends=(clang rust cargo pipewire alsa-lib)
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 
