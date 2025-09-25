@@ -1,0 +1,20 @@
+pkgbase = jemula802-git
+	pkgdesc = Emulation software to model 802.11 and other 802 wireless communication systems.
+	pkgver = r223.4086c28
+	pkgrel = 1
+	url = https://bitbucket.org/lfield/jemula802
+	arch = any
+	license = BSD
+	makedepends = ant
+	makedepends = java-environment
+	depends = java-runtime
+	source = git+https://bitbucket.org/lfield/jemula802.git
+	source = git+https://bitbucket.org/lfield/jemula.git
+	source = ant-jar.patch
+	source = jemula802.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f8ccc41d5c6b01d84ebc8dd4fe966ea1b9d7eed59f44ab06b197264dce66db0b
+	sha256sums = bcebdb3dff9e0ba1e8b758ccd7f3d213042047b24b14a200c673c0b5974f8fba
+
+pkgname = jemula802-git
