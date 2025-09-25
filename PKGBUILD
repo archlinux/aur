@@ -1,16 +1,16 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.5-beta3"
+_godot_version="4.5-stable"
 
 pkgname=gozen
-pkgver=0.4.0
-pkgrel=4 # Increment this if you change the PKGBUILD but not pkgver.
+pkgver=0.4.1
+pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
 license=('GPL3')
-conflicts=('gozen-git')
+conflicts=('gozen-git' 'gozen-bin')
 options=('!debug')
 makedepends=(
     'git'
@@ -36,9 +36,9 @@ source=(
     "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
     "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
-sha256sums=('620495cb0149143482aeb4a5f3f3dff23f97c6ce67deea56327ddef091cb6e95'
-            'f27a58f8dd09f078d8aecc6f8e3eb1b97f9678e410e03f29df3a08800983e2bf'
-            '3967cc917d5ff21c34573341035b47d2a3db800b2acde6a17f570f081f7b835c')
+sha256sums=('d8d0b4c4e08fb41b16afc928da218e1726ac887801e5134a95098a3ae03ddb44'
+            'c7316e1fd782ad276a4d985a7673b5976eaaa8d90561a2bea5289210dc53e9ba'
+            '375d83b661794f91746d2dec9b569a99d4d24f85a70c4ec0068aafb18b551d53')
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
