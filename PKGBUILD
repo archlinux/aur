@@ -9,7 +9,7 @@ url="https://github.com/bmf-san/ggc"
 license=('MIT')
 provides=('ggc')
 conflicts=('ggc' 'ggc-bin')
-makedepends=('git')
+makedepends=('go')
 source=('git+https://github.com/bmf-san/ggc.git#branch=main')
 sha256sums=('SKIP')
 
