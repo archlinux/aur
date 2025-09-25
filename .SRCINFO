@@ -1,6 +1,6 @@
 pkgbase = nixfmt
 	pkgdesc = Official formatter for Nix code
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/NixOS/nixfmt
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nixfmt
 	depends = haskell-scientific
 	depends = haskell-file-embed
 	depends = haskell-pretty-simple
-	source = https://github.com/NixOS/nixfmt/archive/v1.0.0.tar.gz
-	b2sums = 7e6a8635d0c444584e4728f50445fc07d91c1f540de920625be7ad74c7084ce7a094e3a78b898659df3c3b2e263d944653b08d458009198faa6a016b85b3b4b0
+	source = https://github.com/NixOS/nixfmt/archive/v1.0.1.tar.gz
+	b2sums = b447fca7e6ba3e0f23fa49b610c2606cc655908c98de23a0c43adbdd413b052c9fe12ebdec8423683afc6ba44fff84414fc67724c78ef8e39aa280b4cbeceaf2
 
 pkgname = nixfmt

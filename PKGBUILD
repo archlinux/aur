@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=nixfmt
-pkgver=1.0.0
+pkgver=1.0.1 # renovate: datasource=github-tags depName=NixOS/nixfmt
 pkgrel=1
 pkgdesc="Official formatter for Nix code"
 url="https://github.com/NixOS/nixfmt"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-cmdargs' 'haskell-megaparsec' 'haskell-parser-combinators' 'haskell-safe-exceptions' 'haskell-scientific' 'haskell-file-embed' 'haskell-pretty-simple')
 makedepends=('ghc' 'uusi')
 source=("https://github.com/NixOS/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('7e6a8635d0c444584e4728f50445fc07d91c1f540de920625be7ad74c7084ce7a094e3a78b898659df3c3b2e263d944653b08d458009198faa6a016b85b3b4b0')
+b2sums=('b447fca7e6ba3e0f23fa49b610c2606cc655908c98de23a0c43adbdd413b052c9fe12ebdec8423683afc6ba44fff84414fc67724c78ef8e39aa280b4cbeceaf2')
 
 prepare() {
   uusi $pkgname-$pkgver/$pkgname.cabal
@@ -24,7 +24,7 @@ build() {
     --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname --enable-tests \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
-    --ghc-option='-pie' 
+    --ghc-option='-pie'
 
   runhaskell Setup build
   runhaskell Setup register --gen-script
