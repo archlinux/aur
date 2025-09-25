@@ -1,0 +1,20 @@
+pkgbase = python-llm-github-copilot
+	pkgdesc = A GitHub Copilot plugin for the llm CLI tool
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/jmdaly/llm-github-copilot
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-vcr
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-httpx
+	depends = python-llm
+	source = llm-github-copilot-0.3.1.tar.gz::https://github.com/jmdaly/llm-github-copilot/archive/0.3.1.tar.gz
+	sha512sums = 1c0c780d5d5fb9f5c9086e2d0bbed6bd09e46e80dae77cd190f933590d98542fc8df5ff7cb86fa8338fa1e023ecdd17d5ef2236105efd0fedd1506794d21efad
+
+pkgname = python-llm-github-copilot
