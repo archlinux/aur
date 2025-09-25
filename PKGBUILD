@@ -1,10 +1,10 @@
 # Maintainer: Maiko Tan <maiko.tan.coding@gmail.com>
 pkgname=base16384
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Encode binary files to printable utf16be."
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/fumiama/base16384"
 license=('GPL-3.0-only')
 groups=()
