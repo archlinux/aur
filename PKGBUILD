@@ -11,7 +11,7 @@ depends=('kdeconnect-git'
         'plasma-nm-git' 
         'plasma-pa-git' 
         'plasma-nano-git'
-	'bluezqt-git')
+	'bluez-qt-git')
 makedepends=('cmake' 'extra-cmake-modules-git' 'git') 
 optdepends=('libcec: add USB-CEC support in order to be controlled by TV remotes'
             'plasma-remotecontrollers-git: add support for remote controllers')
