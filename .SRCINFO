@@ -1,6 +1,6 @@
 pkgbase = mangojuice
 	pkgdesc = A convenient alternative to GOverlay for configuring MangoHud
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = mangojuice
 	optdepends = mesa-utils
 	optdepends = vkbasalt
 	options = !debug
-	source = https://github.com/radiolamp/mangojuice/archive/refs/tags/0.8.7.tar.gz
-	b2sums = c4385301b243fa785d523d37c3c73a8cd09aa195de44c2f90ea33e7ce3da10ce7d3c3951ed07bd6e72f7f0d5ddad591b6aa09c1a8704d458cf2a614a7b349581
+	source = https://github.com/radiolamp/mangojuice/archive/refs/tags/0.8.8.tar.gz
+	b2sums = 05c8b887122aef44cbcf254d355cf4eb04ecec7a889676f96735b9709b5fb9b5b65ce9eef9e44417e0ce2caaf0e90740b6b02e1af47ae7d2820beea2798fa0e6
 
 pkgname = mangojuice

@@ -1,7 +1,7 @@
 # Maintainer: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=mangojuice
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(x86_64)
@@ -32,7 +32,7 @@ optdepends=(
 
 options=(!debug)
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-b2sums=(c4385301b243fa785d523d37c3c73a8cd09aa195de44c2f90ea33e7ce3da10ce7d3c3951ed07bd6e72f7f0d5ddad591b6aa09c1a8704d458cf2a614a7b349581)
+b2sums=(05c8b887122aef44cbcf254d355cf4eb04ecec7a889676f96735b9709b5fb9b5b65ce9eef9e44417e0ce2caaf0e90740b6b02e1af47ae7d2820beea2798fa0e6)
 
 build() {
   arch-meson ${pkgname}-$pkgver build
