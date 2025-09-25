@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.5.11
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = cherry-studio-electron-bin
 	license = LicenseRef-custom
 	depends = electron37
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.5.11
+	provides = cherry-studio=1.6.0
 	conflicts = cherry-studio
-	source = LICENSE-1.5.11::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.5.11/LICENSE
+	source = LICENSE-1.6.0::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.6.0/LICENSE
 	source = cherry-studio-electron.sh
-	sha256sums = ca8950fcf72aef9d46e0bccc0b456c5e2e14bd37d2bbd04bb99632e09eda36b3
+	sha256sums = d1b489cc814a65133cc03c83bbc3df0db10f197e05a7af5e369f09e32ee04e22
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = cherry-studio-electron-1.5.11-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.5.11/Cherry-Studio-1.5.11-aarch64.rpm
-	sha256sums_aarch64 = 866711c70f8e26cbe94913046e7c6fbf1b45a2d31aeebc09a74dd9fcacaebdab
-	source_x86_64 = cherry-studio-electron-1.5.11-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.5.11/Cherry-Studio-1.5.11-x86_64.rpm
-	sha256sums_x86_64 = 09dbede1db49dde55a8bf31cad8b376a4f2d487c456971b55ac181f0f01256cf
+	source_aarch64 = cherry-studio-electron-1.6.0-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.0/Cherry-Studio-1.6.0-aarch64.rpm
+	sha256sums_aarch64 = b33f197f4827f9637d45bdb96541351b6c13035fbf66de02080fea3f937e47ab
+	source_x86_64 = cherry-studio-electron-1.6.0-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.0/Cherry-Studio-1.6.0-x86_64.rpm
+	sha256sums_x86_64 = b0e94828fdb26320524921ba73d6f6d4c3b21d59dfce800bdca948d73ce4dd8e
 
 pkgname = cherry-studio-electron-bin
