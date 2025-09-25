@@ -1,0 +1,14 @@
+pkgbase = twad-justinwayland-git
+	pkgdesc = Manage DOOM engines and mods with the terminal wad launcher (JustinWayland fork)
+	pkgver = v0.30.0
+	pkgrel = 1
+	url = https://github.com/zmnpl/twad
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = twad-git
+	source = git+https://github.com/JustinWayland/twad.git
+	sha256sums = SKIP
+
+pkgname = twad-justinwayland-git
