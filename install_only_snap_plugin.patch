@@ -1,35 +1,30 @@
 diff --git a/plugins/snap/meson.build b/plugins/snap/meson.build
-index 2252f7399..82b49abf6 100644
 --- a/plugins/snap/meson.build
 +++ b/plugins/snap/meson.build
-@@ -7,6 +7,7 @@ shared_module(
+@@ -5,6 +5,7 @@ shared_module(
+   sources : [
+     'gs-plugin-snap.c'
    ],
++  install_tag: 'snap',
    install : true,
    install_dir: plugin_dir,
-+  install_tag: 'snap',
    c_args : cargs,
-   dependencies : [ plugin_libs, snap ],
- )
-@@ -18,7 +19,8 @@ i18n.merge_file(
+@@ -14,6 +15,7 @@ metainfo = 'org.gnome.Software.Plugin.Snap.metainfo.xml'
+ 
+ i18n.merge_file(
+   input: metainfo + '.in',
++  install_tag: 'snap',
+   output: metainfo,
    type: 'xml',
    po_dir: join_paths(meson.project_source_root(), 'po'),
-   install: true,
--  install_dir: join_paths(get_option('datadir'), 'metainfo')
-+  install_dir: join_paths(get_option('datadir'), 'metainfo'),
-+  install_tag: 'snap'
- )
-
- if get_option('tests')
 diff --git a/src/meson.build b/src/meson.build
-index 327191333..bcb2186a3 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -247,7 +247,8 @@ if get_option('snap')
+@@ -269,6 +269,7 @@ if get_option('snap')
+        output: 'gnome-software-local-file-snap.desktop.tmp',
+        configuration: cdata
+      ),
++    install_tag: 'snap',
+     output: 'gnome-software-local-file-snap.desktop',
      type: 'desktop',
      po_dir: join_paths(meson.project_source_root(), 'po'),
-     install: true,
--    install_dir: join_paths(get_option('datadir'), 'applications')
-+    install_dir: join_paths(get_option('datadir'), 'applications'),
-+    install_tag: 'snap'
-   )
- endif

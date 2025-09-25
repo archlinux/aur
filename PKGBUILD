@@ -3,7 +3,7 @@
 _pkgbasename=gnome-software
 pkgname="${_pkgbasename}"-plugin-snap
 pkgver=49.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Snap support for GNOME Software"
 url="https://apps.gnome.org/Software"
 arch=(x86_64)
@@ -44,7 +44,7 @@ source=(
 )
 b2sums=('29a09d6166c87b9326b4e095b6fce760698d3f4e7acfdc35e1e24ff2c23eb97b991c262cb3997d0fb952bb21d64835eca734d1fff854debd750839f1b7bbf43e'
         'SKIP'
-        '736a43aecb1bbf91f2c641adf971a4f1acbc6f49fd970cd0507d68e169d5b6c5a8eb7109a38d49423895343e9473bc54455e9b8b991329b1c5300af07fd19b46')
+        '07639c42c37508bed90f1979e5a875c654fd8b2aa0abd974bd22adc83f0a5b8c79b09245fbba73c35bc2c161c638758e6ae0aa46c570cba03979913d9817c7a2')
 
 prepare() {
   cd "${_pkgbasename}"
