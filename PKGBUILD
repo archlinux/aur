@@ -21,12 +21,6 @@ depends=(
   libtiff
   shared-mime-info
 )
-provides=(
-  gdk-pixbuf2
-)
-conflicts=(
-  gdk-pixbuf2
-)
 makedepends=(
   gi-docgen
   git
@@ -83,6 +77,9 @@ package_gdk-pixbuf2-noglycin() {
   )
   provides=(
     libgdk_pixbuf-2.0.so
+    gdk-pixbuf2
+  )
+  conflicts=(
     gdk-pixbuf2
   )
   install=gdk-pixbuf2-noglycin.install
