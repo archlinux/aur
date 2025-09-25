@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/Garoa_${pkgver}_amd64.deb")
-sha256sums_x86_64=('172f61b61baa155ddf011fd47d6f53784e8ca4da961bc1ed4832287425e0d342')
+sha256sums_x86_64=('7a5116921f774f08f9cdaf7535f7e8666861538f481c2aa0bc9a419cba79ad11')
 
 package() {
   tar -xvf data.tar.gz -C "${pkgdir}"
