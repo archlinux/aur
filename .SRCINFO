@@ -1,6 +1,6 @@
 pkgbase = indicator-sysmonitor-git
 	pkgdesc = An Application Indicator showing various system parameters
-	pkgver = r121.ad81537
+	pkgver = r139.a75456c
 	pkgrel = 1
 	url = https://github.com/fossfreedom/indicator-sysmonitor
 	arch = any
