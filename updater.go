@@ -16,222 +16,277 @@ import (
 	"time"
 )
 
-// Constants
 const (
-	RepoAPIURL   = "https://api.github.com/repos/Voxelum/x-minecraft-launcher/releases/latest"
-	ReleaseURL   = "https://github.com/Voxelum/x-minecraft-launcher/releases"
-	PkgbuildFile = "PKGBUILD"
-	SrcinfoFile  = ".SRCINFO"
-
-	// HTTP client timeout
-	HTTPTimeout = 10 * time.Second
+	githubAPIURL = "https://api.github.com/repos/Voxelum/x-minecraft-launcher/releases/latest"
+	pkgbuildFile = "PKGBUILD"
+	srcinfoFile  = ".SRCINFO"
+	httpTimeout  = 15 * time.Second
+	buildTimeout = 10 * time.Minute
+	userAgent    = "xmcl-package-updater/2.0"
 )
 
-// ANSI color codes
-const (
-	ColorReset  = "\033[0m"
-	ColorRed    = "\033[91m"
-	ColorGreen  = "\033[92m"
-	ColorYellow = "\033[93m"
-	ColorBlue   = "\033[94m"
-)
-
-// GitHubRelease represents the GitHub API response structure
+// GitHubRelease represents the API response structure
 type GitHubRelease struct {
 	TagName string `json:"tag_name"`
 }
 
-// PackageUpdater handles the package update operations
-type PackageUpdater struct {
-	httpClient *http.Client
-	reader     *bufio.Reader
+// Config holds application configuration
+type Config struct {
+	HTTPTimeout  time.Duration
+	BuildTimeout time.Duration
 }
 
-// NewPackageUpdater creates a new PackageUpdater instance
-func NewPackageUpdater() *PackageUpdater {
-	return &PackageUpdater{
-		httpClient: &http.Client{Timeout: HTTPTimeout},
-		reader:     bufio.NewReader(os.Stdin),
-	}
-}
-
-// Logger provides colored output methods
+// Logger provides colored console output
 type Logger struct{}
 
-func (l *Logger) Success(format string, args ...any) {
-	fmt.Printf(ColorGreen+format+ColorReset+"\n", args...)
+const (
+	colorReset  = "\033[0m"
+	colorRed    = "\033[91m"
+	colorGreen  = "\033[92m"
+	colorYellow = "\033[93m"
+	colorBlue   = "\033[94m"
+)
+
+func (l *Logger) Success(msg string, args ...interface{}) {
+	fmt.Printf(colorGreen+"✓ "+msg+colorReset+"\n", args...)
 }
 
-func (l *Logger) Error(format string, args ...any) {
-	fmt.Fprintf(os.Stderr, ColorRed+"Error: "+format+ColorReset+"\n", args...)
+func (l *Logger) Error(msg string, args ...interface{}) {
+	fmt.Fprintf(os.Stderr, colorRed+"✗ "+msg+colorReset+"\n", args...)
 }
 
-func (l *Logger) Info(format string, args ...any) {
-	fmt.Printf(ColorYellow+format+ColorReset+"\n", args...)
+func (l *Logger) Info(msg string, args ...interface{}) {
+	fmt.Printf(colorYellow+"ℹ "+msg+colorReset+"\n", args...)
 }
 
-func (l *Logger) Action(format string, args ...any) {
-	fmt.Printf(ColorBlue+format+ColorReset+"\n", args...)
+func (l *Logger) Action(msg string, args ...interface{}) {
+	fmt.Printf(colorBlue+"→ "+msg+colorReset+"\n", args...)
 }
 
-var logger = &Logger{}
+var log = &Logger{}
 
-// FetchLatestVersion retrieves the latest release tag from GitHub API
-func (u *PackageUpdater) FetchLatestVersion(ctx context.Context) (string, error) {
-	logger.Action("Fetching latest version info from %s...", RepoAPIURL)
+// HTTPClient wraps http.Client with convenience methods
+type HTTPClient struct {
+	client *http.Client
+}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, RepoAPIURL, nil)
+func NewHTTPClient(timeout time.Duration) *HTTPClient {
+	return &HTTPClient{
+		client: &http.Client{Timeout: timeout},
+	}
+}
+
+func (c *HTTPClient) GetJSON(ctx context.Context, url string, result interface{}) error {
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
-		return "", fmt.Errorf("creating request: %w", err)
+		return fmt.Errorf("creating request: %w", err)
 	}
 
-	// Set User-Agent to avoid rate limiting
-	req.Header.Set("User-Agent", "xmcl-package-updater/1.0")
+	req.Header.Set("User-Agent", userAgent)
 
-	resp, err := u.httpClient.Do(req)
+	resp, err := c.client.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("fetching release info: %w", err)
+		return fmt.Errorf("executing request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("HTTP %d: %s", resp.StatusCode, resp.Status)
+		return fmt.Errorf("HTTP %d: %s", resp.StatusCode, resp.Status)
 	}
 
+	return json.NewDecoder(resp.Body).Decode(result)
+}
+
+// FileManager handles file operations
+type FileManager struct{}
+
+func (fm *FileManager) Exists(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil
+}
+
+func (fm *FileManager) ReadLines(path string) ([]string, error) {
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("reading file %s: %w", path, err)
+	}
+	return strings.Split(string(content), "\n"), nil
+}
+
+func (fm *FileManager) WriteLines(path string, lines []string) error {
+	content := strings.Join(lines, "\n")
+	err := os.WriteFile(path, []byte(content), 0644)
+	if err != nil {
+		return fmt.Errorf("writing file %s: %w", path, err)
+	}
+	return nil
+}
+
+// CommandRunner executes system commands
+type CommandRunner struct{}
+
+func (cr *CommandRunner) Run(ctx context.Context, name string, args ...string) error {
+	cmd := exec.CommandContext(ctx, name, args...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("running %s: %w", name, err)
+	}
+	return nil
+}
+
+func (cr *CommandRunner) RunWithOutput(ctx context.Context, name string, args ...string) ([]byte, error) {
+	cmd := exec.CommandContext(ctx, name, args...)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, fmt.Errorf("running %s: %w", name, err)
+	}
+	return output, nil
+}
+
+// PKGBUILDUpdater handles PKGBUILD modifications
+type PKGBUILDUpdater struct {
+	fm *FileManager
+}
+
+func NewPKGBUILDUpdater(fm *FileManager) *PKGBUILDUpdater {
+	return &PKGBUILDUpdater{fm: fm}
+}
+
+func (u *PKGBUILDUpdater) UpdateVersion(version string) error {
+	lines, err := u.fm.ReadLines(pkgbuildFile)
+	if err != nil {
+		return err
+	}
+
+	versionNum := strings.TrimPrefix(version, "v")
+	pkgverRegex := regexp.MustCompile(`^pkgver=.*$`)
+	pkgrelRegex := regexp.MustCompile(`^pkgrel=.*$`)
+
+	for i, line := range lines {
+		trimmed := strings.TrimSpace(line)
+		switch {
+		case pkgverRegex.MatchString(trimmed):
+			lines[i] = fmt.Sprintf("pkgver=%s", versionNum)
+		case pkgrelRegex.MatchString(trimmed):
+			lines[i] = "pkgrel=1"
+		}
+	}
+
+	return u.fm.WriteLines(pkgbuildFile, lines)
+}
+
+// ReleaseChecker fetches latest version from GitHub
+type ReleaseChecker struct {
+	httpClient *HTTPClient
+}
+
+func NewReleaseChecker(httpClient *HTTPClient) *ReleaseChecker {
+	return &ReleaseChecker{httpClient: httpClient}
+}
+
+func (rc *ReleaseChecker) GetLatestVersion(ctx context.Context) (string, error) {
 	var release GitHubRelease
-	if err := json.NewDecoder(resp.Body).Decode(&release); err != nil {
-		return "", fmt.Errorf("decoding JSON response: %w", err)
+	err := rc.httpClient.GetJSON(ctx, githubAPIURL, &release)
+	if err != nil {
+		return "", fmt.Errorf("fetching latest release: %w", err)
 	}
 
 	if release.TagName == "" {
-		return "", fmt.Errorf("tag_name not found in API response")
+		return "", fmt.Errorf("no tag_name in API response")
 	}
 
 	return release.TagName, nil
 }
 
-// UpdatePkgbuild updates the pkgver line in the PKGBUILD file
-func (u *PackageUpdater) UpdatePkgbuild(versionTag string) error {
-	logger.Action("Updating %s...", PkgbuildFile)
-
-	versionNum := strings.TrimPrefix(versionTag, "v")
-
-	content, err := os.ReadFile(PkgbuildFile)
-	if err != nil {
-		return fmt.Errorf("reading %s: %w", PkgbuildFile, err)
-	}
-
-	// Use regex to replace pkgver line
-	pkgverRegex := regexp.MustCompile(`^pkgver=.*$`)
-	lines := strings.Split(string(content), "\n")
-
-	for i, line := range lines {
-		if pkgverRegex.MatchString(strings.TrimSpace(line)) {
-			lines[i] = fmt.Sprintf("pkgver=%s", versionNum)
-			break
-		}
-	}
-
-	updatedContent := strings.Join(lines, "\n")
-	if err := os.WriteFile(PkgbuildFile, []byte(updatedContent), 0644); err != nil {
-		return fmt.Errorf("writing %s: %w", PkgbuildFile, err)
-	}
-
-	return nil
+// UserInteraction handles user prompts
+type UserInteraction struct {
+	reader *bufio.Reader
 }
 
-// CreateSrcinfo creates or overwrites the .SRCINFO file
-func (u *PackageUpdater) CreateSrcinfo(versionTag string) error {
-	logger.Action("Updating %s...", SrcinfoFile)
-
-	versionNum := strings.TrimPrefix(versionTag, "v")
-	srcinfoContent := u.generateSrcinfoContent(versionNum, versionTag)
-
-	if err := os.WriteFile(SrcinfoFile, []byte(srcinfoContent), 0644); err != nil {
-		return fmt.Errorf("creating %s: %w", SrcinfoFile, err)
+func NewUserInteraction() *UserInteraction {
+	return &UserInteraction{
+		reader: bufio.NewReader(os.Stdin),
 	}
-
-	return nil
 }
 
-// generateSrcinfoContent generates the .SRCINFO file content
-func (u *PackageUpdater) generateSrcinfoContent(versionNum, versionTag string) string {
-	return fmt.Sprintf(`pkgbase = xmcl-launcher
-	pkgdesc = X Minecraft Launcher - A modern Minecraft launcher
-	pkgver = %s
-	pkgrel = 1
-	url = https://xmcl.app/
-	arch = x86_64
-	arch = aarch64
-	license = MIT
-	makedepends = curl
-	makedepends = libarchive
-	optdepends = jre8-openjdk: Minimum requirement for launching older game versions
-	optdepends = jre11-openjdk: Recommended Java version for launching versions 1.12-1.17
-	optdepends = jre17-openjdk: Recommended Java version for launching version 1.17 and above
-	optdepends = jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above
-	provides = xmcl
-	conflicts = xmcl-electron-bin
-	source = %s/%s
+func (ui *UserInteraction) ConfirmBuild(ctx context.Context) (bool, error) {
+	fmt.Print("Build package now? [y/N]: ")
 
-pkgname = xmcl-launcher
-`, versionNum, ReleaseURL, versionTag)
-}
-
-// PromptUserToBuild asks the user if they want to build the package
-func (u *PackageUpdater) PromptUserToBuild(ctx context.Context) (bool, error) {
-	fmt.Print("Do you want to build the package? (y/N) ")
-
-	// Create a channel to capture the user input
 	responseCh := make(chan string, 1)
 	errCh := make(chan error, 1)
 
 	go func() {
-		response, err := u.reader.ReadString('\n')
+		response, err := ui.reader.ReadString('\n')
 		if err != nil {
+			if err == io.EOF {
+				responseCh <- ""
+				return
+			}
 			errCh <- err
 			return
 		}
-		responseCh <- response
+		responseCh <- strings.ToLower(strings.TrimSpace(response))
 	}()
 
 	select {
 	case <-ctx.Done():
-		fmt.Println() // Add newline for clean exit
-		logger.Info("Operation cancelled by user.")
+		fmt.Println()
 		return false, ctx.Err()
 	case err := <-errCh:
-		if err == io.EOF {
-			fmt.Println() // Add newline for clean exit
-			return false, nil
-		}
-		return false, fmt.Errorf("reading user input: %w", err)
+		return false, err
 	case response := <-responseCh:
-		response = strings.ToLower(strings.TrimSpace(response))
 		return response == "y" || response == "yes", nil
 	}
 }
 
-// BuildPackage executes makepkg -s to build the package
-func (u *PackageUpdater) BuildPackage(ctx context.Context) error {
-	logger.Action("Running makepkg -s...")
+// PackageBuilder handles package building operations
+type PackageBuilder struct {
+	cmdRunner *CommandRunner
+	fm        *FileManager
+}
 
+func NewPackageBuilder(cmdRunner *CommandRunner, fm *FileManager) *PackageBuilder {
+	return &PackageBuilder{
+		cmdRunner: cmdRunner,
+		fm:        fm,
+	}
+}
+
+func (pb *PackageBuilder) UpdateChecksums(ctx context.Context) error {
+	return pb.cmdRunner.Run(ctx, "updpkgsums")
+}
+
+func (pb *PackageBuilder) UpdateSRCINFO(ctx context.Context) error {
+	output, err := pb.cmdRunner.RunWithOutput(ctx, "makepkg", "--printsrcinfo")
+	if err != nil {
+		return err
+	}
+
+	err = os.WriteFile(srcinfoFile, output, 0644)
+	if err != nil {
+		return fmt.Errorf("writing %s: %w", srcinfoFile, err)
+	}
+
+	return nil
+}
+
+func (pb *PackageBuilder) BuildPackage(ctx context.Context) error {
 	cmd := exec.CommandContext(ctx, "makepkg", "-s")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
-	// Create new process group and make it the foreground process group
+	// Handle process group for proper signal handling
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Setpgid:   true,
-		Pdeathsig: syscall.SIGTERM, // Send SIGTERM to child when parent dies
+		Pdeathsig: syscall.SIGTERM,
 	}
 
-	// Start the command
 	if err := cmd.Start(); err != nil {
 		return fmt.Errorf("starting makepkg: %w", err)
 	}
 
-	// Wait for completion or cancellation
 	done := make(chan error, 1)
 	go func() {
 		done <- cmd.Wait()
@@ -239,113 +294,176 @@ func (u *PackageUpdater) BuildPackage(ctx context.Context) error {
 
 	select {
 	case <-ctx.Done():
-		// Context cancelled, kill the entire process group
-		if cmd.Process != nil {
-			pgid, err := syscall.Getpgid(cmd.Process.Pid)
-			if err == nil {
-				// Kill entire process group (negative PID kills process group)
-				syscall.Kill(-pgid, syscall.SIGTERM)
-				// Give it a moment to terminate gracefully
-				time.Sleep(2 * time.Second)
-				// Force kill if still running
-				syscall.Kill(-pgid, syscall.SIGKILL)
-			}
-		}
-		return fmt.Errorf("build was cancelled")
+		pb.killProcessGroup(cmd)
+		return fmt.Errorf("build cancelled")
 	case err := <-done:
 		if err != nil {
 			if exitError, ok := err.(*exec.ExitError); ok {
 				return fmt.Errorf("makepkg failed with exit code %d", exitError.ExitCode())
 			}
-			return fmt.Errorf("running makepkg: %w", err)
+			return fmt.Errorf("makepkg error: %w", err)
 		}
 		return nil
 	}
 }
 
-// fileExists checks if a file exists
-func fileExists(filename string) bool {
-	_, err := os.Stat(filename)
-	return !os.IsNotExist(err)
+func (pb *PackageBuilder) killProcessGroup(cmd *exec.Cmd) {
+	if cmd.Process == nil {
+		return
+	}
+
+	if pgid, err := syscall.Getpgid(cmd.Process.Pid); err == nil {
+		syscall.Kill(-pgid, syscall.SIGTERM)
+		time.Sleep(2 * time.Second)
+		syscall.Kill(-pgid, syscall.SIGKILL)
+	}
 }
 
-// run executes the main application logic
-func (u *PackageUpdater) run() error {
-	// Create context with signal handling for Ctrl+C
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
+// Application is the main application struct
+type Application struct {
+	releaseChecker  *ReleaseChecker
+	pkgbuildUpdater *PKGBUILDUpdater
+	packageBuilder  *PackageBuilder
+	userInteraction *UserInteraction
+	fm              *FileManager
+	config          *Config
+}
 
-	// Handle Ctrl+C gracefully
-	sigCh := make(chan os.Signal, 1)
-	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
-	go func() {
-		<-sigCh
-		cancel()
-	}()
+func NewApplication(config *Config) *Application {
+	httpClient := NewHTTPClient(config.HTTPTimeout)
+	fm := &FileManager{}
+	cmdRunner := &CommandRunner{}
 
-	// Check if PKGBUILD exists
-	if !fileExists(PkgbuildFile) {
-		return fmt.Errorf("%s not found in the current directory", PkgbuildFile)
+	return &Application{
+		releaseChecker:  NewReleaseChecker(httpClient),
+		pkgbuildUpdater: NewPKGBUILDUpdater(fm),
+		packageBuilder:  NewPackageBuilder(cmdRunner, fm),
+		userInteraction: NewUserInteraction(),
+		fm:              fm,
+		config:          config,
+	}
+}
+
+func (app *Application) validateEnvironment() error {
+	if !app.fm.Exists(pkgbuildFile) {
+		return fmt.Errorf("%s not found in current directory", pkgbuildFile)
 	}
 
-	// Fetch latest version with timeout
-	fetchCtx, fetchCancel := context.WithTimeout(ctx, 10*time.Second)
-	defer fetchCancel()
-
-	latestVersion, err := u.FetchLatestVersion(fetchCtx)
-	if err != nil {
-		if ctx.Err() != nil {
-			return fmt.Errorf("operation cancelled")
+	requiredCommands := []string{"updpkgsums", "makepkg"}
+	for _, cmd := range requiredCommands {
+		if _, err := exec.LookPath(cmd); err != nil {
+			return fmt.Errorf("required command '%s' not found in PATH", cmd)
 		}
-		return fmt.Errorf("failed to get the latest version: %w", err)
-	}
-
-	logger.Info("Latest version found: %s", latestVersion)
-
-	// Update PKGBUILD
-	if err := u.UpdatePkgbuild(latestVersion); err != nil {
-		return fmt.Errorf("failed to update %s: %w", PkgbuildFile, err)
-	}
-
-	// Create .SRCINFO
-	if err := u.CreateSrcinfo(latestVersion); err != nil {
-		return fmt.Errorf("failed to create %s: %w", SrcinfoFile, err)
-	}
-
-	logger.Success("Successfully updated files to version %s", latestVersion)
-
-	// Ask user if they want to build
-	shouldBuild, err := u.PromptUserToBuild(ctx)
-	if err != nil {
-		if ctx.Err() != nil {
-			return fmt.Errorf("operation cancelled")
-		}
-		return fmt.Errorf("error during build prompt: %w", err)
-	}
-
-	if shouldBuild {
-		buildCtx, buildCancel := context.WithTimeout(ctx, 5*time.Minute)
-		defer buildCancel()
-
-		if err := u.BuildPackage(buildCtx); err != nil {
-			if ctx.Err() != nil {
-				return fmt.Errorf("build cancelled")
-			}
-			return fmt.Errorf("failed to build package: %w", err)
-		}
-		logger.Success("Package built successfully!")
-	} else {
-		logger.Info("Skipping package build.")
 	}
 
 	return nil
 }
 
-func main() {
-	updater := NewPackageUpdater()
+func (app *Application) updatePackageFiles(ctx context.Context, version string) error {
+	log.Action("Updating PKGBUILD...")
+	if err := app.pkgbuildUpdater.UpdateVersion(version); err != nil {
+		return fmt.Errorf("updating PKGBUILD: %w", err)
+	}
 
-	if err := updater.run(); err != nil {
-		logger.Error("%v", err)
+	log.Action("Updating checksums...")
+	if err := app.packageBuilder.UpdateChecksums(ctx); err != nil {
+		return fmt.Errorf("updating checksums: %w", err)
+	}
+
+	log.Action("Updating .SRCINFO...")
+	if err := app.packageBuilder.UpdateSRCINFO(ctx); err != nil {
+		return fmt.Errorf("updating .SRCINFO: %w", err)
+	}
+
+	return nil
+}
+
+func (app *Application) Run() error {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// Handle interrupts gracefully
+	sigCh := make(chan os.Signal, 1)
+	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		<-sigCh
+		log.Info("Interrupt received, cancelling...")
+		cancel()
+	}()
+
+	// Validate environment
+	if err := app.validateEnvironment(); err != nil {
+		return err
+	}
+
+	// Get latest version
+	log.Action("Fetching latest version from GitHub...")
+	fetchCtx, fetchCancel := context.WithTimeout(ctx, app.config.HTTPTimeout)
+	defer fetchCancel()
+
+	version, err := app.releaseChecker.GetLatestVersion(fetchCtx)
+	if err != nil {
+		if ctx.Err() != nil {
+			return fmt.Errorf("operation cancelled")
+		}
+		return fmt.Errorf("getting latest version: %w", err)
+	}
+
+	log.Info("Latest version: %s", version)
+
+	// Update package files
+	updateCtx, updateCancel := context.WithTimeout(ctx, 60*time.Second)
+	defer updateCancel()
+
+	if err := app.updatePackageFiles(updateCtx, version); err != nil {
+		if ctx.Err() != nil {
+			return fmt.Errorf("operation cancelled")
+		}
+		return err
+	}
+
+	log.Success("Package files updated to version %s", version)
+
+	// Ask user about building
+	shouldBuild, err := app.userInteraction.ConfirmBuild(ctx)
+	if err != nil {
+		if ctx.Err() != nil {
+			return fmt.Errorf("operation cancelled")
+		}
+		return fmt.Errorf("getting user input: %w", err)
+	}
+
+	if !shouldBuild {
+		log.Info("Skipping package build")
+		return nil
+	}
+
+	// Build package
+	log.Action("Building package...")
+	buildCtx, buildCancel := context.WithTimeout(ctx, app.config.BuildTimeout)
+	defer buildCancel()
+
+	if err := app.packageBuilder.BuildPackage(buildCtx); err != nil {
+		if ctx.Err() != nil {
+			return fmt.Errorf("build cancelled")
+		}
+		return fmt.Errorf("building package: %w", err)
+	}
+
+	log.Success("Package built successfully!")
+	return nil
+}
+
+func main() {
+	config := &Config{
+		HTTPTimeout:  httpTimeout,
+		BuildTimeout: buildTimeout,
+	}
+
+	app := NewApplication(config)
+
+	if err := app.Run(); err != nil {
+		log.Error("%v", err)
 		os.Exit(1)
 	}
 }

@@ -5,102 +5,73 @@
 pkgname=xmcl-launcher
 pkgver=0.52.3
 pkgrel=1
-pkgdesc="X Minecraft Launcher - A modern Minecraft Launcher"
+pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
 arch=('x86_64' 'aarch64')
-provides=('xmcl')
 url="https://xmcl.app/"
 license=('MIT')
+provides=('xmcl')
 conflicts=('xmcl-launcher-bin')
 optdepends=(
   'jre8-openjdk: Minimum requirement for launching older game versions'
-  'jre11-openjdk: Recommended Java version for launching versions 1.12-1.17'
   'jre17-openjdk: Recommended Java version for launching version 1.17 and above'
   'jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above'
 )
-makedepends=('libarchive') # bsdtar is part of libarchive
-options=('!strip' '!debug') # Disable stripping and debug symbol generation
+makedepends=('curl' 'libarchive')
+options=('!strip' '!debug')
 
-# Define source based on architecture
-if [ "${CARCH}" = "x86_64" ]; then
-  source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-x64.pacman")
-  sha256sums=('SKIP')
-else
-  source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-${CARCH}.pacman")
-  sha256sums=('SKIP')
-fi
+source=("xmcl.desktop" "xmcl.png")
+source_x86_64=("xmcl-${pkgver}-x64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-x64.tar.xz")
+source_aarch64=("xmcl-${pkgver}-arm64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-arm64.tar.xz")
+
+sha256sums=('4375d3753d3035aa868a04810d96d896045078f364f0d096986ab66d4b68f0b4'
+            '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
+sha256sums_x86_64=('2a80cee571a5de0d1947bf4db4ea5dfa67a89d6d105a053059fe0d1f5cca3152')
+sha256sums_aarch64=('015cb1879a20c3deb38ddf158a4a03dc77aef36bd25ea9648ec78215e6c69858')
 
 prepare() {
-  # Verify the source file exists
-  if [ "${CARCH}" = "x86_64" ]; then
-    _source_file="xmcl-${pkgver}-x64.pacman"
-  else
-    _source_file="xmcl-${pkgver}-${CARCH}.pacman"
-  fi
-  if [[ ! -f "${srcdir}/${_source_file}" ]]; then
-    echo "Error: Source file ${_source_file} not found in ${srcdir}."
-    echo "Please verify the URL in the source array and ensure the file is downloadable."
-    exit 1
-  fi
-
-  # Create a temporary directory for extraction
-  mkdir -p "${srcdir}/temp"
-  cd "${srcdir}/temp"
-
-  # Extract the .pacman file
-  bsdtar -xf "${srcdir}/${_source_file}" || {
-    echo "Error: Failed to extract the .pacman file: ${srcdir}/${_source_file}"
-    exit 1
-  }
-
-  # Verify that required directories exist
-  if [[ ! -d "opt/xmcl" || ! -d "usr" ]]; then
-    echo "Error: Expected directories (opt/xmcl or usr) not found in the extracted .pacman file."
-    exit 1
-  fi
-
-  # Modify the .desktop file to include --enable-wayland-ime
-  if [[ -f "usr/share/applications/xmcl.desktop" ]]; then
-    sed -i 's|Exec=/opt/xmcl/xmcl %U|Exec=/opt/xmcl/xmcl --enable-wayland-ime %U|' \
-      "usr/share/applications/xmcl.desktop" || {
-      echo "Error: Failed to modify .desktop file."
-      exit 1
-    }
-  else
-    echo "Warning: xmcl.desktop not found in usr/share/applications."
+  # Extract the appropriate archive based on architecture
+  if [[ "$CARCH" == "x86_64" ]]; then
+    bsdtar -xf "xmcl-${pkgver}-x64.tar.xz"
+  elif [[ "$CARCH" == "aarch64" ]]; then
+    bsdtar -xf "xmcl-${pkgver}-arm64.tar.xz"
   fi
 }
 
 package() {
-  cd "${srcdir}/temp"
-
-  # Create required directories in pkgdir
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/opt"
-
-  # Copy files to pkgdir
-  cp -r opt/* "${pkgdir}/opt/" || {
-    echo "Error: Failed to copy opt directory."
-    exit 1
-  }
-  if [[ -d usr ]]; then
-    cp -r usr/* "${pkgdir}/usr/" || {
-      echo "Error: Failed to copy usr directory."
-      exit 1
-    }
+  # Determine the extracted directory name based on architecture
+  if [[ "$CARCH" == "x86_64" ]]; then
+    _extracted_dir="xmcl-${pkgver}-x64"
+  elif [[ "$CARCH" == "aarch64" ]]; then
+    _extracted_dir="xmcl-${pkgver}-arm64"
   fi
-
-  # Create symlink in /usr/bin
-  ln -sf "/opt/xmcl/xmcl" "${pkgdir}/usr/bin/xmcl"
-
-  # Set permissions for binaries
-  chmod 755 "${pkgdir}/opt/xmcl/xmcl"
-  if [[ -f "${pkgdir}/opt/xmcl/chrome-sandbox" ]]; then
-    chmod 4755 "${pkgdir}/opt/xmcl/chrome-sandbox"
+  
+  cd "${_extracted_dir}"
+  
+  # Install application files
+  install -dm755 "${pkgdir}/opt/xmcl"
+  
+  # Check different possible layouts and copy all files
+  if [[ -d "opt/xmcl" ]]; then
+    # opt/xmcl structure exists
+    cp -r opt/xmcl/* "${pkgdir}/opt/xmcl/"
+  elif [[ -f "xmcl" ]]; then
+    # Direct executable at root
+    cp -r ./* "${pkgdir}/opt/xmcl/"
   else
-    echo "Warning: chrome-sandbox not found, sandboxing may not work."
+    error "Cannot determine archive layout"
+    return 1
   fi
 
-  # Clean up
-  cd "${srcdir}"
-  rm -rf temp
+  install -Dm644 "${srcdir}/xmcl.desktop" "${pkgdir}/usr/share/applications/xmcl.desktop"
+  
+  install -Dm644 "${srcdir}/xmcl.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/xmcl.png"
+  
+  # Create executable symlink
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sf /opt/xmcl/xmcl "${pkgdir}/usr/bin/xmcl"
+  
+  # Set proper permissions
+  chmod 755 "${pkgdir}/opt/xmcl/xmcl"
+  [[ -f "${pkgdir}/opt/xmcl/chrome-sandbox" ]] && chmod 4755 "${pkgdir}/opt/xmcl/chrome-sandbox"
 }

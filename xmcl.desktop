@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=X Minecraft Launcher
+Comment=A modern, open-source Minecraft Launcher
+Exec=/opt/xmcl/xmcl --enable-wayland-ime %U
+Terminal=false
+Type=Application
+Icon=xmcl
+Categories=Game;
+StartupNotify=true
+MimeType=x-scheme-handler/xmcl;
