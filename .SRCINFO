@@ -9,6 +9,14 @@ pkgbase = rblx-silver-git
 	makedepends = nodejs
 	makedepends = git
 	depends = electron
+	depends = libappindicator-gtk3
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = libx11
+	depends = libxtst
+	depends = libxrandr
+	depends = alsa-lib
 	source = git+https://github.com/Wookhq/silverr.git#branch=main
 	source = silverr.desktop
 	sha256sums = SKIP
