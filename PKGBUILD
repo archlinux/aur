@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojolicious-plugin-openapi'
-pkgver='5.09'
+pkgver='5.11'
 pkgrel='1'
 pkgdesc="OpenAPI / Swagger plugin for Mojolicious"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-json-validator>=5.13' 'perl-mojolicious>=9.00' 'perl>=5.016')
 makedepends=()
 url='https://metacpan.org/release/Mojolicious-Plugin-OpenAPI'
-source=('http://search.cpan.org/CPAN/authors/id/J/JH/JHTHORSEN/Mojolicious-Plugin-OpenAPI-5.09.tar.gz')
-md5sums=('e454afbf88796c1d8b76eebf8a24ae63')
-sha512sums=('33eee4e23e6a6cac8d9ff6473f3aec9ed82e79ddfa3a66156d9f7423b40a33b823de2991dcd19c4f1f3c1f94588c5e74c5715e3b5234848fbeb7ba99d5468265')
-_distdir="Mojolicious-Plugin-OpenAPI-5.09"
+source=('http://search.cpan.org/CPAN/authors/id/J/JH/JHTHORSEN/Mojolicious-Plugin-OpenAPI-5.11.tar.gz')
+md5sums=('40259aeeb7c720441324169460e59a04')
+sha512sums=('20a0fcc2fb6a4e79fafd12d9f8a5bc3d43c6df402b0815f6da8192e03a656b9d228a71b5531c74d71e6202cb5169ffadbf6f005e015f289558bfba14b1d418f4')
+_distdir="Mojolicious-Plugin-OpenAPI-5.11"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
