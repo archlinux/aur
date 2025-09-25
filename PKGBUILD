@@ -1,16 +1,16 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.5-beta3"
+_godot_version="4.5-stable"
 
 pkgname=gozen-git
-pkgver=20250728
-pkgrel=3
+pkgver=20250926
+pkgrel=1
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
 license=('GPL3')
-conflicts=('gozen')
+conflicts=('gozen' 'gozen-bin')
 options=('!debug')
 makedepends=(
     'git'
@@ -99,9 +99,9 @@ build() {
 	fi
 
 	# Make a different desktop file for the -git build.
-	sed -i 's/^Name=GoZen$/Name=GoZen-git/' gozen.desktop
-	sed -i "s/^Exec=gozen$/Exec=${pkgname}/" gozen.desktop
-	sed -i "s/^Icon=gozen$/Icon=${pkgname}/" gozen.desktop
+	sed -i 's/^Name=GoZen$/Name=GoZen-git/' assets/linux/gozen.desktop
+	sed -i "s/^Exec=gozen$/Exec=${pkgname}/" assets/linux/gozen.desktop
+	sed -i "s/^Icon=gozen$/Icon=${pkgname}/" assets/linux/gozen.desktop
 }
 
 package() {
@@ -124,11 +124,11 @@ package() {
 	ln -s "/opt/${pkgname}/GoZen.x86_64" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "MANUAL.md" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
-	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen.desktop"
+	install -Dm644 "assets/linux/gozen.desktop" "${pkgdir}/usr/share/applications/gozen-git.desktop"
 	install -Dm644 "assets/linux/gozen.xml" "${pkgdir}/usr/share/mime/packages/gozen.xml"
 	install -Dm644 "assets/linux/gozen.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gozen.png"
 	install -Dm644 "assets/linux/gozen.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gozen.svg"
 }
 sha256sums=('SKIP'
-            'f27a58f8dd09f078d8aecc6f8e3eb1b97f9678e410e03f29df3a08800983e2bf'
-            '3967cc917d5ff21c34573341035b47d2a3db800b2acde6a17f570f081f7b835c')
+            'c7316e1fd782ad276a4d985a7673b5976eaaa8d90561a2bea5289210dc53e9ba'
+            '375d83b661794f91746d2dec9b569a99d4d24f85a70c4ec0068aafb18b551d53')
