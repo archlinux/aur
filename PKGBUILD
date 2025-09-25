@@ -10,14 +10,14 @@ license=('MIT')
 depends=('electron38-bin' 'libappindicator-gtk3' 'gtk3' 'libxss' 'nss' 'libx11' 'libxtst' 'libxrandr' 'alsa-lib')
 makedepends=('npm' 'nodejs' 'git')
 
-source=("git+https://github.com/Wookhq/silverr.git#branch=main"
+source=("$pkgname::git+https://github.com/Wookhq/silverr.git#branch=main"
         "silverr.desktop")
 
 sha256sums=('SKIP'
             'SKIP')
 
 build() {
-  cd "$srcdir/silverr"
+  cd "$srcdir/$pkgname"
 
   npm ci
   npm run build
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/silverr"
+  cd "$srcdir/$pkgname"
 
   npx electron-builder --linux --dir
 
@@ -34,5 +34,5 @@ package() {
 
   install -Dm755 "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/silverr.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/silverr/src/lib/assets/silverr.svg" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.svg"
+  install -Dm644 "$srcdir/$pkgname/src/lib/assets/silverr.svg" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.svg"
 }
