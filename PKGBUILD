@@ -1,6 +1,6 @@
 # Maintainer: Kharec <sandro@cazzaniga.fr>
 pkgname=shai
-pkgver=0.1.2
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Terminal coding agent and pair-programming buddy"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,13 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ovh/shai/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '2e8452b2b49fc9748ddb77d6a98e7c7f1830b899df9de892b2576a9b059a3b9e'
+  '668599be042591bd3d47bf0da692c5d0c88fdb58c3df03ed07235d2681e0de1c'
 )
 
 prepare() {
+  export CFLAGS+=" -fno-lto"
+  export CXXFLAGS+=" -fno-lto"
+
   export CARGO_HOME="$srcdir/cargo"
   export OPENSSL_NO_VENDOR=1
   mkdir -p "$CARGO_HOME"
@@ -35,6 +38,9 @@ prepare() {
 }
 
 build() {
+  export CFLAGS+=" -fno-lto"
+  export CXXFLAGS+=" -fno-lto"
+
   export CARGO_HOME="$srcdir/cargo"
   export OPENSSL_NO_VENDOR=1
   cd "$srcdir/$pkgname-$pkgver"
