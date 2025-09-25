@@ -1,6 +1,6 @@
 pkgbase=qt-heic-image-plugin
 pkgname=(qt5-heic-image-plugin qt6-heic-image-plugin)
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Qt plug-in to allow Qt and KDE based applications to read/write HEIF/HEIC images."
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=(libheif)
 makedepends=(cmake extra-cmake-modules qt5-base qt6-base)
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('04bccdad1d45a102629a45837ad894ee20b236d472987c252fef6e41fb078bfc')
+sha256sums=('43805c79cf10d8bdfff7586ac8dabdc5a606ece7592cd3a052df7212486a4d96')
 
 
 build() {
