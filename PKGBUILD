@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-bin
 _pkgname=NVM.Desktop
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions.(Prebuilt version)"
 arch=(
@@ -23,8 +23,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
-sha256sums_aarch64=('aecf410bbd334ebf0ff4a559e17ea2ffcffbadbb3179ceeb01f4f30202b20121')
-sha256sums_x86_64=('a2c74f5e7a36d57860a69a721f371636ed5503bc85ca409f01bd004b0075c919')
+sha256sums_aarch64=('bdb4aa3964135f8045a687b1e6c338e6ac0d5e30aa629464e55f59cffd2257da')
+sha256sums_x86_64=('18a6750ae9a5c40e9309514b3928fe08708ea0bbb8f40682b43c9d0279fa5647')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/usr/lib/${_pkgname//./ }/resources/nvmd" -t "${pkgdir}/usr/lib/${_pkgname//./ }/resources"
