@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 
 prepare() {
-  cd pipewire-soundpad
+  cd "${srcdir}/pipewire-soundpad-${pkgver}"
   
   export CARGO_HOME="${srcdir}/${pkgname%}/.cargo"    # Download all to src directory, not in ~/.cargo
 
@@ -21,7 +21,7 @@ prepare() {
 }
 
 build() {
-  cd pipewire-soundpad
+  cd "${srcdir}/pipewire-soundpad-${pkgver}"
 
   export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}=/"    # Prevent warning: 'Package contains reference to $srcdir'
   [[ -n "${_sccache}" ]] && export RUSTC_WRAPPER=sccache  # If $_sccache not empty, build using binary cache
@@ -34,14 +34,14 @@ build() {
 
 
 package() {
-  cd pipewire-soundpad
+  cd "${srcdir}/pipewire-soundpad-${pkgver}"
   
-  install -Dm755 "target/release/pwsp-cli" "${pkgdir}/usr/bin/"
-  install -Dm755 "target/release/pwsp-daemon" "${pkgdir}}/usr/bin/"
-  install -Dm755 "target/release/pwsp-gui" "${pkgdir}/usr/bin/pwsp"
+  install -Dm755 "target/release/pwsp-cli" "${pkgdir}/usr/bin/pwsp-cli"
+  install -Dm755 "target/release/pwsp-daemon" "${pkgdir}/usr/bin/pwsp-daemon"
+  install -Dm755 "target/release/pwsp-gui" "${pkgdir}/usr/bin/pwsp-gui"
 
-  install -Dm644 "assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/"
-  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+  install -Dm644 "assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
+  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/icon.png"
 
-  install -Dm644 "assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/"
+  install -Dm644 "assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
 }
