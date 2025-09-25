@@ -1,7 +1,7 @@
 pkgbase = vdeplug4-git
 	pkgdesc = VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud
-	pkgver = r74.926dc9a
-	pkgrel = 3
+	pkgver = v4.0.1.r12.a595069
+	pkgrel = 1
 	url = https://github.com/rd235/vdeplug4
 	install = vde2.install
 	arch = any
@@ -16,18 +16,13 @@ pkgbase = vdeplug4-git
 	depends = python
 	depends = wolfssl
 	provides = vdeplug4
-	provides = vde2
 	conflicts = vdeplug4
-	conflicts = vde2
-	replaces = vde2
 	options = !makeflags
 	source = git+https://github.com/rd235/vdeplug4.git
-	source = git+https://github.com/virtualsquare/vde-2.git
 	source = dhcpd.conf.sample
 	source = iptables.rules.sample
 	source = vde-config.sample
 	source = vde-connection.sample
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = da0e2766dc63069da929c28126831ad5fdddcc4a04105a21217d78832c7ca1bc
 	sha256sums = 99076d7466cd99673dbe91ef83865187e7868177959b38e125df63eea957f83e
@@ -35,4 +30,3 @@ pkgbase = vdeplug4-git
 	sha256sums = 5139110ed6d5d1174bf12971512dac5196d9d07df46dd393d7b1cd083118fe9b
 
 pkgname = vdeplug4-git
-
