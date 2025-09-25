@@ -1,15 +1,15 @@
 # Maintainer: Simon Paul <simonpaul@mailbox.org>
 
-pkgname=twad-git
+pkgname=twad-justinwayland-git
 _pkgname=twad
 pkgver=v0.30.0
 pkgrel=1
-pkgdesc='Manage DOOM engines and mods with the terminal wad launcher'
+pkgdesc='Manage DOOM engines and mods with the terminal wad launcher (JustinWayland fork)'
 arch=('any')
 url="https://github.com/zmnpl/twad"
 license=('MIT')
 makedepends=('go' 'git')
-source=("git+https://github.com/zmnpl/twad.git")
+source=("git+https://github.com/JustinWayland/twad.git")
 sha256sums=('SKIP')
 
 pgkver() {
