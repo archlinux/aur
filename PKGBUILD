@@ -2,7 +2,7 @@
 # Maintainer: Sylvain Chiron <chironsylvain@orange.fr>
 
 pkgname=gengraph
-pkgver=v6.2
+pkgver=v6.3
 pkgrel=1
 pkgdesc='Graph Generator coded in C: graph classes, graph algorithms and output formats'
 arch=('x86_64' 'pentium4' 'i686' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c5b01e3efaee6471dfd42edcff70112cdcb7fce70b35d998c285cbe5dd02d976')
+sha256sums=('729ba4ccc33b28d239d84f8611a15799b3975348c5d9bdbb6e21934cde0de401')
 
 build() {
   make -C "${pkgname}-${pkgver}" -j9
