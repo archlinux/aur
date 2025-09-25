@@ -81,7 +81,10 @@ package_gdk-pixbuf2-noglycin() {
     "libwmf: Load .apm and .wmf"
     "webp-pixbuf-loader: Load .webp"
   )
-  provides=(libgdk_pixbuf-2.0.so gdk-pixbuf2)
+  provides=(
+    libgdk_pixbuf-2.0.so
+    gdk-pixbuf2
+  )
   install=gdk-pixbuf2-noglycin.install
 
   meson install -C build --destdir "$pkgdir"
