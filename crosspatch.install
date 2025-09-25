@@ -1,0 +1,4 @@
+post_install() {
+CURRENT_USER=$(logname 2>/dev/null || echo "$SUDO_USER" || echo "$USER")
+chown -R $CURRENT_USER /opt/CrossPatch
+}
