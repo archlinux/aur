@@ -1,7 +1,7 @@
 pkgbase = gklib
 	pkgdesc = A library of various helper routines and frameworks used by many of the lab's software
 	pkgver = 5.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/KarypisLab/GKlib
 	arch = x86_64
 	license = Apache

@@ -2,7 +2,7 @@
 _base=GKlib
 pkgname=${_base,,}
 pkgver=5.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A library of various helper routines and frameworks used by many of the lab's software"
 arch=(x86_64)
 url="https://github.com/KarypisLab/${_base}"
@@ -25,6 +25,8 @@ prepare() {
   sed -i 's/CONFIG_FLAGS = -DCMAKE_VERBOSE_MAKEFILE=1/CONFIG_FLAGS = -DBUILD_SHARED_LIBS=TRUE -DCMAKE_GENERATOR="Unix Makefiles"/' Makefile
   # Increase CMake version
   sed -i 's/2.8/3.10/' CMakeLists.txt
+  # Avoid crash with illegal instruction
+  sed -i 's|march=native|march=nocona|' GKlibSystem.cmake
 }
 
 build() {
