@@ -1,0 +1,257 @@
+From c74eb59809599f66c24be2d0b00703569949763f Mon Sep 17 00:00:00 2001
+From: Mike Goeppner <hej@mgoeppner.se>
+Date: Mon, 22 Sep 2025 23:08:39 +0200
+Subject: [PATCH 1/4] Port extension to gnome 49
+
+window.get_maximized() was replaced by window.is_maximized() [1]
+
+[1]: https://gjs.guide/extensions/upgrading/gnome-shell-49.html#meta-window
+---
+ src/components/tilingsystem/tilingManager.ts | 10 +++++-----
+ src/extension.ts                             |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/components/tilingsystem/tilingManager.ts b/src/components/tilingsystem/tilingManager.ts
+index dc1f3f1..3f10c56 100644
+--- a/src/components/tilingsystem/tilingManager.ts
++++ b/src/components/tilingsystem/tilingManager.ts
+@@ -331,7 +331,7 @@ export class TilingManager {
+         clamp: boolean,
+     ): boolean {
+         let destination: { rect: Mtk.Rectangle; tile: Tile } | undefined;
+-        if (spanFlag && window.get_maximized()) return false;
++        if (spanFlag && window.is_maximized()) return false;
+ 
+         const currentWs = window.get_workspace();
+         const tilingLayout = this._workspaceTilingLayout.get(currentWs);
+@@ -339,7 +339,7 @@ export class TilingManager {
+         const windowRectCopy = window.get_frame_rect().copy();
+         const extWin = window as ExtendedWindow;
+ 
+-        if (window.get_maximized()) {
++        if (window.is_maximized()) {
+             switch (direction) {
+                 case KeyBindingsDirection.NODIRECTION:
+                 case KeyBindingsDirection.LEFT:
+@@ -834,7 +834,7 @@ export class TilingManager {
+         if (desiredWindowRect.width <= 0 || desiredWindowRect.height <= 0)
+             return;
+ 
+-        if (window.get_maximized()) return;
++        if (window.is_maximized()) return;
+ 
+         (window as ExtendedWindow).originalSize = window
+             .get_frame_rect()
+@@ -1196,8 +1196,8 @@ export class TilingManager {
+         // abort if there is an invalid selection
+         if (destinationRect.width <= 0 || destinationRect.height <= 0) return;
+ 
+-        const rememberOriginalSize = !window.get_maximized();
+-        if (window.get_maximized()) window.unmaximize(Meta.MaximizeFlags.BOTH);
++        const rememberOriginalSize = !window.is_maximized();
++        if (window.is_maximized()) window.unmaximize(Meta.MaximizeFlags.BOTH);
+ 
+         if (rememberOriginalSize && !(window as ExtendedWindow).assignedTile) {
+             (window as ExtendedWindow).originalSize = window
+diff --git a/src/extension.ts b/src/extension.ts
+index 1ca20e7..0a75293 100644
+--- a/src/extension.ts
++++ b/src/extension.ts
+@@ -357,7 +357,7 @@ export default class TilingShellExtension extends Extension {
+         if (
+             window.wmClass === null ||
+             change !== Meta.SizeChange.MAXIMIZE || // handle maximize changes only
+-            window.get_maximized() !== Meta.MaximizeFlags.BOTH || // handle maximized window only
++            window.is_maximized() !== Meta.MaximizeFlags.BOTH || // handle maximized window only
+             window.is_attached_dialog() || // skip dialogs
+             window.is_on_all_workspaces() ||
+             window.windowType !== Meta.WindowType.NORMAL || // handle normal windows only
+@@ -652,7 +652,7 @@ export default class TilingShellExtension extends Extension {
+             return;
+ 
+         // if the window is maximized, unmaximize it
+-        if (focus_window.get_maximized())
++        if (focus_window.is_maximized())
+             focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
+ 
+         const monitorTilingManager =
+
+From eec7360791779521965e6227e4252170b2fd1665 Mon Sep 17 00:00:00 2001
+From: Mike Goeppner <hej@mgoeppner.se>
+Date: Tue, 23 Sep 2025 00:06:45 +0200
+Subject: [PATCH 2/4] Add polyfill for GNOME <= 48
+
+---
+ src/components/tilingsystem/tilingManager.ts | 11 ++++++-----
+ src/extension.ts                             |  6 +++---
+ src/polyfill.ts                              | 14 +++++++++++++-
+ 3 files changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/src/components/tilingsystem/tilingManager.ts b/src/components/tilingsystem/tilingManager.ts
+index 3f10c56..ff2ce0a 100644
+--- a/src/components/tilingsystem/tilingManager.ts
++++ b/src/components/tilingsystem/tilingManager.ts
+@@ -28,6 +28,7 @@ import TouchPointer from './touchPointer';
+ import { KeyBindingsDirection } from '@keybindings';
+ import TilingShellWindowManager from '@components/windowManager/tilingShellWindowManager';
+ import TilingLayoutWithSuggestions from '../windowsSuggestions/tilingLayoutWithSuggestions';
++import { getIsMaximized } from '@polyfill'
+ 
+ const MINIMUM_DISTANCE_TO_RESTORE_ORIGINAL_SIZE = 90;
+ 
+@@ -331,7 +332,7 @@ export class TilingManager {
+         clamp: boolean,
+     ): boolean {
+         let destination: { rect: Mtk.Rectangle; tile: Tile } | undefined;
+-        if (spanFlag && window.is_maximized()) return false;
++        if (spanFlag && getIsMaximized(window)) return false;
+ 
+         const currentWs = window.get_workspace();
+         const tilingLayout = this._workspaceTilingLayout.get(currentWs);
+@@ -339,7 +340,7 @@ export class TilingManager {
+         const windowRectCopy = window.get_frame_rect().copy();
+         const extWin = window as ExtendedWindow;
+ 
+-        if (window.is_maximized()) {
++        if (getIsMaximized(window)) {
+             switch (direction) {
+                 case KeyBindingsDirection.NODIRECTION:
+                 case KeyBindingsDirection.LEFT:
+@@ -834,7 +835,7 @@ export class TilingManager {
+         if (desiredWindowRect.width <= 0 || desiredWindowRect.height <= 0)
+             return;
+ 
+-        if (window.is_maximized()) return;
++        if (getIsMaximized(window)) return;
+ 
+         (window as ExtendedWindow).originalSize = window
+             .get_frame_rect()
+@@ -1196,8 +1197,8 @@ export class TilingManager {
+         // abort if there is an invalid selection
+         if (destinationRect.width <= 0 || destinationRect.height <= 0) return;
+ 
+-        const rememberOriginalSize = !window.is_maximized();
+-        if (window.is_maximized()) window.unmaximize(Meta.MaximizeFlags.BOTH);
++        const rememberOriginalSize = !getIsMaximized(window);
++        if (getIsMaximized(window)) window.unmaximize(Meta.MaximizeFlags.BOTH);
+ 
+         if (rememberOriginalSize && !(window as ExtendedWindow).assignedTile) {
+             (window as ExtendedWindow).originalSize = window
+diff --git a/src/extension.ts b/src/extension.ts
+index 0a75293..6ac2071 100644
+--- a/src/extension.ts
++++ b/src/extension.ts
+@@ -27,7 +27,7 @@ import Tile from '@components/layout/Tile';
+ import { WindowBorderManager } from '@components/windowBorderManager';
+ import TilingShellWindowManager from '@components/windowManager/tilingShellWindowManager';
+ import ExtendedWindow from '@components/tilingsystem/extendedWindow';
+-import { Extension } from '@polyfill';
++import { Extension, getIsMaximized } from '@polyfill';
+ 
+ const debug = logger('extension');
+ 
+@@ -357,7 +357,7 @@ export default class TilingShellExtension extends Extension {
+         if (
+             window.wmClass === null ||
+             change !== Meta.SizeChange.MAXIMIZE || // handle maximize changes only
+-            window.is_maximized() !== Meta.MaximizeFlags.BOTH || // handle maximized window only
++            getIsMaximized(window) !== Meta.MaximizeFlags.BOTH || // handle maximized window only
+             window.is_attached_dialog() || // skip dialogs
+             window.is_on_all_workspaces() ||
+             window.windowType !== Meta.WindowType.NORMAL || // handle normal windows only
+@@ -652,7 +652,7 @@ export default class TilingShellExtension extends Extension {
+             return;
+ 
+         // if the window is maximized, unmaximize it
+-        if (focus_window.is_maximized())
++        if (getIsMaximized(focus_window))
+             focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
+ 
+         const monitorTilingManager =
+diff --git a/src/polyfill.ts b/src/polyfill.ts
+index 96dc42e..31930ce 100644
+--- a/src/polyfill.ts
++++ b/src/polyfill.ts
+@@ -1,3 +1,5 @@
++import { Meta } from '@gi.ext';
++
+ import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+ 
+ function openPrefs() {
+@@ -15,4 +17,14 @@ function openPrefs() {
+     }
+ }
+ 
+-export { Extension, openPrefs };
++function getIsMaximized(window: Meta.Window) {
++    if(window.get_maximized) {
++        // GNOME <=48
++        return window.get_maximized();
++    }
++
++    // GNOME 49+
++    return window.is_maximized();
++}
++
++export { Extension, openPrefs, getIsMaximized };
+
+From 6c56e46686f2b4af0bb70c25e07b95f347f037c7 Mon Sep 17 00:00:00 2001
+From: Mike Goeppner <hej@mgoeppner.se>
+Date: Tue, 23 Sep 2025 00:09:57 +0200
+Subject: [PATCH 3/4] Prettier fixes
+
+---
+ src/components/tilingsystem/tilingManager.ts | 2 +-
+ src/polyfill.ts                              | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/components/tilingsystem/tilingManager.ts b/src/components/tilingsystem/tilingManager.ts
+index ff2ce0a..f1809e7 100644
+--- a/src/components/tilingsystem/tilingManager.ts
++++ b/src/components/tilingsystem/tilingManager.ts
+@@ -28,7 +28,7 @@ import TouchPointer from './touchPointer';
+ import { KeyBindingsDirection } from '@keybindings';
+ import TilingShellWindowManager from '@components/windowManager/tilingShellWindowManager';
+ import TilingLayoutWithSuggestions from '../windowsSuggestions/tilingLayoutWithSuggestions';
+-import { getIsMaximized } from '@polyfill'
++import { getIsMaximized } from '@polyfill';
+ 
+ const MINIMUM_DISTANCE_TO_RESTORE_ORIGINAL_SIZE = 90;
+ 
+diff --git a/src/polyfill.ts b/src/polyfill.ts
+index 31930ce..f573816 100644
+--- a/src/polyfill.ts
++++ b/src/polyfill.ts
+@@ -18,7 +18,7 @@ function openPrefs() {
+ }
+ 
+ function getIsMaximized(window: Meta.Window) {
+-    if(window.get_maximized) {
++    if (window.get_maximized) {
+         // GNOME <=48
+         return window.get_maximized();
+     }
+
+From db8d31aae801d39fae6cc614bb8ef3cc2e075455 Mon Sep 17 00:00:00 2001
+From: Mike Goeppner <hej@mgoeppner.se>
+Date: Tue, 23 Sep 2025 00:11:00 +0200
+Subject: [PATCH 4/4] Add GNOME 49 to metadata.json
+
+---
+ resources/metadata.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/resources/metadata.json b/resources/metadata.json
+index b60a32f..cd36b86 100644
+--- a/resources/metadata.json
++++ b/resources/metadata.json
+@@ -9,7 +9,8 @@
+     "45",
+     "46",
+     "47",
+-    "48"
++    "48",
++    "49"
+   ],
+   "version": 99,
+   "version-name": "16.4",

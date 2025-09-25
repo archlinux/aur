@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tilingshell
 pkgver=16.4
-pkgrel=1
+pkgrel=2
 _nodeversion=22
 pkgdesc="Extend GNOME Shell with advanced tiling window management."
 arch=('any')
@@ -13,8 +13,10 @@ makedepends=(
   'nvm'
   'zip'
 )
-source=("tilingshell-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('93f0649b4a274cd6553d483dd09d16ab9753ff3d67d3c44d085ba8ebc7af24ae')
+source=("tilingshell-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        "gnome49.patch")
+sha256sums=('93f0649b4a274cd6553d483dd09d16ab9753ff3d67d3c44d085ba8ebc7af24ae'
+            '94fc916657165b9cf9ec952353d732f86f377ed1a6aee1b2371e18abb154e919')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -33,6 +35,11 @@ prepare() {
   _ensure_local_nvm
   nvm install "${_nodeversion}"
   npm install
+
+  # GNOME 49
+  # https://github.com/domferr/tilingshell/issues/402
+  # https://github.com/domferr/tilingshell/pull/404
+  patch -Np1 -i ../gnome49.patch
 }
 
 build() {
