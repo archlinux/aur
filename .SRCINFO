@@ -1,6 +1,6 @@
 pkgbase = treedome-bin
 	pkgdesc = A local-first, encrypted, note taking application with tree-like structures, all written and saved in markdown
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://codeberg.org/solver-orgz/treedome/
 	install = treedome-bin.install
@@ -17,7 +17,7 @@ pkgbase = treedome-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source = https://codeberg.org/solver-orgz/treedome/releases/download/0.5.4/treedome_0.5.4_amd64.deb
-	sha512sums = 3dbb9b4fe0e7c5386eda70c68029034e3c063a0121ce21be5d116e122166f09599af2b54aa4d3777cece5a9d376f18e7073c5149d4fe9a7cf61c013805d5c381
+	source = https://codeberg.org/solver-orgz/treedome/releases/download/0.6.0/treedome_amd64.deb
+	sha512sums = dacedf6f0d023b14ec9706dbf3170ed40792b772afc5da416b8fb5299b9dea41537d59487c6f6c9f34686a6d1bf3ca1b51609006f774387ad14fca00ee7763ba
 
 pkgname = treedome-bin

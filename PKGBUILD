@@ -3,7 +3,7 @@
 # Contributor:
 
 pkgname=treedome-bin
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A local-first, encrypted, note taking application with tree-like structures, all written and saved in markdown"
 arch=('x86_64')
@@ -12,8 +12,9 @@ license=('AGPL-3.0-only')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://codeberg.org/solver-orgz/treedome/releases/download/"${pkgver}"/treedome_"${pkgver}"_amd64.deb")
-sha512sums=('3dbb9b4fe0e7c5386eda70c68029034e3c063a0121ce21be5d116e122166f09599af2b54aa4d3777cece5a9d376f18e7073c5149d4fe9a7cf61c013805d5c381')
+#source=("https://codeberg.org/solver-orgz/treedome/releases/download/"${pkgver}"/treedome_"${pkgver}"_amd64.deb")
+source=("https://codeberg.org/solver-orgz/treedome/releases/download/"${pkgver}"/treedome_amd64.deb")
+sha512sums=('dacedf6f0d023b14ec9706dbf3170ed40792b772afc5da416b8fb5299b9dea41537d59487c6f6c9f34686a6d1bf3ca1b51609006f774387ad14fca00ee7763ba')
 
 package(){
 
