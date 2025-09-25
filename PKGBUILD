@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname=winboat
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
-sha256sums=('5958dbd2e416b55c0b887b26f9a17309fdad59914d2422b4b876393f3a600361')
+sha256sums=('ac63fd36f48eb788f45bc19d6c710fe0e7ce01ec0fa576203f829ca846bbc3c4')
 
 prepare(){
   cd "$pkgname"
