@@ -1,19 +1,20 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 epoch=
 pkgdesc="smooll's Color Picker"
 arch=("x86_64")
 url="https://www.github.com/smooll-d/scolorpicker"
 license=("0BSD")
 groups=()
-depends=("sdl3" "sdl3_image")
+depends=("sdl3")
 makedepends=("cmake")
 checkdepends=()
 optdepends=("libx11: X11 support"
             "xsel: copying to clipboard on X11"
             "wayland: Wayland support"
+            "sdl3_image: displaying screenshots on Wayland"
             "wayland-protocols: Wayland support"
             "sdbus-cpp: taking screenshots on Wayland"
             "wl-clipboard: copying to clipboard on Wayland"
@@ -47,7 +48,7 @@ build() {
         -DSCP_BUILD_DOCUMENTATION=ON \
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build
+    cmake --build build -j$(nproc)
     cmake --build build --target dist
 }
 
