@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=falcond
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='Advanced Linux gaming performance daemon'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('zig>=0.14')
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('034d2c89210a2403bb24c4de7f17557a049ce75f4c243effbd55ef66f0fe67f1')
+sha256sums=('f5c0ee648ef4257089d39989c3b7fa5dc499c86e8840491c39e708eb322a1a52')
 
 build() {
   cd "$pkgname-$pkgver"
