@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r2169.gd1ecd382a
+pkgver=1.4.0.development.snapshot.006.r2268.g5e86794bc
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -15,9 +15,9 @@ arch=('x86_64')
 url='https://www.mumble.info'
 license=('BSD')
 depends=('gcc-libs' 'glibc' 'qt6-base')
-makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'hicolor-icon-theme'
+makedepends=('alsa-lib' 'avahi' 'boost' 'cli11' 'cmake' 'git' 'hicolor-icon-theme'
              'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
-             'libx11' 'libxi' 'mesa' 'microsoft-gsl' 'nlohmann-json' 'openssl'
+             'libx11' 'libxi' 'mesa' 'nlohmann-json' 'openssl'
              'opus' 'poco' 'protobuf' 'python' 'qt6-svg' 'qt6-tools' 'rnnoise'
              'spdlog' 'speech-dispatcher' 'speexdsp' 'xdg-utils')
 provides=("$_pkgname")
@@ -27,10 +27,10 @@ source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/mumble-voip/mach_override.git'
         'git+https://github.com/mumble-voip/SPSCQueue.git'
         'git+https://github.com/mumble-voip/utfcpp.git'
+        'git+https://github.com/CLIUtils/CLI11.git'
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/Krzmbrzl/cmake-compiler-flags.git'
         'git+https://github.com/lipis/flag-icons.git'
-        'git+https://github.com/microsoft/GSL.git'
         'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/SOCI/soci.git'
         'git+https://github.com/wolfpld/tracy.git'
@@ -53,13 +53,13 @@ prepare() {
   git config submodule.3rdparty/rnnoise-src.url "$srcdir/rnnoise"
   git config submodule.3rdparty/tracy.url "$srcdir/tracy"
   git config submodule.3rdparty/nlohmann_json.url "$srcdir/json"
-  git config submodule.3rdparty/gsl.url "$srcdir/GSL"
   git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
   git config submodule.3rdparty/cmake-compiler-flags.url "$srcdir/cmake-compiler-flags"
   git config submodule.3rdparty/flag-icons.url "$srcdir/flag-icons"
   git config submodule.3rdparty/utfcpp.url "$srcdir/utfcpp"
   git config submodule.3rdparty/soci.url "$srcdir/soci"
   git config submodule.3rdparty/spdlog.url "$srcdir/spdlog"
+  git config submodule.3rdparty/CLI11.url "$srcdir/CLI11"
 
   git -c protocol.file.allow=always submodule update
 }
@@ -73,7 +73,7 @@ build() {
     -Dwarnings-as-errors='OFF' \
     -Dclient='ON' \
     -Dserver='OFF' \
-    -Dbundled-gsl='OFF' \
+    -Dbundled-cli11='OFF' \
     -Dbundled-json='OFF' \
     -Dbundled-rnnoise='OFF' \
     -Dbundled-spdlog='OFF' \
