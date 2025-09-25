@@ -12,11 +12,11 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.1.2.r183.g1e28153
-pkgrel=1
-pkgdesc="Free and open source software for video recording and live streaming"
+pkgver=32.0.0.r1.g9c79ff7
+pkgrel=2
+pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
-license=("GPL-2.0-only")
+license=("GPL-2.0-or-later")
 arch=("i686" "x86_64")
 
 depends=(
@@ -58,7 +58,6 @@ makedepends=(
   'x264'
   'xdg-desktop-portal'
 )
-
 optdepends=(
   'libfdk-aac: FDK AAC codec support'
   'libva-intel-driver: hardware encoding'
@@ -102,24 +101,6 @@ _source_cef() {
     'nss'
   )
 
-  makedepends+=(
-    'alsa-lib'
-    'dbus'
-    'expat'
-    'glib2'
-    'glibc'
-    'libcups'
-    'libdrm'
-    'libx11'
-    'libxcb'
-    'libxcomposite'
-    'libxext'
-    'libxfixes'
-    'libxkbcommon'
-    'mesa'
-    'wayland'
-  )
-
   _cef_src="cef_binary_${_cef_branch}_linux_${CARCH}"
   _cef_ext="tar.xz"
   _cef_filename="$_cef_src$_cef_ver.$_cef_ext"
@@ -149,21 +130,11 @@ prepare() {
   git -c $gitconf submodule update
 }
 
-_build_cef() (
-  local _cmake_options=(
-    -S "$_cef_src"
-    -B "$_cef_src"
-    -G Ninja
-    -DCMAKE_BUILD_TYPE=Release
-    -DPROJECT_ARCH=$CARCH
-    -Wno-dev
-  )
+build() (
+  export CFLAGS CXXFLAGS
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
-  cmake "${_cmake_options[@]}"
-  cmake --build "$_cef_src"
-)
-
-_build_obs_studio() (
   local _cmake_options=(
     -B build
     -S "$pkgname"
@@ -171,7 +142,6 @@ _build_obs_studio() (
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
-    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCEF_ROOT_DIR="$srcdir/$_cef_src"
     -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}"
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON
@@ -191,15 +161,6 @@ _build_obs_studio() (
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-)
-
-build() (
-  export CFLAGS CXXFLAGS
-  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
-  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
-
-  _build_cef
-  _build_obs_studio
 )
 
 package() {

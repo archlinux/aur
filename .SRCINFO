@@ -1,11 +1,11 @@
 pkgbase = obs-studio-git
-	pkgdesc = Free and open source software for video recording and live streaming
-	pkgver = 31.1.2.r183.g1e28153
-	pkgrel = 1
+	pkgdesc = Free, open source software for live streaming and recording
+	pkgver = 32.0.0.r1.g9c79ff7
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	makedepends = asio
 	makedepends = cmake
 	makedepends = extra-cmake-modules
@@ -26,21 +26,6 @@ pkgbase = obs-studio-git
 	makedepends = websocketpp
 	makedepends = x264
 	makedepends = xdg-desktop-portal
-	makedepends = alsa-lib
-	makedepends = dbus
-	makedepends = expat
-	makedepends = glib2
-	makedepends = glibc
-	makedepends = libcups
-	makedepends = libdrm
-	makedepends = libx11
-	makedepends = libxcb
-	makedepends = libxcomposite
-	makedepends = libxext
-	makedepends = libxfixes
-	makedepends = libxkbcommon
-	makedepends = mesa
-	makedepends = wayland
 	depends = curl
 	depends = ffmpeg
 	depends = jack
@@ -69,7 +54,7 @@ pkgbase = obs-studio-git
 	optdepends = sndio: sndio input client
 	optdepends = v4l2loopback-dkms: virtual camera support
 	optdepends = vlc: VLC Media Source
-	provides = obs-studio=31.1.2.r183.g1e28153
+	provides = obs-studio=32.0.0.r1.g9c79ff7
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/obsproject/obs-browser.git
