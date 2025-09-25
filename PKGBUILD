@@ -1,6 +1,6 @@
 # Maintainer: Simon Templer <st at wetransform dot to>
 pkgname=hale-studio-bin
-pkgver=5.4.0
+pkgver=5.4.0 # renovate: datasource=github-tags depName=halestudio/hale
 pkgrel=2
 pkgdesc="An easy-to-use desktop application (spatial) data harmonisation. (binary package)"
 arch=('x86_64')
