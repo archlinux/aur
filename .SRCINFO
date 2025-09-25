@@ -1,0 +1,8 @@
+pkgbase = lext-add-repo
+	pkgdesc = Adds a personal (private) lext-next [repo] section to Pacman configuration
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = custom:none
+
+pkgname = lext-add-repo
