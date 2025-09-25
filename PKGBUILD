@@ -7,7 +7,7 @@ pkgdesc="A bootstrapper for Sober"
 arch=('x86_64')
 url="https://github.com/Wookhq/silverr"
 license=('MIT')
-depends=('electron' 'libappindicator-gtk3' 'gtk3' 'libxss' 'nss' 'libx11' 'libxtst' 'libxrandr' 'alsa-lib')
+depends=('electron38-bin' 'libappindicator-gtk3' 'gtk3' 'libxss' 'nss' 'libx11' 'libxtst' 'libxrandr' 'alsa-lib')
 makedepends=('npm' 'nodejs' 'git')
 
 source=("git+https://github.com/Wookhq/silverr.git#branch=main"
