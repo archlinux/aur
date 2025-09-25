@@ -1,6 +1,6 @@
 pkgbase = wuming
 	pkgdesc = A simple ClamAV GUI frontend
-	pkgver = 0.2.beta2
+	pkgver = 0.2.beta3
 	pkgrel = 1
 	url = https://github.com/EricLin0509/WuMing
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = wuming
 	depends = gtk4
 	depends = libadwaita
 	provides = wuming
-	source = wuming-0.2.beta2.tar.gz::https://github.com/EricLin0509/WuMing/archive/refs/tags/v0.2.beta2.tar.gz
-	b2sums = 9e2b6c064638f0626526d006a37705d1372710ebc09cfdbcbc6d58842104f097795a83924e8057136e8be2ca45bcb6c479bd6da2c6e28e77e83a66a775b793e2
+	source = wuming-0.2.beta3.tar.gz::https://github.com/EricLin0509/WuMing/archive/refs/tags/v0.2.beta3.tar.gz
+	b2sums = 689284e2674bcee7cc3c72e5fac1d60568399ec9afd8e030a9f9092ddbe55675646ca8b6a1fe1fcd0da962751ab1bb9410de4757b95e7034babf31c353be7696
 
 pkgname = wuming
