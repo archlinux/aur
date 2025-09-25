@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
 pkgname=savilerow-bin
 _pkgname=savilerow
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A modelling assistant for Constraint Programming"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(java-runtime bash)
 provides=(savilerow)
 source=("$pkgname-$pkgver.tar.gz::$url/$_pkgname-$pkgver-linux.tgz"
 	"savilerow.sh")
-sha256sums=('9cf16ed296824a9f222743fa30b056b00938c58e51c6db449d6d7444f41fdcc5'
+sha256sums=('ab97216dd89103513026b46e6d8c63f00e8e8c83750aba60a6c4b75f8d1c8227'
             'fac0443361d1aac54d72f7773707854fe598da654077ff36096cb6d8fc951cb1')
 
 build() {
