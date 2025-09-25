@@ -1,0 +1,12 @@
+pkgbase = esp-web-flash-server
+	pkgdesc = Starts a local server serving a web page to flash a given ELF file
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/esp-rs/esp-web-flash-server
+	arch = x86_64
+	makedepends = cargo
+	depends = gcc-libs
+	source = esp-web-flash-server-0.2.1.tar.gz::https://github.com/esp-rs/esp-web-flash-server/archive/v0.2.1.tar.gz
+	sha256sums = a7a2fa0c451ae97a7823e2753d366ee1fd640857474ee156bf84faa3fc59e763
+
+pkgname = esp-web-flash-server
