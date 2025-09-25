@@ -1,6 +1,6 @@
 # Maintainer: Inaha rin@notalium.co
 
-pkgname=pjsk-cursors-theme
+pkgname=pjsk-cursor-theme
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Project Sekai mouse cursors as X icon themes"
