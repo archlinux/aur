@@ -3,7 +3,7 @@
 pkgname=gnome-pomodoro-extension
 pkgver=0.28.0
 pkgrel=1
-pkgdesc='A time management utility for GNOME based on the pomodoro technique'
+pkgdesc='GNOME Shell extension that manages focus and break cycles with the Pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/gnome-pomodoro/gnome-pomodoro'
 license=('GPL3')
@@ -26,4 +26,3 @@ package() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
   meson install -C build --destdir "$pkgdir"
 }
-
