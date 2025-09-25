@@ -1,6 +1,6 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
-pkgbase=luwen
+pkgbase=python-luwen-git
 pkgname=(python-luwen-git luwencpp-git)
 pkgver=0.7.13.r10.gfc6ba05
 pkgrel=1
