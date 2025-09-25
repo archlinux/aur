@@ -1,6 +1,6 @@
 pkgbase = llama.cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b6569
+	pkgver = b6574
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = llama.cpp
 	optdepends = python-transformers: needed for convert_hf_to_gguf.py
 	conflicts = libggml
 	conflicts = ggml
-	source = llama.cpp-b6569.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b6569.tar.gz
+	source = llama.cpp-b6574.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b6574.tar.gz
 	source = llama.cpp.conf
 	source = llama.cpp.service
-	sha256sums = 18e9b8011cb020b254845a08bae974c604d03f8114e243f22b0364943182a93a
+	sha256sums = 8872bc6e2dd99ee7aba0db9282226870cb03964e7ad308d30cc013fb6f0547ce
 	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
 
