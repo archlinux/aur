@@ -1,6 +1,6 @@
 pkgbase = wfreq
 	pkgdesc = A package for text anlyzing
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Vitalij-Burk/wfreq
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = wfreq
 	depends = python
 	depends = python-rich
 	depends = python-beautifulsoup4
-	source = wfreq-0.1.6::git+https://github.com/Vitalij-Burk/wfreq.git#tag=v0.1.6
+	source = wfreq-0.1.7::git+https://github.com/Vitalij-Burk/wfreq.git#tag=v0.1.7
 	sha256sums = SKIP
 
 pkgname = wfreq

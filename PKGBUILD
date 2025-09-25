@@ -1,5 +1,5 @@
 pkgname=wfreq
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A package for text anlyzing"
 arch=('any')
