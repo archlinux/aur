@@ -1,0 +1,14 @@
+pkgbase = chaptereditor
+	pkgdesc = An extended chapter editor for Matroska (and other formats)
+	pkgver = 1.45
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=169984
+	arch = x86_64
+	makedepends = 7zip
+	noextract = chaptereditor-v1.45.7z
+	source = chaptereditor-v1.45.7z::https://forum.videohelp.com/attachments/82994-1729438370/cE-L(1.45).7z
+	source = chaptereditor.desktop
+	sha256sums = 48376561163ae096190d2ae7cb52ea00f77a71aab0f7525c16e65326c3c82478
+	sha256sums = 39478e0d50a6dcf815e74e3649cd44a5b8dcbc51c4e1f3860298054f41dc1c82
+
+pkgname = chaptereditor

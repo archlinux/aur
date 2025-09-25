@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=chapterEditor
+Comment=An extended chapter editor for Matroska (and other formats)
+Exec=chapterEditor
+Icon=chaptereditor
+Encoding=UTF-8
+StartupWMClass=ChapterEditor
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=AudioVideo
+Keywords=mkv;matroska;ogg;cuesheet;timecodes;dvd;blu-ray;
