@@ -4,17 +4,22 @@
 
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
-pkgname=(${_pkgname}-client-git ${_pkgname}-host-git ${_pkgname}-client-flatpak-git)
+pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
 pkgver=r483.6c32800
-pkgrel=1
+pkgrel=2
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL-3.0-only')
 depends=()
-makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync' 'cmake' 'boost' 'flatpak')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'cmake')
 arch=('x86_64')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+if ((_enable_flatpak)); then
+	pkgname+=(${_pkgname}-client-flatpak-git)
+	makedepends+=('boost' 'flatpak')
+fi
 
 _srcdir="${_pkgname}"
 
@@ -65,6 +70,8 @@ package_pat-aur-host-git() {
 		'sshfs: remote connection.'
 		'socat: remote connection.'
 		'systemd: cgroups support.'
+		'rsync: rsync download agent.'
+		'openssh: scp download agent.'
 	)
 	provides=(${_pkgname}-host)
 	conflicts=(${_pkgname}-host)

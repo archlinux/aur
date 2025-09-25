@@ -1,14 +1,13 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
 	pkgver = r483.6c32800
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = libxslt
 	makedepends = docbook-xsl
-	makedepends = rsync
 	makedepends = cmake
 	makedepends = boost
 	makedepends = flatpak
@@ -44,6 +43,8 @@ pkgname = pat-aur-host-git
 	optdepends = sshfs: remote connection.
 	optdepends = socat: remote connection.
 	optdepends = systemd: cgroups support.
+	optdepends = rsync: rsync download agent.
+	optdepends = openssh: scp download agent.
 	provides = pat-aur-host
 	conflicts = pat-aur-host
 
