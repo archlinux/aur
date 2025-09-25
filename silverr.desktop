@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Silverr
+Comment=A bootstrapper for Sober
+Exec=/opt/silverr/silverr
+Icon=silverr
+Terminal=false
+Categories=Utility;
