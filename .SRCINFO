@@ -1,7 +1,7 @@
 pkgbase = etherlab-ethercat-dkms
-	pkgdesc = Tools for IgH EtherCAT(R) Master component
+	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
 	pkgver = 1.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etherlab.org
 	arch = any
 	license = GPL-2.0-only
