@@ -1,4 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
+# Maintainer: ArjixWasTaken <me@arjix.dev>
+
 pkgname=winboat
 pkgver=0.8.5
 pkgrel=1
