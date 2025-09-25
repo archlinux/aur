@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.92'
+pkgver='1.2.93'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -74,7 +74,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '3aae009fd54a248125099377d1b350fbd0bb0bf3853a858823f0b151bcd48a10'
+    '182d864d5b56ddcc3a3c89d9a98c9285343c9efc7ba81f8ee6f819d845cca70a'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
@@ -93,9 +93,8 @@ package() {
     for config in bands.json bands-*.json bookmarks.json openwebrx.conf; do
         install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
-    for config in bookmarks.d/*; do
-        install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
-    done
+
+    cp -rv bookmarks.d "${pkgdir}"/etc/openwebrx/
 
     install -Dm 0644 ${srcdir}/$pkgname.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
     install -Dm 0644 ${srcdir}/$pkgname.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
