@@ -1,0 +1,12 @@
+diff --git a/build.xml b/build.xml
+index d8a00c3..aadfeac 100644
+--- a/build.xml
++++ b/build.xml
+@@ -53,6 +53,7 @@
+         <!-- Put everything in ${bin} into the jar file -->
+         <jar jarfile="${dist}/jemula802.jar" basedir="${bin}" compress="true">
+             <fileset dir="${src}" includes="**/*.java"/>
++            <zipfileset src="${jemula}/dist/jemula.jar"/>
+             <manifest>
+                 <attribute name="Main-Class" value="${main-class}"/>
+             </manifest>
