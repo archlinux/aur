@@ -3,7 +3,7 @@
 _pkgname=appium-inspector
 
 pkgname="${_pkgname}"-appimage
-pkgver="2024.12.1"
+pkgver="2025.8.2"
 pkgrel=1
 pkgdesc="A GUI inspector for mobile apps and more, powered by a (separately installed) Appium server."
 arch=('x86_64')
@@ -18,13 +18,13 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 #install=$pkgname.install
 
 source_x86_64=(
-    "${_appimage}::https://github.com/appium/appium-inspector/releases/download/v2024.12.1/Appium-Inspector-2024.12.1-linux-x86_64.AppImage"
+    "${_appimage}::https://github.com/appium/appium-inspector/releases/download/v${pkgver}/Appium-Inspector-${pkgver}-linux-x86_64.AppImage"
     "https://raw.githubusercontent.com/appium/appium-inspector/v${pkgver}/LICENSE"
 )
 
 noextract=("${_appimage}")
-sha256sums_x86_64=('b1fe6261495a2e9cfa7dad25b4ba7ab9e756a71cf0310bc7d10b97b5d1f561e8'
-                   'afc4a40f552d48dd41e24d6e247a15a0712b69fc740811cb36a99e9bd98dff61')
+sha256sums_x86_64=('240c0888907ce05104635f326f19d659130914b0abb8dff4a0d764dabcdf9b59'
+                   '5cb791a45cafc4bdaef57f3ba49fb7691a98c756e8148467f9e241295728490f')
 
 prepare() {
     chmod +x "${_appimage}"
