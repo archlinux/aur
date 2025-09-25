@@ -86,7 +86,7 @@ depends=(
     'lv2'
     'ocl-icd'
     'openal'
-    'openapv-git'
+    'openapv'
     'opencore-amr'
     'opencv2'
     'openh264'
@@ -166,7 +166,6 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         '030-ffmpeg-add-svt-vp9.patch'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '070-ffmpeg-lcevcdec4.0.0-fix.patch'
         'LICENSE')
 sha256sums=('SKIP'
@@ -174,7 +173,6 @@ sha256sums=('SKIP'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             'd86e614260c07682edd6862f64f08bc6373f6a91c2b02b81ba9c7380f4ad91e6'
             '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
-            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
             '60557f9842ad53a7e20e17f77dcea06cf53337a2bbb8679fd07e50086d582995'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -184,7 +182,6 @@ prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-segfault-with-avisynthplus.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/070-ffmpeg-lcevcdec4.0.0-fix.patch"
 }
 
