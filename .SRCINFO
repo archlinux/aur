@@ -1,0 +1,14 @@
+pkgbase = python-merge-kicad-sym
+	pkgdesc = A script to merge KiCad symbol libraries
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/McMaster-Rocketry-Team/merge-kicad-sym
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/1e/27/f7e7c4e3254a01e2b48f40429689d3ceb11053f6653997a1d00a5c961816/merge_kicad_sym-0.1.1.tar.gz
+	sha256sums = e690250e5c677c65e8d70d1b6cd0ac211a0c9a76685ed2e7b17e9506ea36c4c7
+
+pkgname = python-merge-kicad-sym
