@@ -1,0 +1,11 @@
+pkgbase = kubeletctl-bin
+	pkgdesc = A client for kubelet
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://github.com/cyberark/kubeletctl
+	arch = x86_64
+	license = apache2
+	source = https://github.com/cyberark/kubeletctl/releases/download/v1.13/kubeletctl_linux_amd64
+	sha512sums = f1d72fc0045f1ff0b900cc924988a597d0a57f319eccc710a2a62e95f2c600cf0254f64812e0453e715694ae90fb9eb55ddc7573564f9c92ada60f01280bfcba
+
+pkgname = kubeletctl-bin
