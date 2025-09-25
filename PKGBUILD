@@ -4,8 +4,8 @@
 # Contributor: Maciek Marciniak <mm2pl at kotmisia.pl>
 
 pkgname=obs-studio-with-websockets
-pkgver=31.1.2
-pkgrel=2
+pkgver=32.0.0
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -14,7 +14,7 @@ depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise'
          'qt6-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite'
          'libdatachannel' 'uthash' 'ffnvcodec-headers')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'nlohmann-json'
-             'websocketpp' 'asio' 'qrcodegencpp-cmake' 'extra-cmake-modules')
+             'websocketpp' 'asio' 'qrcodegencpp-cmake' 'extra-cmake-modules' 'simde')
 optdepends=('libfdk-aac: FDK AAC codec support'
             'libva-intel-driver: hardware encoding'
             'libva-mesa-driver: hardware encoding'
@@ -24,11 +24,10 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'v4l2loopback-dkms: virtual camera support')
 options=("!debug")
 source=($pkgname-$pkgver.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/$pkgver/obs-studio-$pkgver.tar.gz)
-sha256sums=('9014c849bfb77b44021e09ea84e698c4c272be15fd2ac156b447797ce72c59fa')
+sha256sums=('767377d2983c54c18d6ecf4aae9480af96eae543d4028cb26ffa5f918dafbea2')
 provides=('obs-studio')
 
 build() {
-  export CXXFLAGS+=" -Wno-error=deprecated-declarations"
   cmake -B build -S obs-studio-$pkgver \
     -DENABLE_NATIVE_NVENC=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
