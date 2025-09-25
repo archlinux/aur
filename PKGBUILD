@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.9.12.r67.e663fcd
+pkgver=1.9.12.r72.075aed9
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -56,10 +56,12 @@ optdepends=(
 install=${pkgname}.install
 source=(
   "${pkgname}::git+${url}.git"
+  "quicktype::git+https://github.com/glideapps/quicktype.git"
   "${pkgname}.install"
 )
 sha256sums=('SKIP'
-  '6c667df761d724921d5dc0e15f67567ec14b5681a5d5e22298f943ea15b6c5be')
+  'SKIP'
+  '4520bd1f10204220dea4141c970436deef01e9556727772ab76e408b7de69e54')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -77,6 +79,10 @@ pkgver() {
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
+  cd ${srcdir}/${pkgname}
+  git submodule init
+  git config submodule.tools/quicktype.url "$srcdir/quicktype"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -84,6 +90,7 @@ build() {
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCPM_LOCAL_PACKAGES_ONLY=ON \
     -DLINGLONG_VERSION="$pkgver" \
     -Wno-dev \
