@@ -2,7 +2,7 @@
 
 pkgname=ggc-git
 pkgver=r460.1289bf9
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 arch=('x86_64' 'arm64')
 url="https://github.com/bmf-san/ggc"
