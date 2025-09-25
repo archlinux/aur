@@ -1,4 +1,4 @@
-# Maintainer: Simon Paul <simonpaul@mailbox.org>
+# Maintainer: menguele <menguele@disroot.org>
 
 pkgname=twad-justinwayland-git
 _pkgname=twad
