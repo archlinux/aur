@@ -1,6 +1,6 @@
 pkgbase = claude-desktop-appimage
 	pkgdesc = Claude Desktop for Linux - AppImage version from aaddrick/claude-desktop-debian
-	pkgver = 1.1.5+claude0.13.19
+	pkgver = 1.1.6+claude0.13.37
 	pkgrel = 1
 	url = https://github.com/aaddrick/claude-desktop-debian
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = claude-desktop-appimage
 	depends = qt6-base
 	provides = claude-desktop
 	conflicts = claude-desktop
-	noextract = claude-desktop-0.13.19-amd64.AppImage
+	noextract = claude-desktop-0.13.37-amd64.AppImage
 	options = !strip
-	source = claude-desktop-0.13.19-amd64.AppImage::https://github.com/aaddrick/claude-desktop-debian/releases/download/v1.1.5+claude0.13.19/claude-desktop-0.13.19-amd64.AppImage
+	source = claude-desktop-0.13.37-amd64.AppImage::https://github.com/aaddrick/claude-desktop-debian/releases/download/v1.1.6+claude0.13.37/claude-desktop-0.13.37-amd64.AppImage
 	source = claude-desktop.desktop
-	sha256sums = a74fbcebec116808ea0d3171124cb1eca57858bfa58452408caaef0d7a187780
+	sha256sums = 39b88aeb7fcc2ec2f94d862002509e2a562d842eb475ea7887af369261e90857
 	sha256sums = ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d
 
 pkgname = claude-desktop-appimage
