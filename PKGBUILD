@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.38.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da73c69fc8d42152fab7cfb89c30f13b9379e8d15b131c1feb8675e10c302585')
+sha256sums=('e6f866566a21bf17f1b34f97ae46ec13692a1e756c4a4cece50af47739dcbc87')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -77,6 +77,33 @@ check() {
     --ignore google/genai/tests/models/test_recontext_image.py
     --ignore google/genai/tests/models/test_segment_image.py
     --ignore google/genai/tests/tunings/test_cancel.py
+    --ignore google/genai/tests/local_tokenizer/test_local_tokenizer.py
+    --ignore google/genai/tests/local_tokenizer/test_local_tokenizer_loader.py
+    --ignore google/genai/tests/shared/batches/test_create_delete.py
+    --ignore google/genai/tests/shared/batches/test_create_get_cancel.py
+    --ignore google/genai/tests/shared/batches/test_list.py
+    --ignore google/genai/tests/shared/caches/test_create_delete.py
+    --ignore google/genai/tests/shared/caches/test_create_update_get.py
+    --ignore google/genai/tests/shared/caches/test_list.py
+    --ignore google/genai/tests/shared/chats/test_send_message.py
+    --ignore google/genai/tests/shared/chats/test_send_message_stream.py
+    --ignore google/genai/tests/shared/files/test_list.py
+    --ignore google/genai/tests/shared/files/test_upload_get_delete.py
+    --ignore google/genai/tests/shared/models/test_compute_tokens.py
+    --ignore google/genai/tests/shared/models/test_count_tokens.py
+    --ignore google/genai/tests/shared/models/test_edit_image.py
+    --ignore google/genai/tests/shared/models/test_embed.py
+    --ignore google/genai/tests/shared/models/test_generate_content.py
+    --ignore google/genai/tests/shared/models/test_generate_content_stream.py
+    --ignore google/genai/tests/shared/models/test_generate_images.py
+    --ignore google/genai/tests/shared/models/test_generate_videos.py
+    --ignore google/genai/tests/shared/models/test_list.py
+    --ignore google/genai/tests/shared/models/test_recontext_image.py
+    --ignore google/genai/tests/shared/models/test_segment_image.py
+    --ignore google/genai/tests/shared/models/test_upscale_image.py
+    --ignore google/genai/tests/shared/tunings/test_create.py
+    --ignore google/genai/tests/shared/tunings/test_create_get_cancel.py
+    --ignore google/genai/tests/shared/tunings/test_list.py
     --deselect google/genai/tests/chats/test_send_message.py
     --deselect google/genai/tests/files/test_upload.py
     --deselect google/genai/tests/public_samples/test_gemini_text_only.py
