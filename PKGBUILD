@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=music-dl-bin
-pkgver=6.4.4
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Music Searcher and Downloader(Prebuilt version).音乐搜索下载器."
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
     "${pkgname%-bin}-${pkgver}::https://github.com/guanguans/music-dl/raw/${pkgver}/builds/music-dl"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/guanguans/music-dl/${pkgver}/LICENSE"
 )
-sha256sums=('ebf268bca6a223e3306a1a0ef512bba7009d25b30f62a25e6e3a7aeeef45a8fc'
+sha256sums=('7935cba1ec012097cab9c42923be8b960b4f2f3cd57a86937c6b732f995c092c'
             '074569ef9beb52388eb74729b41e633ee79b1be19a7d84d3ed76b1ae121c2873')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
