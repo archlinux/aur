@@ -2,7 +2,7 @@
 
 _pkgname=perl-scripts
 pkgname=resize-images-git
-pkgver=23.09.r133.g50403e9
+pkgver=24.11.r26.g2f72cba
 pkgrel=1
 pkgdesc="Command-line batch-processing tool for easily scaling down images."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("resize-images=${pkgver}")
 conflicts=('resize-images')
 
-depends=('perl>=5.36.0' 'perl-imager')
+depends=('perl>=5.36.0' 'perl-imager' 'perl-image-exiftool')
 optdepends=()
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
