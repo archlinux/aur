@@ -2,11 +2,11 @@
 # Wrapper for makepkg with ephemeral ru-check
 
 REAL_MAKEPKG="/usr/bin/makepkg.real"
-CHECKER="/usr/local/bin/ru-check.sh"
+CHECKER="/usr/local/bin/anti-ru-check.sh"
 PKGBUILD_PATH="$(pwd)/PKGBUILD"
 
 # Create/clear session scratchpad at start
-SESSION_FILE="/tmp/ru-check-session-$$"
+SESSION_FILE="/tmp/anti-ru-check-session-$$"
 : > "$SESSION_FILE"
 
 # Skip ru-check for helper calls
