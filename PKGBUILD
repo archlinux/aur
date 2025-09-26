@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmpfedora
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Part of the tmplinux suite. Temporary Fedora"
 arch=('any')
