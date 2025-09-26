@@ -57,5 +57,7 @@ package() {
   install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install icon
-  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
+  for size in 16 22 32 48 64 128 256; do
+    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/classic-addon-manager.png"
+  done
 }
