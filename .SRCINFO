@@ -1,7 +1,7 @@
 pkgbase = rustnet-git
 	pkgdesc = A cross-platform network monitoring terminal UI tool built with Rust.
 	pkgver = r203.6d451c3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/domcyrus/rustnet
 	install = rustnet.install
 	arch = x86_64
@@ -11,12 +11,13 @@ pkgbase = rustnet-git
 	makedepends = pkgconf
 	makedepends = clang
 	makedepends = llvm
+	makedepends = lld
 	makedepends = libbpf
 	depends = libpcap
 	depends = libelf
 	depends = zlib
 	options = !debug
-	options = !lto
+	options = strip
 	source = git+https://github.com/domcyrus/rustnet.git
 	md5sums = SKIP
 
