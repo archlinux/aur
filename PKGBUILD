@@ -4,7 +4,7 @@
 # Contributor: David Roheim <david.roheim@gmail.com>
 
 pkgname=hadoop
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='An open-source software for reliable, scalable, distributed computing'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('inetutils' 'java-runtime-headless=11' 'openssh' 'protobuf')
 source=("https://github.com/apache/hadoop/archive/refs/tags/rel/release-$pkgver.tar.gz"
         "${pkgname}" "${pkgname}.sh"
         hadoop-{datanode,historyserver,namenode,resourcemanager,secondarynamenode}.service)
-sha256sums=('a8a63c809eea8a1d04eeeb4bcb3eba3fbd75c69592241ae5eff276e68d1d6daf'
+sha256sums=('7877b9879c9a4e279da6cb52dc9641863a72273a11174e1b82ada78c792f31d8'
             '1ec173297234b0d587255c1fac978b3929e967146ac542e2e1b44323f80e0bc5'
             '3d20dd2ad1b773e7d4cb855c7556613e36ff56081749fe7b01c6e4fd0c743cc5'
             '876d40b0a2ec9b9cec9b667d7909591ee0ef1acbd5417a0357c33539d8a54e1a'
