@@ -2,17 +2,17 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 _pkgname=weylus
 pkgname=weylus-git
-pkgver=0.11.4.r137.g76ec892
+pkgver=0.11.4.r139.g56e29ec
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
 url="https://github.com/H-M-H/Weylus"
-license=("AGPL3")
+license=("AGPL-3.0-or-later")
 conflicts=("$_pkgname" "$_pkgname-bin")
 provides=("$_pkgname=${pkgver/\.r*/}")
 options=(!debug !lto) # Disabled for rust build
 makedepends=(rust typescript gcc libx11 pkg-config git make cmake nasm)
-depends=(libxtst libxcursor libxinerama libxft libxrandr libxcomposite libdrm libva ffmpeg dbus gst-plugins-base-libs)
+depends=(cairo dbus gst-plugins-base-libs libdrm libva libxcomposite libxcursor libxinerama libxkbcommon libxrandr libxtst pango)
 optdepends=("gst-plugin-pipewire: Wayland support")
 source=("$_pkgname::git+$url.git")
 sha256sums=("SKIP")
@@ -27,7 +27,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "$srcdir/$_pkgname"
-    cargo build --frozen --release --features="ffmpeg-system"
+    cargo build --frozen --release
 }
 
 package() {
