@@ -9,6 +9,7 @@ pkgbase = openchrom-bin
 	depends = webkit2gtk
 	provides = openchrom=1.5.27-1
 	conflicts = openchrom
+	noextract = openchrom_linux.x86_64_1.5.27.tar.gz
 	options = !strip
 	source = https://products.lablicate.com/openchrom/1.5.27/openchrom_linux.x86_64_1.5.27.tar.gz
 	source = openchrom.desktop

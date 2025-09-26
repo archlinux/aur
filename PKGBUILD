@@ -13,15 +13,21 @@ conflicts=(openchrom)
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop"
         "openchrom.png")
+noextract=("openchrom_linux.x86_64_${pkgver}.tar.gz")
 sha256sums=('9ff0281484b5a1f3c96e81006d57b0b2ffcb8bf993c4713d30393ff816097ffd'
             '700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1'
             '5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f')
 depends=('org.freedesktop.secrets' 'webkit2gtk')
 options=(!strip)
 
+prepare() {
+  mkdir -p "$srcdir/openchrom"
+  tar -xzf "openchrom_linux.x86_64_${pkgver}.tar.gz" -C "$srcdir/openchrom"
+}
+
 package() {
-  install -d "${pkgdir}/usr/lib/openchrom"
-  cp -a . "${pkgdir}/usr/lib/openchrom"
+  install -d "${pkgdir}/usr/lib"
+  cp -a "${srcdir}/openchrom" "${pkgdir}/usr/lib/"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/openchrom/openchrom" "${pkgdir}/usr/bin/openchrom"
 
