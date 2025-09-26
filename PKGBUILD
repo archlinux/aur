@@ -3,7 +3,7 @@
 
 _pkgname="klevernotes"
 pkgname="$_pkgname"
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A convergent markdown note taking application"
 url="https://invent.kde.org/office/klevernotes"
@@ -39,7 +39,7 @@ checkdepends=(
 _pkgsrc="$_pkgname-v$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/-/archive/v${pkgver}/$_pkgsrc.$_pkgext")
-sha256sums=('fcff4967de92ebfbf0f9e21373cadd6b87c0dd7a815d2fdd2f911c71b9581a43')
+sha256sums=('a7d6c0b39ea6c309df287dd7822ce5c8cc5c83791487ecdce02390b639fd8236')
 
 build() {
   local _cmake_options=(
