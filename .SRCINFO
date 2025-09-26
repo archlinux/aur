@@ -1,0 +1,27 @@
+pkgbase = fcitx5-lekhika-git
+	pkgdesc = Nepali input method engine for fcitx5.
+	pkgver = r83.cea471a
+	pkgrel = 1
+	url = https://github.com/khumnath/fcitx5-lekhika
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = fcitx5
+	depends = fcitx5-qt
+	depends = hicolor-icon-theme
+	depends = liblekhika
+	depends = qt6-base
+	depends = sqlite
+	depends = icu
+	optdepends = lekhika-trainer: Manage Dictionary database for lekhika
+	provides = fcitx5-lekhika
+	conflicts = fcitx5-lekhika
+	conflicts = fcitx5-lekhika-bin
+	source = fcitx5-lekhika::git+https://github.com/khumnath/fcitx5-lekhika.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-lekhika-git
