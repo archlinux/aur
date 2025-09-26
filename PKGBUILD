@@ -9,7 +9,7 @@ pkgbase=protonmail-bridge-free-nokeychain
 pkgname="${pkgbase}-git"
 _pkgbase=proton-bridge
 pkgver=3.21.2.r0.g7d1e9135
-pkgrel=3
+pkgrel=4
 pkgdesc="Proton Mail Bridge fork (free) without keychain requirement; stores secrets in a file"
 arch=(x86_64)
 url="https://github.com/mnixry/proton-bridge"
@@ -42,13 +42,23 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
+  # Get clean version number (e.g. 3.21.2) for the binary
+  clean_version=$(grep -E 'BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/.*= *([^ ]+).*/\1/' | cut -d'+' -f1 | sed -E 's/([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
-  make build-nogui BUILD_ENV="Arch Linux" || {
-    echo "Falling back to bare go build with version info..." >&2
-    version=$(grep -E 'BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/.*= *([^ ]+).*/\1/' | cut -d'+' -f1)
-    # Use clean version number without git info for API compatibility
-    go build -v -buildvcs=false -ldflags "-X github.com/ProtonMail/proton-bridge/v3/internal/constants.Version=${version}" -o bridge ./cmd/Desktop-Bridge/
+  
+  # Always use clean version for both make and fallback build
+  BRIDGE_APP_VERSION="${clean_version}" make build-nogui BUILD_ENV="Arch Linux" || {
+    echo "Falling back to bare go build with clean version ${clean_version}..." >&2
+    # Try multiple version flag locations to ensure it's set
+    ldflags=(
+      "-X github.com/ProtonMail/proton-bridge/v3/internal/constants.Version=${clean_version}"
+      "-X github.com/ProtonMail/proton-bridge/internal/constants.Version=${clean_version}"
+      "-X github.com/ProtonMail/proton-bridge/v3/pkg/constants.Version=${clean_version}"
+      "-X main.Version=${clean_version}"
+      "-X main.version=${clean_version}"
+    )
+    go build -v -buildvcs=false -ldflags "${ldflags[*]}" -o bridge ./cmd/Desktop-Bridge/
   }
 }
 
