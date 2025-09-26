@@ -3,8 +3,8 @@
 pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
-pkgver=r203.6d451c3
-pkgrel=4
+pkgver=r204.33e8064
+pkgrel=1
 pkgdesc="A cross-platform network monitoring terminal UI tool built with Rust."
 arch=('x86_64')
 url="https://github.com/domcyrus/rustnet"
@@ -25,7 +25,7 @@ prepare() {
     cd "$srcdir/$_reponame"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
