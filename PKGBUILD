@@ -13,13 +13,13 @@ conflicts=('hyprdynamicmonitors-rc')
 optdepends=('hyprland' 'upower')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_arm64.tar.gz")
-sha256sums_aarch64=('fa83809e23c5bc7c027bf0dd092cb5d84211cf603a88d4fc369496f726b778c4')
+sha256sums_aarch64=('c1419da31868be403603940d7219beb9496ed1fc1628d32016bcdf20e7692cd2')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_i386.tar.gz")
-sha256sums_i686=('a927e30b2de9c63d1a3563c8bc41c7ae0ac94a4a39fecb2e86a79fb2cc4629b0')
+sha256sums_i686=('fe18b23954faa1f7825f74619b098455f7cc667bf550c66ff0377b67b4fd811b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('73a6ce1550c7b53110d761afc0a1dccfac546e6154dce5049d3f1db073c4a807')
+sha256sums_x86_64=('27359aa5211f4a6f8634fb137074fc4cb4b1274642d6e6be1daacd6fae3590e3')
 
 package() {
   # bin
