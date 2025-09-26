@@ -14,7 +14,7 @@
 
 _pkgname=zoneminder
 pkgname=zoneminder-git
-pkgver=1.37.63.r1447.gbf4e873
+pkgver=1.37.63.r1552.ge0c5ea6
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system (git version)'
 arch=('any')
@@ -116,12 +116,9 @@ package() {
 
     make DESTDIR=${pkgdir} install
 
-    # Remove jwt-cpp's CMake source files
+    # Remove static cruft
     rm -r ${pkgdir}/usr/cmake
-
-    # Set Polkit directory permissions in accordance with Arch policy
-    chmod 750                                                   ${pkgdir}/usr/share/polkit-1/rules.d
-    chown root:polkitd                                          ${pkgdir}/usr/share/polkit-1/rules.d
+    rm -r ${pkgdir}/usr/include
 
     # Create ZM_LOGDIR
     install -dm755 -o http -g http                              ${pkgdir}/var/log/${_pkgname}

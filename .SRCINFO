@@ -1,6 +1,6 @@
 pkgbase = zoneminder-git
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system (git version)
-	pkgver = 1.37.63.r1447.gbf4e873
+	pkgver = 1.37.63.r1552.ge0c5ea6
 	pkgrel = 1
 	url = https://zoneminder.com/
 	install = zoneminder.install
