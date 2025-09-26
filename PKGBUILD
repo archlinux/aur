@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=teamide-bin
 _pkgname=TeamIDE
-pkgver=2.6.37
+pkgver=2.6.38
 _electronversion=22
 pkgrel=1
 pkgdesc="Integrate MySQL, Oracle, Kingbase, Dameng, Shentong databases, SSH, FTP, Redis, Zookeeper, Kafka, Elasticsearch, Mongodb, small tools and other management tools.(Prebuilt version.Use system-wide electron)"
@@ -16,17 +16,16 @@ depends=(
 )
 makedepends=(
     'asar'
-    'fuse2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fe76ed1ea9f6e038efaba5484288f84fe0bb1c94f5b920e24f7270f98f93389e'
+sha256sums=('3b642227f5f549088d93175b61b1c0cd04a4dc3bb0272c6cfe6098af1ac693c8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
