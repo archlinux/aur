@@ -1,7 +1,7 @@
 pkgbase = wimboot-bin
 	pkgdesc = iPXE kernel to boot wim images from network for both UEFI and BIOS system
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/ipxe/wimboot
 	install = wimboot.install
 	arch = any

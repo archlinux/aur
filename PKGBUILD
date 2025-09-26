@@ -3,7 +3,7 @@
 
 pkgname=wimboot-bin
 pkgver=2.8.0
-pkgrel=2
+pkgrel=1
 pkgdesc="iPXE kernel to boot wim images from network for both UEFI and BIOS system"
 arch=(any)
 url="https://github.com/ipxe/wimboot"
