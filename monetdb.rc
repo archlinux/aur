@@ -1,0 +1,71 @@
+#!/usr/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="MonetDB database server daemon"
+command="/usr/bin/monetdbd-11.53.13"
+command_args="start ${DBFARM}"
+pidfile="/var/run/monetdb/merovingian.pid"
+start_stop_daemon_args=" -k 0007"
+command_user="monetdb:monetdb"
+extra_commands="setup checkconfig"
+
+depend() {
+	after net 
+}
+
+checkconfig() {
+	# Check that DBFARM has been set
+	if [ -z "${DBFARM}" ] ; then
+		eerror "DBFARM not set"
+		eerror "HINT: Perhaps you need to update /etc/conf.d/monetdb"
+		return 1
+	fi
+
+	# Check that DBFARM exists
+	if [ ! -d "${DBFARM}" ] ; then
+		eerror "Directory not found: ${DBFARM}"
+		eerror "HINT: Ensure that DBFARM points to the right path."
+		return 1
+	fi
+
+	if [ ! -f "${DBFARM}/.merovingian_properties" ] ; then
+		eerror "DBFARM not initialized"
+		eerror "HINT: Initialize the database in ${DBFARM}"
+		eerror "HINT: You can use rc-service monetdb setup to automatically do it"
+		return 1
+	fi
+
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	grep -q pidfile=/var/run/monetdb/merovingian.pid "${DBFARM}/.merovingian_properties"
+}
+
+stop() {
+	ebegin "Stopping $RC_SVCNAME"
+	/usr/bin/monetdbd-11.53.13 stop ${DBFARM}
+	eend $?
+}
+
+status() {
+	ebegin "Checking MonetDB status"
+	/usr/bin/monetdb status
+	eend $?
+}
+
+setup() {
+	ebegin "Initializing database at: ${DBFARM}"
+
+	umask 0007
+	/usr/bin/monetdbd-11.53.13 create ${DBFARM}
+	/usr/bin/monetdbd-11.53.13 set pidfile=/var/run/monetdb/merovingian.pid ${DBFARM}
+	touch ${DBFARM}/.merovingian_lock
+	# !FIXME This needs to be used only if SELinux is enabled, maybe add a config variable for it?
+	# chcon -u system_u -r object_r -t monetdbd_lock_t ${DBFARM}/.merovingian_lock
+	# chcon -u system_u -r object_r -t monetdbd_etc_t ${DBFARM}/.merovingian_properties
+
+	eend $?
+}
+
