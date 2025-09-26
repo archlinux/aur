@@ -3,7 +3,7 @@
 # Updated by https://github.com/wakatime/repl-python-wakatime/blob/main/.github/workflows/main.yml
 _pkgname=repl-python-wakatime
 pkgname=python-$_pkgname
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Python REPL plugin for automatic time tracking and metrics generated from your programming activity"
 arch=(any)
@@ -20,7 +20,7 @@ _py=py3
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 )
-sha256sums=('0598d25d76358d0660fa589f34eb542716af64b8893f1a00fda91215ebc4de86')
+sha256sums=('cd5d69abe86c0200541f35a4a0aecbbbd83a9bab6d27d315589ac3607559b144')
 
 package() {
 	cd "$srcdir" || return 1
