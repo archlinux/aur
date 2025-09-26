@@ -106,6 +106,9 @@ for i in $fonts_required; do
     fi
 done
 
+# Set to 0 to keep winemenubuilder-generated .desktop entries
+disable_winemenubuilder=1
+
 ##############################################################################################
 # Check templates
 ##############################################################################################
@@ -201,6 +204,8 @@ start_menu_location="$(unixpath "${win_start_menu_location}")"
 lnk_full="$(unixpath "${win_lnk_full}")"
 exe_location="$(unixpath "${win_exe_location}")"
 key_destination="$(unixpath "${win_key_destination}")"
+
+winemenubuilder_destination="${HOME}/.local/share/applications/wine/Programs/${exe_name}"
 
 ###############################################################################################
 # Michaelsoft binbows environment
@@ -302,6 +307,7 @@ install_fonts() {
         fi
     done
 
+    # Handle missing fonts
     if [[ -z "${fonts_required[@]}" ]]; then
         missing_fonts_message="Missing fonts: ${fonts_required[@]}"
         if [ ! command -v winetricks >/dev/null 2>&1 ]; then
@@ -322,6 +328,11 @@ install_fonts() {
 install() {
     echo "${output_prefix}Installing CalceSARA in WINEPREFIX=${WINEPREFIX}..."
     install_fonts &
+
+    if [[ -f "${WINEPREFIX}/system.reg" && $disable_winemenubuilder == 1 ]]; then
+        sed -i "s/^.*winemenubuilder.*$//g" "${WINEPREFIX}/system.reg"
+    fi
+
     ${WINE} "${installer_exe_location}" /S
     install_key
     wait
@@ -347,4 +358,11 @@ else
     install_key
     wait
     launch #|| install_launch
+fi
+
+if [ $disable_winemenubuilder -eq 1 ]; then
+    # Removes duplicate .desktop entries
+    if [[ -d "${winemenubuilder_destination}" ]]; then
+        rm -r "${winemenubuilder_destination}" 
+    fi
 fi

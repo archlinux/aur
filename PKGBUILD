@@ -7,7 +7,7 @@ _pkgname=calcesara
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
 pkgver=8.6.5
-pkgrel=6
+pkgrel=7
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
 arch=('x86_64')
 url='https://web.calce.umd.edu/software/releaseSARA'
@@ -63,7 +63,7 @@ source=(
 )
 sha256sums=(
     826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
-    a648fdc7d494dde81995bff1f89bd8c251187574f14cbba27b84a580c810df93
+    765e246a57c0eeb645f955f1b53f5b9c6be4b9ad1cabc9067d5d5767624e902d
     3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
 )
 
