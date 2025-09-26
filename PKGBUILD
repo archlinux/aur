@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.0.95
+pkgver=1.0.97
 _electronversion=38
 pkgrel=1
 pkgdesc="Desktop app for Jasper KM. Uses electron to wrap a docker compose config.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,6 @@ depends=(
     'docker-compose'
 )
 makedepends=(
-    'fuse2'
     'asar'
 )
 source=(
@@ -25,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('81b95f37c22c5468d606f22ce19190e9b8e87ab08b5a0677817a6eb4537e7be2'
+sha256sums=('26e2f5db32b6b39fe1ae14c179ee69ff56562d239e09c6a41c96b6418bd146b3'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
