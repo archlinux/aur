@@ -1,0 +1,12 @@
+pkgbase = wm
+	pkgdesc = ASCII animation of tanks like sl but with war machines
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Bebel9445/wm
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	source = https://github.com/Bebel9445/wm/archive/v2.0.tar.gz
+	sha256sums = c0ec5e5a53f23657a7d307493d502fc8d19b625d1d3ca6940a8a9a61ddf79525
+
+pkgname = wm
