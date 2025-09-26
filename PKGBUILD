@@ -8,7 +8,7 @@ pkgname=(datagrip-eap datagrip-eap-jre)
 pkgver=253.22441.28
 #_pkgver=2025.3
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('any')
 url='https://www.jetbrains.com/datagrip/'
@@ -19,9 +19,9 @@ options=('!strip')
 source=("https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${_pkgver}.tar.gz"
         jetbrains-datagrip-eap.desktop
         LICENSE)
-b2sums=('7a3568903fcb6e2eb787433357e5e300bb67c01705b08b67c83dcf911eadce69eb402a52fcc2ee27f9a7491df8142fb61ba1d8ef6c7d51415bf10c169334e739'
-        'ebd9249900f348d619527427e8ed9d3bd836762025b89c35ea2c96f82c60d479bb8e372db26ac48665cbb496abe6036ca42fea8ed39b9577367532efc3615338'
-        'f3179faad094aa338d1ef7bb5ded78801ce51a0eb5613a1c5637ff6653bee900190e81532c83c24a6298f0ad30a0f5b43a2d54fb6ce7b0e8bd5dea5b760ba68a')
+b2sums=('ebd9249900f348d619527427e8ed9d3bd836762025b89c35ea2c96f82c60d479bb8e372db26ac48665cbb496abe6036ca42fea8ed39b9577367532efc3615338'
+        'f3179faad094aa338d1ef7bb5ded78801ce51a0eb5613a1c5637ff6653bee900190e81532c83c24a6298f0ad30a0f5b43a2d54fb6ce7b0e8bd5dea5b760ba68a'
+        'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
 package_datagrip-eap() {
   optdepends=('datagrip-eap-jre: JetBrains custom Java Runtime (Recommended)'
