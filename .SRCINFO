@@ -1,0 +1,18 @@
+pkgbase = kyverno-cli
+	pkgdesc = Cloud Native Policy Management
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/kyverno/kyverno
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	provides = kubectl-kyverno
+	source = https://github.com/kyverno/kyverno/archive/v1.15.2/kyverno-1.15.2.tar.gz
+	sha512sums = 8552a15d2a71969e8f698f2f7769cf3fbd1d38442034eeb0f51ad86f4e3388d14458cea488cf9dba8c426990bcec3b60d25f0cee7100b5c3220d6fe008ada569
+	b2sums = bf3b7ca81ca4672c706a532e0e142566051b9860b652dbcc9d083f644a207aa00a8d5967540aa0aa3d760641e2315f950794c452aaec8682387d8a6eda2beb6d
+
+pkgname = kyverno-cli
