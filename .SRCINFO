@@ -9,6 +9,7 @@ pkgbase = voicevox-bin
 	conflicts = voicevox
 	replaces = voicevox-appimage
 	noextract = voicevox-linux-cpu-x64-0.24.2.tar.gz
+	options = !strip
 	options = !debug
 	source = voicevox.desktop
 	source = voicevox.sh.in
