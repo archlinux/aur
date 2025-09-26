@@ -40,7 +40,7 @@ sha512sums=('01cea929cea2535751b5ef23eddc780a3c32ffafee640a6d5cea9a52798d0ec7030
 prepare() {
   cd ${pkgname}-${pkgver}
   sed -i 's/$(PYTHON) -m build/$(PYTHON) -m build --wheel --no-isolation/' src/libcharon/plugins/vici/python/Makefile.am
-  autoreconf -fiv -I /usr/share/gettext/m4
+  autoreconf -fiv
 }
 
 build() {
