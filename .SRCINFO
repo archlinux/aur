@@ -1,0 +1,15 @@
+pkgbase = bsdiff-gui
+	pkgdesc = GUI for bsdiff/bspatch binary diff tools
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Raflos10/PatchGUI
+	arch = x86_64
+	license = BSD
+	license = custom:bzip2
+	depends = qt5-base
+	source = https://github.com/Raflos10/PatchGUI/archive/refs/tags/1.tar.gz
+	source = bsdiff-gui.desktop
+	sha256sums = b611d6cd998d4bf6c69ea05e23bff93021f3a6e3f31de2c23365228ac5e16252
+	sha256sums = SKIP
+
+pkgname = bsdiff-gui

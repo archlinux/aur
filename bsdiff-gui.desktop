@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PatchGUI
+Comment=GUI for bsdiff/bspatch binary diff tools
+Exec=BSDiff-GUI
+Icon=
+Encoding=UTF-8
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Utility
+Keywords=BSDiff-GUI
