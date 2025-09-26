@@ -56,4 +56,8 @@ package() {
 
 	cd "$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
+
+	cd "$pkgdir/usr/lib"
+	ln -s libvdeplug.so.4.0.0 libvdeplug.so.3
+	ln -s libvdeplug_mod.so.4.0.0 libvdeplug_mod.so.3
 }
