@@ -20,3 +20,5 @@ updpkgsums && makepkg --printsrcinfo >.SRCINFO
 makepkg -srif
 git commit -m "Bump to ${latest}" PKGBUILD .SRCINFO
 git clean -f .
+rm -f *tgz *zst
+
