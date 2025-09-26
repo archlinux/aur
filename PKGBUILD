@@ -3,7 +3,7 @@
 pkgname=vde2-git
 _pkgname=vde2
 pkgver=v2.3.3.r28.6023871
-pkgrel=1
+pkgrel=2
 
 pkgdesc="VDEv2: Virtual Distributed Ethernet."
 arch=('x86_64')

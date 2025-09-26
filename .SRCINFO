@@ -1,7 +1,7 @@
 pkgbase = vde2-git
 	pkgdesc = VDEv2: Virtual Distributed Ethernet.
 	pkgver = v2.3.3.r28.6023871
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/virtualsquare/vde-2
 	arch = x86_64
 	license = GPL-2.0
