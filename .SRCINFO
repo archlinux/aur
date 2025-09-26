@@ -1,4 +1,4 @@
-pkgbase = ookla-speedtest-bin
+pkgbase = ookla-speedtest-cli-bin
 	pkgdesc = Internet connection measurement for developers
 	pkgver = 1.2.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = ookla-speedtest-bin
 	source_aarch64 = ookla-speedtest-1.2.0-linux-aarch64.tgz::https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-aarch64.tgz
 	sha256sums_aarch64 = 3953d231da3783e2bf8904b6dd72767c5c6e533e163d3742fd0437affa431bd3
 
-pkgname = ookla-speedtest-bin
+pkgname = ookla-speedtest-cli-bin

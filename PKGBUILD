@@ -1,6 +1,6 @@
 # Contributor: Juan Francisco Miranda <jfmiranda at gmail dot com>
 
-pkgname=ookla-speedtest-bin
+pkgname=ookla-speedtest-cli-bin
 pkgver=1.2.0
 pkgrel=1
 pkgdesc='Internet connection measurement for developers'
