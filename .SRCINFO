@@ -1,0 +1,15 @@
+pkgbase = kuznix-tui-de-git
+	pkgdesc = A TUI Desktop for Kuznix GNU/Linux (development Git version)
+	pkgver = 0.1.0.r20250922
+	pkgrel = 1
+	url = https://github.com/KuznixTeam/kuznix-tui-de
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = gcc
+	makedepends = ncurses
+	depends = ncurses
+	source = git+https://github.com/KuznixTeam/kuznix-tui-de.git
+	md5sums = SKIP
+
+pkgname = kuznix-tui-de-git
