@@ -1,17 +1,17 @@
 pkgbase = tmpfedora
 	pkgdesc = Part of the tmplinux suite. Temporary Fedora
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/TheOddCell/tmpfedora
 	arch = any
 	license = MIT
 	depends = bash
-	depends = dnf
+	depends = dnf5
 	depends = shadow
 	depends = util-linux
 	depends = systemd
 	depends = squashfs-tools
-	source = https://github.com/TheOddCell/tmpfedora/archive/refs/tags/v1.1.1.tar.gz
+	source = https://github.com/TheOddCell/tmpfedora/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = tmpfedora
