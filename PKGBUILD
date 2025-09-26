@@ -13,13 +13,13 @@ conflicts=('hyprdynamicmonitors-rc')
 optdepends=('hyprland' 'upower')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9abe8fa26d551ad3e0442754a4d686578e81c3d4a18ab107485abfaa8ef7e0cb')
+sha256sums_aarch64=('fa83809e23c5bc7c027bf0dd092cb5d84211cf603a88d4fc369496f726b778c4')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_i386.tar.gz")
-sha256sums_i686=('2a91896ca493b207fe1ab8fd8a2891ae178be78e26b5acc18bf10e6cfb6e74ea')
+sha256sums_i686=('a927e30b2de9c63d1a3563c8bc41c7ae0ac94a4a39fecb2e86a79fb2cc4629b0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('390e931537159871174564998c4cd0607ebfed98176fea3439f977646c898884')
+sha256sums_x86_64=('73a6ce1550c7b53110d761afc0a1dccfac546e6154dce5049d3f1db073c4a807')
 
 package() {
   # bin
@@ -32,7 +32,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  ./hyprdynamicmonitors completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/hyprdynamicmonitors-rc"
-  ./hyprdynamicmonitors completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_hyprdynamicmonitors-rc"
-  ./hyprdynamicmonitors completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/hyprdynamicmonitors-rc.fish"
+  ./hyprdynamicmonitors-rc completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/hyprdynamicmonitors-rc"
+  ./hyprdynamicmonitors-rc completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_hyprdynamicmonitors-rc"
+  ./hyprdynamicmonitors-rc completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/hyprdynamicmonitors-rc.fish"
 }
