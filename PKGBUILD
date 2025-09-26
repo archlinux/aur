@@ -1,13 +1,13 @@
 # Maintainer: Marco Russo <tray-kebab-uneven@duck.com>
 pkgname=expert-git
 pkgver=r788.dca68d8d
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Elixir Language Server Protocol implementation"
 arch=('x86_64')
 url="https://expert-lsp.org/"
 license=('Apache-2.0')
 depends=('erlang' 'elixir')
-makedepends=('git' 'zig==0.14.1' 'just')
+makedepends=('git' 'zig0.14-bin' 'just')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
