@@ -1,13 +1,13 @@
 pkgname=clash-nyanpasu-nightly-bin
 _pkgname=clash-nyanpasu
-pkgver=2.0.0_alpha+4f92fc7
-_pkgver=2.0.0-alpha+4f92fc7
+pkgver=2.0.0_alpha+0ad0d85
+_pkgver=2.0.0-alpha+0ad0d85
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
 url="https://github.com/LibNyanpasu/clash-nyanpasu"
 license=('GPL3')
-options=('!strip' '!debug')
+options=(!strip)
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 conflicts=('clash-nyanpasu-git' 'clash-nyanpasu-appimage' 'clash-nyanpasu' 'clash-nyanpasu-bin')
 source=("${_pkgname}-${_pkgver}-${arch}.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/pre-release/Clash.Nyanpasu_${_pkgver}_amd64.deb")
