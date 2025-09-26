@@ -2,7 +2,7 @@
 Name=Classic Addon Manager
 Comment=Manage addons for ArcheAge Classic private server
 Exec=classic-addon-manager
-Icon=support_daru_alt_sm
+Icon=classic-addon-manager
 Terminal=false
 Type=Application
 Categories=Game;Utility;

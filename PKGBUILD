@@ -13,6 +13,7 @@ source=(
   "git+$url.git"
   "$_pkgname.desktop"
   "$_pkgname.install"
+  "icon.png"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
@@ -55,8 +56,6 @@ package() {
   # Install desktop file
   install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # Install icon from frontend assets
-  for icon in frontend/src/assets/images/*.webp; do
-    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$(basename "$icon")"
-  done
+  # Install icon
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
 }
