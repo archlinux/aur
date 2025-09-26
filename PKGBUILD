@@ -21,7 +21,7 @@ options=(!strip)
 
 package() {
   install -d "${pkgdir}/usr/lib/openchrom"
-  cp -r configuration features p2 plugins readme artifacts.xml openchrom openchrom.ini "${pkgdir}/usr/lib/openchrom"
+  cp -a . "${pkgdir}/usr/lib/openchrom"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/openchrom/openchrom" "${pkgdir}/usr/bin/openchrom"
 
