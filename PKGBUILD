@@ -1,30 +1,98 @@
-# Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
-pkgname=ollama-bin
-pkgver=0.1.16
-pkgrel=2
-pkgdesc='Get up and running with large language models, locally'
-arch=('x86_64')
-url='https://ollama.ai/'
-license=('MIT')
-provides=('ollama-bin')
-source=("${pkgname%-bin}-linux-amd64::https://github.com/jmorganca/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
-        "ollama.service::https://gitlab.com/mapanare-labs/packages/archlinux/${pkgname%-bin}/-/raw/main/ollama.service"
-        "LICENSE::https://raw.githubusercontent.com/jmorganca/ollama/main/LICENSE")
-sha256sums=('96f082b45229387e3839682a49a80129cdf0c95cb223d8e74089677478f67e15'
-            '2c39740ec51b7647d65821ea15b9f3ae8c08512e01aae0ec6bdba6cf3cc4462e'
-            '5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226')
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-package() {
-    mkdir -p "${pkgdir}/usr/bin"
-    install -D -m755 "${srcdir}/${pkgname%-bin}-linux-amd64" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -D -m 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+pkgbase=ollama-bin
+pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin)
+pkgver=0.12.2
+pkgrel=1
+pkgdesc="Create, run and share large language models (LLMs)"
+arch=('x86_64')
+_barch=('amd64')
+url='https://github.com/ollama/ollama'
+_urlraw="https://raw.githubusercontent.com/ollama/ollama/v${pkgver}"
+license=('MIT')
+
+provides=("ollama")
+conflicts=("ollama")
+optdepends=("ollama-cuda: NVIDIA GPU Support")
+
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
+        "README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("ollama-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[0]}.tgz"
+               "ollama.service"
+               "sysusers.conf"
+               "tmpfiles.d")
+sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
+            '0f1dc155b5139c6e6aea8cbe7541a4ba6065c0674662cf35f58a21514c05ff2e')
+sha256sums_x86_64=('abe5d1a64f813445a184bc44885bec08f8d6d8a95076ffb80ef96ed23124b64b'
+                   '9177dd27de7ec74cf4f74790e0d1db373f0da3fd6efe3e856b089e0124a4c1ed'
+                   '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
+                   '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3')
+
+
+package_ollama-bin() {
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "./bin/ollama" "${pkgdir}/usr/bin/ollama"
+
+    for lib in 'libggml-base.so' \
+        'libggml-cpu-alderlake.so' \
+        'libggml-cpu-haswell.so' \
+        'libggml-cpu-icelake.so' \
+        'libggml-cpu-sandybridge.so' \
+        'libggml-cpu-skylakex.so' \
+        'libggml-cpu-sse42.so' \
+        'libggml-cpu-x64.so'
+    do
+
+        install -Dm755 "./lib/ollama/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
+    done
+
+    install -Dm644 "./ollama.service" "${pkgdir}/usr/lib/systemd/system/ollama.service"
+
+    install -Dm644 "./sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/ollama.conf"
+    install -Dm644 "./tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/ollama.conf"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -dm755 "${pkgdir}/var/share"
+    install -dm755 "${pkgdir}/var/lib/ollama"
+    ln -s "${pkgdir}/var/lib/ollama" "${pkgdir}/usr/share/ollama"
 }
 
-post_install() {
-    echo 'Default systemd service file is included in this package.'
-    echo 'you can start the Ollama system service or enable it to run'
-    echo 'on boot like with any other service, e.g.'
-    echo '# systemctl enable --now ollama.service'
-    # Creating user to enable service
-    useradd -r -s /bin/false -m -d /usr/share/ollama ollama
+package_ollama-cuda12-bin() {
+    pkgdesc='Create, run and share large language models (LLMs) with CUDA 12'
+
+    conflicts=("ollama-cuda")
+    provides=("ollama-cuda")
+    depends+=("ollama-bin")
+
+    cd "${srcdir}/" || exit
+
+    for lib in 'libggml-cuda.so' ; do
+        install -Dm755 "./lib/ollama/cuda_v12/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
+    done
+
+    for cudalib in 'libcublasLt' 'libcublas' 'libcudart' ; do
+        cp --preserve=links --no-dereference "./lib/ollama/cuda_v12/${cudalib}"* "${pkgdir}/usr/lib/ollama/"
+    done
+}
+
+package_ollama-cuda13-bin() {
+    pkgdesc='Create, run and share large language models (LLMs) with CUDA 13'
+
+    conflicts=("ollama-cuda")
+    provides=("ollama-cuda")
+    depends+=("ollama-bin")
+
+    cd "${srcdir}/" || exit
+
+    for lib in 'libggml-cuda.so' ; do
+        install -Dm755 "./lib/ollama/cuda_v13/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
+    done
+
+    for cudalib in 'libcublasLt' 'libcublas' 'libcudart' ; do
+        cp --preserve=links --no-dereference "./lib/ollama/cuda_v13/${cudalib}"* "${pkgdir}/usr/lib/ollama/"
+    done
 }

@@ -1,0 +1,7 @@
+*
+!*.d
+!*.conf
+!*.service
+!.gitignore
+!PKGBUILD
+!.SRCINFO
