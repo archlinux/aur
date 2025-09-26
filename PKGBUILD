@@ -1,8 +1,8 @@
 # Maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=calibre-bin
-pkgver=8.10.0
-pkgrel=2
+pkgver=8.11.0
+pkgrel=1
 pkgdesc="Official desktop version Calibre"
 arch=(x86_64)
 url="https://github.com/kovidgoyal/calibre"
@@ -34,7 +34,7 @@ prepare() {
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            'cedff5db38d5c4fde273dab5c4ab28dfab1e94dc743785b88467b030e61af7c2')
+            '84ee11bcaf3060dcdd858c1a98579d72464884403319b3f764f6bc4d9f3e170f')
 
 package() {
 	# Creating needed directories
