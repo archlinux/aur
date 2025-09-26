@@ -2,7 +2,7 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-inline-snapshot' 'python-sounddevice' 'python-websockets' 'python-graphviz' 'python-fastapi' 'python-aiosqlite' 'python-cryptography' 'litellm')
 optdepends=('python-numpy: voice' 'python-websockets: voice' 'python-graphviz: viz' 'litellm: litellm' 'python-websockets: realtime' 'python-sqlalchemy: sqlalchemy' 'python-asyncpg: sqlalchemy' 'python-cryptography: encrypt')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('c39471f62d859c3ed20f3f69704e830f0d0e2a4e321aa1f21eb924f7a16347a8')
+sha256sums=('b71ac04ee9f502f1bc0f4d142407df4ec69db4442db86c4da252b4558fa90cd5')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
