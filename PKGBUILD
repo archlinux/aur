@@ -1,11 +1,11 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=bomdia-git
-pkgver=v0.1.0.r21.gd4089a3
+pkgver=v0.1.0.r33.g343850c
 pkgrel=1
 pkgdesc=""
 arch=(any)
 url="https://codeberg.org/Phosphenius/bomdia"
-license=('AGPL')
+license=('AGPL-3.0-only')
 depends=(
 	'python>=3.13'
 	python-argcomplete
