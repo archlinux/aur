@@ -12,6 +12,7 @@ note() {
 }
 
 post_install() {
+  ln -sf /var/lib/marzban/.env /opt/marzban/.env
   cd /opt/marzban && alembic upgrade head && marzban-cli completion install
 }
 
@@ -20,6 +21,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  note "Old settings are located in /opt/marzban/, skip removing."
-  cd /opt/marzban && find . ! -name '.' ! -name 'db.sqlite3' ! -name *.pacsave -depth -delete
+  note "Old settings are located in /var/lib/marzban/, skip removing."
+  find /opt/marzban -depth -delete
 }

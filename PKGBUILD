@@ -2,7 +2,7 @@
 
 pkgname=marzban
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified GUI Censorship Resistant Solution Powered by Xray"
 arch=(any)
 url="https://github.com/Gozargah/$pkgname"
@@ -54,10 +54,7 @@ depends=(
   xray
 )
 options=(!debug)
-backup=(
-  opt/$pkgname/.env
-  opt/$pkgname/xray_config.json
-)
+backup=(var/lib/$pkgname/.env)
 install=$pkgname.install
 source=(
   $pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
@@ -71,32 +68,25 @@ b2sums=('803d112a1d402a467b3520c2c20489ab94271cae285627c8d23efb106595289ba15132a
 prepare() {
   cd "$srcdir"/${pkgname^}-$pkgver
   cp .env{.example,}
-  sed -i 's|# XRAY_EXECUTABLE_PATH = "/usr/local/bin/xray"|XRAY_EXECUTABLE_PATH = "/usr/bin/xray"|' .env
-  sed -i 's|# XRAY_ASSETS_PATH = "/usr/local/share/xray"|XRAY_ASSETS_PATH = "/usr/share/xray"|'     .env
+  sed -i 's|# XRAY_JSON = "xray_config.json"|XRAY_JSON = "/var/lib/marzban/xray_config.json"|'                                     .env
+  sed -i 's|# XRAY_EXECUTABLE_PATH = "/usr/local/bin/xray"|XRAY_EXECUTABLE_PATH = "/usr/bin/xray"|'                                .env
+  sed -i 's|# XRAY_ASSETS_PATH = "/usr/local/share/xray"|XRAY_ASSETS_PATH = "/usr/share/xray"|'                                    .env
+  sed -i 's|# SQLALCHEMY_DATABASE_URL = "sqlite:///db.sqlite3"|SQLALCHEMY_DATABASE_URL = "sqlite:////var/lib/marzban/db.sqlite3"|' .env
 }
 
 package() {
   cd "$srcdir"/${pkgname^}-$pkgver
-
-  install -vd "$pkgdir"/opt/$pkgname/app
-  find app -type f -exec install -vDm 644 {} "$pkgdir"/opt/$pkgname/{} \;
-
-  install -vd "$pkgdir"/opt/$pkgname/cli
-  find cli -type f -exec install -vDm 644 {} "$pkgdir"/opt/$pkgname/{} \;
-
-  install -vd "$pkgdir"/opt/$pkgname/xray_api
+  install -vDm 644 .env.example                -t "$pkgdir"/opt/$pkgname/
+  install -vDm 644 alembic.ini                 -t "$pkgdir"/opt/$pkgname/
+  install -vDm 644 {config,main}.py            -t "$pkgdir"/opt/$pkgname/
+  install -vDm 755 $pkgname-cli.py             -t "$pkgdir"/opt/$pkgname/
+  install -vDm 644 .env                        -t "$pkgdir"/var/lib/$pkgname/
+  install -vDm 644 xray_config.json            -t "$pkgdir"/var/lib/$pkgname/
+  install -vd                                     "$pkgdir"/usr/bin
+  install -vDm 644 ../$pkgname.service         -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm 644 LICENSE                     -t "$pkgdir"/usr/share/licenses/$pkgname/            
+  ln      -sv      /opt/$pkgname/$pkgname-cli.py  "$pkgdir"/usr/bin/$pkgname-cli
+  find app -type f -exec install -vDm 644 {}      "$pkgdir"/opt/$pkgname/{} \;
+  find cli -type f -exec install -vDm 644 {}      "$pkgdir"/opt/$pkgname/{} \;
   find xray_api -type f -exec install -vDm 644 {} "$pkgdir"/opt/$pkgname/{} \;
-
-  install -vDm 644 .env{.example,}     -t "$pkgdir"/opt/$pkgname/
-  install -vDm 644 alembic.ini         -t "$pkgdir"/opt/$pkgname/
-  install -vDm 644 config.py           -t "$pkgdir"/opt/$pkgname/
-  install -vDm 644 main.py             -t "$pkgdir"/opt/$pkgname/
-  install -vDm 644 xray_config.json    -t "$pkgdir"/opt/$pkgname/
- 
-  install -vDm 755 $pkgname-cli.py     -t "$pkgdir"/opt/$pkgname/
-  install -vd "$pkgdir"/usr/bin
-  ln -sv /opt/$pkgname/$pkgname-cli.py    "$pkgdir"/usr/bin/$pkgname-cli
-
-  install -vDm 644 ../$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
-  install -vDm 644 LICENSE             -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
