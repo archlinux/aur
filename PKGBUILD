@@ -2,7 +2,7 @@
 pkgname=({alacritty-selenized-theme,vim-selenized-colors}-git)
 pkgbase=selenized-git
 pkgver=v1.0.r20.048c55e
-pkgrel=2
+pkgrel=3
 pkgdesc="Solarized redesigned: fine-tuned color palette for programmers with focus on readability. "
 arch=(any)
 url="https://codeberg.org/Phosphenius/selenized"
