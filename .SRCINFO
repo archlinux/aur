@@ -1,0 +1,23 @@
+pkgbase = bsdutils-git
+	pkgdesc = Alternative to GNU coreutils using software from FreeBSD
+	pkgver = 13.2.r1.g7e38401
+	pkgrel = 1
+	url = https://codeberg.org/dcantrell/bsdutils
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = byacc
+	makedepends = meson
+	depends = gcc-libs
+	depends = glibc
+	depends = libedit
+	depends = libxo
+	depends = ncurses
+	depends = openssl
+	provides = bsdutils=13.2.r1.g7e38401
+	conflicts = bsdutils
+	source = git+https://codeberg.org/dcantrell/bsdutils.git
+	sha256sums = SKIP
+
+pkgname = bsdutils-git
