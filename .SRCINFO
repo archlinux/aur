@@ -8,6 +8,7 @@ pkgbase = rblx-silver-git
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
+	makedepends = debugedit
 	depends = libappindicator-gtk3
 	depends = gtk3
 	depends = libxss

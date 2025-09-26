@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Wookhq/silverr"
 license=('MIT')
 depends=('libappindicator-gtk3' 'gtk3' 'libxss' 'nss' 'libx11' 'libxtst' 'libxrandr' 'alsa-lib')
-makedepends=('npm' 'nodejs' 'git')
+makedepends=('npm' 'nodejs' 'git' 'debugedit')
 
 source=("$pkgname::git+https://github.com/Wookhq/silverr.git#branch=main"
         "silverr.desktop")
