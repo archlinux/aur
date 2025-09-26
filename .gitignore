@@ -1,0 +1,5 @@
+fcitx5-steam-ibus-frontend/
+src/
+pkg/
+
+*.pkg.tar.*

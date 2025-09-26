@@ -1,6 +1,6 @@
 pkgbase = fcitx5-steam-ibus-frontend
 	pkgdesc = Add fcitx5 support for Steam Big Picture session
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/chenx-dust/fcitx5-steam-ibus-frontend
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fcitx5-steam-ibus-frontend
 	makedepends = pkgconf
 	depends = fcitx5
 	conflicts = fcitx
-	source = git+https://github.com/chenx-dust/fcitx5-steam-ibus-frontend.git#tag=v0.0.2
-	sha512sums = ab4eb2ac44a98433421a943e75ccb560b79fe517cf3d70fc74db677fea5014343d8a81ecc5f5e8aacc87f3f1aa2171d256a9f2a57dfbe21e9fd018d7a72cb37e
+	source = git+https://github.com/chenx-dust/fcitx5-steam-ibus-frontend.git#tag=v0.0.3
+	sha512sums = 23265ef95614442c28abe8fcba675d0ae068f37ce63455901767a3c403fa228f6b92cd1dde725a8b074608aa7e32be44ec0c5a44910c9d1ebbeb91d863b11cb5
 
 pkgname = fcitx5-steam-ibus-frontend
