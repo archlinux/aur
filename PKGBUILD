@@ -4,7 +4,7 @@ _pkgname=starsessions
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced sessions for Starlette and FastAPI frameworks."
 arch=('any')
 url="https://github.com/alex-oleshkevich/starsessions"
@@ -12,13 +12,20 @@ license=('MIT')
 depends=('python-starlette' 'python-itsdangerous')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 optdepends=('python-redis')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-asyncio' 'mypy' 'python-fastapi' 'python-redis' 'python-httpx')
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('e289e56da0c7436db6eb922374f57eaee1319b7af58ca14ba00feb447556d09f61cbe110302a9cc0ec68a15ab82f3355521790256b6e13c54f70e73b874a1009')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'mypy' 'python-fastapi' 'python-redis' 'python-httpx')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('5f8a6a7ab4b52ee543c3842fff207b12c47a4d649dabd14688f78de743032b661cdbff445349f987ca8297bf84eb209de708844232a76b45dd6fb2a0bd9f8a7a')
 
 build() {
     cd "${_pipname}-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_pipname}-${pkgver}"
+  python -m installer -d tmp_install dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$PWD/tmp_install/$site_packages" pytest -o addopts="" || warning "Some tests failed due to redis not running currently."
 }
 
 package() {

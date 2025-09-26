@@ -1,12 +1,11 @@
 pkgbase = python-starsessions
 	pkgdesc = Advanced sessions for Starlette and FastAPI frameworks.
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alex-oleshkevich/starsessions
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-asyncio
 	checkdepends = mypy
 	checkdepends = python-fastapi
@@ -19,7 +18,7 @@ pkgbase = python-starsessions
 	depends = python-starlette
 	depends = python-itsdangerous
 	optdepends = python-redis
-	source = starsessions-2.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/starsessions/starsessions-2.2.1.tar.gz
-	b2sums = e289e56da0c7436db6eb922374f57eaee1319b7af58ca14ba00feb447556d09f61cbe110302a9cc0ec68a15ab82f3355521790256b6e13c54f70e73b874a1009
+	source = starsessions-2.2.1.tar.gz::https://github.com/alex-oleshkevich/starsessions/archive/refs/tags/v2.2.1.tar.gz
+	b2sums = 5f8a6a7ab4b52ee543c3842fff207b12c47a4d649dabd14688f78de743032b661cdbff445349f987ca8297bf84eb209de708844232a76b45dd6fb2a0bd9f8a7a
 
 pkgname = python-starsessions
