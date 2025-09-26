@@ -1,0 +1,13 @@
+pkgbase = lowfi-bin
+	pkgdesc = An extremely simple lofi player.
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/talwat/lowfi
+	arch = x86_64
+	license = MIT
+	provides = lowfi
+	conflicts = lowfi
+	source = https://github.com/talwat/lowfi/releases/download/1.7.2/lowfi-linux-x86_64
+	sha256sums = ed6e799127f6bf2f5f6e2d70b86d8210ca3d97e63f086824972bc7030b99aeeb
+
+pkgname = lowfi-bin
