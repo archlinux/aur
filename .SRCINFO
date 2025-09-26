@@ -1,0 +1,23 @@
+pkgbase = lekhika-trainer-git
+	pkgdesc = Database editor tester application for liblekhika library
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/khumnath/lekhika-trainer
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = liblekhika
+	depends = qt6-base
+	depends = sqlite
+	depends = icu
+	optdepends = gettext
+	optdepends = appstream
+	provides = lekhika-trainer
+	conflicts = lekhika-trainer
+	conflicts = lekhika-trainer-bin
+	source = lekhika-trainer::git+https://github.com/khumnath/lekhika-trainer.git
+	sha256sums = SKIP
+
+pkgname = lekhika-trainer-git
