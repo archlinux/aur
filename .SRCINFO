@@ -1,6 +1,6 @@
 pkgbase = libpkedit-git
 	pkgdesc = A cross-platform library for modifying Pokémon save files
-	pkgver = r33.0e1303f
+	pkgver = v0.0.1.r5.gb288666
 	pkgrel = 1
 	url = https://codeberg.org/ramenu/pkedit
 	arch = x86_64
