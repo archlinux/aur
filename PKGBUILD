@@ -39,7 +39,10 @@ build() {
   export GOPATH="${srcdir}/gopath"
   mkdir -p "$GOPATH"
 
-  # Build backend first (generates bindings needed by frontend)
+  # Ensure clean build
+  rm -rf frontend/node_modules frontend/dist
+
+  # Build backend and generate bindings first
   go-task build:prod
 
   # Then build frontend
