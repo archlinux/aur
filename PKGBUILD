@@ -15,17 +15,15 @@ pkgname=(
   'element-desktop-blur-me-not'
   'rambox-pro-bin-blur-me-not'
   'signal-desktop-blur-me-not'
-  # 'spotify' -- create a `spotify-flags.conf` file instead, but
-  #   use `--ozone-platform=wayland`, not `--ozone-platform-hint=auto`,
-  #   due to the legacy Electron version vendored with the Spotify app
+  # 'spotify' -- create a `spotify-flags.conf` file instead
 )
 
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
 url='https://aur.archlinux.org/pkgbase/electron-blur-me-not'
-license=('Apache')
+license=('Apache-2.0')
 options=('!strip')
 
 source=(
@@ -40,7 +38,7 @@ sha512sums=(
   '5057477e2155a61a110a106e66376137f19472df215383435885529f6d8fbdc533ad912cb6a964cc2c8112d93f2443540729c3877b2259268729040c860f4506'
   '723e199194d1a000ed8a4802e7db14dee10bc34f55c10c89630ae9d84be9086b2ec6beb2a5bd805335a13384896b542e71a15c7e0a1b507862ce2c6ada1e46de'
   'f9bed1185af1a409d6dfef9d9b46c5765ce9ac168385934be52d7e7fe4dd8f688116cc5dc7bf8f09c2620f229bd8fd696959748e0d044928ff281a4ef023be67'
-  'd24eedac69f293f51a23e9d998b880b849554eb150777809c5f041009493aa99282b2c458fff71c9e14e6bd75b34d85c61cee3f3b9b62573faf411be157d0148'
+  '244afae34952cc7d2d3d49ed1dd5a004eaf3c804be76b1ffb651ad31a3512acc5677aece4ede712c7e9fd3d59c081d3016831cac76f0fd234c5c50490ce760d7'
   'fe94d357a5da3333beaa88d1dc9a02b75c6d07ab83d32029f8ac216e783cfc8a90f4bdad2b6e01a10d796228acface0896240528811def3cfee70c13d40807d1'
 )
 
@@ -92,14 +90,14 @@ _package() {
 }
 
 package_1password-blur-me-not() {
-  depends=("${pkgname%-blur-me-not}")
+  depends=('bash' "${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc '1Password')"
   _package '/opt/1Password/1password'
 }
 
 # shellcheck disable=SC2128 # during execution, pkgname is a string
 package_electron-fiddle-blur-me-not() {
-  depends=("${pkgname%-blur-me-not}")
+  depends=('bash' "${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Electron Fiddle')"
   # Original package has no symlink, so make a backup at patch time
   _package "/usr/lib/${pkgname}/original/electron-fiddle"
@@ -107,20 +105,20 @@ package_electron-fiddle-blur-me-not() {
 
 # shellcheck disable=SC2128 # during execution, pkgname is a string
 package_element-desktop-blur-me-not() {
-  depends=("${pkgname%-blur-me-not}")
+  depends=('bash' "${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Element Desktop')"
   # Original package has no symlink, so make a backup at patch time
   _package "/usr/lib/${pkgname}/original/element-desktop"
 }
 
 package_rambox-pro-bin-blur-me-not() {
-  depends=("${pkgname%-blur-me-not}")
+  depends=('bash' "${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Rambox Pro')"
   _package '/opt/rambox/rambox'
 }
 
 package_signal-desktop-blur-me-not() {
-  depends=("${pkgname%-blur-me-not}")
+  depends=('bash' "${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Signal Desktop')"
   _package '/usr/lib/signal-desktop/signal-desktop'
 }
