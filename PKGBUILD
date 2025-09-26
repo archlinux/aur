@@ -22,7 +22,7 @@ build() {
   cd $srcdir/vde-2
   mkdir -p build
   cd build
-  cmake --debug-find -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make -j $(nproc)
 }
 
