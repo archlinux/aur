@@ -2,8 +2,8 @@
 
 pkgname=perplexity
 pkgver=1.3.0
-pkgrel=3
-commit='a7c9e6757f77b249262b2dc198066edcfeb8fa0c'
+pkgrel=4
+commit='8fa3be9a687062801b73907d7bae976206374d6d'
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
@@ -40,9 +40,11 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   cp -r src/* "${pkgdir}/usr/lib/${pkgname}/"
   
-  # Копируем установленные node_modules
-  if [ -d "src/node_modules" ]; then
-    cp -r src/node_modules "${pkgdir}/usr/lib/${pkgname}/"
+  # npm install создает node_modules в src/, они уже скопированы выше
+  # Убеждаемся что node_modules присутствуют (они создались в build())
+  if [ ! -d "${pkgdir}/usr/lib/${pkgname}/node_modules" ]; then
+    echo "ERROR: node_modules не найдены после npm install!"
+    exit 1
   fi
 
   # При наличии локальных библиотек в репозитории — добавить их в пакет
