@@ -1,6 +1,6 @@
 pkgbase = python-repl-python-wakatime
 	pkgdesc = Python REPL plugin for automatic time tracking and metrics generated from your programming activity
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/wakatime/repl-python-wakatime
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-repl-python-wakatime
 	optdepends = wakatime: support wakatime
 	optdepends = ptpython: support ptpython
 	optdepends = ipython: support ipython
-	source = https://files.pythonhosted.org/packages/py3/r/repl-python-wakatime/repl_python_wakatime-0.1.4-py3-none-any.whl
-	sha256sums = a322c530c82239f36a4168e53d63aa169440eb4883a2b7c97d58bde508462c67
+	source = https://files.pythonhosted.org/packages/py3/r/repl-python-wakatime/repl_python_wakatime-0.1.5-py3-none-any.whl
+	sha256sums = 5b961fd2220f835b64914bebb9c53263afc925bd13f16d25f4324e275636ba5c
 
 pkgname = python-repl-python-wakatime
