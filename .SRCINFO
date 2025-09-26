@@ -1,0 +1,19 @@
+pkgbase = cc-switch-bin
+	pkgdesc = CC Switch - A utility application for switching between different configurations
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/farion1231/cc-switch
+	arch = x86_64
+	license = mit
+	depends = gtk3
+	depends = hicolor-icon-theme
+	optdepends = appmenu-gtk3-module: to reduce GTK module warnings
+	noextract = cc-switch-bin-3.3.1.AppImage
+	source = cc-switch-bin-3.3.1.AppImage::https://github.com/farion1231/cc-switch/releases/download/v3.3.1/CC.Switch_3.3.1_amd64.AppImage
+	source = cc-switch.desktop
+	source = cc-switch.png
+	sha256sums = fc34ff065cdb7365785baebf480ca52411307fb3b0327c79abdf923ea480626f
+	sha256sums = ac408c8b0d8113bd0cb6e4868ca753038142e2e60e2d22f9a291b03b30fa1c8a
+	sha256sums = d19349e7d3e17540d573fa458544145449106799d0d71de52294d60f629f4656
+
+pkgname = cc-switch-bin

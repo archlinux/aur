@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CC Switch
+Exec=env GTK_MODULES="" /opt/cc-switch/cc-switch.AppImage
+Terminal=false
+Type=Application
+Icon=cc-switch
+Categories=Utility;Development;
+StartupNotify=true
