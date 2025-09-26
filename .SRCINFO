@@ -1,9 +1,9 @@
 pkgbase = bomdia-git
-	pkgver = v0.1.0.r21.gd4089a3
-	pkgrel = 1
+	pkgver = v0.1.0.r33.g343850c
+	pkgrel = 2
 	url = https://codeberg.org/Phosphenius/bomdia
 	arch = any
-	license = AGPL
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

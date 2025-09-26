@@ -1,7 +1,7 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=bomdia-git
 pkgver=v0.1.0.r33.g343850c
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=(any)
 url="https://codeberg.org/Phosphenius/bomdia"
