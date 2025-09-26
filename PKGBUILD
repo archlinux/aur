@@ -4,7 +4,7 @@
 
 pkgname=ftb-app-bin
 pkgver=1.28.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
 arch=(x86_64 aarch64)
@@ -38,7 +38,7 @@ package() {
   sed -i 's#/opt/FTB Electron App/ftb-app#/opt/ftb-app/ftb-app#' "$pkgdir/usr/share/applications/ftb-app.desktop"
 
   # prevent self-upgrade with dpkg
-  rm "$pkgdir/opt/ftb-app/resources/package-type"
+  echo "pacman" > "$pkgdir/opt/ftb-app/resources/package-type"
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/ftb-app/ftb-app "$pkgdir/usr/bin/ftb-app"
