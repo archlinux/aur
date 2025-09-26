@@ -1,6 +1,6 @@
 pkgbase = syncthingtray
 	pkgdesc = Tray application for Syncthing
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = syncthingtray
 	depends = qt5-base
 	depends = qt5-declarative
 	optdepends = gnome-shell-extension-appindicator: tray icon support for GNOME Shell
-	source = syncthingtray-2.0.1.tar.gz::https://github.com/Martchus/syncthingtray/archive/v2.0.1.tar.gz
-	sha256sums = 3d1076beffb56dbfa70b6f7125e508de4c62a16b181b53fd467f40c045511500
+	source = syncthingtray-2.0.2.tar.gz::https://github.com/Martchus/syncthingtray/archive/v2.0.2.tar.gz
+	sha256sums = 7eea1232814297033c345919e8af4a337c2e827ecbf887296d65017ca8afd352
 
 pkgname = syncthingtray
 	depends = qtutilities
