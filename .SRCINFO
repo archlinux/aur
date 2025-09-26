@@ -1,6 +1,6 @@
 pkgbase = gamemaker-beta-bin
 	pkgdesc = Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals.
-	pkgver = 2024.1400.0.892
+	pkgver = 2024.1400.0.901
 	pkgrel = 1
 	url = https://gamemaker.io
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = gamemaker-beta-bin
 	provides = gamemaker-beta
 	conflicts = gamemaker-beta
 	options = !strip
-	source = https://gms.yoyogames.com/GameMaker-Beta-2024.1400.0.892.deb
+	source = https://gms.yoyogames.com/GameMaker-Beta-2024.1400.0.901.deb
 	source = LICENSE.txt
-	sha256sums = 8fe997811aa973a718dc5be78528353423b97d5a02b1fc02875419315f1cb816
+	sha256sums = 35de9259c530615647d0cf5d4d7855c9777113609003da5b131f69c1e873d62b
 	sha256sums = 9ebe45546ac7bb43156c62f42947ccaf660f96cd4fcc684f42df49754aaeac51
 
 pkgname = gamemaker-beta-bin
