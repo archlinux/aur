@@ -1,16 +1,16 @@
 pkgbase = calibre-bin
-	pkgdesc = Official desktop version Calibre
-	pkgver = 8.11.0
+	pkgdesc = Official binary version Calibre
+	pkgver = 8.11.1
 	pkgrel = 1
-	url = https://github.com/kovidgoyal/calibre
+	url = https://download.calibre-ebook.com
 	arch = x86_64
 	license = GPL3
 	conflicts = calibre
 	conflicts = calibre-git
 	options = !strip
 	source = share.tar.xz
-	source = https://github.com/kovidgoyal/calibre/releases/download/v8.11.0/calibre-8.11.0-x86_64.txz
+	source = https://download.calibre-ebook.com/8.11.1/calibre-8.11.1-x86_64.txz
 	sha256sums = c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a
-	sha256sums = 84ee11bcaf3060dcdd858c1a98579d72464884403319b3f764f6bc4d9f3e170f
+	sha256sums = 423dee2dd9659c804e1f8f162b650d9f7eb9d65752f5e2eba6b561f200b6fbd2
 
 pkgname = calibre-bin

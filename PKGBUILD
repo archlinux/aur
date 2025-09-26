@@ -1,11 +1,11 @@
 # Maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=calibre-bin
-pkgver=8.11.0
+pkgver=8.11.1
 pkgrel=1
-pkgdesc="Official desktop version Calibre"
+pkgdesc="Official binary version Calibre"
 arch=(x86_64)
-url="https://github.com/kovidgoyal/calibre"
+url="https://download.calibre-ebook.com"
 license=(GPL3)
 depends=()
 makedepends=()
@@ -20,7 +20,7 @@ options=('!strip')
 #   we'll provide them here
 source=(
 	share.tar.xz
-	$url/releases/download/v${pkgver}/calibre-${pkgver}-x86_64.txz
+	$url/${pkgver}/calibre-${pkgver}-x86_64.txz
 )
 
 prepare() {
@@ -34,7 +34,7 @@ prepare() {
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            '84ee11bcaf3060dcdd858c1a98579d72464884403319b3f764f6bc4d9f3e170f')
+            '423dee2dd9659c804e1f8f162b650d9f7eb9d65752f5e2eba6b561f200b6fbd2')
 
 package() {
 	# Creating needed directories
