@@ -1,5 +1,8 @@
 # Maintainer: Daniil Gentili <daniil@daniil.it>
 
+# Note: 2.9.0 is the last real release.
+#  2.10.0 is a dummy "end of life" release.
+
 _pkgname="cabbage"
 pkgname="$_pkgname-bin"
 pkgver=2.9.0
@@ -72,15 +75,15 @@ END
 
   # install examples and documentation
   install -dm755 "$doc_path"
-  cp --reflink=auto -r Examples "$doc_path"
+  cp -r Examples "$doc_path"
 
-  cp --reflink=auto -r CabbageManual "$doc_path"
+  cp -r CabbageManual "$doc_path"
 
   install -dm755 "$cabbage_rack_path"
-  cp --reflink=auto -r "$srcdir/CabbageRack" "$bin_path"
+  cp -r "$srcdir/CabbageRack" "$bin_path"
 
   install -dm755 "$theme_path"
-  cp --reflink=auto -r "$srcdir/Themes" "$theme_path"
+  cp -r "$srcdir/Themes" "$theme_path"
 
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
