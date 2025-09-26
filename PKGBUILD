@@ -3,12 +3,12 @@
 
 pkgbase='systemd'
 pkgname='nosystemd-boot-artix'
-_tag='257.8'
+_tag='258'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. So we replace dashes and tildes with the empty string to
 # make sure pacman's version comparing does the right thing for rc versions:
-pkgver=257.8
-pkgrel=2
+pkgver=258
+pkgrel=4
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 url='https://www.github.com/systemd/systemd'
@@ -19,40 +19,40 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
-             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile')
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'less')
 conflicts=("mkinitcpio<38-1")
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
               '9A774DB5DB996C154EBBFBFDA0099A18E29326E1'  # Yu Watanabe <watanabe.yu+github@gmail.com>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
 source=("git+https://github.com/systemd/systemd#tag=v${_tag}?signed"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/0001-Use-Arch-Linux-device-access-groups.patch"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/0001-Use-Arch-Linux-device-access-groups.patch"
         # bootloader files
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/arch.conf"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/loader.conf?ref_type=heads"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/splash-arch.bmp"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/arch.conf"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/loader.conf"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/splash-arch.bmp"
         # pam configuration
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/systemd-user.pam"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/systemd-user.pam"
         # pacman / libalpm hooks
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/systemd-hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/20-systemd-sysusers.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-binfmt.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-catalog.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-daemon-reload-system.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-daemon-reload-user.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-hwdb.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-restart-marked.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-sysctl.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-tmpfiles.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-udev-reload.hook"
-        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/30-systemd-update.hook")
-sha512sums=('ff06b4a7854b67e36079fd2ba4c1fc9e772b8227606521cae641eb6633c872fa0f528e0a9c0b13b3b47741243b1735c7500261a8f7c714b5383cd89746d2181f'
-            '78065bde708118b7d6e4ed492e096c763e4679a1c54bd98750d5d609d8cc2f1373023f308880f14fc923ae7f9fea34824917ef884c0f996b1f43d08ef022c0fb'
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/systemd-hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/20-systemd-sysusers.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-binfmt.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-catalog.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-daemon-reload-system.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-daemon-reload-user.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-hwdb.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-restart-marked.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-sysctl.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-tmpfiles.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-udev-reload.hook"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/258-4/30-systemd-update.hook")
+sha512sums=('4703b54464ae42acb9e8b2a123f9e76cbe94b03c416292a95b9a8eb282eb2908e0499294b8c7f9bbb7946147e9379db7b277d1c277a08ee00f92f8d0eff33330'
+            'beb15210d8afe69e1e47c99a81da5967428ccc64ece85b8a843333cb741eda061ae7a91a79cec8a1136a624e93e63140013986499589bf10edcc52d865729377'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
-            'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
+            '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             '32580b82e97573d3e499821e2ce415ff134c0ec52c9b44a3c0862c4007d347f55636d6afac3dfc6831a9b384c7448075bdf3a12f369b4d8b62b24dfdb9c8a76a'
-            '81baa1ae439b0f4d1f09371a82c02db06a97a4fc35545fc2654f7905b4422fc8cf085f70304919a4323f39e662df1e05aa8d977d1dde73507527abe3072c386b'
+            '05a3b19a2132c8c3048a66f2d06a9f8790e9c84c9ebdacc358456e38c5ebc8c02c542838f6aca3301f19ae83bc9fda66e701c682624dd5cf9fb119e452338a56'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
@@ -78,10 +78,25 @@ if [ -f /.build/build.dist ] && [ -d /usr/src/packages/SOURCES ] &&  [ -d /usr/s
 fi
 
 _backports=(
+  # virt: revert to detect chroot by comparing with / rather than /proc/PID/root
+  # https://github.com/systemd/systemd/pull/39021
+  '01184496a2b518f33c56b5803549f27fa8f226fe'
+
+  # basic/efivars: read EFI variables using one read(), not two #38864
+  # https://github.com/systemd/systemd/pull/38864
+  '9db9d6806e398465a6366dfc5bdde2e24338ac29~1..4125e0c3db9fd8a2102781674db7aae263714aec'
+
+  # udev,login: update ACL on static device nodes #39071
+  '41c4a69653f7ca48a449de172e73acd43eda81a4~1..2c762d90cfe7d67f10af87986ed2e6f0005eabfb'
+
+  # nspawn: don't try to connect to D-Bus when it's not necessary #39045
+  'c3d5f5f165ce7ccf8d57c4272c39d83a08279db7'
+
+  # measure: strip tpm 1.x remnants and make GetActivePcrBanks() work #39089
+  '496489c2a70b1675af679c1d33cee035fe7c9aff~1..b388fa20c735add38080a746fd831273820c93ac'
 )
 
 _reverts=(
-'12a455db368340733ac9a701d9a5864b612d3408'
 )
 
 _efiarch=x64
@@ -122,9 +137,10 @@ build() {
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
     # We use these public name services, ordered by their privacy policy (hopefully):
-    #  * Cloudflare (https://1.1.1.1/)
-    #  * Quad9 (https://www.quad9.net/)
-    #  * Google (https://developers.google.com/speed/public-dns/)
+    #  * Quad9 (https://quad9.net/privacy/policy/)
+    '9.9.9.9#dns.quad9.net'
+    '2620:fe::9#dns.quad9.net'
+    #  * Cloudflare (https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/)
     '1.1.1.1#cloudflare-dns.com'
     '9.9.9.9#dns.quad9.net'
     '8.8.8.8#dns.google'
@@ -150,10 +166,6 @@ build() {
     -Dman=enabled
     -Dselinux=disabled
     -Dsshdprivsepdir=/usr/share/empty.sshd
-
-    # We disable DNSSEC by default, it still causes trouble:
-    # https://github.com/systemd/systemd/issues/10579
-
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
     -Ddefault-kill-user-processes=false
