@@ -2,7 +2,7 @@
 
 pkgname=ftb-app
 pkgver=1.28.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
 arch=(any)
@@ -36,6 +36,8 @@ prepare() {
 	cd "$srcdir/FTB-App"
 	# Let renderer process detect meta.json properly when using system Electron. (ftb-app.sh sets FTB_APP_PATH)
 	sed -i 's#process.resourcesPath#process.env.FTB_APP_PATH || process.resourcesPath#' electron/preload.ts electron/javaVerifier.ts
+	# Skip auto update or it will stuck
+	sed -i '/prelaunch\/im-ready/a LogAndEmit.create("updater:update-not-available").meta("Skip update check as we are using AUR").execute()' electron/main.ts
 	# Passing -c.electronDist=... -c.electronVersion=... cause errors, modify config instead.
 	local _electronDist="/usr/lib/$_electron"
 	local _electronVersion="$(<$_electronDist/version)"
