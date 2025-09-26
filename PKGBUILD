@@ -3,16 +3,18 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
 
-pkgname=gnome-shell-performance
-pkgver=48.1
-pkgrel=2
+pkgbase=gnome-shell-performance
+pkgname=(
+  gnome-shell-performance
+  gnome-shell-performance-docs
+)
+pkgver=49.0
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
 license=(GPL-3.0-or-later)
-provides=(gnome-shell)
-conflicts=(gnome-shell)
 depends=(
   accountsservice
   at-spi2-core
@@ -33,11 +35,11 @@ depends=(
   gsettings-desktop-schemas
   gtk4
   hicolor-icon-theme
+  ibus
   json-glib
   libadwaita
   libcanberra-pulse
   libgdm
-  libgirepository
   libglvnd
   libgweather-4
   libibus
@@ -49,6 +51,7 @@ depends=(
   libsecret
   libsoup3
   libx11
+  libxext
   libxfixes
   mutter
   pango
@@ -76,20 +79,22 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=${pkgver/[a-z]/.&}"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
   "git+https://github.com/ptomato/jasmine-gjs.git#commit=856465dddbd92e82e574891e1ebc79e17d7b708a"
-  3252.patch
+  "git+https://gitlab.gnome.org/GNOME/libshew.git#commit=ed782477cb5164320ae4f731d49bc5d475ab2a52"
 )
-b2sums=('9f43af880a8f80bc405c704061b2ff8734ce3e806c75ee658359078d8a48d6a1522e26ddd060e0c57ca41e8f53bd82c47d6457cbda7df571a46ee43100426da7'
+b2sums=('fdc8acc857f136a654839d550bc57d3f349284d4c8e9e4a83ed7f63cf1ca95c18f3d0e59339814ea2fc8a2d8957f4797ac29572d7b9b15e970956da987ecd804'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053'
         'ecbbb9ce5895cc1caed2ddef39c70b4768d78ea0a929ea932d4149f923f92650973cdaefc2aacc9063f2ccf4ec965b57a9698a286f9a6561e39ce2e579ae4522'
-        '58d2f75fd34a5d50d1a279f61ea47feb4f62077e51322a5452d4d56010ca288eece6afe5fbd0368c80a110b3c863cd8e8f8bb1535488d29085b93b58482d066c')
+        'ec120324e4fe90fb8017847e5eda3c0b181b6609b78610b3a61ea106ee4d56d2b3bf243c3bc5d3ddd59fe55bb5ceed4f55b41f09626137027ed1c3e27930d082')
 
 prepare() {
   # Inject gvc
   ln -s libgnome-volume-control gvc
 
   cd gnome-shell
-  
-  git apply -3 ../3252.patch
+
+  # Touchscreen fix
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/issues/12
+  git cherry-pick -n e54aa588c1604b63e2f051e20c1ecb3e601beb5c
 }
 
 build() {
@@ -108,8 +113,10 @@ build() {
   meson compile -C build
 }
 
-package() {
-  depends+=(libmutter-16.so)
+package_gnome-shell-performance() {
+  depends+=(libmutter-17.so)
+  provides=(gnome-shell)
+  conflicts=(gnome-shell)
   optdepends=(
     'evolution-data-server: Evolution calendar integration'
     'gnome-bluetooth-3.0: Bluetooth support'
@@ -128,6 +135,15 @@ package() {
 
   mkdir -p doc/usr/share
   mv {"$pkgdir",doc}/usr/share/doc
+}
+
+package_gnome-shell-performance-docs() {
+  pkgdesc+=" (API documentation)"
+  depends=()
+  provides=(gnome-shell-docs)
+  conflicts=(gnome-shell-docs)
+
+  mv doc/* "$pkgdir"
 }
 
 # vim:set sw=2 sts=-1 et:
