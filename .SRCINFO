@@ -8,7 +8,7 @@ pkgbase = make-it-rain
 	makedepends = rust
 	makedepends = cargo
 	options = !debug
-	source = make-it-rain-1.2.1.tar.gz::https://github.com/saltnpepper97/make-it-rain/archive/v1.2.0.tar.gz
+	source = make-it-rain-1.2.1.tar.gz::https://github.com/saltnpepper97/make-it-rain/archive/v1.2.1.tar.gz
 	sha256sums = b18d39841f233548cdbec05f8bc652191eb9c45c9bad4413551fe40376d694c4
 
 pkgname = make-it-rain
