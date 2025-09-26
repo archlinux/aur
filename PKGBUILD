@@ -58,6 +58,6 @@ package() {
 
   # Install icon
   for size in 16 22 32 48 64 128 256; do
-    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png"
+    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/classicaddonmanager.png"
   done
 }
