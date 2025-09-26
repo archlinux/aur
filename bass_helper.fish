@@ -11,54 +11,54 @@ function __nvm_setup_bass --description 'Setup bass environment for nvm integrat
     # Check plugin managers and show status
     echo -n "  fisher: "
     if command -v fisher >/dev/null 2>&1
-        echo -e "\033[32m✓\033[0m"
+        echo -e " \033[32m✔\033[0m"
         echo "Installing bass via fisher..."
         # Show fisher output
         fisher install edc/bass
         if test $status -eq 0
-            echo -e "\033[32mBass installed successfully via fisher\033[0m"
+            echo -e " \033[32mBass installed successfully via fisher\033[0m"
             echo "Please restart your fish shell to complete setup"
             return 0
         else
-            echo -e "\033[31mFailed to install via fisher\033[0m"
+            echo -e " \033[31mFailed to install via fisher\033[0m"
         end
     else
-        echo -e "\033[90m✗\033[0m"
+        echo -e " \033[90m✘\033[0m"
     end
     
     echo -n "  omf: "
     if command -v omf >/dev/null 2>&1
-        echo -e "\033[32m✓\033[0m"
+        echo -e " \033[32m✔\033[0m"
         echo "Installing bass via Oh My Fish..."
         # Show OMF output
         omf install bass
         if test $status -eq 0
-            echo -e "\033[32mBass installed successfully via OMF\033[0m"
+            echo -e " \033[32mBass installed successfully via OMF\033[0m"
             echo "Please restart your fish shell to complete setup"
             return 0
         else
-            echo -e "\033[31mFailed to install via OMF\033[0m"
+            echo -e " \033[31mFailed to install via OMF\033[0m"
         end
     else
-        echo -e "\033[90m✗\033[0m"
+        echo -e " \033[90m✘\033[0m"
     end
     
     echo -n "  fundle: "
     if functions -q fundle >/dev/null 2>&1
-        echo -e "\033[32m✓\033[0m"
+        echo -e " \033[32m✔\033[0m"
         echo "Installing bass via fundle..."
         # Show fundle output
         fundle plugin 'edc/bass'
         fundle install
         if test $status -eq 0
-            echo -e "\033[32mBass installed successfully via fundle\033[0m"
+            echo -e " \033[32mBass installed successfully via fundle\033[0m"
             echo "Please restart your fish shell to complete setup"
             return 0
         else
-            echo -e "\033[31mFailed to install via fundle\033[0m"
+            echo -e " \033[31mFailed to install via fundle\033[0m"
         end
     else
-        echo -e "\033[90m✗\033[0m"
+        echo -e " \033[90m✘\033[0m"
     end
 
     # No plugin manager available - compile from source
@@ -70,20 +70,20 @@ function __nvm_setup_bass --description 'Setup bass environment for nvm integrat
     echo -n "Downloading bass source code... "
     # Show download with progress
     if curl -L --progress-bar --fail https://github.com/edc/bass/archive/master.tar.gz -o /tmp/bass.tar.gz
-        echo -e "\033[32m✓\033[0m"
+        echo -e " \033[32m✔\033[0m"
     else
-        echo -e "\033[31m✗\033[0m"
-        echo -e "\033[31mDownload failed\033[0m"
+        echo -e " \033[31m✘\033[0m"
+        echo -e " \033[31mDownload failed\033[0m"
         return 1
     end
     
     echo -n "Extracting source... "
     # Show extraction process
     if tar -xzf /tmp/bass.tar.gz -C /tmp 2>/dev/null
-        echo -e "\033[32m✓\033[0m"
+        echo -e " \033[32m✔\033[0m"
     else
-        echo -e "\033[31m✗\033[0m"
-        echo -e "\033[31mExtraction failed\033[0m"
+        echo -e " \033[31m✘\033[0m"
+        echo -e " \033[31mExtraction failed\033[0m"
         rm -f /tmp/bass.tar.gz
         return 1
     end
@@ -102,11 +102,11 @@ function __nvm_setup_bass --description 'Setup bass environment for nvm integrat
         echo "rm -f '$uninstall_script'" >> "$uninstall_script"
         chmod +x "$uninstall_script"
         
-        echo -e "\033[32mBass compiled and installed successfully\033[0m"
+        echo -e " \033[32mBass compiled and installed successfully\033[0m"
         echo "Installation path: $fish_functions_dir"
         echo "Uninstall script: $uninstall_script"
     else
-        echo -e "\033[31mBass source files not found\033[0m"
+        echo -e " \033[31mBass source files not found\033[0m"
         rm -rf /tmp/bass-master /tmp/bass.tar.gz
         return 1
     end
@@ -140,7 +140,7 @@ function __nvm_auto_configure_fish --description 'Configure Fish shell for nvm i
     echo "# You must call it on initialization or directory switching won't work" >> "$fish_config_file"
     echo "load_nvm > /dev/stderr" >> "$fish_config_file"
     
-    echo -e "\033[32mFish integration configured\033[0m"
+    echo -e " \033[32mFish integration configured\033[0m"
     
     # Load immediately for current session
     load_nvm > /dev/stderr
@@ -196,7 +196,7 @@ function __nvm_run_setup --description 'Run complete nvm-fish setup'
     
     # Setup bass environment
     if not __nvm_ensure_bass
-        echo -e "\033[31mSetup failed\033[0m"
+        echo -e " \033[31mSetup failed\033[0m"
         return 1
     end
     
@@ -209,7 +209,7 @@ function __nvm_run_setup --description 'Run complete nvm-fish setup'
     touch "$setup_marker_file"
     
     echo ""
-    echo -e "\033[32mSetup complete!\033[0m"
+    echo -e " \033[32mSetup complete!\033[0m"
     echo ""
     echo "Available features:"
     echo "  • All nvm commands work in Fish shell"
@@ -245,7 +245,7 @@ function __nvm_ensure_bass --description 'Ensure bass is available for nvm comma
     end
     
     # Installation failed
-    echo -e "\033[31mBass setup failed\033[0m"
+    echo -e " \033[31mBass setup failed\033[0m"
     echo ""
     echo "Possible causes:"
     echo "  • Network connection issues"

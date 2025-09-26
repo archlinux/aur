@@ -16,8 +16,8 @@ post_install() {
     echo "    nvm --version, nvm install node, nvm use 16, etc."
     echo ""
     echo "==> Dependencies:"
-    echo "    ✓ nvm (installed as package dependency)"
-    echo "    ✓ bass (auto-installed during nvm init)"
+    echo "    ✔ nvm (installed as package dependency)"
+    echo "    ✔ bass (auto-installed during nvm init)"
     echo ""
     echo "==> Documentation: https://github.com/your-username/nvm-fish"
 }
@@ -90,9 +90,9 @@ post_remove() {
     fi
     
     echo "==> Cleanup completed. The following were preserved:"
-    echo "    ✓ Official nvm installation and configuration"  
-    echo "    ✓ All Node.js versions installed via nvm"
-    echo "    ✓ Bass (see above for removal options if needed)"
+    echo "    ✔ Official nvm installation and configuration"  
+    echo "    ✔ All Node.js versions installed via nvm"
+    echo "    ✔ Bass (see above for removal options if needed)"
     echo ""
     echo "==> IMPORTANT: Please restart your Fish shell to clear function cache:"
     echo "    - Close and reopen your terminal, OR"
