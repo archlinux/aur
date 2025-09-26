@@ -15,8 +15,8 @@ license=('GPL2' 'LGPL' 'custom:BSD')
 groups=('virtualsquare')
 depends=('s2argv-execs' 'libpcap' 'python' 'wolfssl')
 makedepends=('git' 'cmake')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_pkgname" 'vde2')
+conflicts=("$_pkgname" 'vde2')
 source=(
 	"git+$url.git"
 	dhcpd.conf.sample
