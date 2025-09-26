@@ -1,0 +1,7 @@
+post_install() {
+  setcap 'cap_net_raw,cap_net_admin,cap_sys_admin+eip' usr/bin/rustnet
+}
+
+post_upgrade() {
+  post_install
+}
