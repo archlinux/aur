@@ -1,0 +1,21 @@
+pkgbase = liblekhika-git
+	pkgdesc = lekhika library for latin to nepali devnagari transliteration.
+	pkgver = r6.a6e0eaf
+	pkgrel = 1
+	url = https://github.com/khumnath/liblekhika
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = sqlite
+	depends = icu
+	provides = liblekhika
+	conflicts = liblekhika
+	conflicts = liblekhika-bin
+	source = liblekhika::git+https://github.com/khumnath/liblekhika.git
+	sha256sums = SKIP
+
+pkgname = liblekhika-git
