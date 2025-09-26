@@ -15,6 +15,6 @@ pkgbase = pokeclicker-platinum
 	depends = glibc
 	options = !strip
 	source = git+https://github.com/wheat32/pokeclicker.git#tag=v0.10.25-3
-	sha256sums = 7a11f116cd108fb1069464839e43f8d26d5c1e744b336509cdd97389e287b17a
+	sha256sums = SKIP
 
 pkgname = pokeclicker-platinum

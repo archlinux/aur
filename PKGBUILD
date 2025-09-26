@@ -14,7 +14,7 @@ options=(!strip)
 _gitver="${pkgver//_/-}"
 
 source=("git+$url.git#tag=v${_gitver}")
-sha256sums=('7a11f116cd108fb1069464839e43f8d26d5c1e744b336509cdd97389e287b17a')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/pokeclicker"
