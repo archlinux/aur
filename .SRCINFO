@@ -1,5 +1,5 @@
 pkgbase = classic-addon-manager-git
-	pkgdesc = An addon manager for ArcheAge Classic, built with Go latest git master
+	pkgdesc = An addon manager for ArcheAge Classic, built with Go from latest git master
 	pkgver = r0.0000000
 	pkgrel = 1
 	url = https://github.com/classic-addon-manager/classic-addon-manager
@@ -10,9 +10,12 @@ pkgbase = classic-addon-manager-git
 	makedepends = npm
 	makedepends = go-task
 	makedepends = git
+	makedepends = wails
 	depends = glibc
 	source = git+https://github.com/classic-addon-manager/classic-addon-manager.git
 	source = classic-addon-manager.desktop
+	source = classic-addon-manager.install
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
