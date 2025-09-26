@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Classic Addon Manager
-Comment=Manage addons for World of Warcraft Classic
+Comment=Manage addons for ArcheAge Classic private server
 Exec=classic-addon-manager
-Icon=classic-addon-manager
+Icon=support_daru_alt_sm
 Terminal=false
 Type=Application
 Categories=Game;Utility;

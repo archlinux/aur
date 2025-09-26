@@ -60,8 +60,7 @@ package() {
   install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install icon from frontend assets
-  if [ -f "frontend/src/assets/images/alt_aac-logo.png" ]; then
-    install -Dm644 "frontend/src/assets/images/alt_aac-logo.png" \
-      "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
-  fi
+  for icon in frontend/src/assets/images/*.webp; do
+    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$(basename "$icon")"
+  done
 }
