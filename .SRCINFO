@@ -1,6 +1,6 @@
 pkgbase = nvm-fish
 	pkgdesc = Fish shell wrapper for official nvm using bass - enables nvm commands in fish while preserving full compatibility with bash nvm installations
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/ChHsiching/nvm-fish-aur
 	install = nvm-fish.install

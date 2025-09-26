@@ -32,7 +32,7 @@ function nvm --description 'Node Version Manager - Fish shell integration'
   end
   
   # Handle nvm use command with .nvmrc management
-  if test "$argv[1]" = "use" -a (count $argv) -gt 1
+  if test "$argv[1]" = "use"; and test (count $argv) -gt 1
     # Execute nvm use command and capture output
     set -l nvm_output (bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv 2>&1)
 
