@@ -1,0 +1,13 @@
+pkgbase = python-openepub
+	pkgdesc = Python library to interact with EPUB files.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/sakolkar/openepub
+	arch = any
+	license = Unlicense
+	makedepends = python-hatchling
+	depends = python
+	source = python-openepub-0.0.9.tar.gz::https://github.com/sakolkar/openepub/archive/refs/tags/v0.0.9.tar.gz
+	sha256sums = 2cf6e66613f5c65fd27b037c79c273eba03e8f3e3da06d99c4eab9f89630010f
+
+pkgname = python-openepub
