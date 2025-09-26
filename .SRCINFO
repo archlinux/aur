@@ -1,0 +1,13 @@
+pkgbase = mdpeditor
+	pkgdesc = Easily produce molecular dynamics simulation parameter input for GROMACS.
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://gitlab.com/cblau/mdpeditor
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python>=3.8
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/m/mdpeditor/mdpeditor-1.2.5.tar.gz
+	b2sums = b30866263636f1d89a8356e7673a7c8c983ce0251a5ca95b98e2c58bcf94ad08df9b23c039992e455d81de8219ec105ee5dd3c8f251fe0e59362dc2866de097b
+
+pkgname = mdpeditor
