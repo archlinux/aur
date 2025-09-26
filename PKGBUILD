@@ -15,7 +15,19 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('GPL-3.0')
 
 optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
-depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo')
+depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant')
+optdepends=('elephant-providerlist: providerlist provider'
+            'elephant-desktopapplications: desktopapplications provider'
+            'elephant-archlinuxpkgs: archlinuxpkgs provider'
+            'elephant-calc: calc provider'
+            'elephant-clipboard: clipboard provider'
+            'elephant-files: files provider'
+            'elephant-menus: menus provider'
+            'elephant-runner: runner provider'
+            'elephant-symbols: symbols provider'
+            'elephant-todo: todo provider'
+            'elephant-unicode: unicode provider'
+            'elephant-websearch: websearch provider')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
