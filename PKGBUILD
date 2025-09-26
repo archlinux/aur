@@ -5,7 +5,7 @@ _pkgname=Gitify
 pkgver=6.8.0
 _electronversion=38
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="GitHub notifications on your menu bar.(Use system-wide electron)"
 arch=('any')
 url='https://www.gitify.io/'
@@ -54,7 +54,7 @@ prepare() {
         --pkgdesc="${pkgdesc}" \
         --categories="Development" \
         --name="${_pkgname}" \
-        --exec="${pkgname} %U"
+        --exec="${pkgname} --password-store=gnome-keyring %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
