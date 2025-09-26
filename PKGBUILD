@@ -27,15 +27,13 @@ prepare() {
 }
 
 package() {
-    # Install wrapper first
-    install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
+    # Executables get 755
+    install -Dm755 anti-ru-check.sh "$pkgdir/usr/bin/anti-ru-check"
+    install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/bin/makepkg.wrapper"
 
-    # Install ru-check script
-    install -Dm755 ru-check.sh "$pkgdir/usr/local/bin/anti-ru-check.sh"
-
-    # Install supporting files
-    mkdir -p "$pkgdir/usr/local/etc"
-    cp -f ru-blocked-locations.txt "$pkgdir/usr/local/etc/"
-    cp -f ru-denylist.txt "$pkgdir/usr/local/etc/"
-    cp -f ru-blocked-domains.txt "$pkgdir/usr/local/etc/"
+    # Data files get 644
+    install -Dm644 ru-blocked-domains.txt "$pkgdir/usr/share/anti-ru-check/ru-blocked-domains.txt"
+    install -Dm644 ru-blocked-locations.txt "$pkgdir/usr/share/anti-ru-check/ru-blocked-locations.txt"
+    install -Dm644 ru-denylist.txt "$pkgdir/usr/share/anti-ru-check/ru-denylist.txt"
 }
+
