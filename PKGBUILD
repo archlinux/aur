@@ -19,7 +19,7 @@ depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-y
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock' 'vulkan-icd-loader')
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc14'
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'nccl' 'cudnn' 'git' 'python-triton' 'python-aotriton' 'rocm-toolchain' 'rocm-hip-sdk'
              'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
@@ -231,6 +231,16 @@ prepare() {
   git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
   cd ../..
 
+  # GCC 15 fixes
+  # Make TensorPipe compilable by gcc-14+
+  cd third_party/tensorpipe
+  git cherry-pick --no-commit 62a3ab9d816b2d824cb153ee43bcf2a2b7dc8fa3
+  cd ../..
+  # gloo/types.h: include cstdint
+  cd third_party/gloo
+  git cherry-pick --no-commit 54cbae0d3a67fa890b4c3d9ee162b7860315e341
+  cd ../..
+
   cd "${srcdir}"
 
   cp -r "${_pkgname}" "${_pkgname}-opt"
@@ -265,8 +275,8 @@ _prepare() {
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc-14
-  export CXX=/usr/bin/g++-14
+  export CC="${NVCC_CCBIN/++/cc}"
+  export CXX="$NVCC_CCBIN"
   export CXXFLAGS+=" -Wno-error=maybe-uninitialized"
   export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
@@ -289,7 +299,7 @@ _prepare() {
   export USE_ROCM_CK=OFF
 
   # Compile source code for supported GPU archs in parallel
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name))"
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $($CC -print-libgcc-file-name))"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
 
   export AOTRITON_INSTALLED_PREFIX=/usr
