@@ -2,7 +2,7 @@
 # Maintainer: Filip Mikina <filipmikina at gmail dot com>
 
 pkgname='hyprdynamicmonitors-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Dynamic monitor configuration for Hyprland.'
 url='https://github.com/fiffeek/hyprdynamicmonitors'
@@ -12,14 +12,14 @@ provides=('hyprdynamicmonitors-bin')
 conflicts=('hyprdynamicmonitors')
 optdepends=('hyprland' 'upower')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.0.1/hyprdynamicmonitors_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9eafad10aca615b3e981c24e002d3d2dd5ccf1e769fa18fd0d9dcf2824909091')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.0.2/hyprdynamicmonitors_Linux_arm64.tar.gz")
+sha256sums_aarch64=('45a71f2d72090b2d5d5765e197497cc750e58a5a30db7731eadb529db749646d')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.0.1/hyprdynamicmonitors_Linux_i386.tar.gz")
-sha256sums_i686=('e53330225d7708de3957b9548766eeaf2cfeb75dd53ecc93e8a7e2e8cac21320')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.0.2/hyprdynamicmonitors_Linux_i386.tar.gz")
+sha256sums_i686=('98eb843b131779c9aac76d72058f94e889dd6dd8ec86ecb52347c1a69a67dc88')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.0.1/hyprdynamicmonitors_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('bda318823ad7a31e09a82d6ac709b774cf78c2cae23c9ec9c8a549fdfb9fd4a6')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.0.2/hyprdynamicmonitors_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('f12cad34bcd82e23c625ccefcbef57fe3f2e87fe6ae5c6b52722388baf1b3e28')
 
 package() {
   # bin
@@ -27,4 +27,12 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/hyprdynamicmonitors/LICENSE"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  ./hyprdynamicmonitors completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/hyprdynamicmonitors"
+  ./hyprdynamicmonitors completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_hyprdynamicmonitors"
+  ./hyprdynamicmonitors completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/hyprdynamicmonitors.fish"
 }
