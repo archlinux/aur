@@ -4,7 +4,7 @@ pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
 pkgver=r203.6d451c3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform network monitoring terminal UI tool built with Rust."
 arch=('x86_64')
 url="https://github.com/domcyrus/rustnet"
@@ -41,7 +41,7 @@ check() {
     cd "$srcdir/$_reponame"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --features ebpf
+    cargo test --frozen --release --features ebpf
 }
 
 package() {
