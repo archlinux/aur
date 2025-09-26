@@ -2,11 +2,11 @@
 # Co-Maintainer: Robert Zhou <meep (dot) aur (at) meepzh (dot) com>
 
 _mayaver=2026
-_mayaminor=1
+_mayaminor=2
 
 pkgname=maya-usd-bin
-pkgver=0.32.0
-pkgrel=2
+pkgver=0.33.0
+pkgrel=1
 pkgdesc='Autodesk Maya Universal Scene Description Plugin'
 arch=('x86_64')
 url='https://github.com/Autodesk/maya-usd'
@@ -17,14 +17,14 @@ conflicts=('maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("https://github.com/Autodesk/maya-usd/releases/download/v${pkgver}/MayaUSD_${pkgver}_Maya${_mayaver}.${_mayaminor}_Linux.run")
-b2sums=('dccd645cc31bcdbca587fb130d10a23d56c08c0dcb5ea33aaebe7be7e17cc942773cdeb324b12cc6e0f3c5795ca09173bc6ea3dc46d174e03024eb5f07223e91')
+b2sums=('6ea4ee2184e1dc7ea637fb7f6327cf7b45083e1a70532bcd50be12a2bf22501ee397a657c40bb638ac11e73fd348acfe5fbd28edc2c9ced8a9c3306734b52844')
 
 options=(!strip)
 
 prepare() {
-    chmod +x ./MayaUSD_${pkgver}_Maya${_mayaver}_Linux.run
-    rm *.rpm
-    ./MayaUSD_${pkgver}_Maya${_mayaver}_Linux.run --tar xvf
+    chmod +x ./MayaUSD_${pkgver}_Maya${_mayaver}.${_mayaminor}_Linux.run
+    rm -f *.rpm
+    ./MayaUSD_${pkgver}_Maya${_mayaver}.${_mayaminor}_Linux.run --tar xvf
     echo 'Extracting rpm...'
     bsdtar -xf *.rpm
     sed -i "s|<PLUGIN_DIR>|/usr/autodesk/maya$_mayaver/plug-ins/mayausd|g" usr/autodesk/modules/maya/$_mayaver/mayausd.mod
