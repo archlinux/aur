@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Classic Addon Manager
+Comment=Manage addons for World of Warcraft Classic
+Exec=classic-addon-manager
+Icon=classic-addon-manager
+Terminal=false
+Type=Application
+Categories=Game;Utility;

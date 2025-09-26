@@ -1,0 +1,19 @@
+pkgbase = classic-addon-manager-git
+	pkgdesc = An addon manager for World of Warcraft Classic, built with Go + Svelte (Wails) - latest git master
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/classic-addon-manager/classic-addon-manager
+	install = classic-addon-manager.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	makedepends = go-task
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/classic-addon-manager/classic-addon-manager.git
+	source = classic-addon-manager.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = classic-addon-manager-git
