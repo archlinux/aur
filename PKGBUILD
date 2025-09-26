@@ -11,8 +11,6 @@ url='https://github.com/virtualsquare/vde-2'
 license=('GPL-2.0' 'LGPL-2.1')
 makedepends=('make' 'coreutils' 'cmake' 'vdeplug4')
 depends=('vdeplug4')
-provides=('vde2')
-conflicts=('vde2')
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -24,7 +22,7 @@ build() {
   cd $srcdir/vde-2
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake --debug-find -DCMAKE_INSTALL_PREFIX=/usr ..
   make -j $(nproc)
 }
 

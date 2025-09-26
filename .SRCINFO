@@ -11,8 +11,6 @@ pkgbase = vde2-git
 	makedepends = cmake
 	makedepends = vdeplug4
 	depends = vdeplug4
-	provides = vde2
-	conflicts = vde2
 	source = git+https://github.com/virtualsquare/vde-2
 	sha256sums = SKIP
 
