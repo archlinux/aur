@@ -1,5 +1,5 @@
 pkgbase = classic-addon-manager-git
-	pkgdesc = An addon manager for World of Warcraft Classic, built with Go + Svelte (Wails) - latest git master
+	pkgdesc = An addon manager for ArcheAge Classic, built with Go latest git master
 	pkgver = r0.0000000
 	pkgrel = 1
 	url = https://github.com/classic-addon-manager/classic-addon-manager
