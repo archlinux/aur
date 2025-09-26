@@ -3,7 +3,7 @@
 pkgname=kwin-x11-lite
 _pkgname=kwin-x11
 pkgver=6.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
 url='https://github.com/KDE-Lite/kwin-x11-lite'

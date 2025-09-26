@@ -1,7 +1,7 @@
 pkgbase = kwin-x11-lite
 	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
 	pkgver = 6.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDE-Lite/kwin-x11-lite
 	install = kwin-x11-lite.install
 	arch = x86_64
