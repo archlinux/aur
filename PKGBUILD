@@ -6,7 +6,7 @@ pkgdesc="Wrapper and check script for makepkg/paru to warn about Russian maintai
 arch=('any')
 license=('GPL')
 depends=('bash' 'jq' 'git' 'curl')
-source=("ru-check.sh" "makepkg.wrapper.sh"
+source=("anti-ru-check.sh" "makepkg.wrapper.sh"
         "ru-blocked-locations.txt"
         "ru-denylist.txt"
         "ru-blocked-domains.txt")
@@ -31,7 +31,7 @@ package() {
     install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
 
     # Install ru-check script
-    install -Dm755 ru-check.sh "$pkgdir/usr/local/bin/ru-check.sh"
+    install -Dm755 ru-check.sh "$pkgdir/usr/local/bin/anti-ru-check.sh"
 
     # Install supporting files
     mkdir -p "$pkgdir/usr/local/etc"
