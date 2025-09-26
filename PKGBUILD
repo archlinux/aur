@@ -2,7 +2,7 @@
 
 pkgname=eclipse-rcptt-bin
 epoch=1
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=1
 provides=(eclipse-rcptt=$pkgver-$pkgrel)
 conflicts=(eclipse-rcptt)
@@ -10,13 +10,13 @@ pkgdesc="Eclipse RCP Testing Tool IDE"
 arch=('x86_64')
 url="https://eclipse.org/rcptt"
 license=('EPL')
-depends=('java-environment>=17')
+depends=('java-environment>=21')
 source=("rcptt.ide-$pkgver-linux.gtk.x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/rcptt/release/$pkgver/ide/rcptt.ide-$pkgver-linux.gtk.x86_64.zip&r=1"
         "eclipse-rcptt.png"
         "eclipse-rcptt.desktop")
-sha512sums=('af84e43e7313fd68e00876608c67041e12d8f40f1a47e2083723086f0d852bc2fd797bd37f59d32588792587a17b24183414b749e6fa452e4a928927507498e3'
-            'SKIP'
-            'SKIP')
+sha512sums=('b9bbaeb595553a70eff3ba231292cb55d78a1371fbba35da84f78fa18624d7b7a1266cd618c971f84f1742224380b22d0c776c7365676b624fe57ab557df6a9e'
+            'df5b0fb3b465c19033bf73a9b3ca67ed0f107b1ebdedee0240952c8913a8225134717e59d74d5445b24f7fab08d20f97f7e11628d384fc4968e4869059501f74'
+            '002a074ce1a41bc84bf688c21e3e8e94ba4662b167f459e5cc46397434565fab30520cc78e062407ac7eaba73d84604ff2d16aa27c3aa2d39cc9aea27d969d8c')
 options=(!strip)
 
 package() {
