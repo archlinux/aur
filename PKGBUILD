@@ -14,7 +14,7 @@
 
 pkgname=zoneminder
 pkgver=1.36.35
-pkgrel=2
+pkgrel=3
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://zoneminder.com/'
@@ -106,10 +106,6 @@ package() {
     cd ${pkgname}-${pkgver}
 
     make DESTDIR=${pkgdir} install
-
-    # Set Polkit directory permissions in accordance with Arch policy
-    chmod 750                                                   ${pkgdir}/usr/share/polkit-1/rules.d
-    chown root:polkitd                                          ${pkgdir}/usr/share/polkit-1/rules.d
 
     # Create ZM_LOGDIR
     install -dm755 -o http -g http                              ${pkgdir}/var/log/${pkgname}
