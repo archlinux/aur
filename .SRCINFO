@@ -1,6 +1,6 @@
 pkgbase = stapxs-qq-lite-bin
 	pkgdesc = A compatible OneBot protocol unofficial version of the web QQ client, electron client.(Prebuilt version)一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本.
-	pkgver = 3.2.7
+	pkgver = 3.2.11
 	pkgrel = 1
 	url = https://stapxs.github.io/Stapxs-QQ-Lite-2.0/
 	arch = aarch64
@@ -8,11 +8,11 @@ pkgbase = stapxs-qq-lite-bin
 	license = Apache-2.0
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = stapxs-qq-lite=3.2.7
+	provides = stapxs-qq-lite=3.2.11
 	conflicts = stapxs-qq-lite
-	source_aarch64 = stapxs-qq-lite-3.2.7-aarch64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v3.2.7/Stapxs.QQ.Lite_3.2.7_arm64.deb
-	sha256sums_aarch64 = aef0da9fd682f41a81d05dd2c5f0e5caca20064aac9c06688e24b0f3e399131f
-	source_x86_64 = stapxs-qq-lite-3.2.7-x86_64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v3.2.7/Stapxs.QQ.Lite_3.2.7_amd64.deb
-	sha256sums_x86_64 = 20ec6bdf3fcd08d08d6da7028fad5fc843c88b6462c7c2158478d4255701ec43
+	source_aarch64 = stapxs-qq-lite-3.2.11-aarch64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v3.2.11/Stapxs.QQ.Lite_3.2.11_arm64.deb
+	sha256sums_aarch64 = 7df9c60a6732e6fce44894631a068fe731011854840dfb15e9883b16fa27d2ec
+	source_x86_64 = stapxs-qq-lite-3.2.11-x86_64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v3.2.11/Stapxs.QQ.Lite_3.2.11_amd64.deb
+	sha256sums_x86_64 = 8bbea64d8a388a0062c289bffa7dd3998b488206492bad8ce9641204d845d61e
 
 pkgname = stapxs-qq-lite-bin
