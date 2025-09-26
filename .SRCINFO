@@ -1,6 +1,6 @@
 pkgbase = clang-prefixed-release
 	pkgdesc = Up to date official clang releases installed at /opt/clang/latest to avoid system wide usage/impact
-	pkgver = 21.1.1
+	pkgver = 21.1.2
 	pkgrel = 1
 	url = https://llvm.org/
 	install = clang.install
@@ -24,7 +24,7 @@ pkgbase = clang-prefixed-release
 	makedepends = jsoncpp
 	makedepends = clang
 	makedepends = libunwind
-	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-21.1.1.tar.gz
-	sha512sums = 85d272761253428b648f3d111b7308f8cdee74cceebec9e709126c4555ad1e78c443183ad8eb7319e0a15bafb97868ab5b5a3d86ba64812750c568dbf715d8ec
+	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-21.1.2.tar.gz
+	sha512sums = 082f3ee3cf72af6acf96cdd4997e0210c3c181234cc20c7965d86823c9d1b98505e2a357841d46b905506e3b18f2a647f80f6813d8e34c3460629c5b5b73429f
 
 pkgname = clang-prefixed-release
