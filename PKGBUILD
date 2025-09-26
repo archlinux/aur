@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=140.0.7339.185
+pkgver=140.0.7339.207
 pkgrel=1
 # optionally modify to fit your specific hardware
 # hacky way to determine subarch
@@ -32,7 +32,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
+             'rustup' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
              'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
@@ -175,6 +175,8 @@ prepare() {
 }
 
 build() {
+  rustup toolchain install 1.89.0
+
   make -C chromium-launcher-$_launcher_ver
 
   cd "$_pkgname-$pkgver"
