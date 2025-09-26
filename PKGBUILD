@@ -15,16 +15,20 @@ provides=("ollama")
 conflicts=("ollama")
 optdepends=("ollama-cuda: NVIDIA GPU Support")
 
+backup=('etc/ollama.conf')
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("ollama-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/ollama-linux-${_barch[0]}.tgz"
+               "ollama.conf"
                "ollama.service"
                "sysusers.conf"
                "tmpfiles.d")
 sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
             '0f1dc155b5139c6e6aea8cbe7541a4ba6065c0674662cf35f58a21514c05ff2e')
 sha256sums_x86_64=('abe5d1a64f813445a184bc44885bec08f8d6d8a95076ffb80ef96ed23124b64b'
-                   '9177dd27de7ec74cf4f74790e0d1db373f0da3fd6efe3e856b089e0124a4c1ed'
+                   'c5ddc8fb6958ab35fdbb0f5e6fa063035c40720cde90b5ad1a2bd28d8388f33d'
+                   '1df3a92a1e8fa722a1d5802073300633dc9b61b322ed7bf597c767559f9c0f89'
                    '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
                    '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3')
 
@@ -43,9 +47,10 @@ package_ollama-bin() {
         'libggml-cpu-sse42.so' \
         'libggml-cpu-x64.so'
     do
-
         install -Dm755 "./lib/ollama/${lib}" "${pkgdir}/usr/lib/ollama/${lib}"
     done
+
+    install -Dm644 "./ollama.conf" "${pkgdir}/etc/ollama.conf"
 
     install -Dm644 "./ollama.service" "${pkgdir}/usr/lib/systemd/system/ollama.service"
 
