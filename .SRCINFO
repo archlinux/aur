@@ -1,9 +1,10 @@
 pkgbase = etherlab-ethercat
 	pkgver = 1.6.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://etherlab.org
 	arch = i686
 	arch = x86_64
+	makedepends = linux-headers
 	source = ethercat-1.6.7.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/1.6.7/downloads/dist-tarballs/ethercat.tar.bz2
 	source = ethercat.sysusers
 	source = ethercat.udev
@@ -15,7 +16,6 @@ pkgname = etherlab-ethercat
 	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
 	license = GPL-2.0-only
 	depends = linux
-	depends = linux-headers
 	depends = etherlab-ethercat-tools
 
 pkgname = etherlab-ethercat-tools

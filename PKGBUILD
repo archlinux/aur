@@ -2,10 +2,11 @@
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
 pkgver=1.6.7
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
+makedepends=('linux-headers')
 url='https://etherlab.org'
-source=("$pkgbase-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
+source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
         "ethercat.sysusers"
         "ethercat.udev")
 sha512sums=('1a26b6fbbae7cf371468171dc2d05190ab4461b7e1bcce6ded51207c2083f8c9b8a426d37887b144011f364b4d55acb59ee563d3d48b17c8956e94e321dda34a'
@@ -32,7 +33,8 @@ check() {
 package_etherlab-ethercat() {
   pkgdesc="Kernel modules for IgH EtherCAT(R) Master component"
   license=('GPL-2.0-only')
-  depends=('linux' 'linux-headers' 'etherlab-ethercat-tools')
+  # XXX: I don't think 'linux-headers' is a runtime dependency
+  depends=('linux' 'etherlab-ethercat-tools')
 
   cd "ethercat-$pkgver"
   # 1. Skip `depmod`: it will be executed automatically
