@@ -20,13 +20,13 @@ sha256sums=(
 )
 
 build() {
-  qmake PatchGUI-$pkgrel/BSDiff-GUI.pro
+  qmake PatchGUI-$pkgver/BSDiff-GUI.pro
   make
 }
 
 package() {
   install -Dm755 BSDiff-GUI -t "$pkgdir"/usr/bin
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-  install -Dm644 PatchGUI-$pkgrel/include/bsdifflib/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bsdiff
-  install -Dm644 PatchGUI-$pkgrel/include/bsdifflib/bzip2/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bzip2
+  install -Dm644 PatchGUI-$pkgver/include/bsdifflib/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bsdiff
+  install -Dm644 PatchGUI-$pkgver/include/bsdifflib/bzip2/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.bzip2
 }
