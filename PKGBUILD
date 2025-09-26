@@ -1,7 +1,7 @@
 # Maintainer: Bipp <me@bipp.dev>
 pkgname=llxprt-code
 _pkgrealname=llxprt
-pkgver=0.3.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A fork of Gemini CLI enhanced with additional features and support for multiple providers."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${_pkgrealname}")
 conflicts=("${_pkgrealname}")
 options=('!debug') # Do not create a debug package.
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/acoliver/llxprt-code/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e043d85c60ffa7ff35f08b1de67fbce528c7842dbbe616607944e9598b5df01e')
+sha256sums=('15c5d3d6634f8b1af98bf0eb5ff20f438633478db649eba86c31894bf0b18b97')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

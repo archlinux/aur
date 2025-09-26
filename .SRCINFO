@@ -1,6 +1,6 @@
 pkgbase = llxprt-code
 	pkgdesc = A fork of Gemini CLI enhanced with additional features and support for multiple providers.
-	pkgver = 0.3.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/acoliver/llxprt-code
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = llxprt-code
 	provides = llxprt
 	conflicts = llxprt
 	options = !debug
-	source = llxprt-code-v0.3.4.tar.gz::https://github.com/acoliver/llxprt-code/archive/refs/tags/v0.3.4.tar.gz
-	sha256sums = e043d85c60ffa7ff35f08b1de67fbce528c7842dbbe616607944e9598b5df01e
+	source = llxprt-code-v0.4.1.tar.gz::https://github.com/acoliver/llxprt-code/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 15c5d3d6634f8b1af98bf0eb5ff20f438633478db649eba86c31894bf0b18b97
 
 pkgname = llxprt-code
