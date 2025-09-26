@@ -1,0 +1,21 @@
+pkgbase = hyprdynamicmonitors-rc-bin
+	pkgdesc = Dynamic monitor configuration for Hyprland (release candidate).
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fiffeek/hyprdynamicmonitors
+	license = MIT
+	optdepends = hyprland
+	optdepends = upower
+	conflicts = hyprdynamicmonitors-rc
+	provides = hyprdynamicmonitors-rc-bin
+	arch = aarch64
+	source_aarch64 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9abe8fa26d551ad3e0442754a4d686578e81c3d4a18ab107485abfaa8ef7e0cb
+	arch = i686
+	source_i686 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_i386.tar.gz
+	sha256sums_i686 = 2a91896ca493b207fe1ab8fd8a2891ae178be78e26b5acc18bf10e6cfb6e74ea
+	arch = x86_64
+	source_x86_64 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v0.2.0-rc1/hyprdynamicmonitors-rc_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 390e931537159871174564998c4cd0607ebfed98176fea3439f977646c898884
+	
+pkgname = hyprdynamicmonitors-rc-bin
