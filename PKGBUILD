@@ -1,7 +1,7 @@
 # Maintainer: Marc Straube <email@marcstraube.de>
 
 pkgname=hyprland-plugin-easymotion
-pkgver=0.50.1
+pkgver=0.51.1
 pkgrel=1
 pkgdesc="A single dispatcher that brings up window labels and then allows you to execute a user-defined command when one of those labels is typed"
 arch=('x86_64')
