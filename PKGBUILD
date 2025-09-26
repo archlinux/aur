@@ -1,6 +1,6 @@
 
 pkgname=python-dateutil-git
-pkgver=2.9.0.post0.r3.g9eaa5de
+pkgver=2.9.0.post0.r7.ge081f67
 pkgrel=1
 pkgdesc="Provides powerful extensions to the standard datetime module"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=("git+$url.git"
         "0001-fix-many-deprecation-errors.patch")
 sha256sums=('SKIP'
-            '84732fd631d4a562e477026ae2963a258551bf4aebc11a4e60966710d059436d')
+            '194d049af0b3756748e04f614333740216e6078d8a1742099ee2cb69fc5e7633')
 
 pkgver() {
     cd dateutil
