@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Manuel Barrio Linares <mbarriolinares at gmail dot com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=yabridge-wine10-git
 pkgname=(
