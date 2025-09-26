@@ -1,7 +1,7 @@
 # Maintainer: atretador
 pkgname=classic-addon-manager-git
 _pkgname=classic-addon-manager
-pkgver=r0.1
+pkgver=0.0
 pkgrel=1
 pkgdesc="An addon manager for ArcheAge Classic, built with Go from latest git master"
 arch=('x86_64')
@@ -42,12 +42,8 @@ build() {
   # Ensure clean build
   rm -rf frontend/node_modules frontend/dist
 
-  # Build backend and generate bindings first
+  # Build
   go-task build:prod
-
-  # Then build frontend
-  npm install --prefix frontend
-  npm run --prefix frontend build
 }
 
 package() {
