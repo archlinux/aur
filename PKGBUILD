@@ -21,7 +21,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/pipewire-soundpad-v${pkgver}"
+  cd "${srcdir}/pipewire-soundpad-${pkgver}"
 
   export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}=/"    # Prevent warning: 'Package contains reference to $srcdir'
   [[ -n "${_sccache}" ]] && export RUSTC_WRAPPER=sccache  # If $_sccache not empty, build using binary cache
