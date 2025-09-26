@@ -1,0 +1,20 @@
+pkgbase = capture-text-ai
+	pkgdesc = Capture image and extract text using OCR with PyQt6 GUI
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/DulithaBandaranayake/capture-text-ai-app
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	depends = python-pytesseract
+	depends = python-pillow
+	depends = python-opencv
+	depends = python-numpy
+	depends = tesseract
+	depends = tesseract-data-eng
+	source = capture-text-ai-1.3.tar.gz::https://github.com/DulithaBandaranayake/capture-text-ai-app/archive/refs/tags/v1.3.tar.gz
+	sha256sums = dfe3448108110ca3e5259a60a46b5ccf6aebf396ef7a54f069ee8a90acc9f80f
+
+pkgname = capture-text-ai
