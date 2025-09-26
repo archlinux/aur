@@ -1,0 +1,24 @@
+pkgbase = lichess-mobile-git
+	pkgdesc = The official Lichess mobile application v2 (Linux desktop build)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lichess-org/mobile
+	arch = any
+	license = GPL-3.0-only
+	makedepends = base-devel
+	makedepends = git
+	makedepends = unzip
+	makedepends = cmake
+	makedepends = clang
+	makedepends = pkg-config
+	makedepends = ninja
+	makedepends = libsecret
+	makedepends = mesa
+	depends = fvm
+	depends = rsync
+	depends = glibc
+	depends = gtk3
+	source = https://github.com/lichess-org/mobile/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = lichess-mobile-git
