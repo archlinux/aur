@@ -95,6 +95,8 @@ package_gdk-pixbuf2-noglycin() {
 package_gdk-pixbuf2-noglycin-docs() {
   pkgdesc+=" (documentation)"
   depends=()
+  provides=(gdk-pixbuf2-docs)
+  conflicts=(gdk-pixbuf2-docs)
 
   mv doc/* "$pkgdir"
 }
