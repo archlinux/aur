@@ -1,6 +1,6 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 pkgname=make-it-rain
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Make it rain like it's 1999"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('412fbd43d673487fd87f47663b1b9ffd3f84d292cc0e37b07132e4678bd1ba35')
+sha256sums=('b18d39841f233548cdbec05f8bc652191eb9c45c9bad4413551fe40376d694c4')
 
 build() {
     cd "$pkgname-$pkgver"
