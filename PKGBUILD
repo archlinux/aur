@@ -2,9 +2,9 @@
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-git
-pkgver=r11837.044ee14e0
-pkgrel=4
-pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system"
+pkgver=r11957.bca676c0b
+pkgrel=1
+pkgdesc="a sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF"
 url="https://www.kismetwireless.net/"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL-2.0-or-later')
@@ -16,25 +16,17 @@ depends=('bluez-libs'
         'libnl'
         'libnm'
         'libcap-ng'
-        'libnm'
         'libpcap'
         'libusb'
         'libwebsockets'
         'lm_sensors'
         'mosquitto'
-        'pcre'
-        'protobuf'
-        'protobuf-c'
-        'python'
-        'python-protobuf'
-        'python-pyserial'
-        'python-numpy'
-        'python-websockets'
+        'pcre2'
         'rtl-sdr'
         'sqlite'
         'systemd'
         'zlib')
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 optdepends=('festival: text-to-speech support'
         'flite:  alternative/lightweight text-to-speech support'
         'gpsd: log coordinates of detected networks'
@@ -65,8 +57,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/kismet"
-    # patch setup.py install command
-    find . -name Makefile.in -exec sed -i 's/setup.py install/setup.py install -O1/' {} \;
+    autoreconf -fiv
 }
 
 build() {
