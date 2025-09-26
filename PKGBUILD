@@ -15,7 +15,7 @@ source=(
   "$_pkgname.install"
   "icon.png"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 install=$_pkgname.install
 

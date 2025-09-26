@@ -19,5 +19,6 @@ pkgbase = classic-addon-manager-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = classic-addon-manager-git
