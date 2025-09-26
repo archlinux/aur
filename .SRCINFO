@@ -1,14 +1,14 @@
 pkgbase = python-starsessions
 	pkgdesc = Advanced sessions for Starlette and FastAPI frameworks.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex-oleshkevich/starsessions
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-mypy
+	checkdepends = mypy
 	checkdepends = python-fastapi
 	checkdepends = python-redis
 	checkdepends = python-httpx
