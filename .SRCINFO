@@ -1,0 +1,13 @@
+pkgbase = python-subtitle-parser
+	pkgdesc = This is a simple Python library for parsing subtitle files in SRT or WebVTT format.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/remram44/subtitle-parser
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	depends = python
+	source = python-subtitle-parser-2.0.1.tar.gz::https://github.com/remram44/subtitle-parser/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = cbf47bcfb0e6efa184baf50543df55439057e3bd57963c228e3a410397c60a09
+
+pkgname = python-subtitle-parser
