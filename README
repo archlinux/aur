@@ -1,0 +1,11 @@
+So essentially this is a little wrapper right
+around your paru, that checks some data on a
+contributor's github page and if something points
+onto that ru swamp - It lets you know.
+
+It can either be used for a security reasons, or
+if you just don't want to raise installation
+statistics on packages of some russian devs,
+because fuck them.
+
+With love, ru-hating lil dev)

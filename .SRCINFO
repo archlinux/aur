@@ -1,0 +1,22 @@
+pkgbase = ru-check
+	pkgdesc = Wrapper and check script for makepkg/paru to warn about Russian maintainers
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = bash
+	depends = jq
+	depends = git
+	depends = curl
+	source = ru-check.sh
+	source = makepkg.wrapper.sh
+	source = ru-blocked-locations.txt
+	source = ru-denylist.txt
+	source = ru-blocked-domains.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ru-check
