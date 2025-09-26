@@ -2,7 +2,7 @@
 
 pkgname=igv-web
 _pkgname=igv
-pkgver=2.3.0
+pkgver=3.5.2
 pkgrel=1
 pkgdesc='A web application for exploring genomic datasets using igv.js'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("https://igv.org/app-archive/igv-webapp.${pkgver}.zip"
     "igv-web.patch"
     "igv-web.conf"
 )
-sha256sums=('6f3232db74eb4be68ea1382503590c3110ae90327af73028a7651b65d0be2f58'
+sha256sums=('cfe91138eab7e30cf84f64d8c8c39178306c578090501cfec9a792a38a5323cd'
             'b131c27b138880a92dd24fa4c4c1c99161ab2ff1ab268fa8f1637a585e7c40e2'
             '813c375ee0c763d38b66ea589dd9340b4f2c7ff8b969ab57ec13870cc0348a56')
 
