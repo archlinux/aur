@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit
 pkgname=python-${_pkgname}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 epoch=1
 pkgdesc="An open-source SDK for working with (IBM) quantum computers"
@@ -53,16 +53,7 @@ checkdepends=(
 )
 provides=(libqiskit.so)
 source=($_pkgname::git+https://github.com/Qiskit/$_pkgname#tag=$pkgver)
-b2sums=('3ea130b8710d1415f554df605a74a2b1ff39f67464713a0e773fffe2266a2f99b0554a7403ad919c2a71f15c3f6c7e57191db0d1c41ec863429d81a5bd100165')
-
-prepare() {
-    cd $_pkgname
-    export GIT_COMMITTER_NAME="Iyán Méndez Veiga"
-    export GIT_COMMITTER_EMAIL="me@iyanmv.com"
-    # https://github.com/Qiskit/qiskit/issues/15030
-    git fetch origin pull/15049/head:fix-test
-    git cherry-pick a7e610a3ae4794a7151dee41961e5ef2f628085b
-}
+b2sums=('947eb50273da4944e55111ccf743a5b0b2ff38ec4bfcb8e9d66226b4e052175c12d752edc0845f0aba7ccd00a33f4fd50e5849e55ee8b3cebdfb874a988fce27')
 
 build() {
     cd $_pkgname
