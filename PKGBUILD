@@ -7,7 +7,7 @@
 # https://github.com/Floorp-Projects/Floorp-runtime
 
 ## options
-: ${_build_pgo:=true}
+: ${_build_pgo:=false}
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
@@ -24,7 +24,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=12.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -491,7 +491,7 @@ END
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # icons
-  local i theme=official
+  local i theme=floorp-official
   for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
