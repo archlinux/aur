@@ -9,7 +9,7 @@ pkgbase=protonmail-bridge-free-nokeychain
 pkgname="${pkgbase}-git"
 _pkgbase=proton-bridge
 pkgver=3.21.2.r0.g7d1e9135
-pkgrel=1
+pkgrel=2
 pkgdesc="Proton Mail Bridge fork (free) without keychain requirement; stores secrets in a file"
 arch=(x86_64)
 url="https://github.com/mnixry/proton-bridge"
@@ -45,8 +45,9 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
   make build-nogui BUILD_ENV="Arch Linux" || {
-    echo "Falling back to bare go build..." >&2
-    go build -v -buildvcs=false -o bridge ./cmd/Desktop-Bridge/
+    echo "Falling back to bare go build with version info..." >&2
+    version=$(grep -E 'BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/.*= *([^ ]+).*/\1/')
+    go build -v -buildvcs=false -ldflags "-X github.com/ProtonMail/proton-bridge/v3/internal/constants.Version=${version}" -o bridge ./cmd/Desktop-Bridge/
   }
 }
 
