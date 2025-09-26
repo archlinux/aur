@@ -1,6 +1,6 @@
 # Maintainer: Kuokuo123 <kuoyu1204@gmail.com>
 pkgname="otter-launcher"
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc"
 arch=("x86_64")
@@ -9,8 +9,8 @@ license=('GPL-3.0')
 makedepends=(git cargo)
 options=(!debug)
 backup=("etc/otter-launcher/config.toml")
-source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.5.7.tar.gz")
-sha256sums=('86836ff0a03c4f5e81a8cba583d6c75a31d01982a314979cfde9a348bc1724ac')
+source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.5.8.tar.gz")
+sha256sums=('5c1b44f50ed253011bf8fe133126042ff0f17f438dff95aea74caab61f44ddc3')
 
 build() {
 	cd "$pkgname-$pkgver"
