@@ -1,7 +1,7 @@
 pkgbase = autofilm
 	pkgdesc = A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp.
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.5.0
+	pkgrel = 4
 	url = https://github.com/Akimio521/AutoFilm
 	arch = any
 	license = AGPL-3.0-only
@@ -23,9 +23,9 @@ pkgbase = autofilm
 	options = !strip
 	options = !debug
 	backup = etc/autofilm/config.yaml
-	source = AutoFilm-1.4.0.tar.gz::https://github.com/Akimio521/AutoFilm/archive/refs/tags/v1.4.0.tar.gz
+	source = AutoFilm-1.5.0.tar.gz::https://github.com/Akimio521/AutoFilm/archive/refs/tags/v1.5.0.tar.gz
 	source = autofilm.service
-	sha256sums = a28b59b8777bc09a72598d640665e238ddd5c6f990e493ebf1dd88ded89d45b6
+	sha256sums = ffe7db1b33651d56a981267e9268fb9ede510d88eb9cb68b270c1561c7469a64
 	sha256sums = 244dab4d8afffd786c394570bddf8c1e1d8313dd64f8f05977e06c70da9b2c39
 
 pkgname = autofilm
