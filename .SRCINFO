@@ -1,6 +1,6 @@
 pkgbase = chirp-next
 	pkgdesc = GUI tool for programming ham radios
-	pkgver = 20250912
+	pkgver = 20250926
 	pkgrel = 1
 	epoch = 1
 	url = https://chirpmyradio.com/projects/chirp/wiki/Home
@@ -22,7 +22,7 @@ pkgbase = chirp-next
 	conflicts = chirp
 	conflicts = chirp-daily
 	options = !emptydirs
-	source = chirp-next-20250912.tar.gz::https://archive.chirpmyradio.com/chirp_next/next-20250912/chirp-20250912.tar.gz
-	sha1sums = 82be6cc271c2fcaaebf5440269d3694376ad7d2d
+	source = chirp-next-20250926.tar.gz::https://archive.chirpmyradio.com/chirp_next/next-20250926/chirp-20250926.tar.gz
+	sha1sums = 1df6e8689bacc598705df5d486916ee5c994d52b
 
 pkgname = chirp-next
