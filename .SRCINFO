@@ -1,10 +1,11 @@
 pkgbase = mutter-performance
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 48.2
+	pkgver = 49.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = bash-completion
 	makedepends = gi-docgen
 	makedepends = git
 	makedepends = glib2-devel
@@ -14,7 +15,6 @@ pkgbase = mutter-performance
 	makedepends = sysprof
 	makedepends = wayland-protocols
 	depends = at-spi2-core
-	depends = bash-completion
 	depends = cairo
 	depends = colord
 	depends = dconf
@@ -25,6 +25,7 @@ pkgbase = mutter-performance
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
+	depends = glycin
 	depends = gnome-desktop-4
 	depends = gnome-settings-daemon
 	depends = graphene
@@ -68,20 +69,36 @@ pkgbase = mutter-performance
 	depends = pixman
 	depends = python
 	depends = python-argcomplete
+	depends = python-dbus
 	depends = python-gobject
 	depends = startup-notification
 	depends = systemd-libs
 	depends = wayland
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#tag=48.2
-	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=466fc22016cf0981424e7121557611942191992f
-	source = 3751-fixed.patch
-	b2sums = c391e383ebc19db1a2e1361eb23a52757eb1e2d18ca5349cf2ea658619cf220b4f6154c71e993c4a8f8f7bfe56e0c323da6812ab7ae7b564867f8bb97de37218
-	b2sums = c25796ff54fee353c5fc7a0815c25255b399490148d2bad1f37932d2da66d80561d6e262a5f256c89d142419a504c23eff69f7ef4e65e349f2dea3e0ac0bac1a
-	b2sums = 851b9430438654ed47541528fac67c43b0c2dd60dd8f896084b90250481d18464b4e85e1bdd6cd1f38b2c75b66ac9d76119c71be1b6867843e925fc0f15e07d6
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#tag=49.0
+	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3
+	b2sums = 99defeefd72cc366cfa5c433a22d855400cc14c1f41d7cfe08008fd98a0b7a36295e3591dead6e7ebec489a526f8cd9af5471031d36becb4de6b441391bd9e07
+	b2sums = f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf
 
 pkgname = mutter-performance
-	groups = gnome
+	optdepends = bash-completion: Bash completions for gdctl
+	optdepends = mutter-devkit: Mutter SDK, "MDK"
 	provides = mutter
-	provides = libmutter-16.so
+	provides = libmutter-17.so
 	conflicts = mutter
+
+pkgname = mutter-performance-devkit
+	pkgdesc = GNOME Mutter Development Kit
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libei
+	depends = libpipewire
+	depends = mutter
+
+pkgname = mutter-performance-docs
+	pkgdesc = Window manager and compositor for GNOME (documentation)
+	depends = 
