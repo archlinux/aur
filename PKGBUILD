@@ -1,13 +1,13 @@
 # Maintainer: ezberlin <ezberlin at proton dot me>
 pkgname=lichess-mobile-git
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="The official Lichess mobile application v2 (Linux desktop build)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/lichess-org/mobile"
 license=('GPL-3.0-only')
-depends=('fvm' 'rsync' 'glibc' 'gtk3')   # add runtime deps as needed
-makedepends=('base-devel' 'git' 'unzip' 'cmake' 'clang' 'pkg-config' 'ninja' 'libsecret' 'mesa') # adjust for your toolchain
+depends=('rsync' 'glibc' 'gtk3')
+makedepends=('fvm' 'base-devel' 'git' 'unzip' 'pkg-config')
 source=("https://github.com/lichess-org/mobile/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
 
@@ -21,7 +21,6 @@ prepare() {
     sed -i 's/lichess.dev/lichess1.org/g' lib/src/constants.dart
   fi
 
-  # Ensure FVM uses the project Flutter version
   if [[ -f ".fvm/fvm_config.json" ]]; then
     fvm install || true
   fi
