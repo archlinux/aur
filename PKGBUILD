@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=tmparch
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Part of the tmplinux suite. Temporary Arch Linux"
 arch=('any')
