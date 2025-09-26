@@ -2,7 +2,7 @@
 
 pkgname=wm
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ASCII animation of tanks like sl but with war machines"
 arch=('x86_64')
 url="https://github.com/Bebel9445/wm"
@@ -19,6 +19,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 build/wm "$pkgdir/usr/bin/wm"
+    install -Dm644 wm.1 "$pkgdir/usr/share/man/man1/wm.1"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
 }
