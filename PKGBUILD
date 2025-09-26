@@ -1,5 +1,5 @@
 # Maintainer: tak_0
-pkgname=ru-check
+pkgname=anti-ru-check
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Wrapper and check script for makepkg/paru to warn about Russian maintainers"

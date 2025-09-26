@@ -1,4 +1,4 @@
-pkgbase = ru-check
+pkgbase = anti-ru-check
 	pkgdesc = Wrapper and check script for makepkg/paru to warn about Russian maintainers
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = ru-check
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = ru-check
+pkgname = anti-ru-check
