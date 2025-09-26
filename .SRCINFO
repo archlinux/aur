@@ -1,4 +1,4 @@
-pkgbase = openchrom
+pkgbase = openchrom-bin
 	pkgdesc = Visualization and analysis of mass spectrometric and chromatographic data
 	pkgver = 1.5.27
 	pkgrel = 1
@@ -7,6 +7,8 @@ pkgbase = openchrom
 	license = EPL
 	depends = org.freedesktop.secrets
 	depends = webkit2gtk
+	provides = openchrom=1.5.27-1
+	conflicts = openchrom
 	options = !strip
 	source = https://products.lablicate.com/openchrom/1.5.27/openchrom_linux.x86_64_1.5.27.tar.gz
 	source = openchrom.desktop
@@ -15,4 +17,4 @@ pkgbase = openchrom
 	sha256sums = 700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1
 	sha256sums = 5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f
 
-pkgname = openchrom
+pkgname = openchrom-bin

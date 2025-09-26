@@ -1,14 +1,15 @@
 # Maintainer: Matthias Mailänder <matthias at mailaender dot name>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
-pkgname=openchrom
+pkgname=openchrom-bin
 pkgver=1.5.27
 pkgrel=1
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
 license=('EPL')
-# Don't build from source as there are no tagged releases and the marketplace is missing.
+provides=(openchrom=$pkgver-$pkgrel)
+conflicts=(openchrom)
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop"
         "openchrom.png")
