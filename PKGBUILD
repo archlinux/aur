@@ -4,6 +4,7 @@
 # http://floorp.app/
 # https://github.com/Floorp-Projects/Floorp
 # https://github.com/Floorp-Projects/Floorp-core
+# https://github.com/Floorp-Projects/Floorp-runtime
 
 ## options
 : ${_build_pgo:=true}
@@ -15,11 +16,14 @@
 
 : ${_build_limit_cores:=false}
 
-: ${_commit:=984a997914030720cd503488d1009e854124cfbc}
+: ${_deno_ver:=2.5.0}
+: ${_tag_runtime:=passed-20250916165207}
+: ${_hash_runtime=46770b022c1e5a0c9b179b66cd6c3ef24aebb499c391ad4f9cdefebeb3360c9d}
+: ${_hash_floorp=6550805ec0f35142654dc6c95994df5775d0467637775af308753835c1e07afc}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.29.0
+pkgver=12.2.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -61,6 +65,7 @@ makedepends=(
   nodejs
   python
   python-setuptools
+  rsync
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -99,61 +104,65 @@ options=(
 )
 
 _source_floorp() {
-  _pkgsrc="Floorp"
+  _pkgsrc="Floorp-$pkgver"
+  _pkgsrc_runtime="Floorp-runtime-$_tag_runtime"
+  _pkgext="tar.gz"
   source=(
-    "$_pkgsrc"::"git+https://github.com/Floorp-Projects/Floorp.git#tag=$_commit"
+    "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
+    "$_pkgname-runtime-${_tag_runtime#passed-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
     "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
-    "floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
+    #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
     "$_pkgname.desktop"
   )
   sha256sums=(
+    "${_hash_floorp:-SKIP}"
+    "${_hash_runtime:-SKIP}"
     'SKIP'
-    'SKIP'
-    'SKIP'
+    #'SKIP'
     '00ac63fe0331de13e418b5d6552bda95cb3a00267feccf07afa49600e810f65a'
   )
 }
 
+_source_deno() {
+  local _deno_url="https://github.com/denoland/deno"
+  source_x86_64+=("deno-x86_64-v$_deno_ver.zip"::"$_deno_url/releases/download/v$_deno_ver/deno-x86_64-unknown-linux-gnu.zip")
+  sha256sums_x86_64+=('4561adb06b13f287a3785276cb29f377b7ffb49d54290178223b037e161446d3')
+
+  source_aarch64+=("deno-aarch64-v$_deno_ver.zip"::"$_deno_url/releases/download/v$_deno_ver/deno-aarch64-unknown-linux-gnu.zip")
+  sha256sums_aarch64+=('81d2ef446954429f0dcbcb24cdce115e5bb2c3a3548b79c01b49ec959682ac9b')
+}
+
+_deno() {
+  pushd "$srcdir/$_pkgsrc_runtime/floorp" > /dev/null || return
+  DENO_DIR="$srcdir/.deno" "$srcdir/deno" "$@"
+  popd > /dev/null || return
+}
+
 _source_floorp
+_source_deno
 
 prepare() (
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
   mkdir -p mozbuild
-  cd "$_pkgsrc"
 
-  (
-    # prepare floorp-core
-    local _submodules=(
-      'floorp-projects.floorp-core'::'floorp'
-    )
-    _submodule_update
+  # prepare directory structure
+  cp -r "$srcdir/$_pkgsrc"/* "$_pkgsrc_runtime/floorp/"
+  cp -r "$_pkgsrc"/gecko/branding/* "$_pkgsrc_runtime"/browser/branding/
 
-    cd "floorp"
-    local _submodules=(
-      'floorp-projects.unified-l10n-central'::'browser/locales/l10n-central'
-    )
-    _submodule_update
-  )
+  sed -i 's|https://@MOZ_APPUPDATE_HOST@/update/6/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%SYSTEM_CAPABILITIES%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml|https://%NORA_UPDATE_HOST%update.xml|g' "$_pkgsrc_runtime"/build/application.ini.in
 
   # clear forced startup pages
-  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
+  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' \
+    -i "$_pkgsrc"/gecko/branding/*/pref/firefox-branding.js \
+    "$_pkgsrc_runtime"/browser/branding/*/pref/firefox-branding.js
 
   # prepare api keys
-  cp "floorp/apis"/api-*-key ./
+  cp floorp-projects.floorp-core/apis/api-*-key ./
 
   # configure
-  cat > ../mozconfig << END
+  cat > mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
-mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
+mk_add_options MOZ_OBJDIR=${PWD@Q}/$_pkgsrc_runtime/obj-artifact-build-output
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -168,7 +177,8 @@ ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 # Branding
 ac_add_options --with-app-basename=$_pkgname
 ac_add_options --with-app-name=$_pkgname
-ac_add_options --with-branding=browser/branding/official
+ac_add_options --with-branding=browser/branding/floorp-official
+ac_add_options --with-version-file-path=floorp/gecko/config
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
@@ -177,8 +187,8 @@ export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
 MOZ_REQUIRE_SIGNING=
 
-# Floorp Upstream
-ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
+# Localization
+#ac_add_options --with-l10n-base=${PWD@Q}/floorp-projects.unified-l10n-central
 
 # Keys
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
@@ -229,7 +239,7 @@ export RANLIB=llvm-ranlib
 END
 
   if [[ "${_build_system_libs::1}" == "t" ]]; then
-    cat >> ../mozconfig << END
+    cat >> mozconfig << END
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
@@ -241,7 +251,7 @@ END
   fi
 
   if [[ "${_build_lto::1}" == "t" ]]; then
-    cat >> ../mozconfig << END
+    cat >> mozconfig << END
 ac_add_options --enable-lto=cross,full
 END
   fi
@@ -256,14 +266,14 @@ END
 
     printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
 
-    cat >> ../mozconfig << END
+    cat >> mozconfig << END
 mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 END
   fi
 )
 
 build() (
-  cd "$_pkgsrc"
+  cd "$_pkgsrc_runtime"
 
   export RUSTUP_TOOLCHAIN=stable
 
@@ -399,10 +409,28 @@ END
 
     ./mach build --priority normal
   fi
+
+  # inject floorp
+  export PATH="$srcdir:$PATH"
+  export DENO_DIR="$srcdir/.deno"
+
+  _deno install --allow-scripts
+  _deno task build --write-version
+  NODE_ENV=production _deno task build --release-build-before
+
+  git apply --ignore-space-change --ignore-whitespace .github/patches/packaging/*.patch
+  ./mach build faster
+
+  _deno task build --release-build-after
+  rsync -aL obj-artifact-build-output/ obj-artifact-build-output_new/
+  mv obj-artifact-build-output obj-artifact-build-output_old
+  mv obj-artifact-build-output_new obj-artifact-build-output
+
+  git apply --reject floorp/scripts/git-patches/patches/*.patch --directory obj-artifact-build-output/dist/bin --unsafe-paths --check --apply
 )
 
 package() {
-  cd "$_pkgsrc"
+  cd "$_pkgsrc_runtime"
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
