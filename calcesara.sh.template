@@ -2,14 +2,18 @@
 
 set -e
 
+WHITE='\033[0;37m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
+NC='\033[0m'
 message() {
-    echo "[${pkg_name}]: ${1}"
+    echo -e "${WHITE}[${pkg_name}]: ${1}${NC}"
 }
 warning() {
-    echo "[${pkg_name}] WARNING: ${1}"
+    echo -e "${YELLOW}[${pkg_name}] WARNING: ${1}${NC}"
 }
 error() {
-    echo "[${pkg_name}] ERROR: ${1}"
+    echo -e "${RED}[${pkg_name}] ERROR: ${1}${NC}"
 }
 
 ##############################################################################################
@@ -92,6 +96,16 @@ if check_template "${option_help_list}"; then
     template_warning 'option_help_list'
 fi
 
+# Required fonts (without file-extension)
+# At minimum: arial
+fonts_required=(@fonts@
+)
+for i in $fonts_required; do
+    if check_template "${fonts_required}"; then
+        template_error 'fonts_required'
+    fi
+done
+
 ##############################################################################################
 # Check templates
 ##############################################################################################
@@ -109,7 +123,7 @@ fi
 ##############################################################################################
 
 usage_message() {
-    message "${output_prefix}Available options for `${pkg_name}` are:${option_help_list}"
+    message "${output_prefix}Available options for \`${pkg_name}\` are:${option_help_list}"
 }
 usage_error() {
     error "${1}"
@@ -123,6 +137,11 @@ usage_error() {
 
 #@check@
 
+if [[ "$EUID" -eq 0 || $(id -u) -eq 0 ]]; then
+    error "Do not run ${pkg_name} as root!"
+    exit
+fi
+
 ###############################################################################################
 # Parse arguments
 ###############################################################################################
@@ -132,12 +151,12 @@ if [ "${#}" -ne 1 ]; then
 fi
 
 # CLI options are also templated!
-case ${1} in #Options:@option_cases@ 
-    *) usage_error "Invalid argument `${1}`.";;
+case ${1} in #Options:@option_cases@
+    *) usage_error "Invalid argument \`${1}\`.";;
 esac
 
 ###############################################################################################
-# Environment
+# Wineprefix
 ###############################################################################################
 
 export WINEPREFIX="${HOME}/.local/share/wineprefixes/${pkg_name}"
@@ -153,22 +172,52 @@ installer_exe_location="${shared_data_location}/${installer_exe}"
 key_template_location="${shared_data_location}/${keyfile_name}.template"
 
 ###############################################################################################
-# User data
+# Windows paths
 ###############################################################################################
 
-fonts_location="${WINEPREFIX}/drive_c/windows/Fonts"
-appdata="${WINEPREFIX}/drive_c/users/${USER}/AppData"
-start_menu_location="${appdata}/Roaming/Microsoft/Windows/Start Menu"
-lnk_full="${start_menu_location}/Programs/${exe_name}/${lnk}.lnk"
-exe_location="${appdata}/Local/${exe_name}"
-key_destination="${exe_location}/${keyfile_name}"
+win_appdata="C:\\users\\${USER}\\AppData"
+win_fonts_location="C:\\windows\\Fonts"
+win_start_menu_location="${win_appdata}\\Roaming\\Microsoft\\Windows\\Start Menu"
+win_lnk_full="${win_start_menu_location}\\Programs\\${exe_name}\\${lnk}.lnk"
+win_exe_location="${win_appdata}\\Local\\${exe_name}"
+win_key_destination="${win_exe_location}\\${keyfile_name}"
+
+###############################################################################################
+# Linux paths
+###############################################################################################
+
+drive_c="${WINEPREFIX}/drive_c"
+
+unixpath() {
+    echo ${1} \
+        | sed 's@\\@/@g' \
+        | sed "s@C:/@${drive_c}/@g"
+        #| sed "s@Z:\\@/@g" # No need
+}
+
+appdata="$(unixpath "${win_appdata}")"
+fonts_location="$(unixpath "${win_fonts_location}")"
+start_menu_location="$(unixpath "${win_start_menu_location}")"
+lnk_full="$(unixpath "${win_lnk_full}")"
+exe_location="$(unixpath "${win_exe_location}")"
+key_destination="$(unixpath "${win_key_destination}")"
+
+###############################################################################################
+# Michaelsoft binbows environment
+###############################################################################################
+
+export JAVA_HOME="${exe_location}\\jre"
 
 ###############################################################################################
 # Environment
 ###############################################################################################
 
-export JAVA_HOME="${exe_location}/jre"
 export WINEDEBUG="${WINEDEBUG:-fixme-all}"
+export WINE=${WINE:-wine}
+export WINESERVER=${WINESERVER:-wineserver}
+
+# https://wiki.archlinux.org/title/Wine#Fonts
+export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 
 ###############################################################################################
 # Keygen
@@ -196,7 +245,7 @@ machine_id() {
     # You can either make your encryption more difficult to reverse-engineer,
     # ...and as a consequense, break support with wine,
     # ...or fix your own damn keygen.
-    wine cmd /c wmic csproduct get UUID \
+    ${WINE} cmd /c wmic csproduct get UUID \
         | tail -n 1 \
         | sed 's/^[[:space:]]*\|[[:space:]]*$//g'
 }
@@ -223,21 +272,57 @@ keygen() {
 ###############################################################################################
 
 install_key() {
+    mkdir -p "${key_destination%/*}" 
     echo "$(keygen)" > ${key_destination}   
 }
 
 install_fonts() {
-    if [[ ! -f "${fonts_location}/corefonts.installed" ]]; then
-        # Otherwise all text will just be rectangles
-        echo "${output_prefix}Installing corefonts in WINEPREFIX=${WINEPREFIX}..."
-        winetricks corefonts
+    mkdir -p "${fonts_location}" 
+
+    # Scan fonts
+    for font_full in ${fonts_location}/*; do
+        if [ -L "$font_full" ] && ! [ -e "$font_full" ]; then
+            rm -- "$font_full"
+        else
+            font_file="$(basename ${font_full})"
+            font="$(echo $font_file | sed "s/\.*//g")"
+            fonts_required=("${fonts_required[@]/$font}")
+        fi
+    done
+
+    # Link system fonts
+    for font_source in /usr/share/fonts/**/*.{ttf,otf}; do
+        font_file="$(basename ${font_source})"
+        font="$(echo $font_file | sed "s/\.*//g")"
+        fonts_required=("${fonts_required[@]/$font}")
+
+        font_link="${fonts_location}/${font_file}"
+        if [ ! -f $font_link ]; then
+            ln -s "${font_source}" "${font_link}"
+        fi
+    done
+
+    if [[ -z "${fonts_required[@]}" ]]; then
+        missing_fonts_message="Missing fonts: ${fonts_required[@]}"
+        if [ ! command -v winetricks >/dev/null 2>&1 ]; then
+            winetricks "${array[@]}"
+        else
+            error "$missing_fronts_message" 
+            exit 2
+        fi
+        if [[ ! -f "${fonts_location}/corefonts.installed" ]]; then
+            # Otherwise all text will just be rectangles
+            warning "$missing_fronts_message"
+            echo "${output_prefix}Installing fonts in WINEPREFIX=${WINEPREFIX}..."
+            winetricks corefonts
+        fi
     fi
 }
 
 install() {
     echo "${output_prefix}Installing CalceSARA in WINEPREFIX=${WINEPREFIX}..."
     install_fonts &
-    wine "${installer_exe_location}" /S
+    ${WINE} "${installer_exe_location}" /S
     install_key
     wait
 }
@@ -247,7 +332,8 @@ install() {
 ###############################################################################################
 
 launch() {
-    wine "${lnk_full}"
+    cd "${drive_c}"
+    ${WINE} "${lnk_full}"
 }
 
 install_launch() {
@@ -257,8 +343,8 @@ install_launch() {
 if [[ ! -f "${lnk_full}" ]]; then
     install_launch
 else
-    install_key &
-    install_fonts
+    install_fonts &
+    install_key
     wait
     launch #|| install_launch
 fi

@@ -7,7 +7,7 @@ _pkgname=calcesara
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
 pkgver=8.6.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
 arch=('x86_64')
 url='https://web.calce.umd.edu/software/releaseSARA'
@@ -21,16 +21,20 @@ depends=(
     'ttf-ms-win10-auto' # Required fonts
 )
 #optdepends=('xdg-utils: for launching HTML help files')
-#optdepends=(
-    #'ttf-terminus'
+optdepends=(
+    'winetricks: Installs fonts locally if missing'
+    # TODO
     #'adobe-base-14-fonts: Helvetica and Times is widely used throught calceSARA.'
     #'ttf-dejavu: Mentioned in calceSARA license, so we can assume it's used somewhere.'
-#) # TODO!
+)
 makedepends=(
     'curl' # Downloads sources
 	'imagemagick' # Convert icons to png
 	'gendesk' # Generate desktop entries
     '7zip' # Unzip installer binary
+)
+_fonts=(
+    'arial' # Most important one
 )
 
 # Template for launch script.
@@ -59,7 +63,7 @@ source=(
 )
 sha256sums=(
     826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
-    1455d3c311132dd9eeaf79cbff10c8c16de13e32cd8acb75d238a86004af8d3c
+    a648fdc7d494dde81995bff1f89bd8c251187574f14cbba27b84a580c810df93
     3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
 )
 
@@ -109,6 +113,10 @@ prepare() {
         __option_cases="${__option_cases}\n\t${__option}) lnk=${__lnk};;"
         __option_help_list="${__option_help_list}\\n\\t- ${__option}"
     done
+    __fonts=""
+    for i in $_fonts; do
+        __fonts="\n\t${i}"
+    done
     sed -i "s/@keygen_cryptkey@/${_keygen_cryptkey}/g" ${_launcher_template}
     sed -i "s/@pkgver@/${pkgver}/g" ${_launcher_template}
     sed -i "s/@pkgname@/${_pkgname}/g" ${_launcher_template}
@@ -117,6 +125,7 @@ prepare() {
     sed -i "s#@shared_data_prefix@#${_shared_data_prefix}#g" ${_launcher_template}
     sed -i "s/@option_help_list@/${__option_help_list}/g" ${_launcher_template}
     sed -i "s/@option_cases@/${__option_cases}/g" ${_launcher_template}
+    sed -i "s/@fonts@/${__fonts}/g" ${_launcher_template}
 
     cp ${_launcher_template} ${_launcher_check}
     sed -i "s/#@check@/# Good to go!/g" ${_launcher_template}
