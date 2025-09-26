@@ -19,10 +19,13 @@ options=(!strip emptydirs staticlibs zipman)
 
 license=("GitHub")
 
-source=("https://registry.npmjs.org/@github/copilot/-/copilot-${pkgver}.tgz")
+source=("https://registry.npmjs.org/@github/copilot/-/copilot-${pkgver}.tgz"
+		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("copilot-${pkgver}.tgz")
+changelog="changelog.md"
 
-b2sums=('068f9225825bfe2684eb46840bffbc06ef3ed38b9d89e91b3d38e654210f73764e5d185240849a450669cd660a3b074271e1fcd726b1c3f15b8877487756d326')
+b2sums=('068f9225825bfe2684eb46840bffbc06ef3ed38b9d89e91b3d38e654210f73764e5d185240849a450669cd660a3b074271e1fcd726b1c3f15b8877487756d326'
+        '4f1ae6117d08e8e0a9b3bb838970059dcfa151b5f8764bb7d62e320b72570fccb7ac209011ba6778b5e9895ee586bdbbb190e5ff97b7b10cd14eee0f80caee35')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -56,4 +59,7 @@ package() {
 
 	msg2 "Installing README.md"
 	install -Dm644 "${pkgdir}/usr/lib/node_modules/@github/copilot/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	msg2 "Installing LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
