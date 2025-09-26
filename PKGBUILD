@@ -1,5 +1,5 @@
 pkgname=pokeclicker-platinum
-pkgver=0.10.24_2  # Arch-friendly version string
+pkgver=0.10.25_3  # Arch-friendly version string
 pkgrel=1
 epoch=1
 pkgdesc="PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Electron AppImage)"
@@ -14,7 +14,7 @@ options=(!strip)
 _gitver="${pkgver//_/-}"
 
 source=("git+$url.git#tag=v${_gitver}")
-sha256sums=('SKIP')
+sha256sums=('7a11f116cd108fb1069464839e43f8d26d5c1e744b336509cdd97389e287b17a')
 
 pkgver() {
   cd "$srcdir/pokeclicker"

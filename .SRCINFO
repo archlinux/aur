@@ -1,6 +1,6 @@
 pkgbase = pokeclicker-platinum
 	pkgdesc = PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Electron AppImage)
-	pkgver = 0.10.24_2
+	pkgver = 0.10.25_3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/wheat32/pokeclicker
@@ -14,7 +14,7 @@ pkgbase = pokeclicker-platinum
 	depends = zlib
 	depends = glibc
 	options = !strip
-	source = git+https://github.com/wheat32/pokeclicker.git#tag=v0.10.24-2
-	sha256sums = SKIP
+	source = git+https://github.com/wheat32/pokeclicker.git#tag=v0.10.25-3
+	sha256sums = 7a11f116cd108fb1069464839e43f8d26d5c1e744b336509cdd97389e287b17a
 
 pkgname = pokeclicker-platinum
