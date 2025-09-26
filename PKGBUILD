@@ -2,7 +2,7 @@
 
 _pkgname='pkedit-qt'
 pkgname="$_pkgname-git"
-pkgver=r6.e8b61d2
+pkgver=v0.0.2.r1.g425edc1
 pkgrel=1
 url="https://codeberg.org/ramenu/pkedit-qt"
 pkgdesc='QT GUI frontend utilizing libpkedit'
@@ -17,10 +17,16 @@ depends=(
 	'qt6-base'
 )
 license=('GPL-3.0-only')
-source=("$_pkgname::git+$url")
+source=(
+	"$_pkgname::git+$url"
+	'pkedit-qt.desktop'
+)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-b2sums=('SKIP')
+b2sums=(
+	'SKIP'
+	'3dde226f5dad5bf01397d3885822bef863ba39e94f6c5ebeec641bfef0cb716eb3f26b471be9d6d0c63a537fd21ff22a2b9f4e27c63fb255bae9d0aefbdb2a7b'
+)
 
 pkgver() {
 	cd "$_pkgname"
@@ -46,6 +52,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm644 "$_pkgname/README.md" -t "$pkgdir/usr/share/doc/$_pkgname/"
+	install -Dm644 'pkedit-qt.desktop' -t "$pkgdir/usr/share/applications/"
 }
-

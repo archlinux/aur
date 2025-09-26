@@ -1,6 +1,6 @@
 pkgbase = pkedit-qt-git
 	pkgdesc = QT GUI frontend utilizing libpkedit
-	pkgver = r6.e8b61d2
+	pkgver = v0.0.2.r1.g425edc1
 	pkgrel = 1
 	url = https://codeberg.org/ramenu/pkedit-qt
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = pkedit-qt-git
 	provides = pkedit-qt
 	conflicts = pkedit-qt
 	source = pkedit-qt::git+https://codeberg.org/ramenu/pkedit-qt
+	source = pkedit-qt.desktop
 	b2sums = SKIP
+	b2sums = 3dde226f5dad5bf01397d3885822bef863ba39e94f6c5ebeec641bfef0cb716eb3f26b471be9d6d0c63a537fd21ff22a2b9f4e27c63fb255bae9d0aefbdb2a7b
 
 pkgname = pkedit-qt-git

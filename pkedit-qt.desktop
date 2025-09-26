@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PKEdit
+Exec=/usr/bin/pkedit-qt
+Icon=/usr/share/pkedit/assets/icon.png
+Comment=Pokémon save file editor
+Categories=Utility
+Keywords=pokemon;save;editor
+NoDisplay=false
+SingleMainWindow=true
