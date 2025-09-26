@@ -1,6 +1,6 @@
 pkgbase = elephant-calc
 	pkgdesc = calc provider for elephant
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = elephant-calc
 	depends = libqalculate
 	provides = elephant-calc
 	conflicts = elephant-calc
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.7.tar.gz
-	sha256sums = d275d5955ec0e967968db2dfb3f3f71842f2d1c6927b366cf4ac9836acdef511
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.8.tar.gz
+	sha256sums = 26f6b91a77729ac2a2f5406615f9078583854ea9672c300708521c1c5483cdbd
 
 pkgname = elephant-calc
