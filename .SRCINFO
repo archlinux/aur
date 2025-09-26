@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 4.9.0
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = any
@@ -80,8 +80,8 @@ pkgbase = python-logfire
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = logfire-4.9.0::git+https://github.com/pydantic/logfire.git#tag=v4.9.0
-	sha256sums = 6481058daad485c0915aab13f24a47dbe8f6e5f406e077e9791d81d796fab2e4
+	source = logfire-4.10.0::git+https://github.com/pydantic/logfire.git#tag=v4.10.0
+	sha256sums = 6f13429c29b9d0e8ebc0d5b20cdd784db1cffd9743f29e3a710593d1df2a0918
 
 pkgname = python-logfire-api
 	pkgdesc = Shim for the Logfire SDK which does nothing unless Logfire is installed.
