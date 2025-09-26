@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Bovetti <emiliano.bovetti at gmail dot com>
 
 pkgname=nanomq-bin
-pkgver=0.24.2
+pkgver=0.24.4
 pkgrel=1
 pkgdesc='An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV'
 url='https://nanomq.io'
