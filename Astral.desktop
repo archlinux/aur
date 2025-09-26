@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Astral
+Comment=Astral is a modern cross-platform web application built on EasyTier, designed to simplify the creation and management of P2P network connections and virtual private networks.
+GenericName=Astral
+Exec=env WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" astral %U "
+Icon=Astral
+Type=Application
+StartupNotify=true
+Categories=Utility;
