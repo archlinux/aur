@@ -5,7 +5,7 @@
 _watch=('https://hiawatha.leisink.net/changelog' '\"version\">(\d[\d.]*\d+)<')
 
 pkgname=hiawatha
-pkgver=11.7
+pkgver=11.8
 pkgrel=1
 pkgdesc="Secure and advanced webserver"
 url="https://hiawatha.leisink.net/"
@@ -23,7 +23,7 @@ source=("https://hiawatha.leisink.net/files/$pkgname-$pkgver.tar.gz"
         'hiawatha.service'
         'lefh-renew.service'
         'lefh-renew.timer')
-sha256sums=('8bc180ae3b986d02466f081efeefdb1595d96783f581fded2a9b198752ab7ae1'
+sha256sums=('1376763750fb9a88a780bac6aba8707bc2a78f8ee089c62d433e50216a5183bd'
             '4671d2586cbe3cd6497b16ff422c6143cdab40641ef3c9c4988c478351a8f5e7'
             'b5a2671703b52eec376cfc4697b86aafa4f7fdd9b2b9203798e2117770bafa53'
             '2598480f8b249aaf7028ea66bac0195e1c017fb17c2c169b69e0b66413728457'
@@ -45,6 +45,14 @@ prepare() {
   
   sed -e 's|/etc/init.d/hiawatha restart|systemctl restart hiawatha.service|' \
       -i extra/letsencrypt/letsencrypt.conf.in
+
+  # Fix signal handler prototypes for GCC >= 12
+  sed -i 's/void \([A-Z0-9_]*_handler\)()/void \1(int sig)/g' src/hiawatha.c
+  sed -i 's/void \([A-Z0-9_]*_handler\)()/void \1(int sig)/g' src/cgi-wrapper.c
+
+  # Add (void)sig; to silence unused warnings if handler doesn't use the signal
+  sed -i '/^{/a \    (void)sig;' src/hiawatha.c
+  sed -i '/^{/a \    (void)sig;' src/cgi-wrapper.c
 }
 
 build() {
