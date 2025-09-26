@@ -1,0 +1,22 @@
+pkgbase = snow
+	pkgdesc = Snow is an AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://gitee.com/jcnc-org/snow
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = jdk24-graalvm-ee-bin
+	makedepends = git
+	makedepends = maven
+	makedepends = musl
+	depends = glibc
+	depends = zlib
+	provides = snow
+	conflicts = snow
+	replaces = snow
+	options = !strip
+	options = !debug
+	source = snow::git+https://gitee.com/jcnc-org/snow.git#tag=v0.10.0
+	sha256sums = ebbb6b6a50e453e54b3dd97ee8dc653c6b07fd7e54dee5783e01d2da8a90c1db
+
+pkgname = snow
