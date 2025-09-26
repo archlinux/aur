@@ -2,7 +2,7 @@
 
 _pkgname='libpkedit'
 pkgname="$_pkgname-git"
-pkgver=r33.0e1303f
+pkgver=v0.0.1.r5.gb288666
 pkgrel=1
 url="https://codeberg.org/ramenu/pkedit"
 pkgdesc='A cross-platform library for modifying Pokémon save files'
@@ -50,6 +50,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm644 "$_pkgname/README.md" -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
