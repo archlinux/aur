@@ -4,7 +4,7 @@
 
 pkgbase=pango-git
 pkgname=(pango-git pango-docs-git)
-pkgver=1.56.0.r12.gc5899494
+pkgver=1.57.0.r9.g0f27f82b
 pkgrel=1
 epoch=1
 pkgdesc="A library for layout and rendering of text"
@@ -37,6 +37,7 @@ pkgver() {
 build() {
   local meson_options=(
     -D documentation=true
+    -D man-pages=true
     -D sysprof=enabled
   )
   arch-meson pango build "${meson_options[@]}"
