@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   b611d6cd998d4bf6c69ea05e23bff93021f3a6e3f31de2c23365228ac5e16252
-  SKIP
+  1a6db6fdd03576233dc0d78a793c1d16a2ee96f0d29df59fa92dedd8feb9fe5f
 )
 
 build() {
