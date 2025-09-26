@@ -20,7 +20,7 @@ pkgname=(
 )
 pkgbase=coreboot-utils
 pkgver=25.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools and utilities to work with coreboot firmware"
 url="https://www.coreboot.org"
 license=('GPL-2.0-only')
@@ -147,7 +147,10 @@ build() {
 
 package_acpidump-all() {
   pkgdesc="Walk through all ACPI tables with their addresses"
-  depends=('bash')
+  depends=(
+    'acpica'
+    'bash'
+  )
 
   cd "coreboot-$pkgver"
   install -Dm755 "util/acpi/$pkgname" -t "$pkgdir/usr/bin/"

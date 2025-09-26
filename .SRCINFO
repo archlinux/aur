@@ -1,7 +1,7 @@
 pkgbase = coreboot-utils
 	pkgdesc = Tools and utilities to work with coreboot firmware
 	pkgver = 25.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.coreboot.org
 	arch = x86_64
 	license = GPL-2.0-only
@@ -20,6 +20,7 @@ pkgbase = coreboot-utils
 
 pkgname = acpidump-all
 	pkgdesc = Walk through all ACPI tables with their addresses
+	depends = acpica
 	depends = bash
 
 pkgname = amdfwtool
