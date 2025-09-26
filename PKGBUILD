@@ -5,7 +5,7 @@ _pkgname=Gitify
 pkgver=6.8.0
 _electronversion=38
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub notifications on your menu bar.(Use system-wide electron)"
 arch=('any')
 url='https://www.gitify.io/'
@@ -49,7 +49,6 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -78,15 +77,16 @@ prepare() {
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
     NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build
-    NODE_ENV=production     pnpm run prepare:remove-source-maps
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config ./config/electron-builder.js"
 }
 package() {
