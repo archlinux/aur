@@ -6,7 +6,7 @@
 _pkgname="vdeplug4"
 pkgname="$_pkgname-git"
 pkgver=v4.0.1.r12.a595069
-pkgrel=1
+pkgrel=2
 
 pkgdesc="VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud"
 arch=('any')
