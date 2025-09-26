@@ -1,6 +1,6 @@
 pkgbase = zen-browser
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	pkgver = 1.16b
+	pkgver = 1.16.1b
 	pkgrel = 1
 	url = https://zen-browser.app/
 	arch = x86_64
@@ -66,14 +66,14 @@ pkgbase = zen-browser
 	options = !lto
 	options = !makeflags
 	options = !debug
-	source = git+https://github.com/zen-browser/desktop.git#tag=1.16b
+	source = git+https://github.com/zen-browser/desktop.git#tag=1.16.1b
 	source = https://archive.mozilla.org/pub/firefox/releases/143.0.1/source/firefox-143.0.1.source.tar.xz
 	source = firefox-l10n::git+https://github.com/mozilla-l10n/firefox-l10n
 	source = zen-browser.desktop
 	source = 0003-do-not-disable-system-extensions.zen.patch
 	source = 0004-fix-package-json.zen.patch
 	source = 0005-source-firefox-language-packs.patch
-	sha256sums = 20275d3200adc8f914f895ea81c2d155f9ec2e87cbe9d7206518d9bc40e14912
+	sha256sums = d013388644edeac47f79759d5241eaf19b6e3abaa9f38566c996d9d36f780cc7
 	sha256sums = 17f1dc1ece789ee81f1a3e9ee9bc7619de3a5481e802d83f2a3160f2f60c3957
 	sha256sums = SKIP
 	sha256sums = 523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9
@@ -82,22 +82,22 @@ pkgbase = zen-browser
 	sha256sums = 7702c197f5509e4ec7e744f74105cc8339b631e37f7a0b41bf3070bf3ccc92a7
 
 pkgname = zen-browser
-	provides = zen-browser=1.16b
+	provides = zen-browser=1.16.1b
 
 pkgname = zen-browser-i18n-zh-cn
 	pkgdesc = Language pack for Zen Browser (zh-CN)
 	arch = any
-	depends = zen-browser>=1.16b
+	depends = zen-browser>=1.16.1b
 	optdepends = 
 
 pkgname = zen-browser-i18n-zh-tw
 	pkgdesc = Language pack for Zen Browser (zh-TW)
 	arch = any
-	depends = zen-browser>=1.16b
+	depends = zen-browser>=1.16.1b
 	optdepends = 
 
 pkgname = zen-browser-i18n-ja
 	pkgdesc = Language pack for Zen Browser (ja)
 	arch = any
-	depends = zen-browser>=1.16b
+	depends = zen-browser>=1.16.1b
 	optdepends = 
