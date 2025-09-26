@@ -1,7 +1,7 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=bomdia
 pkgver=v0.1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc=""
 arch=(any)

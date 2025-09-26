@@ -1,6 +1,6 @@
 pkgbase = bomdia
 	pkgver = v0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/Phosphenius/bomdia
 	arch = any
 	license = AGPL-3.0-only
