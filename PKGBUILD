@@ -1,6 +1,6 @@
 # Maintainer: atretador
 pkgname=classic-addon-manager-git
-_pkgname=classic-addon-manager
+_pkgname=classicaddonmanager
 pkgver=0.0
 pkgrel=1
 pkgdesc="An addon manager for ArcheAge Classic, built with Go from latest git master"
@@ -58,6 +58,6 @@ package() {
 
   # Install icon
   for size in 16 22 32 48 64 128 256; do
-    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/classic-addon-manager.png"
+    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png"
   done
 }
