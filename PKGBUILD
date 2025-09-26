@@ -2,12 +2,14 @@
 
 pkgname=beszel-agent-bin
 pkgver=0.12.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Beszel monitoring agent"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'mips64' 'riscv64')
 url="https://github.com/henrygd/beszel"
 license=('MIT')
-optdepends=('rocm-smi-lib: AMD GPU usage, temperature, and power draw via rocm-smi')
+optdepends=(
+  'rocm-smi-lib: AMD GPU metrics via rocm-smi'
+  'intel-gpu-tools: Intel GPU metrics via intel_gpu_top')
 provides=('beszel-agent')
 conflicts=('beszel-agent')
 backup=('etc/beszel-agent.conf')
@@ -55,6 +57,8 @@ package() {
 }
 
 post_install() {
-  printf "\n\033[1;32m>>\033[0m Edit /etc/beszel-agent.conf (set KEY, PORT, etc.) then\n"
-  printf "   sudo systemctl enable --now beszel-agent.service\n\n"
+  printf "\033[1;32m>>\033[0m Edit /etc/beszel-agent.conf (set KEY, PORT, etc.) then:\n"
+  printf "   sudo systemctl enable --now beszel-agent.service\n"
+  printf "\033[1;32m>>\033[0m To enable Intel GPU metrics, allow intel_gpu_top to be run without root:\n"
+  printf "   sudo setcap cap_perfmon=ep /usr/bin/intel_gpu_top\n"
 }
