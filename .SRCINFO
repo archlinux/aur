@@ -1,6 +1,6 @@
 pkgbase = td-tui
 	pkgdesc = Simple task management TUI tool
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/voioo/td
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = td-tui
 	license = 0BSD
 	provides = td
 	conflicts = td
-	source_x86_64 = https://github.com/voioo/td/releases/download/v0.4.2/td_linux_amd64.tar.gz
-	sha256sums_x86_64 = ad6052c701fa4249d4d7378712858e23a294f50e3f5b77e782158c037a4b481d
-	source_aarch64 = https://github.com/voioo/td/releases/download/v0.4.2/td_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6d2fa939d2ccf3d0e9da67084cd24e843bcfbb3410c3a893349fc6ad3e7fd11e
+	source_x86_64 = https://github.com/voioo/td/releases/download/v0.4.3/td_linux_amd64.tar.gz
+	sha256sums_x86_64 = 897643d19aa5eede99f910f900e2a3a3616e5d06fafeda74ebf9737a2f569a0b
+	source_aarch64 = https://github.com/voioo/td/releases/download/v0.4.3/td_linux_arm64.tar.gz
+	sha256sums_aarch64 = ab8e0a12444e145fa61de5f7d2f950fd1464d1093bfa51575353be739544d947
 
 pkgname = td-tui
