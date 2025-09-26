@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # ci|forcedep=python-libpulse-git|
 pkgname="pa-dlna"
-pkgver=1.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWire (via 'python-libpulse')"
 arch=(
   'any'
@@ -37,6 +37,10 @@ makedepends=(
   'python-wheel'
 )
 
+checkdepends=(
+  'python-pytest'
+)
+
 optdepends=(
   'ffmpeg: multiple formats support'
   'flac: flac transcoding support'
@@ -50,7 +54,7 @@ source=(
   "git+${url}.git#tag=${pkgver}"
 )
 
-sha256sums=('996f22943e03cb93fda2a1ef3ccc6731f09f0430c3e1f4ffe41e3fe3d849acc6')
+sha256sums=('eb9fb7443dc98562979982c3654f2e34b685850702ed20f5cfff63b403b3fa2b')
 
 build() {
   cd "$pkgname"
@@ -59,7 +63,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  python -m unittest --verbose --catch --failfast
+  python -m pytest
 }
 
 package() {

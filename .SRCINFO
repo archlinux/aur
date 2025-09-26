@@ -1,10 +1,11 @@
 pkgbase = pa-dlna
 	pkgdesc = Forwards audio to DLNA devices via PulseAudio or PipeWire (via 'python-libpulse')
-	pkgver = 1.0
-	pkgrel = 4
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://gitlab.com/xdegaye/pa-dlna
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-flit-core
@@ -22,13 +23,13 @@ pkgbase = pa-dlna
 	optdepends = pulse-native-provider: To be used by a local pulseaudio implementation
 	optdepends = pipewire-pulse: To be used by a local pipewire implementation
 	optdepends = pulseaudio-dlna: Service file for pa-dlna in systemd format
-	provides = pa-dlna=1.0
-	provides = upnp-cmd=1.0
-	provides = upnp-cmd-git=1.0
-	provides = python-pa_dlna=1.0
-	provides = python-pa_dlna-git=1.0
+	provides = pa-dlna=1.1
+	provides = upnp-cmd=1.1
+	provides = upnp-cmd-git=1.1
+	provides = python-pa_dlna=1.1
+	provides = python-pa_dlna-git=1.1
 	provides = PULSEAUDIO-DLNA-SINK
-	source = git+https://gitlab.com/xdegaye/pa-dlna.git#tag=1.0
-	sha256sums = 996f22943e03cb93fda2a1ef3ccc6731f09f0430c3e1f4ffe41e3fe3d849acc6
+	source = git+https://gitlab.com/xdegaye/pa-dlna.git#tag=1.1
+	sha256sums = eb9fb7443dc98562979982c3654f2e34b685850702ed20f5cfff63b403b3fa2b
 
 pkgname = pa-dlna
