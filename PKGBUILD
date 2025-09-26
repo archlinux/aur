@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226@outlook.com>
 
 pkgname=r2modman
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 epoch=
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/ebkr/r2modmanPlus"
 license=("MIT")
 groups=()
-_electron=electron36
+_electron=electron38
 depends=("$_electron")
 makedepends=(yarn node-gyp python)
 checkdepends=()
@@ -24,7 +24,7 @@ changelog=
 source=("r2modmanPlus-$pkgver.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v$pkgver.tar.gz"
         "r2modman.desktop")
 noextract=()
-sha256sums=('2f6eb986e41c59da0128bb67ac4485573558a1e9442b412304334ca8987ed562'
+sha256sums=('42f5f3a93d6e9e28e5051686a3e09859acb80f132482a0d02dcbe9edcabd3f28'
             '6cd96385f1ad7bf6fec0f9a70b429305e6f20153528e415d3c943ff19a45fd0f')
 validpgpkeys=()
 
