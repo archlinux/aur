@@ -1,6 +1,6 @@
 pkgbase = rio
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
-	pkgver = 0.2.30
+	pkgver = 0.2.31
 	pkgrel = 1
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rio
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !lto
-	source = rio-0.2.30.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.2.30.tar.gz
-	sha512sums = bc17ede011457c99adfe4efb0162cef5de69640d9cc1c1d91ae11883a5c9cd80648a9a54e5871b83ec29e4dab5abc0e5fd1de3ee1d6f9dffea118ad6beed2c0b
+	source = rio-0.2.31.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.2.31.tar.gz
+	sha512sums = 35d9c22f178da9a1d7db8ac991b7bb25a2d030724facfbbd131c359777fba5b3ab3d7b6c0378842b7a46ec119ed520a63a14012b4aba6d9ba5e697d5a62e9006
 
 pkgname = rio
