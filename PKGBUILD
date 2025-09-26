@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode'
-pkgver=0.11.7
+pkgver=0.11.8
 options=('!debug' '!strip')
 pkgrel=1
 pkgdesc='The AI coding agent built for the terminal.'
@@ -14,7 +14,7 @@ conflicts=('opencode-bin')
 depends=('fzf' 'ripgrep')
 makedepends=('git' 'bun-bin' 'go')
 
-source=("opencode-${pkgver}.tar.gz::https://github.com/sst/opencode/archive/v0.11.7.tar.gz")
+source=("opencode-${pkgver}.tar.gz::https://github.com/sst/opencode/archive/v0.11.8.tar.gz")
 sha256sums=('SKIP')
 
 build() {
