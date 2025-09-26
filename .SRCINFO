@@ -1,0 +1,14 @@
+pkgbase = gsnake-cli
+	pkgdesc = gsnake-cli is just a snake in your terminal lolz
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/moxi-git/gsnake-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/moxi-git/gsnake-cli.git
+	sha256sums = SKIP
+
+pkgname = gsnake-cli
