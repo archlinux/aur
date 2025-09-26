@@ -8,31 +8,31 @@ pkgrel=1
 arch=('any')
 depends=(
     'python'
-    'python-bibtexparser'
     'python-beautifulsoup4'
+    'python-bibtexparser'
+    'python-linkify-it-py'
     'python-lxml'
-    'python-ruamel-yaml'
+    'python-markdown-it-py'
+    'python-mdit_py_plugins'
     'python-pylatexenc'
     'python-requests'
     'python-requests-oauthlib'
-    'python-text-unidecode'
     'python-rich'
+    'python-ruamel-yaml'
+    'python-text-unidecode'
     'python-textual'
-    'python-markdown-it-py'
-    'python-mdit_py_plugins'
-    'python-linkify-it-py'
 )
 optdepends=(
-    'python-regex'
     'python-prompt_toolkit'
+    'python-regex'
 )
 license=('MIT')
 makedepends=(
     'git'
     'python-build'
     'python-installer'
-    'python-wheel'
     'python-setuptools'
+    'python-wheel'
     'ruby-ronn-ng'
 )
 provides=('cobib')
