@@ -1,7 +1,7 @@
 pkgbase = bsdutils-git
 	pkgdesc = Alternative to GNU coreutils using software from FreeBSD
 	pkgver = 13.2.r1.g7e38401
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dcantrell/bsdutils
 	arch = i686
 	arch = x86_64

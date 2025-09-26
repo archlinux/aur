@@ -2,7 +2,7 @@
 
 pkgname=bsdutils-git
 pkgver=13.2.r1.g7e38401
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative to GNU coreutils using software from FreeBSD"
 arch=('i686' 'x86_64')
 url="https://codeberg.org/dcantrell/bsdutils"
@@ -46,5 +46,9 @@ package() {
   cd "bsdutils"
 
   meson install -C "_build" --destdir "$pkgdir"
+
+  install -dm755 "$pkgdir/opt/bsdutils"
+  mv "$pkgdir/usr/"{bin,share/{man,misc}} "$pkgdir/opt/bsdutils"
+
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bsdutils"
 }
