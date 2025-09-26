@@ -1,7 +1,7 @@
 pkgbase = selenized-git
 	pkgdesc = Solarized redesigned: fine-tuned color palette for programmers with focus on readability.
 	pkgver = v1.0.r20.048c55e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/Phosphenius/selenized
 	arch = any
 	license = MIT
