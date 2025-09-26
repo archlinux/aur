@@ -36,7 +36,7 @@ _srcdir="$_pkgname"
 
 pkgver() {
 	cd "$_srcdir"
-	git describe --tags | sed 's/^v//;s/-/+/g'
+	git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
 }
 
 build() {
