@@ -1,8 +1,9 @@
 pkgbase = libreoffice-extension-languagetool
 	pkgdesc = An Open Source style and grammar checker (more than 30 languages)
 	pkgver = 6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://languagetool.org
+	install = libreoffice-extension-languagetool.install
 	arch = any
 	groups = libreoffice-extensions
 	license = LGPL

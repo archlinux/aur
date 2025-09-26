@@ -1,0 +1,16 @@
+post_install() {
+	 echo "==============================================================================="
+	 echo "= LanguageTool for LibreOffice has been deprecated for favor of WritingTool.  ="
+	 echo "= This package will remain up, but please consider moving to the new package, ="
+	 echo "= libreoffice-extension-writingtool or libreoffice-extension-writingtool-bin  ="
+	 echo "==============================================================================="
+
+}
+
+post_upgrade() {
+	 echo "==============================================================================="
+	 echo "= LanguageTool for LibreOffice has been deprecated for favor of WritingTool.  ="
+	 echo "= This package will remain up, but please consider moving to the new package, ="
+	 echo "= libreoffice-extension-writingtool or libreoffice-extension-writingtool-bin  ="
+	 echo "==============================================================================="
+}

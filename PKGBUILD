@@ -5,11 +5,12 @@ _path='3710/1713168009'
 pkgname=libreoffice-extension-languagetool
 pkgver=6.4
 _filename="LanguageTool-${pkgver}.oxt"
-pkgrel=1
+pkgrel=2
 pkgdesc='An Open Source style and grammar checker (more than 30 languages)'
 arch=('any')
 url='https://languagetool.org'
 license=('LGPL')
+install=${pkgname}.install
 groups=('libreoffice-extensions')
 depends=('libreoffice' 'java-runtime>=8')
 source=("${_filename}::https://extensions.libreoffice.org/assets/downloads/${_path}/${_filename}")
