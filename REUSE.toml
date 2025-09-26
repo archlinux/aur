@@ -1,0 +1,14 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "electron-flags.conf",
+    "*.hook",
+    "*.install",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"

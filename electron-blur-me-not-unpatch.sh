@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 if [[ ! -e '{{executable}}' ]]; then
   echo >&2 'Not modifying {{target}} because {{executable}} is not installed.'
   exit 0
