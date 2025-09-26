@@ -2,7 +2,7 @@
 
 pkgname=pango-design-suite-bin
 pkgver=6.7.1
-pkgrel=1
+pkgrel=3
 # epoch=1
 pkgdesc="Pango Design Suite (PDS) 软件是紫光同创自主研发的从HDL描述到位流生成与下载调试的可编程工具套件，为公司全系列FPGA芯片提供高效友好的集成设计环境。该软件支持业界标准的开发流程，已具备支持大规模FPGA芯片的应用开发能力。"
 arch=('x86_64')
@@ -22,7 +22,11 @@ makedepends=(
   libarchive
   sed
 )
-optdepends=()
+optdepends=(
+	'fcitx5-qt: Fcitx5 Qt Library (Qt5 & Qt6 integrations)'
+	'fcitx-qt5: Qt5 IM Module for Fcitx'
+	'fcitx-qt6: Qt6 IM Module for Fcitx'
+)
 backup=(etc/${pkgname%-bin}-license.conf)
 options=(!debug !strip !emptydirs !staticlibs)
 install=${pkgname}.install
@@ -62,16 +66,28 @@ package() {
   install -dm0755 "${pkgdir}/opt/pangomicro/${pkgname%-bin}/"
   mv ${srcdir}/${_pkg_file_name}/{arch,bin,driver,example,install.sh,ip,lib} "${pkgdir}/opt/pangomicro/${pkgname%-bin}/"
 
+  install -dm0755 "${pkgdir}/opt/pangomicro/${pkgname%-bin}/lib/plugins/platforminputcontexts/"
+  ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so \
+	  "${pkgdir}/opt/pangomicro/${pkgname%-bin}/lib/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so"
+
+  ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so \
+	  "${pkgdir}/opt/pangomicro/${pkgname%-bin}/lib/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so"
+
+  ln -sf /usr/lib/qt6/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin-qt6.so \
+	  "${pkgdir}/opt/pangomicro/${pkgname%-bin}/lib/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin-qt6.so"
+
   install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
 #!/bin/sh
 [ -d /opt/pangomicro/${pkgname%-bin}/bin ] && append_path '/opt/pangomicro/${pkgname%-bin}/bin'
 
 export PATH
 EOF
-  #   install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<EOF
-  # #!/bin/bash
-  # /opt/pangomicro/${pkgname%-bin}/bin/pds "\$@"
-  # EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<EOF
+#!/bin/bash
+QT_PLUGIN_PATH=/opt/pangomicro/${pkgname%-bin}/lib/plugins
+# QT_IM_MODULE=fcitx
+/opt/pangomicro/${pkgname%-bin}/bin/pds "\$@"
+EOF
 
   install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.pangomicro.pds.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -104,7 +120,7 @@ Comment=Pango Design Suite (PDS)
 Categories=Development;Electronics;
 
 Icon=${pkgname%-bin}
-Exec=/opt/pangomicro/pango-design-suite/bin/pds %U
+Exec=${pkgname%-bin} %U
 Terminal=false
 EOF
   #   chown -R root:root "${pkgdir}/"
