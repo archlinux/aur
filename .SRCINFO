@@ -8,6 +8,7 @@ pkgbase = beekeeper-qt
 	makedepends = git
 	makedepends = cmake
 	makedepends = pkgconf
+	makedepends = ninja
 	depends = qt6-base
 	depends = qt6-tools
 	depends = polkit-qt6
