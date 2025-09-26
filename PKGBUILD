@@ -2,12 +2,12 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.30
+pkgver=0.6.31
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
-license=('MIT')
+license=('BSD-3-Clause')
 depends=(python
         python-accelerate
         python-aiocache
@@ -49,6 +49,7 @@ depends=(python
         python-ldap3
         python-loguru
         python-markdown
+        python-mcp
         python-numpy
         python-opensearch
         python-opentelemetry-api
@@ -85,6 +86,7 @@ depends=(python
         python-sqlcipher3
         python-starlette
         python-starlette-compress
+        python-starsessions
         python-tiktoken
         python-pytorch
         python-transformers
@@ -109,7 +111,7 @@ source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
         "open-webui.service"
         "open-webui.conf")
 
-b2sums=('ab8a1ca446524a0c6e75bff1a982ce72bd6bd3dbc4c489ecd351a8f59c5c77fd95bdb838c038a7bc1d9ab44e5a2899bd704ee708b302beeb04807b262dbdb7e6'
+b2sums=('802e1d83b821f001d1d1d849e38d6daa6f78d8666add7c11715ce5b6871ac472d1f29b4f7bfe9b4e91dd8618332a931c7c000e67a601486049885c53e5d3c133'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')

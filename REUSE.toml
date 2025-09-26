@@ -26,4 +26,4 @@ path = [
     "build-only-backend.patch",
 ]
 SPDX-FileCopyrightText = "open-webui-no-venv contributors"
-SPDX-License-Identifier = "MIT"
+SPDX-License-Identifier = "BSD-3-Clause"

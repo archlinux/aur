@@ -136,6 +136,7 @@ Module: aiohttp
     open_webui/retrieval/web/utils.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
+    open_webui/routers/configs.py
     open_webui/routers/functions.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
@@ -171,7 +172,9 @@ Module: requests
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
     open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/ollama.py
     open_webui/retrieval/web/perplexity.py
+    open_webui/retrieval/web/perplexity_search.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
     open_webui/retrieval/web/serpapi.py
@@ -230,6 +233,7 @@ Module: fastapi
     open_webui/utils/auth.py
     open_webui/utils/chat.py
     open_webui/utils/embeddings.py
+    open_webui/utils/files.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
@@ -260,6 +264,7 @@ Module: fastapi.responses
     open_webui/routers/scim.py
     open_webui/routers/tasks.py
     open_webui/routers/users.py
+    open_webui/utils/middleware.py
 Module: fastapi.staticfiles
   Imported in:
     open_webui/main.py
@@ -286,6 +291,12 @@ Module: starlette.responses
     open_webui/utils/middleware.py
     open_webui/utils/oauth.py
 Module: starlette.datastructures
+  Imported in:
+    open_webui/main.py
+Module: starsessions
+  Imported in:
+    open_webui/main.py
+Module: starsessions.stores.redis
   Imported in:
     open_webui/main.py
 Module: open_webui.utils
@@ -513,7 +524,9 @@ Module: open_webui.env
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
     open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/ollama.py
     open_webui/retrieval/web/perplexity.py
+    open_webui/retrieval/web/perplexity_search.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
     open_webui/retrieval/web/serpapi.py
@@ -528,6 +541,7 @@ Module: open_webui.env
     open_webui/routers/auths.py
     open_webui/routers/channels.py
     open_webui/routers/chats.py
+    open_webui/routers/configs.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
     open_webui/routers/functions.py
@@ -662,6 +676,7 @@ Module: open_webui.utils.plugin
 Module: open_webui.utils.oauth
   Imported in:
     open_webui/main.py
+    open_webui/routers/configs.py
 Module: open_webui.utils.security_headers
   Imported in:
     open_webui/main.py
@@ -821,6 +836,10 @@ Module: alembic
 Module: alembic.config
   Imported in:
     open_webui/config.py
+Module: cryptography.fernet
+  Imported in:
+    open_webui/models/oauth_sessions.py
+    open_webui/utils/oauth.py
 Module: authlib.oidc.core
   Imported in:
     open_webui/utils/oauth.py
@@ -834,7 +853,9 @@ Module: open_webui.models.auths
 Module: open_webui.models.oauth_sessions
   Imported in:
     open_webui/routers/auths.py
+    open_webui/routers/tools.py
     open_webui/routers/users.py
+    open_webui/utils/middleware.py
     open_webui/utils/oauth.py
 Module: open_webui.models.groups
   Imported in:
@@ -845,6 +866,7 @@ Module: open_webui.models.groups
     open_webui/models/tools.py
     open_webui/models/users.py
     open_webui/routers/auths.py
+    open_webui/routers/channels.py
     open_webui/routers/groups.py
     open_webui/routers/scim.py
     open_webui/routers/tools.py
@@ -857,6 +879,19 @@ Module: open_webui.utils.webhook
     open_webui/routers/channels.py
     open_webui/utils/middleware.py
     open_webui/utils/oauth.py
+Module: mcp.shared.auth
+  Imported in:
+    open_webui/routers/configs.py
+    open_webui/utils/mcp/client.py
+    open_webui/utils/oauth.py
+Module: open_webui.routers.images
+  Imported in:
+    open_webui/utils/files.py
+    open_webui/utils/middleware.py
+Module: open_webui.routers.files
+  Imported in:
+    open_webui/routers/images.py
+    open_webui/utils/files.py
 Module: yaml
   Imported in:
     open_webui/utils/tools.py
@@ -940,10 +975,10 @@ Module: open_webui.models.folders
 Module: open_webui.routers.tasks
   Imported in:
     open_webui/utils/middleware.py
-Module: open_webui.routers.images
+Module: open_webui.routers.memories
   Imported in:
     open_webui/utils/middleware.py
-Module: open_webui.routers.memories
+Module: open_webui.utils.files
   Imported in:
     open_webui/utils/middleware.py
 Module: open_webui.retrieval.utils
@@ -958,6 +993,10 @@ Module: open_webui.utils.task
 Module: open_webui.utils.code_interpreter
   Imported in:
     open_webui/routers/utils.py
+    open_webui/utils/middleware.py
+Module: open_webui.utils.mcp.client
+  Imported in:
+    open_webui/routers/configs.py
     open_webui/utils/middleware.py
 Module: jwt
   Imported in:
@@ -1070,6 +1109,15 @@ Module: open_webui.utils.telemetry.instrumentors
 Module: open_webui.utils.telemetry.metrics
   Imported in:
     open_webui/utils/telemetry/setup.py
+Module: mcp
+  Imported in:
+    open_webui/utils/mcp/client.py
+Module: mcp.client.auth
+  Imported in:
+    open_webui/utils/mcp/client.py
+Module: mcp.client.streamable_http
+  Imported in:
+    open_webui/utils/mcp/client.py
 Module: socketio
   Imported in:
     open_webui/socket/main.py
@@ -1276,9 +1324,6 @@ Module: open_webui.models.files
 Module: sqlalchemy.dialects
   Imported in:
     open_webui/models/models.py
-Module: cryptography.fernet
-  Imported in:
-    open_webui/models/oauth_sessions.py
 Module: open_webui.models.tags
   Imported in:
     open_webui/models/chats.py
@@ -1287,9 +1332,6 @@ Module: open_webui.models.tags
 Module: sqlalchemy.sql.expression
   Imported in:
     open_webui/models/chats.py
-Module: open_webui.routers.files
-  Imported in:
-    open_webui/routers/images.py
 Module: open_webui.utils.images.comfyui
   Imported in:
     open_webui/routers/images.py
@@ -1386,7 +1428,9 @@ Module: open_webui.retrieval.web.main
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
     open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/ollama.py
     open_webui/retrieval/web/perplexity.py
+    open_webui/retrieval/web/perplexity_search.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
     open_webui/retrieval/web/serpapi.py
@@ -1398,6 +1442,12 @@ Module: open_webui.retrieval.web.main
     open_webui/retrieval/web/yacy.py
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.utils
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.ollama
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.perplexity_search
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.brave
