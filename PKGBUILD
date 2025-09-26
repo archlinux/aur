@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 
 prepare() {
-  cd "${srcdir}/pipewire-soundpad-v${pkgver}"
+  cd "${srcdir}/pipewire-soundpad-${pkgver}"
   
   export CARGO_HOME="${srcdir}/${pkgname%}/.cargo"    # Download all to src directory, not in ~/.cargo
 
@@ -34,7 +34,7 @@ build() {
 
 
 package() {
-  cd "${srcdir}/pipewire-soundpad-v${pkgver}"
+  cd "${srcdir}/pipewire-soundpad-${pkgver}"
   
   install -Dm755 "target/release/pwsp-cli" "${pkgdir}/usr/bin/pwsp-cli"
   install -Dm755 "target/release/pwsp-daemon" "${pkgdir}/usr/bin/pwsp-daemon"
