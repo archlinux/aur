@@ -1,16 +1,18 @@
-# Maintainer: Grafcube <grafcube at disroot dot org>
+# Maintainer: iamawacko <iamawacko at protonmail dot com>
+#Contributor: Grafcube <grafcube at disroot dot org>
 
 pkgname=cargo-leptos
-pkgver=0.2.17
+pkgver=0.2.44
 pkgrel=1
 pkgdesc="Build tool for the Rust framework Leptos."
 url='https://github.com/leptos-rs/cargo-leptos'
 arch=('x86_64')
 license=('MIT')
 depends=('cargo' 'cargo-generate' 'binaryen')
+makedepends=('libgit2')
 optdepends=('dart-sass: sass support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('619cfd0a5c28d6d6dd239a3e12b4c25145037a0d5d916b2b23364e5e1556a5c8')
+sha256sums=('3c68c56ca57e1e4ef5a04956ea300f7730a38950e632c3c29c2429a152cc271a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -20,7 +22,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	# Build with no_downloads flag to let pacman handle dependencies.
-	cargo build --frozen --release --features no_downloads
+	cargo build -vv --frozen --release --features no_downloads
 }
 
 package() {
