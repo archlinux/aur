@@ -3,6 +3,7 @@ pkgbase = vdens-git
 	pkgver = 0.2.r9.bd3228a
 	pkgrel = 1
 	url = https://github.com/rd235/vdens
+	install = vdens.install
 	arch = any
 	license = GPL2.0
 	makedepends = git
