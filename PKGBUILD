@@ -1,6 +1,6 @@
 # Maintainer: atretador
 pkgname=classic-addon-manager-git
-_pkgname=classicaddonmanager
+_pkgname=classic-addon-manager
 pkgver=0.0
 pkgrel=1
 pkgdesc="An addon manager for ArcheAge Classic, built with Go from latest git master"
