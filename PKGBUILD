@@ -10,7 +10,7 @@ depends=('java-runtime' 'hicolor-icon-theme')
 conflicts=('hmcl' 'hmcl-bin' 'hmcl-dev-bin' 'hmcl-beta-bin')
 source=("hmcl-pr.desktop"
         "hmcl-pr-launch-script"
-        "${pkgname}-${_pkgver}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/36b894e217293559c3bb33c337038239dcca52cd/HMCL-${_pkgver}.jar")
+        "${pkgname}-${_pkgver}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/9c8aef9a638d740187606a51f245f65b6abb075a/HMCL-${_pkgver}.jar")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
