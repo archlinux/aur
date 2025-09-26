@@ -5,7 +5,7 @@
 
 pkgname=seahub
 pkgver=12.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -45,7 +45,7 @@ optdepends=(
     'python-pylibmc: Memcached support'
     'ffmpeg: For video thumbnails'
 )
-django_version=4.2.20
+django_version=4.2.24
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     "python-django-$django_version.tar.gz::https://github.com/django/django/archive/$django_version.tar.gz"
@@ -57,7 +57,7 @@ source=(
 )
 sha256sums=(
     '127ad4161f37321ac198c09625ada6114dbfe0ea5fdd6d9fa568073bb9483fe9'
-    '15e449ce6d4181ba27c2ef83381cb673d759b3d3a4244998637d55d8fa0362b1'
+    'a1bde6af40756bc1ffd574c6e9e054e514890500b437a39a053abfbf555f2f5e'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
     '371f9c01a31691167b76c43e29277c266a4b3aec985fb29ff8a0180a8db5b59f'
@@ -105,12 +105,8 @@ package() {
     mv "$pkgdir/usr/share/seafile-server/seahub/scripts/"* \
         "$pkgdir/usr/share/seafile-server"
 
-    pushd "$srcdir/django-$django_version"
-    python setup.py install \
-        --root="$pkgdir/" \
-        --install-lib="usr/share/seafile-server/$pkgname/thirdpart" \
-        --optimize=0
-    popd
+    cp -a "$srcdir/django-$django_version/django" \
+        "$pkgdir/usr/share/seafile-server/$pkgname/thirdpart"
     rm -rf "$pkgdir"/usr/{bin,share/seafile-server/"$pkgname"/thirdpart/*.egg-info}
 
     python -m compileall -f -j 0 -o 1 \
