@@ -1,0 +1,22 @@
+pkgbase = snow-git
+	pkgdesc = AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code.
+	pkgver = 0.10.0.r0.gd5161d2
+	pkgrel = 1
+	url = https://gitee.com/jcnc-org/snow
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = jdk24-graalvm-ee-bin
+	makedepends = git
+	makedepends = maven
+	makedepends = musl
+	depends = glibc
+	depends = zlib
+	optdepends = ideology: IDEology is the IDE for the Snow programming language.
+	provides = snow
+	conflicts = snow
+	options = !strip
+	options = !debug
+	source = snow-git::git+https://gitee.com/jcnc-org/snow.git
+	sha256sums = SKIP
+
+pkgname = snow-git
