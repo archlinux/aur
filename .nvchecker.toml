@@ -1,0 +1,3 @@
+[python-pytnl]
+source = "git"
+git = "https://gitlab.com/tnl-project/pytnl.git"
