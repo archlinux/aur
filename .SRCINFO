@@ -1,8 +1,9 @@
 pkgbase = echo-meter
-	pkgdesc = Echo Meter – a modern GTK4 OSD that displays volume, brightness, mic mute, and keyboard lock status
+	pkgdesc = Echo Meter – GTK4 OSD daemon for volume, brightness, mic mute, and keyboard lock status
 	pkgver = 1.1.2
 	pkgrel = 5
 	url = https://github.com/Nithin-3/echo-meter
+	install = echo-meter.install
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
@@ -11,6 +12,7 @@ pkgbase = echo-meter
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = json-glib
+	depends = alsa-lib
 	source = echo-meter-1.1.2.tar.gz::https://github.com/Nithin-3/echo-meter/archive/refs/tags/v1.1.2.tar.gz
 	sha256sums = c3cf0e3a2e47423f6c652e95c148aeed6808c224c360e4d701ad70d39d507387
 

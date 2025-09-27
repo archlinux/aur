@@ -1,0 +1,12 @@
+
+[Unit]
+Description=Echo Meter GTK4 OSD Daemon
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/echolis
+Restart=on-failure
+Type=simple
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+
+post_install() {
+    chmod 4755 /usr/bin/echolis
+    chmod 4755 /usr/share/echo-meter/write-brightness
+    echo ">>> You can run the daemon with:"
+    echo "    echo-meter &"
+    echo "Or create a systemd user service for auto-start."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "Note: user config in ~/.config/echo-meter (if any) was not removed."
+}
