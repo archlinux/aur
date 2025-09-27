@@ -4,7 +4,7 @@
 
 _pkgname=libdatachannel
 pkgname="$_pkgname-nice"
-pkgver=0.22.6
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('x86_64' 'aarch64')
