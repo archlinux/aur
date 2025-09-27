@@ -2,7 +2,7 @@
 # Contributor: Alex D'Andrea <alex at dandrea dot io>
 
 pkgname=zx
-pkgver=8.8.3
+pkgver=8.8.4
 pkgrel=1
 pkgdesc='A tool for writing better scripts'
 arch=(any)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 depends=('nodejs>=16')
 makedepends=(npm git)
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('4d03e64430ffd076390bfbe17c499697eb3047b1ec5120076b33f165ec1bb81d')
+sha256sums=('d14f72d8a8675c89db273bd84ba078a533cefcbb7b5351ab46a2121df436bcd2')
 
 build() {
 	cd "$pkgname"
