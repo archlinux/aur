@@ -2,7 +2,7 @@
 _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
 pkgver=1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
 url="https://linuxtv.org/"
