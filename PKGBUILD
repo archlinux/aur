@@ -31,17 +31,17 @@ source=(
 )
 
 sha512sums=(
-    'SKIP'
-    'd376f20214f67abd9f5dd2897215028abb844b724e0aab50f50a923b3c358cfe8faa99298cf4cc629aedcd7a9b39c447bbf9f8f4fdddbcf93581ea11ec9e3d4a'
+  'SKIP'
+  'd376f20214f67abd9f5dd2897215028abb844b724e0aab50f50a923b3c358cfe8faa99298cf4cc629aedcd7a9b39c447bbf9f8f4fdddbcf93581ea11ec9e3d4a'
 )
 b2sums=(
-    'SKIP'
-    'dd66c896c9b7b42305cf4d438c8e18050f0fb2724e2494964acf8985bf517c00aa5a827658924c4ae614cb2c75d7f0a2d6f3910727b7016aacc8393efffbadc0'
+  'SKIP'
+  'dd66c896c9b7b42305cf4d438c8e18050f0fb2724e2494964acf8985bf517c00aa5a827658924c4ae614cb2c75d7f0a2d6f3910727b7016aacc8393efffbadc0'
 )
 
 validpgpkeys=(
-    # SpacingBat3 (Personal GPG key for signing GIT commits.)
-    'EF07385224D965FADB1E3570FECEF941D3081BAA'
+  # SpacingBat3 (Personal GPG key for signing GIT commits.)
+  'EF07385224D965FADB1E3570FECEF941D3081BAA'
 )
 
 ### CONFIGURABLE VARIABLES ###
