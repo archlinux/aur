@@ -135,10 +135,10 @@ b3sums=(
 
 pkgver() {
   cd "${srcdir}/hpn-ssh-${git_rev}/"
-  local version="$(awk -F_ '/^#define SSH_VERSION/ {print $NF}' version.h | sed 's/"//g')"
-  local portable="$(awk '/^#define SSH_PORTABLE/ {print $NF}' version.h | sed 's/"//g')"
-  local hpn="$(awk '/^#define SSH_HPN/ {print $NF}' version.h | sed -e 's/"//g' -e 's/-/./g')"
-  echo "${version}${portable}${hpn}"
+  local version="$( awk -F_ '/^#define SSH_VERSION/ {print $NF}' version.h)"
+  local portable="$(awk     '/^#define SSH_PORTABLE/{print $NF}' version.h)"
+  local hpn="$(     awk     '/^#define SSH_HPN/     {print $NF}' version.h)"
+  echo "${version//\"/}${portable//\"/}${hpn//\"/}"
 }
 
 prepare() {
