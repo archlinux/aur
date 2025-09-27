@@ -1,0 +1,3 @@
+[python-pyo]
+source = "git"
+git = "https://github.com/belangeo/pyo.git"

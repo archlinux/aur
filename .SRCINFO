@@ -1,24 +1,22 @@
 pkgbase = python-pyo
 	pkgdesc = Python DSP module
 	pkgver = 1.0.6
-	pkgrel = 1
-	url = http://ajaxsoundstudio.com/software/pyo/
+	pkgrel = 2
+	url = https://github.com/belangeo/pyo
 	arch = x86_64
-	license = GPL
+	license = LGPL-3.0-or-later
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	depends = portmidi
-	depends = portaudio
+	makedepends = python-wheel
 	depends = liblo
 	depends = libsndfile
+	depends = portaudio
+	depends = portmidi
+	depends = python
 	optdepends = wxpython: wxWidgets GUI
-	provides = pyo=1.0.6
-	provides = python-pyo=1.0.6
-	conflicts = pyo
-	source = https://codeload.github.com/belangeo/pyo/tar.gz/1.0.6
-	source = gcc-14.patch
-	sha512sums = 277ec569501ac72a42cfe6700ada27bd2c6614d009938c8cf1df16a23bc637cbd27884f7a2e2784b482850c6623b77585dded64e7b44253d15d7776d77da8ad3
-	sha512sums = fe9222a604ccf43f04a21f6c6a3ac55f70fcf13e6001700ddb72efcc0a87c859a105a7d9fc1205c9339792e70d03e510b2812f599681af444c20a2278c5cd48f
+	source = pyo-1.0.6.tar.gz::https://github.com/belangeo/pyo/archive/refs/tags/1.0.6.tar.gz
+	sha256sums = SKIP
 
 pkgname = python-pyo

@@ -1,47 +1,77 @@
-# Maintainer: Carlo Capocasa <carlo@capocasa.net>
-# Maintainer: Peter Sutton <peter@foxdogstudios.com>
-# Contributor: amiguet <contact at matthieuamiguet dot ch>
-# Based on python2-pyo by amiguet
+# Maintainer:
+# Contributor: Carlo Capocasa <carlo@capocasa.net>
+# Contributor: Peter Sutton <peter@foxdogstudios.com>
 
-pkgname=python-pyo
+_module="pyo"
+_pkgname="python-$_module"
+pkgname="$_pkgname"
 pkgver=1.0.6
-pkgrel=1
-pkgdesc='Python DSP module'
+pkgrel=2
+pkgdesc="Python DSP module"
+url="https://github.com/belangeo/pyo"
+license=('LGPL-3.0-or-later')
 arch=('x86_64')
-url="http://ajaxsoundstudio.com/software/pyo/"
-license=('GPL')
+
 depends=(
-	'python'
-	'portmidi'
-	'portaudio'
-	'liblo'
-	'libsndfile'
+  'liblo'
+  'libsndfile'
+  'portaudio'
+  'portmidi'
+  'python'
 )
 makedepends=(
-	'git'
-	'python-setuptools'
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
 )
 optdepends=(
-	'wxpython: wxWidgets GUI'
+  'wxpython: wxWidgets GUI'
 )
-provides=("pyo=$pkgver" "python-pyo=$pkgver")
-conflicts=('pyo')
-source=("https://codeload.github.com/belangeo/pyo/tar.gz/$pkgver"
-        'gcc-14.patch')
-sha512sums=('277ec569501ac72a42cfe6700ada27bd2c6614d009938c8cf1df16a23bc637cbd27884f7a2e2784b482850c6623b77585dded64e7b44253d15d7776d77da8ad3'
-            'fe9222a604ccf43f04a21f6c6a3ac55f70fcf13e6001700ddb72efcc0a87c859a105a7d9fc1205c9339792e70d03e510b2812f599681af444c20a2278c5cd48f')
+
+_pkgsrc="$_module-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir"/pyo-"$pkgver"
-  git --git-dir=.git apply "$srcdir"/gcc-14.patch
+  cd "$_pkgsrc"
+
+  local mapping mappings=(
+    "use-double::USE_DOUBLE"
+    "no-messages::NO_MESSAGES"
+    "compile-externals::COMPILE_EXTERNALS"
+    "debug::DEBUG"
+    "fast-compile::FAST_COMPILE"
+    "minimal::MINIMAL"
+    "use-jack::USE_JACK"
+    "jack-force-old-api::JACK_FORCE_OLD_API"
+    "use-coreaudio::USE_COREAUDIO"
+  )
+
+  for mapping in "${mappings[@]}"; do
+    local flag="${mapping%%::*}"   # left side before ::
+    local envvar="${mapping##*::}" # right side after ::
+    echo "Patching --$flag → $envvar"
+    sed -i "s/if \"--$flag\" in sys.argv:/if os.environ.get(\"$envvar\"):/g" setup.py
+    sed -Ei 's/^([[:space:]]*)sys\.argv\.remove\(".*"\)/\1pass/' setup.py
+  done
+
+  # fix license format warning
+  sed -E -e 's&^(license) = .*$&\1 = "LGPL-3.0-or-later"&' -i setup.py
+
+  # downgrade C standard to prevent errors
+  sed -e '/^extra_compile_args = /a extra_compile_args.append("-std=gnu11")' \
+    -i setup.py
 }
 
 build() {
-  cd "$srcdir"/pyo-"$pkgver"
-  python setup.py build --use-double --use-jack
+  cd "$_pkgsrc"
+  USE_DOUBLE=1 USE_JACK=1 python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/pyo-"$pkgver"
-  python setup.py install --use-double --use-jack --root="$pkgdir"/
+  cd "$_pkgsrc"
+  USE_DOUBLE=1 USE_JACK=1 python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
 }
