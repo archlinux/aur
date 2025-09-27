@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=chisel-tunnel
-pkgver=1.10.1
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="A fast TCP/UDP tunnel over HTTP"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('e215cbcb6b825a1e54d3901eaf3dc524d9f15fc724c6c6b179644e3cfd4456e085a5486e45d392dc4656b8b3d36f84c66456846550d49b6b0c3a7564a32cae3f')
+b2sums=('e5957e15faf5e65683cba0fa09cae76097a5223efc238e2154daf593eb81e048993935916b8bf75bf272a4fac4deee0e6a8a4edf60e72770bc18bd36c1fae283')
 
 build() {
   cd chisel-${pkgver}
