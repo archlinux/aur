@@ -1,0 +1,16 @@
+pkgbase = clang-android
+	pkgdesc = LLVM's C language family frontend for compiling Android components, prebuilt by Google for Android NDK.
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	provides = clang-android
+	conflicts = clang-android
+	replaces = clang-android
+	options = !strip
+	options = !debug
+	source = clang::shallowclone+https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86
+	sha256sums = SKIP
+
+pkgname = clang-android-bin
