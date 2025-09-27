@@ -8,7 +8,7 @@ pkgbase = gnulib-git
 	makedepends = git
 	provides = gnulib
 	conflicts = gnulib
-	source = git+git://git.sv.gnu.org/gnulib.git
+	source = git+https://github.com/coreutils/gnulib
 
 pkgname = gnulib-git
 

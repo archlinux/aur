@@ -2,7 +2,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=gnulib-git
-pkgver=v0.1.2033.gf402ce6e1
+pkgver=v1.0.2313.g7eeb8077c6
 pkgrel=1
 pkgdesc="GNU Portability Library"
 arch=('any')
@@ -12,7 +12,7 @@ provides=("gnulib=${pkgver}")
 replaces=("gnulib<=${pkgver}")
 conflicts=('gnulib')
 makedepends=('git')
-source=('git://git.savannah.gnu.org/gnulib.git')
+source=('git+https://github.com/coreutils/gnulib')
 md5sums=('SKIP')
 
 pkgver() {
