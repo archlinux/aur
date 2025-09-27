@@ -3,7 +3,7 @@
 
 _pkgbasename=gettext
 pkgname=lib32-$_pkgbasename
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-acl' lib32-gcc-libs $_pkgbasename)
 makedepends=(gcc-multilib)
 options=(!docs)
 source=(https://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz{,.sig})
-sha512sums=('a086191926f9d9d87ec45136e0796626140f0209d71b498756cda8212b71343b76643cd28aaeb74370b661d99d8ceea25ba3afd24d9dca4814a552436066d393'
+sha512sums=('6c2afb0737843028e1cd27f1cd7dd5b81372ccff8cd8e01e17cfdc517afdd9a849c232f1ff5adca5eb4b03f2cc64f4a3f689ae8b84e523ceeae85384f3844083'
             'SKIP')
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871'  # Daiki Ueno
               '68D94D8AAEEAD48AE7DC5B904F494A942E4616C2'

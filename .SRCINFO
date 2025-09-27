@@ -1,6 +1,6 @@
 pkgbase = lib32-gettext
 	pkgdesc = GNU internationalization library (32-bit)
-	pkgver = 0.25
+	pkgver = 0.26
 	pkgrel = 1
 	url = https://www.gnu.org/software/gettext/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = lib32-gettext
 	depends = lib32-gcc-libs
 	depends = gettext
 	options = !docs
-	source = https://ftp.gnu.org/pub/gnu/gettext/gettext-0.25.tar.gz
-	source = https://ftp.gnu.org/pub/gnu/gettext/gettext-0.25.tar.gz.sig
+	source = https://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/gettext/gettext-0.26.tar.gz.sig
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
 	validpgpkeys = 68D94D8AAEEAD48AE7DC5B904F494A942E4616C2
 	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
 	validpgpkeys = E0FFBD975397F77A32AB76ECB6301D9E1BBEAC08
-	sha512sums = a086191926f9d9d87ec45136e0796626140f0209d71b498756cda8212b71343b76643cd28aaeb74370b661d99d8ceea25ba3afd24d9dca4814a552436066d393
+	sha512sums = 6c2afb0737843028e1cd27f1cd7dd5b81372ccff8cd8e01e17cfdc517afdd9a849c232f1ff5adca5eb4b03f2cc64f4a3f689ae8b84e523ceeae85384f3844083
 	sha512sums = SKIP
 
 pkgname = lib32-gettext
