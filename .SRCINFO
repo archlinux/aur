@@ -1,7 +1,7 @@
 pkgbase = compiler-rt17
 	pkgdesc = Compiler runtime libraries for clang 17
 	pkgver = 17.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://compiler-rt.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -13,8 +13,10 @@ pkgbase = compiler-rt17
 	options = staticlibs
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/compiler-rt-17.0.6.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.6/cmake-17.0.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/commit/59978b21ad9c65276ee8e14f26759691b8a65763.patch
 	sha256sums = 11b8d09dcf92a0f91c5c82defb5ad9ff4acf5cf073a80c317204baa922d136b4
 	sha256sums = 807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4
+	sha256sums = ccb40c999aecdf32875b8800e5a87db2e899aede2eeec13228fcb6a76db83274
 	makedepends_x86_64 = lib32-gcc-libs
 
 pkgname = compiler-rt17
