@@ -1,15 +1,11 @@
 # Maintainer:
 # Contributor: Daniel Peukert <dan.peukert@gmail.com>
 
-## useful links
-# http://ajaxsoundstudio.com/software/cecilia
-# https://github.com/belangeo/cecilia5
-
 _pkgname="cecilia"
 pkgname="cecilia-git"
-pkgver=5.4.1.r15.gc592f8e
+pkgver=5.4.1.r16.g4bf519e
 pkgrel=1
-pkgdesc='Audio signal processing environment aimed at sound designers - git version'
+pkgdesc="Audio signal processing environment aimed at sound designers"
 url="https://github.com/belangeo/cecilia5"
 license=('GPL-3.0-or-later')
 arch=('any')
@@ -17,10 +13,11 @@ arch=('any')
 makedepends=(
   'git'
   'imagemagick'
+  'python'
 )
 
-provides=("cecilia")
-conflicts=("cecilia")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
@@ -34,37 +31,52 @@ pkgver() {
 
 package() {
   depends+=(
-    'python'
     'python-numpy'
+    'python-pyo' # AUR
     'python-wxpython'
-
-    # AUR
-    'python-pyo'
   )
 
   cd "$_pkgsrc"
   local _libdir="usr/lib/cecilia"
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
+  # specify python version to prevent untracked pyc files
+  local _pyver_major _pyver_minor
+  _pyver_major=$(python -c 'import sys; print(sys.version_info.major)')
+  _pyver_minor=$(python -c 'import sys; print(sys.version_info.minor)')
+
+  eval "depends+=(
+    'python>=${_pyver_major}.${_pyver_minor}'
+    'python<${_pyver_major}.$((_pyver_minor + 1))'
+  )"
+
+  # files
   install -Dm644 "Cecilia5.py" -t "$pkgdir/$_libdir/"
   cp -r --no-preserve=ownership --preserve=mode 'Resources/' "$pkgdir/$_libdir/Resources/"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+  # create pyc files
+  python -m compileall -f -p / -s "$pkgdir" "$pkgdir/"
+
+  # icon
+  mkdir -pm755 "$pkgdir/usr/share/pixmaps"
+  magick "Resources/Cecilia5.ico[4]" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+  # script
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/bin/sh
 cd '/$_libdir/'
 exec python 'Cecilia5.py' "\$@"
 END
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<END
+  # launcher
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
-Name=Cecilia
-Comment=Audio signal processing environment aimed at sound designers
+Name=${_pkgname^}
+Comment=$pkgdesc
 Icon=$_pkgname
 Exec=$_pkgname
 Terminal=false
 Categories=AudioVideo;Audio;
 END
-
-  install -dm755 "$pkgdir/usr/share/pixmaps/"
-  convert "Resources/Cecilia5.ico[4]" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }

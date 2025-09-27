@@ -1,19 +1,19 @@
 pkgbase = cecilia-git
-	pkgdesc = Audio signal processing environment aimed at sound designers - git version
-	pkgver = 5.4.1.r15.gc592f8e
+	pkgdesc = Audio signal processing environment aimed at sound designers
+	pkgver = 5.4.1.r16.g4bf519e
 	pkgrel = 1
 	url = https://github.com/belangeo/cecilia5
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = imagemagick
+	makedepends = python
 	provides = cecilia
 	conflicts = cecilia
 	source = cecilia::git+https://github.com/belangeo/cecilia5.git
 	sha256sums = SKIP
 
 pkgname = cecilia-git
-	depends = python
 	depends = python-numpy
-	depends = python-wxpython
 	depends = python-pyo
+	depends = python-wxpython
