@@ -1,0 +1,14 @@
+pkgbase = teams-for-linux-school-profile
+	pkgdesc = A desktop entry for a separate school account for teams-for-linux
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/IsmaelMartinez/teams-for-linux
+	arch = x86_64
+	license = GPL3
+	depends = teams-for-linux
+	source = teams-for-linux-school-profile.desktop
+	source = teams-for-linux-school-profile.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = teams-for-linux-school-profile
