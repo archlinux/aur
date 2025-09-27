@@ -5,7 +5,7 @@ pkgdesc='A software system for 3D computer graphics, image processing, and visua
 arch=('any')
 url='http://www.vtk.org/'
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-libtheora' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-proj' 'mingw-w64-libharu' 'mingw-w64-cgns' 'mingw-w64-verdict' 'mingw-w64-ffmpeg')
+depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-libtheora' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-proj' 'mingw-w64-libharu' 'mingw-w64-cgns' 'mingw-w64-verdict')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
@@ -41,7 +41,7 @@ build() {
       -DVTK_MODULE_ENABLE_VTK_FiltersParallelVerdict=YES \
       -DVTK_MODULE_ENABLE_VTK_FiltersParallelDIY2=YES \
       -DVTK_MODULE_ENABLE_VTK_IOAvmesh=YES \
-      -DVTK_MODULE_ENABLE_VTK_IOFFMPEG=YES \
+      -DVTK_MODULE_ENABLE_VTK_IOFFMPEG=NO \
       -DVTK_MODULE_ENABLE_VTK_IOH5part=YES \
       -DVTK_MODULE_ENABLE_VTK_IOH5Rage=YES \
       -DVTK_MODULE_ENABLE_VTK_IOOMF=YES \
