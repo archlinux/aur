@@ -1,0 +1,35 @@
+pkgbase = valhalla-git
+	pkgdesc = Routing engine for OpenStreetMap.
+	pkgver = 3.5.1.r244.b74c857
+	pkgrel = 1
+	url = https://github.com/valhalla/valhalla
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = spatialite-tools
+	checkdepends = unzip
+	checkdepends = curl
+	checkdepends = jq
+	makedepends = cmake
+	makedepends = git
+	makedepends = vim
+	makedepends = jq
+	makedepends = boost
+	makedepends = cxxopts
+	makedepends = libosmium
+	makedepends = unordered_dense
+	depends = prime_server
+	depends = protobuf
+	depends = python
+	depends = libspatialite
+	depends = luajit
+	depends = chrono-date
+	depends = gdal
+	depends = python-lz4
+	depends = python-shapely
+	provides = valhalla=3.5.1.r244.b74c857
+	conflicts = valhalla
+	source = valhalla-git::git+https://github.com/valhalla/valhalla.git#commit=b74c857d0fc9b19bd32c5840e6b736dab17f50b0
+	sha256sums = SKIP
+
+pkgname = valhalla-git
