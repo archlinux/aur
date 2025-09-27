@@ -12,8 +12,8 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=32.0.0.r1.g9c79ff7
-pkgrel=2
+pkgver=32.0.1.r0.g0b12296
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
 license=("GPL-2.0-or-later")
@@ -79,7 +79,7 @@ fi
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 
-options=('!strip')
+options=('!lto' '!strip')
 
 _source_main() {
   source=(
