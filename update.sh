@@ -16,7 +16,7 @@ trap cleanup EXIT
 
 echo "Getting current 'gnome' package group..."
 # Get packages in gnome group and sort them
-paru -Sg gnome | cut -d' ' -f2 | sort > "$NEW_DEPENDS_FILE"
+pacman -Sg gnome | cut -d' ' -f2 | sort > "$NEW_DEPENDS_FILE"
 
 echo "Extracting current depends from PKGBUILD..."
 # Extract current depends from PKGBUILD (between 'depends=(' and ')')
@@ -57,7 +57,7 @@ echo ")" >> "$TEMP_DIR/new_depends_array"
 
 # Replace the depends array in the PKGBUILD
 awk '
-/^depends=\(/ { 
+/^depends=\(/ {
     in_depends=1
     system("cat '"$TEMP_DIR/new_depends_array"'")
     next
