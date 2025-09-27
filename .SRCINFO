@@ -1,0 +1,25 @@
+pkgbase = vkbasalt-gui
+	pkgdesc = A Qt-based GUI to more easily configure and use vkBasalt on your games
+	pkgver = r17.cd91781
+	pkgrel = 1
+	url = https://github.com/jorge-barroso/vkBasalt-gui
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = vulkan-icd-loader
+	depends = bash
+	optdepends = vkbasalt: Vulkan post-processing layer (required for functionality)
+	provides = vkbasalt-gui
+	conflicts = vkbasalt-gui-git
+	replaces = vkbasalt-gui-git
+	source = vkbasalt-gui::git+https://github.com/jorge-barroso/vkBasalt-gui.git#branch=main
+	source = qdebug.patch
+	sha256sums = SKIP
+	sha256sums = 61aed8dfd8c23f4e641c63a9817d426a08abffa372d46dca3c48472a2dd63b94
+
+pkgname = vkbasalt-gui

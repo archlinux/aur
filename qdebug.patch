@@ -1,0 +1,12 @@
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 744ee91..9e7d613 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -1,6 +1,7 @@
+ #include <QStringList>
+ #include "mainwindow.h"
+ #include "./ui_mainwindow.h"
++#include <QDebug>
+ 
+ MainWindow::MainWindow(const QDir& config_dir, QWidget* parent)
+ 		: QMainWindow(parent), ui(new Ui::MainWindow), config_dir{ config_dir }, steam_games_manager(config_dir)
