@@ -1,6 +1,6 @@
 pkgbase = cherrytree-git
 	pkgdesc = Hierarchical note-taking application, git version
-	pkgver = 1.1.2.r5.g4db6074c
+	pkgver = 1.6.2.r2.g05980868
 	pkgrel = 1
 	url = https://github.com/giuspen/cherrytree
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = cherrytree-git
 	depends = vte3
 	provides = cherrytree
 	conflicts = cherrytree
-	source = git+https://github.com/giuspen/cherrytree.git
+	source = git+https://github.com/giuspen/cherrytree.git#branch=v1.6.x
 	sha512sums = SKIP
 
 pkgname = cherrytree-git

@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=cherrytree-git
-pkgver=1.1.2.r5.g4db6074c
+pkgver=1.6.2.r2.g05980868
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('cmake'
 checkdepends=('gtest')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
-source=("git+https://github.com/giuspen/${pkgname%%-git}.git")
+source=("git+https://github.com/giuspen/${pkgname%%-git}.git#branch=v1.6.x")
 sha512sums=('SKIP')
 
 pkgver() {
