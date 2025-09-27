@@ -24,7 +24,7 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
@@ -61,8 +61,6 @@ prepare() {
   git config submodule.dlib.url $srcdir/dlib
   git config submodule.libvisca.url $srcdir/libvisca-ip
   git -c protocol.file.allow=always submodule update
-
-  sed -i 's|${CMAKE_INSTALL_DATAROOTDIR}/obs|${CMAKE_INSTALL_DATAROOTDIR}|g' cmake/ObsPluginHelpers.cmake
 }
 
 build() {
