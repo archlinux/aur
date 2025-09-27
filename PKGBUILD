@@ -2,7 +2,7 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.0.0
+_pkgver=32.0.1
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 epoch=12
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _qtver=6.6.2
 _libajantv2ver=17.5.0
-_libdatachannelver=0.22
+_libdatachannelver=0.23
 _mbedtlsver=3.6.1
 _pythonver=3.13
 depends=(
