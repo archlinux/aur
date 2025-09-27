@@ -1,10 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=snow-git
-_name=Snow
 groups=(snow-lang-git)
-pkgver=0.10.0.r0.gd5161d2
-pkgrel=4
+pkgver=0.11.0.r0.g7300562
+pkgrel=1
 _java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
 arch=($CARCH)
@@ -12,6 +11,7 @@ url="https://gitee.com/jcnc-org/snow"
 license=('Apache-2.0')
 depends=(
     glibc
+    hicolor-icon-theme
     zlib
 )
 makedepends=(
@@ -46,18 +46,23 @@ prepare() {
 }
 
 build() {
+    export PATH="/usr/lib/jvm/java-${_java}-graalvm/bin/:$PATH"
+    export JAVA_HOME="/usr/lib/jvm/java-${_java}-graalvm"
     cd "${pkgname}"
     mvn -P native-linux -DskipTests clean package
 }
 
 package() {
     cd "${pkgname}"
-    install -Dm0755 target/${_name} "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm0755 target/${pkgname%-git} -t "${pkgdir}/usr/bin/"
     install -dm0775 "${pkgdir}/usr/lib/${pkgname%-git}" \
-        "${pkgdir}/usr/share/doc/${pkgname%-git}"
+        "${pkgdir}/usr/share/doc/${pkgname%-git}" \
+        "${pkgdir}/usr/share/${pkgname%-git}"
 
     cp -R lib/* "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -R docs/* "${pkgdir}/usr/share/doc/${pkgname%-git}"
     cp -R *.md "${pkgdir}/usr/share/doc/${pkgname%-git}"
+    cp -R playground/* "${pkgdir}/usr/share/${pkgname%-git}"
+    install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgname}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
