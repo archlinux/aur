@@ -2,8 +2,8 @@
 
 _pkgname='sshto'
 pkgname="${_pkgname}-git"
-pkgver=r222.c5b68a9-2
-pkgrel=1
+pkgver=r222.c5b68a9-1
+pkgrel=2
 pkgdesc='TUI to manage your ssh connections'
 arch=('any')
 url='https://github.com/vaniacer/sshto'
