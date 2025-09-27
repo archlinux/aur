@@ -36,5 +36,5 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  rm -rf "${pkgdir}"/{usr/{include,share,bin,sbin},etc,lib}
+  rm -rf "${pkgdir}"/{usr/{include,share,bin,sbin,lib},etc}
 }
