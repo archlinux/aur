@@ -2,7 +2,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -39,7 +39,7 @@ makedepends=(
 # )
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4e9ad1522b847e273c82cc8c399862f7fb7f5af39edf426e3ebc7c9402079115')
+sha256sums=('b574e54eb02b67a0a653cfa96f97a86fc9fc812509ca566ca3aa165c03e22a5e')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
