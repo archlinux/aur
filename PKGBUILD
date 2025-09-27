@@ -7,10 +7,9 @@ pkgver='0.31'
 pkgrel='2'
 pkgdesc="Watch for changes to files, cross-platform style"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-class-load' 'perl-module-pluggable' 'perl-module-runtime' 'perl-moo>=1.006' 'perl-type-tiny' 'perl-namespace-autoclean')
-makedepends=('perl-test2-suite')
 checkdepends=('perl-test-exception' 'perl-test-requires' 'perl-test-without-module')
 url='https://metacpan.org/release/File-ChangeNotify'
 source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/File-ChangeNotify-0.31.tar.gz')

@@ -4,12 +4,10 @@ pkgbase = perl-file-changenotify
 	pkgrel = 2
 	url = https://metacpan.org/release/File-ChangeNotify
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-2.0
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-requires
 	checkdepends = perl-test-without-module
-	makedepends = perl-test2-suite
 	depends = perl-class-load
 	depends = perl-module-pluggable
 	depends = perl-module-runtime
@@ -21,4 +19,3 @@ pkgbase = perl-file-changenotify
 	sha512sums = 0dc7c1c2a3887c09f59465a89f52c4c8a9426e96574fa4764fe90a5f1500541ddbcb233bfcd206c76e0b7dfedf2980b3dc54fab6b45608a5b6fb82143172b25b
 
 pkgname = perl-file-changenotify
-
