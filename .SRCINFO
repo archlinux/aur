@@ -1,6 +1,6 @@
 pkgbase = python-marker-pdf
 	pkgdesc = Convert PDF to markdown + JSON quickly with high accuracy
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://pypi.org/project/marker-pdf/
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-marker-pdf
 	optdepends = python-pytorch-cuda
 	optdepends = python-pytorch-rocm
 	provides = python-marker-pdf
-	source = marker_pdf-1.9.0.tar.gz::https://files.pythonhosted.org/packages/source/m/marker_pdf/marker_pdf-1.9.0.tar.gz
-	sha256sums = f4c0fc297d39df56ceefc0510d78be562d74aadd6e5ec004455d6731b82470a6
+	source = marker_pdf-1.10.0.tar.gz::https://files.pythonhosted.org/packages/source/m/marker_pdf/marker_pdf-1.10.0.tar.gz
+	sha256sums = 1cd131cc62236b555cfb6d5504336ca6628c456f9787c30d184a241dd26db3a7
 
 pkgname = python-marker-pdf
