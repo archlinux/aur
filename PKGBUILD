@@ -3,7 +3,7 @@
 pkgname=snow
 groups=(snow-lang)
 pkgver=0.11.0
-pkgrel=1
+pkgrel=3
 _java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
 arch=($CARCH)
@@ -54,6 +54,6 @@ package() {
     cp -R docs/* "${pkgdir}/usr/share/doc/${pkgname}"
     cp -R *.md "${pkgdir}/usr/share/doc/${pkgname}"
     cp -R playground/* "${pkgdir}/usr/share/${pkgname}"
-    install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgname}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
