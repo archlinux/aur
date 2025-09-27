@@ -1,7 +1,7 @@
 # Maintainer: snogard <snogardb at gmail dot com>
 
 pkgname=r2modman-appimage
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=1
 pkgdesc='A simple and easy to use mod manager for several Unity games using Thunderstore.'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "${url}/releases/download/v${pkgver}/r2modman-${pkgver}.AppImage"
     "r2modman.desktop"
 )
-sha256sums=('adf932c3e3839a23aab8ac8367171ee79488ea23082f4325e8bd158e1617c245'
+sha256sums=('61aed3ac0ff9321d6eef1e988ccc221f7b41ce74742c41eecd630c672559dce6'
             '3e14229ab6f1d04da82dfb9c941de696f4936ad9694b3acf616fb04dcb6f54e9')
 options=(!strip !debug)
 
