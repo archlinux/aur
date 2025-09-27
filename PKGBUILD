@@ -12,7 +12,6 @@ depends=(
   baobab
   decibels
   epiphany
-  evince
   gdm
   gnome-backgrounds
   gnome-calculator
@@ -58,12 +57,13 @@ depends=(
   malcontent
   nautilus
   orca
+  papers
   rygel
+  showtime
   simple-scan
   snapshot
   sushi
   tecla
-  totem
   xdg-desktop-portal-gnome
   xdg-user-dirs-gtk
   yelp
