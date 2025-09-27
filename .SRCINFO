@@ -1,11 +1,11 @@
 pkgbase = ttf-pragmasevka-nerd-font
 	pkgdesc = Pragmata Pro doppelgänger made of Iosevka SS08
-	pkgver = 1.6.6
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/shytikov/pragmasevka
 	arch = any
 	license = OFL-1.1
-	source = ttf-pragmasevka-nerd-font-1.6.6.tar.gz::https://github.com/shytikov/pragmasevka/releases/download/v1.6.6/Pragmasevka_NF.zip
-	b2sums = 95395d5ec431ae4900fe99c875ab27e57608bea626f8e4cc5451edf8985aa37082f3ed4a0d514a87eabd5d47e9d219479a030611232279ca45a9ec7bb6addf77
+	source = ttf-pragmasevka-nerd-font-1.7.0.tar.gz::https://github.com/shytikov/pragmasevka/releases/download/v1.7.0/Pragmasevka_NF.zip
+	b2sums = a182fbc626c5bc2ed55684072d8d2c2b3acf41f5f1754a69b34599c610a2af344a656d74ca631facf1da901dc95568bcd3d1816613a3abafe4f71a4ce39fbee7
 
 pkgname = ttf-pragmasevka-nerd-font
