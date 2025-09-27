@@ -4,7 +4,7 @@
 pkgname='openvpn-auth-ldap'
 _name='auth-ldap'
 pkgver='2.0.4'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='OpenVPN Auth via LDAP/AD plugin. RFC2307 support'
 arch=('any')
 url="https://github.com/threerings/${pkgname}"
@@ -17,6 +17,7 @@ source=("${url}/archive/refs/tags/${_name}-${pkgver}.tar.gz"
 	"${url}/pull/77.patch"
 	"${url}/pull/85.patch"
 	"${url}/pull/92.patch"
+	"${url}/pull/96.patch"
 	"https://salsa.debian.org/debian/${pkgname}/-/raw/master/debian/patches/gcc-14.patch")
 makedepends=('gcc-objc' 're2c' 'doxygen')
 sha256sums=('81f600cdc88adb2258f57df1ed2d87f0afa945f66cbf8897ad50e76f42509168'
@@ -26,6 +27,7 @@ sha256sums=('81f600cdc88adb2258f57df1ed2d87f0afa945f66cbf8897ad50e76f42509168'
             '003e5acefebc5cdbea5a9513ca8a27f624917a357e72f825dccf4294c375b4f5'
             '6e076fd2f6b417e7282a5b885330a42b8a41cc4c0622801c75a9fc109b156c1f'
             'dc6c47c743b8222ac412ee03ebfefa42363cfaade17f0184717347bf9fb61466'
+            'efe1a990a8ce3b11c781d5f54f47ae51a5be1f6840d90b3a4837f0baf701492a'
             '75f5d5cfcb715acebf17d0a9610aae9920ff9f7e159e4c2dc9139be4351a27e3')
 backup=("etc/openvpn/server/${_name}.conf")
 

@@ -1,7 +1,7 @@
 pkgbase = openvpn-auth-ldap
 	pkgdesc = OpenVPN Auth via LDAP/AD plugin. RFC2307 support
 	pkgver = 2.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/threerings/openvpn-auth-ldap
 	arch = any
 	license = BSD
@@ -20,6 +20,7 @@ pkgbase = openvpn-auth-ldap
 	source = https://github.com/threerings/openvpn-auth-ldap/pull/77.patch
 	source = https://github.com/threerings/openvpn-auth-ldap/pull/85.patch
 	source = https://github.com/threerings/openvpn-auth-ldap/pull/92.patch
+	source = https://github.com/threerings/openvpn-auth-ldap/pull/96.patch
 	source = https://salsa.debian.org/debian/openvpn-auth-ldap/-/raw/master/debian/patches/gcc-14.patch
 	sha256sums = 81f600cdc88adb2258f57df1ed2d87f0afa945f66cbf8897ad50e76f42509168
 	sha256sums = 0d79951a8aaffc1588fdb5717f122dc79bb6ab107986b6d54e8a681754beaea9
@@ -28,6 +29,7 @@ pkgbase = openvpn-auth-ldap
 	sha256sums = 003e5acefebc5cdbea5a9513ca8a27f624917a357e72f825dccf4294c375b4f5
 	sha256sums = 6e076fd2f6b417e7282a5b885330a42b8a41cc4c0622801c75a9fc109b156c1f
 	sha256sums = dc6c47c743b8222ac412ee03ebfefa42363cfaade17f0184717347bf9fb61466
+	sha256sums = efe1a990a8ce3b11c781d5f54f47ae51a5be1f6840d90b3a4837f0baf701492a
 	sha256sums = 75f5d5cfcb715acebf17d0a9610aae9920ff9f7e159e4c2dc9139be4351a27e3
 
 pkgname = openvpn-auth-ldap
