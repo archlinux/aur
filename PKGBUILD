@@ -37,7 +37,7 @@ build() {
 
 	cd "$srcdir"/jemula802
 	git apply < "$srcdir/ant-jar-jemula802.patch"
-	git apply < "$srcdir/model-directory.patch"
+	git apply --ignore-space-change --ignore-whitespace < "$srcdir/model-directory.patch" # fucking line endings
 	
 	ant -Djemula="$srcdir/jemula"
 }
