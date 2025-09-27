@@ -2,7 +2,7 @@
 
 _pkgname="fchat-horizon"
 pkgname="fchat-horizon-bin"
-pkgver=1.33.6
+pkgver=1.33.7
 pkgrel=1
 pkgdesc="A continuation of the heavily modified F-Chat Rising client. Uses system electron."
 url="https://github.com/Fchat-Horizon/Horizon"
@@ -25,7 +25,7 @@ source=(
   "$_pkgname-v$pkgver.png::https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/electron/build/icon.png"
   "$_pkgname-v$pkgver-LICENSE::https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE"
 )
-sha256sums=('639d3a0c97fe0714b0c414627e3229c3882e79d0694725d4c2ce4c527ce87e39'
+sha256sums=('51147963af5ecb3fede1ea97eb59d60f389fdce23900fefdbb29049c3824e4b8'
             '6853b8e9d7ce674b063fe277c98fc9dcec4be4949731e6134a5f134d48892be5'
             '1402f1449db1349c38ebdf3b1d4d8091beeefdb6bc185a02de75befae4d4f5d0'
             '79c24919dcaa51f2907af9beb3fdf3ec0703e662ae2434d8e7fe28e15ae29b02'
