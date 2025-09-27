@@ -1,5 +1,5 @@
 # Maintainer: fam007e <faisalmoshiur+gpg@gmail.com>
-pkgname=nerdfonts-installer
+pkgname=nerdfonts-installer-bin
 pkgver=2025.09.27.5
 pkgrel=1
 pkgdesc="Interactive Nerd Fonts installer written in C"
