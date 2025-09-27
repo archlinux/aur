@@ -1,64 +1,71 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-_basename=jan
-pkgname=${_basename}-git
-pkgver=0.5.4.r50.gbe8c4f8
+_pkgbase=jan
+pkgname=${_pkgbase}-git
+pkgver=0.7.0.r10.gabb0da4
 pkgrel=1
-pkgdesc="Jan is an open source alternative to ChatGPT that runs 100% offline on your computer (git version)"
+pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
 arch=('x86_64')
 license=('AGPL-3.0')
 source=(
-	"$_basename::git+https://github.com/janhq/jan.git"
+	"$_pkgbase::git+https://github.com/menloresearch/jan.git"
 	'jan.desktop'
 )
 sha256sums=('SKIP'
             '689c50321d61f2c40a275c004865e9956501038782867bbe73e9d42128f40048')
-provides=("$_basename")
-conflicts=("$_basename")
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
+options=(!lto)
 depends=(
-	'nss'
-	'atk'
-	'libcups'
 	'gtk3'
-	'alsa-lib'
+	'webkit2gtk-4.1'
+)
+optdepends=(
+	'libappindicator-gtk3: for tray icon support'
 )
 makedepends=(
 	'git'
-	'nodejs'
-	'npm'
+	'nvm'
 	'yarn'
-	'libxcrypt-compat'
+	'cargo'
+	'libappindicator-gtk3'
 )
 
 pkgver() {
-	cd "$_basename"
-	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	cd "$_pkgbase"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+_ensure_local_nvm() {
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
 prepare() {
-	cd "$_basename"
-	[ -f electron/package.json ] && sed -i '/"build:linux"/s/-l deb -l AppImage/-l --dir/' electron/package.json
+	cd "$_pkgbase"
+	_ensure_local_nvm
+	nvm install 20
+	[ -f package.json ] && sed -i '/"build:tauri:linux"/ s/\.\/[^ ]*\.sh//g; /"build:tauri:linux"/ s/&& "/--bundles deb"/g' package.json
 }
 
 build() {
-	cd "$_basename"
+	cd "$_pkgbase"
+	_ensure_local_nvm
 	export YARN_CACHE_FOLDER="$srcdir"/yarn-cache
+	export RUSTUP_TOOLCHAIN=stable
+
+	rm -rf src-tauri/target/release/bundle/deb
 	make build
 }
 
 package() {
-	# Desktop file
-	install -Dm644 ../jan.desktop "$pkgdir"/usr/share/applications/jan.desktop
+	cd "$_pkgbase"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 
-	# Application files
-	cd "$_basename"/electron
-	install -dm755 "$pkgdir"/opt/Jan
-	cp -r dist/linux-unpacked/* "$pkgdir"/opt/Jan/
-
-	# Icon files
-	cd icons
-	[ -f icon.png ] && install -Dm644 icon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/jan.png
-	[ -f icon-tray.png ] && install -Dm644 icon-tray.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/jan.png
-	[ -f icon-tray@2x.png ] && install -Dm644 icon-tray@2x.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/jan.png
+	cd src-tauri/target/release/bundle/deb/Jan_*/data/usr
+	install -Dm755 bin/* -t "$pkgdir"/usr/bin
+	install -dm755 "$pkgdir"/usr/share
+	cp -r share/* "$pkgdir"/usr/share
 }
