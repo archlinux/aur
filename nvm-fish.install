@@ -11,9 +11,16 @@ post_install() {
     echo "    - Detect and install bass (if needed)"
     echo "    - Configure Fish shell integration"
     echo "    - Enable automatic .nvmrc version switching"
+    echo "    - Create configuration system for customization"
     echo ""
     echo "==> Once initialized, all nvm commands work normally:"
     echo "    nvm --version, nvm install node, nvm use 16, etc."
+    echo ""
+    echo "==> Configuration features (optional, on-demand):"
+    echo "    - Config file: ~/.config/nvm_fish/config.json (created when needed)"
+    echo "    - Disable auto-switch: Set \"auto_switch\": false"
+    echo "    - Performance caching: Enabled when first used"
+    echo "    - Debug mode: Available for troubleshooting"
     echo ""
     echo "==> Dependencies:"
     echo "    ✔ nvm (installed as package dependency)"
@@ -25,9 +32,17 @@ post_install() {
 post_upgrade() {
     echo "==> nvm-fish has been upgraded!"
     echo ""
+    echo "==> New features in this release:"
+    echo "    - Configuration system (optional, on-demand)"
+    echo "    - Performance caching (optional, on-demand)"
+    echo "    - Debug tools for troubleshooting"
+    echo "    - Cleaner uninstall with no leftover files"
+    echo ""
     echo "==> Please restart your fish shell to load the updated functions:"
-    echo "    - Close and reopen your terminal, OR"  
+    echo "    - Close and reopen your terminal, OR"
     echo "    - Run: exec fish"
+    echo ""
+    echo "==> Configuration file location: ~/.config/nvm_fish/config.json"
 }
 
 post_remove() {
@@ -56,23 +71,47 @@ post_remove() {
             echo "    Removing setup marker for user: $(basename "$user_home")"
             rm -f "$setup_marker" 2>/dev/null || true
         fi
-        
-        # Check for bass installed by nvm-fish
+
+        # Remove nvm-fish configuration directory
+        local nvm_fish_config_dir="$user_home/.config/nvm_fish"
+        if [[ -d "$nvm_fish_config_dir" ]]; then
+            echo "    Removing nvm-fish configuration directory for user: $(basename "$user_home")"
+            rm -rf "$nvm_fish_config_dir" 2>/dev/null || true
+        fi
+
+        # Check for bass installed by nvm-fish before removing
+        local bass_was_installed_by_nvm_fish=false
         if [[ -f "$bass_uninstaller" ]]; then
+            bass_was_installed_by_nvm_fish=true
             echo ""
             echo "==> Bass was installed by nvm-fish for user: $(basename "$user_home")"
+            echo "    Removing bass uninstall script..."
+            rm -f "$bass_uninstaller" 2>/dev/null || true
+            echo "    Note: bass itself is preserved - remove manually if needed"
             echo ""
-            echo "    To remove bass (if no longer needed):"
-            echo "    $bass_uninstaller"
-            echo ""
-            echo "    Or keep it if you use bass for other purposes."
-            echo ""
-        elif [[ -f "$user_home/.config/fish/functions/bass.fish" ]]; then
+        fi
+
+        # Check for existing bass installation (not installed by nvm-fish)
+        if [[ "$bass_was_installed_by_nvm_fish" == "false" ]] && [[ -f "$user_home/.config/fish/functions/bass.fish" ]]; then
             echo ""
             echo "==> Bass found for user: $(basename "$user_home")"
             echo "    (installed independently, not by nvm-fish - left unchanged)"
             echo ""
         fi
+
+        # Clean up any remaining nvm-fish artifacts
+        local temp_files=("$user_home/.config/fish/functions/nvm_fish_config.fish" \
+                          "$user_home/.config/fish/functions/nvm_fish_cache.fish" \
+                          "$user_home/.config/fish/functions/debug_tools.fish" \
+                          "$user_home/.cache/nvm-fish" \
+                          "$user_home/.local/share/nvm-fish")
+
+        for temp_file in "${temp_files[@]}"; do
+            if [[ -e "$temp_file" ]]; then
+                echo "    Removing additional artifact: $(basename "$temp_file")"
+                rm -rf "$temp_file" 2>/dev/null || true
+            fi
+        done
     }
     
     # Clean up for current user (if running as user)
@@ -89,10 +128,17 @@ post_remove() {
         done
     fi
     
-    echo "==> Cleanup completed. The following were preserved:"
-    echo "    ✔ Official nvm installation and configuration"  
+    echo "==> Cleanup completed. The following were removed:"
+    echo "    ✖ nvm-fish functions from /usr/share/fish/vendor_functions.d/"
+    echo "    ✖ Fish shell configuration entries"
+    echo "    ✖ Setup markers and configuration files"
+    echo "    ✖ Cache and temporary files"
+    echo "    ✖ Bass uninstall scripts"
+    echo ""
+    echo "==> The following were preserved:"
+    echo "    ✔ Official nvm installation and configuration"
     echo "    ✔ All Node.js versions installed via nvm"
-    echo "    ✔ Bass (see above for removal options if needed)"
+    echo "    ✔ Bass (if installed independently or manually kept)"
     echo ""
     echo "==> IMPORTANT: Please restart your Fish shell to clear function cache:"
     echo "    - Close and reopen your terminal, OR"
