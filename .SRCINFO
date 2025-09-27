@@ -1,7 +1,7 @@
 pkgbase = crowdsec-nginx-bouncer
 	pkgdesc = CrowdSec bouncer for Nginx
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doc.crowdsec.net/docs/bouncers/nginx
 	install = cs-nginx-bouncer.install
 	arch = any
