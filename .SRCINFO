@@ -10,10 +10,12 @@ pkgbase = jemula802-git
 	depends = java-runtime
 	source = git+https://bitbucket.org/lfield/jemula802.git
 	source = git+https://bitbucket.org/lfield/jemula.git
-	source = ant-jar.patch
+	source = ant-jar-jemula.patch
+	source = ant-jar-jemula802.patch
 	source = jemula802.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = d377f54b3283e75b0b6ec10295619920534d4b473f7063bd44845f5472e2eadf
 	sha256sums = f8ccc41d5c6b01d84ebc8dd4fe966ea1b9d7eed59f44ab06b197264dce66db0b
 	sha256sums = bcebdb3dff9e0ba1e8b758ccd7f3d213042047b24b14a200c673c0b5974f8fba
 

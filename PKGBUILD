@@ -14,11 +14,13 @@ makedepends=('ant' 'java-environment')
 
 source=("git+https://bitbucket.org/lfield/jemula802.git"
         "git+https://bitbucket.org/lfield/jemula.git"
-        "ant-jar.patch"
+        "ant-jar-jemula.patch"
+        "ant-jar-jemula802.patch"
         "jemula802.sh")
 
 sha256sums=('SKIP'
             'SKIP'
+            'd377f54b3283e75b0b6ec10295619920534d4b473f7063bd44845f5472e2eadf'
             'f8ccc41d5c6b01d84ebc8dd4fe966ea1b9d7eed59f44ab06b197264dce66db0b'
             'bcebdb3dff9e0ba1e8b758ccd7f3d213042047b24b14a200c673c0b5974f8fba')
 
@@ -28,9 +30,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir"/jemula802
+	cd "$srcdir"/jemula
+	git apply < "$srcdir/ant-jar-jemula.patch"
 
-	git apply < "$srcdir/ant-jar.patch"
+	cd "$srcdir"/jemula802
+	git apply < "$srcdir/ant-jar-jemula802.patch"
 	
 	ant -Djemula="$srcdir/jemula"
 }
