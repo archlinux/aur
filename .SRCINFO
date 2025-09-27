@@ -1,6 +1,6 @@
 pkgbase = qttube-git
 	pkgdesc = A Qt frontend for YouTube.
-	pkgver = 0.1.r373.gb0f6161
+	pkgver = 1.0.r573.g39b8dc2
 	pkgrel = 1
 	url = https://github.com/BowDown097/QtTube
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = qttube-git
 	provides = qttube
 	conflicts = qttube
 	source = git+https://github.com/BowDown097/QtTube
-	source = git+https://github.com/BowDown097/innertube-qt
+	source = git+https://github.com/BowDown097/qttube-plugin-interface
 	source = git+https://github.com/woboq/verdigris
 	sha256sums = SKIP
 	sha256sums = SKIP
