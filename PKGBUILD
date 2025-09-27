@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-_basename=gnome-shell-extension-pano
-pkgname=${_basename}-bin
+_pkgbase=gnome-shell-extension-pano
+pkgname=${_pkgbase}-bin
 pkgver=23.alpha5
 pkgrel=2
 pkgdesc="Next-gen Clipboard Manager for Gnome Shell "
@@ -12,8 +12,8 @@ depends=(
 	'gnome-shell>=45'
 	'libgda6'
 )
-provides=("$_basename")
-conflicts=("$_basename")
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
 source=("pano-${pkgver}.zip::https://github.com/oae/gnome-shell-pano/releases/download/v${pkgver/\./-}/pano@elhan.io.zip")
 sha256sums=('b72a5b243a621ff73539b88c970c2e78041e3b67c9b32de24107b6383aa4be0b')
 
