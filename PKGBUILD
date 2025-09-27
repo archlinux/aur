@@ -18,7 +18,6 @@ provides=(protonmail-bridge)
 conflicts=(protonmail-bridge protonmail-bridge-core protonmail-bridge-nokeychain "${pkgbase}")
 depends=()
 makedepends=(git go)
-options=(!strip)
 source=("${_pkgbase}::git+https://github.com/mnixry/proton-bridge.git"
         "keyfile.patch"
         "protonmail-bridge.service")
@@ -28,34 +27,33 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
-  local internal_ver
-  internal_ver=$(grep -E 'BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/.*= *([^ ]+).*/\1/' )
-  local git_rev
+  local internal_ver ver_count git_rev
+  internal_ver=$(grep -E '^BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/^[^=]+= *([^ ]+).*/\1/')
+  ver_count=$(git rev-list --count HEAD)
   git_rev=$(git rev-parse --short HEAD)
-  printf '%s.r0.g%s' "${internal_ver%%+*}" "${git_rev}"
+  printf '%s.r%s.g%s' "${internal_ver%%+*}" "${ver_count}" "${git_rev}"
 }
 
 prepare() {
   cd "${srcdir}/${_pkgbase}"
-  patch -p1 -N < "${srcdir}/keyfile.patch" || true
+  patch -Np1 --forward --input="${srcdir}/keyfile.patch"
 }
 
 build() {
   cd "${srcdir}/${_pkgbase}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
-  make build-nogui BUILD_ENV="Arch Linux" || {
-    echo "Falling back to bare go build..." >&2
-    go build -v -buildvcs=false -o bridge ./cmd/Desktop-Bridge/
-  }
+  go build -v -buildvcs=false -o protonmail-bridge ./cmd/Desktop-Bridge/
 }
 
 package() {
   cd "${srcdir}/${_pkgbase}"
-  install -Dm755 bridge "${pkgdir}/usr/bin/protonmail-bridge"
+  install -Dm755 protonmail-bridge "${pkgdir}/usr/bin/protonmail-bridge"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/protonmail-bridge.service" \
     "${pkgdir}/usr/lib/systemd/user/protonmail-bridge.service"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 Changelog.md "${pkgdir}/usr/share/doc/${pkgname}/Changelog.md" || true
 }

@@ -1,83 +1,63 @@
 # protonmail-bridge-free-nokeychain-git
 
-Unofficial Arch packaging resources for the `mnixry/proton-bridge` fork of Proton Mail Bridge with the Linux keychain requirement removed ("nokeychain"). Secrets (account credentials / tokens) are stored in a flat file under your XDG config directory instead of a secret-service or `pass` backend.
+Unofficial Arch packaging assets for the `mnixry/proton-bridge` fork of Proton Mail Bridge. This flavour removes the Linux keychain dependency and stores encrypted credentials in a flat file within the XDG config directory.
 
-> SECURITY NOTE: File based storage is less secure than using a proper keychain / secret-service. The stored file is permission locked (0600), but anyone with read access to your user account could extract credentials. Use at your own risk.
+> **Security notice** – File-backed storage is materially weaker than a proper secret-service or `pass` backend. The helper enforces `0600` permissions, but any user who can read your home directory can extract the contents. Evaluate this trade-off carefully before deploying.
 
-## What this provides
-- A PKGBUILD (`protonmail-bridge-free-nokeychain-git`) to build the *CLI (nogui)* variant of the Bridge fork.
-- A patch (`keyfile.patch`) that replaces the Linux keychain helper logic with a simple file helper only.
-- A user systemd service (`protonmail-bridge.service`) to run the bridge in noninteractive mode.
+## Repository contents
+- `PKGBUILD` & `.SRCINFO`: VCS packaging for the headless (nogui) bridge build.
+- `keyfile.patch`: swaps the upstream helper selection to a deterministic "key-file" implementation and updates migration behaviour accordingly.
+- `protonmail-bridge.service`: user-level systemd unit for running the bridge in unattended mode.
 
-## How it works
-1. Source code is pulled directly from the git master of `https://github.com/mnixry/proton-bridge` (no tags exist; `pkgver()` derives version from the hard‑coded internal version plus the short git commit).
-2. During `prepare()`, the patch modifies `pkg/keychain/helper_linux.go` to:
-   - Remove detection of `pass`, `secret-service`, and `secret-service-dbus` helpers.
-   - Add a single helper `key-file` that persists credentials to `~/.config/protonmail/bridge-v3/secrets` (expanded from `~/`).
-3. `make build-nogui` builds the CLI bridge only (avoids Qt & large dependency set). If that make target fails, it falls back to a direct `go build` of `./cmd/Desktop-Bridge/`.
-4. The resulting binary is installed as `/usr/bin/protonmail-bridge`.
-5. The user service launches the bridge with `--noninteractive` so it runs headless, exposing its local IMAP/SMTP endpoints (default 127.0.0.1 ports decided internally by the Bridge).
+## Build overview
+1. `pkgver()` queries `BRIDGE_APP_VERSION` from the upstream `Makefile`, appends the git commit count, and finishes with the short HEAD. This keeps the package version monotonically increasing even without upstream tags.
+2. `prepare()` applies `keyfile.patch` with `patch --forward`, making repeated builds safe when the patch is already present.
+3. `build()` compiles the CLI bridge (no Qt) via `go build -buildvcs=false ./cmd/Desktop-Bridge/`, honouring Arch’s hardened Go flags.
+4. `package()` installs the binary at `/usr/bin/protonmail-bridge`, ships upstream licensing, drops this README under `/usr/share/doc/`, and provisions the optional systemd user service.
 
 ### Secrets file format
-Each line: `ServerURL\0Username\0Password` (NUL separated, newline terminated). Permissions must stay `0600`; the helper enforces this.
+The helper persists credentials as lines of `ServerURL\0Username\0Password`, newline-terminated. Permissions must stay `0600`; incorrect modes cause credential loading to fail.
 
-## Local installation (Arch / Manjaro / EndeavourOS)
+## Installation (Arch, Manjaro, EndeavourOS)
 
-### 1. Prerequisites
-Ensure base development tools and Go are installed:
+### Prerequisites
+Install the standard toolchain:
+
 ```bash
 sudo pacman -S --needed base-devel git go
 ```
 
-### 2. Build & Install
-From inside this directory:
+### Build and install
+
 ```bash
 makepkg -si
 ```
-This will:
-- Clone upstream fork into the build dir (`$srcdir/proton-bridge`)
-- Apply `keyfile.patch`
-- Build the binary
-- Install files to your system (prompting for sudo if using a helper like `pacman -U` indirectly).
 
-### 3. Run manually (optional quick test)
-```bash
-protonmail-bridge --help
-```
-Log in interactively (first run prompts in terminal). After configuration succeeds, credentials are saved to the secrets file.
+The build system will clone `https://github.com/mnixry/proton-bridge`, apply the helper patch, compile the headless binary, and install artifacts through pacman.
 
-### 4. Enable systemd user service (background mode)
-```bash
-systemctl --user enable --now protonmail-bridge.service
-systemctl --user status protonmail-bridge.service
-```
-The bridge will start automatically on user login.
+## Post-installation
 
-### 5. Configure your email client
-Point your client (e.g. Thunderbird) to the local IMAP/SMTP endpoints shown by the bridge (`localhost`, port numbers displayed on first run). Authentication credentials are those generated by the bridge per account.
+1. **Initial run** – Execute `protonmail-bridge --cli` in a terminal before enabling the service. The CLI wizard handles first-time authentication and writes credentials to the secrets file once setup succeeds.
+2. **Background service (optional)** – Enable the user service to start the bridge automatically:
 
-## Updating
-Because this is a `-git` package, simply rebuild:
-```bash
-cd /path/to/proton-bridge-free
-makepkg -si
-```
-Or use an AUR helper that respects VCS pkgver logic.
+   ```bash
+   systemctl --user enable --now protonmail-bridge.service
+   systemctl --user status protonmail-bridge.service
+   ```
 
-## Caveats
-- GUI (Qt) is intentionally not built to reduce dependency footprint; add GUI by pulling in the Qt build dependencies and using upstream style `cmake` invocation if desired.
-- File-based secret storage is less secure; consider using upstream packages if secure key storage matters.
-- Automatic self-updater logic is not used here; package updates happen through pacman.
+3. **Mail client configuration** – Point your client (e.g. Thunderbird) to the local IMAP/SMTP endpoints displayed by the bridge (`localhost`, ports provided per account). Use the per-account credentials generated by the bridge.
+
+## Maintenance
+- To refresh the package, rebuild it (`makepkg -si`) or rely on an AUR helper that honours VCS pkgver semantics.
+- If upstream changes break the patch, rebase `keyfile.patch` against `pkg/keychain/helper_linux.go` and re-run the build.
 
 ## Troubleshooting
-| Symptom | Possible Cause | Fix |
-|---------|----------------|-----|
-| Build fails at `make build-nogui` | Upstream Makefile assumptions (missing cmake/ninja) | Install missing tools or rely on fallback `go build` |
-| Bridge says no keychain helper | Patch failed due to upstream changes | Refresh `keyfile.patch` against current `helper_linux.go` |
-| Secrets file permission error | Mode not 0600 | `chmod 600 ~/.config/protonmail/bridge-v3/secrets` |
+| Symptom | Likely cause | Suggested resolution |
+| --- | --- | --- |
+| Patch fails in `prepare()` | Upstream helper source changed | Refresh `keyfile.patch` for the new upstream revision. |
+| Bridge reports “no keychain helper” | Secrets file missing or unreadable | Ensure `~/.config/protonmail/bridge-v3/secrets` exists with mode `0600`. |
+| Build fails with Go module errors | Module cache not writable | Clean `~/go/pkg/mod/cache` or retry with a writable cache. |
+| Service starts but exits immediately | No authenticated accounts | Run `protonmail-bridge` interactively to provision credentials, then restart the service. |
 
 ## License
-Upstream code: GPL-3.0. Packaging scripts & patch adjustments: same license.
-
----
-This repository is unaffiliated with Proton AG.
+Upstream project: GPL-3.0. These packaging scripts and patches: GPL-3.0 to match upstream. Proton AG is not affiliated with this repository.

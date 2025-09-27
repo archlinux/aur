@@ -1,7 +1,7 @@
 pkgbase = protonmail-bridge-free-nokeychain
 	pkgdesc = Proton Mail Bridge fork (free) without keychain requirement; stores secrets in a file
 	pkgver = 3.21.2.r0.g7d1e9135
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/mnixry/proton-bridge
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,6 @@ pkgbase = protonmail-bridge-free-nokeychain
 	conflicts = protonmail-bridge-core
 	conflicts = protonmail-bridge-nokeychain
 	conflicts = protonmail-bridge-free-nokeychain
-	options = !strip
 	source = proton-bridge::git+https://github.com/mnixry/proton-bridge.git
 	source = keyfile.patch
 	source = protonmail-bridge.service
