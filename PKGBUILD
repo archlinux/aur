@@ -5,8 +5,8 @@ pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
-depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-libharu' 'mingw-w64-verdict')
-makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'protobuf')
+depends=('mingw-w64-vtk' 'mingw-w64-cgns' 'mingw-w64-protobuf')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'mingw-w64-boost' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
 md5sums=('595ffe2aaf48c59d58414d284725ac91')
@@ -31,17 +31,7 @@ build() {
       -DPARAVIEW_USE_VISKORES=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DPARAVIEW_QT_VERSION=5 \
-      -DVTK_QT_VERSION=5 \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
+      -DPARAVIEW_USE_EXTERNAL_VTK=ON \
       -B build-${_arch} .
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
   done
