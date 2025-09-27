@@ -1,0 +1,18 @@
+pkgbase = obelisk-bin
+	pkgdesc = CLI tool for saving web page as single HTML file
+	pkgver = 0.91
+	pkgrel = 1
+	url = https://github.com/go-shiori/obelisk
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = obelisk
+	conflicts = obelisk
+	source = LICENSE-0.91::https://raw.githubusercontent.com/go-shiori/obelisk/v0.91/LICENSE
+	source = README-0.91.md::https://raw.githubusercontent.com/go-shiori/obelisk/v0.91/README.md
+	sha256sums = 0a26c303449ce577a88d1ee9987907c5d385f80c8cbc66008aad795572c86234
+	sha256sums = f255ed5a789939ed3108455fbf5c5a3b2ae4339be28c3b7b4cc2f4ce8742dac6
+	source_x86_64 = obelisk-x86_64-0.91::https://github.com/go-shiori/obelisk/releases/download/v0.91/obelisk-linux
+	sha256sums_x86_64 = 5f1799327599e623c1ea25425eef0d40b51e27a7dd70fb23d4a40c75fb9a4081
+
+pkgname = obelisk-bin
