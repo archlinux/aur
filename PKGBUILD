@@ -8,10 +8,11 @@ license=("MIT")
 pkgver="0.2.0"
 pkgrel=1
 arch=("any")
-depends=("qt6-base" "hyprpaper")
+depends=("qt6-base" "qt6-declarative" "qt6-multimedia")
+optdepends=("hyprpaper: To set wallpapers on Hyprland")
 makedepends=("cmake" "ninja" "librsvg")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$repoowner/$reponame/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("SKIP")
+sha512sums=("SKIP")
 url="https://github.com/$repoowner/$reponame"
 options=("!debug")
 

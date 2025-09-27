@@ -9,9 +9,11 @@ pkgbase = blaadpapers
 	makedepends = ninja
 	makedepends = librsvg
 	depends = qt6-base
-	depends = hyprpaper
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	optdepends = hyprpaper: To set wallpapers on Hyprland
 	options = !debug
 	source = blaadpapers-0.2.0.tar.gz::https://github.com/Blaadick/BlaadPapers/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = blaadpapers
