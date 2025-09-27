@@ -3,7 +3,7 @@
 pkgname=snow-git
 groups=(snow-lang-git)
 pkgver=0.11.0.r0.g7300562
-pkgrel=1
+pkgrel=3
 _java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
 arch=($CARCH)
@@ -63,6 +63,6 @@ package() {
     cp -R docs/* "${pkgdir}/usr/share/doc/${pkgname%-git}"
     cp -R *.md "${pkgdir}/usr/share/doc/${pkgname%-git}"
     cp -R playground/* "${pkgdir}/usr/share/${pkgname%-git}"
-    install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgname}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
+    install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
