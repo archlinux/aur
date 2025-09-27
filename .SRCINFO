@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vtk
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization (mingw-w64)
-	pkgver = 9.5.1
+	pkgver = 9.5.2
 	pkgrel = 1
 	url = http://www.vtk.org/
 	arch = any
@@ -28,10 +28,11 @@ pkgbase = mingw-w64-vtk
 	depends = mingw-w64-libharu
 	depends = mingw-w64-cgns
 	depends = mingw-w64-verdict
+	depends = mingw-w64-ffmpeg
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://www.vtk.org/files/release/9.5/VTK-9.5.1.tar.gz
-	sha256sums = 14443661c7b095d05b4e376fb3f40613f173e34fc9d4658234e9ec1d624a618f
+	source = https://www.vtk.org/files/release/9.5/VTK-9.5.2.tar.gz
+	sha256sums = cee64b98d270ff7302daf1ef13458dff5d5ac1ecb45d47723835f7f7d562c989
 
 pkgname = mingw-w64-vtk
