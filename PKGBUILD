@@ -12,10 +12,10 @@ provides=('keylightd')
 conflicts=('keylightd')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.21/keylightd_0.0.21_linux_arm64.tar.gz")
-sha256sums_aarch64=('7a0d4dd545b92a4fc13bfa4b77d91648f3d34f660ddf67c5ee173743efb4cb48')
+sha256sums_aarch64=('31f38ed99e8140c7272b61a81306389ec55826e3914fd572d9fff981dea425cb')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.21/keylightd_0.0.21_linux_amd64.tar.gz")
-sha256sums_x86_64=('c5714213331587387dde27396db7c35f4c32d503d61488ff9ecad91d5b6c04b0')
+sha256sums_x86_64=('e5108270dee7abbacc1472e2b4138a6205e4e83153cb858fd80923d87f2b3a9f')
 
 package() {
   # binaries
