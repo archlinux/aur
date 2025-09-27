@@ -1,23 +1,25 @@
 pkgbase = mindustry
 	pkgdesc = A sandbox tower defense game
-	pkgver = 151.1
+	pkgver = 152
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL-3.0-only
 	makedepends = java-environment=17
-	makedepends = alsa-lib
 	makedepends = libicns
-	source = mindustry-151.1.tar.gz::https://github.com/Anuken/Mindustry/archive/v151.1.tar.gz
-	source = mindustry-arc-151.1.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v151.1.tar.gz
-	sha256sums = 7d6b35b7bd888bc34ffd39296ed77d0c19c7189f9870b6731da29489208694e2
-	sha256sums = 9104eceb8f601ca11244d2c0d120daa4eae086add18428ca81da800dc97d4a98
+	depends = alsa-lib
+	source = mindustry-152.tar.gz::https://github.com/Anuken/Mindustry/archive/v152.tar.gz
+	source = mindustry-arc-152.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v152.tar.gz
+	sha256sums = 3888bfbaadbd5f094d2f3a8735352c360e23241a88b329e9f3041806af7dcea9
+	sha256sums = 0029d1c46799f1c50be5e3e421529d4b2ca60ead943ee2233b23d389dafee82f
 
 pkgname = mindustry
+	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = java-runtime
 
 pkgname = mindustry-server
 	pkgdesc = A sandbox tower defense game - server
+	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = java-runtime
