@@ -1,0 +1,6 @@
+linux-zenith
+kernel-zenith
+src/
+pkg/
+selinux_diffconfig
+*.tar.*
