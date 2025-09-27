@@ -1,7 +1,7 @@
 pkgbase = treeline
 	pkgdesc = Outliner and PIM which stores information in a tree structure
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = http://treeline.bellz.org/
 	arch = any
 	license = GPL2
@@ -10,9 +10,9 @@ pkgbase = treeline
 	optdepends = aspell
 	optdepends = ispell
 	optdepends = hunspell
-	source = https://github.com/doug-101/TreeLine/releases/download/v3.2.0/treeline-3.2.0.tar.gz
+	source = https://github.com/doug-101/TreeLine/releases/download/v3.2.1/treeline-3.2.1.tar.gz
 	source = treeline.xml
-	sha256sums = 191ff71f77385681171e9a8cf74f1148d5b205e3497d7bf36f286be1d98574be
+	sha256sums = a3a780066647fbfdf28d1f7f457cae180330aa143da3f2ef0034a1926da47f64
 	sha256sums = 2b23717127a37888499bddf62042eddb800d58b10ec88f3f54a538c8e24b19d6
 
 pkgname = treeline

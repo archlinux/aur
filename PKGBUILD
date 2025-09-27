@@ -1,8 +1,8 @@
 # Contributor: Kim Scarborough <kim@scarborough.kim>
 
 pkgname=treeline
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Outliner and PIM which stores information in a tree structure"
 arch=('any')
 url="http://treeline.bellz.org/";
@@ -11,7 +11,7 @@ depends=('python-lxml' 'python-pyqt6')
 optdepends=('aspell' 'ispell' 'hunspell')
 source=("https://github.com/doug-101/TreeLine/releases/download/v${pkgver}/treeline-${pkgver}.tar.gz"
 	"treeline.xml")
-sha256sums=('191ff71f77385681171e9a8cf74f1148d5b205e3497d7bf36f286be1d98574be'
+sha256sums=('a3a780066647fbfdf28d1f7f457cae180330aa143da3f2ef0034a1926da47f64'
 	    '2b23717127a37888499bddf62042eddb800d58b10ec88f3f54a538c8e24b19d6')
 
 package() {
