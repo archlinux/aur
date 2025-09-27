@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.47.r193.g3afadef
+pkgver=1.0.0.alpha.48.r16.gd7a6acd
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64' 'aarch64')
@@ -15,16 +15,20 @@ license=(
 )
 depends=(
   'evolution-data-server'
+  'glycin'
   'gnutls'
   'gstreamer'
+  'gtk4'
   'json-glib'
   'libadwaita'
   'libpeas-2'
   'libpipewire'
+  'libportal'
   'libportal-gtk4'
   'libpulse'
   'python-dbus'
   'python-gobject'
+  'tinysparql'
 )
 makedepends=(
 #  'gi-docgen'  ## -Ddocumentation=true
