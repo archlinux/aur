@@ -1,4 +1,4 @@
-pkgbase = vkbasalt-gui
+pkgbase = vkbasalt-gui-git
 	pkgdesc = A Qt-based GUI to more easily configure and use vkBasalt on your games
 	pkgver = r17.cd91781
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = vkbasalt-gui
 	sha256sums = SKIP
 	sha256sums = 61aed8dfd8c23f4e641c63a9817d426a08abffa372d46dca3c48472a2dd63b94
 
-pkgname = vkbasalt-gui
+pkgname = vkbasalt-gui-git

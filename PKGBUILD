@@ -1,7 +1,8 @@
 # Maintainer: Stephen Martin <stephensrmmartin@gmail.com>
 # Contributor: Jorge Barroso <jorge-barroso@users.noreply.github.com>
 
-pkgname=vkbasalt-gui
+pkgname=vkbasalt-gui-git
+_pkgname=vkbasalt-gui
 pkgver=r17.cd91781
 pkgrel=1
 pkgdesc="A Qt-based GUI to more easily configure and use vkBasalt on your games"
@@ -18,7 +19,7 @@ replaces=('vkbasalt-gui-git')
 provides=('vkbasalt-gui')
 
 source=(
-    "${pkgname}::git+${url}.git#branch=main"
+    "${_pkgname}::git+${url}.git#branch=main"
     "qdebug.patch"
 )
 sha256sums=('SKIP'
@@ -67,15 +68,15 @@ Terminal=false
 Categories=Graphics;3DGraphics;Game;
 EOF
     fi
-    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
     
     # Install icon (create one if not provided upstream)
     if [ ! -d "icons" ]; then
         install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
         # Create a simple placeholder icon
-        convert -size 256x256 xc:white "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png" || true
+        convert -size 256x256 xc:white "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" || true
     else
-        install -Dm644 "icons/${pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" 2>/dev/null || true
+        install -Dm644 "icons/${_pkgname}.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" 2>/dev/null || true
     fi
 }
 
