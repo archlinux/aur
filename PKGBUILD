@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 _pkgname=wxGlade
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
 source=(
     "https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
 )
-sha256sums=('b71939d8be3ef1929a7533b7daa55f9396a28ea93a07b01d3cdb403d399d943b')
+sha256sums=('59b4a84c256f60dc6435318696ecba6a5236569bbee2ed7995b860798ab3bdfe')
 
 build() {
     cd "$_pkgname-$pkgver"
