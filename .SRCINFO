@@ -1,0 +1,24 @@
+pkgbase = python-dessert
+	pkgdesc = Assertion introspection via AST rewriting
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/getslash/dessert
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-emport
+	checkdepends = python-pylint
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-munch
+	depends = python-py
+	depends = python-atomicwrites
+	depends = python-attrs
+	source = https://files.pythonhosted.org/packages/source/d/dessert/dessert-1.5.0.tar.gz
+	sha256sums = 27916b1ffc932ae139385ada34ca4d2f851c66f48a2aa44295a438480fa59831
+
+pkgname = python-dessert
