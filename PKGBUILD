@@ -1,7 +1,7 @@
 # Maintainer:Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=aevol
-pkgver=9.2
+pkgver=9.3.0
 _tag=${pkgver}
 pkgrel=1
 pkgdesc="an open-source digital genetics platform that captures the evolutionary process"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver::git+https://gitlab.inria.fr/aevol/aevol.git#tag=${_ta
         'googletest::git+https://github.com/google/googletest.git#tag=v1.14.0'
         )
 
-sha256sums=('7bab8df6c87e21763047f7248f26ebece295ab4e3db91ffa27f4279b39344c93'
+sha256sums=('c90cb57c5d051d5c53dddb22f1653afe9421776ad2e1c806755fde9918c5db37'
             '8c4b26bf4b422252e13f332bc5e388ec0ab5c3443d24399acb675e68278d341f'
             'e5f89b43d9cc0916723695c8503430fdd5cc25e8bd50881dbd242cef468a0533')
 
