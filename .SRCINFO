@@ -1,6 +1,6 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://penpot.app
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = penpot
 	makedepends = rustup
 	makedepends = emscripten
 	makedepends = emsdk
-	noextract = penpot-2.8.1.tgz
-	source = https://github.com/penpot/penpot/archive/refs/tags/2.8.1.tar.gz
+	noextract = penpot-2.9.0.tgz
+	source = https://github.com/penpot/penpot/archive/refs/tags/2.9.0.tar.gz
 	source = sysusers.conf
 	source = penpot.conf.d
 	source = penpot-exporter.conf.d
@@ -25,7 +25,7 @@ pkgbase = penpot
 	source = penpot.tmpfiles.d
 	source = penpot-update-flags.sh
 	source = nginx.conf
-	sha256sums = 44dc716ccce8b196f52038ba29c1669e174b19f17146f0435a22cf6440a9720c
+	sha256sums = 38d6e386ef9f6daab5a1dd91ddbacec8c5b19083881d45f31d0cd0df4253f511
 	sha256sums = 4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c
 	sha256sums = bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523
 	sha256sums = 828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb
@@ -36,8 +36,8 @@ pkgbase = penpot
 	sha256sums = 29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621
 
 pkgname = penpot
-	depends = java-environment>=24
-	depends = java-environment<=24
+	depends = java-environment>=25
+	depends = java-environment<=25
 	depends = nodejs
 	depends = redis
 	depends = postgresql

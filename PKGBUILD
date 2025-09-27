@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://penpot.app"
 license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
-_jdkver="24"
+_jdkver="25"
 makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk')
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '44dc716ccce8b196f52038ba29c1669e174b19f17146f0435a22cf6440a9720c'
+  '38d6e386ef9f6daab5a1dd91ddbacec8c5b19083881d45f31d0cd0df4253f511'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -36,8 +36,27 @@ sha256sums=(
   '29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621'
 )
 
+_install-yarn-berry() {
+  cwd=$(pwd)
+  yarntmp=$(mktemp -d)
+  yarn_version=$(test -e package.json && jq -r .packageManager package.json | cut -d @ -f 2 | cut -d + -f 1)
+  pushd $yarntmp
+  yarn set version ${yarn_version:-stable}
+  mkdir -p $cwd/.yarn/cache
+  cp -r .yarn/releases $cwd/.yarn
+  if [ -e $cwd/.yarnrc.yml ]; then
+    sed -i '/^yarnPath/d' $cwd/.yarnrc.yml
+    sed -i '/^cacheFolder/d' $cwd/.yarnrc.yml
+    sed -i '/^enableGlobalCache/d' $cwd/.yarnrc.yml
+  fi
+  cat .yarnrc.yml >>$cwd/.yarnrc.yml
+  echo "cacheFolder: ./.yarn/cache" >>$cwd/.yarnrc.yml
+  echo "enableGlobalCache: false" >>$cwd/.yarnrc.yml
+  popd
+  rm -r $yarntmp
+}
+
 build() {
-  export YARN_CACHE_FOLDER="${srcdir}/.yarn-cache"
   export RUSTUP_HOME=${srcdir}/.rustup
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.85.0
@@ -45,22 +64,8 @@ build() {
 
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
-  # we dont have yarn @ version 4 as package, so use yarn 1.x
-  sed -i '/"packageManager":.*,/d' ../package.json
-  sed -i '/"packageManager":.*,/d' ./package.json
-  sed -i 's/"portal:/"file:/' ./package.json
-  sed -i 's/npm://' ./package.json
-  sed -i 's#"@zip.js/zip.js": "patch:.*,$#"@zip.js/zip.js": "2.7.60",#' ./package.json
-  sed -i 's#"resolutions": {#"resolutions": {"binary-install": "1.0.1",#' ./package.json
-  sed -i 's/yarn install/NODE_ENV=development yarn install/' ./scripts/build
+  _install-yarn-berry
   sed -i '/^corepack/d' ./scripts/build
-  sed -i 's/\.git#commit=/.git#/' package.json
-  sed -i 's#/usr/local/emsdk/emsdk_env.sh#/usr/bin/emsdk_env.sh#' ../render-wasm/build
-
-  yarn install
-  pushd node_modules/@zip.js/zip.js/
-  patch -p1 < "${srcdir}/${_pkgbase}-${pkgver}/frontend/.yarn/patches/@zip.js-zip.js"*
-  popd
 
   rustup install $RUST_VERSION
   rustup default $RUST_VERSION
@@ -72,7 +77,7 @@ build() {
 
   echo "==== BUILDING EXPORTER"
   cd "${srcdir}/${_pkgbase}-${pkgver}/exporter"
-  sed -i '/"packageManager":.*,/d' ./package.json
+  _install-yarn-berry
   # patch playwright to use chromium from archlinux
   # so we don't have to install the playwright binaries
   sed -i 's|:args #js|:executablePath "/usr/bin/chromium", :args #js|' src/app/browser.cljs
@@ -84,9 +89,8 @@ build() {
   tar cvf penpot-exporter.tgz .
 
   echo "==== BUILDING BACKEND"
-  # build the backend
   cd "${srcdir}/${_pkgbase}-${pkgver}/backend"
-  sed -i '/"packageManager":.*,/d' ./package.json
+  _install-yarn-berry
   ./scripts/build "${pkgver}"
   sed -i "2 i JAVA_HOME='$JAVA_HOME'" target/dist/run.sh
   sed -i s#penpot.jar#/usr/share/java/penpot/backend.jar# target/dist/run.sh
