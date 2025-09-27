@@ -41,7 +41,7 @@ b2sums=(
 
 validpgpkeys=(
     # SpacingBat3 (Personal GPG key for signing GIT commits.)
-	'EF07385224D965FADB1E3570FECEF941D3081BAA'
+    'EF07385224D965FADB1E3570FECEF941D3081BAA'
 )
 
 ### CONFIGURABLE VARIABLES ###
