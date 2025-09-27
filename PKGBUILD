@@ -6,7 +6,7 @@
 
 pkgname=('llvm17' 'llvm17-libs')
 pkgver=17.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -55,6 +55,14 @@ _get_distribution_components() {
 
 prepare() {
   rename -v -- "-$pkgver.src" '' {cmake,third-party}-$pkgver.src
+
+  cd "llvm-$pkgver.src" || exit
+
+  # https://aur.archlinux.org/packages/llvm17#comment-1039830
+  # https://gcc.gnu.org/gcc-15/porting_to.html#header-dep-changes
+  sed -i '29i #include <cstdint>' include/llvm/ADT/SmallVector.h
+  sed -i '19i #include <cstdint>' lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
+  sed -i '18i #include <cstdint>' lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
 }
 
 build() {
