@@ -1,7 +1,7 @@
 pkgbase = jackify-bin
 	pkgdesc = Jackify - Simplifying Wabbajack modlist installation and configuration on Linux
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Omni-guides/Jackify
 	arch = x86_64
 	license = GPL-3.0-or-later
