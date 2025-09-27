@@ -8,7 +8,7 @@ ExecStart=/usr/bin/ollama serve
 WorkingDirectory=/var/lib/ollama
 Environment="HOME=/var/lib/ollama"
 Environment="OLLAMA_MODELS=/var/lib/ollama"
-EnvironmentFile=/etc/ollama.conf
+EnvironmentFile=-/etc/ollama.conf
 User=ollama
 Group=ollama
 Restart=on-failure
