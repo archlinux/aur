@@ -1,12 +1,13 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp-git'
-pkgver=25.02.0.r88.g081b5d3
+pkgver=25.02.0.r109.g8810d85
 pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
 url='https://github.com/AdaptiveCpp/AdaptiveCpp'
 license=('BSD-2-Clause')
+provides=('opencl-headers')
 conflicts=('adaptivecpp')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')

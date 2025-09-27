@@ -1,6 +1,6 @@
 pkgbase = adaptivecpp-git
 	pkgdesc = A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.
-	pkgver = 25.02.0.r88.g081b5d3
+	pkgver = 25.02.0.r109.g8810d85
 	pkgrel = 1
 	url = https://github.com/AdaptiveCpp/AdaptiveCpp
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = adaptivecpp-git
 	depends = nvidia-utils
 	depends = ocl-icd
 	depends = python
+	provides = opencl-headers
 	conflicts = adaptivecpp
 	source = adaptivecpp-git::git+https://github.com/AdaptiveCpp/AdaptiveCpp.git
 	sha512sums = SKIP
