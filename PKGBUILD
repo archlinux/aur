@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='keylightd-bin'
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc='Daemon and CLI tool for managing HTTP-based Key Lights, including Elgato models'
 url='https://github.com/jmylchreest/keylightd'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('keylightd')
 conflicts=('keylightd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.22/keylightd_0.0.22_linux_arm64.tar.gz")
-sha256sums_aarch64=('506a657f8e13a8aa3f3f0249c48d044491e603aefcc304cf5ecd1e18a9f5129d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.23/keylightd_0.0.23_linux_arm64.tar.gz")
+sha256sums_aarch64=('5261487661c6ac3ecd43da6faace32a59d5f13312ef6c20d57a29f67c3fa648d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.22/keylightd_0.0.22_linux_amd64.tar.gz")
-sha256sums_x86_64=('483c126344217fd3a85a4c63258f240b9a2894ed1f897aa89028735a0df71341')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.23/keylightd_0.0.23_linux_amd64.tar.gz")
+sha256sums_x86_64=('8fa841e5b92538139dd644d6ac2ebc9ee0ac3d895a89e49d23e052a1d3adc4c8')
 
 package() {
   # binaries
