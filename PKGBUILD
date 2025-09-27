@@ -1,7 +1,7 @@
 # Maintainer: Jian Wei Cheong <aur at jianwei dot anonaddy dot com>
 
 pkgname=bibiman
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A TUI for fast and simple interacting with your BibLaTeX database.'
 url='https://codeberg.org/lukeflo/bibiman'
@@ -10,29 +10,29 @@ makedepends=('cargo')
 provides=('bibiman')
 arch=('x86_64')
 options=(!debug !lto)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('b8a430021da541354f51a298266d0fe0c760b9da54a7965ee40dd4023dabd4410833d075081f0687390ccb91f9883fce7747de81e1e64e368bd7932f15e5e89b')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/lukeflo/bibiman/archive/v$pkgver.tar.gz")
+b2sums=('0b2257ccdd36a2d44e5069c138bf9de490086569bcf7dd25e732d725c5f2c27f2d44f8a6a191a7052b63ed7c9bea9141d13ef2c57e297f7a34d117fbd6bf3bf6')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
-    cd $pkgname-$pkgver
+    cd $pkgname
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cd $pkgname-$pkgver
+    cd $pkgname
     cargo build --frozen --release --all-features
 }
 
-# check() {
-#     export RUSTUP_TOOLCHAIN=stable
-#     cd $pkgname-$pkgver
-#     cargo test --frozen --all-features
-# }
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd $pkgname
+    cargo test --frozen --all-features
+}
 
 package() {
-    cd $pkgname-$pkgver
+    cd $pkgname
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }

@@ -1,6 +1,6 @@
 pkgbase = bibiman
 	pkgdesc = A TUI for fast and simple interacting with your BibLaTeX database.
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://codeberg.org/lukeflo/bibiman
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bibiman
 	provides = bibiman
 	options = !debug
 	options = !lto
-	source = bibiman-0.13.0.tar.gz::https://static.crates.io/crates/bibiman/bibiman-0.13.0.crate
-	b2sums = b8a430021da541354f51a298266d0fe0c760b9da54a7965ee40dd4023dabd4410833d075081f0687390ccb91f9883fce7747de81e1e64e368bd7932f15e5e89b
+	source = bibiman-0.14.0.tar.gz::https://codeberg.org/lukeflo/bibiman/archive/v0.14.0.tar.gz
+	b2sums = 0b2257ccdd36a2d44e5069c138bf9de490086569bcf7dd25e732d725c5f2c27f2d44f8a6a191a7052b63ed7c9bea9141d13ef2c57e297f7a34d117fbd6bf3bf6
 
 pkgname = bibiman
