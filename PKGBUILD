@@ -11,7 +11,6 @@ license=(GPL)
 depends=(
   chatty
   dconf-editor
-  devhelp
   d-spy
   endeavour
   file-roller
@@ -28,6 +27,7 @@ depends=(
   gnome-sudoku
   gnome-tweaks
   lightsoff
+  manuals
   quadrapassel
   swell-foop
   sysprof
