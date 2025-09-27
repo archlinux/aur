@@ -2,7 +2,7 @@
 
 pkgname=xlibre-video-ati-bin
 _pkgname=xlibre-xf86-video-ati
-pkgver=22.0.0.2
+pkgver=22.0.0.3
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org ati video driver (binary release)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=('mesa' 'libpciaccess' 'libdrm' 'glibc')
 provides=('xf86-video-ati' 'xlibre-video-ati')
 conflicts=('xf86-video-ati' 'xlibre-video-ati' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 
-sha256sums=('203b47c010ed93ae3e0d5e7e6ed364fe6ef85710b7c74b5ac5767587d6ce9baa')
+sha256sums=('963251cd18dd581c29da5308a63b7ecbbdfcb7f2caeba69c2f2b24a63a14c784')
 
 package() {
   tar -xf "${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
