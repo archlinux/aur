@@ -1,0 +1,23 @@
+From d81ed49c6a12237af927b4d1551b4e40d607df97 Mon Sep 17 00:00:00 2001
+From: xscriptorcode <preciado.oscar.osorio@gmail.com>
+Date: Thu, 25 Sep 2025 10:28:36 +0200
+Subject: [PATCH] Add support for GNOME 49 (fixes #788, #789)
+
+---
+ metadata.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/metadata.json b/metadata.json
+index d719537b..79ed94ad 100644
+--- a/metadata.json
++++ b/metadata.json
+@@ -4,7 +4,8 @@
+     "shell-version": [
+         "46",
+         "47",
+-        "48"
++        "48",
++        "49"
+     ],
+     "url": "https://github.com/aunetx/blur-my-shell",
+     "uuid": "blur-my-shell@aunetx",
