@@ -1,0 +1,16 @@
+diff --git a/src/visualization/JE802EarthVisualization.java b/src/visualization/JE802EarthVisualization.java
+index 5283de6..71cc11f 100644
+--- a/src/visualization/JE802EarthVisualization.java
++++ b/src/visualization/JE802EarthVisualization.java
+@@ -342,6 +342,11 @@ public class JE802EarthVisualization extends JEmula {
+ 		if (!modelFolder.exists()) {
+ 			modelFolder = new File("jemula802" + File.separator + "resources" + File.separator + "models");
+ 		}
++
++        // load resources from system directory if no local directory
++        if (!modelFolder.exists())
++			modelFolder = new File("/usr/share/jemula802/models");
++
+ 		File filesFolder = new File(this.thePath2Results + File.separator + "kml");
+ 		for (File file : modelFolder.listFiles()) {
+ 			JE802Starter.copyFile(modelFolder.getPath() + File.separator + file.getName(),
