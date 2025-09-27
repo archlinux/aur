@@ -1,9 +1,10 @@
 pkgbase = ipt_netflow
 	pkgdesc = Netflow as netfilter extension
 	pkgver = 2.6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/aabc/ipt-netflow
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = gcc
 	makedepends = gzip
@@ -13,9 +14,11 @@ pkgbase = ipt_netflow
 	depends = iptables
 	source = https://github.com/aabc/ipt-netflow/archive/v2.6.tar.gz
 	source = ipt_netflow.2.6_kernel_6.4.patch
-	source = https://github.com/aabc/ipt-netflow/pull/239.patch
+	source = https://github.com/aabc/ipt-netflow/pull/247.patch
+	source = https://github.com/aabc/ipt-netflow/pull/248.patch
 	sha256sums = 1ae270ddd0e60449159607c2f413604e31cb446beae516777dfeeee5f9b4931d
 	sha256sums = 750034a9383e499d4425939db893eacefd9df570e4ba5cc7244d257b95e90b08
-	sha256sums = c4441ecba040ec5ff068db48d1a475888bc207aa83ad893d98ab6de6a52d9cfa
+	sha256sums = 10ed391d4df46d55211bf0324b39123fa3f27a347d00e037f35b073935d5047f
+	sha256sums = d58b43f86f0866bd32c6d850878179a23927f050690e204d0559be2e5da34610
 
 pkgname = ipt_netflow
