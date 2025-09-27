@@ -80,9 +80,14 @@ makedepends=(
 source=(
 	"${pkgbase}::git+${url}#branch=${_branch}&depth=1&single-branch=${_branch}"
 	"https://raw.githubusercontent.com/BlissOS/device_generic_common/refs/heads/voyager-x86/selinux_diffconfig" # Curently taking selinux_diffconfig from voyager-x86
+	"nftables_diffconfig"
 )
 
-sha256sums=('SKIP' 'SKIP')
+sha256sums=(
+	'SKIP'
+	'SKIP'
+	'43904d9dcc4f09e72f0faae74e135b3c40da7aec3dec56ca006e08153d1c57fa'
+)
 
 export KBUILD_BUILD_HOST=blisslabs
 export KBUILD_BUILD_USER="$pkgbase"
@@ -147,6 +152,7 @@ pkgver() {
 
 prepare() {
 	SELINUX_DIFFCONFIG=$(realpath "${srcdir}/selinux_diffconfig")
+	NFTABLES_DIFFCONFIG=$(realpath "${srcdir}/nftables_diffconfig")
 	KCONFIG="${KERNEL_CONFIG_DIR}/${TARGET_KERNEL_CONFIG}"
 
 	cd "${srcdir}/${pkgbase}"
@@ -156,7 +162,12 @@ prepare() {
 
 	mkdir -p "$KBUILD_OUTPUT"
 
-	cat "$KCONFIG" "$SELINUX_DIFFCONFIG" >"$KBUILD_OUTPUT/.config"
+	# Merge defconfig and diffconfigs
+	./scripts/kconfig/merge_config.sh -m "$KBUILD_OUTPUT/.config" \
+		"$KCONFIG" \
+		"$SELINUX_DIFFCONFIG" \
+		"$NFTABLES_DIFFCONFIG" ||
+		_die "Failed to merge config files"
 
 	### Prepared version
 	"${MAKE_CMD[@]}" -s kernelrelease >"$KBUILD_OUTPUT/version"

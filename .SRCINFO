@@ -28,8 +28,10 @@ pkgbase = linux-zenith
 	options = !lto
 	source = linux-zenith::git+https://github.com/android-generic/kernel-zenith.git#branch=6.15&depth=1&single-branch=6.15
 	source = https://raw.githubusercontent.com/BlissOS/device_generic_common/refs/heads/voyager-x86/selinux_diffconfig
+	source = nftables_diffconfig
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 43904d9dcc4f09e72f0faae74e135b3c40da7aec3dec56ca006e08153d1c57fa
 
 pkgname = linux-zenith-git
 	pkgdesc = The Android™ Generic Project's Zenith linux kernel - 6.15 branch kernel and modules
