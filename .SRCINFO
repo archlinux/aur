@@ -12,7 +12,6 @@ pkgbase = vkbasalt-gui-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = vulkan-icd-loader
-	depends = bash
 	optdepends = vkbasalt: Vulkan post-processing layer (required for functionality)
 	provides = vkbasalt-gui
 	conflicts = vkbasalt-gui-git

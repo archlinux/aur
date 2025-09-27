@@ -9,7 +9,7 @@ pkgdesc="A Qt-based GUI to more easily configure and use vkBasalt on your games"
 arch=('x86_64')
 url="https://github.com/jorge-barroso/vkBasalt-gui"
 license=('GPL-3.0-or-later')
-depends=('qt5-base' 'vulkan-icd-loader' 'bash')
+depends=('qt5-base' 'vulkan-icd-loader')
 makedepends=('cmake' 'ninja' 'git' 'imagemagick' 'qt5-tools')
 optdepends=(
     'vkbasalt: Vulkan post-processing layer (required for functionality)'
@@ -26,12 +26,12 @@ sha256sums=('SKIP'
             '61aed8dfd8c23f4e641c63a9817d426a08abffa372d46dca3c48472a2dd63b94')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}"
 
     # Patch the mainwindow.cpp
     patch -Np1 -i ${srcdir}/qdebug.patch
@@ -44,19 +44,19 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}"
     cmake --build build --config Release
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}"
     
     # Install the application
     DESTDIR="${pkgdir}" cmake --install build
     
     # Install desktop file (create one if not provided upstream)
-    if [ ! -f "${pkgname}.desktop" ]; then
-        cat > "${pkgname}.desktop" << EOF
+    if [ ! -f "${_pkgname}.desktop" ]; then
+        cat > "${_pkgname}.desktop" << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
