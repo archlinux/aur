@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-xvfb
 _orgpkgname=xlibre-xserver-xvfb
 pkgname=$_pkgname-bin
-pkgver=25.0.0.11
+pkgver=25.0.0.12
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org virtual framebuffer X server (binary release)"
 arch=(x86_64)
@@ -32,7 +32,7 @@ depends=(xlibre-server-common-bin 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libunwin
 provides=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
 conflicts=($_pkgname 'xorg-server-xvfb' 'xlibre-server-xvfb')
 
-sha256sums=('0c28e1ac86f8c1ab68d4259c70d7e5e2e3222831da57ced73c12a42c8f7d4804')
+sha256sums=('e463d8b609f7a8f8bff4fc54625d02d91de6c6831dafd17aef32147d3defc363')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
