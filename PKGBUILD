@@ -2,8 +2,8 @@
 
 _pkgname=pi-im
 pkgname="${_pkgname}-wayland"
-pkgver=3.142a
-pkgrel=3
+pkgver=3i
+pkgrel=3.5
 pkgdesc='the XMPP client from hell'
 url="https://forge.sunglocto.net/sunglocto/${_pkgname}"
 arch=('x86_64')
@@ -36,4 +36,4 @@ package() {
     cd "${_pkgname}/"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
-sha256sums=('cd675bb3c4550d6d520129b456da1a7b6fcc60c40e5bf5e09f01a30027a00a7e')
+sha256sums=('c66ee58dd59fb61fd66ecda29683ebf29aa403c557c8bd81da142b9f57290f27')

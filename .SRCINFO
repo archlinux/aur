@@ -1,14 +1,14 @@
 pkgbase = pi-im-wayland
 	pkgdesc = the XMPP client from hell
-	pkgver = 3.142a
-	pkgrel = 3
+	pkgver = 3i
+	pkgrel = 3.5
 	url = https://forge.sunglocto.net/sunglocto/pi-im
 	arch = x86_64
 	license = AGPL
 	makedepends = go
 	provides = pi-im
 	conflicts = pi-im
-	source = https://forge.sunglocto.net/sunglocto/pi-im/archive/3.142a.tar.gz
-	sha256sums = cd675bb3c4550d6d520129b456da1a7b6fcc60c40e5bf5e09f01a30027a00a7e
+	source = https://forge.sunglocto.net/sunglocto/pi-im/archive/3i.tar.gz
+	sha256sums = c66ee58dd59fb61fd66ecda29683ebf29aa403c557c8bd81da142b9f57290f27
 
 pkgname = pi-im-wayland
