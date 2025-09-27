@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/classic-addon-manager/classic-addon-manager"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'npm' 'go-task' 'git' 'wails')
+makedepends=('go' 'npm' 'go-task' 'git')
 source=(
   "git+$url.git"
   "$_pkgname.desktop"

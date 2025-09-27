@@ -10,7 +10,6 @@ pkgbase = classic-addon-manager-git
 	makedepends = npm
 	makedepends = go-task
 	makedepends = git
-	makedepends = wails
 	depends = glibc
 	source = git+https://github.com/classic-addon-manager/classic-addon-manager.git
 	source = classic-addon-manager.desktop
