@@ -1,6 +1,6 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 pkgname=lazyjournal
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='TUI for journalctl, file system logs, as well Docker and Podman containers for quick viewing and filtering with fuzzy find and regex support'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/Lifailon/lazyjournal'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4688f13414c7bd1ba3d4ea7383a03f09391e182f7702c8b007f4b1f0f50161f2')
+sha256sums=('62c5d54b3f2bf2ca240d9522ab75320b96f6304cf83b63a2db936411ec52cd64')
 
 build() {
     cd "${pkgname}-${pkgver}"
