@@ -1,12 +1,13 @@
 pkgbase = wormhole-william
 	pkgdesc = A golang implementation of magic wormhole. It provides secure end-to-end encrypted file transfers between computers
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/psanford/wormhole-william
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
+	conflicts = wormhole-william-bin
 	source = https://github.com/psanford/wormhole-william/archive/v1.0.8.tar.gz
 	sha256sums = 42490f3c7e383d7d410e68a83fc18de1a5e9373934a9d71064e10948197759d1
 

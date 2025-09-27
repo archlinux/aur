@@ -2,9 +2,10 @@
 
 pkgname=wormhole-william
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A golang implementation of magic wormhole. It provides secure end-to-end encrypted file transfers between computers'
 arch=('x86_64')
+conflicts=('wormhole-william-bin')
 url="https://github.com/psanford/${pkgname}"
 license=('MIT')
 depends=('glibc')
