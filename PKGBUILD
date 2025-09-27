@@ -21,7 +21,7 @@ prepare() {
 build() {
   cd vinecopulib-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DVINECOPULIB_SHARED_LIB=ON -DBUILD_TESTING=OFF -DOPT_ASAN=OFF -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
+    ${_arch}-cmake -DVINECOPULIB_PRECOMPILED=ON -DBUILD_TESTING=OFF -DOPT_ASAN=OFF -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
     cmake --build build-${_arch}
   done
 }
