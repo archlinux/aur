@@ -3,7 +3,7 @@
 
 _name=ydata-profiling
 pkgname=python-ydata-profiling
-pkgver=4.16.1
+pkgver=4.17.0
 pkgrel=1
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=(any)
@@ -50,11 +50,15 @@ makedepends=(
   python-wheel
 )
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('a4dce447c17e3318ff0371e43e20f38b5d8c7a5c81d774075d70710ae5e1f9d7598b1133bd4f97b80c3ea451bf15a033346bb89bafb66a1ac63366e8934ea6da')
+b2sums=('f6c9ec97bb51035d65c102f68b29abfe7a177aee176fe65d2f6bfa89690b09ad9f82f7905bad01b4e77b56cc8d3e7a37cf43aec8bfbd547fb10f1e120c9e02c0')
 
 prepare() {
   # fix version fallback (the git snapshot does not contain the VERSION file)
   sed -i 's|version = "0.0.dev0"|version = "'$pkgver'"|' $_name-$pkgver/setup.py
+
+  # drop version constraints for setuptools
+  sed -i 's|"setuptools>=72.0.0,<80.0.0"|"setuptools"|' $_name-$pkgver/pyproject.toml
+  sed -i 's|"setuptools-scm>=8.0.0,<9.0.0"|"setuptools-scm"|' $_name-$pkgver/pyproject.toml
 }
 
 build() {
