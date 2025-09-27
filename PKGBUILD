@@ -13,27 +13,29 @@ url="https://gitlab.com/cobib/${pkgname}"
 makedepends=(
     'python-build'
     'python-installer'
-    'python-wheel'
     'python-setuptools'
+    'python-wheel'
     'ruby-ronn-ng'
 )
 depends=(
     'python'
-    'python-bibtexparser'
     'python-beautifulsoup4'
+    'python-bibtexparser'
+    'python-linkify-it-py'
     'python-lxml'
-    'python-ruamel-yaml'
+    'python-markdown-it-py'
+    'python-mdit_py_plugins'
     'python-pylatexenc'
     'python-requests'
     'python-requests-oauthlib'
-    'python-text-unidecode'
     'python-rich'
+    'python-ruamel-yaml'
+    'python-text-unidecode'
     'python-textual'
-    'python-markdown-it-py'
-    'python-mdit_py_plugins'
-    'python-linkify-it-py'
 )
-optdepends=('python-regex')
+optdepends=(
+    'python-regex'
+)
 source=("https://gitlab.com/cobib/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('0526f2cf0078eacae4355fcfbd943bf544d858e30d534a31e7da04cb97c466199486d22341f35d34b9b70da1129853b4806f884caac811803f28774339325e1f')
 
