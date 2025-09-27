@@ -2,3 +2,4 @@
 source = "github"
 github = "coin-or/SYMPHONY"
 use_latest_release = "true"
+prefix = "releases/"
