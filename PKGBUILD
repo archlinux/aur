@@ -46,9 +46,11 @@ package() {
 
     # Find the main binary (assume AppRun or hyprupld)
     if [ -f "squashfs-root/AppRun" ]; then
-      install -Dm755 "squashfs-root/AppRun" "$pkgdir/usr/bin/$base_name"
+      install -Dm755 "squashfs-root/AppRun" "$pkgdir/usr/bin/hyprupld"
     elif [ -f "squashfs-root/$base_name" ]; then
-      install -Dm755 "squashfs-root/$base_name" "$pkgdir/usr/bin/$base_name"
+      install -Dm755 "squashfs-root/$base_name" "$pkgdir/usr/bin/hyprupld"
+    elif [ -f "squashfs-root/hyprupld" ]; then
+      install -Dm755 "squashfs-root/hyprupld" "$pkgdir/usr/bin/hyprupld"
     else
       echo "Could not find main binary in AppImage $appimage"
       exit 1
