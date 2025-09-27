@@ -1,19 +1,16 @@
 pkgbase = shiori-bin
-	pkgdesc = Simple bookmark manager built with Go (only the pre-compiled binary).
+	pkgdesc = Simple bookmark manager built with Go
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/go-shiori/shiori
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	provides = shiori
 	conflicts = shiori
-	source_x86_64 = https://github.com/go-shiori/shiori/releases/download/v1.8.0/shiori_Linux_x86_64_1.8.0.tar.gz
+	source_x86_64 = shiori-x86_64-1.8.0.tar.gz::https://github.com/go-shiori/shiori/releases/download/v1.8.0/shiori_Linux_x86_64_1.8.0.tar.gz
 	sha256sums_x86_64 = 20552c4d91c720dc9786d73a7f5b68abd9ed32addb177861f89ea5d4e5937d3f
-	source_armv7h = https://github.com/go-shiori/shiori/releases/download/v1.8.0/shiori_Linux_arm_1.8.0.tar.gz
-	sha256sums_armv7h = a886e6b3e7171075c03e8ed880d9a035f21712d277a18ba497b1cce9e5ca5106
-	source_aarch64 = https://github.com/go-shiori/shiori/releases/download/v1.8.0/shiori_Linux_aarch64_1.8.0.tar.gz
+	source_aarch64 = shiori-aarch64-1.8.0.tar.gz::https://github.com/go-shiori/shiori/releases/download/v1.8.0/shiori_Linux_aarch64_1.8.0.tar.gz
 	sha256sums_aarch64 = ebfb94cc5ab955f379ec3af0b7194191f3989096ad37e7cb59e9ef3c12528fba
 
 pkgname = shiori-bin
