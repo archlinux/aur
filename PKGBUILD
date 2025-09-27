@@ -4,7 +4,7 @@
 # Contributor: Sean Enck <enckse@gmail.com>
 # Contributor: NeoTheFox <soniczerops@gmail.com>
 pkgname=python-telegram-bot
-pkgver=22.4
+pkgver=22.5
 pkgrel=1
 pkgdesc="A library that provides a Python interface to the Telegram Bot API"
 url="https://github.com/${pkgname}/${pkgname}"
@@ -22,7 +22,7 @@ optdepends=('python-cachetools: for use a variant of LRUCache'
   'python-socksio: for SOCKS proxy support'
   'python-tornado: for webhooks support')
 source=(${url}/releases/download/v${pkgver}/${pkgname//-/_}-${pkgver}.tar.gz)
-sha512sums=('b7965b540b2f0a45804be42c0b4ee966133911cb5e82e8f37ee9c8ddfa81c8bbba24a234b8aa985f9ef7a1dc71575210fba97f19f37385cf93dff2ab2f37e9ff')
+sha512sums=('091136c1a49532ca4bb03b738e6dd4dafece2a6501b6e7c32ec6d9e087fe57533450605c0be2a515d5c2c978b5d2c0719db5f428777e660386de801195525755')
 
 build() {
   cd ${pkgname//-/_}-${pkgver}
