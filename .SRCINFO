@@ -1,6 +1,6 @@
 pkgbase = speedynote-bin
 	pkgdesc = A simple note app with good performance and PDF import support
-	pkgver = 0.9.3.2
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/alpha-liu-01/SpeedyNote
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = speedynote-bin
 	provides = speedynote
 	conflicts = speedynote
 	conflicts = speedynote-git
-	source = speedynote-bin-0.9.3.2.deb::https://github.com/alpha-liu-01/SpeedyNote/releases/download/v0.9.3-2/speedynote_0.9.3-2_amd64.deb
-	source = LICENSE-0.9.3-2::https://raw.githubusercontent.com/alpha-liu-01/SpeedyNote/v0.9.3-2/LICENSE
-	sha256sums = 8ce736048781fc3f190c3e8d7cdc66d0aeaaf409cfe071e27c7534b31f52fd40
+	source = speedynote-bin-0.10.0.deb::https://github.com/alpha-liu-01/SpeedyNote/releases/download/v0.10.0/speedynote_0.10.0-1_amd64.deb
+	source = LICENSE-0.10.0::https://raw.githubusercontent.com/alpha-liu-01/SpeedyNote/v0.10.0/LICENSE
+	sha256sums = 0a03ce4fdaafdedf036c81f5c9644acf927f67a6165aa31c6b7053cbf1db13c8
 	sha256sums = 36273406b3d0ea68274d369dcf48167a3cef8660beddb30f5dfbee9ba75a45d7
 
 pkgname = speedynote-bin
