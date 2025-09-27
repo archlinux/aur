@@ -2,7 +2,7 @@
 
 _pkgname='sshto'
 pkgname="${_pkgname}-git"
-pkgver=_pkgver
+pkgver=r222.c5b68a9-2
 pkgrel=1
 pkgdesc='TUI to manage your ssh connections'
 arch=('any')
@@ -14,14 +14,13 @@ provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-_pkgver() {
-  cd "${_pkgname}"
-  printf "%s" "$(git rev-parse --short HEAD)"
-}
-
+# getting pkgver by tags or fallback to revisions.shortcommit hashes
 pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
