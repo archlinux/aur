@@ -1,6 +1,6 @@
 pkgbase = skylobby-techa-git
 	pkgdesc = Spring RTS games client lobby
-	pkgver = 1.0.2techa.r0.g12b8047
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/tizbac/skylobby
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = skylobby-techa-git
 	makedepends = jdk21-openjdk
 	depends = sh
 	depends = jre21-openjdk
-	provides = skylobby-techa=1.0.2techa.r0.g12b8047
+	provides = skylobby-techa=1.0.3
 	conflicts = skylobby
 	conflicts = skylobby-git
 	conflicts = skylobby-techa

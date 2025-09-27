@@ -2,12 +2,12 @@
 # template start; name=git; version=1;
 # template start; name=git-source; version=1;
 pkgname=skylobby-techa-git
-pkgver=1.0.2techa.r0.g12b8047
+pkgver=1.0.3.r0.gf3add75
 pkgdesc="Spring RTS games client lobby"
 pkgrel=1
 arch=('any')
 makedepends+=('git' 'clojure' 'jdk21-openjdk')
-depends+=('sh' 'jre21-openjdk')
+depends+=('sh' 'jre21-openjdk' 'libx11' 'libxxf86vm' 'libgl' 'xorg-xwayland')
 conflicts+=('skylobby' 'skylobby-git')
 license=('MIT')
 url="https://github.com/tizbac/skylobby"
