@@ -3,9 +3,9 @@
 # Contributor: aperez
 
 pkgname=tree-sitter-cpp
-pkgver=0.23.1
+pkgver=0.23.4
 pkgrel=1
-dep_c_ver=0.23.1
+dep_c_ver=0.23.4
 pkgdesc="C++ grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-cpp"
@@ -15,8 +15,8 @@ depends=('gcc-libs')
 makedepends=('tree-sitter' 'tree-sitter-cli' nodejs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
        "tree-sitter-c-$dep_c_ver.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/refs/tags/v$dep_c_ver.tar.gz")
-sha256sums=('3a7b51370ca7116fdc7e2d5ab8753e472072087fcf436210e6089ef7669220cd'
-           '8f90f481c28a45c7dcba84d05fc07853df043ff813868cdfa074a3835e89467a')
+sha256sums=('7a2c55afe3028f4105f25762ea58cc16537d1f5a1dcd9cca90410b3cd5d46051'
+            'b66c5043e26d84e5f17a059af71b157bcf202221069ed220aa1696d7d1d28a7a')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver"/node_modules
