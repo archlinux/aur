@@ -11,13 +11,15 @@ conflicts=('p4merge')
 source=("https://www.perforce.com/downloads/perforce/r$pkgver/bin.linux26x86_64/p4v.tgz"
         "p4admin.desktop"
         "p4merge.desktop")
-sha256sums=('3822deb566d8a1ae00859218bca371ad110c86a81a21757a0a50cc1881b140e5'
+sha256sums=('41b19e0f4617fed5ffacfb221f06e57cc9e36e0155a2b06f98ce9e6d63091add'
             'SKIP'
             'SKIP')
 
 package() {
 	mkdir -p "$pkgdir/opt"
 	cp -r p4v-* "$pkgdir/opt/p4merge"
+	ln -s $(basename "$pkgdir"/opt/p4merge/lib/libcrypto.so.*) "$pkgdir/opt/p4merge/lib/libcrypto.so"
+	ln -s $(basename "$pkgdir"/opt/p4merge/lib/libssl.so.*) "$pkgdir/opt/p4merge/lib/libssl.so"
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/p4merge/bin/p4admin "$pkgdir/usr/bin/p4admin"
