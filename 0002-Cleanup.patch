@@ -1,4 +1,4 @@
-From 729a976f0987c3956f38b328f8f37ad407423b57 Mon Sep 17 00:00:00 2001
+From 1851368bd10a135059cd2bbc47f3eda10015c91f Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -537,7 +537,7 @@ index d2f6a5f70..b3eec9ea2 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 05d3b69a9..0155a86d6 100644
+index 95b34d456..da70973a2 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 @@ -59,9 +59,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
@@ -547,9 +547,9 @@ index 05d3b69a9..0155a86d6 100644
 -import org.jackhuang.hmcl.upgrade.RemoteVersion;
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
+ import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
- 
 @@ -84,14 +81,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(popupWrapper);
  
@@ -656,7 +656,7 @@ index 05d3b69a9..0155a86d6 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -271,7 +180,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -273,7 +182,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -665,7 +665,7 @@ index 05d3b69a9..0155a86d6 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -284,40 +193,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -286,40 +195,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
@@ -706,7 +706,7 @@ index 05d3b69a9..0155a86d6 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -346,19 +221,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -348,19 +223,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          );
      }
  
@@ -726,7 +726,7 @@ index 05d3b69a9..0155a86d6 100644
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -376,30 +238,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -378,30 +240,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
