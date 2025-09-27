@@ -1,6 +1,6 @@
 pkgbase = autotag-bin
 	pkgdesc = Automatic tagging and renaming of TV show episodes and movies
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/jamerst/AutoTag
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = autotag-bin
 	provides = autotag
 	conflicts = autotag
 	options = !strip
-	source = autotag-bin-4.0.1_linux-x64.zip::https://github.com/jamerst/AutoTag/releases/download/v4.0.1/autotag-4.0.1_linux-x64.zip
-	source = autotag-bin-4.0.1_linux-x64.LICENSE::https://raw.githubusercontent.com/jamerst/AutoTag/refs/tags/v4.0.1/LICENSE
-	b2sums = 4e372fa35cdbc3d983c31cf0a25a4a510dc313b5fbe41e344cd5615b5460311ec33c27eef95494863ba0caa3666bef2bb9d7bcae7094b88018bf618ad0a1e7e3
+	source = autotag-bin-4.0.2_linux-x64.zip::https://github.com/jamerst/AutoTag/releases/download/v4.0.2/autotag-4.0.2_linux-x64.zip
+	source = autotag-bin-4.0.2_linux-x64.LICENSE::https://raw.githubusercontent.com/jamerst/AutoTag/refs/tags/v4.0.2/LICENSE
+	b2sums = a474b72cfb2e34051b82aabc70f87cc13f7dc941f3eff309b0b234629e375ec8eb77dc8673e7ab3d009de350817da971f5913f12c436c04c2664558b366c9aad
 	b2sums = d07bd39d4a2fb2574463c9f3b17e4b9075e8e5169a19d7499a0ed12e91b24075f6e33eba723b57019e43e261b8abb21d89b1e2f156c1d7170e4605e545302d10
 
 pkgname = autotag-bin
