@@ -2,7 +2,7 @@
 pkgname=deadlock-modmanager-git
 _pkgname=${pkgname%-git}
 pkgdesc='A mod manager for the Valve game Deadlock (latest git build)'
-pkgver=0.8.2.r6.g885b30b
+pkgver=0.8.2.85.34a389b
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/deadlock-mod-manager/deadlock-mod-manager"
@@ -21,7 +21,7 @@ options=('!lto')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --tags --long --abbrev=7 --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match="v*" | sed 's/^v//' | sed 's/\([^-]*\)-\([0-9]*\)-g\([0-9a-f]*\)/\1.\2.\3/' | sed 's/-/./g'
 }
 
 prepare() {
