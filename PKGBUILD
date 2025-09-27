@@ -4,8 +4,8 @@ pkgname=snow-git
 _name=Snow
 groups=(snow-lang-git)
 pkgver=0.10.0.r0.gd5161d2
-pkgrel=2
-_java=24
+pkgrel=4
+_java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/snow"
@@ -15,7 +15,7 @@ depends=(
     zlib
 )
 makedepends=(
-    jdk${_java}-graalvm-ee-bin
+    jdk${_java}-graalvm-bin
     'git'
     'maven'
     'musl'
