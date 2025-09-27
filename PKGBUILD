@@ -20,7 +20,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Install binary
-  install -Dm755 echo-meter "$pkgdir/usr/sbin/echo-meter"
+  install -Dm755 echo-meter "$pkgdir/usr/bin/echo-meter"
 
   # Install assets
   install -d "$pkgdir/usr/share/echo-meter"
