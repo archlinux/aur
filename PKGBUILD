@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-xephyr
 _orgpkgname=xlibre-xserver-xephyr
 pkgname=$_pkgname-bin
-pkgver=25.0.0.11
+pkgver=25.0.0.12
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org nested X server that runs as an X application (binary release)"
 arch=(x86_64)
@@ -33,7 +33,7 @@ depends=(xlibre-server-common-bin 'X-ABI-XINPUT_VERSION=26.0' libxfont2 libgl li
 provides=($_pkgname 'xorg-server-xephyr' 'xlibre-server-xephyr')
 conflicts=($_pkgname 'xorg-server-xephyr' 'xlibre-server-xephyr')
 
-sha256sums=('9f6d7648e8e22974cdd264ad31ab72cc3a94419194b27ba563359f4e0276caa3')
+sha256sums=('ce6bd3f39071044bc27e655204985bb801f78f1c666b33da9dbed4f378622c63')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
