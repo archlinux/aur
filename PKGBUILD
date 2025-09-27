@@ -3,17 +3,139 @@
 # Contributor: sukanka <su975853527[AT]gmail.com>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
-_product="MATLAB"
-_name="$(echo "${_product}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | tr -d '()')"
-pkgbase="${_name}"
+# disable package compression (optional but highly recommended)
+# PKGEXT='.pkg.tar'
+# disable unneeded products (optional but highly recommended)
+declare -Ag _products=(
+  [5g_toolbox]="5G Toolbox"
+  [autosar_blockset]="AUTOSAR Blockset"
+  [aerospace_blockset]="Aerospace Blockset"
+  [aerospace_toolbox]="Aerospace Toolbox"
+  [antenna_toolbox]="Antenna Toolbox"
+  [audio_toolbox]="Audio Toolbox"
+  [automated_driving_toolbox]="Automated Driving Toolbox"
+  [bioinformatics_toolbox]="Bioinformatics Toolbox"
+  [bluetooth_toolbox]="Bluetooth Toolbox"
+  [c2000_microcontroller_blockset]="C2000 Microcontroller Blockset"
+  [communications_toolbox]="Communications Toolbox"
+  [computer_vision_toolbox]="Computer Vision Toolbox"
+  [control_system_toolbox]="Control System Toolbox"
+  [curve_fitting_toolbox]="Curve Fitting Toolbox"
+  [dds_blockset]="DDS Blockset"
+  [dsp_hdl_toolbox]="DSP HDL Toolbox"
+  [dsp_system_toolbox]="DSP System Toolbox"
+  # [data_acquisition_toolbox]="Data Acquisition Toolbox" # Windows only!
+  [database_toolbox]="Database Toolbox"
+  [datafeed_toolbox]="Datafeed Toolbox"
+  [deep_learning_hdl_toolbox]="Deep Learning HDL Toolbox"
+  [deep_learning_toolbox]="Deep Learning Toolbox"
+  [econometrics_toolbox]="Econometrics Toolbox"
+  [embedded_coder]="Embedded Coder"
+  [financial_instruments_toolbox]="Financial Instruments Toolbox"
+  [financial_toolbox]="Financial Toolbox"
+  [fixed-point_designer]="Fixed-Point Designer"
+  [fuzzy_logic_toolbox]="Fuzzy Logic Toolbox"
+  [gpu_coder]="GPU Coder"
+  [global_optimization_toolbox]="Global Optimization Toolbox"
+  [hdl_coder]="HDL Coder"
+  [hdl_verifier]="HDL Verifier"
+  [image_acquisition_toolbox]="Image Acquisition Toolbox"
+  [image_processing_toolbox]="Image Processing Toolbox"
+  [industrial_communication_toolbox]="Industrial Communication Toolbox"
+  [instrument_control_toolbox]="Instrument Control Toolbox"
+  [lte_toolbox]="LTE Toolbox"
+  [lidar_toolbox]="Lidar Toolbox"
+  [coder]="MATLAB Coder"
+  [compiler]="MATLAB Compiler"
+  [compiler_sdk]="MATLAB Compiler SDK"
+  [parallel_server]="MATLAB Parallel Server"
+  [production_server]="MATLAB Production Server"
+  [report_generator]="MATLAB Report Generator"
+  [test]="MATLAB Test"
+  [web_app_server]="MATLAB Web App Server"
+  [mapping_toolbox]="Mapping Toolbox"
+  [medical_imaging_toolbox]="Medical Imaging Toolbox"
+  [mixed-signal_blockset]="Mixed-Signal Blockset"
+  [model_predictive_control_toolbox]="Model Predictive Control Toolbox"
+  [model-based_calibration_toolbox]="Model-Based Calibration Toolbox"
+  [motor_control_blockset]="Motor Control Blockset"
+  [navigation_toolbox]="Navigation Toolbox"
+  [optimization_toolbox]="Optimization Toolbox"
+  [parallel_computing_toolbox]="Parallel Computing Toolbox"
+  [partial_differential_equation_toolbox]="Partial Differential Equation Toolbox"
+  [phased_array_system_toolbox]="Phased Array System Toolbox"
+  [polyspace_bug_finder]="Polyspace Bug Finder"
+  [polyspace_bug_finder_server]="Polyspace Bug Finder Server"
+  [polyspace_code_prover]="Polyspace Code Prover"
+  [polyspace_code_prover_server]="Polyspace Code Prover Server"
+  [polyspace_test]="Polyspace Test"
+  [powertrain_blockset]="Powertrain Blockset"
+  [predictive_maintenance_toolbox]="Predictive Maintenance Toolbox"
+  [rf_blockset]="RF Blockset"
+  [rf_pcb_toolbox]="RF PCB Toolbox"
+  [rf_toolbox]="RF Toolbox"
+  [ros_toolbox]="ROS Toolbox"
+  [radar_toolbox]="Radar Toolbox"
+  [reinforcement_learning_toolbox]="Reinforcement Learning Toolbox"
+  [requirements_toolbox]="Requirements Toolbox"
+  [risk_management_toolbox]="Risk Management Toolbox"
+  [robotics_system_toolbox]="Robotics System Toolbox"
+  [robust_control_toolbox]="Robust Control Toolbox"
+  [satellite_communications_toolbox]="Satellite Communications Toolbox"
+  [sensor_fusion_and_tracking_toolbox]="Sensor Fusion and Tracking Toolbox"
+  [serdes_toolbox]="SerDes Toolbox"
+  [signal_integrity_toolbox]="Signal Integrity Toolbox"
+  [signal_processing_toolbox]="Signal Processing Toolbox"
+  [simbiology]="SimBiology"
+  [simevents]="SimEvents"
+  [simscape]="Simscape"
+  [simscape_battery]="Simscape Battery"
+  [simscape_driveline]="Simscape Driveline"
+  [simscape_electrical]="Simscape Electrical"
+  [simscape_fluids]="Simscape Fluids"
+  [simscape_multibody]="Simscape Multibody"
+  [simulink]="Simulink"
+  [simulink_3d_animation]="Simulink 3D Animation"
+  [simulink_check]="Simulink Check"
+  [simulink_coder]="Simulink Coder"
+  [simulink_compiler]="Simulink Compiler"
+  [simulink_control_design]="Simulink Control Design"
+  [simulink_coverage]="Simulink Coverage"
+  [simulink_design_optimization]="Simulink Design Optimization"
+  [simulink_design_verifier]="Simulink Design Verifier"
+  [simulink_desktop_real-time]="Simulink Desktop Real-Time"
+  [simulink_fault_analyzer]="Simulink Fault Analyzer"
+  [simulink_plc_coder]="Simulink PLC Coder"
+  [simulink_real-time]="Simulink Real-Time"
+  [simulink_report_generator]="Simulink Report Generator"
+  [simulink_test]="Simulink Test"
+  [soc_blockset]="SoC Blockset"
+  # [spreadsheet_link]="Spreadsheet Link" # Windows only!
+  [stateflow]="Stateflow"
+  [statistics_and_machine_learning_toolbox]="Statistics and Machine Learning Toolbox"
+  [symbolic_math_toolbox]="Symbolic Math Toolbox"
+  [system_composer]="System Composer"
+  [system_identification_toolbox]="System Identification Toolbox"
+  [text_analytics_toolbox]="Text Analytics Toolbox"
+  [uav_toolbox]="UAV Toolbox"
+  [vehicle_dynamics_blockset]="Vehicle Dynamics Blockset"
+  [vehicle_network_toolbox]="Vehicle Network Toolbox"
+  [vision_hdl_toolbox]="Vision HDL Toolbox"
+  [wlan_toolbox]="WLAN Toolbox"
+  [wavelet_toolbox]="Wavelet Toolbox"
+  [wireless_hdl_toolbox]="Wireless HDL Toolbox"
+  [wireless_testbench]="Wireless Testbench"
+)
+
+pkgbase="matlab"
 pkgname=(
   "${pkgbase}"
   "java-${pkgbase}"
   "${pkgbase}-gcc"
   "${pkgbase}-gcc-fortran"
 )
-pkgver=R2025a+25.1.0.2973910
-_release="${pkgver%%+*}"
+pkgver=R2025b+25.2.0.2998904
+_release="${pkgver%+*}"
 _version="${pkgver##*+}"
 pkgrel=1
 epoch=1
@@ -21,252 +143,25 @@ pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
 url="https://www.mathworks.com/products/matlab.html"
 license=('custom:MATLAB EULA')
-depends=(
-  # https://github.com/mathworks-ref-arch/container-images/tree/main/matlab-deps
-  # Arch                  # Debian / RHEL                  Notes
-  'alsa-lib'              # libasound2t64
-  'ca-certificates'       # ca-certificates
-  'cairo'                 # libcairo-gobject2
-                          # libcairo2
-  # 'debianutils'         # debianutils                    not required on either Arch or RHEL
-  'fontconfig'            # libfontconfig1
-  'fribidi'               # libfribidi0
-  'gcc-libs'              # libatomic1
-  'gdk-pixbuf2'           # libgdk-pixbuf-2.0-0
-  'glib2'                 # libglib2.0-0t64
-  'glibc'                 # libc6
-  # 'glibc-locales'       # locales                        optdepends
-  'gst-plugins-base-libs' # libgstreamer-plugins-base1.0-0 
-  'gstreamer'             # libgstreamer1.0-0
-  # 'gtk3'                # libgtk-3-0t64                  not linked, not referenced
-  'libcap'                # libcap2
-  # 'libcups'             # libcups2t64                    optdepends
-  'libdrm'                # libdrm2
-  'libgl'                 # libgl1
-  'libice'                # libice6
-  # 'libltdl'             # libltdl7                       not linked, not referenced
-  # 'libprocps'           # procps                         not linked, not referenced
-  'libsndfile'            # libsndfile1
-  'libtirpc'              # libtirpc3t64
-  # 'libuhd'              # libuhd4.6.0-dpdk               not linked, not referenced
-  'libxcomposite'         # libxcomposite1
-  # 'libxcrypt-compat'    # libcrypt1                      apr-util, subversion
-  'libxcursor'            # libxcursor1
-  'libxdamage'            # libxdamage1
-  'libxfixes'             # libxfixes3
-  # 'libxfont2'           # libxfont2                      not linked, not referenced
-  'libxft'                # libxft2
-  'libxinerama'           # libxinerama1
-  'libxrandr'             # libxrandr2
-  'libxt'                 # libxt6t64
-  # 'libxtst'             # libxtst6                       not linked, not referenced
-  'libxxf86vm'            # libxxf86vm1                    TODO
-  'make'                  # make                           referenced by ?
-  'mesa'                  # libgbm1
-  'net-tools'             # net-tools                      not linked, referecned by libcef.so
-  'nspr'                  # libnspr4
-  'nss'                   # libnss3
-  # 'numactl'             # libnuma1                       not linked, not referenced
-  # 'opa-psm2'            # libpsm2-2                      not linked, not referenced
-  # 'openucx'             # libucx0                        not linked, not referenced
-  'pam'                   # libpam0g
-  'pango'                 # libpango-1.0-0
-                          # libpangocairo-1.0-0 
-                          # libpangoft2-1.0-0
-  'pixman'                # libpixman-1-0
-  # 'rdma-core'           # ibverbs-providers              not linked, not referenced
-                          # libibverbs1 
-                          # librdmacm1t64 
-  'sudo'                  # sudo                           referenced by ?
-  'unzip'                 # unzip                          referenced by ?
-  'util-linux-libs'       # libuuid1
-  # 'wayland'             # libwayland-client0             optdepends
-  'which'                 # which.x86_64                   referenced by ?
-  # 'xorg-setxkbmap'      # x11-xkb-utils                  not linked, not referenced
-  # 'xorg-xkbbell'                                         not linked, not referenced, doesn't exist
-  # 'xorg-xkbcomp'                                         not linked, not referenced
-  # 'xorg-xkbevd'                                          not linked, not referenced
-  # 'xorg-xkbprint'                                        not linked, not referenced
-  # 'xorg-xkbvleds'                                        not linked, not referenced, doesn't exist
-  # 'xorg-xkbwatch'                                        not linked, not referenced, doesn't exist
-  'zlib'                  # zlib1g
-
-  # removed manually
-  'at-spi2-core'
-  'fluxbox'
-  'gtk2'
-  # 'libgl'
-  'glu'
-  # 'gcc-libs'
-  'hunspell-en_us'
-  #'openjade' TODO
-  'xorg-server-xvfb'
-
-  'sh'
+makedepends=(
+  'gendesk'
+  'gnutls3.8.9'
+  'inotify-tools'
+  'matlab-mpm'
+  # 'patchelf'
 )
-makedepends=('gendesk' 'inotify-tools' "matlab-mpm-release>=${_release}") # 'patchelf'
 source=("matlab_jenv.hook")
 sha256sums=('396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51')
 
-declare -Ag _deps=(
-  # replace depends
-  # paid?   MATLAB
-  # [ahformatter]="libAHCGM libAHCommon libAHFontService libAHGraphicService libAHMathML libAHPDFLib libAHRasterizer libAHskia libAHSVG libOOXMLCreator libPDFCreator libPDFLinearizer libPDFRes libPDFToolPage libPSCreator libSVGCreator libXfoCommon libXfoEngine libXfoFont libXfoGraphic libXfoHyphen libXfoInterface libXfoRender libXfoText libXfoTrans libXPSCreator" # 7.4
-  # version MATLAB
-  # [antlr4-runtime]="libantlr4-runtime" # 4.9.1
-  # yes     MATLAB, apr-util, subversion
-  [apr]="libapr-1" # 0.7.5
-  # yes     MATLAB, subversion
-  [apr-util]="libaprutil-1" # 0.6.1
-  # version MATLAB
-  # [avro-cpp]="libavrocpp" # 1.11.1
-  # version MATLAB, aws-sdk-cpp-s3
-  # [aws-sdk-cpp-core]="libaws-cpp-sdk-core" # no
-  # version MATLAB
-  # [aws-sdk-cpp-s3]="libaws-cpp-sdk-s3 libaws-cpp-sdk-transfer" # no
-  # yes     MATLAB
-  [cfitsio9]="libcfitsio" # 9.4.1.0
-  # version MATLAB
-  # [cmark]="libcmark" # 0.30.2
-  # NO      MATLAB, aws-sdk-cpp-s3
-  # [curl]="libcurl" # 4.8.0 incompatible ABI
-  # version MATLAB
-  # [dbus]="libdbus-1" # 3.34.0
-  # version MATLAB
-  # [expat]="libexpat" # 1.9.3
-  # yes     MATLAB
-  [freetype2]="libfreetype" # 6.18.3
-  # ?       MATLAB, hdf4-eos?
-  # [gcptc]="libGctp" # 0.0.0
-  # name?   MATLAB
-  # [giflib]="libgif" # 7.2.0 called libgiflib?
-  # version MATLAB, mpfr1
-  # [gmp4]="libgmp" # 3.4.1
-  # version MATLAB, hdf4-eos?
-  # [hdf4]="libdf libmfhdf" # 0.0.0
-  # version MATLAB
-  # [hdf4-eos]="libhdfeos" # ? 0.0.0
-  # version MATLAB
-  # [hdf5]="libhdf5 libhdf5_hl" # 310.0.4
-  # yes     MATLAB
-  [hunspell]="libhunspell-1.7" # 0.0.1
-  # no      yes    ahformatter
-  # [icu74]="libicudata libicui18n libicuio libicutest libicutu libicuuc" # incompatible ABI
-  # version yes    hdf5
-  # [libaec]="libaec libsz" # 0.1.2 2.0.1
-  # version yes    ?
-  # [libarchive]="libarchive" # 13.7.7
-  # version no     no ???
-  # [libbsd]="libbsd" # 0.8.4
-  # version MATLAB
-  # [libgit2]="libgit2" # 1.9.0
-  # version MATLAB
-  # [libpng]="libpng16" # 16.44.0
-  # yes     MATLAB
-  [libsm]="libSM" # 6.0.1
-  # yes     MATLAB, aws-cpp-sdk-s3, libgit2
-  [libssh2]="libssh2" # 1.0.1
-  # yes     MATLAB
-  [libtiff]="libtiff"
-  # version MATLAB
-  # [libunwind]="libunwind" # 8.0.1
-  # version MATLAB
-  # [libutf8proc2]=libutf8proc # 2.5.0
-  # yes     MATLAB
-  [libx11]="libX11 libX11-xcb" # 6.4.0 1.0.0
-  # yes     MATLAB
-  [libxau]="libXau" # 6.0.0
-  # yes     MATLAB
-  [libxcb]="libxcb-shm libxcb-xinerama libxcb libxcb-shape libxcb-sync libxcb-xkb libxcb-xfixes libxcb-randr libxcb-render"
-  # yes     MATLAB
-  [libxdmcp]="libXdmcp" # 6.0.0
-  # yes     MATLAB
-  [libxext]="libXext" # 6.4.0
-  # yes     MATLAB
-  [libxi]="libXi" # 6.1.0
-  # yes     MATLAB
-  [libxkbcommon]="libxkbcommon" # 0.0.0
-  # yes     MATLAB
-  [libxkbcommon-x11]="libxkbcommon-x11" # 0.0.0
-  # yes     MATLAB
-  [libxml2-legacy]="libxml2" # 2.13.4
-  # yes     MATLAB
-  [libxss]="libXss" # 1.0.0
-  # yes     MATLAB
-  [libxrender]="libXrender" # 1.3.0
-  # yes     MATLAB
-  [libxslt]="libxslt libexslt" # 1.1.42 0.8.23
-  # no      MATLAB
-  # [minizip-ng]="libminizip-ng" # 4.0.4
-  # version MATLAB
-  # [mpfr1]="libmpfr" # 1.2.2
-  # yes     MATLAB
-  [nanomsg]="libnanomsg" # 6.0.1
-  # version MATLAB
-  # [onetbb]="libtbbmalloc libtbb" # 2.7 12.7
-  # version MATLAB
-  # [openscenegraph]="libosgDB libosgFX libosgGA libosgManipulator libosgParticle libosgShadow libosgSim libosg libosgTerrain libosgText libosgUtil libosgViewer libosgVolume libOpenThreads" # 3.4.0 3.3.0
-  # version MATLAB
-  # [poco]="libPocoCrypto libPocoFoundation libPocoJSON libPocoNet libPocoNetSSL libPocoUtil libPocoXML libPocoZip" # 94
-  # version MATLAB
-  # [podofo-0.9]="libpodofo" # 0.9.6
-  # yes     MATLAB
-  [polyclipping]="libpolyclipping" # no
-  # yes?    MATLAB
-  # [portaudio]="libportaudio" # 2.0.0
-  # version MATLAB, protobuf
-  # [protobuf]="libprotobuf3 libprotoc" # 3.21.9.0
-  # yes     MATLAB
-  [qt5-base]="libQt5OpenGL libQt5Sql libQt5Test libQt5XcbQpa libQt5Core libQt5Gui libQt5Core libQt5PrintSupport libQt5Network libQt5Widgets libQt5DBus"
-  # yes     MATLAB
-  [qt5-gamepad]="libQt5Gamepad"
-  # yes     MATLAB
-  [qt5-svg]="libQt5Svg"
-  # yes     no
-  [qt5-websockets]="libQt5WebSockets"
-  # yes     MATLAB
-  [qt5-x11extras]="libQt5X11Extras"
-  # yes     no
-  [qt5-xmlpatterns]="libQt5Xml libQt5XmlPatterns"
-  # no      MATLAB
-  # [re2]="libre2" # no
-  # version MATLAB, subversion
-  [serf]="libserf-1" # 1.3.9 huh?
-  # version MATLAB
-  # [sundials]="libsundials_arkode libsundials_cvode libsundials_cvodes libsundials_ida libsundials_idas libsundials_nvecserial" # 4.7.0 5.7.0 5.7.0 5.7.0 4.7.0 5.7.0
-  # version MATLAB
-  # [sqlite]="libsqlite3" # 3.44.2
-  # yes     MATLAB
-  [subversion]="libsvn_client-1 libsvn_delta-1 libsvn_diff-1 libsvn_fs-1 libsvn_fs_fs-1 libsvn_fs_util-1 libsvn_fs_x-1 libsvn_ra-1 libsvn_ra_local-1 libsvn_ra_serf-1 libsvn_ra_svn-1 libsvn_repos-1 libsvn_subr-1 libsvn_wc-1"
-  # yes     MATLAB
-  # [systemd-libs]="libudev" # 0.13.0
-  # version MATLAB
-  # [tidy]="libtidy" # 5.8.0 huh?
-  # yes     MATLAB
-  [xalan-c]="libxalan-c libxalanMsg" # 112.0
-  # yes     MATLAB/XCB
-  [xcb-util]="libxcb-util" # 1.0.0
-  # yes     MATLAB/XCB
-  [xcb-util-image]="libxcb-image" # 0.0.0
-  # yes     MATLAB/XCB
-  [xcb-util-keysyms]="libxcb-keysyms" # 1.0.0
-  # yes     MATLAB/XCB
-  [xcb-util-renderutil]="libxcb-render-util" # 0.0.0
-  # yes     MATLAB/XCB
-  [xcb-util-wm]="libxcb-icccm" # 4.0.0
-  # version MATLAB, xalan-c
-  # [libxerces-c]="libxerces-c-3.2" no
-  # version MATLAB
-  # [zstd]="libzstd.so" # 1.5.5
-)
-declare -Ag _deps_exclude=(
-  [libxss]=1
-  [qt5-websockets]=1
-  [qt5-xmlpatterns]=1
-)
-for dep in "${!_deps[@]}"; do
-  [[ -n ${_deps_exclude[$dep]} ]] && continue
-  depends+=("$dep")
+for _product in "${!_products[@]}"; do
+  provides+=(
+    "${pkgbase}-${_product}-release=${_release}"
+    "${pkgbase}-${_product}-version=${_version}"
+    "${pkgbase}-${_release,,}-${_product}=${_version}"
+  )
+  conflicts+=(
+    "${pkgbase}-${_release,,}-${_product}"
+  )
 done
 
 prepare() {
@@ -306,19 +201,20 @@ prepare() {
   }
   trap _cleanup EXIT
 
+  local _product_list=""
+  for _product in "${_products[@]}"; do
+    _product_list+="${_product//-/_} "
+  done
+  _product_list="${_product_list% }"
+
   echo "  -> Downloading archives using MPM. This will take a while..."
   TMPDIR="${srcdir}/tmp" matlab-mpm download \
     --release="${_release}" \
     --destination="${srcdir}/download" \
-    --products="${_product// /_}" \
+    --products="${_product_list:+${_product_list} }MATLAB" \
     --platforms="glnxa64" \
-    --no-deps
-  ret=$?
+    --no-deps # provides implicit product selection correctness check during install
 
-  if (( ret != 0 )); then
-    echo "  ==> ERROR: MPM download failed with status $ret!"
-    exit 1
-  fi
   if [[ ! -d download || -z $(ls -A download) ]]; then
     echo "  ==> ERROR: MPM download succeeded but download directory is empty!"
     exit 1
@@ -329,20 +225,16 @@ prepare() {
   TMPDIR="${srcdir}/tmp" matlab-mpm install \
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
-    --products="${_product// /_}" \
+    --products="${_product_list:+${_product_list} }MATLAB" \
     --no-jre \
     --no-gpu # is this needed?
-  ret=$?
 
-  if (( ret != 0 )); then
-    echo "  ==> ERROR: MPM install failed with status $ret!"
-    exit 1
-  fi
   if [[ ! -d install || -z $(ls -A install) ]]; then
     echo "  ==> ERROR: MPM install succeeded but install directory is empty!"
     exit 1
   fi
   echo "  -> Install completed successfully."
+
   echo "  -> Ignore the above post-installation instructions (if any). They do not apply to you!"
 
   _cleanup
@@ -363,7 +255,7 @@ build() {
   gendesk -f -n \
     --pkgname "${pkgbase}" \
     --pkgdesc "${pkgdesc}" \
-    --name "${_product}" \
+    --name "MATLAB" \
     --comment 'Programming and numeric computing platform' \
     --exec "${pkgbase} -desktop -useStartupFolderPref" \
     --icon "/opt/MATLAB/${_release}/bin/glnxa64/cef_resources/matlab_icon.png" \
@@ -374,99 +266,201 @@ build() {
   echo "  -> Separating Java components..."
   mv "java" "${srcdir}/install-java/java"
 
-  cd "${srcdir}/install/bin/glnxa64"
-  echo "  -> Removing unnecessary files..."
-  rm -vf ./*.source # ldconfig complains about "not an ELF file - it has the wrong magic bytes at the start."
-
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/issues/19
-  # https://bbs.archlinux.org/viewtopic.php?pid=2225028#p2225028
-  # echo "  -> Clearing executable stack to fix crashing issues..."
-  # patchelf --clear-execstack "libmwfoundation_crash_handling.so"
-
   echo "  -> Removing bundled dependencies..."
-  for dep in "${!_deps[@]}"; do
-    echo "    -> Removing bundled ${dep} libraries..."
-    for lib in ${_deps[$dep]}; do
-      find . -maxdepth 1 -type f -name "${lib}.so*" -exec \
-        rm -vf "{}" +
-      rm -f "$lib.so"* "$lib".rights
-    done
-  done
+  # launch on Wayland without 'env QT_QPA_PLATFORM="xcb"'
+  echo "    -> Removing bundled Qt5..."
+  find "bin/glnxa64" -type f -name 'libQt5*.so*' -exec \
+    rm -vf "{}" +
+  find "bin/glnxa64" -type l -name 'libQt5*.so*' -exec \
+    rm -f "{}" +
 
-  cd "${srcdir}/install/cefclient/sys"
-  echo "    -> Removing bundled ATK..."
-  rm -vf atk/glnxa64/*
-    
   echo "    -> Removing bundled GTK2..."
-  rm -vf os/glnxa64/*
+  find "cefclient/sys/os/glnxa64" -type f -exec \
+    rm -vf "{}" +
+  rm -f "cefclient/sys/os/glnxa64"/*
 
-  cd "${srcdir}/install/sys"
   echo "    -> Removing bundled FluxBox..."
-  ln -vsf "/usr/bin/fluxbox" "fluxbox/glnxa64/bin/fluxbox"
-  rm -f "fluxbox/glnxa64/fluxbox.rights"
+  ln -vsf "/usr/bin/fluxbox" "sys/fluxbox/glnxa64/bin/fluxbox"
+  rm -f "sys/fluxbox/glnxa64/fluxbox.rights"
 
-  # echo "    -> Removing bundled OpenJade..."
-  # ln -vsf "/usr/bin/openjade" "jade/bin/glnxa64/openjade"
-  # rm -f "jade/bin/glnxa64/openjade.rights"
+  # echo "    -> Removing bundled OpenGL..."
+  # find "sys/opengl/lib/glnxa64" -type f -name 'lib*.so*' -exec \
+  #   rm -vf "{}" +
+  # rm -f "sys/opengl/lib/glnxa64"/*
 
-  echo "    -> Removing bundled OpenGL..."
-  rm -vf "opengl/lib/glnxa64"/*.so*
-  rm -f "opengl/lib/glnxa64"/*
-
-  # echo "    -> Removing bundled GCC and Intel oneAPI..."
-  # rm -vf "os/glnxa64"/*.so*
-  # rm -rf "os/glnxa64"/*
-
+  # solves crashing issues related to outdated ABIs
   echo "    -> Removing bundled GCC..."
-  rm -vrf "os/glnxa64"/{orig,*gcc*,*gfortran*,*quadmath*,*stdc++*}
+  find "sys/os/glnxa64" -type f \( -name '*gcc*.so*' -o -name '*gfortran*.so*' -o -name '*quadmath*.so*' -o -name '*stdc++*.so*' \) -exec \
+    rm -vf "{}" +
+  find "sys/os/glnxa64" \( -name '*gcc*' -o -name '*gfortran*' -o -name '*quadmath*' -o -name '*stdc++*' \) -exec \
+    rm -f "{}" +
 
   echo "    -> Removing bundled Hunspell en_US dictionary..."
-  ln -vsf "/usr/share/myspell/dicts/en_US.aff" "share/dict/en_US.aff"
-  ln -vsf "/usr/share/myspell/dicts/en_US.dic" "share/dict/en_US.dic"
-  rm -f "share/dict/hunspell-dict-en_us.rights"
+  ln -vsf "/usr/share/myspell/dicts/en_US.aff" "sys/share/dict/en_US.aff"
+  ln -vsf "/usr/share/myspell/dicts/en_US.dic" "sys/share/dict/en_US.dic"
+  rm -f "sys/share/dict/hunspell-dict-en_us.rights"
 
   echo "    -> Removing bundled Xvfb..."
-  ln -vsf "/usr/bin/Xvfb" "Xvfb/glnxa64/bin/Xvfb"
-  rm -f "Xvfb/glnxa64/Xvfb.rights"
+  ln -vsf "/usr/bin/Xvfb" "sys/Xvfb/glnxa64/bin/Xvfb"
+  rm -f "sys/Xvfb/glnxa64/Xvfb.rights"
 
   echo "    -> Modifying GCC version used by MEX..."
-  cd "${srcdir}/install/bin/glnxa64/mexopts"
-  find . -type f -name '*.xml' -exec \
+  find "bin/glnxa64/mexopts" -type f -name '*.xml' -exec \
     sed -e "s|/usr/local|/usr|g" \
-        -e "s|gcc|gcc-${pkgabse}|g" \
-        -e "s|g++|g++-${pkgabse}|g" \
-        -e "s|gfortran|gfortran-${pkgabse}|g" \
+        -e "s|gcc|gcc-${pkgbase}|g" \
+        -e "s|g++|g++-${pkgbase}|g" \
+        -e "s|gfortran|gfortran-${pkgbase}|g" \
         -i "{}" +
 
-  # cd "${srcdir}/install"
-  # echo "  -> Fixing unnecessary permissions..."
-  # find . -type f -executable \( -name '*.a' -o -name '*.rights' \) -exec \
-  #   chmod -v 644 "{}" +
-
-  # echo "  -> Removing insecure RPATH..."
-  # find . -type f \( -name '*.so' -o -executable \) | while read -r f; do
-  #   if file -b "$f" | grep -q '^ELF'; then
-  #     patchelf --shrink-rpath --allowed-rpath-prefixes /,../ "$f"
-  #   fi
-  # done
+  echo "    -> Downgrading GnuTLS version..."
+  find "/usr/lib/gnutls3.8.9" -maxdepth 1 -type f,l -name 'lib*.so*' -exec \
+    ln -vsf {} bin/glnxa64/ \;
 }
 
 package_matlab() {
+  depends=(
+    # https://github.com/mathworks-ref-arch/container-images/tree/main/matlab-deps
+    # Arch                  # Debian / RHEL
+    'alsa-lib'              # libasound2t64
+    'at-spi2-core'          # libatk-bridge2.0-0t64
+                            # libatk1.0-0t64
+                            # libatspi2.0-0t64
+    'ca-certificates'       # ca-certificates
+    # 'cairo'               # libcairo-gobject2
+    #                       # libcairo2
+    # 'debianutils'         # debianutils
+    'fontconfig'            # libfontconfig1
+    # 'fribidi'             # libfribidi0
+    'gcc-libs'              # libatomic1
+    'gdk-pixbuf2'           # libgdk-pixbuf-2.0-0
+    'glib2'                 # libglib2.0-0t64
+    'glibc'                 # libc6
+    # 'glibc-locales'       # locales
+    #                       # locales-all
+    'gst-plugins-base-libs' # libgstreamer-plugins-base1.0-0
+    'gstreamer'             # libgstreamer1.0-0
+    # 'gtk3'                # libgtk-3-0t64
+    # 'libcap'              # libcap2
+    # 'libcups'             # libcups2t64
+    'libdrm'                # libdrm2
+    'libgl'                 # libgl1
+    'libice'                # libice6
+    # 'libltdl'             # libltdl7
+    # 'libprocps'           # procps
+    'libsndfile'            # libsndfile1
+    # 'libtirpc'            # libtirpc3t64
+    # 'libuhd'              # libuhd4.6.0-dpdk
+    'libxcomposite'         # libxcomposite1
+    'libxcrypt-compat'      # libcrypt1
+    # 'libxcursor'          # libxcursor1
+    # 'libxdamage'          # libxdamage1
+    'libxfixes'             # libxfixes3
+    # 'libxfont2'           # libxfont2
+    'libxft'                # libxft2
+    # 'libxinerama'         # libxinerama1
+    'libxrandr'             # libxrandr2
+    'libxt'                 # libxt6t64
+    # 'libxtst'             # libxtst6
+    'libxxf86vm'            # libxxf86vm1
+    # 'make'                # make
+    'mesa'                  # libgbm1
+    # 'net-tools'           # net-tools
+    'nspr'                  # libnspr4
+    'nss'                   # libnss3
+    # 'numactl'             # libnuma1
+    # 'opa-psm2'            # libpsm2-2
+    # 'openucx'             # libucx0
+    'pam'                   # libpam0g
+    'pango'                 # libpango-1.0-0
+                            # libpangocairo-1.0-0
+                            # libpangoft2-1.0-0
+    'pixman'                # libpixman-1-0
+    # 'rdma-core'           # ibverbs-providers
+                            # libibverbs1
+                            # librdmacm1t64
+    # 'sudo'                # sudo
+    'unzip'                 # unzip
+    'util-linux-libs'       # libuuid1
+    'which'                 # which.x86_64
+    # 'xorg-setxkbmap'      # x11-xkb-utils
+    # 'xorg-xkbcomp'
+    # 'xorg-xkbevd'
+    # 'xorg-xkbprint'
+    # 'xorg-xkbutils'
+    'wget'                  # wget
+    'zlib'                  # zlib1g
+
+    # removed manually
+    'qt5-base'
+    'qt5-gamepad'
+    'qt5-svg'
+    # 'qt5-websockets'
+    'qt5-x11extras'
+    # 'qt5-xmlpatterns'
+    # 'fluxbox'
+    # 'gtk2'
+    # 'libgl'
+    # 'glu'
+    # 'gcc-libs'
+    # 'hunspell-en_us'
+    # 'xorg-server-xvfb'
+
+    'sh'
+  )
   optdepends=(
-    'glibc-locales: listed in the original depends'
+    'patchelf: clear the executable stack after the install'
+    'matlab-mpm: package manager'
+    'matlab-batch: start MATLAB non-interactively using a batch licensing token'
+    'python-matlabengine: Python bindings'
+
     "java-${pkgbase}: required for certain products and features"
-    # 'intel-oneapi-basekit'
-    # 'intel-oneapi-compiler-shared-runtime'
-    'libcups: printing support'
     'matlab-gcc: GCC runtime dependency'
     'matlab-gcc-fortran: GFortran runtime dependency'
-    'matlab-batch: start MATLAB non-interactively using a batch licensing token'
-    'matlab-mpm: package manager'
-    'patchelf: clear the executable stack after the install'
-    'perl'
-    'python-matlabengine: Python bindings'
+
+    'qt5-websockets'
+    'qt5-xmlpatterns'
+    'fluxbox'
+    'gtk2'
+    'hunspell-en_us'
+    'xorg-server-xvfb'
+
+    'cairo: listed in the original depends as libcairo-gobject2, libcairo2'
+    # 'debianutils: listed in the original depends as debianutils'
+    'fribidi: listed in the original depends as libfribidi0'
+    'glibc-locales: listed in the original depends as locales, locales-all'
+    'gtk3: listed in the original depends as libgtk-3-0t64'
+    'libcap: listed in the original depends as libcap2'
+    'libcups: listed in the original depends as libcups2t64'
+    'libltdl: listed in the original depends as libltdl7'
+    'libprocps: listed in the original depends as procps'
+    'libtirpc: listed in the original depends as libtirpc3t64'
+    'libuhd: listed in the original depends as libuhd4.6.0-dpdk'
+    'libxcursor: listed in the original depends as libxcursor1'
+    'libxdamage: listed in the original depends as libxdamage1'
+    'libxfont2: listed in the original depends as libxfont2'
+    'libxinerama: listed in the original depends as libxinerama1'
+    'libxtst: listed in the original depends as libxtst6'
+    'make: listed in the original depends as make'
+    'net-tools: listed in the original depends as net-tools'
+    'numactl: listed in the original depends as libnuma1'
+    'opa-psm2: listed in the original depends as libpsm2-2'
+    'openucx: listed in the original depends as libucx0'
+    'rdma-core: listed in the original depends as ibverbs-providers, libibverbs1, librdmacm1t64'
+    'sudo: listed in the original depends as sudo'
+    'xorg-setxkbmap: listed in the original depends as x11-xkb-utils'
+    'xorg-xkbcomp: listed in the original depends as x11-xkb-utils'
+    'xorg-xkbevd: listed in the original depends as x11-xkb-utils'
+    'xorg-xkbprint: listed in the original depends as x11-xkb-utils'
+    'xorg-xkbutils: listed in the original depends as x11-xkb-utils'
   )
-  provides=("${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
+  provides+=(
+    "${pkgname}-release=${_release}"
+    "${pkgname}-version=${_version}"
+    "${pkgname}-${_release,,}=${_version}"
+  )
+  conflicts+=(
+    "${pkgname}-${_release,,}"
+  )
   install="${pkgname}.install"
 
   cd "${srcdir}"
@@ -505,16 +499,27 @@ package_matlab() {
 
 package_java-matlab() {
   pkgdesc+=" (Java components)"
-  # https://www.mathworks.com/support/requirements/openjdk.html
-  depends=('java-environment<=21' 'java-environment>=8' "${pkgbase}=${epoch}:${pkgver}-${pkgrel}")
-  provides=("${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
+  depends=(
+    "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
+    # https://www.mathworks.com/support/requirements/openjdk.html
+    'java-environment<=21'
+    'java-environment>=8'
+  )
+  provides=(
+    "${pkgname}-release=${_release}"
+    "${pkgname}-version=${_version}"
+    "${pkgname}-${_release,,}=${_version}"
+  )
+  conflicts=(
+    "${pkgname}-${_release,,}"
+  )
   install="${pkgname}.install"
 
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
   # install -vdm755 "${pkgdir}/opt/MATLAB/${_release}"
   install -vdm755 "${pkgdir}/opt/MATLAB"
-  install -vdm777 "${pkgdir}/opt/MATLAB/${_release}" # :(
+  install -vdm777 "${pkgdir}/opt/MATLAB/${_release}"
   mv install-java/* "${pkgdir}/opt/MATLAB/${_release}"
 
   echo "  -> Installing Java environment hook..."
@@ -525,56 +530,82 @@ package_java-matlab() {
 _gccs=(8 9 11 12 13)
 _gcc="10"
 for ver in "${_gccs[@]}"; do
-  pkgname+=("${pkgbase}-gcc${ver}")
+  pkgname+=(
+    "${pkgbase}-gcc${ver}"
+  )
   
   eval "
 package_${pkgbase}-gcc${ver}() {
   pkgdesc+=' (GCC${ver} runtime dependency)'
   arch=('any')
-  depends=('${pkgbase}=${epoch}:${pkgver}-${pkgrel}' 'gcc${ver}')
-  provides=('matlab-gcc=${ver}' 'matlab-gcc-release=${_release}' 'matlab-gcc-version=${_version}') # TODO?
-  conflicts=('matlab-gcc')
+  depends=(
+    '${pkgbase}=${epoch}:${pkgver}-${pkgrel}'
+    'gcc${ver}'
+  )
+  provides=(
+    'matlab-gcc=${ver}'
+    'matlab-gcc-release=${_release}'
+    'matlab-gcc-version=${_version}'
+    'matlab-${_release,,}-gcc=${_version}'
+  )
+  conflicts=(
+    'matlab-gcc'
+    'matlab-${_release,,}-gcc'
+  )
 
   install -vdm755 \"\${pkgdir}/usr/bin\"
   cd \"\${pkgdir}/usr/bin\"
-  ln -vsf '/usr/bin/gcc-${ver}' 'gcc-matlab'
-  ln -vsf '/usr/bin/gcc-${ver}' 'gcc-matlab-${_release}'
-  ln -vsf '/usr/bin/g++-${ver}' 'g++-matlab'
-  ln -vsf '/usr/bin/g++-${ver}' 'g++-matlab-${_release}'
+  ln -vsf 'gcc-${ver}' 'gcc-matlab'
+  ln -vsf 'gcc-${ver}' 'gcc-matlab-${_release}'
+  ln -vsf 'g++-${ver}' 'g++-matlab'
+  ln -vsf 'g++-${ver}' 'g++-matlab-${_release}'
 }"
 done
 
 package_matlab-gcc() {
   pkgdesc+=" (GCC runtime dependency)"
   arch=('any')
-  depends=("${pkgbase}=${epoch}:${pkgver}-${pkgrel}" "gcc${_gcc}")
-  provides=("${pkgname}=${_gcc}" "${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
+  depends=(
+    "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
+    "gcc${_gcc}"
+  )
+  provides=(
+    "${pkgname}=${_gcc}"
+    "${pkgname}-release=${_release}"
+    "${pkgname}-version=${_version}"
+    "matlab-${_release,,}-gcc=${_version}"
+  )
+  conflicts=(
+    "matlab-${_release,,}-gcc"
+  )
 
   install -vdm755 "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin"
-  ln -vsf "/usr/bin/gcc-${_gcc}" "gcc-matlab"
-  ln -vsf "/usr/bin/gcc-${_gcc}" "gcc-matlab-${_release}"
-  ln -vsf "/usr/bin/g++-${_gcc}" "g++-matlab"
-  ln -vsf "/usr/bin/g++-${_gcc}" "g++-matlab-${_release}"
+  ln -vsf "gcc-${_gcc}" "gcc-matlab"
+  ln -vsf "gcc-${_gcc}" "gcc-matlab-${_release}"
+  ln -vsf "g++-${_gcc}" "g++-matlab"
+  ln -vsf "g++-${_gcc}" "g++-matlab-${_release}"
 }
 
 package_matlab-gcc-fortran() {
   pkgdesc+=" (GFortran runtime dependency)"
   arch=('any')
-  depends=("${pkgbase}=${epoch}:${pkgver}-${pkgrel}" "gcc${_gcc}-fortran")
-  provides=("${pkgname}=${_gcc}" "${pkgname}-release=${_release}" "${pkgname}-version=${_version}")
+  depends=(
+    "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
+    "gcc${_gcc}-fortran"
+  )
+  provides=(
+    "${pkgname}=${_gcc}"
+    "${pkgname}-release=${_release}"
+    "${pkgname}-version=${_version}"
+    "matlab-${_release,,}-gcc-fortran=${_version}"
+  )
+  conflicts=(
+    "matlab-${_release,,}-gcc-fortran"
+  )
 
   install -vdm755 "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin"
-  ln -vsf "/usr/bin/gfortran-${_gcc}" "gfortran-matlab"
-  ln -vsf "/usr/bin/gfortran-${_gcc}" "gfortran-matlab-${_release}"
+  ln -vsf "gfortran-${_gcc}" "gfortran-matlab"
+  ln -vsf "gfortran-${_gcc}" "gfortran-matlab-${_release}"
 }
-
-# echo "  -> Modifying MPM input settings..."
-# cp "/usr/share/matlab-mpm/input/${_release}.txt" "input.txt"
-# sed -e "s|^# updateLevel=.*|updateLevel=0|g" \
-#     -e "s|^# destinationFolder=.*|destinationFolder=${srcdir}/download|" \
-#     -e "s|^#product.${_product}$|product.${_product}|g" \
-#     -i "input.txt"
-# matlab-mpm download \
-#   --inputfile ./input.txt
