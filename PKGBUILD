@@ -9,6 +9,7 @@ url="https://obsproject.com/forum/resources/audio-monitor.1186/"
 license=(GPL-2.0-or-later)
 depends=("obs-studio>=31" "glibc" "gcc-libs" "libpulse" "qt6-base")
 makedepends=("cmake" "git")
+options=("debug")
 source=("$pkgname::git+https://github.com/exeldro/obs-audio-monitor#commit=245b0c258b369d6a21986c6037f59bb4a6b0cf62")
 sha256sums=("SKIP")
 

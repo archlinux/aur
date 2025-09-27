@@ -13,6 +13,7 @@ pkgbase = obs-audio-monitor
 	depends = gcc-libs
 	depends = libpulse
 	depends = qt6-base
+	options = debug
 	source = obs-audio-monitor::git+https://github.com/exeldro/obs-audio-monitor#commit=245b0c258b369d6a21986c6037f59bb4a6b0cf62
 	sha256sums = SKIP
 
