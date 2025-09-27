@@ -1,9 +1,9 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 # Contributor: Christian Schendel (doppelhelix@gmail.com)
 
-_basename=gnome-shell-extension-pano
-pkgname=${_basename}-git
-pkgver=23.alpha4.r8.gb4e483b
+_pkgbase=gnome-shell-extension-pano
+pkgname=${_pkgbase}-git
+pkgver=23.alpha5.r10.g7a27512
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager for Gnome Shell"
 arch=('any')
@@ -18,9 +18,9 @@ makedepends=(
 	'nvm'
 	'yarn'
 )
-provides=("$_basename")
-conflicts=("$_basename")
-source=("$_basename::git+https://github.com/oae/gnome-shell-pano.git")
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
+source=("$_pkgbase::git+https://github.com/oae/gnome-shell-pano.git")
 sha256sums=('SKIP')
 
 _ensure_local_nvm() {
@@ -30,25 +30,25 @@ _ensure_local_nvm() {
 }
 
 pkgver() {
-	cd "$_basename"
+	cd "$_pkgbase"
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
-	cd "$_basename"
+	cd "$_pkgbase"
 	_ensure_local_nvm
 	nvm install 20
 	yarn install --cache-folder "$srcdir/yarn-cache"
 }
 
 build() {
-	cd "$_basename"
+	cd "$_pkgbase"
 	_ensure_local_nvm
 	yarn build
 }
 
 package() {
-	cd "$_basename/dist"
+	cd "$_pkgbase/dist"
 	mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/pano@elhan.io"
 	cp -r * "$pkgdir/usr/share/gnome-shell/extensions/pano@elhan.io/"
 }
