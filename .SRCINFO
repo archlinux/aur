@@ -1,0 +1,20 @@
+pkgbase = python-emport
+	pkgdesc = A small utility library for importing files by file name
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/vmalloc/emport
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = git
+	depends = python
+	depends = python-logbook
+	source = https://files.pythonhosted.org/packages/source/e/emport/emport-1.4.1.tar.gz
+	sha256sums = dd5076e8b4b361c043c8778da228731fd7d75e5eaabab300eb5e95bbed76ed9a
+
+pkgname = python-emport
