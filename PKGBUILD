@@ -1,8 +1,8 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=bazaar
-pkgver=0.4.11
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub"
 arch=('x86_64')
 url="https://github.com/kolunmi/bazaar"
@@ -16,8 +16,8 @@ depends=(
   'flatpak'
   'appstream'
   'libxmlb'
-  'glycin1'
-  'glycin1-gtk4'
+  'glycin'
+  'glycin-gtk4'
   'libyaml'
   'libsoup3'
   'json-glib'
@@ -35,7 +35,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('742fc17371b5377d010c930379a337f6e030ad83b6a5add6a37805e0b49783ba')
+sha256sums=('b77fda92bf3c920d4da74ae9c317969ad1464f717cc977ac31ac81d40b96d2a0')
 
 build() {
 	cd "${pkgname}-${pkgver}"
