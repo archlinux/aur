@@ -3,8 +3,8 @@
 
 _basename="xf86-video-ati"
 pkgname="${_basename//xf86/xlibre}"
-pkgver=22.0.0.2
-pkgrel=2
+pkgver=22.0.0.3
+pkgrel=1
 pkgdesc="XLibre ati video driver"
 arch=('aarch64' 'x86_64')
 url="https://github.com/X11Libre/${_basename}"
@@ -16,7 +16,7 @@ conflicts=("${_basename}" 'xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<28' 'X-AB
 groups=('xlibre-drivers')
 _pkgsrc="${_basename}-xlibre-${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/xlibre-${_basename}-${pkgver}.tar.gz")
-b2sums=('5318272d643f9c4717e84d5198448167dc9df8256fa8ac3a10f2989f65e0ba944b0d71e6b53417b97e6606488e1c9a0f3048b902811e32e36dbc70b0024a1817')
+b2sums=('8cb409c4d43c7ede6d234d6c84579963624b2e930894c4ebe3982bed6f9a46b9c3ff310e0d200def06386868bf097b832ff552c2c29988c0bf72581bd06f5a2a')
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
