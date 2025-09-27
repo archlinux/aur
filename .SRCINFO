@@ -1,0 +1,25 @@
+pkgbase = python-checkpy
+	pkgdesc = A Python tool for running tests on Python source files, intended for educational use
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/Jelleas/CheckPy
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-tinydb
+	depends = python-dill
+	depends = python-colorama
+	depends = python-pytest
+	depends = python-dessert
+	depends = python-typeguard
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/c/checkpy/checkpy-2.1.2.tar.gz
+	sha256sums = b37fcd86b756bcae60c867334412207940e44816fbdb0cc832cdb25f59e3546a
+
+pkgname = python-checkpy
