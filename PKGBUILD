@@ -2,7 +2,7 @@
 
 pkgname="python-surya-ocr"
 _name="surya_ocr"
-pkgver=0.13.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="OCR, layout analysis, reading order, table recognition in 90+ languages"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(python-pytorch-cuda python-pytorch-rocm)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=()
 source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('93b866ced75d9599dbbb0f746498f114d10f5063f588013a27e5192b4d307cc9')
+sha256sums=('3110ec9a2be0d4296968ced02ee4d33941f34c145a2d6ac508f75122014ed170')
 
 build() {
   cd "$_name-$pkgver"
