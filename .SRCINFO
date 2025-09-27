@@ -1,0 +1,12 @@
+pkgbase = xfwm4-theme-pop-git
+	pkgdesc = Simple Xfwm theme for Xfce matching Pop GTK theme from Pop!_OS by System76 (git version)
+	pkgver = r9.cb3d3b5
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1299758/
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://gitlab.com/spass/pop-xfwm-theme.git
+	sha256sums = SKIP
+
+pkgname = xfwm4-theme-pop-git
