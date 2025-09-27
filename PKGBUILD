@@ -2,7 +2,7 @@
 # Contributor: Jef Roosens
 
 pkgname=scryer-prolog
-pkgver=0.9.4
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="An open source industrial strength production environment that is also a testbed for bleeding edge research in logic and constraint programming"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ source=(
     "update-crates.patch"
 )
 sha256sums=(
-    'ccf533c5c34ee7efbf9c702dbffea21ba1c837144c3592a9e97c515abd4d6904'
+    '353eca4eea539e0a0eedb1572736bfcc64c5fb6fd2da3b8737c513ad62f60f3b'
     '13979b0d53a8e7171e5b90f3958a492f9c70232971bb6b5691e4542c546ac0e0'
 )
 
@@ -26,8 +26,8 @@ export CARGO_PROFILE_RELEASE_OPT_LEVEL=2 # revert back to "s" if it's too big
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 < "$srcdir/update-crates.patch"
-    cargo fetch # --locked
+    # patch -p1 < "$srcdir/update-crates.patch"
+    cargo fetch --locked
 }
 
 build() {
