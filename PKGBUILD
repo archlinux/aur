@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=immunotation
-_pkgver=1.16.2
+_pkgver=1.16.3
 pkgname=r-${_pkgname,,}
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc='Tools for working with diverse immune genes'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7a635bec393a2359fecd5f0495a288dd365d1ce991cea9623fc478ca8c9d770')
+sha256sums=('08efd613144b9a74686652bc10d638a94ce83021c2cd77ee564a3aac658c9796')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
