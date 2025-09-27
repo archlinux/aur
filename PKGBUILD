@@ -2,7 +2,7 @@
 # Contributor: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Console Bibliography"
 arch=('any')
@@ -25,6 +25,7 @@ depends=(
     'python-lxml'
     'python-markdown-it-py'
     'python-mdit_py_plugins'
+    'python-natsort'
     'python-pylatexenc'
     'python-requests'
     'python-requests-oauthlib'
@@ -34,10 +35,11 @@ depends=(
     'python-textual'
 )
 optdepends=(
+    'python-prompt_toolkit'
     'python-regex'
 )
 source=("https://gitlab.com/cobib/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('0526f2cf0078eacae4355fcfbd943bf544d858e30d534a31e7da04cb97c466199486d22341f35d34b9b70da1129853b4806f884caac811803f28774339325e1f')
+sha512sums=('b8498d90abda3cb19c99e14595cc7c184a4abb93e102b0afb3b9feb69fe0fd56a23e1ec10859d1d221815ce28d3ab9073eb8f98847aa0e12339d3409b8374810')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
