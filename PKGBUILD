@@ -2,7 +2,7 @@
 # Co-Maintainer: Cp Dong <cp-dong at outlook dot com>
 
 pkgname=apple-fonts
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc='Fonts for Apple platforms, including San Francisco and New York typefaces'
 arch=(any)
@@ -12,10 +12,10 @@ provides=('ttf-font')
 depends=()
 makedepends=(7zip)
 _baseurl='https://devimages-cdn.apple.com/design/resources/download/'
-source=("${_baseurl}SF-Pro.dmg"
-        "${_baseurl}SF-Compact.dmg"
-        "${_baseurl}SF-Mono.dmg"
-        "${_baseurl}NY.dmg")
+source=("SF-Pro-${pkgver}.dmg::${_baseurl}SF-Pro.dmg"
+        "SF-Compact-${pkgver}.dmg::${_baseurl}SF-Compact.dmg"
+        "SF-Mono-${pkgver}.dmg::${_baseurl}SF-Mono.dmg"
+        "NY-${pkgver}.dmg::${_baseurl}NY.dmg")
 sha256sums=('2e4d7853988b734dc1af33b921d8d4c0e4400eac312924a0eab4b73a51fd69ae'
             '08c34ffac2f99ec8702b4946044469f92dd88a7b1c0864e2d4b559565f8fb8e3'
             '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
