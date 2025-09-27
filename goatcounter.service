@@ -1,0 +1,17 @@
+[Unit]
+Description=GoatCounter web analytics daemon service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+User=goatcounter
+Group=goatcounter
+WorkingDirectory=~
+ExecStart=/usr/bin/goatcounter serve -automigrate -db sqlite+./db.sqlite3 -listen :5000 -tls http
+NoNewPrivileges=true
+# allow binding to privileged ports (80 and 443 in our case)
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+
+post_install() {
+	echo "This package ships a 'goatcounter.service' systemd service, which uses"
+	echo "the sqlite database in the home directory '/var/lib/goatcounter'"
+	echo "and expects a reverse proxy for port 5000 by default. If you want to use"
+	echo "PostgreSQL, another port(ACME/HTTPS), you can use a service dropin file."
+}
+
+post_remove() {
+	echo "You may need to remove the database in '/var/lib/goatcounter' manually."
+}
