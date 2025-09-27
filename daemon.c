@@ -184,7 +184,7 @@ static void write_helper(pid_t pid){
 
 // Function to handle termination signals
 void sigterm_handler(int sig) {
-	LPRINTF(" sigterm_hadler: helper_written=%d revlink=%d evlink=%s\n", helper_written, revlink, evlink);
+	LPRINTF(" sigterm_handler: helper_written=%d revlink=%d evlink=%s\n", helper_written, revlink, evlink);
 	if (helper_written){
 		if(revlink){
 			int r = remove(evlink);

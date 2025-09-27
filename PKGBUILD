@@ -4,7 +4,7 @@
 
 _pkgbase=alsabeep
 pkgname=$_pkgbase-dkms
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Another synthetic or enhanced PC Speaker beeper module and alsa daemon"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ source=("${_pkgbase}.c"
 		)
 sha256sums=('4b306516383b839bacd72740671e54bc6139a517a305332ec27f0c9b91663e8d'
             '7b2778b66b675f7c49a723844ce3d3b57561b1766ed507a112d7a827a718b11a'
-            'ab7c72277ba7016309452055b006a60f395443a37dc2028e69dd0d1a71a8f1bf'
+            'cddd65874d498e46e655491551e1b0b423750460de9a97ca9578423dde1ba78a'
             'e9b36c683af0535ca14869f149764345c5949f163847bffe8103462e66310e58'
             '48d2f21eaddcd3f1012c5f871e3052090d579771992d5b1ebcbb27cc8a98a0bd'
             '2ea5660bb36d440627ae93ba9a704c37eb71b914d2906d127deec14afded43d7'

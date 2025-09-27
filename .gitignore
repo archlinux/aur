@@ -133,9 +133,11 @@ dmypy.json
 /.hgeol
 /.hgtags
 /tmp/
+/devel/
 /pkg/
 /src/
 /[0-9a-fA-F]*.tar.gz
+/[0-9a-fA-F]*.tar.xz
 /*.pkg.tar.zst
 /daemon
 /a.out
