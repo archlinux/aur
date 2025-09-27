@@ -3,20 +3,31 @@
 
 _name="matlabengine"
 pkgname="python-${_name}"
-pkgver=25.1.2
-_release=R2025a
-pkgrel=4
+pkgver=25.2.2
+_release=R2025b
+pkgrel=1
 pkgdesc="A high-level language for numerical computation and visualization (Python bindings)"
 arch=('any')
 url="https://www.mathworks.com/help/matlab/matlab-engine-for-python.html"
 _url="https://github.com/mathworks/matlab-engine-for-python"
 license=('MIT')
-depends=("matlab-release=${_release}" 'python>=3.9')
-makedepends=('python-build' 'python-installer' 'python-setuptools>=42' 'python-wheel')
-provides=("${pkgname}-release=${_release}")
+depends=(
+  "matlab-release=${_release}"
+  'python>=3.9'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools>=42'
+  'python-wheel'
+)
+provides=(
+  "${pkgname}-release=${_release}"
+  "${pkgname}-version=${pkgver}"
+)
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('d28cb30e64a2eaee7a24793859d759eb6f59bad73e4b1e8fbfcb106de88659dc71861a60ebc30450834061a41a3672f14321b8b84eb1e97963d469aeb88627ad')
+b2sums=('e6e849e822ce75e2720647db8b7d903fb532cf1cfb010ff61e91006aae25d915bbe0ec495ed0c56951064befd65c5c5b396362edb70fd36703eda1f0f530258a')
 
 prepare() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
