@@ -1,4 +1,5 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
+# Maintainer: ChenPi11 <wushengwuxi-msctinoulk@outlook.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=gnulib-git
@@ -28,19 +29,14 @@ build() {
 
 package() {
   cd "$srcdir/gnulib"
-  install -dm755 $pkgdir/usr/share/$pkgname
-  install -m755 -t $pkgdir/usr/share/$pkgname check-module gnulib-tool
-
-  dir=$(find build-aux lib m4 modules top -type d)
-
-  for i in $dir; do
-    install -dm755 $pkgdir/usr/share/$pkgname/$i
-    install -Dm644 -t $pkgdir/usr/share/$pkgname/$i $(find $i -maxdepth 1 -type f) 
-  done
-  cp -r doc tests $pkgdir/usr/share/$pkgname/
+  mkdir -p $pkgdir/usr/share/gnulib-git
+  cp -r * $pkgdir/usr/share/gnulib-git
+  cp .gnulib-tool.py $pkgdir/usr/share/gnulib-git
 
   install -dm755 $pkgdir/usr/bin
   ln -s /usr/share/gnulib-git/gnulib-tool $pkgdir/usr/bin/
+  ln -s /usr/share/gnulib-git/gnulib-tool.sh $pkgdir/usr/bin
+  ln -s /usr/share/gnulib-git/gnulib-tool.py $pkgdir/usr/bin
   ln -s /usr/share/gnulib-git/check-module $pkgdir/usr/bin/
 
   install -Dm644 doc/gnulib.info $pkgdir/usr/share/info/gnulib.info
