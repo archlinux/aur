@@ -1,6 +1,6 @@
 pkgbase = fntv-electron-bin
 	pkgdesc = A fntv app built with Electron.飞牛影视PC版 electron封装
-	pkgver = 2.1.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/QiaoKes/fntv-electron
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = fntv-electron-bin
 	options = !strip
 	source = LICENSE::https://raw.githubusercontent.com/QiaoKes/fntv-electron/refs/heads/release/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = fntv-electron-bin_2.1.0_x86_64.AppImage::https://github.com/QiaoKes/fntv-electron/releases/download/v2.1.0/FNMedia_2.1.0_linux_x86_64.AppImage
-	sha256sums_x86_64 = fc6c0fc70c1342ee00eddcc9531e2885ca1848e7b1408081a32496a9750bfde5
-	source_aarch64 = fntv-electron-bin_2.1.0_arm64.AppImage::https://github.com/QiaoKes/fntv-electron/releases/download/v2.1.0/FNMedia_2.1.0_linux_arm64.AppImage
-	sha256sums_aarch64 = 5e2e8e1506befb5d10cc544179b92e029507baca56a7e5e06b64a96e026f5dd7
+	source_x86_64 = fntv-electron-bin_2.4.2_x86_64.AppImage::https://github.com/QiaoKes/fntv-electron/releases/download/v2.4.2/FNMedia_2.4.2_linux_x86_64.AppImage
+	sha256sums_x86_64 = b96b18a6bcf1a8b9068e9f95e2d1250e2bb9b9ad81c8c4d15399f68022adfedb
+	source_aarch64 = fntv-electron-bin_2.4.2_arm64.AppImage::https://github.com/QiaoKes/fntv-electron/releases/download/v2.4.2/FNMedia_2.4.2_linux_arm64.AppImage
+	sha256sums_aarch64 = 20e7368c1574ef1da49f364c0d31a238272e1279787a8e421b569999a5e114ea
 
 pkgname = fntv-electron-bin
