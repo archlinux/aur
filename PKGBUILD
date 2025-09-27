@@ -7,7 +7,7 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=4.10.1.r970.daadd04
+pkgver=4.11.1.r1024.2d26028
 pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
@@ -26,12 +26,22 @@ makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-  "${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
+  "${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git?signed"
   "${pkgname%-git}.desktop"
 )
-md5sums=(
-  'SKIP'
-  'e7ea606e7dc9e11f4095220333c922be'
+
+sha512sums=(
+    'SKIP'
+    'd376f20214f67abd9f5dd2897215028abb844b724e0aab50f50a923b3c358cfe8faa99298cf4cc629aedcd7a9b39c447bbf9f8f4fdddbcf93581ea11ec9e3d4a'
+)
+b2sums=(
+    'SKIP'
+    'dd66c896c9b7b42305cf4d438c8e18050f0fb2724e2494964acf8985bf517c00aa5a827658924c4ae614cb2c75d7f0a2d6f3910727b7016aacc8393efffbadc0'
+)
+
+validpgpkeys=(
+    # SpacingBat3 (Personal GPG key for signing GIT commits.)
+	'EF07385224D965FADB1E3570FECEF941D3081BAA'
 )
 
 ### CONFIGURABLE VARIABLES ###
@@ -110,7 +120,7 @@ build() {
   [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm i "${_LOCAL_PACKAGES[@]/#/"${_NODE_MODULES}"}"
   npm pkg delete "${_remove_deps[@]/#/devDependencies.}"
   if [[ "${_LOCKFILE}" == "true" ]]; then
-    _npm ci 
+    _npm ci
   else
     _npm update
   fi
@@ -229,7 +239,7 @@ _cleanup() {
 
   _PACKAGE_IGNORE=(
     "../${pkgname%-git}.asar" "../iconThemes" "sources/assets/icons/app.ico"
-    "sources/assets/icons/app.icns" "app/code/build" "sources/code/build" 
+    "sources/assets/icons/app.icns" "app/code/build" "sources/code/build"
     "schemas" "../docs" "build"
   )
 

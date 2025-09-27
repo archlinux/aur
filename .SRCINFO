@@ -1,6 +1,6 @@
 pkgbase = webcord-git
 	pkgdesc = A Discord and Fosscord client made with the Electron (master branch).
-	pkgver = 4.10.1.r970.daadd04
+	pkgver = 4.11.1.r1024.2d26028
 	pkgrel = 2
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
@@ -15,9 +15,12 @@ pkgbase = webcord-git
 	optdepends = org.freedesktop.secrets: Encryption using stored key in the secret service
 	provides = webcord
 	conflicts = webcord
-	source = webcord::git+https://github.com/SpacingBat3/WebCord.git
+	source = webcord::git+https://github.com/SpacingBat3/WebCord.git?signed
 	source = webcord.desktop
-	md5sums = SKIP
-	md5sums = e7ea606e7dc9e11f4095220333c922be
+	validpgpkeys = EF07385224D965FADB1E3570FECEF941D3081BAA
+	sha512sums = SKIP
+	sha512sums = d376f20214f67abd9f5dd2897215028abb844b724e0aab50f50a923b3c358cfe8faa99298cf4cc629aedcd7a9b39c447bbf9f8f4fdddbcf93581ea11ec9e3d4a
+	b2sums = SKIP
+	b2sums = dd66c896c9b7b42305cf4d438c8e18050f0fb2724e2494964acf8985bf517c00aa5a827658924c4ae614cb2c75d7f0a2d6f3910727b7016aacc8393efffbadc0
 
 pkgname = webcord-git
