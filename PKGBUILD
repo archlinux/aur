@@ -3,7 +3,7 @@
 _pkgname=xlibre-server-common
 _orgpkgname=xlibre-xserver-common
 pkgname=$_pkgname-bin
-pkgver=25.0.0.11
+pkgver=25.0.0.12
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org Xorg server common files (binary release)"
 arch=(x86_64)
@@ -31,7 +31,7 @@ depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
 provides=($_pkgname 'xorg-server-common')
 conflicts=($_pkgname 'xorg-server-common')
 
-sha256sums=('2e14f688c7755d6f32a9465b8f8bdd2d8bc585fdc31c0998260bc255b913d308')
+sha256sums=('60fcc5a8be99bb7f0f90cab4cd992fcaedbe5cee17975b5f7d591868562a23fe')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr var
