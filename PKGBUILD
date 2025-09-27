@@ -2,7 +2,7 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.12.0'
+pkgver='3.12.1'
 pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -67,4 +67,4 @@ package() {
     rm ${pkgdir}/usr/lib/pkgconfig/libzstd.pc
 }
 
-sha256sums=('1569ae722bb39f97fb3175c4479e48c698d3693212f85f30aed4cc1763c27786')
+sha256sums=('c09480c965ecf4e1c2e7692cacff430c55abc643ee567fbaa5ab8897046fe3d2')
