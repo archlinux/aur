@@ -1,6 +1,6 @@
 pkgbase = tmplinux
 	pkgdesc = The tmplinux suite
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = tmplinux
 	depends = tmpsuse
 	depends = tmpstali
 	depends = tmpgentoo
+	depends = tmpvoid
 	depends = untmp
 
 pkgname = tmplinux
