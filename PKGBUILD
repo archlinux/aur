@@ -2,14 +2,14 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=0.5.6.r60.g2d6984c
+pkgver=0.5.13.r4.g703a4d5
 pkgrel=1
 pkgdesc="Minimalistic document viewer"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura"
 license=('Zlib')
 depends=('desktop-file-utils' 'file' 'girara-git' 'libseccomp' 'libsynctex' 'sqlite')
-makedepends=('appstream-glib' 'check' 'git' 'meson' 'ninja' 'python-sphinx' 'texlive-bin')
+makedepends=('appstream' 'appstream-glib' 'check' 'git' 'meson' 'ninja' 'python-sphinx' 'texlive-bin')
 conflicts=('zathura')
 provides=('zathura')
 source=("$pkgname::git+https://github.com/pwmt/zathura.git#branch=develop")

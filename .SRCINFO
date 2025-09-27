@@ -1,10 +1,11 @@
 pkgbase = zathura-git
 	pkgdesc = Minimalistic document viewer
-	pkgver = 0.5.6.r60.g2d6984c
+	pkgver = 0.5.13.r4.g703a4d5
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura
 	arch = x86_64
 	license = Zlib
+	makedepends = appstream
 	makedepends = appstream-glib
 	makedepends = check
 	makedepends = git
