@@ -1,0 +1,4 @@
+[python-mprisify]
+source = "git"
+git = "https://gitlab.com/zehkira/mprisify.git"
+prefix = "v"

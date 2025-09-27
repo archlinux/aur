@@ -1,0 +1,18 @@
+pkgbase = python-mprisify
+	pkgdesc = Python MPRIS server library for Linux media player apps
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/zehkira/mprisify
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-gobject
+	depends = python-pydbus
+	depends = python-strenum
+	source = https://gitlab.com/zehkira/mprisify/-/archive/v1.0.0/mprisify-v1.0.0.tar.gz
+	sha256sums = a3abe8486c22c0e39002f2d46a86812176f8c503bba580580fc1bed24fa56169
+
+pkgname = python-mprisify
