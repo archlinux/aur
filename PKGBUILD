@@ -15,7 +15,7 @@ makedepends=(sagemath)
 source=("http://mirrors.mit.edu/sage/spkg/upstream/database_odlyzko_zeta/database_$_dbname-$pkgver.tar.bz2"
 	'spkg-install')
 sha256sums=('8919f01992718b9bf5c0602dbf16dd9d6f58b141b25f67f5cfd59f6cd0f9a0d4'
-            'dc9046854aaed9458d370bd675821ea9871e6b55f5542470be3d1b4c763f3c53')
+            '43406908cc032819c8aaf09e32a52218f0a70c8444323cea01b1b82c5e5a95b2')
 
 package() {
   export PYTHONPATH="$PWD:/usr/lib/sage/site-packages:/usr/bin"
