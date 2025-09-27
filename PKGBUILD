@@ -36,7 +36,6 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -DVTK_MODULE_ENABLE_VTK_GUISupportQt=YES \
-      -DVTK_MODULE_ENABLE_VTK_IOExportPDF=NO \
       -DVTK_MODULE_ENABLE_VTK_cli11=YES \
       -DVTK_MODULE_ENABLE_VTK_FiltersParallelStatistics=YES \
       -DVTK_MODULE_ENABLE_VTK_FiltersParallelVerdict=YES \
