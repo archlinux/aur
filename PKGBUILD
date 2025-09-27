@@ -2,8 +2,8 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-extra-meta
-pkgver=48
-pkgrel=2
+pkgver=49
+pkgrel=1
 pkgdesc='Meta package to install gnome-extra'
 arch=(any)
 url='https://www.gnome.org/'
