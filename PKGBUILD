@@ -2,9 +2,10 @@
 
 pkgname=snow
 _name=Snow
+groups=(snow-lang)
 pkgver=0.10.0
-pkgrel=2
-_java=24
+pkgrel=4
+_java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/snow"
@@ -14,7 +15,7 @@ depends=(
     zlib
 )
 makedepends=(
-    jdk${_java}-graalvm-ee-bin
+    jdk${_java}-graalvm-bin
     'git'
     'maven'
     'musl'
@@ -48,5 +49,6 @@ package() {
 
     cp -R lib/* "${pkgdir}/usr/lib/${pkgname}"
     cp -R docs/* "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -R *.md "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

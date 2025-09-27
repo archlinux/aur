@@ -1,11 +1,12 @@
 pkgbase = snow
 	pkgdesc = AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code.
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://gitee.com/jcnc-org/snow
 	arch = x86_64
+	groups = snow-lang
 	license = Apache-2.0
-	makedepends = jdk24-graalvm-ee-bin
+	makedepends = jdk25-graalvm-bin
 	makedepends = git
 	makedepends = maven
 	makedepends = musl
