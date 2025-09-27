@@ -1,0 +1,45 @@
+--- a/src/id3.c	2022-02-10 06:19:23.000000000 -0500
++++ b/src/id3.c	2025-09-27 10:48:15.257545235 -0400
+@@ -340,7 +340,7 @@
+ 	  field = ID3Frame_GetField( frames[i], ID3FN_TEXT );
+ 
+ 	  if(field) {
+-            /*            if(!strcasecmp(id3v2_encoding,"utf-8")) {
++            /*            if(!g_strcasecmp(id3v2_encoding,"utf-8")) {
+ 	      ID3Field_SetUNICODE(field,(unicode_t *)c_data);
+ 	    }
+ 	    else {
+@@ -354,7 +354,7 @@
+             if(!conv_str) {
+               printf("***convert failed\n");
+ 
+-              conv_str=strdup(c_data);
++              conv_str=g_strdup(c_data);
+             }
+ 
+             ID3Field_SetASCII(field,conv_str);
+@@ -447,12 +447,12 @@
+   char *conv_str;
+   gsize rb,wb;
+ 
+-  if(encoding&&strcasecmp(encoding,"utf-8")) {
++  if(encoding&&g_strcasecmp(encoding,"utf-8")) {
+     conv_str=g_convert_with_fallback(src,strlen(src),encoding,"utf-8",NULL,&rb,&wb,NULL);
+ 
+-    if(!conv_str) conv_str=strdup(src);
++    if(!conv_str) conv_str=g_strdup(src);
+   }
+-  else conv_str=strdup(src);
++  else conv_str=g_strdup(src);
+ 
+   srclen=strlen(conv_str);
+ 
+@@ -488,7 +488,7 @@
+   int pos;
+   
+   for(pos=0;id3_genres[pos].name;pos++)
+-    if(!strcasecmp(genre,id3_genres[pos].name))
++    if(!g_strcasecmp(genre,id3_genres[pos].name))
+       return id3_genres[pos].num;
+   
+   return 12;
