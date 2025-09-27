@@ -1,7 +1,7 @@
 pkgbase = bpftrace-git
 	pkgdesc = High-level tracing language for Linux eBPF
-	pkgver = r4397.19ab9e3d
-	pkgrel = 3
+	pkgver = v0.24.rc0.r125.gc47f16f5
+	pkgrel = 1
 	url = https://github.com/bpftrace/bpftrace
 	arch = i686
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = bpftrace-git
 	conflicts = bpftrace
 	options = !strip
 	options = !debug
-	source = https://github.com/libbpf/blazesym/archive/refs/tags/v0.2.0-rc.5.tar.gz
+	source = blazesym-v0.2.0.tar.gz::https://github.com/libbpf/blazesym/archive/refs/tags/v0.2.0.tar.gz
 	source = git+https://github.com/bpftrace/bpftrace.git
-	sha512sums = ddac1dd51119d99aa09b59c641c7d53803845cfd642856b90a9f4fbd5da0d8e636a2e6cbb916578bbb1586082cc67645a789a0d86ae4a1f4a5fee2df89c0ed63
+	sha512sums = bff471268b98cf0d900a2fd1bee1eb86cfe3b54ad6ffd15b359a3e5601078f5b14c5c05a3b7e03b0d00f8a70a5c5cb2065438c5dd7107b4a5e7e4ad4ffec99fd
 	sha512sums = SKIP
 
 pkgname = bpftrace-git

@@ -2,8 +2,8 @@
 # Contributor: Tommaso Sardelli <lacapannadelloziotom at gmail dot com>
 pkgname=bpftrace-git
 _pkgname=bpftrace
-pkgver=r4397.19ab9e3d
-pkgrel=3
+pkgver=v0.24.rc0.r125.gc47f16f5
+pkgrel=1
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/bpftrace/bpftrace"
@@ -15,12 +15,12 @@ makedepends=('binutils' 'cmake' 'cargo' 'llvm' 'git' 'linux-headers' 'ninja' 'gt
              'asciidoctor' 'xxd')
 conflicts=('bpftrace')
 provides=('bpftrace')
-_blazesymver=v0.2.0-rc.5
+_blazesymver=v0.2.0
 # Blazesym is not in the main archives, and the AUR package is very outdated.
 # Once either of those have a version we can depend on, we should switch over.
-source=("https://github.com/libbpf/blazesym/archive/refs/tags/${_blazesymver}.tar.gz"
+source=("blazesym-${_blazesymver}.tar.gz::https://github.com/libbpf/blazesym/archive/refs/tags/${_blazesymver}.tar.gz"
         "git+https://github.com/bpftrace/bpftrace.git")
-sha512sums=('ddac1dd51119d99aa09b59c641c7d53803845cfd642856b90a9f4fbd5da0d8e636a2e6cbb916578bbb1586082cc67645a789a0d86ae4a1f4a5fee2df89c0ed63'
+sha512sums=('bff471268b98cf0d900a2fd1bee1eb86cfe3b54ad6ffd15b359a3e5601078f5b14c5c05a3b7e03b0d00f8a70a5c5cb2065438c5dd7107b4a5e7e4ad4ffec99fd'
             'SKIP')
 options=('!strip' '!debug')
 
@@ -49,6 +49,9 @@ build() {
     cp target/release/libblazesym_c.a ../blazesym-install/lib/
     cp -r capi/include/* ../blazesym-install/include/
   )
+  # Workaround for https://github.com/bpftrace/bpftrace/issues/4666
+  CFLAGS="$CFLAGS -I${srcdir}/blazesym-install/include" \
+  CXXFLAGS="$CXXFLAGS -I${srcdir}/blazesym-install/include" \
   cmake -S bpftrace -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
