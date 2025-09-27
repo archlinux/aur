@@ -1,20 +1,21 @@
 pkgbase = mindustry-git
 	pkgdesc = A sandbox tower defense game
-	pkgver = 150.1.r32.gdb7aba8
+	pkgver = 152.r2.gf8d86ac
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL-3.0-only
 	makedepends = java-environment=17
-	makedepends = alsa-lib
 	makedepends = git
 	makedepends = libicns
+	depends = alsa-lib
 	source = mindustry::git+https://github.com/Anuken/Mindustry.git
 	source = mindustry-arc::git+https://github.com/Anuken/Arc.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mindustry-git
+	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	provides = mindustry
@@ -22,6 +23,7 @@ pkgname = mindustry-git
 
 pkgname = mindustry-server-git
 	pkgdesc = A sandbox tower defense game - server
+	depends = alsa-lib
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	provides = mindustry-server

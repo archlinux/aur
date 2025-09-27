@@ -5,16 +5,18 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname-git"
-pkgver=150.1.r32.gdb7aba8
+pkgver=152.r2.gf8d86ac
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
 arch=('any')
 
+depends=(
+  'alsa-lib'
+)
 makedepends=(
   "java-environment=${_java_ver:?}"
-  'alsa-lib'
   'git'
   'libicns'
 )
