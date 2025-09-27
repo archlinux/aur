@@ -1,6 +1,6 @@
 pkgbase = freeshow-git
 	pkgdesc = A software with a friendly interface and powerful features for making slideshows
-	pkgver = 1.4.9.r0.g6622de2
+	pkgver = 1.5.0.r0.gc8595b0
 	pkgrel = 1
 	url = https://github.com/ChurchApps/FreeShow
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = freeshow-git
 	depends = nss
 	depends = pango
 	provides = freeshow
+	conflicts = freeshow-lts
 	conflicts = freeshow-bin
 	conflicts = freeshow
 	options = !debug

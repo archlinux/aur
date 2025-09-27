@@ -1,11 +1,11 @@
 # Maintainer: Jørgen Stråbø <aur@jorgen-10.no>
 pkgname='freeshow-git'
-pkgver='1.4.9.r0.g6622de2'
+pkgver='1.5.0.r0.gc8595b0'
 pkgrel='1'
 pkgdesc="A software with a friendly interface and powerful features for making slideshows"
 arch=('x86_64')
 provides=('freeshow')
-conflicts=('freeshow-bin' 'freeshow')
+conflicts=('freeshow-lts' 'freeshow-bin' 'freeshow')
 url="https://github.com/ChurchApps/FreeShow"
 options=('!debug' '!strip')
 license=('GPL-3.0-or-later')
