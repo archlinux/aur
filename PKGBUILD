@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=vinecopulib
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ vine copula library"
 license=(MIT)
 arch=(x86_64)
@@ -30,8 +30,7 @@ build() {
     -DCMAKE_CXX_COMPILER=g++ \
     -DBUILD_TESTING=OFF \
     -DOPT_ASAN=ON \
-    -DVINECOPULIB_SHARED_LIB=ON \
-    -DWARNINGS_AS_ERRORS=OFF \
+    -DVINECOPULIB_PRECOMPILED=ON \
     -Wno-dev
   cmake --build build --target all
 }
