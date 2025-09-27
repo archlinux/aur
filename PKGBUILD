@@ -23,14 +23,14 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 epoch=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=(GPL-2.0-or-later)
-depends=("obs-studio>=28" "obs-face-tracker-dlib-models-git" "glibc" "gcc-libs" "qt6-base")
+depends=("obs-studio>=31" "obs-face-tracker-dlib-models-git" "glibc" "gcc-libs" "qt6-base")
 makedepends=("cmake" "git")
 options=('debug')
 source=(
