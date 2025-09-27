@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rtpca
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Thermal proximity co-aggregation with R'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-tpp
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9bd908a92fcd8a4ec6fb1be5e77fc65e2b11a762e35432bfde7ad858d4e7cda3')
+sha256sums=('3065a56f9afc90a64ccd15e2112d01c8a9faa135c21a03e2f99db34926461908')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
