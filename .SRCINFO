@@ -1,10 +1,11 @@
 pkgbase = flatpost
 	pkgdesc = Desktop Environment agnostic flatpak-only shop gui
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/flatpost
 	arch = any
 	license = BSD-2-Clause AND GPL-3.0-or-later
+	makedepends = python
 	depends = flatpak
 	depends = python-requests
 	depends = python-dbus
