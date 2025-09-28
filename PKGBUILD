@@ -1,4 +1,4 @@
-# Maintainer: lucas <lucas.mior.2@gmail.com>
+# Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="brn2-git"
 pkgver=r768.9c8b6f7
