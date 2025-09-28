@@ -86,7 +86,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'SKIP'
-	'890ea3bb9181ffb5d9055080e59e87435a3d54f87be9ae1375d49bc0057b7f6c'
+	'139ef50f80f0903cdf4fa7696716f4b302fa70e56a6bc90744897942163223af'
 )
 
 export KBUILD_BUILD_HOST=blisslabs
