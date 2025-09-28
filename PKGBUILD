@@ -8,7 +8,7 @@ pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer so
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls2' 'hicolor-icon-theme')
+depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
 optdepends=('i2c-tools: mainboard & RAM access'
             'openrazer-driver-dkms: for Razer devices')
@@ -27,11 +27,10 @@ build() {
 
   # Fix crashes
   export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
-  export LDFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" # props to AndyRTR for linking to mbedtls2 fix
 
   cd "$srcdir/OpenRGB-release_candidate_$pkgver"
   sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
-  qmake INCLUDEPATH+="/usr/include/mbedtls2" OpenRGB.pro
+  qmake OpenRGB.pro
   make
 }
 
