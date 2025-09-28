@@ -1,7 +1,7 @@
 pkgbase = simple-live-app
 	pkgdesc = An app for watching live
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaoyaocz/dart_simple_live
 	arch = x86_64
 	arch = aarch64

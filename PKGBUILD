@@ -7,7 +7,7 @@ pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
@@ -66,10 +66,11 @@ package() {
   cmake -P cmake_install.cmake
   for f in ${pkgdir}/usr/lib/${_pkgname}/lib/*.so; do patchelf --shrink-rpath --allowed-rpath-prefixes '$ORIGIN' "$f"; done
   for f in ${pkgdir}/usr/lib/${_pkgname}/lib/*.so; do if [ -z "$(patchelf --print-rpath $f)" ]; then patchelf --remove-rpath "$f"; fi; done
+  patchelf --add-needed libquickjs_c_bridge_plugin.so "${pkgdir}/usr/lib/${_pkgname}/${_appname}"
   # link executable into PATH
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_pkgname}"  # icon
-  install -Dm644 "${srcdir}/${_pkgname}/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  ln -s "/usr/lib/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_pkgname}"  
+  install -Dm644 "${srcdir}/${_pkgname}/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png" # icon
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # desktop entry
