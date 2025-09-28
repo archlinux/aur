@@ -1,8 +1,8 @@
 # Maintainer: Pablo Cendrero <pabloagujeronegro2013@gmail.com>
 pkgname=lock-config
 pkgver=1.0
-pkgrel=1
-pkgdesc="Servicio de systemd para lanzar xss-lock con i3lock al suspender"
+pkgrel=3
+pkgdesc="i3lock-color configuration, launch with lock command"
 arch=('any')
 url="https://aur.archlinux.org/"
 license=('GPL')

@@ -1,7 +1,7 @@
 pkgbase = lock-config
-	pkgdesc = Servicio de systemd para lanzar xss-lock con i3lock al suspender
+	pkgdesc = i3lock-color configuration, launch with lock command
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/
 	arch = any
 	license = GPL
