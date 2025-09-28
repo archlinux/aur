@@ -1,0 +1,20 @@
+pkgbase = wayvibes-gtk
+	pkgdesc = Wayvibes clone with GTK
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AurexDev/wayvibes-gtk
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = gtk3
+	makedepends = libevdev
+	makedepends = git
+	depends = gtk3
+	depends = libevdev
+	source = git+https://github.com/AurexDev/wayvibes-gtk.git
+	md5sums = SKIP
+
+pkgname = wayvibes-gtk
