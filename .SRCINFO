@@ -1,7 +1,7 @@
 pkgbase = ttybatd
 	pkgdesc = A basic battery monitor that yells at you when you have 15% left, then yells at you again when you have 7% left with a dramatic 20-second-countdown-till-suspension twist.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gducpm/ttybatd
 	install = ttybatd.install
 	arch = any
