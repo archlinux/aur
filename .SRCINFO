@@ -1,0 +1,18 @@
+pkgbase = system-monitor
+	pkgdesc = A powerful Bash script for real-time system monitoring (CPU, memory, disk, network, processes)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DanLinX2004X/system-monitor
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	depends = procps-ng
+	depends = util-linux
+	depends = grep
+	depends = gawk
+	optdepends = bc: for precise calculations
+	source = system-monitor-1.0.0.tar.gz::https://github.com/DanLinX2004X/system-monitor/archive/v1.0.0.tar.gz
+	sha256sums = 7eb18b7a4ee21e71ccc180011f50ba77e1442011e8ac0a72a94c7e0105e6653f
+
+pkgname = system-monitor
