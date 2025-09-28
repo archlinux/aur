@@ -6,11 +6,13 @@ pkgdesc="A script for makepkg/paru to warn about maintainers from countries you 
 arch=('any')
 license=('GPL')
 depends=('bash' 'jq' 'git' 'curl')
+
+
 source=("suspcheck.sh" "suscheck.sh" "makepkg.wrapper.sh"
         "suspcheck-blocked-locations.txt"
         "suspcheck-denylist.txt"
         "suspcheck-blocked-domains.txt"
-        "suscheck-data/" "index.json")
+        "suscheck-data/" "index.json" "suscheck-data.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
@@ -25,36 +27,32 @@ prepare() {
     if [[ -f /usr/bin/makepkg && ! -f /usr/bin/makepkg.real ]]; then
         sudo mv /usr/bin/makepkg /usr/bin/makepkg.real
     fi
+    tar czf suscheck-data.tar.gz -C suscheck-data .
+
 }
 
 package() {
     # Install wrapper first
     install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
 
-    # Install uninstall script
-    install -Dm755 suscheck-uninstall.sh "$pkgdir/usr/local/bin/suscheck-uninstall"
+    #install restoring script
+    install -Dm755 suscheck-uninstall.sh "$pkgdir/usr/local/bin/suscheck uninstall"
 
-    # Install suscheck scripts
+
+    # Install sus-check script
     install -Dm755 suspcheck.sh "$pkgdir/usr/local/bin/suspcheck.sh"
+
+    # Install suscheck DB maintaining script
     install -Dm755 suscheck.sh "$pkgdir/usr/local/bin/suscheck.sh"
 
-    # Create etc folders
-    mkdir -p "$pkgdir/usr/local/etc"
-    mkdir -p "$pkgdir/usr/local/etc/suscheck-data"
 
-    # --- Old txt files (for legacy) ---
+    # Install supporting files
+    mkdir -p "$pkgdir/usr/local/etc"
     cp -f suspcheck-blocked-locations.txt "$pkgdir/usr/local/etc/"
     cp -f suspcheck-denylist.txt "$pkgdir/usr/local/etc/"
     cp -f suspcheck-blocked-domains.txt "$pkgdir/usr/local/etc/"
 
-    # --- Copy everything into suscheck-data (duplicates included) ---
-    cp -f suspcheck-blocked-locations.txt "$pkgdir/usr/local/etc/suscheck-data/"
-    cp -f suspcheck-denylist.txt "$pkgdir/usr/local/etc/suscheck-data/"
-    cp -f suspcheck-blocked-domains.txt "$pkgdir/usr/local/etc/suscheck-data/"
+    # Extract the tarball into the subdirectory
+    tar xzf suscheck-data.tar.gz -C "$pkgdir/usr/local/etc/suscheck-data"
 
-    cp -f suscheck-data/*.txt "$pkgdir/usr/local/etc/suscheck-data/" 2>/dev/null || true
-    cp -f suscheck-data/*.json "$pkgdir/usr/local/etc/suscheck-data/" 2>/dev/null || true
-
-    # --- index.json at top level ---
-    cp -f index.json "$pkgdir/usr/local/etc/index.json"
 }

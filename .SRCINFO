@@ -16,6 +16,7 @@ pkgbase = suscheck
 	source = suspcheck-blocked-domains.txt
 	source = suscheck-data/
 	source = index.json
+	source = suscheck-data.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
