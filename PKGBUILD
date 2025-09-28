@@ -1,8 +1,8 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-_basename=ab-download-manager
-pkgname=${_basename}
-pkgver=1.6.13
+_pkgbase=ab-download-manager
+pkgname="$_pkgbase"
+pkgver=1.6.14
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('any')
@@ -16,28 +16,28 @@ depends=(
 )
 makedepends=(
 	'git'
-	'java-environment=17'
+	'java-environment=21'
 	'gradle'
 )
 optdepends=(
-	'libappindicator-gtk3: Tray icon support'
+	'libappindicator-gtk3: tray icon support'
 )
 conflicts=('abdownloadmanager-bin')
 source=(
-	"$_basename::git+https://github.com/amir1376/ab-download-manager.git#tag=v$pkgver"
+	"$_pkgbase::git+https://github.com/amir1376/ab-download-manager.git#tag=v$pkgver"
 	'abdownloadmanager.desktop'
 )
-sha256sums=('822cec33db1215252899ba49d2ced7e587956773969c8c651aac699d60e48b03'
+sha256sums=('86ee86e8f4e7f5b2507a2e4a22fefd0a7c3f76fad9313efc9507c8143aaaad25'
             'd194cf142921d78c8a2a8c6c2b3a8b41bf2545eb2c7147a8f866946528227031')
 
 build() {
-	cd "$_basename"
-	export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+	cd "$_pkgbase"
+	export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 	gradle createReleaseDistributable
 }
 
 package() {
-	cd "$_basename"
+	cd "$_pkgbase"
 	mkdir -p "$pkgdir/opt/abdownloadmanager/"
 	cp -r desktop/app/build/compose/binaries/main-release/app/ABDownloadManager/* "$pkgdir/opt/abdownloadmanager/"
 
