@@ -2,11 +2,11 @@
 pkgname=suscheck
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Wrapper and check script for makepkg/paru to warn about Russian,
+pkgdesc="A script for makepkg/paru to warn about Russian,
 Chineese ,or other maintainers from countries you can find suspicious,
 maintainers. This is not discriminating, but rather information giving tool,
-that allows to add to a list certain domains or locations that you fin
-suspicious for certain reasons."
+that allows to add to a list some domains or locations that you fin
+suspicious for your reasons."
 arch=('any')
 license=('GPL')
 depends=('bash' 'jq' 'git' 'curl')
