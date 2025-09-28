@@ -2,11 +2,12 @@
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
+_extver="-${pkgrel}"
 pkgdesc="Install kernel for the Limine bootloader."
 arch=("any")
 url="https://gitlab.com/Zesko/limine-entry-tool"
-source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
+source=("$url/-/archive/${pkgver}${_extver}/$_pkgname-${pkgver}${_extver}.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
 _jre_version=17
@@ -27,7 +28,7 @@ optdepends=(
 makedepends=('git' 'jdk21-openjdk' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('84312a2e1e30cf85e6d91ec40ae8be5f772e45194c5f9ec9a7c437914c583d4d')
+sha256sums=('eb5412f60b6dcce6beab02217da667de750de0d9cbc4efd9e5ce527dd76003bb')
 
 prepare() {
 	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
@@ -39,12 +40,12 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${_pkgname}-${pkgver}"
+	cd "$srcdir/${_pkgname}-${pkgver}${_extver}"
 	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk mvn clean package
 }
 
 package() {
-	cd "$srcdir/${_pkgname}-${pkgver}"
+	cd "$srcdir/${_pkgname}-${pkgver}${_extver}"
 	src_path="install/arch-linux/${pkgname}"
 	install -dm 755 $src_path/usr/share/java/
 	install -dm 755 $src_path/usr/share/limine-entry-tool.d/
