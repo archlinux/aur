@@ -5,10 +5,10 @@ pkgbase = freetype2-macos-browsers-binary-patcher
 	url = https://www.freetype.org/
 	arch = any
 	license = GPL
-	depends = updpkgsums
+	depends = ripgrep
 	source = 99-binary-patch-freetype-in-broswers.hook
 	source = binary-patch-freetype-in-broswers
 	md5sums = 238ed0626e35d3dc036d4fa024bb7b61
-	md5sums = 8cab5bfbbcbd04b09375822f26f18e5c
+	md5sums = b51f4e236689b55f9c4779730e7053ca
 
 pkgname = freetype2-macos-browsers-binary-patcher
