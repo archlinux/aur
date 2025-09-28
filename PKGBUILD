@@ -7,7 +7,7 @@ url='https://github.com/timasoft/hyprviz'
 license=("GPL-2.0")
 arch=("x86_64" "aarch64")
 depends=(gtk4 glib2 desktop-file-utils hyprland )
-makedepends=("cargo" "rust" "pkgconf" "pkg-config")
+makedepends=("cargo" "rust" "pkgconf" "pkg-config" "clang")
 provides=("$pkgname")
 conflicts=("hyprviz-bin")
 source=("https://github.com/timasoft/hyprviz/archive/refs/tags/v0.6.1.tar.gz")
@@ -15,6 +15,10 @@ sha256sums=('630159338b6bad39c8e87be5e0f61d96d732d8b8ab1f30df2f502c7c6c6feb8e')
 
 build() {
   cd "${srcdir}/hyprviz-${pkgver}"
+
+  export CC=clang
+  export CXX=clang++
+
   cargo build --release --locked
 }
 

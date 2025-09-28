@@ -10,6 +10,7 @@ pkgbase = hyprviz
 	makedepends = rust
 	makedepends = pkgconf
 	makedepends = pkg-config
+	makedepends = clang
 	depends = gtk4
 	depends = glib2
 	depends = desktop-file-utils
