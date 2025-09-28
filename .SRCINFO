@@ -1,0 +1,18 @@
+pkgbase = islamic-prayer-timings
+	pkgdesc = Utility and daemon to get Islamic prayer timings using aladhan.com API
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/abdalrahmanshaban0/islamic-prayer-timings
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = nlohmann-json
+	depends = curl
+	depends = libnotify
+	provides = islamic-prayer-timings
+	conflicts = islamic-prayer-timings-git
+	source = git+https://github.com/abdalrahmanshaban0/islamic-prayer-timings.git#tag=v1.1.1
+	sha256sums = SKIP
+
+pkgname = islamic-prayer-timings
