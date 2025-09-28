@@ -36,7 +36,7 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver#branch=0.6.x'
         )
 
 sha256sums=('SKIP'
-            '5b9db850e29b66a218a165f2d109375e15416069d2c759cac79cc6af6b04688a')
+            '33e50caf00ab290463acaa09b024bcd8bcf6a39911db2fc506e88495171bf3e3')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
