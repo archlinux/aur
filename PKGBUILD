@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=stasis
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('systemd' 'libinput' 'wayland')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('504cc3ed48c0a5872df389e219f03032f347aa4f5673bd39a98c7bf9340aaf81')
+sha256sums=('a9022843f48daa2ddd9f9239088247b204ed1efad31b722d954b9b72e0cff699')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
+    cargo build --release --locked --features "wlroots_virtual_keyboard"
 }
 
 package() {
