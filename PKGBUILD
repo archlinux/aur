@@ -8,7 +8,7 @@
 pkgbase=protonmail-bridge-free-nokeychain
 pkgname="${pkgbase}-git"
 _pkgbase=proton-bridge
-pkgver=3.21.2.r0.g7d1e9135
+pkgver=3.21.2
 pkgrel=1
 pkgdesc="Proton Mail Bridge fork (free) without keychain requirement; stores secrets in a file"
 arch=(x86_64)
@@ -27,11 +27,14 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
-  local internal_ver ver_count git_rev
-  internal_ver=$(grep -E '^BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/^[^=]+= *([^ ]+).*/\1/')
-  ver_count=$(git rev-list --count HEAD)
-  git_rev=$(git rev-parse --short HEAD)
-  printf '%s.r%s.g%s' "${internal_ver%%+*}" "${ver_count}" "${git_rev}"
+  local internal_ver clean_ver
+  internal_ver=$(grep -E '^BRIDGE_APP_VERSION\?=' Makefile | sed -E 's/^[^=]+= *([^ ]+).*/\1/' | head -n1)
+  if [[ -z "${internal_ver}" ]]; then
+    printf '0'
+    return 0
+  fi
+  clean_ver="${internal_ver%%+*}"
+  printf '%s' "${clean_ver}"
 }
 
 prepare() {
@@ -46,7 +49,10 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -v -buildvcs=false -o protonmail-bridge ./cmd/Desktop-Bridge/
+    make build-nogui BUILD_ENV="Arch Linux" || {
+    echo "Falling back to bare go build..." >&2
+    go build -v -buildvcs=false -o protonmail-bridge ./cmd/Desktop-Bridge/
+  }
 }
 
 package() {
