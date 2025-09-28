@@ -30,8 +30,16 @@ package() {
     # Install wrapper first
     install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
 
-    # Install ru-check script
+    #install restoring script
+    install -Dm755 suscheck-uninstall.sh "$pkgdir/usr/local/bin/suscheck uninstall"
+
+
+    # Install sus-check script
     install -Dm755 suspcheck.sh "$pkgdir/usr/local/bin/suspcheck.sh"
+
+    # Install suscheck DB maintaining script
+    install -Dm755 suscheck.sh "$pkgdir/usr/local/bin/suscheck.sh"
+
 
     # Install supporting files
     mkdir -p "$pkgdir/usr/local/etc"

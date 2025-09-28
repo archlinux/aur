@@ -60,12 +60,57 @@ for email in $ALL_EMAILS; do
     done
 done
 
+# --- 1b. Load modular country JSON structure (optional enhancement) ---
+MODULAR_INDEX="/usr/local/etc/suscheck-data/index.json"
+declare -A COUNTRY_CITIES COUNTRY_DOMAINS COUNTRY_MAINTAINERS COUNTRY_REASON
+
+if [[ -f "$MODULAR_INDEX" ]]; then
+    mapfile -t MODULE_FILES < <(jq -r '.modules[]' "$MODULAR_INDEX")
+    for mod in "${MODULE_FILES[@]}"; do
+        [[ ! -f "$mod" ]] && continue
+
+        country=$(jq -r '.country' "$mod")
+        COUNTRY_REASON[$country]=$(jq -r '.reason' "$mod")
+
+        mapfile -t cities < <(jq -r '.cities[]?' "$mod")
+        COUNTRY_CITIES[$country]="${cities[*]}"
+
+        mapfile -t domains < <(jq -r '.domains[]?' "$mod")
+        COUNTRY_DOMAINS[$country]="${domains[*]}"
+
+        mapfile -t maintainers < <(jq -r '.maintainers[]?' "$mod")
+        COUNTRY_MAINTAINERS[$country]="${maintainers[*]}"
+    done
+fi
+
+
 # --- 2. Check PKGBUILD for suspicious URLs ---
 SUSP_URLS=$(grep -ioE "https?://[[:alnum:]./-]+\.(ru|su|cn|by|kp)" "$PKGBUILD" || true)
 
 # --- 3. Extract GitHub usernames from source URLs ---
 GITHUB_USERS=$(grep -ioE "https?://github.com/([A-Za-z0-9_-]+)" "$PKGBUILD" \
     | sed -E 's|https?://github.com/||' | sed 's|/.*||')
+
+# --- 3b. Check modular country structure ---
+for country in "${!COUNTRY_DOMAINS[@]}"; do
+    for domain in ${COUNTRY_DOMAINS[$country]}; do
+        for email in $ALL_EMAILS; do
+            [[ "$email" == *"$domain" ]] && echo "⚠️ Email $email matches $country — ${COUNTRY_REASON[$country]}"
+        done
+        for url in $SUSP_URLS; do
+            [[ "$url" == *"$domain" ]] && echo "⚠️ URL $url matches $country — ${COUNTRY_REASON[$country]}"
+        done
+    done
+done
+
+for user in $GITHUB_USERS; do
+    for country in "${!COUNTRY_MAINTAINERS[@]}"; do
+        for maint in ${COUNTRY_MAINTAINERS[$country]}; do
+            [[ "$user" == "$maint" ]] && echo "⚠️ GitHub user $user matches $country — ${COUNTRY_REASON[$country]}"
+        done
+    done
+done
+
 
 # --- 4. Check usernames against denylist & location ---
 declare -A WARNINGS
