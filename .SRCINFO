@@ -1,16 +1,18 @@
 pkgbase = autoaspm-git
 	pkgdesc = A script that automatically activates ASPM for all supported devices on Linux
-	pkgver = r5.e3bbeb5
-	pkgrel = 2
+	pkgver = r10.0c73e0e
+	pkgrel = 1
 	url = https://github.com/notthebee/AutoASPM
 	arch = any
 	license = unknown
 	makedepends = git
+	depends = pciutils
 	depends = python
-	provides = autoaspm=r5.e3bbeb5
+	depends = which
+	provides = autoaspm=r10.0c73e0e
 	conflicts = autoaspm
 	source = autoaspm-git::git+https://github.com/notthebee/AutoASPM.git
-	source = autoaspm-git.service
+	source = autoaspm.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
