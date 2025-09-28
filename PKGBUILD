@@ -1,13 +1,12 @@
 # Maintainer: karbonedev <muhammed.oktay18100@gmail.com>
 pkgname=anisama-cli
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="Anime streaming CLI with ani-cli style interface for anime-sama.fr"
+pkgdesc="Anime streaming CLI with real episode numbers and special episodes support for anime-sama.fr"
 arch=('any')
 url="https://github.com/karbonedev/anisama-cli"
 license=('MIT')
 depends=('python' 'python-requests' 'python-beautifulsoup4' 'fzf' 'mpv')
-optdepends=('yt-dlp: Optional video extraction support')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/karbonedev/${pkgname}.git")
 sha256sums=('SKIP')
