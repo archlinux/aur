@@ -101,12 +101,12 @@ optdepends=(
     "python-pysftp: sftp plugin"
     "python-qbittorrent-api: qbittorrent plugin"
     "python-rarfile: rarfile plugin"
-    "python-subliminal: subtitles plugin"
     "python-pillow: telegram plugin"
     "python-telegram-bot: telegram plugin"
     "python-h2: telegram plugin"
     "python-socksio: telegram plugin"
     "python-transmission-rpc: transmission plugin"
+    "subliminal: subtitles plugin"
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
