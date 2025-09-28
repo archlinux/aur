@@ -1,10 +1,15 @@
 pkgbase = t2stock-bin
 	pkgdesc = Real-time stock price tracker
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
+	url = https://github.com/franpfeiffer/t2stock
+	conflicts = t2stock
+	provides = t2stock
+	arch = aarch64
+	source_aarch64 = https://github.com/franpfeiffer/t2stock/releases/download/v1.0.1/t2stock_1.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 27b67a4445f040a8fb2c06bd738279eab49e62cb3ebb841d847945fdae77ce08
 	arch = x86_64
-	license = MIT
-	source = https://github.com/franpfeiffer/t2stock/releases/download/v1.0.0/t2stock_1.0.0_linux_amd64.tar.gz
-	sha256sums = SKIP
-
+	source_x86_64 = https://github.com/franpfeiffer/t2stock/releases/download/v1.0.1/t2stock_1.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 57c944614a41f9ff574aa381a95197b487ea3d0681b95ed99452811caaca553a
+	
 pkgname = t2stock-bin
