@@ -2,14 +2,14 @@
 
 pkgname=danxi-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.8.r57.g2f4722c
+pkgver=1.4.9.r23.gde18cdf
 pkgrel=2
 pkgdesc="Maybe the best all-rounded service app for Fudan University students | 可能是复旦学生最好的第三方校园服务 APP"
 url="https://github.com/DanXi-Dev/DanXi"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('gtk3' 'libsecret' 'gnome-keyring')
-makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'imagemagick')
+makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'imagemagick' 'patchelf')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}.git")
@@ -43,6 +43,9 @@ package() {
 	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
 	cmake -P cmake_install.cmake
 	popd
+
+	# Reset RUNPATH
+	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${_pkgname}/lib/*.so
 
 	# Symlink
 	install -dm755 "${pkgdir}/usr/bin"
