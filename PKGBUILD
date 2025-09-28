@@ -1,4 +1,4 @@
-# Maintainer: lucas <lucas.mior.2@gmail.com>
+# Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="clipsim-git"
 pkgver=r571.2559778
