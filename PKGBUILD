@@ -2,14 +2,15 @@
 
 pkgname=ttf-gowun-dodum
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A humanist sans-serif typeface with a touch of hand movement."
 arch=('any')
 license=('OFL')
 url="https://github.com/yangheeryu/Gowun-Dodum"
-source=("Gowun_Dodum.zip::https://fonts.google.com/download?family=Gowun+Dodum")
-sha256sums=('c8e4c444430d6e3cb56989fd8eb2623cbe5f35a9c586524d26c588d9dfdf048c')
-
+source=("https://github.com/yangheeryu/Gowun-Dodum/raw/refs/heads/master/fonts/ttf/GowunDodum-Regular.ttf"
+        "https://raw.githubusercontent.com/yangheeryu/Gowun-Dodum/refs/heads/master/OFL.txt")
+sha256sums=('a6e457933227483a11758fd0947bc74422a106d46f0bf057fdaa5af94a30067d'
+            'a7c73f9521cd646bbdfb6684c99a62311bbd7bce11898dc11ef0b3c69eda1aca')
 package() {
   install -dm 755 $pkgdir/usr/share/fonts/TTF
   install -m 644 $srcdir/*.ttf $pkgdir/usr/share/fonts/TTF
