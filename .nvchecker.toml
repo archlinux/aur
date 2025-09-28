@@ -1,4 +1,4 @@
-[makemkv]
+[makemkv-cli]
 source = 'regex'
 url = 'https://www.makemkv.com/download/'
 encoding = 'utf8'
