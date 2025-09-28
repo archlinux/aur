@@ -1,6 +1,6 @@
 pkgbase = python-textual-autocomplete
 	pkgdesc = Easily add autocomplete dropdowns to your Textual apps
-	pkgver = 4.0.5
+	pkgver = 4.0.6
 	pkgrel = 1
 	url = https://github.com/darrenburns/textual-autocomplete
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-textual-autocomplete
 	depends = python>=3.9
 	depends = python-rich
 	depends = python-textual>=2
-	source = textual_autocomplete-4.0.5.tar.gz::https://files.pythonhosted.org/packages/source/t/textual_autocomplete/textual_autocomplete-4.0.5.tar.gz
-	sha256sums = db8066fc7d87c74afd08367f8fc2144bcec5ddbdea63a637249754e9d1fd8755
+	source = textual_autocomplete-4.0.6.tar.gz::https://files.pythonhosted.org/packages/source/t/textual_autocomplete/textual_autocomplete-4.0.6.tar.gz
+	sha256sums = 2ba2f0d767be4480ecacb3e4b130cf07340e033c3500fc424fed9125d27a4586
 
 pkgname = python-textual-autocomplete
