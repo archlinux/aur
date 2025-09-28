@@ -34,8 +34,7 @@ url="https://github.com/damachine/tkginstaller"
 license=('MIT')
 depends=('fzf' 'bat' 'curl' 'git' 'glow')
 optdepends=('nano: for editing config files'
-            'onefetch: for git info display'
-            'vim: for editing config files')
+            'onefetch: for git info display')
 source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
 sha256sums=('SKIP')
 
