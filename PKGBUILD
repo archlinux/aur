@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spsUtil
-_pkgver=0.2.2
+_pkgver=0.2.2.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.2
-pkgrel=4
+pkgver=0.2.2.1
+pkgrel=1
 pkgdesc="'systemPipeShiny' Utility Functions"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('86b60f4717b418e32a834949aa959d1cd633ad9794b4f0545377e75797f811c2')
+sha256sums=('1247f628571c046805c9b0e4acf4bd5c25fa8312974085483c1422a5e46a7b8a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = r-spsutil
 	pkgdesc = 'systemPipeShiny' Utility Functions
-	pkgver = 0.2.2
-	pkgrel = 4
+	pkgver = 0.2.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=spsUtil
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-spsutil
 	depends = r-r6
 	depends = r-stringr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/spsUtil_0.2.2.tar.gz
-	sha256sums = 86b60f4717b418e32a834949aa959d1cd633ad9794b4f0545377e75797f811c2
+	source = https://cran.r-project.org/src/contrib/spsUtil_0.2.2.1.tar.gz
+	sha256sums = 1247f628571c046805c9b0e4acf4bd5c25fa8312974085483c1422a5e46a7b8a
 
 pkgname = r-spsutil
