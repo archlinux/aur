@@ -3,9 +3,9 @@
 _pkgbase=pakku-mc
 pkgname="$_pkgbase-git"
 pkgver=1.2.1.r37.gb8554ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Modpack manager for Minecraft: Java Edition"
-arch=('x86_64')
+arch=('any')
 url="https://juraj-hrivnak.github.io/Pakku/"
 license=('EUPL-1.2')
 depends=('java-runtime-headless=21')
