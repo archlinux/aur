@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.8.2
+pkgver=3.8.3
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('69c1f718a1d918fd3a2f1ff2bc13a6c590c1ab7df08eec1c3143a7c07876fe57'
+sha256sums=('0d5af3a6900ee40fdba0fa2addaeec6f4c1dc6fdcf4bf47ed0cedea62fb2a341'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
@@ -47,7 +47,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _get_electron_version
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -67,6 +66,7 @@ prepare() {
         echo 'registry=https://registry.npmmirror.com' >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} + 
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i -e "
         2i\import { fileURLToPath } from \"node:url\";
@@ -76,6 +76,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist} --config ${srcdir}/electron-builder.yml"
