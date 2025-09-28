@@ -15,7 +15,6 @@ pkgbase = openrgb
 	depends = hicolor-icon-theme
 	optdepends = i2c-tools: mainboard & RAM access
 	optdepends = openrazer-driver-dkms: for Razer devices
-	options = !lto
 	source = https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_1.0rc2/OpenRGB-release_candidate_1.0rc2.tar.gz
 	source = openrgb-modules-load.conf
 	source = openrgb.tmpfiles
