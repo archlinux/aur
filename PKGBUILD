@@ -2,8 +2,8 @@
 # Contributor: <aggraef at gmail.com>
 
 pkgname=pd-l2ork-bin
-pkgver=20250620
-_pkgrev=1b1214f3
+pkgver=20250730
+_pkgrev=656389ec
 _ubuntu_ver=24.04
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (upstream Debian package)"
