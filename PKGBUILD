@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts66
-pkgver=6.6.107
+pkgver=6.6.108
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
