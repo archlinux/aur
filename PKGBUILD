@@ -3,7 +3,7 @@
 realname=PcapPlusPlus
 pkgname="${realname,,}"
 pkgver=25.05
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform C++ library for capturing, parsing and crafting of network packets"
 arch=("x86_64")
 url="https://pcapplusplus.github.io/"
@@ -24,7 +24,7 @@ build() {
         -DLIGHT_PCAPNG_ZSTD=ON \
         -DPCAPPP_INSTALL=ON \
         -DCMAKE_INSTALL_PREFIX="/usr"
-    make -j"$(nproc)" -C build
+    make -C build
 }
 
 package() {
