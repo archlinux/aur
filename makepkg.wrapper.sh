@@ -6,7 +6,7 @@ CHECKER="/usr/local/bin/suspcheck.sh"
 PKGBUILD_PATH="$(pwd)/PKGBUILD"
 
 # Create/clear session scratchpad at start
-SESSION_FILE="/tmp/suscheck-session-$$"
+SESSION_FILE="/tmp/suspcheck-session-$$"
 : > "$SESSION_FILE"
 
 # Skip ru-check for helper calls

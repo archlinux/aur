@@ -1,20 +1,20 @@
 #!/bin/bash
-# ru-check.sh — checks PKGBUILD and GitHub info for Russian developers
+# suscheck.sh — checks PKGBUILD and GitHub info for suspicious developers/domains
 
 PKGBUILD="$1"
 DEEP_SCAN=${2:-0}  # set to 1 to clone repo and check commit emails
 
-BLOCKED_LOC_FILE="/usr/local/etc/ru-blocked-locations.txt"
-DENYLIST_FILE="/usr/local/etc/ru-denylist.txt"
-BLOCKED_EMAIL_FILE="/usr/local/etc/ru-blocked-domains.txt"
+BLOCKED_LOC_FILE="/usr/local/etc/suspcheck-blocked-locations.txt"
+DENYLIST_FILE="/usr/local/etc/suspcheck-denylist.txt"
+BLOCKED_EMAIL_FILE="/usr/local/etc/suspcheck-blocked-domains.txt"
 
-SESSION_FILE="/tmp/ru_check_decision.$$"  # Temp file for session-wide decision
+SESSION_FILE="/tmp/suspcheck_check_decision.$$"  # Temp file for session-wide decision
 
 # --- Reuse previous session decision ---
 if [[ -f "$SESSION_FILE" ]]; then
     DECISION=$(<"$SESSION_FILE")
     if [[ "$DECISION" != [yY] ]]; then
-        echo "❌ Blocked by ru-check (previous decision)"
+        echo "❌ Blocked by suscheck (previous decision)"
         exit 1
     else
         echo "✅ Proceeding (previous decision)"
@@ -24,17 +24,17 @@ fi
 
 # --- Load blocked locations ---
 if [[ -f "$BLOCKED_LOC_FILE" ]]; then
-    mapfile -t RU_LOCATIONS < "$BLOCKED_LOC_FILE"
+    mapfile -t SUSP_LOCATIONS < "$BLOCKED_LOC_FILE"
 else
     echo "⚠️ Blocked locations file not found: $BLOCKED_LOC_FILE"
-    RU_LOCATIONS=()
+    SUSP_LOCATIONS=()
 fi
 
 # --- Load blocked email domains ---
 if [[ -f "$BLOCKED_EMAIL_FILE" ]]; then
     mapfile -t BLOCKED_EMAIL_DOMAINS < "$BLOCKED_EMAIL_FILE"
 else
-    BLOCKED_EMAIL_DOMAINS=(".ru")  # fallback
+    BLOCKED_EMAIL_DOMAINS=(".ru" ".su")  # fallback
 fi
 
 # --- Load denylist usernames ---
@@ -51,21 +51,21 @@ if [[ ! -f "$PKGBUILD" ]]; then
     exit 0
 fi
 
-# --- 1. Check PKGBUILD for .ru emails ---
-RU_EMAILS=$(grep -ioE "[[:alnum:]._%+-]+@[[:alnum:].-]+" "$PKGBUILD" || true)
-SUSPICIOUS_EMAILS=""
-for email in $RU_EMAILS; do
+# --- 1. Check PKGBUILD for suspicious emails ---
+ALL_EMAILS=$(grep -ioE "[[:alnum:]._%+-]+@[[:alnum:].-]+" "$PKGBUILD" || true)
+SUSP_EMAILS=""
+for email in $ALL_EMAILS; do
     for domain in "${BLOCKED_EMAIL_DOMAINS[@]}"; do
-        [[ "$email" == *"$domain" ]] && SUSPICIOUS_EMAILS+="$email "
+        [[ "$email" == *"$domain" ]] && SUSP_EMAILS+="$email "
     done
 done
-RU_EMAILS="$SUSPICIOUS_EMAILS"
 
-# --- 2. Check PKGBUILD for .ru URLs ---
-RU_URLS=$(grep -ioE "https?://[[:alnum:]./-]+\.ru" "$PKGBUILD" || true)
+# --- 2. Check PKGBUILD for suspicious URLs ---
+SUSP_URLS=$(grep -ioE "https?://[[:alnum:]./-]+\.(ru|su|cn|by|kp)" "$PKGBUILD" || true)
 
 # --- 3. Extract GitHub usernames from source URLs ---
-GITHUB_USERS=$(grep -ioE "https?://github.com/([A-Za-z0-9_-]+)" "$PKGBUILD" | sed -E 's|https?://github.com/||' | sed 's|/.*||')
+GITHUB_USERS=$(grep -ioE "https?://github.com/([A-Za-z0-9_-]+)" "$PKGBUILD" \
+    | sed -E 's|https?://github.com/||' | sed 's|/.*||')
 
 # --- 4. Check usernames against denylist & location ---
 declare -A WARNINGS
@@ -76,12 +76,12 @@ for user in $GITHUB_USERS; do
     done
     # location check via GitHub API
     LOCATION=$(curl -s "https://api.github.com/users/$user" | jq -r '.location // empty')
-    for ru in "${RU_LOCATIONS[@]}"; do
-        [[ "$LOCATION" == *"$ru"* ]] && WARNINGS["loc_$user"]="GitHub user $user location: $LOCATION"
+    for loc in "${SUSP_LOCATIONS[@]}"; do
+        [[ "$LOCATION" == *"$loc"* ]] && WARNINGS["loc_$user"]="GitHub user $user location: $LOCATION"
     done
 done
 
-# Print each warning once
+# Print warnings
 for w in "${WARNINGS[@]}"; do
     echo "⚠️  $w"
 done
@@ -93,11 +93,11 @@ if [[ "$DEEP_SCAN" -eq 1 ]]; then
         if [[ -n "$REPO_URL" ]]; then
             TMPDIR=$(mktemp -d)
             git clone --depth 50 "$REPO_URL" "$TMPDIR" &>/dev/null
-            COMMIT_RU=$(git -C "$TMPDIR" log --pretty=format:'%ae' | grep '\.ru' || true)
-            if [[ -n "$COMMIT_RU" ]]; then
-                echo "⚠️  Repo $REPO_URL has .ru commit emails:"
-                echo "$COMMIT_RU"
-                RU_EMAILS="$RU_EMAILS (commit emails)"
+            COMMIT_SUSP=$(git -C "$TMPDIR" log --pretty=format:'%ae' | grep -E '\.(ru|su|cn|by|kp)' || true)
+            if [[ -n "$COMMIT_SUSP" ]]; then
+                echo "⚠️  Repo $REPO_URL has suspicious commit emails:"
+                echo "$COMMIT_SUSP"
+                SUSP_EMAILS="$SUSP_EMAILS (commit emails)"
             fi
             rm -rf "$TMPDIR"
         fi
@@ -105,15 +105,15 @@ if [[ "$DEEP_SCAN" -eq 1 ]]; then
 fi
 
 # --- 6. Prompt if anything suspicious found ---
-if [[ -n "$RU_EMAILS$RU_URLS" ]]; then
+if [[ -n "$SUSP_EMAILS$SUSP_URLS" || ${#WARNINGS[@]} -gt 0 ]]; then
     echo
-    echo "🚨 Potential Russian maintainer/source detected:"
-    [[ -n "$RU_EMAILS" ]] && echo "Emails / info: $RU_EMAILS"
-    [[ -n "$RU_URLS" ]] && echo "URLs: $RU_URLS"
+    echo "🚨 Potentially suspicious maintainer/source detected:"
+    [[ -n "$SUSP_EMAILS" ]] && echo "Emails: $SUSP_EMAILS"
+    [[ -n "$SUSP_URLS" ]] && echo "URLs: $SUSP_URLS"
     echo
     read -p "Install/build package anyway? (y/N): " choice
     choice=${choice:-N}
-    echo "$choice" > "$SESSION_FILE"   # Save decision for the rest of this build session
+    echo "$choice" > "$SESSION_FILE"
     if [[ "$choice" != [yY] ]]; then
         echo "❌ Aborting build."
         exit 1
