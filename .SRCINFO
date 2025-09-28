@@ -1,6 +1,6 @@
 pkgbase = backend-ai-desktop-bin
 	pkgdesc = Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics.
-	pkgver = 25.7.3
+	pkgver = 25.14.4
 	pkgrel = 1
 	url = https://www.backend.ai/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = backend-ai-desktop-bin
 	license = LGPL-3.0-or-later
 	makedepends = gendesk
 	depends = electron30
-	provides = backend-ai-desktop=25.7.3
+	provides = backend-ai-desktop=25.14.4
 	conflicts = backend-ai-desktop
 	conflicts = backend.ai
 	conflicts = backend.ai-desktop
-	source = backend-ai-desktop-25.7.3.png::https://raw.githubusercontent.com/lablup/backend.ai-webui/v25.7.3/manifest/backend-ai.iconset/icon_512x512%401x.png
+	source = backend-ai-desktop-25.14.4.png::https://raw.githubusercontent.com/lablup/backend.ai-webui/v25.14.4/manifest/backend-ai.iconset/icon_512x512%401x.png
 	source = backend-ai-desktop.sh
 	sha256sums = c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = backend-ai-desktop-25.7.3-aarch64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v25.7.3/backend.ai-desktop-25.7.3-linux-arm64.zip
-	sha256sums_aarch64 = 1b91f6a05e1fad2ad3d4cf046a7a912c9ac71badac4a350286e9d8bb26bc5afd
-	source_x86_64 = backend-ai-desktop-25.7.3-x86_64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v25.7.3/backend.ai-desktop-25.7.3-linux-x64.zip
-	sha256sums_x86_64 = 22fca66e48f25f94f8088ec9f9939551050d072adf511b222f0c9058d73078b7
+	source_aarch64 = backend-ai-desktop-25.14.4-aarch64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v25.14.4/backend.ai-desktop-25.14.4-linux-arm64.zip
+	sha256sums_aarch64 = 438ea0fe694c194ee3469c46182381c76903fa8e62e4e8daadcbb49534499fb3
+	source_x86_64 = backend-ai-desktop-25.14.4-x86_64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v25.14.4/backend.ai-desktop-25.14.4-linux-x64.zip
+	sha256sums_x86_64 = add1d9e83dd935d9d1486f6491596374c6797e80dd2e3e65900b74c2d627a28a
 
 pkgname = backend-ai-desktop-bin
