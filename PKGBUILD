@@ -1,7 +1,7 @@
 # Maintainer: Ben Towali <ben@bentowali.com>
 
 pkgname=raindrop
-pkgver='5.6.91'
+pkgver='5.6.94'
 pkgrel=1
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64')
@@ -10,28 +10,26 @@ license=('MIT')
 depends=()
 makedepends=('git' 'nodejs' 'npm' 'jq')
 provides=(raindrop)
-source=('raindrop::git+https://github.com/raindropio/desktop'
-				'remove-sentry.patch'
-				'raindrop.desktop')
-sha512sums=('SKIP' 'SKIP' 'SKIP')
+source=('raindrop::git+https://github.com/raindropio/desktop#tag=v5.6.94'
+	'git+https://github.com/raindropio/app'
+	'remove-sentry.patch'
+	'raindrop.desktop')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-	# Clone submodule directly because the linked submodule commit is outdated
-	git clone https://github.com/raindropio/app "${pkgname}/webapp"
-	cd "${pkgname}/webapp"
+	cd ${pkgname}
+	git submodule init
+	git config submodule.webapp.url "${srcdir}/app"
+	git -c protocol.file.allow=always submodule update
+	cd webapp
 	# Remove sentry because it requires an API key
 	git apply "${srcdir}/remove-sentry.patch"
-}
-
-pkgver() {
-	cd "${pkgname}/webapp"
-	jq -r '.version' package.json
 }
 
 build() {
 	cd "${pkgname}"
 	npm i
-	npm run pre:build
+	# npm run pre:build
 	npm run build:linux
 }
 
