@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.5.241
+pkgver=5.5.242
 _electronversion=18
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'fuse2'
     'asar'
 )
 options=('!strip')
@@ -33,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('79c346d68f56b1149f390ec04bd99dd8956cac6b99c6f2b843e5e2a9c7d73336')
-sha256sums_x86_64=('59ee550d382d734a6ca3c6bcfbd8d730f52d130836e37ecfb39b7ce197602637')
+sha256sums_aarch64=('a8359564b2267b72a4a9c27661717ac2cc47ab7ed1336f4825070a352ce74120')
+sha256sums_x86_64=('4e4272aba5b21d35e80af192895eb0fc86282c2c40bdbad2d6815db206df979b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
