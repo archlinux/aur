@@ -1,0 +1,16 @@
+pkgbase = pakku-mc-git
+	pkgdesc = Modpack manager for Minecraft: Java Edition
+	pkgver = 1.2.1.r37.gb8554ce
+	pkgrel = 1
+	url = https://juraj-hrivnak.github.io/Pakku/
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = git
+	makedepends = java-environment=21
+	depends = java-runtime-headless=21
+	provides = pakku-mc
+	conflicts = pakku-mc
+	source = pakku-mc::git+https://github.com/juraj-hrivnak/Pakku.git
+	sha256sums = SKIP
+
+pkgname = pakku-mc-git
