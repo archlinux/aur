@@ -10,5 +10,4 @@ pkgbase = pacdo
 	optdepends = figlet: cooler logo in usage screen
 	source = git+https://github.com/jstmaxlol/pacdo
 	md5sums = SKIP
-
 pkgname = pacdo

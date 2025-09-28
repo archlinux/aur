@@ -3,7 +3,7 @@
 pkgname=pacdo
 pkgver=2025.09.2904
 pkgrel=0
-pkgdesc="a simple cli utility to shorten pacman syntax. (very funny)"
+pkgdesc="a simple cli utility to shorten pacman syntax."
 arch=('any')
 url="https://github.com/jstmaxlol/pacdo"
 license=('Unlicense')
