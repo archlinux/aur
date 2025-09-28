@@ -5,7 +5,7 @@ _pkgauthor=cooklang
 _pkgname=cookcli
 _appname=cook
 pkgname=${_pkgname}-bin
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Command line program which provides a suite of tools to create shopping lists and maintain recipes."
 arch=('x86_64' 'i686' 'aarch64')
@@ -24,12 +24,12 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-${arch[1]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-${arch[2]}-unknown-linux-musl.tar.gz")
 sha256sums=('af27681b98fd4549e7966762a119a1bd90c5ea547b42964da2407d7678dc6ddf'
-            'cd8f95c00d1311f9cbf314a5db39b81b8a1cf23752241d8d0c313ddfe4c948d0'
-            '5544d0de9f07456b3afe254fe011aa740e63ad5061b38d1be715e43cba095a95'
+            '75a2ad70439b7f8bc38647396c9c5e71326a5a28755c0bbdf252ea2b3037ac78'
+            '03a178cdf6711382ada0a60dc03a08a6a5a4a13a6c9c46d17c463b0e486885f5'
             '767934c9667ffa2d10332e8db98e363ffa042f2f790f16c2e42563671fd15244')
-sha256sums_x86_64=('75898bd642ec967bc5c83af5c2b86adacb938473087e55a14b07a191bcc439e1')
-sha256sums_i686=('5813743b574d18ce3318de0abee965a2fba5d96462565b1c78b1c44b9bc06ffa')
-sha256sums_aarch64=('f8b5cec80fb044e5a1748feff8352b37ebaed636f624445a6adcbda221e6871b')
+sha256sums_x86_64=('cc87f3f9af139a6101548822f8740d4ade36a1287b1c5f64714fe9e98b3403aa')
+sha256sums_i686=('b38e8c07318c452bfaa599de7f41d574fefc748b612cee657334730cd96974e1')
+sha256sums_aarch64=('d9fd477518c9ff7d7bd6d38ad533346396c625400428b7d136dfcf9d6bc58588')
 
 package() {
 	cd "${srcdir}/" || exit
