@@ -2,12 +2,15 @@
 
 pkgname=clipvault
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard history manager for Wayland, inspired by cliphist"
 arch=('x86_64')
 url="https://github.com/rolv-apneseth/clipvault"
 license=('AGPL3')
 depends=('gcc-libs')
+optdepends=(
+    'wl-clipboard: update history on Wayland clipboard events (recommended way to use clipvault)'
+)
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('f62a0bedf985c41212297b6b456004cf2ed2cf43e065945faf20580fe8e1783972a986eedc03ac7fdf8521df61c42e5ca698fee846e072e605ba8bab2843f255')
