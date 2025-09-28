@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Teams for Linux (School)
-Exec=/usr/bin/env bash -c "/opt/teams-for-linux/teams-for-linux --class=teams-work --user-data-dir=$HOME/.config/teams-profile-school --appIcon=/usr/share/icons/hicolor/512x512/apps/teams-for-linux-school-profile.png"
+Exec=/usr/bin/teams-for-linux-school-profile
 Terminal=false
 Type=Application
 Icon=teams-for-linux-school-profile
