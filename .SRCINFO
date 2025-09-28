@@ -12,7 +12,6 @@ pkgbase = tkginstaller-git
 	depends = glow
 	optdepends = nano: for editing config files
 	optdepends = onefetch: for git info display
-	optdepends = vim: for editing config files
 	provides = tkginstaller
 	conflicts = tkginstaller
 	replaces = tkginstaller
