@@ -11,7 +11,7 @@
 
 pkgname=arduino
 pkgver=1.8.19
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Arduino prototyping platform SDK (Legacy 1.x.x)"
 arch=('x86_64')
