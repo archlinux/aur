@@ -1,22 +1,42 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-BROWSERS=$(cat <<END
-/opt/google/chrome-beta/chrome
+# Files to scan/patch
+BROWSERS=$'/opt/google/chrome-beta/chrome
 /opt/google/chrome-unstable/chrome
 /opt/google/chrome/chrome
-/opt/vivaldi/vivaldi-bin
-END
-)
+/opt/vivaldi/vivaldi-bin'
+
+# Hex patterns
+PATCH_BYTES=$'\x1f\x47\x6b\x47\x1f'
+ORIG_BYTES=$'\x08\x4d\x56\x4d\x08'
+
+find_offset() {
+    # Print byte offset of the ALL match
+    local f=$1
+    rg -a -b -o $ORIG_BYTES --no-filename --no-line-number -- "$f" | cut -d: -f1
+}
+
+patch_at() {
+    # Overwrite 5 bytes at given byte OFFSET
+    local f=$1 off=$2
+    printf "$PATCH_BYTES" | dd conv=notrunc of="$f" bs=1 seek="$off" status=none
+}
 
 for browser in $BROWSERS; do
-  [ -f "$browser" ] || continue
-  echo "Checking and patching freetype filters in $browser. This can take a while..."
-  offset=$(bgrep 084d564d08 "$browser" | awk -F: '{print $1}')
-  if [ -z "$offset" ]; then
-    echo ">  Original filter pattern not found in $browser. It might have already been patched."
-    continue
-  fi
-  echo ">  Original filter pattern found in $browser. Patching at offset 0x$offset"
-  printf '\x1f\x47\x6b\x47\x1f' | dd conv=notrunc of="$browser" bs=1 seek=$((0x$offset)) &> /dev/null
-  [ $? -eq 0 ] && echo ">  Patch successfully" || echo ">  Failed to patch"
+    [ -f "$browser" ] || continue
+    echo "Checking and patching freetype filters in $browser. This can take a while..."
+
+    off=$(find_offset "$browser" || true)
+    if [ -z "${off:-}" ]; then
+        echo ">  Original filter pattern not found in $browser. It might have already been patched."
+        continue
+    fi
+
+    printf ">  Original filter pattern found in %s. Patching at offset 0x%x\n" "$browser" "$off"
+    if patch_at "$browser" "$off"; then
+        echo ">  Patch successfully"
+    else
+        echo ">  Failed to patch"
+    fi
 done
