@@ -1,6 +1,6 @@
 pkgbase = alist-bin
 	pkgdesc = Another file list program that supports multiple storage
-	pkgver = 3.45.0
+	pkgver = 3.53.0
 	pkgrel = 1
 	url = https://github.com/AlistGo/alist
 	install = alist.install
@@ -21,9 +21,9 @@ pkgbase = alist-bin
 	sha256sums = 5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72
 	sha256sums = 3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d
 	sha256sums = c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de
-	source_x86_64 = alist-x86_64-3.45.0.tar.gz::https://github.com/AlistGo/alist/releases/download/v3.45.0/alist-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8804d99ec793049c94cf19fdebadc6ea1769330ac04638f39b1106ec21108c3d
-	source_aarch64 = alist-aarch64-3.45.0.tar.gz::https://github.com/AlistGo/alist/releases/download/v3.45.0/alist-linux-arm64.tar.gz
-	sha256sums_aarch64 = faff3eba86097573424f111fae5f57d3d06e53d674b2079a9745cb12f0b853dc
+	source_x86_64 = alist-x86_64-3.53.0.tar.gz::https://github.com/AlistGo/alist/releases/download/v3.53.0/alist-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1e3afb5aca5f588d26036ac63ab2ab67bd9f8c7a1ef2bb342196f1539125c910
+	source_aarch64 = alist-aarch64-3.53.0.tar.gz::https://github.com/AlistGo/alist/releases/download/v3.53.0/alist-linux-arm64.tar.gz
+	sha256sums_aarch64 = 52a9b2ee4313371f10411e7ed4b1ba9038c1896967b47983550e67285aaab10d
 
 pkgname = alist-bin
