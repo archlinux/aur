@@ -1,7 +1,7 @@
 pkgbase = mxl-git
 	pkgdesc = Dynamic Media Facility: Media Exchange Layer
 	pkgver = 0.7.4_d4eab41
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dmf-mxl/mxl
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,8 @@ pkgbase = mxl-git
 	depends = util-linux-libs
 	depends = spdlog
 	depends = fmt
+	depends = gstreamer
+	depends = gst-plugins-base
 	source = mxl-git::git+https://github.com/dmf-mxl/mxl.git
 	source = picojson-include-path.patch
 	source = picojson-include-path-source.patch
