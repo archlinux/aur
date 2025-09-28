@@ -1,0 +1,7 @@
+{
+  "country": "China",
+  "reason": "State-affiliated tech giants, suspicious data manipulations.",
+  "cities_file": "china-cities.txt",
+  "domains_file": "china-domains.txt",
+  "maintainers_file": "china-maintainers.txt"
+}

@@ -1,0 +1,12 @@
+{
+  "modules": [
+    "suscheck-data/russia.json",
+    "suscheck-data/china.json",
+    "suscheck-data/iran.json",
+    "suscheck-data/north_korea.json",
+    "suscheck-data/palestine.json",
+    "suscheck-data/syria.json",
+    "suscheck-data/venezuela.json",
+    "suscheck-data/belarus.json"
+  ]
+}

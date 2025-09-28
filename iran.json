@@ -1,0 +1,7 @@
+{
+  "country": "Iran",
+  "reason": "State-owned and sanctioned institutions",
+  "cities_file": "iran-cities.txt",
+  "domains_file": "iran-domains.txt",
+  "maintainers_file": "iran-maintainers.txt"
+}

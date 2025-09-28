@@ -1,0 +1,7 @@
+{
+  "country": "Venezuela",
+  "reason": "Government under sanctions",
+  "cities_file": "venezuela-cities.txt",
+  "domains_file": "venezuela-domains.txt",
+  "maintainers_file": "venezuela-maintainers.txt"
+}

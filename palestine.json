@@ -1,0 +1,7 @@
+{
+  "country": "Palestine",
+  "reason": "Palestinian Authority / Hamas-controlled",
+  "cities_file": "palestine-cities.txt",
+  "domains_file": "palestine-domains.txt",
+  "maintainers_file": "palestine-maintainers.txt"
+}

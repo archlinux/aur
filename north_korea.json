@@ -1,0 +1,7 @@
+{
+  "country": "North Korea",
+  "reason": "DPRK / state-controlled",
+  "cities_file": "north_korea-cities.txt",
+  "domains_file": "north_korea-domains.txt",
+  "maintainers_file": "north_korea-maintainers.txt"
+}

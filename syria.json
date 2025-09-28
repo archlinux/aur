@@ -1,0 +1,7 @@
+{
+  "country": "Syria",
+  "reason": "State-controlled media and institutions",
+  "cities_file": "syria-cities.txt",
+  "domains_file": "syria-domains.txt",
+  "maintainers_file": "syria-maintainers.txt"
+}

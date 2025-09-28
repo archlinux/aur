@@ -10,6 +10,14 @@ BLOCKED_EMAIL_FILE="/usr/local/etc/suspcheck-blocked-domains.txt"
 
 SESSION_FILE="/tmp/suspcheck_check_decision.$$"  # Temp file for session-wide decision
 
+# --- Auto-generate index.json if empty ---
+MODULAR_INDEX="/usr/local/etc/suscheck-data/index.json"
+if [[ ! -s "$MODULAR_INDEX" ]]; then
+    jq -n --argjson modules "$(ls suscheck-data/*.json | jq -R . | jq -s .)" '{modules: $modules}' > "$MODULAR_INDEX"
+    echo "⚠️ Generated modular index.json dynamically."
+fi
+
+
 # --- Reuse previous session decision ---
 if [[ -f "$SESSION_FILE" ]]; then
     DECISION=$(<"$SESSION_FILE")
