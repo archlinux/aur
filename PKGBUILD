@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Real-time stock price tracker'
 url='https://github.com/franpfeiffer/t2stock'
 arch=('aarch64' 'x86_64')
-license=('')
+license=('MIT')
 provides=('t2stock')
 conflicts=('t2stock')
 
