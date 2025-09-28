@@ -3,7 +3,7 @@
 pkgname=kazumi
 _srcname=Kazumi
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 url="https://github.com/Predidit/Kazumi"
 license=('GPL-3.0-or-later')
@@ -19,7 +19,7 @@ depends=(
 	'libxss'
 	'libarchive'
 )
-makedepends=('clang' 'cmake' 'ninja' 'fvm')
+makedepends=('clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('4c821b6f8210a372a999e4690a68c073724734368f38aa4320b75dc5cfae0e0d')
 
@@ -44,6 +44,8 @@ package() {
 	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${pkgname}" .
 	cmake -P cmake_install.cmake
 	popd
+
+	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${pkgname}/lib/*.so
 
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
