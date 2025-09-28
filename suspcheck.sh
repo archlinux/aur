@@ -1,5 +1,5 @@
 #!/bin/bash
-# suscheck.sh — checks PKGBUILD and GitHub info for suspicious developers/domains
+# suspcheck.sh — checks PKGBUILD and GitHub info for suspicious developers/domains
 
 PKGBUILD="$1"
 DEEP_SCAN=${2:-0}  # set to 1 to clone repo and check commit emails
@@ -14,7 +14,7 @@ SESSION_FILE="/tmp/suspcheck_check_decision.$$"  # Temp file for session-wide de
 if [[ -f "$SESSION_FILE" ]]; then
     DECISION=$(<"$SESSION_FILE")
     if [[ "$DECISION" != [yY] ]]; then
-        echo "❌ Blocked by suscheck (previous decision)"
+        echo "❌ Blocked by suspcheck (previous decision)"
         exit 1
     else
         echo "✅ Proceeding (previous decision)"

@@ -1,5 +1,5 @@
 # Maintainer: tak_0
-pkgname=suspcheck
+pkgname=suscheck
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Wrapper and check script for makepkg/paru to warn about Russian, Chineese ,or other maintainers from countries you can find suspicious, maintainers"
