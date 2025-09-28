@@ -86,7 +86,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'SKIP'
-	'43904d9dcc4f09e72f0faae74e135b3c40da7aec3dec56ca006e08153d1c57fa'
+	'890ea3bb9181ffb5d9055080e59e87435a3d54f87be9ae1375d49bc0057b7f6c'
 )
 
 export KBUILD_BUILD_HOST=blisslabs
@@ -175,8 +175,8 @@ prepare() {
 	echo "Prepared $pkgbase version $(<"$KBUILD_OUTPUT/version")"
 
 	echo "Setting version..."
-	echo "-$pkgrel" >"$KBUILD_OUTPUT/localversion.10-pkgrel"
-	echo "${pkgbase#linux}" >"$KBUILD_OUTPUT/localversion.20-pkgname"
+	echo "" >"$KBUILD_OUTPUT/localversion.10-pkgrel"
+	echo "" >"$KBUILD_OUTPUT/localversion.20-pkgname"
 
 	"${MAKE_CMD[@]}" olddefconfig
 }

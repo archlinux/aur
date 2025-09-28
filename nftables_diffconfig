@@ -1,87 +1,169 @@
-# Core Netfilter and Connection Tracking (Crucial Dependencies)
+# ----------------------------------------------------------------------------
+# 1. CORE FRAMEWORK & ESSENTIAL DEPENDENCIES (Built-in: =y)
+# These are essential for Netfilter hooks and fundamental packet handling.
+# ----------------------------------------------------------------------------
+CONFIG_NETFILTER=y
 CONFIG_NETFILTER_ADVANCED=y
-CONFIG_NETFILTER_NETLINK=y
-CONFIG_NETFILTER_NETLINK_ACCT=y
-CONFIG_NETFILTER_NETLINK_QUEUE=y
-CONFIG_NETFILTER_NETLINK_LOG=y
-CONFIG_NF_CONNTRACK=y
-CONFIG_NF_CONNTRACK_MARK=y
-CONFIG_NF_CONNTRACK_SECMARK=y
-CONFIG_NF_CONNTRACK_EVENTS=y
-CONFIG_NF_CONNTRACK_TIMEOUT=y
-CONFIG_NF_NAT=y
-CONFIG_NF_NAT_NEEDED=y
+CONFIG_X_TABLES=y                     # x_tables
+CONFIG_NF_CONNTRACK=y                 # nf_conntrack
+CONFIG_NF_NAT=y                       # nf_nat
+CONFIG_NF_TABLES=y                    # nf_tables
+
+# Essential protocols/defrag for ConnTrack/NAT
 CONFIG_NF_DEFRAG_IPV4=y
 CONFIG_NF_DEFRAG_IPV6=y
-CONFIG_NF_TPROXY_IPV4=y
-CONFIG_NF_TPROXY_IPV6=y
-CONFIG_NETFILTER_TPROXY=y
-CONFIG_NF_CONN_SECMARK=y
-CONFIG_NETFILTER_XT_TARGET_LOG=y
 
-# nftables Framework and Components
-CONFIG_NF_TABLES=y
-CONFIG_NF_TABLES_IPV4=y
-CONFIG_NF_TABLES_IPV6=y
-CONFIG_NF_TABLES_INET=y
-CONFIG_NF_TABLES_ARP=y
-CONFIG_NF_TABLES_NETDEV=y
-CONFIG_NF_TABLES_COMPAT=y
-CONFIG_NF_FLOWTABLE_INET=y
-CONFIG_NF_FLOWTABLE_IPV4=y
-CONFIG_NF_FLOWTABLE_IPV6=y
-CONFIG_NF_TABLES_SET=y
-CONFIG_NF_TABLES_RAW=y
-CONFIG_NF_TABLES_MANGLE=y
-CONFIG_NF_TABLES_NAT=y
-CONFIG_NF_TABLES_EXTRA=y
-CONFIG_NF_TABLES_BPF=y
-CONFIG_NF_REJECT_IPV4=y
-CONFIG_NF_REJECT_IPV6=y
+# ----------------------------------------------------------------------------
+# 2. NETFILTER NETLINK (nfnetlink_*) (Modular: =m)
+# ----------------------------------------------------------------------------
+CONFIG_NFNETLINK=m                    # nfnetlink
+CONFIG_NFNETLINK_ACCT=m               # nfnetlink_acct
+CONFIG_NFNETLINK_CTHELPER=m           # nfnetlink_cthelper
+CONFIG_NFNETLINK_CTTIMEOUT=m          # nfnetlink_cttimeout
+CONFIG_NFNETLINK_HOOK=m               # nfnetlink_hook
+CONFIG_NFNETLINK_LOG=m                # nfnetlink_log
+CONFIG_NFNETLINK_OSF=m                # nfnetlink_osf
+CONFIG_NFNETLINK_QUEUE=m              # nfnetlink_queue
 
-# Legacy iptables Support (Required for iptables-nft compatibility)
-CONFIG_IP_NF_IPTABLES=y
-CONFIG_IP6_NF_IPTABLES=y
+# ----------------------------------------------------------------------------
+# 3. NFTABLES MODULES (nft_*) (Modular: =m)
+# ----------------------------------------------------------------------------
+CONFIG_NF_SYNPROXY_CORE=m             # nf_synproxy_core (required by NFT_SYNPROXY)
+CONFIG_NFT_CHAIN_NAT=m                # nft_chain_nat
+CONFIG_NFT_COMPAT=m                   # nft_compat
+CONFIG_NFT_CONNLIMIT=m                # nft_connlimit
+CONFIG_NFT_CT=m                       # nft_ct
+CONFIG_NFT_DUP_NETDEV=m               # nft_dup_netdev
+CONFIG_NFT_FIB=m                      # nft_fib
+CONFIG_NFT_FIB_INET=m                 # nft_fib_inet
+CONFIG_NFT_FIB_NETDEV=m               # nft_fib_netdev
+CONFIG_NFT_FLOW_OFFLOAD=m             # nft_flow_offload
+CONFIG_NFT_FWD_NETDEV=m               # nft_fwd_netdev
+CONFIG_NFT_HASH=m                     # nft_hash
+CONFIG_NFT_LIMIT=m                    # nft_limit
+CONFIG_NFT_LOG=m                      # nft_log
+CONFIG_NFT_MASQ=m                     # nft_masq
+CONFIG_NFT_NAT=m                      # nft_nat
+CONFIG_NFT_NUMGEN=m                   # nft_numgen
+CONFIG_NFT_OSF=m                      # nft_osf
+CONFIG_NFT_QUEUE=m                    # nft_queue
+CONFIG_NFT_QUOTA=m                    # nft_quota
+CONFIG_NFT_REDIR=m                    # nft_redir
+CONFIG_NFT_REJECT=m                   # nft_reject
+CONFIG_NFT_REJECT_INET=m              # nft_reject_inet
+CONFIG_NFT_REJECT_NETDEV=m            # nft_reject_netdev
+CONFIG_NFT_SOCKET=m                   # nft_socket
+CONFIG_NFT_SYNPROXY=m                 # nft_synproxy
+CONFIG_NFT_TPROXY=m                   # nft_tproxy
+CONFIG_NFT_TUNNEL=m                   # nft_tunnel
+CONFIG_NFT_XFRM=m                     # nft_xfrm
 
-# Legacy IPv4 Tables/Chains
-CONFIG_IP_NF_FILTER=y
-CONFIG_IP_NF_NAT=y
-CONFIG_IP_NF_MANGLE=y
-CONFIG_IP_NF_RAW=y
-CONFIG_IP_NF_SECURITY=y
-CONFIG_IP_NF_ARPTABLES=y
-CONFIG_IP_NF_ARP_FILTER=y
-CONFIG_IP_NF_ARP_MANGLE=y
+# ----------------------------------------------------------------------------
+# 4. XTABLES MATCHES (xt_*) (Modular: =m)
+# ----------------------------------------------------------------------------
+CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=m   # xt_addrtype
+CONFIG_NETFILTER_XT_MATCH_AUDIT=m     # xt_AUDIT
+CONFIG_NETFILTER_XT_MATCH_BPF=m       # xt_bpf
+CONFIG_NETFILTER_XT_MATCH_CGROUP=m    # xt_cgroup
+CONFIG_NETFILTER_XT_MATCH_CLUSTER=m   # xt_cluster
+CONFIG_NETFILTER_XT_MATCH_COMMENT=m   # xt_comment
+CONFIG_NETFILTER_XT_MATCH_CONNBYTES=m # xt_connbytes
+CONFIG_NETFILTER_XT_MATCH_CONNLABEL=m # xt_connlabel
+CONFIG_NETFILTER_XT_MATCH_CONNLIMIT=m # xt_connlimit
+CONFIG_NETFILTER_XT_MATCH_CONNMARK=m  # xt_connmark
+CONFIG_NETFILTER_XT_MATCH_CONNSECMARK=m # xt_CONNSECMARK
+CONFIG_NETFILTER_XT_MATCH_CONNTRACK=m # xt_conntrack
+CONFIG_NETFILTER_XT_MATCH_CPU=m       # xt_cpu
+CONFIG_NETFILTER_XT_MATCH_DCCP=m      # xt_dccp
+CONFIG_NETFILTER_XT_MATCH_DEVGROUP=m  # xt_devgroup
+CONFIG_NETFILTER_XT_MATCH_DSCP=m      # xt_DSCP (match)
+CONFIG_NETFILTER_XT_MATCH_ECN=m       # xt_ecn
+CONFIG_NETFILTER_XT_MATCH_ESP=m       # xt_esp
+CONFIG_NETFILTER_XT_MATCH_HASHLIMIT=m # xt_hashlimit
+CONFIG_NETFILTER_XT_MATCH_HELPER=m    # xt_helper
+CONFIG_NETFILTER_XT_MATCH_HL=m        # xt_HL (match)
+CONFIG_NETFILTER_XT_MATCH_IPCOMP=m    # xt_ipcomp
+CONFIG_NETFILTER_XT_MATCH_IPRANGE=m   # xt_iprange
+CONFIG_NETFILTER_XT_MATCH_IPVS=m      # xt_ipvs
+CONFIG_NETFILTER_XT_MATCH_L2TP=m      # xt_l2tp
+CONFIG_NETFILTER_XT_MATCH_LENGTH=m    # xt_length
+CONFIG_NETFILTER_XT_MATCH_LIMIT=m     # xt_limit
+CONFIG_NETFILTER_XT_MATCH_MAC=m       # xt_mac
+CONFIG_NETFILTER_XT_MATCH_MARK=m      # xt_mark
+CONFIG_NETFILTER_XT_MATCH_MULTIPORT=m # xt_multiport
+CONFIG_NETFILTER_XT_MATCH_NFACCT=m    # xt_nfacct
+CONFIG_NETFILTER_XT_MATCH_OSF=m       # xt_osf
+CONFIG_NETFILTER_XT_MATCH_OWNER=m     # xt_owner
+CONFIG_NETFILTER_XT_MATCH_PHYSDEV=m   # xt_physdev
+CONFIG_NETFILTER_XT_MATCH_PKTTYPE=m   # xt_pkttype
+CONFIG_NETFILTER_XT_MATCH_POLICY=m    # xt_policy
+CONFIG_NETFILTER_XT_MATCH_QUOTA=m     # xt_quota
+CONFIG_NETFILTER_XT_MATCH_RATEEST=m   # xt_rateest (match)
+CONFIG_NETFILTER_XT_MATCH_REALM=m     # xt_realm
+CONFIG_NETFILTER_XT_MATCH_RECENT=m    # xt_recent
+CONFIG_NETFILTER_XT_MATCH_SCTP=m      # xt_sctp
+CONFIG_NETFILTER_XT_MATCH_SET=m       # xt_set
+CONFIG_NETFILTER_XT_MATCH_SOCKET=m    # xt_socket
+CONFIG_NETFILTER_XT_MATCH_STATE=m     # xt_state
+CONFIG_NETFILTER_XT_MATCH_STATISTIC=m # xt_statistic
+CONFIG_NETFILTER_XT_MATCH_STRING=m    # xt_string
+CONFIG_NETFILTER_XT_MATCH_TCPMSS=m    # xt_tcpmss
+CONFIG_NETFILTER_XT_MATCH_TCPUDP=m    # xt_tcpudp
+CONFIG_NETFILTER_XT_MATCH_TIME=m      # xt_time
+CONFIG_NETFILTER_XT_MATCH_TOS=m       # xt_tos
+CONFIG_NETFILTER_XT_MATCH_TTL=m       # xt_ttl
+CONFIG_NETFILTER_XT_MATCH_U32=m       # xt_u32
 
-# Legacy IPv4 Targets/Matches
-CONFIG_IP_NF_TARGET_REJECT=y
-CONFIG_IP_NF_TARGET_MASQUERADE=y
-CONFIG_IP_NF_TARGET_REDIRECT=y
-CONFIG_IP_NF_MATCH_STATE=y
-CONFIG_IP_NF_MATCH_CONNTRACK=y
-CONFIG_IP_NF_MATCH_MARK=y
-CONFIG_IP_NF_MATCH_MULTIPORT=y
-CONFIG_IP_NF_MATCH_LIMIT=y
+# ----------------------------------------------------------------------------
+# 5. XTABLES TARGETS (xt_*) (Modular: =m)
+# ----------------------------------------------------------------------------
+CONFIG_NETFILTER_XT_TARGET_CHECKSUM=m  # xt_CHECKSUM (target)
+CONFIG_NETFILTER_XT_TARGET_CLASSIFY=m # xt_CLASSIFY
+CONFIG_NETFILTER_XT_TARGET_CONNSECMARK=m # xt_CONNSECMARK (target)
+CONFIG_NETFILTER_XT_TARGET_CT=m       # xt_CT
+CONFIG_NETFILTER_XT_TARGET_DSCP=m      # xt_dscp (target)
+CONFIG_NETFILTER_XT_TARGET_HL=m       # xt_hl (target)
+CONFIG_NETFILTER_XT_TARGET_HMARK=m    # xt_HMARK
+CONFIG_NETFILTER_XT_TARGET_IDLETIMER=m # xt_IDLETIMER
+CONFIG_NETFILTER_XT_TARGET_LED=m      # xt_LED
+CONFIG_NETFILTER_XT_TARGET_LOG=m      # xt_LOG
+CONFIG_NETFILTER_XT_TARGET_MARK=m     # xt_mark (target)
+CONFIG_NETFILTER_XT_TARGET_MASQUERADE=m # xt_MASQUERADE
+CONFIG_NETFILTER_XT_TARGET_NAT=m      # xt_nat
+CONFIG_NETFILTER_XT_TARGET_NETMAP=m   # xt_NETMAP
+CONFIG_NETFILTER_XT_TARGET_NFLOG=m    # xt_NFLOG
+CONFIG_NETFILTER_XT_TARGET_NFQUEUE=m  # xt_NFQUEUE
+CONFIG_NETFILTER_XT_TARGET_RATEEST=m  # xt_RATEEST (target)
+CONFIG_NETFILTER_XT_TARGET_REDIRECT=m # xt_REDIRECT
+CONFIG_NETFILTER_XT_TARGET_SECMARK=m  # xt_SECMARK (target)
+CONFIG_NETFILTER_XT_TARGET_TCPOPTSTRIP=m # xt_TCPOPTSTRIP
+CONFIG_NETFILTER_XT_TARGET_TCPMSS=m   # xt_TCPMSS (target)
+CONFIG_NETFILTER_XT_TARGET_TEE=m      # xt_TEE
+CONFIG_NETFILTER_XT_TARGET_TPROXY=m   # xt_TPROXY
+CONFIG_NETFILTER_XT_TARGET_TRACE=m    # xt_TRACE
 
-# Legacy IPv6 Tables/Chains
-CONFIG_IP6_NF_FILTER=y
-CONFIG_IP6_NF_NAT=y
-CONFIG_IP6_NF_MANGLE=y
-CONFIG_IP6_NF_RAW=y
-CONFIG_IP6_NF_SECURITY=y
-
-# Legacy IPv6 Targets/Matches
-CONFIG_IP6_NF_TARGET_REJECT=y
-CONFIG_IP6_NF_TARGET_MASQUERADE=y
-CONFIG_IP6_NF_TARGET_REDIRECT=y
-CONFIG_IP6_NF_MATCH_STATE=y
-CONFIG_IP6_NF_MATCH_CONNTRACK=y
-
-# Optional/Suggested Modules
-CONFIG_BRIDGE_NETFILTER=m
-CONFIG_IP_SET=m
-CONFIG_IP_SET_PROC_FS=y
-CONFIG_IP_SET_HASH_IP=m
-CONFIG_IP_SET_HASH_NET=m
-CONFIG_NF_CONNTRACK_FTP=m
-CONFIG_NF_NAT_FTP=m
+# ----------------------------------------------------------------------------
+# 6. CONNECTION TRACKING & NAT HELPERS (nf_conntrack_*, nf_nat_*) (Modular: =m)
+# ----------------------------------------------------------------------------
+CONFIG_NF_CONNCOUNT=m                 # nf_conncount
+CONFIG_NF_CONNTRACK_AMANDA=m          # nf_conntrack_amanda
+CONFIG_NF_CONNTRACK_BROADCAST=m       # nf_conntrack_broadcast
+CONFIG_NF_CONNTRACK_FTP=m             # nf_conntrack_ftp
+CONFIG_NF_CONNTRACK_H323=m            # nf_conntrack_h323
+CONFIG_NF_CONNTRACK_IRC=m             # nf_conntrack_irc
+CONFIG_NF_CONNTRACK_NETBIOS_NS=m      # nf_conntrack_netbios_ns
+CONFIG_NF_CONNTRACK_NETLINK=m         # nf_conntrack_netlink
+CONFIG_NF_CONNTRACK_PPTP=m            # nf_conntrack_pptp
+CONFIG_NF_CONNTRACK_SANE=m            # nf_conntrack_sane
+CONFIG_NF_CONNTRACK_SIP=m             # nf_conntrack_sip
+CONFIG_NF_CONNTRACK_SNMP=m            # nf_conntrack_snmp
+CONFIG_NF_CONNTRACK_TFTP=m            # nf_conntrack_tftp
+CONFIG_NF_DUP_NETDEV=m                # nf_dup_netdev
+CONFIG_NF_FLOW_TABLE=m                # nf_flow_table
+CONFIG_NF_FLOW_TABLE_INET=m           # nf_flow_table_inet
+CONFIG_NF_LOG_SYSYLOG=m               # nf_log_syslog
+CONFIG_NF_NAT_AMANDA=m                # nf_nat_amanda
+CONFIG_NF_NAT_FTP=m                   # nf_nat_ftp
+CONFIG_NF_NAT_IRC=m                   # nf_nat_irc
+CONFIG_NF_NAT_SIP=m                   # nf_nat_sip
+CONFIG_NF_NAT_TFTP=m                  # nf_nat_tftp

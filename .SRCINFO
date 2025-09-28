@@ -31,7 +31,7 @@ pkgbase = linux-zenith
 	source = nftables_diffconfig
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 43904d9dcc4f09e72f0faae74e135b3c40da7aec3dec56ca006e08153d1c57fa
+	sha256sums = 890ea3bb9181ffb5d9055080e59e87435a3d54f87be9ae1375d49bc0057b7f6c
 
 pkgname = linux-zenith-git
 	pkgdesc = The Android™ Generic Project's Zenith linux kernel - 6.15 branch kernel and modules
