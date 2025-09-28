@@ -1,7 +1,7 @@
 pkgbase = kdecoration5
 	pkgdesc = Plugin based Qt 5 library to create window decorations
 	pkgver = 5.27.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL
