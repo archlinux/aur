@@ -3,7 +3,7 @@
 _pkgbase=mrpack-install
 pkgname="$_pkgbase"
 pkgver=0.21.0.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Modrinth Modpack server deployment"
 arch=('any')
 url="https://github.com/nothub/mrpack-install"
@@ -19,4 +19,5 @@ build() {
 
 package() {
 	install -Dm755 "$_pkgbase"/dist/mrpack-install*/mrpack-install "$pkgdir"/usr/bin/mrpack-install
+	install -Dm644 "$_pkgbase"/LICENSE.txt "$pkgdir"/usr/share/licenses/"$_pkgbase"/LICENSE.txt
 }
