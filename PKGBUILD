@@ -1,20 +1,23 @@
 # Maintainer: Adam Honse <calcprogrammer1@gmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
+# Contributor: Paul Davis <paul@dangersalad.com>
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=0.9.1433.ge86d9f9
+pkgver=0.9.1658.g011d364
 pkgrel=1
-pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
+pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=('x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-only')
-depends=('qt5-tools' 'libusb' 'hidapi' 'mbedtls')
-makedepends=('git')
+depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls' 'hicolor-icon-theme')
+makedepends=('qt5-tools' 'git')
 optdepends=('i2c-nct6793-dkms: Nuvoton SMBus driver, needed for onboard RGB on certain ASUS Z270 and Z370 boards')
 provides=('openrgb')
 conflicts=('openrgb')
 source=("git+https://gitlab.com/CalcProgrammer1/OpenRGB.git"
-        openrgb.conf)
+        openrgb-modules-load.conf)
 sha256sums=('SKIP'
             'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2')
 
@@ -24,14 +27,15 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/OpenRGB"
     export CXXFLAGS=${CXXFLAGS/-pipe}
+
+    cd "$srcdir/OpenRGB"
     qmake OpenRGB.pro PREFIX=/usr
     make
 }
 
 package() {
-    install -Dm644 -t "$pkgdir"/usr/lib/modules-load.d "."/openrgb.conf
     cd OpenRGB
     make INSTALL_ROOT="$pkgdir" install
+    install -Dm644 "$srcdir"/openrgb-modules-load.conf "$pkgdir"/usr/lib/modules-load.d/openrgb.conf
 }
