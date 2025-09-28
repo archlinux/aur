@@ -5,14 +5,14 @@ _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=0.79.2
-pkgrel=1
+pkgrel=2
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
 url="https://ionide.io/Tools/fsac.html"
 _url="https://github.com/ionide/${_Name}"
 license=('Apache-2.0')
 depends=(
-  "dotnet-runtime-${_sdk}"
+  "dotnet-sdk-${_sdk}"
   'sh'
 )
 provides=(
@@ -23,7 +23,7 @@ conflicts=(
 )
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("dotnet-tool-common.sh"
-        "${_pkgsrc}.nupkg::${_url}/releases/download/v${pkgver}/${_Name}.${pkgver}.nupkg"
+        "${_url}/releases/download/v${pkgver}/${_Name}.${pkgver}.nupkg"
         "${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-LICENSE.md::${_url}/raw/refs/tags/v${pkgver}/LICENSE.md")
 sha256sums=('b3329b46f618290380c6b9d7436fa9ca19efc269af5a8b4fb06263daaaaa5ad1'
