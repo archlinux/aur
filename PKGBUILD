@@ -2,8 +2,8 @@
 pkgname=hyprviz
 pkgver=0.6.1
 pkgrel=1
-pkgdesc="GUI for configuring Hyprland!"
-url="https://github.com/timasoft/hyprviz"
+pkgdesc='GUI for configuring Hyprland!'
+url='https://github.com/timasoft/hyprviz'
 license=("GPL-2.0")
 arch=("x86_64" "aarch64")
 depends=(gtk4 glib2 desktop-file-utils hyprland )
