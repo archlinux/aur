@@ -242,24 +242,6 @@ diff --git a/src/sage/functions/bessel.py b/src/sage/functions/bessel.py
 index 1cd132b3a45..4ead3c47c45 100644
 --- a/src/sage/functions/bessel.py
 +++ b/src/sage/functions/bessel.py
-@@ -1673,7 +1673,7 @@ class SphericalBesselJ(BuiltinFunction):
-         sage: spherical_bessel_J(4, x).simplify()
-         -((45/x^2 - 105/x^4 - 1)*sin(x) + 5*(21/x^2 - 2)*cos(x)/x)/x
-         sage: integrate(spherical_bessel_J(1,x)^2,(x,0,oo))
--        1/6*pi
-+        0
-         sage: latex(spherical_bessel_J(4, x))
-         j_{4}\left(x\right)
- 
-@@ -1772,7 +1772,7 @@ class SphericalBesselY(BuiltinFunction):
-         sage: integrate(spherical_bessel_Y(0, x), x)
-         -1/2*Ei(I*x) - 1/2*Ei(-I*x)
-         sage: integrate(spherical_bessel_Y(1,x)^2,(x,0,oo))
--        -1/6*pi
-+        0
-         sage: latex(spherical_bessel_Y(0, x))
-         y_{0}\left(x\right)
- 
 @@ -1867,7 +1867,7 @@ class SphericalHankel1(BuiltinFunction):
          sage: spherical_hankel1(3 + 0.2 * I, 3)
          0.201654587512037 - 0.531281544239273*I
