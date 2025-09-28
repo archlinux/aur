@@ -2,8 +2,8 @@
 # Maintainer: Praxidike_Kore <praxidike dot kore at protonmail dot com>
 
 pkgname="gcs-bin"
-pkgver=5.39.0
-pkgrel=2
+pkgver=5.40.0
+pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
 license=("MPL2")
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/richardwilkes/gcs/releases/
         "gcs.desktop"
         "gcs.png"
         "LICENSE")
-b2sums=('3dee3cf88b2c6c0687c9ef04cbabb927c15dd87a801c1ba2055d964eb747365bbfcdab23704b477df2c9a14bdad5771828c9b3c8ed80a591fb877f92031303da'
+b2sums=('fc2609bba6f5ed7fe8becb2fcf31687d7d2386b0ed155355263822ff7bdf66b17fcd2f25704eb8e40f9684d716218e71f0f764580a2a69a9052ba5f362ebf293'
         'e60d8367f2e88e753e3206d169f0d446c0a422ea97ef7a06bb244e83851d0a83885826782f0bb9172328f1c7d5c942fb77623aedced05f04204b1f9e45be80ba'
         '9eebe411dda83637958bccdda876824941406a86c6e0384a2eef460cad678640457a10e0ffeb447e1923a52066b3b151eff77d1814d10a046a7f1333aac200ed'
         'b82bb30ed70c0464e93eae9c9cfc68995a192d2675fdbdcb2fc5459b4ac9a404f1cb41eb693817caa73b46ec6e8023641e08673f684f6b7dae979548ade0402c')
