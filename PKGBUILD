@@ -39,7 +39,7 @@ prepare() {
 
 build() {
     cmake -S "$_pkgsrc" -B "$_pkgsrc/build" \
-        -DCMAKE_BUILD_TYPE=Debug \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
 
     make -C "$_pkgsrc/build"
