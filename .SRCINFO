@@ -1,7 +1,7 @@
 pkgbase = wreckfest-wine-gog
 	pkgdesc = Wreckfest using WINE with data via GOG
 	pkgver = 1.0o
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/en/game/wreckfest
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = wreckfest-wine-gog
 	makedepends = innoextract
 	makedepends = icoutils
 	depends = wine
+	depends = dxvk
 	source = setup_wreckfest_1.0o_(79627).exe::gogdownloader://wreckfest/en1installer0
 	source = setup_wreckfest_1.0o_(79627)-1.bin::gogdownloader://wreckfest/en1installer1
 	source = setup_wreckfest_1.0o_(79627)-2.bin::gogdownloader://wreckfest/en1installer2
@@ -30,6 +31,6 @@ pkgbase = wreckfest-wine-gog
 	sha256sums = a1f9812ea39f3e218e09f211cac098940f69c00f8545bead8f2ad02d3fd47d7d
 	sha256sums = 17be69b5fae4ce9868b62689429666aacdfa5ded05aac10e6ca4a5f63fc9e621
 	sha256sums = bad71308306ecb675927d3cce770668ee4b5ff9c74cda02df8f3583c0c74b108
-	sha256sums = 2a461d48a57b449b223bfd4c5113e2c471bd249cf1777130d57ba75503bd18dc
+	sha256sums = 4ea6d28880fa0d11b4abb6f0bb4bd07ea2263ee7aa2940719638cc1fc3fe089c
 
 pkgname = wreckfest-wine-gog

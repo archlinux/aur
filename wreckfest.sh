@@ -3,7 +3,7 @@ export WINEPREFIX="$HOME"/.wreckfest/wine
 if [ ! -d "$HOME"/.wreckfest ] ; then
    mkdir -p "$HOME"/.wreckfest/wine
    wineboot -u
-   winetricks dxvk
+   setup_dxvk install
 fi
 cd /opt/wreckfest
 while getopts ":lmh" opt; do
