@@ -1,5 +1,5 @@
 [tagspaces]
 source = "github"
 github = "tagspaces/tagspaces"
-use_max_tag = true
+use_latest_release = true
 prefix = "v"
