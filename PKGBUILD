@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=7.1.1
-pkgrel=6
+pkgver=7.1.2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -181,10 +181,10 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=db69d06eeeab4f46da15030a80d539efb4503ca8
+_tag=f893221c8d89cb798b829bebe71d55e1a3f242fd
 _deps_tag=2024-09-12
 source=(
-  "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
+  "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
   "0001-Add-av_stream_get_first_dts-for-Chromium.patch"
 )
@@ -317,11 +317,12 @@ fi
 
 ## Check feature-set options
 _nonfree_enabled=OFF
+_add_gcc_libs_as_deps=OFF
 
 if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
   _nonfree_enabled=ON
-  depends+=(cuda)
-  _args+=(--enable-cuda-nvcc --enable-libnpp --enable-cuvid --disable-cuda-llvm)
+  makedepends+=(cuda)
+  _args+=(--enable-cuda-nvcc --disable-libnpp --enable-cuvid --disable-cuda-llvm)
   provides+=(ffmpeg-cuda)
 else
   _args+=(--enable-cuda-llvm --disable-cuvid)
@@ -335,6 +336,7 @@ fi
 
 if [[ $FFMPEG_OBS_DECKLINK == 'ON' ]]; then
   _nonfree_enabled=ON
+  _add_gcc_libs_as_deps=ON
   makedepends+=('decklink-sdk')
   _args+=(--enable-decklink)
   provides+=(ffmpeg-decklink)
@@ -376,6 +378,7 @@ fi
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   _nonfree_enabled=ON
+  _add_gcc_libs_as_deps=ON
   # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
   # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
   depends+=(
@@ -409,6 +412,10 @@ else
   _args+=(--disable-sndio) # sndio is not present when upstream package is built
 fi
 
+if [[ $_add_gcc_libs_as_deps == 'ON' ]]; then
+  depends+=(gcc-libs)
+fi
+
 ## Check if nonfree licence is enabled
 if [[ $_nonfree_enabled == 'ON' ]]; then
   license=('LicenseRef-nonfree-and-unredistributable')
@@ -418,7 +425,7 @@ if [[ $_nonfree_enabled == 'ON' ]]; then
 fi
 
 prepare() {
-  cd ffmpeg
+  cd ffmpeg-src
 
   ### ffmpeg-obs changes
 
@@ -426,18 +433,10 @@ prepare() {
   sed -i 's/posix_ioctl/ffmpeg_posix_ioctl/g' configure
   sed -i 's/if HAVE_POSIX_IOCTL/if HAVE_FFMPEG_POSIX_IOCTL/g' libavdevice/v4l2.c
 
-  ### ffmpeg-full changes
-
-  ## Fix segfault with avisynthplus
-  sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
-
   ### Arch Linux changes
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-
-  ## avcodec/libsvtav1: unbreak build with latest svtav1
-  git cherry-pick -n 68b5db246407f0b0e398ce3b10ee57f738f0c524
 
   ## VAAPI HEVC encode alignment fix
   git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
@@ -464,13 +463,42 @@ prepare() {
     patch -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
   fi
 
-  if [[ $FFMPEG_OBS_CUDA == ON'' ]]; then
+  if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
     sed -i 's/nvccflags -std=c++11/nvccflags -std=c++14/g' configure
+    sed -i 's/arch=compute_60,code=sm_60/arch=compute_75,code=sm_75/g' configure
+  fi
+
+  if [[ $FFMPEG_OBS_DECKLINK == 'ON' ]]; then
+    ## Fix HAVE_PTHREAD_SETNAME_NP redefinition with SDL2 and the threads option
+    sed -i 's/pthread_set/ffmpeg_pthread_set/g' configure
+    sed -i 's/HAVE_PTHREAD_SET/HAVE_FFMPEG_PTHREAD_SET/g' libavutil/thread.h
+
+    sed -i 's|DeckLinkAPI.h|DeckLinkAPI_v14_2_1.h|g' \
+      libavdevice/decklink_common_c.h \
+      libavdevice/decklink_common.cpp \
+      libavdevice/decklink_enc.cpp \
+      libavdevice/decklink_dec.cpp
+    sed -i 's|DeckLinkAPIDispatch.cpp|DeckLinkAPIDispatch_v14_2_1.cpp|g' libavdevice/decklink_common.cpp
+
+    sed -i 's|CreateDeckLinkIteratorInstance|CreateDeckLinkIteratorInstance_v14_2_1|g' libavdevice/decklink_common.cpp
+    sed -i 's|CreateDeckLinkAPIInformationInstance|CreateDeckLinkAPIInformationInstance_v14_2_1|g' libavdevice/decklink_common.cpp
+
+    sed -i 's|IDeckLinkMemoryAllocator|IDeckLinkMemoryAllocator_v14_2_1|g' libavdevice/decklink_dec.cpp
+    sed -i 's|IDeckLinkInput \*|IDeckLinkInput_v14_2_1 \*|g' \
+      libavdevice/decklink_common.h \
+      libavdevice/decklink_common.cpp
+    sed -i 's|IDeckLinkInput,|IDeckLinkInput_v14_2_1,|g' libavdevice/decklink_dec.cpp
+    sed -i 's|IDeckLinkInputCallback|IDeckLinkInputCallback_v14_2_1|g' libavdevice/decklink_dec.cpp
+    sed -i 's|IDeckLinkVideoInputFrame|IDeckLinkVideoInputFrame_v14_2_1|g' libavdevice/decklink_dec.cpp
+  fi
+
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    sed -i 's|in->pts, 0|in->pts|g' libavcodec/lcevcdec.c libavfilter/vf_lcevc.c
   fi
 }
 
 build() {
-  cd ffmpeg
+  cd ffmpeg-src
 
   ## Manage extra flags and paths
   if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
@@ -479,7 +507,6 @@ build() {
   fi
 
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/openvino/runtime/lib/intel64/pkgconfig"
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
   fi
 
@@ -491,8 +518,8 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C ffmpeg install install-man
-  install -Dm 755 ffmpeg/tools/qt-faststart "${pkgdir}"/usr/bin/
+  make DESTDIR="${pkgdir}" -C ffmpeg-src install install-man
+  install -Dm 755 ffmpeg-src/tools/qt-faststart "${pkgdir}"/usr/bin/
 
   if [[ $_nonfree_enabled == 'ON' ]]; then
     install -D -m644 license_if_nonfree_enabled.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
