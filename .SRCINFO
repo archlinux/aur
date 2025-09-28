@@ -1,6 +1,6 @@
 pkgbase = vfox-bin
 	pkgdesc = A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more.(Prebuilt version)
-	pkgver = 0.6.10
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://vfox.dev
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = vfox-bin
 	license = Apache-2.0
 	depends = bash
 	optdepends = zsh
-	provides = vfox=0.6.10
+	provides = vfox=0.7.0
 	conflicts = vfox
-	source_aarch64 = vfox-0.6.10-aarch64.rpm::https://github.com/version-fox/vfox/releases/download/v0.6.10/vfox_0.6.10_linux_aarch64.rpm
-	sha256sums_aarch64 = 9b6a67750e2b736b16a6c7b03a09ea31519c72a2b789889eb53726e4fe97e922
-	source_armv7h = vfox-0.6.10-armv7h.rpm::https://github.com/version-fox/vfox/releases/download/v0.6.10/vfox_0.6.10_linux_armv7.rpm
-	sha256sums_armv7h = f7fa18c3373f58f4e2fedf743632a8bb8a7bebae29de2613c2cdbde5fe1cecd6
-	source_i686 = vfox-0.6.10-i686.rpm::https://github.com/version-fox/vfox/releases/download/v0.6.10/vfox_0.6.10_linux_i386.rpm
-	sha256sums_i686 = ced55d2dac6fc6b92d85e224a2bfca8a58edd6169954f0aeb9987267d1024353
-	source_x86_64 = vfox-0.6.10-x86_64.rpm::https://github.com/version-fox/vfox/releases/download/v0.6.10/vfox_0.6.10_linux_x86_64.rpm
-	sha256sums_x86_64 = d7cadfb4a8a54b0b60985449a85596ed5c668fc321afd48f3607a36721ed2a02
+	source_aarch64 = vfox-0.7.0-aarch64.rpm::https://github.com/version-fox/vfox/releases/download/v0.7.0/vfox_0.7.0_linux_aarch64.rpm
+	sha256sums_aarch64 = 68b2f8e5263504843a14685ddf576f728342fc43e941897c26ab7269305fad91
+	source_armv7h = vfox-0.7.0-armv7h.rpm::https://github.com/version-fox/vfox/releases/download/v0.7.0/vfox_0.7.0_linux_armv7.rpm
+	sha256sums_armv7h = 69bb84949888c621b30eb639cc52488c89a81db025eac379b6a697555788827d
+	source_i686 = vfox-0.7.0-i686.rpm::https://github.com/version-fox/vfox/releases/download/v0.7.0/vfox_0.7.0_linux_i386.rpm
+	sha256sums_i686 = d1c9a46506e07045af5e23f23921e18496bda59e0758b3d4b3e67f687b729d04
+	source_x86_64 = vfox-0.7.0-x86_64.rpm::https://github.com/version-fox/vfox/releases/download/v0.7.0/vfox_0.7.0_linux_x86_64.rpm
+	sha256sums_x86_64 = 7239a770e959c433aadd4838a7cbc0fc830cf3f47094dc2d57ce890ce1d20a4c
 
 pkgname = vfox-bin
