@@ -1,17 +1,24 @@
 pkgbase = m8c-bin
 	pkgdesc = A UI for the M8 and M8 Headless portable music DAWs
-	pkgver = 2.1.0+2025_09_05
+	pkgver = 2.2.0+323
 	pkgrel = 1
 	url = https://github.com/laamaa/m8c
 	arch = x86_64
 	license = MIT
+	makedepends = gendesk
 	makedepends = patchelf
 	depends = glibc
 	depends = libserialport
 	depends = sdl3
-	provides = m8c=2.1.0
-	conflicts = m8c=2.1.0
-	source_x86_64 = m8c-2.1.0+2025_09_05-x86_64.zip::https://github.com/laamaa/m8c/releases/download/v2.1.0/m8c-2025-09-05-linux-x86_64.zip
-	sha256sums_x86_64 = 080c4533b4baefcd2e7720d7017cc6244de28fa5c10143acf4bd1195574ba11f
+	provides = m8c=2.2.0
+	conflicts = m8c
+	source = m8c-2.2.0-AUDIOGUIDE.md::https://github.com/laamaa/m8c/raw/refs/tags/v2.2.0/AUDIOGUIDE.md
+	source = m8c-2.2.0-README.md::https://github.com/laamaa/m8c/raw/refs/tags/v2.2.0/README.md
+	source = m8c-2.2.0-LICENSE::https://github.com/laamaa/m8c/raw/refs/tags/v2.2.0/LICENSE
+	sha256sums = f30c3ff6bcf5e230375664dc6286bd39a3e66c925975ba9e0ddbc366c0ec6652
+	sha256sums = 3fdbc136a178a9f2bf5a57f13994b17d080d5a1eee31d360ccf981e89ef64187
+	sha256sums = 5c62289a8358388d0e7e459e8ece240c9b3c4af5915539c60e0fe65c76bac6b8
+	source_x86_64 = m8c-2.2.0-x86_64.AppImage.zip::https://github.com/laamaa/m8c/releases/download/v2.2.0/m8c-v2.2.0-linux-x86_64.AppImage.zip
+	sha256sums_x86_64 = e18b40b58df7ee000f815493b64eafa2a25d083febf8b8445fe2e6426af0e6c8
 
 pkgname = m8c-bin

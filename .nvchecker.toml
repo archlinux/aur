@@ -1,17 +1,7 @@
-[m8c-bin-tag]
+[m8c-bin]
 source = "github"
 github = "laamaa/m8c"
 use_latest_release = true
 prefix = "v"
-
-[m8c-bin-date]
-source = "regex"
-url = "https://api.github.com/repos/laamaa/m8c/releases/latest"
-regex = "m8c-([0-9-]+)-linux-x86_64.zip"
-from_pattern = "-"
-to_pattern = "_"
-
-[m8c-bin]
-source = "combiner"
-from = ["m8c-bin-tag", "m8c-bin-date"]
-format = "$1+$2"
+from_pattern = '^(.*)$'
+to_pattern = '\1+autoupdated'
