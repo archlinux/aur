@@ -1,13 +1,13 @@
 # Maintainer: Jia Yin<lok-ation at outlook dot com>
 
 pkgname=sddm-minesddm-theme-git
-pkgver=v2.1.0.r0.gfd0a2f3
+pkgver=v2.1.0.r1.gcdc13ec
 pkgrel=1
 pkgdesc='A Minecraft themed SDDM.'
 arch=('any')
 url="https://github.com/Davi-S/sddm-theme-minesddm"
 license=('AGPL-3.0-only')
-depends=('sddm' 'qt5-quickcontrols2' 'layer-shell-qt5')
+depends=('sddm' 'qt5-quickcontrols2' 'layer-shell-qt')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
