@@ -22,7 +22,7 @@ makedepends=(boost
              python-sphinx-copybutton
              python-sphinx-furo
              python-sphinx-inline-tabs
-             sagemath)
+             sagemath-git)
 conflicts=(sagemath-doc)
 provides=(sagemath-doc)
 source=(git+https://github.com/sagemath/sage
