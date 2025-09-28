@@ -1,16 +1,17 @@
 pkgbase = webeep-sync-bin
 	pkgdesc = Keep all your WeBeep files synced on your computer!(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/toto04/webeep-sync
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron22
 	provides = webeep-sync=1.0.3
 	conflicts = webeep-sync
+	options = !emptydirs
 	source = webeep-sync-1.0.3.rpm::https://github.com/toto04/webeep-sync/releases/download/v1.0.3/webeep-sync-redhat.rpm
 	source = webeep-sync.sh
 	sha256sums = 7c97c44010c1cabf48b00779d34554984279b1de8963da3e42ad248d3a94b99c
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = webeep-sync-bin

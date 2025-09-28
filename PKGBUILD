@@ -3,7 +3,7 @@ pkgname=webeep-sync-bin
 _pkgname='WeBeep Sync'
 pkgver=1.0.3
 _electronversion=22
-pkgrel=8
+pkgrel=9
 pkgdesc="Keep all your WeBeep files synced on your computer!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/toto04/webeep-sync"
@@ -13,20 +13,28 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
+options=(
+    !emptydirs
+)
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-redhat.rpm"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7c97c44010c1cabf48b00779d34554984279b1de8963da3e42ad248d3a94b99c'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
