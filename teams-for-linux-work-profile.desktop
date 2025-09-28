@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Teams for Linux (Work)
-Exec=/usr/bin/env bash -c "/opt/teams-for-linux/teams-for-linux --class=teams-work --user-data-dir=$HOME/.config/teams-profile-work --appIcon=/usr/share/icons/hicolor/512x512/apps/teams-for-linux-work-profile.png"
+Exec=/usr/bin/teams-for-linux-work-profile
 Terminal=false
 Type=Application
 Icon=teams-for-linux-work-profile

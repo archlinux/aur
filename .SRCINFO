@@ -1,14 +1,16 @@
 pkgbase = teams-for-linux-work-profile
 	pkgdesc = A desktop entry for a separate work account for teams-for-linux
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = x86_64
 	license = GPL3
 	depends = teams-for-linux
 	source = teams-for-linux-work-profile.desktop
 	source = teams-for-linux-work-profile.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = teams-for-linux-work-profile.sh
+	sha256sums = 15e2a65b02d68242393708854afcab5e5c844503e14674073fd124c835786729
+	sha256sums = 809d7b2c8c88c59f264ed62864c4c95d5700808a854a3ad9f545ec2bd3accbee
+	sha256sums = 90bbbb48d65ca4f038bf932e896376fed8494573456be28037e12138e4d9095b
 
 pkgname = teams-for-linux-work-profile
