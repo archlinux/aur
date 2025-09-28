@@ -1,9 +1,10 @@
 pkgbase = h3
 	pkgdesc = Hexagonal hierarchical geospatial indexing system
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uber/h3
 	arch = x86_64
+	arch = x86_64_v3
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = make

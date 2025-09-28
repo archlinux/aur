@@ -2,9 +2,9 @@
 # Contributor: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=h3
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hexagonal hierarchical geospatial indexing system"
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url="https://github.com/uber/h3"
 license=('Apache-2.0')
 makedepends=('cmake' 'make' 'gcc' 'libtool')
