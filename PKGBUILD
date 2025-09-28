@@ -4,8 +4,8 @@
 # Contributor: Mantas <grawity at gmail dot com>
 
 pkgname=nncp
-pkgver=8.12.1
-pkgrel=3
+pkgver=8.13.0
+pkgrel=1
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -20,9 +20,10 @@ optdepends=(
 )
 _url='http://www.nncpgo.org/download'             # Original: no https
 _mirror='https://nncp.mirrors.quux.org/download'  # Mirror
+_source="$_mirror"
 source=(
-  "$_mirror/nncp-$pkgver.tar.xz"
-  "$_mirror/nncp-$pkgver.tar.xz.asc"
+  "$_source/nncp-$pkgver.tar.xz"
+  "$_source/nncp-$pkgver.tar.xz.asc"
   nncp.sysusers
   nncp.tmpfiles
   nncp-daemon.service
@@ -31,7 +32,7 @@ source=(
 )
 changelog="$pkgname.changelog"
 sha256sums=(
-  'c93c27750e376810a779dee228f666ef4cc20b7ccc6a97f6197b68ae78e2668b'
+  '8ce3680e98005198d8975e031760b3a9b33be6d2d61844c799f778ca233d05f4'
   'SKIP'
   '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
   'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71'

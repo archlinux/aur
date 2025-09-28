@@ -1,17 +1,9 @@
 
-Release 8.12.1
+Release 8.13.0
 ==============
 
-   * Update 'hjson' and 'compress' dependant libraries.
+   * Ability to pass configuration file through opened file descriptor
+     ('$NNCPCFG=FD:0' for example to read it from stdin).
 
-   * Set 'hjson-cli' utility's version during the build process.
-
-Release 8.12.0
-==============
-
-   * Combine all executables in single 'nncp'.  You should symlink all
-     'nncp-*' commands to it.
-
-   * Prevent path traversal during freqing and file saving.  Previously
-     malicious paths in packets may request or overwrite file outside
-     freq or incoming directories.
+   * Removed excess requirement of having area's private key to send to
+     it.
