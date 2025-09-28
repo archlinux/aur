@@ -2,3 +2,4 @@ bing-wallpaper-gnome-extension/
 src/
 pkg/
 *.tar.gz
+*.log
