@@ -1,9 +1,9 @@
 # Maintainer: jakka <jakka@jakka.su>
 
 pkgname=hydownloader
-pkgver=0.64.0
+pkgver=0.65.0
 pkgrel=1
-_commit=28f54d184c9e7a3b90c3311c4e3cce240f78508e
+_commit=e0b3ada3832058e078b62b0f84fdbca1470740fa
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
 url="https://gitgud.io/thatfuckingbird/hydownloader"
@@ -29,7 +29,7 @@ provides=(hydownloader)
 source=(
   "git+https://gitgud.io/thatfuckingbird/hydownloader.git#commit=$_commit"
 )
-sha512sums=('3fd0d432860c7d398743f625b75da6cb7e279f15894c5f0b1d6fc09551db3d3c45f2e73afdc233a5ada5d57d4eff7e5334832d542f332d7e75a3e7f941a66328')
+sha512sums=('e2f5b9211473cde7c85fdcb164596f2ed26977d349cefe4ecf1bef9bab3a35ab68fcc752eb9d83a3ec1f5cbba007fc5e780681ec57840e99aa437cc3956d97f7')
 conflicts=(hydownloader-git)
 optdepends=(
     'hydownloader-systray: Remote management GUI for hydownloader'
