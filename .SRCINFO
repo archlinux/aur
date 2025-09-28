@@ -1,0 +1,18 @@
+pkgbase = drum-machine
+	pkgdesc = A drum machine application, built with Python, GTK4, libadwaita, and Pygame.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://apps.gnome.org/DrumMachine
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-mido
+	depends = python-numpy
+	depends = python-pygame
+	source = drum-machine-1.5.0.tar.gz::https://github.com/Revisto/drum-machine/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 2eb9205bf9549b35cba65dd266639e9fa801ba06af146a1d7e5ef9529ab26684
+
+pkgname = drum-machine

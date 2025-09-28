@@ -1,0 +1,4 @@
+[drum-machine]
+source = "git"
+git = "https://github.com/Revisto/drum-machine.git"
+prefix = "v"
