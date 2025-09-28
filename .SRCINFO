@@ -1,7 +1,7 @@
 pkgbase = layer-shell-qt5
 	pkgdesc = Qt 5 component to allow applications to make use of the Wayland wl-layer-shell protocol
 	pkgver = 5.27.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = GPL
