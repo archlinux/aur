@@ -3,7 +3,7 @@
 
 pkgname=hyprviz-bin
 pkgver=0.6.1
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI for configuring Hyprland!"
 url="https://github.com/timasoft/hyprviz"
 license=("GPL-2.0")
@@ -12,7 +12,7 @@ provides=("hyprviz")
 conflicts=("hyprviz")
 depends=("gtk4" "glib2" "desktop-file-utils" "hyprland")
 source=("https://github.com/timasoft/hyprviz/releases/download/v$pkgver/hyprviz-$pkgver-x86_64.tar.gz")
-sha256sums=("2c016e81b0027530c70f844ea02ee94758fb6aa4bbef43822d4b88c93536dde9")
+sha256sums=("85aab1cc9bfbaec86accd4e79accf769b88231dfb6770062563dd6a463c2c245")
 
 package() {
     install -Dm755 hyprviz -t "$pkgdir/usr/bin"
