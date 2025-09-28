@@ -1,6 +1,6 @@
 pkgbase = plasma-login-manager
 	pkgdesc = Plasma Login Manager
-	pkgver = 6.4.git20250721
+	pkgver = 6.4.git20250928
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -30,11 +30,11 @@ pkgbase = plasma-login-manager
 	depends = qt6-declarative
 	depends = sh
 	depends = systemd-libs
-	source = git+https://invent.kde.org/plasma/plasma-login-manager#commit=7aa153a1545360f498e261a31c487bb58f113795
+	source = git+https://invent.kde.org/plasma/plasma-login-manager#commit=df6f69ba25a461b731fea74f553e6636184480da
 	source = plasmalogin
 	source = plasmalogin-greeter
 	source = plasmalogin-autologin
-	sha256sums = 69b4234598fe663585ce2c1b81bb94d9373a94975bd2e7cd83d677beace980cd
+	sha256sums = 4b0fb2e76d8ce5060787a4a091777a697732a0d7dfdda93b6d30139da8b693ce
 	sha256sums = d7394292a65ae463926c2c3d2cb4e67bbfeb20995450c8e4c92fe5a28e7c4254
 	sha256sums = 3406bce46be8450e28ddbccfbcd0e1f8fa585d57da8833ff7294cf3aee84bb46
 	sha256sums = 1a84cf752782b03b53f66188013bf7e4af4f5e6feb7266bfe58c3faaa20777b4
