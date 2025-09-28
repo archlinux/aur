@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gdistance
-_pkgver=1.6.4
+_pkgver=1.6.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b05db220814b6d2a5a4511dc33522d5c')
-b2sums=('bfa9a2ba62867b395a828d84c7479ec837b69737480af1f93948f9f23db70f5f1207a9c1f06c2cab885b74c9dc53eaa290b91353ec40207a56962ca30d74dd71')
+md5sums=('b0ccc424ac22b48c58f665f15c2e83a2')
+b2sums=('2969d1c666cabfb45d573c7edac64b2f4cfc4d4183d0c9113eb6cf60309c0add229a524cf3f67eca54e674b06953fb95ceb3602417a356e05e626fb7a924ed7d')
 
 build() {
   mkdir build
