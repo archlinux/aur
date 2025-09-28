@@ -7,8 +7,8 @@ pkgdesc="a simple cli utility to shorten pacman syntax. (very funny)"
 arch=('any')
 url="https://github.com/jstmaxlol/pacdo"
 license=('Unlicense')
-optdepends=('figlet: cooler logo in usage screen')
-makedepends=('git' 'gcc' 'yes')
+optdepends=('figlet: cooler logo in usage screen' 'yes: technically needed for pacdo sccyes')
+makedepends=('git' 'gcc')
 source=("git+https://github.com/jstmaxlol/pacdo")
 md5sums=('SKIP')
 
