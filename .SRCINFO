@@ -1,7 +1,7 @@
 pkgbase = hyprviz-bin
 	pkgdesc = GUI for configuring Hyprland!
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/timasoft/hyprviz
 	arch = x86_64
 	license = GPL-2.0
