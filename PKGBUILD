@@ -1,12 +1,12 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=stduuid
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A C++17 cross-platform single-header library implementation for universally unique identifiers"
 arch=('any')
 url="https://github.com/mariusbancila/stduuid"
 license=('custom:MIT')
-# depends=()
+depends=("util-linux-libs")
 makedepends=(cmake)
 # checkdepends=()
 # optdepends=()
@@ -14,17 +14,18 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DUUID_USING_CXX20_SPAN=ON \
+        -DUUID_SYSTEM_GENERATOR=ON \
         "$pkgname-$pkgver"
-	make
+    make
 }
 
 check() {
-	make -k test
+    make -k test
 }
 
 package() {
-	make DESTDIR="$pkgdir/" VERBOSE=1 install
-  install -Dm755 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname-$pkgver/LICENSE"
+    make DESTDIR="$pkgdir/" VERBOSE=1 install
+    install -Dm755 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname-$pkgver/LICENSE"
 }
