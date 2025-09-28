@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc' 'libffi')
 makedepends=('cargo' 'clang')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uiua-lang/uiua/archive/${pkgver}.tar.gz")
-b2sums=('9439b06db4e0a12cb6d2b0c80f8ce5ff4a862ff7a5e7fe94e4d0454cf7bd03800a5dacd2d75b1ab26f2f72cce4874579be6b4f7ed3e422958f9022fe057c1388')
+b2sums=('82e96632a328e07bc7a14538943ddd92f070fc2b7228dc507bc1d3bfff0d1178194f0112265632400b4b4b011e618380ce33adb6bcd9fde5b1dd9232c0cba6de')
 options=(!lto)
 
 prepare() {
@@ -26,7 +26,7 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --features 'full system'
+    cargo build --frozen --release --features 'full no_self_update system'
 }
 
 check() {
@@ -34,7 +34,7 @@ check() {
     export CARGO_TARGET_DIR=target
 
     cd "${pkgname}-${pkgver}"
-    cargo test --frozen --features 'full system'
+    cargo test --frozen --features 'full no_self_update system'
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = uiua
 	pkgdesc = A stack-based array programming language
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://www.uiua.org/
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = uiua
 	depends = glibc
 	depends = libffi
 	options = !lto
-	source = uiua-0.17.0.tar.gz::https://github.com/uiua-lang/uiua/archive/0.17.0.tar.gz
-	b2sums = 9439b06db4e0a12cb6d2b0c80f8ce5ff4a862ff7a5e7fe94e4d0454cf7bd03800a5dacd2d75b1ab26f2f72cce4874579be6b4f7ed3e422958f9022fe057c1388
+	source = uiua-0.17.1.tar.gz::https://github.com/uiua-lang/uiua/archive/0.17.1.tar.gz
+	b2sums = 82e96632a328e07bc7a14538943ddd92f070fc2b7228dc507bc1d3bfff0d1178194f0112265632400b4b4b011e618380ce33adb6bcd9fde5b1dd9232c0cba6de
 
 pkgname = uiua
