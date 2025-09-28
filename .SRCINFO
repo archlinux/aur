@@ -1,6 +1,6 @@
 pkgbase = mrpack-install-git
 	pkgdesc = Modrinth Modpack server deployment
-	pkgver = r369.82610e1
+	pkgver = r388.f9b20d3
 	pkgrel = 1
 	url = https://github.com/nothub/mrpack-install
 	arch = any
@@ -11,6 +11,6 @@ pkgbase = mrpack-install-git
 	provides = mrpack-install
 	conflicts = mrpack-install
 	source = mrpack-install::git+https://github.com/nothub/mrpack-install.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mrpack-install-git
