@@ -1,0 +1,14 @@
+pkgbase = oselas-aarch64-v8a-linux-gnu-bin
+	pkgdesc = OSELAS cross toolchain for ARMv8a hardfloat (from Debian package)
+	pkgver = 2024.11.1
+	pkgrel = 1
+	url = https://www.pengutronix.de/en/software/toolchain.html
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	provides = oselas-aarch64-v8a-linux-gnu=2024.11.1
+	options = !strip
+	source = https://debian.pengutronix.de/debian/pool/main/o/oselas.toolchain/oselas.toolchain-2024.11.1-aarch64-v8a-linux-gnu-gcc-14.2.1-clang-19.1.7-glibc-2.40-binutils-2.43.1-kernel-6.11.6-sanitized_2024.11.1-1_amd64.deb
+	md5sums = 1d6fe5d720bba1832998a373af34a8ac
+
+pkgname = oselas-aarch64-v8a-linux-gnu-bin
