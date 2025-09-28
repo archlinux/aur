@@ -2,7 +2,7 @@
 # Maintainer: Monax (SMNX) <github.com/sleepy-monax>
 
 pkgname=cutekit-git
-pkgver=r327.620ace3
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="An operating system development kit."
 arch=('any')
@@ -20,8 +20,8 @@ provides=('cutekit')
 conflicts=('cutekit')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname/cutekit"
+    grep 'VERSION =' const.py | grep -Po '\(\K[0-9, ]+(?=\))' | tr -d ' ' | tr ',' '.'
 }
 
 build() {

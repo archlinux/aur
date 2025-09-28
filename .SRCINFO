@@ -1,6 +1,6 @@
 pkgbase = cutekit-git
 	pkgdesc = An operating system development kit.
-	pkgver = r90.004a5f4
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/cute-engineering/cutekit
 	arch = any
@@ -12,13 +12,14 @@ pkgbase = cutekit-git
 	depends = python-requests
 	depends = python-graphviz
 	depends = graphviz
+	depends = python-dataclasses-json
 	optdepends = clang: for compiling C/C++ code
 	optdepends = llvm: tools for C/C++ development
 	optdepends = lld: for linking
 	optdepends = nasm: for compiling assembly code
 	provides = cutekit
 	conflicts = cutekit
-	source = cutekit-git::git+https://github.com/cute-engineering/cutekit.git#branch=dev
+	source = cutekit-git::git+https://github.com/cute-engineering/cutekit.git#branch=stable
 	sha256sums = SKIP
 
 pkgname = cutekit-git
