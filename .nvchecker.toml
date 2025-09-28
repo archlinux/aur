@@ -1,3 +1,4 @@
 [savedesktop]
 source = "git"
 git = "https://github.com/vikdevelop/SaveDesktop.git"
+exclude_regex = ".*(alpha|beta|rc).*"
