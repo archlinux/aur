@@ -1,7 +1,7 @@
 # Maintainer: KorespondentAda <0kononov0 at gmail dot com>
 _pkgname="boosty_downloader"
 pkgname="boosty-downloader"
-pkgver=1.0.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Download any type of content from boosty.to"
 arch=(any)
@@ -23,6 +23,9 @@ depends=(
 	'python-jinja>=1:3.1.5-1'
 	'python-aiohttp-retry>=2.9.1-1'
 	'python-yarl>=1.18.3-1'
+	'python-aiolimiter>=1.2.1'
+	'python-sqlalchemy>=2.0.42'
+	'python-packaging>=25.0'
 )
 makedepends=(
 	'python-build' 'python-installer'
@@ -37,7 +40,7 @@ conflicts=("${pkgname}" "${_pkgname}")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/Glitchy-Sheep/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('04cfce338c9f5426ba10bf710ccccba9a86b9eb7f50df1a291b2cdaa32c58afb')
+sha256sums=('9342c19ae8378e89a8af23a17697cb7c4d5c6035aa4b9acc5e69ff969a801d39')
 
 build() {
 	cd "$srcdir/${pkgname}-$pkgver"
