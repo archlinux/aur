@@ -1,0 +1,15 @@
+pkgbase = noto-fonts-emoji-colrv1
+	pkgdesc = Google Noto Color Emoji font
+	pkgver = 2.051
+	pkgrel = 1
+	epoch = 1
+	url = https://www.google.com/get/noto/
+	arch = any
+	license = OFL-1.1-no-RFN
+	makedepends = git
+	provides = emoji-font
+	provides = noto-fonts-emoji
+	source = git+https://github.com/googlefonts/noto-emoji.git#tag=v2.051
+	sha256sums = 6c2bd2074fdd9ac239a891ab1917b6fedd53c2e80ffdc9f0cd4d98625ef6b249
+
+pkgname = noto-fonts-emoji-colrv1

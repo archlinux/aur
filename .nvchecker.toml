@@ -1,0 +1,5 @@
+[noto-fonts-emoji]
+source = 'github'
+github = 'googlefonts/noto-emoji'
+use_max_tag = true
+prefix = 'v'
