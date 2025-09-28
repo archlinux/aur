@@ -1,7 +1,7 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
 pkgver=1.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A new daemon controlling the G15 Logitech Gaming Keyboard for x11 and
 wayland"
 arch=('x86_64')
@@ -58,7 +58,7 @@ package() {
     install -Dm755 "$srcdir/g15ctrld/bin/g15ctrld" "$pkgdir/usr/bin/g15ctrld"
 
     # Install udev rules for G15
-    install -Dm644 "$srcdir/g15ctrld/99-lcdproc.rules" "$pkgdir/etc/udev/rules.d/99-lcdproc.rules"
+    #install -Dm644 "$srcdir/g15ctrld/99-lcdproc.rules" "$pkgdir/etc/udev/rules.d/99-lcdproc.rules"
 
     # Install Service-file for systemd
     install -Dm 644 "$srcdir/g15ctrld/g15ctrld.service" "$pkgdir/usr/lib/systemd/system/g15ctrld.service"
