@@ -24,9 +24,6 @@ install="notes.install"
 
 # unified binary dotnet releases break when stripped
 # see https://github.com/dotnet/runtime/issues/54947
-#
-# disabling debug is necessary for the time being
-# see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
 options=('!strip')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v$pkgver.tar.gz"
         "notes.install"
