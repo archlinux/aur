@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor <me@cordor.dev>
 pkgname=savestate-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 epoch=
 pkgdesc="A versatile game save backup manager, featuring Steam detection, Minecraft support, drag & drop, desktop shortcuts and emulator compatible."
@@ -25,7 +25,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'ec3443ed2a0d435833a1ce521db4298598a114c06994377bbd34f176965bc0c2'
+	'e7d841fda64f03050f96c9a3e05b4f1b4f78c0aa1b954667ef148999a09e682a'
 	'7f7b294aa10ef51f23dbccd814e2ce507269be889e444f2bf2b1fb5c50dcb15e'
 )
 validpgpkeys=()
