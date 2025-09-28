@@ -1,0 +1,8 @@
+# Ignore everything
+*
+# Except for
+!.SRCINFO
+!PKGBUILD
+!.gitignore
+!tinyuml.sh
+!tinyuml.desktop

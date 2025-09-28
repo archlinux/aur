@@ -1,0 +1,7 @@
+[Desktop Entry]
+
+Type=Application
+Name=TinyUML
+Exec=tinyuml
+Comment="Create UML diagrams"
+Categories=Development;Chart;Java

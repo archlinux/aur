@@ -1,17 +1,18 @@
 pkgbase = tinyuml
 	pkgdesc = A tool for creation of UML 2 diagrams with a focus on easy use and a small & stable feature set
 	pkgver = 0.13_02
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tinyuml.wordpress.com/about/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = unzip
 	depends = java-runtime
 	source = http://sourceforge.net/projects/tinyuml/files/tinyuml/0.13/tinyuml-0.13_02-bin.zip
 	source = tinyuml.sh
-	md5sums = 0050ecb62f2563cb3e1f5932cf762a9c
-	md5sums = c308aec89648dc15da0b710671127927
+	source = tinyuml.desktop
+	b2sums = bc4555f038adffd9d1f8204040d5e81d16bfeb6c91a660a420740fb169a84c2311db2cdb039308fad44b3c4faae61f086046bc2a9542896aa4acb264c094bf81
+	b2sums = e830d36a3c59d1aa7a3143d1b434726a0f43b4a8b5baf205ac5d7f554af195ef09757be07cbd41e81feba2f6ec0f04928cee50c885dbe36114382eb5c22903f3
+	b2sums = a2205276dbcf07ff4de1b08471a875bde31d55732643fb15655c71b166db1d3a87d68e74f9df4148927a32d020b03601bab7a6d287087ed7ada5911eb310b621
 
 pkgname = tinyuml
-
