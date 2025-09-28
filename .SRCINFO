@@ -1,13 +1,13 @@
 pkgbase = openapv
 	pkgdesc = The reference implementation of the APV codec
-	pkgver = 0.2.0.3
+	pkgver = 0.2.0.4
 	pkgrel = 1
 	url = https://github.com/AcademySoftwareFoundation/openapv/
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = cmake
 	depends = glibc
-	source = https://github.com/AcademySoftwareFoundation/openapv/archive/v0.2.0.3/openapv-0.2.0.3.tar.gz
-	sha256sums = 9da0f758534d6243cd6e5c5ca46404e6fdd7e298a17da50b676b71c53ce6a083
+	source = https://github.com/AcademySoftwareFoundation/openapv/archive/v0.2.0.4/openapv-0.2.0.4.tar.gz
+	sha256sums = 1d8d31b0758d4b968d9b2ab483b3edb6de3440edcb27f14801ef42d6f2368e55
 
 pkgname = openapv
