@@ -13,7 +13,7 @@ _subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 epoch=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -40,8 +40,8 @@ sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
 sha256sums_aarch64=('42d186e03151d8a4453d5e36d0cec72f9b59f9fe264a05523a67a92506e18ab7')
 sha256sums_x86_64=('0a4c6497b8199d176b6c8b9c5ea320288e22a9acb16297e4eb6a02d5757ca896')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
