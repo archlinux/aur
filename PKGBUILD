@@ -3,13 +3,13 @@
 pkgname=ciyue
 _srcname=Ciyue
 pkgver=1.20.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple mdict dictionary with Android/Windows/Linux support"
 url="https://mumulhl.eu.org/${_srcname}"
 license=('MIT')
 arch=('x86_64')
 depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'libkeybinder3' 'libayatana-appindicator')
-makedepends=('clang' 'cmake' 'ninja' 'fvm')
+makedepends=('clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mumu-lhl/${_srcname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.desktop")
 sha256sums=('3d5255f0476a4ade7a48b83e97ce1660d2425bef80c19eac8e6a531c4f3926ae'
@@ -34,8 +34,11 @@ package() {
 	pushd build/linux/x64/release
 	install -Dm755 "bundle/${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
 	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${pkgname}" .
-        cmake -P cmake_install.cmake
+	cmake -P cmake_install.cmake
 	popd
+
+	# Reset RUNPATH
+	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${pkgname}/lib/*.so
 
 	# Symlink
 	install -dm755 "${pkgdir}/usr/bin"

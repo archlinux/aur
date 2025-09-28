@@ -1,7 +1,7 @@
 pkgbase = ciyue
 	pkgdesc = A simple mdict dictionary with Android/Windows/Linux support
 	pkgver = 1.20.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mumulhl.eu.org/Ciyue
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = ciyue
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = fvm
+	makedepends = patchelf
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base
