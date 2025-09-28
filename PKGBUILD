@@ -7,7 +7,7 @@ _pkgname=kirigami
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-${_pkgname}
-pkgver=6.4.0
+pkgver=6.18.0
 pkgrel=1
 pkgdesc="A QtQuick based components set (Android, $_android_arch)"
 arch=('any')
@@ -19,7 +19,7 @@ provides=(android-${_android_arch}-${_pkgname}2)
 conflicts=(android-${_android_arch}-${_pkgname}2)
 replaces=(android-${_android_arch}-${_pkgname}2)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('eca20cd9ce72d0eeb57bd5fba394f20d83bb4612ac4a4c23fb8ca74a93188c37'
+sha256sums=('e0574bf5f530a7cd98e0342498681f4374beff108e74262063b105e1c977f866'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB # David Faure <faure@kde.org>
               E0A3EB202F8E57528E13E72FD7574483BB57B18D # Jonathan Esk-Riddell <jr@jriddell.org>
