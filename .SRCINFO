@@ -1,7 +1,7 @@
 pkgbase = plasma-framework5
 	pkgdesc = Plasma library and runtime components based upon KF5 and Qt5
 	pkgver = 5.116.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
