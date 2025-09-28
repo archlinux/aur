@@ -6,7 +6,7 @@ _pkgname=walker
 pkgname=${_pkgname}-bin
 pkgver=1.0.8
 _pkgvername=v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 arch=('x86_64')
 _barch=('x86_64')
@@ -33,20 +33,20 @@ provides=("${_pkgname}")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
-        "${_urlraw}/resources/config.toml"
-        "${_urlraw}/resources/themes/default/item.xml"
-        "${_urlraw}/resources/themes/default/item_archlinuxpkgs.xml"
-        "${_urlraw}/resources/themes/default/item_calc.xml"
-        "${_urlraw}/resources/themes/default/item_clipboard.xml"
-        "${_urlraw}/resources/themes/default/item_dmenu.xml"
-        "${_urlraw}/resources/themes/default/item_files.xml"
-        "${_urlraw}/resources/themes/default/item_providerlist.xml"
-        "${_urlraw}/resources/themes/default/item_symbols.xml"
-        "${_urlraw}/resources/themes/default/item_todo.xml"
-        "${_urlraw}/resources/themes/default/item_unicode.xml"
-        "${_urlraw}/resources/themes/default/layout.xml"
-        "${_urlraw}/resources/themes/default/preview.xml"
-        "${_urlraw}/resources/themes/default/style.css")
+        "config-${pkgver}.toml::${_urlraw}/resources/config.toml"
+        "item-${pkgver}.xml::${_urlraw}/resources/themes/default/item.xml"
+        "item_archlinuxpkgs-${pkgver}.xml::${_urlraw}/resources/themes/default/item_archlinuxpkgs.xml"
+        "item_calc-${pkgver}.xml::${_urlraw}/resources/themes/default/item_calc.xml"
+        "item_clipboard-${pkgver}.xml::${_urlraw}/resources/themes/default/item_clipboard.xml"
+        "item_dmenu-${pkgver}.xml::${_urlraw}/resources/themes/default/item_dmenu.xml"
+        "item_files-${pkgver}.xml::${_urlraw}/resources/themes/default/item_files.xml"
+        "item_providerlist-${pkgver}.xml::${_urlraw}/resources/themes/default/item_providerlist.xml"
+        "item_symbols-${pkgver}.xml::${_urlraw}/resources/themes/default/item_symbols.xml"
+        "item_todo-${pkgver}.xml::${_urlraw}/resources/themes/default/item_todo.xml"
+        "item_unicode-${pkgver}.xml::${_urlraw}/resources/themes/default/item_unicode.xml"
+        "layout-${pkgver}.xml::${_urlraw}/resources/themes/default/layout.xml"
+        "preview-${pkgver}.xml::${_urlraw}/resources/themes/default/preview.xml"
+        "style-${pkgver}.css::${_urlraw}/resources/themes/default/style.css")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
@@ -71,10 +71,10 @@ prepare() {
   cd "${srcdir}" || exit 1
 
   mkdir -p ./config
-  mv config.toml ./config
+  for f in *.toml; do mv ${f} config/${f//-${pkgver}/} ; done
 
   mkdir -p ./themes
-  mv *.{xml,css} ./themes
+  for f in *.{xml,css}; do mv ${f} themes/${f//-${pkgver}/} ; done
 }
 
 package() {
@@ -90,7 +90,7 @@ package() {
   install -Dm 644 config.toml -t "${pkgdir}/etc/xdg/walker"
 
   cd "${srcdir}/themes" || exit 1
-  for i in ./*; do
-    install -Dm 644 ${i} -t "${pkgdir}/etc/xdg/walker/themes/default"
+  for theme in ./*; do
+    install -Dm 644 ${theme} -t "${pkgdir}/etc/xdg/walker/themes/default"
   done
 }
