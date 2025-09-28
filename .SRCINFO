@@ -1,4 +1,4 @@
-pkgbase = suspcheck
+pkgbase = suscheck
 	pkgdesc = Wrapper and check script for makepkg/paru to warn about Russian, Chineese ,or other maintainers from countries you can find suspicious, maintainers
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = suspcheck
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = suspcheck
+pkgname = suscheck
