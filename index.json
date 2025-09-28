@@ -1,0 +1,12 @@
+{
+  "modules": [
+    "/usr/local/etc/suscheck-data/russia.json",
+    "/usr/local/etc/suscheck-data/china.json",
+    "/usr/local/etc/suscheck-data/iran.json",
+    "/usr/local/etc/suscheck-data/north_korea.json",
+    "/usr/local/etc/suscheck-data/palestine.json",
+    "/usr/local/etc/suscheck-data/syria.json",
+    "/usr/local/etc/suscheck-data/venezuela.json",
+    "/usr/local/etc/suscheck-data/belarus.json"
+  ]
+}
