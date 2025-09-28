@@ -1,14 +1,14 @@
 #!/bin/bash
 # Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
 pkgname=pacdo
-pkgver=2025.09.0503
+pkgver=2025.09.2904
 pkgrel=0
 pkgdesc="a simple cli utility to shorten pacman syntax. (very funny)"
 arch=('any')
 url="https://github.com/jstmaxlol/pacdo"
 license=('Unlicense')
 optdepends=('figlet: cooler logo in usage screen')
-makedepends=('git' 'gcc')
+makedepends=('git' 'gcc' 'yes')
 source=("git+https://github.com/jstmaxlol/pacdo")
 md5sums=('SKIP')
 
