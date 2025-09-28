@@ -1,37 +1,17 @@
 # Maintainer:
 # Contributor: Kerrick Staley <kerrick@kerrickstaley.com>
 
-## links
-# https://dolphin-emu.org
-# https://github.com/dolphin-emu/dolphin
-
 ## options
 : ${_debugfast:=false}
-: ${_build_unittests:=false}
-
-: ${_branch=master}
-
-: ${_build_clang:=false}
-
-: ${_build_debugfast:=true}
-: ${_build_level:=1}
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_debugfast::1}" == "t" ]] && _pkgtype+="-debugfast"
-[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
-[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
-[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 _pkgname="dolphin-emu"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2506.r155.g43aa7e9
+pkgname="$_pkgname-debugfast-git"
+pkgver=2509.r92.ge1c7734
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
 license=('GPL-2.0-or-later')
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 
 depends=(
   'alsa-lib'
@@ -67,24 +47,7 @@ makedepends=(
   'python'
   'vulkan-headers'
 )
-
-if [[ "${_build_unittests::1}" == "t" ]]; then
-  checkdepends=('gtest')
-
-  check() {
-    ninja -C build unittests
-  }
-fi
-
-if [[ "${_build_clang::1}" == "t" ]]; then
-  makedepends+=(
-    clang
-    lld
-    llvm
-  )
-else
-  options+=(!lto)
-fi
+checkdepends=('gtest')
 
 _source_main() {
   provides=(
@@ -101,7 +64,7 @@ _source_main() {
   options+=(!emptydirs)
 
   _pkgsrc="$_pkgname"
-  source=("$_pkgname"::"git+$url.git#branch=${_branch:-master}")
+  source=("$_pkgname"::"git+$url.git")
   sha256sums=('SKIP')
 
   pkgver() {
@@ -123,6 +86,7 @@ _source_dolphin() {
     #'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'::'Externals/fmt/fmt'
     #'google.googletest'::'git+https://github.com/google/googletest.git'::'Externals/gtest'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'::'Externals/VulkanMemoryAllocator'
+    'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'::'Externals/glslang/glslang'
     #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'::'Externals/spirv_cross/SPIRV-Cross'
     #'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'::'Externals/Vulkan-Headers'
     #'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'::'Externals/SDL/SDL'
@@ -131,6 +95,7 @@ _source_dolphin() {
     'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'::'Externals/enet/enet'
     #'lz4'::'git+https://github.com/lz4/lz4.git'::'Externals/lz4/lz4'
     'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'::'Externals/mGBA/mgba'
+    #'miniupnp'::'git+https://github.com/miniupnp/miniupnp.git'::'Externals/miniupnpc/miniupnp'
     'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'::'Externals/cubeb/cubeb'
     #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'::'Externals/libspng/libspng'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'::'Externals/rcheevos/rcheevos'
@@ -169,10 +134,12 @@ prepare() {
     done
   }
 
-  _run_if_exists _prepare_dolphin
+  _prepare_dolphin
+
+  cd "$_pkgsrc"
 
   # Delete gcc specific options
-  sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
+  sed '/_ARCHIVE_/d' -i CMakeLists.txt
 }
 
 build() (
@@ -184,7 +151,7 @@ build() (
   install /dev/stdin "$srcdir/$_pkgsrc/Source/Core/Common/scmrev.h.in" << END
 #define SCM_REV_STR "\${DOLPHIN_WC_REVISION}"
 #define SCM_DESC_STR "${_pkgver:?}"
-#define SCM_BRANCH_STR "${_branch:-master}"
+#define SCM_BRANCH_STR "master"
 #define SCM_COMMITS_AHEAD_MASTER 0
 #define SCM_DISTRIBUTOR_STR "aur.archlinux.org"
 #define SCM_UPDATE_TRACK_STR ""
@@ -208,6 +175,7 @@ END
     -DUSE_SYSTEM_FMT=ON
     -DUSE_SYSTEM_LIBMGBA=OFF
     -DUSE_SYSTEM_XXHASH=OFF
+    -DENABLE_TESTS=$CHECKFUNC
     -Wno-dev
   )
 
@@ -215,44 +183,13 @@ END
     _cmake_options+=(-DFASTLOG=ON)
   fi
 
-  if [[ "${_build_unittests::1}" == "t" ]]; then
-    _cmake_options+=(-DENABLE_TESTS=ON)
-  else
-    _cmake_options+=(-DENABLE_TESTS=OFF)
-  fi
-
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    CC=clang
-    CXX=clang++
-
-    _ldflags=(${LDFLAGS})
-    LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
-
-    _cmake_options+=(
-      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
-      -DENABLE_LTO=ON
-    )
-  else
-    _cmake_options+=(-DENABLE_LTO=OFF)
-  fi
-
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-    _cflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
-    )
-    CFLAGS="${_cflags[@]}"
-
-    _cxxflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
-    )
-    CXXFLAGS="${_cxxflags[@]}"
-  fi
-
   cmake "${_cmake_options[@]}"
   cmake --build build
 )
+
+check() {
+  ninja -C build unittests
+}
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
@@ -261,10 +198,4 @@ package() {
     "$pkgdir/usr/lib/udev/rules.d/51-usb-device-dolphin.rules"
 
   rm -rf "$pkgdir"/usr/{include,lib/libdiscord-rpc.a}
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
