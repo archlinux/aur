@@ -5,7 +5,7 @@
 
 pkgname=lld17
 pkgver=17.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Linker from LLVM 17"
 arch=('x86_64')
 url="https://lld.llvm.org/"
@@ -71,6 +71,10 @@ package() {
 
   # Remove documentation sources
   rm -r "$pkgdir"/usr/lib/llvm17/share/doc/lld/html/{_sources,.buildinfo}
+
+  for lib in $(find "$pkgdir"/usr/lib/llvm17/lib/ -maxdepth 1 -type f -name '*.so.17' -printf '%f\n'); do
+    ln -s ./llvm17/lib/"$lib" "$pkgdir"/usr/lib/"$lib"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
