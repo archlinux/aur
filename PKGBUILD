@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=reel
 _app_id=dev.arsfeld.Reel
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64')
@@ -20,16 +20,18 @@ depends=(
   'libadwaita'
   'libsecret'
   'mpv'
+  'openssl'
 )
 makedepends=(
   'blueprint-compiler'
   'cargo'
   'clang'
   'git'
+  'mold'
 )
 options=('!lto')  # sqlx crate fails with LTO enabled
 source=("git+https://github.com/arsfeld/reel.git#tag=v$pkgver")
-sha256sums=('00edfadb69a2992772a172c61a24194f74074764a87780e0f29480624a5ecb2d')
+sha256sums=('814bb4ec9da8cd4638a00453ee3b94334dced9413be7a667debfb2fdf9b70b20')
 
 prepare() {
   cd "$pkgname"
@@ -45,6 +47,10 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
+  # Use mold linker for significantly faster link times
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
+
   cargo build --frozen --release
 }
 
