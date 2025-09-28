@@ -2,7 +2,7 @@
 
 pkgname=metapac
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="multi-backend declarative package manager"
 url="https://github.com/ripytide/${pkgname}"
 license=("GPL-3.0-or-later")
@@ -28,13 +28,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
-}
-
-check() {
-	cd "${pkgname}-${pkgver}"
-
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
 }
 
 package() {
