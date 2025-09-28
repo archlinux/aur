@@ -3,7 +3,7 @@
 # Updated by https://github.com/Freed-Wu/translate-shell/blob/main/.github/workflows/main.yml
 _pkgname=translate-shell
 pkgname=python-$_pkgname
-pkgver=0.0.55
+pkgver=0.0.56
 pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
@@ -43,7 +43,7 @@ conflicts=("$_pkgname")
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('f0021631a7a13a4fbc769b1a2f4017e845334ba0842e5f9a9158a016ee31b982')
+sha256sums=('2171763925f0f612e881e6562066fe3870170c99745b1af7484f397ef980efbb')
 
 package() {
 	python -m installer --destdir="$pkgdir" ./*.whl
