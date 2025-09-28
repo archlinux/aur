@@ -1,6 +1,6 @@
 pkgbase = mrpack-install-bin
 	pkgdesc = Modrinth Modpack server deployment
-	pkgver = 0.20.0.beta
+	pkgver = 0.21.0.beta
 	pkgrel = 1
 	url = https://github.com/nothub/mrpack-install
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mrpack-install-bin
 	license = MIT
 	provides = mrpack-install
 	conflicts = mrpack-install
-	source_x86_64 = mrpack-install::https://github.com/nothub/mrpack-install/releases/download/v0.20.0-beta/mrpack-install_0.20.0-beta_linux_amd64.tar.gz
+	source_x86_64 = mrpack-install::https://github.com/nothub/mrpack-install/releases/download/v0.21.0-beta/mrpack-install_0.21.0-beta_linux_amd64.tar.gz
 	sha256sums_x86_64 = 38b016bbbe0699f22917837e238db21e6a340dcec388a6b6239c4c15daabde0f
-	source_aarch64 = mrpack-install::https://github.com/nothub/mrpack-install/releases/download/v0.20.0-beta/mrpack-install_0.20.0-beta_linux_arm64.tar.gz
+	source_aarch64 = mrpack-install::https://github.com/nothub/mrpack-install/releases/download/v0.21.0-beta/mrpack-install_0.21.0-beta_linux_arm64.tar.gz
 	sha256sums_aarch64 = 38b016bbbe0699f22917837e238db21e6a340dcec388a6b6239c4c15daabde0f
 
 pkgname = mrpack-install-bin
