@@ -1,0 +1,5 @@
+[h3]
+source = "git"
+git = "https://github.com/uber/h3.git"
+include_regex = 'v((?:\d|\.)+)'
+prefix = "v"
