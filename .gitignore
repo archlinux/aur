@@ -1,0 +1,9 @@
+*
+!config.json
+!alist.service
+!alist.sysusers
+!alist.tmpfiles
+!alist.install
+!.gitignore
+!PKGBUILD
+!.SRCINFO

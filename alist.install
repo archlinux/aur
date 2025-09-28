@@ -1,4 +1,4 @@
-post_upgrade(){
+post_upgrade() {
     echo "from alist 3.9.2-3, the alist user is used to run this service"
     echo "if you are upgrading from a previous version"
     echo "you have to run  the following commands in green only once"
