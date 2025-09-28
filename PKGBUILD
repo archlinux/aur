@@ -3,7 +3,7 @@
 # template start; name=git-source; version=1;
 pkgname=skylobby-techa-git
 pkgver=1.0.3.r0.gf3add75
-pkgdesc="Spring RTS games client lobby"
+pkgdesc="https://techa-rts.com client lobby"
 pkgrel=1
 arch=('any')
 makedepends+=('git' 'clojure' 'jdk21-openjdk')
