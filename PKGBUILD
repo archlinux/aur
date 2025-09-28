@@ -1,4 +1,5 @@
-# Maintainer: Zacharias Knudsen <zachasme@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=h3
 pkgver=4.3.0
 pkgrel=1
