@@ -8,7 +8,7 @@ pkgbase = pacdo
 	makedepends = git
 	makedepends = gcc
 	optdepends = figlet: cooler logo in usage screen
-	optdepends = yay: technically needed for pacdo sccyes
+	optdepends = yes: technically needed for pacdo sccyes
 	source = git+https://github.com/jstmaxlol/pacdo
 	md5sums = SKIP
 
