@@ -2,7 +2,7 @@
 
 pkgname=plasma-login-manager
 pkgver=6.4.git20250928
-pkgrel=1
+pkgrel=2
 _commit=df6f69ba25a461b731fea74f553e6636184480da
 arch=(x86_64)
 pkgdesc='Plasma Login Manager'

@@ -1,7 +1,7 @@
 pkgbase = plasma-login-manager
 	pkgdesc = Plasma Login Manager
 	pkgver = 6.4.git20250928
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = GPL-2.0-or-later
