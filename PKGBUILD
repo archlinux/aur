@@ -1,13 +1,13 @@
 # Maintainer: Trix <admin@trix.is-a.dev>
 # Contributor:  GasparVardanyan <gaspar_pm@proton.me>
 pkgname='awcc-git'
-pkgrel=1
-pkgver=r182.d34f47c
+pkgrel=3
+pkgver=r185.90f9b38
 pkgdesc="An unofficial alternative to Alienware Command Centre of Windows for the Dell G series"
 arch=('x86_64')
 url="https://github.com/tr1xem/AWCC"
 license=('GPL3')
-depends=('acpi_call-dkms' 'libusb' 'libx11' 'systemd-libs' 'glibc' 'glfw' 'glu' 'libglvnd' 'libevdev')
+depends=('acpi_call-dkms' 'libusb' 'libx11' 'systemd-libs' 'glibc' 'glfw' 'glu' 'libglvnd' 'libevdev' 'ttf-roboto')
 makedepends=('git' 'make' 'cmake' 'nlohmann-json')
 provides=("awcc")
 install='awcc.install'
