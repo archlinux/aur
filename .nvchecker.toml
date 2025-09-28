@@ -1,0 +1,4 @@
+[sbxkb]
+source = "regex"
+url = "https://sourceforge.net/projects/staybox/files/"
+regex = "sbxkb-(\\d+\\.\\d+\\.\\d+).tar.gz"
