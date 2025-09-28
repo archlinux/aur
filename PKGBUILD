@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiddlywiki-app-bin
 _pkgname='TiddlyWiki App '
-pkgver=4.9.6
+pkgver=4.9.7
 _electronversion=38
 pkgrel=1
 pkgdesc="A TiddlyWiki desktop application that provides a silkier desktop experience.(Prebuilt version.Use system-wide electron)一个 TiddlyWiki 桌面应用，提供更加丝滑的桌面端使用体验。"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-x64.pacman")
 sha256sums=('801cd318b77f7cc43b71e5bf59b79476c94d4981025655f7d1c4f3ef4faaf162'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('c5be3a4688e986f3c8f7a904ccca8544141f21ef279d38213c91818cf77821fe')
-sha256sums_x86_64=('3c691e1bc012b81ab13e2260d79e043124cc086eb441aaab78d1a7590e26dcf3')
+sha256sums_aarch64=('6767e578d7daf87a754ae8ea404fdb68a08d00c2bfa006022b82fbb2b6ed7975')
+sha256sums_x86_64=('63d3f3e1c950989665eff9ee1abe7ea15b7fe26efee14368fa8f2d4cdae23598')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
