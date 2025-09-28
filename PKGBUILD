@@ -163,11 +163,12 @@ prepare() {
 	mkdir -p "$KBUILD_OUTPUT"
 
 	# Merge defconfig and diffconfigs
-	./scripts/kconfig/merge_config.sh -m "$KBUILD_OUTPUT/.config" \
-		"$KCONFIG" \
+	./scripts/kconfig/merge_config.sh -m "$KCONFIG" \
 		"$SELINUX_DIFFCONFIG" \
 		"$NFTABLES_DIFFCONFIG" ||
 		_die "Failed to merge config files"
+
+	mv .config "$KBUILD_OUTPUT"/.config
 
 	### Prepared version
 	"${MAKE_CMD[@]}" -s kernelrelease >"$KBUILD_OUTPUT/version"
@@ -225,10 +226,7 @@ _package() {
 		DEPMOD=/bin/true modules_install # Suppress depmod
 
 	# remove build links
-	rm "$modulesdir"/build
-
-	# Ensure function always returns true
-	return 0
+	rm "$modulesdir"/build || :
 }
 
 _package-headers() {
