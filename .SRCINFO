@@ -1,7 +1,7 @@
 pkgbase = python-pyln-client
 	pkgdesc = Client library and plugin library for Core Lightning
 	pkgver = 25.09
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-client
 	arch = any
 	license = custom:BSD-MIT
