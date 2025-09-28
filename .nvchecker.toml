@@ -1,0 +1,5 @@
+[python-jax-rocm]
+source = "github"
+github = "jax-ml/jax"
+use_latest_release = "true"
+prefix = "jax-v"
