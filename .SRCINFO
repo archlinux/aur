@@ -1,0 +1,12 @@
+pkgbase = lock-config
+	pkgdesc = Servicio de systemd para lanzar xss-lock con i3lock al suspender
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/
+	arch = any
+	license = GPL
+	depends = i3lock-color
+	source = https://raw.githubusercontent.com/PablCendrero8310/lock/refs/heads/main/lock
+	sha256sums = 4d7ffa2d6088d77542c1537a07330566e1e5dcaaad35a28a45949a0af44fbd94
+
+pkgname = lock-config
