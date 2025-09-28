@@ -1,0 +1,683 @@
+diff --git a/build/pkgs/maxima/checksums.ini b/build/pkgs/maxima/checksums.ini
+index 2b0e2828df0..e764b01f4a6 100644
+--- a/build/pkgs/maxima/checksums.ini
++++ b/build/pkgs/maxima/checksums.ini
+@@ -1,4 +1,4 @@
+ tarball=maxima-VERSION.tar.gz
+-sha1=fff13f4c010e6daab65fbc8a6895c2bd79925177
+-sha256=9104021b24fd53e8c03a983509cb42e937a925e8c0c85c335d7709a14fd40f7a
++sha1=c560b853864f333e999e475607de77facb9f358e
++sha256=b0916b5fb37b6eeaae400083175e68e28f80b9a1ab580c106a05448cf1c496b2
+ upstream_url=https://sourceforge.net/projects/maxima/files/Maxima-source/VERSION-source/maxima-VERSION.tar.gz/download
+diff --git a/build/pkgs/maxima/package-version.txt b/build/pkgs/maxima/package-version.txt
+index 5ddc1d087c6..297c7a9e65d 100644
+--- a/build/pkgs/maxima/package-version.txt
++++ b/build/pkgs/maxima/package-version.txt
+@@ -1 +1 @@
+-5.47.0
++5.48.1
+diff --git a/src/doc/de/tutorial/tour_algebra.rst b/src/doc/de/tutorial/tour_algebra.rst
+index 84e97f773f1..c13b3a31d29 100644
+--- a/src/doc/de/tutorial/tour_algebra.rst
++++ b/src/doc/de/tutorial/tour_algebra.rst
+@@ -172,7 +172,7 @@ berechnet:
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ Hier ist ein komplizierteres Beispiel. Die Verschiebung des
+ Gleichgewichts einer verkoppelten Feder, die an der linken Wand
+diff --git a/src/doc/en/constructions/calculus.rst b/src/doc/en/constructions/calculus.rst
+index b6243b64dbc..fb7339ba0b1 100644
+--- a/src/doc/en/constructions/calculus.rst
++++ b/src/doc/en/constructions/calculus.rst
+@@ -155,7 +155,7 @@ Sage can also compute symbolic definite integrals involving limits.
+     (x, k, w)
+     sage: f = x^3 * e^(k*x) * sin(w*x)
+     sage: f.integrate(x)
+-    ((24*k^3*w - 24*k*w^3 - (k^6*w + 3*k^4*w^3 + 3*k^2*w^5 + w^7)*x^3 + 6*(k^5*w + 2*k^3*w^3 + k*w^5)*x^2 - 6*(3*k^4*w + 2*k^2*w^3 - w^5)*x)*cos(w*x)*e^(k*x) - (6*k^4 - 36*k^2*w^2 + 6*w^4 - (k^7 + 3*k^5*w^2 + 3*k^3*w^4 + k*w^6)*x^3 + 3*(k^6 + k^4*w^2 - k^2*w^4 - w^6)*x^2 - 6*(k^5 - 2*k^3*w^2 - 3*k*w^4)*x)*e^(k*x)*sin(w*x))/(k^8 + 4*k^6*w^2 + 6*k^4*w^4 + 4*k^2*w^6 + w^8)
++    ((24*k^3*w*e^(k*x) - 24*k*w^3*e^(k*x) - (k^6*w*e^(k*x) + 3*k^4*w^3*e^(k*x) + 3*k^2*w^5*e^(k*x) + w^7*e^(k*x))*x^3 + 6*(k^5*w*e^(k*x) + 2*k^3*w^3*e^(k*x) + k*w^5*e^(k*x))*x^2 - 6*(3*k^4*w*e^(k*x) + 2*k^2*w^3*e^(k*x) - w^5*e^(k*x))*x)*cos(w*x) - (6*k^4*e^(k*x) - 36*k^2*w^2*e^(k*x) + 6*w^4*e^(k*x) - (k^7*e^(k*x) + 3*k^5*w^2*e^(k*x) + 3*k^3*w^4*e^(k*x) + k*w^6*e^(k*x))*x^3 + 3*(k^6*e^(k*x) + k^4*w^2*e^(k*x) - k^2*w^4*e^(k*x) - w^6*e^(k*x))*x^2 - 6*(k^5*e^(k*x) - 2*k^3*w^2*e^(k*x) - 3*k*w^4*e^(k*x))*x)*sin(w*x))/(k^8 + 4*k^6*w^2 + 6*k^4*w^4 + 4*k^2*w^6 + w^8)
+     sage: integrate(1/x^2, x, 1, infinity)
+     1
+ 
+@@ -257,8 +257,7 @@ is one way to compute LT's and
+     (s, t)
+     sage: f = t^5*exp(t)*sin(t)
+     sage: L = laplace(f, t, s); L
+-    3840*(s - 1)^5/(s^2 - 2*s + 2)^6 - 3840*(s - 1)^3/(s^2 - 2*s + 2)^5 +
+-    720*(s - 1)/(s^2 - 2*s + 2)^4
++    240*(3*s^5 - 15*s^4 + 20*s^3 - 12*s + 4)/(s^12 - 12*s^11 + 72*s^10 - 280*s^9 + 780*s^8 - 1632*s^7 + 2624*s^6 - 3264*s^5 + 3120*s^4 - 2240*s^3 + 1152*s^2 - 384*s + 64)
+ 
+ is another way.
+ 
+diff --git a/src/doc/en/tutorial/tour_algebra.rst b/src/doc/en/tutorial/tour_algebra.rst
+index d460fa279e5..60c22d4338c 100644
+--- a/src/doc/en/tutorial/tour_algebra.rst
++++ b/src/doc/en/tutorial/tour_algebra.rst
+@@ -182,7 +182,7 @@ You can compute Laplace transforms also; the Laplace transform of
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ Here is a more involved example. The displacement from equilibrium
+ (respectively) for a coupled spring attached to a wall on the left
+diff --git a/src/doc/es/tutorial/tour_algebra.rst b/src/doc/es/tutorial/tour_algebra.rst
+index 42c818fe8d7..f49e498582a 100644
+--- a/src/doc/es/tutorial/tour_algebra.rst
++++ b/src/doc/es/tutorial/tour_algebra.rst
+@@ -164,7 +164,7 @@ de :math:`t^2e^t -\sin(t)` se calcula como sigue:
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ Veamos un ejemplo más complicado. El desplazamiento desde el punto de equilibrio
+ de dos resortes acoplados, sujetos a una pared a la izquierda
+diff --git a/src/doc/fr/tutorial/tour_algebra.rst b/src/doc/fr/tutorial/tour_algebra.rst
+index 70cbe3a1df0..e386986385a 100644
+--- a/src/doc/fr/tutorial/tour_algebra.rst
++++ b/src/doc/fr/tutorial/tour_algebra.rst
+@@ -149,7 +149,7 @@ transformée de Laplace de :math:`t^2e^t -\sin(t)` s'obtient comme suit :
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ Voici un exemple plus élaboré. L'élongation à partir du point
+ d'équilibre de ressorts couplés attachés à gauche à un mur
+diff --git a/src/doc/it/tutorial/tour_algebra.rst b/src/doc/it/tutorial/tour_algebra.rst
+index 4c301d7b1b2..38f0dc8a574 100644
+--- a/src/doc/it/tutorial/tour_algebra.rst
++++ b/src/doc/it/tutorial/tour_algebra.rst
+@@ -150,7 +150,7 @@ Si può anche calcolare la trasformata di Laplace; la trasformata di Laplace di
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ Il successivo è un esempio più articolato. Lo scostamento dall'equilibrio
+ (rispettivamente) per due molle accoppiate fissate ad un muro a sinistra
+diff --git a/src/doc/ja/tutorial/tour_algebra.rst b/src/doc/ja/tutorial/tour_algebra.rst
+index dd6e67d1030..5d14e260435 100644
+--- a/src/doc/ja/tutorial/tour_algebra.rst
++++ b/src/doc/ja/tutorial/tour_algebra.rst
+@@ -176,7 +176,7 @@ Sageを使って常微分方程式を研究することもできる． :math:`x'
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ 
+ もう少し手間のかかる問題を考えてみよう．
+diff --git a/src/doc/pt/tutorial/tour_algebra.rst b/src/doc/pt/tutorial/tour_algebra.rst
+index b3c9bf54e45..c3dca33b69e 100644
+--- a/src/doc/pt/tutorial/tour_algebra.rst
++++ b/src/doc/pt/tutorial/tour_algebra.rst
+@@ -169,7 +169,7 @@ Laplace de :math:`t^2e^t -\sin(t)` é calculada da seguinte forma:
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ A seguir, um exemplo mais complicado. O deslocamento, com respeito à
+ posição de equilíbrio, de duas massas presas a uma parede através de
+diff --git a/src/doc/ru/tutorial/tour_algebra.rst b/src/doc/ru/tutorial/tour_algebra.rst
+index bc0d4926f83..ad1bae1de96 100644
+--- a/src/doc/ru/tutorial/tour_algebra.rst
++++ b/src/doc/ru/tutorial/tour_algebra.rst
+@@ -166,7 +166,7 @@ Sage может использоваться для решения диффер
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ Приведем более сложный пример. Отклонение от положения равновесия для пары
+ пружин, прикрепленных к стене слева,
+diff --git a/src/doc/zh/constructions/calculus.rst b/src/doc/zh/constructions/calculus.rst
+index 9f896a4658b..2b83dc19b45 100644
+--- a/src/doc/zh/constructions/calculus.rst
++++ b/src/doc/zh/constructions/calculus.rst
+@@ -148,7 +148,7 @@ Sage 还可以计算涉及极限的符号定积分。
+     (x, k, w)
+     sage: f = x^3 * e^(k*x) * sin(w*x)
+     sage: f.integrate(x)
+-    ((24*k^3*w - 24*k*w^3 - (k^6*w + 3*k^4*w^3 + 3*k^2*w^5 + w^7)*x^3 + 6*(k^5*w + 2*k^3*w^3 + k*w^5)*x^2 - 6*(3*k^4*w + 2*k^2*w^3 - w^5)*x)*cos(w*x)*e^(k*x) - (6*k^4 - 36*k^2*w^2 + 6*w^4 - (k^7 + 3*k^5*w^2 + 3*k^3*w^4 + k*w^6)*x^3 + 3*(k^6 + k^4*w^2 - k^2*w^4 - w^6)*x^2 - 6*(k^5 - 2*k^3*w^2 - 3*k*w^4)*x)*e^(k*x)*sin(w*x))/(k^8 + 4*k^6*w^2 + 6*k^4*w^4 + 4*k^2*w^6 + w^8)
++    ((24*k^3*w*e^(k*x) - 24*k*w^3*e^(k*x) - (k^6*w*e^(k*x) + 3*k^4*w^3*e^(k*x) + 3*k^2*w^5*e^(k*x) + w^7*e^(k*x))*x^3 + 6*(k^5*w*e^(k*x) + 2*k^3*w^3*e^(k*x) + k*w^5*e^(k*x))*x^2 - 6*(3*k^4*w*e^(k*x) + 2*k^2*w^3*e^(k*x) - w^5*e^(k*x))*x)*cos(w*x) - (6*k^4*e^(k*x) - 36*k^2*w^2*e^(k*x) + 6*w^4*e^(k*x) - (k^7*e^(k*x) + 3*k^5*w^2*e^(k*x) + 3*k^3*w^4*e^(k*x) + k*w^6*e^(k*x))*x^3 + 3*(k^6*e^(k*x) + k^4*w^2*e^(k*x) - k^2*w^4*e^(k*x) - w^6*e^(k*x))*x^2 - 6*(k^5*e^(k*x) - 2*k^3*w^2*e^(k*x) - 3*k*w^4*e^(k*x))*x)*sin(w*x))/(k^8 + 4*k^6*w^2 + 6*k^4*w^4 + 4*k^2*w^6 + w^8)
+     sage: integrate(1/x^2, x, 1, infinity)
+     1
+ 
+@@ -241,8 +241,7 @@ Sage 还可以计算涉及极限的符号定积分。
+     (s, t)
+     sage: f = t^5*exp(t)*sin(t)
+     sage: L = laplace(f, t, s); L
+-    3840*(s - 1)^5/(s^2 - 2*s + 2)^6 - 3840*(s - 1)^3/(s^2 - 2*s + 2)^5 +
+-    720*(s - 1)/(s^2 - 2*s + 2)^4
++    240*(3*s^5 - 15*s^4 + 20*s^3 - 12*s + 4)/(s^12 - 12*s^11 + 72*s^10 - 280*s^9 + 780*s^8 - 1632*s^7 + 2624*s^6 - 3264*s^5 + 3120*s^4 - 2240*s^3 + 1152*s^2 - 384*s + 64)
+ 
+ 上面是另一种方法。
+ 
+diff --git a/src/doc/zh/tutorial/tour_algebra.rst b/src/doc/zh/tutorial/tour_algebra.rst
+index 592f096341f..c4d66efccb4 100644
+--- a/src/doc/zh/tutorial/tour_algebra.rst
++++ b/src/doc/zh/tutorial/tour_algebra.rst
+@@ -169,7 +169,7 @@ Sage 可以对许多函数进行微分和积分。
+     sage: t = var("t")
+     sage: f = t^2*exp(t) - sin(t)
+     sage: f.laplace(t,s)
+-    -1/(s^2 + 1) + 2/(s - 1)^3
++    2/(s^3 - 3*s^2 + 3*s - 1) - 1/(s^2 + 1)
+ 
+ 这里是一个更复杂的示例。左侧连接到墙上的耦合弹簧的平衡位移
+ 
+diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
+index d41bf946a09..ac194f63b3e 100644
+--- a/src/sage/calculus/calculus.py
++++ b/src/sage/calculus/calculus.py
+@@ -133,8 +133,8 @@ including exponentiation::
+     [x^2 + x   2*x^3]
+     [      2 x^2 + x]
+     sage: e^M
+-    [          1/2*(e^(2*sqrt(x)) + 1)*e^(x - sqrt(x)) 1/2*(x*e^(2*sqrt(x)) - x)*sqrt(x)*e^(x - sqrt(x))]
+-    [  1/2*(e^(2*sqrt(x)) - 1)*e^(x - sqrt(x))/x^(3/2)           1/2*(e^(2*sqrt(x)) + 1)*e^(x - sqrt(x))]
++    [        1/2*(e^(2*sqrt(x)) + 1)*e^(x - sqrt(x)) 1/2*x^(3/2)*(e^(2*sqrt(x)) - 1)*e^(x - sqrt(x))]
++    [1/2*(e^(2*sqrt(x)) - 1)*e^(x - sqrt(x))/x^(3/2)         1/2*(e^(2*sqrt(x)) + 1)*e^(x - sqrt(x))]
+ 
+ Complex exponentiation works, but may require a patched version of
+ maxima (:issue:`32898`) for now::
+@@ -1243,7 +1243,7 @@ def limit(ex, *args, dir=None, taylor=False, algorithm='maxima', **kwargs):
+ 
+         sage: limit(sin(x)/x, x, 0, algorithm='sympy')
+         1
+-        sage: limit(sin(x)/x, x, 0, algorithm='giac') # needs sage.libs.giac
++        sage: limit(sin(x)/x, x, 0, algorithm='giac')                                   # needs sage.libs.giac
+         1
+         sage: limit(x^x, x, 0, dir='+', algorithm='fricas') # optional - fricas
+         1
+@@ -1816,7 +1816,7 @@ def laplace(ex, t, s, algorithm='maxima'):
+         sage: f = exp (2*t + a) * sin(t) * t; f
+         t*e^(a + 2*t)*sin(t)
+         sage: L = laplace(f, t, s); L
+-        2*(s - 2)*e^a/(s^2 - 4*s + 5)^2
++        2*(s - 2)*e^a/(s^4 - 8*s^3 + 26*s^2 - 40*s + 25)
+         sage: inverse_laplace(L, s, t)
+         t*e^(a + 2*t)*sin(t)
+ 
+diff --git a/src/sage/calculus/test_sympy.py b/src/sage/calculus/test_sympy.py
+index aa084799a10..e081e9674d9 100644
+--- a/src/sage/calculus/test_sympy.py
++++ b/src/sage/calculus/test_sympy.py
+@@ -63,7 +63,7 @@ instead of SymPy.
+     sage: diff(tan(x), x)
+     tan(x)^2 + 1
+     sage: limit((tan(x+y) - tan(x))/y, y=0)
+-    cos(x)^(-2)
++    tan(x)^2 + 1
+     sage: diff(sin(2*x), x, 1)
+     2*cos(2*x)
+     sage: diff(sin(2*x), x, 2)
+diff --git a/src/sage/calculus/tests.py b/src/sage/calculus/tests.py
+index 2879dda115d..abdbbad932e 100644
+--- a/src/sage/calculus/tests.py
++++ b/src/sage/calculus/tests.py
+@@ -119,7 +119,7 @@ No problems here::
+     sage: integrate(exp(1-x^2),x)
+     1/2*sqrt(pi)*erf(x)*e
+     sage: integrate(sin(x^2),x)
+-    1/16*sqrt(pi)*((I + 1)*sqrt(2)*erf((1/2*I + 1/2)*sqrt(2)*x) + (I - 1)*sqrt(2)*erf((1/2*I - 1/2)*sqrt(2)*x) - (I - 1)*sqrt(2)*erf(sqrt(-I)*x) + (I + 1)*sqrt(2)*erf((-1)^(1/4)*x))
++    1/16*sqrt(pi)*((I + 1)*sqrt(2)*erf((1/2*I + 1/2)*sqrt(2)*x) - (I - 1)*sqrt(2)*erf(sqrt(-I)*x) - 2*sqrt(2)*imag_part(erf((-1)^(1/4)*x)) + 2*sqrt(2)*real_part(erf((-1)^(1/4)*x)))
+ 
+     sage: integrate((1-x^2)^n,x)  # long time
+     x*hypergeometric((1/2, -n), (3/2,), x^2*exp_polar(2*I*pi))
+diff --git a/src/sage/functions/bessel.py b/src/sage/functions/bessel.py
+index 1cd132b3a45..4ead3c47c45 100644
+--- a/src/sage/functions/bessel.py
++++ b/src/sage/functions/bessel.py
+@@ -1867,7 +1867,7 @@ class SphericalHankel1(BuiltinFunction):
+         sage: spherical_hankel1(3 + 0.2 * I, 3)
+         0.201654587512037 - 0.531281544239273*I
+         sage: spherical_hankel1(1, x).simplify()
+-        -(x + I)*e^(I*x)/x^2
++        -I*(-I*x + 1)*e^(I*x)/x^2
+         sage: spherical_hankel1(3 + 2 * I, 5 - 0.2 * I)
+         1.25375216869913 - 0.518011435921789*I
+         sage: integrate(spherical_hankel1(3, x), x)
+@@ -1965,11 +1965,11 @@ class SphericalHankel2(BuiltinFunction):
+         sage: spherical_hankel2(3 + 0.2 * I, 3)
+         0.0998874108557565 + 0.479149050937147*I
+         sage: spherical_hankel2(1, x).simplify()
+-        -(x - I)*e^(-I*x)/x^2
++        I*(I*x + 1)*e^(-I*x)/x^2
+         sage: spherical_hankel2(2,i).simplify()
+         -e
+         sage: spherical_hankel2(2,x).simplify()
+-        (-I*x^2 - 3*x + 3*I)*e^(-I*x)/x^3
++        -I*(x^2 - 3*I*x - 3)*e^(-I*x)/x^3
+         sage: spherical_hankel2(3 + 2*I, 5 - 0.2*I)
+         0.0217627632692163 + 0.0224001906110906*I
+         sage: integrate(spherical_hankel2(3, x), x)
+diff --git a/src/sage/interfaces/maxima.py b/src/sage/interfaces/maxima.py
+index ebe00cd51e7..a916796341b 100644
+--- a/src/sage/interfaces/maxima.py
++++ b/src/sage/interfaces/maxima.py
+@@ -180,7 +180,7 @@ Here is an example of solving an algebraic equation::
+ You can even nicely typeset the solution in latex::
+ 
+     sage: latex(s)
+-    \left[ \left[ a=-...{{\sqrt{79}\,i-11}\over{4}}... , b={{...\sqrt{79}\,i+9...}\over{4}} , c={{\sqrt{79}\,i+1}\over{10}} \right]  , \left[ a={{...\sqrt{79}\,i+11}\over{4}} , b=-...{{\sqrt{79}\,i-9...}\over{4}}... , c=-...{{...\sqrt{79}\,i-1}\over{10}}... \right]  \right]
++    \left[ \left[ a=-\left({{\sqrt{79}\,i-11}\over{4}}\right) , b={{\sqrt{79}\,i  +9}\over{4}} , c={{\sqrt{79}\,i+1}\over{10}} \right]  , \left[ a={{\sqrt{79}  \,i+11}\over{4}} , b=-\left({{\sqrt{79}\,i-9}\over{4}}\right) , c=-\left({{  \sqrt{79}\,i-1}\over{10}}\right) \right]  \right]
+ 
+ To have the above appear onscreen via ``xdvi``, type
+ ``view(s)``. (TODO: For OS X should create pdf output
+@@ -202,11 +202,11 @@ and use preview instead?)
+ ::
+ 
+     sage: f = maxima('x^3 * %e^(k*x) * sin(w*x)'); f
+-    x^3*%e^(k*x)*sin(w*x)
++    %e^(k*x)*x^3*sin(w*x)
+     sage: f.diff('x')
+-    k*x^3*%e^(k*x)*sin(w*x)+3*x^2*%e^(k*x)*sin(w*x)+w*x^3*%e^(k*x) *cos(w*x)
++    %e^(k*x)*k*x^3*sin(w*x)+3*%e^(k*x)*x^2*sin(w*x)+%e^(k*x)*w*x^3 *cos(w*x)
+     sage: f.integrate('x')
+-    (((k*w^6+3*k^3*w^4+3*k^5*w^2+k^7)*x^3 +(3*w^6+3*k^2*w^4-3*k^4*w^2-3*k^6)*x^2+(...-...18*k*w^4)-12*k^3*w^2+6*k^5)*x-6*w^4 +36*k^2*w^2-6*k^4) *%e^(k*x)*sin(w*x) +((...-w^7...-3*k^2*w^5-3*k^4*w^3-k^6*w)*x^3...+(6*k*w^5+12*k^3*w^3+6*k^5*w)*x^2...+(6*w^5-12*k^2*w^3-18*k^4*w)*x-24*k*w^3 +24*k^3*w) *%e^(k*x)*cos(w*x)) /(w^8+4*k^2*w^6+6*k^4*w^4+4*k^6*w^2+k^8)
++    (((%e^(k*x)*k*w^6+3*%e^(k*x)*k^3*w^4+3*%e^(k*x)*k^5*w^2+%e^(k*x)*k^7)*x ^3 +(3*%e^(k*x)*w^6+3*%e^(k*x)*k^2*w^4-3*%e^(k*x)*k^4*w^2-3*%e^(k*x)*k^6)*x^2 +(-(18*%e^(k*x)*k*w^4)-12*%e^(k*x)*k^3*w^2+6*%e^(k*x)*k^5)*x-6*%e^(k*x)*w^4 +36*%e^(k*x)*k^2*w^2-6*%e^(k*x)*k^4) *sin(w*x) +((-(%e^(k*x)*w^7)-3*%e^(k*x)*k^2*w^5-3*%e^(k*x)*k^4*w^3-%e^(k*x)*k^6*w)*x^3 +(6*%e^(k*x)*k*w^5+12*%e^(k*x)*k^3*w^3+6*%e^(k*x)*k^5*w)*x^2 +(6*%e^(k*x)*w^5-12*%e^(k*x)*k^2*w^3-18*%e^(k*x)*k^4*w)*x-24*%e^(k*x)*k*w^3 +24*%e^(k*x)*k^3*w) *cos(w*x)) /(w^8+4*k^2*w^6+6*k^4*w^4+4*k^6*w^2+k^8)
+ 
+ ::
+ 
+@@ -277,13 +277,14 @@ We illustrate Laplace transforms::
+ 
+     sage: _ = maxima.eval("f(t) := t^5*exp(t)*sin(t)")
+     sage: maxima("laplace(f(t),t,s)")
+-    (360*(2*s-2))/(s^2-2*s+2)^4-(480*(2*s-2)^3)/(s^2-2*s+2)^5 +(120*(2*s-2)^5)/(s^2-2*s+2)^6
++    (720*s^5-3600*s^4+4800*s^3-2880*s+960) /(s^12-12*s^11+72*s^10-280*s^9+780*s^8-1632*s^7+2624*s^6-3264*s^5+3120*s^4 -2240*s^3+1152*s^2-384*s+64)
+     sage: print(maxima("laplace(f(t),t,s)"))
+-                                             3                 5
+-               360 (2 s - 2)    480 (2 s - 2)     120 (2 s - 2)
+-              --------------- - --------------- + ---------------
+-                2           4     2           5     2           6
+-              (s  - 2 s + 2)    (s  - 2 s + 2)    (s  - 2 s + 2)
++                                                   5         4         3
++                                             (720 s  - 3600 s  + 4800 s  - 2880 s + 960)
++                                                12       11       10        9        8         7         6         5
++                                             /(s   - 12 s   + 72 s   - 280 s  + 780 s  - 1632 s  + 2624 s  - 3264 s
++                                                      4         3         2
++                                              + 3120 s  - 2240 s  + 1152 s  - 384 s + 64)
+ 
+ ::
+ 
+@@ -349,11 +350,11 @@ command)::
+ 
+     sage: S = maxima('nusum(exp(1+2*i/n),i,1,n)')
+     sage: print(S)
+-                            2/n + 3                   2/n + 1
+-                          %e                        %e
+-                   ----------------------- - -----------------------
+-                      1/n         1/n           1/n         1/n
+-                   (%e    - 1) (%e    + 1)   (%e    - 1) (%e    + 1)
++                                     2/n + 3                   2/n + 1
++                                   %e                        %e
++                            ─────────────────────── - ───────────────────────
++                               1/n         1/n           1/n         1/n
++                            (%e    - 1) (%e    + 1)   (%e    - 1) (%e    + 1)
+ 
+ We formally compute the limit as `n\to\infty` of
+ `2S/n` as follows::
+@@ -402,7 +403,7 @@ Here's another example::
+ 
+     sage: g = maxima('exp(3*%i*x)/(6*%i) + exp(%i*x)/(2*%i) + c')
+     sage: latex(g)
+-    -...{{i\,e^{3\,i\,x}}\over{6}}...-{{i\,e^{i\,x}}\over{2}}+c
++    c-{{e^{3\,i\,x}\,i}\over{6}}-{{e^{i\,x}\,i}\over{2}}
+ 
+ Long Input
+ ----------
+diff --git a/src/sage/interfaces/maxima_abstract.py b/src/sage/interfaces/maxima_abstract.py
+index dab8e641e3a..98ac5f3f3d3 100644
+--- a/src/sage/interfaces/maxima_abstract.py
++++ b/src/sage/interfaces/maxima_abstract.py
+@@ -827,11 +827,11 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
+             sage: maxima.de_solve('diff(y,x,2) + 3*x = y', ['x','y'], [1,1,1])
+             y = 3*x-2*%e^(x-1)
+             sage: maxima.de_solve('diff(y,x,2) + 3*x = y', ['x','y'])
+-            y = %k1*%e^x+%k2*%e^-x+3*x
++            y = 3*x+%e^-x*%k2+%e^x*%k1
+             sage: maxima.de_solve('diff(y,x) + 3*x = y', ['x','y'])
+-            y = (%c-3*(...-x...-1)*%e^-x)*%e^x
++            y = %e^x*(%c-3*%e^-x*(-x-1))
+             sage: maxima.de_solve('diff(y,x) + 3*x = y', ['x','y'],[1,1])
+-            y = -...%e^-1*(5*%e^x-3*%e*x-3*%e)...
++            y = %e^-1*(3*%e*x-5*%e^x+3*%e)
+         """
+         if not isinstance(vars, str):
+             str_vars = '%s, %s' % (vars[1], vars[0])
+@@ -870,20 +870,20 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
+ 
+             sage: maxima.clear('x'); maxima.clear('f')
+             sage: maxima.de_solve_laplace("diff(f(x),x,2) = 2*diff(f(x),x)-f(x)", ["x","f"], [0,1,2])
+-            f(x) = x*%e^x+%e^x
++            f(x) = %e^x*x+%e^x
+ 
+         ::
+ 
+             sage: maxima.clear('x'); maxima.clear('f')
+             sage: f = maxima.de_solve_laplace("diff(f(x),x,2) = 2*diff(f(x),x)-f(x)", ["x","f"])
+             sage: f
+-            f(x) = x*%e^x*('at('diff(f(x),x,1),x = 0))-f(0)*x*%e^x+f(0)*%e^x
++            f(x) = %e^x*x*('at('diff(f(x),x,1),x = 0))-%e^x*f(0)*x+%e^x*f(0)
+             sage: print(f)
+-                                               !
+-                                   x  d        !                  x          x
+-                        f(x) = x %e  (-- (f(x))!     ) - f(0) x %e  + f(0) %e
+-                                      dx       !
+-                                               !x = 0
++                                                                      │
++                                                        x    d        │           x            x
++                                               f(x) = %e  x (── (f(x))│     ) - %e  f(0) x + %e  f(0)
++                                                             dx       │
++                                                                      │x = 0
+ 
+         .. NOTE::
+ 
+@@ -1094,10 +1094,10 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+             sage: f = maxima('1/(x-1)^3'); f
+             1/(x-1)^3
+             sage: print(f)
+-                                                  1
+-                                               --------
+-                                                      3
+-                                               (x - 1)
++                                                     1
++                                                  ────────
++                                                         3
++                                                  (x - 1)
+         """
+         return self.display2d(onscreen=False)
+ 
+@@ -1713,9 +1713,9 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+             sage: y,d = var('y,d')
+             sage: f = function('f')
+             sage: latex(maxima(derivative(f(x*y), x)))
+-            \left(\left.{{{\it \partial}}\over{{\it \partial}\,  {\it \_symbol}_{0}}}\,f\left(  {\it \_symbol}_{0}\right)\right|_{  {\it \_symbol}_{0}={\it x}\,  {\it y}}\right)\,{\it y}
++            \left(\left.{{{\it \partial}}\over{{\it \partial}\,  {\it \_symbol}_{0}}}\,f\left({\it \_symbol}_{0}  \right)\right|_{{\it \_symbol}_{0}={\it x}\,  {\it y}}\right)\,{\it y}
+             sage: latex(maxima(derivative(f(x,y,d), d,x,x,y)))
+-            {{{\it \partial}^4}\over{{\it \partial}\,{\it d}\,  {\it \partial}\,{\it x}^2\,{\it \partial}\,  {\it y}}}\,f\left({\it x} ,  {\it y} , {\it d}\right)
++            {{{\it \partial}^4}\over{{\it \partial}\,{\it d}\,  {\it \partial}\,{\it x}^2\,{\it \partial}\,{\it y}  }}\,f\left({\it x} , {\it y} , {\it d}  \right)
+             sage: latex(maxima(d/(d-2)))
+             {{{\it d}}\over{{\it d}-2}}
+         """
+@@ -1826,9 +1826,9 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+             sage: f.partial_fraction_decomposition('x')
+             1/(2*(x-1))-1/(2*(x+1))
+             sage: print(f.partial_fraction_decomposition('x'))
+-                                 1           1
+-                             --------- - ---------
+-                             2 (x - 1)   2 (x + 1)
++                                     1           1
++                                 ───────── - ─────────
++                                 2 (x - 1)   2 (x + 1)
+         """
+         return self.partfrac(var)
+ 
+diff --git a/src/sage/interfaces/maxima_lib.py b/src/sage/interfaces/maxima_lib.py
+index 0a6ae7d0dae..339be7c951e 100644
+--- a/src/sage/interfaces/maxima_lib.py
++++ b/src/sage/interfaces/maxima_lib.py
+@@ -164,7 +164,7 @@ except RuntimeError:
+ ecl_eval("(initialize-runtime-globals)")
+ ecl_eval("(setq $nolabels t))")
+ ecl_eval("(defun add-lineinfo (x) x)")
+-ecl_eval('(defun principal nil (cond ($noprincipal (diverg)) ((not pcprntd) (merror "Divergent Integral"))))')
++ecl_eval('(defun principal nil (cond ($noprincipal (diverg)) ((not *pcprntd*) (merror "Divergent Integral"))))')
+ ecl_eval("(remprop 'mfactorial 'grind)")  # don't use ! for factorials (#11539)
+ ecl_eval("(setf $errormsg nil)")
+ 
+@@ -1243,6 +1243,8 @@ sage_op_dict = {
+     sage.functions.error.erf: "%ERF",
+     sage.functions.gamma.gamma_inc: "%GAMMA_INCOMPLETE",
+     sage.functions.other.conjugate: "$CONJUGATE",
++    sage.functions.other.imag_part: "%IMAGPART",
++    sage.functions.other.real_part: "%REALPART",
+ }
+ # we compile the dictionary
+ sage_op_dict = {k: EclObject(sage_op_dict[k]) for k in sage_op_dict}
+diff --git a/src/sage/manifolds/chart.py b/src/sage/manifolds/chart.py
+index c9bc4c802f1..eeed8d5da00 100644
+--- a/src/sage/manifolds/chart.py
++++ b/src/sage/manifolds/chart.py
+@@ -3807,7 +3807,7 @@ class CoordChange(SageObject):
+ 
+             sage: spher_to_cart.set_inverse(sqrt(x^3+y^2), atan2(y,x))
+             Check of the inverse coordinate transformation:
+-              r == sqrt(r*cos(ph)^3 + sin(ph)^2)*r  **failed**
++              r == r*sqrt(abs(r*cos(ph)^3 + sin(ph)^2))  **failed**
+               ph == arctan2(r*sin(ph), r*cos(ph))  **failed**
+               x == sqrt(x^3 + y^2)*x/sqrt(x^2 + y^2)  **failed**
+               y == sqrt(x^3 + y^2)*y/sqrt(x^2 + y^2)  **failed**
+diff --git a/src/sage/manifolds/differentiable/automorphismfield_group.py b/src/sage/manifolds/differentiable/automorphismfield_group.py
+index 45a2fad087a..11a548a0317 100644
+--- a/src/sage/manifolds/differentiable/automorphismfield_group.py
++++ b/src/sage/manifolds/differentiable/automorphismfield_group.py
+@@ -535,8 +535,7 @@ class AutomorphismFieldParalGroup(FreeModuleLinearGroup):
+         Field of tangent-space automorphisms t^(-1) on the 2-dimensional
+          differentiable manifold M
+         sage: (t1^(-1)).display()
+-        t^(-1) = 1/(e^y + 1) ∂/∂x⊗dx - x*y/(x^2 + (x^2 + 1)*e^y + 1) ∂/∂x⊗dy
+-         + 1/(x^2 + 1) ∂/∂y⊗dy
++        t^(-1) = 1/(e^y + 1) ∂/∂x⊗dx - x*y/(x^2*(e^y + 1) + e^y + 1) ∂/∂x⊗dy + 1/(x^2 + 1) ∂/∂y⊗dy
+ 
+     Since any automorphism field can be considered as a tensor field of
+     type-`(1,1)` on ``M``, there is a coercion map from ``G`` to the
+diff --git a/src/sage/manifolds/differentiable/metric.py b/src/sage/manifolds/differentiable/metric.py
+index 01b48ef9724..43758ba7e73 100644
+--- a/src/sage/manifolds/differentiable/metric.py
++++ b/src/sage/manifolds/differentiable/metric.py
+@@ -1556,9 +1556,9 @@ class PseudoRiemannianMetric(TensorField):
+             [ 1/8*u^2 - 1/8*v^2 + 1/4*v + 1/2                            1/4*u]
+             [                           1/4*u -1/8*u^2 + 1/8*v^2 + 1/4*v + 1/2]
+             sage: g.sqrt_abs_det(Y.frame()).expr()
+-            1/2*sqrt(-x^2*y^2 - (x + 1)*y + x + 1)
++            1/2*sqrt(abs(x^2*y^2 + (x + 1)*y - x - 1))
+             sage: g.sqrt_abs_det(Y.frame()).expr(Y)
+-            1/8*sqrt(-u^4 - v^4 + 2*(u^2 + 2)*v^2 - 4*u^2 + 16*v + 16)
++            1/8*sqrt(abs(u^4 + v^4 - 2*(u^2 + 2)*v^2 + 4*u^2 - 16*v - 16))
+ 
+         A chart can be passed instead of a frame::
+ 
+@@ -1578,9 +1578,9 @@ class PseudoRiemannianMetric(TensorField):
+             sage: g.sqrt_abs_det().expr()
+             sqrt(-x**2*y**2 - x*y + x - y + 1)
+             sage: g.sqrt_abs_det(Y.frame()).expr()
+-            sqrt(-x**2*y**2 - x*y + x - y + 1)/2
++            sqrt(Abs(x**2*y**2 + x*y - x + y - 1))/2
+             sage: g.sqrt_abs_det(Y.frame()).expr(Y)
+-            sqrt(-u**4 + 2*u**2*v**2 - 4*u**2 - v**4 + 4*v**2 + 16*v + 16)/8
++            sqrt(Abs(-u**4 + 2*u**2*v**2 - 4*u**2 - v**4 + 4*v**2 + 16*v + 16))/8
+         """
+         dom = self._domain
+         if frame is None:
+diff --git a/src/sage/manifolds/utilities.py b/src/sage/manifolds/utilities.py
+index b1eed3b8b2e..57b35bef6cc 100644
+--- a/src/sage/manifolds/utilities.py
++++ b/src/sage/manifolds/utilities.py
+@@ -225,10 +225,10 @@ class SimplifyAbsTrig(ExpressionTreeWalker):
+         sage: a = abs(cos(x)) + abs(sin(x))
+ 
+     The method :meth:`~sage.symbolic.expression.Expression.simplify_full()`
+-    is ineffective on such an expression::
++    works on such an expression::
+ 
+         sage: a.simplify_full()
+-        abs(cos(x)) + abs(sin(x))
++        -cos(x) + sin(x)
+ 
+     We construct a :class:`SimplifyAbsTrig` object ``s`` from the symbolic
+     expression ``a``::
+@@ -436,9 +436,9 @@ def simplify_abs_trig(expr):
+ 
+         sage: s = abs(sin(x)) + abs(sin(y)) + abs(sin(3*z))
+         sage: s.simplify_trig()
+-        abs(4*cos(-z)^2 - 1)*abs(sin(-z)) + abs(sin(x)) + abs(sin(y))
++        -4*sin(-z)^3 + abs(sin(x)) + sin(y) + 3*sin(-z)
+         sage: s.simplify_full()
+-        abs(4*cos(-z)^2 - 1)*abs(sin(-z)) + abs(sin(x)) + abs(sin(y))
++        -4*sin(-z)^3 + abs(sin(x)) + sin(y) + 3*sin(-z)
+ 
+     despite the following assumptions hold::
+ 
+@@ -571,10 +571,10 @@ def simplify_chain_real(expr):
+         sage: s = abs(sin(pi*x))
+         sage: simplify_chain_real(s)  # correct output since x in (0,1)
+         sin(pi*x)
+-        sage: s.simplify_real()  # unsimplified output
+-        abs(sin(pi*x))
+-        sage: s.simplify_full()  # unsimplified output
+-        abs(sin(pi*x))
++        sage: s.simplify_real()  # simplified output with maxima>=5.48
++        sin(pi*x)
++        sage: s.simplify_full()  # simplified output with maxima>=5.48
++        sin(pi*x)
+ 
+     ::
+ 
+diff --git a/src/sage/matrix/matrix2.pyx b/src/sage/matrix/matrix2.pyx
+index e5f2ebb453f..1b65c8d9967 100644
+--- a/src/sage/matrix/matrix2.pyx
++++ b/src/sage/matrix/matrix2.pyx
+@@ -16692,8 +16692,8 @@ cdef class Matrix(Matrix1):
+             sage: # needs sage.symbolic
+             sage: a = matrix([[1,2], [3,4]])
+             sage: a.exp()
+-            [-1/22*((sqrt(33) - 11)*e^sqrt(33) - sqrt(33) - 11)*e^(-1/2*sqrt(33) + 5/2)              2/33*(sqrt(33)*e^sqrt(33) - sqrt(33))*e^(-1/2*sqrt(33) + 5/2)]
+-            [             1/11*(sqrt(33)*e^sqrt(33) - sqrt(33))*e^(-1/2*sqrt(33) + 5/2)  1/22*((sqrt(33) + 11)*e^sqrt(33) - sqrt(33) + 11)*e^(-1/2*sqrt(33) + 5/2)]
++            [ 1/22*((sqrt(33) + 11)*e^2 - (sqrt(33) - 11)*e^(sqrt(33) + 2))*e^(-1/2*sqrt(33) + 1/2)               -2/33*(sqrt(33)*e^2 - sqrt(33)*e^(sqrt(33) + 2))*e^(-1/2*sqrt(33) + 1/2)]
++            [              -1/11*(sqrt(33)*e^2 - sqrt(33)*e^(sqrt(33) + 2))*e^(-1/2*sqrt(33) + 1/2) -1/22*((sqrt(33) - 11)*e^2 - (sqrt(33) + 11)*e^(sqrt(33) + 2))*e^(-1/2*sqrt(33) + 1/2)]
+ 
+             sage: type(a.exp())                                                         # needs sage.symbolic
+             <class 'sage.matrix.matrix_symbolic_dense.Matrix_symbolic_dense'>
+diff --git a/src/sage/misc/functional.py b/src/sage/misc/functional.py
+index 07170cde870..9ac3a8b6658 100644
+--- a/src/sage/misc/functional.py
++++ b/src/sage/misc/functional.py
+@@ -721,9 +721,7 @@ def integral(x, *args, **kwds):
+         real
+         sage: f = exp(-x) * sinh(sqrt(x))
+         sage: t = integrate(f, x, 0, Infinity); t           # long time
+-        1/4*sqrt(pi)*(erf(1) - 1)*e^(1/4)
+-         - 1/4*(sqrt(pi)*(erf(1) - 1) - sqrt(pi) + 2*e^(-1) - 2)*e^(1/4)
+-         + 1/4*sqrt(pi)*e^(1/4) - 1/2*e^(1/4) + 1/2*e^(-3/4)
++        1/2*sqrt(pi)*e^(1/4)
+         sage: t.canonicalize_radical()                      # long time
+         1/2*sqrt(pi)*e^(1/4)
+         sage: sage.calculus.calculus.maxima('domain: complex')
+@@ -932,7 +930,7 @@ def krull_dimension(x):
+         0
+         sage: ZZ.krull_dimension()
+         1
+-        sage: ZZ[sqrt(5)].krull_dimension()                                              # needs sage.rings.number_field sage.symbolic
++        sage: ZZ[sqrt(5)].krull_dimension()                                             # needs sage.rings.number_field sage.symbolic
+         1
+         sage: U.<x,y,z> = PolynomialRing(ZZ, 3); U
+         Multivariate Polynomial Ring in x, y, z over Integer Ring
+diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
+index 8aa50291e02..3cbb8d0cab7 100644
+--- a/src/sage/symbolic/expression.pyx
++++ b/src/sage/symbolic/expression.pyx
+@@ -13086,21 +13086,21 @@ cdef class Expression(Expression_abc):
+         Check that the sum in :issue:`10682` is done right::
+ 
+             sage: sum(binomial(n,k)*k^2, k, 2, n)
+-            1/4*(n^2 + n)*2^n - n
++            1/4*2^n*n^2 + 1/4*(2^n - 4)*n
+ 
+         This sum used to give a wrong result (:issue:`9635`) but
+         now gives correct results with all relevant assumptions::
+ 
+             sage: (n,k,j)=var('n,k,j')
+             sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
+-            -(-1)^j*sum((-1)^k*binomial(k - 1, j)*binomial(n, k), k, j + 1, n)
++            -sum((-1)^(-j + k)*binomial(k - 1, j)*binomial(n, k), k, j + 1, n)
+             sage: assume(j>-1)
+             sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
+             1
+             sage: forget()
+             sage: assume(n>=j)
+             sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
+-            -(-1)^j*sum((-1)^k*binomial(k - 1, j)*binomial(n, k), k, j + 1, n)
++            -sum((-1)^(-j + k)*binomial(k - 1, j)*binomial(n, k), k, j + 1, n)
+             sage: forget()
+             sage: assume(j==-1)
+             sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
+@@ -13108,7 +13108,7 @@ cdef class Expression(Expression_abc):
+             sage: forget()
+             sage: assume(j<-1)
+             sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
+-            -(-1)^j*sum((-1)^k*binomial(k - 1, j)*binomial(n, k), k, j + 1, n)
++            -sum((-1)^(-j + k)*binomial(k - 1, j)*binomial(n, k), k, j + 1, n)
+             sage: forget()
+ 
+         Check that :issue:`16176` is fixed::
+diff --git a/src/sage/symbolic/integration/external.py b/src/sage/symbolic/integration/external.py
+index 1390c524300..4d52d4ab963 100644
+--- a/src/sage/symbolic/integration/external.py
++++ b/src/sage/symbolic/integration/external.py
+@@ -30,12 +30,7 @@ def maxima_integrator(expression, v, a=None, b=None):
+     Check that :issue:`25817` is fixed::
+ 
+         sage: maxima_integrator(log(e^x*log(x)*sin(x))/x^2, x)
+-        1/2*(x*(Ei(-log(x)) + conjugate(Ei(-log(x))))
+-        - 2*x*integrate(sin(x)/(x*cos(x)^2 + x*sin(x)^2
+-        + 2*x*cos(x) + x), x) + 2*x*integrate(sin(x)/(x*cos(x)^2
+-        + x*sin(x)^2 - 2*x*cos(x) + x), x) + 2*x*log(x) + 2*log(2)
+-        - log(cos(x)^2 + sin(x)^2 + 2*cos(x) + 1) - log(cos(x)^2
+-        + sin(x)^2 - 2*cos(x) + 1) - 2*log(log(x)))/x
++        -1/2*(2*x*integrate(sin(x)/(x*cos(x)^2 + x*sin(x)^2 + 2*x*cos(x) + x), x) - 2*x*integrate(sin(x)/(x*cos(x)^2 + x*sin(x)^2 - 2*x*cos(x) + x), x) - 2*x*log(x) - 2*x*real_part(Ei(-log(x))) - 2*log(2) + log(cos(x)^2 + sin(x)^2 + 2*cos(x) + 1) + log(cos(x)^2 + sin(x)^2 - 2*cos(x) + 1) + 2*log(log(x)))/x
+     """
+     from sage.calculus.calculus import maxima
+     if not isinstance(expression, Expression):
+diff --git a/src/sage/symbolic/integration/integral.py b/src/sage/symbolic/integration/integral.py
+index 4a70d373516..096ca779a71 100644
+--- a/src/sage/symbolic/integration/integral.py
++++ b/src/sage/symbolic/integration/integral.py
+@@ -614,10 +614,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+                  x y  + Sqrt[--] FresnelS[Sqrt[--] x]
+                              2                 Pi
+         sage: print(f.integral(x))
+-        x*y^z + 1/16*sqrt(pi)*((I + 1)*sqrt(2)*erf((1/2*I + 1/2)*sqrt(2)*x)
+-                                + (I - 1)*sqrt(2)*erf((1/2*I - 1/2)*sqrt(2)*x)
+-                                - (I - 1)*sqrt(2)*erf(sqrt(-I)*x)
+-                                + (I + 1)*sqrt(2)*erf((-1)^(1/4)*x))
++        x*y^z + 1/16*sqrt(pi)*((I + 1)*sqrt(2)*erf((1/2*I + 1/2)*sqrt(2)*x) - (I - 1)*sqrt(2)*erf(sqrt(-I)*x) - 2*sqrt(2)*imag_part(erf((-1)^(1/4)*x)) + 2*sqrt(2)*real_part(erf((-1)^(1/4)*x)))
+ 
+     Alternatively, just use algorithm='mathematica_free' to integrate via Mathematica
+     over the internet (does NOT require a Mathematica license!)::
+@@ -1076,7 +1073,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+         sage: assume(a > 0)
+         sage: assume(a < 1)
+         sage: integrate(x*log(1/(a*x+(1-x)^2)), x, 0, 1, algorithm='maxima')
+-        1/4*a^2*log(a) + 1/2*sqrt(-a^2 + 4*a)*a*arctan(sqrt(-a^2 + 4*a)*(a - 2)/(a^2 - 4*a)) - 1/2*sqrt(-a^2 + 4*a)*a*arctan(sqrt(-a^2 + 4*a)/(a - 4)) - a*log(a) - sqrt(-a^2 + 4*a)*arctan(sqrt(-a^2 + 4*a)*(a - 2)/(a^2 - 4*a)) + sqrt(-a^2 + 4*a)*arctan(sqrt(-a^2 + 4*a)/(a - 4)) - 1/2*a + 3/2
++        1/4*a^2*log(a) - 1/2*sqrt(-a^2 + 4*a)*a*arctan(sqrt(-a^2 + 4*a)/(a - 4)) + 1/2*sqrt(-a^2 + 4*a)*a*arctan(sqrt(-a^2 + 4*a)*(a - 2)/((a - 4)*a)) - a*log(a) + sqrt(-a^2 + 4*a)*arctan(sqrt(-a^2 + 4*a)/(a - 4)) - sqrt(-a^2 + 4*a)*arctan(sqrt(-a^2 + 4*a)*(a - 2)/((a - 4)*a)) - 1/2*a + 3/2
+ 
+     Check that :issue:`25905` is fixed::
+ 
+diff --git a/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py b/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
+index b5531b112b4..15f74fe5779 100644
+--- a/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
++++ b/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
+@@ -256,7 +256,7 @@ Sage example in ./calculus.tex, line 1062::
+ Sage example in ./calculus.tex, line 1086::
+ 
+   sage: solve(x^(1/x)==(1/x)^x, x)
+-  [(1/x)^x == x^(1/x)]
++    [x^(1/x) == (1/x)^x]
+ 
+ Sage example in ./calculus.tex, line 1124::
+ 
