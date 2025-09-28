@@ -1,0 +1,17 @@
+pkgbase = snowfall-ascii
+	pkgdesc = Full screen ASCII snowfall art
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Akrati00/snowfall-ascii
+	arch = any
+	license = GPL
+	depends = bash
+	depends = jp2a
+	depends = coreutils
+	depends = ncurses
+	source = https://github.com/Akrati00/snowfall-ascii/raw/main/snowfall
+	source = https://github.com/Akrati00/snowfall-ascii/raw/main/snowfall.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = snowfall-ascii

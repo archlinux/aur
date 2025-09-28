@@ -1,0 +1,27 @@
+#!/bin/bash
+# snowfall-static.sh - full screen ASCII art
+
+# Clear screen and hide cursor
+clear
+tput civis
+
+# Path to your image
+IMAGE_PATH="/usr/share/snowfall-ascii/snowfall.png"
+
+# Trap CTRL+C to restore cursor
+trap "tput cnorm; clear; exit" SIGINT SIGTERM
+
+# Get current terminal dimensions
+COLS=$(tput cols)
+LINES=$(tput lines)
+
+# Display ASCII art with jp2a
+jp2a --colors --width="$COLS" --height="$LINES" "$IMAGE_PATH"
+
+# Wait for any key to exit
+read -n 1 -s -r -p "Press any key to exit..."
+
+# Restore cursor and clear screen
+tput cnorm
+clear
+
