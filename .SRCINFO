@@ -1,7 +1,7 @@
 pkgbase = c001apk-flutter-git
 	pkgdesc = A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端
-	pkgver = r97.882fd7a
-	pkgrel = 1
+	pkgver = r138.2b926e0
+	pkgrel = 2
 	url = https://github.com/Integral-Tech/c001apk-flutter
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = c001apk-flutter-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = imagemagick
+	makedepends = patchelf
 	depends = gtk3
 	optdepends = kdialog: support for native dialogs in Plasma
 	provides = c001apk-flutter

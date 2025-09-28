@@ -2,14 +2,14 @@
 
 pkgname=c001apk-flutter-git
 _pkgname=${pkgname%-git}
-pkgver=r97.882fd7a
-pkgrel=1
+pkgver=r138.2b926e0
+pkgrel=2
 pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Integral-Tech/${_pkgname}"
 license=('AGPL-3.0-or-later')
 depends=('gtk3')
-makedepends=('git' 'fvm' 'clang' 'cmake' 'ninja' 'imagemagick')
+makedepends=('git' 'fvm' 'clang' 'cmake' 'ninja' 'imagemagick' 'patchelf')
 optdepends=('kdialog: support for native dialogs in Plasma')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -56,6 +56,8 @@ package() {
 	cd "build/linux/${_dartarch}/release/"
 	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
 	cmake -P cmake_install.cmake
+
+	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${_pkgname}/lib/*.so
 
 	install -dm755 "${pkgdir}/usr/bin/"
 	ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
