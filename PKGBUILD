@@ -2,10 +2,10 @@
 
 _fedoraVersion=42
 _pkgnameMeta="edk2-ovmf-fedora"
-_rpmRelease=8
+_rpmRelease=16
 
 pkgname=${_pkgnameMeta}-bin
-pkgver=20250221
+pkgver=20250523
 pkgrel=1
 pkgdesc="UEFI firmware for x86_64 virtual machines from Fedora ${_fedoraVersion} — pre-configured with Secure Boot"
 arch=('any')
@@ -15,8 +15,9 @@ license=('BSD')
 # - https://mirrormanager.fedoraproject.org/
 # - https://fedoraproject.org/wiki/Infrastructure/Mirroring
 # Just pick any from those mirrors; they all share the same structure
-source=("https://download.fedoraproject.org/pub/fedora/linux/releases/${_fedoraVersion}/Everything/x86_64/os/Packages/e/edk2-ovmf-${pkgver}-${_rpmRelease}.fc${_fedoraVersion}.noarch.rpm")
-sha256sums=('1a5cbbb681e709e957dfce4e71d62227893adbc34a6918f1f1ed4c842710cb1c')
+# source=("https://download.fedoraproject.org/pub/fedora/linux/releases/${_fedoraVersion}/Everything/x86_64/os/Packages/e/edk2-ovmf-${pkgver}-${_rpmRelease}.fc${_fedoraVersion}.noarch.rpm")
+source=("https://kojipkgs.fedoraproject.org/packages/edk2/${pkgver}/${_rpmRelease}.fc${_fedoraVersion}/noarch/edk2-ovmf-${pkgver}-${_rpmRelease}.fc${_fedoraVersion}.noarch.rpm")
+sha256sums=('ac376298edc126b6fcfac4736d537480b2c132ceec26b9c811bd8edd61ca0460')
 
 
 package() {
