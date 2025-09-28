@@ -1,15 +1,15 @@
 # Maintainer: tak_0
-pkgname=ru-check
+pkgname=suspcheck
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Wrapper and check script for makepkg/paru to warn about Russian maintainers"
+pkgdesc="Wrapper and check script for makepkg/paru to warn about Russian, Chineese ,or other maintainers from countries you can find suspicious, maintainers"
 arch=('any')
 license=('GPL')
 depends=('bash' 'jq' 'git' 'curl')
-source=("ru-check.sh" "makepkg.wrapper.sh"
-        "ru-blocked-locations.txt"
-        "ru-denylist.txt"
-        "ru-blocked-domains.txt")
+source=("suspcheck.sh" "makepkg.wrapper.sh"
+        "suspcheck-blocked-locations.txt"
+        "suspcheck-denylist.txt"
+        "suspcheck-blocked-domains.txt")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
@@ -31,11 +31,11 @@ package() {
     install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
 
     # Install ru-check script
-    install -Dm755 ru-check.sh "$pkgdir/usr/local/bin/ru-check.sh"
+    install -Dm755 suspcheck.sh "$pkgdir/usr/local/bin/suspcheck.sh"
 
     # Install supporting files
     mkdir -p "$pkgdir/usr/local/etc"
-    cp -f ru-blocked-locations.txt "$pkgdir/usr/local/etc/"
-    cp -f ru-denylist.txt "$pkgdir/usr/local/etc/"
-    cp -f ru-blocked-domains.txt "$pkgdir/usr/local/etc/"
+    cp -f suspcheck-blocked-locations.txt "$pkgdir/usr/local/etc/"
+    cp -f suspcheck-denylist.txt "$pkgdir/usr/local/etc/"
+    cp -f suspcheck-blocked-domains.txt "$pkgdir/usr/local/etc/"
 }
