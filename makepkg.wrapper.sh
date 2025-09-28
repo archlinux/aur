@@ -2,7 +2,7 @@
 # Wrapper for makepkg with ephemeral ru-check
 
 REAL_MAKEPKG="/usr/bin/makepkg.real"
-CHECKER="/usr/local/bin/suscheck.sh"
+CHECKER="/usr/local/bin/suspcheck.sh"
 PKGBUILD_PATH="$(pwd)/PKGBUILD"
 
 # Create/clear session scratchpad at start
