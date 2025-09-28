@@ -1,0 +1,13 @@
+diff --git a/cmake/modules/Findpicojson.cmake b/cmake/modules/Findpicojson.cmake
+index 688c11c..6561d8c 100644
+--- a/cmake/modules/Findpicojson.cmake
++++ b/cmake/modules/Findpicojson.cmake
+@@ -1,7 +1,7 @@
+ # SPDX-FileCopyrightText: 2025 Contributors to the Media eXchange Layer project.
+ # SPDX-License-Identifier: Apache-2.0
+ 
+-find_path(picojson_INCLUDE_DIR NAMES picojson/picojson.h DOC "The picojson include directory")
++find_path(picojson_INCLUDE_DIR NAMES picojson.h DOC "The picojson include directory")
+ mark_as_advanced(picojson_INCLUDE_DIR)
+ 
+ include(FindPackageHandleStandardArgs)

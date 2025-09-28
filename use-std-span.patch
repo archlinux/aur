@@ -1,0 +1,28 @@
+diff --git a/tools/mxl-info/main.cpp b/tools/mxl-info/main.cpp
+index 1eff15c..8b04153 100644
+--- a/tools/mxl-info/main.cpp
++++ b/tools/mxl-info/main.cpp
+@@ -14,7 +14,6 @@
+ #include <CLI/CLI.hpp>
+ #include <fmt/color.h>
+ #include <fmt/format.h>
+-#include <gsl/span>
+ #include <mxl/flow.h>
+ #include <mxl/mxl.h>
+ #include <mxl/time.h>
+@@ -53,7 +52,7 @@ namespace
+ 
+ std::ostream& operator<<(std::ostream& os, mxlFlowInfo const& info)
+ {
+-    auto span = gsl::span<std::uint8_t, sizeof info.common.id>(const_cast<std::uint8_t*>(info.common.id), sizeof info.common.id);
++    auto span = std::span<std::uint8_t, sizeof info.common.id>(const_cast<std::uint8_t*>(info.common.id), sizeof info.common.id);
+     auto id = uuids::uuid(span);
+     os << "- Flow [" << uuids::to_string(id) << ']' << '\n'
+        << '\t' << fmt::format("{: >18}: {}", "Version", info.version) << '\n'
+@@ -314,4 +313,4 @@ int main(int argc, char** argv)
+     }
+ 
+     return status;
+-}
+\ No newline at end of file
++}

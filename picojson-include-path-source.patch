@@ -1,0 +1,65 @@
+diff --git a/lib/src/internal/FlowParser.cpp b/lib/src/internal/FlowParser.cpp
+index a2bfcc7..f985261 100644
+--- a/lib/src/internal/FlowParser.cpp
++++ b/lib/src/internal/FlowParser.cpp
+@@ -10,7 +10,7 @@
+ #include <uuid.h>
+ #include <fmt/format.h>
+ #include <mxl/mxl.h>
+-#include <picojson/picojson.h>
++#include <picojson.h>
+ #include <string_view>
+ #include "Rational.hpp"
+ 
+diff --git a/lib/src/internal/FlowParser.hpp b/lib/src/internal/FlowParser.hpp
+index 0436109..968d811 100644
+--- a/lib/src/internal/FlowParser.hpp
++++ b/lib/src/internal/FlowParser.hpp
+@@ -8,7 +8,7 @@
+ #include <uuid.h>
+ #include <mxl/dataformat.h>
+ #include <mxl/rational.h>
+-#include <picojson/picojson.h>
++#include <picojson.h>
+ 
+ namespace mxl::lib
+ {
+diff --git a/lib/src/internal/Instance.cpp b/lib/src/internal/Instance.cpp
+index e92958f..237ce23 100644
+--- a/lib/src/internal/Instance.cpp
++++ b/lib/src/internal/Instance.cpp
+@@ -17,7 +17,7 @@
+ #include <mxl/flow.h>
+ #include <mxl/mxl.h>
+ #include <mxl/time.h>
+-#include <picojson/picojson.h>
++#include <picojson.h>
+ #include <spdlog/cfg/env.h>
+ #include <spdlog/sinks/stdout_color_sinks.h>
+ #include <spdlog/spdlog.h>
+diff --git a/tools/mxl-gst/looping_filesrc.cpp b/tools/mxl-gst/looping_filesrc.cpp
+index 9163eea..6d9ff2b 100644
+--- a/tools/mxl-gst/looping_filesrc.cpp
++++ b/tools/mxl-gst/looping_filesrc.cpp
+@@ -14,7 +14,7 @@
+ #include <mxl/flow.h>
+ #include <mxl/mxl.h>
+ #include <mxl/time.h>
+-#include <picojson/picojson.h>
++#include <picojson.h>
+ #include <spdlog/cfg/env.h>
+ #include <spdlog/sinks/stdout_color_sinks.h>
+ #include "../../lib/src/internal/Logging.hpp"
+diff --git a/tools/mxl-info/main.cpp b/tools/mxl-info/main.cpp
+index 1eff15c..8ef567b 100644
+--- a/tools/mxl-info/main.cpp
++++ b/tools/mxl-info/main.cpp
+@@ -18,7 +18,7 @@
+ #include <mxl/flow.h>
+ #include <mxl/mxl.h>
+ #include <mxl/time.h>
+-#include <picojson/picojson.h>
++#include <picojson.h>
+ #include <sys/file.h>
+ #include "../../lib/src/internal/PathUtils.hpp"
+ 
