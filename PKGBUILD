@@ -1,7 +1,7 @@
 #Maintainer: Ludwintor <ludwintor at proton dot me>
 
 pkgname=tonkeeper
-pkgver=4.2.8
+pkgver=4.2.9
 pkgrel=1
 pkgdesc='Your desktop wallet on The Open Network'
 arch=(any)
@@ -16,7 +16,7 @@ options=(!debug)
 source=("git+https://github.com/tonkeeper/tonkeeper-web.git#tag=v${pkgver}"
          tonkeeper.desktop
          tonkeeper.png)
-sha256sums=('63cdf2cfc6c40da178e5937b70d084de5164f5144f4311ce718921649d56b153'
+sha256sums=('9e346530e1ee11fded568f9a21d406cc431d67a778774454731fa25bb5e989ea'
             '4a4aee7691da80aba21dbd1bff28791e9edd6ea5e9712457207c6e1b0bc6c5d5'
             'e9dc80e0c41560ca754f668196054317494d32eed827ac0afbf641d86f799d40')
 
