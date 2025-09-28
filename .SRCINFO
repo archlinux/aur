@@ -1,4 +1,4 @@
-pkgbase = proj
+pkgbase = projctl
 	pkgdesc = Helper to manage project context across a system
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = proj
 	source = https://github.com/nick-montgomery/proj/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 462dcedef2b237f7289c84289cb9edd8ff498bf579c7c54bd15e6f95ea4273ad
 
-pkgname = proj
+pkgname = projctl
