@@ -1,0 +1,14 @@
+pkgbase = systemd-boot-btrfs-snapshots-git
+	pkgdesc = Btrfs snapshot scripts with systemd-boot integration
+	pkgver = r43.f7eef68
+	pkgrel = 1
+	url = https://github.com/lucas-mior/systemd-boot-btrfs-snapshots
+	install = PKGBUILD.install
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	provides = systemd-boot-btrfs-snapshots
+	source = git+https://github.com/lucas-mior/systemd-boot-btrfs-snapshots.git
+	md5sums = SKIP
+
+pkgname = systemd-boot-btrfs-snapshots-git
