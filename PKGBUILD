@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148,SC2034,SC2154
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=h3
