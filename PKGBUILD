@@ -1,9 +1,9 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
-_branch=v17.0 # Don't forget to reset back to main after 49.x work merge
+_branch=main # Don't forget to reset back to main after 49.x work merge
 pkgname=gnome-shell-extension-tiling-shell-git
 pkgdesc="Extend GNOME Shell with advanced tiling window management"
-pkgver=r61.2cd15c7
+pkgver=r57.088ecf6
 pkgrel=1
 arch=('any')
 url="https://github.com/domferr/tilingshell"

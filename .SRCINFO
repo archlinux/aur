@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-tiling-shell-git
 	pkgdesc = Extend GNOME Shell with advanced tiling window management
-	pkgver = r61.2cd15c7
+	pkgver = r57.088ecf6
 	pkgrel = 1
 	url = https://github.com/domferr/tilingshell
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gnome-shell-extension-tiling-shell-git
 	provides = gnome-shell-extension-tilingshell
 	conflicts = gnome-shell-extension-tiling-shell
 	conflicts = gnome-shell-extension-tilingshell
-	source = gnome-shell-extension-tiling-shell-git::git+https://github.com/domferr/tilingshell.git#branch=v17.0
+	source = gnome-shell-extension-tiling-shell-git::git+https://github.com/domferr/tilingshell.git#branch=main
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-tiling-shell-git
