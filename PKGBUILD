@@ -2,7 +2,7 @@
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
 pkgver=3.21.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
@@ -17,6 +17,7 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff"
 	"3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff"
 	"4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff"
+	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff"
 )
 noextract=()
 sha256sums=('17e8014f0d30da4720492d2b68d941ddf6d2be12eb337677acf111a003956bc6'
@@ -26,7 +27,8 @@ sha256sums=('17e8014f0d30da4720492d2b68d941ddf6d2be12eb337677acf111a003956bc6'
             '7438f711a6762a34614bc10be8b54c00691bc72743e14767f0b72e9a11051327'
             '795a17dadbd0ae8b9225c9a279b74097e153c9aea0dd8ec55b1c877864805323'
             'c5c13843be7b9389882bdedf3e020bcf59d53189fb2eaf3416d2f2c16582e390'
-            '11f4edd80f8910abded7e88a98919e4f00d37332f3bbc1f361cda667826fd1c5')
+            '11f4edd80f8910abded7e88a98919e4f00d37332f3bbc1f361cda667826fd1c5'
+            '7c6333253c9b98e35e56b7d60077921b32ee2fd55ce9132f602cf86a805d5415')
 validpgpkeys=()
 
 prepare() {
@@ -37,6 +39,7 @@ prepare() {
 	patch -Np1 < "$srcdir/2.patch"
 	patch -Np1 < "$srcdir/3.patch"
 	patch -Np1 < "$srcdir/4.patch"
+	patch -Np1 < "$srcdir/5.patch"
 
 	# Use system qt because bundling it is cringe n lame
 	cat /dev/null > internal/frontend/bridge-gui/bridge-gui/DeployLinux.cmake

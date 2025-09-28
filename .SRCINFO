@@ -1,7 +1,7 @@
 pkgbase = protonmail-bridge-free
 	pkgdesc = Integrate ProtonMail account with any program that supports IMAP and SMTP
 	pkgver = 3.21.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ProtonMail/proton-bridge
 	arch = x86_64
 	license = GPL-3.0-only
@@ -28,6 +28,7 @@ pkgbase = protonmail-bridge-free
 	source = 2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff
 	source = 3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff
 	source = 4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff
+	source = 5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff
 	sha256sums = 17e8014f0d30da4720492d2b68d941ddf6d2be12eb337677acf111a003956bc6
 	sha256sums = 5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692
 	sha256sums = 436a9a293424fb7d48a8fd61fff7d63985dec56d6170cd2fbae24fe03ef98136
@@ -36,6 +37,7 @@ pkgbase = protonmail-bridge-free
 	sha256sums = 795a17dadbd0ae8b9225c9a279b74097e153c9aea0dd8ec55b1c877864805323
 	sha256sums = c5c13843be7b9389882bdedf3e020bcf59d53189fb2eaf3416d2f2c16582e390
 	sha256sums = 11f4edd80f8910abded7e88a98919e4f00d37332f3bbc1f361cda667826fd1c5
+	sha256sums = 7c6333253c9b98e35e56b7d60077921b32ee2fd55ce9132f602cf86a805d5415
 
 pkgname = protonmail-bridge-free
 	pkgdesc = Integrate ProtonMail account with any program that supports IMAP and SMTP (Qt desktop application)
