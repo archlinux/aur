@@ -2,16 +2,27 @@
 
 _pkgname="gopher64"
 pkgname="${_pkgname}-bin"
-pkgver=1.1.5
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="N64 emulator written in Rust"
 arch=('aarch64' 'x86_64')
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme')
-makedepends=('gendesk')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=(
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
+  'wayland'
+)
+makedepends=(
+  'gendesk'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
@@ -23,8 +34,8 @@ sha256sums=('95e04ec4bc1331e8d12bfb353db17dd8e7c8d7d9f83c0580728453b8e9b8b4d1'
             'c5b7d0fc27c4a838b174b6b2f3357d66b888b97cd9b5acd5460d1d102c7a8597'
             '886c63542d29a20804de8c3555a9abb2dac635b55b521ecffb067ec484780d67'
             '589dbc308e9910010fa0cbfdfa895dbc7dc895876ad3fda882008c59d7db3d22')
-sha256sums_aarch64=('582e0151a4d8034babbd89c13126df1990671bda24f754baee5b7c8bbaacc238')
-sha256sums_x86_64=('642357e16b2332b92f14171470d49c02c82075a854189364cfe45e2c7d12f336')
+sha256sums_aarch64=('9dfce8ceb306c860026d7fa8b3403c08bc6c03984806c097694bca77574f3ba6')
+sha256sums_x86_64=('a3a43de1d6679ee1e8e976d7ee689f6fdc3f99c1caaf23d948bf3a3eaae4fd9f')
 
 for _size in 128 256 512; do
   source+=("${_pkgsrc}.${_size}x${_size}.png::${url}/raw/refs/tags/v${pkgver}/data/icon/${_pkgname}_${_size}x${_size}.png")
