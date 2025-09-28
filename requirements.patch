@@ -1,8 +1,6 @@
-diff --git a/requirements.txt b/requirements.txt
-index 2ab862e..1e4271a 100644
---- a/requirements.txt
-+++ b/requirements.txt
-@@ -1,13 +1,13 @@
+--- a/requirements.txt	2025-09-26 08:59:44.000000000 +1000
++++ b/requirements.txt	2025-09-28 18:35:18.750816642 +1000
+@@ -1,13 +1,12 @@
  PySide6
 -winshell
 -pywin32

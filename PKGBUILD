@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor <me@cordor.dev>
 pkgname=savestate
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 epoch=
 pkgdesc="A versatile game save backup manager, featuring Steam detection, Minecraft support, drag & drop, desktop shortcuts and emulator compatible."
@@ -27,9 +27,9 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'56d9a313cd3317ead0c1c77570d3faac8ac6604c890c78f56c8cb86b1f871d82'
+	'a65fbab8201cfd3c248286edc88d83df32b39d40c6f84678c5bc23a011134fbf'
 	'7f7b294aa10ef51f23dbccd814e2ce507269be889e444f2bf2b1fb5c50dcb15e'
-	'26e82b5c1397e3b9392b78b4c155da0dc2e289b5c7fa923593960fb0b5f3b3a5'
+	'367ce17d16d84c18fd87028789d7520837d3c9e5f0d5c57a0ac8fa28ba0b3b84'
 	'ac19894ca894e119940a48ec62f51f25c8c8623e433f60d52fee8863a0c4fd61'
 )
 validpgpkeys=()
@@ -38,8 +38,10 @@ _categories=('Game;Utility')
 _exec="/usr/bin/SaveState"
 
 prepare() {
-	cd "$srcdir/$_name-$pkgver"
+	cd "$srcdir"
 
+	# Generate .desktop file
+	echo "Generating .desktop file..."
 	gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" \
 		--categories=$_categories \
 		--name=$_name \
@@ -47,6 +49,8 @@ prepare() {
 		--exec=$_exec \
 		--icon=$_name \
 		-f
+
+	cd "$_name-$pkgver"
 
 	patch -p1 -i ../requirements.patch
 
