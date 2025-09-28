@@ -1,12 +1,12 @@
 # Maintainer: Elliot Hatch <elliot.hatch@gmail.com>
 pkgname=dug-git
-pkgver=r284.55f6ecb
+pkgver=r288.18e4280
 pkgrel=1
-pkgdesc="A powerful global DNS progagation checker that can output in a variety of formats."
+pkgdesc="A global DNS propagation checker that gives pretty output."
 arch=(x86_64)
 url="https://dug.unfrl.com/"
-license=('custom:ANTI-CAPITALIST SOFTWARE LICENSE v1.4')
-depends=()
+license=('MIT')
+depends=(zlib gcc-libs glibc)
 makedepends=(git 'dotnet-runtime>=6.0.0' 'dotnet-sdk>=6.0.0', 'dotnet-host>=6.0.0')
 provides=(dug)
 options=(!strip)
@@ -34,7 +34,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
 
-  install -D -m644 "./cli/LICENSE" -t "$pkgdir/usr/share/licenses/dug"
+  install -D -m644 "./LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
   install -D -m755 "./cli/bin/Release/net6.0/linux-x64/publish/dug" -t "$pkgdir/usr/bin" 
 }
