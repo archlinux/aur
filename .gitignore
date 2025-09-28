@@ -1,4 +1,5 @@
 deadlock-modmanager/
+deadlock-mod-manager/
 pkg/
 src/
 *.tar.zst
