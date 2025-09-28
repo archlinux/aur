@@ -1,0 +1,14 @@
+pkgbase = pakku-mc-bin
+	pkgdesc = Modpack manager for Minecraft: Java Edition
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://juraj-hrivnak.github.io/Pakku/
+	arch = any
+	license = EUPL-1.2
+	depends = java-runtime-headless=21
+	provides = pakku-mc
+	conflicts = pakku-mc
+	source = pakku-mc.tar::https://github.com/juraj-hrivnak/Pakku/releases/download/v1.2.1/Pakku-1.2.1.tar
+	sha256sums = fa3d43a86c215ce963245659292cf4daad46cd67295b649cd13326d462f1c5cb
+
+pkgname = pakku-mc-bin
