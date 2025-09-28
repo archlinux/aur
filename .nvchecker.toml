@@ -1,0 +1,5 @@
+[dotnet-proj-bin]
+source = "github"
+github = "ionide/proj-info"
+use_latest_release = true
+prefix = "v"
