@@ -1,38 +1,14 @@
 post_install() {
     echo "==> Setting up awcc daemon service..."
 
-    cp /usr/share/awcc/awccd.service /etc/systemd/system/
-
     systemctl daemon-reload
+    systemctl enable --now awccd.service
 
     echo "==> Setting up udev rules..."
 
-    cat > /etc/udev/rules.d/99-awcc.rules << 'EOF'
-SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0551", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0550", MODE="0660", GROUP="plugdev"
-EOF
-
-    if ! getent group plugdev > /dev/null 2>&1; then
-        groupadd plugdev
-        echo "==> Created plugdev group"
-    else
-        echo "==> plugdev group already exists"
-    fi
-
-    if [ -n "$SUDO_USER" ]; then
-        usermod -aG plugdev "$SUDO_USER"
-        echo "==> Added user $SUDO_USER to plugdev group"
-    elif [ -n "$USER" ] && [ "$USER" != "root" ]; then
-        usermod -aG plugdev "$USER"
-        echo "==> Added user $USER to plugdev group"
-    else
-        echo "==> Warning: Could not determine current user. You may need to run 'sudo usermod -aG plugdev \$USER' manually"
-    fi
-
     udevadm control --reload-rules
     udevadm trigger
-    echo "==> Enable the daemon with: systemctl enable --now awccd.service"
-    echo "==> Please log out and back in for group changes to take effect"
+    echo "==> Please reboot to take effect"
 }
 
 post_upgrade() {
@@ -44,15 +20,8 @@ post_upgrade() {
         echo "==> Service restarted"
     fi
 
-    if [ ! -f /etc/udev/rules.d/99-awcc.rules ]; then
-        echo "==> Setting up missing udev rules..."
-        cat > /etc/udev/rules.d/99-awcc.rules << 'EOF'
-SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0551", MODE="0660",GROUP="plugdev"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="187c", ATTRS{idProduct}=="0550", MODE="0660", GROUP="plugdev"
-EOF
-        udevadm control --reload-rules
-        udevadm trigger
-    fi
+    udevadm control --reload-rules
+    udevadm trigger
 }
 
 pre_remove() {
@@ -67,10 +36,9 @@ post_remove() {
     systemctl daemon-reload
 
     echo "==> Cleaning up udev rules..."
-    rm -f /etc/udev/rules.d/99-awcc.rules
+    rm -f /etc/udev/rules.d/70-awcc.rules
     udevadm control --reload-rules
     udevadm trigger
 
     echo "==> awcc completely removed"
-    echo "==> Note: plugdev group and user memberships were not removed"
 }
