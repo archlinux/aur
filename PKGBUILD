@@ -1,6 +1,6 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-  cmake -S Bolt -B build -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=Release -D CEF_ROOT="$srcdir"/cef_binary_126.2.19+ga5d51ba+chromium-126.0.6478.183_linux64_minimal -D CMAKE_INSTALL_PREFIX="$pkgdir" -D BOLT_BINDIR=usr/bin -D BOLT_LIBDIR=usr/lib -D BOLT_SHAREDIR=usr/share -D BOLT_META_NAME="$pkgname" -D BOLT_LUAJIT_INCLUDE_DIR=/usr/include/luajit-2.1/
+  cmake -S Bolt -B build -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=Release -D CEF_ROOT="$srcdir"/cef_binary_126.2.19+ga5d51ba+chromium-126.0.6478.183_linux64_minimal -D CMAKE_INSTALL_PREFIX="$pkgdir" -D BOLT_BINDIR=usr/bin -D BOLT_LIBDIR=usr/lib -D BOLT_SHAREDIR=usr/share -D BOLT_META_NAME="$pkgname"
   cmake --build build
 }
 
