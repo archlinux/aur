@@ -10,7 +10,7 @@ pkgdesc="Parse and evaluate MsBuild project files"
 arch=('any')
 url="https://ionide.io/Tools/dpi.html"
 _url="https://github.com/ionide/proj-info"
-license=('Apache-2.0')
+license=('MIT')
 depends=(
   "dotnet-runtime-${_sdk}"
   'sh'
