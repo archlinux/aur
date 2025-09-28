@@ -3,7 +3,7 @@
 
 pkgname=hyprviz-bin
 pkgver=0.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc="GUI for configuring Hyprland!"
 url="https://github.com/timasoft/hyprviz"
 license=("GPL-2.0")
