@@ -1,0 +1,4 @@
+[gnome-shell-extension-dynamic-calendar-and-clocks-icons-reborn]
+source = "git"
+git = "https://github.com/thecalamityjoe87/dynamic-calendar-and-clocks-icons-reborn.git"
+prefix = "v"
