@@ -2,7 +2,7 @@
 
 _pkgname=uiua
 pkgname=uiua-bin
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('unzip')
 provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
 source=("${_pkgname}-${pkgver}.zip::https://github.com/uiua-lang/uiua/releases/download/${pkgver}/uiua-bin-x86_64-unknown-linux-gnu.zip")
-b2sums=('365ccc6dd4ee914aa6bde61b45b1d9923c078ad0eeae08ce726fa4b662054b0b4a0045edd60217728158921ad7f60beec12d79f98ee59e2bda8749c5820d80d7')
+b2sums=('36f12068dd7e42bf5163fc3993c42c050f630318e2e3e2b52272610f5cfb9d5024e4c936993c2f50673c17744b8d721a1ac7c24714ba097a8bf035b5a8c6b642')
 
 prepare() {
     unzip -q -o -j "${_pkgname}-${pkgver}.zip"
