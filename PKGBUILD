@@ -13,18 +13,18 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 b2sums=('b86905541bd5d94ad896ae3ee6e301556d2e54417045d37f0549b4c1c462d32869f55985f2986f3b99aa768731abfc3bc13b83ec506d73bcdcb57ada663d7714')
 
 build() {
-	cmake -B "build" -S "${pkgname}-${pkgver}" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DBUILD_SHARED_LIBS=1 \
-		-DENABLE_LINTING=0 \
-		-Wno-dev
-	cmake --build "build"
+    cmake -B "build" -S "${pkgname}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_SHARED_LIBS=1 \
+        -DENABLE_LINTING=0 \
+        -Wno-dev
+    cmake --build "build"
 }
 
 check() {
-	cmake --build "build" --target test
+    cmake --build "build" --target test
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install "build" --prefix "/usr"
+    DESTDIR="${pkgdir}" cmake --install "build" --prefix "/usr"
 }

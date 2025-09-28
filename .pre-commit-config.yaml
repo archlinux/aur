@@ -31,6 +31,14 @@ repos:
       - id: shellcheck
         types: [file]
         types_or: [shell, bash]
+  - repo: https://opendev.org/openstack/bashate
+    rev: 5798d24d571676fc407e81df574c1ef57b520f23  # frozen: 2.1.1
+    hooks:
+      - id: bashate
+        types: [file]
+        types_or: [shell, bash]
+        args:
+          - --ignore=E005,E006
   - repo: https://gitlab.archlinux.org/freso/archlinux-pre-commit
     rev: 60333d4d7d738c3237006ed4e890a99523aa0124
     hooks:
