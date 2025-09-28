@@ -12,7 +12,7 @@ source=("suspcheck.sh" "suscheck.sh" "makepkg.wrapper.sh"
         "suspcheck-blocked-locations.txt"
         "suspcheck-denylist.txt"
         "suspcheck-blocked-domains.txt"
-        "suscheck-data/" "index.json" "suscheck-data.tar.gz")
+         "index.json" "suscheck-data.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
