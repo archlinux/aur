@@ -1,11 +1,16 @@
-So essentially this is a little wrapper right
-around your paru, that checks some data on a
-contributor's github page and if something points
-onto that ru swamp - It lets you know.
+## Rationale
 
-It can either be used for a security reasons, or
-if you just don't want to raise installation
-statistics on packages of some russian devs,
-because fuck them.
+This project does **not** blacklist on nationality or ethnicity.
+It implements a *jurisdiction- and sanctions-aware supply chain risk filter* for AUR and makepkg.
 
-With love, ru-hating lil dev)
+The denylist includes:
+- **Russian state-owned companies and domains** (e.g., Gazprom, Sberbank, Rosatom) that directly finance and support Russia’s **illegal invasion and aggression against Ukraine since 2014 (escalated in 2022)**.
+- **Russian state propaganda outlets** (RT, Sputnik, RIA, TASS, Rossiyskaya Gazeta) used to spread disinformation and legitimize war crimes.
+- **Other sanctioned/authoritarian states** (Belarus, Iran, Syria, DPRK, Venezuela, Palestine territories under Hamas) included for their role in censorship, aggressive wars, or support of Russia’s aggression.
+
+This tool is a *heuristic*. It warns users if packages are maintained or sourced from high-risk jurisdictions.
+Users can override, edit, or disable lists as they see fit.
+
+
+Also, this list only sends warnings and those packages can still be installed.
+Again, this is not a censorship tool, this is an information providing tool if you feel suspicious about any of those organizations and want to avoid packages from maintainers working on any of them.

@@ -1,0 +1,65 @@
+# Blocked / high-risk domains — annotated with rationale
+# Note: inclusion criteria are state-affiliation, sanctions, or links to
+# Russia’s illegal invasion and aggression against Ukraine (since 2014, escalated 2022),
+# or other regimes with comparable risk profiles.
+
+# Russia — state/oligarchic entities & war sponsors
+mail.ru             # Mail.ru Group (VK Company Ltd), Russian tech giant, close ties to state
+yandex.ru           # Yandex, cooperates with Kremlin censorship & data requests
+yandex.su           # Legacy Soviet domain variant, same rationale
+vk.com              # VK (VKontakte), Russian social media, under Kremlin control
+ok.ru               # Odnoklassniki, also Kremlin-linked
+rambler.ru          # Rambler media, owned by Sberbank
+gazprom.ru          # Gazprom, state gas monopoly, key financier of Russian state & war effort
+rosatom.ru          # Rosatom, state nuclear corporation, sanctioned & tied to occupied territories
+sberbank.ru         # Sberbank, state-owned bank, directly sanctioned; finances war
+vtb.ru              # VTB Bank, state bank, sanctioned; finances war
+kremlin.ru          # Official Kremlin portal (Russian presidency)
+government.ru       # Official Government of Russia portal
+rg.ru               # Rossiyskaya Gazeta, official state newspaper
+tass.ru             # TASS, state-owned news agency, propaganda arm
+ria.ru              # RIA Novosti, state propaganda outlet
+rt.com              # RT (Russia Today), sanctioned state media spreading disinformation
+sputniknews.ru      # Sputnik, Kremlin state propaganda outlet
+interfax.ru         # Interfax, state-controlled news
+rbc.ru              # RBC, oligarch-controlled media
+pravda.ru           # Pravda, Kremlin-aligned media
+
+# China — state-affiliated tech giants
+baidu.com           # Baidu, subject to state censorship and surveillance laws
+qq.com              # Tencent/QQ, PRC-linked, full compliance with censorship
+163.com             # NetEase, operates under CCP censorship
+sina.com.cn         # Sina/Weibo, CCP-controlled
+taobao.com          # Alibaba (PRC state-influenced corp)
+tmall.com           # Alibaba (PRC)
+aliyun.com          # Alibaba Cloud, PRC state-linked infrastructure
+
+# Belarus — Lukashenko regime-controlled
+tut.by              # Former leading portal, seized by Belarus state in crackdown
+onliner.by          # Subject to censorship, Belarus-based
+belta.by            # Belarus Telegraph Agency, state propaganda agency
+gov.by              # Belarus official government domain
+minsk.by            # City/state-run Belarus portal
+
+# Iran — state-owned and sanctioned institutions
+irna.ir             # Islamic Republic News Agency, state propaganda
+mfa.ir              # Iranian Ministry of Foreign Affairs
+gov.ir              # Iranian government
+bankmellat.ir       # State bank, sanctioned internationally
+tehran.ir           # Government portal for Tehran
+
+# Palestine (Palestinian Authority / Hamas-controlled)
+paltel.ps           # Telecom provider under political pressure
+gov.ps              # Palestinian Authority government portal
+moi.pna.ps          # Ministry of Interior (Palestinian Authority)
+
+# DPRK / North Korea
+korea-dpr.com       # Official NK portal
+naenara.com.kp      # NK state-run propaganda site
+
+# Syria
+syria-news.sy       # State media
+gov.sy              # Syrian government portal
+
+# Venezuela
+venezuela.gob.ve    # Venezuelan government portal, under sanctions

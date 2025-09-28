@@ -1,0 +1,49 @@
+# Russia
+Moscow
+Saint Petersburg
+Novosibirsk
+Yekaterinburg
+Nizhny Novgorod
+Kazan
+Chelyabinsk
+Omsk
+Samara
+Rostov-on-Don
+Ufa
+Krasnoyarsk
+Perm
+Voronezh
+Volgograd
+Saratov
+Krasnodar
+Tolyatti
+Izhevsk
+Barnaul
+
+# China
+Beijing
+Shanghai
+Shenzhen
+Guangzhou
+Chengdu
+
+# Belarus
+Minsk
+Gomel
+Mogilev
+Vitebsk
+Grodno
+
+# Iran
+Tehran
+Mashhad
+Isfahan
+Tabriz
+Shiraz
+
+# Palestine
+Gaza City
+Hebron
+Nablus
+Ramallah
+Rafah
