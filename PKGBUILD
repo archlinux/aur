@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=parallelDist
-_pkgver=0.2.6
+_pkgver=0.2.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="Parallel Distance Matrix Computation using Multiple Threads"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c825739a2da14d2c90b7a4064639fcbc')
-b2sums=('b41497d7e4adcee2b40216f76f46921cb14999e6592a74edfb866741972569d8dfd0a55212de925899ee5591b0cc58ea757035f2e03c16100b7cca953b4dc570')
+md5sums=('5cfb8cd1b8f4b163680a6863a177e77b')
+b2sums=('2af5d91b73bb137904a450be7446d48975c87816b255d5b9a7abf1f7c016eaeac0b35971bcfd1f4f5b49e2ee80fbd7d11dd9129e069ed1faac3f36c39725c2bc')
 
 build() {
   mkdir build
