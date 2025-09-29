@@ -2,7 +2,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=wox-bin
-pkgver=2.0.0_beta.3
+pkgver=2.0.0_beta.5
 pkgrel=1
 pkgdesc="A cross-platform launcher that simply works"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64"
     "license-${pkgver}::https://raw.githubusercontent.com/Wox-launcher/Wox/refs/heads/master/LICENSE"
 )
-sha256sums=('51aa615ff4e57cd8458e080b90cda6268ef37000198974a385049fe21f2f1b93'
+sha256sums=('de70fc1486b2c7143cc5e0dfa47fd97573c03c3137e5df1136ebd3d1b8b7b71f'
             '8475252f3dafb9b1a132511d368806daff74275050afcb425e743058f8a6c83c')
 
 
