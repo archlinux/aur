@@ -14,7 +14,7 @@ depends=('gtk3' 'mpv' 'libayatana-appindicator')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 providis=('piliplus')
 conflicts=('piliplus')
-source=("${_pkgname}::git+${url}.git"
+source=("${_srcname}::git+${url}.git"
     "${_pkgname}.desktop")
 sha256sums=('SKIP'
             'cad91a008e837952ec7268312ce9f5305a59783584843df7dbb10230464b8731')
