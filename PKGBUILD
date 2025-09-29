@@ -3,7 +3,7 @@
 pkgbase=ideology-git
 pkgname=ideology-git
 pkgver=r3.4c5f8cd
-pkgrel=7
+pkgrel=9
 pkgdesc="IDEology is the IDE for the Snow programming language."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/IDEology"
@@ -104,19 +104,7 @@ StartupNotify=false
 Terminal=false
 Type=Application
 Categories=Development;Tool;IDE;
-MimeType=application/x-cloud;
 Icon=${pkgname%-git}.png
 EOF
 
-    install -Dm0644 /dev/stdin ${pkgdir}/usr/share/mime/packages/application-x-cloud.xml <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-cloud">
-        <comment>Snow lang project files</comment>
-        <comment xml:lang="zh_CN">Snow 语言的项目文件</comment>
-        <glob pattern="*.cloud"/>
-        <icon name="application-x-cloud"/>
-    </mime-type>
-</mime-info>
-EOF
 }
