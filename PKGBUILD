@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Jordan nicholas@cvusmo.dev
 pkgname=blackbeard-gtk-themes
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Blackbeard dark and light GTK themes for Arch Linux (GTK 2/3/4)"
 arch=('any')
 url="https://github.com/cvusmo/blackbeard-theme"
