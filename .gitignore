@@ -1,9 +1,0 @@
-*
-!.gitignore
-!.nvchecker.toml
-!.SRCINFO
-!PKGBUILD
-!watchman.conf
-!watchman.json
-!watchman.service
-!watchman.socket
