@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-gcc"
-pkgver=15.1.0
+pkgver=15.2.0
 _majorver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
@@ -19,7 +19,7 @@ options=('!emptydirs' '!strip' 'staticlibs' '!lto' '!debug')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         '010-gcc-Wno-format-security.patch'
         '020-gcc-config-mips-multilib.patch')
-sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
             'SKIP'
             '85a03b80c6dad57e6ea97e5a7f225a2aaed6911f6fdcee3a800b8decd9044b43'
             '55f8733c6c8683b4c75aea9d2d55c061cdfbff1f87e066a144dc542576dc6a99')
@@ -69,7 +69,7 @@ build() {
         --with-abi="$_DEFAULT_ABI" \
         --with-gnu-as \
         --with-gnu-ld \
-        --enable-languages='c,c++,fortran' \
+        --enable-languages='c,c++' \
         --with-isl \
         --with-linker-hash-style='gnu' \
         --with-system-zlib \
@@ -106,7 +106,7 @@ check() {
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath}
+    make -C build DESTDIR="$pkgdir" install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libquadmath}
     
     # allow using gnuabi${_abi} executables
     local _abi
