@@ -1,0 +1,38 @@
+# AUR package build files
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar.gz
+pkg/
+src/
+
+# makepkg temporary files
+*.log
+
+# Build artifacts
+*.o
+*.so
+*.a
+
+# Backup files
+*.bak
+*~
+.*.swp
+.*.swo
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git files
+*.orig
+*.rej

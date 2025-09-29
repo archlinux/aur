@@ -1,0 +1,27 @@
+post_install() {
+    echo ""
+    echo "==> Tema has been installed successfully!"
+    echo "==> Template files are available in /usr/share/tema/templates/"
+    echo "==> Create ~/Wallpapers/ and add your wallpaper images"
+    echo "==> Run 'tema' to start the application"
+    echo ""
+    echo "==> For custom theme templates:"
+    echo "    Copy templates from /usr/share/tema/templates/ to ~/.config/tema/"
+    echo ""
+    echo "==> For Omarchy integration:"
+    echo "    Run 'omarchy-theme-set tema' to activate tema templates"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Tema has been updated!"
+    echo "==> Template files are available in /usr/share/tema/templates/"
+    echo "==> Update your custom templates in ~/.config/tema/ if needed"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Custom template files in ~/.config/tema/ will be preserved"
+    echo "==> Remove them manually if desired"
+}
