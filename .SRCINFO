@@ -1,7 +1,7 @@
 pkgbase = flatpost-bin
 	pkgdesc = Desktop Environment agnostic flatpak-only shop gui
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/flatpost
 	arch = any
 	license = BSD-2-Clause AND GPL-3.0-or-later
@@ -15,6 +15,7 @@ pkgbase = flatpost-bin
 	depends = python-requests
 	depends = python
 	depends = appstream
+	depends = xorg-xhost
 	provides = flatpost
 	conflicts = flatpost
 	source = https://github.com/GloriousEggroll/flatpost/releases/download/1.1.1/flatpost-1.1.1.fc42.rpm
