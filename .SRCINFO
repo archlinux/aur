@@ -1,11 +1,13 @@
 pkgbase = mkanban
 	pkgdesc = A Terminal User Interface Kanban Board
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/blendonl/mkanban
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-textual
 	depends = python-pydantic
@@ -14,7 +16,7 @@ pkgbase = mkanban
 	depends = python-linkify-it-py
 	depends = python-aiohttp
 	depends = python-dotenv
-	source = mkanban-0.2.0.tar.gz::https://github.com/blendonl/mkanban/archive/v0.2.0.tar.gz
+	source = mkanban-0.2.1.tar.gz::https://github.com/blendonl/mkanban/archive/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = mkanban
