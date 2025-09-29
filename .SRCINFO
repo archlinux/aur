@@ -1,16 +1,16 @@
 pkgbase = masscode-bin
 	pkgdesc = A free and open source code snippets manager for developers.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://masscode.io/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron34
-	provides = masscode=4.0.0
+	provides = masscode=4.0.1
 	conflicts = masscode
-	source = masscode-4.0.0-x86_64.AppImage::https://github.com/massCodeIO/massCode/releases/download/v4.0.0/massCode-4.0.0.AppImage
+	source = masscode-4.0.1-x86_64.AppImage::https://github.com/massCodeIO/massCode/releases/download/v4.0.1/massCode-4.0.1.AppImage
 	source = masscode.sh
-	sha256sums = b720100e80afee5fddce9e18f9fe79b55fe8e108dd77a5a8c671f0406a3459a4
+	sha256sums = 70cdc0a128957bd5ca52d89496dd96254cde8cfaf769297c1dc87b126f53b405
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = masscode-bin
