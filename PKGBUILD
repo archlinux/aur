@@ -1,8 +1,9 @@
-# Maintainer: ObserverOfTime <chronobserver@disroot.org>
+# Maintainer: Andrea Oggioni <AOggioni530@gmail.com>
+# Contributor: ObserverOfTime <chronobserver@disroot.org>
 # Based on zstd
 
 pkgname=zstd-static
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm (with static lib)'
 arch=(x86_64)
@@ -15,7 +16,7 @@ checkdepends=('gtest')
 conflicts=('zstd')
 provides=("zstd=${pkgver}" "libzstd.so=1-64")
 source=("https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz")
-sha256sums=('8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1')
+sha256sums=('eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3')
 
 build() {
   export CFLAGS+=' -ffat-lto-objects'
