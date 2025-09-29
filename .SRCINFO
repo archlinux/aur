@@ -1,6 +1,6 @@
 pkgbase = cinny-desktop
 	pkgdesc = Matrix client focusing primarily on a simple, elegant and secure interface.
-	pkgver = 4.10.0
+	pkgver = 4.10.1
 	pkgrel = 1
 	url = https://cinny.in/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = cinny-desktop
 	depends = sqlite
 	depends = webkit2gtk
 	options = !debug
-	source = cinny-desktop-4.10.0.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v4.10.0/cinny-desktop-v4.10.0.zip
-	b2sums = 3e688d5b97ce2ea7f1bd83d5f43d74d79ba26d45d4b172b3849982b1f8fe9ea3221075b895b0075f1d16f90fd97d83861bda8e200e708586d715438f2f284eaa
+	source = cinny-desktop-4.10.1.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v4.10.1/cinny-desktop-v4.10.1.zip
+	b2sums = afb80817317283079c403c8d32e80cab04252d8f6d7bec5808c512e680d45545d5b42baa926b46f61b45f441982c905229e40f0820cead249ee1ae9782bafb82
 
 pkgname = cinny-desktop
