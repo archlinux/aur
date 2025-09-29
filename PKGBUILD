@@ -1,9 +1,9 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-avfifo-examples
-pkgver=2023.2
-pkgrel=10
-_sdkver=2025.04.0
+pkgver=2025.6
+pkgrel=1
+_sdkver=2025.09.0
 pkgdesc='Code examples demonstrating the AvFifo API for receiving and transmitting SMPTE 2110 streams'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
@@ -17,8 +17,8 @@ depends=(
 makedepends=('make')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
         "https://www.dektec.com/products/SDK/AvFifoExamples/downloads/avfifoexamples.tar.gz")
-sha256sums=('37fe7622b6b609adda95f21c4eed6fca6e25cb156e34cace71191b35749ded94'
-            '309a760220350f5733b31ca3406289be7ce729f2dc0df813a28c90181148922f')
+sha256sums=('5617767108c5782b0485f1d3f5e0d94ea5fcdb4a6c66fd62525188c0e401f173'
+            'd697bd5a17999d6f5aacef3cea607669ca6e1350a2238aee451c4415e2f60171')
 
 prepare() {
   # Define common paths
@@ -26,7 +26,7 @@ prepare() {
   local dtapi_lib="LinuxSDK/DTAPI/Lib/GCC7.5.0"
   local avfifo_examples="avfifo_examples"
   local dtapi_dest_include="${avfifo_examples}/Common/DTAPI/include"
-  local dtapi_dest_lib="${avfifo_examples}/Common/DTAPI/lib/GCC8"
+  local dtapi_dest_lib="${avfifo_examples}/Common/DTAPI/lib"
 
   # Include DTAPI (SDK) for AvFifo
   cp "${dtapi_include}/DTAPI.h" "${dtapi_dest_include}"
@@ -51,6 +51,11 @@ package() {
   
   # Install license file
   install -Dm644 "${srcdir}/LinuxSDK/License" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Install documentation
+  install -Dm644 "${srcdir}/avfifo_examples/README" "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 "${srcdir}/avfifo_examples/DTAPI Reference - AvFifo.pdf" \
+    "${pkgdir}/usr/share/doc/${pkgname}/DTAPI_Reference_AvFifo.pdf"
 }
 
 # vim:set ts=2 sw=2 et:
