@@ -1,10 +1,10 @@
 pkgbase = ctl
 	pkgdesc = The Color Transformation Language
-	pkgver = 1.5.3
-	pkgrel = 2
+	pkgver = 1.5.4
+	pkgrel = 1
 	url = https://github.com/ampas/CTL
 	arch = x86_64
-	license = custom
+	license = AMPAS
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
@@ -13,7 +13,7 @@ pkgbase = ctl
 	depends = aces-container
 	options = !lto
 	options = !debug
-	source = ctl-1.5.3.tar.gz::https://github.com/ampas/CTL/archive/ctl-1.5.3.tar.gz
-	sha256sums = 0a9f5f3de8964ac5cca31597aca74bf915a3d8214e3276fdcb52c80ad25b0096
+	source = ctl-1.5.4.tar.gz::https://github.com/ampas/CTL/archive/ctl-1.5.4.tar.gz
+	sha256sums = fb84925320d053827fce965d7aeea5bb8690d7093bb083c8e3915d7a600e25fc
 
 pkgname = ctl

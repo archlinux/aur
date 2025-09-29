@@ -2,17 +2,16 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=ctl
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="The Color Transformation Language"
 arch=('x86_64')
 url="https://github.com/ampas/CTL"
-license=('custom')
+license=('AMPAS')
 options=(!lto !debug)
 depends=('openexr' 'libtiff' 'aces-container')
 makedepends=('cmake' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ampas/CTL/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0a9f5f3de8964ac5cca31597aca74bf915a3d8214e3276fdcb52c80ad25b0096')
 
 build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
@@ -33,3 +32,4 @@ package() {
   # Remove docs
   rm -rf "${pkgdir}/usr/doc"
 }
+sha256sums=('fb84925320d053827fce965d7aeea5bb8690d7093bb083c8e3915d7a600e25fc')
