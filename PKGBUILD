@@ -1,27 +1,34 @@
-# Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
+# Maintainer: dllud <dllud riseup net>
+# Contributor: 3Jl0y_PYCCKUi <3jl0y_pycckui@riseup.net>
 # Contributor: Marcel Mehlmann <marcel@mzumquadrat.de>
 
 pkgname='ttdl'
-pkgver=4.3.0
-pkgrel=2
-pkgdesc='TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.'
+pkgver=4.12.0
+pkgrel=1
+pkgdesc='Terminal ToDo List, a CLI tool to manage todo lists in todo.txt format.'
 url='https://github.com/VladimirMarkelov/ttdl'
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 install='ttdl.install'
-b2sums=('7ac07aaa6a65c6a84cf32f4d3a42b48eca139768ad0bb31d375ce03a21c617c4c755ecf8100bd4b348977a377d1aff049e8e18bf045f25e503753ad6d6ff35e8')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
+b2sums=('5761998f6e9774fbbe939b4fb3a114cc436a2943e4c9082e68435659f9fce6375b332b021e22d842ba9ab9449a3ff732d8eb99b5e37406c61f8cd199379b9f86')
+options=(!lto)
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	cargo build --locked --release --color auto --target-dir target
+    cd "${pkgname}-${pkgver}"
+    cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	cargo test --locked --release --color auto --target-dir target
+    cd "${pkgname}-${pkgver}"
+    cargo test --frozen --all-features
 }
 
 package() {
