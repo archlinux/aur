@@ -93,6 +93,7 @@ Module: sqlalchemy
     open_webui/migrations/versions/7e5b5dc7342b_init.py
     open_webui/migrations/versions/922e7a387820_add_group_table.py
     open_webui/migrations/versions/9f0c9cd09105_add_note_table.py
+    open_webui/migrations/versions/a5c220713937_add_reply_to_id_column_to_message.py
     open_webui/migrations/versions/af906e964978_add_feedback_table.py
     open_webui/migrations/versions/c0fbf31ca0db_update_file_table.py
     open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
@@ -386,6 +387,7 @@ Module: open_webui.models.users
     open_webui/models/auths.py
     open_webui/models/functions.py
     open_webui/models/knowledge.py
+    open_webui/models/messages.py
     open_webui/models/models.py
     open_webui/models/notes.py
     open_webui/models/prompts.py
@@ -437,6 +439,7 @@ Module: open_webui.config
     open_webui/retrieval/vector/dbs/chroma.py
     open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/milvus_multitenancy.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/oracle23ai.py
     open_webui/retrieval/vector/dbs/pgvector.py
@@ -507,6 +510,7 @@ Module: open_webui.env
     open_webui/retrieval/utils.py
     open_webui/retrieval/vector/dbs/chroma.py
     open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/milvus_multitenancy.py
     open_webui/retrieval/vector/dbs/oracle23ai.py
     open_webui/retrieval/vector/dbs/pgvector.py
     open_webui/retrieval/vector/dbs/pinecone.py
@@ -827,6 +831,7 @@ Module: alembic
     open_webui/migrations/versions/7e5b5dc7342b_init.py
     open_webui/migrations/versions/922e7a387820_add_group_table.py
     open_webui/migrations/versions/9f0c9cd09105_add_note_table.py
+    open_webui/migrations/versions/a5c220713937_add_reply_to_id_column_to_message.py
     open_webui/migrations/versions/af906e964978_add_feedback_table.py
     open_webui/migrations/versions/c0fbf31ca0db_update_file_table.py
     open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
@@ -1513,6 +1518,16 @@ Module: open_webui.retrieval.web.firecrawl
 Module: open_webui.retrieval.web.external
   Imported in:
     open_webui/routers/retrieval.py
+Module: open_webui.retrieval.vector.utils
+  Imported in:
+    open_webui/retrieval/vector/dbs/chroma.py
+    open_webui/retrieval/vector/dbs/elasticsearch.py
+    open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/opensearch.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/retrieval/vector/dbs/pinecone.py
+    open_webui/retrieval/vector/dbs/s3vector.py
+    open_webui/routers/retrieval.py
 Module: sentence_transformers
   Imported in:
     open_webui/retrieval/utils.py
@@ -1568,6 +1583,7 @@ Module: open_webui.retrieval.vector.main
     open_webui/retrieval/vector/dbs/chroma.py
     open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/milvus_multitenancy.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/oracle23ai.py
     open_webui/retrieval/vector/dbs/pgvector.py
@@ -1583,9 +1599,6 @@ Module: langchain_core.retrievers
   Imported in:
     open_webui/retrieval/utils.py
 Module: open_webui.retrieval.vector.type
-  Imported in:
-    open_webui/retrieval/vector/factory.py
-Module: open_webui.retrieval.vector.dbs.milvus
   Imported in:
     open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.pinecone
@@ -1609,6 +1622,12 @@ Module: open_webui.retrieval.vector.dbs.chroma
 Module: open_webui.retrieval.vector.dbs.oracle23ai
   Imported in:
     open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.milvus_multitenancy
+  Imported in:
+    open_webui/retrieval/vector/factory.py
+Module: open_webui.retrieval.vector.dbs.milvus
+  Imported in:
+    open_webui/retrieval/vector/factory.py
 Module: open_webui.retrieval.vector.dbs.qdrant_multitenancy
   Imported in:
     open_webui/retrieval/vector/factory.py
@@ -1618,15 +1637,6 @@ Module: open_webui.retrieval.vector.dbs.qdrant
 Module: chromadb.utils.batch_utils
   Imported in:
     open_webui/retrieval/vector/dbs/chroma.py
-Module: open_webui.retrieval.vector.utils
-  Imported in:
-    open_webui/retrieval/vector/dbs/chroma.py
-    open_webui/retrieval/vector/dbs/elasticsearch.py
-    open_webui/retrieval/vector/dbs/milvus.py
-    open_webui/retrieval/vector/dbs/opensearch.py
-    open_webui/retrieval/vector/dbs/pgvector.py
-    open_webui/retrieval/vector/dbs/pinecone.py
-    open_webui/retrieval/vector/dbs/s3vector.py
 Module: opensearchpy
   Imported in:
     open_webui/retrieval/vector/dbs/opensearch.py
@@ -1648,6 +1658,7 @@ Module: sqlalchemy.exc
 Module: pymilvus
   Imported in:
     open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/milvus_multitenancy.py
 Module: pinecone
   Imported in:
     open_webui/retrieval/vector/dbs/pinecone.py
