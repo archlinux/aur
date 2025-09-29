@@ -2,7 +2,7 @@
 
 pkgname=bifrost
 pkgauthor=maximhq
-pkgver=1.2.21
+pkgver=1.2.22
 pkgrel=1
 
 _npmname=bifrost
