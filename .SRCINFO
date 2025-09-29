@@ -1,7 +1,7 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://penpot.app
 	arch = x86_64
 	license = MPL-2.0
@@ -15,6 +15,7 @@ pkgbase = penpot
 	makedepends = rustup
 	makedepends = emscripten
 	makedepends = emsdk
+	makedepends = jq
 	noextract = penpot-2.10.0.tgz
 	source = https://github.com/penpot/penpot/archive/refs/tags/2.10.0.tar.gz
 	source = sysusers.conf
