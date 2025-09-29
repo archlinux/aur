@@ -12,7 +12,7 @@ url="https://github.com/vikdevelop/photopea_app"
 license=("MIT")
 
 depends=("electron")
-makedepends=("npm")
+makedepends=("npm" "desktop-file-utils")
 provides=("$_pkgname" "photopea")
 conflicts=("$_pkgname")
 
@@ -31,9 +31,10 @@ build(){
 	npm install --omit=dev
 	rmdir node_modules/* --ignore-fail-on-non-empty
 	rm src/preload.js
-	sed -i "s/Exec=photopea.sh/Exec=${_pkgname}/g" \
-		com.github.vikdevelop.photopea_app.desktop
-	sed -i "s/Icon=com.github.vikdevelop.photopea_app/Icon=${_pkgname}/g" \
+	desktop-file-edit \
+	    --set-key=Exec \
+		--set-value="${_pkgname}" \
+		--set-icon="${_pkgname}" \
 		com.github.vikdevelop.photopea_app.desktop
 }
 
