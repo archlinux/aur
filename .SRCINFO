@@ -1,7 +1,7 @@
 pkgbase = mxl-git
 	pkgdesc = Dynamic Media Facility: Media Exchange Layer
 	pkgver = 0.7.4_d4eab41
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dmf-mxl/mxl
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = mxl-git
 	makedepends = picojson-git
 	makedepends = stduuid
 	makedepends = pcapplusplus
+	makedepends = cli11
 	depends = util-linux-libs
 	depends = spdlog
 	depends = fmt
