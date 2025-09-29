@@ -8,23 +8,24 @@ pkgname=(
     xuantie-900-llvm-${_platform_linux_ver1}-glibc-bin
     xuantie-900-llvm-manual
 )
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 arch=('x86_64')
-url=https://www.xrvm.cn/community/download?id=4453625117213265920
+url=https://www.xrvm.cn/community/download?id=4460157247602888704
 license=('unknown')
 _dwurl=https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/
+_date=20250701
 source=(
-    "xuantie-900-llvm-elf-newlib-bin-${pkgver}.tar.gz::${_dwurl}/1749717040975/Xuantie-900-llvm-elf-newlib-${arch}-V${pkgver}-20250522.tar.gz"
-    "xuantie-900-llvm-${_platform_linux_ver1}-glibc-bin-${pkgver}.tar.gz::${_dwurl}/1749717539068/Xuantie-900-llvm-${_platform_linux_ver1}-glibc-${arch}-V${pkgver}-20250522.tar.gz"
+    "xuantie-900-llvm-elf-newlib-bin-${pkgver}.tar.gz::${_dwurl}/1751457673900/Xuantie-900-llvm-elf-newlib-${arch}-V${pkgver}-${_date}.tar.gz"
+    "xuantie-900-llvm-${_platform_linux_ver1}-glibc-bin-${pkgver}.tar.gz::${_dwurl}/1756172541396/Xuantie-900-llvm-${_platform_linux_ver1}-glibc-${arch}-V${pkgver}-${_date}.tar.gz"
     # Documentation
-    "ReleaseNote ${pkgver}.pdf::${_dwurl}/1749715591203/ReleaseNote.pdf"
-    "XuanTieCustomExtensionV0.9.0 ${pkgver}.pdf::${_dwurl}/1750149606783/XuanTieCustomExtensionV0.9.0.pdf"
+    "ReleaseNote ${pkgver}.pdf::${_dwurl}/1751457406048/ReleaseNote.pdf"
+    "XuanTieCustomExtensionV0.9.0 ${pkgver}.pdf::${_dwurl}/1756437113530/XuanTieCustomExtensionV0.9.0.pdf"
 )
 
-sha256sums=('fd816ec367cf70c35338c47cf071bf8a5d1467bdf2e1d21aa736b209ef4cff4e'
-            'ddbb415d91518ec6480b1bf75db0f427ba72a5d0a69db68453f6470576c0ea34'
-            '7ca9d4d042acff682e660bfe9440e5610c21df7621273eeb1a38c185da630eb4'
+sha256sums=('9e4255b334d97d1b84a0e6748b2cb8068414bb08ff52aac6c020f2cfcf4bfa1c'
+            '38a23cbe3b738c7021a2be4046e76a3a37b97d961e9719275ed90ea78d931ec2'
+            '2cd9320008bf3e169236fb9bbefccfeb09a6b55ecad6dc788f71b6bd3e955ea5'
             '6814ddaf4c7e016dc7fe5b228bc2299b99a04425ee1d3970060c51f4b9fe3400')
 
 noextract=(
