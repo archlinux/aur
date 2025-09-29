@@ -13,13 +13,13 @@ _dtepc=2.13.1
 _dtplay=4.19.1
 _dtrecord=4.16.1
 _dtinfocl=1.7.1
-_sdk=2025.04.0
+_sdk=2025.09.0
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
         "https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-${_dtepc}.zip"
         "https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v${_dtinfocl}.zip"
         "https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v${_dtplay}.zip"
         "https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip")
-sha256sums=('37fe7622b6b609adda95f21c4eed6fca6e25cb156e34cace71191b35749ded94'
+sha256sums=('5617767108c5782b0485f1d3f5e0d94ea5fcdb4a6c66fd62525188c0e401f173'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
             'df45c1330fc76f08576c6f8af4bad2c0a2ab872d3c325a356ac0eaf446c06d93'
             '0d53c9122e879fe6ca18d242fb22f6e06f3778f5144f8a5fd14064295d32ed76'
