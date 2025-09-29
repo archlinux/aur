@@ -1,7 +1,7 @@
 pkgbase = omnom-git
-	pkgdesc = A web content preservation service (development version)
+	pkgdesc = A webpage bookmarking and snapshotting service (development version)
 	pkgver = 0.7.0.r1.gbdf5308
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciimoo/omnom
 	arch = aarch64
 	arch = x86_64

@@ -5,8 +5,8 @@
 _pkgname='omnom'
 pkgname="$_pkgname-git"
 pkgver=0.7.0.r1.gbdf5308
-pkgrel=1
-pkgdesc='A web content preservation service (development version)'
+pkgrel=2
+pkgdesc='A webpage bookmarking and snapshotting service (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/asciimoo/omnom'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -33,7 +33,7 @@ prepare() {
   mkdir -p build
   go mod tidy
 
-  sed -i "s/Version: \"v0.2.0\"/Version: \"v$_ver\"/g" cmd/cmd.go
+  sed -i "s/Version: \"v0.2.0\"/Version: \"$_ver\"/g" cmd/cmd.go
 }
 
 build() {
