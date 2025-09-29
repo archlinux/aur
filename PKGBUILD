@@ -2,7 +2,7 @@
 _base=tcx2gpx
 pkgname=python-${_base}
 pkgdesc="Converts the Garmin tcx GPS file format to the more commonly used gpx file format"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=(any)
 url="https://gitlab.com/nshephard/${_base}"
@@ -11,7 +11,7 @@ depends=(python-gpxpy python-tcxparser python-tqdm)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest-cov)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('82632e6088aca2f7acd45361bd8d561f212d17b9773f2c893afa469d2d8a57ac920aad93f78d185b8f2f03bc523b6ac340f8b15597aff877439cad8d0b1a1842')
+sha512sums=('32930f1ad6561debb035fb4ad27214503e915923c34533d906b82f8fbcf74a785f83575481911154c6894542d7eec0862e990b3fb4ca059eb517a99bc520e473')
 
 build() {
   cd ${_base}-${pkgver}
