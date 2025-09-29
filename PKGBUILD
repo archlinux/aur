@@ -36,7 +36,7 @@ package() {
     install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
 
     #install restoring script
-    install -Dm755 suscheck-uninstall.sh "$pkgdir/usr/local/bin/suscheck uninstall"
+    install -Dm755 suscheck-uninstall.sh "$pkgdir/usr/local/bin/suscheck-uninstall"
 
 
     # Install sus-check script

@@ -61,43 +61,83 @@ fi
 
 # --- 1. Check PKGBUILD for suspicious emails ---
 ALL_EMAILS=$(grep -ioE "[[:alnum:]._%+-]+@[[:alnum:].-]+" "$PKGBUILD" || true)
-SUSP_EMAILS=""
+SUSP_EMAILS=()
+
 for email in $ALL_EMAILS; do
-    for domain in "${BLOCKED_EMAIL_DOMAINS[@]}"; do
-        [[ "$email" == *"$domain" ]] && SUSP_EMAILS+="$email "
+    domain="${email##*@}"
+
+    # Match against blocked domains list
+    for blocked_domain in "${BLOCKED_EMAIL_DOMAINS[@]}"; do
+        if [[ "$domain" == *"$blocked_domain" ]]; then
+            SUSP_EMAILS+=("❌ $email (blocked domain: $blocked_domain)")
+        fi
+    done
+
+    # Match against modular JSON maintainers
+    for country in "${!COUNTRY_MAINTAINERS[@]}"; do
+        for maint in ${COUNTRY_MAINTAINERS[$country]}; do
+            if [[ "$email" == "$maint" ]]; then
+                reason="${COUNTRY_REASON[$country]}"
+                if [[ -n "$reason" ]]; then
+                    SUSP_EMAILS+=("❌ $email (denylisted maintainer — $country: $reason)")
+                else
+                    SUSP_EMAILS+=("❌ $email (denylisted maintainer — $country)")
+                fi
+            fi
+        done
     done
 done
 
-# --- 1b. Load modular country JSON structure (optional enhancement) ---
-MODULAR_INDEX="/usr/local/etc/suscheck-data/index.json"
-declare -A COUNTRY_CITIES COUNTRY_DOMAINS COUNTRY_MAINTAINERS COUNTRY_REASON
-
-if [[ -f "$MODULAR_INDEX" ]]; then
-    mapfile -t MODULE_FILES < <(jq -r '.modules[]' "$MODULAR_INDEX")
-    for mod in "${MODULE_FILES[@]}"; do
-        [[ ! -f "$mod" ]] && continue
-
-        country=$(jq -r '.country' "$mod")
-        COUNTRY_REASON[$country]=$(jq -r '.reason' "$mod")
-
-        mapfile -t cities < <(jq -r '.cities[]?' "$mod")
-        COUNTRY_CITIES[$country]="${cities[*]}"
-
-        mapfile -t domains < <(jq -r '.domains[]?' "$mod")
-        COUNTRY_DOMAINS[$country]="${domains[*]}"
-
-        mapfile -t maintainers < <(jq -r '.maintainers[]?' "$mod")
-        COUNTRY_MAINTAINERS[$country]="${maintainers[*]}"
-    done
-fi
-
-
 # --- 2. Check PKGBUILD for suspicious URLs ---
-SUSP_URLS=$(grep -ioE "https?://[[:alnum:]./-]+\.(ru|su|cn|by|kp)" "$PKGBUILD" || true)
+ALL_URLS=$(grep -ioE "https?://[[:alnum:]./-]+\.[a-z]{2,}" "$PKGBUILD" || true)
+SUSP_URLS=()
 
-# --- 3. Extract GitHub usernames from source URLs ---
-GITHUB_USERS=$(grep -ioE "https?://github.com/([A-Za-z0-9_-]+)" "$PKGBUILD" \
-    | sed -E 's|https?://github.com/||' | sed 's|/.*||')
+for url in $ALL_URLS; do
+    for domain in "${BLOCKED_EMAIL_DOMAINS[@]}"; do
+        if [[ "$url" == *"$domain"* ]]; then
+            SUSP_URLS+=("❌ $url (blocked domain: $domain)")
+        fi
+    done
+
+    for country in "${!COUNTRY_DOMAINS[@]}"; do
+        for cdom in ${COUNTRY_DOMAINS[$country]}; do
+            if [[ "$url" == *"$cdom"* ]]; then
+                reason="${COUNTRY_REASON[$country]}"
+                if [[ -n "$reason" ]]; then
+                    SUSP_URLS+=("❌ $url (linked to $country: $reason)")
+                else
+                    SUSP_URLS+=("❌ $url (linked to $country)")
+                fi
+            fi
+        done
+    done
+done
+
+# --- 3. Check GitHub usernames against denylist & locations ---
+declare -A WARNINGS
+for user in $GITHUB_USERS; do
+    # denylist
+    for blocked in "${DENYLIST[@]}"; do
+        if [[ "$user" == "$blocked" ]]; then
+            WARNINGS["user_$user"]="❌ GitHub user $user (denylisted)"
+        fi
+    done
+
+    # location check
+    LOCATION=$(curl -s "https://api.github.com/users/$user" | jq -r '.location // empty')
+    for country in "${!COUNTRY_CITIES[@]}"; do
+        for city in ${COUNTRY_CITIES[$country]}; do
+            if [[ "$LOCATION" == *"$city"* ]]; then
+                reason="${COUNTRY_REASON[$country]}"
+                if [[ -n "$reason" ]]; then
+                    WARNINGS["loc_$user"]="❌ GitHub user $user location: $LOCATION (blocked in $country: $reason)"
+                else
+                    WARNINGS["loc_$user"]="❌ GitHub user $user location: $LOCATION (blocked in $country)"
+                fi
+            fi
+        done
+    done
+done
 
 # --- 3b. Check modular country structure ---
 for country in "${!COUNTRY_DOMAINS[@]}"; do
