@@ -6,6 +6,7 @@ pkgbase = mxl-git
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	checkdepends = catch2
 	makedepends = picojson-git
 	makedepends = stduuid
 	makedepends = pcapplusplus
