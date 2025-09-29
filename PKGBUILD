@@ -7,7 +7,7 @@ _pkgname=calcesara
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
 pkgver=8.6.5
-pkgrel=7
+pkgrel=8
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
 arch=('x86_64')
 url='https://web.calce.umd.edu/software/releaseSARA'
@@ -18,11 +18,11 @@ depends=(
     'bash' # Runs launch script
     'sed' # Templating
     'coreutils' # tail and printf are used in launch script for keygen
-    'ttf-ms-win10-auto' # Required fonts
 )
 #optdepends=('xdg-utils: for launching HTML help files')
 optdepends=(
-    'winetricks: Installs fonts locally if missing'
+    'winetricks: Installs fonts locally if missing from system'
+    'ttf-ms-win10-auto: Required fonts installed at system-level'
     # TODO
     #'adobe-base-14-fonts: Helvetica and Times is widely used throught calceSARA.'
     #'ttf-dejavu: Mentioned in calceSARA license, so we can assume it's used somewhere.'
@@ -33,6 +33,9 @@ makedepends=(
 	'gendesk' # Generate desktop entries
     '7zip' # Unzip installer binary
 )
+# If you don't have this font, most text will just render as boxes.
+# Fonts that are missing from your system will be installed locally in the wine-bottle by winetricks if you have winetricks installed.
+# See optdepends for relevant packages
 _fonts=(
     'arial' # Most important one
 )
@@ -63,7 +66,7 @@ source=(
 )
 sha256sums=(
     826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
-    765e246a57c0eeb645f955f1b53f5b9c6be4b9ad1cabc9067d5d5767624e902d
+    d093d8b64245e7d7ca08271777c4940985601228444e15d592b18d9aebdbda6f
     3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
 )
 

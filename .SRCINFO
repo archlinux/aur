@@ -1,7 +1,7 @@
 pkgbase = calcesara
 	pkgdesc = Simulation Assisted Reliability Assessment (SARA) Software
 	pkgver = 8.6.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://web.calce.umd.edu/software/releaseSARA
 	arch = x86_64
 	license = LicenseRef-calceSARA
@@ -14,13 +14,13 @@ pkgbase = calcesara
 	depends = bash
 	depends = sed
 	depends = coreutils
-	depends = ttf-ms-win10-auto
-	optdepends = winetricks: Installs fonts locally if missing
+	optdepends = winetricks: Installs fonts locally if missing from system
+	optdepends = ttf-ms-win10-auto: Required fonts installed at system-level
 	source = calce.key.template
 	source = calcesara.sh.template
 	source = https://web.calce.umd.edu/software/releaseSARA/8.6.5/install_calceSARAv8.6.5.exe
 	sha256sums = 826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
-	sha256sums = 765e246a57c0eeb645f955f1b53f5b9c6be4b9ad1cabc9067d5d5767624e902d
+	sha256sums = d093d8b64245e7d7ca08271777c4940985601228444e15d592b18d9aebdbda6f
 	sha256sums = 3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
 
 pkgname = calcesara

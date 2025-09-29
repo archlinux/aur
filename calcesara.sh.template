@@ -225,6 +225,23 @@ export WINESERVER=${WINESERVER:-wineserver}
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 
 ###############################################################################################
+# Disable hardware accelleration
+###############################################################################################
+
+disable_wayland_hardware_acceleration() {
+    for script in "${exe_location}"/scripts/*; do
+        sed -i "s/ -Dsun\.java2d\.noddraw=true//g" "${script}"
+        if [[ \
+            "${XDG_SESSION_TYPE}" == "wayland" \
+            || "${WAYLAND_DISPLAY}" != "" \
+        ]]; then
+            sed -i "s/javaw\.exe/javaw\.exe -Dsun\.java2d\.noddraw=true/g" "${script}"
+            sed -i "s/java\.exe/java\.exe -Dsun\.java2d\.noddraw=true/g" "${script}"
+        fi
+    done
+}
+
+###############################################################################################
 # Keygen
 ###############################################################################################
 
@@ -343,6 +360,7 @@ install() {
 ###############################################################################################
 
 launch() {
+    disable_wayland_hardware_acceleration
     cd "${drive_c}"
     ${WINE} "${lnk_full}"
 }
