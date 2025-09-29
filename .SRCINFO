@@ -1,0 +1,20 @@
+pkgbase = krakenrf-gr-krakensdr-git
+	pkgdesc = GNU Radio block for KrakenRF Heimdall DAQ
+	pkgver = r22.ea3a015
+	pkgrel = 1
+	url = https://github.com/krakenrf/gr-krakensdr
+	arch = any
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = boost
+	makedepends = git
+	depends = glibc
+	depends = gnuradio
+	depends = boost-libs
+	depends = python
+	depends = python-numpy
+	provides = krakenrf-gr-krakensdr
+	source = git+https://github.com/krakenrf/gr-krakensdr.git
+	sha256sums = SKIP
+
+pkgname = krakenrf-gr-krakensdr-git
