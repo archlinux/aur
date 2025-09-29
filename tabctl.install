@@ -1,0 +1,35 @@
+post_install() {
+    echo "==> Setting up TabCtl native messaging..."
+    echo "==> Run 'tabctl install' to interactively configure browser native messaging"
+    echo "==> The install process will detect your browsers and let you select which to configure"
+    echo "==> "
+    echo "==> To use TabCtl, you need to load the browser extension:"
+    echo "==>   Chrome/Brave: Load unpacked from /usr/share/tabctl/extensions/chrome/"
+    echo "==>   Firefox: Load temporary from /usr/share/tabctl/extensions/firefox/"
+    echo "==> "
+    echo "==> The Chrome extension has a fixed ID for development builds"
+    echo "==> After loading the extension, restart the browser for native messaging to work"
+    echo "==> "
+    echo "==> Rofi integration scripts are available in /usr/share/tabctl/scripts/"
+    echo "==>   rofi-wmctrl.sh - For X11 with wmctrl"
+    echo "==>   rofi-hyprctl.sh - For Hyprland/Wayland"
+    echo "==> You can symlink them to your PATH or use them directly"
+}
+
+post_upgrade() {
+    echo "==> TabCtl has been upgraded"
+    echo "==> Run 'tabctl install' to update native messaging configuration"
+    echo "==> You may need to reload your browser extensions after the upgrade"
+    echo "==> The interactive installer will help you reconfigure browsers"
+}
+
+post_remove() {
+    echo "==> TabCtl has been removed"
+    echo "==> Native messaging configurations may still exist in:"
+    echo "==>   ~/.mozilla/native-messaging-hosts/tabctl_mediator.json"
+    echo "==>   ~/.config/google-chrome/NativeMessagingHosts/tabctl_mediator.json"
+    echo "==>   ~/.config/chromium/NativeMessagingHosts/tabctl_mediator.json"
+    echo "==>   ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts/tabctl_mediator.json"
+    echo "==>   ~/.zen/native-messaging-hosts/tabctl_mediator.json"
+    echo "==> You may want to remove these files manually if no longer needed"
+}
