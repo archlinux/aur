@@ -1,7 +1,7 @@
 pkgbase = ninjarmm-ncplayer-bin
 	pkgdesc = Fast, reliable, single-click remote access. Manage and control Windows, Mac, and Linux endpoints with one click from the NinjaOne console.
 	pkgver = 6.35.7510
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ninjaone.com
 	arch = x86_64
 	arch = aarch64
