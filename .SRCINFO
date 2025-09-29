@@ -1,0 +1,17 @@
+pkgbase = blackbeard-gtk-themes
+	pkgdesc = Blackbeard dark and light GTK themes for Arch Linux (GTK 2/3/4)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.cvusmo.dev/cvusmo/blackbeard-theme
+	arch = any
+	license = custom:0BSD
+	makedepends = git
+	depends = gtk2
+	depends = gtk3
+	depends = gtk4
+	source = git+https://git.cvusmo.dev/cvusmo/blackbeard-theme.git#tag=v1.0
+	source = LICENSE
+	sha256sums = e40e08f5afc02640523b33a1c3f3b614ae4bcaf5fd279993f943adfa9941ba45
+	sha256sums = c5ac3815e09cd53dfc33d4d05b7c8eb7f735aae5dde53d056f05fc17d4efbb67
+
+pkgname = blackbeard-gtk-themes
