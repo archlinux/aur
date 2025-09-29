@@ -3,7 +3,7 @@
 pkgname=pfufs
 pkgver=2.8.1
 pkgvernodots=${pkgver//./}
-pkgrel=1
+pkgrel=2
 pkgdesc='Fujitsu fi series Image Scanner Driver for SANE'
 url='https://www.pfu.ricoh.com/global/scanners/fi/dl/ubuntu-fi-7x60.html'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/pfu
         pfufsscanbutton.service
         simple-scan.conf)
 sha256sums=('92f9edf8e0148dd351faef7858b1e4bc1e2b7f90d18fcc4b6b03a3ca4c4bdcba'
-            'ed149f5100391daff2ff02b4bc173e7e112e789ecddffa1577f6c770e7c403d5'
+            '5202321fd8e2a7cb4d1521fce2c0213a22a8e3cd587c0bf61a55d77c3120be77'
             '618b169c5b3586d7b473ac51171660934a662d3848c881019067477c680b518b'
             '0b5aba6f2ec085a941dbcd7228e09f5038305ce4ca5a792d8d419353ee90d1fb'
             '36890d01da19034cfd7f0e8aa40672693cc2b8db2902c6e3755628ee36dd0e61'
