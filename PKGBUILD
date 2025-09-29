@@ -7,6 +7,7 @@ pkgdesc="Subscribe to updates from people you follow, from any platform to any p
 arch=('x86_64' 'aarch64')
 url="https://github.com/SpriteOvO/${pkgname}"
 license=('AGPL-3.0-only')
+depends=('openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bcf1e1b94c61401edad024dc70cfcc2b62c1f014e2617a1891a03351bde55fd4')

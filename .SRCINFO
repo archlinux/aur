@@ -7,6 +7,7 @@ pkgbase = closely
 	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = cargo
+	depends = openssl
 	source = closely-0.1.23.tar.gz::https://github.com/SpriteOvO/closely/archive/refs/tags/v0.1.23.tar.gz
 	sha256sums = bcf1e1b94c61401edad024dc70cfcc2b62c1f014e2617a1891a03351bde55fd4
 
