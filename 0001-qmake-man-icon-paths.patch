@@ -1,0 +1,26 @@
+diff '--color=auto' -ura subtitles_contact_sheet_qt.orig/SCSGUI/SCSGUI.pro subtitles_contact_sheet_qt.new/SCSGUI/SCSGUI.pro
+--- subtitles_contact_sheet_qt.orig/SCSGUI/SCSGUI.pro	2025-09-29 10:37:53.037818691 +0200
++++ subtitles_contact_sheet_qt.new/SCSGUI/SCSGUI.pro	2025-09-29 10:40:29.169316550 +0200
+@@ -140,8 +140,8 @@
+ 
+ unix:!android:!macx{
+ 	!defined(USR_DIR, var) { USR_DIR = /usr/local }
+-	!defined(ICONS_DIR) { ICONS_DIR = /share/icons }
+-	!defined(DESKTOP_DIR) { DESKTOP_DIR = /share/applications }
++	!defined(ICONS_DIR, var) { ICONS_DIR = /share/icons }
++	!defined(DESKTOP_DIR, var) { DESKTOP_DIR = /share/applications }
+ 	BIN_DIR = $$USR_DIR/bin
+ 
+ 	target.path = $$BIN_DIR
+diff '--color=auto' -ura subtitles_contact_sheet_qt.orig/subtitles_contact_sheet.pro subtitles_contact_sheet_qt.new/subtitles_contact_sheet.pro
+--- subtitles_contact_sheet_qt.orig/subtitles_contact_sheet.pro	2025-09-29 10:37:53.062705165 +0200
++++ subtitles_contact_sheet_qt.new/subtitles_contact_sheet.pro	2025-09-29 10:38:43.507780979 +0200
+@@ -75,7 +75,7 @@
+ 
+ unix:!android{
+ 	!defined(USR_DIR, var) { USR_DIR = /usr/local }
+-	!defined(MAN_DIR) { MAN_DIR = /man/man1 }
++	!defined(MAN_DIR, var) { MAN_DIR = /man/man1 }
+ 	BIN_DIR = $$USR_DIR/bin
+ 	target.path = $$BIN_DIR
+ 	INSTALLS += target
