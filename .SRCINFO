@@ -1,0 +1,17 @@
+pkgbase = omnom-git
+	pkgdesc = A web content preservation service (development version)
+	pkgver = 0.7.0.r1.gbdf5308
+	pkgrel = 1
+	url = https://github.com/asciimoo/omnom
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = omnom
+	conflicts = omnom
+	source = git+https://github.com/asciimoo/omnom.git
+	sha256sums = SKIP
+
+pkgname = omnom-git
