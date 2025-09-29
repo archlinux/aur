@@ -2,27 +2,29 @@
 
 pkgname=custota-tool
 _srcname=Custota
-pkgver=5.15
-pkgrel=1
+pkgver=5.16
+pkgrel=2
 pkgdesc="Android A/B OTA updater app for custom OTA servers"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/chenxiaolong/${_srcname}"
 license=('GPL-3.0-or-later')
-makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('15f5ab785a87839f266a4fe630f1cf507e6d848b311d3a9bdb3f6710504d91ff')
+makedepends=('git' 'cargo')
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('8e2997e5fd79c0c92f018df5b3d5d739f61b3dd517737a867e00bc9251e1c0d0')
 
 prepare() {
-	cd "${_srcname}-${pkgver}/${pkgname}/"
+	cd "${_srcname}/${pkgname}/"
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "${_srcname}-${pkgver}/${pkgname}/"
-	cargo build --frozen --release --all-features
+	cd "${_srcname}/${pkgname}/"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects" cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "${_srcname}-${pkgver}/${pkgname}/"
-	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm755 "${_srcname}/${pkgname}/target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
 }
