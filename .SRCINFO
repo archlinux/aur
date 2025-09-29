@@ -1,0 +1,16 @@
+pkgbase = mdserve
+	pkgdesc = Fast markdown preview server with live reload and theme support.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jfernandez/mdserve
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = mdserve-0.3.0.tar.gz::https://github.com/jfernandez/mdserve/archive/v0.3.0.tar.gz
+	b2sums = ac19506b502f5c3f33c0e6c59a79a8442be03561637fd4acfea3aab1630331b6858b2f1f88703ace5a4fa370de901b1d726556855647c6788af39fb338c2942d
+
+pkgname = mdserve
