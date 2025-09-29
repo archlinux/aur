@@ -1,4 +1,5 @@
 # Maintainer: George Hu <integral@archlinux.org>
+# Cotribuilter: nlsdt <githubaccount2333@proton.me>
 
 pkgname=piliplus
 _srcname=PiliPlus
@@ -10,6 +11,7 @@ license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('gtk3' 'mpv' 'libayatana-appindicator')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
+conflicts=('piliplus')
 source=("git+${url}.git#tag=${pkgver}"
 	"${pkgname}.desktop")
 sha256sums=('3ad9b04e589f9845e8f76992662dd0ee66c876d04e63957a010c35fe1e79927a'
