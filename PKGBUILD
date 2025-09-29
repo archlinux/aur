@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=correlation
-_pkgver=0.8.7
+_pkgver=0.8.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('135d3d6b06547bcefd03ce61b8753f2e')
-b2sums=('7fdd57c3f2a33e1f40cae99e39bfd876e067806abd30b792c932f9b0e258d1bf22525df7f87eb27afb7ec87e0a0d0a624eafbb4d5f004bd1ca9758414dcdb2a7')
+md5sums=('5e0b8cbdffa45d1a9da82f72ba2a7e82')
+b2sums=('a6e92148872d65556b94d32be53649910c873ecd1c0de3b1aec73a88123f019fff08f18988e63dbe35ecf2ad18050913f9eb9a5a58004f467165d90cc9b5589e')
 
 build() {
   mkdir build
