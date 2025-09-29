@@ -1,5 +1,5 @@
 # Maintainer: George Hu <integral@archlinux.org>
-# Cotribuilter: nlsdt <githubaccount2333@proton.me>
+# Contributor: nlsdt <githubaccount2333@proton.me>
 
 pkgname=piliplus
 _srcname=PiliPlus
