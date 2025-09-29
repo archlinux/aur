@@ -1,0 +1,17 @@
+pkgbase = batticonplus-ayatana
+	pkgdesc = Lightweight battery icon for the system tray and notifier, wayland version (based on cbatticon)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/artist4xlibre
+	arch = x86_64
+	license = GPL2
+	makedepends = libayatana-appindicator
+	depends = libnotify
+	depends = gtk3
+	conflicts = batticonplus
+	conflicts = cbatticon
+	source = batticonplus-v2.0.0.tar.gz::https://github.com/artist4xlibre/batticonplus/archive/refs/tags/v2.0.0.tar.gz
+	validpgpkeys = 4CF0F66D9CEF47105E22DD0F73580DE2EDDFA6D6
+	sha256sums = a1b9e0e72c6c2640bbfadea1ac6fa47351d35a5b9149a7f2dd97e64efc3ed227
+
+pkgname = batticonplus-ayatana
