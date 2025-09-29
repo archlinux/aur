@@ -1,6 +1,6 @@
 pkgbase = tema-git
-	pkgdesc = A GTK4/Adwaita Omarchy theming application with pywal integration
-	pkgver = 1.0.0.r19.g72a2e15
+	pkgdesc = GTK4/Adwaita Omarchy theming application with pywal integration
+	pkgver = 1.0.0.r46.gebaa697
 	pkgrel = 1
 	url = https://github.com/bjarneo/tema
 	install = tema.install
@@ -14,11 +14,11 @@ pkgbase = tema-git
 	depends = libadwaita>=1.0
 	depends = gdk-pixbuf2
 	depends = python-pywal
-	optdepends = omarchy: Theme integration support
-	optdepends = imagemagick: Enhanced thumbnail generation
+	optdepends = omarchy: theme integration support
+	optdepends = imagemagick: enhanced thumbnail generation
 	provides = tema
 	conflicts = tema
-	source = git+ssh://git@github.com/bjarneo/tema.git
+	source = git+https://github.com/bjarneo/tema.git
 	sha256sums = SKIP
 
 pkgname = tema-git
