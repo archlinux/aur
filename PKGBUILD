@@ -1,5 +1,26 @@
 # Maintainer: sigurd4 <sigurd dot spangelo at gmail dot com>
-# Author: M. Osterman
+# Authors: Prof. Michael Pecht, Dr. Michael Osterman
+# Contributors: Prof. Abhijit Dasgutpa, Prof. Donald Barker, David Eisner
+#
+# ##############################################################################################
+#
+# Thank you for your interest in the calceSARA Software.
+#
+# Copyright:
+# Copyright (c) 1987,2020 CALCE and the University of Maryland
+# All Rights Reserved
+# 
+# License:
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# 
+#The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+# Liability:
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# Contact:
+# 
+# CALCE, University of Maryland, College Park, MD 20742
+# calce-software@umd.edu
 
 # Package name without suffix (-git, -bin, -whatever)
 _pkgname=calcesara
@@ -7,7 +28,7 @@ _pkgname=calcesara
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
 pkgver=8.6.5
-pkgrel=8
+pkgrel=9
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
 arch=('x86_64')
 url='https://web.calce.umd.edu/software/releaseSARA'
