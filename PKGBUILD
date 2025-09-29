@@ -5,8 +5,9 @@ pkgdesc="A tile server able to generate and serve vector tiles on the fly"
 url="https://maplibre.org/martin/"
 _git_organisation=maplibre
 
-pkgver=0.18.1
+pkgver=0.19.2
 pkgrel=1
+_tag="martin-v${pkgver}"
 
 arch=("x86_64" "i686")
 license=("Apache-2.0 OR MIT")
@@ -24,15 +25,15 @@ options=("!lto")
 backup=("etc/${pkgname}/config.yaml")
 
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/${_git_organisation}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}-${pkgver}-LICENSE-APACHE::https://github.com/${_git_organisation}/${pkgname}/raw/refs/tags/v${pkgver}/LICENSE-APACHE"
-    "${pkgname}-${pkgver}-LICENSE-MIT::https://github.com/${_git_organisation}/${pkgname}/raw/refs/tags/v${pkgver}/LICENSE-MIT"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/${_git_organisation}/${pkgname}/archive/refs/tags/${_tag}.tar.gz"
+    "${pkgname}-${pkgver}-LICENSE-APACHE::https://github.com/${_git_organisation}/${pkgname}/raw/refs/tags/${_tag}/LICENSE-APACHE"
+    "${pkgname}-${pkgver}-LICENSE-MIT::https://github.com/${_git_organisation}/${pkgname}/raw/refs/tags/${_tag}/LICENSE-MIT"
     "${pkgname}.service"
     "${pkgname}.sysusers.d"
     "${pkgname}-config.yaml"
 )
 b2sums=(
-    "457e1dee8a0a48836ea05ac2f5e3208ca1513e7c4fcc957d9c88dfbce4ff37003a5f288f8743aa98ed0dbec4a88be4f5b40a229457038f9598ca5c1030b37177"
+    "c7b4da8c3fc37a1efd1528ea25f9893d5eaebf38b6f1ec1cde93964ced3b40f0feab0800585ad29a3d23ae49751e5fe7d338052a3035a72c2e2c1ca070c8be78"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
@@ -41,20 +42,21 @@ b2sums=(
 )
 
 prepare() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
+    cd "${srcdir}"/${pkgname}-${_tag}
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
+    cd "${srcdir}"/${pkgname}-${_tag}
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CFLAGS=
     cargo build --frozen --release --all-features
 }
 
 package() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
+    cd "${srcdir}"/${pkgname}-${_tag}
     install -Dm 0755 \
         "target/release/martin" \
         "${pkgdir}/usr/bin/martin"
