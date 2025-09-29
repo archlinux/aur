@@ -6,11 +6,12 @@ pkgbase = photocrea
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = desktop-file-utils
 	depends = electron
 	provides = photocrea
 	provides = photopea
 	conflicts = photocrea
-	source = photocrea::git+https://github.com/vikdevelop/photopea_app#commit=230d3b11bd397d13cf330733e8574f696fdbd1bf
+	source = photocrea::git+https://github.com/vikdevelop/photopea_app#tag=2.3.8
 	source = photocrea.sh
 	sha256sums = b4191b1769baab51bd91f5f8c2f6f72ad6c7c8c6fe30c7cd005447aeba5b6001
 	sha256sums = e99f64521f48c030b31e36f2216d018c6032500cc37a7598f153620072ad20c1

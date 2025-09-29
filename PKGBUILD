@@ -17,7 +17,7 @@ provides=("$_pkgname" "photopea")
 conflicts=("$_pkgname")
 
 source=(
-	"${_pkgname}::git+${url}#commit=230d3b11bd397d13cf330733e8574f696fdbd1bf" # tag 2.3.8
+	"${_pkgname}::git+${url}#tag=${pkgver}" # tag 2.3.8
 	"${_pkgname}.sh"
 	)
 sha256sums=(
