@@ -59,8 +59,8 @@ build() {
   cd "${srcdir}/xrizer"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features --target x86_64-unknown-linux-gnu
-  cargo build --frozen --release --all-features --target i686-unknown-linux-gnu
+  cargo build --frozen --release --target x86_64-unknown-linux-gnu
+  cargo build --frozen --release --target i686-unknown-linux-gnu
 }
 
 package_xrizer-common-git() {
