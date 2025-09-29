@@ -1,17 +1,18 @@
 pkgbase = masscode
 	pkgdesc = A free and open source code snippets manager for developers
-	pkgver = 3.12.1
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/massCodeIO/massCode
 	arch = x86_64
 	license = AGPL-3.0
-	makedepends = squashfs-tools
-	depends = electron
-	source = https://github.com/massCodeIO/massCode/releases/download/v3.12.1/masscode_3.12.1_amd64.snap
-	source = masscode.png::https://raw.githubusercontent.com/massCodeIO/massCode/master/config/icons/256x256.png
+	depends = electron34
+	source = https://github.com/massCodeIO/massCode/releases/download/v4.0.1/massCode-4.0.1.AppImage
+	source = masscode.png::https://raw.githubusercontent.com/massCodeIO/massCode/master/build/icons/256x256.png
 	source = masscode.desktop
-	sha256sums = efef4d857d4bfff9318577306410789c5404f5c4c12b5206eb213b1a12519fdc
-	sha256sums = 6e54dbd534b364727ca2514e21a49742a939c454867f46da113bba2c3d2777ec
+	source = masscode.sh
+	sha256sums = 70cdc0a128957bd5ca52d89496dd96254cde8cfaf769297c1dc87b126f53b405
+	sha256sums = dc0d0519524662fde9e31acadf2ef4c3cf76729c59f8aca306bffe57779e9aa2
 	sha256sums = a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15
+	sha256sums = 74aad10be03239734f7096833bb5c91c1f0e3d6a9d92bbd38f1d418efcd58b70
 
 pkgname = masscode

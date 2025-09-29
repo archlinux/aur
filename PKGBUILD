@@ -1,37 +1,41 @@
 # Maintainer: Anton Reshetov
 
 pkgname=masscode
-pkgver=3.12.1
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers "
 arch=("x86_64")
 url="https://github.com/massCodeIO/massCode"
 license=("AGPL-3.0")
-depends=(electron)
-makedepends=(squashfs-tools)
-source=("https://github.com/massCodeIO/massCode/releases/download/v${pkgver}/masscode_${pkgver}_amd64.snap"
-"masscode.png::https://raw.githubusercontent.com/massCodeIO/massCode/master/config/icons/256x256.png"
+depends=(electron34)
+source=("https://github.com/massCodeIO/massCode/releases/download/v${pkgver}/massCode-${pkgver}.AppImage"
+"masscode.png::https://raw.githubusercontent.com/massCodeIO/massCode/master/build/icons/256x256.png"
     "masscode.desktop"
+    "masscode.sh"
 )
-sha256sums=('efef4d857d4bfff9318577306410789c5404f5c4c12b5206eb213b1a12519fdc'
-            '6e54dbd534b364727ca2514e21a49742a939c454867f46da113bba2c3d2777ec'
-            'a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15')
+sha256sums=('70cdc0a128957bd5ca52d89496dd96254cde8cfaf769297c1dc87b126f53b405'
+            'dc0d0519524662fde9e31acadf2ef4c3cf76729c59f8aca306bffe57779e9aa2'
+            'a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15'
+            '74aad10be03239734f7096833bb5c91c1f0e3d6a9d92bbd38f1d418efcd58b70')
 
 build() {
-    unsquashfs "masscode_${pkgver}_amd64.snap"
+    sed -i 's#__ROOT_DIR__#/usr/lib/masscode#g' masscode.sh
+    sed -i 's#__ELECTRON__#/usr/bin/electron34#g' masscode.sh
+    chmod +x ./massCode-${pkgver}.AppImage
+    ./massCode-${pkgver}.AppImage --appimage-extract
 }
 
 package() {
-    install -d "$pkgdir/opt/masscode"
+    install -d "$pkgdir/usr/lib/masscode/app"
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/icons"
     install -d "$pkgdir/usr/share/applications"
 
-    cp masscode.png "$pkgdir/usr/share/icons"
-    echo "#!/bin/env bash
-NODE_ENV='' electron /opt/masscode/app.asar" >> "$pkgdir/usr/bin/masscode"
-    chmod +x "$pkgdir/usr/bin/masscode"
-    cp masscode.desktop "$pkgdir/usr/share/applications"
-    cd squashfs-root
-    cp resources/app.asar "$pkgdir/opt/masscode"
+    install -m755 masscode.sh "$pkgdir/usr/bin/masscode"
+    install -m644 masscode.png "$pkgdir/usr/share/icons/masscode.png"
+    install -m644 masscode.desktop "$pkgdir/usr/share/applications/masscode.desktop"
+
+    cd squashfs-root/resources
+    find . -type d -exec install -d "$pkgdir/usr/lib/masscode/app/{}" \;
+    find . -type f -exec install -m644 "{}" "$pkgdir/usr/lib/masscode/app/{}" \;
 }
