@@ -2,7 +2,7 @@
 
 pkgbase=rime-wanxiang
 pkgname=(rime-wanxiang-dict rime-wanxiang-pro-dict rime-wanxiang-data rime-wanxiang-pro-data)
-pkgver=12.6.12
+pkgver=12.6.13
 pkgrel=1
 pkgdesc="万象拼音：词库基于AI筛选和语料辅助筛选精干高效，配合全新语法模型，输入不再纠结。"
 arch=(any)
@@ -11,26 +11,26 @@ license=('CC-BY-4.0')
 url="https://github.com/amzxyz/rime_wanxiang"
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         build.sh)
-b2sums=('79291151b30c7e238f6e0bef8c506e56e110cc728f9670213ca3abe2baf20e6b740b94ffb0a22d0cd306198594a08987a25be7ebf5b30517ed65774181d64538'
-        'ffbab0a401f81e8f520304ec8016dfb5188b84b5a948582409d25b890c75f65ad738379a01999f8315b9b73a58163f1c44feb09d51c25ef300a53bd55456395d')
+b2sums=('33511f2cc00afa12c62732441cb20bb37941f10063877125325b59c2c4d1f46f92aed27acf19ce9104a0c6074a02a4fbbfcfb42d0f5eb5015d9711d878ae9291'
+        '1d5971e2bc439a4e9675e88194c68eabbcba0434425c5f6d8cb6124f031e0380e7d95475acb240fba7267653a8c881073e165700fb4f9cf5e46b0ca6723b45ed')
 
-makedepends=("librime" "rime-prelude" "rime-essay" "sed" "python" "zip")
+makedepends=("librime" "rime-prelude" "rime-essay" "sed" "python" "zip" "rsync")
 
 # 拼写方案
 declare -A _schemas=(
-    [pinyin]="全拼"
-    [zrm]="自然码"
+    # 注释掉的为方案支持不完善
     [flypy]="小鹤双拼"
     [mspy]="微软双拼"
+    [zrm]="自然码"
     [sogou]="搜狗双拼"
     [abc]="智能ABC"
     [ziguang]="紫光双拼"
-    # 以下方案支持不完善
     # [pyjj]="拼音加加"
     # [gbpy]="国标双拼"
     # [lxsq]="乱序17"
-    # [hanxin]="汉心龙"
     # [zrlong]="自然龙"
+    # [hxlong]="汉心龙"
+    [pinyin]="全拼"
 )
 
 # 辅助码类型
