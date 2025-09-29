@@ -6,7 +6,7 @@
 pkgname=equicord
 _pkgname=Equicord
 pkgver=0.0.111.gb37041a5
-pkgrel=1
+pkgrel=2
 pkgdesc='The other cutest Discord client mod'
 arch=('x86_64')
 url='https://equicord.org/'
@@ -16,7 +16,7 @@ depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
 optdepends=('libpulse: PulseAudio support'
             'libappindicator-gtk3: Systray indicator support'
             'xdg-utils: For opening URLs and files')
-makedepends=('git' 'nvm' 'pnpm' 'wget')
+makedepends=('git' 'nvm' 'pnpm' 'wget' 'asar')
 source=(
     'equicord-source::git+https://github.com/Equicord/Equicord.git'
     'discord-pkgbuild::https://gitlab.archlinux.org/archlinux/packaging/packages/discord/-/raw/main/PKGBUILD'
@@ -80,12 +80,26 @@ build() {
         chmod 755 Discord
 
         rm postinst.sh
+
+        pushd resources
+            mv app.asar _app.asar
+            mkdir app
+
+            echo '{"name": "discord", "main": "index.js"}' > app/package.json
+            echo 'require("/usr/lib/equicord/dist/desktop.asar");' > app/index.js
+            asar pack app app.asar
+            rm -rf app
+        popd
     popd
     
     pushd equicord-source
         _ensure_local_nvm
         pnpm build
-        pnpm inject -location "../discord-$discord_ver"
+        cp -a dist "../discord-$discord_ver"
+
+        rm -rf "../discord-$discord_ver/dist/Installer"
+        rm -rf "../discord-$discord_ver/dist/equibop"
+        rm -f "../discord-$discord_ver/dist/equibop.asar"
     popd
 }
 
