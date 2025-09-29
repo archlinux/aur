@@ -6,7 +6,7 @@ pkgbase = lib32-libdvdcss
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = lib32-gcc-libs
-	makedepends = meson
+	makedepends = meson>=0.60
 	depends = libdvdcss>=1.5.0
 	depends = lib32-glibc
 	provides = libdvdcss.so

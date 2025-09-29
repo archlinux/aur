@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
   'lib32-gcc-libs'
-  'meson'
+  'meson>=0.60'
 )
 provides=(
   "${_name}.so"
