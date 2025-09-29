@@ -1,12 +1,17 @@
 pkgbase = projctl
-	pkgdesc = Helper to manage project context across a system
-	pkgver = 1.0.1
+	pkgdesc = Rust CLI to manage project context: switch, run, edit, git, logs, and tmux servers
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/nick-montgomery/projctl
 	arch = any
 	license = MIT
-	depends = bash
-	source = https://github.com/nick-montgomery/projctl/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 35f4bac75d2c5fc7b83c4f10d428cbcecb6cbd717d4cd8dca2c8cb714d3a133b
+	makedepends = cargo
+	optdepends = neovim: default editor for `projctl edit`
+	optdepends = lazygit: default Git UI for `projctl git`
+	optdepends = tmux: required for `projctl servers`
+	optdepends = lnav: nicer log viewer for `projctl logs`
+	optdepends = tail: fallback log viewer for `projctl logs`
+	source = https://github.com/nick-montgomery/projctl/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 286932e4495bf73b80ce298ee5fb38935f7c6bd04d6f9df2987a21d5e5b6647e
 
 pkgname = projctl
