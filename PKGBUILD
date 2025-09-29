@@ -7,17 +7,17 @@
 
 pkgname=proxmox-backup-client-bin
 pkgdesc="Client for Proxmox Backup Server (binary release from Debian)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://pbs.proxmox.com"
 license=('AGPL-3.0-or-later')
 depends=('acl>=2.2.23' 'fuse3>=3.2.3' 'openssl>=3.0.0' 'zstd>=1.5.2' 'gcc-libs>=15.1.1' 'glibc>=2.27')
 makedepends=('patchelf>=0.18.0')
 options=('!strip' '!emptydirs')
 
-pkgver=3.4.1_1
-pkgrel=3
-source_x86_64=("http://download.proxmox.com/debian/pbs-client/dists/bookworm/main/binary-amd64/proxmox-backup-client_3.4.1-1_amd64.deb")
-sha512sums_x86_64=('f575a399443c0cddd452fbe9b256857621d6bdf51758133a476cb20f907b18087f5b6d7e5f13907789c52dd2c51e3b55866ed52dcbc6ed3672957f3fd4bf9347')
+pkgver=3.4.6_1
+pkgrel=1
+source_x86_64=("http://download.proxmox.com/debian/pbs-client/dists/bookworm/main/binary-amd64/proxmox-backup-client_3.4.6-1_amd64.deb")
+sha512sums_x86_64=('5be9da65584915b79996713d81005ecc3b6477dea29e7338d308def9285ac2bef615e4e2a6a800523a838633bf32dfb08a8bc61818e932019c5360f7ef067b71')
 
 conflicts=('proxmox-backup-client')
 
