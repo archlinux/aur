@@ -2,7 +2,7 @@
 # Contributor: peelz <peelz.dev+arch@gmail.com>
 
 pkgname="xrizer-multilib-git"
-pkgver=0.3.r0.g6fb95b4
+pkgver=bb7e2e5
 pkgrel=1
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR. (32-bit support)"
 arch=("x86_64")
@@ -52,8 +52,8 @@ build() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo xbuild --frozen --release --all-features --target x86_64-unknown-linux-gnu
-  cargo xbuild --frozen --release --all-features --target i686-unknown-linux-gnu
+  cargo xbuild --frozen --release --target x86_64-unknown-linux-gnu
+  cargo xbuild --frozen --release --target i686-unknown-linux-gnu
 }
 
 package() {
