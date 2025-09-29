@@ -1,0 +1,11 @@
+pkgbase = vice-standalone
+	pkgdesc = Valve's tool for ICE encryption. Installs itself under /bin/vice. https://developer.valvesoftware.com/wiki/Using_Vice_without_Steam
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/foobarhl/vice_standalone
+	arch = x86_64
+	conflicts = vice
+	source = git+https://github.com/foobarhl/vice_standalone.git
+	sha256sums = SKIP
+
+pkgname = vice-standalone
