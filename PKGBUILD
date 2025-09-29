@@ -13,7 +13,7 @@ source=("suspcheck.sh" "suscheck.sh" "makepkg.wrapper.sh"
         "suspcheck-denylist.txt"
         "suspcheck-blocked-domains.txt"
          "index.json" "suscheck-data.tar.gz")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     # Ensure paru exists
