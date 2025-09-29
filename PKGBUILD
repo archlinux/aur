@@ -1,11 +1,13 @@
+# Maintainer: Guilherme leonsombrio244@gmail.com
+
 pkgname=clilog-git
 pkgver=0.2.r2.g2dd2244 
 pkgrel=1
-pkgdesc="CLI To-do list manager built 100% in Bash with TUI support, adhering to XDG Base Directory Specification."
+pkgdesc="CLI To-do list manager built in Bash with TUI and Python for Web interface support, adhering to XDG Base Directory Specification."
 url="https://github.com/simeulinuxkaliaiwr/clilog"
 license=('MIT')
 arch=('any')
-depends=('dialog')
+depends=('dialog' 'python' 'python-flask')  
 makedepends=('git')
 
 source=("${pkgname}::git+${url}" 
@@ -28,12 +30,13 @@ package() {
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
 
-    sed -i 's|/usr/local/lib/clilog|/usr/lib/clilog|g' "bin/clilog" "src/interactive.sh"
+    sed -i 's|/usr/local/lib/clilog|/usr/lib/clilog|g' "bin/clilog" "src/interactive.sh" "src/functions.sh"
 
     install -Dm755 "bin/clilog" "${pkgdir}/usr/bin/clilog"
     
     install -Dm644 "src/functions.sh" "${pkgdir}/usr/lib/clilog/functions.sh"
     install -Dm644 "src/interactive.sh" "${pkgdir}/usr/lib/clilog/interactive.sh"
+    install -Dm755 "src/clilog_web.py" "${pkgdir}/usr/lib/clilog/clilog_web.py"  # 👈 NOVO
     
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${srcdir}/mit.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
