@@ -18,7 +18,7 @@ conflicts=('mathematica')
 arch=('x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=(LicenseRef-WolframMathematicaLicenseAgreement) # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
-makedepends=('chrpath' 'curl' 'inetutils')
+makedepends=('curl' 'inetutils')
 depends=('openmp')
 optdepends=(
     'ttf-dejavu: correct fonts for Greek characters and inline TeX'
@@ -88,11 +88,9 @@ _source_url=$(
 source=(
     "Wolfram_${pkgver}_LIN.sh::${_source_url}"
     "remove-xdg-scripts.patch"
-    "insecure-runpath.list"
 )
 sha256sums=('178465e31cf7beca3e37ffd4cfb657be1e42accea7b0a310c6b451d75a3f68d0'
-            '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
-            '6ff9e4d980719886d1f1f0a8a55ad1559fc21d91ef5082130c80e9e77e7e37cf')
+            '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't find any source files here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
@@ -184,7 +182,6 @@ package() {
     install -D -m644 "${installdir}"/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     _fix_binary_symlinks # namcap rule: symlink
-    _fix_insecure_runpath # namcap rule: rpath, runpath
     _fix_permissions # namcap rule: permissions
 }
 
@@ -216,29 +213,6 @@ _fix_binary_symlinks() {
     ln -sf "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
     ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
     ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
-}
-
-_fix_insecure_runpath() {
-    msg2 'Fixing insecure RPATH and RUNPATH on ELF files'
-
-    while read -r elffile; do
-        if [[ ! -f "${installdir}/${elffile}" ]]; then
-            echo "Skipping file '${elffile}': not found"
-            continue
-        fi
-
-        # remove all RPATHs and RUNPATHs that aren't relative to $ORIGIN
-        # shellcheck disable=SC2312 # missing files are a non-issue
-        safe_runpath="$(chrpath -l "${installdir}/${elffile}" |\
-            sed -E 's/.*\bR(UN)?PATH=(.*)/\2/g' |\
-            tr ':' '\n' | grep -E "^\\\$ORIGIN" | paste -sd ':')"
-
-        if [[ -z "${safe_runpath}" ]]; then
-            chrpath -d "${installdir}/${elffile}"
-        else
-            chrpath -r "${safe_runpath}" "${installdir}/${elffile}"
-        fi
-    done < "${srcdir}/insecure-runpath.list"
 }
 
 _fix_permissions() {
