@@ -6,7 +6,7 @@ _name="$(echo "${_model}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')"
 pkgname="epson-inkjet-printer-${_name}"
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="Epson inkjet printer driver (PX-7000, PX-9000)"
+pkgdesc="Epson inkjet printer driver (PX-H7000, PX-H9000)"
 arch=(
   'i686'
   'x86_64'

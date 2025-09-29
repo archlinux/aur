@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-px-h7000-h9000-series
-	pkgdesc = Epson inkjet printer driver (PX-7000, PX-9000)
+	pkgdesc = Epson inkjet printer driver (PX-H7000, PX-H9000)
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://download.ebz.epson.net/man/linux/escp.html
