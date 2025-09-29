@@ -1,0 +1,14 @@
+*
+!.gitignore
+
+# Core files
+!PKGBUILD
+!.SRCINFO
+!environment.yml
+!heimdall.sh
+
+# Licensing
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml
