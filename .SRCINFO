@@ -1,7 +1,7 @@
 pkgbase = suscheck
 	pkgdesc = A script for makepkg/paru to warn about maintainers from countries you can find suspicious. This is not discriminating, but rather information giving tool,that allows to add to a list some domains or locations that you find suspicious for your reasons.
-	pkgver = 1.0.0.2
-	pkgrel = 1
+	pkgver = 1.0.0.1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = bash
