@@ -12,6 +12,8 @@ git show nav/master:install/PKGBUILD > PKGBUILD
 # Make the package
 docker compose run --rm makepkg
 
+git diff
+
 # Commit changes
 git add PKGBUILD .SRCINFO
 git commit -m "Update"
