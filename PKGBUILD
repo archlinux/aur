@@ -1,13 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=megacubo-bin
 _pkgname=Megacubo
-pkgver=17.5.5
-_electronversion=9
+pkgver=17.6.1
+_electronversion=35
 pkgrel=1
 pkgdesc="📺 A intuitive, multi-language and cross-platform IPTV player.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
-    'i686'
     'x86_64'
 )
 url="https://megacubo.tv/"
@@ -17,8 +16,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
-    'perl'
     'ffmpeg'
 )
 makedepends=(
@@ -30,22 +27,31 @@ options=(
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_ia32.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.tar.gz")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('31c652cef14df00dbce65af7ef3045d2a9cf6c700a395b6b3ff72f1e42fee892')
-sha256sums_i686=('680cdeffdc25d0d795ee94eb11d968ea1cde6b36c77af2d8d6d5515103d2fecd')
-sha256sums_x86_64=('55666922886a2f19e41cc2224d8fad77050683b424d1aa70494c63efdc2ec4d8')
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('cc96f89d4fbc4291c0d6675703433a51a541293a6dcf6c2dbce4948aac764c0e')
+sha256sums_x86_64=('ff681a9bf95a03a5540303267abf8bff8c92e450b2f46b9f14141427913ba6bc')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    _get_electron_version
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
     find "${srcdir}/resources/app" -type f -name "*.js" -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/resources/app/ffmpeg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
