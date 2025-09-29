@@ -1,6 +1,6 @@
 pkgbase = python-pyunormalize
 	pkgdesc = Unicode normalization forms (NFC, NFKC, NFD, NFKD). A library independent of the Python core Unicode database.
-	pkgver = 16.0.0
+	pkgver = 17.0.0
 	pkgrel = 1
 	url = https://github.com/mlodewijck/pyunormalize
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pyunormalize
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyunormalize/pyunormalize-16.0.0.tar.gz
-	sha512sums = 909156d3c6f3f0f82e90e3b991c619e5334083bc8d0c5b1e8e4851599a4ccb95d8822a3bf50997f97c5fe321336471f21c1ad69b61ba467c0ef398829b26978c
+	source = https://files.pythonhosted.org/packages/source/p/pyunormalize/pyunormalize-17.0.0.tar.gz
+	sha512sums = ba06f4b18e315a4d57060d695529b63148f87714fd0f30c702cc62058282ad6c9125b58e3f413da2bc06762778ed47f250e8ae11ab04a221aafd87bfad1b4054
 
 pkgname = python-pyunormalize
