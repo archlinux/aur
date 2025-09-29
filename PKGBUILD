@@ -7,8 +7,11 @@ pkgdesc="Rename multiple files with editor like to mmv-go"
 arch=(i686 x86_64)
 url='https://github.com/mcauley-penney/mmv-c'
 license=("MIT")
-depends=()
-makedepends=('gcc' 'make')
+makedepends=(
+  gcc
+  make
+  unity-test
+)
 conflicts=('mmv' 'mmv-go-git' 'mmv-go-bin-git' 'mmv-c')
 provides=('mmv')
 source=('git+https://github.com/mcauley-penney/mmv-c.git')

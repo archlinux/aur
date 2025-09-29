@@ -8,6 +8,7 @@ pkgbase = mmv-c-git
 	license = MIT
 	makedepends = gcc
 	makedepends = make
+	makedepends = unity-test
 	provides = mmv
 	conflicts = mmv
 	conflicts = mmv-go-git
