@@ -1,16 +1,16 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=pfufs
-pkgver=2.8.0
+pkgver=2.8.1
 pkgvernodots=${pkgver//./}
 pkgrel=1
 pkgdesc='Fujitsu fi series Image Scanner Driver for SANE'
-url='http://imagescanner.fujitsu.com/global/dl/'
+url='https://www.pfu.ricoh.com/global/scanners/fi/dl/ubuntu-fi-7x60.html'
 arch=('x86_64')
-license=('custom')
-depends=('sane')
+license=('LicenseRef-ImageScannerDriverEULA')
+depends=('sane' 'libxml2-legacy')
 source=("https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/pfufs-ubuntu_${pkgver}_amd64.deb"
-        pfufs.pdf::"http://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/P2U3-0200-07ENZ0.pdf"
+        pfufs.pdf::"https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/P2U3-0200-08ENZ0.pdf"
         60-pfufs.rules
 	consumablesettings.xml
         pfufs
@@ -18,7 +18,7 @@ source=("https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/pfu
         pfufs.ini
         pfufsscanbutton.service
         simple-scan.conf)
-sha256sums=('362bedbda8945ec6353de1ba11e29e1bc458f37aa26f7f80ff0545a4bcaae6d8'
+sha256sums=('92f9edf8e0148dd351faef7858b1e4bc1e2b7f90d18fcc4b6b03a3ca4c4bdcba'
             'ed149f5100391daff2ff02b4bc173e7e112e789ecddffa1577f6c770e7c403d5'
             '618b169c5b3586d7b473ac51171660934a662d3848c881019067477c680b518b'
             '0b5aba6f2ec085a941dbcd7228e09f5038305ce4ca5a792d8d419353ee90d1fb'
