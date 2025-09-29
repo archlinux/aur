@@ -2,7 +2,7 @@
 _pkgname=pascube
 pkgname=${_pkgname}-git
 pkgver=r1.5000000
-pkgrel=1.5
+pkgrel=2
 pkgdesc="A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
