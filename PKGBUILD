@@ -5,9 +5,11 @@
 # Contributor : Jesse Jaara      <gmail.com, mail.ru: jesse.jaara>
 # Contributor : Armin Wehrfritz
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
+#
+# Pull requests are welcome here: https://github.com/yurikoles-aur/osc
 
 pkgname=osc
-pkgver=1.19.1
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='Command line client for the openSUSE Build Service'
 arch=(any)
@@ -42,31 +44,19 @@ replaces=(
 )
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-	0001-Add-sb2install-support-to-osc.patch
-	0002-Support-osc-copyprj-in-api-by-Islam-Amer-usage-osc-c.patch
-	0003-Support-synchronous-copyproj.patch
-	0004-Add-p-to-copyprj-to-enable-copying-of-prjconf.patch
-	0005-Add-support-for-rebuild-and-chroot-only-in-build.-re.patch
-	0006-Add-architecture-and-scheduler-maps.patch
-	0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
-	0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
-	0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
 )
-sha256sums=('548b15d4b04c86f606cf6d7621aedbf120739df845e3bab79502f96d7aa94f82'
-            'fc66a9f1d00ed7c4d80d15b00d612138b966c73bbf9c7a49562f80149ce8e661'
-            'be574baf4b1915fa01a83b42f4948b0587797bc4ff3a3df260d50e3201785636'
-            'b90a0d94a5dd30addc66e3f3849ddf3281e17dc08c84bd5d279fe18858e7fad3'
-            'c389d6a01a42dcf6fed047e884eab779ab5d2d9ed5ccf471002535436f0c0643'
-            '958e68a0989c4227d48c12415af5b88be698a7d7152f6fc2c0ee5bb7836397ef'
-            '579b110f3dc03001b7eac3581264200612dac66c2186e6841eda3573f455daf1'
-            '14ff5f72b600927e7427060dc803daa4324532c99c3636b008d6336540c1e3d9'
-            '7a8d4f993d03eda408c71f3707e93028087255bcef7356b22d57dbd370365c27'
-            '095c84ec50b5ce183402523392dc10646a294692bc1c4b7c426e201f2a7ce469')
+sha256sums=('6579381095a8a6675a6ffca4c894a2e5706fe19c45f2e9a18631d75e00bed051')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	for patch in "${srcdir}"/*.patch; do
-		patch -p1 -i "${patch}"
+
+	local src
+	for src in "${source[@]}"; do
+		src="${src%%::*}"
+		src="${src##*/}"
+		[[ $src = *.patch ]] || continue
+		echo "Applying patch $src..."
+		patch -Np1 < "../$src"
 	done
 
 	# Fix version
