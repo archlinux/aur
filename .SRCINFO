@@ -1,12 +1,14 @@
 pkgbase = pony-house-bin
 	pkgdesc = A Matrix client, focused on being a completely customizable open source superapp
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pony-House/Client
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = asar
 	depends = electron
+	provides = pony-house=1.5.0
+	conflicts = pony-house
 	options = !strip
 	source = https://github.com/Pony-House/Client/releases/download/1.5.0/Pony.House-1.5.0.AppImage
 	source = https://raw.githubusercontent.com/Pony-House/Client/1.5.0/LICENSE
