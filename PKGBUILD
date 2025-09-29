@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
-pkgver=20250817
+pkgver=20250929
 _electronversion=37
 pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology(Prebuilt version.Use system-wide electron)"
@@ -24,11 +24,11 @@ source=(
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('0bcf63fb6d571e75d30d080537ef824eda30d0637a5e3bab753998038e17088b')
-sha256sums_x86_64=('5c0bf04a35804bf94e2474186cb97baf0934e5a58e34d2b79814be5f765a11a2')
+sha256sums_aarch64=('a0657f4b6c01ad824b71c3533bf5207f6be6710fc601ae2ee16f42f1c3ac18d9')
+sha256sums_x86_64=('f37447eda3b228af5c560026eece18b7b3c733f214982596aaa1d7eb788c62a9')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
