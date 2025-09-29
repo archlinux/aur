@@ -1,0 +1,24 @@
+pkgbase = cosmic-applet-package-updater-git
+	pkgdesc = Package Updater control applet for the COSMIC panel - git
+	pkgver = 0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Ebbo/cosmic-applet-package-updater
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = just
+	makedepends = clang
+	makedepends = mold
+	makedepends = pkgconf
+	depends = dbus
+	depends = openssl
+	depends = cosmic-panel
+	provides = cosmic-applet-package-updater
+	conflicts = cosmic-applet-package-updater
+	source = git+https://github.com/Ebbo/cosmic-applet-package-updater.git
+	sha256sums = SKIP
+
+pkgname = cosmic-applet-package-updater-git
