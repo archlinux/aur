@@ -1,11 +1,12 @@
 pkgname=lightningstream
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightning Stream syncs LMDB databases through S3 buckets between multiple servers, including PowerDNS Authoritative server 4.8+ LMDBs.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/PowerDNS/lightningstream'
 license=('MIT')
 makedepends=('git' 'lmdb' 'go')
+backup=('etc/lightningstream.yml')
 source=(
   "$pkgname::git+$url#tag=v$pkgver"
 )
@@ -20,6 +21,9 @@ build() {
 package() {
   cd $srcdir/$pkgname
   install -vDm655 bin/$pkgname $pkgdir/usr/bin/$pkgname
+
+  # example config
+  install -vDm644 example.yaml $pkgdir/etc/lightningstream.yml
 
   # license
   install -vDm644 LICENSE "$pkgname/LICENSE"
