@@ -3,7 +3,7 @@
 pkgname=ble2mqtt-git
 _gitname=ble2mqtt
 pkgver=0.2.5.r1.g9ec2940
-pkgrel=1
+pkgrel=2
 pkgdesc='Bluetooth to MQTT bridge, add your bluetooth-capable devices to your smart home'
 url='https://github.com/devbis/ble2mqtt'
 arch=('any')
