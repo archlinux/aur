@@ -1,7 +1,7 @@
 # Maintainer: tak_0
 pkgname=suscheck
 pkgver=1.0.0.1
-pkgrel=3
+pkgrel=3.1
 pkgdesc="A script for makepkg/paru to warn about maintainers from countries you can find suspicious. This is not discriminating, but rather information giving tool,that allows to add to a list some domains or locations that you find suspicious for your reasons."
 arch=('any')
 license=('GPL')
