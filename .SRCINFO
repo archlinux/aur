@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-px-h7000-h9000-series
+	pkgdesc = Epson inkjet printer driver (PX-7000, PX-9000)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/man/linux/escp.html
+	arch = i686
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	makedepends = curl
+	depends = epson-inkjet-printer-filter
+	depends = glibc
+	provides = libEpson_PX_H7000_H9000_Series.so
+	source = https://download.ebz.epson.net/dsc/f/01/00/01/78/80/571e61c914a4792d56fa874af5b4da813a3f60b1/epson-px-h7000-h9000-series-1.1.0-1lsb3.2.src.rpm
+	sha256sums = 456c1224d726710c774a6964fbbbaefc1ae99ea55308d64b2f5b421ced21b17a
+
+pkgname = epson-inkjet-printer-px-h7000-h9000-series
