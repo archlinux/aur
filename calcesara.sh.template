@@ -307,16 +307,16 @@ install_fonts() {
             rm -- "$font_full"
         else
             font_file="$(basename ${font_full})"
-            font="$(echo $font_file | sed "s/\.*//g")"
-            fonts_required=("${fonts_required[@]/$font}")
+            font="${font_file%.*}"
+            fonts_required=(${fonts_required[@]/$font})
         fi
     done
 
     # Link system fonts
     for font_source in /usr/share/fonts/**/*.{ttf,otf}; do
         font_file="$(basename ${font_source})"
-        font="$(echo $font_file | sed "s/\.*//g")"
-        fonts_required=("${fonts_required[@]/$font}")
+        font="${font_file%.*}"
+        fonts_required=(${fonts_required[@]/$font})
 
         font_link="${fonts_location}/${font_file}"
         if [ ! -f $font_link ]; then
@@ -324,11 +324,11 @@ install_fonts() {
         fi
     done
 
-    if [[ ${#fonts_required[@]} -ne 0 ]]; then
+    if [[ ${#fonts_required[@]} -ne 0 && "$(echo "${fonts_required[@]}")" != "" ]]; then
         if [[ ! $(command -v winetricks >/dev/null 2>&1) ]]; then
             winetricks "${fonts_required[@]}"
         else
-            error "Missing fonts: ${fonts_required[@]}"
+            error "Missing fonts: ${fonts_required[*]}"
             exit 1
         fi
     fi
