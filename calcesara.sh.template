@@ -324,20 +324,12 @@ install_fonts() {
         fi
     done
 
-    # Handle missing fonts
-    if [[ -z "${fonts_required[@]}" ]]; then
-        missing_fonts_message="Missing fonts: ${fonts_required[@]}"
-        if [ ! command -v winetricks >/dev/null 2>&1 ]; then
-            winetricks "${array[@]}"
+    if [[ ${#fonts_required[@]} -ne 0 ]]; then
+        if [[ ! $(command -v winetricks >/dev/null 2>&1) ]]; then
+            winetricks "${fonts_required[@]}"
         else
-            error "$missing_fronts_message" 
-            exit 2
-        fi
-        if [[ ! -f "${fonts_location}/corefonts.installed" ]]; then
-            # Otherwise all text will just be rectangles
-            warning "$missing_fronts_message"
-            echo "${output_prefix}Installing fonts in WINEPREFIX=${WINEPREFIX}..."
-            winetricks corefonts
+            error "Missing fonts: ${fonts_required[@]}"
+            exit 1
         fi
     fi
 }
