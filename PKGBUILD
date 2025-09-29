@@ -2,8 +2,8 @@
 _appname=runjs
 pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
-pkgver=3.1.2
-_electronversion=32
+pkgver=3.2.0
+_electronversion=37
 pkgrel=1
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
 arch=(
@@ -24,7 +24,6 @@ depends=(
     'python-setuptools'
     'python-typing_extensions'
     'python-packaging'
-    'nodejs'
 )
 makedepends=(
     'asar'
@@ -36,12 +35,16 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
 sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0958588f9920f2d6f1b8a5551447e5a7c7eb6f7323e16d63cf0c0fdfad7da136')
-sha256sums_x86_64=('462cfcbf9cdd4490f4d3bc1230d06af581b2848a96940a37555ff3946e69f97f')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('74133dd71ee6541761455cbb4b665cb8dc0b038522542432af56e1d1d6919a03')
+sha256sums_x86_64=('928c68bbfc3c467444f7459fb31196dac81ee0389889fd50f0f751e27ad51b7b')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -50,6 +53,8 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -not -path "${srcdir}/app.asar.unpacked/node_modules" \
