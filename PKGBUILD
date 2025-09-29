@@ -11,7 +11,7 @@
 
 _target=mips64-linux-gnu
 pkgname="${_target}-gcc-bootstrap"
-pkgver=15.1.0
+pkgver=15.2.0
 _majorver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - bootstrap/stage1 cross compiler for the MIPS64 target (for the toolchain with GNU C library and multilib ABI)'
@@ -27,7 +27,7 @@ conflicts=('mips64-linux-gnuabi64-gcc-bootstrap' 'mips64-linux-gnuabi32-gcc-boot
 options=('!emptydirs' '!lto')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         '010-gcc-Wno-format-security.patch')
-sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
             'SKIP'
             '85a03b80c6dad57e6ea97e5a7f225a2aaed6911f6fdcee3a800b8decd9044b43')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
