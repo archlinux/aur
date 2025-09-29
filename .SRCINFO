@@ -19,6 +19,6 @@ pkgbase = ble2mqtt-git
 	source = git+https://github.com/devbis/ble2mqtt.git
 	source = ble2mqtt.service
 	sha256sums = SKIP
-	sha256sums = dbee267198251eabb3a9450bc0275d74ba8b3b7b9b49f6f03df3f3f2bd27dfd5
+	sha256sums = d638271a618676bad3989f45a02da9f711fa9e1bf8274acd66825fdc1a7bf0f3
 
 pkgname = ble2mqtt-git

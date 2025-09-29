@@ -17,7 +17,7 @@ source=(
 	ble2mqtt.service
 )
 sha256sums=('SKIP'
-            'dbee267198251eabb3a9450bc0275d74ba8b3b7b9b49f6f03df3f3f2bd27dfd5')
+            'd638271a618676bad3989f45a02da9f711fa9e1bf8274acd66825fdc1a7bf0f3')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
