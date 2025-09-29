@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fb303
-pkgver=2025.09.22.00
+pkgver=2025.09.29.00
 pkgrel=1
 pkgdesc="thrift functions that provide a mechanism for querying information from a service"
 arch=(x86_64)
@@ -30,11 +30,9 @@ provides=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  pass-thrift-include-to-python.patch::https://patch-diff.githubusercontent.com/raw/facebook/fb303/pull/68.patch
-  fix-include-chrono.patch)
-sha256sums=('a98c30ea070ef111b83973fa74b6319907eeebe0888187037375857da97256ba'
-            '89ccb751f778b43d1eb4804eee1c041a5f9d8626d82034564300ee2bd4e731d9'
-            'a79322143a55ae3f9df8e2d8efe3943fd403c5d5a3424507c48f17383e76b4db')
+  pass-thrift-include-to-python.patch::https://patch-diff.githubusercontent.com/raw/facebook/fb303/pull/68.patch)
+sha256sums=('b4b29f7c8ebffaff928d025239c2def360cbacea60db995073e8b1c6c2d0cd57'
+            '89ccb751f778b43d1eb4804eee1c041a5f9d8626d82034564300ee2bd4e731d9')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -42,7 +40,6 @@ prepare() {
   sed -i 's/find_package(Glog MODULE REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
   patch -Np1 -i ../pass-thrift-include-to-python.patch
-  patch -Np1 -i ../fix-include-chrono.patch
 }
 
 build() {
