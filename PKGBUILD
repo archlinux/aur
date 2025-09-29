@@ -2,12 +2,12 @@
 # Contributor: dragoneki <dragoneki@protonmail.com>
 pkgname=flatpost
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Environment agnostic flatpak-only shop gui"
 arch=('any')
 url="https://github.com/GloriousEggroll/flatpost"
 license=('BSD-2-Clause AND GPL-3.0-or-later')
-depends=('flatpak' 'python-requests' 'python-dbus' 'hicolor-icon-theme' 'gtk3' 'appstream' 'gdk-pixbuf2' 'python' 'glib2' 'python-gobject')
+depends=('flatpak' 'python-requests' 'python-dbus' 'hicolor-icon-theme' 'gtk3' 'appstream' 'gdk-pixbuf2' 'python' 'glib2' 'python-gobject' 'xorg-xhost')
 makedepends=('python')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('32b15cd3d2995cdd0f3ede3db1f70cd30fae19b2da9d3a5aaa1ba986a5b64f90')
