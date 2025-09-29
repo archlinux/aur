@@ -1,0 +1,18 @@
+pkgbase = batticonplus-git
+	pkgdesc = Lightweight battery icon for the system tray and notifier, git version (based on cbatticon)
+	pkgver = 2.0.0.r0.g9a050a0
+	pkgrel = 1
+	url = https://github.com/artist4xlibre
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libnotify
+	depends = gtk3
+	conflicts = batticonplus
+	conflicts = batticonplus-ayatana
+	conflicts = cbatticon
+	source = git+https://github.com/artist4xlibre/batticonplus.git
+	validpgpkeys = 4CF0F66D9CEF47105E22DD0F73580DE2EDDFA6D6
+	sha256sums = SKIP
+
+pkgname = batticonplus-git
