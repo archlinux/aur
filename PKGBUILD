@@ -1,7 +1,7 @@
 # Maintainer: Philip Meulengracht <the_meulengracht@hotmail.com>
 pkgname=vchef
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 _gitname=bake
 epoch=
 pkgdesc="The CHEF Package Mangement System"
@@ -46,6 +46,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
+        -DCHEF_DIST_SYSTEMD=ON \
         ../
     make
 }
