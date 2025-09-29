@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=Jojo4GH
 _pkgname=nav
 pkgname=${_pkgname}-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='The interactive and stylish replacement for ls & cd!'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('d5532d342ac8c329541cd225a66c5cfdcac577dbb400024cae4b5195ba5e95ea'
-            'bb910c3904297e1a522d54932f3c49f737cdec68c1b5c67d3bd7104e4519bda5')
-sha256sums_x86_64=('e02c7ce492676b5b13621d56f41abbce03bfac3b51e0e7af33b5d22fef163eac')
-sha256sums_aarch64=('2227c7d1cdb82e329d9520579f563302400dd953bbb464ec5aeacea8ce4b4ea7')
+            'fad856aa6c5dfbf977836611ab54deef1436745e92bf2b87e4c8f5b536f27dc0')
+sha256sums_x86_64=('8d4384bb3bce480140d4c6ee24fe6a766ab04aa426e157b7a84957549928b98a')
+sha256sums_aarch64=('b10fe162e11e4133ddc8c1d5fed830e413c3576a6edf8cc6b3f19180dbeef739')
 
 build() {
   cd "${srcdir}/" || exit
