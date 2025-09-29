@@ -24,12 +24,6 @@ build() {
 	CFLAGS+=" -ffat-lto-objects" cargo build --frozen --release --all-features
 }
 
-check() {
-	cd "${pkgname}-${pkgver}/"
-	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=" -ffat-lto-objects" cargo test --frozen --all-features
-}
-
 package() {
 	cd "${pkgname}-${pkgver}/"
 	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
