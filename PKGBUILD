@@ -2,7 +2,7 @@
 
 pkgname=scopy-appimage
 _disname=${pkgname%-appimage}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A software oscilloscope and signal analysis toolset."
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,9 @@ source_aarch64=(
     ${url}/releases/download/${_ver}/${_zip}
     LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
 )
-sha256sums_x86_64=('8d5d4e26c3a98ef0f417d867e4c8c8911cafbc8a59e4983fb0bcf41e7083314e'
+sha256sums_x86_64=('a54525d1527290ba610b08837ddf91a0bc4f2b47d2edef595a6d082b8dadca37'
                    '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
-sha256sums_aarch64=('8d5d4e26c3a98ef0f417d867e4c8c8911cafbc8a59e4983fb0bcf41e7083314e'
+sha256sums_aarch64=('a54525d1527290ba610b08837ddf91a0bc4f2b47d2edef595a6d082b8dadca37'
                     '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
 
 options=('!strip')
@@ -40,7 +40,7 @@ _appimage=Scopy-${_ver}-Linux-${_arch}.AppImage
 
 prepare() {
     cd ${srcdir} && rm -rf "squashfs-root"
-    bsdtar -xf ${_zip} --strip-components=1 -C ./
+    bsdtar -xf ${_zip} -C ./
     chmod +x ${_appimage}
     ./${_appimage} --appimage-extract > /dev/null
     sed -i "/^Exec=/c\Exec=/usr/bin/${_disname} %U" "${srcdir}/squashfs-root/${_disname}.desktop"
