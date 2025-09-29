@@ -1,13 +1,13 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=3.0.0.r80.g817c2ad2b
+pkgver=3.0.1.r154.gdbe4f499b
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
 url="http://www.sfml-dev.org/"
 license=('Zlib')
-depends=('libsndfile' 'libxrandr' 'openal' 'glew' 'freetype2' 'libx11' 'libxcursor' 'libxi')
+depends=('libsndfile' 'libxrandr' 'openal' 'glew' 'freetype2' 'libx11' 'libxcursor' 'libxi' 'harfbuzz')
 makedepends=('mesa' 'cmake' 'doxygen' 'systemd' 'ninja' 'git')
 provides=('libsfml-window.so' 'libsfml-network.so' 'libsfml-system.so'
           'libsfml-audio.so' 'libsfml-graphics.so' 'sfml')
@@ -33,10 +33,7 @@ build() {
       -DSFML_USE_SYSTEM_DEPS=ON \
       -DSFML_BUILD_EXAMPLES=OFF \
       -DSFML_BUILD_DOC=OFF \
-      -DSFML_INSTALL_PKGCONFIG_FILES=ON \
-      -DSFML_PKGCONFIG_INSTALL_DIR=lib/pkgconfig
-  # dont know why, but build fails if SFML_PKGCONFIG_INSTALL_DIR
-  # is not set explicitly to what sfml's cmake code would set it anyway
+      -DSFML_INSTALL_PKGCONFIG_FILES=ON
 
   ninja -C build
   #ninja -C build doc

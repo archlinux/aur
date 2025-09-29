@@ -1,6 +1,6 @@
 pkgbase = sfml-git
 	pkgdesc = A simple, fast, cross-platform, and object-oriented multimedia API
-	pkgver = 3.0.0.r80.g817c2ad2b
+	pkgver = 3.0.1.r154.gdbe4f499b
 	pkgrel = 1
 	url = http://www.sfml-dev.org/
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = sfml-git
 	depends = libx11
 	depends = libxcursor
 	depends = libxi
+	depends = harfbuzz
 	provides = libsfml-window.so
 	provides = libsfml-network.so
 	provides = libsfml-system.so
