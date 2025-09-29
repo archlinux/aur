@@ -1,0 +1,12 @@
+--- postgresql-18.0/doc/src/sgml/ref/pg_combinebackup.sgml	2025-09-29 12:22:28.113073976 +0200
++++ postgresql-18.0/doc/src/sgml/ref/pg_combinebackup.sgml	2025-09-29 12:22:09.046444188 +0200
+@@ -314,7 +314,7 @@
+ 
+   <para>
+    To avoid this problem, taking a new full backup after changing the checksum
+-   state of the cluster using <xref linkend="app-pgchecksums "/> is
++   state of the cluster using <xref linkend="app-pgchecksums"/> is
+    recommended. Otherwise, you can disable and then optionally reenable
+    checksums on the directory produced by <literal>pg_combinebackup</literal>
+    in order to correct the problem.
+
