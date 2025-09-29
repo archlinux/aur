@@ -2,7 +2,7 @@
 
 _pkgname=xsystem4
 pkgname=${_pkgname}-git
-pkgver=alpha.5.1.r162.g008d43b
+pkgver=1.0.0.r0.gd3cb6b4
 pkgver() {
   cd "$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -14,6 +14,7 @@ url="https://github.com/nunuhara/xsystem4"
 license=('GPL-2.0-only')
 depends=(chibi-scheme ffmpeg freetype2 libffi libpng libsndfile libjpeg-turbo libwebp sdl2 zlib)
 makedepends=(bison flex glew meson)
+conflicts=(${_pkgname})
 prepare () {
 	git clone --recursive $url
 }
