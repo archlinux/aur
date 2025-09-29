@@ -1,15 +1,15 @@
 # Maintainer: Abel GOMES <abel.gomes@etu.unistra.fr>
 
 pkgname=wm
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="ASCII animation of tanks like sl but with war machines"
 arch=('x86_64')
 url="https://github.com/Bebel9445/wm"
 license=('MIT')
 depends=('ncurses')
-source=("https://github.com/Bebel9445/wm/archive/v2.1.tar.gz")
-sha256sums=('daf07d196701a8bf8e79cd38c77b7ae5ef42db78dd0318e2a818a8d90766c834')
+source=("https://github.com/Bebel9445/wm/archive/v2.2.tar.gz")
+sha256sums=('6d9ed58e8989a32f8cb7c35562f77f843ef46f64533453576cf2853bd20cd417')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -23,4 +23,3 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
 }
-
