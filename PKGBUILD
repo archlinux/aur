@@ -10,7 +10,7 @@
 
 _basename=coccinelle
 pkgname=$_basename-git
-pkgver=1.3.r168.gf2375b6
+pkgver=1.3.r199.g7674e29
 pkgrel=1
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
@@ -21,10 +21,10 @@ makedepends=(
     'ocaml-findlib'
     'ocaml-menhir'
     'ocaml-num'
+    'ocaml-parmap'
     'ocaml-pcre'
     'ocaml-pyml'
     'ocaml-stdcompat'
-
 )
 depends=(
     'glibc'
@@ -68,13 +68,12 @@ build() {
 	--enable-pyml \
 	--enable-python \
 	--enable-stdcompat \
+	--enable-parmap \
 	\
 	--prefix=/usr \
 	--docdir=/usr/share/doc \
 	--libdir=/usr/lib/ocaml \
-	--mandir=/usr/share/man
-	# TODO
-	# --enable-parmap
+	--mandir=/usr/share/man \
     make
 }
 
