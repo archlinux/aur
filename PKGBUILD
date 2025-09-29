@@ -2,7 +2,7 @@
 # Contributor: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
 pkgname=youtube-music-bin
 pkgver=3.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64' 'aarch64' 'armv7h')
 #url="https://ytmd-devs.github.io/ytmd/" ## images are currently broken
@@ -16,7 +16,7 @@ depends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
-source=( "license-$pkgver::https://github.com/th-ch/youtube-music/raw/v$pkgver/license"
+source=( "license-$pkgver::https://github.com/ytmd-devs/ytmd/raw/v$pkgver/license"
         "${pkgname%-bin}.sh")
 source_x86_64=("https://github.com/ytmd-devs/ytmd/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/ytmd-devs/ytmd/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_arm64.deb")
