@@ -1,10 +1,10 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5d8aeae..82c46ee 100644
+index 475a47f..d4950b3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -27,11 +27,14 @@ set(CMAKE_AUTOUIC ON)
- set(CMAKE_INCLUDE_CURRENT_DIR ON)
+@@ -28,15 +28,19 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
  set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+ set(QT_NO_PRIVATE_MODULE_WARNING ON)
  
 -add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060200 -DUSE_WIDGETS -DQT_DEPRECATED_WARNINGS -DQT_MESSAGELOGCONTEXT)
 +add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060200 -DQT_DEPRECATED_WARNINGS -DQT_MESSAGELOGCONTEXT)
@@ -13,26 +13,19 @@ index 5d8aeae..82c46ee 100644
  
 -find_package(Qt6 6.2 CONFIG REQUIRED COMPONENTS BuildInternals Core Widgets OPTIONAL_COMPONENTS LinguistTools)
 +find_package(Qt6 6.2 CONFIG REQUIRED COMPONENTS BuildInternals Core OPTIONAL_COMPONENTS Widgets QuickControls2 LinguistTools)
+ if(Qt6_VERSION VERSION_GREATER_EQUAL 6.10)
+-    find_package(Qt6 6.10 CONFIG REQUIRED COMPONENTS WidgetsPrivate GuiPrivate)
++    find_package(Qt6 6.10 CONFIG REQUIRED COMPONENTS GuiPrivate OPTIONAL_COMPONENTS WidgetsPrivate)
+ endif()
+ 
 +find_package(KF6Config)
 +find_package(KF6ColorScheme)
 +find_package(KF6IconThemes)
- 
++
  get_target_property(QT_QTPATHS_EXECUTABLE Qt6::qtpaths IMPORTED_LOCATION)
  
-@@ -57,8 +60,10 @@ if(Qt6LinguistTools_FOUND)
-     endif()
- endif()
- 
--#execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} -query QT_INSTALL_PLUGINS OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
--execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-+if(NOT PLUGINDIR)
-+    #execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} -query QT_INSTALL_PLUGINS OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-+    execute_process(COMMAND ${QT_QTPATHS_EXECUTABLE} --plugin-dir OUTPUT_VARIABLE PLUGINDIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-+endif()
- 
- if(PLUGINDIR)
-    message(STATUS "Plugin path: ${PLUGINDIR}")
-@@ -74,10 +79,12 @@ endif()
+ if(Qt6LinguistTools_FOUND)
+@@ -80,10 +84,12 @@ endif()
  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/qt6ct-common)
  
  add_link_options(-Wl,--no-undefined)
@@ -162,7 +155,7 @@ index 616440b..250987d 100644
  }
  
 diff --git a/src/qt6ct-common/qt6ct.h b/src/qt6ct-common/qt6ct.h
-index 3a417aa..d799a7a 100644
+index f253987..06ea440 100644
 --- a/src/qt6ct-common/qt6ct.h
 +++ b/src/qt6ct-common/qt6ct.h
 @@ -101,7 +101,8 @@ public:
@@ -201,7 +194,7 @@ index f3e9ef6..a05a9b7 100644
  
  OTHER_FILES += qt6ct.json
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index b90c801..4968af1 100644
+index 569b13f..3969621 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 @@ -41,38 +41,59 @@
@@ -268,32 +261,17 @@ index b90c801..4968af1 100644
  }
  
  Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
-@@ -81,20 +102,20 @@ Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
- bool Qt6CTPlatformTheme::usePlatformNativeDialog(DialogType type) const
- {
-     return m_theme ? m_theme->usePlatformNativeDialog(type) :
--                     QPlatformTheme::usePlatformNativeDialog(type);
-+                     QGenericUnixTheme::usePlatformNativeDialog(type);
- }
- 
- QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType type) const
- {
-     return m_theme ? m_theme->createPlatformDialogHelper(type) :
--                     QPlatformTheme::createPlatformDialogHelper(type);
-+                     QGenericUnixTheme::createPlatformDialogHelper(type);
- }
+@@ -92,8 +113,8 @@ QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType
  
  const QPalette *Qt6CTPlatformTheme::palette(QPlatformTheme::Palette type) const
  {
 -    if (type == QPlatformTheme::SystemPalette && !m_isIgnored)
 -        return &m_palette;
--    return QPlatformTheme::palette(type);
 +    if (type == QPlatformTheme::SystemPalette && m_palette)
 +        return &*m_palette;
-+    return QGenericUnixTheme::palette(type);
+     return QGenericUnixTheme::palette(type);
  }
  
- const QFont *Qt6CTPlatformTheme::font(QPlatformTheme::Font type) const
 @@ -148,6 +169,13 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
      return QIcon::fromTheme(type.iconName());
  }
@@ -380,7 +358,7 @@ index b90c801..4968af1 100644
  
      settings.beginGroup("Appearance"_L1);
      m_style = settings.value("style"_L1, u"Fusion"_s).toString();
--    m_palette = *QPlatformTheme::palette(SystemPalette);
+-    m_palette = *QGenericUnixTheme::palette(SystemPalette);
 -    QString schemePath = settings.value("color_scheme_path"_L1).toString();
 -    if(!schemePath.isEmpty() && settings.value("custom_palette"_L1, false).toBool())
 -    {
@@ -409,7 +387,7 @@ index b90c801..4968af1 100644
      settings.endGroup();
  
      settings.beginGroup("Interface"_L1);
-@@ -352,3 +377,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+@@ -354,3 +379,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
      content.replace(regExp, u"\n"_s);
      return content;
  }
@@ -428,10 +406,10 @@ index b90c801..4968af1 100644
 +    return QObject::eventFilter(obj, e);
 +}
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.h b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-index 5312a64..4ba599b 100644
+index b2a7bcf..e8cf68a 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-@@ -62,16 +62,19 @@ public:
+@@ -66,16 +66,19 @@ public:
      //virtual QPixmap fileIconPixmap(const QFileInfo &fileInfo, const QSizeF &size,
      //                               QPlatformTheme::IconOptions iconOptions = 0) const;
  
@@ -454,7 +432,7 @@ index 5312a64..4ba599b 100644
  
  private:
      void readSettings();
-@@ -79,8 +82,8 @@ private:
+@@ -83,8 +86,8 @@ private:
      bool hasWidgets();
  #endif
      QString loadStyleSheets(const QStringList &paths);
@@ -619,7 +597,7 @@ index e196b62..8e4902e 100644
  };
  
 diff --git a/src/qt6ct/fontspage.cpp b/src/qt6ct/fontspage.cpp
-index d281a9a..ae0f091 100644
+index 75de0fd..ae0f091 100644
 --- a/src/qt6ct/fontspage.cpp
 +++ b/src/qt6ct/fontspage.cpp
 @@ -29,6 +29,7 @@
@@ -630,23 +608,13 @@ index d281a9a..ae0f091 100644
  #include <QFontDialog>
  #include <QDir>
  #include <QFile>
-@@ -61,8 +62,8 @@ FontsPage::~FontsPage()
- void FontsPage::writeSettings(QSettings *settings)
- {
-     settings->beginGroup(u"Fonts"_s);
--    settings->setValue(u"general"_s, m_ui->generalFontLabel->font().toString());
--    settings->setValue(u"fixed"_s, m_ui->fixedFontLabel->font().toString());
-+    settings->setValue(u"general"_s, m_ui->generalFontLabel->property("value"));
-+    settings->setValue(u"fixed"_s, m_ui->fixedFontLabel->property("value"));
-     settings->endGroup();
- }
- 
-@@ -70,11 +71,19 @@ void FontsPage::onFontChangeRequested(QWidget *widget)
+@@ -70,12 +71,19 @@ void FontsPage::onFontChangeRequested(QWidget *widget)
  {
      bool ok = false;
      QFont font = QFontDialog::getFont (&ok, widget->font(), this);
 -    if(ok)
 -    {
+-        widget->setProperty("value", font.toString());
 -        widget->setFont(font);
 -        qobject_cast<QLabel*>(widget)->setText(font.family () + QChar::Space + QString::number(font.pointSize ()));
 -    }
@@ -666,7 +634,7 @@ index d281a9a..ae0f091 100644
  }
  
  void FontsPage::readSettings()
-@@ -88,10 +97,12 @@ void FontsPage::readSettings()
+@@ -89,8 +97,9 @@ void FontsPage::readSettings()
  
  void FontsPage::loadFont(QSettings *settings, QLabel *label, const QString &key)
  {
@@ -677,10 +645,7 @@ index d281a9a..ae0f091 100644
 +        : QFontDatabase::systemFont(QFontDatabase::GeneralFont)).value<QFont>();
      label->setText(font.family() + QChar::Space + QString::number(font.pointSize()));
      label->setFont(font);
-+    label->setProperty("value", font.toString());
- }
- 
- void FontsPage::on_createFontsConfButton_clicked()
+     label->setProperty("value", font.toString());
 diff --git a/src/qt6ct/iconthemepage.cpp b/src/qt6ct/iconthemepage.cpp
 index 37960f9..9156116 100644
 --- a/src/qt6ct/iconthemepage.cpp
