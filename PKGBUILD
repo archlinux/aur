@@ -6,7 +6,7 @@ _pkgname=walker
 pkgname=${_pkgname}-bin
 pkgver=1.0.9
 _pkgvername=v${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='wayland application runner'
 arch=('x86_64')
 _barch=('x86_64')
@@ -14,22 +14,22 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('GPL-3.0')
 
-optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
-depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant')
-optdepends=('elephant-providerlist: providerlist provider'
-            'elephant-desktopapplications: desktopapplications provider'
-            'elephant-archlinuxpkgs: archlinuxpkgs provider'
-            'elephant-calc: calc provider'
-            'elephant-clipboard: clipboard provider'
-            'elephant-files: files provider'
-            'elephant-menus: menus provider'
-            'elephant-runner: runner provider'
-            'elephant-symbols: symbols provider'
-            'elephant-todo: todo provider'
-            'elephant-unicode: unicode provider'
-            'elephant-websearch: websearch provider')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant')
+optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
+optdepends+=('elephant-providerlist: providerlist provider'
+             'elephant-desktopapplications: desktopapplications provider'
+             'elephant-archlinuxpkgs: archlinuxpkgs provider'
+             'elephant-calc: calc provider'
+             'elephant-clipboard: clipboard provider'
+             'elephant-files: files provider'
+             'elephant-menus: menus provider'
+             'elephant-runner: runner provider'
+             'elephant-symbols: symbols provider'
+             'elephant-todo: todo provider'
+             'elephant-unicode: unicode provider'
+             'elephant-websearch: websearch provider')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
@@ -68,29 +68,29 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 sha256sums_x86_64=('734f6ee482d85501446de8c7bc44ff3c3347374e0481de667e10e31cb3febcc1')
 
 prepare() {
-  cd "${srcdir}" || exit 1
+    cd "${srcdir}" || exit 1
 
-  mkdir -p ./config
-  for f in *.toml; do mv ${f} config/${f//-${pkgver}/} ; done
+    mkdir -p ./config
+    for f in *.toml; do mv ${f} config/${f//-${pkgver}/} ; done
 
-  mkdir -p ./themes
-  for f in *.{xml,css}; do mv ${f} themes/${f//-${pkgver}/} ; done
+    mkdir -p ./themes
+    for f in *.{xml,css}; do mv ${f} themes/${f//-${pkgver}/} ; done
 }
 
 package() {
-  cd "${srcdir}" || exit 1
+    cd "${srcdir}" || exit 1
 
-  install -Dm 755 walker -t "${pkgdir}/usr/bin"
+    install -Dm 755 walker -t "${pkgdir}/usr/bin"
 
-  install -Dm 644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm 644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm 644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  cd "${srcdir}/config" || exit 1
-  install -Dm 644 config.toml -t "${pkgdir}/etc/xdg/walker"
+    cd "${srcdir}/config" || exit 1
+    install -Dm 644 config.toml -t "${pkgdir}/etc/xdg/walker"
 
-  cd "${srcdir}/themes" || exit 1
-  for theme in ./*; do
-    install -Dm 644 ${theme} -t "${pkgdir}/etc/xdg/walker/themes/default"
-  done
+    cd "${srcdir}/themes" || exit 1
+    for theme in ./*; do
+        install -Dm 644 ${theme} -t "${pkgdir}/etc/xdg/walker/themes/default"
+    done
 }
