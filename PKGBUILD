@@ -2,7 +2,7 @@
 
 pkgname=python-pyffmpeg
 _pyname=${pkgname#python-}
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='FFmpeg wrapper for Python'
 arch=(any)
@@ -16,7 +16,7 @@ _archive="$_pyname-$pkgver"
 # Project stoped posting source distributions to Pypi
 # source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('677ab5027dd7137837498eee446898726206313a06ae71fe293f8168e16fa833')
+sha256sums=('dd1d8ad7c0d5ab9c616bb9147d33201147a51c23294027e7f6b7ca4d1995a942')
 
 build() {
 	# Project source isn't setup for build outside of CI...
