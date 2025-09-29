@@ -1,8 +1,8 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=sdrconnect
-pkgver=1.0.4
-build=83273bcd8
+pkgver=1.0.5
+build=e077f2ebe
 pkgrel=1
 pkgdesc="SDR receiver for SDRplay devices"
 arch=('aarch64' 'x86_64')
@@ -14,12 +14,14 @@ source_x86_64=("https://www.sdrplay.com/software/SDRconnect_linux-x64_${build}.r
 source_aarch64=("https://www.sdrplay.com/software/SDRconnect_linux-arm64_${build}.run")
 source=("sdrconnect.desktop"
         "67-sdrplay.rules"
-        "sdrconnect.service")
-sha256sums=('813615889e26d412e63c8c383626e370376d367c5109e909d61fe4070a1d8def'
-            '4b9fb2be7c968874c71b003ea2eff1bef12feea70b0557315c9a5dbf8056851b'
-            '0ac0db2d91ebfe442a80e0f5fb153ec0f93864abf5ae15c6163d9c3abc103498')
-sha256sums_aarch64=('3e22926dcfbb85f27e1a42e53368d6794b83fbede114707fa4fedf053984323d')
-sha256sums_x86_64=('81e94b31f6cd8699c51aa3f5742ce42dd4f3dbc94ce9d72d25c6e8a5851db664')
+        "sdrconnect.service"
+        "sdrconnect.png")
+sha256sums=('cea2ec529343ea38f2b89851476367c8a73fe1ed7e7bc3631cc8b88723d8d558'
+            'b39086ca99ef4b2242ff9edef93258c99d478fd37a8ba64319843928e316c61b'
+            '0ac0db2d91ebfe442a80e0f5fb153ec0f93864abf5ae15c6163d9c3abc103498'
+            '9ba3b0356491f53fa876fc66f11dab84c3651b4dc6e149d2c5f8bac64f414b35')
+sha256sums_aarch64=('291bed78924bc6f2a50fc26c74d2595bec305611e5932519a661f38ca71f090d')
+sha256sums_x86_64=('80dc164df38a7373fd9e1ce9b39861292e0981ef1c64b1e94d25334479d61282')
 
 prepare() {
 	cd ${srcdir}
@@ -34,16 +36,16 @@ package() {
 	# These commands are equivalent to the scripts used in the supplied
 	# run file
 	install -D -m644 "sdrplay_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-        (find *.so -type f -exec install -D -m755 "{}" "${pkgdir}/usr/lib/${pkgname}/{}" \;)
-	install -D -m755 "SDRconnect" "${pkgdir}/usr/lib/${pkgname}/SDRconnect"
-	install -D -m644 "sdrconnect.ico" "${pkgdir}/usr/share/icons/sdrconnect.ico"
+        (find *.so -type f -exec install -D -m755 "{}" "${pkgdir}/opt/${pkgname}/{}" \;)
+	install -D -m755 "SDRconnect" "${pkgdir}/opt/${pkgname}/SDRconnect"
+	install -D -m644 "sdrconnect.png" "${pkgdir}/usr/share/icons/sdrconnect.png"
 	install -D -m644 "sdrconnect.desktop" "${pkgdir}/usr/share/applications/sdrconnect.desktop"
 
 	# avoid issue with libsdrplay rules
 	install -D -m644 67-sdrplay.rules "${pkgdir}/usr/lib/udev/rules.d/67-sdrplay.rules"
 
 	install -m 755 -d "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${pkgname}/SDRconnect" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/SDRconnect" "${pkgdir}/usr/bin/${pkgname}"
 
 	# install the service; should best used as user
         # static server port for the moment
