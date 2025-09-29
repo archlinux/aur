@@ -1,8 +1,8 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Scarlett Veldt <scarlett AT enby DOT site>
 pkgname=arrpc
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="Open Discord RPC server for atypical setups"
 arch=('any')
 url="https://arrpc.openasar.dev/"
@@ -14,7 +14,7 @@ options=(!strip)
 install=arrpc.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenAsar/arrpc/archive/refs/tags/${pkgver}.tar.gz"
         "arrpc.service")
-sha256sums=('85f3c52b035af322789c749ad3910aca350d057ce97c98965bbf922acc74c68b'
+sha256sums=('153aed144efa4477345e48a8728505e936fd8a77f69dde7d0354258232638c05'
             'dccc409ef768766d8d4141f8d89366e0bbecd30d9b08d4d31856b01f180c4005')
 
 package() {
