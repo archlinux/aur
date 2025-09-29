@@ -19,7 +19,7 @@ makedepends=("npm" "jq")
 provides=("${pkgname}")
 options=(!strip emptydirs staticlibs zipman)
 
-source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${pkgver}.tgz"
+source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkgver}.tgz"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
