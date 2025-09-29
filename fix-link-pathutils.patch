@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2025-09-29 15:33:13.527668695 -0400
++++ b/CMakeLists.txt	2025-09-29 15:35:46.711360681 -0400
+@@ -624,6 +624,7 @@
+ watchman/IgnoreSet.cpp
+ watchman/InMemoryView.cpp
+ watchman/Options.cpp
++watchman/PathUtils.cpp
+ watchman/PDU.cpp
+ watchman/PendingCollection.cpp
+ watchman/PerfSample.cpp
