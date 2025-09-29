@@ -21,7 +21,7 @@ _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
 pkgver=0.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -57,12 +57,14 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/video/dynlink_nvcuvid/nvcuvid.h"
         "torchvision-0_17_1-fix-build.patch"
         "nppiNV12ToRGB_709CSC_8u_P2C3R_Ctx.patch"
+        ffmpeg-8.patch
 )
 b2sums=('601c47ff313bbf94fe2d2afd3dba4cbd4167ef6b8a5c53010636bc550fdcd76ae92d0c5a97156bfa039d5a7baad229132f320dc7355a282c073debbb667ea153'
         '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
         '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429'
         'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7'
-        '2b79f639b4526f5bd3d0cc5fab0d65ca7284a43a8652c831352bf6574ec8c786245ab76704a5b469bfcee125bc3a7cf0c88771367798a3ef6736d47bdd4d0a83')
+        '2b79f639b4526f5bd3d0cc5fab0d65ca7284a43a8652c831352bf6574ec8c786245ab76704a5b469bfcee125bc3a7cf0c88771367798a3ef6736d47bdd4d0a83'
+        'a18c5f8a5f271957516db90e5f16b98e22c251e22739c7af6f4cf3d8c50206fe6b678574c785a4de20a5e9c510e7607db02159255cf5cf8016137d2b79016398')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -72,6 +74,9 @@ prepare() {
 
   # Fix build with CUDA 13 https://github.com/pytorch/vision/pull/9224
   patch -p1 -i "${srcdir}"/nppiNV12ToRGB_709CSC_8u_P2C3R_Ctx.patch
+
+  # Fix build with ffmpeg 8
+  patch -p1 -i "${srcdir}"/ffmpeg-8.patch
 
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-${pkgver}"
