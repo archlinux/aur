@@ -1,7 +1,7 @@
 # Maintainer:
 
 pkgbase="zenmap-git"
-pkgver=7.97.r79.ge048a3e
+pkgver=7.98.r8.g751d5fd
 pkgrel=2
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -71,7 +71,7 @@ prepare() {
     -i "$_pkgsrc/zenmap/install_scripts/unix/su-to-zenmap.sh"
 }
 
-_build_nmap() (
+build() {
   export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
@@ -88,17 +88,14 @@ _build_nmap() (
     --without-ndiff \
     --without-zenmap
   make
-)
 
-_build_zenmap() (
-  echo "Building zenmap..."
-  cd "$_pkgsrc/zenmap"
+  echo "Building ndiff..."
+  cd "ndiff"
   python -m build --no-isolation --wheel
-)
 
-build() {
-  _build_nmap
-  _build_zenmap
+  echo "Building zenmap..."
+  cd "../zenmap"
+  python -m build --no-isolation --wheel
 }
 
 check() {
@@ -138,7 +135,7 @@ _package_zenmap() {
     'python-gobject'
   )
   optdepends=(
-    'pkexec: start zenmap as root'
+    'polkit: start zenmap as root'
   )
 
   provides=("zenmap=${pkgver%%.r*}")
@@ -147,6 +144,8 @@ _package_zenmap() {
   cd "$_pkgsrc"
   install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  python -m installer --destdir="$pkgdir" ndiff/dist/*.whl
 
   cd "zenmap"
   python -m installer --destdir="$pkgdir" dist/*.whl

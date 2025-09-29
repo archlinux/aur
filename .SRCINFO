@@ -1,5 +1,5 @@
 pkgbase = zenmap-git
-	pkgver = 7.97.r79.ge048a3e
+	pkgver = 7.98.r8.g751d5fd
 	pkgrel = 2
 	url = https://github.com/nmap/nmap
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgname = nmap-git
 	depends = openssl
 	depends = pcre2
 	depends = zlib
-	provides = nmap=7.97
+	provides = nmap=7.98
 	conflicts = nmap
 
 pkgname = zenmap-git
@@ -42,6 +42,6 @@ pkgname = zenmap-git
 	depends = python
 	depends = python-cairo
 	depends = python-gobject
-	optdepends = pkexec: start zenmap as root
-	provides = zenmap=7.97
+	optdepends = polkit: start zenmap as root
+	provides = zenmap=7.98
 	conflicts = zenmap
