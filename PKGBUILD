@@ -13,10 +13,6 @@ options=("!strip")
 source=("nav-$pkgver-$CARCH-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/nav-$CARCH-unknown-linux-gnu.tar.gz")
 sha256sums=("SKIP")
 
-prepare() {
-    tar -xvf "nav-$CARCH-unknown-linux-gnu.tar.gz"
-}
-
 package() {
     install -Dm755 nav -t "$pkgdir/usr/bin/"
 }
