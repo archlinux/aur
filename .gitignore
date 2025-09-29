@@ -1,0 +1,4 @@
+*.tar
+pkg/
+src/
+systemd-boot-btrfs-snapshots/
