@@ -3,7 +3,7 @@
 pkgbase=ideology-git
 pkgname=ideology-git
 pkgver=r3.4c5f8cd
-pkgrel=5
+pkgrel=7
 pkgdesc="IDEology is the IDE for the Snow programming language."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/IDEology"
@@ -91,7 +91,7 @@ cd /usr/share/${pkgname%-git}
 ./ideology "\$@"
 EOF
 
-    install -Dm755 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname%-git}.desktop <<EOF
+    install -Dm0644 /dev/stdin ${pkgdir}/usr/share/applications/org.jcnc.snow.ideology.desktop <<EOF
 [Desktop Entry]
 Comment="IDEology is the IDE for the Snow programming language."
 Comment[zh_CN]="IDEology 是 Snow 编程语言的 IDE"
@@ -104,7 +104,19 @@ StartupNotify=false
 Terminal=false
 Type=Application
 Categories=Development;Tool;IDE;
-MimeType=application/x-snow;
+MimeType=application/x-cloud;
 Icon=${pkgname%-git}.png
+EOF
+
+    install -Dm0644 /dev/stdin ${pkgdir}/usr/share/mime/packages/application-x-cloud.xml <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-cloud">
+        <comment>Snow lang project files</comment>
+        <comment xml:lang="zh_CN">Snow 语言的项目文件</comment>
+        <glob pattern="*.cloud"/>
+        <icon name="application-x-cloud"/>
+    </mime-type>
+</mime-info>
 EOF
 }
