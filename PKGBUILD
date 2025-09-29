@@ -1,13 +1,12 @@
 # Maintainer: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi-agent
-pkgver=1.12
+pkgver=1.15
 pkgrel=1
 pkgdesc="GLPI Agent"
 arch=('any')
 url='https://www.glpi-project.org'
-source=("https://github.com/glpi-project/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-        "fix-serial-number.patch")
+source=("https://github.com/glpi-project/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 license=('GPL2')
 makedepends=("make" "perl-module-install" "perl-test-simple" "perl-test-deep" "perl-test-exception" "perl-test-mockmodule" "perl-test-mockobject" "perl-test-compile")
 depends=( "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uuid" "perl-file-copy-recursive" "perl-http-server-simple"
@@ -15,8 +14,7 @@ depends=( "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uui
           "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-http-proxy" "perl-yaml-tiny"
           "perl-http-server-simple-authen" "perl-io-capture" "perl-xml-treepp" "perl-universal-require"
           "perl-xml-libxml")
-sha256sums=('7935bcfa7bffdc942448374bdb6f880d5123723d31552caa8bfee14d8d618599'
-            'd9aaa2915b9218b9d001017ed95046967de34c0e2be6506eea6f695edc934e3a')
+sha256sums=('9b9c6849cbf0bb9169b6dc0909f32dfd88389697dd6bf550c1b20f73425381e1')
 backup=("etc/glpi-agent/agent.cfg"
         "etc/glpi-agent/inventory-server-plugin.cfg"
         "etc/glpi-agent/server-test-plugin.cfg"
@@ -30,8 +28,6 @@ backup=("etc/glpi-agent/agent.cfg"
 #=========================================
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
-
-   #patch --forward --strip=1 --input="../fix-serial-number.patch"
 }
 
 #=========================================
