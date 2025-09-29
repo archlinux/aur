@@ -3,12 +3,12 @@
 pkgbase=ideology-git
 pkgname=ideology-git
 pkgver=r3.4c5f8cd
-pkgrel=3
+pkgrel=5
 pkgdesc="IDEology is the IDE for the Snow programming language."
 arch=($CARCH)
 url="https://gitee.com/jcnc-org/IDEology"
 license=('Apache-2.0')
-groups=(snow-lang)
+groups=(snow-lang snow-lang-git)
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
 replaces=()
@@ -99,11 +99,12 @@ GenericName="IDEology is the IDE for the Snow programming language."
 GenericName[zh_CN]="IDEology 是 Snow 编程语言的 IDE"
 Name=IDEology
 Name[zh_CN]=IDEology
-Exec=${pkgname%-git}
+Exec=${pkgname%-git} %F
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=Development;Tool;
+Categories=Development;Tool;IDE;
+MimeType=application/x-snow;
 Icon=${pkgname%-git}.png
 EOF
 }
