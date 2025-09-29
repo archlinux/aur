@@ -4,6 +4,8 @@ run_hook ()
 	mkdir -p /run/cryptsetup
 	source /config.sh
 	sysctl -w kernel.panic=5 >/dev/null
+	# just run ntpdate against static server for now to avoid situations where tor can't connect
+	ntpdate 162.159.200.1 || ntpdate 216.239.35.8
 	/sbin/modprobe -a -q dm-crypt >/dev/null 2>&1
 	if [ -e "/sys/class/misc/device-mapper" ]; then
 		if [ ! -e "/dev/mapper/control" ]; then
@@ -19,7 +21,7 @@ run_hook ()
 				CPU=$(echo -ne $(grep ^model\ name /proc/cpuinfo  | cut -d: -f2 | uniq))
 				CORES=$(grep -c ^processor /proc/cpuinfo)
 				macaddr=$(cat /sys/class/net/eth0/address)
-                ipaddr=$(ip addr show dev eth0 | grep 'inet ' | awk '{print $2}')
+		                ipaddr=$(ip addr show dev eth0 | grep 'inet ' | awk '{print $2}')
 
 				#echo "Starting tor"
 				mkdir -p /tmp/tor
