@@ -2,7 +2,7 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.12.1'
+pkgver='3.12.2'
 pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -60,11 +60,11 @@ package() {
     rm -rf "${pkgdir}/usr/lib/cmake/fastcdr"
     rm -f "${pkgdir}/usr/lib/libfastcdr.a"
     rm -rf "${pkgdir}/usr/share/fastcdr"
-    rm ${pkgdir}/usr/include/zdict.h
-    rm ${pkgdir}/usr/include/zstd.h
-    rm ${pkgdir}/usr/include/zstd_errors.h
-    rm -r ${pkgdir}/usr/lib/cmake/zstd
-    rm ${pkgdir}/usr/lib/pkgconfig/libzstd.pc
+    rm -f ${pkgdir}/usr/include/zdict.h
+    rm -f ${pkgdir}/usr/include/zstd.h
+    rm -f ${pkgdir}/usr/include/zstd_errors.h
+    rm -rf ${pkgdir}/usr/lib/cmake/zstd
+    rm -f ${pkgdir}/usr/lib/pkgconfig/libzstd.pc
 }
 
-sha256sums=('c09480c965ecf4e1c2e7692cacff430c55abc643ee567fbaa5ab8897046fe3d2')
+sha256sums=('c364d025850738cc172458e297fa6356cd54f722cfc97c02618969e33f106c27')
