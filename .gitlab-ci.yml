@@ -14,8 +14,7 @@ check-for-update:
   - echo "${AUR_SSH_KEY}" > ~/.ssh/id_rsa_aur
   - chmod 600 ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa_aur
-  - ssh-keyscan jonasled.dev >> ~/.ssh/known_hosts
-  - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+  - printf '\nHost *\n    StrictHostKeyChecking no\n    UserKnownHostsFile /dev/null\n' >> ~/.ssh/config
   - git checkout master
   - git remote rm origin
   - git remote add origin git@jonasled.dev:jonasled/aptakube-deb-aur.git
