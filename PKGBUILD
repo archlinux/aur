@@ -6,6 +6,7 @@ _nodeversion=22
 _electronversion=38
 pkgdesc="YouTube Music Desktop App bundled with custom plugins"
 arch=('x86_64')
+#url="https://ytmd-devs.github.io/ytmd/" ## images are currently broken
 url="https://github.com/ytmd-devs/ytmd"
 license=('MIT')
 depends=(
