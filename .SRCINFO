@@ -62,10 +62,12 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=3.24.50
 	source = gtk-query-immodules-3.0.hook
 	source = 0001-Allow-disabling-legacy-Tracker-search.patch
+	source = 0002-gdk-Use-read_pixels-instead-of-get_pixels.patch
 	source = gtk3-filechooser-icon-view.patch
 	b2sums = 93ee986e75b2b94b50f1485a183d6ab558306bf17ab15a500ea485c40123257873a6a99fc5e20f864da6c561f0f6f4c7a15f42694bd691db03aeddd5dd6587d2
 	b2sums = 8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407
 	b2sums = 7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a
+	b2sums = 15b5e791417e9bbd794bde79a5d17fea17c89f3b8e906afa058717dde3a534fd0a849a94de4bf78845daaa2d347e04cece9705886fc02ce8132570eec2d43970
 	b2sums = a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3
 
 pkgname = gtk3-patched-filechooser-icon-view
