@@ -2,8 +2,9 @@
 pkgname=art-rawconverter-imageio
 pkgver=1.1.2
 pkgrel=1
+epoch=1
 pkgdesc='add on for ART raw converter to support more image formats'
-arch=('i686' 'x86_64' 'aarch64')
+arch=('any')
 url='https://github.com/artpixls/ART-imageio/'
 license=('GPL-3.0-only')
 depends=('art-rawconverter' 'python-pillow' 'libwebp' 'libjxl' 'python-numpy' 'python-tifffile' 'python-openexr' 'perl-image-exiftool' 'siril' 'libavif')
