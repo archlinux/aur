@@ -1,6 +1,6 @@
 # Maintainer: hecate <aur hecate space>
 pkgname=pandora-git
-pkgver=0.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="a parallax-scrolling wallpaper and lockscreen daemon for wayland compositors"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

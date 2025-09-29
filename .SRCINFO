@@ -1,6 +1,6 @@
 pkgbase = pandora-git
 	pkgdesc = a parallax-scrolling wallpaper and lockscreen daemon for wayland compositors
-	pkgver = 0.0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/pandorasfox/pandora
 	arch = i686
