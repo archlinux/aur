@@ -1,0 +1,4 @@
+blackbeard-theme/
+pkg/
+src/
+*.pkg.tar.zst
