@@ -1,7 +1,7 @@
 pkgbase = fish-tide
 	pkgdesc = 🌊 The ultimate Fish prompt.
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IlanCosman/tide
 	install = fish-tide.install
 	arch = any

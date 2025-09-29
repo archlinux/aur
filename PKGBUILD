@@ -3,7 +3,7 @@
 pkgname=fish-tide
 _pkgname=tide
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="🌊 The ultimate Fish prompt."
 arch=('any')
 url="https://github.com/IlanCosman/tide"
@@ -26,4 +26,4 @@ package() {
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
