@@ -1,0 +1,24 @@
+pkgbase = xsystem4
+	pkgdesc = This is a cross-platform implementation of AliceSoft's System 4 engine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nunuhara/xsystem4
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = bison
+	makedepends = flex
+	makedepends = glew
+	makedepends = meson
+	depends = chibi-scheme
+	depends = ffmpeg
+	depends = freetype2
+	depends = libffi
+	depends = libpng
+	depends = libsndfile
+	depends = libjpeg-turbo
+	depends = libwebp
+	depends = sdl2
+	depends = zlib
+	conflicts = xsystem4-git
+
+pkgname = xsystem4
