@@ -1,0 +1,25 @@
+[Unit]
+Description=youtube-local - Browser based client for watching YouTube anonymously
+Documentation=file:/usr/share/doc/youtube-local/README.md
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/youtube-local
+Restart=on-failure
+
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+ProtectSystem=strict
+ProtectProc=noaccess
+RestrictAddressFamilies=AF_INET AF_INET6
+
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=default.target
