@@ -38,6 +38,8 @@ build() {
     "${_pkgsrc}"
     "${_pkgsrc}/build"
     --cross-file lib32
+    -D enable_docs=false
+    -D enable_examples=false
   )
 
   cd "${srcdir}"
