@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/pandorasfox/pandora"
 license=('GPL-2.0')
 depends=()
-makedepends=(cargo git)
+makedepends=(cargo git sed)
 checkdepends=()
 optdepends=(niri)
 provides=(pandora)
@@ -47,4 +47,5 @@ check() {
 package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/pandora/target/release/pandora"
 	install -Dm0755 -t "$pkgdir/usr/share/doc/pandora/" "$srcdir/pandora/sample files/pandora.service"
+	sed -i -e "s|%h/.cargo|/usr|" "$pkgdir/usr/share/doc/pandora/pandora.service"
 }

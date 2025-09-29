@@ -10,6 +10,7 @@ pkgbase = pandora-git
 	license = GPL-2.0
 	makedepends = cargo
 	makedepends = git
+	makedepends = sed
 	optdepends = niri
 	provides = pandora
 	source = git+https://github.com/PandorasFox/pandora.git#branch=release
