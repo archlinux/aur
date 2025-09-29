@@ -1,7 +1,7 @@
 pkgbase = coccinelle
 	pkgdesc = C source code matching and transformation engine
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://coccinelle.lip6.fr
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -10,6 +10,7 @@ pkgbase = coccinelle
 	makedepends = ocaml-findlib
 	makedepends = ocaml-menhir
 	makedepends = ocaml-num
+	makedepends = ocaml-parmap
 	makedepends = ocaml-pcre
 	makedepends = ocaml-pyml
 	makedepends = ocaml-stdcompat

@@ -10,7 +10,7 @@
 
 pkgname=coccinelle
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
 url="https://coccinelle.lip6.fr"
@@ -20,6 +20,7 @@ makedepends=(
     'ocaml-findlib'
     'ocaml-menhir'
     'ocaml-num'
+    'ocaml-parmap'
     'ocaml-pcre'
     'ocaml-pyml'
     'ocaml-stdcompat'
@@ -68,13 +69,12 @@ build() {
 	--enable-pyml \
 	--enable-python \
 	--enable-stdcompat \
+	--enable-parmap \
 	\
 	--prefix=/usr \
 	--docdir=/usr/share/doc \
 	--libdir=/usr/lib/ocaml \
 	--mandir=/usr/share/man
-	# TODO
-	# --enable-parmap
 
     make
 }
