@@ -3,7 +3,7 @@
 
 pkgname=proton-mail-bin
 _name=${pkgname%-bin}
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('x86_64')
@@ -19,10 +19,7 @@ depends=(
     'glib2'
     'glibc'
     'gtk3'
-    'gvfs'
     'libcups'
-    'libdrm'
-    'libnotify'
     'libx11'
     'libxcb'
     'libxcomposite'
@@ -35,7 +32,7 @@ depends=(
     'nspr'
     'nss'
     'pango'
-    'xdg-utils'
+    'systemd-libs'
 )
 makedepends=('libarchive')
 optdepends=(
@@ -47,8 +44,8 @@ optdepends=(
 provides=("$_name")
 conflicts=("$_name")
 source=("ProtonMail-desktop-beta-$pkgver.deb::$url/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb")
-sha512sums=('b43abcf864e6296d112231cf262c8c4cac82f4b1c54cb5ba06ebb63bf032a150fd5d97d4343b9037a9694e86cb2d26d8ed1d7741668a0a3e7e123fa9cc847c75')
-b2sums=('553982eb417359eeae9bf2cf6f4dbd02784cf0ad9108ed118bab5c48cfff91d2539179ab542f5f9425ce220205b80cf44969891dee4e89516002a443acf32e4a')
+sha512sums=('8f78db0707e3f1f0cd8ad259891840f88027c56b347c7526e8283576a997cef543c8014569aaf774f444e0d714bcd6e54a5c48171553384368c38cec4cf94e5b')
+b2sums=('988589cc10a8130e1d80e5888557791cbaa9e881b4f21979fec5d472b3f9770b03065416f962e68ade25263246b498b8d4822e8751eca90ac5a512b94e736bf9')
 
 package() {
     bsdtar -xvf data.tar.xz -C "$pkgdir/"
