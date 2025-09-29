@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
-pkgver=0.2.11.r268.g26eb92f
+pkgver=0.2.11.r308.gf5a4114
 pkgrel=2
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
@@ -72,5 +72,8 @@ package() {
 		rm "$pkgdir/usr/bin/sq" "$pkgdir/usr/bin/sq_static"
 
 		mv "$pkgdir/usr/brux" "$pkgdir/usr/bin/brux"
+
+		# Precaution
+		rm -f "$pkgdir/usr/lib/libsquirrel*" "$pkgdir/usr/lib/libsqstd" "$pkgdir/usr/include/sq*"
 	fi
 }
