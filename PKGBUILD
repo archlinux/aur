@@ -10,15 +10,8 @@ license=(MIT)
 provides=()
 conflicts=()
 options=("!strip")
-source=(
-    "$url/releases/download/v$pkgver/nav-$CARCH-unknown-linux-gnu.tar.gz"
-    "$url/releases/download/v$pkgver/nav-$CARCH-unknown-linux-gnu.tar.gz.sha256"
-)
-sha256sums=("SKIP" "SKIP")
-
-prepare() {
-    tar -xvf "nav-$CARCH-unknown-linux-gnu.tar.gz"
-}
+source=("nav-$pkgver-$CARCH-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/nav-$CARCH-unknown-linux-gnu.tar.gz")
+sha256sums=("SKIP")
 
 package() {
     install -Dm755 nav -t "$pkgdir/usr/bin/"
