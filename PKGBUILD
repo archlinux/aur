@@ -2,7 +2,7 @@
 
 pkgname=clilog-git
 pkgver=0.2.r2.g2dd2244 
-pkgrel=1
+pkgrel=2  # 👈 MUDA PRA 2
 pkgdesc="CLI To-do list manager built in Bash with TUI and Python for Web interface support, adhering to XDG Base Directory Specification."
 url="https://github.com/simeulinuxkaliaiwr/clilog"
 license=('MIT')
@@ -36,7 +36,7 @@ package() {
     
     install -Dm644 "src/functions.sh" "${pkgdir}/usr/lib/clilog/functions.sh"
     install -Dm644 "src/interactive.sh" "${pkgdir}/usr/lib/clilog/interactive.sh"
-    install -Dm755 "src/clilog_web.py" "${pkgdir}/usr/lib/clilog/clilog_web.py"  # 👈 NOVO
+    install -Dm755 "src/clilog_web.py" "${pkgdir}/usr/lib/clilog/clilog_web.py"
     
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${srcdir}/mit.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
