@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Author: Chmouel Boudjnah <chmouel@chmouel.com>
 set -eufo pipefail
-NPM_PACKAGE="${NPM_PACKAGE:-@github/copilot}"
+NPM_PACKAGE="${NPM_PACKAGE:-@zed-industries/claude-code-acp}"
 
 latest=$(curl -s "https://registry.npmjs.org/${NPM_PACKAGE}/latest" | jq -r '.version')
 pkgversion=$(grep '^pkgver=' PKGBUILD)
@@ -21,4 +21,3 @@ makepkg -srif
 git commit -m "Bump to ${latest}" PKGBUILD .SRCINFO
 git clean -f .
 rm -f *tgz *zst
-
