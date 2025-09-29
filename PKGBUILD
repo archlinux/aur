@@ -1,4 +1,4 @@
-# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Maintainer: nicknb <nicknb at posteo dot com>
 _projectname=xtool
 _appimgfile="$_projectname.AppImage"
 _licensefile="$_projectname-LICENSE"
