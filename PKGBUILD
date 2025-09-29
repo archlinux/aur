@@ -19,7 +19,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${_npmname}-${pkgver}.tgz")
 changelog="changelog.md"
 
-source=("${_npmname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz"
 		"MAN-${pkgver}.1::${_urlraw}/man/${_npmname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
@@ -34,7 +34,7 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${_npmname}-${pkgver}.tgz"
+		"${srcdir}/${pkgname}-${pkgver}.tgz"
 
 	# Fix ownership of ALL FILES
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
