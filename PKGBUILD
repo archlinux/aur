@@ -5,8 +5,8 @@
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
-pkgver=5.0.0
-pkgrel=6
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -21,8 +21,8 @@ source=(
 options=('staticlibs' '!strip')
 makedepends=('patchelf')
 optdepends=('env-modules')
-sha256sums=('604ae6c34ef2648504ba08d2f33e42b5a9cf4032eaefaa9253560747ebaeb1ca'
-            'e7e1e1fec01ad2e184d06d27dbe977883c3d93a3ffda72997fb23335975dd595'
+sha256sums=('2a12eb1270fc1cf16618664008dc872d37cc2bd690c492e468c8f2c6937f9488'
+            '73ad28baaa1096972804c1a1d42b8ed4724c0b98b60806e94ef6322bc86afa8b'
             '4f58524e1948b2cb470b856546b87656b2fbce0b98b0d43d345fcedb101f1295'
             'fe5245a7b34253a67105ee5e6bb868bbb69ebf318af32dc81e1cdd7d7277b639'
             '5fa50773bb1076ee9ac1010844c86d749757a4da0c703d33b163863f75242670')
