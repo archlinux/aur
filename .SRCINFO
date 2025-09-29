@@ -1,16 +1,16 @@
 pkgbase = mips64el-linux-gnu-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (MIPS64EL target, for the toolchain with GNU C library and multilib ABI)
-	pkgver = 6.16
+	pkgver = 6.17
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = any
 	license = GPL-2.0-only
 	makedepends = rsync
-	source = http://www.kernel.org/pub/linux/kernel/v6.x/linux-6.16.tar.xz
-	source = http://www.kernel.org/pub/linux/kernel/v6.x/linux-6.16.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v6.x/linux-6.17.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v6.x/linux-6.17.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83
+	sha256sums = 9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7
 	sha256sums = SKIP
 
 pkgname = mips64el-linux-gnu-linux-api-headers
