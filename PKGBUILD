@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.24.2
+_pkgver=0.28.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,10 +37,13 @@ optdepends=(
   r-clubsandwich
   r-cobalt
   r-coda
+  r-correlation
   r-coxme
   r-cplm
+  r-curl
   r-dbscan
   r-did
+  r-discovr
   r-distributional
   r-domir
   r-drc
@@ -60,7 +63,6 @@ optdepends=(
   r-gamlss
   r-gee
   r-geepack
-  r-ggeffects
   r-ggplot2
   r-glmmadaptive
   r-glmmtmb
@@ -95,6 +97,7 @@ optdepends=(
   r-mmrm
   r-multcomp
   r-mumin
+  r-mvtnorm
   r-nbclust
   r-nestedlogit
   r-nfactors
@@ -119,6 +122,7 @@ optdepends=(
   r-rms
   r-rstan
   r-rstanarm
+  r-sampleselection
   r-sandwich
   r-see
   r-serp
@@ -139,8 +143,8 @@ optdepends=(
   r-modelbased
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('98c8a15ff8e7b83cb31f1e17899f73db')
-b2sums=('0a119e89a8620b9cd85dfd32a0f1c7b297c59057d0660eb7d862117ef0f5302d414d94216579382a475e52252aaa45f336ec6652eae234792b2bcc7af14074f7')
+md5sums=('dc48f360c97eee15cbbf48fb000e990a')
+b2sums=('838ab348585a97610cc59c5a807529f8e623802ba0f794ac002be31c7031dac540721de9a29620aea4331d9d8b35127b8e5c7c8ccbecba330427d41a2201d5c8')
 
 build() {
   mkdir build
