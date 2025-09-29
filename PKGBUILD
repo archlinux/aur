@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vis-launcher-bin
 _pkgname=VI-Software-Launcher
-pkgver=2.1.10
+pkgver=2.1.11
 _electronversion=38
 pkgrel=1
 pkgdesc="Modded Minecraft launcher for servers on the VI Software Platform.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-setup-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4dee2b620f586349f10f54db0d83a6b923216c5b0b0e4bdce202fe15f8e5c73e'
+sha256sums=('0a01b0ce4773e47299327f647153767db36563fb2579c0e2adb95282cfff6fd9'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
