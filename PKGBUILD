@@ -8,22 +8,36 @@
 # version: 1.0
 #   This software is provided "as is", without warranty of any kind, express or implied.
 #   I do not guarantee that it will work as intended on your system.
-#
+# -----------------------------------------------------------------------------
 # Info:
-# 	TKG-Installer 🐸
-# 	Manage TKG/Frogminer packages.
-# 	Supports Linux-TKG, Nvidia-TKG, Mesa-TKG, Wine-TKG, Proton-TKG.
-# 	Provides a user-friendly menu with previews.
-# 	Includes configuration editor functions.
-# 	Designed for Arch Linux but adaptable to other distributions.
+# 	TKG Installer 🐸
+# 	Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) from the Frogging-Family repositories.
+# 	Interactive Fuzzy finder fzf menue mode.
+#   Quick direct command-line mode.
+#   Preview readme and configuration.
+#   Edit configuration files using your preferred editor.
+#   Optional download configuration files.
 # Details:
 #   This script handles installation, configuration for TKG/Frogminer packages.
 #   It uses color output and Unicode icons for better readability.
 #   Do not run as root. Use a dedicated user for security.
 #   See https://github.com/damachine/tkginstaller further details.
+# Usage:
+#   Interactive (Menu-mode)
+#       run: tkginstaller
+#   Command-line (Direct-mode)
+#   Skip the menu and run specific actions directly:
+#   Examples:
+#       run: tkginstaller linux    # Install Linux-TKG
+#       run: tkginstaller nvidia   # Install Nvidia-TKG
+#       run: tkginstaller mesa     # Install Mesa-TKG
+#       run: tkginstaller wine     # Install Wine-TKG
+#       run: tkginstaller proton   # Install Proton-TKG
+#   Show all available commands and shortcuts!
+#       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
