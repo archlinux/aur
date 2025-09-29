@@ -35,9 +35,8 @@ package() {
     # Install wrapper first
     install -Dm755 makepkg.wrapper.sh "$pkgdir/usr/local/bin/makepkg"
 
-    #install restoring script
+    # install restoring script
     install -Dm755 suscheck-uninstall.sh "$pkgdir/usr/local/bin/suscheck-uninstall"
-
 
     # Install sus-check script
     install -Dm755 suspcheck.sh "$pkgdir/usr/local/bin/suspcheck.sh"
@@ -45,14 +44,14 @@ package() {
     # Install suscheck DB maintaining script
     install -Dm755 suscheck.sh "$pkgdir/usr/local/bin/suscheck.sh"
 
-
     # Install supporting files
     mkdir -p "$pkgdir/usr/local/etc"
     cp -f suspcheck-blocked-locations.txt "$pkgdir/usr/local/etc/"
     cp -f suspcheck-denylist.txt "$pkgdir/usr/local/etc/"
     cp -f suspcheck-blocked-domains.txt "$pkgdir/usr/local/etc/"
 
-    # Extract the tarball into the subdirectory
+    # Ensure subdirectory exists before untar
+    mkdir -p "$pkgdir/usr/local/etc/suscheck-data"
     tar xzf suscheck-data.tar.gz -C "$pkgdir/usr/local/etc/suscheck-data"
-
 }
+
