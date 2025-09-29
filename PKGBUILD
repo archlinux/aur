@@ -9,14 +9,6 @@ license=('MIT')
 depends=('dbus')
 makedepends=('go' 'git')
 options=('!debug')
-optdepends=(
-    'rofi: for rofi integration script'
-    'wmctrl: for X11 window management in rofi script'
-    'brave-bin: Brave browser support'
-    'chromium: Chromium browser support'
-    'google-chrome: Chrome browser support'
-    'firefox: Firefox browser support'
-)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('5e9f29294c58f792b3741cb0054f1c3872c2dffe7a3d9e1c3a6dc40773e0f54a')
 install=tabctl.install
