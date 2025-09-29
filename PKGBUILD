@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=1.0.17
+pkgver=1.0.18
 _electronversion=36
-_nodeversion=24
+_nodeversion=22
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
 arch=(
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9e3d1b8e9c6190bb84f3acda9a8fa226a2690b675a3dfefb165420e7137bfd66'
+sha256sums=('fc6a0f3d5b97d9881c7ad97f8910753d2d26f9c33eea66882b13ddd7978aa397'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -37,7 +37,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
@@ -50,7 +50,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _get_electron_version
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -71,6 +70,7 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     find src-electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
@@ -94,6 +94,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-go"
+    _ensure_local_nvm
     _VERSION="$(git describe --tags --abbrev=0)"
     go build -tags=with_gvisor -trimpath \
         -ldflags "-s -w -X github.com/snakem982/pandora-box/api.Version=${_VERSION}" \
