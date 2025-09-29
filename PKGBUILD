@@ -55,7 +55,7 @@ package() {
     ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${_pkgdir}/usr/bin/${_pkgname}"
 
     # Icon
-    install -Dm644 assets/images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_}.png"
+    install -Dm644 assets/images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
     # Desktop Launcher
     install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
