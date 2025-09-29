@@ -1,6 +1,6 @@
 # Maintainer: Carlo Teubner <carlo@cteubner.net>
 pkgname=runapp
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Application runner for Linux desktop environments that integrate with systemd"
 arch=('x86_64')
@@ -8,7 +8,7 @@ depends=('systemd-libs')
 url="https://github.com/c4rlo/runapp"
 license=('MIT')
 source=("https://github.com/c4rlo/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('194eaa8ebc854c57b474f56f0d24d38fed50a193ca369a45b240d3c85c805d30')
+sha256sums=('d8d6b156cae6f795bcc689b22af37a289e8f2a8b2c77c34ff37872b9294fc2cf')
 
 build() {
   cd "$pkgname-$pkgver"
