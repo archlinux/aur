@@ -10,10 +10,8 @@ depends=('dbus')
 makedepends=('go' 'git')
 options=('!debug')
 optdepends=(
-    'rofi: for rofi integration scripts'
-    'wmctrl: for X11 window management'
-    'xprop: for X11 window detection'
-    'hyprland: for Wayland/Hyprland support'
+    'rofi: for rofi integration script'
+    'wmctrl: for X11 window management in rofi script'
     'brave-bin: Brave browser support'
     'chromium: Chromium browser support'
     'google-chrome: Chrome browser support'
