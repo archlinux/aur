@@ -9,8 +9,8 @@ _electron="electron37"  # As of 2025-08-11, electron37 actually works.
 _nodeversion=24         # As of 2025-05-26, the minimum version of `nodejs` is 22. As of 2025-08-11, version 23 does not work, but 22 and 24.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
-pkgver=1.11.110.sc.0.test.0.r546.20250902.4fc61c8
-pkgrel=1
+pkgver=1.11.112.sc.0.test.0.r547.20250917.4d4dcf1
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
@@ -38,6 +38,7 @@ makedepends=(
   "nvm"
   "libxcrypt-compat"
   "asar"
+  'zopfli' # To size-reduce PNG files
 )
 depends=(
   "gcc-libs"
@@ -166,10 +167,11 @@ package() {
   install -Dvm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Icons
-  install -Dvm644 element-desktop/res/img/element.png "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/schildichat-desktop.png
-  for i in 16 24 48 64 96 128 256 512; do
-    install -Dvm644 "element-desktop/build/icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/schildichat-desktop.png"
-  done
+  zopflipng -m -y element-desktop/build/icon.png element-desktop/build/icon.png
+  install -Dvm644 element-desktop/build/icon.png "${pkgdir}"/usr/share/icons/schildichat-desktop.png
+  #for i in 16 24 48 64 96 128 256 512; do
+  #  install -Dvm644 "element-desktop/build/icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/schildichat-desktop.png"
+  #done
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log RELEASE.md README.md FEATURES.md
 
