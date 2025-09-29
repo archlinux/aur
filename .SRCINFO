@@ -1,6 +1,6 @@
 pkgbase = python-pytun-pmd3
 	pkgdesc = A fork of https://github.com/montag451/pytun with partial Darwin support
-	pkgver = 2.2.2
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/doronz88/pytun-pmd3
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pytun-pmd3
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	depends = python
-	source = python-pytun-pmd3-2.2.2.tar.gz::https://github.com/doronz88/pytun-pmd3/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = e5de84ed6f79963e2dc8b7fef54f7f2a495a8462a2523636ee457d2ae52b04b6
+	source = python-pytun-pmd3-3.0.2.tar.gz::https://github.com/doronz88/pytun-pmd3/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = ce1f0e2fcefa1a790174c9dc31513afcea6922f69224f2e13110f4960848af01
 
 pkgname = python-pytun-pmd3
