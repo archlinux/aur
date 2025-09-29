@@ -1,0 +1,21 @@
+pkgbase = krakenrf-kfr-git
+	pkgdesc = Fast, modern C++ DSP framework, FFT, Sample Rate Conversion, FIR/IIR/Biquad Filters (SSE, AVX, AVX-512, ARM NEON) (for KrakenSDR)
+	pkgver = r823.473dc0f
+	pkgrel = 1
+	url = https://github.com/krakenrf/kfr
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = clang18
+	makedepends = git
+	makedepends = binutils
+	depends = glibc
+	depends = gcc-libs
+	provides = krakenrf-kfr
+	conflicts = kfr
+	conflicts = krakenrf-kfr
+	source = git+https://github.com/krakenrf/kfr.git
+	sha256sums = SKIP
+
+pkgname = krakenrf-kfr-git
