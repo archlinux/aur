@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(libnotify gtk3)
 conflicts=(batticonplus-ayatana cbatticon)
 replaces=(cbatticon)
-source=("${url}.git")
+source=("$pkgname-v$pkgver.tar.gz::${url}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('4CF0F66D9CEF47105E22DD0F73580DE2EDDFA6D6')   # artist for Artix Linux
 sha256sums=('a1b9e0e72c6c2640bbfadea1ac6fa47351d35a5b9149a7f2dd97e64efc3ed227')
 
