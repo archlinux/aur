@@ -1,0 +1,14 @@
+pkgbase = chmod-cli-git
+	pkgdesc = A simple cli tool that brings the chmod command in tui format. Generate permissions for files and directories by selecting easy to read config options and copy the result both in numeric and symbolic format.
+	pkgver = r20211220.rfce9a8c
+	pkgrel = 1
+	url = https://github.com/Mayowa-Ojo/chmod-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/Mayowa-Ojo/chmod-cli.git
+	sha256sums = SKIP
+
+pkgname = chmod-cli-git
