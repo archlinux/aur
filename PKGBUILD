@@ -1,8 +1,8 @@
 # Maintainer: Saurabh Kumar Sharma <imesskayesss@protonmail.com>
 
 pkgname=lolminer
-notagver=1.97
-pkgtag=
+notagver=1.98
+pkgtag=a
 pkgver=${notagver}${pkgtag}
 pkgrel=1
 pkgdesc="Unofficial installer for lolMiner"
