@@ -1,6 +1,6 @@
 pkgbase = conan-bin
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 2.20.1
+	pkgver = 2.21.0
 	pkgrel = 1
 	url = https://conan.io
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = conan-bin
 	depends = libxcrypt-compat
 	provides = conan
 	conflicts = conan
-	source = LICENSE-2.20.1::https://raw.githubusercontent.com/conan-io/conan/2.20.1/LICENSE.md
-	source = README-2.20.1.md::https://raw.githubusercontent.com/conan-io/conan/2.20.1/README.md
+	source = LICENSE-2.21.0::https://raw.githubusercontent.com/conan-io/conan/2.21.0/LICENSE.md
+	source = README-2.21.0.md::https://raw.githubusercontent.com/conan-io/conan/2.21.0/README.md
 	sha256sums = cb0cfe10fad4eeb3ec0c1482474ddae67dcf2b2715cfd58655f6d18e5ce92aac
 	sha256sums = 366ea37eea2441b885aa01304bd30a90b5c93680c58f91e7cf3a2a238f6370b5
-	source_x86_64 = https://github.com/conan-io/conan/releases/download/2.20.1/conan-2.20.1-linux-x86_64.tgz
-	sha256sums_x86_64 = 96ba50faf306702df78dc0fe821d1d57f6d037f0f16f5fae023f514b07c3f543
-	source_aarch64 = https://github.com/conan-io/conan/releases/download/2.20.1/conan-2.20.1-linux-aarch64.tgz
-	sha256sums_aarch64 = c404c5dbf21cc5ba3da3069f30114a7de5b321bb0890826ba36980129f7ae858
+	source_x86_64 = https://github.com/conan-io/conan/releases/download/2.21.0/conan-2.21.0-linux-x86_64.tgz
+	sha256sums_x86_64 = 089dfded96e6261690824898356bd88c074ec56eb5b87948ddc8aa2ca34fce64
+	source_aarch64 = https://github.com/conan-io/conan/releases/download/2.21.0/conan-2.21.0-linux-aarch64.tgz
+	sha256sums_aarch64 = 2f356826c4c633f24355f4cb1d54a980a23c1912c0bcab54a771913af3b753b5
 
 pkgname = conan-bin
