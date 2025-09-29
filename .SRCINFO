@@ -1,6 +1,6 @@
 pkgbase = proxygen
 	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server
-	pkgver = 2025.09.22.00
+	pkgver = 2025.09.29.00
 	pkgrel = 1
 	url = https://github.com/facebook/proxygen
 	arch = x86_64
@@ -12,16 +12,16 @@ pkgbase = proxygen
 	makedepends = python
 	depends = boost-libs
 	depends = double-conversion
-	depends = fizz>=2025.09.22.00
+	depends = fizz>=2025.09.29.00
 	depends = fmt
-	depends = folly>=2025.09.22.00
+	depends = folly>=2025.09.29.00
 	depends = gcc-libs
 	depends = gflags
 	depends = glibc
 	depends = google-glog
-	depends = mvfst>=2025.09.22.00
+	depends = mvfst>=2025.09.29.00
 	depends = openssl
-	depends = wangle>=2025.09.22.00
+	depends = wangle>=2025.09.29.00
 	depends = c-ares
 	depends = zlib
 	depends = zstd
@@ -31,7 +31,7 @@ pkgbase = proxygen
 	provides = libproxygendeviousbaton.so
 	provides = libproxygenhqloggerhelper.so
 	provides = libproxygenhttpserver.so
-	source = proxygen-2025.09.22.00.tar.gz::https://github.com/facebook/proxygen/archive/v2025.09.22.00.tar.gz
-	sha256sums = 0bc0d314f8abdce76191affcdde5f6da7511f6e8ff297ca66fd066011cc29671
+	source = proxygen-2025.09.29.00.tar.gz::https://github.com/facebook/proxygen/archive/v2025.09.29.00.tar.gz
+	sha256sums = c5251a444ad1ac89a273a7cdb4b28649791577aa3e9d19dafe6193bec8dc449f
 
 pkgname = proxygen
