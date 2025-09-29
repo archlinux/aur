@@ -3,7 +3,7 @@
 pkgname=proton-authenticator
 pkgver=1.1.4
 _commit=04205ef31c8edb37cfc700d0cf7f5647f83374be
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source and end-to-end encrypted 2FA app. Securely sync and backup 2FA codes easily.'
 arch=('x86_64')
 url='https://proton.me/authenticator'
@@ -21,7 +21,7 @@ depends=(
     'pango'
     'webkit2gtk-4.1'
 )
-makedepends=('cargo' 'git' 'nodejs-lts' 'yarn')
+makedepends=('cargo' 'git' 'mold' 'nodejs-lts' 'yarn')
 source=("ProtonWebClients-$_commit::git+https://github.com/ProtonMail/WebClients.git#commit=$_commit"
         "Proton Authenticator.desktop"
         "add-missing-dnd-kit-sortable.patch"
@@ -39,6 +39,9 @@ prepare() {
 
 build() {
     cd ProtonWebClients-$_commit
+
+    export LDFLAGS="-fuse-ld=mold"
+    export RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
     yarn install
     yarn workspace proton-authenticator build:desktop
