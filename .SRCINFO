@@ -1,0 +1,15 @@
+pkgbase = fish-tide
+	pkgdesc = 🌊 The ultimate Fish prompt.
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/IlanCosman/tide
+	install = fish-tide.install
+	arch = any
+	license = MIT
+	makedepends = findutils
+	depends = fish
+	conflicts = fish-tide-git
+	source = fish-tide-6.2.0.tar.gz::https://github.com/IlanCosman/tide/archive/refs/tags/v6.2.0.tar.gz
+	b2sums = b19a9441e6928d972ec5e44235557d4e968f60c9880592612d7a62fc842f779804be033c8a845d1cd1ba5a1650272f30a5eeacd641ba91b39adc3a1d4170ed0d
+
+pkgname = fish-tide
