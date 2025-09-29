@@ -1,0 +1,15 @@
+pkgbase = ocaml-parmap
+	pkgdesc = Minimalistic library allowing for multicore architectures
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://rdicosmo.github.io/parmap
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = dune
+	depends = glibc
+	depends = ocaml
+	options = !strip
+	source = ocaml-parmap-1.2.5.tar.gz::https://github.com/rdicosmo/parmap/archive/refs/tags/1.2.5.tar.gz
+	b2sums = 6e6c5c7dcfd1e7af4b921bc8795b2a23f0fd5e01f6ce91665bbbc5e1f9e19f0b7eaee0361b3450d4a9823744c97c6f6ef28f8c8f1f65fad80f2a0a30dc07b740
+
+pkgname = ocaml-parmap
