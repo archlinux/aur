@@ -2,9 +2,9 @@
 # Contributor: Gereon Schomber
 # Contributor: Martin F. Schumann
 
-_naclsdkver=10 # If not correct, cmake will make a download.
+_naclsdkver=11 # If not correct, cmake will make a download.
 pkgname=unvanquished
-pkgver=0.55.4
+pkgver=0.55.5
 pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game that pits aliens against humans'
 arch=(x86_64 aarch64)
@@ -52,12 +52,12 @@ sha256sums=('b6eb6d2f0a45512cb4b67245fc1454c6d8a2d4ea83ce203c06dcacc51ec411fd'
             '562a0c185dfed2b2dee6135a399b18eff0d5bc5380f19a89ba15fc63b6e2827f'
             '0b0bc478ad6e61dd17fdeb3265a6321d0ca2719eca7bbb432a4b4a497c58a7b0'
             '44df664e8737fd543818cebc1e506a33e724fc3fb73eee46813ec3648eff64a0'
-            '3ef4d79a7c6852b39b78cb5a2024fc48947f676196c3669ac269e7bc346c194e'
-            '3c1b70026ce4ee070a18b3ee0ad42270ab3224cefbdd52431bfbe31e0aed3248'
-            '8644e3c754097e581488eca758156949332300cbf01aecd0b18e1a2cca5b9e5a'
-            '43f0ed068877cff6750d3b6e606c613adb0c9ed22fca8ff0e13a6dcdca8156db'
-            '5eccfa60da3eae4b7d3d91e00c092336a435d38967e9bfc3721899ee217732c3'
-            '819c6671c85391fd567769144f060a36a73b5a605becb653613b27e96b2dd89d')
+            'c41d9c4c1954567a24a1f42c9b138a11a60929e508c9bdde60882f0f921e0bd8'
+            '94cf51d8bb48875ffcd9169ff9e6e370b47753e36cecef5a5de8dbaaad8f05ea'
+            '673036c25d9026c96f7d05dfca05625645d870116f8581a6bb32d81388993b8e'
+            '084f3bd33fd5d8906e5433761eaef099b63c29561f2754bcda7d6a761062e172'
+            'f738ecb284c1a07159ddf32b6686b5f47a380a7815c7b6647b0cae0a6a2619b2'
+            '970e997ccf50a2155fe68a35f9abf2c5c5967cb5686a4855baf0cca89235d28c')
 
 # The prepare function mimics the git submodule dance.
 prepare() {
