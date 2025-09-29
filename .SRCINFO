@@ -1,0 +1,17 @@
+pkgbase = python-sbvirtualdisplay
+	pkgdesc = A customized pyvirtualdisplay for SeleniumBase
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/mdmintz/sbVirtualDisplay
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = xorg-server-xvfb
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sbvirtualdisplay/sbvirtualdisplay-1.4.0.tar.gz
+	md5sums = dd6bd1ce559fc70589f79ed0a252495f
+
+pkgname = python-sbvirtualdisplay
+	depends = python>=3.8
