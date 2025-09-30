@@ -1,0 +1,17 @@
+pkgbase = minipro-gui
+	pkgdesc = MiniPro GUI wrapper for MiniPro CLI
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/twelve-chairs/minipro-gui
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	depends = qt6-base
+	depends = gcc-libs
+	depends = minipro
+	provides = minipro-gui
+	conflicts = minipro-gui
+	source = https://github.com/twelve-chairs/minipro-gui/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 9653dbb85266e7478858ad120dc15177a833fda10877e620e509a7a7a0cb4028
+
+pkgname = minipro-gui
