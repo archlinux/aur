@@ -1,0 +1,9 @@
+[Unit]
+Description=KrakenSDR Heimdall Startup Service
+
+[Service]
+Type=oneshot
+ExecStart=heimdall start
+
+[Install]
+WantedBy=default.target
