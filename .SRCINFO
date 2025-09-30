@@ -1,6 +1,6 @@
 pkgbase = grub-android-prober
 	pkgdesc = GRUB Configuration for Android detection (Only works with some sort of filesystems)
-	pkgver = 0.1.0
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/shadichy/grub-android-x86.git
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = grub-android-prober
 	depends = bash
 	source = 30_android-prober
 	source = grub-android-prober
-	sha512sums = 371fb09e5dc1d3f0488641ffd0fcd59c6615452f3ac77f3506d0f83be060e506027c38fd31139670038ac3230f12f3db89b5ff737deadd11d59d385bee1272d6
-	sha512sums = b6da4768bf1a55a3de2db649ffdbbf9a5e52828c7b0b2388f5773670416858698997ca8ab7b3bcfc0f4a2e1bc432eba5ebd3375a966e7ce6d4ff599e645c603c
+	sha512sums = b995676f79d6f8d10503dc7aeb93647b8d9ad5db9dd939e0d72045f221afb6e9377da1c668316e7d66f0fb65e664b175607364e38981e8161d0f7546188957c3
+	sha512sums = 4a93019c951f3bd12a68c5f1b5d9337fe5f7c4732aac80de17ba76d667410c997ed521dcb2457b10eaab124a08b7f3ba917022a11545082d82f2456547d57523
 
 pkgname = grub-android-prober
