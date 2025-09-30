@@ -7,7 +7,8 @@ pkgver=r212.dceb949
 pkgrel=1
 pkgdesc="A cross-platform network monitoring terminal UI tool built with Rust."
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/domcyrus/rustnet"
+_author=domcyrus
+url="https://github.com/${_author}/${_reponame}"
 license=('Apache-2.0')
 depends=('libpcap' 'libelf' 'zlib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'pkgconf' 'clang' 'llvm' 'lld' 'libbpf')
@@ -15,7 +16,7 @@ provides=(${pkgname%-git})
 conflicts=("${pkgname%-git}-bin")
 options=(!debug strip)
 install=$_pkgname.install
-source=("git+https://github.com/domcyrus/rustnet.git")
+source=("git+https://github.com/${_author}/${_reponame}.git")
 md5sums=('SKIP')
 
 pkgver() {
