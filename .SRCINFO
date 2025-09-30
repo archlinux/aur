@@ -1,7 +1,7 @@
 pkgbase = rime-wanxiang
 	pkgdesc = 万象拼音：词库基于AI筛选和语料辅助筛选精干高效，配合全新语法模型，输入不再纠结。
 	pkgver = 13.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amzxyz/rime_wanxiang
 	arch = any
 	license = CC-BY-4.0
@@ -15,7 +15,7 @@ pkgbase = rime-wanxiang
 	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v13.0.1.tar.gz
 	source = build.sh
 	b2sums = a6b97c6f232fba72274528897ff701ce2ed9651afb228cf6995f8417b795f97ea4225c0995ddb6a0754ca3a2a4ee465a3917aaa8676d71499e478f5f9d552ec7
-	b2sums = 1d5971e2bc439a4e9675e88194c68eabbcba0434425c5f6d8cb6124f031e0380e7d95475acb240fba7267653a8c881073e165700fb4f9cf5e46b0ca6723b45ed
+	b2sums = e1c0a4adf4a6175ac1343c9d94d5deb6d3e134b5258111849cc714893bb1fb70d308ffb900969e510087c59489318678a3e4ad88c8a134f03d90722a1202a672
 
 pkgname = rime-wanxiang-dict
 	pkgdesc = 万象拼音词库基础数据
