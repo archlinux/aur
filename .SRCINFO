@@ -14,7 +14,6 @@ pkgbase = piliplus
 	depends = gtk3
 	depends = mpv
 	depends = libayatana-appindicator
-	conflicts = piliplus
 	source = git+https://github.com/bggRGjQaUbCoE/PiliPlus.git#tag=1.1.4.6
 	source = piliplus.desktop
 	sha256sums = 3ad9b04e589f9845e8f76992662dd0ee66c876d04e63957a010c35fe1e79927a
