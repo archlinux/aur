@@ -1,6 +1,6 @@
 pkgbase = gfxreconstruct-git
 	pkgdesc = Graphics API capture and replay tools for reconstructing graphics application behavior
-	pkgver = 1.4.304.0.r39.g79e09199
+	pkgver = 1.4.321.0.r106.g614fbd35c
 	pkgrel = 1
 	url = https://github.com/LunarG/gfxreconstruct
 	arch = x86_64

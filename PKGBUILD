@@ -2,7 +2,7 @@
 # Contributor: Yevhenii Kolesnikov <sigexp.acc at gmail dot com>
 
 pkgname=gfxreconstruct-git
-pkgver=1.4.304.0.r39.g79e09199
+pkgver=1.4.321.0.r106.g614fbd35c
 pkgrel=1
 pkgdesc="Graphics API capture and replay tools for reconstructing graphics application behavior"
 arch=(x86_64)
@@ -15,7 +15,10 @@ conflicts=(gfxreconstruct)
 source=("git+https://github.com/LunarG/gfxreconstruct.git"
         "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git")
+        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git"
+		#"git+https://github.com/KhronosGroup/OpenXR-SDK.git"
+		#"git+https://github.com/KhronosGroup/OpenXR-Docs.git"
+		)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -32,13 +35,25 @@ prepare() {
   git config submodule.external/Vulkan-Headers.url "$srcdir/Vulkan-Headers"
   git config submodule.external/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
   git config submodule.external/SPIRV-Reflect.url "$srcdir/SPIRV-Reflect"
+  #git config submodule.external/OpenXR-SDK.url "$srcdir/OpenXR-SDK"
+  #git config submodule.external/OpenXR-Docs.url "$srcdir/OpenXR-Docs"
+  git config submodule.external/OpenXR-SDK.update none
+  git config submodule.external/OpenXR-Docs.update none
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
+  local _flags=(
+	# -DOPENXR_HEADER:FILEPATH=/usr/include/openxr # don't work
+	-DGFXRECON_ENABLE_OPENXR:BOOL=OFF
+	#  install(EXPORT "openxr_loader_export" ...) includes target "openxr_loader"
+	# which requires target "jsoncpp_interface" that is not in any export set.
+  )
+
   cmake -B build -S "gfxreconstruct" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
   cmake --build build
 }
