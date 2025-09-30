@@ -1,6 +1,6 @@
 pkgbase = bazaar
 	pkgdesc = A new app store for GNOME with focus on flatpaks, particularly Flathub
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/kolunmi/bazaar
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = bazaar
 	optdepends = krunner-bazaar: krunner integration
 	provides = bazaar
 	conflicts = bazaar-git
-	source = https://github.com/kolunmi/bazaar/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 01fe0aa8ac18836855eaf8f59129d2bad799944be54ceb471264170b2e9490a1
+	source = https://github.com/kolunmi/bazaar/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 6010dba0484b5d0a945de759d8f4006a669400dd210edd76faed8d85fa3b7cc3
 
 pkgname = bazaar
