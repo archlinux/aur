@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=firelight
-pkgver=0.10.8
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A libretro-based frontend"
 arch=("x86_64")
@@ -15,6 +15,7 @@ depends=(
     "qt6-base"
     "qt6-tools"
     "sdl2"
+    "spdlog"
     "vulkan-headers"
 )
 makedepends=(
@@ -25,7 +26,6 @@ makedepends=(
     "git"
     "gtest"
     "ninja"
-    "spdlog"
 )
 source=(
     "firelight::git+${url}.git#tag=v${pkgver}"
@@ -65,7 +65,6 @@ package() {
     cd $srcdir/build
     install -Dm755 firelight -t $pkgdir/opt/$pkgname
     cp -r system $pkgdir/opt/$pkgname
-    rm -r $pkgdir/opt/$pkgname/system/_cores/windows # Remove Windows cores to keep size down
 
     echo "#!/usr/bin/env bash
     cd /opt/$pkgname
