@@ -1,4 +1,4 @@
-# Maintainer: Hamdy Abou El Anein <hamdy.aea@protonmail.com>
+maintainer="Hamdy Abou El Anein <hamdy.aea@protonmail.com>"
 pkgname=arch-certwatch
 pkgver=0.1.1
 pkgrel=1
