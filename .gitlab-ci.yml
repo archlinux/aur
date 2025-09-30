@@ -41,7 +41,7 @@ update:
 
 deploy-git:
   stage: deploy
-  image: bitnami/git
+  image: bitnamilegacy/git
   script:
     - git diff --exit-code && exit 0
 
