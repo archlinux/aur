@@ -1,7 +1,7 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-ttnn-git
-pkgver=0.62.0.dev20250924.r17.g6484d835461
+pkgver=0.62.0.dev20250930.r12.ge1205ec747c
 pkgrel=1
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/tt-metal"
     git fetch --prune
+    git submodule foreach --recursive git reset --hard
     git submodule update --init --recursive
 
     # Dirty source patches (patching using the patch command is not stable enough)
@@ -36,6 +37,9 @@ prepare() {
     sed -i 's/--release"/--release", "--cxx-compiler-path=g++", "--c-compiler-path=gcc", "--without-distributed"/' setup.py # Need more flags but no palce to invoke from build() - hack script
     sed -i 's/"lib64" if/"lib" if/' setup.py # Bad assumption. Arch installs to lib even if lib64 exist
     sed -i '/copy_tree_with_patterns(build_dir \/ get_lib_dir(), self.build_lib + f"\/ttnn\/build\/lib", lib_patterns)/{p; s|get_lib_dir()|"ttnn"| }' setup.py # Additional install needed
+
+    # Disable -Werror (sometimes triggers on GCC)
+    find -name CMakeLists.txt | grep -v './build' | grep -v './.cpmcache' | xargs -n 1 sed -i -E 's/-Werror([[:space:]]|$)/ /g'
 }
 
 build() {
