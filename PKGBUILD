@@ -4,7 +4,7 @@ pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
 pkgver=220
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-commercial')
@@ -69,11 +69,14 @@ package() {
     cd ${pkgdir}/usr/share/
     sed -i 's|/usr/share/MRS2/MRS-linux-x64/mounriver-studio\\ 2|mounriverstudio|g' applications/MounRiverStudio2.desktop
     cd MRS2
-    sed -i 's|plugdev|uucp|g' beforeinstall/50-wch.rules
+    sed -i  's|plugdev|uucp|g' beforeinstall/50-wch.rules
     sed -i 's|plugdev|uucp|g' beforeinstall/60-openocd.rules
     install -Dm0644 "beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-mrs2.rules"
     install -Dm0644 "beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-mrs2.rules"
+    install -Dm0755 "beforeinstall/load.sh"  "${pkgdir}/usr/bin/${pkgname%-bin}"
     rm -rf beforeinstall
+    sed -i  's|plugdev|uucp|g' MRS-linux-x64/resources/app/resources/linux/components/WCH/Others/CommunicationLib/default/50-wch.rules
+    sed -i 's|plugdev|uucp|g' MRS-linux-x64/resources/app/resources/linux/components/WCH/Others/CommunicationLib/default/60-openocd.rules
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-mrs2-arm" <<EOF
 #!/bin/env bash
@@ -94,11 +97,6 @@ EOF
 [ -d '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/' ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/'
 
 export PATH
-EOF
-
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<EOF
-#!/bin/sh
-/usr/share/MRS2/MRS-linux-x64/mounriver-studio\ 2 "\$@"
 EOF
 }
 
