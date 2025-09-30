@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Martins rodm.martins@proton.me
 pkgname=hypr-local-workspaces
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Make Hyprland workspaces local per monitor (Go)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!debug' '!strip')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a193eb69633bccb75d93a1a28106c3eda8782fc1fcd16ecdcc03cabecd966fbf')
+sha256sums=('5579d077830427c075931944a5b6b0f44a78e86f40e6b44c2a47fa4474e4bbc0')
 
 build() {
   cd "$srcdir/hypr-local-workspaces-$pkgver"
