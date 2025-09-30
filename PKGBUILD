@@ -2,14 +2,14 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=mockr
-_pkgver=0.2.1
+_pkgver=0.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Mocking in R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=('GPL-3.0-only')
+license=('MIT')
 depends=(
   r-rlang
   r-withr
@@ -27,8 +27,8 @@ optdepends=(
   r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('64562ef53ff44054bec118181cd72e65')
-b2sums=('4c30b5de474f4a35bb0ca766d99fbe96426c196b507c75b3329b8d1f9477ddeda7b2a22d7d2ab67ba740e441a737f7d77591f7d2714c68eb79c8079b267c53cf')
+md5sums=('e868940b792e0be140658c522c4d2bf9')
+b2sums=('e08b7967c4721026646ac8fb875c99016793d4968d1c3a85710e56e69e3b08ef1ee829363429f25d915a842dc750e01a8d726dff239d7ac43d4d0a0af7d7164a')
 
 build() {
   mkdir build
