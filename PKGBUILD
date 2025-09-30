@@ -25,7 +25,7 @@ optdepends=(
     'trezor-udev: udev rules for Trezor hardware wallets'
 )
 provides=('sparrow-wallet')
-conflicts=('sparrow-wallet')
+conflicts=('sparrow-wallet' 'sparrow-wallet-reproducible')
 source=(
     "sparrow::git+https://github.com/sparrowwallet/sparrow.git#branch=master"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
