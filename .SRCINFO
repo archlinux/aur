@@ -1,0 +1,20 @@
+pkgbase = magelab-bin
+	pkgdesc = Mage Lab is a user-centric AI interface with local reasoning and tools
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/majesticio/magelab
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = magelab
+	conflicts = magelab
+	options = !strip
+	options = !emptydirs
+	source = LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = magelab_0.7.2_amd64.deb::https://cdn.crabnebula.app/asset/01K5SDPHFBC4AC3HSWN1PSPP01
+	sha256sums_x86_64 = eddd0f869cb5ba18f7c5e41b3d2581f01e01ebe0201921d2ab049b93b0211fd8
+
+pkgname = magelab-bin

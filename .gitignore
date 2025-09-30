@@ -1,0 +1,48 @@
+# ── build artefacts ───────────────────────────────────────────────────
+pkg/
+src/
+*.pkg.tar.*        # binary or source packages
+*.tar.*            # distfiles cached in cwd
+*.log
+*.sig
+*.part
+*.deb
+# ── temporary / backup files ─────────────────────────────────────────
+*~
+*.bak
+*.orig
+*.old
+# patch rejects
+*.rej
+# vim / emacs / VS Code / JetBrains / etc.
+.*.swp
+*.sw?
+.vscode/
+.idea/
+*.tar.zst
+# ── caches ───────────────────────────────────────────────────────────
+ccache/
+distcc/
+
+# ── OS metadata ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── security / signing (never commit your private stuff) ─────────────
+*.asc
+*.gpg
+*.key
+
+# ── Node / Python vendoring (if you vendor deps in prepare()) ────────
+node_modules/
+__pycache__/
+
+# --------------------------------------------------------------------
+# DO NOT ignore these – AUR automation needs them to be committed:
+#   PKGBUILD
+#   .SRCINFO
+#   *.install (if you use one)
+#   any patches / service files referenced by the PKGBUILD
+OldBuilds
+*.zst
+*.git.aur
