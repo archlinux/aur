@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  ./configure --prefix-dir=/usr --binary-dir=bin
+  ./configure --prefix-dir=/usr --binary-dir=bin CFLAGS="-std=c99 $CFLAGS"
   make
 }
 
