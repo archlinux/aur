@@ -1,0 +1,19 @@
+pkgbase = wreckfest2-wine-steam
+	pkgdesc = Wreckfest 2 using WINE/Proton (umu-launcher) with data via Steam
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://store.steampowered.com/app/1203190/Wreckfest_2/
+	install = wreckfest2.install
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = icoutils
+	depends = umu-launcher
+	source = wreckfest2.sh
+	source = wreckfest2.desktop
+	source = Goldberg_Lan_Steam_Emu_master--475342f0.zip::https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/4247811310/artifacts/download
+	sha256sums = 1076030e8d5ceace65df340d936d013de12c7586951f21ef25153f8b438737d2
+	sha256sums = 15b9d2d39a2f0bf8e10fc25d7a51806a4f275d53d7ba0648f981d25b763b8030
+	sha256sums = 8465984b01b42a75f5faea8f2d884bbd6085a695c40c2b90eb0385f0a5081266
+
+pkgname = wreckfest2-wine-steam
