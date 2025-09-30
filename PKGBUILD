@@ -5,7 +5,7 @@
 # Contributor: Shawn Nock <shawn@monadnock.ca>
 
 pkgname='littlefs-fuse'
-pkgver=2.7.13
+pkgver=2.7.14
 pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
@@ -20,6 +20,8 @@ prepare() {
   # Make sure the binary has “FULL RELRO”:
   # shellcheck disable=SC2016
   sed -i '/^ifdef DEBUG/i override CFLAGS += $(LDFLAGS)' Makefile
+  # If user has chosen a compiler, use that one
+  sed -i 's/^CC = cc/CC ?= cc/g' Makefile
 }
 
 build() {
@@ -31,16 +33,16 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -vDm0755 lfs        -t "$pkgdir/usr/bin/"
-  install -vDm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -vDm0644 README.md  -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm0755 lfs        -t "$pkgdir/usr/bin"
+  install -vDm0644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm0644 README.md  -t "$pkgdir/usr/share/doc/$pkgname"
 }
 
 sha256sums=(
-  '0bbbe8fe0d7e6ace220c18201a248b8b9a6cb9d643efce3b7daf6205abfe819d'
+  '17afd073ed6755c0ecb78284512c5758eaab8580611552fc8d3c4a33dab296eb'
 )
 b2sums=(
-  '8db3734ccda5347c9be1fbb36f17ea619c9d394095d6e33112c7305c07a7e9f12f0797a84baff0bc3608e53620bd743ff22c4583e416b6acbf1ab9f191994f34'
+  'd03cc5e3daca52da03b873add01c0cd8892ca264245ba107d5726d9a0db1042e9d5a2fbf1de107ba7dfd836611adb96fb2d5b3d39a7168b74363eb3a63a793c7'
 )
 
 # eof
