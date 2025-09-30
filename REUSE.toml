@@ -3,6 +3,7 @@ version = 1
 [[annotations]]
 path = [
     "PKGBUILD",
+    "upstream-license",
     "README.md",
     "keys/**",
     ".SRCINFO",
