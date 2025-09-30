@@ -1,7 +1,7 @@
 pkgbase = rustnet
-	pkgdesc = A cross-platform network monitoring terminal UI tool built with Rust.
+	pkgdesc = Real-time network monitoring TUI with process identification via eBPF and deep packet inspection
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/domcyrus/rustnet
 	install = rustnet.install
 	arch = x86_64
