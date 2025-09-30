@@ -1,15 +1,19 @@
 # Maintainer: mewset <@mewset github>
 pkgname=headsetstatus
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A fast Linux tray app for headset battery and connection status (Qt6, UPower, FontAwesome)"
+pkgdesc="A fast Linux tray app for headset battery and connection status with desktop notifications"
 arch=('x86_64')
 url="https://github.com/mewset/headsetstatus"
 license=('MIT')
-depends=('qt6-base' 'qt6-tools' 'qt6-declarative' 'upower' 'ttf-font-awesome')
+depends=('qt6-base' 'upower')
+optdepends=('libnotify: desktop notifications'
+            'dunst: notification daemon'
+            'mako: notification daemon for Wayland'
+            'swaync: notification daemon for Sway')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('130ba536e9d7d24a8e70908e2a9f07ea2e45093aa1e14d52327f97546d7c095c')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/headsetstatus-$pkgver"
@@ -19,7 +23,6 @@ build() {
 
 package() {
   cd "$srcdir/headsetstatus-$pkgver"
-  install -Dm755 build/HeadsetStatus "$pkgdir/usr/bin/HeadsetStatus"
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 HeadsetStatus.desktop "$pkgdir/usr/share/applications/HeadsetStatus.desktop"
 } 
