@@ -6,7 +6,7 @@
 # Contributor: Stefan Seemayer <mail@semicolonsoftware.de>
 
 pkgname=jalview
-pkgver=2.11.4.0
+pkgver=2.11.5.0
 pkgrel=1
 pkgdesc='Bioinformatics Multiple Alignment Editor'
 arch=(any)
@@ -20,7 +20,7 @@ source=(
     'jalview.desktop'
 )
 noextract=("jalview-${pkgver//./_}-unix-java_8.tar.gz")
-sha256sums=('522f71d16d57d357ad95fd25e50753825663caf4117820cd33054a20a0c67f90'
+sha256sums=('8e6da00cae9e655bdcf1d3c8e1b0eb2800e8f9b7c49922a64fd3b9e1b49db982'
             'dbe5edfa9b17a1f85083b5aae16ef7a186a0d0035e6a81761cf73d0e1121ce58'
             'fa870de0d4ec5be2dfc93405f7e618541737533a34705893274fdfea7dae0600')
 
