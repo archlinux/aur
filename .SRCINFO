@@ -1,9 +1,9 @@
 pkgbase = python-bitsandbytes
 	pkgdesc = k-bit optimizers and matrix multiplication routines.
-	pkgver = 0.47.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://github.com/bitsandbytes-foundation/bitsandbytes
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = cuda
@@ -25,8 +25,7 @@ pkgbase = python-bitsandbytes
 	provides = python-bitsandbytes
 	conflicts = python-bitsandbytes
 	options = !strip
-	options = !debug
-	source = bitsandbytes::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=0.47.0
-	sha256sums = b40be8d6997375e5dc441a467cb3a403d89401b3f4e533b6f9d903f4ff0d2fe8
+	source = bitsandbytes::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=0.48.0
+	sha256sums = 4cebcb2d7225261726aecc98ff0c1e10df97ad2e2ab19961cb7fcf61ef7d74eb
 
 pkgname = python-bitsandbytes
