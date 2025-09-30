@@ -3,7 +3,7 @@
 _pkgauthor=Dark-Alex-17
 _pkgname=gman
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.2.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Universal command line credential management and injection tool"
@@ -26,13 +26,13 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('d8de70bc004d0740466df51f22845647ca8a104c15386fd1411d580a43e12257'
-            'd2827b08cd4c5840d05b09f79c26fcc534d51dcc6a34585c0d9edf672fb8bb3d'
-            '3e9bba9fca4411bec9b677e87a22dcdbfb84702e46f776636d16d00c0106c855'
+            '5b6fb5bb6a6c0779209f47aafa552796a5a3b8da2a187fc66f30b89174bfecfb'
+            'b10cdd148454da46a4bc23bc12b47e54c579759e92980e7438a8bdfa8cebece1'
             '1567b9c69adab84f053e70eb684b55fa0bc2ad0e1fdd55ab49a71928961ecfe8'
             '2b0481c790707925d0ed9fdc5ba813f6c1ce72fd56a19ac30f151c58504da3df'
             'c27dba4a296182a8c6033dbe563c89b674d830f763c93d82a4cbdc9825ed8662')
-sha256sums_x86_64=('38b3f6093798b5b4bc8e2ebf2a264de485a008c4453705b71af29624a1a99745')
-sha256sums_aarch64=('993e899e6dbe8357bde68ea2c98527c189bcced671f76bf976398e8f1ba27741')
+sha256sums_x86_64=('9532e8c0f82946a1207f61f0a0f808ac481b9470ec7fe89d97441ebdaa45b521')
+sha256sums_aarch64=('258855b3a5a652c0df66266ab4c2ac06b7612b01863a0e05a69054acfc3e543e')
 
 
 package() {
