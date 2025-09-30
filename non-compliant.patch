@@ -1,0 +1,45 @@
+diff --color -ura fuzzel/application.c fuzzel.new/application.c
+--- fuzzel/application.c	2025-08-21 22:35:48.000000000 +0800
++++ fuzzel.new/application.c	2025-09-30 13:57:54.617002389 +0800
+@@ -43,6 +43,7 @@
+     char *p = cmdline;
+     char *search_start = p; /* points to start of current arg */
+     char open_quote = 0; /* the current opening quote character, 0 means none open */
++    bool equal_sign = false;
+ 
+     size_t idx = 0;
+     while (*p != '\0') {
+@@ -64,7 +65,7 @@
+             }
+             /* ignore the other cases */
+         } else {
+-            if (open_quote == 0 && (*p == '\'' || *p == '"')) {
++            if (!equal_sign && open_quote == 0 && (*p == '\'' || *p == '"')) {
+                 /*
+                  * Open a quote.
+                  *
+@@ -89,7 +90,7 @@
+ 
+                 open_quote = *p;
+                 search_start = p + 1;
+-            } else if (*p == open_quote) {
++            } else if (!equal_sign && *p == open_quote) {
+                 /*
+                  * Close the quote, and create an argument from the
+                  * string between the opening and closing quote (as is
+@@ -109,12 +110,15 @@
+                 push_argv(argv, &argv_size, search_start, &idx);
+ 
+                 search_start = p + 1;
++            } else if (*p == '=') {
++                equal_sign = true;
+             } else if (*p == ' ' && open_quote == 0) {
+                 /* we must not be in an argument right now
+                  * check if we can close the arg at p (exclusive) */
+                 if (p > search_start) {
+                     *p = '\0';
+                     push_argv(argv, &argv_size, search_start, &idx);
++                    equal_sign = false;
+                 }
+                 search_start = p + 1;
+             }
