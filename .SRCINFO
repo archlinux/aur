@@ -1,7 +1,7 @@
 pkgbase = marzban
 	pkgdesc = Unified GUI Censorship Resistant Solution Powered by Xray
 	pkgver = 0.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Gozargah/marzban
 	install = marzban.install
 	arch = any
@@ -52,6 +52,7 @@ pkgbase = marzban
 	depends = xray
 	options = !debug
 	backup = var/lib/marzban/.env
+	backup = var/lib/marzban/xray_config.json
 	source = marzban-0.8.4.tar.gz::https://github.com/Gozargah/marzban/archive/v0.8.4/marzban-v0.8.4.tar.gz
 	source = marzban.service
 	sha512sums = e11e798265976b329747b5dba24d2944232128ff20de1584b23256ab7800bf2a2782f0d969458589f9f80677e12e312785ca4c64afd8257128c7c344b381e971

@@ -13,7 +13,7 @@ note() {
 
 post_install() {
   ln -sf /var/lib/marzban/.env /opt/marzban/.env
-  cd /opt/marzban && alembic upgrade head && marzban-cli completion install
+  cd /opt/marzban && alembic upgrade head
 }
 
 post_upgrade() {
@@ -21,6 +21,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  note "Old settings are located in /var/lib/marzban/, skip removing."
+  note "Old settings are located in /var/lib/marzban"
   find /opt/marzban -depth -delete
 }

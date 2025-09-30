@@ -2,7 +2,7 @@
 
 pkgname=marzban
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Unified GUI Censorship Resistant Solution Powered by Xray"
 arch=(any)
 url="https://github.com/Gozargah/$pkgname"
@@ -54,7 +54,10 @@ depends=(
   xray
 )
 options=(!debug)
-backup=(var/lib/$pkgname/.env)
+backup=(
+  var/lib/$pkgname/.env
+  var/lib/$pkgname/xray_config.json
+  )
 install=$pkgname.install
 source=(
   $pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
