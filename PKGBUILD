@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Davide Depau <davide@depau.eu>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock
