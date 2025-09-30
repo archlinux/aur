@@ -1,32 +1,39 @@
-# Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Daniel Chesters <archlinux@coin-coin.xyz>
 
-pkgname=python-ollama
-pkgver=0.4.7
+
+_upstreamver='0.6.0'
+_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
+_source_type='pypi-releases'
+_pypi_package='ollama'
+
+
+pkgname="python-${_pypi_package}"
+pkgver="${_upstreamver}"
 pkgrel=1
-pkgdesc="Ollama Python library"
+pkgdesc="The official Python client for Ollama"
 arch=('any')
-url="https://github.com/ollama/ollama-python"
+url='https://github.com/ollama/ollama-python'
 license=('MIT')
-depends=(
-	'ollama'
-	'python'
-	'python-httpx'
-	'python-typing_extensions'
-	'python-pydantic'
-)
-makedepends=('python-poetry')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ollama/ollama-python/archive/refs/tags/v$pkgver.tar.gz")
+depends=('ollama' 'python' 'python-httpx' 'python-typing_extensions' 'python-pydantic' 'python-anyio')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
+sha256sums=('da2b2d846b5944cfbcee1ca1e6ee0585f6c9d45a2fe9467cbcd096a37383da2f')
+
 
 build() {
-	cd "ollama-python-$pkgver" || exit
-	# Remove poetry plugin dependencies
-	sed -i '16,17d' pyproject.toml
-	poetry build -f wheel
+    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "ollama-python-$pkgver" || exit
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
 }
-b2sums=('d11cfd24f1fb4aeff9ebb61c304c45d4b6276bff8ac188ad53710a2b8883bce5fa7a28b8c53f370ae694e14ecf869c027a898d4edeb433e12804b6fac26f6f88')

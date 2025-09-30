@@ -1,17 +1,21 @@
 pkgbase = python-ollama
-	pkgdesc = Ollama Python library
-	pkgver = 0.4.7
+	pkgdesc = The official Python client for Ollama
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/ollama/ollama-python
 	arch = any
 	license = MIT
-	makedepends = python-poetry
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = ollama
 	depends = python
 	depends = python-httpx
 	depends = python-typing_extensions
 	depends = python-pydantic
-	source = python-ollama-0.4.7.tar.gz::https://github.com/ollama/ollama-python/archive/refs/tags/v0.4.7.tar.gz
-	b2sums = d11cfd24f1fb4aeff9ebb61c304c45d4b6276bff8ac188ad53710a2b8883bce5fa7a28b8c53f370ae694e14ecf869c027a898d4edeb433e12804b6fac26f6f88
+	depends = python-anyio
+	source = https://files.pythonhosted.org/packages/source/o/ollama/ollama-0.6.0.tar.gz
+	sha256sums = da2b2d846b5944cfbcee1ca1e6ee0585f6c9d45a2fe9467cbcd096a37383da2f
 
 pkgname = python-ollama
