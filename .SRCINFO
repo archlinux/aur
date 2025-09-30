@@ -1,0 +1,20 @@
+pkgbase = equivs-git
+	pkgdesc = Circumvent Debian package dependencies
+	pkgver = 20250420.959389e
+	pkgrel = 1
+	url = https://salsa.debian.org/perl-team/modules/packages/equivs.git
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = perl
+	depends = make
+	depends = bash
+	provides = equivs-git
+	conflicts = equivs-git
+	conflicts = equivs
+	source = equivs-git::git+https://salsa.debian.org/perl-team/modules/packages/equivs.git
+	source = equivs-build-no-deps.patch
+	sha1sums = SKIP
+	sha1sums = 4ef9f9a06a8389164ac98d38e2cc48daf790eda6
+
+pkgname = equivs-git

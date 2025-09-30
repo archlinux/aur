@@ -1,0 +1,19 @@
+diff --git a/usr/bin/equivs-build b/usr/bin/equivs-build
+index c9d2d61..05120d2 100755
+--- a/usr/bin/equivs-build
++++ b/usr/bin/equivs-build
+@@ -181,11 +181,11 @@ unlink glob "debian/*.in";
+ 
+ my @build_cmd;
+ if ($full_package) {
+-    @build_cmd = (qw(dpkg-buildpackage -uc -us --ignore-builtin-builddeps), ($arch ? "-a$arch" : ()));
++    @build_cmd = (qw(dpkg-buildpackage -uc -us --ignore-builtin-builddeps --no-check-builddeps), ($arch ? "-a$arch" : ()));
+ } elsif ($source_only) {
+-    @build_cmd = (qw(dpkg-buildpackage -uc -us --ignore-builtin-builddeps -S));
++    @build_cmd = (qw(dpkg-buildpackage -uc -us --ignore-builtin-builddeps -S --no-check-builddeps));
+ } else {
+-    @build_cmd = (qw(dpkg-buildpackage -uc -us --ignore-builtin-builddeps -b),
++    @build_cmd = (qw(dpkg-buildpackage -uc -us --ignore-builtin-builddeps -b --no-check-builddeps),
+                   ($arch ? ("-a$arch") : ()));
+ }
+ system @build_cmd;
