@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=glues
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Vim-inspired TUI note-taking app with Git, MongoDB support"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('812e7fef8517be402898f0ae5621b5e007d1cddfa83c9163b97ab52b9dc1a87d5b64c315db0d3bf32d891d156553929d904c4538834404090c5a43e47d0c3bcb')
+sha512sums=('fbe446ae78b100dc5cf7ed77afe34d9229e34a084d4389e5296cf4a11bb81a3bde73c1f8638e0463c77b094a21b0ab189ea08775926f881e80a04d8c02368434')
 options=('!lto')
 
 prepare() {
@@ -21,12 +21,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  cargo build --release # --frozen
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  cargo test # --frozen
 }
 
 package() {
