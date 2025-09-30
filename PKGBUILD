@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub
 _pkgname=LynxHub
-pkgver=3.1.2
-_electronversion=37
+pkgver=3.2.0
+_electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=V${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('81d6a1ec44a821597dc704cb40e6f282ea87901262d83e0a806184d5742f801b'
+sha256sums=('d88fb4a114982e3b9529d28347c521521f4c35f1986bddc4fc3b0710e5024269'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,7 +36,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
@@ -49,7 +49,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _get_electron_version
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -73,12 +72,14 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/'red'/'default'/g" src/renderer/src/App/Components/Modals/Warning/WarningModal.tsx
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.cjs"
