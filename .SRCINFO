@@ -1,0 +1,17 @@
+pkgbase = ddhx
+	pkgdesc = Console hexadecimal file viewer
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/dd86k/ddhx
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dub
+	makedepends = dmd
+	depends = gcc-libs
+	provides = ddhx
+	conflicts = ddhx
+	source = https://github.com/dd86k/ddhx/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 1bb85a128270dcde9cf6ad62fd993e695d3d785f04e593a08610d97f31c33bf9
+
+pkgname = ddhx
