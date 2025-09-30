@@ -2,11 +2,11 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=atuin-git
-pkgver=15.0.0.r0.g9e3fa8b8
+pkgver=18.8.0.r33.gcc2b7170
 pkgrel=1
 pkgdesc="Magical shell history (git)"
 arch=('x86_64')
-url="https://github.com/ellie/atuin"
+url="https://github.com/atuinsh/atuin"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
@@ -37,7 +37,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --frozen
+  cargo test --frozen --all-features --workspace --lib
 }
 
 package() {

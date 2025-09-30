@@ -1,8 +1,8 @@
 pkgbase = atuin-git
 	pkgdesc = Magical shell history (git)
-	pkgver = 15.0.0.r0.g9e3fa8b8
+	pkgver = 18.8.0.r33.gcc2b7170
 	pkgrel = 1
-	url = https://github.com/ellie/atuin
+	url = https://github.com/atuinsh/atuin
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -11,7 +11,7 @@ pkgbase = atuin-git
 	provides = atuin
 	conflicts = atuin
 	options = !lto
-	source = git+https://github.com/ellie/atuin
+	source = git+https://github.com/atuinsh/atuin
 	sha256sums = SKIP
 
 pkgname = atuin-git
