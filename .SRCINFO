@@ -1,0 +1,18 @@
+pkgbase = pywebsearch
+	pkgdesc = Customizable web search tool with aliases, !bangs and GUI (PyQt6)
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://github.com/dmnmsc/pywebsearch
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	depends = python-pybrowsers
+	provides = pywebsearch
+	conflicts = pywebsearch-git
+	source = pywebsearch-3.6.0.tar.gz::https://github.com/dmnmsc/pywebsearch/archive/refs/tags/v3.6.0.tar.gz
+	sha256sums = 664bf021cec8a5317bc5865abca75019c5c540efece3095db4e50503576a4d96
+
+pkgname = pywebsearch
