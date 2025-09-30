@@ -1,5 +1,4 @@
-# Maintainer: Max Harmathy <harmathy@secure.mailbox.org>
-# Contributor: Arturo Penen <apenen@gmail.com>
+# Maintainer: d3spair <aur@agrshv.dev>
 
 pkgname=ghorg-bin
 pkgver=1.11.4
