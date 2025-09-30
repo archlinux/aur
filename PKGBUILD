@@ -18,7 +18,7 @@ validpgpkeys=(325E97C32E601F5D4EADCF3A55999050A2D9110E  # Michail Vourlakos (mvo
               E0A3EB202F8E57528E13E72FD7574483BB57B18D) # Jonathan Esk-Riddell <jr@jriddell.org>
 
 build() {
-  cmake -B build -S $pkgname-$pkgver
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build -S $pkgname-$pkgver
   cmake --build build
 }
 
