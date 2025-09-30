@@ -1,6 +1,6 @@
 pkgbase = octopi
 	pkgdesc = A powerful Pacman frontend using Qt libs
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/aarnt/octopi
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = octopi
 	optdepends = trizen: for AUR support
 	optdepends = yay: for AUR support
 	conflicts = alpm_octopi_utils
-	source = octopi-0.18.0.tar.gz::https://github.com/aarnt/octopi/archive/refs/tags/v0.18.0.tar.gz
+	source = octopi-0.18.1.tar.gz::https://github.com/aarnt/octopi/archive/refs/tags/v0.18.1.tar.gz
 	source = alpm_octopi_utils::git+https://github.com/aarnt/alpm_octopi_utils.git#commit=789ba9acc52b7b0624fb08de9f4756b5d51c10f1
-	sha256sums = e952c895c930f9f289626bb1ff480c0b5cc788b567cae7a776b38b3aa457dbef
+	sha256sums = 95cce0a2ebd4cd41ccd3a9520c80060e7aae7de426fabf60356eb97444c0a048
 	sha256sums = SKIP
 
 pkgname = octopi
