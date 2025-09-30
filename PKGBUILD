@@ -5,8 +5,8 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r483.6c32800
-pkgrel=2
+pkgver=r493.d48af4d
+pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL-3.0-only')
@@ -33,6 +33,7 @@ pkgver() {
 
 build() {
 	cmake -S ${_srcdir} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
+		-DPATAUR_VERSION="$pkgver" \
 		-DPATAUR_FLATPAK="$_enable_flatpak"
 	cmake --build build
 }
