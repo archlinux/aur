@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 [ahk_x11]
 source = "github"
 github = "phil294/AHK_X11"
