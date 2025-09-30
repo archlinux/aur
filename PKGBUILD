@@ -8,8 +8,7 @@
 
 _pkgname=haveno-reto
 pkgname=retoswap
-pkgver=1.2.1.20250924
-_pkgver=${pkgver%.*}
+pkgver=1.2.2
 _versuffix=-reto
 pkgrel=1
 pkgdesc='Decentralised P2P exchange built on Monero and Tor - unofficial Reto network'
@@ -20,14 +19,14 @@ depends=('bash' 'java-runtime>=21')
 makedepends=('jdk21-openjdk')
 conflicts=('haveno' "$_pkgname")
 replaces=("$_pkgname")
-source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$_pkgver$_versuffix.tar.gz"
+source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver$_versuffix.tar.gz"
 	"$pkgname.desktop")
-sha512sums=('53dd30decd4825ce0f2d52a63affde50b8b4adf0f6080a3f03f1abd2d5b6b0430c363764243fdf640697624647ac0b6564ebf22bd8e0518ffcb28faf333cfaaa'
+sha512sums=('91b3d8ac78a48950d8700074c0051c197faf2d0d095484f2a12bc2038f51f7e9d9ac521d73934841c9823b651174726500407845f412dd74e91bcf051d909cf9'
             '37148505c9801c21d5e410f6a54934e290c1e009f6eaf7ecc87447c599253b1865887243c88585ea3ebee2402a26abefe918945285ac2649166ea71f35fbb117')
 install="$pkgname.install"
 
 build() {
-	cd "$srcdir"/"$_pkgname"-"$_pkgver""$_versuffix"/ || exit 1
+	cd "$srcdir"/"$_pkgname"-"$pkgver""$_versuffix"/ || exit 1
 	JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew -F lenient -x test build
 }
 
@@ -40,20 +39,20 @@ package() {
 	mkdir -p "$pkgdir"/usr/share/pixmaps/
 
 	# Install the software.
-	cp -r "$srcdir"/"$_pkgname"-"$_pkgver$_versuffix"/lib/ "$pkgdir"/usr/share/java/"$_pkgname"/
+	cp -r "$srcdir"/"$_pkgname"-"$pkgver$_versuffix"/lib/ "$pkgdir"/usr/share/java/"$_pkgname"/
 
 	declare -ar _binaries=("haveno-apitest" "haveno-cli" "haveno-daemon" "haveno-desktop" "haveno-inventory" "haveno-monitor" "haveno-relay" "haveno-seednode" "haveno-statsnode")
 
 	for _binary in "${_binaries[@]}"; do
-		install -Dm755 "$srcdir"/"$_pkgname"-"$_pkgver$_versuffix"/"$_binary" "$pkgdir"/usr/share/java/"$_pkgname"/
+		install -Dm755 "$srcdir"/"$_pkgname"-"$pkgver$_versuffix"/"$_binary" "$pkgdir"/usr/share/java/"$_pkgname"/
 		ln -s /usr/share/java/"$_pkgname"/"$_binary" "$pkgdir"/usr/bin/
 	done
 
-	install -Dm644 "$srcdir"/"$_pkgname"-"$_pkgver$_versuffix"/desktop/package/linux/icon.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
+	install -Dm644 "$srcdir"/"$_pkgname"-"$pkgver$_versuffix"/desktop/package/linux/icon.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
 	install -Dm644 "$srcdir"/"$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 
 	# Install the documentation.
-	cp -r "$srcdir"/"$_pkgname"-"$_pkgver$_versuffix"/docs/* "$pkgdir"/usr/share/doc/"$_pkgname"/
+	cp -r "$srcdir"/"$_pkgname"-"$pkgver$_versuffix"/docs/* "$pkgdir"/usr/share/doc/"$_pkgname"/
 	find "$pkgdir"/usr/share/doc/"$_pkgname"/ -type d -exec chmod 755 {} +
 	find "$pkgdir"/usr/share/doc/"$_pkgname"/ -type f -exec chmod 644 {} +
 }
