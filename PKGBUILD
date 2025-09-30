@@ -17,19 +17,18 @@ license=('GPL-3.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant')
-optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
-optdepends+=('elephant-providerlist: providerlist provider'
-             'elephant-desktopapplications: desktopapplications provider'
-             'elephant-archlinuxpkgs: archlinuxpkgs provider'
-             'elephant-calc: calc provider'
-             'elephant-clipboard: clipboard provider'
-             'elephant-files: files provider'
-             'elephant-menus: menus provider'
-             'elephant-runner: runner provider'
-             'elephant-symbols: symbols provider'
-             'elephant-todo: todo provider'
-             'elephant-unicode: unicode provider'
-             'elephant-websearch: websearch provider')
+optdepends=('elephant-providerlist: providerlist provider'
+            'elephant-desktopapplications: desktopapplications provider'
+            'elephant-archlinuxpkgs: archlinuxpkgs provider'
+            'elephant-calc: calc provider'
+            'elephant-clipboard: clipboard provider'
+            'elephant-files: files provider'
+            'elephant-menus: menus provider'
+            'elephant-runner: runner provider'
+            'elephant-symbols: symbols provider'
+            'elephant-todo: todo provider'
+            'elephant-unicode: unicode provider'
+            'elephant-websearch: websearch provider')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
@@ -80,17 +79,17 @@ prepare() {
 package() {
     cd "${srcdir}" || exit 1
 
-    install -Dm 755 walker -t "${pkgdir}/usr/bin"
+    install -Dm755 walker -t "${pkgdir}/usr/bin"
 
-    install -Dm 644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -Dm 644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd "${srcdir}/config" || exit 1
-    install -Dm 644 config.toml -t "${pkgdir}/etc/xdg/walker"
+    install -Dm644 config.toml -t "${pkgdir}/etc/xdg/walker"
 
     cd "${srcdir}/themes" || exit 1
     for theme in ./*; do
-        install -Dm 644 ${theme} -t "${pkgdir}/etc/xdg/walker/themes/default"
+        install -Dm644 ${theme} -t "${pkgdir}/etc/xdg/walker/themes/default"
     done
 }
