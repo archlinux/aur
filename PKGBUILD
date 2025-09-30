@@ -1,6 +1,6 @@
 pkgname=zerofs-bin
-pkgver=0.15.2
-pkgrel=2
+pkgver=0.15.6
+pkgrel=1
 pkgdesc="The Filesystem That Makes S3 your Primary Storage. ZeroFS is 9P/NFS/NBD on top of S3."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Barre/ZeroFS"
