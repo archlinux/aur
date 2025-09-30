@@ -1,0 +1,14 @@
+pkgbase = flipperzero-ufbt-git
+	pkgdesc = Compact tool for building and debugging applications for Flipper Zero
+	pkgver = r73.e04b34e
+	pkgrel = 1
+	url = https://pypi.org/project/ufbt/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	depends = python
+	depends = python-oslex
+	source = git+https://github.com/flipperdevices/flipperzero-ufbt.git
+	sha256sums = SKIP
+
+pkgname = flipperzero-ufbt-git
