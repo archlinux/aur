@@ -3,7 +3,7 @@
 pkgbase=ente
 _pkgbase=ente-photos
 pkgname=(ente-server ente-web) 
-pkgver=1.0.0
+pkgver=1.2.8
 pkgrel=0
 pkgdesc="End to End Encrypted alternative to Google Photos" 
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${_pkgbase}-$pkgver.tar.gz::$url/archive/refs/tags/photos-v${pkgver}.ta
         "git+https://github.com/ente-io/PhotoSwipe.git"
         "git+https://github.com/abhinavkgrd/ffmpeg.wasm.git")
 backup=('etc/ente/configurations/local.yaml')
-sha256sums=('05582a78be8007ee82e5c9d1db9bf539fae99d2dea5120152781a170148df313'
+sha256sums=('0b9fe0a4c7028e0ddee4de5fcd63d0bc1f8622bbd87fa01a0878d60575522367'
             'd632886a9068ee4a2cdd6bccbd7cf87dc196660b45a0888d5b50f4565365af1c'
             '49f07f3e3519b242b12aaa7d8d10c5e1fa934a6ccdf8bfda0bd41c55654c37c2'
             'eb8f5dbec1e34ef68b733cb73d93cb854e81fea278727b5f914dab2d578371e0'
@@ -84,7 +84,7 @@ package_ente-server() {
     cd "$srcdir/${_pkgbase}-v$pkgver/server"
     
     echo "Install museum"
-    mkdir -p "$pkgdir/etc/ente/configurations/" "$pkgdir/etc/ente/migrations/" "$pkgdir/etc/ente/mail-templates/"
+    mkdir -p "$pkgdir/etc/ente/configurations/" "$pkgdir/etc/ente/migrations/" "$pkgdir/etc/ente/mail-templates/" "$pkgdir/etc/ente/web-templates/"
     # Install the binary
     install -Dm755 museum "$pkgdir/usr/bin/museum"
 
@@ -100,6 +100,7 @@ package_ente-server() {
     # Install mail templates
     # install -Dm644 mail-templates/* "$pkgdir/etc/ente/mail-templates/"
     cp -r mail-templates/* "$pkgdir/etc/ente/mail-templates/"
+    cp -r web-templates/* "$pkgdir/etc/ente/web-templates/"
 
     echo "Install license"
     # Install LICENSE file
