@@ -1,6 +1,6 @@
 pkgbase = gitbutler
 	pkgdesc = Version control client, backed by Git, powered by Tauri/Rust/Svelte
-	pkgver = 0.16.7
+	pkgver = 0.16.8
 	pkgrel = 1
 	url = https://github.com/gitbutlerapp/gitbutler
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = gitbutler
 	depends = openssl
 	depends = libgit2
 	options = !lto
-	source = https://github.com/gitbutlerapp/gitbutler/archive/release%2F0.16.7/gitbutler-release-0.16.7.tar.gz
-	sha256sums = b4cc24575aaf6c98912513f60db125f75e51056380aed3e7d4f4c22c2728969b
+	source = https://github.com/gitbutlerapp/gitbutler/archive/release%2F0.16.8/gitbutler-release-0.16.8.tar.gz
+	sha256sums = 62646bd33fa85f11775716b81f3257e75e77f532d943c7ca10df5c213e65bd0d
 
 pkgname = gitbutler
