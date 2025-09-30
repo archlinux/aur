@@ -2,6 +2,7 @@ version = 1
 
 [[annotations]]
 path = [
+    ".gitignore",
     "PKGBUILD",
     "README.md",
     "keys/**",
