@@ -1,8 +1,8 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=verus-analyzer-bin
-_tag=2025-09-29
-pkgver="${_tag//-/.}"
+pkgver=2025.09.29
+_tag="${pkgver//./-}"
 pkgrel=1
 provides=('verus-analyzer')
 conflicts=('verus-analyzer')
