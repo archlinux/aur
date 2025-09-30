@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=UMI4Cats
-_pkgver=1.18.1
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='UMI4Cats: Processing, analysis and visualization of UMI-4C chromatin contact data'
 arch=('any')
@@ -54,7 +54,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c4681347e808c31de32f2056f5cfa13b006f6a51d9448123253a621bd952f826')
+sha256sums=('751f519de58215e970adb213f9dadb3579257cc4aa6e931ff26c6ef5c15e2d16')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
