@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vic-diary-bin
 _pkgname='维克日记'
-pkgver=1.2.0
+pkgver=1.3.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Support markdown syntax input, WYSIWYG cross-platform diary software(Prebuilt version)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vo-soft/vic-diary-releases/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cd1e0554b272534ca89d4230071284e923d6f124d1bd3e67f0efb1e812b7f4ce'
+sha256sums=('de564b477bacd8553c227ea679031bffe76f690f29abb38833145082326f1a68'
             '9c2cde6ad2685c66d9fb8d476cff8646f499028c866b8c61c436a69f72e21ee1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
