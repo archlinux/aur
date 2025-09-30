@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=monophony
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Linux app for streaming music from YouTube."
 arch=('any')
 url="https://gitlab.com/zehkira/monophony"
@@ -31,15 +31,12 @@ provides=()
 conflicts=()
 replaces=()
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('d2b7dc05b12b8d4221108db03ab1e8b6356dfecc701ceb6f8480052914f4ac4a')
+sha256sums=('cbc7277f74c1601261c29f79992bc543568c7d42e803271c2d74f00b4dd85289')
 
 prepare() {
 	cd "$srcdir/$pkgname-v$pkgver/source"
 
 	sed -i "/pip3 install/d" Makefile
-
-	# https://gitlab.com/zehkira/monophony/-/issues/208
-	sed -i "/for/ s/os\.getenv(\(.*\), \([^)]*\))\(.*\):/[\2]:/g" bin/monophony.py
 }
 
 build() {
