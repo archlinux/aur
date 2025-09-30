@@ -1,7 +1,7 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot com>
 
 pkgname=lla
-pkgver=0.3.10
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='A modern alternative to ls'
 url='https://github.com/triyanox/lla'
@@ -11,7 +11,7 @@ depends=()
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 options=('!lto')
-sha512sums=('1dbc52d9ccc0cf5b982aaa7e954b59c738a3fb5100574c1ebfd41d4ce968904807e7978fe6c10e637be301de42782988ca6b2d52fe353e1fb7b70b89f21b4e15')
+sha512sums=('2c8c29596a6092432052288c6ca56d9f1d5185ce320b089ac1a814355468f4640747688d1861b42928e42d42f3d7f3e24ebc0dd403667d6c3a691da13d2bdeda')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
