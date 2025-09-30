@@ -1,6 +1,6 @@
 pkgbase = gtk3-classic
 	pkgdesc = Patched GTK+3 that provides a more classic experience
-	pkgver = 3.24.50
+	pkgver = 3.24.51
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
@@ -42,9 +42,9 @@ pkgbase = gtk3-classic
 	optdepends = colord: color management support
 	optdepends = dconf: default GSettings backend
 	optdepends = libcups: printer support in print dialog
-	provides = gtk3=3.24.50
-	provides = gtk3-typeahead=3.24.50
-	provides = gtk3-mushrooms=3.24.50
+	provides = gtk3=3.24.51
+	provides = gtk3-typeahead=3.24.51
+	provides = gtk3-mushrooms=3.24.51
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -55,12 +55,12 @@ pkgbase = gtk3-classic
 	conflicts = gtk3-nocsd
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=1b39f00711255c0b053a7807357b9e122879ee67
-	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.50/gtk-3.24.50.tar.gz
-	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/6258039122f73aa8abb74eee91075bb9f7c406a5/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=6d100855b1cfc87701f8b3d91d9b259d15f30764
+	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.51/gtk-3.24.51.tar.gz
+	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/f5ba7bf3a87dacd8f332e083eaecaee25be8636b/gtk-query-immodules-3.0.hook
 	source = settings.ini
-	sha256sums = bdd9319732f12a956d86561f82900a50a3e171d49f5ff29b3017b197b0bcf37d
-	sha256sums = 2d957b23ae917b9c6244c8027bfb2cf0f665086f0c4350ab0babc05728c4b176
+	sha256sums = 73953127fa7d123c25a7f26d69dbcd40dfcab0e3c045cba62fd15e3b622250d5
+	sha256sums = f3c87a20b3380b69efa720f412a0fea6ab6edce021f8ffaf5c4531fe1321b24f
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 
