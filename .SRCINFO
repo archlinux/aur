@@ -1,6 +1,6 @@
 pkgbase = lobe-chat-appimage
 	pkgdesc = An open-source, modern-design LLMs/AI chat framework (AppImage)
-	pkgver = 1.132.19
+	pkgver = 1.133.0
 	pkgrel = 1
 	url = https://github.com/lobehub/lobe-chat
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = lobe-chat-appimage
 	depends = fuse2
 	conflicts = lobe-chat
 	options = !strip
-	source = LobeHub-Beta-1.132.19.AppImage::https://github.com/lobehub/lobe-chat/releases/download/v1.132.19/LobeHub-Beta-1.132.19.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/v1.132.19/LICENSE
-	source = lobe-chat.png::https://raw.githubusercontent.com/lobehub/lobe-chat/v1.132.19/apps/desktop/resources/tray.png
-	sha256sums = 526ac184ca5b1a1302ea75b18d4d9a6de119c57dacd2783181d79b8f973105d2
+	source = LobeHub-Beta-1.133.0.AppImage::https://github.com/lobehub/lobe-chat/releases/download/v1.133.0/LobeHub-Beta-1.133.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/v1.133.0/LICENSE
+	source = lobe-chat.png::https://raw.githubusercontent.com/lobehub/lobe-chat/v1.133.0/apps/desktop/resources/tray.png
+	sha256sums = 1414951ee07f07186760a454d8e85b3043bda8ca9bb2c2b23b0ff4620ff07250
 	sha256sums = 790a8c42f10beb4f5e9122e05a8e65d5522de49f89ac69cd31063c0f2be93ea4
 	sha256sums = 38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf
 
