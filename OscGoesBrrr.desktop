@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OscGoesBrr
+Version=@PACKAGE_VERSION@
+Exec=oscgoesbrrr %u
+Terminal=false
+Icon=ogb-logo
+StartupWMClass=OscGoesBrrr
+Comment=Make haptics in real life go BRRR from VRChat
+Categories=Network;Game;

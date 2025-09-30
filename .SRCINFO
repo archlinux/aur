@@ -1,0 +1,21 @@
+pkgbase = oscgoesbrrr
+	pkgdesc = Make haptics in real life go BRRR from VRChat
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://osc.toys/
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	makedepends = node-gyp
+	makedepends = npm
+	makedepends = asar
+	depends = electron38
+	source = https://github.com/OscToys/OscGoesBrrr/archive/refs/tags/release/1.42.0.tar.gz
+	source = LICENSE-v1.42.0::https://raw.githubusercontent.com/OscToys/OscGoesBrrr/refs/tags/release/1.42.0/LICENSE
+	source = oscgoesbrrr
+	source = OscGoesBrrr.desktop
+	sha256sums = c27a1e248c5f537208ceae32e7ac6a5430d2e9d5081a533792acf449cf63ffb4
+	sha256sums = fc17405da5786602c4667eb9b69e4bff644be78f5d96c489ae0fc7ddb9b5fd1d
+	sha256sums = 17250df54b4cb3471f8b3baca68bd4686629a6e62f56c283ebd67036bae57cb9
+	sha256sums = a02770d23b90d39de35ddb45b4910444339712885c905318ee81444ff98bdd2b
+
+pkgname = oscgoesbrrr
