@@ -3,18 +3,20 @@
 pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
-pkgver=r204.33e8064
+pkgver=r212.dceb949
 pkgrel=1
 pkgdesc="A cross-platform network monitoring terminal UI tool built with Rust."
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/domcyrus/rustnet"
 license=('Apache-2.0')
 depends=('libpcap' 'libelf' 'zlib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'pkgconf' 'clang' 'llvm' 'lld' 'libbpf')
-source=("git+https://github.com/domcyrus/rustnet.git")
-md5sums=('SKIP')
+provides=(${pkgname%-git})
+conflicts=("${pkgname%-git}-bin")
 options=(!debug strip)
 install=$_pkgname.install
+source=("git+https://github.com/domcyrus/rustnet.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_reponame"
@@ -33,6 +35,8 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
 
+    # https://github.com/briansmith/ring/issues/1444#issuecomment-1763272308
+    # So we use Clang instead of GCC.
     export CC="$(command -v clang)"
     export AR="$(command -v llvm-ar)"
     export NM="$(command -v llvm-nm)"
@@ -44,6 +48,7 @@ build() {
 
     export CARGO_PROFILE_RELEASE_LTO=thin
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+    # Use ebpf for better performance
     CFLAGS='-flto=auto' cargo build --frozen --release --features ebpf
 }
 
