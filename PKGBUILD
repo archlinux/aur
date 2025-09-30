@@ -1,9 +1,9 @@
 # Maintainer: James Bowling <kf5u AT pm DOT me>
 pkgname=wsjtx-improved-widescreen
 _pkgname=wsjtx
-pkgver=2.8.0
-pkgrel=250501
-_build=250501
+pkgver=3.0.0
+pkgrel=250924
+_build=250924
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB (Widescreen Layout Version)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -32,8 +32,8 @@ install=wsjtx-improved.install
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}_improved_widescreen_PLUS_${_build}.tgz")
-md5sums=('af623a72e520eb8688ad055949f60a96')
-sha1sums=('d95541982f8217be1f888842bc6264da8780f08d')
+md5sums=('cff1ca85066da8dedb50a7d126fce28c')
+sha1sums=('2692340f3d09f088778b8ba4d24b3e6eb3e81a7d')
 options=(!lto)
 prepare() {
     tar xzf ${_pkgname}-${pkgver}_improved_widescreen_PLUS_${_build}.tgz
