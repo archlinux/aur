@@ -1,0 +1,14 @@
+diff -ura krakensdr_doa/util/kraken_doa_start.sh krakensdr_doa_patch/util/kraken_doa_start.sh
+--- krakensdr_doa/util/kraken_doa_start.sh	2025-08-26 13:20:28.955274411 -0400
++++ krakensdr_doa_patch/util/kraken_doa_start.sh	2025-08-26 13:21:14.807273933 -0400
+@@ -1,8 +1,8 @@
+ #!/bin/bash
+ 
+ #source /home/krakenrf/miniforge3/etc/profile.d/conda.sh #<- required for systemd auto startup (comment out eval and use source instead)
+-eval "$(conda shell.bash hook)"
+-conda activate kraken
++# eval "$(conda shell.bash hook)"
++# conda activate kraken
+ 
+ # Clear pycache before starting if the -c flag is given
+ while getopts c flag

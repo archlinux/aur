@@ -1,0 +1,16 @@
+*
+!.gitignore
+
+# Core files
+!PKGBUILD
+!.SRCINFO
+!no-conda.patch
+!krakensdr_doa.sh
+!krakensdr_doa.install
+!krakensdr_doa.service
+
+# Licensing
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml

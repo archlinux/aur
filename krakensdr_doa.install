@@ -1,0 +1,16 @@
+pre_upgrade() {
+	echo "Quitting DoA"
+	krakensdr_doa stop
+}
+
+pre_remove() {
+	echo "Quitting DoA"
+	krakensdr_doa stop
+}
+
+post_install() {
+	echo "======================================================================"
+	echo "The DoA software can be launched using 'krakensdr_doa start'."
+	echo "Alternatively enable the 'krakensdr_doa' service to run it on startup."
+	echo "======================================================================"
+}

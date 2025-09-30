@@ -1,0 +1,9 @@
+[Unit]
+Description=KrakenSDR DoA Startup Service
+
+[Service]
+Type=oneshot
+ExecStart=krakensdr_doa start
+
+[Install]
+WantedBy=default.target
