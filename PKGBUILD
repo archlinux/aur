@@ -36,13 +36,6 @@ prepare() {
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-# build() {
-#   cd "${srcdir}/${_pkgname}" || exit
-#   export RUSTUP_TOOLCHAIN=stable
-#   export CARGO_TARGET_DIR=target
-#   cargo build --frozen --release --all-features
-# }
-
 build() {
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
