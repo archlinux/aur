@@ -1,8 +1,8 @@
 # Maintainer: KarmaTag <karmatag@proton.me>
 
 pkgname=sdrconnect-nrsp
-pkgver=1.0.4
-build=83273bcd8
+pkgver=1.0.5
+build=e077f2ebe
 pkgrel=1
 pkgdesc="SDR receiver for SDRplay nRSP-ST"
 arch=('aarch64' 'x86_64')
@@ -20,8 +20,8 @@ sha256sums=('eba89d720a1153a9cf4d061b624dbafe26044ee7bb2e58955a1035778e49e21e'
             '0943ad905989b77283832fdd804f553671f1b42094d93c3103acef27468934a7'
             'd65f2ef4c25465924dfb73e27c13d701da50c287c35197d6d44bba726313d6f5'
             'b39086ca99ef4b2242ff9edef93258c99d478fd37a8ba64319843928e316c61b')
-sha256sums_aarch64=('323d2f0e62e0de457f69aaad50060a7e255db110069c9033782ea04b2d0257a8')
-sha256sums_x86_64=('f14a6ea92cd2da3f40262cfd3df8c8aa4b836688ee03203cbdbd8b356108f311')
+sha256sums_aarch64=('a95c8b4b3bd3a7d19878e639ec3b06bc81efc73db3ff36083b965f089b3c4e69')
+sha256sums_x86_64=('2e289b2f9e365f25a6adc3c10ebf39578dc806ed3839829204a292cfa8852066')
 
 prepare() {
 	cd ${srcdir}
