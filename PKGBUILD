@@ -2,7 +2,7 @@
 
 pkgname=bifrost
 pkgauthor=maximhq
-pkgver=1.2.22
+pkgver=1.5.0
 pkgrel=1
 
 _npmname=bifrost
@@ -12,7 +12,7 @@ _npmver=1.5.0
 pkgdesc="The Fastest LLM Gateway with built in OTel observability and MCP gateway"
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
-_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/transports/v${pkgver}"
+_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/npx/v${pkgver}"
 license=("Apache-2.0")
 replaces=("nodejs-${pkgname}")
 depends=("bash" "nodejs")
