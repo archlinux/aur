@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rvinecopulib
-_pkgver=0.7.2.1.0
+_pkgver=0.7.3.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d3bb01c0cae3282e4442d1dab6024b5b')
-b2sums=('29751ba5e93e8d25e4370366529a2c1e34cd8a8291e407aaaf52978301292f9cbc1c60f6d89d39fbbcdb55773a6fc5b55ee497f72febdeb3b8f17a4a0f5e3800')
+md5sums=('8638c89effd2834872aec4533f400751')
+b2sums=('7feb5732578e8322ec30b4553e1010afde3b05e161e595c9af775a0100ba080736b78228d975d3797dd93ed8713d097f3b937c0e578ef44a0ce02e69b11dafaf')
 
 build() {
   mkdir build
