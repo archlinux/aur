@@ -1,27 +1,28 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-truberbrook
-pkgver=1.6.31066
+pkgver=1.6
 pkgrel=1
+epoch=1
 pkgdesc='Mystery sci-fi adventure game with handmade scenery. GOG version.'
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
 url="https://www.gog.com/en/game/${_shortname//-/_}"
-license=('custom')
+license=('LicenseRef-eula')
 depends=(
   'bash'
-  'cairo'
-  'gdk-pixbuf2'
-  'glib2'
-  'glibc'
-  'gtk2'
-  'pango'
+  'lib32-gcc-libs'
+  'lib32-gdk-pixbuf2'
+  'lib32-glib2'
+  'lib32-glibc'
+  'lib32-gtk2'
+  'lib32-zlib'
 )
-makedepends=('lgogdownloader')
-options=('!strip')
+makedepends=('execstack' 'lgogdownloader')
+options=('!debug' '!strip')
 
 source=(
-  "${_shortname}_latest.sh::gogdownloader://${_shortname//-/_}/en3installer0"
+  "${_shortname}_${pkgver//./_}.sh::gogdownloader://${_shortname//-/_}/en3installer0"
   "${pkgname}.desktop"
   "${_shortname}.bash"
 )
@@ -29,20 +30,24 @@ source=(
 sha512sums=(
   'SKIP'
   'e70350da12597c1d95e865122cdb94c3211a4a1837ba332a2f237f28b607664ad24a0ce32405c7266efed33c9bfa966e86be3c8909f2e6dbce3b0fa5d53cc403'
-  '27f3d7a851f9871b2a826740a5d7dbefd5e62bc7add2a3f2d0894f830e4c8cecd73ba26a27a0809d6569ebce94ce26a69938cbce250fdfe8b61c17df2054e197'
+  '8329d85966006c31b191cdc078c08c5df2c26cfeb5af38e17d8ea5c73767e4c151d5793b3d88bffe3376fe4ca962fca7086b54a4656366f500cc4106f1fa2b4a'
 )
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
-pkgver() {
-  awk -v ORS=. -e 'NR==2,NR==3' data/noarch/gameinfo | head -c -1
-}
-
 prepare() {
-  # Remove unneeded 32-bit binaries
-  # Fixes false alarms in rebuild-detector
-  rm -rfv "${srcdir}/data/noarch/support/yad/32"
+  # Assert that pkgver matches the downloaded version
+  diff -u \
+    --label 'Expected version' <(echo "${pkgver}") \
+    --label 'Actual version' <(awk 'NR==2' data/noarch/gameinfo)
+
+  # Work around glibc 2.41 execstack issue
+  # See also: https://sourceware.org/bugzilla/show_bug.cgi?id=32653
+  execstack -c "${srcdir}"/data/noarch/game/Truberbrook.x86
+  find "${srcdir}"/data/noarch/game \
+    -'(' -name 'libfmod*.so' -o -name 'libmono.so' -')' \
+    -exec execstack -c '{}' +
 }
 
 package() {
@@ -59,7 +64,7 @@ package() {
   echo >&2 'Packaging game data'
   mkdir -p "${pkgdir}/opt/${_shortname}"
   cp -R --preserve=mode \
-    "${srcdir}"/data/noarch/* \
+    "${srcdir}"/data/noarch/game/* \
     "${pkgdir}/opt/${_shortname}"
 
   echo >&2 'Packaging launcher'
