@@ -1,7 +1,7 @@
 pkgbase = python-ttnn
 	pkgdesc = TT-NN operator and Tensor library for Tenstorrent hardware
 	pkgver = 0.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenstorrent/tt-metal
 	arch = x86_64
 	license = Apache-2.0
@@ -17,6 +17,7 @@ pkgbase = python-ttnn
 	makedepends = xz
 	makedepends = curl
 	makedepends = mold
+	makedepends = python-pycapnp
 	depends = python>=3.10
 	depends = hwloc
 	depends = numactl
