@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-css
-pkgver=0.23.2
-pkgrel=4
+pkgver=0.25.0
+pkgrel=1
 pkgdesc="CSS grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-css"
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-css.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-css/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d442e8b04d8c743603172fb02664ae2b404f38f7a871d97cf2c89c1eedf8251')
+sha256sums=('03965344d8c0435dc54fb45b281578420bb7db8b99df4d34e7e74105a274cb79')
 
 
 build() {
