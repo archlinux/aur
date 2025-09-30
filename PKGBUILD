@@ -12,7 +12,7 @@ provides=('stacher7')
 conflicts=('stacher7')
 options=('!strip')
 # Using the working URL you found - note: query parameter might change over time
-source=("stacher7_${pkgver}_amd64.deb::https://www.videohelp.com/download/stacher7_${pkgver}_amd64.deb?r=qDbblNcJX")
+source=("stacher7_${pkgver}_amd64.deb::https://s7-releases.stacher-cloud.com/s7-releases/stacher7_${pkgver}_amd64.deb")
 sha256sums=('f9d0a0c9200cd632f80b1c036dec8671e8f801c7326ae265401fb01d7b273df6')
 
 package() {
