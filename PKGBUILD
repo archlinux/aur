@@ -1,13 +1,13 @@
-# Maintainer :       Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
-# Upstream author :  Luke Smith <https://git{hub,lab}.com/lukesmithxyz/>
-
+# Maintainer:         0fflineuser <0fflineuser@cock.li>
+# Contributor:        Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
+# Upstream author :   Luke Smith <https://git{hub,lab}.com/lukesmithxyz/>
 
 pkgname=mutt-wizard-git
 _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
-pkgver=3.2.1.r55.gc8bbef5
-pkgrel=2
+pkgver=3.3.1.r162.gb7b7f21
+pkgrel=1
 
 pkgdesc='Easily auto-configure neomutt and isync/mpop with safe passwords (IMAP/POP3/SMTP)'
 arch=('any')

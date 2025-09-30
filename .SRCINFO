@@ -1,7 +1,7 @@
 pkgbase = mutt-wizard-git
 	pkgdesc = Easily auto-configure neomutt and isync/mpop with safe passwords (IMAP/POP3/SMTP)
-	pkgver = 3.2.1.r55.gc8bbef5
-	pkgrel = 2
+	pkgver = 3.3.1.r162.gb7b7f21
+	pkgrel = 1
 	url = https://github.com/lukesmithxyz/mutt-wizard
 	install = mutt-wizard.install
 	arch = any
