@@ -35,7 +35,9 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   _LDFLAGS="-X main.goos=$(go env GOOS) -X main.goarch=$(go env GOARCH) -X main.version=${pkgver} -X main.branch=tag-${pkgver} -X main.commit=tag-${pkgver}"
   go build -o build -ldflags="${_LDFLAGS}" "./cmd/telegraf"
-  ./build/telegraf config > telegraf.conf
+  # Workaround to prevent deadlock between systemd-nspawn and go when
+  # generating configuration (thanks to Robin Candau)
+  timeout 2s ./build/telegraf config > telegraf.conf || true
 }
 
 package() {
