@@ -1,12 +1,15 @@
 pkgbase = rustnet-bin
 	pkgdesc = Real-time network monitoring TUI with process identification via eBPF and deep packet inspection
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/domcyrus/rustnet
+	install = rustnet-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	depends = libpcap
+	depends = libelf
+	depends = zlib
 	provides = rustnet=0.11.0
 	conflicts = rustnet
 	source_x86_64 = rustnet-0.11.0-x86_64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v0.11.0/rustnet-v0.11.0-x86_64-unknown-linux-gnu.tar.gz

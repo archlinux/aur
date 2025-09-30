@@ -1,0 +1,32 @@
+post_install() {
+    # Ensure compatibility symlink exists (backup in case package symlink fails)
+    if [ ! -e /usr/lib/libpcap.so.0.8 ] && [ -e /usr/lib/libpcap.so.1 ]; then
+        ln -sf /usr/lib/libpcap.so.1 /usr/lib/libpcap.so.0.8 2>/dev/null || true
+    fi
+    
+    echo ":: RustNet installed successfully!"
+    echo ":: "
+    echo ":: Usage: sudo rustnet [options]"
+    echo ":: "
+    echo ":: Note: RustNet requires elevated privileges (sudo) for packet capture"
+    echo ":: "
+    echo ":: For enhanced eBPF support (better process detection), set capabilities:"
+    echo "::   sudo setcap cap_net_raw,cap_net_admin,cap_bpf,cap_perfmon+eip /usr/bin/rustnet"
+    echo ":: "
+    echo ":: eBPF warnings during startup are normal if running without these capabilities."
+    echo ":: The tool will fall back to /proc scanning for process identification."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Clean up compatibility symlink if it points to libpcap.so.1
+    if [ -L /usr/lib/libpcap.so.0.8 ]; then
+        target=$(readlink /usr/lib/libpcap.so.0.8)
+        if [ "$target" = "libpcap.so.1" ] || [ "$target" = "/usr/lib/libpcap.so.1" ]; then
+            rm -f /usr/lib/libpcap.so.0.8 2>/dev/null || true
+        fi
+    fi
+}
