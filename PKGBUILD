@@ -42,17 +42,12 @@ _nvm_env() {
   export XDG_DATA_HOME="$HOME/.local/share"
 
   export NVM_DIR="$SRCDEST/node-nvm"
-
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
   # set up nvm
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
   nvm install $_nodeversion
   nvm use $_nodeversion
-}
-
-prepare() {
-  sed -e '/zx/d' -i "$_pkgsrc/tldraw/apps/tldraw-logseq/build.mjs"
 }
 
 build() (
