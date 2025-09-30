@@ -10,7 +10,7 @@ depends=('dbus')
 makedepends=('go' 'git')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('c611280efed80f6418e53a697b55c1f67da844b5b1ba9613001682729f9f3a8d')
 install=tabctl.install
 
 build() {
