@@ -35,7 +35,6 @@ package() {
 
     # Install rofi scripts
     install -Dm755 scripts/rofi-wmctrl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-wmctrl.sh"
-    install -Dm755 scripts/rofi-hyprctl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-hyprctl.sh"
 
     # Install browser extensions
     install -dm755 "$pkgdir/usr/share/$pkgname/extensions"
