@@ -1,0 +1,55 @@
+From de63b626ffe2a7527b9ae82a6b41d643437726f8 Mon Sep 17 00:00:00 2001
+From: Wasi Master <arianmollik323@gmail.com>
+Date: Sat, 27 Jan 2024 23:10:42 +0600
+Subject: [PATCH] Fix attributeerror for collections (moved to collections.abc)
+
+---
+ taipan/collections/__init__.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/taipan/collections/__init__.py b/taipan/collections/__init__.py
+index b271420..2e5a13e 100644
+--- a/taipan/collections/__init__.py
++++ b/taipan/collections/__init__.py
+@@ -20,21 +20,21 @@ def is_countable(obj):
+     """Check whether given object is a countable collection (has a length).
+     :return: ``True`` if argument has a length, ``False`` otherwise
+     """
+-    return isinstance(obj, collections.Sized)
++    return isinstance(obj, getattr(collections, "Sized", getattr(collections.abc, "Sized")))
+ 
+ 
+ def is_iterable(obj):
+     """Checks whether given object is an iterable.
+     :return: ``True`` if argument is an iterable, ``False`` otherwise
+     """
+-    return isinstance(obj, collections.Iterable)
++    return isinstance(obj, getattr(collections, "Iterable", getattr(collections.abc, "Iterable")))
+ 
+ 
+ def is_mapping(obj):
+     """Checks whether given object is a mapping, e.g. a :class:`dict`.
+     :return: ``True`` if argument is a mapping, ``False`` otherwise
+     """
+-    return isinstance(obj, collections.Mapping)
++    return isinstance(obj, getattr(collections, "Mapping", getattr(collections.abc, "Mapping")))
+ 
+ 
+ def is_ordered_mapping(obj):
+@@ -59,14 +59,14 @@ def is_sequence(obj):
+     """Checks whether given object is a sequence.
+     :return: ``True`` if argument is a sequence, ``False`` otherwise
+     """
+-    return isinstance(obj, collections.Sequence)
++    return isinstance(obj, getattr(collections, "Sequence", getattr(collections.abc, "Sequence")))
+ 
+ 
+ def is_set(obj):
+     """Checks whether given object is a set.
+     :return: ``True`` if argument is a set, ``False`` otherwise
+     """
+-    return isinstance(obj, collections.Set)
++    return isinstance(obj, getattr(collections, "Set", getattr(collections.abc, "Set")))
+ 
+ 
+ #: Alias for :func:`is_countable`.

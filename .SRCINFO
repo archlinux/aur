@@ -1,0 +1,22 @@
+pkgbase = python-taipan
+	pkgdesc = General purpose toolkit for Python
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Xion/taipan
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = taipan-0.0.3.tar.gz::https://github.com/Xion/taipan/archive/0.0.3.tar.gz
+	source = github-pr-2.patch
+	source = replace-abc-internal-api.patch
+	source = skip-failing-test.patch
+	sha512sums = f28f7a79b5e82f3a04b8b640bde710a29e4db43802a07ba2fdbe7179a9dad406af7630df32a5348c651acbb2329bb2ee745312e0ac4ba50e68f91dc8985798da
+	sha512sums = 24e6f6c25a077ac662fddf91f810c5cfd734cdd5967f44a052e41cfac5e97317e20d0fc7e7820aabfb1d482126c2c912acfd8cb0dd76a4ad2edbdebd0393ab8b
+	sha512sums = fab80199b1c86577fdbdc801ec18737e3c49fefd27690758fb87432c2b374095505427c6b9a73a8fd87a5e46afefe2c3d218f64b3c6180e75797b91cbdc91014
+	sha512sums = eac462c302c7f6fd3631c3153ea06a4d7f6cde55af22be4ac7d1960c3570e8fd768e4d0d8729b02c48c62c525245b886a65ef26b9d43aa6392a16ed2a9536bc9
+
+pkgname = python-taipan

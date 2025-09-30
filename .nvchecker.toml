@@ -1,0 +1,4 @@
+[python-taipan]
+source = "github"
+github = "Xion/taipan"
+use_max_tag = true

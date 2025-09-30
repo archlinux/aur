@@ -1,0 +1,55 @@
+From 328a049140cc10cd9fa85c700da975fe2177202f Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Tue, 30 Sep 2025 12:49:31 +0200
+Subject: [PATCH] Skip failing test on Python v3.8 or newer
+
+Since Python 3.8, the items view of a dict is reversable. [1] [2]
+
+The unit test `test_except__unordered_dict` relies on the assumption
+that a dict has no `__reverse__` method, so skip the test for Python
+version 3.8 or newer.
+
+[1]: https://docs.python.org/3/whatsnew/3.8.html
+
+[2]: https://github.com/python/cpython/issues/77643
+---
+ taipan/_compat.py                        | 1 +
+ tests/test_functional/test_constructs.py | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/taipan/_compat.py b/taipan/_compat.py
+index 883032b..f83eafd 100644
+--- a/taipan/_compat.py
++++ b/taipan/_compat.py
+@@ -4,6 +4,7 @@ Compatibility shims for different Python versions and platforms.
+ import sys
+ IS_PY26 = sys.version_info[:2] == (2, 6)
+ IS_PY3 = sys.version_info[0] == 3
++IS_PY38_OR_NEWER = sys.version_info[:2] >= (3, 8)
+ 
+ 
+ # Modules
+diff --git a/tests/test_functional/test_constructs.py b/tests/test_functional/test_constructs.py
+index 5310396..f3570b1 100644
+--- a/tests/test_functional/test_constructs.py
++++ b/tests/test_functional/test_constructs.py
+@@ -4,7 +4,7 @@ Tests for .functional.constructs module.
+ import collections
+ from contextlib import contextmanager
+ 
+-from taipan._compat import IS_PY26, IS_PY3
++from taipan._compat import IS_PY26, IS_PY3, IS_PY38_OR_NEWER
+ from taipan.lang import ABSENT
+ from taipan.testing import TestCase, skipIf, skipUnless
+ 
+@@ -159,6 +159,7 @@ class Try(TestCase):
+             __unit__.try_(self.RAISE, except_=self.RERAISE)
+         self.assertIs(self.EXCEPTION, r.exception)
+ 
++    @skipIf(IS_PY38_OR_NEWER, "requires Python < 3.8")
+     def test_except__unordered_dict(self):
+         with self.assertRaises(TypeError):
+             __unit__.try_(self.BLOCK, except_={Exception: self.CATCH})
+-- 
+2.51.0
+

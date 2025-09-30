@@ -1,0 +1,32 @@
+From e6e44360ab3d0cc52a0e502213a28a929258294f Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Tue, 30 Sep 2025 01:48:13 +0200
+Subject: [PATCH] Replace internal API usage that has been removed
+
+Link: https://www.reddit.com/r/learnpython/comments/9sc6aq/comment/e8no2h5/
+---
+ taipan/objective/base.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/taipan/objective/base.py b/taipan/objective/base.py
+index d1e1600..704d28f 100644
+--- a/taipan/objective/base.py
++++ b/taipan/objective/base.py
+@@ -264,10 +264,10 @@ class _ABCObjectMetaclass(ObjectMetaclass, _ABCMetaclass):
+                     for abclass in abclasses:
+                         # remove the class from given ABC's registry,
+                         # its temporary cache, and so-called negative cache
+-                        # (+= 1 invalidates said negative cache)
+-                        abclass._abc_registry.discard(e.class_)
+-                        abclass._abc_cache.discard(e.class_)
+-                        abc.ABCMeta._abc_invalidation_counter += 1
++                        _abc_registry, _abc_cache, _abc_negative_cache, _ = abc._get_dump(abclass)
++                        _abc_registry.discard(e.class_)
++                        _abc_cache.discard(e.class_)
++                        _abc_negative_cache.discard(e.class_)
+             raise
+ 
+     @classmethod
+-- 
+2.51.0
+
