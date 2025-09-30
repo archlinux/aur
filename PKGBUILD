@@ -3,7 +3,7 @@
 pkgname=ghorg-bin
 pkgver=1.11.4
 pkgrel=1
-pkgdesc='allows you to quickly clone all of an orgs, or users repos into a single directory.'
+pkgdesc='Quickly clone or backup an entire org/users repositories into one directory'
 arch=('x86_64')
 url='https://github.com/gabrie30/ghorg'
 license=('Apache-2.0')
