@@ -1,8 +1,8 @@
 pkgbase = kazumi
 	pkgdesc = 基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕
 	pkgver = 1.8.2
-	pkgrel = 2
-	url = https://github.com/Predidit/Kazumi
+	pkgrel = 3
+	url = https://kazumi.app
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = clang
