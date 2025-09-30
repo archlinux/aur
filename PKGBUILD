@@ -2,7 +2,7 @@
 # Contributer: Tomasz Zok <tomasz dot zok at gmail dot com>
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
-pkgver=1.8
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
