@@ -2,7 +2,7 @@
 
 pkgname=usbhelper
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Wii U Usb Helper"
 arch=(x86_64)
 url="https://github.com/FailedShack/USBHelperInstaller"
@@ -11,7 +11,7 @@ depends=(wine winetricks wget)
 source=("launcher"
         "usbhelper.desktop"
         "icon.png")
-sha256sums=('cecfaabb89eb71bdc4122f4da59d0bcf20274f05963fbb01cd716be60524eb78'
+sha256sums=('f1e7066690c9a2beae181493ab97368264d1ff181e7b3055f8ef4f23dda04b36'
             '03f591cb348577d6e5bc3101d36c0047ffa809aad1b6845320cbe3f75d0fd214'
             'a057c5009c92ac25396b73b2145e3ba913105fb60cfbd9ba0e359f2df5238ab5')
 

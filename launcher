@@ -4,7 +4,6 @@ XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
 HELPER_DATA_DIRECTORY="${HELPER_DATA_DIRECTORY-${XDG_DATA_HOME}/usbhelper}"
 export WINEDEBUG="${WINEDEBUG--all}"
 export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/usbhelper}"
-export WINEARCH="win32"
 
 if [ ! -d "${WINEPREFIX}" ]; then
   echo 'Setting up the Wine prefix...'
