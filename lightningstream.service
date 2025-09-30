@@ -1,0 +1,41 @@
+[Unit]
+Description=Lightning Stream for PowerDNS Auth
+Documentation=https://doc.powerdns.com
+Wants=network-online.target
+After=network-online.target pdns.service
+
+[Service]
+ExecStart=/usr/bin/lightningstream -c /etc/lightningstream.yml sync
+SyslogIdentifier=lightningstream
+User=powerdns
+Group=powerdns
+Type=exec
+Restart=on-failure
+RestartSec=10
+StartLimitInterval=0
+RuntimeDirectory=lightningstream
+
+LockPersonality=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=~ @clock @debug @module @mount @raw-io @reboot @swap @cpu-emulation @obsolete
+ProtectProc=invisible
+PrivateIPC=true
+RemoveIPC=true
+DevicePolicy=closed
+
+[Install]
+WantedBy=multi-user.target
