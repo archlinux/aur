@@ -10,7 +10,7 @@
 
 pkgname=pcl
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=('x86_64')
 url='https://www.pointclouds.org'
@@ -20,9 +20,17 @@ optdepends=('cuda' 'openmp' 'openni2' 'qhull')
 makedepends=('adios2' 'anari-sdk' 'cgns' 'cli11' 'cmake' 'fast_float' 'fmt' 'gl2ps' 'libharu' 'liblas' 'libxcursor'
              'netcdf' 'nlohmann-json' 'openvr' 'ospray' 'pdal' 'python-mpi4py' 'qt6-base' 'utf8cpp' 'verdict')
 checkdepends=('gtest-src')
-source=("https://github.com/PointCloudLibrary/pcl/archive/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ca9e742bc24b38f31c42c9ea08e19054e18d045f487269b64a7b831dada89936445d90a5b46870d8c24c2d25b33a59df2d904fe7e51bc0b231317cdb319951e9')
-b2sums=('39dcb01d4409e3d4bc4241c5f48f0c450fea285cf3eaef5da6808aa4983ae56338a27e38bc4c77fe47354818564b495c63a6541a4ca9418a2336d0e8b92f4a0b')
+source=("https://github.com/PointCloudLibrary/pcl/archive/${pkgname}-${pkgver}.tar.gz"
+        "https://github.com/PointCloudLibrary/pcl/pull/6354.diff")
+sha512sums=('ca9e742bc24b38f31c42c9ea08e19054e18d045f487269b64a7b831dada89936445d90a5b46870d8c24c2d25b33a59df2d904fe7e51bc0b231317cdb319951e9'
+            '92e6ebd060b29222e94de4b41be14891875cfd2c1cdf38c3a98b453045fb72c68e4fc2a6cde1dffb2380b94e46a0acd399bd339427eaa7d97dea27fb39671e3a')
+b2sums=('39dcb01d4409e3d4bc4241c5f48f0c450fea285cf3eaef5da6808aa4983ae56338a27e38bc4c77fe47354818564b495c63a6541a4ca9418a2336d0e8b92f4a0b'
+        '87fe710a282390d25d41bdf65b5e338989350703da88ef08fef9dc5737058f7d3ef3c36a1c59371ad21a1bd3a9a8af69771fc14712b53ce87a3be954a3cf75f4')
+
+prepare() {
+  cd ${srcdir}/pcl-pcl-${pkgver}
+  patch -p1 < ${srcdir}/6354.diff
+}
 
 build() {
   cmake -B build -S "${srcdir}/pcl-pcl-${pkgver}" \
