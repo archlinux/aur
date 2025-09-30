@@ -1,7 +1,7 @@
 # Maintainer: Senan Kelly <senan@senan.xyz>
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-main-git
-pkgver=r6172.20fc6b127
+pkgver=r6181.77362027f
 pkgrel=1
 pkgdesc="All of the registered tree sitter parsers used by Neovim; main branch of nvim-treesitter"
 arch=(x86_64)
@@ -40,5 +40,5 @@ package() {
 	cp site/parser-info/*.revision -t "${parent_dir}/parser-info/"
 
 	mkdir -p "${parent_dir}/queries/"
-	cp -r site/queries/* -t "${parent_dir}/queries/"
+	cp -rL site/queries/* -t "${parent_dir}/queries/"
 }
