@@ -2,7 +2,7 @@
 # Maintainer: Jiří Kořenek
 pkgname=fuzzy
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic live fuzzy finder in C# using ripgrep"
 arch=('x86_64')
 url="https://github.com/wallach-game/fuzzy-csharp"

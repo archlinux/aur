@@ -1,7 +1,7 @@
 pkgbase = fuzzy
 	pkgdesc = Dynamic live fuzzy finder in C# using ripgrep
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wallach-game/fuzzy-csharp
 	arch = x86_64
 	license = MIT
