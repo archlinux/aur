@@ -192,11 +192,11 @@ package_jre25-openjdk-headless-wakefield() {
   provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
-    "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
+    "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jdk25-openjdk
-    jre25-openjdk
+    jdk25-openjdk-wakefield
+    jre25-openjdk-wakefield
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -242,7 +242,7 @@ package_jre25-openjdk-headless-wakefield() {
   for f in bin/*; do
     f=$(basename "${f}")
     _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk${_majorver}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk-wakefield${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
@@ -266,14 +266,14 @@ package_jre25-openjdk-wakefield() {
   provides=(
     "java-runtime=${_majorver}"
     "java-runtime-openjdk=${_majorver}"
-    "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
+    "jre${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}"
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
-    "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
+    "jre${_majorver}-openjdk-wakefield-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jdk25-openjdk
-    jre25-openjdk-headless
+    jdk25-openjdk-wakefield
+    jre25-openjdk-headless-wakefield
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -319,7 +319,7 @@ package_jre25-openjdk-wakefield() {
   for f in bin/*; do
     f=$(basename "${f}")
     _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk${_majorver}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk-wakefield${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
@@ -364,17 +364,17 @@ package_jdk25-openjdk-wakefield() {
   provides=(
     "java-environment=${_majorver}"
     "java-environment-openjdk=${_majorver}"
-    "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}"
+    "jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}"
     "java-runtime=${_majorver}"
     "java-runtime-openjdk=${_majorver}"
-    "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
+    "jre${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}"
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
-    "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
+    "jre${_majorver}-openjdk-headless-wakefield=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jre25-openjdk
-    jre25-openjdk-headless
+    jre25-openjdk-wakefield
+    jre25-openjdk-headless-wakefield
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -418,7 +418,7 @@ package_jdk25-openjdk-wakefield() {
   for f in bin/*; do
     f=$(basename "${f}")
     _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk${_majorver}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-openjdk-wakefield${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
@@ -444,7 +444,7 @@ package_jdk25-openjdk-wakefield() {
 package_openjdk25-src-wakefield() {
   pkgdesc="OpenJDK Java ${_majorver} wayland sources"
   # Depends on JDK to get license files
-  depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
+  depends=("jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
   provides=("openjdk${_majorver}-src=${pkgver}-${pkgrel}")
 
   install -Dm 644 -t "${pkgdir}${_jvmdir}/lib" ${_imgdir}/jdk/lib/src.zip
@@ -456,7 +456,7 @@ package_openjdk25-src-wakefield() {
 package_openjdk25-doc-wakefield() {
   pkgdesc="OpenJDK Java ${_majorver} wayland documentation"
   # Depends on JDK to get license files
-  depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
+  depends=("jdk${_majorver}-openjdk-wakefield=${pkgver}-${pkgrel}")
   provides=("openjdk${_majorver}-doc=${pkgver}-${pkgrel}")
 
   install -dm 755 "${pkgdir}/usr/share/doc"
