@@ -1,5 +1,5 @@
 pkgname=tchmaterial-parser
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 maintainer=('iamzhz' 'wuziqian211')
 pkgdesc="国家中小学智慧教育平台 电子课本下载工具，帮助您从智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。 "
@@ -14,7 +14,7 @@ source=(
         "setup.py"
 )
 sha256sums=(
-        '7eece302e5d1757c04196d9defef0aa0ee0d63322c56351e20fef1b69d82b056'
+        '7276e898ab194007d005026d0cdba466489cb26c5cbb1e67298bdbc424047f58'
         'SKIP'
         'SKIP'
 )
@@ -26,20 +26,15 @@ build() {
   mv src/tchMaterial-parser.pyw src/main.py
   touch src/__init__.py
   python setup.py build
-
 }
 
 package() {
   cd "tchMaterial-parser-$pkgver"
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  #sudo chmod +x /usr/bin/tchMaterial-parser
 
-  # 手动安装额外文件
+  # 安装额外文件
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 tchMaterial-parser.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 src/favicon_223x223.png "$pkgdir/usr/share/pixmaps/tchMaterial-parser.png"
-
-  # 强制设置可执行权限
-  find "$pkgdir/usr/bin" -type f -exec chmod 755 {} \;
 }
