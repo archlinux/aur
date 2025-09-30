@@ -1,0 +1,15 @@
+pkgbase = plover-appimage
+	pkgdesc = Free and open source real-time stenography engine
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/openstenoproject/plover/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = plover-appimage-5.0.0.AppImage
+	options = !strip
+	source_x86_64 = plover-appimage-5.0.0.AppImage::https://github.com/openstenoproject/plover/releases/download/v5.0.0/plover-5.0.0-x86_64.AppImage
+	sha256sums_x86_64 = e83522e6931fa5b612c742c0d23deba6b8f3ddc9339454a78ab130a6c6760df8
+
+pkgname = plover-appimage
