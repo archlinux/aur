@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=waypaper
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='GUI wallpaper setter for Wayland and Xorg window managers. It works as a frontend for popular wallpaper backends like swaybg, swww, wallutils, hyprpaper and feh.'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=('feh: the x11 backend that supports static images'
             'swww: the wayland backend that supports animated GIFs'
             'wallutils: another x11 backend')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('25d7c2022a5c00091539bc799e1f3faf0774a69b767c34396b55200e7d48275abe4b72c3e6c23a99730c9d6d43f9ba1bc082b1054d72a799d8839bad88637ba6')
+sha512sums=('e8d9c4b105747f2fb42d9b0ac00e553dad6318c118bf1d983214fc97dffa0d7a270a87480e7befc596d209537e13c751aef0543710ff38700a4ed0f621b71047')
 
 build() {
   cd "${pkgname}-${pkgver}"
