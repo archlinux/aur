@@ -106,6 +106,7 @@ pkgname = elephant-files-bin
 	pkgdesc = files provider for elephant
 	depends = glibc
 	depends = elephant
+	depends = fd
 	provides = elephant-files
 	conflicts = elephant-files
 
@@ -120,6 +121,7 @@ pkgname = elephant-clipboard-bin
 	pkgdesc = clipboard provider for elephant
 	depends = glibc
 	depends = elephant
+	depends = wl-clipboard
 	provides = elephant-clipboard
 	conflicts = elephant-clipboard
 
@@ -127,6 +129,7 @@ pkgname = elephant-calc-bin
 	pkgdesc = calc provider for elephant
 	depends = glibc
 	depends = elephant
+	depends = libqalculate
 	provides = elephant-calc
 	conflicts = elephant-calc
 

@@ -180,7 +180,7 @@ package_elephant-files-bin() {
 
     conflicts=("${_pkgname}-files")
     provides=("${_pkgname}-files")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}" "fd")
 
     cd "${srcdir}/" || exit
 
@@ -208,7 +208,7 @@ package_elephant-clipboard-bin() {
 
     conflicts=("${_pkgname}-clipboard")
     provides=("${_pkgname}-clipboard")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}" "wl-clipboard")
 
     cd "${srcdir}/" || exit
 
@@ -222,7 +222,7 @@ package_elephant-calc-bin() {
 
     conflicts=("${_pkgname}-calc")
     provides=("${_pkgname}-calc")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}" "libqalculate")
 
     cd "${srcdir}/" || exit
 
