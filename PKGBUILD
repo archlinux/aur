@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers"
 arch=('x86_64')
@@ -8,9 +8,9 @@ url="https://github.com/slastra/tabctl"
 license=('MIT')
 depends=('dbus')
 makedepends=('go' 'git')
-options=('!debug')
+optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5e9f29294c58f792b3741cb0054f1c3872c2dffe7a3d9e1c3a6dc40773e0f54a')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 install=tabctl.install
 
 build() {
@@ -35,6 +35,7 @@ package() {
 
     # Install rofi scripts
     install -Dm755 scripts/rofi-wmctrl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-wmctrl.sh"
+    install -Dm755 scripts/rofi-hyprctl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-hyprctl.sh"
 
     # Install browser extensions
     install -dm755 "$pkgdir/usr/share/$pkgname/extensions"
