@@ -1,35 +1,59 @@
-# Maintainer Gleb Sinyavskiy <zhulik.gleb@gmail.com>
-# Original author graysky <graysky AT archlinux DOT us>
-#
-pkgname=adguardhome-git
-_origpkgname=adguardhome
-_pkgname=AdGuardHome
-pkgver=v0.103.3
-pkgrel=1
-pkgdesc="Network-wide ads and trackers blocking DNS server. Release version from git (fixed version string)"
-arch=('x86_64')
-url="https://github.com/AdguardTeam/AdGuardHome"
-license=('GPL')
-source=("AdGuardHome::git+https://github.com/AdguardTeam/AdGuardHome.git"
-  "$_pkgname.service" sysusers.conf tmpfiles.conf
-)
-makedepends=(go npm git)
-conflicts=(adguardhome)
-install=readme.install
-sha256sums=('SKIP'
-            '3eb76cc878f544bfc276929096c1d7d233e2e3d613886ee9a78b306ac3cd763e'
-            'e9a50b7004218803ecf44c0be8c7fb28d584e8b7b3a821f26ff3478816ab0afd'
-            '7cacae3dad7042f331208a47f7177a27b03a45984659df900ac175d715883aad')
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
-build(){
-  cd "$_pkgname"
-  git checkout tags/$pkgver
-  make -j1
+pkgname=adguardhome-git
+_name=${pkgname%-git}
+_upstream_name=AdGuardHome
+pkgver=0.108.0.b.76.r9.g2fde53b
+pkgrel=1
+pkgdesc='Network-wide ads and trackers blocking DNS server'
+arch=('armv7h' 'aarch64' 'i686' 'x86_64')
+url='https://github.com/AdguardTeam/AdGuardHome'
+license=('GPL-3.0-only')
+depends=('glibc')
+makedepends=('git' 'go' 'nodejs' 'npm')
+provides=("$_name")
+conflicts=("$_name")
+source=("$_name-$pkgver::git+$url"
+        "$_name.service")
+b2sums=('SKIP'
+        '161152f91e09fe491db631eb6ed603c0c975453b682467945fdade6091bf427ec932230f3a10e40e2f054dc01567930ecc27343c04882fb0e736b4f6becc96da')
+
+pkgver() {
+    cd $_name-$pkgver
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $_name-$pkgver
+    npm --prefix client ci
+    go mod download
+}
+
+build() {
+    cd $_name-$pkgver
+    npm --prefix client run build-prod
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+
+    [[ $CARCH == "armv7h" ]] && export GOARCH=arm GOARM=7
+    [[ $CARCH == "aarch64" ]] && export GOARCH=arm64
+    [[ $CARCH == "i686" ]] && export GOARCH=386
+    [[ $CARCH == "x86_64" ]] && export GOARCH=amd64
+
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'github.com/AdguardTeam/AdGuardHome/internal/version.version=v$pkgver' -X 'github.com/AdguardTeam/AdGuardHome/internal/version.channel=release'" \
+        -o $_name
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/var/lib/adguardhome/$_pkgname"
-  install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm644 "$srcdir"/sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_origpkgname.conf"
-  install -Dm644 "$srcdir"/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_origpkgname.conf"
+    install -Dm755 $_name-$pkgver/$_name "$pkgdir/usr/bin/$_name"
+    install -Dm644 $_name.service "$pkgdir/usr/lib/systemd/system/$_name.service"
+    install -dm755 "$pkgdir/etc"
+    ln -s /var/lib/$_name/$_upstream_name.yaml "$pkgdir/etc/$_name.yaml"
 }

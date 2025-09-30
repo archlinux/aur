@@ -1,5 +1,5 @@
-src/
-pkg/
-*.tar.gz
-*.tar.xz
-AdGuardHome
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
