@@ -182,7 +182,7 @@ check() {
 }
 
 package_jre25-openjdk-headless-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} headless runtime environment"
+  pkgdesc="OpenJDK Java ${_majorver} wayland headless runtime environment"
   depends=(
     "${_commondeps[@]}"
   )
@@ -195,8 +195,8 @@ package_jre25-openjdk-headless-wakefield() {
     "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jdk-openjdk
-    jre-openjdk
+    jdk25-openjdk
+    jre25-openjdk
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -252,7 +252,7 @@ package_jre25-openjdk-headless-wakefield() {
 }
 
 package_jre25-openjdk-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} full runtime environment"
+  pkgdesc="OpenJDK Java ${_majorver} wayland full runtime environment"
   depends=(
     "${_commondeps[@]}"
     giflib
@@ -272,8 +272,8 @@ package_jre25-openjdk-wakefield() {
     "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jdk-openjdk
-    jre-openjdk-headless
+    jdk25-openjdk
+    jre25-openjdk-headless
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -336,7 +336,7 @@ package_jre25-openjdk-wakefield() {
 }
 
 package_jdk25-openjdk-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} development kit"
+  pkgdesc="OpenJDK Java ${_majorver} wayland development kit"
   depends=(
     "${_commondeps[@]}"
     'java-environment-common=3'
@@ -373,8 +373,8 @@ package_jdk25-openjdk-wakefield() {
     "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}"
   )
   conflicts=(
-    jre-openjdk
-    jre-openjdk-headless
+    jre25-openjdk
+    jre25-openjdk-headless
   )
   backup=(
     etc/${pkgbase}/logging.properties
@@ -442,7 +442,7 @@ package_jdk25-openjdk-wakefield() {
 }
 
 package_openjdk25-src-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} sources"
+  pkgdesc="OpenJDK Java ${_majorver} wayland sources"
   # Depends on JDK to get license files
   depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
   provides=("openjdk${_majorver}-src=${pkgver}-${pkgrel}")
@@ -454,7 +454,7 @@ package_openjdk25-src-wakefield() {
 }
 
 package_openjdk25-doc-wakefield() {
-  pkgdesc="OpenJDK Java ${_majorver} documentation"
+  pkgdesc="OpenJDK Java ${_majorver} wayland documentation"
   # Depends on JDK to get license files
   depends=("jdk${_majorver}-openjdk=${pkgver}-${pkgrel}")
   provides=("openjdk${_majorver}-doc=${pkgver}-${pkgrel}")

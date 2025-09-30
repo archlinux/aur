@@ -40,7 +40,7 @@ pkgbase = java25-openjdk-wakefield
 	sha256sums = cd83d0a053954ea46a37b057e73668d5933deac873630aeaca06dc072c532413
 
 pkgname = jdk25-openjdk-wakefield
-	pkgdesc = OpenJDK Java 25 development kit
+	pkgdesc = OpenJDK Java 25 wayland development kit
 	install = install_jdk-openjdk.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -84,8 +84,8 @@ pkgname = jdk25-openjdk-wakefield
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
 	provides = jre25-openjdk-headless=25.0.1.0.r9512.g6516ff1-1
-	conflicts = jre-openjdk
-	conflicts = jre-openjdk-headless
+	conflicts = jre25-openjdk
+	conflicts = jre25-openjdk-headless
 	backup = etc/java25-openjdk-wakefield/logging.properties
 	backup = etc/java25-openjdk-wakefield/management/jmxremote.access
 	backup = etc/java25-openjdk-wakefield/management/jmxremote.password.template
@@ -102,7 +102,7 @@ pkgname = jdk25-openjdk-wakefield
 	backup = etc/java25-openjdk-wakefield/sound.properties
 
 pkgname = jre25-openjdk-wakefield
-	pkgdesc = OpenJDK Java 25 full runtime environment
+	pkgdesc = OpenJDK Java 25 wayland full runtime environment
 	install = install_jre-openjdk.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -129,8 +129,8 @@ pkgname = jre25-openjdk-wakefield
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
 	provides = jre25-openjdk-headless=25.0.1.0.r9512.g6516ff1-1
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk-headless
+	conflicts = jdk25-openjdk
+	conflicts = jre25-openjdk-headless
 	backup = etc/java25-openjdk-wakefield/logging.properties
 	backup = etc/java25-openjdk-wakefield/management/jmxremote.access
 	backup = etc/java25-openjdk-wakefield/management/jmxremote.password.template
@@ -147,7 +147,7 @@ pkgname = jre25-openjdk-wakefield
 	backup = etc/java25-openjdk-wakefield/sound.properties
 
 pkgname = jre25-openjdk-headless-wakefield
-	pkgdesc = OpenJDK Java 25 headless runtime environment
+	pkgdesc = OpenJDK Java 25 wayland headless runtime environment
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -167,8 +167,8 @@ pkgname = jre25-openjdk-headless-wakefield
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
 	provides = jre25-openjdk-headless=25.0.1.0.r9512.g6516ff1-1
-	conflicts = jdk-openjdk
-	conflicts = jre-openjdk
+	conflicts = jdk25-openjdk
+	conflicts = jre25-openjdk
 	backup = etc/java25-openjdk-wakefield/logging.properties
 	backup = etc/java25-openjdk-wakefield/management/jmxremote.access
 	backup = etc/java25-openjdk-wakefield/management/jmxremote.password.template
@@ -185,11 +185,11 @@ pkgname = jre25-openjdk-headless-wakefield
 	backup = etc/java25-openjdk-wakefield/sound.properties
 
 pkgname = openjdk25-doc-wakefield
-	pkgdesc = OpenJDK Java 25 documentation
+	pkgdesc = OpenJDK Java 25 wayland documentation
 	depends = jdk25-openjdk=25.0.1.0.r9512.g6516ff1-1
 	provides = openjdk25-doc=25.0.1.0.r9512.g6516ff1-1
 
 pkgname = openjdk25-src-wakefield
-	pkgdesc = OpenJDK Java 25 sources
+	pkgdesc = OpenJDK Java 25 wayland sources
 	depends = jdk25-openjdk=25.0.1.0.r9512.g6516ff1-1
 	provides = openjdk25-src=25.0.1.0.r9512.g6516ff1-1
