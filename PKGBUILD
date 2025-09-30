@@ -1,19 +1,19 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
-pkgver=0.6.8
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
 url="https://github.com/vitor251093/KHMelonMix"
 license=('GPL')
-depends=("libepoxy" "libslirp" "qt6-base" "qt6-multimedia" "sdl2" "enet" "sdl2-compat" "flac1.3")
+depends=("libepoxy" "libslirp" "qt6-base" "qt6-multimedia" "sdl2" "enet" "sdl2-compat" "flac1.3" "lua")
 install=kh-melonmix.install
 source=("melonmix-$pkgver.zip::$url/releases/download/v$pkgver/MelonMix-ubuntu-$arch.zip"
 https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/icon/melon_256x256.png
 https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
 https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
 )
-sha256sums=("49739b16343fcec11c68cbba842d28282d17227ec984a740584b01916f2b5026"
+sha256sums=("86bcfa61188d391fb3d3e178011d5af65192714cd66047312ccff53b25105574"
 SKIP
 SKIP
 SKIP
