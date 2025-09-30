@@ -1,0 +1,18 @@
+pkgbase = rofi-passmenu
+	pkgdesc = A script to copy passwords from pass with rofi.
+	pkgver = 2.e00607b
+	pkgrel = 1
+	url = https://github.com/D00NIK/rofi-passmenu
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = rofi
+	depends = pass
+	optdepends = wl-clipboard: for clipboard support on Wayland
+	optdepends = xclip: for clipboard support on X11
+	optdepends = xdotool: to type passwords
+	optdepends = ydotool: to type passwords on Wayland
+	source = git+https://github.com/D00NIK/rofi-passmenu
+	md5sums = SKIP
+
+pkgname = rofi-passmenu
