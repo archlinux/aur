@@ -1,16 +1,16 @@
 pkgbase = equibop-git
 	pkgdesc = Forked Custom Discord desktop app with Equicord preinstalled
-	pkgver = 2.1.6.r1.g50e8550
+	pkgver = 2.1.7.r0.g3478e96
 	pkgrel = 1
 	url = https://github.com/Equicord/Equibop
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = pnpm
-	depends = electron36
+	depends = electron38
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
-	provides = equibop=2.1.6
+	provides = equibop=2.1.7
 	conflicts = equibop
 	conflicts = equibop-bin
 	source = equibop::git+https://github.com/Equicord/Equibop.git
