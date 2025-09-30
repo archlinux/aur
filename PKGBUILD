@@ -7,7 +7,7 @@ pkgver=0.0.0.r0.g0000000
 pkgrel=1
 pkgdesc="A Pythonic framework for threat modeling."
 arch=('any')
-url=https://github.com/OWASP/"${_name}"
+url=https://github.com/OWASP/"${_pkgname}"
 license=('MIT')
 depends=(
     'python>=3.10'
@@ -19,7 +19,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
 optdepends=(
 )
-source=("${_pkgname}::git+https://github.com/OWASP/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/OWASP/${__pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,16 +32,16 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
 }
 
 build() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install license if it exists
@@ -58,5 +58,5 @@ package() {
 }
 
 check() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_pkgname}"
 }

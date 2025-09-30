@@ -2,7 +2,7 @@ pkgbase = python-pytm-git
 	pkgdesc = A Pythonic framework for threat modeling.
 	pkgver = 0.0.0.r0.g0000000
 	pkgrel = 1
-	url = https://github.com/OWASP/
+	url = https://github.com/OWASP/pytm
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -14,7 +14,7 @@ pkgbase = python-pytm-git
 	depends = jre11-openjdk
 	depends = plantuml
 	depends = python-pydal-git
-	source = pytm::git+https://github.com/OWASP/pytm.git
+	source = pytm::git+https://github.com/OWASP/.git
 	sha256sums = SKIP
 
 pkgname = python-pytm-git
