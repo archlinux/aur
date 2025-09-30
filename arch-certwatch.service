@@ -1,0 +1,12 @@
+[Unit]
+Description=Certificate Expiration Watchdog
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/arch-certwatch --config /etc/arch-certwatch/config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

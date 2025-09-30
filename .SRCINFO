@@ -1,0 +1,12 @@
+pkgbase = arch-certwatch
+pkgname = arch-certwatch
+pkgver = 0.1.0
+pkgrel = 1
+url = https://github.com/hamdyaea/arch-certwatch
+license = GPLv3
+arch = x86_64
+depends = 
+makedepends = go git
+source = https://github.com/hamdyaea/arch-certwatch/archive/v0.1.0.tar.gz
+sha256sums = SKIP
+
