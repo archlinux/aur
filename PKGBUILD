@@ -1,34 +1,27 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Martin Reboredo <yakoyoku@gmail.com>
 pkgname='libmongocrypt'
-pkgver='1.15.2'
+pkgver='1.16.0'
+_mongocver='2.1.0'
 pkgrel='1'
 pkgdesc='C library for client side and queryable encryption in MongoDB'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mongodb/$pkgname"
 license=('Apache-2.0 AND BSD-3-Clause AND ISC AND MIT')
-depends=('libbson')
 makedepends=('cmake' 'git')
 provides=('libkms_message.so' 'libmongocrypt.so')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver-shared-libbson.patch::$url/pull/681.patch"
+	"$pkgname-$pkgver-mongoc.tar.gz::https://github.com/mongodb/mongo-c-driver/archive/refs/tags/$_mongocver.tar.gz"
 	"$pkgname-$pkgver-freebsd-LICENSE::https://github.com/freebsd/freebsd-src/raw/e7c6cef9514d3bb1f14a30a5ee871231523e43db/lib/libc/stdlib/merge.c"
 	"$pkgname-$pkgver-dirent-LICENSE::https://github.com/tronkko/dirent/raw/a3e9db58aa4be4972054e77a455c916ffea2e42c/LICENSE"
 )
-b2sums=('33accfd5ad5b7e565ca58f88c5dcfeabcab9da828c49235d568ce791b6e28dfc9a8728a1f9186648e2f4143b72ce942582e8b2123a1cfb4ddea779a48ecd097c'
-        'cc34dd00409fb5d2489627b85f4fa13c1a58f80fdd81d02e7adb9d749e4a97f06a52e6ab44978f2941686fc59d3a2112266c9d44c0e03b2d313c51674aeb0ea5'
+b2sums=('27acdd7206f92363791bfbb4ec1a120fddc87caaf28caa9e02d16d4d64b11e35f09b9ef4ed98872f47900bc99a00f5547ca40e28b1530a359aaa8eb0f8a91ba9'
+        '88aee37e9d92180fd3226a0f3ef9f85f3e40572682189a42800d10db38688ff2e39c5ede12e672827009f0f0e07224de21931f3e74a7b4d32249e9cdc37174a1'
         '3299a8abcb532c5322dd69d2f4ad39245124c1b79f0c2c347626698bc4106c00b2cbd1781676eba879e54c3e079488bb8b649aada0b3f0edc552b1a047907e10'
         '60ae76d99f94549a84bfe9681e8c79b00993b9d2eabfefde2382c9ff7677f4395f84d67995b0a680cdb033475a0a561b092b6b3ef9b039e037b9f4a45a373a86')
 
 _sourcedirectory="$pkgname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-
-	# Apply patch to be able to use system libbson exclusively (https://github.com/mongodb/libmongocrypt/pull/681)
-	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-shared-libbson.patch"
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -40,8 +33,8 @@ build() {
 		-DBUILD_TESTING=OFF \
 		-DENABLE_ONLINE_TESTS=OFF \
 		-DENABLE_STATIC=OFF \
-		-DMONGOCRYPT_MONGOC_DIR='USE-SYSTEM' \
-		-DUSE_SHARED_LIBBSON=ON \
+		-DMONGOCRYPT_MONGOC_DIR="$srcdir/mongo-c-driver-$_mongocver/" \
+		-DUSE_SHARED_LIBBSON=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
