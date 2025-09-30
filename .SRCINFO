@@ -1,16 +1,18 @@
 pkgbase = hdf4
 	pkgdesc = General purpose library and file format for storing scientific data
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://portal.hdfgroup.org
 	arch = x86_64
 	license = custom
+	makedepends = autoconf
+	makedepends = automake
 	depends = libaec
 	depends = zlib
 	depends = libjpeg-turbo
 	depends = libtirpc
 	depends = netcdf
-	source = https://github.com/HDFGroup/hdf4/archive/refs/tags/hdf4.3.0.tar.gz
-	sha256sums = a6639a556650e6ea8632a17b8188a69de844bdff54ce121a1fd5b92c8dd06cb1
+	source = https://github.com/HDFGroup/hdf4/archive/refs/tags/hdf4.3.1.tar.gz
+	sha256sums = 6dc3b8af610526788bf78fb3982b25a80abfc94e37ce0c3ae2929b5e9c937093
 
 pkgname = hdf4
