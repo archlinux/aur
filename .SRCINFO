@@ -1,0 +1,19 @@
+pkgbase = tarmoqchi
+	pkgdesc = A lightweight HTTP tunneling tool to expose local servers to the internet
+	pkgver = r143.b666993
+	pkgrel = 1
+	url = https://github.com/dilshodturab/tarmoqchi
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = tarmoqchi
+	conflicts = tarmoqchi
+	source = git+https://github.com/dilshodturab/tarmoqchi.git
+	sha256sums = SKIP
+
+pkgname = tarmoqchi
