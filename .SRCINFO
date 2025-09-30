@@ -1,13 +1,13 @@
 pkgbase = arch-certwatch
-pkgname = arch-certwatch
-pkgver = 0.1.1
-pkgrel = 1
-url = https://github.com/hamdyaea/arch-certwatch
-license = GPLv3
-maintainer = Hamdy Abou El Anein <hamdy.aea@protonmail.com>
-arch = x86_64
-depends = 
-makedepends = go git
-source = https://github.com/hamdyaea/arch-certwatch/archive/v0.1.0.tar.gz
-sha256sums = 'c967994fb07fa02233225ed251a27f6d830edb3a478ab359844d0ce3125b0942'
+	pkgdesc = Small daemon to scan TLS certificates and warn before expiry. Maintainer: Hamdy Abou El Anein
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/hamdyaea/arch-certwatch
+	arch = x86_64
+	license = GPLv3
+	makedepends = go
+	makedepends = git
+	source = https://github.com/hamdyaea/arch-certwatch/archive/v0.1.1.tar.gz
+	sha256sums = c967994fb07fa02233225ed251a27f6d830edb3a478ab359844d0ce3125b0942
 
+pkgname = arch-certwatch
