@@ -1,9 +1,9 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspLearnStats
-_pkgver=0.19.3
+_pkgver=0.95.0
 pkgname=r-${_pkgname,,}
-pkgver=0.19.3
-pkgrel=1
+pkgver=0.95.0
+pkgrel=2
 pkgdesc="Learn Classical statistics with simple examples and supporting text"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -24,7 +24,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('862d7a8a3d4622403aa64be1e71be2e48c6435369d4558353059339930f7f37b')
+sha256sums=('758541383fe1a720fcc8bbe110cb612cd4e474c77659c6ae7889798c754e2e15')
 
 build() {
 
@@ -34,6 +34,4 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  mkdir -p ${pkgdir}/usr/lib/jasp-desktop/Modules
-  ln -s /usr/lib/R/library ${pkgdir}/usr/lib/jasp-desktop/Modules/${_pkgname}
 }
