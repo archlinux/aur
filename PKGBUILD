@@ -1,37 +1,31 @@
 # Maintainer: Doug Davis <ddavis at ddavis dot io>
 
+_pkgname=pygram11
 pkgname=python-pygram11
-pkgver=0.12.1
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="histogramming in python accelerated with OpenMP"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/douglasdavis/pygram11"
-license=('MIT')
-groups=()
-depends=('python>=3.7' 'python-numpy')
-optdepends=()
-checkdepends=()
-makedepends=('gcc' 'python-setuptools' 'python-setuptools-scm')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=("https://pypi.io/packages/source/p/pygram11/pygram11-$pkgver.tar.gz")
-sha256sums=('5477e476dc3e5c2efb1413f8d73524c43878f691b91649b683dc3b110a6ce5f0')
+license=("MIT")
+depends=("python>=3.11" "python-numpy")
+makedepends=(
+    "gcc"
+    "python-build"
+    "python-installer"
+    "python-wheel"
+    "python-scikit-build-core"
+    "cmake"
+)
+source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=("09d24ad001e03774f60d0084649a8306b112fb1891cc2d828570fa00777273d8")
 
 build() {
-  cd "${srcdir}/pygram11-${pkgver}"
-  echo "nothing"
-}
-
-check() {
-  cd "${srcdir}/pygram11-${pkgver}"
-  echo "nothing"
+  cd "${_pkgname}-${pkgver}"
+  python3 -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/pygram11-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+    cd $_pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
