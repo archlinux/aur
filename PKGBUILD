@@ -4,7 +4,7 @@
 
 pkgname=latte-dock
 pkgver=0.10.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A dock based on Plasma Frameworks'
 arch=(x86_64)
 url='https://store.kde.org/p/1169519/'

@@ -1,7 +1,7 @@
 pkgbase = latte-dock
 	pkgdesc = A dock based on Plasma Frameworks
 	pkgver = 0.10.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://store.kde.org/p/1169519/
 	arch = x86_64
 	license = GPL
