@@ -9,7 +9,7 @@ license=('WTFPL-2-or-later')
 depends=()
 makedepends=('rust' 'cargo')
 source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('ca602e98e7b4ed96cf0d69ad349c13f634d1d165cb0d89d36604b3c6d36b60b0')
+sha256sums=('567d78b716d9b25755d977fd138995a9c373e7938cad93709c47fdc3b75ddf90')
 
 build() {
   export RUSTUP_TOOLCHAIN=nightly
