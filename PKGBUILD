@@ -150,7 +150,7 @@ _stable=${_major}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF scheduler Kernel by CachyOS targeted for Servers workloads'
-pkgrel=1
+pkgrel=2
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -174,7 +174,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=580.82.09
+_nv_ver=580.95.05
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
@@ -728,5 +728,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('0edb2324be5638aa75984128aafdba3e50824187d2fcdff8794eab99d85c10c3a17d1e840053c2c83df5ee11fdf69f1c9452c57ecc9dae01c4af38180fe7821a'
-        'aaf7ad22ac8555d22e41b00f3ecb4d279d85e4be5228d0c070791e8aab6a639c0451719cbbf335cceaaf08041451289ba2e9696491bc77b6f1dac6e02178ebd8'
+        'eed81db2b3b273b38d4326b90c26510700fd2a9efb377cfb1be1fd20b05a0506de3d2eb4f34480099c742409af24c052f17cbcd93eb54834cdf8c26c98f4f76d'
         '2eb84d4c45d9b8de6f7f8cae7ef527e4b5b26c12f462cfd41604f74cda83a7b1147c1957cadeddbe0db0db0de70e158b063946a29ba5a2b3ffc5593e5915a1ac')
