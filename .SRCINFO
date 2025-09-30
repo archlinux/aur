@@ -8,13 +8,16 @@ pkgbase = python-pytm-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
+	makedepends = python-pbs-installer
+	makedepends = python-httpx
 	makedepends = git
 	depends = python>=3.10
 	depends = python-graphviz
 	depends = jre11-openjdk
 	depends = plantuml
 	depends = python-pydal-git
-	source = pytm::git+https://github.com/OWASP/.git
+	source = pytm::git+https://github.com/OWASP/pytm.git
 	sha256sums = SKIP
 
 pkgname = python-pytm-git

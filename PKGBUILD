@@ -16,10 +16,18 @@ depends=(
     'plantuml'
     'python-pydal-git'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-poetry'
+    'python-pbs-installer'
+    'python-httpx'
+    'git'
+)
 optdepends=(
 )
-source=("${_pkgname}::git+https://github.com/OWASP/${__pkgname}.git")
+source=("${_pkgname}::git+https://github.com/OWASP/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
