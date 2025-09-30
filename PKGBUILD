@@ -3,7 +3,7 @@
 _pkgname=synapse-s3-storage-provider
 pkgname=python3-${_pkgname}
 pkgver=1.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Synapse storage provider to fetch and store media in Amazon S3"
 arch=('any')
 url='https://github.com/matrix-org/synapse-s3-storage-provider'
