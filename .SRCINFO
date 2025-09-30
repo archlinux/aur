@@ -1,10 +1,13 @@
 pkgbase = matlab-runtime-meta
-	pkgdesc = A high-level language for numerical computation and visualization (runtime, meta)
+	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mathworks.com/products/compiler/matlab-runtime.html
 	arch = any
 	license = custom:None
+
+pkgname = matlab-runtime-meta
+	pkgdesc = A high-level language for numerical computation and visualization (runtime, meta)
 	depends = alsa-lib
 	depends = ca-certificates
 	depends = fontconfig
@@ -36,8 +39,7 @@ pkgbase = matlab-runtime-meta
 	depends = util-linux-libs
 	depends = wayland
 	depends = zlib
-	optdepends = java-environment<=21: supported system-wide JDK
-	optdepends = java-environment>=8: supported system-wide JDK
+	optdepends = java-matlab-runtime-meta: supported system-wide JDK
 	optdepends = gcc8: supported C/C++ compiler
 	optdepends = gcc9: supported C/C++ compiler
 	optdepends = gcc10: supported C/C++ compiler
@@ -66,4 +68,7 @@ pkgbase = matlab-runtime-meta
 	optdepends = xorg-xkbprint: listed in the original depends as x11-xkb-utils
 	optdepends = xorg-xkbutils: listed in the original depends as x11-xkb-utils
 
-pkgname = matlab-runtime-meta
+pkgname = java-matlab-runtime-meta
+	pkgdesc = A high-level language for numerical computation and visualization (Java components, runtime, meta)
+	depends = java-environment<=21
+	depends = java-environment>=8
