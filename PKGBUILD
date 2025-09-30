@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=parsnip
-_pkgver=1.3.1
+_pkgver=1.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -68,8 +68,8 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('077adc6446cfad70ca005df5579bef5a')
-b2sums=('5b4c955e0b39834d81ecc195b99ed94dbf0b83b5bb7b37d22b851c088b31a5ee86809c2dce4d85e749eb849381d70ffb3de8d78df0481c49530808743049e5a1')
+md5sums=('5561028fb18dff96abf0e781666e8812')
+b2sums=('9eb0894bd72f401a221ceac7b78c3b4c85891b9516461205920961bbc380c8562dd9c4eee7a86f781af9aa35a2dc6885e5fd307d1f43b69a80a167ade44f6c68')
 
 build() {
   mkdir build
