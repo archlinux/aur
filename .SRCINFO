@@ -1,0 +1,17 @@
+pkgbase = kraiser-git
+	pkgdesc = Run or raise apps on KDE Plasma Wayland using kdotool (git version)
+	pkgver = 1.3.0.gdd14712
+	pkgrel = 1
+	url = https://github.com/dmnmsc/kraiser
+	install = kraiser-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = kdotool
+	provides = kraiser
+	conflicts = kraiser
+	source = git+https://github.com/dmnmsc/kraiser.git
+	sha256sums = SKIP
+
+pkgname = kraiser-git
