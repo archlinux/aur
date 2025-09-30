@@ -14,7 +14,7 @@ gen: .SRCINFO
 .SRCINFO: PKGBUILD duo.install
 	@makepkg --printsrcinfo >$@
 
-.PHONY: update-sha
-update-sha:
-	@./update-sha.sh
+.PHONY: update-pkgbuild
+update-pkgbuild:
+	@./update-PKGBUILD.sh
 	$(MAKE) gen
