@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=12.4.0
+_pkgver=12.4.1
 
 pkgname=${_pkgname}-bin
 pkgver=${_pkgver//-/_}
@@ -48,8 +48,9 @@ source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garud
 source_aarch64=(firedragon-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-linux-arm64.tar.xz)
 sha256sums=('61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-sha256sums_x86_64=('e09645238ac24fab0bf1ab9f9f2dbb96e4cd2e1148b84b394bf5a697dc05c481')
-sha256sums_aarch64=('cc5a01785be9823255534a2665f9c2cb8c360cc2227d7c684e70d43b25e03d24')
+sha256sums_x86_64=('990b5ee045b381ed43240129bce1fba44ca602b1a9a3d2796fdd491563fbd672')
+sha256sums_aarch64=('36ddacdb333b04a8195a73e48edf3c20a0a39a917c4fe8826223df9ab8fd496c')
+
 
 package() {
   cd "${srcdir}/${_pkgname}"
