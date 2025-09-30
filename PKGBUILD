@@ -4,8 +4,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.50
-pkgrel=2
+pkgver=3.24.51
+pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -73,13 +73,11 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gtk.git#tag=$pkgver"
   gtk-query-immodules-3.0.hook
   0001-Allow-disabling-legacy-Tracker-search.patch
-  0002-gdk-Use-read_pixels-instead-of-get_pixels.patch
   gtk3-filechooser-icon-view.patch
 )
-b2sums=('93ee986e75b2b94b50f1485a183d6ab558306bf17ab15a500ea485c40123257873a6a99fc5e20f864da6c561f0f6f4c7a15f42694bd691db03aeddd5dd6587d2'
+b2sums=('06f5dcfe6cf693d4e0da0964715e7ea07ab8940eea21b7fba28615c6d9ecdd8533e51e061b57e6b4f5b9401041adeb52fd81fc856fa79dc5bf8e5a4058d9fa92'
         '8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407'
         '7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a'
-        '15b5e791417e9bbd794bde79a5d17fea17c89f3b8e906afa058717dde3a534fd0a849a94de4bf78845daaa2d347e04cece9705886fc02ce8132570eec2d43970'
         'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3')
 
 prepare() {
@@ -87,12 +85,6 @@ prepare() {
 
   # Don't try to use the old Tracker
   git apply -3 ../0001-Allow-disabling-legacy-Tracker-search.patch
-
-  # Xviewer crashes
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/gdk-pixbuf2/-/issues/6
-  # https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/issues/277
-  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/8995
-  git apply -3 ../0002-gdk-Use-read_pixels-instead-of-get_pixels.patch
 
   # apply icon-view patch
   patch -Np1 -i ../gtk3-filechooser-icon-view.patch
