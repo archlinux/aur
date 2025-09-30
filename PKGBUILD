@@ -2,7 +2,7 @@
 
 pkgname=monophony
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux app for streaming music from YouTube."
 arch=('any')
 url="https://gitlab.com/zehkira/monophony"
@@ -12,7 +12,6 @@ depends=(
 	'libadwaita'
 	'python-brotli'
 	'python-gobject'
-	'python-mpris_server'
 	'python-mprisify'
 	'python-mutagen'
 	'python-pycryptodomex'

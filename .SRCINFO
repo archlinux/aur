@@ -1,7 +1,7 @@
 pkgbase = monophony
 	pkgdesc = Linux app for streaming music from YouTube.
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zehkira/monophony
 	arch = any
 	license = 0BSD
@@ -11,7 +11,6 @@ pkgbase = monophony
 	depends = libadwaita
 	depends = python-brotli
 	depends = python-gobject
-	depends = python-mpris_server
 	depends = python-mprisify
 	depends = python-mutagen
 	depends = python-pycryptodomex
