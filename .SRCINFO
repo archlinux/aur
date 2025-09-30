@@ -1,0 +1,14 @@
+pkgbase = omarchy-styles
+	pkgdesc = Interactive TUI theme selector for omarchy themes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vyrx-dev/omarchy-styles
+	arch = any
+	license = MIT
+	depends = gum
+	depends = jq
+	depends = curl
+	source = omarchy-styles.sh
+	sha256sums = SKIP
+
+pkgname = omarchy-styles
