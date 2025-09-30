@@ -13,12 +13,12 @@ source=("https://github.com/irino/softflowd/archive/refs/tags/softflowd-v${pkgve
 sha256sums=('a6882e59931e5880901f8ee28d78b082cb3000ad8d28af35c13f2b528edbb2c9')
 
 prepare() {
-	cd ${srcdir}/softflowd-softflowd-${pkgver}
+	cd ${srcdir}/softflowd-softflowd-v${pkgver}
   autoreconf -if
 	
 }
 build() {
-  cd ${srcdir}/softflowd-softflowd-${pkgver}/
+  cd ${srcdir}/softflowd-softflowd-v${pkgver}/
 
   ./configure --prefix=/usr \
         --sbindir=/usr/bin \
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/softflowd-softflowd-${pkgver}"
+  cd "${srcdir}/softflowd-softflowd-v${pkgver}"
   make DESTDIR=${pkgdir} install
 }
