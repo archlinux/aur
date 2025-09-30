@@ -8,6 +8,7 @@ pkgbase = python3-synapse-s3-storage-provider
 	makedepends = python-setuptools
 	depends = python-boto3
 	depends = matrix-synapse
+	depends = python-humanize
 	source = synapse-s3-storage-provider-1.5.0.tar.gz::https://github.com/matrix-org/synapse-s3-storage-provider/archive/refs/tags/v1.5.0.tar.gz
 	sha256sums = c162f18be985ba723d0ee9791095741a2465a979b13d690388b6faf4a9f6749f
 
