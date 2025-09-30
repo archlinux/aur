@@ -1,0 +1,14 @@
+pkgbase = tweety
+	pkgdesc = Tweet without going to twitter.com
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/StanleyMasinde/twitter
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = tweety
+	conflicts = tweety
+	source = https://github.com/StanleyMasinde/twitter/releases/latest/download/twitter-linux-gnu.tar.gz
+	sha256sums = e128093ee3aa327ea582e6c1d1fcff1d39c883ffa273bdb1f4128314f564eecd
+
+pkgname = tweety
