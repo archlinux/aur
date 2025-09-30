@@ -1,13 +1,13 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname=systemd-boot-btrfs-snapshots-git
-pkgver=r126.ae7b1d7
+pkgver=r133.45c3db5
 pkgrel=1
 pkgdesc="Btrfs snapshot scripts with systemd-boot integration"
 arch=(x86_64)
 url="https://github.com/lucas-mior/systemd-boot-btrfs-snapshots"
 license=(AGPL)
-depends=(btrfs-progs inotify-tools)
+depends=(btrfs-progs inotify-tools arch-install-scripts)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

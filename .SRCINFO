@@ -1,6 +1,6 @@
 pkgbase = systemd-boot-btrfs-snapshots-git
 	pkgdesc = Btrfs snapshot scripts with systemd-boot integration
-	pkgver = r126.ae7b1d7
+	pkgver = r133.45c3db5
 	pkgrel = 1
 	url = https://github.com/lucas-mior/systemd-boot-btrfs-snapshots
 	install = PKGBUILD.install
@@ -9,6 +9,7 @@ pkgbase = systemd-boot-btrfs-snapshots-git
 	makedepends = git
 	depends = btrfs-progs
 	depends = inotify-tools
+	depends = arch-install-scripts
 	provides = systemd-boot-btrfs-snapshots
 	conflicts = systemd-boot-btrfs-snapshots
 	source = git+https://github.com/lucas-mior/systemd-boot-btrfs-snapshots.git
