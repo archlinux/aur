@@ -1,0 +1,22 @@
+pkgbase = nyan-doom-git
+	pkgdesc = A cuddly fork of DSDA, with an emphasis on innovative and QoL features. (Git Version)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/andrikpowell/nyan-doom
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = imagemagick
+	depends = fluidsynth
+	depends = glu
+	depends = libmad
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_net
+	depends = dumb
+	depends = portmidi
+	depends = libzip
+	source = git+https://github.com/andrikpowell/nyan-doom.git
+	sha256sums = SKIP
+
+pkgname = nyan-doom-git
