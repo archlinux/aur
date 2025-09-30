@@ -1,6 +1,6 @@
 pkgbase = charliecloud
 	pkgdesc = A lightweight, fully unprivileged container implementation for HPC applications
-	pkgver = 0.41
+	pkgver = 0.42
 	pkgrel = 1
 	url = https://charliecloud.io/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = charliecloud
 	optdepends = shellcheck: ch-test
 	optdepends = squashfs-tools: internal SquashFS mounting
 	optdepends = wget: ch-test
-	source = https://gitlab.com/charliecloud/charliecloud/-/archive/v0.41/charliecloud-v0.41.tar.gz
-	sha1sums = 372997e05b5f035b00167ca3fe85e303ddbeb78e
+	source = https://gitlab.com/charliecloud/charliecloud/-/archive/v0.42/charliecloud-v0.42.tar.gz
+	sha1sums = c814d33c0086a78a2fc156ee3fbaa0de01817e7c
 
 pkgname = charliecloud
