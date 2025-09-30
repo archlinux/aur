@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
-pkgver=3.7
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Saves your Linux desktop environment configuration"
 arch=('any')
@@ -19,9 +19,8 @@ makedepends=(
   'git'
   'meson'
 )
-_commit=c1dbbd5f0545e09bea5f454ff28662cea8b54ed5  # tags/3.7^0
-source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}")
-sha256sums=('1f21352ea00ad9dba776b8fb0e8b6d9f681ea8a88cf6970c490b68a3ace9216f')
+source=("git+https://github.com/vikdevelop/SaveDesktop.git#tag=$pkgver")
+sha256sums=('45ffe0750199e4844775717a18457e4e5b9479879cf68b39fdafc1485c981e14')
 
 build() {
   arch-meson SaveDesktop build
