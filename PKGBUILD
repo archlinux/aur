@@ -1,26 +1,27 @@
 # Maintainer: Anton Reshetov
 
 pkgname=masscode
-pkgver=4.0.1
+pkgver=4.0.2
+_electron_exec=electron34
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers "
 arch=("x86_64")
 url="https://github.com/massCodeIO/massCode"
 license=("AGPL-3.0")
-depends=(electron34)
+depends=("$_electron_exec")
 source=("https://github.com/massCodeIO/massCode/releases/download/v${pkgver}/massCode-${pkgver}.AppImage"
 "masscode.png::https://raw.githubusercontent.com/massCodeIO/massCode/master/build/icons/256x256.png"
     "masscode.desktop"
     "masscode.sh"
 )
-sha256sums=('70cdc0a128957bd5ca52d89496dd96254cde8cfaf769297c1dc87b126f53b405'
+sha256sums=('c749bb3d16a3f62443d83471c189b5601ae15335f6c44690a74eea664f12e1d9'
             'dc0d0519524662fde9e31acadf2ef4c3cf76729c59f8aca306bffe57779e9aa2'
             'a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15'
             '74aad10be03239734f7096833bb5c91c1f0e3d6a9d92bbd38f1d418efcd58b70')
 
 build() {
     sed -i 's#__ROOT_DIR__#/usr/lib/masscode#g' masscode.sh
-    sed -i 's#__ELECTRON__#/usr/bin/electron34#g' masscode.sh
+    sed -i "s#__ELECTRON__#/usr/bin/$_electron_exec#g" masscode.sh
     chmod +x ./massCode-${pkgver}.AppImage
     ./massCode-${pkgver}.AppImage --appimage-extract
 }
