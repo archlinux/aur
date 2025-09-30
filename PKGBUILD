@@ -30,6 +30,9 @@ prepare() {
     sed -i 's/"lib64" if/"lib" if/' setup.py # Bad assumption. Arch installs to lib even if lib64 exist
     sed -i '/copy_tree_with_patterns(build_dir \/ get_lib_dir(), self.build_lib + f"\/ttnn\/build\/lib", lib_patterns)/{p; s|get_lib_dir()|"ttnn"| }' setup.py # Additional install needed
 
+    # Disable -Werror (sometimes triggers on GCC)
+    find -name CMakeLists.txt | grep -v './build' | grep -v './.cpmcache' | xargs -n 1 sed -i -E 's/-Werror([[:space:]]|$)/ /g'
+
 }
 
 build() {
