@@ -74,7 +74,7 @@ case "${CARCH}" in
   aarch64) _JARCH='aarch64';;
 esac
 
-_jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk
+_jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk-wakefield
 _jdkdir=wakefield
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
 
