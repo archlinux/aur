@@ -1,6 +1,6 @@
 pkgbase = elephant-runner
 	pkgdesc = runner provider for elephant
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-runner
 	makedepends = go
 	provides = elephant-runner
 	conflicts = elephant-runner
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.0.9.tar.gz
-	sha256sums = 834e470c9ef500388fac3d171484ac40929b8fa46feac37cea4c215c3293675d
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 4bcf146815d1540b28598be41a6dfe7d2babfa7f7b69c0b8a95f049ef8db6661
 
 pkgname = elephant-runner
