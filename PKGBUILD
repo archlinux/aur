@@ -4,59 +4,59 @@
 pkgname=piliplus-git
 _srcname=PiliPlus
 _pkgname=piliplus
-pkgver=1.1.4.6
-pkgrel=1
+pkgver=1.1.4.6.r11.g89e6d5c
+pkgrel=2
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('gtk3' 'mpv' 'libayatana-appindicator')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
-providis=('piliplus')
-conflicts=('piliplus')
-source=("${_srcname}::git+${url}.git"
-    "${_pkgname}.desktop")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+${url}.git"
+	"${_pkgname}.desktop")
 sha256sums=('SKIP'
             'cad91a008e837952ec7268312ce9f5305a59783584843df7dbb10230464b8731')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "${_srcname}/"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${_srcname}/"
-    fvm install stable
-    fvm use stable -f
-    fvm flutter --disable-analytics
-    fvm flutter --no-version-check pub get
+	cd "${_srcname}/"
+	fvm install stable
+	fvm use stable -f
+	fvm flutter --disable-analytics
+	fvm flutter --no-version-check pub get
 }
 
 build() (
-    cd "${_srcname}/"
-    fvm dart lib/scripts/build.dart
-    fvm flutter build linux --no-pub --release
+	cd "${_srcname}/"
+	fvm dart lib/scripts/build.dart
+	fvm flutter build linux --no-pub --release
 )
 
 package() {
-    cd "${_srcname}/"
+	cd "${_srcname}/"
 
-    pushd build/linux/x64/release
-    install -Dm755 "bundle/${_pkgname}" -t "${pkgdir}/usr/lib/${_pkgname}/"
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
-    cmake -P cmake_install.cmake
-    popd
+	pushd build/linux/x64/release
+	install -Dm755 "bundle/${_pkgname}" -t "${pkgdir}/usr/lib/${_pkgname}/"
+	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
+	cmake -P cmake_install.cmake
+	popd
 
-    # Reset RPATH
-    patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${_pkgname}/lib/*.so
+	# Reset RPATH
+	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${_pkgname}/lib/*.so
 
-    # Symlink
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${_pkgdir}/usr/bin/${_pkgname}"
+	# Symlink
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # Icon
-    install -Dm644 assets/images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+	# Icon
+	install -Dm644 assets/images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
-    # Desktop Launcher
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	# Desktop Launcher
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 }
