@@ -1,0 +1,14 @@
+pkgbase = kraiser
+	pkgdesc = Run or raise apps on KDE Plasma Wayland using kdotool
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/dmnmsc/kraiser
+	install = kraiser.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = kdotool
+	source = kraiser-1.3.tar.gz::https://github.com/dmnmsc/kraiser/archive/refs/tags/1.3.tar.gz
+	sha256sums = 4d3c086d26b1fa65e4f1312ee15c9821774e7dc3000d3a51e2a118b2ee15753c
+
+pkgname = kraiser
