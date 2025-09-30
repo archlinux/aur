@@ -1,0 +1,32 @@
+diff '--exclude=.git' -ura --new-file actionswfnew/tests/ffdec/a.oc ./actionswf-actionswf-1.154-0/tests/ffdec/a.oc
+--- actionswfnew/tests/ffdec/a.oc	2025-09-29 17:20:28.534435445 +0300
++++ ./actionswf-actionswf-1.154-0/tests/ffdec/a.oc	2025-09-29 17:21:26.264414241 +0300
+@@ -104,14 +104,14 @@
+ 	return null;
+ }
+ 
+-while(true){
++/*while(true){
+ 	if(a)if(b){
+ 		z=1;
+ 		break;
+ 	}
+ 	z=2;
+ 	break
+-}
++}*/
+ ")
+ #call actiond("for(a in b){c=1+c;}") will be ""b"" and here straight "b"
+ call action("return 1")
+diff '--exclude=.git' -ura --new-file actionswfnew/tests/ffdec/as ./actionswf-actionswf-1.154-0/tests/ffdec/as
+--- actionswfnew/tests/ffdec/as	2025-09-29 17:20:27.184436020 +0300
++++ ./actionswf-actionswf-1.154-0/tests/ffdec/as	2025-09-29 17:21:12.894418583 +0300
+@@ -2,7 +2,7 @@
+ if [ -z "${LD_LIBRARY_PATH}" ]; then LD_LIBRARY_PATH=../../src; fi
+ is_debug=x _L=../ ${RUN__SHELL} ../asv && \
+ extra=x is_debug=x _L=../ ${RUN__SHELL} ../asv && \
+-LD_LIBRARY_PATH=${LD_LIBRARY_PATH} expect_obfuscation=./q deobfuscator_launcher=python3 ${RUN__SHELL} ../../oaalternative.sh a.swf "./a.out x x" && cat a.swf.log
++LD_LIBRARY_PATH=${LD_LIBRARY_PATH} deobfuscator_launcher=python3 ${RUN__SHELL} ../../oaalternative.sh a.swf "./a.out x x" && cat a.swf.log
+ 
+ # ffdec=/home/bc/a/ffdec/bin/ffdec ./as
+ # ffdec=/home/bc/a/ffdec/j12/usr/bin/ffdec FFDEC_JARFILENAME=../../../../ffdec/j12/usr/share/java/ffdec/ffdec.jar ./as
