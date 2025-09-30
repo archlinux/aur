@@ -1,6 +1,6 @@
-pkgbase = terragrunt-git
+pkgbase = terragrunt-edo
 	pkgdesc = Terragrunt (Git master) – thin wrapper for OpenTofu/Terraform that provides extra tools for working with multiple modules
-	pkgver = 0.85.0.r2.g6f4719bf5
+	pkgver = 0.88.1
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/terragrunt
 	arch = x86_64
@@ -15,4 +15,4 @@ pkgbase = terragrunt-git
 	source = git+https://github.com/gruntwork-io/terragrunt.git
 	sha256sums = SKIP
 
-pkgname = terragrunt-git
+pkgname = terragrunt-edo

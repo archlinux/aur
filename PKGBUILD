@@ -1,8 +1,8 @@
-# Maintainer: Mauro Solidoro
+# Maintainer: Edoardo Beltramo
 
-pkgname=terragrunt-git
+pkgname=terragrunt-edo
 _pkgname=terragrunt
-pkgver=0.85.0.r2.g6f4719bf5 # placeholder; will be replaced by pkgver()
+pkgver=0.88.1.r2.gde0120c5b
 pkgrel=1
 pkgdesc="Terragrunt (Git master) – thin wrapper for OpenTofu/Terraform that provides extra tools for working with multiple modules"
 url="https://github.com/gruntwork-io/${_pkgname}"
