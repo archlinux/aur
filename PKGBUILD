@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=em-keyboard
 pkgdesc='Command-line utility for referencing emoji characters by name'
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 url=https://github.com/hugovk/em-keyboard
 license=(MIT)
@@ -10,7 +10,7 @@ depends=(python-docopt python-xerox python-wheel)
 makedepends=(git python-build python-hatchling python-hatch-vcs python-installer python-wheel)
 checkdepends=(python-tox)
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-b2sums=('fe75c4acdf8e22a1632ba9bf6f9bc2d6137c0c773b89498dcd9ee2fd7e40bcb28ce8b801a27585f06e849ae3e3519b06cc8dad40c4915e1b50980e06f5243f28')
+b2sums=('3021c29a5978f8226ad043180028927a9d4343162ac099e16a2fd7c9b60fb53f798740ef1c29545af343d4a1cf9f9d5e704c5fcf2d50208838daf146fc4a6149')
 
 build () {
 	cd "$pkgname"
