@@ -1,0 +1,22 @@
+pkgbase = ss14.launcher-bin
+	pkgdesc = Space Station 14 launcher
+	pkgver = 0.34.2
+	pkgrel = 1
+	url = https://spacestation14.com
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = dotnet-runtime-9.0
+	provides = ss14.launcher
+	conflicts = ss14.launcher
+	source = ss14.launcher-0.34.2-all.zip::https://github.com/space-wizards/SS14.Launcher/releases/download/v0.34.2/SS14.Launcher_Linux.zip
+	source = ss14.launcher-0.34.2-README.md::https://github.com/space-wizards/SS14.Launcher/raw/refs/tags/v0.34.2/Readme.md
+	source = ss14.launcher-0.34.2-LICENSE::https://github.com/space-wizards/SS14.Launcher/raw/refs/tags/v0.34.2/LICENSE.txt
+	source = ss14.launcher.svg::https://github.com/space-wizards/asset-dump/raw/refs/heads/master/icon.svg
+	sha256sums = e52e37180c64aedc10e6e5754db3cf4d09ee02b5c6abb65031203480456f22b8
+	sha256sums = a4fe3a4ff1dcddaf4ce428f91a068bada67090a4f670730fb29f828c4a8a6f71
+	sha256sums = 0fbcce2a4bb551dab1e360febc2b26c5abbad45e91c4d7b78203735e6b8e807e
+	sha256sums = SKIP
+
+pkgname = ss14.launcher-bin

@@ -1,0 +1,5 @@
+["ss14.launcher-bin"]
+source = "github"
+github = "space-wizards/SS14.Launcher"
+use_latest_release = true
+prefix = "v"
