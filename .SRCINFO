@@ -1,0 +1,22 @@
+pkgbase = alacritty-mcp
+	pkgdesc = Model Context Protocol (MCP) server for controlling Alacritty terminal instances
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Feel-ix-343/alacritty-mcp
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = alacritty
+	depends = xdotool
+	depends = xclip
+	optdepends = neovim: Neovim context extraction support
+	optdepends = imagemagick: Screenshot support
+	provides = alacritty-mcp
+	conflicts = alacritty-mcp
+	options = !debug
+	source = git+https://github.com/Feel-ix-343/alacritty-mcp#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = alacritty-mcp
