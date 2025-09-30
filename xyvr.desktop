@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=XYVR
+Comment=Address book that supports merging VRChat and Resonite contacts.
+Version=@PACKAGE_VERSION@
+Exec=xyvr %u
+Icon=xyvr
+Categories=Network;Chat;Game;
+StartupWMClass=XYVR
+Terminal=false
+MimeType=x-scheme-handler/xyvr;
+Path=/opt/xyvr
