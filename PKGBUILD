@@ -1,7 +1,7 @@
 # Maintainer: Crazybrain <crazybrain plus aur at tuta dot com>
 
 pkgname=ss14.launcher
-pkgver=0.34.0
+pkgver=0.34.2
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64' 'aarch64')
@@ -9,12 +9,12 @@ url='https://spacestation14.com'
 license=('MIT')
 depends=('dotnet-runtime-9.0' 'gtk3' 'openal')
 makedepends=('dotnet-sdk-9.0')
-optdepends=('fluidsynth: to hear and play in-game MIDI instruments' 'soundfont-fluid: soundfont for in-game MIDI instuments')
+optdepends=("soundfont-fluid: soundfont for in-game MIDI instuments needed for servers that don't provide their own")
 source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/space-wizards/Robust.LoaderApi/archive/86a02eef163156fe899eb498acd488e8d7063a0e.zip"
         'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
         'ss14.launcher.desktop')
-sha256sums=('9160ebb437aea843949e3b443f71ba80bc1d887ed849418727d5e5f8770def55'
+sha256sums=('f28d12a5751a98c3bb166b7360a0518cf0c2335e498b09e6f13db3aacea27a78'
             '3af8d3f2439791365ebe6643ccec3697a2e7e1de65b45fd197f56d8bf81da12e'
             'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
             '53d7aa0900c8a68f7161a7865f10d09046ec33cb916dfd47659a27ed9864f049')
