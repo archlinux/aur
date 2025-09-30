@@ -4,7 +4,7 @@ pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
 pkgver=r212.dceb949
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform network monitoring terminal UI tool built with Rust."
 arch=('x86_64' 'armv7h' 'aarch64')
 _author=domcyrus
@@ -13,11 +13,11 @@ license=('Apache-2.0')
 depends=('libpcap' 'libelf' 'zlib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'pkgconf' 'clang' 'llvm' 'lld' 'libbpf')
 provides=(${pkgname%-git})
-conflicts=("${pkgname%-git}-bin")
+conflicts=("${pkgname%-git}")
 options=(!debug strip)
 install=$_pkgname.install
 source=("git+https://github.com/${_author}/${_reponame}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_reponame"
