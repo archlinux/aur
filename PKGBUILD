@@ -1,5 +1,5 @@
 # Maintainer: Thomas Aunvik <contact@thaun.dev>
-pkgname=ninjarmm-ncplayer-bin
+pkgname=ninjarmm-ncplayer
 pkgver=6.35.7510
 _filever=6.35.7510
 pkgrel=3

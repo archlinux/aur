@@ -1,4 +1,4 @@
-pkgbase = ninjarmm-ncplayer-bin
+pkgbase = ninjarmm-ncplayer
 	pkgdesc = Fast, reliable, single-click remote access. Manage and control Windows, Mac, and Linux endpoints with one click from the NinjaOne console.
 	pkgver = 6.35.7510
 	pkgrel = 3
@@ -11,4 +11,4 @@ pkgbase = ninjarmm-ncplayer-bin
 	source_aarch64 = https://resources.ninjarmm.com/development/ninjacontrol/6.35.7510/ninjarmm-ncplayer-6.35.7510_aarch64.rpm
 	sha256sums_aarch64 = 4defee8054a2b9fa0a21c33ce4373108ba8109b12c1f32c3d329e9fcc49ef887
 
-pkgname = ninjarmm-ncplayer-bin
+pkgname = ninjarmm-ncplayer
