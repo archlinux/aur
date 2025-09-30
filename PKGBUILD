@@ -10,7 +10,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron40
 pkgname=electron-nightly-bin
-_pkgver=40.0.0-nightly.20250926
+_pkgver=40.0.0-nightly.20250930
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
@@ -48,7 +48,7 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 #source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-sha256sums_x86_64=('6c06555cae761f227502a51d31db07c7eef7899654769da49b3bff7331328d77'
+sha256sums_x86_64=('57e214d273e00a24d1842fa421d97a0584827284af4f7f57277e94ca434ab2d3'
                    '34113e95910409a0c0763dc1b856eb7660a863ea0295f59b6007684bc030a93a')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
