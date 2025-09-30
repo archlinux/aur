@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+# shellcheck disable=SC2148,SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=AHK_X11
 pkgname="${_pkgname,,}-git"
@@ -8,18 +11,18 @@ arch=('x86_64' 'x86_64_v3')
 url="https://github.com/phil294/$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  gtk3
-  libnotify
-  libxkbcommon
-  libxinerama
-  libxtst
-  gc
+    gtk3
+    libnotify
+    libxkbcommon
+    libxinerama
+    libxtst
+    gc
 )
 makedepends=(
-  git
-  crystal
-  shards
-  gcc
+    git
+    crystal
+    shards
+    gcc
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,30 +32,30 @@ b2sums=('SKIP'
         'SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_pkgname}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${_pkgname}"
-  git submodule init
-  git config submodule.xdotool.url "$srcdir/xdotool"
-  git -c protocol.file.allow=always submodule update
+    cd "${_pkgname}"
+    git submodule init
+    git config submodule.xdotool.url "$srcdir/xdotool"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd "${_pkgname}"
-  # Don’t pollute $HOME
-  export SHARDS_CACHE_PATH="$srcdir/.cache/shards"
-  make bin/ahk_x11
+    cd "${_pkgname}"
+    # Don’t pollute $HOME
+    export SHARDS_CACHE_PATH="$srcdir/.cache/shards"
+    make bin/ahk_x11
 }
 
 #check() {
-#  cd "${_pkgname}"
-#  make test-dev
+#    cd "${_pkgname}"
+#    make test-dev
 #}
 
 package() {
-  cd "${_pkgname}"
-  DESTDIR="$pkgdir" make install
+    cd "${_pkgname}"
+    DESTDIR="$pkgdir" make install
 }
