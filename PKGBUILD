@@ -2,7 +2,7 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.46.11-beta.0'
+_pkgver='1.46.12-beta.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
@@ -19,18 +19,23 @@ source=(
 	'update-dependencies.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
+	'ignore-fix-ts-errors.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('b889550a0972875e0b55f575d802764502afa1f8f189dd676704b592e710fe31a07c7eb89844e5e04ee77c0166cce70c7dad033c60141490a34d72a2e7914cde'
+b2sums=('03ea750cad427f171a8ccd21d2da8a31aefdfb0b2bf34651aa53134a0ed5a26444fb5346d6003cc66ff2846db7ef24e2b2c4caf261bca5758e7af3939c255bc5'
         '78862c8d4eaaef8eda8c519316f7a2c242662f56e6b1e8d9cbe5f5fe0a029055bf2ee1381486eff7812bd38a2f29ea2d686052aee818cf4e4cd50a897c737151'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '6caafba7ce1832cb28acdae886c3bee8f5f4ab8ae3db813ec7f35575576b829e0db1f224baa9919b2fa5b7417d7adc369d1fe0f51e9c17a6e62843b0e72cabe7'
+        '28158168d31a9fd6aa39a5dea0407e4bca7ce123ea630f57a52b9969d3285be1b71bc783a779c5982a298481b1ecdf4382bcd41d9e98be1159c8e0060545a1bf'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="compass-$_pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Ignore/fix IconButton TS errors
+	patch --forward -p1 < "$srcdir/ignore-fix-ts-errors.diff"
 
 	# Set npm overrides for various dependencies
 	patch --forward -p1 < "$srcdir/update-dependencies.diff"
@@ -44,6 +49,9 @@ prepare() {
 
 	# Fix ssh2 and cpu-features build
 	npm update nan ssh2 --package-lock-only
+
+	# Add missing dependencies that don't get installed by default for some reason
+	npm install '@aws-sdk/client-sts@3.713.0' '@aws-sdk/credential-provider-web-identity@3.713.0'
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
