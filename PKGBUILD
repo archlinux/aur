@@ -2,7 +2,7 @@
 
 _pkgname="scorecard"
 pkgname="${_pkgname}-bin"
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Security health metrics for Open Source"
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums_aarch64=('691433f1ef80a023746880b3fa8d2f7272a612627216974318addd78e94c21fa')
-sha256sums_x86_64=('ae54ef0b3ecae4b2d0086a9f99cd44d5c0830e00a51aa0461981178ba4c29fcd')
+sha256sums_aarch64=('2cecb8fece8bcb6ec5cedb0c042a10a04a23f5037e20b01d7fb07eaf8e6b6e94')
+sha256sums_x86_64=('98351e001a2bae1d12ec6fbca7da42168bdda2eecbb4fa6951ebffb5ced3a0be')
 
 package() {
   cd "${srcdir}"
