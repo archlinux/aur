@@ -9,6 +9,7 @@ pkgbase = subtitles-contact-sheet-qt-git
 	makedepends = pandoc-cli
 	depends = qt5-base
 	depends = ffmpeg
+	optdepends = ttf-dejavu: default font for scs
 	conflicts = subtitles-contact-sheet-qt-cli
 	conflicts = subtitles-contact-sheet-qt-gui
 	source = git+https://gitlab.com/vongooB9/subtitles_contact_sheet_qt.git?signed
