@@ -1,7 +1,7 @@
 pkgbase = anyrun-git
 	pkgdesc = A rust-based wayland native krunner-like runner, made with customizability in mind.
 	pkgver = r271.3c571bc
-	pkgrel = 2
+	pkgrel = 6
 	url = https://github.com/Kirottu/anyrun
 	arch = x86_64
 	license = GPL3

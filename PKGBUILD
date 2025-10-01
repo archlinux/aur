@@ -2,7 +2,7 @@
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
 pkgver=r271.3c571bc
-pkgrel=2
+pkgrel=6
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
 url="https://github.com/Kirottu/anyrun"
@@ -43,4 +43,5 @@ package() {
   mkdir -p "$pkgdir/etc/anyrun/plugins"
   cp examples/config.ron "$pkgdir/etc/anyrun/config.ron"
   cp anyrun/res/style.css "$pkgdir/etc/anyrun/style.css"
+  cp target/release/*.so "$pkgdir/etc/anyrun/plugins/"
 }
