@@ -1,7 +1,7 @@
 pkgbase = proton-authenticator-bin
-	pkgdesc = An open source and end-to-end encrypted 2FA app. Securely sync and backup your 2FA codes easily.
+	pkgdesc = 2FA app from Proton to securely sync and backup 2FA codes
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/authenticator
 	arch = x86_64
 	license = GPL-3.0-or-later
