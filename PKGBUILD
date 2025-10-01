@@ -1,8 +1,8 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
-pkgver=1.0.2
-_appimage=$_binname\_$pkgver\_amd64.AppImage
+pkgver=1.2.0
+_appimage=YARC.Launcher\_$pkgver\_amd64.AppImage
 pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
@@ -14,10 +14,10 @@ depends=(
 	glib2
 	gtk3
 	hicolor-icon-theme
-	libsoup
-	openssl-1.1
+	libsoup3
+	openssl
 	pango
-	webkit2gtk
+	webkit2gtk-4.1
 )
 optdepends=(
 	'hidapi: support for HID devices (in-game)'
@@ -32,17 +32,18 @@ source=(
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
 )
 sha256sums=(
-	d0275411cb46f50070044e3a395b85675ae13305cb234e17e44810a5d31de252
+	fe924d7005a806daddda617519add79f85201c4c513d831d6d530cf6e913abb5
 	c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 )
 
 prepare() {
-	./$_appimage --appimage-extract
+	./"$(echo $_appimage | sed "s/\./ /")" --appimage-extract
 
 	cd squashfs-root/
+	mv YARC\ Launcher.desktop $_binname.desktop
 
-	# Add game category and delete comment
-	sed -i '2s/$/Game;/; 3d;' $_binname.desktop
+	# Add game category
+	sed -i '2s/$/Game;/' $_binname.desktop
 }
 
 package() {
