@@ -1,0 +1,13 @@
+pkgbase = chipeu
+	pkgdesc = A simple and clean Chip-8 interpreter written in C++ with SDL2.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/theroguevigilante/chipeu
+	arch = x86_64
+	license = AGPL
+	makedepends = gcc
+	depends = sdl2
+	source = chipeu-v1.0.tar.gz::https://github.com/theroguevigilante/chipeu/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 304eb14c3c5f3e0f51a52d429a8013c1f9ed10f9af03f855045c0e221ff88665
+
+pkgname = chipeu
