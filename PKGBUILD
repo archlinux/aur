@@ -9,6 +9,7 @@ arch=(
 )
 url="https://github.com/adogecheems/monika-after-story-linux"
 license=('custom')
+optdepends=('monika-after-story-tr-cn')
 source=(
     "https://github.com/adogecheems/monika-after-story-linux/raw/refs/heads/main/resources/DDLC.tar.xz"
     "https://github.com/adogecheems/monika-after-story-linux/raw/refs/heads/main/resources/scripts.tar.xz"

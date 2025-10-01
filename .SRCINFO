@@ -6,6 +6,7 @@ pkgbase = monika-after-story
 	arch = i686
 	arch = x86_64
 	license = custom
+	optdepends = monika-after-story-tr-cn
 	source = https://github.com/adogecheems/monika-after-story-linux/raw/refs/heads/main/resources/DDLC.tar.xz
 	source = https://github.com/adogecheems/monika-after-story-linux/raw/refs/heads/main/resources/scripts.tar.xz
 	source = https://github.com/adogecheems/monika-after-story-linux/raw/refs/heads/main/resources/fix.sh
