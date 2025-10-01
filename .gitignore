@@ -1,11 +1,8 @@
-# Ignore everything
-/*
-
-# But not these files...
+*
 !.gitignore
-!PKGBUILD
-!.SRCINFO
 !.nvchecker.toml
+!.SRCINFO
 !LICENSE
-!proton-mail.desktop
-!0001-fix-webpack-config.patch
+!PKGBUILD
+!*.desktop
+!proton-mail.sh

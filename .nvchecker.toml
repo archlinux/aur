@@ -1,4 +1,6 @@
 [proton-mail]
-source = "git"
-git = "https://github.com/ProtonMail/inbox-desktop.git"
-prefix = "v"
+source = "github"
+github = "ProtonMail/WebClients"
+use_max_tag = true
+include_regex = "^proton-inbox-desktop@.*"
+prefix = "proton-inbox-desktop@"

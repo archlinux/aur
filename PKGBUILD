@@ -1,88 +1,49 @@
-# Maintainer: 
+# Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
+
 pkgname=proton-mail
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
-_nodeversion=22
-pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
-arch=('x86_64' 'aarch64')
-url="https://proton.me"
+pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
+arch=('any')
+url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
-depends=(
-  'alsa-lib'
-  'gtk3'
-  'gvfs'
-  'libdrm'
-  'libnotify'
-  'nss'
-  'xdg-utils'
-)
-makedepends=(
-  'git'
-  'nvm'
-  'yarn'
-  'zip'
-)
-optdepends=(
-  'kde-cli-tools: file deletion support (kioclient5)'
-  'libgnome-keyring'
-  'lsb-release'
-  'trash-cli: file deletion support (trash-put)'
-)
-conflicts=('protonmail-desktop')
-_commit=7a01897bc833a544c1360572ced583ceb604ca24  # 1.8.0
-source=("git+https://github.com/ProtonMail/WebClients.git#commit=${_commit}"
-        "$pkgname.desktop"
-        '0001-fix-webpack-config.patch')
-sha256sums=('0de4a59f74b5b4da9755455ecf6aa8eaa9515c9092f764cac940e12c8838b534'
-            '24cb263b7b61b5d64f49e4ead46d6f10c5d4a06599b0bb6334c3958721255fdb'
-            '390856b2972a8b54953261ebfd0caf27f30fd91d44c0046acffe27aab41d55ba')
-
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+depends=('bash' 'electron35' 'hicolor-icon-theme')
+makedepends=('git' 'nodejs-lts' 'yarn')
+source=("WebClients-proton-inbox-desktop-$pkgver.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/proton-inbox-desktop@$pkgver.tar.gz"
+        'proton-mail.desktop'
+        'proton-mail.sh')
+b2sums=('0bd41ee8d0fdc3ce63b568692a1361df4bdad8bf98cb2c69dac420667c4f83fd2cc629e2f020668f68249d5bab9b28fff9aa4a846ab783db2590af5bcc85808b'
+        'dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be'
+        '21605b0d31062d2b355e8422f319521a775efd41ef34571a114fd7f9f1ba07b39b4a27998fd11d2039baa7ba0650b804dfd41e0d591ead622fce68243dca1d88')
 
 prepare() {
-  cd WebClients
-
-  # https://github.com/ProtonMail/WebClients/issues/418
-  patch -Np1 -i ../0001-fix-webpack-config.patch
-
-  _ensure_local_nvm
-  nvm install "${_nodeversion}"
-  
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  yarn install
+    cd WebClients-proton-inbox-desktop-$pkgver
+    sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
 }
 
 build() {
-  cd WebClients
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
-  _ensure_local_nvm
-  yarn workspace proton-inbox-desktop make --targets="@electron-forge/maker-zip"
+    cd WebClients-proton-inbox-desktop-$pkgver
+    yarn install
+    yarn workspace proton-inbox-desktop package
+}
+
+check() {
+    cd WebClients-proton-inbox-desktop-$pkgver
+    yarn workspace proton-inbox-desktop test
 }
 
 package() {
-  cd WebClients
-  install -d "$pkgdir/opt/$pkgname"
-  cp -r applications/inbox-desktop/out/Proton\ Mail-linux-*/* "$pkgdir/opt/$pkgname"
+    install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/Proton Mail" "$pkgdir/usr/bin/$pkgname"
+    cd WebClients-proton-inbox-desktop-$pkgver/applications/inbox-desktop
 
-  install -Dm644 applications/inbox-desktop/assets/linux/icon.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 applications/inbox-desktop/assets/icons/icon.png \
-    "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 applications/inbox-desktop/assets/icons/icon@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024@2x/apps/$pkgname.png"
+    install -dm755 "$pkgdir/usr/share/$pkgname"
+    cp -r "out/Proton Mail-linux-x64/resources"/* "$pkgdir/usr/share/$pkgname/"
 
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    cd assets
+    install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 icons/icon@2x.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
+    install -Dm644 linux/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 }
