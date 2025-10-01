@@ -23,9 +23,8 @@ depends=(
 )
 makedepends=('cargo' 'git' 'mold' 'nodejs-lts' 'yarn')
 source=("ProtonWebClients-$_commit::git+https://github.com/ProtonMail/WebClients.git#commit=$_commit"
-        "Proton Authenticator.desktop"
-        "add-missing-dnd-kit-sortable.patch"
-        "limit-workspace-to-authenticator.patch")
+        'Proton Authenticator.desktop'
+        'add-missing-dnd-kit-sortable.patch')
 b2sums=('173e01278d9e217d2c36c01135b556b74d6423557b7721be85cf07c2017ac32f84d9de3d45e27df91d19ac389e5d4d311d44c6fe47512415c3eaab519ffee7f1'
         '2d31d11d97e4a8163b199eed52d920d6ef68bb51e91aa6270e00350a3f9f8f4d265a1dfc995eb6a6e3a4a7ba4a52c49dfe66da32c146f36a5c2c44b68bcda531'
         '086ad7c25fbb5462eb04b4df0414ffc7c7491825e8d3294cfe3d10e56a2a7b9d1de6b3519076a175d0b0ecfe21cc30a79ad531a728bbde183b08b6b72e347d81'
@@ -34,7 +33,7 @@ b2sums=('173e01278d9e217d2c36c01135b556b74d6423557b7721be85cf07c2017ac32f84d9de3
 prepare() {
     cd ProtonWebClients-$_commit
     patch -p1 -i "$srcdir/add-missing-dnd-kit-sortable.patch"
-    patch -p1 -i "$srcdir/limit-workspace-to-authenticator.patch"
+    sed -i 's/"applications\/\*",/"applications\/authenticator",/' package.json
 }
 
 build() {
