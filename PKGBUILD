@@ -1,7 +1,8 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
+# Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2025.08.17
-pkgrel=3
+pkgver=2025.09.10
+pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
@@ -15,7 +16,7 @@ source=(
     "vrcx.desktop"
     "build.patch"
 )
-sha256sums=('f7d825cd8e4ba603aeeb24860473063999cd33586ebecb442b09fb8f50404e90'
+sha256sums=('d898044dac496e1d621f2388cec024df9d94999f6b8d8f92ac2bf33a036febf5'
             '078bd22b5ee6979942b366759eeb1758a7198864a7ef5b02f42cffe4cba5df26'
             '5f981884a64dce32575d020c2dd81a31bef99514e0301b5af5f4a55e820811e4')
             
@@ -32,9 +33,10 @@ build() {
     dotnet build 'Dotnet/VRCX-Electron.csproj' \
         -p:Configuration=Release \
         -p:Platform=x64 \
+        -p:PlatformTarget=x64 \
         -p:RestorePackagesConfig=true \
         -t:"Restore;Clean;Build" \
-        -m --self-contained
+        -m -r linux-x64
     
     npm run prod-linux
     npm run build-electron
@@ -55,7 +57,7 @@ package() {
     # Install icons in multiple sizes
     for size in 32 64 128 256 512; do
         install -dm755 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-        convert "VRCX.png" -resize "${size}x${size}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/vrcx.png"
+        magick "VRCX.png" -resize "${size}x${size}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/vrcx.png"
     done
     
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
