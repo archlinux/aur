@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=moon
-pkgver=1.40.5
+pkgver=1.41.1
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -11,19 +11,19 @@ depends=('gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('446e538fd0b03bfde4fab1c4b6a87e5d2768628cb2d2e70c38b3136a3a6717ac')
+sha256sums=('22e4dbee614ecde8ecbe5241db9c2ca58f2aec28ef7e8fc9211fdaee400b6de7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  mkdir -p completions
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export CARGO_TARGET_DIR="target"
+  export CFLAGS="${CFLAGS} -O0"
   cargo build --release --frozen
 
-  mkdir -p completions
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
   "./target/release/${pkgname}" completions --shell zsh >"completions/zsh"
   "./target/release/${pkgname}" completions --shell fish >"completions/fish"
