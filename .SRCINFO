@@ -1,0 +1,12 @@
+pkgbase = wtf8
+	pkgdesc = Inspect UTF-8 strings inline with their component bytes
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://dev.sanctum.geek.nz/cgit/wtf8.git
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	source = https://dev.sanctum.geek.nz/cgit/wtf8.git/snapshot/wtf8-2.0.0.tar.gz
+	sha256sums = bd1bcf29b566e8d5f446f4c38110c8d1126a2f2011ce7746a093c3496b5ba14d
+
+pkgname = wtf8
