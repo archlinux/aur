@@ -1,0 +1,5 @@
+[nym-wallet-appimage]
+source = "git"
+git = "https://github.com/nymtech/nym.git"
+include_regex = "nym-wallet-v.+"
+prefix = "nym-wallet-v"
