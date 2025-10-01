@@ -1,0 +1,21 @@
+pkgbase = tomlq-bin
+	pkgdesc = Tool for getting data from TOML files
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/cryptaliagy/tomlq
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tq
+	conflicts = tomlq
+	conflicts = tomlq-git
+	source = LICENSE-0.2.2::https://raw.githubusercontent.com/cryptaliagy/tomlq/0.2.2/LICENSE
+	source = README-0.2.2.md::https://raw.githubusercontent.com/cryptaliagy/tomlq/0.2.2/README.md
+	sha256sums = c85a1e732dfe5e23363acd758fee6fc4828a485189ff108188426ce6a798ab8c
+	sha256sums = 0f80d6d8dd7d456e20d6165113eca6f140f136adfa59f9e00685c0a996ce0341
+	source_x86_64 = tomlq-x86_64-0.2.2.tar.gz::https://github.com/cryptaliagy/tomlq/releases/download/0.2.2/tomlq.amd64.tgz
+	sha256sums_x86_64 = 0a4d41836e215e1d9b0a23d8b95291062c28b2a37f2d4736983ae4e0e308dd27
+	source_aarch64 = tomlq-aarch64-0.2.2.tar.gz::https://github.com/cryptaliagy/tomlq/releases/download/0.2.2/tomlq.arm64.tgz
+	sha256sums_aarch64 = aef9816f27896fea492191b3b7b32f73a12ea3980343aca83d65e3ed048f9dc8
+
+pkgname = tomlq-bin
