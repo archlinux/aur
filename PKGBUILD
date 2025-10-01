@@ -1,7 +1,7 @@
 # Maintainer: Benjamim Gois <benjamim.gois@gmail.com>
 pkgname=pascube-git
-pkgver=0.r11.g1815e14
-pkgrel=1
+pkgver=1.5.0.r0.g0000000
+pkgrel=1.5
 pkgdesc="A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
