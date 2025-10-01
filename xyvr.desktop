@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=XYVR
-Comment=Address book that supports merging VRChat and Resonite contacts.
+Comment=XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts.
 Version=@PACKAGE_VERSION@
 Exec=xyvr %u
 Icon=xyvr

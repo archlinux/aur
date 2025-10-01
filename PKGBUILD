@@ -1,6 +1,6 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=xyvr
-pkgver=0.0.1alpha.10
+pkgver=0.0.1alpha.11
 pkgrel=1
 pkgdesc="XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
 arch=('x86_64')
@@ -10,23 +10,23 @@ depends=('dotnet-runtime-9.0' 'webkit2gtk')
 makedepends=('dotnet-sdk-9.0' 'nodejs' 'npm' 'imagemagick')
 options=(!debug !lto)
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/hai-vr/XYVR/archive/refs/tags/0.0.1-alpha.10.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/hai-vr/XYVR/archive/refs/tags/0.0.1-alpha.11.tar.gz"
     "xyvr.desktop"
 )
-sha256sums=('c42385f66ecabf9678deb8e7fceb7d35b47a66c92e655c4162232aa83f2a6d9c'
-            '7afe9d6bba26750d3c963e7c78b8ecf1b7fa7763ff4c995d38b75327edd7d83c')
+sha256sums=('297695de91f04d9b7045ced04845459f36ef54eeac037d98a0f7c790c32d634a'
+            'f20de928ec2dd06d8199017685eecff338263c6261faf8b2f6892e7e39ddd8c3')
 
 prepare() {
-    cd "$srcdir/XYVR-0.0.1-alpha.10"
+    cd "$srcdir/XYVR-0.0.1-alpha.11"
     echo "$pkgver" > Version
 }
 
 build() {
-    cd "$srcdir/XYVR-0.0.1-alpha.10/ui-frontend/src"
+    cd "$srcdir/XYVR-0.0.1-alpha.11/ui-frontend/src"
     npm install
     npm run build-and-copy
 
-    cd "$srcdir/XYVR-0.0.1-alpha.10"
+    cd "$srcdir/XYVR-0.0.1-alpha.11"
     dotnet publish ui-photino-linux/ui-photino-linux.csproj \
         --runtime linux-x64 \
         --self-contained true \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/XYVR-0.0.1-alpha.10"
+    cd "$srcdir/XYVR-0.0.1-alpha.11"
 
     install -dm755 "$pkgdir/opt/xyvr"
     cp -r build/linux-unpacked/* "$pkgdir/opt/xyvr/"
