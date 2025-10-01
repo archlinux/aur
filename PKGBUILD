@@ -6,7 +6,7 @@ pkgdesc='TLDR client in zig'
 arch=('x86_64')
 url='https://gitlab.com/ve-nt/outfieldr'
 license=('MIT')
-makedepends=('git' 'zig-bin>=0.14.0')
+makedepends=('git' 'zig')
 provides=('tldr')
 conflicts=('tldr' 'tealdeer')
 source=("git+$url.git#tag=$pkgver")
