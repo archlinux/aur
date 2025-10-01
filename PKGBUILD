@@ -15,14 +15,12 @@ _pkgsrc="$pkgname"
 source=(
     "$_pkgsrc::git+$url.git"
     "picojson-include-path.patch"
-    "picojson-include-path-source.patch"
     "use-std-span.patch"
 )
 
 sha256sums=(
     "SKIP"
     "d6913e1459ad785123c1dbfe6f8029c9d247cd0f76037ce52ae4a0d5172a3136"
-    "0e413547fd07e032f4fb9a498d04440dd392f7e1140f60b12d272b984482ec32"
     "7c8ccb49c9b3fd5518626574a14998acabb7241956cb3176d027ed156d6877f6"
 )
 
@@ -34,8 +32,10 @@ pkgver() {
 
 prepare() {
     patch -p1 -d "$_pkgsrc" <"picojson-include-path.patch"
-    patch -p1 -d "$_pkgsrc" <"picojson-include-path-source.patch"
     patch -p1 -d "$_pkgsrc" <"use-std-span.patch"
+    echo "Patching picojson include paths"
+    find . -regex '.*\.[ch]p*' -not -path './build/*' \
+        -exec sed -i 's%^#include <picojson/picojson.h>$%#include <picojson.h>%g' '{}' \;
 }
 
 build() {
