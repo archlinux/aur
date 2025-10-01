@@ -7,7 +7,7 @@ pkgname=ezy-bin
 pkgdesc="Fully-featured desktop gRPC/gRPC-Web client."
 
 arch=('x86_64' 'aarch64')
-url=""
+url="https://github.com/getezy/ezy"
 license=('MPL-2.0')
 
 depends=()
