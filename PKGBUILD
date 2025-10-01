@@ -2,7 +2,7 @@
 # Contributor: gkmcd <g@dramati.cc>
 
 pkgname=python-pyscaffold
-_pkg=PyScaffold
+_pkg=pyscaffold
 pkgver=4.6
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
@@ -30,8 +30,8 @@ makedepends=(
 	'python-setuptools-scm'
 	'python-sphinx'
 	'python-wheel')
-source=("$pkgname-$pkgver.tar.gz:$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('467ef9dd94767e51a3e9d2f2a36a0fd1b4f1a9a4b4110b0cf8e57cc4c67d9757386df461b54123786a718ec29b379bc2d7b0f600d037b2f88bf1f3854579603c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('f51a97d575a93ddbf9d4946de7903fdda9b539b2381eefa760ebaa399778f834c8aa9bbedfecbd800c0b6ab1167ea448ebf1865d002fd8ad22123bb84090eab9')
 
 prepare() {
 	cd "$_pkg-$pkgver"
