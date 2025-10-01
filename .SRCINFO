@@ -1,13 +1,13 @@
 pkgbase = gardenlogin-bin
 	pkgdesc = gardenlogin is kubectl credential plugin for Gardener K8s shoot cluster admin authentication.
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/gardener/gardenlogin
 	arch = x86_64
 	license = Apache-2.0
 	provides = gardenlogin
 	conflicts = gardenlogin
-	source = gardenlogin::https://github.com/gardener/gardenlogin/releases/download/v0.6.0/gardenlogin_linux_amd64
+	source = gardenlogin::https://github.com/gardener/gardenlogin/releases/download/v0.7.1/gardenlogin_linux_amd64
 	sha256sums = 87894a729675dcedadc241be6ad52e0244e70000b180516c5d9198e0f726b9d7
 
 pkgname = gardenlogin-bin
