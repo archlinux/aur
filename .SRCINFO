@@ -1,8 +1,8 @@
 pkgbase = ape
 	pkgdesc = A plasmid editor
 	pkgver = 3.1.8.1
-	pkgrel = 1
-	url = http://biologylabs.utah.edu/jorgensen/wayned/ape/
+	pkgrel = 2
+	url = https://jorgensen.biology.utah.edu/wayned/ape/
 	arch = any
 	license = proprietary
 	makedepends = imagemagick
