@@ -69,7 +69,7 @@ pre_remove() {
     fi
 
     if getent group "$GROUP_NAME" >/dev/null; then
-        delgroup "$GROUP_NAME" || true
+        delgroup "$GROUP_NAME" || groupdel "$GROUP_NAME" || true
     fi
 }
 
