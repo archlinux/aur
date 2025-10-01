@@ -7,7 +7,7 @@ pkgbase = magelab-bin
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	depends = libayatana-appindicator
+	depends = libayatana-appindicator-glib
 	provides = magelab
 	conflicts = magelab
 	options = !strip
@@ -15,6 +15,6 @@ pkgbase = magelab-bin
 	source = LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE
 	sha256sums = SKIP
 	source_x86_64 = magelab_0.7.2_amd64.deb::https://cdn.crabnebula.app/download/sapient-artifice/mage-lab/latest/platform/deb-x86_64
-	sha256sums_x86_64 = eddd0f869cb5ba18f7c5e41b3d2581f01e01ebe0201921d2ab049b93b0211fd9
+	sha256sums_x86_64 = eddd0f869cb5ba18f7c5e41b3d2581f01e01ebe0201921d2ab049b93b0211fd2
 
 pkgname = magelab-bin

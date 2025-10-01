@@ -6,13 +6,13 @@ pkgdesc="Mage Lab is a user-centric AI interface with local reasoning and tools"
 arch=('x86_64')
 url="https://github.com/majesticio/magelab"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
+depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator-glib')
 provides=('magelab')
 conflicts=('magelab')
 options=('!strip' '!emptydirs')
-source=("LICENSE::	source = LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE")
+source=("LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE")
 source_x86_64=("magelab_${pkgver}_amd64.deb::https://cdn.crabnebula.app/download/sapient-artifice/mage-lab/latest/platform/deb-x86_64")
-sha256sums=('SKIP')
+sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 sha256sums_x86_64=('eddd0f869cb5ba18f7c5e41b3d2581f01e01ebe0201921d2ab049b93b0211fd8')
 
 prepare() {
@@ -25,5 +25,39 @@ package() {
   local data_tar
   data_tar=$(find "${PWD}" -maxdepth 1 -name 'data.tar.*' -print -quit)
   bsdtar -xf "${data_tar}" -C "${pkgdir}"
+
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -d "${pkgdir}/usr/lib/${pkgname}"
+  mv "${pkgdir}/usr/bin/magelab" "${pkgdir}/usr/lib/${pkgname}/magelab.real"
+  ln -s ../magelab/bin "${pkgdir}/usr/lib/${pkgname}/bin"
+  install -Dm755 "${pkgdir}/usr/bin/run" "${pkgdir}/usr/lib/${pkgname}/run"
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/magelab" <<'WRAPPER'
+#!/bin/bash
+set -uo pipefail
+REAL_BIN="/usr/lib/magelab-bin/magelab.real"
+APP_BIN_DIR="/usr/lib/magelab-bin"
+APP_RES_DIR="/usr/lib/magelab"
+
+export PATH="${APP_BIN_DIR}:${PATH}"
+export APPDIR="${APP_RES_DIR}"
+
+if [[ -n "${MAGELAB_SKIP_DMABUF_FALLBACK:-}" || -n "${WEBKIT_DISABLE_DMABUF_RENDERER:-}" ]]; then
+  exec "${REAL_BIN}" "$@"
+fi
+
+if "${REAL_BIN}" "$@"; then
+  exit 0
+fi
+status=$?
+
+if [[ ${status} -eq 139 && -z "${MAGELAB_DMABUF_RETRY:-}" ]]; then
+  export MAGELAB_DMABUF_RETRY=1
+  export WEBKIT_DISABLE_DMABUF_RENDERER=1
+  exec "${REAL_BIN}" "$@"
+fi
+
+exit ${status}
+WRAPPER
 }
