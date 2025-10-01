@@ -34,17 +34,17 @@ package() {
     cp -r ./* "$pkgdir/opt/deepagent/"
 
     # Make the main executable... executable
-    chmod +x "$pkgdir/opt/deepagent/deepagent"
+    chmod +x "$pkgdir/opt/deepagent/deepagent-app"
 
     # Create symlink in /usr/bin
-    ln -s "/opt/deepagent/deepagent" "$pkgdir/usr/bin/deepagent"
+    ln -s "/opt/deepagent/deepagent-app" "$pkgdir/usr/bin/deepagent-app"
 
     # Create desktop entry
     cat > "$pkgdir/usr/share/applications/deepagent.desktop" << EOF
 [Desktop Entry]
 Name=DeepAgent
 Comment=AI code editor that enhances developer productivity
-Exec=/opt/deepagent/deepagent %U
+Exec=/opt/deepagent/deepagent-app %U
 Terminal=false
 Type=Application
 Icon=deepagent
@@ -59,21 +59,21 @@ EOF
     fi
 
     # Install bash completions
-    if [ -f "$pkgdir/opt/deepagent/resources/completions/bash/deepagent" ]; then
+    if [ -f "$pkgdir/opt/deepagent/resources/completions/bash/deepagent-app" ]; then
         install -dm755 "$pkgdir/usr/share/bash-completion/completions"
-        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/bash/deepagent" \
+        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/bash/deepagent-app" \
                        "$pkgdir/usr/share/bash-completion/completions/deepagent"
     fi
 
     # Install zsh completions
-    if [ -f "$pkgdir/opt/deepagent/resources/completions/zsh/_deepagent" ]; then
+    if [ -f "$pkgdir/opt/deepagent/resources/completions/zsh/_deepagent-app" ]; then
         install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/zsh/_deepagent" \
-                       "$pkgdir/usr/share/zsh/site-functions/_deepagent"
-    elif [ -f "$pkgdir/opt/deepagent/resources/completions/zsh/deepagent" ]; then
+        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/zsh/_deepagent-app" \
+                       "$pkgdir/usr/share/zsh/site-functions/_deepagent-app"
+    elif [ -f "$pkgdir/opt/deepagent/resources/completions/zsh/deepagent-app" ]; then
         # Alternative: if the zsh completion file is named 'deepagent' instead of '_deepagent'
         install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/zsh/deepagent" \
-                       "$pkgdir/usr/share/zsh/site-functions/_deepagent"
+        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/zsh/deepagent-app" \
+                       "$pkgdir/usr/share/zsh/site-functions/_deepagent-app"
     fi
 }
