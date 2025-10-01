@@ -3,3 +3,4 @@
 !PKGBUILD
 !.gitignore
 !rustnet.install
+!rustnet-setcap.hook
