@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-cublas-git
-pkgver=b5123.r1.bc091a4dc
+pkgver=b6663.r1.c8dedc999
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('ggml-cublas-git')
+depends=('libggml-cuda-git')
 makedepends=(
   'cmake'
   'git'
