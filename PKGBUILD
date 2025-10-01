@@ -2,8 +2,8 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-openvino"
-pkgver=1.7.6 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=3
+pkgver=1.8.0 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -17,12 +17,12 @@ makedepends=(
 )
 source=(
   "${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  disable-talk-llama.patch
+  disable-deprecated.patch
 )
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  patch -Np1 -i "${srcdir}/disable-talk-llama.patch"
+  patch -Np1 -i "${srcdir}/disable-deprecated.patch"
 }
 
 build() {
@@ -47,7 +47,5 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=(
-  '166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e'
-  '52776f8b0c4a1c117d4b12aaca2bd62ec0094aaa3bac224365b007a9efd0b585'
-)
+sha256sums=('c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f'
+            '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')
