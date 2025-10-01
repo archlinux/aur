@@ -4,4 +4,4 @@
 *.tar.gz
 *.pkg.tar.*
 *.tgz
-
+*.code-workspace
