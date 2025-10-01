@@ -3,8 +3,8 @@
 pkgname=proton-authenticator
 pkgver=1.1.4
 _commit=04205ef31c8edb37cfc700d0cf7f5647f83374be
-pkgrel=2
-pkgdesc='Open source and end-to-end encrypted 2FA app. Securely sync and backup 2FA codes easily.'
+pkgrel=3
+pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=('x86_64')
 url='https://proton.me/authenticator'
 license=('GPL-3.0-or-later')
@@ -27,8 +27,7 @@ source=("ProtonWebClients-$_commit::git+https://github.com/ProtonMail/WebClients
         'add-missing-dnd-kit-sortable.patch')
 b2sums=('173e01278d9e217d2c36c01135b556b74d6423557b7721be85cf07c2017ac32f84d9de3d45e27df91d19ac389e5d4d311d44c6fe47512415c3eaab519ffee7f1'
         '2d31d11d97e4a8163b199eed52d920d6ef68bb51e91aa6270e00350a3f9f8f4d265a1dfc995eb6a6e3a4a7ba4a52c49dfe66da32c146f36a5c2c44b68bcda531'
-        '086ad7c25fbb5462eb04b4df0414ffc7c7491825e8d3294cfe3d10e56a2a7b9d1de6b3519076a175d0b0ecfe21cc30a79ad531a728bbde183b08b6b72e347d81'
-        '741725c6d79fcd38ae29ca5a6187e3a7bc966d7b72a959eb8484760d9b3968bd7e3ababd7c9d4f50194299bb02e3317d128bdc48a6a64996fa6a5f3b0b34e93b')
+        'a4671d5b0b6a52b2e03986465ac396de600d71cc3d613a425d41f528950dcfb6a825ea6bfa27d0289b38a1ad426a8ff156ed58071f77492a68b1ca58848d7195')
 
 prepare() {
     cd ProtonWebClients-$_commit
