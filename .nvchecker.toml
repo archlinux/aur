@@ -1,4 +1,5 @@
 [cpp-peglib]
-source = "git"
-git = "https://github.com/yhirose/cpp-peglib.git"
+source = "github"
+github = "yhirose/cpp-peglib"
+use_max_tag = "true"
 prefix = "v"

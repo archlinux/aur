@@ -1,21 +1,18 @@
-# Maintainer:
-
-_pkgname="cpp-peglib"
-pkgname="$_pkgname"
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: xiota <aur@mentalfossa.com>
+# Contributor: Michel Zou <xantares09@hotmail.com>
+pkgname=cpp-peglib
+pkgdesc="A single file C++ header-only PEG (Parsing Expression Grammars) library"
 pkgver=1.9.1
 pkgrel=1
-pkgdesc="A single file C++ header-only PEG (Parsing Expression Grammars) library"
-url="https://github.com/yhirose/cpp-peglib"
-license=('MIT')
-arch=('any')
-
-_pkgsrc="$_pkgname-$pkgver"
-_pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('f57aa0f14372cbb772af29e3a4549a8033ea07eb25c39949cba6178e0e2ba9cc')
+arch=(any)
+url="https://github.com/yhirose/${pkgname}"
+license=(MIT)
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('09bd45132933b39c7b9c6026ca7149b79c6833b86037c18b2d101842cf48fe839188e215f6c4eba286f17a831887b9b34e59f43b9148729f5f8e7c56e0c829ba')
 
 package() {
-  cd "$_pkgsrc"
-  install -Dm644 peglib.h -t "$pkgdir/usr/include/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${pkgname}-${pkgver}
+  install -Dm644 peglib.h -t "${pkgdir}/usr/include/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -6,6 +6,6 @@ pkgbase = cpp-peglib
 	arch = any
 	license = MIT
 	source = cpp-peglib-1.9.1.tar.gz::https://github.com/yhirose/cpp-peglib/archive/v1.9.1.tar.gz
-	sha256sums = f57aa0f14372cbb772af29e3a4549a8033ea07eb25c39949cba6178e0e2ba9cc
+	sha512sums = 09bd45132933b39c7b9c6026ca7149b79c6833b86037c18b2d101842cf48fe839188e215f6c4eba286f17a831887b9b34e59f43b9148729f5f8e7c56e0c829ba
 
 pkgname = cpp-peglib
