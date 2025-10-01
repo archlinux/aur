@@ -1,6 +1,6 @@
 pkgbase = csvedepli
 	pkgdesc = grep- and sed-like programs for .csv files
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 2
 	url = https://sr.ht/~minshall/csvedepli/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = csvedepli
 	makedepends = git
 	makedepends = sed
 	depends = glibc
-	source = git+https://git.sr.ht/~minshall/csvedepli#tag=64f48212490d1297252f35efdf837ac4a1f314c0?signed
+	source = git+https://git.sr.ht/~minshall/csvedepli#tag=39c3753aead4a81a0b19c4e44bdd7f38ab874201?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
