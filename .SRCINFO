@@ -1,12 +1,13 @@
 pkgbase = yafu-git
 	pkgdesc = Automated integer factorization.
-	pkgver = r714.83690bc
+	pkgver = r782.b357004
 	pkgrel = 1
 	url = https://github.com/bbuhrow/yafu
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = subversion
+	makedepends = gcc
 	depends = gmp
 	depends = gmp-ecm
 	optdepends = ggnfs

@@ -5,14 +5,14 @@
 _pkgbase=yafu
 pkgname=yafu-git
 pkgrel=1
-pkgver=r714.83690bc
+pkgver=r782.b357004
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=("MIT")
 arch=('x86_64')
 conflicts=(${_pkgbase})
 provides=('yafu' 'ysieve')
-makedepends=('git' 'subversion')
+makedepends=('git' 'subversion' 'gcc')
 depends=('gmp' 'gmp-ecm')
 optdepends=('ggnfs')
 source=(
@@ -24,11 +24,11 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            )
+            'SKIP')
 
 prepare() {
 	cd ${srcdir}/yafu
+	cp Makefile.gcc Makefile
 	sed -i "s%^LIBS += -lecm /users/buhrow/src%#LIBS += -lecm /users/buhrow/src%" Makefile
 	sed -i "s/^\#LIBS += -lecm -lgmp -lytools -lysieve/LIBS += -lecm -lgmp -lytools -lysieve/" Makefile
 }
