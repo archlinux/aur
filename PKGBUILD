@@ -1,6 +1,6 @@
 pkgname=hmcl-pr-bin
-pkgver=3.6.unofficial_5e90c12
-_pkgver=3.6.unofficial-5e90c12
+pkgver=3.6.unofficial_ad602ae
+_pkgver=3.6.unofficial-ad602ae
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular | PR Collection"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-runtime' 'hicolor-icon-theme')
 conflicts=('hmcl' 'hmcl-bin' 'hmcl-dev-bin' 'hmcl-beta-bin')
 source=("hmcl-pr.desktop"
         "hmcl-pr-launch-script"
-        "${pkgname}-${_pkgver}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/fde30fabe2c44c148790c1587dbb4200397e0378/HMCL-${_pkgver}.jar")
+        "${pkgname}-${_pkgver}-${pkgrel}.jar::https://alist.8mi.tech/d/mirror/HMCL-Snapshot/Auto/6eca40e4c4f0a33343a9fb76819bae57caf30cb8/HMCL-${_pkgver}.jar")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
