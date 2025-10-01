@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=1.113.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://n8n.io"
@@ -16,7 +16,7 @@ source=("${pkgname}.env"
 "${pkgname}.sysusers"
 "${pkgname}.tmpfiles"
 "${pkgname}.user.service")
-sha256sums=('faae87f26ac2bca25d98aa02564876742e7ed5dd4146342062196ed12d97385f'
+sha256sums=('a165ca406286e5cbba4c34e0edd7510d854e753bf1458e0385784b30d7564f19'
             '9356600848545416c490e3d74aff8494946afca187dd409a9f768db7a364f9da'
             '6139ae944272cdc50715fd82a3c062ebf1b7fd73f7f789cba0d27f5a0436c688'
             'faa4145ec8723700c5f8f75ae2dd3d78c931597b67e200050b55fec9d73c3f06'
