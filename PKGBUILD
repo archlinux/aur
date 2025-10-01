@@ -1,7 +1,7 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
   )
 sha512sums=('89aebd2ddec75e7770cd4f6224b6cdfe59de8175480040d55ee56201ecb77f5e087743a018b9a4b18cda0f19a8eebe13816d83609e1a703b461900a1dc6ceeff'
             '7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf2201ce7ff202cee660936ff33adcfda4b1a707013b14fcb25b82c3007531a'
-            '9792d22a78412b68e46c8d453beb8395a16cc2da0a3d35383161215f0753f39fff30c6292aa5fc381b8cfcfa762c1837666eae3de0630828feb8188b21b22a42')
+            '32cb1719d87b1693a4760202a548d44da5213c09c2d3b432034e5ea0ae40a4eef8c5834467bb071764f1135bfc2022da7d2e1eb7448c003d761f440c2471999c')
 
 prepare() {
   patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/codec2_gp_interleaver.h.patch"
