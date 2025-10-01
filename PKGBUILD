@@ -1,6 +1,6 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 epoch=
 pkgdesc="smooll's Color Picker"
