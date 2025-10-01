@@ -1,8 +1,7 @@
 pkgbase = xyvr
-	pkgdesc = Address book that supports merging VRChat and Resonite contacts.
-	pkgver = 0.0.1alpha.9
-	pkgrel = 2
-	url = https://github.com/hai-vr/XYVR
+	pkgver = 0.0.1alpha.10
+	pkgrel = 1
+	url = XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts.
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk-9.0
@@ -13,9 +12,9 @@ pkgbase = xyvr
 	depends = webkit2gtk
 	options = !debug
 	options = !lto
-	source = xyvr-0.0.1alpha.9.tar.gz::https://github.com/hai-vr/XYVR/archive/refs/tags/0.0.1-alpha.9.tar.gz
+	source = xyvr-0.0.1alpha.10.tar.gz::https://github.com/hai-vr/XYVR/archive/refs/tags/0.0.1-alpha.10.tar.gz
 	source = xyvr.desktop
-	sha256sums = 649ae3b28b786b095f6064770ce7c6950ac517a9f9714dfe291aeaca7d73663b
+	sha256sums = c42385f66ecabf9678deb8e7fceb7d35b47a66c92e655c4162232aa83f2a6d9c
 	sha256sums = 7afe9d6bba26750d3c963e7c78b8ecf1b7fa7763ff4c995d38b75327edd7d83c
 
 pkgname = xyvr
