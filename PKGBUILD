@@ -3,13 +3,14 @@
 
 pkgname=1password-cli
 pkgver=2.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
 url="https://app-updates.agilebits.com/product_history/CLI2"
 license=('custom')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
+validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
 source_x86_64=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_amd64_v${pkgver}.zip")
 source_i686=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_386_v${pkgver}.zip")
@@ -25,7 +26,7 @@ sha256sums_aarch64=('6f3d571aabe7701e21ad4b0f9d30207c3dcabdb2f9c261e3651106dde0e
 
 check() {
   if (( ! SKIPPGPCHECK )); then
-    gpg --verify-files ${srcdir}/op.sig
+    gpg --verify ${srcdir}/op.sig ${srcdir}/op
   fi
 }
 
