@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname=systemd-boot-btrfs-snapshots-git
-pkgver=r186.91bb06c
+pkgver=r187.94f9766
 pkgrel=1
 pkgdesc="Btrfs snapshot scripts with systemd-boot integration"
 arch=(x86_64)
@@ -14,6 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
 md5sums=('SKIP')  # git sources are variable, skip checksum
 install="PKGBUILD.install"
+backup=(etc/systemd-boot-btrfsd.conf)
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}" || exit 1
