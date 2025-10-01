@@ -8,6 +8,7 @@ pkgbase = owlen
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	options = !lto
 	source = owlen-0.1.4.tar.gz::https://somegit.dev/Owlibou/owlen/archive/v0.1.4.tar.gz
 	sha256sums = cabb1cfdfc247b5d008c6c5f94e13548bcefeba874aae9a9d45aa95ae1c085ec
 

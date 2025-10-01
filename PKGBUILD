@@ -8,25 +8,27 @@ url="https://somegit.dev/Owlibou/owlen"
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
+options=(!lto)  # avoid LTO-linked ring symbol drop with lld
 source=("${pkgname}-${pkgver}.tar.gz::https://somegit.dev/Owlibou/owlen/archive/v${pkgver}.tar.gz")
 sha256sums=('cabb1cfdfc247b5d008c6c5f94e13548bcefeba874aae9a9d45aa95ae1c085ec')
 
 prepare() {
     cd "$pkgname"
-    export RUSTUP_TOOLCHAIN=stable
+    # export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-Wl,--no-as-needed"
+    export CARGO_PROFILE_RELEASE_LTO=false
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
     cd "$pkgname"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-Wl,--no-as-needed"
     cargo test --frozen --all-features
 }
 
