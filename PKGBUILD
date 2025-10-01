@@ -2,9 +2,9 @@
 pkgname=xyvr
 pkgver=0.0.1alpha.10
 pkgrel=1
-pkgdesc=""
+pkgdesc="XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
 arch=('x86_64')
-url="XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
+url="https://github.com/hai-vr/XYVR/"
 license=('MIT')
 depends=('dotnet-runtime-9.0' 'webkit2gtk')
 makedepends=('dotnet-sdk-9.0' 'nodejs' 'npm' 'imagemagick')
