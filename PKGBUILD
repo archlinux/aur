@@ -9,16 +9,16 @@ license=('AGPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 options=(!lto)  # avoid LTO-linked ring symbol drop with lld
-source=("${pkgname}-${pkgver}.tar.gz::https://somegit.dev/Owlibou/owlen/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('cabb1cfdfc247b5d008c6c5f94e13548bcefeba874aae9a9d45aa95ae1c085ec')
 
 prepare() {
-    cd "$pkgname"
+    cd $pkgname
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname"
+    cd $pkgname
     export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-Wl,--no-as-needed"
     export CARGO_PROFILE_RELEASE_LTO=false
     export CARGO_TARGET_DIR=target
@@ -26,17 +26,17 @@ build() {
 }
 
 check() {
-    cd "$pkgname"
+    cd $pkgname
     export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-Wl,--no-as-needed"
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname"
+    cd $pkgname
 
     # Install binaries
-    install -Dm755 "target/release/owlen" "$pkgdir/usr/bin/owlen"
-    install -Dm755 "target/release/owlen-code" "$pkgdir/usr/bin/owlen-code"
+    install -Dm755 target/release/owlen "$pkgdir/usr/bin/owlen"
+    install -Dm755 target/release/owlen-code "$pkgdir/usr/bin/owlen-code"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
