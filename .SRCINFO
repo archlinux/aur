@@ -1,0 +1,18 @@
+pkgbase = zp-cpp
+	pkgdesc = C++ utility and Vulkan abstraction library
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/zacharypepin/zp_cpp
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	depends = glm
+	depends = glfw
+	depends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = openssl
+	depends = enet
+	source = zp-cpp-0.12.1.tar.gz::https://github.com/zacharypepin/zp_cpp/archive/refs/tags/v0.12.1.tar.gz
+	sha256sums = 3b08a155f972d706aeccff576976ded545824475aec1ed8ed6cac9798d7c2760
+
+pkgname = zp-cpp
