@@ -37,28 +37,13 @@ if [ -z "$SUDO_USER" ] && [ -z "$DOAS_USER" ]; then
 	export SUDO_USER="$user"
 fi
 
-installer=$(mktemp /tmp/vencord-hook.XXXXXX)
-cleanup() {
-	rm -f "$installer"
-}
-trap cleanup EXIT
-
-curl -fsSLo "$installer" \
-	https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstallerCli-Linux \
-|| {
-	err_handler
-	exit 1
-}
-
-chmod +x "$installer"
-
 while IFS= read -r package || [ -n "$package" ]; do
 	branch=${package#discord}
 	branch=${branch#-}
 	branch=${branch:-stable}
 
 	echo_hook "Installing Vencord for $branch branch..."
-	"$installer" -install -branch "$branch" || {
+	vencordinstallercli -install -branch "$branch" || {
 		err_handler
 		exit 1
 	}
