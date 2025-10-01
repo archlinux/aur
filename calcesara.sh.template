@@ -298,37 +298,65 @@ install_key() {
     echo "$(keygen)" > ${key_destination}   
 }
 
+register_font() {
+    font="${1}"
+    for ((i = ${#fonts_required[@]} - 1; i >= 0; i--)); do
+        if [[ \
+            ("${fonts_required[$i],,}" == "${font,,}") \
+            || ("${fonts_required[$i],,}" == "${font,,}="*) \
+            || ("${fonts_required[$i],,}" == "${font,,}|"*) \
+            || ("${fonts_required[$i],,}" == *"|${font,,}="*) \
+            || ("${fonts_required[$i],,}" == *"|${font,,}|"*) \
+        ]]; then
+            unset "fonts_required[$i]"
+        fi
+    done
+    fonts_required=("${fonts_required[@]}")
+}
+
 install_fonts() {
     mkdir -p "${fonts_location}" 
 
+    shopt -s nullglob
     # Scan fonts
     for font_full in ${fonts_location}/*; do
         if [ -L "$font_full" ] && ! [ -e "$font_full" ]; then
             rm -- "$font_full"
         else
-            font_file="$(basename ${font_full})"
+            font_file="${font_full##*/}"
             font="${font_file%.*}"
-            fonts_required=(${fonts_required[@]/$font})
+            register_font "$font"
         fi
     done
 
     # Link system fonts
-    for font_source in /usr/share/fonts/**/*.{ttf,otf}; do
-        font_file="$(basename ${font_source})"
+    for font_source in {/usr/share/fonts,"${HOME}/.local","${HOME}/.fonts"}/**/*.{ttf,otf}; do
+        if [ ! -f "${font_source}" ]; then
+            continue
+        fi
+        font_file="${font_source##*/}"
         font="${font_file%.*}"
-        fonts_required=(${fonts_required[@]/$font})
+        register_font "$font"
 
         font_link="${fonts_location}/${font_file}"
-        if [ ! -f $font_link ]; then
+        if [ ! -f "$font_link" ]; then
             ln -s "${font_source}" "${font_link}"
         fi
     done
+    shopt -u nullglob
 
     if [[ ${#fonts_required[@]} -ne 0 && "$(echo "${fonts_required[@]}")" != "" ]]; then
-        if [[ ! $(command -v winetricks >/dev/null 2>&1) ]]; then
-            winetricks "${fonts_required[@]}"
+        if command -v winetricks >/dev/null 2>&1; then
+            declare -A winetricks_pkgs
+            for missing_font in "${fonts_required[@]}"; do
+                winetricks_pkgs[${missing_font##*=}]=0
+            done
+            winetricks "${!winetricks_pkgs[@]}"
         else
-            error "Missing fonts: ${fonts_required[*]}"
+            for missing_font in ${fonts_required[@]}; do
+                error "Missing font: ${missing_font%=*}"
+            done
+            error "See https://aur.archlinux.org/packages/${pkg_name} for a list of optional dependencies related to fonts. The correct fonts either need to be installed to your system, or you need 'winetricks' which will install it locally in the wine bottle if the font is missing."
             exit 1
         fi
     fi

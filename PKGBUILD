@@ -28,9 +28,9 @@ _pkgname=calcesara
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
 pkgver=8.6.5
-pkgrel=11
+pkgrel=12
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
-arch=('x86_64')
+arch=('any')
 url='https://web.calce.umd.edu/software/releaseSARA'
 license=('LicenseRef-calceSARA')
 depends=(
@@ -40,13 +40,11 @@ depends=(
     'sed' # Templating
     'coreutils' # tail and printf are used in launch script for keygen
 )
-#optdepends=('xdg-utils: for launching HTML help files')
 optdepends=(
-    'winetricks: Installs fonts locally if missing from system'
-    'ttf-ms-win10-auto: Required fonts installed at system-level'
-    # TODO
-    #'adobe-base-14-fonts: Helvetica and Times is widely used throught calceSARA.'
-    #'ttf-dejavu: Mentioned in calceSARA license, so we can assume it's used somewhere.'
+    'winetricks: Installs microsoft fonts locally if missing from system'
+    'ttf-ms-win10-auto: Microsoft fonts'
+    'ttf-liberation: Serif and sans-serif fonts'
+    'ttf-dejavu: Serif and sans-serif fonts'
 )
 makedepends=(
     'curl' # Downloads sources
@@ -54,16 +52,6 @@ makedepends=(
 	'gendesk' # Generate desktop entries
     '7zip' # Unzip installer binary
 )
-# If you don't have this font, most text will just render as boxes.
-# Fonts that are missing from your system will be installed locally in the wine-bottle by winetricks if you have winetricks installed.
-# See optdepends for relevant packages
-_fonts=(
-    'arial' # Most important one
-)
-
-# Template for launch script.
-_launcher_template="${_pkgname}.sh.template"
-_launcher_check="${_pkgname}.sh"
 
 # Keyfile-name
 _keyfile_name='calce.key'
@@ -77,21 +65,49 @@ _exe_name="calceSARAv${pkgver}"
 # Installer filename.
 _installer_exe="install_${_exe_name}.exe"
 
-# License file unpacked from installer exe
-_license_file='calcelicense.txt'
-
 source=(
-    "${_keygen_template}"
-    "${_launcher_template}"
+    "${_keyfile_name}.template"
+    "${_pkgname}.sh.template"
     "https://web.calce.umd.edu/software/releaseSARA/${pkgver}/${_installer_exe}"
 )
 sha256sums=(
     826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
-    d36f8b3ca093c354a52de2552c99a172cd10461606e860da5159203d284ef0b1
+    0d40290c62047eba8b4b64c50cfd4c56d3192711ca5674faff55deedfe66f564
     3b1c416c75f545d247ddbecc5e85678156d66f8040247ba1d129795e19a3b088
 )
 
-#OPTIONS=(!strip) # No need!
+# If you don't have these font, most text will just render as boxes.
+# Fonts that are missing from your system will be installed locally in the wine-bottle by winetricks if you have winetricks installed.
+# See optdepends for relevant packages
+_fonts=(
+    'arial' # Most important one. Provided by msfonts
+    'arialbd=arial' # Most important one. Provided by msfonts
+    'ariali=arial' # Most important one. Provided by msfonts
+    'arialbi=arial' # Most important one. Provided by msfonts
+
+    'times' # Provided by msfonts
+    'timesbd=times' # Provided by msfonts
+    'timesi=times' # Provided by msfonts
+    'timesbi=times' # Provided by msfonts
+    
+    'tahoma' # Provided by msfonts
+    'tahomabd=tahoma' # Provided by msfonts
+
+    'DejaVuSerif|LiberationSerif-Regular=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSerif-Bold|LiberationSerif-Bold=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSerif-Italic|LiberationSerif-Italic=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSerif-BoldItalic|LiberationSerif-BoldItalic=liberation' # Provided by ttf-dejavu or ttf-liberation
+
+    'DejaVuSans|LiberationSans-Regular=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSans-Bold|LiberationSans-Bold=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSans-Oblique|LiberationSans-Italic=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSans-BoldOblique|LiberationSans-BoldItalic=liberation' # Provided by ttf-dejavu or ttf-liberation
+
+    'DejaVuSansMono|LiberationMono-Regular=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSansMono-Bold|LiberationMono-Bold=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSansMono-Oblique|LiberationMono-Italic=liberation' # Provided by ttf-dejavu or ttf-liberation
+    'DejaVuSansMono-BoldOblique|LiberationMono-BoldItalic=liberation' # Provided by ttf-dejavu or ttf-liberation
+)
 
 # Found in DecryptInputStream and EncryptOutputStream in calce source code.
 # Required for keygens because CALCE's official keys are unreliable when running CalceSARA under wine.
@@ -129,34 +145,34 @@ prepare() {
     cd "${srcdir}"
 
     # Text replacement on launcher template
-    __option_cases=""
-    __options_help_list=""
+    local __option_cases=""
+    local __options_help_list=""
     for i in ${!_lnks[@]}; do
-        __option=${_options[i]}
-        __lnk=${_lnks[i]}
+        local __option="${_options[i]}"
+        local __lnk="${_lnks[i]}"
         __option_cases="${__option_cases}\n\t${__option}) lnk=${__lnk};;"
         __option_help_list="${__option_help_list}\\n\\t- ${__option}"
     done
-    __fonts=""
-    for i in $_fonts; do
-        __fonts="\n\t${i}"
+    local __fonts=""
+    for i in ${_fonts[@]}; do
+        __fonts+="\n\t\'${i}\'"
     done
-    sed -i "s/@keygen_cryptkey@/${_keygen_cryptkey}/g" ${_launcher_template}
-    sed -i "s/@pkgver@/${pkgver}/g" ${_launcher_template}
-    sed -i "s/@pkgname@/${_pkgname}/g" ${_launcher_template}
-    sed -i "s/@exe_name@/${_exe_name}/g" ${_launcher_template}
-    sed -i "s/@keyfile_name@/${_keyfile_name}/g" ${_launcher_template}
-    sed -i "s#@shared_data_prefix@#${_shared_data_prefix}#g" ${_launcher_template}
-    sed -i "s/@option_help_list@/${__option_help_list}/g" ${_launcher_template}
-    sed -i "s/@option_cases@/${__option_cases}/g" ${_launcher_template}
-    sed -i "s/@fonts@/${__fonts}/g" ${_launcher_template}
+    sed -i "s/@keygen_cryptkey@/${_keygen_cryptkey}/g" "${_pkgname}.sh.template"
+    sed -i "s/@pkgver@/${pkgver}/g" "${_pkgname}.sh.template"
+    sed -i "s/@pkgname@/${_pkgname}/g" "${_pkgname}.sh.template"
+    sed -i "s/@exe_name@/${_exe_name}/g" "${_pkgname}.sh.template"
+    sed -i "s/@keyfile_name@/${_keyfile_name}/g" "${_pkgname}.sh.template"
+    sed -i "s#@shared_data_prefix@#${_shared_data_prefix}#g" "${_pkgname}.sh.template"
+    sed -i "s/@option_help_list@/${__option_help_list}/g" "${_pkgname}.sh.template"
+    sed -i "s/@option_cases@/${__option_cases}/g" "${_pkgname}.sh.template"
+    sed -i "s/@fonts@/${__fonts}/g" "${_pkgname}.sh.template"
 
-    cp ${_launcher_template} ${_launcher_check}
-    sed -i "s/#@check@/# Good to go!/g" ${_launcher_template}
-    sed -i "s/#@check@/exit 0/g" ${_launcher_check}
+    cp "${_pkgname}.sh.template" "${_pkgname}.sh"
+    sed -i "s/#@check@/# Good to go!/g" "${_pkgname}.sh.template"
+    sed -i "s/#@check@/exit 0/g" "${_pkgname}.sh"
     
     # Extracts installer to obtain icon files for desktop entries.
-    7z e ${_installer_exe} -y
+    7z e "${_installer_exe}" -y
 }
 
 # Desktop entry metadata
@@ -168,33 +184,34 @@ _desk_names=(
     'calceWhiskerRisk'
     'calceSARA Updates'
 )
-_desk_generic_names=(
-    'Failure Assessment Toolkit'
-    'Temperature Cycle Extraction Module'
-    'User Documentation'
-    'Physical Wiring Assembly Toolbox'
-    'Whisker Risk Calculator'
-    'Updater'
-)
-_desk_comments=(
-    'Failure Assessment Toolkit'
-    'Temperature Cycle Extraction Module'
-    'Documentation for calceSARA'
-    'Physical Wiring Assembly Toolbox'
-    'Whisker Risk Calculator'
-    'Update and validate calceSARA'
-)
 
 build() {
     cd "${srcdir}"
 
+    local _desk_generic_names=(
+        'Failure Assessment Toolkit'
+        'Temperature Cycle Extraction Module'
+        'User Documentation'
+        'Physical Wiring Assembly Toolbox'
+        'Whisker Risk Calculator'
+        'Updater'
+    )
+    local _desk_comments=(
+        'Failure Assessment Toolkit'
+        'Temperature Cycle Extraction Module'
+        'Documentation for calceSARA'
+        'Physical Wiring Assembly Toolbox'
+        'Whisker Risk Calculator'
+        'Update and validate calceSARA'
+    )
+
     # Generate desktop entries
     for i in ${!_lnks[@]}; do
-        __lnk=${_lnks[i]}
-        __desk_name=${_desk_names[i]}
-        __desk_generic_name=${_desk_generic_names[i]}
-        __desk_comment=${_desk_comments[i]}
-        __option="$(echo ${_options[i]} | sed 's/|.*//g')" # Strip aliases
+        local __lnk="${_lnks[i]}"
+        local __desk_name="${_desk_names[i]}"
+        local __desk_generic_name="${_desk_generic_names[i]}"
+        local __desk_comment="${_desk_comments[i]}"
+        local __option="$(echo ${_options[i]} | sed 's/|.*//g')" # Strip aliases
 
         # Convert icon to png
         magick "${__lnk}.ico" "${__desk_name}.png"
@@ -210,7 +227,7 @@ check()
 {
     cd "${srcdir}"
 
-    bash ${srcdir}/${_launcher_check}
+    bash "${srcdir}/${_pkgname}.sh"
 }
 
 package()
@@ -218,12 +235,12 @@ package()
     cd "${srcdir}"
 
     # Install License
-    install -Dm644 "${srcdir}/${_license_file}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/calcelicense.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     # Install Desktop files
     for i in ${!_lnks[@]}; do
-        __lnk=${_lnks[i]}
-        __desk_name=${_desk_names[i]}
+        local __lnk="${_lnks[i]}"
+        local __desk_name="${_desk_names[i]}"
 
         install -Dm644 "${srcdir}/${__desk_name}.png" "${pkgdir}/usr/share/pixmaps/${__desk_name}.png"
         install -Dm644 "${srcdir}/${_pkgname}-${__lnk}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-${__lnk}.desktop"
@@ -246,6 +263,6 @@ package()
     #ln -sv "/usr/share/doc/${_pkgname}" "${pkgdir}/opt/${_pkgname}/calceSARAHelp"
 
     # Install launch script
-    install -Dm755 "${srcdir}/${_launcher_template}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${_pkgname}.sh.template" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
