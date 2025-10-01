@@ -1,0 +1,87 @@
+#!/bin/sh
+set -e
+
+GROUP_NAME="defguard"
+SERVICE_NAME="defguard-service"
+
+post_install() {
+
+        # Create the group if it doesn't exist
+        if ! getent group "$GROUP_NAME" >/dev/null; then
+            addgroup --system "$GROUP_NAME"
+            echo "Created group $GROUP_NAME"
+        fi
+
+        # Determine target user
+        TARGET_USER=""
+        if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+            TARGET_USER="$SUDO_USER"
+        elif [ -n "$USER" ] && [ "$USER" != "root" ]; then
+            TARGET_USER="$USER"
+        fi
+
+        # Add user to group if we found a valid target
+        if [ -n "$TARGET_USER" ]; then
+            if getent passwd "$TARGET_USER" >/dev/null; then
+                # Try to add user to group and check if it succeeded
+                if usermod -a -G "$GROUP_NAME" "$TARGET_USER"; then
+                    echo "Added user $TARGET_USER to group $GROUP_NAME"
+
+                    # Only show reboot message if user was actually added
+                    echo "================================================"
+                    echo "  IMPORTANT: Reboot or Re-login Required"
+                    echo "================================================"
+                    echo "The user has been added to the defguard group."
+                    echo "Please reboot or log out and back in for the"
+                    echo "group membership changes to take effect."
+                    echo "================================================"
+                else
+                    echo "Warning: Failed to add user $TARGET_USER to group $GROUP_NAME"
+                    exit 1
+                fi
+            fi
+        fi
+
+        # Handle systemd service
+        if [ -d /run/systemd/system ]; then
+            # Reload systemd to recognize new service file
+            systemctl daemon-reload
+
+            # Enable service to start on boot
+            systemctl enable "$SERVICE_NAME"
+
+            # Start the service now
+            systemctl start "$SERVICE_NAME"
+        fi
+ 
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+    # Service file still exists, just disable it
+    if [ -d /run/systemd/system ]; then
+	    systemctl stop $SERVICE_NAME
+    fi
+
+    if getent group "$GROUP_NAME" >/dev/null; then
+        delgroup "$GROUP_NAME" || true
+    fi
+}
+
+post_remove() {
+    # Service file still exists, just disable it
+    if [ -d /run/systemd/system ]; then
+        systemctl disable "$SERVICE_NAME" || true
+        systemctl daemon-reload
+    fi
+
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}
+
+

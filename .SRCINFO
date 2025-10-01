@@ -1,8 +1,9 @@
 pkgbase = defguard-client
 	pkgdesc = Defguard VPN Multi-Factor Authentication Desktop Client
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DefGuard/client
+	install = defguard-client.install
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
