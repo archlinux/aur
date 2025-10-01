@@ -3,7 +3,7 @@
 
 pkgname=python-pyscaffold
 _pkg=PyScaffold
-pkgver=4.5
+pkgver=4.6
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://github.com/pyscaffold/pyscaffold"
@@ -30,9 +30,7 @@ makedepends=(
 	'python-setuptools-scm'
 	'python-sphinx'
 	'python-wheel')
-# checkdepends=('git' 'python-pytest' 'python-pytest-virtualenv')
-changelog=CHANGELOG.rst
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz:$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('467ef9dd94767e51a3e9d2f2a36a0fd1b4f1a9a4b4110b0cf8e57cc4c67d9757386df461b54123786a718ec29b379bc2d7b0f600d037b2f88bf1f3854579603c')
 
 prepare() {
