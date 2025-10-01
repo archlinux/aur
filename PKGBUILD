@@ -11,7 +11,7 @@ url=https://github.com/kdave/btrfsmaintenance
 license=(GPL-2.0-or-later)
 depends=(btrfs-progs)
 backup=(etc/default/btrfsmaintenance)
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f41f5c8a697420c282c603d96f70b25a6f4d3bf330fa0249625bce256e0cce2e')
 
 prepare() {
