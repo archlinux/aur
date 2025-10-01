@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.15.2
+pkgver=1.3.15.3
 _skiaver=m124
 _skiahash=08a5439a6b
 pkgrel=1
@@ -62,7 +62,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz"
            "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('f4e285f5b57c0d85b2d744296355f5dceea3713fc7a3cb19d753ebd0cbe7b290'
+sha256sums=('4c204a19ca2861886f1e501743c97f77bb9655587c9e7095b4c0636f42dfcb71'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
             'ec01905d09e49fa98d4c56357a44d0fa451a9acf6eac757eb8ff247aadc31b35'
