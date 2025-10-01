@@ -3,7 +3,7 @@
 _pkgauthor=neur0map
 _pkgname=manx
 pkgname=${_pkgname}
-pkgver=0.5.3
+pkgver=0.5.4
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly"
@@ -19,7 +19,7 @@ makedepends=('cargo')
 depends=('gcc-libs' 'glibc' 'openssl')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d77ea62f545cdd4854bdad11cd40d1489e7811745195295c795bef0b6dde9f3a')
+sha256sums=('65bc5933b4d65a52722a154a72098ab3f959d6b0093c6264025e11c8ce6378ad')
 
 case "${CARCH}" in
   x86_64|i686|aarch64)
