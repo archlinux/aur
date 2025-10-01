@@ -60,21 +60,15 @@ package() {
     # Копіюємо Flutter build
     cp -r mod_manager_flutter/build/linux/x64/release/bundle/* "$pkgdir/opt/zzz-mod-manager/"
     
-    # Створюємо директорію для assets
-    install -dm755 "$pkgdir/opt/zzz-mod-manager/assets"
-    
     # Копіюємо іконку
     if [ -f "assets/icon.png" ]; then
-        install -Dm644 assets/icon.png "$pkgdir/opt/zzz-mod-manager/assets/icon.png"
+        install -Dm644 assets/icon.png "$pkgdir/opt/zzz-mod-manager/data/flutter_assets/assets/icon.png"
         install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/zzz-mod-manager.png"
         install -Dm644 assets/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/zzz-mod-manager.png"
     fi
     
-    # Копіюємо mod_images якщо є
-    if [ -d "assets/mod_images" ]; then
-        install -dm755 "$pkgdir/opt/zzz-mod-manager/assets/mod_images"
-        cp -r assets/mod_images/* "$pkgdir/opt/zzz-mod-manager/assets/mod_images/"
-    fi
+    # Примітка: mod_images тепер зберігаються в ~/.local/share/zzz-mod-manager/mod_images
+    # Директорія буде створена автоматично при першому запуску застосунку
     
     # Створюємо .desktop файл
     cat > "$pkgdir/usr/share/applications/zzz-mod-manager.desktop" << 'EOF'
@@ -82,7 +76,7 @@ package() {
 Name=ZZZ Mod Manager
 Comment=Modern mod manager for Zenless Zone Zero
 Exec=/opt/zzz-mod-manager/mod_manager_flutter
-Icon=zzz-mod-manager
+Icon=/opt/zzz-mod-manager/data/flutter_assets/assets/icon.png
 Terminal=false
 Type=Application
 Categories=Utility;Game;
