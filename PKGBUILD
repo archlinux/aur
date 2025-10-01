@@ -16,10 +16,14 @@ provides=('fcitx5-mcbopomofo')
 source=("${_pkgname}::git+https://github.com/openvanilla/fcitx5-mcbopomofo.git")
 sha512sums=('SKIP')
 
+prepare() {
+    cd "$srcdir/$_pkgname"
+    git apply --whitespace=nowarn ../../StandardPaths.patch
+}
+
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-    git apply --whitespace=nowarn ../../StandardPaths.patch
 }
 
 build() {
