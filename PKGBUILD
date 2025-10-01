@@ -1,7 +1,7 @@
 # Maintainer: RockinChaos
 
 pkgname=shiru
-pkgver=6.1.12
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="BitTorrent streaming software with no paws in the way—watch anime in real-time, no waiting for downloads!"
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=("!strip")
 source=("https://github.com/RockinChaos/Shiru/releases/download/v${pkgver}/linux-Shiru-v${pkgver}.AppImage"
         "shiru.png"
         "shiru.desktop")
-sha256sums=("1cc748c733efe0c5b2b1a14da33d767f5a8c671d60f656f287f86964e50002d3"
+sha256sums=("123b92ed1955f9562da7c3170fe366fa8f435169093c51603d9cc6c775cbb71e"
             "379cccb8c101876ebfdab2684ed50a3e3ddb1e1250daca752bd24597bf7eaab3"
             "11ca7ef052a2273e874ebb18a4ab5433c03858af3c40afab467404377d72ab25")
 
