@@ -1,0 +1,25 @@
+pkgbase = hishtory
+	pkgdesc = Your shell history: synced, queryable, and in context
+	pkgver = 0.335
+	pkgrel = 1
+	url = https://hishtory.dev
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = hishtory-0.335.tar.gz::https://github.com/ddworken/hishtory/archive/refs/tags/v0.335.tar.gz
+	sha256sums = f312acc99195ca035db7b6612408169ce3a14c170f85dba238f9a29ca7825a3d
+
+pkgname = hishtory
+	depends = hishtory-common=0.335
+	depends = glibc
+
+pkgname = hishtory-server
+	pkgdesc = Your shell history: synced, queryable, and in context (server)
+	depends = hishtory-common=0.335
+	depends = glibc
+
+pkgname = hishtory-common
+	pkgdesc = Your shell history: synced, queryable, and in context (common files)
+	arch = any

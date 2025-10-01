@@ -1,0 +1,4 @@
+[hishtory]
+source = "git"
+git = "https://github.com/ddworken/hishtory.git"
+prefix = "v"
