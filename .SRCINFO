@@ -6,7 +6,7 @@ pkgbase = outfieldr
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = zig-bin>=0.14.0
+	makedepends = zig
 	provides = tldr
 	conflicts = tldr
 	conflicts = tealdeer

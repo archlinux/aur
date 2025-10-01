@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=outfieldr
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='TLDR client in zig'
 arch=('x86_64')
 url='https://gitlab.com/ve-nt/outfieldr'
