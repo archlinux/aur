@@ -3,8 +3,8 @@
 pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
-pkgver=r212.dceb949
-pkgrel=4
+pkgver=r213.27a258a
+pkgrel=1
 pkgdesc="Real-time network monitoring TUI with process identification via eBPF and deep packet inspection"
 arch=('x86_64' 'armv7h' 'aarch64')
 _author=domcyrus
@@ -14,10 +14,11 @@ depends=('libpcap' 'libelf' 'zlib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'pkgconf' 'clang' 'llvm' 'lld' 'libbpf')
 provides=(${pkgname%-git})
 conflicts=("${pkgname%-git}" "${pkgname%-bin}")
-options=(!debug strip)
 install=$_pkgname.install
-source=("git+https://github.com/${_author}/${_reponame}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/${_author}/${_reponame}.git"
+        "rustnet-setcap.hook")
+sha256sums=('SKIP'
+            'b14ba212f2a589ca327a2e59563a4fdd3787c022baf43b6dc249b03814757cc4')
 
 pkgver() {
     cd "$srcdir/$_reponame"
@@ -75,4 +76,5 @@ package() {
     cd "$srcdir/$_reponame"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/$_pkgname/hooks/" "$srcdir/rustnet-setcap.hook"
 }
