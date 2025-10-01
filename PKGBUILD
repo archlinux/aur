@@ -2,7 +2,7 @@
 _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python-$_projectname"
-pkgver='1.4.1'
+pkgver='1.4.2'
 _commit='d1db1071d9732d088fa64f3cff2f6223e1cdc830'
 pkgrel='1'
 epoch='1'
