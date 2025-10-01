@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2375.g653bd04
+pkgver=4.3.r2471.g5fd5949
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -12,7 +12,7 @@ arch=(aarch64 arm armv6h armv7h i686 x86_64)
 url=https://tvheadend.org
 license=(GPL-3.0-or-later)
 depends=(
-  avahi ffmpeg libdvbcsa libfdk-aac libogg libtheora libvorbis libvpx
+  avahi ffmpeg libiconv libdvbcsa libfdk-aac libogg libtheora libvorbis libvpx
   openssl opus pcre2 pngquant uriparser x264 x265)
 makedepends=(git python)
 optdepends=(
@@ -36,9 +36,9 @@ _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
 
   # Compare major version numbers of ffmpeg
-  # Check the maximum known supported version and the version used by the makefile
   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
+  # Check the maximum known supported version and the version used by the makefile
   if ((ffmpeg_installed <= 7)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
     libav_option='--enable-libav'
   else
@@ -82,7 +82,7 @@ build() {
     --enable-pngquant \
     --enable-vaapi \
     --enable-zlib \
-    --mandir=/usr/share/man/man1 \
+    --mandir=/usr/share/man \
     --prefix=/usr \
     --python=python3 \
     \
