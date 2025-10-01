@@ -1,0 +1,25 @@
+pkgbase = chip-tool
+	pkgdesc = Matter CLI tool (chip-tool) from Project CHIP
+	pkgver = 1.4.2.0
+	pkgrel = 1
+	url = https://github.com/project-chip/connectedhomeip
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = python-virtualenv
+	makedepends = ninja
+	makedepends = gn
+	depends = dbus
+	depends = openssl
+	depends = avahi
+	depends = zlib
+	source = https://github.com/project-chip/connectedhomeip/archive/refs/tags/v1.4.2.0.tar.gz
+	sha256sums = a381f8eedc0411d3699890a3c961b7e3bbe6f751c26224ab80d84059c05d9196
+
+pkgname = chip-tool
