@@ -28,14 +28,12 @@ depends=(
 	'double-conversion'
 	'gc'
 	'gsl'
-	'gspell'
 	'gtkmm-4.0'
 	'gtksourceview5'
 	'lcms2'
 	'lib2geom-git'
 	'libcdr'
 	'libjpeg-turbo'
-	'libsoup'
 	'libvisio'
 	'libxslt'
 	'poppler-glib'
@@ -57,8 +55,12 @@ depends=(
 	'python-tinycss2'
 	'python-typing_extensions'
 	'ttf-font'
+	'cairomm'
+	'pangomm'
+	'graphene'
 	'libwpg'
 	'libspelling'
+	'capypdf'
 )
 case $BITMAP_BACKEND in
 	imagemagick) depends+=('libmagick6');;
