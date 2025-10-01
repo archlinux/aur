@@ -2,10 +2,10 @@
 
 pkgname=ape
 pkgver=3.1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A plasmid editor"
 arch=('any')
-url="http://biologylabs.utah.edu/jorgensen/wayned/ape/"
+url="https://jorgensen.biology.utah.edu/wayned/ape/"
 license=('proprietary')
 depends=('tclkit' 'sdx')
 makedepends=('imagemagick')
