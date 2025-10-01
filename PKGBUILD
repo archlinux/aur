@@ -3,13 +3,13 @@ pkgname=deadlock-modmanager-git
 _pkgname=${pkgname%-git}
 pkgdesc='A mod manager for the Valve game Deadlock (latest git build)'
 pkgver=0.9.1.r11.g29c7d64
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/deadlock-mod-manager/deadlock-mod-manager"
 license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme' 'mesa-utils')
-source=("git+$url.git"
+source=("$_pkgname::git+$url.git"
 	'deadlock-modmanager.desktop'
 	'nvidia-webkit-wrapper.sh')
 sha256sums=('SKIP'
