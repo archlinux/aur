@@ -2,7 +2,7 @@
 
 pkgname=terragrunt-edo
 _pkgname=terragrunt
-pkgver=0.88.1.r2.gde0120c5b
+pkgver=0.88.1.r3.g09a6c2cdf
 pkgrel=1
 pkgdesc="Terragrunt (Git master) – thin wrapper for OpenTofu/Terraform that provides extra tools for working with multiple modules"
 url="https://github.com/gruntwork-io/${_pkgname}"
@@ -24,7 +24,6 @@ prepare() {
   go mod download
 }
 
-# v0.85.0-12-gabcdef -> 0.85.0.r12.gabcdef
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --tags --long | sed -E 's/^v?([0-9.]+)-([0-9]+)-g([0-9a-f]+)/\1.r\2.g\3/'
