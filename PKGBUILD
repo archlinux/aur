@@ -1,7 +1,7 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=xyvr
 pkgver=0.0.1alpha.11
-pkgrel=1
+pkgrel=2
 pkgdesc="XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
 arch=('x86_64')
 url="https://github.com/hai-vr/XYVR/"
@@ -14,7 +14,7 @@ source=(
     "xyvr.desktop"
 )
 sha256sums=('297695de91f04d9b7045ced04845459f36ef54eeac037d98a0f7c790c32d634a'
-            'f20de928ec2dd06d8199017685eecff338263c6261faf8b2f6892e7e39ddd8c3')
+            '0b0464c946c0eb4619ff19b2c43b6a5b1d91b2a09e6254c867288414b41211d4')
 
 prepare() {
     cd "$srcdir/XYVR-0.0.1-alpha.11"
