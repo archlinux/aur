@@ -1,0 +1,4 @@
+[python-llm-openrouter]
+source = "github"
+github = "simonw/llm-openrouter"
+use_latest_release = true
