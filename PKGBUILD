@@ -215,6 +215,10 @@ prepare() {
   # https://github.com/pytorch/pytorch/commit/d670304001429a1a833255a918ed788d7ec4989a
   git cherry-pick -X theirs --no-commit d670304001429a1a833255a918ed788d7ec4989a
 
+  # [NVIDIA] Refactor Family Blackwell Support codegen
+  # https://github.com/pytorch/pytorch/commit/9c5601ecc316e5be548038bc24411acd7c74a032
+  git cherry-pick -X theirs --no-commit 9c5601ecc316e5be548038bc24411acd7c74a032
+
   # Update tensorpipe submodule for CUDA 13
   # https://github.com/pytorch/pytorch/commit/691d17a5c6f52b0bfec94ade1ac60d2956db65c0
   cd third_party/tensorpipe
