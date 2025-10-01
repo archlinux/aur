@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-desktopapplications
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='desktopapplications provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-desktopapplications')
 provides=('elephant-desktopapplications')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60b2571d0f3e8a0400b834f4057116ccbf826e32137f0b939e5d76ecb957769f')
+sha256sums=('1307d14f753f11ee10fba94d0720a0a1b45e3336d92e489770c1c1b14fc8b74c')
 
 build() {
     cd elephant-${pkgver}/internal/providers/desktopapplications
