@@ -1,0 +1,50 @@
+pkgbase = hishtory-bin
+	pkgdesc = Your shell history: synced, queryable, and in context
+	pkgver = 0.335
+	pkgrel = 1
+	url = https://hishtory.dev
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	makedepends = slsa-verifier
+	source = hishtory-0.335-README.md::https://github.com/ddworken/hishtory/raw/refs/tags/v0.335/README.md
+	source = hishtory-0.335-LICENSE::https://github.com/ddworken/hishtory/raw/refs/tags/v0.335/LICENSE
+	sha256sums = 59690a6e21c3373d44bf629b45ff5d595bface5dd23582e183bbbbe1ce45142c
+	sha256sums = 923a32f4636b55edc26225eed5dc355b76f88ac18b0cfca01d2e2e2666fc3de7
+	source_aarch64 = hishtory-0.335-aarch64::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-linux-arm64
+	source_aarch64 = hishtory-0.335-aarch64.intoto.jsonl::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-linux-arm64.intoto.jsonl
+	source_aarch64 = hishtory-server-0.335-aarch64::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-server-linux-arm64
+	sha256sums_aarch64 = ebd1c8287d9313c551ccb923839936916300a85fa9c5d7b3f77bef85531b08fa
+	sha256sums_aarch64 = 11688b2bc5b05b4ae53ca50a64638fc232a86fd1305dbdafbd418ff40fb8e022
+	sha256sums_aarch64 = c179365e36a6732fed2b7237bcab9eefd7a95aaad7dac4bcb7d49c48908416c5
+	source_armv7h = hishtory-0.335-armv7h::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-linux-arm
+	source_armv7h = hishtory-0.335-armv7h.intoto.jsonl::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-linux-arm.intoto.jsonl
+	source_armv7h = hishtory-server-0.335-armv7h::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-server-linux-arm
+	sha256sums_armv7h = e8df20ab8f2e8cfacf65c42eee104d28b87061127bf5e90d4355b72c239c7672
+	sha256sums_armv7h = cfa9024d4ccfa3390ed5c932f553c74d4c05ee7abc09923c57e56ffec4ac463f
+	sha256sums_armv7h = ca3230bcb5f3ef01c0f6c40740cff57542e8e36d9c359bba45500054d05aaa4c
+	source_x86_64 = hishtory-0.335-x86_64::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-linux-amd64
+	source_x86_64 = hishtory-0.335-x86_64.intoto.jsonl::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-linux-amd64.intoto.jsonl
+	source_x86_64 = hishtory-server-0.335-x86_64::https://github.com/ddworken/hishtory/releases/download/v0.335/hishtory-server-linux-amd64
+	sha256sums_x86_64 = 49a926eecd40f0c0bc5ef5670de191496cf882216b5c53f32e3ebc2e3be2d271
+	sha256sums_x86_64 = 1d134cfbc74a04d7238b35ebd30831269948cabbcfb3b1660cfed8a818b6f32b
+	sha256sums_x86_64 = b7d9579281450c0a4ac6d49783009119b4ede8b1fe0fb5bac38f3cae250e00d0
+
+pkgname = hishtory-bin
+	depends = hishtory-common=0.335
+	provides = hishtory=0.335
+	conflicts = hishtory
+
+pkgname = hishtory-server-bin
+	pkgdesc = Your shell history: synced, queryable, and in context (server)
+	depends = hishtory-common=0.335
+	depends = glibc
+	provides = hishtory-server=0.335
+	conflicts = hishtory-server
+
+pkgname = hishtory-common-bin
+	pkgdesc = Your shell history: synced, queryable, and in context (common files)
+	arch = any
+	provides = hishtory-common=0.335
+	conflicts = hishtory-common
