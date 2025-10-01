@@ -4,7 +4,7 @@ _pkgauthor=abenz1267
 _pkgname=elephant
 pkgbase=${_pkgname}-bin
 pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin)
-pkgver=1.1.1
+pkgver=1.2.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="general purpose datasource and executor"
@@ -46,20 +46,20 @@ source_x86_64=("elephant-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${p
                "calc-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/calc-linux-${_barch[0]}.tar.gz"
                "archlinuxpkgs-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/archlinuxpkgs-linux-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'b52cbce3fbd7f99501d766922db595241574bd07d93316e8a9d2cf418a608e3a')
-sha256sums_x86_64=('59425a2057e9dc0db1c34ddb0f421572d55eca6446882adb0d8a2a00fea6b2f8'
-                   '3c706f1f323f0fff68ac3e442ba7a76cb3358122c667c76e8611699bc5f385bb'
-                   '3cde9a843100ddf20abf89efacba8beca31a5c954823005b9e586c209c6743d4'
-                   'bca50f9355e7c9d1fd8fcc4bd59c5c98b15898aa9131839d7e736a44116235bc'
-                   '3180ca5ef6cb9ce8f47627641bdce0407ad508c6817cd6764aeb0fc4e1c218ab'
-                   '9c9136d7cf891fbe6c0b36363f2a46b7d8b8c03e54d03a0b6b8f65470c495660'
-                   '3654e03c7d7213373a83bcb2d6f35893bf3508684eafe6d5011993d70c83eeca'
-                   'fbfcf4f2ffad97bc5bd8d15c27a9edf3e9b9082ed3579327ddf9ad6b99476ab1'
-                   '7fe2eca7d69cb5cd1a80d21054f2b2d0b9f37c92d3ea61cf4549545ff774bc30'
-                   '6961d9049141cd7d0a7b48fd8f725b4916d857402aea33db5593bafc9f171410'
-                   '0aaa8629c083e9580f70384c9f1bb591aa9e8328f95b6dee34fbd1c8cccfd2a9'
-                   '9393bfbc601dd9119433a434489b1f987ddba1ab489843d9e3bd3a1a6f286a25'
-                   '348bcd413ecf9b82b3ea04b23566140b836f0876e0eaace0f5700deec2a2ccd9')
+            '98ab080a4b98153561147034538df1ae011bedbb5016bb18f5ee94fd1f31c6ad')
+sha256sums_x86_64=('fde0859b3ca0a47a5baec89c7cc25d2f5371c49dc24d271cc748bbdb3f75aeb7'
+                   'f452219ca1ba77cccaa01f42daa48dde619bae6d315af71b6925678dfb3f0155'
+                   '72afc191addaadb1954c1297154450c563a265d98d229d3e2addab13a50c6ec5'
+                   '80f3c326b97fbe216db2b7f74c9c106113f95ba30336ed86c9bbc05d45c67d93'
+                   '12d1a6fb0a085fa6ea23b9e6b4560acf75ba2c7c959c40d3f6ab5b2e24a8d695'
+                   '940d5ff3ba14649bf81608ce38d3c819ec268dd3f705d98e6e88c542ab7eb2d9'
+                   '9888042739218abab30adf606194a66ec43bcd95e2d8043da0f56262cbb2d820'
+                   '323b05f4d16561e358c1bc8f0a344925b6cbf523d16d6c53b63d7f630e5d1bd8'
+                   '0ce8e1ddb2ef5a169dc23e0f31a85e8165fb4e658786ee02c17ce9226168f9f0'
+                   'b59a1b3a6fa2238619810b960869be8fc0ae01e6ae364c00f814e58381ddc279'
+                   'c04b42c7aad33cccedfa837eb25a54edf4b58a9aee57982add8a493966e1821a'
+                   '10a8ac74baa3a8f1d67335df53ece0ad0ec85d821f9d2730c33578bdb8ee46b9'
+                   '937a951538273016aa22207770a4d5e15304de81b1c8ca122a9d435c62707e06')
 
 case $CARCH in
     ${arch[0]})
