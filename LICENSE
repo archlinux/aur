@@ -1,0 +1,27 @@
+Die Desktop-App wurde von der zafaco GmbH im Auftrag der Bundesnetzagentur entwickelt.
+
+© 2018 - 2025 zafaco GmbH. Alle Rechte vorbehalten.
+
+Die Breitbandmessung nutzt folgende Open Source Komponenten:
+
+Nopoll: a websocket toolkit
+Verfügbar unter: https://github.com/ASPLes/nopoll
+Lizenz: LGPLv2.1 (https://github.com/ASPLes/nopoll/blob/master/COPYING)
+Angepasste Version verfügbar unter: https://github.com/zafaco/nopoll
+
+json11: A tiny JSON library for C++11
+Verfügbar unter: https://github.com/dropbox/json11
+Lizenz: MIT (https://github.com/dropbox/json11/blob/master/LICENSE.txt)
+
+jQuery JavaScript Library
+Verfügbar unter: https://github.com/jquery/jquery
+Lizenz: MIT (https://github.com/jquery/jquery/blob/master/LICENSE.txt)
+
+browser-report
+Verfügbar unter: https://github.com/keithws/browser-report
+Lizenz: MIT (https://github.com/keithws/browser-report/blob/master/LICENSE)9
+
+forge
+Verfügbar unter: https://github.com/digitalbazaar/forge
+Lizenz: New BSD License (3-clause) (https://github.com/digitalbazaar/forge/blob/master/LICENSE)
+
