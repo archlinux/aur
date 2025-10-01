@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bouncer
-pkgver=49.0.0
-pkgrel=2
+pkgver=49.1.0
+pkgrel=1
 pkgdesc="An application to help you choose the correct firewall zone for wireless connections."
 arch=('any')
 url="https://github.com/justinrdonnelly/bouncer"
@@ -9,13 +9,15 @@ license=('MPL-2.0')
 depends=(
   'firewalld'
   'gjs'
+  'gtk4'
   'libadwaita'
   'libportal'
+  'libportal-gtk4'
   'networkmanager'
 )
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('de6c995d491b9a9377e00ced63088fa4cd211857fa71f88a4521f618125fd84d')
+sha256sums=('d01e2e682415ab9f7e1397af1f55b7d6cd595e42d23cf40ff8497814b1e4ed42')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
