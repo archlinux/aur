@@ -2,8 +2,8 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
-pkgver=4.15.4
-pkgrel=1
+pkgver=4.16.0
+pkgrel=3
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
 license=('GPL-2.0-or-later')
@@ -29,16 +29,16 @@ provides=('tuxedo-keyboard'
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 #source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz)
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz)
-sha256sums=('b39929e850aab91934b7456c74323ebb6d5dd9b616120dd862c14980fc47c368')
-sha512sums=('d982006ddd652fb90dbaf66c1b976a03019da4aed88fdfd8c99b63efde42ad64e09e2eb573fdb0f63696980f60bf37af2400bb8af5e1320019f244e3377f7755')
+sha256sums=('0a5a08295940d07b1586d0dc83503fda0d7711ca2824198288306fbc8ee70891')
+sha512sums=('0ee82819fc7c7852bac1080bb6f1eb0ce77745ebedad2ddddbb699ba646f8a242f72fd4ba0d1c7d3f80f04097f9c2e953df6c8a9d5c318a5706575391a69cb8e')
 
 package() {
 
   install -Dm644 "${_pkgname%}-v$pkgver"/debian/tuxedo-drivers.dkms "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/dkms.conf"
   sed -i "s/#MODULE_VERSION#/$pkgver/g" "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/dkms.conf"
 
-  install -Dm644 "${_pkgname%}-v$pkgver"/etc/modprobe.d/tuxedo_keyboard.conf -t "$pkgdir/usr/lib/modprobe.d/"
-  install -Dm644 "${_pkgname%}-v$pkgver"/usr/lib/udev/rules.d/*.rules -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/usr/lib/modprobe.d/*.conf -t "$pkgdir/usr/lib/modprobe.d/"
+  install -Dm644 "${_pkgname%}-v$pkgver"/usr/lib/udev/rules.d/*.rules -t "$pkgdir/usr/lib/udev/rules.d/"
   install -Dm644 "${_pkgname%}-v$pkgver"/usr/lib/udev/hwdb.d/*.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
 
   cp -r "${_pkgname%}-v$pkgver"/src/* "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/"
