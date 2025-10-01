@@ -1,5 +1,5 @@
 pkgname=python-ocp
-pkgver=7.8.1.2+r81.g2dd2ce8a
+pkgver=7.8.1.2
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -30,10 +30,6 @@ python-schema
 rapidjson
 python-jinja
 python-toml
-python-setuptools
-python-build
-python-installer
-python-wheel
 openmpi
 python-pyparsing
 qt5-base
@@ -55,31 +51,29 @@ fast_float
 lief
 python-logzero
 double-conversion
-clang
+clang15
 glew
 )
 
 conflicts=(python-ocp-git)
 
-_ocp_fragment="#commit=2dd2ce8a63f1eaffebe27b1fdcb94c6bba6dc61b"
-_pywrap_commit="5e134c526b3bbd1758d8f63e518bc16c3d7ff352"  # comment this to use the latest
+_ocp_fragment="#commit=01055e099a3b1a34da38bb1f5457f06a2d4c7a18"
+_pywrap_commit="9c9ca5b8aa0d9a6687394897815a682b8c319fb0"  # comment this to use the latest
 source=(
   git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
   git+https://github.com/CadQuery/pywrap.git
-  no_progress_bars.patch
-  mpi_cmake.patch
+  no_progress_bars.patch  #::https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch
 )
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=('3ff25c0603d310a68d7ac7f4207e7bb2f7006b038ad312322d141b77c9164d83'
-            'SKIP'
-            'b4c2585efd9c21c6351b6278098b4bcf7395e23b9721c391b3bcb72983b6ebf8'
-            '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0')
+sha256sums=(SKIP
+            SKIP
+            'ce846f278e068bf7cc9f43174283bd9926fbf4062bd0575a70ab895be2294796')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
-#_n_parallel_build_jobs=1
-_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
+_n_parallel_build_jobs=1
+#_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
 #_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
 #_n_parallel_build_jobs=$(nproc --ignore 2)
@@ -116,69 +110,47 @@ prepare(){
   # ensure any opencascade at /usr isn't used here
   sed 's|CONDA_PREFIX|_opencascade_install_prefix|g' -i pywrap/FindOpenCascade.cmake
 
+  # disable progress bars
   cd pywrap
-  cat ../../no_progress_bars.patch | patch -p1  # disable progress bars
-  cat ../../mpi_cmake.patch | patch -p1  # fix mpi detection issue
+  cat ../../no_progress_bars.patch | patch -p1
 }
 
 build() {
-  python -m venv --without-pip --system-site-packages --clear venv
-  source venv/bin/activate
+  cd OCP
 
-  cd OCP/pywrap
-  python -m build --wheel --no-isolation
-  python -m installer dist/*.whl
-  #cp -r dist "${srcdir}/."
-  cd -
-  #rm -rf OCP/pywrap
+  # sneak in python-clang15
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  ln -s "${site_packages}"/clang15 clang
+  export PYTHONPATH="${srcdir}/OCP:${PYTHONPATH}"
 
-  local cmake_options=(
-    -B build_dir
-    -D CMAKE_BUILD_TYPE=Release
-    -S OCP
-    -G Ninja
-    -W no-dev
-  )
-
-  msg2 "Preparing OCP..."
-  cmake "${cmake_options[@]}"
-  cmake --build build_dir --verbose -j${_n_parallel_build_jobs}
-  msg2 "OCP prepared."
-
-  local cmake_options2=(
-    -B build_dir2
-    -D CMAKE_BUILD_TYPE=Release 
-    -S build_dir/OCP
-    -G Ninja
-    -W no-dev
-  )
+  msg2 "Setting up build, dumping symbols, then generating bindings..."
+  PATH="/usr/lib/llvm15/bin/:${PATH}" LD_LIBRARY_PATH="/usr/lib/llvm15/lib:${LD_LIBRARY_PATH}" cmake \
+    -W no-dev \
+    -G Ninja \
+    -D CMAKE_BUILD_TYPE=Release \
+    -B build_dir \
+    -S .
 
   msg2 "Building OCP..."
-  cmake "${cmake_options2[@]}"
-  cmake --build build_dir2 --verbose -j${_n_parallel_build_jobs}
+  cmake --build build_dir -j${_n_parallel_build_jobs}
   msg2 "OCP built."
-  
-  deactivate
 }
 
 check() {
-  source venv/bin/activate
-  
+  cd OCP
+
   # prevent the current environment from skewing the testing
   # comment these if using community occt package
   #unset "${!CSF@}"
   #unset "${!DRAW@}"
   #unset CASROOT
 
-  LD_DEBUG=libs PYTHONPATH="${srcdir}/build_dir2" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
-  
-  deactivate
+  LD_DEBUG=libs PYTHONPATH="${srcdir}/build_dir/OCP" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
 }
 
 package(){
-  #python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir2/OCP.*.so
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 OCP/LICENSE
+  cd OCP
+  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP/OCP.*.so
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
 
