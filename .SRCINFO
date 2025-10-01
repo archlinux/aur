@@ -1,12 +1,12 @@
 pkgbase = cariddi
 	pkgdesc = Take a list of domains, crawl urls and scan for endpoints, secrets, api keys, file extensions, tokens and more
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/edoardottt/cariddi
 	arch = any
 	license = GPL-3.0
 	makedepends = go
-	source = cariddi-1.4.1.tar.gz::https://github.com/edoardottt/cariddi/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = d5870e294b7d9831fd95c19592bc5e5b615a6e07e9bba1139e288b42ddf5005f
+	source = cariddi-1.4.3.tar.gz::https://github.com/edoardottt/cariddi/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = cc8d9202af6e13fc44a79e6d4380592df3c28bdf7c078a92ff0f62732b9c6882
 
 pkgname = cariddi
