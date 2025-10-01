@@ -1,8 +1,8 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=vt-cli
-_gitcommit=4ece259925ad5b08ea5883d595437e57ce2e3d6e
+_gitcommit=eb5dbbc0f14cb654a76c2d24625a17c08b4949d6
 epoch=1
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 #source=("https://github.com/VirusTotal/vt-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 source=("$pkgname"::git+https://github.com/VirusTotal/vt-cli#commit="${_gitcommit}")
-sha256sums=('71a2a57a0c1b636710cde6f1de8025429c74fd089b51f9bc9544f69a6710127a')
+sha256sums=('79726e2563c32a9cab8979bac501f83127f1ab47e1711e862422f0f140062187')
 
 build() {
     #cd "$pkgname-$pkgver"
