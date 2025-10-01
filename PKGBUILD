@@ -1,4 +1,4 @@
-# Maintainer: adogecheems <adogecheems@outlook.com>
+# Maintainer: adogecheems <adogecheems at outlook dot com>
 pkgname=monika-after-story
 pkgver=0.12.17
 pkgrel=9
