@@ -4,7 +4,7 @@
 _pkgname=cwtch
 pkgname=$_pkgname-bin
 
-pkgver=1.15.5
+pkgver=1.16.1
 pkgrel=1
 
 pkgdesc="UI for A decentralized, privacy-preserving, multi-party messaging protocol client (binary distribution)"
@@ -16,10 +16,10 @@ license=('MIT')
 optdepends=(
     'tor: use system tor instead of packaged'
 )
-source_x86_64=("https://git.openprivacy.ca/$_pkgname.im/$_pkgname-ui/releases/download/v$pkgver/cwtch-v$pkgver.tar.gz")
-sha512sums_x86_64=('a61118adc2a5459f12e18fbd4b8fa67b7990781cb42b25e8a53c68886b36bdca8c3b844ff2c078bc593109c2c95523f01843c027785dfd8f45a629c27f71e2ed')
+source_x86_64=("https://git.openprivacy.ca/$_pkgname.im/$_pkgname-ui/releases/download/v$pkgver/cwtch-ui-v$pkgver.tar.gz")
+sha512sums_x86_64=('cbcf410878c32b0e0ae4951c69f1988e0cd4501d0758c69072ba7c11d0f91a974febc4cc8fc65a6d6112eb18fc2a2b7b594153d6f37b27dba0df23277b63cc23')
 
 package() {
-    cd "$srcdir/$_pkgname"
-    INSTALL_PREFIX="$pkgdir/usr" DESKTOP_PREFIX="/usr" ./install.sh
+    cd "$srcdir/$_pkgname-ui"
+    INSTALL_PREFIX="$pkgdir/usr" DESKTOP_PREFIX="/usr" ./linux/install.sh
 }
