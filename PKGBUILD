@@ -10,7 +10,12 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/getezy/ezy"
 license=('MPL-2.0')
 
-depends=()
+depends=(
+    'at-spi2-core' 'cairo' 'libdrm' 'libcups' 'gtk3'
+    'alsa-lib' 'libxcb' 'libxkbcommon' 'nss' 'glibc' 'libx11'
+    'pango' 'gcc-libs' 'nspr' 'expat' 'hicolor-icon-theme' 'mesa'
+    'libxcomposite' 'glib2' 'libxdamage' 'libxrandr' 'libxfixes'
+)
 provides=('ezy')
 conflicts=('ezy' 'ezy-bin' 'ezy-git')
 replaces=('ezy' 'ezy-bin' 'ezy-git')
