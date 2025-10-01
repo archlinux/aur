@@ -1,4 +1,0 @@
-[ollama-python]
-source = "git"
-git = "https://github.com/ollama/ollama-python.git"
-prefix = "v"
