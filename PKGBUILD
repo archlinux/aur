@@ -95,11 +95,6 @@ prepare() {
   prepare_submodule
 # fix lib2geom header location
   sed -E 's:#include "(bezier-utils.h|sbasis-to-bezier.h)":#include <2geom/\1>:' -i src/ui/tools/pencil-tool.cpp
-  sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/{tool{/path-manipulator,s/object-picker-tool},dialog/{symbols,extensions-gallery}}.cpp
-# sed -E '/^#include/s/(forward.h)/2geom\/\1/' -i src/ui/tool/path-manipulator.cpp
-  sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/{dialog/{object-attributes,extensions-gallery},tools/object-picker-tool}.cpp
-  sed -E '/^#include/s/"(angle.h)/"2geom\/\1/' -i src/ui/dialog/document-properties.cpp
-  sed -E '/^#include/s/"(transforms.h)/"2geom\/\1/' -i src/ui/widget/gradient-editor.cpp
 }
 
 pkgver() {
