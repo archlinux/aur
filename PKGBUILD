@@ -4,7 +4,7 @@ _pkgauthor=dolthub
 _pkgname=doltgresql
 _pkgexec=doltgres
 pkgname=${_pkgname}-bin
-pkgver=0.52.0
+pkgver=0.52.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Version Controlled PostgreSQL"
@@ -21,8 +21,8 @@ source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.tar.gz")
 sha256sums=('fb042767139e0690c214fc314c4760e94c37b2a1aa7e4bcf4c5a42e2747f4ef9')
-sha256sums_x86_64=('176a5dda5e27967a6981273d52a2b6583cbdccba95453d435328c34057b40e8c')
-sha256sums_aarch64=('4743940cf66a41e7c5a80cedd3f7cee0d9a7346396c58f8c564f03ad6dd43a4d')
+sha256sums_x86_64=('8367ff290cd685006037d49075cf98f6629cb624ce95b960998e445531f5abeb')
+sha256sums_aarch64=('f701cb3fa6a522cb278a820b2cc29053455da89ed8d41c576c3139ea32f83629')
 
 case ${CARCH} in
 
