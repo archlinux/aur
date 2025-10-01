@@ -1,6 +1,6 @@
 pkgbase = python-glue-core
 	pkgdesc = Core library for the glue multidimensional data visualization project
-	pkgver = 1.23.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = http://glueviz.org
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-glue-core
 	makedepends = python-scipy
 	makedepends = python-shapely
 	makedepends = ipython
-	source = https://files.pythonhosted.org/packages/source/g/glue_core/glue_core-1.23.0.tar.gz
-	sha256sums = 066a6c4b419f4b2ee21254cd59ce328ae755834afbab59fcd28b7ce70c7fe93c
+	source = https://files.pythonhosted.org/packages/source/g/glue_core/glue_core-1.24.0.tar.gz
+	sha256sums = 38fce838a8adac6edd634db07a71f08bab512f12dc10c28abc3e3de6092b32e4
 
 pkgname = python-glue-core
 	depends = python>=3.10
