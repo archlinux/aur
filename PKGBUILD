@@ -19,6 +19,7 @@ sha256sums=('b24813e116326f1f3d896ab5e07eaea481b1e144f816e2fdb42c05c59c3ae135'
 package() {
   cd "${pkgdir}"
   rpmextract.sh "${srcdir}/lobehub-desktop-beta-1.133.2.x86_64.rpm"
+  cd "${srcdir}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 lobehub-desktop-beta.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/lobehub-desktop-beta.png"
 }
