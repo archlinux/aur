@@ -4,7 +4,7 @@ pkgver=17.0.01
 pkgrel=1
 pkgdesc="GNU Unifont Glyphs (PCF version)"
 arch=('any')
-url="https://unifoundry.com/unifont/index.html"
+url="https://unifoundry.com/unifont/"
 license=('OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.pcf.gz"{,.sig}
         "unifont-LICENSE.txt::https://unifoundry.com/LICENSE.txt")
