@@ -1,5 +1,5 @@
 pkgname=rustmius
-pkgver=1.3.4
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Full local Termius alternative for Linux"
 arch=('x86_64')
