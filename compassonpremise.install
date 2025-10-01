@@ -1,0 +1,42 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/Compass On-premise/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+
+	# AppArmor profile setup
+	if command -v apparmor_parser >/dev/null 2>&1; then
+	    if [ ! -e /etc/apparmor.d/compassonpremise ]; then
+		cat << EOF > /etc/apparmor.d/compassonpremise
+# This profile allows everything and only exists to give the
+# application a name instead of having the label "unconfined"
+
+include <tunables/global>
+
+profile compassonpremise /opt/Compass\ On-premise/compassonpremise flags=(unconfined) {
+	userns,
+
+	# Site-specific additions and overrides. See local/README for details.
+        include if exists <local/compassonpremise>
+}
+EOF
+
+	        apparmor_parser -r /etc/apparmor.d/compassonpremise
+	    fi
+	fi
+
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	update-desktop-database -q
+}
