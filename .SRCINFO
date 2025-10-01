@@ -1,0 +1,21 @@
+pkgbase = wappalyzer-next-git
+	pkgdesc = wappalyzer alternative based on wappalyzer browser extension
+	pkgver = r43.dd1651f
+	pkgrel = 1
+	url = https://github.com/s0md3v/wappalyzer-next
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-huepy
+	depends = python-selenium
+	depends = python-tldextract
+	depends = python-beautifulsoup4
+	depends = python-dnspython
+	provides = wappalyzer
+	source = git+https://github.com/s0md3v/wappalyzer-next
+	sha256sums = SKIP
+
+pkgname = wappalyzer-next-git
