@@ -1,4 +1,4 @@
-[python-llm-openrouter]
+[python-llm-gemini]
 source = "github"
-github = "simonw/llm-openrouter"
+github = "simonw/llm-gemini"
 use_latest_release = true
