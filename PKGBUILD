@@ -1,7 +1,7 @@
 # Maintainer: Mike Pento <mpento@darkforge.net>
 
 pkgname=enlightenment16
-pkgver=1.0.30
+pkgver=1.0.31
 _themever=1.0.3
 pkgrel=1
 pkgdesc="A fast, flexible, and very extensible Window Manager"
@@ -12,7 +12,7 @@ depends=('libxinerama' 'imlib2' 'perl' 'pango' 'libxcomposite'
          'libxrandr' 'libpulse' 'libxdamage')
 source=(http://downloads.sourceforge.net/sourceforge/enlightenment/e16-${pkgver}.tar.gz
         http://downloads.sourceforge.net/enlightenment/e16-themes-${_themever}.tar.gz)
-sha1sums=('ba54f7026d8ccdea97a63779d05eaac1c56e5e79'
+sha1sums=('5f403eda4caa3aedabd5344042cebd2c0795a251'
           'a03dfcf2736d4b8c6428bb763aa33ebfdda21697')
 
 build() {
