@@ -1,7 +1,7 @@
 # Maintainer: Jonas Ohland <jonas.ohland@gmail.com>
 pkgname=mxl-git
 pkgver=0.7.5_ea3a570
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic Media Facility: Media Exchange Layer"
 arch=("x86_64" "aarch64")
 depends=("util-linux-libs" "spdlog" "fmt" "gstreamer" "gst-plugins-base")

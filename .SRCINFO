@@ -1,7 +1,7 @@
 pkgbase = mxl-git
 	pkgdesc = Dynamic Media Facility: Media Exchange Layer
 	pkgver = 0.7.5_ea3a570
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dmf-mxl/mxl
 	arch = x86_64
 	arch = aarch64
