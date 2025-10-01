@@ -1,0 +1,13 @@
+pkgbase = rtimelog
+	pkgdesc = Rust program to track working hours and calculate surplus using SQLite
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/umpire274/rtimelog
+	arch = x86_64
+	license = MIT
+	provides = rtimelog
+	conflicts = rtimelog
+	source = rtimelog-0.3.6.tar.gz::https://github.com/umpire274/rtimelog/releases/download/v0.3.6/rtimelog-0.3.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 31eef8ca826db6394e94eebe00bd78fd38a94b454a6db679cbc1a8c11c126120
+
+pkgname = rtimelog
