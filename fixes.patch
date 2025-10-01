@@ -1,0 +1,24 @@
+diff --git a/src/global/Diff.h b/src/global/Diff.h
+index 2d750335..a0b8679a 100644
+--- a/src/global/Diff.h
++++ b/src/global/Diff.h
+@@ -6,6 +6,7 @@
+ 
+ #include <cassert>
+ #include <cmath>
++#include <cstdint>
+ #include <iostream>
+ #include <map>
+ #include <memory>
+diff --git a/src/global/thread_utils.h b/src/global/thread_utils.h
+index 8f3ca6ea..1846ddf7 100644
+--- a/src/global/thread_utils.h
++++ b/src/global/thread_utils.h
+@@ -7,7 +7,6 @@
+ #include "progresscounter.h"
+ 
+ #include <exception>
+-#include <execution>
+ #include <future>
+ #include <thread>
+ 
