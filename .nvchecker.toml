@@ -1,17 +1,19 @@
 [purrcrypt]
-source     = "cmd"
-cmd        = """
+source = "cmd"
+cmd = """
   bash -lc '
-    # make a throw-away bare clone so we can count commits
     tmp=$(mktemp -d)
     git clone --quiet --bare https://github.com/vxfemboy/purrcrypt.git "$tmp"
 
-    # count commits, then get 7-char short-hash
-    count=$(git --git-dir="$tmp" rev-list --count HEAD)
-    short=$(git --git-dir="$tmp" rev-parse --short=7 HEAD)
+    # Get hash of last commit that touched package-relevant files (including merges)
+    last_commit=$(git --git-dir="$tmp" log -1 --first-parent --format="%H" -- Cargo.toml Cargo.lock src/ LICENSE purrcrypt-demo.gif)
 
-    # print in r{count}.{commit} format
-    printf "r%s.%s\n" "$count" "$short"
+    if [ -n "$last_commit" ]; then
+      count=$(git --git-dir="$tmp" rev-list --count "$last_commit")
+      short=$(git --git-dir="$tmp" rev-parse --short=7 "$last_commit")
+      printf "r%s.%s\n" "$count" "$short"
+    fi
+
     rm -rf "$tmp"
   '
 """
