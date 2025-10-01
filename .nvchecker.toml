@@ -1,0 +1,5 @@
+[nym-binaries-bin]
+source = "git"
+git = "https://github.com/nymtech/nym.git"
+prefix = "nym-binaries-v"
+include_regex = "nym-binaries-v.+"
