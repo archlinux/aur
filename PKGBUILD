@@ -1,8 +1,8 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.2.3.r38.gca8553e
-_jdkver=25_36
+pkgver=2.2.3.r40.g9e33861
+_jdkver=22.0.2_9
 _jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
@@ -38,7 +38,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'ee04de95ab9da7287d40bd2173076ecc2a6dd662f007bedfc6eb0380c0ef90e8'
+    '05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43'
     'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1'
 )
 
