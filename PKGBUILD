@@ -1,7 +1,7 @@
 # Maintainer: Magus <packaging@example.com>
 pkgname=magelab-bin
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Mage Lab is a user-centric AI interface with local reasoning and tools"
 arch=('x86_64')
 url="https://github.com/majesticio/magelab"
@@ -13,7 +13,7 @@ options=('!strip' '!emptydirs')
 source=("LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE")
 source_x86_64=("magelab_${pkgver}_amd64.deb::https://cdn.crabnebula.app/download/sapient-artifice/mage-lab/latest/platform/deb-x86_64")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('eddd0f869cb5ba18f7c5e41b3d2581f01e01ebe0201921d2ab049b93b0211fd8')
+sha256sums_x86_64=('eddd0f869cb5ba18f7c5e41b3d2581f01e01ebe0201921d2ab049b93b0211fd2')
 
 prepare() {
   cd "${srcdir}"
