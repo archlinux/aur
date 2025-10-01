@@ -1,12 +1,12 @@
 # Maintainer: Magus <packaging@example.com>
 pkgname=magelab-bin
 pkgver=0.7.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Mage Lab is a user-centric AI interface with local reasoning and tools"
 arch=('x86_64')
 url="https://github.com/majesticio/magelab"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator-glib')
+depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 provides=('magelab')
 conflicts=('magelab')
 options=('!strip' '!emptydirs')
