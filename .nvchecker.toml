@@ -1,0 +1,4 @@
+[furtherance-bin]
+source = "git"
+git = "https://github.com/unobserved-io/Furtherance.git"
+prefix = "v"

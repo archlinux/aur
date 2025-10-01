@@ -1,0 +1,12 @@
+pkgbase = furtherance-bin
+	pkgdesc = Track your time without being tracked
+	pkgver = 25.3.0
+	pkgrel = 1
+	url = https://github.com/unobserved-io/Furtherance
+	arch = x86_64
+	license = GPL-3.0
+	options = !debug
+	source = https://github.com/unobserved-io/Furtherance/releases/download/25.3.0/furtherance-25.3.0-amd64.deb
+	sha256sums = 120d698fcc751ff7cec907f8d11bfa3db2bebf00376d3ede6c708724272a1b24
+
+pkgname = furtherance-bin
