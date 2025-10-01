@@ -1,0 +1,24 @@
+pkgbase = python-llm-mistral
+	pkgdesc = LLM plugin providing access to Mistral models using the Mistral API
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/simonw/llm-mistral
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-inline-snapshot
+	checkdepends = python-pytest
+	checkdepends = python-pytest-recording
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-httpx
+	depends = python-httpx-sse
+	depends = python-llm
+	depends = python-ijson
+	depends = python-pydantic
+	source = llm-mistral-0.15.tar.gz::https://github.com/simonw/llm-mistral/archive/0.15.tar.gz
+	sha512sums = c19a3647856f5160faff1668edd89c5d565e7b1ffd4d8ec747a963bb219883c953a4a712c1abb397c9f1c6fd907a4e7bb13ab28e9551da33e3b8ca0b4499c093
+
+pkgname = python-llm-mistral
