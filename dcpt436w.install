@@ -1,0 +1,89 @@
+# The install script source is from rpm and deb packet, control.tar.gz
+#
+# NOTE:
+# since Arch Linux doesn't have SELinux enabled by default, 
+# some parts of this script have been comment out. 
+# if you've manually enabled SELinux, you can uncomment
+# these lines before installing this package
+#
+#
+install_script () {
+ #postinst
+  ln -s /opt/brother/Printers/dcpt436w/lpd/x86_64/brdcpt436wfilter           /opt/brother/Printers/dcpt436w/lpd/brdcpt436wfilter
+  ln -s /opt/brother/Printers/dcpt436w/lpd/x86_64/brprintconf_dcpt436w       /opt/brother/Printers/dcpt436w/lpd/brprintconf_dcpt436w
+
+  /opt/brother/Printers/dcpt436w/inf/setupPrintcapij dcpt436w -i  
+  /opt/brother/Printers/dcpt436w/cupswrapper/cupswrapperdcpt436w
+  chmod 755 /opt/brother/Printers/dcpt436w/cupswrapper
+
+  # SELinux lines
+  #if [ "$(which semanage 2> /dev/null)" != '' ];then
+  #  semanage fcontext -d -t cupsd_rw_etc_t '/opt/brother/Printers/dcpt436w/inf(/.*)?'
+  #  semanage fcontext -d -t bin_t          '/opt/brother/Printers/dcpt436w/lpd(/.*)?'
+  #  semanage fcontext -d -t bin_t          '/opt/brother/Printers/dcpt436w/cupswrapper(/.*)?'
+  #  if [ "$(which restorecon 2> /dev/null)" != '' ];then
+  #    restorecon -R /opt/brother/Printers/dcpt436w
+  #  fi
+  #fi
+
+}
+
+post_install () {
+  install_script
+
+  echo ""
+  echo "### POST INSTALLATION MESSAGE ### "
+  echo ""
+  echo "FUTHER STEPS: "
+  echo ""
+  echo "   After installation/upgrade, it's recommended to restart cups, "
+  echo "   If you didn't start it yet, then enable cups service/socket with: "
+  echo "     systemctl enable cups.service (or cups.socket) "
+  echo "   OR "
+  echo "   restart cups with: "
+  echo "     systemctl restart cups.service"
+  echo ""
+  echo ""
+  echo "NOTE: "
+  echo "  The printer has been added to the CUPS as USB connected. "
+  echo "  If you want to use WiFi network, setup the WiFi connection on the printer and"
+  echo "  change connection type in CUPS. Connection string:"
+  echo "    lpd://xxx.xxx.xxx.xxx/BINARY_P1"
+  echo "  where xxx.xxx.xxx.xxx is printer IP address "
+  echo ""
+  echo ""
+  echo "NOTE: "
+  echo "  Setup sane-airscan package to make the scanner avaliable for the SANE "
+  echo "  OR "
+  echo "  setup brscan5 packege and run command: "
+  echo "    brsaneconfig5 -a name="Brother DCP-T436W" model=DCP-T436W ip=xxx.xxx.xxx.xxx"
+  echo "  where xxx.xxx.xxx.xxx is printer IP address "
+  echo ""
+}
+
+post_upgrade () {
+  install_script
+}
+
+pre_remove() {
+  /opt/brother/Printers/dcpt436w/cupswrapper/cupswrapperdcpt436w -e
+  /opt/brother/Printers/dcpt436w/inf/setupPrintcapij dcpt436w -e
+  unlink /opt/brother/Printers/dcpt436w/lpd/brdcpt436wfilter
+  unlink /opt/brother/Printers/dcpt436w/lpd/brprintconf_dcpt436w
+}
+
+post_remove() {
+  if [[ -f "/tmp/dcpt436w_latest_print_info" ]] ; then
+    rm -f /tmp/dcpt436w_latest_print_info
+  fi
+  
+  # SELinux lines
+  #if [ "$(which semanage 2> /dev/null)" != '' ];then
+  #  semanage fcontext -d -t cupsd_rw_etc_t '/opt/brother/Printers/dcpt436w/inf(/.*)?'
+  #  semanage fcontext -d -t bin_t          '/opt/brother/Printers/dcpt436w/lpd(/.*)?'
+  #  semanage fcontext -d -t bin_t          '/opt/brother/Printers/dcpt436w/cupswrapper(/.*)?'
+  #  if [ "$(which restorecon 2> /dev/null)" != '' ];then
+  #   restorecon -R /opt/brother/Printers/dcpt436w
+  #  fi
+  #fi
+}
