@@ -1,7 +1,7 @@
 # Maintainer: BNDays27 <brionical@proton.me>
 _pkgname=crosspatch
 pkgname=$_pkgname-bin
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
 install=crosspatch.install
 pkgdesc="(UNNOFFICIAL PACKAGE) A mod Manager for Sonic Racing: CrossWorlds"
@@ -10,9 +10,9 @@ url="https://github.com/NickPlayzGITHUB/CrossPatch"
 license=('GPL')
 depends=()
 provides=("crosspatch")
-source=("$_pkgname-$pkgver::$url/releases/download/$pkgver/CrossPatch_linux.bin"
+source=("$_pkgname-$pkgver::$url/releases/download/1.0.8/CrossPatch_Linux.${pkgver}bin"
 	"https://raw.githubusercontent.com/NickPlayzGITHUB/CrossPatch/refs/heads/main/CrossP.png")
-sha256sums=("96a8603ba51f88695b5ba11761d42f03f2c2e10c882416e04528d0d1b32e6c6c"
+sha256sums=("610906e951221d76f2c5b80728dd64af63d2dd1f0c92f88e1aac5436f7466b5f"
 	SKIP)
 
 package() {
