@@ -1,8 +1,8 @@
 # Maintainer: Guilherme leonsombrio244@gmail.com
 
 pkgname=clilog-git
-pkgver=0.2.r2.g2dd2244 
-pkgrel=2  # 👈 MUDA PRA 2
+pkgver=0.2.r2.g2dd2244
+pkgrel=2
 pkgdesc="CLI To-do list manager built in Bash with TUI and Python for Web interface support, adhering to XDG Base Directory Specification."
 url="https://github.com/simeulinuxkaliaiwr/clilog"
 license=('MIT')
