@@ -1,5 +1,6 @@
 [Desktop Entry]
 Categories=Game;
+Comment=The YARC (Yet Another Rhythm Company) launcher.
 Exec=yarc-launcher
 Icon=yarc-launcher
 Name=YARC Launcher
