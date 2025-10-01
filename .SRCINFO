@@ -1,0 +1,23 @@
+pkgbase = proton-mail-git
+	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
+	pkgver = r49800.69d7bdb
+	pkgrel = 1
+	url = https://proton.me/mail
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nodejs-lts
+	makedepends = yarn
+	depends = bash
+	depends = electron35
+	depends = hicolor-icon-theme
+	provides = proton-mail
+	conflicts = proton-mail
+	source = ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git
+	source = proton-mail.desktop
+	source = proton-mail.sh
+	b2sums = SKIP
+	b2sums = dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be
+	b2sums = 21605b0d31062d2b355e8422f319521a775efd41ef34571a114fd7f9f1ba07b39b4a27998fd11d2039baa7ba0650b804dfd41e0d591ead622fce68243dca1d88
+
+pkgname = proton-mail-git
