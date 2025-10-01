@@ -14,7 +14,6 @@ sha256sums=('cabb1cfdfc247b5d008c6c5f94e13548bcefeba874aae9a9d45aa95ae1c085ec')
 
 prepare() {
     cd "$pkgname"
-    # export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
