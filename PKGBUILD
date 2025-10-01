@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=proton-pass
-pkgver=1.32.7.0
+pkgver=1.32.9
 pkgrel=1
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('rust' 'yarn')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
         "proton-pass.desktop")
-sha256sums=('b66802cb6a8239ee8e535d72f668cae7ebd5996c1db826cd79799fd11ab91739'
+sha256sums=('301526381982a5197519ff47419e4ca4608040080c9e772591157ab5456e15da'
             '501210c67fc921a2fb4ba591980192ad1da60e26fb6b2fd7d68aad4075eafac7')
 
 prepare() {
