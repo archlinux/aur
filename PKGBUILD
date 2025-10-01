@@ -1,6 +1,6 @@
 # Maintainer: danieledema
 pkgname=zettli
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A fuzzy CLI note manager with fzf + bat + ripgrep"
 arch=('any')
