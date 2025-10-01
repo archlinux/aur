@@ -1,0 +1,13 @@
+diff -up src/Net-Interface-1.016/ni_getifaddrs.c.orig src/Net-Interface-1.016/ni_getifaddrs.c
+diff -up src/Net-Interface-1.016/ni_linuxproc.c.orig src/Net-Interface-1.016/ni_linuxproc.c
+--- src/Net-Interface-1.016/ni_linuxproc.c.orig	2009-03-09 02:43:34.000000000 -0600
++++ src/Net-Interface-1.016/ni_linuxproc.c	2025-10-01 02:29:03.510000000 -0600
+@@ -348,7 +348,7 @@ static ni_flav_linuxproc_developer(void
+     return 0;
+ }
+ 
+-static void * returnull() { return NULL; }
++static void * returnull(int, void *) { return NULL; }
+ 
+ static struct ni_ifconf_flavor ni_flavor_linuxproc = {
+     .ni_type		= NI_LINUXPROC,

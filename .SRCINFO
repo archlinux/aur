@@ -1,7 +1,7 @@
 pkgbase = perl-net-interface
 	pkgdesc = Net::Interface - Perl extension to access network interfaces
 	pkgver = 1.016
-	pkgrel = 3.4
+	pkgrel = 4
 	url = https://metacpan.org/release/Net-Interface
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,11 @@ pkgbase = perl-net-interface
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MI/MIKER/Net-Interface-1.016.tar.gz
 	source = inc.patch
+	source = llx.patch
+	source = ptr.patch
 	md5sums = 339079deafeb8720c569bae51dac4a0d
 	md5sums = 3240db69ec69d45d4a9f768171f6f24e
+	md5sums = db3b874244cd504532edd515ec864d04
+	md5sums = 14b61b908c54c4a4d45a42ebe7968677
 
 pkgname = perl-net-interface

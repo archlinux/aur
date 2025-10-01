@@ -1,0 +1,12 @@
+diff -up src/Net-Interface-1.016/ni_getifaddrs.c.orig src/Net-Interface-1.016/ni_getifaddrs.c
+--- src/Net-Interface-1.016/ni_getifaddrs.c.orig	2025-09-27 23:58:02.540000000 -0600
++++ src/Net-Interface-1.016/ni_getifaddrs.c	2025-09-27 23:58:09.360000000 -0600
+@@ -259,7 +259,7 @@ ni_getifaddrs_dump(int flavor, struct if
+ 
+ 	if (af == AF_INET) {
+ 
+-    	    printf("flags=%0llx<",flags);
++    	    printf("flags=%0lx<",flags);
+ 	    if (flags & IFF_UP)
+ 		printf("UP ");
+ 	    else
