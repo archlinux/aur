@@ -1,7 +1,7 @@
 pkgname=clash-nyanpasu-nightly-bin
 _pkgname=clash-nyanpasu
-pkgver=2.0.0_alpha+1b07de1
-_pkgver=2.0.0-alpha+1b07de1
+pkgver=2.0.0_alpha+d2e8a7c
+_pkgver=2.0.0-alpha+d2e8a7c
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64')
