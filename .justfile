@@ -51,3 +51,9 @@ commit:
 
   latest="$(nvchecker -c .nvchecker.toml --logger json | jq -r '.version')"
   git commit -am "chore: bump to sui v$latest"
+
+install:
+  makepkg -si
+
+clean:
+  rm -rf *.tgz *.zst ./src ./pkg
