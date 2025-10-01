@@ -1,16 +1,16 @@
 pkgbase = switchtube-downloader-bin
 	pkgdesc = A lightweight CLI to download SwitchTube videos
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/domi413/SwitchTube-Downloader
 	license = MIT
 	conflicts = SwitchTube-Downloader
 	provides = SwitchTube-Downloader
 	arch = aarch64
-	source_aarch64 = https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.3.2/switchtube-downloader_linux_arm64.zip
-	sha256sums_aarch64 = b90b50d1ee83adacdce7acaf6ae7521d4533185fff81806278bcda79ab6674dd
+	source_aarch64 = https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.3.3/switchtube-downloader_linux_arm64.zip
+	sha256sums_aarch64 = 3c3446c67fe24f449d6fdc56f98adca32a4f94bae09bf00d165d61aa2833680a
 	arch = x86_64
-	source_x86_64 = https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.3.2/switchtube-downloader_linux_amd64.zip
-	sha256sums_x86_64 = 2aa9afdc6a6927894a266844c9c60ece333bc1ff846877e802947ce83a8fc13a
+	source_x86_64 = https://github.com/domi413/SwitchTube-Downloader/releases/download/v0.3.3/switchtube-downloader_linux_amd64.zip
+	sha256sums_x86_64 = 09c4ff243228fdd7e690aa4d3c7c179d8b944cc6db27ab1031790a7b4e22cda9
 	
 pkgname = switchtube-downloader-bin
