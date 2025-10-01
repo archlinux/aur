@@ -1,7 +1,7 @@
 pkgbase = outfieldr
 	pkgdesc = TLDR client in zig
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ve-nt/outfieldr
 	arch = x86_64
 	license = MIT
