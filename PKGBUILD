@@ -4,7 +4,7 @@
 _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
-pkgver=1.0.9
+pkgver=1.1.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc='wayland application runner'
@@ -49,8 +49,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'a1d7ecfb1900ac16db3ce3e65c1ee6d45ae92dce6fb58722fd4fbccb3b4335e9'
-            '374f619b28d9617719790f7256e0f266b0a90bcc03afaddb09f3e15094d9bdd2'
+            '20231ca707cfd59de9aa2618c371060172d98df1a8c89bfffe9c65e969296605'
+            'b7a000f786b1bd6910ac9dfe88a93fc66cd331ffdfdd5865d82962a2134766f9'
             '84a0cb659db1db2dff55117cb00b3681cafb56248da48e5c2ddb66ca3ae999ec'
             '4b5a6bd9074ae07f5d05bdebb26f2922f710b2b5d8aaddba6da5c5d06c21d1e5'
             '9da14438e381542cb56aae33ca76e04caa6f39f2b3e577f5f188954819126bff'
@@ -61,10 +61,10 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0f587b5f21467d1e3f931b661796a77102a19ee3c0b1cd7776e56f935190aad4'
             'e9df9bde7c1f291bdb034537830428071f15035913ad78e9cd7093406020a561'
             '0f587b5f21467d1e3f931b661796a77102a19ee3c0b1cd7776e56f935190aad4'
-            'a7a4dd317c70359056d807e5f33598454fae2d2a516c50a85e5f449ed3062a0e'
+            'f13b0febe069c92ead082fbb9bea16519ed976923df4f5912aac8b9d3dd182d4'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             'da6000c5c99d5eabb0f043db1f2261039286e99b434d2d0e2515dd57bf899a55')
-sha256sums_x86_64=('734f6ee482d85501446de8c7bc44ff3c3347374e0481de667e10e31cb3febcc1')
+sha256sums_x86_64=('2ef8dab4418b0ee635464705e5c82b60c0dbaf64c65d3f6f07fcdfbaaba3a9c7')
 
 prepare() {
     cd "${srcdir}" || exit 1
