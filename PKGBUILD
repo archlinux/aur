@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-git
-pkgver=b5123.r1.bc091a4dc
+pkgver=b6663.r1.c8dedc999
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('ggml-git')
+depends=('libggml-git')
 makedepends=(
   'cmake'
   'git'
