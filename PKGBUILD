@@ -1,7 +1,7 @@
 # Maintainer: Magus <packaging@example.com>
 pkgname=magelab-bin
 pkgver=0.7.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Mage Lab is a user-centric AI interface with local reasoning and tools"
 arch=('x86_64')
 url="https://github.com/majesticio/magelab"
@@ -52,10 +52,10 @@ if [[ -z "${MAGELAB_ENABLE_DMABUF:-}" ]]; then
 fi
 
 if [[ -n "${MAGELAB_SKIP_DMABUF_FALLBACK:-}" || -n "${WEBKIT_DISABLE_DMABUF_RENDERER:-}" ]]; then
-  exec "${REAL_BIN}" "$@"
+  exec -a magelab "${REAL_BIN}" "$@"
 fi
 
-if "${REAL_BIN}" "$@"; then
+if ( exec -a magelab "${REAL_BIN}" "$@" ); then
   exit 0
 fi
 status=$?
@@ -63,7 +63,7 @@ status=$?
 if [[ ${status} -eq 139 && -z "${MAGELAB_DMABUF_RETRY:-}" ]]; then
   export MAGELAB_DMABUF_RETRY=1
   export WEBKIT_DISABLE_DMABUF_RENDERER=1
-  exec "${REAL_BIN}" "$@"
+  exec -a magelab "${REAL_BIN}" "$@"
 fi
 
 exit ${status}
