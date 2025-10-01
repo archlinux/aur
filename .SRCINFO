@@ -1,5 +1,5 @@
 pkgbase = brother-dcpt436w
-	pkgdesc = Driver for the Brother DCP-T436W
+	pkgdesc = Driver for the Brother DCP-T436W wifi multifuncional printer
 	pkgver = 3.6.1
 	pkgrel = 1
 	install = dcpt436w.install
