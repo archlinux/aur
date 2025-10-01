@@ -1,12 +1,12 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=xyvr
 pkgver=0.0.1alpha.11
-pkgrel=2
+pkgrel=3
 pkgdesc="XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
 arch=('x86_64')
 url="https://github.com/hai-vr/XYVR/"
 license=('MIT')
-depends=('dotnet-runtime-9.0' 'webkit2gtk')
+depends=('aspnet-runtime-9.0' 'webkit2gtk')
 makedepends=('dotnet-sdk-9.0' 'nodejs' 'npm' 'imagemagick')
 options=(!debug !lto)
 source=(
@@ -29,7 +29,7 @@ build() {
     cd "$srcdir/XYVR-0.0.1-alpha.11"
     dotnet publish ui-photino-linux/ui-photino-linux.csproj \
         --runtime linux-x64 \
-        --self-contained true \
+        --self-contained false \
         --configuration Release \
         --output "build/linux-unpacked"
 }

@@ -1,7 +1,7 @@
 pkgbase = xyvr
 	pkgdesc = XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts.
 	pkgver = 0.0.1alpha.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hai-vr/XYVR/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = xyvr
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = imagemagick
-	depends = dotnet-runtime-9.0
+	depends = aspnet-runtime-9.0
 	depends = webkit2gtk
 	options = !debug
 	options = !lto
