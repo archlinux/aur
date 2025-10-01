@@ -1,6 +1,6 @@
 pkgbase = davix-git
 	pkgdesc = Client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP procols
-	pkgver = 0.8.10.r0.gf8a307d0
+	pkgver = 0.8.11rc1.r0.g3054c828
 	pkgrel = 1
 	url = https://github.com/cern-fts/davix
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = davix-git
 	makedepends = git
 	makedepends = python
 	makedepends = gtest
+	makedepends = nlohmann-json
+	depends = curl
 	depends = libxml2
 	depends = openssl
 	depends = util-linux-libs
 	source = davix-git::git+https://github.com/cern-fts/davix.git
-	source = git+https://github.com/curl/curl.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = davix-git

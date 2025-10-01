@@ -5,29 +5,20 @@
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=davix-git
-pkgver=0.8.10.r0.gf8a307d0
+pkgver=0.8.11rc1.r0.g3054c828
 pkgrel=1
 pkgdesc="Client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP procols"
 arch=('x86_64')
 url="https://github.com/cern-fts/davix"
 license=('LGPL-2.1-or-later')
-depends=('libxml2' 'openssl' 'util-linux-libs' )
-makedepends=('doxygen' 'boost' 'cmake' 'git' 'python' 'gtest')
-source=("${pkgname}::git+${url}.git"
-        "git+https://github.com/curl/curl.git")
-sha256sums=('SKIP'
-            'SKIP')
+depends=('curl' 'libxml2' 'openssl' 'util-linux-libs')
+makedepends=('doxygen' 'boost' 'cmake' 'git' 'python' 'gtest' 'nlohmann-json')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/^R_//;s/-/.r/;s/[_-]/./g'
-}
-
-prepare() {
-  cd $pkgname
-  git submodule init
-  git config submodule."deps/curl".url "$srcdir/curl"
-  git -c protocol.file.allow=always submodule update
+  git describe --long | sed -r 's/^R_//;s/-rc/rc/;s/([0-9]+)-g/r\1.g/;s/[_-]/./g'
 }
 
 build() {
@@ -35,7 +26,6 @@ build() {
     -DLIB_SUFFIX="" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
   cmake --build build
 }
