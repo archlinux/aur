@@ -1,6 +1,6 @@
 pkgbase = r-systemfonts
 	pkgdesc = System Native Font Finding
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=systemfonts
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = r-systemfonts
 	optdepends = r-ggplot2
 	optdepends = r-ragg
 	optdepends = r-svglite
-	source = https://cran.r-project.org/src/contrib/systemfonts_1.3.0.tar.gz
-	md5sums = 8ff395133456913671d3296d584e87be
-	b2sums = 0ecd40577a271af17b62ce056070022b49af93758a9baab676b317bc77e3f2a3f1f4446e08845d5f27d032bda16e04f047a05bb42e7c816d127b9d33367885bd
+	source = https://cran.r-project.org/src/contrib/systemfonts_1.3.1.tar.gz
+	md5sums = 670a7c3c036e1fe49af2d5fb10469405
+	b2sums = 1d5a86fd9fafcc86d73951d2d29a1eb3d649362aa4cd36034972f9fcf0085bbfaf08227718b06a4c8880c8d83d51db781e093e0d014590c11744f7097d81239d
 
 pkgname = r-systemfonts
