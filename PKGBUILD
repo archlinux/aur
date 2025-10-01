@@ -4,7 +4,7 @@
 
 _pkgbase=vspcplay
 pkgname=vspcplay-git
-pkgver=1.4.r73.8de179a
+pkgver=1.5.r132.d295375
 pkgrel=1
 pkgdesc="A terminal-based visual SNES sound file (SPC) player and optimisation tool"
 arch=('i686' 'x86_64')
@@ -20,9 +20,8 @@ md5sums=('SKIP')
 pkgver() {
   printf "%s.r%s.%s" \
     "$(
-      # Parse base version from the Makefile
-      sed -n -e 's/.*-DVERSION_STR=\\"\([^"]*\)\\".*/\1/p' \
-        "${_pkgbase}/Makefile"
+      # Parse base version from a Makefile snippet
+      sed -n -e 's/^VERSION_STR := \(.*\)/\1/p' "${_pkgbase}/shared.mk"
     )" \
     "$(git -C "${_pkgbase}" rev-list --count HEAD)" \
     "$(git -C "${_pkgbase}" rev-parse --short HEAD)"
