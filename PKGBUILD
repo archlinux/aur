@@ -14,7 +14,7 @@ sha256sums=('cabb1cfdfc247b5d008c6c5f94e13548bcefeba874aae9a9d45aa95ae1c085ec')
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -36,9 +36,6 @@ package() {
     # Install binaries
     install -Dm755 "target/release/owlen" "$pkgdir/usr/bin/owlen"
     install -Dm755 "target/release/owlen-code" "$pkgdir/usr/bin/owlen-code"
-
-    # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
