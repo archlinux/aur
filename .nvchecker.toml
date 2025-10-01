@@ -1,5 +1,0 @@
-[qlcplus-qt6-git]
-source = "git"
-git = "https://github.com/mcallegari/qlcplus.git"
-prefix='QLC+_'
-include_regex = 'QLC\+_[0-9\.]+'

@@ -3,7 +3,7 @@
 
 _pkgname="qlcplus"
 pkgname="$_pkgname-git"
-pkgver=4.14.1.r0.gdaf4399
+pkgver=4.14.3.r113.gaa853cc
 pkgrel=1
 pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures"
 url="https://github.com/mcallegari/qlcplus"
@@ -46,6 +46,9 @@ pkgver() {
 }
 
 build() {
+  # for lrelease
+  export PATH="/usr/lib/qt6/bin:$PATH"
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
