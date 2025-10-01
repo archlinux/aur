@@ -10,7 +10,7 @@ arch=('x86_64')
 provides=('gardenlogin')
 conflicts=('gardenlogin')
 source=("gardenlogin::${url}/releases/download/v${pkgver}/gardenlogin_linux_amd64")
-sha256sums=('87894a729675dcedadc241be6ad52e0244e70000b180516c5d9198e0f726b9d7')
+sha256sums=('f5ad55e523570cac47ab52b41a4d5d276ad9cdef3c82b05a67ad20536a2694f2')
 
 build() {
     # shell completion
