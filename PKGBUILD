@@ -1,7 +1,7 @@
 # Maintainer: Andrei Dumitrescu <andrei.dumitrescu@pm.me>
 
 pkgname=pu-git
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Cross-platform POSIX utilities for development workflows"
 arch=('any')
@@ -11,6 +11,7 @@ depends=('sh')
 optdepends=(
   'git: for pu-git-has-changed command'
   'pacman: for pu-install command on Arch Linux'
+  'npm: for pu-npm-bundle command'
 )
 makedepends=('git')
 provides=('pu')

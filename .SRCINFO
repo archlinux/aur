@@ -1,6 +1,6 @@
 pkgbase = pu-git
 	pkgdesc = Cross-platform POSIX utilities for development workflows
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/asd-xiv/posix-utils
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = pu-git
 	depends = sh
 	optdepends = git: for pu-git-has-changed command
 	optdepends = pacman: for pu-install command on Arch Linux
+	optdepends = npm: for pu-npm-bundle command
 	provides = pu
 	conflicts = pu
 	source = pu::git+https://github.com/asd-xiv/posix-utils.git
