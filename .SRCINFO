@@ -9,6 +9,7 @@ pkgbase = uabea-next-git
 	license = MIT
 	makedepends = git
 	makedepends = dotnet-sdk
+	makedepends = imagemagick
 	depends = gcc-libs
 	depends = glibc
 	depends = fontconfig
@@ -16,6 +17,6 @@ pkgbase = uabea-next-git
 	source = uabea-next-git::git+https://github.com/nesrak1/UABEANext
 	source = uabea.desktop
 	sha1sums = SKIP
-	sha1sums = 5a5a0440206e498bfdafcf4039485c5f69d7f33f
+	sha1sums = 72a4fc27f5097d25418ee63c5124a8bfad45cf07
 
 pkgname = uabea-next-git

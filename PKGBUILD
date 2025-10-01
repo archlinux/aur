@@ -1,10 +1,11 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=uabea-next-git
+_pkgname=uabea-next
 pkgver=0.0.0.r99.7ae61d2
 pkgrel=1
 pkgdesc='A research and modding tool for SerializedFiles and Asset Bundles'
 url='https://github.com/nesrak1/UABEANext'
-makedepends=('git' 'dotnet-sdk')
+makedepends=('git' 'dotnet-sdk' 'imagemagick')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'dotnet-runtime')
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
@@ -13,7 +14,7 @@ source=(
     "uabea.desktop"
 )
 sha1sums=('SKIP'
-          '5a5a0440206e498bfdafcf4039485c5f69d7f33f')
+          '72a4fc27f5097d25418ee63c5124a8bfad45cf07')
 
 
 pkgver() {
@@ -23,10 +24,6 @@ pkgver() {
   # echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
   local commits=$(git rev-list HEAD --count)
   echo "0.0.0.r$commits.$(git log --pretty=format:'%h' -n 1)"
-}
-
-prepare() {
-    cd "$pkgname"
 }
 
 build() {
@@ -41,14 +38,20 @@ package() {
     cp -r "$pkgname/UABEANext4.Desktop/bin/Release/net8.0" "$pkgdir/usr/lib/UABEANext"
 
     install -d "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/UABEANext/UABEANext4.Desktop" "$pkgdir/usr/bin/UABEANext"
+    ln -sf "/usr/lib/UABEANext/UABEANext4.Desktop" "$pkgdir/usr/bin/$_pkgname"
     # install -Dm644 "$pkgname/license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+    magick "$pkgname/UABEANext4/Assets/logo-new.ico" "icon.png"
+    install -Dm644 "icon-0.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/$_pkgname.png"
+    install -Dm644 "icon-1.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
+    install -Dm644 "icon-2.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
+    install -Dm644 "icon-3.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+    #install -Dm644 "$pkgname/UABEANext4/Assets/logo-new.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/UABEANext.png"
     # mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{'256x256/apps','48x48/apps','32x32/apps','16x16/apps'}
     # convert "$pkgname/ui/assets/icon/icon.png" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/atlas.png"
     # convert "$pkgname/ui/assets/icon/icon.png" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/atlas.png"
     # convert "$pkgname/ui/assets/icon/icon.png" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/atlas.png"
     # convert "$pkgname/ui/assets/icon/icon.png" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/atlas.png"
 
-    install -Dm 644 "uabea.desktop" "${pkgdir}/usr/share/applications/uabea-next.desktop"
+    install -Dm644 "uabea.desktop" "${pkgdir}/usr/share/applications/$_pkgname.desktop"
 }

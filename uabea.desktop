@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=UABEANext
-Exec=/usr/bin/UABEANext
+Exec=uabea-next
 Terminal=false
 Type=Application
-# Icon=todo
+Categories=Application;Development;
+Icon=UABEANext
 StartupWMClass=uabeanext
 Comment=A research and modding tool for SerializedFiles and Asset Bundles
