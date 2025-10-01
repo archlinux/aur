@@ -46,6 +46,11 @@ build() {
     yarn workspace proton-authenticator build:desktop
 }
 
+check() {
+    cd ProtonWebClients-$_commit
+    yarn workspace proton-authenticator test:ci
+}
+
 package() {
     cd ProtonWebClients-$_commit/applications/authenticator
 
