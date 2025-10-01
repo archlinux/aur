@@ -1,15 +1,15 @@
 # Maintainer: Benjamim Gois <benjamim.gois@gmail.com>
-_pkgname=pascube
-pkgname=${_pkgname}-git
-pkgver=r1.5000000
-pkgrel=2
+pkgname=pascube-git
+pkgver=0.r11.g1815e14
+pkgrel=1
 pkgdesc="A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
-license=('GPL2')
+license=('GPL-2.0-or-later')
+
 depends=(
-  'qt6-base'   # runtime Qt6
-  'qt6pas'     # bindings Qt6 para Lazarus (LCL Qt6)
+  'qt6-base'   # Qt6 runtime
+  'qt6pas'     # Lazarus Qt6 bindings (LCL Qt6)
   'mesa'       # libGL
   'glu'        # libGLU
 )
@@ -17,49 +17,93 @@ makedepends=(
   'git'
   'fpc'
   'fpc-src'
-  'lazarus-qt6'
+  'lazarus'    # provides lazbuild on Arch
 )
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Enter the working copy checked out by makepkg
+  cd "$srcdir/${pkgname%-git}" 2>/dev/null || cd "${pkgname%-git}"
+
+  # Try tag-based version; fallback to commitcount+short hash
+  _ver="$(git describe --long --tags --abbrev=7 2>/dev/null || true)"
+  if [[ -n "$_ver" ]]; then
+    # 1.2.3-45-g<hash> -> 1.2.3.r45.g<hash>
+    printf '%s' "$_ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf '0.r%s.g%s' \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
+  fi
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  # Use an isolated Lazarus config dir for reproducible builds
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  # Compila usando LCL Qt6
-  lazbuild --widgetset=qt6 "${_pkgname}.lpi"
+  set -e
+  cd "${pkgname%-git}"
+
+  # Build using LCL Qt6 with explicit Lazarus dir on Arch
+  lazbuild \
+    --lazarusdir=/usr/lib/lazarus \
+    --primary-config-path=build \
+    --widgetset=qt6 \
+    "${pkgname%-git}.lpi"
+
+  # Detect the resulting binary location
+  BIN_CANDIDATE=""
+  for p in \
+    "./${pkgname%-git}" \
+    "./bin/${pkgname%-git}" \
+    ./lib/*/"${pkgname%-git}" \
+    ./lib/"${pkgname%-git}"; do
+    [[ -x "$p" ]] && { BIN_CANDIDATE="$p"; break; }
+  done
+  [[ -n "${BIN_CANDIDATE}" ]] || BIN_CANDIDATE="$(find . -maxdepth 3 -type f -name "${pkgname%-git}" -perm -111 | head -n1 || true)"
+  [[ -n "${BIN_CANDIDATE}" ]] || { echo "Error: could not find built binary '${pkgname%-git}'"; exit 1; }
+
+  printf '%s' "${BIN_CANDIDATE}" > .built_binary_path
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  set -e
+  cd "${pkgname%-git}"
 
-  # Instala binário real em /usr/lib/pascube
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
+  # Read binary path detected during build()
+  BIN_PATH="$(< .built_binary_path)"
+  [[ -x "${BIN_PATH}" ]] || { echo "Error: built binary not executable: ${BIN_PATH}"; exit 1; }
 
-  # Wrapper: força X11 e garante skybox do usuário
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
+  # Install the real binary under /usr/lib/pascube
+  install -Dm755 "${BIN_PATH}" "${pkgdir}/usr/lib/${pkgname%-git}/${pkgname%-git}"
+
+  # Wrapper: force X11 via xcb (no provisioning into $HOME)
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<'EOF'
 #!/bin/sh
-# Force X11 backend for Qt6
 export QT_QPA_PLATFORM=xcb
-
-# Ensure user config dir and a default skybox
-CFGDIR="$HOME/.config/pascube"
-SYSRES="/usr/share/pascube/skybox.png"
-mkdir -p "$CFGDIR"
-if [ -f "$SYSRES" ] && [ ! -f "$CFGDIR/skybox.png" ]; then
-  cp "$SYSRES" "$CFGDIR/skybox.png"
-fi
-
 exec /usr/lib/pascube/pascube "$@"
 EOF
 
-  # Desktop entry (usa o wrapper)
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/pascube.desktop" <<'EOF'
+  # ---- Desktop entry ----
+  # If data/pascube.desktop exists, normalize Icon and Exec and install it
+  if [[ -f "data/pascube.desktop" ]]; then
+    sed -E \
+      -e 's/^Icon=.*/Icon=pascube/' \
+      -e 's/^Exec=.*/Exec=pascube/' \
+      "data/pascube.desktop" > "${srcdir}/pascube.desktop"
+    install -Dm644 "${srcdir}/pascube.desktop" \
+      "${pkgdir}/usr/share/applications/pascube.desktop"
+  else
+    # Fallback desktop file
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/pascube.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=pasCube
@@ -69,21 +113,23 @@ Icon=pascube
 Terminal=false
 Categories=Graphics;Education;Qt;
 EOF
+  fi
 
-  # Recursos: instala skybox padrão para todos os usuários
+  # ---- Icons (from data/icons/{128x128,256x256,512x512}/pascube.png) ----
+  for sz in 128x128 256x256 512x512; do
+    if [[ -f "data/icons/${sz}/pascube.png" ]]; then
+      install -Dm644 "data/icons/${sz}/pascube.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${sz}/apps/pascube.png"
+    fi
+  done
+
+  # ---- Shared resources (skybox only under /usr/share/pascube) ----
   if [[ -f "skybox.png" ]]; then
     install -Dm644 "skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
+  elif [[ -f "data/skybox.png" ]]; then
+    install -Dm644 "data/skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
   fi
 
-  # Ícones (instala o que existir no repo)
-  if [[ -f "pascube.png" ]]; then
-    install -Dm644 "pascube.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pascube.png"
-  elif [[ -f "pascube.svg" ]]; then
-    install -Dm644 "pascube.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pascube.svg"
-  elif [[ -f "pascube.ico" ]]; then
-    install -Dm644 "pascube.ico" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pascube.ico"
-  fi
-
-  # Licença (se existir)
+  # License (if present)
   [[ -f LICENSE ]] && install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
