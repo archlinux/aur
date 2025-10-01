@@ -5,8 +5,8 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=certmonger
-pkgver=0.79.20
-pkgrel=3
+pkgver=0.79.21
+pkgrel=1
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
 url="https://pagure.io/${pkgname}"
@@ -17,7 +17,7 @@ checkdepends=(python-dbus diffutils dos2unix expect)
 backup=(etc/${pkgname}/${pkgname}.conf)
 install="${pkgname}.install"
 source=("https://pagure.io/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('76685185172bbf2c766c477c399ce0b14c9fd2d81637b44b8da80ae045ebf6c650ae3d525a87dccd755a6c92d4a5916bb62f8ea1d8520c47ae64770be6a5d2be')
+sha512sums=('a008984b7592c6af7f5b91f05158637bacf369c846f10e3c38dfa18e12e7738025a5897e627826e341e77ec9657cc0042687a79af8eb9c69d2063aee78be7c6b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
