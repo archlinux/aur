@@ -1,5 +1,6 @@
 # Maintainer: Lars <arch@lars.earth>
 pkgname=lrc_tty
+options=('!debug')
 pkgver=0.5
 pkgrel=1
 pkgdesc="Terminal lyric viewer for MPRIS players"
