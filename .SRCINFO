@@ -1,0 +1,20 @@
+pkgbase = ezy-bin
+	pkgdesc = Fully-featured desktop gRPC/gRPC-Web client.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	provides = ezy
+	conflicts = ezy
+	conflicts = ezy-bin
+	conflicts = ezy-git
+	replaces = ezy
+	replaces = ezy-bin
+	replaces = ezy-git
+	source_x86_64 = https://github.com/getezy/ezy/releases/download/v1.0.0-beta.16/ezy_1.0.0.beta.16_amd64.deb
+	sha256sums_x86_64 = 94155cb00252b4f680a8fff57f1b76dbc5ce648f0ee9cba769ef1c49d34f357b
+	source_aarch64 = https://github.com/getezy/ezy/releases/download/v1.0.0-beta.16/ezy_1.0.0.beta.16_arm64.deb
+	sha256sums_aarch64 = ce5d5975465ae4d6fbf4adff880b610ad96c527eac3cf4435e66ec525d2bdef2
+
+pkgname = ezy-bin
