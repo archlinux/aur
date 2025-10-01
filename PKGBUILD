@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='alcotest'
 pkgname="ocaml-$_projectname"
-pkgver='1.9.0'
+pkgver='1.9.1'
 pkgrel='1'
 pkgdesc='Lightweight and colourful test framework for OCaml'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-shim-deps.diff'
 )
-b2sums=('f56a69198bd2e3dcb5970744cfec1d83b8981a0ed12584ed1849aca1c5c9488038fb3fb3b1b60c9160a54220f88d66b3929a92577942ccaf98356ba98216baa3'
+b2sums=('03aba14619ce68899843d97b6dff7295529ccaa648a45373ac4e990bfeb1a356072ebf86241324c83450c0e2b725265b3a64b8a8c90db40570fff82389364dcf'
         '3e650c4899aedabc082e79a0b45c29e119bee59213f961704545e840c2a735074847fbd5e8ea7b23acb0b09fce3c8b62399b922843efde054e085be9c0b60c4d')
 
 _sourcedirectory="$_projectname-$pkgver"
