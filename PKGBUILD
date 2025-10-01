@@ -1,5 +1,5 @@
 # Maintainer: Bjarne Øverli <bjarne.oeverli@gmail.com>
-pkgname=jot
+pkgname=jot-git
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="A single-purpose tool for capturing a thought before it disappears"

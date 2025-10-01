@@ -1,4 +1,4 @@
-pkgbase = jot
+pkgbase = jot-git
 	pkgdesc = A single-purpose tool for capturing a thought before it disappears
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = jot
 	depends = gjs
 	depends = gtk4
 	depends = libadwaita
-	source = jot-1.0.1.tar.gz::https://github.com/bjarneo/omarchy-jot/archive/v1.0.1.tar.gz
+	source = jot-git-1.0.1.tar.gz::https://github.com/bjarneo/omarchy-jot/archive/v1.0.1.tar.gz
 	sha256sums = 1dc782f382be8afa65767aff68685bcdab1ed3bfbeac5c6ab07fdb9deef58216
 
-pkgname = jot
+pkgname = jot-git
