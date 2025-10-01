@@ -1,7 +1,7 @@
 # Maintainer: Magus <packaging@example.com>
 pkgname=magelab-bin
 pkgver=0.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Mage Lab is a user-centric AI interface with local reasoning and tools"
 arch=('x86_64')
 url="https://github.com/majesticio/magelab"
@@ -42,6 +42,14 @@ APP_RES_DIR="/usr/lib/magelab"
 
 export PATH="${APP_BIN_DIR}:${PATH}"
 export APPDIR="${APP_RES_DIR}"
+
+if [[ -z "${MAGELAB_ENABLE_DMABUF:-}" ]]; then
+  if [[ -n "${WAYLAND_DISPLAY:-}" || "${XDG_SESSION_TYPE:-}" == "wayland" ]]; then
+    if [[ -z "${WEBKIT_DISABLE_DMABUF_RENDERER:-}" ]]; then
+      export WEBKIT_DISABLE_DMABUF_RENDERER=1
+    fi
+  fi
+fi
 
 if [[ -n "${MAGELAB_SKIP_DMABUF_FALLBACK:-}" || -n "${WEBKIT_DISABLE_DMABUF_RENDERER:-}" ]]; then
   exec "${REAL_BIN}" "$@"
