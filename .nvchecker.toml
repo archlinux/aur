@@ -1,0 +1,5 @@
+[codon]
+source = "github"
+github = "exaloop/codon"
+use_latest_release = "true"
+prefix = "v"
