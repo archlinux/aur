@@ -8,7 +8,7 @@ post_install() {
 
         # Create the group if it doesn't exist
         if ! getent group "$GROUP_NAME" >/dev/null; then
-            addgroup --system "$GROUP_NAME"
+            /usr/bin/groupadd --system "$GROUP_NAME"
             echo "Created group $GROUP_NAME"
         fi
 
@@ -69,7 +69,7 @@ pre_remove() {
     fi
 
     if getent group "$GROUP_NAME" >/dev/null; then
-        delgroup "$GROUP_NAME" || groupdel "$GROUP_NAME" || true
+        groupdel "$GROUP_NAME" || true
     fi
 }
 
