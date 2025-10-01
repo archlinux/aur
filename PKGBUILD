@@ -3,9 +3,9 @@
 # Contributor: xiretza <xiretza+aur at gmail dot com>
 
 pkgname=python-discord
-pkgver=2.5.2
+pkgver=2.6.3
 _tarname=discord.py-$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="Discord API wrapper written in Python"
 arch=(any)
 url="https://github.com/Rapptz/discord.py"
@@ -22,7 +22,7 @@ optdepends=(
 	'python<3.10: speed support'
 )
 source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('3b761a88d4205651cafb889c2f2c618bbf6792d297952e068d1c515a7c6bead8fc874020ae8235187159a899dc4ff960d48ba3e6d34b98c299ec381e7e63477d')
+b2sums=('aad11dd2f78acd3bd4d7ec05d0c7148352360102446d35827b4feac47c95fd6779de16da4cad5a99a5727a2bd45ee76c2db68ba9fa556fc7e0ce1d4508e5e03b')
 
 build() {
 	cd $_tarname
