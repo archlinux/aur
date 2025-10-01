@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fuse3-git
-pkgver=3.12.0.r2.g7776639
+pkgver=3.17.4.r198.g382b17dd
 pkgrel=1
 pkgdesc="The reference implementation of the Linux FUSE (Filesystem in userspace) interface"
 arch=('i686' 'x86_64')
 url="https://github.com/libfuse/libfuse"
-license=('GPL2' 'LGPL')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 depends=('glibc')
 makedepends=('git' 'meson' 'pkgconf' 'udev')
 provides=("fuse3=$pkgver" 'fuse-common')
@@ -20,7 +20,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libfuse"
 
-  git describe --long --tags | sed 's/^fuse-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^fuse-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^fuse-//'
 }
 
 build() {

@@ -1,18 +1,18 @@
 pkgbase = fuse3-git
 	pkgdesc = The reference implementation of the Linux FUSE (Filesystem in userspace) interface
-	pkgver = 3.12.0.r2.g7776639
+	pkgver = 3.17.4.r198.g382b17dd
 	pkgrel = 1
 	url = https://github.com/libfuse/libfuse
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = meson
 	makedepends = pkgconf
 	makedepends = udev
 	depends = glibc
-	provides = fuse3=3.12.0.r2.g7776639
+	provides = fuse3=3.17.4.r198.g382b17dd
 	provides = fuse-common
 	conflicts = fuse3
 	conflicts = fuse-common
