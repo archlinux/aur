@@ -41,6 +41,7 @@ build() {
 
     export LDFLAGS="${LDFLAGS} -fuse-ld=mold"
     export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold"
+    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
 
     yarn install
     yarn workspace proton-authenticator build:desktop
@@ -48,6 +49,7 @@ build() {
 
 check() {
     cd ProtonWebClients-$_commit
+    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     yarn workspace proton-authenticator test:ci
 }
 
