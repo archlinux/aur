@@ -1,7 +1,7 @@
 # Maintainer: Scott Lill <dev at scottlill dot com>
 
 pkgname='gnome-shell-extension-wallpaper-slideshow'
-pkgver=13.2
+pkgver=13.3
 pkgrel=1
 pkgdesc='Wallpaper slideshow extension for GNOME'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://gitlab.com/AndrewZaech/azwallpaper'
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/azwallpaper-v${pkgver}.tar.gz")
-sha256sums=('b7397b0620c42bfc7b1aa304febf2c6fe51ad6bd8088063f69f7e2dab079db23')
+sha256sums=('03e9fb12c6cc7f1be0ac2dba0e1a631e7c3fd8a631a81f7a1419037837f48acb')
 
 build() {
 	cd azwallpaper-v${pkgver}
