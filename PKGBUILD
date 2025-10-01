@@ -281,11 +281,8 @@ _prepare() {
   # Composable kernels is not supported for all architectures.
   export USE_ROCM_CK=OFF
 
-  # 1. Compile source code for supported GPU archs in parallel
-  # 2. Use --offload-comress to reduce the size of the generated binaries.
-  #    Otherwise we run into the 32 bit offset limit, see
-  #    https://github.com/ROCm/rocBLAS/issues/1448#issuecomment-2372524901
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name)) --offload-compress"
+  # Compile source code for supported GPU archs in parallel
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name))"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
 
   export AOTRITON_INSTALLED_PREFIX=/usr
