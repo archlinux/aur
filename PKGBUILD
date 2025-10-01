@@ -14,7 +14,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 : ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
-pkgver=1.5.0.r930.96067db249
+pkgver=1.5.0.r1200.f0abf76788
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -93,9 +93,8 @@ _gitname="inkscape.git"
 prepare() {
   cd  "$_gitname"
   prepare_submodule
-# fix track_obj deprecated in libsigc
-  sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
 # fix lib2geom header location
+  sed -E 's:#include "(bezier-utils.h|sbasis-to-bezier.h)":#include <2geom/\1>:' -i src/ui/tools/pencil-tool.cpp
   sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/{tool{/path-manipulator,s/object-picker-tool},dialog/{symbols,extensions-gallery}}.cpp
 # sed -E '/^#include/s/(forward.h)/2geom\/\1/' -i src/ui/tool/path-manipulator.cpp
   sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/{dialog/{object-attributes,extensions-gallery},tools/object-picker-tool}.cpp

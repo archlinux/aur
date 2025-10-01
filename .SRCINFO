@@ -1,6 +1,6 @@
 pkgbase = inkscape-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
-	pkgver = 1.5.0.r930.96067db249
+	pkgver = 1.5.0.r1200.f0abf76788
 	pkgrel = 1
 	epoch = 5
 	url = https://gitlab.com/inkscape
