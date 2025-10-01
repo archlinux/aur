@@ -1,5 +1,5 @@
 pkgname=mkanban
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A Terminal User Interface Kanban Board"
 arch=('any')
