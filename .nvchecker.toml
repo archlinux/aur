@@ -1,4 +1,4 @@
-[python-llm-openrouter]
+[python-llm-anthropic]
 source = "github"
-github = "simonw/llm-openrouter"
+github = "simonw/llm-anthropic"
 use_latest_release = true
