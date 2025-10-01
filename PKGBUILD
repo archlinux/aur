@@ -2,7 +2,7 @@
 # Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@archlinux.org>
 
 pkgname=wasm-language-tools
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Language server and other tools for WebAssembly"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/g-plane/wasm-language-tools"
 license=('MIT')
 makedepends=('cargo')
 source=(https://github.com/g-plane/wasm-language-tools/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('e902d4d8bbe3366f8a439a9508cec4535031c95ee655e8b79749920ee4bc3fc23eadcaad59e945ec71d090bd0506c48e5f4aad9a6d358ba2c6caa89c0c4075c9')
+b2sums=('2f202a0eefa6a17166126367517cec808291f27a81755bff3b8f71644287eeacbbc5b792c888b549842743717dfa48b19fb9d6d24f55686a47e010cfaeadba67')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
