@@ -1,0 +1,5 @@
+[cutter-bin]
+source = "github"
+github = "rizinorg/cutter"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = cutter-bin
+	pkgdesc = Free and Open Source Reverse Engineering Platform powered by rizin
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/rizinorg/cutter/
+	arch = x86_64
+	license = GPL3
+	provides = cutter
+	provides = rz-cutter
+	conflicts = cutter
+	conflicts = rz-cutter
+	source = Cutter.AppImage::https://github.com/rizinorg/cutter/releases/download/v2.4.1/Cutter-v2.4.1-Linux-x86_64.AppImage
+	source = cutter.sh
+	sha512sums = 19b32703355a199861fb92ea3fac48fb899172e0dd6dab83a8389899dcd33d8023bb616edbfcd3292818e1e97054240b60801a7677032404da3414e7b7b506ae
+	sha512sums = ef79b7f1f558ea0afe06b1b2d69afaee03e11c1dd4059224f208177781c909a7493ff0767a37d96ded8dd38052076d4324d4711e7560ae24c74aee874db09e24
+
+pkgname = cutter-bin
