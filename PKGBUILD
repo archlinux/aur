@@ -39,8 +39,8 @@ prepare() {
 build() {
     cd ProtonWebClients-$_commit
 
-    export LDFLAGS="-fuse-ld=mold"
-    export RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+    export LDFLAGS="${LDFLAGS} -fuse-ld=mold"
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold"
 
     yarn install
     yarn workspace proton-authenticator build:desktop
