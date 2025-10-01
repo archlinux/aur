@@ -1,7 +1,7 @@
 # Maintainer: bannert <aur@bannert.dev>
 
 pkgname=sudoku-gtk4
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A modern Sudoku app built with Python, GTK4 and libadwaita"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('python-sudoku-engine' 'python-gobject' 'libadwaita' 'gtk4' 'glib2' 'json-glib')
 makedepends=('meson' 'ninja')
 provides=('sudoku-gtk4')
-source=("https://github.com/sepehr-rs/Sudoku/archive/v${pkgver}.tar.gz")
-sha256sums=('d2ece1e4812a01b4557648d2d1bf0b73383f03be79a722c1b3680d52a0680f98')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/sepehr-rs/Sudoku/archive/v${pkgver}.tar.gz")
+sha256sums=('260e0ddddc561a832ef04504a1476478d9ff4a4bda27c4c7ca5b6d0783b7cc65')
 
 prepare() {
 	cd "${srcdir}/Sudoku-${pkgver}"
