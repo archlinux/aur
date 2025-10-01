@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=ntpd-rs-git
-pkgver=r2873.gb6fe0218
+pkgver=r2875.gb7e110e2
 pkgrel=1
 pkgdesc='A full-featured implementation of the Network Time Protocol, including NTS support, written in Rust.'
 url='https://github.com/pendulum-project/ntpd-rs'
@@ -35,7 +35,8 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  export CFLAGS+=" -ffat-lto-objects"
+  export RUST_BACKTRACE=1
+  export CFLAGS+=" -ffat-lto-objects -O0"
 
   cargo build --release --locked --target x86_64-unknown-linux-gnu
 }
