@@ -1,6 +1,6 @@
 pkgbase = elephant-todo
 	pkgdesc = todo provider for elephant
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-todo
 	makedepends = go
 	provides = elephant-todo
 	conflicts = elephant-todo
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 199c1cf7ebdbcc9101b776e0e81162ee94596ea31d466f425309023dea13be65
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 60b2571d0f3e8a0400b834f4057116ccbf826e32137f0b939e5d76ecb957769f
 
 pkgname = elephant-todo
