@@ -1,3 +1,13 @@
+2025-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.2.2.3-1:
+    Added MachineName bot config property, which allows to modify the machine name that Steam displays for ASF session (@JustArchi).
+    Fixed rp command failing to redeem points for badge upgrades (@JustArchi).
+    Fixed ASF crash possibility when user enabled SteamTradeMatcher but then removed all MatchableTypes (@JustArchi @ezhevita).
+    Fixed very rare race condition that could cause ASF to crash upon modifying IPC.config file in quick succession (@JustArchi @ezhevita).
+    Fixed addlicense command not returning expected value when Steam is down, thanks Silksong (@JustArchi @ezhevita).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-08-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.2.1.2-1:
     /Api/NLog/File endpoint now supports non-standard file locations, which fixes ASF-ui logging for custom NLog.config configurations that do not follow standard ASF locations (@JustArchi).
