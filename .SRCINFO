@@ -1,6 +1,6 @@
 pkgbase = limine-booster
 	pkgdesc = Zero-config automation for Limine boot entries with Booster
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/abshka/limine-booster
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = limine-booster
 	optdepends = intel-ucode: For automatic detection and inclusion of Intel microcode
 	optdepends = amd-ucode: For automatic detection and inclusion of AMD microcode
 	optdepends = limine-snapper-sync: For BTRFS snapshot integration
-	source = https://github.com/abshka/limine-booster/archive/v3.0.0.tar.gz
-	sha256sums = 2dabc7fe5e4a7fc70176a1da2cc275ebc4f21a309a539f27e22ae9e612fb8f74
+	source = https://github.com/abshka/limine-booster/archive/v3.1.0.tar.gz
+	sha256sums = 24a038a2833e49c600295ff2b64bc05af78d9c771f3b97ccb71a33767af670c1
 
 pkgname = limine-booster

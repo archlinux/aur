@@ -1,6 +1,6 @@
 # Maintainer: Alexander Belov markelofaleksei@gmail.com
 pkgname=limine-booster
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Zero-config automation for Limine boot entries with Booster"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('intel-ucode: For automatic detection and inclusion of Intel microco
             'amd-ucode: For automatic detection and inclusion of AMD microcode'
             'limine-snapper-sync: For BTRFS snapshot integration')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('2dabc7fe5e4a7fc70176a1da2cc275ebc4f21a309a539f27e22ae9e612fb8f74')
+sha256sums=('24a038a2833e49c600295ff2b64bc05af78d9c771f3b97ccb71a33767af670c1')
 
 prepare() {
     cd "$pkgname-$pkgver"
