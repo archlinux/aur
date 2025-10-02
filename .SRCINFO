@@ -1,0 +1,10 @@
+pkgbase = mkfsufs
+	pkgdesc = Mkfs style utility to format a UFS partition like newfs on FreeBSD
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = https://github.com/theo0x0/mkfsufs/archive/refs/tags/1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mkfsufs
