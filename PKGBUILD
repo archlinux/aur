@@ -36,6 +36,7 @@ build() {
         -GNinja \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev
     cmake --build build
 }
