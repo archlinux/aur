@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 options=(!lto)  # avoid LTO-linked ring symbol drop with lld
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d9b5b9efe16c9355c007d2ab092638f2002fc7eeb0a00efe9f2a7f5c2040b2cd')
+sha256sums=('2f298635dd93456a89ae941f4f965a78f9fc9d5c1763b9e549d0b5d6c3eb97b8')
 
 prepare() {
     cd $pkgname

@@ -10,6 +10,6 @@ pkgbase = owlen
 	depends = gcc-libs
 	options = !lto
 	source = owlen-0.1.6.tar.gz::https://somegit.dev/Owlibou/owlen/archive/v0.1.6.tar.gz
-	sha256sums = d9b5b9efe16c9355c007d2ab092638f2002fc7eeb0a00efe9f2a7f5c2040b2cd
+	sha256sums = 2f298635dd93456a89ae941f4f965a78f9fc9d5c1763b9e549d0b5d6c3eb97b8
 
 pkgname = owlen
