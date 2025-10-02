@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("https://github.com/1dylan1/cmdr/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f4ccc65188c408379099da5dbfde4aff115db69028ef645283493fa919ba57d')
+sha256sums=('4d3c84b99b1ea63378c4998e701d2ee639179ce3d76facb5c1c7be8bf6369a4a')
 
 build() {
     cd "$srcdir/cmdr-v${pkgver}"
