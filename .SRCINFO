@@ -1,6 +1,6 @@
 pkgbase = tema-git
 	pkgdesc = GTK4/Adwaita Omarchy theming application with pywal integration
-	pkgver = 1.0.0.r86.geecbce5
+	pkgver = 1.0.0.r87.g9b83b32
 	pkgrel = 1
 	url = https://github.com/bjarneo/tema
 	install = tema.install
