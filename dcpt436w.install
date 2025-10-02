@@ -24,7 +24,6 @@ install_script () {
   #    restorecon -R /opt/brother/Printers/dcpt436w
   #  fi
   #fi
-
 }
 
 post_install () {

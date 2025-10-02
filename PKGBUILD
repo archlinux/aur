@@ -38,7 +38,7 @@ package() {
 
  #include symbolic link for brother printer configuration
   mkdir -p "${pkgdir}/${_dir_bin}"
-  ln -s "/${_dir_opt}/lpd/x86_64/brprintconf_${_printer}" "${_dir_opt}/lpd"
+  ln -s "/${_dir_opt}/lpd/${arch}/brprintconf_${_printer}" "${_dir_opt}/lpd"
   ln -s "/${_dir_opt}/lpd/brprintconf_${_printer}" "${_dir_bin}"
 
  #install licenses inside the created brother's license directory
