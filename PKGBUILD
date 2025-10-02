@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspDistributions
-_pkgver=0.95.0
+_pkgver=0.95.3
 pkgname=r-${_pkgname,,}
-pkgver=0.95.0
+pkgver=0.95.3
 pkgrel=1
 pkgdesc="Distributions Module for JASP"
 arch=('any')
@@ -22,7 +22,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('8753e574dbf3446c95271f2a49a3d614b49ad232b14999f98a8efdf5493695dd')
+sha256sums=('786c07e0a2a4d4365f173cb1d9cd97ee4380f95ef9f6ce843d4b925db08782a4')
 
 
 build() {
