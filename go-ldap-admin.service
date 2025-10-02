@@ -1,0 +1,9 @@
+[Unit]
+Description=Go Ldap Admin Service
+
+[Service]
+WorkingDirectory=/etc/go-ldap-admin
+ExecStart=/usr/bin/go-ldap-admin
+
+[Install]
+WantedBy=multi-user.target
