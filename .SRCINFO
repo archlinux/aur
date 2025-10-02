@@ -1,6 +1,6 @@
 pkgbase = r-jasptools
 	pkgdesc = Helps preview and debug JASP analyses
-	pkgver = 0.19.3
+	pkgver = 0.95.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jasp-stats/jaspTools
@@ -23,7 +23,7 @@ pkgbase = r-jasptools
 	depends = r-stringr
 	depends = r-vdiffr
 	depends = r-archive
-	source = jaspTools_0.19.3.tar.gz::https://github.com/jasp-stats/jaspTools/archive/refs/tags/v0.19.3.tar.gz
-	sha256sums = 6b2e6adcada8dad8ca191b0016a4d2e30ace426092476c63704454222f41b0f0
+	source = jaspTools_0.95.3.tar.gz::https://github.com/jasp-stats/jaspTools/archive/refs/tags/v0.95.3.tar.gz
+	sha256sums = 5ea47bbff72c858ef5f94a60bf668e6f746a8eadce936e11962c94a14103ff87
 
 pkgname = r-jasptools
