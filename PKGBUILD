@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com
 
 _pkgname=GPfit
-_pkgver=1.0-8
+_pkgver=1.0-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ddfa4fdf1446004a7b75289eb81e8548')
-b2sums=('6c62146c0cabac40fef457b497e327d0fcf542a9f324c612a65146958886e1daca174bbf91a29913e1b6a45f15cd0e2b75552e438459a81f7e20b6ee25877a5d')
+md5sums=('d1a3afbda6c0c9d98231d2e99a28483f')
+b2sums=('baca5f19dff19134bc2d991518b02515554454c9fdac38c3298ce560cc67857bc074b0c8ba19069e3465d9fd03c9f5f2d6e89f7a34d7837d8e60e2a4e485938a')
 
 build() {
   mkdir build
