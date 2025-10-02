@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=discrim
-_pkgver=1.0.1
+_pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -11,6 +11,7 @@ url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r-dials
+  r-parsnip
   r-rlang
   r-stats
   r-tibble
@@ -40,8 +41,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe754dce7c856aa74fe16c98a9499e45')
-b2sums=('c6d6be50b85f39ea25f165d6b15e66f076a7484c09d3c9035f895d59dee7468cba48654fd4aa42c6db2da2862e9d143f11cc0de9f111863ae3f1e93eeb54468e')
+md5sums=('cc10407ead0d2e9f58e081746eeba617')
+b2sums=('a4ee25dd4815368ad2b33e4b5507f9681907146cdf865a1990269fe231f8b96b270e053c67e6a9012f4018ec52fe7a454b5de17fa52b9647c643c5a62b626fec')
 
 build() {
   mkdir build
