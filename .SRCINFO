@@ -1,0 +1,16 @@
+pkgbase = vboot-minimal-git
+	pkgdesc = Minimal ChromeOS verified boot utilities, without flashrom support
+	pkgver = 142
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = util-linux-libs
+	depends = openssl
+	conflicts = cgpt-bin
+	conflicts = chromeos-vboot-reference-git
+	conflicts = vboot-utils
+
+pkgname = vboot-minimal-git
