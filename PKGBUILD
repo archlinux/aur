@@ -3,7 +3,7 @@
 pkgname=python-taipan
 _gitpkgname=taipan
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose toolkit for Python'
 arch=('any')
 url='https://github.com/Xion/taipan'
@@ -53,6 +53,9 @@ prepare() {
   echo >&2 'Applying Python 3.12+ compatibility patch'
   find tests -name 'test_*.py' \
     -exec sed -i -e 's/assertEquals/assertEqual/' '{}' +
+
+  echo >&2 'Exclude tests from wheel'
+  sed -i -e "s/exclude=\['tests'/\0, 'tests.*'/" setup.py
 }
 
 build() {

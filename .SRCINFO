@@ -1,7 +1,7 @@
 pkgbase = python-taipan
 	pkgdesc = General purpose toolkit for Python
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xion/taipan
 	arch = any
 	license = BSD-2-Clause
