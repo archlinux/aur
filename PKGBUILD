@@ -1,7 +1,7 @@
 # Maintainer: Drommer <drommer@github.com>
 
 pkgname=stacer-git
-pkgver=1.5.0
+pkgver=1.5.0.r0.gfc97050
 pkgrel=1
 pkgdesc="Linux System Optimizer and Monitoring"
 url="https://stacer.quentium.fr/"
