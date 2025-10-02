@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/corecathx/whisker"
 license=('GPL-3.0-only')
 depends=(
-    'quickshell-git' 'brightnessctl' 'bash' 'power-profiles-daemon' 'cava' 'matugen-bin'
+    'quickshell' 'brightnessctl' 'bash' 'power-profiles-daemon' 'cava' 'matugen-bin'
     'networkmanager' 'fish' 'ttf-outfit' 'ttf-material-symbols-variable' 'qt6-multimedia-ffmpeg'
 )
 makedepends=('git' 'haxe' 'bluez')
