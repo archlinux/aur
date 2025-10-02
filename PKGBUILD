@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=workflowsets
-_pkgver=1.1.0
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -48,8 +48,8 @@ optdepends=(
   r-yardstick
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b34448c75c79c386e702a3e0ea1385b')
-b2sums=('b240c14384e38c9db783bf33682aaea1cd0b034920a6c1c71370da8c7d3a830732ffd2a5e67330e41e5d4d58bb3506813dd09eef013635a7e21d74edcc66d814')
+md5sums=('27e0daadc2225d05adabc56b32af9a50')
+b2sums=('63ec4d01c0bd556477759e9070787eca9223598f3c3d03934863066cc339d63a7f77b707cd6a15c8e12ccdad554e714fe0983be53843faa53ec5704c370d31e1')
 
 build() {
   mkdir build

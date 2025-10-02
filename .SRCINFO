@@ -1,6 +1,6 @@
 pkgbase = r-workflowsets
 	pkgdesc = Create a collection of 'tidymodels' workflows
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 5
 	url = https://cran.r-project.org/package=workflowsets
 	arch = any
@@ -37,8 +37,8 @@ pkgbase = r-workflowsets
 	optdepends = r-testthat
 	optdepends = r-tidyclust
 	optdepends = r-yardstick
-	source = https://cran.r-project.org/src/contrib/workflowsets_1.1.0.tar.gz
-	md5sums = 7b34448c75c79c386e702a3e0ea1385b
-	b2sums = b240c14384e38c9db783bf33682aaea1cd0b034920a6c1c71370da8c7d3a830732ffd2a5e67330e41e5d4d58bb3506813dd09eef013635a7e21d74edcc66d814
+	source = https://cran.r-project.org/src/contrib/workflowsets_1.1.1.tar.gz
+	md5sums = 27e0daadc2225d05adabc56b32af9a50
+	b2sums = 63ec4d01c0bd556477759e9070787eca9223598f3c3d03934863066cc339d63a7f77b707cd6a15c8e12ccdad554e714fe0983be53843faa53ec5704c370d31e1
 
 pkgname = r-workflowsets
