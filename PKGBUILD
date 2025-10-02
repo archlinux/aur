@@ -1,5 +1,6 @@
 # Maintainer: Edinei Cavalcanti <hi@edinei.dev>
-pkgname=openvpn_manager
+pkgbase=openvpn-manager-git
+pkgname=('openvpn-manager-git')
 pkgver=10.8f8d8eb
 pkgrel=1
 pkgdesc="Command-line tool to manage OpenVPN 2.x and OpenVPN 3 sessions (start/stop, with more commands planned)."
@@ -7,8 +8,8 @@ arch=('x86_64')
 url="https://github.com/neiesc/openvpn_manager/tree/main"
 license=('MIT')
 depends=('openvpn3' 'openvpn')
-conflicts=('openvpn_manager')
-provides=('openvpn_manager')
+conflicts=('openvpn-manager')
+provides=('openvpn-manager-git')
 makedepends=('git' 'cargo')
 source=("${pkgname}"::"git+https://github.com/neiesc/openvpn_manager")
 sha512sums=('SKIP')
