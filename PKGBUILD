@@ -1,7 +1,7 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=xyvr
-pkgver=0.0.1alpha.11
-pkgrel=3
+pkgver=0.0.1_alpha.11
+pkgrel=4
 pkgdesc="XYVR is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
 arch=('x86_64')
 url="https://github.com/hai-vr/XYVR/"
@@ -49,7 +49,7 @@ package() {
     # Install icons in multiple sizes
     for size in 32 64 128 256 512; do
         install -dm755 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-        convert "build/linux-unpacked/icon.png" -resize "${size}x${size}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/xyvr.png"
+        magick "build/linux-unpacked/icon.png" -resize "${size}x${size}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/xyvr.png"
     done
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
