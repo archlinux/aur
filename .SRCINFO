@@ -1,7 +1,7 @@
 pkgbase = go-ldap-admin
 	pkgdesc = go-ldap-admin旨在为OpenLDAP服务端提供一个简单易用，清晰美观的现代化管理后台。
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/opsre/go-ldap-admin
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = go-ldap-admin
 	optdepends = mysql: support mysql storage
 	optdepends = sqlite: support sqlite storage
 	provides = go-ldap-admin
+	backup = etc/go-ldap-admin/config.yml
 	source = go-ldap-admin.service
 	source = go-ldap-admin.sysusers
 	source = go-ldap-admin.tmpfiles

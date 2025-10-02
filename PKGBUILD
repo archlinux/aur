@@ -2,7 +2,7 @@
 
 pkgname=go-ldap-admin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="go-ldap-admin旨在为OpenLDAP服务端提供一个简单易用，清晰美观的现代化管理后台。"
 url="https://github.com/opsre/go-ldap-admin"
 arch=("x86_64" "aarch64" "loong64")
@@ -10,6 +10,7 @@ license=('Apache-2.0')
 provides=('go-ldap-admin')
 optdepends=('mysql: support mysql storage'
             'sqlite: support sqlite storage')
+backup=("etc/${pkgname}/config.yml")
 source=("go-ldap-admin.service"
         'go-ldap-admin.sysusers'
         'go-ldap-admin.tmpfiles')
