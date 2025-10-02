@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=tune
-_pkgver=1.2.1
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -12,21 +12,18 @@ license=('GPL-3.0-only')
 depends=(
   r-cli
   r-dials
-  r-dofuture
   r-dplyr
-  r-foreach
-  r-future
   r-generics
   r-ggplot2
   r-glue
   r-gpfit
   r-hardhat
-  r-lifecycle
   r-parsnip
   r-purrr
   r-recipes
   r-rlang
   r-rsample
+  r-tailor
   r-tibble
   r-tidyr
   r-tidyselect
@@ -53,8 +50,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1046ed825d2d365f80df947317004353')
-b2sums=('bafac18fbb0118f02167cb5b98a9691e2fadd6d72dd38f4c5ec7a832678d72856446a29a9e99a434b7e1780808cf18a754b11971eb71a3404f6131dab68c2e37')
+md5sums=('152b86d78f4fb0aee2ba727e34d11157')
+b2sums=('332afd311837cceeb01e2bbcf17c32ea7c5a6f17bccaf5b4401ee01cd2de0533885ba6369a60503a133d962fa60c14541a6fdc95e44a620b84eccc4bc4a2768d')
 
 build() {
   mkdir build
