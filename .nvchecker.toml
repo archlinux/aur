@@ -1,0 +1,4 @@
+[mendingwall]
+source = "git"
+git = "https://github.com/lawmurray/mendingwall.git"
+prefix = "v"
