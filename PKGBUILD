@@ -3,11 +3,14 @@
 pkgname=python-deezer-py
 _pkgname=deezer-py
 pkgver=1.3.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A wrapper for all Deezer's APIs"
 url="https://gitlab.com/RemixDev/deezer-py"
 arch=('any')
 license=('GPL-3.0-or-later')
+# The two projects unfortunately use the same
+# project name and some file names like utils.py
+conflicts=('python-deezer')
 depends=('python' 'python-requests')
 makedepends=('python-setuptools' 'python-build' 'python-installer')
 # The project is abandoned and release was not tagged, so let's use the commit
