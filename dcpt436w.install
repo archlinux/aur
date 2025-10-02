@@ -1,8 +1,8 @@
 # The install script source is from rpm and deb packet, control.tar.gz
 #
 # NOTE:
-# since Arch Linux doesn't have SELinux enabled by default, 
-# some parts of this script have been commented out. 
+# since Arch Linux doesn't have SELinux enabled by default,
+# some parts of this script have been commented out.
 # if you've manually enabled SELinux, you can uncomment
 # these lines before installing this package
 #
@@ -76,7 +76,7 @@ post_remove() {
   if [[ -f "/tmp/dcpt436w_latest_print_info" ]] ; then
     rm -f /tmp/dcpt436w_latest_print_info
   fi
-  
+
   # SELinux lines
   #if [ "$(which semanage 2> /dev/null)" != '' ];then
   #  semanage fcontext -d -t cupsd_rw_etc_t '/opt/brother/Printers/dcpt436w/inf(/.*)?'
