@@ -2,18 +2,18 @@
 
 _Name="zigenity"
 pkgname="${_Name,,}"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts (like zenity but written in zig)"
 arch=('aarch64' 'x86_64')
 url="https://github.com/r4gus/${_Name}"
 license=('MIT')
 depends=()
-makedepends=('zig>=0.14.0' 'zig<0.15.0')
+makedepends=('zig>=0.15.0' 'zig<0.16.0')
 _pkgsrc="${_Name}-${pkgver}"
 noextract=()
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('123fd528d5ad3e23d45fd23d4f5691a9b61341c66f2a1f22c6a1f7c9b47e063c5ecf988e94ce58ab6274edf14f13950613dff65584fe0842a49d9ba515b4668e')
+b2sums=('f04d23ab432830e02adc25315ef16b246ada3f86a6217da718667bd340e9e07d97f9e03854a5c8557c5539267811652507536099a8ca574a4aacb46790f69488')
  
 build() {
   cd "${srcdir}/${_pkgsrc}"
