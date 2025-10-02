@@ -1,9 +1,8 @@
 # Maintainer: George Hu <integral@archlinux.org>
-# Contributor: nlsdt <githubaccount2333@proton.me>
 
 pkgname=piliplus
 _srcname=PiliPlus
-pkgver=1.1.4.6
+pkgver=1.1.4.7
 pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
@@ -13,13 +12,12 @@ depends=('gtk3' 'mpv' 'libayatana-appindicator')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 source=("git+${url}.git#tag=${pkgver}"
 	"${pkgname}.desktop")
-sha256sums=('3ad9b04e589f9845e8f76992662dd0ee66c876d04e63957a010c35fe1e79927a'
+sha256sums=('336dbbbcc2b3e216db00f2a4006b0dae88d49124e38afa75905a9b184a879ade'
             'cad91a008e837952ec7268312ce9f5305a59783584843df7dbb10230464b8731')
 
 prepare() {
 	cd "${_srcname}/"
-	fvm install stable
-	fvm use stable -f
+	fvm install
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }
