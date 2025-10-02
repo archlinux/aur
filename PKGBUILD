@@ -1,7 +1,7 @@
 # Maintainer: kvtodev kvtodev@outlook.com
 
 pkgname=ollama-proxy
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Proxy to wrap local Ollama requests with basic auth and HTTPS to remote auth-required service"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('custom:unknown')
 depends=()
 makedepends=('cargo')
 source=("${pkgname}::git+${url}.git"
-  "ollama-proxy.service"
+  "ollama-proxy@.service"
   )
 sha256sums=('SKIP'
             'SKIP')
@@ -26,8 +26,8 @@ package() {
   cd "${srcdir}/${pkgname}"
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # systemd service
-  install -Dm644 "${srcdir}/ollama-proxy.service" "${pkgdir}/usr/lib/systemd/system/ollama-proxy.service"
+  # systemd service template for per-user instances
+  install -Dm644 "${srcdir}/ollama-proxy@.service" "${pkgdir}/usr/lib/systemd/system/ollama-proxy@.service"
 
   # docs
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"

@@ -8,7 +8,7 @@ pkgbase = ollama-proxy
 	license = custom:unknown
 	makedepends = cargo
 	source = ollama-proxy::git+https://github.com/k88936/ollama-proxy.git
-	source = ollama-proxy.service
+	source = ollama-proxy@.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
