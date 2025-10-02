@@ -16,11 +16,11 @@ optdepends=('sane: scanning support'
 source=("https://download.brother.com/welcome/dlf106514/${_printer}pdrv-${pkgver}-1.x86_64.rpm" "spool.patch")
 sha256sums=('f0ccd678ac10b739adda579f97004f80d234e9741498a96ace76c68bd6345057'
             'a1ec36a6a72082b92a5866d379c4e124d16f6d407284404d4f0adaf47175e6b7')
-install="dcpt436w.install"
+install="${_printer}.install"
 
 package() {
  #unzip rpm file and go to pkgdir
-  bsdtar -xf "dcpt436wpdrv-3.6.1-1.x86_64.rpm" -C "${pkgdir}"
+  bsdtar -xf "${_printer}pdrv-${pkgver}-1.x86_64.rpm" -C "${pkgdir}"
   cd "${pkgdir}"
 
  #used directories
@@ -36,9 +36,10 @@ package() {
  #include filter required by cups libraries
   install "${_dir_opt}/cupswrapper/brother_lpdwrapper_${_printer}" -Dm755 -t "${_dir_filter}"
 
-  #include symbolic link for brother printer configuration
+ #include symbolic link for brother printer configuration
   mkdir -p "${pkgdir}/${_dir_bin}"
-  ln -s "/${_dir_opt}/lpd/x86_64/brprintconf_${_printer}" "${_dir_bin}"
+  ln -s "/${_dir_opt}/lpd/x86_64/brprintconf_${_printer}" "${_dir_opt}/lpd"
+  ln -s "/${_dir_opt}/lpd/brprintconf_${_printer}" "${_dir_bin}"
 
  #install licenses inside the created brother's license directory
   mkdir -p "${pkgdir}/${_dir_licenses}"

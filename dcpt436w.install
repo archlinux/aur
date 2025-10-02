@@ -8,9 +8,8 @@
 #
 #
 install_script () {
- #postinst part
+  #postinst part
   ln -s /opt/brother/Printers/dcpt436w/lpd/x86_64/brdcpt436wfilter           /opt/brother/Printers/dcpt436w/lpd/brdcpt436wfilter
-  ln -s /opt/brother/Printers/dcpt436w/lpd/x86_64/brprintconf_dcpt436w       /opt/brother/Printers/dcpt436w/lpd/brprintconf_dcpt436w
 
   /opt/brother/Printers/dcpt436w/inf/setupPrintcapij dcpt436w -i  
   /opt/brother/Printers/dcpt436w/cupswrapper/cupswrapperdcpt436w
@@ -70,7 +69,6 @@ pre_remove() {
   /opt/brother/Printers/dcpt436w/cupswrapper/cupswrapperdcpt436w -e
   /opt/brother/Printers/dcpt436w/inf/setupPrintcapij dcpt436w -e
   unlink /opt/brother/Printers/dcpt436w/lpd/brdcpt436wfilter
-  unlink /opt/brother/Printers/dcpt436w/lpd/brprintconf_dcpt436w
 }
 
 post_remove() {
