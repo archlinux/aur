@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-compressed-tensors
 _pkgname=compressed-tensors
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="versatile and efficient way to store and manage compressed tensor data"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(python python-pytorch python-safetensors python-pydantic python-acceler
 makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=(jupyter-nbconvert jupyter-nbformat python-frozendict python-transformers python-loguru)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e6c4a9daf521557ca42861ca595c576a10c67958f81a7fe1ab44dcceab063e0d')
+sha256sums=('e28f3a43ad08f00eae0a4e3d4997aee8613bd870842997ea6709700db8e91c7f')
 prepare(){
   cd $_pkgname-$pkgver
   sed -i -E 's|setuptools_scm[=<>]+[0-9.]+|setuptools_scm|' pyproject.toml
