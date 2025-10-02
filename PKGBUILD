@@ -14,6 +14,7 @@ depends=(
     "electron${_electronversion}"
     'ffmpeg'
     'python'
+    'yt-dlp'
 )
 options=(
     '!emptydirs'
@@ -51,7 +52,10 @@ prepare() {
     ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
     ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/better-sqlite3/build/node_gyp_bins/python3"
     ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/register-scheme/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/yt-dlp" "${srcdir}/squashfs-root/resources/app/bin/yt-dlp_linux"
     rm -rf \
+        "${srcdir}/squashfs-root/resources/app/bin/yt-dlp_macos \
+        "${srcdir}/squashfs-root/resources/app/bin/yt-dlp.exe \
         "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32} \
         "${srcdir}/squashfs-root/resources/ffmpeg.exe" \
         "${srcdir}/squashfs-root/resources/app/extra-resources/ffprobe.exe" \

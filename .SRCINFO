@@ -8,6 +8,7 @@ pkgbase = taratormusic-bin
 	depends = electron31
 	depends = ffmpeg
 	depends = python
+	depends = yt-dlp
 	provides = taratormusic=1.7.6
 	conflicts = taratormusic
 	options = !emptydirs
