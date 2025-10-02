@@ -42,17 +42,32 @@ pkgver() {
 build() {
     cd "$srcdir/hyprdm/gui-api"
 
-    echo ">>> FFI library building...."
+    # 1. C/FFI modu ile HDM_API ve wlrootbackends derleme
+    echo ">>> Building FFI libraries (hdm_api + wlrootbackends)..."
     export HDM_API_LIB_TYPE=c
-    cargo build --workspace --features c_ffi
+    cargo build --release --workspace --features c_ffi
 
-    echo ">>> Greeter building... (hyprdmgreeterd)..."
+    # 2. Rust modu ile HDM_API derleme
+    echo ">>> Building hdm_api in Rust mode..."
+    export HDM_API_LIB_TYPE=rust
+    cargo build --release
+
+    # 3. Greeter derleme
+    echo ">>> Building Greeter (hyprdmgreeterd)..."
     cd greeterd
     make
 }
 
 package() {
     cd "$srcdir/hyprdm/gui-api"
+
+    # Rust modu libhdm_api kopyalama
+    if [ -f "target/release/libhdm_api.so" ]; then
+        install -Dm755 "target/release/libhdm_api.so" "$pkgdir/usr/lib/libhdm_api.so"
+    fi
+    if [ -f "target/release/libhdm_api.a" ]; then
+        install -Dm644 "target/release/libhdm_api.a" "$pkgdir/usr/lib/libhdm_api.a"
+    fi
 
     # FFI kütüphanesi -> libhyprdmbackend.so.1
     if [ -f "target/release/libhyprdmbackend.so" ]; then
@@ -66,9 +81,10 @@ package() {
 
     # Config Manager -> hyprdmconfigmanager
     if [ -f "../configmanager/target/release/hyprdmconfigmanager" ]; then
-        install -Dm755 "configmanager/target/release/hyprdmconfigmanager" "$pkgdir/usr/bin/hyprdmconfigmanager"
+        install -Dm755 "../configmanager/target/release/hyprdmconfigmanager" "$pkgdir/usr/bin/hyprdmconfigmanager"
     fi
 
+    # Quickshell config
     if [ -d "../quickshell" ]; then
         mkdir -p "$pkgdir$HOME/.config/quickshell"
         cp -r quickshell/* "$pkgdir$HOME/.config/quickshell/"
