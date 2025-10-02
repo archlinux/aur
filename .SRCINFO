@@ -1,0 +1,20 @@
+pkgbase = wallpaperengine-gui
+	pkgdesc = GUI for linux-wallpaperengine
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/MikiDevLog/wallpaperengine-gui
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = cmake
+	depends = linux-wallpaperengine
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = qt6-multimedia
+	provides = wallpaperengine-gui
+	conflicts = wallpaperengine-gui
+	replaces = wallpaperengine-gui
+	source = wallpaperengine-gui-1.1.5.tar.gz::https://github.com/MikiDevLog/wallpaperengine-gui/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = 20b17b7641d3e468c9f6e5d276e7a493f8e6c0427b22f1ac8d0c2b8cab9754cf
+
+pkgname = wallpaperengine-gui
