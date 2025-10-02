@@ -1,0 +1,11 @@
+pkgbase = hyprdm-meta
+	pkgdesc = Metapaket for Hyprdm: installs hyprdm-full-git
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/hyprdm-full-git
+	arch = x86_64
+	license = GPL
+	depends = hyprdm-full-git
+	provides = hyprdm-meta
+
+pkgname = hyprdm-meta
