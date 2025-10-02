@@ -8,6 +8,7 @@ pkgbase = brother-dcpt220
 	license = GPL, EULA, custom:Brother License
 	depends = a2ps
 	depends = cups
+	depends = ghostscript
 	depends = lib32-glibc
 	optdepends = sane: scanning support
 	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
