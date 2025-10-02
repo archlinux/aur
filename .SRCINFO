@@ -5,7 +5,7 @@ pkgbase = pyfetch
 	license = MIT
 	depends = python
 	depends = python-pyfiglet
-	source = https://github.com/andresr124/pyfetch/releases/download/v1.0.0/pyfetch-1.0.0.tar.gz
+	source = https://github.com/andresr124/pyfetch/releases/download/v1.0.0-1/pyfetch-1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = pyfetch
