@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='general purpose datasource and executor'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant')
 provides=('elephant')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1307d14f753f11ee10fba94d0720a0a1b45e3336d92e489770c1c1b14fc8b74c')
+sha256sums=('b87803faa12804126309ee9d0b060761ae21e5e309616cc32c017065576aac89')
 
 build() {
     cd ${pkgname}-${pkgver}/cmd/elephant
