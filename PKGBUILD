@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=25.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -63,6 +63,10 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
+
+prepare() {
+  find -name index.docbook | xargs sed -e 's|aliasing "|aliasing"|' -i # Fix build with libxml2 2.15
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
