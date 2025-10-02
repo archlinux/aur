@@ -7,6 +7,7 @@ pkgbase = brother-dcpt436w
 	arch = x86_64
 	license = GPL, EULA, custom:Brother License
 	depends = a2ps
+	depends = ghostscript
 	depends = cups
 	depends = lib32-glibc
 	optdepends = sane: scanning support
