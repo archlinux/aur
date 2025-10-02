@@ -1,18 +1,20 @@
+# Maintainer: envolution
 # Maintainer: Bastien "neitsab" Traverse <neitsab@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=llama.cpp-vulkan-bin
-pkgver=b6663
+pkgver=b6670
 pkgrel=1
 pkgdesc="LLM inference in C/C++ (with Vulkan GPU optimizations) (precompiled Linux binaries)"
 arch=("x86_64")
 url="https://github.com/ggerganov/llama.cpp"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git" "${pkgname/-vulkan/}" "${pkgname/-vulkan-bin/}")
-depends=(curl gcc-libs)
+provides=("llama.cpp" libggml ggml)
+conflicts=("llama.cpp" libggml ggml)
+depends=(curl gcc-libs vulkan-icd-loader)
 source=("${pkgname%-bin}-${pkgver}.zip"::"${url}/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-vulkan-x64.zip"
-        "README-${pkgver}.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/${pkgver}/README.md")
-sha256sums=('59380605418f475d82a49271d46b6ce37fbf4e1227c11242b97f3dd826230df0'
+  "README-${pkgver}.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/${pkgver}/README.md")
+sha256sums=('f15d2602ea6a83d6e3f0fa876ab26e24fa50945d96144defbade7737b55381eb'
             'e59cd4d5cf94fffbe3c8df0883956c2cdfe0652dda46eb41fc49413ee4da694e')
 
 package() {
@@ -22,3 +24,4 @@ package() {
   install -Dm644 "build/bin/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/$pkgname/README.md"
 }
+# vim:set ts=2 sw=2 et:
