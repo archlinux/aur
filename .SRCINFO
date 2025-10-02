@@ -1,8 +1,8 @@
 pkgbase = fldigi
 	pkgdesc = Digital Modem Program for Amateur Radio
-	pkgver = 4.2.06
+	pkgver = 4.2.09
 	pkgrel = 1
-	url = http://w1hkj.com
+	url = http://w1hkj.org
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -17,8 +17,8 @@ pkgbase = fldigi
 	depends = hamlib
 	depends = hamradio-menus
 	optdepends = pulseaudio: pulseaudio support
-	source = http://w1hkj.com/files/fldigi/fldigi-4.2.06.tar.gz
-	md5sums = 197b3af44708bdc3a54e5154b3bd3410
-	sha256sums = 4360de225d6f8cfeb9bb6a5be6ac492e52702c8f704f87609c452d3bcb1b6c08
+	source = http://w1hkj.org/files/fldigi/fldigi-4.2.09.tar.gz
+	md5sums = d8c8b9dd45db165aaef17d6d39c81000
+	sha256sums = 2fe823e0343210e84f60080e42e32d29ff512f31c9e000941ef1897170e22c37
 
 pkgname = fldigi
