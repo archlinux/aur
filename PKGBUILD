@@ -3,7 +3,7 @@
 _pkgauthor=Jojo4GH
 _pkgname=nav
 pkgname=${_pkgname}-bin
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='The interactive and stylish replacement for ls & cd!'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('d5532d342ac8c329541cd225a66c5cfdcac577dbb400024cae4b5195ba5e95ea'
-            'fad856aa6c5dfbf977836611ab54deef1436745e92bf2b87e4c8f5b536f27dc0')
-sha256sums_x86_64=('8d4384bb3bce480140d4c6ee24fe6a766ab04aa426e157b7a84957549928b98a')
-sha256sums_aarch64=('b10fe162e11e4133ddc8c1d5fed830e413c3576a6edf8cc6b3f19180dbeef739')
+            'f29b0f00a5394e93f3468b872940771a9ea655496bbfa93f80677506ecd8f0df')
+sha256sums_x86_64=('3740b6acb28c34882178d4e34d2b5639896236e30a3cfa31aad2c0412555d786')
+sha256sums_aarch64=('925f82b575e6805f605396ae1480c257604e6455a1d395df13c3ad6c3067aecd')
 
 build() {
   cd "${srcdir}/" || exit
