@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="GNU Unifont Glyphs (OTB version)"
 arch=('any')
 url="https://unifoundry.com/unifont/"
-license=('GPL')
+license=('OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0')
 makedepends=('xorg-fonttosfnt')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.bdf.gz"{,.sig}
         "unifont-LICENSE.txt::https://unifoundry.com/LICENSE.txt")
