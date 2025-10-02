@@ -1,0 +1,21 @@
+pkgbase = voicevox-gpu-appimage
+	pkgdesc = Frontend for VOICEVOX TTS Engine
+	pkgver = 0.24.2
+	pkgrel = 1
+	url = https://github.com/VOICEVOX/voicevox
+	arch = x86_64
+	license = nonfree+GPL-3.0-only
+	makedepends = 7zip
+	provides = voicevox-gpu
+	conflicts = voicevox-gpu
+	replaces = voicevox-appimage
+	source = voicevox
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.24.2/VOICEVOX.AppImage.7z.001
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.24.2/VOICEVOX.AppImage.7z.002
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.24.2/VOICEVOX.AppImage.7z.003
+	sha256sums = SKIP
+	sha256sums = 7adc38a57f664535ed181d2cb556e23f8d8ec7d1cc57dface8f0f55c3c0d7229
+	sha256sums = 679598de80e820e94946e3b1820bb04c063179f27042f9175ef38ad854983254
+	sha256sums = edcd881679feb54bdf048895c0288992e45da272a9792d3cdfb359f8635576f0
+
+pkgname = voicevox-gpu-appimage
