@@ -4,7 +4,7 @@ repoowner="Blaadick"
 reponame="BStyle"
 pkgname="bstyle-qml-theme"
 pkgdesc="Style for QML applications"
-license=("GPL-3.0-or-later")
+license=("GPL-3.0-only")
 pkgver="0.0.1"
 pkgrel=1
 arch=("any")
@@ -23,8 +23,8 @@ build() {
 
 package() {
     cd "$reponame-$pkgver" || exit
+
     install -d "$pkgdir/usr/lib/qt6/qml/BStyle"
     cp -r "./cmake-build-release/qml/BStyle" "$pkgdir/usr/lib/qt6/qml"
-
     install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
