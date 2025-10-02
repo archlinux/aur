@@ -3,14 +3,14 @@
 pkgname=brother-dcpt436w
 _printer=dcpt436w
 pkgver=3.6.1
-pkgrel=1 
+pkgrel=1
 pkgdesc="Driver for the Brother DCP-T436W wifi multifuncional printer"
 url="https://support.brother.com/g/b/downloadtop.aspx?c=us_ot&lang=en&prod=dcpt436w_all"
 license=('GPL, EULA, custom:Brother License')
 arch=('x86_64')
 depends=('a2ps' 'cups' 'lib32-glibc')
-optdepends=('sane: scanning support' 
-            'sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners' 
+optdepends=('sane: scanning support'
+            'sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners'
             'brscan5: scanning driver required to make the printer available to sane' 
             'brscan-skey: scankey support if connected via USB')
 source=("https://download.brother.com/welcome/dlf106514/${_printer}pdrv-${pkgver}-1.x86_64.rpm" "spool.patch")
