@@ -1,3 +1,5 @@
+# Maintainer: Cabel <mxzcabel at tuta dot com>
+
 pkgname=brother-dcpt436w
 _printer=dcpt436w
 pkgver=3.6.1
