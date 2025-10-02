@@ -1,19 +1,21 @@
 pkgbase = brother-dcpt220
-	pkgdesc = Driver for the Brother DCP-T220 multifuncional printer
+	pkgdesc = Driver for the Brother DCP-T220 wifi multifuncional printer
 	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://support.brother.com/g/b/producttop.aspx?c=in&lang=en&prod=dcpt220_all
-	install = brother-dcpt220.install
-	arch = i686
+	install = dcpt220.install
 	arch = x86_64
-	license = custom:brother
+	license = GPL, EULA, custom:Brother License
 	depends = a2ps
 	depends = cups
 	depends = lib32-glibc
 	optdepends = sane: scanning support
-	optdepends = brscan4: making dcpt220 available to sane
-	optdepends = brscan-skey: scankey support if connected via usb
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: scanning driver required to make the printer available to sane
+	optdepends = brscan-skey: scankey support if connected via USB
 	source = https://download.brother.com/welcome/dlf105163/dcpt220pdrv-3.5.0-1.i386.rpm
+	source = spool.patch
 	sha256sums = 2244b72cb354f7be1140f5cd44ae54befaafb901f98ca100594f6b36e577c88a
+	sha256sums = a1ec36a6a72082b92a5866d379c4e124d16f6d407284404d4f0adaf47175e6b7
 
 pkgname = brother-dcpt220
