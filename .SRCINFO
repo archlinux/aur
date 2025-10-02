@@ -11,9 +11,9 @@ pkgbase = eden-nightly-bin
 	provides = eden
 	conflicts = eden
 	options = !strip
-	source_x86_64 = Eden-nightly-x86_64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/2025-10-01-27769/Eden-27769-Common-PGO-x86_64.AppImage
+	source_x86_64 = eden-nightly-PGO-x86_64_v3.AppImage::https://github.com/pflyly/eden-nightly/releases/download/2025-10-01-27769/Eden-27769-Common-PGO-x86_64.AppImage
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = Eden-nightly-aarch64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/2025-10-01-27769/Eden-27769-Linux-PGO-aarch64.AppImage
+	source_aarch64 = eden-nightly-PGO-aarch64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/2025-10-01-27769/Eden-27769-Linux-PGO-aarch64.AppImage
 	sha512sums_aarch64 = SKIP
 
 pkgname = eden-nightly-bin
