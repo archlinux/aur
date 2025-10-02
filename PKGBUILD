@@ -2,8 +2,8 @@
 _appname=constellation
 pkgname=constl-bin
 _pkgname=Constellation
-pkgver=1.0.2
-_electronversion=34
+pkgver=1.0.3
+_electronversion=37
 pkgrel=1
 pkgdesc="Graphical interface for Constellation.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -22,8 +22,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1c1425bec2ea03a6c4a19e536eec757f85bb7afd446e0434a45faec41c2cde30'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('9b72949c605fa2743b87216c621f3678f4f574367cda7e0724cc09a525546343'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,6 +37,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
