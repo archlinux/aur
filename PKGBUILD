@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=25.9.0
-_electronversion=30
+pkgver=25.10.0
+_electronversion=38
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -14,15 +14,12 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-${CARCH}.AppImage"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/actualbudget/actual/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f5e016514be4ba0e98158a0b05f20079568f8294cb6d4d59df03144e82eb0dd9'
+sha256sums=('32ce63434995ba9b48704fc56a9df4276f70829b62a69fb18d61ba870262f625'
             '71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
