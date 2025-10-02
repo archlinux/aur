@@ -298,9 +298,9 @@ _prepare() {
   # Composable kernels is not supported for all architectures.
   export USE_ROCM_CK=OFF
 
-  # Compile source code for supported GPU archs in parallel
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $($CC -print-libgcc-file-name))"
-  export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
+  # Compile source code for supported GPU archs in parallel (but using too many jobs is not helpful)
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=4 --gcc-install-dir=$(dirname $($CC -print-libgcc-file-name))"
+  export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=4"
 
   export AOTRITON_INSTALLED_PREFIX=/usr
 
