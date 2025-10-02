@@ -1,0 +1,21 @@
+pkgbase = python-callee
+	pkgdesc = Argument matchers for unittest.mock
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Xion/callee
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-taipan
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	depends = python
+	source = callee-0.3.1.tar.gz::https://github.com/Xion/callee/archive/0.3.1.tar.gz
+	source = python-312-compat.patch
+	sha512sums = d2c6f2f66f349a7ed884899a0384de371de55d6ac82accf8e2aceee2c54cea377f3db828985358bb3337528766d3d0953c179b9af4ffc0bb8158208258e46424
+	sha512sums = 094691a14531e74c5a6c8e500b6f09f04f23dccaba6c81ebfeac92acd42f28bdda46845f78184590ec58819ec3ee5455638528519b79efd633caaa366a09fbea
+
+pkgname = python-callee

@@ -1,0 +1,4 @@
+[python-callee]
+source = "github"
+github = "Xion/callee"
+use_max_tag = true
