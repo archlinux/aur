@@ -1,7 +1,7 @@
 # Maintainer: Popolon <popolon @ popolon.org >
 
 pkgname='videomass'
-pkgver='6.1.18'
+pkgver='6.1.20'
 pkgrel=1
 pkgdesc="A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp"
 url="http://jeanslack.github.io/Videomass/"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 license=('GPL-3.0-only')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a5867c741e53dc33e7119c8a437822d69fce56e3645528547d89740113cbe085')
+sha256sums=('e194572c8660914ef880278821f74fd0619faf7905b392b31d68f4b99da45d07')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
