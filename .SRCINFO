@@ -1,16 +1,16 @@
 pkgbase = ipswd-bin
 	pkgdesc = ipsw - Daemon
-	pkgver = 3.1.627
+	pkgver = 3.1.628
 	pkgrel = 1
 	url = https://github.com/blacktop/ipsw
 	license = MIT
 	conflicts = ipsw
 	provides = ipsw
 	arch = aarch64
-	source_aarch64 = https://github.com/blacktop/ipsw/releases/download/v3.1.627/ipswd_3.1.627_linux_arm64.tar.gz
-	sha256sums_aarch64 = 050e3d674d8969403d6afb2c788c27bf402f114eb66ebce859e444b76fc4b50a
+	source_aarch64 = https://github.com/blacktop/ipsw/releases/download/v3.1.628/ipswd_3.1.628_linux_arm64.tar.gz
+	sha256sums_aarch64 = 01904c272bfb66b9508ae7a2426ad55e599addc03d144566250071ec06ce1d3f
 	arch = x86_64
-	source_x86_64 = https://github.com/blacktop/ipsw/releases/download/v3.1.627/ipswd_3.1.627_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 68bf8d08dd0551712cbe1934ede2c2dc30e41d3b8d8da0d599688dcf5b2fd862
+	source_x86_64 = https://github.com/blacktop/ipsw/releases/download/v3.1.628/ipswd_3.1.628_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e7ebd2d1be52d7e7f0df360d6ccd8df63ae431910fc06d212100e894afd74986
 	
 pkgname = ipswd-bin
