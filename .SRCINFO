@@ -1,0 +1,20 @@
+pkgbase = llama.cpp-vulkan-bin
+	pkgdesc = LLM inference in C/C++ (with Vulkan GPU optimizations) (precompiled Linux binaries)
+	pkgver = b6663
+	pkgrel = 1
+	url = https://github.com/ggerganov/llama.cpp
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = gcc-libs
+	provides = llama.cpp-vulkan
+	conflicts = llama.cpp-vulkan
+	conflicts = llama.cpp-vulkan-git
+	conflicts = llama.cpp-bin
+	conflicts = llama.cpp
+	source = llama.cpp-vulkan-b6663.zip::https://github.com/ggerganov/llama.cpp/releases/download/b6663/llama-b6663-bin-ubuntu-vulkan-x64.zip
+	source = README-b6663.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b6663/README.md
+	sha256sums = 59380605418f475d82a49271d46b6ce37fbf4e1227c11242b97f3dd826230df0
+	sha256sums = e59cd4d5cf94fffbe3c8df0883956c2cdfe0652dda46eb41fc49413ee4da694e
+
+pkgname = llama.cpp-vulkan-bin

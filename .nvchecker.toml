@@ -1,0 +1,4 @@
+["llama.cpp-vulkan-bin"]
+source = "github"
+github = "ggerganov/llama.cpp"
+use_latest_release = true
