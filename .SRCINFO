@@ -17,6 +17,7 @@ pkgbase = whisker-shell-git
 	depends = fish
 	depends = ttf-outfit
 	depends = ttf-material-symbols-variable
+	depends = qt6-multimedia-ffmpeg
 	provides = whisker-shell
 	provides = whisker
 	conflicts = whisker-shell
