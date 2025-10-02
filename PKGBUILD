@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/matrix-org/synapse-s3-storage-provider'
 license=('Apache')
 makedepends=('python-setuptools')
-depends=('python-boto3' 'matrix-synapse' 'python-humanize' 'python-psycopg2')
+depends=('python-boto3' 'matrix-synapse' 'python-humanize' 'python-psycopg2' 'python-twisted')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c162f18be985ba723d0ee9791095741a2465a979b13d690388b6faf4a9f6749f')
 
