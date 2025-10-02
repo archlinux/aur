@@ -23,7 +23,7 @@ depends=('libstemmer' 'snappy' 'yaml-cpp' 'libunwind' 'curl' 'zstd' 'zlib'
          'libsasl' 'openssl' 'glibc' 'gcc14-libs')
 makedepends=('python' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
              'python-yaml' 'python-requests' 'python-pymongo' 'python-gitpython'
-             'python-distro' 'python-retry' 'gcc14' 'lld' 'onetbb'
+             'python-distro' 'python-retry' 'python-timeout-decorator' 'gcc14' 'lld' 'onetbb'
              'bazelisk' 'bc' 'libxml2-legacy')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh: interactive shell to connect with MongoDB')
@@ -38,17 +38,15 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         bazel-distro.patch
         bazel-version.patch
         bazelisk-url.patch
-        bazel-mongo-enterprise.patch
 )
 sha256sums=('bb3ff9c1a25eab9ecd58194e4918cb07f391040469b8a00c6a000f7bb2aa1827'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '59a522f2a20a003799dbff2846a5b7a2e46eb1deab75b0bb3c3746cfe2b5446e'
-            '0eb743ab868cdaf086fa9d7f791595c467904c8ecbe5e737b5296eea591bd9b2'
+            '282502b101d634cd860a8abd21e4aabbbe2b53d197917b25052536ea7f71bd43'
             '9e1770ff45f7e2169d577213bf11e1c8e3907c13ffac893112e2d368e63bcd4f'
             '2c3bb6d4d0b3feb48b89c92ae26cc6be251681c90b2daccb8c94073a2bfd2c2c'
             '94d9d5f898680af74271863286d2b407afe9e881a75c2fefe124aed692d7714a'
-            '36083b7c75f8723cea750fbde9935c96ba0273d963d0c1a4e712c7b0a30c7c0f'
 )
 
 prepare() {
