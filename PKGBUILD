@@ -14,14 +14,13 @@
 # https://github.com/NVIDIA/DALI/blob/4d95a057199a09590490b2d99ae0b9948655e07d/internal_tools/stub_generator/nvcuvid.json#L4-L5
 
 # update when available in pytorch
-# TODO enable 11.0 when properly patched in pytorch
-_CUDA_ARCH_LIST="7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;12.0;12.1;12.1+PTX"
-_CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;120;121;121-virtual"
+_CUDA_ARCH_LIST="7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;11.0;12.0;12.1;12.1+PTX"
+_CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;110;120;121;121-virtual"
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
 pkgver=0.23.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
