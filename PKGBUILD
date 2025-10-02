@@ -3,7 +3,7 @@
 
 pkgname=q-zandronum
 pkgver=1.4.20
-pkgrel=1
+pkgrel=2
 _fmodex_ver=4.44.64
 pkgdesc="Zandronum 3.0 fork with improved netcode and Quake movement"
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI se
 _pkgname=q-zandronum
 install=q-zandronum.install
 
-source_x86_64=("Q-Zandronum_${pkgver}_Linux_amd64.tar.gz::https://github.com/IgeNiaI/Q-Zandronum/releases/download/${pkgver}/Q-Zandronum_${pkgver}_Linux_amd64.gz")
-#latest=https://github.com/IgeNiaI/Q-Zandronum/releases/download/1.4.11/Q-Zandronum_1.4.11_Linux_amd64.tar.gz
+source_x86_64=("Q-Zandronum_${pkgver}_Linux_amd64.tar.gz::https://github.com/IgeNiaI/Q-Zandronum/releases/download/${pkgver}/Q-Zandronum_${pkgver}_Linux_amd64.tar.gz")
+#latest=https://github.com/IgeNiaI/Q-Zandronum/releases/download/1.4.20/Q-Zandronum_1.4.20_Linux_amd64.tar.gz
 source=(
 	'LICENSE.txt'
 	"${pkgname}.launcher"
