@@ -1,6 +1,6 @@
 pkgbase = siyuan
 	pkgdesc = A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.(Use system-wide electron)
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = siyuan
 	provides = siyuan
 	conflicts = siyuan
 	conflicts = siyuan-note
-	source = siyuan-3.3.3::git+https://github.com/siyuan-note/siyuan#tag=v3.3.3
+	source = siyuan-3.3.4::git+https://github.com/siyuan-note/siyuan#tag=v3.3.4
 	source = siyuan.sh
-	sha256sums = 441c9fa85206b2068af2cedd2782cf3968e44341adea9fe803b2ff11a9a465a1
+	sha256sums = 00cf19fea842709839c57e7e680ed4ce1c424e9b15ba96402cef993e216c7fd2
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = siyuan
