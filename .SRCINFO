@@ -5,6 +5,7 @@ pkgbase = pcf-unifont
 	url = https://unifoundry.com/unifont/
 	arch = any
 	license = OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0
+	noextract = unifont-17.0.01.pcf.gz
 	source = https://ftp.gnu.org/gnu/unifont/unifont-17.0.01/unifont-17.0.01.pcf.gz
 	source = https://ftp.gnu.org/gnu/unifont/unifont-17.0.01/unifont-17.0.01.pcf.gz.sig
 	source = unifont-LICENSE.txt::https://unifoundry.com/LICENSE.txt
