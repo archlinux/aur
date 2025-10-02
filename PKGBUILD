@@ -15,7 +15,7 @@ __pkgname=firedragon
 pkgname=$__pkgname-catppuccin
 _pkgname=FireDragon
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
@@ -75,11 +75,13 @@ options=(!debug
 backup=("usr/lib/${__pkgname}/${__pkgname}.cfg"
         "usr/lib/${__pkgname}/distribution/policies.json")
 source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-source.tar.zst
-        firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon)
+        firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
+        https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fc4c16a403454247c96c0d0a4e30239111af7b76.patch)
 source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
 source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
 sha256sums=('d4631ac9d65dfd0314bc85eeaaf6e61f6ef846ea48d181de918b274a9b9b789b'
-            '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0')
+            '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
+            'd5c11ae00e9a88465f1d65fcad46553c6ad45df71db37fbb28789823e2642f2c')
 sha256sums_x86_64=('6f9d8115bb3df582c0c5674507e906323b680be0f0b15e735d0cd5ec6be44444')
 sha256sums_aarch64=('4e3e86739fe527c6891dbfa73799a5ec1b11f45898aaebf73bf3247c2e6a53dd')
 
@@ -105,6 +107,9 @@ prepare() {
   export PATH="${srcdir}:$PATH"
 
   cd firedragon-source-v"${_pkgver}" || exit
+
+  # https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fc4c16a403454247c96c0d0a4e30239111af7b76
+  patch -Nsp1 -d firedragon -i "$srcdir"/fc4c16a403454247c96c0d0a4e30239111af7b76.patch
 
   _deno install --allow-scripts --frozen
 
