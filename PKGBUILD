@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=2.9.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('python' 'python-alembic' 'python-docker' 'python-flask' 'python-numpy'
     'python-click' 'python-cloudpickle' 'python-databricks-cli'
     'python-entrypoints' 'python-gitpython' 'python-pyaml'
     'python-protobuf' 'python-pytz' 'python-requests' 'python-packaging'
-    'python-importlib-metadata' 'python-sqlparse')
+    'python-importlib-metadata' 'python-sqlparse', 'python-opentelemetry-sdk', 'python-opentelemetry-exporter-otlp-proto-common')
 optdepends=('python-scikit-learn: for mlflow[extras, pipelines]'
             'python-pyarrow: for mlflow[extras, pipelines]'
             'python-boto3: for mlflow[extras]'
@@ -54,3 +54,4 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+sha256sums=('d3a5a92c2cdbb253b6762baebf0ed91183d37ead2cac977ed8c39fbe97b179e7')
