@@ -1,0 +1,5 @@
+[subtitles-contact-sheet-qt]
+source = "gitlab"
+gitlab = "vongooB9/subtitles_contact_sheet_qt"
+use_max_tag = true
+exclude_regex = ".*(pre|a|alpha|b|beta|rc).*"
