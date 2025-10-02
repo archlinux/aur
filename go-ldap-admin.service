@@ -2,6 +2,8 @@
 Description=Go Ldap Admin Service
 
 [Service]
+User=go-ldap-admin
+Group=go-ldap-admin
 WorkingDirectory=/etc/go-ldap-admin
 ExecStart=/usr/bin/go-ldap-admin
 
