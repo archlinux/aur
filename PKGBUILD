@@ -6,7 +6,7 @@
 pkgname=ax25-apps
 pkgver=0.0.8_rc5
 _pkgver=${pkgver//_/-}
-pkgrel=7
+pkgrel=8
 pkgdesc="Programs for the Amateur (Ham) Radio protocol AX.25."
 arch=('i686' 'x86_64')
 url='https://linux-ax25.in-berlin.de'
@@ -21,6 +21,9 @@ prepare () {
 	cd $srcdir/$pkgname-$_pkgver
 	sed -i -e "s#ncursesw/ncurses.h#ncurses.h#" call/call.c
 	sed -i -e "8i #include <stdlib.h>" ax25ipd/routing.c
+	sed -i -e "s#termio.h#termios.h#" ax25ipd/io.c
+	sed -i -e "s#struct termio#struct termios#" ax25ipd/io.c
+	sed -i -e "29i #include <sys/ioctl.h>" ax25ipd/io.c
 }
 
 build() {
