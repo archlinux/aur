@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspBFF
-_pkgver=0.95.0
+_pkgver=0.95.3
 pkgname=r-${_pkgname,,}
-pkgver=0.95.0
+pkgver=0.95.3
 pkgrel=1
 pkgdesc="A Bayes factor function module for JASP"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('608617e61371c322738cb12148e8b7ba6519d7cb8767710af3c3739b93e86553')
+sha256sums=('e682442570e1330e33b6143b6e06a846c0fbeaa3fd044bb78e8eceb67187ccb5')
 
 build() {
 
