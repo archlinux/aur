@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -12,7 +12,7 @@ depends=('gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant' 'elephant-desktopa
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("3a3102e707d3d7adb9b726d7e87c6d85417ae2834e898cab10fa2e1eaee63371")
+sha256sums=("ce290697cfb9516061689b1f4e299fea5010383aecc5e980bb41ab47f21c7370")
 
 build() {
     cd ${pkgname}-${pkgver}
