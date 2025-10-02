@@ -20,12 +20,11 @@ optdepends=(
 provides=("vesktop")
 conflicts=('vesktop')
 
-source=("$_pkgname::git+$url.git" "vesktop.desktop" "vesktop.sh" "afterPack.js")
+source=("$_pkgname::git+$url.git" "vesktop.desktop" "vesktop.sh")
 
 sha256sums=('SKIP'
             '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
-            'a2da313031cfaa892f0f2e51fd0ffafbc14001d4efb0523bb8bfaeb7f4ddc3fa'
-            '122b17ce996318e533e6f2ab1c9b2961b39c3eba271c9b40f10c0da5dd738baa')
+            'a2da313031cfaa892f0f2e51fd0ffafbc14001d4efb0523bb8bfaeb7f4ddc3fa')
 
 pkgver() {
   cd "$_pkgname"
@@ -35,9 +34,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-
-  # Add unpacked icon extraction script
-  sed -i '/"beforePack": "scripts\/build\/sandboxFix.js",/a\ \ \ \ \ \ \ \ "afterPack": "'$srcdir'/afterPack.js",' package.json
 
   # Use system's electron
   sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron\",\n/" package.json
@@ -57,9 +53,7 @@ package() {
 
   install -Dm644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop" # Install desktop entry
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
-  for _icons in 1024 512 256 128 64 48 32 16; do
-    install -Dm644 "dist/.icon-set/icon_${_icons}.png" "$pkgdir/usr/share/icons/hicolor/${_icons}x${_icons}/apps/$_pkgname.png"
-  done # Install icons
+  install -Dm644 "build/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg" # Install icons
 
   install -Dm755 "../vesktop.sh" "$pkgdir/usr/bin/$_pkgname" # Start script
 }
