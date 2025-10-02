@@ -1,0 +1,21 @@
+pkgbase = python-micropie
+	pkgdesc = An ultra micro ASGI web framework
+	pkgver = 0.23
+	pkgrel = 1
+	url = https://patx.github.io/micropie/
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-jinja
+	depends = python-orjson
+	depends = python-python-multipart
+	source = git+https://github.com/patx/micropie.git#tag=v0.23
+	sha256sums = 5e6bec2e3b3f52cef4304ff1d60812d50cf7a2109caa254ed89cf3c4c8588c9e
+
+pkgname = python-micropie
