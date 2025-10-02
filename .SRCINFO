@@ -1,6 +1,6 @@
 pkgbase = r-jaspbain
 	pkgdesc = Bain Module for JASP
-	pkgver = 0.95.0
+	pkgver = 0.95.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspBain
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-jaspbain
 	depends = r-jaspbase
 	depends = r-jaspgraphs
 	depends = r-jaspsem
-	source = jaspBain_0.95.0.tar.gz::https://github.com/jasp-stats/jaspBain/archive/refs/tags/v0.95.0.tar.gz
-	sha256sums = 559083c4b49ee1433655cb8a042e3bb46d2b6bd66dd28ad8a2b32b42c9db9dbe
+	source = jaspBain_0.95.3.tar.gz::https://github.com/jasp-stats/jaspBain/archive/refs/tags/v0.95.3.tar.gz
+	sha256sums = 58f610fcc20cf865f6e1802a1cc8a3738c923655b33a6d23b19bebc0c09fb53e
 
 pkgname = r-jaspbain
