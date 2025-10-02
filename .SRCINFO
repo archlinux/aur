@@ -1,6 +1,6 @@
 pkgbase = python-argopy
 	pkgdesc = Retrieve and analyse data from the Argo network of ocean profilers
-	pkgver = 0.1.16
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://argopy.readthedocs.io/
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = python-argopy
 	depends = python-decorator
 	depends = python-erddapy
 	depends = python-fsspec
+	depends = python-h5netcdf
 	depends = python-netcdf4
 	depends = python-packaging
 	depends = python-scipy
@@ -29,7 +30,9 @@ pkgbase = python-argopy
 	optdepends = python-matplotlib: plotting of profile data
 	optdepends = python-seaborn: visualization of statistical data
 	optdepends = python-tqdm: progress meters
-	source = argopy-0.1.16.tar.gz::https://github.com/euroargodev/argopy/archive/refs/tags/v0.1.16.tar.gz
-	sha256sums = 6cca63136113ea6a02d4c1f0ceca4b8669a2baaca1b7bd84881c3920e313ce92
+	source = argopy-1.3.0.tar.gz::https://github.com/euroargodev/argopy/archive/refs/tags/v1.3.0.tar.gz
+	source = argopy-pr526.patch::https://patch-diff.githubusercontent.com/raw/euroargodev/argopy/pull/526.patch
+	sha256sums = 2d065689dd5a241fb95a7113cca0dc40c539f18ea27414e7a69ed4f56b3a240c
+	sha256sums = 26dd405930011648234f8cec98fbde0708e2655c1bda8773d345d994a14e88ff
 
 pkgname = python-argopy

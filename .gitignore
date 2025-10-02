@@ -2,4 +2,5 @@ pkg/
 src/
 *.log
 argopy-*.tar.gz
+argopy-pr526.patch
 python-argopy-*.pkg.tar*
