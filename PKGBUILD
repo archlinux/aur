@@ -14,8 +14,19 @@ depends=('git' 'sudo'
 source=("$pkgname::git+https://github.com/Firstp1ck/Hyprland-Simple-Setup.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    : "${srcdir:?srcdir is not set}"
+    cd "$srcdir/$pkgname" || exit 1
+    # Prefer tags if available; fallback to commit count + short hash
+    git describe --tags --long --always 2>/dev/null \
+      | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/\./g' \
+      || printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
-    cd "$pkgname"
+    : "${pkgdir:?pkgdir is not set}"
+    : "${srcdir:?srcdir is not set}"
+    cd "$srcdir/$pkgname" || exit 1
     
     # Install all files to /usr/share/$pkgname
     install -dm755 "$pkgdir/usr/share/$pkgname"
