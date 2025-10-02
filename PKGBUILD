@@ -2,7 +2,7 @@
 
 _gemname=fpm
 pkgname=$_gemname
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
@@ -19,11 +19,10 @@ depends=(ruby
 optdepends=('squashfs-tools: Support for snaps')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
-sha256sums=('30dec8ca296f6ad5c817b2a073795eea2954f093fd925b8a6889e70a6d120de9')
+sha256sums=('006abf20b88261a96a64adf473d78f1bd4361265d909b2357cb506629258dd06')
 
 build() {
   cd $srcdir/$_gemname-$pkgver
-  sed -i 's/"clamp", "~> 1.0.0"/"clamp", ">= 1.0.0"/' fpm.gemspec
   make gem
 }
 

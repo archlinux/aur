@@ -1,6 +1,6 @@
 pkgbase = fpm
 	pkgdesc = Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/jordansissel/fpm
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = fpm
 	depends = ruby-stud
 	optdepends = squashfs-tools: Support for snaps
 	options = !emptydirs
-	source = fpm-1.16.0.tar.gz::https://github.com/jordansissel/fpm/archive/v1.16.0.tar.gz
-	sha256sums = 30dec8ca296f6ad5c817b2a073795eea2954f093fd925b8a6889e70a6d120de9
+	source = fpm-1.17.0.tar.gz::https://github.com/jordansissel/fpm/archive/v1.17.0.tar.gz
+	sha256sums = 006abf20b88261a96a64adf473d78f1bd4361265d909b2357cb506629258dd06
 
 pkgname = fpm
