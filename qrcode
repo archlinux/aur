@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v qrencode &> /dev/null; then
+    exit 1
+fi
+
+local schema="utf8i"
+
+# Detect if tty
+if TTY="$(tty)"; then
+    # Detect if true tty (not pty)
+    if [[ "$TTY" =~ ^/dev/tty[0-9]+$ ]]; then
+        # Detect current font from /etc/vconsole.conf
+        if CURRENT_FONT="$(grep "^FONT=" /etc/vconsole.conf)"; then
+            regex="^FONT=ter-([0-9])(.*)$"
+            if [[ $CURRENT_FONT =~ $regex ]]; then
+                CODEPAGES="${BASH_REMATCH[1]}"
+                SIZE_STYLE="${BASH_REMATCH[2]}"
+                if [ "$CODEPAGES" != "i" ]; then
+                    # If not a font that supports the special characters needed for utf8i, set font to one that does
+                    # If it fails, fallback to ANSI256
+                    setfont "ter-i${SIZE_STYLE}" || schema="ANSI256"
+                fi
+            else
+                # Unknown font, use ANSI256
+                schema="ANSI256"
+            fi
+        fi
+
+    fi
+fi
+qrencode "$1" -m 0 -t "$schema"
