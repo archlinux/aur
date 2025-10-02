@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=infer
-_pkgver=1.0.7
+_pkgver=1.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -42,8 +42,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('140720cc073022ef997fff807443ff99')
-b2sums=('84ccaad39782615f4e5ffd2dcd56a46b941d47b2f810d48c15c9183b370b6c313262f496e2e2c68c72fbd2ebc78bec07bc8a21fdd120ea1fadff7b20e9966aac')
+md5sums=('0d50b9d9b73b093564e1beb2279813ff')
+b2sums=('a8f0874a07a84b03f5464b62e57477f420f644479f605fb5041b56795d6ab3fb260e4b80cb41cf5050f6a065d4e70429232b87c4dd30102b3856deb8f8ff43c7')
 
 build() {
   mkdir build
