@@ -10,7 +10,7 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=258.rc3.r83398.46a688c5598
+pkgver=259.devel.r83944.613f7f26aa7
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -47,12 +47,12 @@ source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 sha512sums=('SKIP'
-            '1f7d48dea49c8adedf5a2be60861052b44c6ff7a4249218c2d7c779d357e1543e111c15d97beda5685e42805501f9e6c025152b942d8a5a8b882b3cdff2a11d6'
+            'beb15210d8afe69e1e47c99a81da5967428ccc64ece85b8a843333cb741eda061ae7a91a79cec8a1136a624e93e63140013986499589bf10edcc52d865729377'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
-            'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
+            '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
-            'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            '3cb8f88c1bffc753d0c540be5d25a0fdb9224478cca64743b5663340f2f26b197775286e6e680228db54c614dcd11da1135e625674a622127681662bec4fa886'
+            '32580b82e97573d3e499821e2ce415ff134c0ec52c9b44a3c0862c4007d347f55636d6afac3dfc6831a9b384c7448075bdf3a12f369b4d8b62b24dfdb9c8a76a'
+            '05a3b19a2132c8c3048a66f2d06a9f8790e9c84c9ebdacc358456e38c5ebc8c02c542838f6aca3301f19ae83bc9fda66e701c682624dd5cf9fb119e452338a56'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
@@ -85,15 +85,16 @@ build() {
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
     # We use these public name services, ordered by their privacy policy (hopefully):
-    #  * Cloudflare (https://1.1.1.1/)
-    #  * Quad9 (https://www.quad9.net/)
-    #  * Google (https://developers.google.com/speed/public-dns/)
-    '1.1.1.1#cloudflare-dns.com'
+    #  * Quad9 (https://quad9.net/privacy/policy/)
     '9.9.9.9#dns.quad9.net'
-    '8.8.8.8#dns.google'
-    '2606:4700:4700::1111#cloudflare-dns.com'
     '2620:fe::9#dns.quad9.net'
+    #  * Cloudflare (https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/)
+    '1.1.1.1#cloudflare-dns.com'
+    '2606:4700:4700::1111#cloudflare-dns.com'
+    #  * Google (https://developers.google.com/speed/public-dns/privacy)
+    '8.8.8.8#dns.google'
     '2001:4860:4860::8888#dns.google'
+    # You do not agree? Fine, change it in your local configuration.
   )
 
   local _meson_options=(
@@ -115,9 +116,6 @@ build() {
     -Dsshdprivsepdir=/usr/share/empty.sshd
     -Dvmlinux-h=provided
     -Dvmlinux-h-path=/usr/src/linux/vmlinux.h
-
-    # We disable DNSSEC by default, it still causes trouble:
-    # https://github.com/systemd/systemd/issues/10579
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
@@ -158,6 +156,8 @@ package_systemd-git() {
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
+  # Not all libs are linked, but opened via dlopen() pointed out by 6511918 at
+  # https://aur.archlinux.org/pkgbase/systemd-git#comment-1041291
   depends=("systemd-libs-git=${pkgver}"
            'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'

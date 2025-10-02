@@ -1,10 +1,7 @@
-From 0e8c18bc2639da328274d02d9222ee2c1f6bf696 Mon Sep 17 00:00:00 2001
+From 24112f5adb393febab43dbff3a8533146b25d7a3 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 6 Mar 2018 23:39:47 +0100
 Subject: [PATCH] Use Arch Linux' device access groups
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 
   cdrom   → optical
   dialout → uucp
@@ -17,10 +14,10 @@ Content-Transfer-Encoding: 8bit
  4 files changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 76ad51d3fb..5cf679b088 100644
+index e87c8ea2ec..8f56e87b68 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -915,19 +915,19 @@ conf.set_quoted('NOBODY_GROUP_NAME', nobody_group)
+@@ -949,20 +949,20 @@ conf.set_quoted('NOBODY_GROUP_NAME', nobody_group)
  static_ugids = []
  foreach option : ['adm-gid',
                    'audio-gid',
@@ -45,7 +42,7 @@ index 76ad51d3fb..5cf679b088 100644
                    'wheel-gid',
                    'systemd-journal-gid',
 diff --git a/meson_options.txt b/meson_options.txt
-index c616f23297..b35d37faf2 100644
+index c616f23297..3999595c2f 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
 @@ -289,12 +289,8 @@ option('adm-gid', type : 'integer', value : 0,
@@ -65,7 +62,7 @@ index c616f23297..b35d37faf2 100644
         description : 'soft-static allocation for the "kvm" group')
  option('lp-gid', type : 'integer', value : 0,
         description : 'soft-static allocation for the "lp" group')
-+option('optical-gid', type : 'integer', value : 0,
++option('optical-gid', type : 'integer', value : '0',
 +       description : 'soft-static allocation for the "optical" group')
  option('render-gid', type : 'integer', value : 0,
         description : 'soft-static allocation for the "render" group')
@@ -73,7 +70,7 @@ index c616f23297..b35d37faf2 100644
         description : 'soft-static allocation for the "sgx" group')
 -option('tape-gid', type : 'integer', value : 0,
 -       description : 'soft-static allocation for the "tape" group')
-+option('storage-gid', type : 'integer', value : 0,
++option('storage-gid', type : 'integer', value : '0',
 +       description : 'soft-static allocation for the "storage" group')
  option('tty-gid', type : 'integer', value : 5,
         description : 'the numeric GID of the "tty" group')
@@ -81,25 +78,25 @@ index c616f23297..b35d37faf2 100644
         description : 'soft-static allocation for the "users" group')
  option('utmp-gid', type : 'integer', value : 0,
         description : 'soft-static allocation for the "utmp" group')
-+option('uucp-gid', type : 'integer', value : 0,
++option('uucp-gid', type : 'integer', value : '0',
 +       description : 'soft-static allocation for the "uucp" group')
  option('video-gid', type : 'integer', value : 0,
         description : 'soft-static allocation for the "video" group')
  option('wheel-gid', type : 'integer', value : 0,
 diff --git a/rules.d/50-udev-default.rules.in b/rules.d/50-udev-default.rules.in
-index 843bdaf9ce..a192f091df 100644
+index 078a78ad1a..c54ef92943 100644
 --- a/rules.d/50-udev-default.rules.in
 +++ b/rules.d/50-udev-default.rules.in
-@@ -26,7 +26,7 @@ SUBSYSTEM=="tty", KERNEL=="sclp_line[0-9]*", GROUP="tty", MODE="0620"
- SUBSYSTEM=="tty", KERNEL=="ttysclp[0-9]*", GROUP="tty", MODE="0620"
- SUBSYSTEM=="tty", KERNEL=="3270/tty[0-9]*", GROUP="tty", MODE="0620"
+@@ -41,7 +41,7 @@ SUBSYSTEM=="tty", KERNEL=="ptmx", GROUP="tty", MODE="0666"
+ SUBSYSTEM=="tty", KERNEL=="tty", GROUP="tty", MODE="0666"
+ SUBSYSTEM=="tty", KERNEL=="tty[0-9]*|hvc[0-9]*|sclp_line[0-9]*|ttysclp[0-9]*|3270/tty[0-9]*", GROUP="tty", MODE="{{TTY_MODE}}"
  SUBSYSTEM=="vc", KERNEL=="vcs*|vcsa*", GROUP="tty"
 -KERNEL=="tty[A-Z]*[0-9]|ttymxc[0-9]*|pppox[0-9]*|ircomm[0-9]*|noz[0-9]*|rfcomm[0-9]*", GROUP="dialout"
 +KERNEL=="tty[A-Z]*[0-9]|ttymxc[0-9]*|pppox[0-9]*|ircomm[0-9]*|noz[0-9]*|rfcomm[0-9]*", GROUP="uucp"
  
  SUBSYSTEM=="mem", KERNEL=="mem|kmem|port", GROUP="kmem", MODE="0640"
  
-@@ -72,13 +72,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
+@@ -88,13 +88,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
  SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_USB_INTERFACES}=="*:0701??:*", GROUP="lp"
  
  SUBSYSTEM=="block", GROUP="disk"
@@ -120,10 +117,10 @@ index 843bdaf9ce..a192f091df 100644
  KERNEL=="qft[0-9]*|nqft[0-9]*|zqft[0-9]*|nzqft[0-9]*|rawqft[0-9]*|nrawqft[0-9]*", GROUP="disk"
  KERNEL=="loop-control", GROUP="disk", OPTIONS+="static_node=loop-control"
 diff --git a/sysusers.d/basic.conf.in b/sysusers.d/basic.conf.in
-index a602b872e4..8d38febb6a 100644
+index 503a4c4dac..0052690d97 100644
 --- a/sysusers.d/basic.conf.in
 +++ b/sysusers.d/basic.conf.in
-@@ -23,17 +23,17 @@ g utmp    {{UTMP_GID   }}     -            -
+@@ -24,18 +24,18 @@ g utmp    {{UTMP_GID   }}     -            -
  
  # Physical and virtual hardware access groups
  g audio   {{AUDIO_GID  }}     -            -
@@ -145,7 +142,3 @@ index a602b872e4..8d38febb6a 100644
  g video   {{VIDEO_GID  }}     -            -
  
  # Default group for normal users
-
-
---
-

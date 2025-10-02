@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-is_chrooted() {
+skip_chrooted() {
   if systemd-detect-virt --chroot; then
     echo >&2 "  Skipped: Running in chroot."
     exit 0
@@ -8,15 +8,17 @@ is_chrooted() {
 }
 
 systemd_live() {
-  is_chrooted
-  if [ ! -d /run/systemd/system ]; then
+  skip_chrooted
+
+  if ! systemd-notify --booted; then
     echo >&2 "  Skipped: Current root is not booted."
     exit 0
   fi
 }
 
 udevd_live() {
-  is_chrooted
+  systemd_live
+
   if [ ! -S /run/udev/control ]; then
     echo >&2 "  Skipped: Device manager is not running."
     exit 0
@@ -39,7 +41,7 @@ case "$op" in
     ;;
   daemon-reload-user)
     systemd_live
-    /usr/bin/systemctl kill --kill-whom='main' --signal='SIGHUP' 'user@*.service'
+    /usr/bin/systemctl reload 'user@*.service'
     ;;
   hwdb)
     /usr/bin/systemd-hwdb --usr update
@@ -66,10 +68,22 @@ case "$op" in
     fi
     ;;
 
+  # marked with 'systemctl set-property ... Markers=needs-restart'
+  restart-marked)
+    systemd_live
+    /usr/bin/systemctl reload-or-restart --marked
+    ;;
+
   # For use by other packages
   reload)
     systemd_live
     /usr/bin/systemctl try-reload-or-restart "$@"
+    ;;
+
+  # For use by other packages
+  restart)
+    systemd_live
+    /usr/bin/systemctl try-restart "$@"
     ;;
 
   *)
