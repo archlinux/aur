@@ -19,6 +19,6 @@ pkgbase = python-s3fs
 	depends = python-aiobotocore
 	depends = python-fsspec=2025.9.0
 	source = python-s3fs-2025.9.0.tar.gz::https://github.com/fsspec/s3fs/archive/refs/tags/2025.9.0.tar.gz
-	sha256sums = 511fa051888c1fc0ab1040ded7266856da8bd03753fa7266c1a780e4482680e1
+	sha256sums = c2bb2f79a904a68cf307849276c6b5ce944f9ecbb96972f3280a8681c77c212f
 
 pkgname = python-s3fs
