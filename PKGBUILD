@@ -14,10 +14,10 @@ options=(!strip)
 provides=('eden')
 conflicts=('eden')
 
-source_x86_64=("Eden-nightly-x86_64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27769-Common-x86_64.AppImage")
+source_x86_64=("Eden-nightly-x86_64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27769-Common-PGO-x86_64.AppImage")
 sha512sums_x86_64=('SKIP')
 
-source_aarch64=("Eden-nightly-aarch64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27769-Linux-aarch64.AppImage")
+source_aarch64=("Eden-nightly-aarch64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27769-Linux-PGO-aarch64.AppImage")
 sha512sums_aarch64=('SKIP')
 
 if [ "$CARCH" = "x86_64" ]; then
