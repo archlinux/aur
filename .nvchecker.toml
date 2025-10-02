@@ -1,0 +1,5 @@
+[cargo-leptos]
+source = "github"
+use_latest_release = true
+github = "leptos-rs/cargo-leptos"
+prefix = "v"
