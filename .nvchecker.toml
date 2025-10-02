@@ -1,0 +1,4 @@
+["walker-bin"]
+source = "git"
+git = "https://github.com/abenz1267/walker.git"
+prefix = "v"
