@@ -1,9 +1,8 @@
 # Maintainer: Brian Thompson <brianrobt@pm.me>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: SecByShresth <Shresthpaul133@gmail.com>
 
-# Maintainer: Your Name <your.email@example.com>
 pkgname=rapidyaml
 pkgver=0.10.0
 pkgrel=1
