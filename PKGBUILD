@@ -18,7 +18,7 @@ options=("!debug")
 build() {
     cd "$reponame-$pkgver" || exit
     cmake -B cmake-build-release -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
-    cmake --build cmake-build-release --parallel
+    cmake --build cmake-build-release --target bstyleplugin --parallel
 }
 
 package() {
