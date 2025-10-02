@@ -1,6 +1,6 @@
 pkgbase = r-jasppredictiveanalytics
 	pkgdesc = This module offers analyses for JASP
-	pkgver = 0.95.0
+	pkgver = 0.95.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspPredictiveAnalytics
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-jasppredictiveanalytics
 	depends = r-scoringrules
 	depends = r-scoringutils
 	optdepends = r-testthat
-	source = jaspPredictiveAnalytics_0.95.0.tar.gz::https://github.com/jasp-stats/jaspPredictiveAnalytics/archive/refs/tags/v0.95.0.tar.gz
-	sha256sums = 7b14aad059d9370c970676679144ae4736e4e834ab659631b2ba57b9d9617c4c
+	source = jaspPredictiveAnalytics_0.95.3.tar.gz::https://github.com/jasp-stats/jaspPredictiveAnalytics/archive/refs/tags/v0.95.3.tar.gz
+	sha256sums = 22cbf828bfa1f04183106c4562fc17d86c35c39f7d2fe4023fcd30b668d51e3e
 
 pkgname = r-jasppredictiveanalytics
