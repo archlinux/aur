@@ -23,3 +23,9 @@ else
   echo >&2 'Restoring original {{target}}'
   ln -fnsv '{{executable}}' '{{target}}'
 fi
+
+# shellcheck disable=SC2288 # that is just a template placeholder
+if '{{has_desktop_file_condition}}' && [ -e '{{desktop_file}}' ]; then
+  # Modify desktop entry so it points to the original executable
+  sed -i -E -e 's#^(Exec)=\S+#\1={{executable}}#' '{{desktop_file}}'
+fi

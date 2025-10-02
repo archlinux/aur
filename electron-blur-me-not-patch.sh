@@ -15,4 +15,10 @@ if [[ ! -L '{{target}}' ]]; then
 fi
 
 # Create or modify symlink so it points to the launcher script
-exec ln -fnsv '{{launcher}}' '{{target}}'
+ln -fnsv '{{launcher}}' '{{target}}'
+
+# shellcheck disable=SC2288 # that is just a template placeholder
+if '{{has_desktop_file_condition}}' && [ -e '{{desktop_file}}' ]; then
+  # Modify desktop entry so it points to the launcher script
+  sed -i -E -e 's#^(Exec)=\S+#\1={{launcher}}#' '{{desktop_file}}'
+fi
