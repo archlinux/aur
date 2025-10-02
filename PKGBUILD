@@ -1,7 +1,7 @@
 # Maintainer: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
-pkgver="0.4.0"
-pkgrel=2
+pkgver=0.4.0.r31.ge82583e
+pkgrel=1
 pkgdesc="Setup Hyprland the simple way. (Swiss/German Edition)"
 arch=('any')
 url="https://github.com/Firstp1ck/Hyprland-Simple-Setup.git"
@@ -17,10 +17,13 @@ sha256sums=('SKIP')
 pkgver() {
     : "${srcdir:?srcdir is not set}"
     cd "$srcdir/$pkgname" || exit 1
-    # Prefer tags if available; fallback to commit count + short hash
-    git describe --tags --long --always 2>/dev/null \
-      | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/\./g' \
-      || printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+    if git describe --tags --abbrev=0 >/dev/null 2>&1; then
+      git describe --tags --long --always \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+      printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 package() {
