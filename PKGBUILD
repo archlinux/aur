@@ -1,0 +1,30 @@
+# Maintainer: Blaadick <null>
+
+repoowner="Blaadick"
+reponame="BStyle"
+pkgname="bstyle-qml-theme"
+pkgdesc="Style for QML applications"
+license=("GPL-3.0-or-later")
+pkgver="0.0.1"
+pkgrel=1
+arch=("any")
+depends=("qt6-declarative")
+makedepends=("cmake" "ninja")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$repoowner/$reponame/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=("SKIP")
+url="https://github.com/$repoowner/$reponame"
+options=("!debug")
+
+build() {
+    cd "$reponame-$pkgver" || exit
+    cmake -B cmake-build-release -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+    cmake --build cmake-build-release --parallel
+}
+
+package() {
+    cd "$reponame-$pkgver" || exit
+    install -d "$pkgdir/usr/lib/qt6/qml/BStyle"
+    cp -r "./cmake-build-release/qml/BStyle" "$pkgdir/usr/lib/qt6/qml"
+
+    install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
