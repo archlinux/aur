@@ -1,0 +1,13 @@
+pkgbase = ulaa-bin
+	pkgdesc = Private, Secure & Fast Browsing
+	pkgver = 2.36.0
+	pkgrel = 1
+	url = https://ulaa.com
+	arch = x86_64
+	provides = ulaa-browser-stable
+	conflicts = ulaa-browser-stable
+	options = !debug
+	source_x86_64 = ulaa-browser-2.36.0-1.deb::https://ulaa.zoho.com/release/linux/stable/ulaa-browser-v2.36.0-amd64.deb
+	sha256sums_x86_64 = 1cb083f2794642ee1f1052f84de24d35d0e4bc722e3f8ed0b7ff09848dd40424
+
+pkgname = ulaa-bin
