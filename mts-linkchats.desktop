@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MTS LinkChats
+Exec="/usr/bin/mts-linkchats" %U
+Terminal=false
+Type=Application
+Icon=mts-linkchats
+StartupWMClass=MTS LinkChats
+Encoding=UTF-8
+MimeType=x-scheme-handler/wbnr;
+Comment=MTS Linkchats desktop application based on Electron and React
+Categories=Office;VideoConference;
