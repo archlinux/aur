@@ -10,7 +10,12 @@ pkgdesc="Julia version manager and package manager"
 arch=("x86_64")
 url='https://pypi.org/project/juliapkg/'
 license=("None")
-depends=()
+depends=(
+  "python-tomlkit"
+  "python-filelock"
+  "python-semver"
+  "python-tomli"
+)
 makedepends=(
 	"python-build"
 	"python-installer"
