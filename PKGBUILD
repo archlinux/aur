@@ -12,11 +12,11 @@ source=("https://github.com/fedoradesign/backgrounds/releases/download/v$pkgver/
 b2sums=('daeb247888ddba335c18be7284ba5953c6a88311b08818e52011d3cdeff98fc18f87a6289d24ab87864c86f9d06848f9a0e3e0d63f3ab74868672f94a0e6a6fc')
 
 build() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     make
 }
 
 package() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     make install DESTDIR="$pkgdir"
 }
