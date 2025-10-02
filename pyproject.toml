@@ -1,0 +1,11 @@
+[build-system]
+requires = ["scikit-build-core"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "OCP"
+version = "0.0.1"
+
+[tool.scikit-build]
+build.verbose = true
+build-dir = "build"

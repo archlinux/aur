@@ -32,6 +32,7 @@ rapidjson
 python-jinja
 python-toml
 python-setuptools
+python-scikit-build-core
 python-build
 python-installer
 python-wheel
@@ -68,6 +69,7 @@ source=(
   git+https://github.com/CadQuery/pywrap.git
   no_progress_bars.patch
   mpi_cmake.patch
+  pyproject.toml
 )
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
@@ -95,6 +97,9 @@ pkgver() {
 }
 
 prepare(){
+  # fix version for .whl
+  sed "s,^version.*,version = \"${pkgver}\"," --in-place pyproject.toml
+
   cd OCP
   git submodule init
   git config submodule.pywrap.url "${srcdir}"/pywrap
@@ -141,24 +146,36 @@ build() {
   cmake --build build_dir --verbose -j${_n_parallel_build_jobs}
   msg2 "OCP prepared."
 
-  local cmake_options2=(
-    -B build_dir2
-    -D CMAKE_BUILD_TYPE=Release
-    -S build_dir/OCP
-    -G Ninja
-    -W no-dev
-  )
+  deactivate
 
+  # build the .whl
   msg2 "Building OCP..."
-  cmake "${cmake_options2[@]}"
-  cmake --build build_dir2 --verbose -j${_n_parallel_build_jobs}
+  cd build_dir/OCP
+  echo -e '\npybind11_extension( OCP )' >> CMakeLists.txt
+  echo 'install(TARGETS OCP DESTINATION .)' >> CMakeLists.txt
+  cp "${srcdir}/pyproject.toml" .
+  CMAKE_GENERATOR=Ninja CMAKE_BUILD_PARALLEL_LEVEL=${_n_parallel_build_jobs} python -m build --wheel --no-isolation
+  cd -
   msg2 "OCP built."
 
-  deactivate
+  #local cmake_options2=(
+  #  -B build_dir2
+  #  -D CMAKE_BUILD_TYPE=Release
+  #  -S build_dir/OCP
+  #  -G Ninja
+  #  -W no-dev
+  #)
+
+  #msg2 "Building OCP..."
+  #cmake "${cmake_options2[@]}"
+  #cmake --build build_dir2 --verbose -j${_n_parallel_build_jobs}
+  #msg2 "OCP built."
 }
 
 check() {
+  python -m venv --without-pip --system-site-packages --clear venv
   source venv/bin/activate
+  python -m installer build_dir/OCP/dist/*.whl
   
   # prevent the current environment from skewing the testing
   # comment these if using community occt package
@@ -167,7 +184,7 @@ check() {
   #unset CASROOT
 
   # recursively import all submodules
-  LD_DEBUG=libs PYTHONPATH="${srcdir}/build_dir2" python - <<'____HERE'
+  LD_DEBUG=libs python - <<'____HERE'
 import inspect
 import importlib
 import OCP
@@ -186,9 +203,9 @@ ____HERE
 }
 
 package(){
-  #python -m installer --destdir="${pkgdir}" dist/*.whl
-  local _pysyspath="${pkgdir}$(python -c 'import sys; print(sys.path[-1])')"
-
-  install -Dt "${_pysyspath}" -m644 build_dir2/OCP.*.so
+  #local _pysyspath="${pkgdir}$(python -c 'import sys; print(sys.path[-1])')"
+  #install -Dt "${_pysyspath}" -m644 build_dir2/OCP.*.so
+  
+  python -m installer --destdir="$pkgdir" build_dir/OCP/dist/*.whl
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 OCP/LICENSE
 }
