@@ -2,13 +2,11 @@
 pkgname=pyfetch
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A Python-based Neofetch alternative"
 arch=('any')
-url="https://github.com/yourusername/pyfetch"
 license=('MIT')
 depends=('python' 'python-pyfiglet')
-source=("$pkgname-$pkgver.tar.gz")
-md5sums=('SKIP')  # Replace with actual checksum if needed
+source=("https://github.com/andresr124/pyfetch/releases/download/v${pkgver}/pyfetch-${pkgver}.tar.gz")
+sha256sums=('SKIP')  # Replace with actual checksum if you prefer
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
