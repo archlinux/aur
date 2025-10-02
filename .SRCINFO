@@ -1,4 +1,4 @@
-pkgbase = pacsea
+pkgbase = pacsea-git
 	pkgdesc = Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust
 	pkgver = 0.2.0
 	pkgrel = 1
@@ -11,8 +11,9 @@ pkgbase = pacsea
 	depends = curl
 	optdepends = paru: for AUR package installation
 	optdepends = yay: alternative AUR helper
+	conflicts = pacsea
 	conflicts = pacsea-bin
 	source = git+https://github.com/Firstp1ck/Pacsea.git#tag=v0.2.0
 	sha256sums = SKIP
 
-pkgname = pacsea
+pkgname = pacsea-git

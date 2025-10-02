@@ -1,5 +1,5 @@
 # Maintainer: Firstpick firstpick1992@proton.me
-pkgname=pacsea
+pkgname=pacsea-git
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust"
@@ -10,7 +10,7 @@ depends=('pacman' 'curl')
 optdepends=('paru: for AUR package installation'
             'yay: alternative AUR helper')
 makedepends=('cargo' 'git')
-conflicts=('pacsea-bin')
+conflicts=('pacsea' 'pacsea-bin')
 source=("git+https://github.com/Firstp1ck/Pacsea.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
