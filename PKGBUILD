@@ -48,7 +48,7 @@ package() {
   install -d "$pkgdir/usr/lib/$_name"
   install -d "$pkgdir/usr/bin"
 
-  cp "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$_name"
+  cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_name"
 
   install -Dm644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop" # Install desktop entry
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
