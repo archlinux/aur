@@ -13,7 +13,7 @@ source=("git+https://gitlab.com/dmotp/dmotp.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/dmotp"
   ( set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
