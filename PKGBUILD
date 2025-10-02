@@ -1,5 +1,4 @@
 # Maintainer: mdmrk <mariodavo.20@gmail.com>
-# Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=Eden
 pkgname=eden-nightly-bin
