@@ -2,7 +2,7 @@
 
 pkgname=qrca-git
 epoch=1
-pkgver=25.03.70.r465.fd21812
+pkgver=25.11.70.r522.9f27740
 pkgrel=1
 pkgdesc="Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices."
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ depends=(
     "kservice"
     "qt6-base"
     "kirigami"
+    "kirigami-addons"
     "purpose"
 )
 makedepends=(

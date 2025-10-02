@@ -1,6 +1,6 @@
 pkgbase = qrca-git
 	pkgdesc = Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices.
-	pkgver = 25.03.70.r465.fd21812
+	pkgver = 25.11.70.r522.9f27740
 	pkgrel = 1
 	epoch = 1
 	url = https://apps.kde.org/de/qrca/
@@ -27,6 +27,7 @@ pkgbase = qrca-git
 	depends = kservice
 	depends = qt6-base
 	depends = kirigami
+	depends = kirigami-addons
 	depends = purpose
 	provides = qrca
 	conflicts = qrca
