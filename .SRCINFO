@@ -1,0 +1,24 @@
+pkgbase = gmpublisher-bin
+	pkgdesc = Workshop Publishing Utility for Garry's Mod, written in Rust & Svelte and powered by Tauri
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://github.com/WilliamVenner/gmpublisher
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = unzip
+	depends = webkit2gtk
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	provides = gmpublisher
+	conflicts = gmpublisher
+	source = gmpublisher_linux64.zip::https://github.com/WilliamVenner/gmpublisher/releases/download/2.11.1/gmpublisher_linux64.zip
+	source = LICENSE::https://raw.githubusercontent.com/WilliamVenner/gmpublisher/2.11.1/LICENSE
+	source = gmpublisher.png::https://raw.githubusercontent.com/WilliamVenner/gmpublisher/2.11.1/src-tauri/icons/128x128.png
+	sha256sums = 3557f4117aed96652c76590f5727953868a377b1dee6391cdc0e14decd36252d
+	sha256sums = d1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa
+	sha256sums = 5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265
+
+pkgname = gmpublisher-bin
