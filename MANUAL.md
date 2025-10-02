@@ -8,8 +8,6 @@
     * [1](#error-1)
     * [-1](#error--1-255)
 
-
-
 # Configuration
 
 A complete configuration file with comments can be found as [`albafetch.conf`](albafetch.conf) in this repository.
@@ -36,9 +34,9 @@ There are three different types of data that will be parsed:
 All of this means that `AB"CboldDEF"whatever lol"wo"w` will be parsed the exact same way as `bold = "true",` or `bold""`, but I would not recommend this as it makes everything less readable. I might also stop supporting this at any moment, so the specified syntax is the only one that's guaranteed to work.
 I might also make the parser stricter in the future and configs written this way might stop working entirely.
 
-Also, any `~` that you may want to use will not get expanded to `/home/username` and will instead be parsed as it is. If you want to revence your home directory inside of this config file (e.g. to specify the path to a custom ascii art) you will have to do so manually. 
+Also, any `~` that you may want to use will not get expanded to `/home/username` and will instead be parsed as it is. If you want to reference your home directory inside of this config file (e.g. to specify the path to a custom ascii art) you will have to do so manually. 
 
-A specific option that's worth spending some extra time talking about is `ascii_art`. This option expects the path to a file that contains a custom logo. Its syntax is really straight-forward: You can specify up to 47 lines you want to use as logo (which can not be longer than 128 bytes long, including the closing null character. Note that Unicode characters will be bigger than 1B), and eventually a color on the first line. Anything that's not recognized as a color ("colors" are defined as black, red, green, yellow, blue, purple, cyan, gray or white) Will be considered the first line of the logo.
+A specific option that's worth spending some extra time talking about is `ascii_art`. This option expects the path to a file that contains a custom logo. Its syntax is really straight-forward: You can specify up to 40 lines you want to use as logo (which can not be longer than 256 bytes long, including the closing null character. Note that Unicode characters will be bigger than 1B), and eventually a color on the first line. Anything that's not recognized as a color ("colors" are defined as black, red, green, yellow, blue, purple, cyan, gray or white) Will be considered the first line of the logo.
 
 This is what a logo file could look like:
 ```
@@ -66,16 +64,16 @@ You can found a list of the accepted modules inside of [the default config](alba
 To parse this section, albafetch first locates a string matching `modules` in the config file, takes the part between the following curly braces, and reads the text between the following pairs of quotation marks.
 As for normal options, this allows some weird formats, like `modules{"module1""module2""module3"}`, but I also invite anyone to consider the parsing of similar strings undefined behavior.
 
-Anything that doesn't match what the parser is looking for will be ignored, but the usage of explicit comments is encouraged:
-Anything between a `;` or a `#` and the end of the line will not be read as part of the config. There is currently no way to use multi-line comments.
+Anything that doesn't match what the parser is looking for will be ignored, but the usage of explicit comments is encouraged: whatever stands between a `;` or an `#` and the end of the line will not be read as part of the config. You can, however, still freely use `#` and `;` in your config, as they will **not** be considered when enclosed in a string (between a pair of `"`).
+There is currently no way to use multi-line comments. 
 
 When albafetch parses a file (config or custom ascii art), it will also automatically unescape some escape sequences, like the following table shows:
 | File content | How it will be parsed |
 | ---          | ---                   |
-| "\\\\"       | "\\"                  |
-| "\\e"        | "\\033" (ANSI escape) |
-| "\\033"      | "\\033" (ANSI escape) |
-| "\\n"        | "\\n" (new line)      |
+| "\\e"        | '\\033' (ANSI escape) |
+| "\\033"      | '\\033' (ANSI escape) |
+| "\\n"        | '\\n' (new line)      |
+| "\\X"        | 'X' (everything else) |
 
 Since it might be useful, here are some of the most useful ANSI escape sequences (you can find a more complete list [here](https://stackoverflow.com/a/33206814))
 | Function | Escape   |
@@ -89,7 +87,7 @@ Since it might be useful, here are some of the most useful ANSI escape sequences
 | Blue     | `\e[34m` |
 | Purple   | `\e[35m` |
 | Cyan     | `\e[36m` |
-| White    | `\e[37m` |
+| White    | `\e[97m` |
 
 Please note that these colors will be displayed as defined in the configuration of your terminal.
 You can check how a certain string will look using something like `echo -e "\e[1mHello, \e[31mWorld\e[0m"`.
@@ -101,7 +99,7 @@ albafetch accepts a few command line arguments, which can be used to override ce
 A short explanation of what every argument does, including every accepted and default value, can be obtained by running `albafetch --help`
 
 Here they are:
-* `--help` (or `-h`): Prints a small guide on the program usage and return 0.
+* `--help` (or `-h`): Prints a small guide on the program usage and return RET_OK.
 * `--color` (or `-c`): Followed by the color you want to set, this option will override the config `default_color` entry and set a custom color for the whole output.
 * `--bold` (or `-b`): Followed by a boolean "on" or "off", this option overrides the config `bold` entry and enables or disables the usage of bold in the output.
 * `--logo` (or `-l`): This option, followed by the logo you want to print, overrides the config `logo` entry and makes albafetch print a custom logo instead of the default one.

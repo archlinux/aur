@@ -1,13 +1,32 @@
 # albafetch ~by alba4k
 
+#### Note: to prevent merge conflicts, please open your pull requests to the "development" branch, and check that one out before doing anything. Master is more stagnant and only updated when I know what I'm currently working on works as expected (most of the time).
+
 ![intro](images/albafetch.png)
 
 albafetch is a simple and fast program to display a lot of system information in a neofetch-like layout in way less than a second. I decided to make this as a challenge for myself and since I found neofetch too slow (which is understandable given that we're talking about a 10k+ lines shell script).
 
+<details>
+
+<summary>Preview</summary>
+This is what albafetch will likely look like by default:
+
+![default](images/albafetch_demo_default.png)
+
+And this is what [my configuration](https://github.com/alba4k/.dotfiles/blob/master/.config/albafetch/albafetch.conf) looks like
+![custom](images/albafetch_demo.png)
+
+</details>
+
 Here is a time comparison (exact execution times change between machines and runs):
+<details>
+
+<summary>Time comparison</summary>
 
 ![neofetch](images/time_neofetch.png)
 ![albafetch](images/time_albafetch.png)
+
+</details>
 
 You will find a lot of useful usage and configuration related info inside of the [user manual](MANUAL.md) and a small list of the things I changed since the last release in the [changelog](CHANGELOG.md).
 
@@ -25,54 +44,70 @@ Feel free to test any other platform :)
 3. [Installation](#installation)
 	* [Arch BTW](#for-arch-linux)
 	* [NixOS](#for-nixos)
+  * [MacPorts](#for-older-macos-versions)
 	* [Manually](#manual-installation)
 4. [Configuration](#configuration)
 	> [example config](albafetch.conf)
 5. [Contributing](#contributing)
-	
-
 
 # Dependencies
 
 ## Build dependencies
-These will also install the relative runtime dependencies
+These will usually also install the relative [runtime dependencies](#runtime-dependencies).
+Dependencies marked with an asterisk are optional. This means that if they're not installed at compile-time, albafetch will be compiled with custom implementations of some functions.
 
-* libcurl:
-	- On Arch Linux, [libcurl-gnutls](https://archlinux.org/packages/core/x86_64/libcurl-gnutls)
-	- On Debian, [libcurl4-gnutls-dev](https://packages.debian.org/stretch/libcurl4-gnutls-dev)
-	- On Fedora, [libcurl](https://packages.fedoraproject.org/pkgs/curl/libcurl)
-	- On Alpine Linux, [curl-dev](https://pkgs.alpinelinux.org/package/edge/main/x86_64/curl-dev)
-	- In Termux, libcurl
-* libpci:
+* [libpci](https://github.com/pciutils/pciutils)\*:
+  Used to get gpu information
 	- On Arch Linux, [pciutils](https://archlinux.org/packages/core/x86_64/pciutils)
-	- On Debian, [libpci-dev](https://packages.debian.org/buster/libpci-dev)
-	- On Fedora, [pciutils-devel](https://packages.fedoraproject.org/pkgs/pciutils/pciutils-libs)
+	- On Debian, [libpci-dev](https://packages.debian.org/bookworm/libpci-dev)
+	- On Fedora, [pciutils-devel](https://packages.fedoraproject.org/pkgs/pciutils/pciutils-devel)
 	- On Alpine Linux, [pciutils-dev](https://pkgs.alpinelinux.org/package/edge/main/x86_64/pciutils-dev)
-* libc (should already be installed):
+* [sqlite3](https://www.sqlite.org):
+  Used to gather the amount of installed rpm packages
+  - On Arch Linux, [sqlite](https://archlinux.org/packages/core/x86_64/sqlite)
+  - On Debian, [libsqlite3-dev](https://packages.debian.org/bookworm/libsqlite3-dev)
+  - On Fedora, [sqlite-devel](https://packages.fedoraproject.org/pkgs/sqlite/sqlite-devel)
+  - On Alpine Linux, [sqlite-dev](https://pkgs.alpinelinux.org/package/edge/main/x86_64/sqlite-dev)
+* [libc](https://www.gnu.org/software/libc) (likely already installed):
 	- On Alpine Linux, [musl-dev](https://pkgs.alpinelinux.org/package/edge/main/x86_64/musl-dev)
+* [glib](https://docs.gtk.org/glib/)\*:
+  Provides some useful abstractions
+  - On Arch Linux, [glib2]((https://archlinux.org/packages/core/x86_64/glib2))
+  - On Debian, [libglib2.0-dev](https://packages.debian.org/bookworm/libglib2.0)
+  - On Fedora, [glib2-devel](https://packages.fedoraproject.org/pkgs/glib2/glib2-devel)
+  - On Alpine Linux, [glib-dev](https://pkgs.alpinelinux.org/package/edge/main/x86/glib)
+* [git](https://git-scm.com)\*:
+  When building from this repo, used to add the commit hash in the `--version` output
 * A build system:
-	- Make and meson are already set up, more details are found [here](#compilation). I am using gcc, but clang may also be used (when using make, append `CC=clang` or any other c compiler)
+  To build the project
+	- A [Makefile](https://www.gnu.org/software/make) exists (which uses [meson](https://mesonbuild.com/Getting-meson.html), [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages) and [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config)/[pkgconf](http://pkgconf.org)), more details are found [here](#compilation).
 
 ## Runtime dependencies
-I would like to eventually remove those, by checking at runtime if they are installed and not use them if not so.
-Also, in case albafetch was unable to get the info using those libraries, it'll fall back to `curl` and `lspci` (as system shell commands).
+I would like to eventually remove those, by checking at runtime if they are installed and avoid using them them if they're not.
+Dependencies marked with an asterisk are optional. This means that if not installed at compile-time, albafetch will be compiled with custom implementations of the functions used. If the binary was compiled with the dependency installed, however, it will be needed at runtime too.
 
-* libcurl (for dynamically linked binaries):
-	- On Arch Linux, [libcurl-gnutls](https://archlinux.org/packages/core/x86_64/libcurl-gnutls)	
-	- On Debian, [libcurl4](https://packages.debian.org/buster/libcurl4)
-	- On Fedora, [libcurl](https://packages.fedoraproject.org/pkgs/curl/libcurl)
-	- In Termux, libcurl
-* libpci (for dynamically linked binaries):
+* [libpci](https://github.com/pciutils/pciutils)\*:
 	- On Arch Linux, [pciutils](https://archlinux.org/packages/core/x86_64/pciutils)
 	- On Debian, [libpci3](https://packages.debian.org/buster/libpci3)
 	- On Fedora, [pciutils-libs](https://packages.fedoraproject.org/pkgs/pciutils/pciutils-libs)
+  - On Alpine Linux, [pciutils-dev](https://pkgs.alpinelinux.org/package/edge/main/x86_64/pciutils)
+* [sqlite3](https://www.sqlite.org):
+  - On Arch Linux, [sqlite](https://archlinux.org/packages/core/x86_64/sqlite/)
+  - On Debian, [sqlite3](https://packages.debian.org/bookworm/sqlite3)
+  - On Fedora, [sqlite](https://packages.fedoraproject.org/pkgs/sqlite/sqlite)
+  - On Alpine Linux, [sqlite](https://pkgs.alpinelinux.org/package/edge/main/x86_64/sqlite)
+* [glib](https://docs.gtk.org/glib/)\*:
+  - On Arch Linux, [glib2]((https://archlinux.org/packages/core/x86_64/glib2))
+  - On Debian, [libglib2.0-dev](https://packages.debian.org/bookworm/libglib2.0)
+  - On Fedora, [glib2-devel](https://packages.fedoraproject.org/pkgs/glib2/glib2)
+  - On Alpine Linux, [glib-dev](https://pkgs.alpinelinux.org/package/edge/main/x86/glib)
 * there must be a `sh` binary in your PATH. This should already be satisfied on any UNIX-like system
 
 # Compilation
 
 ## Using the Makefile
 
-This will need gcc (`make CC=[compiler]` for other compilers, which should accept the same flags as gcc, e.g. clang) and make
+This will need you to have a C compiler installed and will still use meson/ninja under the hood.
 
 ```shell
 $ git clone https://github.com/alba4k/albafetch
@@ -80,7 +115,18 @@ $ cd albafetch
 $ make
 ```
 
-An executable file should appear as `build/albafetch` if the compilation succeeds.
+## Using meson
+
+If you prefer to build with meson/ninja directly, you can use these commands:
+
+```sh
+$ git clone https://github.com/alba4k/albafetch
+$ cd albafetch
+$ meson setup build
+$ meson compile -C build
+```
+
+In both cases, an executable file should appear as `build/albafetch` if the compilation succeeds.
 
 ### Debug builds
 It is possible to build a debug binary (`build/debug`) that will test every single function and make sure it runs correctly. This can be done by running
@@ -91,14 +137,13 @@ $ make debug
 
 ## Using meson
 
-If you prefer to build with meson/ninja, you can use these commands:
+If you prefer to build with meson/ninja directly, you can use these commands:
 
 ```sh
-meson setup build
-meson compile -C build
+$ meson setup build
+$ meson compile -C build
+$ build/debug
 ```
-
-Like `make`, an executable file with appear in `build/` if compilation succeeds
 
 ## Using nix
 
@@ -121,6 +166,20 @@ There are three packages on the AUR that provide albafetch:
 * [albafetch-git](https://aur.archlinux.org/packages/albafetch-git) will compile the source of the latest commit in master
 
 You can find more information on how to install packages from the AUR in the [Arch Wiki](https://wiki.archlinux.org/title/Arch_User_Repository#Installing_and_upgrading_packages)
+
+## For Debian
+You can create a DEB package from the repo itself
+
+This can be done via a guided procedure
+
+```
+$ git clone https://github.com/alba4k/albafetch
+$ cd albafetch
+
+$ make deb
+```
+
+This will create a deb package for you and ask if you want to install it.
 
 ## For NixOS
 
@@ -174,6 +233,17 @@ Using the overlay (`builtins.fetchTarball`):
 }
 ```
 
+## For older macOS versions
+
+On older macOS (~11 and lower) versions, albafetch likely won't build natively.
+
+You can, however, install albafetch on those using the [package](https://ports.macports.org/port/albafetch) on MacPorts
+
+This can be easily done with the following
+```
+# port install albafetch 
+```
+
 ## Manual installation
 
 What if your OS is not included in the ones mentioned?
@@ -185,12 +255,13 @@ Please note that albafetch currently won't run on Windows (despite `albafetch --
 $ git clone https://github.com/alba4k/albafetch
 $ cd albafetch
 
+$ make
 # make install
 ```
 
-`make install` needs elevated privileges on Linux (e.g. `sudo` or a root shell) to write to `/usr/bin`, while `/usr/local/bin` can be accessed as a normal user on macOS.
+`make install` needs elevated privileges on Linux (e.g. `sudo` or a root shell) to write to `/usr/bin`, while `/usr/local/bin` can be accessed as a normal user *on macOS*.
 
-Alternatively, you may prefer meson to do this:
+Alternatively, you may prefer meson to perform the installation:
 
 ```
 $ git clone https://github.com/alba4k/albafetch
@@ -204,7 +275,7 @@ Meson will install the executable to `/usr/local/bin`, which you may or may not 
 
 # Configuration
 
-albafetch can be customized using a config file, usually `~/.config/albafetch.conf`.
+albafetch can be customized using a config file, usually `~/.config/albafetch.conf` for your user or `/etc/xdg/albafetch.conf`.
 
 You can find an example configuration file (which only provides the default values of every option) [here](albafetch.conf).
 Although this file includes some short comments on how the various options work, I highly recommend checking out the [user manual](MANUAL.md) for a deeper understanding of the way this config file works.
@@ -215,9 +286,9 @@ Almost everything included in this program is written in C.
 
 If you want to, you can directly modify the source code contained in this repository and recompile the program afterwards to get some features you might want or need.
 
-New logos can be added in [`src/logos.h`](src/logos.h) (be careful to follow the format), new infos in [`src/info.c`](src/info.c) and [`src/info.h`](src/info.h). You will also need to edit [`src/main.c`](src/main.c) afterwards to fully enable the new features.
+New logos can be added in [`src/logos.h`](src/logos.h) (be careful to follow the format), new infos in `src/info` and [`src/info/info.h`](src/info/info.h). Config options are mainly parsed in [`src/utils.c`](src/utils.c). You will also need to edit [`src/main.c`](src/main.c) afterwards to fully enable the new features.
 
-Don't mind opening a pull request if you think some of the changes you made should be in the public version, just try to follow the coding style that I used in the rest of the project.
+Don't mind opening a pull request if you think some of the changes you made should be in the public version. Please run `clang-tidy --fix src/**/*{.c,.h}` to check for any issues and `clang-format -i src/**/*{c,h}` to make sure the code style is consistent with the rest of the project before committing.
 
 Any contribution, even just a fix of a typo, is highly appreciated.
 
