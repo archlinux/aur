@@ -2,8 +2,8 @@
 # Contributor: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 pkgname=httptoolkit-git
 _pkgname='HTTP Toolkit Desktop'
-pkgver=1.20.1.r0.g82aa192
-_electronversion=31
+pkgver=1.23.0.r0.g2f75261
+_electronversion=37
 _nodeversion=20
 pkgrel=1
 pkgdesc="A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.(Use system-wide electron)"
@@ -16,7 +16,6 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
     'mercurial'
-    'nodejs'
     'java-runtime'
 )
 makedepends=(
@@ -35,7 +34,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -48,8 +47,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -57,8 +61,12 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Development" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -76,11 +84,13 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --leagcy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build:src
     NODE_ENV=production     npm run server:setup
