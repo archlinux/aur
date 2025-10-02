@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=tidymodels
-_pkgver=1.2.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -10,7 +10,7 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  r-broom
+  'r-broom>=1.0.9'
   r-cli
   r-conflicted
   r-dials
@@ -25,7 +25,7 @@ depends=(
   r-rlang
   r-rsample
   r-rstudioapi
-  r-tibble
+  r-tailor
   r-tidyr
   r-tune
   r-workflows
@@ -44,8 +44,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3143d8a189234f966a6d7c34a5a5fcf2')
-b2sums=('31679b79e0fb946f918357aa134a7d104140a6df9585f10ffcb15d2dc5a384877d7f92fa1672d23f5139142cca64ca1b61cef1da6a0a702345363a96c14c735b')
+md5sums=('3694af87e93e62c26d0998c46011f9e6')
+b2sums=('40dd9276ee45766687163cea4ecad85963633bb2044357274de5fd803082d5c4c74871cbb9e1e7c9478d68212d561e3019df3acd5a1ae425109a72a348de88ad')
 
 build() {
   mkdir build
