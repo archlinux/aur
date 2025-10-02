@@ -1,0 +1,17 @@
+pkgbase = r-tailor
+	pkgdesc = Postprocessors refine predictions outputted from machine learning models to improve predictive performance or better satisfy distributional limitations.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tailor
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-dplyr
+	depends = r-hardhat
+	depends = r-purrr
+	depends = r-tibble
+	depends = r-tidyselect
+	source = https://cran.r-project.org/src/contrib/tailor_0.1.0.tar.gz
+	sha256sums = 3a20c19f1afb8814ad14f525142986daf36cfe0a9e9f1fdc00a822c1579c01ea
+
+pkgname = r-tailor
