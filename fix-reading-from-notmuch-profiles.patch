@@ -1,0 +1,102 @@
+From 0c82cf7c7445d666f46faad84c11614341fd09db Mon Sep 17 00:00:00 2001
+From: Mohammad Reza Karimi <m.r.karimi.j@gmail.com>
+Date: Thu, 2 Oct 2025 03:51:01 -0400
+Subject: [PATCH] fix reading from notmuch profiles
+
+---
+ Makefile             |  7 +++++--
+ notmuch-addrlookup.c | 43 ++++++++++++++++++++++++++++++++++++++-----
+ 2 files changed, 43 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2eb8285..e9ac6b9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,9 +6,12 @@
+ GLIB_CFLAGS := $(shell pkg-config glib-2.0 --cflags)
+ GLIB_LDLIBS := $(shell pkg-config glib-2.0 --libs)
+ 
++GIO_CFLAGS := $(shell pkg-config gio-2.0 --cflags)
++GIO_LDLIBS := $(shell pkg-config gio-2.0 --libs)
++
+ OPTFLAGS ?= -O2
+-LDLIBS  += -lnotmuch $(GLIB_LDLIBS)
+-CFLAGS    = -Wall $(OPTFLAGS) $(GLIB_CFLAGS) -std=c99
++LDLIBS  += -lnotmuch $(GLIB_LDLIBS) $(GIO_LDLIBS)
++CFLAGS    = -Wall $(OPTFLAGS) $(GLIB_CFLAGS) $(GIO_CFLAGS) -std=c99
+ 
+ all: notmuch-addrlookup
+ 
+diff --git a/notmuch-addrlookup.c b/notmuch-addrlookup.c
+index a921237..d2bf5dd 100644
+--- a/notmuch-addrlookup.c
++++ b/notmuch-addrlookup.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <glib.h>
++#include <gio/gio.h>
+ #include <notmuch.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -92,6 +93,39 @@ sort_by_frequency (gconstpointer data1,
+ }
+ 
+ 
++static gchar *
++get_notmuch_profile_path (const gchar *notmuch_profile)
++{
++  const gchar *profile_xdg = NULL;
++  gchar *profile = NULL;
++  if (notmuch_profile) {
++    profile_xdg = notmuch_profile;
++    profile = g_strdup_printf (".%s", notmuch_profile);
++  }
++  else {
++    profile_xdg = "default";
++    profile = "";
++  }
++
++  gchar *config_path = NULL;
++
++  GFile* config_profile_path = g_file_new_build_filename (g_get_user_config_dir (), "notmuch", profile_xdg, "config", NULL);
++  if (g_file_query_exists (config_profile_path, NULL)) {
++    config_path = g_strdup (g_file_get_path (config_profile_path));
++    g_free (config_profile_path);
++    return config_path;
++  }
++  g_free (config_profile_path);
++  config_profile_path = g_file_new_for_path (g_strdup_printf ("%s/.notmuch-config%s", g_get_home_dir (), profile));
++  if (g_file_query_exists (config_profile_path, NULL)) {
++    config_path = g_strdup (g_file_get_path (config_profile_path));
++    g_free (config_profile_path);
++    return config_path;
++  }
++  return NULL;
++}
++
++
+ static gboolean
+ load_notmuch_settings (void)
+ {
+@@ -99,13 +133,12 @@ load_notmuch_settings (void)
+   gchar *config_path = NULL;
+   gboolean success = FALSE;
+ 
+-  if (g_getenv ("NOTMUCH_CONFIG"))
++  if(notmuch_config_path_lookupvar)
++    config_path = notmuch_config_path_lookupvar;
++  else if (g_getenv ("NOTMUCH_CONFIG"))
+     config_path = g_strdup (g_getenv ("NOTMUCH_CONFIG"));
+-  else if(!notmuch_config_path_lookupvar)
+-    config_path = g_strdup_printf ("%s/.notmuch-config", g_get_home_dir ());
+   else
+-    config_path = notmuch_config_path_lookupvar;
+-
++    config_path = get_notmuch_profile_path (g_getenv ("NOTMUCH_PROFILE"));
+ 
+   if (!g_key_file_load_from_file (key_file,
+                                   config_path,
+-- 
+2.51.0
+
