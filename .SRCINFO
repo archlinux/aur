@@ -1,6 +1,6 @@
 pkgbase = koboldcpp-portable
 	pkgdesc = An easy-to-use AI text-generation software for GGML and GGUF models (portable build for old CPUs)
-	pkgver = 1.99
+	pkgver = 1.99.4
 	pkgrel = 1
 	url = https://github.com/LostRuins/koboldcpp
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = koboldcpp-portable
 	optdepends = python-psutil: increasing the process CPU priority
 	optdepends = zenity: native file picker dialogs
 	optdepends = yad: native file picker dialogs
-	provides = koboldcpp=1.99
+	provides = koboldcpp=1.99.4
 	conflicts = koboldcpp
-	source = koboldcpp-portable-1.99.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.99.tar.gz
+	source = koboldcpp-portable-1.99.4.tar.gz::https://github.com/LostRuins/koboldcpp/archive/refs/tags/v1.99.4.tar.gz
 	source = koboldcpp.desktop
 	source = koboldcpp.png
-	sha256sums = dd1a1e0311f445f97393787fe0763295cfd5ad9ce27fe7badd349f1800b0da84
+	sha256sums = fe8bfa90bf7fb193d9cb063c3e71ded396cddd2156cd209c61df8acf94297e55
 	sha256sums = fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef
 	sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
