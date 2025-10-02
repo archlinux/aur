@@ -1,0 +1,4 @@
+[elephant-bin]
+source = "git"
+git = "https://github.com/abenz1267/elephant.git"
+prefix = "v"
