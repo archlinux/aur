@@ -1,0 +1,15 @@
+pkgbase = r-dotty
+	pkgdesc = The Unpacking Dot Operator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dotty
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	optdepends = r-codetools
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/dotty_0.1.0.tar.gz
+	md5sums = 7441850c335098b37116050f0f98b08e
+	b2sums = 2729049683ab7ffa899b9b9396a9abc07198ff4076f70c3f76e5a094d0992dc20a8dd71fc9ebf78cd170a9c38fe518c23bbf7a31c8fe16435ab1b98d45df4ae8
+
+pkgname = r-dotty
