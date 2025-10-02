@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccaPP
-_pkgver=0.3.4
+_pkgver=0.3.5
 pkgname=r-${_pkgname,,}
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='(Robust) Canonical Correlation Analysis via Projection Pursuit'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-mvtnorm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a51162e5ec62a73773d98647d646d42c3c3b15119253fb997cc25489394a7c99')
+sha256sums=('b37a99c47269f8705d3230d1fe60efbdd275946326395b18316e9c4a6c14fe48')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
