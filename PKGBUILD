@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=embed
-_pkgver=1.1.4
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -48,8 +48,8 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0d44354dfc66f7eb8cb54ec09a6aabdf')
-b2sums=('30ec45bc1c7c42fa77bfb9ce7d742f85c9a1f705077d6caf2955d6ac3092c65985df55c79e263dbad7ae4924c08ae3d6ebbd090ff3c1a83df9d32a1ff031fa38')
+md5sums=('07bb64a22a8462aa91f85c45f275fdd0')
+b2sums=('ffc1ab0ce9b8bb94c5ae9573d9c6b63c2e6148451a34f437634bf9866232a8b4819f2b9a5c329821b3f759885b1b16f19f2aba435154efe692df295a9b4e4d3c')
 
 build() {
   mkdir build
