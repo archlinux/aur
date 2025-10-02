@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspAnova
-_pkgver=0.19.3
+_pkgver=0.95.3
 pkgname=r-${_pkgname,,}
-pkgver=0.19.3
+pkgver=0.95.3
 pkgrel=1
 pkgdesc="ANOVA Module for JASP"
 arch=('any')
@@ -35,7 +35,7 @@ depends=(r
 groups=(r-jasp r-jaspcommon)
 optdepends=()
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('0d38149e2a5ada252ce08fb187f1b91b2b97f223079caa83a5433b3aef287459')
+sha256sums=('b67702a542bca1cf50a3e85c49bdbff409006db10ec91df4a68e05ce33f309c5')
 
 
 build() {
@@ -46,6 +46,4 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  mkdir -p  ${pkgdir}/usr/lib/jasp-desktop/Modules
-  ln -s /usr/lib/R/library ${pkgdir}/usr/lib/jasp-desktop/Modules/${_pkgname}
 }
