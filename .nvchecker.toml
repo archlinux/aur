@@ -1,0 +1,4 @@
+["moor-bin"]
+source = "git"
+git = "https://github.com/walles/moor.git"
+prefix = "v"
