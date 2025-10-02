@@ -14,6 +14,7 @@ url='https://vongoob9.gitlab.io/subtitles_contact_sheet_qt'
 license=('GPL-3.0-or-later')
 depends=('qt5-base' 'ffmpeg')
 makedepends=('pandoc-cli')
+optdepends=('ttf-dejavu: default font for scs')
 conflicts=('subtitles-contact-sheet-qt-cli-git' 'subtitles-contact-sheet-qt-gui-git')
 source=("${_pkgname}-${pkgver}.tar.gz::https://gitlab.com/vongooB9/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 b2sums=('e7e96d71c5101b5c54c2fda068e2359be60d1c0cba15458c78cb4a821aa18b1c700f0c46eb3722595584ed832f3d079063d44d1820d790518f691bfdb122f731')
