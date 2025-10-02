@@ -16,6 +16,6 @@ pkgbase = brother-dcpt220
 	source = https://download.brother.com/welcome/dlf105163/dcpt220pdrv-3.5.0-1.i386.rpm
 	source = spool.patch
 	sha256sums = 2244b72cb354f7be1140f5cd44ae54befaafb901f98ca100594f6b36e577c88a
-	sha256sums = a1ec36a6a72082b92a5866d379c4e124d16f6d407284404d4f0adaf47175e6b7
+	sha256sums = 38cb648cba2504633641f31cfc78cc1539217eb0709a4e725be2913ee23403eb
 
 pkgname = brother-dcpt220
