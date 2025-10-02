@@ -1,0 +1,14 @@
+pkgbase = basalt
+	pkgdesc = A TUI Application to manage Obsidian notes
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/erikjuhani/basalt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = basalt-0.10.3.tar.gz::https://github.com/erikjuhani/basalt/archive/refs/tags/basalt/v0.10.3.tar.gz
+	sha256sums = 28854b21781b2a86391c253f62858a0b48cddcf6e2e5e007730953937e1b913e
+
+pkgname = basalt
