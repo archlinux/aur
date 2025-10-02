@@ -1,0 +1,19 @@
+pkgbase = wayweather
+	pkgdesc = Custom Weather Script for Waybar with IP Geolocation
+	pkgver = 1.0.0.r0.g8ee966c
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/wayweather
+	arch = any
+	license = GPL3
+	depends = tombl-bin
+	depends = gawk
+	depends = curl
+	depends = jq
+	depends = bash
+	provides = wayweather
+	options = !debug
+	options = !strip
+	source = git+https://github.com/TheElevatedOne/wayweather.git#branch=main
+	sha256sums = SKIP
+
+pkgname = wayweather
