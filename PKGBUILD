@@ -8,6 +8,7 @@ url="https://unifoundry.com/unifont/"
 license=('OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/Unifont-APL8x16-$pkgver.psf.gz"{,.sig}
         "unifont-LICENSE.txt::https://unifoundry.com/LICENSE.txt")
+noextract=("Unifont-APL8x16-$pkgver.psf.gz")
 sha256sums=('f6845bb729ac22845398925b93932469b32a25cf9450c071683808b7b8db6fd6'
             'SKIP'
             '1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87')
