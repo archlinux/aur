@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=andcli
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A 2FA TUI for your shell"
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ makedepends=('go')
 options=("strip" "buildflags")
 depends=('glibc')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3761928ac72f6115f979a458e2652755b0a9963527c6de4b7b56f48046f11959')
+sha256sums=('61f2c268297d35dfde0ca4fc99380f52872024a2a0e8f54b7f5dc91030b1031e')
     
 prepare(){
     cd "${pkgname}-${pkgver}"
