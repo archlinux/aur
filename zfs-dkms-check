@@ -1,0 +1,29 @@
+#!/bin/bash
+
+all_kver() {
+  pushd "/usr/lib/modules" >/dev/null
+  local path
+  for path in */build/; do
+    echo "${path%%/*}"
+  done
+  popd >/dev/null
+}
+
+print_warning() {
+  echo "==> WARNING: Kernel version $1 is unsupported by zfs ($2). Proceed anyway, but this may lead to bugs that can cause SERIOUS DATA LOSS."
+}
+
+if minver=$(grep -F -m1 'Linux-Minimum:' /usr/src/zfs-*/META | cut -d: -f2 | tr -d '[:blank:]') && [[ -n $minver ]]; then
+  all_kver | while IFS= read -r ver; do
+    if (( $(vercmp "$minver.0" "$ver") > 0 )); then
+      print_warning "$ver" "the minimum supported version is $minver"
+    fi
+  done
+fi
+if maxver=$(grep -F -m1 'Linux-Maximum:' /usr/src/zfs-*/META | cut -d: -f2 | tr -d '[:blank:]') && [[ -n $maxver ]]; then
+  all_kver | while IFS= read -r ver; do
+    if (( $(vercmp "$maxver.99" "$ver") < 0 )); then
+      print_warning "$ver" "the maximum supported version is $maxver"
+    fi
+  done
+fi
