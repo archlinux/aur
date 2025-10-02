@@ -8,7 +8,6 @@ pkgbase = immich
 	makedepends = git
 	makedepends = pnpm
 	makedepends = jq
-	makedepends = uv
 	makedepends = ts-node
 	depends = valkey
 	depends = postgresql>=14

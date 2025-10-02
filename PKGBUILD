@@ -11,7 +11,7 @@ url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
 arch=(x86_64)
 # ts-node required for CLI
-makedepends=('git' 'pnpm' 'jq' 'uv' 'ts-node')
+makedepends=('git' 'pnpm' 'jq' 'ts-node')
 
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
