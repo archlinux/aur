@@ -1,6 +1,6 @@
 pkgname=redpanda-connect-bin
 _pkgname=redpanda-connect
-pkgver=4.45.0
+pkgver=4.65.0
 pkgrel=1
 pkgdesc='Redpanda Connect is a declarative data streaming service'
 arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
@@ -9,8 +9,8 @@ license=('Apache-2.0')
 provides=($_pkgname)
 source=("https://github.com/redpanda-data/connect/releases/download/v$pkgver/redpanda-connect_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/redpanda-data/connect/releases/download/v$pkgver/redpanda-connect_${pkgver}_linux_arm64.tar.gz")
-sha256sums=('02f6e5662d68d871ba0c1ec84ca484304d04a69228950471876636d0127e676d')
-sha256sums_aarch64=('484f03a13b4ca75dc32bb12d00a44f4018f740fba02ed928a1388175ce41c469')
+sha256sums=('d41caa85419e140cafaee97becebe400467744222d0b8051eb58c0626985234e')
+sha256sums_aarch64=('beb565bb6e4886c69e5565c4ff9656177fd123f4ce4c3a090e5d583f73b37246')
 
 package() {
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
