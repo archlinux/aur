@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=proto
-pkgver=0.53.0
+pkgver=0.53.1
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -12,19 +12,17 @@ optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d0045b731e5124b023ab742caae07583f0f498736517cccf3ed83047c51606cc')
+sha256sums=('008e20f9177209421be79ef275d79c8153ed962e4e7f8ba979c387ae4b6d1f26')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  mkdir -p completions
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export CARGO_TARGET_DIR="target"
   cargo build --release --frozen
-
-  mkdir -p completions
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
   "./target/release/${pkgname}" completions --shell zsh >"completions/zsh"
   "./target/release/${pkgname}" completions --shell fish >"completions/fish"
