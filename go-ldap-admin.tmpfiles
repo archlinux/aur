@@ -1,1 +1,1 @@
-z /etc/go-ldap-admin 0755 root go-ldap-admin
+Z /etc/go-ldap-admin 0755 go-ldap-admin go-ldap-admin

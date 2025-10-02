@@ -1,7 +1,7 @@
 pkgbase = go-ldap-admin
 	pkgdesc = go-ldap-admin旨在为OpenLDAP服务端提供一个简单易用，清晰美观的现代化管理后台。
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/opsre/go-ldap-admin
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = go-ldap-admin
 	source = go-ldap-admin.tmpfiles
 	sha256sums = 29a371a61eabd3eeb146b7b09caeaf7bd865cdec221319633d16cbb348eb9a53
 	sha256sums = dbf9aa6215f9dfa1e070d8b3da80f2137da655e1e877ea6b03d738d21236947d
-	sha256sums = add05b8a768c694f9cb7f3e25885efc7303f7060772b801fc038fa74abd4b3ea
+	sha256sums = b8bb19a4fb09a500c8abbba02d28fa0440a59ed0b18b99604acd3f164bb8163e
 	source_x86_64 = https://github.com/opsre/go-ldap-admin/releases/download/v0.6.0/go-ldap-admin-v0.6.0-linux-amd64.tar.gz
 	sha256sums_x86_64 = 3468f0b3f83172f090784a26d65910c23f0ca85eee4594d2438a82a929482f0a
 	source_aarch64 = https://github.com/opsre/go-ldap-admin/releases/download/v0.6.0/go-ldap-admin-v0.6.0-linux-arm64.tar.gz
