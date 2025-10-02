@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://aur.archlinux.org/packages/hyprdm-full-git"
 license=('BSD3')
 
-# Alternatif bağımlılıklar
 depends=('hyprdm-full-git' 'hyprdm-rob')
 
 provides=('hyprdm')
