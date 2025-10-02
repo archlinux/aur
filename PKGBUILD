@@ -172,9 +172,6 @@ prepare() {
   # Fix cmake prefix path (FS#78665)
   patch -Np1 -i "${srcdir}"/fix_cmake_prefix_path.patch
 
-  # https://bugs.archlinux.org/task/64981
-  patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
-
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
 
@@ -240,6 +237,9 @@ prepare() {
   cd third_party/gloo
   git cherry-pick --no-commit 54cbae0d3a67fa890b4c3d9ee162b7860315e341
   cd ../..
+
+  # https://bugs.archlinux.org/task/64981
+  patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   cd "${srcdir}"
 
