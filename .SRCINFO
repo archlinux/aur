@@ -1,6 +1,6 @@
 pkgbase = r-keras3
 	pkgdesc = R interface to Keras
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 5
 	url = https://cran.r-project.org/package=keras3
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = r-keras3
 	depends = r-glue
 	depends = r-cli
 	depends = r-rlang
+	depends = r-dotty
 	optdepends = r-ggplot2
 	optdepends = r-testthat
 	optdepends = r-knitr
@@ -29,8 +30,8 @@ pkgbase = r-keras3
 	optdepends = r-rstudioapi
 	optdepends = r-r6
 	optdepends = r-jpeg
-	source = https://cran.r-project.org/src/contrib/keras3_1.2.0.tar.gz
-	md5sums = d979562710408f2429d4e0f9b51bcf5c
-	b2sums = ce1ab0c5cb4fdd42ec777140cd16940d521cca7fa4a71376b0ebb99184a2af620110c4397aa773f90673025b65b8c986059cb06bd9a98b65fa8325c0688c387e
+	source = https://cran.r-project.org/src/contrib/keras3_1.4.0.tar.gz
+	md5sums = 0cc5172d7ce966709db50cb408d42dbe
+	b2sums = 3de2244a0f712a805e6d7d379ec135e7e32b40a0e9008536c93c7f05647fcec271d00c7bced986743622f5983718240ec5ec21e5787882c91bf85bb230af2855
 
 pkgname = r-keras3
