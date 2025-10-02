@@ -6,6 +6,6 @@ Version=@PACKAGE_VERSION@
 Exec=vrcx %u
 Icon=vrcx
 Categories=Network;Chat;Game;
-StartupWMClass=VRCX
+StartupWMClass=vrcx
 Terminal=false
 MimeType=x-scheme-handler/vrcx;

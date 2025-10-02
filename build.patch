@@ -1,3 +1,12 @@
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-    "name": "VRCX",
++    "name": "vrcx",
+     "description": "Friendship management tool for VRChat",
+     "private": true,
+     "main": "src-electron/main.js",
 --- a/src/views/Settings/Settings.vue
 +++ b/src/views/Settings/Settings.vue
 @@ -46,31 +46,0 @@
