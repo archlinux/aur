@@ -1,13 +1,13 @@
 pkgbase = httptoolkit-bin
 	pkgdesc = Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.
-	pkgver = 1.22.1
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://httptoolkit.com/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = httptoolkit
 	conflicts = httptoolkit
-	source = https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v1.22.1/HttpToolkit-1.22.1-x64.deb
-	sha256sums = ec445fa515a11aae9b0e0d98fd610fba19927a0b94ba24e1842a18e02c6ccd73
+	source = https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v1.23.0/HttpToolkit-1.23.0-x64.deb
+	sha256sums = 54987911a6b124e2f8f6c2552ec9f630e939e0f4b7e8be2ca53571e587a80bf2
 
 pkgname = httptoolkit-bin
