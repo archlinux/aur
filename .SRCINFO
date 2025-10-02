@@ -1,7 +1,7 @@
 pkgbase = usenet_reborn-bin
 	pkgdesc = A terminal‑based (TUI) NNTP (Usenet) client written in Rust.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~rek2/usenet_reborn
 	arch = x86_64
 	license = GPL-3.0-only

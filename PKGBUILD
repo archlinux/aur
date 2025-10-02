@@ -2,7 +2,7 @@
 pkgname=usenet_reborn-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal‑based (TUI) NNTP (Usenet) client written in Rust."
 arch=('x86_64')
 url="https://git.sr.ht/~rek2/usenet_reborn"
@@ -26,6 +26,6 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
   install -Dm644 -t "$pkgdir/usr/share/$_pkgname" config.toml
   install -Dm644 -t "$pkgdir/usr/share/$_pkgname" subscriptions
-  install -Dm544 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
 }
 
