@@ -1,0 +1,10 @@
+post_install() {
+    uri=$(lpinfo -v | grep DCP-T230 | cut -d ' ' -f 2)
+    [ -n "$uri" ] || return
+
+    lpadmin -p Brother_DCP-T230 -E -v "$uri" -P /usr/share/cups/model/Brother/brother_dcpt230_printer_en.ppd
+}
+
+pre_remove() {
+    lpadmin -x Brother_DCP-T230
+}

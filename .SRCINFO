@@ -1,0 +1,17 @@
+pkgbase = brother-dcp-t230
+	pkgdesc = CUPS driver for Brother DCP-T230 printer
+	pkgver = 3.6.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=mx&lang=es&prod=dcpt230_all
+	install = brother-dcp-t230.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	optdepends = sane: Scanner support
+	optdepends = brscan5: Brother support for sane
+	options = !debug
+	source = https://download.brother.com/welcome/dlf106505/dcpt230pdrv-3.6.1-1.amd64.deb
+	sha256sums = 0638d91802ab1f8a32998d00cd8cb305cbf436c72eba884578d8b25a24a953b5
+
+pkgname = brother-dcp-t230
