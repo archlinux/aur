@@ -13,14 +13,51 @@ _origin="https://cli.moonbitlang.com"
 source=("https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz"
         "https://cli.moonbitlang.cn/cores/core-latest.tar.gz"
         "moon.sh")
-sha256sums=(14158aaa2c8f39f039809ad866e66cb8a3084814828d45f3aef57d03d1636bd5 0e05b4bda8cbf47f745bf05181e5ea57fd18ffbeb876e2f801051d09609b9fa2 '58b177a4b0dda035620b8f5f44f1f26a251203924d1df927a8a00e0a78f9c13c')
+sha256sums=('14158aaa2c8f39f039809ad866e66cb8a3084814828d45f3aef57d03d1636bd5' '0e05b4bda8cbf47f745bf05181e5ea57fd18ffbeb876e2f801051d09609b9fa2' 'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
 package() {
-  install -Dm 755 "${srcdir}/bin/moon"     "${pkgdir}/usr/lib/moon"
-  install -Dm 755 "${srcdir}/moon.sh"  "${pkgdir}/usr/bin/moon"
-  install -Dm 755 "${srcdir}/bin/moonc"    "${pkgdir}/usr/bin/moonc"
-  install -Dm 755 "${srcdir}/bin/moondoc"  "${pkgdir}/usr/bin/moondoc"
-  install -Dm 755 "${srcdir}/bin/moonfmt"  "${pkgdir}/usr/bin/moonfmt"
-  install -Dm 755 "${srcdir}/bin/moonrun"  "${pkgdir}/usr/bin/moonrun"
+  # Install main runtime binary (kept under /usr/lib so the wrapper can live in /usr/bin)
+  install -Dm 755 "${srcdir}/bin/moon" "${pkgdir}/usr/lib/moon"
+
+  # Install wrapper CLI (moon.sh) as the user-facing /usr/bin/moon
+  install -Dm 755 "${srcdir}/moon.sh" "${pkgdir}/usr/bin/moon"
+
+  # Install all top-level executables from src/bin (except the main runtime and internal/)
+  mkdir -p "${pkgdir}/usr/bin"
+  for _f in "${srcdir}/bin/"*; do
+    case "$(basename "$_f")" in
+      moon) continue ;; # already installed to /usr/lib
+      internal) continue ;; # packaged under share
+      *.wasm) continue ;; # handled separately
+    esac
+    if [ -f "$_f" ]; then
+      install -Dm 755 "$_f" "${pkgdir}/usr/bin/$(basename "$_f")"
+    fi
+  done
+
+  # Place wasm/runtime assets and the language core into /usr/share/moonbit/lib
   mkdir -p "${pkgdir}/usr/share/moonbit/lib"
-  cp -r "${srcdir}/core" "${pkgdir}/usr/share/moonbit/lib/"
+  # copy any wasm helpers from bin (if present)
+  if compgen -G "${srcdir}/bin/*.wasm" >/dev/null 2>&1; then
+    cp -a "${srcdir}/bin/"*.wasm "${pkgdir}/usr/share/moonbit/lib/"
+  fi
+  # copy the language core tree
+  cp -a "${srcdir}/core" "${pkgdir}/usr/share/moonbit/lib/"
+
+  # Install headers for developers who may build against the runtime
+  if [ -d "${srcdir}/include" ]; then
+    mkdir -p "${pkgdir}/usr/include/moonbit"
+    cp -a "${srcdir}/include/"* "${pkgdir}/usr/include/moonbit/"
+  fi
+
+  # Install raw libs/objects into /usr/lib/moonbit (for debugging or embedding)
+  if [ -d "${srcdir}/lib" ]; then
+    mkdir -p "${pkgdir}/usr/lib/moonbit"
+    cp -a "${srcdir}/lib/"* "${pkgdir}/usr/lib/moonbit/" || true
+  fi
+
+  # Internal tooling and packaged node assets go under /usr/share/moonbit/internal
+  if [ -d "${srcdir}/bin/internal" ]; then
+    mkdir -p "${pkgdir}/usr/share/moonbit/internal"
+    cp -a "${srcdir}/bin/internal" "${pkgdir}/usr/share/moonbit/internal/"
+  fi
 }
