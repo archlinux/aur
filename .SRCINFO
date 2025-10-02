@@ -19,10 +19,8 @@ pkgbase = vesktop-git
 	source = vesktop::git+https://github.com/Vencord/Vesktop.git
 	source = vesktop.desktop
 	source = vesktop.sh
-	source = afterPack.js
 	sha256sums = SKIP
 	sha256sums = 455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46
 	sha256sums = 506c246328af639d6f6a3e52215c7b34af2a6df11d195de6f57a8bbee750cce9
-	sha256sums = 122b17ce996318e533e6f2ab1c9b2961b39c3eba271c9b40f10c0da5dd738baa
 
 pkgname = vesktop-git
