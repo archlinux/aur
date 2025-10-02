@@ -1,0 +1,11 @@
+pkgbase = miniaudio
+	pkgdesc = Header-only audio playback and capture library
+	pkgver = 0.11.23
+	pkgrel = 1
+	url = https://github.com/mackron/miniaudio
+	arch = any
+	license = MIT
+	source = miniaudio-0.11.23.tar.gz::https://github.com/mackron/miniaudio/archive/refs/tags/0.11.23.tar.gz
+	sha256sums = 1062155cc5882b55c48cb37f57a4dc783669e83ae0838535c62b206eeb1587a6
+
+pkgname = miniaudio
