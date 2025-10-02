@@ -1,5 +1,5 @@
 pkgbase = mkfsufs
-	pkgdesc = Mkfs style utility to format a UFS partition like newfs on FreeBSD
+	pkgdesc = Utility to format a UFS partition
 	pkgver = 1.0
 	pkgrel = 1
 	arch = any
