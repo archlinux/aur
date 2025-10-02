@@ -7,6 +7,7 @@ pkgbase = whisker-shell-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = haxe
+	makedepends = bluez
 	depends = quickshell-git
 	depends = brightnessctl
 	depends = bash

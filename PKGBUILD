@@ -10,7 +10,7 @@ depends=(
     'quickshell-git' 'brightnessctl' 'bash' 'power-profiles-daemon' 'cava' 'matugen-bin'
     'networkmanager' 'fish' 'ttf-outfit' 'ttf-material-symbols-variable' 'qt6-multimedia-ffmpeg'
 )
-makedepends=('git' 'haxe')
+makedepends=('git' 'haxe' 'bluez')
 provides=('whisker-shell' 'whisker')
 conflicts=('whisker-shell' 'whisker')
 source=(
