@@ -1,6 +1,6 @@
 pkgbase = greenlight-bin
 	pkgdesc = Open-source client for xCloud and Xbox home streaming made in Typescript.
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/unknownskl/greenlight
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = greenlight-bin
 	provides = greenlight
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/unknownskl/greenlight/releases/download/v2.3.2/greenlight_2.3.2_amd64.deb
+	source = https://github.com/unknownskl/greenlight/releases/download/v2.3.3/greenlight-dektop_2.3.3_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/unknownskl/greenlight/main-v2/LICENSE
-	sha256sums = 0acd481e7906b57a2747288839200e1fbee75ef86faf792610eeb768862cf517
+	sha256sums = c911bf70637fbe683568a5c5eb55cb69b46bde3bab0eb5272a64f9c99efb697e
 	sha256sums = 4c90fa981a6336b1da8243ca50588beb48c875648f53123b74d5b052f9216ee4
 
 pkgname = greenlight-bin
