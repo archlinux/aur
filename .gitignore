@@ -1,0 +1,5 @@
+.idea
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
