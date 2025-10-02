@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-wiki
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc='A wiki plugin for Vim'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('vim-wiki-ft: Wiki filetype plugin'
             'pandoc: WikiExport support')
 provides=('vim-ctrlp-wiki' 'vim-coc-wiki' 'vim-unite-wiki')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('edbf6be389967b8ee64aad60ddfebc2190ab32d683f83aeb3f8a8c3560f300d7')
+sha256sums=('88a33b1a3af08a97c05fe8843092817e5a5571b8e8a156fbacae4cc78136fdea')
 
 package() {
   local dirs=(autoload doc plugin pythonx)
