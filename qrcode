@@ -5,7 +5,7 @@ if ! command -v qrencode &> /dev/null; then
     exit 1
 fi
 
-local schema="utf8i"
+schema="utf8i"
 
 # Detect if tty
 if TTY="$(tty)"; then
