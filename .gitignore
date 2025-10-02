@@ -1,6 +1,4 @@
-*.pkg.tar
-*.pacman
-*.zst
-*.log
-src/
-pkg/
+*
+
+!PKGBUILD
+!.SRCINFO
