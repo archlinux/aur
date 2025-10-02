@@ -1,6 +1,6 @@
 pkgbase = python-fints
 	pkgdesc = Minimal pure-python FinTS (formerly known as HBCI) implementation
-	pkgver = 4.2.3
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = https://github.com/raphaelm/python-fints
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = python-fints
 	depends = python-bleach
 	depends = python-sepaxml
 	depends = python-requests
-	source = python-fints-4.2.3.tar.gz::https://github.com/raphaelm/python-fints/archive/v4.2.3.tar.gz
-	sha512sums = be22c163cdd635fb9ef3bdc00fe10f01f248161fa78d4a652a6fba4d1ad968f5a98474e0cd767fc100c426186b6310f54bd6d304341e70bc15c58bb51b6488a0
-	b2sums = 6f9b20ff095fc5fae4285a780a415163c7c24c98ade537ab3bb122ef7ea3de191d0004cd7d49fa66aa78ce5fe9c282103916a07fc3722cbb32ea81faf5fdf1b0
+	source = python-fints-4.2.4.tar.gz::https://github.com/raphaelm/python-fints/archive/v4.2.4.tar.gz
+	sha512sums = d5e981450d419ce3ceefb7a24d4d0b2966987ab488d1cda7640fa3c4520e2f8fbfc7b4f32d4b825d2482a39ad8e586db404dd7210105aa348265cb077b618fe0
 
 pkgname = python-fints
