@@ -1,10 +1,10 @@
 # Maintainer: Deepanshu Sharwan <deepanshusharwan35@gmail.com>
 pkgname=peppy
-pkgver=3.1.0.1.gceeba97   # will be auto-generated
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A lightweight application launcher for Wayland and X11 (latest git version)"
 arch=('any')
-url="https://github.com/Deepanshusharwan/peppy"
+url="https://github.com/deepanshusharwan/peppy"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-requests' 'python-gobject' 'hicolor-icon-theme')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')

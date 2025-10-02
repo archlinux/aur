@@ -1,8 +1,8 @@
 pkgbase = peppy
 	pkgdesc = A lightweight application launcher for Wayland and X11 (latest git version)
-	pkgver = 3.1.0.1.gceeba97
+	pkgver = 3.2.0
 	pkgrel = 1
-	url = https://github.com/Deepanshusharwan/peppy
+	url = https://github.com/deepanshusharwan/peppy
 	arch = any
 	license = MIT
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = peppy
 	depends = python-requests
 	depends = python-gobject
 	depends = hicolor-icon-theme
-	source = git+https://github.com/Deepanshusharwan/peppy.git#branch=main
+	source = git+https://github.com/deepanshusharwan/peppy.git#branch=main
 	sha256sums = SKIP
 
 pkgname = peppy
