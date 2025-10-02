@@ -10,7 +10,8 @@ pkgdesc="Julia and Python in seamless harmony"
 arch=("x86_64")
 url='https://pypi.org/project/juliacall/'
 license=("None")
-depends=()
+depends=(
+  "python-juliapkg")
 makedepends=(
 	"python-build"
 	"python-installer"
