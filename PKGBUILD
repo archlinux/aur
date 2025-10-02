@@ -1,5 +1,5 @@
 pkgname=python-ocp
-pkgver=7.8.1.2
+pkgver=7.8.1.2+r81.g2dd2ce8a
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -10,7 +10,8 @@ depends=(
 python
 opencascade
 vtk
-fmt
+gcc-libs
+glibc
 )
 
 makedepends=(
@@ -30,6 +31,10 @@ python-schema
 rapidjson
 python-jinja
 python-toml
+python-setuptools
+python-build
+python-installer
+python-wheel
 openmpi
 python-pyparsing
 qt5-base
@@ -51,25 +56,26 @@ fast_float
 lief
 python-logzero
 double-conversion
-clang15
 glew
 )
 
 conflicts=(python-ocp-git)
 
-_ocp_fragment="#commit=01055e099a3b1a34da38bb1f5457f06a2d4c7a18"
-_pywrap_commit="9c9ca5b8aa0d9a6687394897815a682b8c319fb0"  # comment this to use the latest
+_ocp_fragment="#commit=2dd2ce8a63f1eaffebe27b1fdcb94c6bba6dc61b"
+#_forced_pywrap_commit="5e134c526b3bbd1758d8f63e518bc16c3d7ff352"  # comment this to use the expected commit
 source=(
   git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
   git+https://github.com/CadQuery/pywrap.git
-  no_progress_bars.patch  #::https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch
+  no_progress_bars.patch
+  mpi_cmake.patch
 )
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=(SKIP
-            SKIP
-            'ce846f278e068bf7cc9f43174283bd9926fbf4062bd0575a70ab895be2294796')
+sha256sums=('3ff25c0603d310a68d7ac7f4207e7bb2f7006b038ad312322d141b77c9164d83'
+            'SKIP'
+            'b4c2585efd9c21c6351b6278098b4bcf7395e23b9721c391b3bcb72983b6ebf8'
+            '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
@@ -94,63 +100,95 @@ prepare(){
   git config submodule.pywrap.url "${srcdir}"/pywrap
   git -c protocol.file.allow=always submodule update
 
-  if [[ ${_pywrap_commit} ]]; then
-    msg2 "using pywrap commit ${_pywrap_commit}"
-    git -C pywrap checkout ${_pywrap_commit}
+  if [[ ${_forced_pywrap_commit} ]]; then
+    git -C pywrap checkout "${_forced_pywrap_commit}"
   fi
 
-  sed "s,-i \${CLANG_INSTALL_PREFIX}/lib/clang/\${LLVM_VERSION}/include/,-i \"$(clang -print-resource-dir)/include\"," --in-place CMakeLists.txt
-  sed "s,-n \${N_PROC},--njobs ${_n_parallel_build_jobs}," --in-place CMakeLists.txt
-  sed "s,\${VTK_INCLUDE_DIR},/usr/include/vtk," --in-place CMakeLists.txt  # fix vtk include dir for vtk 9.4
+  msg2 "Using pywrap commit $(git -C pywrap rev-parse --short HEAD)"
 
-  # use upstream's headers, not whatever is shipped here
+  # use system's opencascade headers, not whatever is shipped here
   rm -r opencascade
   ln -s "${_opencascade_install_prefix}"/include/opencascade .
 
-  # ensure any opencascade at /usr isn't used here
-  sed 's|CONDA_PREFIX|_opencascade_install_prefix|g' -i pywrap/FindOpenCascade.cmake
-
-  # disable progress bars
   cd pywrap
-  cat ../../no_progress_bars.patch | patch -p1
+  cat ../../no_progress_bars.patch | patch -p1  # disable progress bars
+  cat ../../mpi_cmake.patch | patch -p1  # fix mpi detection issue
 }
 
 build() {
-  cd OCP
+  python -m venv --without-pip --system-site-packages --clear venv
+  source venv/bin/activate
 
-  # sneak in python-clang15
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  ln -s "${site_packages}"/clang15 clang
-  export PYTHONPATH="${srcdir}/OCP:${PYTHONPATH}"
+  # use system opencascade
+  export CONDA_PREFIX="${_opencascade_install_prefix}"
 
-  msg2 "Setting up build, dumping symbols, then generating bindings..."
-  PATH="/usr/lib/llvm15/bin/:${PATH}" LD_LIBRARY_PATH="/usr/lib/llvm15/lib:${LD_LIBRARY_PATH}" cmake \
-    -W no-dev \
-    -G Ninja \
-    -D CMAKE_BUILD_TYPE=Release \
-    -B build_dir \
-    -S .
+  cd OCP/pywrap
+  python -m build --wheel --no-isolation
+  python -m installer dist/*.whl
+  cd -
+
+  local cmake_options=(
+    -B build_dir
+    -D CMAKE_BUILD_TYPE=Release
+    -S OCP
+    -G Ninja
+    -W no-dev
+    -D N_PROC=${_n_parallel_build_jobs}
+  )
+
+  msg2 "Preparing OCP..."
+  cmake "${cmake_options[@]}"
+  cmake --build build_dir --verbose -j${_n_parallel_build_jobs}
+  msg2 "OCP prepared."
+
+  local cmake_options2=(
+    -B build_dir2
+    -D CMAKE_BUILD_TYPE=Release
+    -S build_dir/OCP
+    -G Ninja
+    -W no-dev
+  )
 
   msg2 "Building OCP..."
-  cmake --build build_dir -j${_n_parallel_build_jobs}
+  cmake "${cmake_options2[@]}"
+  cmake --build build_dir2 --verbose -j${_n_parallel_build_jobs}
   msg2 "OCP built."
+
+  deactivate
 }
 
 check() {
-  cd OCP
-
+  source venv/bin/activate
+  
   # prevent the current environment from skewing the testing
   # comment these if using community occt package
   #unset "${!CSF@}"
   #unset "${!DRAW@}"
   #unset CASROOT
 
-  LD_DEBUG=libs PYTHONPATH="${srcdir}/build_dir/OCP" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
+  # recursively import all submodules
+  LD_DEBUG=libs PYTHONPATH="${srcdir}/build_dir2" python - <<'____HERE'
+import inspect
+import importlib
+import OCP
+def import_all_submodules(module):
+  mod_name = module.__name__
+  for submodule in inspect.getmembers(module, inspect.ismodule):
+    to_do = f'{mod_name}.{submodule[0]}'
+    imported_submod = importlib.import_module(to_do)
+    print(f"imported {imported_submod.__name__}")
+    import_all_submodules(imported_submod)
+import_all_submodules(OCP)
+print(OCP.__spec__)
+____HERE
+  
+  deactivate
 }
 
 package(){
-  cd OCP
-  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP/OCP.*.so
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
-}
+  #python -m installer --destdir="${pkgdir}" dist/*.whl
+  local _pysyspath="${pkgdir}$(python -c 'import sys; print(sys.path[-1])')"
 
+  install -Dt "${_pysyspath}" -m644 build_dir2/OCP.*.so
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 OCP/LICENSE
+}

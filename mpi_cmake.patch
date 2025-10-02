@@ -1,0 +1,16 @@
+diff --git a/bindgen/CMakeLists.j2 b/bindgen/CMakeLists.j2
+index 956bf06..3afc79b 100755
+--- a/bindgen/CMakeLists.j2
++++ b/bindgen/CMakeLists.j2
+@@ -1,9 +1,10 @@
+ cmake_minimum_required( VERSION 3.16 )
+ project( {{ name }}
+-         LANGUAGES CXX )
++         LANGUAGES C CXX )
+ 
+ 
+ find_package( Python REQUIRED COMPONENTS Development Interpreter)
++find_package(MPI REQUIRED COMPONENTS C CXX)
+ find_package( VTK REQUIRED
+   COMPONENTS
+     WrappingPythonCore
