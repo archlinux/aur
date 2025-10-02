@@ -1,6 +1,6 @@
 pkgbase = r-jaspgraphs
 	pkgdesc = Custom Graphs for JASP
-	pkgver = 0.19.3
+	pkgver = 0.95.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspGraphs
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-jaspgraphs
 	depends = r-viridislite
 	depends = r-rcolorbrewer
 	optdepends = r-testthat
-	source = jaspGraphs_0.19.3.tar.gz::https://github.com/jasp-stats/jaspGraphs/archive/refs/tags/v0.19.3.tar.gz
-	sha256sums = 8db633010ac5ab56d12397dc391f515e7ee4b0faea38ddadac849b5be1d4e241
+	source = jaspGraphs_0.95.3.tar.gz::https://github.com/jasp-stats/jaspGraphs/archive/refs/tags/v0.95.3.tar.gz
+	sha256sums = 9b796e82d32f719585a59618d02da819c6e1c1c4c270af37a8776ab92203377a
 
 pkgname = r-jaspgraphs
