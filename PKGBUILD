@@ -1,7 +1,7 @@
 # Maintainer: twistedturtle <hindredkin at gmail.com>
 pkgname=dmotp-git
 pkgver=r16.5683202
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI TOTP authenticator"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/dmotp/dmotp"
