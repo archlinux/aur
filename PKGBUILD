@@ -1,13 +1,14 @@
-# Maintainer: SeninAdın <email@example.com>
-pkgname=hyprdm-meta
+# Maintainer: Zaman Huseynli <zamanhuseynli23@gmail.com>
+# Backup contact: admin@azccriminal.space
+pkgname=hyprdm
 pkgver=1.0
 pkgrel=1
-pkgdesc="Metapaket for Hyprdm: installs hyprdm-full-git"
+pkgdesc="Metapackage for Hyprdm"
 arch=('x86_64')
 url="https://aur.archlinux.org/packages/hyprdm-full-git"
-license=('GPL')
+license=('BSD3')
 depends=('hyprdm-full-git')
-provides=('hyprdm-meta')
+provides=('hyprdm')
 conflicts=()
 replaces=()
 source=()
