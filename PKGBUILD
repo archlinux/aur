@@ -3,7 +3,7 @@
 _pkgname=vesktop
 pkgname=vesktop-electron-git
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided Electron. Unsupported"
-pkgver=1.5.6.r3.gae20445
+pkgver=1.5.8.r6.g0d9ca22
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -53,7 +53,7 @@ package() {
   install -d "$pkgdir/usr/lib/$_pkgname"
   install -d "$pkgdir/usr/bin"
 
-  cp "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$_pkgname"
+  cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname"
 
   install -Dm644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop" # Install desktop entry
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
