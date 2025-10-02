@@ -3,7 +3,7 @@
 pkgname=rustnet-git
 _pkgname=${pkgname%-git}
 _reponame=${pkgname%-git}
-pkgver=r213.27a258a
+pkgver=r223.df38754
 pkgrel=1
 pkgdesc="Real-time network monitoring TUI with process identification via eBPF and deep packet inspection"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('libpcap' 'libelf' 'zlib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'pkgconf' 'clang' 'llvm' 'lld' 'libbpf')
 provides=(${pkgname%-git})
-conflicts=("${pkgname%-git}" "${pkgname%-bin}")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 install=$_pkgname.install
 source=("git+https://github.com/${_author}/${_reponame}.git"
         "rustnet-setcap.hook")
