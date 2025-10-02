@@ -5,7 +5,6 @@ pkgbase = stacer-git
 	url = https://stacer.quentium.fr/
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools

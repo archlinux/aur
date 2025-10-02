@@ -1,4 +1,4 @@
-# Maintainer: Drommer <drommer@github.com>
+# Maintainer: Serhii Starovoitov <drommer.94@gmail.com>
 
 pkgname=stacer-git
 pkgver=1.5.0.r0.gfc97050
@@ -8,7 +8,7 @@ url="https://stacer.quentium.fr/"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 depends=('qt6-charts' 'qt6-svg')
-makedepends=('clang' 'cmake' 'git' 'qt6-tools')
+makedepends=('cmake' 'git' 'qt6-tools')
 provides=('stacer')
 conflicts=('stacer')
 source=("${pkgname%-git}::git+https://github.com/QuentiumYT/Stacer.git")
@@ -28,9 +28,6 @@ build() {
 
   cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++ -B build -S .
   make -C build
-
-  /usr/lib/qt6/bin/lupdate stacer/stacer.pro -no-obsolete
-  /usr/lib/qt6/bin/lrelease stacer/stacer.pro
 }
 
 package() {
@@ -38,7 +35,7 @@ package() {
 
   install -Dm755 "build/stacer/stacer" -t "${pkgdir}/usr/share/stacer"
   install -Dm755 "build/stacer-core/libstacer-core.a" -t "${pkgdir}/usr/share/stacer/lib"
-  install -Dm644 "translations"/*.qm -t "${pkgdir}/usr/share/stacer/translations"
+  install -Dm644 "build/stacer/translations"/*.qm -t "${pkgdir}/usr/share/stacer/translations"
 
   for i in 16 32 64 128 256; do
     install -Dm644 "icons/hicolor/${i}x${i}/apps/stacer.png" -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
