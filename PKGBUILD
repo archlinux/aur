@@ -1,8 +1,9 @@
 # Maintainer: Dario Spinnato <dario.spinnato07@gmail.com>
+# Contributor: Brodi <me@brodi.space>
 _pluginname=scale-to-sound
 pkgname=obs-${_pluginname}-bin
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS filter plugin to make a source scale reactively to sound"
 arch=("x86_64")
 url="https://github.com/Qufyy/obs-scale-to-sound"
