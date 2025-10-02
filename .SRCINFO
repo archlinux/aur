@@ -1,5 +1,5 @@
 pkgbase = eden-nightly-bin
-	pkgdesc = Unofficial nightly release of the Eden Nintendo Switch emulator (AppImage)
+	pkgdesc = Unofficial nightly release of the Eden Nintendo Switch emulator (AppImage, PGO optimized)
 	pkgver = 2025.10.01.27769
 	pkgrel = 1
 	url = https://github.com/pflyly/eden-nightly
