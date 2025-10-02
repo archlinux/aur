@@ -2,8 +2,8 @@
 # Contributor: wszqkzqk
 
 pkgname=wechat-bin
-pkgver=4.0.1.11
-pkgrel=2
+pkgver=4.1.0.10
+pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of WeChat."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -82,10 +82,9 @@ source_loong64=(
 )
 
 
-md5sums=()
-md5sums_x86_64=('SKIP')
-md5sums_aarch64=('SKIP')
-md5sums_loong64=('SKIP')
+md5sums_x86_64=('9b6614538cfadb976cdc6cedcf610970')
+md5sums_aarch64=('8c67f41b98f5177daeda8f5669d9788b')
+md5sums_loong64=('2191f011c02f7c4f6f07da5c51abe844')
 
 function pkgver() {
 	tar -xf control.tar.xz ./control
@@ -104,4 +103,6 @@ function package() {
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 	sed -i 's|/usr/bin/wechat|/opt/wechat/wechat|g' \
 		"${pkgdir}/usr/share/applications"/*.desktop
+	ln -sf "/opt/wechat/wechat" \
+		"${pkgdir}/usr/bin/wechat"
 }
