@@ -1,0 +1,64 @@
+# Maintainer: Zaman Huseynli <zamanhuseynli23@gmail.com>
+pkgname=hyprdm-rob
+pkgver=1.0
+pkgrel=1
+pkgdesc="Hyprland Display Manager HyprDM Rust Overlay Backend version only"
+arch=('x86_64')
+url="https://github.com/hyprcommunity/hyprdm"
+license=('BSD3')
+depends=(
+    'hyprland'
+    'wayland'
+    'pam'
+    'gtk3'
+    'qt5-base'
+    'qt5-declarative'
+    'qt5-wayland'
+    'qt5-graphicaleffects'
+    'libxkbcommon'
+)
+makedepends=(
+    'git'
+    'rust'
+    'cargo'
+    'pkgconf'
+    'cmake'
+    'make'
+    'vulkan-headers'
+)
+provides=('hyprdm')
+conflicts=('hyprdm')
+
+source=("git+https://github.com/hyprcommunity/hyprdm.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/hyprdm"
+    git describe --tags --abbrev=0 | sed 's/^v//; s/-/./g'
+}
+
+build() {
+    cd "$srcdir/hyprdm/gui-api"
+
+    # Rust modu ile HDM_API derleme
+    echo ">>> Building hdm_api in Rust mode..."
+    export HDM_API_LIB_TYPE=rust
+    cargo build --release
+}
+
+package() {
+    cd "$srcdir/hyprdm/gui-api"
+
+    # Rust modu libhdm_api kopyalama
+    if [ -f "target/release/libhdm_api.so" ]; then
+        install -Dm755 "target/release/libhdm_api.so" "$pkgdir/usr/lib/libhdm_api.so"
+    fi
+    if [ -f "target/release/libhdm_api.a" ]; then
+        install -Dm644 "target/release/libhdm_api.a" "$pkgdir/usr/lib/libhdm_api.a"
+    fi
+
+    # Config Manager -> hyprdmconfigmanager
+    if [ -f "../configmanager/target/release/hyprdmconfigmanager" ]; then
+        install -Dm755 "../configmanager/target/release/hyprdmconfigmanager" "$pkgdir/usr/bin/hyprdmconfigmanager"
+    fi
+}
