@@ -4,8 +4,8 @@
 pkgname=piliplus-git
 _srcname=PiliPlus
 _pkgname=piliplus
-pkgver=1.1.4.6.r11.g89e6d5c
-pkgrel=2
+pkgver=1.1.4.6.r34.ga18863f
+pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
 license=('GPL-3.0-or-later')
@@ -26,8 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "${_srcname}/"
-	fvm install stable
-	fvm use stable -f
+	fvm install
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }

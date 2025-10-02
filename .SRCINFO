@@ -1,7 +1,7 @@
 pkgbase = piliplus-git
 	pkgdesc = A third-party Bilibili client developed in Flutter
-	pkgver = 1.1.4.6.r11.g89e6d5c
-	pkgrel = 2
+	pkgver = 1.1.4.6.r34.ga18863f
+	pkgrel = 1
 	url = https://github.com/bggRGjQaUbCoE/PiliPlus
 	arch = x86_64
 	license = GPL-3.0-or-later
