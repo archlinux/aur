@@ -1,7 +1,7 @@
 # Maintainer: frodrigues <shello+aur -at- shello -dot- org>
 
 pkgname=words-pt
-pkgver=20220621
+pkgver=20251001
 pkgrel=1
 pkgdesc="A wordlist of Portuguese (pt-PT) words for /usr/share/dict/."
 arch=("any")
@@ -14,8 +14,8 @@ source=(
     "wordlist-preao.txt.xz::https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/wordlist-preao-${pkgver}.txt.xz"
 )
 sha256sums=(
-    "25a4ff78a7b043127942b56f610cf9a0574453e5da9ac70f38f75e1e82461c5c"
-    "998c1cb0140b2de064a75f154eac9d6d3ae5c2b16ce368b2ffe84b6663239c93"
+    "ac5fb0cd0359d6b4678dc3d93e3311e008367a23f187f893f8b37662dfec0344"
+    "aadc31a7c33315be84316f8235ed808f39d01c5a5a05c29e91e2da5a698c9f72"
 )
 
 build() {
