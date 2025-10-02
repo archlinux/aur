@@ -4,6 +4,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Hyprland Display Manager HyprDM Rust Overlay Backend version only"
 arch=('x86_64')
+conflicts=('hyprdm-rob')
 url="https://github.com/hyprcommunity/hyprdm"
 license=('BSD3')
 depends=(
