@@ -1,0 +1,17 @@
+pkgbase = openvpn_manager
+	pkgdesc = Command-line tool to manage OpenVPN 2.x and OpenVPN 3 sessions (start/stop, with more commands planned).
+	pkgver = 10.8f8d8eb
+	pkgrel = 1
+	url = https://github.com/neiesc/openvpn_manager/tree/main
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = openvpn3
+	depends = openvpn
+	provides = openvpn_manager
+	conflicts = openvpn_manager
+	source = openvpn_manager::git+https://github.com/neiesc/openvpn_manager
+	sha512sums = SKIP
+
+pkgname = openvpn_manager

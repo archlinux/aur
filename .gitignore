@@ -1,0 +1,30 @@
+openvpn_manager
+
+# Arquivos temporários do makepkg
+*.pkg.tar.zst
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar
+*.zip
+
+# Diretórios temporários
+src/
+pkg/
+
+# Logs
+*.log
+
+# Backups
+*~
+
+# Arquivos de cache do makepkg
+*.sig
+*.part
+*.bak
+*.old
+
+# Outros
+*.o
+*.so
+
