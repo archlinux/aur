@@ -1,90 +1,60 @@
 # Maintainer: Brian Thompson <brianrobt@pm.me>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
+# Maintainer: Your Name <your.email@example.com>
 
-pkgbase=rapidyaml
-pkgname=(
-  rapidyaml
-  python-rapidyaml
-)
-pkgver=0.9.0
+# Maintainer: Your Name <your.email@example.com>
+pkgname=rapidyaml
+pkgver=0.10.0
 pkgrel=1
-pkgdesc='A library to parse and emit YAML, and do it fast'
-arch=(x86_64)
-url='https://github.com/biojppm/rapidyaml'
-license=(MIT)
+pkgdesc="A fast YAML parser and emitter for C++"
+arch=('x86_64')
+url="https://github.com/biojppm/rapidyaml"
+license=('MIT')
+depends=('gcc-libs' 'glibc')
 makedepends=(
-  cmake
-  git
-  ninja
-  python-setuptools
-  python-setuptools-git
-  python-setuptools-scm
-  python-cmake-build-extension
-  swig
+  'cmake'
+  'git'
+  'ninja'
 )
-_tag=47ec2fa184209687c20fd5bc05621e1cb1200311
+_tag=v${pkgver}
 source=(
-  git+https://github.com/biojppm/rapidyaml.git#tag=${_tag}
-  git+https://github.com/biojppm/c4core.git
-  c4core-cmake::git+https://github.com/biojppm/cmake.git
+  "git+https://github.com/biojppm/rapidyaml.git#tag=${_tag}"
+  "git+https://github.com/biojppm/c4core.git"
+  "c4core-cmake::git+https://github.com/biojppm/cmake.git"
 )
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP')
-
-pkgver() {
-  cd rapidyaml
-  git describe --tags | sed 's/^v//'
-}
+b2sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd rapidyaml
+
+  # Set local submodule for c4core
   git submodule init
-  git config submodule.extern/c4core.url "${srcdir}"/c4core
+  git config submodule.extern/c4core.url "${srcdir}/c4core"
   git -c protocol.file.allow=always submodule update
+
+  # Set local submodule for c4core-cmake inside ext/c4core
   cd ext/c4core
   git submodule init
-  git config submodule.cmake.url "${srcdir}"/c4core-cmake
-  git -c protocol.file.allow=always  submodule update
+  git config submodule.cmake.url "${srcdir}/c4core-cmake"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
   cmake -B build -S rapidyaml -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
+    -DRYML_DEV=OFF \
     -DRYML_BUILD_API=ON \
+    -DRYML_DEFAULT_CALLBACKS=ON \
     -DRYML_DEFAULT_CALLBACK_USES_EXCEPTIONS=ON
   cmake --build build
-  cd rapidyaml
-  python setup.py build
 }
 
-package_rapidyaml() {
-  depends=(
-    gcc-libs
-    glibc
-  )
-  provides=(
-    libc4core.so
-    libryml.so
-  )
-
+package() {
   DESTDIR="${pkgdir}" cmake --install build
-  rm "${pkgdir}"/usr/{_ryml.so,ryml.py}
-  install -Dm 644 rapidyaml/LICENSE.txt -t "${pkgdir}"/usr/share/licenses/rapidyaml/
+
+  # Install license
+  install -Dm644 rapidyaml/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-package_python-rapidyaml() {
-  depends=(
-    gcc-libs
-    glibc
-    python
-  )
-
-  cd rapidyaml
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt -t "${pkgdir}"/usr/share/licenses/python-rapidyaml
-}
-
-# vim: ts=2 sw=2 et:

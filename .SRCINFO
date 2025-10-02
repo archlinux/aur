@@ -1,6 +1,6 @@
 pkgbase = rapidyaml
-	pkgdesc = A library to parse and emit YAML, and do it fast
-	pkgver = 0.9.0
+	pkgdesc = A fast YAML parser and emitter for C++
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/biojppm/rapidyaml
 	arch = x86_64
@@ -8,12 +8,9 @@ pkgbase = rapidyaml
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	makedepends = python-setuptools
-	makedepends = python-setuptools-git
-	makedepends = python-setuptools-scm
-	makedepends = python-cmake-build-extension
-	makedepends = swig
-	source = git+https://github.com/biojppm/rapidyaml.git#tag=47ec2fa184209687c20fd5bc05621e1cb1200311
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/biojppm/rapidyaml.git#tag=v0.10.0
 	source = git+https://github.com/biojppm/c4core.git
 	source = c4core-cmake::git+https://github.com/biojppm/cmake.git
 	b2sums = SKIP
@@ -21,12 +18,3 @@ pkgbase = rapidyaml
 	b2sums = SKIP
 
 pkgname = rapidyaml
-	depends = gcc-libs
-	depends = glibc
-	provides = libc4core.so
-	provides = libryml.so
-
-pkgname = python-rapidyaml
-	depends = gcc-libs
-	depends = glibc
-	depends = python
