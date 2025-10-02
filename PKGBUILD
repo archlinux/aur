@@ -1,6 +1,6 @@
 # Maintainer: Bjarne Øverli <bjarne.oeverli@gmail.com>
 pkgname=tema-git
-pkgver=1.0.0.r76.gd0c250e
+pkgver=1.0.0.r78.g51f0d25
 pkgrel=1
 pkgdesc="GTK4/Adwaita Omarchy theming application with pywal integration"
 arch=('any')
