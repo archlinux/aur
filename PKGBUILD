@@ -1,20 +1,23 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=stigmerge-bin
 _pkgname="${pkgname%-bin}"
-_conf_pkg="distrans"
-pkgver=v0.3.19
+pkgver=v0.5.13
 pkgrel=1
 pkgdesc="Stigmergic merging of files over Veilid. Killab33z on the swarm."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/cmars/stigmerge"
 license=('MPL-2.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
-source=("$url/releases/download/${_conf_pkg}_cli-$pkgver/${_conf_pkg}_cli-$arch-unknown-linux-gnu.tar.gz")
-sha512sums=('2a27bcd306f18eddcdb064601c6edd8b44293be802ba18c09dc1aca824617bd3d5a9f790339a329470bbba9068975866dbd375655fbb69e795127a5b84864a61')
+source_x86_64=("$url/releases/download/$_pkgname-$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
+sha512sums_x86_64=('fd18a5d257aeb69e97bfc89ee74da39f6d5d32aedc51f5f0ebd783b70a187886af2910d94e2fe4e32338a9241aaedb898e087882cbe39ee7cb786a03b0a36f7d')
+source_aarch64=("$url/releases/download/$_pkgname-$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
+sha512sums_aarch64=('20167a9853853d9d1732ce18aee520de56cbf0cc8624a981cc57cfcf53ecb8d805806c2e2f046d1c2af30c23097c7f4a83b8b2ad4cb64c83a5f0abca39b04976')
 
 package() {
-  install -Dm0755 $srcdir/${_conf_pkg}_cli-$arch-unknown-linux-gnu/$_conf_pkg "$pkgdir/usr/bin/$_pkgname"
-  install -Dm0644 $srcdir/${_conf_pkg}_cli-$arch-unknown-linux-gnu/LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm0755 -t "$pkgdir/usr/bin"				"$srcdir/$_pkgname-$arch-unknown-linux-gnu/$_pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname"	"$_pkgname-$arch-unknown-linux-gnu/LICENSE"
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$_pkgname"		"$_pkgname-$arch-unknown-linux-gnu/README.md"
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$_pkgname"		"$_pkgname-$arch-unknown-linux-gnu/CHANGELOG.md"
 }
 

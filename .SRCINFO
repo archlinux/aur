@@ -1,14 +1,17 @@
 pkgbase = stigmerge-bin
 	pkgdesc = Stigmergic merging of files over Veilid. Killab33z on the swarm.
-	pkgver = v0.3.19
+	pkgver = v0.5.13
 	pkgrel = 1
 	url = https://github.com/cmars/stigmerge
 	arch = x86_64
+	arch = aarch64
 	license = MPL-2.0
 	provides = stigmerge
 	conflicts = stigmerge
 	conflicts = stigmerge-git
-	source = https://github.com/cmars/stigmerge/releases/download/distrans_cli-v0.3.19/distrans_cli-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums = 2a27bcd306f18eddcdb064601c6edd8b44293be802ba18c09dc1aca824617bd3d5a9f790339a329470bbba9068975866dbd375655fbb69e795127a5b84864a61
+	source_x86_64 = https://github.com/cmars/stigmerge/releases/download/stigmerge-v0.5.13/stigmerge-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = fd18a5d257aeb69e97bfc89ee74da39f6d5d32aedc51f5f0ebd783b70a187886af2910d94e2fe4e32338a9241aaedb898e087882cbe39ee7cb786a03b0a36f7d
+	source_aarch64 = https://github.com/cmars/stigmerge/releases/download/stigmerge-v0.5.13/stigmerge-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_aarch64 = 20167a9853853d9d1732ce18aee520de56cbf0cc8624a981cc57cfcf53ecb8d805806c2e2f046d1c2af30c23097c7f4a83b8b2ad4cb64c83a5f0abca39b04976
 
 pkgname = stigmerge-bin
