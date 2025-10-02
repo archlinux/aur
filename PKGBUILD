@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisqi-bin
 _pkgname=Brisqi
-pkgver=0.20.0
+pkgver=0.20.2
 _electronversion=37
 pkgrel=1
 pkgdesc="Offline-first personal Kanban app.(Prebuilt version.Use system-wide electron)"
@@ -19,12 +19,12 @@ source=(
     "LICENSE.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ef85eaaa4582d15e3f7c18e7b771c71ab90bddb5ff5d88d6344e1e9718f24fe5'
-            'd00091494041cfef75466e2746144b586fef64fd49accde9e988852c1281f67e'
+sha256sums=('3b98db1e5a3b3544bbd7664f9350990f34f3df654ec926ba96abd369219474f0'
+            '31901d115dee555883fbf505fa2b30c459912cd4e449a62086c4baf8914edb13'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
