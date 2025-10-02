@@ -5,6 +5,7 @@ _printer=dcpt436w
 pkgver=3.6.1
 pkgrel=1 
 pkgdesc="Driver for the Brother DCP-T436W wifi multifuncional printer"
+url="https://support.brother.com/g/b/downloadtop.aspx?c=us_ot&lang=en&prod=dcpt436w_all"
 license=('GPL, EULA, custom:Brother License')
 arch=('x86_64')
 depends=('a2ps' 'cups' 'lib32-glibc')
