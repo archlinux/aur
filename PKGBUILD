@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat
-pkgver=6
-pkgrel=2
+pkgver=7
+pkgrel=1
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
 arch=('any')
@@ -50,7 +50,7 @@ portable $@
 	
 	echo '''[Action]
 When = PostTransaction
-Exec = /usr/bin/ln "-sfr" "/dev/null" "/usr/share/applications/wechat.desktop"
+Exec = /usr/bin/bash -c "rm /usr/share/applications/wechat.desktop && ln -srf /usr/bin/wechat.sh /usr/bin/wechat"
 Depends = wechat
 Description = Configuring WeChat
 
