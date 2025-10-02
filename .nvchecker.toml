@@ -1,0 +1,4 @@
+[skyemu]
+source = "git"
+git = "https://github.com/skylersaleh/SkyEmu.git"
+prefix = "v"

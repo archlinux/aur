@@ -1,0 +1,25 @@
+pkgbase = skyemu
+	pkgdesc = Game Boy Advance, Game Boy, Game Boy Color, and DS Emulator
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/skylersaleh/SkyEmu
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.15
+	makedepends = gendesk
+	makedepends = git
+	depends = alsa-lib
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = openssl
+	depends = sdl2
+	source = SkyEmu::git+https://github.com/skylersaleh/SkyEmu.git#tag=v4
+	b2sums = a6d017f7627d770cf04b76b88d0465755e5931db36ac8d207ba39effa8e85545bec6db740b135faf3eba2df024b066b1facf93c8b5a3ba3e124e04ec0d8c5ef6
+
+pkgname = skyemu
