@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chirpity-bin
 _pkgname=Chirpity
-pkgver=5.1.2
+pkgver=5.2.0
 _electronversion=37
 pkgrel=1
 pkgdesc="Desktop application to identify bird vocalisations in lengthy audio files. Uses either BirdNET or a native AI model tuned for the calls of nocturnal migrants.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9a62add50a3e39127cda1abe53f91bbd0a2d102fdf40a9dd298f8942ba4c5f1e'
+sha256sums=('0dc034134ed1c752f283e81516474635e13b965d9c9a682370406e15d13a8720'
             '04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
