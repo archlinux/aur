@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=stacks
-_pkgver=1.0.5
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -38,8 +38,8 @@ checkdepends=(
 optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5e703e1abc84f9f846a04aec6b45c86e')
-b2sums=('857715e39134ad7e654e0b11586e06345ef6b35c767890d1f4d64d82fc3fcbaf73922f268ea5595643d5e2f0b95dd7e73ad99351f6b297896aa2011da393ca10')
+md5sums=('e08703f88e8b256c90f23f6d22888446')
+b2sums=('17450a47810a13dce1fb70a868deb735e27ff1decaaa5b40dfcc89ef33974c52c4614c336f103b86cbbf85985cf030ada655aeee3fc8545474d9cd8a752a5287')
 
 build() {
   mkdir build
