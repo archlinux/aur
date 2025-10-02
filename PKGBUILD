@@ -1,18 +1,16 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
-# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: Andres <andresrodriguezlemus@proton.me>
 pkgname=pyfetch
-pkgver=2021.01.18
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='neofetch rewritten in python'
+pkgdesc="A Python-based Neofetch alternative"
 arch=('any')
-groups=('therepoclub')
-url="https://github.com/The-Repo-Club/$pkgname"
-license=('CC BY-NC-SA 4.0')
-depends=('gtk3' 'python-gputil' 'python-xlib')
-source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('34450741166cb4d011a4bccf3d7350315d3d54b0dde8660987c9b57f24b00f24')
+url="https://github.com/yourusername/pyfetch"
+license=('MIT')
+depends=('python' 'python-pyfiglet')
+source=("$pkgname-$pkgver.tar.gz")
+md5sums=('SKIP')  # Replace with actual checksum if needed
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 pyfetch "$pkgdir/usr/bin/pyfetch"
 }
