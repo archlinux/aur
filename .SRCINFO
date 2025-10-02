@@ -1,0 +1,21 @@
+pkgbase = c3-lsp-git
+	pkgdesc = Language Server for the C3 language (git version).
+	pkgver = 0.4.0.r17.g0ba4f2a
+	pkgrel = 1
+	url = https://github.com/pherrymason/c3-lsp
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = make
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = c3-lsp
+	conflicts = c3-lsp
+	source = git+https://github.com/pherrymason/c3-lsp.git
+	md5sums = SKIP
+
+pkgname = c3-lsp-git
