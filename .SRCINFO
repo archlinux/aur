@@ -1,11 +1,12 @@
 pkgbase = hyprdm
-	pkgdesc = Metapackage for Hyprdm
+	pkgdesc = Metapackage for Hyprdm (choose either hyprdm-full-git or hyprdm-rob)
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/hyprdm-full-git
 	arch = x86_64
 	license = BSD3
 	depends = hyprdm-full-git
+	depends = hyprdm-rob
 	provides = hyprdm
 
 pkgname = hyprdm
