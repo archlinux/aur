@@ -4,7 +4,7 @@ pkgbase = larksuite-bin
 	pkgrel = 2
 	url = https://www.larksuite.com
 	arch = x86_64
-	license = LicenseRef-Lark-User-1.2.1431
+	license = LicenseRef-Lark-User-${_licensever}
 	makedepends = curl
 	depends = gtk3
 	depends = nspr
@@ -18,7 +18,7 @@ pkgbase = larksuite-bin
 	replaces = bytedance-lark-dev-bin
 	options = !emptydirs
 	source = Lark-linux_x64-7.50.13.deb::https://www.larksuite.com/api/package_info?platform=10
-	source = LICENSE.html::http://www.larksuite.com/en_us/user-terms-of-service
+	source = LICENSE-1.2.1431.html::http://www.larksuite.com/en_us/user-terms-of-service
 	sha256sums = 740a22c94530ea54d384ba9510406a4be2a865fd440b4eedbff53d06413d207f
 	sha256sums = 2bc1c0a493c0169da39db8f1a3fbd67dde24ae61587f8d233f403418e3123c19
 

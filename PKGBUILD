@@ -8,7 +8,8 @@ pkgrel=2
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-license=('LicenseRef-Lark-User-1.2.1431')
+_licensever=1.2.1431
+license=('LicenseRef-Lark-User-${_licensever}')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
 makedepends=('curl')
@@ -16,7 +17,7 @@ replaces=('bytedance-lark-dev-bin')
 provides=('bytedance-lark=$pkgver' 'lark=$pkgver')
 options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
-	LICENSE.html::http://www.larksuite.com/en_us/user-terms-of-service)
+	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service)
 DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
 	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \>\ %o")
 sha256sums=('740a22c94530ea54d384ba9510406a4be2a865fd440b4eedbff53d06413d207f'
@@ -24,7 +25,7 @@ sha256sums=('740a22c94530ea54d384ba9510406a4be2a865fd440b4eedbff53d06413d207f'
 
 package() {
 	# License
-	install -Dm644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+	install -Dm644 LICENSE-${_licensever}.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 
 	# Extract package data
 	tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
