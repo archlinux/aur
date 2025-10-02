@@ -10,6 +10,7 @@ arch=(any)
 #   so depend on python312. Cannot use python=3.12 since the AUR
 #   package does not contain a provides=.
 depends=('python312')
+makedepends=('uv')
 optdepends=(
     'libva-mesa-driver: GPU acceleration'
     'mesa-utils: GPU acceleration'

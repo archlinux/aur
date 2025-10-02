@@ -3,6 +3,7 @@ pkgbase = immich-machine-learning
 	pkgver = 2.0.0
 	pkgrel = 1
 	arch = any
+	makedepends = uv
 	depends = python312
 	optdepends = libva-mesa-driver: GPU acceleration
 	optdepends = mesa-utils: GPU acceleration
