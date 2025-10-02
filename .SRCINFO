@@ -6,6 +6,7 @@ pkgbase = zp-cpp
 	arch = x86_64
 	license = ZLIB
 	makedepends = cmake
+	makedepends = ninja
 	depends = glm
 	depends = glfw
 	depends = vulkan-headers
