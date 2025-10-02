@@ -1,7 +1,7 @@
 # Maintainer: twistedturtle <hindredkin at gmail.com>
 pkgname=dmotp-git
 pkgver=r16.5683202
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI TOTP authenticator"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/dmotp/dmotp"
@@ -13,7 +13,7 @@ source=("git+https://gitlab.com/dmotp/dmotp.git")
 md5sums=("SKIP")
 
 pkgver() {
-    cd "$srcdir/dmotp"
+    cd "$srcdir/${pkgname%-git}"
 
     ( set -o pipefail
         git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -24,11 +24,11 @@ pkgver() {
 
 
 package() {
-    cd "$srcdir/dmotp"
+    cd "$srcdir/${pkgname%-git}"
 
-    install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/share/$pkgname/$pkgname"
-    install -Dm644 "$srcdir/$pkgname/columnise.py" "$pkgdir/usr/share/$pkgname/columnise.py"
+    install -Dm755 "$srcdir/dmotp/dmotp" "$pkgdir/usr/share/dmotp/dmotp"
+    install -Dm644 "$srcdir/dmotp/columnise.py" "$pkgdir/usr/share/dmotp/columnise.py"
 
     mkdir "$pkgdir/usr/bin/"
-    ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/"
+    ln -s "/usr/share/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/"
 }

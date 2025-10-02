@@ -1,7 +1,7 @@
 pkgbase = dmotp-git
 	pkgdesc = CLI TOTP authenticator
 	pkgver = r16.5683202
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/dmotp/dmotp
 	arch = x86_64
 	arch = aarch64
