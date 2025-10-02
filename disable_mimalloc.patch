@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d91361c..2365b33c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -559,9 +559,9 @@ else()
+ endif()
+ 
+ # On Linux/macOS, build mimalloc for a bit more performance
+-if ((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
+-include(cmake/BuildMimalloc.cmake)
+-endif ((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
++#if ((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
++#include(cmake/BuildMimalloc.cmake)
++#endif ((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
+ 
+ #
+ # Find libdl for dlopen/dlclose
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e215bb20..0e8f8d45 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,9 +1,9 @@
+-if((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
+-set(MIMALLOC_SOURCE_FILE $<TARGET_OBJECTS:mimalloc-obj>)
+-endif((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
++#if((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
++#set(MIMALLOC_SOURCE_FILE $<TARGET_OBJECTS:mimalloc-obj>)
++#endif((LINUX OR APPLE) AND (NOT ENABLE_ASAN AND NOT ENABLE_RTSAN))
+ 
+ set(FREEDV_SOURCES
+-    ${MIMALLOC_SOURCE_FILE}
++#    ${MIMALLOC_SOURCE_FILE}
+     main.cpp
+     topFrame.cpp
+     sox_biquad.c
