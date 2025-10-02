@@ -1,8 +1,8 @@
 # Maintainer: lucas007 <lucaszhou007@163.com>
 
 pkgname=finalshell
-pkgver=4.5.12
-pkgrel=2
+pkgver=4.6.4
+pkgrel=1
 pkgdesc="FinalShell是一体化的的服务器、网络管理软件，不仅是ssh客户端，还是功能强大的开发、运维工具，充分满足开发、运维需求。"
 url="https://www.hostbuf.com/"
 arch=("x86_64" "aarch64" "loong64")
@@ -15,11 +15,11 @@ source_aarch64=('https://dl.hostbuf.com/finalshell3/finalshell_linux_arm64.deb'
         'FinalShell.desktop')
 source_loong64=('https://dl.hostbuf.com/finalshell3/finalshell_linux_loong64.deb'
         'FinalShell.desktop')
-sha256sums_x86_64=('2f854b8670ada37f3f416755c904f2e50de58f4c0725a6a651d0bc376cce5ed8'
+sha256sums_x86_64=('71d1326da3a864c6e5c64694ac669fb9b0870b175566bf8008e90fedd5aea90d'
                    '3aa0a806f4fd3cdb5a8065226dc779f1915d5535e8bdec64fb7967698a693ed0')
-sha256sums_aarch64=('f12b6c7fd57399cc71ca0d7d5c0b20877aa809fdffa2ede985e994ce2742e1c8'
+sha256sums_aarch64=('06779669866b05c054fb9edd90efaf6768841d12c7f0839af28b0e9957b298d5'
                     '3aa0a806f4fd3cdb5a8065226dc779f1915d5535e8bdec64fb7967698a693ed0')
-sha256sums_loong64=('877942f5f17885e2e1a4152188ec809a84046464b3b76574f033106e85a8c17f'
+sha256sums_loong64=('108b81abc1cd7afccd08025457871e1234e57c0f9a53330a00b354024840c43a'
                     '3aa0a806f4fd3cdb5a8065226dc779f1915d5535e8bdec64fb7967698a693ed0')
 
 prepare() {
