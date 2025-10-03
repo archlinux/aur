@@ -3,7 +3,7 @@
 
 _Name="PassKeeZ"
 pkgname="${_Name,,}"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="FIDO2/Passkey compatible authenticator implementation"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ noextract=()
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.modules-load")
-b2sums=('d39c10dd906d1d82c321ad9baefd24b16a4470456d261e11a9348ef5d4c95f4de90cedcac69e6f23e86af24599a242961c1c54f6acdb97ef52e665161d24a0f0'
+b2sums=('20a4d822ed543c207b8a7cfc934da254f90441d9b828e8cec261d606a73644c924ebc25b8f014e8312c6bc2a3b99ab1282b48772b8f54998b2b264c8bb876e07'
         '5c504e5e2beefe9fb56170135061f62c3413c156349cee1fa32dfa25a806ac40c0b3b0474b644664eaf7f05212b8071cf1646f94dc54f30e8b730c3ae09b9aef'
         'c35e85734037b87f4269fcc120442818630f64ad5a07899e4b7452bfa4407b6a87b940c223a4259b9b4360bff5380920a129462fb330c5eb517c987efc4362fc')
  
@@ -28,7 +28,7 @@ build() {
     --search-prefix /usr \
     --global-cache-dir "${srcdir}/zig-global-cache" \
     --verbose \
-    -Doptimize=ReleaseSafe
+    -Doptimize=ReleaseSmall
 }
 
 package() {
@@ -40,6 +40,7 @@ package() {
   cp -va build/* "${pkgdir}"
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "src/static/"*.png --target-directory="${pkgdir}/usr/share/passkeez"
   # install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   find "script" -type f -name '*.rules'   -execdir \
