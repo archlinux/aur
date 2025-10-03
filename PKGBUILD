@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname=systemd-boot-btrfs-snapshots-git
-pkgver=r221.9afb077
+pkgver=r225.c6a4146
 pkgrel=1
 pkgdesc="Btrfs snapshot scripts with systemd-boot integration"
 arch=(x86_64)
