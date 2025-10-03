@@ -4,11 +4,11 @@ repoowner="Blaadick"
 reponame="BlaadPapers"
 pkgname="blaadpapers"
 pkgdesc="Fast & clean wallpaper manager"
-license=("MIT")
-pkgver="0.2.0"
+license=("GPL-3.0-only")
+pkgver="0.2.1"
 pkgrel=1
 arch=("any")
-depends=("qt6-base" "qt6-declarative" "qt6-multimedia")
+depends=("qt6-base" "qt6-declarative" "qt6-multimedia" "bstyle-qml-theme")
 optdepends=("hyprpaper: To set wallpapers on Hyprland")
 makedepends=("cmake" "ninja" "librsvg")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$repoowner/$reponame/archive/refs/tags/v$pkgver.tar.gz")
@@ -18,14 +18,16 @@ options=("!debug")
 
 build() {
     cd "$reponame-$pkgver" || exit
-    cmake -B cmake-build-release -G Ninja -DCMAKE_BUILD_TYPE=Release
-    cmake --build cmake-build-release -j "$(nproc --ignore=2)"
+
+    cmake -B cmake-build-release -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+    cmake --build cmake-build-release --parallel
 }
 
 package() {
     cd "$reponame-$pkgver" || exit
 
     install -Dm755 "./cmake-build-release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "./resource/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 "./resource/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
     install -Dm644 "./resource/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
