@@ -11,18 +11,19 @@ license=(GPL-3.0-or-later)
 depends=(
   cairo
   dconf
-  json-glib
   gdk-pixbuf2
   glibc
   glib2
-  gstreamer
   gst-plugins-good
+  gstreamer
   gtk4
+  json-glib
   hicolor-icon-theme
   libadwaita
-  libgee
   libsoup3
+  libgee
   libxml2
+  libxml2-legacy
   sqlite
   webkitgtk-6.0
   xdg-desktop-portal-impl
