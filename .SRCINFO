@@ -10,6 +10,7 @@ pkgbase = brother-dcpt220
 	depends = cups
 	depends = ghostscript
 	depends = lib32-glibc
+	optdepends = system-config-printer: A CUPS printer configuration tool and status applet
 	optdepends = sane: scanning support
 	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
 	optdepends = brscan5: scanning driver required to make the printer available to sane

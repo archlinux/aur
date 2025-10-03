@@ -10,7 +10,8 @@ url="https://support.brother.com/g/b/producttop.aspx?c=in&lang=en&prod=dcpt220_a
 license=('GPL, EULA, custom:Brother License')
 arch=('x86_64')
 depends=('a2ps' 'cups' 'ghostscript' 'lib32-glibc')
-optdepends=('sane: scanning support'
+optdepends=('system-config-printer: A CUPS printer configuration tool and status applet'
+            'sane: scanning support'
             'sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners'
             'brscan5: scanning driver required to make the printer available to sane'
             'brscan-skey: scankey support if connected via USB')
