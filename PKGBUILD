@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=modeltime
-_pkgver=1.3.1
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -22,8 +22,6 @@ depends=(
   r-hardhat
   r-janitor
   r-magrittr
-  r-methods
-  r-parallel
   r-parallelly
   r-parsnip
   r-plotly
@@ -35,6 +33,7 @@ depends=(
   r-stanheaders
   r-stringr
   r-tibble
+  r-tidymodels
   r-tidyr
   r-timetk
   r-workflows
@@ -70,8 +69,8 @@ optdepends=(
   r-workplowsets
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e855d2cb172d746f470878b26caa0fcc')
-b2sums=('54f65c5d323e66e52efd34ea0d5d59f03e3041bdd1214cce39a687d60dc48aaccc5c5c2f996c3250e128bc18272ee576929070a41146717928f1ae9d5aab1532')
+md5sums=('08b08a57c1663ae1fc4c294412be781f')
+b2sums=('169a6ab1c68b926226a4971f3be45892e5bd58c5e621f0ab7a6fa6cd06e288b8114993e860ac2f202bcff58b1b0ee5eca0b6ae4b867ab43be9f5fab388627c93')
 
 build() {
   mkdir build
