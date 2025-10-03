@@ -3,6 +3,7 @@
 pkgname=sparrow-wallet-reproducible
 pkgver=2.2.3
 _jdkver=22.0.2_9
+_jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
 arch=('x86_64')
@@ -31,7 +32,7 @@ source=(
     "sparrow-bin.tar.gz::https://github.com/sparrowwallet/sparrow/releases/download/${pkgver}/sparrowwallet-${pkgver}-x86_64.tar.gz"
     "drongo::git+https://github.com/sparrowwallet/drongo.git"
     "lark::git+https://github.com/sparrowwallet/lark.git"
-    "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK22U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
+    "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
     "MimeInfo.xml"
 )
 sha256sums=('e2a2bd8b484e450d12b5ce4d85ef8e11443a75b732033a2dbb4f60fecad77813'
