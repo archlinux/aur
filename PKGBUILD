@@ -3,7 +3,7 @@
 _org='gepetto'
 _pkgname='example-robot-data'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=4.2.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD-2-Clause')
 depends=('pinocchio')
 makedepends=('cmake')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('43936c78938bae82c4524cd47a0b8947bae237ca6b6ff00d28b60b2cfe818567'
+sha256sums=('024404b719c1d45fa669ed109da1d0fdb0a9a5793cdc7c14d05a874bdf7a80a0'
             'SKIP')
 validpgpkeys=(
         '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
@@ -43,6 +43,6 @@ package_example-robot-data-docs() {
     depends=()
 
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
+    rm -rf $pkgdir/usr/{lib,include,share/ament_index,"share/$_pkgname"}
     install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
