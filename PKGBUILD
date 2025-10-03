@@ -2,21 +2,23 @@
 
 pkgname=libclipboard-git
 _pkg="${pkgname%-git}"
-pkgver=1.1.r0.g3d2cb08
+pkgver=r62.e3a5e9c
 pkgrel=1
 pkgdesc="Lightweight cross-platform C clipboard library"
-url="https://github.com/jtanx/libclipboard"
+url="https://github.com/OfficialKris/libclipboard"
 arch=("x86_64")
 license=("MIT")
 depends=("libxcb")
 makedepends=("cmake" "git")
 provides=("$_pkg")
 conflicts=("$_pkg")
-source=("$_pkg::git+$url")
+source=("git+$url")
 sha256sums=("SKIP")
+_gitname="libclipboard"
 
 pkgver() {
-	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+	cd "${srcdir}/${_gitname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
