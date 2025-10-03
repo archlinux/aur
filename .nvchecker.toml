@@ -1,0 +1,4 @@
+[manx-bin]
+source = "git"
+git = "https://github.com/neur0map/manx.git"
+prefix = "v"
