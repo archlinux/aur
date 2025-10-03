@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 140.0.7339.185
+	pkgver = 141.0.7390.54
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = ungoogled-chromium-xdg
 	makedepends = qt6-base
 	makedepends = java-runtime-headless
 	makedepends = git
+	makedepends = compiler-rt
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
@@ -53,32 +54,32 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=140.0.7339.185
-	provides = chromedriver=140.0.7339.185
+	provides = chromium=141.0.7390.54
+	provides = chromedriver=141.0.7390.54
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-140.0.7339.185-lite.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-141.0.7390.54-lite.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
 	source = use-oauth2-client-switches-as-default.patch
-	source = chromium-140.0.7339.41-rust.patch
+	source = chromium-141-cssstylesheet-iwyu.patch
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
-	source = ungoogled-chromium-140.0.7339.185-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/140.0.7339.185-1.tar.gz
-	sha256sums = a7b9a8dd5ddd65fb756bf35fb9180fca26ec59e1d55bbb105e05483ff15135b8
+	source = ungoogled-chromium-141.0.7390.54-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/141.0.7390.54-1.tar.gz
+	sha256sums = e1a15924aeeee3cbd76cf15fd2dce755acea2a7cb034ea2993fd02dd63738764
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf
-	sha256sums = 75681c815bb2a8c102f0d7af3a3790b5012adbbce38780716b257b7da2e1c3d5
+	sha256sums = 81ba390a500a38c50b5adad9d185d08685cdf9a9d9448e1e33cfff4f2388618d
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374
-	sha256sums = 0eb47afd031188cf5a3f0502f3025a73a1799dfa52dff9906db5a3c2af24e2eb
+	sha256sums = de5c873564b09713b65dd9e6a0b9049d7b3cf8f881436f36e1c091824b63e876
 	sha256sums = 2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
-	sha256sums = cb7861ba6b47fd1bb00dd84981c34cc29a9792d6eb115149a905453f1159fdb8
+	sha256sums = 3100bdab2734831ab1cdf7bbd3f4c24e55d51b3e4bda3a1ba668f54ab4aeff80
 
 pkgname = ungoogled-chromium-xdg
