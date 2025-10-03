@@ -1,13 +1,13 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 _pkgname=turso
 pkgname=$_pkgname-git
-pkgver=0.1.5.r51.g8ab8b31cb
+pkgver=0.2.0.r7.gc98bf9b59
 pkgrel=1
 pkgdesc='Turso Database is an in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
 license=('MIT')
 arch=('x86_64')
-makedepends=(cargo libgit2 mimalloc oniguruma)
+makedepends=(cargo libaegis libgit2 mimalloc oniguruma)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
@@ -23,7 +23,7 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="${RUSTFLAGS} -l git2 -l mimalloc -l onig"
+    export RUSTFLAGS="${RUSTFLAGS} -l aegis -l git2 -l mimalloc -l onig"
     cargo build --frozen --release -p turso_cli
 }
 
