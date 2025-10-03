@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=monophony
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Linux app for streaming music from YouTube."
 arch=('any')
@@ -23,6 +23,7 @@ depends=(
 makedepends=(
 	'python-build'
 	'python-installer'
+	'python-setuptools'
 	'python-wheel'
 )
 checkdepends=()
@@ -31,7 +32,7 @@ provides=()
 conflicts=()
 replaces=()
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('cbc7277f74c1601261c29f79992bc543568c7d42e803271c2d74f00b4dd85289')
+sha256sums=('2251184e3028d3add6332957eeac46789a8f0fde623e3b5d7d4765ddde0ed6f5')
 
 prepare() {
 	cd "$srcdir/$pkgname-v$pkgver/source"
