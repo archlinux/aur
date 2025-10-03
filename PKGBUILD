@@ -4,8 +4,8 @@
 # ci|prebuild=_verformat.sh| https://github.com/envolution/aur/blob/main/maintain/build/qwen-code/_verformat.sh
 
 pkgname=qwen-code
-pkgver=0.0.15n0
-_pkgver=0.0.15-nightly.0
+pkgver=0.0.15n1
+_pkgver=0.0.15-nightly.1
 pkgrel=1
 pkgdesc="cli coding agent (fork of gemini-cli)"
 arch=(any)
@@ -16,7 +16,7 @@ depends=('nodejs')
 source=("https://registry.npmjs.org/@qwen-code/$pkgname/-/$pkgname-$_pkgver.tgz")
 options=(!lto !strip !debug)
 noextract=("$pkgname-$_pkgver.tgz")
-sha256sums=('a85011ed29e2046529de4823cf0b714614c603d28fc17d2b33c9203d5048322a')
+sha256sums=('d4633da5bff30e0dd2f6fa4406e4fb12a6a5faa7b62de985f9514cc32bd940b8')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${_pkgver}.tgz"
