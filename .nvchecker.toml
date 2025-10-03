@@ -1,0 +1,5 @@
+[bazaar]
+source = "git"
+git = "https://github.com/kolunmi/bazaar"
+prefix = "v"
+include_regex = '^v\d+\.\d+\.\d+$'
