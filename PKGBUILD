@@ -1,10 +1,10 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 _pkgname_snapweb=snapweb
-_snapweb_version=0.9.1
+_snapweb_version=0.9.2
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -26,11 +26,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
   "snapcast.tmpfiles"
   "snapcast.install")
 noextract=("${_pkgname_snapweb}-${_snapweb_version}.zip")
-sha256sums=('5da21ab4a609550308be389d6af628628a89b6beb1d6e996ad2e4960e8e36d1d'
-  '5a63936b2ce9ce29eac7760b78a8e3013cb0ec95c5ca140d68261143f826dfb5'
-  '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
-  'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
-  '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f')
+sha256sums=('a2918ea4d1f9b2df9c4247fd71bd452ea03a5d20ac44f60a736df90488858944'
+            'e4ebeb911d4485daa469a12238d935721d4577612f9b5e43d2febf105f5a4660'
+            '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
+            'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
+            '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f')
 
 prepare() {
   mkdir -p ${_pkgname_snapweb}-${_snapweb_version}
