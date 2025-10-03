@@ -1,4 +1,4 @@
-# Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
+# Maintainer: voxan24 <admin@hessfr.fr>
 pkgname=3proxy
 pkgver=0.9.5
 pkgrel=2
