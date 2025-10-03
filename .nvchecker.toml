@@ -1,0 +1,4 @@
+[nocodb-bin]
+source = "github"
+github = "nocodb/nocodb"
+use_latest_release = true
