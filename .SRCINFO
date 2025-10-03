@@ -1,0 +1,28 @@
+pkgbase = glide-browser-bin
+	pkgdesc = An extensible and keyboard-focused web browser built on Firefox
+	pkgver = 0.1.50a
+	pkgrel = 1
+	url = https://github.com/glide-browser/glide
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = gtk3
+	depends = libxt
+	depends = mime-types
+	depends = dbus-glib
+	depends = nss
+	depends = ttf-font
+	depends = systemd
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulse-native-provider: Audio support
+	provides = glide-browser-bin=0.1.50a
+	conflicts = glide-browser-bin
+	options = !strip
+	source_x86_64 = glide.linux-x86_64.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.50a/glide.linux-x86_64.tar.xz
+	sha256sums_x86_64 = 8cecc4fbbdbbb287094002488f6b028144bea24c77cc7efd26e3332e1b0462c9
+	source_aarch64 = glide.linux-aarch64.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.50a/glide.linux-aarch64.tar.xz
+	sha256sums_aarch64 = 0d1e99252523b987b094e269c1a912fe5be5ace0ae55e918f7855bdaa3238bf0
+
+pkgname = glide-browser-bin
