@@ -1,7 +1,7 @@
 # Maintainer: Martin Larralde <martin.larralde@embl.de>
 
 pkgname=vsearch
-pkgver=2.30.0
+pkgver=2.30.1
 pkgrel=1
 pkgdesc="Versatile open-source tool for microbiome analysis. https://doi.org/10.7717/peerj.2584"
 arch=('x86_64' 'aarch64' 'ppc64le')
@@ -10,7 +10,7 @@ license=('BSD-2-Clause OR GPL-3.0-only')
 depends=('glibc' 'zlib' 'bzip2')
 makedepends=('ghostscript')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6d11ce960206ab64cf6d7907e539348d192a5b3f32f82d37c9bfbc4d789b576c')
+sha256sums=('f65f03538a77cd1212bd04a52bb722114765329e64bd35e10ee2aefcd81137fe')
 
 build() {
   cd "$pkgname-$pkgver"
