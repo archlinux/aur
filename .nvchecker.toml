@@ -1,0 +1,4 @@
+[hk-bin]
+source = "git"
+git = "https://github.com/jdx/hk.git"
+prefix = "v"
