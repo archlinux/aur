@@ -6,10 +6,10 @@ _gitbranch="main"
 pkgname=("chromeos-vboot-reference-git" "chromeos-vboot-reference-crossystem-git") 
 url="https://chromium.googlesource.com/chromiumos/platform/${_gitname}"
 license=('GPL')
-makedepends=('git' 'libyaml' 'chromeos-flashrom-git' 'python-sphinx')
+makedepends=('git' 'chromeos-flashrom-git')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 pkgver=r20221126105520.e952b90
-pkgrel=3
+pkgrel=4
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
