@@ -1,7 +1,7 @@
 pkgbase = notparadoxlauncher
 	pkgdesc = Alternative for Paradox Launcher (QT6)
 	pkgver = 1.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/shusaura85/notparadoxlauncher
 	install = notparadoxlauncher.install
 	arch = x86_64

@@ -1,0 +1,5 @@
+[notparadoxlauncher]
+source = "github"
+github = "shusaura85/notparadoxlauncher"
+prefix = "v"
+use_latest_release = "true"
