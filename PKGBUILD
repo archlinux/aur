@@ -2,7 +2,7 @@
 
 pkgname=textadept-curses
 _basename=textadept
-pkgver=12.8
+pkgver=12.9
 pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=(i686 x86_64 aarch64)
@@ -10,7 +10,7 @@ url="https://github.com/orbitalquark/textadept"
 license=(MIT)
 makedepends=(ncurses wget unzip cmake)
 source=("$url/archive/${_basename}_$pkgver.tar.gz")
-sha256sums=('0650b0b18c404988c22c56e8634981b57f171da338fcf78e6e74cc96c257d626')
+sha256sums=('912cfacd787d2412be0bca92dbaab68271762c39e6d449b9cff5ae5e4c0025ee')
 
 build() {
 	cd "${_basename}-${_basename}_$pkgver"
