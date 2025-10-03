@@ -2,9 +2,9 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.62.0
+pkgver=5.63.0
 _pkgver=4.212.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://techdocs.akamai.com/cloud-computing/docs/cli"
@@ -23,7 +23,7 @@ install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/archive/refs/tags/v${_pkgver}.tar.gz")
 noextract=("${pkgname%%-*}-api-docs-${_pkgver}.tar.gz")
-sha512sums=('97e44d3497e684fbc7ec637ab6712688ca932ea0764480bef3faae0d29a8862dbcf656d822e18ea9d0ec9040bca21137db34f3af72a72f47fa533f71c7b1503c'
+sha512sums=('0a618d60afdbde2419bcb331886ac2178e3f6399438090e379532cb0d57a7c42c9bfe2e350119308ecada2873a7314136e4f91d4802a556c6c6ca243e0e4da9f'
             '5c4326b29cb06378862f0d4422b70339d0567166ceef380ab952cefb1e22d3c8365cf7683ed5c119096e79420b04d4cb120781c765d949ac001b3b6f19293497')
 
 prepare() {
