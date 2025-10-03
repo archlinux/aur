@@ -5,7 +5,7 @@ pkgbase = pyfetch-beta
 	license = MIT
 	depends = python
 	depends = python-pyfiglet
-	source = https://github.com/andresr124/pyfetch/releases/download/v1.0.2-rc1/pyfetch-1.0.2-rc1.tar.gz
-	sha256sums = fd96b45374aeec7ee5d3c830cb95308cb48f2c84ba77b8a94f0f49d1590c7b7d
+	source = https://github.com/andresr124/pyfetch/releases/download/v1.0.2-rc2/pyfetch-1.0.2-rc2.tar.gz
+	sha256sums = 600f673a4bb51220be8b7a9e2e796827e4cc4a34f65c8f1976519f7ce73a3648
 
 pkgname = pyfetch-beta

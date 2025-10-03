@@ -4,16 +4,13 @@ pkgrel=1
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pyfiglet')
-source=('https://github.com/andresr124/pyfetch/releases/download/v1.0.2-rc1/pyfetch-1.0.2-rc1.tar.gz')
-sha256sums=('fd96b45374aeec7ee5d3c830cb95308cb48f2c84ba77b8a94f0f49d1590c7b7d')
+source=('https://github.com/andresr124/pyfetch/releases/download/v1.0.2-rc2/pyfetch-1.0.2-rc2.tar.gz')
+sha256sums=('600f673a4bb51220be8b7a9e2e796827e4cc4a34f65c8f1976519f7ce73a3648')
 
 package() {
   cd "$srcdir/pyfetch-1.0.2-rc1"
 
   # Install the script
   install -Dm755 pyfetch-beta "$pkgdir/usr/bin/pyfetch-beta"
-
-  # Optionally install README and LICENSE
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 pyfetch.conf "$pkgdir/usr/share/pyfetch/pyfetch.conf"
 }
