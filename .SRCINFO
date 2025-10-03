@@ -1,13 +1,13 @@
 pkgbase = dijo-1995parham
 	pkgdesc = Scriptable, curses-based, digital habit tracker
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/1995parham/dijo
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = dijo-1995parham-0.4.6.tar.gz::https://github.com/1995parham/dijo/archive/v0.4.6.tar.gz
-	sha256sums = 4eb50cfe4e883c8b902af7b2330ce0c93d48b707df365328fc8a600f6e6df6f2
+	source = dijo-1995parham-0.4.7.tar.gz::https://github.com/1995parham/dijo/archive/v0.4.7.tar.gz
+	sha256sums = e1a00014aee3d6b72649ff16556b454fe8a5f411aea199eafb087b533deb3854
 
 pkgname = dijo-1995parham
