@@ -1,7 +1,7 @@
 # Maintainer: Ross Ceb aur@roceb.xyz 
 pkgname=glide-browser-bin
 _binaryname=glide-bin
-pkgver=0.1.50a
+pkgver=0.1.51a
 pkgrel=1
 pkgdesc="An extensible and keyboard-focused web browser built on Firefox"
 arch=('x86_64' 'aarch64')
