@@ -1,6 +1,6 @@
 pkgbase = textadept-gtk3
 	pkgdesc = Fast, minimalist, and remarkably extensible cross-platform text editor
-	pkgver = 12.8
+	pkgver = 12.9
 	pkgrel = 1
 	url = https://github.com/orbitalquark/textadept
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = textadept-gtk3
 	provides = textadept-gtk3
 	conflicts = textadept
 	conflicts = textadept-gtk2
-	source = https://github.com/orbitalquark/textadept/archive/textadept_12.8.tar.gz
-	sha256sums = 0650b0b18c404988c22c56e8634981b57f171da338fcf78e6e74cc96c257d626
+	source = https://github.com/orbitalquark/textadept/archive/textadept_12.9.tar.gz
+	sha256sums = 912cfacd787d2412be0bca92dbaab68271762c39e6d449b9cff5ae5e4c0025ee
 
 pkgname = textadept-gtk3
