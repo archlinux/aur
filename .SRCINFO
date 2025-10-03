@@ -21,6 +21,7 @@ pkgbase = rapidyaml
 pkgname = rapidyaml
 	pkgdesc = A fast YAML parser and emitter for C++
 	provides = rapidyaml
+	provides = libryml.so
 
 pkgname = python-rapidyaml
 	pkgdesc = Python bindings for rapidyaml (via SWIG)

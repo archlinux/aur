@@ -89,7 +89,7 @@ build() {
 package_rapidyaml() {
   pkgdesc="A fast YAML parser and emitter for C++"
   # This package provides the base library and development headers
-  provides=('rapidyaml')
+  provides=('rapidyaml' 'libryml.so')
   # Dependencies are inherited from the main 'depends' array (gcc-libs, glibc)
   
   DESTDIR="${pkgdir}" cmake --install build
