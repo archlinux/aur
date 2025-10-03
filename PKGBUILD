@@ -6,8 +6,8 @@
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=2.1.1947
-pkgrel=1.3
+pkgver=2.1.1956
+pkgrel=1.4
 _pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
@@ -15,7 +15,8 @@ url="https://github.com/Suwayomi/Suwayomi-Server-preview"
 license=("MPL2")
 depends=("java-runtime>=21" "libc++" "gcc")
 optdepends=("electron: running in Electron"
-    "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode")
+    "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode"
+    "flaresolverr: A proxy server to bypass Cloudflare protection")
 provides=("suwayomi" "$_pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk")
 _jar="$_PkgName-v$_pkgver.jar"
