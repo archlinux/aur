@@ -1,6 +1,6 @@
 pkgbase = reel
 	pkgdesc = A modern GTK frontend for Plex and other media servers
-	pkgver = 0.7.1
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/arsfeld/reel
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = reel
 	depends = mpv
 	depends = openssl
 	options = !lto
-	source = git+https://github.com/arsfeld/reel.git#tag=v0.7.1
-	sha256sums = d3a55dfcae851498d4a69c8012eb31d44ec09c0894ade256ad70557c499fed4d
+	source = git+https://github.com/arsfeld/reel.git#tag=v0.7.3
+	sha256sums = f5ee70a4b1963fc81f0cf3b52b2f3544f9034fcd37241e1f8a8666c44ad67b21
 
 pkgname = reel
