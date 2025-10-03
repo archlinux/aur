@@ -21,4 +21,6 @@ pkgname = subtitles-contact-sheet-qt-cli-git
 
 pkgname = subtitles-contact-sheet-qt-gui-git
 	pkgdesc = Create subtitles/video contact sheets, previews, small animations, screenshots and thumbnails (Qt GUI)
+	depends = qt6-base
+	depends = ffmpeg
 	depends = subtitles-contact-sheet-qt-cli-git

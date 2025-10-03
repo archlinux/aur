@@ -43,7 +43,7 @@ package_subtitles-contact-sheet-qt-cli-git() {
 
 package_subtitles-contact-sheet-qt-gui-git() {
   pkgdesc+=' (Qt GUI)'
-  depends=('subtitles-contact-sheet-qt-cli-git')
+  depends+=('subtitles-contact-sheet-qt-cli-git')
 
   cd "${srcdir}/${_pkgname}/SCSGUI"
   make INSTALL_ROOT="${pkgdir}" install
