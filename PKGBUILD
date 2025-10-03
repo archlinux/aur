@@ -2,8 +2,8 @@
 
 _pkgbase=it87
 pkgname=it87-dkms-git
-pkgver=152.2b8b4fe
-pkgrel=3
+pkgver=301.8dd7f65
+pkgrel=1
 pkgdesc="Linux Driver for ITE LPC chips"
 arch=('x86_64' 'i686')
 url="https://github.com/frankcrawford/it87"
