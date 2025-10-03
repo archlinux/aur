@@ -1,0 +1,6 @@
+[tododo-bin]
+source = "github"
+github = "bmarse/tododo"
+use_latest_release = true
+from_pattern = 'v([0-9.]*)-stable'
+to_pattern = '\1'
