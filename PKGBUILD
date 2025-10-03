@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname='tsid'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.7.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD')
 depends=('pinocchio' 'eiquadprog')
 optdepends=('doxygen')
-makedepends=('cmake' 'eigen')
+makedepends=('cmake' 'eigen3')
 source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('142ebd28e6235c5811da6ac07ab30ff504a9572e225ba605dca475e4745a585d'
+sha256sums=('283ad0374a8f0389976e824f0f47974131abe42dbbd9b2d391a52f353be681be'
             'SKIP')
 validpgpkeys=(
     '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
@@ -41,6 +41,6 @@ package_tsid() {
 
 package_tsid-docs() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
+    rm -rf $pkgdir/usr/{lib,include,share/ament_index,"share/$_pkgname"}
     install -Dm644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
