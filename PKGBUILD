@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=openai-codex
-pkgver=0.42.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="Lightweight coding agent that runs in your terminal"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 # LTO seems to cause build failures, details unclear
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/rust-v${pkgver}.tar.gz")
-b2sums=('38e9ef56c622317ca450bbd404289c452723ba7786752acbd856bde6a7bc66eae6fbab7661291002c487490af4cebda02a4ef13de7feca747c3fa6f7a832b339')
+b2sums=('e50bfc0d15b48169dbd12007d2caaffcbc03e025c4ecff72d88fd78dd9e539f711deb8d4e7959602fa02977269bfaa8d2a6635e63f78259c54afc6fdc0e143ff')
 
 prepare() {
     cd "codex-rust-v${pkgver}/codex-rs"
