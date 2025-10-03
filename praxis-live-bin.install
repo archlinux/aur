@@ -1,0 +1,63 @@
+post_install() {
+  cat << EOF
+
+==> PraxisLIVE has been installed successfully!
+
+==> Usage:
+    Run 'praxislive' to start the IDE
+    Run 'praxis' to start the PraxisCORE runtime
+
+==> KDE Plasma users:
+    You may see a message about font antialiasing settings.
+    To improve font rendering, you can set the JVM argument:
+      -J-Dawt.useSystemAAFontSettings=lcd_hrgb
+    
+    Add this to: /usr/lib/praxislive/etc/praxislive.conf
+    in the default_options line.
+
+==> Java Requirements:
+    PraxisLIVE v6.3.0 requires Java 21 or higher.
+    Current Java version: $(java -version 2>&1 | head -1)
+    
+    If you see "Unsupported major.minor version" errors:
+      - Install jdk-openjdk (Java 23+) or jdk21-openjdk
+      - Or set JAVA_HOME to point to a Java 21+ installation
+
+==> Additional information:
+    - Documentation: https://docs.praxislive.org/
+    - GitHub: https://github.com/praxis-live/praxis-live
+    - Website: https://www.praxislive.org/
+
+EOF
+}
+
+post_upgrade() {
+  cat << EOF
+
+==> PraxisLIVE has been upgraded to version ${2}
+
+==> What's new in v6.3.0:
+    - Updated to Apache NetBeans 26 platform and Java 24
+    - Fixed issue with occasional orphaned processes after exit
+    - Improved video output window support and mouse position mapping
+    - Updated libP5X to v4.43.0.2
+
+==> For full changelog, visit:
+    https://github.com/praxis-live/praxis-live/releases/tag/v${2}
+
+EOF
+}
+
+post_remove() {
+  cat << EOF
+
+==> PraxisLIVE has been removed.
+
+==> User configuration files remain in:
+    ~/.praxislive/
+
+==> To completely remove all configuration:
+    rm -rf ~/.praxislive/
+
+EOF
+}

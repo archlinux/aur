@@ -1,0 +1,18 @@
+pkgbase = praxis-live-bin
+	pkgdesc = Hybrid visual IDE for live programming
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://www.praxislive.org/
+	install = praxis-live-bin.install
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime>=21
+	depends = glibc
+	depends = gcc-libs
+	optdepends = jack: for JACK audio support
+	optdepends = pipewire-jack: alternative JACK implementation
+	options = !strip
+	source = praxislive_6.3.0-1_amd64.deb::https://github.com/praxis-live/praxis-live/releases/download/v6.3.0/praxislive_6.3.0-1_amd64.deb
+	sha256sums = bb361ca693b99ca189b7e6fa4d77ac3bba1651b368c2be8c72115e96511e4895
+
+pkgname = praxis-live-bin
