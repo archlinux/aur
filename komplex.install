@@ -1,0 +1,3 @@
+pre_install() {
+	echo "export QT_MEDIA_BACKEND=gstreamer" >> /etc/profile
+}
