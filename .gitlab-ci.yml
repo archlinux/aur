@@ -59,7 +59,7 @@ deploy-git:
     - version=`grep -E "^_version=.*" PKGBUILD | sed -e "s|^_version=||"`
     - updateDate=`grep -E "^_update_date=.*" PKGBUILD | sed -e "s|^_update_date=||"`
 
-    - git config --remove-section user
+    # - git config --remove-section user
     - git config --add user.name "${GITLAB_USER_NAME}"
     - git config --add user.email "${GITLAB_USER_EMAIL}"
     - git remote set-url origin ssh://git@${CI_SERVER_SHELL_SSH_HOST}:${CI_SERVER_SHELL_SSH_PORT}/${CI_PROJECT_PATH}.git
