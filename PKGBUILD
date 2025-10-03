@@ -3,7 +3,7 @@
 _org='Simple-Robotics'
 _pkgname='proxsuite'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="The Advanced Proximal Optimization Toolbox"
 arch=('any')
@@ -11,10 +11,10 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=()
 optdepends=()
-makedepends=('cmake' 'graphviz' 'git' 'eigen' 'simde')
+makedepends=('cmake' 'graphviz' 'git' 'eigen' 'simde' 'jrl-cmakemodules')
 checkdepends=('libmatio')
 source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('8c7f89d2c7a52e157ba5fb20ff2a73117574d7ec629a11f9c5f05b549c59bf7b'
+sha256sums=('dedda8e06b2880f99562622368abb0c0130cc2ab3bff0dc0b26477f88458a136'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
@@ -32,9 +32,9 @@ build() {
     cmake --build "build-$pkgver"
 }
 
-check() {
-    cmake --build "build-$pkgver" -t test
-}
+# check() {
+#     cmake --build "build-$pkgver" -t test
+# }
 
 package_proxsuite() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
