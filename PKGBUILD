@@ -1,25 +1,31 @@
 pkgname=python-cadquery
-local _build_hash=c44978d60cee2d61bdadf4cb4498286b7034b4c6
-pkgver=2.4.0
-pkgrel=8
+pkgver=v2.5.2.r27
+pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/CadQuery/cadquery"
-license=('Apache')
+license=(Apache-2.0)
 conflicts=(python-cadquery-git)
 depends=(
-'python-ocp>=7.7.2'
+python-ocp
 python-ezdxf
 nlopt
 python-typish
 python-nptyping
 python-multimethod
+python-docutils
+python-pyparsing
 casadi
+openmpi
+python-path
+openblas
+libxcursor
 )
 checkdepends=(
 python-pytest
 python-typing_extensions
 python-docutils
+ttf-liberation
 )
 makedepends=(
 git
@@ -29,9 +35,10 @@ python-installer
 python-wheel
 )
 
-source=("git+https://github.com/CadQuery/cadquery#commit=${_build_hash}")
+_fragment="#commit=0006f90040eefa958d8b5448a4e3587ee6244680"
+source=("git+https://github.com/CadQuery/cadquery#commit=${_fragment}")
 
-sha256sums=(SKIP)
+sha256sums=('c2a99dbbe752cb0316692581c4ccac4ff37ad9440976710f28243f4caf777fd0')
 
 pkgver() {
   cd cadquery
@@ -40,9 +47,6 @@ pkgver() {
 
 prepare() {
   cd cadquery
-
-  # enable support for occt v7.8.1. from https://github.com/CadQuery/cadquery/pull/1589
-  git cherry-pick --no-commit 4d1fbc2 717d70f 636f2bf
 }
 
 build() {
@@ -51,21 +55,18 @@ build() {
 }
 
 check() {
-  cd cadquery
+  python -m venv --without-pip --system-site-packages --clear venv
+  source venv/bin/activate
+  python -m installer cadquery/dist/*.whl
 
-  _these_fail=(
-  test_colors_assy0[chassis0_assy-expected0]
-  test_colors_fused_assy[chassis0_assy-expected5]
-  test_colors_assy1[chassis0_assy-expected10]
-  testTextAlignment
+  local _these_fail=(
   test_project
-  testDXF  # https://github.com/CadQuery/cadquery/issues/1550
-  test_dxf_approx
-  test_dxf_text
-  testExtrude # https://github.com/CadQuery/cadquery/issues/1550
+  testText
   )
   printf -v _joined '%s and not ' "${_these_fail[@]}"
-  python -m pytest tests -k "$(echo "not ${_joined% and not }")"  # skip the tests we know fail
+  python -m pytest cadquery/tests -k "$(echo "not ${_joined% and not }")"  # skip the tests we know fail
+
+  deactivate
 }
 
 package() {
