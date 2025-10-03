@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=mdserve
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Fast markdown preview server with live reload and theme support."
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('ac19506b502f5c3f33c0e6c59a79a8442be03561637fd4acfea3aab1630331b6858b2f1f88703ace5a4fa370de901b1d726556855647c6788af39fb338c2942d')
+b2sums=('2d773e48ac06b92b46c7dc82a6003d3a255ed4ef2b160caef1686fd32ba4692d14d1abde6772c76b90e0981e860fba1bbfea3d1d8f4f16f5f5713ad66f58bfa5')
 
 prepare() {
   cd ${pkgname}-${pkgver}
