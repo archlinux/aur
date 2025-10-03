@@ -6,7 +6,7 @@
 # maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
 
 pkgbase=linux-stub
-pkgver=6.16.8.arch2
+pkgver=6.16.8.arch3
 pkgrel=1
 #pkgdesc
   _oldpkgdesc='Linux'
@@ -48,17 +48,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-# https://gitlab.archlinux.org/packaging/packages/linux/blob/6.16.8.arch2-1/PKGBUILD
+# https://gitlab.archlinux.org/packaging/packages/linux/blob/6.16.8.arch3-1/PKGBUILD
 sha256sums=('231311bd7084dc3129944d26bb43be6ff837da82fb2104a67704aebca8bfa69f'
             'SKIP'
-            '3ea7e79f975de6305e52e5ee46a819db204f7c0d2e174158a06f52c631eb339e'
+            '3faab40560c8bbefc871ab5c82eccc624fcbb815fc99bcc4b8b364a784aa7dc8'
             'SKIP'
-            'd641a031cfbb8764bacfd23cb9e6a514243f8a6892f7ff87e57a290584be062a')
+            'c6fe881a0883a645f0173de5350979dc173016138be1cf6906682dd17278eb15')
 b2sums=('bef910dbda65c45d5b5722277aa1199aa09bf3684ed3703512c384becedc394fa35c8f0813ed21071ad4f9462fcd17e5b2080d165d785a1181dec6e0aee66303'
         'SKIP'
-        '52a21a748ecac081d69633b6f0064791f600622e40dd7da78d2706f509cab63b43d855dd54bdd7bf5a6cd352021ecbe462ab919c380885f1711f92a25d0dd84a'
+        '2ef2dc5fdf9a251a85e8f424cc2233e743c642fd558340ffef1c844aff6c04bc54c5d97570767ddfc1f50133e411bf51c40d4e0516d46e22af6dabf90ea0a3dd'
         'SKIP'
-        '34f3087e91576bcb49bc4066b7ebaaf1630b286da534e3416665a4a1e2b7866afd191fc1b9caa6ad31000fda803f144928ec03a9e60fb14b8a5adb24a2a027c5')
+        'e6cbf387f445acfc9eeaa7cd2fe65b77ac2024053705a132c45ce3db1467eb86cb8488fb0e6e33e63303e78e7b3afe0747e145d1a0dcde48e61a3a44873d6dae')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
