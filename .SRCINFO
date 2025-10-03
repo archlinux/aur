@@ -1,15 +1,15 @@
 pkgbase = attractorr
 	pkgdesc = CLI to search for torrent magnet links
-	pkgver = 0.6.3
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/rnestler/attractorr
 	arch = i686
 	arch = x86_64
-	license = APACHE
+	license = Apache-2.0 OR MIT
 	makedepends = cargo
 	depends = openssl
 	depends = gcc-libs
-	source = attractorr-0.6.3.tar.gz::https://static.crates.io/crates/attractorr/attractorr-0.6.3.crate
-	sha256sums = 8b9c0236c726ada946d284a15fda18658f6ba2554b413898f00eeef76027b23e
+	source = attractorr-0.7.0.tar.gz::https://static.crates.io/crates/attractorr/attractorr-0.7.0.crate
+	sha256sums = 52f487ef288b60663289664ec391b4bd938d37d833e805e96bdf3a10e94c378d
 
 pkgname = attractorr
