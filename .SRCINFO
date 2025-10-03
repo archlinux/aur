@@ -1,0 +1,11 @@
+pkgbase = pyfetch-beta
+	pkgver = 1.0.2.beta1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyfiglet
+	source = https://github.com/andresr124/pyfetch/releases/download/v1.0.2-rc1/pyfetch-1.0.2-rc1.tar.gz
+	sha256sums = fd96b45374aeec7ee5d3c830cb95308cb48f2c84ba77b8a94f0f49d1590c7b7d
+
+pkgname = pyfetch-beta
