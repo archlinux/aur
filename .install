@@ -1,0 +1,3 @@
+post_install() {
+  echo "Note: This package installs the binary as 'go-prism' to avoid conflicts with the other 'prism' AUR package."
+}

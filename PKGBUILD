@@ -1,15 +1,16 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
-pkgname=prism-git
+pkgname=go-prism-git
 pkgver=v1.1.0.r0.g53770ae
 pkgrel=1
 pkgdesc='Turn raw test output into beautiful data'
 arch=('x86_64' 'aarch64')
 url='https://github.com/DaltonSW/prism'
 license=('MIT')
+install=.install
 makedepends=('go' 'git')
-provides=('prism')
-conflicts=('prism' 'prism-bin')
+provides=('go-prism')
+conflicts=('go-prism' 'go-prism-bin')
 source=("$pkgname::git+https://github.com/DaltonSW/prism.git#branch=main")
 b2sums=('SKIP')
 
@@ -39,6 +40,6 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 prism "$pkgdir/usr/bin/prism"
+  install -Dm755 prism "$pkgdir/usr/bin/go-prism"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
