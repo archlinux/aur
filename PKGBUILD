@@ -2,7 +2,7 @@
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
 pkgver=1.24.0
-pkgrel=2
+pkgrel=3
 _extver="-${pkgrel}"
 pkgdesc="Install kernel for the Limine bootloader."
 arch=("any")
@@ -28,7 +28,7 @@ optdepends=(
 makedepends=('git' 'jdk21-openjdk' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('eb5412f60b6dcce6beab02217da667de750de0d9cbc4efd9e5ce527dd76003bb')
+sha256sums=('69d60071ca5b98760474c08389c17d9b98cf78ff891d9beaac3ddd046e77f62b')
 
 prepare() {
 	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
