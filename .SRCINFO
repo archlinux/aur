@@ -1,7 +1,7 @@
 pkgbase = zluda
 	pkgdesc = A drop-in replacement for CUDA on non-NVIDIA GPUs
-	pkgver = 4
-	pkgrel = 3
+	pkgver = 5
+	pkgrel = 1
 	url = https://github.com/vosen/ZLUDA/
 	arch = x86_64
 	license = Apache-2.0 OR MIT
@@ -10,14 +10,16 @@ pkgbase = zluda
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
-	depends = comgr
 	depends = gcc-libs
 	depends = glibc
 	depends = hip-runtime-amd
+	depends = hipblaslt
+	depends = rocblas
+	depends = rocm-smi-lib
 	conflicts = nvidia-utils
-	source = git+https://github.com/vosen/ZLUDA.git#tag=v4
+	source = git+https://github.com/vosen/ZLUDA.git#tag=v5
 	source = git+https://github.com/llvm/llvm-project.git
-	sha256sums = 52bddb538ec282f3ba3e20986cb9afc780ea6d9c8bcdbd540814b1efad6a8d66
+	sha256sums = 71dc16b62ecdaa6e60f6eb1c717b5385fd789ac6fb646912700a2c5ce21371ce
 	sha256sums = SKIP
 
 pkgname = zluda
