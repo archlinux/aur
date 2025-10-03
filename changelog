@@ -1,0 +1,13 @@
+# plasma6-wallpapers-komplex
+## [1.0.6] - 2025-09-21
+### Added
+- QML Scene support
+- GeometryProvider for 3D Model importing (obj/stl)
+- Pexels Image importing for channels
+- Pexels Video importing for channels
+- ShaderToy importer
+### Changed
+### Fixed
+- Bug introduced by frame limiting attempt that broke video playback
+### Removed
+- Backend support for frame limiting (temporary)
