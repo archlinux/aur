@@ -1,0 +1,13 @@
+diff --git a/src-tauri/capabilities/main.json b/src-tauri/capabilities/main.json
+index a0c5f08..5c9f2b0 100644
+--- a/src-tauri/capabilities/main.json
++++ b/src-tauri/capabilities/main.json
+@@ -16,7 +16,7 @@
+         "dialog:default",
+         "os:default",
+         "cli:default",
+-        "updater:default",
++        "updater:allow-check",
+         "process:default",
+         "log:default",
+         "fs:default",

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;BoardGame;
+Comment=A Modern Chess Database
+Exec=en-croissant
+Icon=en-croissant
+Name=en-croissant
+Terminal=false
+Type=Application
