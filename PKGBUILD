@@ -25,7 +25,7 @@ depends=(
     'python-tomli-w'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-optdepends=('keyrings.alt: Alternative keyring backends for credential storage')
+optdepends=('python-keyrings-alt: Alternative keyring backends for credential storage')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
 sha256sums=('2672b44d8a101c965a1273d6dd8868f17f4f5f418149957f7d71e5decde7908e')
 

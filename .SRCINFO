@@ -22,7 +22,7 @@ pkgbase = linear-cli
 	depends = python-httpx
 	depends = python-tomli
 	depends = python-tomli-w
-	optdepends = keyrings.alt: Alternative keyring backends for credential storage
+	optdepends = python-keyrings-alt: Alternative keyring backends for credential storage
 	source = https://files.pythonhosted.org/packages/source/l/linearator/linearator-1.4.0.tar.gz
 	sha256sums = 2672b44d8a101c965a1273d6dd8868f17f4f5f418149957f7d71e5decde7908e
 
