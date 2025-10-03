@@ -1,9 +1,9 @@
 # Maintainer: swweetp <swweetp@outlook.com>
 pkgname=turing-smart-screen-python
-pkgver=3.9.1
+pkgver=3.9.3
 pkgrel=1
 epoch=
-pkgdesc="A Python system monitor program and an abstraction library for small IPS USB-C (UART) displays"
+pkgdesc="A Python system monitor program and an abstraction library for small IPS USB-C (UART) displays (Unofficial open-source alternative version)"
 arch=('any')
 url="https://github.com/mathoudebine/turing-smart-screen-python"
 license=('GPL-3.0-or-later')
@@ -48,7 +48,7 @@ source=(
 	"udev.rules"
 )
 noextract=()
-sha256sums=('57174d0a109bd22acfac7c85a57a91035699e076e6d204f6e919398169d7e73b'
+sha256sums=('d83a3a2930ddca9ad2678eb7b638103e12720a953782eaaa6c25d2e0b351ed37'
             'e82a96a7a1fce673af864b9295df6c9c0c2c2ec07ea0ce8eb74910d232b33f6a'
             'e648b026686611231538e1e67d32c1d9879da47d427f0d34c13e870b154506cf'
             'fa172b5ab1fbcaaf8b6f21e9080d12e27333a99863680fd768789ba7bafb1ae2'
