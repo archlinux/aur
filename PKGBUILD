@@ -1,12 +1,12 @@
 # Maintainer: Ben <bensongsyz@gmail.com>
 pkgname='wudao-dict-git'
-pkgver=r18.caceb83
-pkgrel=2
+pkgver=r24.7267fbd
+pkgrel=1
 pkgdesc='The command line version of Youdao Dictionary, supporting English-Chinese mutual search and online search.'
 arch=('any')
 url="https://github.com/ChestnutHeng/Wudao-dict"
 license=('unknown')
-depends=('python' 'python-bs4' 'python-lxml')
+depends=('python' 'python-beautifulsoup4' 'python-lxml')
 install="wudao-dict-git.install"
 makedepends=('git')
 source=("$pkgname::git+https://github.com/ChestnutHeng/Wudao-dict"
