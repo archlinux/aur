@@ -12,7 +12,7 @@ pkgbase = namefix-cpp
 	depends = gcc-libs
 	depends = glibc
 	replaces = namefix
-	source = namefix-cpp-1.3.0.tar.gz::https://codeload.github.com/sukulent/namefix/tar.gz/refs/tags/v1.3.0
-	sha256sums = 172ae75d01dc32e1376767b6b942a51d3154ae182f93e770e9c45d4d0a4712c1
+	source = namefix-cpp-1.3.0.tar.gz::https://codeload.github.com/sukulent/namefix-cpp/tar.gz/refs/tags/v1.3.0
+	sha256sums = 32e948601d7cd24d3d498126789a1db72b2c176a10fca8a6f124f648c1c2c18d
 
 pkgname = namefix-cpp
