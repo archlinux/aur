@@ -1,34 +1,31 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+_name="localai"
 _pkgname="local-ai"
 pkgname="${_pkgname}-bin"
-pkgver=3.5.4
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
 arch=('aarch64' 'x86_64')
 url="https://localai.io"
 _url="https://github.com/mudler/LocalAI"
 license=('MIT')
-# makedepends=('upx')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-options=('!strip')
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgname}."{conf,service,sysusers,tmpfiles}
         "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64")
 source_x86_64=("${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64")
-noextract=("${source_aarch64[@]%%::*}"
-           "${source_x86_64[@]%%::*}")
-sha256sums=('ad8459c708f6e4413d4d2d0c5dda71dc9a13860c1a8641d72f49cf9cf259768e'
-            'bd420ec530cbfdb7f29b309e3c0c8cd72de6346b7c8e9882e917a071c65b344c'
+sha256sums=('8153bc015f138655e08a49183c36d00f7fb661a2b9367110f44af844eab815ae'
+            '6e4c0e2a2694867a5c27e21855e530a9327ae3658dbaa9b18fe028ab96df915a'
             '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
-            '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
+            'dd51cf954b60d75e0521a6e58188bcb06981e87d7ca8ac22d7dc4d46a362a671'
             '23b8184dbc70f79a3a17adbe710e7f720e97c670cdac4f5f3722a54789bacafb'
             '56bef7ba54ae4e4477b9effe34b6e6cadc1b0bcfaacc5be503096a1ce0a9d391')
-sha256sums_aarch64=('ddc26f046b2a1fcae45b3766abfd5e7c39e2b10da8ea3cec941dd591b5f78db8')
-sha256sums_x86_64=('f92f5360e8839c988e54f46cf4e35d5ea7dd700c49d7330e048245f1eff42a18')
+sha256sums_aarch64=('79b246fd677d0079f54c574fcc13d2ee02f7b00195744b770e913c81cadea35f')
+sha256sums_x86_64=('d9c5a8697f365922cf61c69e20f4504aefd4fedcdda8ac6876ae5892f6015e63')
 
 package() {
   cd "${srcdir}"
@@ -41,5 +38,5 @@ package() {
   install -vDm644 "${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
   install -vDm644 "${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
-  # upx "${pkgdir}/usr/bin/${_pkgname}"
+  install -vd "${pkgdir}/usr/share/${_name}/backends"
 }
