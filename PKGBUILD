@@ -1,7 +1,7 @@
 # Maintainer: Matthias Fulz <mfulz@olznet.de>
 pkgbase=portgeist
 pkgname=('portgeist-geistctl' 'portgeist-geistd')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/mfulz/portgeist"
@@ -11,8 +11,8 @@ source=(
   "geistd.service"
 )
 
-sha256sums=('df2ad9c210e0c1774c8b8c0ddbf902182c364e9431982e7dc3405f9952469a1f'
-  '0eefc52d1d8f175fb7d9eaa8c37af055a1e39e44f9d688b931e866c1136a6575')
+sha256sums=('5fb315c0d6cdd2fcb89567d09f7ac2cc3171b5de8357a2ab53961aae476a58c9'
+            '0eefc52d1d8f175fb7d9eaa8c37af055a1e39e44f9d688b931e866c1136a6575')
 
 prepare() {
   cd "$srcdir/portgeist-${pkgver}"
