@@ -1,11 +1,11 @@
 pkgname=libeventemitter-nightly
-pkgver=nightly_2025_10_02_02_49_37_PM
+pkgver=nightly_2025_10_03_02_48_36_PM
 pkgrel=1
 pkgdesc='A Lightweight, NTS, C Event Emitter Library'
 arch=('x86_64')
 license=('BSD-3')
 url='https://github.com/LesBoys43/libeventemitter.git'
-source=("https://github.com/LesBoys43/libeventemitter/releases/download/nightly_2025_10_02_02_49_37_PM/libeventemitter_nightly_2025_10_02_02_49_37_PM.7z")
+source=("https://github.com/LesBoys43/libeventemitter/releases/download/nightly_2025_10_03_02_48_36_PM/libeventemitter_nightly_2025_10_03_02_48_36_PM.7z")
 makedepends=("7zip")
 depends=("glib2")
 
