@@ -9,11 +9,11 @@ license=('CC BY-SA 4.0')
 depends=()
 makedepends=()
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # run `makepkg -g` to replace
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Run your installer script, but force destination inside $pkgdir
+  # Installer Script
   ./install.sh -a -d "$pkgdir/usr/share/icons"
 }
