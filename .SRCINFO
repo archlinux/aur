@@ -1,6 +1,6 @@
 pkgbase = python-reproject
 	pkgdesc = Python-based Astronomical image reprojection
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = http://reproject.readthedocs.io
 	arch = i686
@@ -19,13 +19,12 @@ pkgbase = python-reproject
 	makedepends = python-scipy
 	makedepends = python-pyavm
 	makedepends = python-pyvo
-	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.15.0.tar.gz
-	md5sums = ea3a1143d831d840ad5a53e620b5a7fe
+	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.16.0.tar.gz
+	md5sums = a3affb85edd88521ce0085acee9523af
 
 pkgname = python-reproject
 	depends = python>=3.11
 	depends = python-numpy>=1.23
-	depends = python-cloudpickle
 	depends = python-dask>=2021.8
 	depends = python-fsspec>=2021.8
 	depends = python-scipy>=1.9
