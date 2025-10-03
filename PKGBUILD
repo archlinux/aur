@@ -5,10 +5,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=devtools
-_pkgver=2.4.5
+_pkgver=2.4.6
 pkgname=r-${_pkgname,,}
-pkgver=2.4.5
-pkgrel=5
+pkgver=2.4.6
+pkgrel=1
 pkgdesc='Tools to Make Developing R Packages Easier'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -59,7 +59,7 @@ optdepends=(
   r-spelling
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38160ebd839acdec7ebf0699a085b4ab1ebd5500d3c57a9fa7ae484f1909904b')
+sha256sums=('d424a1a0b0110e6a6a2bfcba7958faa7a9cf82fba22f019fc99cc4e10fb80b9a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
