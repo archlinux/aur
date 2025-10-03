@@ -61,7 +61,7 @@ post_install () {
   echo "  Setup sane-airscan package to make the scanner avaliable for the SANE "
   echo "  OR "
   echo "  setup brscan5 packege and run command: "
-  echo "    brsaneconfig5 -a name="Brother DCP-T436W" model=DCP-T436W ip=xxx.xxx.xxx.xxx "
+  echo "    brsaneconfig5 -a name="Brother DCP-T220" model=DCP-T220 ip=xxx.xxx.xxx.xxx "
   echo "  where xxx.xxx.xxx.xxx is printer IP address "
   echo ""
 }
