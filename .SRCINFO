@@ -1,4 +1,4 @@
-pkgbase = namefix
+pkgbase = namefix-cpp
 	pkgdesc = Fix bad filenames
 	pkgver = 1.3.0
 	pkgrel = 1
@@ -11,7 +11,8 @@ pkgbase = namefix
 	depends = icu
 	depends = gcc-libs
 	depends = glibc
-	source = namefix-1.3.0.tar.gz::https://codeload.github.com/sukulent/namefix/tar.gz/refs/tags/v1.3.0
+	replaces = namefix
+	source = namefix-cpp-1.3.0.tar.gz::https://codeload.github.com/sukulent/namefix/tar.gz/refs/tags/v1.3.0
 	sha256sums = 172ae75d01dc32e1376767b6b942a51d3154ae182f93e770e9c45d4d0a4712c1
 
-pkgname = namefix
+pkgname = namefix-cpp

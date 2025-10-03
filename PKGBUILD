@@ -1,6 +1,6 @@
 # Maintainer: sukulent
 # shellcheck disable=SC2034 # disable unused variables warning
-pkgname='namefix'
+pkgname='namefix-cpp'
 pkgver="1.3.0"
 pkgrel="1"
 # epoch=
@@ -15,7 +15,7 @@ makedepends=('make' 'binutils' 'gcc')
 # optdepends=()
 # provides=()
 # conflicts=()
-# replaces=()
+replaces=('namefix')
 # backup=()
 # options=()
 # install=
