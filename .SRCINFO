@@ -1,7 +1,7 @@
 pkgbase = cursor-cli
 	pkgdesc = Cursor Agent CLI - AI-powered code assistant
 	pkgver = 2025.10.02.1.bd871ac
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://cursor.com
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = cursor-cli
 	depends = gcc-libs
 	depends = bash
 	depends = glibc
+	depends = nodejs
+	depends = ripgrep
 	source = Cursor-TOS
 	b2sums = 7079c023e03ea4d78b067ed0f22b5cc1982c306721b2ea6be3c7f73bbbe0e8f05b148fd6571902b838464ee80a787ef7be73135c622f0a4fdb16c38429ced8d6
 	source_x86_64 = cursor-cli-2025.10.02-bd871ac-x86_64.tar.gz::https://downloads.cursor.com/lab/2025.10.02-bd871ac/linux/x64/agent-cli-package.tar.gz

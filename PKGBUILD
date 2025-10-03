@@ -4,13 +4,13 @@ pkgname=cursor-cli
 _upstream_ver='2025.10.02-bd871ac'
 # Baseline pkgver; update using './update-pkgver.sh'
 pkgver=2025.10.02.1.bd871ac
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Cursor Agent CLI - AI-powered code assistant"
 arch=('x86_64' 'aarch64')
 url="https://cursor.com"
 license=('LicenseRef-Cursor')
-depends=('gcc-libs' 'bash' 'glibc')
+depends=('gcc-libs' 'bash' 'glibc' 'nodejs' 'ripgrep')
 source=('Cursor-TOS')
 source_x86_64=("cursor-cli-${_upstream_ver}-x86_64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/x64/agent-cli-package.tar.gz")
 source_aarch64=("cursor-cli-${_upstream_ver}-aarch64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/arm64/agent-cli-package.tar.gz")
@@ -25,6 +25,10 @@ package() {
 
     # Copy all files from the extracted package
     cp -r "${srcdir}"/dist-package/* "${pkgdir}/opt/cursor-agent/"
+
+	# Replace node and rg with system versions
+	ln -sf "/usr/bin/node" "${pkgdir}/opt/cursor-agent/node"
+	ln -sf "/usr/bin/rg" "${pkgdir}/opt/cursor-agent/rg"
 
     # Create symlink in /usr/bin
     ln -s "/opt/cursor-agent/cursor-agent" "${pkgdir}/usr/bin/cursor-agent"

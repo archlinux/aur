@@ -33,5 +33,6 @@ NEW_PKGVER="${release_date_dotted}.${new_date_ver}.${new_hash}"
 
 sed -i -E "s/^_upstream_ver=.*/_upstream_ver='${UPSTREAM_VER_NEW}'/" "${PKGBUILD_PATH}"
 sed -i -E "s/^pkgver=.*/pkgver=${NEW_PKGVER}/" "${PKGBUILD_PATH}"
+[[ "${NEW_PKGVER}" != "${CURRENT_PKGVER}" ]] && sed -i -E "s/^pkgrel=.*/pkgrel=1/" "${PKGBUILD_PATH}"
 
 echo "${NEW_PKGVER}"
