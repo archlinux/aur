@@ -1,3 +1,11 @@
+## 0.0.334 - 2025-10-03
+
+- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
+- Added a warning when conversation context approaches ≤20% remaining of the model's limit that truncation will soon occur. At this point, we recommend you begin a new session (improves https://github.com/github/copilot-cli/issues/29)
+- Removed the on-exit usage stats from the persisted session history
+- Added the current version to startup logs to aid in bug reporting
+- Removed cycling through TAB autocomplete items if an argument is present. This prevents running `/cwd /path/to/whatever`, hitting `TAB`, then seeing `/clear` autocomplete
+
 ## 0.0.333 - 2025-10-02
 
 - Added image support! `@`-mention files to add them as input to the model. 
