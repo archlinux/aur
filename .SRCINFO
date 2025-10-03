@@ -1,7 +1,7 @@
 pkgbase = dms-shell-bin
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
-	pkgver = 0.0.29
-	pkgrel = 3
+	pkgver = 0.0.30
+	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -24,12 +24,12 @@ pkgbase = dms-shell-bin
 	conflicts = dms-shell-git
 	conflicts = dms-shell
 	conflicts = dms-git
-	source_x86_64 = dms-shell-bin-0.0.29.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.0.29.tar.gz
-	source_x86_64 = dms-v0.0.29-amd64.gz::https://github.com/AvengeMedia/danklinux/releases/download/v0.0.29/dms-amd64.gz
+	source_x86_64 = dms-shell-bin-0.0.30.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.0.30.tar.gz
+	source_x86_64 = dms-v0.0.30-amd64.gz::https://github.com/AvengeMedia/danklinux/releases/download/v0.0.30/dms-amd64.gz
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = dms-shell-bin-0.0.29.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.0.29.tar.gz
-	source_aarch64 = dms-v0.0.29-arm64.gz::https://github.com/AvengeMedia/danklinux/releases/download/v0.0.29/dms-arm64.gz
+	source_aarch64 = dms-shell-bin-0.0.30.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.0.30.tar.gz
+	source_aarch64 = dms-v0.0.30-arm64.gz::https://github.com/AvengeMedia/danklinux/releases/download/v0.0.30/dms-arm64.gz
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 
