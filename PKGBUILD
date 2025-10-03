@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=cc-switch-bin
-pkgver=3.3.1
-pkgrel=1
+pkgver=3.4.0
+pkgrel=2
 pkgdesc="CC Switch - A utility application for switching between different configurations"
 arch=('x86_64')
 url="https://github.com/farion1231/cc-switch"
@@ -11,7 +11,7 @@ optdepends=('appmenu-gtk3-module: to reduce GTK module warnings')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/farion1231/cc-switch/releases/download/v${pkgver}/CC.Switch_${pkgver}_amd64.AppImage"
         "cc-switch.desktop"
         "cc-switch.png")
-sha256sums=('fc34ff065cdb7365785baebf480ca52411307fb3b0327c79abdf923ea480626f'
+sha256sums=('ef948aaafcfbb85acf05527a65d2899ecf689179d5a210649d50b1dc6c1ffd80'
             'ac408c8b0d8113bd0cb6e4868ca753038142e2e60e2d22f9a291b03b30fa1c8a'
             'd19349e7d3e17540d573fa458544145449106799d0d71de52294d60f629f4656')
 noextract=("${pkgname}-${pkgver}.AppImage")
