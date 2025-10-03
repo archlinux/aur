@@ -2,14 +2,14 @@
 
 pkgname=rustnet-bin
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time network monitoring TUI with process identification via eBPF and deep packet inspection"
 arch=('x86_64' 'aarch64')
 url="https://github.com/domcyrus/rustnet"
-license=('Apache')
+license=('Apache-2.0')
 depends=('libpcap' 'libelf' 'zlib')
 provides=("rustnet=${pkgver}")
-conflicts=('rustnet')
+conflicts=('rustnet' 'rustnet-git')
 install=rustnet-bin.install
 source_x86_64=("rustnet-${pkgver}-x86_64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v${pkgver}/rustnet-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("rustnet-${pkgver}-aarch64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v${pkgver}/rustnet-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
@@ -39,7 +39,7 @@ package() {
     # Install assets (services file)
     install -Dm644 "${srcdir}/rustnet-v${pkgver}-${srcdir_arch}/assets/services" "${pkgdir}/usr/share/${pkgname}/assets/services"
     
-    # Create compatibility symlink for libpcap (Debian binary expects libpcap.so.0.8)
+    # Create compatibility symlink for libpcap
     install -dm755 "${pkgdir}/usr/lib"
     ln -sf libpcap.so.1 "${pkgdir}/usr/lib/libpcap.so.0.8"
 }
