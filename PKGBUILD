@@ -1,7 +1,7 @@
 # Maintainer: Anton Reshetov
 
 pkgname=masscode
-pkgver=4.0.2
+pkgver=4.1.0
 _electron_exec=electron34
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers "
@@ -14,7 +14,7 @@ source=("https://github.com/massCodeIO/massCode/releases/download/v${pkgver}/mas
     "masscode.desktop"
     "masscode.sh"
 )
-sha256sums=('c749bb3d16a3f62443d83471c189b5601ae15335f6c44690a74eea664f12e1d9'
+sha256sums=('641ebf5d78f3f8510b9a4956da6c8e71d54b93500d5563564726bfcfe9279c35'
             'dc0d0519524662fde9e31acadf2ef4c3cf76729c59f8aca306bffe57779e9aa2'
             'a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15'
             '74aad10be03239734f7096833bb5c91c1f0e3d6a9d92bbd38f1d418efcd58b70')
