@@ -1,8 +1,6 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Contributor: dtag <dtag00@gmail.com>
 pkgname=ceres-solver
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('x86_64')
 url="http://ceres-solver.org/"
@@ -12,7 +10,13 @@ makedepends=('cmake' 'ninja' 'eigen')
 optdepends=('openmp')
 source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
 sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
-options=('staticlibs')
+
+prepare() {
+  cd $srcdir/ceres-solver-$pkgver
+  # eigen 5.x compat
+  sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
+  sed -i "s|Eigen3 \${CERES_EIGEN_VERSION}|Eigen3|g" cmake/CeresConfig.cmake.in
+}
 
 build() {
   cd $pkgname-$pkgver
@@ -21,7 +25,9 @@ build() {
       -GNinja \
       -DCMAKE_BUILD_TYPE=None \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBLA_VENDOR=Generic \
       -DEIGENSPARSE=ON \
+      -DGFLAGS=OFF \
       -DBUILD_SHARED_LIBS=ON \
       -DBUILD_TESTING=OFF \
       -DBUILD_EXAMPLES=OFF \
