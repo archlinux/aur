@@ -1,14 +1,21 @@
 pkgbase = eralchemy
 	pkgdesc = Entity Relation Diagrams generation tool
-	pkgver = 1.2.10
+	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://github.com/Alexis-benoist/eralchemy
+	url = https://github.com/eralchemy/eralchemy
 	arch = any
-	license = APACHE
+	license = Apache-2.0
+	checkdepends = python-flask-sqlalchemy
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	depends = python
 	depends = python-pygraphviz
-	source = https://github.com/Alexis-benoist/eralchemy/archive/v1.2.10.tar.gz
-	sha512sums = ab3f9972f333d76c4f763c9c88572611f96cb3f8b059e3b18a358e75905236e1716f945113d191db51c6f9e6dcfcb1713b07d138df999b742cd0da58a3d3f7b3
+	depends = python-sqlalchemy
+	source = git+https://github.com/eralchemy/eralchemy.git?signed#commit=v1.6.0
+	validpgpkeys = 65290D3F6915674534D87357D5B29CD0C9E06237
+	sha256sums = e74edeca6c67f1158aa7117bc6d157515d61c4dc485f71f6898986c9b670378c
 
 pkgname = eralchemy
-

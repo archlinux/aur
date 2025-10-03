@@ -1,27 +1,34 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=eralchemy
-pkgver=1.2.10
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Entity Relation Diagrams generation tool"
+pkgdesc='Entity Relation Diagrams generation tool'
 arch=('any')
-url="https://github.com/Alexis-benoist/eralchemy"
-license=('APACHE')
-depends=('python-pygraphviz')
-makedepends=('python-setuptools')
-source=(https://github.com/Alexis-benoist/eralchemy/archive/v${pkgver}.tar.gz)
-sha512sums=('ab3f9972f333d76c4f763c9c88572611f96cb3f8b059e3b18a358e75905236e1716f945113d191db51c6f9e6dcfcb1713b07d138df999b742cd0da58a3d3f7b3')
+url="https://github.com/eralchemy/$pkgname"
+license=('Apache-2.0')
+depends=('python' 'python-pygraphviz' 'python-sqlalchemy')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
+checkdepends=('python-flask-sqlalchemy' 'python-pytest')
+source=("git+$url.git?signed#commit=v$pkgver")
+sha256sums=('e74edeca6c67f1158aa7117bc6d157515d61c4dc485f71f6898986c9b670378c')
+validpgpkeys=('65290D3F6915674534D87357D5B29CD0C9E06237') # Florian Maurer <f.maurer@outlook.de>
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+
+  pytest -m 'not external_db'
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname"
 
-  python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
-  install -Dm755 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE.md
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-# vim:set ts=2 sw=2 et:
