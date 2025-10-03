@@ -4,7 +4,7 @@ _pkgname=flood
 pkgname=${_pkgname}-bin
 provides=("nodejs-${_pkgname}")
 conflicts=("nodejs-${_pkgname}")
-pkgver=4.9.5
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="A modern web UI for various torrent clients with a Node.js backend and React frontend"
 arch=('x86_64')
@@ -17,11 +17,11 @@ source=(
 	"https://raw.githubusercontent.com/jesec/${_pkgname}/refs/tags/v${pkgver}/distribution/shared/${_pkgname}%40.service"
 )
 sha256sums=(
-	'ed99b48503873fe581255d752c600be4c1ddc2e20c2e9528dd2cadb9e0baf9cc'
+	'74584d63d04919c04487be2962ba06e67967dcb6b7df7e0ae73993291f9bb691'
 	'893a6b83de3b9dec9f0f131d16ba5b50806d57e435350d65d93fb4d39c13622a'
 )
 sha512sums=(
-	'e1df0b5925ed820617a956be048302e2757c23e1dfa71e1525d6a9fa5bc84981f0e4d65ab362530b6b77b6f1ea7a8ee7bb4cc884052c7aab4e73a738159ffbdc'
+	'5532cadbca3db37b31a74b38d52b4060770257f2632ff369025e13d7ccaf1b7fe669ec85f70b53cadf96ee1933af9fdf6b75edb5a1fe25401ae577e5bea5875a'
 	'e875c515a6197064bcfc26d07bfab26adcd577c6cded879be2902a699840eb563f2376f373ba3c1fdf7af2eb32b4676b569429d1f0f53aba24617a5ae7045f0d'
 )
 
