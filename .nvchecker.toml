@@ -1,0 +1,5 @@
+[ollama-bin]
+source = "github"
+github = "ollama/ollama"
+prefix = "v"
+use_latest_release = true
