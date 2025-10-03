@@ -1,0 +1,12 @@
+msg () {
+    echo "This package installed a file named liblua_pam.so into /usr/lib/lua-pam/."
+    echo "Depending on your needs, you can copy it, add a symbolic link to it, etc."
+}
+
+post_install () {
+    msg
+}
+
+post_upgrade () {
+    msg
+}

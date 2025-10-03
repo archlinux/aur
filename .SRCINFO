@@ -1,0 +1,17 @@
+pkgbase = lua53-pam-git
+	pkgdesc = A module for lua53 to use PAM
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/nhktmdzhg/lua-pam
+	install = lua53-pam-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = pam
+	depends = lua53
+	provides = lua53-pam
+	source = git+https://github.com/nhktmdzhg/lua-pam.git
+	sha256sums = SKIP
+
+pkgname = lua53-pam-git
