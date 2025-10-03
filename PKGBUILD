@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -27,7 +27,7 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     echo -e "  \e[1;34m->\033[0m \e[1;37mPatching Makefile for Linux...\033[0m"
     # O2 and march should be dound in makepkg.conf, so let's remove them. Install should not really perform anything but calling another targets
-    sed --follow-symlinks -i.bak -e 's| -O2||g;s|CFLAGS = -g|CFLAGS =|;s|CC = gcc|CC ?= gcc|;s|LN = gcc|LN ?= gcc|' Makefile.Linux
+    sed --follow-symlinks -i.bak -e 's| -O2||g;s|CFLAGS = -g|CFLAGS = -Wno-incompatible-pointer-types|;s|CC = gcc|CC ?= gcc|;s|LN = gcc|LN ?= gcc|' Makefile.Linux
 }
 
 build() {
@@ -44,6 +44,7 @@ package() {
     ( cd ${pkgdir}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
     rm -f ${pkgdir}${_etcdir}/counters ${pkgdir}${_etcdir}/passwd ${pkgdir}${_etcdir}/bandlimiters "$pkgdir$_etcdir/3proxy.cfg"
     rm -rf "$pkgdir$_etcdir/conf"
+    ( cd ${pkgdir}${_prefix}/share/man/man8 && mv proxy.8 3proxy-proxy.8 ) || return 1
     #touch "$pkgdir$_runbase/3proxy/3proxy.pid"
     install -D -m644 copying "${pkgdir}${_prefix}/share/licenses/$pkgname/copying"
     install -D -m644 cfg/3proxy.cfg.sample ${pkgdir}${_etcdir}/3proxy.cfg.sample
