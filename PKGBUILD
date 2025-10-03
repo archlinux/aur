@@ -1,5 +1,5 @@
 pkgname=arch-os-manager
-pkgver=r99.3cd3ff9
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Arch OS System Manager"
 arch=('any')
@@ -10,11 +10,6 @@ optdepends=('ttf-firacode-nerd: Install and set font icons that are used to disp
 makedepends=('git')
 source=(arch-os.desktop $pkgname::git+$url.git)
 sha256sums=('SKIP' 'SKIP')
-
-pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
