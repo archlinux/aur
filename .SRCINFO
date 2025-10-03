@@ -1,6 +1,6 @@
 pkgbase = slepc
 	pkgdesc = Scalable library for Eigenvalue problem computations
-	pkgver = 3.23.3
+	pkgver = 3.24.0
 	pkgrel = 1
 	url = https://slepc.upv.es
 	install = slepc.install
@@ -9,10 +9,10 @@ pkgbase = slepc
 	makedepends = gcc-fortran
 	makedepends = cython
 	makedepends = python-setuptools
-	depends = petsc>=3.23
+	depends = petsc>=3.24
 	provides = slepc4py
 	options = staticlibs
-	source = https://slepc.upv.es/download/distrib/slepc-3.23.3.tar.gz
-	md5sums = a3495dead368f6ee144e8f268e978151
+	source = https://slepc.upv.es/download/distrib/slepc-3.24.0.tar.gz
+	md5sums = a691382c0c9647f0eb87efbb67cc8610
 
 pkgname = slepc
