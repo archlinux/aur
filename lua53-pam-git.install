@@ -1,5 +1,5 @@
 msg () {
-    echo "This package installed a file named liblua_pam.so into /usr/lib/lua-pam/."
+    echo "This package installed a file named liblua_pam.so into /usr/lib/lua/5.3/."
     echo "Depending on your needs, you can copy it, add a symbolic link to it, etc."
 }
 

@@ -5,8 +5,9 @@
 
 _gitname=lua-pam
 pkgname=lua53-pam-git
-pkgver=r14.73a4190
+pkgver=latest
 pkgrel=1
+epoch=1
 pkgdesc="A module for lua53 to use PAM"
 arch=(x86_64)
 url="https://github.com/nhktmdzhg/${_gitname}"
@@ -31,6 +32,6 @@ build() {
 
 package() {
     cd ${_gitname}
-    install -Dm 755 build/liblua_pam.so -t "${pkgdir}/usr/lib/${_gitname}"
+    install -Dm 755 build/liblua_pam.so -t "${pkgdir}/usr/lib/lua/5.3/"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
