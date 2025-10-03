@@ -2,11 +2,11 @@
 
 pkgname=atuin-desktop-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atuin Desktop: Runbooks that Run. A local-first, executable runbook editor for real terminal workflows"
 arch=('x86_64')
 url="https://github.com/atuinsh/desktop"
-license=('Apache 2.0')
+license=('Apache-2.0')
 depends=(
     "cairo"
     "dbus"
