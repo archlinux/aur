@@ -1,0 +1,20 @@
+pkgbase = wallpaperengine-gui-git
+	pkgdesc = GUI for linux-wallpaperengine
+	pkgver = r32.3032b22
+	pkgrel = 1
+	url = https://github.com/MikiDevLog/wallpaperengine-gui
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = cmake
+	depends = linux-wallpaperengine
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = qt6-multimedia
+	provides = wallpaperengine-gui
+	conflicts = wallpaperengine-gui
+	replaces = wallpaperengine-gui
+	source = wallpaperengine-gui-r32.3032b22::git+https://github.com/MikiDevLog/wallpaperengine-gui
+	sha256sums = SKIP
+
+pkgname = wallpaperengine-gui-git
