@@ -1,6 +1,6 @@
 pkgbase = linux-stub
 	pkgdesc = Linux, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
-	pkgver = 6.16.8.arch3
+	pkgver = 6.16.9.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
@@ -18,24 +18,24 @@ pkgbase = linux-stub
 	makedepends = tar
 	makedepends = xz
 	options = !debug
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.8.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.8.tar.sign
-	source = https://github.com/archlinux/linux/releases/download/v6.16.8-arch3/linux-v6.16.8-arch3.patch.zst
-	source = https://github.com/archlinux/linux/releases/download/v6.16.8-arch3/linux-v6.16.8-arch3.patch.zst.sig
-	source = config::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config/raw/?ref=6.16.8.arch3-1
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.9.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.9.tar.sign
+	source = https://github.com/archlinux/linux/releases/download/v6.16.9-arch1/linux-v6.16.9-arch1.patch.zst
+	source = https://github.com/archlinux/linux/releases/download/v6.16.9-arch1/linux-v6.16.9-arch1.patch.zst.sig
+	source = config::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config/raw/?ref=6.16.9.arch1-1
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = 231311bd7084dc3129944d26bb43be6ff837da82fb2104a67704aebca8bfa69f
+	sha256sums = 7ac8c8a3cf05476375deaaa85dfcee095a826ffe557b437f43774fc3b64ce58d
 	sha256sums = SKIP
-	sha256sums = 3faab40560c8bbefc871ab5c82eccc624fcbb815fc99bcc4b8b364a784aa7dc8
+	sha256sums = e2e39d6ebc6b0d7b280ea3424f57b18b94e726475a43271b19c7390bcbc534df
 	sha256sums = SKIP
-	sha256sums = c6fe881a0883a645f0173de5350979dc173016138be1cf6906682dd17278eb15
-	b2sums = bef910dbda65c45d5b5722277aa1199aa09bf3684ed3703512c384becedc394fa35c8f0813ed21071ad4f9462fcd17e5b2080d165d785a1181dec6e0aee66303
+	sha256sums = 746810cf2462423b7f680c5eec9236f71399c02501a58bba8871fab70e693815
+	b2sums = b511b1be8668ff8d07cd0b87416b8acb496d23cf448cb270db7380444a8f02d36ef3df732dfbf893c60d9e8f260891e47d2befa789f9f161034cc6daf615a523
 	b2sums = SKIP
-	b2sums = 2ef2dc5fdf9a251a85e8f424cc2233e743c642fd558340ffef1c844aff6c04bc54c5d97570767ddfc1f50133e411bf51c40d4e0516d46e22af6dabf90ea0a3dd
+	b2sums = 3760ace758040f4b738eaa50e1fb690c9b1537dd4fffc43a5cf5be77664456c2b444fb32895f7d8c21bec2238ffb540635b6dbe35084d397946b77cd214a3907
 	b2sums = SKIP
-	b2sums = e6cbf387f445acfc9eeaa7cd2fe65b77ac2024053705a132c45ce3db1467eb86cb8488fb0e6e33e63303e78e7b3afe0747e145d1a0dcde48e61a3a44873d6dae
+	b2sums = b82d1fa42bf1412b32a49a89b5089cd4f6dab9bcbf87d7d8eb25bf5677743fd6487f56fad2d6bc5e802e0e8ead56c3197b11b325908f0002baef7f5e6d63264d
 
 pkgname = linux-stub
 	pkgdesc = kernel and modules for the Linux kernel, with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y.
