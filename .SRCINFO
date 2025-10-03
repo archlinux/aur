@@ -9,6 +9,7 @@ pkgbase = python-optype
 	checkdepends = python-beartype
 	checkdepends = python-typing_extensions
 	checkdepends = python-numpy-typing-compat
+	checkdepends = python-numpy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-uv-build
