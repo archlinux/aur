@@ -5,7 +5,7 @@
 
 _pkgname="lazpaint"
 pkgname="$_pkgname-git"
-pkgver=7.3.r6.ge227806
+pkgver=7.3.r26.gd6e7cc4
 pkgrel=1
 pkgdesc="Image editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/bgrabitmap/lazpaint"
@@ -59,9 +59,13 @@ pkgver() {
 prepare() {
   # modify compiler options
   for i in ${_packets[@]}; do
-    xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know"/></Other>\n\1&' \
-      -i "$i"
+    xmlstarlet ed -L \
+      -d "//CompilerOptions/Other" \
+      -s "//CompilerOptions" -t elem -n Other -v "" \
+      -s "//CompilerOptions/Other" -t elem -n CustomOptions -v "" \
+      -a "//CompilerOptions/Other/CustomOptions" -t attr -n Value \
+      -v "-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know" \
+      "$i"
   done
 }
 

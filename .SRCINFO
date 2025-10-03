@@ -1,6 +1,6 @@
 pkgbase = lazpaint-git
 	pkgdesc = Image editor written in Free Pascal with Lazarus (Qt6)
-	pkgver = 7.3.r6.ge227806
+	pkgver = 7.3.r26.gd6e7cc4
 	pkgrel = 1
 	url = https://github.com/bgrabitmap/lazpaint
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lazpaint-git
 	makedepends = lazarus
 	makedepends = xmlstarlet
 	depends = qt6pas
-	provides = lazpaint=7.3.r6
+	provides = lazpaint=7.3.r26
 	conflicts = lazpaint
 	options = !strip
 	options = !debug
