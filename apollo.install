@@ -9,7 +9,7 @@ _warning_root() {
 
 do_setcap() {
   _warning_root
-  setcap cap_sys_admin+p $(readlink -f usr/bin/apollo-server)
+  setcap cap_sys_admin+p $(readlink -f usr/bin/apollo)
 }
 
 do_udev_reload() {
