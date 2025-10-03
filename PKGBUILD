@@ -1,7 +1,7 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
@@ -14,7 +14,7 @@ source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.ta
         mealie.sh
         mealie.service
         mealie.sysusers)
-sha256sums=('9c7baa291bdea98c7112197d9a484af2027a23563a39269eb9592d1ad9eab5c5'
+sha256sums=('2af0319fbc81270cbab9a08676de55696a82d6311726627aa132040950fc075c'
             '7d8f6ff8e146e20c545aa390662cdc167ec0311a83ab88a27283df2330e29b5b'
             '582e023c8a68117fb9c28a5bbb182173ba857819bd4118e7a07d25012bc02b6a'
             '1a6b434a125f6940e53f8ba6613426f50c8ca8d5e7a447a80efd57016b917208')
