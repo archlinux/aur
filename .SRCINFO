@@ -1,6 +1,6 @@
 pkgbase = 3proxy
 	pkgdesc = A tiny crossplatform proxy server
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = http://www.3proxy.ru/
 	arch = any
