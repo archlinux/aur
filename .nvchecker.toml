@@ -1,0 +1,4 @@
+[timr-bin]
+source = "git"
+git = "https://github.com/sectore/timr-tui.git"
+prefix = "v"
