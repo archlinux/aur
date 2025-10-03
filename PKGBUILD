@@ -9,7 +9,7 @@
 
 _pkgname="cudatext"
 pkgname="$_pkgname-git"
-pkgver=1.224.0.0.r29.gd3d3fb0
+pkgver=1.228.3.0.r3.g95885c7
 pkgrel=1
 pkgdesc="Text editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/Alexey-T/CudaText"
@@ -122,9 +122,12 @@ END
 
   # modify compiler options
   for i in ${_packets[@]}; do
-    xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know"/></Other>\n\1&' \
-      -i "$i"
+    xmlstarlet ed -L \
+      -d "/CONFIG/CompilerOptions/Other" \
+      -s "/CONFIG/CompilerOptions" -t elem -n Other -v "" \
+      -s "/CONFIG/CompilerOptions/Other" -t elem -n CustomOptions -v "" \
+      -i "/CONFIG/CompilerOptions/Other/CustomOptions" -t attr -n Value -v "-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know" \
+      "$i"
   done
 }
 
