@@ -7,7 +7,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=143.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(
   bash
   cairo
   dbus
-  ffmpeg
+  ffmpeg4.4
   fontconfig
   freetype2
   gcc-libs
