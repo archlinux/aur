@@ -30,9 +30,7 @@ build() {
     cd "$srcdir/$_pkgname"
     mkdir -p build
     cd build
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_TEST=Off \
-        -DENABLE_EXPERIMENTAL_SIMD_SUPPORT_AVX512=1
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TEST=Off
     make
 }
 
