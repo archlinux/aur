@@ -1,14 +1,15 @@
-pkgbase = prism-bin
+pkgbase = go-prism-bin
 	pkgdesc = Turn raw test output into beautiful data
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/DaltonSW/prism
+	install = .install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = prism
-	conflicts = prism
-	conflicts = prism-git
+	provides = go-prism
+	conflicts = go-prism
+	conflicts = go-prism-git
 	source = LICENSE-1.1.0::https://raw.githubusercontent.com/DaltonSW/prism/refs/tags/v1.1.0/LICENSE
 	b2sums = 616f5a61006544c92a9a85dd40281b853b2f10075f96aef42a16a6921b5e3fba7239d1b11fc5d8ab9b4719fa7bd769f8515951b7864d6e1ef6219c4ab18c8aae
 	source_x86_64 = prism-1.1.0-x86_64.tar.gz::https://github.com/DaltonSW/prism/releases/download/v1.1.0/prism_Linux_x86_64.tar.gz
@@ -16,4 +17,4 @@ pkgbase = prism-bin
 	source_aarch64 = prism-1.1.0-aarch64.tar.gz::https://github.com/DaltonSW/prism/releases/download/v1.1.0/prism_Linux_arm64.tar.gz
 	b2sums_aarch64 = 8b98fc61dbb47a3ff48f3f3cd0398a868cdf3ac239e0254f66e516b630f26c53c1eab3e85109de675f77a3e80c607dff44373ef0d83643b672847a779460c9b4
 
-pkgname = prism-bin
+pkgname = go-prism-bin
