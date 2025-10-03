@@ -3,8 +3,8 @@
 
 _pkgname=Sparrow
 pkgname=sparrow-wallet
-pkgver=2.2.3
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy. Free and open source"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
@@ -32,8 +32,8 @@ source=(
     "MimeInfo.xml"
 )
 validpgpkeys=('D4D0D3202FC06849A257B38DE94618334C674B40')
-sha256sums=('32c11181f246a71464426e16c37d1373de644e18e5808fa73b86eadb334675e5'
-            'a8f22596a16a7bce014887186186beaca26f4a937f427a261e7b0ea13c65ca5e'
+sha256sums=('3e6669c724d7cd03080061f479dc441c2c336fe93c1c12585e77f2664a429e83'
+            '40d95bbbd63b909d1fbea1ee6f23fcff2008122c3a996cd59ecc894d725c5aa9'
             'SKIP'
             '71c5d812d7f84faff1898c2407454f230308e148052cde950ccf4ab9a0b2848c'
             'd0ad5f5457005776fb5021752f9468a55f3a01f498a7984fc97ef652b44460c1')
