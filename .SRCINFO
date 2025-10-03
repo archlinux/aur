@@ -1,0 +1,14 @@
+pkgbase = version-git
+	pkgdesc = Multi-source semantic version management tool
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/asciimoth/version
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/asciimoth/version.git
+	sha256sums = SKIP
+
+pkgname = version-git

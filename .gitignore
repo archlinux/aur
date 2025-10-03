@@ -1,0 +1,10 @@
+/pkg/
+/src/
+*.pkg.tar.zst
+*.tar.gz
+*.tar.xz
+*.zip
+
+PKGINFO
+
+/version/
