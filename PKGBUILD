@@ -7,7 +7,7 @@ url="https://chromium.googlesource.com/chromiumos/third_party/${_gitname}"
 license=('GPL')
 source=("git+https://chromium.googlesource.com/chromiumos/third_party/${_gitname}")
 depends=('libusb' 'libftdi' 'pciutils')
-makedepends=('git' 'meson' 'cmocka')
+makedepends=('git' 'meson' 'cmocka' 'python-sphinx')
 optdepends=("dmidecode: for SMBIOS/DMI table decoder support")
 conflicts=("${_gitname}")
 provides=("${_gitname}")
@@ -15,7 +15,7 @@ replaces=("${_gitname}-svn")
 sha512sums=('SKIP')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 pkgver=r4051.90795b2cc
-pkgrel=1
+pkgrel=2
 
 pkgver() {
   cd "${srcdir}/${_gitname}"

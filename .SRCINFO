@@ -1,7 +1,7 @@
 pkgbase = chromeos-flashrom-git
 	pkgdesc = Flashrom Chromium OS version from git, includes libraries and programmers ec and host.
 	pkgver = r4051.90795b2cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chromium.googlesource.com/chromiumos/third_party/flashrom
 	arch = aarch64
 	arch = armv6h
@@ -12,6 +12,7 @@ pkgbase = chromeos-flashrom-git
 	makedepends = git
 	makedepends = meson
 	makedepends = cmocka
+	makedepends = python-sphinx
 	depends = libusb
 	depends = libftdi
 	depends = pciutils
