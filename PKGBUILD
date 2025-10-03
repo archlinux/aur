@@ -1,10 +1,19 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_langs=('cpp' 'go' 'java')
+_langs=(
+  'cpp'
+  'go'
+  'java'
+)
 _pkgbase="protoc-gen-validate"
-_pkgname=("${_langs[@]/#/"${_pkgbase}-"}")
+_pkgname=(
+  "${_pkgbase}"
+  "${_langs[@]/#/"${_pkgbase}-"}"
+)
 pkgbase="${_pkgbase}-bin"
-pkgname=("${pkgbase}" "${_pkgname[@]/%/-bin}")
+pkgname=(
+  "${_pkgname[@]/%/-bin}"
+)
 pkgver=1.2.1
 pkgrel=3
 pkgdesc="Protoc plugin to generate polyglot message validators"
