@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname='eiquadprog'
 pkgname=("${_pkgname}" "${_pkgname}-docs")
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Quadratic Programing solver with eigen"
 arch=('any')
@@ -11,9 +11,9 @@ url="https://github.com/${_org}/${_pkgname}"
 license=('LGPL')
 depends=()
 optdepends=('doxygen')
-makedepends=('cmake' 'boost' 'boost-libs' 'eigen')
+makedepends=('cmake' 'boost' 'boost-libs' 'eigen3' 'jrl-cmakemodules')
 source=($url/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.sig})
-sha256sums=('41f317803933d42a2228b041e7f94d75fb4239449a2e291f404ab18c82622cd4'
+sha256sums=('b9dab0ae734a6c7a72b63992cbe9ad96901349c000a43eed0e5ed2700443f846'
             'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
@@ -37,6 +37,6 @@ package_eiquadprog() {
 
 package_eiquadprog-docs() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    rm -rf ${pkgdir}/usr/{lib,include,"share/$_pkgname"}
+    rm -rf ${pkgdir}/usr/{lib,include,share/ament_index,"share/$_pkgname"}
     install -Dm644 "${_pkgname}-${pkgver}/COPYING.LESSER" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
