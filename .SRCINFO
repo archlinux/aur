@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 2.6.1.r186.geac0307
+	pkgver = 2.6.1.r211.g57ef350
 	pkgrel = 1
 	url = https://github.com/BestImageViewer/geeqie
 	arch = x86_64
@@ -52,6 +52,8 @@ pkgbase = geeqie-git
 	provides = geeqie
 	conflicts = geeqie
 	source = geeqie::git+https://github.com/BestImageViewer/geeqie.git
+	source = PR1928.patch::https://github.com/BestImageViewer/geeqie/pull/1928.diff
 	sha256sums = SKIP
+	sha256sums = a2ccea02e44be0ee89509e473ee697f5c2cd979894064f61e8dea4d57204f936
 
 pkgname = geeqie-git

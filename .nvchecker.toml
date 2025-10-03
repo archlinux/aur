@@ -1,4 +1,0 @@
-[geeqie-git]
-source = "git"
-git = "https://github.com/BestImageViewer/geeqie.git"
-prefix = "v"

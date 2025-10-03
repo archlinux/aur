@@ -2,9 +2,11 @@
 # Contributor: Mitch Bigelow <mitch.bigelow at gmail.com>
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
+: ${_commit=}
+
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r186.geac0307
+pkgver=2.6.1.r211.g57ef350
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -68,12 +70,23 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgname"::"git+$url.git")
-sha256sums=('SKIP')
+source=(
+  "$_pkgname"::"git+$url.git${_commit:+#commit=$_commit}"
+  "PR1928.patch"::"https://github.com/BestImageViewer/geeqie/pull/1928.diff"
+)
+sha256sums=(
+  'SKIP'
+  'a2ccea02e44be0ee89509e473ee697f5c2cd979894064f61e8dea4d57204f936'
+)
 
 prepare() {
+  cd "$_pkgsrc"
+
   # skip failing tests
-  sed -E '/[Aa]ncillary.files/s&^&#&' -i "$_pkgsrc"/meson.build
+  sed -E '/[Aa]ncillary.files/s&^&#&' -i meson.build
+
+  # fix for gdk-pixbuf2, glycin
+  patch -Np1 -F100 -i ../PR1928.patch
 }
 
 pkgver() {
