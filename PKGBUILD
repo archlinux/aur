@@ -13,19 +13,19 @@
 # Orginally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.35
-pkgrel=3
+pkgver=1.36.36
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://zoneminder.com/'
 license=('GPL-2.0-only')
-depends=('polkit' 'ffmpeg'
+depends=('ffmpeg' 'libvlc' 'polkit'
          'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
          'perl-sys-cpu' 'perl-sys-meminfo' 'perl-sys-mmap' 'perl-uri-encode'
          # ONVIF
-         'perl-data-uuid' 'perl-io-interface' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-libxml' 'perl-xml-parser'
+         'libvncserver' 'perl-data-uuid' 'perl-io-interface' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-libxml' 'perl-xml-parser'
          # TLS
          'perl-lwp-protocol-https'
          # Telemetry
@@ -42,9 +42,7 @@ optdepends=('mariadb'
             'spawn-fcgi: required if using nginx'
             'multiwatch: required if using nginx'
             'pod2man: required for Docker support'
-            'zmeventnotification: machine learning-powered recognition engine & event notification server'
-            'vlc: may achieve better performance than FFmpeg with some camera models'
-            'libvncserver: allows for CCTV-like monitoring of remote desktop sessions')
+            'zmeventnotification: machine learning-powered recognition engine & event notification server')
 backup=("etc/nginx/sites-available/${pkgname}.conf"
         "etc/httpd/conf/extra/${pkgname}.conf"
         "etc/php/conf.d/${pkgname}.ini")
@@ -52,19 +50,19 @@ install=${pkgname}.install
 source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
         'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
         'https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
-        'https://github.com/ZoneMinder/RtspServer/archive/055d81fe1293429e496b19104a9ed3360755a440.zip'
+        'https://github.com/ZoneMinder/RtspServer/archive/eab32851421ffe54fec0229c3efc44c642bc8d46.zip'
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
         'fcgiwrap-multiwatch.service')
-sha256sums=('c3636ded4e0e5c5c62535c55153371212a379dbb1aed8c911bd6287721c3d49a'
-            'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
-            '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
-            'fad0f1646f65f1518dfde3390e6c907319bc67b61f2e04f5d5ac4144ab61131d'
-            '92803838896f045612cdb88807763ff446f38f8bb136712429daeb2e3848fa0f'
-            '62a3a907f48441cc40743d5b6957c727e90a34b310c6cad4b5344c91a8971e67'
-            '8e1131dd6bf3796f5bcc9422c96ef77388d7ab0d8e8fc17f6b8dd1e8acc2442a'
-            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
+b2sums=('a1197e81aecf639f9f9a63c02022f45c036e2b054d0dc0f22068d4068aafe9708e8e1dce639360b21f27e5f828e0b65b7b3438a2140094fc6fcd65dc6df22e9f'
+        '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
+        'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
+        '89f9aeb88d06cad19d1a6d9c223b8291ad486f605bc87d939120d64524a85f2d8a07a0f23c9877833a6fdf03da84b20394e4f2a61c742a6669b6fae03c8af599'
+        '3886117b5471ab62a291a6d068f2bc168c1467da512a68b049a02046ab15ced1078cd96e342222ff8393858ce206ed03fe102b09db4534b97bd3b95d76c3e8cd'
+        '9ce42fe44f2c3c1a1b205d36e08e0703519d3bf955c14538171f4b9eabfeae8847fda37b53bfded8e371e6765ef9ecc6a59d3a719ddc1b0acf4f486a925ed6ba'
+        'd29126e6bb733a9655573e5e2f1934d248f47d301361dbf4a4b1db67bea1c244d3a902f3d4d3aecca7de64c39eeca88803bde72740bc805163c790a6dbd13a54'
+        '80354a9fc9de49f87183f2a0d7141b227bdd1eac421cfd5760e08d81e8e93a3c8ef6d9ec64c1c73cf0816a882da12527f9f0e2fce917991f1244900e3d973aef')
 
 prepare () {
     cd ${pkgname}-${pkgver}
@@ -79,7 +77,7 @@ prepare () {
     # Move third-party plugins into place
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
-    mv ../RtspServer-055d81fe1293429e496b19104a9ed3360755a440/* dep/RtspServer
+    mv ../RtspServer-eab32851421ffe54fec0229c3efc44c642bc8d46/* dep/RtspServer
 }
 
 build() {
