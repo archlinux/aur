@@ -1,6 +1,6 @@
 pkgbase = keep-me-awake
 	pkgdesc = Inhibit screensaver and suspend in GNOME
-	pkgver = 0.4.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/keep-me-awake
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = keep-me-awake
 	makedepends = just
 	depends = gtk4
 	depends = libadwaita
-	source = git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v0.4.0
-	sha256sums = 3f68a8f4b69221c1801cfabdd614ea7f235b8103c851c8c23687343253618005
+	source = git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v1.0.0
+	sha256sums = 7e264c4ef49ee0c292f358a3d3edc023f12aa3594ecffadf8571ed73146d16b3
 
 pkgname = keep-me-awake
