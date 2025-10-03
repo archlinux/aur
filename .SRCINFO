@@ -1,6 +1,6 @@
 pkgbase = r-universalmotif
 	pkgdesc = Import, Modify, and Export Motifs with R
-	pkgver = 1.26.2
+	pkgver = 1.26.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/universalmotif
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = r-universalmotif
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-tfbstools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/universalmotif_1.26.2.tar.gz
-	sha256sums = 35a57e51d0d2e0653de405d748ac6b0db2da3a2b3b6fbf26ab75550949595a92
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/universalmotif_1.26.3.tar.gz
+	sha256sums = eeb0fa48bc73d80b93e1d16dda8ddb52f62e2259c5880e1aeae305d3276c57f8
 
 pkgname = r-universalmotif
