@@ -25,6 +25,6 @@ build() {
 package() {
     cd "$reponame-$pkgver" || exit
 
-    cmake --install cmake-build-release
+    sudo cmake --install cmake-build-release
     install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
