@@ -6,13 +6,12 @@ pkgbase = uutils-tar-git
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	makedepends = tar
 	makedepends = git
 	depends = gcc-libs
-	provides = tar
-	conflicts = tar
 	source = uutils-tar::git+https://github.com/uutils/tar.git
-	source = tar-script.tar.zst::https://archlinux.org/packages/core/x86_64/tar/download/
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = uutils-tar-git
+	provides = tar
+	conflicts = tar

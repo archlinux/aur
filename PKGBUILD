@@ -11,12 +11,9 @@ arch=('x86_64')
 url="https://github.com/uutils/tar"
 license=('MIT')
 depends=(gcc-libs)
-makedepends=(rust git)
-conflicts=(tar)
-provides=(tar)
-source=("uutils-tar::git+${url}.git"
-"tar-script.tar.zst::https://archlinux.org/packages/core/x86_64/tar/download/")
-sha256sums=('SKIP' 'SKIP')
+makedepends=(rust tar git)
+source=("uutils-tar::git+${url}.git")
+sha256sums=('SKIP')
 
 #prepare(){
 #  cd utils-tar
@@ -30,9 +27,11 @@ build(){
 }
 
 package() {
-  rm -rf usr/{bin/tar,lib/tar/rmt,share}
-  cp -r usr "$pkgdir"/usr
+  install -Dm755 /usr/bin/{backup,restore} -t "$pkgdir"/usr/bin
+  install -Dm755 /usr/lib/tar/{backup.sh,dump-remind} -t "$pkgdir"/usr/lib/tar
+  conflicts=(tar)
+  provides=(tar)
   cd uutils-tar
-  install -Dvm755 target/release-fast/tarapp "$pkgdir"/usr/bin/tar
+  install -Dm755 target/release-fast/tarapp "$pkgdir"/usr/bin/tar
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/uutils-tar
 }
