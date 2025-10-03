@@ -16,7 +16,7 @@ options=('!strip')
 provides=('shadps4')
 conflicts=('shadps4')
 _appimage=Shadps4-qt.AppImage
-source=("shadps4-linux-qt-${_date}-${_commit}.zip::https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-${_date}-${_commit}/shadps4-linux-qt-${_date}-${_shortcommit}.zip")
+source=("shadps4-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-${_date}-${_commit}/shadps4-linux-qt-${_date}-${_shortcommit}.zip")
 sha256sums=('SKIP')
 
 prepare() {
