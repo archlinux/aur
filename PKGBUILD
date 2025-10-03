@@ -1,6 +1,6 @@
-# Maintainer: Cooper Pierce <cppierce@andrew.cmu.edu>
+# Maintainer: dqnk <dqnk.6375@pm.me>
 pkgname=millet
-pkgver=0.12.6
+pkgver=0.14.9
 pkgrel=1
 pkgdesc="Language server implementation for Standard ML"
 url="https://github.com/azdavis/millet"
@@ -8,7 +8,7 @@ arch=('x86_64')
 license=(APACHE MIT)
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('bab4f5c68f781eeaa7a94a4ce593501d')
+sha256sums=('5efff3cafade17b33a8b9b2748a8c064dbd51932934de01f8d2a14c88ac829c5')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -29,7 +29,11 @@ check() {
     # on git grep), and this also requires the installer to have xtask
     # installed.
     cargo fmt -- --check
-    cargo clippy
+
+    # NOTE: (dqnk)
+    # We skip clippy because the package is not using it at this point in time.
+    # cargo clippy
+
     # Ignores tests starting with repo. These tests assume we're in a git repo
     # (we're not, here, since this is a source tarball), and test for things
     # like changelog entries existing.
