@@ -1,0 +1,20 @@
+pkgbase = ocaml-mirage-kv
+	pkgdesc = MirageOS signature for key/value stores
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = https://github.com/mirage/mirage-kv
+	arch = x86_64
+	license = ISC
+	checkdepends = ocaml-alcotest
+	makedepends = dune
+	depends = glibc
+	depends = ocaml
+	depends = ocaml-fmt
+	depends = ocaml-lwt
+	depends = ocaml-optint
+	depends = ocaml-ptime
+	options = !strip
+	source = ocaml-mirage-kv-6.1.1.tar.gz::https://github.com/mirage/mirage-kv/archive/refs/tags/v6.1.1.tar.gz
+	b2sums = e4c39b536c3d6c9debc7278678e2d2eef82908de087f1fa5788ff19ffb1f962854eb414295c741d68605490ac400ee283cd016dbd9c1f2ad63d3991c81ff6b8a
+
+pkgname = ocaml-mirage-kv
