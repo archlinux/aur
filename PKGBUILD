@@ -18,7 +18,7 @@ source=("$_pkgbase::git+https://github.com/frankcrawford/it87.git"
         "it87.conf")
 
 sha256sums=('SKIP'
-            'f325b751c8a81416a75c2c1e7a7bc9ca46ae0fa3b44d4ccc09593274be1b2dc7'
+            '82bf96ce547768a84807f611eb103d943ce80e4c57d24590123e721b7bced793'
             'acdc488d1505e891ed6259b29428d4b27d26d18e3ea170f017b930390d6420e7')
 
 pkgver() {
