@@ -1,0 +1,4 @@
+[pitchfork-bin]
+source = "git"
+git = "https://github.com/jdx/pitchfork.git"
+prefix = "v"
