@@ -1,0 +1,4 @@
+[rqlite-bin]
+source = "git"
+git = "https://github.com/rqlite/rqlite.git"
+prefix = "v"
