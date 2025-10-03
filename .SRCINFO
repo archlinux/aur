@@ -3,6 +3,7 @@ pkgbase = ulaa-browser
 	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://ulaa.com
+	changelog = Changelog
 	arch = x86_64
 	provides = ulaa-browser-stable
 	conflicts = ulaa-browser-stable

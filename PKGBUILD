@@ -18,10 +18,10 @@ replaces=()
 backup=()
 options=(!debug)
 install=
-changelog=
+changelog=Changelog
 source_x86_64=(${_pkgname}-v${pkgver}-${pkgrel}.deb::https://downloads.zohocdn.com/ulaa-browser/release/linux/stable/${_pkgname}-v${pkgver}-amd64.deb)
 noextract=()
-sha256sums_x86_64=(1cb083f2794642ee1f1052f84de24d35d0e4bc722e3f8ed0b7ff09848dd40424)
+sha256sums_x86_64=('1cb083f2794642ee1f1052f84de24d35d0e4bc722e3f8ed0b7ff09848dd40424')
 validpgpkeys=()
 
 prepare() {
