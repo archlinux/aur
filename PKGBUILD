@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlen
-pkgver=0.1.7
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Terminal User Interface LLM client for Ollama with chat and code assistance features"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 options=(!lto)  # avoid LTO-linked ring symbol drop with lld
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2f298635dd93456a89ae941f4f965a78f9fc9d5c1763b9e549d0b5d6c3eb97b8')
+sha256sums=('7cd68b67857f908e566e3c6578e2d5534c92969815a5a95282777b4c43467245')
 
 prepare() {
     cd $pkgname
