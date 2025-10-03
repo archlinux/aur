@@ -28,7 +28,7 @@ provides=('dms')
 conflicts=('dms-shell-git' 'dms-shell' 'dms-git')
 
 # Version for the dms CLI binary from danklinux
-_dms_cli_ver='v0.0.1'
+_dms_cli_ver=v$pkgver
 
 # Map architecture names
 _get_arch() {
