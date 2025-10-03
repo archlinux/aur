@@ -1,0 +1,5 @@
+[agentapi-bin]
+source = "github"
+github = "coder/agentapi"
+prefix = "v"
+use_latest_release = true
