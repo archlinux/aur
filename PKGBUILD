@@ -75,6 +75,7 @@ build() {
     if [ "$(vercmp "${_pkgverb}" '1.7.4')" -ge 0 ]; then
       CFLAGS+=' -fcommon' # gcc-10
     fi
+    CFLAGS+=' -std=gnu17'
     ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads --enable-jansson
   fi
   nice make -s
