@@ -1,7 +1,7 @@
 # Maintainer: Benjamim Gois <benjamim.gois@gmail.com>
 pkgname=pascube-git
-pkgver=1.5.0.r0.g0000000
-pkgrel=1.5
+pkgver=v1.5.0.r2.g91315c5
+pkgrel=1
 pkgdesc="A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
 url="https://github.com/benjamimgois/pascube"
@@ -111,7 +111,7 @@ Comment=A simple OpenGL spinning cube written in Pascal
 Exec=pascube
 Icon=pascube
 Terminal=false
-Categories=Graphics;Education;Qt;
+Categories=Graphics;
 EOF
   fi
 
@@ -123,13 +123,11 @@ EOF
     fi
   done
 
-  # ---- Shared resources (skybox only under /usr/share/pascube) ----
-  if [[ -f "skybox.png" ]]; then
-    install -Dm644 "skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
-  elif [[ -f "data/skybox.png" ]]; then
-    install -Dm644 "data/skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
+    # ---- Shared resources (skybox only under /usr/share/pascube) ----
+  install -d "${pkgdir}/usr/share/pascube"
+  if [[ -f "data/skybox.png" ]]; then
+    install -m644 "data/skybox.png" "${pkgdir}/usr/share/pascube/skybox.png"
   fi
 
-  # License (if present)
-  [[ -f LICENSE ]] && install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 }
