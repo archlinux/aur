@@ -1,16 +1,16 @@
 pkgbase = conflict
 	pkgdesc = Displays conflicting filenames in your execution path
-	pkgver = 20250117
-	pkgrel = 2
+	pkgver = 20250930
+	pkgrel = 1
 	url = https://invisible-island.net/conflict/conflict.html
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	source = https://invisible-mirror.net/archives/conflict/conflict-20250117.tgz
-	source = https://invisible-mirror.net/archives/conflict/conflict-20250117.tgz.asc
+	source = https://invisible-mirror.net/archives/conflict/conflict-20250930.tgz
+	source = https://invisible-mirror.net/archives/conflict/conflict-20250930.tgz.asc
 	validpgpkeys = 19882D92DDA4C400C22C0D56CC2AF4472167BE03
-	sha256sums = a569507482cc0d2246a321eba528b85bb9315db46dc2de14b321e261ab90feed
+	sha256sums = 0a629a4d23df9f5fb22c2af90778c6da1176f3907b412405f8518a9fdf405f1d
 	sha256sums = SKIP
 
 pkgname = conflict
