@@ -9,10 +9,10 @@ pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc='Securely erase data from magnetic and solid-state memory'
 arch=('i686' 'x86_64')
-url='https://www.jetico.com/download'
+url='https://jetico.com/downloads/data-wiping/'
 license=('unknown')
 _srcdir="${pkgname}-${_pkgver}"
-source=("https://www.jetico.com/linux/BCWipe-${_pkgver}.tar.gz")
+source=("https://www.jetico.com/file-downloads/linux/BCWipe-${_pkgver}.tar.gz")
 md5sums=('b2372f6f3a3ce969d51bea7a876907c2')
 sha256sums=('9df8cebf07dc38c53c76728c428d4b180b7cb2479f69a7d6965f99fcb1b2cfc2')
 
