@@ -5,7 +5,7 @@
 
 pkgname=eigen3
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra'
 arch=(any)
 url="https://gitlab.com/libeigen/eigen"
@@ -14,7 +14,7 @@ makedepends=(cmake freeglut gcc-fortran fftw suitesparse boost)
 #options=(staticlibs)
 source=(https://gitlab.com/libeigen/eigen/-/archive/${pkgver}/"eigen-${pkgver}".tar.gz
 		eigen3.conf)
-sha256sums=('382740b49b1b1f4815c9cda3f93286e12ba819442bbd0ded37c5e47520faa7b8'
+sha256sums=('b93c667d1b69265cdb4d9f30ec21f8facbbe8b307cf34c0b9942834c6d4fdbe2'
             'fa0d36379d4d4d55c3eb50d7aeaec38654f65101c21bbfdde41ae68bc54e5953')
 
 build() {
