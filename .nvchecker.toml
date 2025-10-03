@@ -1,0 +1,4 @@
+[tatuin-bin]
+source = "git"
+git = "https://github.com/panter-dsd/tatuin.git"
+prefix = "v"
