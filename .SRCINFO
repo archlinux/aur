@@ -1,13 +1,12 @@
 pkgbase = noto-fonts-devanagari-fontconfig
 	pkgdesc = Fontconfig to fix Noto Fonts Devanagari fonts Ligatures.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = noto-fonts
 	provides = noto-fonts-devanagari-fontconfig
-	conflicts = noto-color-emoji-fontconfig-no-binding
 	source = 50-noto-fonts-devanagari.conf
-	sha256sums = a9817cc0ef4f6ee5c6a13c52cbae7b61b40157c2f589ba57814863cb282e531a
+	sha256sums = 77f404256d3364547c1e65cc38cdd6fde9107a8573f302fe29db497a324cac7c
 
 pkgname = noto-fonts-devanagari-fontconfig
