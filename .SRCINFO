@@ -1,7 +1,7 @@
 pkgbase = ifupdown-ng
 	pkgdesc = Flexible ifup/ifdown implementation
 	pkgver = 0.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ifupdown-ng/ifupdown-ng
 	arch = i686
 	arch = x86_64
@@ -20,8 +20,14 @@ pkgbase = ifupdown-ng
 	optdepends = wireguard-tools: WireGuard VPN support
 	optdepends = batctl: B.A.T.M.A.N. support
 	source = ifupdown-ng-0.12.1.tar.gz::https://github.com/ifupdown-ng/ifupdown-ng/archive/refs/tags/ifupdown-ng-0.12.1.tar.gz
-	source = ifupdown-use-ldflags.patch::https://github.com/ifupdown-ng/ifupdown-ng/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch
+	source = 00-ifupdown-use-ldflags.patch::https://github.com/ifupdown-ng/ifupdown-ng/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch
+	source = 01-fix-systemd-unit.patch::https://github.com/ifupdown-ng/ifupdown-ng/commit/53eaf760462204c39b5352ade160dca97961e22c.patch
+	source = 02-fix-config-path.patch
+	source = 03-remove-state-dir.patch
 	sha256sums = d42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85
 	sha256sums = 4322c8578793aacad7ca32b45b5074dc03915fa9f3663983f15b11e1e2b4dd5a
+	sha256sums = a6db3043ee3df57b1abb242e0e11507dc7f5f01d5cfbd22c82e97e51dc506065
+	sha256sums = cca44ecf38c72afcdc38d9e4a879b07a3f34ec4fc7f0f7f00169afd8e1d439cb
+	sha256sums = fe578cef61a2c95f4054e34570b9a3f6364ac3d9d5734b9535ed05895da0ecfb
 
 pkgname = ifupdown-ng

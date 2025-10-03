@@ -25,14 +25,14 @@ source=(
 	"00-ifupdown-use-ldflags.patch::$url/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch"
 	"01-fix-systemd-unit.patch::$url/commit/53eaf760462204c39b5352ade160dca97961e22c.patch"
 	"02-fix-config-path.patch"
-	"03-fix-state-dir.patch"
+	"03-remove-state-dir.patch"
 )
 sha256sums=(
 	'd42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85'
 	'4322c8578793aacad7ca32b45b5074dc03915fa9f3663983f15b11e1e2b4dd5a'
 	'a6db3043ee3df57b1abb242e0e11507dc7f5f01d5cfbd22c82e97e51dc506065'
 	'cca44ecf38c72afcdc38d9e4a879b07a3f34ec4fc7f0f7f00169afd8e1d439cb'
-	'acfecd2a8107d8575b326b8b27fa1358067a878b809fb7b6adf079e03542bec9'
+	'fe578cef61a2c95f4054e34570b9a3f6364ac3d9d5734b9535ed05895da0ecfb'
 )
 
 prepare() {
