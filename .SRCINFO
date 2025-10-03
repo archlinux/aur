@@ -1,7 +1,7 @@
 pkgbase = dms-shell-bin
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
 	pkgver = 0.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -22,6 +22,7 @@ pkgbase = dms-shell-bin
 	optdepends = qt6ct: Qt6 application theming
 	provides = dms
 	conflicts = dms-shell-git
+	conflicts = dms-shell
 	conflicts = dms-git
 	source_x86_64 = dms-shell-bin-0.0.29.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.0.29.tar.gz
 	source_x86_64 = dms-v0.0.1-amd64.gz::https://github.com/AvengeMedia/danklinux/releases/download/v0.0.1/dms-amd64.gz

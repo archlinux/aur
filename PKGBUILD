@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
 pkgver=0.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -25,7 +25,7 @@ optdepends=(
 )
 makedepends=('git')
 provides=('dms')
-conflicts=('dms-shell-git' 'dms-git')
+conflicts=('dms-shell-git' 'dms-shell' 'dms-git')
 
 # Version for the dms CLI binary from danklinux
 _dms_cli_ver='v0.0.1'
