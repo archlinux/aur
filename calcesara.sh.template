@@ -225,7 +225,7 @@ export WINESERVER=${WINESERVER:-wineserver}
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 
 ###############################################################################################
-# Disable hardware accelleration
+# Disable
 ###############################################################################################
 
 disable_wayland_hardware_acceleration() {
@@ -239,6 +239,18 @@ disable_wayland_hardware_acceleration() {
             sed -i "s/java\.exe/java\.exe -Dsun\.java2d\.noddraw=true/g" "${script}"
         fi
     done
+}
+
+disable_winemenubuilder() {
+    if [ $disable_winemenubuilder -eq 1 ]; then
+        if [[ -f "${WINEPREFIX}/system.reg" ]]; then
+            sed -i "s/^.*winemenubuilder.*$//g" "${WINEPREFIX}/system.reg"
+        fi
+        # Removes duplicate .desktop entries
+        if [ -d "${winemenubuilder_destination}" ]; then
+            rm -r "${winemenubuilder_destination}" 
+        fi
+    fi
 }
 
 ###############################################################################################
@@ -365,11 +377,7 @@ install_fonts() {
 install() {
     echo "${output_prefix}Installing CalceSARA in WINEPREFIX=${WINEPREFIX}..."
     install_fonts &
-
-    if [[ -f "${WINEPREFIX}/system.reg" && $disable_winemenubuilder == 1 ]]; then
-        sed -i "s/^.*winemenubuilder.*$//g" "${WINEPREFIX}/system.reg"
-    fi
-
+    disable_winemenubuilder
     ${WINE} "${installer_exe_location}" /S
     install_key
     wait
@@ -381,6 +389,7 @@ install() {
 
 launch() {
     disable_wayland_hardware_acceleration
+    disable_winemenubuilder
     cd "${drive_c}"
     ${WINE} "${lnk_full}"
 }
@@ -396,11 +405,4 @@ else
     install_key
     wait
     launch #|| install_launch
-fi
-
-if [ $disable_winemenubuilder -eq 1 ]; then
-    # Removes duplicate .desktop entries
-    if [[ -d "${winemenubuilder_destination}" ]]; then
-        rm -r "${winemenubuilder_destination}" 
-    fi
 fi
