@@ -109,13 +109,21 @@ build() {
     --repo_env=AR="${AR}" \
     --repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=0 \
     --cxxopt='-std=c++20' \
+    --host_cxxopt='-std=c++20' \
     --cxxopt='-w' \
+    --host_cxxopt='-w' \
     --cxxopt='-Wno-error' \
+    --host_cxxopt='-Wno-error' \
     --cxxopt='-I/usr/include' \
+    --host_cxxopt='-I/usr/include' \
     --copt='-D_GNU_SOURCE' \
+    --host_copt='-D_GNU_SOURCE' \
     --copt='-w' \
+    --host_copt='-w' \
     --copt='-Wno-error' \
+    --host_copt='-Wno-error' \
     --copt='-I/usr/include' \
+    --host_copt='-I/usr/include' \
     --linkopt='-lresolv' \
     --linkopt='-ltbb' \
     --linkopt='-Wl,-w' \
