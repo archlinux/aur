@@ -1,7 +1,7 @@
 pkgbase = bstyle-qml-theme
 	pkgdesc = Style for QML applications
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Blaadick/BStyle
 	arch = any
 	license = GPL-3.0-only
