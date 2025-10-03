@@ -1,19 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=zluda-git
-pkgver=4.r37.gef0c4af
+pkgver=5.r0.g1c0c421
 pkgrel=1
-pkgdesc='A drop-in replacement for CUDA on non-NVIDIA (git version)'
+pkgdesc='A drop-in replacement for CUDA on non-NVIDIA GPUs (git version)'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
 license=('Apache-2.0 OR MIT')
 depends=(
-    'cargo'
     'gcc-libs'
     'glibc'
-    'hip-runtime-amd')
+    'hip-runtime-amd'
+    'hipblaslt'
+    'rocblas'
+    'rocm-smi-lib')
 makedepends=(
     'git'
+    'cargo'
     'cmake'
     'ninja'
     'python')
@@ -29,9 +32,6 @@ prepare() {
     git -C ZLUDA config --local submodule.ext/llvm-project.url "${srcdir}/llvm-project"
     git -C ZLUDA -c protocol.file.allow='always' submodule update
     
-    export RUSTUP_TOOLCHAIN='stable'
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='ZLUDA/Cargo.toml'
-    
     # llvm: fix build with gcc 15
     # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
     git -C ZLUDA/ext/llvm-project cherry-pick --no-commit 7e44305041d96b064c197216b931ae3917a34ac1
@@ -42,25 +42,13 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
-    export RUSTUP_TOOLCHAIN='stable'
-    export CARGO_TARGET_DIR='target'
-    cargo build --release --frozen --manifest-path='ZLUDA/Cargo.toml'
+    cd ZLUDA
+    cargo xtask --release
 }
 
-#check() {
-#    export CFLAGS+=' -ffat-lto-objects'
-#    export RUSTUP_TOOLCHAIN='stable'
-#    export CARGO_TARGET_DIR='target'
-#    cargo test --frozen --workspace --manifest-path='ZLUDA/Cargo.toml'
-#}
-
 package() {
-    find target/release -maxdepth 1 -type f -executable ! -name 'lib*' -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
-    install -D -m644 target/release/lib{nv{cuda,ml},zluda_redirect}.so -t "${pkgdir}/usr/lib"
+    install -D -m644 ZLUDA/target/release/zluda_ld -t "${pkgdir}/usr/lib"
     install -D -m644 ZLUDA/LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s libnvcuda.so "${pkgdir}/usr/lib/libcuda.so"
-    ln -s libnvcuda.so "${pkgdir}/usr/lib/libcuda.so.1"
-    ln -s libnvml.so "${pkgdir}/usr/lib/libnvidia-ml.so"
-    ln -s libnvml.so "${pkgdir}/usr/lib/libnvidia-ml.so.1"
+    cp -dr --no-preserve='ownership' ZLUDA/target/release/lib*.so* "${pkgdir}/usr/lib"
+    find ZLUDA/target/release -maxdepth 1 -type f -executable ! -name 'lib*' -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
 }
