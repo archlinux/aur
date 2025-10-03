@@ -3,8 +3,8 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 
-pkgrel=3
-pkgver=0.9.5
+pkgrel=1
+pkgver=0.9.6
 _name="ureminder"
 pkgname="$_name"
 pkgdesc='Reminds to upgrade Arch Linux by desktop-messages, shows Arch Linux News and keeps package mirrors and cache healthy'
