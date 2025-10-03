@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2025.24rc2.r2.gc146d6a
+pkgver=2025.38rc2.r1.g08db5c5
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -34,7 +34,6 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/intel/linux-npu-driver.git'
         # common git submodules
         'git+https://github.com/google/flatbuffers.git'
-        'git+https://github.com/jbeder/yaml-cpp.git'
         # npu-compiler git submodules
         'git+https://github.com/openvinotoolkit/npu_plugin_elf.git'
         'git+https://github.com/intel/npu-plugin-llvm.git'
@@ -60,6 +59,7 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
         'git+https://github.com/oneapi-src/level-zero.git'
         'git+https://github.com/intel/level-zero-npu-extensions.git'
+        'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
         'git+https://github.com/openvinotoolkit/shl.git'
@@ -107,7 +107,7 @@ sha256sums=('SKIP'
             'SKIP'
             'b994175b16daa45d426d86952ab50fb6a1b3a47bcbf19be4752ecf82c6ebdde7'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            'fe78338740ce8baabcaceae7d0e6bfe51be297568e2d6ae4539aa9982421bb22'
+            '444bdc87986952074811e6599ae86834005ebd68781dbc108a448b5124e07533'
             'c4cb907528be3b72f01cc3529c7ae347880e00d661737039a23b3ea733ed3ca2'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
@@ -126,7 +126,6 @@ prepare() {
     git -C npu_compiler config --local submodule.thirdparty/elf.url "${srcdir}/npu_plugin_elf"
     git -C npu_compiler config --local submodule.thirdparty/llvm-project.url "${srcdir}/npu-plugin-llvm"
     git -C npu_compiler config --local submodule.thirdparty/vpucostmodel.url "${srcdir}/npu-nn-cost-model"
-    git -C npu_compiler config --local submodule.thirdparty/yaml-cpp.url "${srcdir}/yaml-cpp"
     git -C npu_compiler config --local submodule.thirdparty/gtest-parallel.url "${srcdir}/gtest-parallel"
     git -C npu_compiler -c protocol.file.allow='always' submodule update
     
@@ -169,7 +168,7 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
     
-    ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
+    #ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
     
     patch -d npu_compiler/thirdparty/llvm-project -Np1 -i "${srcdir}/010-intel-npu-compiler-llvm-disable-atomic-check.patch"
     patch -d npu_compiler -Np1 -i "${srcdir}/020-intel-npu-compiler-disable-werror.patch"
@@ -195,17 +194,67 @@ build() {
     export CFLAGS="${CFLAGS/-Werror=format-security/}"
     export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
     
-    export NPU_PLUGIN_HOME="${srcdir}/npu_compiler"
-    export OPENVINO_HOME="${srcdir}/openvino"
-    
+    # https://github.com/openvinotoolkit/npu_compiler/issues/159
+    #export CONFIG='Release'
+    #export NPU_PLUGIN_HOME="${srcdir}/npu_compiler"
+    #export OPENVINO_HOME="${srcdir}/openvino"
+    #
+    #cmake -B build -S openvino \
+    #    --preset npuCidLinux \
+    #    -G 'Ninja' \
+    #    -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
+    #    -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
+    #    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    #    -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
+    #    -DENABLE_SYSTEM_TBB:BOOL='true' \
+    #    -Wno-dev
     cmake -B build -S openvino \
-        --preset npuCidReleaseLinux \
         -G 'Ninja' \
-        -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
-        -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        \
+        -DBUILD_SHARED_LIBS:BOOL='false' \
+        -DENABLE_OV_IR_FRONTEND:BOOL='true' \
+        -DTHREADING:STRING='TBB' \
+        -DENABLE_TBBBIND_2_5:BOOL='false' \
+        -DBUILD_COMPILER_FOR_DRIVER:BOOL='true' \
+        -DOPENVINO_EXTRA_MODULES:FILEPATH="${srcdir}/npu_compiler" \
+        \
+        -DENABLE_LTO:BOOL='false' \
+        -DENABLE_FASTER_BUILD:BOOL='false' \
+        -DENABLE_CPPLINT:BOOL='false' \
+        -DENABLE_TESTS:BOOL='false' \
+        -DENABLE_FUNCTIONAL_TESTS:BOOL='false' \
+        -DENABLE_SAMPLES:BOOL='false' \
+        -DENABLE_JS:BOOL='false' \
+        -DENABLE_PYTHON:BOOL='false' \
+        -DENABLE_PYTHON_PACKAGING:BOOL='false' \
+        -DENABLE_WHEEL:BOOL='false' \
+        -DENABLE_OV_ONNX_FRONTEND:BOOL='false' \
+        -DENABLE_OV_PADDLE_FRONTEND:BOOL='false' \
+        -DENABLE_OV_PYTORCH_FRONTEND:BOOL='false' \
+        -DENABLE_OV_TF_FRONTEND:BOOL='false' \
+        -DENABLE_OV_TF_LITE_FRONTEND:BOOL='false' \
+        -DENABLE_OV_JAX_FRONTEND:BOOL='false' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
         -DENABLE_SYSTEM_TBB:BOOL='true' \
+        -DENABLE_TBB_RELEASE_ONLY:BOOL='false' \
+        -DENABLE_OPENCV:BOOL='false' \
+        -DENABLE_MULTI:BOOL='false' \
+        -DENABLE_HETERO:BOOL='false' \
+        -DENABLE_AUTO:BOOL='false' \
+        -DENABLE_AUTO_BATCH:BOOL='false' \
+        -DENABLE_TEMPLATE:BOOL='false' \
+        -DENABLE_PROXY:BOOL='false' \
+        -DENABLE_INTEL_CPU:BOOL='false' \
+        -DENABLE_INTEL_GPU:BOOL='false' \
+        -DENABLE_NPU_PLUGIN_ENGINE:BOOL='false' \
+        -DENABLE_ZEROAPI_BACKEND:BOOL='false' \
+        -DENABLE_DRIVER_COMPILER_ADAPTER:BOOL='false' \
+        -DENABLE_INTEL_NPU_INTERNAL:BOOL='false' \
+        -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='false' \
+        -DENABLE_PRIVATE_TESTS:BOOL='false' \
+        -DENABLE_NPU_LSP_SERVER:BOOL='false'\
         -Wno-dev
     cmake --build build --target compilerTest profilingTest vpuxCompilerL0Test loaderTest
 }
