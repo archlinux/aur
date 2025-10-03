@@ -10,7 +10,7 @@
 _pkgname="cudatext"
 pkgname="$_pkgname-git"
 pkgver=1.228.3.0.r3.g95885c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Text editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/Alexey-T/CudaText"
 license=("MPL-2.0")
@@ -38,7 +38,6 @@ optdepends=(
   'python-pysocks'
   'python-requests'
   'python-simplejson'
-  'python-simpletools'
   'python-typing_extensions'
   'python-urllib3'
   'python-zstandard'

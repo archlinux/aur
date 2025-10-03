@@ -1,7 +1,7 @@
 pkgbase = cudatext-git
 	pkgdesc = Text editor written in Free Pascal with Lazarus (Qt6)
 	pkgver = 1.228.3.0.r3.g95885c7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alexey-T/CudaText
 	arch = x86_64
 	license = MPL-2.0
@@ -23,7 +23,6 @@ pkgbase = cudatext-git
 	optdepends = python-pysocks
 	optdepends = python-requests
 	optdepends = python-simplejson
-	optdepends = python-simpletools
 	optdepends = python-typing_extensions
 	optdepends = python-urllib3
 	optdepends = python-zstandard
