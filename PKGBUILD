@@ -122,10 +122,11 @@ END
   # modify compiler options
   for i in ${_packets[@]}; do
     xmlstarlet ed -L \
-      -d "/CONFIG/CompilerOptions/Other" \
-      -s "/CONFIG/CompilerOptions" -t elem -n Other -v "" \
-      -s "/CONFIG/CompilerOptions/Other" -t elem -n CustomOptions -v "" \
-      -i "/CONFIG/CompilerOptions/Other/CustomOptions" -t attr -n Value -v "-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know" \
+      -d "//CompilerOptions/Other" \
+      -s "//CompilerOptions" -t elem -n Other -v "" \
+      -s "//CompilerOptions/Other" -t elem -n CustomOptions -v "" \
+      -a "//CompilerOptions/Other/CustomOptions" -t attr -n Value \
+      -v "-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know" \
       "$i"
   done
 }
