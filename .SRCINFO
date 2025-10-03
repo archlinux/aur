@@ -1,7 +1,7 @@
 pkgbase = coin-or-qpoases
 	pkgdesc = COIN-OR QP solver with online active set strategy
-	pkgver = 3.2.1
-	pkgrel = 2
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = https://github.com/coin-or/qpOASES
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = coin-or-qpoases
 	makedepends = cmake
 	depends = blas
 	depends = lapack
-	source = coin-or-qpoases-3.2.1.tar.gz::https://github.com/coin-or/qpOASES/archive/refs/tags/releases/3.2.1.tar.gz
-	sha256sums = a7d153b4e23ee66bd50cdb6e84291d0084d9967a9c788a4d873440a6b10ca13b
+	source = coin-or-qpoases-3.2.2.tar.gz::https://github.com/coin-or/qpOASES/archive/refs/tags/releases/3.2.2.tar.gz
+	sha256sums = e36d795a17b067ea333793d96f17a14fb2bfbd92a4ab86c7f6f513cd9e3e640d
 
 pkgname = coin-or-qpoases
