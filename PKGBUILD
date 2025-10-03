@@ -38,8 +38,6 @@ makedepends=(
   'git'
   'ninja'
   'npm'
-  'wayland-protocols'
-  'wlr-protocols'
 )
 optdepends=(
   'intel-media-driver: Intel GPU encoding support'
