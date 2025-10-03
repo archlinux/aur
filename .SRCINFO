@@ -1,6 +1,6 @@
 pkgbase = elephant
 	pkgdesc = general purpose datasource and executor
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant
 	makedepends = go
 	provides = elephant
 	conflicts = elephant
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = 5981dcfd131810dc7347870b3b6846aed3526f5e77d874e878b8edf517c4db6e
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v1.3.3.tar.gz
+	sha256sums = 109739788c25ed1e5d524f24addb31f4128c69eff2a389db784774a6edc8a7db
 
 pkgname = elephant
