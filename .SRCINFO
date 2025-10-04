@@ -1,17 +1,17 @@
 pkgbase = dmnotifier-bin
 	pkgdesc = 跨平台弹幕通知客户端，基于 UniBarrage (binary)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://github.com/xifan23332333/dmnotifier
+	url = https://github.com/xifan2333/dmnotifier
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = mpv
 	provides = dmnotifier
 	conflicts = dmnotifier
-	source_x86_64 = dmnotifier-bin-1.0.2-x86_64::https://github.com/xifan23332333/dmnotifier/releases/download/v1.0.2/dmnotifier-linux-amd64
+	source_x86_64 = dmnotifier-bin-1.0.3-x86_64::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.3/dmnotifier-linux-amd64
 	sha256sums_x86_64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
-	source_aarch64 = dmnotifier-bin-1.0.2-aarch64::https://github.com/xifan23332333/dmnotifier/releases/download/v1.0.2/dmnotifier-linux-arm64
+	source_aarch64 = dmnotifier-bin-1.0.3-aarch64::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.3/dmnotifier-linux-arm64
 	sha256sums_aarch64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = dmnotifier-bin
