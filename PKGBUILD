@@ -1,4 +1,5 @@
 # Maintainer: dqnk <dqnk.6375@pm.me>
+# Contributor: Cooper Pierce <cppierce@andrew.cmu.edu>
 pkgname=millet
 pkgver=0.14.9
 pkgrel=1
