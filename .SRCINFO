@@ -1,17 +1,17 @@
 pkgbase = archiso-systemd-boot
 	pkgdesc = archiso as systemd-boot loader entry
-	pkgver = 2025.09.01
+	pkgver = 2025.10.01
 	pkgrel = 1
 	url = https://archlinux.org/download/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = systemd
-	noextract = archlinux-2025.09.01-x86_64.iso
+	noextract = archlinux-2025.10.01-x86_64.iso
 	options = !debug
 	backup = boot/loader/entries/arch-rescue.conf
-	source = https://geo.mirror.pkgbuild.com/iso/2025.09.01/archlinux-2025.09.01-x86_64.iso
+	source = https://geo.mirror.pkgbuild.com/iso/2025.10.01/archlinux-2025.10.01-x86_64.iso
 	source = arch-rescue.conf
-	b2sums = 3961e1ec201c2dc476d3a0c9c0a1abfcc02c05b02e2bbdba7b71468c8b84d69e356d8510c67a28459238a7ed5d6205e46a3c9f0b0911d363609a714862312228
+	b2sums = d63af5b42bb6d0808507138115f07bd4b438ff951cfe6685c7ef253edec8bd4e30bf5e5ab51e2272878e7d7d35038ef133d9b3a074963e05a2400a71ba9ce612
 	b2sums = f55abf33fbcb7d462d175c16dbe43e4f3bcb7c3ec60ad19a2d31a733c6f8948792b539c48f85dfc7ebe24e136ff74212a129c61605471ce0009c3b62f081a221
 
 pkgname = archiso-systemd-boot
