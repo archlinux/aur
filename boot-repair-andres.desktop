@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Boot Repair Andres
-Comment=Swiss-army live rescue tool
-Exec=boot-repair
+Comment=Herramienta de rescate: Reparación de GRUB, pantalla, y diagnósticos.
+Exec=pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY boot-repair
 Icon=preferences-system
 Terminal=true
 Type=Application
-Categories=System;Utility;
-Keywords=boot;repair;grub;system;
+Categories=System;Utility;Core;
+Keywords=boot;repair;grub;system;diagnostico;
