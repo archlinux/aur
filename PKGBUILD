@@ -1,4 +1,5 @@
-# Maintainer: Brian Thompson <brianrobt at pm.me>
+# Maintainer: Evan Chen <evan at evanchen.cc>
+# Contributon: Brian Thompson <brianrobt at pm.me>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 _name=HTMLHint
