@@ -1,4 +1,3 @@
-# Maintainer: Borhaneddine GUEMIDI <guemidiborhane@gmail.com>
 pkgname=youtube-dl-gui
 _pkgname=youtube-dl-gui
 pkgver=2.5.6
@@ -12,8 +11,6 @@ url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
 options=('!strip')
 source=("https://github.com/StefanLobbenmeier/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('81482a3bc653e85398463bf3c075199d')
-installpath=('/opt/youtube-dl-gui')
-iconpath='renderer/img/icon.png'
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}
@@ -27,13 +24,11 @@ build() {
 
 package() {
 	mkdir -p ${pkgdir}/opt
-	mkdir -p ${pkgdir}/usr/share/applications
 	mkdir -p ${pkgdir}/usr/bin
-	mkdir -p ${pkgdir}/usr/share/pixmaps/
 
 	tar -xf ${srcdir}/${pkgname}-${pkgver}/dist/${pkgname}-${pkgver}.tar.xz -C $pkgdir/opt
 	mv ${pkgdir}/opt/${pkgname}-${pkgver} ${pkgdir}/opt/${pkgname}
-	cp ../${pkgname}.desktop ${pkgdir}/usr/share/applications/
-	cp ${srcdir}/${pkgname}-${pkgver}/${iconpath} ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+	install -Dm644 ../${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/renderer/img/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
 	ln -fs /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
