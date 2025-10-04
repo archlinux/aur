@@ -352,18 +352,20 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-hevc svt-vp9)
   makedepends+=(patchutils)
   _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-  _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
+  _whispercpp_ver='1.8.0'
   source+=(
-    "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-    "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-    "031-ffmpeg-add-svt-vp9.patch"
-    "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+    "010-ffmpeg-add-svt-hevc.patch"
+    "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+    "030-ffmpeg-add-svt-vp9.patch"
+    "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
+    "060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
   )
   sha256sums+=(
-    '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
+    '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    'aa0daffc4d234b6621b63c298dc165d29522c5087f8905a923d23ee2d164e9ad'
-    '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
+    'da01eb3ca31d35d23257760875e14bed808b3fea02f290028adaed76062125a0'
+    'c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f'
+    '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
@@ -391,6 +393,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
     lcms2 libraw1394 openvino libaribcaption opencv2
     qrencode quirc xevd xeve vvenc lcevcdec liblc3
+    'openapv'
   )
   makedepends+=(patchutils)
   _args+=(
@@ -404,7 +407,8 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-omx --enable-rkmpp #--enable-pocketsphinx
     --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
     --enable-libqrencode --enable-libquirc --disable-libtorch --enable-libxevd --enable-libxeve
-    --enable-liblc3 --enable-liblcevc-dec --enable-libvvenc
+    --enable-liblc3 --enable-liblcevc-dec --enable-libvvenc --enable-whisper
+    --disable-ohcodec --enable-liboapv
   )
   provides+=(ffmpeg-full)
 else
@@ -447,11 +451,10 @@ prepare() {
 
   ## SVT changes if enabled
   if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
-    rm -f "libavcodec/"libsvt_{hevc,vp9}.c
-    patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    rm -f libavcodec/libsvt_{hevc,vp9}.c
+    patch -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
-    patch -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
   fi
 
   if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
@@ -489,6 +492,20 @@ prepare() {
 }
 
 build() {
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
+    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
+    cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
+        -G 'Unix Makefiles' \
+        -DBUILD_SHARED_LIBS:BOOL='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/staging" \
+        -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
+        -DWHISPER_BUILD_TESTS:BOOL='OFF' \
+        -Wno-dev
++    cmake --build build/whisper.cpp --target install
+  fi
+
   cd ffmpeg-src
 
   ## Manage extra flags and paths
@@ -498,6 +515,7 @@ build() {
   fi
 
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    export PKG_CONFIG_PATH="${srcdir}/staging/lib/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
   fi
 
