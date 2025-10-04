@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=rdrview
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Firefox Reader View as a command line tool"
 arch=(x86_64)
@@ -24,8 +24,8 @@ optdepends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('fb88063daf64430c81c50b096b643e43b0e570434185058899b9ca6fa4436a83910ffcaa399f8dce50582091a4607941c19eae799b16935aee3def214bbbf8b2')
-b2sums=('3d53e33e8ed890a52c2dbf2b3ae0fea1a6daeea70b13e19c6a4e039b7d2c1ac408f2d1be431650dcb35a6b3ad82770bbe8a71bc9ad3999bce2cab89ae7ac6b92')
+sha512sums=('061d0241e6b24a0ad86ae30f5ca0ffd697b6f10ba5d66eb7ca83135095cd0e5efb8501166f55622465d861cd027d64a9568d1f567ba727dd35f5dcec60eaadf1')
+b2sums=('9bd07ac1740c2834fadf7d469f028d200fe56295937eb962e8d19aaa9ea073ff1a1f4096e10c3d18977bd1525e5372a0188a2a9fd210a8ba0f112b7f3d75ae81')
 
 prepare(){
   cd $pkgname-$pkgver
@@ -41,4 +41,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make PREFIX="${pkgdir}/usr" install
+  strip --strip-unneeded "$pkgdir/usr/bin/rdrview"
 }
