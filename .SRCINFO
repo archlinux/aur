@@ -1,0 +1,15 @@
+pkgbase = libtmplinux
+	pkgdesc = Common code for the tmplinux suite.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tmplinux/libtmplinux
+	arch = any
+	license = MIT
+	depends = bash
+	depends = util-linux
+	depends = systemd
+	depends = squashfs-tools
+	source = https://github.com/tmplinux/libtmplinux/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = libtmplinux
