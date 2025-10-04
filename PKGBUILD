@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.4.2
+_pkgver=12.4.3
 _deno_ver=2.5.0
 
 pkgname=firedragon
@@ -75,7 +75,7 @@ source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/f
         firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon)
 source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
 source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
-sha256sums=('c7d3b821ef5340fac8c1e685b9ea47af02cd47d2958d9bbaab0af044927c4410'
+sha256sums=('a59abd9d48215131d4cf951983e41863a94da22291e089c66f45e02873180113'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0')
 sha256sums_x86_64=('4561adb06b13f287a3785276cb29f377b7ffb49d54290178223b037e161446d3')
 sha256sums_aarch64=('81d2ef446954429f0dcbcb24cdce115e5bb2c3a3548b79c01b49ec959682ac9b')
