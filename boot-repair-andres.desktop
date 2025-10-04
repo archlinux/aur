@@ -1,7 +1,8 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=Boot Repair Andres
-Comment=Herramienta de rescate: Reparación de GRUB, pantalla, y diagnósticos.
-Exec=pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY boot-repair
+Comment=Swiss-army live rescue tool: GRUB repair, display reset, initramfs, kernel, system update, boot freedom, diagnostics.
+Exec=sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY boot-repair; echo -e '\n--- Press ENTER To EXIT---'; read"
 Icon=preferences-system
 Terminal=true
 Type=Application
