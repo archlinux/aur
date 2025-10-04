@@ -5,6 +5,7 @@ pkgbase = poptracker
 	url = https://github.com/black-sliver/PopTracker
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
