@@ -4,7 +4,7 @@ pkgbase=mkdocs-llmstxt
 pkgname=("${pkgbase}")
 _pyname=("${pkgbase//-/_}")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="MkDocs plugin to generate an /llms.txt file."
 arch=('any')
@@ -34,7 +34,7 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #        "${pkgver}-mkdocs.yml::https://github.com/oprypin/mkdocs-section-index/raw/v${pkgver}/example/mkdocs.yml"
 )
-sha256sums=('dd63acb8257fca3244058fd820acd4700c1626dbe48ad3a1a2cc9c599f8e4b7f')
+sha256sums=('a7e4d20496bc8c55b6773b55c8d69cf552448a9ad38915b6e8c657ae3a46c8b8')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
