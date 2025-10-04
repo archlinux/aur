@@ -1,0 +1,19 @@
+pkgbase = vali-git
+	pkgdesc = C library and code generator for Varlink
+	pkgver = v0.1.0.r0.g9a0c965
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/emersion/vali
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = json-c
+	depends = aml
+	provides = vali
+	provides = vali.so
+	conflicts = vali
+	source = git+https://gitlab.freedesktop.org/emersion/vali.git
+	sha1sums = SKIP
+
+pkgname = vali-git
