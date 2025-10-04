@@ -12,8 +12,8 @@ url="https://github.com/bootloopmaster636/kitshell"
 license=('GPL-3.0-or-later')
 
 depends=(glib2 libepoxy libxcb at-spi2-core pango cairo gtk-layer-shell dbus fontconfig gtk3 glibc gcc-libs)
-makedepends=(git tar fvm rustup)
-#optdepends=('kitshell-cmd-git: control Kitshell via command line')
+makedepends=(git tar fvm rustup cmake)
+optdepends=('kitshell-cmd-git: control Kitshell via command line')
 
 conflicts=('kitshell')
 
