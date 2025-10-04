@@ -4,11 +4,11 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r120402.g7c5319e692
+pkgver=8.1.r121328.ge05f8acabf
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
-url='https://www.ffmpeg.org/'
+url='https:/ffmpeg.org/'
 license=('GPL-3.0-or-later')
 depends=(
   alsa-lib
@@ -19,6 +19,7 @@ depends=(
   fontconfig
   freetype2
   fribidi
+  gcc-libs
   glib2
   glibc
   glslang
@@ -79,10 +80,9 @@ depends=(
   xz
   zeromq
   zimg
-  zlib
-)
+  zlib)
 makedepends=(
-  amf-headers-git
+  amf-headers
   avisynthplus
   clang
   ffnvcodec-headers
@@ -93,16 +93,14 @@ makedepends=(
   nasm
   opencl-headers
   vapoursynth
-  vulkan-headers
-)
+  vulkan-headers)
 optdepends=(
   'avisynthplus: for AviSynthPlus support'
   'frei0r-plugins: for Frei0r video effects support'
   'ladspa: for LADSPA filters'
   'nvidia-utils: for NVIDIA NVDEC/NVENC support'
   'vapoursynth: for VapourSynth demuxer support'
-  'vpl-runtime: for Intel Quick Sync Video'
-)
+  'vpl-runtime: for Intel Quick Sync Video')
 provides=(
   'ffmpeg'
   'libavcodec.so'
@@ -111,13 +109,12 @@ provides=(
   'libavformat.so'
   'libavutil.so'
   'libswresample.so'
-  'libswscale.so'
-)
+  'libswscale.so')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch')
 sha256sums=('SKIP'
-            '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1')
+            '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
