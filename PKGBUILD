@@ -6,7 +6,8 @@ pkgver=0.32.1
 pkgrel=1
 pkgdesc='universal, scriptable randomizer tracking solution that is open source, runs everywhere and supports auto-tracking.'
 arch=(x86_64)
-url="https://github.com/black-sliver/PopTracker"
+# keep pkgname in upstream URL all lowercase as otherwise build path will break
+url="https://github.com/black-sliver/poptracker"
 license=(GPL3)
 depends=(sdl2 sdl2_image sdl2_ttf openssl)
 makedepends=(git)
