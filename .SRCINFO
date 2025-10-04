@@ -1,6 +1,6 @@
 pkgbase = runc-git
 	pkgdesc = CLI tool for managing OCI compliant containers
-	pkgver = 1.3.0.rc.1.r17.g854fb524
+	pkgver = 1.4.0rc.1.r40.g80486a207
 	pkgrel = 1
 	url = https://runc.io/
 	arch = x86_64
