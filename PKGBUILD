@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frölich <hi@froelich.dev>
 pkgname=klog
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that allows you to tail logs of multiple Kubernetes pods simultaneously"
 arch=('x86_64')
 url="https://github.com/tobifroe/klog"
@@ -10,7 +10,6 @@ depends=('gcc-libs' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tobifroe/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')  # Replace with actual checksum
 
 prepare() {
   cd "${pkgname}-${pkgver}"
