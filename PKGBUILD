@@ -10,8 +10,9 @@ pkgdesc="Run commands with the same user and directory inside a docker container
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-license=('MIT')
+license=('GPL-3.0')
 
+depends=('bash')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
