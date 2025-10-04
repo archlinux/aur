@@ -2,7 +2,7 @@
 # Contributor: Mr.Smith1974
 
 _pkgname=flightgear
-_pkgver=2024.1.1
+_pkgver=2024.1.2
 _appimage="FlightGear-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.flightgear.FlightGear.desktop"
 
@@ -18,14 +18,14 @@ optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data: game data files')
 options=(!strip)
-source=("${_appimage}::https://gitlab.com/flightgear/fgmeta/-/jobs/9261456028/artifacts/raw/${_appimage}")
-sha256sums=('1e9eb4a6269e564a04471eacfc0be66079eab5f5bb325ff79d2a3b29dfeef621')
+source=("${_appimage}::https://gitlab.com/flightgear/fgmeta/-/package_files/229913488/download")
+sha256sums=('4c782779eeedd2d55f0fe79f9071d21dc3eb2705aaac9fd27365c65422973631')
 
 
 prepare() {
     chmod +x ${_appimage}
     ./${_appimage} --appimage-extract ${_desktopfile}
-    ./${_appimage} --appimage-extract ${_pkgname}.png
+    ./${_appimage} --appimage-extract usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
 }
 
 package() {
@@ -39,5 +39,6 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }

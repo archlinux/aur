@@ -1,6 +1,6 @@
 pkgbase = flightgear-appimage
 	pkgdesc = An open-source, multi-platform flight simulator. AppImage release.
-	pkgver = 2024.1.1
+	pkgver = 2024.1.2
 	pkgrel = 1
 	url = http://www.flightgear.org/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = flightgear-appimage
 	optdepends = qt5-declarative: fgfs --launcher
 	optdepends = flightgear-data: game data files
 	options = !strip
-	source = FlightGear-2024.1.1-x86_64.AppImage::https://gitlab.com/flightgear/fgmeta/-/jobs/9261456028/artifacts/raw/FlightGear-2024.1.1-x86_64.AppImage
-	sha256sums = 1e9eb4a6269e564a04471eacfc0be66079eab5f5bb325ff79d2a3b29dfeef621
+	source = FlightGear-2024.1.2-x86_64.AppImage::https://gitlab.com/flightgear/fgmeta/-/package_files/229913488/download
+	sha256sums = 4c782779eeedd2d55f0fe79f9071d21dc3eb2705aaac9fd27365c65422973631
 
 pkgname = flightgear-appimage
