@@ -1,0 +1,4 @@
+[eaglemode-bin]
+source = "regex"
+url = "https://eaglemode.sourceforge.net/"
+regex = "Latest version is:* <A HREF=\"ChangeLog.html\">([\\d\\.]*)</A>"
