@@ -1,0 +1,23 @@
+pkgbase = droid-bin
+	pkgdesc = Factory's development agent CLI
+	pkgver = 0.18.2
+	pkgrel = 1
+	url = https://factory.ai
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = curl
+	optdepends = xdg-utils: for proper functionality
+	provides = droid
+	conflicts = droid
+	options = !strip
+	source_x86_64 = droid::https://downloads.factory.ai/factory-cli/releases/0.18.2/linux/x64/droid
+	source_x86_64 = rg::https://downloads.factory.ai/ripgrep/linux/x64/rg
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = droid::https://downloads.factory.ai/factory-cli/releases/0.18.2/linux/arm64/droid
+	source_aarch64 = rg::https://downloads.factory.ai/ripgrep/linux/arm64/rg
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = droid-bin

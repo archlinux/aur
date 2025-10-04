@@ -1,0 +1,12 @@
+cat > REUSE.toml << 'EOF'
+version = 1
+SPDX-PackageName = "droid-bin"
+SPDX-PackageSupplier = "Daniel Bermúdez <archlinux.i5beg@dabg.uk>"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/packages/droid-bin"
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 Daniel Bermúdez <archlinux.i5beg@dabg.uk>"
+SPDX-License-Identifier = "0BSD"
+EOF
