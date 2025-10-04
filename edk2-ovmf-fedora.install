@@ -1,0 +1,53 @@
+post_install() {
+    # Create following directories, if they haven't existed yet 
+    mkdir -p /usr/share/edk2/ /usr/share/qemu/firmware/
+
+	# Create symbolic link for the firmware folder
+	# 
+	# NOTE:
+	# The official "edk2-ovmf" Arch package doesn't use "/usr/share/edk2/ovmf"
+	# - It has set dedicate folders for each architecture (ARM, x86_64, etc.)
+	ln -s "/usr/share/edk2-ovmf-fedora/edk2/ovmf" /usr/share/edk2/
+
+	# Create symbolic firmware JSON files
+	# 
+	# NOTE:
+	# The JSON files from the  official "edk2-ovmf" Arch package ARE NOT IN CONFLICT with Fedora's files
+	# - This means they are named distinctly
+	# - Which also means these files can co-exist in the same folder
+	ln -s /usr/share/edk2-ovmf-fedora/qemu/firmware/* /usr/share/qemu/firmware/
+}
+
+post_upgrade() {
+	# Create symbolic firmware JSON files
+	# - Just in case there are any new JSON files included (edge case)
+	#ln -s /usr/share/edk2-ovmf-fedora/qemu/firmware/* /usr/share/qemu/firmware/
+
+    # Solution generated from ChatGPT
+    for json_file in /usr/share/edk2-ovmf-fedora/qemu/firmware/*; do
+        filename=$(basename "$json_file")
+        dest_file="/usr/share/qemu/firmware/$filename"
+
+        if [ ! -e "$dest_file" ]; then
+            ln -s "$json_file" "$dest_file"
+        fi
+    done   
+}
+
+post_remove() {
+    # remove symbolic link to the firmware folder
+    rm /usr/share/edk2/ovmf    
+
+    # Remove symbolic links for JSON files in /usr/share/qemu/firmware/
+    # Ensure that we only remove the symbolic links pointing to edk2-ovmf-fedora
+    #
+    # NOTE:
+    # The following snippet comes from ChatGPT
+    # - Although AI-generated, it works remarkably well
+    for link in /usr/share/qemu/firmware/*; do
+        # Check if it's a symlink pointing to "edk2-ovmf-fedora"
+        if [ -L "$link" ] && [[ $(readlink "$link") == /usr/share/edk2-ovmf-fedora/* ]]; then
+            rm -f "$link"
+        fi
+    done    
+}

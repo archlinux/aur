@@ -1,0 +1,13 @@
+pkgbase = edk2-ovmf-fedora
+	pkgdesc = UEFI firmware for x86_64 virtual machines from Fedora 42 — pre-configured with Secure Boot
+	pkgver = 20250523
+	pkgrel = 1
+	url = https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/
+	install = edk2-ovmf-fedora.install
+	arch = any
+	license = BSD
+	conflicts = edk2-ovmf-fedora-bin
+	source = https://kojipkgs.fedoraproject.org/packages/edk2/20250523/16.fc42/noarch/edk2-ovmf-20250523-16.fc42.noarch.rpm
+	sha256sums = ac376298edc126b6fcfac4736d537480b2c132ceec26b9c811bd8edd61ca0460
+
+pkgname = edk2-ovmf-fedora
