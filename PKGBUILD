@@ -3,11 +3,13 @@
 # Contributor: Frederik Olesen
 # Contributor: Andrew Shark
 
-pkgname=pycharm-professional
-pkgver=2025.2.2
+pkgname=pycharm
+pkgver=2025.2.3
 pkgrel=1
 provides=("pycharm")
-pkgdesc="Python IDE for Professional Developers. Professional Edition"
+replaces=("pycharm-professional")
+conflicts=('pycharm-professional' 'pycharm-community-edition')
+pkgdesc="The only Python IDE you need. Bundled with the official JetBrains Runtime (JBR)"
 arch=('x86_64' 'x86_64_v3' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
 license=('custom')
@@ -25,15 +27,15 @@ depends=(
     ttf-font
     fontconfig
 )
-source=("pycharm-professional.desktop" "ltedit-professional.desktop")
+source=("pycharm.desktop" "ltedit.desktop")
 source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz")
 source_x86_64_v3=($source_x86_64)
 source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
-sha256sums=('6ff245b42b475a5b97c359d97bc48d573c2988170fc195073c9187d5abe1c576'
-            '21e9d192712fb537d9e5abccc54970becb347b32ad2be469a35b2585f45a9116')
-sha256sums_x86_64=('6ffd11bc2ab84f57e90683ce5a9c73ff6ec47e5746e7e4d7ce5f2dc335af6481')
-sha256sums_x86_64_v3=('6ffd11bc2ab84f57e90683ce5a9c73ff6ec47e5746e7e4d7ce5f2dc335af6481')
-sha256sums_aarch64=('feb9b98c64739d39ecc9a8a67aeab1249448026f2f21f7d147953c66a99f5fe2')
+sha256sums=('9fd489cc6c91f69d3e4678716910bceab95114028976051ec191d1671e300f59'
+            '944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101')
+sha256sums_x86_64=('58f6165ea8ace65e708c607bec49d20d46b8d5908045ae31703353a184e59a05')
+sha256sums_x86_64_v3=('58f6165ea8ace65e708c607bec49d20d46b8d5908045ae31703353a184e59a05')
+sha256sums_aarch64=('41bcc2549f3f60d35d1d3bd0e16edd5b3614f23df499b30cd649bb4ba6148314')
 makedepends=('python-setuptools' 'cython')
 optdepends=(
     'ipython: For enhanced interactive Python shell inside Pycharm'
@@ -83,16 +85,17 @@ package() {
     mv "pycharm-${pkgver}/"* "${pkgdir}/opt/${pkgname}/"
     install -dm 755 "${pkgdir}/usr/share/applications"
     install -Dm 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    install -Dm 644 "ltedit-professional.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm 644 "ltedit.desktop" "${pkgdir}/usr/share/applications/"
     install -dm 755 "${pkgdir}/usr/share/icons/hicolor/"{128x128,scalable}"/apps/"
-    install -Dm 644 "${pkgdir}/opt/${pkgname}/bin/pycharm.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/pycharm-professional.png"
-    install -Dm 644 "${pkgdir}/opt/${pkgname}/bin/pycharm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pycharm-professional.svg"
+    install -Dm 644 "${pkgdir}/opt/${pkgname}/bin/pycharm.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/pycharm.png"
+    install -Dm 644 "${pkgdir}/opt/${pkgname}/bin/pycharm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pycharm.svg"
 
     # fix the path of the binary in Pycharm Light Edit launcher
     sed -i "s/pycharm.sh/pycharm/g" "${pkgdir}/opt/${pkgname}/bin/ltedit.sh"
 
     # exec
     install -dm 755 "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/bin/pycharm" "${pkgdir}/usr/bin/pycharm-professional"
-    ln -s "/opt/${pkgname}/bin/ltedit.sh" "${pkgdir}/usr/bin/ltedit-professional"
+    ln -s "/opt/${pkgname}/bin/pycharm" "${pkgdir}/usr/bin/pycharm"
+    ln -s "/opt/${pkgname}/bin/ltedit.sh" "${pkgdir}/usr/bin/ltedit"
 }
+

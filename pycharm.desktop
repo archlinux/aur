@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PyCharm
+Icon=pycharm
+Comment=The only Python IDE you need.
+Exec=/usr/bin/pycharm %f
+Terminal=false
+Categories=Development;IDE;Python;
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm
