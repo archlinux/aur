@@ -19,5 +19,5 @@ build() {
 }
 
 package() {
-    install -Dm755 "iopipe/iopipe/bin/Release/net9.0/linux-x64/publish/iopipe" "$pkgdir/usr/bin/iopipe"
+    install -Dm755 "iopipe/iopipe/bin/Release/net6.0/linux-x64/publish/iopipe" "$pkgdir/usr/bin/iopipe"
 }
