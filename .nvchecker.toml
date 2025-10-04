@@ -1,0 +1,7 @@
+[reshell-bin]
+source = "github"
+github = "ClementNerma/ReShell"
+use_latest_release = true
+from_pattern = "-"
+to_pattern = "_"
+prefix = "v"
