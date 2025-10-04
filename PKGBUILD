@@ -12,19 +12,18 @@ license=('GPL-3.0-only')
 depends=(
   r-broom
   r-cli
-  r-dplyr
+  "r-dplyr>=0.7.0"
   r-generics
-  r-ggplot2
-  r-glue
+  "r-ggplot2>=3.5.2"
+  "r-glue>=1.3.0"
   r-lifecycle
   r-magrittr
-  r-methods
   r-patchwork
   r-purrr
-  r-rlang
+  "r-rlang>0.2.0"
   r-tibble
   r-tidyr
-  r-vctrs
+  "r-vctrs>=0.6.5"
 )
 checkdepends=(
   r-testthat
