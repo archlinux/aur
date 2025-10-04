@@ -10,7 +10,7 @@ pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('GPL-3.0-or-later')
 
 conflicts=("${_pkgname}")
