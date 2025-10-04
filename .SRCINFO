@@ -1,6 +1,6 @@
 pkgbase = python-transformers
 	pkgdesc = State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow
-	pkgver = 4.56.2
+	pkgver = 4.57.0
 	pkgrel = 1
 	url = https://github.com/huggingface/transformers
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-transformers
 	optdepends = python-tf-keras: Support for models in Keras 2 (e.g. BART)
 	optdepends = python-tf2onnx: TensorFlow support
 	optdepends = python-hf-xet: xethub support
-	source = python-transformers-4.56.2.tar.gz::https://github.com/huggingface/transformers/archive/refs/tags/v4.56.2.tar.gz
-	sha256sums = 28ecaa54619a297f71087cb2ef0c1e5a2bbbd48b4866d11422a9d0a209da462c
+	source = python-transformers-4.57.0.tar.gz::https://github.com/huggingface/transformers/archive/refs/tags/v4.57.0.tar.gz
+	sha256sums = dde88af22364bed0b424ff772bd4eab7975f11936a58123b0492c572a50e4a66
 
 pkgname = python-transformers
