@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Deezer
+Comment=Deezer audio streaming service
+Exec=deezer-desktop %U
+TryExec=deezer-desktop
+Icon=deezer-desktop
+Terminal=false
+Categories=AudioVideo;Player;Music;
+Keywords=Music;Player;Streaming;Online;
+MimeType=x-scheme-handler/deezer;
+StartupNotify=true
+StartupWMClass=Deezer
+X-GNOME-UsesNotifications=true

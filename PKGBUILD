@@ -1,18 +1,18 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.0.160
+pkgver=7.0.170
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2025 Deezer S.A."')
-depends=('electron37' 'hicolor-icon-theme')
+depends=('electron38' 'hicolor-icon-theme')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier>=3.0.0' 'imagemagick' 'npm')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact-win32-x86-$pkgver"
-    "$pkgname.desktop"
-    deezer
+    "$pkgname-desktop.desktop"
+    "deezer-desktop"
     "01-start-hidden-in-tray.patch"
     "02-avoid-change-default-texthtml-mime-type.patch"
     "03-quit.patch"
@@ -27,9 +27,9 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     "13-disable-notifications.patch"
     "14-thumbar-actions.patch"
     "15-systray-icon.patch")
-sha256sums=('b0dd54c74edea2e6242c37252b8071f16495b9a7222495aad70edd0c4b255a4c'
-            'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
-            'b1cc3320f0892478a305dd10cd9d6f079d8708f35fb679b34588e359584102a3'
+sha256sums=('0e0da384b55e6c2c2aefc239f404f089d9e85796b4240488cf6bb780e2a88e8f'
+            '41a32f7e595a52c260aa872e8273430d83e4c5fcc8e529e21afa4dab3d6b1d9c'
+            '14b4b2b553b66e2cf0e45bc7274679dd06bdb891f04f2aa3be7afa96eb84101e'
             '87aba4442321bb80da0847ab555cecf0f421ab3fccc42306f094070021819a7f'
             'b8d18bd684cf608d81668aaa5350e7dfd15ef397d63cf1eef4b0a53208345849'
             '876bed64728d655224b8d226d110d63e40da0d98c2b851a1897560c7b56e943a'
@@ -90,10 +90,11 @@ package() {
         install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
         magick resources/win/deezer-8.png -resize "${size}x${size}" -strip \
             -define png:compression-filter=5 -define png:compression-level=9 \
-            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/deezer.png"
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/deezer-desktop.png"
     done
 
     install -Dm644 resources/app.asar "$pkgdir/usr/share/deezer/"
-    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/"
-    install -Dm755 deezer "$pkgdir/usr/bin/"
+    install -Dm644 "$pkgname-desktop.desktop" "$pkgdir/usr/share/applications/"
+    install -Dm755 deezer-desktop "$pkgdir/usr/bin/"
+    ln -s /usr/bin/deezer-desktop "$pkgdir/usr/bin/deezer"
 }
