@@ -96,5 +96,4 @@ package() {
     install -Dm644 resources/app.asar "$pkgdir/usr/share/deezer/"
     install -Dm644 "$pkgname-desktop.desktop" "$pkgdir/usr/share/applications/"
     install -Dm755 deezer-desktop "$pkgdir/usr/bin/"
-    ln -s /usr/bin/deezer-desktop "$pkgdir/usr/bin/deezer"
 }
