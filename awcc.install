@@ -1,0 +1,44 @@
+post_install() {
+    echo "==> Setting up awcc daemon service..."
+
+    systemctl daemon-reload
+    systemctl enable --now awccd.service
+
+    echo "==> Setting up udev rules..."
+
+    udevadm control --reload-rules
+    udevadm trigger
+    echo "==> Please reboot to take effect"
+}
+
+post_upgrade() {
+    echo "==> Reloading awcc daemon service..."
+    systemctl daemon-reload
+
+    if systemctl is-active --quiet awccd.service; then
+        systemctl restart awccd.service
+        echo "==> Service restarted"
+    fi
+
+    udevadm control --reload-rules
+    udevadm trigger
+}
+
+pre_remove() {
+    echo "==> Stopping and disabling awcc daemon service..."
+    systemctl stop awccd.service 2>/dev/null || true
+    systemctl disable awccd.service 2>/dev/null || true
+}
+
+post_remove() {
+    echo "==> Cleaning up awcc service files..."
+    rm -f /etc/systemd/system/awccd.service
+    systemctl daemon-reload
+
+    echo "==> Cleaning up udev rules..."
+    rm -f /etc/udev/rules.d/70-awcc.rules
+    udevadm control --reload-rules
+    udevadm trigger
+
+    echo "==> awcc completely removed"
+}
