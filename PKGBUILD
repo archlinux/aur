@@ -2,7 +2,7 @@
 
 pkgname=mcscanx
 _pkgname=MCScanX
-pkgver=2024.12.20
+pkgver=2025.10.04
 pkgrel=1
 pkgdesc="Multiple Collinearity Scan toolkit X version https://doi.org/10.1093/nar/gkr1293"
 arch=('x86_64')
