@@ -10,6 +10,7 @@ license=('GPL-3.0-only')
 depends=(
     'qt6-base'
     'qt6-svg'
+    'qcoro'
     'alsa-lib'
     'taglib'
     'ffmpeg'

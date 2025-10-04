@@ -18,6 +18,7 @@ pkgbase = fooyin-git
 	makedepends = libebur128
 	depends = qt6-base
 	depends = qt6-svg
+	depends = qcoro
 	depends = alsa-lib
 	depends = taglib
 	depends = ffmpeg
