@@ -1,16 +1,30 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.168
-pkgrel=2
+pkgver=4.4.169
+pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
 license=('GPL-3.0-only')
-depends=('mpv' 'nodejs' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-webengine'
-         'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-translations' 'qt5-webchannel'
-         'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'librsvg')
+depends=(
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
+    'mpv'
+    'nodejs'
+    'openssl'
+    'qt5-base'
+    'qt5-declarative'
+    'qt5-webengine'
+    'qt5-quickcontrols'
+    'qt5-quickcontrols2'
+    'qt5-translations'
+    'qt5-webchannel')
+makedepends=(
+    'cmake'
+    'git'
+    'librsvg')
 source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"
         'git+https://github.com/Ivshti/libmpv.git'
         'git+https://github.com/itay-grudev/SingleApplication.git'
@@ -18,12 +32,12 @@ source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"
         "stremio-${pkgver}-server.js"::"https://dl.strem.io/four/v${pkgver}/server.js"
         "stremio-${pkgver}-stremio.asar"::"https://dl.strem.io/four/v${pkgver}/stremio.asar"
         '010-stremio-do-not-download-server-js.patch')
-sha256sums=('30b65909f100ed31b406280077b54fed9a50602dec28c540c6c0dc0c02b5597e'
+sha256sums=('de7209be7fc86e998264d9c2bd4fa65d5c9a737cb1da9c91de4bf654ea1fb85d'
             'SKIP'
             'SKIP'
             'SKIP'
-            '683de7890a60ab512264b69c9c41609aa515f9b738aef18df4803ef53e17175d'
-            'de34860e99a78f37e8c5568e56e605bc04e1853d48d2102421fcf2331a42d207'
+            'e502ae545fc74bf6c49dda910842aaf229b2a1e314924481ec06bf911d459753'
+            'fb0e8d2c95f021e3504643cd63be6125a63c2d5910aa564e04e9324623a263ce'
             'b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a')
 
 prepare() {
