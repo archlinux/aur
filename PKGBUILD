@@ -1,5 +1,6 @@
 # SPDX-FileCopyrightText: Arch Linux contributors
 # SPDX-License-Identifier: 0BSD
+# shellcheck disable=SC2148,SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 _pkgname=obs-captions-plugin
 _gitname=OBS-captions-plugin
@@ -18,6 +19,6 @@ b2sums=('ba7f8bd8ee8c84d94d88da038e4cad174e8b45454c4164fd5bf0637ebecc4f80472d4e7
 
 package() {
     cd "${_zipfile%.*}"
-    install -Dm644 -t $pkgdir/usr/lib/obs-plugins/ libobs_google_caption_plugin/bin/64bit/libobs_google_caption_plugin.so
-    install -Dm644 -t $pkgdir/usr/share/doc/$_pkgname/ Readme.md
+    install -Dm644 -t "${pkgdir}"/usr/lib/obs-plugins/ libobs_google_caption_plugin/bin/64bit/libobs_google_caption_plugin.so
+    install -Dm644 -t "${pkgdir}"/usr/share/doc/"${_pkgname}"/ Readme.md
 }
