@@ -1,0 +1,18 @@
+pkgbase = klog-rs
+	pkgdesc = A tool that allows you to tail logs of multiple Kubernetes pods simultaneously
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/tobifroe/klog
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = klog-rs-0.6.0.tar.gz::https://github.com/tobifroe/klog-rs/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = klog-rs
