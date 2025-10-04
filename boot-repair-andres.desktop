@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Boot Repair Andres
+Comment=Swiss-army live rescue tool
+Exec=boot-repair
+Icon=preferences-system
+Terminal=true
+Type=Application
+Categories=System;Utility;
+Keywords=boot;repair;grub;system;
