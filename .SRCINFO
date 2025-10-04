@@ -15,7 +15,7 @@ pkgbase = meowrch-settings
 	optdepends = amd-ucode: for AMD CPU microcode
 	optdepends = intel-ucode: for Intel CPU microcode
 	optdepends = hdparm: for HDD performance optimizations
-	source = https://github.com/meowrch/meowrch/archive/refs/heads/v3.0.tar.gz
-	sha256sums = a6dc3f72c00c8f1357eb3588f2723e12b473f1aa51c5a6466311d4ee39932fdb
+	source = meowrch-settings-2.0.0-5.tar.gz::https://github.com/meowrch/meowrch/archive/refs/heads/v3.0.tar.gz
+	sha256sums = c8dfb4eb41552374bf72c89eac1ae2e9d5dfd5bc4e767c0ae35d3d97fab809fb
 
 pkgname = meowrch-settings
