@@ -4,14 +4,14 @@ pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 
 url="https://github.com/wojtmic/prefixer"
 license=('GPL3')
 
-depends=('python>3.13')
+depends=('python>3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-click')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wojtmic/prefixer/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
