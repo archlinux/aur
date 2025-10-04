@@ -1,25 +1,22 @@
 pkgbase = openvpn-auth-oauth2
-	pkgdesc = A plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows
-	pkgver = 1.22.7
+	pkgdesc = A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/jkroepke/openvpn-auth-oauth2
 	arch = x86_64
-	arch = i686
 	arch = aarch64
-	license = MIT
+	license = MTI
 	makedepends = go
-	depends = openvpn
-	source = https://github.com/jkroepke/openvpn-auth-oauth2/archive/refs/tags/v1.22.7.tar.gz
-	source = config.yaml
+	depends = openvpn>=2.6.2
+	backup = etc/conf.d/openvpn-auth-oauth2
+	backup = etc/openvpn-auth-oauth2/config.yaml
+	source = https://github.com/jkroepke/openvpn-auth-oauth2/archive/refs/tags/v1.24.0.tar.gz
+	source = openvpn-auth-oauth2
 	source = openvpn-auth-oauth2.service
-	source = openvpn-auth-oauth2.env
-	source = openvpn-auth-oauth2.conf
-	source = package.patch
-	sha256sums = d14af4d68bbebe41611efe47127c1d44a61b51498c0cdec662cc35bf97c38ee9
-	sha256sums = 3e8906b94c9586a55670dec373ed72fba405cbde0296db0a95aa2fa5728f4724
-	sha256sums = 9ecd0f74d0292120937d39411a3a829ec7983f7c96022f971b5e173affbd666c
+	source = openvpn-auth-oauth2.sysusers
+	sha256sums = 60bc503a24ddfde8f9dddbca8c59004ba7d29a9983dad1e27436d74357ee6d4b
 	sha256sums = de967f8fd8bacc904e5de610ebd1c5c54420634e3c52c500ef27c51bd605d41c
-	sha256sums = ebb2844776c99523342f1e5fb1de707e8e6b104b474e26574dd2d8944af8af78
-	sha256sums = 4a181a11b13732118d59319eac3a8e922b5f967d6ed7df677abcaf544e5e3791
+	sha256sums = 9ecd0f74d0292120937d39411a3a829ec7983f7c96022f971b5e173affbd666c
+	sha256sums = 621ee9716135685cfee32fc5f643f64cc83efdfbfdd7aac3466eb479fd36021e
 
 pkgname = openvpn-auth-oauth2
