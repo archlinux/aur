@@ -9,6 +9,7 @@ depends=('libappindicator-gtk3' 'gtk3' 'notification-daemon' 'llvm' 'clang' 'fae
 makedepends=('git' 'rust')
 source=("${pkgname}::git+https://github.com/jonhoo/buzz")
 md5sums=('SKIP')
+options=('!lto') #Linking fails otherwise due to assembly from ring crate, apparently
 
 pkgver() {
   cd "$pkgname"
