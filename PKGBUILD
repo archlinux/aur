@@ -2,7 +2,7 @@
 
 pkgname=python-nihtest
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A testing tool for command line utilities'
 arch=('any')
 url='https://github.com/nih-at/nihtest/'
@@ -25,6 +25,9 @@ build() {
 
 package() {
     python -m installer --destdir="$pkgdir" "nihtest-${pkgver}/dist"/*.whl
+    install -D -m644 "nihtest-${pkgver}/manpages/nihtest.man" "${pkgdir}/usr/share/man/man1/nihtest.1"
+    install -D -m644 "nihtest-${pkgver}/manpages/nihtest.conf.man" "${pkgdir}/usr/share/man/man5/nihtest.conf.5"
+    install -D -m644 "nihtest-${pkgver}/manpages/nihtest-case.man" "${pkgdir}/usr/share/man/man5/nihtest-case.5"
     
     local _sitepkgs
     _sitepkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"

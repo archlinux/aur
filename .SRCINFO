@@ -1,7 +1,7 @@
 pkgbase = python-nihtest
 	pkgdesc = A testing tool for command line utilities
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nih-at/nihtest/
 	arch = any
 	license = BSD-3-Clause
