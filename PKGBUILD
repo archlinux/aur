@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 
 depends=(glib2 libepoxy libxcb at-spi2-core pango cairo gtk-layer-shell dbus fontconfig gtk3 glibc gcc-libs)
 makedepends=(git tar fvm rustup)
-optdepends=('kitshell-ipc-git: control Kitshell via command line')
+#optdepends=('kitshell-cmd-git: control Kitshell via command line')
 
 conflicts=('kitshell')
 
@@ -70,6 +70,9 @@ package() {
 	# Symlink
 	install -dm755 "${pkgdir}/usr/bin"
   	ln -sfr "$pkgdir/$_install_path/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${_pkgname}"
+
+	# License
+  	install -Dm644 "$srcdir/$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
 	# Set permissions
 	chmod -R u+rwX,go+rX,go-w "$pkgdir/"
