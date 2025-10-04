@@ -1,5 +1,4 @@
 diff --git b/FreeFileSync/Source/ui/gui_status_handler.cpp a/FreeFileSync/Source/ui/gui_status_handler.cpp
-index ab6271e..a81e008 100644
 --- b/FreeFileSync/Source/ui/gui_status_handler.cpp
 +++ a/FreeFileSync/Source/ui/gui_status_handler.cpp
 @@ -70,27 +70,35 @@ void StatusHandlerTemporaryPanel::showStatsPanel()
@@ -66,15 +65,25 @@ index ab6271e..a81e008 100644
  }
 --- a/wx+/darkmode.h
 +++ b/wx+/darkmode.h
-@@ -9,6 +9,7 @@
+@@ -9,14 +9,16 @@
  
  #include <zen/file_error.h>
  #include <wx/app.h>
 +#include <wx/settings.h>
  
  
++enum class Appearance{System,Light,Dark};
  namespace zen
-@@ -25,4 +27,28 @@ bool equalAppearance(ColorTheme colTheme
+ {
+ bool darkModeAvailable();
+ 
+ //support not only "dark mode" but dark themes in general
+-using ColorTheme = wxApp::Appearance; //why reinvent the wheel?
++using ColorTheme = Appearance; //why reinvent the wheel?
+ 
+ void colorThemeInit(wxApp& app, ColorTheme colTheme); //throw FileError
+ void colorThemeCleanup();
+@@ -25,4 +27,28 @@ bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
  void changeColorTheme(ColorTheme colTheme); //throw FileError
  }
  
@@ -103,3 +112,40 @@ index ab6271e..a81e008 100644
 +};
 +
  #endif //DARKMODE_H_754298057018
+--- a/FreeFilesync/Source/ui/main_dlg.cpp
++++ b/FreeFileSync/Source/ui/main_dlg.cpp
+@@ -1279,11 +1279,11 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
+ 
+     //--------------------------------------------------------------------------------
+     m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
+-
++    wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
+     //work around wxAuiManager::LoadPerspective overwriting pane captions with old values (might be different language!)
+     std::vector<std::pair<wxAuiPaneInfo*, wxString>> paneCaptions;
+-    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
+-        paneCaptions.emplace_back(&paneInfo, paneInfo.caption);
++    for (size_t i = 0; i < paneArray.size(); ++i)
++        paneCaptions.emplace_back(&paneArray[i], paneArray[i].caption);
+ 
+     //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
+     std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
+@@ -3147,8 +3147,8 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+     //----------------------------------------------------------------------------------------
+ 
+     bool addedSeparator = false;
+-
+-    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
++    const wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
++    for (size_t i = 0; i < paneArray.size(); ++i){ wxAuiPaneInfo& paneInfo = paneArray[i];
+         if (!paneInfo.IsShown() &&
+             paneInfo.window != compareStatus_->getAsWindow() &&
+             paneInfo.window != m_panelLog                    &&
+@@ -3166,7 +3166,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+                 this->auiMgr_.Update();
+             });
+         }
+-
++    }
+     menu.popup(*this);
+ }
+ 
