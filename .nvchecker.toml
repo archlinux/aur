@@ -1,0 +1,3 @@
+[python-invocation-tree]
+source = "pypi"
+pypi = "invocation-tree"
