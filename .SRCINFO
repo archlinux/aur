@@ -1,6 +1,6 @@
 pkgbase = rootvim
 	pkgdesc = Custom Neovim configuration by realSUDO with isolated profile
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/realSUDO/rootVim
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = rootvim
 	optdepends = stylua: Lua code formatting
 	source = https://github.com/realSUDO/rootVim/archive/refs/heads/main.zip
 	source = install-noninteractive.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 4ae668099d8a2247e33ce2328a237e0d2c338a26c58fd5d12f4542a75557bea7
+	sha256sums = c97fc0a5efcfad513d72131067e5ddbf2799d6ad8e9f684abd6e4b1ea65bbc45
 
 pkgname = rootvim

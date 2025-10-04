@@ -1,6 +1,6 @@
 # Maintainer: SUDO <justmultiplythinks@gmail.com>
 pkgname=rootvim
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Custom Neovim configuration by realSUDO with isolated profile"
 arch=('any')
@@ -15,7 +15,8 @@ optdepends=('stylua: Lua code formatting')
 # Source: your main repo zip + non-interactive install script
 source=("https://github.com/realSUDO/rootVim/archive/refs/heads/main.zip"
         "install-noninteractive.sh")
-sha256sums=('SKIP' 'SKIP')  # Replace with actual sha256sum if desired
+sha256sums=('4ae668099d8a2247e33ce2328a237e0d2c338a26c58fd5d12f4542a75557bea7'
+            'c97fc0a5efcfad513d72131067e5ddbf2799d6ad8e9f684abd6e4b1ea65bbc45')
 
 package() {
     # Install configuration files using the non-interactive script
