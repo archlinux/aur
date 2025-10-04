@@ -1,6 +1,6 @@
 pkgbase = radarr-nightly-bin
 	pkgdesc = Movie organizer/manager for usenet and torrent users (nightly builds)
-	pkgver = 6.0.2.10261
+	pkgver = 6.0.2.10271
 	pkgrel = 1
 	url = https://radarr.video
 	install = radarr.install
@@ -40,11 +40,11 @@ pkgbase = radarr-nightly-bin
 	sha256sums = 25637c6496aa59673aada6acc6cf41025a5f12a844025ee41d8a6cc66b84b5c0
 	sha256sums = bb73e0c55711d7ddbf74140b3beb39cb8674ae92be8387c3dd8109bcd53faca8
 	sha256sums = c68efcb3778cb497d7c256dc97df7413ce09f07ea341e4d2683e7fee321cbcbb
-	source_x86_64 = Radarr.nightly.6.0.2.10261.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=6.0.2.10261&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = d7b18c9067599caad5a1434ea7cc1e35d53148f86bab6f0e31e965d70e11a4e1
-	source_aarch64 = Radarr.nightly.6.0.2.10261.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=6.0.2.10261&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = e1be9d4589155d88cd2c9f11133404224a7841ef25e8c5ada55c9503f1e6e113
-	source_armv7h = Radarr.nightly.6.0.2.10261.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=6.0.2.10261&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = b33d074b07b20d15c405d42b0c66629dd2a5ddce60828d12bd6a28e1c630d4b3
+	source_x86_64 = Radarr.nightly.6.0.2.10271.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=6.0.2.10271&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 23a6dd44ae06adb12cfc945637921414be4d856cd24a020fbfac84846b75a395
+	source_aarch64 = Radarr.nightly.6.0.2.10271.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=6.0.2.10271&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = d37ef0c32f7e7378c38465727d659498f529bc4d3f674dbf7031b30b70b5a353
+	source_armv7h = Radarr.nightly.6.0.2.10271.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/nightly/updatefile?version=6.0.2.10271&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = a0890da9bff86a63179ea11afae9536e238d855c2416a822486fbd23ea638af9
 
 pkgname = radarr-nightly-bin
