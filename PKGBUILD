@@ -12,7 +12,7 @@ provides=("awcc")
 conflicts=('awcc-git')
 install='awcc.install'
 source=("AWCC-v${pkgver}.tar.gz::https://github.com/tr1xem/AWCC/releases/download/v${pkgver}/AWCC-v${pkgver}.tar.gz")
-sha256sums=('8f3bdd9ae35c756a7c521dc28e27e582553352663c101777a2bd2f408fc07859')
+sha256sums=('5023ec8990c935dfde0a277e6f6c50b997a41bc22c965ef1e0029c144252a4ce')
 
 package() {
     cd "$srcdir/"
