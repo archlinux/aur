@@ -8,7 +8,7 @@ _desktopfile="org.flightgear.FlightGear.desktop"
 
 pkgname=flightgear-appimage
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, multi-platform flight simulator. AppImage release."
 arch=(x86_64)
 license=('GPL')
@@ -38,7 +38,7 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/${_desktopfile}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/pixmaps"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }
