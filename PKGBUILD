@@ -2,12 +2,13 @@
 
 pkgname=python-blacksheep
 _name=${pkgname#python-}
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 epoch=
 pkgdesc="Fast web framework for Python asyncio"
 arch=($CARCH)
-url="https://pypi.org/project/${_name}"
+# url="https://pypi.org/project/${_name}"
+url="https://github.com/Neoteroi/BlackSheep"
 license=(MIT)
 groups=()
 provides=(${_name} ${pkgname})
@@ -30,6 +31,7 @@ depends=(
     python-rodi
 )
 makedepends=(
+    git
     cython
     flake8
     mypy
@@ -48,12 +50,17 @@ checkdepends=(
 )
 optdepends=()
 options=()
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+# source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('14d6b73de1f15be8752ea38d2e43aef77396081ed97010d9e1ae44b5a106171d')
+sha256sums=('bf8f392e6f900070088f18a0d5ad688dd7f11e1f4dde83aae7a26cace7afdd6e')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
 
     cython blacksheep/url.pyx
     cython blacksheep/exceptions.pyx
@@ -73,7 +80,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }

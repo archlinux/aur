@@ -1,13 +1,14 @@
 pkgbase = python-blacksheep
 	pkgdesc = Fast web framework for Python asyncio
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
-	url = https://pypi.org/project/blacksheep
+	url = https://github.com/Neoteroi/BlackSheep
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-cov
+	makedepends = git
 	makedepends = cython
 	makedepends = flake8
 	makedepends = mypy
@@ -35,7 +36,7 @@ pkgbase = python-blacksheep
 	provides = python-blacksheep
 	conflicts = blacksheep
 	conflicts = python-blacksheep
-	source = blacksheep-2.4.1.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep/blacksheep-2.4.1.tar.gz
-	sha256sums = 14d6b73de1f15be8752ea38d2e43aef77396081ed97010d9e1ae44b5a106171d
+	source = blacksheep::git+https://github.com/Neoteroi/BlackSheep.git#tag=v2.4.2
+	sha256sums = bf8f392e6f900070088f18a0d5ad688dd7f11e1f4dde83aae7a26cace7afdd6e
 
 pkgname = python-blacksheep
