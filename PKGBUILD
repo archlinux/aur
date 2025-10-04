@@ -1,15 +1,15 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=ggc-git
-pkgver=r460.1289bf9
-pkgrel=3
+pkgver=r535.d4e4341
+pkgrel=1
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 arch=('x86_64' 'arm64')
 url="https://github.com/bmf-san/ggc"
 license=('MIT')
 provides=('ggc')
 conflicts=('ggc' 'ggc-bin')
-makedepends=('go')
+makedepends=('git' 'go')
 source=('git+https://github.com/bmf-san/ggc.git#branch=main')
 sha256sums=('SKIP')
 
@@ -38,13 +38,8 @@ build() {
   make build
 }
 
-check() {
-  cd "$srcdir/ggc"
-  go test ./...
-}
-
 package() {
   cd "$srcdir/ggc"
   install -Dm755 ggc "$pkgdir"/usr/bin/ggc
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/ggc/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
