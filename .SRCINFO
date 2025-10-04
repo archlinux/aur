@@ -1,0 +1,18 @@
+pkgbase = subword-nmt
+	pkgdesc = Unsupervised Word Segmentation for Neural Machine Translation and Text Generation
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/rsennrich/subword-nmt
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	depends = python
+	depends = python-tqdm
+	source = subword-nmt-0.3.8.tar.gz::https://github.com/rsennrich/subword-nmt/archive/refs/tags/v0.3.8.tar.gz
+	b2sums = 1cec159a11e9b1aac0332663d175be57729b555169ee156583cf0d13e5a6e9b66188964faf25e5bd7aab6d3ff951d3d756ae4b62aa62acc68a7fe34156df0bed
+
+pkgname = subword-nmt

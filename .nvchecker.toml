@@ -1,0 +1,4 @@
+[subword-nmt]
+source = "git"
+git = "https://github.com/rsennrich/subword-nmt.git"
+prefix = "v"
