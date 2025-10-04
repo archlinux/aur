@@ -1,6 +1,5 @@
 *
+!.nvchecker.toml
 !.gitignore
-!Makefile
 !PKGBUILD
 !.SRCINFO
-!changelog.md
