@@ -1,6 +1,6 @@
 pkgbase = steam-hide-whats-new
 	pkgdesc = A Bash script for hiding the "What's New" section in Steam
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://sr.ht/~fijarom/steam-hide-whats-new/
 	arch = x86_64
