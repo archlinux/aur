@@ -1,8 +1,8 @@
 # Maintainer: Trix <admin@trix.is-a.dev>
 # Contributor:  GasparVardanyan <gaspar_pm@proton.me>
 pkgname='awcc-bin'
-pkgrel=1
-pkgver=1.2.2
+pkgrel=2
+pkgver=1.3.0
 pkgdesc="An unofficial alternative to Alienware Command Centre of Windows for the Dell G series"
 arch=('x86_64')
 url="https://github.com/tr1xem/AWCC"
