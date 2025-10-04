@@ -1,7 +1,7 @@
 # Maintainer: Borhaneddine GUEMIDI <guemidiborhane@gmail.com>
 pkgname=youtube-dl-gui
 _pkgname=youtube-dl-gui
-pkgver=2.5.4
+pkgver=2.5.6
 pkgrel=1
 pkgdesc='A cross-platform GUI for youtube-dl made in Electron and node.js'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'nodejs' 'npm')
 url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
 options=('!strip')
 source=("https://github.com/StefanLobbenmeier/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('c05df069fd00be8d1a07c79ca8c111c8')
+md5sums=('81482a3bc653e85398463bf3c075199d')
 installpath=('/opt/youtube-dl-gui')
 iconpath='renderer/img/icon.png'
 
