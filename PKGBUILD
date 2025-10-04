@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@example.com>
 pkgname=animepahe-dl
-pkgver=0.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="A Python-based tool to download anime from AnimePahe, featuring both a Command-Line Interface (CLI) and a Graphical User Interface (GUI)."
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   'python-questionary'
 )
 makedepends=('python-setuptools' 'python-build')
-source=("git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v${pkgver}")
+source=("git+https://github.com/ayushjaipuriyar/animepahe-dl.git#tag=v5.3.0")
 sha256sums=('SKIP')
 
 build() {
