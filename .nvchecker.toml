@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 [obs-vertical-canvas]
 source = "github"
 github = "Aitum/obs-vertical-canvas"
