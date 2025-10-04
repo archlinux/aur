@@ -7,7 +7,7 @@ _version="v0.4.27-2-g92bde38e07"
 pkgname=${_basename}-appimage
 pkgdesc="Develop appimages for OpenRCT2"
 pkgver=0.4.27.2
-pkgrel=1
+pkgrel=2
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 url="https://openrct2.io"
@@ -37,7 +37,7 @@ package() {
     ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_namespace}.desktop" "${pkgdir}/usr/share/applications/${_namespace}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_namespace}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icons
     install -dm755 "${pkgdir}/usr/share/"
