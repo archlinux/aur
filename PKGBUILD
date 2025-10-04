@@ -1,15 +1,15 @@
-# Maintainer: Rucker <ruckeraur at proton dot me>
-# Contributor: Katoitalia
+# Maintainer: Echa <echa37 at proton dot me>
+# Contributor: Katoitalia, Rucker
 
 pkgname=obs-plugin-tuna-git
-pkgver=1.9.9.r3.g6cf08dd
+pkgver=1.9.11.r2.gb061607
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio git version"
 url="https://github.com/univrsal/tuna"
 license=('GPL2')
 depends=("obs-studio")
-makedepends=("clang" "cmake" "git")
+makedepends=("clang" "cmake" "git" "simde")
 conflicts=("obs-plugin-tuna-bin" "obs-plugin-tuna" "obs-tuna")
 provides=("obs-plugin-tuna=$pkgver")
 source=("$pkgname::git+https://github.com/univrsal/tuna.git"
