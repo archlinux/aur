@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-touchup-git
+	pkgdesc = An extension for Gnome Shell that enhances the user experience for devices with a touchscreen.
+	pkgver = r254.f15b2ee
+	pkgrel = 1
+	url = https://github.com/mityax/gnome-extension-touchup.git
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = jq
+	depends = gnome-shell
+	provides = gnome-shell-extension-touchup
+	conflicts = gnome-shell-extension-touchup
+	replaces = gnome-shell-extension-touchup
+	source = touchup::git+https://github.com/mityax/gnome-extension-touchup.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-touchup-git
