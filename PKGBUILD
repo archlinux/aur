@@ -1,7 +1,7 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=moneymanagerex-git
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest commit."
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
   # Disable all warnings when building, then configure CMake
   export CXXFLAGS=-w
   
-  cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
+  cmake -DCMAKE_BUILD_TYPE=None -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
   
   cmake --build .
 }
