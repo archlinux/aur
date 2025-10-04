@@ -1,6 +1,6 @@
 pkgbase = obs-studio-with-websockets
 	pkgdesc = Free, open source software for live streaming and recording
-	pkgver = 32.0.0
+	pkgver = 32.0.1
 	pkgrel = 1
 	url = https://obsproject.com
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = obs-studio-with-websockets
 	optdepends = v4l2loopback-dkms: virtual camera support
 	provides = obs-studio
 	options = !debug
-	source = obs-studio-with-websockets-32.0.0.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/32.0.0/obs-studio-32.0.0.tar.gz
-	sha256sums = 767377d2983c54c18d6ecf4aae9480af96eae543d4028cb26ffa5f918dafbea2
+	source = obs-studio-with-websockets-32.0.1.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/32.0.1/obs-studio-32.0.1.tar.gz
+	sha256sums = 21b3825baa3a0491e1c4519edc34111ed748c98004dbf4082959a9b901ca4e7b
 
 pkgname = obs-studio-with-websockets
