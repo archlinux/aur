@@ -1,8 +1,8 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=wooz-git
 _reponame=wooz
-pkgver=r169.aa33ad2
-pkgrel=2
+pkgver=r179.ca1b737
+pkgrel=1
 pkgdesc='zoom / magnifier utility for Wayland'
 arch=(x86_64)
 url='https://github.com/negrel/wooz'
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson build $_reponame
+	arch-meson -Dwerror=false build $_reponame
 	ninja -C build
 }
 
