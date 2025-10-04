@@ -1,5 +1,5 @@
 pkgname=buzz-git
-pkgver=1.6.0.r4.07cf74e
+pkgver=2.0.0.r0.2d78504
 pkgrel=1
 pkgdesc="A simple system tray application for notifying about unseen e-mail"
 arch=('i686' 'x86_64')
