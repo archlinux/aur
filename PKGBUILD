@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-writer-sdk
 _pkgname=${pkgname#python-}
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Writer REST API"
 arch=(any)
@@ -30,7 +30,7 @@ optdepends=(
   'cuda: cuda toolkit'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8266b81123b372ed40b087565963389759ceb1bb32f83bfe16c40aa1f1f42f29')
+sha256sums=('fa0051e4ca4b7a6c004d49eaf775755fd3ae515f5ba0c95c82095bd5aee4b989')
 
 _archive="writer-python-$pkgver"
 

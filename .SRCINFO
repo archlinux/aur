@@ -1,6 +1,6 @@
 pkgbase = python-writer-sdk
 	pkgdesc = Writer REST API
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/writer/writer-python
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-writer-sdk
 	optdepends = python-pytorch-cuda: cuda extensions
 	optdepends = cuda: cuda toolkit
 	provides = python-writerai
-	source = python-writer-sdk-2.3.1.tar.gz::https://github.com/writer/writer-python/archive/v2.3.1.tar.gz
-	sha256sums = 8266b81123b372ed40b087565963389759ceb1bb32f83bfe16c40aa1f1f42f29
+	source = python-writer-sdk-2.3.2.tar.gz::https://github.com/writer/writer-python/archive/v2.3.2.tar.gz
+	sha256sums = fa0051e4ca4b7a6c004d49eaf775755fd3ae515f5ba0c95c82095bd5aee4b989
 
 pkgname = python-writer-sdk
