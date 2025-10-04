@@ -1,7 +1,7 @@
 pkgbase = libpinmame-git
 	pkgdesc = Pinball Multiple Arcade Machine Emulator
-	pkgver = r6813.687a9aa
-	pkgrel = 2
+	pkgver = r6860.65c6719
+	pkgrel = 1
 	url = https://github.com/vpinball/pinmame
 	arch = x86_64
 	license = LicenseRef-MAME
@@ -11,7 +11,7 @@ pkgbase = libpinmame-git
 	depends = glibc
 	provides = libpinmame-git
 	provides = libpinmame
-	source = libpinmame-git::git+https://github.com/vpinball/pinmame.git#commit=687a9aaf6cd82713b043d7fbb68778d82eff652a
+	source = libpinmame-git::git+https://github.com/vpinball/pinmame.git
 	sha256sums = SKIP
 
 pkgname = libpinmame-git

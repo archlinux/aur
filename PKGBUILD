@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=libpinmame-git
 _pkgname=libpinmame
-pkgver=r6813.687a9aa
-pkgrel=2
+pkgver=r6860.65c6719
+pkgrel=1
 pkgdesc="Pinball Multiple Arcade Machine Emulator"
 arch=('x86_64')
 url="https://github.com/vpinball/pinmame"
@@ -10,7 +10,7 @@ license=('LicenseRef-MAME')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
 provides=('libpinmame-git' 'libpinmame')
-source=("${pkgname}::git+https://github.com/vpinball/pinmame.git#commit=687a9aaf6cd82713b043d7fbb68778d82eff652a")
+source=("${pkgname}::git+https://github.com/vpinball/pinmame.git")
 sha256sums=('SKIP')
 
 pkgver() {
