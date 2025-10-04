@@ -5,11 +5,12 @@
 _pkgname="kitshell"
 pkgname="kitshell-git"
 pkgver=r236.b5dfa3c
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use panel for Wayland WMs"
 arch=(x86_64)
 url="https://github.com/bootloopmaster636/kitshell"
 license=('GPL-3.0-or-later')
+options=('!debug')
 
 depends=(glib2 libepoxy libxcb at-spi2-core pango cairo gtk-layer-shell dbus fontconfig gtk3 glibc gcc-libs)
 makedepends=(git tar fvm rustup cmake ninja clang patchelf)
