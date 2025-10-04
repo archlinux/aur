@@ -1,0 +1,4 @@
+[leizi-shell-bin]
+source = "git"
+git = "https://github.com/Zixiao-System/leizi-shell.git"
+prefix = "v"
