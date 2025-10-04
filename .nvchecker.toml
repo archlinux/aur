@@ -1,0 +1,4 @@
+[anvil-bin]
+source = "git"
+git = "https://github.com/rocajuanma/anvil.git"
+prefix = "v"
