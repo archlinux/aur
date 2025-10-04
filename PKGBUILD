@@ -10,7 +10,9 @@ makedepends=('git')
 source=("git+https://github.com/AndresDev859674/boot-repair.git"
         "boot-repair-andres.desktop")
 url="https://github.com/AndresDev859674/boot-repair"
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP' # for boot-repair-andres.desktop
+            'SKIP') # for com.andresdev859674.boot-repair.policy
 optdepends=('git: For Update and Others Things')
 
 source=("git+https://github.com/AndresDev859674/boot-repair.git"

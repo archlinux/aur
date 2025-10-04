@@ -13,5 +13,7 @@ pkgbase = boot-repair-andres
 	source = boot-repair-andres.desktop
 	source = com.andresdev859674.boot-repair.policy
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = boot-repair-andres
