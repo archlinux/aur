@@ -11,7 +11,7 @@ license=("GPL-3.0")
 arch=("x86_64")
 provides=("hyprshot-rs")
 conflicts=("hyprshot-rs")
-source=("https://github.com/shikoucore/hyprshot-rs/releases/download/v$pkgver/hyprshot-rs-$pkgver-x86_64.tar.gz")
+source=("https://github.com/shikoucore/hyprshot-rs/tree/master/releases/download/v$pkgver/hyprshot-rs-$pkgver-x86_64.tar.gz")
 sha256sums=('76292150102cea2304ae9299644f4b178081fbe29143fa09246d6bcaa4b53772')
 
 package() {
