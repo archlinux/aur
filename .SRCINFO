@@ -1,6 +1,6 @@
 pkgbase = mkanban
 	pkgdesc = A Terminal User Interface Kanban Board
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/blendonl/mkanban
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mkanban
 	depends = python-linkify-it-py
 	depends = python-aiohttp
 	depends = python-dotenv
-	source = mkanban-0.2.3.tar.gz::https://github.com/blendonl/mkanban/archive/v0.2.3.tar.gz
+	source = mkanban-0.2.4.tar.gz::https://github.com/blendonl/mkanban/archive/v0.2.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = mkanban
