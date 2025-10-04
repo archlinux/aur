@@ -1,6 +1,7 @@
 # Maintainer: menaouer <chaabi.menaouer@gmail.com>
 pkgname=einfach-icon-theme
 pkgver=1.0.0
+options=('!strip')
 pkgrel=1
 pkgdesc="Simple GTK icon theme with multiple color variants"
 arch=('any')
