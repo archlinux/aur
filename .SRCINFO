@@ -1,0 +1,17 @@
+pkgbase = python-nihtest
+	pkgdesc = A testing tool for command line utilities
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/nih-at/nihtest/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-dateutil
+	source = https://github.com/nih-at/nihtest/archive/v1.9.1/python-nihtest-1.9.1.tar.gz
+	sha256sums = a9099a95040eac1dc54ac201545994ed7822d537ebc280c2dbb034bf35a2225a
+
+pkgname = python-nihtest
