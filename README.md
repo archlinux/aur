@@ -15,7 +15,7 @@ The github action in this repository creates a tarball with alle the plugins (in
 ```
 git clone https://aur.archlinux.org/obs-studio-with-websockets.git
 MAKEFLAGS="-j$(nproc)" makepkg -Acs
-sudo pacman -U obs-studio-with-websockets-32.0.0-1-x86_64.pkg.tar.zst
+sudo pacman -U obs-studio-with-websockets-32.0.1-1-x86_64.pkg.tar.zst
 ```
 
 ## Installation with yay
