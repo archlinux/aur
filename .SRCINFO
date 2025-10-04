@@ -1,6 +1,6 @@
 pkgbase = python-vllm-bin
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -62,9 +62,9 @@ pkgbase = python-vllm-bin
 	optdepends = python-xgrammar: flexible structured generation
 	provides = python-vllm
 	conflicts = python-vllm
-	noextract = vllm-0.10.2+cu129-cp38-abi3-manylinux1_x86_64.whl
+	noextract = vllm-0.11.0+cu129-cp38-abi3-manylinux1_x86_64.whl
 	options = !strip
-	source = https://github.com/vllm-project/vllm/releases/download/v0.10.2/vllm-0.10.2+cu129-cp38-abi3-manylinux1_x86_64.whl
-	sha256sums = a69daadd6a87f991aa9aef13a56d3c9832679181ce9307d2aadc312dc3244662
+	source = https://github.com/vllm-project/vllm/releases/download/v0.11.0/vllm-0.11.0+cu129-cp38-abi3-manylinux1_x86_64.whl
+	sha256sums = 6dc56d15c8a0a560be7517b4ed60c9685e9f48e8a36df606f86a0bd99e3dfd22
 
 pkgname = python-vllm-bin
