@@ -3,26 +3,25 @@
 pkgname=tagger
 _app_id=org.nickvision.tagger
 pkgver=2024.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
 license=('GPL-3.0-or-later')
 depends=(
   'chromaprint'
-  'dotnet-runtime>=8'
+  'dotnet-runtime-8.0'
   'ffmpeg'
+  'gtk4'
   'libadwaita'
   'webp-pixbuf-loader'
 )
 makedepends=(
   'blueprint-compiler'
-  'dotnet-sdk>=8'
+  'dotnet-sdk-8.0'
   'git'
 )
-optdepends=(
-  'yelp: in-app help'
-)
+optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
 source=("git+https://github.com/NickvisionApps/Tagger.git#tag=$pkgver-1"
         'git+https://github.com/NickvisionApps/CakeScripts.git')
