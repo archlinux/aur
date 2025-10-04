@@ -1,6 +1,6 @@
 pkgbase = holland
-	pkgver = 1.2.12
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = http://hollandbackup.org
 	arch = any
 	license = BSD
@@ -8,11 +8,11 @@ pkgbase = holland
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	options = emptydirs
-	source = holland-1.2.12.tar.gz::https://github.com/holland-backup/holland/archive/v1.2.12.tar.gz
-	source = holland-backup.github.io-1.2.10.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v1.2.10.tar.gz
+	source = holland-1.3.1.tar.gz::https://github.com/holland-backup/holland/archive/v1.3.1.tar.gz
+	source = holland-backup.github.io-1.3.1.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v1.3.1.tar.gz
 	source = holland.logrotate
-	sha256sums = 1c33dea2a08e4e1754ab1962d0c4dd40232f106d950e90b438cfe49ce62d8950
-	sha256sums = 5a75579e19b130ac6f5b9787dee989f67537a92a5792e2150a404aa22369439d
+	sha256sums = ff1f7dfaaa808ca30df4662cc446e3567a1c6ffb4f9f2a5f434ffecf29dee835
+	sha256sums = 06af692c5f58f18dca71c5e7bb5cab52a72fe6b143a286600da98a31c8f87e80
 	sha256sums = 6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995
 
 pkgname = holland
@@ -28,32 +28,32 @@ pkgname = holland
 pkgname = holland-common
 	pkgdesc = Common library functionality for Holland Plugins
 	license = GPL2
-	depends = holland=1.2.12
+	depends = holland=1.3.1
 
 pkgname = holland-lvm
 	pkgdesc = LVM library functionality for Holland Plugins
 	license = GPL2
-	depends = holland-common=1.2.12
+	depends = holland-common=1.3.1
 	depends = lvm2
 
 pkgname = holland-mysql
 	pkgdesc = MySQL library functionality for Holland Plugins
 	license = GPL2
-	depends = holland-common=1.2.12
+	depends = holland-common=1.3.1
 	depends = python-pymysql
 
 pkgname = holland-mysqldump
 	pkgdesc = Holland Backup Provider for MySQL mysqldump
 	license = GPL2
-	depends = holland-mysql=1.2.12
+	depends = holland-mysql=1.3.1
 	depends = mariadb-clients
 	backup = etc/holland/providers/mysqldump.conf
 
 pkgname = holland-mysqllvm
 	pkgdesc = Holland Backup Provider for MySQL LVM snapshots
 	license = GPL2
-	depends = holland-mysql=1.2.12
-	depends = holland-lvm=1.2.12
+	depends = holland-mysql=1.3.1
+	depends = holland-lvm=1.3.1
 	depends = tar
 	backup = etc/holland/providers/mysql-lvm.conf
 	backup = etc/holland/providers/mysqldump-lvm.conf
@@ -61,7 +61,7 @@ pkgname = holland-mysqllvm
 pkgname = holland-pgdump
 	pkgdesc = Holland Backup Provider for PostgreSQL pg_dump
 	license = GPL2
-	depends = holland-common=1.2.12
+	depends = holland-common=1.3.1
 	depends = python-psycopg2
 	depends = postgresql-libs
 	backup = etc/holland/providers/pgdump.conf
@@ -69,21 +69,21 @@ pkgname = holland-pgdump
 pkgname = holland-xtrabackup
 	pkgdesc = Holland Backup Provider for MySQL Xtrabackup
 	license = GPL2
-	depends = holland-mysql=1.2.12
+	depends = holland-mysql=1.3.1
 	depends = xtrabackup
 	backup = etc/holland/providers/xtrabackup.conf
 
 pkgname = holland-mariabackup
 	pkgdesc = Holland Backup Provider for MariaDB mariabackup
 	license = GPL2
-	depends = holland-mysql=1.2.12
+	depends = holland-mysql=1.3.1
 	depends = mariadb
 	backup = etc/holland/providers/mariabackup.conf
 
 pkgname = holland-mongodump
 	pkgdesc = Holland Backup Provider for MongoDB mongodump
 	license = GPL2
-	depends = holland-common=1.2.12
+	depends = holland-common=1.3.1
 	depends = python-pymongo
 	depends = mongodb-tools
 	backup = etc/holland/providers/mongodump.conf
