@@ -1,6 +1,6 @@
 pkgbase = python-essentials
 	pkgdesc = General purpose classes and functions, reusable in any kind of Python application
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://pypi.org/project/essentials
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-essentials
 	conflicts = python-essentials
 	options = !strip
 	options = !debug
-	source = essentials-1.1.7.tar.gz::https://files.pythonhosted.org/packages/source/e/essentials/essentials-1.1.7.tar.gz
-	sha256sums = dccd20e50af543eac14f8c63c9b272d7c95a094162cf19697e1b1e7482f9a871
+	source = essentials-1.1.8.tar.gz::https://files.pythonhosted.org/packages/source/e/essentials/essentials-1.1.8.tar.gz
+	sha256sums = e042e0b33d385cfc26e1f0cc189fce5570d0959a1983438a557e7963a87b5638
 
 pkgname = python-essentials
