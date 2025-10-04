@@ -14,6 +14,7 @@ md5sums=('SKIP')
 options+=("!strip")
 
 build() {
+    cd iopipe
     dotnet publish -c Release --use-current-runtime
 }
 
