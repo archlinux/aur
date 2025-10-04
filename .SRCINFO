@@ -1,12 +1,12 @@
 pkgbase = gcli
 	pkgdesc = A CLI for Github, Gitlab and Gitea written in C
-	pkgver = 2.8.0
+	pkgver = 2.9.1
 	pkgrel = 3
 	url = https://github.com/herrhotzenplotz/gcli
 	arch = any
 	license = BSD-2-Clause
 	depends = curl
-	source = https://herrhotzenplotz.de/gcli/releases/gcli-2.8.0/gcli-2.8.0.tar.bz2
-	sha256sums = e1893267c66912890703cc100160409296ab2f1d3a322322da943971160bccea
+	source = https://herrhotzenplotz.de/gcli/releases/gcli-2.9.1/gcli-2.9.1.tar.bz2
+	sha256sums = 1d0338d117a5bb5eda2dcd7456222208cb7cab90112a172cd77f6ba3c8dedf77
 
 pkgname = gcli
