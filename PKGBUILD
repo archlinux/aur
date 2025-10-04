@@ -2,13 +2,13 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=7.1.2
+pkgver=8.0
 pkgrel=1
 epoch=1
-_obs_studio_ver='32.0.0'
+_obs_studio_ver='32.0.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
-url='https://www.ffmpeg.org/'
+url='https://ffmpeg.org/'
 license=('LicenseRef-nonfree-and-unredistributable')
 depends=(
   alsa-lib
@@ -36,7 +36,6 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
-  libgl
   libiec61883
   libjxl
   libmodplug
@@ -80,8 +79,7 @@ depends=(
   xz
   zeromq
   zimg
-  zlib
-)
+  zlib)
 makedepends=(
   amf-headers
   avisynthplus
@@ -89,38 +87,40 @@ makedepends=(
   ffnvcodec-headers
   frei0r-plugins
   ladspa
-  mesa
+  libgl
   nasm
   opencl-headers
   vapoursynth
-  vulkan-headers
-)
-optdepends=('avisynthplus: for AviSynthPlus support'
-            'frei0r-plugins: for Frei0r video effects support'
-            'ladspa: for LADSPA filters'
-            'nvidia-utils: for NVIDIA NVDEC/NVENC support'
-            'vpl-runtime: for Intel Quick Sync Video'
-)
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
-          'ffmpeg')
+  vulkan-headers)
+optdepends=(
+  'avisynthplus: for AviSynthPlus support'
+  'frei0r-plugins: for Frei0r video effects support'
+  'ladspa: for LADSPA filters'
+  'nvidia-utils: for NVIDIA NVDEC/NVENC support'
+  'vpl-runtime: for Intel Quick Sync Video')
+provides=(
+  'ffmpeg'
+  'libavcodec.so'
+  'libavdevice.so'
+  'libavfilter.so'
+  'libavformat.so'
+  'libavutil.so'
+  'libswscale.so'
+  'libswresample.so')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch'
         'LICENSE')
-sha256sums=('089bc60fb59d6aecc5d994ff530fd0dcb3ee39aa55867849a2bbc4e555f9c304'
+sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             'SKIP'
-            '6c73099d53aee7b57faa624431891901d9c84b2d93e284d27799fdc33868d113'
-            '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
-            '5a3731d1410747703948c87e46bb3aef820c6038f7101ab37f9d072cd1d15d15'
+            '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
+            '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch"
 }
 
 build() {
