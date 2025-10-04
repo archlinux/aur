@@ -2,14 +2,16 @@
 # Contributor: Oliver Braunschweig <olt78 at web dot de>
 # Contributor: Andrew Crerar <crerar@archlinux.org>
 
+: ${_use_sodeps:=false}
+
 _pkgname="vlc"
 pkgbase="vlc-git"
 pkgname=(
   "vlc-git"
   "vlc-plugin-lua-git"
 )
-pkgver=4.0.0.r34182.g39a4b41
-pkgrel=3
+pkgver=4.0.0.r34841.g9d2d8f0
+pkgrel=2
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
 url="https://github.com/videolan/vlc"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
@@ -292,6 +294,18 @@ build() {
 
 package_vlc-git() {
   pkgdesc+=" (monolithic)"
+
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libavcodec.so'  # ffmpeg
+      'libavformat.so' # ffmpeg
+      'libavutil.so'   # ffmpeg
+      'libswscale.so'  # ffmpeg
+      'libtiger.so'    # ffmpeg
+      'libvpx.so'      # libvpx
+      'libx264.so'     # x264
+    )"
+  fi
 
   provides=(
     'libvlc.so'
