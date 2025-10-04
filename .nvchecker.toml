@@ -1,0 +1,4 @@
+[fga]
+source = "git"
+git = "https://github.com/openfga/cli.git"
+prefix = "v"

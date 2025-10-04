@@ -1,0 +1,17 @@
+pkgbase = fga
+	pkgdesc = Cross-platform CLI to interact with an OpenFGA server
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://openfga.dev
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = fga::git+https://github.com/openfga/cli.git#tag=v0.7.4?signed
+	validpgpkeys = 510C64A6CDC3F0965291ED872E31AD2F054526F0
+	b2sums = 6c144dbedf6a3b477af35d4b9620b86632ee9e7985032fe0ca82107395c370073abedc3cf5cfac9b1b4298d0b4bfa0ed716cb915ea36cbcc275fb50f75cb504e
+
+pkgname = fga
