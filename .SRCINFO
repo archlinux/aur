@@ -1,0 +1,16 @@
+pkgbase = python-pyradiance
+	pkgdesc = Python inteface for Radiance
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/pyradiance/
+	arch = x86_64
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	provides = python-pyradiance
+	source = https://github.com/LBNL-ETA/pyradiance/archive/refs/tags/v1.1.5.tar.gz
+	md5sums = 24359016fd6ebf12fc1ec364b102a825
+
+pkgname = python-pyradiance
