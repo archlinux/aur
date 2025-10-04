@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cd /opt/epub_to_audiobook
+epub_to_audiobook_dir=/opt/epub_to_audiobook
 
-exec python main.py $@
+exec python3 "$epub_to_audiobook_dir/main.py" "$@"
