@@ -6,6 +6,7 @@ pkgbase = einfach-icon-theme
 	arch = any
 	license = CC BY-SA 4.0
 	options = !strip
+	options = !debug
 	source = https://github.com/DerJimno/einfach-icon-theme/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
