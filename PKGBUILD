@@ -3,7 +3,7 @@
 _pkgname="fga"
 pkgname="${_pkgname}-bin"
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://openfga.dev"
@@ -11,6 +11,7 @@ _url="https://github.com/openfga/cli"
 license=('Apache-2.0')
 makedepends=(
   'cosign'
+  'gzip'
   'slsa-verifier'
 )
 provides=(
@@ -20,20 +21,14 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
-        "${_pkgsrc}-checksums.txt::${_url}/releases/download/v${pkgver}/checksums.txt"
+source=("${_pkgsrc}-checksums.txt::${_url}/releases/download/v${pkgver}/checksums.txt"
         "${_pkgsrc}-checksums.txt.pem::${_url}/releases/download/v${pkgver}/checksums.txt.pem"
         "${_pkgsrc}-checksums.txt.cosig::${_url}/releases/download/v${pkgver}/checksums.txt.sig" # rename to not confuse OpenPGP
         "${_pkgsrc}.intoto.jsonl::${_url}/releases/download/v${pkgver}/${_pkgname}.intoto.jsonl")
 source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz")
 source_i686=("${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz")
 source_x86_64=("${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums=('a8c7e4ffb2a0cce4012322c0c75d81c0c4c2a1fc81ccfdd2b4dff8b3098b7bd9'
-            'fd8ddca8212fff945721992c643b3248ded306d442c7b8cb092c983a98339c4e'
-            'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            '9da67bb7d93be919a540f88056cf3108ae1b86159442e71f643df4805e765b53'
+sha256sums=('9da67bb7d93be919a540f88056cf3108ae1b86159442e71f643df4805e765b53'
             'a8ce4aca9613885ec3828fa88834e1e46a19167ecc6d08b4b77c638437b33a86'
             'b9ad90781b06f217b7abda01e7a643541eda57895d29aa3cfa188414f182fae6'
             'b1d7106edff3c5a65daa613769864c64bce1e5ba633952dc4737688423c9483a')
@@ -64,22 +59,25 @@ prepare() {
   cd "${srcdir}"
   mkdir -p "completions"
   chmod +x ./"${_pkgname}"
+
+  find "manpages" -type f -name '*.gz' -exec \
+    gzip -fd "{}" \;
 }
 
 build() {
   cd "${srcdir}"
-  for _sh in bash fish powershell zsh; do
-    ./"${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
-  done
+  ./"${_pkgname}" completion powershell > "completions/${_pkgname}.powershell"
 }
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm755 "${_pkgname}"  "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
+  install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE"      "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  install -vDm644 "${_pkgsrc}-CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
-  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  find "manpages" -type f -name '*.1' -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/man/man1/{}" \;
 
   cd "completions"
   install -vDm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
