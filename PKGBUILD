@@ -6,7 +6,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r211.g57ef350
+pkgver=2.6.1.r220.gc27a4bc
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -72,11 +72,11 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgname"::"git+$url.git${_commit:+#commit=$_commit}"
-  "PR1928.patch"::"https://github.com/BestImageViewer/geeqie/pull/1928.diff"
+  "0001-PR1928.patch" # https://github.com/BestImageViewer/geeqie/pull/1928
 )
 sha256sums=(
   'SKIP'
-  'a2ccea02e44be0ee89509e473ee697f5c2cd979894064f61e8dea4d57204f936'
+  'af9ac2fdc476802061527af691ee77d2b56dff7c7b7072868155eff9007a04c5'
 )
 
 prepare() {
@@ -86,7 +86,7 @@ prepare() {
   sed -E '/[Aa]ncillary.files/s&^&#&' -i meson.build
 
   # fix for gdk-pixbuf2, glycin
-  patch -Np1 -F100 -i ../PR1928.patch
+  patch -Np1 -F100 -i ../0001-PR1928.patch
 }
 
 pkgver() {
