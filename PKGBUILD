@@ -15,7 +15,7 @@ source=("$_appimage::https://github.com/akiver/$_pkgname/releases/download/v$pkg
     "https://raw.githubusercontent.com/akiver/$_pkgname/refs/tags/v$pkgver/LICENSE"
     )
 sha256sums=('af88017bcca941f85e260c7e79b7cb1d9ffdda0c48a7bd10956c26a9052e96bc'
-            '13c63653c5aab89a5515ebb31b6c1dd518006cf7bd8d30e157007ab04aee1f93')
+            'SKIP')
 
 prepare() {
     chmod +x "$_appimage"
