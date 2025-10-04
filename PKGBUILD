@@ -2,7 +2,7 @@
 
 
 pkgname=cudatext-gtk2-bin
-pkgver=1.228.3.0
+pkgver=1.228.3.1
 pkgrel=1
 pkgdesc="Cross-platform text editor, written in Lazarus"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('cudatext')
 conflicts=('cudatext')
 options=('!strip')
 source=("https://sourceforge.net/projects/cudatext/files/release/${pkgver}/cudatext_${pkgver}-${pkgrel}_gtk2_amd64.deb")
-sha256sums=('46794d8a023a4ef191bf76d02106b19897821d1427f6210d8005b1650fa60071')
+sha256sums=('3667c549dee8f955875a3420dd4dbdfbecbee2b1c98af5c14472407b84fe9c30')
 
 package() {
     tar xvf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
