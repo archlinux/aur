@@ -5,8 +5,8 @@
 
 pkgname=equicord
 _pkgname=Equicord
-pkgver=0.0.111.gb37041a5
-pkgrel=2
+pkgver=0.0.111.g2d803c84
+pkgrel=1
 pkgdesc='The other cutest Discord client mod'
 arch=('x86_64')
 url='https://equicord.org/'
@@ -23,12 +23,10 @@ source=(
     'equicord.desktop'
     'equicord.png'
 )
-sha512sums=(
-    'SKIP'
-    'SKIP'
-    '25c3e3cbef8c981a42ba059f589ffc9ebe8c81406fa6cd6b000ed7b4e3c7b95ae96108df2a29096a8c527153b3becf98b1769b2af75d5f6cf0fe69edd2b3da3a'
-    '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5'
-)
+sha512sums=('SKIP'
+            'f0d4d7abb7f8ef9008732e4b39cebdd4c97cf611eebc0b8ab8254fa3f4c2b3ac7bef7dae2545fb8faf82afa319bf015dde5aeaa8f879acd7c364a68fbda0ebd1'
+            '25c3e3cbef8c981a42ba059f589ffc9ebe8c81406fa6cd6b000ed7b4e3c7b95ae96108df2a29096a8c527153b3becf98b1769b2af75d5f6cf0fe69edd2b3da3a'
+            '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5')
 
 pkgver() {
     local discord_ver=$(grep -oE '^pkgver=(.*?)$' discord-pkgbuild)
