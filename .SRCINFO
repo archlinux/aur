@@ -1,0 +1,15 @@
+pkgbase = leizi-shell
+	pkgdesc = Modern POSIX-compatible shell with ZSH-style arrays and Powerlevel10k-inspired prompts
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/Zixiao-System/leizi-shell
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	depends = readline
+	source = leizi-shell-1.4.0.tar.gz::https://github.com/Zixiao-System/leizi-shell/archive/v1.4.0.tar.gz
+	sha256sums = 8241ed63466189da7a1f6269500bf88b67c48661ed04236cb7d4646188a3e314
+
+pkgname = leizi-shell
