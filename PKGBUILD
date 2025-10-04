@@ -98,8 +98,8 @@ build() {
 }
 
 package() {
-    depends=(gcc-libs glibc glu hicolor-icon-theme libcurl-gnutls libglvnd libx11
-             libxext libxrandr libxxf86vm openal openssl-1.0 zlib)
+    depends=(gcc-libs glibc glu hicolor-icon-theme libcurl-gnutls libglvnd libpulse libx11
+             libxext libxfixes libxrandr libxxf86vm openal openssl-1.0 zlib)
 
     cd "$srcdir/Dijeweled-$pkgver"
     mkdir -p "$pkgdir/usr/lib/$pkgname" "$pkgdir/usr/bin"
