@@ -1,8 +1,8 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=ggc-bin
-pkgver=6.0.0
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 arch=('x86_64' 'arm64')
 url="https://github.com/bmf-san/ggc"
@@ -13,9 +13,9 @@ source_x86_64=("ggc-$pkgver-x86_64.tar.gz::https://github.com/bmf-san/ggc/releas
                 "LICENSE::https://raw.githubusercontent.com/bmf-san/ggc/refs/tags/v$pkgver/LICENSE")
 source_arm64=("ggc-$pkgver-arm64.tar.gz::https://github.com/bmf-san/ggc/releases/download/v$pkgver/ggc_${pkgver}_linux_arm64.tar.gz"
               "LICENSE::https://raw.githubusercontent.com/bmf-san/ggc/refs/tags/v$pkgver/LICENSE")
-b2sums_x86_64=('4d916d3b9e019462dda4bb22a7fd5f527404d2f65121456114549dbb9eddd47d4bb2eccedaeb9d05a0e0d5e56a6c147ee2b869e1a23f36554a184d7942e60dab'
+b2sums_x86_64=('9a6a220a493dd3df7294f050515b3a4708bbf90d55b57be4b0e7eeef82ca740bd10d3756d6e9f641b369f93aadca8d2c2b91cd4a8b6ea1b59f14745290aec245'
                '549edae63d8fa8f73000d9edac22b3db17e880e1867a617ac995ad6af54d2331080df7dfef962e9f316b3744d42986edb52e15fbe2c07ad2e9bf8b7b8a300be1')
-b2sums_arm64=('ea13047672d933d7128b36d89e8bf9e360324ac6c6fca3cd5ddfd888fd6ea0e1402dfb2e23c41aae60e7da607639978f37c2e2bc1c1d93b0b897ccec3733f5c7'
+b2sums_arm64=('7ec9b4eae1079f3280f6ebfaa0e35933604828881b0d4a812c009af7acb4365457b6fa66884e324b8346680358dab3c4a6e163c59e781bd0c18292d89215a4be'
               '549edae63d8fa8f73000d9edac22b3db17e880e1867a617ac995ad6af54d2331080df7dfef962e9f316b3744d42986edb52e15fbe2c07ad2e9bf8b7b8a300be1')
 
 package() {
