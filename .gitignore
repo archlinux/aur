@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !changelog.md
+!.nvchecker.toml
