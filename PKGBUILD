@@ -1,15 +1,16 @@
-# Maintainer: Nogweii <packages@nogweii.net>
+# Maintainer: PureFallen <archlinux.snoring858@passmail.net>
+# Contributor: Nogweii <packages@nogweii.net>
 
 pkgname=poptracker
-pkgver=0.30.1
+pkgver=0.32.1
 pkgrel=1
 pkgdesc='universal, scriptable randomizer tracking solution that is open source, runs everywhere and supports auto-tracking.'
 arch=(x86_64)
-url="https://github.com/black-sliver/poptracker"
+url="https://github.com/black-sliver/PopTracker"
 license=(GPL3)
 depends=(sdl2 sdl2_image sdl2_ttf openssl)
 source=("git+${url}.git#tag=v${pkgver}" poptracker.desktop)
-sha256sums=('SKIP'
+sha256sums=('7868653e8a1b97e1d8ca8788ee9974e005d484948f7ceb6265dffe7f0685a68b'
             '6d84910cabcadf7c14bc74fc4c1fc6e3402ee8bbcce07d6e7b4609ea456fd8e7')
 
 prepare() {
