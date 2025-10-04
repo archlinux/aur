@@ -1,6 +1,6 @@
 pkgbase = cosmic-settings-git
 	pkgdesc = The settings application for the COSMIC desktop environment.
-	pkgver = 1.0.0.alpha.7.r113.g926c5c1
+	pkgver = 1.0.0.beta.1.1.r69.gae5f151
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings
 	arch = x86_64
