@@ -1,0 +1,16 @@
+pkgbase = lock
+	pkgdesc = Process data with GnuPG 🔒
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://konstantintutsch.com/Lock/
+	arch = x86_64
+	license = MIT
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	source = lock::git+https://github.com/konstantintutsch/Lock.git#tag=v1.8.0
+	b2sums = fec0e73a34204330cb5f18b6a9cbfbc5b0b5061f9a6f01a89d57bd8065ff089cbd20ff3f2fd6cf9f6a53ee20b2819776127a4631c6ccb2991ab82d724f104781
+
+pkgname = lock
