@@ -1,0 +1,26 @@
+pkgbase = niiet-openocd-git
+	pkgdesc = Provides on-chip programming and debugging support, also for NIIET MCUs
+	pkgver = 0.12.0_ged6429411
+	pkgrel = 1
+	url = https://gitflic.ru/project/niiet/openocd
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = tcl
+	depends = hidapi
+	depends = libftdi-compat
+	depends = libusb
+	depends = capstone
+	optdepends = libjaylink: SEGGER J-Link support
+	provides = openocd
+	conflicts = openocd
+	options = !strip
+	source = niiet-openocd-git::git+https://gitflic.ru/project/niiet/openocd.git
+	source = git+https://github.com/msteveb/jimtcl.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = niiet-openocd-git
