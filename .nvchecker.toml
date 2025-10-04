@@ -1,0 +1,3 @@
+[python-memory-graph]
+source = "pypi"
+pypi = "memory-graph"
