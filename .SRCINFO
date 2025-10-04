@@ -1,5 +1,5 @@
 pkgbase = displayfetch
-	pkgdesc = A simple Python script that displays system info
+	pkgdesc = A simple Python script that displays system info, more specifically display info.
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/luxiumstudios/displayfetch

@@ -2,7 +2,7 @@
 pkgname=displayfetch
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="A simple Python script that displays system info"
+pkgdesc="A simple Python script that displays system info, more specifically display info."
 arch=('any')
 url="https://github.com/luxiumstudios/displayfetch"
 license=('MIT')
