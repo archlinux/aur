@@ -1,0 +1,15 @@
+pkgbase = rbxcloud
+	pkgdesc = Easily communicate with the Roblox Open Cloud APIs
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/Sleitnick/rbxcloud
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	source = rbxcloud-0.17.0.tar.gz::https://github.com/Sleitnick/rbxcloud/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = d00fbd78d1fd3bcd8c6f4cd716d43f8c8994de4acbeb4196670c3347c59e88f9
+
+pkgname = rbxcloud
