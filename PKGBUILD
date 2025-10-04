@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=6.2'
-             'cython<3.1.0'
+             'cython'
              'python-wheel'
              'python-build'
              'python-installer'
