@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 pkgname=claw
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Crustacean powered clipboard manager for X11 & Wayland"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/claw"
@@ -16,22 +16,20 @@ install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/claw_${pkgver}_amd64.deb")
 sha256sums_x86_64=('34e328990694e5edf8e9cbe15b467dbb93ce12cf29d73d99969688c587890576')
 
+
 package() {
-  # Extract debian package data
   tar -xf data.tar.gz -C "${pkgdir}"
   
-  # Move examples from _up_ directory to proper location
   if [ -d "${pkgdir}/usr/lib/${pkgname}/_up_/examples" ]; then
     install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-    cp -r "${pkgdir}/usr/lib/${pkgname}/_up_/examples" "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp -a "${pkgdir}/usr/lib/${pkgname}/_up_/examples/." "${pkgdir}/usr/share/doc/${pkgname}/"
   fi
-  
-  # Install license
+
   if [ -f "${pkgdir}/usr/lib/${pkgname}/_up_/LICENSE" ]; then
     install -Dm644 "${pkgdir}/usr/lib/${pkgname}/_up_/LICENSE" \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
-  
-  # Clean up the _up_ directory
+
   rm -rf "${pkgdir}/usr/lib/${pkgname}/_up_"
 }
+
