@@ -1,0 +1,16 @@
+# Documentation https://openfga.dev/docs/getting-started/setup-openfga/configuration#list-of-options
+# 
+# datastore:
+#   engine: postgres
+#   uri: postgres://user:password@localhost:5432/mydatabase
+# authn:
+#   method: preshared
+#   preshared:
+#     keys: ["key1", "key2"]
+# playground:
+#   enabled: false
+# http:
+#   tls:
+#     enabled: true
+#     cert: server.crt
+#     key: server.key
