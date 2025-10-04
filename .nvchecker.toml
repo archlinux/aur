@@ -1,0 +1,4 @@
+[cqfd-bin]
+source = "git"
+git = "https://github.com/savoirfairelinux/cqfd.git"
+prefix = "v"

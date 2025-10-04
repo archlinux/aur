@@ -1,0 +1,14 @@
+pkgbase = cqfd-bin
+	pkgdesc = Run commands with the same user and directory inside a docker container
+	pkgver = 5.7.2
+	pkgrel = 1
+	url = https://github.com/savoirfairelinux/cqfd
+	arch = any
+	license = MIT
+	provides = cqfd
+	conflicts = cqfd
+	noextract = cqfd-5.7.2.tzst
+	source = cqfd-5.7.2.tzst::https://github.com/savoirfairelinux/cqfd/releases/download/v5.7.2/cqfd-5.7.2-1-any.pkg.tar.zst
+	sha256sums = aac58a48f51463593dc96c527e4a1c79d39ede4231297e64474430fd0086b042
+
+pkgname = cqfd-bin
