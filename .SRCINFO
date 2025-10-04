@@ -1,0 +1,12 @@
+pkgbase = displayfetch
+	pkgdesc = A simple Python script that displays system info
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/luxiumstudios/displayfetch
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/luxiumstudios/displayfetch.git
+	sha256sums = SKIP
+
+pkgname = displayfetch
