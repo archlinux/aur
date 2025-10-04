@@ -3,7 +3,7 @@
 pkgname=python-blacksheep
 _name=${pkgname#python-}
 pkgver=2.4.2
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Fast web framework for Python asyncio"
 arch=($CARCH)
@@ -16,9 +16,9 @@ conflicts=(${_name} ${pkgname})
 depends=(
     glibc
     python
-    python-setuptools
     python-certifi
-    python-dateutil
+    #     python-dateutil
+    python-h11
     python-httptools
     python-itsdangerous
     python-jinja
@@ -28,6 +28,8 @@ depends=(
     python-essentials
     python-essentials-openapi
     python-guardpost
+    python-opentelemetry-exporter-otlp-proto-http
+    python-opentelemetry-sdk
     python-rodi
 )
 makedepends=(
@@ -41,7 +43,7 @@ makedepends=(
     python-build
     python-installer
     python-wheel
-    #     python-setuptools
+    python-setuptools
 )
 checkdepends=(
     python-pytest
@@ -83,4 +85,5 @@ package() {
     cd "${srcdir}/${_name}"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
