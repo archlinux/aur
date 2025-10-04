@@ -1,7 +1,7 @@
 # Maintainer: stilmisty<1772797842@qq.com>
 pkgname=lightmeetspiano-bin
 _pkgname=LightMeetsPiano
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="基于Tauri的光遇自动弹琴脚本."
 arch=('x86_64')
