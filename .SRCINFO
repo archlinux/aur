@@ -1,0 +1,18 @@
+pkgbase = mesarun
+	pkgdesc = Wrapper for software rasterizers and Zink to use in OpenGL games on top of your CPU or Vulkan.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kharovtobi/mesarun
+	install = mesarun.install
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = mesa
+	depends = opengl-driver
+	depends = vulkan-icd-loader
+	optdepends = vulkan-swrast: Software rendering for Vulkan
+	conflicts = zinkrun
+	source = https://github.com/kharovtobi/mesarun/archive/refs/tags/1.0.tar.gz
+	sha256sums = d6537c77e9d8371a387401c1072a53cfd4b478dec8a2db3f8026163e0b1c114c
+
+pkgname = mesarun
