@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 _pkgname=obs-captions-plugin
 _gitname=OBS-captions-plugin
