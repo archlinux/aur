@@ -1,0 +1,17 @@
+pkgbase = lightmeetspiano-bin
+	pkgdesc = 基于Tauri的光遇自动弹琴脚本.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/StillMisty/LightMeetsPiano
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	provides = LightMeetsPiano
+	conflicts = LightMeetsPiano
+	source_x86_64 = LightMeetsPiano_0.4.5_amd64.deb::https://github.com/StillMisty/LightMeetsPiano/releases/download/app-v0.4.5/LightMeetsPiano_0.4.5_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = lightmeetspiano-bin
