@@ -3,7 +3,7 @@
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source !
 pkgver=1.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -41,7 +41,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd "${srcdir}"/moneymanagerex
-  
+
   git submodule init
   git config submodule.3rd/ChartNew.js.url "$srcdir/ChartNew.js"
   git config submodule.3rd/LuaGlue.url "$srcdir/LuaGlue"
@@ -62,9 +62,9 @@ build() {
 
   # Disable all warnings when building, then configure CMake
   export CXXFLAGS=-w
-  
+
   cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
-  
+
   cmake --build .
 }
 
@@ -72,4 +72,10 @@ package() {
   cd "${srcdir}"/moneymanagerex
 
   make DESTDIR="${pkgdir}" install
+
+  # TODO Workaround for https://github.com/moneymanagerex/moneymanagerex/issues/7699
+  cd "${pkgdir}"/
+  rm -rf usr/include/fmt/
+  rm -rf usr/lib/cmake/fmt/
+  rm -f usr/lib/pkgconfig/fmt.pc
 }
