@@ -5,13 +5,13 @@ pkgname=(
     'tensorrt'
     'python-tensorrt')
 pkgver=10.13.3.9
-_cudaver=12.9
+_cudaver=13.0
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.8
 _polygraphy_ver=0.49.24
 _tensorflow_quantization_ver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -40,7 +40,7 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('a40650fd51f096969db072edf216a5026e61c71157bc87f475a8549681e09d34'
+sha256sums=('897261be948962c9eb5d3595625f91d85a9aa8b57601aed6efac3fd6d9ff6f53'
             '1e4212f419a02957ef67f7abf24b4b7fb7c10bd10a48d7a2f8e4ae9b6fae3972'
             'SKIP'
             'SKIP'
@@ -83,10 +83,10 @@ prepare() {
 }
 
 build() {
-    # using default cuda gpu architectures defined by upstream
-    # NOTE: cannot set all supported cuda gpu architectures with GPU_ARCHS cmake option due to:
-    # https://github.com/NVIDIA/cccl/issues/4967
-    # (cccl is included in the cuda package)
+    local _cudaver_cmake
+    local _cudnnver
+    _cudaver_cmake="$(pacman -Qi 'cuda' | awk '/^Version/ { print $3 }' | grep -oE '^([0-9]+\.){2}[0-9]')"
+    _cudnnver="$(pacman -Qi 'cudnn' | awk '/^Version/ { print $3 }' | grep -oE '^[0-9]+\.[0-9]+')"
     
     export CXXFLAGS+=' -ffat-lto-objects'
     cmake -B build -S TensorRT \
@@ -94,6 +94,9 @@ build() {
         -DBUILD_SAMPLES:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCUDA_VERSION:STRING="$_cudaver_cmake" \
+        -DCUDNN_VERSION:STRING="$_cudnnver" \
+        -DGPU_ARCHS:STRING='75 80 86 87 89 90 100 103 110 120 121' \
         -DONNX_BUILD_PYTHON:BOOL='ON' \
         -DPROTOBUF_VERSION:STRING="$_protobuf_ver" \
         -DTRT_LIB_DIR:STRING="${srcdir}/TensorRT-${pkgver}/lib" \
