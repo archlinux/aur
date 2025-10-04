@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@example.com>
 pkgname=displayfetch
-pkgver=1.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="A simple Python script that displays system info"
 arch=('any')
