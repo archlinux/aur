@@ -2,7 +2,7 @@
 # Contributor: Joonas Henriksson <joonas.henriksson at gmail com>
 
 pkgname=gog-cuphead
-pkgver=1.3.4
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='Contra-esque action game with retro cartoon visuals. GOG version, uses Wine.'
 _shortname="${pkgname#gog-}"
@@ -20,8 +20,8 @@ source=(
     'launch_gog-cuphead.bash'
     'gog-cuphead.desktop'
 )
-sha512sums=('0d2689dfe47ab38257d43cdc5b4d09300a9b8e0c117bd0d2075584d8b8a4a9876b7e3b3ec535021a09ef403017887b160e6a7cdd0929e7fd3d726a91846cfe40'
-            '200f503b8aa32e60a034e21c1b1ada5df2c9273d082545b408f3ccd8b216d8ef79246ce164cea2b498900602641eb47868f02d141eeb7bc0304e86fe1e88f70b'
+sha512sums=('3bdb2698b7101fddad7f49ed5074d885eadfc7cda472d037f9d6f70376d4b820412e200a951bd5327d599cf0f07dab5beae55cb04c38f6c0c584733187ef55d3'
+            '7bf63ab1c6c5330d2f2276de6b8d078cc015433ad53902381ea2428d2ddb5d84fd90454076166e5f3507961482c8a94902faaadc15956d08e255184e116de19f'
             '69d2e58e4f06d4f3810a29d970c7df72c68989eb9371bbd63f4d56561e294c4fddd0a32c3975cd10d532c4125762a2dd64ab4734b36e4628ee382867c04aae90'
             'fed3afa22b61cd16241d1cec4057f998b5d1db93659e6c45a8f6d58101fc5ba18e8de65e4170e69d615d881dae2d4643ebc7452f4399c6f87b5cda099722a003')
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
