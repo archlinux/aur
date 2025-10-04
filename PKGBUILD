@@ -51,7 +51,7 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=7.1.2
+pkgver=8.0
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
@@ -176,12 +176,11 @@ provides=(
   libavfilter.so
   libavformat.so
   libavutil.so
-  libpostproc.so
   libswresample.so
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=f893221c8d89cb798b829bebe71d55e1a3f242fd
+_tag=140fd653aed8cad774f991ba083e2d01e86420c7
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
@@ -429,18 +428,10 @@ prepare() {
 
   ### ffmpeg-obs changes
 
-  ## Fix building with v4l2 1.30
-  sed -i 's/posix_ioctl/ffmpeg_posix_ioctl/g' configure
-  sed -i 's/if HAVE_POSIX_IOCTL/if HAVE_FFMPEG_POSIX_IOCTL/g' libavdevice/v4l2.c
-
   ### Arch Linux changes
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-
-  ## VAAPI HEVC encode alignment fix
-  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
-  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
 
   ### OBS changes
 
