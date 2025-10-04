@@ -1,0 +1,5 @@
+[fga-bin]
+source = "github"
+github = "openfga/cli"
+use_latest_release = true
+prefix = "v"
