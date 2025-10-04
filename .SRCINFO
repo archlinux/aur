@@ -1,0 +1,16 @@
+pkgbase = claw
+	pkgdesc = Crustacean powered clipboard manager for X11 & Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/saltnpepper97/claw
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	optdepends = xclip: X11 clipboard support
+	optdepends = wl-clipboard: Wayland clipboard support
+	noextract = claw-1.0.0.AppImage
+	options = !strip
+	source = claw-1.0.0.AppImage::https://github.com/saltnpepper97/claw/releases/download/v1.0.0/claw_1.0.0_amd64.AppImage
+	sha256sums = 4b5f8ffd181e8c09c3afe13cadee2e963b7bfff40f553d6964f4dc65dc71ec72
+
+pkgname = claw
