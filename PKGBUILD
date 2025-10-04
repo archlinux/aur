@@ -3,7 +3,7 @@
 pkgname=python-blacksheep
 _name=${pkgname#python-}
 pkgver=2.4.2
-pkgrel=5
+pkgrel=7
 epoch=
 pkgdesc="Fast web framework for Python asyncio"
 arch=($CARCH)
@@ -29,7 +29,6 @@ depends=(
     python-essentials-openapi
     python-guardpost
     python-opentelemetry-api
-    python-opentelemetry-exporter-otlp
     python-opentelemetry-sdk
     python-rodi
 )
