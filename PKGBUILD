@@ -2,7 +2,7 @@
 pkgname=ifcopenshell
 pkgver=0.8.4_alpha2508261505
 _vername=bonsai
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -25,21 +25,22 @@ depends=(
 
 )
 optdepends=(
-  'python-xsdata: blender bim addon'
-  'python-shapely: blender bim addon space generation support'
-  'python-svgwrite'
-  'python-isodate: blender bim addon'
-  'python-pystache: blender bim addon'
-  'python-socketio'
-  'python-natsort'
-  'python-openpyxl'
-  'python-odfpy: blender bim addon and ifccobie support'
-  'python-xmlschema: blender bim addon, bcf support'
+  'python-xsdata: bonsaï'
+  'python-shapely: : bonsaï'
+  'python-svgwrite: bonsaï'
+  'python-isodate: bonsaï'
+  'python-pystache: bonsaï'
+  'python-socketio: bonsaï'
+  'python-natsort: bonsaï'
+  'python-openpyxl: bonsaï'
+  'python-odfpy: bonsaï'
+  'python-xmlschema: bonsaï, bcf support'
   'python-deepdiff: ifcdiff'
-  ##  The following not in AUR
-  # 'python-tzfpy'
-  # 'python-orderly-set'
-  # 'python-pyradiance'
+  'python-tzfpy: bonsaï'
+  'python-orderly-set: bonsaï'
+  'python-gitpython: bonsaï'
+  'python-networkx: bonsaï'
+  'python-pyradiance: bonsaï'
 
 )
 
