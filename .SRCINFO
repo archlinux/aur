@@ -1,7 +1,7 @@
 pkgbase = r-av
 	pkgdesc = Working with Audio and Video in R
-	pkgver = 0.9.4
-	pkgrel = 1
+	pkgver = 0.9.5
+	pkgrel = 2
 	url = https://cran.r-project.org/package=av
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = r-av
 	optdepends = r-ps
 	optdepends = r-testthat
 	optdepends = r-curl
-	source = https://cran.r-project.org/src/contrib/av_0.9.4.tar.gz
-	md5sums = 4c946abd6e30c63285bff847a74385a8
-	b2sums = 92b861098d537f0564eab38e123af38c77008b760f2afef365ae12a58b1cccd407dd2c13cf4fffd4a408a6e47b33483bb1447ad6abcf049ef7f20e57f22c6c88
+	source = https://cran.r-project.org/src/contrib/av_0.9.5.tar.gz
+	md5sums = ecd980f1e1a9c0f713c1d6c375347369
+	b2sums = 08b24398452287f729e0aaf8d4a753d5b03c390b1b28abe4929144eed44dc4afc30b15524c85803dd14a0b44622ba0167addbd66d06f427f8b516be612a2b92e
 
 pkgname = r-av
