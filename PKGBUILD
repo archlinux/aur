@@ -6,7 +6,7 @@
 
 pkgname=gtk-gnutella
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gnutella server/client"
 arch=('i686' 'x86_64')
 options=('!lto')
@@ -23,6 +23,7 @@ sha256sums=(
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export CFLAGS="${CFLAGS} -std=gnu17"
   ./build.sh --prefix=/usr
 }
 
