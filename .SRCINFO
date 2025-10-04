@@ -1,0 +1,16 @@
+pkgbase = roblox-blink
+	pkgdesc = An IDL compiler written in Luau for ROBLOX buffer networking
+	pkgver = 0.18.4
+	pkgrel = 1
+	url = https://github.com/1Axen/blink
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = lune
+	makedepends = darklua
+	depends = glibc
+	depends = gcc-libs
+	source = roblox-blink-0.18.4.tar.gz::https://github.com/1Axen/blink/archive/refs/tags/v0.18.4.tar.gz
+	sha256sums = 7598bd536e0637967bfea094ec9a2ac8ac48b622842499be4a6a41c9e47087e1
+
+pkgname = roblox-blink
