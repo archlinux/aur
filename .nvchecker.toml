@@ -1,0 +1,4 @@
+[reel-bin]
+source = "git"
+git = "https://github.com/arsfeld/reel.git"
+prefix = "v"
