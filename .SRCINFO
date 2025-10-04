@@ -1,0 +1,15 @@
+pkgbase = libcurlpp-git
+	pkgdesc = cURLpp is a C++ wrapper for libcURL (git version)
+	pkgver = r304.d080e30
+	pkgrel = 1
+	url = http://curlpp.org
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake>=2.8.12
+	depends = curl>=7.10.0
+	source = libcurlpp-git::git+https://github.com/jpbarrette/curlpp.git
+	md5sums = SKIP
+
+pkgname = libcurlpp-git
