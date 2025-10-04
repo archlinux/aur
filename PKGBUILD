@@ -3,8 +3,8 @@
 _pkgauthor=Gu1llaum-3
 _pkgname=sshm
 pkgname=${_pkgname}-bin
-pkgver=1.7.0
-_pkgvername=v${pkgver}
+pkgver=1.8.0
+_pkgvername=${pkgver}
 pkgrel=1
 pkgdesc="A modern, interactive SSH Manager for your terminal"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('dc38ed5addb74b86e4aeb4caa240f91b8a762d06c53523203136cbc94c2b6b1e')
-sha256sums_aarch64=('f75da585e1237753f8696e78178fb6e30ac42ddd45982ff93a9cabc77473b6a9')
+sha256sums_x86_64=('0d66eb5fb5cc792be11c083a57452244f1b71e05fdc8ab2d0d46ae61f4f209d6')
+sha256sums_aarch64=('7e9bae4cf958d31b7c7d1ac50d09a8b05a6d1eb38e5d117c56509bb610da80f4')
 
 case "${CARCH}" in
 	${arch[0]})
@@ -27,8 +27,7 @@ case "${CARCH}" in
 	${arch[1]})
 		_CARCH="${_barch[1]}" ;;
 	*)
-		printf 'Architecture %s is not supported\n' "$CARCH" >&2
-		exit 1 ;;
+		_CARCH="${CARCH}" ;;
 esac
 
 package() {
