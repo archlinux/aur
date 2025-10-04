@@ -9,9 +9,9 @@ license=('GPL')
 depends=("libepoxy" "libslirp" "qt6-base" "qt6-multimedia" "sdl2" "enet" "sdl2-compat" "flac1.3" "lua")
 install=kh-melonmix.install
 source=("melonmix-$pkgver.zip::$url/releases/download/v$pkgver/MelonMix-ubuntu-$arch.zip"
-https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/icon/melon_256x256.png
-https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
-https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
+kh-melonmix.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/icon/melon_256x256.png
+kh-melonmix-days.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
+kh-melonmix-coded.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
 )
 sha256sums=("86bcfa61188d391fb3d3e178011d5af65192714cd66047312ccff53b25105574"
 SKIP
@@ -20,21 +20,14 @@ SKIP
 )
 package() {
 # making all the directories
-mkdir -p $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix
+mkdir -p "$pkgdir/opt/Kingdom Hearts Melon Mix/roms"
 mkdir -p $pkgdir/usr/bin
 mkdir -p $pkgdir/usr/share/applications
 mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
-
-# removing the DELETE_ME file that comes with the upstream package because (at least for this) it's really not needed
-rm $srcdir/roms/DELETE_ME
+target_dir="$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
 # move everything (and I mean EVERYTHING) to $pkgdir/opt/Kingdom Hearts Melon Mix
-cd $srcdir
-cp -r * $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix
-
-# removing the symlinked zip file and icon for the game, as well as the shell scripts because i dont use em anyways
-cd $pkgdir/opt/Kingdom\ Hearts\ Melon\ Mix/
-rm *.png *.zip *.sh
+install -Dm755 $srcdir/MelonMix "$pkgdir/opt/Kingdom Hearts Melon Mix"
 
 # making all the .desktop files for whatever application launcher you use
 echo "[Desktop Entry]
@@ -56,7 +49,7 @@ echo "[Desktop Entry]
 	Icon=kh-melonmix-days
 	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix-days.desktop"
 echo "[Desktop Entry]
-	Name=Kingdom Hearts: Re:Coded Melon Mix
+	Name=Kingdom Hearts: Re:coded Melon Mix
 	GenericName=KH Melon Mix (DS Emulator)
 	Exec=env QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix' -f '/opt/Kingdom Hearts Melon Mix/roms/recoded.nds'
 	Terminal=false
@@ -65,8 +58,13 @@ echo "[Desktop Entry]
 	Icon=kh-melonmix-coded
 	Categories=Game;" >>"$pkgdir/usr/share/applications/kh-melonmix-recoded.desktop"
 
-# and finally installing the icon I took from the github
-cp $srcdir/melon_256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix.png
-cp $srcdir/khCodedMM.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix-coded.png
-cp $srcdir/khDaysMM.png $pkgdir/usr/share/icons/hicolor/256x256/apps/kh-melonmix-days.png
+# and finally installing the icons I took from the github
+cd $srcdir
+for file in *.png; do
+    if [[ -f "$file" ]]; then
+        echo "Installing $file to $target_dir"
+        install -m644 "$file" "$target_dir/"
+    fi
+done
+
 }

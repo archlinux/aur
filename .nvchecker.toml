@@ -1,0 +1,4 @@
+[kh-melonmix-bin]
+source = "git"
+git = "https://github.com/vitor251093/KHMelonMix.git"
+prefix = "v"
