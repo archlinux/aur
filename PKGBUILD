@@ -6,21 +6,24 @@ arch=('any')
 license=('MIT')
 depends=('bash' 'git')
 makedepends=('git')
-# **AÑADIR:** Incluimos el archivo .desktop en la lista de fuentes
+
 source=("git+https://github.com/AndresDev859674/boot-repair.git"
         "boot-repair-andres.desktop")
 url="https://github.com/AndresDev859674/boot-repair"
-sha256sums=('SKIP'
-            'SKIP') # Añade un 'SKIP' extra para el nuevo archivo source
+sha256sums=('SKIP')
 optdepends=('git: For Update and Others Things')
 
+source=("git+https://github.com/AndresDev859674/boot-repair.git"
+        "boot-repair-andres.desktop"
+        "com.andresdev859674.boot-repair.policy")
+
 package() {
-    # 1. Instalación del binario (sin cambios)
     install -Dm755 "$srcdir/boot-repair/boot-repair.sh" \
         "$pkgdir/usr/bin/boot-repair"
 
-    # 2. Instalación del archivo Desktop Entry **(NUEVO)**
-    # El archivo .desktop debe ir a /usr/share/applications/
     install -Dm644 "$srcdir/boot-repair-andres.desktop" \
         "$pkgdir/usr/share/applications/boot-repair-andres.desktop"
+
+    install -Dm644 "$srcdir/com.andresdev859674.boot-repair.policy" \
+        "$pkgdir/usr/share/polkit-1/actions/com.andresdev859674.boot-repair.policy"
 }
