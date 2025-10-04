@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("hyprshot-rs")
 conflicts=("hyprshot-rs")
 source=("https://github.com/shikoucore/hyprshot-rs/releases/download/v$pkgver/hyprshot-rs-$pkgver-x86_64.tar.gz")
-sha256sums=('76292150102cea2304ae9299644f4b178081fbe29143fa09246d6bcaa4b53772')
+sha256sums=('70591df743444d733029365623d4e6d4ca8b160e29d12a2ef02624e9240e7c76')
 
 package() {
     install -Dm755 hyprshot-rs -t "$pkgdir/usr/bin"
