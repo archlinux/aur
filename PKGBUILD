@@ -14,7 +14,7 @@ optdepends=(
 )
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iam-vasanth/monoarch-refined/archive/v$pkgver.tar.gz")
-sha256sums=('41f9fef4e1068412912fc5012fadd55cc49044c0806705a96e5afbf04f32b5d5')
+sha256sums=('0b96b7e5258993808723cafaddc813712a24e2f85e74f22daea57766e294be4b')
 
 package() {
     cd "$srcdir/monoarch-refined-$pkgver"
