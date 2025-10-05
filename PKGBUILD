@@ -1,15 +1,20 @@
 # Maintainer: Your Name <yatharth3194@gmail.com>
 pkgname=bing_points-git
-pkgver=1.0.0
+pkgver=1.0.1.r0.gabcdef0 # This will be replaced by the output of pkgver()
 pkgrel=1
 pkgdesc="A tool to collect Bing Rewards points"
 arch=('any')
 url="https://github.com/Venom120/Bing-Points"
 license=('MIT')
-depends=('python' 'python-selenium' 'python-webdriver-manager') # Add all Python deps from req.txt
+depends=('python' 'python-selenium' 'python-webdriver-manager')
 makedepends=('git')
 source=("git+$url.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/Bing-Points"
+  git describe --long --tags | sed 's/^v//;s/-/./g'
+}
 
 package() {
   cd "$srcdir/Bing-Points"
