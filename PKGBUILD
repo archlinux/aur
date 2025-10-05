@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.15.3
 _skiaver=m124
 _skiahash=08a5439a6b
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -29,7 +29,9 @@ depends=(# ~ Aseprite's direct dependencies ~
          libexpat.so=1-64 libharfbuzz.so=0-64 libgl
          # Already required by Aseprite: libjpeg-turbo libpng zlib freetype2
          # These two are only reported by Namcap, but don't seem to be direct dependencies?
-         libfontconfig.so libxcursor)
+         libfontconfig.so libxcursor
+         # Required Dependency
+         libxrandr)
 makedepends=(# "Meta" dependencies
              cmake ninja git python
              # Aseprite (including e.g. LAF)
