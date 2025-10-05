@@ -504,7 +504,7 @@ build() {
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
         -DWHISPER_BUILD_TESTS:BOOL='OFF' \
         -Wno-dev
-+    cmake --build build/whisper.cpp --target install
+    cmake --build build/whisper.cpp --target install
   fi
 
   cd ffmpeg-src
