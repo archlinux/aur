@@ -5,7 +5,7 @@
 _pkgname="kitshell"
 pkgname="kitshell-git"
 pkgver=r236.b5dfa3c
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use panel for Wayland WMs"
 arch=(x86_64)
 url="https://github.com/bootloopmaster636/kitshell"
@@ -17,6 +17,7 @@ makedepends=(git tar fvm rustup cmake ninja clang patchelf)
 optdepends=('kitshell-cmd-git: control Kitshell via command line')
 
 conflicts=('kitshell')
+provides=('kitshell')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
