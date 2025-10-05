@@ -4,14 +4,14 @@
 
 pkgname='alice-vision'
 pkgver=3.3.0
-pkgrel=4
+pkgrel=5
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.org/"
 license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag' 'openmesh' 'opensubdiv' 'opencolorio'
-         'alembic' 'opengv' 'opencv' 'popsift' 'uncertainty-framework' 'assimp' 'onnx' 'onnxruntime' 'cuda' 'swig' 'openimageio' 'usd')
+         'alembic' 'opengv' 'opencv' 'popsift' 'assimp' 'onnx' 'onnxruntime' 'cuda' 'swig' 'openimageio' 'usd')
 makedepends=('boost' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon'
              'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'libe57format')
 optdepends=('apriltag: Recognition of Apriltags'
@@ -20,7 +20,6 @@ source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "OpenImageIO.tar.gz::https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v2.5.18.0.tar.gz"
         "LibPNG.tar.gz::https://download.sourceforge.net/libpng/libpng-1.6.39.tar.gz"
-        "Eigen.tar.bz2::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2"
         "FindCoinUtils.cmake"
         "FindClp.cmake"
         "FindOsi.cmake"
@@ -32,12 +31,11 @@ sha256sums=('abdd3b872de2d42d089728fc1ee151c24a1ed78297fc8713c9efd02801bdcc90'
             'SKIP'
             'f57481435cec18633d3eba9b2e8c483fc1df6f0a01c5c9f98cbae6d1c52928e5'
             'af4fb7f260f839919e5958e5ab01a275d4fe436d45442a36ee62f73e5beb75ba'
-            'b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626'
             'd21691bfd9c2561cea52b5f48caf885ec6f8c2a0603ce594914bff610e77a0c5'
             '6523435334eec6e39a244371287504cd0a0e88aa0cbe5dcac38b819ea881074e'
             'fbb87c86bc0b2ee2c98abfbecb0d555f75f01ccf5d4c59c22bb598e7f2897bf9'
             '3f02c715f27498ac8982edee3e3af151b0cd2a9cb83da37fef3b7fec1e34b169'
-            '3f409ebf4d5e6fe4865f2a883b16eb3f12abcd21461d968dbb0cc1eb4da131a9'
+            '21c3916eba566c125ac22938cc113c88b8535dc7c8bb510c2df47f47c302cbb0'
             'b474a12823b1fb0e1613bba0d7bd455f63124aa8c29b3d00df94f0a3c00ab900')
 
 prepare() {
@@ -104,7 +102,7 @@ build() {
 	-DAV_BUILD_USD=OFF \
 	-DAV_BUILD_GEOGRAM=OFF \
 	-DAV_BUILD_TBB=OFF \
-	-DAV_BUILD_EIGEN=ON \
+	-DAV_BUILD_EIGEN=OFF \
 	-DAV_BUILD_EXPAT=OFF \
 	-DAV_BUILD_OPENEXR=OFF \
 	-DAV_BUILD_ALEMBIC=OFF \
@@ -127,8 +125,8 @@ package() {
 
   cd ${srcdir}/AliceVision
 
-  DESTDIR="${pkgdir}" make -C build install
-  DESTDIR="${pkgdir}" make -C build/external/aliceVision_build install
+  DESTDIR="${pkgdir}" make -C build install/fast
+  DESTDIR="${pkgdir}" make -C build/external/aliceVision_build install/fast
 
   mkdir -p "${pkgdir}"/opt/alicevision/
   cp -r build/external/tmpinstall/{include,lib} "${pkgdir}"/opt/alicevision/

@@ -10,7 +10,7 @@ index 313a704c8..1e39e8dbf 100644
  option(ALICEVISION_BUILD_DEPENDENCIES "Build all AliceVision dependencies" OFF)
  option(AV_BUILD_ALICEVISION "Enable building of AliceVision" ON)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index dfa00ff0b..122c42b46 100644
+index dfa00ff0b..0c1a917d9 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -123,7 +123,7 @@ if (ALICEVISION_USE_RPATH)
@@ -33,6 +33,15 @@ index dfa00ff0b..122c42b46 100644
  set(ALICEVISION_HAVE_SSE 0)
  if (SSE2_FOUND OR TARGET_ARCHITECTURE STREQUAL "native")
      if (MSVC AND NOT ${CMAKE_CL_64})
+@@ -373,7 +373,7 @@ endif()
+ # ==============================================================================
+ # Eigen
+ # ==============================================================================
+-find_package(Eigen3 3.3 REQUIRED)
++find_package(Eigen3 REQUIRED)
+ if (Eigen3_FOUND OR EIGEN3_FOUND)
+     # message(STATUS "EIGEN_INCLUDE_DIR: ${EIGEN_INCLUDE_DIR}")
+     if (AV_EIGEN_MEMORY_ALIGNMENT)
 @@ -448,7 +448,9 @@ endif()
  # Flann
  # ==============================================================================
@@ -143,44 +152,10 @@ index 8dc4a0d12..6315227b4 100644
  # whether it is built with CCTags
  set(ALICEVISION_HAVE_CCTAG @ALICEVISION_HAVE_CCTAG@)
 diff --git a/src/cmake/Dependencies.cmake b/src/cmake/Dependencies.cmake
-index c14b5c430..2c68a5031 100644
+index c14b5c430..27bca5482 100644
 --- a/src/cmake/Dependencies.cmake
 +++ b/src/cmake/Dependencies.cmake
-@@ -295,16 +295,13 @@ if(AV_BUILD_EIGEN)
-     set(EIGEN_TARGET eigen)
- 
-     ExternalProject_Add(${EIGEN_TARGET}
--        URL https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
--        URL_HASH MD5=132dde48fe2b563211675626d29f1707
--        DOWNLOAD_DIR ${BUILD_DIR}/download/eigen
-         PREFIX ${BUILD_DIR}
-         BUILD_IN_SOURCE 0
-         BUILD_ALWAYS 0
-         UPDATE_COMMAND ""
--        SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/eigen
-+        SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/../../eigen-3.4.0
-         BINARY_DIR ${BUILD_DIR}/eigen_build
--        INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
-+        INSTALL_DIR ${BUILD_DIR}/tmpinstall
-         CONFIGURE_COMMAND ${CMAKE_COMMAND} 
-             -DCMAKE_CXX_STANDARD=20
-             ${EIGEN_CMAKE_ALIGNMENT_FLAGS}
-@@ -315,10 +312,10 @@ if(AV_BUILD_EIGEN)
- 
-     set(EIGEN_CMAKE_FLAGS
-         ${EIGEN_CMAKE_ALIGNMENT_FLAGS}
--        -DEigen3_DIR:PATH=${CMAKE_INSTALL_PREFIX}/share/eigen3/cmake
--        -DEIGEN3_INCLUDE_DIR=${CMAKE_INSTALL_PREFIX}/include/eigen3
--        -DEIGEN_INCLUDE_DIR=${CMAKE_INSTALL_PREFIX}/include/eigen3
--        -DEigen_INCLUDE_DIR=${CMAKE_INSTALL_PREFIX}/include/eigen3
-+        -DEigen3_DIR:PATH=${BUILD_DIR}/tmpinstall/share/eigen3/cmake
-+        -DEIGEN3_INCLUDE_DIR=${BUILD_DIR}/tmpinstall/include/eigen3
-+        -DEIGEN_INCLUDE_DIR=${BUILD_DIR}/tmpinstall/include/eigen3
-+        -DEigen_INCLUDE_DIR=${BUILD_DIR}/tmpinstall/include/eigen3
-     )
- endif()
- 
-@@ -514,21 +511,20 @@ if(AV_BUILD_PNG)
+@@ -514,21 +514,20 @@ if(AV_BUILD_PNG)
  
      ExternalProject_Add(
          ${PNG_TARGET}
@@ -206,7 +181,7 @@ index c14b5c430..2c68a5031 100644
              <SOURCE_DIR>
          BUILD_COMMAND $(MAKE) -j${AV_BUILD_DEPENDENCIES_PARALLEL}
          DEPENDS ${ZLIB_TARGET}
-@@ -1136,36 +1132,32 @@ if(AV_BUILD_OPENIMAGEIO)
+@@ -1136,36 +1135,32 @@ if(AV_BUILD_OPENIMAGEIO)
      set(OPENIMAGEIO_TARGET openimageio)
  
      ExternalProject_Add(${OPENIMAGEIO_TARGET}
@@ -253,7 +228,7 @@ index c14b5c430..2c68a5031 100644
              # TODO: build with libheif
          BUILD_COMMAND $(MAKE) -j${AV_BUILD_DEPENDENCIES_PARALLEL}
          DEPENDS ${BOOST_TARGET} ${OPENEXR_TARGET} ${TIFF_TARGET} ${PNG_TARGET} ${JPEG_TARGET} ${LIBRAW_TARGET} ${ZLIB_TARGET} ${FFMPEG_TARGET} ${PYBIND11_TARGET}
-@@ -1434,18 +1426,30 @@ if(AV_BUILD_ALICEVISION)
+@@ -1434,18 +1429,30 @@ if(AV_BUILD_ALICEVISION)
          BINARY_DIR ${BUILD_DIR}/aliceVision_build
          INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
          CONFIGURE_COMMAND ${CMAKE_COMMAND}
@@ -282,7 +257,7 @@ index c14b5c430..2c68a5031 100644
 +        -DALICEVISION_USE_CUDA=ON
 +        -DALICEVISION_USE_CCTAG=ON
 +        -DALICEVISION_USE_POPSIFT=ON
-+        -DALICEVISION_USE_UNCERTAINTYTE=ON
++        -DALICEVISION_USE_UNCERTAINTYTE=OFF
 +        -DALICEVISION_USE_ALEMBIC=ON
 +        -DALICEVISION_USE_OPENGV=ON
 +        -DALICEVISION_USE_OPENCV=ON
@@ -293,7 +268,7 @@ index c14b5c430..2c68a5031 100644
  
          ${ZLIB_CMAKE_FLAGS}
          ${ASSIMP_CMAKE_FLAGS}
-@@ -1476,5 +1480,6 @@ if(AV_BUILD_ALICEVISION)
+@@ -1476,5 +1483,6 @@ if(AV_BUILD_ALICEVISION)
  
          -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR> <SOURCE_DIR>
          DEPENDS ${AV_DEPS}
