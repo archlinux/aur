@@ -1,12 +1,12 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
-pkgver=r422.59cac22
+pkgver=r439.ec2a853
 pkgrel=1
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
 license=('GPL-3.0-only')
 url=https://github.com/TwintailTeam/TwintailLauncher
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav' 'gstreamer' 'gstreamer-vaapi')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "twintaillauncher-bin")
@@ -36,7 +36,6 @@ package(){
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/7zr -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm644 $_pkgname/src-tauri/target/release/resources/hkrpg_patch.dll -t $pkgdir/usr/lib/twintaillauncher/resources/
-	install -Dm644 $_pkgname/src-tauri/target/release/resources/libs/steamclient.so -t $pkgdir/usr/lib/twintaillauncher/resources/libs/
 	install -Dm755 $_pkgname/src-tauri/target/release/twintaillauncher -t $pkgdir/usr/bin
 	install -Dm644 $_pkgname/twintaillauncher.desktop -t $pkgdir/usr/share/applications
 	install -Dm644 $_pkgname/src-tauri/icons/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png
