@@ -2,7 +2,7 @@
 
 pkgname=ayugram-desktop
 pkgver=5.16.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -47,16 +47,17 @@ makedepends=('boost'
              'tl-expected')
 optdepends=('geoclue: geoinformation support'
             'geocode-glib-2: geocoding support'
-            'geocode-glib: geocoding support'
             'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
-            'webkit2gtk: embedded browser features provided by webkit2gtk'
             'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
             'xdg-desktop-portal: desktop integration')
 install=ayugram-desktop.install
 _tdlib_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
 source=("AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
         "td-$_tdlib_commit.tar.gz::https://github.com/tdlib/td/archive/$_tdlib_commit.tar.gz"
-        "glib2.86.patch")
+        "glib2.86.patch"
+        "0001-Fix-compatibility-with-ffmpeg-8.patch"
+        "https://github.com/desktop-app/cmake_helpers/commit/682f1b57.patch"
+        "https://github.com/telegramdesktop/tdesktop/commit/28d19a99.patch")
 declare -Ag _modules_name_map=([cmake]=https://github.com/desktop-app/cmake_helpers/archive/f3d6471bd58dbad727d4f8fbccd0fb36632eee9e.tar.gz
                                [cmake/external/glib/cppgir]=https://gitlab.com/mnauw/cppgir/-/archive/33ee935b39efd03bb7ab8f62ad02f7f2cd018dc8/cppgir-33ee935b39efd03bb7ab8f62ad02f7f2cd018dc8.tar.gz
                                [cmake/external/glib/cppgir/expected-lite]=https://github.com/martinmoene/expected-lite/archive/95b9cb015fa17baa749c2b396b335906e1596a9e.tar.gz
@@ -155,6 +156,9 @@ unset _source_str _uri
 sha256sums=('a6342cb3dc5f9112d05942998c50cf0688d6487842541a333b6a94bcbb1bfa8e'
             'f2c6b92533ba41a024b9fdb86d346c8bfc876d5961738ad463effbd844d61405'
             '57b855e701ed29da039431b2688082e6885c368e20dd38bbedffe1633e5efeda'
+            'd44a47b0dda36762090bbfcbb8e402d7308f3646d99a882b7d5fc3c18cc63540'
+            'beb19d9a662fbb73045bd15ffae6d90462d6c9b46897aea7ae04c7da8081f04c'
+            'e3aabdf4942f1e22819dffe4eb481ca0d7e32cfbed9443120c2d29f3abf07971'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '269cc8fe51bd6344d2f3924c999912053d2acf8cfeee53e6f3e1ccc9bb3891f6'
             '6c16c9cc1dea66bdd9340735e447906e191caf87133a10ead077fbf1bd3b0121'
@@ -202,7 +206,17 @@ prepare() {
         Telegram/ThirdParty/cld3/CMakeLists.txt
     #https://github.com/telegramdesktop/tdesktop/issues/26489#issuecomment-1627555107
     #CMAKE_BUILD_TYPE must match libtg_owt's
-    patch -Np1 < ../glib2.86.patch
+    cd "$srcdir"
+    patch -d "AyuGramDesktop-$pkgver" -Np1 -i ../glib2.86.patch
+    # Fix compatibility with ffmpeg 8
+    patch -d "AyuGramDesktop-$pkgver" -Np1 -i ../0001-Fix-compatibility-with-ffmpeg-8.patch
+    # Fix build with Qt 6.10
+    patch -d "AyuGramDesktop-$pkgver/cmake" -p1 < 682f1b57.patch
+    ## Different with Telegram Desktop:
+    # Only `malloc_trim(0)` here.
+    # https://github.com/AyuGram/AyuGramDesktop/blob/dev/Telegram/SourceFiles/platform/linux/integration_linux.cpp#L179
+    # https://github.com/telegramdesktop/tdesktop/blob/dev/Telegram/SourceFiles/platform/linux/integration_linux.cpp#L182
+    head -n 27 28d19a99.patch | patch -d "AyuGramDesktop-$pkgver" -p1
 }
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
