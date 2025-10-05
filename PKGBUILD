@@ -3,7 +3,7 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 
-pkgrel=2
+pkgrel=3
 pkgver=1.7
 _name="tvb-recorder"
 pkgname="$_name"
