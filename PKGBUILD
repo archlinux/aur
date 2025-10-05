@@ -1,8 +1,8 @@
 pkgname=mox
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern full-featured open source secure mail server for low-maintenance self-hosted email"
-arch=('x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://www.xmox.nl/"
 license=('MIT')
 makedepends=('go' 'npm')

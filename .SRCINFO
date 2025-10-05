@@ -1,9 +1,15 @@
 pkgbase = mox
 	pkgdesc = Modern full-featured open source secure mail server for low-maintenance self-hosted email
 	pkgver = 0.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmox.nl/
+	arch = i686
+	arch = pentium4
 	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = npm
