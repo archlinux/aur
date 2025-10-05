@@ -1,5 +1,5 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
-# Maintainer: Jia Yin<lok-ation at outlook dot com>
+# Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
 
 pkgname=hmcl-beta-bin
 pkgver=3.6.17.296
