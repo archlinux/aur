@@ -17,7 +17,7 @@ pkgbase = garage-consul
 	conflicts = garage
 	options = !lto
 	backup = etc/garage.toml
-	source = garage-consul::git+https://git.deuxfleurs.fr/Deuxfleurs/garage#tag=v2.1.0
+	source = garage::git+https://git.deuxfleurs.fr/Deuxfleurs/garage#tag=v2.1.0
 	source = systemd.service
 	source = sysusers.conf
 	source = tmpfiles.conf

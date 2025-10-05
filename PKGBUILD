@@ -3,7 +3,7 @@
 
 pkgname=garage-consul
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A S3-compatible distributed object storage service tailored for self-hosting (with consul)'
 arch=(x86_64)
 url='https://garagehq.deuxfleurs.fr/'
@@ -22,7 +22,7 @@ makedepends=(git rust)
 options=(!lto)
 backup=(etc/garage.toml)
 source=(
-  "$pkgname::git+https://git.deuxfleurs.fr/Deuxfleurs/garage#tag=v$pkgver"
+  "garage::git+https://git.deuxfleurs.fr/Deuxfleurs/garage#tag=v$pkgver"
   systemd.service
   sysusers.conf
   tmpfiles.conf
