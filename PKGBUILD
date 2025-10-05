@@ -3,11 +3,13 @@
 _pkg=container2wasm
 pkgname=$_pkg-bin
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Container to WASM converter"
 arch=('x86_64' 'aarch64')
 conflicts=('container2wasm')
 provides=('container2wasm')
+optdepends=('wasmtime'
+            'wasmer')
 source=(
   "https://raw.githubusercontent.com/container2wasm/container2wasm/refs/tags/v$pkgver/LICENSE"
   "https://github.com/container2wasm/container2wasm/releases/download/v$pkgver/c2w-net-proxy.wasm"

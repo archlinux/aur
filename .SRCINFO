@@ -1,11 +1,13 @@
 pkgbase = container2wasm-bin
 	pkgdesc = Container to WASM converter
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/container2wasm/container2wasm
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	optdepends = wasmtime
+	optdepends = wasmer
 	provides = container2wasm
 	conflicts = container2wasm
 	source = https://raw.githubusercontent.com/container2wasm/container2wasm/refs/tags/v0.8.3/LICENSE
