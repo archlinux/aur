@@ -1,7 +1,7 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=go-prism
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Turn raw test output into beautiful data'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ install=.install
 makedepends=('go')
 conflicts=('go-prism-bin' 'go-prism-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('1a0c12a9d5cf35fe4bb21a946e5280efa4aa5232e5dcec3785b15a13461c5c1e430e9b00778a16930079d10fc09fd807590e5a409200ed6534ac62e8c746cef6')
+b2sums=('60c29045369a0ef91bb6a343b637b5b08f04e845d50b66e63755771e9065047c8cba251c28c928f5c789a3bc5669657f248872dd42d0c629db9e7458ae26430e')
 
 prepare() {
   cd "prism-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = go-prism
 	pkgdesc = Turn raw test output into beautiful data
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/DaltonSW/prism
 	install = .install
@@ -10,7 +10,7 @@ pkgbase = go-prism
 	makedepends = go
 	conflicts = go-prism-bin
 	conflicts = go-prism-git
-	source = go-prism-1.1.0.tar.gz::https://github.com/DaltonSW/prism/archive/refs/tags/v1.1.0.tar.gz
-	b2sums = 1a0c12a9d5cf35fe4bb21a946e5280efa4aa5232e5dcec3785b15a13461c5c1e430e9b00778a16930079d10fc09fd807590e5a409200ed6534ac62e8c746cef6
+	source = go-prism-1.2.0.tar.gz::https://github.com/DaltonSW/prism/archive/refs/tags/v1.2.0.tar.gz
+	b2sums = 60c29045369a0ef91bb6a343b637b5b08f04e845d50b66e63755771e9065047c8cba251c28c928f5c789a3bc5669657f248872dd42d0c629db9e7458ae26430e
 
 pkgname = go-prism
