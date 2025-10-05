@@ -1,4 +1,4 @@
-# Maintainer: Jia Yin<lok-ation at outlook dot com>
+# Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
 
 pkgname=sddm-minesddm-theme-git
 pkgver=v2.1.0.r1.gcdc13ec
