@@ -1,43 +1,40 @@
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 
 pkgname=openconnect-sso
-pkgver=0.8.0
-pkgrel=6
+_pkgname_us="${pkgname//-/_}"
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Wrapper script for OpenConnect supporting Azure AD (SAMLv2) authentication"
 arch=('any')
 url="https://github.com/vlaci/openconnect-sso"
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'python-pyqtwebengine' 'python-attrs' 'python-colorama'
+depends=('python' 'python-pyqt6' 'python-pyqt6-webengine' 'python-attrs' 'python-colorama'
          'python-keyring' 'python-lxml' 'python-prompt_toolkit' 'python-pyxdg' 'python-requests'
-         'python-structlog' 'python-toml' 'python-pysocks' 'python-jaraco.classes' 'sudo' 'openconnect')
-makedepends=('python-setuptools')
+         'python-setuptools' 'python-pyotp' 'python-structlog' 'python-toml' 'python-pysocks'
+         'python-jaraco.classes' 'sudo' 'openconnect')
+makedepends=()
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 optdepends=()
-source=("https://github.com/vlaci/openconnect-sso/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
-        'relax-pyxdg-version-constraints.patch'
-        'relax-keyring-version-constraints.patch')
-sha256sums=('a7bde0a8dd35d7bab3c66f28b420c343c270a7ee45e98e04bfa6ecc6958f5c5b'
-            '820cc200d62db90446f9102ddce2c2b166b5cc487e6ba0490ec3f62ad762bb31'
-            '1a06f5ae5ba7e8204b2b975402f080e7e04364a2cf102d9c6e172a16f268f0ab')
+source=("https://github.com/PrestonHager/openconnect-sso/releases/download/v$pkgver/$_pkgname_us-$pkgver.tar.gz")
+sha256sums=('022425dc2a52b76f3d37fd362971403feb2867e87ff2355ad403e1c61b2f1483')
 
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/relax-pyxdg-version-constraints.patch"
-  patch --forward --strip=1 --input="${srcdir}/relax-keyring-version-constraints.patch"
+  cd "$_pkgname_us-$pkgver"
+  # patch --forward --strip=1 --input="${srcdir}/relax-everything.patch"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname_us-$pkgver"
   python setup.py build
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname_us-$pkgver"
   pytest || /usr/bin/true # pytest-httpserver
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname_us-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
