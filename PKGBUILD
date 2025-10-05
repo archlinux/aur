@@ -3,7 +3,7 @@
 # Contributor: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for managing recipes, planning meals, building shopping lists and much much more."
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
@@ -30,7 +30,7 @@ sha512sums=(
   '227839e7f3c4fe80ffd79518112182a8e8781bcdc2764fee6918feff95874ad21750be63b3a60c9b8e6ac65e0538e74148389ff2c8a8dce8728b80337e1b8731'
   '51e62f35632d709398bac39c11afcf452200a9ccfe55be5d0e6cf7f5f164a9bbd6bca0faebf3eb544017943e5d4597513ca0dfa0ee88de765b2f1b202341316c'
   '45fdbf45419a8619a5c04cb3c1327a57d080418a86596eac80da73bce13e4404595383bc1e77e21b86678d398c0c024fe06c4640219d23a39d945b0628bf8379'
-  '8f188cb8d22e67035b6b9b4a84b05461a80a073b5d0c0070e67e2b08d437fedcb66180761ada70b9cdb5b65b1a5511c635411aaa904ca28dbe746ad6bd1eda05'
+  '0c4ad49ff83e8bdb636e41a9df516e611033c5269ef662e1629e8922dab699b3fa07207fb9f13ca351aeb1581db1bb3575cf6bf6ef70517953e152aefe19fafb'
 )
 
 
