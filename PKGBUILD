@@ -4,8 +4,8 @@
 
 
 
-pkgrel=3
 pkgver=1.7
+pkgrel=5
 _name="tvb-recorder"
 pkgname="$_name"
 pkgdesc='TV-recording und live-switch with TV-Browser plugin'
