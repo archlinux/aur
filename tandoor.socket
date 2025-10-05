@@ -1,0 +1,10 @@
+[Unit]
+Description=tandoor recipes socket
+
+[Socket]
+ListenStream=/run/tandoor.socket
+SocketUser=http
+SocketMode=0600
+
+[Install]
+WantedBy=sockets.target
