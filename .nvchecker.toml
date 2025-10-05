@@ -1,4 +1,4 @@
-[gql]
+[gql-bin]
 source = "github"
 github = "AmrDeveloper/GQL"
 prefix = "v"
