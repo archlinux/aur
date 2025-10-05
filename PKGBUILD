@@ -14,17 +14,16 @@ optdepends=(
 )
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iam-vasanth/monoarch-refined/archive/v$pkgver.tar.gz")
-sha256sums=('0b96b7e5258993808723cafaddc813712a24e2f85e74f22daea57766e294be4b')
+sha256sums=('41f9fef4e1068412912fc5012fadd55cc49044c0806705a96e5afbf04f32b5d5')
 
 package() {
-    cd "$srcdir/monoarch-refined-$pkgver"
-    
-    # Install theme files
     install -d "$pkgdir/usr/share/plymouth/themes/monoarch-refined"
-    cp -r images "$pkgdir/usr/share/plymouth/themes/monoarch-refined/"
-    install -Dm644 monoarch-refined.plymouth "$pkgdir/usr/share/plymouth/themes/monoarch-refined/"
-    install -Dm644 monoarch-refined.script "$pkgdir/usr/share/plymouth/themes/monoarch-refined/"
-    
-    # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cp -r "$srcdir/monoarch-refined-$pkgver/monoarch-refined/images" \
+          "$pkgdir/usr/share/plymouth/themes/monoarch-refined/"
+    install -Dm644 "$srcdir/monoarch-refined-$pkgver/monoarch-refined/monoarch-refined.plymouth" \
+          "$pkgdir/usr/share/plymouth/themes/monoarch-refined/"
+    install -Dm644 "$srcdir/monoarch-refined-$pkgver/monoarch-refined/monoarch-refined.script" \
+          "$pkgdir/usr/share/plymouth/themes/monoarch-refined/"
+    install -Dm644 "$srcdir/monoarch-refined-$pkgver/LICENSE" \
+          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

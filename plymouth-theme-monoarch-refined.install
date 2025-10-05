@@ -21,7 +21,7 @@ pre_remove() {
     current_theme=$(plymouth-set-default-theme)
     if [ "$current_theme" = "monoarch-refined" ]; then
         echo ""
-        echo "==> Warning: monoarch-refined is currently the active theme."
+        echo "==> Warning: monoarch-refined is  currently the active theme."
         echo "==> Switch to another theme before removing:"
         echo "    sudo plymouth-set-default-theme -R"
         echo "    sudo mkinitcpio -P"
