@@ -1,11 +1,11 @@
 pkgname=gzdoom-bin
 pkgver=4.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/gzdoom"
 license=('BSD' 'GPL3' 'LGPL3')
-depends=('gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'zmusic-bin')
+depends=('gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'openal' 'sdl2' 'zmusic-bin' 'libvpx')
 conflicts=("gzdoom" "gzdoom-git")
 makedepends=('unzip')
 _pkgrel_x86_64=1
