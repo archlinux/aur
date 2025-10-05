@@ -26,7 +26,7 @@ build() {
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X github.com/bab-sh/bab/internal/version.Version=${pkgver} \
   -X github.com/bab-sh/bab/internal/version.Commit=6dd86c3c876ec23de674a1f2e66ad3a060f2859f \
-  -X github.com/bab-sh/bab/internal/version.Date=2025-10-05T18:58:20Z \
+  -X github.com/bab-sh/bab/internal/version.Date=2025-10-05T19:18:32Z \
   -X github.com/bab-sh/bab/internal/version.BuiltBy=aur" \
   -o bab .
 }
