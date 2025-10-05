@@ -5,7 +5,7 @@
 
 pkgname=python-pypuppetdb
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for working with the PuppetDB REST API'
 arch=('any')
 url='https://github.com/voxpupuli/pypuppetdb'
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('python-requests')
 makedepends=('python-setuptools' 'python-sphinx_rtd_theme'
              'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest-cov' 'python-mock' 'python-httpretty')
+checkdepends=('python-pytest-cov' 'python-httpretty')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voxpupuli/pypuppetdb/archive/refs/tags/${pkgver}.tar.gz"
         "update-docs-to-use-importlib.patch"
         "fix-deprecations-warnings.patch")
