@@ -1,6 +1,6 @@
 pkgbase = ocaml-uring
 	pkgdesc = Bindings to io_uring for OCaml
-	pkgver = 0.9
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/ocaml-multicore/ocaml-uring
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-uring
 	depends = ocaml-fmt>=0.8.10
 	depends = ocaml-optint>=0.1.0
 	options = !strip
-	source = ocaml-uring-0.9.tar.gz::https://github.com/ocaml-multicore/ocaml-uring/archive/v0.9.tar.gz
-	b2sums = 5f1cdda606b60947ec8892b3bf46e47a3393714cd8a785cba334955f6c9e1ab4219f21e972c9bc8f3595e167f58e56458b82612e88c27f9c2f3c3f97f973ba19
+	source = ocaml-uring-2.7.0.tar.gz::https://github.com/ocaml-multicore/ocaml-uring/archive/v2.7.0.tar.gz
+	b2sums = 05828cfb43493dfc27cc4dc6ee21a24918baf38fb2da7c6bf1639cc121e3c459fcb6defdf289d29f6ff15a4457c4657fefd1093e2175c656eb675a067ab8d6c1
 
 pkgname = ocaml-uring

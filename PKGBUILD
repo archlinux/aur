@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='uring'
 pkgname="ocaml-$_projectname"
-pkgver='0.9'
+pkgver='2.7.0'
 pkgrel='1'
 pkgdesc='Bindings to io_uring for OCaml'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('linux-api-headers')
 checkdepends=('ocaml-cmdliner>=1.1.0' 'ocaml-logs>=0.5.0' 'ocaml-lwt>=5.0.0' 'ocaml-mdx>=2.1.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('5f1cdda606b60947ec8892b3bf46e47a3393714cd8a785cba334955f6c9e1ab4219f21e972c9bc8f3595e167f58e56458b82612e88c27f9c2f3c3f97f973ba19')
+b2sums=('05828cfb43493dfc27cc4dc6ee21a24918baf38fb2da7c6bf1639cc121e3c459fcb6defdf289d29f6ff15a4457c4657fefd1093e2175c656eb675a067ab8d6c1')
 
 _sourcedirectory="$pkgname-$pkgver"
 
