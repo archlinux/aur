@@ -1,0 +1,13 @@
+pkgbase = bab
+	pkgdesc = Custom commands for your projects
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/bab-sh/bab
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.25.1
+	source = bab-0.0.4.tar.gz::https://github.com/bab-sh/bab/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = c1b7b551733e4e81d8a6fc4976a88c59702f1cc324c765375e8a50a31b78311e
+
+pkgname = bab
