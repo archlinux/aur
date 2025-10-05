@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=1.0.0.beta.1.r1.gf339e21
+pkgver=1.0.0.beta.1.1.r32.g3465ce7
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-comp.git'
         'update_to_libdisplay-info_3.patch')
 sha256sums=('SKIP'
-            '2a762c10af946a033f8781e3ac433c2291c9f67256ec37776d33b76ca37615d8')
+            'a5ebecc919a1e0a60585a9f579aef39e35377d36c4585fd8a8c563d3c6d13cd0')
 
 pkgver() {
   cd "${pkgname%-git}"
