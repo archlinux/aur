@@ -1,4 +1,4 @@
-# Maintainer: Lennon <you@example.com>
+# Maintainer: nobody <you@example.com>
 pkgname=lib32-rav1e
 pkgver=0.8.1
 pkgrel=1
