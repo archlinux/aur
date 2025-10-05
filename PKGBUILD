@@ -3,8 +3,8 @@
 _pkgauthor=abenz1267
 _pkgname=elephant
 pkgbase=${_pkgname}-bin
-pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin)
-pkgver=1.3.3
+pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin)
+pkgver=2.0.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="general purpose datasource and executor"
@@ -28,7 +28,8 @@ optdepends=('elephant-providerlist: providerlist provider'
             'elephant-symbols: symbols provider'
             'elephant-todo: todo provider'
             'elephant-unicode: unicode provider'
-            'elephant-websearch: websearch provider')
+            'elephant-websearch: websearch provider'
+            'elephant-bluetooth: bluetooth provider')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
@@ -44,22 +45,24 @@ source_x86_64=("elephant-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${p
                "desktopapplications-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/desktopapplications-linux-${_barch[0]}.tar.gz"
                "clipboard-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clipboard-linux-${_barch[0]}.tar.gz"
                "calc-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/calc-linux-${_barch[0]}.tar.gz"
-               "archlinuxpkgs-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/archlinuxpkgs-linux-${_barch[0]}.tar.gz")
+               "archlinuxpkgs-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/archlinuxpkgs-linux-${_barch[0]}.tar.gz"
+               "bluetooth-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/bluetooth-linux-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0a8e339b754aa6874408fe0c9af777271c8be086d7ccfc2732c1cac84f7b4311')
-sha256sums_x86_64=('98591d88d00e8392d4e7e92516a773fa9e422d938ce1d3e2f67c2f63400d0c5d'
-                   '3e5219b04062ccad3809afadbbe388fe51799ce81312744eb3fe0e10f9ee9630'
-                   'f442580aae77836de19589dfc8212cc22617cbe6de43a6bc025ae72f2d92ba98'
-                   '4d0e5d0ca2d3752d1f5fdb1b68ad285bbaa038728fdcfe5fed0fb2add5972414'
-                   'fec35819316af99339ce0846b3872474196cc1c7a8f46216468075f9a98eb07c'
-                   '086245604a4473ed6947033d976e1af2bfdde13d3e197fc14df8158a8c09d81e'
-                   'a35f00884423ffa959bde10b71b8a580904b80b0f3c6fe0978f6ad9abd0da74b'
-                   '556f8415e4e34fe431d1ed2cdfe787a2a39859d3479d19ef21984d2cfa2c86ef'
-                   'd922e2f1f88ede993ab373fcd4f3ccc51235b50715176e775c4f9bceb866691d'
-                   '048c61b034c633fe7d68d88f684929ba304bfcab7177449e08c005e99d69d4b7'
-                   '46cecd1d9ab61afbcc4b4ba86122ae7a83c839700c4f9e3809909382dc9d9d37'
-                   'ca37fea2b1cf6570cdeca7c98db161ceae4ef51f7f5fa593e95e3c332add2814'
-                   'd0efcd41fe9a9076457e16f5ecd9d0755b3625a25cfda79ea588bb1a5cdd8fed')
+sha256sums_x86_64=('6617dd95d94a8fa547dbb210bf6d6ed2c1aedde0478fa737e61a7eca4914f9bf'
+                   '69a7cacf2eef99ecceea532bdb8ee6078ddb0a260c151467beb5be9c5d55943e'
+                   '8db9ad9e721d92e0c60f6617ecc2706ea072772ed41000cbcd3f57be3544ad54'
+                   '6cbb86f29e9e252b3f0f19fab26ada5dfa59a43689d93d25f756662c654be07b'
+                   '66cd18f95cb8e3475eedfeb89602d9e22a4c55889f451c504a619c65388281e2'
+                   '6dfa13c7231db6e475e5a9cde781d26a1e5db839dec547dfa2d65a99dddf087e'
+                   '0582523c0c6071b80a1d420b49d6207104ae7947a3b1b72501a46ba779b4079e'
+                   '68dd7f7b704249df35ef489d934a63de120e0dc644e7eea98628e54d5cc72490'
+                   '0ec050e9669b1a2939fa1ccf0a49c615528af9aaa03aceb7ebeb014237559208'
+                   '912d1cc8cec24149157ae45d884ca5ab5bce6ca9c908188291d5166558bfb047'
+                   '11f3bfa20c4d5bfde7cd87666f724614602098e9fdfa0d7a4f8119fda34cc3ac'
+                   '84a7129580f8853731ab660c8ea3d1c5f56ab01d78a4ed8da51573d0b9499d2f'
+                   'baf05f9c718a2506c8e71af2434bb0fffd88f313f1700f06ce12081493a83dec'
+                   'c5da3dcd3b9ca28bd56bf3e27ceaf7de825cb26ce962e18a9d6b88916ce3c0a9')
 
 case $CARCH in
     ${arch[0]})
@@ -245,3 +248,16 @@ package_elephant-archlinuxpkgs-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+package_elephant-bluetooth-bin() {
+    pkgdesc='bluetooth provider for elephant'
+
+    conflicts=("${_pkgname}-bluetooth")
+    provides=("${_pkgname}-bluetooth")
+    depends+=("${_pkgname}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "bluetooth-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/bluetooth.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
