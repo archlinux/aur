@@ -1,0 +1,20 @@
+pkgbase = container2wasm-bin
+	pkgdesc = Container to WASM converter
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/container2wasm/container2wasm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = container2wasm
+	conflicts = container2wasm
+	source = https://raw.githubusercontent.com/container2wasm/container2wasm/refs/tags/v0.8.3/LICENSE
+	source = https://github.com/container2wasm/container2wasm/releases/download/v0.8.3/c2w-net-proxy.wasm
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	sha256sums = 7598b66f8307e4f699e0512d8c05df92165b7fa1efe718db2df64f2ec4e8c046
+	source_x86_64 = container2wasm-bin-0.8.3-x86_64::https://github.com/container2wasm/container2wasm/releases/download/v0.8.3/container2wasm-v0.8.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = eac8597edb498bfc9619b724a8890aede79eaf4ab6d4628cd1386d62c8238f84
+	source_aarch64 = container2wasm-bin-0.8.3-aarch64::https://github.com/container2wasm/container2wasm/releases/download/v0.8.3/container2wasm-v0.8.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4ace5f8deb3a3ba719005f7ca89db5335fc27bfa0fb4c4e31b094ffaeb597021
+
+pkgname = container2wasm-bin
