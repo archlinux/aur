@@ -1,6 +1,7 @@
 # Maintainer: Benjamim Gois <benjamim.gois@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pascube-git
-pkgver=v1.5.0.r2.g91315c5
+pkgver=1.5.1.r0.ge926659
 pkgrel=1
 pkgdesc="A simple OpenGL spinning cube written in Pascal (Lazarus/Qt6)"
 arch=('x86_64')
@@ -34,7 +35,7 @@ pkgver() {
   _ver="$(git describe --long --tags --abbrev=7 2>/dev/null || true)"
   if [[ -n "$_ver" ]]; then
     # 1.2.3-45-g<hash> -> 1.2.3.r45.g<hash>
-    printf '%s' "$_ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf '%s' "$_ver" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
     printf '0.r%s.g%s' \
       "$(git rev-list --count HEAD)" \
