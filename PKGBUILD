@@ -20,7 +20,7 @@ depends=(
 
 optdepends=(
   'cliphist: For clipboard history support'
-  'matugen-bin: Material You color scheme generation'
+  'matugen-git: Material You color scheme generation'
   'cava: Audio visualizer component'
   'wlsunset: For supporting NightLight'
 )
