@@ -10,7 +10,7 @@ arch=(
 url="https://github.com/adogecheems/monika-after-story-linux"
 license=('custom')
 depends=(
-    'monika-after-story'
+    'mas'
     'monika-after-story-tr-cn'
 )
 source=()
