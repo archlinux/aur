@@ -1,5 +1,5 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
-# Maintainer: Jia Yin<lok-ation at outlook dot com>
+# Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
 # Contributor: Rowisi < nomail <at> private <dot> com >
 # Contributor: So1ar <so1ar114514@gmail.com>
 # Contributor: Bot-wxt1221 <3264117476@qq.com>
