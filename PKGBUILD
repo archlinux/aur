@@ -8,7 +8,7 @@ arch=(
 )
 url="https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch"
 license=('custom')
-depends=('monika-after-story')
+depends=('mas')
 source=(
     "https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/$pkgver/chs.rpa"
     "https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/$pkgver/chs_gui.rpa"
