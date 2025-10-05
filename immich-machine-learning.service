@@ -1,0 +1,51 @@
+[Unit]
+Description=Immich machine learning
+Documentation=https://github.com/immich-app/immich
+After=network.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=immich
+Group=immich
+Type=simple
+Restart=on-failure
+
+EnvironmentFile=/etc/immich.conf
+
+Environment=IMMICH_BUILD_DATA=/usr/lib/immich/build
+
+# environment variables
+# from: machine-learning/Dockerfile
+Environment=NODE_ENV=production
+Environment=TRANSFORMERS_CACHE=/var/lib/immich/.cache
+Environment=VIRTUAL_ENV=/usr/lib/immich/immich-machine-learning/venv
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+
+SyslogIdentifier=immich-machine-learning
+#ExecStart=/usr/lib/immich/immich-machine-learning/venv/bin/python -m app.main
+ExecStart=/usr/lib/immich/immich-machine-learning/venv/bin/gunicorn immich_ml.main:app \
+	-k uvicorn.workers.UvicornWorker \
+	-w 1 -b 0.0.0.0:3003 -t 120 \
+	--log-config-json immich_ml/log_conf.json
+
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+RestrictNamespaces=yes
+
+SystemCallArchitectures=native
+AmbientCapabilities=
+CapabilityBoundingSet=
+NoNewPrivileges=yes
+
+WorkingDirectory=/usr/lib/immich/immich-machine-learning
+ReadWritePaths=/tmp /var/tmp /var/lib/immich/.cache /var/lib/immich/.config
+
+[Install]
+WantedBy=multi-user.target

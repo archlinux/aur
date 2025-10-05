@@ -1,7 +1,7 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
@@ -19,8 +19,11 @@ optdepends=(
     'intel-media-driver: HW acceleration'
     'immich-server: Photo management system dependent on this'
 )
-source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e0288eaa3a7829156eaaccb0c11aa2849cb1e923b7ed033f741773c121a80f31')
+source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
+	"immich-machine-learning.service")
+sha256sums=('2278cbab55d284dd25bf698c47d4c50d0f83268251ab6f86900cde46bad58d01'
+            'ce6fae49e23d705b8d08205d981bb217eaf55347a499a8d0492b7ed95b520cff')
+
 _installdir=/usr/lib/immich/immich-machine-learning
 _venvdir="${_installdir}/venv"
 
@@ -48,4 +51,7 @@ package() {
    cp -r "machine-learning/.venv" "${pkgdir}${_installdir}/venv"
    cp -r "machine-learning/immich_ml" "${pkgdir}${_installdir}"
    cp -r "machine-learning/ann" "${pkgdir}${_installdir}"
+
+   cd "${srcdir}"
+   install -Dm644 immich-machine-learning.service "${pkgdir}/usr/lib/systemd/system/immich-machine-learning.service"
 }
