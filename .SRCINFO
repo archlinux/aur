@@ -5,6 +5,10 @@ pkgbase = bluerice
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	depends = glib2
+	depends = libnotify
+	depends = bluez-libs
+	depends = wofi
 	source = git+https://github.com/kupira/BlueRice.git
 	sha256sums = SKIP
 
