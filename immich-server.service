@@ -7,10 +7,6 @@ After=network.target
 Wants=network-online.target
 After=network-online.target
 
-# for convenience, all services start with immich-server
-BindsTo=immich-machine-learning.service
-After=immich-machine-learning.service
-
 [Service]
 User=immich
 Group=immich

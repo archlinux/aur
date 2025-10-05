@@ -4,8 +4,8 @@
 # Contributor: caoticofanegas
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
-pkgver=2.0.0
+pkgrel=2
+pkgver=2.0.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -63,7 +63,6 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 		"backup.service.ts.patch"
         "base-images::git+https://github.com/immich-app/base-images"
         "${pkgbase}-server.service"
-        "${pkgbase}-machine-learning.service"
         "${pkgbase}.sysusers"
         "${pkgbase}.tmpfiles"
         'immich.conf'
@@ -76,11 +75,10 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt'
         'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('e0288eaa3a7829156eaaccb0c11aa2849cb1e923b7ed033f741773c121a80f31'
+sha256sums=('2278cbab55d284dd25bf698c47d4c50d0f83268251ab6f86900cde46bad58d01'
             '475291c45ec0a20b52f7ff927ddd7299f6f9e848e01145817066ff194cd50f07'
             'SKIP'
-            '48ba0c1716e4459322f878775bd37d9f8efe80b9c8a830bdb901ee4cba15a402'
-            'ce6fae49e23d705b8d08205d981bb217eaf55347a499a8d0492b7ed95b520cff'
+            'f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
@@ -171,7 +169,6 @@ package_immich-server() {
 
     # install systemd service files
     install -Dm644 immich-server.service "${pkgdir}/usr/lib/systemd/system/immich-server.service"
-    install -Dm644 immich-machine-learning.service "${pkgdir}/usr/lib/systemd/system/immich-machine-learning.service"
 
     # install configuration files
     install -Dm644 immich.sysusers "${pkgdir}/usr/lib/sysusers.d/immich.conf"
