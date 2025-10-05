@@ -2,7 +2,7 @@
 # Contributor: jkdhn <aur@jkdhn.me>
 
 pkgname=weasis-bin
-pkgver=4.6.4
+pkgver=4.6.5
 pkgrel=1
 pkgdesc="Weasis is a free medical DICOM viewer used in healthcare by hospitals, health networks, multicenter research trials, and patients."
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ options=('!strip' '!emptydirs')
 # source=("https://github.com/nroduit/Weasis/releases/download/v${pkgver}/weasis_${pkgver}-1_amd64.deb")
 source_x86_64=("https://github.com/nroduit/Weasis/releases/download/v${pkgver}/weasis_${pkgver}-1_amd64.deb")
 source_aarch64=("https://github.com/nroduit/Weasis/releases/download/v${pkgver}/weasis_${pkgver}-1_arm64.deb")
-sha512sums_x86_64=('e24201e5c364bfcd080246c8abeea9644071a5cbc0049e6cd8796426ac415db0bb0af23913801463798dcc07dc80c2506fad098ad61027760ef3054660141c87')
-sha512sums_aarch64=('24dfdc948873f3ae986f25cb7a6221c9f6da46fa36b285698bc8b9d4440446f9416d4805d926b31896bf53ab41fc864e2b113dec7baeee0aa7a8ca31c7e16e86')
+sha512sums_x86_64=('c30e72e612eba9c8e73e5d3cbdc94ff3803e27803dcbaf4e4259c91ac46f2695efb1ddf04a00a16483304e02581d3a62a671ba94127a2f17aee0e88e215149cc')
+sha512sums_aarch64=('f7d4fcad76be041ad4ee18130620ca5fd22d9961842b168d5be899638aea324ef35caa1285723d933f7d48b8bc8742e1f32a815a16e2345b540fccec9979541b')
 
 package(){
         tar --zstd -xC "${pkgdir}" -f data.tar.zst
