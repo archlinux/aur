@@ -9,6 +9,7 @@ pkgbase = monika-after-story-bin
 	optdepends = monika-after-story-tr-cn: A third-party Chinese language patch for the Monika After Story.
 	provides = ddlc-mas
 	conflicts = monika-after-story
+	noextract = monika-after-story.pkg.tar.zst
 	source = https://github.com/adogecheems/monika-after-story-linux/releases/download/v0.12.17/monika-after-story.pkg.tar.zst
 	sha256sums = f3579ae0362d07754170a9b47d1ecb0e3778ebfeedb3f6f1f1ffd26d223c4aa7
 

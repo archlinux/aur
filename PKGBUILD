@@ -12,8 +12,9 @@ license=('custom')
 optdepends=('monika-after-story-tr-cn: A third-party Chinese language patch for the Monika After Story.')
 provides=('ddlc-mas')
 conflicts=('monika-after-story')
-source=(https://github.com/adogecheems/monika-after-story-linux/releases/download/v$pkgver/monika-after-story.pkg.tar.zst)
+source=("https://github.com/adogecheems/monika-after-story-linux/releases/download/v$pkgver/monika-after-story.pkg.tar.zst")
+noextract=('monika-after-story.pkg.tar.zst')
 sha256sums=(f3579ae0362d07754170a9b47d1ecb0e3778ebfeedb3f6f1f1ffd26d223c4aa7)
 package() {
-    bsdtar -xvf "$srcdir/monika-after-story.pkg.tar.zst" -C "$pkgdir"
+    bsdtar -xvf "$srcdir/monika-after-story.pkg.tar.zst" -C "$pkgdir" opt usr
 }
