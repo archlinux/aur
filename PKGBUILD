@@ -4,7 +4,7 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.1
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -104,6 +104,7 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed3
+  "10136-Add_ROI_support_for_VAAPI.patch" # https://github.com/obsproject/obs-studio/pull/10136
 )
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz")
 source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz")
@@ -112,6 +113,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "fba1355b2e451007cc6ec14d0f662b4a289874dde6eb3f4001a90c414bbf0c13"
+  "6739b632ca2275e189f0214c4843b8accc1c9d2bdff81d0f169ec1de4c02096c"
 )
 sha256sums_x86_64=("7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146")
 sha256sums_aarch64=("642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999")
@@ -130,7 +132,10 @@ prepare() {
   sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" frontend/OBSApp.cpp
 
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
-  patch -Np1 < "$srcdir/bind_iface_eyeballed.patch"
+  patch -Np1 -i "$srcdir/bind_iface_eyeballed.patch"
+
+  ## obs-ffmpeg: Add ROI support for VAAPI (https://github.com/obsproject/obs-studio/pull/10136)
+  patch -Np1 -i "$srcdir/10136-Add_ROI_support_for_VAAPI.patch"
 }
 
 build() {
