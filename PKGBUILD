@@ -1,5 +1,5 @@
-# Maintainer: TTsdzb <ttsdzboutlook dot com>
-# Maintainer: Jia Yin<lok-ation at outlook dot com>
+# Maintainer: TTsdzb <ttsdzb at outlook dot com>
+# Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
 
 pkgname=uni-updater-git
 pkgver=0.2.4.r0.gcd48fb1
