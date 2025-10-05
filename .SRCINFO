@@ -1,6 +1,6 @@
 pkgbase = neko-go
 	pkgdesc = Animated cursor-chasing cat (Go reimplementation)
-	pkgver = 0.1.34
+	pkgver = 0.1.36
 	pkgrel = 1
 	url = https://github.com/crgimenes/neko
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = neko-go
 	depends = glibc
 	depends = libx11
 	depends = libglvnd
-	source = neko-go-0.1.34.tar.gz::https://github.com/crgimenes/neko/archive/refs/tags/v0.1.34.tar.gz
+	source = neko-go-0.1.36.tar.gz::https://github.com/crgimenes/neko/archive/refs/tags/v0.1.36.tar.gz
 	source = neko-go.desktop
-	sha256sums = bc1ad55e54f5448047a8f19406381b02f5ae95c24a7d3cefce81cd1ed9dfc748
+	sha256sums = 80bb88b75f9897166b156884f66ba6ad86745350c685e77f6b960af2c2b4eb58
 	sha256sums = 4f5396f95cc692cb4d4ffc3f5d227d42925c1a858edde78dadd7814411f7e034
 
 pkgname = neko-go
