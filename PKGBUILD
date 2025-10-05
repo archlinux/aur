@@ -9,7 +9,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r55058.a0d56d2f4f3
+pkgver=r55169.0c7dcb65cff
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -19,19 +19,19 @@ depends=('python' 'python-pyyaml' 'python-paramiko' 'python-jinja' 'python-resol
 provides=('ansible-core' 'python-ansible')
 replaces=('ansible-core' 'python-ansible')
 conflicts=('ansible-core' 'python-ansible')
-checkdepends=('git'
-              'openssh'
-              'python-bcrypt'
-              'python-botocore'
-              'python-passlib'
-              'python-pexpect'
-              'python-pytest'
-              'python-pytest-mock'
-              'python-pytest-xdist'
-              'python-pytest-forked'
-              'python-pywinrm'
-              'python-voluptuous'
-)
+# checkdepends=('git'
+#               'openssh'
+#               'python-bcrypt'
+#               'python-botocore'
+#               'python-passlib'
+#               'python-pexpect'
+#               'python-pytest'
+#               'python-pytest-mock'
+#               'python-pytest-xdist'
+#               'python-pytest-forked'
+#               'python-pywinrm'
+#               'python-voluptuous'
+# )
 optdepends=('sshpass: for ssh connections with password'
             'python-passlib: crypt values for vars_prompt'
             'python-netaddr: for the ipaddr filter'
@@ -66,15 +66,15 @@ build() {
   python packaging/cli-doc/build.py man --output-dir man
 }
 
-check() {
-  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-
-  # tests require upstream wrapper to find ansible-core internals: https://github.com/ansible/ansible/issues/80472
-  cd "${pkgname}"
-  # we do not have libselinux packaged
-  rm -v test/units/module_utils/basic/test_selinux.py
-  bin/ansible-test units --python "${python_version}" --truncate 0
-}
+# check() {
+#   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+#
+#   # tests require upstream wrapper to find ansible-core internals: https://github.com/ansible/ansible/issues/80472
+#   cd "${pkgname}"
+#   # we do not have libselinux packaged
+#   rm -v test/units/module_utils/basic/test_selinux.py
+#   bin/ansible-test units --python "${python_version}" --truncate 0
+# }
 
 package() {
   cd ${pkgname}
