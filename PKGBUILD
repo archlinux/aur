@@ -2,7 +2,7 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=2117.987dfa5d
+pkgver=2124.51a752f4
 pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
@@ -42,7 +42,7 @@ sha256sums=('SKIP')
 
 _features=(
   # TLS
-  #native-tls
+  native-tls
   #rustls-tls-native-roots
   #rustls-tls-webpki-roots
 
