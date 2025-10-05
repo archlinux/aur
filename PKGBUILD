@@ -3,9 +3,8 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot de>
 
 pkgname=airwindows-lv2
-pkgver=30.0
+pkgver=32.0
 pkgrel=1
-pkgrel=2
 pkgdesc="LV2 port of Airwindows audio plugins"
 arch=(aarch64 x86_64)
 url='https://sr.ht/~hannes/airwindows-lv2'
@@ -15,11 +14,11 @@ depends=(glibc)
 makedepends=(lv2 meson)
 optdepends=('lv2-host: for loading the LV2 format plugins')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~hannes/airwindows-lv2/archive/v$pkgver.tar.gz")
-sha256sums=('cc693cda4d43114bc34e430b78c836a7a5a38d703ec02394bb8be02a378c98e5')
+sha256sums=('2d658af9fa9ace62592d80a5ecca3b1f5a2390073fba664157a002f78b9c7b4e')
 
 build() {
-  arch-meson \
-    --reconfigure \
+  meson setup \
+    --prefix=/usr \
     --buildtype=release \
      $pkgname-build $pkgname-v$pkgver
   meson compile -C $pkgname-build
