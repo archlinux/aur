@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-menus
-pkgver=1.3.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='menus provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-menus')
 provides=('elephant-menus')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('109739788c25ed1e5d524f24addb31f4128c69eff2a389db784774a6edc8a7db')
+sha256sums=('d9c03c2a9f587ace414fc25f6e8a046297e40251380540c08cfe8a0e21e55791')
 
 build() {
     cd elephant-${pkgver}/internal/providers/menus
