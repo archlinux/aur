@@ -1,0 +1,19 @@
+pkgbase = bab-bin
+	pkgdesc = Bab CLI - A simple task runner
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/bab-sh/bab
+	license = MIT
+	conflicts = bab
+	provides = bab
+	arch = aarch64
+	source_aarch64 = https://github.com/bab-sh/bab/releases/download/v0.0.4/bab_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4e11103207a556a4ae8e35b59da79da10dff9ffcd3afb4645c931063ae38d486
+	arch = armv7h
+	source_armv7h = https://github.com/bab-sh/bab/releases/download/v0.0.4/bab_Linux_armv7.tar.gz
+	sha256sums_armv7h = 16c7d99c0bfb3eca19514e87fc8c652ced8d421bb21967da52975598052bfed2
+	arch = x86_64
+	source_x86_64 = https://github.com/bab-sh/bab/releases/download/v0.0.4/bab_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1bdeb2611daa5552b19d91757f8aab6347f1f89c855d0f87afec978250880024
+	
+pkgname = bab-bin
