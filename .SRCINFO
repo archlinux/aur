@@ -1,0 +1,23 @@
+pkgbase = kitshell-cmd-git
+	pkgdesc = Control Kitshell via command line/scripts
+	pkgver = r236.b5dfa3c
+	pkgrel = 1
+	url = https://github.com/bootloopmaster636/kitshell-cmd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = tar
+	makedepends = rustup
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = patchelf
+	depends = kitshell
+	depends = glibc
+	depends = gcc-libs
+	conflicts = kitshell-cmd
+	options = !debug
+	source = kitshell-cmd::git+https://github.com/bootloopmaster636/kitshell-cmd.git
+	sha256sums = SKIP
+
+pkgname = kitshell-cmd-git
