@@ -1,0 +1,16 @@
+pkgbase = bluerice
+	pkgdesc = Bluetooth utility with Wofi menu
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kupira/BlueRice
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glib2
+	depends = libnotify
+	depends = bluez-libs
+	depends = wofi
+	source = git+https://github.com/kupira/BlueRice.git
+	sha256sums = SKIP
+
+pkgname = bluerice
