@@ -1,6 +1,6 @@
 pkgname=pam_pinlock
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure, feature-rich PIN-based PAM module for Linux"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/pam_pinlock"
@@ -21,5 +21,5 @@ package() {
     install -Dm755 "pam_pinlock.so" "$pkgdir/usr/lib/security/pam_pinlock.so"
     install -Dm755 "pinlockctl" "$pkgdir/usr/bin/pinlockctl"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "example/pinlock.conf" "$pkgdir/etc/pinlock.conf"
+    install -Dm644 "examples/pinlock.conf" "$pkgdir/etc/pinlock.conf"
 }
