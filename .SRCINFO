@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-monoarch-refined
+	pkgdesc = Refined Plymouth boot theme based on Monoarch with centered layout and clean password prompt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/iam-vasanth/monoarch-refined
+	install = plymouth-theme-monoarch-refined.install
+	arch = any
+	license = MIT
+	depends = plymouth
+	optdepends = cantarell-fonts: Recommended font for clean text rendering
+	optdepends = ttf-dejavu: Alternative font for text rendering
+	source = plymouth-theme-monoarch-refined-1.0.0.tar.gz::https://github.com/iam-vasanth/monoarch-refined/archive/v1.0.0.tar.gz
+	sha256sums = 41f9fef4e1068412912fc5012fadd55cc49044c0806705a96e5afbf04f32b5d5
+
+pkgname = plymouth-theme-monoarch-refined

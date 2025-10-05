@@ -1,0 +1,30 @@
+post_install() {
+    echo ""
+    echo "==> Plymouth theme 'monoarch-refined' has been installed."
+    echo "==> To enable it, run:"
+    echo "    sudo plymouth-set-default-theme monoarch-refined"
+    echo "    sudo mkinitcpio -P"
+    echo "==> Then reboot to see the theme."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Plymouth theme 'monoarch-refined' has been updated."
+    echo "==> Rebuild initramfs with:"
+    echo "    sudo mkinitcpio -P"
+    echo ""
+}
+
+pre_remove() {
+    # Check if this theme is currently active
+    current_theme=$(plymouth-set-default-theme)
+    if [ "$current_theme" = "monoarch-refined" ]; then
+        echo ""
+        echo "==> Warning: monoarch-refined is currently the active theme."
+        echo "==> Switch to another theme before removing:"
+        echo "    sudo plymouth-set-default-theme -R"
+        echo "    sudo mkinitcpio -P"
+        echo ""
+    fi
+}
