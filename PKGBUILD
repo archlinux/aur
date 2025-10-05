@@ -5,7 +5,7 @@ pkgver=0.3.0   # static version
 pkgrel=1
 pkgdesc="Bluetooth utility with customizable menu"
 makedepends=('git' 'cmake' 'make')
-source=("git+https://github.com/kupira/BlueRice.git")
+source=("https://github.com/kupira/BlueRice.git")
 sha256sums=('SKIP')  # git source, skip checksum
 
 build() {
