@@ -1,6 +1,6 @@
 pkgbase = what-the-port
 	pkgdesc = Quickly lookup what a port is used for.
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/cyqsimon/what-the-port
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = what-the-port
 	makedepends = openssl
 	depends = gcc-libs
 	depends = openssl
-	source = what-the-port-0.5.1.tar.gz::https://static.crates.io/crates/what-the-port/what-the-port-0.5.1.crate
-	sha512sums = 0e11ee5568ea151bbc82109855c2d8d1d892dbba29fe2122e1280ce5dd53eb684f0c1973eb964230e4086a88550ee622f8796a47660439ce1e3fc74f9c38cfb6
+	source = what-the-port-0.5.3.tar.gz::https://static.crates.io/crates/what-the-port/what-the-port-0.5.3.crate
+	sha512sums = ef0d17a7cbfb97d740a30d0fe31164a17420fd062621f3901bbc499c7e2d6ff3613fdb356fc7af23e6554cebe5c7b84226da50c83323922a7de719d3cb8c31bb
 
 pkgname = what-the-port
