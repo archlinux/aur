@@ -1,0 +1,12 @@
+pkgbase = kadabra
+	pkgdesc = A keyboard layout converter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gard-witch/kadabra
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	source = kadabra-0.1.0.tar.gz::https://github.com/gard-witch/kadabra/archive/v0.1.0.tar.gz
+	sha512sums = f3e362b5888247a70372d37280279be209ce869cfa16051efd63d7f1e0e28708a67059eca47bd6e1539435643fe5583768bb421d7b5a0306382eafae8b00095e
+
+pkgname = kadabra
