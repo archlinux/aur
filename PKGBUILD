@@ -2,7 +2,7 @@
 
 pkgname=obs-roi-ui
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Region of Interest Editor for OBS Studio 30.1+"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/encoder-region-of-interest-editor.1904/"
@@ -17,6 +17,7 @@ prepare() {
   cd $pkgname
 
   sed -i '33 a #include <obs-nix-platform.h>\n#include <qpa/qplatformnativeinterface.h>' src/external/qt-wrappers.cpp
+  sed -i 's/find_qt(/find_package(Qt6 /g' CMakeLists.txt
   sed -i 's/Qt::Widgets/Qt::Widgets Qt::GuiPrivate/g' CMakeLists.txt
 
   sed -i 's|obs_sceneitem_get_id(item)|QVariant::fromValue(obs_sceneitem_get_id(item))|g' src/roi-editor.cpp
@@ -32,7 +33,7 @@ build() {
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DQT_VERSION=6 \
-  -DCMAKE_CXX_FLAGS="-Wno-error=conversion -Wno-error=float-conversion -Wno-error=shadow" \
+  -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations -Wno-error=conversion -Wno-error=float-conversion -Wno-error=shadow" \
   -Wno-dev
 
   cmake --build build
