@@ -1,0 +1,22 @@
+From a2e67b53805c2e4c6e98107d586fdfc56cd58629 Mon Sep 17 00:00:00 2001
+From: Nicholas Bollweg <nick.bollweg@gmail.com>
+Date: Sun, 5 Oct 2025 10:43:05 -0500
+Subject: [PATCH] fix json serialization in convert_hebrew_mixed
+
+---
+ stanza/utils/datasets/coref/convert_hebrew_mixed.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/stanza/utils/datasets/coref/convert_hebrew_mixed.py b/stanza/utils/datasets/coref/convert_hebrew_mixed.py
+index ecae4a70d..9abfd1d21 100644
+--- a/stanza/utils/datasets/coref/convert_hebrew_mixed.py
++++ b/stanza/utils/datasets/coref/convert_hebrew_mixed.py
+@@ -35,7 +35,7 @@ def main():
+             udcoref_train = json.load(fin)
+         mixed_train = hebrew_train + udcoref_train
+         with open(os.path.join(coref_output_path, "he_mixed.train.json"), "w", encoding="utf-8") as fout:
+-            json.dump(mixed_train, fout, indent=2, ensure_ascii=False))
++            json.dump(mixed_train, fout, indent=2, ensure_ascii=False)
+ 
+         shutil.copyfile(os.path.join(temp_dir_path, hebrew_filenames[1]),
+                         os.path.join(coref_output_path, "he_mixed.dev.json"))
