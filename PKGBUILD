@@ -10,7 +10,7 @@
 #   I do not guarantee that it will work as intended on your system.
 # -----------------------------------------------------------------------------
 # Info:
-# 	TKG Installer 🐸
+# 	TKG-Installer 🐸
 # 	Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) from the Frogging-Family repositories.
 # 	Interactive Fuzzy finder fzf menue mode.
 #   Quick direct command-line mode.
@@ -37,7 +37,7 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
