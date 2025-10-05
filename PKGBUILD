@@ -3,7 +3,7 @@
 pkgbase=python-underthesea
 pkgname=python-underthesea
 _name=${pkgname#python-}
-pkgver=6.8.4
+pkgver=8.3.0
 pkgrel=1
 epoch=
 pkgdesc="Vietnamese NLP Toolkit"
@@ -11,6 +11,8 @@ arch=('any')
 url="https://pypi.org/project/${_name}"
 license=(MIT)
 groups=()
+provides=(${pkgname})
+conflicts=(${pkgname})
 depends=(
     python
     python-beautifulsoup4
@@ -60,7 +62,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('ed14b82c7acfc1b11e025494fe941dac572b588ae92e3bc5d9ac909f0b3954c8')
+sha256sums=('d9ba8dfbd2ffd4ab3982cb3d3c4483e2658951991f6585fb820c751015b850f2')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -68,10 +70,6 @@ build() {
 }
 
 package() {
-    provides=(${pkgname})
-    conflicts=(${pkgname})
-    optdepends=(python-underthesea-{train,deep,wow,prompt,langdetect})
-
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
