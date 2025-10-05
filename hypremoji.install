@@ -1,19 +1,7 @@
 #!/bin/bash
 
 post_install() {
-    echo "==> Setting up hypremoji for Hyprland..."
-
-    # Function to run command as the real user
-    run_as_user() {
-        local cmd="$1"
-        if [[ -n "$SUDO_USER" ]]; then
-            # Run as the user who used sudo
-            sudo -u "$SUDO_USER" bash -c "$cmd"
-        else
-            # Run normally
-            bash -c "$cmd"
-        fi
-    }
+    echo "==> Setting up hypremoji..."
 
     get_user_home() {
         if [[ -n "$SUDO_USER" ]]; then
@@ -23,57 +11,289 @@ post_install() {
         fi
     }
 
-    find_config_file() {
-        local user_home=$(get_user_home)
-        local file_name="hyprland.conf"
-        local config_file=""
-        local possible_paths=(
-            "$user_home/.config/hypr/$file_name"
-            "${XDG_CONFIG_HOME:-$user_home/.config}/hypr/$file_name"
-        )
-        
-        # Try to find the configuration file
-        for path in "${possible_paths[@]}"; do
-            if [[ -f "$path" ]]; then
-                config_file="$path"
-                break
-            fi
-        done
-        
-        echo "$config_file"
-    }
+    USER_HOME=$(get_user_home)
+    HYPREMOJI_CONFIG_DIR="$USER_HOME/.config/hypremoji"
+    HYPREMOJI_CONF="$HYPREMOJI_CONFIG_DIR/hypremoji.conf"
+    HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
 
-    config_file=$(find_config_file)
-    
-    if [[ -z "$config_file" ]]; then
-        echo "    -> Could not find Hyprland configuration file."
-        echo "    -> You can configure it manually by running:"
-        echo "       /usr/share/hypremoji/setting_in_hyprland_config.sh ~/.config/hypr/hyprland.conf"
+    mkdir -p "$HYPREMOJI_CONFIG_DIR"
+    if [[ -n "$SUDO_USER" ]]; then
+        chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_CONFIG_DIR"
+    fi
+
+    if [[ ! -f "$HYPREMOJI_CONF" ]]; then
+        cp /usr/share/hypremoji/hypremoji.conf "$HYPREMOJI_CONF"
+        if [[ -n "$SUDO_USER" ]]; then
+            chown "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_CONF"
+        fi
+        echo "    -> Created config at $HYPREMOJI_CONF"
+    fi
+
+    if [[ ! -f "$HYPRLAND_CONF" ]]; then
+        echo "    -> Hyprland config not found"
+        echo "    -> Configure manually when you set up Hyprland"
         echo ""
         echo "==> Installation complete"
-        echo "    -> Run 'hypremoji' to open the emoji picker"
         return 0
     fi
-    
-    echo "    -> Configuration file found: $config_file"
-    
-    # Run the configuration script as the real user
-    local script_path="/usr/share/hypremoji/setting_in_hyprland_config.sh"
-    local config_cmd="'$script_path' '$config_file'"
 
-    echo "    -> Applying configuration as user..."
-    if run_as_user "$config_cmd"; then
-        echo "    -> Configuration applied successfully"
-        echo "    -> Reloading Hyprland configuration..."
-        
-        echo "    -> Use Super + . to open hypremoji"
-    else
-        echo "    -> Error applying configuration automatically"
-        echo "    -> You can configure it manually by running:"
-        echo "       $script_path $config_file"
+    if grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
+        echo "    -> HyprEmoji already configured in Hyprland"
+        echo ""
+        echo "==> Installation complete"
+        return 0
     fi
+
+    echo ""
+    echo "==> HyprEmoji needs to be configured in Hyprland"
+    echo ""
+    echo "    This will add the following line to:"
+    echo "    $HYPRLAND_CONF"
+    echo ""
+    echo "    source = ~/.config/hypremoji/hypremoji.conf"
+    echo ""
+    echo "    Which includes:"
+    echo "    • Keybind: SUPER + PERIOD to open hypremoji"
+    echo "    • Window rules for floating behavior"
+    echo ""
+    
+    read -p "    Configure automatically? [Y/n]: " response
+    response=${response:-Y}
+    
+    case "$response" in
+        [Yy]* )
+            BACKUP_FILE="${USER_HOME}/.config/hypr/hyprland-backup-$(date +%Y%m%d-%H%M%S).conf"
+            if ! cp "$HYPRLAND_CONF" "$BACKUP_FILE"; then
+                echo "    -> ERROR: Could not create backup"
+                echo "    -> Configuration aborted for safety"
+                return 1
+            fi
+            
+            if [[ -n "$SUDO_USER" ]]; then
+                chown "$SUDO_USER:$SUDO_USER" "$BACKUP_FILE"
+            fi
+            echo "    -> Backup created: $BACKUP_FILE"
+            
+            {
+                cat "$HYPRLAND_CONF"
+                echo ""
+                echo "# HyprEmoji config"
+                echo "source = ~/.config/hypremoji/hypremoji.conf"
+            } > "${HYPRLAND_CONF}.tmp"
+            
+            if mv "${HYPRLAND_CONF}.tmp" "$HYPRLAND_CONF"; then
+                if [[ -n "$SUDO_USER" ]]; then
+                    chown "$SUDO_USER:$SUDO_USER" "$HYPRLAND_CONF"
+                fi
+                echo "    -> Configuration added successfully"
+                echo "    -> Reload Hyprland to apply changes (SUPER + SHIFT + R)"
+            else
+                echo "    -> ERROR: Could not write configuration"
+                echo "    -> Your backup is safe at: $BACKUP_FILE"
+                rm -f "${HYPRLAND_CONF}.tmp"
+                return 1
+            fi
+            ;;
+        * )
+            echo "    -> Skipped automatic configuration"
+            echo "    -> Add these lines manually at the END of your Hyprland config:"
+            echo ""
+            echo "       # HyprEmoji config"
+            echo "       source = ~/.config/hypremoji/hypremoji.conf"
+            ;;
+    esac
     
     echo ""
     echo "==> Installation complete"
-    echo "    -> Run 'hypremoji' to open the emoji picker"
+    echo "    Run 'hypremoji' to open the emoji picker"
+}
+
+post_upgrade() {
+    echo "==> Upgrading hypremoji configuration..."
+
+    get_user_home() {
+        if [[ -n "$SUDO_USER" ]]; then
+            echo "/home/$SUDO_USER"
+        else
+            echo "$HOME"
+        fi
+    }
+
+    USER_HOME=$(get_user_home)
+    HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
+    HYPREMOJI_CONF="$USER_HOME/.config/hypremoji/hypremoji.conf"
+    HYPREMOJI_DIR="$USER_HOME/.config/hypremoji"
+    BACKUP_FILE="${USER_HOME}/.config/hypr/hyprland-backup-$(date +%Y%m%d-%H%M%S).conf"
+
+    if [[ ! -f "$HYPRLAND_CONF" ]]; then
+        echo "    -> No Hyprland config found, skipping migration"
+        return 0
+    fi
+
+    if ! grep -q "# WindowRules for HyprEmojis\|# SUPER + PERIOD to open Hypremoji" "$HYPRLAND_CONF"; then
+        echo "    -> No old configuration found"
+
+        echo ""
+        echo "==> HyprEmoji configuration setup"
+        echo "    This will:"
+        echo "    • Create default config at ~/.config/hypremoji/hypremoji.conf"
+        echo "    • Add 'source = ~/.config/hypremoji/hypremoji.conf' to your hyprland.conf"
+        echo ""
+        read -p "    Set up hypremoji configuration? [Y/n]: " response
+        response=${response:-Y}
+        
+        case "$response" in
+            [Yy]* )
+                if cp "$HYPRLAND_CONF" "$BACKUP_FILE"; then
+                    if [[ -n "$SUDO_USER" ]]; then
+                        chown "$SUDO_USER:$SUDO_USER" "$BACKUP_FILE"
+                    fi
+                    echo "    -> Backup created: $BACKUP_FILE"
+                fi
+                
+                mkdir -p "$HYPREMOJI_DIR"
+                
+                if [[ -f /usr/share/hypremoji/hypremoji.conf.example ]]; then
+                    cp /usr/share/hypremoji/hypremoji.conf.example "$HYPREMOJI_CONF"
+                    if [[ -n "$SUDO_USER" ]]; then
+                        chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_DIR"
+                    fi
+                    echo "    -> Created default config at $HYPREMOJI_CONF"
+                else
+                    echo "    -> ERROR: Template not found at /usr/share/hypremoji/hypremoji.conf.example"
+                    return 1
+                fi
+                
+                if ! grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
+                    {
+                        echo ""
+                        echo "# HyprEmoji config"
+                        echo "source = ~/.config/hypremoji/hypremoji.conf"
+                    } >> "$HYPRLAND_CONF"
+                    
+                    if [[ -n "$SUDO_USER" ]]; then
+                        chown "$SUDO_USER:$SUDO_USER" "$HYPRLAND_CONF"
+                    fi
+                    
+                    echo "    -> Added source line to hyprland.conf"
+                    echo "    -> Reload Hyprland to apply changes (SUPER + SHIFT + R)"
+                fi
+                ;;
+            * )
+                echo "    -> Skipped configuration setup"
+                echo "    -> You can set up manually later"
+                ;;
+        esac
+        
+        
+        return 0
+    fi
+
+    
+    
+    echo ""
+    echo "==> Old hypremoji configuration detected in hyprland.conf"
+    echo "    hypremoji now uses a separate config file: ~/.config/hypremoji/hypremoji.conf"
+    echo ""
+    read -p "    Migrate to new configuration system? [Y/n]: " response
+    response=${response:-Y}
+    
+    case "$response" in
+        [Yy]* )
+            cp "$HYPRLAND_CONF" "$BACKUP_FILE"
+            if [[ -n "$SUDO_USER" ]]; then
+                chown "$SUDO_USER:$SUDO_USER" "$BACKUP_FILE"
+            fi
+            echo "    -> Backup created: $BACKUP_FILE"
+            
+            TEMP_EXTRACT=$(mktemp)
+            
+            CUSTOM_BIND=$(grep "bind.*hypremoji" "$HYPRLAND_CONF" | grep -v "^[[:space:]]*#" | head -1 || echo "")
+            
+            grep "windowrulev2.*HyprEmoji" "$HYPRLAND_CONF" | grep -v "^[[:space:]]*#" > "$TEMP_EXTRACT"
+            
+            mkdir -p "$HYPREMOJI_DIR"
+            
+            {
+                echo "# HyprEmoji Configuration"
+                echo "# This file is sourced by Hyprland"
+                echo ""
+                
+                if [[ -n "$CUSTOM_BIND" ]]; then
+                    echo "# Keybind to open hypremoji (migrated from your old config)"
+                    echo "$CUSTOM_BIND"
+                else
+                    echo "# Keybind to open hypremoji"
+                    echo "bind = SUPER, period, exec, hypremoji"
+                fi
+                
+                echo ""
+                echo "# Window rules for HyprEmoji"
+                
+                HAS_FLOAT=$(grep "windowrulev2 = float.*HyprEmoji" "$TEMP_EXTRACT" || echo "")
+                HAS_MOVE=$(grep "windowrulev2 = move.*HyprEmoji" "$TEMP_EXTRACT" || echo "")
+                HAS_SIZE=$(grep "windowrulev2 = size.*HyprEmoji" "$TEMP_EXTRACT" || echo "")
+                
+                if [[ -n "$HAS_FLOAT" ]]; then
+                    echo "$HAS_FLOAT"
+                else
+                    echo "windowrulev2 = float, title:^(HyprEmoji)\$"
+                fi
+                
+                if [[ -n "$HAS_SIZE" ]]; then
+                    echo "$HAS_SIZE"
+                else
+                    echo "windowrulev2 = size 284 340, title:^(HyprEmoji)\$"
+                fi
+                
+                if [[ -n "$HAS_MOVE" ]]; then
+                    echo "$HAS_MOVE"
+                else
+                    echo "windowrulev2 = center, title:^(HyprEmoji)\$"
+                fi
+                
+            } > "$HYPREMOJI_CONF"
+            
+            rm "$TEMP_EXTRACT"
+            
+            if [[ -n "$SUDO_USER" ]]; then
+                chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_DIR"
+            fi
+            
+            echo "    -> Created $HYPREMOJI_CONF with your custom settings"
+            
+            TEMP_HYPR=$(mktemp)
+            grep -v "# SUPER.*Hypremoji\|bind.*hypremoji\|# WindowRules for HyprEmojis\|windowrulev2.*HyprEmoji" "$HYPRLAND_CONF" > "$TEMP_HYPR"
+            
+            if ! grep -q "source.*hypremoji/hypremoji.conf" "$TEMP_HYPR"; then
+                {
+                    echo ""
+                    echo "# HyprEmoji config"
+                    echo "source = ~/.config/hypremoji/hypremoji.conf"
+                } >> "$TEMP_HYPR"
+            fi
+            
+            cat "$TEMP_HYPR" > "$HYPRLAND_CONF"
+            rm "$TEMP_HYPR"
+            
+            if [[ -n "$SUDO_USER" ]]; then
+                chown "$SUDO_USER:$SUDO_USER" "$HYPRLAND_CONF"
+            fi
+            
+            echo "    -> Migration completed successfully"
+            echo "    -> Your custom keybind and window position were preserved"
+            echo "    -> Old rules removed from hyprland.conf"
+            echo "    -> New source line added"
+            echo "    -> Reload Hyprland to apply changes (SUPER + SHIFT + R)"
+            ;;
+        * )
+            echo "    -> Skipped migration"
+            echo "    -> You can migrate manually by moving your hypremoji rules to:"
+            echo "       ~/.config/hypremoji/hypremoji.conf"
+            echo "    -> Then add to hyprland.conf: source = ~/.config/hypremoji/hypremoji.conf"
+            ;;
+    esac
+    
+    echo ""
+    echo "==> Upgrade complete"
 }
