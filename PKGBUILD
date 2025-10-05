@@ -1,8 +1,8 @@
 # Contributor: Mr.Smith1974 < ... >
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball-git
-pkgver=r8144.ea58c5c
-pkgrel=2
+pkgver=r8607.f3618fd
+pkgrel=1
 pkgdesc="An open source pinball table editor and simulator - BGFX standalone version built with dependencies as defined by the developers"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
@@ -30,6 +30,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   # This installs the necessary (version of) dependencies as the devs advise in their docs:
+  export CFLAGS="${CFLAGS/-Werror=format-security/}"
+  export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
   platforms/linux-x64/external.sh
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -B build
