@@ -1,6 +1,6 @@
 pkgbase = nucleus-gtk4-git
 	pkgdesc = Chemistry educational software written in Python
-	pkgver = 1.r25.g5c39d729
+	pkgver = 1.r27.gb6aaa61f
 	pkgrel = 1
 	url = https://codeberg.org/lo-vely/nucleus
 	arch = any
