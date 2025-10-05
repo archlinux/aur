@@ -1,6 +1,6 @@
 pkgbase = go-prism-git
 	pkgdesc = Turn raw test output into beautiful data
-	pkgver = v1.1.0.r0.g53770ae
+	pkgver = v1.1.0.r9.gb5ae231
 	pkgrel = 1
 	url = https://github.com/DaltonSW/prism
 	install = .install
