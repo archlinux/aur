@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="pathlib api extended to use fsspec backends"
 arch=('any')
@@ -23,9 +23,9 @@ checkdepends=('python-pytest'
               'python-webdav4'
               'python-wsgidav'
               'python-pathlib-abc'
-              'python-pydantic-settings') # requests <- fsspec; aiohttp <- aiobotocore <- s3fs; upath/tests/third_party/...
+              'python-pydantic-settings') # requests <- moto; aiohttp <- aiobotocore <- s3fs; upath/tests/third_party/...
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3ce83481553602ae70b2d9456ee19d88')
+md5sums=('f148f134f1bc3ea402bd3769606e06d9')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
