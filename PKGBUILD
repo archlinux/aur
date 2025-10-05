@@ -4,12 +4,12 @@
 # Contributor: Chocobo1 <chocobo1@archlinux.net>
 
 pkgname=mingw-w64-rav1e
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='An AV1 encoder focused on speed and safety (mingw-w64)'
 arch=(any)
 url=https://github.com/xiph/rav1e/
-license=(custom:BSD)
+license=(BSD-2-Clause)
 depends=(
   mingw-w64-crt
 )
@@ -22,13 +22,13 @@ makedepends=(
   mingw-w64-rust
   mingw-w64-wine
 )
-_tag=a8d05d0c43826a465b60dbadd0ab7f1327d75371
+_tag=1fe82de02510767539e89b2ee6fa846920ae2686
 source=(
   git+https://github.com/xiph/rav1e.git#tag=${_tag}
   Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock
 )
-b2sums=('SKIP'
-        '7cbeaff87ca4e9db469be06cbead0c5b05af2064d6d5f12f97f5999992017b66a24bc19ed4eaf69f7d6579732f843f3e93f30d9581b8c8344728d3e3773a0f79')
+b2sums=('6d595597ae817653e8da4515c3649e8ad7618ed09f938525a91106ae059a91dba6ba2b7eb556c5abe1fcf99e8a99ba9f1933018669d0f2f85b2340f9a8ecf0af'
+        '4c0e7e271f8cd96bf5d47162a0072a7ba4ddb6f40ec03fc6deddd7b3166fffcdc60ddf85829d49359a9d49fe9a3fba1ed4ef2ea8c4303475076eba9ea6ae1cc4')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -180,7 +180,9 @@ package() {
 
    ${_arch}-strip -s "${pkgdir}"/usr/${_arch}/bin/*.exe
    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
-   ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
+   ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.dll.a
+   # FIXME: Disabled stripping static lib as strip fails with no sections error
+   #${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 
   install -Dm 644 LICENSE PATENTS -t "${pkgdir}"/usr/share/licenses/mingw-w64-rav1e/
