@@ -2,13 +2,10 @@ pkgbase = bluerice
 	pkgdesc = Bluetooth utility with customizable menu
 	pkgver = 0.3.0
 	pkgrel = 1
+	arch = x86_64
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	depends = glib2
-	depends = libnotify
-	depends = bluez-libs
-	depends = wofi
 	source = git+https://github.com/kupira/BlueRice.git
 	sha256sums = SKIP
 

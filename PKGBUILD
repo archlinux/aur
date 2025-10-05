@@ -1,4 +1,5 @@
 # Maintainer: kupira <skupira27@gmail.com>
+arch=('x86_64')
 pkgname=bluerice
 pkgver=0.3.0   # static version
 pkgrel=1
