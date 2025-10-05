@@ -1,0 +1,4 @@
+[llama-swap-bin]
+source = "git"
+git = "https://github.com/mostlygeek/llama-swap.git"
+prefix = "v"
