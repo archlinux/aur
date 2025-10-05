@@ -2,7 +2,7 @@
 
 pkgname=extract-artwork
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='extract artwork from media files '
 arch=('i685' 'x86_64')
 url='https://github.com/eworm-de/extract-artwork'

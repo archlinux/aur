@@ -1,7 +1,7 @@
 pkgbase = extract-artwork
 	pkgdesc = extract artwork from media files
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/extract-artwork
 	arch = i685
 	arch = x86_64
