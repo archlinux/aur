@@ -9,6 +9,7 @@ pkgbase = python-ollama
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-hatch-vcs
 	depends = ollama
 	depends = python
 	depends = python-httpx
