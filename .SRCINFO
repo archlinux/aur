@@ -1,17 +1,25 @@
 pkgbase = lute-git
-	pkgdesc = A rom library management system for organised gamers
-	pkgver = 0.1.0.88.gd93dfa5
+	pkgdesc = A standalone runtime for general-purpose Luau
+	pkgver = 0.1.0.nightly.20251005
 	pkgrel = 1
-	url = https://github.com/ingolemo/lute
+	url = https://github.com/luau-lang/lute
 	arch = x86_64
-	license = GPL3
-	depends = python
-	depends = python-click
-	depends = python-parsimonious
-	depends = python-requests
-	depends = python-toml
-	source = git://github.com/ingolemo/lute.git
-	md5sums = SKIP
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = libldap
+	depends = zstd
+	provides = lute
+	conflicts = lute
+	options = !strip
+	source = git+https://github.com/luau-lang/lute.git
+	source = build.sh
+	source = fetch-dependencies.sh
+	sha256sums = SKIP
+	sha256sums = 9288f4bde241e8b0cb84e630a2ec1ec9086e68dbf47060fdd0ea8cb6b53a349b
+	sha256sums = ac4fa6b6e347eef13943b650888fd0074d1f758823b95090600c650331e73f5f
 
 pkgname = lute-git
-
