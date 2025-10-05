@@ -10,13 +10,16 @@ url="https://github.com/fcitx/fcitx-qt5"
 license=('GPL')
 groups=('fcitx-im')
 makedepends=('extra-cmake-modules' 'fcitx' 'libxkbcommon' 'qt5-base' 'qt6-base')
-source=("https://download.fcitx-im.org/$pkgbase/$pkgbase-$pkgver.tar.xz"{,.sig})
+source=("https://download.fcitx-im.org/$pkgbase/$pkgbase-$pkgver.tar.xz"{,.sig}
+         qt-6.10.patch)
 sha512sums=('1deb2e6cfccaae06ec3d0f3126d463773d9977cd5616bd15b20a668a5b08ae6d0ccb4212393a2ffdca90c247250cd58735e49e4fdda1941b805c86caf29cfcb3'
-            'SKIP')
+            'SKIP'
+            '29f56d80b40a4b5bf09c08b554313fa73b070f2a77848233ebcad6d1b983cd3a590a5d56423359a68c7511af6fd7ee1a62439f0db1bb219deb1e1703b41f2ae9')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9') # Weng Xuetian <wengxt@gmail.com>
 
 prepare() {
   sed -e 's|VERSION 3.1|VERSION 3.5|' -i $pkgbase-$pkgver/CMakeLists.txt # Fix build with cmake 4
+  patch -d $pkgbase-$pkgver -p1 < qt-6.10.patch
 }
 
 build() {
