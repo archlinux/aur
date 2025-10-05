@@ -2,7 +2,7 @@
 
 pkgname=mpd-notification
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Notify about tracks played by mpd'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/mpd-notification'
