@@ -8,6 +8,7 @@ Type=notify
 Restart=always
 RestartSec=3
 DynamicUser=yes
+SyslogIdentifier=tandoor
 WorkingDirectory=/var/lib/tandoor
 ReadWritePaths=/var/lib/tandoor
 EnvironmentFile=/etc/tandoor/tandoor.conf
