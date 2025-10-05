@@ -6,7 +6,7 @@ pkgbase = monika-after-story-cn
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = mas
+	depends = ddlc-mas
 	depends = monika-after-story-tr-cn
 
 pkgname = monika-after-story-cn
