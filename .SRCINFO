@@ -1,16 +1,16 @@
 pkgbase = python-ass
 	pkgdesc = A library for parsing and manipulating Advanced SubStation Alpha subtitle files.
-	pkgver = 0.5.4
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://github.com/chireiden/python-ass
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pillow
-	makedepends = python-setuptools
+	makedepends = python-uv-build
 	depends = python>=3.8
 	depends = libass
-	source = https://github.com/chireiden/python-ass/archive/refs/tags/0.5.4.tar.gz
-	sha256sums = 1a2bf40a87f1a4b7d81fac5805289bfcd11d202e00e5844211d0dda44c884618
+	source = https://github.com/chireiden/python-ass/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 4135bcab58910707c63c2011a242b19cc1b0e39265fc2f325abf02fde0a6415f
 
 pkgname = python-ass
