@@ -230,7 +230,7 @@ build() {
     --enable-vapoursynth \
     --enable-version3 \
     --enable-vulkan
-  make -j 10
+  make
 }
 
 package() {
