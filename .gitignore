@@ -1,0 +1,5 @@
+/garage
+/pkg
+/src
+/*.tar.zst
+/garage-consul

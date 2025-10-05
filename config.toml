@@ -1,0 +1,33 @@
+# https://garagehq.deuxfleurs.fr/documentation/reference-manual/configuration/
+
+replication_factor = 1
+
+metadata_dir = "/var/lib/garage/meta"
+data_dir = "/var/lib/garage/data"
+metadata_snapshots_dir = "/var/lib/garage/snapshots"
+
+db_engine = "lmdb"
+
+rpc_secret = "GENERATE ME... (openssl rand -hex 32)"
+rpc_bind_addr = "[::]:3901"
+rpc_public_addr = "127.0.0.1:3901"
+
+allow_world_readable_secrets = false
+
+[s3_api]
+api_bind_addr = "[::]:3900"
+s3_region = "garage"
+root_domain = ".s3.garage.localhost"
+
+[s3_web]
+bind_addr = "[::]:3902"
+root_domain = ".web.garage.localhost"
+
+[k2v_api]
+api_bind_addr = "[::]:3904"
+
+[admin]
+api_bind_addr = "[::]:3093"
+admin_token = "GENERATE ME... (openssl rand -hex 32)"
+metrics_token = "GENERATE ME... (openssl rand -hex 32)"
+metrics_require_token = true
