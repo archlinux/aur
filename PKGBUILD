@@ -3,7 +3,7 @@
 
 pkgname=plotjuggler
 pkgver='3.13.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -13,7 +13,6 @@ depends=(
     'binutils'
     'fmt'
     'lua'
-    'lz4'
     'mosquitto'
     'nlohmann-json'
     'protobuf'
@@ -23,14 +22,6 @@ depends=(
     'qt5-websockets'
     'qt5-x11extras'
     'zeromq'
-    'zstd'
-    # 'fastcdr'     (only in AUR)
-    # 'data_tamer'  (not found)
-    # 'kissfft-git' (only in AUR)
-    # 'libdwarf'    (not sufficient)
-    # 'mcap_vendor' (not found)
-    # 'qtav'        (only in AUR, deprecated)
-    # 'zcm'         (not found)
 )
 
 makedepends=(
@@ -53,18 +44,6 @@ build() {
 package() {
     cd "PlotJuggler-${pkgver}/build"
     make DESTDIR="${pkgdir}" install
-
-    # fastcdr should not be installed,
-    # but CPM installs dependencies automatically
-    rm -rf "${pkgdir}/usr/include/fastcdr"
-    rm -rf "${pkgdir}/usr/lib/cmake/fastcdr"
-    rm -f "${pkgdir}/usr/lib/libfastcdr.a"
-    rm -rf "${pkgdir}/usr/share/fastcdr"
-    rm -f ${pkgdir}/usr/include/zdict.h
-    rm -f ${pkgdir}/usr/include/zstd.h
-    rm -f ${pkgdir}/usr/include/zstd_errors.h
-    rm -rf ${pkgdir}/usr/lib/cmake/zstd
-    rm -f ${pkgdir}/usr/lib/pkgconfig/libzstd.pc
 }
 
 sha256sums=('4d194e42797317f951419b166b85804257655b7d24cfae6fb21ac3e8fdbd673c')
