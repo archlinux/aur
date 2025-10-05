@@ -68,8 +68,6 @@ check() {
         --deselect tests/test_1254_test_threadpool_executor_for_dask.py::test_decompression_threadpool_executor_for_dask
         --deselect tests/test_1321_pandas_changed_api_again.py::test
         --deselect tests/test_1412_rntuple_dask.py::test_dask
-        # disable tests that fail due to fsspec issues
-        --deselect tests/test_0692_fsspec_writing.py
     )
 
     cd ${_pkgname}5-$pkgver
