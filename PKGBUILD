@@ -48,6 +48,7 @@ build() {
     # remove '--target=...' from mingw's configure
     bash <(sed 's/--target[^ ]* //' $(command -v "${_arch}-configure")) \
       --enable-fts3 \
+      --disable-tcl \
       --fts4 \
       --fts5 \
       --rtree \
