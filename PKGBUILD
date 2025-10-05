@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=7.1.1
-pkgrel=2
+pkgver=8.0
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -102,38 +102,21 @@ provides=(
   libavfilter.so
   libavformat.so
   libavutil.so
-  libpostproc.so
   libswresample.so
   libswscale.so
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag='a1328e68877e12ab5a6e5d92a84aefa566783ea5'
+_tag='a4044e04486d1136022498891088a90baf5b2775'
 source=(
   "$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
-  'avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch'
-  'fix_build_with_v4l2_1.30.patch'
 )
-b2sums=('c7b1a56593f123de8e18b3b93c81dca4aff439f5701935cc1fe6316543e8c3256acd7f95b4a533eb7ba30e346fa13bf0ad5bff54b7822c088ef3939882416a7c'
-        'a32aeff68032a78d661011654bbdba138002833f7d17d23bba6f95479ca22bef5697eb9e7e4cb9e0b5140fc23eab3aab16fc60962d62809c3c02f890599a8332'
-        'a713b3a4243cc5de3867f7c210172c094f50bd614c0c8be2c99d6161b06d43d9183ae9c442ac3056bfe06c28419e276d129b1235471466eedd340bf0c4780acb')
+b2sums=('7c71ec5f098e248b584fd3e28e7f648e5929ff7c5a6cfc5dcce8300a8a0b91de804cd92ef72963ef86dc57a73d15ab03aeab61d99d1872baad1163462730d7d6')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
-prepare() {
-  cd "${pkgname}" || exit 1
-
-  # Fix build with v4l2 >= 1.30
-  # https://trac.ffmpeg.org/ticket/11570
-  patch -Np1 -i "${srcdir}/fix_build_with_v4l2_1.30.patch"
-
-  # Fix for svt-av1
-  # Taken from https://github.com/FFmpeg/FFmpeg/commit/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95.patch
-  git apply -3 ../avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
-
-  # VAAPI HEVC encode alignment fix
-  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
-  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
-}
+# prepare() {
+#   cd "${pkgname}" || exit 1
+# }
 
 pkgver() {
   cd "${pkgname}" || exit 1
