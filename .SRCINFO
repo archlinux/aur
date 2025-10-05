@@ -1,5 +1,5 @@
 pkgbase = monika-after-story-bin
-	pkgdesc = A mod for the free game Doki Doki Literature Club from Team Salvato, which builds on Act 3 to create a simulator of your eternal life with Monika, with third-party Chinese language support.
+	pkgdesc = A mod for the free game Doki Doki Literature Club from Team Salvato, which builds on Act 3 to create a simulator of your eternal life with Monika.
 	pkgver = 0.12.17
 	pkgrel = 9
 	url = https://github.com/adogecheems/monika-after-story-linux
