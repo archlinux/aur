@@ -1,16 +1,21 @@
 pkgbase = quartz
 	pkgdesc = A richly featured, open source job scheduling library that can be integrated within virtually any Java application
-	pkgver = 2.3.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://www.quartz-scheduler.org/
 	arch = any
 	license = APACHE
-	depends = java-environment
+	depends = java-environment>=8
 	depends = log4j
 	depends = slf4j
 	options = !strip
-	source = http://www.quartz-scheduler.org/downloads/files/quartz-2.3.0-distribution.tar.gz
-	md5sums = 6ce653a630b089b951c56a27e66f693d
+	source = https://github.com/quartz-scheduler/quartz/releases/download/v2.5.0/quartz-2.5.0.jar
+	source = https://github.com/quartz-scheduler/quartz/releases/download/v2.5.0/quartz-2.5.0-javadoc.jar
+	source = https://github.com/quartz-scheduler/quartz/releases/download/v2.5.0/quartz-jobs-2.5.0.jar
+	source = https://github.com/quartz-scheduler/quartz/releases/download/v2.5.0/quartz-jobs-2.5.0-javadoc.jar
+	sha256sums = eef3c9198e3f346ea1da386a0b940ed43d7904cf217ecc5755fbe7f4729f0804
+	sha256sums = 12377356d342708d567453e64986313ce2981f2b93ed469ea15900b582c5bb91
+	sha256sums = ac17218d7d6854cdbc0cf832e712a2595a70e90c3c3b87433c3cf29c7da27e5b
+	sha256sums = c645893ec1cc8ceef78fcc024637b954c4b788b0dabf0432b21c7ca092f804f4
 
 pkgname = quartz
-
