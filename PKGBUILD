@@ -453,8 +453,8 @@ prepare() {
   if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     rm -f libavcodec/libsvt_{hevc,vp9}.c
     patch -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
-    patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
+    patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
   fi
 
   if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
@@ -487,6 +487,7 @@ prepare() {
   fi
 
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    patch -d "${srcdir}/whisper.cpp-${_whispercpp_ver}"-Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
     sed -i 's|in->pts, 0|in->pts|g' libavcodec/lcevcdec.c libavfilter/vf_lcevc.c
   fi
 }
