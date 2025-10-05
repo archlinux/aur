@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.36.0'
+pkgver='0.36.2'
 pkgrel='1'
 epoch='1'
 pkgdesc='Utilities for working with Jane Street AST constructs'
@@ -16,8 +16,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-stdlib-shims-dep.diff'
 )
-b2sums=('ed63e4b7ed077974015ddd237de1ee97b32763f4e3d48d46773b9ed02e3786e846919fae9d78bf45cf7eacb588faa39d2c8b115f2f743dfa716f7804ba45c0a0'
-        '5fd7037dfe4cc3f250fa42cc2fc84427a36394f04a6fef646856c7e9bf2a918b36eebfd204741a26a8a89215bf304410b6f74e060305d9b25ce0bdc6e277f463')
+b2sums=('38bea599c038103a966824582248b26b31b4c24347dd76ece3819cd4cc23f49218e8b47aaaf4783d9fa8d74437b03c9b320e9d8a13c712c0d13cd75f7270b1a2'
+        'c9a6dcaf6cb70796f58ca1d3f4c6f18abfcd0698778969a1af1bfdedac4b30f7763e2a636bd50081fbd7c0efd668dd5e7f34e6221bbdaa16711f9cb6e9319843')
 
 _sourcedirectory="$_projectname-$pkgver"
 
