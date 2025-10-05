@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -12,7 +12,7 @@ depends=('gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant' 'elephant-desktopa
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("ce290697cfb9516061689b1f4e299fea5010383aecc5e980bb41ab47f21c7370")
+sha256sums=("425865ea90998efb228dd6265ee81cdc2aaa98c59448576c099eedc90a37d308")
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -43,6 +43,7 @@ package() {
     install -Dm 644 item_todo.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_unicode.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 layout.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 keybind.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 preview.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 style.css -t "${pkgdir}/etc/xdg/walker/themes/default"
 }
