@@ -2,7 +2,7 @@
 
 pkgname=piliplus
 _srcname=PiliPlus
-pkgver=1.1.4.7
+pkgver=1.1.4.8
 pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
@@ -10,10 +10,8 @@ license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('gtk3' 'mpv' 'libayatana-appindicator')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
-source=("git+${url}.git#tag=${pkgver}"
-	"${pkgname}.desktop")
-sha256sums=('336dbbbcc2b3e216db00f2a4006b0dae88d49124e38afa75905a9b184a879ade'
-            'cad91a008e837952ec7268312ce9f5305a59783584843df7dbb10230464b8731')
+source=("git+${url}.git#tag=${pkgver}")
+sha256sums=('fae75e0f8d13162ec97177c47e9ac4aaba9d5505eea2a74e1cb37de0105fe985')
 
 prepare() {
 	cd "${_srcname}/"
@@ -44,9 +42,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-	# Icon
-	install -Dm644 assets/images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-
-	# Desktop Launcher
-	install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	cd assets
+	install -Dm644 images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+	install -Dm644 "linux/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 }
