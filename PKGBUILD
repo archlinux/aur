@@ -4,7 +4,7 @@
 _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
+pkgver=2.0.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc='wayland application runner'
@@ -50,8 +50,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '698c67d7d14aea729f3ade888f1b26e3da8ab7412a8635efd0cdd4ec4744468b'
-            '556098e7a04a06f148cc8e2d02a731014289344faccb8eb004a3c73bc5e220f8'
+            '554f4a6f079789c631090e0e8a4892ca45f6aabf1075bc79aa8494c4fb7b0096'
+            '35fe5c638a41d337b2df24353632702d89ca9a608818adb87ab856d96b1f0a34'
             '84a0cb659db1db2dff55117cb00b3681cafb56248da48e5c2ddb66ca3ae999ec'
             '4b5a6bd9074ae07f5d05bdebb26f2922f710b2b5d8aaddba6da5c5d06c21d1e5'
             '9da14438e381542cb56aae33ca76e04caa6f39f2b3e577f5f188954819126bff'
@@ -60,12 +60,12 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '720fc46916fdf1fd916caa3d418e9544413a5b79a9cd717e077d936b2f5cafa2'
             'e784b7f98d25e815ab26b95c379536fedf900684f0edcc812d913905bf4bea4b'
             '0f587b5f21467d1e3f931b661796a77102a19ee3c0b1cd7776e56f935190aad4'
-            'e9df9bde7c1f291bdb034537830428071f15035913ad78e9cd7093406020a561'
+            'c951db2edae2a8c7040dfc6227c00227f86010c45baa348bd9adab231d80a717'
             '0f587b5f21467d1e3f931b661796a77102a19ee3c0b1cd7776e56f935190aad4'
             '409ee3fe13e391fd36ba3fa97f34e2cf1a42d82124e13b53c1df4cfb6e252333'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             'fac6b8fe030250c51a9b4860d5d43d2e64457afa7c3ba4fc2600a80ec766e455')
-sha256sums_x86_64=('6270c91423ad4aef32182801ff3b0b6ceec1407c9d58a9eed0ebcb338c759e05')
+sha256sums_x86_64=('f09efc0aa8fd159c9535f7268f272888b512b5a8f388790dfb3d37a77a753c3c')
 
 prepare() {
     cd "${srcdir}" || exit 1
