@@ -16,13 +16,13 @@ depends=('tvbrowser' 'mpv' 'at' 'ffmpeg')
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/tvb-recorder' $_name.install)
 sha512sums=('SKIP'
-            '8a37c1e1c09c964147f5039d1c67955b5df8baff29450aa0aa940d58e244c45924cbfe7d2fc582dc8899931a840e8a6a21fcbf377e3fe5de59300e4a1547d345')
+            '57ea9155cdd7e5a65d2d861d498136cccf8ed897828569c5d16b61709e2de84945bfde26aee034eff3fa5b24a9a04db502aade680192e5f253ffe7c73ff0ce41')
 install="$_name.install"
 
 package() {
     cd "$srcdir/$_name"
-    install -Dm744 $_name "$pkgdir/usr/local/bin/$_name"
-    install -Dm744 tvb-switch "$pkgdir/usr/local/bin/tvb-switch"
-    install -Dm744 tvb-cut "$pkgdir/usr/local/bin/tvb-cut"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
+    install -Dm605 $_name "$pkgdir/usr/local/bin/$_name"
+    install -Dm605 tvb-switch "$pkgdir/usr/local/bin/tvb-switch"
+    install -Dm605 tvb-cut "$pkgdir/usr/local/bin/tvb-cut"
+    install -Dm605 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
