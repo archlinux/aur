@@ -3,7 +3,7 @@
 _pkgname=ITK
 pkgname=(itk-git python-itk-git)
 _pkgver=5.4
-pkgver=5.4.r56520.74296d2ddc
+pkgver=5.4.r57290.259217c066
 pkgrel=1
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
@@ -50,6 +50,8 @@ get_pyver() {
 }
 
 prepare() {
+  # quick fix for building with system eigen
+  sed -i 's/_Eigen3_min_version 3.3/_Eigen3_min_version 5.0/' ${_pkgname}/Modules/ThirdParty/Eigen3/CMakeLists.txt
   # quick fix for building with swig < 4.3.0
   find ${_pkgname} -type f -exec sed -i "s/SWIG_Py_DECREF/Py_DECREF/g" {} \;
   find ${_pkgname} -type f -exec sed -i "s/SWIG_Py_INCREF/Py_INCREF/g" {} \;
