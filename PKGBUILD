@@ -10,7 +10,7 @@ arch=(
 url="https://github.com/adogecheems/monika-after-story-linux"
 license=('custom')
 optdepends=('monika-after-story-tr-cn: A third-party Chinese language patch for the Monika After Story.')
-provides=('mas')
+provides=('ddlc-mas')
 conflicts=('monika-after-story-bin')
 source=(
     "https://github.com/adogecheems/monika-after-story-linux/raw/refs/heads/main/resources/DDLC.tar.xz"
