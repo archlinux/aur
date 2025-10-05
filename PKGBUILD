@@ -1,6 +1,6 @@
 # Maintainer: Dani Rodríguez <dani@danirod.es>
 pkgname=gitfourchette
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="The comfortable Git UI for Linux"
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
 	'python-pytest-xdist'
 	'python-ruff'
 )
-_tag=dadf2cd8c38c159e659adb640edb7b0c70d4b047 # git rev-parse "v$pkgver"
+_tag=07a57f0df22b9498133ae0e0c5ef41fdea2a2fc0 # git rev-parse "v$pkgver"
 source=("git+https://github.com/jorio/gitfourchette#tag=$_tag")
 sha256sums=("SKIP")
 
@@ -37,7 +37,7 @@ build() {
 check() {
 	cd "$pkgname"
 	# TODO: should enable network tests with TESTNET=1?
-	./test.py || true
+	./test.py
 }
 
 package() {
