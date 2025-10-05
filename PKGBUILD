@@ -1,5 +1,5 @@
 pkgname=apt-file
-pkgver=3.2.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='APT package searching utility'
 url='https://packages.debian.org'
@@ -7,7 +7,7 @@ arch=('any')
 license=('GPL')
 depends=('perl-aptpkg')
 source=("http://deb.debian.org/debian/pool/main/a/apt-file/apt-file_${pkgver}.tar.xz")
-sha256sums=('bacbfb038dca6d2f0b740dcd05064d0b81fd0f086ce2eb59c5157d13ef064edf')
+sha256sums=('2ab7109340054f0073c690d62d055c31bf69e1f50fb65b080bbf0d4ae572dae7')
 backup=('etc/apt/apt.conf.d/50apt-file.conf')
 
 build(){
