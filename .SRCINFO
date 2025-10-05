@@ -1,11 +1,22 @@
 pkgbase = bluerice
+<<<<<<< HEAD
 	pkgdesc = Bluetooth utility with Wofi menu
 	pkgver = 0.2.1
+=======
+	pkgdesc = Bluetooth utility with customizable menu
+	pkgver = 0.3.0
+>>>>>>> c94dec4 (bluerice: modularize code)
 	pkgrel = 1
 	url = https://github.com/kupira/BlueRice
 	arch = x86_64
 	license = MIT
 	makedepends = git
+<<<<<<< HEAD
+=======
+	makedepends = cmake
+	makedepends = make
+	makedepends = g++
+>>>>>>> c94dec4 (bluerice: modularize code)
 	depends = glib2
 	depends = libnotify
 	depends = bluez-libs
