@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=keep-me-awake
 _app_id=de.swsnr.keepmeawake
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Inhibit screensaver and suspend in GNOME"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=(
   'just'
 )
 source=("git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v$pkgver")
-sha256sums=('7e264c4ef49ee0c292f358a3d3edc023f12aa3594ecffadf8571ed73146d16b3')
+sha256sums=('f44c04c65a63fa8d7c2684451b6dc456e8235130166db341de40d749cd37935b')
 
 prepare() {
   cd "$pkgname"
@@ -47,6 +47,8 @@ package() {
   install -Dm644 "build/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "build/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "build/${_app_id}.service" -t "$pkgdir/usr/share/dbus-1/services/"
+  install -Dm644 resources/icons/scalable/actions/*.svg -t \
+    "$pkgdir/usr/share/icons/hicolor/scalable/actions/"
   install -Dm644 "resources/icons/scalable/apps/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "resources/icons/symbolic/apps/${_app_id}-symbolic.svg" -t \
