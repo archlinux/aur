@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=inform7-ide-git
 pkgver=2.0.0.r178.g4dcec50e
-pkgrel=1
+pkgrel=2
 pkgdesc="a ide for the inform language/compiler"
 arch=(x86_64)
 url="https://github.com/ptomato/inform7-ide"
