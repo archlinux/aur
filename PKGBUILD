@@ -1,3 +1,6 @@
+# Maintainer: zoeyrae
+# Contributor: zoeyrae <zoey.ronain at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=amazon-corretto-24-bin
 pkgver=24.0.2.12.1
 pkgrel=1
@@ -20,5 +23,5 @@ package() {
 
 sha256sums=('d4cd1f03a8b9aad58d0fdac96d1ba5de6b7ac86f3069729535f2fc1e5a33f7c6'
             'SKIP')
-
+# vim:set ts=2 sw=2 et:
 

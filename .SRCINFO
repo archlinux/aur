@@ -1,0 +1,19 @@
+pkgbase = amazon-corretto-24-bin
+  pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
+  pkgver = 24.0.2.12.1
+  pkgrel = 1
+  url = https://aws.amazon.com/corretto/
+  arch = x86_64
+  license = GPL2
+  depends = java-runtime-common
+  depends = java-environment-common
+  provides = java-runtime-headless=24
+  provides = java-runtime=24
+  provides = java-environment=24
+  source = https://corretto.aws/downloads/latest/amazon-corretto-24-x64-linux-jdk.tar.gz
+  source = https://corretto.aws/downloads/latest/amazon-corretto-24-x64-linux-jdk.tar.gz.sig
+  validpgpkeys = 6DC3636DAE534049C8B94623A122542AB04F24E3
+  sha256sums = 86be550b203970414df9d181a72607731a1a592f7c5416f649bcce9a537e7572
+  sha256sums = SKIP
+
+pkgname = amazon-corretto-24-bin
