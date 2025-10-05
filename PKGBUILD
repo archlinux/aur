@@ -2,11 +2,11 @@
 
 pkgname=nanocoder
 pkgauthor=Mote-Software
-pkgver=1.11.2
+pkgver=1.11.4
 pkgrel=1
 
 _npmname=nanocoder
-_npmauthor=@motesoftware
+_npmauthor=@nanocollective
 
 pkgdesc="A beautiful local-first coding agent running in your terminal"
 arch=("x86_64")
@@ -24,9 +24,9 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkg
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('47640f96924cef62655a18a9920409ce9956d6332743df316ca7519c2f3879108046e2be7ee2f446d187c4436a0529617f148a9229deab60585eb0d69b9b23f1'
-        'dab638b809530f25133419a8880f388b363ac0a11ed33ad263c1a1ea64aa455db0dbfcdce21f117eda38e823c94b5ec382e22fe2d94f4ffff125ef46c7613f8b'
-        '9cde14a5c7909ccaa6db312625e46eb6885097c7e7f70916ed0412037b1418dd8139d5616dcef87fc22ad68fb5632e4b251af562598d076f34c7e46ac7293352')
+b2sums=('78b81d49782c7afca4e48f9bc88812598a2ff21f43c19b65b1c754d3a1f5992376c345aa67c86cc358da2cd9e339070cc0ba0f428a77b59588ccfc3120426052'
+        '12fcdba570f299675b88313a15f0f9e1534493761d91ad2930d53ee15387ff66ebf84f9b1500bdf7fdc74ff9ee5cc16d0f87c0ab6ac99f806bd8041b9bfd3eb9'
+        '346c4fc0cfa08bf4d47a336df216cf8d7352cba66aecff5839700cf5eba59a15e2c5d1275297a8448b04639c37dd445d9ac0dea9bd404bced5fbf62f0b53537b')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {

@@ -1,4 +1,3 @@
 [nanocoder]
-source = "git"
-git = "https://github.com/Nano-Collective/nanocoder.git"
-prefix = "v"
+source = "npm"
+npm = "@nanocollective/nanocoder"
