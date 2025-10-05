@@ -1,26 +1,30 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=1.3.4
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/libbluray.html'
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=('mingw-w64-crt' 'mingw-w64-fontconfig' 'mingw-w64-freetype2' 'mingw-w64-libxml2')
-options=(!strip !buildflags !libtool staticlibs)
-makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git')
-#makedepends=('apache-ant' 'java-environment' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
+options=(!strip !buildflags !libtool staticlibs !debug)
+makedepends=(
+  mingw-w64-gcc
+  mingw-w64-meson
+  mingw-w64-pkg-config
+  git
+  ninja
+)
+#makedepends=('apache-ant' 'java-environment=17' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 #optdepends=('java-runtime: BD-J library')
-_tag=bb5bc108ec695889855f06df338958004ff289ef
+_tag=9f07fbb2077be7a40b062bcf2463a9941c2a3b13
 source=(
   git+https://code.videolan.org/videolan/libbluray.git#tag=${_tag}
   git+https://code.videolan.org/videolan/libudfread.git
 )
-sha256sums=(
-  SKIP
-  SKIP
-)
+b2sums=('12f30033f1d4efc24acd1886de75347de3301e708b2fdae48cdce1d29064af6235302dd33f5bc0ee8d0fa4adf61c05590818b26a15c7dfb76c188dfb59eed128'
+        'SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -31,25 +35,18 @@ prepare() {
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-
-  autoreconf -fiv
 }
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/libbluray/build-${_arch} && cd ${srcdir}/libbluray/build-${_arch}
-
-    ${_arch}-configure \
-      --disable-bdjava-jar
-    make
+    ${_arch}-meson libbluray build-${_arch} --force-fallback-for libudfread -Dbdj_jar=disabled
+    meson compile -C build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/libbluray/build-${_arch}
-
-    make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" meson install -C build-${_arch}
     ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
