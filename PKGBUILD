@@ -3,7 +3,7 @@
 _pkg=container2wasm
 pkgname=$_pkg-bin
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Container to WASM converter"
 arch=('x86_64' 'aarch64')
 conflicts=('container2wasm')
@@ -11,8 +11,8 @@ provides=('container2wasm')
 optdepends=('wasmtime'
             'wasmer')
 source=(
-  "https://raw.githubusercontent.com/container2wasm/container2wasm/refs/tags/v$pkgver/LICENSE"
-  "https://github.com/container2wasm/container2wasm/releases/download/v$pkgver/c2w-net-proxy.wasm"
+  "LICENSE::https://raw.githubusercontent.com/container2wasm/container2wasm/refs/tags/v$pkgver/LICENSE"
+  "c2w-net-proxy.wasm::https://github.com/container2wasm/container2wasm/releases/download/v$pkgver/c2w-net-proxy.wasm"
 )
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/container2wasm/container2wasm/releases/download/v$pkgver/container2wasm-v$pkgver-linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/container2wasm/container2wasm/releases/download/v$pkgver/container2wasm-v$pkgver-linux-arm64.tar.gz")
