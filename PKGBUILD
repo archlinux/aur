@@ -23,9 +23,9 @@ package() {
   tar -xf data.tar.xz -C "$pkgdir" --exclude 'usr/share/cursor/[^r]*' --exclude 'usr/share/cursor/*.pak'
   cd "$pkgdir"
   mv usr/share/zsh/{vendor-completions,site-functions}
-  ln -svf /usr/bin/rg ${_app}/node_modules/@vscode/ripgrep/bin/rg
-  ln -svf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
-
+  echo -e '#!/bin/bash\nexec /usr/bin/rg "${@/--cursor-ignore/--ignore-file}"' \
+    | install -Dm755 /dev/stdin ${_app}/node_modules/@vscode/ripgrep/bin/rg
+  ln -sf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
   sed -e "s|code-flags|cursor-flags|" -e "s|/usr/lib/code|/${_app}|" -e "s|/usr/lib/code/code.mjs|--app=/${_app}|" \
     -e "s|name=electron|name=${_electron}|" "${srcdir}"/code.sh | install -Dm755 /dev/stdin "${pkgdir}"/usr/share/cursor/cursor
   install -d "$pkgdir"/usr/bin
