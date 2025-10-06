@@ -3,14 +3,14 @@
 
 pkgname=nom
 pkgver=2.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='RSS reader for the terminal'
 arch=('x86_64' 'aarch64')
 url='https://github.com/guyfedwards/nom'
 license=('GPL-3')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('96a9bd8cbc3bfb1bded8e4dba82953708f1fa3c28bf984dcebff86ec77447f233')
+sha256sums=('96a9bd8cbc3bfb1bded8e4dba82953708f1fa3c28bf984dcebff86ec77447f23')
 
 build() {
   cd "$pkgname-$pkgver"
