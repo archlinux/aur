@@ -1,0 +1,34 @@
+pkgbase = omarchist-git
+	pkgdesc = A GUI app for Omarchy (development build from dev branch).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tahayvr/omarchist
+	install = omarchist-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = openssl
+	makedepends = appmenu-gtk-module
+	makedepends = libappindicator-gtk3
+	makedepends = librsvg
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = pango
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = omarchist
+	conflicts = omarchist-bin
+	conflicts = omarchist
+	source = omarchist-git::git+https://github.com/tahayvr/omarchist.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = omarchist-git
