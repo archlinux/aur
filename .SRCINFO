@@ -1,0 +1,26 @@
+pkgbase = opensoundmeter-jack
+	pkgdesc = Crossplatform measurement software for tuning sound systems with JACK support patched in
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://opensoundmeter.com
+	arch = x86
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = qt5-base
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	provides = opensoundmeter
+	conflicts = opensoundmeter
+	source = https://github.com/psmokotnin/osm/archive/refs/tags/v1.5.2.tar.gz
+	source = disable-appimage.patch
+	source = osm-jack.patch
+	md5sums = 1d025fe5ebf56c9a076fe177d9e28535
+	md5sums = 010792657489e32e28d4f22205bde460
+	md5sums = 2762c3b37398429a3ee365a311736edb
+
+pkgname = opensoundmeter-jack

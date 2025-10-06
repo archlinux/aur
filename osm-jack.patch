@@ -1,0 +1,815 @@
+From c1e790e809d38e93dde2d9c788ab29fc8b3b1206 Mon Sep 17 00:00:00 2001
+From: Adrian <git@nexadn.de>
+Date: Sun, 13 Nov 2022 18:28:07 +0100
+Subject: [PATCH 1/4] ci: Install libjack-dev for Linux
+
+The new JACK plugin requires the libjack-dev at compile time.
+---
+ .travis.yml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.travis.yml b/.travis.yml
+index ce9e997..212e240 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -10,6 +10,7 @@ before_install:
+ install:
+   - sudo apt-get install build-essential libgl1-mesa-dev
+   - sudo apt-get install qt514base qt514multimedia qt514quickcontrols2
++  - sudo apt-get install libjack-dev
+   - source /opt/qt514/bin/qt514-env.sh
+ 
+ 
+-- 
+2.51.0
+
+
+From cf9dbdc3a8863a767ba0fe29c151063b87dc12e7 Mon Sep 17 00:00:00 2001
+From: Adrian <git@nexadn.de>
+Date: Sun, 13 Nov 2022 17:41:44 +0100
+Subject: [PATCH 2/4] audio: Add JACK plugin
+
+This commit adds a JACK plugin, allowing OpenSoundMeter to run with JACK
+or PipeWire as sound server. This can eliminate problems when
+OpenSoundMeter is run alongside a sound server which wants to have
+exclusive access to the sound card.
+
+This introduces libjack and the JACK headers as a new
+dependency on Linux.
+
+The JACK plugin differs from other plugins in the sense that it does not
+automatically establish connections to devices. Instead, each opened
+stream (be it a measurement or a generator signal) spawns a new JACK
+client with each of the inputs/outputs required by OSM present as a JACK
+port. The user can then patch these ports freely in JACK, allowing for
+freedom in the audio routing. As new JACK clients are spawned upon
+request, this plugin does always show only a single JACK device in
+device lists as more is not required and avoids additional complexity
+when trying to do more elaborate listings.
+
+Closes: https://github.com/psmokotnin/osm/issues/58
+---
+ OpenSoundMeter.pro         |  10 +-
+ src/audio/client.cpp       |   2 +
+ src/audio/plugins/jack.cpp | 462 +++++++++++++++++++++++++++++++++++++
+ src/audio/plugins/jack.h   | 127 ++++++++++
+ 4 files changed, 598 insertions(+), 3 deletions(-)
+ create mode 100644 src/audio/plugins/jack.cpp
+ create mode 100644 src/audio/plugins/jack.h
+
+diff --git a/OpenSoundMeter.pro b/OpenSoundMeter.pro
+index a52b502..f5b73e3 100644
+--- a/OpenSoundMeter.pro
++++ b/OpenSoundMeter.pro
+@@ -294,12 +294,16 @@ win32 {
+ 
+ unix:!macx:!ios {
+     HEADERS += \
+-        src/audio/plugins/alsa.h
++        src/audio/plugins/alsa.h \
++        src/audio/plugins/jack.h
+ 
+     SOURCES += \
+-        src/audio/plugins/alsa.cpp
++        src/audio/plugins/alsa.cpp \
++        src/audio/plugins/jack.cpp
+ 
+-    LIBS += -lasound
++    LIBS += \
++        -lasound \
++        -ljack
+ }
+ 
+ GRAPH = $$(GRAPH_BACKEND)
+diff --git a/src/audio/client.cpp b/src/audio/client.cpp
+index d319c72..10f611e 100644
+--- a/src/audio/client.cpp
++++ b/src/audio/client.cpp
+@@ -33,6 +33,7 @@
+ 
+ #ifdef Q_OS_LINUX
+ #include "plugins/alsa.h"
++#include "plugins/jack.h"
+ #endif
+ 
+ #ifdef USE_ASIO
+@@ -87,6 +88,7 @@ void Client::initPlugins()
+ 
+ #ifdef Q_OS_LINUX
+     m_plugins.push_back(QSharedPointer<Plugin>(new AlsaPlugin()));
++    m_plugins.push_back(QSharedPointer<Plugin>(new JackPlugin()));
+ #endif
+ 
+     for (auto &&plugin : m_plugins) {
+diff --git a/src/audio/plugins/jack.cpp b/src/audio/plugins/jack.cpp
+new file mode 100644
+index 0000000..3a87edf
+--- /dev/null
++++ b/src/audio/plugins/jack.cpp
+@@ -0,0 +1,462 @@
++/**
++ *  OSM
++ *  Copyright (C) 2022  Adrian Schollmeyer
++
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++#include "jack.h"
++#include <algorithm>
++#include <cassert>
++
++namespace {
++constexpr unsigned int DEFAULT_SAMPLE_RATE{48000};
++constexpr unsigned int DEFAULT_CHANNEL_COUNT_INPUT{2};
++constexpr unsigned int DEFAULT_CHANNEL_COUNT_OUTPUT{1};
++
++constexpr const char* PLUGIN_NAME{"JACK"};
++constexpr const char* JACK_CLIENT_NAME{"OpenSoundMeter"};
++constexpr const char* DEFAULT_MEASUREMENT_CHANNEL{"measurement"};
++constexpr const char* DEFAULT_REFERENCE_CHANNEL{"reference"};
++constexpr const char* DEFAULT_OUTPUT_CHANNEL{"out"};
++}
++
++namespace audio {
++JackClient::JackClient(const Plugin::Direction &direction, QIODevice& endpoint)
++    : m_client(nullptr, jackClientDeleter()), m_direction(direction), m_endpoint(endpoint)
++{
++    initJackClient();
++    initPorts();
++    initSampleRate();
++    initBufferSize();
++    initProcessing();
++}
++
++JackClient::~JackClient()
++{
++    // Explicitly stop processing first, to prevent us still running the JACK
++    // processor while the rest of the object is being cleaned up
++    if (m_client)
++        close();
++}
++
++jack_nframes_t JackClient::currentSampleRate() const
++{
++    return m_sampleRate;
++}
++
++std::size_t JackClient::currentChannelCount() const
++{
++    return m_ports.size();
++}
++
++Plugin::Direction JackClient::direction() const
++{
++    return m_direction;
++}
++
++void JackClient::close()
++{
++    deactivate();
++    m_client.reset(nullptr);
++}
++
++void JackClient::initJackClient()
++{
++    jack_status_t jackStatus;
++    jack_client_t* jackClient = jack_client_open(
++        JACK_CLIENT_NAME,
++        JackOptions::JackNoStartServer,
++        &jackStatus
++    );
++
++    if (!jackClient)
++        throw JackPluginException{"Failed to open JACK client"};
++
++    m_client.reset(jackClient);
++}
++
++void JackClient::initSampleRate()
++{
++    assert(m_client);
++    m_sampleRate = jack_get_sample_rate(m_client.get());
++    qDebug() << "[JACK] Sample rate set: " << m_sampleRate;
++
++    int res = jack_set_sample_rate_callback(
++        m_client.get(),
++        jackSampleRateCallback,
++        this
++    );
++    if (res != 0)
++        throw JackPluginException{"Failed to register sample rate callback"};
++}
++
++void JackClient::initBufferSize()
++{
++    assert(m_client);
++    assert(!m_ports.empty());
++    m_bufferSize = jack_get_buffer_size(m_client.get());
++    m_sampleBuffer.resize(m_bufferSize * m_ports.size());
++    qDebug() << "[JACK] Buffer size set: " << m_bufferSize;
++
++    int res = jack_set_buffer_size_callback(
++        m_client.get(),
++        jackBufferSizeCallback,
++        this
++    );
++    if (res != 0)
++        throw JackPluginException{"Failed to register buffer size callback"};
++}
++
++void JackClient::initPorts()
++{
++    assert(m_client);
++    switch (m_direction) {
++    case Plugin::Direction::Input:
++        registerInputs();
++        break;
++
++    case Plugin::Direction::Output:
++        registerOutputs();
++        break;
++
++    default:
++        throw JackPluginException{"Unsupported signal direction"};
++    }
++}
++
++void JackClient::initProcessing()
++{
++    assert(m_client);
++    int res = jack_set_process_callback(
++        m_client.get(),
++        jackProcessCallback,
++        this
++    );
++    if (res != 0)
++        throw JackPluginException{"Failed to register process callback"};
++}
++
++void JackClient::activate()
++{
++    assert(m_client);
++    if (m_active)
++        return;
++
++    qDebug() << "[JACK] Activating";
++    int res = jack_activate(m_client.get());
++    if (res != 0)
++        throw JackPluginException{"Failed to activate client"};
++
++    m_active = true;
++}
++
++void JackClient::deactivate()
++{
++    if (!m_active)
++        return;
++
++    m_active = false;
++
++    assert(m_client);
++    int res = jack_deactivate(m_client.get());
++    if (res != 0)
++        throw JackPluginException{"Failed to deactivate client"};
++}
++
++void JackClient::registerInputs()
++{
++    qDebug() << "[JACK] Registering Inputs";
++    jack_port_t *measurementPort = jack_port_register(
++        m_client.get(),
++        DEFAULT_MEASUREMENT_CHANNEL,
++        JACK_DEFAULT_AUDIO_TYPE,
++        JackPortFlags::JackPortIsInput,
++        0
++    );
++    if (!measurementPort)
++        throw JackPluginException{"Failed to register measurement port"};
++    m_ports.emplace_back(measurementPort, jackPortDeleter(m_client.get()));
++    m_portBuffers.push_back(nullptr);
++
++    jack_port_t *referencePort = jack_port_register(
++        m_client.get(),
++        DEFAULT_REFERENCE_CHANNEL,
++        JACK_DEFAULT_AUDIO_TYPE,
++        JackPortFlags::JackPortIsInput,
++        0
++    );
++    if (!referencePort)
++        throw JackPluginException{"Failed to register reference port"};
++    m_ports.emplace_back(referencePort, jackPortDeleter(m_client.get()));
++    m_portBuffers.push_back(nullptr);
++}
++
++void JackClient::registerOutputs()
++{
++    qDebug() << "[JACK] Registering Outputs";
++    jack_port_t *outputPort = jack_port_register(
++        m_client.get(),
++        DEFAULT_OUTPUT_CHANNEL,
++        JACK_DEFAULT_AUDIO_TYPE,
++        JackPortFlags::JackPortIsOutput,
++        0
++    );
++    if (!outputPort)
++        throw JackPluginException{"Failed to register output port"};
++    m_ports.emplace_back(outputPort, jackPortDeleter(m_client.get()));
++    m_portBuffers.push_back(nullptr);
++}
++
++std::function<void(jack_client_t *)> JackClient::jackClientDeleter()
++{
++    return [this](jack_client_t *client) -> void {
++        m_ports.resize(0);
++        jack_client_close(client);
++    };
++}
++
++std::function<void(jack_port_t *)> JackClient::jackPortDeleter(jack_client_t *client)
++{
++    // We can't use the object's client member here as it might already have
++    // changed if this deleter is called in the client object's deleter,
++    // resulting in an assertion failure or segfault.
++    assert(client);
++    return [client](jack_port_t *port) -> void {
++        jack_port_unregister(client, port);
++    };
++}
++
++int JackClient::jackSampleRateCallback(jack_nframes_t newSampleRate, void* obj)
++{
++    assert(obj);
++    return reinterpret_cast<JackClient*>(obj)->jackSampleRateCallbackInt(newSampleRate);
++}
++
++int JackClient::jackSampleRateCallbackInt(jack_nframes_t newSampleRate)
++{
++    m_sampleRate = newSampleRate;
++    qInfo() << "[JACK] Sample rate updated: " << m_sampleRate;
++    emit sampleRateChanged(m_sampleRate);
++    return 0;
++}
++
++int JackClient::jackBufferSizeCallback(jack_nframes_t newBufferSize, void* obj)
++{
++    assert(obj);
++    return reinterpret_cast<JackClient*>(obj)->jackBufferSizeCallbackInt(newBufferSize);
++}
++
++int JackClient::jackBufferSizeCallbackInt(jack_nframes_t newBufferSize)
++{
++    m_bufferSize = newBufferSize;
++    qInfo() << "[JACK] Buffer size updated: " << m_bufferSize;
++    if (newBufferSize > 0)
++        m_sampleBuffer.resize(newBufferSize * m_ports.size());
++
++    return 0;
++}
++
++int JackClient::jackProcessCallback(jack_nframes_t nframes, void* obj)
++{
++    assert(obj);
++    return reinterpret_cast<JackClient*>(obj)->jackProcessCallbackInt(nframes);
++}
++
++int JackClient::jackProcessCallbackInt(jack_nframes_t nframes)
++{
++    // Yes, this can actually happen
++    if (m_bufferSize == 0)
++        return 1;
++
++    if (!m_active)
++        return 0;
++
++    assert(m_ports.size() == m_portBuffers.size());
++    assert(nframes == m_bufferSize);
++    assert(m_endpoint.isOpen());
++
++    if (m_direction == Plugin::Direction::Input) {
++        processInputPorts(nframes);
++    } else {
++        processOutputPorts(nframes);
++    }
++    return 0;
++}
++
++void JackClient::processInputPorts(jack_nframes_t nframes)
++{
++    if (!m_endpoint.isWritable())
++        return;
++
++    for (std::size_t i = 0; i < m_ports.size(); ++i) {
++        m_portBuffers[i] = reinterpret_cast<float*>(
++            jack_port_get_buffer(m_ports[i].get(), nframes));
++    }
++
++    std::size_t sampleBufferPos{0};
++    for (jack_nframes_t i = 0; i < nframes; ++i) {
++        for (const float* portBuf : m_portBuffers) {
++            assert(sampleBufferPos < m_sampleBuffer.size());
++            m_sampleBuffer[sampleBufferPos] = portBuf[i];
++            sampleBufferPos++;
++        }
++    }
++    assert(sampleBufferPos == nframes * m_portBuffers.size());
++    m_endpoint.write(
++        reinterpret_cast<char*>(m_sampleBuffer.data()),
++        sampleBufferPos * sizeof(float)
++    );
++}
++
++void JackClient::processOutputPorts(jack_nframes_t nframes)
++{
++    if (!m_endpoint.isReadable())
++        return;
++
++    for (std::size_t i = 0; i < m_ports.size(); ++i) {
++        m_portBuffers[i] = reinterpret_cast<float*>(
++            jack_port_get_buffer(m_ports[i].get(), nframes));
++    }
++
++    const std::size_t samplesToWrite = std::max(
++        static_cast<std::size_t>(nframes),
++        static_cast<std::size_t>(m_endpoint.bytesAvailable() / sizeof(float))
++    );
++    assert(samplesToWrite % m_ports.size() == 0);
++
++    std::size_t portIdx{0};
++    std::size_t portBufferPos{0};
++    for (std::size_t i = 0; i < samplesToWrite; ++i) {
++        assert(portIdx < m_portBuffers.size());
++        assert(portBufferPos < m_bufferSize);
++        const std::size_t bytesRead = m_endpoint.read(
++            reinterpret_cast<char*>(m_portBuffers[portIdx] + portBufferPos),
++            sizeof(float)
++        );
++        assert(bytesRead == sizeof(float));
++
++        portIdx = (portIdx + 1) % m_portBuffers.size();
++        if (portIdx == 0)
++            portBufferPos++;
++    }
++}
++
++JackPlugin::JackPlugin()
++{
++    DeviceInfo m_defaultDeviceInfo{PLUGIN_NAME, PLUGIN_NAME};
++    m_defaultDeviceInfo.setName(PLUGIN_NAME);
++    m_defaultDeviceInfo.setInputChannels({
++        DEFAULT_MEASUREMENT_CHANNEL,
++        DEFAULT_REFERENCE_CHANNEL
++    });
++    m_defaultDeviceInfo.setOutputChannels({DEFAULT_OUTPUT_CHANNEL});
++    m_defaultDeviceInfo.setDefaultSampleRate(DEFAULT_SAMPLE_RATE);
++    m_list.push_back(m_defaultDeviceInfo);
++}
++
++QString JackPlugin::name() const
++{
++    return PLUGIN_NAME;
++}
++
++DeviceInfo::List JackPlugin::getDeviceInfoList() const
++{
++    return m_list;
++}
++
++DeviceInfo::Id JackPlugin::defaultDeviceId(
++    [[maybe_unused]] const Plugin::Direction &mode) const
++{
++    return DeviceInfo::Id();
++}
++
++Format JackPlugin::deviceFormat(
++    [[maybe_unused]] const DeviceInfo::Id &id,
++    const Plugin::Direction &mode) const
++{
++    const auto client_it = std::find_if(
++        m_clients.begin(),
++        m_clients.end(),
++        [mode](const auto& client) {
++
++        return client.second->direction() == mode;
++    });
++
++    if (client_it == m_clients.end()) {
++        if (mode == Plugin::Direction::Input)
++            return {DEFAULT_SAMPLE_RATE, DEFAULT_CHANNEL_COUNT_INPUT};
++        else
++            return {DEFAULT_SAMPLE_RATE, DEFAULT_CHANNEL_COUNT_OUTPUT};
++    } else {
++        return {
++            static_cast<unsigned int>(client_it->second->currentSampleRate()),
++            static_cast<unsigned int>(client_it->second->currentChannelCount())
++        };
++    }
++}
++
++Stream *JackPlugin::open(
++    [[maybe_unused]] const DeviceInfo::Id &id,
++    const Plugin::Direction &mode,
++    [[maybe_unused]] const Format &format,
++    QIODevice *endpoint)
++{
++    // The sample rate is set by JACK, so we don't mess with it.
++    // The channel count is fixed to the minimum amount of channels necessary
++    // for OSM to work as we can freely patch the cannels in JACK.
++    //
++    // The ID can be ignored as we create individual JACK clients
++    // for each requested Stream.
++    try {
++        std::unique_ptr<JackClient> jack = std::make_unique<JackClient>(mode, *endpoint);
++
++        Format f{
++            jack->currentSampleRate(),
++            static_cast<unsigned int>(jack->currentChannelCount())
++        };
++        Stream *stream = new Stream(f);
++
++        m_clients.emplace(stream, std::move(jack));
++        JackClient& jackClient = *m_clients.at(stream).get();
++
++        connect(stream, &Stream::closeMe, this, [this, stream, endpoint]() {
++            // Order is important here to prevent JACK still writing data to
++            // the endpoint after it has been closed.
++            m_clients.erase(stream);
++
++            if (endpoint->isOpen())
++                endpoint->close();
++
++            stream->deleteLater();
++        });
++
++        connect(
++            &jackClient,
++            &JackClient::sampleRateChanged,
++            this,
++            [stream](jack_nframes_t newRate) {
++                assert(stream);
++                stream->setSampleRate(static_cast<unsigned int>(newRate));
++        });
++
++        endpoint->open(mode == Input ? QIODevice::WriteOnly : QIODevice::ReadOnly);
++        jackClient.activate();
++
++        return stream;
++    } catch (JackPluginException& e) {
++        return nullptr;
++    }
++}
++
++}
+diff --git a/src/audio/plugins/jack.h b/src/audio/plugins/jack.h
+new file mode 100644
+index 0000000..9685f65
+--- /dev/null
++++ b/src/audio/plugins/jack.h
+@@ -0,0 +1,127 @@
++/**
++ *  OSM
++ *  Copyright (C) 2022  Adrian Schollmeyer
++
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++#ifndef AUDIO_JACKPLUGIN_H
++#define AUDIO_JACKPLUGIN_H
++
++#include "../plugin.h"
++#include <QObject>
++#include <functional>
++#include <jack/jack.h>
++#include <jack/types.h>
++#include <map>
++#include <memory>
++#include <stdexcept>
++#include <vector>
++
++namespace audio {
++class JackClient : public QObject
++{
++    Q_OBJECT
++
++public:
++    constexpr static std::size_t BUFFER_SIZE_MULTIPLIER{4};
++
++    JackClient(const Plugin::Direction &direction, QIODevice& endpoint);
++    JackClient(JackClient&&) = default;
++    JackClient(const JackClient &) = delete;
++    ~JackClient();
++
++    void activate();
++    void deactivate();
++
++    jack_nframes_t currentSampleRate() const;
++    std::size_t currentChannelCount() const;
++
++    Plugin::Direction direction() const;
++
++signals:
++    void sampleRateChanged(jack_nframes_t newSampleRate);
++
++public slots:
++    void close();
++
++private:
++    void initJackClient();
++    void initPorts();
++    void initSampleRate();
++    void initBufferSize();
++    void initProcessing();
++
++    void registerInputs();
++    void registerOutputs();
++
++    std::function<void(jack_client_t *)> jackClientDeleter();
++    static std::function<void(jack_port_t *)> jackPortDeleter(jack_client_t *client);
++
++    static int jackSampleRateCallback(jack_nframes_t newSampleRate, void* obj);
++    int jackSampleRateCallbackInt(jack_nframes_t newSampleRate);
++
++    static int jackBufferSizeCallback(jack_nframes_t newBufferSize, void* obj);
++    int jackBufferSizeCallbackInt(jack_nframes_t newBufferSize);
++
++    static int jackProcessCallback(jack_nframes_t nframes, void* obj);
++    int jackProcessCallbackInt(jack_nframes_t nframes);
++
++    void processInputPorts(jack_nframes_t nframes);
++    void processOutputPorts(jack_nframes_t nframes);
++
++    std::unique_ptr<jack_client_t, std::function<void(jack_client_t *)>> m_client;
++    std::vector<std::unique_ptr<jack_port_t, std::function<void(jack_port_t *)>>> m_ports;
++    std::vector<float*> m_portBuffers;
++    jack_nframes_t m_sampleRate;
++    jack_nframes_t m_bufferSize;
++    const Plugin::Direction m_direction;
++    QIODevice& m_endpoint;
++    std::vector<float> m_sampleBuffer;
++    bool m_active{false};
++};
++
++class JackPlugin : public Plugin
++{
++    Q_OBJECT
++
++public:
++    JackPlugin();
++    JackPlugin(const JackPlugin &) = delete;
++    virtual ~JackPlugin() = default;
++
++    QString name() const override;
++    DeviceInfo::List getDeviceInfoList() const override;
++    DeviceInfo::Id defaultDeviceId(const Direction &mode) const override;
++
++    Format deviceFormat(const DeviceInfo::Id &id, const Direction &mode) const override;
++    Stream *open(const DeviceInfo::Id &id, const Direction &mode, const Format &format, QIODevice *endpoint) override;
++
++private:
++    DeviceInfo::List m_list{};
++    DeviceInfo m_defaultDeviceInfoInput;
++    DeviceInfo m_defaultDeviceInfoOutput;
++    std::map<Stream *, std::unique_ptr<JackClient>> m_clients{};
++};
++
++class JackPluginException : public std::runtime_error
++{
++public:
++    template<typename T>
++    JackPluginException(const T& arg)
++        : std::runtime_error(arg)
++    {}
++};
++}
++
++#endif // AUDIO_JACKPLUGIN_H
+-- 
+2.51.0
+
+
+From 8d163a07db24c17fcd07fa645425ac7bd07f1109 Mon Sep 17 00:00:00 2001
+From: Adrian <git@nexadn.de>
+Date: Sat, 3 Dec 2022 00:00:09 +0100
+Subject: [PATCH 3/4] build: Make JACK support optional
+
+As JACK is not installed on consumer Linux systems, adding unconditional
+JACK support introduces an unnecessary dependency for such systems
+without bringing any benefit. This commit makes JACK support optional at
+configure-time, so users can configure whether they want integrated JACK
+support or not.
+---
+ OpenSoundMeter.pro   | 22 +++++++++++++++-------
+ src/audio/client.cpp |  6 ++++++
+ 2 files changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/OpenSoundMeter.pro b/OpenSoundMeter.pro
+index f5b73e3..f9cef4a 100644
+--- a/OpenSoundMeter.pro
++++ b/OpenSoundMeter.pro
+@@ -294,16 +294,24 @@ win32 {
+ 
+ unix:!macx:!ios {
+     HEADERS += \
+-        src/audio/plugins/alsa.h \
+-        src/audio/plugins/jack.h
++        src/audio/plugins/alsa.h
+ 
+     SOURCES += \
+-        src/audio/plugins/alsa.cpp \
+-        src/audio/plugins/jack.cpp
++        src/audio/plugins/alsa.cpp
+ 
+-    LIBS += \
+-        -lasound \
+-        -ljack
++    LIBS += -lasound
++
++    CONFIG(jack) {
++        HEADERS += \
++            src/audio/plugins/jack.h
++
++        SOURCES += \
++            src/audio/plugins/jack.cpp
++
++        LIBS += -ljack
++
++        DEFINES += USE_JACK
++    }
+ }
+ 
+ GRAPH = $$(GRAPH_BACKEND)
+diff --git a/src/audio/client.cpp b/src/audio/client.cpp
+index 10f611e..db7c377 100644
+--- a/src/audio/client.cpp
++++ b/src/audio/client.cpp
+@@ -33,6 +33,9 @@
+ 
+ #ifdef Q_OS_LINUX
+ #include "plugins/alsa.h"
++#endif
++
++#ifdef USE_JACK
+ #include "plugins/jack.h"
+ #endif
+ 
+@@ -88,6 +91,9 @@ void Client::initPlugins()
+ 
+ #ifdef Q_OS_LINUX
+     m_plugins.push_back(QSharedPointer<Plugin>(new AlsaPlugin()));
++#endif
++
++#ifdef USE_JACK
+     m_plugins.push_back(QSharedPointer<Plugin>(new JackPlugin()));
+ #endif
+ 
+-- 
+2.51.0
+
+
+From 5a04a68ec5121e67fa3b140772f114a0e3fd0ed9 Mon Sep 17 00:00:00 2001
+From: Adrian Schollmeyer <git@nexadn.de>
+Date: Sat, 3 Dec 2022 00:04:08 +0100
+Subject: [PATCH 4/4] travis: Enable JACK support for Linux build
+
+Since the JACK integration shall be built in the CI pipeline, this
+commit sets the jack config option in the qmake call in the Travis
+configuration.
+---
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.travis.yml b/.travis.yml
+index 212e240..2b6fbe4 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -15,7 +15,7 @@ install:
+ 
+ 
+ script:
+-  - /opt/qt514/bin/qmake PREFIX=/usr
++  - /opt/qt514/bin/qmake PREFIX=/usr CONFIG+=jack
+   - make
+   - # Generate AppImage
+ #  - sudo apt-get -y install checkinstall
+-- 
+2.51.0
+
