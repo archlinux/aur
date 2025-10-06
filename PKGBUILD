@@ -1,6 +1,6 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=aether
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Omarchy theming application"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'libsoup3' 'python-pywal')
 optdepends=('omarchy: Theme application backend')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a99b861bc82b2df7f0945c065f5819cb07181ff4798ecd827850423a2c6ce597')  # Replace with actual checksum after creating GitHub release
+sha256sums=('6ced5c89de00f96056bbd324ff26fff7ed93ea58fcb4280076555ee5d039ff2a')  # Replace with actual checksum after creating GitHub release
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
