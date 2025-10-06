@@ -1,4 +1,4 @@
-pkgbase = gummibbs-git
+pkgbase = gummibbs
 	pkgdesc = Btrfs snapshot scripts with systemd-boot integration
 	pkgver = r282.22ff4df
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = gummibbs-git
 	source = git+https://github.com/lucas-mior/gummibbs.git
 	md5sums = SKIP
 
-pkgname = gummibbs-git
+pkgname = gummibbs
