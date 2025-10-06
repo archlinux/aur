@@ -1,0 +1,12 @@
+
+# try this configuration on nvchecker.toml to fix the suffixed letter
+
+  from_pattern = "([a-z])$"
+  to_pattern = ".\\1"
+
+this should conver 1.2.3b -> 1.2.3.b
+
+also, in order to avoid retyping the version string, use
+
+  _pkgver=$(sed 's/\.\([a-z]\)$/\1/' <<< $pkgver)
+
