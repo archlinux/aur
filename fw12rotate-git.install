@@ -1,0 +1,15 @@
+post_install() {
+  echo "==> FW12Rotate has been installed."
+  echo "==> To set up automatic screen rotation:"
+  echo "    1. Copy the toggle script: cp /usr/share/fw12rotate-git/toggle-rotation.sh ~/.config/hypr/toggle-rotation.sh"
+  echo "    2. Make it executable: chmod +x ~/.config/hypr/toggle-rotation.sh"
+  echo "    3. Add to your hyprland.conf:"
+  echo "       exec-once = /usr/bin/fw12rotate"
+  echo "       bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh  # Or your preferred keybind"
+  echo "    4. Restart Hyprland or the computer to apply changes."
+  echo "==> For more details, see the upstream README: https://github.com/2disbetter/FW12Rotate"
+}
+
+post_upgrade() {
+  post_install
+}
