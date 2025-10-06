@@ -1,0 +1,16 @@
+pkgbase = darklua-git
+	pkgdesc = Transform Lua 5.1 and Roblox Luau code using configurable rules.
+	pkgver = v0.17.2
+	pkgrel = 1
+	url = https://github.com/seaofvoices/darklua
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = darklua
+	conflicts = darklua
+	source = git+https://github.com/seaofvoices/darklua.git
+	sha256sums = SKIP
+
+pkgname = darklua-git
