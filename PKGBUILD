@@ -1,0 +1,30 @@
+pkgname=flutter-gtk-3.35.4
+pkgver=3.35.4
+pkgrel=0
+pkgdesc="Flutter GTK embedder runtime."
+url="https://flutter.dev/"
+arch=("x86_64" "aarch64")
+license=("Apache-2.0")
+depends=("glibc" "glib2" "fontconfig" "pango" "at-spi2-core" "gtk3" "libepoxy" "cairo")
+
+_enginever=c29809135135e262a912cf583b2c90deb9ded610
+_storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
+
+source_x86_64=(
+  # engine/linux-$ARCH-release
+  "gtk-release-x64-${_enginever}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-x64-release/linux-x64-flutter-gtk.zip"
+)
+source_aarch64=(
+  # engine/linux-$ARCH-release
+  "gtk-release-arm64-${_enginever}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/linux-arm64-release/linux-arm64-flutter-gtk.zip"
+)
+sha256sums_x86_64=('57cddcd31ed37af85c4524d5776fa945be534baa8bec7238ce0141872889ca4b')
+sha256sums_aarch64=('a918923a168cf623e772ba0283f72620a5fc392567d1d56819c52e31b6f7f33d')
+
+build() {
+  true
+}
+
+package() {
+  install -Dm755 "libflutter_linux_gtk.so" "${pkgdir}/usr/lib/flutter_gtk/${pkgver}/libflutter_linux_gtk.so"
+}
