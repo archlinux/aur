@@ -18,6 +18,7 @@ pkgbase = python-cad_to_openmc
 	depends = python-ezdxf
 	depends = python-nptyping
 	depends = nlopt
+	depends = python-pymoab
 	provides = CAD_to_OpenMC
 	source = git+https://github.com/openmsr/CAD_to_OpenMC.git
 	md5sums = SKIP

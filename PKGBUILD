@@ -16,7 +16,7 @@ depends=(
    python-ezdxf
    python-nptyping
    nlopt
-  
+   python-pymoab
 )
 
 makedepends=(
