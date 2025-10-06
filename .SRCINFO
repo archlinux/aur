@@ -1,0 +1,15 @@
+pkgbase = libassimp5-compat
+	pkgdesc = Library to import various well-known 3D model formats in an uniform manner
+	pkgver = 5.4.3
+	pkgrel = 1
+	url = https://github.com/assimp/assimp
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ninja
+	depends = zlib
+	depends = gcc-libs
+	source = assimp-5.4.3.tar.gz::https://github.com/assimp/assimp/archive/v5.4.3.tar.gz
+	sha512sums = 4738db84068d36face8caf61c0789178fdfc1310fa8e81ffb9b025e14183bde546b784d691c92438ab310a79ab7b75ab62ee0247d5f01e81ddf04fb94b7a9c0b
+
+pkgname = libassimp5-compat
