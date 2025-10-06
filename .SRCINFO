@@ -1,0 +1,24 @@
+pkgbase = python-trafilatura
+	pkgdesc = Python and command-line tool to gather text and metadata on the web
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/adbar/trafilatura
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-certifi
+	depends = python-charset-normalizer
+	depends = python-courlan
+	depends = python-htmldate
+	depends = python-justext
+	depends = python-lxml
+	depends = python-urllib3
+	source = https://github.com/adbar/trafilatura/archive/refs/tags/v2.0.0.tar.gz
+	sha512sums = f9b9a43bb61d793f1dc832825fb76a30a452df9447d14198e91e7c25536420905c7dd074ffdb20e4c81bd66236cd8fbec19745b6e3dc91f671919496950ed930
+	b2sums = 376c29c59e4dfdbdd8b923aba192fdc5b763e27154bd16f5e2401feb5b973e1ae985a1085f9f9cfc9cc705ef6427080f51057fe68022f25d9476486c7cce0a5f
+
+pkgname = python-trafilatura
