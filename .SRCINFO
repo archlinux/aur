@@ -1,12 +1,12 @@
 pkgbase = i3gopher
 	pkgdesc = i3/sway helper rodent - focus the last focused window (per workspace)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 3
 	url = https://github.com/quite/i3gopher
 	arch = x86_64
 	license = BSD
 	makedepends = go-pie
-	source = i3gopher-1.2.1.tar.gz::https://github.com/quite/i3gopher/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = c751c9135e8668f446cc6a59d3f7d476daef98cb7631f45a6b1809d8ead2f009
+	source = i3gopher-1.2.2.tar.gz::https://github.com/quite/i3gopher/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = b1873af87c0578ea83d8d062b6d3fc1735977e580f8c5a9af178993d1d35e038
 
 pkgname = i3gopher

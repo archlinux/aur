@@ -1,15 +1,15 @@
 # Maintainer: Daniel Lublin <daniel@lublin.se>
 
 pkgname=i3gopher
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=3
 pkgdesc='i3/sway helper rodent - focus the last focused window (per workspace)'
 arch=('x86_64')
 url="https://github.com/quite/i3gopher"
 license=('BSD')
 makedepends=('go-pie')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v1.2.1.tar.gz")
-sha256sums=('c751c9135e8668f446cc6a59d3f7d476daef98cb7631f45a6b1809d8ead2f009')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v1.2.2.tar.gz")
+sha256sums=('b1873af87c0578ea83d8d062b6d3fc1735977e580f8c5a9af178993d1d35e038')
 
 build() {
   cd $pkgname-$pkgver
