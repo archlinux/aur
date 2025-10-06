@@ -1,4 +1,5 @@
 ["walker-bin"]
-source = "git"
-git = "https://github.com/abenz1267/walker.git"
+source = "github"
+github = "abenz1267/walker"
+use_latest_release = true
 prefix = "v"
