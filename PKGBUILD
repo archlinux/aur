@@ -2,21 +2,21 @@
 
 pkgname=obs-studio-liberty
 pkgver=32.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 _qtver=6.6.2
 _libajantv2ver=17.5.0
-_libdatachannelver=0.22
+_libdatachannelver=0.23
 _mbedtlsver=3.6.1
 _pythonver=3.13
 _cefver=cef_binary_6533_linux_x86_64_v6
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg>=7.1" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg>=8" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "gcc-libs" # Deps of any C++ related binary
