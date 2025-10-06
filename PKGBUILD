@@ -4,12 +4,12 @@
 # Contributer: Aviana Cruz <gwencroft@proton.me>
 
 pkgname="droidcam-obs-plugin"
-pkgver="2.4.0"
+pkgver="2.4.1"
 pkgrel="1"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
-_tag="fa19a229f9155e52c58cbf9ce99541e26a64293d"
+_tag="d23271e5b54ad95a9e05782a91e021776b3a5314"
 srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
 depends=("obs-studio" 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
@@ -17,13 +17,14 @@ makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}#tag=${_tag}")
-sha256sums=('SKIP')
+source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "libavcodec62-fix.patch")
+sha256sums=('SKIP' '02e5fd0c728061eeb23f255250c43b79668b457ebdcd9c31793ad5db44da2e34')
 
 
 prepare() {
     cd "$srcdir/$pkgstem"
     mkdir -p build
+    patch -Np1 < "$srcdir/libavcodec62-fix.patch"
 }
 
 build() {
