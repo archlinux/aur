@@ -2,8 +2,9 @@
 
 pkgname=kwin-x11-lite
 _pkgname=kwin-x11
-pkgver=6.4.5
-pkgrel=2
+pkgver=6.4.5.1
+_pkgver=6.4.5
+pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
 url='https://github.com/KDE-Lite/kwin-x11-lite'
@@ -48,7 +49,7 @@ depends=(aurorae
          libxi
          libxkbcommon
          libxkbcommon-x11
-         libplasma=$pkgver
+         libplasma=$_pkgver
          mesa
          plasma-x11-session
          qt6-5compat
@@ -74,7 +75,7 @@ conflicts=($_pkgname $_pkgname-improved)
 source=("git+${url}.git#tag=${pkgver}")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('8c169941ab0c329b85108b49ff2eefc2f88cdc48ab4da720417d6397cb77ae6f')
+sha256sums=('adeeee56cf227bc2429e1f429bd8b434200c217ce2ca729fcd2435425ecd184b')
 
 build() {
   cmake -B build -S $pkgname \
