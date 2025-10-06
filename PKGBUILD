@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=run0edit
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc=" sudoedit but for run0 "
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MPL-2.0')
 makedepends=(cargo git)
 checkdepends=()
 source=("$pkgname::git+$_repo#tag=${pkgver}")
-md5sums=("SKIP")
+b2sums=("SKIP")
 
 prepare() {
   cd $pkgname
