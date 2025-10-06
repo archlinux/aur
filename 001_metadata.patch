@@ -5,12 +5,12 @@ index 39e24de..511b153 100644
 @@ -1,9 +1,9 @@
  {
 -  "description": "Another extension, that removes the 'Window is ready' notification and puts the window into focus. In contrast to all the other extensions, this uses ES6 syntax and is actively maintained. This extension is a fork of the original with support for GNOME 45.",
-+  "description": "Another extension, that removes the 'Window is ready' notification and puts the window into focus. In contrast to all the other extensions, this uses ES6 syntax and is actively maintained. This extension is a fork of the original with support for GNOME 48.",
++  "description": "Another extension, that removes the 'Window is ready' notification and puts the window into focus. In contrast to all the other extensions, this uses ES6 syntax and is actively maintained. This extension is a fork of the original with support for GNOME 49.",
    "name": "NoAnnoyance (fork)",
    "gettext-domain": "gnome-shell-extension-noannoyance-fork",
    "settings-schema": "org.gnome.shell.extensions.noannoyance-fork",
 -  "shell-version": ["45", "46"],
-+  "shell-version": ["45", "46", "47", "48"],
++  "shell-version": ["45", "46", "47", "48", "49"],
    "url": "https://github.com/jirkavrba/noannoyance",
    "uuid": "noannoyance-fork@jirkavrba"
  }
