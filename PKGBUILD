@@ -2,27 +2,34 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab-bin'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
-pkgdesc='Bab CLI - A simple task runner'
+pkgdesc='A Simple Task Runner'
 url='https://github.com/bab-sh/bab'
 arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('bab')
 conflicts=('bab')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.4/bab_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1b80b1381cdbe377b2528cf350d40fc8eeedb18c8047f846fb2d376d389dd3fb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.5/bab_0.0.5_Linux_arm64.tar.gz")
+sha256sums_aarch64=('28ae82f262b9cc0d14fa957846f0aa28b0765adb63a1805224f574cfa0ace1c6')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.4/bab_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0a203697283afb404fbf1e9be9313ef2fce77236d127703734c54580f8029e0f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.5/bab_0.0.5_Linux_armv7.tar.gz")
+sha256sums_armv7h=('95b8305c07763d1afa900a59e79fcf8565bb76040c297223b61c8071d3f599ea')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.4/bab_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e6ab6d54934d49dea731a59e22adc3f2ace52f47d4f1c7517554d23fcf4d697b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.5/bab_0.0.5_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('23fed06ecbc067844e11e247b19cab380147f8d9addd32e4472dcb0d80cdda37')
 
 package() {
-  # bin
+  # Binary
   install -Dm755 "./bab" "${pkgdir}/usr/bin/bab"
-  # license
+
+  # Documentation
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Shell completions
+  install -Dm644 "./completions/bab.bash" "${pkgdir}/usr/share/bash-completion/completions/bab"
+  install -Dm644 "./completions/bab.zsh" "${pkgdir}/usr/share/zsh/site-functions/_bab"
+  install -Dm644 "./completions/bab.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/bab.fish"
 }
