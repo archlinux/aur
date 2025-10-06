@@ -2,7 +2,7 @@
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 
 pkgname=noctalia-shell
-pkgver=2.16.0
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 
 optdepends=(
   'cliphist: For clipboard history support'
-  'matugen-git: Material You color scheme generation'
+  'matugen-bin: Material You color scheme generation'
   'cava: Audio visualizer component'
   'wlsunset: For supporting NightLight'
 )
