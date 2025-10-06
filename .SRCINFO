@@ -1,6 +1,6 @@
 pkgbase = bab
-	pkgdesc = Bab CLI - A simple task runner
-	pkgver = 0.0.4
+	pkgdesc = A Simple Task Runner
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = bab
 	conflicts = bab-bin
 	provides = bab
 	
-	source = https://github.com/bab-sh/bab/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = 3f5041a57812b65b0b23f887b74786ac01ce4e6094bad89efb2f2e7d9bcca4fa
+	source = https://github.com/bab-sh/bab/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = 85de5cbf060fe3a99bae1489844a51371c9c46492e4e0c1616d89fc268fef195
 	
 pkgname = bab

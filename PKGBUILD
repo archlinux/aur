@@ -2,9 +2,9 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
-pkgdesc='Bab CLI - A simple task runner'
+pkgdesc='A Simple Task Runner'
 url='https://github.com/bab-sh/bab'
 arch=('aarch64' 'x86_64')
 license=('MIT')
@@ -12,26 +12,43 @@ provides=('bab')
 conflicts=('bab-bin')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/archive/refs/tags/v0.0.4.tar.gz")
-sha256sums=('3f5041a57812b65b0b23f887b74786ac01ce4e6094bad89efb2f2e7d9bcca4fa')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/archive/refs/tags/v0.0.5.tar.gz")
+sha256sums=('85de5cbf060fe3a99bae1489844a51371c9c46492e4e0c1616d89fc268fef195')
 build() {
-  cd "${pkgname}_${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
   go build \
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X github.com/bab-sh/bab/internal/version.Version=${pkgver} \
-  -X github.com/bab-sh/bab/internal/version.Commit=6dd86c3c876ec23de674a1f2e66ad3a060f2859f \
-  -X github.com/bab-sh/bab/internal/version.Date=2025-10-05T19:18:32Z \
+  -X github.com/bab-sh/bab/internal/version.Commit=de4d6fce40f4cad2523d9f136de837005123ca6f \
+  -X github.com/bab-sh/bab/internal/version.Date=2025-10-06T20:33:46Z \
   -X github.com/bab-sh/bab/internal/version.BuiltBy=aur" \
   -o bab .
+
+  # Generate shell completions
+  mkdir -p completions
+  ./bab completion bash > completions/bab.bash
+  ./bab completion zsh > completions/bab.zsh
+  ./bab completion fish > completions/bab.fish
 }
 package() {
-  cd "${pkgname}_${pkgver}"
+  cd "${pkgname}-${pkgver}"
+
+  # Binary
   install -Dm755 ./bab "${pkgdir}/usr/bin/bab"
+
+  # Documentation
   install -Dm644 ./README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Shell completions
+  install -Dm644 ./completions/bab.bash "${pkgdir}/usr/share/bash-completion/completions/bab"
+  install -Dm644 ./completions/bab.zsh "${pkgdir}/usr/share/zsh/site-functions/_bab"
+  install -Dm644 ./completions/bab.fish "${pkgdir}/usr/share/fish/vendor_completions.d/bab.fish"
 }
