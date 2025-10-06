@@ -1,0 +1,4 @@
+["ctrld-bin"]
+source = "git"
+git = "https://github.com/Control-D-Inc/ctrld.git"
+prefix = "v"
