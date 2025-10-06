@@ -1,8 +1,8 @@
 #Maintainer: Mikhail Rudenko <mike.rudenko@gmail.com>
 
 pkgname=highfive
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Header-only C++ HDF5 interface"
 arch=('any')
 url='https://github.com/BlueBrain/HighFive'
@@ -11,7 +11,7 @@ depends=('boost' 'hdf5' 'eigen')
 makedepends=('cmake' 'catch2')
 source=(https://github.com/highfive-devs/$pkgname/archive/v$pkgver.tar.gz
         fix-tests-arch.patch)
-md5sums=('a79bc17c65201785169684698ed2c479'
+md5sums=('ebcf6589b3a768696505c5a981f69f58'
          'ca2b938810355b841114a3b765ff7953')
 
 prepare() {
