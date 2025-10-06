@@ -1,15 +1,15 @@
 # Maintainer: Nicola Fontana <ntd@entidi.it>
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
-pkgver=1.6.7
-pkgrel=6
+pkgver=1.6.8
+pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('linux-headers')
 url='https://etherlab.org'
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
         "ethercat.sysusers"
         "ethercat.udev")
-sha512sums=('1a26b6fbbae7cf371468171dc2d05190ab4461b7e1bcce6ded51207c2083f8c9b8a426d37887b144011f364b4d55acb59ee563d3d48b17c8956e94e321dda34a'
+sha512sums=('3da61f7a2d50f01bc2907877cbd046861ad9fb3be0b38f0e8aa5ecbc3dece2c2802b5d56df8da5231467d3c80863fba855d56c4a1ad984442ddc611c1d40beb5'
             'b029d47d10850569f180801fdc6bb2209dc9014649615123fe677416586df1c5a4f0901bcbd2da73b0e48ce752fe2a732272afdbf2445edf9ed4740be1ada7d8'
             '3e1fa42373476780109af67ff14ca0b3275a3499bd2bf97e5284e05cae911a38ce8eec3fb1e46c42862f3f7b7741514afeaea26f1a6c12d1ed89d20f6ad09ed4')
 
