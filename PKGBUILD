@@ -2,7 +2,7 @@
 # author: damachine (christkue79@gmail.com)
 # Maintainer: DAMACHINE <christkue79@gmail.com>
 # website: https://github.com/damachine
-#          https://github.com/damachine/tkginstaller 
+#          https://github.com/damachine/tkginstaller
 # copyright: (c) 2025 damachine
 # license: MIT
 # version: 1.0
@@ -37,7 +37,7 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -46,7 +46,7 @@ pkgdesc="Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) fr
 arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
-depends=('fzf' 'bat' 'curl' 'fmt' 'git')
+depends=('bat' 'curl' 'fmt' 'fzf' 'git')
 optdepends=('nano: for editing config files'
             'onefetch: for git info display')
 source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
