@@ -1,6 +1,6 @@
 pkgbase = opera-proxy-git
 	pkgdesc = Standalone Opera VPN client as http-proxy backend only
-	pkgver = 1.9.0.r1.g8ebbd70
+	pkgver = 1.11.2.r0.g85703cc
 	pkgrel = 1
 	url = https://github.com/Snawoot/opera-proxy
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = opera-proxy-git
 	makedepends = git
 	makedepends = go
 	depends = proxychains-ng
+	backup = etc/default/opera-proxy
 	source = git+https://github.com/Snawoot/opera-proxy.git
 	source = topera
 	source = proxychains.opera-proxy.conf
