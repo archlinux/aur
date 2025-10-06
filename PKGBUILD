@@ -1,7 +1,7 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers"
 arch=('x86_64')
 url="https://github.com/slastra/tabctl"
@@ -34,7 +34,8 @@ package() {
     install -Dm755 tabctl-mediator "$pkgdir/usr/bin/tabctl-mediator"
 
     # Install rofi scripts
-    install -Dm755 scripts/rofi-wmctrl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-wmctrl.sh"
+    install -Dm755 scripts/rofi-tabctl-wmctrl.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-tabctl-wmctrl.sh"
+    install -Dm755 scripts/rofi-tabctl-niri.sh "$pkgdir/usr/share/$pkgname/scripts/rofi-tabctl-niri.sh"
 
     # Install browser extensions
     install -dm755 "$pkgdir/usr/share/$pkgname/extensions"

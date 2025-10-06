@@ -1,7 +1,7 @@
 pkgbase = tabctl
 	pkgdesc = Command-line browser tab controller with rofi integration for multiple window managers
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slastra/tabctl
 	install = tabctl.install
 	arch = x86_64
