@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=run0edit
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc=" sudoedit but for run0 "
 arch=('i686' 'x86_64')
