@@ -5,7 +5,7 @@ _pkgname=kdrive
 _originalpkgname=kDrive
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.7.5.20250812
+pkgver=3.7.6.20250908
 pkgrel=1
 pkgdesc="kDrive allows you to collaborate, store and share your data securely via your web browser, your mobile, your tablet or your computer."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://download.storage.infomaniak.com/drive/desktopclient/kDrive-${pkgver}-amd64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('ca5b11311c918ecafc6b60afa80121f624726ee66913fcfe682991f81f50a4d0')
+sha256sums_x86_64=('e87e9920694621e1d2438bee995d08ea2f897c372741b9eaf2ded7c85272910b')
 
 prepare() {
     chmod +x "${_appimage}"
