@@ -1,0 +1,20 @@
+pkgbase = letters
+	pkgdesc = Modern word processor for the GNOME desktop
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://codeberg.org/eyekay/letters
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-pypandoc
+	depends = python-weasyprint
+	depends = webkitgtk-6.0
+	source = git+https://codeberg.org/eyekay/letters.git#tag=0.1.1
+	sha256sums = 98b4c21c81785715c8776a837a99d32426bedf00dcddbb4e4536d634e80367f8
+
+pkgname = letters
