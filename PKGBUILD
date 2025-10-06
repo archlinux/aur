@@ -13,7 +13,7 @@ depends=('java-runtime' 'bash')
 source=(
   "https://repo1.maven.org/maven2/com/facebook/$pkgname/$pkgver/$pkgname-$pkgver-with-dependencies.jar"
   "$pkgname"
-  "https://raw.githubusercontent.com/facebook/$pkgname/refs/tags/$pkgver/LICENSE"
+  "https://raw.githubusercontent.com/facebook/$pkgname/refs/tags/v$pkgver/LICENSE"
 )
 sha256sums=('0369a4351367b0de2374b0f1c3962ef7d5d222a4bc58d7197d06948d46e4bea5'
             '62228af9300c9ee416aeef97fb589a91ddcd321e6b262e5e5c0924d26cb4ef52'
