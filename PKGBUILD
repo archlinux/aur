@@ -2,7 +2,7 @@
 
 pkgname=clangd-bin
 pkgver=21.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Clangd Language Server'
 arch=('x86_64')
 
@@ -10,13 +10,13 @@ arch=('x86_64')
 url="https://github.com/clangd/clangd"
 
 # Licencia de clangd
-license=('Apache-2.0 with LLVM Exceptions')
+license=('Apache-2.0 WITH LLVM-exception')
 
 depends=()
 
 optdepends=('gcc: Compiler without conflicts with clangd')
 
-conflicts=('clangd' 'clang')
+conflicts=('clangd' 'clang' 'clang18' 'clang19')
 provides=('clangd')
 
 options=('!debug')
@@ -30,5 +30,4 @@ package() {
     install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm755 bin/clangd "$pkgdir/usr/bin/clangd"
-
 }
