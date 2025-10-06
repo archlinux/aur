@@ -1,3 +1,17 @@
+## 0.0.335 - 2025-10-06
+
+- Improved visibility into file edits by showing file diffs in the timeline by default, without the need to Ctrl+R
+- Improved slash command input by showing argument hints in the input box
+- Improved the display of the interface in windows less than 80 columns wide
+- Reduced the number of colors and improved the spacing of Markdown rendering
+- Added a warning when attempting to use proxy support in an environment where it won't work (Node <24, required environment variables not set) (A more permanent fix for https://github.com/github/copilot-cli/issues/41 is coming ~tomorrow)
+- Updated the context truncation message's color from an error color to a warning color
+- Fixed a bug where `copilot` logs might not have been properly created on Windows
+- Fixed a bug where Powershell users with custom profiles might have had issues running commands (Fixes https://github.com/github/copilot-cli/issues/196)
+- Fixed a bug where prompts were truncated after pasting and other edge cases (Fixes https://github.com/github/copilot-cli/issues/208, https://github.com/github/copilot-cli/issues/218)
+- Fixed a bug where users would see a login prompt on startup despite being logged in (fixes https://github.com/github/copilot-cli/issues/202)
+- Fixed a bug where some SSH users in certain environments were unable to get the OAuth login link and had their processes hang trying to open a browser (fixes https://github.com/github/copilot-cli/issues/89)
+
 ## 0.0.334 - 2025-10-03
 
 - Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
