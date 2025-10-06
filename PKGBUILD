@@ -36,12 +36,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_srcname}" || exit 1
-  cargo build --frozen --release --features audio
+  cargo build --locked --release --features audio
 }
 
 check() {
   cd "${srcdir}/${_srcname}" || exit 1
-  cargo test --frozen --release --features audio
+  cargo test --locked --release --features audio
 }
 
 package() {
