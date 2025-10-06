@@ -1,0 +1,20 @@
+pkgbase = hydock
+	pkgdesc = Hydock is a Rust + GTK dock that uses Hyprland IPC
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/desyatkoff/hydock
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = gtk4-layer-shell
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk4
+	source = https://github.com/desyatkoff/hydock/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 2d818a5d787710d0b2ea1a06a2f4db7d73eeefb1b1a33ddefa94fe81275fb4e5
+
+pkgname = hydock
