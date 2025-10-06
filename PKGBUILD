@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ hispagatos-dot-org>
 pkgname=usenet_reborn
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal‑based (TUI) NNTP (Usenet) client written in Rust."
 arch=('any')
 url="https://git.sr.ht/~rek2/usenet_reborn"
@@ -37,5 +37,6 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/$pkgname" configs/config.toml
   install -Dm644 -t "$pkgdir/usr/share/$pkgname" configs/subscriptions
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
 }
 
