@@ -3,7 +3,7 @@
 # Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
 pkgname=catapult
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="App launcher for Linux, similar to ulauncher(wayland support)"
 arch=('any')
@@ -12,15 +12,15 @@ license=('GPL-3.0-only')
 makedepends=('python-setuptools')
 depends=('python' 'glib2' 'gtk4' 'python-gobject' 'libkeybinder3' 'gettext' 'libqalculate' 'pango' 'python-cairo')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/otsaloma/catapult/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a175d15c392768d899088647d960c61e11c55391d8f6f7af361cc9e291daf5e7')
+sha256sums=('0b935bc221cde11cb54026ccf9fd571b04174465ca5ef41bff8332410565a50b')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     #git apply $srcdir/$pkgname.patch
     make build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" PREFIX=/usr/local install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" PREFIX=/usr/local install
 }
