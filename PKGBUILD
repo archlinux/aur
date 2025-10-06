@@ -28,7 +28,7 @@ optdepends=(
 conflicts=('noctalia-shell-git')
 
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('91ad4dfb3e9922b5b4bd5d8a63f4fc1cc5136130505e9e6a4893122cd5f99965')
+sha256sums=('29d2f678aef52e8181c2ded529bfc0aca9864ac5d6b2719deeefc123d2e0af9a')
 
 package() {
   cd "$srcdir/$pkgname"
