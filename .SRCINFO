@@ -8,12 +8,12 @@ pkgbase = kubewall-bin
 	provides = kubewall
 	arch = aarch64
 	source_aarch64 = https://github.com/kubewall/kubewall/releases/download/v0.0.14/kubewall_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2ae5bea88755e37cdad26e447288d81671d6fbbd79dd5bd81029dfcedc82b08d
+	sha256sums_aarch64 = 0cc19a00015f5a46fc54d34de7ab4bb7702bce6c3e5ae2371b600d54ee92fd54
 	arch = i686
 	source_i686 = https://github.com/kubewall/kubewall/releases/download/v0.0.14/kubewall_Linux_i386.tar.gz
-	sha256sums_i686 = de771864e9e15168aac96ba1ede7d1eb811b3da729a29d882ecffbb15537a7ef
+	sha256sums_i686 = b53cb3d53667d554b7cb6e8f74388b47af93de20fd2826e08e5b5211f74bd2d3
 	arch = x86_64
 	source_x86_64 = https://github.com/kubewall/kubewall/releases/download/v0.0.14/kubewall_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = bf76d205738f8da186230cbe941fb4291ec75573143b4089c87ea1612e7a1dfe
+	sha256sums_x86_64 = 4b04c9b360405225c3c04ea479c77143bc33031ada5a483377a44b412f7a7ce9
 	
 pkgname = kubewall-bin
