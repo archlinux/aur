@@ -1,12 +1,12 @@
 pkgname=python-pkgbuild-parser
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Simple Python module to extract basic information directly from PKGBUILD files (not .SRCINFO)"
 arch=('any')
 url="https://github.com/KevinCrrl/pkgbuild-parser"
 license=('MIT')
 source=("https://github.com/KevinCrrl/pkgbuild_parser/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("ae16a423a728892892eefcb0924a714a968aaf1b1909d37061cd7b83a20d2ccc")
+sha256sums=("8baf7bbe911ad5a53e9edba87b4be4320f2f2f2c5c7d094c36695855307d2152")
 conflicts=()
 depends=(
     'python'

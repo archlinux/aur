@@ -1,6 +1,6 @@
 pkgbase = python-pkgbuild-parser
 	pkgdesc = Simple Python module to extract basic information directly from PKGBUILD files (not .SRCINFO)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/KevinCrrl/pkgbuild-parser
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pkgbuild-parser
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/KevinCrrl/pkgbuild_parser/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = ae16a423a728892892eefcb0924a714a968aaf1b1909d37061cd7b83a20d2ccc
+	source = https://github.com/KevinCrrl/pkgbuild_parser/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 8baf7bbe911ad5a53e9edba87b4be4320f2f2f2c5c7d094c36695855307d2152
 
 pkgname = python-pkgbuild-parser
