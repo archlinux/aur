@@ -1,6 +1,6 @@
 pkgbase = lib32-fluidsynth
 	pkgdesc = A real-time software synthesizer based on the SoundFont 2 specifications
-	pkgver = 2.4.8
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.fluidsynth.org/
 	arch = x86_64
@@ -10,11 +10,10 @@ pkgbase = lib32-fluidsynth
 	makedepends = lib32-glib2
 	makedepends = lib32-jack
 	makedepends = lib32-ladspa
-	makedepends = lib32-libinstpatch
 	makedepends = lib32-libpipewire
 	makedepends = lib32-libsndfile
 	makedepends = lib32-portaudio
-	depends = fluidsynth=2.4.8
+	depends = fluidsynth=2.5.0
 	depends = lib32-dbus
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -22,12 +21,12 @@ pkgbase = lib32-fluidsynth
 	depends = lib32-readline
 	depends = lib32-sdl3
 	depends = lib32-systemd
-	source = fluidsynth-2.4.8.tar.gz::https://github.com/fluidsynth/fluidsynth/archive/v2.4.8.tar.gz
-	sha512sums = 769f3d225fb1ad6c59d19c9d426a80352dc22704f426c94a52966376bf72537a1196611334aad3f0030b704c85de6c8080d326f67e875de2e54d17432d4bd793
-	b2sums = 4cb9edbda91acf157200125910ae488150a525afb4133a13d744ecdf317694efeedf69407e5361c05b5003a218eeda2c90fa328c6a42d22a9950219c99249fd9
+	source = fluidsynth-2.5.0.tar.gz::https://github.com/fluidsynth/fluidsynth/archive/v2.5.0.tar.gz
+	sha512sums = 8f326db4049b3241c7a0472aa5db8c715dcfc0a1ce9c5fda492bf84e6c17e27a2298131a58a51e275797259a434e59bfe3f53d85358f903652dca8de753a3376
+	b2sums = 318de46cffe82689ec2eac64e3a074a86521c96e37df27bff5ac3d84f141cad2001b7e6902db5bfb5845916819eb239ed07c48068802b1ea081250fa3c721a24
 
 pkgname = lib32-fluidsynth
-	depends = fluidsynth=2.4.8
+	depends = fluidsynth=2.5.0
 	depends = lib32-dbus
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -40,11 +39,8 @@ pkgname = lib32-fluidsynth
 	depends = lib32-glib2
 	depends = libglib-2.0.so
 	depends = libgmodule-2.0.so
-	depends = libgobject-2.0.so
 	depends = lib32-jack
 	depends = libjack.so
-	depends = lib32-libinstpatch
-	depends = libinstpatch-1.0.so
 	depends = lib32-libpipewire
 	depends = libpipewire-0.3.so
 	depends = lib32-libsndfile

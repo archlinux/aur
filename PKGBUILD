@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.4.8
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=(x86_64)
@@ -30,14 +30,13 @@ makedepends=(
   lib32-glib2
   lib32-jack
   lib32-ladspa
-  lib32-libinstpatch
   lib32-libpipewire
   lib32-libsndfile
   lib32-portaudio
 )
 source=($_name-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz)
-sha512sums=('769f3d225fb1ad6c59d19c9d426a80352dc22704f426c94a52966376bf72537a1196611334aad3f0030b704c85de6c8080d326f67e875de2e54d17432d4bd793')
-b2sums=('4cb9edbda91acf157200125910ae488150a525afb4133a13d744ecdf317694efeedf69407e5361c05b5003a218eeda2c90fa328c6a42d22a9950219c99249fd9')
+sha512sums=('8f326db4049b3241c7a0472aa5db8c715dcfc0a1ce9c5fda492bf84e6c17e27a2298131a58a51e275797259a434e59bfe3f53d85358f903652dca8de753a3376')
+b2sums=('318de46cffe82689ec2eac64e3a074a86521c96e37df27bff5ac3d84f141cad2001b7e6902db5bfb5845916819eb239ed07c48068802b1ea081250fa3c721a24')
 
 build() {
   local cmake_options=(
@@ -67,9 +66,8 @@ check() {
 package() {
   depends+=(
     lib32-alsa-lib libasound.so
-    lib32-glib2 libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
+    lib32-glib2 libglib-2.0.so libgmodule-2.0.so
     lib32-jack libjack.so
-    lib32-libinstpatch libinstpatch-1.0.so
     lib32-libpipewire libpipewire-0.3.so
     lib32-libsndfile libsndfile.so
     lib32-portaudio libportaudio.so
