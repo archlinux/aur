@@ -1,6 +1,6 @@
 pkgname=rsyslog
 pkgver=8.2508.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -45,7 +45,8 @@ build() {
                --enable-impstats \
                --enable-imptcp \
                --enable-omprog \
-               --with-systemdsystemunitdir=/usr/lib/systemd/system
+               --with-systemdsystemunitdir=/usr/lib/systemd/system \
+               HAVE_PKG_CONFIG=yes
 
   make
 }
