@@ -1,17 +1,20 @@
 pkgbase = python-stripe
 	pkgdesc = Stripe python bindings
-	pkgver = 12.5.1
+	pkgver = 13.0.1
 	pkgrel = 1
 	url = https://github.com/stripe/stripe-python
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-flit-core
 	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6
-	source = https://github.com/stripe/stripe-python/archive/refs/tags/v12.5.1.tar.gz
-	sha512sums = 1121896643ecfce69762ef353bcadbac1c7e1d7bb72c69a617b92290d9641b6c4d7499e742f0d016e219e3e71696f46822caf08e3a7bd7b6616bb89159ee98e8
-	b2sums = 351f03836f852e71fab57ee1b72d3b61931dacafa5001561ad07cf00c483c701b351f14005fe2b25a206e924479a164dae630d27286262b780360f3feff3076e
+	depends = python-requests
+	depends = python-typing_extensions
+	source = https://github.com/stripe/stripe-python/archive/refs/tags/v13.0.1.tar.gz
+	sha512sums = 689b3e5512ef7f1f79afed0c20dcbe8009f00483e99118c556cb83596651b767ee2e495af0e3cb900441b5ccfe5dc4f671dfd5506210c99306c1ec95ca274e59
+	b2sums = dbe60f4e892978e83bda6f81c99039733c4c42677d82a0845994b96ed31a76957a26e77f4d037db5db624363e5aa1728af1e0fba77037fbfdb761f92f3f63d92
 
 pkgname = python-stripe
