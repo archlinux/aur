@@ -1,6 +1,6 @@
 pkgbase = garoa
 	pkgdesc = Home of discipline (Stable release channel)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/garoa-app/releases
 	install = garoa.install
@@ -17,7 +17,7 @@ pkgbase = garoa
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/garoa-app/releases/releases/download/v0.4.0/Garoa_0.4.0_amd64.deb
-	sha256sums_x86_64 = 7a5116921f774f08f9cdaf7535f7e8666861538f481c2aa0bc9a419cba79ad11
+	source_x86_64 = https://github.com/garoa-app/releases/releases/download/v0.5.0/Garoa_0.5.0_amd64.deb
+	sha256sums_x86_64 = 9258538121214bb159dfe28dcb7287c26ff10ad78014c7bafcb206baa856ccd5
 
 pkgname = garoa
