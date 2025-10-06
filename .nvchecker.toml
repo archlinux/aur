@@ -1,0 +1,5 @@
+["coredns-bin"]
+source = "github"
+github = "coredns/coredns"
+use_latest_release = true
+prefix = "v"
