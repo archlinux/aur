@@ -1,6 +1,6 @@
 pkgname=rash-sh
 pkgver=r138.9115e89
-pkgrel=1
+pkgrel=2
 pkgdesc='rash, the rat ass shell, is a rudimentary shell written in C'
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url='https://git.myriation.xyz/parker_macdonald/rash'
@@ -12,7 +12,7 @@ source=(
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "$pkgname"
+  cd rash
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 

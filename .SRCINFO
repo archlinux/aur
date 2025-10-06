@@ -1,7 +1,7 @@
 pkgbase = rash-sh
 	pkgdesc = rash, the rat ass shell, is a rudimentary shell written in C
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.myriation.xyz/parker_macdonald/rash
 	arch = x86_64
 	arch = i686
