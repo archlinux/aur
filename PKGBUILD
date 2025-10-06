@@ -1,6 +1,6 @@
 # Maintainer: CoreCat <corecathx@proton.me>
 pkgname=whisker-shell-git
-pkgver=r36.fc99cbe
+pkgver=r40.60b0019
 pkgrel=1
 pkgdesc="Desktop shell built with Quickshell and follows Material 3 Design rules."
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('GPL-3.0-only')
 depends=(
     'quickshell' 'brightnessctl' 'bash' 'power-profiles-daemon' 'cava' 'matugen-bin'
     'networkmanager' 'fish' 'ttf-outfit' 'ttf-material-symbols-variable' 'qt6-multimedia-ffmpeg'
+    'qt6ct'
 )
 makedepends=('git' 'haxe' 'bluez')
 provides=('whisker-shell' 'whisker')
@@ -31,26 +32,23 @@ pkgver() {
 build() {
     cd "$srcdir/whisker-cli"
 
-    export HAXELIB="$srcdir/haxelib"
-    haxelib setup "$HAXELIB"
-    haxelib install hxcpp
+    export HAXELIB_PATH="$srcdir/haxelib"
+    mkdir -p "$HAXELIB_PATH"
+
+    haxelib install hxcpp --always --quiet
 
     haxe release.hxml
 }
 
-
 package() {
-    # we install the `whisker` command
+    # install whisker binary
     install -Dm755 "$srcdir/whisker-cli/target/cpp/whisker" "$pkgdir/usr/bin/whisker"
 
     # install whisker's quickshell config
     install -dm755 "$pkgdir/usr/share/whisker"
     cp -r "$srcdir/whisker/"* "$pkgdir/usr/share/whisker/"
 
-    ## clean up ##
-    # .git metadata
+    ## cleanup
     rm -rf "$pkgdir/usr/share/whisker/.git"*
-
-    # haxe build artifacts
     rm -rf "$srcdir/whisker-cli/target"
 }
