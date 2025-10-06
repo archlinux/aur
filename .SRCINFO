@@ -1,23 +1,22 @@
 pkgbase = heimdall-git
-	pkgdesc = Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices
-	pkgver = 1.4.2.r10.g3997d5c
+	pkgdesc = Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices (grimler fork)
+	pkgver = 2.2.2.r0.gd9554e7
 	pkgrel = 1
-	url = https://glassechidna.com.au/heimdall/
-	arch = i686
+	url = https://git.sr.ht/~grimler/Heimdall
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = git
-	depends = qt5-base
-	optdepends = android-udev: Udev rules to connect Android devices to your linux box
+	makedepends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	depends = zlib
+	optdepends = qt6-base: GUI support for heimdall-frontend
 	provides = heimdall
 	conflicts = heimdall
-	source = Heimdall::git+https://github.com/Benjamin-Dobell/Heimdall
+	source = Heimdall::git+https://git.sr.ht/~grimler/Heimdall
 	source = heimdall.desktop
-	source = reset-device.patch
 	sha256sums = SKIP
 	sha256sums = 439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4
-	sha256sums = 42d3b86206d6ab80c79a16d7c1dcdcd478cb975d5155c9971744c2dd981c4577
 
 pkgname = heimdall-git
-

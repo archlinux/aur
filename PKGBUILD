@@ -1,60 +1,60 @@
-# Contributor: Todd Musall 
-# Contributor: dront78 (Ivan)
-# Contributor: Victor Noel
-# Contributor: Lari Tikkanen
-# Maintainer:  Tim Schumacher
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
+# Contributor: Tim Schumacher <timschumi@gmx.de>
 
 pkgname=heimdall-git
 _pkgname=Heimdall
-pkgver=1.4.2.r10.g3997d5c
+pkgver=2.2.2.r0.gd9554e7
 pkgrel=1
-pkgdesc="Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices"
-arch=("i686" "x86_64")
-url="https://glassechidna.com.au/heimdall/"
-license=("MIT")
-depends=("qt5-base")
-makedepends=("cmake" "git")
-optdepends=("android-udev: Udev rules to connect Android devices to your linux box")
-conflicts=("heimdall")
-provides=("heimdall")
-source=(
-	"$_pkgname::git+https://github.com/Benjamin-Dobell/Heimdall"
-	"heimdall.desktop"
-	"reset-device.patch"
+pkgdesc="Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices (grimler fork)"
+arch=(x86_64)
+url="https://git.sr.ht/~grimler/Heimdall"
+license=(MIT)
+depends=(
+  gcc-libs
+  glibc
+  libusb
+  zlib
 )
-sha256sums=('SKIP'
-            '439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4'
-            '42d3b86206d6ab80c79a16d7c1dcdcd478cb975d5155c9971744c2dd981c4577')
+makedepends=(
+  cmake
+  qt6-base
+)
+optdepends=(
+  "qt6-base: GUI support for heimdall-frontend"
+)
+source=(
+  $_pkgname::git+https://git.sr.ht/~grimler/Heimdall
+  heimdall.desktop
+)
+sha256sums=(
+  "SKIP"
+  "439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4"
+)
+conflicts=(heimdall)
+provides=(heimdall)
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/$_pkgname"
-
-	patch -p1 -i "$srcdir/reset-device.patch"
-}
-
 build() {
-	cd "$srcdir/$_pkgname"
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S $_pkgname
+    -W no-dev
+  )
 
-	cmake . -DCMAKE_INSTALL_PREFIX="/usr"
-	make
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-
-	# Install desktop file
-	install -m644 -D "$srcdir/heimdall.desktop" "$pkgdir/usr/share/applications/heimdall.desktop"
-
-	# Install license file
-	install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	# Install heimdall command line tool
-	install -d "$pkgdir"/usr/bin
-	install -Dm755 bin/* "$pkgdir"/usr/bin/
-	install -Dm644 heimdall/60-heimdall.rules "$pkgdir"/usr/lib/udev/rules.d/60-heimdall.rules
+  install -vDm 755 build/bin/* -t "$pkgdir"/usr/bin/
+  install -vDm 644 $_pkgname/heimdall/60-heimdall.rules -t "$pkgdir"/usr/lib/udev/rules.d/
+  install -vDm 644 heimdall.desktop -t "$pkgdir/usr/share/applications/"
+  install -vDm 644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
