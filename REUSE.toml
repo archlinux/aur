@@ -1,0 +1,6 @@
+version = 1
+
+[annotations]
+paths = ["PKGBUILD", ".SRCINFO"]
+SPDX-FileCopyrightText = "2025 stealthy_doggo"
+SPDX-License-Identifier = "0BSD"
