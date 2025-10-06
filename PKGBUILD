@@ -1,6 +1,7 @@
-# Maintainer: Andreas Kurth <archlinux@akurth.net>
+# Maintainer: Freakness109 <freakness109@gmail.com>
+# Former maintainer: Andreas Kurth <archlinux@akurth.net>
 pkgname='bender'
-pkgver=0.27.1
+pkgver=0.28.2
 pkgrel=1
 pkgdesc="Dependency management tool for hardware design projects"
 arch=('x86_64')
@@ -9,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('3e00045a3462ac680c019e2b44bb663dd9c155b09f3d7b39a40fe8586cc676477e08278556430aa3f788756835c53391160d01545d6a87ff22af3cd9ec1b436f')
+sha512sums=('ed66302354b68cb19d24c17daa9b0af66101546303031120500ef11041fa70b3cc80c8cd097952a919d687a824654f055c52557bc7e061d8cbdb723a7ca488f4')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
