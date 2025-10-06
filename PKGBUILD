@@ -1,6 +1,6 @@
 # Maintainer: Josef Zoller <josef@walterzollerpiano.com>
 pkgname=zed-preview-bin
-pkgver=0.207.0
+pkgver=0.207.2
 pkgrel=1
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ provides=("${pkgname%-preview-bin}=$pkgver")
 conflicts=("${pkgname%-preview-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/api/releases/preview/$pkgver/zed-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/api/releases/preview/$pkgver/zed-linux-aarch64.tar.gz")
-sha256sums_x86_64=('c364769bfea1167c731c3dddc382ae25066c0301e3fc7744c3293d490284b017')
-sha256sums_aarch64=('3257d448eefaf10b6c23ecfb882d2f9389fe0c70bd45bc06ec17354a6d60a69d')
+sha256sums_x86_64=('a909a780d030e6a4880cf3aa801b56bf2ae75b32d962ca6db56b921f46f18b1d')
+sha256sums_aarch64=('84fc40b9a7e811a9e612e79a6698e1e51fc052f5430ade68d98df0db2cf8920d')
 
 package() {
     cd zed-preview.app
