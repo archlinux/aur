@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 ---
 # `pre-{commit,push}` aren’t recognized stages pre-3.2.0
 minimum_pre_commit_version: 3.2.0
@@ -53,4 +55,13 @@ repos:
     hooks:
       - id: namcap
       - id: makepkg-update-srcinfo
+  - repo: https://git.fsfe.org/reuse/tool
+    rev: 8b8bbd873b2af6b2a2521ab2b1ff07b2ab624840  # frozen: v5.1.1
+    hooks:
+      - id: reuse-lint-file
+        stages:
+          - pre-commit
+      - id: reuse
+        stages:
+          - pre-push
 ...
