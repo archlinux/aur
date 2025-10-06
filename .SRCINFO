@@ -1,0 +1,15 @@
+pkgbase = tangled-cli-git
+	pkgdesc = Rust CLI for tangled.org
+	pkgver = r7.gc1ea514
+	pkgrel = 1
+	url = https://tangled.org/@vitorpy.com/tangled-cli
+	arch = any
+	license = Custom:NONE
+	makedepends = cargo
+	makedepends = git
+	provides = tangled-cli
+	conflicts = tangled-cli
+	source = git+https://tangled.org/@vitorpy.com/tangled-cli
+	sha256sums = SKIP
+
+pkgname = tangled-cli-git
