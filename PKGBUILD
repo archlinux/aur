@@ -3,7 +3,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.11.1
-pkgrel=10
+pkgrel=11
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -73,7 +73,7 @@ prepare() {
 build() {
   export CC=clang CXX=clang++
   export LDFLAGS+=' -fuse-ld=lld'
-  cmake -S $_pkgname -B build \
+  cmake -S $_pkgname -B build --fresh \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
