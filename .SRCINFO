@@ -1,0 +1,19 @@
+pkgbase = gummibbs-git
+	pkgdesc = Btrfs snapshot scripts with systemd-boot integration
+	pkgver = r282.22ff4df
+	pkgrel = 1
+	url = https://github.com/lucas-mior/gummibbs
+	install = PKGBUILD.install
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	depends = btrfs-progs
+	depends = inotify-tools
+	depends = arch-install-scripts
+	provides = gummibbs
+	conflicts = gummibbs
+	backup = etc/gummibbs.conf
+	source = git+https://github.com/lucas-mior/gummibbs.git
+	md5sums = SKIP
+
+pkgname = gummibbs-git

@@ -1,0 +1,7 @@
+post_install() {
+    /usr/bin/systemctl enable --now gummibbs.service 
+}
+
+post_upgrade() {
+    post_install
+}
