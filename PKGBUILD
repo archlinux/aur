@@ -13,7 +13,7 @@ conflicts=('xtreamium-proxy')
 options=('!debug' '!strip')
 backup=('opt/xtreamium-proxy/appsettings.json')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xtreamium/xtreamium-proxy/releases/download/v${pkgver}/xtreamium-proxy-linux.tar.gz")
-sha256sums=('SKIP')  # Update with actual checksum after first build
+sha256sums=('2ae4212e3c93b71678bf794c0aaeafd4d10bdc1249d5221fa6fb0dcf03277b44')
 
 package() {
     cd "$srcdir"
