@@ -1,6 +1,6 @@
 pkgbase = hypr-local-workspaces
 	pkgdesc = Make Hyprland workspaces local per monitor (Go)
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/xKirtle/hypr-local-workspaces
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hypr-local-workspaces
 	depends = glibc
 	options = !debug
 	options = !strip
-	source = https://github.com/xKirtle/hypr-local-workspaces/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = c3dc1f19b1e4a0efeccc60e483d90a463e25973d429144640233fc008c3e84d1
+	source = https://github.com/xKirtle/hypr-local-workspaces/archive/refs/tags/v0.2.5.tar.gz
+	sha256sums = 99ff3189e86b2aa54bf05ae6a81a00e7ff1c0b8e2c7baa2c214c319ebcba5de3
 
 pkgname = hypr-local-workspaces
