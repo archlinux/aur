@@ -6,7 +6,7 @@ pkgver=r12.305e6c3
 pkgrel=1
 arch=('any')
 depends=(
-    'cobib'
+    'cobib-git'
     'python'
     'python-pyzotero'
 )
