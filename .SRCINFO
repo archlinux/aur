@@ -1,0 +1,15 @@
+pkgbase = sjconv-bin
+	pkgdesc = A simple standalone convolver for JACK.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fstxz/sjconv
+	arch = x86_64
+	license = MIT
+	depends = jack
+	provides = sjconv
+	conflicts = sjconv
+	options = !strip
+	source = https://github.com/fstxz/sjconv/releases/download/v1.0.0/sjconv-v1.0.0-linux-x86_64.zip
+	sha256sums = 9c4a41a9aa1c77d4a745d3f18d7613d25bf7a77c4541ccfb29d79dd1e276ecc8
+
+pkgname = sjconv-bin
