@@ -2,8 +2,8 @@
 
 pkgname=python-wbdata
 _pkg="${pkgname#python-}"
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='A library to access World Bank data'
 arch=('any')
 url='https://github.com/oliversherouse/wbdata'
@@ -12,7 +12,7 @@ depends=('python' 'python-requests' 'python-tabulate' 'python-appdirs' 'python-c
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry')
 optdepends=('python-pandas' 'mkdocs' 'mkdocstrings')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('df9044539f3c8747ab5ca94ae5c56674b8547417e8c47e515bf14efc57e29beb')
+b2sums=('fc54ab8199712ade436ec9f6c38c5cadb87883ef465561f178489bc8034c2d94deea1c8626760a2c3986835334c8a7c0d011f32ac6053c592fbee35d0963dc94')
 
 build() {
 	cd "$_pkg-$pkgver"
