@@ -2,7 +2,7 @@
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 
 pkgname=droidcam-obs-plugin-git
-pkgver=2.4.0.r0.fa19a22
+pkgver=2.4.1.r0.d23271e
 pkgrel=1
 pkgdesc="plugin for droidcam obs"
 arch=('x86_64' 'i686')
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}")
+source=("${pkgstem}::git+${srcurl}" "libavcodec62-fix.patch")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('SKIP' '02e5fd0c728061eeb23f255250c43b79668b457ebdcd9c31793ad5db44da2e34')
 
 pkgver() {
 	cd "$srcdir/$pkgstem"
@@ -32,6 +32,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgstem"
 	mkdir -p build
+	patch -Np1 < "$srcdir/libavcodec62-fix.patch"
 }
 
 build() {
