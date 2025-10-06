@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Demetz <demetzbenjamin23@gmail.com>
 
 pkgname=tooka-git
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A rule-based automatic file sorter"
 arch=('i686' 'x86_64' 'aarch64' 'riscv64')
