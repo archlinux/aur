@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=25.3.0_devel.211812.0fe652971e9.d41d8cd
+pkgver=25.3.0_devel.213035.162cc070f06.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -71,6 +71,7 @@ provides=(
     'libva-mesa-driver'
     'mesa-libgl'
     'mesa'
+    'vulkan-mesa-device-select'
 )
 conflicts=(
     'vulkan-mesa-layers'
@@ -83,6 +84,7 @@ conflicts=(
     'libva-mesa-driver'
     'mesa-libgl'
     'mesa'
+    'vulkan-mesa-device-select'
 )
 url="https://www.mesa3d.org"
 license=('custom')
