@@ -1,16 +1,21 @@
 #Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=spw
-pkgver=1.7
-pkgrel=2
-pkgcommit="dedf1a1e059dd8bbb04ea5b076ecd1d83560e1f8"
+pkgver=2.0
+pkgrel=1
 pkgdesc="spw - secure password generator"
 arch=('any')
-url="https://gitlab.com/Plague_Doctor/spw"
+url="https://git.netsi.xyz/plague-doctor/spw"
 license=('GPL')
 depends=('python')
-source=("spw-$pkgver-$pkgrel.tar.bz2"::"https://gitlab.com/Plague_Doctor/spw/-/archive/${pkgver}/spw-${pkgver}.tar.bz2")
-sha256sums=('4652f97ad9f979ed896e33307044906bb73f437931d417974ee93ea64fd3a174')
+makedepends=('git')
+source=("$pkgname::git+https://git.netsi.xyz/plague-doctor/spw#tag=2.0")
+sha256sums=('ac650b3a629781e82b0247b613f7134e712f84db62ee89b94575c70d4ca9e05d')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --tags --abbrev=0 | sed 's/^v//'
+}
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
@@ -18,7 +23,7 @@ package() {
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/man/man1/"
     install -d "$pkgdir/usr/share/dict/"
-    install "$srcdir/$pkgname-$pkgver/spw.py" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/dict/spw_en" "${pkgdir}/usr/share/dict/spw_en"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/man/spw.1" "${pkgdir}/usr/share/man/man1/"
+    install "$srcdir/$pkgname/spw.py" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "$srcdir/$pkgname/dict/spw_en" "${pkgdir}/usr/share/dict/spw_en"
+    install -Dm644 "$srcdir/$pkgname/man/spw.1" "${pkgdir}/usr/share/man/man1/"
 }
