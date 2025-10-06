@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 pkgname=coredns
-pkgver=1.12.4
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
@@ -14,7 +14,7 @@ source=(coredns-${pkgver}.tar.gz::https://github.com/coredns/${pkgname}/archive/
   coredns.service
   coredns-sysusers.conf)
 
-sha256sums=('39713a5bfd6fd1a2df1caa7a8296c4327e48c51e964c83d5fea4ed3a5ba4df9f'
+sha256sums=('9ad9d2a4ed708f235a6d0a3275cc0988973953228f539e50fdabe493c64a112f'
             '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
             '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
