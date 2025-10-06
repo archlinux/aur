@@ -4,12 +4,16 @@
 _pkgname=onedrive_tray
 pkgname=$_pkgname-git
 pkgver=r28.6883538
-pkgrel=1
+pkgrel=2
 pkgdesc="OneDrive system tray program"
 arch=('i686' 'x86_64')
 url="https://github.com/DanielBorgesOliveira/onedrive_tray"
 license=('unknown')
-depends=('qt5-base' 'onedrive')
+depends=(
+	'qt5-base'
+	'qt5-svg'
+	'onedrive'
+	)
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("onedrive_tray=$pkgver")
 conflicts=("onedrive_tray")
