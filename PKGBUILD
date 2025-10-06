@@ -18,6 +18,7 @@ backup=(etc/gummibbs.conf)
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}" || exit 1
+    ./gummibbs-common.bash
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
