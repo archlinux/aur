@@ -2,8 +2,8 @@
 
 _pkgname=Eden
 pkgname=eden-nightly-bin
-pkgver=2025.10.03.27778
-_tagver=2025-10-03-27778
+pkgver=2025.10.05.27786
+_tagver=2025-10-05-27786
 pkgrel=1
 pkgdesc="Unofficial nightly release of the Eden Nintendo Switch emulator (AppImage, PGO optimized)"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ options=(!strip)
 provides=('eden')
 conflicts=('eden')
 
-source_x86_64=("eden-nightly-PGO-x86_64_v3.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27778-Common-PGO-x86_64.AppImage")
+source_x86_64=("eden-nightly-PGO-x86_64_v3.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27786-Common-PGO-x86_64.AppImage")
 sha512sums_x86_64=('SKIP')
 
-source_aarch64=("eden-nightly-PGO-aarch64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27778-Linux-PGO-aarch64.AppImage")
+source_aarch64=("eden-nightly-PGO-aarch64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/${_tagver}/Eden-27786-Linux-PGO-aarch64.AppImage")
 sha512sums_aarch64=('SKIP')
 
 if [ "$CARCH" = "x86_64" ]; then
