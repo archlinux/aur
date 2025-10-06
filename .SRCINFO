@@ -1,7 +1,7 @@
 pkgbase = batticonplus
 	pkgdesc = Lightweight battery icon for the system tray and notifier (based on cbatticon)
-	pkgver = 2.0.0
-	pkgrel = 1.2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/artist4xlibre
 	arch = x86_64
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = batticonplus
 	conflicts = cbatticon
 	replaces = cbatticon
 	options = !debug
-	source = batticonplus-v2.0.0.tar.gz::https://github.com/artist4xlibre/batticonplus/archive/refs/tags/v2.0.0.tar.gz
+	source = batticonplus-v2.0.1.tar.gz::https://github.com/artist4xlibre/batticonplus/archive/refs/tags/v2.0.1.tar.gz
 	validpgpkeys = 4CF0F66D9CEF47105E22DD0F73580DE2EDDFA6D6
-	sha256sums = a1b9e0e72c6c2640bbfadea1ac6fa47351d35a5b9149a7f2dd97e64efc3ed227
+	sha256sums = a235c5fc0359d480b54a240175e5c5c69b0927fd50a848186ca101703e251d7c
 
 pkgname = batticonplus
