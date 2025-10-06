@@ -1,0 +1,4 @@
+[python-htmldate]
+source = "git"
+git = "https://github.com/adbar/htmldate.git"
+prefix = "v"
