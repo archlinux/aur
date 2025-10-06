@@ -4,8 +4,8 @@
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/4imothy/treegrep'
@@ -40,7 +40,7 @@ package() {
 
   cd "$_pkgname-$CARCH-$_linux"
 
-  install -vDm0755 -t "$pkgdir/usr/bin/" tgrep
+  install -vDm0755 -t "$pkgdir/usr/bin" tgrep
 
   # Bash
   install -vDm0644 _completions.bash \
@@ -57,11 +57,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '369b30f0cb3c417ab17d30fec7bddd30374270ad5e9a896f30f3817bc9817a91'
+  '53c06bfe15929d6d9ae1fd71c824abdeeb0bd08a66901ae81023073a7e0165e1'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 sha256sums_x86_64=(
-  '744af404a5d40486995995bc6b4753ee70e686c1cea354a047b0458dc2c8f071'
+  'e82a960768b4b1c364461e1f203f08261fbd8f11817278e870fe756ea4fbdeb1'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 
