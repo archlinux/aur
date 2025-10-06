@@ -3,8 +3,8 @@
 Name=Boot Repair Andres
 Comment=Swiss-army live rescue tool: GRUB repair, display reset, initramfs, kernel, system update, boot freedom, diagnostics.
 Exec=sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY boot-repair; echo -e '\n--- Press ENTER To EXIT---'; read"
-Icon=preferences-system
+Icon=boot-repair-andres
 Terminal=true
 Type=Application
 Categories=System;Utility;Core;
-Keywords=boot;repair;grub;system;diagnostico;
+Keywords=boot;repair;grub;system;diagnostiic;
