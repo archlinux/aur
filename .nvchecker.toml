@@ -1,0 +1,4 @@
+[justext]
+source = "git"
+git = "https://github.com/miso-belica/jusText.git"
+prefix = "v"
