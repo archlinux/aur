@@ -1,8 +1,8 @@
 # Maintainer: yuf <yuf at yufarch dot com>
 
-_electronver=37
+_electronver=38
 pkgname='siki'
-pkgver=0.37.9
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='An Electrom-based application for browsing and posting to message boards'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "${pkgname}.sh"
 )
 noextract=("${_archive}-amd64.deb")
-sha512sums=('f45d0a24510233b9834febf8e704275fe066263119a6e61426aa6949b8840bcf2a6b52b7674c9f0fb25b1af84f0017a15cdef7a6dc242f09840ba1fac6f200af'
+sha512sums=('b18a0251ba3151e4fb4d7c73e5e0b6d7f10f4f53912f8856805fc73c98bb05be31cc3044125bbac3dafa5f689871bbd15497366bf71c28fedf885c28dc36e776'
             'd7548b3f81e5fbac18470c96a998fc73657c7d6a659d56b82a68291407c07ebe448dfc318f507b8ad6da831bc73d47336248484da7f05642875e994c7e42803e')
 
 prepare() {
