@@ -2,7 +2,7 @@
 
 pkgname=winghexexplorer2
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='一个自由强大跨平台的十六进制编辑器 / A free, powerful, cross-platform hex editor'
 url="https://github.com/Wing-summer/WingHexExplorer2"
 
@@ -15,6 +15,7 @@ makedepends=('git' 'cmake' 'gcc' 'clang' 'qt6-tools' 'qt6-translations' 'nodejs'
 optdepends=('qt6-translations: translations')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
+options=('!strip')
 
 install=winghexexplorer2.install
 
