@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=concaveman
-_pkgver=1.1.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A Very Fast 2D Concave Hull Algorithm'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fd1d6aeee3d9bfff7f8ab3ba9b020c2201bb00ca9948eef386b4560fce86e2c')
+sha256sums=('48653df177d5f1573dcfdf49438fb7d418e7668f1c66713b4fed153fa51ff2b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

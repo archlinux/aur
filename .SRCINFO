@@ -1,6 +1,6 @@
 pkgbase = r-concaveman
 	pkgdesc = A Very Fast 2D Concave Hull Algorithm
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=concaveman
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-concaveman
 	depends = proj
 	depends = gdal
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/concaveman_1.1.0.tar.gz
-	sha256sums = 9fd1d6aeee3d9bfff7f8ab3ba9b020c2201bb00ca9948eef386b4560fce86e2c
+	source = https://cran.r-project.org/src/contrib/concaveman_1.2.0.tar.gz
+	sha256sums = 48653df177d5f1573dcfdf49438fb7d418e7668f1c66713b4fed153fa51ff2b2
 
 pkgname = r-concaveman
