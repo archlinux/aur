@@ -1,0 +1,4 @@
+["dano-bin"]
+source = "github"
+github = "kimono-koans/dano"
+use_latest_release = true
