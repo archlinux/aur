@@ -1,7 +1,7 @@
 pkgbase = robrix-bin
 	pkgdesc = A multi-platform Matrix chat client written in Rust, using the Makepad UI toolkit and the Robius app dev framework
 	pkgver = 0.0.1.pre.alpha.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/project-robius/robrix
 	arch = x86_64
 	options = !debug
