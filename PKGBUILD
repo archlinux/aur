@@ -4,14 +4,16 @@ pkgver=0.3.0
 pkgrel=1
 pkgdesc="Bluetooth utility with customizable menu"
 arch=('x86_64')
-makedepends=('git' 'cmake' 'make')
-depends=('glib2' 'libnotify' 'bluez')
+url="https://github.com/kupira/BlueRice"
 license=('MIT')
+depends=('glib2' 'libnotify' 'bluez')
+makedepends=('git' 'cmake' 'make')
 source=("git+https://github.com/kupira/BlueRice.git")
 sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/BlueRice" || return 1
+
     mkdir -p build
     cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release
