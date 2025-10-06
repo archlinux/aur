@@ -1,0 +1,5 @@
+["geminicommit-bin"]
+source = "github"
+github = "tfkhdyt/geminicommit"
+use_latest_release = true
+prefix = "v"

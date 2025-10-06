@@ -1,28 +1,51 @@
-# Maintainer: Rizal Nur A <rizal.jal2002@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Rizal Nur A <rizal.jal2002@gmail.com>
 
-pkgname=geminicommit-bin
-pkgver=0.2.3
+_pkgauthor=tfkhdyt
+_pkgname=geminicommit
+_pkgexec=gmc
+pkgname=${_pkgname}-bin
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='A CLI that writes your git commit messages for you with Google Gemini AI'
+_pkgvername=v${pkgver}
+pkgdesc="CLI that writes git commit messages for you with Google Gemini AI"
 arch=('x86_64' 'aarch64')
-url='https://github.com/tfkhdyt/geminicommit'
-license=('GPL3')
-depends=('git')
-source_x86_64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('98c5496c0ccabe738128e85eee95478d88e9c487d535ae2defc4f73778ccf642')
+_barch=('amd64' 'arm64')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+license=('GPL-3.0')
 
-source_aarch64=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/geminicommit-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('089796f469490d6de94334e3ee00ba64262aeaadc1bdf4c14d176dabce2bc0cf')
+depends=('glibc')
+provides=("${_pkgexec}")
+conflicts=("${_pkgname}")
+
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
+        "README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgexec}-${_pkgvername}-linux-${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgexec}-${_pkgvername}-linux-${_barch[1]}.tar.gz")
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            'e81d2329b8a94627efd32426b53392b71d1ad0917e565ce4468138479281558c')
+sha256sums_x86_64=('356f89421670bfeeba9a0fccda477bbaa238885e6bc656a3856f4bd8f3301bde')
+sha256sums_aarch64=('f1c73bdc4851d3128e5e8a233f6282e255c48d87d343bfef1d6219ed98601018')
 
 build() {
-	./geminicommit completion bash >geminicommit.bash
-	./geminicommit completion zsh >_geminicommit.zsh
-	./geminicommit completion fish >geminicommit.fish
+	cd "${srcdir}/" || exit
+
+	./${_pkgexec} completion bash > ${_pkgexec}.bash
+	./${_pkgexec} completion zsh > ${_pkgexec}.zsh
+	./${_pkgexec} completion fish > ${_pkgexec}.fish
 }
 
 package() {
-	install -Dm755 geminicommit "${pkgdir}/usr/bin/geminicommit"
-	install -Dm644 geminicommit.bash "${pkgdir}/usr/share/bash-completion/completions/geminicommit"
-	install -Dm644 _geminicommit.zsh "${pkgdir}/usr/share/zsh/site-functions/_geminicommit"
-	install -Dm644 geminicommit.fish "${pkgdir}/usr/share/fish/vendor_completions.d/geminicommit.fish"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgexec}" "${pkgdir}/usr/bin/${_pkgexec}"
+
+	install -Dm644 ${_pkgexec}.bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgexec}"
+	install -Dm644 ${_pkgexec}.zsh "${pkgdir}/usr/share/zsh/site-functions/_${_pkgexec}"
+	install -Dm644 ${_pkgexec}.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgexec}.fish"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
