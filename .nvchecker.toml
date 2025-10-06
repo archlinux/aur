@@ -1,4 +1,5 @@
 [thruk]
-source = "regex"
-url = "https://thruk.org/download.html"
-regex = ">thruk-(.*)\\.tar.gz<"
+source = "git"
+git = "https://github.com/sni/thruk.git"
+include_regex = "v(.+)"
+prefix = "thruk-"
