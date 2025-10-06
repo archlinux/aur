@@ -2,8 +2,8 @@
 
 pkgname=batticonplus-ayatana
 _pkgname=batticonplus
-pkgver=2.0.0
-pkgrel=1.2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Lightweight battery icon for the system tray and notifier, wayland version (based on cbatticon)'
 arch=(x86_64)
 url='https://github.com/artist4xlibre'
