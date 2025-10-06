@@ -1,7 +1,7 @@
 # Maintainer: Frosty <frosty@archtide.space>
 
 pkgname=sandscreen
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Terminal screensaver built on ncurses"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=("MIT")
 depends=()
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/frostyarchtide/sandscreen/archive/v${pkgver}.tar.gz")
-sha256sums=("dfd4c2e57a43b2694843e4ff58bff36886d2ea11343a0a75981aac4e8229ee03")
+sha256sums=("7f36ed7dcf2182fea95ec3af7c4d5e6eb3e8cbca8f8f90ab5b79c2611440db21")
 
 build() {
     cd "${pkgname}-${pkgver}"
