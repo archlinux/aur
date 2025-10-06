@@ -2,7 +2,7 @@
 
 pkgname=kretro
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Libretro emulation frontend for Plasma'
 arch=(x86_64)
 url='https://apps.kde.org/kretro/'
@@ -25,6 +25,7 @@ depends=(glibc
 makedepends=(extra-cmake-modules
              vulkan-headers)
 optdepends=('libretro-blastem: support for Sega Mega Drive'
+            'libretro-gearsystem: support for Sega MS/GG/SG-1000'
             'libretro-mgba: support for Nintendo Game Boy Advance'
             'libretro-nestopia: support for Nintendo Entertainment System'
             'libretro-snes9x: support for Super Nintendo Entertainment System')

@@ -1,7 +1,7 @@
 pkgbase = kretro
 	pkgdesc = Libretro emulation frontend for Plasma
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kretro/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -23,6 +23,7 @@ pkgbase = kretro
 	depends = sdl3
 	depends = gcc-libs
 	optdepends = libretro-blastem: support for Sega Mega Drive
+	optdepends = libretro-gearsystem: support for Sega MS/GG/SG-1000
 	optdepends = libretro-mgba: support for Nintendo Game Boy Advance
 	optdepends = libretro-nestopia: support for Nintendo Entertainment System
 	optdepends = libretro-snes9x: support for Super Nintendo Entertainment System
