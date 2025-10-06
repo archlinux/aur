@@ -4,7 +4,7 @@
 _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
-pkgver=2.1.0
+pkgver=2.1.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc='wayland application runner'
@@ -65,7 +65,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '409ee3fe13e391fd36ba3fa97f34e2cf1a42d82124e13b53c1df4cfb6e252333'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             'a08863402748ac79321198869b28b9ab6bc35ab7f9b9385bbef932fefa6e4bef')
-sha256sums_x86_64=('6b85600c5e694c4454955efcc6b79208d645dd6dd90e00990cddaaef2f066ac7')
+sha256sums_x86_64=('0fbc31f7f2e59236d71de04381b9eed30c123883469dea88c26fc7d949b93ff6')
 
 prepare() {
     cd "${srcdir}" || exit 1
