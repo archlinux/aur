@@ -1,6 +1,6 @@
 # Maintainer: Matthew Mueller (2disbetter@gmail.com)
 
-pkgname=FW12Rotate
+pkgname=fw12rotate-git
 pkgver=r17.ba2cdd7
 pkgrel=1
 options=('!debug')

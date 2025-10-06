@@ -1,4 +1,4 @@
-pkgbase = FW12Rotate
+pkgbase = fw12rotate-git
 	pkgdesc = Framework 12 rotation application for Hyprland on Omarchy or other Arch-based systems
 	pkgver = r17.ba2cdd7
 	pkgrel = 1
@@ -12,7 +12,8 @@ pkgbase = FW12Rotate
 	depends = inotify-tools
 	depends = iio-sensor-proxy
 	optdepends = hyprland: required for intended use
+	options = !debug
 	source = git+https://github.com/2disbetter/FW12Rotate.git
 	sha256sums = SKIP
 
-pkgname = FW12Rotate
+pkgname = fw12rotate-git
