@@ -3,7 +3,7 @@
 pkgbase=xsane-git
 pkgname=('xsane-git' 'xsane-gimp-git')
 _gitname=xsane
-pkgver=0.999.r319.g87edc38
+pkgver=0.999.r321.gc5ac0d9
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/sane-project/frontend/xsane"
@@ -64,8 +64,8 @@ package_xsane-gimp-git() {
   install -D -m755 src/xsane-gimp "$pkgdir/usr/bin/xsane-gimp"
 
   ## Link the plugin binary to gimp plug-in directories
-  mkdir -p "$pkgdir/usr/lib/gimp/2.0/plug-ins"
-  ln -sf /usr/bin/xsane-gimp "$pkgdir"/usr/lib/gimp/2.0/plug-ins/xsane
-  mkdir -p "$pkgdir/usr/lib/gimp/3.0/plug-ins"
-  ln -sf /usr/bin/xsane-gimp "$pkgdir"/usr/lib/gimp/3.0/plug-ins/xsane
+  mkdir -p "$pkgdir/usr/lib/gimp/2.0/plug-ins/xsane"
+  ln -sf /usr/bin/xsane-gimp "$pkgdir"/usr/lib/gimp/2.0/plug-ins/xsane/xsane
+  mkdir -p "$pkgdir/usr/lib/gimp/3.0/plug-ins/xsane"
+  ln -sf /usr/bin/xsane-gimp "$pkgdir"/usr/lib/gimp/3.0/plug-ins/xsane/xsane
 }

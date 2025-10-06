@@ -1,5 +1,5 @@
 pkgbase = xsane-git
-	pkgver = 0.999.r319.g87edc38
+	pkgver = 0.999.r321.gc5ac0d9
 	pkgrel = 1
 	url = https://gitlab.com/sane-project/frontend/xsane
 	arch = x86_64
