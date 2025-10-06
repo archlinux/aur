@@ -14,17 +14,13 @@ source=("git+https://github.com/AndresDev859674/boot-repair.git"
         "boot-repair-andres-128.png")
 
 url="https://github.com/AndresDev859674/boot-repair"
-sha256sums=('SKIP'  # 1. para el repositorio Git
-            'SKIP'  # 2. para el .desktop
-            'SKIP'  # 3. para el .policy
-            'SKIP'  # 4. para boot-repair-andres.png
-            'SKIP') # 5. para boot-repair-andres-128.png
+sha256sums=('SKIP'  
+            'SKIP'  
+            'SKIP'  
+            'SKIP'  
+            'SKIP')
 
 optdepends=('git: For Update and Others Things')
-
-source=("git+https://github.com/AndresDev859674/boot-repair.git"
-        "boot-repair-andres.desktop"
-        "com.andresdev859674.boot-repair.policy")
 
 package() {
 
