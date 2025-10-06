@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2471.g5fd5949
+pkgver=4.3.r2475.gb6d5803
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -32,14 +32,17 @@ sha256sums=(
   'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
   '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
 
+# Disable libav, if the FFmpeg version is not known to support libav
 _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
 
   # Compare major version numbers of ffmpeg
   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
-  # Check the maximum known supported version and the version used by the makefile
-  if ((ffmpeg_installed <= 7)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
+
+  # Check the version supported by this package (and allow lower versions).
+  # Optionally, check the version supported by Tvheadend
+  if ((ffmpeg_installed <= 8)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
     libav_option='--enable-libav'
   else
     libav_option='--disable-libav'
