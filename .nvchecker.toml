@@ -1,0 +1,4 @@
+[python-courlan]
+source = "git"
+git = "https://github.com/adbar/courlan.git"
+prefix = "v"
