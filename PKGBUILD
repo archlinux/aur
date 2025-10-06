@@ -2,7 +2,7 @@
 pkgname=cli-modplayer
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="A terminal-based MOD tracker player with real-time visualization"
+pkgdesc="A terminal-based Module player (.mod, .xm, .it, .s3m) with real-time visualization"
 arch=('x86_64')
 url="https://github.com/Master290/cli-tracker"
 license=('MIT')
