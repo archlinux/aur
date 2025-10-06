@@ -31,12 +31,18 @@ pkgver() {
 
 build() {
     cd "$srcdir/whisker-cli"
+    echo "  -> change directory: $PWD"
 
     export HAXELIB_PATH="$srcdir/haxelib"
-    mkdir -p "$HAXELIB_PATH"
+    echo "  -> set HAXELIB_PATH to $HAXELIB_PATH"
 
+    mkdir -p "$HAXELIB_PATH"
+    echo "  -> create HAXELIB_PATH directory"
+
+    echo "  -> haxelib install hxcpp --always --quiet"
     haxelib install hxcpp --always --quiet
 
+    echo "  -> starting haxe build"
     haxe release.hxml
 }
 
