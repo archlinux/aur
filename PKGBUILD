@@ -1,7 +1,7 @@
 # Maintainer: wingsummer <wing-summer@qq.com>
 
 pkgname=winghexexplorer2
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='一个自由强大跨平台的十六进制编辑器 / A free, powerful, cross-platform hex editor'
 url="https://github.com/Wing-summer/WingHexExplorer2"
@@ -11,7 +11,7 @@ license=(AGPL-3.0-only)
 conflicts=(winghexexplorer2-git)
 
 depends=('qt6-base')
-makedepends=('git' 'cmake' 'gcc' 'clang' 'qt6-tools' 'qt6-translations')
+makedepends=('git' 'cmake' 'gcc' 'clang' 'qt6-tools' 'qt6-translations' 'nodejs')
 optdepends=('qt6-translations: translations')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
@@ -40,6 +40,7 @@ build() {
         -D WINGHEX_USE_FRAMELESS=ON
         -D BUILD_TEST_PLUGIN=OFF
         -D BUILD_SHARED_MEM_EXT=OFF
+        -D ANGEL_LSP=ON
     )
     cmake -S . -B build "${_flags[@]}"
     cmake --build build -- -j"$(nproc)"
@@ -62,8 +63,8 @@ package() {
         mkdir -p "$_optdir/$_sub"
     done
 
-    cp -a "$_mkinst/share" "build/lang" "$_optdir/"
-    # install -Dm644 mkinstaller/config.ini "$_optdir/config.ini"  // this file is not existed before 2.3.0
+    cp -a "$_mkinst/share" "build/lang" "build/lsp" "$_optdir/"
+    install -Dm644 mkinstaller/config.ini "$_optdir/config.ini"
 
     for _f in LICENSE authorband.svg licenseband.svg screenshot.png README.md images/author.jpg; do
         install -Dm644 "$srcdir/WingHexExplorer2/${_f}" "$_optdir/${_f##*/}"
