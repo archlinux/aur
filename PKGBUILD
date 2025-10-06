@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname=automatic-timezoned
-pkgver=2.0.90
+pkgver=2.0.92
 pkgrel=1
 pkgdesc='A Linux daemon to automatically update the system timezone based on location.'
 url='https://github.com/maxbrunet/automatic-timezoned'
@@ -10,7 +10,7 @@ depends=('geoclue')
 makedepends=('cargo')
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('55e6e5babf79b47a77e436ec4d1afdb6e54e726f2c53cabedc946085515b8a92c86081355cc75fb6bf6062bd46cef409becd0b4c0db4cdeef9f5978757ee896c')
+b2sums=('90c72c5fb5b21f3e5019be483dff9826890bf0521277de920cbe261d1f0cb74d143aacbf9774e37d47a4431e8ab99f773f8ab3d86a583ee78ba54bc3921fd08f')
 
 prepare() {
   cd "$pkgname-$pkgver"
