@@ -1,0 +1,5 @@
+["typhoon-bin"]
+source = "github"
+github = "archisman-panigrahi/typhoon"
+use_latest_release = true
+prefix = "v"
