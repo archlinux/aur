@@ -1,0 +1,4 @@
+[python-trafilatura]
+source = "git"
+git = "https://github.com/adbar/trafilatura.git"
+prefix = "v"
