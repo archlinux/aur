@@ -12,8 +12,8 @@ pkgbase = qtjambi
 	makedepends = jdk21-openjdk
 	makedepends = make
 	makedepends = patch
-	depends = qt6-base
-	depends = qt6-declarative
+	depends = qt6-base=6.9.2
+	depends = qt6-declarative=6.9.2
 	source = https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v6.9.3.tar.gz
 	sha256sums = 4e1ee9a46a0bebfa2d61817b652a4db13a7773994b4782681e1a65e0a28f0542
 
