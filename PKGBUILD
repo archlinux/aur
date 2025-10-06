@@ -1,5 +1,5 @@
 # Maintainer: Freakness109 <freakness109@gmail.com>
-# Former maintainer: Andreas Kurth <archlinux@akurth.net>
+# Contributor: Andreas Kurth <archlinux@akurth.net>
 pkgname='bender'
 pkgver=0.28.2
 pkgrel=1
