@@ -1,7 +1,7 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=moab-git
-pkgver=5.5.0.r7.g236d1249a
-pkgrel=3
+pkgver=5.5.1.r643.g84f4f69e0
+pkgrel=1
 pkgdesc="The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data"
 arch=('x86_64')
 url="https://bitbucket.org/fathomteam/moab"
@@ -22,11 +22,11 @@ makedepends=(
 	"glibc>=2.34"
 	cmake
 	patch
-	python-pip
 )
 
-_commit=a050819
-source=("${pkgname}::git+${url}.git#commit=$_commit")
+provides=("${pkgname%-$pkgver}")
+source=("${pkgname}::git+${url}.git")
+
 pkgver() {
   cd $srcdir/${pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -38,14 +38,15 @@ build() {
 	cd $srcdir
 	mkdir build && cd build
 	cmake ../$pkgname -DENABLE_HDF5=ON \
-				  -DENABLE_NETCDF=ON \
-				  -DENABLE_FORTRAN=OFF \
-				  -DENABLE_BLASLAPACK=OFF \
-				  -DBUILD_SHARED_LIBS=ON \
-				  -DENABLE_PYMOAB=ON \
-				  -DBUILD_SHARED_LIBS=ON \
-				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
-				  -DHDF5_INCLUDE_DIR=/usr/include
+					  -DENABLE_NETCDF=ON \
+					  -DENABLE_FORTRAN=OFF \
+					  -DENABLE_BLASLAPACK=OFF \
+					  -DBUILD_SHARED_LIBS=ON \
+					  -DBUILD_SHARED_LIBS=ON \
+					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
+					  -DHDF5_INCLUDE_DIR=/usr/include \
+					  -DHDF5_LIBRARIES=/usr/lib/libhdf5.so \
+					  -DHDF5_NO_FIND_PACKAGE_CONFIG=ON  
 
 	_ccores=$(nproc)
 	# check if _ccores is a positive integer, if not, serial build
