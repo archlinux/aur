@@ -12,8 +12,7 @@ source=("git+https://github.com/kupira/BlueRice.git")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/BlueRice" || return 1
-
+    cd "$srcdir/BlueRice.git" || return 1
     mkdir -p build
     cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release
@@ -21,7 +20,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/BlueRice/build" || return 1
+    cd "$srcdir/BlueRice.git/build" || return 1
     install -Dm755 bluerice "$pkgdir/usr/bin/bluerice"
 }
 
