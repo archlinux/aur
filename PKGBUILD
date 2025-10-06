@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148,SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 _name='h3-py'
