@@ -1,0 +1,4 @@
+["doltgresql-bin"]
+source = "git"
+git = "https://github.com/dolthub/doltgresql.git"
+prefix = "v"
