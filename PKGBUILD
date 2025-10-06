@@ -1,6 +1,6 @@
 # Maintainer: kinker31 <dp223171@gmail.com>
 pkgname=chocolate-quake
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Conservative source port of Quake I"
 #32-bit support do be experimental, if it doesn't work, I'll just keep it at x64.
@@ -11,7 +11,7 @@ depends=('sdl2')
 makedepends=('cmake' 'gcc' 'git')
 conflicts=('chocolate-quake-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Henrique194/chocolate-quake/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('96f9e1f49501d80618b0f4794af7fd38d827717ea3c396801399c5011e7975b7')
+sha256sums=('6b03bef8c9e374c267a2939c78c33829e85ac8cfc113a8206948062959033bec')
 
 build() {
 	cd "$pkgname-$pkgname-$pkgver/"
