@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname=gummibbs
-pkgver=r282.22ff4df
+pkgver=r286.dbf59ce
 pkgrel=1
 pkgdesc="Btrfs snapshot scripts with systemd-boot integration"
 arch=(x86_64)

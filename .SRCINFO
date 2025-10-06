@@ -1,6 +1,6 @@
 pkgbase = gummibbs
 	pkgdesc = Btrfs snapshot scripts with systemd-boot integration
-	pkgver = r282.22ff4df
+	pkgver = r286.dbf59ce
 	pkgrel = 1
 	url = https://github.com/lucas-mior/gummibbs
 	install = PKGBUILD.install
