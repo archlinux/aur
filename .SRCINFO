@@ -1,0 +1,11 @@
+pkgbase = soundfont-masterpiece
+	pkgdesc = Dense sounding Public Domain GM bank by Andrew MacLean
+	pkgver = 19990813
+	pkgrel = 1
+	url = https://www.rkhive.com/banks.html
+	arch = any
+	license = CC0-1.0
+	source = https://www.rkhive.com/new/new_banks/masterpiece.zip
+	sha256sums = 0f45220d8cc82947942058143c15dcdac2747003aafaf3f1fe4f713cb96a016c
+
+pkgname = soundfont-masterpiece
