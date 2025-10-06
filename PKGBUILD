@@ -2,7 +2,7 @@
 # took most of the script from twintaillauncher-git
 
 pkgname=twintaillauncher
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
@@ -14,7 +14,7 @@ makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsv
 provides=("${pkgname}")
 conflicts=("${pkgname}" "twintaillauncher-bin")
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/ttl-v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('07275f468e6a9ca6df2a825b19a72bc1a81a005e6398ece527f42d300708596e')
 options=('!lto' '!debug')
 
 prepare() {
