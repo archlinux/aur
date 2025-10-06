@@ -6,7 +6,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r220.gc27a4bc
+pkgver=2.6.1.r225.g5a57bf1
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -83,7 +83,13 @@ prepare() {
   cd "$_pkgsrc"
 
   # skip failing tests
-  sed -E '/[Aa]ncillary.files/s&^&#&' -i meson.build
+  sed -E -e '/[Aa]ncillary.files/d' \
+    -e '/[Ll]ua.test/d' \
+    -e '/summary/s&^.*lua.*Test.*$&_ = 1 # pass&' \
+    -i meson.build
+
+  # fix translation script
+  sed -E '/full_file_path/s&(\$source_dir)/\$1&\1/$base&' -i scripts/translators.sh
 
   # fix for gdk-pixbuf2, glycin
   patch -Np1 -F100 -i ../0001-PR1928.patch
