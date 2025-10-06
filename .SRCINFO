@@ -1,0 +1,22 @@
+pkgbase = python-pymoab
+	pkgdesc = python bindings for the MOAB mesh-oriented database
+	pkgver = 5.5.1.r643.g84f4f69e0
+	pkgrel = 1
+	url = https://bitbucket.org/fathomteam/moab/src/master/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-scikit-build-core
+	depends = python
+	depends = moab-git
+	depends = python-numpy
+	optdepends = python-pytest
+	provides = pymoab
+	source = pymoab::git+https://bitbucket.org/fathomteam/moab.git
+	md5sums = SKIP
+
+pkgname = python-pymoab
