@@ -1,0 +1,21 @@
+pkgbase = xtreamium-proxy
+	pkgdesc = Xtreamium Proxy Service - IPTV/Streaming Proxy Server
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/xtreamium/xtreamium-proxy
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	optdepends = sqlite: Database backend
+	provides = xtreamium-proxy
+	conflicts = xtreamium-proxy
+	options = !debug
+	options = !strip
+	backup = opt/xtreamium-proxy/appsettings.json
+	source = xtreamium-proxy-1.3.0.tar.gz::https://github.com/xtreamium/xtreamium-proxy/releases/download/v1.3.0/xtreamium-proxy-linux.tar.gz
+	sha256sums = 2ae4212e3c93b71678bf794c0aaeafd4d10bdc1249d5221fa6fb0dcf03277b44
+
+pkgname = xtreamium-proxy
