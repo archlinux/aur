@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 pkgname=python-dessert
 _name=${pkgname#python-}
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Assertion introspection via AST rewriting"
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=(
     'python'
     'python-munch'
-    'python-py'
     'python-atomicwrites'
     'python-attrs'
+    'python-setuptools'
 )
 makedepends=(
     'python-build'
@@ -27,7 +27,7 @@ checkdepends=(
     'python-pylint'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('27916b1ffc932ae139385ada34ca4d2f851c66f48a2aa44295a438480fa59831')
+sha256sums=('53e5a06afa394c8c6a4556c08054f1fd28986bd7bcd1d69f92722af5e97627c1')
 
 build() {
     cd "$_name-$pkgver"
