@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.10.x
 # https://github.com/HandBrake/HandBrake/commits/1.10.x/
-readonly _commit=dddf75f756e56d2b8dbb0609175bc12047a4841d
+readonly _commit=53aeefb9e6e3501dece685e1f680b413c303e40b
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.10.2
+pkgver=1.10.2.r4.g53aeefb9e
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
