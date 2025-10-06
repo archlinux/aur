@@ -1,16 +1,20 @@
 pkgbase = netbird-ui-bin
 	pkgdesc = Official GUI for the Netbird client
 	pkgver = 0.59.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netbird.io
 	arch = x86_64
-	license = BSD-3-Clause
+	license = BSD-3-Clause AND AGPL-3.0-only
 	depends = glibc
 	depends = libglvnd
 	depends = libx11
 	depends = netbird
 	provides = netbird-ui
 	source = https://github.com/netbirdio/netbird/releases/download/v0.59.2/netbird-ui-linux_0.59.2_linux_amd64.tar.gz
+	source = netbird.desktop
+	source = netbird.png
 	sha256sums = b1bfe2d9bee9b03ec4189eeb432bb52d630f4a14da8f9383c765628c097e60a3
+	sha256sums = 48e798009153a1c11ff1f5e250056aedb93c6e40df0c9a33f8b9e5d739462982
+	sha256sums = 71b133636e91eb67f221f64592f64fa04a3b2337f4d616be36492efae0cff643
 
 pkgname = netbird-ui-bin
