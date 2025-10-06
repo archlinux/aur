@@ -1,0 +1,15 @@
+pkgbase = sonido
+	pkgdesc = A sleek, terminal-based music player written in Rust
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/desyatkoff/sonido
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
+	source = https://github.com/desyatkoff/sonido/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = e6b1d589c14e21a6d897181326d132783357409338bcea50967fbada2a581226
+
+pkgname = sonido
