@@ -2,7 +2,7 @@
 
 pkgname=soundfont-masterpiece
 pkgver=19990813
-pkgrel=1
+pkgrel=2
 pkgdesc='Dense sounding Public Domain GM bank by Andrew MacLean'
 arch=(any)
 license=('CC0-1.0')
