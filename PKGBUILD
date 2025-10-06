@@ -7,7 +7,7 @@ _name='h3-py'
 pkgname=('python-h3')
 pkgdesc="Hexagonal Hierarchical Geospatial Indexing System in Python"
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 url="https://github.com/uber/${_name}"
 license=('Apache-2.0')
 arch=('x86_64' 'x86_64_v3')
@@ -30,6 +30,17 @@ makedepends=(
     'cython'
     'python-scikit-build-core'
 )
+checkdepends=(
+    # From pyproject.toml
+    'python-pytest'
+    'python-pytest-cov'
+    'python-ruff'
+    'python-numpy'
+    # From makefile
+    'make'
+    'python-pip'
+    'cython'
+)
 source=(
     "git+${url}.git#tag=v${pkgver}"
     'git+https://github.com/uber/h3.git'
@@ -47,6 +58,16 @@ prepare() {
 build() {
     cd "${srcdir}/${_name}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${srcdir}/${_name}"
+    sed -Ei 's|^(\s+)./env/bin/|\1./env/bin/python -m |' makefile
+    sed -Ei 's|cythonize|Cython.Build.Cythonize|' makefile
+    export PIP_NO_BUILD_ISOLATION=1
+    python -m venv --system-site-packages env
+    ./env/bin/python -m installer dist/*.whl
+    make test
 }
 
 package() {
