@@ -3,24 +3,31 @@
 _sdk=9.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.15
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/Tyrrrz/${_Name}"
 license=('MIT')
-depends=("dotnet-runtime>=${_sdk}" 'ffmpeg')
-makedepends=("dotnet-sdk>=${_sdk}" 'gendesk')
-options=('!strip' '!debug' 'staticlibs')
+depends=(
+  "dotnet-runtime-${_sdk}"
+  'ffmpeg'
+)
+makedepends=(
+  "dotnet-sdk-${_sdk}"
+  'gendesk'
+)
+options=('!strip' '!debug')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}_xdg_settings.patch")
-b2sums=('7be51668d82d0c60f6bd7e54b2623083ba4e5a6684f2fdf18f8991c4a790facb2a94de65eebabd3f3520ee8dd99d6802bf3e9e8cbc696b14fdfe3102d4e8a165'
+b2sums=('899e7f4824c135b467a940dcf87e2151e837de0f8a70d04a0ec8cbffa7fb3fe8f7ec6b144713aaf3077c6b4259aa408430d60bca6da2310713d953c20a023126'
         '422e82520465e646ddc1a0f2d0dbd0c624141df292a5e6a5ebd4cee9c4025769ae518e8c373d35632ee804148b68de109232d64ebd33c455eb81d6dbf3663817')
 
-if [ "${CARCH}" = 'x86_64' ]; then _msarch=x64;
-elif [ "${CARCH}" = 'armv7h' ]; then _msarch=arm;
-elif [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64; fi
+if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
+elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
+elif [ "${CARCH}" = 'i686'    ]; then _msarch=x86;
+elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
 
 _srcenv() {
   export NUGET_PACKAGES="${srcdir}/.nuget"
@@ -32,8 +39,9 @@ _srcenv() {
 prepare() {
   _srcenv
   local dotnet_restore_options=(
-    -p:TargetFrameworks="net${_sdk}"
-    -p:RuntimeIdentifiers="linux-${_msarch}" 
+    --runtime "linux-${_msarch}"
+    --locked-mode
+    # --verbosity normal
   )
 
   cd "${srcdir}/${_pkgsrc}"
@@ -44,37 +52,37 @@ prepare() {
         -e 's|<DownloadFFmpeg>true|<DownloadFFmpeg>false|g' \
         -i "{}" +
 
-  dotnet restore ./"${_Name}" "${dotnet_restore_options[@]}"
+  dotnet restore "${dotnet_restore_options[@]}" ./"${_Name}"
 }
 
 build() {
   _srcenv
-  local dotnet_publish_options=(
-    --framework "net${_sdk}"
-    --runtime "linux-${_msarch}"
+    local dotnet_publish_options=(
     --configuration Release
-    --no-self-contained
+    --framework "net${_sdk}"
     --no-restore
     --output build
+    --no-self-contained
+    --runtime "linux-${_msarch}"
+    # --verbosity detailed
+    -p:DebugType=None
+    -p:DebugSymbols=false
     -p:Version="${pkgver%%.[A-Za-z]*}"
-    # -p:PublishTrimmed=true
     -p:CSharpier_Bypass=true
     -p:PublishMacOSBundle=false
   )
 
   cd "${srcdir}"
   gendesk -f -n \
+    --pkgname "${pkgname}" \
+    --pkgdesc "${pkgdesc}" \
     --name "Youtube Downloader" \
     --exec "${_Name}" \
-    --icon "${pkgname}" \
-    --comment "${pkgdesc}" \
-    --categories "AudioVideo;Network;Utility" \
-    "${pkgname}"
+    --categories "AudioVideo;Network;Utility"
 
   cd "${_pkgsrc}"
   dotnet publish "${dotnet_publish_options[@]}" ./"${_Name}"
-
-  find "build" -type f \( -name '*.pdb' -o -name '*.config' \) -delete
+  dotnet build-server shutdown
 }
 
 package() {
@@ -83,7 +91,7 @@ package() {
 
   cd "${_pkgsrc}"
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname}"
-  cp -vaP ./build/* "${pkgdir}/usr/lib/${pkgname}/"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}/usr/lib/${pkgname}"
   ln -vsf "/usr/lib/${pkgname}/${_Name}" "${pkgdir}/usr/bin/${_Name}"
 
   install -vDm644 "Readme.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
