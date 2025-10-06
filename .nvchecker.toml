@@ -1,0 +1,4 @@
+["multi-gitter-bin"]
+source = "git"
+git = "https://github.com/lindell/multi-gitter.git"
+prefix = "v"

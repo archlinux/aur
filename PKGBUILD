@@ -3,7 +3,7 @@
 _pkgauthor=lindell
 _pkgname=multi-gitter
 pkgname=${_pkgname}-bin
-pkgver=0.58.0
+pkgver=0.59.0
 pkgrel=1
 pkgdesc='Update multiple repositories in with one command'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,14 +23,14 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_i386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_ARM64.tar.gz")
 sha256sums=('3b745d0137c549ead584cb8c88f8f5bedf3cbc774891ff8b7382136a5c8672b2'
-            'e580731e8f4e2355fd50046a68484886cbcaaca73680e7d4e6b3a0fd5088b1d9'
+            '2cc852137adfd8a6ba97494a3cc6eef327b18bb7e3a0821fc0ee5113aad7510a'
             'd9c8b4d1b1ffc87aad0ed53e624728c255471df6ed3a9dc1742cf967eaf21f3e'
-            '7f073b81eaec6f74e2ce906fb9537688fd90f03dab13bf10366d5ac090eebaf4'
+            '411366b1de62e72f2ea0c1b5a51683f4cfb11a14933ae4603c67186235034f62'
             '587cc79b24eaa2f1e3070d4d87cdc624126b0321281f83585383508ca12725cd'
             '0b0392358177e2db7a2ae82c5f8b41dba87e32b5498a42c6878716e69369db02')
-sha256sums_x86_64=('3212dc921f8aa3e6908eed23c9ce6244ee89aaeb6736001f790edc482e9bb653')
-sha256sums_i686=('55a757d3141604723fcf989f50d68ec4639e95064e63d40a83121de49a209aa3')
-sha256sums_aarch64=('38a0fc52aebd8f67b2fd9bcc512aaffebfddd4b57748193136319ccf2c1633ea')
+sha256sums_x86_64=('03a6136756a6b7f2a723e6e7c55c49e1decb6bafa088c3f73612031fa1488aed')
+sha256sums_i686=('a500de2a64a250bd7f24b03192ef028445236bad5026f30b11c530f9352e7bec')
+sha256sums_aarch64=('fb61dc8b60239fc93b0caa7489a448c94fa1d1ab3a21b083016cd41023a47141')
 
 package() {
   cd "${srcdir}/" || exit
