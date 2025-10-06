@@ -1,0 +1,15 @@
+pkgbase = grimaur-git
+	pkgdesc = Lightweight AUR helper that uses the official AUR git mirror
+	pkgver = r7.g88ebc08
+	pkgrel = 1
+	url = https://github.com/ryk4rd/grimaur
+	arch = any
+	license = unknown
+	depends = python
+	depends = git
+	provides = grimaur
+	conflicts = grimaur
+	source = git+https://github.com/ryk4rd/grimaur.git
+	sha256sums = SKIP
+
+pkgname = grimaur-git
