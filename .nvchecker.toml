@@ -1,0 +1,4 @@
+["dgop-bin"]
+source = "git"
+git = "https://github.com/AvengeMedia/dgop.git"
+prefix = "v"
