@@ -3,7 +3,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.11.1
-pkgrel=8
+pkgrel=9
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
