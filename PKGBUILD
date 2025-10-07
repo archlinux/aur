@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=httpseal
 pkgname=${_pkgname}-git
-pkgver=r26.g9b74459
+pkgver=r41.gfb79aa8
 pkgrel=1
 pkgdesc="A Linux command-line tool for intercepting and analyzing HTTPS/HTTP traffic from specific processes using namespace isolation and DNS hijacking."
 arch=(x86_64)
