@@ -3,7 +3,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=13
+pkgrel=14
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
