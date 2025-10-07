@@ -1,6 +1,6 @@
 pkgbase = python-nestle
 	pkgdesc = Nested sampling algorithms for evaluating Bayesian evidence
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 3
 	url = http://kylebarbary.com/nestle/
 	arch = any
@@ -8,12 +8,15 @@ pkgbase = python-nestle
 	checkdepends = python-pytest
 	checkdepends = python-scipy
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/n/nestle/nestle-0.2.0.tar.gz
-	source = 0.2.0-runtest.py::https://github.com/kbarbary/nestle/raw/v0.2.0/runtests.py
-	md5sums = 49e14a2fc989ced42db7f0c411162e00
-	md5sums = 5173344e73e9b33ef77d40bbabb729f5
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/n/nestle/nestle-0.2.1.tar.gz
+	source = 0.2.1-runtest.py::https://github.com/kbarbary/nestle/raw/v0.2.1/runtests.py
+	md5sums = 3664c340604d9ac34fbadd86e42bc019
+	md5sums = 48d8310372e774fd0cc8479288ba0284
 
 pkgname = python-nestle
-	depends = python-numpy>=1.6
+	depends = python-numpy>=1.20
 	optdepends = python-scipy
 	optdepends = python-nestle-doc: Documentation for Nestle
