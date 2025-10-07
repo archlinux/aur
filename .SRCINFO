@@ -1,6 +1,6 @@
 pkgbase = python-compressed-tensors
 	pkgdesc = versatile and efficient way to store and manage compressed tensor data
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/neuralmagic/compressed-tensors
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-compressed-tensors
 	depends = python-numpy
 	depends = python-tqdm
 	depends = python-transformers
-	source = python-compressed-tensors-0.12.1.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/0.12.1.tar.gz
-	sha256sums = e28f3a43ad08f00eae0a4e3d4997aee8613bd870842997ea6709700db8e91c7f
+	source = python-compressed-tensors-0.12.2.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/0.12.2.tar.gz
+	sha256sums = fa163decc91818095c72233f679a24665bd93b1cd391f8331db44b6879844bee
 
 pkgname = python-compressed-tensors
