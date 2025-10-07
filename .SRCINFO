@@ -1,11 +1,11 @@
 pkgbase = koyeb-cli-bin
 	pkgdesc = koyeb cli binary
-	pkgver = 5.4.3
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://github.com/koyeb/koyeb-cli
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/koyeb/koyeb-cli/releases/download/v5.4.3/koyeb-cli_5.4.3_linux_amd64.tar.gz
-	sha256sums = 4841163552f8e6facd68a308e78a186f5044391c087e1f681d3cb1eee55ac855
+	source = https://github.com/koyeb/koyeb-cli/releases/download/v5.7.0/koyeb-cli_5.7.0_linux_amd64.tar.gz
+	sha256sums = 7d1185286304264a2dad7a86066e52a079b63bbb67ba03c3bce2af2cc1c7a1a6
 
 pkgname = koyeb-cli-bin
