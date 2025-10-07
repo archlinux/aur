@@ -1,8 +1,8 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=clipvault
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Clipboard history manager for Wayland, inspired by cliphist"
 arch=('x86_64')
 url="https://github.com/rolv-apneseth/clipvault"
@@ -13,7 +13,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f62a0bedf985c41212297b6b456004cf2ed2cf43e065945faf20580fe8e1783972a986eedc03ac7fdf8521df61c42e5ca698fee846e072e605ba8bab2843f255')
+sha512sums=('4fb24144e2cec01f359b604a27a86d14a2944f44262a7f9544de1eba1d86b4b353a12cb0b33128dfcc98d863907671cc96033ef03e8f28f1d98dd6dd6e40fd9e')
 options=(!debug !lto)
 
 prepare()
@@ -35,6 +35,5 @@ package()
 {
     cd "$pkgname-$pkgver" || exit
     install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-    install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
