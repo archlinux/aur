@@ -1,18 +1,19 @@
-# Maintainer: Itamar Shabtai <itamar.shabtai.1@gmail.com>
+# Maintainer: Chase Leinart <chase leinart at proton dot me>
+# Contributor: Itamar Shabtai <itamar.shabtai.1@gmail.com>
 
 pkgname="artix-games-launcher"
-pkgver="2.1.2"
+pkgver="2.20"
 pkgrel=1
 pkgdesc="One app. All your favorite Artix games."
 arch=("x86_64")
 url="https://www.artix.com/downloads/artixlauncher/"
-license=('custom')
+license=('LicenseRef-Proprietary')
 depends=('fuse2')
 options=('!strip')
 source=("https://launch.artix.com/latest/Artix_Games_Launcher-x86_64.AppImage"
         "LICENSE.html::https://www.artix.com/policy-terms")
-sha512sums=('22f89a4cb0d6447f9e6ae46c1929a3e623ef589137fdf71d47d160d41ee9a24ecc0a91bfabc9ab50fcbf3915baa642d706018ab9dd136bdf7d5cfdf7ab5f5536'
-            'SKIP') # Website changes affect the license page's hash
+sha512sums=('35cbe8230f2abaaaa99b5f1861744d469bfe1f28a2d906b8aaed6c8553c2fc282a11fe42cf6ab10d09650dad7c7b988fdf758ef88c2db082fa07e60d936ab683'
+            'SKIP') # Website changes affect the license page's hash'8972f49d2087860853439c7161fcd45744183cc5d26b3b18f080d654888fff117ebca10ac161b6d258d29bb20260a6ad89dd7086652e2ee9c72356f40bc9503a')
 
 prepare() {
 	chmod +x "$srcdir"/Artix_Games_Launcher-x86_64.AppImage
