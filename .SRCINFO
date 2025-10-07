@@ -1,5 +1,5 @@
 pkgbase = superlauncher-mc
-	pkgdesc = SuperLauncherMC - Advanced Minecraft launcher with mod support
+	pkgdesc = SuperLauncherMC — Advanced Minecraft launcher with mod support (bugfix release)
 	pkgver = 1.4.0.8
 	pkgrel = 1
 	url = https://github.com/ludvig2457/SuperLauncherMC
@@ -14,6 +14,6 @@ pkgbase = superlauncher-mc
 	depends = python-packaging
 	depends = java-runtime
 	source = superlauncher-mc-1.4.0.8.tar.gz::file:///home/artem/Downloads/SuperLauncher/superlauncher-mc-1.4.0.8.tar.gz
-	md5sums = fe57ea7a45eadc72bf7cf2e366258fd2
+	sha256sums = SKIP
 
 pkgname = superlauncher-mc

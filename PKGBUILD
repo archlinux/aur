@@ -1,8 +1,9 @@
 # Maintainer: Ludvig <artemludvig79@gmail.com>
+
 pkgname=superlauncher-mc
 pkgver=1.4.0.8
 pkgrel=1
-pkgdesc="SuperLauncherMC - Advanced Minecraft launcher with mod support"
+pkgdesc="SuperLauncherMC — Advanced Minecraft launcher with mod support (bugfix release)"
 arch=('x86_64')
 url="https://github.com/ludvig2457/SuperLauncherMC"
 license=('GPL3')
@@ -16,23 +17,23 @@ depends=(
     'python-packaging'
     'java-runtime'
 )
-source=("$pkgname-$pkgver.tar.gz::file:///home/artem/Downloads/SuperLauncher/superlauncher-mc-1.4.0.8.tar.gz")
-md5sums=('fe57ea7a45eadc72bf7cf2e366258fd2')
+source=(
+    "$pkgname-$pkgver.tar.gz::file:///home/artem/Downloads/SuperLauncher/superlauncher-mc-$pkgver.tar.gz"
+)
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir"
 
-    # Основной файл
+    # Основной исполняемый файл
     install -Dm755 SuperLauncher.py "$pkgdir/usr/bin/superlauncher-mc"
 
     # Ресурсы
     install -d "$pkgdir/usr/share/superlauncher-mc"
     cp -r assets "$pkgdir/usr/share/superlauncher-mc/"
 
-    # === КЛЮЧЕВОЕ ДОБАВЛЕНИЕ ===
-    install -d "$pkgdir/usr/share/applications"
-
     # Desktop-файл
+    install -d "$pkgdir/usr/share/applications"
     cat <<EOF > "$pkgdir/usr/share/applications/superlauncher-mc.desktop"
 [Desktop Entry]
 Name=SuperLauncherMC
