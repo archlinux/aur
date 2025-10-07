@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=5.0.0.1.r1.g16b1c1c
+pkgver=5.0.0.3.r0.g773d12f
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -19,14 +19,6 @@ source=("$pkgname::git+$url.git"
 	"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
 	"miniaudio::git+https://github.com/mackron/miniaudio.git"
 	"sourcepp::git+https://github.com/craftablescience/sourcepp.git"
-	#sourcepp submodules
-	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
-	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
-	"hat-trie::git+https://github.com/Tessil/hat-trie.git"
-	"git+https://github.com/webmproject/libwebp.git"
-	"miniz::git+https://github.com/richgel999/miniz.git"
-	"minizip-ng::git+https://github.com/craftablescience/minizip-ng.git"
-	"git+https://github.com/phoboslab/qoi.git"
 	#discord module
 	"git+https://github.com/Tencent/rapidjson.git")
 sha256sums=('SKIP'
@@ -36,15 +28,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'af1dce846264e0ed075d623f36a66de52189b275290321007841c935a95e8b74')
+            'SKIP')
 
 
 pkgver(){
@@ -65,13 +49,6 @@ prepare() {
 	done
 	git config submodule.src/shared/thirdparty/sourcepp.url "$srcdir/sourcepp"
 	git config submodule.cmake/cmake-helpers.url "$srcdir/cmake-helpers"
-	git -c protocol.file.allow=always submodule update
-
-	cd "$srcdir/$pkgname/ext/shared/sourcepp"
-	git submodule init
-	for submodule in {bufferstream,cryptopp,hat-trie,libwebp,miniz,minizip-ng,qoi}; do
-		git config submodule.ext/${submodule}.url "$srcdir/${submodule}"
-	done
 	git -c protocol.file.allow=always submodule update
 }
 
