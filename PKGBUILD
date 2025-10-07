@@ -22,14 +22,17 @@ md5sums=('fe57ea7a45eadc72bf7cf2e366258fd2')
 package() {
     cd "$srcdir"
 
+    # Основной файл
     install -Dm755 SuperLauncher.py "$pkgdir/usr/bin/superlauncher-mc"
+
+    # Ресурсы
     install -d "$pkgdir/usr/share/superlauncher-mc"
     cp -r assets "$pkgdir/usr/share/superlauncher-mc/"
 
-    # ДОБАВЛЯЕМ ЭТУ СТРОЧКУ ПЕРЕД СОЗДАНИЕМ .desktop ФАЙЛА!
+    # === КЛЮЧЕВОЕ ДОБАВЛЕНИЕ ===
     install -d "$pkgdir/usr/share/applications"
 
-    # Десктоп файл
+    # Desktop-файл
     cat <<EOF > "$pkgdir/usr/share/applications/superlauncher-mc.desktop"
 [Desktop Entry]
 Name=SuperLauncherMC
@@ -41,5 +44,6 @@ Categories=Game;
 Terminal=false
 EOF
 
+    # Иконка
     install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/superlauncher.png"
 }
