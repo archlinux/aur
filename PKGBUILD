@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=proto
-pkgver=0.53.1
+pkgver=0.53.2
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('008e20f9177209421be79ef275d79c8153ed962e4e7f8ba979c387ae4b6d1f26')
+sha256sums=('64f1693eb48f24a793fbd7ea5a156e406ff22e810f1f8803ad441065489151c7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
