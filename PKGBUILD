@@ -12,7 +12,7 @@ pkgver=20250903
 _pkgver=dev-${pkgver}
 _vboxver='7.2.0'
 _vboxsubver=''
-pkgrel=1
+pkgrel=2
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -114,6 +114,7 @@ build() {
         --enable-vde \
         --enable-vnc \
         --enable-webservice \
+        --build-libcurl \
         --with-makeself=/usr/bin/echo
     # fake makeself binary to compile without nofatal
     # makeself is used by linux installer. we don't need it.
