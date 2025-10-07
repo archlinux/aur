@@ -1,4 +1,5 @@
-# Maintainer: ikyope at outlook dot com
+# Maintainer: Serene-Arc <https://aur.archlinux.org/account/serene-arc>
+# Contributor: ikyope at outlook dot com
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=classInt
