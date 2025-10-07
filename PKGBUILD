@@ -1,13 +1,13 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
-pkgname=('git-nautilus-icons')
-pkgver=2.1.0
+pkgname=git-nautilus-icons
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/${pkgname}"
 license=('BSD 2-Clause "Simplified"')
 depends=('python-gobject')
-makedepends=('python-setuptools-scm')
+makedepends=(python-setuptools-scm python-build python-installer python-wheel)
 optdepends=('python-nautilus: nautilus support'
             'nemo-python: nemo support'
             'python-caja: caja support')
@@ -17,20 +17,26 @@ conflicts=("${pkgname}-common"
 replaces=("${pkgname}-common"
            'git-caja-icons'
            'git-nemo-icons')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('369a38db9e7abf38ece6ef1d244d0728320a3bca5790b6a6908859104f0bb3578925dc9227e2d1f728171d259de05ce0c0cbd37bd2804183adc52fabc2ae39d2')
+
+source=(https://github.com/chrisjbillington/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+sha512sums=('fc4b977a5786a6bb97636dde6a103de3555259d7bd11469df35ba77f06033c4c00770ce9d58b4389b17d492baf0f998dffbc1d7094e91a2264737ffc18560a0a')
+
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+    cd "${pkgname}-${pkgver}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_${pkgname//-/_}=${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+    cd "${pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     # compile Python bytecode for modules outside of site-packages:
     python -m compileall -d / "${pkgdir}"/usr/share
     python -O -m compileall -d / "${pkgdir}"/usr/share
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Only small icons are shown in current nautilus - not useful, delete them so the
+    # more detailed ones are used
+    cd "${pkgdir}"/usr/share/icons/hicolor
+    rm -rf 12x12 12x12@2 16x16 16x16@2 8x8 8x8@2
 }
