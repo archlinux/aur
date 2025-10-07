@@ -1,48 +1,53 @@
-# Maintainer:  Daniel Mensinger daniel@mensinger-ka.de
+# Maintainer:
 # Contributor: Daniel Mensinger daniel@mensinger-ka.de
 
-pkgname=libopenglrecorder
-pkgver=0.1.0
-pkgrel=1
-pkgdesc="A library allowing optional async readback OpenGL frame buffer with optional audio recording"
-arch=('i686' 'x86_64')
-url="https://github.com/Benau/libopenglrecorder"
-license=('BSD')
-groups=()
-depends=('libjpeg-turbo' 'libvpx' 'openh264' 'libpulse')
-makedepends=('git' 'cmake' 'make')
-optdepends=()
-provides=('libopenglrecorder')
-install=
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a90a99c23f868636f77003a8dc6ffe6c3699fc2759c47df5dbd44ff8b42d2e4f')
+#: ${_commit=15b1958a073b89cdd01b2532152c6be5f0b93c13} # 0.1.0
+: ${_commit=c1b81ce26e62fae1aaa086b5cd337cb12361ea3d} # 0.1.0.r13
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  [ -d build ] && rm -rf build
-  mkdir build
-}
+_pkgname="libopenglrecorder"
+pkgname="$_pkgname"
+pkgver=0.1.0
+pkgrel=2
+pkgdesc="A library allowing optional async readback OpenGL frame buffer with optional audio recording"
+url="https://github.com/Benau/libopenglrecorder"
+license=('BSD-3-Clause')
+arch=('x86_64' 'i686')
+
+depends=(
+  'libjpeg-turbo'
+  'libpulse'
+  'libvpx'
+  'openh264'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'ninja'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DBUILD_WITH_VPX=ON
+    -DBUILD_WITH_H264=ON
+    -DBUILD_RECORDER_WITH_SOUND=ON
+    -Wno-dev
+  )
 
-  cmake \
-    -DBUILD_SHARED_LIBS=ON          \
-    -DBUILD_WITH_VPX=ON             \
-    -DBUILD_WITH_H264=ON            \
-    -DBUILD_RECORDER_WITH_SOUND=ON  \
-    -DCMAKE_INSTALL_PREFIX=/usr     \
-    -DCMAKE_INSTALL_LIBDIR=lib      \
-    -DCMAKE_BUILD_TYPE=Release      \
-    ..
-
-  make
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
