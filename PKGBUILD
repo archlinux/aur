@@ -2,7 +2,7 @@
 
 pkgname=epubsynth
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line program for generating EPUB documents'
 
 arch=(any)
@@ -25,4 +25,5 @@ build() {
 package() {
     cd ${srcdir}
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 README.md ${pkgdir}/usr/share/doc/epubsynth/README.md
 }
