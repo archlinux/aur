@@ -16,24 +16,24 @@ license=('GPL-3.0')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc')
-optdepends=('elephant-providerlist: providerlist provider'
-            'elephant-desktopapplications: desktopapplications provider'
-            'elephant-archlinuxpkgs: archlinuxpkgs provider'
-            'elephant-calc: calc provider'
-            'elephant-clipboard: clipboard provider'
-            'elephant-files: files provider'
-            'elephant-menus: menus provider'
-            'elephant-runner: runner provider'
-            'elephant-symbols: symbols provider'
-            'elephant-todo: todo provider'
-            'elephant-unicode: unicode provider'
-            'elephant-websearch: websearch provider'
-            'elephant-bluetooth: bluetooth provider')
+depends=("glibc")
+optdepends=("${_pkgname}-providerlist: providerlist provider"
+            "${_pkgname}-desktopapplications: desktopapplications provider"
+            "${_pkgname}-archlinuxpkgs: archlinuxpkgs provider"
+            "${_pkgname}-calc: calc provider"
+            "${_pkgname}-clipboard: clipboard provider"
+            "${_pkgname}-files: files provider"
+            "${_pkgname}-menus: menus provider"
+            "${_pkgname}-runner: runner provider"
+            "${_pkgname}-symbols: symbols provider"
+            "${_pkgname}-todo: todo provider"
+            "${_pkgname}-unicode: unicode provider"
+            "${_pkgname}-websearch: websearch provider"
+            "${_pkgname}-bluetooth: bluetooth provider")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("elephant-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/elephant-linux-${_barch[0]}.tar.gz"
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}.tar.gz"
                "websearch-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/websearch-linux-${_barch[0]}.tar.gz"
                "unicode-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/unicode-linux-${_barch[0]}.tar.gz"
                "todo-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/todo-linux-${_barch[0]}.tar.gz"
@@ -81,7 +81,7 @@ package_elephant-bin() {
 }
 
 package_elephant-websearch-bin() {
-    pkgdesc='websearch provider for elephant'
+    pkgdesc="websearch provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-websearch")
     provides=("${_pkgname}-websearch")
@@ -95,7 +95,7 @@ package_elephant-websearch-bin() {
 }
 
 package_elephant-unicode-bin() {
-    pkgdesc='unicode provider for elephant'
+    pkgdesc="unicode provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-unicode")
     provides=("${_pkgname}-unicode")
@@ -109,7 +109,7 @@ package_elephant-unicode-bin() {
 }
 
 package_elephant-todo-bin() {
-    pkgdesc='todo provider for elephant'
+    pkgdesc="todo provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-todo")
     provides=("${_pkgname}-todo")
@@ -123,7 +123,7 @@ package_elephant-todo-bin() {
 }
 
 package_elephant-symbols-bin() {
-    pkgdesc='symbols provider for elephant'
+    pkgdesc="symbols provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-symbols")
     provides=("${_pkgname}-symbols")
@@ -137,7 +137,7 @@ package_elephant-symbols-bin() {
 }
 
 package_elephant-runner-bin() {
-    pkgdesc='runner provider for elephant'
+    pkgdesc="runner provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-runner")
     provides=("${_pkgname}-runner")
@@ -151,7 +151,7 @@ package_elephant-runner-bin() {
 }
 
 package_elephant-providerlist-bin() {
-    pkgdesc='providerlist provider for elephant'
+    pkgdesc="providerlist provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-providerlist")
     provides=("${_pkgname}-providerlist")
@@ -165,7 +165,7 @@ package_elephant-providerlist-bin() {
 }
 
 package_elephant-menus-bin() {
-    pkgdesc='menus provider for elephant'
+    pkgdesc="menus provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-menus")
     provides=("${_pkgname}-menus")
@@ -179,7 +179,7 @@ package_elephant-menus-bin() {
 }
 
 package_elephant-files-bin() {
-    pkgdesc='files provider for elephant'
+    pkgdesc="files provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-files")
     provides=("${_pkgname}-files")
@@ -193,7 +193,7 @@ package_elephant-files-bin() {
 }
 
 package_elephant-desktopapplications-bin() {
-    pkgdesc='desktopapplications provider for elephant'
+    pkgdesc="desktopapplications provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-desktopapplications")
     provides=("${_pkgname}-desktopapplications")
@@ -207,7 +207,7 @@ package_elephant-desktopapplications-bin() {
 }
 
 package_elephant-clipboard-bin() {
-    pkgdesc='clipboard provider for elephant'
+    pkgdesc="clipboard provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-clipboard")
     provides=("${_pkgname}-clipboard")
@@ -221,7 +221,7 @@ package_elephant-clipboard-bin() {
 }
 
 package_elephant-calc-bin() {
-    pkgdesc='calc provider for elephant'
+    pkgdesc="calc provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-calc")
     provides=("${_pkgname}-calc")
@@ -235,7 +235,7 @@ package_elephant-calc-bin() {
 }
 
 package_elephant-archlinuxpkgs-bin() {
-    pkgdesc='archlinuxpkgs provider for elephant'
+    pkgdesc="archlinuxpkgs provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-archlinuxpkgs")
     provides=("${_pkgname}-archlinuxpkgs")
@@ -249,7 +249,7 @@ package_elephant-archlinuxpkgs-bin() {
 }
 
 package_elephant-bluetooth-bin() {
-    pkgdesc='bluetooth provider for elephant'
+    pkgdesc="bluetooth provider for ${_pkgname}"
 
     conflicts=("${_pkgname}-bluetooth")
     provides=("${_pkgname}-bluetooth")
