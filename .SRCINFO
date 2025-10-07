@@ -1,6 +1,6 @@
 pkgbase = magiskboot-bin
 	pkgdesc = magiskboot binary from magisk offical release
-	pkgver = 28.1
+	pkgver = 29.0
 	pkgrel = 1
 	url = https://github.com/topjohnwu/Magisk
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = magiskboot-bin
 	arch = armv7h
 	license = GPL3
 	makedepends = unzip
+	provides = magiskboot
+	conflicts = magiskboot
 	conflicts = magiskboot-git
-	source = https://github.com/topjohnwu/Magisk/releases/download/v28.1/Magisk-v28.1.apk
-	sha256sums = 8bfd3346b3da5814f82eff6f1b1b5fedd0ad585f39a25709b23eb54aac45691d
+	source = https://github.com/topjohnwu/Magisk/releases/download/v29.0/Magisk-v29.0.apk
+	sha256sums = 99d40df1a68a05a5e78452a9cd4f2d753434d7622baeeb44ea14ae8238c1a9ca
 
 pkgname = magiskboot-bin

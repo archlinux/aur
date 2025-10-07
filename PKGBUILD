@@ -1,7 +1,7 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname='magiskboot-bin'
-pkgver=28.1
+pkgver=29.0
 pkgrel=1
 pkgdesc="magiskboot binary from magisk offical release"
 arch=(
@@ -12,13 +12,14 @@ arch=(
 )
 license=('GPL3')
 url="https://github.com/topjohnwu/Magisk"
-conflicts=('magiskboot-git')
+conflicts=('magiskboot' 'magiskboot-git')
+provides=('magiskboot')
 makedepends=('unzip')
 source=(
    "https://github.com/topjohnwu/Magisk/releases/download/v$pkgver/Magisk-v$pkgver.apk"
 )
 sha256sums=(
-    "8bfd3346b3da5814f82eff6f1b1b5fedd0ad585f39a25709b23eb54aac45691d"
+    "99d40df1a68a05a5e78452a9cd4f2d753434d7622baeeb44ea14ae8238c1a9ca"
 )
 
 package() {
