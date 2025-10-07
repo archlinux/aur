@@ -1,6 +1,6 @@
 pkgbase = r-ggbio
 	pkgdesc = Visualization tools for genomic data
-	pkgver = 1.56.0
+	pkgver = 1.56.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ggbio
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = r-ggbio
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm9.knowngene
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggbio_1.56.0.tar.gz
-	sha256sums = 3cddf3eb522621c38633bf8e13379e63f00314d42fc78ec813902b9030e3b6ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggbio_1.56.1.tar.gz
+	sha256sums = e8cee342fa612918b3c7ce743cfd82e143d1fee2e137f1c370866687cea8c9ff
 
 pkgname = r-ggbio
