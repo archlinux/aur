@@ -7,7 +7,7 @@ options=('!debug')
 pkgdesc="Framework 12 rotation application for Hyprland on Arch-based systems"
 arch=('x86_64')
 url="https://github.com/2disbetter/FW12Rotate"
-license=('unknown')
+license=('MIT')
 depends=('bash' 'inotify-tools' 'iio-sensor-proxy')
 optdepends=('hyprland: required for intended use')
 makedepends=('git' 'gcc')
@@ -22,14 +22,14 @@ pkgver() {
 
 build() {
   cd FW12Rotate
-  g++ fw12rotate.cpp -o fw12rotate  # Compile the Linux-specific source; add flags if needed (e.g., -std=c++11)
+  g++ fw12rotate.cpp -o FW12Rotate  # Compile the Linux-specific source; add flags if needed (e.g., -std=c++11)
 }
 
 package() {
   cd FW12Rotate
-  install -Dm755 fw12rotate "${pkgdir}/usr/bin/fw12rotate"
+  install -Dm755 FW12Rotate "${pkgdir}/usr/bin/fw12rotate"
   install -Dm755 toggle-rotation.sh "${pkgdir}/usr/share/${pkgname}/toggle-rotation.sh"
   # Optional: If you want to include a copy of the .install file
-  # install -Dm644 "${startdir}/fw12rotate-git.install" "${pkgdir}/usr/share/${pkgname}/fw12rotate-git.install"
+  install -Dm644 "${startdir}/fw12rotate-git.install" "${pkgdir}/usr/share/${pkgname}/fw12rotate-git.install"
 }
 
