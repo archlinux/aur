@@ -1,6 +1,6 @@
 # Maintainer: kallisti5 <alex at terarocket dot io>
 pkgname=go-foks
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="CLI for Federated Open Key Service"
 arch=(x86_64 armv7h aarch64)
@@ -11,7 +11,7 @@ makedepends=(go)
 options=('!lto')
 
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/foks-proj/${pkgname}/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('7953caf67cdcbe960a3a76443e4999d7fc4bab3b722abac7895907e5cea4c07b')
+sha256sums=('36f7518603a6eff99ee277798242d4d513be47928c2734c94350202c8a2dbeb1')
 
 prepare() {
     cd $pkgname-$pkgver
