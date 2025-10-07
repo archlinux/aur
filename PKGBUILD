@@ -2,7 +2,7 @@
 # Contributor: Stevezxc <stevezhou586 at gmail dot com>
 pkgname=gnome-shell-extension-gjs-osk-git
 _uuid=gjsosk@vishram1123.com
-pkgver=r205.900ccf6
+pkgver=r224.c360c13
 pkgrel=1
 pkgdesc="A (marginally) better on screen keyboard for GNOME 45+."
 arch=('any')
