@@ -3,7 +3,7 @@
 
 pkgname=python-unitypy-git
 _pkgname=UnityPy
-pkgver=r636.3659815
+pkgver=r738.3be629f
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -22,7 +22,6 @@ depends=(
   'python-etcpak-git'
   'python-tabulate'
   'python-astc-encoder-py-git'
-  'execstack'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
@@ -38,7 +37,7 @@ pkgver() {
 check() {
   cd ${_pkgname}
   export LANG=En_US.UTF-8
-  execstack -c "${srcdir}/${_pkgname}/${_pkgname}/lib/FMOD/Linux/${CARCH}/libfmod.so"
+  # execstack -c "${srcdir}/${_pkgname}/${_pkgname}/lib/FMOD/Linux/${CARCH}/libfmod.so"
   pytest -v --cov || true
 }
 
