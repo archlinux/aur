@@ -1,0 +1,24 @@
+pkgbase = tuxnix-sway
+	pkgdesc = Sway configuration of tuxnix
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/tuxnix/tuxnix-sway
+	arch = any
+	license = GLPv2-only
+	makedepends = git
+	depends = alacritty
+	depends = bemenu
+	depends = foot
+	depends = sway
+	depends = qt6ct
+	depends = waybar
+	source = git+https://codeberg.org/tuxnix/tuxnix-sway
+	sha256sums = e93f9a98d97b347381fe0836f993fe55bab51363ec640959f356920d5546f15b
+	sha256sums = 81c7020b8b9f9f6493b420ea0c91749602ddd761c47cc264ccc967355b6bf415
+	sha256sums = b1666f07807acc1e1baa1f2368b1f3298be7d670205b46e64c1db052aa093a5f
+	sha256sums = 8f739b409796e49022ce8d96b65c3b5c004c31efba1110f1b578a2b3f7e3a03b
+	sha256sums = ba93dfcc4136b9a91f329a11de9d698bdc0e6f564247ec20f0c2b9fef5532ceb
+	sha256sums = aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3
+	sha512sums = SKIP
+
+pkgname = tuxnix-sway
