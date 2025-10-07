@@ -1,36 +1,32 @@
-# Creator: Liberty Raptor <libertyraptor at protonmail dot com>
-# Maintainer: Liberty Raptor <libertyraptor@protonmail.com>
+# Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
+# Contributor: Liberty Raptor <libertyraptor at protonmail dot com>
 
 pkgname=xemu-bin
-pkgver=0.8.67
+pkgver=0.8.106
 pkgrel=1
-pkgdesc="Original Xbox Emulator"
-arch=('x86_64')
-url='https://xemu.app/'
-license=('GPLv2')
-provides=('xemu' 'xemu-bin')
+pkgdesc="Emulator for the original Xbox console"
+arch=(x86_64)
+url='https://xemu.app'
+license=('GPL-2.0-only')
+provides=('xemu')
 conflicts=('xemu' 'xemu-git')
-options=('!strip')
-makedepends=('gendesk')
-noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.8.67/xemu-v0.8.67-x86_64.AppImage")
-sha256sums=('2f49d5f41e5f6e7c1e30781b2f009f3039a883bed6bb49978733c9ffd3d1ba9c')
+source=(xemu-$pkgver.AppImage::https://github.com/xemu-project/xemu/releases/download/v$pkgver/xemu-v$pkgver-x86_64.AppImage)
+sha256sums=('ec7645c3a17426cb5ad995288fe3063a48d61470393e07675c865b73b564f2d9')
+
+prepare() {
+  # Extract files from AppImage (only if exists, in case of using '--noextract').
+  if [ -e xemu-$pkgver.AppImage ]; then
+    chmod 755 xemu-$pkgver.AppImage
+    ./xemu-$pkgver.AppImage --appimage-extract
+    rm -f xemu-$pkgver.AppImage
+  fi
+}
 
 package() {
-  chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
-  ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 squashfs-root/${pkgname%-bin}.svg "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
-  gendesk -f -n --pkgname "${pkgname%-bin}" \
-          --pkgdesc "$pkgdesc" \
-          --name "xemu" \
-          --comment "$pkgdesc" \
-          --exec "${pkgname%-bin}" \
-          --categories 'Utility;Game;Application' \
-          --icon "${pkgname%-bin}"
-  install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt"
-  cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
-  ln -s "/opt/${pkgname%-bin}/AppRun" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
+  mkdir -p "$pkgdir"/{opt/xemu,usr/bin}
+  cp -a  "$srcdir"/squashfs-root/usr/{bin,lib} -t "$pkgdir"/opt/xemu/
+  ln -sr "$pkgdir"/opt/xemu/bin/xemu           -t "$pkgdir"/usr/bin/
+
+  install -Dm644 "$srcdir"/squashfs-root/usr/share/applications/xemu.desktop            -t "$pkgdir"/usr/share/applications/
+  install -Dm644 "$srcdir"/squashfs-root/usr/share/icons/hicolor/scalable/apps/xemu.svg -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
 }
