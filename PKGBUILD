@@ -3,7 +3,7 @@
 pkgname=superlauncher-mc
 pkgver=1.4.0.8
 pkgrel=1
-pkgdesc="SuperLauncherMC — Advanced Minecraft launcher with mod support (bugfix release)"
+pkgdesc="SuperLauncherMC — Advanced Minecraft launcher with mod and server support (bugfix release)"
 arch=('x86_64')
 url="https://github.com/ludvig2457/SuperLauncherMC"
 license=('GPL3')
@@ -15,6 +15,8 @@ depends=(
     'python-psutil'
     'python-pypresence'
     'python-packaging'
+    'python-tqdm'
+    'python-random-username'
     'java-runtime'
 )
 source=(
@@ -37,7 +39,7 @@ package() {
     cat <<EOF > "$pkgdir/usr/share/applications/superlauncher-mc.desktop"
 [Desktop Entry]
 Name=SuperLauncherMC
-Comment=Minecraft Launcher
+Comment=Advanced Minecraft Launcher with mod support
 Exec=/usr/bin/superlauncher-mc
 Icon=superlauncher
 Type=Application
