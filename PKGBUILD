@@ -12,13 +12,12 @@ depends=(
 	blas
 	lapack
 	cython
+	hdf5
 )
 makedepends=(
 	git
 	eigen
 	netcdf
-	hdf5
-	python-setuptools
 	"glibc>=2.34"
 	cmake
 	patch
@@ -44,9 +43,8 @@ build() {
 					  -DBUILD_SHARED_LIBS=ON \
 					  -DBUILD_SHARED_LIBS=ON \
 					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
-					  -DHDF5_INCLUDE_DIR=/usr/include \
-					  -DHDF5_LIBRARIES=/usr/lib/libhdf5.so \
-					  -DHDF5_NO_FIND_PACKAGE_CONFIG=ON  
+					  -DHDF5_INCLUDE_DIRS=/usr/include \
+					  -DHDF5_LIBRARIES=/usr/lib/libhdf5.so 
 
 	_ccores=$(nproc)
 	# check if _ccores is a positive integer, if not, serial build

@@ -8,8 +8,6 @@ pkgbase = moab-git
 	makedepends = git
 	makedepends = eigen
 	makedepends = netcdf
-	makedepends = hdf5
-	makedepends = python-setuptools
 	makedepends = glibc>=2.34
 	makedepends = cmake
 	makedepends = patch
@@ -17,6 +15,7 @@ pkgbase = moab-git
 	depends = blas
 	depends = lapack
 	depends = cython
+	depends = hdf5
 	provides = moab-git
 	conflicts = moab
 	source = moab-git::git+https://bitbucket.org/fathomteam/moab.git
