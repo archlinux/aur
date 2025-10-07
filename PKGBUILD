@@ -1,29 +1,34 @@
-# Maintainer: Samarthya Lykamanuella <lykamanuella@tutanota.de>
-
-pkgname=freeshow-bin
-pkgver=1.2.9
+# Maintainer: eltonff <https://github.com/eltonfabricio10/>
+_pkgname=freeshow
+pkgname=${_pkgname}-bin
+pkgver=1.5.0
 pkgrel=1
-_debname="FreeShow-$pkgver-amd64"
-pkgdesc="FreeShow is a free and open-source, user-friendly presenter software. It is a powerful church app alternative to EasyWorship and ProPresenter."
-provides=(freeshow)
-
+pkgdesc="FreeShow is a free and open-source, user-friendly presenter software."
+arch=("x86_64")
 url="https://github.com/ChurchApps/FreeShow"
-license=("GPL3")
+license=("GNU Lesser General Public License v3.0")
+provides=("$_pkgname")
+conflicts=("$_pkgname" "freeshow-git")
+depends=("gtk3"
+         "libnotify"
+         "nss"
+         "libxss"
+         "libxtst"
+         "xdg-utils"
+         "at-spi2-core"
+         "util-linux-libs"
+         "libsecret")
+optdepends=("libappindicator-gtk3")
+source_x86_64=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/${provides}-${pkgver}-amd64.deb")
+sha256sums_x86_64=('fdcd9e64f9f5ce6f87037fdb9b51d370d8090b8e8c84c28ecc98543dfd96319c')
 
-arch=('x86_64')
-source=("$_debname.deb::https://github.com/ChurchApps/FreeShow/releases/download/v$pkgver/$_debname.deb")
+install=${pkgname}.install
 
-sha256sums=('8566c870d8c512b508b891ecf4d16ff4dbaed0109fb0f7146fc83779a7acc3da')
-
-prepare(){
-    cd $srcdir
-    tar -xf data.tar.xz
+prepare() {
+  bsdtar xf data.tar.xz
 }
 
 package() {
-    cd $srcdir
-    mv usr $pkgdir/
-    mv opt $pkgdir/
-    mkdir $pkgdir/usr/bin
-    ln -s /opt/FreeShow/freeshow $pkgdir/usr/bin/freeshow
+  mv opt "$pkgdir"
+  mv usr "$pkgdir"
 }

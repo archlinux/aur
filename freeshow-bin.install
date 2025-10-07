@@ -1,0 +1,57 @@
+post_install() {
+  echo ">>> Installing FreeShow..."
+
+  ln -sf /opt/FreeShow/FreeShow /usr/bin/FreeShow
+
+  if ! { [[ -L /proc/self/ns/user ]] && unshare --user true; }; then
+    chmod 4755 /opt/FreeShow/chrome-sandbox || true
+  else
+    chmod 0755 /opt/FreeShow/chrome-sandbox || true
+  fi
+
+  if command -v update-mime-database >/dev/null 2>&1; then
+    update-mime-database /usr/share/mime || true
+  fi
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database /usr/share/applications || true
+  fi
+
+  if command -v apparmor_status >/dev/null 2>&1 && apparmor_status --enabled >/dev/null 2>&1; then
+    APPARMOR_PROFILE_SOURCE='/opt/FreeShow/resources/apparmor-profile'
+    APPARMOR_PROFILE_TARGET='/etc/apparmor.d/FreeShow'
+    if apparmor_parser --skip-kernel-load --debug "$APPARMOR_PROFILE_SOURCE" >/dev/null 2>&1; then
+      cp -f "$APPARMOR_PROFILE_SOURCE" "$APPARMOR_PROFILE_TARGET"
+      if ! { [ -x '/usr/bin/ischroot' ] && /usr/bin/ischroot; } && command -v apparmor_parser >/dev/null 2>&1; then
+        apparmor_parser --replace --write-cache --skip-read-cache "$APPARMOR_PROFILE_TARGET"
+      fi
+    else
+      echo ">>> Error AppArmor!"
+    fi
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ">>> Uninstalling FreeShow..."
+}
+
+post_remove() {
+  rm -f /usr/bin/FreeShow
+
+  if command -v update-mime-database >/dev/null 2>&1; then
+    update-mime-database /usr/share/mime || true
+  fi
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database /usr/share/applications || true
+  fi
+
+  APPARMOR_PROFILE_DEST='/etc/apparmor.d/FreeShow'
+  if [ -f "$APPARMOR_PROFILE_DEST" ]; then
+    rm -f "$APPARMOR_PROFILE_DEST"
+  fi
+}
