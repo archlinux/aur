@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=libeconf
-pkgver=0.7.4
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Enhanced config file parser, which merges config files placed in several locations into one."
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=(meson)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openSUSE/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4174ca94e958cbb6c8bb4ea9e6909877d6178e00b6a65349eade64a462534da0')
+sha256sums=('e8fee300cbbae11287d2682d185d946a1ffbd23bf02b4f97d68f2df34d8de07f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
