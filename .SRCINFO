@@ -1,9 +1,10 @@
 pkgbase = garage-consul
 	pkgdesc = A S3-compatible distributed object storage service tailored for self-hosting (with consul)
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://garagehq.deuxfleurs.fr/
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = rust

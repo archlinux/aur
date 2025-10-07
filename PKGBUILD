@@ -3,9 +3,9 @@
 
 pkgname=garage-consul
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A S3-compatible distributed object storage service tailored for self-hosting (with consul)'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://garagehq.deuxfleurs.fr/'
 license=(AGPL-3.0-only)
 conflicts=('garage')
