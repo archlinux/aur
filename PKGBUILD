@@ -80,17 +80,17 @@ prepare() {
 package() {
     cd "${srcdir}" || exit 1
 
-    install -Dm755 walker -t "${pkgdir}/usr/bin"
+    install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd "${srcdir}/config" || exit 1
-    install -Dm644 config.toml -t "${pkgdir}/etc/xdg/walker"
+    install -Dm644 config.toml -t "${pkgdir}/etc/xdg/"${_pkgname}""
 
     cd "${srcdir}/themes" || exit 1
     for theme in ./*; do
-        install -Dm644 ${theme} -t "${pkgdir}/etc/xdg/walker/themes/default"
+        install -Dm644 ${theme} -t "${pkgdir}/etc/xdg/"${_pkgname}"/themes/default"
     done
 }
