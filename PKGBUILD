@@ -1,6 +1,6 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=ruffle-nightly-bin
-pkgver=2025.10.4
+pkgver=2025.10.7
 pkgrel=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('Apache' 'MIT')
 depends=(zlib libxcb alsa-lib)
 provides=(ruffle)
 conflicts=(ruffle)
-source_x86_64=("https://github.com/ruffle-rs/ruffle/releases/download/nightly-2025-10-04/ruffle-nightly-2025_10_04-linux-x86_64.tar.gz")
-source_aarch64=("https://github.com/ruffle-rs/ruffle/releases/download/nightly-2025-10-04/ruffle-nightly-2025_10_04-linux-aarch64.tar.gz")
-sha512sums_x86_64=(529990c8a872523319d8c390fe2eca72264a0791f374f0a52a48ef98a8f45925eff3dbd4e02de51a9c9e55689322312bb30004eb5175d6e239cc4540935dc149)
-sha512sums_aarch64=(95c2bd18053d79b36ee35fa8a85668d17e403e0620eb2abfcb87e51dccac17455d65cb5326f791427645a8081236e7cd24e30828ee42346293040eda71d620a9)
+source_x86_64=("https://github.com/ruffle-rs/ruffle/releases/download/nightly-2025-10-07/ruffle-nightly-2025_10_07-linux-x86_64.tar.gz")
+source_aarch64=("https://github.com/ruffle-rs/ruffle/releases/download/nightly-2025-10-07/ruffle-nightly-2025_10_07-linux-aarch64.tar.gz")
+sha512sums_x86_64=(61508e0a72c76cd03d6ce78b75ca36ab6719d7bed42011e24ea0594475b1e14685a764dda8e198536fcd63dc9cce97d26bdafa509ca36ff27b7302f65ee64a98)
+sha512sums_aarch64=(b8c437a62d8370f89d87b12dc4e64477143ef4127122555181da4023d008c65e4d35d5b060372d5ce5e236f0914ce64ace2159a488d7790dcf241a3120652847)
 
 package() {
 	cd "$srcdir/"
