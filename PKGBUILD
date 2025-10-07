@@ -1,22 +1,22 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=dagmc-git
-pkgver=stable.r0.gb001729e
+pkgver=v3.2.4.r52.ga435d064
 pkgrel=1
 pkgdesc="Direct Accelerated Geometry Monte Carlo (DAGMC) is a software package 
-		 that allows users to perform Monte Carlo radiation transport directly 
-		 on CAD models."
+                 that allows users to perform Monte Carlo radiation transport directly 
+                 on CAD models."
 arch=('x86_64')
 url="https://github.com/svalinn/DAGMC"
 license=('BSD')
 
 depends=(
-	double-down-git
-	moab-git
+        double-down-git
+        moab-git
 )
 makedepends=(
-	git
-	python
-	cmake
+        git
+        python
+        cmake
 )
 
 provides=("${pkgname%}")
@@ -29,26 +29,26 @@ pkgver() {
 md5sums=('SKIP')
 
 build() {
-	cd $srcdir/$pkgname
-	mkdir build && cd build
-	cmake .. -DBUILD_TALLY=ON \
-	         -DMOAB_DIR=/opt/MOAB \
-	         -DDOUBLE_DOWN=ON \
-	         -DBUILD_STATIC_EXE=OFF \
-	         -DBUILD_STATIC_LIBS=OFF \
-	         -DCMAKE_INSTALL_PREFIX=/opt/DAGMC \
-	         -DDOUBLE_DOWN_DIR=/opt/double-down/lib/cmake/dd
-	_ccores=$(nproc)
-	# check if _ccores is a positive integer, if not, serial build
-	if [[ "${_ccores}" =~ ^[1-9][0-9]*$ ]]; then
-		make -j ${_ccores}
-	else
-		make
-	fi
+        cd $srcdir/$pkgname
+        mkdir build && cd build
+        cmake .. -DBUILD_TALLY=ON \
+                 -DMOAB_DIR=/opt/MOAB \
+                 -DDOUBLE_DOWN=ON \
+                 -DBUILD_STATIC_EXE=OFF \
+                 -DBUILD_STATIC_LIBS=OFF \
+                 -DCMAKE_INSTALL_PREFIX=/opt/DAGMC \
+                 -DDOUBLE_DOWN_DIR=/opt/double-down/lib/cmake/dd \
+                 -DCMAKE_CXX_FLAGS="-I/usr/include/eigen3"
+        _ccores=$(nproc)
+        # check if _ccores is a positive integer, if not, serial build
+        if [[ "${_ccores}" =~ ^[1-9][0-9]*$ ]]; then
+                make -j ${_ccores}
+        else
+                make
+        fi
 }
 
 package() {
-	cd $srcdir/$pkgname/build
-	make DESTDIR="$pkgdir/" install
+        cd $srcdir/$pkgname/build
+        make DESTDIR="$pkgdir/" install
 }
-

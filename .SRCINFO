@@ -1,6 +1,6 @@
 pkgbase = dagmc-git
 	pkgdesc = Direct Accelerated Geometry Monte Carlo (DAGMC) is a software package that allows users to perform Monte Carlo radiation transport directly on CAD models.
-	pkgver = stable.r0.gb001729e
+	pkgver = v3.2.4.r52.ga435d064
 	pkgrel = 1
 	url = https://github.com/svalinn/DAGMC
 	arch = x86_64
