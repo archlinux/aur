@@ -2,9 +2,9 @@
 # PKGBUILD Originally by: Joan Figueras <ffigue at gmail dot com>
 
 krnname=linux-bazzite
-pkgver="6.16.4.115" # 6.13.7.103
-fedver="6.16.4-115.bazzite.fc42.x86_64" # 6.13.7-103-bazzite.fc41.x86_64
-relver="6.16.4-115" # 6.13.7-103
+pkgver="6.17.1.ba04" # 6.13.7.103
+fedver="6.17.1-ba04.fc43.x86_64" # 6.13.7-103-bazzite.fc41.x86_64
+relver="6.17.1-ba04" # 6.13.7-103
 
 pkgname=${krnname}-bin
 pkgrel=1
@@ -26,16 +26,18 @@ source=("${url}/releases/download/${relver}/kernel-core-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-core-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-extra-${fedver}.rpm"
+        "${url}/releases/download/${relver}/kernel-modules-akmods-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-internal-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-devel-${fedver}.rpm")
 #        "kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
 
-sha256sums=('c5696e40ac9a569c0525c7ab1dbbc192cfe9a70ad08673616c198f3a940b5062'
-            '924167b6262dd9b07621a5c60816c7bf07da35313faca74cf086484c332e9fa2'
-            '805650a1281d13c48c31a5b8ae1058bcdcf0d4eac5a7779731bf7c939845388b'
-            'e464509757bed919ef03f35e9ac207e7cfc1988e81fd74ebbeb6ab1463fa1e9a'
-            '9b96cd3a549009bf37ec04f09210f7852bdbca0f8e4650040df8c2bb5f52b25e'
-            '26e4235385de3efadf21fc8c3e02eaf0dda3a4d65f0970c1dfcf4b03d13aa857')
+sha256sums=('4b56057fe2f2c7343b8fdbfcd678967a7865c63fc35f329ff2542e8d84cf5d46'
+            '7f03adc6ba8d7218acacdc21943ebbc46a8d485e31b7cb4a52cfc8f0e58d158a'
+            '2244efc5f81b812c47c8a8dd21e01bb53732711eb1e497983b19a0a510d8b6eb'
+            'd6085142f865356f7e554deb1fa58088b7cc593eadbd21451ff3dbe45a75b4d0'
+            '9fde22f7de0328250eba2e39207539398e2f469fc3434b114b38b611a1d21647'
+            '3b6a83a0101d67e7cda5ccbd73fb0161b4240f04baae14e1db117ec9ad20c6e2'
+            'b09044b4c6c5dafc73b2a6d0496b765942507f4cb4106595ee83e7ac82d2d292')
 
 package() {
   local srcmodulesdir="${srcdir}/lib/modules/${fedver}"
