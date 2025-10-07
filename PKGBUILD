@@ -3,7 +3,7 @@
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
 url="https://www.cgl.ucsf.edu/chimerax/"
@@ -15,10 +15,10 @@ source=(LICENSE chimerax.desktop)
 sha256sums=('4361604379b11e73ad942144ef84aaf479815f80265f98fed9879f3c82e3aa8d'
             'caa99276e5afccf36af41892d223fd1698cdf87a190f1abf1a751b2cf114c4fb')
 
-_major=$(echo ${pkgver} | awk -F. '{ if (NF >= 2) { print $1 "." $2 } else print $1 }')
+# _major=$(echo ${pkgver} | awk -F. '{ if (NF >= 2) { print $1 "." $2 } else print $1 }')
 _source=https://www.rbvi.ucsf.edu/chimerax/cgi-bin/secure/chimerax-get.py
 _file=ChimeraX-${pkgver}.flatpak
-_filepath=${_major}/flatpak/${_file}
+_filepath=${pkgver}/flatpak/${_file}
 
 prepare() {
 	cd "${srcdir}"
