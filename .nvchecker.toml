@@ -1,0 +1,5 @@
+["resterm-bin"]
+source = "github"
+github = "unkn0wn-root/resterm"
+use_latest_release = true
+prefix = "v"
