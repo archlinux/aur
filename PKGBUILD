@@ -2,8 +2,8 @@
 
 pkgname=snow-git
 groups=(snow-lang-git)
-pkgver=0.11.0.r0.g7300562
-pkgrel=3
+pkgver=0.11.0.r6.g2f0ecfc
+pkgrel=1
 _java=25
 pkgdesc="AI-friendly programming language inspired by the LLM era. Its design goal is to make it easier for LLMs to generate and understand programming code."
 arch=($CARCH)
@@ -65,4 +65,16 @@ package() {
     cp -R playground/* "${pkgdir}/usr/share/${pkgname%-git}"
     install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 docs/README/IMG/icon/IMG_Snow.svg "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/application-x-snow.svg"
+    install -Dm0644 /dev/stdin ${pkgdir}/usr/share/mime/packages/application-x-snow.xml <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-snow">
+        <comment>Snow source code</comment>
+        <comment xml:lang="zh_CN">Snow 语言源代码</comment>
+        <glob pattern="*.snow"/>
+        <icon name="application-x-snow"/>
+    </mime-type>
+</mime-info>
+EOF
 }
