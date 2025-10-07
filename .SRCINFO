@@ -1,6 +1,6 @@
 pkgbase = double-down-git
 	pkgdesc = double-down: A double precision interface to Embree
-	pkgver = v1.0.0.r8.g74ab1f9
+	pkgver = list.r8.g9b07377
 	pkgrel = 1
 	url = https://github.com/pshriwise/double-down
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = double-down-git
 	depends = embree
 	provides = double-down-git
 	source = double-down-git::git+https://github.com/pshriwise/double-down.git
+	source = cmake_version_bump.patch
 	md5sums = SKIP
+	md5sums = af216e7b598b147a2ed60f832e7e8a2a
 
 pkgname = double-down-git

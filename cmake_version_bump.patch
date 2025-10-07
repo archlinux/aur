@@ -1,0 +1,9 @@
+diff -ura double-down-git.orig/CMakeLists.txt double-down-git.new/CMakeLists.txt
+--- double-down-git.orig/CMakeLists.txt	2025-10-07 08:12:57.093806247 +0000
++++ double-down-git.new/CMakeLists.txt	2025-10-07 08:14:35.984848324 +0000
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.5)
+ project( DBLDOWN )
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
