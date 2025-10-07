@@ -1,4 +1,3 @@
-# See: /usr/share/doc/mpd/mpdconf.example
 # Systemd runs mpd as user mpd.
 # Make sure mpd can access all directories here.
 
@@ -25,21 +24,15 @@ state_file "/var/lib/mpd/mpdstate"
 # Uncomment to refresh the database whenever files in the music_directory are changed
 #auto_update "yes"
 
-# Example config for native DSD
-
+# ALSA no longer needs to be told about DSD. Previous confs still work though.
 # Use aplay -l to find your hw: setting. (card number, subdevice...usually 0)
-# Note: This can change if you've got a USB DAC...so careful.
+# Note: This can change if you've got a USB DAC...so careful. 
 
 #audio_output {
 #	type "alsa"
 #   # Name is just an identifier and doesn't have to match device
 #	name "TWENTY-TWO POINT FIVE-SEVEN MEGAHERTZ!"
 #	device "hw:3,0"
-#	# Enable native DSD playback
-#   dsd_native "yes"
-#   # Native DSD Format Type:
-#   #   1: DSD_U8 (Botic driver)
-#   #   2: DSD_U32_BE (XMOS, try first)
-#   #   3: DSD_U32_LE (Botic)
-#	dsd_native_type "2"
+#	# Only enable if you need DOP.
+#	dop "yes"
 #}
