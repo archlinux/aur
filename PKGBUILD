@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 source_x86_64=("-linux-x64-${pkgver}.deb::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.20-alpha2/linux-amd64.deb")
 source_aarch64=("-linux-arm64-${pkgver}.deb::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.20-alpha2/linux-arm64.deb")
 
-sha256sums_x86_64=('ccf0796786d08ec4d7ead82bf837bb1bd4c6b64e2e19ac8544dc05553069378a')
-sha256sums_aarch64=('9d5c48909d8c750fe9d9d6923342eda133e847a4f72c19b89694f40114010e3e')
+sha256sums_x86_64=('b3e7c20fadc478cc3974e484098323c8ffeb2584c2a6bdc6f28480db54c56ab2')
+sha256sums_aarch64=('cd4c13d3e26c1113ef51ef59792e8d56e0668db8995470defbd2b0b619b5fb35')
 
 package() {
   local _deb_file
