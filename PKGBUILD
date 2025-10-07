@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc' 'libffi')
 makedepends=('cargo' 'clang')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uiua-lang/uiua/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('ac8bdb28ce6c376890f599e1963d2711b13671db6b173cc01cb06561eb45887e9a6d18d8f51440f07291b3fc65e7db2eefd0144aa0925b02ca14e649f3e1d24d')
+b2sums=('285bca6aaa91387cbed9e936c1fd5a9b82e8271c2b609c525d4a6c5ff6d49e73117d9539c77f59ef972097360209d265f0d9976d3ee18437fc9cef99da7fd412')
 options=(!lto)
 
 prepare() {
