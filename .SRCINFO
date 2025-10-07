@@ -1,6 +1,6 @@
 pkgbase = moor
 	pkgdesc = A pager designed to just do the right thing without any configuration.
-	pkgver = 2.3.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/walles/moor
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = moor
 	conflicts = moar
 	conflicts = moar-bin
 	conflicts = moar-git
-	source = moor-2.3.0.tar.gz::https://github.com/walles/moor/archive/v2.3.0.tar.gz
-	sha256sums = 6a5b501e36edea4fed6b34f27734ba1208ba8a101cf1b78d869c940d9fa69d63
+	source = moor-2.5.0.tar.gz::https://github.com/walles/moor/archive/v2.5.0.tar.gz
+	sha256sums = 1255f622811554d81c285deeeb9de5b4eef867014ebef55d7c076b6dfaf8c00e
 
 pkgname = moor
