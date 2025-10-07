@@ -24,7 +24,7 @@ pkgbase = spyder-notebook
 	depends = python-tornado
 	depends = jupyter-notebook
 	depends = python-jupyter-client
-	source = https://files.pythonhosted.org/packages/8c/d0/776da6c0f1f5b3902674e47e1e4addc7803cdde61389dd7bb4210a983df9/spyder_notebook-0.6.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/spyder_notebook/spyder_notebook-0.6.2.tar.gz
 	sha256sums = c9a5ceb96077cc87f820df55fd03cab7ad31ab691387a0ca76f0e117d7cd04cc
 
 pkgname = spyder-notebook

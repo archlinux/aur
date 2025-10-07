@@ -17,7 +17,7 @@ license=('MIT')
 depends=('python' 'spyder' 'jupyter-nbformat' 'python-pytest' 'python-traitlets' 'jupyter-server' 'python-requests' 'python-qtpy' 'python-jupyter-core' 'python-qdarkstyle' 'python-qstylizer' 'python-psutil' 'python-tornado' j'upyter-notebook' 'python-jupyter-client')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/8c/d0/776da6c0f1f5b3902674e47e1e4addc7803cdde61389dd7bb4210a983df9/${_pypi_package//-/_}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 sha256sums=('c9a5ceb96077cc87f820df55fd03cab7ad31ab691387a0ca76f0e117d7cd04cc')
 
 
