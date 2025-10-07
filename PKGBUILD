@@ -1,5 +1,5 @@
 pkgname=dyad-bin
-pkgver=0.21.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Free, local, open-source AI app builder | v0 / lovable / Bolt alternative"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/dyad-sh/dyad"
 license=('Apache')
 depends=('libsecret' 'webkit2gtk' 'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils')
 source=("https://github.com/dyad-sh/dyad/releases/download/v${pkgver}/dyad_${pkgver}_amd64.deb")
-sha256sums=('127546c7d7834551e66a1f9c45ded5e6d3c96363e61549af8d2268305b18f0b5')
+sha256sums=('b0a6b2fe985fbb588d1a4e365f820f231dd522f7c6fa6bc0fbec457c4eff4b3b')
 
 package() {
   cd "$srcdir"
