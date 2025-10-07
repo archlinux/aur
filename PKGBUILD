@@ -19,17 +19,14 @@ makedepends=('mingw-w64-gcc'
              'mingw-w64-environment'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
-source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc}
-        https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-openssl/001-support-aarch64.patch)
+source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
 sha256sums=('b6a5f44b7eb69e3fa35dbf15524405b44837a481d43d81daddde3ff21fcbb8e9'
-            'SKIP'
-            '21b96771b401442570e885c2d5689a359a91e86dcbf5511db3667202b6c1fa8a')
+            'SKIP')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
 
 prepare() {
   cd openssl-${_pkgver}
-  patch -Nbp1 -i ../001-support-aarch64.patch
 }
 
 build() {
