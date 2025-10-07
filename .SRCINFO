@@ -1,7 +1,7 @@
 pkgbase = calibrate-joystick
-	pkgdesc = A tool to calibrate joysticks on Linux systems
+	pkgdesc = A graphical program to quickly calibrate range and deadzones of joysticks.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkosmari/calibrate-joystick/
 	arch = x86_64
 	license = GPL-3.0-or-later

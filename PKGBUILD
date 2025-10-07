@@ -1,8 +1,8 @@
 # Maintainer: Luke Featherston <lukefeatherston1223 at gmail dot com>
 pkgname=calibrate-joystick
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="A tool to calibrate joysticks on Linux systems"
+pkgrel=2
+pkgdesc="A graphical program to quickly calibrate range and deadzones of joysticks."
 arch=('x86_64')
 url="https://github.com/dkosmari/calibrate-joystick/"
 license=('GPL-3.0-or-later')
