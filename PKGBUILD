@@ -1,8 +1,8 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=rusty-psn-cli-git
 _pkgname=rusty-psn
-pkgver=0.5.0.r1.ga227494
-pkgrel=2
+pkgver=0.5.9.r6.gec3c959
+pkgrel=1
 provides=('rusty-psn')
 conflicts=('rusty-psn-bin')
 replaces=('rusty-psn-bin')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release --features "cli"
+  cargo build --release --no-default-features --features "cli"
 }
 
 package() {
