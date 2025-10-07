@@ -1,10 +1,11 @@
 ALL_OFF="$(tput sgr0)"
-YELLOW="${BOLD}$(tput setaf 3)"
-WHITE="${BOLD}$(tput setaf 7)"
+BOLD="$(tput bold)"
+YELLOW="$(tput setaf 3)"
+WHITE="$(tput setaf 7)"
 
 _warning_root() {
   local _warning="sunshine has full root access"
-  printf "${YELLOW}WARNING: ${WHITE}%s${ALL_OFF}\n" "$_warning"
+  printf "${BOLD}${YELLOW}WARNING: ${WHITE}%s${ALL_OFF}\n" "$_warning"
 }
 
 do_setcap() {
