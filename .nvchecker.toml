@@ -1,0 +1,3 @@
+[spyder-terminal]
+source = "pypi"
+pypi = "spyder-terminal"

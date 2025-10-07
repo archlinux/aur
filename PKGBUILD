@@ -17,7 +17,7 @@ license=('MIT')
 depends=('python' 'spyder' 'python-terminado' 'python-qstylizer' 'python-qtpy' 'python-tornado' 'python-requests' 'python-coloredlogs' 'python-pexpect' 'nodejs')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/00/fe/a89d18983b9f7d881fa16089b418b7febfb9e1a2ea8f5a0ce39e59474859/${_pypi_package}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package}-${pkgver}.tar.gz"
         "spyder_6.patch")
 sha256sums=('34235070276a0cb255a5c371cbef076a355059a8a8c71fa9805df229ea0335da'
             'f4e8dafbd82fb651ba0f7b5e10fd447fee5baad04033b3bab6ee4043536eb7be')
