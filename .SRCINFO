@@ -1,6 +1,6 @@
 pkgbase = clock-rs-git
 	pkgdesc = A clock for your terminal! (git version)
-	pkgver = r87.gfbc15ac
+	pkgver = r102.g76b94cb
 	pkgrel = 1
 	url = https://github.com/Oughie/clock-rs
 	arch = any

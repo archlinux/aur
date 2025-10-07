@@ -2,7 +2,7 @@
 
 _pkgname=clock-rs
 pkgname="$_pkgname-git"
-pkgver=r87.gfbc15ac
+pkgver=r102.g76b94cb
 pkgrel=1
 pkgdesc="A clock for your terminal! (git version)"
 arch=(any)
@@ -13,9 +13,7 @@ conflicts=(clock-rs)
 source=(
   "git+$url.git"
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit
