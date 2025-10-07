@@ -10,14 +10,11 @@ license=('GPL3')
 depends=(
     'python'
     'python-pyqt6'
-    'python-minecraft-launcher-lib'
-    'python-requests'
-    'python-psutil'
-    'python-pypresence'
-    'python-packaging'
-    'python-tqdm'
-    'python-random-username'
     'java-runtime'
+)
+makedepends=(
+    'python-pip'
+    'python-virtualenv'
 )
 source=(
     "$pkgname-$pkgver.tar.gz::file:///home/artem/Downloads/SuperLauncher/superlauncher-mc-$pkgver.tar.gz"
@@ -27,17 +24,26 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir"
 
-    # Добавляем шебанг для python3, если его нет
-    if ! head -n 1 SuperLauncher.py | grep -q "#!/usr/bin/env python3"; then
-        sed -i '1i#!/usr/bin/env python3' SuperLauncher.py
-    fi
-
-    # Основной исполняемый файл
-    install -Dm755 SuperLauncher.py "$pkgdir/usr/bin/superlauncher-mc"
-
-    # Ресурсы
+    # Установка директории для лаунчера
     install -d "$pkgdir/usr/share/superlauncher-mc"
-    cp -r assets "$pkgdir/usr/share/superlauncher-mc/"
+    cp -r SuperLauncher.py assets "$pkgdir/usr/share/superlauncher-mc/"
+
+    # Создаём virtual environment
+    python -m venv "$pkgdir/usr/share/superlauncher-mc/venv"
+
+    # Устанавливаем нужные библиотеки в venv
+    "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install --upgrade pip
+    "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install \
+        minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
+
+    # Создаём wrapper для запуска через venv
+    cat <<EOF > "$pkgdir/usr/bin/superlauncher-mc"
+#!/bin/bash
+DIR="/usr/share/superlauncher-mc"
+source "\$DIR/venv/bin/activate"
+exec python "\$DIR/SuperLauncher.py" "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/superlauncher-mc"
 
     # Desktop-файл
     install -d "$pkgdir/usr/share/applications"
