@@ -4,12 +4,12 @@
 pkgname=ffdiaporama
 _pkgdir="ffDiaporama"
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc='application for creating video sequences consisting of photos, movies, music'
 arch=(x86_64)
 url=http://ffdiaporama.tuxfamily.org
 license=(GPL2)
-depends=('ffmpeg2.1' 'sdl' 'sdl_mixer' 'qt5-base' 'qt5-tools' 'qt5-svg' 'sqlite' 'qt5-imageformats' 'exiv2' 'taglib')
+depends=('ffmpeg2.1' 'sdl' 'sdl_mixer' 'qt6-base' 'qt6-tools' 'qt6-svg' 'sqlite' 'exiv2' 'taglib')
 provides=(
 
 )
@@ -18,11 +18,11 @@ makedepends=(
 )
 #http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
 source=('https://sourceforge.net/projects/ffdiaporama/files/ffdiaporama_bin_2.1.2014.0209.tar.gz'
-        'patchfile.patch'
         'exiv2_0-28_fix.patch'
+        'ffdiaporama_2.1-1.diff.gz'
         )
 md5sums=('f9f46277153cf49f6947973778516adb'
-         '6269400e6c9805f57ddb0202035cc7c7'
+         'SKIP'
          'SKIP'
          )
 
@@ -31,8 +31,12 @@ options=('debug')
 prepare() {
   #cd "$pkgname-pkgver"
   cd "$_pkgdir"
-  patch --forward --strip=1 --input="${srcdir}/patchfile.patch"
+  pwd
+  echo "${srcdir}"
+  #patch --forward --strip=1 --input="${srcdir}/patchfile.patch"
   patch --forward --strip=1 --input="${srcdir}/exiv2_0-28_fix.patch"
+  patch --forward --strip=1 --input="${srcdir}/ffdiaporama_2.1-1.diff"
+  #patch -p1 < "${srcdir}/ffdiaporama_2.1-1.diff"
   #patch ${srcdir}/ffDiaporama/src/ffDiaporama/wgt_QMultimediaBrowser/QCustomFolderTable.cpp ${startdir}/patchfile.patch
 }
 
@@ -41,7 +45,7 @@ build() {
   export LD_LIBRARY_PATH
   cd "$_pkgdir"
   sed -i 's@GTK;GNOME;Qt;KDE;AudioVideo;@AudioVideo;Player;X-Red-Hat-Base;@g' ffDiaporama.desktop
-  qmake-qt5 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /opt/include/ffmpeg2.1 /opt/include' 'LIBPATH += /opt/lib/ffmpeg2.1 /opt/lib' ffDiaporama.pro PREFIX=/usr
+  qmake6 'QMAKE_CFLAGS_ISYSTEM=-I' 'INCLUDEPATH += /opt/include/ffmpeg2.1 /opt/include' 'LIBPATH += /opt/lib/ffmpeg2.1 /opt/lib' ffDiaporama.pro PREFIX=/usr
   
   make "-j$(nproc)" || return 1
 }
