@@ -1,7 +1,7 @@
 pkgbase = python-desktop-notifier
 	pkgdesc = Python library for cross-platform desktop notifications
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.1.1
+	pkgrel = 1
 	url = https://github.com/SamSchott/desktop-notifier
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = python-desktop-notifier
 	depends = python-charset-normalizer
 	depends = python-dbus-fast
 	depends = python-packaging
-	source = python-desktop-notifier-6.0.0.tar.gz::https://github.com/SamSchott/desktop-notifier/archive/v6.0.0.tar.gz
-	sha256sums = b0604b1b92e6b5d74d943c43a125769a8258cc82347590637001b65eff1e1ba9
+	source = python-desktop-notifier-6.1.1.tar.gz::https://github.com/SamSchott/desktop-notifier/archive/v6.1.1.tar.gz
+	sha256sums = 60b1eef6edb645ce48eb89fa8ef955e6c0aa34787808247587acc16c281fe871
 
 pkgname = python-desktop-notifier
