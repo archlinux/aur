@@ -3,7 +3,7 @@
 _sdk=8.0
 _Name="PixiEditor"
 pkgname="${_Name,,}"
-pkgver=2.0.1.14
+pkgver=2.0.1.16
 pkgrel=1
 pkgdesc="All-in-one solution for 2D image editing"
 arch=('aarch64' 'x86_64')
@@ -17,25 +17,25 @@ depends=(
 )
 makedepends=(
   "dotnet-sdk-${_sdk}"
-  "dotnet-sdk>=${_sdk}.19.sdk405"
+  "dotnet-sdk>=${_sdk}.20.sdk405"
 )
 options=('!strip' '!debug')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
-        "${_Name}.desktop")
-b2sums=('fb0dd6f2022f3be2da461950931d2ef0daef03282a4e25cb150b06785e9f7cae58d69756a7995f840a76a1d949bb85008c832e717ac1f963b569ca4044bd0256'
+        "${pkgname}.desktop")
+b2sums=('1e372756767f0b29b87772db1d1de3ed0c9b85dac1cf7a1c0cb32d9aee088057df33a639487d7f6040f7bee832faaa76f7ee5013a22063d8573874ae563f9d29'
         'b9be9f4a0b1ad75b01ebc6a6b57966df3343f0de09ee7ffde3f05dfba140fc6c0e638573c863fad8a77b359039ac3aaba875650226b5df9fa3ec05ba9686fdd0'
-        '144fbda5eb66bc2f0265d1f1a5a4f5b31479e11d6a61aca6021a4d8a448fea8890c7f5691df29d978d7008dd086b9ee095aabfe4617fa0b45468bdaf059409d1'
-        '55eecc42c8f80dd625103ec059c66f79b1dded25084dacf97f451f8e78a0f810d27ce29408b2de7d8b670a6138e81ccc291890901f2e047a24fddb11d36c930f'
+        'bc927eb22e51f9340c9cf5011ddf9a8e2e401e7ec52a25e115e3ba9a777811522d7cab5cc120a47255ace864cc06f58ad49a75a569e25a0108597633bac41f75'
+        'e92f39010f436d4800e8cef8bc12fa17b1a43b7faed63bf22f35475085f384f0e820edf4fc955d7441f45db022bc2fa64c4d95478fef45eec63e52dda3f058a6'
         'a65a5d3e647578ca1fdb01a2695cbb86fec8aadce56806691bb9c83348b23456cde5b26338c955a32c1516ecdcb159c8e2cbb90bc7572ce59b7be49bde9b2f5e'
-        '92b281570a8560f6f80288be019d68fd851b255114f1c57ddac37d7fcb70396fb75f0dd6100c1685a53406faf3b5c2a466bd0e5a8463b8faa05aa8783e5379e2')
+        '2b7aad88f7cc2f5af373b83431d6b4c4a5b61f2443d1585a414c4d986d74d582fc11184849b6d06d3c09d3fb29a8ab265a526cc986833c827113af923528316c')
 
 declare -rAg _modules_name_map=(
   # PixiEditor
-  [src/PixiDocks]=https://github.com/PixiEditor/PixiDocks/archive/6e745d0309ad7a00a53f62f2aa362be77903a5fd.tar.gz
+  [src/PixiDocks]=https://github.com/PixiEditor/PixiDocks/archive/1604a0bb1fdf1d0016bfc82752c85b3266bed2c2.tar.gz
   [src/PixiParser]=https://github.com/PixiEditor/PixiParser/archive/d7a83f53f4a0e6a0e0d011cb045ab1f2075e759b.tar.gz
-  [src/Drawie]=https://github.com/PixiEditor/Drawie/archive/b6c34c96ac5b01abad69604465445270270270d2.tar.gz
-  [src/ColorPicker]=https://github.com/PixiEditor/ColorPicker/archive/943e9abbb60b73c4965b947e987dc2696e0b08f8.tar.gz
+  [src/Drawie]=https://github.com/PixiEditor/Drawie/archive/b3b3a342c4b9d188de984ecefd4a9f8d020d6d4c.tar.gz
+  [src/ColorPicker]=https://github.com/PixiEditor/ColorPicker/archive/61055feed27354e6be969055fc0ee5db3c7d3b94.tar.gz
 )
 
 _get_source_name_string() {
@@ -194,11 +194,11 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -vDm644 "${_Name}.desktop" "${pkgdir}/usr/share/applications/${_Name}.desktop"
+  install -vDm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_Name}.desktop"
 
   cd "${_pkgsrc}"
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname}"
-  cp -vaP build/* "${pkgdir}/usr/lib/${pkgname}/"
+  cp -vaT --no-preserve=ownership ./"build" "${pkgdir}/usr/lib/${pkgname}"
   ln -vsf "/usr/lib/${pkgname}/${_Name}.Desktop" "${pkgdir}/usr/bin/${pkgname}"
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
