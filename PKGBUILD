@@ -5,7 +5,7 @@
 pkgname=kwin-x11
 pkgver=6.4.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -78,6 +78,11 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1'  # Nicolas Fella <nicolas.fella@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
+prepare() {
+# Fix doc build with libxml2 2.15
+  find -name index.docbook | xargs sed -e 's|url=" http|url="http|g' -i
+}
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
