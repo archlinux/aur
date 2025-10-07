@@ -1,0 +1,4 @@
+[termshot]
+source = "git"
+git = "https://github.com/homeport/termshot.git"
+prefix = "v"
