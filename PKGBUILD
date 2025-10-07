@@ -18,10 +18,10 @@
 
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=20
+pkgrel=21
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
-arch=('i686' 'x86_64' 'armv7' 'aarch64' 'armv6h' 'armv7h')
-license=('GPL')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
+license=('GPL-2.0-or-later')
 url="https://wiki.debian.org/sSMTP"
 depends=('openssl' 'inetutils')
 makedepends=('systemd') # Needed for sysusers.d to create the 'mail' group
