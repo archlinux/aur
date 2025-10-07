@@ -13,8 +13,6 @@ optdepends=('hyprland: required for intended use')
 makedepends=('git' 'gcc')
 source=("git+${url}.git")
 sha256sums=('SKIP')
-# No install script is required for this package
-# install=fw12rotate-git.install   <-- commented out / removed
 
 # --------------------------------------------------------------------
 # Generate a version string based on the git commit count / hash
@@ -32,7 +30,7 @@ build() {
 package() {
     cd FW12Rotate
     # Install the compiled binary
-    install -Dm755 FW12Rotate "${pkgdir}/usr/local/bin/fw12rotate"
+    install -Dm755 FW12Rotate "${pkgdir}/usr/local/bin/FW12Rotate"
 
     # Install the helper script (assumes the file exists in the repo)
     install -Dm755 toggle-rotation.sh "${pkgdir}/usr/share/${pkgname}/toggle-rotation.sh"
