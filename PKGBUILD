@@ -37,6 +37,7 @@ depends=(
 	python-cad_to_openmc
     hdf5
 	python-setuptools-scm
+	python-endf
 )
 makedepends=(
     cmake

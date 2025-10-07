@@ -32,6 +32,7 @@ pkgbase = openmc-git
 	depends = python-cad_to_openmc
 	depends = hdf5
 	depends = python-setuptools-scm
+	depends = python-endf
 	provides = openmc-git
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
 	source = openmc.sh
