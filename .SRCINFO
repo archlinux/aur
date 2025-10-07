@@ -1,6 +1,6 @@
 pkgbase = zp-cpp
 	pkgdesc = C++ utility and Vulkan abstraction library
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/zacharypepin/zp_cpp
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = zp-cpp
 	depends = openssl
 	depends = enet
 	options = !lto
-	source = zp-cpp-0.13.0.tar.gz::https://github.com/zacharypepin/zp_cpp/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = 89642ca1292f23ab5f256e1b81011ee07298b5265627af1e395e6478c056954c
+	source = zp-cpp-0.14.0.tar.gz::https://github.com/zacharypepin/zp_cpp/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = 8d4e9342ef1af066edf97171624daa4d53122efa8e0c0bb6a6d45b754f181439
 
 pkgname = zp-cpp
