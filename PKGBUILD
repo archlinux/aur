@@ -4,7 +4,7 @@ pkgname=fish-foreign-env-git
 _pkgname="${pkgname%-git}"
 _repo="plugin-foreign-env"
 pkgver=r43.7f0cf09
-pkgrel=1
+pkgrel=2
 pkgdesc="Run foreign bash scripts and capture exported environment variables"
 arch=('any')
 url="https://github.com/oh-my-fish/plugin-foreign-env"
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
     cd "${_repo}"
-    find functions -type f -exec install -Dm 755 '{}' "${pkgdir}/etc/fish/{}" \;
+    find functions -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/fish/{}" \;
     install -Dm755 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }

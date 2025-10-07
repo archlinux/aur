@@ -1,7 +1,7 @@
 pkgbase = fish-foreign-env-git
 	pkgdesc = Run foreign bash scripts and capture exported environment variables
 	pkgver = r43.7f0cf09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oh-my-fish/plugin-foreign-env
 	arch = any
 	license = MIT
