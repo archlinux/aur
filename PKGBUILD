@@ -41,12 +41,11 @@ package() {
     "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install \
         minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
 
-    # Создаём wrapper для запуска через venv
+    # Создаём wrapper для запуска через venv напрямую
     cat <<'EOF' > "$pkgdir/usr/bin/superlauncher-mc"
 #!/bin/bash
 DIR="/usr/share/superlauncher-mc"
-source "$DIR/venv/bin/activate"
-exec python "$DIR/SuperLauncher.py" "$@"
+exec "$DIR/venv/bin/python" "$DIR/SuperLauncher.py" "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/superlauncher-mc"
 
