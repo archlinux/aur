@@ -1,19 +1,19 @@
-# Maintainer: eggbertx <joshuamerrell at gmail dot com>
+# Maintainer: eggbertx <eggbertxdev at gmail dot com>
 # Previous maintainer: Felix Golatofski <contact at xdfr dot de>
 # Contributor: michaelchou <michaeljchou at the hotmail domain which is .com>
 # Contributor: enihcam <nanericwang at the google email domain which is .com>
 
 pkgname=chakracore
 pkgver=1.11.24
-pkgrel=1
+pkgrel=2
 pkgdesc='ChakraCore is an open source Javascript engine with a C API'
 arch=('x86_64')
 url='https://github.com/chakra-core/ChakraCore'
 license=('MIT')
 depends=('icu')
-makedepends=('cmake' 'clang' 'python2')
+makedepends=('cmake' 'clang')
 provides=('libChakraCore.so' 'ch')
-conflicts=('chakracore-git' 'chakracore-bin')
+conflicts=('chakracore-bin')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/chakra-core/ChakraCore/archive/v${pkgver}.tar.gz"
 )
@@ -23,8 +23,8 @@ _dir="ChakraCore-${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
-  ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y
-  ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y --static
+  ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1,CMAKE_POLICY_VERSION_MINIMUM=3.5 -y
+  ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1,CMAKE_POLICY_VERSION_MINIMUM=3.5 -y --static
 }
 
 package() {
