@@ -6,8 +6,8 @@
 # Contributor: jiornojiovanni <gianni00palmieri at gmail dot com>
 
 pkgname=libtcod
-pkgver=2.1.1
-pkgrel=5
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
 url="https://github.com/libtcod/libtcod"
@@ -19,21 +19,13 @@ changelog=CHANGELOG.md
 source=(
   "https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz"
   '001-fix-install-config-pt1.patch'
-  '002-fix-install-config-pt2.patch'
-  '003-fix-glibc-2.42-compilation.patch'
 )
-sha256sums=(
-  'ee9cc60140f480f72cb2321d5aa50beeaa829b0a4a651e8a37e2ba938ea23caa'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('5eb8e30d937840986c11c7baa22ffa93252aa4ac1824fe2c5fa1d760b3496a8e'
+            'SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/001-fix-install-config-pt1.patch"
-  patch -Np1 -i "${srcdir}/002-fix-install-config-pt2.patch"
-  patch -Np1 -i "${srcdir}/003-fix-glibc-2.42-compilation.patch"
 }
 
 build() {
