@@ -10,7 +10,7 @@ declare -r _version_frequi="2.0.8"
 readonly _pkgname="freqtrade"
 
 pkgname="python-freqtrade"
-pkgver="2025.9"
+pkgver="2025.9.1"
 pkgrel="1"
 pkgdesc="Free, open source crypto trading bot."
 arch=("any")
@@ -23,7 +23,7 @@ checkdepends=(
 conflicts=("python-freqtrade-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "frequi-v${_version_frequi}.zip::https://github.com/freqtrade/frequi/releases/download/${_version_frequi}/freqUI.zip")
-sha512sums=("9fad737206206d2c9ff1f475a4df78d0aa5caf5804982850e9f1773e36e2366232ea14a90d754a45a1b2243443d6f26dd97062c0ebee334318efe28501232ccc"
+sha512sums=("362d1f76bc6632f1f311280559f6024cbbb33901c4ad3c18d0df4c99b774d387f1293bb8eb29837737808a04ac11eedc9808a43b8c29232f4f0f4e4fc035c13a"
     "71c2355b447f713628d679b13dfd59bb99f60e2c117cce76fb52baaaa28033899e52d5b8a0fdcf875cc2fd683cd34b8d97be70ce0c7714ec9b04a270de13b12b")
 
 build()
