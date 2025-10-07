@@ -2,8 +2,8 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.13.1'
-pkgrel=2
+pkgver='3.13.2'
+pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -46,4 +46,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('4d194e42797317f951419b166b85804257655b7d24cfae6fb21ac3e8fdbd673c')
+sha256sums=('5cbb9f0de8b3b68d5c017d15c64ad20aa3cece95b034aa1aa02cd13d39237850')
