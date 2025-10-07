@@ -1,0 +1,4 @@
+[linux-syscall-support]
+source = "git"
+git = "https://chromium.googlesource.com/linux-syscall-support.git"
+prefix = "v"
