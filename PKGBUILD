@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=watchman
-pkgver=2025.09.29.00
+pkgver=2025.10.06.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
@@ -46,15 +46,13 @@ source=(
   "watchman.json"
   "watchman.service"
   "watchman.socket"
-  "fix-link-pathutils.patch"
 )
-sha256sums=('24640e2ba975cd70b2185a731f52dc8181920bb61d494a4fc1dcf54e9160fa85'
+sha256sums=('f89ee74c9ffbb3de3dfaa07d9696c21dee17b10a87bace44155c729477729dbe'
             'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
             '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
             'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
             '5b4b032b68d87d648e268c5c08b4d56993d5c1a661e3925b39f54bdef2dfbc42'
-            '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a'
-            '30f8cb002208e7e4a19a419d2db4ff2e9a8141f53f6a027f6cefd2c4ca11a39e')
+            '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -63,7 +61,6 @@ prepare() {
   # v0.7.0+
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
-  patch -Np1 -i ../fix-link-pathutils.patch
 }
 
 build() {
