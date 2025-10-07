@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd FW12Rotate
-  install -Dm755 FW12Rotate "${pkgdir}/usr/bin/fw12rotate"
+  install -Dm755 FW12Rotate "${pkgdir}/usr/local/bin/fw12rotate"
   install -Dm755 toggle-rotation.sh "${pkgdir}/usr/share/${pkgname}/toggle-rotation.sh"
   # Optional: If you want to include a copy of the .install file
   install -Dm644 "${startdir}/fw12rotate-git.install" "${pkgdir}/usr/share/${pkgname}/fw12rotate-git.install"
