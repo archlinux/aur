@@ -1,22 +1,21 @@
 pkgbase = flclash-bin
 	pkgdesc = A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.
 	pkgver = 0.8.89
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chen08209/FlClash
-	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = libayatana-appindicator
+	depends = ayatana-ido
+	depends = libdbusmenu-glib
 	depends = libkeybinder3
 	provides = flclash=0.8.89
 	conflicts = flclash
-	source = danxi.pkg.tar.zst::https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/x86_64/danxi-1.4.9-1-x86_64.pkg.tar.zst
 	source = flclash.sh
-	sha256sums = 5d221028ad7f6901f47d4507ee710db7e754966e29bbca4c79b35f9916ff6e67
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = flclash-0.8.89-aarch64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.89/FlClash-0.8.89-linux-arm64.deb
-	sha256sums_aarch64 = b250a118058cadd5d3dde417f38c439c5d535ae0597a145be235d6cdcbf4e325
 	source_x86_64 = flclash-0.8.89-x86_64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.89/FlClash-0.8.89-linux-amd64.deb
+	source_x86_64 = https://gist.githubusercontent.com/dongfengweixiao/bbddee34d6456326200fac3463761296/raw/c18484d78449d0e3b376a6e2a49852486305ff1e/libquickjs_c_bridge_plugin.so.base64
 	sha256sums_x86_64 = f75a00f3023a7c6a6f0c3491ff28a60f011613a923d115ca3617aaf2daafb559
+	sha256sums_x86_64 = 367033ae3a8bd11f37e398f38c5de0acd8985b62b93b966eb43648fba6bd9094
 
 pkgname = flclash-bin
