@@ -3,7 +3,7 @@
 pkgname=superlauncher-mc
 pkgver=1.4.0.8
 pkgrel=1
-pkgdesc="SuperLauncherMC — Advanced Minecraft launcher with mod and server support (bugfix release)"
+pkgdesc="SuperLauncherMC — Advanced Minecraft launcher with mod and server support (new design release)"
 arch=('x86_64')
 url="https://github.com/ludvig2457/SuperLauncherMC"
 license=('GPL3')
@@ -27,6 +27,11 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir"
 
+    # Добавляем шебанг для python3, если его нет
+    if ! head -n 1 SuperLauncher.py | grep -q "#!/usr/bin/env python3"; then
+        sed -i '1i#!/usr/bin/env python3' SuperLauncher.py
+    fi
+
     # Основной исполняемый файл
     install -Dm755 SuperLauncher.py "$pkgdir/usr/bin/superlauncher-mc"
 
@@ -39,7 +44,7 @@ package() {
     cat <<EOF > "$pkgdir/usr/share/applications/superlauncher-mc.desktop"
 [Desktop Entry]
 Name=SuperLauncherMC
-Comment=Advanced Minecraft Launcher with mod support
+Comment=Advanced Minecraft Launcher with mod and server support
 Exec=/usr/bin/superlauncher-mc
 Icon=superlauncher
 Type=Application
