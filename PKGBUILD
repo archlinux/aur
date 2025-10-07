@@ -1,6 +1,6 @@
 # Maintainer: Sckab <giulianodeamicis2009@gmail.com>
 pkgname=dinfo
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A simple program that gives you informations about a file/directory, support .yaml and .json output"
 arch=('x86_64')
