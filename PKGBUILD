@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=citron
 pkgname=citron-git
-pkgver=0.7.0.r20.g42bc6b7
+pkgver=0.7.1.r103.g996237f
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -15,7 +15,6 @@ optdepends=('gamemode: Gamemoded support')
 conflicts=('citron')
 options=(!debug)
 source=(citron::git+https://git.citron-emu.org/citron/emulator.git
-	moc.diff
         cubeb::git+https://github.com/mozilla/cubeb.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
         discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
@@ -72,7 +71,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  patch -Rp1 < "$srcdir/moc.diff"
+  #patch -Rp1 < "$srcdir/moc.diff"
   git rm -f externals/SDL
   git rm -f externals/ffmpeg/ffmpeg
   git rm -f externals/enet
@@ -145,7 +144,6 @@ build() {
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
     -DCITRON_USE_BUNDLED_QT=ON \
-    -DENABLE_QT6=ON \
     -DCITRON_USE_BUNDLED_FFMPEG=OFF \
     -DCITRON_USE_EXTERNAL_VULKAN_HEADERS=OFF \
     -DCITRON_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \

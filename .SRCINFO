@@ -1,6 +1,6 @@
 pkgbase = citron-git
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
-	pkgver = 0.7.0.r20.g42bc6b7
+	pkgver = 0.7.1.r103.g996237f
 	pkgrel = 1
 	url = https://citron-emu.org
 	arch = x86_64
@@ -44,7 +44,6 @@ pkgbase = citron-git
 	conflicts = citron
 	options = !debug
 	source = citron::git+https://git.citron-emu.org/citron/emulator.git
-	source = moc.diff
 	source = cubeb::git+https://github.com/mozilla/cubeb.git
 	source = dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
 	source = discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
