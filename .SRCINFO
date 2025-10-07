@@ -1,6 +1,6 @@
 pkgbase = maestral
 	pkgdesc = A light-weight and open-source Dropbox client
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = maestral
 	depends = python-xattr
 	optdepends = maestral-qt: Qt interface for the maestral daemon
 	optdepends = python-systemd: Syslog support
-	source = maestral-1.9.4.tar.gz::https://github.com/SamSchott/maestral/archive/v1.9.4.tar.gz
-	sha256sums = bb03ff59418a35786ef1c5a5ac0c66bb67390fdab8ebee011f1f8ba151677789
+	source = maestral-1.9.5.tar.gz::https://github.com/SamSchott/maestral/archive/v1.9.5.tar.gz
+	sha256sums = d7fb6774097de9bb84f0111a02b951f390d8ae5604f5e42f687a704aed0c0933
 
 pkgname = maestral

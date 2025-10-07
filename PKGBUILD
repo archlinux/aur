@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=maestral
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client'
 arch=('any')
@@ -39,7 +39,7 @@ checkdepends=('python-pytest')
 optdepends=('maestral-qt: Qt interface for the maestral daemon'
             'python-systemd: Syslog support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bb03ff59418a35786ef1c5a5ac0c66bb67390fdab8ebee011f1f8ba151677789')
+sha256sums=('d7fb6774097de9bb84f0111a02b951f390d8ae5604f5e42f687a704aed0c0933')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -48,10 +48,10 @@ build() {
 	sphinx-build -b man ./ ./_build/man/
 }
 
-#check() {
-#	cd "$pkgname-$pkgver"
-#	PYTHONPATH=src/ pytest -k 'not test_autostart and not benchmark' -x --disable-warnings
-#}
+check() {
+	cd "$pkgname-$pkgver"
+	PYTHONPATH=src/ pytest -k 'not test_autostart and not benchmark' -x --disable-warnings
+}
 
 package() {
 	cd "$pkgname-$pkgver"
