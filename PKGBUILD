@@ -14,7 +14,7 @@ depends=('upower')
 install=conservation-daemon.install
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.marcorealacci.me/marcorealacci/conservation-daemon/releases/download/v0.0.1/conservation-daemon_0.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('5a7a42c4d08be082ac214bb27936aeb82e9afbc4527d47ee4f155ffae6ece3b5')
+sha256sums_x86_64=('57d41581f7b55df3a60e9c1643b5c9a08bb5dbb62e3d4f6c8f1ced8a4f7852bd')
 
 package() {
   install -Dm755 "./conservationd" "${pkgdir}/usr/bin/conservationd"
