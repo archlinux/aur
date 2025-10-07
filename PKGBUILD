@@ -1,35 +1,37 @@
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Lily Anatia Wilson <hotaru@thinkindifferent.net>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=openssl
-pkgver=3.5.1
+_pkgname=openssl
+pkgname="$_pkgname-aegis"
+pkgver=3.6.0
 pkgrel=1
-pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+pkgdesc='OpenSSL with AEGIS cipher support added'
 arch=('x86_64')
-url='https://www.openssl.org'
+url="https://github.com/aegis-aead/$_pkgname"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('perl')
 optdepends=('ca-certificates' 'perl')
 replaces=('openssl-perl' 'openssl-doc')
-provides=('libcrypto.so' 'libssl.so')
+provides=("openssl=$pkgver" 'libcrypto.so' 'libssl.so')
+conflicts=('openssl')
 backup=('etc/ssl/openssl.cnf')
-source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("$url/archive/refs/heads/$_pkgname-$pkgver-aegis.zip"
         'ca-dir.patch')
-sha256sums=('529043b15cffa5f36077a4d0af83f3de399807181d607441d734196d889b641f'
-            'SKIP'
+sha256sums=('12a3811e619bef5a2f9ed2ed5a3e885a16e643f9ab70383570cdcc151aac7e09'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$_pkgname-$pkgver-aegis"
 
 	# set ca dir to /etc/ssl by default
 	patch -Np1 -i "$srcdir/ca-dir.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$_pkgname-$pkgver-aegis"
 
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
 		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH}
@@ -39,7 +41,7 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgbase-$pkgver"
+	cd "$srcdir/$_pkgname-$_pkgname-$pkgver-aegis"
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
@@ -53,7 +55,7 @@ check() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$_pkgname-$pkgver-aegis"
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 

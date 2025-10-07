@@ -1,26 +1,26 @@
-pkgbase = openssl
-	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
-	pkgver = 3.5.1
+pkgbase = openssl-aegis
+	pkgdesc = OpenSSL with AEGIS cipher support added
+	pkgver = 3.6.0
 	pkgrel = 1
-	url = https://www.openssl.org
+	url = https://github.com/aegis-aead/openssl
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = perl
 	depends = glibc
 	optdepends = ca-certificates
 	optdepends = perl
+	provides = openssl=3.6.0
 	provides = libcrypto.so
 	provides = libssl.so
+	conflicts = openssl
 	replaces = openssl-perl
 	replaces = openssl-doc
 	backup = etc/ssl/openssl.cnf
-	source = https://github.com/openssl/openssl/releases/download/openssl-3.5.1/openssl-3.5.1.tar.gz
-	source = https://github.com/openssl/openssl/releases/download/openssl-3.5.1/openssl-3.5.1.tar.gz.asc
+	source = https://github.com/aegis-aead/openssl/archive/refs/heads/openssl-3.6.0-aegis.zip
 	source = ca-dir.patch
 	validpgpkeys = EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5
 	validpgpkeys = BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
-	sha256sums = 529043b15cffa5f36077a4d0af83f3de399807181d607441d734196d889b641f
-	sha256sums = SKIP
+	sha256sums = 12a3811e619bef5a2f9ed2ed5a3e885a16e643f9ab70383570cdcc151aac7e09
 	sha256sums = 0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7
 
-pkgname = openssl
+pkgname = openssl-aegis
