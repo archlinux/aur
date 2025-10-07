@@ -8,7 +8,7 @@
 
 pkgname=xrdp
 pkgver=0.10.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
