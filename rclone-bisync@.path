@@ -1,5 +1,5 @@
 [Path]
-Unit=rclone-bisynk@%i.service
+Unit=rclone-bisync@%i.service
 PathChanged=%h/rclone-bisync/%I
 
 [Install]

@@ -1,7 +1,7 @@
 pkgbase = rclone-bisync-service
 	pkgdesc = Systemd user service wrapper over rclone bisync. Rclone bisync is command that provide two side syncronization with offline access to files.
-	pkgver = 20250923
-	pkgrel = 2
+	pkgver = 20251007
+	pkgrel = 1
 	arch = any
 	license = MIT
 	depends = systemd
@@ -10,9 +10,9 @@ pkgbase = rclone-bisync-service
 	source = rclone-bisync@.path
 	source = rclone-bisync@.timer
 	source = rclone-bisync-init.sh
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 1dafef0b25fdfeacd0dfeabb9b1631ed
+	md5sums = cb7b83ea4f208b4795e41da312e0384d
+	md5sums = e1f83fdc3912c9824d6c4be4fe6c2c27
+	md5sums = 5607e4ff88c80b372f105bf769b271ce
 
 pkgname = rclone-bisync-service
