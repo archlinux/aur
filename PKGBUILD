@@ -4,44 +4,49 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=7.1.1
-pkgrel=3
+pkgver=8.0
+pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-_svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
+_obs_studio_ver='32.0.1'
+_whispercpp_ver='1.8.0'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
-url='https://www.ffmpeg.org/'
+url='https://ffmpeg.org/'
 license=('LicenseRef-nonfree-and-unredistributable')
 depends=(
     'alsa-lib'
     'aom'
     'aribb24'
-    'avisynthplus'
+    'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
     'celt'
+    'chromaprint-fftw'
     'codec2'
     'dav1d'
+    'davs2'
     'flite1'
     'fontconfig'
     'freetype2'
-    'frei0r-plugins'
+    'frei0r-plugins' # loaded on-demand by dlopen()
     'fribidi'
+    'gcc-libs'
     'glib2'
+    'glibc'
     'glslang'
-    'gmp'
     'gnutls'
     'gsm'
     'harfbuzz'
     'jack'
     'kvazaar'
-    'ladspa'
+    'ladspa' # loaded on-demand by dlopen()
     'lame'
-    'libavc1394'
     'lcevcdec'
     'lcms2'
     'lensfun-git'
+    'libaribcaption'
     'libass'
+    'libavc1394'
     'libbluray'
     'libbs2b'
     'libcaca'
@@ -52,11 +57,12 @@ depends=(
     'libdvdread'
     'libfdk-aac'
     'libgcrypt'
-    'libgl'
     'libgme'
     'libiec61883'
     'libilbc'
     'libjxl'
+    'libklvanc'
+    'liblc3'
     'libmodplug'
     'libmysofa'
     'libopenmpt'
@@ -72,6 +78,7 @@ depends=(
     'libva'
     'libvdpau'
     'libvorbis'
+    'libvpl'
     'libvpx'
     'libx11'
     'libxcb'
@@ -80,9 +87,9 @@ depends=(
     'libxv'
     'libwebp'
     'lilv'
-    'lv2'
     'ocl-icd'
     'openal'
+    'openapv'
     'opencore-amr'
     'opencv2'
     'openh264'
@@ -94,96 +101,114 @@ depends=(
     'rtmpdump'
     'rubberband'
     'sdl2'
+    'shine'
     'smbclient'
     'snappy'
     'sndio'
     'speex'
-    'spirv-tools'
     'srt'
     'svt-av1'
     'svt-hevc'
     'svt-vp9'
     'tesseract'
     'twolame'
+    'uavs3d-git'
     'v4l-utils'
-    'vapoursynth'
+    'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'
     'vmaf'
-    'vulkan-icd-loader'
+    'vo-amrwbenc'
+    'vulkan-icd-loader' # loaded on-demand by dlopen()
+    'vvenc'
     'x264'
     'x265'
+    'xavs'
+    'xavs2'
+    'xevd'
+    'xeve'
     'xvidcore'
     'xz'
     'zeromq'
     'zimg'
     'zlib'
-    'zvbi'
-    # aur:
-    'chromaprint-fftw'
-    'davs2'
-    'libaribcaption'
-    'libklvanc'
-    'shine'
-    'uavs3d-git'
-    'vo-amrwbenc'
-    'vvenc'
-    'xavs'
-    'xavs2'
-    'xevd'
-    'xeve'
-)
-makedepends=('patchutils'
-             'clang'
-             'nasm'
-             'amf-headers'
-             'opencl-headers'
-             'vulkan-headers'
-             # aur:
-             'decklink-sdk'
-)
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
-          'ffmpeg' 'ffmpeg-full')
+    'zvbi')
+makedepends=(
+    'amf-headers'
+    'clang'
+    'cmake'
+    'git'
+    'gmp'
+    'libgl'
+    'lv2'
+    'nasm'
+    'opencl-headers'
+    'vulkan-headers')
+provides=(
+    'ffmpeg'
+    'ffmpeg-full'
+    'libavcodec.so'
+    'libavdevice.so'
+    'libavfilter.so'
+    'libavformat.so'
+    'libavutil.so'
+    'libswscale.so'
+    'libswresample.so')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
+        "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
+        '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
-        "031-ffmpeg-add-svt-vp9.patch"
-        "040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-        '070-ffmpeg-svt-av1-3.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95'
-        '090-ffmpeg-lcevcdec4.0.0-fix.patch'
-        "LICENSE")
-sha256sums=('733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1'
+        '030-ffmpeg-add-svt-vp9.patch'
+        '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
+        '070-ffmpeg-lcevcdec4.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/fa23202cc7baab899894e8d22d82851a84967848'
+        'LICENSE')
+sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             'SKIP'
-            '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
+            '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
+            'c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f'
+            '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa'
-            'aa0daffc4d234b6621b63c298dc165d29522c5087f8905a923d23ee2d164e9ad'
-            '57697441b8f3ff3be883a2444b4cb89eed452764d24965e74e7b101e6af7f70a'
-            'b83ba1efdfec19ac54d1b0395a98d02039fe9d45bec1e6473e57a6288a304884'
-            '2ff4ba31e43d6d397542ec25df224cef01cf501409e202255e9414e482ba14cf'
+            'da01eb3ca31d35d23257760875e14bed808b3fea02f290028adaed76062125a0'
+            '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
+            '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
+            'd2bacb3a5b0201503554c3394ea1f3fbc8ad79d5c2721e0c226134d40812ad08'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
-    rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,vp9}.c
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    rm -f "ffmpeg-${pkgver}/libavcodec"/libsvt_{hevc,vp9}.c
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/031-ffmpeg-add-svt-vp9.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i <(filterdiff -i b/libavcodec/libsvt_vp9.c "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-svt-av1-3.0.0-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-lcevcdec4.0.0-fix.patch"
+    patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-lcevcdec4.0.0-fix.patch"
 }
 
 build() {
+    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
+    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
+    cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
+        -G 'Unix Makefiles' \
+        -DBUILD_SHARED_LIBS:BOOL='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/staging" \
+        -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
+        -DWHISPER_BUILD_TESTS:BOOL='OFF' \
+        -Wno-dev
+    cmake --build build/whisper.cpp --target install
+    
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
-
+    
+    export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
+    export PKG_CONFIG_PATH="${srcdir}/staging/lib/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
+    
     # fix build of libavfilter/asrc_flite.c with gcc 14
-    export CFLAGS+=' -Wno-incompatible-pointer-types'
-
+    export CFLAGS+=' -Wno-error=incompatible-pointer-types'
+    
     ./configure \
         --prefix='/usr' \
         --enable-lto \
@@ -244,6 +269,7 @@ build() {
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
+        --enable-liboapv \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
         --enable-libopencv \
@@ -317,6 +343,7 @@ build() {
         --enable-sdl2 \
         --enable-vapoursynth \
         --enable-vulkan \
+        --enable-whisper \
         --enable-xlib \
         --enable-zlib \
         \
@@ -330,6 +357,7 @@ build() {
         --disable-libnpp \
         --disable-nvdec \
         --disable-nvenc \
+        --disable-ohcodec \
         --disable-omx \
         --disable-rkmpp \
         --enable-v4l2-m2m \
@@ -338,6 +366,7 @@ build() {
     make
     make tools/qt-faststart
 }
+
 
 package() {
     make -C "ffmpeg-${pkgver}" DESTDIR="$pkgdir" install
