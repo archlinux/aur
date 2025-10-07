@@ -1,0 +1,46 @@
+[Unit]
+Description=LiveKit Ingress Service
+Documentation=https://github.com/livekit/ingress
+After=network.target redis.service
+Wants=redis.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=livekit-ingress
+LogsDirectory=livekit-ingress
+ExecStart=/usr/bin/livekit-ingress --config /etc/livekit/ingress.yaml
+Restart=on-failure
+RestartSec=5s
+
+# Security hardening (matching livekit-server)
+AmbientCapabilities=
+CapabilityBoundingSet=
+DevicePolicy=closed
+LockPersonality=yes
+NoNewPrivileges=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+PrivateDevices=yes
+PrivateTmp=yes
+PrivateIPC=yes
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallFilter=~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @keyring
+SystemCallErrorNumber=EPERM
+
+# Resource limits
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

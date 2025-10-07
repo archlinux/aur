@@ -1,0 +1,27 @@
+pkgbase = livekit-ingress
+	pkgdesc = Ingest streams (RTMP/WHIP) or files (HLS, MP4) to LiveKit WebRTC
+	pkgver = 1.4.3
+	pkgrel = 4
+	url = https://github.com/livekit/ingress
+	install = livekit-ingress.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = redis
+	optdepends = gst-plugins-base: For transcoding support
+	optdepends = gst-plugins-good: For transcoding support
+	optdepends = gst-plugins-bad: For transcoding support
+	optdepends = gst-plugins-ugly: For transcoding support
+	optdepends = gst-libav: For transcoding support
+	backup = etc/livekit/ingress.yaml
+	source = livekit-ingress-1.4.3.tar.gz::https://github.com/livekit/ingress/archive/refs/tags/v1.4.3.tar.gz
+	source = livekit-ingress.service
+	source = ingress.yaml
+	sha256sums = f6fbeb97d324019b4aa1536be09e560eb6b5ac05c8f8e289e096c10a8c2d4a8d
+	sha256sums = 09b64847bba802b4e0f6e4c5044f4ac6b6f308eb50e3ae468eac0e51ec895064
+	sha256sums = e1bffd98c11d0cde574ddf7a063757bb59ddf8deff2902b8c26213bfab31fbab
+
+pkgname = livekit-ingress

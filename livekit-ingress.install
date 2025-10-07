@@ -1,0 +1,15 @@
+post_install() {
+  echo "==> LiveKit Ingress installed"
+  echo "==> Edit /etc/livekit/ingress.yaml with your LiveKit credentials"
+  echo "==> Then run: sudo systemctl enable --now livekit-ingress"
+}
+
+post_upgrade() {
+  echo "==> LiveKit Ingress upgraded"
+  echo "==> Restart the service: sudo systemctl restart livekit-ingress"
+}
+
+pre_remove() {
+  systemctl stop livekit-ingress 2>/dev/null || true
+  systemctl disable livekit-ingress 2>/dev/null || true
+}

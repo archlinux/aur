@@ -1,0 +1,35 @@
+# LiveKit Ingress Configuration
+# See https://docs.livekit.io/home/self-hosting/ingress/
+
+# Connection to LiveKit server
+api_key: devkey
+api_secret: secret
+ws_url: ws://localhost:7880
+
+# Redis for messaging queue
+redis:
+  address: localhost:6379
+
+# WHIP endpoint configuration
+whip:
+  port: 8080
+
+# RTMP endpoint configuration (optional)
+rtmp:
+  port: 1935
+
+# Logging
+logging:
+  level: info
+  # Uncomment to log to file
+  # file: /var/log/livekit/ingress.log
+
+# CPU and resource costs (for multi-instance deployments)
+cpu_cost:
+  whip_bypass: 0.3
+  whip: 1.0
+  rtmp: 1.0
+  url: 1.5
+
+# Health check port
+health_port: 8081
