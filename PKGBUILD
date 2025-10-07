@@ -1,5 +1,6 @@
 # SPDX-FileCopyrightText: Arch Linux contributors
 # SPDX-License-Identifier: 0BSD
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=libeconf
 pkgname="python-${_pkgname}"
