@@ -3,7 +3,7 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 
-pkgrel=1
+pkgrel=2
 pkgver=0.9.6
 _name="ureminder"
 pkgname="$_name"
@@ -25,7 +25,7 @@ package() {
     install -Dm644 $_name.config "$pkgdir/etc/$_name.config"
     install -Dm644 $_name.service "$pkgdir/usr/lib/systemd/system/$_name.service"
     install -Dm644 $_name.timer "$pkgdir/usr/lib/systemd/system/$_name.timer"
-    install -Dm644 dunstrc "$pkgdir/etc/xdg/dunstrc"
+    install -Dm644 dunstrc "$pkgdir/usr/share/dunst/dunstrc"
     install -Dm644 dunstd.service "$pkgdir/etc/systemd/user/dunstd.service"
     install -Dm605 dunst.sh "$pkgdir/usr/bin/autostart/dunst.sh"
     install -Dm605 dunst.desktop "$pkgdir/etc/xdg/autostart/dunst.desktop"
