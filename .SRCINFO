@@ -1,0 +1,24 @@
+pkgbase = nvenc-git
+	pkgdesc = NVIDIA Video Codec based command line encoder (git)
+	pkgver = r3442.4a0435f8
+	pkgrel = 1
+	url = https://github.com/rigaya/NVEnc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc14
+	makedepends = cargo-c
+	depends = cuda>=10
+	depends = ffmpeg
+	depends = libass
+	depends = vapoursynth
+	depends = libdovi
+	conflicts = nvenc
+	source = git+https://github.com/rigaya/NVEnc.git
+	source = git+https://github.com/tplgy/cppcodec.git
+	source = ldflags-adjustments.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5
+
+pkgname = nvenc-git
