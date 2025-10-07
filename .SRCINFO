@@ -18,7 +18,9 @@ pkgbase = double-down-git
 	provides = double-down-git
 	source = double-down-git::git+https://github.com/pshriwise/double-down.git
 	source = cmake_version_bump.patch
+	source = fix_hdf5_lib_name.patch
 	md5sums = SKIP
 	md5sums = af216e7b598b147a2ed60f832e7e8a2a
+	md5sums = 0a8c98df5636683e71b45ead6566adbc
 
 pkgname = double-down-git

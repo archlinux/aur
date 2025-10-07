@@ -1,0 +1,14 @@
+diff -ura double-down-git.orig/CMakeLists.txt double-down-git.new/CMakeLists.txt
+--- double-down-git.orig/CMakeLists.txt	2025-10-07 11:21:49.721834583 +0000
++++ double-down-git.new/CMakeLists.txt	2025-10-07 11:23:33.479460786 +0000
+@@ -32,6 +32,10 @@
+ 
+ # MOAB
+ find_package(MOAB REQUIRED HINTS ${MOAB_DIR})
++
++# MOAB sometimes creates bogus "hdf5-shared" library path
++string(REPLACE "hdf5-shared" "hdf5" MOAB_LIBRARIES "${MOAB_LIBRARIES}")
++
+ MESSAGE ( STATUS "Found MOAB Version: " ${MOAB_VERSION} )
+ MESSAGE ( STATUS "MOAB_LIBRARIES is " ${MOAB_LIBRARIES} )
+ MESSAGE ( STATUS "MOAB_INCLUDE_DIRS is " ${MOAB_INCLUDE_DIRS} )

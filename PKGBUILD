@@ -25,17 +25,21 @@ makedepends=(
 
 provides=("${pkgname%-$pkgver}")
 
-source=("${pkgname}::git+${url}.git" "cmake_version_bump.patch")
+source=("${pkgname}::git+${url}.git" 
+        "cmake_version_bump.patch"
+        "fix_hdf5_lib_name.patch"
+)
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('SKIP' 'af216e7b598b147a2ed60f832e7e8a2a')
+md5sums=('SKIP' 'af216e7b598b147a2ed60f832e7e8a2a' '0a8c98df5636683e71b45ead6566adbc')
 
 prepare() {
     cd $pkgname
     patch -Np1 -i ../cmake_version_bump.patch
+    patch -Np1 -i ../fix_hdf5_lib_name.patch
 }
 
 build() {
