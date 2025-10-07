@@ -2,19 +2,19 @@
 # Maintainer: (vmp) Roland Suchan <snrd at arcor dot de>
 
 pkgname=qtrans
-pkgver=0.3.3
+pkgver=0.4
 pkgrel=1
-pkgdesc='QTrans is a word translator for Qt5/KF5. It uses Babylon (*.dic) dictionaries and translates many languages.'
+pkgdesc='QTrans is a word translator for Qt6/KF6. It uses Babylon (*.dic) dictionaries and translates many languages.'
 arch=('i686' 'x86_64')
 #url='https://www.opendesktop.org/s/Apps/p/1127419/'
 url="https://www.linux-apps.com/p/1127419/"
 license=('GPL')
-depends=('qt5-base' 'kconfig5' 'ki18n5' 'ktextwidgets5' 'qt5-webengine' 'kcoreaddons5' 'python' 'kxmlgui5' 'kwidgetsaddons5' 'zlib' 'hicolor-icon-theme' 'extra-cmake-modules')
+depends=('qt6-base' 'kconfig' 'ki18n5' 'ktextwidgets' 'qt6-webengine' 'kcoreaddons' 'python' 'kxmlgui' 'kwidgetsaddons' 'zlib' 'hicolor-icon-theme' 'extra-cmake-modules')
 #depends=('qt5-webkit' 'kxmlgui' 'hicolor-icon-theme')
 #optdepends=('')
 makedepends=('git')
-source=("https://sourceforge.net/projects/qtrans0/files/kf5/0.3.3/qtrans-0.3.3.tar.gz")
-sha256sums=('1830c11997daf9203cef4ff94a70ac48271ab2bf8152e2d279ae8f1de25247a9')
+source=("https://sourceforge.net/projects/qtrans0/files/kf6/0.4/qtrans-0.4.tar.gz")
+sha256sums=('da1c4f3ac73fec6105f15a56f4fdc9eef60a667514959bb524aa531c5988ab25')
 
 prepare() {
     mkdir -p build
