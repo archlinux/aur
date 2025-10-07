@@ -29,7 +29,7 @@ package() {
     cp -r SuperLauncher.py assets "$pkgdir/usr/share/superlauncher-mc/"
 
     # Добавляем шебанг для python3, если его нет
-    if ! head -n 1 SuperLauncher.py | grep -q "#!/usr/bin/env python3"; then
+    if ! head -n 1 SuperLauncher.py | grep -q "^#\!"; then
         sed -i '1i#!/usr/bin/env python3' SuperLauncher.py
     fi
 
@@ -42,10 +42,10 @@ package() {
         minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
 
     # Создаём wrapper для запуска через venv напрямую
-    cat <<'EOF' > "$pkgdir/usr/bin/superlauncher-mc"
-#!/bin/bash
+    cat <<EOF > "$pkgdir/usr/bin/superlauncher-mc"
+#!/usr/bin/env bash
 DIR="/usr/share/superlauncher-mc"
-exec "$DIR/venv/bin/python" "$DIR/SuperLauncher.py" "$@"
+exec "\$DIR/venv/bin/python" "\$DIR/SuperLauncher.py" "\$@"
 EOF
     chmod +x "$pkgdir/usr/bin/superlauncher-mc"
 
