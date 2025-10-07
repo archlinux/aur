@@ -4,7 +4,7 @@
 # Contributor: Filip Brcic < brcha at gna dot org >
 # Contributor: Martchus < martchus at gmx dot net >
 
-_pkgver=3.5.4
+_pkgver=3.6.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -21,7 +21,7 @@ makedepends=('mingw-w64-gcc'
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc}
         https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-openssl/001-support-aarch64.patch)
-sha256sums=('967311f84955316969bdb1d8d4b983718ef42338639c621ec4c34fddef355e99'
+sha256sums=('b6a5f44b7eb69e3fa35dbf15524405b44837a481d43d81daddde3ff21fcbb8e9'
             'SKIP'
             '21b96771b401442570e885c2d5689a359a91e86dcbf5511db3667202b6c1fa8a')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
