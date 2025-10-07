@@ -4,7 +4,7 @@
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 
 pkgname=swagger-codegen
-pkgver=3.0.73
+pkgver=3.0.74
 pkgrel=1
 pkgdesc="Swagger Code Generator"
 arch=("any")
@@ -15,7 +15,7 @@ makedepends=('maven')
 provides=('swagger-codegen-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swagger-api/swagger-codegen/archive/v$pkgver.tar.gz"
        swagger-codegen)
-sha256sums=('bf76d4ff5a97690cf9e7bdd6e07730eb7c666377c6f7d19347412b618a4e444a'
+sha256sums=('a6b01a467011130d6d6addc2c595a5b5bc179918a77d2ac682f1940081370fdc'
             'ac1dc1e6661c19572047e7253ddfb5c0861cdae78e2f14105b742fceda2733e3')
 
 build() {
@@ -36,4 +36,3 @@ package() {
 }
 
 # vim: ft=sh syn=sh et
-
