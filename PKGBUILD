@@ -1,4 +1,4 @@
-# Maintainer: Dilshod Turab <dilshodturab@example.com>
+# Maintainer: Uzbek Open Source Community <https://github.com/floss-uz>
 pkgname=tarmoqchi
 _pkgname=tarmoqchi
 pkgver=r143.b666993
