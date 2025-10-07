@@ -1,7 +1,7 @@
 pkgbase = python-csvw
 	pkgdesc = Python library to work with CSVW described tabular data
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/csvw
 	arch = any
 	license = MIT
@@ -18,7 +18,6 @@ pkgbase = python-csvw
 	depends = python-rdflib
 	depends = python-requests
 	depends = python-rfc3986
-	depends = python-colorama
 	depends = python-termcolor
 	depends = python-uritemplate
 	depends = python-language-tags

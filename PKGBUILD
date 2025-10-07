@@ -3,7 +3,7 @@
 pkgname=python-csvw
 _name=${pkgname#python-}
 pkgver=3.7.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Python library to work with CSVW described tabular data"
 arch=('any')
@@ -22,7 +22,6 @@ depends=(
     python-rdflib
     python-requests
     python-rfc3986
-    python-colorama
     python-termcolor
     python-uritemplate
     # AUR
