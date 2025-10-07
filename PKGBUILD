@@ -1,6 +1,6 @@
 pkgname=github-copilot-cli-bin
 realname=copilot
-pkgver=0.0.330
+pkgver=0.0.335
 pkgrel=1
 pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal. "
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 makedepends=('npm')
 depends=('nodejs')
 source=("https://registry.npmjs.org/@github/$realname/-/$realname-$pkgver.tgz")
-sha256sums=('1418b34ab263c243e93c82f966eb3b81c8bde967e26ba125c6d2f73895b2ea37')
+sha256sums=('21f053840ce1dd41fa0c648a3d2163418e7d5d671ffde7a59fd9dca73560862b')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${realname}-${pkgver}.tgz"
