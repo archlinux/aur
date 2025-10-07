@@ -1,3 +1,5 @@
+# Maintainer: Lily Anatia Wilson <hotaru@thinkindifferent.net>
+
 pkgname=yafu
 pkgver=1.34.3
 _msievever=1.53
