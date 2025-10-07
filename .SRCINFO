@@ -1,7 +1,7 @@
 pkgbase = epubsynth
 	pkgdesc = A command-line program for generating EPUB documents
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://marianicolae.com/software/epubsynth/
 	arch = any
 	license = CC-BY-4.0 OR Apache-2.0
