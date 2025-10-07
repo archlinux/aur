@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=25.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -49,13 +49,16 @@ optdepends=(
 )
 provides=("openxr-runtime")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz"
-        "c0c10fd34df85706e5897fd79eea3fb40461f1c0.patch")
+        "c0c10fd34df85706e5897fd79eea3fb40461f1c0.patch"
+        "b81d0108411072f69c555caf0fcf550b0937cfe6.patch")
 sha256sums=('13eb42b84464de90e43676cef017fd53303e84fac5a7a69ceafdea7cd5ebc7f8'
-            '643400ade23ff221439d3f1a27583dae832384ea36ccd787283033aa7bf17aad')
+            '643400ade23ff221439d3f1a27583dae832384ea36ccd787283033aa7bf17aad'
+            'd0b8679021963ee9b4f22866164caa5650496fa4ac26d5732aea4c8f0beb86cf')
 install=$pkgname.install
 
 prepare() {
 	cp c0c10fd34df85706e5897fd79eea3fb40461f1c0.patch "WiVRn-$pkgver/patches/monado"
+	patch -p1 -d "WiVRn-$pkgver" < b81d0108411072f69c555caf0fcf550b0937cfe6.patch
 }
 
 build() {

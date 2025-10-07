@@ -1,0 +1,48 @@
+From b81d0108411072f69c555caf0fcf550b0937cfe6 Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <patricknicolas@laposte.net>
+Date: Sat, 4 Oct 2025 23:16:22 +0200
+Subject: [PATCH] Fix build with ffmpeg 8
+
+---
+ server/encoder/ffmpeg/video_encoder_va.cpp | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/server/encoder/ffmpeg/video_encoder_va.cpp b/server/encoder/ffmpeg/video_encoder_va.cpp
+index 58dc9b01..6f448b18 100644
+--- a/server/encoder/ffmpeg/video_encoder_va.cpp
++++ b/server/encoder/ffmpeg/video_encoder_va.cpp
+@@ -43,6 +43,14 @@ extern "C"
+ #include <libavutil/pixdesc.h>
+ }
+ 
++// Added in ffmpeg 6
++#ifndef AV_PROFILE_H264_CONSTRAINED_BASELINE
++#define AV_PROFILE_H264_CONSTRAINED_BASELINE FF_PROFILE_H264_CONSTRAINED_BASELINE
++#define AV_PROFILE_HEVC_MAIN_10 FF_PROFILE_HEVC_MAIN_10
++#define AV_PROFILE_HEVC_MAIN FF_PROFILE_HEVC_MAIN
++#define AV_PROFILE_AV1_MAIN FF_ROFILE_AV1_MAIN
++#endif
++
+ namespace wivrn
+ {
+ 
+@@ -230,16 +238,16 @@ video_encoder_va::video_encoder_va(wivrn_vk_bundle & vk,
+ 	switch (settings.codec)
+ 	{
+ 		case video_codec::h264:
+-			encoder_ctx->profile = FF_PROFILE_H264_CONSTRAINED_BASELINE;
++			encoder_ctx->profile = AV_PROFILE_H264_CONSTRAINED_BASELINE;
+ 			av_dict_set(&opts, "coder", "cavlc", 0);
+ 			av_dict_set(&opts, "rc_mode", "CBR", 0);
+ 			break;
+ 		case video_codec::h265:
+ 			// bit_depth is either 8 or 10 here
+-			encoder_ctx->profile = settings.bit_depth == 10 ? FF_PROFILE_HEVC_MAIN_10 : FF_PROFILE_HEVC_MAIN;
++			encoder_ctx->profile = settings.bit_depth == 10 ? AV_PROFILE_HEVC_MAIN_10 : AV_PROFILE_HEVC_MAIN;
+ 			break;
+ 		case video_codec::av1:
+-			encoder_ctx->profile = FF_PROFILE_AV1_MAIN;
++			encoder_ctx->profile = AV_PROFILE_AV1_MAIN;
+ 			break;
+ 		case video_codec::raw:
+ 			throw std::runtime_error("raw codec not supported");
