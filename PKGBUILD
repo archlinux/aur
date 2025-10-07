@@ -2,7 +2,7 @@
 pkgname=dot-manager
 _repo=DotManager
 _cmd=dot-manager
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="CLI Utility for easy dotfile management"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("gcc-libs" "glibc")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dc5b8af5b2776b0e8e695725cb7c4804ee125b3ac58a2a2a3bd4bccd778fe5ed')
+sha256sums=('d3ec998cdadf8e56e40109b088a4ba073fb13a41fcf0d0724d1a59e2bf376991')
 
 prepare() {
   cd "$srcdir/$_repo-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = dot-manager
 	pkgdesc = CLI Utility for easy dotfile management
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/WithoutAName25/DotManager
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dot-manager
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = dot-manager-0.3.1.tar.gz::https://github.com/WithoutAName25/DotManager/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = dc5b8af5b2776b0e8e695725cb7c4804ee125b3ac58a2a2a3bd4bccd778fe5ed
+	source = dot-manager-0.3.3.tar.gz::https://github.com/WithoutAName25/DotManager/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = d3ec998cdadf8e56e40109b088a4ba073fb13a41fcf0d0724d1a59e2bf376991
 
 pkgname = dot-manager
