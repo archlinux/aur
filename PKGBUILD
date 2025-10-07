@@ -3,8 +3,8 @@
 
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
-pkgver=4.3.6
-pkgrel=5
+pkgver=4.3.7
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://linux-gpib.sourceforge.net/'
@@ -14,14 +14,12 @@ conflicts=('linux-gpib')
 depends=('bash' 'dkms' 'bison' 'perl' 'which')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "dkms.conf.in"
-        "dkms-kernel-version.diff")
+        "dkms.conf.in")
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-md5sums=('ffefc4e5c03b891c57f406a4b82395b7'
-         '2ca62fa9ee584853203e04ef08e6243d'
-         '644fcf816bca8e195c01e9daf0a06144')
+md5sums=('c5cfe0254102c72812a341cdbcfc8836'
+         'f328fca1caba84d26fdec8559ec5b116')
 
 prepare() {
 
@@ -31,7 +29,7 @@ prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     tar xvfz "${_pkgname}-kernel-${pkgver}.tar.gz"
     cd "${_pkgname}-kernel-${pkgver}"
-    patch -p1 < ../../dkms-kernel-version.diff
+    #patch -p1 < ../../dkms-kernel-version.diff
     sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/eastwood/fluke_gpib.c
     sed -i -e 's/config.slave_id = 0;//g' drivers/gpib/eastwood/fluke_gpib.c
     sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/fmh_gpib/fmh_gpib.c
