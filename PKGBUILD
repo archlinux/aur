@@ -1,6 +1,6 @@
 # Maintainer: kupira <skupira27@gmail.com>
 pkgname=bluerice
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Bluetooth utility with customizable menu"
 arch=('x86_64')
