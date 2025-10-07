@@ -23,7 +23,7 @@ build() {
 	cd "${srcdir}/dsda-doom/prboom2"  
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
-	make -j$(nproc)
+	make
 }
 
 package() {
