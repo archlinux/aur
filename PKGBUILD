@@ -42,7 +42,8 @@ build() {
 					  -DENABLE_BLASLAPACK=OFF \
 					  -DBUILD_SHARED_LIBS=ON \
 					  -DBUILD_SHARED_LIBS=ON \
-					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB 
+					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
+					  -DHDF5_ROOT=/usr
 
 	_ccores=$(nproc)
 	# check if _ccores is a positive integer, if not, serial build
