@@ -17,7 +17,7 @@ license=('MIT')
 depends=('python' 'spyder' 'python-qtawesome' 'python-qtpy' 'python-line-profiler')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/54/41/960b070f7babe42345c019192249811a9e1bbf101c8b8d07a16f9790675c/${_pypi_package//-/_}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 sha256sums=('c377bc9963c4474c4714bdacc4d002b43cd8311b4348c479b419d830cc816a82')
 
 

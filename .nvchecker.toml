@@ -1,0 +1,3 @@
+[spyder-line-profiler]
+source = "pypi"
+pypi = "spyder-line-profiler"
