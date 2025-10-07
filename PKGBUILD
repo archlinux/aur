@@ -1,6 +1,6 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname=jj-fzf
-pkgver=0.24.0
+pkgver=0.34.0
 pkgrel=4
 pkgdesc=" Text UI for Jujutsu based on fzf, centering around the jj log with key bindings for common operations"
 arch=('any')
@@ -24,7 +24,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   # FIXME: make install should take care of this https://github.com/tim-janik/jj-fzf/issues/7
-  mkdir -p "$pkgdir/usr/bin"
-  make prefix="$pkgdir/usr" install
+  #mkdir -p "$pkgdir/usr/bin"
+  make PREFIX="$pkgdir/usr" install
 }
 # vim:set ts=2 sw=2 et:
