@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=pyrefly-bin
-pkgver=0.35.0 # datasource=github-tags depName=facebook/pyrefly
+pkgver=0.36.1 # datasource=github-tags depName=facebook/pyrefly
 pkgrel=1
 pkgdesc='A faster Python type checker written in Rust'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -15,9 +15,9 @@ source_aarch64=("pyrefly-aarch64-${pkgver}.vsix::${_baseurl}?targetPlatform=linu
 source_armv7h=("pyrefly-armv7h-${pkgver}.vsix::${_baseurl}?targetPlatform=linux-armhf")
 source_x86_64=("pyrefly-x86_64-${pkgver}.vsix::${_baseurl}?targetPlatform=linux-x64")
 
-sha256sums_aarch64=('a7bf65d8b7f5c47793a63217481074358c38416e67aa0763cde9a0e31da793fe')
-sha256sums_armv7h=('fce52c959a7f4dac23ebe36b1092f4182ea2c10c115f7adddb54c297ee4ec79b')
-sha256sums_x86_64=('82d2fdec84915643f91713de716bc62ad84fdd05b77543d87cdd6a02bec17a31')
+sha256sums_aarch64=('f66902846de5fb8a6424aae53656e5c16dedfba0ae4967ae55b5ad529d3bb200')
+sha256sums_armv7h=('dea9b0890c5b5985deb21280b03b5310126e81705c3c0450ec91c1f6d11df9d7')
+sha256sums_x86_64=('583ac24bd84af187a20789f67ab0aef025d4aa2b192c455a6ed66334c6716c89')
 
 package() {
 
