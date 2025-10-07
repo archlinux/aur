@@ -1,13 +1,13 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
-pkgver=0.7.0
-pkgrel=5
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
-depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl' 'openal')
+depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl' 'openal')
 makedepends=('git' 'cmake' 'boost' 'glslang' 'ninja' 'nlohmann-json' 'rapidjson' 'qt6-multimedia' 'qt6-tools' 'gamemode' 'doxygen' 'vulkan-headers' 'vulkan-utility-libraries')
 optdepends=('gamemode: Gamemoded support')
 options=(!debug)
@@ -15,6 +15,7 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         cubeb::git+https://github.com/mozilla/cubeb.git
         discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
+        libusb::git+https://github.com/libusb/libusb.git
         Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
         sirit::git+https://github.com/yuzu-mirror/sirit.git
         mbedtls::git+https://github.com/yuzu-mirror/mbedtls.git
@@ -35,7 +36,8 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         tz::git+https://github.com/eggert/tz.git
 	SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
-b2sums=('e0bbfc02ff56ac1e42c96e904a12cf17087d29ec5abd84ba816ca8c52e8306216b6c5e54710d38397f2829052c3d7b8772852b65ea9d4498648682b2c4bd726e'
+b2sums=('efae8a0ee258639238e49de0070dfc7ad0f2b5ca46466dd71798079011357db6dae62e340e5d76cb6a5b8ae09ac6c558c47bd91bea4c16c0321a48289b1e31ae'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -66,9 +68,8 @@ prepare() {
   git rm -f externals/enet
   git rm -f externals/opus
   git rm -f externals/vcpkg
-  git rm -f externals/libusb/libusb
 
-  for _submodule in cubeb discord-rpc dynarmic Vulkan-Headers sirit mbedtls xbyak cpp-httplib cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
+  for _submodule in cubeb discord-rpc dynarmic libusb Vulkan-Headers sirit mbedtls xbyak cpp-httplib cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
     do
       git config submodule.$_submodule.url "${srcdir}/$_submodule"
     done
@@ -133,7 +134,6 @@ build() {
   cmake -B build -GNinja -S "$pkgname" \
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
-    -DENABLE_QT6=ON \
     -DCITRON_USE_BUNDLED_FFMPEG=OFF \
     -DCITRON_USE_EXTERNAL_VULKAN_HEADERS=OFF \
     -DCITRON_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
