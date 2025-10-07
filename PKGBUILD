@@ -1,14 +1,9 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: metaphy <metaphyman@proton.me>
+# Maintainer: metaphy <metaphyman [at] proton [dot] me>
 pkgname=glab-component-generator-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Generate README.md from existing GitLab components"
+pkgdesc="Small Golang CLI to generate README for Gitlab CI components"
 arch=('x86_64')
 url="https://github.com/peschmae/glab-component-generator"
 license=('MIT')
