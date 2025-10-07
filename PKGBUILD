@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="pathlib api extended to use fsspec backends"
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
               'python-pathlib-abc'
               'python-pydantic-settings') # requests <- moto; aiohttp <- aiobotocore <- s3fs; upath/tests/third_party/...
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f148f134f1bc3ea402bd3769606e06d9')
+md5sums=('d618ff4bccf8c24f96a9d45f712d6133')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -45,7 +45,7 @@ check() {
 }
 
 package_python-universal-pathlib() {
-    depends=('python>=3.8' 'python-fsspec>=2024.5.0' 'python-pathlib-abc>=0.5.1')
+    depends=('python>=3.9' 'python-fsspec>=2024.5.0' 'python-pathlib-abc>=0.5.1')
 #   optdepends=('python-universal-pathlib-doc: Documentation for upath')
     cd ${srcdir}/${_pyname}-${pkgver}
 
