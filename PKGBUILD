@@ -87,6 +87,8 @@ _nonheadless=(
 
 _commondeps=(
   'java-runtime-common>=3'
+  wayland
+  wayland-protocols
   ca-certificates-utils
   freetype2
   gcc-libs
