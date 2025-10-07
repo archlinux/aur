@@ -1,0 +1,11 @@
+pkgbase = chromium-beacondb-patch-hook
+	pkgdesc = Pacman hook that patch Chromium web browser files to use BeaconDB as a geolocation API (instead of Google Geolocation API)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = LicenseRef-None
+	depends = sed
+	source = chromium-beacondb-patch.hook
+	sha256sums = c7f254fd7de10fc555867ff64a29a2049f1d6975d7bb71bec8fc2634c454f15c
+
+pkgname = chromium-beacondb-patch-hook
