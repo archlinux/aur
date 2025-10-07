@@ -37,6 +37,6 @@ package() {
     # Install the helper script (assumes the file exists in the repo)
     install -Dm755 toggle-rotation.sh "${pkgdir}/usr/share/${pkgname}/toggle-rotation.sh"
 
-    install -Dm644 "${srcdir}/fw12rotate-git.install" \
+    install -Dm644 "${srcdir}/FW12Rotate/fw12rotate-git.install" \
              "${pkgdir}/usr/share/licenses/${pkgname}/fw12rotate-git.install"
 }
