@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=fizz
-pkgver=2025.09.29.00
+pkgver=2025.10.06.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=(x86_64)
@@ -35,7 +35,7 @@ provides=(
   libfizz_test_support.so
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a5b3eeafec91f62384d995f641090c30770d961e44f7a713f0e06ee0032c67f3')
+sha256sums=('fbaab9e3ddbe3890d459598158b58157989f486de367ba590bedc42550c220cc')
 
 prepare() {
   cd $pkgname-$pkgver
