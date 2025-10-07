@@ -1,6 +1,6 @@
 pkgbase = r-nanostringnctools
 	pkgdesc = NanoString nCounter Tools
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NanoStringNCTools
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-nanostringnctools
 	optdepends = r-qpdf
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoStringNCTools_1.16.1.tar.gz
-	sha256sums = 30ba5efdb30db1b8f1fb0e11ba9e47c6b270a8daac9e5e0911395d7f62b7522e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoStringNCTools_1.16.2.tar.gz
+	sha256sums = a216897957eb15340c0be0e8c8a4ce2476053348f61a67092e4621ef382a8780
 
 pkgname = r-nanostringnctools
