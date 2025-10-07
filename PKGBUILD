@@ -8,7 +8,7 @@
 readonly _pkgname="maison"
 
 pkgname="python-maison"
-pkgver="2.0.0"
+pkgver="2.0.1"
 pkgrel="1"
 pkgdesc="Read settings from config files."
 arch=("any")
@@ -18,7 +18,7 @@ depends=("python" "python-click" "python-toml")
 makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
 checkdepends=("python-coverage" "python-pydantic" "python-pytest" "python-six")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("9274fc89083eec10f933a6f0e40556e18fea0ef11c13cb10338a90070b4042d87b0250a9c112a059644f6db1da4c5bbd956e3efa0cd9bd1ac1d2059f1a659eb0")
+sha512sums=("7ae08c438287541225ca48471897411d888f81af2db68a0fffc507bd1939a6e4f04f256eb27e95c0ea84a8e3e8e4ac21e27d5541353edf8f2fe2236073d93af1")
 
 build()
 {
