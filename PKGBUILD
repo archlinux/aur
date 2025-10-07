@@ -1,64 +1,90 @@
-# Maintainer: Stefan Biereigel <$(base64 --decode <<<'c3RlZmFuQGJpZXJlaWdlbC5kZQo=')>
-# Contributor: xiretza <xiretza+aur@gmail.com>
-# Contributor: thotypous <thotypous@gmail.com>
+# Maintainer:
+# Contributor: Stefan Biereigel <$(base64 --decode <<<'c3RlZmFuQGJpZXJlaWdlbC5kZQo=')>
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 # Contributor: Sebastian Bøe <$(base64 --decode <<<'c2ViYXN0aWFuYm9vZUBnbWFpbC5jb20K')>
-# Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
-pkgname=yosys-git
+_pkgname="yosys"
+pkgname="$_pkgname-git"
 pkgrel=1
-pkgver=0.41+111.r13563.a84e4f44f
-pkgdesc='A framework for RTL synthesis'
+pkgver=0.57.r266.gb8b0f80
+pkgdesc="A framework for RTL synthesis"
+url="https://github.com/YosysHQ/yosys"
 arch=('x86_64' 'i686')
-url='https://yosyshq.net/yosys/'
-license=('custom:ISC')
-provides=("yosys=$pkgver")
-conflicts=("yosys")
-depends=('tcl' 'libffi' 'python' 'boost-libs')
-optdepends=('graphviz: Schematics display support' 'xdot: Design netlist display support')
-makedepends=('git' 'mercurial' 'boost')
-checkdepends=('iverilog' 'clang')
-source=('git+https://github.com/YosysHQ/yosys.git'
-        'git+https://github.com/YosysHQ/abc.git')
+license=('ISC')
 
-sha512sums=('SKIP'
-            'SKIP')
+depends=(
+  'boost-libs'
+  'gtkwave' # vcd2fst
+  'libffi'
+  'python'
+  'tcl'
+)
+makedepends=(
+  'boost'
+  'git'
+)
+optdepends=(
+  'graphviz: Schematics display support'
+  'xdot: Design netlist display support'
+)
+checkdepends=(
+  'iverilog'
+)
 
-pkgver() {
-    cd "${srcdir}/yosys"
-    printf "%s.r%s.%s" "$(make echo-yosys-ver)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+provides=("$_pkgname=${pkgver%.g*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  "git+https://github.com/YosysHQ/abc.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 prepare() {
-    cd "${srcdir}/yosys"
+  cd "$_pkgsrc"
+  git submodule init
+  git config submodule.abc.url "$srcdir/abc"
+  git -c protocol.file.allow=always submodule update
+}
 
-    git submodule init
-    git config submodule.abc.url "$srcdir/abc"
-    git -c protocol.file.allow=always submodule update
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+_make() {
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  local python_version_combined=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+
+  local _make_config=(
+    CONFIG=gcc
+    PREFIX="/usr"
+    ENABLE_LIBYOSYS=1
+    ENABLE_PYOSYS=1
+    BOOST_PYTHON_LIB="-lpython${python_version} -lboost_python${python_version_combined}"
+    STRIP=':'
+  )
+
+  make "${_make_config[@]}" "$@"
 }
 
 build() {
-    cd "${srcdir}/yosys"
-
-    make config-gcc
-    echo "ENABLE_LIBYOSYS=1" >> Makefile.conf
-    echo "ENABLE_PYOSYS=1" >> Makefile.conf
-    echo "ABCPULL=0" >> Makefile.conf
-
-    make PREFIX="/usr"
+  cd "$_pkgsrc"
+  _make
 }
 
 check() {
-    cd "${srcdir}/yosys"
-
-    make test
+  cd "$_pkgsrc"
+  _make test
 }
 
 package() {
-    cd "${srcdir}/yosys"
-
-    # disable stripping in the makefile - duplicated effort and makes debug packages impossible
-    make STRIP=':' PREFIX="/usr" PYTHON_PREFIX="${pkgdir}/usr" DESTDIR="${pkgdir}" install
-
-    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$_pkgsrc"
+  _make DESTDIR="$pkgdir" PYTHON_PREFIX="$pkgdir/usr" install
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
