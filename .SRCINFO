@@ -1,11 +1,11 @@
 pkgbase = fw12rotate-git
-	pkgdesc = Framework 12 rotation application for Hyprland on Omarchy or other Arch-based systems
+	pkgdesc = Framework 12 rotation application for Hyprland on Arch-based systems
 	pkgver = r17.ba2cdd7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2disbetter/FW12Rotate
 	install = fw12rotate-git.install
 	arch = x86_64
-	license = mit
+	license = unknown
 	makedepends = git
 	makedepends = gcc
 	depends = bash

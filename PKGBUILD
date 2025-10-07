@@ -2,12 +2,12 @@
 
 pkgname=fw12rotate-git
 pkgver=r17.ba2cdd7
-pkgrel=1
+pkgrel=2  # Bump this since you're fixing issues
 options=('!debug')
-pkgdesc="Framework 12 rotation application for Hyprland on Omarchy or other Arch-based systems"
+pkgdesc="Framework 12 rotation application for Hyprland on Arch-based systems"
 arch=('x86_64')
 url="https://github.com/2disbetter/FW12Rotate"
-license=('mit')
+license=('unknown')  # Upstream has no LICENSE file; change if one is added
 depends=('bash' 'inotify-tools' 'iio-sensor-proxy')
 optdepends=('hyprland: required for intended use')
 makedepends=('git' 'gcc')
@@ -22,15 +22,14 @@ pkgver() {
 
 build() {
   cd FW12Rotate
-  g++ fw12rotate.cpp -o FW12Rotate  # Adjust if there are additional flags, headers, or libs (e.g., -std=c++11 or -I/path)
+  g++ FW12Rotate.cpp -o fw12rotate  # Use actual upstream filename (case-sensitive); output lowercase for convention
 }
 
 package() {
   cd FW12Rotate
-  install -Dm755 FW12Rotate "${pkgdir}/usr/local/bin/FW12Rotate"
+  install -Dm755 fw12rotate "${pkgdir}/usr/bin/fw12rotate"  # Use /usr/bin (standard) and lowercase name
   install -Dm755 toggle-rotation.sh "${pkgdir}/usr/share/${pkgname}/toggle-rotation.sh"
-  install -Dm644 "${srcdir}/fw12rotate-git.install" "${pkgdir}/usr/share/licenses/${pkgname}/fw12rotate-git.install"  # Optional: Install a copy for reference
-  # If there are two additional files (e.g., config or header), install them here if needed, e.g.:
-  # install -Dm644 file1 "${pkgdir}/usr/share/${pkgname}/file1"
-  # install -Dm644 file2 "${pkgdir}/usr/share/${pkgname}/file2"
+  # Optional: Install a copy of the .install file for reference (fixed path)
+  install -Dm644 "${startdir}/fw12rotate-git.install" "${pkgdir}/usr/share/${pkgname}/fw12rotate-git.install"
 }
+
