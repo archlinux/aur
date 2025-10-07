@@ -24,24 +24,29 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir"
 
-    # Установка директории для лаунчера
+    # Установка директории лаунчера
     install -d "$pkgdir/usr/share/superlauncher-mc"
     cp -r SuperLauncher.py assets "$pkgdir/usr/share/superlauncher-mc/"
+
+    # Добавляем шебанг для python3, если его нет
+    if ! head -n 1 SuperLauncher.py | grep -q "#!/usr/bin/env python3"; then
+        sed -i '1i#!/usr/bin/env python3' SuperLauncher.py
+    fi
 
     # Создаём virtual environment
     python -m venv "$pkgdir/usr/share/superlauncher-mc/venv"
 
-    # Устанавливаем нужные библиотеки в venv
+    # Устанавливаем библиотеки в venv
     "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install --upgrade pip
     "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install \
         minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
 
     # Создаём wrapper для запуска через venv
-    cat <<EOF > "$pkgdir/usr/bin/superlauncher-mc"
+    cat <<'EOF' > "$pkgdir/usr/bin/superlauncher-mc"
 #!/bin/bash
 DIR="/usr/share/superlauncher-mc"
-source "\$DIR/venv/bin/activate"
-exec python "\$DIR/SuperLauncher.py" "\$@"
+source "$DIR/venv/bin/activate"
+exec python "$DIR/SuperLauncher.py" "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/superlauncher-mc"
 
