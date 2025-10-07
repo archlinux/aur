@@ -42,9 +42,7 @@ build() {
 					  -DENABLE_BLASLAPACK=OFF \
 					  -DBUILD_SHARED_LIBS=ON \
 					  -DBUILD_SHARED_LIBS=ON \
-					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
-					  -DHDF5_INCLUDE_DIRS=/usr/include \
-					  -DHDF5_LIBRARIES=/usr/lib/libhdf5.so 
+					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB 
 
 	_ccores=$(nproc)
 	# check if _ccores is a positive integer, if not, serial build
