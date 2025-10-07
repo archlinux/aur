@@ -37,7 +37,7 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.9.9
+pkgver=0.10.0
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -46,7 +46,7 @@ pkgdesc="Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) fr
 arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
-depends=('bat' 'curl' 'fmt' 'fzf' 'git')
+depends=('bat' 'curl' 'fzf' 'git')
 optdepends=('nano: for editing config files'
             'onefetch: for git info display')
 source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
