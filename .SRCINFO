@@ -1,0 +1,28 @@
+pkgbase = calibrate-joystick-gui
+	pkgdesc = A graphical program to quickly calibrate range and deadzones of joysticks.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/dkosmari/calibrate-joystick/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = make
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = pkgconf
+	makedepends = gettext
+	makedepends = gcc
+	makedepends = git
+	depends = gtk3
+	depends = gtkmm3
+	depends = libevdev
+	depends = gcc-libs
+	depends = libgudev
+	depends = libc++
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/dkosmari/calibrate-joystick.git#tag=v0.6.0
+	sha256sums = 3845b442c181e3c89eeb6c5bc67412a2f2122164893241072304eb5b41525143
+
+pkgname = calibrate-joystick-gui
