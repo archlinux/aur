@@ -1,12 +1,14 @@
 # Maintainer: Andy Bao <contact at andybao dot me>
 pkgname=onetun
 pkgdesc="Access your WireGuard network from any device, without root access or having to install WireGuard locally."
-pkgver=0.3.7
+pkgver=0.3.10
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/aramperes/onetun"
 license=('MIT')
 makedepends=('cargo')
+# Disable LTO as it breaks build: https://github.com/briansmith/ring/issues/1444#issuecomment-1813262575
+options=(!lto)
 source=(
     "$url/archive/v$pkgver.tar.gz"
     "$pkgname@.service"
@@ -14,7 +16,7 @@ source=(
     "example.conf"
 )
 sha256sums=(
-    '745870fda8e10475618d2e1d91ea224281af97f36071bd19e2aae68ed549e8e8'
+    'a93ae32024dcf32002392f2b9fa7ca9b7d2d898b5e9e75511d2624b03aca60d5'
     'SKIP'
     'SKIP'
     'SKIP'
