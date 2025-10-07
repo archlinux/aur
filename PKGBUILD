@@ -18,11 +18,11 @@
 
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=19
+pkgrel=20
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
 arch=('i686' 'x86_64' 'armv7' 'aarch64' 'armv6h' 'armv7h')
 license=('GPL')
-url="https://packages.debian.org/stable/mail/ssmtp"
+url="https://wiki.debian.org/sSMTP"
 depends=('openssl' 'inetutils')
 makedepends=('systemd') # Needed for sysusers.d to create the 'mail' group
 conflicts=('exim' 'smtp-forwarder')
@@ -31,7 +31,7 @@ backup=('etc/ssmtp/ssmtp.conf' 'etc/ssmtp/revaliases')
 options=('!makeflags' '!emptydirs')
 source=("http://ftp.debian.org/debian/pool/main/s/ssmtp/${pkgname}_${pkgver}.orig.tar.bz2"
         'ssmtp-aliases.patch'
-        'ssmtp-c99.patch'
+        'ssmtp-c23.patch'
         'ssmtp-defaultvalues.patch'
         'ssmtp-md5auth-non-rsa.patch'
         'ssmtp-validate-TLS-server-cert.patch'
@@ -44,7 +44,7 @@ source=("http://ftp.debian.org/debian/pool/main/s/ssmtp/${pkgname}_${pkgver}.ori
 )
 sha256sums=('22c37dc90c871e8e052b2cab0ad219d010fa938608cd66b21c8f3c759046fa36'
             'fe031849b891e0fa72114b01e2b87f6a2e75c51832727fb5abaf9d8db83b4d29'
-            'a624f54e8cb12250c63461efd4885783b6119aaf50d8571bbf6fe9792c6f9a32'
+            '98db498234da573a9d837dcb0220686c849411fc0aeccf0e8d702c51ac2de4f2'
             'c39c6ddd90fb7311440ec1709a4bcda2d600c9a7b3a9c93be8ab899b932f04e8'
             '71d3f333d05ffbb6dcbe27a6e4655593c8298a95ade52673c4dfd5ae46d923cd'
             '85598c3964862b4d4d2314ab8f783eefaef6cbb22fb8a3a339cd60e611dad6ff'
@@ -67,6 +67,7 @@ prepare() {
   patch -p1 -i "${srcdir}/ssmtp-validate-TLS-server-cert.patch"
   patch -p1 -i "${srcdir}/ssmtp-defaultvalues.patch"
   patch -p1 -i "${srcdir}/ssmtp-configure-c99.patch"
+  patch -p1 -i "${srcdir}/ssmtp-c23.patch"
 
   # Other patches
   patch -p1 -i "${srcdir}/openssl_crypto.patch"
@@ -94,7 +95,7 @@ package() {
   install -D -m644 ssmtp.conf.5 "${pkgdir}/usr/share/man/man5/ssmtp.conf.5"
   install -m644 ssmtp.conf "${pkgdir}/etc/ssmtp/ssmtp.conf"
 
-  chown -R root.mail "${pkgdir}/etc/ssmtp"
+  chown -R root:mail "${pkgdir}/etc/ssmtp"
   chmod 770 "${pkgdir}/etc/ssmtp"
 
   ln -s ssmtp "${pkgdir}/usr/sbin/sendmail"
