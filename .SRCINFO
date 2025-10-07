@@ -1,6 +1,6 @@
 pkgbase = python-survey
 	pkgdesc = A simple library for creating beautiful interactive prompts.
-	pkgver = 5.3.0
+	pkgver = 5.4.2
 	pkgrel = 1
 	url = https://github.com/Exahilosys/survey
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-survey
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-wheel
 	depends = python
-	source = python-survey-5.3.0::https://github.com/Exahilosys/survey/archive/refs/tags/v5.3.0.tar.gz
-	sha256sums = 9e89f7a084c6b4bb39963e177e8a3f837a355fc2308a9610c5faa6ee42f38f96
+	source = python-survey-5.4.2::https://github.com/Exahilosys/survey/archive/refs/tags/v5.4.2.tar.gz
+	sha256sums = f06c53e49b83ea808121687cacb0f923a3ed127fdf78e4a656d28ce173440a03
 
 pkgname = python-survey

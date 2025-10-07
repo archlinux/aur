@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=python-survey
-pkgver=5.3.0
+pkgver=5.4.2
 pkgrel=1
 pkgdesc='A simple library for creating beautiful interactive prompts.'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools'
              'python-sphinx_rtd_theme'
              'python-wheel')
 source=("${pkgname}-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e89f7a084c6b4bb39963e177e8a3f837a355fc2308a9610c5faa6ee42f38f96')
+sha256sums=('f06c53e49b83ea808121687cacb0f923a3ed127fdf78e4a656d28ce173440a03')
 
 prepare() {
 	cd "${pkgname#python-}-$pkgver/docs"
