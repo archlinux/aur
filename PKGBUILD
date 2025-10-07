@@ -3,22 +3,20 @@
 # Maintainer: Eric Ozwigh <ozwigh at gmail dot com>
 
 pkgname=eclipse-pydev
-pkgver=12.2.0
+pkgver=13.1.0
 pkgrel=1
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
 arch=('any')
 license=('EPL')
-# after moving Eclipse to AUR (why?) there is a mess with a bunch of packages.
-# this one is for "eclipse-platform" and other packages which uses correct
-# "provides=eclipse" option.
-depends=('java-environment>=11' 'eclipse>=4.6')
-# for "eclipse-common/etc/etc" uncomment the next line.
-#depends=('java-environment>=8' 'eclipse-common>=4.6')
+depends=('java-runtime>=17' 'eclipse>=4.6' 'python>=3.8')
+# Note: for the "eclipse-*" packages without "provides=('eclipse=X.YY')"
+# declaration, please edit the "depends" line above manually.
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
+options=('!strip')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
-sha1sums=('f482397f99ab94dcefa119bd386640f586a5252a')
+sha1sums=('4bf0c5c022dadf2b9dc8cf2ef7d54f25b77e3f26')
 
 package() {
   _dest="${pkgdir}/usr/lib/eclipse/dropins/pydev"

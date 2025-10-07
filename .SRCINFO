@@ -1,15 +1,17 @@
 pkgbase = eclipse-pydev
 	pkgdesc = Python IDE for Eclipse
-	pkgver = 12.2.0
+	pkgver = 13.1.0
 	pkgrel = 1
 	url = http://pydev.org/
 	arch = any
 	license = EPL
 	makedepends = unzip
-	depends = java-environment>=11
+	depends = java-runtime>=17
 	depends = eclipse>=4.6
+	depends = python>=3.8
 	conflicts = eclipse-aptana
-	source = PyDev_12.2.0.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%2012.2.0/PyDev%2012.2.0.zip
-	sha1sums = f482397f99ab94dcefa119bd386640f586a5252a
+	options = !strip
+	source = PyDev_13.1.0.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%2013.1.0/PyDev%2013.1.0.zip
+	sha1sums = 4bf0c5c022dadf2b9dc8cf2ef7d54f25b77e3f26
 
 pkgname = eclipse-pydev
