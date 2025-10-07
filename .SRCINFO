@@ -1,13 +1,13 @@
 pkgbase = sshpilot
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
-	pkgver = 4.2.1
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/mfat/sshpilot
 	arch = any
 	license = GPL-3.0-only
 	depends = python
-	source = sshpilot-4.2.1.tar.gz::https://github.com/mfat/sshpilot/archive/refs/tags/v4.2.1.tar.gz
-	sha256sums = f35f695715d9d349c56d1cbed47b5c2aa61a0cd8ae368a864bc4517ddf162bdf
+	source = sshpilot-4.3.0.tar.gz::https://github.com/mfat/sshpilot/archive/refs/tags/v4.3.0.tar.gz
+	sha256sums = e07d84b415183ca540967615d1933ae9fd835501a5906bfeefd603220ee19544
 
 pkgname = sshpilot
 	depends = python
