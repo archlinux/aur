@@ -1,11 +1,12 @@
 pkgbase = plasma6-wallpapers-application
 	pkgdesc = Set an arbitrary application as your Plasma 6 background
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/dos/plasma-wallpaper-application
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	optdepends = xwayland-run: for launching X11 applications
 	source = plasma-wallpaper-application-1.1.tar.gz::https://invent.kde.org/dos/plasma-wallpaper-application/-/archive/v1.1/plasma-wallpaper-application-v1.1.tar.gz
