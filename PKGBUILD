@@ -1,14 +1,14 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="clipsim-git"
-pkgver=r630.407e7d9
+pkgver=r670.fc0e881
 pkgrel=1
 pkgdesc="clipsim is a simple and fast X clipboard manager written in C."
 arch=(x86_64)
 url='https://github.com/lucas-mior/clipsim'
 groups=()
 license=(AGPL)
-depends=(xclip libxfixes)
+depends=(xclip libxfixes libxi)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
