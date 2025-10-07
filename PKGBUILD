@@ -1,8 +1,8 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=5ire-extracted
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.14.1
+pkgrel=1
 pkgdesc="5ire - cross-platform desktop AI assistant (extracted from Appimage)"
 arch=('x86_64')
 url="https://github.com/nanbingxyz/5ire"
@@ -13,7 +13,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/nanbingxyz/5ire/refs/heads/main/LICENSE"
 )
 sha256sums=(
-    "67538593d1e34f4bf01c0b631144079ec5a3df2a26ff7c9522432c630aa6247a"
+    "3f6ff3f1dfb674c10d8245d902e686b426aee3114e08193ba0ae08250750fc78"
     "SKIP"
 )
 
