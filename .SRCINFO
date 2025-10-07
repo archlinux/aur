@@ -43,6 +43,8 @@ pkgname = jdk25-openjdk-wakefield
 	pkgdesc = OpenJDK Java 25 wayland development kit
 	install = install_jdk-openjdk.sh
 	depends = java-runtime-common>=3
+	depends = wayland
+	depends = wayland-protocols
 	depends = ca-certificates-utils
 	depends = freetype2
 	depends = gcc-libs
@@ -105,6 +107,8 @@ pkgname = jre25-openjdk-wakefield
 	pkgdesc = OpenJDK Java 25 wayland full runtime environment
 	install = install_jre-openjdk.sh
 	depends = java-runtime-common>=3
+	depends = wayland
+	depends = wayland-protocols
 	depends = ca-certificates-utils
 	depends = freetype2
 	depends = gcc-libs
@@ -150,6 +154,8 @@ pkgname = jre25-openjdk-headless-wakefield
 	pkgdesc = OpenJDK Java 25 wayland headless runtime environment
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
+	depends = wayland
+	depends = wayland-protocols
 	depends = ca-certificates-utils
 	depends = freetype2
 	depends = gcc-libs
