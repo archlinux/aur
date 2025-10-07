@@ -8,6 +8,7 @@ url="https://cytrence.com"
 license=('custom')
 depends=('glibc')
 makedepends=('unzip')
+install=cytrence-kiwi.install
 options=('!strip')
 source=("https://www.cytrence.com/_files/archives/5418d8_c3e1ac49a6cf4509b4b3d0ed769e89b5.zip")
 sha256sums=('4e2b78027d55164c811ff086b41e5d78dcdd1784a858516e1ffa00d8c503a762')

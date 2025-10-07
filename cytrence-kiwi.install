@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> Cytrence Kiwi has been installed."
+    echo "==> If you are not already in the 'uucp' group, add yourself with:"
+    echo "    sudo usermod -a -G uucp \$USER"
+    echo "==> Then log out and log back in for the changes to take effect."
+    echo ""
+    echo "==> Note: The application may show a 'dialout' group warning, but 'uucp'"
+    echo "==> is the Arch equivalent and the app should function as expected."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
