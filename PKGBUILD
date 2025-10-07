@@ -16,13 +16,13 @@ sha256sums=('SKIP')
 install=fw12rotate-git.install
 
 pkgver() {
-  cd FW12Rotate
+  cd fw12rotate
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd FW12Rotate
-  g++ FW12Rotate.cpp -o fw12rotate  # Use actual upstream filename (case-sensitive); output lowercase for convention
+  cd fw12rotate
+  g++ fw12rotate.cpp -o fw12rotate  # Use actual upstream filename (case-sensitive); output lowercase for convention
 }
 
 package() {
