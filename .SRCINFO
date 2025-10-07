@@ -1,12 +1,12 @@
 pkgbase = chsrc
 	pkgdesc = A cli tool to change source for every software on every platform
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 3
 	url = https://github.com/RubyMetric/chsrc
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = MIT
-	source = chsrc-0.2.2.tar.gz::https://github.com/RubyMetric/chsrc/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 9985c8e3be047ba47d54650ec284a28314d3221be2636a8c031744241c01f482
+	source = chsrc-0.2.3.tar.gz::https://github.com/RubyMetric/chsrc/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = d33df6abe8269c8abdaadc5b1cfde8a53676d1a52db659688ffdf3a605647ce9
 
 pkgname = chsrc
