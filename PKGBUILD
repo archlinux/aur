@@ -1,5 +1,5 @@
 pkgname=aptos-bin
-pkgver=7.9.0
+pkgver=7.9.1
 pkgrel=1
 pkgdesc="Command-line interface for interacting with the Aptos blockchain"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('debugedit' 'fakeroot')
 source=("https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v${pkgver}/aptos-cli-${pkgver}-Linux-x86_64.zip")
-sha256sums=('004378f728338ccb2f83a68f199e9fe09051376c863774b7a3f65ebe1709b9b1')
+sha256sums=('e5699d9289181e5afd60c6bb7bb84b41355a6ab0738452312c9278482add962c')
 
 package() {
   cd "$srcdir"
