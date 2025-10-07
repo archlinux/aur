@@ -20,11 +20,14 @@ source=("$pkgname-$pkgver.tar.gz::file:///home/artem/Downloads/SuperLauncher/sup
 md5sums=('fe57ea7a45eadc72bf7cf2e366258fd2')
 
 package() {
-    cd "$srcdir"  # ИЛИ укажи правильное имя папки!
+    cd "$srcdir"
 
     install -Dm755 SuperLauncher.py "$pkgdir/usr/bin/superlauncher-mc"
     install -d "$pkgdir/usr/share/superlauncher-mc"
     cp -r assets "$pkgdir/usr/share/superlauncher-mc/"
+
+    # ДОБАВЛЯЕМ ЭТУ СТРОЧКУ ПЕРЕД СОЗДАНИЕМ .desktop ФАЙЛА!
+    install -d "$pkgdir/usr/share/applications"
 
     # Десктоп файл
     cat <<EOF > "$pkgdir/usr/share/applications/superlauncher-mc.desktop"
