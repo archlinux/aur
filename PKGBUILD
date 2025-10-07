@@ -6,7 +6,7 @@
 _projectname='mongodb'
 _pkgname="php-$_projectname"
 pkgname="${_pkgname}1"
-pkgver='1.21.1'
+pkgver='1.21.2'
 pkgrel='1'
 pkgdesc='MongoDB driver for PHP - 1.x version'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://pecl.php.net/get/$_projectname-$pkgver.tgz"
 	"$_projectname.ini"
 )
-b2sums=('06752e8baf39d6da2dd926fcdb6dfe716ab56eed6d0585ad3eeb14df55bcf5455c47cf186fcf564e031ed850f9491e4e461eb3b2abd5cdc3be29ddbad8b94c86'
+b2sums=('244ded20a1dd5958bd6b5b7038190be8178c774f96fab10a80bb5e9b8cb5416697b732baadf423007a9c828f5612a2f71e6f85f1669d4fec4905b42ea1c5cbe1'
         '24f0f8745143e0e5c87d811f27486520c515f6b3cdf903474d593b268bec31cfd8da68207575562ea55ada37a1db1c786c0fc4f8094b1964f4b2818cd81fe925')
 
 _sourcedirectory="$_projectname-$pkgver"
