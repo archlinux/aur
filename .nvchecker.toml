@@ -1,0 +1,5 @@
+["duckdb"]
+source = "github"
+github = "duckdb/duckdb"
+use_latest_release = true
+prefix = "v"

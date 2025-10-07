@@ -7,9 +7,9 @@ pkgname=(
   "duckdb"
   "python-duckdb"
 )
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
-_pyhash=a0837438fb43be451a7d4a04650aaaf662b2ff2d95895bbffe3e0e28cbe030c9
+_pyhash=17fc9b958751f0116d7b0406406b07fa6f5a10c22d699be27826d0b896f9bf51
 _pyverstr=cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64")
@@ -34,8 +34,8 @@ makedepends=(
 )
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v$pkgver.tar.gz"
         "https://files.pythonhosted.org/packages/${_pyhash:0:2}/${_pyhash:2:2}/${_pyhash:4}/duckdb-${pkgver}-$_pyverstr.whl")
-b2sums=('22e768dc3a0e2cb197c9ebd111a453d8a51aede61404d3c49d4e0e4507b655c675c72e506baa7b0834d49ba4687a76b2b13965051cd0d1a1cd4d442964345881'
-        '5b7a7d1d36713d3363a1647e0c82f1da2ad8ed88a0c1c5cf219d38a304495c469e9c5fd54c414f2842f3410616e64b0f79ca3dd0258b103256889309df4acda3')
+b2sums=('1f845cb39965c9d5f5ac5005286aed233ab710d435cbbcd6ebcaaf26db797cd8d5f72e687be2591d9d427f315806fab26d9521d6e8c9335c843bd662282bcb2e'
+        'fe97f352d9d2c629f54ef1e209d587fbe4e05cca907ff8118f6e80762a61363cf4ca240dec79d1fd312a347920089bd27f25ff292bb42162f7fbb05967b210ae')
 
 prepare() {
   cmake \
