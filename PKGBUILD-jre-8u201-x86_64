@@ -2,7 +2,7 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.57V2
+pkgver=1.4.58V1
 pkgrel=0
 _java_version=8u201
 _java_dir=jre1.8.0_201
@@ -15,12 +15,12 @@ license=('MIT')
 
 
 source=(
-	"http://beta.xmage.today/files/mage-full_1.4.57-dev_2025-04-19_14-28.zip"
+	"http://beta.xmage.today/files/mage-full_1.4.58-dev_2025-10-06_20-40.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png'
 	'http://xmage.today/java/jre-8u201-linux-x64.tar.gz'
 )
-sha256sums=("11e69477cd5faa23c3a8788c3fce84f60b5d162e78e4f2017c281bd62e59e62d" 
+sha256sums=("50eb7157eca40c81fe3cb8cbac2eba46eb7dd88230da20c75b0bc9db2b66500b" 
 	"SKIP"
 	"SKIP"
 	'12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352'
