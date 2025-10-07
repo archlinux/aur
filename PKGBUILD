@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Lucas Oskorep <lucas.oskorep@gmail.com>
 pkgname=cytrence-kiwi
 pkgver=1.3.14
 pkgrel=1
