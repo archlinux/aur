@@ -14,9 +14,13 @@ makedepends=('mate-common' 'perl-xml-parser' 'yelp-tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('beb0ee598d7fd623a7e9daee2a10eef5ca40445a47d72b042f4ecc2786b4246e')
 
-build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+prepare() {
+    cd "${pkgname}-${pkgver}"
     ./autogen.sh
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
     ./configure \
         --prefix=/usr \
         --libexecdir=/usr/lib/${pkgname}
@@ -24,7 +28,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
     rm -f "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
