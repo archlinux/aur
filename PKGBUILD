@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 
-_upstreamver='0.6.2'
+_upstreamver='0.7.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='spyder-notebook'
@@ -18,7 +18,7 @@ depends=('python' 'spyder' 'jupyter-nbformat' 'python-pytest' 'python-traitlets'
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('c9a5ceb96077cc87f820df55fd03cab7ad31ab691387a0ca76f0e117d7cd04cc')
+sha256sums=('01c018a63576d0c255eea3b927e1bfa7cbf017a7d6e585957ac4794bcc3c0e6c')
 
 
 build() {
