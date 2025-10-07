@@ -7,5 +7,4 @@ python ~/.cache/yay/openmc-git/test_openmc.py
 # clean
 rm *.xml
 rm *.h5
-rm *.stl
 rm *.h5m
