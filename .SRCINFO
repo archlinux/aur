@@ -1,0 +1,16 @@
+pkgbase = conservation-daemon-bin
+	pkgdesc = Battery conservation mode daemon for Lenovo Yoga/IdeaPad
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.marcorealacci.me/marcorealacci/conservation-daemon
+	license = MIT
+	depends = upower
+	conflicts = conservation-daemon
+	provides = conservation-daemon
+	provides = conservationd
+	provides = conservationctl
+	arch = x86_64
+	source_x86_64 = https://git.marcorealacci.me/marcorealacci/conservation-daemon/releases/download/0.0.1/conservation-daemon_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c2bc61752b0084f65b34447f30f34f401879837ed2a7a7cf729898064cb0fa70
+	
+pkgname = conservation-daemon-bin

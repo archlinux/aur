@@ -1,0 +1,29 @@
+post_install() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload || true
+    systemctl enable --now conservationd.service || true
+  fi
+}
+
+pre_upgrade() {
+  :
+}
+
+post_upgrade() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload || true
+    systemctl restart conservationd.service || true
+  fi
+}
+
+pre_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl disable --now conservationd.service || true
+  fi
+}
+
+post_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload || true
+  fi
+}
