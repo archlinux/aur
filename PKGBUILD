@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-lottie-static
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A family of player software for a certain json-based file format for describing 2d vector graphics animations (mingw-w64)'
 depends=('mingw-w64-qt6-base-static')
 optdepends=('mingw-w64-qt6-declarative-static: QML bindings')
-makedepends=('mingw-w64-cmake-static' 'mingw-w64-qt6-declarative-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja')
+makedepends=('mingw-w64-cmake-static' 'mingw-w64-qt6-declarative-static' 'mingw-w64-qt6-svg-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-lottie' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtlottie-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a4df93d2dd5c5942f1dc23e29667199fbf5cfaba84a51e6a9ffc874b967e31c6')
+sha256sums=('70a413af5bc20a28d79c74a4182a1bb23f0709306721dc4878106891e5a87b25')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
