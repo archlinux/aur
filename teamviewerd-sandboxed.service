@@ -1,0 +1,46 @@
+[Unit]
+Description=TeamViewer Daemon (Sandboxed)
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/teamviewer/tv_bin/teamviewerd -d
+PIDFile=/run/teamviewerd.pid
+
+# Security Sandboxing
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectSystem=strict
+ReadWritePaths=/var/log/teamviewer15 /run
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_SYS_PTRACE
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources @obsolete @debug @mount @swap @reboot @module @raw-io
+PrivateTmp=yes
+ProtectHome=read-only
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+MemoryDenyWriteExecute=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProcSubset=pid
+PrivateDevices=yes
+DevicePolicy=closed
+DeviceAllow=/dev/null rw
+DeviceAllow=/dev/zero rw
+DeviceAllow=/dev/urandom r
+DeviceAllow=/dev/random r
+DeviceAllow=char-tty rw
+RemoveIPC=yes
+PrivateMounts=yes
+MountFlags=slave
+
+[Install]
+WantedBy=multi-user.target

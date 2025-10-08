@@ -1,0 +1,27 @@
+post_install() {
+  cat << "EOF"
+You'll need to enable the daemon to use TeamViewer:
+  sudo systemctl enable --now teamviewerd
+
+IMPORTANT: Make sure bwrap is setuid otherwise user namespacing will not work
+and TeamViewer GUI will not start, it will wait 5 seconds and exit.
+  sudo chmod u+s /usr/bin/bwrap
+
+To add custom bind mounts (e.g., for file transfers):
+  TEAMVIEWER_EXTRA_BINDS="--bind $HOME/Downloads $HOME/Downloads" teamviewer
+EOF
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet teamviewerd.service; then
+    echo "Restarting teamviewerd.service..."
+    systemctl daemon-reload
+    systemctl restart teamviewerd.service
+  fi
+}
+
+post_remove() {
+  rm -rf /opt/teamviewer
+}
+
+# vim: ts=2 sw=2 et:
