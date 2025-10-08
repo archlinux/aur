@@ -1,0 +1,4 @@
+[python-fitbit]
+source = "git"
+git = "https://github.com/orcasgit/python-fitbit.git"
+prefix = "v"
