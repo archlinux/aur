@@ -2,7 +2,7 @@
 
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
-pkgver=0.3.6.r0.gf1c1e5a
+pkgver=0.4.0.r0.g20e05dc
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & yt-dlp."
 arch=("x86_64")
