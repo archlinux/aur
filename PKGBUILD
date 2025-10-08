@@ -1,8 +1,8 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=python-sdbus
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.14.1
+pkgrel=1
 pkgdesc="Modern Python library for D-Bus"
 url="https://github.com/python-sdbus/python-sdbus"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/python-sdbus/python-sdbus/archive/${pkgver}.tar.gz")
-sha256sums=('b51aefe18037ab7043fd08e06c1d58a6105f7830b03a240c7ee95591060c45e1')
+sha256sums=('691af2fdd3f0dc8c8d52dae819d0ba1c839d675b48433b169dfe54d8cf45bcf9')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
