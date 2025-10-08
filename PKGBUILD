@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.11.0.r60.g109b239
+pkgver=0.11.0.r62.g999960a
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -58,7 +58,6 @@ source=(
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
-	"fix-fmt12.patch"
 )
 b2sums=(
 	'SKIP'
@@ -70,7 +69,6 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'd7adcb7f9778ab2ce66e00f91e4321ce22c73a9c89e12f64abe130d72031fe467601a16a778fbdb0364cc6a89622325531159b37d5f1797d551f56e7831d55c4'
 )
 
 pkgver() {
@@ -89,8 +87,6 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# fix build
-	patch -Np1 < ../fix-fmt12.patch
 	# remove hardcoded flag
 	sed -i '/-march=/d' CMakeLists.txt
 }
