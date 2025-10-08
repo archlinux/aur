@@ -1,13 +1,13 @@
 pkgbase = jiffy-bin
 	pkgdesc = A terminal based, app launcher, basic calculator, emoji picker, color picker, and extendable with custom command palette, for Linux.
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/5hubham5ingh/jiffy
 	arch = x86_64
 	license = unknown
 	depends = fzf
-	optdepends = ghostty: for displaying app icons
 	optdepends = kitty: for displaying app icons
+	conflicts = jiffy
 	options = !debug
 	source = https://github.com/5hubham5ingh/jiffy/releases/download/v1.6.1/jiffy-linux-86_64.tar.gz
 	sha512sums = 8da4dd670d5a5190a2b1175a7226a87245b585e4eae25832fd94b7c1fd520cbe07094a15be271c3fa30de903c4d277a280c2969a94d6fb5d078effa65cdb7d1c
