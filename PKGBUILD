@@ -8,7 +8,7 @@ _sdl_gcdb_commit=dce2d3593c6a96a57716d13d58aa3b1d4965fe6f  # This needs to be up
 pkgname=spaghettikart
 pkgver=0.9.9.1
 _vertag=Latest2
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial native port of Mario Kart 64"
 license=("unknown" "MIT")
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -29,7 +29,7 @@ sha256sums=('5c3e79f8440f65c0f36270a781f26f9b83ecd58de2e414c68b4bb0a057707d69'
             'c4809596a77415d7376691aa80bdee601b358613a196ad6cf59fdf4185c03227'
             '40691d2f05679d6c96a33bb8382fd0f4ca09d2c932532aa1aa51de3df635eeb4'
             'a401e7784adb216419677d401b14f2c8b1b3247d00e35f617ea5900da3ea409e'
-            '58ca287451b554d74ba391865668ea0afcc60f9d58ff8e5fd4d4570f45d13991'
+            '80cb215a02a38d5148bf9084721774427857fd6ba187609156439a391d25907e'
             '906d6265cf744c6f988f39b5986232304801a8a49aea1e39cf8911bd83ddc497'
             '29506f5deaa631bd0ee17e4a89737e0dc12bee1d71041e0b24bbb59b660c8039'
             '4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e')
