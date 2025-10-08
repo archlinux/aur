@@ -2,7 +2,7 @@
 
 pkgname=rime-moe-pinyin-git
 pkgver=4.2.r15.g291b65a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="moeOS RIME 全拼方案. 简洁, 现代."
 arch=('any')
@@ -12,10 +12,8 @@ depends=("rime-pinyin-moegirl" "rime-pinyin-zhwiki")
 provides=('rime-moe-pinyin')
 conflicts=('rime-moe-pinyin')
 source=(
-	pinyin::"git+https://github.com/Kimiblock/moeOS-pinyin.git"
-	wanxiang-lts-zh-hans.gram::"https://github.com/Kimiblock/moeOS-pinyin/raw/refs/heads/master/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram")
-sha256sums=('SKIP'
-            'SKIP')
+	pinyin::"git+https://github.com/Kimiblock/moeOS-pinyin.git")
+sha256sums=('SKIP')
 makedepends=("git" "git-lfs")
 
 function pkgver() {
@@ -34,10 +32,6 @@ function package() {
 	mkdir -p "${pkgdir}/usr/share"
 	cp "${srcdir}/pinyin/rime-data" -r "${pkgdir}/usr/share"
 	install -Dm644 "${srcdir}/pinyin/default.yaml" "${pkgdir}/usr/share/moeOS-Docs/ibus-rime.conf.d/default.yaml"
-	for dir in $(ls "${pkgdir}/usr/share/rime-data/others"); do
-		rm -rf "${pkgdir}/usr/share/rime-data/others/${dir}/.git"
-	done
-	install -Dm644 "${srcdir}/wanxiang-lts-zh-hans.gram" "${pkgdir}/usr/share/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram"
 	chmod -R 755 "${pkgdir}/usr/share/rime-data"
 }
 

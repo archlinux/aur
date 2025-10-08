@@ -1,7 +1,7 @@
 pkgbase = rime-moe-pinyin-git
 	pkgdesc = moeOS RIME 全拼方案. 简洁, 现代.
 	pkgver = 4.2.r15.g291b65a
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Kimiblock/moeOS-pinyin
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = rime-moe-pinyin-git
 	provides = rime-moe-pinyin
 	conflicts = rime-moe-pinyin
 	source = pinyin::git+https://github.com/Kimiblock/moeOS-pinyin.git
-	source = wanxiang-lts-zh-hans.gram::https://github.com/Kimiblock/moeOS-pinyin/raw/refs/heads/master/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rime-moe-pinyin-git
