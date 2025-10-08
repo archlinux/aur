@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Berke Minecraft Launcher
+Comment=Advanced Minecraft launcher with mod support and performance monitoring
+Exec=berke-minecraft-launcher
+Icon=berke-minecraft-launcher
+Terminal=true
+Categories=Game;Emulator;
+Keywords=minecraft;launcher;gaming;java;
+StartupNotify=true
+MimeType=application/x-minecraft-save;
