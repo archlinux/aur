@@ -11,6 +11,7 @@ pkgbase = qdvd
 	source = https://sourceforge.net/projects/qdvd/files/qdvd-2.4.1-qt6/qdvdauthor-2.4.1-002.tar.gz
         source = found_ffmpeg.patch
         source = mathops_fix.patch
+        source = qxinewidget_stack_smashing_detected_fix.patch
 	sha256sums = 8bb0c53c5b16266be177042b35ca6148fe9dff22c6023cd103f4472c41d3db55
 
 pkgname = qdvd
