@@ -1,6 +1,6 @@
 pkgbase = lazyssh-bin
 	pkgdesc = A terminal-based SSH manager inspired by lazydocker and k9s
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Adembc/lazyssh
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = lazyssh-bin
 	depends = glibc
 	provides = lazyssh
 	conflicts = lazyssh
-	source_x86_64 = lazyssh-x86_64-0.2.1.tar.gz::https://github.com/Adembc/lazyssh/releases/download/v0.2.1/lazyssh_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6d94d288c6c18985f988db035fc0da66f306c291801a2f9a8ea7e28cab8bb60f
-	source_i686 = lazyssh-i686-0.2.1.tar.gz::https://github.com/Adembc/lazyssh/releases/download/v0.2.1/lazyssh_Linux_i386.tar.gz
-	sha256sums_i686 = 32af8f3682145bd2c77e6c53120ccf2a1e4435731587e569a5c522377f532fb4
-	source_aarch64 = lazyssh-aarch64-0.2.1.tar.gz::https://github.com/Adembc/lazyssh/releases/download/v0.2.1/lazyssh_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a5e6a0e2b698b6ae099b890cafc94c631f67b4e020ffe1ee1570d9a28fb78271
+	source_x86_64 = lazyssh-x86_64-0.3.0.tar.gz::https://github.com/Adembc/lazyssh/releases/download/v0.3.0/lazyssh_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3e87196faf748905f98062040d5a0e056de0e0eb0247413b70c2fc03c3928ad9
+	source_i686 = lazyssh-i686-0.3.0.tar.gz::https://github.com/Adembc/lazyssh/releases/download/v0.3.0/lazyssh_Linux_i386.tar.gz
+	sha256sums_i686 = 761f9d46a39d71cd0ccfebe7d3d7622baa791be877f907f146d46167c7954058
+	source_aarch64 = lazyssh-aarch64-0.3.0.tar.gz::https://github.com/Adembc/lazyssh/releases/download/v0.3.0/lazyssh_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d859663160af7d7752ec7bccfa1b6dcff5cb2d2a03cfb1d04b3a1127171f5e35
 
 pkgname = lazyssh-bin
