@@ -3,7 +3,7 @@
 _sdk=8.0
 _Name="PixiEditor"
 pkgname="${_Name,,}"
-pkgver=2.0.1.16
+pkgver=2.0.1.17
 pkgrel=1
 pkgdesc="All-in-one solution for 2D image editing"
 arch=('aarch64' 'x86_64')
@@ -23,7 +23,7 @@ options=('!strip' '!debug')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('1e372756767f0b29b87772db1d1de3ed0c9b85dac1cf7a1c0cb32d9aee088057df33a639487d7f6040f7bee832faaa76f7ee5013a22063d8573874ae563f9d29'
+b2sums=('a6b0c42977e030277818fd2f65d9bfd804b402cd80d40c371a641507f01116495f01a32383be8625eb80a497a9de77d01cdce7388b7922e2b8a05f506fa81887'
         'b9be9f4a0b1ad75b01ebc6a6b57966df3343f0de09ee7ffde3f05dfba140fc6c0e638573c863fad8a77b359039ac3aaba875650226b5df9fa3ec05ba9686fdd0'
         'bc927eb22e51f9340c9cf5011ddf9a8e2e401e7ec52a25e115e3ba9a777811522d7cab5cc120a47255ace864cc06f58ad49a75a569e25a0108597633bac41f75'
         'e92f39010f436d4800e8cef8bc12fa17b1a43b7faed63bf22f35475085f384f0e820edf4fc955d7441f45db022bc2fa64c4d95478fef45eec63e52dda3f058a6'
