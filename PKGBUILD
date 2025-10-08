@@ -15,8 +15,8 @@ arch=("any")
 url="https://github.com/dbatten5/${_pkgname}"
 license=("MIT")
 depends=("python" "python-click" "python-toml")
-makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
-checkdepends=("python-coverage" "python-pydantic" "python-pytest" "python-six")
+makedepends=("python-build" "python-installer" "python-wheel")
+checkdepends=("python-coverage" "python-pydantic" "python-pytest" "python-six" "uv")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("7ae08c438287541225ca48471897411d888f81af2db68a0fffc507bd1939a6e4f04f256eb27e95c0ea84a8e3e8e4ac21e27d5541353edf8f2fe2236073d93af1")
 
@@ -30,11 +30,8 @@ build()
 check()
 {
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
-    poetry install
-    # shellcheck disable=SC1091
-    source ./.venv/bin/activate
-    pytest
-    deactivate
+    uv sync
+    uv run pytest
 }
 
 package()
