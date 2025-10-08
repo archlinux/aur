@@ -7,7 +7,7 @@
 
 pkgname=nnn-emoji-git
 _pkgname=nnn
-pkgver=5.0.r23.gab375de7
+pkgver=5.1.r29.gb81109d1
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written (with emoji as file icons)."
 arch=('x86_64')
