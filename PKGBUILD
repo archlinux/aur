@@ -7,7 +7,7 @@
 # https://github.com/Floorp-Projects/Floorp-runtime
 
 ## options
-: ${_build_pgo:=false}
+: ${_build_pgo:=true}
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
@@ -16,15 +16,14 @@
 
 : ${_build_limit_cores:=false}
 
-: ${_deno_ver:=2.5.0}
-: ${_tag_runtime:=passed-20250916165207}
-: ${_hash_runtime=46770b022c1e5a0c9b179b66cd6c3ef24aebb499c391ad4f9cdefebeb3360c9d}
-: ${_hash_floorp=6550805ec0f35142654dc6c95994df5775d0467637775af308753835c1e07afc}
+: ${_tag_runtime:=passed-20251005094429}
+: ${_hash_floorp=610b5ed98aaa796c563bc9175c8f251477b2d7d61fdfe8c931f45e3aa779e100}
+: ${_hash_runtime=715868a7630195812dcf276b2b2e23480308c8014f8c2f12015bd8e653144e7d}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.2.0
-pkgrel=2
+pkgver=12.2.1
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -51,6 +50,7 @@ makedepends=(
   cargo
   cbindgen
   clang
+  deno
   diffutils
   dump_syms
   git
@@ -103,43 +103,29 @@ options=(
   !strip
 )
 
-_source_floorp() {
-  _pkgsrc="Floorp-$pkgver"
-  _pkgsrc_runtime="Floorp-runtime-$_tag_runtime"
-  _pkgext="tar.gz"
-  source=(
-    "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
-    "$_pkgname-runtime-${_tag_runtime#passed-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
-    "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
-    #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
-    "$_pkgname.desktop"
-  )
-  sha256sums=(
-    "${_hash_floorp:-SKIP}"
-    "${_hash_runtime:-SKIP}"
-    'SKIP'
-    #'SKIP'
-    '00ac63fe0331de13e418b5d6552bda95cb3a00267feccf07afa49600e810f65a'
-  )
-}
-
-_source_deno() {
-  local _deno_url="https://github.com/denoland/deno"
-  source_x86_64+=("deno-x86_64-v$_deno_ver.zip"::"$_deno_url/releases/download/v$_deno_ver/deno-x86_64-unknown-linux-gnu.zip")
-  sha256sums_x86_64+=('4561adb06b13f287a3785276cb29f377b7ffb49d54290178223b037e161446d3')
-
-  source_aarch64+=("deno-aarch64-v$_deno_ver.zip"::"$_deno_url/releases/download/v$_deno_ver/deno-aarch64-unknown-linux-gnu.zip")
-  sha256sums_aarch64+=('81d2ef446954429f0dcbcb24cdce115e5bb2c3a3548b79c01b49ec959682ac9b')
-}
+_pkgsrc="Floorp-$pkgver"
+_pkgsrc_runtime="Floorp-runtime-$_tag_runtime"
+_pkgext="tar.gz"
+source=(
+  "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
+  "$_pkgname-runtime-${_tag_runtime#passed-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
+  "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
+  #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
+  "$_pkgname.desktop"
+)
+sha256sums=(
+  "${_hash_floorp:-SKIP}"
+  "${_hash_runtime:-SKIP}"
+  'SKIP'
+  #'SKIP'
+  '00ac63fe0331de13e418b5d6552bda95cb3a00267feccf07afa49600e810f65a'
+)
 
 _deno() {
   pushd "$srcdir/$_pkgsrc_runtime/floorp" > /dev/null || return
-  DENO_DIR="$srcdir/.deno" "$srcdir/deno" "$@"
+  deno "$@"
   popd > /dev/null || return
 }
-
-_source_floorp
-_source_deno
 
 prepare() (
   mkdir -p mozbuild
