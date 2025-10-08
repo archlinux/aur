@@ -1,0 +1,11 @@
+pkgbase = test_echo_pgk
+	pkgdesc = Test echo package
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	source = test_echo_pgk
+	sha256sums = SKIP
+
+pkgname = test_echo_pgk
