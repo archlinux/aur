@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.5.1.r0.g3d732aa
+pkgver=1.5.1.r10.gad333cb
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -11,7 +11,6 @@ depends=(
   'glu'
   'libnotify'
   'mangohud'
-  'pascube'
   'pciutils'
   'polkit'
   'qt6pas'
@@ -27,7 +26,9 @@ checkdepends=(
 )
 optdepends=(
   'git: Clone reshade repository'
+  'pascube: Run pasCube (beta)'
   'vkbasalt: Configure vkBasalt'
+  'vulkan-tools: Vulkan preview'
   'zenergy-dkms: Display AMD CPU power'
 )
 provides=("${pkgname%-git}")
@@ -51,6 +52,9 @@ prepare() {
 #  done
 
   mkdir -p build
+
+  # Don't use internet for AppStream validation
+  sed -i 's/--pedantic/--no-net --pedantic/g' Makefile
 }
 
 build() {
