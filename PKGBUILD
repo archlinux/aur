@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-tools
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,8 +19,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
-sha256sums=('d8b7f7e8e970cc0b975205fd6d5832ea917ef3e751df69b97439c1cddd67a489'
-            '6a3509cd0f4034cbfbe117531a436d92937be3d314670fab35b249b9c8da0122')
+sha256sums=('d86d5098cf3e3e599f37e18df477e65908fc8f036e10ea731b3469ec4fdbd02a'
+            '82b7b7405760e302465536afd62311105cf4e2a001040ce552b628e3f90bcd9c')
 
 prepare () {
   cd $_pkgfqn
