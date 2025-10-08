@@ -1,0 +1,19 @@
+pkgbase = python-fitbit
+	pkgdesc = Fitbit API Python client
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/orcasgit/python-fitbit
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-dateutil
+	depends = python-requests-oauthlib
+	source = https://github.com/orcasgit/python-fitbit/archive/refs/tags/0.3.1.tar.gz
+	sha512sums = 1a9ef9053d0ef5ea85bb36402be5fc1980b5e08e40d2ed81055777f714f197fc2db613977e749278d01d3f487cffe6625a7cc6208b3f0129d7de4baabcbc3644
+	b2sums = 2db00f5db3b217f07c7ace367941a1ba8c022ef1a26f86abfc09afd5f00ff97ecc93d4f2a21148529d9c78329fcc15c96c0bdecb9d03ba63638dd104902c0ea7
+
+pkgname = python-fitbit
