@@ -2,7 +2,7 @@
 _reponame=boxflat
 pkgname=$_reponame-git
 provides=($_reponame)
-pkgver=0.1.3
+pkgver=v0.1.4
 pkgrel=1
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
@@ -32,7 +32,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_reponame"
-  git describe --long --tags | cut -d "-" -f 1-2 | tr "-" "r"
+  git describe --long --tags | cut -c2- | cut -d "-" -f 1-2 | tr "-" "r"
 }
 
 package() {
