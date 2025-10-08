@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/pokeclicker"
+  rm -f package-lock.json
+  npm install
   npm ci
   npm run tl:init
   npm run build
