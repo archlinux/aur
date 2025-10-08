@@ -71,6 +71,7 @@ build() {
     pushd "discord-$discord_ver"
         # replace desktop file
         cp ../equicord.{desktop,png} .
+        cp {equicord,discord}.png
         rm discord.desktop
 
         # setuid on chrome-sandbox
