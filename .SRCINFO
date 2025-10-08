@@ -1,16 +1,16 @@
 pkgbase = docker-credential-pass
 	pkgdesc = Store docker credentials using the Standard Unix Password Manager (pass)
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/docker/docker-credential-helpers
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = pass
-	noextract = docker-credential-helpers-v0.9.3.tar.gz
-	source_x86_64 = docker-credential-helpers-v0.9.3.tar.gz::https://github.com/docker/docker-credential-helpers/archive/refs/tags/v0.9.3.tar.gz
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.9.3/LICENSE
-	sha256sums_x86_64 = 1111c403d50fc26bee310db8bed4fb7d98a43e88850e2ad47403e8f2e9109860
+	noextract = docker-credential-helpers-v0.9.4.tar.gz
+	source_x86_64 = docker-credential-helpers-v0.9.4.tar.gz::https://github.com/docker/docker-credential-helpers/archive/refs/tags/v0.9.4.tar.gz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.9.4/LICENSE
+	sha256sums_x86_64 = 6cb45cdd1e7f964fb15bc260f55238d90eb365d1d3d4cb7f41418637a9316a6d
 	sha256sums_x86_64 = a6c2a5fdf40879f644bdb0da9042f245e7e263237d623264aafcf2470610ad8c
 
 pkgname = docker-credential-pass
