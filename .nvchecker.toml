@@ -1,0 +1,5 @@
+[bobcat-terminal]
+source = "github"
+github = "ismail-yilmaz/Bobcat"
+use_latest_release = true
+prefix = "v"
