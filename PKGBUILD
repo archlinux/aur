@@ -3,7 +3,7 @@
 pkgbase=python-remind-caldav-git
 pkgname=python-remind-caldav-git
 _module='remind-caldav'
-pkgver=0.8.0.r1.g008fe09
+pkgver=0.8.0.r5.g6a375c4
 pkgrel=1
 pkgdesc="Tools to sync between 'remind' and CalDAV"
 url="https://github.com/jspricke/remind-caldav"
