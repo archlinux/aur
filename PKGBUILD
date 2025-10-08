@@ -18,6 +18,7 @@ makedepends=(
   yasm
 )
 depends=(
+  # Building AND Runtime dependencies.
   lib32-brotli
   lib32-freetype2
   lib32-libglvnd
@@ -29,6 +30,17 @@ depends=(
   lib32-libxinerama
   lib32-libxrandr
   lib32-pcre2
+  # Runtime Dependencies, Not sure but these ensure no errors, on my side.
+  lib32-glibc
+  lib32-fontconfig
+  lib32-libx11
+  lib32-wayland
+  lib32-glib2
+  lib32-libxext
+  lib32-libxfixes
+  lib32-libxkbcommon
+  lib32-alsa-lib
+  lib32-pipewire
 )
 optdepends=(
   'pipewire-alsa: for audio support'
@@ -96,7 +108,7 @@ build() {
     builtin_rvo2_2d=yes
     builtin_rvo2_3d=yes
     builtin_squish=yes # lib32-libsquish isn't available.
-    builtin_wslay=yes   # lib32-libwslay isn't available.
+    builtin_wslay=yes  # lib32-libwslay isn't available.
     builtin_xatlas=yes
     builtin_zlib=no
     builtin_zstd=no
@@ -124,7 +136,7 @@ package() {
   install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop "$pkgdir/usr/share/applications/org.godotengine.Godot32.desktop"
   install -Dm644 misc/dist/linux/org.godotengine.Godot.xml "$pkgdir/usr/share/mime/packages/org.godotengine.Godot32.xml"
-  
+
   # Patch upstream Godot.desktop
   sed -i \
     -e 's|Exec=godot|Exec=godot32|' \
