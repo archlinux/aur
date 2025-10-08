@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=rime-moe-pinyin-git
-pkgver=4.2.r8.g70b2d53
+pkgver=4.2.r15.g291b65a
 pkgrel=1
 epoch=1
 pkgdesc="moeOS RIME 全拼方案. 简洁, 现代."
@@ -26,6 +26,7 @@ function pkgver() {
 function prepare() {
 	cd pinyin
 	git submodule update --init --depth 1 --remote
+	./release.sh
 }
 
 function package() {
