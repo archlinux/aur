@@ -1,6 +1,6 @@
 % layout 'android-qt6-module';
 \
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -10,3 +10,7 @@ pkgdesc='Classes for audio, video, radio and camera functionality (android)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps declarative => 'QML bindings' %>)
 makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative shadertools) %> 'qt6-declarative' 'qt6-shadertools' 'ninja')
+% \
+% content_for before_env => begin
+  export ANDROID_MINIMUM_PLATFORM=28
+% end
