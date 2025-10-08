@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=python-onion-location-git
 pkgver=0.1.0
