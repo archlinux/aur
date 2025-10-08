@@ -1,0 +1,31 @@
+diff --git a/src/core/devtools/widget/frame_dump.cpp b/src/core/devtools/widget/frame_dump.cpp
+index 2445bdcb..1eaa7889 100644
+--- a/src/core/devtools/widget/frame_dump.cpp
++++ b/src/core/devtools/widget/frame_dump.cpp
+@@ -118,7 +118,8 @@ void FrameDumpViewer::Draw() {
+         SameLine();
+         BeginDisabled(selected_cmd == -1);
+         if (SmallButton("Dump cmd")) {
+-            auto now_time = fmt::localtime(std::time(nullptr));
++            auto time = std::time(nullptr);
++            auto now_time = *std::localtime(&time);
+             const auto fname = fmt::format("{:%F %H-%M-%S} {}_{}_{}.bin", now_time,
+                                            magic_enum::enum_name(selected_queue_type),
+                                            selected_submit_num, selected_queue_num2);
+diff --git a/src/core/libraries/save_data/dialog/savedatadialog_ui.cpp b/src/core/libraries/save_data/dialog/savedatadialog_ui.cpp
+index 006a4a32..cb71af70 100644
+--- a/src/core/libraries/save_data/dialog/savedatadialog_ui.cpp
++++ b/src/core/libraries/save_data/dialog/savedatadialog_ui.cpp
+@@ -98,10 +98,8 @@ SaveDialogState::SaveDialogState(const OrbisSaveDataDialogParam& param) {
+             PSF param_sfo;
+             param_sfo.Open(param_sfo_path);
+ 
+-            auto last_write = param_sfo.GetLastWrite();
+-            std::string date_str =
+-                fmt::format("{:%d %b, %Y %R}",
+-                            fmt::localtime(std::chrono::system_clock::to_time_t(last_write)));
++            auto last_write = std::chrono::system_clock::to_time_t(param_sfo.GetLastWrite());
++            std::string date_str = fmt::format("{:%d %b, %Y %R}", *std::localtime(&last_write));
+ 
+             size_t size = Common::FS::GetDirectorySize(dir_path);
+             std::string size_str = SpaceSizeToString(size);
