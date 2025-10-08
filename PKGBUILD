@@ -1,7 +1,7 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 pkgname=steamcommunity302
-pkgver=13.0.06
-pkgrel=2
+pkgver=13.0.07_fix
+pkgrel=1
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
@@ -10,8 +10,8 @@ license=('CC-BY-NC-4.0')
 depends=('nss' 'gtk3' 'glibc' 'gcc-libs' 'zlib' 'xorg-xhost')
 source_x86_64=("https://www.dogfight360.com/blog/wp-content/uploads/2025/08/steamcommunity_302_Linux_AMD64_V${pkgver}.tar.gz")
 source_aarch64=("https://www.dogfight360.com/blog/wp-content/uploads/2025/08/steamcommunity_302_Linux_ARM64_V${pkgver}.tar.gz")
-md5sums_x86_64=('4eb8e6c71c6fe83db3f99eb60e7e0e24')
-md5sums_aarch64=('37fde46a11cd63e03f5751895f1be513')
+md5sums_x86_64=('512d733cebc5a7884738cbb061147398')
+md5sums_aarch64=('69a8f2b03db1730c907a1e8f14a81f95')
 options=(!strip)
 backup=(
   opt/steamcommunity302/S302.ini
