@@ -1,0 +1,27 @@
+From a6b0eee015ecdef1f360fe296061ef7c63567a26 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 9 May 2025 22:26:39 +0200
+Subject: [PATCH 20/20] Fix Android build after
+ ec2e3e7ac92d000e0df0c693b9a636390d34a9eb
+
+Change-Id: I02563b129a949c36aff91a4645b6ee10a8cfba2c
+---
+ src/corelib/global/qlogging.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/corelib/global/qlogging.cpp b/src/corelib/global/qlogging.cpp
+index 440ced7a1e9..a758f83f0bc 100644
+--- a/src/corelib/global/qlogging.cpp
++++ b/src/corelib/global/qlogging.cpp
+@@ -203,7 +203,7 @@ static bool isFatal(QtMsgType msgType)
+     return false;
+ }
+ 
+-#if defined(Q_OS_LINUX) || defined(Q_OS_DARWIN) || defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
++#if (defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)) || defined(Q_OS_DARWIN) || defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+ static bool qt_append_thread_name_to(QString &message)
+ {
+     std::array<char, 16> name{};
+-- 
+2.51.0
+
