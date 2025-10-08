@@ -5,7 +5,7 @@
 # Contributor: Dale Blount <archlinux@dale.us>
 
 pkgname=fortune-mod-off
-pkgver=3.24.0
+pkgver=3.24.0 # renovate: datasource=github-tags depName=shlomif/fortune-mod
 pkgrel=1
 pkgdesc='The Fortune Cookie Program from BSD games, with the offensive quotes added back in'
 arch=('x86_64')
