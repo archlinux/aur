@@ -4,8 +4,8 @@
 
 _pkgname="kitshell"
 pkgname="kitshell-git"
-pkgver=r236.b5dfa3c
-pkgrel=3
+pkgver=r270.695de49
+pkgrel=1
 pkgdesc="An easy to use panel for Wayland WMs"
 arch=(x86_64)
 url="https://github.com/bootloopmaster636/kitshell"

@@ -1,7 +1,7 @@
 pkgbase = kitshell-git
 	pkgdesc = An easy to use panel for Wayland WMs
-	pkgver = r236.b5dfa3c
-	pkgrel = 2
+	pkgver = r270.695de49
+	pkgrel = 1
 	url = https://github.com/bootloopmaster636/kitshell
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -26,6 +26,7 @@ pkgbase = kitshell-git
 	depends = glibc
 	depends = gcc-libs
 	optdepends = kitshell-cmd-git: control Kitshell via command line
+	provides = kitshell
 	conflicts = kitshell
 	options = !debug
 	source = kitshell::git+https://github.com/bootloopmaster636/kitshell.git
