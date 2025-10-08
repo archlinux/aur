@@ -6,7 +6,7 @@
 pkgname=equicord
 _pkgname=Equicord
 pkgver=0.0.111.gb342a456
-pkgrel=1
+pkgrel=2
 pkgdesc='The other cutest Discord client mod'
 arch=('x86_64')
 url='https://equicord.org/'
@@ -71,7 +71,7 @@ build() {
     pushd "discord-$discord_ver"
         # replace desktop file
         cp ../equicord.{desktop,png} .
-        rm discord.{desktop,png}
+        rm discord.desktop
 
         # setuid on chrome-sandbox
         chmod u+s chrome-sandbox
