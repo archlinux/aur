@@ -13,7 +13,7 @@ url="https://gitlab.com/tango-controls/${_name}"
 license=("LGPL-3.0-or-later" "PSF-2.0")
 groups=("tango-controls")
 depends=(
-  "tango-cpp>=10.0.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11>=3.0.1" "ruff"
+  "tango-cpp>=10.0.0" "boost" "boost-libs" "python-numpy" "python-packaging" "python-psutil" "python-coverage" "pybind11>=3.0.1" "ruff" "python-ruff"
 )
 makedepends=(
   "cmake" "ninja"

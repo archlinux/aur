@@ -26,6 +26,7 @@ pkgbase = python-pytango
 	depends = python-coverage
 	depends = pybind11>=3.0.1
 	depends = ruff
+	depends = python-ruff
 	optdepends = python-pytest: for testing
 	optdepends = python-gevent: for testing
 	optdepends = python-opentelemetry-sdk: to add telemetry
