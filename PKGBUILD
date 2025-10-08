@@ -3,7 +3,7 @@
 
 pkgname="ghex-git"
 _appname="ghex"
-pkgver=48.0.r12.g88c3f27c
+pkgver=48.0.r14.g46438d11
 pkgrel=1
 pkgdesc='a hex editor for the GNOME desktop'
 url='https://gitlab.gnome.org/GNOME/ghex'
