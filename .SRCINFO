@@ -1,7 +1,7 @@
 pkgbase = python-pytango
 	pkgdesc = A python binding for the Tango control system
-	pkgver = 10.1.0rc1
-	pkgrel = 1
+	pkgver = 10.1.0
+	pkgrel = 3
 	url = https://gitlab.com/tango-controls/pytango
 	arch = x86_64
 	arch = armv7h
