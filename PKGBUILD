@@ -3,6 +3,7 @@
 # Contributor (original package maintainer): Ian Hernández <badwolfie@archlinux.info>
 # Contributor (updated Xavier's patch for 43.2): Bryan Lai <bryanlais@gmail.com>
 # Contributor (updated Xavier's patch for 44.1): DragoonAethis <dragoon@dragonic.eu>
+# Contributor (updated Xavier's patch for 49.0): Kevin MacMartin <prurigro@gmail.com>
 # Contributor (fix for backspace going to parent folder): Jeremy Bicha <jbicha@debian.org>
 # Contributor (current patch code): Xavier Claessens <xavier.claessens@collabora.com>
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
@@ -13,7 +14,7 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=48.0
+pkgver=49.0
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://apps.gnome.org/Nautilus/"
@@ -34,6 +35,7 @@ depends=(
   gtk4
   gvfs
   hicolor-icon-theme
+  icu
   libadwaita
   libcloudproviders
   libgexiv2
@@ -44,6 +46,7 @@ depends=(
   pango
   tinysparql
   wayland
+  xdg-user-dirs-gtk
 )
 makedepends=(
   appstream
@@ -54,8 +57,7 @@ makedepends=(
   pkgconfig
   glib2-devel
 )
-checkdepends=(python-gobject)
-_commit=be5f5af4bc28320e5485f8996709f7349d91a074
+_commit=a506a81265dfd9b9960bdad6ef382f1ee0b61e08
 source=(
   "git+https://gitlab.gnome.org/albertvaka/nautilus.git#commit=$_commit"
 )
@@ -80,10 +82,6 @@ build() {
   arch-meson nautilus build "${meson_options[@]}"
   meson compile -C build
 }
-
-#check() {
-#  meson test -C build --print-errorlogs
-#}
 
 _pick() {
   local p="$1" f d; shift
