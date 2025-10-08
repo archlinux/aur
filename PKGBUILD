@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=git-nautilus-icons
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/${pkgname}"
@@ -35,8 +35,4 @@ package() {
     python -m compileall -d / "${pkgdir}"/usr/share
     python -O -m compileall -d / "${pkgdir}"/usr/share
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    # Only small icons are shown in current nautilus - not useful, delete them so the
-    # more detailed ones are used
-    cd "${pkgdir}"/usr/share/icons/hicolor
-    rm -rf 12x12 12x12@2 16x16 16x16@2 8x8 8x8@2
 }
