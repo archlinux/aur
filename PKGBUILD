@@ -2,7 +2,7 @@
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
 pkgname=heidisql
 pkgver=12.12.1.208
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
 arch=(any)
 url="http://www.heidisql.com/"
@@ -17,4 +17,7 @@ package() {
   cd "${pkgdir}"
   # this extracts all into the pkgdir
   tar xf "${srcdir}/data.tar.zst"
+  # fix directory permissions
+  find . -type d -exec chmod 755 {} +
+  chmod 775 "./usr/share/doc/heidisql/" "./usr/share/heidisql/locale/"
 }
