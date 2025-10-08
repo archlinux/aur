@@ -1,6 +1,6 @@
 pkgbase = deepagent-bin
 	pkgdesc = A powerful desktop AI assistant with agentic browsing, listening, coding CLI and editor
-	pkgver = 1.101.23900
+	pkgver = 1.101.24002
 	pkgrel = 1
 	url = https://github.com/abacusai/deepagent-releases
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = deepagent-bin
 	conflicts = codellm
 	conflicts = codellm-bin
 	options = !debug
-	source_x86_64 = https://github.com/abacusai/deepagent-releases/releases/download/1.101.23900/DeepAgent-linux-x64-1.101.23900.tar.gz
-	sha256sums_x86_64 = ef837182063ccf565b774169788b1b4721b5a54f1d4e3ca315278fc397510678
-	source_aarch64 = https://github.com/abacusai/deepagent-releases/releases/download/1.101.23900/DeepAgent-linux-arm64-1.101.23900.tar.gz
-	sha256sums_aarch64 = 2ff21b1aa1d037fc7e05a0fb9da6480a9bb761fec9d7845e668202a94ac835ad
+	source_x86_64 = https://github.com/abacusai/deepagent-releases/releases/download/1.101.24002/DeepAgent-linux-x64-1.101.24002.tar.gz
+	sha256sums_x86_64 = 973eedc7d09a8121af745c7488465554f5bbd332da0889e5977450b4a2be529e
+	source_aarch64 = https://github.com/abacusai/deepagent-releases/releases/download/1.101.24002/DeepAgent-linux-arm64-1.101.24002.tar.gz
+	sha256sums_aarch64 = 8228740593616734c194450e0a745994eca8c1236b901eee0b4411049f8d0e98
 
 pkgname = deepagent-bin
