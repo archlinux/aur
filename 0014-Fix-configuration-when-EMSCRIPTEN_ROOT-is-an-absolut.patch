@@ -1,7 +1,7 @@
-From fe8433395361f501d0f6a070205b15e95394be9c Mon Sep 17 00:00:00 2001
+From c96bc0a0a3339ec619e62b48007a877071b71732 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:31:12 +0200
-Subject: [PATCH 17/25] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
+Subject: [PATCH 14/20] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
  path
 
 Not sure whether this is unusual but under Arch Linux the `emscripten`
@@ -15,7 +15,7 @@ Change-Id: I506de85f3bc0ab2f865d5fd3c7e6767d51e9396e
  1 file changed, 4 insertions(+)
 
 diff --git a/cmake/QtPublicWasmToolchainHelpers.cmake b/cmake/QtPublicWasmToolchainHelpers.cmake
-index ecdca052113..6e235c7556c 100644
+index 32309ed05ba..81b8bb10f71 100644
 --- a/cmake/QtPublicWasmToolchainHelpers.cmake
 +++ b/cmake/QtPublicWasmToolchainHelpers.cmake
 @@ -13,6 +13,10 @@ function(__qt_internal_get_emroot_path_suffix_from_emsdk_env out_var)

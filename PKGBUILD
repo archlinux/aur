@@ -11,9 +11,9 @@
 
 _android_arch=x86-64
 pkgname=android-x86-64-qt6-base
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -45,45 +45,35 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0010-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch'
         '0012-Allow-overriding-preference-for-shared-libzstd-libra.patch'
-        '0013-Fix-errors-due-to-disabled-exceptions-with-cpp_winrt.patch'
-        '0014-Link-corelib-correctly-against-runtimeobject-when-co.patch'
-        '0015-Workaround-linker-error-about-missing-symbol-__sync_.patch'
-        '0016-Workaround-Unknown-CMake-command-_qt_test_emscripten.patch'
-        '0017-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch'
-        '0018-Allow-handling-Android-activity-lifecycle-by-user-pr.patch'
-        '0019-Avoid-compile-error-due-to-inconsistent-use-of-noexc.patch'
-        '0020-Allow-keeping-Android-app-in-background-with-QtQuick.patch'
-        '0021-Allow-resuming-native-app-when-Android-activity-is-r.patch'
-        '0022-Enable-minimal-and-offscreen-plugins-when-compiling-.patch'
-        '0023-Allow-configuring-use-of-OpenSSL-in-QPasswordDigesto.patch'
-        '0024-Drop-CMAKE_SYSTEM_VERSION-from-modules-json-if-Linux.patch'
-        '0025-Revert-Re-land-Android-destroy-the-window-surface-on.patch')
-sha256sums=('44be9c9ecfe04129c4dea0a7e1b36ad476c9cc07c292016ac98e7b41514f2440'
-            '281d00a4a7d3e771be4ead82bf8b996f47f724fae861b0057a7ae7c495528aef'
-            'e7155b4fa342141cd8423f3412dad6d6232503ac4137bb5371e47ad6ce0b4066'
-            '800932929502bad92208b63934d2cf8b565111bdbde3e36fcb0e231423422ecf'
-            '614f6efd1c11f6fcad9594264ff54abf8a817d83c435246bf2cc2c13b03cd38d'
-            '578563b8203a49478bd00637d29caa580e4710f343ff3835dd022736adf10119'
-            '522fa789e2d866303602c917dbf9572e2a52b27b3bd5a6a2b99f58a16f0013f3'
-            '7bbdfd8b9ccf92b3a388725b3113a613c87da6907402796a9b9b57c525c3f4b0'
-            '17f796d8cdfa3fe2c84eaf2f213384d020c15fa2d06cfceb89495eb772db7dec'
-            '862a69d9c30a94c156189aecd6f689e07fb609b7af5ccf84f9412ccc227d9729'
-            'efb2647445553958e74a7954f41d38212dc1db3f071022887741aab87eca0b10'
-            '294077128425b51f6f5e01c444b51b1c0121ee8eb4ca2bcca295dc3c334e0eb2'
-            '5249b64232e74fd96d1171a7e7083f8af2e4cb8dd37b79d3ca273dbcb9c48159'
-            '16c36ae4aa2e5078eba55c9b510a88e89f50b514ad6b48fa866943246509d811'
-            '3a04d24b89195c55de3f7e7b566c050f60daa8942d0916a1772e9b1b570be40c'
-            '1711f706050799186e7d59d44e901a2f67669155d608dc8ca7f945a39af24844'
-            'd12d30bd680dc30b5cdc8844c2c1caeaccdaa8124433020118f9b3c0c8fd9061'
-            '8857aa6a48210f0c00ee7a066eb04340fc8fce97af58f1fb6f5c1a1a4652558c'
-            '117b802dfeecf64c54de83a1a8b40e1c7f70a55466870e684486d569c20ff2f0'
-            '2ab1cfe83d30da2f2b33fb8ad9bb7c252567c7fd9e9c569a4f8be41b385912fd'
-            '7a444d84daebdbce128441a331d275f26e95101e69e4bfc866edb419802b6f87'
-            '46e96e1b943e826de90c4d0fb0db6b4828e45bd622647b6977752aa65e22160a'
-            '7905bffa0c6f4d99eade26671012a1b55722a84ee747550ddf79e30440f18add'
-            '14911b44553e79510d394fc0a750a5b095df6825343b0ab40f024c873d7c0a89'
-            'aae9bd027404bf83dbda49edca08fa763f8f147f2c8ae0c627773542e7bc10a6'
-            '89a9ba6842ad518f05f08ab57542a63c1412c0f07a9a0289f2de8a42553797ae')
+        '0013-Workaround-Unknown-CMake-command-_qt_test_emscripten.patch'
+        '0014-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch'
+        '0015-Allow-keeping-Android-app-in-background-with-QtQuick.patch'
+        '0016-Enable-minimal-and-offscreen-plugins-when-compiling-.patch'
+        '0017-Allow-configuring-use-of-OpenSSL-in-QPasswordDigesto.patch'
+        '0018-Drop-CMAKE_SYSTEM_VERSION-from-modules-json-if-Linux.patch'
+        '0019-Workaround-linker-error-about-missing-symbol-__sync_.patch'
+        '0020-Fix-Android-build-after-ec2e3e7ac92d000e0df0c693b9a6.patch')
+sha256sums=('ead4623bcb54a32257c5b3e3a5aec6d16ec96f4cda58d2e003f5a0c16f72046d'
+            '87ef32a9e2a122aa831ddb675ff072181c92152836544a3602e8fddbb4bd9788'
+            'e806a7e9c2964dbf41a8fb2490b3d2302743c02279965702ac7ae880a3755816'
+            '337fbbe749e4db3f1736c2f01bd47c8ac0e59218ac357d3c635d87ac4643cff7'
+            '90834244a76b8f65b49cc5e0e167c937564da219fe3384e2db6c04ba933db266'
+            'ca3eeb1808f16d6a309f9f4e2ebb5b07431e0abf389ba502eb0dd09de7adffa8'
+            'bc1c71b3ae3f29f150ae590028f3decee2811cd90a707a78f94c8649c3af5c96'
+            '98d9b3848a33536426a9c586f4e629895c528bb059997d9dd45f444a18fb8c4e'
+            'e4eb19c0bb9027937d7271c416038821bebee8e30be72f4d058d050e256b1a21'
+            '5a03020f5772cf10ce622d82162a86210332b3f9c64be70fcb42d2fafbaf8349'
+            'cab1f4d5e4928987659f06dbffb1e721487b62c5ea8e42ba130e140ff09767b9'
+            '7d39a7f582795fff773a361fff8f65f0d1bc0517736dd63c0371961c6662d0f8'
+            'a07e36448cfe25ba0c8f9c37fa311fc43ac150aa147757db3d3a3c9624cef6e7'
+            'e4134eb37252de9096caafc893e9cc105653a475a0cf7ef18e0835879a5ce23a'
+            'b9f9927b994dae4cc4b70ea732e4b7af8e22dc7009393ded8cd36f02cf688fa2'
+            'a7bb191656a3a83a35d14ecf097771a98c2b77697b16922cc805528fbf41ef81'
+            'b938edd4ef7d1385093b6796f7ad561f42502a306b0c5e1496625eef836d7e62'
+            '36c7502e672546433c98ddf06716411ce2c9c34a0091bb3d1c03827fbe5f09b5'
+            'ff9d23b08375bfb20ffabf5d14953dda2593c95dd4f73a8027f8dbdd8e5d8fca'
+            'f747bb4883ce88d615166c4268e9d12b9bc6fd5254d987bc098962cde27af5db'
+            'caba7450bd4f28ed3e1ac85fa3180ed5207b791dfd7858430973f1ce561be437')
 
 prepare () {
   cd $_pkgfqn
