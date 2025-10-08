@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-sensors
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsensors-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('964ca82f39e2e25f952dc2f072f4c602392faf4ee9ce812b1957d4b8c9314462')
+sha256sums=('67525e1ad1833ce556a208c4fd8adc59fe6e20d9450e621977ade96300668739')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
