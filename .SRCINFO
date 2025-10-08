@@ -1,0 +1,22 @@
+pkgbase = arattai-deb-bin
+	pkgdesc = Unofficial Arch package for Arattai Desktop built from the official .deb (Zoho) – binary repack
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://www.arattai.com/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libxss
+	depends = libappindicator-gtk3
+	provides = arattai
+	conflicts = arattai
+	conflicts = arattai-bin
+	source = https://downloads.zohocdn.com/arattai-desktop/linux/arattai_1.0.7_amd64.deb
+	sha256sums = SKIP
+
+pkgname = arattai-deb-bin
