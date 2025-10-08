@@ -1,6 +1,6 @@
 pkgbase = java25-openjdk-wakefield
 	pkgver = 25.0.1.0.r9512.g6516ff1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = LicenseRef-Java
@@ -79,13 +79,13 @@ pkgname = jdk25-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=25
 	provides = java-environment-openjdk=25
-	provides = jdk25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-1
+	provides = jdk25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-2
 	provides = java-runtime=25
 	provides = java-runtime-openjdk=25
-	provides = jre25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-1
+	provides = jre25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-2
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = jre25-openjdk-headless-wakefield=25.0.1.0.r9512.g6516ff1-1
+	provides = jre25-openjdk-headless-wakefield=25.0.1.0.r9512.g6516ff1-2
 	conflicts = jre25-openjdk-wakefield
 	conflicts = jre25-openjdk-headless-wakefield
 	backup = etc/java25-openjdk-wakefield/logging.properties
@@ -129,10 +129,10 @@ pkgname = jre25-openjdk-wakefield
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=25
 	provides = java-runtime-openjdk=25
-	provides = jre25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-1
+	provides = jre25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-2
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = jre25-openjdk-wakefield-headless=25.0.1.0.r9512.g6516ff1-1
+	provides = jre25-openjdk-wakefield-headless=25.0.1.0.r9512.g6516ff1-2
 	conflicts = jdk25-openjdk-wakefield
 	conflicts = jre25-openjdk-headless-wakefield
 	backup = etc/java25-openjdk-wakefield/logging.properties
@@ -172,7 +172,7 @@ pkgname = jre25-openjdk-headless-wakefield
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	provides = jre25-openjdk-wakefield-headless=25.0.1.0.r9512.g6516ff1-1
+	provides = jre25-openjdk-wakefield-headless=25.0.1.0.r9512.g6516ff1-2
 	conflicts = jdk25-openjdk-wakefield
 	conflicts = jre25-openjdk-wakefield
 	backup = etc/java25-openjdk-wakefield/logging.properties
@@ -192,10 +192,10 @@ pkgname = jre25-openjdk-headless-wakefield
 
 pkgname = openjdk25-doc-wakefield
 	pkgdesc = OpenJDK Java 25 wayland documentation
-	depends = jdk25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-1
-	provides = openjdk25-doc=25.0.1.0.r9512.g6516ff1-1
+	depends = jdk25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-2
+	provides = openjdk25-doc=25.0.1.0.r9512.g6516ff1-2
 
 pkgname = openjdk25-src-wakefield
 	pkgdesc = OpenJDK Java 25 wayland sources
-	depends = jdk25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-1
-	provides = openjdk25-src=25.0.1.0.r9512.g6516ff1-1
+	depends = jdk25-openjdk-wakefield=25.0.1.0.r9512.g6516ff1-2
+	provides = openjdk25-src=25.0.1.0.r9512.g6516ff1-2

@@ -20,7 +20,7 @@ _securityver=1
 _updatever=0
 # pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 pkgver=25.0.1.0.r9512.g6516ff1
-pkgrel=1
+pkgrel=2
 # _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -432,7 +432,7 @@ package_jdk25-openjdk-wakefield() {
   for s in 16 24 32 48; do
     install -Dm 644 \
       "${srcdir}/${_jdkdir}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/java${_majorver}-openjdk.png"
+      "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${pkgbase}.png"
   done
 
   # Desktop files
