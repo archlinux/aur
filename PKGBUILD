@@ -18,6 +18,5 @@ package() {
   # this extracts all into the pkgdir
   tar xf "${srcdir}/data.tar.zst"
   # fix directory permissions
-  find . -type d -exec chmod 755 {} +
-  chmod 775 "./usr/share/doc/heidisql/" "./usr/share/heidisql/locale/"
+  find . -type d ! -path "./usr/share/doc/heidisql" ! -path "./usr/share/heidisql/locale" -exec chmod 755 {} +
 }
