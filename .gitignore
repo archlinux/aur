@@ -1,0 +1,12 @@
+# Ignore everything by default
+/*
+# Keep the packaging sources/metadata
+!.SRCINFO
+!PKGBUILD
+!REUSE.toml
+!.gitignore
+# Typical build/byproducts to ignore
+/*.pkg.tar.*
+/src/
+/pkg/
+/*.deb
