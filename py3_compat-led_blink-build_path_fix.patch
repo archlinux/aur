@@ -1,0 +1,1224 @@
+diff --git a/Makefile b/Makefile
+index 6fc3574..de0303b 100755
+--- a/Makefile
++++ b/Makefile
+@@ -4,6 +4,14 @@ ifndef PDIR
+ 
+ endif
+ 
++ifndef SDK_BASE
++SDK_BASE := ..
++endif
++
++ifndef APPDIR
++APPDIR := ..
++endif
++
+ ifeq ($(COMPILE), gcc)
+ 	AR = xtensa-lx106-elf-ar
+ 	CC = xtensa-lx106-elf-gcc
+@@ -22,7 +30,7 @@ else
+ 	OBJDUMP = xt-objdump
+ endif
+ 
+-PYTHON?=python2
++PYTHON?=python
+ BOOT?=none
+ APP?=0
+ SPI_SPEED?=40
+@@ -263,14 +271,15 @@ $(BINODIR)/%.bin: $(IMAGEODIR)/%.out
+ 	@mkdir -p $(BINODIR)
+ 	
+ ifeq ($(APP), 0)
+-	@$(RM) -r ../bin/eagle.S ../bin/eagle.dump
+-	@$(OBJDUMP) -x -s $< > ../bin/eagle.dump
+-	@$(OBJDUMP) -S $< > ../bin/eagle.S
++	mkdir -p $(APPDIR)/bin
++	@$(RM) -r $(APPDIR)/bin/eagle.S $(APPDIR)/bin/eagle.dump
++	@$(OBJDUMP) -x -s $< > $(APPDIR)/bin/eagle.dump
++	@$(OBJDUMP) -S $< > $(APPDIR)/bin/eagle.S
+ else
+-	mkdir -p ../bin/upgrade
+-	@$(RM) -r ../bin/upgrade/$(BIN_NAME).S ../bin/upgrade/$(BIN_NAME).dump
+-	@$(OBJDUMP) -x -s $< > ../bin/upgrade/$(BIN_NAME).dump
+-	@$(OBJDUMP) -S $< > ../bin/upgrade/$(BIN_NAME).S
++	mkdir -p $(APPDIR)/bin/upgrade
++	@$(RM) -r $(APPDIR)/bin/upgrade/$(BIN_NAME).S $(APPDIR)/bin/upgrade/$(BIN_NAME).dump
++	@$(OBJDUMP) -x -s $< > $(APPDIR)/bin/upgrade/$(BIN_NAME).dump
++	@$(OBJDUMP) -S $< > $(APPDIR)/bin/upgrade/$(BIN_NAME).S
+ endif
+ 
+ 	@$(OBJCOPY) --only-section .text -O binary $< eagle.app.v6.text.bin
+@@ -282,9 +291,9 @@ endif
+ 	@echo "!!!"
+ 	
+ ifeq ($(app), 0)
+-	@$(PYTHON) ../tools/gen_appbin.py $< 0 $(mode) $(freqdiv) $(size_map) $(app)
+-	@mv eagle.app.flash.bin ../bin/eagle.flash.bin
+-	@mv eagle.app.v6.irom0text.bin ../bin/eagle.irom0text.bin
++	@$(PYTHON) $(SDK_BASE)/tools/gen_appbin.py $< 0 $(mode) $(freqdiv) $(size_map) $(app)
++	@mv eagle.app.flash.bin $(APPDIR)/bin/eagle.flash.bin
++	@mv eagle.app.v6.irom0text.bin $(APPDIR)/bin/eagle.irom0text.bin
+ 	@rm eagle.app.v6.*
+ 	@echo "No boot needed."
+ 	@echo "Generate eagle.flash.bin and eagle.irom0text.bin successully in folder bin."
+@@ -292,10 +301,10 @@ ifeq ($(app), 0)
+ 	@echo "eagle.irom0text.bin---->0x10000"
+ else
+     ifneq ($(boot), new)
+-		@$(PYTHON) ../tools/gen_appbin.py $< 1 $(mode) $(freqdiv) $(size_map) $(app)
++		@$(PYTHON) $(SDK_BASE)/tools/gen_appbin.py $< 1 $(mode) $(freqdiv) $(size_map) $(app)
+ 		@echo "Support boot_v1.1 and +"
+     else
+-		@$(PYTHON) ../tools/gen_appbin.py $< 2 $(mode) $(freqdiv) $(size_map) $(app)
++		@$(PYTHON) $(SDK_BASE)/tools/gen_appbin.py $< 2 $(mode) $(freqdiv) $(size_map) $(app)
+ 
+     	ifeq ($(size_map), 6)
+ 		@echo "Support boot_v1.4 and +"
+@@ -308,7 +317,7 @@ else
+         endif
+     endif
+ 
+-	@mv eagle.app.flash.bin ../bin/upgrade/$(BIN_NAME).bin
++	@mv eagle.app.flash.bin $(APPDIR)/bin/upgrade/$(BIN_NAME).bin
+ 	@rm eagle.app.v6.*
+ 	@echo "Generate $(BIN_NAME).bin successully in folder bin/upgrade."
+ 	@echo "boot.bin------------>0x00000"
+diff --git a/examples/gen_patch_bin/gen_bin.sh b/examples/gen_patch_bin/gen_bin.sh
+index 601e932..86ac57a 100755
+--- a/examples/gen_patch_bin/gen_bin.sh
++++ b/examples/gen_patch_bin/gen_bin.sh
+@@ -20,7 +20,7 @@ xtensa-lx106-elf-objcopy --only-section .data -O binary eagle.app.v6.out eagle.a
+ xtensa-lx106-elf-objcopy --only-section .rodata -O binary eagle.app.v6.out eagle.app.v6.rodata.bin
+ xtensa-lx106-elf-objcopy --only-section .irom0.text -O binary eagle.app.v6.out eagle.app.v6.irom0text.bin
+ 
+-python2 ../../../../tools/gen_appbin_user.py eagle.app.v6.out 0
++python ../../../../tools/gen_appbin_user.py eagle.app.v6.out 0
+ cp eagle.app.v6.irom0text.bin ../../../../bin/
+ cp eagle.app.flash.bin ../../../../bin/eagle.app.v6.flash.bin
+ 
+diff --git a/examples/gen_patch_bin/gen_patch_bin.py b/examples/gen_patch_bin/gen_patch_bin.py
+index e2d0e25..2f63b9d 100644
+--- a/examples/gen_patch_bin/gen_patch_bin.py
++++ b/examples/gen_patch_bin/gen_patch_bin.py
+@@ -1,5 +1,10 @@
++from __future__ import print_function
++
++import sys
+ import os
+ 
++PY3 = sys.version_info[0] == 3
++
+ if os.path.exists("./patch_array.h"):
+     os.remove("./patch_array.h")
+ 
+@@ -11,7 +16,13 @@ if os.system("./gen_bin.sh") != 0:
+     print("Run gen_bin.sh failed")
+     exit(-1)
+ 
+-with open("bin/eagle.app.v6.flash.bin","r") as fd:
++def get_byte_value(data_item):
++    if PY3:
++        return data_item
++    else:
++        return ord(data_item)
++
++with open("bin/eagle.app.v6.flash.bin","rb") as fd:
+     with open("./patch_array.h","w+") as patch_fd:
+         patch_fd.write("// This file is a patch for th25q16\r\n\r\n")
+         patch_fd.write("#include \"os_type.h\"\r\n\r\n")
+@@ -21,16 +32,17 @@ with open("bin/eagle.app.v6.flash.bin","r") as fd:
+         Hex_Str = ""
+         offset = 0
+         for i in range(0, len1,1):
+-            Hex_Str += "0x"+(hex(ord(mystr[i])).replace('0x','').zfill(2)).upper()+ ","
++            byte_value = get_byte_value(mystr[i]) 
++            Hex_Str += "0x{:02X},".format(byte_value)
+             offset += 1
+             if offset == 16:
+-                print Hex_Str
++                print(Hex_Str)
+                 patch_fd.write("    {}\r\n".format(Hex_Str))
+                 Hex_Str = ""
+                 offset = 0
+         
+         if Hex_Str != "":
+-            print Hex_Str
++            print(Hex_Str)
+             patch_fd.write("    {}\r\n".format(Hex_Str))
+         patch_fd.write("};\r\n")
+ 
+diff --git a/examples/gen_patch_bin/tools/gen_appbin_user.py b/examples/gen_patch_bin/tools/gen_appbin_user.py
+index 833bc90..8e2bd10 100755
+--- a/examples/gen_patch_bin/tools/gen_appbin_user.py
++++ b/examples/gen_patch_bin/tools/gen_appbin_user.py
+@@ -20,6 +20,8 @@
+     argv[1] is elf file name
+     argv[2] is version num"""
+ 
++from __future__ import print_function
++
+ import string
+ import sys
+ import os
+@@ -38,10 +40,11 @@ CHECKSUM_INIT = 0xEF
+ 
+ chk_sum = CHECKSUM_INIT
+ blocks = 0
++PY3 = sys.version_info[0] == 3
+ 
+ def write_file(file_name,data):
+ 	if file_name is None:
+-		print 'file_name cannot be none\n'
++		print('file_name cannot be none\n')
+ 		sys.exit(0)
+ 
+ 	fp = open(file_name,'ab')
+@@ -51,53 +54,60 @@ def write_file(file_name,data):
+ 		fp.write(data)
+ 		fp.close()
+ 	else:
+-		print '%s write fail\n'%(file_name)
++		print('%s write fail\n'%(file_name))
+ 
+ def combine_bin(file_name,dest_file_name,start_offset_addr,need_chk):
+     global chk_sum
+     global blocks
+     if dest_file_name is None:
+-        print 'dest_file_name cannot be none\n'
++        print('dest_file_name cannot be none\n')
+         sys.exit(0)
+ 
+     if file_name:
+         fp = open(file_name,'rb')
+         if fp:
+-        	########## write text ##########
++            ########## write text ##########
+             fp.seek(0,os.SEEK_END)
+             data_len = fp.tell()
+             if data_len:
+-		if need_chk:
++                if need_chk:
+                     tmp_len = (data_len + 3) & (~3)
+-		else:
+-	            tmp_len = (data_len + 15) & (~15)
++                else:
++                    tmp_len = (data_len + 15) & (~15)
+                 data_bin = struct.pack('<II',start_offset_addr,tmp_len)
+                 write_file(dest_file_name,data_bin)
+                 fp.seek(0,os.SEEK_SET)
+                 data_bin = fp.read(data_len)
+                 write_file(dest_file_name,data_bin)
+-		if need_chk:
+-		    for loop in range(len(data_bin)):
+-		        chk_sum ^= ord(data_bin[loop])
+-                print '%s size is %d(0x%x),align 4 bytes,\nultimate size is %d(0x%x)'%(file_name,data_len,data_len,tmp_len,tmp_len)
++                if need_chk:
++                    if need_chk:
++                        for byte_val in data_bin:
++                            if PY3:
++                                chk_sum ^= byte_val
++                            else:
++                                chk_sum ^= ord(byte_val)
++                print('%s size is %d(0x%x),align 4 bytes,\nultimate size is %d(0x%x)'%(file_name,data_len,data_len,tmp_len,tmp_len))
+                 tmp_len = tmp_len - data_len
+                 if tmp_len:
+                     data_str = ['00']*(tmp_len)
+                     data_bin = binascii.a2b_hex(''.join(data_str))
+                     write_file(dest_file_name,data_bin)
+-		    if need_chk:
+-			for loop in range(len(data_bin)):
+-			    chk_sum ^= ord(data_bin[loop])
++                    if need_chk:
++                        for byte_val in data_bin:
++                            if PY3:
++                                chk_sum ^= byte_val
++                            else:
++                                chk_sum ^= ord(byte_val)
+                 blocks = blocks + 1
+-        	fp.close()
++                fp.close()
+         else:
+-        	print '!!!Open %s fail!!!'%(file_name)
++        	    print('!!!Open %s fail!!!'%(file_name))
+ 
+ def gen_appbin():
+     global chk_sum
+     global blocks
+     if len(sys.argv) != 3:
+-        print 'Usage: gen_appbin.py eagle.app.out mode'
++        print('Usage: gen_appbin.py eagle.app.out mode')
+         sys.exit(0)
+ 
+     elf_file = sys.argv[1]
+@@ -122,43 +132,43 @@ def gen_appbin():
+ 
+     fp = file('./eagle.app.sym')
+     if fp is None:
+-        print "open sym file error\n"
++        print("open sym file error\n")
+         sys.exit(0)
+ 
+     lines = fp.readlines()
+     fp.close()
+ 
+     entry_addr = None
+-    p = re.compile('(\w*)(\sT\s)(call_user_start1)$')
++    p = re.compile('(\\w*)(\\sT\\s)(call_user_start1)$')
+     for line in lines:
+         m = p.search(line)
+         if m != None:
+             entry_addr = m.group(1)
+-            print entry_addr
++            print(entry_addr)
+ 
+     if entry_addr is None:
+-        print 'no entry point!!'
++        print('no entry point!!')
+         sys.exit(0)
+ 
+     data_start_addr = '0'
+-    p = re.compile('(\w*)(\sA\s)(_data_start)$')
++    p = re.compile('(\\w*)(\\sA\\s)(_data_start)$')
+     for line in lines:
+         m = p.search(line)
+         if m != None:
+             data_start_addr = m.group(1)
+-            print data_start_addr
++            print(data_start_addr)
+ 
+     rodata_start_addr = '0'
+-    p = re.compile('(\w*)(\sA\s)(_rodata_start)$')
++    p = re.compile('(\\w*)(\\sA\\s)(_rodata_start)$')
+     for line in lines:
+         m = p.search(line)
+         if m != None:
+             rodata_start_addr = m.group(1)
+-            print rodata_start_addr
++            print(rodata_start_addr)
+     
+     if mode == '2':
+         # write irom bin head
+-        data_bin = struct.pack('<BBHI',BIN_MAGIC_IROM,4,0,long(entry_addr,16))
++        data_bin = struct.pack('<BBHI',BIN_MAGIC_IROM,4,0,int(entry_addr,16))
+         sum_size = len(data_bin)
+         write_file(flash_bin_name,data_bin)
+         
+@@ -166,7 +176,7 @@ def gen_appbin():
+         combine_bin(irom0text_bin_name,flash_bin_name,0x0,0)
+ 
+     # write flash bin header
+-    data_bin = struct.pack('<BBHI',BIN_MAGIC_FLASH,3,0,long(entry_addr,16))
++    data_bin = struct.pack('<BBHI',BIN_MAGIC_FLASH,3,0,int(entry_addr,16))
+     sum_size = len(data_bin)
+     write_file(flash_bin_name,data_bin)
+ 
+@@ -175,10 +185,10 @@ def gen_appbin():
+ 
+ 	# data.bin
+     if data_start_addr:
+-        combine_bin(data_bin_name,flash_bin_name,long(data_start_addr,16),1)
++        combine_bin(data_bin_name,flash_bin_name,int(data_start_addr,16),1)
+ 
+ 	# rodata.bin
+-    combine_bin(rodata_bin_name,flash_bin_name,long(rodata_start_addr,16),1)
++    combine_bin(rodata_bin_name,flash_bin_name,int(rodata_start_addr,16),1)
+ 
+     # write checksum header
+     sum_size = os.path.getsize(flash_bin_name) + 1
+@@ -187,7 +197,7 @@ def gen_appbin():
+         data_str = ['00']*(sum_size)
+         data_bin = binascii.a2b_hex(''.join(data_str))
+         write_file(flash_bin_name,data_bin)
+-    write_file(flash_bin_name,chr(chk_sum & 0xFF))
++    write_file(flash_bin_name,bytearray([chk_sum & 0xFF]))
+     	
+     if mode == '1':
+         sum_size = os.path.getsize(flash_bin_name)
+@@ -201,8 +211,8 @@ def gen_appbin():
+             write_file(flash_bin_name,data_bin)
+             fp.close()
+         else :
+-            print '!!!Open %s fail!!!'%(flash_bin_name)
+-    	    sys.exit(0)
++            print('!!!Open %s fail!!!'%(flash_bin_name))
++            sys.exit(0)
+ 
+     cmd = 'rm eagle.app.sym'
+     os.system(cmd)
+diff --git a/examples/led_blink/.gitignore b/examples/led_blink/.gitignore
+new file mode 100644
+index 0000000..d9086e2
+--- /dev/null
++++ b/examples/led_blink/.gitignore
+@@ -0,0 +1,2 @@
++.output
++bin
+diff --git a/examples/led_blink/Makefile b/examples/led_blink/Makefile
+new file mode 100644
+index 0000000..32ae41d
+--- /dev/null
++++ b/examples/led_blink/Makefile
+@@ -0,0 +1,124 @@
++#############################################################
++# Required variables for each makefile
++# Discard this section from all parent makefiles
++# Expected variables (with automatic defaults):
++#   SDK_BASE - path to the root directory of the ESP8266 NONOS SDK
++#   CSRCS (all "C" files in the dir)
++#   SUBDIRS (all subdirs with a Makefile)
++#   GEN_LIBS - list of libs to be generated ()
++#   GEN_IMAGES - list of object file images to be generated ()
++#   GEN_BINS - list of binaries to be generated ()
++#   COMPONENTS_xxx - a list of libs/objs in the form
++#     subdir/lib to be extracted and rolled up into
++#     a generated lib/image xxx.a ()
++#
++TARGET = eagle
++#FLAVOR = release
++FLAVOR = debug
++
++SDK_BASE := /opt/esp8266-nonos-sdk
++
++#EXTRA_CCFLAGS += -u
++
++ifndef PDIR # {
++GEN_IMAGES= eagle.app.v6.out
++GEN_BINS= eagle.app.v6.bin
++SPECIAL_MKTARGETS=$(APP_MKTARGETS)
++SUBDIRS=    \
++    user
++
++endif # } PDIR
++
++APPDIR := $(CURDIR)
++LDDIR = $(SDK_BASE)/ld
++
++CCFLAGS += -Os
++
++TARGET_LDFLAGS =        \
++    -nostdlib       \
++    -Wl,-EL \
++    --longcalls \
++    --text-section-literals
++
++ifeq ($(FLAVOR),debug)
++    TARGET_LDFLAGS += -g -O2
++endif
++
++ifeq ($(FLAVOR),release)
++    TARGET_LDFLAGS += -g -O0
++endif
++
++COMPONENTS_eagle.app.v6 = \
++    user/libuser.a
++
++LINKFLAGS_eagle.app.v6 = \
++    -L$(SDK_BASE)/lib        \
++    -nostdlib   \
++    -T$(LD_FILE)   \
++    -Wl,--no-check-sections \
++    -Wl,--gc-sections	\
++    -u call_user_start1  \
++    -Wl,-static                     \
++    -Wl,--start-group                   \
++    -lc                 \
++    -lgcc                   \
++    -lhal                   \
++    -lphy   \
++    -lpp    \
++    -lnet80211  \
++    -llwip  \
++    -lwpa   \
++    -lcrypto    \
++    -lmain  \
++    -ldriver	\
++    $(DEP_LIBS_eagle.app.v6)                    \
++    -Wl,--end-group
++
++DEPENDS_eagle.app.v6 = \
++                $(LD_FILE) \
++                $(LDDIR)/eagle.rom.addr.v6.ld
++
++#############################################################
++# Configuration i.e. compile options etc.
++# Target specific stuff (defines etc.) goes in here!
++# Generally values applying to a tree are captured in the
++#   makefile at its root level - these are then overridden
++#   for a subtree within the makefile rooted therein
++#
++
++#UNIVERSAL_TARGET_DEFINES =     \
++
++# Other potential configuration flags include:
++#   -DTXRX_TXBUF_DEBUG
++#   -DTXRX_RXBUF_DEBUG
++#   -DWLAN_CONFIG_CCX
++CONFIGURATION_DEFINES = -DICACHE_FLASH
++
++DEFINES +=              \
++    $(UNIVERSAL_TARGET_DEFINES) \
++    $(CONFIGURATION_DEFINES)
++
++DDEFINES +=             \
++    $(UNIVERSAL_TARGET_DEFINES) \
++    $(CONFIGURATION_DEFINES)
++
++
++#############################################################
++# Recursion Magic - Don't touch this!!
++#
++# Each subtree potentially has an include directory
++#   corresponding to the common APIs applicable to modules
++#   rooted at that subtree. Accordingly, the INCLUDE PATH
++#   of a module can only contain the include directories up
++#   its parent path, and not its siblings
++#
++# Required for each makefile to inherit from the parent
++#
++
++INCLUDES := $(INCLUDES) -I $(PDIR)include
++PDIR := $(SDK_BASE)/
++sinclude $(PDIR)Makefile
++
++.PHONY: FORCE
++FORCE:
++
+diff --git a/examples/led_blink/gen_misc.bat b/examples/led_blink/gen_misc.bat
+new file mode 100644
+index 0000000..d78cac5
+--- /dev/null
++++ b/examples/led_blink/gen_misc.bat
+@@ -0,0 +1,147 @@
++@echo off
++
++echo gen_misc.bat version 20150511
++echo .
++
++echo Please follow below steps(1-5) to generate specific bin(s):
++echo STEP 1: choose boot version(0=boot_v1.1, 1=boot_v1.2+, 2=none)
++set input=default
++set /p input=enter(0/1/2, default 2):
++
++if %input% equ 0 (
++    set boot=old
++) else (
++if %input% equ 1 (
++    set boot=new
++) else (
++    set boot=none
++)
++)
++
++echo boot mode: %boot%
++echo.
++
++echo STEP 2: choose bin generate(0=eagle.flash.bin+eagle.irom0text.bin, 1=user1.bin, 2=user2.bin)
++set input=default
++set /p input=enter (0/1/2, default 0):
++
++if %input% equ 1 (
++    if %boot% equ none (
++        set app=0
++        echo choose no boot before
++        echo generate bin: eagle.flash.bin+eagle.irom0text.bin
++    ) else (
++        set app=1
++        echo generate bin: user1.bin
++    )
++) else (
++if %input% equ 2 (
++    if %boot% equ none (
++        set app=0
++        echo choose no boot before
++        echo generate bin: eagle.flash.bin+eagle.irom0text.bin
++    ) else (
++        set app=2
++        echo generate bin: user2.bin
++    )
++) else (
++    if %boot% neq none (
++        set boot=none
++        echo ignore boot
++    )
++    set app=0
++    echo generate bin: eagle.flash.bin+eagle.irom0text.bin
++))
++
++echo.
++
++echo STEP 3: choose spi speed(0=20MHz, 1=26.7MHz, 2=40MHz, 3=80MHz)
++set input=default
++set /p input=enter (0/1/2/3, default 2):
++
++if %input% equ 0 (
++    set spi_speed=20
++) else (
++if %input% equ 1 (
++    set spi_speed=26.7
++) else (
++if %input% equ 3 (
++    set spi_speed=80
++) else (
++    set spi_speed=40
++)))
++
++echo spi speed: %spi_speed% MHz
++echo.
++
++echo STEP 4: choose spi mode(0=QIO, 1=QOUT, 2=DIO, 3=DOUT)
++set input=default
++set /p input=enter (0/1/2/3, default 0):
++
++if %input% equ 1 (
++    set spi_mode=QOUT
++) else (
++if %input% equ 2 (
++    set spi_mode=DIO
++) else (
++if %input% equ 3 (
++    set spi_mode=DOUT
++) else (
++    set spi_mode=QIO
++)))
++
++echo spi mode: %spi_mode%
++echo.
++
++echo STEP 5: choose flash size and map
++echo     0= 512KB( 256KB+ 256KB)
++echo     2=1024KB( 512KB+ 512KB)
++echo     3=2048KB( 512KB+ 512KB)
++echo     4=4096KB( 512KB+ 512KB)
++echo     5=2048KB(1024KB+1024KB)
++echo     6=4096KB(1024KB+1024KB)
++set input=default
++set /p input=enter (0/1/2/3/4/5/6, default 0):
++
++if %input% equ 2 (
++  set spi_size_map=2
++  echo spi size: 1024KB
++  echo spi ota map: 512KB + 512KB
++) else (
++  if %input% equ 3 (
++    set spi_size_map=3
++    echo spi size: 2048KB
++    echo spi ota map: 512KB + 512KB
++  ) else (
++    if %input% equ 4 (
++      set spi_size_map=4
++      echo spi size: 4096KB
++      echo spi ota map: 512KB + 512KB
++    ) else (
++      if %input% equ 5 (
++        set spi_size_map=5
++        echo spi size: 2048KB
++        echo spi ota map: 1024KB + 1024KB
++      ) else (
++        if %input% equ 6 (
++          set spi_size_map=6
++          echo spi size: 4096KB
++          echo spi ota map: 1024KB + 1024KB
++        ) else (
++          set spi_size_map=0
++          echo spi size: 512KB
++          echo spi ota map: 256KB + 256KB
++        )
++      )
++    )
++  )
++)
++
++touch user/user_main.c
++
++echo.
++echo start...
++echo.
++
++make BOOT=%boot% APP=%app% SPI_SPEED=%spi_speed% SPI_MODE=%spi_mode% SPI_SIZE=%spi_size_map%
++
+diff --git a/examples/led_blink/gen_misc.sh b/examples/led_blink/gen_misc.sh
+new file mode 100755
+index 0000000..0051fb9
+--- /dev/null
++++ b/examples/led_blink/gen_misc.sh
+@@ -0,0 +1,165 @@
++#!/bin/bash
++
++echo "gen_misc.sh version 20150511"
++echo ""
++
++echo "Please follow below steps(1-5) to generate specific bin(s):"
++echo "STEP 1: choose boot version(0=boot_v1.1, 1=boot_v1.2+, 2=none)"
++echo "enter(0/1/2, default 2):"
++read input
++
++if [ -z "$input" ]; then
++    boot=none
++elif [ $input == 0 ]; then
++	boot=old
++elif [ $input == 1 ]; then
++    boot=new
++else
++    boot=none
++fi
++
++echo "boot mode: $boot"
++echo ""
++
++echo "STEP 2: choose bin generate(0=eagle.flash.bin+eagle.irom0text.bin, 1=user1.bin, 2=user2.bin)"
++echo "enter (0/1/2, default 0):"
++read input
++
++if [ -z "$input" ]; then
++    if [ $boot != none ]; then
++    	boot=none
++	echo "ignore boot"
++    fi
++    app=0
++    echo "generate bin: eagle.flash.bin+eagle.irom0text.bin"
++elif [ $input == 1 ]; then
++    if [ $boot == none ]; then
++    	app=0
++	echo "choose no boot before"
++	echo "generate bin: eagle.flash.bin+eagle.irom0text.bin"
++    else
++	app=1
++        echo "generate bin: user1.bin"
++    fi
++elif [ $input == 2 ]; then
++    if [ $boot == none ]; then
++    	app=0
++	echo "choose no boot before"
++	echo "generate bin: eagle.flash.bin+eagle.irom0text.bin"
++    else
++    	app=2
++    	echo "generate bin: user2.bin"
++    fi
++else
++    if [ $boot != none ]; then
++    	boot=none
++	echo "ignore boot"
++    fi
++    app=0
++    echo "generate bin: eagle.flash.bin+eagle.irom0text.bin"
++fi
++
++echo ""
++
++echo "STEP 3: choose spi speed(0=20MHz, 1=26.7MHz, 2=40MHz, 3=80MHz)"
++echo "enter (0/1/2/3, default 2):"
++read input
++
++if [ -z "$input" ]; then
++    spi_speed=40
++elif [ $input == 0 ]; then
++    spi_speed=20
++elif [ $input == 1 ]; then
++    spi_speed=26.7
++elif [ $input == 3 ]; then
++    spi_speed=80
++else
++    spi_speed=40
++fi
++
++echo "spi speed: $spi_speed MHz"
++echo ""
++
++echo "STEP 4: choose spi mode(0=QIO, 1=QOUT, 2=DIO, 3=DOUT)"
++echo "enter (0/1/2/3, default 0):"
++read input
++
++if [ -z "$input" ]; then
++    spi_mode=QIO
++elif [ $input == 1 ]; then
++    spi_mode=QOUT
++elif [ $input == 2 ]; then
++    spi_mode=DIO
++elif [ $input == 3 ]; then
++    spi_mode=DOUT
++else
++    spi_mode=QIO
++fi
++
++echo "spi mode: $spi_mode"
++echo ""
++
++echo "STEP 5: choose spi size and map"
++echo "    0= 512KB( 256KB+ 256KB)"
++echo "    2=1024KB( 512KB+ 512KB)"
++echo "    3=2048KB( 512KB+ 512KB)"
++echo "    4=4096KB( 512KB+ 512KB)"
++echo "    5=2048KB(1024KB+1024KB)"
++echo "    6=4096KB(1024KB+1024KB)"
++echo "    7=4096KB(2048KB+2048KB) not support ,just for compatible with nodeMCU board"
++echo "    8=8192KB(1024KB+1024KB)"
++echo "    9=16384KB(1024KB+1024KB)"
++echo "enter (0/2/3/4/5/6/7/8/9, default 0):"
++read input
++
++if [ -z "$input" ]; then
++    spi_size_map=0
++    echo "spi size: 512KB"
++    echo "spi ota map:  256KB + 256KB"
++elif [ $input == 2 ]; then
++    spi_size_map=2
++    echo "spi size: 1024KB"
++    echo "spi ota map:  512KB + 512KB"
++elif [ $input == 3 ]; then
++    spi_size_map=3
++    echo "spi size: 2048KB"
++    echo "spi ota map:  512KB + 512KB"
++elif [ $input == 4 ]; then
++    spi_size_map=4
++    echo "spi size: 4096KB"
++    echo "spi ota map:  512KB + 512KB"
++elif [ $input == 5 ]; then
++    spi_size_map=5
++    echo "spi size: 2048KB"
++    echo "spi ota map:  1024KB + 1024KB"
++elif [ $input == 6 ]; then
++    spi_size_map=6
++    echo "spi size: 4096KB"
++    echo "spi ota map:  1024KB + 1024KB"
++elif [ $input == 7 ]; then
++    spi_size_map=7
++    echo"not support ,just for compatible with nodeMCU board"
++    exit
++elif [ $input == 8 ]; then
++    spi_size_map=8
++    echo "spi size: 8192KB"
++    echo "spi ota map:  1024KB + 1024KB"
++elif [ $input == 9 ]; then
++    spi_size_map=9
++    echo "spi size: 16384KB"
++    echo "spi ota map:  1024KB + 1024KB"
++else
++    spi_size_map=0
++    echo "spi size: 512KB"
++    echo "spi ota map:  256KB + 256KB"
++fi
++
++echo ""
++
++touch user/user_main.c
++
++echo ""
++echo "start..."
++echo ""
++
++make COMPILE=gcc BOOT=$boot APP=$app SPI_SPEED=$spi_speed SPI_MODE=$spi_mode SPI_SIZE_MAP=$spi_size_map
+diff --git a/examples/led_blink/include/user_config.h b/examples/led_blink/include/user_config.h
+new file mode 100644
+index 0000000..3edc1ee
+--- /dev/null
++++ b/examples/led_blink/include/user_config.h
+@@ -0,0 +1,29 @@
++/*
++ * ESPRESSIF MIT License
++ *
++ * Copyright (c) 2016 <ESPRESSIF SYSTEMS (SHANGHAI) PTE LTD>
++ *
++ * Permission is hereby granted for use on ESPRESSIF SYSTEMS ESP8266 only, in which case,
++ * it is free of charge, to any person obtaining a copy of this software and associated
++ * documentation files (the "Software"), to deal in the Software without restriction, including
++ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished
++ * to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
++ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
++ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
++ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
++ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ *
++ */
++
++#ifndef __USER_CONFIG_H__
++#define __USER_CONFIG_H__
++
++#endif
++
+diff --git a/examples/led_blink/user/Makefile b/examples/led_blink/user/Makefile
+new file mode 100644
+index 0000000..dd3837c
+--- /dev/null
++++ b/examples/led_blink/user/Makefile
+@@ -0,0 +1,44 @@
++
++#############################################################
++# Required variables for each makefile
++# Discard this section from all parent makefiles
++# Expected variables (with automatic defaults):
++#   CSRCS (all "C" files in the dir)
++#   SUBDIRS (all subdirs with a Makefile)
++#   GEN_LIBS - list of libs to be generated ()
++#   GEN_IMAGES - list of images to be generated ()
++#   COMPONENTS_xxx - a list of libs/objs in the form
++#     subdir/lib to be extracted and rolled up into
++#     a generated lib/image xxx.a ()
++#
++ifndef PDIR
++GEN_LIBS = libuser.a
++endif
++
++
++#############################################################
++# Configuration i.e. compile options etc.
++# Target specific stuff (defines etc.) goes in here!
++# Generally values applying to a tree are captured in the
++#   makefile at its root level - these are then overridden
++#   for a subtree within the makefile rooted therein
++#
++#DEFINES += 
++
++#############################################################
++# Recursion Magic - Don't touch this!!
++#
++# Each subtree potentially has an include directory
++#   corresponding to the common APIs applicable to modules
++#   rooted at that subtree. Accordingly, the INCLUDE PATH
++#   of a module can only contain the include directories up
++#   its parent path, and not its siblings
++#
++# Required for each makefile to inherit from the parent
++#
++
++INCLUDES := $(INCLUDES) -I $(PDIR)include
++INCLUDES += -I ./
++PDIR := ../$(PDIR)
++sinclude $(PDIR)Makefile
++
+diff --git a/examples/led_blink/user/partitions.c b/examples/led_blink/user/partitions.c
+new file mode 100644
+index 0000000..99905b6
+--- /dev/null
++++ b/examples/led_blink/user/partitions.c
+@@ -0,0 +1,81 @@
++/*
++ * ESPRESSIF MIT License
++ *
++ * Copyright (c) 2016 <ESPRESSIF SYSTEMS (SHANGHAI) PTE LTD>
++ *
++ * Permission is hereby granted for use on ESPRESSIF SYSTEMS ESP8266 only, in which case,
++ * it is free of charge, to any person obtaining a copy of this software and associated
++ * documentation files (the "Software"), to deal in the Software without restriction, including
++ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished
++ * to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
++ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
++ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
++ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
++ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ *
++ */
++#include "ets_sys.h"
++#include "osapi.h"
++#include "user_interface.h"
++
++
++#if ((SPI_FLASH_SIZE_MAP == 0) || (SPI_FLASH_SIZE_MAP == 1))
++#error "The flash map is not supported"
++#elif (SPI_FLASH_SIZE_MAP == 2)
++#define SYSTEM_PARTITION_OTA_SIZE							0x6A000
++#define SYSTEM_PARTITION_OTA_2_ADDR							0x81000
++#define SYSTEM_PARTITION_RF_CAL_ADDR						0xfb000
++#define SYSTEM_PARTITION_PHY_DATA_ADDR						0xfc000
++#define SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR				0xfd000
++#elif (SPI_FLASH_SIZE_MAP == 3)
++#define SYSTEM_PARTITION_OTA_SIZE							0x6A000
++#define SYSTEM_PARTITION_OTA_2_ADDR							0x81000
++#define SYSTEM_PARTITION_RF_CAL_ADDR						0x1fb000
++#define SYSTEM_PARTITION_PHY_DATA_ADDR						0x1fc000
++#define SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR				0x1fd000
++#elif (SPI_FLASH_SIZE_MAP == 4)
++#define SYSTEM_PARTITION_OTA_SIZE							0x6A000
++#define SYSTEM_PARTITION_OTA_2_ADDR							0x81000
++#define SYSTEM_PARTITION_RF_CAL_ADDR						0x3fb000
++#define SYSTEM_PARTITION_PHY_DATA_ADDR						0x3fc000
++#define SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR				0x3fd000
++#elif (SPI_FLASH_SIZE_MAP == 5)
++#define SYSTEM_PARTITION_OTA_SIZE							0x6A000
++#define SYSTEM_PARTITION_OTA_2_ADDR							0x101000
++#define SYSTEM_PARTITION_RF_CAL_ADDR						0x1fb000
++#define SYSTEM_PARTITION_PHY_DATA_ADDR						0x1fc000
++#define SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR				0x1fd000
++#elif (SPI_FLASH_SIZE_MAP == 6)
++#define SYSTEM_PARTITION_OTA_SIZE							0x6A000
++#define SYSTEM_PARTITION_OTA_2_ADDR							0x101000
++#define SYSTEM_PARTITION_RF_CAL_ADDR						0x3fb000
++#define SYSTEM_PARTITION_PHY_DATA_ADDR						0x3fc000
++#define SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR				0x3fd000
++#else
++#error "The flash map is not supported"
++#endif
++
++static const partition_item_t at_partition_table[] = {
++    { SYSTEM_PARTITION_BOOTLOADER, 						0x0, 												0x1000},
++    { SYSTEM_PARTITION_OTA_1,   						0x1000, 											SYSTEM_PARTITION_OTA_SIZE},
++    { SYSTEM_PARTITION_OTA_2,   						SYSTEM_PARTITION_OTA_2_ADDR, 						SYSTEM_PARTITION_OTA_SIZE},
++    { SYSTEM_PARTITION_RF_CAL,  						SYSTEM_PARTITION_RF_CAL_ADDR, 						0x1000},
++    { SYSTEM_PARTITION_PHY_DATA, 						SYSTEM_PARTITION_PHY_DATA_ADDR, 					0x1000},
++    { SYSTEM_PARTITION_SYSTEM_PARAMETER, 				SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR, 			0x3000},
++};
++
++void ICACHE_FLASH_ATTR user_pre_init(void) {
++
++    if(!system_partition_table_regist(at_partition_table, sizeof(at_partition_table)/sizeof(at_partition_table[0]),SPI_FLASH_SIZE_MAP)) {
++		os_printf("system_partition_table_regist fail\r\n");
++		while(1);
++	}
++}
++
+diff --git a/examples/led_blink/user/user_main.c b/examples/led_blink/user/user_main.c
+new file mode 100755
+index 0000000..c3c95dd
+--- /dev/null
++++ b/examples/led_blink/user/user_main.c
+@@ -0,0 +1,56 @@
++/*
++ * ESPRESSIF MIT License
++ *
++ * Copyright (c) 2016 <ESPRESSIF SYSTEMS (SHANGHAI) PTE LTD>
++ *
++ * Permission is hereby granted for use on ESPRESSIF SYSTEMS ESP8266 only, in which case,
++ * it is free of charge, to any person obtaining a copy of this software and associated
++ * documentation files (the "Software"), to deal in the Software without restriction, including
++ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished
++ * to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
++ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
++ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
++ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
++ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ *
++ */
++#include "ets_sys.h"
++#include "osapi.h"
++#include "user_interface.h"
++
++#define LED_IO_MUX     PERIPHS_IO_MUX_GPIO2_U
++#define LED_IO_NUM     2
++#define LEDIO_FUNC     FUNC_GPIO2
++
++static os_timer_t gpio_sw_timer;
++
++void ICACHE_FLASH_ATTR gpio_sw_timer_cb(void *arg)
++{
++	static uint8 sw;
++
++	GPIO_OUTPUT_SET( LED_IO_NUM, sw );
++
++	sw ^= 1;
++}
++
++/**
++ * @brief Initializes the user application and sets up a timer to blink the LED.
++ *
++ */
++void ICACHE_FLASH_ATTR user_init(void)
++{
++	PIN_FUNC_SELECT( LED_IO_MUX, LEDIO_FUNC );
++	gpio_output_set( 0, LED_IO_NUM, LED_IO_NUM, 0 );
++
++    os_timer_disarm( &gpio_sw_timer );
++	os_timer_setfn( &gpio_sw_timer, gpio_sw_timer_cb, NULL );
++	os_timer_arm( &gpio_sw_timer, 500, 1 );
++}
++
+diff --git a/include/version.h b/include/version.h
+index c1559db..4a2bf94 100755
+--- a/include/version.h
++++ b/include/version.h
+@@ -3,9 +3,9 @@
+ 
+ #define ESP_SDK_VERSION_MAJOR   3
+ #define ESP_SDK_VERSION_MINOR   0
+-#define ESP_SDK_VERSION_PATCH   4
++#define ESP_SDK_VERSION_PATCH   6
+ 
+-#define ESP_SDK_VERSION_NUMBER 0x030004
+-#define ESP_SDK_VERSION_STRING  "3.0.4"
++#define ESP_SDK_VERSION_NUMBER 0x030006
++#define ESP_SDK_VERSION_STRING  "3.0.6"
+ 
+ #endif
+diff --git a/tools/gen_appbin.py b/tools/gen_appbin.py
+index 2063150..69009c3 100644
+--- a/tools/gen_appbin.py
++++ b/tools/gen_appbin.py
+@@ -30,6 +30,8 @@
+     argv[1] is elf file name
+     argv[2] is version num"""
+ 
++from __future__ import print_function
++
+ import string
+ import sys
+ import os
+@@ -49,6 +51,7 @@ CHECKSUM_INIT = 0xEF
+ 
+ chk_sum = CHECKSUM_INIT
+ blocks = 0
++PY3 = sys.version_info[0] == 3
+ 
+ def write_file(file_name,data):
+     if file_name is None:
+@@ -88,8 +91,11 @@ def combine_bin(file_name,dest_file_name,start_offset_addr,need_chk):
+                 data_bin = fp.read(data_len)
+                 write_file(dest_file_name,data_bin)
+                 if need_chk:
+-                    for loop in range(len(data_bin)):
+-                        chk_sum ^= ord(data_bin[loop])
++                    for byte_val in data_bin:
++                        if PY3:
++                            chk_sum ^= byte_val
++                        else:
++                            chk_sum ^= ord(byte_val)
+                 # print '%s size is %d(0x%x),align 4 bytes,\nultimate size is %d(0x%x)'%(file_name,data_len,data_len,tmp_len,tmp_len)
+                 tmp_len = tmp_len - data_len
+                 if tmp_len:
+@@ -97,8 +103,11 @@ def combine_bin(file_name,dest_file_name,start_offset_addr,need_chk):
+                     data_bin = binascii.a2b_hex(''.join(data_str))
+                     write_file(dest_file_name,data_bin)
+                     if need_chk:
+-                        for loop in range(len(data_bin)):
+-                            chk_sum ^= ord(data_bin[loop])
++                        for byte_val in data_bin:
++                            if PY3:
++                                chk_sum ^= byte_val
++                            else:
++                                chk_sum ^= ord(byte_val)
+                 blocks = blocks + 1
+                 fp.close()
+         else:
+@@ -164,7 +173,7 @@ def gen_appbin():
+     fp.close()
+ 
+     entry_addr = None
+-    p = re.compile('(\w*)(\sT\s)(call_user_start1)$')
++    p = re.compile('(\\w*)(\\sT\\s)(call_user_start1)$')
+     for line in lines:
+         m = p.search(line)
+         if m != None:
+@@ -176,7 +185,7 @@ def gen_appbin():
+         sys.exit(0)
+ 
+     data_start_addr = '0'
+-    p = re.compile('(\w*)(\sA\s)(_data_start)$')
++    p = re.compile('(\\w*)(\\sA\\s)(_data_start)$')
+     for line in lines:
+         m = p.search(line)
+         if m != None:
+@@ -184,7 +193,7 @@ def gen_appbin():
+             # print data_start_addr
+ 
+     rodata_start_addr = '0'
+-    p = re.compile('(\w*)(\sA\s)(_rodata_start)$')
++    p = re.compile('(\\w*)(\\sA\\s)(_rodata_start)$')
+     for line in lines:
+         m = p.search(line)
+         if m != None:
+@@ -223,17 +232,17 @@ def gen_appbin():
+     app=int(user_bin)&0xff
+     if boot_mode == '2':
+         # write irom bin head
+-        #data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,byte2,byte3,long(entry_addr,16))
+-        data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,0,app,long(entry_addr,16))
++        #data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,byte2,byte3,int(entry_addr,16))
++        data_bin = struct.pack('<BBBBI',BIN_MAGIC_IROM,4,0,app,int(entry_addr,16))
+         sum_size = len(data_bin)
+         write_file(flash_bin_name,data_bin)
+         
+         # irom0.text.bin
+         combine_bin(irom0text_bin_name,flash_bin_name,0x0,0)
+     if boot_mode == '1':
+-         data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,0,app,long(entry_addr,16))
++         data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,0,app,int(entry_addr,16))
+     else:
+-         data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,byte2,byte3,long(entry_addr,16))
++         data_bin = struct.pack('<BBBBI',BIN_MAGIC_FLASH,3,byte2,byte3,int(entry_addr,16))
+     sum_size = len(data_bin)
+     write_file(flash_bin_name,data_bin)
+ 
+@@ -242,10 +251,10 @@ def gen_appbin():
+ 
+     # data.bin
+     if data_start_addr:
+-        combine_bin(data_bin_name,flash_bin_name,long(data_start_addr,16),1)
++        combine_bin(data_bin_name,flash_bin_name,int(data_start_addr,16),1)
+ 
+     # rodata.bin
+-    combine_bin(rodata_bin_name,flash_bin_name,long(rodata_start_addr,16),1)
++    combine_bin(rodata_bin_name,flash_bin_name,int(rodata_start_addr,16),1)
+ 
+     # write checksum header
+     sum_size = os.path.getsize(flash_bin_name) + 1
+@@ -254,7 +263,7 @@ def gen_appbin():
+         data_str = ['00']*(sum_size)
+         data_bin = binascii.a2b_hex(''.join(data_str))
+         write_file(flash_bin_name,data_bin)
+-    write_file(flash_bin_name,chr(chk_sum & 0xFF))
++    write_file(flash_bin_name,bytearray([chk_sum & 0xFF]))
+ 
+     if boot_mode == '1':
+         sum_size = os.path.getsize(flash_bin_name)
+@@ -278,7 +287,19 @@ def gen_appbin():
+         else :
+             all_bin_crc = abs(all_bin_crc) + 1
+         print(all_bin_crc)
+-        write_file(flash_bin_name,chr((all_bin_crc & 0x000000FF))+chr((all_bin_crc & 0x0000FF00) >> 8)+chr((all_bin_crc & 0x00FF0000) >> 16)+chr((all_bin_crc & 0xFF000000) >> 24))
++        if PY3:
++            data = bytes([
++                all_bin_crc & 0xFF,
++                (all_bin_crc >> 8) & 0xFF,
++                (all_bin_crc >> 16) & 0xFF,
++                (all_bin_crc >> 24) & 0xFF
++            ])
++        else:
++            data = chr(all_bin_crc & 0xFF) + \
++                   chr((all_bin_crc >> 8) & 0xFF) + \
++                   chr((all_bin_crc >> 16) & 0xFF) + \
++                   chr((all_bin_crc >> 24) & 0xFF)
++        write_file(flash_bin_name,data)
+     cmd = 'rm eagle.app.sym'
+     os.system(cmd)
+ 
+diff --git a/tools/make_cacert.py b/tools/make_cacert.py
+index 221a303..6fe5c53 100644
+--- a/tools/make_cacert.py
++++ b/tools/make_cacert.py
+@@ -21,6 +21,8 @@
+ # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ # 
+ 
++from __future__ import print_function
++
+ import os
+ 
+ 
+@@ -50,7 +52,7 @@ def main():
+     for _file in file_list:
+         if _file.endswith(".cer"):
+             cert_file_list.append(_file)
+-    print cert_file_list
++    print(cert_file_list)
+     for cert_file in cert_file_list:
+         with open(cert_file, 'rb') as f:
+             buff = f.read()
