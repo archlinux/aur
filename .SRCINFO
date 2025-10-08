@@ -1,12 +1,13 @@
 pkgbase = sjmcl
 	pkgdesc = 🌟 A Minecraft launcher from @SJMC-Dev
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UNIkeEN/SJMCL
 	arch = x86_64
 	license = GPL-3.0,custom:LICENSE.EXTRA
 	makedepends = pnpm
 	makedepends = npm
+	makedepends = cargo
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	source = https://github.com/UNIkeEN/SJMCL/archive/refs/tags/v0.4.3.tar.gz
