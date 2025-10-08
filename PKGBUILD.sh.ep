@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt6-module';
 \
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,7 +22,6 @@ makedepends=('mingw-w64-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative
 % end
 % content_for prepare => begin
   # work around case-insensitive includes on case-sensitive filesystems
-  sed -i'' 's/\(.*\) \(Mf.*\|Propsys\) HINTS \(.*\)/\1 \L\2 HINTS \3/g' cmake/FindWMF.cmake
   find src -type f -exec sed -i'' 's/#include <\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|Functiondiscoverykeys_devpkey.*\)>/#include <\L\1>/g' {} \;
   find src -type f -exec sed -i'' 's/#include "\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|QUrl.*\)"/#include "\L\1"/g' {} \;
 %end
