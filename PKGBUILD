@@ -8,8 +8,8 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.1.3
-pkgrel=2
+pkgver=6.1.4
+pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -24,12 +24,8 @@ depends=(
   libdispatch
   libheif
   libjxl
-  libpipewire
   libvpx
-  libxcomposite
   libxdamage
-  libxrandr
-  libxtst
   minizip
   openal
   openh264
@@ -42,6 +38,12 @@ depends=(
   rnnoise
   xcb-util-keysyms
   xxhash
+
+  ## for libtg_owt
+  libpipewire
+  libxcomposite
+  libxrandr
+  libxtst
 )
 makedepends=(
   boost
@@ -75,14 +77,10 @@ _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
-  "0001-glib2.86-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/${_patch_commit}/glib2.86.patch"
-  "0002-ffmpeg-8-${_patch_commit::7}.patch"::"https://gitlab.archlinux.org/archlinux/packaging/packages/telegram-desktop/-/raw/${_patch_commit}/0001-Fix-compatibility-with-ffmpeg-8.patch"
 )
 sha256sums=(
-  '44668e883cba268267053bb75d97f24563fc7e20c80aa97aa3bd41fba1fcfcd3'
+  'bb2957c1e042f38371b6400c1691e42617492425ebe64ae88a23bc2b5d4cdc9f'
   'SKIP'
-  '57b855e701ed29da039431b2688082e6885c368e20dd38bbedffe1633e5efeda'
-  'd44a47b0dda36762090bbfcbb8e402d7308f3646d99a882b7d5fc3c18cc63540'
 )
 
 prepare() {
