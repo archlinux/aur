@@ -8,7 +8,8 @@ pkgdesc="Desktop version of lobe-chat, an open-source, modern design AI chat fra
 arch=('x86_64')
 url="https://github.com/lobehub/lobe-chat"
 license=('Apache-2.0 WITH lobe-chat-exception')
-makedepends=('rpmextract')
+makedepends=()
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 source=("lobehub-desktop-beta-1.135.5.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-1.135.5.x86_64.rpm"
   "LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/main/LICENSE"
   "lobehub-desktop-beta.png::https://raw.githubusercontent.com/lobehub/lobe-chat/main/apps/desktop/resources/tray.png")
@@ -18,7 +19,7 @@ sha256sums=('99833cc95aa1b6ab3026da1e98804cf2dd18f09539450b18125ecf5b0e35ea46'
 
 package() {
   cd "${pkgdir}"
-  rpmextract.sh "${srcdir}/lobehub-desktop-beta-1.135.5.x86_64.rpm"
+  bsdtar -xf "${srcdir}/lobehub-desktop-beta-1.135.5.x86_64.rpm"
   cd "${srcdir}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 lobehub-desktop-beta.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/lobehub-desktop-beta.png"
