@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggplotify
-_pkgver=0.1.2
+_pkgver=0.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Convert Plot to 'grob' or 'ggplot' Object"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,6 +13,7 @@ license=('Artistic-2.0')
 depends=(
   r-ggplot2
   r-gridgraphics
+  r-rlang
   r-yulab.utils
 )
 optdepends=(
@@ -26,8 +27,8 @@ optdepends=(
   r-vcd
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3bd4a51a0406a4b44f456aa75a8093df')
-b2sums=('7c6a1c21ddbaced450fa0bf4edc0210211cbaa951d6535e3118ade4a193092964fef2474c79d15b74121dc1b552fba06f6a49c80e2e1570f957a8b933c4d3d1a')
+md5sums=('06f2d2b9f042fac7f4521b71a5ae49d9')
+b2sums=('214771421bd402b3f964fdae16f362deca56a9fc350af58353b430f45d886f2ee47ed2dc31ddab48530ca3d236f8bb19c2cb80e24a703a26e4b09c8903307d46')
 
 build() {
   mkdir build
