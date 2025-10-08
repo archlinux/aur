@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR=$(readlink -f "$0" | xargs dirname)
+DIR="/usr/lib/OrcaSlicer"
 export LD_LIBRARY_PATH="$DIR/bin:$LD_LIBRARY_PATH"
 
 # FIXME: OrcaSlicer segfault workarounds
@@ -25,4 +25,4 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ] && [ "$ZINK_DISABLE_OVERRIDE" != "1" ]; t
         fi
     fi
 fi
-exec "$DIR/orca-slicer-bin" "$@"
+exec "$DIR/orca-slicer" "$@"
