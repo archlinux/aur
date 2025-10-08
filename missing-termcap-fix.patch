@@ -1,0 +1,11 @@
+--- Makefile.bak	2025-10-08 15:14:24.678523345 -0400
++++ Makefile	2025-10-08 15:24:56.765483486 -0400
+@@ -5,7 +5,7 @@
+ CFLAGS     += -std=gnu99 -lconfig -D_GNU_SOURCE -fcommon
+ CFLAGS     += `$(PKG_CONFIG) --cflags libconfig`
+ LDLIBS     += `$(PKG_CONFIG) --libs libconfig`
+-LDFLAGS     = -ltermcap -z now
++LDFLAGS     = -lncurses -z now
+ BIN         = lsmount
+ OBJ         = lsmount.o lsmgrid.o options.o lsmcolors.o helper.o
+ VPATH       = src

@@ -1,0 +1,19 @@
+pkgbase = lsmount
+	pkgdesc = lsmount is a simple formatter, colorizer and filter for /proc/mounts written in C
+	pkgver = v0.2.4.r3.g9b6e92d
+	pkgrel = 1
+	url = https://www.lsmount.org
+	arch = x86_64
+	license = isc
+	makedepends = asciidoc
+	makedepends = gzip
+	makedepends = xmlto
+	makedepends = debhelper
+	depends = libconfig
+	depends = ncurses
+	source = git+https://github.com/Llandon/lsmount.git
+	source = missing-termcap-fix.patch
+	sha256sums = SKIP
+	sha256sums = 63d90ab2135655abd60b830cc4f889ac524fa1347eae700dd504c4b87ec47f55
+
+pkgname = lsmount-git
