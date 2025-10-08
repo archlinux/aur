@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=sbom-tool-git
-pkgver=2.2.1.r0.848944d
+pkgver=4.1.3.r0.fad665a5
 pkgrel=1
 pkgdesc='Tool to create SPDX 2.2 compatible SBOMs'
 arch=('x86_64')
