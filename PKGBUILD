@@ -1,10 +1,19 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=0.16.1.r212.gf2bc33e
+pkgver=0.18.0.r1.
 pkgrel=1
-makedepends=('rust' 'cargo' 'git' 'openssl' 'libpulse' 'luajit')
-depends=('gtk3' 'gtk-layer-shell' 'lua51-lgi' 'libdbusmenu-glib' 'libinput' 'libdbusmenu-gtk3')
+makedepends=('rust' 'cargo' 'git' 'openssl')
+
+depends=(
+  'gtk4' 
+  'gtk4-layer-shell' 
+  'lua51-lgi' 
+  'libinput'
+  'libpulse'
+  'luajit'
+)
+
 provides=('ironbar')
 conflicts=('ironbar')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -33,4 +42,6 @@ package() {
   install -Dm 644 "$srcdir/ironbar/target/completions/ironbar.bash" "$pkgdir/usr/share/bash-completion/completions/ironbar"
   install -Dm 644 "$srcdir/ironbar/target/completions/_ironbar" "$pkgdir/usr/share/zsh/site-functions/_ironbar"
   install -Dm 644 "$srcdir/ironbar/target/completions/ironbar.fish" "$pkgdir/usr/share/fish/vendor_completions.d/ironbar.fish"
+
+  install -Dm 644 "$srcdir/ironbar/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
