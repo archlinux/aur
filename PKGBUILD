@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-lottie
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -14,12 +14,12 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A family of player software for a certain json-based file format for describing 2d vector graphics animations (android)'
 depends=('android-armv7a-eabi-qt6-base')
 optdepends=('android-armv7a-eabi-qt6-declarative: QML bindings')
-makedepends=('android-cmake' 'android-armv7a-eabi-qt6-declarative' 'qt6-declarative' 'ninja')
+makedepends=('android-cmake' 'android-armv7a-eabi-qt6-declarative' 'android-armv7a-eabi-qt6-svg' 'qt6-declarative' 'qt6-lottie' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtlottie-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a4df93d2dd5c5942f1dc23e29667199fbf5cfaba84a51e6a9ffc874b967e31c6')
+sha256sums=('70a413af5bc20a28d79c74a4182a1bb23f0709306721dc4878106891e5a87b25')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
