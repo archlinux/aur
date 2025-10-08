@@ -7,7 +7,7 @@
 # Contributor: nofxx <x@<nick>.com>
 
 pkgname=redict
-pkgver=7.3.5
+pkgver=7.3.6
 pkgrel=1
 pkgdesc='A distributed key/value database'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver//+/-}.tar.gz::https://codeberg.org/redict/redict/ar
         redict.tmpfiles
         redict.conf-sane-defaults.patch
         redict-use-system-jemalloc.patch)
-sha512sums=('b6250326590a2d20088c90a87aa3144d8083508fc949a91d759f9e150a80e200527763073cdac1ff0af61db1083c403f5380aaaf69686745a5c0bc64383dbeb3'
+sha512sums=('ba795cbe59250dca21d352a657323aa11c87baea1304e0a2c577151966c9dc1d034af5da88d11e2e12555c1825662cce6f602d1895641c5fd7ed20ce4085a13e'
             'bafdd8d5bb16eb651e6dbed2fbd85c8a2264e5063cdc590add10f79879cb0e3dd3ea65635cb0f2502b272b9ad08704461ebec2523eb5263130ae01b1e5fc6983'
             'b72ee96c78e9c2e760f8241f109c7c91ebf0d5ba699af7e05e28e0f4eab8864e43673fca074a11730223e22b93f109c9739ea92f429332f7dc37ae8d6d7ad691'
             '94556abeb7eba84d428130e9a0848865ddfa354e7652ec7a1a1d9ad4100a95fea92ce2be55abcf98b1ae176cc204d475e43294bb901c7aee3fa6cefbd759c8be'
