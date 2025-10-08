@@ -1,7 +1,7 @@
 pkgbase = scap-workbench-git
 	pkgdesc = Security Content Automation Protocol GUI
 	pkgver = 1.2.1.r67.10c1929
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.open-scap.org/tools/scap-workbench/
 	arch = x86_64
 	license = BSD
@@ -15,6 +15,8 @@ pkgbase = scap-workbench-git
 	provides = scap-workbench
 	conflicts = scap-workbench
 	source = git+https://github.com/OpenSCAP/scap-workbench.git
+	source = scap-workbench-git.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = scap-workbench-git
