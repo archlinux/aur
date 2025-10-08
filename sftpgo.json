@@ -17,7 +17,6 @@
     "startup_hook": "",
     "post_connect_hook": "",
     "post_disconnect_hook": "",
-    "data_retention_hook": "",
     "max_total_connections": 0,
     "max_per_host_connections": 20,
     "allowlist_status": 0,
@@ -96,7 +95,6 @@
     "host_certificates": [],
     "host_key_algorithms": [],
     "kex_algorithms": [],
-    "min_dh_group_exchange_key_size": 2048,
     "ciphers": [],
     "macs": [],
     "public_key_algorithms": [],
@@ -324,6 +322,7 @@
           "cross_origin_opener_policy": "",
           "cross_origin_resource_policy": "",
           "cross_origin_embedder_policy": "",
+          "referrer_policy": "",
           "cache_control": ""
         },
         "branding": {
