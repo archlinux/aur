@@ -1,7 +1,7 @@
-From 5da5c3140cef5e78836c00b209139bfb97d7ec1e Mon Sep 17 00:00:00 2001
+From cee2a5d8cb6c0e3789d67c90b1cf039d5afd8681 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
-Subject: [PATCH 15/25] Workaround linker error about missing symbol
+Subject: [PATCH 19/20] Workaround linker error about missing symbol
  `__sync_bool_compare_and_swap_16`
 
 This error only happens when compiling for the x86_64-w64-mingw32 target
@@ -19,10 +19,10 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 218d3edd744..50b2ef9f1fd 100644
+index 36fbfede3df..59a094f8928 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -883,6 +883,11 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -895,6 +895,11 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -31,9 +31,9 @@ index 218d3edd744..50b2ef9f1fd 100644
 +    set_property(SOURCE text/qlocale_win.cpp APPEND PROPERTY COMPILE_FLAGS "-mcx16")
 +endif ()
 +
- qt_internal_extend_target(Core CONDITION WIN32
+ qt_internal_extend_target(Core CONDITION MSVC AND CLANG
      LIBRARIES
-         runtimeobject
+         clang_rt.builtins-x86_64
 diff --git a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt b/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
 index acd3754f4e5..0557c60afd1 100644
 --- a/src/plugins/networkinformation/networklistmanager/CMakeLists.txt
