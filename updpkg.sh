@@ -17,7 +17,7 @@ else
 fi
 
 updpkgsums && makepkg --printsrcinfo >.SRCINFO
-makepkg -srif
+makepkg -srif || true
 git commit -m "Bump to ${latest}" PKGBUILD
 git clean -f .
 rm -f *tgz *zst
