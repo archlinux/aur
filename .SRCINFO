@@ -1,4 +1,4 @@
-pkgbase = libvpx1.10
+pkgbase = lib32-libvpx1.10
 	pkgdesc = VP8 and VP9 codec, provides libvpx.so.6
 	pkgver = 1.10.0
 	pkgrel = 1
@@ -7,9 +7,10 @@ pkgbase = libvpx1.10
 	license = BSD
 	makedepends = git
 	makedepends = nasm
-	depends = gcc-libs
+	depends = lib32-gcc-libs
+	depends = libvpx1.10
 	provides = libvpx.so
 	source = https://github.com/webmproject/libvpx/archive/refs/tags/v1.10.0.tar.gz
 	sha256sums = 85803ccbdbdd7a3b03d930187cb055f1353596969c1f92ebec2db839fa4f834a
 
-pkgname = libvpx1.10
+pkgname = lib32-libvpx1.10
