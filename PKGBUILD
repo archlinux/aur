@@ -2,7 +2,7 @@
 pkgname=cyphernetes
 # renovate: datasource=github-releases depName=avitaltamir/cyphernetes
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Kubernetes Query Language'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvitalTamir/cyphernetes'
@@ -32,14 +32,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
   for i in cyphernetes kubectl-cypher
   do
     (
