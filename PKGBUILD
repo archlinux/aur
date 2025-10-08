@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pacpush
-pkgver=3.3.1
+pkgver=3.4
 pkgrel=1
 pkgdesc="Utility to push an Arch hosts package and AUR caches to other hosts"
 url="https://github.com/bulletmark/$pkgname"
@@ -11,7 +11,7 @@ depends=("python>=3.8" "rsync" "sudo" "openssh" "python-platformdirs"
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('c3a0da17326c0be8f514dd1a7bef929434da93ca')
+sha1sums=('3323dd793d17c98b93fbf4cc30369f8406df4471')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
