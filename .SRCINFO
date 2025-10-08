@@ -1,7 +1,7 @@
 pkgbase = matomo-bin
 	pkgdesc = A real-time web analytics platform
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://matomo.org/
 	install = matomo.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = matomo-bin
 	optdepends = mariadb: Database server
 	optdepends = python: Log importer script
 	optdepends = geoipupdate: GeoIP database
+	provides = matomo
 	conflicts = matomo
 	replaces = piwik
 	backup = usr/share/webapps/matomo/piwik.js

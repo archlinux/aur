@@ -6,7 +6,7 @@
 pkgname=matomo-bin
 _pkgname=matomo
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A real-time web analytics platform"
 arch=("any")
 url="https://matomo.org/"
@@ -14,6 +14,7 @@ license=("GPL-3.0-or-later")
 depends=("php" "php-gd")
 replaces=("piwik")
 conflicts=("matomo")
+provides=("matomo")
 optdepends=(
 	"mariadb: Database server"
 	"python: Log importer script"
