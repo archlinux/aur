@@ -20,7 +20,11 @@ sha256sums=('99833cc95aa1b6ab3026da1e98804cf2dd18f09539450b18125ecf5b0e35ea46'
 package() {
   cd "${pkgdir}"
   bsdtar -xf "${srcdir}/lobehub-desktop-beta-1.135.5.x86_64.rpm"
+
   cd "${srcdir}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 lobehub-desktop-beta.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/lobehub-desktop-beta.png"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -sf /opt/LobeHub-Beta/lobehub-desktop-beta "${pkgdir}/usr/bin/lobehub-desktop-beta"
 }
