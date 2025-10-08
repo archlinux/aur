@@ -1,6 +1,6 @@
 pkgbase = battlecity-git
 	pkgdesc = Remake of multidirectional shooter video game from NES
-	pkgver = 0.1.0.alpha.r1.g2873455
+	pkgver = 0.1.0.alpha.r1.ge647a59
 	pkgrel = 1
 	url = https://github.com/gunnerson/battlecity
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = battlecity-git
 	depends = libxrandr
 	depends = gcc-libs
 	depends = systemd-libs
+	options = !debug
 	source = git+https://github.com/gunnerson/battlecity.git
 	sha256sums = SKIP
 

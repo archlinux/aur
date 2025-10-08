@@ -2,7 +2,7 @@
 
 pkgname=battlecity-git
 _gitname=battlecity
-pkgver=0.1.0.alpha.r1.g2873455
+pkgver=0.1.0.alpha.r1.ge647a59
 pkgrel=1
 pkgdesc="Remake of multidirectional shooter video game from NES"
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="https://github.com/gunnerson/${_gitname}"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libxi' 'libxcursor' 'libx11' 'libxrandr' 'gcc-libs' 'systemd-libs')
 makedepends=('git' 'cmake' 'base-devel')
+options=('!debug')
 
 source=("git+${url}.git")
 sha256sums=('SKIP')
