@@ -1,3 +1,5 @@
 [dstask-bin]
-source = "git"
-git = "https://github.com/naggie/dstask.git"
+source = "github"
+github = "naggie/dstask"
+use_latest_release = true
+prefix = "v"
