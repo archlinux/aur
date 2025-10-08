@@ -10,15 +10,14 @@
 pkgname=zen-browser-bin
 _pkgname=zen-browser
 _desktopname=zen
-pkgver=1.16.3b
+pkgver=1.16.4b
 pkgrel=1
 pkgdesc="Performance oriented Firefox-based web browser"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd)
-optdepends=('ffmpeg: H264/AAC/MP3 decoding'
-            'networkmanager: Location detection via available WiFi networks'
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd ffmpeg4.4)
+optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulse-native-provider: Audio support'
             'speech-dispatcher: Text-to-Speech'
@@ -36,8 +35,8 @@ source=("$_pkgname.sh"
 sha256sums=('642bcde5b15fddb712d10ed53299781108a265432237ab27a96c5c5c489718db'
             'a6371aa853b095d1c223f955e97a390b905abe5bcba38bbddd17408dd46fec94'
             'e977c3d690224dd727d8761d2c0a66ba41bfd02ae0fd7850c4545d06b5a8e63c')
-sha256sums_x86_64=('1fe8d1052faa4d01bf4685aaaddbf691946897a0abf69d1490e9021303a7ce23')
-sha256sums_aarch64=('28c117a9447657f8e717235029c2ca9fb8f230e8379448037736518259c10d16')
+sha256sums_x86_64=('1fe3081479c73327c70a4b74c44781b42c796be9214bf2a5831fad5e6792c41b')
+sha256sums_aarch64=('59a479bb2b2f37e08a14990cd91074ec89d5346626d4fddb4793b1d2b430eacc')
 
 
 package() {
