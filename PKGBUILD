@@ -5,7 +5,7 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=sqlcl
-pkgver='25.2.2.199.0918'
+pkgver='25.3.0.274.1210'
 pkgrel=1
 pkgdesc='SQL Developer command line interface for Oracle'
 arch=('any')
@@ -14,7 +14,7 @@ license=('custom')
 changelog=CHANGELOG.md
 depends=('bash' 'java-runtime>=17')
 source=("$pkgname-$pkgver.zip::https://download.oracle.com/otn_software/java/sqldeveloper/$pkgname-$pkgver.zip")
-sha256sums=('62c20426441779520006c0973417d3e9665bad7babd61a046458fdec9bc61d5f')
+sha256sums=('4ce293bc11685050ea37baa3abac986018746df4baea492cdb8deaebee7e8ba7')
 
 package() {
   install -Dm644 "$pkgname/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
