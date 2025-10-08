@@ -1,7 +1,7 @@
 pkgbase = winboat-bin
 	pkgdesc = Run Windows apps on Linux with seamless integration
-	pkgver = 0.8.5
-	pkgrel = 2
+	pkgver = 0.8.6
+	pkgrel = 1
 	url = https://www.winboat.app
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = winboat-bin
 	conflicts = winboat
 	options = !strip
 	options = !debug
-	source = https://github.com/TibixDev/winboat/releases/download/v0.8.5/winboat-0.8.5-amd64.deb
-	sha256sums = 67ddde039588bcd27bebad173644fc6eb929654ae918f23602b4f2e9aabef3cf
+	source = https://github.com/TibixDev/winboat/releases/download/v0.8.6/winboat-0.8.6-amd64.deb
+	sha256sums = e43fbe7a5a7118a394d5276e06dc9926e78a4e7d8c0cf08a8a8235e8f94dba1a
 
 pkgname = winboat-bin

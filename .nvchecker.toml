@@ -1,5 +1,5 @@
 [winboat-bin]
 source = "github"
 github = "TibixDev/winboat"
-prefix = "v"
 use_latest_release = true
+prefix = "v"
