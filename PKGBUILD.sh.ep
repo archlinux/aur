@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt6-module';
 \
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -9,4 +9,4 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A family of player software for a certain json-based file format for describing 2d vector graphics animations (mingw-w64)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps declarative => 'QML bindings' %>)
-makedepends=('mingw-w64-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja')
+makedepends=('mingw-w64-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative svg) %> 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-lottie' 'ninja')
