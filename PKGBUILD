@@ -1,67 +1,158 @@
-# Maintainer: Martin Rys <https://rys.rs/contact>
-# Contributor: Chris Morgan <me@chrismorgan.info>
-# Contributor: Carsten Feuls <archlinux dot carstenfeuls dot de>
-# Contributor: Nils Czernia <nils at czserver dot de>
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# The PKGBUILD for Matomo.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 
-pkgname=matomo
-pkgver=5.5.0
-pkgrel=1
-pkgdesc="A real-time web analytics platform"
+readonly _pkgname="matomo"
+declare -r _tag="74743a4b9a198721b72ebf909102589ab706a9ea"
+
+pkgname="matomo-git"
+pkgver="5.5.0"
+pkgrel="1"
+pkgdesc="A powerful web analytics platform."
 arch=("any")
-url="https://matomo.org/"
+url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL-3.0-or-later")
-depends=("php" "php-gd")
-replaces=("piwik")
-optdepends=(
-	"mariadb: Database server"
-	"python: Log importer script"
-	"geoipupdate: GeoIP database")
-install="$pkgname.install"
-source=(
-	"https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
-	"https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
-backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
-sha256sums=('fa82d6ea45081af43f75fb481857659fe24d6200423638b1234e8dc64a1193f1'
-            'SKIP')
+depends=("alsa-lib" "at-spi2-core" "bash" "coffeescript" "gtk3" "java-runtime" "lib32-glibc" "mariadb" "nodejs" "nss" "perl" "php" "php-fpm" "php-gd" "python" "python-beautifulsoup4" "python-pillow" "python-requests" "python-yaml" "rhino" "ruby" "zsh")
+makedepends=("composer" "curl" "git" "git-lfs" "npm")
+optdepends=("apache: HTTP server"
+    "certbot: Creates SSL certificates."
+    "nginx: HTTP server")
+provides=("${_pkgname}")
+conflicts=("matomo")
+install="${_pkgname}.install"
+source=("${_pkgname}::git+${url}.git#tag=${_tag}"
+    "git+https://github.com/matomo-org/matomo-icons.git"
+    "git+https://github.com/matomo-org/matomo-log-analytics.git"
+    "git+https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement.git"
+    "git+https://github.com/matomo-org/plugin-Bandwidth.git"
+    "git+https://github.com/matomo-org/plugin-CustomAlerts.git"
+    "git+https://github.com/matomo-org/plugin-CustomVariables.git"
+    "git+https://github.com/matomo-org/plugin-DeviceDetectorCache.git"
+    "git+https://github.com/matomo-org/plugin-LoginLdap.git"
+    "git+https://github.com/matomo-org/plugin-LogViewer.git"
+    "git+https://github.com/matomo-org/plugin-MarketingCampaignsReporting.git"
+    "git+https://github.com/matomo-org/plugin-Provider.git"
+    "git+https://github.com/matomo-org/plugin-QueuedTracking.git"
+    "git+https://github.com/matomo-org/plugin-SecurityInfo.git"
+    "git+https://github.com/matomo-org/plugin-TasksTimetable.git"
+    "git+https://github.com/matomo-org/plugin-TrackingSpamPrevention.git"
+    "git+https://github.com/matomo-org/plugin-TreemapVisualization.git"
+    "git+https://github.com/matomo-org/plugin-VisitorGenerator.git"
+    "git+https://github.com/matomo-org/tag-manager.git"
+    "git+https://github.com/matomo-org/travis-scripts.git"
+    "override-${_pkgname}.conf")
+sha512sums=("3686cc0ea0853e1f007d8c684751819617a4eb7ad86170a9a4c6bd7a3ac83d93ec04094d0729a9f795272d13479fe2223cc79b0b70a6b0aa390ba33880d74c3a"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "3802c7aae4c26cf23a61c48fedabe1d4bb516bbc07e42573cdb8cdfd19a556cc0b65941eae03ceb1c9cbf3eff2d40742e01eea12f3b420ae0d277c3582368b34")
 
-validpgpkeys=("F529A27008477483777FC23D63BB30D0E5D2C749")
+prepare()
+{
+    cd "${srcdir}"/"${_pkgname}"/ || exit 1
+    git submodule init
 
-package() {
-	install -d "${pkgdir}/usr/share/webapps"
-	cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}"
-	# Some extensions want to append to piwik.js (matomo.js from 3.8.0 onwards),
-	# so we reluctantly let them.
-	chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/piwik.js"
-	chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/matomo.js"
+    git config submodule.misc/log-analytics.url "${srcdir}"/matomo-log-analytics/
+    git config submodule.plugins/AnonymousPiwikUsageMeasurement.url "${srcdir}"/plugin-AnonymousPiwikUsageMeasurement/
+    git config submodule.plugins/Bandwidth.url "${srcdir}"/plugin-Bandwidth/
+    git config submodule.plugins/CustomAlters.url "${srcdir}"/plugin-CustomAlters/
+    git config submodule.plugins/CustomVariables.url "${srcdir}"/plugin-CustomVariables/
+    git config submodule.plugins/DeviceDetectorCache.url "${srcdir}"/plugin-DeviceDetectorCache/
+    git config submodule.plugins/LoginLdap.url "${srcdir}"/plugin-LoginLdap/
+    git config submodule.plugins/LogViewer.url "${srcdir}"/plugin-LogViewer/
+    git config submodule.plugins/MarketingCampaignsReporting.url "${srcdir}"/plugin-MarketingCampaignsReporting/
+    git config submodule.plugins/Morpheus/icons.url "${srcdir}"/matomo-icons/
+    git config submodule.plugins/Provider.url "${srcdir}"/plugin-Provider/
+    git config submodule.plugins/QueuedTracking.url "${srcdir}"/plugin-QueuedTracking/
+    git config submodule.plugins/SecurityInfo.url "${srcdir}"/plugin-SecurityInfo/
+    git config submodule.plugins/TagManager.url "${srcdir}"/tag-manager/
+    git config submodule.plugins/TasksTimetable.url "${srcdir}"/plugin-TasksTimetable/
+    git config submodule.plugins/TrackingSpamPrevention.url "${srcdir}"/plugin-TrackingSpamPrevention/
+    git config submodule.plugins/TreemapVisualization.url "${srcdir}"/plugin-TreemapVisualization/
+    git config submodule.plugins/VisitorGenerator.url "${srcdir}"/plugin-VisitorGenerator/
+    git config submodule.tests/travis.url "${srcdir}"/travis-scripts/
 
-	# While installing matomo, it insists on being able to write to the config directory,
-	# because it creates config.ini.php. After it’s installed, you can make it read-only,
-	# e.g. by `chown -R root:http /etc/webapps/${pkgname}`
-	install -d "${pkgdir}/etc/webapps"
-	mv "${pkgdir}/usr/share/webapps/${pkgname}/config" "${pkgdir}/etc/webapps/${pkgname}"
-	ln -s "/etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/matomo/config"
+    git -c protocol.file.allow=always submodule update
 
-	# matomo uses this tmp dir for writing its own data;
-	# but it belongs in /var rather than /usr.
-	rmdir "${pkgdir}/usr/share/webapps/matomo/tmp"
-	install -dm700 "${pkgdir}/var/lib/webapps/matomo/tmp"
-	ln -s "/var/lib/webapps/matomo/tmp" "${pkgdir}/usr/share/webapps/matomo/tmp"
+    # GeoIP database
+    ## Do not use option "-i" as it will remove the preceding "0".
+    declare _current_year
+    _current_year="$(date +"%Y")"
+    declare _current_month
+    _current_month="$(date +"%m")"
 
-	# Installing or upgrading non-core plugins requires write access to plugins/;
-	# we could try g+w on the directory and try to restrict core plugins, but
-	# then you’ve got mixed ownership (anything it creates will be http:http
-	# instead of root:http) which is nasty. Another approach is to put `plugins`
-	# in /var/lib with core plugins *actually* in /usr/share and symlinked back;
-	# but that’s getting too clever for my sanity at present: this is all getting
-	# rather bothersome; I’m tired of messing around with PHP apps that are
-	# ill-designed for hardening and not designed for use in the scope of a
-	# system package manager. So for now at least, we’re just going to leave it
-	# as it is, chown the whole plugins directory in matomo.install, and wash our
-	# hands of it.
+    while [[ "$(curl -o /dev/null/ -sw "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz || true)" != "200" ]]; do
+        ## Remove the preceding "0".
+        if [[ "${_current_month::1}" -eq "0" ]]; then
+            _current_month=${_current_month:1}
+        fi
 
-	# GeoLite2-City.mmdb is provided by geoipupdate, which is optdepends.
-	# See /etc/GeoIP.conf and make sure to enable geoipupdate's timer
-	# Keep in mind it takes a while before a newly generated license becomes active
-	# I figure a dead symlink should be safe if the DB is missing.
-	ln -s "/var/lib/GeoIP/GeoLite2-City.mmdb" "${pkgdir}/usr/share/webapps/matomo/misc"
+        ## Take the last month.
+        if [[ "${_current_month}" -gt "1" ]]; then
+            ((_current_month--))
+        else
+            ((_current_year--))
+            _current_month="12"
+        fi
+
+        ## Put a "0" at the beginning again.
+        if [[ "${#_current_month}" -eq "2" ]]; then
+            _current_month="0${_current_month}"
+        fi
+    done
+
+    curl -o "${srcdir}"/DBIP-City-Lite.mmdb.gz https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz
+    gzip -d "${srcdir}"/DBIP-City-Lite.mmdb.gz
+}
+
+build()
+{
+    cd "${srcdir}"/"${_pkgname}"/ || exit 1
+    composer install --no-dev
+
+    declare -r _package_jsons="$(find "${srcdir}"/"${_pkgname}"/ -name package.json -type f)"
+    readarray -t _package_json_array <<< "${_package_jsons}"
+
+    for _package_json in "${_package_json_array[@]}"; do
+        if [[ "${_package_json}" != "${srcdir}"/"${_pkgname}"*/node_modules/* ]]; then
+            cd "$(dirname "${_package_json}")" || exit 1
+            npm install
+        fi
+    done
+}
+
+package()
+{
+    # Assure that the directories exist.
+    mkdir -p "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
+    mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
+
+    # Install the software.
+    cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
+    install -Dm644 "${srcdir}"/DBIP-City-Lite.mmdb "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
+    install -Dm644 "${srcdir}"/override-"${_pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
+    chown -R http:http "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
+
+    # Install the documentation.
+    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 }

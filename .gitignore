@@ -1,0 +1,10 @@
+/*
+!/*.desktop
+!/*.install
+!/*.sh
+!/*.sysusers
+!/*.tmpfiles
+!/.gitignore
+!/.SRCINFO
+!/override-matomo.conf
+!/PKGBUILD
