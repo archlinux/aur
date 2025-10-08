@@ -31,14 +31,14 @@ build() {
 
   # deps
   cmake -S deps \
-        -B deps/build \
-        -G Ninja \
-        -DDEP_WX_GTK3=ON \
-	      -DDESTDIR="$PWD/deps/build/destdir" \
-	      -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
-        -DCMAKE_BUILD_TYPE=Release \
-	      -DCOLORED_OUTPUT=ON \
-        -DFLATPAK=1
+    -B deps/build \
+    -G Ninja \
+    -DDEP_WX_GTK3=ON \
+    -DDESTDIR="$PWD/deps/build/destdir" \
+    -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCOLORED_OUTPUT=ON \
+    -DFLATPAK=1
   ninja -C deps/build
 
   cmake \
@@ -55,7 +55,6 @@ build() {
     -DBBL_RELEASE_TO_PUBLIC=1 \
     -DBBL_INTERNAL_TESTING=0 \
     -DCMAKE_BUILD_TYPE=Release
-
 
   # add localizations
   ./scripts//run_gettext.sh --full
