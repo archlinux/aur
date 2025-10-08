@@ -4,15 +4,14 @@ pkgname=zen-twilight-bin
 _pkgname=zen-twilight
 _realpkgver=twilight
 _desktopname=zen-twilight
-pkgver=1.16t.2025.10.06
+pkgver=1.16t.2025.10.07
 pkgrel=1
 pkgdesc="Unstable Nightly release of the Performance oriented Firefox-based web browser"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd)
-optdepends=('ffmpeg: H264/AAC/MP3 decoding'
-            'networkmanager: Location detection via available WiFi networks'
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd ffmpeg4.4)
+optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
