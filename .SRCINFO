@@ -1,12 +1,11 @@
 pkgbase = openzl-git
 	pkgdesc = A novel data compression framework
 	pkgver = r39.d1f05d0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/facebook/openzl
 	arch = aarch64
 	arch = x86_64
 	license = BSD
-	makedepends = base-devel
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git

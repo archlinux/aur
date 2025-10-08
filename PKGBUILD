@@ -3,13 +3,13 @@
 _pkgname=openzl
 pkgname="$_pkgname-git"
 pkgver=r39.d1f05d0
-pkgrel=2
+pkgrel=3
 pkgdesc='A novel data compression framework'
 url='https://github.com/facebook/openzl'
 arch=('aarch64' 'x86_64')
 license=('BSD')
 depends=('glibc')
-makedepends=('base-devel' 'clang' 'cmake' 'git')
+makedepends=('clang' 'cmake' 'git')
 provides=("$_pkgname" "libopenzl.so")
 conflicts=("$_pkgname")
 source=("git+$url.git")
