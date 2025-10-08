@@ -4,11 +4,11 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=8.1.r121328.ge05f8acabf
+pkgver=8.1.r121357.g7896cc67c1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
-url='https:/ffmpeg.org/'
+url='https://ffmpeg.org/'
 license=('GPL-3.0-or-later')
 depends=(
   alsa-lib
@@ -36,7 +36,6 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
-  libgl
   libiec61883
   libjxl
   libmodplug
@@ -89,7 +88,7 @@ makedepends=(
   frei0r-plugins
   git
   ladspa
-  mesa
+  libgl
   nasm
   opencl-headers
   vapoursynth
