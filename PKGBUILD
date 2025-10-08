@@ -1,7 +1,7 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=fluidx3d
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar
 	"https://cdn.thingiverse.com/assets/b8/99/d7/5d/2c/StarShipV2.stl"
 )
 
-sha256sums=('390c4585978819373475173743a418a124c5baf944b6e16510e63f8e92c3dd5c'
+sha256sums=('259584c4d4f62240696122e27bf7998fe90ced5be72973cd8ce336ae6aed1055'
 	'64ec55932632b3c37bda58e4bef350f6649611cb0041dcba9797c69c6164170a'
 	'db5605f435973c556302124e98ce45dc411ca6a3f71131df37f44ee61f28c9bb'
 	'e8fe5827330bc2adfd5161e42c9d5fd6850d909f7581e0d252e30e3dd623f93d'
@@ -110,7 +110,7 @@ prepare() {
 	#prepare_sample "Cessna 172 propeller aircraft" "D3Q19 FP16S EQUILIBRIUM_BOUNDARIES MOVING_BOUNDARIES SUBGRID"
 	#prepare_sample "Bell 222 helicopter" "D3Q19 FP16C EQUILIBRIUM_BOUNDARIES MOVING_BOUNDARIES SUBGRID"
 	#prepare_sample "Mercedes F1 W14 car" "D3Q19 FP16S EQUILIBRIUM_BOUNDARIES MOVING_BOUNDARIES SUBGRID"
-	prepare_sample "hydraulic jump" "D3Q19 FP16S VOLUME_FORCE EQUILIBRIUM_BOUNDARIES SURFACE"
+	prepare_sample "hydraulic jump" "D3Q19 FP16S VOLUME_FORCE EQUILIBRIUM_BOUNDARIES MOVING_BOUNDARIES SURFACE SUBGRID"
 	prepare_sample "dam break" "D3Q19 FP16S VOLUME_FORCE SURFACE"
 	prepare_sample "liquid metal on a speaker" "D3Q19 FP16S VOLUME_FORCE MOVING_BOUNDARIES SURFACE"
 	prepare_sample "breaking waves on beach" "D3Q19 FP16S VOLUME_FORCE EQUILIBRIUM_BOUNDARIES SURFACE"
