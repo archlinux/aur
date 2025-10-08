@@ -2,7 +2,7 @@
 
 pkgname=python-wandb
 _pkgname=${pkgname#python-}
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=('python-wandb')
 conflicts=('python-wandb-git')
 install="python-wandb.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bd084e27ee8de8a22e77d4a29f6eeba8856ee90494efe45d840cf0c36eab577a')
+sha256sums=('788ea92ece4e6a0212ee111d6185491db2cc871fefa9f66b2794bc70327967f6')
 
 prepare() {
     cd "$_pkgname-$pkgver"
