@@ -1,3 +1,4 @@
 [python-croniter]
-source = "pypi"
-pypi = "croniter"
+source = "git"
+git = "https://github.com/pallets-eco/croniter.git"
+exclude_regex = ".*(alpha|beta|rc).*"
