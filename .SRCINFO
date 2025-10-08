@@ -1,0 +1,13 @@
+pkgbase = dezoomify-rs-bin
+	pkgdesc = Download zoomable images from online viewers (Rust implementation)
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/lovasoa/dezoomify-rs
+	arch = x86_64
+	license = MIT
+	provides = dezoomify-rs
+	conflicts = dezoomify-rs
+	source = https://github.com/lovasoa/dezoomify-rs/releases/download/v2.15.0/dezoomify-rs-linux.tgz
+	sha256sums = 21f461b0ad475e3dce5ae027fe986081bf60ce6b49abf25892364bcf84d55de3
+
+pkgname = dezoomify-rs-bin
