@@ -2,7 +2,7 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=14.4
+pkgver=14.5
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -22,11 +22,11 @@ depends_i686=(
 )
 source=(
     dlagent
-    "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux_${CARCH}.tar.gz"
 )
 sha256sums=(
     "21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218"
-    "34e723d688fa5622f9baa506cce8636e7ddf7e6d65184f1feb7d910e3fe4e640"
+    "8706d85b01deb3aa5bcbfe852227706fb47f7049697c8467f7cb3b6001dcd9c5"
 )
 options=(!strip !debug)
 install=".install"
