@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 [python-onion-location]
 source = "git"
 git = "https://codeberg.org/Freso/python-onion-location.git"
