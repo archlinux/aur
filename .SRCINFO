@@ -1,6 +1,6 @@
 pkgbase = sponge
 	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://go-sponge.com
 	arch = x86_64
@@ -8,19 +8,19 @@ pkgbase = sponge
 	makedepends = go
 	depends = glibc
 	depends = protobuf
-	source = sponge-1.15.1.tar.gz::https://github.com/go-dev-frame/sponge/archive/refs/tags/v1.15.1.tar.gz
-	sha256sums = 7e747397d19f549ee1b2df2b5587c8ba8adf301adc39c4a64a5ff1ab261ebef4
+	source = sponge-1.15.2.tar.gz::https://github.com/go-dev-frame/sponge/archive/refs/tags/v1.15.2.tar.gz
+	sha256sums = b161e330802f7a1f9038ad254e0ff11da8619ef08e94d3534ad20f4ee4c9c12d
 
 pkgname = sponge
 	depends = glibc
 	depends = protobuf
 	depends = protoc-gen-doc
 	depends = protoc-gen-go
-	depends = protoc-gen-go-gin=1.15.1
+	depends = protoc-gen-go-gin=1.15.2
 	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-rpc-tmpl=1.15.1
+	depends = protoc-gen-go-rpc-tmpl=1.15.2
 	depends = protoc-gen-gotag
-	depends = protoc-gen-json-field=1.15.1
+	depends = protoc-gen-json-field=1.15.2
 	depends = protoc-gen-openapiv2
 	depends = protoc-gen-validate
 	depends = swag
