@@ -62,8 +62,6 @@ build() {
 }
 
 package() {
-  echo "$srcdir/OrcaSlicer-${_pkgver}"
-  echo "$pkgdir"
   cd "$srcdir/OrcaSlicer-${_pkgver}"
   DESTDIR="$pkgdir" ninja -C build install
   install -d "$pkgdir/usr/lib/OrcaSlicer/"
@@ -72,32 +70,5 @@ package() {
   install -Dm644 doc/*.md -t "$pkgdir/usr/share/doc/OrcaSlicer/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/OrcaSlicer/LICENSE"
   rm -rf "$pkgdir/usr/LICENSE.txt"
-
-  echo "$srcdir/OrcaSlicer-${_pkgver}"
-  echo "$pkgdir"
-
-
-
-  #DESTDIR=$srcdir/OrcaSlicer-${_pkgver} ninja -C build install
-  #install -d "$srcdir/OrcaSlicer-${_pkgver}/usr/lib/OrcaSlicer/"
-  #mv "$srcdir/OrcaSlicer-${_pkgver}/usr/bin/orca-slicer" "$srcdir/OrcaSlicer-${_pkgver}/usr/lib/OrcaSlicer/"
-  #install -Dm755 ../../orca-slicer.sh "$srcdir/OrcaSlicer-${_pkgver}/usr/bin/orca-slicer"
-  #install -Dm644 doc/*.md -t "$srcdir/OrcaSlicer-${_pkgver}/usr/share/doc/OrcaSlicer/"
-  #install -Dm644 LICENSE.txt "$srcdir/OrcaSlicer-${_pkgver}/usr/share/licenses/OrcaSlicer/LICENSE"
-  #rm -rf "$srcdir/OrcaSlicer-${_pkgver}/usr/LICENSE.txt"
-
-
-  #cd "$srcdir/OrcaSlicer-${_pkgver}"
-  #DESTDIR=$srcdir/OrcaSlicer-${_pkgver} ninja -C build install
-  #install -d "$pkgdir/usr/bin"
-  #cd "$srcdir/OrcaSlicer/build/package/bin"
-  #install "orca-slicer" "$pkgdir/usr/bin/orca-slicer-bin"
-#
-  #cd "$srcdir/OrcaSlicer/build/package"
-  #find resources -type f -exec install -D {} "$pkgdir/usr/{}" \;
-#
-  #cd "$srcdir/OrcaSlicer/doc"
-  #install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" *.md
-  #install -Dm755 "$srcdir/orca-slicer.sh" "$pkgdir/usr/bin/orca-slicer"
 }
 
