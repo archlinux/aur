@@ -9,7 +9,7 @@
 ## options
 : ${_build_pgo:=true}
 : ${_build_pgo_reuse:=try}
-: ${_build_pgo_xvfb:=false}
+: ${_build_pgo_xvfb:=true}
 
 : ${_build_lto:=false}
 : ${_build_system_libs:=true}
@@ -107,7 +107,7 @@ _pkgsrc="Floorp-$pkgver"
 _pkgsrc_runtime="Floorp-runtime-$_tag_runtime"
 _pkgext="tar.gz"
 source=(
-  "$_pkgname-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
+  "$_pkgname-components-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
   "$_pkgname-runtime-${_tag_runtime#passed-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
