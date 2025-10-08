@@ -1,6 +1,6 @@
 # Maintainer: Berke Oruç <berke3oruc@gmail.com>
 pkgname=berkemc
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Advanced Minecraft launcher with mod support, skin management, and performance monitoring"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python>=3.8' 'java-runtime>=17' 'python-requests' 'python-rich' 'python-colorama' 'python-psutil')
 makedepends=('python-setuptools')
 source=("berkemc-$pkgver.tar.gz::https://github.com/BerkeOruc/BerkeMinecraftLuncher/archive/v$pkgver.tar.gz")
-sha256sums=('c7e82f096c9127eac36f48c944e4cf1377570ffd0ada1b71665c90cf36440ec9')
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/BerkeMinecraftLuncher-$pkgver"
