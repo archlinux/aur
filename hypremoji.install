@@ -110,6 +110,11 @@ post_install() {
 
 post_upgrade() {
     echo "==> Upgrading hypremoji configuration..."
+    
+    if [[ -f /usr/share/hypremoji/setting_in_hyprland_config.sh ]]; then
+        rm -f /usr/share/hypremoji/setting_in_hyprland_config.sh
+        echo "    -> Removed deprecated setup script"
+    fi
 
     get_user_home() {
         if [[ -n "$SUDO_USER" ]]; then
@@ -160,7 +165,7 @@ post_upgrade() {
                     fi
                     echo "    -> Created default config at $HYPREMOJI_CONF"
                 else
-                    echo "    -> ERROR: Template not found at /usr/share/hypremoji/hypremoji.conf.example"
+                    echo "    -> ERROR: Template not found at /usr/share/hypremoji/hypremoji.conf"
                     return 1
                 fi
                 
@@ -176,7 +181,7 @@ post_upgrade() {
                     fi
                     
                     echo "    -> Added source line to hyprland.conf"
-                    echo "    -> Reload Hyprland to apply changes (SUPER + SHIFT + R)"
+                    echo "    -> Reload Hyprland to apply changes"
                 fi
                 ;;
             * )
@@ -188,8 +193,6 @@ post_upgrade() {
         
         return 0
     fi
-
-    
     
     echo ""
     echo "==> Old hypremoji configuration detected in hyprland.conf"
@@ -263,7 +266,7 @@ post_upgrade() {
             echo "    -> Created $HYPREMOJI_CONF with your custom settings"
             
             TEMP_HYPR=$(mktemp)
-            grep -v "# SUPER.*Hypremoji\|bind.*hypremoji\|# WindowRules for HyprEmojis\|windowrulev2.*HyprEmoji" "$HYPRLAND_CONF" > "$TEMP_HYPR"
+            grep -v "# SUPER.*Hypremoji\|bind.*hypremoji\|# Window rules for HyprEmoji\|windowrulev2.*HyprEmoji" "$HYPRLAND_CONF" > "$TEMP_HYPR"
             
             if ! grep -q "source.*hypremoji/hypremoji.conf" "$TEMP_HYPR"; then
                 {
