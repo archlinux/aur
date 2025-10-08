@@ -731,6 +731,11 @@ Module: open_webui.constants
 Module: open_webui.utils.telemetry.setup
   Imported in:
     open_webui/main.py
+Module: open_webui.retrieval.loaders.youtube
+  Imported in:
+    open_webui/main.py
+    open_webui/retrieval/utils.py
+    open_webui/routers/retrieval.py
 Module: typer
   Imported in:
     open_webui/__init__.py
@@ -1006,6 +1011,9 @@ Module: open_webui.utils.mcp.client
 Module: jwt
   Imported in:
     open_webui/utils/auth.py
+Module: bcrypt
+  Imported in:
+    open_webui/utils/auth.py
 Module: cryptography.hazmat.primitives.ciphers.aead
   Imported in:
     open_webui/utils/auth.py
@@ -1016,9 +1024,6 @@ Module: pytz
   Imported in:
     open_webui/utils/auth.py
 Module: fastapi.security
-  Imported in:
-    open_webui/utils/auth.py
-Module: passlib.context
   Imported in:
     open_webui/utils/auth.py
 Module: urllib.request
@@ -1417,9 +1422,6 @@ Module: langchain_core.documents
 Module: open_webui.retrieval.loaders.main
   Imported in:
     open_webui/routers/retrieval.py
-Module: open_webui.retrieval.loaders.youtube
-  Imported in:
-    open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.main
   Imported in:
     open_webui/retrieval/web/bing.py
@@ -1448,6 +1450,7 @@ Module: open_webui.retrieval.web.main
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.utils
   Imported in:
+    open_webui/retrieval/utils.py
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.ollama
   Imported in:
