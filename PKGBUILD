@@ -2,7 +2,7 @@
 
 pkgname=hy3
 pkgver=0.51.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Hyprland plugin for i3 like tiling'
 arch=('x86_64')
 url='https://github.com/outfoxxed/hy3'

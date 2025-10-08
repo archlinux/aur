@@ -1,7 +1,7 @@
 pkgbase = hy3
 	pkgdesc = Hyprland plugin for i3 like tiling
 	pkgver = 0.51.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/outfoxxed/hy3
 	arch = x86_64
 	license = GPL3
