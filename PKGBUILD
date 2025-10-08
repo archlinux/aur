@@ -2,7 +2,7 @@
 
 pkgname=ndi-sdk
 pkgver=6.2.1.r146761.20250821
-pkgrel=1
+pkgrel=2
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
 arch=('x86_64')
@@ -11,6 +11,8 @@ license=('LicenseRef-custom')
 depends=(
     'avahi'
     'glibc')
+optdepends=(
+    'ffmpeg7.1: for HX decoding support')
 provides=('libndi')
 conflicts=('libndi')
 options=('!debug' '!strip')

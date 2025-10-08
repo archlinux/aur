@@ -1,12 +1,13 @@
 pkgbase = ndi-sdk
 	pkgdesc = NewTek NDI SDK
 	pkgver = 6.2.1.r146761.20250821
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ndi.video/for-developers/ndi-sdk/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = avahi
 	depends = glibc
+	optdepends = ffmpeg7.1: for HX decoding support
 	provides = libndi
 	conflicts = libndi
 	noextract = Install_NDI_SDK_v6.2.1.r146761.20250821_Linux.tar.gz
