@@ -1,6 +1,6 @@
 pkgbase = shadps4-nightly-bin
 	pkgdesc = Unofficial nightly release of the shadPS4 PlayStation 4 emulator (Nightly pre-release version)
-	pkgver = 2025.10.06.b345567
+	pkgver = 2025.10.08.109b239
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = shadps4-nightly-bin
 	provides = shadps4
 	conflicts = shadps4
 	options = !strip
-	source = shadps4-linux-qt-2025-10-06-b345567.zip::https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-10-06-b34556702ec46e322c6df39b48d3bd2d92d361ff/shadps4-linux-qt-2025-10-06-b345567.zip
+	source = shadps4-linux-qt-2025-10-08-109b239.zip::https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-10-08-109b239ddfd0e6f9354f1d8512a80e989d75248b/shadps4-linux-qt-2025-10-08-109b239.zip
 	sha256sums = SKIP
 
 pkgname = shadps4-nightly-bin
