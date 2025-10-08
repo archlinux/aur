@@ -2,11 +2,12 @@
 
 pkgname=sjmcl-bin
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Minecraft launcher designed by SJTU Minecraft Club"
 arch=('x86_64')
 url="https://github.com/UNIkeEN/SJMCL"
 license=('custom:GPL-3.0 WITH Extra terms')
+depends=('cairo' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'webkit2gtk-4.1' 'xz')
 makedepends=("binutils" "tar")
 source=("https://github.com/UNIkeEN/SJMCL/releases/download/v${pkgver}/SJMCL_${pkgver}_linux_x86_64.deb"
   "https://raw.githubusercontent.com/UNIkeEN/SJMCL/v${pkgver}/LICENSE.EXTRA")
