@@ -1,4 +1,4 @@
-pkgbase = matomo-git
+pkgbase = matomo
 	pkgdesc = A powerful web analytics platform.
 	pkgver = 5.5.0
 	pkgrel = 1
@@ -81,4 +81,4 @@ pkgbase = matomo-git
 	sha512sums = SKIP
 	sha512sums = 3802c7aae4c26cf23a61c48fedabe1d4bb516bbc07e42573cdb8cdfd19a556cc0b65941eae03ceb1c9cbf3eff2d40742e01eea12f3b420ae0d277c3582368b34
 
-pkgname = matomo-git
+pkgname = matomo

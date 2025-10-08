@@ -5,25 +5,24 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _pkgname="matomo"
 declare -r _tag="74743a4b9a198721b72ebf909102589ab706a9ea"
 
-pkgname="matomo-git"
+pkgname="matomo"
 pkgver="5.5.0"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("any")
-url="https://github.com/matomo-org/${_pkgname}"
+url="https://github.com/matomo-org/${pkgname}"
 license=("GPL-3.0-or-later")
 depends=("alsa-lib" "at-spi2-core" "bash" "coffeescript" "gtk3" "java-runtime" "lib32-glibc" "mariadb" "nodejs" "nss" "perl" "php" "php-fpm" "php-gd" "python" "python-beautifulsoup4" "python-pillow" "python-requests" "python-yaml" "rhino" "ruby" "zsh")
 makedepends=("composer" "curl" "git" "git-lfs" "npm")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "nginx: HTTP server")
-provides=("${_pkgname}")
+provides=("${pkgname}")
 conflicts=("matomo")
-install="${_pkgname}.install"
-source=("${_pkgname}::git+${url}.git#tag=${_tag}"
+install="${pkgname}.install"
+source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/matomo-icons.git"
     "git+https://github.com/matomo-org/matomo-log-analytics.git"
     "git+https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement.git"
@@ -43,7 +42,7 @@ source=("${_pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/plugin-VisitorGenerator.git"
     "git+https://github.com/matomo-org/tag-manager.git"
     "git+https://github.com/matomo-org/travis-scripts.git"
-    "override-${_pkgname}.conf")
+    "override-${pkgname}.conf")
 sha512sums=("3686cc0ea0853e1f007d8c684751819617a4eb7ad86170a9a4c6bd7a3ac83d93ec04094d0729a9f795272d13479fe2223cc79b0b70a6b0aa390ba33880d74c3a"
     "SKIP"
     "SKIP"
@@ -68,7 +67,7 @@ sha512sums=("3686cc0ea0853e1f007d8c684751819617a4eb7ad86170a9a4c6bd7a3ac83d93ec0
 
 prepare()
 {
-    cd "${srcdir}"/"${_pkgname}"/ || exit 1
+    cd "${srcdir}"/"${pkgname}"/ || exit 1
     git submodule init
 
     git config submodule.misc/log-analytics.url "${srcdir}"/matomo-log-analytics/
@@ -126,14 +125,14 @@ prepare()
 
 build()
 {
-    cd "${srcdir}"/"${_pkgname}"/ || exit 1
+    cd "${srcdir}"/"${pkgname}"/ || exit 1
     composer install --no-dev
 
-    declare -r _package_jsons="$(find "${srcdir}"/"${_pkgname}"/ -name package.json -type f)"
+    declare -r _package_jsons="$(find "${srcdir}"/"${pkgname}"/ -name package.json -type f)"
     readarray -t _package_json_array <<< "${_package_jsons}"
 
     for _package_json in "${_package_json_array[@]}"; do
-        if [[ "${_package_json}" != "${srcdir}"/"${_pkgname}"*/node_modules/* ]]; then
+        if [[ "${_package_json}" != "${srcdir}"/"${pkgname}"*/node_modules/* ]]; then
             cd "$(dirname "${_package_json}")" || exit 1
             npm install
         fi
@@ -144,15 +143,15 @@ package()
 {
     # Assure that the directories exist.
     mkdir -p "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
-    mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
-    mkdir -p "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
+    mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mkdir -p "${pkgdir}"/usr/share/webapps/"${pkgname}"/misc/
 
     # Install the software.
-    cp -r "${srcdir}"/"${_pkgname}"/ "${pkgdir}"/usr/share/webapps/
-    install -Dm644 "${srcdir}"/DBIP-City-Lite.mmdb "${pkgdir}"/usr/share/webapps/"${_pkgname}"/misc/
-    install -Dm644 "${srcdir}"/override-"${_pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
-    chown -R http:http "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"/ "${pkgdir}"/usr/share/webapps/
+    install -Dm644 "${srcdir}"/DBIP-City-Lite.mmdb "${pkgdir}"/usr/share/webapps/"${pkgname}"/misc/
+    install -Dm644 "${srcdir}"/override-"${pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
+    chown -R http:http "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 }
