@@ -2,7 +2,7 @@
 _reponame=boxflat
 pkgname=$_reponame-git
 provides=($_reponame)
-pkgver=v0.1.4
+pkgver=0.1.4r0
 pkgrel=1
 pkgdesc="Adjust your Moza Racing gear settings"
 arch=('x86_64')
