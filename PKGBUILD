@@ -4,7 +4,7 @@
 # Contributor: Aleshus <aleshusi@gmail.com>
 
 pkgname=sipp
-pkgver=3.7.1
+pkgver=3.7.5
 pkgrel=1
 pkgdesc="A free open source test tool and traffic generator for the SIP protocol"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('openssl' 'libpcap' 'gsl' 'lksctp-tools')
 makedepends=('cmake')
 source=(https://github.com/SIPp/${pkgname}/releases/download/v${pkgver}/sipp-${pkgver}.tar.gz
         cmake-minimum-version.patch)
-sha256sums=('7d285de2158bbdf3d04c5a45b5638a8b6c1e160f5c1d5f6e9775fbda910a4c0b'
-            '52c84acfabe1019edd3ba58c0247e00ef3f6f5bae55d2d08da66479f3c673df8')
+sha256sums=('0d202f562fcc9f5aee578d5e9383fb321a69e1b04f1785757eccfba2fc5eeefe'
+            '30bf64077b493f888a0a67c6ef0f294f45fcc55b2d6918da5e5384724ed657e3')
 
 build() {
   cd ${pkgname}-${pkgver}
