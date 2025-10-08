@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-httpserver
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qthttpserver-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1343fa1d1d6dfda9b9de4a1ff36471b6ff4bd16f9ee7c19deb098c15e4714019')
+sha256sums=('e4705701db5f425e8f7025b3f74bf87b43af83742a615a20d4aa171d03251fc5')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
