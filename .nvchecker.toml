@@ -1,0 +1,4 @@
+[matomo-bin]
+source = "github"
+github = "matomo-org/matomo"
+use_latest_release = true

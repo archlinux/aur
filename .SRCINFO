@@ -1,0 +1,24 @@
+pkgbase = matomo-bin
+	pkgdesc = A real-time web analytics platform
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = https://matomo.org/
+	install = matomo.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = php
+	depends = php-gd
+	optdepends = mariadb: Database server
+	optdepends = python: Log importer script
+	optdepends = geoipupdate: GeoIP database
+	conflicts = matomo
+	replaces = piwik
+	backup = usr/share/webapps/matomo/piwik.js
+	backup = usr/share/webapps/matomo/matomo.js
+	source = https://builds.matomo.org/matomo-5.5.0.tar.gz
+	source = https://builds.matomo.org/matomo-5.5.0.tar.gz.asc
+	validpgpkeys = F529A27008477483777FC23D63BB30D0E5D2C749
+	sha256sums = fa82d6ea45081af43f75fb481857659fe24d6200423638b1234e8dc64a1193f1
+	sha256sums = SKIP
+
+pkgname = matomo-bin
