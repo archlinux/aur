@@ -1,4 +1,4 @@
-From ad9e599a77aefe5f9986ea0517ada94754bae69f Mon Sep 17 00:00:00 2001
+From 80e60b4a0dd20b479258e3d64c61e8c00ee8aa8e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 1/2] Handle win64 in dumpcpp and
