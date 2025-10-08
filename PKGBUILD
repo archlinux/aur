@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=sbom-tool
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Tool to create SPDX 2.2 compatible SBOMs'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('dotnet-sdk')
 options=('!strip')
 source=("https://github.com/microsoft/sbom-tool/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c1a34e17ddd1eeff5e0de298cd8cc9cd53e8920cdee572dcff3eaf239e87d3a')
+sha256sums=('a7ae3295985137b77b13c319bcefad2f750e463d1cde923de0b5df2836eb1176')
 
 build() {
 	cd "$pkgname-$pkgver"
