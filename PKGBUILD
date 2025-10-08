@@ -1,6 +1,7 @@
 # Maintainer: Eugene Lebedev <satanych13+dev@gmail.com>
 
 _pkgname=laigter
+_pkgname_title_cased=Laigter
 pkgname=${_pkgname}-appimage
 pkgver=1.12.1
 pkgrel=1
@@ -11,16 +12,16 @@ license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'fuse')
 provides=('laigter')
 conflicts=('laigter')
-source=("https://github.com/azagaya/${_pkgname}/releases/download/$pkgver/${_pkgname}-${arch}.AppImage"
+source=("https://github.com/azagaya/${_pkgname}/releases/download/$pkgver/${_pkgname_title_cased}-${arch}.AppImage"
         "https://raw.githubusercontent.com/azagaya/${_pkgname}/master/LICENSE"
         )
 sha256sums=(
-	8cdfef343095eab2f4e4604cc12d8acbee1f9e8a0af730f8754a6aa355d462cd
+	c97bd7e987365e586da39635d2eb0b1a330f7fa2af7b6e6031168ab9e5778f15
 	5576a91fe9ee4b3ebc0c6e527144449711e497594a93830e2bd7206424910d7b
 	)
 
 options=(!strip)
-_appimage="${_pkgname}-${arch}.AppImage"
+_appimage="${_pkgname_title_cased}-${arch}.AppImage"
 noextract=("${_appimage}")
 
 

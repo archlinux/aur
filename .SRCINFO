@@ -10,11 +10,11 @@ pkgbase = laigter-appimage
 	depends = fuse
 	provides = laigter
 	conflicts = laigter
-	noextract = laigter-x86_64.AppImage
+	noextract = Laigter-x86_64.AppImage
 	options = !strip
-	source = https://github.com/azagaya/laigter/releases/download/1.12.1/laigter-x86_64.AppImage
+	source = https://github.com/azagaya/laigter/releases/download/1.12.1/Laigter-x86_64.AppImage
 	source = https://raw.githubusercontent.com/azagaya/laigter/master/LICENSE
-	sha256sums = 8cdfef343095eab2f4e4604cc12d8acbee1f9e8a0af730f8754a6aa355d462cd
+	sha256sums = c97bd7e987365e586da39635d2eb0b1a330f7fa2af7b6e6031168ab9e5778f15
 	sha256sums = 5576a91fe9ee4b3ebc0c6e527144449711e497594a93830e2bd7206424910d7b
 
 pkgname = laigter-appimage
