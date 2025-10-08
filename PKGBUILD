@@ -1,8 +1,8 @@
 pkgname=qtjambi
-pkgver=6.9.3
+pkgver=6.10.0
 pkgrel=1
-qtver=6.9.2
-qtjambiver=6.9.3
+qtver=6.10.0
+qtjambiver=6.10.0
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
@@ -10,7 +10,7 @@ license=("LGPL" "GPL")
 depends=("qt6-base=${qtver}" "qt6-declarative=${qtver}")
 makedepends=("ant" "chrpath" "gcc" "jdk21-openjdk" "make" "patch")
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${qtjambiver}.tar.gz)
-sha256sums=(4e1ee9a46a0bebfa2d61817b652a4db13a7773994b4782681e1a65e0a28f0542)
+sha256sums=(3022cd59112a3d26887462c721a0208c118b6f82134a86dd3d179724d59e362c)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${qtjambiver}"
