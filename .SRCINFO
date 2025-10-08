@@ -1,0 +1,39 @@
+pkgbase = python-optimagic
+	pkgdesc = Tools to solve difficult numerical optimization problems
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://optimagic.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pandas
+	checkdepends = python-statsmodels
+	checkdepends = python-annotated-types
+	checkdepends = python-typing_extensions
+	checkdepends = python-sqlalchemy
+	checkdepends = python-cloudpickle
+	checkdepends = python-pybaum
+	checkdepends = python-joblib
+	checkdepends = python-plotly
+	checkdepends = python-jinja
+	checkdepends = python-yaml
+	checkdepends = python-seaborn
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://github.com/optimagic-dev/optimagic/archive/refs/tags/v0.5.2.tar.gz
+	md5sums = 8f4c5242ec5a63919e56ceb2ef937e8a
+
+pkgname = python-optimagic
+	depends = python>=3.10
+	depends = python-cloudpickle
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-plotly
+	depends = python-pybaum>=0.1.2
+	depends = python-scipy>=1.2.1
+	depends = python-sqlalchemy>=1.3
+	depends = python-annotated-types
+	depends = python-typing_extensions
