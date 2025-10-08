@@ -1,6 +1,6 @@
 pkgbase = gstreamer-svt-av1
 	pkgdesc = This plugin provides svtav1enc element to GStreamer in order to use the Scalable Video Technology for AV1 Encoder (SVT-AV1)
-	pkgver = 2.0.0
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://gitlab.com/AOMediaCodec/SVT-AV1/-/tree/master/gstreamer-plugin
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = gstreamer-svt-av1
 	depends = gst-plugins-base-libs
 	depends = svt-av1
 	provides = libgstsvtav1enc.so
-	source = SVT-AV1-v2.0.0.tar.bz2::https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.0.0/SVT-AV1-v2.0.0.tar.bz2?path=gstreamer-plugin
-	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/raw/v2.0.0/LICENSE.md
-	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/raw/v2.0.0/PATENTS.md
-	sha256sums = 5eb5a828d162021fbe33a14e1eb01793a49040b13aa24b47fde1eda94bf444a0
+	source = SVT-AV1-v3.1.2.tar.bz2::https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v3.1.2/SVT-AV1-v3.1.2.tar.bz2?path=gstreamer-plugin
+	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/raw/v3.1.2/LICENSE.md
+	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/raw/v3.1.2/PATENTS.md
+	sha256sums = b3c0f2d8c3fcd356c008c39dd6e4c68f54a57054c5b4d1f6e45cc0d45451cba6
 	sha256sums = 0acc2fcb27472bdc9aaf8b71f37055bbdac4f54671b7d922f241bd7fcd0dd3e6
 	sha256sums = 20678ab10402659106dc4c147c97b2a6e94b5c0695415e15a8f195ebc3547922
 
