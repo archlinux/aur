@@ -10,16 +10,16 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r21904.d997efc17
+pkgver=r22724.ba2f9115c
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
 url="https://gajim.org/"
 license=('GPL3')
-depends=('gtk4' 'gtksourceview5' 'python-cairo' 'python-gobject' 'python-keyring' 'python-nbxmpp-git'
+depends=('libadwaita' 'gtksourceview5' 'python-cairo' 'python-gobject' 'python-keyring' 'python-nbxmpp-git'
         'python-cryptography' 'python-precis_i18n' 'python-css-parser' 'python-distro' 'hicolor-icon-theme'
         'python-pillow' 'python-gssapi' 'python-netifaces' 'python-qrcode' 'python-omemo-dr' 'python-packaging'
-        'pango' 'sqlite' 'python-sqlalchemy' 'python-setuptools' 'python-emoji')
+        'pango' 'sqlite' 'python-sqlalchemy' 'python-setuptools' 'python-emoji' 'python-httpx' 'python-truststore')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-sentry_sdk: for Sentry error reporting to dev.gajim.org (users decide whether to send reports or not)'
             'libspelling: for spell checking support'
