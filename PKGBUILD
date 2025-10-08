@@ -1,3 +1,6 @@
+# Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
+# Based on teamviewer package from AUR: https://aur.archlinux.org/packages/teamviewer
+
 pkgname=teamviewer-sandboxed
 pkgver=15.70.4
 pkgrel=1
