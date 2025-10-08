@@ -20,7 +20,7 @@ optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "nginx: HTTP server")
 provides=("${pkgname}")
-conflicts=("matomo")
+conflicts=("matomo-bin")
 install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/matomo-icons.git"
