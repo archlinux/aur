@@ -1,0 +1,9 @@
+pkgbase = efi-filesystem
+	pkgdesc = Creates base EFI filesystem structure under /boot/efi
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = efi-filesystem
+
+pkgname = efi-filesystem
