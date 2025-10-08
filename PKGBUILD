@@ -11,7 +11,7 @@ provides=('arattai')
 conflicts=('arattai' 'arattai-bin')
 depends=('glibc' 'gtk3' 'libnotify' 'nss' 'xdg-utils' 'at-spi2-core' 'libxss' 'libappindicator-gtk3')
 source=("https://downloads.zohocdn.com/arattai-desktop/linux/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('39c35e6663ae56159af46c4f1def9d0235f7e5fddd59f76888417c29d3f6a5d4')
 
 # We unpack the .deb and install its data.tar.* payload into $pkgdir
 package() {

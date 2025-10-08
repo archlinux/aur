@@ -17,6 +17,6 @@ pkgbase = arattai-deb-bin
 	conflicts = arattai
 	conflicts = arattai-bin
 	source = https://downloads.zohocdn.com/arattai-desktop/linux/arattai_1.0.7_amd64.deb
-	sha256sums = SKIP
+	sha256sums = 39c35e6663ae56159af46c4f1def9d0235f7e5fddd59f76888417c29d3f6a5d4
 
 pkgname = arattai-deb-bin
