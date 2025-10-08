@@ -1,16 +1,16 @@
 #Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=spw
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="spw - secure password generator"
 arch=('any')
 url="https://gitlab.com/Plague_Doctor/spw"
 license=('GPL')
 depends=('python')
 makedepends=('git')
-source=("$pkgname::git+https://gitlab.com/Plague_Doctor/spw#tag=2.0")
-sha256sums=('ac650b3a629781e82b0247b613f7134e712f84db62ee89b94575c70d4ca9e05d')
+source=("$pkgname::git+https://gitlab.com/Plague_Doctor/spw")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
