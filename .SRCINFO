@@ -1,16 +1,16 @@
 pkgbase = qdvd
 	pkgdesc = A GUI frontend for dvdauthor, video DVD creator.
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/qdvd
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = vlc
 	depends = xine-lib
-	source = https://sourceforge.net/projects/qdvd/files/qdvd-2.4.1-qt6/qdvdauthor-2.4.1-014.tar.gz
+	source = https://sourceforge.net/projects/qdvd/files/qdvd-2.4.1-qt6/qdvdauthor-2.4.1-002.tar.gz
         source = found_ffmpeg.patch
         source = mathops_fix.patch
-	sha256sums = b0b7a56881a3e74fb93a598c4e7e8cc34d91bc14c634a3aaef60c4fbcb1594fb
+	sha256sums = 8bb0c53c5b16266be177042b35ca6148fe9dff22c6023cd103f4472c41d3db55
 
 pkgname = qdvd

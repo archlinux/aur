@@ -2,7 +2,7 @@
 
 pkgname=qdvdauthor
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
@@ -33,13 +33,13 @@ provides=(
   'qrender'
 )
 source=(
-  "https://sourceforge.net/projects/qdvd/files/qdvd-${pkgver}-qt6/qdvdauthor-${pkgver}-014.tar.gz"
+  "https://sourceforge.net/projects/qdvd/files/qdvd-${pkgver}-qt6/qdvdauthor-${pkgver}-002.tar.gz"
   'https://ffmpeg.org/releases/ffmpeg-0.6.7.tar.bz2'
   'mathops_fix.patch'
   'found_ffmpeg.patch'
 )
 sha256sums=(
-  'b0b7a56881a3e74fb93a598c4e7e8cc34d91bc14c634a3aaef60c4fbcb1594fb'
+  '8bb0c53c5b16266be177042b35ca6148fe9dff22c6023cd103f4472c41d3db55'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -49,31 +49,36 @@ options=('debug' '!lto')
 prepare() {
   patch -d ffmpeg-0.6.7 -p1 -i "${srcdir}/mathops_fix.patch"
   patch -d "$pkgname-$pkgver" -p1 -i "${srcdir}/found_ffmpeg.patch"
+  cp -r ffmpeg-0.6.7 "${srcdir}/$pkgname-$pkgver/qrender"
 }
 
 build() {
-  cd ffmpeg-0.6.7
-
+  cd "${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7"
+  
   CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types -Wno-implicit-function-declaration" \
   ./configure \
-    --prefix="${srcdir}/fakeroot" \
+    --prefix="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7" \
     --disable-ffmpeg \
     --disable-ffplay \
     --disable-ffprobe \
     --disable-ffserver \
+    --enable-static \
+    --enable-shared \
+    --libdir=lib \
+    --incdir=include \
     --enable-pic \
     --disable-doc
-
+    
   make
   make install
 
-  cd ..
-  export PKG_CONFIG_LIBDIR="${srcdir}/fakeroot/lib/pkgconfig"
+  cd ${srcdir}
+  export PKG_CONFIG_LIBDIR="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7/lib/pkgconfig"
   export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
 
   cmake -S "qdvdauthor-${pkgver}" -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFFMPEG_DIRS="${srcdir}/fakeroot"
+    -DFFMPEG_DIRS="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7"
 
   cmake --build build
 }
