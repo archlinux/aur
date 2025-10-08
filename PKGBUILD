@@ -2,12 +2,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
-depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl' 'openal')
+depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl' 'openal'
+	 'speexdsp')
 makedepends=('git' 'cmake' 'boost' 'glslang' 'ninja' 'nlohmann-json' 'rapidjson' 'qt6-multimedia' 'qt6-tools' 'gamemode' 'doxygen' 'vulkan-headers' 'vulkan-utility-libraries')
 optdepends=('gamemode: Gamemoded support')
 options=(!debug)
@@ -15,7 +16,6 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         cubeb::git+https://github.com/mozilla/cubeb.git
         discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
-        libusb::git+https://github.com/libusb/libusb.git
         Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
         sirit::git+https://github.com/yuzu-mirror/sirit.git
         mbedtls::git+https://github.com/yuzu-mirror/mbedtls.git
@@ -58,7 +58,6 @@ b2sums=('efae8a0ee258639238e49de0070dfc7ad0f2b5ca46466dd71798079011357db6dae62e3
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
         'SKIP')
 
 prepare() {
@@ -68,8 +67,9 @@ prepare() {
   git rm -f externals/enet
   git rm -f externals/opus
   git rm -f externals/vcpkg
+  git rm -f externals/libusb/libusb
 
-  for _submodule in cubeb discord-rpc dynarmic libusb Vulkan-Headers sirit mbedtls xbyak cpp-httplib cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
+  for _submodule in cubeb discord-rpc dynarmic Vulkan-Headers sirit mbedtls xbyak cpp-httplib cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
     do
       git config submodule.$_submodule.url "${srcdir}/$_submodule"
     done
@@ -108,7 +108,7 @@ prepare() {
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
 
   # Ensure cubeb is used from externals
-  sed -i '345d;346d;347d' CMakeLists.txt
+  sed -i '361d;362d;363d' CMakeLists.txt
 }
 
 build() {
@@ -146,7 +146,6 @@ build() {
     -DCITRON_USE_QT_WEB_ENGINE=ON \
     -DENABLE_QT_TRANSLATION=ON \
     -DUSE_DISCORD_PRESENCE=ON \
-    -DBUNDLE_SPEEX=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
