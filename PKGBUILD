@@ -5,7 +5,7 @@ pkgname=(
   'aider-chat-dwash96'
 )
 _gitpkgname=aider-ce
-pkgver=0.87.7.dev
+pkgver=0.87.11.dev
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork with MCP support'
 arch=('any')
@@ -51,6 +51,7 @@ _depends=(
   'python-tree-sitter'
   'python-watchfiles'
   'python-yaml'
+  'python-pytokens'
 )
 makedepends=(
   'jekyll'
@@ -83,8 +84,8 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('5e328d8ddb521b3eebee78d3fbed2703510bc8c341248249510f07faea855379b16d13b2cb5cba44812eff355e963e1ae88d0b7b7e40ac94283350502a60ef29'
-            '18acc792128e0748c099e0daa7061c780a43fdb384251f980ff36424b5450cb35e885a8e84af4990923db76a1f30e39a2e1a178eaf88409c0818e4ee134f1644'
+sha512sums=('83f067861fb1fe1fe557e1552f4566db3a4cfdc7eca9541327d01ca68f198f2dd3df6658552e6753a0e5db7946f91747c54c12373fb50534f1502a29ca380a0e'
+            'd06a880fbfbd394b37cca7c3c2243090a641c6d22eae7ce90afc5d906b1884d1b17c0ac8c97ec371fd6c4f8472555d86bb123bae90de101a10a0489ce202af78'
             '39466f05535330372d3f89a361b3984ef82bfdbf3e1b9f359cc0c039bbe098163c4253634155d74dd3971145131fa12afdfc9aff001f05b8cd0840b870a68555'
             'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac')
 

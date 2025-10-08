@@ -1,176 +1,3238 @@
-From 599de5ee1740fa6b9059ba9faf63aa20b018810d Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 3 Jul 2025 14:00:47 +0200
-Subject: [PATCH 1/4] Arch-Linux-specific: install optdeps via pacman
-
----
- aider/scrape.py | 42 +++++++++++++++++-------------------------
- 1 file changed, 17 insertions(+), 25 deletions(-)
-
-diff --git a/aider/scrape.py b/aider/scrape.py
-index 3d5cfa86..05100044 100755
---- a/aider/scrape.py
-+++ b/aider/scrape.py
-@@ -18,9 +18,9 @@ def check_env():
-     try:
-         from playwright.sync_api import sync_playwright
- 
--        has_pip = True
-+        has_python_package = True
-     except ImportError:
--        has_pip = False
-+        has_python_package = False
- 
-     try:
-         with sync_playwright() as p:
-@@ -29,50 +29,42 @@ def check_env():
-     except Exception:
-         has_chromium = False
- 
--    return has_pip, has_chromium
-+    return has_python_package, has_chromium
- 
- 
- def has_playwright():
--    has_pip, has_chromium = check_env()
--    return has_pip and has_chromium
-+    has_python_package, has_chromium = check_env()
-+    return has_python_package and has_chromium
- 
- 
- def install_playwright(io):
--    has_pip, has_chromium = check_env()
--    if has_pip and has_chromium:
-+    has_python_package, has_chromium = check_env()
-+    if has_python_package and has_chromium:
-         return True
- 
--    pip_cmd = utils.get_pip_install(["aider-chat[playwright]"])
--    chromium_cmd = "-m playwright install --with-deps chromium"
--    chromium_cmd = [sys.executable] + chromium_cmd.split()
--
--    cmds = ""
--    if not has_pip:
--        cmds += " ".join(pip_cmd) + "\n"
-+    packages = []
-+    if not has_python_package:
-+        packages.append("python-playwright")
-     if not has_chromium:
--        cmds += " ".join(chromium_cmd) + "\n"
-+        packages.append("chromium")
-+    pacman_cmd = ["sudo", "pacman", "-Syu", "--asdeps", "--noconfirm", *packages]
- 
--    text = f"""For the best web scraping, install Playwright:
-+    text = f"""For the best web scraping, run pacman as follows:
- 
--{cmds}
-+{" ".join(pacman_cmd)}
- See {urls.enable_playwright} for more info.
- """
- 
-     io.tool_output(text)
--    if not io.confirm_ask("Install playwright?", default="y"):
-+    if not io.confirm_ask(f"Install {" and ".join(packages)}?", default="y"):
-         return
- 
--    if not has_pip:
--        success, output = utils.run_install(pip_cmd)
-+    if packages:
-+        success, output = utils.run_install(pacman_cmd)
-         if not success:
-             io.tool_error(output)
-             return
- 
--    success, output = utils.run_install(chromium_cmd)
--    if not success:
--        io.tool_error(output)
--        return
--
-     return True
- 
- 
--- 
-2.51.0
-
-
-From f3b205787f3b340b13c0a7ed453c449b95bac40b Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 3 Jul 2025 14:01:26 +0200
-Subject: [PATCH 2/4] Arch-Linux-specific: use system Chromium
-
----
- aider/scrape.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/aider/scrape.py b/aider/scrape.py
-index 05100044..bb885daf 100755
---- a/aider/scrape.py
-+++ b/aider/scrape.py
-@@ -24,7 +24,7 @@ def check_env():
- 
-     try:
-         with sync_playwright() as p:
--            p.chromium.launch()
-+            p.chromium.launch(executable_path="/usr/bin/chromium")
-             has_chromium = True
-     except Exception:
-         has_chromium = False
-@@ -140,7 +140,7 @@ class Scraper:
- 
-         with sync_playwright() as p:
-             try:
--                browser = p.chromium.launch()
-+                browser = p.chromium.launch(executable_path="/usr/bin/chromium")
-             except Exception as e:
-                 self.playwright_available = False
-                 self.print_error(str(e))
--- 
-2.51.0
-
-
-From 3422aab980d2daf56d19fa7fd9d367b48454286b Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 3 Jul 2025 14:02:06 +0200
-Subject: [PATCH 3/4] Arch-Linux-specific: install boto3 via pacman
-
----
- aider/models.py |  6 ++----
- aider/utils.py  | 32 ++++++++++++++++++++++++++++++++
- 2 files changed, 34 insertions(+), 4 deletions(-)
-
-diff --git a/aider/models.py b/aider/models.py
-index 4a5d86a6..b535d01d 100644
---- a/aider/models.py
-+++ b/aider/models.py
-@@ -21,7 +21,7 @@ from aider.dump import dump  # noqa: F401
- from aider.llm import litellm
- from aider.openrouter import OpenRouterModelManager
- from aider.sendchat import ensure_alternating_roles, sanity_check_messages
--from aider.utils import check_pip_install_extra
-+from aider.utils import check_archlinux_package, check_pip_install_extra
- 
- RETRY_TIMEOUT = 60
- 
-@@ -1174,9 +1174,7 @@ def check_for_dependencies(io, model_name):
-     """
-     # Check if this is a Bedrock model and ensure boto3 is installed
-     if model_name.startswith("bedrock/"):
--        check_pip_install_extra(
--            io, "boto3", "AWS Bedrock models require the boto3 package.", ["boto3"]
--        )
-+        check_archlinux_package(io, "boto3", "python-boto3")
- 
-     # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
-     elif model_name.startswith("vertex_ai/"):
-diff --git a/aider/utils.py b/aider/utils.py
-index 834ffa19..a58fde66 100644
---- a/aider/utils.py
-+++ b/aider/utils.py
-@@ -332,6 +332,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
-     print(printable_shell_command(cmd))
- 
- 
-+def check_archlinux_package(io, module, archlinux_package):
+diff --git a/main.py b/main.py
+new file mode 100644
+index 0000000..f080f2a
+--- /dev/null
++++ b/main.py
+@@ -0,0 +1,1298 @@
++import json
++import os
++import re
++import sys
++import threading
++import traceback
++import webbrowser
++from dataclasses import fields
++from pathlib import Path
++
++try:
++    import git
++except ImportError:
++    git = None
++
++import importlib_resources
++import shtab
++from dotenv import load_dotenv
++from prompt_toolkit.enums import EditingMode
++
++from aider import __version__, models, urls, utils
++from aider.analytics import Analytics
++from aider.args import get_parser
++from aider.coders import Coder
++from aider.coders.base_coder import UnknownEditFormat
++from aider.commands import Commands, SwitchCoder
++from aider.copypaste import ClipboardWatcher
++from aider.deprecated import handle_deprecated_model_args
++from aider.format_settings import format_settings, scrub_sensitive_info
++from aider.history import ChatSummary
++from aider.io import InputOutput
++from aider.llm import litellm  # noqa: F401; properly init litellm on launch
++from aider.mcp import load_mcp_servers
++from aider.models import ModelSettings
++from aider.onboarding import offer_openrouter_oauth, select_default_model
++from aider.repo import ANY_GIT_ERROR, GitRepo
++from aider.report import report_uncaught_exceptions
++from aider.versioncheck import check_version, install_from_main_branch, install_upgrade
++from aider.watch import FileWatcher
++
++from .dump import dump  # noqa: F401
++
++
++def check_config_files_for_yes(config_files):
++    found = False
++    for config_file in config_files:
++        if Path(config_file).exists():
++            try:
++                with open(config_file, "r") as f:
++                    for line in f:
++                        if line.strip().startswith("yes:"):
++                            print("Configuration error detected.")
++                            print(f"The file {config_file} contains a line starting with 'yes:'")
++                            print("Please replace 'yes:' with 'yes-always:' in this file.")
++                            found = True
++            except Exception:
++                pass
++    return found
++
++
++def get_git_root():
++    """Try and guess the git repo, since the conf.yml can be at the repo root"""
++    try:
++        repo = git.Repo(search_parent_directories=True)
++        return repo.working_tree_dir
++    except (git.InvalidGitRepositoryError, FileNotFoundError):
++        return None
++
++
++def guessed_wrong_repo(io, git_root, fnames, git_dname):
++    """After we parse the args, we can determine the real repo. Did we guess wrong?"""
++
++    try:
++        check_repo = Path(GitRepo(io, fnames, git_dname).root).resolve()
++    except (OSError,) + ANY_GIT_ERROR:
++        return
++
++    # we had no guess, rely on the "true" repo result
++    if not git_root:
++        return str(check_repo)
++
++    git_root = Path(git_root).resolve()
++    if check_repo == git_root:
++        return
++
++    return str(check_repo)
++
++
++def make_new_repo(git_root, io):
++    try:
++        repo = git.Repo.init(git_root)
++        check_gitignore(git_root, io, False)
++    except ANY_GIT_ERROR as err:  # issue #1233
++        io.tool_error(f"Unable to create git repo in {git_root}")
++        io.tool_output(str(err))
++        return
++
++    io.tool_output(f"Git repository created in {git_root}")
++    return repo
++
++
++def setup_git(git_root, io):
++    if git is None:
++        return
++
++    try:
++        cwd = Path.cwd()
++    except OSError:
++        cwd = None
++
++    repo = None
++
++    if git_root:
++        try:
++            repo = git.Repo(git_root)
++        except ANY_GIT_ERROR:
++            pass
++    elif cwd == Path.home():
++        io.tool_warning(
++            "You should probably run aider in your project's directory, not your home dir."
++        )
++        return
++    elif cwd and io.confirm_ask(
++        "No git repo found, create one to track aider's changes (recommended)?"
++    ):
++        git_root = str(cwd.resolve())
++        repo = make_new_repo(git_root, io)
++
++    if not repo:
++        return
++
++    try:
++        user_name = repo.git.config("--get", "user.name") or None
++    except git.exc.GitCommandError:
++        user_name = None
++
++    try:
++        user_email = repo.git.config("--get", "user.email") or None
++    except git.exc.GitCommandError:
++        user_email = None
++
++    if user_name and user_email:
++        return repo.working_tree_dir
++
++    with repo.config_writer() as git_config:
++        if not user_name:
++            git_config.set_value("user", "name", "Your Name")
++            io.tool_warning('Update git name with: git config user.name "Your Name"')
++        if not user_email:
++            git_config.set_value("user", "email", "you@example.com")
++            io.tool_warning('Update git email with: git config user.email "you@example.com"')
++
++    return repo.working_tree_dir
++
++
++def check_gitignore(git_root, io, ask=True):
++    if not git_root:
++        return
++
++    try:
++        repo = git.Repo(git_root)
++        patterns_to_add = []
++
++        if not repo.ignored(".aider"):
++            patterns_to_add.append(".aider*")
++
++        env_path = Path(git_root) / ".env"
++        if env_path.exists() and not repo.ignored(".env"):
++            patterns_to_add.append(".env")
++
++        if not patterns_to_add:
++            return
++
++        gitignore_file = Path(git_root) / ".gitignore"
++        if gitignore_file.exists():
++            try:
++                content = io.read_text(gitignore_file)
++                if content is None:
++                    return
++                if not content.endswith("\n"):
++                    content += "\n"
++            except OSError as e:
++                io.tool_error(f"Error when trying to read {gitignore_file}: {e}")
++                return
++        else:
++            content = ""
++    except ANY_GIT_ERROR:
++        return
++
++    if ask:
++        io.tool_output("You can skip this check with --no-gitignore")
++        if not io.confirm_ask(f"Add {', '.join(patterns_to_add)} to .gitignore (recommended)?"):
++            return
++
++    content += "\n".join(patterns_to_add) + "\n"
++
++    try:
++        io.write_text(gitignore_file, content)
++        io.tool_output(f"Added {', '.join(patterns_to_add)} to .gitignore")
++    except OSError as e:
++        io.tool_error(f"Error when trying to write to {gitignore_file}: {e}")
++        io.tool_output(
++            "Try running with appropriate permissions or manually add these patterns to .gitignore:"
++        )
++        for pattern in patterns_to_add:
++            io.tool_output(f"  {pattern}")
++
++
++def check_streamlit_install(io):
++    return utils.check_pip_install_extra(
++        io,
++        "streamlit",
++        "You need to install the aider browser feature",
++        ["aider-ce[browser]"],
++    )
++
++
++def write_streamlit_credentials():
++    from streamlit.file_util import get_streamlit_file_path
++
++    # See https://github.com/Aider-AI/aider/issues/772
++
++    credential_path = Path(get_streamlit_file_path()) / "credentials.toml"
++    if not os.path.exists(credential_path):
++        empty_creds = '[general]\nemail = ""\n'
++
++        os.makedirs(os.path.dirname(credential_path), exist_ok=True)
++        with open(credential_path, "w") as f:
++            f.write(empty_creds)
++    else:
++        print("Streamlit credentials already exist.")
++
++
++def launch_gui(args):
++    from streamlit.web import cli
++
++    from aider import gui
++
++    print()
++    print("CONTROL-C to exit...")
++
++    # Necessary so streamlit does not prompt the user for an email address.
++    write_streamlit_credentials()
++
++    target = gui.__file__
++
++    st_args = ["run", target]
++
++    st_args += [
++        "--browser.gatherUsageStats=false",
++        "--runner.magicEnabled=false",
++        "--server.runOnSave=false",
++    ]
++
++    # https://github.com/Aider-AI/aider/issues/2193
++    is_dev = "-dev" in str(__version__)
++
++    if is_dev:
++        print("Watching for file changes.")
++    else:
++        st_args += [
++            "--global.developmentMode=false",
++            "--server.fileWatcherType=none",
++            "--client.toolbarMode=viewer",  # minimal?
++        ]
++
++    st_args += ["--"] + args
++
++    cli.main(st_args)
++
++    # from click.testing import CliRunner
++    # runner = CliRunner()
++    # from streamlit.web import bootstrap
++    # bootstrap.load_config_options(flag_options={})
++    # cli.main_run(target, args)
++    # sys.argv = ['streamlit', 'run', '--'] + args
++
++
++def parse_lint_cmds(lint_cmds, io):
++    err = False
++    res = dict()
++    for lint_cmd in lint_cmds:
++        if re.match(r"^[a-z]+:.*", lint_cmd):
++            pieces = lint_cmd.split(":")
++            lang = pieces[0]
++            cmd = lint_cmd[len(lang) + 1 :]
++            lang = lang.strip()
++        else:
++            lang = None
++            cmd = lint_cmd
++
++        cmd = cmd.strip()
++
++        if cmd:
++            res[lang] = cmd
++        else:
++            io.tool_error(f'Unable to parse --lint-cmd "{lint_cmd}"')
++            io.tool_output('The arg should be "language: cmd --args ..."')
++            io.tool_output('For example: --lint-cmd "python: flake8 --select=E9"')
++            err = True
++    if err:
++        return
++    return res
++
++
++def generate_search_path_list(default_file, git_root, command_line_file):
++    files = []
++    files.append(Path.home() / default_file)  # homedir
++    if git_root:
++        files.append(Path(git_root) / default_file)  # git root
++    files.append(default_file)
++    if command_line_file:
++        files.append(command_line_file)
++
++    resolved_files = []
++    for fn in files:
++        try:
++            resolved_files.append(Path(fn).resolve())
++        except OSError:
++            pass
++
++    files = resolved_files
++    files.reverse()
++    uniq = []
++    for fn in files:
++        if fn not in uniq:
++            uniq.append(fn)
++    uniq.reverse()
++    files = uniq
++    files = list(map(str, files))
++    files = list(dict.fromkeys(files))
++
++    return files
++
++
++def register_models(git_root, model_settings_fname, io, verbose=False):
++    model_settings_files = generate_search_path_list(
++        ".aider.model.settings.yml", git_root, model_settings_fname
++    )
++
++    try:
++        files_loaded = models.register_models(model_settings_files)
++        if len(files_loaded) > 0:
++            if verbose:
++                io.tool_output("Loaded model settings from:")
++                for file_loaded in files_loaded:
++                    io.tool_output(f"  - {file_loaded}")  # noqa: E221
++        elif verbose:
++            io.tool_output("No model settings files loaded")
++    except Exception as e:
++        io.tool_error(f"Error loading aider model settings: {e}")
++        return 1
++
++    if verbose:
++        io.tool_output("Searched for model settings files:")
++        for file in model_settings_files:
++            io.tool_output(f"  - {file}")
++
++    return None
++
++
++def load_dotenv_files(git_root, dotenv_fname, encoding="utf-8"):
++    # Standard .env file search path
++    dotenv_files = generate_search_path_list(
++        ".env",
++        git_root,
++        dotenv_fname,
++    )
++
++    # Explicitly add the OAuth keys file to the beginning of the list
++    oauth_keys_file = Path.home() / ".aider" / "oauth-keys.env"
++    if oauth_keys_file.exists():
++        # Insert at the beginning so it's loaded first (and potentially overridden)
++        dotenv_files.insert(0, str(oauth_keys_file.resolve()))
++        # Remove duplicates if it somehow got included by generate_search_path_list
++        dotenv_files = list(dict.fromkeys(dotenv_files))
++
++    loaded = []
++    for fname in dotenv_files:
++        try:
++            if Path(fname).exists():
++                load_dotenv(fname, override=True, encoding=encoding)
++                loaded.append(fname)
++        except OSError as e:
++            print(f"OSError loading {fname}: {e}")
++        except Exception as e:
++            print(f"Error loading {fname}: {e}")
++    return loaded
++
++
++def register_litellm_models(git_root, model_metadata_fname, io, verbose=False):
++    model_metadata_files = []
++
++    # Add the resource file path
++    resource_metadata = importlib_resources.files("aider.resources").joinpath("model-metadata.json")
++    model_metadata_files.append(str(resource_metadata))
++
++    model_metadata_files += generate_search_path_list(
++        ".aider.model.metadata.json", git_root, model_metadata_fname
++    )
++
++    try:
++        model_metadata_files_loaded = models.register_litellm_models(model_metadata_files)
++        if len(model_metadata_files_loaded) > 0 and verbose:
++            io.tool_output("Loaded model metadata from:")
++            for model_metadata_file in model_metadata_files_loaded:
++                io.tool_output(f"  - {model_metadata_file}")  # noqa: E221
++    except Exception as e:
++        io.tool_error(f"Error loading model metadata models: {e}")
++        return 1
++
++
++def sanity_check_repo(repo, io):
++    if not repo:
++        return True
++
++    if not repo.repo.working_tree_dir:
++        io.tool_error("The git repo does not seem to have a working tree?")
++        return False
++
++    bad_ver = False
++    try:
++        repo.get_tracked_files()
++        if not repo.git_repo_error:
++            return True
++        error_msg = str(repo.git_repo_error)
++    except UnicodeDecodeError as exc:
++        error_msg = (
++            "Failed to read the Git repository. This issue is likely caused by a path encoded "
++            f'in a format different from the expected encoding "{sys.getfilesystemencoding()}".\n'
++            f"Internal error: {str(exc)}"
++        )
++    except ANY_GIT_ERROR as exc:
++        error_msg = str(exc)
++        bad_ver = "version in (1, 2)" in error_msg
++    except AssertionError as exc:
++        error_msg = str(exc)
++        bad_ver = True
++
++    if bad_ver:
++        io.tool_error("Aider only works with git repos with version number 1 or 2.")
++        io.tool_output("You may be able to convert your repo: git update-index --index-version=2")
++        io.tool_output("Or run aider --no-git to proceed without using git.")
++        io.offer_url(urls.git_index_version, "Open documentation url for more info?")
++        return False
++
++    io.tool_error("Unable to read git repository, it may be corrupt?")
++    io.tool_output(error_msg)
++    return False
++
++
++def main(argv=None, input=None, output=None, force_git_root=None, return_coder=False):
++    report_uncaught_exceptions()
++
++    if argv is None:
++        argv = sys.argv[1:]
++
++    if git is None:
++        git_root = None
++    elif force_git_root:
++        git_root = force_git_root
++    else:
++        git_root = get_git_root()
++
++    conf_fname = Path(".aider.conf.yml")
++
++    default_config_files = []
++    try:
++        default_config_files += [conf_fname.resolve()]  # CWD
++    except OSError:
++        pass
++
++    if git_root:
++        git_conf = Path(git_root) / conf_fname  # git root
++        if git_conf not in default_config_files:
++            default_config_files.append(git_conf)
++    default_config_files.append(Path.home() / conf_fname)  # homedir
++    default_config_files = list(map(str, default_config_files))
++
++    parser = get_parser(default_config_files, git_root)
++    try:
++        args, unknown = parser.parse_known_args(argv)
++    except AttributeError as e:
++        if all(word in str(e) for word in ["bool", "object", "has", "no", "attribute", "strip"]):
++            if check_config_files_for_yes(default_config_files):
++                return 1
++        raise e
++
++    if args.verbose:
++        print("Config files search order, if no --config:")
++        for file in default_config_files:
++            exists = "(exists)" if Path(file).exists() else ""
++            print(f"  - {file} {exists}")
++
++    default_config_files.reverse()
++
++    parser = get_parser(default_config_files, git_root)
++
++    args, unknown = parser.parse_known_args(argv)
++
++    # Load the .env file specified in the arguments
++    loaded_dotenvs = load_dotenv_files(git_root, args.env_file, args.encoding)
++
++    # Parse again to include any arguments that might have been defined in .env
++    args = parser.parse_args(argv)
++
++    if args.shell_completions:
++        # Ensure parser.prog is set for shtab, though it should be by default
++        parser.prog = "aider"
++        print(shtab.complete(parser, shell=args.shell_completions))
++        sys.exit(0)
++
++    if git is None:
++        args.git = False
++
++    if args.analytics_disable:
++        analytics = Analytics(permanently_disable=True)
++        print("Analytics have been permanently disabled.")
++
++    if not args.verify_ssl:
++        import httpx
++
++        os.environ["SSL_VERIFY"] = ""
++        litellm._load_litellm()
++        litellm._lazy_module.client_session = httpx.Client(verify=False)
++        litellm._lazy_module.aclient_session = httpx.AsyncClient(verify=False)
++        # Set verify_ssl on the model_info_manager
++        models.model_info_manager.set_verify_ssl(False)
++
++    if args.timeout:
++        models.request_timeout = args.timeout
++
++    if args.dark_mode:
++        args.user_input_color = "#32FF32"
++        args.tool_error_color = "#FF3333"
++        args.tool_warning_color = "#FFFF00"
++        args.assistant_output_color = "#00FFFF"
++        args.code_theme = "monokai"
++
++    if args.light_mode:
++        args.user_input_color = "green"
++        args.tool_error_color = "red"
++        args.tool_warning_color = "#FFA500"
++        args.assistant_output_color = "blue"
++        args.code_theme = "default"
++
++    if return_coder and args.yes_always is None:
++        args.yes_always = True
++
++    editing_mode = EditingMode.VI if args.vim else EditingMode.EMACS
++
++    def get_io(pretty):
++        return InputOutput(
++            pretty,
++            args.yes_always,
++            args.input_history_file,
++            args.chat_history_file,
++            input=input,
++            output=output,
++            user_input_color=args.user_input_color,
++            tool_output_color=args.tool_output_color,
++            tool_warning_color=args.tool_warning_color,
++            tool_error_color=args.tool_error_color,
++            completion_menu_color=args.completion_menu_color,
++            completion_menu_bg_color=args.completion_menu_bg_color,
++            completion_menu_current_color=args.completion_menu_current_color,
++            completion_menu_current_bg_color=args.completion_menu_current_bg_color,
++            assistant_output_color=args.assistant_output_color,
++            code_theme=args.code_theme,
++            dry_run=args.dry_run,
++            encoding=args.encoding,
++            line_endings=args.line_endings,
++            llm_history_file=args.llm_history_file,
++            editingmode=editing_mode,
++            fancy_input=args.fancy_input,
++            multiline_mode=args.multiline,
++            notifications=args.notifications,
++            notifications_command=args.notifications_command,
++        )
++
++    io = get_io(args.pretty)
++    try:
++        io.rule()
++    except UnicodeEncodeError as err:
++        if not io.pretty:
++            raise err
++        io = get_io(False)
++        io.tool_warning("Terminal does not support pretty output (UnicodeDecodeError)")
++
++    # Process any environment variables set via --set-env
++    if args.set_env:
++        for env_setting in args.set_env:
++            try:
++                name, value = env_setting.split("=", 1)
++                os.environ[name.strip()] = value.strip()
++            except ValueError:
++                io.tool_error(f"Invalid --set-env format: {env_setting}")
++                io.tool_output("Format should be: ENV_VAR_NAME=value")
++                return 1
++
++    # Process any API keys set via --api-key
++    if args.api_key:
++        for api_setting in args.api_key:
++            try:
++                provider, key = api_setting.split("=", 1)
++                env_var = f"{provider.strip().upper()}_API_KEY"
++                os.environ[env_var] = key.strip()
++            except ValueError:
++                io.tool_error(f"Invalid --api-key format: {api_setting}")
++                io.tool_output("Format should be: provider=key")
++                return 1
++
++    if args.anthropic_api_key:
++        os.environ["ANTHROPIC_API_KEY"] = args.anthropic_api_key
++
++    if args.openai_api_key:
++        os.environ["OPENAI_API_KEY"] = args.openai_api_key
++
++    # Handle deprecated model shortcut args
++    handle_deprecated_model_args(args, io)
++    if args.openai_api_base:
++        os.environ["OPENAI_API_BASE"] = args.openai_api_base
++    if args.openai_api_version:
++        io.tool_warning(
++            "--openai-api-version is deprecated, use --set-env OPENAI_API_VERSION=<value>"
++        )
++        os.environ["OPENAI_API_VERSION"] = args.openai_api_version
++    if args.openai_api_type:
++        io.tool_warning("--openai-api-type is deprecated, use --set-env OPENAI_API_TYPE=<value>")
++        os.environ["OPENAI_API_TYPE"] = args.openai_api_type
++    if args.openai_organization_id:
++        io.tool_warning(
++            "--openai-organization-id is deprecated, use --set-env OPENAI_ORGANIZATION=<value>"
++        )
++        os.environ["OPENAI_ORGANIZATION"] = args.openai_organization_id
++
++    analytics = Analytics(
++        logfile=args.analytics_log,
++        permanently_disable=args.analytics_disable,
++        posthog_host=args.analytics_posthog_host,
++        posthog_project_api_key=args.analytics_posthog_project_api_key,
++    )
++    if args.analytics is not False:
++        if analytics.need_to_ask(args.analytics):
++            io.tool_output(
++                "Aider respects your privacy and never collects your code, chat messages, keys or"
++                " personal info."
++            )
++            io.tool_output(f"For more info: {urls.analytics}")
++            disable = not io.confirm_ask(
++                "Allow collection of anonymous analytics to help improve aider?"
++            )
++
++            analytics.asked_opt_in = True
++            if disable:
++                analytics.disable(permanently=True)
++                io.tool_output("Analytics have been permanently disabled.")
++
++            analytics.save_data()
++            io.tool_output()
++
++        # This is a no-op if the user has opted out
++        analytics.enable()
++
++    analytics.event("launched")
++
++    if args.gui and not return_coder:
++        if not check_streamlit_install(io):
++            analytics.event("exit", reason="Streamlit not installed")
++            return
++        analytics.event("gui session")
++        launch_gui(argv)
++        analytics.event("exit", reason="GUI session ended")
++        return
++
++    if args.verbose:
++        for fname in loaded_dotenvs:
++            io.tool_output(f"Loaded {fname}")
++
++    all_files = args.files + (args.file or [])
++    fnames = [str(Path(fn).resolve()) for fn in all_files]
++    read_only_fnames = []
++    for fn in args.read or []:
++        path = Path(fn).expanduser().resolve()
++        if path.is_dir():
++            read_only_fnames.extend(str(f) for f in path.rglob("*") if f.is_file())
++        else:
++            read_only_fnames.append(str(path))
++
++    if len(all_files) > 1:
++        good = True
++        for fname in all_files:
++            if Path(fname).is_dir():
++                io.tool_error(f"{fname} is a directory, not provided alone.")
++                good = False
++        if not good:
++            io.tool_output(
++                "Provide either a single directory of a git repo, or a list of one or more files."
++            )
++            analytics.event("exit", reason="Invalid directory input")
++            return 1
++
++    git_dname = None
++    if len(all_files) == 1:
++        if Path(all_files[0]).is_dir():
++            if args.git:
++                git_dname = str(Path(all_files[0]).resolve())
++                fnames = []
++            else:
++                io.tool_error(f"{all_files[0]} is a directory, but --no-git selected.")
++                analytics.event("exit", reason="Directory with --no-git")
++                return 1
++
++    # We can't know the git repo for sure until after parsing the args.
++    # If we guessed wrong, reparse because that changes things like
++    # the location of the config.yml and history files.
++    if args.git and not force_git_root and git is not None:
++        right_repo_root = guessed_wrong_repo(io, git_root, fnames, git_dname)
++        if right_repo_root:
++            analytics.event("exit", reason="Recursing with correct repo")
++            return main(argv, input, output, right_repo_root, return_coder=return_coder)
++
++    if args.just_check_update:
++        update_available = check_version(io, just_check=True, verbose=args.verbose)
++        analytics.event("exit", reason="Just checking update")
++        return 0 if not update_available else 1
++
++    if args.install_main_branch:
++        success = install_from_main_branch(io)
++        analytics.event("exit", reason="Installed main branch")
++        return 0 if success else 1
++
++    if args.upgrade:
++        success = install_upgrade(io)
++        analytics.event("exit", reason="Upgrade completed")
++        return 0 if success else 1
++
++    if args.check_update:
++        check_version(io, verbose=args.verbose)
++
++    if args.git:
++        git_root = setup_git(git_root, io)
++        if args.gitignore:
++            check_gitignore(git_root, io)
++
++    if args.verbose:
++        show = format_settings(parser, args)
++        io.tool_output(show)
++
++    cmd_line = " ".join(sys.argv)
++    cmd_line = scrub_sensitive_info(args, cmd_line)
++    io.tool_output(cmd_line, log_only=True)
++
++    is_first_run = is_first_run_of_new_version(io, verbose=args.verbose)
++    check_and_load_imports(io, is_first_run, verbose=args.verbose)
++
++    register_models(git_root, args.model_settings_file, io, verbose=args.verbose)
++    register_litellm_models(git_root, args.model_metadata_file, io, verbose=args.verbose)
++
++    if args.list_models:
++        models.print_matching_models(io, args.list_models)
++        analytics.event("exit", reason="Listed models")
++        return 0
++
++    # Process any command line aliases
++    if args.alias:
++        for alias_def in args.alias:
++            # Split on first colon only
++            parts = alias_def.split(":", 1)
++            if len(parts) != 2:
++                io.tool_error(f"Invalid alias format: {alias_def}")
++                io.tool_output("Format should be: alias:model-name")
++                analytics.event("exit", reason="Invalid alias format error")
++                return 1
++            alias, model = parts
++            models.MODEL_ALIASES[alias.strip()] = model.strip()
++
++    selected_model_name = select_default_model(args, io, analytics)
++    if not selected_model_name:
++        # Error message and analytics event are handled within select_default_model
++        # It might have already offered OAuth if no model/keys were found.
++        # If it failed here, we exit.
++        return 1
++    args.model = selected_model_name  # Update args with the selected model
++
++    # Check if an OpenRouter model was selected/specified but the key is missing
++    if args.model.startswith("openrouter/") and not os.environ.get("OPENROUTER_API_KEY"):
++        io.tool_warning(
++            f"The specified model '{args.model}' requires an OpenRouter API key, which was not"
++            " found."
++        )
++        # Attempt OAuth flow because the specific model needs it
++        if offer_openrouter_oauth(io, analytics):
++            # OAuth succeeded, the key should now be in os.environ.
++            # Check if the key is now present after the flow.
++            if os.environ.get("OPENROUTER_API_KEY"):
++                io.tool_output(
++                    "OpenRouter successfully connected."
++                )  # Inform user connection worked
++            else:
++                # This case should ideally not happen if offer_openrouter_oauth succeeded
++                # but check defensively.
++                io.tool_error(
++                    "OpenRouter authentication seemed successful, but the key is still missing."
++                )
++                analytics.event(
++                    "exit",
++                    reason="OpenRouter key missing after successful OAuth for specified model",
++                )
++                return 1
++        else:
++            # OAuth failed or was declined by the user
++            io.tool_error(
++                f"Unable to proceed without an OpenRouter API key for model '{args.model}'."
++            )
++            io.offer_url(urls.models_and_keys, "Open documentation URL for more info?")
++            analytics.event(
++                "exit",
++                reason="OpenRouter key missing for specified model and OAuth failed/declined",
++            )
++            return 1
++
++    main_model = models.Model(
++        args.model,
++        weak_model=args.weak_model,
++        editor_model=args.editor_model,
++        editor_edit_format=args.editor_edit_format,
++        verbose=args.verbose,
++    )
++
++    # Check if deprecated remove_reasoning is set
++    if main_model.remove_reasoning is not None:
++        io.tool_warning(
++            "Model setting 'remove_reasoning' is deprecated, please use 'reasoning_tag' instead."
++        )
++
++    # Set reasoning effort and thinking tokens if specified
++    if args.reasoning_effort is not None:
++        # Apply if check is disabled or model explicitly supports it
++        if not args.check_model_accepts_settings or (
++            main_model.accepts_settings and "reasoning_effort" in main_model.accepts_settings
++        ):
++            main_model.set_reasoning_effort(args.reasoning_effort)
++
++    if args.thinking_tokens is not None:
++        # Apply if check is disabled or model explicitly supports it
++        if not args.check_model_accepts_settings or (
++            main_model.accepts_settings and "thinking_tokens" in main_model.accepts_settings
++        ):
++            main_model.set_thinking_tokens(args.thinking_tokens)
++
++    # Show warnings about unsupported settings that are being ignored
++    if args.check_model_accepts_settings:
++        settings_to_check = [
++            {"arg": args.reasoning_effort, "name": "reasoning_effort"},
++            {"arg": args.thinking_tokens, "name": "thinking_tokens"},
++        ]
++
++        for setting in settings_to_check:
++            if setting["arg"] is not None and (
++                not main_model.accepts_settings
++                or setting["name"] not in main_model.accepts_settings
++            ):
++                io.tool_warning(
++                    f"Warning: {main_model.name} does not support '{setting['name']}', ignoring."
++                )
++                io.tool_output(
++                    f"Use --no-check-model-accepts-settings to force the '{setting['name']}'"
++                    " setting."
++                )
++
++    if args.copy_paste and args.edit_format is None:
++        if main_model.edit_format in ("diff", "whole", "diff-fenced"):
++            main_model.edit_format = "editor-" + main_model.edit_format
++
++    if args.verbose:
++        io.tool_output("Model metadata:")
++        io.tool_output(json.dumps(main_model.info, indent=4))
++
++        io.tool_output("Model settings:")
++        for attr in sorted(fields(ModelSettings), key=lambda x: x.name):
++            val = getattr(main_model, attr.name)
++            val = json.dumps(val, indent=4)
++            io.tool_output(f"{attr.name}: {val}")
++
++    lint_cmds = parse_lint_cmds(args.lint_cmd, io)
++    if lint_cmds is None:
++        analytics.event("exit", reason="Invalid lint command format")
++        return 1
++
++    if args.show_model_warnings:
++        problem = models.sanity_check_models(io, main_model)
++        if problem:
++            analytics.event("model warning", main_model=main_model)
++            io.tool_output("You can skip this check with --no-show-model-warnings")
++
++            try:
++                io.offer_url(urls.model_warnings, "Open documentation url for more info?")
++                io.tool_output()
++            except KeyboardInterrupt:
++                analytics.event("exit", reason="Keyboard interrupt during model warnings")
++                return 1
++
++    repo = None
++    if args.git:
++        try:
++            repo = GitRepo(
++                io,
++                fnames,
++                git_dname,
++                args.aiderignore,
++                models=main_model.commit_message_models(),
++                attribute_author=args.attribute_author,
++                attribute_committer=args.attribute_committer,
++                attribute_commit_message_author=args.attribute_commit_message_author,
++                attribute_commit_message_committer=args.attribute_commit_message_committer,
++                commit_prompt=args.commit_prompt,
++                subtree_only=args.subtree_only,
++                git_commit_verify=args.git_commit_verify,
++                attribute_co_authored_by=args.attribute_co_authored_by,  # Pass the arg
++            )
++        except FileNotFoundError:
++            pass
++
++    if not args.skip_sanity_check_repo:
++        if not sanity_check_repo(repo, io):
++            analytics.event("exit", reason="Repository sanity check failed")
++            return 1
++
++    if repo and not args.skip_sanity_check_repo:
++        num_files = len(repo.get_tracked_files())
++        analytics.event("repo", num_files=num_files)
++    else:
++        analytics.event("no-repo")
++
++    commands = Commands(
++        io,
++        None,
++        voice_language=args.voice_language,
++        voice_input_device=args.voice_input_device,
++        voice_format=args.voice_format,
++        verify_ssl=args.verify_ssl,
++        args=args,
++        parser=parser,
++        verbose=args.verbose,
++        editor=args.editor,
++        original_read_only_fnames=read_only_fnames,
++    )
++
++    summarizer = ChatSummary(
++        [main_model.weak_model, main_model],
++        args.max_chat_history_tokens or main_model.max_chat_history_tokens,
++    )
++
++    if args.cache_prompts and args.map_refresh == "auto":
++        args.map_refresh = "files"
++
++    if not main_model.streaming:
++        if args.stream:
++            io.tool_warning(
++                f"Warning: Streaming is not supported by {main_model.name}. Disabling streaming."
++            )
++        args.stream = False
++
++    if args.map_tokens is None:
++        map_tokens = main_model.get_repo_map_tokens()
++    else:
++        map_tokens = args.map_tokens
++
++    if args.enable_context_compaction and args.context_compaction_max_tokens is None:
++        max_input_tokens = main_model.info.get("max_input_tokens")
++        if max_input_tokens:
++            args.context_compaction_max_tokens = int(max_input_tokens * 0.8)
++
++    # Track auto-commits configuration
++    analytics.event("auto_commits", enabled=bool(args.auto_commits))
++
++    try:
++        # Load MCP servers from config string or file
++        mcp_servers = load_mcp_servers(
++            args.mcp_servers, args.mcp_servers_file, io, args.verbose, args.mcp_transport
++        )
++
++        if not mcp_servers:
++            mcp_servers = []
++
++        coder = Coder.create(
++            main_model=main_model,
++            edit_format=args.edit_format,
++            io=io,
++            repo=repo,
++            fnames=fnames,
++            read_only_fnames=read_only_fnames,
++            read_only_stubs_fnames=[],
++            show_diffs=args.show_diffs,
++            auto_commits=args.auto_commits,
++            dirty_commits=args.dirty_commits,
++            dry_run=args.dry_run,
++            map_tokens=map_tokens,
++            verbose=args.verbose,
++            stream=args.stream,
++            use_git=args.git,
++            restore_chat_history=args.restore_chat_history,
++            auto_lint=args.auto_lint,
++            auto_test=args.auto_test,
++            lint_cmds=lint_cmds,
++            test_cmd=args.test_cmd,
++            commands=commands,
++            summarizer=summarizer,
++            analytics=analytics,
++            map_refresh=args.map_refresh,
++            cache_prompts=args.cache_prompts,
++            map_mul_no_files=args.map_multiplier_no_files,
++            map_max_line_length=args.map_max_line_length,
++            num_cache_warming_pings=args.cache_keepalive_pings,
++            suggest_shell_commands=args.suggest_shell_commands,
++            chat_language=args.chat_language,
++            commit_language=args.commit_language,
++            detect_urls=args.detect_urls,
++            auto_copy_context=args.copy_paste,
++            auto_accept_architect=args.auto_accept_architect,
++            mcp_servers=mcp_servers,
++            add_gitignore_files=args.add_gitignore_files,
++            enable_context_compaction=args.enable_context_compaction,
++            context_compaction_max_tokens=args.context_compaction_max_tokens,
++            context_compaction_summary_tokens=args.context_compaction_summary_tokens,
++            map_cache_dir=args.map_cache_dir,
++        )
++    except UnknownEditFormat as err:
++        io.tool_error(str(err))
++        io.offer_url(urls.edit_formats, "Open documentation about edit formats?")
++        analytics.event("exit", reason="Unknown edit format")
++        return 1
++    except ValueError as err:
++        io.tool_error(str(err))
++        analytics.event("exit", reason="ValueError during coder creation")
++        return 1
++
++    if return_coder:
++        analytics.event("exit", reason="Returning coder object")
++        return coder
++
++    ignores = []
++    if git_root:
++        ignores.append(str(Path(git_root) / ".gitignore"))
++    if args.aiderignore:
++        ignores.append(args.aiderignore)
++
++    if args.watch_files:
++        file_watcher = FileWatcher(
++            coder,
++            gitignores=ignores,
++            verbose=args.verbose,
++            analytics=analytics,
++            root=str(Path.cwd()) if args.subtree_only else None,
++        )
++        coder.file_watcher = file_watcher
++
++    if args.copy_paste:
++        analytics.event("copy-paste mode")
++        ClipboardWatcher(coder.io, verbose=args.verbose)
++
++    coder.show_announcements()
++
++    if args.show_prompts:
++        coder.cur_messages += [
++            dict(role="user", content="Hello!"),
++        ]
++        messages = coder.format_messages().all_messages()
++        utils.show_messages(messages)
++        analytics.event("exit", reason="Showed prompts")
++        return
++
++    if args.lint:
++        coder.commands.cmd_lint(fnames=fnames)
++
++    if args.test:
++        if not args.test_cmd:
++            io.tool_error("No --test-cmd provided.")
++            analytics.event("exit", reason="No test command provided")
++            return 1
++        coder.commands.cmd_test(args.test_cmd)
++        if io.placeholder:
++            coder.run(io.placeholder)
++
++    if args.commit:
++        if args.dry_run:
++            io.tool_output("Dry run enabled, skipping commit.")
++        else:
++            coder.commands.cmd_commit()
++
++    if args.lint or args.test or args.commit:
++        analytics.event("exit", reason="Completed lint/test/commit")
++        return
++
++    if args.show_repo_map:
++        repo_map = coder.get_repo_map()
++        if repo_map:
++            io.tool_output(repo_map)
++        analytics.event("exit", reason="Showed repo map")
++        return
++
++    if args.apply:
++        content = io.read_text(args.apply)
++        if content is None:
++            analytics.event("exit", reason="Failed to read apply content")
++            return
++        coder.partial_response_content = content
++        # For testing #2879
++        # from aider.coders.base_coder import all_fences
++        # coder.fence = all_fences[1]
++        coder.apply_updates()
++        analytics.event("exit", reason="Applied updates")
++        return
++
++    if args.apply_clipboard_edits:
++        args.edit_format = main_model.editor_edit_format
++        args.message = "/paste"
++
++    if args.show_release_notes is True:
++        io.tool_output(f"Opening release notes: {urls.release_notes}")
++        io.tool_output()
++        webbrowser.open(urls.release_notes)
++    elif args.show_release_notes is None and is_first_run:
++        io.tool_output()
++        io.offer_url(
++            urls.release_notes,
++            "Would you like to see what's new in this version?",
++            allow_never=False,
++        )
++
++    if git_root and Path.cwd().resolve() != Path(git_root).resolve():
++        io.tool_warning(
++            "Note: in-chat filenames are always relative to the git working dir, not the current"
++            " working dir."
++        )
++
++        io.tool_output(f"Cur working dir: {Path.cwd()}")
++        io.tool_output(f"Git working dir: {git_root}")
++
++    if args.stream and args.cache_prompts:
++        io.tool_warning("Cost estimates may be inaccurate when using streaming and caching.")
++
++    if args.load:
++        commands.cmd_load(args.load)
++
++    if args.message:
++        io.add_to_input_history(args.message)
++        io.tool_output()
++        try:
++            coder.run(with_message=args.message)
++        except SwitchCoder:
++            pass
++        analytics.event("exit", reason="Completed --message")
++        return
++
++    if args.message_file:
++        try:
++            message_from_file = io.read_text(args.message_file)
++            io.tool_output()
++            coder.run(with_message=message_from_file)
++        except FileNotFoundError:
++            io.tool_error(f"Message file not found: {args.message_file}")
++            analytics.event("exit", reason="Message file not found")
++            return 1
++        except IOError as e:
++            io.tool_error(f"Error reading message file: {e}")
++            analytics.event("exit", reason="Message file IO error")
++            return 1
++
++        analytics.event("exit", reason="Completed --message-file")
++        return
++
++    if args.exit:
++        analytics.event("exit", reason="Exit flag set")
++        return
++
++    analytics.event("cli session", main_model=main_model, edit_format=main_model.edit_format)
++
++    while True:
++        try:
++            coder.ok_to_warm_cache = bool(args.cache_keepalive_pings)
++            coder.run()
++            analytics.event("exit", reason="Completed main CLI coder.run")
++            return
++        except SwitchCoder as switch:
++            coder.ok_to_warm_cache = False
++
++            # Set the placeholder if provided
++            if hasattr(switch, "placeholder") and switch.placeholder is not None:
++                io.placeholder = switch.placeholder
++
++            kwargs = dict(io=io, from_coder=coder)
++            kwargs.update(switch.kwargs)
++            if "show_announcements" in kwargs:
++                del kwargs["show_announcements"]
++
++            # Disable cache warming for the new coder
++            kwargs["num_cache_warming_pings"] = 0
++
++            coder = Coder.create(**kwargs)
++
++            if switch.kwargs.get("show_announcements") is not False:
++                coder.show_announcements()
++
++
++def is_first_run_of_new_version(io, verbose=False):
++    """Check if this is the first run of a new version/executable combination"""
++    installs_file = Path.home() / ".aider" / "installs.json"
++    key = (__version__, sys.executable)
++
++    # Never show notes for .dev versions
++    if ".dev" in __version__:
++        return False
++
++    if verbose:
++        io.tool_output(
++            f"Checking imports for version {__version__} and executable {sys.executable}"
++        )
++        io.tool_output(f"Installs file: {installs_file}")
++
++    try:
++        if installs_file.exists():
++            with open(installs_file, "r") as f:
++                installs = json.load(f)
++            if verbose:
++                io.tool_output("Installs file exists and loaded")
++        else:
++            installs = {}
++            if verbose:
++                io.tool_output("Installs file does not exist, creating new dictionary")
++
++        is_first_run = str(key) not in installs
++
++        if is_first_run:
++            installs[str(key)] = True
++            installs_file.parent.mkdir(parents=True, exist_ok=True)
++            with open(installs_file, "w") as f:
++                json.dump(installs, f, indent=4)
++
++        return is_first_run
++
++    except Exception as e:
++        io.tool_warning(f"Error checking version: {e}")
++        if verbose:
++            io.tool_output(f"Full exception details: {traceback.format_exc()}")
++        return True  # Safer to assume it's a first run if we hit an error
++
++
++def check_and_load_imports(io, is_first_run, verbose=False):
++    try:
++        if is_first_run:
++            if verbose:
++                io.tool_output(
++                    "First run for this version and executable, loading imports synchronously"
++                )
++            try:
++                load_slow_imports(swallow=False)
++            except Exception as err:
++                io.tool_error(str(err))
++                io.tool_output("Error loading required imports. Did you install aider properly?")
++                io.offer_url(urls.install_properly, "Open documentation url for more info?")
++                sys.exit(1)
++
++            if verbose:
++                io.tool_output("Imports loaded and installs file updated")
++        else:
++            if verbose:
++                io.tool_output("Not first run, loading imports in background thread")
++            thread = threading.Thread(target=load_slow_imports)
++            thread.daemon = True
++            thread.start()
++
++    except Exception as e:
++        io.tool_warning(f"Error in loading imports: {e}")
++        if verbose:
++            io.tool_output(f"Full exception details: {traceback.format_exc()}")
++
++
++def load_slow_imports(swallow=True):
++    # These imports are deferred in various ways to
++    # improve startup time.
++    # This func is called either synchronously or in a thread
++    # depending on whether it's been run before for this version and executable.
++
++    try:
++        import httpx  # noqa: F401
++        import litellm  # noqa: F401
++        import networkx  # noqa: F401
++        import numpy  # noqa: F401
++    except Exception as e:
++        if not swallow:
++            raise e
++
++
++if __name__ == "__main__":
++    status = main()
++    sys.exit(status)
+diff --git a/models.py b/models.py
+new file mode 100644
+index 0000000..f07b90d
+--- /dev/null
++++ b/models.py
+@@ -0,0 +1,1288 @@
++import difflib
++import hashlib
++import importlib.resources
++import json
++import math
++import os
++import platform
++import sys
++import time
++from dataclasses import dataclass, fields
++from pathlib import Path
++from typing import Optional, Union
++
++import json5
++import yaml
++from PIL import Image
++
++from aider import __version__
++from aider.dump import dump  # noqa: F401
++from aider.llm import litellm
++from aider.openrouter import OpenRouterModelManager
++from aider.sendchat import ensure_alternating_roles, sanity_check_messages
++from aider.utils import check_pip_install_extra
++
++RETRY_TIMEOUT = 60
++
++request_timeout = 600
++
++DEFAULT_MODEL_NAME = "gpt-4o"
++ANTHROPIC_BETA_HEADER = "prompt-caching-2024-07-31,pdfs-2024-09-25"
++
++OPENAI_MODELS = """
++o1
++o1-preview
++o1-mini
++o3-mini
++gpt-4
++gpt-4o
++gpt-4o-2024-05-13
++gpt-4-turbo-preview
++gpt-4-0314
++gpt-4-0613
++gpt-4-32k
++gpt-4-32k-0314
++gpt-4-32k-0613
++gpt-4-turbo
++gpt-4-turbo-2024-04-09
++gpt-4-1106-preview
++gpt-4-0125-preview
++gpt-4-vision-preview
++gpt-4-1106-vision-preview
++gpt-4o-mini
++gpt-4o-mini-2024-07-18
++gpt-3.5-turbo
++gpt-3.5-turbo-0301
++gpt-3.5-turbo-0613
++gpt-3.5-turbo-1106
++gpt-3.5-turbo-0125
++gpt-3.5-turbo-16k
++gpt-3.5-turbo-16k-0613
++"""
++
++OPENAI_MODELS = [ln.strip() for ln in OPENAI_MODELS.splitlines() if ln.strip()]
++
++ANTHROPIC_MODELS = """
++claude-2
++claude-2.1
++claude-3-haiku-20240307
++claude-3-5-haiku-20241022
++claude-3-opus-20240229
++claude-3-sonnet-20240229
++claude-3-5-sonnet-20240620
++claude-3-5-sonnet-20241022
++claude-sonnet-4-20250514
++claude-opus-4-20250514
++"""
++
++ANTHROPIC_MODELS = [ln.strip() for ln in ANTHROPIC_MODELS.splitlines() if ln.strip()]
++
++# Mapping of model aliases to their canonical names
++MODEL_ALIASES = {
++    # Claude models
++    "sonnet": "anthropic/claude-sonnet-4-20250514",
++    "haiku": "claude-3-5-haiku-20241022",
++    "opus": "claude-opus-4-20250514",
++    # GPT models
++    "4": "gpt-4-0613",
++    "4o": "gpt-4o",
++    "4-turbo": "gpt-4-1106-preview",
++    "35turbo": "gpt-3.5-turbo",
++    "35-turbo": "gpt-3.5-turbo",
++    "3": "gpt-3.5-turbo",
++    # Other models
++    "deepseek": "deepseek/deepseek-chat",
++    "flash": "gemini/gemini-2.5-flash",
++    "flash-lite": "gemini/gemini-2.5-flash-lite",
++    "quasar": "openrouter/openrouter/quasar-alpha",
++    "r1": "deepseek/deepseek-reasoner",
++    "gemini-2.5-pro": "gemini/gemini-2.5-pro",
++    "gemini": "gemini/gemini-2.5-pro",
++    "gemini-exp": "gemini/gemini-2.5-pro-exp-03-25",
++    "grok3": "xai/grok-3-beta",
++    "optimus": "openrouter/openrouter/optimus-alpha",
++}
++# Model metadata loaded from resources and user's files.
++
++
++@dataclass
++class ModelSettings:
++    # Model class needs to have each of these as well
++    name: str
++    edit_format: str = "whole"
++    weak_model_name: Optional[str] = None
++    use_repo_map: bool = False
++    send_undo_reply: bool = False
++    lazy: bool = False
++    overeager: bool = False
++    reminder: str = "user"
++    examples_as_sys_msg: bool = False
++    extra_params: Optional[dict] = None
++    cache_control: bool = False
++    caches_by_default: bool = False
++    use_system_prompt: bool = True
++    use_temperature: Union[bool, float] = True
++    streaming: bool = True
++    editor_model_name: Optional[str] = None
++    editor_edit_format: Optional[str] = None
++    reasoning_tag: Optional[str] = None
++    remove_reasoning: Optional[str] = None  # Deprecated alias for reasoning_tag
++    system_prompt_prefix: Optional[str] = None
++    accepts_settings: Optional[list] = None
++
++
++# Load model settings from package resource
++MODEL_SETTINGS = []
++with importlib.resources.open_text("aider.resources", "model-settings.yml") as f:
++    model_settings_list = yaml.safe_load(f)
++    for model_settings_dict in model_settings_list:
++        MODEL_SETTINGS.append(ModelSettings(**model_settings_dict))
++
++
++class ModelInfoManager:
++    MODEL_INFO_URL = (
++        "https://raw.githubusercontent.com/BerriAI/litellm/main/"
++        "model_prices_and_context_window.json"
++    )
++    CACHE_TTL = 60 * 60 * 24  # 24 hours
++
++    def __init__(self):
++        self.cache_dir = Path.home() / ".aider" / "caches"
++        self.cache_file = self.cache_dir / "model_prices_and_context_window.json"
++        self.content = None
++        self.local_model_metadata = {}
++        self.verify_ssl = True
++        self._cache_loaded = False
++
++        # Manager for the cached OpenRouter model database
++        self.openrouter_manager = OpenRouterModelManager()
++
++    def set_verify_ssl(self, verify_ssl):
++        self.verify_ssl = verify_ssl
++        if hasattr(self, "openrouter_manager"):
++            self.openrouter_manager.set_verify_ssl(verify_ssl)
++
++    def _load_cache(self):
++        if self._cache_loaded:
++            return
++
++        try:
++            self.cache_dir.mkdir(parents=True, exist_ok=True)
++            if self.cache_file.exists():
++                cache_age = time.time() - self.cache_file.stat().st_mtime
++                if cache_age < self.CACHE_TTL:
++                    try:
++                        self.content = json.loads(self.cache_file.read_text())
++                    except json.JSONDecodeError:
++                        # If the cache file is corrupted, treat it as missing
++                        self.content = None
++        except OSError:
++            pass
++
++        self._cache_loaded = True
++
++    def _update_cache(self):
++        try:
++            import requests
++
++            # Respect the --no-verify-ssl switch
++            response = requests.get(self.MODEL_INFO_URL, timeout=5, verify=self.verify_ssl)
++            if response.status_code == 200:
++                self.content = response.json()
++                try:
++                    self.cache_file.write_text(json.dumps(self.content, indent=4))
++                except OSError:
++                    pass
++        except Exception as ex:
++            print(str(ex))
++            try:
++                # Save empty dict to cache file on failure
++                self.cache_file.write_text("{}")
++            except OSError:
++                pass
++
++    def get_model_from_cached_json_db(self, model):
++        data = self.local_model_metadata.get(model)
++        if data:
++            return data
++
++        # Ensure cache is loaded before checking content
++        self._load_cache()
++
++        if not self.content:
++            self._update_cache()
++
++        if not self.content:
++            return dict()
++
++        info = self.content.get(model, dict())
++        if info:
++            return info
++
++        pieces = model.split("/")
++        if len(pieces) == 2:
++            info = self.content.get(pieces[1])
++            if info and info.get("litellm_provider") == pieces[0]:
++                return info
++
++        return dict()
++
++    def get_model_info(self, model):
++        cached_info = self.get_model_from_cached_json_db(model)
++
++        litellm_info = None
++        if litellm._lazy_module or not cached_info:
++            try:
++                litellm_info = litellm.get_model_info(model)
++            except Exception as ex:
++                if "model_prices_and_context_window.json" not in str(ex):
++                    print(str(ex))
++
++        if litellm_info:
++            return litellm_info
++
++        if not cached_info and model.startswith("openrouter/"):
++            # First try using the locally cached OpenRouter model database
++            openrouter_info = self.openrouter_manager.get_model_info(model)
++            if openrouter_info:
++                return openrouter_info
++
++            # Fallback to legacy web-scraping if the API cache does not contain the model
++            openrouter_info = self.fetch_openrouter_model_info(model)
++            if openrouter_info:
++                return openrouter_info
++
++        return cached_info
++
++    def fetch_openrouter_model_info(self, model):
++        """
++        Fetch model info by scraping the openrouter model page.
++        Expected URL: https://openrouter.ai/<model_route>
++        Example: openrouter/qwen/qwen-2.5-72b-instruct:free
++        Returns a dict with keys: max_tokens, max_input_tokens, max_output_tokens,
++        input_cost_per_token, output_cost_per_token.
++        """
++        url_part = model[len("openrouter/") :]
++        url = "https://openrouter.ai/" + url_part
++        try:
++            import requests
++
++            response = requests.get(url, timeout=5, verify=self.verify_ssl)
++            if response.status_code != 200:
++                return {}
++            html = response.text
++            import re
++
++            if re.search(
++                rf"The model\s*.*{re.escape(url_part)}.* is not available", html, re.IGNORECASE
++            ):
++                print(f"\033[91mError: Model '{url_part}' is not available\033[0m")
++                return {}
++            text = re.sub(r"<[^>]+>", " ", html)
++            context_match = re.search(r"([\d,]+)\s*context", text)
++            if context_match:
++                context_str = context_match.group(1).replace(",", "")
++                context_size = int(context_str)
++            else:
++                context_size = None
++            input_cost_match = re.search(r"\$\s*([\d.]+)\s*/M input tokens", text, re.IGNORECASE)
++            output_cost_match = re.search(r"\$\s*([\d.]+)\s*/M output tokens", text, re.IGNORECASE)
++            input_cost = float(input_cost_match.group(1)) / 1000000 if input_cost_match else None
++            output_cost = float(output_cost_match.group(1)) / 1000000 if output_cost_match else None
++            if context_size is None or input_cost is None or output_cost is None:
++                return {}
++            params = {
++                "max_input_tokens": context_size,
++                "max_tokens": context_size,
++                "max_output_tokens": context_size,
++                "input_cost_per_token": input_cost,
++                "output_cost_per_token": output_cost,
++            }
++            return params
++        except Exception as e:
++            print("Error fetching openrouter info:", str(e))
++            return {}
++
++
++model_info_manager = ModelInfoManager()
++
++
++class Model(ModelSettings):
++    def __init__(
++        self, model, weak_model=None, editor_model=None, editor_edit_format=None, verbose=False
++    ):
++        # Map any alias to its canonical name
++        model = MODEL_ALIASES.get(model, model)
++
++        self.name = model
++        self.verbose = verbose
++
++        self.max_chat_history_tokens = 1024
++        self.weak_model = None
++        self.editor_model = None
++
++        # Find the extra settings
++        self.extra_model_settings = next(
++            (ms for ms in MODEL_SETTINGS if ms.name == "aider/extra_params"), None
++        )
++
++        self.info = self.get_model_info(model)
++
++        # Are all needed keys/params available?
++        res = self.validate_environment()
++        self.missing_keys = res.get("missing_keys")
++        self.keys_in_environment = res.get("keys_in_environment")
++
++        max_input_tokens = self.info.get("max_input_tokens") or 0
++        # Calculate max_chat_history_tokens as 1/16th of max_input_tokens,
++        # with minimum 1k and maximum 8k
++        self.max_chat_history_tokens = min(max(max_input_tokens / 16, 1024), 8192)
++
++        self.configure_model_settings(model)
++        if weak_model is False:
++            self.weak_model_name = None
++        else:
++            self.get_weak_model(weak_model)
++
++        if editor_model is False:
++            self.editor_model_name = None
++        else:
++            self.get_editor_model(editor_model, editor_edit_format)
++
++    def get_model_info(self, model):
++        return model_info_manager.get_model_info(model)
++
++    def _copy_fields(self, source):
++        """Helper to copy fields from a ModelSettings instance to self"""
++        for field in fields(ModelSettings):
++            val = getattr(source, field.name)
++            setattr(self, field.name, val)
++
++        # Handle backward compatibility: if remove_reasoning is set but reasoning_tag isn't,
++        # use remove_reasoning's value for reasoning_tag
++        if self.reasoning_tag is None and self.remove_reasoning is not None:
++            self.reasoning_tag = self.remove_reasoning
++
++    def configure_model_settings(self, model):
++        # Look for exact model match
++        exact_match = False
++        for ms in MODEL_SETTINGS:
++            # direct match, or match "provider/<model>"
++            if model == ms.name:
++                self._copy_fields(ms)
++                exact_match = True
++                break  # Continue to apply overrides
++
++        # Initialize accepts_settings if it's None
++        if self.accepts_settings is None:
++            self.accepts_settings = []
++
++        model = model.lower()
++
++        # If no exact match, try generic settings
++        if not exact_match:
++            self.apply_generic_model_settings(model)
++
++        # Apply override settings last if they exist
++        if (
++            self.extra_model_settings
++            and self.extra_model_settings.extra_params
++            and self.extra_model_settings.name == "aider/extra_params"
++        ):
++            # Initialize extra_params if it doesn't exist
++            if not self.extra_params:
++                self.extra_params = {}
++
++            # Deep merge the extra_params dicts
++            for key, value in self.extra_model_settings.extra_params.items():
++                if isinstance(value, dict) and isinstance(self.extra_params.get(key), dict):
++                    # For nested dicts, merge recursively
++                    self.extra_params[key] = {**self.extra_params[key], **value}
++                else:
++                    # For non-dict values, simply update
++                    self.extra_params[key] = value
++
++        # Ensure OpenRouter models accept thinking_tokens and reasoning_effort
++        if self.name.startswith("openrouter/"):
++            if self.accepts_settings is None:
++                self.accepts_settings = []
++            if "thinking_tokens" not in self.accepts_settings:
++                self.accepts_settings.append("thinking_tokens")
++            if "reasoning_effort" not in self.accepts_settings:
++                self.accepts_settings.append("reasoning_effort")
++
++    def apply_generic_model_settings(self, model):
++        if "/o3-mini" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.use_temperature = False
++            self.system_prompt_prefix = "Formatting re-enabled. "
++            self.system_prompt_prefix = "Formatting re-enabled. "
++            if "reasoning_effort" not in self.accepts_settings:
++                self.accepts_settings.append("reasoning_effort")
++            return  # <--
++
++        if "gpt-4.1-mini" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.reminder = "sys"
++            self.examples_as_sys_msg = False
++            return  # <--
++
++        if "gpt-4.1" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.reminder = "sys"
++            self.examples_as_sys_msg = False
++            return  # <--
++
++        last_segment = model.split("/")[-1]
++        if last_segment in ("gpt-5", "gpt-5-2025-08-07"):
++            self.use_temperature = False
++            self.edit_format = "diff"
++            if "reasoning_effort" not in self.accepts_settings:
++                self.accepts_settings.append("reasoning_effort")
++            return  # <--
++
++        if "/o1-mini" in model:
++            self.use_repo_map = True
++            self.use_temperature = False
++            self.use_system_prompt = False
++            return  # <--
++
++        if "/o1-preview" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.use_temperature = False
++            self.use_system_prompt = False
++            return  # <--
++
++        if "/o1" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.use_temperature = False
++            self.streaming = False
++            self.system_prompt_prefix = "Formatting re-enabled. "
++            if "reasoning_effort" not in self.accepts_settings:
++                self.accepts_settings.append("reasoning_effort")
++            return  # <--
++
++        if "deepseek" in model and "v3" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.reminder = "sys"
++            self.examples_as_sys_msg = True
++            return  # <--
++
++        if "deepseek" in model and ("r1" in model or "reasoning" in model):
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.examples_as_sys_msg = True
++            self.use_temperature = False
++            self.reasoning_tag = "think"
++            return  # <--
++
++        if ("llama3" in model or "llama-3" in model) and "70b" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.send_undo_reply = True
++            self.examples_as_sys_msg = True
++            return  # <--
++
++        if "gpt-4-turbo" in model or ("gpt-4-" in model and "-preview" in model):
++            self.edit_format = "udiff"
++            self.use_repo_map = True
++            self.send_undo_reply = True
++            return  # <--
++
++        if "gpt-4" in model or "claude-3-opus" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.send_undo_reply = True
++            return  # <--
++
++        if "gpt-3.5" in model or "gpt-4" in model:
++            self.reminder = "sys"
++            return  # <--
++
++        if "3-7-sonnet" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.examples_as_sys_msg = True
++            self.reminder = "user"
++            if "thinking_tokens" not in self.accepts_settings:
++                self.accepts_settings.append("thinking_tokens")
++            return  # <--
++
++        if "3.5-sonnet" in model or "3-5-sonnet" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            self.examples_as_sys_msg = True
++            self.reminder = "user"
++            return  # <--
++
++        if model.startswith("o1-") or "/o1-" in model:
++            self.use_system_prompt = False
++            self.use_temperature = False
++            return  # <--
++
++        if (
++            "qwen" in model
++            and "coder" in model
++            and ("2.5" in model or "2-5" in model)
++            and "32b" in model
++        ):
++            self.edit_format = "diff"
++            self.editor_edit_format = "editor-diff"
++            self.use_repo_map = True
++            return  # <--
++
++        if "qwq" in model and "32b" in model and "preview" not in model:
++            self.edit_format = "diff"
++            self.editor_edit_format = "editor-diff"
++            self.use_repo_map = True
++            self.reasoning_tag = "think"
++            self.examples_as_sys_msg = True
++            self.use_temperature = 0.6
++            self.extra_params = dict(top_p=0.95)
++            return  # <--
++
++        if "qwen3" in model:
++            self.edit_format = "diff"
++            self.use_repo_map = True
++            if "235b" in model:
++                self.system_prompt_prefix = "/no_think"
++                self.use_temperature = 0.7
++                self.extra_params = {"top_p": 0.8, "top_k": 20, "min_p": 0.0}
++            else:
++                self.examples_as_sys_msg = True
++                self.use_temperature = 0.6
++                self.reasoning_tag = "think"
++                self.extra_params = {"top_p": 0.95, "top_k": 20, "min_p": 0.0}
++            return  # <--
++
++        # use the defaults
++        if self.edit_format == "diff":
++            self.use_repo_map = True
++            return  # <--
++
++    def __str__(self):
++        return self.name
++
++    def get_weak_model(self, provided_weak_model_name):
++        # If weak_model_name is provided, override the model settings
++        if provided_weak_model_name:
++            self.weak_model_name = provided_weak_model_name
++
++        if not self.weak_model_name:
++            self.weak_model = self
++            return
++
++        if self.weak_model_name == self.name:
++            self.weak_model = self
++            return
++
++        self.weak_model = Model(
++            self.weak_model_name,
++            weak_model=False,
++        )
++        return self.weak_model
++
++    def commit_message_models(self):
++        return [self.weak_model, self]
++
++    def get_editor_model(self, provided_editor_model_name, editor_edit_format):
++        # If editor_model_name is provided, override the model settings
++        if provided_editor_model_name:
++            self.editor_model_name = provided_editor_model_name
++        if editor_edit_format:
++            self.editor_edit_format = editor_edit_format
++
++        if not self.editor_model_name or self.editor_model_name == self.name:
++            self.editor_model = self
++        else:
++            self.editor_model = Model(
++                self.editor_model_name,
++                editor_model=False,
++            )
++
++        if not self.editor_edit_format:
++            self.editor_edit_format = self.editor_model.edit_format
++            if self.editor_edit_format in ("diff", "whole", "diff-fenced"):
++                self.editor_edit_format = "editor-" + self.editor_edit_format
++
++        return self.editor_model
++
++    def tokenizer(self, text):
++        return litellm.encode(model=self.name, text=text)
++
++    def token_count(self, messages):
++        if isinstance(messages, dict):
++            messages = [messages]
++
++        if isinstance(messages, list):
++            try:
++                return litellm.token_counter(model=self.name, messages=messages)
++            except Exception:
++                pass  # fall back to raw tokenizer
++
++        if not self.tokenizer:
++            return 0
++
++        if isinstance(messages, str):
++            msgs = messages
++        else:
++            msgs = json.dumps(messages)
++
++        try:
++            return len(self.tokenizer(msgs))
++        except Exception as err:
++            print(f"Unable to count tokens with tokenizer: {err}")
++            return 0
++
++    def token_count_for_image(self, fname):
++        """
++        Calculate the token cost for an image assuming high detail.
++        The token cost is determined by the size of the image.
++        :param fname: The filename of the image.
++        :return: The token cost for the image.
++        """
++        width, height = self.get_image_size(fname)
++
++        # If the image is larger than 2048 in any dimension, scale it down to fit within 2048x2048
++        max_dimension = max(width, height)
++        if max_dimension > 2048:
++            scale_factor = 2048 / max_dimension
++            width = int(width * scale_factor)
++            height = int(height * scale_factor)
++
++        # Scale the image such that the shortest side is 768 pixels long
++        min_dimension = min(width, height)
++        scale_factor = 768 / min_dimension
++        width = int(width * scale_factor)
++        height = int(height * scale_factor)
++
++        # Calculate the number of 512x512 tiles needed to cover the image
++        tiles_width = math.ceil(width / 512)
++        tiles_height = math.ceil(height / 512)
++        num_tiles = tiles_width * tiles_height
++
++        # Each tile costs 170 tokens, and there's an additional fixed cost of 85 tokens
++        token_cost = num_tiles * 170 + 85
++        return token_cost
++
++    def get_image_size(self, fname):
++        """
++        Retrieve the size of an image.
++        :param fname: The filename of the image.
++        :return: A tuple (width, height) representing the image size in pixels.
++        """
++        with Image.open(fname) as img:
++            return img.size
++
++    def fast_validate_environment(self):
++        """Fast path for common models. Avoids forcing litellm import."""
++
++        model = self.name
++
++        pieces = model.split("/")
++        if len(pieces) > 1:
++            provider = pieces[0]
++        else:
++            provider = None
++
++        keymap = dict(
++            openrouter="OPENROUTER_API_KEY",
++            openai="OPENAI_API_KEY",
++            deepseek="DEEPSEEK_API_KEY",
++            gemini="GEMINI_API_KEY",
++            anthropic="ANTHROPIC_API_KEY",
++            groq="GROQ_API_KEY",
++            fireworks_ai="FIREWORKS_API_KEY",
++        )
++        var = None
++        if model in OPENAI_MODELS:
++            var = "OPENAI_API_KEY"
++        elif model in ANTHROPIC_MODELS:
++            var = "ANTHROPIC_API_KEY"
++        else:
++            var = keymap.get(provider)
++
++        if var and os.environ.get(var):
++            return dict(keys_in_environment=[var], missing_keys=[])
++
++    def validate_environment(self):
++        res = self.fast_validate_environment()
++        if res:
++            return res
++
++        # https://github.com/BerriAI/litellm/issues/3190
++
++        model = self.name
++        res = litellm.validate_environment(model)
++
++        # If missing AWS credential keys but AWS_PROFILE is set, consider AWS credentials valid
++        if res["missing_keys"] and any(
++            key in ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"] for key in res["missing_keys"]
++        ):
++            if model.startswith("bedrock/") or model.startswith("us.anthropic."):
++                if os.environ.get("AWS_PROFILE"):
++                    res["missing_keys"] = [
++                        k
++                        for k in res["missing_keys"]
++                        if k not in ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
++                    ]
++                    if not res["missing_keys"]:
++                        res["keys_in_environment"] = True
++
++        if res["keys_in_environment"]:
++            return res
++        if res["missing_keys"]:
++            return res
++
++        provider = self.info.get("litellm_provider", "").lower()
++        if provider == "cohere_chat":
++            return validate_variables(["COHERE_API_KEY"])
++        if provider == "gemini":
++            return validate_variables(["GEMINI_API_KEY"])
++        if provider == "groq":
++            return validate_variables(["GROQ_API_KEY"])
++
++        return res
++
++    def get_repo_map_tokens(self):
++        map_tokens = 1024
++        max_inp_tokens = self.info.get("max_input_tokens")
++        if max_inp_tokens:
++            map_tokens = max_inp_tokens / 8
++            map_tokens = min(map_tokens, 4096)
++            map_tokens = max(map_tokens, 1024)
++        return map_tokens
++
++    def set_reasoning_effort(self, effort):
++        """Set the reasoning effort parameter for models that support it"""
++        if effort is not None:
++            if self.name.startswith("openrouter/"):
++                if not self.extra_params:
++                    self.extra_params = {}
++                if "extra_body" not in self.extra_params:
++                    self.extra_params["extra_body"] = {}
++                self.extra_params["extra_body"]["reasoning"] = {"effort": effort}
++            else:
++                if not self.extra_params:
++                    self.extra_params = {}
++                if "extra_body" not in self.extra_params:
++                    self.extra_params["extra_body"] = {}
++                self.extra_params["extra_body"]["reasoning_effort"] = effort
++
++    def parse_token_value(self, value):
++        """
++        Parse a token value string into an integer.
++        Accepts formats: 8096, "8k", "10.5k", "0.5M", "10K", etc.
++
++        Args:
++            value: String or int token value
++
++        Returns:
++            Integer token value
++        """
++        if isinstance(value, int):
++            return value
++
++        if not isinstance(value, str):
++            return int(value)  # Try to convert to int
++
++        value = value.strip().upper()
++
++        if value.endswith("K"):
++            multiplier = 1024
++            value = value[:-1]
++        elif value.endswith("M"):
++            multiplier = 1024 * 1024
++            value = value[:-1]
++        else:
++            multiplier = 1
++
++        # Convert to float first to handle decimal values like "10.5k"
++        return int(float(value) * multiplier)
++
++    def set_thinking_tokens(self, value):
++        """
++        Set the thinking token budget for models that support it.
++        Accepts formats: 8096, "8k", "10.5k", "0.5M", "10K", etc.
++        Pass "0" to disable thinking tokens.
++        """
++        if value is not None:
++            num_tokens = self.parse_token_value(value)
++            self.use_temperature = False
++            if not self.extra_params:
++                self.extra_params = {}
++
++            # OpenRouter models use 'reasoning' instead of 'thinking'
++            if self.name.startswith("openrouter/"):
++                if "extra_body" not in self.extra_params:
++                    self.extra_params["extra_body"] = {}
++                if num_tokens > 0:
++                    self.extra_params["extra_body"]["reasoning"] = {"max_tokens": num_tokens}
++                else:
++                    if "reasoning" in self.extra_params["extra_body"]:
++                        del self.extra_params["extra_body"]["reasoning"]
++            else:
++                if num_tokens > 0:
++                    self.extra_params["thinking"] = {"type": "enabled", "budget_tokens": num_tokens}
++                else:
++                    if "thinking" in self.extra_params:
++                        del self.extra_params["thinking"]
++
++    def get_raw_thinking_tokens(self):
++        """Get formatted thinking token budget if available"""
++        budget = None
++
++        if self.extra_params:
++            # Check for OpenRouter reasoning format
++            if self.name.startswith("openrouter/"):
++                if (
++                    "extra_body" in self.extra_params
++                    and "reasoning" in self.extra_params["extra_body"]
++                    and "max_tokens" in self.extra_params["extra_body"]["reasoning"]
++                ):
++                    budget = self.extra_params["extra_body"]["reasoning"]["max_tokens"]
++            # Check for standard thinking format
++            elif (
++                "thinking" in self.extra_params and "budget_tokens" in self.extra_params["thinking"]
++            ):
++                budget = self.extra_params["thinking"]["budget_tokens"]
++
++        return budget
++
++    def get_thinking_tokens(self):
++        budget = self.get_raw_thinking_tokens()
++
++        if budget is not None:
++            # Format as xx.yK for thousands, xx.yM for millions
++            if budget >= 1024 * 1024:
++                value = budget / (1024 * 1024)
++                if value == int(value):
++                    return f"{int(value)}M"
++                else:
++                    return f"{value:.1f}M"
++            else:
++                value = budget / 1024
++                if value == int(value):
++                    return f"{int(value)}k"
++                else:
++                    return f"{value:.1f}k"
++        return None
++
++    def get_reasoning_effort(self):
++        """Get reasoning effort value if available"""
++        if self.extra_params:
++            # Check for OpenRouter reasoning format
++            if self.name.startswith("openrouter/"):
++                if (
++                    "extra_body" in self.extra_params
++                    and "reasoning" in self.extra_params["extra_body"]
++                    and "effort" in self.extra_params["extra_body"]["reasoning"]
++                ):
++                    return self.extra_params["extra_body"]["reasoning"]["effort"]
++            # Check for standard reasoning_effort format (e.g. in extra_body)
++            elif (
++                "extra_body" in self.extra_params
++                and "reasoning_effort" in self.extra_params["extra_body"]
++            ):
++                return self.extra_params["extra_body"]["reasoning_effort"]
++        return None
++
++    def is_deepseek_r1(self):
++        name = self.name.lower()
++        if "deepseek" not in name:
++            return
++        return "r1" in name or "reasoner" in name
++
++    def is_ollama(self):
++        return self.name.startswith("ollama/") or self.name.startswith("ollama_chat/")
++
++    def send_completion(
++        self, messages, functions, stream, temperature=None, tools=None, max_tokens=None
++    ):
++        if os.environ.get("AIDER_SANITY_CHECK_TURNS"):
++            sanity_check_messages(messages)
++
++        if self.is_deepseek_r1():
++            messages = ensure_alternating_roles(messages)
++
++        kwargs = dict(model=self.name, stream=stream)
++
++        if self.use_temperature is not False:
++            if temperature is None:
++                if isinstance(self.use_temperature, bool):
++                    temperature = 0
++                else:
++                    temperature = float(self.use_temperature)
++
++            kwargs["temperature"] = temperature
++
++        # `tools` is for modern tool usage. `functions` is for legacy/forced calls.
++        # If `tools` is provided, it's the canonical list. If not, use `functions`.
++        # This handles `base_coder` sending both with same content for `navigator_coder`.
++        effective_tools = tools if tools is not None else functions
++
++        if effective_tools:
++            # Check if we have legacy format functions (which lack a 'type' key) and convert them.
++            # This is a simplifying assumption that works for aider's use cases.
++            is_legacy = any("type" not in tool for tool in effective_tools)
++            if is_legacy:
++                kwargs["tools"] = [dict(type="function", function=tool) for tool in effective_tools]
++            else:
++                kwargs["tools"] = effective_tools
++
++        # Forcing a function call is for legacy style `functions` with a single function.
++        # This is used by ArchitectCoder and not intended for NavigatorCoder's tools.
++        if functions and len(functions) == 1:
++            function = functions[0]
++            is_legacy = "type" not in function
++
++            if is_legacy and "name" in function:
++                tool_name = function.get("name")
++                if tool_name:
++                    kwargs["tool_choice"] = {"type": "function", "function": {"name": tool_name}}
++
++        if self.extra_params:
++            kwargs.update(self.extra_params)
++
++        if max_tokens:
++            kwargs["max_tokens"] = max_tokens
++
++        if "max_tokens" in kwargs and kwargs["max_tokens"]:
++            kwargs["max_completion_tokens"] = kwargs.pop("max_tokens")
++        if self.is_ollama() and "num_ctx" not in kwargs:
++            num_ctx = int(self.token_count(messages) * 1.25) + 8192
++            kwargs["num_ctx"] = num_ctx
++
++        key = json.dumps(kwargs, sort_keys=True).encode()
++        # dump(kwargs)
++
++        hash_object = hashlib.sha1(key)
++        if "timeout" not in kwargs:
++            kwargs["timeout"] = request_timeout
++        if self.verbose:
++            dump(kwargs)
++        kwargs["messages"] = messages
++
++        # Are we using github copilot?
++        if "GITHUB_COPILOT_TOKEN" in os.environ or self.name.startswith("github_copilot/"):
++            if "extra_headers" not in kwargs:
++                kwargs["extra_headers"] = {
++                    "Editor-Version": f"aider/{__version__}",
++                    "Copilot-Integration-Id": "vscode-chat",
++                }
++
++        try:
++            res = litellm.completion(**kwargs)
++        except Exception as err:
++            res = "Model API Response Error. Please retry the previous request"
++
++            if self.verbose:
++                print(f"LiteLLM API Error: {str(err)}")
++
++        return hash_object, res
++
++    def simple_send_with_retries(self, messages, max_tokens=None):
++        from aider.exceptions import LiteLLMExceptions
++
++        litellm_ex = LiteLLMExceptions()
++        if "deepseek-reasoner" in self.name:
++            messages = ensure_alternating_roles(messages)
++        retry_delay = 0.125
++
++        if self.verbose:
++            dump(messages)
++
++        while True:
++            try:
++                _hash, response = self.send_completion(
++                    messages=messages,
++                    functions=None,
++                    stream=False,
++                    max_tokens=max_tokens,
++                )
++                if not response or not hasattr(response, "choices") or not response.choices:
++                    return None
++                res = response.choices[0].message.content
++                from aider.reasoning_tags import remove_reasoning_content
++
++                return remove_reasoning_content(res, self.reasoning_tag)
++
++            except litellm_ex.exceptions_tuple() as err:
++                ex_info = litellm_ex.get_ex_info(err)
++                print(str(err))
++                if ex_info.description:
++                    print(ex_info.description)
++                should_retry = ex_info.retry
++                if should_retry:
++                    retry_delay *= 2
++                    if retry_delay > RETRY_TIMEOUT:
++                        should_retry = False
++                if not should_retry:
++                    return None
++                print(f"Retrying in {retry_delay:.1f} seconds...")
++                time.sleep(retry_delay)
++                continue
++            except AttributeError:
++                return None
++
++
++def register_models(model_settings_fnames):
++    files_loaded = []
++    for model_settings_fname in model_settings_fnames:
++        if not os.path.exists(model_settings_fname):
++            continue
++
++        if not Path(model_settings_fname).read_text().strip():
++            continue
++
++        try:
++            with open(model_settings_fname, "r") as model_settings_file:
++                model_settings_list = yaml.safe_load(model_settings_file)
++
++            for model_settings_dict in model_settings_list:
++                model_settings = ModelSettings(**model_settings_dict)
++
++                # Remove all existing settings for this model name
++                MODEL_SETTINGS[:] = [ms for ms in MODEL_SETTINGS if ms.name != model_settings.name]
++                # Add the new settings
++                MODEL_SETTINGS.append(model_settings)
++        except Exception as e:
++            raise Exception(f"Error loading model settings from {model_settings_fname}: {e}")
++        files_loaded.append(model_settings_fname)
++
++    return files_loaded
++
++
++def register_litellm_models(model_fnames):
++    files_loaded = []
++    for model_fname in model_fnames:
++        if not os.path.exists(model_fname):
++            continue
++
++        try:
++            data = Path(model_fname).read_text()
++            if not data.strip():
++                continue
++            model_def = json5.loads(data)
++            if not model_def:
++                continue
++
++            # Defer registration with litellm to faster path.
++            model_info_manager.local_model_metadata.update(model_def)
++        except Exception as e:
++            raise Exception(f"Error loading model definition from {model_fname}: {e}")
++
++        files_loaded.append(model_fname)
++
++    return files_loaded
++
++
++def validate_variables(vars):
++    missing = []
++    for var in vars:
++        if var not in os.environ:
++            missing.append(var)
++    if missing:
++        return dict(keys_in_environment=False, missing_keys=missing)
++    return dict(keys_in_environment=True, missing_keys=missing)
++
++
++def sanity_check_models(io, main_model):
++    problem_main = sanity_check_model(io, main_model)
++
++    problem_weak = None
++    if main_model.weak_model and main_model.weak_model is not main_model:
++        problem_weak = sanity_check_model(io, main_model.weak_model)
++
++    problem_editor = None
++    if (
++        main_model.editor_model
++        and main_model.editor_model is not main_model
++        and main_model.editor_model is not main_model.weak_model
++    ):
++        problem_editor = sanity_check_model(io, main_model.editor_model)
++
++    return problem_main or problem_weak or problem_editor
++
++
++def sanity_check_model(io, model):
++    show = False
++
++    if model.missing_keys:
++        show = True
++        io.tool_warning(f"Warning: {model} expects these environment variables")
++        for key in model.missing_keys:
++            value = os.environ.get(key, "")
++            status = "Set" if value else "Not set"
++            io.tool_output(f"- {key}: {status}")
++
++        if platform.system() == "Windows":
++            io.tool_output(
++                "Note: You may need to restart your terminal or command prompt for `setx` to take"
++                " effect."
++            )
++
++    elif not model.keys_in_environment:
++        show = True
++        io.tool_warning(f"Warning for {model}: Unknown which environment variables are required.")
++
++    # Check for model-specific dependencies
++    check_for_dependencies(io, model.name)
++
++    if not model.info:
++        show = True
++        io.tool_warning(
++            f"Warning for {model}: Unknown context window size and costs, using sane defaults."
++        )
++
++        possible_matches = fuzzy_match_models(model.name)
++        if possible_matches:
++            io.tool_output("Did you mean one of these?")
++            for match in possible_matches:
++                io.tool_output(f"- {match}")
++
++    return show
++
++
++def check_for_dependencies(io, model_name):
++    """
++    Check for model-specific dependencies and install them if needed.
++
++    Args:
++        io: The IO object for user interaction
++        model_name: The name of the model to check dependencies for
++    """
++    # Check if this is a Bedrock model and ensure boto3 is installed
++    if model_name.startswith("bedrock/"):
++        check_pip_install_extra(
++            io, "boto3", "AWS Bedrock models require the boto3 package.", ["boto3"]
++        )
++
++    # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
++    elif model_name.startswith("vertex_ai/"):
++        check_pip_install_extra(
++            io,
++            "google.cloud.aiplatform",
++            "Google Vertex AI models require the google-cloud-aiplatform package.",
++            ["google-cloud-aiplatform"],
++        )
++
++
++def fuzzy_match_models(name):
++    name = name.lower()
++
++    chat_models = set()
++    model_metadata = list(litellm.model_cost.items())
++    model_metadata += list(model_info_manager.local_model_metadata.items())
++
++    for orig_model, attrs in model_metadata:
++        model = orig_model.lower()
++        if attrs.get("mode") != "chat":
++            continue
++        provider = attrs.get("litellm_provider", "").lower()
++        if not provider:
++            continue
++        provider += "/"
++
++        if model.startswith(provider):
++            fq_model = orig_model
++        else:
++            fq_model = provider + orig_model
++
++        chat_models.add(fq_model)
++        chat_models.add(orig_model)
++
++    chat_models = sorted(chat_models)
++    # exactly matching model
++    # matching_models = [
++    #    (fq,m) for fq,m in chat_models
++    #    if name == fq or name == m
++    # ]
++    # if matching_models:
++    #    return matching_models
++
++    # Check for model names containing the name
++    matching_models = [m for m in chat_models if name in m]
++    if matching_models:
++        return sorted(set(matching_models))
++
++    # Check for slight misspellings
++    models = set(chat_models)
++    matching_models = difflib.get_close_matches(name, models, n=3, cutoff=0.8)
++
++    return sorted(set(matching_models))
++
++
++def print_matching_models(io, search):
++    matches = fuzzy_match_models(search)
++    if matches:
++        io.tool_output(f'Models which match "{search}":')
++        for model in matches:
++            io.tool_output(f"- {model}")
++    else:
++        io.tool_output(f'No models match "{search}".')
++
++
++def get_model_settings_as_yaml():
++    from dataclasses import fields
++
++    import yaml
++
++    model_settings_list = []
++    # Add default settings first with all field values
++    defaults = {}
++    for field in fields(ModelSettings):
++        defaults[field.name] = field.default
++    defaults["name"] = "(default values)"
++    model_settings_list.append(defaults)
++
++    # Sort model settings by name
++    for ms in sorted(MODEL_SETTINGS, key=lambda x: x.name):
++        # Create dict with explicit field order
++        model_settings_dict = {}
++        for field in fields(ModelSettings):
++            value = getattr(ms, field.name)
++            if value != field.default:
++                model_settings_dict[field.name] = value
++        model_settings_list.append(model_settings_dict)
++        # Add blank line between entries
++        model_settings_list.append(None)
++
++    # Filter out None values before dumping
++    yaml_str = yaml.dump(
++        [ms for ms in model_settings_list if ms is not None],
++        default_flow_style=False,
++        sort_keys=False,  # Preserve field order from dataclass
++    )
++    # Add actual blank lines between entries
++    return yaml_str.replace("\n- ", "\n\n- ")
++
++
++def main():
++    if len(sys.argv) < 2:
++        print("Usage: python models.py <model_name> or python models.py --yaml")
++        sys.exit(1)
++
++    if sys.argv[1] == "--yaml":
++        yaml_string = get_model_settings_as_yaml()
++        print(yaml_string)
++    else:
++        model_name = sys.argv[1]
++        matching_models = fuzzy_match_models(model_name)
++
++        if matching_models:
++            print(f"Matching models for '{model_name}':")
++            for model in matching_models:
++                print(model)
++        else:
++            print(f"No matching models found for '{model_name}'.")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/scrape.py b/scrape.py
+new file mode 100755
+index 0000000..1e44ad2
+--- /dev/null
++++ b/scrape.py
+@@ -0,0 +1,284 @@
++#!/usr/bin/env python
++
++import re
++import sys
++
++import pypandoc
++
++from aider import __version__, urls, utils
++from aider.dump import dump  # noqa: F401
++
++aider_user_agent = f"Aider/{__version__} +{urls.website}"
++
++# Playwright is nice because it has a simple way to install dependencies on most
++# platforms.
++
++
++def check_env():
++    try:
++        from playwright.sync_api import sync_playwright
++
++        has_pip = True
++    except ImportError:
++        has_pip = False
++
++    try:
++        with sync_playwright() as p:
++            p.chromium.launch()
++            has_chromium = True
++    except Exception:
++        has_chromium = False
++
++    return has_pip, has_chromium
++
++
++def has_playwright():
++    has_pip, has_chromium = check_env()
++    return has_pip and has_chromium
++
++
++def install_playwright(io):
++    has_pip, has_chromium = check_env()
++    if has_pip and has_chromium:
++        return True
++
++    pip_cmd = utils.get_pip_install(["aider-ce[playwright]"])
++    chromium_cmd = "-m playwright install --with-deps chromium"
++    chromium_cmd = [sys.executable] + chromium_cmd.split()
++
++    cmds = ""
++    if not has_pip:
++        cmds += " ".join(pip_cmd) + "\n"
++    if not has_chromium:
++        cmds += " ".join(chromium_cmd) + "\n"
++
++    text = f"""For the best web scraping, install Playwright:
++
++{cmds}
++See {urls.enable_playwright} for more info.
++"""
++
++    io.tool_output(text)
++    if not io.confirm_ask("Install playwright?", default="y"):
++        return
++
++    if not has_pip:
++        success, output = utils.run_install(pip_cmd)
++        if not success:
++            io.tool_error(output)
++            return
++
++    success, output = utils.run_install(chromium_cmd)
++    if not success:
++        io.tool_error(output)
++        return
++
++    return True
++
++
++class Scraper:
++    pandoc_available = None
++    playwright_available = None
++    playwright_instructions_shown = False
++
++    # Public API...
++    def __init__(self, print_error=None, playwright_available=None, verify_ssl=True):
++        """
++        `print_error` - a function to call to print error/debug info.
++        `verify_ssl` - if False, disable SSL certificate verification when scraping.
++        """
++        if print_error:
++            self.print_error = print_error
++        else:
++            self.print_error = print
++
++        self.playwright_available = playwright_available
++        self.verify_ssl = verify_ssl
++
++    def scrape(self, url):
++        """
++        Scrape a url and turn it into readable markdown if it's HTML.
++        If it's plain text or non-HTML, return it as-is.
++
++        `url` - the URL to scrape.
++        """
++
++        if self.playwright_available:
++            content, mime_type = self.scrape_with_playwright(url)
++        else:
++            content, mime_type = self.scrape_with_httpx(url)
++
++        if not content:
++            self.print_error(f"Failed to retrieve content from {url}")
++            return None
++
++        # Check if the content is HTML based on MIME type or content
++        if (mime_type and mime_type.startswith("text/html")) or (
++            mime_type is None and self.looks_like_html(content)
++        ):
++            self.try_pandoc()
++            content = self.html_to_markdown(content)
++
++        return content
++
++    def looks_like_html(self, content):
++        """
++        Check if the content looks like HTML.
++        """
++        if isinstance(content, str):
++            # Check for common HTML tags
++            html_patterns = [
++                r"<!DOCTYPE\s+html",
++                r"<html",
++                r"<head",
++                r"<body",
++                r"<div",
++                r"<p>",
++                r"<a\s+href=",
++            ]
++            return any(re.search(pattern, content, re.IGNORECASE) for pattern in html_patterns)
++        return False
++
++    # Internals...
++    def scrape_with_playwright(self, url):
++        import playwright  # noqa: F401
++        from playwright.sync_api import Error as PlaywrightError
++        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
++        from playwright.sync_api import sync_playwright
++
++        with sync_playwright() as p:
++            try:
++                browser = p.chromium.launch()
++            except Exception as e:
++                self.playwright_available = False
++                self.print_error(str(e))
++                return None, None
++
++            try:
++                context = browser.new_context(ignore_https_errors=not self.verify_ssl)
++                page = context.new_page()
++
++                user_agent = page.evaluate("navigator.userAgent")
++                user_agent = user_agent.replace("Headless", "")
++                user_agent = user_agent.replace("headless", "")
++                user_agent += " " + aider_user_agent
++
++                page.set_extra_http_headers({"User-Agent": user_agent})
++
++                response = None
++                try:
++                    response = page.goto(url, wait_until="networkidle", timeout=5000)
++                except PlaywrightTimeoutError:
++                    self.print_error(f"Page didn't quiesce, scraping content anyway: {url}")
++                    response = None
++                except PlaywrightError as e:
++                    self.print_error(f"Error navigating to {url}: {str(e)}")
++                    return None, None
++
++                try:
++                    content = page.content()
++                    mime_type = None
++                    if response:
++                        content_type = response.header_value("content-type")
++                        if content_type:
++                            mime_type = content_type.split(";")[0]
++                except PlaywrightError as e:
++                    self.print_error(f"Error retrieving page content: {str(e)}")
++                    content = None
++                    mime_type = None
++            finally:
++                browser.close()
++
++        return content, mime_type
++
++    def scrape_with_httpx(self, url):
++        import httpx
++
++        headers = {"User-Agent": f"Mozilla./5.0 ({aider_user_agent})"}
++        try:
++            with httpx.Client(
++                headers=headers, verify=self.verify_ssl, follow_redirects=True
++            ) as client:
++                response = client.get(url)
++                response.raise_for_status()
++                return response.text, response.headers.get("content-type", "").split(";")[0]
++        except httpx.HTTPError as http_err:
++            self.print_error(f"HTTP error occurred: {http_err}")
++        except Exception as err:
++            self.print_error(f"An error occurred: {err}")
++        return None, None
++
++    def try_pandoc(self):
++        if self.pandoc_available:
++            return
++
++        try:
++            pypandoc.get_pandoc_version()
++            self.pandoc_available = True
++            return
++        except OSError:
++            pass
++
++        try:
++            pypandoc.download_pandoc(delete_installer=True)
++        except Exception as err:
++            self.print_error(f"Unable to install pandoc: {err}")
++            return
++
++        self.pandoc_available = True
++
++    def html_to_markdown(self, page_source):
++        from bs4 import BeautifulSoup
++
++        soup = BeautifulSoup(page_source, "html.parser")
++        soup = slimdown_html(soup)
++        page_source = str(soup)
++
++        if not self.pandoc_available:
++            return page_source
++
++        try:
++            md = pypandoc.convert_text(page_source, "markdown", format="html")
++        except OSError:
++            return page_source
++
++        md = re.sub(r"</div>", "      ", md)
++        md = re.sub(r"<div>", "     ", md)
++
++        md = re.sub(r"\n\s*\n", "\n\n", md)
++
++        return md
++
++
++def slimdown_html(soup):
++    for svg in soup.find_all("svg"):
++        svg.decompose()
++
++    if soup.img:
++        soup.img.decompose()
++
++    for tag in soup.find_all(href=lambda x: x and x.startswith("data:")):
++        tag.decompose()
++
++    for tag in soup.find_all(src=lambda x: x and x.startswith("data:")):
++        tag.decompose()
++
++    for tag in soup.find_all(True):
++        for attr in list(tag.attrs):
++            if attr != "href":
++                tag.attrs.pop(attr, None)
++
++    return soup
++
++
++def main(url):
++    scraper = Scraper(playwright_available=has_playwright())
++    content = scraper.scrape(url)
++    print(content)
++
++
++if __name__ == "__main__":
++    if len(sys.argv) < 2:
++        print("Usage: python playw.py <URL>")
++        sys.exit(1)
++    main(sys.argv[1])
+diff --git a/utils.py b/utils.py
+new file mode 100644
+index 0000000..0a7a06d
+--- /dev/null
++++ b/utils.py
+@@ -0,0 +1,454 @@
++import os
++import platform
++import shutil
++import subprocess
++import sys
++import tempfile
++from pathlib import Path
++
++import oslex
++
++from aider.dump import dump  # noqa: F401
++from aider.waiting import Spinner
++
++IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tiff", ".webp", ".pdf"}
++
++
++def run_fzf(input_data, multi=False):
++    """
++    Runs fzf as a subprocess, feeding it input_data.
++    Returns the selected items.
++    """
++    if not shutil.which("fzf"):
++        return []  # fzf not available
++
++    fzf_command = ["fzf"]
++    if multi:
++        fzf_command.append("--multi")
++
++    # Recommended flags for a good experience
++    fzf_command.extend(["--height", "80%", "--reverse"])
++
++    process = subprocess.Popen(
++        fzf_command,
++        stdin=subprocess.PIPE,
++        stdout=subprocess.PIPE,
++        text=True,
++    )
++    # fzf expects a newline-separated list of strings
++    stdout, _ = process.communicate("\n".join(input_data))
++
++    if process.returncode == 0:
++        # fzf returns selected items newline-separated
++        return stdout.strip().splitlines()
++    else:
++        # User cancelled (e.g., pressed Esc)
++        return []
++
++
++class IgnorantTemporaryDirectory:
++    def __init__(self):
++        if sys.version_info >= (3, 10):
++            self.temp_dir = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
++        else:
++            self.temp_dir = tempfile.TemporaryDirectory()
++
++    def __enter__(self):
++        return self.temp_dir.__enter__()
++
++    def __exit__(self, exc_type, exc_val, exc_tb):
++        self.cleanup()
++
++    def cleanup(self):
++        try:
++            self.temp_dir.cleanup()
++        except (OSError, PermissionError, RecursionError):
++            pass  # Ignore errors (Windows and potential recursion)
++
++    def __getattr__(self, item):
++        return getattr(self.temp_dir, item)
++
++
++class ChdirTemporaryDirectory(IgnorantTemporaryDirectory):
++    def __init__(self):
++        try:
++            self.cwd = os.getcwd()
++        except FileNotFoundError:
++            self.cwd = None
++
++        super().__init__()
++
++    def __enter__(self):
++        res = super().__enter__()
++        os.chdir(Path(self.temp_dir.name).resolve())
++        return res
++
++    def __exit__(self, exc_type, exc_val, exc_tb):
++        if self.cwd:
++            try:
++                os.chdir(self.cwd)
++            except FileNotFoundError:
++                pass
++        super().__exit__(exc_type, exc_val, exc_tb)
++
++
++class GitTemporaryDirectory(ChdirTemporaryDirectory):
++    def __enter__(self):
++        dname = super().__enter__()
++        self.repo = make_repo(dname)
++        return dname
++
++    def __exit__(self, exc_type, exc_val, exc_tb):
++        del self.repo
++        super().__exit__(exc_type, exc_val, exc_tb)
++
++
++def make_repo(path=None):
++    import git
++
++    if not path:
++        path = "."
++    repo = git.Repo.init(path)
++    repo.config_writer().set_value("user", "name", "Test User").release()
++    repo.config_writer().set_value("user", "email", "testuser@example.com").release()
++
++    return repo
++
++
++def is_image_file(file_name):
++    """
++    Check if the given file name has an image file extension.
++
++    :param file_name: The name of the file to check.
++    :return: True if the file is an image, False otherwise.
++    """
++    file_name = str(file_name)  # Convert file_name to string
++    return any(file_name.endswith(ext) for ext in IMAGE_EXTENSIONS)
++
++
++def safe_abs_path(res):
++    "Gives an abs path, which safely returns a full (not 8.3) windows path"
++    res = Path(res).resolve()
++    return str(res)
++
++
++def format_content(role, content):
++    formatted_lines = []
++    for line in content.splitlines():
++        formatted_lines.append(f"{role} {line}")
++    return "\n".join(formatted_lines)
++
++
++def format_messages(messages, title=None):
++    output = []
++    if title:
++        output.append(f"{title.upper()} {'*' * 50}")
++
++    for msg in messages:
++        output.append("-------")
++        role = msg["role"].upper()
++        content = msg.get("content")
++        if isinstance(content, list):  # Handle list content (e.g., image messages)
++            for item in content:
++                if isinstance(item, dict):
++                    for key, value in item.items():
++                        if isinstance(value, dict) and "url" in value:
++                            output.append(f"{role} {key.capitalize()} URL: {value['url']}")
++                        else:
++                            output.append(f"{role} {key}: {value}")
++                else:
++                    output.append(f"{role} {item}")
++        elif isinstance(content, str):  # Handle string content
++            # For large content, especially with many files, use a truncated display approach
++            if len(content) > 5000:
++                # Count the number of code blocks (approximation)
++                fence_count = content.count("```") // 2
++                if fence_count > 5:
++                    # Show truncated content with file count for large files to improve performance
++                    first_line = content.split("\n", 1)[0]
++                    output.append(
++                        f"{role} {first_line} [content with ~{fence_count} files truncated]"
++                    )
++                else:
++                    output.append(format_content(role, content))
++            else:
++                output.append(format_content(role, content))
++        function_call = msg.get("function_call")
++        if function_call:
++            output.append(f"{role} Function Call: {function_call}")
++
++    return "\n".join(output)
++
++
++def show_messages(messages, title=None, functions=None):
++    formatted_output = format_messages(messages, title)
++    print(formatted_output)
++
++    if functions:
++        dump(functions)
++
++
++def split_chat_history_markdown(text, include_tool=False):
++    messages = []
++    user = []
++    assistant = []
++    tool = []
++    lines = text.splitlines(keepends=True)
++
++    def append_msg(role, lines):
++        lines = "".join(lines)
++        if lines.strip():
++            messages.append(dict(role=role, content=lines))
++
++    for line in lines:
++        if line.startswith("# "):
++            continue
++        if line.startswith("> "):
++            append_msg("assistant", assistant)
++            assistant = []
++            append_msg("user", user)
++            user = []
++            tool.append(line[2:])
++            continue
++        # if line.startswith("#### /"):
++        #    continue
++
++        if line.startswith("#### "):
++            append_msg("assistant", assistant)
++            assistant = []
++            append_msg("tool", tool)
++            tool = []
++
++            content = line[5:]
++            user.append(content)
++            continue
++
++        append_msg("user", user)
++        user = []
++        append_msg("tool", tool)
++        tool = []
++
++        assistant.append(line)
++
++    append_msg("assistant", assistant)
++    append_msg("user", user)
++
++    if not include_tool:
++        messages = [m for m in messages if m["role"] != "tool"]
++
++    return messages
++
++
++def get_pip_install(args):
++    cmd = [
++        sys.executable,
++        "-m",
++        "pip",
++        "install",
++        "--upgrade",
++        "--upgrade-strategy",
++        "only-if-needed",
++    ]
++    cmd += args
++    return cmd
++
++
++def run_install(cmd):
++    print()
++    print("Installing:", printable_shell_command(cmd))
++
++    # First ensure pip is available
++    ensurepip_cmd = [sys.executable, "-m", "ensurepip", "--upgrade"]
++    try:
++        subprocess.run(ensurepip_cmd, capture_output=True, check=False)
++    except Exception:
++        pass  # Continue even if ensurepip fails
++
++    try:
++        output = []
++        process = subprocess.Popen(
++            cmd,
++            stdout=subprocess.PIPE,
++            stderr=subprocess.STDOUT,
++            text=True,
++            bufsize=1,
++            universal_newlines=True,
++            encoding=sys.stdout.encoding,
++            errors="replace",
++        )
++        spinner = Spinner("Installing...")
++
++        while True:
++            char = process.stdout.read(1)
++            if not char:
++                break
++
++            output.append(char)
++            spinner.step()
++
++        spinner.end()
++        return_code = process.wait()
++        output = "".join(output)
++
++        if return_code == 0:
++            print("Installation complete.")
++            print()
++            return True, output
++
++    except subprocess.CalledProcessError as e:
++        print(f"\nError running pip install: {e}")
++
++    print("\nInstallation failed.\n")
++
++    return False, output
++
++
++def find_common_root(abs_fnames):
++    try:
++        if len(abs_fnames) == 1:
++            return safe_abs_path(os.path.dirname(list(abs_fnames)[0]))
++        elif abs_fnames:
++            return safe_abs_path(os.path.commonpath(list(abs_fnames)))
++    except OSError:
++        pass
++
++    try:
++        return safe_abs_path(os.getcwd())
++    except FileNotFoundError:
++        # Fallback if cwd is deleted
++        return "."
++
++
++def format_tokens(count):
++    if count < 1000:
++        return f"{count}"
++    elif count < 10000:
++        return f"{count / 1000:.1f}k"
++    else:
++        return f"{round(count / 1000)}k"
++
++
++def touch_file(fname):
++    fname = Path(fname)
++    try:
++        fname.parent.mkdir(parents=True, exist_ok=True)
++        fname.touch()
++        return True
++    except OSError:
++        return False
++
++
++def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
 +    if module:
 +        try:
 +            __import__(module)
@@ -178,10 +3240,18 @@ index 834ffa19..a58fde66 100644
 +        except (ImportError, ModuleNotFoundError, RuntimeError):
 +            pass
 +
-+    cmd = ["sudo", "pacman", "-Syu", "--asdeps", "--noconfirm", archlinux_package]
-+    io.tool_warning("Using this feature requires a package to be installed.")
++    cmd = get_pip_install(pip_install_cmd)
 +
-+    if not io.confirm_ask("Run pacman?", default="y", subject=printable_shell_command(cmd)):
++    if prompt:
++        io.tool_warning(prompt)
++
++    if self_update and platform.system() == "Windows":
++        io.tool_output("Run this command to update:")
++        print()
++        print(printable_shell_command(cmd))  # plain print so it doesn't line-wrap
++        return
++
++    if not io.confirm_ask("Run pip install?", default="y", subject=printable_shell_command(cmd)):
 +        return
 +
 +    success, output = run_install(cmd)
@@ -202,40 +3272,77 @@ index 834ffa19..a58fde66 100644
 +    print(printable_shell_command(cmd))
 +
 +
- def printable_shell_command(cmd_list):
-     """
-     Convert a list of command arguments to a properly shell-escaped string.
--- 
-2.51.0
-
-
-From 53d4d8c53d5215cf79216e097b56ac13a5614bf3 Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Thu, 7 Aug 2025 23:34:18 +0200
-Subject: [PATCH 4/4] Arch-Linux-specific: install streamlit via pacman
-
----
- aider/main.py | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/aider/main.py b/aider/main.py
-index afb3f836..8bb4c0fb 100644
---- a/aider/main.py
-+++ b/aider/main.py
-@@ -206,11 +206,10 @@ def check_gitignore(git_root, io, ask=True):
- 
- 
- def check_streamlit_install(io):
--    return utils.check_pip_install_extra(
-+    return utils.check_archlinux_package(
-         io,
-         "streamlit",
--        "You need to install the aider browser feature",
--        ["aider-chat[browser]"],
-+        "python-streamlit",
-     )
- 
- 
--- 
-2.51.0
-
++def printable_shell_command(cmd_list):
++    """
++    Convert a list of command arguments to a properly shell-escaped string.
++
++    Args:
++        cmd_list (list): List of command arguments.
++
++    Returns:
++        str: Shell-escaped command string.
++    """
++    return oslex.join(cmd_list)
++
++
++def split_concatenated_json(s: str) -> list[str]:
++    """
++    Splits a string containing one or more concatenated JSON objects.
++    """
++    res = []
++    i = 0
++    s_len = len(s)
++    while i < s_len:
++        # skip leading whitespace
++        while i < s_len and s[i].isspace():
++            i += 1
++        if i >= s_len:
++            break
++
++        start_char = s[i]
++        if start_char == "{":
++            end_char = "}"
++        elif start_char == "[":
++            end_char = "]"
++        else:
++            # Doesn't start with a JSON object/array, so we can't parse it as a stream.
++            # Return the rest of the string as a single chunk.
++            res.append(s[i:])
++            break
++
++        start_index = i
++        stack_depth = 0
++        in_string = False
++        escape = False
++
++        for j in range(start_index, s_len):
++            char = s[j]
++
++            if escape:
++                escape = False
++                continue
++
++            if char == "\\":
++                escape = True
++                continue
++
++            if char == '"':
++                in_string = not in_string
++
++            if in_string:
++                continue
++
++            if char == start_char:
++                stack_depth += 1
++            elif char == end_char:
++                stack_depth -= 1
++                if stack_depth == 0:
++                    res.append(s[start_index : j + 1])
++                    i = j + 1
++                    break
++        else:
++            # Unclosed object, add the remainder as the last chunk
++            res.append(s[start_index:])
++            break
++
++    return res
