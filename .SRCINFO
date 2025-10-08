@@ -1,7 +1,7 @@
 pkgbase = epubsynth
 	pkgdesc = A command-line program for generating EPUB documents
-	pkgver = 1.0.2
-	pkgrel = 4
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://marianicolae.com/software/epubsynth/
 	arch = any
 	license = CC-BY-4.0 OR Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = epubsynth
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	source = https://marianicolae.com/files/software/epubsynth-v1.0.2.tar.gz
-	sha256sums = 459d88b5641b93ce89157bdaf6ad9c02234b895a4218785d175eaf4eaccc63cb
+	source = https://marianicolae.com/files/software/epubsynth-v1.0.3.tar.gz
+	sha256sums = 819750e84902f1808293fc54fa5100024c3225b650e9119c8583a80887257f82
 
 pkgname = epubsynth
