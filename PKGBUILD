@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-multimedia-static
-_qtver=6.9.2
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,8 +19,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
-sha256sums=('7bf8a19a57a7432181b05d0e264acfd8ca4b75a3901d01a27a32935703e5ab12'
-            '0f1fda588cbd55c1b454552e49279522bfd210b63f0e03801e8f4a878931ea6d')
+sha256sums=('04424021cf0d1d19799f5967310d484d1afa6fdd0b31725d0ee7608d2eef1126'
+            '95b2d28e404a2d96047e85cb999c8536ad4001246261dbf3939636d685988721')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -33,7 +33,6 @@ prepare () {
     patch -p1 -i "$patch"
   done
   # work around case-insensitive includes on case-sensitive filesystems
-  sed -i'' 's/\(.*\) \(Mf.*\|Propsys\) HINTS \(.*\)/\1 \L\2 HINTS \3/g' cmake/FindWMF.cmake
   find src -type f -exec sed -i'' 's/#include <\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|Functiondiscoverykeys_devpkey.*\)>/#include <\L\1>/g' {} \;
   find src -type f -exec sed -i'' 's/#include "\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|QUrl.*\)"/#include "\L\1"/g' {} \;
 }
