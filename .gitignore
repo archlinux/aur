@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2024-2025 Wesley Benica <wesley@benica.dev>
+#
+# SPDX-License-Identifier: 0BSD
+
+# Ignore everything at the repo root
+/*
+
+# But do not ignore these (keep .gitignore tracked, and these package files)
+!.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSES/0BSD.txt
+!/REUSE.toml

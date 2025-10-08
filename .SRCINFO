@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-text-clock
+	pkgdesc = A simple text clock for the GNOME Shell top panel
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/wtbenica/text-clock
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = unzip
+	makedepends = curl
+	depends = gnome-shell>=45
+	noextract = text-clock@benica.dev.zip
+	source = text-clock@benica.dev.zip::https://github.com/wtbenica/text-clock/releases/download/v1.0.5/text-clock@benica.dev.zip
+	sha256sums = c3f951d83c7e9b73cdc9d04fc0df3ce5b789bb32644e48b367cfc10eaa895ce8
+
+pkgname = gnome-shell-extension-text-clock
