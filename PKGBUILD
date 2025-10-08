@@ -1,7 +1,7 @@
 # Maintainer: Sergei Slipchenko <faergeek@gmail.com>
 
 pkgname=still
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Freeze the screen of a Wayland compositor until a provided command exits"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(pixman wayland)
 makedepends=(git meson scdoc wayland-protocols)
 source=("$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('2051a3c8a336d83466b76e3b44a28452931e518d0ef9710e1e506ab4c8890f88')
+sha256sums=('0e7335eabeb1102edcf357ef3beea9693b4b770a1592bf8c7cdb3159a03187e5')
 
 build() {
   cd "${pkgname}-${pkgver}"
