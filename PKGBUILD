@@ -1,6 +1,6 @@
 # Maintainer: WaiJade <waijade@outlook.com>
 # Contributor: OrPudding <t3164473115@163.com>
-pkgname=astrobox
+pkgname=astro-box
 pkgver=1.5.2.1
 pkgrel=1
 pkgdesc="A multifunctional toolbox designed for Xiaomi Vela wearable devices"

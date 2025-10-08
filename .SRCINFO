@@ -1,4 +1,4 @@
-pkgbase = astrobox
+pkgbase = astro-box
 	pkgdesc = A multifunctional toolbox designed for Xiaomi Vela wearable devices
 	pkgver = 1.5.2.1
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = astrobox
 	source = https://github.com/CheongSzesuen/AstroBox-archLinux/releases/download/v1.5.2.1/AstroBox_1.5.2.1_amd64.deb
 	sha256sums = SKIP
 
-pkgname = astrobox
+pkgname = astro-box
