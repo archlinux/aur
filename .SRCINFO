@@ -1,0 +1,11 @@
+pkgbase = grub-efi
+	pkgdesc = Arch-based EFI boot structure using system GRUB (full module support)
+	pkgver = 2.12
+	pkgrel = 3
+	arch = x86_64
+	license = GPL3
+	depends = grub
+	depends = freetype2
+	depends = efi-filesystem
+
+pkgname = grub-efi
