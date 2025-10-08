@@ -4,8 +4,8 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='certbot-dns-duckdns'
-_pkgverUpstream="1.6"
-pkgver="1.6.0"
+_pkgverUpstream="1.7.0"
+pkgver="$_pkgverUpstream"
 pkgrel=1
 pkgdesc="Plugin for certbot for a DNS-01 challenge with a DuckDNS domain"
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('certbot' 'python-dnspython' 'python-requests')
 makedepends=( 'python-build' 'python-installer' 'python-wheel' )
 source=("https://github.com/infinityofspace/certbot_dns_duckdns/archive/refs/tags/v${_pkgverUpstream}.tar.gz")
-sha256sums=('2dd20ab0a76ecdf2657a978ce9329a2acefe0c5df29d739920e43b00aa0ab809')
+sha384sums=('df71e7014252716790a058d375729926fd18db1b9d2066dc611ff3e869f5a49d626f03ca24af641f12614127da687602')
 
 build() {
     local srcRootDir="${srcdir}/certbot_dns_duckdns-${_pkgverUpstream}"
