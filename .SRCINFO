@@ -1,7 +1,7 @@
 pkgbase = starship-sf64
 	pkgdesc = An unofficial native port of Star Fox 64
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HarbourMasters/Starship
 	install = starship-sf64.install
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = starship-sf64
 	sha256sums = c6d98c370efa078029a98d6cc71d876d530b0827a04f2235b65be5dbb4d31220
 	sha256sums = 233f9d4e38b5b2b492b6d8e5e9e856605439cb7d955c7668fdf22809916bc6e9
 	sha256sums = a401e7784adb216419677d401b14f2c8b1b3247d00e35f617ea5900da3ea409e
-	sha256sums = 58ca287451b554d74ba391865668ea0afcc60f9d58ff8e5fd4d4570f45d13991
+	sha256sums = 80cb215a02a38d5148bf9084721774427857fd6ba187609156439a391d25907e
 	sha256sums = 906d6265cf744c6f988f39b5986232304801a8a49aea1e39cf8911bd83ddc497
 	sha256sums = 4a83fe383d6f134258c2dbc59b4c18e97a7a68893a6ce798d0cf83866de26382
 	sha256sums = fdd57de6bdec69803f13897a30116c8a01c9e5dd3eeb83e5e754b0bfb5723c12

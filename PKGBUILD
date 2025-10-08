@@ -7,7 +7,7 @@ _sdl_gcdb_commit=dce2d3593c6a96a57716d13d58aa3b1d4965fe6f  # This needs to be up
 
 pkgname=starship-sf64
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial native port of Star Fox 64"
 license=("CC0-1.0" "MIT")
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -28,7 +28,7 @@ sha256sums=('e96e03c5f077d045ced5488208b60bdc4077c381158d17b2571f9a476622d20b'
             'c6d98c370efa078029a98d6cc71d876d530b0827a04f2235b65be5dbb4d31220'
             '233f9d4e38b5b2b492b6d8e5e9e856605439cb7d955c7668fdf22809916bc6e9'
             'a401e7784adb216419677d401b14f2c8b1b3247d00e35f617ea5900da3ea409e'
-            '58ca287451b554d74ba391865668ea0afcc60f9d58ff8e5fd4d4570f45d13991'
+            '80cb215a02a38d5148bf9084721774427857fd6ba187609156439a391d25907e'
             '906d6265cf744c6f988f39b5986232304801a8a49aea1e39cf8911bd83ddc497'
             '4a83fe383d6f134258c2dbc59b4c18e97a7a68893a6ce798d0cf83866de26382'
             'fdd57de6bdec69803f13897a30116c8a01c9e5dd3eeb83e5e754b0bfb5723c12'
