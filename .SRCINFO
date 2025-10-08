@@ -1,6 +1,6 @@
 pkgbase = python-alpaca-py
 	pkgdesc = The Official Python SDK for Alpaca APIs
-	pkgver = 0.42.0
+	pkgver = 0.42.2
 	pkgrel = 1
 	url = https://github.com/alpacahq/alpaca-py
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-alpaca-py
 	depends = python-pydantic
 	depends = python-requests
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/2d/bf/3c2712ec8b9c4a36d5a7a2b58217512e4e26b3ffa02db554b33f9c9a5ba2/alpaca_py-0.42.0.tar.gz
-	sha256sums = 3ac4fd3439b8701d678db38bbc797b12bc003190996b19b0aa5f0d22aea65be7
+	source = https://codeload.github.com/alpacahq/alpaca-py/tar.gz/refs/tags/v0.42.2
+	sha256sums = f8e622167370dbfc4ba54f6631097851538a44ee4877c66d6a14f6665cfb67ef
 
 pkgname = python-alpaca-py
