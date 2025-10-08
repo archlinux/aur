@@ -1,0 +1,16 @@
+diff --git a/qdvdauthor/qplayer/engines/qxinewidget.cpp b/qdvdauthor/qplayer/engines/qxinewidget.cpp
+--- a/qdvdauthor/qplayer/engines/qxinewidget.cpp
++++ b/qdvdauthor/qplayer/engines/qxinewidget.cpp
+@@ -1102,9 +1102,10 @@
+   char* videoInfo = new char[200];
+   //strcpy( videoInfo, i18n("Videodriver to use (default: auto)").local8Bit() );	//ooo
+   strcpy( videoInfo, i18n("Videodriver to use (default: auto)").toLocal8Bit().data() );	//xxx
+-  i = xine_config_register_enum(xineEngine, "gui.videodriver", 0,
+-                   videoChoices, videoInfo, NULL, 10, &QXineWidget::VideoDriverChangedCallback, this);
++  /*i = xine_config_register_enum(xineEngine, "gui.videodriver", 0,
++                   videoChoices, videoInfo, NULL, 10, &QXineWidget::VideoDriverChangedCallback, this);*/  //ooo
+ 
++  i = 0;  //xxx
+   if (cmdlVideoEnum)
+     videoDriverName = preferedVideo;
+    else 
