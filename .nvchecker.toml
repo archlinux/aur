@@ -1,4 +1,0 @@
-[giada-git]
-source = "git"
-git = "https://github.com/monocasual/giada.git"
-prefix = "v"
