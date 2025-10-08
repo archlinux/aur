@@ -1,43 +1,39 @@
-# Maintainer: Jiri Antonu <jirka@nullable.group>
+# Maintainers: Jiri Antonu <jirka@nullable.group>, Matouš Kavalík <matous@kavalik.net>
 
-pkgname=flexibee-client
-pkgver=2024.7.1
-pkgbasever=2024.7
+pkgname=flexibee-client-latest
+pkgver=2025.7.7
 pkgrel=1
-pkgdesc="Accounting economic system for person and business usage. Client-only package."
-arch=('i686' 'x86_64')
-url="http://www.flexibee.eu"
+pkgdesc="ABRA Flexi Economic System (requires jdk11-temurin from AUR)"
+arch=('any')
+url="http://www.flexibee.eu/"
 license=('custom')
-depends=('glibc' 'jre8-openjdk')
-install=flexibee.install
-source=("https://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-client_${pkgver}_all.deb")
-
-sha256sums=('3cb1b3e19165e108e82b297480768a60c661c291e0ee286a04b4d2f8c8a0d8cb')
+depends=('xdg-utils')
+checkdepends=('jdk11-temurin')
+conflicts=('flexibee' 'flexibee-client' 'flexibee-client-bin')
+source=("https://download.flexibee.eu/download/2025.7/${pkgver}/flexibee-client_${pkgver}_all.deb")
+sha256sums=('SKIP')
 
 prepare() {
-    cd ${srcdir}
-    mkdir $pkgname-$pkgver
-    tar -vxzf data.tar.gz -C ./$pkgname-$pkgver
-    sed -i 's/^# FLEXIBEE_JAVA=$/FLEXIBEE_JAVA=\/usr\/lib\/jvm\/java-8-openjdk\/jre\/bin\/java/' ./$pkgname-$pkgver/etc/default/flexibee
+  if [ ! -x /usr/lib/jvm/java-11-temurin/bin/java ]; then
+      echo "ABRA Flexi requires jdk11-temurin. Please install it from AUR."
+      exit 1
+  fi
+
+  # Extract the .deb package
+  ar x "flexibee-client_${pkgver}_all.deb" data.tar.* control.tar.* || true
+  tar -xf data.tar.* -C "$srcdir"
 }
 
 package() {
+  # Ensure target directories exist
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share"
 
-    cd ${srcdir}/$pkgname-$pkgver
+  # Copy upstream files
+  cp -a usr/bin/* "$pkgdir/usr/bin/"
+  cp -a usr/share/* "$pkgdir/usr/share/"
 
-    # Prepare /etc
-    install -d -m 755 "${pkgdir}/etc/flexibee"
-    install -d -m 755 "${pkgdir}/etc/default"
-    install -m 644 ./etc/default/flexibee "${pkgdir}/etc/default/"
-
-    # Prepare /usr/bin -> install executables
-    install -d -m 755 "${pkgdir}/usr/bin"
-    install -m 755 ./usr/bin/* "${pkgdir}/usr/bin/"
-
-    # Install everything in /usr/share
-    install -d -m 755 "${pkgdir}/usr/share"
-    find ./usr/share/ -type d -exec install -d -m 755 {} "${pkgdir}/{}" \;
-    find ./usr/share/ -type f -exec install -m 664 {} "${pkgdir}/{}" \;
+  # Configuration
+  install -Dm644 etc/default/flexibee "$pkgdir/etc/default/flexibee"
 }
-
 
