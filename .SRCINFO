@@ -1,11 +1,12 @@
 pkgbase = linux-syscall-support
 	pkgdesc = Linux Syscall Support
 	pkgver = 2024.02.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chromium.googlesource.com/linux-syscall-support
 	arch = any
 	license = BSD-3-Clause
-	source = linux-syscall-support-2024.02.01.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/v2024.02.01.tar.gz
-	b2sums = d71ff9ae975b24965ac5d647d380e1e72f9270f5799f30752e2d25ecbdc880db1a10f9feada29acf1aec4a795a1fc457278823a46d08b0a7dd97a65f323798c6
+	makedepends = git
+	source = linux-syscall-support::git+https://chromium.googlesource.com/linux-syscall-support.git#tag=v2024.02.01
+	b2sums = 455f9aefdeedfe86f826065c671bc83fa3c38f5ed0e03816fb59597d5f8e477aa8056b7aa6b16da3c9c76019240f02c5464d0e66f13044a771d18d3b264c8e5c
 
 pkgname = linux-syscall-support
