@@ -1,6 +1,6 @@
 pkgbase = ocaml-sedlex
 	pkgdesc = Unicode-friendly OCaml lexer generator
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://github.com/ocaml-community/sedlex
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ocaml-sedlex
 	depends = ocaml-ppxlib>=0.26.0
 	depends = zstd
 	options = !strip
-	source = ocaml-sedlex-3.6.tar.gz::https://github.com/ocaml-community/sedlex/archive/v3.6.tar.gz
-	b2sums = 38dbff064865e00be58571689ddb5171abe0f8f61e659cdb10a713ac7a3db97d08e4330c6d3ddabd7934f96d300d26f776c52861a5c1cdc5e7ad0e2df1aabc92
+	source = ocaml-sedlex-3.7.tar.gz::https://github.com/ocaml-community/sedlex/archive/v3.7.tar.gz
+	b2sums = 35b0a7873170822edb7a1046c4d7b7a87ded862f799d4c71f7c5fc86407e75e35749a355c94ecd4e1c5636dfacd3b1a42fb80e48bd87d19d8f4733f56019c358
 
 pkgname = ocaml-sedlex
