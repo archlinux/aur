@@ -1,6 +1,6 @@
 diff -Naur EASTL-3.21.23/include/EASTL/allocator.h EASTL-3.21.23_/include/EASTL/allocator.h
 --- EASTL-3.21.23/include/EASTL/allocator.h	2024-08-18 14:10:53.000000000 +0800
-+++ EASTL-3.21.23_/include/EASTL/allocator.h	2024-12-08 15:22:30.829527965 +0800
++++ EASTL-3.21.23_/include/EASTL/allocator.h	2025-09-22 11:40:07.233208802 +0800
 @@ -11,6 +11,12 @@
  #include <EABase/nullptr.h>
  #include <stddef.h>
@@ -33,13 +33,15 @@ diff -Naur EASTL-3.21.23/include/EASTL/allocator.h EASTL-3.21.23_/include/EASTL/
  	namespace eastl
  	{
  		inline allocator::allocator(const char* EASTL_NAME(pName))
-@@ -231,68 +225,36 @@
+@@ -231,67 +225,35 @@
  
  		inline void* allocator::allocate(size_t n, int flags)
  		{
 -			#if EASTL_NAME_ENABLED
 -				#define pName mpName
--			#else
++			#ifdef EASTL_MIMALLOC_ENABLED
++				return mi_malloc(n);
+ 			#else
 -				#define pName EASTL_ALLOCATOR_DEFAULT_NAME
 -			#endif
 -
@@ -51,12 +53,8 @@ diff -Naur EASTL-3.21.23/include/EASTL/allocator.h EASTL-3.21.23_/include/EASTL/
 -				return ::new(   pName, flags, 0, (char*)0,        0) char[n];
 -			#else
 -				return ::new(   pName, flags, 0, __FILE__, __LINE__) char[n];
--			#endif
-+      #ifdef EASTL_MIMALLOC_ENABLED
-+        return mi_malloc(n);
-+      #else
-+        return std::malloc(n);
-+      #endif
++				return std::malloc(n);
+ 			#endif
  		}
  
  
@@ -85,21 +83,19 @@ diff -Naur EASTL-3.21.23/include/EASTL/allocator.h EASTL-3.21.23_/include/EASTL/
 -				return ::new(alignment, offset, (char*)0, flags, 0, (char*)0,        0) char[n];
 -			#elif (EASTL_DEBUGPARAMS_LEVEL == 1)
 -				return ::new(alignment, offset,    pName, flags, 0, (char*)0,        0) char[n];
--			#else
++			EASTL_ASSERT(offset == 0u);
++			if (alignment <= EASTL_SYSTEM_ALLOCATOR_MIN_ALIGNMENT)
++			{
++				return allocate(n, flags);
++			}
++			#ifdef EASTL_MIMALLOC_ENABLED
++				return mi_aligned_alloc(alignment, n);
+ 			#else
 -				return ::new(alignment, offset,    pName, flags, 0, __FILE__, __LINE__) char[n];
--			#endif
++				return std::aligned_alloc(alignment, n);
+ 			#endif
 -
 -			#undef pName  // See above for the definition of this.
-+      EASTL_ASSERT(offset == 0u);
-+      if (alignment <= EASTL_SYSTEM_ALLOCATOR_MIN_ALIGNMENT)
-+      {
-+        return allocate(n, flags);
-+      }
-+      #ifdef EASTL_MIMALLOC_ENABLED
-+        return mi_aligned_alloc(alignment, n);
-+      #else
-+        return std::aligned_alloc(alignment, n);
-+      #endif
  		}
  
  
@@ -111,14 +107,25 @@ diff -Naur EASTL-3.21.23/include/EASTL/allocator.h EASTL-3.21.23_/include/EASTL/
 -					void* pOriginalAllocation = *((void**)p - 1);
 -					delete[](char*)pOriginalAllocation;
 -				}
--			#else
++			#ifdef EASTL_MIMALLOC_ENABLED
++				mi_free(p);
+ 			#else
 -				delete[](char*)p;
--			#endif
-+      #ifdef EASTL_MIMALLOC_ENABLED
-+        mi_free(p);
-+      #else
-+        std::free(p);
-+      #endif
++				std::free(p);
+ 			#endif
  		}
  
- 
+diff -Naur EASTL-3.21.23/include/EASTL/string.h EASTL-3.21.23_/include/EASTL/string.h
+--- EASTL-3.21.23/include/EASTL/string.h	2024-08-18 14:10:53.000000000 +0800
++++ EASTL-3.21.23_/include/EASTL/string.h	2025-09-22 11:29:12.636615462 +0800
+@@ -166,7 +166,9 @@
+ 		namespace StdC
+ 		{
+ 			// Provided by the EAStdC package or by the user.
+-			EASTL_EASTDC_API int Vsnprintf(char*  EA_RESTRICT pDestination, size_t n, const char*  EA_RESTRICT pFormat, va_list arguments);
++			EASTL_EASTDC_API inline int Vsnprintf(char*  EA_RESTRICT pDestination, size_t n, const char*  EA_RESTRICT pFormat, va_list arguments) {
++				return vsnprintf(pDestination, n, pFormat, arguments);
++			}
+ 			EASTL_EASTDC_API int Vsnprintf(char16_t* EA_RESTRICT pDestination, size_t n, const char16_t* EA_RESTRICT pFormat, va_list arguments);
+ 			EASTL_EASTDC_API int Vsnprintf(char32_t* EA_RESTRICT pDestination, size_t n, const char32_t* EA_RESTRICT pFormat, va_list arguments);
+ 			#if EA_CHAR8_UNIQUE
