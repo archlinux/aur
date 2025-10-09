@@ -6,6 +6,8 @@ pkgbase = gnome-shell-extension-astra-monitor
 	arch = any
 	license = GPL3
 	depends = gnome-shell
+	optdepends = libgtop: collecting system data
+	optdepends = nethogs: network I/O
 	source = gnome-shell-extension-astra-monitor-v36.zip::https://github.com/AstraExt/astra-monitor/releases/download/v36/monitor@astraext.github.io.shell-extension.zip
 	sha256sums = 7057d6b54814f9e14ec6c3b85a3e68de98059922fffaf0bbd51fe8e55041d491
 
