@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-aiplatform
 _pkgname=${pkgname#python-}
-pkgver=1.119.0
+pkgver=1.120.0
 pkgrel=1
 pkgdesc="Gemini API and Generative AI on Vertex AI"
 arch=(any)
@@ -56,7 +56,7 @@ makedepends=(
   python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f2cc5ac34bab7c78d308760e0ee8854f967459d7a5a584351bfd516719ee5743')
+sha256sums=('d734be7b757859defea79ab1f62289334a1f548db55b6660f1011028a8d43c1b')
 
 _archive="$pkgname-$pkgver"
 
