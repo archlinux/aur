@@ -2,7 +2,7 @@
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=dumbpipe
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Connect A to B. Send Data."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('60d83dcc127a1c9d222fdc21a6d3ab51c588451c4af2209d3b75457a113203f03877ef13231b02704116ce17b00e6864611056d4b562ee010d13b96545272614')
+b2sums=('93d7049189a4171db1d384035be99bd11c16471ae1f3ee2511cf63c68b24139c0bc1b2450aa7e9e83d6ee4f7ad037f78e0f70f22f1c0483c154a5fd65bc25128')
 
 prepare() {
     cd $pkgname-$pkgver
