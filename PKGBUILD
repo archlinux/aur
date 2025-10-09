@@ -9,7 +9,7 @@ _pkgname="rapidraw"
 pkgname="$_pkgname"
 pkgdesc="GPU-accelerated RAW image editor"
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
 arch=('x86_64')
@@ -40,4 +40,7 @@ build() {
 package() {
   cd "$_pkgsrc"
   cp -r "src-tauri/${CARGO_TARGET_DIR}/release/bundle/deb/RapidRAW_${pkgver%%.r*}_amd64/data"/* "$pkgdir/"
+
+  # fix launcher
+  sed -E -e 's&^(Categories)=&\1=Graphics;&' -i "$pkgdir/usr/share/applications/RapidRAW.desktop"
 }
