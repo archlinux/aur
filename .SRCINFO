@@ -1,0 +1,18 @@
+pkgbase = license-generator-bash-git
+	pkgdesc = A POSIX compliant shell script that generates license for your open source projects
+	pkgver = r6.632f7f9
+	pkgrel = 1
+	url = https://github.com/SamIsTheFBI/license-generator
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	makedepends = fzf
+	makedepends = sed
+	makedepends = jq
+	provides = license-generator-bash
+	conflicts = license-generator-bash
+	source = git+https://github.com/SamIsTheFBI/license-generator
+	md5sums = SKIP
+
+pkgname = license-generator-bash-git
