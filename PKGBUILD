@@ -9,7 +9,6 @@ license=('nonfree+GPL-3.0-only')
 url=https://github.com/VOICEVOX/voicevox
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
-replaces=(voicevox-appimage)
 source=(voicevox.{desktop,sh.in}
 ${url}/releases/download/${pkgver}/voicevox-linux-cpu-x64-${pkgver}.tar.gz)
 noextract=(voicevox-linux-cpu-x64-${pkgver}.tar.gz)
@@ -33,7 +32,7 @@ package() {
   install -Dm644 voicevox.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 VOICEVOX/vv-engine/resources/engine_manifest_assets/icon.png "$pkgdir"/usr/share/pixmaps/voicevox.png
   install -d "$pkgdir"/usr/lib
-  chmod 755 -R VOICEVOX
+  chmod 755 -R VOICEVOX # drop this at next rel
   mv VOICEVOX "$pkgdir"/usr/lib/voicevox
   sed "s/@ELECTRON@/${_electron}/" voicevox.sh.in | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/voicevox
   # bad fix for sys Electron

@@ -7,7 +7,6 @@ pkgbase = voicevox-bin
 	license = nonfree+GPL-3.0-only
 	provides = voicevox
 	conflicts = voicevox
-	replaces = voicevox-appimage
 	noextract = voicevox-linux-cpu-x64-0.24.2.tar.gz
 	options = !strip
 	options = !debug
