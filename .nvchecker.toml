@@ -1,0 +1,5 @@
+["sendme-bin"]
+source = "github"
+github = "n0-computer/sendme"
+use_latest_release = true
+prefix = "v"
