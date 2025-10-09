@@ -17,7 +17,7 @@ optdepends=("electron: running in Electron"
     "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode")
 provides=("suwayomi" "suwayomi-webui" "$pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk" "suwayomi-server-preview-bin")
-_pkgname=$(echo "${pkgname//s/S}" | cut -d - -f -2)
+_pkgname=$(printf "${pkgname//s/S}" | cut -d - -f -2)
 _jar="${_pkgname}-v$_pkgver.jar"
 _assets="${_pkgname}-v$_pkgver-linux-assets"
 backup=("etc/suwayomi/server.conf")
