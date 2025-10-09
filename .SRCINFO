@@ -1,6 +1,6 @@
 pkgbase = python-tt-tools-common
 	pkgdesc = Common utilities shared across Tentorrent tools.
-	pkgver = 1.4.29
+	pkgver = 1.4.30
 	pkgrel = 1
 	url = https://github.com/tenstorrent/tt-tools-common
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-tt-tools-common
 	depends = python-luwen
 	provides = python-tt-tools-common
 	conflicts = python-tt-tools-common
-	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git#tag=v1.4.29
-	sha256sums = eb8fe0daaa3c753ba98fd69c417d0fbbaa0ae0ad2fce6aa1026efa91e1e9ac7d
+	source = tt-tools-common::git+https://github.com/tenstorrent/tt-tools-common.git#tag=v1.4.30
+	sha256sums = 416172ede62476363cd9e899cee8221ad88a5718e677c5b52af1d35c1086e69c
 
 pkgname = python-tt-tools-common
