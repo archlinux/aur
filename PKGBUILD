@@ -1,8 +1,8 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-bin
-pkgver=0.2.0
+pkgver=0.3.0
 _tag="v$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -15,7 +15,7 @@ conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
 sha256sums=('8a42f74b8f16aaf5aff3720f28187c8f70acddb766d100ad00457eb1f682360b'
-            '287020c6417107d6ced49dcf58a6b83286b436c6a1a7168a298f60c101d64d98')
+            'd36c31da9d6a505957bef3de294c34b88a98679da814b2260d31cd21cf191aba')
 
 package() {
   : "${pkgdir:?pkgdir is not set}"
