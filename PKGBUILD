@@ -1,6 +1,6 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 pkgname=claw
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Crustacean powered clipboard manager for X11 & Wayland"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 options=('!strip' '!debug' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/claw_${pkgver}_amd64.deb")
-sha256sums_x86_64=('c20331438e560591e2650c52b1a9e89e43c106419d04cf5c3602f759707f28e5')
+sha256sums_x86_64=('617c5c5f347b5b487948209a6bbcb379896bbe4ea964bc729cc959b71f413944')
 
 
 package() {
