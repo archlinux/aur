@@ -3,7 +3,7 @@
 pkgname="orca-slicer"
 pkgver=2.3.1
 _pkgver='2.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -20,7 +20,7 @@ source=(
   )
 sha256sums=(
   '625dffb5e54f3889ca130cc29b7bbeab35a9d88069dd007806ad7a7c90fe9106'
-  'de6a04f18e98f6a4a816c3a81423162365730d3c88c3afa693681815607660cf'
+  'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d'
 )
 
 build() {

@@ -8,8 +8,9 @@ export LC_ALL=C
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ] && [ "$ZINK_DISABLE_OVERRIDE" != "1" ]; then
     if command -v glxinfo >/dev/null 2>&1; then
+        VENDOR=$(glxinfo | grep "OpenGL vendor string:" | sed 's/.*: //')
         RENDERER=$(glxinfo | grep "OpenGL renderer string:" | sed 's/.*: //')
-        if echo "$RENDERER" | grep -qi "NVIDIA"; then
+        if echo "$VENDOR $RENDERER" | grep -qi "NVIDIA"; then
             if command -v nvidia-smi >/dev/null 2>&1; then
                 DRIVER_VERSION=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -n1)
                 DRIVER_MAJOR=$(echo "$DRIVER_VERSION" | cut -d. -f1)
