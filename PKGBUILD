@@ -5,6 +5,7 @@ pkgname=mcpelauncher-linux-git
 pkgver=1.2.0.r0.gfe07760
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
+# Upstream support arm32 and arm64 but we don't provide packages for those architectures
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only' 'custom')
@@ -91,6 +92,7 @@ pkgver() {
 }
 
 prepare() {
+  # TODO avoid hardcoding which submodule is supported for archlinux
   git -C mcpelauncher-manifest submodule init
   git -C mcpelauncher-manifest config submodule.android-support-headers.url "$srcdir/android-support-headers"
   git -C mcpelauncher-manifest config submodule.arg-parser.url "$srcdir/arg-parser"
@@ -136,9 +138,14 @@ build() {
   # Disable FORTIFY_SOURCE=3 because it causes build failures
   # https://github.com/minecraft-linux/libc-shim/issues/33
   # We use Bash to replace the contents of the variable because makepkg sets CFLAGS and we don't want to override them otherwise
-  export CFLAGS=${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}
-  export CXXFLAGS=${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}
+  # Those distribution specific CFLAGS and CXXFLAGS are not tested by the minecraft-linux project
+  export CFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}"
+  export CXXFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}"
+  # TODO switch to -DCMAKE_POLICY_VERSION_MINIMUM=4.0 once external project references has been updated in qt6 branches
+  # -DCMAKE_POLICY_VERSION_MINIMUM=3.5 minecraft-linux has too many old cmake minimum requirements without explicit 4.0 support
+  # We use clang because some parts of the codebase require it and android source code no longer supports gcc
   cmake -S mcpelauncher-manifest \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
     -B build -DCMAKE_INSTALL_PREFIX=/usr \
@@ -149,14 +156,15 @@ build() {
 }
 
 package() {
+  libdir="$pkgdir/usr/share/mcpelauncher/lib"
   make -C build DESTDIR="$pkgdir" install
   if [[ $CARCH == "i686" ]]; then
     mv "$pkgdir/usr/bin/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
-	rm -rf "$pkgdir/usr/share/mcpelauncher/lib/native/x86_64"
+	  rm -rf "$libdir/native/x86_64" "$libdir/x86_64" "$libdir/armeabi-v7a" "$libdir/arm64-v8a"
   fi
 
   if [[ $CARCH == "x86_64" ]]; then
-    rm -rf "$pkgdir/usr/share/mcpelauncher/lib/native/x86"
+    rm -rf "$libdir/native/x86" "$libdir/x86" "$libdir/armeabi-v7a" "$libdir/arm64-v8a"
   fi
 
   install -Dm644 mcpelauncher-manifest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
