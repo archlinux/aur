@@ -1,0 +1,19 @@
+pkgbase = stylish-bin
+	pkgdesc = Simple and intuitive lscolors configuration. Put that glam in your term
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/DaltonSW/stylish
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = stylish
+	conflicts = stylish
+	source_x86_64 = stylish-x86_64-1.1.tar.gz::https://github.com/DaltonSW/stylish/releases/download/v1.1/stylish_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 670699ebe8a07b250aa71a7459ecc32402a2ded7a9fea48453aef5f27f3c5811
+	source_i686 = stylish-i686-1.1.tar.gz::https://github.com/DaltonSW/stylish/releases/download/v1.1/stylish_Linux_i386.tar.gz
+	sha256sums_i686 = be3de61e3ff4f1ae673f3e6c30988dac39239bb5093968db9e5cbe4606fedc0e
+	source_aarch64 = stylish-aarch64-1.1.tar.gz::https://github.com/DaltonSW/stylish/releases/download/v1.1/stylish_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 43fa175beed797fd4b04f8c98009d7323696094d29f4c79b075a7aa509ca00d2
+
+pkgname = stylish-bin

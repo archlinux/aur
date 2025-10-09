@@ -1,0 +1,5 @@
+[stylish-bin]
+source = "github"
+github = "DaltonSW/stylish"
+use_latest_release = true
+prefix = "v"
