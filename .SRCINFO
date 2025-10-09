@@ -1,8 +1,9 @@
 pkgbase = tamil-assistant
 	pkgdesc = AI-powered Tamil language learning companion for i3 window manager
-	pkgver = 1.0.0
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/jalabulajunx/tamil-assistant
+	install = tamil-assistant.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -18,7 +19,7 @@ pkgbase = tamil-assistant
 	depends = gtk3
 	optdepends = rofi: For application launcher integration
 	optdepends = dmenu: Alternative application launcher
-	source = tamil-assistant-1.0.0.tar.gz::https://github.com/jalabulajunx/tamil-assistant/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = tamil-assistant-1.0.7.tar.gz::https://github.com/jalabulajunx/tamil-assistant/archive/v1.0.7.tar.gz
+	sha256sums = 397cd7b76e9540aa708bcc241b7541f80dc08daa3be93cda0a006c241bc9068f
 
 pkgname = tamil-assistant

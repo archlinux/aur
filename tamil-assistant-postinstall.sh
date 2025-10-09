@@ -6,8 +6,53 @@ set -e
 
 echo "🔧 Setting up Tamil Assistant..."
 
+# Debug: Show current environment
+echo "DEBUG: EUID=$EUID, USER=$USER, HOME=$HOME"
+
+# Detect if we're running during package installation
+# During package installation, we should not create user-specific files
+if [ "$EUID" -eq 0 ] || [ -n "$PACMAN_ROOT" ] || [ "$1" = "post_install" ] || [ "$1" = "post_upgrade" ]; then
+    # Running during package installation - don't create user files
+    echo "⚠️  Running during package installation"
+    echo "📋 User configuration will be created on first run"
+    echo "ℹ️  Run 'tamil-assistant --setup' after installation to configure for your user"
+    echo ""
+    echo "📖 Next steps after installation:"
+    echo "1. Run: tamil-assistant --setup"
+    echo "2. Edit ~/.config/tamil-assistant/config.ini and add your Google Gemini API key"
+    echo "3. Add i3 bindings to ~/.config/i3/config (see instructions below)"
+    echo "4. Reload i3: i3-msg reload"
+    echo "5. Launch Tamil Assistant with Mod+Y"
+    echo ""
+    echo "📋 i3 Configuration (add to ~/.config/i3/config):"
+    echo "   #####################################"
+    echo "   # Tamil Assistant configuration:    #"
+    echo "   #####################################"
+    echo "   # Configure window behavior for Tamil Assistant"
+    echo "   for_window [class=\"TamilAssistant\"] move scratchpad"
+    echo "   for_window [class=\"TamilAssistant\"] resize set 400 900"
+    echo "   for_window [class=\"TamilAssistant\"] floating enable"
+    echo "   for_window [class=\"TamilAssistant\"] move position 1520 0"
+    echo ""
+    echo "   # Position on right side when shown (adjust based on your screen resolution)"
+    echo "   # For 1920x1080: use 1520"
+    echo "   # For 2560x1440: use 2160"
+    echo "   # For 3840x2160: use 3440"
+    echo "   for_window [title=\"Tamil Assistant\"] move position 1520 0"
+    echo ""
+    echo "   # Keyboard shortcut: Mod+Y to execute script and show as floating panel"
+    echo "   bindsym \$mod+y exec tamil-assistant-launcher"
+    exit 0
+else
+    # Running as regular user
+    ACTUAL_USER="$USER"
+    ACTUAL_HOME="$HOME"
+fi
+
+echo "👤 Setting up for user: $ACTUAL_USER"
+
 # Create user config directory
-USER_CONFIG_DIR="$HOME/.config/tamil-assistant"
+USER_CONFIG_DIR="$ACTUAL_HOME/.config/tamil-assistant"
 mkdir -p "$USER_CONFIG_DIR"
 
 # Copy default config if it doesn't exist
@@ -34,12 +79,12 @@ else
 fi
 
 # Create logs directory
-USER_LOG_DIR="$HOME/.local/share/tamil-assistant/logs"
+USER_LOG_DIR="$ACTUAL_HOME/.local/share/tamil-assistant/logs"
 mkdir -p "$USER_LOG_DIR"
 echo "📁 Logs directory created at $USER_LOG_DIR"
 
 # Check if i3 config exists
-I3_CONFIG="$HOME/.config/i3/config"
+I3_CONFIG="$ACTUAL_HOME/.config/i3/config"
 if [ -f "$I3_CONFIG" ]; then
     echo "🔍 Checking i3 configuration..."
     
@@ -48,42 +93,16 @@ if [ -f "$I3_CONFIG" ]; then
         echo "ℹ️  Tamil Assistant bindings already exist in i3 config"
     else
         echo "⚠️  Tamil Assistant bindings not found in i3 config"
+        echo "📋 Manual configuration required. Add these lines to your ~/.config/i3/config:"
         echo ""
-        echo "Would you like to automatically add Tamil Assistant bindings to your i3 config? (y/n)"
-        read -r response
-        
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            echo "📝 Adding Tamil Assistant bindings to i3 config..."
-            
-            # Backup original config
-            cp "$I3_CONFIG" "$I3_CONFIG.backup.$(date +%Y%m%d_%H%M%S)"
-            echo "💾 Backup created: $I3_CONFIG.backup.$(date +%Y%m%d_%H%M%S)"
-            
-            # Append Tamil Assistant configuration
-            cat >> "$I3_CONFIG" << 'EOF'
-
-# Tamil Assistant Integration
-bindsym $mod+y exec tamil-assistant-launcher
-for_window [class="TamilAssistant"] move scratchpad
-for_window [class="TamilAssistant"] resize set 400 900
-for_window [class="TamilAssistant"] floating enable
-for_window [class="TamilAssistant"] move position 1520 0
-EOF
-            
-            echo "✅ Tamil Assistant bindings added to i3 config"
-            echo "🔄 Please reload i3 with: i3-msg reload"
-        else
-            echo "📋 Manual configuration required. Add these lines to your ~/.config/i3/config:"
-            echo ""
-            echo "# Tamil Assistant"
-            echo "bindsym \$mod+y exec tamil-assistant-launcher"
-            echo "for_window [class=\"TamilAssistant\"] move scratchpad"
-            echo "for_window [class=\"TamilAssistant\"] resize set 400 900"
-            echo "for_window [class=\"TamilAssistant\"] floating enable"
-            echo "for_window [class=\"TamilAssistant\"] move position 1520 0"
-            echo ""
-            echo "Then reload i3 with: i3-msg reload"
-        fi
+        echo "# Tamil Assistant"
+        echo "bindsym \$mod+y exec tamil-assistant-launcher"
+        echo "for_window [class=\"TamilAssistant\"] move scratchpad"
+        echo "for_window [class=\"TamilAssistant\"] resize set 400 900"
+        echo "for_window [class=\"TamilAssistant\"] floating enable"
+        echo "for_window [class=\"TamilAssistant\"] move position 1520 0"
+        echo ""
+        echo "Then reload i3 with: i3-msg reload"
     fi
 else
     echo "⚠️  i3 config not found at $I3_CONFIG"
@@ -93,7 +112,7 @@ fi
 # Update desktop database
 if command -v update-desktop-database >/dev/null 2>&1; then
     echo "🔄 Updating desktop database..."
-    update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
+    update-desktop-database "$ACTUAL_HOME/.local/share/applications" 2>/dev/null || true
 fi
 
 # Update system desktop database
