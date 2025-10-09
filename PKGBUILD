@@ -3,7 +3,7 @@
 
 pkgname=pixieditor-bin
 _pkgname=pixieditor
-pkgver=2.0.1.14
+pkgver=2.0.1.17
 pkgrel=1
 pkgdesc="Universal 2D Graphics Editor"
 arch=('x86_64')
@@ -17,7 +17,6 @@ depends=(
   'zlib'
 )
 source=("https://github.com/PixiEditor/PixiEditor/releases/download/$pkgver/PixiEditor-$pkgver-amd64-linux.tar.gz")
-sha512sums=('fe7eee6e87d9367d5196fcc64fe7231ed584fe664d3c409cd5e83e8060642c66c0a373d553370d1edb56fc82633aaf48d303f25beb30a4bc39b2838d91bef79b')
 
 package() {
   mkdir -p "$pkgdir"/usr/bin
@@ -33,3 +32,4 @@ package() {
 
   install -m644 ./Assets/PixiEditorLogo.png "$pkgdir"/usr/share/pixmaps/pixieditor.png
 }
+sha256sums=('13fdc44555fbd220c77a3fcdd8dcf53898c1c011c536314e81c7196b01529127')
