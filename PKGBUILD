@@ -3,7 +3,7 @@ pkgname=google-calender-widget
 pkgver=1.1.6
 _electronversion=38
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial google calendar desktop widget.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/p32929/google-calender-widget"
@@ -44,7 +44,6 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -71,12 +70,14 @@ prepare() {
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
     fi
+    _ensure_local_nvm
     find ./ -type f -name "*.js" -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g;s/icon\.ico/icon\.png/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
@@ -84,7 +85,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/{icon.png,styles.css} -t "${pkgdir}/usr/lib/${pkgname}/resources"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
