@@ -1,6 +1,6 @@
 pkgbase = ibazel-bin
 	pkgdesc = Tool for building Bazel targets when source files change.
-	pkgver = 0.26.10
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/bazelbuild/bazel-watcher
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = ibazel-bin
 	license = Apache
 	conflicts = ibazel
 	conflicts = ibazel-git
-	source = LICENSE-0.26.10::https://raw.githubusercontent.com/bazelbuild/bazel-watcher/v0.26.10/LICENSE
+	source = LICENSE-0.27.0::https://raw.githubusercontent.com/bazelbuild/bazel-watcher/v0.27.0/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = ibazel-bin-x86_64-0.26.10::https://github.com/bazelbuild/bazel-watcher/releases/download/v0.26.10/ibazel_linux_amd64
-	sha256sums_x86_64 = e621a3bf5d3a0f3cccfd8a6fbd72707398ba37e39897dc8762f3eebf5b08fd9d
-	source_aarch64 = ibazel-bin-aarch64-0.26.10::https://github.com/bazelbuild/bazel-watcher/releases/download/v0.26.10/ibazel_linux_arm64
-	sha256sums_aarch64 = f7fd7ebd8a604614f2e1a3b2476fe9c055ea88d165da86d3f303d7d6903fb332
+	source_x86_64 = ibazel-bin-x86_64-0.27.0::https://github.com/bazelbuild/bazel-watcher/releases/download/v0.27.0/ibazel_linux_amd64
+	sha256sums_x86_64 = 7f819e1876bb71cfced7c56ccdb2a0d85fe5b88c732da87a9c267de7f807df2c
+	source_aarch64 = ibazel-bin-aarch64-0.27.0::https://github.com/bazelbuild/bazel-watcher/releases/download/v0.27.0/ibazel_linux_arm64
+	sha256sums_aarch64 = c890c17287f81f0bbb4bf42a7484636ce581c5d71acc5e7446c9f7d106d71568
 
 pkgname = ibazel-bin
