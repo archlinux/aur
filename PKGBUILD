@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 
 pkgname=dvbinspector
-pkgver=1.20.0
+pkgver=1.21.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="DVB analyzer, written in java"
@@ -14,7 +14,7 @@ makedepends=('maven' 'jdk21-openjdk')
 source=("$url/archive/refs/tags/release_${_pkgver}.tar.gz"
         "dvbinspector.sh"
         )
-sha256sums=('ec7767e0d33e2b96738e2e317da09d138ecd132c70122faaab54161e7c9e934c'
+sha256sums=('5dd3486797120e374eccf319f52df3cd80cda68008bc112c13147b153c5c844a'
             'af320db41a920b3838a7598c8d0712352a59081112015f893f7b713d407773e4'
            )
 
