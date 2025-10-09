@@ -1,0 +1,13 @@
+pkgbase = mars-mips-bin
+	pkgdesc = MIPS runtime (binary version)
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://dpetersanderson.github.io
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = Mars4_5.jar
+	source = https://dpetersanderson.github.io/Mars4_5.jar
+	sha256sums = ac340b676ba2b62246b9df77e62f81ad4447bcfd329ab539716bcd09950b7096
+
+pkgname = mars-mips-bin
