@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-bin
 _pkgname=Publii
-pkgver=0.47.0
+pkgver=0.47.1
 _electronversion=37
 pkgrel=1
 pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.(Prebuilt version.Use system-wide electron)"
@@ -14,13 +14,12 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'libsecret'
-    'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/download/${_pkgname}-${pkgver}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ea27adc08d1de92a0ad73ffc47efb077cc80c577ef1ccf5068c63814db2dcb39'
+sha256sums=('49ce54eb38e6ba23c0dc42febe2b0caf29bf41ddc2311fa47642b02d2060584f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
