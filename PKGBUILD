@@ -2,7 +2,7 @@
 
 _name="koyeb"
 pkgname="${_name}-cli"
-pkgver=5.5.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="Manage your Koyeb serverless infrastructure directly from your terminal"
 arch=('aarch64' 'x86_64')
@@ -12,15 +12,14 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${url##*/}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b3e720fbe8d26634ab80ec5a977cb66838ef79a3822e3e7401c3aa141a362b85')
+sha256sums=('2a305cd30bd6ae3b8fc6083ec32242cc6479ccaacb41c4ae61a6a1a0c31d5834')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build" "completions"
 }
@@ -35,8 +34,10 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
+  local BuildDate="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%Y-%m-%dT%H:%M:%SZ")"
+
   go build -v -o "build/${_name}" -ldflags "\
-    -X ${url#https://}/pkg/koyeb.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
+    -X ${url#https://}/pkg/koyeb.BuildDate=${BuildDate} \
     -X ${url#https://}/pkg/koyeb.Version=${pkgver} \
     -X ${url#https://}/pkg/koyeb.Commit=$(git rev-parse HEAD 2>/dev/null || echo "unknown")" \
     ./"cmd/${_name}"

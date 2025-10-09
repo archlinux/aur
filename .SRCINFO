@@ -1,6 +1,6 @@
 pkgbase = koyeb-cli
 	pkgdesc = Manage your Koyeb serverless infrastructure directly from your terminal
-	pkgver = 5.5.1
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://github.com/koyeb/koyeb-cli
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = koyeb-cli
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = koyeb-cli::git+https://github.com/koyeb/koyeb-cli.git#tag=v5.5.1
-	sha256sums = b3e720fbe8d26634ab80ec5a977cb66838ef79a3822e3e7401c3aa141a362b85
+	source = koyeb-cli::git+https://github.com/koyeb/koyeb-cli.git#tag=v5.7.0
+	sha256sums = 2a305cd30bd6ae3b8fc6083ec32242cc6479ccaacb41c4ae61a6a1a0c31d5834
 
 pkgname = koyeb-cli
