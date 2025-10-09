@@ -1,9 +1,0 @@
---- QfinderUpload.sh	2024-12-25 22:27:36.000000000 -0500
-+++ QfinderUpload.sh	2025-02-21 10:40:00.000000000 -0500
-@@ -10,5 +10,5 @@
- dirname=$PWD/$dirname
- fi
- LD_LIBRARY_PATH="$dirname/lib"
--export LD_LIBRARY_PATH=/usr/local/lib/QNAP/QfinderPro
-+export LD_LIBRARY_PATH=/usr/lib/QNAP/QfinderPro
- $dirname/$appname "$@"
