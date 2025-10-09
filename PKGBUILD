@@ -4,7 +4,7 @@
 
 pkgname=lmstudio
 _appname=lm-studio
-pkgver=0.3.29.1
+pkgver=0.3.30.1
 _pkgver="${pkgver%.*}-${pkgver##*.}"
 pkgrel=1
 pkgdesc="Discover, download, and run local LLMs"
@@ -16,7 +16,7 @@ makedepends=('squashfs-tools' 'graphicsmagick')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.AppImage")
-sha256sums=('606f9185b34858ef64f9a470e0645fdaaaf5ca79795ea68f107a13086de32905')
+sha256sums=('b5d216eb142b9e52a173da12fe7cd57f2c101caaa55629020cfba4e6587e44e1')
 noextract=("${_appimage}")
 
 prepare() {
