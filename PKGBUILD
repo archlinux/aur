@@ -1,7 +1,7 @@
 # Maintainer: kvtodev kvtodev@outlook.com
 
 pkgname=ollama-proxy
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Proxy to wrap local Ollama requests with basic auth and HTTPS to remote auth-required service"
 arch=('x86_64' 'aarch64')
@@ -35,4 +35,9 @@ package() {
   # license placeholder (none in repo)
   echo "No explicit license provided upstream." > LICENSE
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # post-install hint (shown during packaging build logs)
+  echo "==> Reminder: After installation, start/enable the systemd service template:"
+  echo "    sudo systemctl enable --now ollama-proxy@<user>.service"
+  echo "    systemctl status ollama-proxy@<user>.service"
 }
