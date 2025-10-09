@@ -1,5 +1,5 @@
---- src/cuml-25.06.00/python/cuml/CMakeLists.txt	2025-06-06 20:44:48.000000000 +0800
-+++ src/cuml-25.06.00/python/cuml/CMakeLists.txt.new	2025-06-23 23:53:45.773210336 +0800
+--- python/cuml/CMakeLists.txt	2025-10-09 06:37:48.000000000 +0800
++++ python/cuml/CMakeLists.txt.new	2025-10-09 20:00:42.226225769 +0800
 @@ -31,7 +31,7 @@
  ################################################################################
  # - User Options  --------------------------------------------------------------
@@ -9,9 +9,12 @@
  option(USE_LIBCUML_WHEEL "Use libcuml wheel to provide some dependencies" OFF)
  
  # todo: use CMAKE_MESSAGE_CONTEXT for prefix for logging.
-@@ -71,6 +71,14 @@
+@@ -69,8 +69,16 @@
  
- include(${CUML_CPP_SRC}/cmake/thirdparty/get_treelite.cmake)
+ set(CUML_EXCLUDE_TREELITE_FROM_ALL ON)
+ 
+-include(${CUML_CPP_SRC}/cmake/thirdparty/get_treelite.cmake)
++find_package(Treelite REQUIRED)
  
 +find_package(CCCL REQUIRED)
 +find_package(rapids_logger REQUIRED)

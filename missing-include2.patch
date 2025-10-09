@@ -1,0 +1,10 @@
+--- cpp/include/cuml/ensemble/randomforest.hpp	2025-10-09 06:37:48.000000000 +0800
++++ cpp/include/cuml/ensemble/randomforest.hpp.new	2025-10-09 19:46:15.470070234 +0800
+@@ -22,6 +22,7 @@
+ 
+ #include <map>
+ #include <memory>
++#include <cstdint>
+ 
+ namespace raft {
+ class handle_t;  // forward decl

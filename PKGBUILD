@@ -2,7 +2,7 @@
 
 pkgbase=cuml
 pkgname=(libcuml python-cuml)
-pkgver=25.08.00
+pkgver=25.10.00
 pkgrel=1
 pkgdesc="cuML - RAPIDS Machine Learning Library"
 url="https://github.com/rapidsai/cuml"
@@ -14,19 +14,22 @@ source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
     "system-lib.patch"
     "missing-include.patch"
+    "missing-include2.patch"
     "missing-pkg.patch"
 )
 sha256sums=(
-    'c40e6738633ae0feb6284888b1a844e536d3eb9f7abf24df1fa5c874d0c1c302'
-    '3ffc83a4eb2c1e0df8cb41cd936eac7f30a426fe4c508bb7fbfae6a7a091727a'
+    '470844b85f89bf4afab8cd05cd69a8769fdcf2c1e6b82e687f21bf2cf948b9ec'
+    '7bc3fa6f1f21222afe100eb7a8ee57b948bf1b03eb7f944c6663d019f42e1ae3'
     'a876fafc0102dcaa43d331ec496e0a8f3f0af03071e0a691414a38219c384909'
-    '25a1bb293a10f3da823df9caf5107b90e457e848557fa71a092adc3a25c4a83d'
+    'e292e24a4dc3de5d0a723d61249cc547bbbdf2d3e42ee05885af54a06c07d520'
+    '3740890159c6b92f3158dd7cd48418c862b5a5ac99d3cfb072aa37978be763ac'
 )
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "cpp/src/common/cumlHandle.hpp" < "$srcdir/missing-include.patch"
+    patch -p1 "cpp/include/cuml/ensemble/randomforest.hpp" < "$srcdir/missing-include2.patch"
     patch -p1 "python/cuml/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
 }
 
@@ -60,7 +63,7 @@ package_libcuml() {
 }
 
 package_python-cuml() {
-    depends+=('python' 'python-pylibraft' 'python-cuvs' 'python-treelite' 'libcuml' 'python-scikit-learn')
+    depends+=('python' 'python-pylibraft' 'python-cuvs' 'treelite' 'python-treelite' 'libcuml' 'python-scikit-learn')
     cd "$srcdir/$pkgbase-$pkgver/python/cuml"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
