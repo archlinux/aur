@@ -2,7 +2,7 @@
 
 pkgname=fortbite
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='High-precision mathematical calculator in Modern Fortran'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortbite'
