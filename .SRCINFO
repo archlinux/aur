@@ -1,6 +1,6 @@
 pkgbase = woomer-sway
 	pkgdesc = Zoomer application for Wayland inspired by tsoding's boomer
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/qeezzo/woomer
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = woomer-sway
 	depends = glfw
 	depends = glibc
 	options = !debug
-	source = woomer-sway-1.0.0.tar.gz::https://github.com/qeezzo/woomer/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = woomer-sway-1.0.1.tar.gz::https://github.com/qeezzo/woomer/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e2a385481a17fbf16d04629e40a2fb5fb3431e428cc19794f8e9513a16d976c1
 
 pkgname = woomer-sway
