@@ -1,9 +1,9 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 pkgname=swaycons
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Window Icons in Sway with Nerd Fonts"
-arch=(x64_64)
+arch=(x86_64)
 url="https://github.com/allie-wake-up/swaycons"
 license=('MIT')
 depends=('sway' 'ttf-font-nerd' 'gcc-libs' 'glibc')
