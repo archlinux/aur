@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+47+g488b6416e
+pkgver=1.4.1+58+gbae968a2f
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -27,8 +27,8 @@ optdepends=(
   'gst-libav: Libav plugin'
   'gvfs: Various devices support')
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=488b6416e8f1ce00505ed751bd3a70e39a6d9580")
-sha256sums=('9ebdc02f88563282998e2523f7674345bfba265d9d1a60a69c1d21ba3b49d346')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=bae968a2ff324fdcc1cbdb46305a6fd1b0460ef9")
+sha256sums=('7e762377bfad8e9b06a3fa94ee8edd92ef2132defa8af6ecd9a65c9d900d5624')
 
 pkgver() {
   cd Clementine
