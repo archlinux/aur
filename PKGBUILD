@@ -2,12 +2,12 @@
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
 pkgver=r271.3c571bc
-pkgrel=6
+pkgrel=7
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
 url="https://github.com/Kirottu/anyrun"
 license=('GPL3')
-depends=(gtk4-layer-shell gtk4 pango cairo gdk-pixbuf2 glib2)
+depends=(gtk4-layer-shell gtk4 pango cairo gdk-pixbuf2 glib2 anyrun-provider)
 makedepends=(git cargo)
 backup=("etc/anyrun/config.ron" "etc/anyrun/style.css")
 source=("${_pkgname}::git+$url.git")
