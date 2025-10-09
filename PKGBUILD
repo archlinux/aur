@@ -27,7 +27,7 @@ prepare() {
   cd "${_srcdir}"
   local _seds=(
     -e '# Bypass the strict bash version check'
-    -e "/^\s+'5.0' / s:\): | '5.2'&:g"
+    -e "/^\s+'5.2' / s:\): | '5.3'&:g"
     -e '# Why does a bash specific utility use /bin/sh. sh is not bash even without dashbinsh'
     -e 's:/bin/sh:/usr/bin/bash:g'
   )
