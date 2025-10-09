@@ -6,7 +6,7 @@
 
 pkgname=spacefm
 pkgver=1.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-panel tabbed file manager'
 arch=(i686 x86_64)
 url="https://ignorantguru.github.io/spacefm/"
@@ -41,6 +41,7 @@ prepare() {
 
 build() {
   CFLAGS+=" -Wno-error=incompatible-pointer-types"
+  CFLAGS+=" -std=gnu17"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
