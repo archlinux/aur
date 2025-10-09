@@ -7,11 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Display other columns in the unit browser
-- Expand filter to other unit properties
+- Expand browser filter to other unit properties
+- Fix Flatpak save file in home directory (make a warning)
+- Sort user defined columns context
+- Handle journal logs style format
+
+## [2.0.0] - 2025-10-07
 
 ### Added
-- Fix Flatpak save file in home directory (make a warning)
+- Customize unit properties display in the browser
+- Make the inactive units browser style change in real time
+
+### Changed
+- Improve some memory management
+- Refactor some multi-thread locks
+- Support GTK 4.20 (Gnome 49)
+
+### Fixed
+- Flatpak version to be able to read and save in home directory
+
 
 ## [1.32.3] - 2025-09-12
 
@@ -104,7 +118,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Enable unit file Dialog save context mixed up
-- 1.27.1 Mask unit dialog behaviour malfunction
+- 1.27.1 Mask unit dialog behavior malfunction
 
 ## [1.26.0] - 2025-05-28
 
@@ -121,7 +135,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
             journal
 
 ### Changed
-- UX Better error dialog message on not authorized for actions: clean, freese and thaw
+- UX Better error dialog message on not authorized for actions: clean, freeze and thaw
 - Named Damglador in the Acknowledgements section
 
 ## [1.24.2] - 2025-05-10
@@ -317,7 +331,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Button start is now non-blocking
 - Button stop is now non-blocking
 - Button restart is now non-blocking
-- Button Reload (in menu) is nownon-blocking
+- Button Reload (in menu) is now non-blocking
 - Button "send kill" is now non-blocking
 - Button kill has new icon
 
