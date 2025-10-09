@@ -2,10 +2,10 @@
 
 pkgname=frhelper
 pkgver=13.5.2
-_date=2024-04-19
+_date=2024-08-25
 _lang=fr
 _flang=French
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -44,11 +44,13 @@ package() {
   sed -i "s|/usr/share/${_dirname}/AppRun|${pkgname}|g" \
     ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
 
-  # qt plugin path
-  sed -i '4c Prefix = /usr/lib/qt/' \
-    ${pkgdir}/usr/share/${_dirname}/qt.conf
+
 
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*}
+  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,lib*.so*}
+  # keep qt lib and plugins
+  pushd ${pkgdir}/usr/share/${_dirname}/lib
+    find . -not -name 'libQt*' -not -name 'libicu*' -type f -delete
+  popd
 }
 # vim: ts=2 sw=2 et:
