@@ -1,6 +1,6 @@
-pkgbase = keyvibe-git
+pkgbase = keyvibe
 	pkgdesc = C-based CLI that plays mechanical keyboard sounds on keystrokes
-	pkgver = 0.1.0.r0.g00ea0f0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/S4NKALP/KeyVibe
 	arch = x86_64
@@ -22,4 +22,4 @@ pkgbase = keyvibe-git
 	source = git+https://github.com/S4NKALP/KeyVibe.git
 	sha256sums = SKIP
 
-pkgname = keyvibe-git
+pkgname = keyvibe
