@@ -1,0 +1,50 @@
+post_install() {
+    # Create the firezone-client group if it doesn't exist
+    if ! getent group firezone-client > /dev/null 2>&1; then
+        groupadd -r firezone-client
+        echo "==> Created firezone-client system group"
+    fi
+
+    echo "==> Firezone Client has been installed."
+    echo "==> The GUI application can be launched from your application menu."
+    echo ""
+    echo "==> The tunnel service has been installed but not enabled."
+    echo "==> To enable and start the service, run:"
+    echo "    sudo systemctl enable --now firezone-client-tunnel.service"
+}
+
+post_upgrade() {
+    # Ensure the firezone-client group exists
+    if ! getent group firezone-client > /dev/null 2>&1; then
+        groupadd -r firezone-client
+        echo "==> Created firezone-client system group"
+    fi
+
+    if systemctl is-active --quiet firezone-client-tunnel.service; then
+        echo "==> Restarting firezone-client-tunnel.service..."
+        systemctl restart firezone-client-tunnel.service
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet firezone-client-tunnel.service; then
+        echo "==> Stopping firezone-client-tunnel.service..."
+        systemctl stop firezone-client-tunnel.service
+    fi
+
+    if systemctl is-enabled --quiet firezone-client-tunnel.service 2>/dev/null; then
+        echo "==> Disabling firezone-client-tunnel.service..."
+        systemctl disable firezone-client-tunnel.service
+    fi
+}
+
+post_remove() {
+    # Optionally remove the group (commented out by default to preserve user associations)
+    # if getent group firezone-client > /dev/null 2>&1; then
+    #     groupdel firezone-client
+    # fi
+
+    echo "==> Firezone Client has been removed."
+    echo "==> The firezone-client group has been preserved."
+    echo "==> To remove it manually, run: sudo groupdel firezone-client"
+}
