@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=rapids-logger
-pkgver=0.1.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A logging interface for RAPIDS built on spdlog"
 url="https://github.com/rapidsai/rapids-logger"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cmake' 'gcc' 'ninja')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('682c746c8afb571d133ab7717847dcde067c8183ac68aa20f8390f96cb7bbd7c')
+sha256sums=('36578b337993cdbc7f4c52e5d871289628ac408f3a6028ab4e73a64fcdaa9412')
 
 
 build() {
