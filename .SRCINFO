@@ -1,11 +1,11 @@
 pkgbase = oniongen-rs
 	pkgdesc = A .v3 onion address generator
-	pkgver = 0.6.5
-	pkgrel = 2
+	pkgver = 0.6.6
+	pkgrel = 1
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = oniongen-rs-0.6.5.tar.gz::https://static.crates.io/crates/oniongen-rs/oniongen-rs-0.6.5.crate
-	sha256sums = 7e616966b3c5bb55e7fcfcf04ac1d2e9bafd7944e8b8ed0a99cba8a745bce067
+	source = oniongen-rs-0.6.6.tar.gz::https://static.crates.io/crates/oniongen-rs/oniongen-rs-0.6.6.crate
+	sha256sums = 7fddaae664ee652f48dd777f589908d2a20f6deb29c38354559703f5c40c599e
 
 pkgname = oniongen-rs

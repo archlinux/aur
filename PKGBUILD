@@ -1,13 +1,13 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=oniongen-rs
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.6.6
+pkgrel=1
 license=('MIT')
 pkgdesc="A .v3 onion address generator"
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 makedepends=(cargo)
-sha256sums=('7e616966b3c5bb55e7fcfcf04ac1d2e9bafd7944e8b8ed0a99cba8a745bce067')
+sha256sums=('7fddaae664ee652f48dd777f589908d2a20f6deb29c38354559703f5c40c599e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
