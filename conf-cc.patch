@@ -1,8 +1,8 @@
-Enable -fPIC when compiling with gcc.
+Enable -fPIC when compiling with gcc, use "-ansi".
 --- a/conf-cc
 +++ b/conf-cc
 @@ -1,3 +1,3 @@
 -gcc -O2
-+gcc -O2 -fPIC
++gcc -O2 -fPIC -ansi
  
  This will be used to compile .c files.

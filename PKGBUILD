@@ -1,7 +1,7 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=libtai
 pkgver=0.60
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="a library for storing and manipulating dates and times"
 arch=(x86_64)
@@ -26,7 +26,7 @@ conf-cc.patch
 noextract=()
 sha256sums=(
 06dc42ccb77aee681fbd0e0754fc2180e1e9aeaa650838e9d74933d447a3d219
-4be83e30680b292d3ff0d2e29e4e88f9b7900508eb1ed73b2675f20e62035655
+9460bc74a58e7cd12bd73edb355e38d3729d3beec4591eb5675beb7542fa5d4a
 )
 validpgpkeys=()
 OPTIONS=(staticlibs)
