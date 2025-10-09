@@ -1,0 +1,5 @@
+["redress-bin"]
+source = "github"
+github = "goretk/redress"
+use_latest_release = true
+prefix = "v"
