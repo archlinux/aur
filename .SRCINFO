@@ -1,7 +1,7 @@
 pkgbase = pacsea-bin
 	pkgdesc = Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Firstp1ck/Pacsea
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = pacsea-bin
 	conflicts = pacsea-git
 	source = Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/v0.3.0/Pacsea
 	source = Pacsea-v0.3.0.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 8a42f74b8f16aaf5aff3720f28187c8f70acddb766d100ad00457eb1f682360b
+	sha256sums = e591076b2911dbdcb019ad6ed9bdfe85659453df2c10b0481589e540e36d8ad8
 	sha256sums = d36c31da9d6a505957bef3de294c34b88a98679da814b2260d31cd21cf191aba
 
 pkgname = pacsea-bin
