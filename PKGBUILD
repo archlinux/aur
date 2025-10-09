@@ -3,7 +3,7 @@
 _pkgauthor=AvengeMedia
 _pkgname=dgop
 pkgname=${_pkgname}-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="System monitoring CLI + REST API"
 arch=('x86_64' 'aarch64')
