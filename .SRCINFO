@@ -1,7 +1,7 @@
 pkgbase = perl-imager
 	pkgdesc = Perl extension for Generating 24 bit Images
-	pkgver = 1.027
-	pkgrel = 2
+	pkgver = 1.029
+	pkgrel = 1
 	url = https://metacpan.org/release/Imager
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = perl-imager
 	depends = glibc
 	optdepends = perl-parse-recdescent: needed to parse transform2() expressions
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TO/TONYC/Imager-1.027.tar.gz
-	b2sums = 4c2e8ec4b6dcbd2213f1dc9fec753612be0ef8a56ba5ced98e0d86d10498fcc2a1fa8e45108b612790d6da5dbaedb8907499030c9760518b0f2e23a2f72af8ec
+	source = https://cpan.metacpan.org/authors/id/T/TO/TONYC/Imager-1.029.tar.gz
+	b2sums = cdc283129e4c31638a05810d11b0b238982450d2bf6ea0ee14947928f360eb9b8986aac711428a2e2aee507e193270458198b6c484924504ce565a022128f186
 
 pkgname = perl-imager
