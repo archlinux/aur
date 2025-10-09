@@ -2,8 +2,8 @@
 
 _basename="zls"
 pkgname="${_basename}-master"
-pkgver=0.16.0dev.3+1840a4b8
-pkgrel=2
+pkgver=0.16.0dev.16+fc8e8b2d
+pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'
@@ -106,8 +106,8 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}"
-  cp -va --no-preserve=ownership build/* "${pkgdir}"
+  cd "${srcdir}/${_pkgsrc}"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_basename}/README.md"
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"

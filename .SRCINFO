@@ -1,7 +1,7 @@
 pkgbase = zls-master
 	pkgdesc = A language server for Zig
-	pkgver = 0.16.0dev.3+1840a4b8
-	pkgrel = 2
+	pkgver = 0.16.0dev.16+fc8e8b2d
+	pkgrel = 1
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = zls-master
 	makedepends = git
 	makedepends = jq
 	depends = zig-master
-	provides = zls=0.16.0dev.3+1840a4b8
+	provides = zls=0.16.0dev.16+fc8e8b2d
 	conflicts = zls
 	source = zls::git+https://github.com/zigtools/zls.git
 	sha256sums = SKIP
