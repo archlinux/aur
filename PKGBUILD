@@ -2,8 +2,8 @@
 # Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=bash-pinyin-completion-rs
-_tagname=0.3.2
-pkgver=0.3.2
+_tagname=1.0.0-beta
+pkgver=1.0.0beta
 pkgrel=1
 pkgdesc="Simple completion script for pinyin, written in rust."
 arch=(
@@ -23,7 +23,7 @@ depends=('bash' 'bash-completion' 'glibc' 'gcc-libs')
 makedepends=('cargo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_tagname.tar.gz")
-sha256sums=('3de1c978aae9deacc86cf4c20da4d01542de0a1338133320abde62ab534e2018')
+sha256sums=('0a1cc14018598be481713ca84d2c78fd9967d9009a9f826f70f8536a334a4590')
 
 prepare() {
   cd "$pkgname-$_tagname"
