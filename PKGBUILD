@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.9.5
+pkgver=0.9.6
 _electronversion=32
 _nodever=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f415bdabd80e1483aba6d597cfa77dadd84e2dc4bc52387db94666c9447c92d8'
+sha256sums=('33059f10f66338b860235bea00fcfde7838eacd2cb3e937e49da2d0e84b8710c'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -34,11 +34,12 @@ _ensure_local_nvm() {
     nvm use "${_nodever}"
 }
 _get_electron_version() {
-    _electronversion="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/e2/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname}-${pkgver}/e2/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -46,8 +47,6 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _get_electron_version
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -78,6 +77,7 @@ prepare() {
         echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
         echo app lib backend e2 | xargs -n 1 cp .yarnrc
     fi
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}/app/build"
     sh "${pkgname}-brand.sh"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
@@ -94,6 +94,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/e2"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_OPTIONS="--max-old-space-size=4096" NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
