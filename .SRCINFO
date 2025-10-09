@@ -1,6 +1,6 @@
 pkgbase = processing-bin
 	pkgdesc = Programming environment for creating images, animations and interactions.(Prebuilt version)
-	pkgver = 4.4.7
+	pkgver = 4.4.8
 	pkgrel = 1
 	url = https://processing.org/
 	arch = aarch64
@@ -14,12 +14,12 @@ pkgbase = processing-bin
 	depends = libxcursor
 	depends = freetype2
 	depends = libxtst
-	provides = processing=4.4.7
+	provides = processing=4.4.8
 	conflicts = processing
 	options = !strip
-	source_aarch64 = processing-4.4.7-aarch64.zip::https://github.com/processing/processing4/releases/download/processing-1307-4.4.7/processing-4.4.7-linux-aarch64-portable.zip
-	sha256sums_aarch64 = a7d89fa890b88a0a1465b690b590731272514fccd9b288bc54ad17e78ad6c009
-	source_x86_64 = processing-4.4.7-x86_64.zip::https://github.com/processing/processing4/releases/download/processing-1307-4.4.7/processing-4.4.7-linux-x64-portable.zip
-	sha256sums_x86_64 = 6e5f0998311c000183b7b6ae8ffce9d57148643c2e81ea619173db7c6faa6636
+	source_aarch64 = processing-4.4.8-aarch64.zip::https://github.com/processing/processing4/releases/download/processing-1308-4.4.8/processing-4.4.8-linux-aarch64-portable.zip
+	sha256sums_aarch64 = 46bebaa8ff65cb002040778ce9a817bce79e3625293858a2cc1bdfca57532f6d
+	source_x86_64 = processing-4.4.8-x86_64.zip::https://github.com/processing/processing4/releases/download/processing-1308-4.4.8/processing-4.4.8-linux-x64-portable.zip
+	sha256sums_x86_64 = 34315ee1d8a8f970b0f22d0eb818ece66f00143b0e7af11083607873a16df96a
 
 pkgname = processing-bin
