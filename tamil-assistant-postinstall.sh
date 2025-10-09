@@ -7,16 +7,27 @@ set -e
 echo "🔧 Setting up Tamil Assistant..."
 
 # Detect the actual user (not root during package installation)
-if [ "$EUID" -eq 0 ] && [ -n "$SUDO_USER" ]; then
-    # Running as root via sudo, use the original user
-    ACTUAL_USER="$SUDO_USER"
-    ACTUAL_HOME="/home/$SUDO_USER"
-elif [ "$EUID" -eq 0 ] && [ -z "$SUDO_USER" ]; then
-    # Running as root without sudo, try to detect the user
-    # This happens during package installation
+if [ "$EUID" -eq 0 ]; then
+    # Running as root - this happens during package installation
+    # Don't create user-specific files during package installation
     echo "⚠️  Running as root during package installation"
     echo "📋 User configuration will be created on first run"
     echo "ℹ️  Run 'tamil-assistant --setup' after installation to configure for your user"
+    echo ""
+    echo "📖 Next steps after installation:"
+    echo "1. Run: tamil-assistant --setup"
+    echo "2. Edit ~/.config/tamil-assistant/config.ini and add your Google Gemini API key"
+    echo "3. Add i3 bindings to ~/.config/i3/config (see instructions below)"
+    echo "4. Reload i3: i3-msg reload"
+    echo "5. Launch Tamil Assistant with Mod+Y"
+    echo ""
+    echo "📋 i3 Configuration (add to ~/.config/i3/config):"
+    echo "# Tamil Assistant"
+    echo "bindsym \$mod+y exec tamil-assistant-launcher"
+    echo "for_window [class=\"TamilAssistant\"] move scratchpad"
+    echo "for_window [class=\"TamilAssistant\"] resize set 400 900"
+    echo "for_window [class=\"TamilAssistant\"] floating enable"
+    echo "for_window [class=\"TamilAssistant\"] move position 1520 0"
     exit 0
 else
     # Running as regular user
