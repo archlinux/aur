@@ -68,42 +68,16 @@ if [ -f "$I3_CONFIG" ]; then
         echo "ℹ️  Tamil Assistant bindings already exist in i3 config"
     else
         echo "⚠️  Tamil Assistant bindings not found in i3 config"
+        echo "📋 Manual configuration required. Add these lines to your ~/.config/i3/config:"
         echo ""
-        echo "Would you like to automatically add Tamil Assistant bindings to your i3 config? (y/n)"
-        read -r response
-        
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            echo "📝 Adding Tamil Assistant bindings to i3 config..."
-            
-            # Backup original config
-            cp "$I3_CONFIG" "$I3_CONFIG.backup.$(date +%Y%m%d_%H%M%S)"
-            echo "💾 Backup created: $I3_CONFIG.backup.$(date +%Y%m%d_%H%M%S)"
-            
-            # Append Tamil Assistant configuration
-            cat >> "$I3_CONFIG" << 'EOF'
-
-# Tamil Assistant Integration
-bindsym $mod+y exec tamil-assistant-launcher
-for_window [class="TamilAssistant"] move scratchpad
-for_window [class="TamilAssistant"] resize set 400 900
-for_window [class="TamilAssistant"] floating enable
-for_window [class="TamilAssistant"] move position 1520 0
-EOF
-            
-            echo "✅ Tamil Assistant bindings added to i3 config"
-            echo "🔄 Please reload i3 with: i3-msg reload"
-        else
-            echo "📋 Manual configuration required. Add these lines to your ~/.config/i3/config:"
-            echo ""
-            echo "# Tamil Assistant"
-            echo "bindsym \$mod+y exec tamil-assistant-launcher"
-            echo "for_window [class=\"TamilAssistant\"] move scratchpad"
-            echo "for_window [class=\"TamilAssistant\"] resize set 400 900"
-            echo "for_window [class=\"TamilAssistant\"] floating enable"
-            echo "for_window [class=\"TamilAssistant\"] move position 1520 0"
-            echo ""
-            echo "Then reload i3 with: i3-msg reload"
-        fi
+        echo "# Tamil Assistant"
+        echo "bindsym \$mod+y exec tamil-assistant-launcher"
+        echo "for_window [class=\"TamilAssistant\"] move scratchpad"
+        echo "for_window [class=\"TamilAssistant\"] resize set 400 900"
+        echo "for_window [class=\"TamilAssistant\"] floating enable"
+        echo "for_window [class=\"TamilAssistant\"] move position 1520 0"
+        echo ""
+        echo "Then reload i3 with: i3-msg reload"
     fi
 else
     echo "⚠️  i3 config not found at $I3_CONFIG"
