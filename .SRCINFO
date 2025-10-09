@@ -1,7 +1,7 @@
 pkgbase = git-light-bin
 	pkgdesc = 🐙 GitHub & GitLab notifications on your desktop.(Prebuilt version)
 	pkgver = 0.17.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlight.app/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = git-light-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk
 	depends = libsoup
-	depends = openssl
+	depends = openssl-1.1
 	provides = git-light=0.17.6
 	conflicts = git-light
 	source = git-light-0.17.6.rpm::https://github.com/colinlienard/gitlight/releases/download/gitlight-v0.17.6/git-light-0.17.6-1.x86_64.rpm

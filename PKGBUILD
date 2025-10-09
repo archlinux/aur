@@ -2,7 +2,7 @@
 pkgname=git-light-bin
 _pkgname=GitLight
 pkgver=0.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc="🐙 GitHub & GitLab notifications on your desktop.(Prebuilt version)"
 arch=('x86_64')
 url="https://gitlight.app/"
@@ -15,7 +15,7 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk'
     'libsoup'
-    'openssl'
+    'openssl-1.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/gitlight-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
