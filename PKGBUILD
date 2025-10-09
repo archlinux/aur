@@ -1,7 +1,7 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=go-prism-git
-pkgver=v1.1.0.r9.gb5ae231
+pkgver=v1.1.0.r22.g427afd5
 pkgrel=1
 pkgdesc='Turn raw test output into beautiful data'
 arch=('x86_64' 'aarch64')
