@@ -56,7 +56,10 @@ build() {
   cd mcpelauncher-ui-manifest
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+  # Update -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to 4.0 once the qt6 branch has updated external project api usages
+  # -DCMAKE_POLICY_VERSION_MINIMUM=3.5 is required to allow configuring with cmake 4.0+, while some submodules have not been updated to explicitly support cmake 4.0+
+  # Always build with gcc, because of c++ abi conflicts with clang in protobuf
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
   cmake --build . --parallel
 }
 package() {
