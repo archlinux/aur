@@ -1,7 +1,7 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=godot-cpp
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc='C++ bindings for the Godot script API'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot-cpp.pc.in
 )
-sha256sums=('472c6e7f3f7a9d576f21e2c57d16390b46d238f98e69a47d84730e943f5c5506'
+sha256sums=('ac78539c0042554c494ea419549d2de88758d448721aeb0e5d41129aa87e339c'
             '675cbdf08979edcf5cbd951b88a6b00b5d5a24fd9c68418b8d7b4c77dcf722a3')
 
 prepare() {
@@ -29,7 +29,8 @@ build() {
   cd ..
 
   cmake -Bbuild \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DGODOTCPP_TARGET=template_debug \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
