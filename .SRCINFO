@@ -1,6 +1,6 @@
 pkgbase = godot-launcher-bin
 	pkgdesc = A companion app for Godot Engine development that lets you quickly manage and launch projects while maintaining per-project editor settings.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://godotlauncher.org/
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = godot-launcher-bin
 	license = MIT
 	makedepends = asar
 	makedepends = fuse2
-	depends = electron34
-	provides = godot-launcher=1.3.0
+	depends = electron38
+	provides = godot-launcher=1.4.0
 	conflicts = godot-launcher
-	source = LICENSE-1.3.0.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.3.0/LICENSE.txt
+	source = LICENSE-1.4.0.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.4.0/LICENSE.txt
 	source = godot-launcher.sh
 	sha256sums = 982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = godot-launcher-1.3.0-aarch64.AppImage::https://github.com/godotlauncher/launcher/releases/download/v1.3.0/Godot_Launcher-1.3.0-linux.arm64.AppImage
-	sha256sums_aarch64 = 4112ec79b23777a9b9769ffff944e6d089a23760fdd18c4c5ce4b1294718d239
-	source_x86_64 = godot-launcher-1.3.0-x86_64.AppImage::https://github.com/godotlauncher/launcher/releases/download/v1.3.0/Godot_Launcher-1.3.0-linux.x86_64.AppImage
-	sha256sums_x86_64 = 6614137ce001c5068742d4d860eed6699546759e5a4bcc5dbf7d5aaa2ac1a801
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = godot-launcher-1.4.0-aarch64.AppImage::https://github.com/godotlauncher/launcher/releases/download/v1.4.0/Godot_Launcher-1.4.0-linux.arm64.AppImage
+	sha256sums_aarch64 = f04fd762e9ff9450f200996e4b13e157198e71e284dd1c66eff1e2846555d984
+	source_x86_64 = godot-launcher-1.4.0-x86_64.AppImage::https://github.com/godotlauncher/launcher/releases/download/v1.4.0/Godot_Launcher-1.4.0-linux.x86_64.AppImage
+	sha256sums_x86_64 = ab7fadefba640ee1c0e6b9f3326f6c661712af84ab7a2aa21348dc6034029bfa
 
 pkgname = godot-launcher-bin
