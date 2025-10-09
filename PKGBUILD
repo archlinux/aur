@@ -1,7 +1,7 @@
 # Maintainer: qeezzo <root@qeezzo>
 
 pkgname=woomer-sway
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 
 pkgdesc="Zoomer application for Wayland inspired by tsoding's boomer"
