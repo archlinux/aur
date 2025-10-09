@@ -1,0 +1,3 @@
+[python-x-python]
+source = "pypi"
+pypi = "x-python"
