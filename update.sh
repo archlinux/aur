@@ -53,7 +53,8 @@ fi
 echo "Updating from $CURRENT_VER -> $LATEST_VER"
 
 # 3) download AppImage and LICENSE and compute hashes
-APPIMAGE_NAME="OrcaSlicer_Linux_AppImage_V${LATEST_VER}.AppImage"
+#APPIMAGE_NAME="OrcaSlicer_Linux_AppImage_V${LATEST_VER}.AppImage"
+APPIMAGE_NAME="OrcaSlicer_Linux_AppImage_Ubuntu2404_V${LATEST_VER}.AppImage"
 APPIMAGE_URL="https://github.com/SoftFever/OrcaSlicer/releases/download/v${LATEST_VER}/${APPIMAGE_NAME}"
 LICENSE_URL="https://raw.githubusercontent.com/SoftFever/OrcaSlicer/refs/tags/v${LATEST_VER}/LICENSE.txt"
 

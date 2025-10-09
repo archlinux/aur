@@ -12,7 +12,7 @@ license=('AGPL3')
 depends=('fuse2' 'hicolor-icon-theme' 'webkit2gtk')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/OrcaSlicer_Linux_AppImage_V${pkgver}.AppImage"
+source_x86_64=("${_appimage}::https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/OrcaSlicer_Linux_AppImage_Ubuntu2404_V${pkgver}.AppImage"
                "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/refs/tags/v${pkgver}/LICENSE.txt")
 noextract=("${_appimage}")
 sha256sums_x86_64=('f199e5408914efdbbbfa4fd6752cd6ad4727209b488bc47bff9a0da5f053a701' '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
