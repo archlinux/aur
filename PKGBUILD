@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _pkgname='Altair GraphQL Client'
-pkgver=8.2.8
+pkgver=8.3.0
 _electronversion=33
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_x86_64_linux.AppImage")
 sha256sums=('a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('1fb19b048db40ef41427249eec6753e7b8ebef885705e1438621267ac8dc8310')
-sha256sums_x86_64=('3efa800fb29927b3b6904bdc8a38d041e39c833873fa50a21a9409d2280c9a13')
+sha256sums_aarch64=('8aeaab8e22a2d3496723308e70c4d66c56e95975b4967c0b62e11f6a0854feaa')
+sha256sums_x86_64=('b8baadac5e56589e7ee9b37f878bbfbddbd395b42d6480f5a2cba37ee25a7785')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
