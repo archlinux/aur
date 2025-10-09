@@ -1,0 +1,5 @@
+[campfire-bin]
+source = "github"
+github = "DaltonSW/campfire"
+use_latest_release = true
+prefix = "v"
