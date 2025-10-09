@@ -1,0 +1,4 @@
+["statusok-bin"]
+source = "github"
+github = "sanathp/statusok"
+use_latest_release = true

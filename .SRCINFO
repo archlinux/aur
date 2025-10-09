@@ -4,11 +4,15 @@ pkgbase = statusok-bin
 	pkgrel = 1
 	url = https://github.com/sanathp/statusok
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = glibc
 	provides = statusok
-	source = statusok-bin-0.1.1.zip::https://github.com/sanathp/statusok/releases/download/0.1.1/statusok_linux.zip
-	sha256sums = d8eebddf6fefe19a80f5a40e4a8f8167325752c9e0aae07a7814630c1b269fa5
+	conflicts = statusok
+	source_x86_64 = statusok-x86_64-0.1.1.zip::https://github.com/sanathp/statusok/releases/download/0.1.1/statusok_linux.zip
+	source_x86_64 = README-0.1.1.md::https://raw.githubusercontent.com/sanathp/statusok/0.1.1/README.md
+	source_x86_64 = LICENSE-0.1.1::https://raw.githubusercontent.com/sanathp/statusok/0.1.1/License
+	sha256sums_x86_64 = d8eebddf6fefe19a80f5a40e4a8f8167325752c9e0aae07a7814630c1b269fa5
+	sha256sums_x86_64 = 031c2642a826858c95985966017902dde063451c9f03ba9980053ae3bee6831a
+	sha256sums_x86_64 = e764a6f8f5fc2a639fb0c93e8a3b6665fdfac80731a73ba4b26cbbb170869a57
 
 pkgname = statusok-bin
-
