@@ -8,6 +8,7 @@ printsrcinfo() {
   fi
 }
 
+git pull
 
 pkgver=$(awk -F= '/^pkgver=/{print $2}' PKGBUILD)
 repo=$(awk -F'/' '/^url=/{print $4"/"$5}' PKGBUILD)
