@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=venera-bin
 pkgdesc="A comic app"
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/venera-app/venera"
