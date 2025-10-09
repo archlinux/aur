@@ -3,14 +3,14 @@
 
 pkgname=intel-ipu7-dkms-git
 _pkgname=ipu7-drivers
-pkgver=r35.bb69641
+pkgver=r42.62a3704
 pkgrel=1
 pkgdesc="Intel IPU7 camera drivers (DKMS)"
 arch=('any')
 url="https://github.com/intel/${_pkgname}"
 license=('unknown')
 depends=('dkms' 'intel-ivsc-firmware')
-provides=('intel-ivsc-driver-dkms-git')
+provides=('intel-ivsc-driver-dkms-git' 'intel-ipu7-dkms')
 conflicts=('intel-ivsc-driver-dkms-git')
 makedepends=('git')
 source=("git+${url}")
