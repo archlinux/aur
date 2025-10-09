@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff gfxoxinzh@mozmail.com
 pkgname=godot-preview-bin
-pkgver=4.5.1rc1
-_realver=4.5.1-rc1
+pkgver=4.5.1rc2
+_realver=4.5.1-rc2
 pkgrel=1
 pkgdesc="Godot Engine Preview/Beta - Prebuilt binary from official builds"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('godot-preview')
 source=("https://github.com/godotengine/godot-builds/releases/download/${_realver}/Godot_v${_realver}_linux.x86_64.zip"
         "godot-preview.desktop"
         "godot-preview.svg")
-sha256sums=('322b0809fe11253a37fd296f829903b141993941a4f02bc07fd465afe5e0dd3f'
+sha256sums=('a2389857d5c8c13b04c7e65f2d659ef40e3df26409140883e837c663bd83eb37'
             'SKIP'
             'SKIP')
 
