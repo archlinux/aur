@@ -1,6 +1,6 @@
 # Maintainer: Pujan Modha <pujan.pm@hotmail.com>
 pkgname=helium-browser-appimage
-pkgver=0.5.2.1
+pkgver=0.5.5.1
 pkgrel=1
 pkgdesc="Private, fast, and honest web browser"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "helium.desktop::https://raw.githubusercontent.com/imputnet/helium-linux/${pkgver}/package/helium.desktop"
   "helium.svg::https://raw.githubusercontent.com/imputnet/helium-chromium/refs/heads/main/resources/branding/product_logo.svg"
 )
-sha256sums=('de1d0630c979f0d5fe3ee651c2692c3af9703ee659c2240974ce585e46b19439'
+sha256sums=('1422c2b744fe53c26a52415501f97ffceb675ac36837c9561c888c270b3632aa'
             'cce8668c18d33077a585cb5d96522e5a02ae017a2baf800f8d7214ce6d05d3d2'
             '7eb2b8a0b00a8ccefe2b4712c298a9c320d8bbd44f6de9133621e3f3fdd34e7a')
 
