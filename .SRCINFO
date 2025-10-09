@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-frippery
 	pkgdesc = Gnome Shell extensions to make Gnome 3 more like Gnome 2
-	pkgver = 48.1
+	pkgver = 49.0
 	pkgrel = 1
 	url = http://frippery.org/extensions/index.html
 	arch = any
 	license = GPL2
 	depends = gnome-shell>=46.0
-	source = http://frippery.org/extensions/gnome-shell-frippery-48.1.tgz
-	sha256sums = c6836c657d44144816c73af818c782ec4d4e8599e8656563d0db3ee5314e0946
+	source = http://frippery.org/extensions/gnome-shell-frippery-49.0.tgz
+	sha256sums = 4044653f052548189535ad7cd3531ceaa77a7a4c0d11636e738915dea1be3d87
 
 pkgname = gnome-shell-frippery

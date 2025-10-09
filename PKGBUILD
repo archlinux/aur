@@ -1,8 +1,10 @@
-# Maintainer: Brian Thompson <brianrobt@pm.me>
+# Maintainer: envolution
+# Contributor: Brian Thompson <brianrobt@pm.me>
 # Contributor: Christian Brassat <christian.brassat@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=gnome-shell-frippery
-pkgver=48.1
+pkgver=49.0
 pkgrel=1
 pkgdesc='Gnome Shell extensions to make Gnome 3 more like Gnome 2'
 arch=('any')
@@ -11,7 +13,7 @@ license=('GPL2')
 depends=('gnome-shell>=46.0')
 makedepends=()
 source=("http://frippery.org/extensions/${pkgname}-${pkgver}.tgz")
-sha256sums=('c6836c657d44144816c73af818c782ec4d4e8599e8656563d0db3ee5314e0946')
+sha256sums=('4044653f052548189535ad7cd3531ceaa77a7a4c0d11636e738915dea1be3d87')
 
 package() {
   cd .local
@@ -19,5 +21,4 @@ package() {
   mkdir -p $pkgdir/usr
   cp -r share $pkgdir/usr/
 }
-
 # vim:set ts=2 sw=2 et:
