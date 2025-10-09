@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-git
 _pkgname=Witsy
-pkgver=2.14.0.r0.g332d8fc
-_electronversion=32
+pkgver=3.0.0.r2.g8760ea5
+_electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="Generative AI desktop application.(Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -46,6 +46,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -53,8 +54,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _get_electron_version
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -78,12 +77,14 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
@@ -97,7 +98,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*/resources/* "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
