@@ -10,7 +10,7 @@
 
 _basename=coccinelle
 pkgname=$_basename-git
-pkgver=1.3.r199.g7674e29
+pkgver=1.3.r203.g9e8fb87
 pkgrel=1
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
@@ -79,13 +79,7 @@ build() {
 
 check() {
     cd $_basename
-
-    # make check is interactive, so do it manually
-
-    ./spatch.opt --testall
-
-    cd cpptests
-    ../scripts/cpptests.sh
+    make check
 }
 
 package() {
