@@ -1,0 +1,15 @@
+pkgbase = anyrun-provider-git
+	pkgdesc = The backend of Anyrun, loads Anyrun plugins and is used as the middleman between launchers and the plugins.
+	pkgver = r13.330d00e
+	pkgrel = 1
+	url = https://github.com/anyrun-org/anyrun-provider
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	provides = anyrun-provider=r13.330d00e
+	options = !lto
+	source = anyrun-provider::git+https://github.com/anyrun-org/anyrun-provider.git
+	sha256sums = SKIP
+
+pkgname = anyrun-provider-git
