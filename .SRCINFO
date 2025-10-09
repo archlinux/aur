@@ -1,0 +1,16 @@
+pkgbase = python-arch32api
+	pkgdesc = Win32API compatibility layer for Arch Linux using ydotool and xdotool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/python-arch32api
+	arch = any
+	license = MIT
+	depends = python
+	depends = xdotool
+	depends = ydotool
+	source = arch32api.py
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-arch32api
