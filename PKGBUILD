@@ -28,6 +28,7 @@ build() {
       -DBLA_VENDOR=Generic \
       -DEIGENSPARSE=ON \
       -DGFLAGS=OFF \
+      -DUSE_CUDA=OFF \
       -DBUILD_SHARED_LIBS=ON \
       -DBUILD_TESTING=OFF \
       -DBUILD_EXAMPLES=OFF \
