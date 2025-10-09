@@ -3,14 +3,14 @@
 _pkgauthor=ismail-yilmaz
 _pkgname=Bobcat
 pkgname=${_pkgname,,}-terminal
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 uppname=upp-posix
 upprel=2025.1.1
 uppver=17810
 pkgdesc="A powerful yet user-friendy cross-platform terminal emulator"
 arch=('x86_64')
-url="https://github.com/${_pkgauthor}/${pkgname}"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('GPL-3.0')
 
 conflicts=("${pkgname}"{-git,-bin})
@@ -25,7 +25,7 @@ depends=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "${uppname}-${uppver}.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v$upprel/${uppname}-${uppver}.tar.xz")
-sha256sums=('a8b968b9187d1f15d69573df1748d3a68837c0e707677874a45d3006d90d54bc'
+sha256sums=('2a9fd0c935a821678f2ebdf7ce84ae527520e0ff7ad79fa4378eb176630efaf8'
             '3c7415f2ba4398b371be063ba9071b1983d961a465d4d665a8367e62909d661e')
 
 prepare() {
