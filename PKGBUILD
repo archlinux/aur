@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=klive-ide-bin
 _pkgname='Klive IDE'
-pkgver=0.49.3
+pkgver=0.49.4
 _electronversion=35
 pkgrel=1
 pkgdesc="Versatile emulator and developer environment for all Sinclair machines.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,6 @@ depends=(
 )
 makedepends=(
     'asar'
-    'fuse2'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Dotneteer/kliveide/v${pkgver}/LICENSE"
@@ -28,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/KliveIdeSetup-${pkgver}-x86_64.AppImage")
 sha256sums=('ad04d247c1ea46d2a869ae87c1fc1dc36c6b2feb60d0b9f6c155a4dfe7ca7f34'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('df1d24797c41fe41c1de841c3f709d48bdb4d5de112f572ff11866b6d15b1d07')
-sha256sums_x86_64=('0c14f54e9e634de68972acccbdbc3e599f32ce0cf298798411cd78245f3a1684')
+sha256sums_aarch64=('95df9b720a6763eb2b54bdbd851b2f26e72fe9854eb3bfe0209082027fe90c54')
+sha256sums_x86_64=('ee4e85e007bf8d82964f8ecdfa4b8e23782c100df585b3e002bdac32f9f0a2c6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
