@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=1.6.2.r3.gbb0ec0a
+pkgver=1.7.0.alpha.4.r38.g654f19e
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -48,6 +48,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
+    _get_electron_version
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -55,7 +56,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname// /}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
-    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
