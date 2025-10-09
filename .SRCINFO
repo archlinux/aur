@@ -1,7 +1,7 @@
 pkgbase = clilog-git
 	pkgdesc = CLI To-do list manager built in Bash with TUI and Python for Web interface support, adhering to XDG Base Directory Specification.
-	pkgver = 0.2.r2.g2dd2244
-	pkgrel = 2
+	pkgver = 0.3.r28.gc1ceec6
+	pkgrel = 1
 	url = https://github.com/simeulinuxkaliaiwr/clilog
 	arch = any
 	license = MIT
