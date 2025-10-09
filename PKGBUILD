@@ -2,13 +2,13 @@
 
 pkgname=fortbite
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High-precision mathematical calculator in Modern Fortran'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortbite'
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc-gfortran>=4.8' 'make')
+makedepends=('gcc-fortran' 'make')
 source=("git+https://github.com/FortranGoingOnForty/fortbite.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
