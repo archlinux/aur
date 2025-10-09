@@ -1,0 +1,25 @@
+version = "3.0"
+
+[annotations]
+SPDX-FileCopyrightText = "Copyright (c) 2024 Tamil Assistant"
+SPDX-License-Identifier = "0BSD"
+
+[[licenses]]
+path = "LICENSE"
+SPDX-FileCopyrightText = "Copyright (c) 2024 Tamil Assistant"
+SPDX-License-Identifier = "0BSD"
+
+[[licenses]]
+path = "PKGBUILD"
+SPDX-FileCopyrightText = "Copyright (c) 2024 Tamil Assistant"
+SPDX-License-Identifier = "0BSD"
+
+[[licenses]]
+path = ".SRCINFO"
+SPDX-FileCopyrightText = "Copyright (c) 2024 Tamil Assistant"
+SPDX-License-Identifier = "0BSD"
+
+[[licenses]]
+path = "tamil-assistant-postinstall.sh"
+SPDX-FileCopyrightText = "Copyright (c) 2024 Tamil Assistant"
+SPDX-License-Identifier = "0BSD"

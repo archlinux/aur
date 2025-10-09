@@ -6,8 +6,28 @@ set -e
 
 echo "🔧 Setting up Tamil Assistant..."
 
+# Detect the actual user (not root during package installation)
+if [ "$EUID" -eq 0 ] && [ -n "$SUDO_USER" ]; then
+    # Running as root via sudo, use the original user
+    ACTUAL_USER="$SUDO_USER"
+    ACTUAL_HOME="/home/$SUDO_USER"
+elif [ "$EUID" -eq 0 ] && [ -z "$SUDO_USER" ]; then
+    # Running as root without sudo, try to detect the user
+    # This happens during package installation
+    echo "⚠️  Running as root during package installation"
+    echo "📋 User configuration will be created on first run"
+    echo "ℹ️  Run 'tamil-assistant --setup' after installation to configure for your user"
+    exit 0
+else
+    # Running as regular user
+    ACTUAL_USER="$USER"
+    ACTUAL_HOME="$HOME"
+fi
+
+echo "👤 Setting up for user: $ACTUAL_USER"
+
 # Create user config directory
-USER_CONFIG_DIR="$HOME/.config/tamil-assistant"
+USER_CONFIG_DIR="$ACTUAL_HOME/.config/tamil-assistant"
 mkdir -p "$USER_CONFIG_DIR"
 
 # Copy default config if it doesn't exist
@@ -34,12 +54,12 @@ else
 fi
 
 # Create logs directory
-USER_LOG_DIR="$HOME/.local/share/tamil-assistant/logs"
+USER_LOG_DIR="$ACTUAL_HOME/.local/share/tamil-assistant/logs"
 mkdir -p "$USER_LOG_DIR"
 echo "📁 Logs directory created at $USER_LOG_DIR"
 
 # Check if i3 config exists
-I3_CONFIG="$HOME/.config/i3/config"
+I3_CONFIG="$ACTUAL_HOME/.config/i3/config"
 if [ -f "$I3_CONFIG" ]; then
     echo "🔍 Checking i3 configuration..."
     
@@ -93,7 +113,7 @@ fi
 # Update desktop database
 if command -v update-desktop-database >/dev/null 2>&1; then
     echo "🔄 Updating desktop database..."
-    update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
+    update-desktop-database "$ACTUAL_HOME/.local/share/applications" 2>/dev/null || true
 fi
 
 # Update system desktop database
