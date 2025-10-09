@@ -2,6 +2,7 @@ pkgbase = orca-slicer
 	pkgdesc = G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)
 	pkgver = 2.3.1
 	pkgrel = 2
+	epoch = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPL3
