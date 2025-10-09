@@ -11,6 +11,7 @@ _file_prefix=monitor@astraext.github.io
 source=("$pkgname-v$pkgver.zip::$url/releases/download/v$pkgver/$_file_prefix.shell-extension.zip")
 sha256sums=('7057d6b54814f9e14ec6c3b85a3e68de98059922fffaf0bbd51fe8e55041d491')
 depends=('gnome-shell')
+optdepends=('libgtop: collecting system data' 'nethogs: network I/O')
 
 package() {
   cd "$(dirname $(find -name 'metadata.json' -print -quit))"
