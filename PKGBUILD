@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronim-bin
 _pkgname=ElectronIM
-pkgver=0.0.116
-_electronversion=37
+pkgver=0.0.117
+_electronversion=38
 pkgrel=1
 pkgdesc="Electron based multi IM (Instant Messaging) client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1d30bfc3162ac78ce4733c4d70089842d66af73cf16acfaf501e54891bf3fcfc'
+sha256sums=('d5f3c686dcd3b37b147e95ac070438815531b6b163ae74f1d54478fb64273115'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
