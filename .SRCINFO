@@ -1,0 +1,12 @@
+pkgbase = linux-mdss-dsi-panel-driver-generator
+	pkgdesc = Generate Linux DRM panel kernel driver based on QCOM MDSS DSI device tree
+	pkgver = 0
+	pkgrel = 0
+	url = https://github.com/msm8916-mainline/linux-mdss-dsi-panel-driver-generator
+	arch = any
+	license = GPL2
+	depends = python
+	source = https://github.com/msm8916-mainline/linux-mdss-dsi-panel-driver-generator/archive/c917fccebe485cab2465c8258fc8418f481869b1.tar.gz
+	sha512sums = 961c35a40a5b1cf24197fc781b3aba0d5830206141f9e5eb755c5675fd6357f3b8864485ccbc1c4e967bb891cd1a59754b6db8d06b5fb5aec87502ea868279b1
+
+pkgname = linux-mdss-dsi-panel-driver-generator
