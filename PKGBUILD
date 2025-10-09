@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nerimity-desktop
 _pkgname=Nerimity
-pkgver=1.6.7
-_electronversion=37
-_nodeversion=24
+pkgver=1.7.2
+_electronversion=38
+_nodeversion=22
 pkgrel=1
 pkgdesc="A modern and sleek chat app.(Use system-wide electron)"
 arch=('x86_64')
@@ -25,16 +25,21 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('3fc7bb164e47a4dc559b2eaf50d5757eb6355362c98c185fcc283cd0cbf4cd26'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('600ba3e964532d38052bc9133533ccdba4addaafaea28ae24077fc5dd26147ad'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -42,7 +47,6 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -62,12 +66,14 @@ prepare() {
         echo 'registry=https://registry.npmmirror.com' >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     sed -i "s/!isPacked/isPacked/g" src/mainWindow.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
