@@ -1,17 +1,18 @@
 pkgbase = easyedit-bin
 	pkgdesc = An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/gcclinux/EasyEdit
 	arch = x86_64
 	license = MIT
+	makedepends = squashfs-tools
 	depends = electron38
-	provides = easyedit=1.4.0
+	provides = easyedit=1.4.1
 	conflicts = easyedit
-	source = easyedit-1.4.0-x86_64.AppImage::https://github.com/gcclinux/EasyEdit/releases/download/1.4.0/EasyEdit-1.4.0-x86_64.AppImage
-	source = LICENSE-1.4.0::https://raw.githubusercontent.com/gcclinux/EasyEdit/1.4.0/LICENSE
+	source = easyedit-1.4.1-x86_64.snap::https://github.com/gcclinux/EasyEdit/releases/download/1.4.1/EasyEdit-1.4.1-amd64.snap
+	source = LICENSE-1.4.1::https://raw.githubusercontent.com/gcclinux/EasyEdit/1.4.1/LICENSE
 	source = easyedit.sh
-	sha256sums = 000bceced9b24d85d18597358d24b0ba26c1cab2baef68474a5f70bef5f13f03
+	sha256sums = dff5bc9ce3cd1478d0dad11b2d029d028175032bcc31adc22bf74b0e9e44080b
 	sha256sums = 2b94523fd0d3fd7553fcdd10250f68ed5c058749d5d60c8aae906f6f42ace489
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
