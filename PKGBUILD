@@ -1,6 +1,6 @@
 pkgname=easyaudiosync
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Audio library syncing and conversion utility"
 arch=(x86_64)
