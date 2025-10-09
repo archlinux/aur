@@ -46,7 +46,7 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+  CFLAGS+=" -std=gnu89 -Wno-error=incompatible-pointer-types"
 
   cd "spacefm"
   ./configure \
