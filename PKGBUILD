@@ -3,13 +3,13 @@
 
 _pkgname=krunner-vscodeprojects
 pkgname=$_pkgname
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Open VSCode Project Manager projects from Krunner"
 arch=('any')
 url="https://github.com/alex1701c/$_pkgname.git"
 source=("https://github.com/alex1701c/$_pkgname/archive/${pkgver}.tar.gz")
-md5sums=('3dcb0b63b51fdf228b98cd31ea86f59f')
+md5sums=('ae1fd094d0bb5ece4f78f2e52990feb6')
 groups=()
 depends=(
   krunner
