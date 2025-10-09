@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: czyt <czytcn@gmail.com>
 pkgname=cc-switch-bin
 pkgver=3.4.0
 pkgrel=3
