@@ -1,6 +1,6 @@
 pkgbase = dms-shell-bin
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
-	pkgver = 0.1.4
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = dms-shell-bin
 	conflicts = dms-shell-git
 	conflicts = dms-shell
 	conflicts = dms-git
-	source_x86_64 = dms-shell-bin-0.1.4.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.1.4.tar.gz
-	source_x86_64 = dms-v0.1.4-amd64.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.1.4/dms-amd64.gz
+	source_x86_64 = dms-shell-bin-0.1.8.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.1.8.tar.gz
+	source_x86_64 = dms-v0.1.8-amd64.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.1.8/dms-amd64.gz
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = dms-shell-bin-0.1.4.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.1.4.tar.gz
-	source_aarch64 = dms-v0.1.4-arm64.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.1.4/dms-arm64.gz
+	source_aarch64 = dms-shell-bin-0.1.8.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v0.1.8.tar.gz
+	source_aarch64 = dms-v0.1.8-arm64.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.1.8/dms-arm64.gz
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 
