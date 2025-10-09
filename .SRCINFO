@@ -1,10 +1,11 @@
 pkgbase = neodlp
 	pkgdesc = Cross-platform Video/Audio Downloader Desktop App with Modern UI and Browser Integration
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/neosubhamoy/neodlp
 	install = neodlp.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = curl
 	makedepends = jq
@@ -19,7 +20,9 @@ pkgbase = neodlp
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = NeoDLP_0.2.2_amd64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.2.2/NeoDLP_0.2.2_amd64.deb
+	source_x86_64 = NeoDLP_0.3.0_amd64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.3.0/NeoDLP_0.3.0_amd64.deb
 	sha256sums_x86_64 = SKIP
+	source_aarch64 = NeoDLP_0.3.0_arm64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.3.0/NeoDLP_0.3.0_arm64.deb
+	sha256sums_aarch64 = SKIP
 
 pkgname = neodlp

@@ -1,9 +1,9 @@
 # Maintainer: Subhamoy Biswas <hey@neosubhamoy.com>
 pkgname=neodlp
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Cross-platform Video/Audio Downloader Desktop App with Modern UI and Browser Integration"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/neosubhamoy/neodlp"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
@@ -23,12 +23,23 @@ pkgver() {
 prepare() {
   cd "$srcdir"
   mkdir -p extracted
-  ar x NeoDLP_${pkgver}_amd64.deb
+  
+  # Extract the appropriate .deb file based on architecture
+  case "$CARCH" in
+    x86_64)
+      ar x "NeoDLP_${pkgver}_amd64.deb"
+      ;;
+    aarch64)
+      ar x "NeoDLP_${pkgver}_arm64.deb"
+      ;;
+  esac
 }
 
 package() {
   tar -xf "$srcdir/data.tar.gz" -C "${pkgdir}"
 }
 
-source_x86_64=("NeoDLP_${pkgver}_amd64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v$pkgver/NeoDLP_${pkgver}_amd64.deb")
+source_x86_64=("NeoDLP_${pkgver}_amd64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_amd64.deb")
 sha256sums_x86_64=('SKIP')
+source_aarch64=("NeoDLP_${pkgver}_arm64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_arm64.deb")
+sha256sums_aarch64=('SKIP')
