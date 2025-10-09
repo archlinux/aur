@@ -4,7 +4,7 @@
 _pkgname=orca-slicer
 pkgname=${_pkgname}-appimage-bin
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OrcaSlicer AppImage — prebuilt AppImage with reliable viewport rendering on newer NVIDIA (nvidia-open); avoids heavy compilation and common install failures of other AUR variants."
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"

@@ -1,7 +1,7 @@
 pkgbase = orca-slicer-appimage-bin
 	pkgdesc = OrcaSlicer AppImage — prebuilt AppImage with reliable viewport rendering on newer NVIDIA (nvidia-open); avoids heavy compilation and common install failures of other AUR variants.
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPL3
