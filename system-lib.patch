@@ -10,7 +10,7 @@
 -include(${rapids-cmake-dir}/cpm/cuco.cmake)
 -rapids_cpm_cuco(BUILD_EXPORT_SET cugraph-exports INSTALL_EXPORT_SET cugraph-exports)
 -include(cmake/thirdparty/get_raft.cmake)
-+
++find_package(rapids_logger REQUIRED)
 +find_package(CCCL REQUIRED)
 +find_package(cuco REQUIRED)
 +find_package(nvtx3 REQUIRED)
