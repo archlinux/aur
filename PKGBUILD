@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf python-pylibcudf)
-pkgver=25.08.00
+pkgver=25.10.00
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -14,38 +14,23 @@ source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz"
     "cuda-flags.patch"
     "system-lib.patch" 
-    "missing-pkg.patch")
-sha256sums=(
-    '749e5d17b4a71eb5494b46dc5dbf5926957402eb736fded4d12496ef2e8f53d7'
-    '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
-    '9e50cb3d7a30e876982ffa82f0b547421f07891227a1390f9d33f3310e077092'
-    'SKIP'
+    "missing-pkg.patch"
+    "missing-include.patch"
 )
-
-_delete_file() {
-    local file="$1"
-    local real_file
-
-    if [ ! -e "$file" ]; then
-        return 0
-    fi
-
-    while [ -L "$file" ]; do
-        real_file=$(readlink -f "$file")
-        rm -f "$file" || return 1
-        file="$real_file"
-    done
-
-    rm -f "$file" || return 1
-
-    return 0
-}
+sha256sums=(
+    '110c01acb24c94a005d6337e27c273e80109d38354e0e3b9fab5a432de5ee97d'
+    '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
+    'e084172285cd947e8f6e84e0f3c5868c683adc57420b53bfb62798b85e674478'
+    '2958c6575d6aad29fb344f5d85c36975c8d7ba2d7a38a8ec1114679f67bd194f'
+    '9c5c21ce596e3ec7dc0831ae2c5ab71d733f4ddcb917ea8c4d55e7c02dd40baa'
+)
 
 prepare() {
     cd "$srcdir/cudf-$pkgver"
     patch -p1 "cpp/cmake/Modules/ConfigureCUDA.cmake" < "$srcdir/cuda-flags.patch"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibcudf/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
+    patch -p1 "cpp/src/jit/row_ir.hpp" < "$srcdir/missing-include.patch"
 }
 
 
@@ -76,19 +61,10 @@ package_libcudf() {
     DESTDIR="$pkgdir" cmake --install build
     rm "$pkgdir/usr/lib/pkgconfig" -r
     rm "$pkgdir/usr/lib/cmake/zstd" -r
-    rm "$pkgdir/usr/lib/cmake/nvcomp" -rf
-    rm "$pkgdir/usr/include/nvcomp" -rf
-    rm "$pkgdir/usr/include/nvcomp_export.h" -f
     rm "$pkgdir/usr/lib/libzstd.a"
     rm "$pkgdir/usr/include/zstd.h"
     rm "$pkgdir/usr/include/zstd_errors.h"
     rm "$pkgdir/usr/include/zdict.h"
-    rm "$pkgdir/usr/lib/libnvcomp_static.a" -f
-    rm "$pkgdir/usr/lib/libnvcomp_cpu_static.a" -f
-    rm "$pkgdir/usr/lib/libnvcomp_device_static.a" -f
-
-    _delete_file "$pkgdir/usr/lib/libnvcomp.so"
-    _delete_file "$pkgdir/usr/lib/libnvcomp_cpu.so"
 }
 
 package_python-pylibcudf() {

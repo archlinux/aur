@@ -1,6 +1,23 @@
---- src/cudf-25.08.00/cpp/CMakeLists.txt	2025-08-07 01:50:56.000000000 +0800
-+++ src/cudf-25.08.00/cpp/CMakeLists.txt.new	2025-08-07 12:51:59.795415957 +0800
-@@ -277,25 +277,25 @@
+--- cpp/CMakeLists.txt	2025-10-09 00:55:34.000000000 +0800
++++ cpp/CMakeLists.txt.new	2025-10-09 17:51:42.708054536 +0800
+@@ -19,6 +19,7 @@
+ include(rapids-cpm)
+ include(rapids-cuda)
+ include(${rapids-cmake-dir}/cuda/set_runtime.cmake)
++include(${rapids-cmake-dir}/export/find_package_root.cmake)
+ include(rapids-export)
+ include(rapids-find)
+ 
+@@ -273,24 +274,23 @@
+ # add third party dependencies using CPM
+ rapids_cpm_init()
+ 
+-include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
+-rapids_cpm_rapids_logger(BUILD_EXPORT_SET cudf-exports INSTALL_EXPORT_SET cudf-exports)
++find_package(rapids_logger REQUIRED)
+ create_logger_macros(CUDF "cudf::default_logger()" include/cudf)
+ 
+ # find jitify
  include(cmake/thirdparty/get_jitify.cmake)
  
  # find NVTX
@@ -8,17 +25,20 @@
 +find_package(nvtx3 REQUIRED)
  
  # find nvCOMP
- include(cmake/thirdparty/get_nvcomp.cmake)
+-include(cmake/thirdparty/get_nvcomp.cmake)
++find_package(nvcomp REQUIRED)
  
  # find CCCL before rmm so that we get cudf's patched version of CCCL
 -include(cmake/thirdparty/get_cccl.cmake)
-+find_package(cccl REQUIRED)
++find_package(CCCL REQUIRED)
  
  # find rmm
 -include(cmake/thirdparty/get_rmm.cmake)
 +find_package(rmm REQUIRED)
  
- # find flatbuffers
+ # find croaring
+ include(cmake/thirdparty/get_croaring.cmake)
+@@ -299,10 +299,10 @@
  include(cmake/thirdparty/get_flatbuffers.cmake)
  
  # find dlpack
@@ -31,7 +51,7 @@
  
  # find or install GoogleTest
  if(CUDF_BUILD_TESTUTIL)
-@@ -306,14 +306,11 @@
+@@ -313,14 +313,11 @@
  include(cmake/Modules/JitifyPreprocessKernels.cmake)
  
  # find KvikIO
@@ -47,7 +67,7 @@
  # find zstd
  include(cmake/thirdparty/get_zstd.cmake)
  
-@@ -969,7 +966,7 @@
+@@ -987,7 +984,7 @@
  # Specify the target module library dependencies
  target_link_libraries(
    cudf

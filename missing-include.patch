@@ -1,0 +1,11 @@
+--- cpp/src/jit/row_ir.hpp	2025-10-09 00:55:34.000000000 +0800
++++ cpp/src/jit/row_ir.hpp.new	2025-10-09 17:02:52.522795517 +0800
+@@ -15,6 +15,8 @@
+  */
+ 
+ #pragma once
++#include <variant>
++
+ #include <cudf/ast/detail/operators.hpp>
+ #include <cudf/ast/expressions.hpp>
+ #include <cudf/io/types.hpp>
