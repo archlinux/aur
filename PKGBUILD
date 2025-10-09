@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortbite
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='High-precision mathematical calculator in Modern Fortran'
 arch=('x86_64')
