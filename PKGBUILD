@@ -2,10 +2,12 @@
 
 _pkgname="hellfire"
 pkgname="$_pkgname-browser-bin"
-pkgver=145.0a1
-_pkgver=""
 
-pkgrel=2
+_pkgver=145.0a1
+_pkgverx=_FP1
+pkgver=${_pkgver}${_pkgverx}
+
+pkgrel=1
 pkgdesc="Optimized Firefox for GNU/Linux & Windows"
 url="https://github.com/CYFARE/HellFire"
 license=('MPL')
@@ -57,27 +59,25 @@ makedepends=(
   7zip
 )
 
-
 source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}${_pkgver}/hellfire-${pkgver}.en-US.linux-x86_64.7z")
-sha256sums_x86_64=('38db25b43f7e0b9e6c81c0a9640759f2b434f73ff3a5c0be98f50af994d00de0')
+source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/hellfire-${_pkgver}.en-US.linux-x86_64.7z")
+sha256sums_x86_64=('7a2b7452fda130ddee18c85e288f3de97d5ff9c85242062b246ccf2af61ba133')
 
-package()
-{
-    mkdir -p ${pkgdir}/opt/${_pkgname}
-    mkdir -p ${pkgdir}/usr/bin/
+package() {
+  mkdir -p ${pkgdir}/opt/${_pkgname}
+  mkdir -p ${pkgdir}/usr/bin/
 
-    cd ${srcdir} || exit
+  cd ${srcdir} || exit
 
-    7za x hellfire-${pkgver}.en-US.linux-x86_64.7z -o${_pkgname}
+  7za x hellfire-${_pkgver}.en-US.linux-x86_64.7z -o${_pkgname}
 
-    cp -r ${_pkgname}/firefox/* ${pkgdir}/opt/${_pkgname}/
+  cp -r ${_pkgname}/firefox/* ${pkgdir}/opt/${_pkgname}/
 
-    ln -srf ${pkgdir}/opt/${_pkgname}/firefox ${pkgdir}/usr/bin/${_pkgname}
+  ln -srf ${pkgdir}/opt/${_pkgname}/firefox ${pkgdir}/usr/bin/${_pkgname}
 
-    install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-    install -Dm644 default128.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
-    install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -Dm644 default128.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
