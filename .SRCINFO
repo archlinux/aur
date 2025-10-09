@@ -1,11 +1,11 @@
 pkgbase = glab-component-generator-bin
 	pkgdesc = Small Golang CLI to generate README for Gitlab CI components
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/peschmae/glab-component-generator
 	arch = x86_64
 	license = MIT
-	source = https://github.com/peschmae/glab-component-generator/releases/download/v0.9.0/glab-component-generator-v0.9.0-linux-amd64.tar.gz
-	sha256sums = 549e79913e6d0917bd4ca8de52026626bbf0fbc05190789c4040ab012ffbe950
+	source = https://github.com/peschmae/glab-component-generator/releases/download/v0.10.0/glab-component-generator-v0.10.0-linux-amd64.tar.gz
+	sha256sums = c50c8eb385b041635b2be5def182f8e5a589d54861843483d7503ea50f75da31
 
 pkgname = glab-component-generator-bin
