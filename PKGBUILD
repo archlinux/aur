@@ -4,7 +4,7 @@ pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
 pkgver=3.3.0
 _electronversion=36
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -18,11 +18,12 @@ conflicts=("${_pkgname}")
 depends=(
     "electron${_electronversion}"
 )
+makedepends=(
+    'asar'
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage")
-source=(
-    "${pkgname%-bin}.sh"
-)
+source=("${pkgname%-bin}.sh")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('c8723421e4d92785cc9c0164ee1bbca6f8c8006c24ad6736adc04e989b983718')
 sha256sums_x86_64=('2212431d199d3f7de2269a30b502c5260b3bc0c2cd34443e065f174cffbc7743')
