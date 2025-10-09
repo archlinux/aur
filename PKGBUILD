@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yesplaymusic-bin
 _pkgname=YesPlayMusic
-pkgver=0.4.8_2
+pkgver=0.4.10
 _electronversion=13
-pkgrel=4
+pkgrel=1
 pkgdesc="A third party music application for Netease Music.Prebuilt version.Use system-wide electron.高颜值的第三方网易云播放器."
 arch=(
     'aarch64'
@@ -34,10 +34,14 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('3cfd1aa726d2391aa578e068825760215d6d619a9aa3c919e3be26b80103a5dd')
-sha256sums_armv7h=('13ccd225abbd4d5beb6fcee95648f5aae551809ffd1eefe1b37cf446980d5ad3')
-sha256sums_x86_64=('8935a2fad64651053b27599c98c76559748aa581b2e263007aaf4237d7e19d9f')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('b96c8c4a342b78aaba074af44755ab3ee3d8e3322472b30ee93be0b9a1fb7351')
+sha256sums_armv7h=('448a66a49f06238f3999788aee6633f67b6291a8dcdf16ea81c41301c05e148d')
+sha256sums_x86_64=('92248cd743bf8af7e86a7b4183b9ade4a175ae0cfe88d3321a1d7022675cd314')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -47,6 +51,7 @@ prepare() {
         s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Music;/AudioVideo;/g
