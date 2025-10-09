@@ -1,6 +1,6 @@
 pkgname=intel-ipu7-camera-hal-git
 _pkgname=ipu7-camera-hal
-pkgver=r34.e1a960c
+pkgver=r48.feed915
 pkgrel=1
 pkgdesc="Intel IPU7 camera HAL"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'jsoncpp')
 provides=(ipu7-camera-hal)
 source=("git+${url}.git" "patch-cmake35-xedrm.diff")
 sha256sums=('SKIP'
-    '90dda7f4f25a21b55ca306cd63a1061012ae6aa84f4f6175903991ca8a0801ca')
+            '53db02482c9680d2678c9019a29bb1a348546e1d6b130f7533ea3f3c20538988')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"

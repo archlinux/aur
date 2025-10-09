@@ -24,17 +24,3 @@ index c1d7d22..9f947cc 100644
 +#include <json/json.h>
  
  #include "src/iutils/Utils.h"
- 
-diff --git a/src/platformdata/gc/HalStream.h b/src/platformdata/gc/HalStream.h
-index 2be7818..3205011 100644
---- a/src/platformdata/gc/HalStream.h
-+++ b/src/platformdata/gc/HalStream.h
-@@ -16,6 +16,8 @@
- 
- #pragma once
- 
-+#include <cstdint>
-+
- namespace icamera {
- 
- // Temporary solution
