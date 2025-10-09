@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="rapidraw"
 pkgname="$_pkgname-git"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.4.1.r2.g7343610
+pkgver=1.4.1.r33.g4e5ec0a
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -54,4 +54,7 @@ build() {
 package() {
   cd "$_pkgsrc"
   cp -r "src-tauri/${CARGO_TARGET_DIR}/release/bundle/deb/RapidRAW_${pkgver%%.r*}_amd64/data"/* "$pkgdir/"
+
+  # fix launcher
+  sed -E -e 's&^(Categories)=&\1=Graphics;&' -i "$pkgdir/usr/share/applications/RapidRAW.desktop"
 }
