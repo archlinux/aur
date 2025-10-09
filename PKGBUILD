@@ -3,7 +3,7 @@
 # Contributor: Evan Bush (PencilShavings) <eb.pencilshavings@protonmail.com>
 
 pkgname=quickemu-git
-pkgver=4.9.7.r58.g78b938fa
+pkgver=4.9.7.r58.g78b938f
 pkgrel=1
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines"
 arch=(any)
@@ -41,7 +41,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "quickemu"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
