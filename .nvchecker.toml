@@ -1,0 +1,5 @@
+["dumbpipe-bin"]
+source = "github"
+github = "n0-computer/dumbpipe"
+use_latest_release = true
+prefix = "v"
