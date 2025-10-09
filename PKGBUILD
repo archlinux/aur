@@ -3,7 +3,7 @@
 
 pkgname=teamviewer-sandboxed
 pkgver=15.70.4
-pkgrel=1
+pkgrel=2
 pkgdesc='TeamViewer with systemd and bubblewrap security sandboxing (recommended for client-only use)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://www.teamviewer.com/en/download/portal/linux/'
@@ -47,6 +47,11 @@ prepare() {
     msg2 "Running teamviewer_setup checklibs"
     ./opt/teamviewer/tv_bin/script/teamviewer_setup checklibs \
     || msg2 "teamviewer_setup checklibs failed, contact maintainer with /tmp/teamviewerTARLibCheck/DependencyCheck.log"
+
+    # Patch .desktop files to use the sandboxed wrapper
+    msg2 "Patching .desktop files to use /usr/bin/teamviewer wrapper"
+    find ./opt/teamviewer/tv_bin/desktop -name "*.desktop" -type f -exec \
+        sed -i 's|Exec=/opt/teamviewer/tv_bin/script/teamviewer|Exec=/usr/bin/teamviewer|g' {} +
 }
 
 package() {
@@ -55,6 +60,13 @@ package() {
 
     # Remove apt configs
     rm -rf "${pkgdir}"/etc/apt
+
+    # Remove polkit policy to prevent sandbox escape via pkexec
+    rm -f "${pkgdir}"/usr/share/polkit-1/actions/com.teamviewer.TeamViewer.policy
+
+    # Remove D-Bus services to prevent auto-activation bypass of sandbox
+    rm -f "${pkgdir}"/usr/share/dbus-1/services/com.teamviewer.TeamViewer.service
+    rm -f "${pkgdir}"/usr/share/dbus-1/services/com.teamviewer.TeamViewer.Desktop.service
 
     # Install sandboxed systemd service
     install -D -m0644 "${srcdir}"/teamviewerd-sandboxed.service \
