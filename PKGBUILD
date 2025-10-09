@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://www.satoamerica.com/resources/software/linux-and-mac-os-x-drivers-for-sato-printers'
 license=('custom')
 
-makedepends=('unzip')
+makedepends=('unzip' 'tar' 'gzip')
 optdepends=('cups: print server')
 
 options=('!strip')
