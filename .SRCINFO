@@ -17,6 +17,6 @@ pkgbase = woomer-sway
 	depends = glibc
 	options = !debug
 	source = woomer-sway-1.0.1.tar.gz::https://github.com/qeezzo/woomer/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = e2a385481a17fbf16d04629e40a2fb5fb3431e428cc19794f8e9513a16d976c1
+	sha256sums = 979aa9255ac70078a382119ed64d9923af70029ca72dc481d6c68647fada8309
 
 pkgname = woomer-sway
