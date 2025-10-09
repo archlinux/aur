@@ -2,7 +2,7 @@
 _appname=runjs
 pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
-pkgver=3.2.0
+pkgver=3.2.1
 _electronversion=37
 pkgrel=1
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
@@ -39,8 +39,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
 sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('74133dd71ee6541761455cbb4b665cb8dc0b038522542432af56e1d1d6919a03')
-sha256sums_x86_64=('928c68bbfc3c467444f7459fb31196dac81ee0389889fd50f0f751e27ad51b7b')
+sha256sums_aarch64=('34acb1a0e717aa5469513e6784014597929e32360a6312b33fa70e3d2ac0ec96')
+sha256sums_x86_64=('6ca8b115c9f4b36fc090f8d4830f356b3bf85069720d3c0e8245b9a7141c34cd')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
