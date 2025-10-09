@@ -1,7 +1,7 @@
 pkgbase = teamviewer-sandboxed
 	pkgdesc = TeamViewer with systemd and bubblewrap security sandboxing (recommended for client-only use)
 	pkgver = 15.70.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.teamviewer.com/en/download/portal/linux/
 	install = teamviewer-sandboxed.install
 	arch = i686
