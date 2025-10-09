@@ -2,7 +2,7 @@
 
 name=$RC_SVCNAME
 description="MonetDB database server daemon"
-command="/usr/bin/monetdbd-11.53.13"
+command="/usr/bin/monetdbd"
 command_args="start ${DBFARM}"
 pidfile="/var/run/monetdb/merovingian.pid"
 start_stop_daemon_args=" -k 0007"
@@ -45,7 +45,7 @@ start_pre() {
 
 stop() {
 	ebegin "Stopping $RC_SVCNAME"
-	/usr/bin/monetdbd-11.53.13 stop ${DBFARM}
+	/usr/bin/monetdbd stop ${DBFARM}
 	eend $?
 }
 
@@ -59,8 +59,8 @@ setup() {
 	ebegin "Initializing database at: ${DBFARM}"
 
 	umask 0007
-	/usr/bin/monetdbd-11.53.13 create ${DBFARM}
-	/usr/bin/monetdbd-11.53.13 set pidfile=/var/run/monetdb/merovingian.pid ${DBFARM}
+	/usr/bin/monetdbd create ${DBFARM}
+	/usr/bin/monetdbd set pidfile=/var/run/monetdb/merovingian.pid ${DBFARM}
 	touch ${DBFARM}/.merovingian_lock
 	# !FIXME This needs to be used only if SELinux is enabled, maybe add a config variable for it?
 	# chcon -u system_u -r object_r -t monetdbd_lock_t ${DBFARM}/.merovingian_lock
