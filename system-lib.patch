@@ -1,12 +1,18 @@
---- src/rmm-25.06.00/cpp/CMakeLists.txt	2025-06-05 23:28:03.000000000 +0800
-+++ src/rmm-25.06.00/cpp/CMakeLists.txt.new	2025-06-22 19:57:43.644181004 +0800
-@@ -78,7 +78,7 @@
+--- cpp/CMakeLists.txt	2025-10-09 00:21:15.000000000 +0800
++++ cpp/CMakeLists.txt.new	2025-10-09 11:35:05.244816365 +0800
+@@ -76,12 +76,11 @@
+ # add third party dependencies using CPM
+ rapids_cpm_init()
+ 
+-include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
+-rapids_cpm_rapids_logger(BUILD_EXPORT_SET rmm-exports INSTALL_EXPORT_SET rmm-exports)
++find_package(rapids_logger REQUIRED)
  create_logger_macros(RMM "rmm::default_logger()" include/rmm)
  
 -include(cmake/thirdparty/get_cccl.cmake)
 -include(cmake/thirdparty/get_nvtx.cmake)
 +find_package(nvtx3 REQUIRED)
-+find_package(cccl REQUIRED)
++find_package(CCCL REQUIRED)
  
  # ##################################################################################################
  # * library targets --------------------------------------------------------------------------------

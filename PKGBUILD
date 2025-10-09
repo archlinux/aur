@@ -2,7 +2,7 @@
 
 pkgbase=rmm
 pkgname=(rmm python-rmm)
-pkgver=25.08.00
+pkgver=25.10.00
 pkgrel=1
 pkgdesc="RAPIDS Memory Manager"
 url="https://github.com/rapidsai/rmm"
@@ -12,8 +12,8 @@ depends=('gcc-libs' 'cuda' 'nvtx3' 'rapids-logger')
 makedepends=('cmake' 'gcc' 'ninja' 'cython' 'python-build' 'python-installer' 'python-wheel')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "system-lib.patch" "missing-pkg.patch")
 sha256sums=(
-    '6931f4de923b617af8c3b97505d79fd3b7b6b5492c1b5a8cd8bcfdc147cdf458'
-    'e6e7a0f4e069956eaa5de92a03a9d64c5d4bfbf12156eb0f69ca9f5d2f299ded'
+    '33d1972bce23e9b45d0c1aedabfbc3fd2d2cb30715fa66d17088dd276d01e56c'
+    '31bb6d4a02f046e2d434343c9452dab7b2d7f5c8b84f1404140e3f628a22ac0b'
     '9b10ca24bf8da07d02d188c80d18556cb450c3ea70510e4680d8ac7cdac72249'
 )
 
