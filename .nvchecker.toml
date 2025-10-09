@@ -1,4 +1,5 @@
 [mprocs-bin]
-source = "git"
-git = "https://github.com/pvolok/mprocs.git"
+source = "github"
+github = "pvolok/mprocs"
+use_latest_release = true
 prefix = "v"
