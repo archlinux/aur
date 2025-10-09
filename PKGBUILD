@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=volt-gui
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A graphical user interface for configuring GPU related environment variables and more for Linux gaming."
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
   'polkit'
   'pyside6'
   'python'
+  'python-requests'
 )
 optdepends=(
   'mangohud: make use of the Render Pipeline Settings'
@@ -23,7 +24,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('c06f4ef1549d6818c8d52dc45abc8e1a081fe421456d97a41775155b2fa15ffb'
+sha256sums=('5ba9884ccec129d62bd7407469572d6e4652660f1eda8537a555182af6b4be8a'
             '3143aedef236dd69767c362e385ab9762844a8d63523f7629a55d90db0886332'
             '9852a7ff299da58c8b8be0439d8560350a812f8a004eab44481433cec7fa398a')
 
