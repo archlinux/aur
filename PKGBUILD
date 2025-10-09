@@ -3,7 +3,7 @@
 pkgname=shadps4
 pkgver=0.11.0
 _pkgname=shadPS4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
