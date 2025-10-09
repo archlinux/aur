@@ -1,0 +1,4 @@
+[matugen]
+source = "git"
+git = "https://github.com/InioX/matugen.git"
+prefix = "v"
