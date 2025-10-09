@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=colord-kde
-pkgver=25.08.1
+pkgver=25.08.2
 pkgrel=1
 pkgdesc='Interfaces and session daemon to colord for KDE'
 arch=(x86_64)
@@ -29,7 +29,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-graphics)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('a42e77a8faf0cc5852b4b69fe27c16a9e6aa10ad5ed436982bdf7e14409eb8a3'
+sha256sums=('4a4b34386428222756e9333e1286d003afaccb2feccca92685f7d142bb9ab609'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
