@@ -1,12 +1,12 @@
 # Contributor: thorsten w. <p@thorsten-wissmann.de>
 pkgname=katarakt-git
-pkgver=r234.e5b4caf
+pkgver=r240.e306cf2
 pkgrel=1
 pkgdesc="A simple PDF viewer with two layouts"
 arch=('i686' 'x86_64')
 url="https://wwwcip.cs.fau.de/~go18gomu/katarakt/"
 license=('BSD')
-depends=( qt5-base poppler-qt5 )
+depends=( qt6-base poppler-qt6 )
 optdepends=( )
 makedepends=( asciidoc )
 provides=( )
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_gitname}"
-  qmake-qt5
+  qmake6
   make all doc
 }
 
