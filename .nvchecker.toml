@@ -1,0 +1,4 @@
+[globus-cli]
+source = "git"
+git = "https://github.com/globus/globus-cli.git"
+prefix = ""
