@@ -1,7 +1,7 @@
 # Maintainer: radnus <radnus@gmail.com>
 pkgname=tamil-assistant
-pkgver=1.0.5
-pkgrel=4
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="AI-powered Tamil language learning companion for i3 window manager"
 arch=('any')
 url="https://github.com/jalabulajunx/tamil-assistant"
@@ -23,29 +23,26 @@ optdepends=(
     'rofi: For application launcher integration'
     'dmenu: Alternative application launcher'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jalabulajunx/tamil-assistant/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Replace with actual checksum when uploading
+# For local testing - comment out source and sha256sums
+# source=("$pkgname-$pkgver.tar.gz::https://github.com/jalabulajunx/tamil-assistant/archive/v$pkgver.tar.gz")
+# sha256sums=('SKIP')  # Replace with actual checksum when uploading
 install=tamil-assistant.install
 
 package() {
-    cd "$pkgname-$pkgver"
+    # For local testing - use current directory
+    # cd "$pkgname-$pkgver"
     
-    # Detect Python version dynamically
-    _python_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-    _python_site_packages="/usr/lib/python${_python_version}/site-packages"
-    
-    # Install main executable (wrapper script)
-    install -Dm755 tamil-assistant-wrapper "$pkgdir/usr/bin/tamil-assistant"
+    # Install main executable
+    install -Dm755 tamil_sidepanel.py "$pkgdir/usr/bin/tamil-assistant"
     
     # Install Python modules as a proper package
-    install -dm755 "$pkgdir/$_python_site_packages/tamil_assistant"
-    install -Dm644 tamil_sidepanel.py "$pkgdir/$_python_site_packages/tamil_assistant/"
-    install -Dm644 gemini_client.py "$pkgdir/$_python_site_packages/tamil_assistant/"
-    install -Dm644 okular_interface.py "$pkgdir/$_python_site_packages/tamil_assistant/"
-    install -Dm644 config_manager.py "$pkgdir/$_python_site_packages/tamil_assistant/"
+    install -dm755 "$pkgdir/usr/lib/python3.11/site-packages/tamil_assistant"
+    install -Dm644 gemini_client.py "$pkgdir/usr/lib/python3.11/site-packages/tamil_assistant/"
+    install -Dm644 okular_interface.py "$pkgdir/usr/lib/python3.11/site-packages/tamil_assistant/"
+    install -Dm644 config_manager.py "$pkgdir/usr/lib/python3.11/site-packages/tamil_assistant/"
     
     # Create __init__.py for proper Python package
-    touch "$pkgdir/$_python_site_packages/tamil_assistant/__init__.py"
+    touch "$pkgdir/usr/lib/python3.11/site-packages/tamil_assistant/__init__.py"
     
     # Install configuration template
     install -Dm644 config.ini.example "$pkgdir/etc/tamil-assistant/config.ini.example"

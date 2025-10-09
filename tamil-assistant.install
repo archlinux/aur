@@ -1,13 +1,11 @@
 post_install() {
     echo "🔧 Running Tamil Assistant post-installation setup..."
-    # Pass context to help script detect installation mode
-    /usr/share/tamil-assistant/postinstall.sh post_install
+    /usr/share/tamil-assistant/postinstall.sh
 }
 
 post_upgrade() {
     echo "🔄 Running Tamil Assistant post-upgrade setup..."
-    # Pass context to help script detect installation mode
-    /usr/share/tamil-assistant/postinstall.sh post_upgrade
+    /usr/share/tamil-assistant/postinstall.sh
 }
 
 pre_remove() {
