@@ -1,7 +1,7 @@
 pkgbase = thinkmorse
 	pkgdesc = A Bash script for blinking the ThinkPad lid LED in Morse code
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://sr.ht/~fijarom/thinkmorse/
 	arch = x86_64
 	license = GPL-3.0-or-later
