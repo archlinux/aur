@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.14.3
+pkgver=0.14.4
 #_pkgver=0.14.0post2
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
@@ -24,7 +24,7 @@ checkdepends=('python-pytest'
 #             'python-pytest-xdist'
 #             'openjpeg2'   # <- pillow <- skimage
               'python-scikit-image'
-              'python-gdal')    # np <- skimage, lxml already in makedepends
+              'python-gdal')    # np <- skimage, lxml pillow already in makedepends
 #              'python-imagecodecs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #        "${pkgver}-conftest.py::https://github.com/quintusdias/glymur/raw/refs/tags/v${pkgver}/conftest.py"
@@ -44,7 +44,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('146c0f95a66a4514d59088a97325cd7c')
+md5sums=('4e59b06fb23efd3b713565ddd0ef4980')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
