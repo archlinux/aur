@@ -1,6 +1,6 @@
 _name='identities'
 pkgname="$_name"
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern password-store client made for GNOME"
 arch=('any')
@@ -30,7 +30,7 @@ conflicts=(
 source=(
     "${_name}::git+$url#tag=$pkgver"
 )
-sha512sums=('6898c4933179fad60a872b479a74b783d207c86bfb297f2385a2f4548d6f945537da403bc2b0ee4246e6412d7e0cde302c4c5e3e4e81c35947df4d95304a45f0')
+sha512sums=('7aaac83e8c5db129f275838610b57d6701eec05f866e87ba73ad8fe4fb36507f0a8ecb34399408db4648f3a5c24619e3d77780896292dd3f2cec6855a5d557b5')
 
 build() {
     arch-meson "$_name" build
