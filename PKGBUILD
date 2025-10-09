@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=clk-qt
-pkgver=2025_03_20
+pkgver=2025_10_03.2
 pkgrel=1
 epoch=
 pkgdesc="a latency hating emulator for 8 and 16 bit platforms(qt version)"
@@ -13,7 +13,7 @@ conflicts=('clk-sdl' 'clk-qt-git' 'clk-sdl-git')
 source=("https://github.com/TomHarte/CLK/archive/refs/tags/${pkgver//_/-}.tar.gz")
 noextract=()
 install="clk.install"
-sha256sums=('8041144263aa04a572f94733fd31cb898002173d634f6bc2be49c80e9f3abbbf')
+sha256sums=('bf7ece09fa2350fcde5d537f81b1584b990dc67cd1c092bf0dd23cc10c91e50b')
 
 build() {
 	cd "CLK-${pkgver//_/-}/OSBindings/Qt/"
@@ -25,7 +25,7 @@ package() {
 	install -d "${pkgdir}/usr/share/CLK/"
 	install -d "${pkgdir}/usr/local/share/CLK"
 	cd "CLK-${pkgver//_/-}"
-	install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cd "${srcdir}/CLK-${pkgver//_/-}/OSBindings/Qt/"
 	install -Dm755 clksignal "${pkgdir}/usr/bin/clksignal"
 }
