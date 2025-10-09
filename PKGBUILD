@@ -1,7 +1,7 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=wayweather
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Custom Weather Script for Waybar with IP Geolocation"
 arch=('any')
