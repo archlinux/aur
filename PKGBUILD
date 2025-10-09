@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=python-tesserocr
 _name=${pkgname#python-}
