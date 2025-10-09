@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=go-hass-agent-bin
-pkgver=14.0.2
+pkgver=14.0.3
 pkgrel=1
 pkgdesc="A Home Assistant, native app integration for desktop/laptop devices.Written in Go.(Prebuilt version)"
 arch=(
@@ -19,9 +19,9 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.armv7.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('974af601a0e49bd9aaa7d4930ed2eb705b6593d7fc5eea9e168f52398445d63f')
-sha256sums_armv7h=('626bbd828442319b304e8f63fa567888219936e9893662371998ebf0105f627b')
-sha256sums_x86_64=('d865268ea9f0c3597bb6da69aeb52af432994b15133e21c82e582b47cbe234af')
+sha256sums_aarch64=('9e0734446b5565e6a8feb5072785b903c5f70ea98a47fff56104114f06ea07bb')
+sha256sums_armv7h=('cda43669450636b4e91c77d473df19d74736bf071feb70d1202d066aa700758f')
+sha256sums_x86_64=('99c1fb091b936e042af42003c78dd37f4fa3c67f70cf524263636270ff3944ae')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/lib/systemd/user/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/user"
