@@ -3,7 +3,7 @@
 # Contributor: articpenguin <julia.schweinz at mailfence dot com>
 
 _pkgname=argparse
-_pkgver=2.2.5
+_pkgver=2.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5a2f62c43bfaeee55e7888814d0a4a80')
-b2sums=('ceee9fb0a0edcca0e58c076d95fc424f554bdaa6abd0b3a0a645fc6987a98b13abd2b8caa189678532f834982a4ecd9c5d7e7a86fc5233a67fa92f9234f7f66c')
+md5sums=('5b410d180316d945aba03f744fccc904')
+b2sums=('83babf79a34f83d7dd948f4b0bdf29cfd3f6574d654fd696ee7a802963070988fe634ea804115eb5308f5e31b19c347eaa9aa132168efc043d78a0ea4547a1e7')
 
 prepare() {
   # fix tests
