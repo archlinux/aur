@@ -1,7 +1,7 @@
 # Maintainer: Kharec <sandro@cazzaniga.fr>
 pkgname=docker-language-server
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server for Dockerfiles, Compose and Bake files"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/docker/docker-language-server"
@@ -9,7 +9,7 @@ license=('Apache')
 depends=()
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a5a881baebc3486bb0d39953a2538a6162470319c4e21448bac1176c72b9ce90')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
