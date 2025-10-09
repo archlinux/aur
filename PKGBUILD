@@ -48,6 +48,8 @@ build() {
 		-D BUILD_SHARED_LIBS=ON
 		-D LUA_INCLUDE_DIR=/usr/include
 		-W no-dev
+		-D CMAKE_C_FLAGS="-D_FORTIFY_SOURCE=2"
+		-D CMAKE_CXX_FLAGS="-D_FORTIFY_SOURCE=2"
 	)
 	cmake "${cmake_options[@]}"
 	# make VERBOSE=1
