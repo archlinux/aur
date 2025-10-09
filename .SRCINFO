@@ -1,6 +1,6 @@
 pkgbase = awcc-bin
 	pkgdesc = An unofficial alternative to Alienware Command Centre of Windows for the Dell G series
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 2
 	url = https://github.com/tr1xem/AWCC
 	install = awcc.install
@@ -18,7 +18,7 @@ pkgbase = awcc-bin
 	depends = ttf-roboto
 	provides = awcc
 	conflicts = awcc-git
-	source = AWCC-v1.4.0.tar.gz::https://github.com/tr1xem/AWCC/releases/download/v1.4.0/AWCC-v1.4.0.tar.gz
-	sha256sums = 0ed750c9e4aba9bf85ff9354f67b15d13b7f2faa819b77fbe9652231b5bae5c9
+	source = AWCC-v1.5.0.tar.gz::https://github.com/tr1xem/AWCC/releases/download/v1.5.0/AWCC-v1.5.0.tar.gz
+	sha256sums = b15342d60895782350c6297c4eeed5d1aa8b204d99e522a4ddf3ad618e10e132
 
 pkgname = awcc-bin
