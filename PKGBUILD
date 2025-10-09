@@ -2,7 +2,7 @@
 _pkgname=frhelper
 pkgname="eusoft-${_pkgname}-bin"
 pkgver=11.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Authoritative French dictionary software, an essential tool for French learners.(Prebuilt version)法语助手,权威的法语词典软件,法语学习者必备的工具."
 arch=('x86_64')
 url="https://www.eudic.net/v4/fr/app/frhelper"
@@ -66,12 +66,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c'
-            'a961d77963997afda7147235ae0540912aa8300d9ccdf2dddf90f1893045adac'
+            '1d25f87b06ff11095c69fa2a07430c69fad983d68a267e7c4d72df37f8739141'
             '07aefce5b6c9dce4fec424cfb3d1c2456680d6936e62651484253a031c921db9')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
-        s/@appasar@/${_pkgname}/g
+        s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
