@@ -2,7 +2,7 @@
 _base=multicollections
 pkgname=python-${_base}
 pkgdesc="Fully generic MultiDict class"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 arch=(any)
 url="https://github.com/gerlero/${_base}"
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-build python-installer python-uv-build)
 checkdepends=(python-pytest python-multidict)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9d13684186d0e10c4dfddeabb49a8a98d7cc2d99855e1d267be4846f3d8bf24f2fdc76df74298509a817f1965bfe7f38316d16cd1b09f16556a227c0dadec532')
+sha512sums=('b76b31396ec48e1a2e5b8f8c3d5fd994b5c98115ed85b369e1b19fb31cf2c787556a60eb1126c5384affe1752680dc71160045ddd7d3bb8c6be39b85b89dd9a8')
 
 build() {
   cd ${_base}-${pkgver}
