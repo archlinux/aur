@@ -4,12 +4,12 @@
 
 pkgname=python-google-crc32c
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wraps Google's crc32c library into a Python wrapper"
 arch=('x86_64')
 url="https://github.com/googleapis/python-crc32c"
 license=('Apache-2.0')
-depends=('python' 'google-crc32c')
+depends=('glibc' 'python' 'google-crc32c')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
