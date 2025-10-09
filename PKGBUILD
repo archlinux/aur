@@ -22,8 +22,8 @@ makedepends=(
   'pkgconf'
   'systemd'    # provides libudev.pc headers for compilation
 )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=('keyvibe')
+conflicts=('keyvibe')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
