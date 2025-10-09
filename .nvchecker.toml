@@ -1,0 +1,4 @@
+[python-globus-sdk]
+source = "git"
+git = "https://github.com/globus/globus-sdk-python.git"
+prefix = ""
