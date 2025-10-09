@@ -8,7 +8,7 @@ pkgbase = image-roll-git
 	makedepends = cargo
 	makedepends = git
 	depends = gtk4
-	provides = image-roll=2.1.0
+	provides = image-roll
 	conflicts = image-roll
 	source = image-roll::git+https://github.com/weclaw1/image-roll.git
 	sha256sums = SKIP
