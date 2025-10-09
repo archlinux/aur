@@ -6,11 +6,14 @@ set -e
 
 echo "🔧 Setting up Tamil Assistant..."
 
-# Detect the actual user (not root during package installation)
-if [ "$EUID" -eq 0 ]; then
-    # Running as root - this happens during package installation
-    # Don't create user-specific files during package installation
-    echo "⚠️  Running as root during package installation"
+# Debug: Show current environment
+echo "DEBUG: EUID=$EUID, USER=$USER, HOME=$HOME"
+
+# Detect if we're running during package installation
+# During package installation, we should not create user-specific files
+if [ "$EUID" -eq 0 ] || [ -n "$PACMAN_ROOT" ] || [ "$1" = "post_install" ] || [ "$1" = "post_upgrade" ]; then
+    # Running during package installation - don't create user files
+    echo "⚠️  Running during package installation"
     echo "📋 User configuration will be created on first run"
     echo "ℹ️  Run 'tamil-assistant --setup' after installation to configure for your user"
     echo ""
