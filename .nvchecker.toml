@@ -1,0 +1,3 @@
+[gemini-cli]
+source = "npm"
+npm = "@google/gemini-cli"
