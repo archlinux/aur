@@ -3,7 +3,7 @@ pkgname=space-client-bin
 _pkgname='Space Client'
 pkgver=2.0.8
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="Customized Minecraft launcher modified and written in electron.js and Node.js.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://xtony.net/"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/xtonysanx/Space-Client/${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6003605f75de3516944263d4f211d42b9ead681cbfb5a54186be0e8c6346fd5c'
+sha256sums=('002c762dce29460ba3030cadfa9dbbaff5a6b141ff2318ed3a1d6d9f9af8a321'
             'f3ced4e15f937db13d8a08686a485cddacd8ab21f4ce05de9569b1211feb3a25'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
