@@ -1,7 +1,7 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=uabea-next-git
 _pkgname=uabea-next
-pkgver=0.0.0.r99.7ae61d2
+pkgver=0.0.0.r100.da7c773
 pkgrel=1
 pkgdesc='A research and modding tool for SerializedFiles and Asset Bundles'
 url='https://github.com/nesrak1/UABEANext'
@@ -14,7 +14,7 @@ source=(
     "uabea.desktop"
 )
 sha1sums=('SKIP'
-          '72a4fc27f5097d25418ee63c5124a8bfad45cf07')
+          '053b63a171fbf04fba2c061ae83d997f7d913e79')
 
 
 pkgver() {
