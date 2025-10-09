@@ -22,10 +22,12 @@ pkgbase = libraft
 	source = system-lib.patch
 	source = missing-pkg.patch
 	source = system-lib-dask.patch
+	source = missing-include.patch
 	sha256sums = 85e7334a5993c537bba4714e53b19e1ff1f42f7c32fd5003717833a3882accf8
 	sha256sums = 653bfe4b37e67e283affaedf57e1f11c2cf261ac3cde72fbe04ae4439fd8ede7
 	sha256sums = 3aaac5dc31520092ebce845e178eac077ceb399774606b90598213697a18956d
 	sha256sums = 669b846f461a0ddb930d85243e5b8b37614e45da54c6d02a41bf164e444b46af
+	sha256sums = b8b5368103ef4b43cab59f0427dfae2b89d5f22ad033bcf0e8a52b21c96dea6f
 
 pkgname = libraft
 	depends = cuda
@@ -51,3 +53,4 @@ pkgname = python-raft-dask
 	depends = openucx
 	depends = python-pylibraft
 	depends = ucxx
+	depends = nccl

@@ -27,12 +27,14 @@ source=(
     "system-lib.patch"
     "missing-pkg.patch"
     "system-lib-dask.patch"
+    "missing-include.patch"
 )
 sha256sums=(
     '85e7334a5993c537bba4714e53b19e1ff1f42f7c32fd5003717833a3882accf8'
     '653bfe4b37e67e283affaedf57e1f11c2cf261ac3cde72fbe04ae4439fd8ede7'
     '3aaac5dc31520092ebce845e178eac077ceb399774606b90598213697a18956d'
     '669b846f461a0ddb930d85243e5b8b37614e45da54c6d02a41bf164e444b46af'
+    'b8b5368103ef4b43cab59f0427dfae2b89d5f22ad033bcf0e8a52b21c96dea6f'
 )
 
 prepare() {
@@ -40,6 +42,7 @@ prepare() {
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibraft/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
     patch -p1 "python/raft-dask/CMakeLists.txt" < "$srcdir/system-lib-dask.patch"
+    patch -p1 "cpp/include/raft/core/comms.hpp" < "$srcdir/missing-include.patch"
 }
 
 
@@ -77,7 +80,7 @@ package_python-pylibraft() {
 }
 
 package_python-raft-dask() {
-    depends+=(libraft python python-dask-cuda openucx python-pylibraft ucxx)
+    depends+=(libraft python python-dask-cuda openucx python-pylibraft ucxx nccl)
     cd "$srcdir/raft-$pkgver/python/raft-dask"
     python -m installer --destdir="$pkgdir" dist/*.whl
     rm "$pkgdir/usr/lib/python3.13/site-packages/include" -rf
