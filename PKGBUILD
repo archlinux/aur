@@ -2,7 +2,7 @@
 
 pkgname="intel-ipu7-camera-bin"
 _pkgname=ipu7-camera-bins
-pkgver=r25.7ad0a26
+pkgver=r31.09ccd02
 pkgrel=1
 pkgdesc="Intel IPU7 camera binaries"
 arch=('x86_64')

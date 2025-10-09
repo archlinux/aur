@@ -1,6 +1,6 @@
 pkgbase = intel-ipu7-camera-bin
 	pkgdesc = Intel IPU7 camera binaries
-	pkgver = r25.7ad0a26
+	pkgver = r31.09ccd02
 	pkgrel = 1
 	url = https://github.com/intel/ipu7-camera-bins
 	arch = x86_64
