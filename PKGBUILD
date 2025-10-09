@@ -29,7 +29,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('e2a385481a17fbf16d04629e40a2fb5fb3431e428cc19794f8e9513a16d976c1')
+sha256sums=('979aa9255ac70078a382119ed64d9923af70029ca72dc481d6c68647fada8309')
 
 prepare() {
 	cd "woomer-$pkgver"
