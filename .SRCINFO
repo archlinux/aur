@@ -1,0 +1,24 @@
+pkgbase = greetd-dms-greeter-git
+	pkgdesc = DankMaterialShell greeter for greetd
+	pkgver = r960.7516d44
+	pkgrel = 1
+	url = https://github.com/AvengeMedia/DankMaterialShell
+	install = greetd-dms-greeter.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = greetd
+	depends = quickshell
+	depends = ttf-material-symbols-variable-git
+	optdepends = niri: Niri compositor support
+	optdepends = hyprland: Hyprland compositor support
+	optdepends = sway: Sway compositor support
+	provides = greetd-dms-greeter
+	conflicts = greetd-dms-greeter
+	conflicts = greetd-dms-greeter-bin
+	backup = etc/greetd/config.toml
+	source = greetd-dms-greeter-git::git+https://github.com/AvengeMedia/DankMaterialShell.git
+	sha256sums = SKIP
+
+pkgname = greetd-dms-greeter-git
