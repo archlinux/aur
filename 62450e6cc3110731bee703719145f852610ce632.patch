@@ -1,0 +1,122 @@
+From 62450e6cc3110731bee703719145f852610ce632 Mon Sep 17 00:00:00 2001
+From: Aous Naman <aous@unsw.edu.au>
+Date: Sat, 7 Jun 2025 10:23:23 +1000
+Subject: [PATCH] This address issue_186
+
+---
+ src/core/coding/ojph_block_decoder32.cpp     | 10 ++++++++--
+ src/core/coding/ojph_block_decoder64.cpp     | 10 ++++++++--
+ src/core/coding/ojph_block_decoder_avx2.cpp  | 11 +++++++++--
+ src/core/coding/ojph_block_decoder_ssse3.cpp | 11 +++++++++--
+ src/core/coding/ojph_block_decoder_wasm.cpp  | 11 +++++++++--
+ src/core/common/ojph_version.h               |  2 +-
+ 6 files changed, 44 insertions(+), 11 deletions(-)
+
+diff --git a/src/core/coding/ojph_block_decoder32.cpp b/src/core/coding/ojph_block_decoder32.cpp
+index daf2312d..8e7e294e 100644
+--- a/src/core/coding/ojph_block_decoder32.cpp
++++ b/src/core/coding/ojph_block_decoder32.cpp
+@@ -1365,8 +1365,14 @@ namespace ojph {
+           // became significant (during the SPP) in bitplane p-1.
+           // We store enough for the widest row, containing 1024 columns,
+           // which is equivalent to 256 of ui16, since each stores 4 columns.
+-          // We add an extra 8 entries, just in case we need more
+-          ui16 prev_row_sig[256 + 8] = {0}; // 528 Bytes
++          // We add an extra 8 entries (16 bytes), just in case we need more
++          ui16 prev_row_sig[256 + 8]; // 528 Bytes
++          {
++            ui64* p = (ui64*)prev_row_sig;
++            for (ui32 x = 0; x < width; x += 16, ++p)
++              *p = 0;
++            *p = 0; // one extra
++          }
+
+           frwd_struct32 sigprop;
+           frwd_init<0>(&sigprop, coded_data + lengths1, (int)lengths2);
+diff --git a/src/core/coding/ojph_block_decoder64.cpp b/src/core/coding/ojph_block_decoder64.cpp
+index bce5b9ec..6180c576 100644
+--- a/src/core/coding/ojph_block_decoder64.cpp
++++ b/src/core/coding/ojph_block_decoder64.cpp
+@@ -1412,8 +1412,14 @@ namespace ojph {
+           // became significant (during the SPP) in bitplane p-1.
+           // We store enough for the widest row, containing 1024 columns,
+           // which is equivalent to 256 of ui16, since each stores 4 columns.
+-          // We add an extra 8 entries, just in case we need more
+-          ui16 prev_row_sig[256 + 8] = {0}; // 528 Bytes
++          // We add an extra 8 entries (16 bytes), just in case we need more
++          ui16 prev_row_sig[256 + 8]; // 528 Bytes
++          {
++            ui64* p = (ui64*)prev_row_sig;
++            for (ui32 x = 0; x < width; x += 16, ++p)
++              *p = 0;
++            *p = 0; // one extra
++          }
+
+           frwd_struct64 sigprop;
+           frwd_init<0>(&sigprop, coded_data + lengths1, (int)lengths2);
+diff --git a/src/core/coding/ojph_block_decoder_avx2.cpp b/src/core/coding/ojph_block_decoder_avx2.cpp
+index cccb4fd8..c23bd0d9 100644
+--- a/src/core/coding/ojph_block_decoder_avx2.cpp
++++ b/src/core/coding/ojph_block_decoder_avx2.cpp
+@@ -1726,8 +1726,15 @@ namespace ojph {
+           // became significant (during the SPP) in bitplane p-1.
+           // We store enough for the widest row, containing 1024 columns,
+           // which is equivalent to 256 of ui16, since each stores 4 columns.
+-          // We add an extra 8 entries, just in case we need more
+-          ui16 prev_row_sig[256 + 8] = {0}; // 528 Bytes
++          // We add an extra 16 entries (32 bytes), just in case we need more.
++          ui16 prev_row_sig[256 + 16]; // 544 Bytes
++          {
++            __m256i z = _mm256_set1_epi32(0);
++            __m256i* p = (__m256i*)prev_row_sig;
++            for (ui32 x = 0; x < width; x += 64, ++p)
++              _mm256_storeu_si256(p, z);
++            _mm256_storeu_si256(p, z);  // one extra
++          }
+
+           frwd_struct_avx2 sigprop;
+           frwd_init<0>(&sigprop, coded_data + lengths1, (int)lengths2);
+diff --git a/src/core/coding/ojph_block_decoder_ssse3.cpp b/src/core/coding/ojph_block_decoder_ssse3.cpp
+index 3e3e00e4..0862bca9 100644
+--- a/src/core/coding/ojph_block_decoder_ssse3.cpp
++++ b/src/core/coding/ojph_block_decoder_ssse3.cpp
+@@ -1752,8 +1752,15 @@ namespace ojph {
+           // became significant (during the SPP) in bitplane p-1.
+           // We store enough for the widest row, containing 1024 columns,
+           // which is equivalent to 256 of ui16, since each stores 4 columns.
+-          // We add an extra 8 entries, just in case we need more
+-          ui16 prev_row_sig[256 + 8] = {0}; // 528 Bytes
++          // We add an extra 8 entries (16 bytes), just in case we need more.
++          ui16 prev_row_sig[256 + 8]; // 528 Bytes
++          {
++            __m128i z = _mm_set1_epi32(0);
++            __m128i* p = (__m128i*)prev_row_sig;
++            for (ui32 x = 0; x < width; x += 32, ++p)
++              _mm_storeu_si128(p, z);
++            _mm_storeu_si128(p, z);  // one extra
++          }
+
+           frwd_struct_ssse3 sigprop;
+           frwd_init<0>(&sigprop, coded_data + lengths1, (int)lengths2);
+diff --git a/src/core/coding/ojph_block_decoder_wasm.cpp b/src/core/coding/ojph_block_decoder_wasm.cpp
+index 42a04b58..d84b5324 100644
+--- a/src/core/coding/ojph_block_decoder_wasm.cpp
++++ b/src/core/coding/ojph_block_decoder_wasm.cpp
+@@ -1782,8 +1782,15 @@ namespace ojph {
+           // became significant (during the SPP) in bitplane p-1.
+           // We store enough for the widest row, containing 1024 columns,
+           // which is equivalent to 256 of ui16, since each stores 4 columns.
+-          // We add an extra 8 entries, just in case we need more
+-          ui16 prev_row_sig[256 + 8] = {0}; // 528 Bytes
++          // We add an extra 8 entries (16 bytes), just in case we need more.
++          ui16 prev_row_sig[256 + 8]; // 528 Bytes
++          {
++            v128_t z = wasm_i32x4_splat(0);
++            v128_t* p = (v128_t*)prev_row_sig;
++            for (ui32 x = 0; x < width; x += 32, ++p)
++              wasm_v128_store(p, z);
++            wasm_v128_store(p, z);  // one extra
++          }
+
+           frwd_struct sigprop;
+           frwd_init<0>(&sigprop, coded_data + lengths1, (int)lengths2);

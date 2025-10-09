@@ -3,7 +3,7 @@
 _pkgname=openjph
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (mingw-w64)'
 url='https://github.com/aous72/OpenJPH'
 arch=(any)
@@ -12,8 +12,14 @@ depends=('mingw-w64-crt' 'mingw-w64-libtiff')
 makedepends=('mingw-w64-cmake' 'ninja')
 checkdepends=('mingw-w64-wine' 'python')
 options=('staticlibs' '!buildflags' '!strip')
-source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c99218752b15b5b2afca3b0e4d4f0ddf1ac19f94dbcbe11874fe492d44ed3e2d')
+source=(
+	"$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+	'62450e6cc3110731bee703719145f852610ce632.patch'
+	'77f287df698ecddcfa44c5080ed7ed2069714ec4.patch'
+)
+sha256sums=('c99218752b15b5b2afca3b0e4d4f0ddf1ac19f94dbcbe11874fe492d44ed3e2d'
+            '1542ae0f12957dd20dc81b26197be2d1fab1a251493be3c64888d7a034c78ec7'
+            'a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
@@ -26,6 +32,9 @@ _srcdir="OpenJPH-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
+
+	patch -p1 -i "${srcdir}/62450e6cc3110731bee703719145f852610ce632.patch"
+	patch -p1 -i "${srcdir}/77f287df698ecddcfa44c5080ed7ed2069714ec4.patch"
 }
 
 build() {
