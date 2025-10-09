@@ -1,9 +1,8 @@
-# Maintainer: shizhiex <shizhiex@gmail.com>
+# Maintainer: c2h5oh
 
 pkgname="orca-slicer"
 pkgver=2.3.1
-_pkgver='2.3.1'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
@@ -16,19 +15,18 @@ options=('!debug' '!emptydirs')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 source=(
-  "https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v${_pkgver}.tar.gz"
+  "https://github.com/SoftFever/OrcaSlicer/archive/refs/heads/release/v${pkgver}.tar.gz"
   "orca-slicer.sh"
   )
-sha256sums=(
-  '625dffb5e54f3889ca130cc29b7bbeab35a9d88069dd007806ad7a7c90fe9106'
-  'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d'
-)
+sha256sums=('b1b104076395ce14b6b95a9d6a4f952d0f7d14023afe0ee43293fc6af2a93914'
+            'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d')
+
 
 build() {
   # cmake 4.x compatibility workaround
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-  cd "$srcdir/OrcaSlicer-${_pkgver}"
+  cd "$srcdir/OrcaSlicer-release-v${pkgver}"
 
   # deps
   cmake -S deps \
@@ -38,8 +36,7 @@ build() {
     -DDESTDIR="$PWD/deps/build/destdir" \
     -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCOLORED_OUTPUT=ON \
-    -DFLATPAK=1
+    -DCOLORED_OUTPUT=ON
   ninja -C deps/build
 
   cmake \
@@ -55,14 +52,16 @@ build() {
     -DSLIC3R_GTK=3 \
     -DBBL_RELEASE_TO_PUBLIC=1 \
     -DBBL_INTERNAL_TESTING=0 \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCOLORED_OUTPUT=ON
+  ninja -C build
 
   # add localizations
   ./scripts//run_gettext.sh --full
 }
 
 package() {
-  cd "$srcdir/OrcaSlicer-${_pkgver}"
+  cd "$srcdir/OrcaSlicer-release-v${pkgver}"
   DESTDIR="$pkgdir" ninja -C build install
   install -d "$pkgdir/usr/lib/OrcaSlicer/"
   mv "$pkgdir/usr/bin/orca-slicer" "$pkgdir/usr/lib/OrcaSlicer/"
