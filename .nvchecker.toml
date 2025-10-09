@@ -1,4 +1,5 @@
 ["statusok-bin"]
 source = "github"
-github = "sanathp/statusok"
+github = "kislenko-artem/statusok"
 use_latest_release = true
+prefix = "v"
