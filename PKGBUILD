@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=25.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -57,16 +57,12 @@ optdepends=('ebook-tools: mobi and epub support'
 groups=(kde-applications
         kde-graphics)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('5d9c1befeaa9ce766791857959b03b94de88fbd5ce3da4a0f885e07ae568f1d7'
+sha256sums=('de401cd34376d678a16a361473514844f78800b398e3b0db6bde85a09e635392'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
-
-prepare() {
-  find -name index.docbook | xargs sed -e 's|aliasing "|aliasing"|' -i # Fix build with libxml2 2.15
-}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
