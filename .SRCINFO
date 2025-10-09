@@ -1,7 +1,7 @@
 pkgbase = fortbite
 	pkgdesc = High-precision mathematical calculator in Modern Fortran
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FortranGoingOnForty/fortbite
 	arch = x86_64
 	license = MIT
