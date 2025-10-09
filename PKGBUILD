@@ -6,7 +6,7 @@ set -u
 pkgname='bashdb'
 #_ver='4.4-0.94'
 #_ver='4.4-1.0.1'
-_ver='5.0-1.1.2'
+_ver='5.2-1.2.0'
 pkgver="${_ver//-/_}"
 pkgrel='1'
 pkgdesc='A debugger for Bash scripts loosely modeled on the gdb command syntax'
@@ -18,9 +18,9 @@ makedepends=('texi2html')
 _srcdir="${pkgname}-${_ver}"
 _verwatch=("https://sourceforge.net/projects/${pkgname}/rss" "\s*<title>.*/${pkgname}-\([_0-9\.]\+\)\.tar\.gz\].*" 'f'); _getlinks() { sed -e '/^\s\+<title>/ s:\([0-9]\)-:\1_:g'; }
 source=("https://phoenixnap.dl.sourceforge.net/project/${pkgname}/${pkgname}/${_ver}/${pkgname}-${_ver}.tar.bz2")
-md5sums=('33eceddaffd52f42c74795178e7744ee')
-sha256sums=('30176d2ad28c5b00b2e2d21c5ea1aef8fbaf40a8f9d9f723c67c60531f3b7330')
-sha512sums=('32ff6d315e8cf9d59485802d5284fde53fa2d9f40ec238428a479f8a1ed1359e9bea2946b192b78534e7ac835491d5d64d73f536c8dfa93583b4c6d55d4d4545')
+md5sums=('04f3b8c5175b2fa83dd1ac187f4f10a0')
+sha256sums=('96fe0c8ffc12bc478c9dc41bb349ae85135da71b692069b8b7f62b27967ce534')
+sha512sums=('4358e79c7919eed6ea62d52b2d4c222515fa822d1c1f1c85644c9812a0dfe9b9c3e6d98900d63869ca93508360c6771ecd53bddda34cd7852153aacefedc2269')
 
 prepare() {
   set -u
