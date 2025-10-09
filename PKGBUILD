@@ -2,7 +2,7 @@
 
 pkgbase=suse-fonts
 pkgname=(ttf-suse otf-suse woff2-suse)
-pkgver=2.000
+pkgver=2.001
 pkgrel=1
 pkgdesc="sans serif typeface designed by René Bieder, supports over 200 Latin-based languages"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/SUSE/suse-font"
 license=(OFL-1.1)
 options=(!strip)
 source=("https://github.com/SUSE/suse-font/releases/download/v${pkgver}/suse-font-v${pkgver}.zip")
-sha256sums=('48cde2e852bf52b78d6c6a7c7109e85e6a6302f94f9e4468a42a523a24a69349')
+sha256sums=('5cfa32328cc408a31459fdeacee623684d82ff2b3d84ca80cf5b4ff7b8ff8221')
 
 package_ttf-suse() {
   cd "suse-font-v${pkgver}"
