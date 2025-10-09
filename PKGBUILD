@@ -2,7 +2,7 @@
 
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
-pkgver=25.08.00
+pkgver=25.10.00
 pkgrel=2
 pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
 url="https://github.com/rapidsai/raft"
@@ -26,20 +26,20 @@ source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
     "system-lib.patch"
     "missing-pkg.patch"
-    "missing-pkg-dask.patch"
+    "system-lib-dask.patch"
 )
 sha256sums=(
-    '032dce57b297e121352a1556bd9021410be30fcf319e158592f615e1990b2e58'
-    'c2811f81ba80481060168141ba65b038ec3137ed4f93f3f46832e3631d550baf'
+    '85e7334a5993c537bba4714e53b19e1ff1f42f7c32fd5003717833a3882accf8'
+    '653bfe4b37e67e283affaedf57e1f11c2cf261ac3cde72fbe04ae4439fd8ede7'
     '3aaac5dc31520092ebce845e178eac077ceb399774606b90598213697a18956d'
-    '4f7f4fcfd242bf25055da26fd025f134f55ab91140910d7d64710a842281f46f'
+    '669b846f461a0ddb930d85243e5b8b37614e45da54c6d02a41bf164e444b46af'
 )
 
 prepare() {
     cd "$srcdir/raft-$pkgver"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibraft/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
-    patch -p1 "python/raft-dask/CMakeLists.txt" < "$srcdir/missing-pkg-dask.patch"
+    patch -p1 "python/raft-dask/CMakeLists.txt" < "$srcdir/system-lib-dask.patch"
 }
 
 
