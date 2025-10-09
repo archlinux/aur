@@ -3,7 +3,7 @@
 _Name="zigenity"
 pkgname="${_Name,,}"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display graphical dialog boxes from shell scripts (like zenity but written in zig)"
 arch=('aarch64' 'x86_64')
 url="https://github.com/r4gus/${_Name}"
@@ -23,7 +23,7 @@ build() {
     --search-prefix /usr \
     --global-cache-dir "${srcdir}/zig-global-cache" \
     --verbose \
-    -Doptimize=ReleaseSafe
+    -Doptimize=ReleaseSmall
 }
 
 package() {
