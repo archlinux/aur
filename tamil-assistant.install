@@ -1,0 +1,15 @@
+post_install() {
+    echo "🔧 Running Tamil Assistant post-installation setup..."
+    /usr/share/tamil-assistant/postinstall.sh
+}
+
+post_upgrade() {
+    echo "🔄 Running Tamil Assistant post-upgrade setup..."
+    /usr/share/tamil-assistant/postinstall.sh
+}
+
+pre_remove() {
+    echo "⚠️  Tamil Assistant will be removed."
+    echo "ℹ️  Your configuration files will be preserved in ~/.config/tamil-assistant/"
+    echo "ℹ️  To completely remove, delete ~/.config/tamil-assistant/ manually"
+}

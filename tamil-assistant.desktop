@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Tamil Assistant
+Comment=AI-powered Tamil language learning companion
+Exec=tamil-assistant
+Icon=applications-education
+Terminal=false
+Categories=Education;Languages;
+StartupNotify=true
+Keywords=tamil;language;learning;ai;assistant;
