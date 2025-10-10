@@ -1,19 +1,23 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.69.3
+pkgver=0.70.2
 pkgrel=1
 pkgdesc="Container-based networking labs"
 arch=('aarch64' 'x86_64')
 url="https://containerlab.dev"
 _url="https://github.com/srl-labs/${pkgname}"
 license=('BSD-3-Clause')
-depends=('glibc')
-makedepends=('go' 'git')
+depends=(
+  'glibc'
+)
+makedepends=(
+  'go'
+  'git'
+)
 _pkgsrc="${_url##*/}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('b29d0eb2a8d1ca678245ff2041c2c5387ace3a749ed024712153a3df79cf965d8c9bf23eda2c9cf0f8b78f06c56b2dee25861e5b9ea2b7f7de01d61ff5846b51')
-
+b2sums=('59e1357030b3f757af93e43b845b0399ea0f9ba0ddac694615d093b010fd7475750aa568c75dd20de330439f2ce4aa0b8468c6a4d3c510afe6f639c39d3f2a96')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -36,12 +40,12 @@ build() {
 
   cd "${srcdir}/${_pkgsrc}"
   local build_commit="$(git rev-parse --short HEAD)"
-  local build_date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  local build_date="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%Y-%m-%dT%H:%M:%SZ")"
 
   go build -v -o "build/${pkgname}" -ldflags "\
-    -X ${_url#https://}/cmd/version.Version=${pkgver} \
-    -X ${_url#https://}/cmd/version.commit=${build_commit} \
-    -X ${_url#https://}/cmd/version.date=${build_date}" \
+    -X ${_url#https://}/cmd.Version=${pkgver} \
+    -X ${_url#https://}/cmd.commit=${build_commit} \
+    -X ${_url#https://}/cmd.date=${build_date}" \
     .
 
   for _sh in bash fish zsh; do
