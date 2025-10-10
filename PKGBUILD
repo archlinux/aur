@@ -1,7 +1,6 @@
-# Maintainer: Sckab <giuliano@scsdc-co.org>
-# Contributor: FrancyAngy <francesco@scsdc-co.org>
+# Maintainer: FrancyAngy <francy.angy009@gmail.com>
 pkgname=dinfo
-pkgver=1.2.2
+pkgver=1.2.2.002
 pkgrel=1
 pkgdesc="A simple program that gives you informations about a file/directory, support .yaml, .json and html output"
 arch=('x86_64')
@@ -9,7 +8,7 @@ url="https://github.com/SCSDC-co/DINFO"
 license=('GPL 3.0')
 
 source=("https://github.com/SCSDC-co/DINFO/releases/download/v$pkgver/dinfo-linux-x64-self-contained.zip")
-sha256sums=('3307691878d465ab8e89cec4c40f5e9660b07a4c1b5ab2b41c3e140c129163d2')
+sha256sums=(479315676eef0ccd4523cd9e16cdd65e56b6c5f7eaacff9d0693f4fe6f52fa5)
 
 prepare() {
     unzip -q "$srcdir/dinfo-linux-x64-self-contained.zip" -d "$srcdir"
