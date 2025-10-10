@@ -28,7 +28,7 @@ pkgname = grpc-gateway-bin
 	conflicts = grpc-gateway
 
 pkgname = grpc-gateway-common-bin
-	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (common)
+	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (common files)
 	arch = any
 	provides = grpc-gateway-common=2.27.3
 	conflicts = grpc-gateway-common

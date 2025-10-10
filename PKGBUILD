@@ -50,7 +50,7 @@ package_grpc-gateway-bin() {
 }
 
 package_grpc-gateway-common-bin() {
-  pkgdesc+=" (common)"
+  pkgdesc+=" (common files)"
   arch=('any')
   provides=(
     "${pkgname%-bin}=${pkgver}"
