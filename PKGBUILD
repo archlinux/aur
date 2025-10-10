@@ -1,10 +1,10 @@
 # Maintainer: minomy13 <mail@minomy13.com>
 
 pkgname=nerdfetch-rs
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A minimal, fast system fetch tool - rewritten in Rust for speed, clarity, and configurability."
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/minomy13/nerdfetch-rs"
 license=('MIT')
 makedepends=('cargo')
