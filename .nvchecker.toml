@@ -1,0 +1,5 @@
+["nav-bin"]
+source = "github"
+github = "Jojo4GH/nav"
+use_latest_release = true
+prefix = "v"
