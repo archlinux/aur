@@ -2,65 +2,46 @@
 # Contributor: Kimiblock Zhou <pn3535 at icloud dot com>
 
 pkgname=qcm
-pkgver=1.2.0_qsql
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
 license=('GPL-2.0-or-later')
 depends=(
 	'qt6-base'
-	'qt6-declarative'
 	'qt6-quick3d'
+	'qt6-grpc'
 	'hicolor-icon-theme'
 	'curl'
 	'openssl'
 	'dbus'
 	'ffmpeg'
 	'fmt'
-	'cubeb')
+	'cubeb-git'
+	'kdsingleapplication'
+	'qcmbackend-git'
+)
 makedepends=(
 	'git'
+	'clang'
 	'cmake'
 	'ninja'
 	'asio'
 	'pegtl'
-	'nlohmann-json'
-	'ctre'
-	'tl-expected'
 	'vulkan-headers'
 )
-source=(
-	"git+${url}.git#tag=v${pkgver}"
-	"git+https://github.com/effolkronium/random.git"
-	"git+https://github.com/hypengw/QmlMaterial.git"
-	"git+https://github.com/hypengw/qcm-jellyfin-plugin.git"
-	"git+https://github.com/KDAB/KDSingleApplication.git"
-)
-sha256sums=('4478227be25e33b5dbfdae0704e039dd75d402ff882b830655aa56baa1d2f421'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-	cd Qcm
-	git rm third_party/expected
-
-	git submodule init
-	git config submodule.third_party/random.url "${srcdir}/random"
-	git config submodule.qml_material.url "${srcdir}/QmlMaterial"
-	git config submodule.service/jellyfin.url "${srcdir}/qcm-jellyfin-plugin"
-	git config submodule.third_party/KDSingleApplication.url "${srcdir}/KDSingleApplication"
-	git -c protocol.file.allow=always submodule update
-}
+optdepends=('qcm-ncm-plugin-git: Netease Cloud Music plugin')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e441f3b5172c93b365a977e96a95873fd75831e51c07fd429d9f2fcb37685318')
 
 build() {
 	cmake -B build \
-		-S Qcm \
+		-S "Qcm-${pkgver}" \
 		-G Ninja \
 		-D CMAKE_BUILD_TYPE=None \
-		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_INSTALL_PREFIX=/usr \
+		-D CMAKE_CXX_COMPILER=clang++ # Require clang 20+ to build
 
 	cmake --build build
 }
