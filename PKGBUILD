@@ -6,9 +6,9 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.9.2
-_emsdkver=3.1.70
-_emsdk=4.0.3
+_qtver=6.10.0
+_emsdkver=4.0.7
+_emsdk=4.0.7
 
 _qt="qt-everywhere-src-${_qtver}"
 
@@ -39,8 +39,8 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/sing
 # https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
 
 
-sha256sums=('643f1fe35a739e2bf5e1a092cfe83dbee61ff6683684e957351c599767ca279c'
-            '91f711089f73d385295246beec35a7b4302e1732f5d7406ee792065fea0a0b65'
+sha256sums=('81895fb038a9c3d6c6f698d7611339a189eb45c3d91746c7789b0b77a5981aa3'
+            'b7262c64f4b5f0692f3bab063cafb09682495f98355677a3f1373d0520457bad'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
             '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9'
 )
