@@ -2,17 +2,17 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 pkgname="cargo-doc2readme-git"
-pkgver=0.1.6.r3.g32f28f8
+pkgver=0.6.3.r1.g4b72257
 pkgrel=1
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from your code'
-license=('Apache')
+license=('Apache-2.0')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
-url="https://github.com/msrd0/cargo-doc2readme"
+url="https://codeberg.org/msrd0/cargo-doc2readme"
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cargo-auditable')
 conflicts=('cargo-doc2readme')
 provides=('cargo-doc2readme')
 source=("$pkgname::git+$url")
@@ -25,15 +25,34 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	cargo fetch --locked
+
+	export RUSTUP_TOOLCHAIN=stable
+	
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$srcdir/$pkgname"
-	cargo build --offline --locked --release
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+	
+	cargo auditable build --offline --locked --release
+}
+
+check() {
+	cd "$srcdir/$pkgname"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	cargo test --offline --locked --release
 }
 
 package() {
 	cd "$srcdir/$pkgname"
+	
 	install -Dm755 "target/release/cargo-doc2readme" -t "$pkgdir/usr/bin"
 }
