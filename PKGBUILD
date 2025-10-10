@@ -19,7 +19,6 @@ makedepends=("composer" "curl" "git" "git-lfs" "npm")
 checkdepends=("alsa-lib" "at-spi2-core" "cairo" "coffeescript" "dbus" "expat" "glib2" "gtk3" "java-runtime" "libcups" "libdrm" "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes" "libxkbcommon" "libxrandr" "libxshmfence" "mesa" "nspr" "nss" "pango" "ruby")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
-    "geoipupdate: Geolocation of visitors."
     "nginx: HTTP server")
 provides=("${pkgname}")
 conflicts=("matomo-bin")
@@ -93,6 +92,36 @@ prepare()
     git config submodule.tests/travis.url "${srcdir}"/travis-scripts/
 
     git -c protocol.file.allow=always submodule update
+
+    # GeoIP database
+    ## Do not use option "-i" as it will remove the preceding "0".
+    declare _current_year
+    _current_year="$(date +"%Y")"
+    declare _current_month
+    _current_month="$(date +"%m")"
+
+    while [[ "$(curl -o /dev/null/ -sw "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz || true)" != "200" ]]; do
+        ## Remove the preceding "0".
+        if [[ "${_current_month::1}" -eq "0" ]]; then
+            _current_month=${_current_month:1}
+        fi
+
+        ## Take the last month.
+        if [[ "${_current_month}" -gt "1" ]]; then
+            ((_current_month--))
+        else
+            ((_current_year--))
+            _current_month="12"
+        fi
+
+        ## Put a "0" at the beginning again.
+        if [[ "${#_current_month}" -eq "2" ]]; then
+            _current_month="0${_current_month}"
+        fi
+    done
+
+    curl -o "${srcdir}"/DBIP-City.mmdb.gz https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz
+    gzip -d "${srcdir}"/DBIP-City.mmdb.gz
 }
 
 build()
@@ -120,6 +149,7 @@ package()
 
     # Install the software.
     cp -r "${srcdir}"/"${pkgname}"/ "${pkgdir}"/usr/share/webapps/
+    install -Dm644 "${srcdir}"/DBIP-City.mmdb "${pkgdir}"/usr/share/webapps/"${pkgname}"/misc/
     ln -s /var/lib/GeoIP/GeoLite2-City.mmdb "${pkgdir}"/usr/share/webapps/"${pkgname}"/misc/
     install -Dm644 "${srcdir}"/override-"${pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${pkgname}"/
