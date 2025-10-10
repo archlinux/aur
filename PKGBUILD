@@ -4,7 +4,7 @@ _pkgname='AI Gate'
 pkgver=4.0.1
 _electronversion=34
 _nodeversion=22
-pkgrel=3
+pkgrel=4
 pkgdesc="ChatGPT + Google Gemini (Bard) + Perplexity AI+ Claude AI = Ai Gate. NO API key needed.(Use system-wide electron)"
 arch=('any')
 url="https://aigate.inulute.com/"
@@ -78,6 +78,9 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
+    npx tsc -p tsconfig.electron.json
+    npx tsc -p tsconfig.preload.json
+    NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {

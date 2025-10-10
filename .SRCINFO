@@ -1,7 +1,7 @@
 pkgbase = ai-gate
 	pkgdesc = ChatGPT + Google Gemini (Bard) + Perplexity AI+ Claude AI = Ai Gate. NO API key needed.(Use system-wide electron)
 	pkgver = 4.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aigate.inulute.com/
 	arch = any
 	license = MIT
