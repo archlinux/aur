@@ -1,50 +1,55 @@
-# Maintainer: Hikari Takahashi <yyrud4c1p@mozmail.com>
-# This script is not official and it is provided as a helper. You are solely responsible for the use of this installer.
-
-# By using CrowdStrike, you are bound by CrowdStrike license terms that may change without notice.
+# Maintainer: Kyle Thompson <kylejeromethompson@gmail.com>
+#
+# --- DISCLAIMER ---
+# This PKGBUILD is an unofficial community contribution. It is not affiliated with,
+# endorsed, or supported by CrowdStrike, Inc.
+#
+# The CrowdStrike Falcon sensor is proprietary software. By building and installing
+# this package, you acknowledge that you are downloading software directly from
+# CrowdStrike and agree to be bound by their End User License Agreement and
+# Privacy Notice. You are solely responsible for ensuring you have a valid
+# license to use the software.
+#
+# This installation script is provided "AS IS" without warranty of any kind,
+# express or implied. The user assumes all risk and responsibility for its use.
+#
 # Terms of Use: https://www.crowdstrike.com/software-terms-of-use/
 # Privacy Notice: https://www.crowdstrike.com/privacy-notice/
 
-pkgname=falcon-sensor
-pkgver=7.14.0.16703
-_pkgver=7.14.0-16703
-pkgrel=1
-pkgdesc="Crowdstrike Falcon Sensor daemon and kernel modules"
-arch=("x86_64")
-url="https://crowdstrike.com"
-license=("custom")
-depends=("openssl" "libnl1")
-backup=("etc/logrotate.d/falcon-sensor")
-source=(
-  "manual://${pkgname}_${pkgver/_/-}_amd64.deb"
-  "LICENSE"
-)
-sha256sums=(
-  "SKIP"
-  "323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb"
-)
 
-prepare() {
-  mkdir "${srcdir}/${pkgname}"
-  cd "${srcdir}/${pkgname}"
+# --- Package Information ---
+pkgname='falcon-sensor'
+pkgdesc="CrowdStrike Falcon Sensor for Linux"
+arch=('x86_64')
+url="https://falcon.crowdstrike.com/"
+license=('custom')
 
-  bsdtar -xf "${srcdir}/data.tar.xz" -C .
+# --- Versioning ---
+_pkgver='7.30.0'
+_pkgrel='18306'
+pkgver=${_pkgver}
+pkgrel=${_pkgrel}
 
-  # Remove unnecessary .deb related directory
-  rm -rf "${srcdir}/${pkgname}/etc/init.d"
-}
+# --- Dependencies and Conflicts ---
+depends=('glibc' 'openssl')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
+# --- Source File ---
+source=("manual://falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb")
+sha256sums=('25faf5ae428ba0e0b67cf075401fd1310df57651424e2bfe742ff7b4711ba422')
+
+# --- Packaging Function ---
 package() {
-  warning "You may need to uninstall the package first and remove the folder /opt/CrowdStrike"
+  # Extract the data archive from the .deb file
+  tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
 
-  cd "${srcdir}/${pkgname}"
-  cp -r "${srcdir}/${pkgname}/"* "${pkgdir}"
-  install -dm755 "${pkgdir}/usr"
-  mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Create the destination directory structure first (-p creates parent dirs if needed)
+  mkdir -p "${pkgdir}/usr/lib/"
 
-  chmod a+x "${pkgdir}/opt/CrowdStrike"
-  chmod -R a+r "${pkgdir}/opt/CrowdStrike"
-  
-  #/opt/CrowdStrike/falconctl -s --cid=<your CID here>  
+  # Move the contents of the extracted 'lib' directory to '/usr/lib' inside the package
+  mv "${pkgdir}/lib"/* "${pkgdir}/usr/lib/"
+
+  # Remove the now-empty 'lib' directory from the package
+  rmdir "${pkgdir}/lib"
 }
