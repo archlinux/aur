@@ -1,0 +1,24 @@
+pkgbase = vibra-git
+	pkgdesc = A library and CLI tool for music recognition using the unofficial Shazam API
+	pkgver = r312.5ff95ed
+	pkgrel = 1
+	url = https://github.com/BayernMuller/vibra
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = bc
+	makedepends = jq
+	makedepends = ffmpeg
+	depends = fftw
+	depends = curl
+	depends = glibc
+	depends = gcc-libs
+	optdepends = ffmpeg: support for audio formats other than WAV
+	provides = vibra
+	conflicts = vibra
+	source = git+https://github.com/BayernMuller/vibra.git
+	sha256sums = SKIP
+
+pkgname = vibra-git
