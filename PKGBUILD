@@ -8,7 +8,7 @@ pkgver=1.718
 pkgrel=1
 pkgdesc='Bringing loggers and listeners together'
 arch=('any')
-url="https://metacpan.org/dist/Log-Any"
+url='https://metacpan.org/dist/Log-Any'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Log-Any/source/Makefile.PL
 makedepends=(
@@ -33,7 +33,6 @@ b2sums=('bbf9418026fbc301df7cec3c7a52027215fc7737e1c7678a6a0ae0040143398173e67b0
 build() {
   cd "${srcdir}/Log-Any-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
   make
@@ -42,7 +41,6 @@ build() {
 check() {
   cd "${srcdir}/Log-Any-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
@@ -50,6 +48,5 @@ check() {
 package() {
   cd "${srcdir}/Log-Any-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install DESTDIR="${pkgdir}"
 }
