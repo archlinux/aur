@@ -3,7 +3,7 @@
 pkgname=perl-alien-build-plugin-pkgconfig-ppwrapper
 _dist=Alien-Build-Plugin-PkgConfig-PPWrapper
 pkgver=0.03
-pkgrel=5
+pkgrel=6
 pkgdesc='Alien::Build plugin to ensure the pure perl PkgConfig is not run by the MSYS perl'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -20,7 +20,6 @@ depends=(
 checkdepends=(
   perl-capture-tiny
   perl-data-dump
-  perl-test2-suite
 )
 options=('!emptydirs')
 
