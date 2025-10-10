@@ -1,8 +1,9 @@
+
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
 pkgver=0.1.9
-pkgrel=2
-pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
+pkgrel=3
+pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
 license=('GPL-3.0-only')

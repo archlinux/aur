@@ -1,7 +1,7 @@
 pkgbase = dms-shell-bin
-	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
+	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
