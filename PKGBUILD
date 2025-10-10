@@ -1,6 +1,6 @@
 # Maintainer: Berke Oruç <berke3oruc@gmail.com>
 pkgname=berkemc
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Advanced Minecraft launcher with mod support, skin management, and performance monitoring"
 arch=('any')
