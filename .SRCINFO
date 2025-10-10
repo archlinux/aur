@@ -1,6 +1,6 @@
 pkgbase = electron39-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 39.0.0beta.1
+	pkgver = 39.0.0beta.2
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron39-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron39=39.0.0beta.1
+	provides = electron39=39.0.0beta.2
 	conflicts = electron39
-	noextract = electron39-chromedriver-39.0.0beta.1-x86_64.zip
-	noextract = electron39-39.0.0beta.1-x86_64.zip
-	source_aarch64 = electron39-chromedriver-39.0.0beta.1-aarch64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.1/chromedriver-v39.0.0-beta.1-linux-arm64.zip
-	source_aarch64 = electron39-39.0.0beta.1-aarch64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.1/electron-v39.0.0-beta.1-linux-arm64.zip
-	sha256sums_aarch64 = bc8ad3f6973286ddc3236a50a49aadd34605a18bb984514c39002c348898e391
-	sha256sums_aarch64 = aa5574e4d03ac22045d7476228a8441a0ba93a1355741cad4c5fa30ec320b85d
-	source_armv7h = electron39-chromedriver-39.0.0beta.1-armv7h.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.1/chromedriver-v39.0.0-beta.1-linux-armv7l.zip
-	source_armv7h = electron39-39.0.0beta.1-armv7h.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.1/electron-v39.0.0-beta.1-linux-armv7l.zip
-	sha256sums_armv7h = d695ac6d262de3c9dd92cfd8afcb677935ec59c0a523337a7c85aa45caca80be
-	sha256sums_armv7h = e84b168a6b6b7b6ddcaaf078677bf2056c7348078510bfe1790375c7077cfd55
-	source_x86_64 = electron39-chromedriver-39.0.0beta.1-x86_64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.1/chromedriver-v39.0.0-beta.1-linux-x64.zip
-	source_x86_64 = electron39-39.0.0beta.1-x86_64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.1/electron-v39.0.0-beta.1-linux-x64.zip
-	sha256sums_x86_64 = 2314f45d4eef71ab52619afa25bac881a421998282efef79db6040b9477f5bf3
-	sha256sums_x86_64 = ba9705adf4ccaa81600db605cf7624b54ae7bf4dffff5fa4299ec4c09bac9522
+	noextract = electron39-chromedriver-39.0.0beta.2-x86_64.zip
+	noextract = electron39-39.0.0beta.2-x86_64.zip
+	source_aarch64 = electron39-chromedriver-39.0.0beta.2-aarch64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.2/chromedriver-v39.0.0-beta.2-linux-arm64.zip
+	source_aarch64 = electron39-39.0.0beta.2-aarch64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.2/electron-v39.0.0-beta.2-linux-arm64.zip
+	sha256sums_aarch64 = b2e9b9a09ae6c140e13719d8615f7125106eb5f04060ca8ffbb5ccc36723f7a1
+	sha256sums_aarch64 = 8548e564f7848708d26d2b6967564d119ca07eb39c121fa92c069c6adf3979ec
+	source_armv7h = electron39-chromedriver-39.0.0beta.2-armv7h.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.2/chromedriver-v39.0.0-beta.2-linux-armv7l.zip
+	source_armv7h = electron39-39.0.0beta.2-armv7h.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.2/electron-v39.0.0-beta.2-linux-armv7l.zip
+	sha256sums_armv7h = e55f7dbf296a28e38e8287736e2344f6a36841375008742a5b0a84eff6e639b6
+	sha256sums_armv7h = c6d858b25595e188b27e997096389054af31c1a013b6cc7a2516f1fd3b953c87
+	source_x86_64 = electron39-chromedriver-39.0.0beta.2-x86_64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.2/chromedriver-v39.0.0-beta.2-linux-x64.zip
+	source_x86_64 = electron39-39.0.0beta.2-x86_64.zip::https://github.com/electron/electron/releases/download/v39.0.0-beta.2/electron-v39.0.0-beta.2-linux-x64.zip
+	sha256sums_x86_64 = 8dd8ca77deaf0cd70c5485e0d8c26d4d7f990dfa91c6920ec3a23019414929e4
+	sha256sums_x86_64 = 3237b31638fca60b66671fd8152926ac39fcc8b3aac92dc497e6744b4f2eb2a4
 
 pkgname = electron39-bin
