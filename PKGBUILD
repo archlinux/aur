@@ -57,4 +57,6 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   install -m 644 -D "target/photon-opensearch-${pkgver}.jar" "${pkgdir}/usr/share/java/photon/photon-opensearch.jar"
+  install -m 644 -D "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m 644 -D "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
