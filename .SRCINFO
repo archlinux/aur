@@ -12,6 +12,7 @@ pkgbase = tparted-bin
 	optdepends = e2fsprogs: for ext2/3/4 operations
 	optdepends = ntfs-3g: for ntfs operations
 	optdepends = btrfs-progs: for btrfs operations
+	optdepends = bcachefs-tools: for bcachefs operations
 	optdepends = xfsprogs: for xfs operations
 	optdepends = jfsutils: for jfs operations
 	optdepends = f2fs-tools: for f2fs operations

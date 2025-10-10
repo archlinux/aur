@@ -13,6 +13,7 @@ optdepends=('dosfstools: for fat operations'
             'e2fsprogs: for ext2/3/4 operations'
             'ntfs-3g: for ntfs operations'
             'btrfs-progs: for btrfs operations'
+            'bcachefs-tools: for bcachefs operations'
             'xfsprogs: for xfs operations'
             'jfsutils: for jfs operations'
             'f2fs-tools: for f2fs operations')
