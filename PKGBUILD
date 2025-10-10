@@ -1,42 +1,65 @@
-# Maintainer: Limao Luo <luolimao+AUR@gmail.com>
+# Maintainer:
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Yichao Yu <yyc1992@gmail.com>
 # Contributor: kfgz <kfgz@interia.pl>
 
 pkgbase=glib2-git
-_pkgname=glib2
-pkgname=(glib2-git glib2-docs-git)
-pkgver=2.78.0.r212.g0a6e19f
+pkgname=(
+  glib2-git
+  glib2-devel-git
+  glib2-docs-git
+)
+pkgver=2.86.0.r146.gd54816d
 pkgrel=1
 pkgdesc="Low Level Core Library"
+url="https://gitlab.gnome.org/GNOME/glib"
+license=(LGPL-2.1-or-later)
 arch=('x86_64')
-url="https://wiki.gnome.org/Projects/GLib"
-license=(LGPL2.1)
 depends=(
-     pcre libffi util-linux-libs zlib libsysprof-capture
+  bash
+  glibc
+  libffi
+  libsysprof-capture
+  pcre2
+  util-linux-libs
+  zlib
 )
 makedepends=(
-     gettext  gtk-doc shared-mime-info python libelf git util-linux meson dbus gi-docgen
+  dbus
+  dconf
+  gettext
+  gi-docgen
+  git
+  gobject-introspection
+  libelf
+  meson
+  python
+  python-docutils
+  python-packaging
+  shared-mime-info
+  util-linux
 )
 checkdepends=(
-     desktop-file-utils
+  desktop-file-utils
 )
-optdepends=(
-            'python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
-            'libelf: gresource inspection tool'
-)
-conflicts=($_pkgname)
-provides=($_pkgname=$pkgver)
-options=(debug staticlibs)
 source=("git+https://gitlab.gnome.org/GNOME/glib.git"
         "git+https://gitlab.gnome.org/GNOME/gvdb.git"
         0001-noisy-glib-compile-schemas.patch
+        0002-gdesktopappinfo-Add-more-known-terminals.patch
+        0003-meson.build-Avoid-linking-with-libatomic-when-unneed.patch
         glib-compile-schemas.hook
-        gio-querymodules.hook )
-sha512sums=('SKIP'
-            'SKIP'
-            'ddbf4a8eaf60e943a10a1ad67f2de078143558df8cc06e8009da87d8068af0cf8c66f443474b8b2848239c003e6210ff9ceb1ba5ffda1b95b80687adbf813722'
-            'c04fe25afc217c295b5ce4034733cec046126482d00fb8d0299e4815ac57129dd3f1c9ac824b9386d208a4f113e9dae682ea5b72f75387ed6b6b96a9cbbee8ca'
-            '5afd6f275c8fff16df3e685818f2e7989b39ffb3b8f5fc261a5a6d54a9b28ef53af62f3bf5067cf87cb74691572f85730cbc508691956ae048a0f3ecc1a0a39c')
+        gio-querymodules.hook
+)
+b2sums=('SKIP'
+        'SKIP'
+        '4ddbd31f5f466fce99d82890292ff922555a9ab379d22202aeea5127f58798668f871dea0485cc0f458069276ad512412285ede6c8f3e36bea899358f49e931a'
+        'cc39621757253c9f9e11da4ae40dc16d24f2898a7ee34fbfe5b7709c4f0139c04fab6c1138402c16859b2421c45d55bdde522aa1a1b2c6c3544d87b7c2d10dff'
+        '76033114a10d3df461981502eb386d0d6e645eaf27885f5e6dc75bc8495d770e0e75338f7191ae534825b30b75a84e2e9889f33fcdbd109ae10a85c2d34b1e28'
+        'acc2f474139e535f4bdd70ac22a9150f786b3395e679b14d0d3fbb9361d511bb1b5069d95b2a7ac9c0f3d901b03a0c037eb273446ba00764191b30a777bd2bc9'
+        '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96')
 
 pkgver() {
     cd glib
@@ -44,28 +67,36 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/glib"
-    # Suppress noise from glib-compile-schemas.hook
-    patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
+  cd glib
+
+  # Suppress noise from glib-compile-schemas.hook
+  git apply -3 ../0001-noisy-glib-compile-schemas.patch
+
+  # Add ghostty and ptyxis to known terminals list
+  git apply -3 ../0002-gdesktopappinfo-Add-more-known-terminals.patch
+
+  # drop dep on libatomic
+  git apply -3 ../0003-meson.build-Avoid-linking-with-libatomic-when-unneed.patch
 
   git submodule init
   git submodule set-url subprojects/gvdb "$srcdir/gvdb"
-  git -c protocol.file.allow=always submodule update
-
-
-  }
+  git -c protocol.file.allow=always -c protocol.allow=never submodule update
+}
 
 build () {
   local meson_options=(
     --default-library both
+    -D documentation=true
+    -D dtrace=disabled
     -D glib_debug=disabled
-    -D gtk_doc=true
-    -D man=true
+    -D introspection=enabled
+    -D man-pages=enabled
     -D selinux=disabled
     -D sysprof=enabled
+    -D systemtap=disabled
   )
 
- # Produce more debug info: GLib has a lot of useful macros
+  # Produce more debug info: GLib has a lot of useful macros
   CFLAGS+=" -g3"
   CXXFLAGS+=" -g3"
 
@@ -75,43 +106,93 @@ build () {
 
   arch-meson glib build "${meson_options[@]}"
   meson compile -C build
-
 }
 
-#check() {
-#    meson test -C build
-#}
+check() {
+  meson test -C build --no-suite flaky --no-suite slow --print-errorlogs
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
 
 package_glib2-git() {
-     provides+=(libgio-2.0.so libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
-                libgthread-2.0.so)
-    depends+=(
+  depends+=(
     libffi.so
     libmount.so
   )
+  provides+=(libg{lib,io,irepository,module,object,thread}-2.0.so)
+  optdepends=(
+    'dconf: GSettings storage backend'
+    'glib2-devel: development tools'
+    'gvfs: most gio functionality'
+  )
+  options+=(staticlibs)
+  install=glib2.install
+  provides+=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
+  meson install -C build --destdir "$pkgdir"
 
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
+  touch "$pkgdir/usr/lib/gio/modules/.keep"
 
-     DESTDIR="$pkgdir" meson install -C build
+  python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+  python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
 
-    mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
-    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 "$srcdir"/*.hook
+  cd "$pkgdir"
 
-    python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
-    python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+  # Split docs
+  _pick docs usr/share/doc
+
+  # Split devel
+  _pick devel usr/bin/gdbus-codegen
+  _pick devel usr/bin/glib-{mkenums,genmarshal}
+  _pick devel usr/bin/gresource
+  _pick devel usr/bin/gtester{,-report}
+
+  _pick devel usr/share/gdb/
+  _pick devel usr/share/glib-2.0/gdb/
+  _pick devel usr/share/glib-2.0/codegen/
+
+  _pick devel usr/share/bash-completion/completions/gresource
+
+  _pick devel usr/share/man/man1/gdbus-codegen.1
+  _pick devel usr/share/man/man1/glib-{mkenums,genmarshal}.1
+  _pick devel usr/share/man/man1/gresource.1
+  _pick devel usr/share/man/man1/gtester{,-report}.1
+}
+
+package_glib2-devel-git() {
+  pkgdesc+=" - development files"
+  depends=(
+    glib2-git
+    glibc
+    libelf
+    python
+    python-packaging
+  )
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
+  mv devel/* "$pkgdir"
 }
 
 package_glib2-docs-git() {
-  pkgdesc="Documentation for GLib"
+  pkgdesc+=" - documentation"
+  arch=(any)
   depends=()
-  optdepends=()
-  provides=($_pkgname-docs)
-  conflicts=($_pkgname-docs)
-  license+=(custom)
+  license+=(LicenseRef-Public-Domain)
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
-  mkdir -p "$pkgdir/usr/share"
-  mv gtk-doc "$pkgdir/usr/share"
-
-  install -Dt "$pkgdir/usr/share/licenses/glib2-docs" -m644 glib/docs/reference/COPYING
+  mv docs/* "$pkgdir"
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 glib/docs/reference/COPYING
 }
 
+# vim: set ts=2 sw=2 et:

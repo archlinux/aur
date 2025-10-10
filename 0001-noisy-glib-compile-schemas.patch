@@ -1,18 +1,24 @@
-From 6474cf310a2b64e7cb911e74b4dc9456f1d7930c Mon Sep 17 00:00:00 2001
-From: Solomon Choina <shlomochoina@gmail.com>
-Date: Sun, 10 Jun 2018 21:51:38 -0400
-Subject: [PATCH] noisy-glib-compile-schemas
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Fri, 7 Jan 2022 18:59:10 +0000
+Subject: [PATCH] glib-compile-schemas: Remove noisy deprecation warnings
 
+While the warnings are useful for developers, Arch Linux users also see
+them when glib-compile-schemas gets run after upgrades, where they just
+add noise.
+
+The alternative to this patch would be redirecting the compiler's stderr
+to /dev/null, but that might also suppress more useful errors or
+warnings we want users to see.
 ---
- gio/glib-compile-schemas.c | 17 ++---------------
- 1 file changed, 2 insertions(+), 15 deletions(-)
+ gio/glib-compile-schemas.c | 13 -------------
+ 1 file changed, 13 deletions(-)
 
 diff --git a/gio/glib-compile-schemas.c b/gio/glib-compile-schemas.c
-index f6e1b4036..d16b26fe1 100644
+index 81e675f53e8b..1a10a8d098c5 100644
 --- a/gio/glib-compile-schemas.c
 +++ b/gio/glib-compile-schemas.c
-
-@@ -1223,19 +1223,6 @@ parse_state_start_schema (ParseState  *state,
+@@ -1232,19 +1232,6 @@ parse_state_start_schema (ParseState  *state,
        return;
      }
  
@@ -32,6 +38,3 @@ index f6e1b4036..d16b26fe1 100644
    state->schema_state = schema_state_new (path, gettext_domain,
                                            extends, extends_name, list_of);
  
--- 
-2.17.1
-

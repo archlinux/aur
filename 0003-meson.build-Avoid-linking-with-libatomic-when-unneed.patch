@@ -1,0 +1,54 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 4 Sep 2025 20:43:05 +0200
+Subject: [PATCH] meson.build: Avoid linking with libatomic when unneeded
+
+Arch Linux doesn't need it and the lack of a static libatomic is causing
+trouble for downstream builds using a static GLib.
+
+See: https://gitlab.archlinux.org/archlinux/packaging/packages/qemu/-/issues/6
+---
+ meson.build | 29 +++++++++++++++++++++++------
+ 1 file changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index acaf447594ab..f7cf636b37aa 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2290,13 +2290,30 @@ libffi_dep = dependency('libffi', version : '>= 3.0.0')
+ 
+ libz_dep = dependency('zlib')
+ 
+-libatomic_test_code = '''
+-  int main (int argc, char ** argv) {
+-    return 0;
+-  }'''
+ atomic_dep = []
+-if cc.links(libatomic_test_code, args : '-latomic', name : 'check for -latomic')
+-  atomic_dep = cc.find_library('atomic')
++if threads_implementation == 'posix'
++  stdatomic_test_code = '''
++    #include <stdatomic.h>
++    int main (int argc, char ** argv) {
++      atomic_uint atomic = 2;
++      unsigned int old = 2;
++      atomic_compare_exchange_strong_explicit(&atomic, &old, 3, __ATOMIC_ACQUIRE, __ATOMIC_RELAXED);
++    }'''
++  __atomic_test_code = '''
++    int main (int argc, char ** argv) {
++      int atomic = 2;
++      int old = 2;
++      __atomic_compare_exchange_4 (&atomic, &old, 3, 0, __ATOMIC_ACQUIRE, __ATOMIC_RELAXED);
++      return 0;
++    }'''
++  if not cc.links(stdatomic_test_code, name: 'built-in stdatomic') and \
++      not cc.links(__atomic_test_code, name: 'built-in __atomic')
++    atomic_dep = cc.find_library('atomic', required: true)
++    if not cc.links(stdatomic_test_code, dependencies: atomic_dep, name: '-latomic stdatomic') and \
++        not cc.links(__atomic_test_code, dependencies: atomic_dep, name: '-latomic __atomic')
++      error('libatomic is unusable')
++    endif
++  endif
+ endif
+ 
+ # First check in libc, fallback to libintl, and as last chance build

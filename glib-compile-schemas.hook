@@ -1,10 +1,10 @@
 [Trigger]
-Type = File
+Type = Path
 Operation = Install
 Operation = Upgrade
 Operation = Remove
-Target = usr/share/glib-2.0/schemas/*.gschema.xml
-Target = usr/share/glib-2.0/schemas/*.gschema.override
+Target = usr/share/glib-2.0/schemas/*.xml
+Target = usr/share/glib-2.0/schemas/*.override
 
 [Action]
 Description = Compiling GSettings XML schema files...
