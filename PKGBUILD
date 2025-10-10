@@ -2,7 +2,7 @@
 validpgpkeys=('85A129CD038220C44227EAB9C28D02D181F83532')
 
 pkgname=opaquefiles
-pkgver=0.9.9.3
+pkgver=0.9.9.4
 pkgrel=1
 pkgdesc='File encryption program'
 

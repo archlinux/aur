@@ -1,6 +1,6 @@
 pkgbase = opaquefiles
 	pkgdesc = File encryption program
-	pkgver = 0.9.9.3
+	pkgver = 0.9.9.4
 	pkgrel = 1
 	url = https://codeberg.org/cozyOwl/OpaqueFiles
 	arch = any
