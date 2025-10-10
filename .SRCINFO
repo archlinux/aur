@@ -1,13 +1,13 @@
 pkgbase = einfach-grub-theme
 	pkgdesc = a simple grub theme to start a good day
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/DerJimno/einfach-grub-theme
 	arch = any
 	license = GPL3
 	options = !strip
 	options = !debug
-	source = https://github.com/DerJimno/einfach-grub-theme/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/DerJimno/einfach-grub-theme/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = einfach-grub-theme
