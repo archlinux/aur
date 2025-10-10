@@ -1,7 +1,7 @@
 # Maintainer: ThePanz <thepanz@gmail.com>
 
 pkgname=atuin-desktop-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Atuin Desktop: Runbooks that Run. A local-first, executable runbook editor for real terminal workflows"
 arch=('x86_64')
@@ -33,6 +33,6 @@ package() {
     cp -ar "${srcdir}/usr/" "${pkgdir}/usr/"
 }
 
-b2sums_x86_64=('8461272e00a657e60a21d3debf645b46a72b8d4a196ede1ee412e2430dc9b686d354497d5545ba5325369248fe0a3fec34b8116a058f72d68bceefd95470f01f')
+b2sums_x86_64=('ce3c021a20017ac235dcb5174caf957fcd7667de7d7a2ec8d24cc19e15b1c3a934927614a4cf8ff7aab2679e544464f381d80c6ec4e7cd4982aefaf50fb7c21e')
 
 # vim:set ts=2 sw=2 et:
