@@ -1,11 +1,11 @@
 pkgbase = citeorder
 	pkgdesc = Simple command-line tool to reorder footnotes in Markdown files
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/dhanushka2001/citeorder
 	arch = x86_64
 	license = GPL-3.0-or-later
-	source = citeorder-1.1.tar.gz::https://github.com/dhanushka2001/citeorder/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 0afcb3f7e63f159f75b299485353ff839bf8c35e933d6e58c4fc01f6347aeb15
+	source = citeorder-1.1.1.tar.gz::https://github.com/dhanushka2001/citeorder/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 4375bba20e0fd4a5e33a84b67728c64561ff654ce2905175202e1e03fe5e779c
 
 pkgname = citeorder
