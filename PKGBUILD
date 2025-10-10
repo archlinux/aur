@@ -3,7 +3,7 @@
 _pkgname="ledger-live-desktop"
 pkgname="${_pkgname}-appimage"
 _appimage="${_pkgname}.AppImage"
-pkgver=2.122.1
+pkgver=2.130.1
 pkgrel=1
 pkgdesc="Desktop companion app for Ledger hardware wallets."
 arch=("x86_64")
@@ -32,7 +32,7 @@ source=(
 
 # AppImage checksum obtained from https://www.ledger.com/ledger-live/lld-signatures
 sha512sums=(
-	'9cd062bb3ff561a46a3a9bc8a05d6a4d188ea2f3dafeb7555128b072d6a3256856c4c05641165836754ca702dd6f84647292c6aea3d000fe120c0f0f56d15224'
+	'0957c81d82faa338d245cbdd0be5a0738ed461db187c882a40dc4edf8eb63c276e3df404d081912dd9d07ab890860a9c0393ef97532943381d09bcce270f5c96'
 	'2fee06f9f145e45ac229b86552edeab77f07547c45f29e6e65b08281de071e6ced3102340d66b099c085aea0fef97e70b35e8dbb68bc4ea1ed8e8019b3f0d30a'
 	'915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318'
 )
