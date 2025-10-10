@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
-	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
+	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.1.8.r0.g2008977
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -29,12 +29,6 @@ pkgbase = dms-shell-git
 	sha256sums = SKIP
 
 pkgname = dms-shell-git
-	depends = dgop
-	depends = inter-font
-	depends = quickshell
-	depends = ttf-fira-code
-	depends = ttf-material-symbols-variable-git
-	depends = dms-shell-compositor-git
 	optdepends = brightnessctl: Laptop display brightness control
 	optdepends = cava: Audio visualizer
 	optdepends = cliphist: Clipboard history functionality
@@ -47,17 +41,15 @@ pkgname = dms-shell-git
 	optdepends = dms-shell-niri: Niri specific dependencies
 
 pkgname = dms-shell-hyprland-git
-	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles (for Hyprland)
+	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (for Hyprland)
 	depends = dms-shell-git
 	depends = hyprland
 	optdepends = 
-	provides = dms-shell-compositor-git
 	conflicts = dms-shell-hyprland
 
 pkgname = dms-shell-niri-git
-	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles (for Niri)
+	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (for Niri)
 	depends = dms-shell-git
 	depends = niri
 	optdepends = 
-	provides = dms-shell-compositor-git
 	conflicts = dms-shell-niri

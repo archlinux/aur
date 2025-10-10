@@ -7,8 +7,8 @@ _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
 pkgver=0.1.8.r0.g2008977
-pkgrel=1
-pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
+pkgrel=2
+pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
 license=(GPL-3.0-only)
@@ -51,7 +51,6 @@ build() {
 }
 
 package_dms-shell-git() {
-	depends+=(dms-shell-compositor-git)
 	optdepends+=('dms-shell-hyprland: Hyprland specific dependencies')
 	optdepends+=('dms-shell-niri: Niri specific dependencies')
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkg2/dms"
@@ -64,7 +63,6 @@ package_dms-shell-git() {
 
 package_dms-shell-hyprland-git() {
 	pkgdesc+=" (for Hyprland)"
-	provides=(dms-shell-compositor-git)
 	conflicts=("${pkgname%-git}")
 	depends=(dms-shell-git
 	         hyprland)
@@ -73,7 +71,6 @@ package_dms-shell-hyprland-git() {
 
 package_dms-shell-niri-git() {
 	pkgdesc+=" (for Niri)"
-	provides=(dms-shell-compositor-git)
 	conflicts=("${pkgname%-git}")
 	depends=(niri)
 	depends=(dms-shell-git
