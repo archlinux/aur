@@ -1,5 +1,5 @@
 pkgname=zp-cpp
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='C++ utility and Vulkan abstraction library'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glfw' 'vulkan-icd-loader' 'openssl' 'enet')
 makedepends=('cmake' 'ninja' 'gtest' 'glm' 'vulkan-headers')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zacharypepin/zp_cpp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8d4e9342ef1af066edf97171624daa4d53122efa8e0c0bb6a6d45b754f181439')
+sha256sums=('4ae36768fc5106bc50f2111bd6232ca52098dda4e866fc5d386b99d0b8e548d6')
 
 build() {
     local sourcedir="${srcdir}/zp_cpp-${pkgver}/zp_cpp"
