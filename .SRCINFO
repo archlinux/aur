@@ -1,11 +1,12 @@
 pkgbase = fractal-git
 	pkgdesc = Matrix messaging app for GNOME written in Rust
-	pkgver = 9.r171.g07f36e2
+	pkgver = 12.r122.g7c56918
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/fractal
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = blueprint-compiler
 	makedepends = clang
 	makedepends = git
 	makedepends = meson
@@ -16,10 +17,8 @@ pkgbase = fractal-git
 	depends = gtk4
 	depends = gtksourceview5
 	depends = libadwaita
-	depends = libpipewire
 	depends = libshumate
-	depends = libwebp
-	provides = fractal=9.r171
+	provides = fractal=12.r122
 	conflicts = fractal
 	source = fractal::git+https://gitlab.gnome.org/World/fractal.git
 	sha256sums = SKIP
