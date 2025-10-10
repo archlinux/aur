@@ -1,38 +1,86 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_name=("protoc-gen-grpc-gateway" "protoc-gen-openapiv2")
-_pkgname="grpc-gateway"
-pkgname="${_pkgname}-bin"
-pkgver=2.27.2
+_binname=(
+  "protoc-gen-grpc-gateway"
+  "protoc-gen-openapiv2"
+)
+_pkgbase="grpc-gateway"
+_pkgname=(
+  "${_pkgbase}"
+  "${_pkgbase}-common"
+  "${_binname[@]}"
+)
+pkgbase="${_pkgbase}-bin"
+pkgname=(
+  "${_pkgname[@]/%/-bin}"
+)
+pkgver=2.27.3
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=('aarch64' 'x86_64')
 url="https://grpc-ecosystem.github.io/grpc-gateway/"
-_url="https://github.com/grpc-ecosystem/${_pkgname}"
+_url="https://github.com/grpc-ecosystem/${_pkgbase}"
 license=('BSD-3-Clause')
-depends=('protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc')
-provides=("${_pkgname}" "${_name[@]}")
-conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${_pkgbase}-${pkgver}"
 source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
-for _binary in "${_name[@]}"; do
-    source_aarch64+=("${_binary}-${pkgver}-aarch64::${_url}/releases/download/v${pkgver}/${_binary}-v${pkgver}-linux-arm64")
-    source_x86_64+=("${_binary}-${pkgver}-x86_64::${_url}/releases/download/v${pkgver}/${_binary}-v${pkgver}-linux-x86_64")
+for _name in "${_binname[@]}"; do
+  source_aarch64+=("${_name}-${pkgver}-aarch64::${_url}/releases/download/v${pkgver}/${_name}-v${pkgver}-linux-arm64")
+  source_x86_64+=("${_name}-${pkgver}-x86_64::${_url}/releases/download/v${pkgver}/${_name}-v${pkgver}-linux-x86_64")
 done
-sha256sums=('a4764320cdc5246fa64626129b6bc8b6835a9c1fbb994daadbbd1268d5b949c1'
+sha256sums=('3a68931f95da4152197b851116679f0d2bebe901835a9534bbe822f8a53d1d2e'
             'a15b1d1b168954c92ff7fb1620382418f7c72f4f4d251ee791d1098ad68ab0c4')
-sha256sums_aarch64=('710bf0ac9d8cbe1d0e1ead29916cf50e08fa0976c6be5366c300e8044d8e67b8'
-                    'efce95ad086b0ffada3b2db0fac833ee444b9d658cd652f6041d1f2af30800cc')
-sha256sums_x86_64=('46a51c05403b2392cec1e554a295726f00731b11eddffd22406bffbc74afe885'
-                   '957ab86000557c748ff79f26ea6578dc91a0264e76c57f07b9c932b1f9776e57')
+sha256sums_aarch64=('ad7d733f1f22eab9c7a9f7bef83e52bbddc8e18ef364ed880ec0e6840e31f9b4'
+                    'deccf6fcba742797e18fad899ace3cbc8922bc10d2ab743e30b164762f3d671a')
+sha256sums_x86_64=('282226318aca5208df68f66a5b13461c00ab9792290f3c2d7b465bc5c41f1d8f'
+                   'e733a8978d6b60eacb0429af0a6ec24f4a8cf05e98ad7a3735b51fd8cee71452')
 
-package() {
-  cd "${srcdir}"
-  for _binary in "${_name[@]}"; do
-    install -vDm755 "${_binary}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_binary}"
-  done
-
-  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+package_grpc-gateway-bin() {
+  pkgdesc+=" (meta)"
+  arch=('any')
+  depends=(
+    "${_binname[@]/%/"-bin=${pkgver}"}"
+  )
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
 }
+
+package_grpc-gateway-common-bin() {
+  pkgdesc+=" (common)"
+  arch=('any')
+  provides=(
+    "${pkgname%-bin}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
+
+  cd "${srcdir}"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+}
+
+for _name in "${_binname[@]}"; do
+  eval "
+package_${_name}-bin() {
+  depends+=(
+    '${_pkgbase}-common=${pkgver}'
+    'protobuf'
+    'protoc-gen-go'
+    'protoc-gen-go-grpc'
+  )
+  provides=(
+    '${_name}=${pkgver}'
+  )
+  conflicts=(
+    '${_name}'
+  )
+  
+  cd \"\${srcdir}\"
+  install -vDm755 '${_name}-${pkgver}-${CARCH}' \"\${pkgdir}/usr/bin/${_name}\"
+}"
+done
