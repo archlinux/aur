@@ -1,19 +1,22 @@
 pkgbase = gtkam
-	pkgdesc = A GTK frontend for libgphoto2
-	pkgver = 1.0
-	pkgrel = 2
-	url = http://gphoto.sourceforge.net/proj/gtkam
-	arch = i686
+	pkgdesc = A GTK2 frontend for libgphoto2
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/gphoto/gtkam
 	arch = x86_64
-	license = GPL
-	makedepends = gimp
+	arch = i686
+	license = GPL-2.0-or-later
 	makedepends = intltool
-	depends = libgphoto2>=2.5.0
-	depends = libexif>=0.3.2
+	depends = glibc
+	depends = glib2
+	depends = gtk2
+	depends = libgphoto2
+	depends = libexif
 	depends = libexif-gtk
 	depends = gdk-pixbuf2
-	source = http://downloads.sourceforge.net/project/gphoto/gtkam/1.0/gtkam-1.0.tar.gz
-	md5sums = f9156394632ac54731d1eea5e2529e7c
+	source = https://github.com/gphoto/gtkam/releases/download/v1.1/gtkam-1.1.tar.gz
+	source = gtkam-check-pow.patch::https://github.com/gphoto/gtkam/commit/d5f837e6c46c0ca4e2d4e8bc6c072b619466949d.patch
+	sha256sums = 66e44e2f2ff98cdf523eef1e2274f757e082b69e5c9ca6f0af629453bb228347
+	sha256sums = 9e45e3a0506036ebdfdef17eac7206fe9e580f34b58a09d46177f7f293875834
 
 pkgname = gtkam
-
