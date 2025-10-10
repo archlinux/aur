@@ -1,6 +1,6 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
-	pkgver = 2.3.6
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://modoboa.org/
 	arch = any
@@ -67,7 +67,7 @@ pkgbase = modoboa
 	optdepends = python-factory-boy
 	provides = modoboa
 	conflicts = modoboa-git
-	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.3.6.tar.gz
-	sha512sums = 38556ca81fff55b33c6ed74dd70ab551231e51a4cd0b09c94ef85aad3fc59e9312fd47fc0d07accb9fb80055c5b1a36412ffdb03e77220528b7e26fd2deb00c5
+	source = https://files.pythonhosted.org/packages/source/m/modoboa/modoboa-2.6.0.tar.gz
+	sha512sums = 906504727adc47a80a322f4284c0813155502484dcfa57fa0c6b22381d682323bda39255572cab31c466b117546b2c81d07d47bbfef6dc0cac3dde9b1594d339
 
 pkgname = modoboa

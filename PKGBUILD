@@ -1,7 +1,7 @@
 # Maintainer: raininja <daniel.mclellan@gmail.com
 
 pkgname=modoboa
-pkgver=2.3.6
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Mail hosting made simple"
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-conn
 provides=('modoboa')
 conflicts=('modoboa-git')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('38556ca81fff55b33c6ed74dd70ab551231e51a4cd0b09c94ef85aad3fc59e9312fd47fc0d07accb9fb80055c5b1a36412ffdb03e77220528b7e26fd2deb00c5')
+sha512sums=('906504727adc47a80a322f4284c0813155502484dcfa57fa0c6b22381d682323bda39255572cab31c466b117546b2c81d07d47bbfef6dc0cac3dde9b1594d339')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
