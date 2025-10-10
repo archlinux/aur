@@ -6,9 +6,11 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+# shellcheck disable=SC2148,SC2034,SC2154,SC2164
+
 pkgname=ffmpeg-headless
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -110,13 +112,18 @@ conflicts=('ffmpeg')
 _tag='a4044e04486d1136022498891088a90baf5b2775'
 source=(
   "$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
+  '0001-unbreak-glslang-build.patch'
 )
-b2sums=('7c71ec5f098e248b584fd3e28e7f648e5929ff7c5a6cfc5dcce8300a8a0b91de804cd92ef72963ef86dc57a73d15ab03aeab61d99d1872baad1163462730d7d6')
+b2sums=('7c71ec5f098e248b584fd3e28e7f648e5929ff7c5a6cfc5dcce8300a8a0b91de804cd92ef72963ef86dc57a73d15ab03aeab61d99d1872baad1163462730d7d6'
+        '650631d4f06dffec55bd6419f680d95617a9093d8e548b3dac0b379496477dcbd4121883128438343c568e992cb5b455efc0b7c4e34a5e7200518f9b5beaa231')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
-# prepare() {
-#   cd "${pkgname}" || exit 1
-# }
+prepare() {
+  cd "${pkgname}" || exit 1
+
+  # https://github.com/FFmpeg/FFmpeg/commit/f1e9032a2000b8b885cffd6fed8eacd47b37673f
+  git apply -3 ../0001-unbreak-glslang-build.patch
+}
 
 pkgver() {
   cd "${pkgname}" || exit 1
