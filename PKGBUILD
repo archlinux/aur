@@ -2,7 +2,7 @@
 # Contributors: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=terraform-ls-bin
-pkgver=0.38.1
+pkgver=0.38.2
 pkgrel=1
 pkgdesc="Terraform Language Server"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 optdepends=('terraform: Required to support fmt command')
 
 source=("terraform-ls-linux-amd64-${pkgver}.zip::${pkgurl}/${pkgver}/terraform-ls_${pkgver}_linux_amd64.zip")
-sha512sums=('900954ed82fccb1136de2e276755abde4be943732df99878ce2988b2a033b6a3acd62c3c2e1dc3c84b0990b38d40fb7e7fa079074674c38041a75a43ec66924b')
+sha512sums=('201b387415fe3ba626be49fb0e381c365eb65d449a16982dca3204ab3dbe9a4fc703be97d01ffb0923434e843af129ef0417e4240e7193520cc3a946594fd55e')
 
 package() {
   install -D -g root -m 0755 -o root "$srcdir/terraform-ls" "$pkgdir/usr/bin/terraform-ls"
