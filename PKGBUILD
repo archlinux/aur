@@ -4,7 +4,7 @@ pkgname=libfprint-2-tod1-goodix-v2
 pkgver=0.0.11+2404
 _debver="${pkgver}-0ubuntu1"
 _debname="libfprint-2-tod1-goodix-550a"
-pkgrel=8
+pkgrel=1
 pkgdesc="Proprietary driver for Goodix fingerprint readers from Ubuntu launchpad"
 arch=('x86_64')
 url="https://launchpad.net/~libfprint-tod1-group"
@@ -27,7 +27,7 @@ prepare() {
 package() {
     cd "$srcdir"
     
-    # Adjust udev rules for Arch (replace plugdev with uaccess, rm unnecessary ATTRS{dev} (tested, works after rm))
+    # Adjust udev rules for Arch (replace plugdev with uaccess, rm unnecessary ATTRS{dev})
     if [ -f "lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules" ]; then
         sed -i 's/, ATTRS{dev}=="\*"//' lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules
         sed -i 's/GROUP="plugdev"/TAG+="uaccess"/' lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules
