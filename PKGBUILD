@@ -1,7 +1,7 @@
 # Maintainer: My Name <andrea.venturini@tiscali.it>
 pkgname=igdesk
 igdeskver=1.4
-igdeskrel=614
+igdeskrel=615
 pkgver=${igdeskver}_${igdeskrel}
 pkgrel=1
 pkgdesc="IG DESK is a free signature tool developed by Intesi Group for all users who need to digitally sign documents from their desktop quickly and easily."
