@@ -1,6 +1,6 @@
 pkgbase = qt6gtk2
 	pkgdesc = GTK+2.0 integration plugins for Qt6
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://www.opencode.net/trialuser/qt6gtk2
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = qt6gtk2
 	depends = gtk2
 	depends = libx11
 	conflicts = qt6gtk2-git
-	source = qt6gtk2-0.5.tar.gz::https://www.opencode.net/trialuser/qt6gtk2/-/archive/0.5/qt6gtk2-0.5.tar.gz
+	source = qt6gtk2-0.6.tar.gz::https://www.opencode.net/trialuser/qt6gtk2/-/archive/0.6/qt6gtk2-0.6.tar.gz
 	source = qt6gtk2.hook
-    sha256sums = 6d777f2c3b0bd0bcbc0c2d5afc748e266c208475478f8be65f9c032410a022e2
+    sha256sums = 123fcb8260db5c22bb25a1954db02b6390e73eaed3ad13850cce641ea300fd78
 	sha256sums = 9c60620868ce7dc469985cdde56332e28ce9f60dd13d6dfa516e8d1ef94c7673
 
 pkgname = qt6gtk2

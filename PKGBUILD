@@ -1,7 +1,7 @@
 # Maintainer: Jeff_WuYo <62562200+Jeff-WuYo@users.noreply.github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=qt6gtk2
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc='GTK+2.0 integration plugins for Qt6'
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=($pkgname-git)
 depends=(qt6-base gtk2 libx11)
 source=("${pkgname}-$pkgver.tar.gz::${url}/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "${pkgname}.hook")
-sha256sums=('6d777f2c3b0bd0bcbc0c2d5afc748e266c208475478f8be65f9c032410a022e2'
+sha256sums=('123fcb8260db5c22bb25a1954db02b6390e73eaed3ad13850cce641ea300fd78'
             '9c60620868ce7dc469985cdde56332e28ce9f60dd13d6dfa516e8d1ef94c7673')
 
 build() {
