@@ -1,14 +1,15 @@
 pkgbase = kitty-cat
-	pkgdesc = kitty-cat is a command line tool that fetches a cat from CATAAS and displays it in your terminal. Built for Kitty terminal.
-	pkgver = 1.0.1
+	pkgdesc = kitty-cat is a command line tool that fetches a cat from CATAAS and displays it in your terminal.
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/darrkenn/kitty-cat
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	depends = kitty
-	source = kitty-cat-1.0.1.tar.gz::https://github.com/darrkenn/kitty-cat/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 7c7615ac3666bee44fbdcf904a817a6c71daf57c1cbb1ce506a9fc82090db98f
+	optdepends = kitty
+	optdepends = viu
+	source = kitty-cat-1.0.2.tar.gz::https://github.com/darrkenn/kitty-cat/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 99f8815d062bb9666b52d06f392fd4dd4a864896f35ea583777fd3a5e424ad0f
 
 pkgname = kitty-cat
