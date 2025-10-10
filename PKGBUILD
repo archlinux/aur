@@ -9,15 +9,15 @@ url="https://github.com/clauderarch/kripton-authenticator.git"
 license=('GPL3')
 depends=('glibc')
 makedepends=('rust' 'git')
-source=("https://github.com/clauderarch/kripton-authenticator/archive/18efb3ef58bc7f213842b24a427c3d3d0fda1847.tar.gz")
+source=("https://github.com/clauderarch/kripton-authenticator/archive/715a5dea4d8bce94eec68190bc87403691dd521e.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/${pkgname}-18efb3ef58bc7f213842b24a427c3d3d0fda1847"
+  cd "$srcdir/${pkgname}-715a5dea4d8bce94eec68190bc87403691dd521e"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/${pkgname}-18efb3ef58bc7f213842b24a427c3d3d0fda1847"
+  cd "$srcdir/${pkgname}-715a5dea4d8bce94eec68190bc87403691dd521e"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
