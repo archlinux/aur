@@ -3,8 +3,8 @@
 pkgbase=python-pocketlint
 pkgname=python-pocketlint
 _pkgbase=pocketlint
-pkgver=0.25
-pkgrel=3
+pkgver=0.26
+pkgrel=1
 pkgdesc='Addon pylint modules and configuration settings for checking the validity of Python-based source projects.'
 arch=('i686' 'x86_64')
 url='https://github.com/rhinstaller/pocketlint'
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('python' 'python-pylint' 'python-packaging' 'python-setuptools')
 depends=('python' 'python-pylint' 'python-polib' 'python-packaging')
 source=("https://github.com/rhinstaller/pocketlint/archive/${pkgver}.tar.gz")
-sha256sums=('d6c868cc6119cfef1470707933a949088a3e1bf82c7375d657f038c728c12fa9')
+sha256sums=('1df02bdeb0a31914da16c3e0f125d8f25ff5506287a0c89b51207f8e620f28d0')
 
 package () {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
