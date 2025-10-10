@@ -150,7 +150,6 @@ package()
     # Install the software.
     cp -r "${srcdir}"/"${pkgname}"/ "${pkgdir}"/usr/share/webapps/
     install -Dm644 "${srcdir}"/DBIP-City.mmdb "${pkgdir}"/usr/share/webapps/"${pkgname}"/misc/
-    ln -s /var/lib/GeoIP/GeoLite2-City.mmdb "${pkgdir}"/usr/share/webapps/"${pkgname}"/misc/
     install -Dm644 "${srcdir}"/override-"${pkgname}".conf "${pkgdir}"/usr/lib/systemd/system/php-fpm.service.d/
     chown -R http:http "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
