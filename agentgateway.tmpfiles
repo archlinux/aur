@@ -1,2 +1,4 @@
 # Create persistent runtime directory for agentgateway
 d /var/lib/agentgateway 0750 agentgateway agentgateway -
+# Create configuration directory
+d /etc/agentgateway 0755 root root -

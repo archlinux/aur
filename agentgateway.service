@@ -8,7 +8,7 @@ Wants=network.target
 Type=simple
 User=agentgateway
 Group=agentgateway
-ExecStart=/usr/bin/agentgateway
+ExecStart=/usr/bin/agentgateway -f /etc/agentgateway/agentgateway.yaml
 WorkingDirectory=/var/lib/agentgateway
 Restart=always
 RestartSec=3
@@ -20,7 +20,7 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/var/lib/agentgateway /tmp
+ReadWritePaths=/var/lib/agentgateway /etc/agentgateway /tmp
 
 [Install]
 WantedBy=multi-user.target
