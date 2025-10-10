@@ -16,5 +16,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Installer Script
-  ./install.sh -d "$pkgdir/boot/grub/themes"
+  ./install.sh "$pkgdir/boot/grub/themes"
 }
