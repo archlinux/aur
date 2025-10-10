@@ -1,6 +1,6 @@
 pkgbase = python-near-sdk-py
 	pkgdesc = A Pythonic interface for building NEAR smart contracts
-	pkgver = 0.7.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/r-near/near-sdk-py
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-near-sdk-py
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
-	source = near-sdk-py-0.7.3.tar.gz::https://github.com/r-near/near-sdk-py/archive/v0.7.3.tar.gz
-	sha512sums = 27766145617eb3dec3beb921d3126f456d8c68b5203a1eafaed229872d711f910855ab24885261e37cff8cb29e0dfe7a86d274da8f65f816dce6b2ad0d10da87
+	source = near-sdk-py-1.0.0.tar.gz::https://github.com/r-near/near-sdk-py/archive/v1.0.0.tar.gz
+	sha512sums = 5712be7a5363264a3a8c88702e7bfbaa9fece5d8b6942bbd18c511278e0f8fb589506a82baab038d282bb224f3bbc0504fabe7336e4b24e31281e64689340428
 
 pkgname = python-near-sdk-py
