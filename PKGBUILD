@@ -21,8 +21,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.gz::${url}/releases/download/v$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[1]}.gz")
 sha256sums=('4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa'
             '258c35d14d64ec8d372d5176da39cd8b55ddc6f3966b29f3ec61be97557e46fa')
-sha256sums_x86_64=('16eab9e38379a5ff0b42e81d9b36f1f3cac2ffd5d2490fb35d2a4fdd3a0e99a9')
-sha256sums_aarch64=('7901be44b30446b2a3834827635e74f0c186e385c89b888acd0666adc10f490e')
+sha256sums_x86_64=('24f528ea5f46403925b5800a6ca65829adab41dc24937a5e746f6c9017d3fec0')
+sha256sums_aarch64=('fee7c4bfae07cd61e5aa64ee5c01ebb5a555c76289a46ca1284d7b1e53c752c8')
 
 
 package() {
