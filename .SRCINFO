@@ -1,12 +1,14 @@
 pkgbase = bato
 	pkgdesc = A daemon to send battery level notifications
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doums/bato
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = rust
 	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
 	provides = bato
 	conflicts = bato
 	options = !debug

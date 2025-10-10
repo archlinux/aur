@@ -2,12 +2,12 @@
 
 pkgname=bato
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A daemon to send battery level notifications'
 arch=('x86_64')
 url='https://github.com/doums/bato'
-license=('MPL2')
-depends=()
+license=('MPL-2.0')
+depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'cargo')
 provides=('bato')
 conflicts=('bato')
