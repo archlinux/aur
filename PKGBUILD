@@ -6,7 +6,7 @@ pkgrel=1
 fedoraver=43
 pkgdesc="A lightweight many-to-many threading runtime (binary from Fedora ${fedoraver})"
 arch=('x86_64')
-url="https://massivethreads.github.io/"
+url="https://github.com/massivethreads/massivethreads"
 license=('BSD')
 depends=()
 provides=("massivethreads=${pkgver}")

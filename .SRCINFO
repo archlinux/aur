@@ -2,7 +2,7 @@ pkgbase = massivethreads-bin
 	pkgdesc = A lightweight many-to-many threading runtime (binary from Fedora 43)
 	pkgver = 1.02
 	pkgrel = 1
-	url = https://massivethreads.github.io/
+	url = https://github.com/massivethreads/massivethreads
 	arch = x86_64
 	license = BSD
 	provides = massivethreads=1.02
