@@ -1,6 +1,6 @@
 pkgbase = dms-shell-git
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
-	pkgver = 0.1.8.r3.gabe5515
+	pkgver = 0.1.8.r0.g2008977
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = dms-shell-git
 	optdepends = qt5ct: Qt5 application theming
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
-	provides = dms-shell=0.1.8.r3.gabe5515
+	provides = dms-shell=0.1.8.r0.g2008977
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = git+https://github.com/AvengeMedia/danklinux.git
@@ -35,6 +35,16 @@ pkgname = dms-shell-git
 	depends = ttf-fira-code
 	depends = ttf-material-symbols-variable-git
 	depends = dms-shell-compositor-git
+	optdepends = brightnessctl: Laptop display brightness control
+	optdepends = cava: Audio visualizer
+	optdepends = cliphist: Clipboard history functionality
+	optdepends = matugen: Dynamic wallpaper-based theming
+	optdepends = networkmanager: Required for network management
+	optdepends = qt5ct: Qt5 application theming
+	optdepends = qt6ct: Qt6 application theming
+	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
+	optdepends = dms-shell-hyprland: Hyprland specific dependencies
+	optdepends = dms-shell-niri: Niri specific dependencies
 
 pkgname = dms-shell-hyprland-git
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles (for Hyprland)
