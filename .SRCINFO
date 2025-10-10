@@ -5,7 +5,7 @@ pkgbase = perl-tree-rb-xs
 	url = https://metacpan.org/dist/Tree-RB-XS
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
-	checkdepends = perl-test2-suite>=0.000139
+	checkdepends = perl-test-simple>=1.302200
 	checkdepends = perl-time-hires
 	makedepends = perl-extutils-depends>=0.405
 	makedepends = perl-extutils-makemaker

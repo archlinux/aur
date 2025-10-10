@@ -25,8 +25,7 @@ depends=(
 )
 checkdepends=(
   ## TEST_REQUIRES
-  'perl-test2-suite>=0.000139'
-  # perl-test2-suite: "Test2::V0"
+  'perl-test-simple>=1.302200' # "Test2::Suite", "Test2::V0"
   'perl-time-hires'
 )
 options=('!emptydirs' 'purge')
