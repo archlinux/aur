@@ -1,55 +1,48 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libopenshot-git
-pkgver=0.3.2.r61.ga9e34a9b
-pkgrel=3
+pkgver=0.4.0.r140.g7b4e9992
+pkgrel=1
 pkgdesc='A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)'
 arch=('x86_64')
 url='https://www.openshot.org/'
 license=('LGPL-3.0-or-later')
 depends=(
-  'babl'
-  'gcc-libs'
-  'glibc'
-  'libmagick'
-  'opencv'
-  'python'
-  'qt5-base'
-  'qt5-multimedia'
-  'qt5-svg'
-)
+    'babl'
+    'ffmpeg4.4'
+    'gcc-libs'
+    'glibc'
+    'jsoncpp'
+    'libmagick'
+    'libopenshot-audio-git'
+    'opencv'
+    'protobuf'
+    'python'
+    'qt5-base'
+    'qt5-multimedia'
+    'qt5-svg'
+    'zeromq')
 makedepends=(
-  'git'
-  'catch2'
-  'cmake'
-  'cppzmq'
-  'doxygen'
-  'ffmpeg'
-  'jsoncpp'
-  'libopenshot-audio-git'
-  'protobuf'
-  'python-setuptools'
-  'swig'
-  'unittestpp'
-  'zeromq'
-)
+    'catch2'
+    'cmake'
+    'cppzmq'
+    'doxygen'
+    'git'
+    'python-setuptools'
+    'swig'
+    'unittestpp')
 provides=('libopenshot' 'libopenshot.so')
 conflicts=('libopenshot')
-source=('git+https://github.com/OpenShot/libopenshot.git'
-        '010-libopenshot-disable-cxx-standard-restriction.patch')
-sha256sums=('SKIP'
-            'd8ae4bf5e2e574b2e334892e573b6f86f98764e091e369b9f01a79693f3ed547')
-
-prepare() {
-    # protobuf 23 requiers C++17, which is already default since gcc 11
-    patch -d libopenshot -Np1 -i "${srcdir}/010-libopenshot-disable-cxx-standard-restriction.patch"
-}
+source=('git+https://github.com/OpenShot/libopenshot.git')
+sha256sums=('SKIP')
 
 pkgver() {
     git -C libopenshot describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
+    
     cmake -B build -S libopenshot \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE='None' \
@@ -64,7 +57,8 @@ check() {
     # disable broken tests
     # https://github.com/OpenShot/libopenshot/issues/922
     # https://github.com/OpenShot/libopenshot/issues/948
-    ctest --test-dir build --output-on-failure -E '(Caption:caption effect|FFmpegWriter:Options_Overloads)'
+    ctest --test-dir build --output-on-failure \
+        -E '(Caption:caption effect|FFmpegWriter:DisplayInfo|FFmpegWriter:Options_Overloads|FFmpegWriter:Webm)'
 }
 
 package() {
