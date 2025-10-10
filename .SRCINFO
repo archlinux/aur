@@ -1,6 +1,6 @@
 pkgbase = umr
 	pkgdesc = User Mode Register Debugger for AMDGPU Hardware
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/tomstdenis/umr
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = umr
 	depends = libpciaccess
 	depends = ncurses
 	depends = llvm-libs
-	source = https://gitlab.freedesktop.org/tomstdenis/umr/-/archive/1.0.10/umr-1.0.10.tar.bz2
-	sha256sums = 9bb1b9a95d1d2a9f23f8d5126d5c073f82e6a580268f7d7bcafb0d95ce655f79
+	source = https://gitlab.freedesktop.org/tomstdenis/umr/-/archive/1.0.11/umr-1.0.11.tar.bz2
+	sha256sums = 4546b93a4ae3a44f50db839690291a3485aecec3929743c90a0bac3c2b106a51
 
 pkgname = umr
