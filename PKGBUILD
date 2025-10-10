@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=cargo-xwin
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Cross compile Cargo project to Windows MSVC target with ease"
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('ca611706f4412dcb9d9452dd43c599c00abb5d34ed022a7e032c90ba632a0dba8576841d32ec8f8f37e4a377a5cfc0ea65760fd205f9a6aa8bdede511028a67c')
+b2sums=('5cf5ed1f3f4cf6b38b3542a5632e832c993944534ccb66d3af3c1dfce9ffe88fbb8096b6ced66b2c813d42a5d418d7e8835bea1845dcc1d1762ee5c2346c9b70')
 
 prepare() {
   cd ${pkgname}-${pkgver}
