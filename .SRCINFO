@@ -1,7 +1,7 @@
 pkgbase = arch-update
 	pkgdesc = An update notifier & applier that assists you with important pre / post update tasks
 	pkgver = 3.15.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Antiz96/arch-update
 	arch = any
 	license = GPL-3.0-or-later
@@ -29,7 +29,6 @@ pkgbase = arch-update
 	optdepends = libnotify: Desktop notifications support on new available updates
 	optdepends = vim: Default diff program for pacdiff
 	optdepends = neovim: Default diff program for pacdiff if EDITOR=nvim
-	optdepends = qt6-wayland: Systray applet support on Wayland
 	optdepends = sudo: Privilege elevation
 	optdepends = sudo-rs: Privilege elevation
 	optdepends = opendoas: Privilege elavation
