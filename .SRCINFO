@@ -1,6 +1,6 @@
 pkgbase = libindi-nightscape
 	pkgdesc = INDI driver for products manufactured by indi-nightscape
-	pkgver = 2.1.5.1
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = libindi-nightscape
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	makedepends = cmake
-	depends = libindi=2.1.5.1
+	depends = libindi=2.1.6
 	depends = libftdi
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.5.1.tar.gz
-	sha256sums = 9a85e6cf928dd095f019adf1919c79f9a3ac55294bedb8c9f65cc8bf3f9152d8
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.6.tar.gz
+	sha256sums = a02159706b633d6ab92aa234930ed2a8c8cf08189bc9e09f2cf808dc52ec0a6b
 
 pkgname = libindi-nightscape
