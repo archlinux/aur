@@ -1,0 +1,5 @@
+[slsa-github-generator-bin]
+source = "github"
+github = "slsa-framework/slsa-github-generator"
+use_latest_release = true
+prefix = "v"

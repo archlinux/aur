@@ -1,0 +1,64 @@
+pkgbase = slsa-github-generator-bin
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/slsa-framework/slsa-github-generator
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = slsa-verifier
+	source = slsa-github-generator-2.1.0-README.md::https://github.com/slsa-framework/slsa-github-generator/raw/refs/tags/v2.1.0/README.md
+	source = slsa-github-generator-2.1.0-LICENSE::https://github.com/slsa-framework/slsa-github-generator/raw/refs/tags/v2.1.0/LICENSE
+	sha256sums = e24773389a80b2416fce4448b12b0e47c900a79fa17f579acb3fffaf91521d37
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = slsa-builder-docker-2.1.0-x86_64::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-builder-docker-linux-amd64
+	source_x86_64 = slsa-builder-docker-2.1.0-x86_64.intoto.jsonl::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-builder-docker-linux-amd64.intoto.jsonl
+	source_x86_64 = slsa-builder-go-2.1.0-x86_64::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-builder-go-linux-amd64
+	source_x86_64 = slsa-builder-go-2.1.0-x86_64.intoto.jsonl::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-builder-go-linux-amd64.intoto.jsonl
+	source_x86_64 = slsa-generator-container-2.1.0-x86_64::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-generator-container-linux-amd64
+	source_x86_64 = slsa-generator-container-2.1.0-x86_64.intoto.jsonl::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-generator-container-linux-amd64.intoto.jsonl
+	source_x86_64 = slsa-generator-generic-2.1.0-x86_64::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-generator-generic-linux-amd64
+	source_x86_64 = slsa-generator-generic-2.1.0-x86_64.intoto.jsonl::https://github.com/slsa-framework/slsa-github-generator/releases/download/v2.1.0/slsa-generator-generic-linux-amd64.intoto.jsonl
+	sha256sums_x86_64 = 31c5f5580e11db3c0119ec4c772cf2663eda944df12da5ac309a90de207fd4c1
+	sha256sums_x86_64 = 17d918a7b327d427fac85b91dca4e64fcc85146f3c7a8c6a8efcce00a81e8987
+	sha256sums_x86_64 = e74e81e95030a9cb83b2842af62c91d122e022b614466894b754b7b548e9e36c
+	sha256sums_x86_64 = 164904a4932dc2b07d7e139e68b681b2f72f84a344a3da256359caa882f112b3
+	sha256sums_x86_64 = cee1453de115735379dd98dc80f70c73a66fcfefb5674e062f8765a1021e4cc6
+	sha256sums_x86_64 = 694bc3940f85774f43334fc560875a650b3ffe880350d3144e43771f41548e65
+	sha256sums_x86_64 = bd8a6e794c3207ee00aaa90751f369647532e51045553a54b3dc71bd258995ce
+	sha256sums_x86_64 = e1998f4d34faff29930256d4d1fc680ade09e206d5a57979c7745edc93178bf1
+
+pkgname = slsa-github-generator-bin
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (meta)
+	arch = any
+	depends = slsa-builder-docker-bin=2.1.0
+	depends = slsa-builder-go-bin=2.1.0
+	depends = slsa-generator-container-bin=2.1.0
+	depends = slsa-generator-generic-bin=2.1.0
+	provides = slsa-github-generator=2.1.0
+	conflicts = slsa-github-generator
+
+pkgname = slsa-github-generator-common-bin
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (common files)
+	arch = any
+	provides = slsa-github-generator-common=2.1.0
+	conflicts = slsa-github-generator-common
+
+pkgname = slsa-builder-docker-bin
+	depends = slsa-github-generator-common=2.1.0-1
+	provides = slsa-builder-docker=2.1.0
+	conflicts = slsa-builder-docker
+
+pkgname = slsa-builder-go-bin
+	depends = slsa-github-generator-common=2.1.0-1
+	provides = slsa-builder-go=2.1.0
+	conflicts = slsa-builder-go
+
+pkgname = slsa-generator-container-bin
+	depends = slsa-github-generator-common=2.1.0-1
+	provides = slsa-generator-container=2.1.0
+	conflicts = slsa-generator-container
+
+pkgname = slsa-generator-generic-bin
+	depends = slsa-github-generator-common=2.1.0-1
+	provides = slsa-generator-generic=2.1.0
+	conflicts = slsa-generator-generic
