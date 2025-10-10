@@ -3,14 +3,14 @@
 
 pkgname='perl-data-validate-domain'
 pkgver='0.15'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Domain and host name validation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-net-domain-tld>=1.74')
 makedepends=()
-checkdepends=('perl-test2-suite>=0')
+checkdepends=('perl-test-simple>=1.302200')
 url='https://metacpan.org/release/Data-Validate-Domain'
 source=("http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Data-Validate-Domain-$pkgver.tar.gz")
 md5sums=('451840424e781e00ccbbe194fa5733bd')
