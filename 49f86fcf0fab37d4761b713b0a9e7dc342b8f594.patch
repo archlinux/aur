@@ -1,0 +1,35 @@
+From 49f86fcf0fab37d4761b713b0a9e7dc342b8f594 Mon Sep 17 00:00:00 2001
+From: Fabio Cavallo <punes.development@gmail.com>
+Date: Sun, 25 Aug 2024 10:22:42 +0200
+Subject: [PATCH] Fixed a compilation warning with FFmpeg 7.0.
+
+---
+ src/core/recording.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/recording.c b/src/core/recording.c
+index dd60c1551..0f4c64e48 100644
+--- a/src/core/recording.c
++++ b/src/core/recording.c
+@@ -204,8 +204,10 @@ void recording_init(void) {
+ 					}
+ 					av_dict_free(&opts);
+ 					opts = NULL;
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(61, 0, 0)
+ 					avcodec_close(test);
+-					av_free(test);
++#endif
++					avcodec_free_context(&test);
+ 					if (finded) {
+ 						break;
+ 					}
+@@ -487,7 +489,9 @@ static void ffmpeg_fstream_close(_ffmpeg_stream *fs) {
+ 	fs->encode = FALSE;
+ 	fs->avc = NULL;
+ 	if (fs->avcc) {
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(61, 0, 0)
+ 		avcodec_close(fs->avcc);
++#endif
+ 		avcodec_free_context(&fs->avcc);
+ 	}
+ 	if (fs->avf) {

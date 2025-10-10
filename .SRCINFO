@@ -1,7 +1,7 @@
 pkgbase = punes
 	pkgdesc = Nintendo Entertaiment System emulator
 	pkgver = 0.111
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/punesemu/puNES
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = punes
 	depends = libx11
 	depends = libudev.so
 	source = puNES-0.111.tar.gz::https://github.com/punesemu/puNES/archive/v0.111.tar.gz
+	source = 49f86fcf0fab37d4761b713b0a9e7dc342b8f594.patch
 	sha512sums = 6388cdf2b303e217adfe43b1b3b1ef66a75b6adfdb0363b213c47fc129b5815f3e96814ee25a3637147dc184203cef0438930c280f0c6249085ecac1220b435c
+	sha512sums = fcaa3d325de2f075fa03a0f7a8c8f6f10a1c84b933a477cf55f0ca96ec18e8aae7deb52baf4279de748a5164c84530cdfcbf73915515f9293da69f0178c24324
 
 pkgname = punes
