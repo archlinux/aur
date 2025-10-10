@@ -1,4 +1,5 @@
 # Maintainer: FrancyAngy <francy.angy009@gmail.com>
+# Maintainer: Sckab <giulianodeamicis2009@gmail.com>
 pkgname=dinfo
 pkgver=1.2.2.002
 pkgrel=1
@@ -8,7 +9,7 @@ url="https://github.com/SCSDC-co/DINFO"
 license=('GPL 3.0')
 
 source=("https://github.com/SCSDC-co/DINFO/releases/download/v$pkgver/dinfo-linux-x64-self-contained.zip")
-sha256sums=(479315676eef0ccd4523cd9e16cdd65e56b6c5f7eaacff9d0693f4fe6f52fa5)
+sha256sums=('39627f063b9020806a0a10b1e069cfa654beb9ccc1e50ef6d70e3471c03e837')
 
 prepare() {
     unzip -q "$srcdir/dinfo-linux-x64-self-contained.zip" -d "$srcdir"
