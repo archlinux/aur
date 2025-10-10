@@ -1,14 +1,15 @@
-# Maintainer: Jun Bo Bi <jambonmcyeah@gmail.com>
+# Maintainer: Renan Guilherme <japareaggae@gmail.com>
+# Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=gsl-firmware-git
-pkgver=r184.4c39712
-pkgrel=3
+pkgver=r286.f188871e7ea3
+pkgrel=1
 pkgdesc='Firmware for Silead touchscreen controllers'
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/onitake/gsl-firmware"
 license=('custom')
 makedepends=('git')
-source=("gsl::git://github.com/onitake/gsl-firmware.git")
+source=("gsl::git+https://github.com/onitake/gsl-firmware.git")
 sha512sums=('SKIP')
 
 pkgver() {
