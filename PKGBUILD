@@ -1,53 +1,39 @@
-# Maintainer: Bjarne Øverli <bjarne.oeverli@gmail.com>
-pkgname=tema-git
-pkgver=1.0.0.r87.g9b83b32
+# Maintainer: Bjarne Øverli <bjarne@oever.li>
+pkgname=tema
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="GTK4/Adwaita Omarchy theming application with pywal integration"
+pkgdesc="Omarchy theming application"
 arch=('any')
 url="https://github.com/bjarneo/tema"
 license=('MIT')
-depends=('gjs>=1.66'
-         'gtk4>=4.6'
-         'libadwaita>=1.0'
-         'gdk-pixbuf2'
-         'python-pywal')
-makedepends=('git'
-             'meson>=0.59'
-             'ninja')
-optdepends=('omarchy: theme integration support'
-            'imagemagick: enhanced thumbnail generation')
-provides=('tema')
-conflicts=('tema')
+depends=('gjs' 'gtk4' 'libadwaita' 'python-pywal')
+optdepends=('omarchy: Theme application backend')
 install=tema.install
-source=("git+https://github.com/bjarneo/tema.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "1.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "$srcdir/${pkgname%-git}"
-    arch-meson . build
-    meson compile -C build
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9f424e3d522809fff7775e5ac1985f69d7aa11c8b7908a21ec42e09864abed6a')  # Replace with actual checksum after creating GitHub release
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/$pkgname-$pkgver"
 
-    # Install using meson
-    meson install -C build --destdir="$pkgdir"
+    # Install source files
+    install -dm755 "$pkgdir/usr/share/$pkgname"
+    cp -r src templates "$pkgdir/usr/share/$pkgname/"
 
-    # Install documentation
-    install -dm755 "$pkgdir/usr/share/doc/tema"
-    install -m644 README.md "$pkgdir/usr/share/doc/tema/"
+    # Create launcher script
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/tema" << 'EOF'
+#!/bin/bash
+cd /usr/share/tema || exit
+exec gjs -m src/main.js "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/tema"
 
-    # Create Wallpapers directory in skel for new users
-    install -dm755 "$pkgdir/etc/skel/Wallpapers"
+    # Install desktop entry
+    install -Dm644 li.oever.tema.desktop "$pkgdir/usr/share/applications/li.oever.tema.desktop"
 
-    # Install license if it exists
-    if [[ -f LICENSE ]]; then
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
+    # Install icon
+    install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/tema.png"
+
+    # Install license
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
