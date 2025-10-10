@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="a simple grub theme to start a good day"
 arch=('any')
 url="https://github.com/DerJimno/einfach-grub-theme"
-license=('GPL 3')
+license=('GPL3')
 depends=()
 makedepends=()
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -16,5 +16,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Installer Script
-  ./install.sh -a -d "$pkgdir/boot/grub/themes"
+  ./install.sh -d "$pkgdir/boot/grub/themes"
 }
