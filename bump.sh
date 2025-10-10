@@ -6,7 +6,7 @@
 # version. Very mutch a work in progress, DO NOT TRUST.
 #
 
-validated_for="6.17.arch1-1"
+validated_for="6.17.1.arch1-1"
 forceupd="n"
 
 # Getting current versions
