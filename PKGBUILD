@@ -7,7 +7,7 @@ url='https://www.pgadmin.org'
 license=('PostgreSQL')
 depends=('postgresql-libs' 'krb5' 'python-dbus')
 conflicts=('pgadmin4' 'pgadmin4-server' 'pgadmin4-desktop' 'pgadmin4-web')
-provides=('pgadmin4' 'pgadmin4-server' 'pgadmin4-desktop' 'pgadmin4-web')
+provides=('pgadmin4')
 source=("pgadmin4-server-${pkgver}-x86_64.pkg.tar.zst::https://github.com/lzx3in/aur-pgadmin4/releases/download/dev/pgadmin4-server-${pkgver}-x86_64.pkg.tar.zst"
      "pgadmin4-desktop-${pkgver}-x86_64.pkg.tar.zst::https://github.com/lzx3in/aur-pgadmin4/releases/download/dev/pgadmin4-desktop-${pkgver}-x86_64.pkg.tar.zst"
      "pgadmin4-web-${pkgver}-x86_64.pkg.tar.zst::https://github.com/lzx3in/aur-pgadmin4/releases/download/dev/pgadmin4-web-${pkgver}-x86_64.pkg.tar.zst"
