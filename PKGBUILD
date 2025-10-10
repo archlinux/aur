@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=641
+pkgver=642
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -39,7 +39,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             # 'speedcopy: may speed up file transfers'
             'swftools: to display SWF thumbnails')
 conflicts=(hydrus-docs-dummy)
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=6c14b8ca074afb22e7a3ef58e941ab82e515bd02"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=e7ba15f8a2f140199b39727605a6f385891f6b41"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
