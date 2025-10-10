@@ -1,8 +1,8 @@
 # Maintainer: NovaDragon <me@novadeagon.space>
 
 pkgname=godots-bin
-pkgver=1.3
-pkgrel=4
+pkgver=1.4
+pkgrel=1
 pkgdesc="A hub for managing your Godot versions and projects."
 arch=(x86_64)
 url=https://github.com/MakovWait/godots
@@ -15,9 +15,9 @@ source=(
 "https://github.com/MakovWait/godots/releases/download/v$pkgver.stable/LinuxX11.zip"
         "https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver.stable/LICENSE"
         "https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver.stable/icon.svg")
-sha256sums=('141d4d7244691fdedae7994d45b2f4610d1604190fbbb61f93ffccc284f8d29f'
+sha256sums=('0d7e16c526c82f147f79bf4e4f94904abc49db41d244b9e4929b2d05aa6007c7'
             '76b8e9aacad7b9b2fd0c699065186191f8705d8f1892ee36873c56f904f073ef'
-            'eb84abebbcbed00e25d5c7b82162fc461d6968c0c9e07b8913faf5525f693295')
+            'de088f3452e04986b4988b2a22a6518a4aaaab64e808ea9eee352bea141e774a')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
