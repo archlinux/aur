@@ -5,7 +5,7 @@
 _pkgname=gwenview
 pkgname=gwenview-no-purpose
 pkgver=25.08.2
-pkgrel=1
+pkgrel=3
 pkgdesc='A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu'
 url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
@@ -45,7 +45,6 @@ depends=(baloo
          qt6-base
          qt6-multimedia
          qt6-svg
-         qt6-wayland
          solid
          wayland)
 optdepends=('kamera: import pictures from gphoto2 cameras'
