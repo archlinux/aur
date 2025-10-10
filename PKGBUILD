@@ -1,5 +1,5 @@
 pkgname=awf-gtk3
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Theme preview application for GTK 3"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gtk3' 'libnotify>=0.7.0' 'hicolor-icon-theme')
 #makedepends=('autoconf' 'automake' 'desktop-file-utils' 'gcc' 'gettext' 'gtk3')
 conflicts=('awf-git')
 source=("https://github.com/luigifab/awf-extended/archive/v${pkgver}/awf-extended-${pkgver}.tar.gz")
-sha256sums=("1b941522910a3d8f051bfe0b39fa52e65bf84173c9633a9d082b57e3df593209")
+sha256sums=("788d8bf4ed77a77849853843479e513a44193ab65156b2a5a39cfc566bc101aa")
 
 prepare() {
   mv "awf-extended-$pkgver" "$pkgname-$pkgver"
