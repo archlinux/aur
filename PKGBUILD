@@ -1,11 +1,11 @@
 # Maintainer: Anders <clauderarch@tutamail.com>
 pkgname=kripton-authenticator
-pkgver=1.0.0
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="A simple terminal-based TOTP authenticator written in Rust"
 arch=('x86_64')
 url="https://github.com/clauderarch/kripton-authenticator.git"
-license=('GPL-3.0')
+license=('GPL3')
 depends=('glibc')
 makedepends=('rust' 'git')
 source=("git+https://github.com/clauderarch/kripton-authenticator.git#branch=main")
