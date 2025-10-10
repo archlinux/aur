@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=8.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -436,6 +436,8 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+
+  git cherry-pick -n f1e9032a2000b8b885cffd6fed8eacd47b37673f
 
   ### OBS changes
 
