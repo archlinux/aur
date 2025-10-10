@@ -9,7 +9,7 @@ url="https://github.com/SCSDC-co/DINFO"
 license=('GPL 3.0')
 
 source=("https://github.com/SCSDC-co/DINFO/releases/download/v$pkgver/dinfo-linux-x64-self-contained.zip")
-sha256sums=('ec5a0cc31ba845ffd13b96e76d961ed2405a640d4f2985920a8cd99568ed95c')
+sha256sums=('3b8f817255827f01d8989d39b4ddcad580b82b9804756aae29e4eff7ca24ae91')
 
 prepare() {
     unzip -q "$srcdir/dinfo-linux-x64-self-contained.zip" -d "$srcdir"
