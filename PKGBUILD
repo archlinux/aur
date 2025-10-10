@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("raindrops-${pkgver}.tar.gz")
-sha256sums=('8c5a5017f762239aa4463a176a0028179022b7a45fdff2b072628de70ef3a390')
+sha256sums=('85cea451eec057fa7e734548ca3ba6d779ed5836a3f9de14b8394575ef0d7d8e')
 
 build() {
     cd "raindrops-${pkgver}"
