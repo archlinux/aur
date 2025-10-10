@@ -1,6 +1,6 @@
 pkgbase = insightsql-bin
 	pkgdesc = Efficiently analyze Excel, CSV, Parquet files with Rust Polars SQL(Prebuilt version)一个可以使用polars SQL快速查看Excel、CSV和Parquet的工具,基于tauri
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/tansen87/InsightSQL
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = insightsql-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = insightsql=0.5.3
+	provides = insightsql=0.5.4
 	conflicts = insightsql
-	source = insightsql-0.5.3.deb::https://github.com/tansen87/InsightSQL/releases/download/v0.5.3/InsightSQL_0.5.3_amd64.deb
-	source = LICENSE-0.5.3::https://raw.githubusercontent.com/tansen87/InsightSQL/v0.5.3/LICENSE
-	sha256sums = 82342f9453b5f85ef27ec2d7cb593d06faf02c46412003e231866ac204233934
+	source = insightsql-0.5.4.deb::https://github.com/tansen87/InsightSQL/releases/download/v0.5.4/InsightSQL_0.5.4_amd64.deb
+	source = LICENSE-0.5.4::https://raw.githubusercontent.com/tansen87/InsightSQL/v0.5.4/LICENSE
+	sha256sums = 07f66bf9d1932e611ae218aa66d87a3e83c1dde9943ce6692f42fcdde55ae996
 	sha256sums = 40aef2075dd3e27889c8d2393daa9df182e5c7720d35cca6deec7b06354a805c
 
 pkgname = insightsql-bin
