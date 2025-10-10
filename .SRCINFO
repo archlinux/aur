@@ -1,7 +1,7 @@
 pkgbase = mhwaveedit-git
 	pkgdesc = A simple and fast GTK2 audio editor (git version)
 	pkgver = 1.4.24.r149.8a24f6a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magnush/mhwaveedit
 	arch = x86_64
 	groups = pro-audio
@@ -31,4 +31,3 @@ pkgname = mhwaveedit-git
 	depends = libpulse.so
 	depends = libsamplerate.so
 	depends = libsndfile.so
-

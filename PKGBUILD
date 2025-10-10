@@ -3,7 +3,7 @@
 _pkgname=mhwaveedit
 pkgname="${_pkgname}-git"
 pkgver=1.4.24.r149.8a24f6a
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and fast GTK2 audio editor (git version)"
 arch=('x86_64')
 url="https://github.com/magnush/mhwaveedit"
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  ./configure \
+  CFLAGS+=" -std=gnu17" ./configure \
     --prefix=/usr \
     --with-double-samples \
     --without-arts \
