@@ -3,7 +3,7 @@
 pkgname=perl-alien-hdf4
 _dist=Alien-HDF4
 pkgver=0.06
-pkgrel=5
+pkgrel=6
 pkgdesc='Encapsulate install info for HDF4'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -21,9 +21,6 @@ depends=(
 makedepends=(
   perl-io-all
   perl-extutils-depends
-)
-checkdepends=(
-  perl-test-simple
 )
 options=('!emptydirs')
 
