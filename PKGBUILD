@@ -3,16 +3,15 @@
 
 pkgname='warspear'
 pkgver=13.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.'
 arch=('i686' 'x86_64')
 url='http://warspear-online.com/'
 license=('custom')
-depends=('mesa' 'openal' 'libxft')
+depends=('mesa' 'openal' 'libxft' 'curl')
 
 optdepends=(
   'xdg-utils: for desktop environment integration'
-  'curl: for network-related functionality'
   'zenity: for graphical dialog boxes'
   'nvidia-utils: alternative OpenGL implementation for NVIDIA users'
 )
