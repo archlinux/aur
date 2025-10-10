@@ -1,7 +1,7 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=0.18.0.r1.
+pkgver=0.17.1.r11.gbd6b5a1
 pkgrel=1
 makedepends=('rust' 'cargo' 'git' 'openssl')
 
