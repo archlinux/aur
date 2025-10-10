@@ -2,23 +2,17 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='openvpn-auth-oauth2'
-pkgver='1.24.0'
+pkgver='1.26.0'
 pkgrel='1'
 pkgdesc='A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'aarch64')
 _uri="github.com/jkroepke"
 url="https://${_uri}/${pkgname}"
-license=('MTI')
+license=('MIT')
 makedepends=('go')
 depends=('openvpn>=2.6.2')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"${pkgname}"
-	"${pkgname}.service"
-	"${pkgname}.sysusers")
-sha256sums=('60bc503a24ddfde8f9dddbca8c59004ba7d29a9983dad1e27436d74357ee6d4b'
-            'de967f8fd8bacc904e5de610ebd1c5c54420634e3c52c500ef27c51bd605d41c'
-            '9ecd0f74d0292120937d39411a3a829ec7983f7c96022f971b5e173affbd666c'
-            '621ee9716135685cfee32fc5f643f64cc83efdfbfdd7aac3466eb479fd36021e')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e3f5a9d325239b096b64128815f4d90ac5a7499558170313ba818c5177035594')
 backup=("etc/conf.d/${pkgname}"
 	"etc/${pkgname}/config.yaml")
 
@@ -32,7 +26,13 @@ prepare() {
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 
-  cd "${GOPATH}/src/${_uri}/${pkgname}"
+  sed -i \
+    -e 's|/etc/sysconfig|/etc/conf.d|g' \
+    -e 's|CapabilityBoundingSet=|CapabilityBoundingSet=CAP_NET_BIND_SERVICE|g' \
+    -e 's|AmbientCapabilities=|AmbientCapabilities=CAP_NET_BIND_SERVICE|g' \
+    -e '/PrivateUsers=true/d' \
+"${pkgname}-${pkgver}/packaging/usr/lib/systemd/system/${pkgname}.service"
+
 }
 
 build() {
@@ -56,12 +56,12 @@ check() {
 
 
 package() {
-  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgname}/LICENSE.txt" -t \
-"${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgname}/config.example.yaml" \
-"${pkgdir}/etc/${pkgname}/config.yaml"
-  install -Dm0644 "${pkgname}" -t "${pkgdir}/etc/conf.d"
-  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  cd "${pkgname}-${pkgver}"
+  install -Dm0644 "LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0755 "${pkgname}" -t "${pkgdir}/usr/bin"
+  pushd "packaging"
+  install -Dm0644 "etc/${pkgname}/config.yaml" -t "${pkgdir}/etc/${pkgname}"
+  install -Dm0644 "etc/sysconfig/${pkgname}" -t "${pkgdir}/etc/conf.d"
+  install -Dm0644 "usr/lib/systemd/system/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm0644 "usr/lib/sysusers.d/${pkgname}.conf" -t "${pkgdir}/usr/lib/sysusers.d"
 }
