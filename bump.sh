@@ -94,8 +94,10 @@ forceupd="n"
 
             # Update local repo
               if [ "$forceupd" == "y" ]; then
-                echo "TODO: git commit -asm \"$live_ver-$live_rel [message]\""
-                echo "TODO: git tag -s \"$live_ver-$live_rel\" -m \"message\""
+                read -p "git commit/tag message:" msg
+                git commit -asm "$live_ver-$live_rel ($msg)"
+                git tag -s "$live_ver-$live_rel" -m "$msg"
+
                 sed "s|forceupd=\"y\"|forceupd=\"n\"|" bump.sh > .bump-shf
                 cp .bump-shf bump.sh
               else
