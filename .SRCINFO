@@ -1,6 +1,6 @@
 pkgbase = prql
 	pkgdesc = a simple, powerful, pipelined SQL replacement
-	pkgver = 0.13.4
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://prql-lang.org
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = prql
 	makedepends = cargo
 	makedepends = python
 	depends = gcc-libs
-	source = https://github.com/PRQL/prql/archive/0.13.4/prql-0.13.4.tar.gz
-	sha256sums = 1d214df7827659e9573afc339078e421e326953f7954ba0cba0b996e0d110531
+	source = https://github.com/PRQL/prql/archive/0.13.5/prql-0.13.5.tar.gz
+	sha256sums = 487c710f8b810bb8457ffab944f62930791f23e5ddb25f2bf3257001f07ae0eb
 
 pkgname = prql
