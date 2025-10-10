@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -42,10 +42,10 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    'SKIP'
+    '02a24c980721c166bd31286d082e853c1f3b9c5b7babe30c3302b7a885be4fa8'
 )
 sha256sums_aarch64=(
-    'SKIP'
+    '179ee203b99ea5c1ffab9aa6b43c2342473515b50abe91403ac262dcb420c55b'
 )
 
 package() {
