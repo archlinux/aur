@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-cli-bin
 	pkgdesc = The Visual Studio Code Server is a service you can run on a remote development machine, like your desktop PC or a virtual machine (VM).
-	pkgver = 1.104.3
+	pkgver = 1.105.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = visual-studio-code-cli-bin
 	provides = vscode
 	conflicts = code
 	conflicts = vscode
-	source_x86_64 = code_cli_x64_1.104.3.tar.gz::https://update.code.visualstudio.com/1.104.3/cli-linux-x64/stable
-	sha256sums_x86_64 = 5ae0139eef8e3f7126db580e732cd204bfcf6cfb11fe627fc659ef427687ab0a
-	source_aarch64 = code_cli_arm64_1.104.3.tar.gz::https://update.code.visualstudio.com/1.104.3/cli-linux-arm64/stable
-	sha256sums_aarch64 = ad895570a76d66bea43096beeb746404fd4659a038865b03ed3fca0d8acc44dd
-	source_armv7h = code_cli_armhf_1.104.3.tar.gz::https://update.code.visualstudio.com/1.104.3/cli-linux-armhf/stable
-	sha256sums_armv7h = e87188e038bee608acc1e495024b611b12f930440c4e210eaf9b579fd731fa7f
+	source_x86_64 = code_cli_x64_1.105.0.tar.gz::https://update.code.visualstudio.com/1.105.0/cli-linux-x64/stable
+	sha256sums_x86_64 = 5a4feb7f19bd36ed591f7f8d0716541cfec359d3acceb1852fedb171ae48fb0b
+	source_aarch64 = code_cli_arm64_1.105.0.tar.gz::https://update.code.visualstudio.com/1.105.0/cli-linux-arm64/stable
+	sha256sums_aarch64 = 5263079cc9c461633d8e0c1162c223f1c1074e2bc7d3f3c57240505c4fd4f99f
+	source_armv7h = code_cli_armhf_1.105.0.tar.gz::https://update.code.visualstudio.com/1.105.0/cli-linux-armhf/stable
+	sha256sums_armv7h = a687fd10fb7249302632839f7314b43d622c22744ad254ce67a5c07f017f388f
 
 pkgname = visual-studio-code-cli-bin
