@@ -1,6 +1,6 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 epoch=
 pkgdesc="smooll's Color Picker"
@@ -9,14 +9,14 @@ url="https://www.github.com/smooll-d/scolorpicker"
 license=("0BSD")
 groups=()
 depends=("sdl3")
-makedepends=("cmake")
+makedepends=("cmake" "base-devel")
 checkdepends=()
 optdepends=("libx11: X11 support"
-            "xsel: copying to clipboard on X11"
+            "libxcb: X11 support"
+            "xcb-util-image: taking screenshots on X11"
             "wayland: Wayland support"
             "wayland-protocols: Wayland support"
-            "sdbus-cpp: taking screenshots on Wayland"
-            "wl-clipboard: copying to clipboard on Wayland"
+            "sdbus-cpp: handling screenshots on Wayland"
             "xdg-desktop-portal: taking screenshots on Wayland"
             "xdg-desktop-portal-cosmic: taking screenshots on COSMIC"
             "xdg-desktop-portal-dde: taking screenshots on Deepin"
@@ -32,15 +32,10 @@ backup=()
 options=(!debug)
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz")
+source=("https://github.com/smooll-d/scolorpicker/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=("SKIP")
+sha256sums=("de98104508365454013d632e220b437452e418a3e532f864d1b94ceed0500924")
 validpgpkeys=()
-
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
@@ -50,11 +45,6 @@ build() {
     cmake --build build -j$(nproc)
     cmake --build build --target dist
 }
-
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make -k check
-#}
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
