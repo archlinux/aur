@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Arch Linux contributors
 # SPDX-License-Identifier: 0BSD
-# shellcheck disable=SC2148,SC2034,SC2154,SC2164
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 _pkgname=obs-captions-plugin
 _gitname=OBS-captions-plugin

@@ -56,7 +56,7 @@ repos:
       - id: namcap
       - id: makepkg-update-srcinfo
   - repo: https://git.fsfe.org/reuse/tool
-    rev: 8b8bbd873b2af6b2a2521ab2b1ff07b2ab624840  # frozen: v5.1.1
+    rev: 9245cd26448e246cda84f70711cc9d5f970855d6  # frozen: v6.1.2
     hooks:
       - id: reuse-lint-file
         stages:
