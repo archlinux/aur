@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.3.0.r3.g4d8d2839
+pkgver=0.3.0.r8.g4616ca23
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ package() {
   : "${srcdir:?srcdir is not set}"
   cd "$srcdir/Pacsea" || exit 1
   # The crate builds a binary named 'Pacsea'; install it as 'pacsea'
-  install -Dm755 "target/release/Pacsea" "$pkgdir/usr/bin/pacsea"
+  install -Dm755 "target/release/pacsea" "$pkgdir/usr/bin/pacsea"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
