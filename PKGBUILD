@@ -1,13 +1,10 @@
 # Maintainer: xiota / aur.chaotic.cx
 
-# options
-: ${_pkgtype:=-tabopts}
-
 : ${_commit_patch:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
 
 _pkgname="dolphin"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=25.08.1
+pkgname="$_pkgname-tabopts"
+pkgver=25.08.2
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -53,7 +50,7 @@ source=(
   "dolphin-tabopts-${_commit_patch::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_commit_patch}.patch"
 )
 sha256sums=(
-  '7b25cadfed37402597df111f3c0c8b344425e99fab5e32b66643d738dfa04f64'
+  '9649611eb2814e3eca4abe1f7e3732468d8205b89932210a9c5f484a656e1274'
   'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
 )
 
