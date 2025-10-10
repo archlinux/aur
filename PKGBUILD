@@ -1,6 +1,6 @@
 pkgname=gzdoom-bin
 pkgver=4.14.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/gzdoom"
@@ -17,6 +17,7 @@ source_aarch64=("gzdoom-$pkgver-arm64.tar.xz::https://gitlab.com/linuxbombay/gzd
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/lib"
     install -dm755 "$pkgdir/usr/share/gzdoom"
     install -dm755 "$pkgdir/usr/share/icons"    
     install -dm755 "$pkgdir/usr/share/licenses" 
@@ -24,4 +25,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications"
     
     cp -r "$srcdir/usr" "$pkgdir"
+   #Libfix
+    ln -s /usr/lib/libvpx.so "$pkgdir/usr/lib/libvpx.so.9"
 }
