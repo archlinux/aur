@@ -1,0 +1,4 @@
+["jailer"]
+source = "git"
+git = "https://github.com/Wisser/Jailer.git"
+prefix = "v"

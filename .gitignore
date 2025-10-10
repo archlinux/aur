@@ -1,2 +1,5 @@
-*.deb
 *.tar*
+*.deb
+*.zst
+src/
+pkg/
