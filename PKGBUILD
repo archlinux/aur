@@ -9,7 +9,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.31.0
+pkgver=2.31.1
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -59,7 +59,7 @@ _pkgsrc="$pkgname-$pkgver"
 source=(
   "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
 )
-sha256sums=('c92c262d674a5a13d4830e3b1c77d74512db70e0a13976d966d753333b999a27')
+sha256sums=('0d3a7b34c4bbdc935c80473b3081b3b715a7e916b6184d5eb3433afd11ab0640')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
