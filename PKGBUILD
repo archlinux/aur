@@ -7,7 +7,7 @@ pkgver=2010.002
 pkgrel=2
 pkgdesc='Backslash escapes, quoted phrase, word elision, etc.'
 arch=('any')
-url="https://metacpan.org/dist/String-Escape"
+url='https://metacpan.org/dist/String-Escape'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 # See https://metacpan.org/dist/String-Escape/source/Makefile.PL
 makedepends=('perl-extutils-makemaker>=6.3002')
@@ -30,7 +30,6 @@ prepare() {
 build() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
   make
@@ -39,7 +38,6 @@ build() {
 check() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
@@ -47,6 +45,5 @@ check() {
 package() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install DESTDIR="${pkgdir}"
 }
