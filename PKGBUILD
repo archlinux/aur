@@ -1,7 +1,7 @@
 # Maintainer: Kagamma <kagamma(dot)km(at)gmail(dot)com>
 
 pkgname=tparted-bin
-pkgver=2025.10.07
+pkgver=2025.10.10
 pkgrel=1
 pkgdesc="Text-based user interface (TUI) frontend for parted, based on Free Vision application framework."
 arch=(x86_64)
@@ -16,20 +16,20 @@ optdepends=('dosfstools: for fat operations'
             'xfsprogs: for xfs operations'
             'jfsutils: for jfs operations'
             'f2fs-tools: for f2fs operations')
-source=(https://github.com/Kagamma/tparted/releases/download/2025-10-07/linux_x86-64_tparted_2025-10-07.tar.gz)
-md5sums=(2250a2b2ddcbd751e872312ae4fcf3d0)
+source=(https://github.com/Kagamma/tparted/releases/download/2025-10-10/linux_x86-64_tparted_2025-10-10.tar.gz)
+md5sums=(375d6c3c73272a830f0700a88b793de7)
 
 pkgver() {
-          printf "2025.10.07"
+          printf "2025.10.10"
 }
 
 package() {
-          tar xf ./linux_x86-64_tparted_2025-10-07.tar.gz
+          tar xf ./linux_x86-64_tparted_2025-10-10.tar.gz
           # Install binaries & desktop file
           install -Dm755 tparted "${pkgdir}/usr/bin/tparted"
           mkdir -p ${pkgdir}/opt/tparted
           mv locale "${pkgdir}/opt/tparted/locale"
           # Cleanup
           rm -f tparted
-          rm -f linux_x86-64_tparted_2025-10-07.tar.gz
+          rm -f linux_x86-64_tparted_2025-10-10.tar.gz
 }
