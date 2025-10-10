@@ -6,7 +6,7 @@ pkgver=0.05
 pkgrel=2
 pkgdesc="Make 'try/catch' syntax available in older Perl versions"
 arch=('any')
-url="https://metacpan.org/dist/Feature-Compat-Try"
+url='https://metacpan.org/dist/Feature-Compat-Try'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Feature-Compat-Try/source/Build.PL
 depends=(
@@ -31,7 +31,7 @@ b2sums=('c713975d02fc5d0eaa439dfb8ab0c905589f4020eb5f8bb49e72a9e77f7fc65818c45e7
 build() {
   cd "${srcdir}/Feature-Compat-Try-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
   perl Build.PL --installdirs=vendor --create_packlist=0
   ./Build
@@ -40,7 +40,7 @@ build() {
 check() {
   cd "${srcdir}/Feature-Compat-Try-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   ./Build test
 }
@@ -48,6 +48,6 @@ check() {
 package() {
   cd "${srcdir}/Feature-Compat-Try-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   ./Build install --destdir="${pkgdir}"
 }
