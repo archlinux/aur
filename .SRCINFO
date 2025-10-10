@@ -1,0 +1,13 @@
+pkgbase = nodejs-yargs
+	pkgdesc = Yargs: modern CLI args parser for Node.js (library)
+	pkgver = 18.0.0
+	pkgrel = 1
+	url = https://github.com/yargs/yargs
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = yargs-18.0.0.tgz::https://registry.npmjs.org/yargs/-/yargs-18.0.0.tgz
+	sha256sums = SKIP
+
+pkgname = nodejs-yargs
