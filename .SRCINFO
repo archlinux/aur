@@ -1,6 +1,6 @@
 pkgbase = vfox
 	pkgdesc = A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more.
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://vfox.dev
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vfox
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = vfox-0.8.0.tar.gz::https://github.com/version-fox/vfox/archive/v0.8.0.tar.gz
-	sha256sums = f095ecf7174b5cdf25d6e82faecb34fc092a50dbe66e182151b188d3fa6696c9
+	source = vfox-0.9.1.tar.gz::https://github.com/version-fox/vfox/archive/v0.9.1.tar.gz
+	sha256sums = 2cb59e497724d28ae1d87f2578a73421083095ce5f9ce844cd98f77802b3d936
 
 pkgname = vfox
