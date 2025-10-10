@@ -9,6 +9,7 @@ pkgbase = agentgateway-bin
 	provides = agentgateway
 	conflicts = agentgateway
 	replaces = agentgateway
+	backup = etc/agentgateway/agentgateway.yaml
 	source = agentgateway.service
 	source = agentgateway.sysusers
 	source = agentgateway.tmpfiles

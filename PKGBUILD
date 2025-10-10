@@ -9,6 +9,7 @@ license=('Apache-2.0')
 provides=("${pkgname%%-bin}")
 conflicts=("${pkgname%%-bin}")
 replaces=("${pkgname%%-bin}")
+backup=("etc/${pkgname%%-bin}/${pkgname%%-bin}.yaml")
 
 source=(
   "${pkgname%%-bin}.service"
