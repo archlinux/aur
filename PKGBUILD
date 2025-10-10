@@ -1,8 +1,8 @@
 # Maintainer: Francis Banyikwa <mhogomchungu@gmail.com>
 pkgname=sirikali
 _name=SiriKali
-pkgver=1.8.2
-pkgrel=1
+pkgver=1.8.4
+pkgrel=2
 pkgdesc="A Qt/C++ GUI front end to sshfs, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
