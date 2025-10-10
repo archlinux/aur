@@ -1,14 +1,14 @@
 pkgbase = perl-jenkins-api
 	pkgdesc = A wrapper around the Jenkins API
 	pkgver = 0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Jenkins::API
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-extutils-makemaker
 	checkdepends = perl-test2-tools-explain
 	makedepends = perl-pod-coverage-trustpod
-	makedepends = perl-test2-suite>=0.000082
+	makedepends = perl-test-simple>=1.302200
 	makedepends = perl-test2-tools-explain
 	makedepends = perl-test-pod-coverage
 	makedepends = perl-extutils-makemaker

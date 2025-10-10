@@ -4,7 +4,7 @@
 
 pkgname=perl-jenkins-api
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper around the Jenkins API'
 arch=('any')
 url='https://metacpan.org/pod/Jenkins::API'
@@ -13,7 +13,7 @@ license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 makedepends=(
   ## BUILD_REQUIRES
   'perl-pod-coverage-trustpod'
-  'perl-test2-suite>=0.000082'
+  'perl-test-simple>=1.302200' # "Test2::Suite"
   'perl-test2-tools-explain'
   'perl-test-pod-coverage'
 
