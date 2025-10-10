@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="usacloud"
-pkgver=1.15.0
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="CLI client for the Sakura Cloud"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,15 +11,14 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${url##*/}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('c5c7107a8b3208a162e2165c23f05a3a29e525b45989152ec2162b5fab936006')
+sha256sums=('d0cc01fa47da3a0ed80cddd9bf92b30b6981544482c267ab139f5cd2372ef9f5')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build" "completions"
 }
@@ -35,7 +34,7 @@ build() {
 
   cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
-    -X ${url#https://}/${pkgname}/pkg/version.Revision=$(git rev-parse --short HEAD)" \
+    -X ${url#https://}/pkg/version.Revision=$(git rev-parse --short HEAD)" \
     .
 
   for _sh in bash fish zsh powershell; do
@@ -50,14 +49,14 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "AUTHORS"     "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
-  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.txt"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${pkgname}/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${pkgname}/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
