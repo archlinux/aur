@@ -15,7 +15,7 @@ pkgname=(
   "${_pkgname[@]/%/-git}"
 )
 pkgver=2.27.3.r31.gabd001a
-pkgrel=1
+pkgrel=2
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=('aarch64' 'x86_64')
 url="https://grpc-ecosystem.github.io/grpc-gateway/"
@@ -68,7 +68,7 @@ package_grpc-gateway-git() {
   pkgdesc+=" (meta)"
   arch=('any')
   depends=(
-    "${_binname[@]/%/"-git=${pkgver}"}"
+    "${_binname[@]/%/"-git=${pkgver}-${pkgrel}"}"
   )
   provides=(
     "${pkgname%-git}=${pkgver%%.r*}"
@@ -97,7 +97,7 @@ for _name in "${_binname[@]}"; do
   eval "
 package_${_name}-git() {
   depends+=(
-    '${_pkgbase}-common-git=${pkgver}'
+    '${_pkgbase}-common-git=${pkgver}-${pkgrel}'
     'glibc'
     'protobuf'
     'protoc-gen-go'
