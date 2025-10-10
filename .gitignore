@@ -1,0 +1,11 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!seerr.service
+!seerr.sysusers
+!seerr.tmpfiles
+!seerr.conf.d
+!seerr.install
+!arch.patch

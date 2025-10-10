@@ -1,0 +1,3 @@
+u jellyseerr - "Jellyseerr Daemon" /var/lib/jellyseerr
+g media
+m jellyseerr media

@@ -1,0 +1,61 @@
+# Be sure to use `systemctl edit jellyseerr` to modify this service with an
+# override.conf because direct changes will be overwritten by package updates.
+#
+# When running jellyseerr in LXC:
+# [Service]
+# PrivateUsers=false
+
+[Unit]
+Description=Jellyseerr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=jellyseerr
+Group=media
+UMask=002
+EnvironmentFile=/etc/conf.d/jellyseerr
+Environment=NODE_ENV=production
+Environment=CONFIG_DIRECTORY=/var/lib/jellyseerr
+ExecStart=/usr/bin/node dist/index.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+SyslogIdentifier=jellyseerr
+StateDirectory=jellyseerr
+ConfigurationDirectory=jellyseerr
+# LogsDirectory=jellyseerr
+# CacheDirectory=jellyseerr
+RuntimeDirectory=jellyseerr
+WorkingDirectory=/usr/lib/jellyseerr
+
+# Hardening
+CapabilityBoundingSet=CAP_CHOWN CAP_FSETID CAP_SETGID
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=true
+RestrictRealtime=true
+SocketBindAllow=ipv4:tcp
+SocketBindAllow=ipv6:tcp
+SocketBindDeny=any
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+
+[Install]
+WantedBy=multi-user.target

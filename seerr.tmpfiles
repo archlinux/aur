@@ -1,0 +1,12 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/jellyseerr                             755 jellyseerr media
+d /var/lib/jellyseerr/logs                        755 jellyseerr media
+d /var/lib/jellyseerr/cache                       755 jellyseerr media
+Z /var/lib/jellyseerr                             -   jellyseerr media
+Z /var/cache/jellyseerr                           -   jellyseerr media
+Z /var/log/jellyseerr                             -   jellyseerr media
+Z /usr/lib/jellyseerr                             -   jellyseerr media
+L+ /var/cache/jellyseerr                          - - - - /var/lib/jellyseerr/cache
+# L+ /var/cache/jellyseerr/.next/cache              - - - - /usr/lib/jellyseerr/.next/cache
+L+ /var/log/jellyseerr                            - - - - /var/lib/jellyseerr/logs
+L+ /etc/jellyseerr/settings.json                  - - - - /var/lib/jellyseerr/settings.json
