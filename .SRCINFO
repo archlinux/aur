@@ -1,7 +1,7 @@
 pkgbase = kwin-without-gestures
 	pkgdesc = An easy to use, but flexible, composited Window Manager. Patched to get red of hardcoded touchpad gestures
 	pkgver = 6.4.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64

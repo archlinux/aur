@@ -1,4 +1,5 @@
 # Maintainer: Heddxh <g31115710257 at gmail dot com>
+# Contributor: JimMoen <LnJimMoen at outlook dot com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -7,7 +8,7 @@ pkgname=kwin-without-gestures
 _pkgname=kwin
 pkgver=6.4.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=4
+pkgrel=5
 pkgdesc='An easy to use, but flexible, composited Window Manager. Patched to get red of hardcoded touchpad gestures'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
