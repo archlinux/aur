@@ -1,0 +1,14 @@
+pkgbase = tudify-simpleweb
+	pkgdesc = A lightweight PyQt5-based browser with a custom engine
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/Tudify/SimpleWeb
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = python
+	source = https://github.com/Tudify/SimpleWeb/releases/download/SimpleWeb-main/SimpleWeb-archlinux
+	sha256sums = SKIP
+
+pkgname = tudify-simpleweb
