@@ -10,7 +10,7 @@ pkgdesc="Open source geocoder for openstreetmap data"
 arch=(any)
 url="https://github.com/komoot/${_pkgname}"
 license=('Apache-2.0')
-makedepends=("maven" "java-environment=${_jdkver}" "strip-nondeterminism")
+makedepends=("java-environment=${_jdkver}")
 install="${_pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "photon.sh"
