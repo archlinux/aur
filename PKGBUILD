@@ -3,7 +3,7 @@
 pkgname=perl-pdl-graphics-colorspace
 _dist=PDL-Graphics-ColorSpace
 pkgver=0.206
-pkgrel=2
+pkgrel=3
 pkgdesc='Image color space conversions'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -13,7 +13,6 @@ sha256sums=('4f958102e82dff11435042df0b668b11b0f7ca9fafbdc8888547cec5f1ae1952')
 
 arch=(i686 x86_64)
 depends=(perl perl-pdl glibc)
-checkdepends=(perl-test-simple)
 options=('!emptydirs')
 
 build() {
