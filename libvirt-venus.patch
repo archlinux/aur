@@ -1,0 +1,692 @@
+diff --git a/src/conf/domain_conf.c b/src/conf/domain_conf.c
+index 7766e302ec..ba8bf1f6d2 100644
+--- a/src/conf/domain_conf.c
++++ b/src/conf/domain_conf.c
+@@ -13550,6 +13550,12 @@ virDomainVideoModelDefParseXML(virDomainVideoDef *def,
+     if (virXMLPropTristateSwitch(node, "edid", VIR_XML_PROP_NONE, &def->edid) < 0)
+         return -1;
+ 
++    if (virXMLPropUInt(node, "hostmem", 10, VIR_XML_PROP_NONE, &def->hostmem) < 0)
++        return -1;
++
++    if (virXMLPropTristateSwitch(node, "venus", VIR_XML_PROP_NONE, &def->venus) < 0)
++        return -1;
++
+     return 0;
+ }
+ 
+@@ -26670,6 +26676,10 @@ virDomainVideoDefFormat(virBuffer *buf,
+         virBufferAsprintf(buf, " blob='%s'", virTristateSwitchTypeToString(def->blob));
+     if (def->edid != VIR_TRISTATE_SWITCH_ABSENT)
+         virBufferAsprintf(buf, " edid='%s'", virTristateSwitchTypeToString(def->edid));
++    if (def->hostmem)
++        virBufferAsprintf(buf, " hostmem='%u'", def->hostmem);
++    if (def->venus)
++        virBufferAsprintf(buf, " venus='%s'", virTristateSwitchTypeToString(def->venus));
+     if (def->accel || def->res) {
+         virBufferAddLit(buf, ">\n");
+         virBufferAdjustIndent(buf, 2);
+diff --git a/src/conf/domain_conf.h b/src/conf/domain_conf.h
+index eca820892e..7adc1b52dd 100644
+--- a/src/conf/domain_conf.h
++++ b/src/conf/domain_conf.h
+@@ -1886,11 +1886,13 @@ struct _virDomainVideoDef {
+     unsigned int vram; /* kibibytes (multiples of 1024) */
+     unsigned int vram64; /* kibibytes (multiples of 1024) */
+     unsigned int vgamem; /* kibibytes (multiples of 1024) */
++    unsigned int hostmem; /* kibibytes (multiples of 1024) */
+     unsigned int heads;
+     bool primary;
+     virDomainVideoAccelDef *accel;
+     virDomainVideoResolutionDef *res;
+     virTristateSwitch blob;
++    virTristateSwitch venus;
+     virDomainVideoDriverDef *driver;
+     virDomainDeviceInfo info;
+     virDomainVirtioOptions *virtio;
+diff --git a/src/conf/domain_validate.c b/src/conf/domain_validate.c
+index 60a2e46b7e..4beac904f6 100644
+--- a/src/conf/domain_validate.c
++++ b/src/conf/domain_validate.c
+@@ -229,6 +229,18 @@ virDomainVideoDefValidate(const virDomainVideoDef *video,
+                            virDomainVideoTypeToString(video->type));
+             return -1;
+         }
++        if (video->hostmem != 0) {
++            virReportError(VIR_ERR_CONFIG_UNSUPPORTED,
++                           _("video type '%1$s' does not support hostmem"),
++                           virDomainVideoTypeToString(video->type));
++            return -1;
++        }
++        if (video->venus != VIR_TRISTATE_SWITCH_ABSENT) {
++            virReportError(VIR_ERR_CONFIG_UNSUPPORTED,
++                           _("video type '%1$s' does not support venus"),
++                           virDomainVideoTypeToString(video->type));
++            return -1;
++        }
+     }
+ 
+     if ((video->type != VIR_DOMAIN_VIDEO_TYPE_BOCHS) &&
+diff --git a/src/conf/schemas/domaincommon.rng b/src/conf/schemas/domaincommon.rng
+index e369fb6e81..c2516eeab8 100644
+--- a/src/conf/schemas/domaincommon.rng
++++ b/src/conf/schemas/domaincommon.rng
+@@ -4817,6 +4817,16 @@
+                 <ref name="virOnOff"/>
+               </attribute>
+             </optional>
++            <optional>
++              <attribute name="hostmem">
++                <ref name="unsignedInt"/>
++              </attribute>
++            </optional>
++            <optional>
++              <attribute name="venus">
++                <ref name="virOnOff"/>
++              </attribute>
++            </optional>
+             <optional>
+               <element name="acceleration">
+                 <optional>
+diff --git a/src/qemu/meson.build b/src/qemu/meson.build
+index 5cf20f426f..0ba02febb7 100644
+--- a/src/qemu/meson.build
++++ b/src/qemu/meson.build
+@@ -43,6 +43,7 @@ qemu_driver_sources = [
+   'qemu_vhost_user.c',
+   'qemu_vhost_user_gpu.c',
+   'qemu_virtiofs.c',
++  'qemu_virgl_venus.c',
+ ]
+ 
+ driver_source_files += files(qemu_driver_sources)
+diff --git a/src/qemu/qemu_command.c b/src/qemu/qemu_command.c
+index e8de386f30..9931a69aa9 100644
+--- a/src/qemu/qemu_command.c
++++ b/src/qemu/qemu_command.c
+@@ -4648,14 +4648,14 @@ qemuBuildSoundCommandLine(virCommand *cmd,
+     return 0;
+ }
+ 
+-
+ static int
+ qemuBuildDeviceVideoCmd(virCommand *cmd,
+                         const virDomainDef *def,
+                         virDomainVideoDef *video,
+-                        virQEMUCaps *qemuCaps)
++                        qemuDomainObjPrivate *priv)
+ {
+     const char *model = NULL;
++    virQEMUCaps *qemuCaps = priv->qemuCaps;
+     virTristateBool virgl = VIR_TRISTATE_BOOL_ABSENT;
+     bool virtio = false;
+     bool virtioBusSuffix = false;
+@@ -4735,7 +4735,30 @@ qemuBuildDeviceVideoCmd(virCommand *cmd,
+                                   NULL) < 0)
+             return -1;
+     } else if (video->type == VIR_DOMAIN_VIDEO_TYPE_VIRTIO) {
+-        if (virJSONValueObjectAdd(&props, "T:blob", video->blob, NULL) < 0)
++        if (video->venus == VIR_TRISTATE_SWITCH_ON) {
++
++            qemuDomainVideoPrivate *videopriv = QEMU_DOMAIN_VIDEO_PRIVATE(video);
++            g_autoptr(virDomainChrSourceDef) chrsrc = virDomainChrSourceDefNew(priv->driver->xmlopt);
++            g_autofree char *name = g_strdup_printf("%s-virgl-venus", video->info.alias);
++            qemuDomainChrSourcePrivate *chrsrcpriv = QEMU_DOMAIN_CHR_SOURCE_PRIVATE(chrsrc);
++
++            chrsrc->type = VIR_DOMAIN_CHR_TYPE_UNIX;
++            chrsrcpriv->directfd = qemuFDPassDirectNew(name, &videopriv->virgl_venus_fd);
++
++            if (qemuBuildChardevCommand(cmd, chrsrc, "venus-chardev", priv->qemuCaps) < 0)
++                return -1;
++
++
++            if (virJSONValueObjectAdd(&props,
++                "s:chardev0", "venus-chardev",
++                NULL) < 0)
++                    return -1;
++        }
++        if (virJSONValueObjectAdd(&props,
++                                  "T:blob", video->blob,
++                                  "p:hostmem", video->hostmem * 1024,
++                                  "T:venus", video->venus,
++                                  NULL) < 0)
+             return -1;
+     }
+ 
+@@ -4790,7 +4813,7 @@ qemuBuildVideoCommandLine(virCommand *cmd,
+         if (qemuCommandAddExtDevice(cmd, &def->videos[i]->info, def, priv->qemuCaps) < 0)
+             return -1;
+ 
+-        if (qemuBuildDeviceVideoCmd(cmd, def, video, priv->qemuCaps) < 0)
++        if (qemuBuildDeviceVideoCmd(cmd, def, video, priv) < 0)
+             return -1;
+     }
+ 
+diff --git a/src/qemu/qemu_domain.c b/src/qemu/qemu_domain.c
+index e45757ccd5..b09ebac463 100644
+--- a/src/qemu/qemu_domain.c
++++ b/src/qemu/qemu_domain.c
+@@ -1127,6 +1127,7 @@ qemuDomainVideoPrivateNew(void)
+         return NULL;
+ 
+     priv->vhost_user_fd = -1;
++    priv->virgl_venus_fd = -1;
+ 
+     return (virObject *) priv;
+ }
+@@ -1138,6 +1139,7 @@ qemuDomainVideoPrivateDispose(void *obj)
+     qemuDomainVideoPrivate *priv = obj;
+ 
+     VIR_FORCE_CLOSE(priv->vhost_user_fd);
++    VIR_FORCE_CLOSE(priv->virgl_venus_fd);
+ }
+ 
+ 
+diff --git a/src/qemu/qemu_domain.h b/src/qemu/qemu_domain.h
+index ffe5bee1bf..3739ceff9d 100644
+--- a/src/qemu/qemu_domain.h
++++ b/src/qemu/qemu_domain.h
+@@ -410,6 +410,7 @@ struct _qemuDomainVideoPrivate {
+     virObject parent;
+ 
+     int vhost_user_fd;
++    int virgl_venus_fd;
+ };
+ 
+ 
+diff --git a/src/qemu/qemu_extdevice.c b/src/qemu/qemu_extdevice.c
+index 8df93a77ce..e1d4807a82 100644
+--- a/src/qemu/qemu_extdevice.c
++++ b/src/qemu/qemu_extdevice.c
+@@ -28,6 +28,7 @@
+ #include "qemu_passt.h"
+ #include "qemu_slirp.h"
+ #include "qemu_virtiofs.h"
++#include "qemu_virgl_venus.h"
+ 
+ #include "virlog.h"
+ #include "virtime.h"
+@@ -109,6 +110,11 @@ qemuExtDevicesPrepareDomain(virQEMUDriver *driver,
+             if ((ret = qemuExtVhostUserGPUPrepareDomain(driver, video)) < 0)
+                 break;
+         }
++
++        if (video->type == VIR_DOMAIN_VIDEO_TYPE_VIRTIO &&
++            video->venus == VIR_TRISTATE_SWITCH_ON &&
++            qemuExtVirglVenusPrepareDomain(driver, video) < 0)
++            return -1;
+     }
+ 
+     for (i = 0; i < vm->def->nfss; i++) {
+@@ -187,6 +193,11 @@ qemuExtDevicesStart(virQEMUDriver *driver,
+             if (qemuExtVhostUserGPUStart(driver, vm, video) < 0)
+                 return -1;
+         }
++
++        if (video->type == VIR_DOMAIN_VIDEO_TYPE_VIRTIO &&
++            video->venus == VIR_TRISTATE_SWITCH_ON &&
++            qemuExtVirglVenusStart(driver, vm, video) < 0)
++            return -1;
+     }
+ 
+     for (i = 0; i < def->ntpms; i++) {
+@@ -295,6 +306,10 @@ qemuExtDevicesStop(virQEMUDriver *driver,
+ 
+         if (video->backend == VIR_DOMAIN_VIDEO_BACKEND_TYPE_VHOSTUSER)
+             qemuExtVhostUserGPUStop(driver, vm, video);
++
++        if (video->type == VIR_DOMAIN_VIDEO_TYPE_VIRTIO &&
++            video->venus == VIR_TRISTATE_SWITCH_ON)
++            qemuExtVirglVenusStop(driver, vm, video);
+     }
+ 
+     for (i = 0; i < def->ntpms; i++) {
+@@ -446,6 +461,11 @@ qemuExtDevicesSetupCgroup(virQEMUDriver *driver,
+         if (video->backend == VIR_DOMAIN_VIDEO_BACKEND_TYPE_VHOSTUSER &&
+             qemuExtVhostUserGPUSetupCgroup(driver, def, video, cgroup) < 0)
+             return -1;
++
++        if (video->type == VIR_DOMAIN_VIDEO_TYPE_VIRTIO &&
++            video->venus == VIR_TRISTATE_SWITCH_ON &&
++            qemuExtVirglVenusSetupCgroup(driver, def, video, cgroup) < 0)
++            return -1;
+     }
+ 
+     for (i = 0; i < def->nnets; i++) {
+diff --git a/src/qemu/qemu_validate.c b/src/qemu/qemu_validate.c
+index adba3e4a89..311703a609 100644
+--- a/src/qemu/qemu_validate.c
++++ b/src/qemu/qemu_validate.c
+@@ -2835,6 +2835,27 @@ qemuValidateDomainDeviceDefVideo(const virDomainVideoDef *video,
+                 return -1;
+             }
+         }
++
++        if (video->hostmem != 0) {
++            unsigned n;
++            for (n = video->hostmem - 1; n != 0; n >>= 1)
++                if ((n & 0x1U) == 0)
++                    break;
++            if (n != 0) {
++                virReportError(VIR_ERR_CONFIG_UNSUPPORTED, "%s",
++                               _("'hostmem' is not power of 2"));
++                return -1;
++            }
++        }
++
++        if (video->venus == VIR_TRISTATE_SWITCH_ON &&
++            (video->blob != VIR_TRISTATE_SWITCH_ON ||
++             video->hostmem == 0 ||
++             video->accel->accel3d != VIR_TRISTATE_BOOL_YES)) {
++            virReportError(VIR_ERR_CONFIG_UNSUPPORTED, "%s",
++                           _("'venus' requires 'blob', 'hostmem' and 3d acceleration"));
++            return -1;
++        }
+     }
+ 
+     if (video->type == VIR_DOMAIN_VIDEO_TYPE_RAMFB &&
+diff --git a/src/qemu/qemu_virgl_venus.c b/src/qemu/qemu_virgl_venus.c
+new file mode 100644
+index 0000000000..21fe4e459a
+--- /dev/null
++++ b/src/qemu/qemu_virgl_venus.c
+@@ -0,0 +1,300 @@
++/*
++ * qemu_vhost_user_gpu.c: QEMU vhost-user GPU support
++ *
++ * Copyright (C) 2019 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library.  If not, see
++ * <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++#include <fcntl.h>
++#include <grp.h>
++
++#include "qemu_virgl_venus.h"
++#include "qemu_extdevice.h"
++
++#include "conf/domain_conf.h"
++#include "configmake.h"
++#include "vircommand.h"
++#include "virlog.h"
++#include "virfile.h"
++#include "virpidfile.h"
++#include "virutil.h"
++
++#define VIR_FROM_THIS VIR_FROM_NONE
++
++VIR_LOG_INIT("qemu.virgl_venus");
++
++static gid_t get_render_grp(void)
++{
++    struct group* g = getgrnam("render");
++    if (g == NULL)
++        return (gid_t)-1;
++    return g->gr_gid;
++}
++
++static char *
++qemuVirglVenusCreatePidFilename(const char *stateDir,
++                                  const char *shortName,
++                                  const char *alias)
++{
++    g_autofree char *devicename = NULL;
++
++    devicename = g_strdup_printf("%s-%s-virgl-venus", shortName, alias);
++
++    return virPidFileBuildPath(stateDir, devicename);
++}
++
++
++/*
++ * qemuVirglVenusGetPid:
++ * @stateDir: the directory where virgl-venus writes the pidfile into
++ * @shortName: short name of the domain
++ * @alias: video device alias
++ * @pid: pointer to pid
++ *
++ * Return -1 upon error, or zero on successful reading of the pidfile.
++ * If the PID was not still alive, zero will be returned, and @pid will be
++ * set to -1;
++ */
++static int
++qemuVirglVenusGetPid(const char *stateDir,
++                       const char *shortName,
++                       const char *alias,
++                       pid_t *pid)
++{
++    g_autofree char *pidfile = NULL;
++
++    if (!(pidfile = qemuVirglVenusCreatePidFilename(stateDir, shortName, alias)))
++        return -1;
++
++    if (virPidFileReadPathIfLocked(pidfile, pid) < 0)
++        return -1;
++
++    return 0;
++}
++
++
++int qemuExtVirglVenusPrepareDomain(virQEMUDriver *driver,
++                                     virDomainVideoDef *video)
++{
++
++    return 0;
++}
++
++static char *
++qemuVirglVenusCreateLogFilename(virQEMUDriverConfig *cfg,
++                              const virDomainDef *def,
++                              const char *alias)
++{
++    g_autofree char *name = NULL;
++
++    name = g_strdup_printf("%s-%s", def->name, alias);
++
++    return virFileBuildPath(cfg->logDir, name, "-virgl-venus.log");
++}
++
++/*
++ * qemuExtVirglVenusStart:
++ * @driver: QEMU driver
++ * @vm: the VM domain
++ * @video: the video device
++ *
++ * Start the external virgl-venus process:
++ * - open a socketpair for virgl-venus communication
++ * - have the command line built
++ * - start the external process and sync with it before QEMU start
++ */
++int qemuExtVirglVenusStart(virQEMUDriver *driver,
++                             virDomainObj *vm,
++                             virDomainVideoDef *video)
++{
++    g_autoptr(virQEMUDriverConfig) cfg = virQEMUDriverGetConfig(driver);
++    g_autofree char *shortname = NULL;
++    g_autofree char *pidfile = NULL;
++    g_autofree char *logpath = NULL;
++    g_autoptr(virCommand) cmd = NULL;
++    VIR_AUTOCLOSE logfd = -1;
++    int pair[2] = { -1, -1 };
++    int rc;
++    pid_t pid;
++    int ret = -1;
++
++    shortname = virDomainDefGetShortName(vm->def);
++    if (!shortname)
++        goto error;
++
++    /* stop any left-over for this VM */
++    qemuExtVirglVenusStop(driver, vm, video);
++
++    if (!(pidfile = qemuVirglVenusCreatePidFilename(
++        cfg->stateDir, shortname, video->info.alias)))
++        goto error;
++
++    if (qemuSecuritySetSocketLabel(driver->securityManager, vm->def) < 0)
++        goto error;
++
++    if (socketpair(AF_UNIX, SOCK_SEQPACKET, 0, pair) < 0) {
++        virReportSystemError(errno, "%s", _("failed to create socket"));
++        goto error;
++    }
++
++    if (qemuSecurityClearSocketLabel(driver->securityManager, vm->def) < 0)
++        goto error;
++
++    cmd = virCommandNew("/usr/libexec/virgl_render_server");
++
++    logpath = qemuVirglVenusCreateLogFilename(cfg, vm->def, video->info.alias);
++
++    if (cfg->stdioLogD) {
++        g_autoptr(virLogManager) logManager = virLogManagerNew(driver->privileged);
++
++        if (!logManager)
++            goto error;
++
++        if ((logfd = virLogManagerDomainOpenLogFile(logManager,
++            "qemu",
++            vm->def->uuid,
++            vm->def->name,
++            logpath,
++            0,
++            NULL, NULL)) < 0)
++            goto error;
++    } else {
++        if ((logfd = open(logpath, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR)) < 0) {
++            virReportSystemError(errno, _("failed to create logfile %1$s"),
++                                 logpath);
++            goto error;
++        }
++        if (virSetCloseExec(logfd) < 0) {
++            virReportSystemError(errno, _("failed to set close-on-exec flag on %1$s"),
++                                 logpath);
++            goto error;
++        }
++    }
++
++
++    virCommandClearCaps(cmd);
++    virCommandSetPidFile(cmd, pidfile);
++    virCommandSetOutputFD(cmd, &logfd);
++    virCommandSetErrorFD(cmd, &logfd);
++    //virCommandNonblockingFDs(cmd);
++    virCommandDaemonize(cmd);
++
++    virCommandAddArgFormat(cmd, "--socket-fd=%d", pair[0]);
++
++    if (qemuExtDeviceLogCommand(driver, vm, cmd, "virgl-venus") < 0)
++        goto error;
++
++    virCommandPassFD(cmd, pair[0], VIR_COMMAND_PASS_FD_CLOSE_PARENT);
++    pair[0] = -1;
++
++    if (qemuSecurityCommandRun(driver, vm, cmd, -1, get_render_grp(), false, NULL) < 0)
++        goto error;
++
++    rc = virPidFileReadPath(pidfile, &pid);
++    if (rc < 0) {
++        virReportSystemError(-rc,
++                             _("Unable to read virgl-venus pidfile '%1$s'"),
++                             pidfile);
++        goto cleanup;
++    }
++
++    ret = 0;
++    QEMU_DOMAIN_VIDEO_PRIVATE(video)->virgl_venus_fd = pair[1];
++    pair[1] = -1;
++
++    cleanup:
++    VIR_FORCE_CLOSE(pair[0]);
++    VIR_FORCE_CLOSE(pair[1]);
++
++    return ret;
++
++    error:
++    virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
++                   _("virgl-venus failed to start"));
++    goto cleanup;
++}
++
++
++/*
++ * qemuExtVirglVenusStop:
++ *
++ * @driver: QEMU driver
++ * @vm: the VM domain
++ * @video: the video device
++ *
++ * Check if virgl-venus process pidfile is around, kill the process,
++ * and remove the pidfile.
++ */
++void qemuExtVirglVenusStop(virQEMUDriver *driver,
++                             virDomainObj *vm,
++                             virDomainVideoDef *video)
++{
++    g_autoptr(virQEMUDriverConfig) cfg = virQEMUDriverGetConfig(driver);
++    g_autofree char *pidfile = NULL;
++    g_autofree char *shortname = NULL;
++    virErrorPtr orig_err;
++
++    shortname = virDomainDefGetShortName(vm->def);
++    if (!(pidfile = qemuVirglVenusCreatePidFilename(
++        cfg->stateDir, shortname, video->info.alias))) {
++        VIR_WARN("Unable to construct virgl-venus pidfile path");
++    return;
++        }
++
++        virErrorPreserveLast(&orig_err);
++        if (virPidFileForceCleanupPath(pidfile) < 0)
++            VIR_WARN("Unable to kill virgl-venus process");
++    virErrorRestore(&orig_err);
++}
++
++
++/*
++ * qemuExtVirglVenusSetupCgroup:
++ *
++ * @driver: QEMU driver
++ * @def: domain definition
++ * @video: the video device
++ * @cgroupe: a cgroup
++ *
++ * Add the virgl-venus PID to the given cgroup.
++ */
++int
++qemuExtVirglVenusSetupCgroup(virQEMUDriver *driver,
++                               virDomainDef *def,
++                               virDomainVideoDef *video,
++                               virCgroup *cgroup)
++{
++    g_autoptr(virQEMUDriverConfig) cfg = virQEMUDriverGetConfig(driver);
++    g_autofree char *shortname = NULL;
++    int rc;
++    pid_t pid;
++
++    shortname = virDomainDefGetShortName(def);
++    if (!shortname)
++        return -1;
++
++    rc = qemuVirglVenusGetPid(cfg->stateDir, shortname, video->info.alias, &pid);
++    if (rc < 0 || (rc == 0 && pid == (pid_t)-1)) {
++        virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
++                       _("Could not get process id of virgl-venus"));
++        return -1;
++    }
++    if (virCgroupAddProcess(cgroup, pid) < 0)
++        return -1;
++
++    return 0;
++}
+diff --git a/src/qemu/qemu_virgl_venus.h b/src/qemu/qemu_virgl_venus.h
+new file mode 100644
+index 0000000000..3664be40a7
+--- /dev/null
++++ b/src/qemu/qemu_virgl_venus.h
+@@ -0,0 +1,48 @@
++/*
++ * qemu_vhost_user_gpu.h: QEMU vhost-user GPU support
++ *
++ * Copyright (C) 2019 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library.  If not, see
++ * <http://www.gnu.org/licenses/>.
++ */
++
++#pragma once
++
++#include "qemu_domain.h"
++#include "qemu_security.h"
++
++int qemuExtVirglVenusPrepareDomain(virQEMUDriver *driver,
++                                     virDomainVideoDef *video)
++ATTRIBUTE_NONNULL(1) ATTRIBUTE_NONNULL(2)
++G_GNUC_WARN_UNUSED_RESULT;
++
++int qemuExtVirglVenusStart(virQEMUDriver *driver,
++                             virDomainObj *vm,
++                             virDomainVideoDef *video)
++ATTRIBUTE_NONNULL(1) ATTRIBUTE_NONNULL(2) ATTRIBUTE_NONNULL(3)
++G_GNUC_WARN_UNUSED_RESULT;
++
++void qemuExtVirglVenusStop(virQEMUDriver *driver,
++                             virDomainObj *def,
++                             virDomainVideoDef *video)
++ATTRIBUTE_NONNULL(1) ATTRIBUTE_NONNULL(2);
++
++int
++qemuExtVirglVenusSetupCgroup(virQEMUDriver *driver,
++                               virDomainDef *def,
++                               virDomainVideoDef *video,
++                               virCgroup *cgroup)
++ATTRIBUTE_NONNULL(1) ATTRIBUTE_NONNULL(2) ATTRIBUTE_NONNULL(3)
++G_GNUC_WARN_UNUSED_RESULT;
+diff --git a/src/security/apparmor/usr.sbin.libvirtd.in b/src/security/apparmor/usr.sbin.libvirtd.in
+index 6267e4f737..5fbf23ea12 100644
+--- a/src/security/apparmor/usr.sbin.libvirtd.in
++++ b/src/security/apparmor/usr.sbin.libvirtd.in
+@@ -99,6 +99,7 @@ profile libvirtd @sbindir@/libvirtd flags=(attach_disconnected) {
+   /usr/{lib,libexec}/xen-*/bin/pygrub PUx,
+   /usr/{lib,lib64,lib/qemu,libexec}/vhost-user-gpu PUx,
+   /usr/{lib,lib64,lib/qemu,libexec}/virtiofsd PUx,
++  /usr/{lib,lib64,lib/qemu,libexec}/virgl_render_server PUx,
+ 
+   # Required by nwfilter_ebiptables_driver.c:ebiptablesWriteToTempFile() to
+   # read and run an ebtables script.
+diff --git a/src/security/apparmor/usr.sbin.virtqemud.in b/src/security/apparmor/usr.sbin.virtqemud.in
+index 522c098af6..9b67378784 100644
+--- a/src/security/apparmor/usr.sbin.virtqemud.in
++++ b/src/security/apparmor/usr.sbin.virtqemud.in
+@@ -93,6 +93,7 @@ profile virtqemud @sbindir@/virtqemud flags=(attach_disconnected) {
+   /{usr/,}lib/udev/scsi_id PUx,
+   /usr/{lib,lib64,lib/qemu,libexec}/vhost-user-gpu PUx,
+   /usr/{lib,lib64,lib/qemu,libexec}/virtiofsd PUx,
++  /usr/{lib,lib64,lib/qemu,libexec}/virgl_render_server PUx,
+ 
+   # Required by nwfilter_ebiptables_driver.c:ebiptablesWriteToTempFile() to
+   # read and run an ebtables script.
+diff --git a/src/security/virt-aa-helper.c b/src/security/virt-aa-helper.c
+index 8a297d4b54..984111ebdb 100644
+--- a/src/security/virt-aa-helper.c
++++ b/src/security/virt-aa-helper.c
+@@ -1352,6 +1352,7 @@ get_files(vahControl * ctl)
+         /* if using gl all sorts of further dri related paths will be needed */
+         virBufferAddLit(&buf, "  # DRI/Mesa/(e)GL config and driver paths\n");
+         virBufferAddLit(&buf, "  \"/usr/lib{,32,64}/dri/*.so*\" mr,\n");
++	virBufferAddLit(&buf, "  \"/usr/{lib,lib64,lib/qemu,libexec}/virgl_render_server\" PUx,\n");
+         virBufferAddLit(&buf, "  \"/usr/lib/@{multiarch}/dri/*.so*\" mr,\n");
+         virBufferAddLit(&buf, "  \"/usr/lib/fglrx/dri/*.so*\" mr,\n");
+         virBufferAddLit(&buf, "  \"/etc/drirc\" r,\n");
+@@ -1365,7 +1366,7 @@ get_files(vahControl * ctl)
+         virBufferAddLit(&buf, "  \"/dev/nvidiactl\" rw,\n");
+         virBufferAddLit(&buf, "  # Probe DRI device attributes\n");
+         virBufferAddLit(&buf, "  \"/dev/dri/\" r,\n");
+-        virBufferAddLit(&buf, "  \"/sys/devices/**/{uevent,vendor,device,subsystem_vendor,subsystem_device,config,revision}\" r,\n");
++        virBufferAddLit(&buf, "  \"/sys/devices/**/{uevent,vendor,device,subsystem_vendor,subsystem_device,config,revision,drm/}\" r,\n");
+         virBufferAddLit(&buf, "  # dri libs will trigger that, but t is not requited and DAC would deny it anyway\n");
+         virBufferAddLit(&buf, "  deny \"/var/lib/libvirt/.cache/\" w,\n");
+     }
