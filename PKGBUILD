@@ -1,7 +1,7 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=ggc-git
-pkgver=r535.d4e4341
+pkgver=r547.6452f8e
 pkgrel=1
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 arch=('x86_64' 'arm64')
