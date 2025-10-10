@@ -1,7 +1,7 @@
 # Maintainer: Jojo4GH
 
 pkgname=nav-cli
-pkgver="1.4.5"
+pkgver="1.5.0"
 pkgrel=1
 pkgdesc="The interactive and stylish replacement for ls & cd!"
 arch=(x86_64 aarch64)
