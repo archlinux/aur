@@ -1,6 +1,6 @@
 pkgbase = ttf-octicons
 	pkgdesc = A scalable set of icons handcrafted with <3 by GitHub
-	pkgver = 19.15.1
+	pkgver = 19.19.0
 	pkgrel = 1
 	url = https://octicons.github.com/
 	install = ttf-octicons.install
@@ -12,7 +12,7 @@ pkgbase = ttf-octicons
 	depends = fontconfig
 	depends = xorg-font-util
 	depends = xorg-mkfontscale
-	source = ttf-octicons_v19.15.1.tar.gz::https://github.com/primer/octicons/archive/v19.15.1.tar.gz
-	sha256sums = 7eaa93e010615274eb9331148202b8c4debcc882a4ae83091e536b2eddb8761e
+	source = ttf-octicons_v19.19.0.tar.gz::https://github.com/primer/octicons/archive/v19.19.0.tar.gz
+	sha256sums = 105c09edb8d904be9b8d96cce94f08e315f867d2a485d3be6f3337b5f42fc8a4
 
 pkgname = ttf-octicons
