@@ -1,6 +1,6 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 pkgname=tosu-overlay
-pkgver=v1.0.0
+pkgver=v1.0.1
 pkgrel=1
 pkgdesc="Overlay for osu! Powered by Tosu, GTK and Webkit"
 arch=('x86_64')
