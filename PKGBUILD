@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pipelab-bin
 _pkgname=Pipelab
-pkgver=1.29.9
+pkgver=1.29.10
 _electronversion=32
 pkgrel=1
 pkgdesc="A visual tool to create task automation workflows.(Prebuilt version.Use system-wide electron)"
@@ -30,7 +30,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f501d58218ffc58a93d27c035aaaa9b3ce65ac497510bf2dc8c1802c37032846'
+sha256sums=('5f6b5b521c4ba255a017605c3cb63a66f20fac2ee25854fc970506b62d2d107e'
             '92ddb84a1531980e4142c76f4936b1ff8ea132777df206d4bf6da123c094f8f4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
