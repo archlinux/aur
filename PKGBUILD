@@ -27,9 +27,9 @@ sha256sums=('985d166c775d9ca5371231c919a9e037dd49658842cbab007a52b6750d04d76d'
             'd51830a965f3136ffac27d91aed0f5364b9cd1e999e4fb88c7a625b8c4951fa4'
             '35b32ae060d99dfe5ccb55a7e77bfd786f7f2e54b091f5c8712107bb33d3827a'
             'f41ba18bbec31665fed92094489e76b4d2b73a3dd6eeff2c74ef6f2d2314e234'
-            'b1d3d5f2b9e24a1d340efbd35a46f54a560a0342fa4e2ddaa18fb60638821e5d'
-            '255fde27640e7b3d76807d288c935b89fe299d0ba338885499580fb50a2daabe'
-            'cfcf9c38e2203f1c0a6595cf20ddf43e7539a80ddeccb21c36c1145af27d4928')
+            '4c136a92ded8433b1431b515991e0d31dc833d00dc20f17c02df2aaadee129ee'
+            '96f0ef76904403600dc4ca83df29a8555b259c712dba37c5abdd230ed474ed07'
+            'a38bbe2b167942df5431624cbd02bb9d51cbf4ac4592a525d5854f59fe0bd382')
 
 prepare() {
   sed -i "s/PHOTON_MINOR_VERSION_SED/${_minorpkgver}/g" photon-update.sh
