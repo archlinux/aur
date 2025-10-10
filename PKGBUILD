@@ -45,7 +45,7 @@ checkdepends=(
   'perl-encode'
   'perl-encode-locale'
   'perl-test2-tools-command'
-  'perl-test2-suite>=0.000060' # "Test2::V0"
+  'perl-test-simple>=1.302200' # "Test2::V0"
   'perl-test-without-module'
 )
 options=('!emptydirs' 'purge')
