@@ -1,7 +1,7 @@
 # Maintainer: Daryl Bennett <kd8bny at gmail dot com>
 
 pkgname=moondeckbuddy-appimage
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="A server-side part of the MoonDeck plugin for the SteamDeck."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  c827b90e01c2b63ebecf86065473ee4c3db047953889d58540a07b9b1f74841c32de351177bdd462f6ca43a78c5621287fe44b49742a2494e7b63232a67f6e4e
+  eaeb2f2c07e78172f2a90b85d3d0e72a35cfee2ae9dcbe5a5e6581bec51abc3be21cc7c237fae2151a2eaa4bcf7e276f15d4fb8a459d81d1af4902338d54858d
   SKIP
 )
 
