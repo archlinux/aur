@@ -1,13 +1,15 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Gilles Gagniard <gilles@gagniard.org>
 
-pkgbase=qt6-base
-pkgname=(qt6-base
-         qt6-xcb-private-headers)
+pkgbase=qt6-base-scrollfix
+_pkgbase=qt6-base
+pkgname=(qt6-base-scrollfix
+         qt6-xcb-private-headers-scrollfix)
 _pkgver=6.10.0
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=1.1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -85,7 +87,16 @@ optdepends=('freetds: MS SQL driver'
             'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 groups=(qt6)
-_pkgfn=${pkgbase/6-/}
+_pkgfn=${_pkgbase/6-/}
+provides=(
+    qt6-base
+    qt6-base=${pkgver}
+    qt6-xcb-private-headers
+)
+conflicts=(
+    qt6-base
+    qt6-xcb-private-headers
+)
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
@@ -97,6 +108,13 @@ prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
   git -C $_pkgfn cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
+
+  # GG: fix scrolling in libreoffice on wayland
+  echo "Apply additional patches for optimizing scrolling ..."
+  git -C $_pkgfn cherry-pick -n 095759818854e5a011aa8f859e566bbc6368ab76 # wayland: Compress high frequency mouse events
+  git -C $_pkgfn cherry-pick -n 6f25f703fd37a900c139e14a33a4639502bfeae7 # wayland: Optimize scroll operation
+  git -C $_pkgfn cherry-pick -n 9dd0d936d6691904a4bb212dcf48999a5228b84f # wayland: Enable event compression and fix scroll end event
+  echo "... done."
 }
 
 build() {
@@ -123,12 +141,12 @@ build() {
   cmake --build build
 }
 
-package_qt6-base() {
+package_qt6-base-scrollfix() {
   pkgdesc='A cross-platform application and UI framework'
   depends+=(qt6-translations)
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 $_pkgfn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgbase
+  install -Dm644 $_pkgfn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$_pkgbase
 
 # Install symlinks for user-facing tools
   cd "$pkgdir"
@@ -138,7 +156,7 @@ package_qt6-base() {
   done < "$srcdir"/build/user_facing_tool_links.txt
 }
 
-package_qt6-xcb-private-headers() {
+package_qt6-xcb-private-headers-scrollfix() {
   pkgdesc='Private headers for Qt6 Xcb'
 
   depends=("qt6-base=$pkgver")

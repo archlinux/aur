@@ -1,7 +1,7 @@
-pkgbase = qt6-base
+pkgbase = qt6-base-scrollfix
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 6.10.0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
@@ -78,6 +78,11 @@ pkgbase = qt6-base
 	optdepends = perl: for syncqt
 	optdepends = postgresql-libs: PostgreSQL driver
 	optdepends = unixodbc: ODBC driver
+	provides = qt6-base
+	provides = qt6-base=6.10.0
+	provides = qt6-xcb-private-headers
+	conflicts = qt6-base
+	conflicts = qt6-xcb-private-headers
 	source = git+https://code.qt.io/qt/qtbase#tag=v6.10.0
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
@@ -85,7 +90,7 @@ pkgbase = qt6-base
 	sha256sums = 5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
-pkgname = qt6-base
+pkgname = qt6-base-scrollfix
 	pkgdesc = A cross-platform application and UI framework
 	depends = brotli
 	depends = dbus
@@ -132,7 +137,7 @@ pkgname = qt6-base
 	depends = zstd
 	depends = qt6-translations
 
-pkgname = qt6-xcb-private-headers
+pkgname = qt6-xcb-private-headers-scrollfix
 	pkgdesc = Private headers for Qt6 Xcb
 	groups = 
 	depends = qt6-base=6.10.0

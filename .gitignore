@@ -1,0 +1,4 @@
+src/
+qtbase/
+pkg/
+*.pkg.tar.zst
