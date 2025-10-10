@@ -6,7 +6,7 @@ pkgver=0.0.11
 pkgrel=1
 pkgdesc='Detect source code license statements in a text string'
 arch=('any')
-url="https://metacpan.org/dist/String-License"
+url='https://metacpan.org/dist/String-License'
 license=('AGPL-3.0-or-later')
 # See "prereqs" in https://metacpan.org/dist/String-License/source/Makefile.PL
 makedepends=(
@@ -47,7 +47,6 @@ b2sums=('733af1f8edfc3ba402f475ada43435ec698b0f227543927efcd0dbeff10401869da418b
 build() {
   cd "${srcdir}/String-License-v${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
   make
@@ -56,7 +55,6 @@ build() {
 check() {
   cd "${srcdir}/String-License-v${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
@@ -64,6 +62,5 @@ check() {
 package() {
   cd "${srcdir}/String-License-v${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install DESTDIR="${pkgdir}"
 }
