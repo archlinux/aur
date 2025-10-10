@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Name=Nitrox
+GenericName=Game Modification
+Comment=An open-source, multiplayer modification for the game Subnautica.
+Exec=/usr/bin/nitrox
+Icon=nitrox
+Terminal=false
+Type=Application
+Categories=Game;GameTool;
+Keywords=Subnautica;Multiplayer;
