@@ -6,8 +6,8 @@ _upstream_name="PyAV"
 pkgdesc="Pythonic bindings for FFmpeg"
 url="https://pyav.basswood-io.com"
 
-pkgver=15.1.0
-pkgrel=2
+pkgver=16.0.0
+pkgrel=1
 
 arch=("x86_64" "i686")
 license=("BSD-3-Clause")
@@ -28,9 +28,19 @@ checkdepends=(
   "python-pytest"
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_upstream_name}-Org/${_upstream_name}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("eb8fe7e2435a74b58403bd220629a4ab09563d9136b5c00363793ae788bb11410f88fded79d506cc33bfe76d99818c1a8ea6bba8691b8153adbc14694ed74729")
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/${_upstream_name}-Org/${_upstream_name}/archive/refs/tags/v${pkgver}.tar.gz"
+    "python-av-16.0.0-ffmpeg-8.0-tests.patch"
+)
+b2sums=(
+    "5f2092c61ad2a6fb23a1ce3ff380e40fe045059c3a0d6b206d2ba38ce26c79453b0a071013b2cdab7e612d57f6d1f097f4c857fb548af1b4b5cf82818e7e1af0"
+    "a42d30506f255a584f7aa69f89e301a6ff3c1c09eeb1189e964a60566c0dc416b479ae3106bc880d12e4340fe4428ac94f294b75c6ddc52e6a075dd6dc7c31dc"
+)
 
+prepare() {
+  cd "${srcdir}"/${_upstream_name}-${pkgver}
+  patch --forward --strip=1 --input="${srcdir}/python-av-16.0.0-ffmpeg-8.0-tests.patch"
+}
 
 build() {
   cd "${srcdir}"/${_upstream_name}-${pkgver}
