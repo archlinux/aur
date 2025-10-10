@@ -1,0 +1,2 @@
+# Create persistent runtime directory for agentgateway
+d /var/lib/agentgateway 0750 agentgateway agentgateway -

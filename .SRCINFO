@@ -1,0 +1,23 @@
+pkgbase = agentgateway-bin
+	pkgdesc = Next Generation Agentic Proxy for AI Agents and MCP servers
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/agentgateway/agentgateway
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = agentgateway
+	conflicts = agentgateway
+	replaces = agentgateway
+	source = agentgateway.service
+	source = agentgateway.sysusers
+	source = agentgateway.tmpfiles
+	sha256sums = 391dad8863490fce1a82a71736fde9cf998c8a6e926516c8487b41cf3819d47e
+	sha256sums = 27f129b0434a4bb00a276f9c391dab3280cf9c657fefd1b358aded52c7937afb
+	sha256sums = 7f8a58eb515951cb9499e1201280b34d65d8137f3f98e0d2f1de838a80713961
+	source_x86_64 = https://github.com/agentgateway/agentgateway/releases/download/v0.10.2/agentgateway-linux-amd64
+	sha256sums_x86_64 = f7ed99f71a977bcca39f13e6fee5de8431d691b295aa660af866cdd487954357
+	source_aarch64 = https://github.com/agentgateway/agentgateway/releases/download/v0.10.2/agentgateway-linux-arm64
+	sha256sums_aarch64 = 6a4cb96f95a5a9b5a30d74ce19e79e06ad870e043dca804fa07e3794a0c5e623
+
+pkgname = agentgateway-bin

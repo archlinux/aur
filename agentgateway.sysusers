@@ -1,0 +1,2 @@
+# Create agentgateway system user
+u agentgateway - "AgentGateway daemon user" "/var/lib/agentgateway"

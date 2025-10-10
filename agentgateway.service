@@ -1,0 +1,26 @@
+[Unit]
+Description=AgentGateway Service
+Documentation=https://github.com/agentgateway/agentgateway
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=agentgateway
+Group=agentgateway
+ExecStart=/usr/bin/agentgateway
+WorkingDirectory=/var/lib/agentgateway
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+# Security options
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/agentgateway /tmp
+
+[Install]
+WantedBy=multi-user.target
