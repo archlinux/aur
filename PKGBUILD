@@ -2,7 +2,7 @@
 
 pkgname=linyaps-web-store-installer-git
 _tagname=1.6.8
-pkgver=1.6.8.r1.e9e2e7e
+pkgver=1.6.8.r2.9f0c738
 pkgrel=1
 pkgdesc='玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store.'
 arch=($CARCH)
@@ -63,6 +63,7 @@ build() {
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev \
     -B build \

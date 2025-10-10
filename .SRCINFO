@@ -1,6 +1,6 @@
 pkgbase = linyaps-web-store-installer-git
 	pkgdesc = 玲珑（Linglong）linyaps-web-store-installer is a package installer for the Linyaps Web store.
-	pkgver = 1.6.8.r1.e9e2e7e
+	pkgver = 1.6.8.r2.9f0c738
 	pkgrel = 1
 	url = https://github.com/OpenAtom-Linyaps/linyaps-web-store-installer
 	arch = x86_64
