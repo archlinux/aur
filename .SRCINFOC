@@ -1,0 +1,13 @@
+pkgbase = nodejs-mpris-service
+	pkgdesc = Node.js implementation for the MPRIS D-Bus Interface (library)
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/dbusjs/mpris-service
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/mpris-service/-/mpris-service-2.1.2.tgz
+	sha256sums = SKIP
+
+pkgname = nodejs-mpris-service
