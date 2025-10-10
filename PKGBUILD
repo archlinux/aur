@@ -6,8 +6,8 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.1.8.r0.g2008977
-pkgrel=2
+pkgver=0.1.10.r4.g3904d6f
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -47,12 +47,13 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o dms ./cmd/dms
+	go build -tags distro_binary -o dms ./cmd/dms
 }
 
 package_dms-shell-git() {
 	optdepends+=('dms-shell-hyprland: Hyprland specific dependencies')
 	optdepends+=('dms-shell-niri: Niri specific dependencies')
+        optdepends+=('greetd-dms-greeter: DMS Greeter')
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkg2/dms"
 	install -dm0755 "$pkgdir/etc/xdg/quickshell/dms"
 	cp -r "$_pkg1"/* "$pkgdir/etc/xdg/quickshell/dms/"

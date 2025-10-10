@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.1.8.r0.g2008977
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -39,6 +39,7 @@ pkgname = dms-shell-git
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
 	optdepends = dms-shell-hyprland: Hyprland specific dependencies
 	optdepends = dms-shell-niri: Niri specific dependencies
+	optdepends = greetd-dms-greeter: DMS Greeter
 
 pkgname = dms-shell-hyprland-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (for Hyprland)
