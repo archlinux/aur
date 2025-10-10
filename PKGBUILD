@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='dsr'
-pkgver=1.14.2
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Video compression tool"
 arch=('x86_64')
