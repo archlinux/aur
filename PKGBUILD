@@ -1,59 +1,63 @@
-# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
-# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
+# Maintainer: aarto <aarto@aur.archlinux.org>
+# Contributor: Brad Erhart <tocusso underscore malty at aleeas dot com>
+# Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
-pkgname=solana-bin
-_pkgname="${pkgname%-bin}"
-pkgver=1.14.18
+_pkgname=solana
+pkgname="$_pkgname-bin"
+pkgver=2.3.11
 pkgrel=1
-pkgdesc='Solana CLI tools'
-arch=('x86_64')
-url='https://solana.com'
-license=('Apache')
-depends=(
-  'openssl'
-  'systemd-libs'
-)
-optdepends=('bash-completion: for tab completion')
-provides=("$_pkgname")
+pkgdesc='A fast, secure, and censorship resistant blockchain.'
+arch=(x86_64)
+url='https://www.solana.com'
+license=(Apache-2.0)
+depends=(bash bzip2 cargo gcc-libs glibc systemd-libs)
+provides=("$_pkgname" spl-token)
 conflicts=("$_pkgname")
 options=(!strip)
 source=(
-  "$_pkgname-$pkgver.tar.bz2::https://github.com/$_pkgname-labs/$_pkgname/releases/download/v$pkgver/$_pkgname-release-x86_64-unknown-linux-gnu.tar.bz2"
+  "$_pkgname-$pkgver.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v$pkgver/solana-release-x86_64-unknown-linux-gnu.tar.bz2"
   "$_pkgname.sysusers"
   "$_pkgname.tmpfiles"
-  #"$_pkgname-sys-tuner.service"
-  #"$_pkgname-test.service"
 )
-sha256sums=('d49cf4e98bbb00ce521530247593d4b8cabc7b933197786f41b784db98b92e1f'
-            '3e893948c70e514ee369253fe37cf1d7cb3f99d350656f3c9a777ea87f895ca6'
-            '4a5a6060c734f0c85d4e13e5124ee30f6612a6a812642d043e0bff18790776f5')
+sha256sums=('3127d066a6b9e3e5e5558a2d34112434a60d0410800d94e6bb12714315dc5f26'
+            'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
+            'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b')
+
+_BINS=(
+  agave-install
+  agave-install-init
+  agave-validator
+  agave-watchtower
+  cargo-build-sbf
+  cargo-test-sbf
+  rbpf-cli
+  solana
+  solana-faucet
+  solana-genesis
+  solana-gossip
+  solana-keygen
+  solana-log-analyzer
+  solana-net-shaper
+  solana-stake-accounts
+  solana-test-validator
+  solana-tokens
+  # SPL Token bin
+  spl-token
+  # DCOU bins
+  agave-ledger-tool
+  solana-bench-tps
+  solana-dos
+)
 
 package() {
-  mkdir --parents \
-    "$pkgdir/etc/profile.d" \
-    "$pkgdir/opt" \
-    "$pkgdir/usr/bin"
-  mv "$_pkgname-release" "$pkgdir/opt"
-  echo -e "# Set path to Solana directory\n\nappend_path '/opt/solana-release/bin'\n\nexport PATH" > "$pkgdir/etc/profile.d/$_pkgname.sh"
-  echo -e "# Set path to Solana directory\n\nsetenv PATH \${PATH}:/opt/solana-release/bin" > "$pkgdir/etc/profile.d/$_pkgname.csh"
-  for FILE in "$pkgdir/opt/solana-release/bin"/*; do
-    if [ ! -d "$FILE" ]; then
-      ln --symbolic --target-directory "$pkgdir/usr/bin" "${FILE#$pkgdir}"
-    fi
+  cd "$srcdir/solana-release"
+  for bin in "${_BINS[@]}"; do
+    install -Dm755 "bin/$bin" -t "$pkgdir/usr/bin"
   done
-  install \
-    -D \
-    --mode 644 \
-      "$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-  install \
-    -D \
-    --mode 644 \
-      "$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
-  "$pkgdir/opt/solana-release/bin/$_pkgname" completion --shell bash | install -D --mode 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  "$pkgdir/opt/solana-release/bin/$_pkgname" completion --shell zsh | install -D --mode 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
-  install -m 755 -d "$pkgdir/opt/$_pkgname-release/bin/sdk/bpf/dependencies" # adds dependency directory to allow installing bpf-tools and criterion unit test framework without root
-  #install -Dm 644 "$_pkgname"-*.service -t "$pkgdir/usr/lib/systemd/system"
+  install -dm755 "$pkgdir/usr/lib/$_pkgname/platform-tools-sdk"
+  cp -a bin/platform-tools-sdk/sbf "$pkgdir/usr/lib/$_pkgname/platform-tools-sdk"
+
+  install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
-
-# vim: ts=2 sw=2 et:

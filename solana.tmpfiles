@@ -1,1 +1,1 @@
-d /var/lib/solana 0770 solana solana - -
+d	/usr/lib/solana/sdk/sbf/dependencies	0775	root	solana	-  -

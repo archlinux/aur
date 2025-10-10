@@ -1,4 +1,4 @@
-solana*.tar.???
-solana-*.service
+*.tar.bz2
+*.zst
 src
 pkg
