@@ -6,7 +6,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.1.8.r3.gabe5515
+pkgver=0.1.8.r0.g2008977
 pkgrel=1
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=(x86_64 aarch64)
@@ -52,8 +52,8 @@ build() {
 
 package_dms-shell-git() {
 	depends+=(dms-shell-compositor-git)
-	optdepneds+=('dms-shell-hyprland: Hyprland specific dependencies')
-	optdepneds+=('dms-shell-niri: Niri specific dependencies')
+	optdepends+=('dms-shell-hyprland: Hyprland specific dependencies')
+	optdepends+=('dms-shell-niri: Niri specific dependencies')
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkg2/dms"
 	install -dm0755 "$pkgdir/etc/xdg/quickshell/dms"
 	cp -r "$_pkg1"/* "$pkgdir/etc/xdg/quickshell/dms/"
