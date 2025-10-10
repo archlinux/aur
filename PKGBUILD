@@ -21,14 +21,13 @@
 # meta-package so that it would render *any* text at all.
 
 pkgname=seihou-shuusou-gyoku
-pkgver=P0310
-pkgrel=3
+pkgver=P0326
+pkgrel=1
 pkgdesc='First game of the Seihou project; ReC98 source port, engine only'
 arch=('x86_64' 'i686')
 url='https://github.com/nmlgc/ssg'
 license=('MIT')
 makedepends=(
-	'clang>=18.1.8'
 	'git'
 	'jq'
 	'pkg-config'
@@ -39,7 +38,6 @@ depends=(
 	'fontconfig'
 	'hicolor-icon-theme'
 	'libblake3'
-	'libc++'
 	'libvorbis'
 	'libwebp'
 	'pango'
@@ -50,7 +48,7 @@ optdepends=(
 	"ttf-ipa-mona: Free Japanese bitmap font, metric-compatible with the original game's MS Gothic"
 	"ttf-ms-win11-auto-japanese: Extracts MS Gothic from a Windows 11 ISO"
 )
-source=("git+https://github.com/nmlgc/ssg.git#tag=$pkgver-2")
+source=("git+https://github.com/nmlgc/ssg.git#tag=P0326")
 b2sums=('SKIP')
 _skel=/usr/share/$pkgname/skel
 
@@ -71,7 +69,7 @@ build() {
 	# `-Wp,-D_FORTIFY_SOURCE=3` currently clashes with the std.compat module:
 	#
 	# 	https://github.com/llvm/llvm-project/issues/121709
-	CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}" LFLAGS=$LDFLAGS ./build_linux.sh sdl3 "bin/GIAN07"
+	CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}" LFLAGS=$LDFLAGS ./build_linux.sh "bin/GIAN07"
 }
 
 package() {

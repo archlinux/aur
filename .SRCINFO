@@ -1,12 +1,11 @@
 pkgbase = seihou-shuusou-gyoku
 	pkgdesc = First game of the Seihou project; ReC98 source port, engine only
-	pkgver = P0310
-	pkgrel = 3
+	pkgver = P0326
+	pkgrel = 1
 	url = https://github.com/nmlgc/ssg
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = clang>=18.1.8
 	makedepends = git
 	makedepends = jq
 	makedepends = pkg-config
@@ -15,7 +14,6 @@ pkgbase = seihou-shuusou-gyoku
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = libblake3
-	depends = libc++
 	depends = libvorbis
 	depends = libwebp
 	depends = pango
@@ -23,7 +21,7 @@ pkgbase = seihou-shuusou-gyoku
 	depends = ttf-font
 	optdepends = ttf-ipa-mona: Free Japanese bitmap font, metric-compatible with the original game's MS Gothic
 	optdepends = ttf-ms-win11-auto-japanese: Extracts MS Gothic from a Windows 11 ISO
-	source = git+https://github.com/nmlgc/ssg.git#tag=P0310-2
+	source = git+https://github.com/nmlgc/ssg.git#tag=P0326
 	b2sums = SKIP
 
 pkgname = seihou-shuusou-gyoku
