@@ -1,14 +1,23 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=libopenshot-audio-git
-pkgname=('libopenshot-audio-git' 'libopenshot-audio-docs-git')
-pkgver=0.3.2.r6.g08c2cdd
+pkgname=(
+    'libopenshot-audio-git'
+    'libopenshot-audio-docs-git')
+pkgver=0.4.0.r12.g5bd5f2d
 pkgrel=1
 pkgdesc='A high-quality audio editing and playback library used by libopenshot (git version)'
 arch=('x86_64')
 url='https://www.openshot.org/'
-license=('LGPL3')
-makedepends=('git' 'cmake' 'doxygen' 'alsa-lib' 'zlib' 'freetype2' 'libx11')
+license=('GPL-3.0-or-later')
+makedepends=(
+    'alsa-lib'
+    'cmake'
+    'doxygen'
+    'freetype2'
+    'git'
+    'libx11'
+    'zlib')
 source=('git+https://github.com/OpenShot/libopenshot-audio.git')
 sha256sums=('SKIP')
 
@@ -26,7 +35,11 @@ build() {
 }
 
 package_libopenshot-audio-git() {
-    depends=('alsa-lib' 'gcc-libs' 'glibc' 'zlib')
+    depends=(
+        'alsa-lib'
+        'gcc-libs'
+        'glibc'
+        'zlib')
     provides=('libopenshot-audio' 'libopenshot-audio.so')
     conflicts=('libopenshot-audio')
     options=('!emptydirs')
