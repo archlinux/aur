@@ -9,7 +9,7 @@ pkgbase = perl-string-license
 	checkdepends = perl-regexp-pattern-license>=3.9.0
 	checkdepends = perl-software-license>=0.104006
 	checkdepends = perl-yaml-libyaml
-	checkdepends = perl-test2-suite>=0.000060
+	checkdepends = perl-simple>=1.302200
 	checkdepends = perl-test-without-module
 	makedepends = perl-extutils-makemaker>=6.17
 	depends = perl-array-intspan

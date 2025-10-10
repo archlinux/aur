@@ -37,7 +37,7 @@ checkdepends=(
   'perl-yaml-libyaml' # "YAML::XS"
 
   ## test::requires
-  'perl-test2-suite>=0.000060' # "Test2::V0"
+  'perl-simple>=1.302200' # "Test2::V0"
   'perl-test-without-module'
 )
 options=('!emptydirs' 'purge')
