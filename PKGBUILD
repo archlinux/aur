@@ -1,26 +1,27 @@
 # Maintainer: Dhanushka Jayagoda <dhanushka2001 [at] gmail [dot] com>
+
 pkgname=citeorder
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Simple command-line tool to reorder footnotes in Markdown files"
 arch=('x86_64')
 url="https://github.com/dhanushka2001/citeorder"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0afcb3f7e63f159f75b299485353ff839bf8c35e933d6e58c4fc01f6347aeb15')
+sha256sums=('4375bba20e0fd4a5e33a84b67728c64561ff654ce2905175202e1e03fe5e779c')
 
 build() {
     cd "$srcdir"
 
-    # create temporary build folder
     mkdir build
     cp "$pkgname-$pkgver/citeorder.c" build/
     cp "$pkgname-$pkgver/README.md" build/
     cp "$pkgname-$pkgver/LICENSE" build/
-    cp "$srcdir/citeorder.1" build/       # man page from local AUR folder
+    cp "$pkgname-$pkgver/citeorder.1" build/
 
     cd build
     cc -O2 -o citeorder citeorder.c
+    strip citeorder
 }
 
 package() {
