@@ -1,6 +1,6 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 pkgname=tosu-overlay
-pkgver=v1.0.1
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc="Overlay for osu! Powered by Tosu, GTK and Webkit"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}"
-	make BUILD_PROFILE=RELEASE
+	make BUILD_PROFILE=RELEASE GTK_VERSION=3
 }
 
 package() {
