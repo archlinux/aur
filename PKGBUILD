@@ -17,7 +17,6 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 package() {
     # Merge all components into package directory
     bsdtar -xvf "${srcdir}/pgadmin4-server-9.8-x86_64.pkg.tar.zst" -C "${pkgdir}"
-    ls sdlfskjflkjfls
     bsdtar -xvf "${srcdir}/pgadmin4-desktop-9.8-x86_64.pkg.tar.zst" -C "${pkgdir}"
     bsdtar -xvf "${srcdir}/pgadmin4-web-9.8-x86_64.pkg.tar.zst" -C "${pkgdir}"
 
