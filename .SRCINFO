@@ -1,0 +1,24 @@
+pkgbase = massivethreads-bin
+	pkgdesc = A lightweight many-to-many threading runtime (binary from Fedora 43)
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://massivethreads.github.io/
+	arch = x86_64
+	license = BSD
+	provides = massivethreads=1.02
+	conflicts = massivethreads
+	options = !strip
+	source = https://github.com/smlsharp/repos/raw/main/fedora/rawhide/x86_64/Packages/m/massivethreads-1.02-0.fc43.x86_64.rpm
+	source = https://github.com/smlsharp/repos/raw/main/fedora/rawhide/x86_64/Packages/m/massivethreads-devel-1.02-0.fc43.x86_64.rpm
+	source = https://github.com/smlsharp/repos/raw/main/fedora/rawhide/x86_64/Packages/m/massivethreads-dr-1.02-0.fc43.x86_64.rpm
+	source = https://github.com/smlsharp/repos/raw/main/fedora/rawhide/x86_64/Packages/m/massivethreads-ld-1.02-0.fc43.x86_64.rpm
+	source = https://github.com/smlsharp/repos/raw/main/fedora/rawhide/x86_64/Packages/m/massivethreads-dl-1.02-0.fc43.x86_64.rpm
+	source = https://github.com/smlsharp/repos/raw/main/fedora/rawhide/x86_64/Packages/m/massivethreads-doc-1.02-0.fc43.noarch.rpm
+	sha256sums = 7dc9e5cd03f6431f11b2182bee1ec1fdbdd2ef1ffabcb18af9283b10e42e1628
+	sha256sums = 2b6c2782b15a15c98784efe7fa432f7086ce38d211c567c8ed55b80c14871e71
+	sha256sums = b40bfeff6060c01dc511185e31bcbcb97b9f2bdf622b4efb85ae136d868fd2e1
+	sha256sums = f83fb46b16f9fc572298058b41c5d96616a38e14d37792d4a20a0993c04bbcc4
+	sha256sums = 4a56a2a93709b6c5c7e175107ca54743cadd503c27ac4887346d3feac780edc6
+	sha256sums = 6450e21321d8eada08ae20b26fba08ff4a6d8939ab04ce249e22ba2323c2196a
+
+pkgname = massivethreads-bin
