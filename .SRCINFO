@@ -11,11 +11,11 @@ pkgbase = noctalia-shell
 	depends = gpu-screen-recorder
 	depends = brightnessctl
 	depends = ddcutil
-	depends = power-profiles-daemon
 	optdepends = cliphist: For clipboard history support
 	optdepends = matugen-bin: Material You color scheme generation
 	optdepends = cava: Audio visualizer component
 	optdepends = wlsunset: For supporting NightLight
+	optdepends = power-profiles-daemon: For power profile management
 	conflicts = noctalia-shell-git
 	source = git+https://github.com/noctalia-dev/noctalia-shell.git#tag=v2.16.1
 	sha256sums = 29d2f678aef52e8181c2ded529bfc0aca9864ac5d6b2719deeefc123d2e0af9a
