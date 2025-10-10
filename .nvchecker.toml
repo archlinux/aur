@@ -1,0 +1,5 @@
+["jql-bin"]
+source = "github"
+github = "yamafaktory/jql"
+use_latest_release = true
+prefix = "jql-v"
