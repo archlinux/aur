@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Cubyz
+Comment=Open source voxel sandbox game
+Icon=cubyz
+Exec=/usr/bin/cubyz
+Path=/opt/cubyz
+NoDisplay=false
+Terminal=false
+StartupNotify=false
