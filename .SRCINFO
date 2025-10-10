@@ -1,22 +1,44 @@
 pkgbase = grpc-gateway-git
 	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec
-	pkgver = 2.26.3.r19.g0bd409a
+	pkgver = 2.27.3.r31.gabd001a
 	pkgrel = 1
 	url = https://grpc-ecosystem.github.io/grpc-gateway/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = go
 	makedepends = git
-	depends = glibc
-	depends = protobuf
-	depends = protoc-gen-go
-	depends = protoc-gen-go-grpc
-	provides = grpc-gateway=2.26.3
-	provides = protoc-gen-grpc-gateway=2.26.3
-	provides = protoc-gen-openapiv2=2.26.3
-	conflicts = grpc-gateway
+	makedepends = go
 	source = grpc-gateway::git+https://github.com/grpc-ecosystem/grpc-gateway.git
 	sha256sums = SKIP
 
 pkgname = grpc-gateway-git
+	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (meta)
+	arch = any
+	depends = protoc-gen-grpc-gateway-git=2.27.3.r31.gabd001a
+	depends = protoc-gen-openapiv2-git=2.27.3.r31.gabd001a
+	provides = grpc-gateway=2.27.3
+	conflicts = grpc-gateway
+
+pkgname = grpc-gateway-common-git
+	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec (common files)
+	arch = any
+	provides = grpc-gateway-common=2.27.3
+	conflicts = grpc-gateway-common
+
+pkgname = protoc-gen-grpc-gateway-git
+	depends = grpc-gateway-common-git=2.27.3.r31.gabd001a
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = protoc-gen-grpc-gateway=2.27.3
+	conflicts = protoc-gen-grpc-gateway
+
+pkgname = protoc-gen-openapiv2-git
+	depends = grpc-gateway-common-git=2.27.3.r31.gabd001a
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = protoc-gen-openapiv2=2.27.3
+	conflicts = protoc-gen-openapiv2
