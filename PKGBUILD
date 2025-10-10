@@ -1,20 +1,28 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_name=("protoc-gen-grpc-gateway" "protoc-gen-openapiv2")
-pkgname="grpc-gateway"
-pkgver=2.27.2
+_binname=(
+  "protoc-gen-grpc-gateway"
+  "protoc-gen-openapiv2"
+)
+pkgbase="grpc-gateway"
+pkgname=(
+  "${pkgbase}"
+  "${pkgbase}-common"
+  "${_binname[@]}"
+)
+pkgver=2.27.3
 pkgrel=1
 pkgdesc="gRPC to JSON proxy generator following the gRPC HTTP spec"
 arch=('aarch64' 'x86_64')
 url="https://grpc-ecosystem.github.io/grpc-gateway/"
 _url="https://github.com/grpc-ecosystem/${pkgname}"
 license=('BSD-3-Clause')
-depends=('glibc' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc')
-makedepends=('go')
-provides=("${_name[@]}")
+makedepends=(
+  'go'
+)
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('510990df237b7adb934383c21e351003012d54ee34b84b10a2b26a359a0a1ba8')
+sha256sums=('9717bae2d2f783d73f165d57a1f70327abf21629198527b2be09efe43f5ba167')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -36,8 +44,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
-  for _binary in "${_name[@]}"; do
-    go build -v -o ./"build/${_binary}" ./"${_binary}"
+  for _name in "${_binname[@]}"; do
+    go build -v -o ./"build/${_name}" ./"${_name}"
   done
 }
 
@@ -46,12 +54,35 @@ check() {
   go test ./...
 }
 
-package() {
-  cd "${srcdir}/${_pkgsrc}"
-  for _binary in "${_name[@]}"; do
-    install -vDm755 "build/${_binary}" "${pkgdir}/usr/bin/${_binary}"
-  done
-
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE"    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package_grpc-gateway() {
+  pkgdesc+=" (meta)"
+  arch=('any')
+  depends=(
+    "${_binname[@]/%/"=${pkgver}"}"
+  )
 }
+
+package_grpc-gateway-common() {
+  pkgdesc+=" (common files)"
+  arch=('any')
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+}
+
+for _name in "${_binname[@]}"; do
+  eval "
+package_${_name}() {
+  depends+=(
+    '${pkgbase}-common=${pkgver}'
+    'glibc'
+    'protobuf'
+    'protoc-gen-go'
+    'protoc-gen-go-grpc'
+  )
+  
+  cd \"\${srcdir}/${_pkgsrc}\"
+  install -vDm755 'build/${_name}' \"\${pkgdir}/usr/bin/${_name}\"
+}"
+done
