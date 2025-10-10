@@ -7,7 +7,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20251003.15016
+pkgver=20251009.15035
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -56,6 +56,7 @@ build() {
 
   ./configure --prefix=/usr --with-guile=/usr/bin/guile-config1.8 \
               CC=gcc CXX=g++ QMAKE=/usr/bin/qmake6 
+  make clean
   make -j8
 }
 
