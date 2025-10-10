@@ -1,7 +1,7 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=ggc
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 arch=('x86_64' 'arm64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('ggc')
 conflicts=('ggc-bin' 'ggc-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bmf-san/ggc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3cf10e9d009b008f0730f72583d291b5b6a9c3672de018065b828266aeb86758')
+sha256sums=('ab7bb474e99cd108fbade595be43375da4afad52c74b3d53ae58d1340cc3d7a4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
