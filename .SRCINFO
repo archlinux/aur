@@ -1,7 +1,7 @@
 pkgbase = kripton-authenticator
 	pkgdesc = A simple terminal-based TOTP authenticator written in Rust
-	pkgver = 0.5.0
-	pkgrel = 6
+	pkgver = 0.6.0
+	pkgrel = 7
 	epoch = 1
 	url = https://github.com/clauderarch/kripton-authenticator.git
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kripton-authenticator
 	makedepends = rust
 	makedepends = git
 	depends = glibc
-	source = https://github.com/clauderarch/kripton-authenticator/archive/74adadc6e90a47a76891afac24e7a10277ed8986.tar.gz
+	source = https://github.com/clauderarch/kripton-authenticator/archive/18efb3ef58bc7f213842b24a427c3d3d0fda1847.tar.gz
 	sha256sums = SKIP
 
 pkgname = kripton-authenticator
