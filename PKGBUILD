@@ -3,7 +3,7 @@ pkgname="sddm-silent-theme-git"
 _upstream_name="SilentSDDM"
 pkgdesc="Highly customizable SDDM theme (git version)"
 pkgver=r20250626.gbbe3505
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('sddm' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'redhat-fonts')
 makedepends=('git')
@@ -31,4 +31,5 @@ package() {
     cp -r ./* "$pkgdir/usr/share/sddm/themes/silent"
     find "$pkgdir/usr/share/sddm/themes/silent" -type d -exec chmod 755 {} +
     find "$pkgdir/usr/share/sddm/themes/silent" -type f -exec chmod 644 {} +
+    chmod +x "$pkgdir/usr/share/sddm/themes/silent"*.sh
 }
