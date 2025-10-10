@@ -1,0 +1,5 @@
+["shai-bin"]
+source = "github"
+github = "ovh/shai"
+use_latest_release = true
+prefix = "v"
