@@ -13,6 +13,7 @@ optdepends=('hyprland: required for intended use')
 makedepends=('git' 'gcc')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+install=fw12rotate-git.install
 
 # --------------------------------------------------------------------
 # Generate a version string based on the git commit count / hash

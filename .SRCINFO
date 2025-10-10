@@ -3,6 +3,7 @@ pkgbase = fw12rotate-git
 	pkgver = r17.ba2cdd7
 	pkgrel = 2
 	url = https://github.com/2disbetter/FW12Rotate
+	install = fw12rotate-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
