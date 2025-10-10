@@ -9,10 +9,6 @@ ${BOLD}NODE CONFIGURATION FILES${NORMAL}
 
     ${BOLD}cellframe-node-config -i /opt/cellframe-node/share/default.setup${NORMAL}
 
-    For enabling diagtool (which is used by Cellframe Wallet), run (as root):
-
-    ${BOLD}systemctl enable --now cellframe-diagtool.service${NORMAL}
-
 ${BOLD}STARTING CELLFRAME NODE${NORMAL}
 
     Use the provided systemd unit file and launch node with cellframe-node-config tool (as root):
