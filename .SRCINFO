@@ -1,12 +1,12 @@
 pkgbase = valentina-studio
 	pkgdesc = Create, administer, query and explore DuckDB, ValentinaDB, MongoDB, MySQL, MariaDB, PostgreSQL, MS SQL Server & SQLite databases for FREE.
-	pkgver = 15.4
+	pkgver = 16.0.1
 	pkgrel = 1
 	url = http://www.valentina-db.com
 	arch = x86_64
 	license = custom
 	options = !debug
-	source_x86_64 = valentina-studio-15.4-x86_64.rpm::http://valentina-db.com/download/prev_releases/15.4/lin_64/vstudio_x64_15_lin.rpm
-	sha256sums_x86_64 = 4979f4fba86f0820017bdfa4432bce522e365510a85e18ae826e607eb0618ae7
+	source_x86_64 = valentina-studio-16.0.1-x86_64.rpm::http://valentina-db.com/download/prev_releases/16.0.1/lin_64/vstudio_x64_16_lin.rpm
+	sha256sums_x86_64 = b050640f9d833849ba368b3147ae238fd0c24f58407a2f2db3fcb32471c7277a
 
 pkgname = valentina-studio
