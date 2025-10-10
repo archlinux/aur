@@ -6,7 +6,7 @@ pkgver=0.07
 pkgrel=2
 pkgdesc="Make 'class' syntax available in older Perl versions"
 arch=('any')
-url="https://metacpan.org/dist/Feature-Compat-Class"
+url='https://metacpan.org/dist/Feature-Compat-Class'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Feature-Compat-Class/source/Build.PL
 depends=(
