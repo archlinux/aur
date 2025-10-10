@@ -1,5 +1,5 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
-pkgname=tema
+pkgname=tema-git
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="Omarchy theming application"
