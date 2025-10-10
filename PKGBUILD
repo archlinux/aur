@@ -1,6 +1,6 @@
 pkgname=gzdoom-bin
 pkgver=4.14.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/gzdoom"
@@ -26,5 +26,5 @@ package() {
     
     cp -r "$srcdir/usr" "$pkgdir"
    #Libfix
-    ln -s /usr/lib/libvpx.so "$pkgdir/usr/lib/libvpx.so.9"
+    [ -e "/usr/lib/libvpx.so.9" ] || ln -s /usr/lib/libvpx.so "$pkgdir/usr/lib/libvpx.so.9"
 }

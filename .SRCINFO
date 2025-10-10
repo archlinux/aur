@@ -1,7 +1,7 @@
 pkgbase = gzdoom-bin
 	pkgdesc = Feature centric port for all Doom engine games
 	pkgver = 4.14.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/linuxbombay/gzdoom
 	arch = x86_64
 	arch = aarch64
