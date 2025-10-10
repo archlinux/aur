@@ -31,7 +31,7 @@ b2sums=('69675b5fb0a4586eb9418fcb07f699801cce18384c674fc2a27d48d49749e5a373d2144
 build() {
   cd "${srcdir}/Feature-Compat-Class-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
   perl Build.PL --installdirs=vendor --create_packlist=0
   ./Build
@@ -40,7 +40,7 @@ build() {
 check() {
   cd "${srcdir}/Feature-Compat-Class-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   ./Build test
 }
@@ -48,6 +48,6 @@ check() {
 package() {
   cd "${srcdir}/Feature-Compat-Class-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   ./Build install --destdir="${pkgdir}"
 }
