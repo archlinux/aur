@@ -6,7 +6,7 @@ pkgver=0.20
 pkgrel=2
 pkgdesc='Test simple unix commands in Perl'
 arch=('any')
-url="https://metacpan.org/dist/Test2-Tools-Command"
+url='https://metacpan.org/dist/Test2-Tools-Command'
 license=('BSD-3-Clause')
 # See https://metacpan.org/dist/Test2-Tools-Command/source/Build.PL
 makedepends=(
@@ -33,7 +33,7 @@ b2sums=('790d27943feaa1f521fa8168766ec5758606b882240bf87c9fc37da00b5158b88ac6eea
 build() {
   cd "${srcdir}/Test2-Tools-Command-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
   perl Build.PL --installdirs=vendor --create_packlist=0
   ./Build
@@ -42,7 +42,7 @@ build() {
 check() {
   cd "${srcdir}/Test2-Tools-Command-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   ./Build test
 }
@@ -50,7 +50,7 @@ check() {
 package() {
   cd "${srcdir}/Test2-Tools-Command-${pkgver}"
 
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   ./Build install --destdir="${pkgdir}"
 
   # BSD licenses require the full text
