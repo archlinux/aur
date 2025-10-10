@@ -4,7 +4,7 @@
 
 pkgname=kdeconnect
 pkgver=25.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -42,7 +42,6 @@ depends=(dbus
          qt6-connectivity
          qt6-declarative
          qt6-multimedia
-         qt6-wayland
          solid
          wayland)
 makedepends=(extra-cmake-modules
