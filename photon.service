@@ -1,0 +1,37 @@
+[Unit]
+Description=Photon geocoder
+
+[Service]
+User=photon
+Group=photon
+WorkingDirectory=/var/lib/photon
+ExecStart=/usr/bin/photon -listen-ip 127.0.0.1
+Restart=on-failure
+RestartSec=5s
+Type=simple
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=false
+PrivateUsers=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/photon
+
+[Install]
+WantedBy=multi-user.target

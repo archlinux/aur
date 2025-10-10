@@ -1,0 +1,41 @@
+[Unit]
+Description=Photon geocoder update
+After=network.target
+
+[Service]
+# Override this with `systemctl edit photon-update` as needed
+Environment=PHOTON_GRAPHHOPPER_EXTRACT=de
+
+User=photon
+Group=photon
+Type=oneshot
+WorkingDirectory=/var/lib/photon
+ExecStartPre=+/usr/bin/systemctl stop photon
+ExecStart=/usr/bin/photon-update
+ExecPost=+/usr/bin/systemctl start photon
+Restart=no
+Type=simple
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+#SecureBits=
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=false
+PrivateUsers=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/photon

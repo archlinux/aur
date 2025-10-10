@@ -1,0 +1,32 @@
+pkgbase = photon-geocoder
+	pkgdesc = Open source geocoder for openstreetmap data
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/komoot/photon
+	install = photon.install
+	arch = any
+	license = Apache-2.0
+	makedepends = maven
+	makedepends = java-environment=21
+	makedepends = strip-nondeterminism
+	source = photon-geocoder-0.7.4.tar.gz::https://github.com/komoot/photon/archive/refs/tags/0.7.4.tar.gz
+	source = photon.sh
+	source = photon.service
+	source = photon.sysusers
+	source = photon.tmpfiles
+	source = photon.install
+	source = photon-update.sh
+	source = photon-update.service
+	source = photon-update.timer
+	sha256sums = 985d166c775d9ca5371231c919a9e037dd49658842cbab007a52b6750d04d76d
+	sha256sums = 716279215bc38dd5f5e57a254dbca4b5272a4c1dd56021aa98a346cf62977b3e
+	sha256sums = dd8a0d46f3a71104a2d1b55d5a01d5d9ef9a35556a7daa3a531e28f011c67598
+	sha256sums = d51830a965f3136ffac27d91aed0f5364b9cd1e999e4fb88c7a625b8c4951fa4
+	sha256sums = 35b32ae060d99dfe5ccb55a7e77bfd786f7f2e54b091f5c8712107bb33d3827a
+	sha256sums = f41ba18bbec31665fed92094489e76b4d2b73a3dd6eeff2c74ef6f2d2314e234
+	sha256sums = b1d3d5f2b9e24a1d340efbd35a46f54a560a0342fa4e2ddaa18fb60638821e5d
+	sha256sums = 255fde27640e7b3d76807d288c935b89fe299d0ba338885499580fb50a2daabe
+	sha256sums = cfcf9c38e2203f1c0a6595cf20ddf43e7539a80ddeccb21c36c1145af27d4928
+
+pkgname = photon-geocoder
+	depends = java-runtime>=11
