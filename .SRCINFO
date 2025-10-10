@@ -6,6 +6,6 @@ pkgbase = dinfo
 	arch = x86_64
 	license = GPL 3.0
 	source = https://github.com/SCSDC-co/DINFO/releases/download/v1.2.2.002/dinfo-linux-x64-self-contained.zip
-	sha256sums = 39627f063b9020806a0a10b1e069cfa654beb9ccc1e50ef6d70e3471c03e837
+	sha256sums = ec5a0cc31ba845ffd13b96e76d961ed2405a640d4f2985920a8cd99568ed95c
 
 pkgname = dinfo
