@@ -3,14 +3,14 @@
 
 pkgname='perl-astro-fits-cfitsio'
 pkgver='1.18'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Perl extension for using the cfitsio library"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl' 'glibc' 'cfitsio')
 makedepends=('perl-alien-cfitsio')
-checkdepends=('perl-test2-suite')
+checkdepends=('perl-test-simple>=1.302200')
 url='https://metacpan.org/dist/Astro-FITS-CFITSIO'
 source=("https://cpan.metacpan.org/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-${pkgver}.tar.gz")
 sha512sums=('25eeac3d50af1e8866967edf26ba0c7d4560e5a414775588efa7587ccef4756937a23e2f2370eaa8211b5626db583b732b9be7e6e54debe86e174ac978d35bb4')
