@@ -1,7 +1,7 @@
 post_install() {
     echo "==> Setting permissions on cache directory..."
     chown greeter:greeter /var/cache/dms-greeter
-    chmod 770 /var/cache/dms-greeter
+    chmod 750 /var/cache/dms-greeter
 
     cat << EOF
 
@@ -29,6 +29,6 @@ post_upgrade() {
     echo "==> Ensuring permissions on cache directory..."
     if [ -d /var/cache/dms-greeter ]; then
         chown greeter:greeter /var/cache/dms-greeter
-        chmod 770 /var/cache/dms-greeter
+        chmod 750 /var/cache/dms-greeter
     fi
 }
