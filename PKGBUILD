@@ -3,7 +3,7 @@
 pkgname=perl-pdl-transform-color
 _dist=PDL-Transform-Color
 pkgver=1.010
-pkgrel=2
+pkgrel=3
 pkgdesc='Useful color system conversions for PDL'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -15,7 +15,6 @@ sha256sums=('072168b3b896d6108a932db96a8b47701ebc344d2c24ed2304ea51df95810478'
 
 arch=(any)
 depends=(perl perl-pdl perl-pdl-graphics-colorspace)
-checkdepends=(perl-test-simple)
 options=('!emptydirs')
 
 prepare(){
