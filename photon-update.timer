@@ -2,7 +2,7 @@
 Description=Update photon data weekly
 
 [Timer]
-OnCalendar=@weekly
+OnCalendar=weekly
 Persistent=true
 
 [Install]

@@ -16,7 +16,7 @@ if ! [[ "$PHOTON_GRAPHHOPPER_EXTRACT" =~ ^([a-z]+[\-])?[a-z]{2,}$ ]]; then
     exit 2
 fi
 
-echo "Removing old ./photon_data"
+echo "Removing old $(pwd)/photon_data"
 rm -Rf "./photon_data"
 
 # Note: 'experimental' just referes to the OpenSearch extracts, which are recommended by photon
@@ -34,6 +34,6 @@ else
     extract_url="${extract_url}/${PHOTON_GRAPHHOPPER_EXTRACT}/photon-db-${PHOTON_GRAPHHOPPER_EXTRACT}-${photon_minor_version}OS-latest.tar.bz2"
 fi
 
-echo "Downloading '${extract_url}' to ./ …"
+echo "Downloading '${extract_url}' to '$(pwd)/photon_data' …"
 
 curl -s "$extract_url" | tar -xjf - -C ./
