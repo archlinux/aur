@@ -1,7 +1,7 @@
 # Maintainer: Husam Bilal <me@husam.dev>
 
 pkgname=clipman
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A simple clipboard manager for Wayland"
 url="https://github.com/chmouel/clipman"
@@ -10,7 +10,7 @@ makedepends=("go")
 provides=("clipman")
 license=("GPL3")
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
-md5sums=("aadecfcaef25f13e812f9858762dde0d")
+md5sums=("d0c9926fed9c8fceeb3ae0df110bd7ec")
 source=("https://github.com/chmouel/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
