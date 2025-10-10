@@ -1,0 +1,4 @@
+[perl-jenkins-api]
+source = "cpan"
+cpan = "Jenkins-API"
+prefix = "v"

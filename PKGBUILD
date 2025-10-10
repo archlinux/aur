@@ -1,43 +1,61 @@
+# Maintainer: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
-pkgname='perl-jenkins-api'
-pkgver='0.18'
-pkgrel='1'
-pkgdesc="A wrapper around the Jenkins API"
+pkgname=perl-jenkins-api
+pkgver=0.18
+pkgrel=1
+pkgdesc='A wrapper around the Jenkins API'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-file-sharedir' 'perl-json' 'perl-moo' 'perl-rest-client' 'perl-type-tiny')
-#makedepends=()
-checkdepends=('perl-test2-suite' 'perl-test2-tools-explain')
-url='https://metacpan.org/dist/Jenkins-API'
-source=('https://cpan.metacpan.org/authors/id/N/NE/NEWELLC/Jenkins-API-0.18.tar.gz')
-md5sums=('29dd2d9de5a4cee3aee16592b06db018')
-_distdir="Jenkins-API-0.18"
+url='https://metacpan.org/pod/Jenkins::API'
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+# See https://metacpan.org/dist/Jenkins-API/source/Makefile.PL
+makedepends=(
+  ## BUILD_REQUIRES
+  'perl-pod-coverage-trustpod'
+  'perl-test2-suite>=0.000082'
+  'perl-test2-tools-explain'
+  'perl-test-pod-coverage'
+
+  ## CONFIGURE_REQUIRES
+  'perl-extutils-makemaker'
+)
+depends=(
+  ## PREREQ_PM
+  'perl-file-sharedir'
+  'perl-json'
+  'perl-mime-base64'
+  'perl-moo'
+  'perl-rest-client'
+  'perl-type-tiny' # "Types::Standard"
+  'perl-uri'
+)
+checkdepends=(
+  ## TEST_REQUIRES
+  'perl-extutils-makemaker'
+  'perl-test2-tools-explain'
+)
+options=('!emptydirs' 'purge')
+source=("https://cpan.metacpan.org/authors/id/N/NE/NEWELLC/Jenkins-API-${pkgver}.tar.gz")
+b2sums=('5bce66540502f57167b038c178135dbb8a3bf11b206c46a8855cd37cdf74448e58db18369dafb0de668cefd224818441412fa2b9f8cbb2548f6bff75f6202a7a')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Jenkins-API-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true INSTALLDIRS=vendor
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Jenkins-API-${pkgver}"
+
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "${srcdir}/Jenkins-API-${pkgver}"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install DESTDIR="${pkgdir}"
 }
