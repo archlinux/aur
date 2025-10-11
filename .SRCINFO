@@ -1,7 +1,7 @@
 pkgbase = yoyo
 	pkgdesc = A simple local password manager written in C
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/johngitahi/yoyo
 	arch = x86_64
 	license = BSD-3
