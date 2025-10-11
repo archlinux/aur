@@ -1,0 +1,5 @@
+["chkbit-bin"]
+source = "github"
+github = "laktak/chkbit"
+use_latest_release = true
+prefix = "v"

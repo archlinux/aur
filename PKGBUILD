@@ -3,7 +3,7 @@
 _pkgauthor=laktak
 _pkgname=chkbit
 pkgname=${_pkgname}-bin
-pkgver=6.4.1
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Check your files for data corruption "
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,10 +19,10 @@ source_x86_64=("${_pkgname}_${pkgver}_x86_64.tar.gz::${url}/releases/download/v$
 source_arm64=("${_pkgname}_${pkgver}_arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz")
 source_riscv64=("${_pkgname}_${pkgver}_riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-riscv64.tar.gz")
 sha256sums=('2164c7b23ede004282e53a7cda37ce11de5d74dbd807199a411b34420645bd91'
-            'dcfe42f849f137cca59b4f943cf75c498de949551762d3c55be5be59bf81865c')
-sha256sums_x86_64=('9ca88a62f9e9ed4503eac10267b00eff1d54abdc0b2cba8c065d495c230bce1e')
-sha256sums_arm64=('8c080c7699c2007dd738dfaf8b445939b797c6909cca6eb60c377cfead461df2')
-sha256sums_riscv64=('0f98cd437209574ea8c6842a26a5fc3e6d287d118a5177fe4cb69e20c0fbb321')
+            'd508afe438067dcbd8d5c070fecdac57ff4d7472bf66a4ba7af121367ff82e1a')
+sha256sums_x86_64=('ea34382067c4ec4f65e2edca03f936f6c466219ff103ff76f89265214f1afb29')
+sha256sums_arm64=('0e7cdfcf006441709afad09ffca499a809eb933a4d71564959e0175e9df89c4a')
+sha256sums_riscv64=('951073b9b263e1ae250fae1f0982ef8ccc07e6d57ec20cf4d7789ceabef61e56')
 
 build() {
 	cd "${srcdir}/" || exit
