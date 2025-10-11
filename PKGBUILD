@@ -3,13 +3,17 @@
 pkgname=pv-migrate
 # renovate: datasource=github-releases depName=utkuozdemir/pv-migrate
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='kubectl plugin to easily migrate the contents of one Kubernetes PersistentVolumeClaim to another'
 arch=('x86_64')
 url=https://github.com/utkuozdemir/pv-migrate
 license=('Apache-2.0')
 depends=('glibc' 'kubectl')
 makedepends=('go' 'git')
+optdepends=(
+  'bash-completion: auto-completion for flux in Bash',
+  'zsh-completions: auto-completion for flux in ZSH'
+)
 provides=("kubectl-${pkgname}")
 groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
@@ -32,14 +36,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
   go build -v \
     -ldflags="${_x[*]/#/-X=main.} -linkmode external" \
     -o bin/ \
