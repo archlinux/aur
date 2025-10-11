@@ -1,6 +1,6 @@
 pkgbase = aether
 	pkgdesc = Omarchy theming application
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/bjarneo/aether
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = aether
 	depends = libsoup3
 	depends = python-pywal
 	optdepends = omarchy: Theme application backend
-	source = aether-2.2.2.tar.gz::https://github.com/bjarneo/aether/archive/v2.2.2.tar.gz
-	sha256sums = 454540e51764324cfeff26873ab9678fffd00f5b94ad6cc17dad615e969cfae5
+	source = aether-2.3.0.tar.gz::https://github.com/bjarneo/aether/archive/v2.3.0.tar.gz
+	sha256sums = cdbf5f5461c33900a7f9675991b9ab61c7fe0417c1d081552ded34591f940cd6
 
 pkgname = aether
