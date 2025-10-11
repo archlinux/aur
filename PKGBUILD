@@ -1,7 +1,7 @@
 # Maintainer: John Gitahi <opl.to/gth>
 pkgname=yoyo
-pkgver=0.0
-pkgrel=1
+pkgver=0.1
+pkgrel=2
 pkgdesc="A simple local password manager written in C"
 arch=('x86_64')
 url="https://github.com/johngitahi/yoyo"
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    clang -o yoyo yoyo.c common.c -ljansson -lsodium
+    clang -o yoyo -lsodium -ljansson yoyo.c vault.c clipboard.c gen.c
 }
 
 package() {
