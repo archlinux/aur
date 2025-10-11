@@ -10,7 +10,7 @@ _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
 pkgver='2509.r167.g8323c21e40'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(
 	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse'
-	'libudev.so' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'vulkan-headers'
+	'libudev.so' 'ninja' 'python' 'qt6-base>=6.10.0' 'qt6-svg>=6.10.0' 'vulkan-headers'
 )
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -43,6 +43,7 @@ source=(
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgbase-watcher::git+https://github.com/e-dant/watcher.git"
 	'glslang-minimum-version.diff'
+	'qt6-guiprivate.diff'
 	'cmake-mgba.diff'
 )
 b2sums=('SKIP'
@@ -54,6 +55,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '51c83bf74edbc1def40e6b4372036651f4d62c8a90c4edbeb1d572b9099ec4189f545dc1a0c3c4d993074a693d4f5e97c56f9cc78f2d7beacaa8f533b843e73f'
+        'f5dedda02ccc4deb81107c662e50f48a6d591de4beda8e455c940d3b1b39f6cd27c5b8bc83d284924cf09a492c043c6a990d7e8f1750f0a995b1580047c20e09'
         'd9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d')
 
 _sourcedirectory="$pkgbase"
@@ -83,6 +85,9 @@ prepare() {
 
 	# Patch minimum glslang version, as it's used as an exact match (ABI v16 is compatible, see https://github.com/dolphin-emu/dolphin/pull/13974/files/cdfb389509b560b4a70661571d12edcebfb77fdf#r2384216168)
 	patch --forward -p1 < "$srcdir/glslang-minimum-version.diff"
+
+	# Fix Qt 6.10 incompatibility
+	patch --forward -p1 < "$srcdir/qt6-guiprivate.diff"
 
 	# Patch cmake_minimum_required below 3.5.0
 	cd "$srcdir/$_sourcedirectory/Externals/mGBA/mgba/"
@@ -132,7 +137,7 @@ package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
 	depends+=(
 		'alsa-lib' 'hicolor-icon-theme' 'libevdev' 'libminiupnpc.so' 'libpulse'
-		'libudev.so' 'qt6-base' 'qt6-svg'
+		'libudev.so' 'qt6-base>=6.10.0' 'qt6-svg>=6.10.0'
 	)
 	provides=("$_mainpkgname")
 	conflicts=("$_mainpkgname")
@@ -162,7 +167,7 @@ package_dolphin-emu-nogui-git() {
 package_dolphin-emu-tool-git() {
 	pkgdesc="$pkgdesc - CLI-based utility for functions such as managing disc images$_pkgdescappend"
 	depends+=(
-		'alsa-lib' 'libevdev' 'libpulse' 'libudev.so' 'qt6-base'
+		'alsa-lib' 'libevdev' 'libpulse' 'libudev.so' 'qt6-base>=6.10.0'
 	)
 	provides=("$_toolpkgname")
 	conflicts=("$_toolpkgname")
