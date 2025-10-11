@@ -1,0 +1,21 @@
+pkgbase = dembones-bin
+	pkgdesc = An automated algorithm to extract the linear blend skinning (LBS) from a set of example poses
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/electronicarts/dem-bones
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gcc-libs
+	depends = glibc
+	depends = libxml2-legacy
+	depends = zlib
+	provides = dembones
+	conflicts = dembones
+	source = dembones-1.2.1-README.md::https://github.com/electronicarts/dem-bones/raw/refs/tags/v1.2.1/README.md
+	source = dembones-1.2.1-LICENSE.md::https://github.com/electronicarts/dem-bones/raw/refs/tags/v1.2.1/LICENSE.md
+	sha256sums = 7758db85285ac15664fabeb0756c906b12790b161d2c7dd34db21a871c01abb3
+	sha256sums = 8a65a1d8189b678b7da090ca257fa9aef0d6f4a00a2710005e0ac40c9634d9d8
+	source_x86_64 = dembones-1.2.1-x86_64::https://github.com/electronicarts/dem-bones/raw/refs/tags/v1.2.1/bin/Linux/DemBones
+	sha256sums_x86_64 = 27797f67f404ed8d454e547aa79b0a736198742d9897b3e802b0c46424767572
+
+pkgname = dembones-bin

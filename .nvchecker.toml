@@ -1,0 +1,4 @@
+[dembones-bin]
+source = "git"
+git = "https://github.com/electronicarts/dem-bones.git"
+prefix = "v"
