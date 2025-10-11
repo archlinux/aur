@@ -2,17 +2,17 @@
 # Contributor: Jagadeesh Kotra <jagadeesh at stdin dot top>
 
 pkgname=eovpn
-pkgver='1.31'
-pkgrel=3
+pkgver='1.33'
+pkgrel=1
 pkgdesc='Application to connect, manage and update OpenVPN configurations'
 arch=('x86_64')
 url='https://github.com/jkotra/eOVPN'
 license=('GPL3')
-depends=('gtk4' 'python' 'networkmanager' 'libsecret' 'libnotify' 'networkmanager-openvpn' 'python-gobject')
+depends=('gtk4' 'libadwaita' 'python' 'networkmanager' 'libsecret' 'libnotify' 'networkmanager-openvpn' 'python-gobject')
 optdepends=('openvpn3')
 makedepends=('gobject-introspection' 'meson' 'python-cffi')
 source=("https://github.com/jkotra/eOVPN/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0e55f5d179636ce64703233f9deedb105151f063a401ad46c2b6c3a0b2d2759c')
+sha256sums=('24d899d9e1f1364ee45392bec02fa82c6caab76e114d59337a18c0d9d73a9675')
 
 build() {
   if command -v openvpn3 > /dev/null; then
