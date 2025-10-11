@@ -1,6 +1,6 @@
 pkgbase = emojimart-bin
 	pkgdesc = Modern emoji picker popup for desktop (binary release)
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/vemonet/EmojiMart
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = emojimart-bin
 	optdepends = ydotool: automatically paste to your currently focused app (Wayland)
 	provides = emojimart
 	conflicts = emojimart
-	source = https://github.com/vemonet/EmojiMart/releases/download/v0.3.0/EmojiMart_0.3.0_amd64.deb
+	source = https://github.com/vemonet/EmojiMart/releases/download/v0.3.2/EmojiMart_0.3.2_amd64.deb
 	source = https://github.com/vemonet/EmojiMart/raw/v0.3.0/LICENSE.txt
-	sha256sums = 4cd9a87b9e1dde98b5b39cf41f2d157eb84a509720177d80ffc6fafce6df486e
+	sha256sums = 572a48c86a48ee8e56fc64202b5c9df98982429368eecb2cc3359bc3bddb4612
 	sha256sums = 9684d0ee41e202b6f39948837f049307287571c4413003509d9cdf7b635e6db9
 
 pkgname = emojimart-bin
