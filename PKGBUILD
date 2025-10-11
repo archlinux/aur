@@ -5,13 +5,16 @@ _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
 pkgver=2.2.1
-_pkgvername=v${pkgver}
 pkgrel=1
+_pkgvername=v${pkgver}
 pkgdesc='wayland application runner'
+
 arch=('x86_64')
 _barch=('x86_64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('GPL-3.0')
 
 provides=("${_pkgname}")
