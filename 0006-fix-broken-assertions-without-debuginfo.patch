@@ -1,0 +1,24 @@
+diff --git a/src/libslic3r/GCode.cpp b/src/libslic3r/GCode.cpp
+index 0745da0610..0a4cb7005b 100644
+--- a/src/libslic3r/GCode.cpp
++++ b/src/libslic3r/GCode.cpp
+@@ -7063,7 +7063,9 @@ std::string GCodeGenerator::_before_extrude(const ExtrusionPath &path, const std
+     // compensate retraction
+     if (m_delayed_layer_change.empty()) {
+         gcode += m_writer.unlift();//this->unretract();
++#ifdef _DEBUGINFO
+         assert(is_approx(m_writer.get_position().z(), m_layer->print_z, EPSILON) || m_loop_vase_mode);
++#endif
+     } else {
+         //check if an unlift happens
+         std::string unlift = m_writer.unlift();
+@@ -7621,7 +7623,9 @@ void GCodeGenerator::write_travel_to(std::string &gcode, Polyline& travel, std::
+         this->writer().set_lift(this->writer().get_position().z() - *m_new_z_target);
+         m_new_z_target.reset();
+     }
++#ifdef _DEBUGINFO
+     assert(is_approx(this->writer().get_unlifted_position().z(), m_layer->print_z, EPSILON) || comment == "Travel to a Wipe Tower" || m_loop_vase_mode);
++#endif
+ }
+ 
+ // generate a travel in xyz

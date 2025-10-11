@@ -1,6 +1,6 @@
 pkgbase = superslicer-prerelease
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.7.61.8
+	pkgver = 2.7.61.10
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
@@ -28,11 +28,11 @@ pkgbase = superslicer-prerelease
 	depends = slicer-udev
 	depends = wxwidgets-gtk3
 	optdepends = superslicer-profiles: Predefined printer profiles
-	provides = superslicer=1:2.7.61.8
+	provides = superslicer=1:2.7.61.10
 	conflicts = superslicer
 	conflicts = superslicer-git
 	options = !emptydirs
-	source = https://github.com/supermerill/SuperSlicer/archive/2.7.61.8.tar.gz
+	source = https://github.com/supermerill/SuperSlicer/archive/2.7.61.10.tar.gz
 	source = https://github.com/prusa3d/libbgcode/archive/6f43cb004ef3d3bda37dde49f6235e24d2717629.tar.gz
 	source = 0001-libbgcode-binarize-public-deps.patch
 	source = 0001-findwxwidgets.patch
@@ -40,7 +40,8 @@ pkgbase = superslicer-prerelease
 	source = 0003-openexr3.patch
 	source = 0004-cgal6.patch
 	source = 0005-boost-process-includes.patch
-	sha512sums = d7cd6a6f3b3ba552e8e5b89d031816adafa812348d5f609e247e67957d826133d4088615b9becc7151cc797f0f559dc0bb4655b00e4bbeffd278ef40bb322337
+	source = 0006-fix-broken-assertions-without-debuginfo.patch
+	sha512sums = f7a74145b2ca254b84db968b5e7984af36f2874a9188e05de7d638558e1ce305fddd3604a1b3a93942b6942dcfe8321b4d5ba1d387b8b9f769e724eaaf501259
 	sha512sums = 04cb7cb69d887e1fa5ced5c0219b0ee6cab81f09d1bc1226ebd26563e2ce60b85fb6e5aef11a36dffd3e00779849906fc5c19ad2cdd22d45360226912b6af31b
 	sha512sums = ecbe9bdec72a372dfdc25b32dee382a9937c544567fa2da42a30467ddff2594495bf244a773401f655930301a2debc94636a362383239fa08808d0e51bc687a4
 	sha512sums = 1b8561d0f148ce2c38b7211eb78facc6e0cc2b89481e7c7700353534c7946a7b885e517852597b3252c6c21de527736f406f27ab01833d0f275c64103a8111f7
@@ -48,5 +49,6 @@ pkgbase = superslicer-prerelease
 	sha512sums = d87f74ceee99c288b7df57c8d6927649d7af08077c89263bafa48babce74435c1d48a5e5d2904d8307cb15c99df20ac196f78fcd0c5f31b737de1897ccb15a14
 	sha512sums = 8b04e2679257d8ebec1170c2d912d2b193349de47f95b28a4eede49f4a8c35a247b46b6fc543dc3efd800203dcc707d2cc68a13dc7b8816a46b95024ff3f09a5
 	sha512sums = 5ad401ac4d819d0a32166995ea6f826d10e1d990e2504c60b8de665b293008ed776b6a6cb7c0eb0088096510d309a349f2612decdfd4722cb0e90fa86aa1b695
+	sha512sums = 83e21e1842bd6fdcf043f93cb27adb1a586fbab2b64bf86064db16e91843ff4a03f1454ecee32d373da7effe31b46f2e80b9560b6bbc73f2d9b444d96b861cec
 
 pkgname = superslicer-prerelease
