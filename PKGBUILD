@@ -1,8 +1,8 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-nerdy
-pkgver=0.0.8
-pkgrel=2
+pkgver=0.0.9
+pkgrel=1
 pkgdesc='Nerd font icon selector plugin for rofi'
 arch=('x86_64')
 url='https://github.com/rolv-apneseth/rofi-nerdy'
@@ -16,7 +16,7 @@ optdepends=(
     'xdotool: X11 - insert icon'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7432bdcefe060b767a189198603d119f6eff39833639eff6149598e4615ecca3246b23430f857dd06c95833a62a45110f9d9b77814901897cecd90fe092b6dfc')
+sha512sums=('2573ae613f2b416acb55ebef224d6f410b6fb7c67fc6d4a4ed544e38955a1e2edd5a67b0dd2c3fbe400bb39829c81fcc7a6fe71d8d960364e16d714486329083')
 options=(!debug !lto)
 
 prepare()
