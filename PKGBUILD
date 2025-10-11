@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.16.10.arch1
+pkgver=6.17.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -41,13 +41,12 @@ source=(
 
   # actual kernel patch series
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.14/asus-patch-series.patch"
-  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.16/0001-asus.patch"
+  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.17/0001-asus.patch"
   # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0007-workaround_hardware_decoding_amdgpu.patch
-  0008-amd-tablet-sfh.patch
   0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
   0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
   0011-amdgpu-adjust_plane_init_off_by_one.patch
@@ -58,19 +57,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('ab06bba8851e4b682e8834f6f90e56d32dcf98d8c62cd537676104cfd757a8f2'
+sha256sums=('a53dbe3f41491922a61f17c5cc551e88f544d5411aeb1c8c65c402795c4f4da0'
             'SKIP'
-            '2e84c65204d24e7ffaa2d145b0bf06ac3b5e5474f36fccdb42f59439f4245a0d'
+            'a54fc872d8de04688d59f4123132661c24804735afefdf95896621bb23974ef1'
             'SKIP'
-            '746810cf2462423b7f680c5eec9236f71399c02501a58bba8871fab70e693815'
+            'cc01bdc1a6897ccfb00d6aa73cbfa304905a674e3528814e480b3f9f3bc54028'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
-            'f9558e72d89f82545a09ab688335001e59b0df1df4f5b95b3308e45086aef9d8'
+            'c7337658d517e83b4af883a7cc6b96d854c07a5a54342acea1b912d34fd983cb'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
-            '35c94a5a2b47ed2ad2a27149e44373c6463dae64cc5652ddc798083a3767b636'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
             'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7')
