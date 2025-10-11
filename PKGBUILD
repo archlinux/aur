@@ -1,7 +1,7 @@
 # Maintainer:  gĩtahi<opl.to/gth>
 pkgname=twitter-cli
-pkgver=0.11.0
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="Tweet without going to twitter.com"
 arch=('x86_64')
 url="https://github.com/StanleyMasinde/twitter"
@@ -9,8 +9,8 @@ license=('MIT')
 provides=('twitter-cli')
 conflicts=('twitter-cli')
 depends=('glibc')
-source=("https://github.com/StanleyMasinde/twitter/releases/latest/download/twitter-linux-gnu.tar.gz")
-sha256sums=('e128093ee3aa327ea582e6c1d1fcff1d39c883ffa273bdb1f4128314f564eecd')
+source=("$url/releases/download/v$pkgver/twitter-linux-x86_64.tar.gz")
+sha256sums=('abff0488814620a977a50caa71a207396c016a4ad25f3fe7851c16de12bd9415')
 
 package() {
   cd "${srcdir}"
