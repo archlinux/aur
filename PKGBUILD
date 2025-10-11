@@ -3,7 +3,7 @@
 _npmname=unocss-language-server
 pkgname=unocss-language-server-bin
 _pkgname=unocss-language-server
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='A language server for unocss'
 arch=('any')
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('af7a71aa16ded81c463500a36c2eb9ba133c115abd681fbdb4e82212fcf9d93e')
+sha256sums=('d7ac4cd7fe949b614c8f88bc51adee3fbb68d8f8915f867ca039d4c279f6df6b')
 
 package() {
     cd "$srcdir"
