@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtpositioning-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0c87c980f704c17aadaf0bf8a03845dd0a60cc0313be24bd7b5b90685d5835b4')
+sha256sums=('ecbfbc90636be19d65c975716e26689558e030e841c4a01afb3bd425756a1ee1')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
