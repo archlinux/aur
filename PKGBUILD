@@ -66,7 +66,7 @@ package() {
   ln -vsf "/usr/lib/${_pkgname}/${_Name}" "${pkgdir}/usr/bin/${_pkgname}"
 
   find . -maxdepth 1 -type f \( -name '*lib*.so*' -o -name '*.dll*' \) -exec \
-    cp -vr --no-preserve=ownership "{}" "${pkgdir}/usr/lib/${_pkgname}" \;
+    cp -va --no-preserve=ownership "{}" "${pkgdir}/usr/lib/${_pkgname}" \;
 
   install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
