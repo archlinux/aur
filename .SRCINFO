@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 32.0.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 12
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -46,7 +46,6 @@ pkgbase = obs-studio-rc
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.10
 	depends = qt6-svg>=6.10
-	depends = qt6-wayland>=6.10
 	depends = rnnoise
 	depends = simde
 	depends = sndio
