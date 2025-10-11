@@ -1,0 +1,16 @@
+pkgbase = exir-git
+	pkgdesc = Generate a financial report in PDF from a CSV file.
+	pkgver = r19.9ee920f
+	pkgrel = 1
+	url = https://github.com/rafamadriz/exir
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go>=1.25
+	provides = exir
+	conflicts = exir
+	options = !debug
+	source = exir::git+https://github.com/rafamadriz/exir.git
+	sha256sums = SKIP
+
+pkgname = exir-git
