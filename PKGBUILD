@@ -2,7 +2,7 @@
 
 pkgbase=scrap_engine-git
 pkgname=python-scrap_engine-git
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 arch=(any)
 url="https://github.com/lxgr-linux/scrap_engine"
@@ -27,6 +27,7 @@ build() {
 
 package() {
   cd "${srcdir}/$pkgbase"
+  ls dist
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/scrap_engine/LICENSE"
 }
