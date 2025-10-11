@@ -1,11 +1,11 @@
 # Maintainer: Rafael Epplée <aur (at) rafa (dot) ee>
 pkgname=gonic
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='A lightweight music streaming server which implements the Subsonic API'
 arch=('x86_64' 'armv7h')
-depends=('gcc-libs' 'sqlite' 'taglib')
-makedepends=('go' 'zlib')
+depends=()
+makedepends=('go')
 optdepends=('ffmpeg: on-the-fly audio transcoding and caching' 'mpv: jukebox mode')
 url='https://github.com/sentriz/gonic'
 license=('GPL-3.0-only')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkg
         "$pkgname.service.patch"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('b1ce1c80ef9864e04e00d196e1ee710e'
+md5sums=('aaaa84fa3cd69bf40a858a53f8185ea3'
          'd6e8eda0411af60e613819ac957fcc56'
          'ff0d388a71398a4a9906ee068283f57e'
          '6ca6715be2cdd424846f7b37b98905f6'
@@ -28,10 +28,10 @@ prepare() {
 }
 
 build() {
-        export CGO_LDFLAGS="${LDFLAGS}"
         export GOFLAGS="-trimpath"
-	cd "$srcdir/$pkgname-$pkgver"
-	go build -o gonic cmd/gonic/gonic.go
+        export CGO_ENABLED=0
+        cd "$srcdir/$pkgname-$pkgver"
+        go build -o gonic ./cmd/gonic/.
 }
 
 package() {
