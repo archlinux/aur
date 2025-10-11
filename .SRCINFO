@@ -1,15 +1,24 @@
 pkgbase = debsig-verify
 	pkgdesc = Debian package signature verification tool
-	pkgver = 0.29
+	pkgver = 0.33
 	pkgrel = 1
-	url = https://git.dpkg.org/git/dpkg/debsig-verify.git
-	arch = x86_64
-	arch = armv7h
+	url = https://manpages.debian.org/unstable/debsig-verify/debsig-verify.1.en.html
 	arch = aarch64
-	license = GPL2
-	depends = dpkg
+	arch = armv7h
+	arch = i686
+	arch = loong64
+	arch = powerpc64le
+	arch = riscv64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dpkg>=1.22
 	depends = expat
-	source = git+https://git.dpkg.org/git/dpkg/debsig-verify.git#tag=0.29
-	sha256sums = SKIP
+	depends = glibc
+	depends = libmd
+	options = emptydirs
+	source = debsig-verify::git+https://git.dpkg.org/git/dpkg/debsig-verify.git#tag=0.33?signed
+	validpgpkeys = 4F3E74F436050C10F5696574B972BF3EA4AE57A3
+	sha256sums = d61a9bc8973cd4e18910b8c1d2058449509f27b1178e9919f79ecd6d6a52d88a
 
 pkgname = debsig-verify

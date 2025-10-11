@@ -1,0 +1,4 @@
+[debsig-verify]
+source = "git"
+git = "https://git.dpkg.org/git/dpkg/debsig-verify.git"
+prefix = "v"

@@ -1,23 +1,49 @@
-# Maintainer: nightuser <nightuser.android@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: nightuser <nightuser.android@gmail.com>
 # Contributor: Antoine Pierlot-Garcin <antoine@bokbox.com>
 
-pkgname=debsig-verify
-pkgver=0.29
+pkgname="debsig-verify"
+pkgver=0.33
 pkgrel=1
 pkgdesc="Debian package signature verification tool"
-arch=('x86_64' 'armv7h' 'aarch64')
-url="https://git.dpkg.org/git/dpkg/debsig-verify.git"
-license=('GPL2')
-depends=('dpkg' 'expat')
-makedepends=()
-source=("git+https://git.dpkg.org/git/dpkg/debsig-verify.git#tag=${pkgver}")
-sha256sums=('SKIP')
+arch=(
+	'aarch64'
+	'armv7h'
+	'i686'
+  'loong64'
+	'powerpc64le'
+	'riscv64'
+	'x86_64'
+)
+url="https://manpages.debian.org/unstable/debsig-verify/debsig-verify.1.en.html"
+_url="https://git.dpkg.org/git/dpkg/debsig-verify.git"
+license=('GPL-2.0-or-later')
+depends=(
+  'dpkg>=1.22'
+  'expat'
+  'glibc'
+  'libmd'
+)
+makedepends=(
+  'git'
+)
+options=(
+  'emptydirs'
+)
+_pkgsrc="${pkgname}"
+source=("${_pkgsrc}::git+${_url}#tag=${pkgver}?signed")
+sha256sums=('d61a9bc8973cd4e18910b8c1d2058449509f27b1178e9919f79ecd6d6a52d88a')
+validpgpkeys=('4F3E74F436050C10F5696574B972BF3EA4AE57A3') # Guillem Jover <guillem@debian.org>
 
 build() {
-	cd "${srcdir}/${pkgname}"
+  local configure_options=(
+    --prefix='/usr'
+    --sysconfdir='/etc'
+  )
+
+	cd "${srcdir}/${_pkgsrc}"
 	./autogen
-	./configure --prefix=/usr \
-	            --sysconfdir=/etc
+	./configure "${configure_options[@]}"
 	make
 }
 
@@ -29,8 +55,8 @@ check() {
 package() {
 	cd "${srcdir}/${pkgname}"
 	make DESTDIR="${pkgdir}" install
-	install -m 0755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-	install -m 0644 doc/policy-syntax.txt doc/policy.dtd "${pkgdir}/usr/share/doc/${pkgname}"
-}
 
-# vim: set noet sw=8 ts=8 tw=79:
+  cd "doc"
+  install -vDm644 "policy-syntax.txt" "${pkgdir}/usr/share/doc/${pkgname}/policy-syntax.txt"
+  install -vDm644 "policy.dtd" "${pkgdir}/usr/share/doc/${pkgname}/policy.dtd"
+}
