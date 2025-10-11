@@ -4,9 +4,9 @@ _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.4.13_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.5.2
+_zhpkgver=3.5.3
 _electronversion=32
-pkgrel=8
+pkgrel=9
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.(Use system-wide electron).Github Desktop 汉化版."
 arch=(
     'aarch64'
@@ -38,15 +38,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b35841dfe1be90a7b5b5e606e92ec3da1348fb61c4462c80f6dbce90eb354045'
+sha256sums=('ef1fa8466740952c1deb5bcd45fb13af73898844f7b8395173c4840c352ddf8d'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('8914f985013da02e36de63b65fc252dc86fd9326497f0cf3f49402017fe1006f')
 sha256sums_armv7h=('e7245fc83d8f7a4be854e43e6441c6932d7d4702dfa3b38cf16c56442ed295a1')
 sha256sums_x86_64=('ad83b9b5b036a404ede0d5f0a147d46967dd0605a428da6b1876bdb37555d963')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
