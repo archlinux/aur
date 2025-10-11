@@ -1,0 +1,26 @@
+pkgbase = nodejs-ollama
+	pkgdesc = Ollama JavaScript library
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ollama/ollama-js
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = ollama
+	depends = nodejs
+	provides = ollama
+	replaces = nodejs-ollama
+	noextract = nodejs-ollama-0.6.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = nodejs-ollama-0.6.0.tgz::https://registry.npmjs.org/ollama/-/ollama-0.6.0.tgz
+	source = README-0.6.0.md::https://raw.githubusercontent.com/ollama/ollama-js/v0.6.0/README.md
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/ollama/ollama-js/v0.6.0/LICENSE
+	b2sums = aefece01444042613e00bcb3fd0e985ab6d7d0e8e2ac4120ad1ac7fbc8110532fd9448590f39f57b2cfb199e9e8f220e47657b540089a9ff38f0e497c834f26f
+	b2sums = b41c33f988e1d7549df9ef3bb37136e7922914d3644652b3f76144430f4115d3073f5c63ae724f3c7ae6af0438d468001f70a7b1f06e149543f4b586068a9bc7
+	b2sums = d60b5c51af9edaf460e87a369bde53d7e4bde120eee26da7c789f7bc25d5c167b1788985309611d58e5fa8d2dbdd85515314e23b77a2f1cbd411d83eecc4d495
+
+pkgname = nodejs-ollama
