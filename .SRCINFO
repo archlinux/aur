@@ -1,0 +1,15 @@
+pkgbase = styx-go-git
+	pkgdesc = Export Prometheus data as CSV or directly plot with gnuplot & matplotlib
+	pkgver = r30.da5d264
+	pkgrel = 1
+	url = https://github.com/go-pluto/styx
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = styx::git+https://github.com/go-pluto/styx
+	source = delimiter.patch
+	b2sums = SKIP
+	b2sums = ff87867fda40ec3daa2c9d55aa3a6ae4832263f7698d319cd77178b4fe136591fba4146839caa1ab0658c211f84c9cd10a750ecdd34c4de1d3437d8a7170ea19
+
+pkgname = styx-go-git

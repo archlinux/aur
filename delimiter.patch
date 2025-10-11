@@ -1,0 +1,22 @@
+diff --git a/writer.go b/writer.go
+index eb52e92..b8e18f8 100644
+--- a/writer.go
++++ b/writer.go
+@@ -33,7 +33,7 @@ func csvWriter(w io.Writer, results []Result) error {
+ 	for _, time := range times {
+ 		fmt.Fprint(w, time)
+ 		for _, result := range results {
+-			fmt.Fprint(w, ";"+result.Values[time])
++			fmt.Fprint(w, ","+result.Values[time])
+ 		}
+ 		fmt.Fprintln(w)
+ 	}
+@@ -51,7 +51,7 @@ func csvHeaderWriter(w io.Writer, results []Result) error {
+ 		header = append(header, result.Metric)
+ 	}
+ 
+-	fmt.Fprintln(w, strings.Join(header, ";"))
++	fmt.Fprintln(w, strings.Join(header, ","))
+ 	return nil
+ }
+ 
