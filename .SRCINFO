@@ -18,6 +18,6 @@ pkgbase = android-x86-qt6-serialport
 	options = staticlibs
 	options = !emptydirs
 	source = https://download.qt.io/official_releases/qt/6.10/6.10.0/submodules/qtserialport-everywhere-src-6.10.0.tar.xz
-	sha256sums = 4b18ec030ff2644698c3f5c776894d8ffe5d3174c964d9bd8668429c943e8298
+	sha256sums = 4f1ea0788d1d5dc74c35f605f6edbb09fef89c75ce6028cf418d79c1a0d9f805
 
 pkgname = android-x86-qt6-serialport
