@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('d1b489cc814a65133cc03c83bbc3df0db10f197e05a7af5e369f09e32ee04e22'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('669cc3c414e05420eb78da51d3e89d69746d0aba9a7a035c63e9f233f2da07e2')
-sha256sums_x86_64=('5cfca5e057cf75372fd232d2cf15129656d86363f86364e1517739c0c86401c5')
+sha256sums_aarch64=('58c87c08962c780e8a64ea71430b9d78d3be553432cb41b1347759cd49aa6efb')
+sha256sums_x86_64=('4fdbcec766071c3b1b047ffe5ff66135a9a3f3fa1dbc9c55c46a9bedab389b8e')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname//-/ }/${_appname//-/}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
