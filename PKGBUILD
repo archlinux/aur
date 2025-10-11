@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=wordle-aid
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="CLI program to filter word choices to aid solving Wordle game problems"
 url="https://github.com/bulletmark/$pkgname"
 license=(GPL-3.0-or-later)
 arch=(any)
-depends=("python>=3.8" "python-pyspellchecker" "python-platformdirs")
+depends=("python>=3.8" "python-pyspellchecker" "python-argparse-from-file")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('ff2b1b133125b1deacda078253d952be1b66e5d6')
+sha1sums=('4f88f7bf2894de68f02d3ac9834ec53932b89003')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
