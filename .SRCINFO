@@ -1,0 +1,28 @@
+pkgbase = lavanda-kde-git
+	pkgdesc = Lavanda KDE plasma theme
+	pkgver = r26.85018ee
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Lavanda-kde
+	arch = any
+	license = GPL-3.0
+	options = !strip
+	options = !debug
+	source = lavanda-kde::git+https://github.com/vinceliuice/Lavanda-kde.git
+	sha256sums = SKIP
+
+pkgname = lavanda-kde-git
+
+pkgname = lavanda-aurorae-theme-git
+	pkgdesc = Lavanda Aurorae theme
+
+pkgname = kvantum-theme-lavanda-git
+	pkgdesc = Lavanda Kvantum theme
+
+pkgname = lavanda-sea-kde-git
+	pkgdesc = Lavanda Sea KDE plasma theme
+
+pkgname = lavanda-sea-aurorae-theme-git
+	pkgdesc = Lavanda Sea Aurorae theme
+
+pkgname = kvantum-theme-lavanda-sea-git
+	pkgdesc = Lavanda Sea Kvantum theme
