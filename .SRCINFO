@@ -1,6 +1,6 @@
 pkgbase = python-discretize
 	pkgdesc = Discretization tools for finite volume and inverse problems
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/simpeg/discretize
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-discretize
 	makedepends = meson-python
 	makedepends = cython
 	depends = python-scipy
-	source = discretize-0.11.3.tar.gz::https://github.com/simpeg/discretize/archive/v0.11.3.tar.gz
-	sha512sums = fae9118483037f771a938c85dab935560240a43bf1b83086b59c247af386f96382f86685e6efd8c0819f85cac6fa80556985ca5956a5a17927cfbee12c467bb9
+	source = discretize-0.12.0.tar.gz::https://github.com/simpeg/discretize/archive/v0.12.0.tar.gz
+	sha512sums = 3292fbd32ffca59b0921d6d812ce91d1205bf9ab6e5c66c9b31b8e5f8accd5263abc0bd5fddb227fa2329634eb3e4f84b8f2711dee7e1246e2b7f9d66460e8a1
 
 pkgname = python-discretize
