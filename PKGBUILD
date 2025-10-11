@@ -4,7 +4,7 @@
 pkgname=piliplus-git
 _srcname=PiliPlus
 _pkgname=piliplus
-pkgver=1.1.4.7.r3.gd69d819
+pkgver=1.1.4.8.r20.ga65edab
 pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
@@ -31,7 +31,6 @@ prepare() {
 
 build() (
 	cd "${_srcname}/"
-	fvm dart lib/scripts/build.dart
 	fvm flutter build linux --no-pub --release
 )
 
