@@ -1,0 +1,23 @@
+pkgbase = flutter-gtk-3.7.11
+	pkgdesc = Flutter GTK embedder runtime.
+	pkgver = 3.7.11
+	pkgrel = 1
+	url = https://flutter.dev/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = glib2
+	depends = fontconfig
+	depends = pango
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libepoxy
+	depends = cairo
+	provides = libflutter_linux_gtk.so.3.7.11
+	source_x86_64 = gtk-release-x64-1a65d409c7a1438a34d21b60bf30a6fd5db59314.zip::https://storage.googleapis.com/flutter_infra_release/flutter/1a65d409c7a1438a34d21b60bf30a6fd5db59314/linux-x64-release/linux-x64-flutter-gtk.zip
+	sha256sums_x86_64 = b864c4f60f3e7f0c715bbf0c78481bed402ebab269a1c25067f19c8827fcf913
+	source_aarch64 = gtk-release-arm64-1a65d409c7a1438a34d21b60bf30a6fd5db59314.zip::https://storage.googleapis.com/flutter_infra_release/flutter/1a65d409c7a1438a34d21b60bf30a6fd5db59314/linux-arm64-release/linux-arm64-flutter-gtk.zip
+	sha256sums_aarch64 = d7990efa41168691940a117e7931e3de53c02d128902b891b7cd826ee9054404
+
+pkgname = flutter-gtk-3.7.11
