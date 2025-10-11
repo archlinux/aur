@@ -17,7 +17,7 @@ pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-agnostic SLSA provenance generation for Github Actions"
 arch=('x86_64')
 url="https://github.com/slsa-framework/${_pkgbase}"
@@ -52,11 +52,32 @@ verify() {
   done
 }
 
+prepare() {
+  cd "${srcdir}"
+  mkdir -p "completions"
+  for _name in "${_binname[@]}"; do
+    if [[ $_name != "slsa-builder-go" ]]; then
+      chmod +x "./${_name}-${pkgver}-${CARCH}"
+    fi
+  done
+}
+
+build() {
+  cd "${srcdir}"
+  for _name in "${_binname[@]}"; do
+    if [[ $_name != "slsa-builder-go" ]]; then
+      for _sh in bash fish powershell zsh; do
+      ./"${_name}-${pkgver}-${CARCH}" completion "${_sh}" > "completions/${_name}.${_sh}"
+      done
+    fi
+  done
+}
+
 package_slsa-github-generator-bin() {
   pkgdesc+=" (meta)"
   arch=('any')
   depends=(
-    "${_binname[@]/%/"-bin=${pkgver}"}"
+    "${_binname[@]/%/"-bin=${pkgver}-${pkgrel}"}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -84,8 +105,10 @@ package_slsa-github-generator-common-bin() {
 for _name in "${_binname[@]}"; do
   eval "
 package_${_name}-bin() {
+  pkgdesc+=' (${_name##*-} target)'
+  url+='/tree/main/internal/builders/${_name##*-}'
   depends+=(
-    '${_pkgbase}-common=${pkgver}-${pkgrel}'
+    '${_pkgbase}-common-bin=${pkgver}-${pkgrel}'
   )
   provides=(
     '${_name}=${pkgver}'
@@ -96,5 +119,13 @@ package_${_name}-bin() {
   
   cd \"\${srcdir}\"
   install -vDm755 '${_name}-${pkgver}-${CARCH}' \"\${pkgdir}/usr/bin/${_name}\"
+
+  if [[ '${_name}' != 'slsa-builder-go' ]]; then
+    cd 'completions'
+    install -vDm644 '${_name}.bash'       \"\${pkgdir}/usr/share/bash-completion/completions/${_name}\"
+    install -vDm644 '${_name}.fish'       \"\${pkgdir}/usr/share/fish/vendor_completions.d/${_name}.fish\"
+    install -vDm644 '${_name}.powershell' \"\${pkgdir}/usr/share/powershell/Completions/${_name}.ps1\"
+    install -vDm644 '${_name}.zsh'        \"\${pkgdir}/usr/share/zsh/site-functions/_${_name}\"
+  fi
 }"
 done
