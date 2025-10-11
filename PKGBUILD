@@ -2,7 +2,7 @@
 pkgname=mynav
 # renovate: datasource=github-releases depName=GianlucaP106/mynav
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='terminal-based workspace navigator and session manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/GianlucaP106/mynav'
@@ -31,7 +31,7 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
