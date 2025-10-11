@@ -3,7 +3,7 @@ _pkgname=ketall
 pkgname="${_pkgname}-git"
 #_ renovate: datasource=github-releases depName=corneliusweig/ketall
 pkgver=1.3.8.r7.16390bd
-pkgrel=4
+pkgrel=5
 pkgdesc='Kubectl plugin to show really all kubernetes resources'
 arch=('x86_64')
 url="https://github.com/corneliusweig/${_pkgname}"
@@ -46,13 +46,12 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
-  mkdir bin
   go build -v \
     -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -linkmode external" \
     -o bin/ \
