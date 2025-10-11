@@ -4,7 +4,7 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.1
 pkgver="${_pkgver//-/_}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -46,7 +46,6 @@ depends=(
   "qrcodegencpp-cmake" # Deps of Websocket plugin
   "qt6-base>=$_qtver" # Deps of OBS Studio and any frontend plugin
   "qt6-svg>=$_qtver" # Deps of OBS Studio
-  "qt6-wayland>=$_qtver" # Needed to use Qt on Wayland platform
   "rnnoise" # Deps if the filter plugin
   "simde" # Deps of libobs and its headers
   "sndio" # Deps of sndio plugin

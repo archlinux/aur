@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes
 	pkgver = 32.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -45,7 +45,6 @@ pkgbase = obs-studio-tytan652
 	depends = qrcodegencpp-cmake
 	depends = qt6-base>=6.10
 	depends = qt6-svg>=6.10
-	depends = qt6-wayland>=6.10
 	depends = rnnoise
 	depends = simde
 	depends = sndio
