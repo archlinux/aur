@@ -1,15 +1,15 @@
 pkgbase = words-pt
 	pkgdesc = A wordlist of Portuguese (pt-PT) words for /usr/share/dict/.
 	pkgver = 20251001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://natura.di.uminho.pt/wiki/doku.php?id=dicionarios:main
 	arch = any
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
 	license = MPL-1.1
 	makedepends = glibc
-	source = wordlist-ao.txt.xz::https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/wordlist-ao-20251001.txt.xz
-	source = wordlist-preao.txt.xz::https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/wordlist-preao-20251001.txt.xz
+	source = wordlist-ao-20251001.txt.xz::https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/wordlist-ao-20251001.txt.xz
+	source = wordlist-preao-20251001.txt.xz::https://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/wordlist-preao-20251001.txt.xz
 	sha256sums = ac5fb0cd0359d6b4678dc3d93e3311e008367a23f187f893f8b37662dfec0344
 	sha256sums = aadc31a7c33315be84316f8235ed808f39d01c5a5a05c29e91e2da5a698c9f72
 
