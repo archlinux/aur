@@ -2,7 +2,7 @@
 pkgname=shef
 # renovate: datasource=github-releases depName=eduardoagarcia/shef
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI framework for cooking up dynamic shell recipes'
 arch=('x86_64')
 url="https://github.com/eduardoagarcia/shef"
@@ -31,7 +31,7 @@ build() {
   export GO111MODULE=on
   
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
