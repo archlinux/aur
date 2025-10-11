@@ -1,0 +1,14 @@
+pkgbase = cfgprf
+	pkgdesc = tool for exporting and importing configs, packages and AUR packages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL-3.0-or-later
+	depends = rsync
+	depends = tar
+	optdepends = yay: working with AUR packages
+	optdepends = paru: working with AUR packages
+	source = cfgprf.sh
+	sha256sums = 11825903fd56d040b92d55a682d8e1dd6b71103f4fbcdece02ae7161b7778766
+
+pkgname = cfgprf
