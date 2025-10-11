@@ -1,7 +1,7 @@
 pkgbase = kyverno-cli
 	pkgdesc = Cloud Native Policy Management
 	pkgver = 1.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyverno/kyverno
 	arch = x86_64
 	arch = aarch64

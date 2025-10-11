@@ -3,7 +3,7 @@ pkgname=kyverno-cli
 _pkgname=kyverno
 # renovate: datasource=github-releases depName=kyverno/kyverno
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cloud Native Policy Management'
 arch=('x86_64' 'aarch64')
 url='https://github.com/kyverno/kyverno'
@@ -34,14 +34,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${_pkgname}-${pkgver}"
-  mkdir bin
   go build -v \
     -ldflags="${_x[*]/#/-X=main.} -linkmode external" \
     -o bin/ \
