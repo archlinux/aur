@@ -1,7 +1,7 @@
 pkgbase = kubectl-terminate
 	pkgdesc = kubectl plugin to remove finalizers and finally delete k8s resources
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xcoulon/kubectl-terminate
 	arch = x86_64
 	arch = aarch64

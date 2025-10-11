@@ -2,7 +2,7 @@
 pkgname=kubectl-terminate
 # renovate: datasource=github-releases depName=xcoulon/kubectl-terminate
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='kubectl plugin to remove finalizers and finally delete k8s resources'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xcoulon/kubectl-terminate'
@@ -31,14 +31,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
   go build -v \
     -ldflags="${_x[*]/#/-X=main.} -linkmode external" \
     -o bin/ \
