@@ -1,0 +1,5 @@
+wayland-vpets*.gz
+wayland-vpets*.zst
+wayland-*.zst
+wayland-debug*.zst
+src/
