@@ -2,10 +2,10 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze-git
-pkgver=1.11pre+9+gf3cad8426
+pkgver=1.12pre+17+gf5ce6d900c
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://github.com/coelckers/Raze'
 license=('custom:BUILD' 'GPL2')
 depends=('gtk3'
