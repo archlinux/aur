@@ -7,7 +7,7 @@ _pkgname=kdeconnect
 pkgname=kdeconnect-no-mdns
 provides=($_pkgname)
 conflicts=($_pkgname)
-pkgver=25.08.1
+pkgver=25.08.2
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone. Version without MDNS support, for KDE bug 487719.'
 url='https://kdeconnect.kde.org/'
@@ -46,7 +46,6 @@ depends=(dbus
          qt6-connectivity
          qt6-declarative
          qt6-multimedia
-         qt6-wayland
          solid
          wayland)
 makedepends=(extra-cmake-modules
@@ -58,7 +57,7 @@ optdepends=('python-nautilus: Nautilus integration'
 groups=(kde-applications
         kde-network)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('8a340bdc48a754d12a938f231a366f308de2121614e7628b86a1bbfa509d351f'
+sha256sums=('e4245b6a063d6df0e123fd67c065f5c24994e21b349589cda6595e480b916b09'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
