@@ -2,7 +2,7 @@
 
 pkgname='perl-alien-cfitsio'
 pkgver='4.4.0.2'
-pkgrel='3'
+pkgrel=4
 pkgdesc="Build and Install the CFITSIO library"
 arch=('any')
 license=('GPL-3.0-only')
