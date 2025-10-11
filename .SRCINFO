@@ -1,0 +1,21 @@
+pkgbase = cobib-zotero
+	pkgdesc = Zotero importer plugin for coBib
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/cobib/cobib-zotero
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = ruby-ronn-ng
+	depends = cobib
+	depends = python
+	depends = python-pyzotero
+	provides = cobib-zotero
+	conflicts = cobib-zotero
+	source = https://gitlab.com/cobib/cobib-zotero/-/archive/v0.1.0/cobib-zotero-v0.1.0.tar.gz
+	sha512sums = c1b9393098897b427dce57a51ad92e539ca63e55bad371789bedcb8ea88e06b9cee143265c4859c02b6a9d54df7ebf1a8d3a2d5198e76952e4e9bd3598fce445
+
+pkgname = cobib-zotero
