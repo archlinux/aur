@@ -1,11 +1,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=ollama
-pkgname=nodejs-$_npmname
-pkgver=0.6.0
-pkgrel=1
+_npmver=0.6.0
 
+pkgname=nodejs-$_npmname
 pkgdesc="Ollama JavaScript library"
+pkgver=$_npmver
+pkgrel=1
 arch=("x86_64")
 url="https://github.com/ollama/ollama-js"
 _urlraw="https://raw.githubusercontent.com/ollama/ollama-js/v${pkgver}"
@@ -17,7 +18,7 @@ makedepends=("npm" "jq")
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
-source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 b2sums=('aefece01444042613e00bcb3fd0e985ab6d7d0e8e2ac4120ad1ac7fbc8110532fd9448590f39f57b2cfb199e9e8f220e47657b540089a9ff38f0e497c834f26f'
