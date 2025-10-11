@@ -2,7 +2,7 @@
 
 pkgname=lyricsfinder
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform lyrics fetcher by Mediahuman"
 arch=('x86_64')
 options=('!emptydirs')
@@ -31,6 +31,6 @@ Exec=/usr/bin/lyricsfinder %U
 Terminal=false
 Type=Application
 Icon=LyricsFinder
-Categories=Network;
+Categories=Audio;
 StartupNotify=false' > ${pkgdir}/usr/share/applications/lyrics-finder.desktop
 }

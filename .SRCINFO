@@ -1,7 +1,7 @@
 pkgbase = lyricsfinder
 	pkgdesc = A cross-platform lyrics fetcher by Mediahuman
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediahuman.com/lyrics-finder
 	arch = x86_64
 	license = custom
