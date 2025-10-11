@@ -10,10 +10,9 @@ arch=("x86_64")
 url="https://github.com/ollama/ollama-js"
 _urlraw="https://raw.githubusercontent.com/ollama/ollama-js/v${pkgver}"
 license=("MIT")
-replaces=("nodejs-${_npmname}")
+
 depends=("ollama" "nodejs")
 makedepends=("npm" "jq")
-provides=("$_npmname")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
