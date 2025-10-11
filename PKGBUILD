@@ -3,7 +3,7 @@
 pkgname=kor
 # renovate: datasource=github-releases depName=yonahd/kor
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Kubernetes Orphaned Resources Finder'
 arch=('x86_64')
 url=https://github.com/yonahd/kor
@@ -33,15 +33,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
-  go mod tidy
   go build -v \
     -ldflags="${_x[*]/#/-X=main.} -linkmode external" \
     -o bin/ \

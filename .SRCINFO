@@ -1,7 +1,7 @@
 pkgbase = kor
 	pkgdesc = Kubernetes Orphaned Resources Finder
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yonahd/kor
 	arch = x86_64
 	groups = kubectl-plugins
