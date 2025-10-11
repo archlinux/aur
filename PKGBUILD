@@ -1,7 +1,7 @@
 # Maintainer: Neboer <rubinposter@gmail.com>
 pkgname=s3-syncer
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="Periodic rclone-based S3 mirror syncer with systemd integration"
 arch=('any')
 license=('MIT')
@@ -15,7 +15,7 @@ source=('s3-syncer.sh'
         'rclone.conf')
 backup=('etc/s3-syncer/config.env'
         'etc/s3-syncer/rclone.conf')
-sha256sums=('75f60e7fe764da8b68d69f7ddd3a21e1f58d7f62fcac956ecddfe8175b77b538'
+sha256sums=('64a196528d0fd25658e72f10d4b7c23d2df9084facf4d48f16cda6ebde76dc47'
             'a02530d14c2c3e00f86c8185df9d7f22c92605054bd119c02b76308f2174c88b'
             '9eb497b6563e8a367b590bfe8c12ec71558ef94e2a1295da6ad1539c8f3e275f'
             'a549b0000d3c39035c86a521464764990a19a7052c17f39e0a27e64402cd6182'

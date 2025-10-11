@@ -6,7 +6,6 @@ set -euo pipefail
 
 echo "[$(date)] Starting sync: $SOURCE -> $TARGET"
 exec rclone sync "$SOURCE" "$TARGET" "$RCLONE_OPTIONS" \
-    --fast-list \
     --stats=1s \
     --combined=/var/log/s3-syncer/rclone-combined.log \
     --log-level=INFO \
