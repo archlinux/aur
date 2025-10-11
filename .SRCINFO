@@ -1,0 +1,24 @@
+pkgbase = yandex-music-windows
+	pkgdesc = Yandex Music - Personal recommendations, selections for any occasion and new music
+	pkgver = 5.63.1
+	pkgrel = 1
+	url = https://github.com/cucumber-sp/yandex-music-linux
+	arch = any
+	license = Unlicense
+	makedepends = p7zip
+	makedepends = nodejs
+	makedepends = asar
+	makedepends = jq
+	makedepends = python
+	makedepends = git
+	depends = electron34
+	depends = libpulse
+	depends = xdg-utils
+	depends = bash
+	depends = hicolor-icon-theme
+	source = https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.63.1.exe
+	source = git+https://github.com/cucumber-sp/yandex-music-linux#tag=v5.63.1
+	sha256sums = 9860e3a3f1e34515ad08657de6fb41c19a547a947fe68a72e8d4293371c1547a
+	sha256sums = SKIP
+
+pkgname = yandex-music-windows
