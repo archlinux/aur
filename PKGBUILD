@@ -1,4 +1,4 @@
-# Maintainer: # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: slact
 pkgname=(
   'acpidump-all'
@@ -19,8 +19,8 @@ pkgname=(
   'superiotool'
 )
 pkgbase=coreboot-utils
-pkgver=25.06
-pkgrel=2
+pkgver=25.09
+pkgrel=1
 pkgdesc="Tools and utilities to work with coreboot firmware"
 url="https://www.coreboot.org"
 license=('GPL-2.0-only')
@@ -42,9 +42,9 @@ makedepends=(
 #  'meson'  # coreboot-configurator
 )
 source=("https://coreboot.org/releases/coreboot-$pkgver.tar.xz"{,.sig})
-sha256sums=('53ec8b4d187196e812e23d27ec251aeb8d09e194ab737509ec664c8fb904d459'
+sha256sums=('7bdc8f177bc3705e11099fef1d0028a39fc9ae659c9b1e5055781a9a762f6da4'
             'SKIP')
-validpgpkeys=('574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7') # Martin Roth (coreboot developer) <martin@coreboot.org>
+validpgpkeys=('C75AAA4E5C9DB017C1DC6EDBDB1B0EC29202D874') # Matt DeVillier <matt.devillier@gmail.com>
 
 prepare() {
   cd "coreboot-$pkgver"
