@@ -1,0 +1,5 @@
+.idea/
+pkg/
+src/
+*.pkg.tar.zst
+*.rpm
