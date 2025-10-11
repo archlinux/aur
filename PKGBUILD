@@ -4,30 +4,48 @@
 _Name="Ryujinx"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=('aarch64' 'x86_64')
 url="https://ryujinx.app"
 _url="https://git.ryujinx.app/ryubing/${_pkgname}"
 license=('MIT')
-depends=('alsa-lib' 'fontconfig' 'gcc-libs' 'glibc' 'jack' 'libpulse' 'libx11'
-         'sh' 'wayland')
-makedepends=('desktop-file-utils')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-options=('!strip' '!debug')
+depends=(
+  'alsa-lib'
+  'fontconfig'
+  'gcc-libs'
+  'glibc'
+  'jack'
+  'libpulse'
+  'libx11'
+  'sh'
+  'wayland'
+)
+makedepends=(
+  'desktop-file-utils'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+options=(
+  '!strip'
+  '!debug'
+)
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${_url}/-/raw/${pkgver}/README.md?ref_type=tags&inline=false"
         "${_pkgsrc}.desktop::${_url}/-/raw/${pkgver}/distribution/linux/${_Name}.desktop?ref_type=tags&inline=false"
         "${_pkgsrc}.svg::${_url}/-/raw/${pkgver}/distribution/misc/Logo.svg?ref_type=tags&inline=false")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/${pkgver}/${_pkgsrc}-linux_arm64.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/${pkgver}/${_pkgsrc}-linux_x64.tar.gz")
-sha256sums=('503f5f72050bffe23f7d7cc13a3a7c45430afe585950e3e3574c4e99455e8743'
+sha256sums=('d7b168ee77c5dbb6f7ca7fe7556cb057ca68939c392cdd038de83b5a771e829f'
             'a19dc6e539931df63d4813f787c51f460cf72e0c44b20add1c0c6ef56c47d840'
             '6d8329413c64e2eb8a1706d2cf97e89fc5083b0654468bd6feefe47e61faaad2')
-sha256sums_aarch64=('97f4bed6c4993ef29402456bb84981370950243f56a0d18f3b0c3cf57f16a131')
-sha256sums_x86_64=('b1db7f41a06ed9a5fb040737c2d32eb332daedcde26e40d53f48adde305a1e6e')
+sha256sums_aarch64=('0485b611583c401733d706ec39db40999f08ba4e22f6f38b0d94602a8016d295')
+sha256sums_x86_64=('19b67b222726f28d11846e9b7cbaed113ea03c2be016408662ffb27c558bd28c')
 
 prepare() {
   cd "${srcdir}"
@@ -54,5 +72,4 @@ package() {
 
   cd "mime"
   install -vDm644 "${_Name}.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
-
 }
