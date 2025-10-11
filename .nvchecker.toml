@@ -1,3 +1,4 @@
-[openarc-unofficial-patches-git]
+[openarc-git]
 source = "github"
 github = "flowerysong/OpenARC"
+use_max_tag = "true"
