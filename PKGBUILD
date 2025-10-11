@@ -12,6 +12,6 @@ sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 "$srcdir/omarchy-styles.sh" \
+  install -Dm755 "omarchy-styles.sh" \
     "$pkgdir/usr/bin/ostyles"
 }
