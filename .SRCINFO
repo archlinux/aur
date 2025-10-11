@@ -1,0 +1,26 @@
+pkgbase = lavanda-gtk-theme-git
+	pkgdesc = Lavanda theme for GNOME/GTK based desktop environments
+	pkgver = 2024.04.28.r16.g9e6517b
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Lavanda-gtk-theme
+	arch = any
+	license = GPL-3.0
+	makedepends = sassc
+	makedepends = gettext
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gnome-themes-extra: for gtk2 themes
+	source = lavanda-gtk-theme::git+https://github.com/vinceliuice/Lavanda-gtk-theme.git
+	source = index.theme
+	sha256sums = SKIP
+	sha256sums = a3b3efa0081ff53d1ee8ad8158c737bd2d7107d9696e138defb7bfd352777f8b
+
+pkgname = lavanda-gtk-theme-git
+
+pkgname = lavanda-compact-gtk-theme-git
+	pkgdesc = Lavanda theme for GNOME/GTK based desktop environments (compact version)
+
+pkgname = lavanda-sea-gtk-theme-git
+	pkgdesc = Lavanda Sea theme for GNOME/GTK based desktop environments
+
+pkgname = lavanda-sea-compact-gtk-theme-git
+	pkgdesc = Lavanda Sea theme for GNOME/GTK based desktop environments (compact version)

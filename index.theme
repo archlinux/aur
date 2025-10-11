@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=${_THEME_NAME}
+Comment=Lavanda gtk theme for linux desktops
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=${_THEME_NAME}
+MetacityTheme=${_THEME_NAME}
+ButtonLayout=close,minimize,maximize:menu
