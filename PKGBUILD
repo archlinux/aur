@@ -2,7 +2,7 @@
 pkgname=kubectl-count
 # renovate: datasource=github-releases depName=chenjiandongx/kubectl-count
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc='kubectl plugin to list and count resources by kind'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chenjiandongx/kubectl-count'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('kubectl' 'glibc')
 makedepends=('git' 'go')
 groups=('kubectl-plugins')
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('9754a69f8c5c3f9bec3f1e8b02a0937381a410a23d213fc00318b5e10a3f930a9574b322c4ae3435a9747ae5dc939fbf5644331b636c689630628d014bd02477')
 b2sums=('b168edebef6da091b341a999440f16dd7e98fba2654ab11232f48b96b2588ac04fc78130ccc8af97c124f7a4413b4315ed596f1940ba0a596f169acb98f880c2')
 
@@ -31,15 +31,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
-  go mod tidy
   go build -v \
     -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -linkmode external" \
     -o bin/ \
