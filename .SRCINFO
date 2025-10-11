@@ -1,0 +1,14 @@
+pkgbase = nova-music-git
+	pkgdesc = A music player written in the libcosmic toolkit
+	pkgver = 0.1.0_75f40aa
+	pkgrel = 1
+	url = https://github.com/lunarsrl/NovaMusic
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = just
+	makedepends = rust
+	options = !emptydirs
+	source = git+https://github.com/lunarsrl/NovaMusic.git#branch=next
+	sha512sums = SKIP
+
+pkgname = nova-music-git
