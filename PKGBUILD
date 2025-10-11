@@ -3,7 +3,7 @@
 
 _pkgname="tex-fmt"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="An extremely fast LaTeX formatter written in Rust"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -18,11 +18,11 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-linux.tar.gz")
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-armv7hf-linux.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux.tar.gz")
-sha256sums=('e8b41ca2bcfe6e1d03bd62e486a2e7439bcfeb0de8f03fdbcc1d26cefb251109'
+sha256sums=('526f311481cf709ca518de47e3ad1ea392bceff9a0f3d1476f18ddab87c54b83'
             'd909d9843225ff2ccec3a74f3b13c889fb0bfabb7b3801dcad68505a872c941d')
-sha256sums_aarch64=('9ef94afc284c554f8803a1c7c45d520500cc5128cfdc83d9711c9c60fd741475')
-sha256sums_armv7h=('18141cb6ed472eb348a569be6576b94876e6dd111a398f11b260c0a284fd531e')
-sha256sums_x86_64=('3fcd82c96992f35efcfd9c5b5f3ca2d6ab2f7a2789ebca1db3b466c421d86528')
+sha256sums_aarch64=('40db5966f5526ff409e5d59a41622b9d92ba5fbf1d0a5cf991ebc03eca18a862')
+sha256sums_armv7h=('40eca8cb3758444c744254ca30df807ed7990416eb6d58f33ddfa06e7a936c18')
+sha256sums_x86_64=('0cdc0f9079d082b397c04cd94b23f5752a574f3de9e10ddb1af48fa1f9fc3960')
 
 prepare() {
   cd "${srcdir}"
