@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=SteamTokenDumper
 pkgname=${_pkgname,,}-bin
