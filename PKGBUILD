@@ -2,11 +2,11 @@
 
 _pkgname='cobib-zotero'
 pkgname="${_pkgname}-git"
-pkgver=r12.305e6c3
-pkgrel=2
+pkgver=r19.43fb9f8
+pkgrel=1
 arch=('any')
 depends=(
-    'cobib-git'
+    'cobib'
     'python'
     'python-pyzotero'
 )
