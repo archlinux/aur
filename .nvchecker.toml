@@ -1,3 +1,4 @@
 [reitti]
 source = "git"
 git = "https://github.com/dedicatedcode/reitti.git"
+prefix = "v"
