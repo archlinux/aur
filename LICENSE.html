@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+        <title>「欧路词典」英汉-汉英词典</title>
+    <link rel="icon" href="/Images/en/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="/Images/en/apple_icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-itunes-app" content="app-id=570118289">
+    <link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/bundles.min.css?20250709&amp;v=mnvWGnQBLVk-TN-yuBOd1_wF6tm8aUPIR0IhDvbupvo" rel="stylesheet">
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.9.0.min.js?20250714"></script>
+    <script src="/Scripts/ajaxFileUpload.js"></script>
+    <script src="/js/dictjs.min.js?v=wxeuT4ahdMXoEYpvP3JfBOm8l9WvjBnAfabipNM8kuo"></script>
+
+    
+    
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+</head>
+    <body class="en" data-lang="en">
+        <header>
+            <div id="header">
+                <div class="header-content">
+                    <div id="login">
+                                <ul id="loginForm-ul">
+            <li><a href="/payment/Translation_Vip"><img class="adsIcon" src="https://static.eudic.net/web/dict/adsIcon.png" alt=""></a></li>
+            <li><a href="/Account/Login"><img class="avatarIcon" src="https://static.eudic.net/web/dict/avatar.png" alt=""></a></li>
+        </ul>
+
+                    </div>
+                    <nav>
+                        <ul class="nav-bar navBarLang">
+    <li class="selectorLi"><a id="language-selector" class="flag-en home">欧路词典</a>
+        <ul id="diclists" style="display:none;" class="menu">
+            <li><a href="/Account/ChangeSiteLanguage?langid=fr" class="flag-fr minIcon" rel="nofollow"><span class="diclists_txt">法语助手</span></a></li>
+            <li><a href="/Account/ChangeSiteLanguage?langid=de" class="flag-de minIcon" rel="nofollow"><span class="diclists_txt">德语助手</span></a></li>
+            <li><a href="/Account/ChangeSiteLanguage?langid=es" class="flag-es minIcon" rel="nofollow"><span class="diclists_txt">西语助手</span></a></li>
+            <li><a href="/Account/ChangeSiteLanguage?langid=en" class="flag-en minIcon" rel="nofollow"><span class="diclists_txt">欧路英语</span></a></li>
+        </ul>
+    </li>
+</ul>
+<div id="qod"><span class="qodLine"></span><a href="#" title="发音" class="voice-js voice-button" data-rel="langid=en&txt=QYNT25lIG9mIG15IHNlY3JldCBpbnN0cnVjdGlvbnMgdG8gbXlzZWxmIGFzIGEgcG9ldCBpczog4oCYV2hhdGV2ZXIgeW91IGRvLCBkb24ndCBiZSBib3Jpbmcu&voicename=human_normal"></a><a class="voiceText" href=http://dict.eudic.net/home/dailysentence/4f883ac5-03d5-491c-9eaf-d60b813a0b16 target=_blank>每日一句：One of my secret instructions to myself as a poet is: ‘Whatever you do, don't be boring.</a></div>
+<ul class="nav-bar navBarList">
+     <li><a class="software" href="/">首页</a></li>
+<li><a class="software" href="https://www.eudic.net">App下载</a></li>
+<li><a class="trans" href="https://fanyi.eudic.net">欧路翻译</a></li>
+<li><a class="resource" href="/ting">每日英语听力</a></li>
+<li><a class="resource" href="https://www.qianyanlab.com">AI写作</a></li>
+<li><a class="course" href="/course">英语课堂</a></li>
+<li><a class="software" href="https://www.eudic.net/v4/en/app/recite">背单词</a></li>
+</ul>
+<div id="soundPlayer"></div>
+                    </nav>
+                </div>
+            </div>
+            
+        </header>
+        <div id="body" style="min-height: 110%">
+            
+<div id="bodycontent" style="padding:0">
+    <div class="main_content privacy_box">
+        <div class="common">
+            <div class="common_content w_auto privacy">
+                <div class="content common_white_div">
+
+                    <div class="commonDiv">
+                        <h2 class="ft_28 text_c titleH2">隐私政策</h2>
+                        <div class="ft_general2">
+                            最近更新日期：2025年6月23日
+                        </div>
+                        <div class="ft_general2">
+                            本网站以及相关软件由上海欧路信息科技有限公司运营。您通过网络向我们提供信息是建立在您对我们信任的基础上。我们非常认真地对待您的信任，并且将确保将您提供的个人信息的安全性和保密性作为重点。在您将个人信息提供给我们之前，请您仔细阅读本隐私政策以了解我们的隐私政策和保密措施。在使用我们产品的同时，您确认了解并接受在此介绍的隐私政策和保密措施。
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>一、	如何保护您的个人信息</b>
+                            </span>
+                            <ul class="listUl">
+                                <li>
+                                    欧路软件非常重视个人信息安全，并会采取一切合理可行的措施，持续保护您的个人信息，以防其他人在未经授权的情况下访问、篡改或披露欧路软件收集的您的个人信息：
+                                    <ul class="minlistUl">
+                                        <li>
+                                            1.1 欧路软件已采用符合行业标准的安全防护措施来保护您的个人信息，防止数据遭到未经授权的访问、公开披露、使用、修改、损坏或丢失。我们会采取一切合理可行的措施，保护您的个人信息。例如，在您的移动设备与欧路软件产品或服务之间交换数据时进行SSL加密保护；我们会使用受信赖的保护机制防止数据遭到恶意攻击。
+                                        </li>
+                                        <li>
+                                            1.2 欧路的产品在设计时，将用户隐私和系统安全放在重要的角度进行评估。我们的产品会采用最新的行业标准和SDK进行开发，应用仅在必要的时候申请权限、尽可能少地用户信息。
+                                        </li>
+                                        <li>
+                                            1.3 欧路软件仅允许有必要知晓的人员访问相关个人信息，并为此设置了严格的访问权限控制和监控机制。欧路软件同时要求可能接触到您个人信息的所有人员履行相应的保密义务。如果未能履行这些义务，可能会被追究法律责任或被终止与欧路软件的相应法律关系。
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>欧路软件会采取一切合理可行的措施，确保未收集无关的信息。</li>
+                                <li>请您理解，由于技术的限制以及可能存在的各种恶意手段，在互联网行业，即便我们竭尽所能加强安全措施，但也不可能始终保证信息百分之百的绝对安全。您需要了解和知悉，您接入欧路软件的产品或服务所用的系统和通讯网络，有可能因我们可控范围外的其他因素而出现问题，在此情形下，我们会依法尽力协助解决。</li>
+                                <li>如不幸发生信息安全事故，我们将按照法律法规的要求，及时向您告知：安全事件的基本情况和可能的影响、我们已采取或将要采取的处置措施、您可自主防范和降低风险的建议等。我们同时将及时将事件相关情况以邮件、信函、电话、推送通知等适合的方式告知您；难以逐一告知信息主体时，我们会采取合理、有效的方式发布公告。同时，我们还将按照监管部门要求，主动上报信息安全事件的处置情况。</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>二、	我们从您那里获得的信息</b>
+                            </span>
+                            <ul class="listUl">
+                                <li>
+                                    当您在欧路软件的产品或服务中注册账号时，您可以选择通过微信、QQ、微博等方式创建欧路软件产品或服务的账号并登录（“账号登录”）。
+                                    <ul class="minlistUl">
+                                        <li>
+                                            1.1 欧路软件已采用符合行业标准的安全防护措施来保护您的个人信息，防止数据遭到未经授权的访问、公开披露、使用、修改、损坏或丢失。我们会采取一切合理可行的措施，保护您的个人信息。例如，在您的移动设备与欧路软件产品或服务之间交换数据时进行SSL加密保护；我们会使用受信赖的保护机制防止数据遭到恶意攻击。
+                                        </li>
+                                        <li>
+                                            1.2 当您选择通过微信、QQ或微博等第三方账户登录欧路软件产品或服务时，您同意我们从微信、QQ或微博等第三方获取您授权共享的信息（包括昵称、头像等），并且您同意将您的第三方账户与您的欧路软件产品或服务账号绑定，使您可以通过第三方账户直接登录并使用欧路软件的产品或服务，并借助该账户实现数据在不同设备之间的同步。我们会依据与第三方的约定，并在符合相关法律法规的前提下，使用您授权共享的个人信息。如果您拒绝同意欧路软件从第三方获取您授权共享的信息，您将无法通过微信、QQ或微博等第三方账户的方式注册账号并登录，也无法借助该第三方账户实现数据的同步。
+                                        </li>
+                                        <li>
+                                            1.3 在注册完成后，您可以选择修改或补充您的头像、昵称等信息（但不提供这些信息不影响您使用欧路软件的产品或服务），这些信息均属于您的账号信息。对于该等账号信息所涉的个人信息，欧路软件将按照本「隐私政策」予以保护。
+                                        </li>
+                                        <li>
+                                            1.4 您购买欧路软件提供的收费产品及服务时、为了履行您与我们签署的协议向您提供欧路软件的课程讲解等服务，您可能需要向欧路软件提供您的<span class="fontW">手机号、微信号</span>。为了帮助您顺利完成交易、保障您的交易安全、查询订单信息等，在您下单交易或为了完成交易时，我们会收集您的<span class="fontW">交易商品/服务信息、订单号、交易金额、支付方式</span>等信息。
+                                        </li>
+                                        <li>
+                                            1.5 在您使用欧路软件产品或服务时，您可能会因账号管理、产品使用等问题联系欧路软件客服。为了查询必要的产品信息，我们的客服可能需要您提供<span class="fontW">姓名、支付记录或与欧路软件进行联系的通信记录及内容等与您使用欧路软件产品或服务相关的信息</span>，以便欧路软件的客服人员帮助您解决相关问题。如果您拒绝提供相关信息，欧路软件可能无法帮助您解决相关问题。
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                     <ul class="minlistUl">
+                                         <li>为了更好地为您提供持续稳定的服务支持（如数据的实时同步等），不断改善自身产品或服务，了解产品对不同硬件设备适配性、确保操作环境安全、识别账号异常状态用途，我们会收集关于您对我们产品或服务使用方式的信息，并将这些信息进行关联，这些信息包括：</li>
+                                         <li>设备信息：我们会根据您在软件安装及/或使用中授予的具体操作，接收并记录您所使用的设备相关信息（例如设备型号、操作系统版本、设备设置、移动设备识别码、网络设备信息、必要的移动应用列表信息软硬件及设备、设备环境信息）、设备所在位置相关信息（包括您的授权的GPS位置以及WLAN接入点和基站传感器信息)。</li>
+                                         <li>日志信息：当您使用我们的网站或客户端提供的产品或服务时，我们会自动收集您对我们服务的详细使用情况，作为有关网络日志保存。包括您的搜索和浏览记录、关注、播放记录、访问量、播放时长、IP地址、WIFI网络、电信运营商网络、使用的语言、访问日期和时间。</li>
+                                     </ul>
+                                    <ul class="minlistUl">
+                                        <li>
+                                            2.1 为提升欧路软件产品或服务的使用体验和便利程度，欧路软件可能会通过调用设备权限的方式收集您的如下个人信息。如果您不同意提供这些个人信息，您可能无法使用与提升用户体验相关的功能，您也可能需要在使用欧路软件产品或服务过程中手动重复填写一些信息。
+                                        </li>
+                                        <li>
+                                            2.2 您在使用我们软件的<span class="fontW">“摄像头取词”或“语音输入”</span>时，相应的数据会被传输至我们的服务器。我们的图像识别程序会对<span class="fontW">这些数据进行处理分析并返回对应的文字结果，但我们不会存储这些数据</span>。
+                                        </li>
+                                        <li>
+                                            2.3 您在使用我们软件的<span class="fontW">“跟读打分”</span>功能时，我们会<span class="fontW">存储相应的声音数据，并且使用机器对这些数据进行进一步分析训练</span>，以便提高打分引擎的准确性。
+                                        </li>
+                                        <li>
+                                            2.4 若您希望实现或体验上述功能，您可能需要在您的设备中向欧路软件开启您的相应访问权限。您也可以随时选择关闭相应访问权限以取消相应授权。在不同设备中，权限显示方式及关闭方式可能有所不同，具体请参考设备及系统开发方的说明或指引。
+                                        </li>
+                                        <li>
+                                            2.5 为使用欧路软件产品或服务的需要，欧路软件会在部分课程内收录您的录音等语音资料，并可能会在相关产品或服务中（如排行榜、笔记）<span class="fontW">显示您的个人信息（如头像、昵称、在软件中形成的录音等语音资料等）以供其他用户查看</span>。
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    根据法律规定，向第三方提供经去标识化处理的个人信息，且确保数据接收方无法复原并重新识别个人信息主体的，不属于个人信息的对外共享、转让及公开披露行为，对此类数据的保存及处理将无需另行向您通知并征得您的同意。
+                                    <ul class="minlistUl">
+                                        <li>
+                                            3.1 第三方付款服务提供商收集相关个人信息
+                                            您可以通过向欧路软件付款的方式获取欧路软件产品或服务相关的产品及数字化商品，包括VIP 充值、课程服务等。上述付款服务可能由欧路软件以外的第三方提供，欧路软件并不会获取与您付款相关的密码等信息。但可能从<span class="fontW">您或第三方支付平台获得您的第三方支付账户（微信账号、苹果账号）</span>。若您希望了解第三方服务提供商收集个人信息的具体规则，请查阅您选择的第三方付款服务提供商的隐私政策。
+                                        </li>
+                                        <li>
+                                            3.2 第三方广告推送等服务提供商收集相关个人信息
+                                            欧路软件可能会与第三方服务提供商合作，在欧路软件的产品或服务中接入第三方服务（例如投放广告、链接或者其它形式的推广内容）。欧路软件不会将您提供给欧路或者欧路收集的您的个人信息（如手机号码、昵称、头像等）与第三方服务商共享，也不会代表第三方服务商为其收集您的个人信息。通过欧路软件产品或服务接入的第三方服务商可能有自己的隐私政策，其不受本「隐私政策」的约束。第三方服务提供商可能会根据其自己的隐私政策收集为您提供服务所需的个人信息。欧路软件将尽合理的努力要求第三方服务商在处理您的个人信息时遵守相关法律法规，尽力要求其采取相关的保密和安全措施，但欧路软件无法保证其一定会按照我们提出的要求采取相应措施。
+                                        </li>
+                                        <li class="highlight">
+                                            3.3 为了向您提供一键分享服务，我们的产品集成友盟+SDK（UShare)，需要收集您的设备 Mac 地址、唯一设备识别码（IMEI/AndroidID/IDFA/OPENUDID/GUID、SIM 卡 IMSI 信息）以提供分析服务，并通过地理位置校准报告数据准确性，提供基础反作弊能力。为了您的信息安全，我们已与第三方SDK服务商签署进行数据安全保密约定，这些公司会严格遵守我们的数据隐私和安全要求。除非得到您的同意，我们不会与其共享您的个人身份信息。为便于您更好地了解【友盟+】采集的数据类型及用途，以及何保护您的个人信息，您可以登录 <a href="https://www.umeng.com/policy">https://www.umeng.com/policy</a> 了解【友盟+】隐私权政策。
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    您充分知晓，在以下情形下，我们收集、使用个人信息无需征得您的授权同意：
+                                    <ul class="minlistUl">
+                                        <li>4.1 与国家安全、国防安全有关的； </li>
+                                        <li>4.2 与公共安全、公共卫生、重大公共利益有关的；</li>
+                                        <li>4.3 与犯罪侦查、起诉、审判和判决执行等有关的；</li>
+                                        <li>4.4 出于维护个人信息主体或其他个人的生命、财产等重大合法权益但又很难得到本人同意的；</li>
+                                        <li>4.5 所收集的个人信息是个人信息主体自行向社会公众公开的；</li>
+                                        <li>4.6 从合法公开披露的信息中收集的您的个人信息的，如合法的新闻报道、政府信息公开等渠道；</li>
+                                        <li>4.7 根据您要求签订和履行合同所必需的；</li>
+                                        <li>4.8 用于维护所提供的产品或服务的安全稳定运行所必需的，例如发现、处置产品或服务的故障；</li>
+                                        <li>4.9 法律法规规定的其他情形。</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    根据法律规定，向第三方提供经去标识化处理的个人信息，且确保数据接收方无法复原并重新识别个人信息主体的，不属于个人信息的对外共享、转让及公开披露行为，对此类数据的保存及处理将无需另行向您通知并征得您的同意。
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="commonDiv" style="overflow: hidden;">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>三、App申请关键权限及用途说明</b>
+                            </span>
+                            1. 由应用主动申请的权限
+                            <br />
+                            <br />
+                            <span class="fontW">
+                                读写外部储存
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>默认不申请，仅当用户使用离线下载，导出资源、读取本地学习数据、安装词典等需要访问存储设备的场景时申请
+                            <br />
+                             <span class="fontW">权限声明代码：</span>WRITE_EXTERNAL_STORAGE、READ_EXTERNAL_STORAGE
+                             <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息
+                            <br /> <br />
+                            <span class="fontW">
+                                摄像头和照片
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>用户更换用户头像、拍照查词、上传笔记和例句卡片的配图
+                            <br />
+                            <span class="fontW">权限声明代码：</span>CAMERA
+                            <br /> <br />
+                            <span class="fontW">
+                                振动传感器
+                            </span>
+                            <br />
+                             <span class="fontW">权限说明：</span>用于用户打卡成功时的振动提示
+                            <br />
+                             <span class="fontW">权限声明代码：</span>VIBRATE
+                            <br /> <br />
+                            <span class="fontW">
+                                麦克风
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>在跟读、配音模块用于跟读训练
+                            <br />
+                            <span class="fontW">权限声明代码：</span>RECORD_AUDIO
+                            <br /> <br />
+                            <span class="fontW">
+                                查看 WIFI 连接状态
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>用于确认是否在非WIFI环境下下载、播放听力
+                            <br />
+                            <span class="fontW">权限声明代码：</span>ACCESS_WIFI_STATE
+                            <br /> <br />
+                            <span class="fontW">
+                                系统设置
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>听力软件用于设置听力闹钟、词典软件用于背单词提醒
+                            <br />
+                            <span class="fontW">权限声明代码：</span>WRITE_SETTINGS
+                            <br /> <br />
+                            <span class="fontW">
+                                悬浮框
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>听力软件用于显示桌面字幕、词典软件用于跨软件取词
+                            <br />
+                           <span class="fontW"> 权限声明代码：</span>SYSTEM_ALERT_WINDOW
+                            <br /> <br />
+                            <span class="fontW">
+                                录屏、屏幕投射内容
+                            </span>
+                            <br />
+                            <span class="fontW">权限说明：</span>当用户开启“屏幕取词”功能时申请，可以帮助用户识别屏幕上的文字并且进行翻译。整个过程完全在用户设备中运行，不会将用户的屏幕图像上发服务器。
+                            <br /><br />
+                            2. 第三方SDK代码包含对应权限字符串
+                            <br /> <br />
+                            为保障软件的相关功能的实现与应用安全稳定的运行，欧路可能会接入由第三方软件提供的开发包（SDK）实现相关目的。欧路会对合作方获取信息的软件工具开发包（SDK）进行严格的安全监测，以保护数据安全。
+                            <br /> <br />
+                            请注意，第三方SDK可能因为其版本升级、策略调整等原因导致数据处理类型存在一定变化，请以其公示的官方说明为准。
+                            <br /><br />
+                            <span class="fontW">
+                                友盟+社会化分享SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>友盟同欣（北京）科技有限公司
+                            <br />
+                             <span class="fontW">功能：</span>统计和分析数据
+                            <br />
+                             <span class="fontW">权限：</span>读写外部存储、读取设备信息
+                            <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                              <br />
+                             <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/AndroidID/IDFA/OPENUDID/GUID、SIM 卡 IMSI 信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                             <span class="fontW">隐私政策链接：</span><a href="https://www.umeng.com/page/policy">https://www.umeng.com/page/policy</a>
+                            <br /><br />
+                            <span class="fontW">
+                               荣耀推送SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>深圳荣耀软件技术有限公司
+                            <br />
+                             <span class="fontW">功能：</span>消息推送
+                            <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                              <br />
+                             <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/AndroidID/IDFA/OPENUDID/GUID、SIM 卡 IMSI 信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                             <span class="fontW">隐私政策链接：</span><a href="https://developer.honor.com/cn/docs/11002/guides/sdk-data-security">https://developer.honor.com/cn/docs/11002/guides/sdk-data-security</a>
+                            <br /><br />
+                            <span class="fontW">
+                                QQ互联sdk（Android版本）
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>深圳市腾讯计算机系统有限公司
+                            <br />
+                             <span class="fontW">功能：</span>为用户提供 QQ 第三方登录功能，帮助用户将信息分享至 QQ
+                            <br />
+                             <span class="fontW">权限：</span>读写外部存储、读取设备标识信息、网络连接信息、查看 WLAN 连接
+                            <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                             <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/AndroidID/IDFA/OPENUDID/GUID、SIM 卡 IMSI 信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                             <span class="fontW">隐私政策链接：</span><a href="https://wiki.connect.qq.com/QQ%E4%BA%92%E8%81%94SDK%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E5%A3%B0%E6%98%8E">https://wiki.connect.qq.com/QQ%E4%BA%92%E8%81%94SDK%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E5%A3%B0%E6%98%8E</a>
+                            <br /><br />
+                            <span class="fontW">
+                               腾讯QQ互联
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>深圳市腾讯计算机系统有限公司
+                            <br />
+                             <span class="fontW">功能：</span>为用户提供 QQ 第三方登录功能，帮助用户将信息分享至 QQ
+                            <br />
+                             <span class="fontW">权限：</span>读写外部存储、读取设备标识信息、网络连接信息、查看 WLAN 连接
+                            <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                             <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/AndroidID/IDFA/OPENUDID/GUID、SIM 卡 IMSI 信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                             <span class="fontW">隐私政策链接：</span><a href="https://wiki.connect.qq.com/QQ%E4%BA%92%E8%81%94SDK%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E5%A3%B0%E6%98%8E">https://wiki.connect.qq.com/QQ%E4%BA%92%E8%81%94SDK%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E5%A3%B0%E6%98%8E</a>
+                            <br /><br />
+                            <span class="fontW">
+                                微信开放平台 SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>深圳市腾讯计算机系统有限公司
+                            <br />
+                             <span class="fontW">功能：</span>为用户提供微信第三方登录功能，帮助用户将信息分享至微信，提供微信支付功能
+                            <br />
+                             <span class="fontW">权限：</span>读写外部存储、读取设备标识信息、网络连接信息、查看 WLAN 连接
+                            <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                             <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/AndroidID/IDFA/OPENUDID/GUID、SIM 卡 IMSI 信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                             <span class="fontW">隐私政策链接：</span><a href="https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=privacy">https://weixin.qq.com/cgi-bin/readtemplate?lang=zh_CN&t=weixin_agreement&s=privacy</a>
+                           <br /><br />
+                            <span class="fontW">
+                                微博移动SDK-android
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>北京微梦创科网络技术有限公司
+                            <br />
+                             <span class="fontW">功能：</span>为用户提供微博第三方登录功能，帮助用户将信息分享至微博
+                            <br />
+                             <span class="fontW">权限：</span>读写外部存储、读取设备标识信息、网络连接信息、查看 WLAN 连接
+                            <br />
+                             <span class="fontW">收集数据类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）;
+                             <br />
+                             <span class="fontW">后台数据收集：</span>为了识别当前设备并实现微博登录、分享等功能，需要在后台读取设备标识符（IMEI/IDFA/AndroidID/MAC/OAID 等）、应用安装列表
+                             <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://open.weibo.com/wiki/Sdk/privacy">https://open.weibo.com/wiki/Sdk/privacy</a>
+                            <br /><br />
+                            <span class="fontW">
+                                微博移动SDK-ios
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>北京微梦创科网络技术有限公司
+                            <br />
+                            <span class="fontW">功能：</span>为用户提供微博第三方登录功能，帮助用户将信息分享至微博
+                            <br />
+                            <span class="fontW">权限：</span>读写外部存储、读取设备标识信息、网络连接信息、查看 WLAN 连接
+                            <br />
+                            <span class="fontW">收集数据类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/MAC/AndroidID/IDFA/OPENUDID/GUID/OAID、SIM 卡 IMSI
+                            信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                            <span class="fontW">网络信息包括：</span>IP地址，WiFi信息，基站信息等相关信息
+                            <br />
+                            <span class="fontW">后台数据收集：</span>在后台读取设备标识符（IMEI/MAC/AndroidID/IDFA/OPENUDID/GUID/OAID、SIM 卡 IMSI 信息）
+                            <br />
+                            <span class="fontW">收集方式：</span>SDK收集上述信息后，通过加密方式，不经由我们服务器，直接回传给SDK所属公司
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://open.weibo.com/wiki/Sdk/privacy"
+                                rel="nofollow">https://open.weibo.com/wiki/Sdk/privacy</a>
+                            <br /><br />
+                            <span class="fontW">
+                                YoudaoAD SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>北京网易有道计算机系统有限公司
+                            <br />
+                             <span class="fontW">功能：</span>用于APP内的广告推广
+                            <br />
+                             <span class="fontW">权限：</span>读写外部存储、读取设备信息
+                            <br />
+                             <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器），SDK会监听用户手机安装、卸载应用情况，以便支持下载类广告
+,                            <br />
+                             <span class="fontW">隐私政策链接：</span><a href="http://shared.youdao.com/dict/market/youdaoInc-v2.1/index.html#/CN">http://shared.youdao.com/dict/market/youdaoInc-v2.1/index.html#/CN</a>
+                            <br /><br />
+                            <span class="fontW">
+                                小米推送
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>北京小米移动软件有限公司
+                            <br />
+                            <span class="fontW">功能：</span>集成小米账号登录
+                            <br />
+                            <span class="fontW">
+                                自启动和关联启动说明： 为确保本应用处于关闭或后台运行状态下可正常接收到容户媏推送的广播信息，本SDK将存在一定频率通过系统发送广播唤酲本应用自启动或关联启动行为，是因实现功能及服务所必要的。
+                            </span>
+                            <br />
+                            <span class="fontW">权限：</span>读取设备信息
+                            <br />
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://dev.mi.com/console/doc/detail?pId=1822">https://dev.mi.com/console/doc/detail?pId=1822</a>
+                            <br /><br />
+                            <span class="fontW">
+                                华为帐号SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>华为软件技术有限公司
+                            <br />
+                            <span class="fontW">功能：</span>集成华为账号登录
+                            <br />
+                            <span class="fontW">权限：</span>读取设备信息
+                            <br />
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://developer.huawei.com/consumer/cn/doc/HMSCore-Guides/sdk-data-security-forandroid-0000001695031596">https://developer.huawei.com/consumer/cn/doc/HMSCore-Guides/sdk-data-security-forandroid-0000001695031596</a>
+                            <br /> <br />
+                            <span class="fontW">
+                                OPPO PUSH 客户端SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>广东欢太科技有限公司
+                            <br />
+                            <span class="fontW">功能：</span>消息推送
+                            <br />
+                            <span class="fontW">权限：</span>读取设备信息
+                            <br />
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/MAC/AndroidID/IDFA/OPENUDID/GUID/OAID、SIM 卡 IMSI
+                            信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                            <span class="fontW">网络信息包括：</span>IP地址，WiFi信息，基站信息等相关信息
+                            <br />
+                            <span class="fontW">后台数据收集：</span>在后台读取设备标识符（IMEI/MAC/AndroidID/IDFA/OPENUDID/GUID/OAID、SIM 卡 IMSI
+                            信息）、推送SDK版本号、消息发送结果、通知栏状态（如通知栏权限、用户点击行为）、锁屏状态（如是否锁屏，是否允许锁屏通知）
+                            <br />
+                            <span class="fontW">收集方式：</span>SDK收集上述信息后，通过加密方式，不经由我们服务器，直接回传给SDK所属公司
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><br /><a href="https://open.oppomobile.com/documentation/page/info?id=11228"
+                                rel="nofollow">https://open.oppomobile.com/documentation/page/info?id=11228</a>
+                            <br /> <br />
+                            <span class="fontW">
+                                vivo推送SDK
+                            </span>
+                            <br />
+                            <span class="fontW">开发者：</span>维沃移动通信有限公司
+                            <br />
+                            <span class="fontW">功能：</span>消息推送
+                            <br />
+                            <span class="fontW">权限：</span>读取设备信息
+                            <br />
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">设备标识信息包括：</span>唯一设备识别码（IMEI/MAC/AndroidID/IDFA/OPENUDID/GUID/OAID、SIM 卡 IMSI
+                            信息）、应用信息（应用崩溃信息、通知开关状态、软件列表等相关信息）、设备参数及系统信息（设备类型、设备型号、操作系统及硬件相关信息）、应用安装列表
+                            <br />
+                            <span class="fontW">网络信息包括：</span>IP地址，WiFi信息，基站信息等相关信息
+                            <br />
+                            <span class="fontW">后台数据收集：</span>在后台读取设备标识符（IMEI/MAC/AndroidID/IDFA/OPENUDID/GUID/OAID、SIM 卡 IMSI
+                            信息）、推送SDK版本号、消息发送结果、通知栏状态（如通知栏权限、用户点击行为）、锁屏状态（如是否锁屏，是否允许锁屏通知）
+                            <br />
+                            <span class="fontW">收集方式：</span>SDK收集上述信息后，通过加密方式，不经由我们服务器，直接回传给SDK所属公司
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><br /><a href="https://dev.vivo.com.cn/documentCenter/doc/878"
+                                rel="nofollow">https://dev.vivo.com.cn/documentCenter/doc/878</a>
+                            <br /> <br />
+                            <span class="fontW">
+                               穿山甲SDK
+                            </span>
+                            <br />
+                            <span class="fontW">合作方主体：</span>北京巨量引擎网络技术有限公司
+                            <br />
+                             <span class="fontW">涉及个人信息：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">使用目的：</span>广告投放及监测归因、反作弊、统计分析、减少App崩溃、提供可靠稳定的服务
+                            <br />
+                            <span class="fontW">使用场景：</span>向最终用户投放广告时使用
+                            <br />
+                            <span class="fontW">收集方式：</span>SDK自行采集
+                            <br />
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">官网链接：</span><a href="https://www.csjplatform.com/" rel="nofollow">https://www.csjplatform.com/</a>
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://www.csjplatform.com/privacy/partner">https://www.csjplatform.com/privacy/partner</a>
+                            <br /><br />
+                            <span class="fontW">
+                               腾讯广点通SDK
+                            </span>
+                            <br />
+                             <span class="fontW">第三方名称：</span>深圳市腾讯计算机系统有限公司
+                            <br />
+                            <span class="fontW">使用目的：</span>广告投放、广告归因、广告反作弊
+                            <br />
+                            <span class="fontW">软件安装列表：</span>ANDROID ID
+                            <br />
+                            <span class="fontW">个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）、广告数据（如曝光、点击数据等）。
+                            <br />
+                            <span class="fontW">个人信息保护规则链接：</span><a href="https://qzs.gdtimg.com/union/res/union_cdn/page/dev_rules/ylh_sdk_privacy_statement.html" rel="nofollow">优量汇SDK个人信息保护规则</a>
+                            <br />
+                            <span>如您对如何披露数据仍有疑问，可登录优量汇开发者平台-反馈中心，与我们技术支持团队取得联系。</span>
+                            <br /><br />
+                            <span class="fontW">
+                               APP支付客户端SDK
+                            </span>
+                            <br />
+                             <span class="fontW">第三方名称：</span>支付宝(杭州)信息技术有限公司
+                            <br />
+                            <span class="fontW">使用目的：</span>
+                                <span class="listSpan">1.保障用户账户和资金安全以及支付服务的安全稳定运行</span>
+                                <span class="listSpan">2.履行反洗钱、反恐怖融资、反电信网络诈骗等法定义务。</span>
+                                <span class="listSpan">3.实现网络链路的选择和优化，以提升用户体验。</span>
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">SDK 隐私说明链接：</span><a href="https://opendocs.alipay.com/open/54/01g6qm#%E6%94%AF%E4%BB%98%E5%AE%9D%20App%20%E6%94%AF%E4%BB%98%E5%AE%A2%E6%88%B7%E7%AB%AF%20SDK%20%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96" rel="nofollow">APP支付客户端SDK 隐私说明</a>
+                            <br /><br />
+                            <span class="fontW">
+                              百度OAuth SDK
+                            </span>
+                            <br />
+                            <span class="fontW">服务及用途：</span>
+                                <span class="listSpan">1.为了帮助开发者向最终用户提供登录授权功能。</span>
+                                <span class="listSpan">2.为帮助开发者保障登录功能的正常生效和安全稳定。</span>
+                                <span class="listSpan">3.为了确保设备系统兼容、定位解决问题。</span>
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://openauth.baidu.com/doc/agreement.html" rel="nofollow">百度OAuth SDK</a>
+                            <br /><br />
+                            <span class="fontW">
+                                阿里云盘SDK
+                            </span>
+                            <br />
+                            <span class="fontW">第三方名称：</span>杭州阿里巴巴网络科技有限公司
+                            <br />
+                            <span class="fontW">服务及用途：</span>
+                            <span class="listSpan">1.为了帮助开发者向最终用户提供登录授权功能。</span>
+                            <span class="listSpan">2.为帮助开发者保障登录功能的正常生效和安全稳定。</span>
+                            <span class="listSpan">3.为了确保设备系统兼容、定位解决问题。</span>
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://terms.alicdn.com/legal-agreement/terms/suit_bu1_alibaba_group/suit_bu1_alibaba_group202102022125_53871.html?spm=aliyundrive.index.0.0.7db16f602DEAhl" rel="nofollow">阿里云盘SDK</a>
+                            <br /><br />
+                            <span class="fontW">
+                               小红书分享SDK
+                            </span>
+                            <br />
+                            <span class="fontW">第三方名称：</span>行吟信息科技有限公司
+                            <br />
+                            <span class="fontW">服务及用途：</span>内容分享
+                            <br />
+                            <span class="fontW">收集的个人信息类型：</span>设备标识信息、网络连接信息、应用信息（宿主应用的包名、版本号）、广告数据（如曝光、点击数据等）、应用安装列表、 系统设置、系统属性、设备型号、设备品牌、操作系统、IP 地址、网络类型、运营商信息、Wi-Fi 状态、Wi-Fi 参数、Wi-Fi 列表、应用安装列表、用户名/手机号/邮箱（用户主动填写）、当前网络状态及类型、日志信息 、设备标识符（IMEI、Android ID、OAID、IMSI、ICCID、GAID、MEID，硬件序列号/Serial，iOS如IDFV、IDFA），设备MAC地址，WLAN接入点（如SSID、BSSID），精确位置信息、粗略位置信息，设备传感器信息（加速度传感器、陀螺仪传感器、线性加速度传感器、磁场传感器、旋转矢量传感器）。
+                            <br />
+                            <span class="fontW">隐私政策链接：</span><a href="https://agree.xiaohongshu.com/h5/terms/ZXXY20230525001/-1" rel="nofollow">小红书分享SDK</a>
+                            <br /><br />
+                        </p>
+                    </div>
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>四、	如何使用Cookie和个性化推荐技术</b>
+                            </span>
+                            <ul class="listUl">
+                                <li>我们是一家专注提供学习软件的公司，而不是大数据或广告公司。因此，我们会避免在自己的网站和软件中，使用跟踪用户的技术。</li>
+                                <li>我们仅使用Cookie来保存用户的登录信息，而不会将其作为用户数据标识。</li>
+                                <li>在用户退出账号时，相关的Cookie标识会在设备上被清除。</li>
+                                <li>我们<b>不会</b>通过机器学习或类似技术来跟踪用户。</li>
+                                <li>我们<b>不会</b>通过机器学习或类似技术对用户进行个性化资源推荐。</li>
+                                <li>我们<b>不会</b>通过机器学习或类似技术对用户进行个性化消息推送。</li>
+                                <li>部分第三方服务商提供的SDK会内置个性化推荐技术。有道广告SDK：会基于您向我们提供的信息、我们可能收集的信息及我们通过间接方式收集到的您的信息，用于提取您的浏览、搜索偏好、行为习惯相关特征，以便向您提供更契合您需求的页面展示和推荐个性化内容。您可以通过“登录APP账号-头像-右上角设置按钮-个性化推荐”关闭个性化推荐。</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>五、Ai相关技术</b>
+                            </span>
+                            <ul class="listUl">
+                                <li>在使用文字翻译、语法纠错、自动字幕生成、Ai口语对话等Ai相关服务时，用户会向我们平台传输数据。 这些数据仅用于响应用户的请求，并在处理完成后直接删除。</li>
+                                <li>在使用文档问答时，用户上传的文档会被持久保存在数据库中，这些数据仅用来响应用户的问答请求。当遇到错误时，技术可以在后台访问到这些数据并且分析错误原因。</li>
+                                <li>用户的操作记录明细会记录在App的Ai历史记录中，用户可以通过工单要求清除自己的历史记录。</li>
+                                <li>我们不会使用用户上传的数据进行Ai功能的训练。</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>六、如何使用您的个人信息</b>
+                            </span>
+                            <span class="titlemin">在收集您的个人信息后，欧路软件将根据如下规则使用您的个人信息：</span>
+                            <ul class="listUl">
+                                <li>会根据本「隐私政策」的约定并为实现欧路软件的产品或服务功能对所收集的个人信息进行使用。</li>
+                                <li>请您注意，对于您在使用欧路软件的产品或服务时所提供的所有个人信息，除非您删除或通过相关设置拒绝我们收集，否则您将在使用产品或服务期间、账号注销前持续授权我们使用。但，在您注销账号时，欧路软件将停止使用并删除您的个人信息。</li>
+                                <li>欧路软件会对旗下产品或服务使用情况进行统计，并可能会与公众或第三方共享这些统计信息，以展示欧路软件产品或服务的整体使用趋势。但这些统计信息不会包含您的任何身份识别信息。</li>
+                                <li>当欧路软件要将您的个人信息用于本政策未载明的其它用途时，或将基于特定目的收集而来的信息用于其他目的时，欧路软件会主动事先征求您的明示同意。</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>七、如何保存您的个人信息</b>
+                            </span>
+                            <ul class="listUl">
+                                <li> 在用户使用欧路软件产品或服务期间，欧路软件会持续保存用户的个人信息。</li>
+                                <li>
+                                    欧路软件承诺始终按照法律的规定在合理必要期限内存储您个人信息，对于日志信息、记录备份等信息为您注销账号后180天（但根据法律规定有最短保存期限要求的，则我们会保存法律要求的最短期限）。在超出上述期限后，我们会对您的相关信息进行删除或匿名化处理。
+                                </li>
+                                <li>您的个人信息将全部被存储于中华人民共和国境内。</li>
+                                <li>目前我们不存在向境外提供个人信息的场景。</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>八、管理、查看或删除您的个人信息</b>
+                            </span>
+                            <span class="titlemin">欧路软件非常尊重您对自己的个人信息所享有的权利。我们保障您对个人信息所享有的访问、更正、删除、管理等权利。 <br /></span>
+                            <ul class="listUl">
+                                <li>
+                                    访问和更正您的个人信息
+                                    <ul class="minlistUl">
+                                        <li>
+                                            除法律法规另有规定之外，您有权行使数据访问权。当您发现我们处理关于您的个人信息有错误或者您有其他修改、补充需求时，您也有权要求我们或自行予以更正。您行使数据访问和更正权的方式包括但不限于：
+                                        </li>
+                                        <li>
+                                            1.1 如果您希望访问或修改您在欧路产品或服务中的账号信息，包括<span class="fontW">头像、昵称、邮箱、手机号、绑定的微信号</span>，您可以通过访问我们的产品或服务进行操作（可通过点击头像，进入个人主页后，点击对应信息即可编辑）。
+                                        </li>
+                                        <li>
+                                            1.2 如欧路的产品或服务中提供发表笔记、上传配音等功能并使得您有机会通过这些服务公开个人信息，则欧路在提供前述服务的同时会提供相应的功能确保您可以再次访问或删除您在前述服务过程中公开的个人信息。
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    删除您的个人信息及撤回已同意的授权
+                                    <ul class="minlistUl">
+                                        <li>
+                                            2.1 在以下情形中，您可以向欧路软件提出删除个人信息的请求：
+                                            <ul class="minlistUl">
+                                                <li><span class="liMargin">2.1.1 如果欧路软件处理个人信息的行为违反相关的法律法规；</span></li>
+                                                <li><span class="liMargin">2.1.2 如果欧路软件收集、使用您的个人信息，却未征得您的同意；</span></li>
+                                                <li><span class="liMargin">2.1.3 如果欧路软件处理个人信息的行为违反了与您的约定或法律的规定；</span></li>
+                                                <li><span class="liMargin">2.1.4 如果您不再使用欧路软件的产品或服务，或者您注销了相关账号；</span></li>
+                                                <li><span class="liMargin">2.1.5 如果欧路软件不再为您提供产品或服务。</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            2.2 您有权向欧路软件撤回您此前作出的有关同意收集、使用您的个人信息的授权。当您撤回同意后，我们将不再处理您的相关个人信息。
+                                        </li>
+                                        <li>
+                                            2.3 您可以通过删除相关个人信息的方式撤回您此前就特定个人信息而对我们作出的同意授权。
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    注销账号
+                                    <ul class="minlistUl">
+                                        <li>
+                                            3.1 <span class="fontW">您有权随时注销您在欧路产品或服务中注册的账号。</span>为保障账号及财产安全，您需要通过客户服务或本「隐私条款」第十章载明的联系方式向欧路提出您的账号注销请求。欧路将在与您核实相关信息后对您的请求作出响应，将在3个工作日内完成您的账号注销请求。
+                                        </li>
+                                        <li>
+                                            3.2 请您注意，注销欧路相关产品或服务账号是不可恢复的操作。在注销账号之后，我们将停止为您提供产品或服务，并将删除该账号项下的您的个人信息，除非法律法规另有规定。
+                                        </li>
+                                        <li>
+                                            3.3 获取个人信息资料
+                                        </li>
+                                        <li>
+                                            根据您的请求，欧路可以向您提供欧路持有的有关您的个人信息资料。您可以通过客户服务或本「隐私条款」第十章载明的联系方式向我们提出请求。
+                                        </li>
+                                        <li>
+                                            3.4 响应您的上述请求
+                                        </li>
+                                        <li>
+                                            如果您对欧路在以上列明的有关访问、更正、删除您的个人信息，以及撤回同意、注销账号有任何疑问，您可以通过客户服务或本「隐私政策」第十章载明的联系方式与我们取得联系。
+                                        </li>
+                                        <li>
+                                            对于您的上述请求，欧路软件不收取任何费用。对于那些无端重复、需要过多技术手段、给他人合法权益带来风险或者非常不切实际的请求，欧路可能会予以拒绝。
+                                        </li>
+                                        <li>
+                                            3.5 在以下情形下，我们可能无法响应您的请求:
+                                            <ul class="minlistUl">
+                                                <li><span class="liMargin">3.5.1 与国家安全、国防安全有关的；</span></li>
+                                                <li><span class="liMargin">3.5.2 与公共安全、公共卫生、重大公共利益有关的；</span></li>
+                                                <li><span class="liMargin">3.5.3 与犯罪侦查、起诉和审判等有关的；</span></li>
+                                                <li><span class="liMargin">3.5.4 有证据表明您存在主观恶意或滥用权利的；</span></li>
+                                                <li><span class="liMargin">3.5.5 响应您的请求将导致其他个人、组织的合法权益受到严重损害的；</span></li>
+                                                <li><span class="liMargin">3.5.6 涉及商业秘密的。</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    申诉机制
+                                    <ul class="minlistUl">
+                                        <li>
+                                            欧路已经建立申诉管理机制，包括跟踪流程等。为了保障账号及财产安全，欧路可能会与您核实相关信息。欧路将在收到您的反馈后尽快答复您的请求，最长不超过15天。若您对答复意见不满意，您可以再次联系欧路客服进行申诉。
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>九、未成年人信息的保护</b>
+                            </span>
+                            <ul class="listUl">
+                                <li>
+                                    欧路软件非常重视对未成年人信息的保护。若您是 18 周岁以下的未成年人，在使用我们的产品和/或服务前，您应在监护人的陪同下阅读本指引，并应确保已征得您的监护人同意后使用我们的服务并向我们提供您的信息。我们会根据国家相关法律法规的规定着重保护未成年人的个人信息。
+                                </li>
+                                <li>
+                                    如您的监护人不同意您按照本指引使用我们的服务或向我们提供信息，请您立即终止使用我们的服务。
+                                </li>
+                                <li>
+                                    对于经父母或法定监护人同意而收集未成年人个人信息的情况，我们只会在受到法律允许、父母或监护人明确同意或者保护未成年人所必要的情况下使用或公开披露此信息。
+                                </li>
+                                <li>
+                                    若您是未成年人的监护人，当您对您所监护的未成年人使用我们的服务或其向我们提供的用户信息有任何疑问时，请您及时与我们联系。我们将根据国家相关法律法规及本指引的规定保护未成年人用户信息的保密性及安全性。如果我们发现自己在未事先获得可证实的父母或法定监护人同意的情况下收集了未成年人的个人信息，则会设法尽快删除相关数据。
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>十、隐私政策如何更新</b>
+                            </span>
+                            <ul class="listUl">
+                                <li>
+                                    如欧路产品或服务发生以下变化，欧路软件将及时对本「隐私政策」进行相应的修订：
+                                    <ul class="minlistUl">
+                                        <li>1.1 欧路产品或服务所涉业务功能发生变更，导致处理个人信息的目的、类型、使用方式发生变更；</li>
+                                        <li>1.2 您参与个人信息处理方面的权利及其行使方式发生重大变化；</li>
+                                        <li>1.3 欧路软件负责处理您的个人信息安全的部门的联络方式发生变更；</li>
+                                        <li>1.4 发生其他可能影响用户个人信息安全或影响用户隐私权利的变更等。</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    「隐私政策」修订后欧路会在欧路产品或服务相关界面发布最新版本并以闪屏、推送通知等合理的方式告知用户，以便用户及时了解「隐私政策」的最新版本。
+                                </li>
+                                <li>
+                                    未经您的明确同意，欧路软件不会削减您基于本「隐私政策」所享有的权利。
+                                </li>
+                                <li>
+                                    如无特殊说明，修订后的「隐私政策」自公布之日起生效。
+                                </li>
+
+                            </ul>
+                        </p>
+                    </div>
+
+
+                    <div class="commonDiv">
+                        <p class="ft_general2">
+                            <span class="contactTitle">
+                                <b>十一、投诉及建议</b>
+                            </span>
+                            <ul class="listUl listNoStyle">
+                                <li>
+                                    您在使用欧路软件产品或服务的过程中，如果对本「隐私政策」有任何的疑义或建议，或您认为您的个人信息没有得到本「隐私政策」规定的保护，您可以通过以下方式联系我们，我们将真诚地处理您的投诉及建议，并在15个工作日内完成核查和处理。
+                                </li>
+                                <li> 公司名称：上海欧路信息科技有限公司</li>
+                                <li> 意见反馈与投诉：help@eudic.net</li>
+                                <li> 联系电话： 400-920-1209 （工作日 北京时间10:00 - 18:00）</li>
+                            </ul>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+<footer>
+    <div id="footer">
+        <div class="nav-bar">
+            <a href="http://dict.eudic.net/Home/Ads">广告联系</a><span class="sp">|</span>
+                 <a href="http://www.eudic.net/Support/question.aspx">意见反馈</a><span class="sp">|</span>
+                 <a href="http://www.eudic.net/Company/relation.aspx">合作伙伴</a><span class="sp">|</span>
+                 <a href="http://www.eudic.net/Company/about.aspx">关于欧路在线词典</a><span class="sp">|</span><a href="/Home/SwitchView?mobile=True&amp;returnUrl=%2F" rel="external">手机版网站</a> <span class="sp">|</span> <a href="/dicts/hotwords">英语热词榜</a><span class="sp">|</span> <a href="https://dict.eudic.net">HTTPS</a><span class="sp">|</span> <a href="https://www.qianyanlab.com/">AI英文写作</a><span class="sp">|</span> <a href="https://www.rediger.ai/">Rédiger多语言写作</a>
+                 <span class="copyright">欧路软件 ©2025 词库版本20250826 <a href="http://beian.miit.gov.cn">沪ICP备08016489号</a>  沪公网安备 31011602001726号</span>
+        </div>
+    </div>
+</footer>
+<script>
+    $(function () {
+        if ($("#soundPlayer").length && $.fn.ubaPlayer) {
+            $("#soundPlayer").ubaPlayer();
+        }
+    });
+</script>
+       <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6J9FB2R7F4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6J9FB2R7F4');
+</script>
+    </body>
+</html>
