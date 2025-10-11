@@ -2,7 +2,7 @@
 _base=trame-simput
 pkgname=python-${_base}
 pkgdesc="Simput implementation for trame"
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-iron npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('697036ecfed828d0c002c8ce11b7e08681a6d69bf6acf2f67003d91f0a17963bea87d50734307836e3e0c5824cace823b0cce6cbf4220ea7545fd4014f55c35d')
+sha512sums=('9958bddf1a36ecf2e17caba56ae3cfb1122674aa37f401824f04b58c583d19a1fc7ad178766db6e27b2e1935b95ca505a6b3cccd8a046f23dc2c0e1a848c858e')
 
 build() {
   # Workaround: https://stackoverflow.com/a/69746937/9302545
