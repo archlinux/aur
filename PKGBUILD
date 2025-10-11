@@ -2,7 +2,7 @@
 pkgname=bashhub-server
 # renovate: datasource=github-releases depName=nicksherron/bashhub-server
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='a private cloud alternative for bashhub-client with some added features like regex search.'
 arch=('x86_64')
 url='https://github.com/nicksherron/bashhub-server'
@@ -44,7 +44,7 @@ build () {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
