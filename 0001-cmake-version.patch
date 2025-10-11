@@ -1,0 +1,5 @@
+--- CMakeLists.txt     2021-10-28 21:47:37.898062662 +0200
++++ CMakeLists.txt     2021-10-28 21:47:48.154677016 +0200
+@@ -1,1 +1,1 @@
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.5)
