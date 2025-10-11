@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
-pkgver=r444.f5d4ecb
+pkgver=r454.23a7a0a
 pkgrel=1
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
@@ -35,6 +35,7 @@ package(){
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/krpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/resources/7zr -t $pkgdir/usr/lib/twintaillauncher/resources/
+	install -Dm755 $_pkgname/src-tauri/target/release/resources/reaper -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm644 $_pkgname/src-tauri/target/release/resources/hkrpg_patch.dll -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_pkgname/src-tauri/target/release/twintaillauncher -t $pkgdir/usr/bin
 	install -Dm644 $_pkgname/twintaillauncher.desktop -t $pkgdir/usr/share/applications
