@@ -14,15 +14,55 @@ pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
-depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'python-sympy' 'protobuf' 'qt6-base' 'eigen'
-         'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
-         'python-networkx' 'python-filelock' 'vulkan-icd-loader')
+depends=(
+  eigen
+  gflags
+  google-glog
+  intel-oneapi-mkl
+  libuv
+  numactl
+  openmp
+  openmpi
+  protobuf
+  pybind11
+  python
+  python-filelock
+  python-jinja
+  python-networkx
+  python-numpy
+  python-sympy
+  python-typing_extensions
+  python-yaml
+  qt6-base
+  vulkan-icd-loader
+)
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'nccl' 'cudnn' 'git' 'python-triton' 'python-aotriton' 'rocm-toolchain' 'rocm-hip-sdk'
-             'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
-             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
+makedepends=(
+  cmake
+  cuda
+  cudnn
+  doxygen
+  git
+  hipblaslt
+  magma-cuda
+  magma-hip
+  miopen-hip
+  nccl
+  ninja
+  onednn
+  pkgconfig
+  python
+  python-aotriton
+  python-numpy
+  python-setuptools
+  python-triton
+  python-yaml
+  rocm-hip-sdk
+  rocm-toolchain
+  roctracer
+  shaderc
+  vulkan-headers
+)
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
