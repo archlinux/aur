@@ -1,0 +1,5 @@
+[clipvault-bin]
+source = "github"
+github = "Rolv-Apneseth/clipvault"
+use_latest_release = true
+prefix = "v"

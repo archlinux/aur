@@ -1,0 +1,22 @@
+pkgbase = clipvault-bin
+	pkgdesc = Clipboard history manager for Wayland, inspired by cliphist
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/Rolv-Apneseth/clipvault
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	depends = gcc-libs
+	depends = glibc
+	provides = clipvault
+	conflicts = clipvault
+	source = LICENSE-1.0.5::https://raw.githubusercontent.com/Rolv-Apneseth/clipvault/v1.0.5/LICENSE
+	source = README-1.0.5.md::https://raw.githubusercontent.com/Rolv-Apneseth/clipvault/v1.0.5/README.md
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	sha256sums = 11ddeb2214c7227d6a499f5e20604eff2ee213c953dd11a864bb03629adbc58f
+	source_x86_64 = clipvault-x86_64-1.0.5.tgz::https://github.com/Rolv-Apneseth/clipvault/releases/download/v1.0.5/clipvault-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fcbc8285f94fe38ba236c3646af6a51b99e76800d03e713ee2209b9e6e5f236d
+	source_aarch64 = clipvault-aarch64-1.0.5.tgz::https://github.com/Rolv-Apneseth/clipvault/releases/download/v1.0.5/clipvault-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fff186b699e749b7503ef9aecfa38e195cffa875439e685f0ef14c7a999f0776
+
+pkgname = clipvault-bin
