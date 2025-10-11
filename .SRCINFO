@@ -1,5 +1,5 @@
 pkgbase = kripton-authenticator
-	pkgdesc = A simple terminal-based TOTP authenticator written in Rust
+	pkgdesc = A secure, command-line Time-based One-time Password (TOTP) authenticator application written in Rust. It securely stores your TOTP secrets using AES-256-GCM encryption and Argon2id for strong master key derivation.
 	pkgver = 1.0.0
 	pkgrel = 11
 	epoch = 1
