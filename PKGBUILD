@@ -4,7 +4,7 @@ _pkgauthor=abenz1267
 _pkgname=elephant
 pkgbase=${_pkgname}-bin
 pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin)
-pkgver=2.1.1
+pkgver=2.1.2
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="general purpose datasource and executor"
@@ -49,20 +49,20 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                "bluetooth-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/bluetooth-linux-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0a8e339b754aa6874408fe0c9af777271c8be086d7ccfc2732c1cac84f7b4311')
-sha256sums_x86_64=('04c7b95970568d30f0599ee922416def648ecac00f0f7b676898024ab5b07f24'
-                   '3d489ddc0351cbbd6b2d3b6ca2e2185f444a84ccd51d04b8dd5673d31fc00836'
-                   'fd64cd2895a71685a29053718728b8f077d4c0bf2face07e9075628777f77cbb'
-                   '1673e1b858350f16418ca51276639c6e3f8b067ad75410ddacfd42aa2890cb5f'
-                   'd14412ddde751f4168f2f0bb560751d6acb47517802c013e421655459be6d679'
-                   '0f8cf828fcfe1e86374294922853851555649081a82a27536b4d9e24a8b874cb'
-                   '50c3bc79e661ae3a3ac1387631f8c81417c58d670f572ccecfd32b03b588a429'
-                   '26ac0a92d63373df8a588a3b374f4617fe1a885f1b8d8078aca142da8bf42370'
-                   '60e8865965bd0d21216258c8c31fa0ba03e51ce0d722c5d882f1474fa48c0f6f'
-                   '62e1aa7de11aea494627ff2403a671644b651bf63d1e7ad5642067834437a253'
-                   'ea6212d20a6e020b6cdedc709ed95381fc6a13cbb127874153920a3d7605d2c2'
-                   'de8da86b1449c84ffdafef489c369c42ec6f16a7b3db720fce1d3d85cec83c88'
-                   '9a226ace2889a1c25a0a0f78975bd4add3adc4ea3019b14eb80f1b24507567d3'
-                   'a224a7c319f2a1bfa45f920a95d4ceee3f00e0b33b46f118f6765acacf0b3c56')
+sha256sums_x86_64=('dee1c793665927b148023a6b8047371ffe9a9410891edb5f2f514afaa24cbfd1'
+                   '8cc80014eec1410f9e233e14fc345818cfad915287aab56fefeea5091cb71da8'
+                   '0927e0d5e2863d2f7b845ac888e0b8a7cb4ed0f50dba30d52221d51aba25dacf'
+                   '956b87c2a1c425d1d112063a8d1871e659ab652c1484882cb9c29ed1df51d964'
+                   '6d1d1ae4f178e3e4db049097c0721648a0f6bf7b1238ccddd86274bc7d846ccc'
+                   '9b3a0ff57522aaa3129d2b859e8be582a21a1bcdf580db15338943fe6027d474'
+                   '1ef02982da8d1a8a844f11c81f667b1cd314e9ac462c51abb6073b3d91747eb2'
+                   'e2313919aa0f2b4739bd17e5615b9f7c8a9e417c03e777485af3ee68240d993d'
+                   'd286f685c6993c4b5c62061d2634dda16ecc8785301e9005241c1072e3b0d46c'
+                   '310a1f66761e316415ef165d2fed3253c2a6ec7b85be403011501c3045a072cf'
+                   '6161ec6455f8a956b105c624dea53dcfb9befd911daa2f6d70c9e76267ed0d9b'
+                   'a8f011cd56f5db93cb0e2c64df3313587dd64e8c6ae6db69c37e05bece3daed7'
+                   '53f332c78d90cd4219a079e8b8eb6fc1b230c7583dcc5d541c1fdd94b9d71069'
+                   '0ccc497d3b57e013eac00ac34576f3fd4ca2ec9db04c5f2c0686a217cad04267')
 
 case $CARCH in
     ${arch[0]})
