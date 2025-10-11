@@ -1,7 +1,7 @@
 pkgbase = kubectl-find
 	pkgdesc = plugin for kubectl that gives you a UNIX find-like experience
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alikhil/kubectl-find
 	arch = x86_64
 	arch = aarch64
