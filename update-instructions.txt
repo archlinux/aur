@@ -1,0 +1,11 @@
+# update the url for the cdn first, then pull it down and update the checksum
+rm -rf src pkg
+makepkg -od --skipchecksums
+updpkgsums
+
+# check install
+makepkg -si
+magelab  # verify it launches
+
+# update SRCINFO
+makepkg --printsrcinfo > .SRCINFO
