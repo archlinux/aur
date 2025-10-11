@@ -93,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.16
-pkgver=${_major}.9
+pkgver=${_major}.11
 _branch=6.x
 xanmod=1
 _revision=
@@ -140,7 +140,7 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83' # kernel
             'SKIP'                                                             # kernel signature
-            '13a8f2caeacabd96732bf98cd41fb5f4e8fcb9e8837fed961ccaaece19915b19' # xanmod patch
+            '1b41098d79b8a0eb3594a0648403a48a7d3dd3be65d37c075cb350813e67b72e' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
             'c22d86bafe2de9008b94b9cc937bf8ca818cc7954fee481bd756f5a333791a28' # 0001-bore.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0002-glitched-cfs.patch
