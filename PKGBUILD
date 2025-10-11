@@ -6,7 +6,7 @@
 # Contributor: Tsekhovoy Eugene aka Krash <8552246@gmail.com>
 
 pkgname=mc-git
-pkgver=4.8.32.r205.g17c2a65cd
+pkgver=4.8.33.r353.g32b7a14c4
 pkgrel=1
 pkgdesc='A file manager that emulates Norton Commander'
 arch=('x86_64')
