@@ -1,7 +1,7 @@
 pkgbase = chiaki-ng
 	pkgdesc = Free and Open Source PlayStation Remote Play Client
 	pkgver = 1.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://streetpea.github.io/chiaki-ng/
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = chiaki-ng
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
+	depends = qt6-webengine
 	depends = sdl2
 	depends = speexdsp
 	depends = zlib
@@ -39,6 +40,8 @@ pkgbase = chiaki-ng
 	provides = chiaki
 	conflicts = chiaki
 	source = git+https://github.com/streetpea/chiaki-ng.git#commit=3f8fd712cbc0becd3a5ea588340d72bf451c12b5
+	source = Qt6GuiPrivate-fix.patch
 	sha256sums = 2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354
+	sha256sums = 121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f
 
 pkgname = chiaki-ng
