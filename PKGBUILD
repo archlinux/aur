@@ -5,23 +5,23 @@
 
 pkgname=applecommander
 _pkgname=AppleCommander
-pkgver=12.0
+pkgver=13.0
 pkgrel=1
 pkgdesc="Tool that manipulates Apple ][ disk images"
 arch=(any)
 url="https://applecommander.github.io/"
 license=(GPL-2.0-only)
-depends=("archlinux-java-run>=7" bash "java-runtime>=21")
+depends=("archlinux-java-run>=7" "bash" "java-runtime>=21")
 optdepends=('gtk3: Graphical User Interface')
-makedepends=(gradle "java-environment>=21")
+makedepends=("java-environment>=21" "java-environment<25")
 source=(https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz
         applecommander-ac.sh
         applecommander-acx.sh
         applecommander-gui.sh)
-sha256sums=('8dee7196c2d0dc324bf2d8aeab07be2895092c6c8b0bb4111a9cd1f24d9b526e'
-            'd7b1ddd2d4bf0eb5a1fd595352cd36b645f1342e1da427a01579bef779b29714'
-            '35bfb9831c1f0411a2ea60b7f33c671dda4accbb413ac94ae8320450d9325a42'
-            '034f41f16c0200e398c3a019359c6c30978eb857fec4e5eb97948f962e79e0dc')
+sha256sums=('fd4565f99b0b2f880d780676d99df01c58d38370587777f814b8db1ad9e9ea76'
+            '15f72733b20fc738e556d15ca448b5f4db96134af38e50c6853f1884e591a9e2'
+            '9bcdc1c58962b85638de83eeb68c3e603ef627210da10bc5ab04e3b83d6c541d'
+            'd6ea6feb7790c7992c2753a65b42f4e7da79d70a4efb8a4af019c0f8b27353ba')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -29,11 +29,11 @@ build() {
   mkdir -p "${srcdir}"/gradle
   export GRADLE_USER_HOME=${srcdir}/gradle
 
-  export JAVA_HOME=$(archlinux-java-run -a 21 -f jdk -j)
+  export JAVA_HOME=$(archlinux-java-run -a 21 -b 24 -f jdk -j)
   echo "Using JDK from $JAVA_HOME to build AppleCommander."
 
-  # ./gradlew \
-  /usr/bin/gradle \
+  # /usr/bin/gradle \
+  ./gradlew \
     --no-daemon \
     assemble
 }

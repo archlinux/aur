@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/java -jar /usr/share/java/applecommander/AppleCommander-gtk.jar "$@"
+/usr/bin/archlinux-java-run -a 21 -- -jar /usr/share/java/applecommander/AppleCommander-gtk.jar "$@"
