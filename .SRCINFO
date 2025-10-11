@@ -1,0 +1,17 @@
+pkgbase = kubepug
+	pkgdesc = kubernetes Pre UpGrade (Checker)
+	pkgver = 1.7.1
+	pkgrel = 2
+	url = https://github.com/kubepug/kubepug
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache-2.0
+	makedepends = go
+	depends = kubectl
+	depends = glibc
+	source = https://github.com/kubepug/kubepug/archive/v1.7.1/kubepug-1.7.1.tar.gz
+	sha512sums = a04411b6e51a9ffa49c80c23391546478dc912bafffff85dcdaf931167f9cc4844120360871d177120c7f50b04e01a40fbf0694759dc5973ec5ee18d8d285d6d
+	b2sums = 75bbfcf15c8cba49f58c33f9ffd43c180d54f9cecd766068c9f1fcd3dc855a02a387a9803f81369c31ed608e4657a035899b85d2422171b89e8fd45ac3300df9
+
+pkgname = kubepug
