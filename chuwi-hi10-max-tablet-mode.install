@@ -1,0 +1,14 @@
+post_install() {
+  echo "-----------------------------------------------------------------"
+  echo "⚠️  WARNING:"
+  echo "This kernel module is only meant to be used if `ilitek_ts_i2c` is blacklisted."
+  echo "This is due to the `ilitek_ts_i2c` providing tablet mode detection, but at the same time"
+  echo "it prevents the use of the stylus!"
+  echo ""
+  echo "So if you use this module, you should disable the ilitek_ts_i2c module instead!"
+  echo "It is undefined behaviour if both modules are enabled."
+  echo "    echo 'blacklist ilitek_ts_i2c' | sudo tee /etc/modprobe.d/blacklist-ilitek_ts_i2c.conf"
+  echo ""
+  echo "Then reboot the device."
+  echo "-----------------------------------------------------------------"
+}

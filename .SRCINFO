@@ -1,0 +1,15 @@
+pkgbase = chuwi-hi10-max-tablet-mode-dkms
+	pkgdesc = Kernel module for Chuwi Hi10 Max tablet mode detection
+	pkgver = r12.683dfae
+	pkgrel = 1
+	url = https://github.com/aligator/tablet-mode
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	provides = tablet-mode=r12.683dfae-1
+	conflicts = tablet-mode
+	source = git+https://github.com/aligator/tablet-mode.git
+	md5sums = SKIP
+
+pkgname = chuwi-hi10-max-tablet-mode-dkms-git
