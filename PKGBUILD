@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=sshguard-git
-pkgver=2.4.3.r28.gb66e70f
+pkgver=2.5.1.r15.gfbce1e1
 pkgrel=1
 pkgdesc="Brute force detector for SSH, Exim, VSFTPD and more. Blocks by ip with iptables"
 arch=('i686' 'x86_64')
@@ -16,18 +16,15 @@ conflicts=('sshguard')
 provides=('sshguard')
 backup=('etc/sshguard.conf')
 source=("git+https://bitbucket.org/sshguard/sshguard.git"
-        "0001-fix-missing-headers.patch"
         "sshguard.service"
         "sshguard.tmpfile")
 sha256sums=('SKIP'
-            '36aad782d440b4cd70f5fcb4d1b8b253ddce1f516d3ca7de648ceef18ad3b7ae'
             '5dda7a47c11898142fcc21cf8e76c0c7009814a0d924675feacb3df084a0fa1b'
             'cd2ba683f25a650a29dd465ec7eb507826af46822d1a1ea6116a052c77c4148f')
 
 prepare() {
     cd sshguard
     sed -i 's|tables.target|tables.service|g' examples/sshguard.service
-    patch -p1 < ../0001-fix-missing-headers.patch
     autoreconf -i
 }
 
