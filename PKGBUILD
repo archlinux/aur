@@ -4,7 +4,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.25
-pkgrel=2
+pkgrel=3
 pkgdesc='MPD with patches for SACD and DVD-A ISO playback.'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -29,7 +29,7 @@ source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git'
 sha1sums=('SKIP'
           '7c7de7b30c6c8e1c705dd415692f6a08a3f62c82'
           'd82864959d1a1a07bf75d87c7586dbb713892f3a'
-          '4a2b88fd52433c88f727caf279adbae23448c24a')
+          '77d6ba1fb8cd2c7f39bd7f7ce174928b97a95e87')
 backup=('etc/mpd.conf')
 
 prepare() {
