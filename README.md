@@ -1,6 +1,6 @@
 # cfgprf
 
-tool for exporting and importing ~/.config files, packages and AUR packages for Arch Linux.
+tool for exporting and importing files in config ~/.config, packages and AUR packages for Arch Linux.
 
 install with:
 ```
