@@ -1,6 +1,6 @@
 # Maintainer: Andrew Kozik <andrewkoz at live dot com>
 pkgname=xwin
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc='Allows downloading and repacking the MSVC CRT and Windows SDK for cross compilation'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache' 'MIT')
 depends=('glibc')
 makedepends=('cargo' 'clang' 'lld')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('524ca49a2ace663f105ea14006a1ead16f5ba53c2159a6959f562d5f746e8b06')
+sha256sums=('ecd045a65c53caacf9db1f14f7a463f9b5d71d942bf6e0cf9b4dde00f8713c53')
 
 prepare() {
     cd "$pkgname-$pkgver"
