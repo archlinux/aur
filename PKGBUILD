@@ -48,12 +48,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}/test"
+  cd "${srcdir}/${_pkgsrc}/test"
   make check-local
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
   cd "doc"
