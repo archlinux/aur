@@ -1,0 +1,19 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index ccf9c2a..6edca92 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -28,13 +28,10 @@ requires = [
+     # API temporarily restored and shim used. Please fix
+     # Setuptools will drop support for setup.py past 80
+     # min version for recursive glob package data support
+-    "setuptools>=62.3.0,<80.0",
++    "setuptools",
+     "wheel",
+-    "astunparse",
+     "numpy",
+-    "ninja",
+     "pyyaml",
+-    "cmake",
+     "typing-extensions>=4.10.0",
+     "requests",
+ ]

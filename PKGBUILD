@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.8.0
-pkgrel=7
+pkgrel=8
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -51,9 +51,9 @@ makedepends=(
   ninja
   onednn
   pkgconfig
-  python
   python-aotriton
-  python-numpy
+  python-build
+  python-installer
   python-setuptools
   python-triton
   python-yaml
@@ -110,6 +110,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         add_gpu_targets_rocm.patch
         0001-Add-cmake-variable-USE_ROCM_CK.patch
         aotriton_disable_install.patch
+        pyproject.patch
         )
 b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd26f4a9bdd4042c0b740600705ab4216a88b81a3ef6409874d43d87afc'
         'SKIP'
@@ -157,6 +158,7 @@ b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'e77c8ad06e9956acac623e7fe9f7ab670cbc2807c4734ed36c297253567e6bd3eaefef2d24fb8746ca5f1f722308435913cb35b605792c8751ce41c37f82103b'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
+        '864362bedab4fc851593f35e7df4c4103bcbac4fb49cd7df37a46b78a8e51857140585b20304b44516450df9a693da89f7a33aa7693506c37111184edee59b10'
         )
 options=('!lto' '!debug')
 
@@ -281,6 +283,9 @@ prepare() {
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
+  # patch python dependencies in pyproject.toml
+  patch -p1 -i "${srcdir}/pyproject.patch"
+
   cd "${srcdir}"
 
   cp -r "${_pkgname}" "${_pkgname}-opt"
@@ -356,7 +361,7 @@ build() {
   export USE_CUDNN=0
   export USE_ROCM=0
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-opt"
   echo "Building without cuda or rocm and with non-x86-64 optimizations"
@@ -365,7 +370,7 @@ build() {
   export USE_CUDNN=0
   export USE_ROCM=0
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-cuda"
   echo "Building with cuda and without non-x86-64 optimizations"
@@ -376,7 +381,7 @@ build() {
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-opt-cuda"
   echo "Building with cuda and with non-x86-64 optimizations"
@@ -386,7 +391,7 @@ build() {
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
@@ -402,7 +407,7 @@ build() {
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   cd "${srcdir}/${_pkgname}-opt-rocm"
   echo "Building with rocm and with non-x86-64 optimizations"
@@ -415,14 +420,11 @@ build() {
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 _package() {
-  # Prevent setup.py from re-running CMake and rebuilding
-  sed -e 's/RUN_BUILD_DEPS = True/RUN_BUILD_DEPS = False/g' -i setup.py
-
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
