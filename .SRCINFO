@@ -1,0 +1,13 @@
+pkgbase = brother-dcpt735dw
+	pkgdesc = Driver for Brother DCP-T735DW printer
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=cn&lang=zh&prod=dcpt735dw_eu_cn
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	source = https://d.brother-movie.com/driver/4210/dcpt735dwpdrv-3.6.1-1.x86_64.rpm
+	md5sums = 05ea25d51abde2949218e54165b989b5
+
+pkgname = brother-dcpt735dw

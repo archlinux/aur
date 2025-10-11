@@ -9,6 +9,7 @@ url="https://support.brother.com/g/b/downloadtop.aspx?c=cn&lang=zh&prod=dcpt735d
 license=("EULA")
 source=("https://d.brother-movie.com/driver/4210/dcpt735dwpdrv-3.6.1-1.x86_64.rpm")
 md5sums=("05ea25d51abde2949218e54165b989b5")
+depends=("cups")
 
 package() {
     # Create necessary directory structure
