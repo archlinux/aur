@@ -1,13 +1,13 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=docker-machine-add-ssh
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds docker-machine ssh configuration to your personal ssh
 configuration"
 url="https://github.com/bulletmark/$pkgname"
 license=(GPL-3.0-or-later)
 arch=(any)
-depends=("python>=3.8", "python-argparse-from-file")
+depends=("python>=3.8" "python-argparse-from-file")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
