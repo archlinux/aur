@@ -2,7 +2,7 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgrel=2
+pkgrel=3
 pkgver=0.0.1
 _name="tuxnix-sway"
 pkgname="$_name"
@@ -10,18 +10,21 @@ pkgdesc='Sway configuration of tuxnix'
 url='https://codeberg.org/tuxnix/tuxnix-sway'
 arch=('any')
 license=('GLPv2-only')
-depends=('alacritty' 'bemenu' 'foot' 'sway' 'qt6ct' 'waybar')
+depends=('alacritty' 'bemenu' 'foot' 'htop' 'kdialog' 'sway' 'qt6ct' 'waybar')
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/tuxnix-sway')
 sha512sums=('SKIP')
 
 package() {
     cd "$srcdir/$_name"
-    install -Dm644 sway.config "$pkgdir/etc/skel/.config/sway/config"
+#    install -Dm644 sway.config "$pkgdir/etc/skel/.config/sway/config"
+    install -Dm644 sway-desktop.config "$pkgdir/etc/skel/.config/sway-desktop/config"
+    install -Dm644 sway-ardour.config "$pkgdir/etc/skel/.config/sway-ardour/config"
     install -Dm644 waybar.config "$pkgdir/etc/skel/.config/waybar/config"
     install -Dm644 style.css "$pkgdir/etc/skel/.config/waybar/style.css"
-    install -Dm644 dark-archlinux.png "$pkgdir/usr/share/backgrounds/arch/dark-archlinux.png"
+#    install -Dm644 dark-archlinux.png "$pkgdir/usr/share/backgrounds/arch/dark-archlinux.png"
     install -Dm605 keybindings-md.sh "$pkgdir/usr/local/bin/keybindings-md.sh"
     install -Dm605 keybindings-html.sh "$pkgdir/usr/local/bin/keybindings-html.sh"
+    install -Dm605 sway-switch "$pkgdir/usr/local/bin/sway-switch"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
