@@ -1,7 +1,7 @@
 pkgbase = sjmcl
 	pkgdesc = 🌟 A Minecraft launcher from @SJMC-Dev
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/UNIkeEN/SJMCL
 	arch = x86_64
 	license = GPL-3.0,custom:LICENSE.EXTRA
