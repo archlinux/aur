@@ -2,15 +2,14 @@
 
 pkgname=python-ffmpeg-progress-yield-git
 pkgver=1.0.3.r0.g9c60183
-pkgrel=1
+pkgrel=2
 pkgdesc='Run an FFmpeg command with its progress yielded'
 arch=(any)
 url=https://github.com/slhck/ffmpeg-progress-yield
 license=(MIT)
 depends=(ffmpeg python-tqdm)
 checkdepends=(ffmpeg procps-ng python-pytest-asyncio uv)
-#makedepends=(git python-build python-installer python-uv-build)
-makedepends=(git python-installer uv)
+makedepends=(git python-installer python-uv-build uv)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
