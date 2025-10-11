@@ -1,7 +1,7 @@
 pkgbase = nucleus-gtk4-git
 	pkgdesc = Chemistry educational software written in Python
 	pkgver = 1.r31.gb17df957
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/lo-vely/nucleus
 	arch = any
 	license = GPL-3.0-or-later
@@ -13,6 +13,8 @@ pkgbase = nucleus-gtk4-git
 	depends = libadwaita
 	depends = python-gobject
 	depends = python
+	provides = nucleus-gtk4
+	conflicts = nucleus-gtk4
 	source = git+https://codeberg.org/lo-vely/nucleus.git
 	sha256sums = SKIP
 
