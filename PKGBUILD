@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pkglog
-pkgver=1.33.1
+pkgver=1.34
 pkgrel=1
 pkgdesc="Reports log of package updates"
 url="https://github.com/bulletmark/$pkgname"
 license=(GPL-3.0-or-later)
 arch=(any)
-depends=("python>=3.10")
+depends=("python>=3.10", "python-argparse-from-file")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('b26f056e7a177f723568dc744ddf3e11481a253c')
+sha1sums=('6851042bef5088cc58718a1a1d5a74db892c1b62')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
