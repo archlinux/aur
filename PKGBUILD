@@ -2,7 +2,7 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1861_2025.05.02
+pkgver=1921_2025.09.28
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
@@ -27,6 +27,7 @@ depends=(
         'qt6-base'
         'qt6-declarative'
         'qt6-svg'
+        'qt6-webengine'
         'sdl2'
         'speexdsp'
         'zlib'
@@ -46,8 +47,10 @@ optdepends=(
 )       # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
 provides=('chiaki')
 conflicts=('chiaki' 'chiaki-ng')
-source=(git+"https://github.com/streetpea/${_gitname}.git")
-sha256sums=('SKIP')
+source=(git+"https://github.com/streetpea/${_gitname}.git"
+       "Qt6GuiPrivate-fix.patch")
+sha256sums=('SKIP'
+            '121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f')
 
 
 pkgver() {
@@ -65,6 +68,8 @@ prepare() {
   git rm third-party/curl
   # Fix curl lib name
   sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
+  # Patch missing CMake module
+  patch -Np1 -i "${srcdir}/Qt6GuiPrivate-fix.patch"
   # Initialize remaining submodules
   git submodule update --init
 }
