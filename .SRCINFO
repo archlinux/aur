@@ -1,7 +1,7 @@
 pkgbase = obs-roi-ui
 	pkgdesc = Region of Interest Editor for OBS Studio 30.1+
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsproject.com/forum/resources/encoder-region-of-interest-editor.1904/
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = obs-roi-ui
 	depends = glibc
 	depends = gcc-libs
 	depends = ffmpeg
-	depends = qt6-base
+	depends = qt6-base>=6.10
 	options = debug
 	source = obs-roi-ui::git+https://github.com/derrod/obs-roi-ui#tag=1.1.1
 	sha256sums = SKIP

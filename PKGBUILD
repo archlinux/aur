@@ -2,12 +2,12 @@
 
 pkgname=obs-roi-ui
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Region of Interest Editor for OBS Studio 30.1+"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/encoder-region-of-interest-editor.1904/"
 license=(GPL-2.0-or-later)
-depends=("obs-studio>=30.1" "glibc" "gcc-libs" "ffmpeg" "qt6-base")
+depends=("obs-studio>=30.1" "glibc" "gcc-libs" "ffmpeg" "qt6-base>=6.10")
 makedepends=("cmake" "git")
 options=("debug")
 source=("$pkgname::git+https://github.com/derrod/$pkgname#tag=$pkgver")
@@ -17,7 +17,8 @@ prepare() {
   cd $pkgname
 
   sed -i '33 a #include <obs-nix-platform.h>\n#include <qpa/qplatformnativeinterface.h>' src/external/qt-wrappers.cpp
-  sed -i 's/find_qt(/find_package(Qt6 /g' CMakeLists.txt
+  sed -i 's/find_qt(/find_package(Qt6 REQUIRED /g' CMakeLists.txt
+  sed -i '16 a find_package(Qt6GuiPrivate REQUIRED)' CMakeLists.txt
   sed -i 's/Qt::Widgets/Qt::Widgets Qt::GuiPrivate/g' CMakeLists.txt
 
   sed -i 's|obs_sceneitem_get_id(item)|QVariant::fromValue(obs_sceneitem_get_id(item))|g' src/roi-editor.cpp
