@@ -2,7 +2,7 @@
 pkgname=ksniff
 # renovate: datasource=github-releases depName=eldadru/ksniff
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='kubectl plugin that utilizes tcpdump and Wireshark to start a remote capture on any pod in your Kubernetes cluster'
 arch=('x86_64' 'aarch64')
 url='https://github.com/eldadru/ksniff'
@@ -32,14 +32,13 @@ build() {
   export GO111MODULE=on
   
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
   go build -v \
     -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/version.} -linkmode external" \
     -o bin/ \
