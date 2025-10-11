@@ -7,7 +7,7 @@ _crt=ucrt
 _distro=ubuntu-22.04
 
 pkgname=llvm-mingw-w64-toolchain-${_crt}-bin
-pkgver=20250924
+pkgver=20251007
 pkgrel=1
 pkgdesc="LLVM/Clang/LLD based mingw-w64 toolchain (UCRT) targeting i686, x86-64, armv7, and aarch64"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ makedepends=('patchelf')
 provides=('llvm-mingw-w64-toolchain')
 source_x86_64=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm-mingw-${pkgver}-${_crt}-${_distro}-x86_64.tar.xz")
 source_aarch64=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm-mingw-${pkgver}-${_crt}-${_distro}-aarch64.tar.xz")
-sha256sums_x86_64=('a325974f9bf811aab44fc03f9f47d718cddfa195d2b6632bd6e7800e10430846')
-sha256sums_aarch64=('dc2d7cdbfa8fc04f5b2ef37ef37ca4ffb090bf045fde2cba6350fcd05728b558')
+sha256sums_x86_64=('ee1c1f3e4a584f231b1d664eb1f4b9d9f7cae133b64b55dae749f50969cef958')
+sha256sums_aarch64=('bedee9e9aa65714ab2aca2f8e76d1964becf77ba7ec0ab9484a734e08ce6542b')
 
 package() {
    mkdir -p "${pkgdir}"/opt/llvm-mingw/llvm-mingw-${_crt}
