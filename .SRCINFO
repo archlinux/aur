@@ -1,0 +1,39 @@
+pkgbase = slsa-github-generator
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/slsa-framework/slsa-github-generator
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	source = slsa-github-generator::git+https://github.com/slsa-framework/slsa-github-generator.git#tag=v2.1.0
+	sha256sums = 6a6c6b33364e6bd0ff8af4887e4a79a9a8aeef67fdf6850fa862b16658dcaef7
+
+pkgname = slsa-github-generator
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (meta)
+	arch = any
+	depends = slsa-builder-docker=2.1.0-1
+	depends = slsa-builder-go=2.1.0-1
+	depends = slsa-generator-container=2.1.0-1
+	depends = slsa-generator-generic=2.1.0-1
+
+pkgname = slsa-github-generator-common
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (common files)
+	arch = any
+
+pkgname = slsa-builder-docker
+	depends = slsa-github-generator-common=2.1.0-1
+	depends = glibc
+
+pkgname = slsa-builder-go
+	depends = slsa-github-generator-common=2.1.0-1
+	depends = glibc
+
+pkgname = slsa-generator-container
+	depends = slsa-github-generator-common=2.1.0-1
+	depends = glibc
+
+pkgname = slsa-generator-generic
+	depends = slsa-github-generator-common=2.1.0-1
+	depends = glibc

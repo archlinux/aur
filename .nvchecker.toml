@@ -1,0 +1,4 @@
+[slsa-github-generator]
+source = "git"
+git = "https://github.com/slsa-framework/slsa-github-generator.git"
+prefix = "v"
