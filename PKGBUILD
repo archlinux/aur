@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0a8139da071afcb768b9d115f514a3e5783312530b2be69e3ee42b301d775bcf')
+sha256sums=('c627b2bfffe267bb53bbdbac60c22a08bcdbfb6775983ae5d16c975298a4ec30')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH

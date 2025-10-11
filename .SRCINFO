@@ -19,6 +19,6 @@ pkgbase = android-x86-qt6-serialbus
 	options = staticlibs
 	options = !emptydirs
 	source = https://download.qt.io/official_releases/qt/6.10/6.10.0/submodules/qtserialbus-everywhere-src-6.10.0.tar.xz
-	sha256sums = 0a8139da071afcb768b9d115f514a3e5783312530b2be69e3ee42b301d775bcf
+	sha256sums = c627b2bfffe267bb53bbdbac60c22a08bcdbfb6775983ae5d16c975298a4ec30
 
 pkgname = android-x86-qt6-serialbus
