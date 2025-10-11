@@ -71,16 +71,20 @@ EOF
 
 log_step() {
   STEP=$((STEP+1))
-  echo "[$STEP] $*" >&2
+  echo "[$STEP] ℹ️ $*" >&2
 }
 
 die() {
-  echo "Error: $*" >&2
+  echo "❌ Error: $*" >&2
   exit 1
 }
 
 require_cmd() {
-  command -v "$1" >/dev/null 2>&1 || die "Missing required command: $1"
+  if command -v "$1" >/dev/null 2>&1; then
+    echo "✅ Found required command: $1" >&2
+  else
+    die "Missing required command: $1"
+  fi
 }
 
 parse_repo_from_url() {
@@ -144,6 +148,7 @@ require_cmd grep
 require_cmd awk
 
 [[ -f "$PKGFILE" ]] || die "PKGBUILD not found: $PKGFILE"
+echo "✅ Using PKGBUILD: $PKGFILE" >&2
 
 log_step "Reading pkgver from $PKGFILE"
 if [[ -z "${VERSION:-}" ]]; then
@@ -174,15 +179,15 @@ if [[ -z "${SOURCE_URL:-}" ]]; then
   SOURCE_URL="https://github.com/${REPO}/archive/refs/tags/${TAG}.tar.gz"
 fi
 
-echo "Repo:         ${REPO:-"(n/a) (custom URLs)"}" >&2
+echo "ℹ️ Repo:       ${REPO:-"(n/a) (custom URLs)"}" >&2
 console_output=""
-echo "Version:      ${VERSION}" >&2
+echo "ℹ️ Version:    ${VERSION}" >&2
 console_output+=""
-echo "Tag:          ${TAG}" >&2
+echo "ℹ️ Tag:        ${TAG}" >&2
 console_output+=""
-echo "Asset name:   ${ASSET_NAME}" >&2
-echo "Binary URL:   ${BINARY_URL}" >&2
-echo "Source URL:   ${SOURCE_URL}" >&2
+echo "ℹ️ Asset:      ${ASSET_NAME}" >&2
+echo "ℹ️ Binary URL: ${BINARY_URL}" >&2
+echo "ℹ️ Source URL: ${SOURCE_URL}" >&2
 
 #############################################
 # Download artifacts and compute hashes
@@ -194,40 +199,40 @@ trap 'rm -rf "$tmpdir"' EXIT
 bin_path="$tmpdir/${ASSET_NAME}"
 src_path="$tmpdir/src-${TAG}.tar.gz"
 
-curl -fsSL -o "$bin_path" "$BINARY_URL"
-curl -fsSL -o "$src_path" "$SOURCE_URL"
+curl -fsSL -o "$bin_path" "$BINARY_URL" || die "Failed to download binary from $BINARY_URL"
+echo "✅ Downloaded binary artifact" >&2
+curl -fsSL -o "$src_path" "$SOURCE_URL" || die "Failed to download source from $SOURCE_URL"
+echo "✅ Downloaded source tarball" >&2
 
 log_step "Computing sha256 sums"
 sha_bin=$(sha256sum "$bin_path" | awk '{print $1}')
 sha_src=$(sha256sum "$src_path" | awk '{print $1}')
 
-echo "  binary:  $sha_bin" >&2
-echo "  source:  $sha_src" >&2
+echo "ℹ️ binary:  $sha_bin" >&2
+echo "ℹ️ source:  $sha_src" >&2
 
 #############################################
 # Update PKGBUILD
 #############################################
 log_step "Locating sha256sums=( in $PKGFILE"
-sha_line=$(grep -n '^[[:space:]]*sha256sums\=(' "$PKGFILE" | head -n1 | cut -d: -f1 || true)
+sha_line=$(grep -nE '^[[:space:]]*sha256sums=\(' "$PKGFILE" | head -n1 | cut -d: -f1 || true)
 [[ -n "${sha_line:-}" ]] || die "Could not find sha256sums=( in $PKGFILE"
 
 if $DRY_RUN; then
-  echo "[dry-run] Would update $PKGFILE at line $sha_line and the next line with the following values:" >&2
-  echo "[dry-run]   first entry (binary): $sha_bin" >&2
-  echo "[dry-run]   second entry (source): $sha_src" >&2
+  echo "ℹ️ [dry-run] Would update $PKGFILE at line $sha_line and the next line with the following values:" >&2
+  echo "ℹ️ [dry-run]   first entry (binary): $sha_bin" >&2
+  echo "ℹ️ [dry-run]   second entry (source): $sha_src" >&2
 else
   log_step "Updating sha256sums entries"
   # Replace quoted content on the sha256sums header line (first entry) and the next line (second entry).
   sed -i "${sha_line}s/'[^']*'/'${sha_bin//\//\/}'/" "$PKGFILE"
   sed -i "$((sha_line+1))s/'[^']*'/'${sha_src//\//\/}'/" "$PKGFILE"
-  echo "Updated sha256sums in $PKGFILE" >&2
+  echo "✅ Updated sha256sums in $PKGFILE" >&2
 fi
 
 echo >&2
-echo "Next steps:" >&2
-echo "  makepkg --printsrcinfo > .SRCINFO" >&2
-echo "  git add $PKGFILE .SRCINFO && git commit -m 'Update checksums for ${TAG}'" >&2
+echo "ℹ️ Next steps:" >&2
+echo "  ℹ️ makepkg --printsrcinfo > .SRCINFO" >&2
+echo "  ℹ️ git add $PKGFILE .SRCINFO && git commit -m 'Update checksums for ${TAG}'" >&2
 
 exit 0
-
-
