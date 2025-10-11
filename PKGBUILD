@@ -1,13 +1,13 @@
 # Maintainer: VCalV
 pkgname=qlipmon
-pkgver=1.0.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="clipboard manager with rofi plugin and dbus interface"
 arch=('x86_64')
 url="https://github.com/vcalv/qlipmon"
 license=('GPL-3.0-only')
 groups=()
-depends=(qt5-base)
+depends=(qt6-base)
 makedepends=()
 checkdepends=()
 optdepends=(
@@ -23,7 +23,7 @@ install="$pkgname".install
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha512sums=(944dae7605510ab81db63b526f18227d995638c52185a0a07ef19eb834a598140ed8b58ae8eaab64246675a482ee7183b76658aa1655abeb3822b279f07948f4)
+sha512sums=(050ca04f14ff78db40da26c6a426bf5cbc210c8030c7363a5feeaad4974204c9d223511879c5e475e07a03c0a4fb341b0db3b74e42f06cd3047c8d1d7afd9c5a)
 validpgpkeys=()
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 		mkdir "build"
 	fi
 	cd "build"
-	qmake -o Makefile ../"$pkgname-$pkgver"/QlipMon.pro -spec linux-g++ CONFIG+=release
+	qmake6 -o Makefile ../"$pkgname-$pkgver"/QlipMon.pro -spec linux-g++ CONFIG+=release
 }
 
 build() {

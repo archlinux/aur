@@ -1,17 +1,17 @@
 pkgbase = qlipmon
 	pkgdesc = clipboard manager with rofi plugin and dbus interface
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/vcalv/qlipmon
 	install = qlipmon.install
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = qt5-base
+	depends = qt6-base
 	optdepends = rofi: for rofi integration
 	optdepends = systemd: automate start
-	provides = qlipmon=1.0.0
+	provides = qlipmon=2.0.0
 	conflicts = qlipmon-git
-	source = qlipmon-1.0.0.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/1.0.0.tar.gz
-	sha512sums = 944dae7605510ab81db63b526f18227d995638c52185a0a07ef19eb834a598140ed8b58ae8eaab64246675a482ee7183b76658aa1655abeb3822b279f07948f4
+	source = qlipmon-2.0.0.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/2.0.0.tar.gz
+	sha512sums = 050ca04f14ff78db40da26c6a426bf5cbc210c8030c7363a5feeaad4974204c9d223511879c5e475e07a03c0a4fb341b0db3b74e42f06cd3047c8d1d7afd9c5a
 
 pkgname = qlipmon
