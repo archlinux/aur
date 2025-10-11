@@ -1,6 +1,6 @@
 pkgbase = tosu-overlay
 	pkgdesc = Overlay for osu! Powered by Tosu, GTK and Webkit
-	pkgver = v1.0.2
+	pkgver = v1.0.3
 	pkgrel = 1
 	url = https://github.com/K4zoku/tosu-overlay
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = tosu-overlay
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = gtk-layer-shell
+	depends = xcb-util-wm
 	provides = tosu-overlay
 	conflicts = tosu-overlay
-	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay.git#tag=v1.0.2
+	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay.git#tag=v1.0.3
 	sha256sums = SKIP
 
 pkgname = tosu-overlay
