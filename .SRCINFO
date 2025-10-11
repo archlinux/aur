@@ -1,7 +1,7 @@
 pkgbase = slsa-github-generator
 	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slsa-framework/slsa-github-generator
 	arch = x86_64
 	license = Apache-2.0
@@ -13,27 +13,35 @@ pkgbase = slsa-github-generator
 pkgname = slsa-github-generator
 	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (meta)
 	arch = any
-	depends = slsa-builder-docker=2.1.0-1
-	depends = slsa-builder-go=2.1.0-1
-	depends = slsa-generator-container=2.1.0-1
-	depends = slsa-generator-generic=2.1.0-1
+	depends = slsa-builder-docker=2.1.0-2
+	depends = slsa-builder-go=2.1.0-2
+	depends = slsa-generator-container=2.1.0-2
+	depends = slsa-generator-generic=2.1.0-2
 
 pkgname = slsa-github-generator-common
 	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (common files)
 	arch = any
 
 pkgname = slsa-builder-docker
-	depends = slsa-github-generator-common=2.1.0-1
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (docker target)
+	url = https://github.com/slsa-framework/slsa-github-generator/tree/main/internal/builders/docker
+	depends = slsa-github-generator-common=2.1.0-2
 	depends = glibc
 
 pkgname = slsa-builder-go
-	depends = slsa-github-generator-common=2.1.0-1
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (go target)
+	url = https://github.com/slsa-framework/slsa-github-generator/tree/main/internal/builders/go
+	depends = slsa-github-generator-common=2.1.0-2
 	depends = glibc
 
 pkgname = slsa-generator-container
-	depends = slsa-github-generator-common=2.1.0-1
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (container target)
+	url = https://github.com/slsa-framework/slsa-github-generator/tree/main/internal/builders/container
+	depends = slsa-github-generator-common=2.1.0-2
 	depends = glibc
 
 pkgname = slsa-generator-generic
-	depends = slsa-github-generator-common=2.1.0-1
+	pkgdesc = Language-agnostic SLSA provenance generation for Github Actions (generic target)
+	url = https://github.com/slsa-framework/slsa-github-generator/tree/main/internal/builders/generic
+	depends = slsa-github-generator-common=2.1.0-2
 	depends = glibc

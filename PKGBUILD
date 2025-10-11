@@ -19,7 +19,7 @@ pkgname=(
   "${_binname[@]}"
 )
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-agnostic SLSA provenance generation for Github Actions"
 arch=('x86_64')
 url="https://github.com/slsa-framework/${pkgbase}"
@@ -53,10 +53,14 @@ build() {
 
   cd "${srcdir}/${_pkgsrc}"
   for _builder in "${_builders[@]}"; do
-    go build -v -o ./"build/${_builder}" ./"internal/builders/${_builder#slsa-builder-}"
+    go build -v -o ./"build/${_builder}" -ldflags "\
+      -X ${url#https://}/version.Version=${pkgver}" \
+      ./"internal/builders/${_builder#slsa-builder-}"
   done
   for _generator in "${_generators[@]}"; do
-    go build -v -o ./"build/${_generator}" ./"internal/builders/${_generator#slsa-generator-}"
+    go build -v -o ./"build/${_generator}" -ldflags "\
+      -X ${url#https://}/version.Version=${pkgver}" \
+      ./"internal/builders/${_generator#slsa-generator-}"
   done
 }
 
@@ -86,6 +90,8 @@ package_slsa-github-generator-common() {
 for _name in "${_binname[@]}"; do
   eval "
 package_${_name}() {
+  pkgdesc+=' (${_name##*-} target)'
+  url+='/tree/main/internal/builders/${_name##*-}'
   depends+=(
     '${pkgbase}-common=${pkgver}-${pkgrel}'
     'glibc'
