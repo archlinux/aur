@@ -22,6 +22,6 @@ pkgbase = android-x86-qt6-location
 	options = staticlibs
 	options = !emptydirs
 	source = https://download.qt.io/official_releases/qt/6.10/6.10.0/submodules/qtlocation-everywhere-src-6.10.0.tar.xz
-	sha256sums = 141227d1fdaf4e1574c99127b2eb91ab171107bf067121aecb03b618b2e71605
+	sha256sums = cbd43e87fb4b2cccd8e01e0c762f951fc3c3d6b99cd2b80d6e526120a25df800
 
 pkgname = android-x86-qt6-location
