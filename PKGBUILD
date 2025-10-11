@@ -1,7 +1,7 @@
 # Maintainer: Xiao Pan <gky44px1999@gmail.com>
 pkgname=stardict-wikt-en-en
 _pkgname=wikt-en-en
-pkgver=2024_10_05
+pkgver=2025_10_05
 # source https://wiki.archlinux.org/title/PKGBUILD#pkgver
 _pkgver=${pkgver//_/-}
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('any')
 url='https://www.dictinfo.com/'
 license=('cc-by-sa-3.0')
 source=("https://www.dictinfo.com/stardict/$_pkgname-$_pkgver.7z")
-b2sums=('f9f89920cb208521279b8d53e37bc913d44677cfca35d4dd850ea35edfd08e8685f922335508bf3a5720b5540ddc912901fab3dc70221b95b692f23b922e416a')
+b2sums=('4f2270e5ec8ffa0bdb933cfd2232fbb997fcc84eb32ef6ff0df0c3dffa8ced1b718ea521d5fdd710c7761c2baf197edb6f2bd80069cc26d332dbc940628b8c06')
 
 package()
 {
