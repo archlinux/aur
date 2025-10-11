@@ -1,6 +1,6 @@
 pkgbase = python-httpx-sse
 	pkgdesc = Consume Server-Sent Event (SSE) messages with HTTPX
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/florimondmanca/httpx-sse
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-httpx-sse
 	makedepends = python-wheel
 	depends = python
 	depends = python-httpx
-	source = python-httpx-sse-0.4.2.tar.gz::https://github.com/florimondmanca/httpx-sse/archive/refs/tags/0.4.2.tar.gz
-	sha256sums = 0b6d83887a659095dc8b68be21f5630cc82585ed9ce7174b15c0fd016cf5474e
+	source = python-httpx-sse-0.4.3.tar.gz::https://github.com/florimondmanca/httpx-sse/archive/refs/tags/0.4.3.tar.gz
+	sha256sums = 926e88187fa45117882f287955dbcb53c1c4ec36148893f0c514f021b7f3b000
 
 pkgname = python-httpx-sse
