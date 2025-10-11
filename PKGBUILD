@@ -1,6 +1,6 @@
 # Maintainer: NotMega <iamnotmega@proton.me>
 pkgname=reskin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A modern Linux desktop theming app for browsing, applying, and managing custom themes"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('webkit2gtk-4.1' 'xdg-utils')
 makedepends=('npm' 'nodejs' 'rust' 'cargo' 'git' 'desktop-file-utils')
 source=("https://github.com/iamnotmega/reskin/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9b4dde69073f9c3357cbbfd568f546729afe3e4f595661325265b79be9572a1e')
+sha256sums=('3b6d9c3e530c5598404ee12f62b3e7892fd2826d3e64d703483e16b6a7bc98f4')
 
 build() {
   cd "$srcdir/reskin-$pkgver/src-tauri"
