@@ -1,7 +1,7 @@
 pkgbase = libobjc2
 	pkgdesc = Objective-C runtime library intended for use with Clang.
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/gnustep/libobjc2
 	arch = x86_64
 	arch = i686
@@ -10,13 +10,11 @@ pkgbase = libobjc2
 	makedepends = cmake
 	makedepends = clang
 	makedepends = git
-	makedepends = robin-map
 	depends = gcc-libs
 	depends = glibc
 	provides = libobjc2
 	conflicts = libobjc2
-	conflicts = libdispatch
 	source = libobjc2::git+https://github.com/gnustep/libobjc2.git#commit=v2.3
-	b2sums = d6b4088169ebc29c5bbf1513f93824369c8ac4acc2fbc13a9bbf1c08d5c83856535aeeb229c2626d15cfc4fc0c5bfbdc18a79fac1b95be5c21ba9c3d85df1f71
+	b2sums = SKIP
 
 pkgname = libobjc2
