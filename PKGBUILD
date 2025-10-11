@@ -14,12 +14,21 @@ pkgdesc="A powerful web analytics platform."
 arch=("x86_64")
 url="https://github.com/matomo-org/${pkgname}"
 license=("GPL-3.0-or-later")
-depends=("bash" "gcc-libs" "glibc" "lib32-glibc" "mariadb" "nodejs" "perl" "php" "php-fpm" "php-gd" "python" "python-beautifulsoup4" "python-requests" "python-yaml" "rhino")
+depends=("bash" "gcc-libs" "glibc" "lib32-glibc" "mariadb" "nodejs" "perl" "php" "php-gd" "python" "python-beautifulsoup4" "python-requests" "python-yaml" "rhino")
 makedepends=("composer" "curl" "git" "git-lfs" "npm")
 checkdepends=("alsa-lib" "at-spi2-core" "cairo" "coffeescript" "dbus" "expat" "glib2" "gtk3" "java-runtime" "libcups" "libdrm" "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes" "libxkbcommon" "libxrandr" "libxshmfence" "mesa" "nspr" "nss" "pango" "ruby")
-optdepends=("apache: HTTP server"
+optdepends=("apache: HTTP server."
     "certbot: Creates SSL certificates."
-    "nginx: HTTP server")
+    "mod_fcgid: FastCGI."
+    "nginx: HTTP server."
+    "php-cgi: CGI."
+    "php-fpm: FastCGI."
+    "php-legacy-cgi: CGI."
+    "php-legacy-fpm: FastCGI."
+    "spawn-fcgi: FastCGI."
+    "uwsgi-plugin-php: CGI."
+    "uwsgi-plugin-php-legacy: CGI."
+)
 provides=("${pkgname}")
 conflicts=("matomo-bin")
 install="${pkgname}.install"
@@ -93,7 +102,7 @@ prepare()
 
     git -c protocol.file.allow=always submodule update
 
-    # GeoIP database
+    # Geolocation database
     ## Do not use option "-i" as it will remove the preceding "0".
     declare _current_year
     _current_year="$(date +"%Y")"
