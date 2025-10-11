@@ -1,0 +1,13 @@
+pkgbase = nodejs-cliui
+	pkgdesc = Easily create complex multi-column command-line interfaces (cliui library)
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = https://github.com/yargs/cliui
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	source = cliui-9.0.1.tgz::https://registry.npmjs.org/cliui/-/cliui-9.0.1.tgz
+	sha256sums = SKIP
+
+pkgname = nodejs-cliui
