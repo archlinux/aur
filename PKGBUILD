@@ -2,7 +2,7 @@
 pkgname=kubectl-plugin_completion
 # renovate: datasource=github-releases depName=MartinSimango/kubectl-plugin_completion
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='kubectl plugin for allowing kubectl plugin completions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/MartinSimango/kubectl-plugin_completion'
@@ -33,14 +33,13 @@ build() {
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
   go build -v \
     -ldflags="${_x[*]/#/-X=main.} -linkmode external" \
     -o bin/ \
