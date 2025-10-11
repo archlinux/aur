@@ -1,0 +1,20 @@
+pkgbase = rancher-desktop-bin
+	pkgdesc = Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://rancherdesktop.io/
+	arch = x86_64
+	license = Apache
+	makedepends = imagemagick
+	depends = qemu
+	provides = rancher-desktop
+	provides = docker
+	provides = helm
+	provides = kubectl
+	provides = nerdctl
+	provides = limactl
+	conflicts = rancher-desktop
+	source = rancher-desktop-linux-v1.20.0.zip::https://github.com/rancher-sandbox/rancher-desktop/releases/download/v1.20.0/rancher-desktop-linux-v1.20.0.zip
+	sha512sums = b1c3038e036ad567d43cd7c34fd3ca2ce1e4c5d63b0c7bd8048b27f066bb74195c54fa98a3cb65ecd80d60f20cd7c6877731e33f032e9a3eba57a7e9257b8503
+
+pkgname = rancher-desktop-bin
