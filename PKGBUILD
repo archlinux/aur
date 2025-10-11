@@ -3,7 +3,7 @@
 
 pkgname='ical2html'
 pkgver='3.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities to filter, merge, and generate HTML from ical files"
 
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://www.w3.org/Tools/Ical2html"
 license=('custom')
 depends=('libical')
 source=("https://www.w3.org/Tools/Ical2html/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('97af8b53d57f4f57a5e2be6a4b3a8bcc86fc8c6c967961db0432777175b6ce22')
+sha256sums=('d50844d38726a2184f819dc8f23cf6f19ed99d22641f668f9d1b1ee7fa517840')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
