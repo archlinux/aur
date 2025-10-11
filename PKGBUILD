@@ -4,7 +4,7 @@ pkgname=('abpoa' 'pyabpoa')
 pkgname=abpoa
 pkgdesc="SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963"
 _name=abPOA
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/yangao07/abPOA"
@@ -17,7 +17,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yangao07/abPOA/archive/
         "simde.patch"
         )
 
-b2sums=('23df57d1f9ff7ec869761d7b275aa911cc7707670096bc3cc500d4255f454c16c62b95e1c6a54b1ad6a31ffdffb6030c3a880b83cddd79d7ebc1aad47b931531'
+b2sums=('d6bda8c41951fd4b9ae2e80d475416f80775bd9628e17632e1112e6d52cbf5a0b62bd369342ed5c4ae0d5a460dc05c5da918005d58d4b0c95069f195071e63dd'
         'c1bfc21cdc6ba1b592879069cc883c4bd0d9408faec35710e982ba587f2e2f305ecda29ea565273853cdedfeec956069a561d0b9267b95f7aee8c0213a40e40c')
 
 prepare() {
