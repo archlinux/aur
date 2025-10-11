@@ -4,11 +4,11 @@
 #: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
-: ${_commit=9d83dfd19cd838042abb833891da6aa9dee8b2bc}
+: ${_commit=e2143d43bcb6762340d8a01f20e7b5fdf104f02f}
 
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/ryubing/ryujinx"
@@ -49,7 +49,7 @@ build() (
     -p:DebugType=none
     -p:ExtraDefineConstants=DISABLE_UPDATER
     -p:PublishSingleFile=true
-    -p:Version="${pkgver%%.[A-Za-z]*}"
+    -p:Version="$pkgver"
     -p:RuntimeIdentifiers="$_runtime"
   )
 
@@ -62,25 +62,25 @@ build() (
 
 package() {
   # program
-  install -dm755 "$pkgdir/$_install_path/ryujinx"
-  cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/$_install_path/ryujinx/"
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
+  cp -a publish_ava/* "$pkgdir/$_install_path/$_pkgname/"
 
   # symlink
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/$_pkgname"
 
   # launcher
-  local _launcher="$pkgdir/usr/share/applications/ryujinx.desktop"
+  local _launcher="$pkgdir/usr/share/applications/$_pkgname.desktop"
   install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$_launcher"
 
-  desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$_launcher"
-  desktop-file-edit --set-icon="ryujinx" "$_launcher"
+  desktop-file-edit --set-key="Exec" --set-value="$_pkgname %f" "$_launcher"
+  desktop-file-edit --set-icon="$_pkgname" "$_launcher"
 
   # icon
-  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/ryujinx.svg"
+  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
   # mimetype
-  install -Dm644 "$_pkgsrc"/distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
+  install -Dm644 "$_pkgsrc"/distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/$_pkgname.xml"
 
   # license
   install -Dm644 "$_pkgsrc"/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -88,6 +88,6 @@ package() {
   # permissions
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
-  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx"
-  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.sh"
+  chmod 755 "$pkgdir/$_install_path/$_pkgname/Ryujinx"
+  chmod 755 "$pkgdir/$_install_path/$_pkgname/Ryujinx.sh"
 }
