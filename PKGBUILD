@@ -1,16 +1,34 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openshot-git
-pkgver=3.0.0.r25.g369b68de
+pkgver=3.3.0.r127.g4de6e593c
 pkgrel=1
-pkgdesc='An open-source, non-linear video editor for Linux based on MLT framework (git version)'
+pkgdesc='An award-winning free and open-source video editor (git version)'
 arch=('any')
 url='https://www.openshot.org/'
-license=('GPL3')
-depends=('ffmpeg' 'python-pyqt5' 'python-pyzmq' 'python-requests' 'qt5-base' 'qt5-svg'
-         'python-pyqt5-webengine' 'libopenshot-git' 'libopenshot-audio-git')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('faac: for exporting audio using AAC')
+license=('GPL-3.0-or-later')
+depends=(
+    'ffmpeg'
+    'hicolor-icon-theme'
+    'libopenshot-audio-git'
+    'libopenshot-git'
+    'python'
+    'python-pyqt5'
+    'python-pyqt5-webengine'
+    'python-pyzmq'
+    'python-requests'
+    'qt5-base'
+    'qt5-svg')
+optdepends=(
+    'faac: for exporting audio using AAC')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel')
+checkdepends=(
+    'xorg-server-xvfb')
 provides=('openshot')
 conflicts=('openshot')
 source=('git+https://github.com/OpenShot/openshot-qt.git')
@@ -27,7 +45,7 @@ build() {
 
 check() {
     cd openshot-qt
-    python -m unittest discover -vs src/tests
+    xvfb-run -n 71 python src/tests/query_tests.py
 }
 
 package() {
