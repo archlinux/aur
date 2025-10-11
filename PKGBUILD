@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebchannel-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9457bbc1e5a13d9cf277c1fc121cdeb0a21546abf7fba091779b7ce9806fa305')
+sha256sums=('74165864fabf580e622fbb52553d8ca41b53b660ba20ec1f73fb71f4d9a95009')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
