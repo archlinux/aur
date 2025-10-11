@@ -4,13 +4,13 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.0.1
 pkgver="${_pkgver//-/_}"
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=('GPL-2.0-or-later')
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
-_qtver=6.6.2
+_qtver=6.10
 _libajantv2ver=17.5.0
 _libdatachannelver=0.23
 _mbedtlsver=3.6.1
@@ -105,6 +105,7 @@ source=(
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed3
   "10136-Add_ROI_support_for_VAAPI.patch" # https://github.com/obsproject/obs-studio/pull/10136
+  "12328-Cleanup_Qt_Gui_Private_linkage.patch" # https://github.com/obsproject/obs-studio/pull/12328
 )
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz")
 source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz")
@@ -114,6 +115,7 @@ sha256sums=(
   "SKIP"
   "fba1355b2e451007cc6ec14d0f662b4a289874dde6eb3f4001a90c414bbf0c13"
   "6739b632ca2275e189f0214c4843b8accc1c9d2bdff81d0f169ec1de4c02096c"
+  "25322c692cf5cc88fc7d17cbb40a61b7e32d5ea675da647dd1a1996474ec2c8e"
 )
 sha256sums_x86_64=("7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146")
 sha256sums_aarch64=("642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999")
@@ -136,6 +138,9 @@ prepare() {
 
   ## obs-ffmpeg: Add ROI support for VAAPI (https://github.com/obsproject/obs-studio/pull/10136)
   patch -Np1 -i "$srcdir/10136-Add_ROI_support_for_VAAPI.patch"
+
+  ## frontend: Cleanup Qt GuiPrivate linkage (https://github.com/obsproject/obs-studio/pull/12328)
+  patch -Np1 -i "$srcdir/12328-Cleanup_Qt_Gui_Private_linkage.patch"
 }
 
 build() {
