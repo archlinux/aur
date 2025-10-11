@@ -7,7 +7,7 @@ pkgdesc="CLI To-do list manager built in Bash with TUI and Python for Web interf
 url="https://github.com/simeulinuxkaliaiwr/clilog"
 license=('MIT')
 arch=('any')
-depends=('dialog' 'python' 'python-flask')  
+depends=('bash' 'dialog' 'python' 'python-flask')  
 makedepends=('git')
 
 source=("${pkgname}::git+${url}" 
