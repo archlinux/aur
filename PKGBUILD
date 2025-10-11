@@ -14,5 +14,5 @@ sha256sums=('abff0488814620a977a50caa71a207396c016a4ad25f3fe7851c16de12bd9415')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "twitter" "${pkgdir}/usr/local/bin/twitter-cli"
+  install -Dm755 "twitter" "${pkgdir}/usr/local/bin/twitter"
 }
