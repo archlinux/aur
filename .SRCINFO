@@ -1,16 +1,14 @@
 pkgbase = fortsh
-	pkgdesc = Enterprise-grade Unix shell in Fortran 2018 with full POSIX.1-2017 compliance: parameter expansion, positional parameters, field splitting, file descriptor redirection, and complete POSIX built-in command support
-	pkgver = 2.0.0
+	pkgdesc = Fortran Shell - A modern shell implementation with AST-based parsing
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/fortsh
 	arch = x86_64
 	license = MIT
 	makedepends = gcc-fortran
-	makedepends = gcc
 	makedepends = make
-	makedepends = git
 	depends = glibc
-	source = git+https://github.com/FortranGoingOnForty/fortsh.git
+	source = git+https://github.com/FortranGoingOnForty/fortsh.git#tag=v3.0.0
 	sha256sums = SKIP
 
 pkgname = fortsh

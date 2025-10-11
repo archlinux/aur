@@ -1,35 +1,34 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='Enterprise-grade Unix shell in Fortran 2018 with full POSIX.1-2017 compliance: parameter expansion, positional parameters, field splitting, file descriptor redirection, and complete POSIX built-in command support'
+pkgdesc='Fortran Shell - A modern shell implementation with AST-based parsing'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortsh'
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc-fortran' 'gcc' 'make' 'git')
-source=("git+https://github.com/FortranGoingOnForty/fortsh.git")
+makedepends=('gcc-fortran' 'make')
+source=("git+https://github.com/FortranGoingOnForty/fortsh.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
     cd fortsh
     make clean
-    make -j1 all FCFLAGS="-Wall -Wextra -std=f2018 -fPIC -g -O2 -Wno-unused-variable -Wno-unused-dummy-argument -Wno-surprising -Wno-maybe-uninitialized"
+    make all
 }
 
 check() {
     cd fortsh
-    make smoke-test || true  # Allow tests to fail gracefully if they require interactive input
+    make test || true  # Allow tests to fail gracefully if they require interactive input
 }
 
 package() {
     cd fortsh
-    
+
     # Install main binary
     install -Dm755 bin/fortsh "$pkgdir/usr/bin/fortsh"
-    
+
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    [ -f TEST_RESULTS.md ] && install -Dm644 TEST_RESULTS.md "$pkgdir/usr/share/doc/$pkgname/TEST_RESULTS.md" || true
 }
