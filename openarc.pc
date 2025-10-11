@@ -1,0 +1,22 @@
+# openarc.pc — pkg-config file for OpenARC
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OpenARC
+Description: An open source library for adding Authenticated Received Chain (ARC) support to applications and an example filter application using the milter protocol.
+Version: 1.2.3pre0
+
+# Libraries required by consumers to link against OpenARC
+Requires: libmilter >= 8.18, openssl >= 1.0.0 , libidn2
+
+# Libraries only needed on some platforms (e.g.: 'libbsd' only on Operating Systems that don't provide a native implementation of 'strlcat()' and 'strlcopy()')
+Requires.private: libbsd, jansson >= 2.2.1
+
+# Linker flags
+Libs: -L${libdir} -lopenarc
+Libs.private: -lcrypto -lidn2 -ljansson
+
+# Compiler flags
+Cflags: -I${includedir}/openarc
