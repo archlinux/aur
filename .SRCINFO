@@ -15,6 +15,7 @@ pkgbase = reitti
 	optdepends = photon-geocoder: reverse geocoding
 	optdepends = nominatim: reverse geocoding
 	optdepends = immich-server: photo integration
+	backup = etc/conf.d/reitti
 	source = git+https://github.com/dedicatedcode/reitti#tag=v1.9.3
 	source = reitti.service
 	source = reitti.sysusers

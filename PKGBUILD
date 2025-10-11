@@ -18,6 +18,7 @@ optdepends=(
   "immich-server: photo integration"
 )
 install="${pkgname}.install"
+backup=("etc/conf.d/reitti")
 source=("git+${url}#tag=v${pkgver}"
         "reitti.service"
         "reitti.sysusers"
