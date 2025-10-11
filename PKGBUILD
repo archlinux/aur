@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2123.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -21,6 +21,11 @@ prepare() {
 
 	#Fix zstd include
 	sed -i 's/zstd\/contrib\/seekable_format\///g' src/common/zstd_compression.cpp
+
+	#Fix qpa
+	sed -i 's/target_link_libraries(citra_qt PRIVATE Qt6\:\:DBus gamemode)/target_link_libraries(citra_qt PRIVATE Qt6\:\:DBus gamemode Qt6\:\:GuiPrivate)/g' src/citra_qt/CMakeLists.txt
+	sed -i 's/find_package(Qt6 REQUIRED COMPONENTS DBus)/find_package(Qt6 REQUIRED COMPONENTS DBus GuiPrivate)/g' CMakeLists.txt
+
 }
 
 build() {
