@@ -11,6 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vyrx-dev/omarchy-styles
 sha256sums=('SKIP')
 
 package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 "$srcdir/omarchy-styles.sh" \
     "$pkgdir/usr/bin/ostyles"
 }
