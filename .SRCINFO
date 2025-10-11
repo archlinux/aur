@@ -1,7 +1,7 @@
 pkgbase = twitter-cli
 	pkgdesc = Tweet without going to twitter.com
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/StanleyMasinde/twitter
 	arch = x86_64
 	license = MIT
