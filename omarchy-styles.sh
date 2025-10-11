@@ -1,65 +1,69 @@
 #!/usr/bin/env bash
 
-echo "╔════════════════════════════════════════╗"
-echo "║         OMARCHY THEME INSTALLER        ║"
-echo "╚════════════════════════════════════════╝"
+API="https://omarchythemes.com/api/themes/all"
 
-for cmd in gum jq curl; do
-  if ! command -v "$cmd" &>/dev/null; then
-    echo "Error: $cmd not found."
+# Dependencies check
+for tool in gum jq curl chafa; do
+  if ! command -v "$tool" >/dev/null; then
+    echo "Need to install: $tool"
     exit 1
   fi
 done
 
-omarchy_themes=$(curl -sf https://omarchythemes.com/api/themes/all)
+# Image preview
+show_preview() {
+  clear
+  curl -s "$1" | chafa --size ${FZF_PREVIEW_COLUMNS:-50}x${FZF_PREVIEW_LINES:-30} -
+}
 
-# Build theme list
-declare -A THEMES
-while IFS= read -r row; do
-  name=$(jq -r '.name' <<<"$row" | tr '-' ' ' | sed 's/\b\(.\)/\u\1/g')
-  url=$(jq -r '.url' <<<"$row")
-  THEMES["$name"]="$url"
-done < <(jq -c '.[]' <<<"$omarchy_themes")
+SEPARATOR="------------------------------------------"
 
-SEPARATOR="--------------------------------------------------"
+export -f show_preview
 
-# Theme selection and installation loop
+# Installer loop
 while true; do
-  selected=$(printf '%s\n' "${!THEMES[@]}" | sort | gum filter --placeholder="Search themes...")
+  # Fetch themes and show picker
+  theme=$(curl -s "$API" |
+    jq -r '.[] | "\(.name)\t\(.url)\t\(.preview_img)"' |
+    fzf --delimiter='\t' --with-nth=1 \
+      --preview='show_preview {3}' \
+      --preview-window='right:50%' \
+      --height='100%' \
+      --no-border \
+      --prompt='> ' \
+      --header='Choose theme (103 available) - Enter to install, Esc to quit' \
+      --color='prompt:cyan,header:dim')
 
-  if [[ -z "$selected" ]]; then
-    echo
-    echo "No theme selected."
-    break
-  fi
+  # Exit if nothing selected
+  [ -z "$theme" ] && break
 
-  if ! gum confirm "Install theme: $selected?"; then
-    echo
-    echo "Cancelled."
-    continue
-  fi
+  # Get theme details
+  name=$(echo "$theme" | cut -f1)
+  url=$(echo "$theme" | cut -f2)
 
-  url="${THEMES[$selected]}"
-  echo
+  # Install it
+  clear
+  echo "╔════════════════════════════════════════╗"
+  echo "║         OMARCHY THEME INSTALLER        ║"
+  echo "╚════════════════════════════════════════╝"
+
   echo "$SEPARATOR"
-  echo "🛠️  Installing: $selected"
+  printf "          Installing 🛠️ %s...\n" "$name"
   echo "$SEPARATOR"
-  echo
 
-  if gum spin --spinner dot --title "Installing..." -- omarchy-theme-install "$url"; then
-    echo "✅ Installed: $selected"
+  if gum spin --title="Please wait" -- omarchy-theme-install "$url"; then
+    printf "\n✓ Done!\n\n"
   else
-    echo "❌ Failed to install: $selected"
-    echo "$SEPARATOR"
-    continue
+    printf "\n✗ Something went wrong\n\n"
   fi
 
-  if ! gum confirm "Install another theme?"; then
-    echo
+  # Ask for more
+  if ! gum confirm "Install another theme 🎨?"; then
     break
   fi
 done
 
+clear
 echo "$SEPARATOR"
-echo "🎉 Theme installation complete."
+echo "All done - enjoy your themes! 🎉"
 echo "$SEPARATOR"
