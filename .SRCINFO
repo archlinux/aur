@@ -34,6 +34,7 @@ pkgbase = gajim-git
 	depends = python-emoji
 	depends = python-httpx
 	depends = python-truststore
+	depends = python-h2
 	optdepends = python-sentry_sdk: for Sentry error reporting to dev.gajim.org (users decide whether to send reports or not)
 	optdepends = libspelling: for spell checking support
 	optdepends = libsecret: for GNOME Keyring or KDE support as password storage
