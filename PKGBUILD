@@ -86,11 +86,6 @@
 # CLANGD_INLAYHINTSIGNOREEVIDENT:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
-#
-# Implement simple folding of preprocessor branches (PR: 80592)
-# CLANGD_PREPROCESSOR_FOLDING:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_USER_PATCHES:=y}
@@ -108,10 +103,9 @@
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=22.r5423.g90d429ca5762
+pkgver=22.r10834.g8589d8fbbe996
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -138,8 +132,7 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'resolve-incomplete-header-includes.patch'
     'lsp-remove-files-from-cdb.patch'
     'implement-abstract-class.patch'
-    'inlay-hints-hide-deduced-types-ignore-evident.patch'
-    'lsp-preprocessor-folding.patch')
+    'inlay-hints-hide-deduced-types-ignore-evident.patch')
 sha256sums=('SKIP'
     '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
     '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
@@ -154,8 +147,7 @@ sha256sums=('SKIP'
     '03ea8cac2b932c6657973cf11989a4e34a13958fc3957dfa3e62d44f5daa2a90'  # resolve-incomplete-header-includes
     '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
     '3d395094394e00def6ae7a311cf8ec85e4886336ddb1da5ef3b02d378e455f15'  # implement-abstract-class
-    'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea'  # inlay-hints-hide-deduced-types-ignore-evident
-    'f943364e9813eb65371f0bfb02251dbc4e5a293575dc5c4b7630dacbf0ded74b') # lsp-preprocessor-folding
+    'a63d3afdd26692853b1ef31b2bb285ac8cd0747dac198a09998e3caf184859e6') # inlay-hints-hide-deduced-types-ignore-evident
 
 pkgver() {
     cd llvm-project
@@ -198,9 +190,6 @@ prepare() {
     fi
     if [ "$CLANGD_LSPREMOVEFROMCDB" != "n" ]; then
         apply_patch lsp-remove-files-from-cdb
-    fi
-    if [ "$CLANGD_PREPROCESSOR_FOLDING" != "n" ]; then
-        apply_patch lsp-preprocessor-folding
     fi
 
     # Code-completion patches

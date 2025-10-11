@@ -1,6 +1,6 @@
 pkgbase = clangd-opt-git
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
-	pkgver = 22.r5423.g90d429ca5762
+	pkgver = 22.r10834.g8589d8fbbe996
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -43,7 +43,6 @@ pkgbase = clangd-opt-git
 	source = lsp-remove-files-from-cdb.patch
 	source = implement-abstract-class.patch
 	source = inlay-hints-hide-deduced-types-ignore-evident.patch
-	source = lsp-preprocessor-folding.patch
 	sha256sums = SKIP
 	sha256sums = 9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7
 	sha256sums = 85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817
@@ -58,7 +57,6 @@ pkgbase = clangd-opt-git
 	sha256sums = 03ea8cac2b932c6657973cf11989a4e34a13958fc3957dfa3e62d44f5daa2a90
 	sha256sums = 63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb
 	sha256sums = 3d395094394e00def6ae7a311cf8ec85e4886336ddb1da5ef3b02d378e455f15
-	sha256sums = ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea
-	sha256sums = f943364e9813eb65371f0bfb02251dbc4e5a293575dc5c4b7630dacbf0ded74b
+	sha256sums = a63d3afdd26692853b1ef31b2bb285ac8cd0747dac198a09998e3caf184859e6
 
 pkgname = clangd-opt-git
