@@ -1,7 +1,7 @@
 pkgbase = gtk3-classic
 	pkgdesc = Patched GTK+3 that provides a more classic experience
 	pkgver = 3.24.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
 	arch = x86_64
@@ -55,11 +55,11 @@ pkgbase = gtk3-classic
 	conflicts = gtk3-nocsd
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=6d100855b1cfc87701f8b3d91d9b259d15f30764
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=e017c8db0b74d960bf72d9f33809852e00a2462b
 	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.51/gtk-3.24.51.tar.gz
 	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/f5ba7bf3a87dacd8f332e083eaecaee25be8636b/gtk-query-immodules-3.0.hook
 	source = settings.ini
-	sha256sums = 73953127fa7d123c25a7f26d69dbcd40dfcab0e3c045cba62fd15e3b622250d5
+	sha256sums = 5683fcc308129a9d1a2fcb3fe69df720c58b00ad16266d9038258bc17d4f93a5
 	sha256sums = f3c87a20b3380b69efa720f412a0fea6ab6edce021f8ffaf5c4531fe1321b24f
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
