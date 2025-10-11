@@ -11,7 +11,7 @@ _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.8
 _polygraphy_ver=0.49.24
 _tensorflow_quantization_ver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -85,8 +85,8 @@ prepare() {
 build() {
     local _cudaver_cmake
     local _cudnnver
-    _cudaver_cmake="$(pacman -Qi 'cuda' | awk '/^Version/ { print $3 }' | grep -oE '^([0-9]+\.){2}[0-9]')"
-    _cudnnver="$(pacman -Qi 'cudnn' | awk '/^Version/ { print $3 }' | grep -oE '^[0-9]+\.[0-9]+')"
+    _cudaver_cmake="$(LC_ALL='C' pacman -Qi 'cuda' | awk '/^Version/ { print $3 }' | grep -oE '^([0-9]+\.){2}[0-9]')"
+    _cudnnver="$(LC_ALL='C' pacman -Qi 'cudnn' | awk '/^Version/ { print $3 }' | grep -oE '^[0-9]+\.[0-9]+')"
     
     export CXXFLAGS+=' -ffat-lto-objects'
     cmake -B build -S TensorRT \
