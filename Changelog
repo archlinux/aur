@@ -1,4 +1,7 @@
-2.36.0-1 [2025-10-01]
-- Enhanced Safe Browsing file download handling with a user keep/discard option.
-- Fixed a sign-in issue when setting Ulaa as the default browser.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 141.0.7390.54.
+2.36.2-1 [2025-10-11]
+- [Desktop][UI] Enhanced the Welcome Page for responsive display on all screen resolutions.
+- [Desktop][UI] Added options on the Extensions page to enable, disable, or remove the ad blocker, along with an option on the Preferences page to load it after removal.
+- [Desktop][Adblocker] Decoupled the ad blocker from the browser bundle and implemented fetching and loading during browser startup.
+- Updated to Chromium Version 141.0.7390.77.
+
+
