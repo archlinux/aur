@@ -19,7 +19,7 @@ pkgname=(
   "${_binname[@]}"
 )
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Language-agnostic SLSA provenance generation for Github Actions"
 arch=('x86_64')
 url="https://github.com/slsa-framework/${pkgbase}"
@@ -39,7 +39,7 @@ prepare() {
   go mod download -x
   chmod -R ug+Xwr "${GOMODCACHE}"
 
-  mkdir -p "build"
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -61,6 +61,14 @@ build() {
     go build -v -o ./"build/${_generator}" -ldflags "\
       -X ${url#https://}/version.Version=${pkgver}" \
       ./"internal/builders/${_generator#slsa-generator-}"
+  done
+
+  for _name in "${_binname[@]}"; do
+    if [[ $_name != "slsa-builder-go" ]]; then
+      for _sh in bash fish powershell zsh; do
+      ./"build/${_name}" completion "${_sh}" > "completions/${_name}.${_sh}"
+      done
+    fi
   done
 }
 
@@ -99,5 +107,13 @@ package_${_name}() {
   
   cd \"\${srcdir}/${_pkgsrc}\"
   install -vDm755 'build/${_name}' \"\${pkgdir}/usr/bin/${_name}\"
+
+  if [[ '${_name}' != 'slsa-builder-go' ]]; then
+    cd 'completions'
+    install -vDm644 '${_name}.bash'       \"\${pkgdir}/usr/share/bash-completion/completions/${_name}\"
+    install -vDm644 '${_name}.fish'       \"\${pkgdir}/usr/share/fish/vendor_completions.d/${_name}.fish\"
+    install -vDm644 '${_name}.powershell' \"\${pkgdir}/usr/share/powershell/Completions/${_name}.ps1\"
+    install -vDm644 '${_name}.zsh'        \"\${pkgdir}/usr/share/zsh/site-functions/_${_name}\"
+  fi
 }"
 done
