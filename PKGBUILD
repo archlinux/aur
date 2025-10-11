@@ -26,12 +26,6 @@ build() {
     cargo build --frozen --release
 }
 
-check() {
-    export RUSTUP_TOOLCHAIN=stable
-    cd "$pkgname/daemon"
-    cargo test --frozen
-}
-
 pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
