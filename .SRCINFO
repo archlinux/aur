@@ -1,0 +1,16 @@
+pkgbase = niri-switch
+	pkgdesc = A fast task switcher for the niri compositor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Kiki-Bouba-Team/niri-switch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = niri
+	options = !debug
+	source = niri-switch-0.1.0.tar.gz::https://github.com/Kiki-Bouba-Team/niri-switch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8b8461227acd0cb89cebc418ff9ced9080ade8aeb0dda840851ab474b5cc4252
+
+pkgname = niri-switch
