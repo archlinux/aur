@@ -1,15 +1,15 @@
 pkgbase = apache-cxf
 	pkgdesc = open source services framework
-	pkgver = 4.0.5
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = http://cxf.apache.org
 	arch = any
 	license = Apache
 	depends = java-runtime
 	options = !strip
-	source = https://dlcdn.apache.org/cxf/4.0.5/apache-cxf-4.0.5.tar.gz
+	source = https://dlcdn.apache.org/cxf/4.1.3/apache-cxf-4.1.3.tar.gz
 	source = apache-cxf.sh
-	sha256sums = 4b5a84c06978a8db605fa5c1ae78fe4981b41e34ad897adf76fe9e94433fca42
+	sha256sums = 70ec09e5431e4833f923efe5f2206859e10f14fb1b4b56f7f0b1358f94751270
 	sha256sums = c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668
 
 pkgname = apache-cxf
