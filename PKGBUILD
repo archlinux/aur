@@ -11,13 +11,13 @@ provides=('sst')
 conflicts=('sst')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/sst/sst/releases/download/v3.17.18/sst-linux-arm64.tar.gz")
-sha256sums_aarch64=('9a25526c2c97c6c820ac97c8267cb2405bb6a73973ce87167203c7958ef493ff')
+sha256sums_aarch64=('83d027ac3b0f4c608df362e1758066294520e6f0a7d5946e876f865cb7eb57b1')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/sst/sst/releases/download/v3.17.18/sst-linux-386.tar.gz")
-sha256sums_i686=('33b314fe11a20acc498d6215dfeff9aec35afe07e0582a2762dbf3fce7fa7987')
+sha256sums_i686=('6a6e82bbbc568afc215d7a9808278187122ab09db79f61da3a2d9aaabc2876b3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sst/sst/releases/download/v3.17.18/sst-linux-x86_64.tar.gz")
-sha256sums_x86_64=('bce0c31ffbf3fe11858ac50f72984eb3fbb587149eeac4f7ad1dd7c732ff038a')
+sha256sums_x86_64=('e4224f8f421833c98d3845b9c91c0c9170c5adabb96ab991b5f22a75485025b4')
 
 package() {
   install -Dm755 ./sst "${pkgdir}/usr/bin/sst"
