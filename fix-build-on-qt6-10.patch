@@ -1,0 +1,30 @@
+From 8946285152fa48df42cdae5a042eab0d5e9ac781 Mon Sep 17 00:00:00 2001
+From: Integral <integral@member.fsf.org>
+Date: Sat, 11 Oct 2025 11:17:34 +0800
+Subject: [PATCH] build: Search for private modules with Qt 6.10
+
+Usage of a private Qt module `Foo` requires a call to
+`find_package(Qt6 COMPONENTS FooPrivate)` since Qt 6.10.
+---
+ CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4380d39..44b167e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,6 +74,11 @@ if(USE_QT_VERSION STREQUAL "")
+     endif()
+   endif()
+ 
++# https://doc.qt.io/qt-6/whatsnew610.html#build-system-changes
++if(QT_VERSION VERSION_GREATER_EQUAL 6.10)
++  list(APPEND QT_COMPONENTS CorePrivate GuiPrivate WidgetsPrivate)
++endif()
++
+   find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${QT_COMPONENTS})
+ else()
+   if(NOT USE_QT_VERSION STREQUAL "5" AND NOT USE_QT_VERSION STREQUAL "6")
+-- 
+2.51.0
+
