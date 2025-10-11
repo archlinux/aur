@@ -8,3 +8,4 @@ COPY --chown=alpm:alpm ./PKGBUILD /build/PKGBUILD
 USER alpm
 RUN namcap PKGBUILD
 RUN makepkg --noconfirm -s
+CMD bash -c "makepkg --noconfirm -i && exfetch"
