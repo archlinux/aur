@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="clipsim-git"
-pkgver=r677.83b99b3
+pkgver=r688.44cb47c
 pkgrel=1
 pkgdesc="clipsim is a simple and fast X clipboard manager written in C."
 arch=(x86_64)
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	./build.sh
 }
 
 check() {
@@ -40,5 +40,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" PREFIX=/usr install
+	./build.sh DESTDIR="$pkgdir/" PREFIX=/usr install
 }
