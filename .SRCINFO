@@ -1,14 +1,14 @@
 pkgbase = yoyo
 	pkgdesc = A simple local password manager written in C
-	pkgver = 0.0
-	pkgrel = 1
+	pkgver = 0.1
+	pkgrel = 2
 	url = https://github.com/johngitahi/yoyo
 	arch = x86_64
 	license = BSD-3
 	makedepends = clang
 	depends = jansson
 	depends = libsodium
-	source = pkgname-0.0.tar.gz::https://github.com/johngitahi/yoyo/archive/refs/tags/v0.0.tar.gz
+	source = pkgname-0.1.tar.gz::https://github.com/johngitahi/yoyo/archive/refs/tags/v0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = yoyo
