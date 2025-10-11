@@ -1,5 +1,5 @@
 pkgname=zmusic-bin
-pkgver=1.1.14.r7.gf6facda
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ provides=('zmusic=${pkgver}')
 conflicts=('zmusic')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-sha256sums_x86_64=('c39c79317ddaa743690b2814d0c28254f3e07ffa847f8fd52c32a99b27554c63')
-sha256sums_aarch64=('58387954299c8318b53428d8dc1f2273d4970577f09803d9291c4e4e26b26b35')
-source_x86_64=("$url/binaries/$pkgver/-/raw/main/zmusic-linux-x64.tar.xz")
-source_aarch64=("$url/binaries/$pkgver/-/raw/main/zmusic-linux-arm64.tar.xz")
+sha256sums_x86_64=('77b263bee967fbf75ce6b68cd5231586249dc61dce8bb4ec366b474cae830571')
+sha256sums_aarch64=('cce3fd057b8148bc3328655fe1d04437c5ad46901e1e45c0c04a067f1ae381ae')
+source_x86_64=("$url/binaries/$pkgver/-/raw/main/zmusic-$pkgver-linux-x64.tar.xz")
+source_aarch64=("$url/binaries/$pkgver/-/raw/main/zmusic-$pkgver-linux-arm64.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/lib"
