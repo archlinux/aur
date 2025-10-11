@@ -1,6 +1,6 @@
 pkgbase = stasis
 	pkgdesc = A modern Wayland idle manager designed for simplicity and effectiveness
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/stasis
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = stasis
 	depends = libinput
 	depends = wayland
 	options = !debug
-	source = stasis-0.2.1.tar.gz::https://github.com/saltnpepper97/stasis/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = c79b6068c9f14d0005bbd096466363eb8aca2cdc4d6042a2591d1b2bc172baa9
+	source = stasis-0.3.0.tar.gz::https://github.com/saltnpepper97/stasis/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = dc6c32343d2025cbf7d0e8c5ac641d7304d8adc0d98ea8060ab7d42fce3106b0
 
 pkgname = stasis
