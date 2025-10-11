@@ -1,6 +1,6 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=orgtbl-query
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="query the contents of emacs org-mode tables in files"
 arch=(any)
@@ -9,7 +9,8 @@ license=('MIT')
 depends=(gawk)
 makedepends=(git)
 optdepends=('emacs: create and operate on org-mode files')
-_tag=b44cd466efc3d98f659a2d4dc3ce6cc1aac9299d # git rev-parse 1.2.0
+# git rev-parse 1.3.1
+_tag=fc97dda7e8f4937dc8f2d2311da87bc912b9f408
 source=(git+https://git.sr.ht/~minshall/orgtbl-query#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>
