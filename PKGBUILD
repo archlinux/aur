@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-pkgver=6.9.2
+pkgver=6.10.0
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -21,6 +21,7 @@ depends=(brotli
          zstd)
 makedepends=(cmake
              git
+             jemalloc
              mariadb-libs
              ninja
              postgresql
@@ -36,14 +37,14 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('4660524959f547a58839ff56c695994e061dc3fa3646b06cca951a7ef1748aae'
+sha256sums=('be60bf981a67824c2a27155d794eb30d10a6daa71db37695668a8a703acff929'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
-  git -C $_pkgfn cherry-pick -n dc52aa68ea305d8ef40f8b514bfeba80cd6c2c1e # Unbreak reproducibility
+  git -C $_pkgfn cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
 }
 
 build() {
