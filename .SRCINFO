@@ -6,6 +6,7 @@ pkgbase = clilog-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = bash
 	depends = dialog
 	depends = python
 	depends = python-flask
