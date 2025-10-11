@@ -1,13 +1,13 @@
 # Maintainer: Achno <logiaTemp@proton.me>
 pkgname=gowall
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A tool to convert a Wallpaper's color scheme - palette"
 arch=('x86_64')
 url="https://github.com/Achno/gowall"
 license=('MIT')
 depends=('glibc')
-makedepends=('go>=1.22')
+makedepends=('go>=1.24')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Achno/gowall/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
