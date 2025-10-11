@@ -18,7 +18,6 @@ sha512sums=('SKIP')
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    git apply --whitespace=nowarn ../../StandardPaths.patch
 }
 
 pkgver() {
