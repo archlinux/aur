@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Maestri <umpire274@gmail.com>
 
 pkgname=rbackup
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Fast, cross-platform, multithreaded incremental backup tool (rsync/robocopy-like) written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 provides=('rbackup')
 conflicts=('rbackup')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/rbackup-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('f53b93cefd66a18ad0592eaff4e073203bec9df2b9fae1298e80423720eca736')
+sha256sums=('65df4d98707774af6e356805d58dccb8d365c14b3e81ed79c822b234fbcaac88')
 
 # Keywords: backup, incremental, rust, rsync, robocopy, multithreaded, portable, cli
 
