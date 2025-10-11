@@ -1,6 +1,6 @@
 # Maintainer: Reimar <mail@reim.ar>
 pkgname=mcstatus-cli
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="A command-line tool for viewing the current status of a Minecraft server"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ReimarPB/MCStatus/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('597d8110b02318123019dee9e27a0f159f9bbdbd79c11f4f67da350a6454f011')
+sha256sums=('15284e896e9af23fe7ac516456b8f5619d2da94848567e0b9286d490eb026846')
 validpgpkeys=()
 
 prepare() {
