@@ -1,0 +1,24 @@
+pkgbase = sshpilot-git
+	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
+	pkgver = r2191.g936c21c
+	pkgrel = 1
+	url = https://github.com/mfat/sshpilot
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-paramiko
+	depends = python-cryptography
+	depends = python-matplotlib
+	depends = libadwaita
+	depends = vte4
+	depends = sshpass
+	depends = libsecret
+	provides = sshpilot
+	conflicts = sshpilot
+	source = git+https://github.com/mfat/sshpilot.git
+	sha256sums = SKIP
+
+pkgname = sshpilot-git
