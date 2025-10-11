@@ -1,0 +1,22 @@
+pkgbase = devwp-bin
+	pkgdesc = An Electron-based desktop application for managing local WordPress development sites
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = https://github.com/SpiZeak/DevWP
+	arch = x86_64
+	license = custom
+	depends = docker
+	depends = docker-compose
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	optdepends = docker-buildx: For building custom Docker images
+	optdepends = git: For version control integration
+	provides = devwp
+	conflicts = devwp
+	noextract = devwp-bin-0.0.26.AppImage
+	options = !strip
+	source = devwp-bin-0.0.26.AppImage::https://github.com/SpiZeak/DevWP/releases/download/v0.0.26/devwp-0.0.26.AppImage
+	sha256sums = aff99a2d3e6174ffbb585066fb83754abdc1d1de89836ff74ac45537b6c93ced
+
+pkgname = devwp-bin
