@@ -13,11 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('9f424e3d522809fff7775e5ac1985f69d7aa11c8b7908a21ec42e09864abed6a')  # Replace with actual checksum after creating GitHub release
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/tema-$pkgver"
 
     # Install source files
-    install -dm755 "$pkgdir/usr/share/$pkgname"
-    cp -r src templates "$pkgdir/usr/share/$pkgname/"
+    install -dm755 "$pkgdir/usr/share/tema"
+    cp -r src templates "$pkgdir/usr/share/tema/"
 
     # Create launcher script
     install -dm755 "$pkgdir/usr/bin"
