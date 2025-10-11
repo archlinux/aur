@@ -8,7 +8,6 @@ license=('MIT')
 depends=('git')
 makedepends=('rust' 'cargo')
 
-# 直接使用当前目录作为源
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/070f29ab1ab69cae4471b4eb225bd6c4eea327ae.tar.gz")
 sha256sums=('da9bd01a6d51f047c3ea4e55a7653b908dccb6f24710f6760430a8d7551d3e2f')
 
