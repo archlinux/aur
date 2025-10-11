@@ -1,11 +1,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=cloudcmd
-pkgname=$_npmname
-pkgver=19.0.13
-pkgrel=1
+_npmver=19.0.13
 
+pkgname=$_npmname
 pkgdesc="Cloud Commander file manager for the web with console and editor."
+pkgver=$_npmver
+pkgrel=1
 arch=("x86_64")
 url="https://github.com/coderaiser/cloudcmd"
 _urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
@@ -16,10 +17,10 @@ makedepends=("npm" "jq")
 provides=("$_npmname")
 
 options=(!strip emptydirs staticlibs zipman)
-noextract=("${_npmname}-${pkgver}.tgz")
+noextract=("${pkgname}-${pkgver}.tgz")
 changelog="changelog.md"
 
-source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz"
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz"
 		"MAN-${pkgver}.1::${_urlraw}/man/${_npmname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
@@ -63,5 +64,5 @@ package() {
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	# Install LICENSE file
-	install -Dm 644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
