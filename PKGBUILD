@@ -2,7 +2,7 @@
 pkgname=kubectl-oomd
 # renovate: datasource=github-releases depName=jdockerty/kubectl-oomd
 pkgver=0.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='kubectl plugin to display the pods and containers which have recently been OOMKilled'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jdockerty/kubectl-oomd'
@@ -18,8 +18,8 @@ build() {
   local _x _commit
   _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   _x=(
-    version="v${pkgver}"
-    commit="${_commit:?}"
+    Version="v${pkgver}"
+    Commit="${_commit:?}"
   )
 
   export CGO_ENABLED=1
@@ -27,20 +27,19 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly -v"
+  export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly"
   export GO111MODULE=on
 
   # Support -debug package
-  if [[ " ${OPTIONS[*]} " =~ " ${value} " ]]
+  if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
     export GOPATH="${srcdir}"
   fi
 
   cd "${pkgname}-${pkgver}"
-  mkdir bin
-  go build \
-    -ldflags="${_x[*]/#/-X=${url/https:\/\/}/pkg/util.} -linkmode=external" \
+  go build -v \
+    -ldflags="${_x[*]/#/-X=main.} -linkmode=external" \
     -o bin/ \
     ./...
 }
