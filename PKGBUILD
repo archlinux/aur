@@ -2,7 +2,7 @@
 # Contributor: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
-pkgver=5.5.5
+pkgver=6.0.0
 pkgrel=1
 arch=('any')
 depends=(
@@ -39,7 +39,7 @@ conflicts=('cobib')
 pkgdesc="Console Bibliography"
 url="https://gitlab.com/cobib/${pkgname}"
 source=("https://gitlab.com/cobib/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('7241519fe285459d2bd9a16ccfc245f22c157826790f60f99882010b56a1f13f1080718412a8438dc30a788434e76db609eb87fbbbad86ce7a226861946f05a8')
+sha512sums=('4a37eb42eaef3cc95a2125592c22690584c7e622df77c5ee753661f5dd89682c59a1f479bbd67135bc54ba38654f885e4750399b6a1e46143803ff75f03b71eb')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
