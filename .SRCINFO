@@ -1,15 +1,16 @@
 pkgbase = organicmaps
 	pkgdesc = Organic Maps: Offline Hike, Bike, Trails and Navigation
 	pkgver = 2025.10.07_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://organicmaps.app
 	arch = x86_64
 	license = Apache
-	makedepends = cmake<=3.31.6
+	makedepends = cmake
 	makedepends = git
 	makedepends = jq
 	makedepends = gcc
 	makedepends = ninja
+	makedepends = mold
 	depends = mesa
 	depends = libglvnd
 	depends = freetype2

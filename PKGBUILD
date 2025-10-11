@@ -3,10 +3,10 @@
 pkgname=organicmaps
 pkgver=2025.10.07_1
 tag="${pkgver%%_*}-${pkgver##*_}-android"
-pkgrel=1
+pkgrel=2
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
-makedepends=(cmake git jq gcc ninja binutils)
+makedepends=(cmake git jq gcc ninja mold)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
   qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
@@ -58,7 +58,7 @@ prepare() {
 }
 build() {
   cd $pkgname
-  env CFLAGS="-fuse-ld=ld" CXXFLAGS="-fuse-ld=ld" CC=gcc CXX=g++ \
+  env CFLAGS="-fuse-ld=mold" CXXFLAGS="-fuse-ld=mold" CC=gcc CXX=g++ \
     tools/unix/build_omim.sh -n $(nproc) -c -r desktop
 }
 package() {
