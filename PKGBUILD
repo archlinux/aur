@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebsockets-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e27dda8cf3cb31cc235f92e186340ba70a76c47aed7eb32b239d68feb94282c4')
+sha256sums=('d1092e7da5c3b8eea242e4069f05ff8e710a17c54d5010c1b557e26f7948806e')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
