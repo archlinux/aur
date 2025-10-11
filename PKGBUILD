@@ -7,13 +7,13 @@ pkgver=0.33
 pkgrel=1
 pkgdesc="Debian package signature verification tool"
 arch=(
-	'aarch64'
-	'armv7h'
-	'i686'
+  'aarch64'
+  'armv7h'
+  'i686'
   'loong64'
-	'powerpc64le'
-	'riscv64'
-	'x86_64'
+  'powerpc64le'
+  'riscv64'
+  'x86_64'
 )
 url="https://manpages.debian.org/unstable/debsig-verify/debsig-verify.1.en.html"
 _url="https://git.dpkg.org/git/dpkg/debsig-verify.git"
@@ -41,20 +41,20 @@ build() {
     --sysconfdir='/etc'
   )
 
-	cd "${srcdir}/${_pkgsrc}"
-	./autogen
-	./configure "${configure_options[@]}"
-	make
+  cd "${srcdir}/${_pkgsrc}"
+  ./autogen
+  ./configure "${configure_options[@]}"
+  make
 }
 
 check() {
-	cd "${srcdir}/${pkgname}/test"
-	make check-local
+  cd "${srcdir}/${pkgname}/test"
+  make check-local
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 
   cd "doc"
   install -vDm644 "policy-syntax.txt" "${pkgdir}/usr/share/doc/${pkgname}/policy-syntax.txt"
