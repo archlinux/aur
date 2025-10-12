@@ -1,7 +1,7 @@
 pkgbase = fontbase
 	pkgdesc = FontBase is the font manager of the new generation, built by designers, for designers.
 	pkgver = 2.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fontba.se/
 	arch = x86_64
 	arch = i686
