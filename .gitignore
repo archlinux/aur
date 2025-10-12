@@ -1,0 +1,13 @@
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!pear-desktop.install
+!pear-desktop.desktop
+!pear-desktop.png
+!pear-desktop.sh

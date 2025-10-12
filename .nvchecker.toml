@@ -1,0 +1,4 @@
+[pear-desktop]
+source = "git"
+git = "https://github.com/pear-devs/pear-desktop.git"
+prefix = "v"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pear Desktop
+Exec=pear-desktop
+Terminal=false
+Type=Application
+Icon=pear-desktop
+StartupWMClass=com.github.th_ch.pear_music
+Comment=Pear is extension for music player
+Categories=AudioVideo;
