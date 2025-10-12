@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "fsel-git"
+SPDX-PackageSupplier = "Mjoyufull <https://github.com/Mjoyufull>"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/fsel-git.git"
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO", ".gitignore"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 Mjoyufull <https://github.com/Mjoyufull>"
+SPDX-License-Identifier = "0BSD"
