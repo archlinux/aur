@@ -2,7 +2,7 @@
 # took most of the script from twintaillauncher-git
 
 pkgname=twintaillauncher
-pkgver=1.1.8
+pkgver=1.1.10
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
@@ -14,7 +14,7 @@ makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsv
 provides=("${pkgname}")
 conflicts=("${pkgname}" "twintaillauncher-bin")
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/ttl-v${pkgver}.tar.gz")
-sha256sums=('07275f468e6a9ca6df2a825b19a72bc1a81a005e6398ece527f42d300708596e')
+sha256sums=('228dfc9d42d31ff85e6980dbb6d7e22afc4dda9bd081b5657d995adbbbed98ad')
 options=('!lto' '!debug')
 
 prepare() {
@@ -33,11 +33,11 @@ package(){
 	install -Dm755 $_dirname/src-tauri/target/release/resources/krpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_dirname/src-tauri/target/release/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_dirname/src-tauri/target/release/resources/7zr -t $pkgdir/usr/lib/twintaillauncher/resources/
+	install -Dm755 $_dirname/src-tauri/target/release/resources/reaper -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm644 $_dirname/src-tauri/target/release/resources/hkrpg_patch.dll -t $pkgdir/usr/lib/twintaillauncher/resources/
-	install -Dm644 $_dirname/src-tauri/target/release/resources/libs/steamclient.so -t $pkgdir/usr/lib/twintaillauncher/resources/libs/
 	install -Dm755 $_dirname/src-tauri/target/release/twintaillauncher -t $pkgdir/usr/bin
 	install -Dm644 $_dirname/twintaillauncher.desktop -t $pkgdir/usr/share/applications
-	install -Dm644 $_dirname/src-tauri/icons/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/${pkgname}.png
+	install -Dm644 $_dirname/src-tauri/icons/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png
 	install -Dm644 $_dirname/src-tauri/icons/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png
 	install -Dm644 $_dirname/src-tauri/icons/128x128@2x.png $pkgdir/usr/share/icons/hicolor/256x256@2/apps/$pkgname.png
 }
