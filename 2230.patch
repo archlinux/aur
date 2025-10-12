@@ -1,0 +1,119 @@
+From 01ab24218cf6367a5e30b5aba02edbee13b52b06 Mon Sep 17 00:00:00 2001
+From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
+Date: Sat, 3 May 2025 19:22:57 +0700
+Subject: [PATCH 1/2] LoginManager: Use logind auto heuristic when
+ XDG_SESSION_ID is not set
+
+On a multiseat system, the current session determination method will
+cause the wrong session to be detected in the GDM greeter. Fix this by
+letting logind figure out the session instead. logind will use the
+session ID acquired from gnome-shell's cgroup information then
+automatically fall back to using the user display session.
+---
+ js/misc/loginManager.js | 35 +++++++++++------------------------
+ 1 file changed, 11 insertions(+), 24 deletions(-)
+
+diff --git a/js/misc/loginManager.js b/js/misc/loginManager.js
+index ebf9d8be8c..8c40ed4569 100644
+--- a/js/misc/loginManager.js
++++ b/js/misc/loginManager.js
+@@ -127,30 +127,17 @@ class LoginManagerSystemd extends Signals.EventEmitter {
+         let sessionId = GLib.getenv('XDG_SESSION_ID');
+         if (!sessionId) {
+             log('Unset XDG_SESSION_ID, getCurrentSessionProxy() called outside a user session. Asking logind directly.');
+-            const userProxy = await this.getCurrentUserProxy();
+-            let [session, objectPath] = userProxy.Display;
+-            if (session) {
+-                log(`Will monitor session ${session}`);
+-                sessionId = session;
+-            } else {
+-                log('Failed to find "Display" session; are we the greeter?');
+-
+-                for ([session, objectPath] of userProxy.Sessions) {
+-                    let sessionProxy = new SystemdLoginSession(Gio.DBus.system,
+-                        'org.freedesktop.login1',
+-                        objectPath);
+-                    log(`Considering ${session}, class=${sessionProxy.Class}`);
+-                    if (sessionProxy.Class === 'greeter') {
+-                        log(`Yes, will monitor session ${session}`);
+-                        sessionId = session;
+-                        break;
+-                    }
+-                }
+-
+-                if (!sessionId) {
+-                    log('No, failed to get session from logind.');
+-                    return null;
+-                }
++            try {
++                // We only use the /session/auto object to acquire the
++                // session ID since this object does not emit signals.
++                const session = await SystemdLoginSession.newAsync(
++                    Gio.DBus.system, 'org.freedesktop.login1',
++                    '/org/freedesktop/login1/session/auto');
++                log(`Will monitor session ${session.Id}`);
++                sessionId = session.Id;
++            } catch (error) {
++                logError(error, 'Failed to get session from logind');
++                return null;
+             }
+         }
+ 
+-- 
+GitLab
+
+
+From a6a7fd398f11f19153d512d2a619f40a0c217c29 Mon Sep 17 00:00:00 2001
+From: Myrrh Periwinkle <myrrhperiwinkle@qtmlabs.xyz>
+Date: Mon, 26 May 2025 10:10:31 +0700
+Subject: [PATCH 2/2] LoginDialog: Don't reset auth prompt while launching a
+ session
+
+https://gitlab.gnome.org/GNOME/gdm/-/merge_requests/291 changes GDM
+behavior to automatically switch back to the greeter session when a
+non-VT user session is opened. Detect this condition and avoid resetting
+the authentication prompt so the session launch isn't aborted.
+---
+ js/gdm/loginDialog.js | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
+index fc1b5b78c0..dee978954c 100644
+--- a/js/gdm/loginDialog.js
++++ b/js/gdm/loginDialog.js
+@@ -670,6 +670,7 @@ export const LoginDialog = GObject.registerClass({
+ 
+         this._disableUserList = undefined;
+         this._userListLoaded = false;
++        this._gdmSessionStarted = false;
+ 
+         this._realmManager = new Realmd.Manager();
+         this._realmManager.connectObject('login-format-changed',
+@@ -1194,6 +1195,16 @@ export const LoginDialog = GObject.registerClass({
+     }
+ 
+     _loginScreenSessionActivated() {
++        // The login progress on non-VT seats will involve the greeter session
++        // being briefly switched away from then switched back to again.
++        // Therefore we must not reset the authentication prompt until after
++        // we actually launched the user session so we don't erroneously abort
++        // the session launch.
++        if (!this._gdmSessionStarted)
++            return;
++
++        this._gdmSessionStarted = false;
++
+         if (this.opacity === 255 &&
+             this._authPrompt.verificationStatus === AuthPrompt.AuthPromptStatus.NOT_VERIFYING)
+             return;
+@@ -1279,6 +1290,7 @@ export const LoginDialog = GObject.registerClass({
+             mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+             onComplete: () => {
+                 this._greeter.call_start_session_when_ready_sync(serviceName, true, null);
++                this._gdmSessionStarted = true;
+                 this._unbindOpacity();
+             },
+         });
+-- 
+GitLab
+
