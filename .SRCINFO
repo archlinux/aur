@@ -1,6 +1,6 @@
 pkgbase = lammps-git
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = patch_22Jul2025.r56.g173e796
+	pkgver = patch_10Sep2025.r24.gccca772
 	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
