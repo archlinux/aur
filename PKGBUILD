@@ -28,11 +28,15 @@ package() {
   local install_dir="$pkgdir/usr/share/$pkgname"
   local executable_name="CAT" 
 
+  mkdir -p "$install_dir"
+
   dotnet publish "$project_path" \
     --configuration Release \
     --output "$install_dir" \
     --self-contained false \
     -p:PublishReadyToRun=true
+
+  mkdir -p "$pkgdir/usr/bin"
 
   ln -s "$install_dir/$executable_name" "$pkgdir/usr/bin/catsh"
 }
