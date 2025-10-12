@@ -16,6 +16,6 @@ pkgbase = helion
 	source = https://github.com/Helion-Engine/Helion/archive/refs/tags/0.9.8.0.tar.gz
 	source = change-desktop-target.patch
 	sha256sums = cb893c0e92950919700dd3471ad7420fa44c1bc0a60ecff0f8148b62a796eec7
-	sha256sums = 55fbacd2387b4a70878731969fa044bcf91cdd6f1c03138606336fee7acd8f89
+	sha256sums = ed1add6b5464b4b1844cdee684354cdb2c412706cbdc1ce2b22a53323497198a
 
 pkgname = helion
