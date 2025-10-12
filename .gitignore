@@ -1,0 +1,8 @@
+kwin-grayscale-effect*.swp
+*.swo
+
+*.pkg.tar.*
+*.tar.*
+pkg
+src
+kwin-grayscale-effect
