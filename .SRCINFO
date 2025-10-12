@@ -1,13 +1,13 @@
 pkgbase = sam-git
 	pkgdesc = An updated version of the sam text editor.
-	pkgver = r473.5d8acb3
+	pkgver = r540.d2e167d
 	pkgrel = 1
-	url = https://github.com/deadpixi/sam
+	url = https://github.com/japanoise/sam
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
-	source = sam-git::git+https://github.com/deadpixi/sam
+	source = sam-git::git+https://github.com/japanoise/sam
 	md5sums = SKIP
 
 pkgname = sam-git

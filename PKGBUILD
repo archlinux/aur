@@ -1,10 +1,10 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sam-git
-pkgver=r473.5d8acb3
+pkgver=r540.d2e167d
 pkgrel=1
 pkgdesc='An updated version of the sam text editor.'
 arch=('i686' 'x86_64')
-url='https://github.com/deadpixi/sam'
+url='https://github.com/japanoise/sam'
 license=('custom')
 makedepends=('git')
 source=("$pkgname::git+$url")
