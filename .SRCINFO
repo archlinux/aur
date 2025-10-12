@@ -9,6 +9,6 @@ pkgbase = ttf-cuneiform-fonts
 	depends = ttf-assurbanipal
 	depends = ttf-ullikummi
 	depends = ttf-esagil
-	depends = ttf-bistun
+	depends = ttf-bisitun
 
 pkgname = ttf-cuneiform-fonts

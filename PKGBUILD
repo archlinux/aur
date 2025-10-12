@@ -11,5 +11,5 @@ depends=(
   'ttf-assurbanipal'
   'ttf-ullikummi'
   'ttf-esagil'
-  'ttf-bistun'
+  'ttf-bisitun'
 )
