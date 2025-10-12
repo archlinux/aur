@@ -30,8 +30,8 @@ script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd -P
 PKGFILE="$script_dir/PKGBUILD"
 REPO="Firstp1ck/Pacsea"                 # owner/repo
 ASSET_NAME="Pacsea"     # release asset file name
-VERSION="v0.4.0"              # e.g. 0.4.0
-TAG="v0.4.0"                  # e.g. v0.4.0
+VERSION="v0.4.1"              # e.g. 0.4.0
+TAG="v0.4.1"                  # e.g. v0.4.0
 TAG_PREFIX="v"          # used when TAG is not provided
 BINARY_URL=""           # optional explicit URL override
 SOURCE_URL=""           # optional explicit URL override
@@ -233,6 +233,6 @@ fi
 echo >&2
 echo "ℹ️ Next steps:" >&2
 echo "  ℹ️ makepkg --printsrcinfo > .SRCINFO" >&2
-echo "  ℹ️ git add $PKGFILE .SRCINFO && git commit -m 'Update checksums for ${TAG}'" >&2
+echo "  ℹ️ git add . && git commit -m 'Update checksums for ${TAG}'" >&2
 
 exit 0
