@@ -1,4 +1,4 @@
-# Maintainer: Pulsar335503356 <pulsar335503356@163.com>
+# Maintainer: Pulsar33550336 <pulsar33550336@163.com>
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Martin Rodriguez Reboredo <yakoyoku@gmail.com>
