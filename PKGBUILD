@@ -5,7 +5,7 @@
 
 # disable package compression (optional but highly recommended)
 # PKGEXT='.pkg.tar'
-# disable unneeded products (optional but highly recommended)
+# enable optional products
 declare -Ag _products=(
   # [5g_toolbox]="5G Toolbox"
   # [autosar_blockset]="AUTOSAR Blockset"
@@ -137,7 +137,7 @@ pkgname=(
 pkgver=R2025b+25.2.0.2998904
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -266,45 +266,7 @@ build() {
   echo "  -> Separating Java components..."
   mv "java" "${srcdir}/install-java/java"
 
-  echo "  -> Removing bundled dependencies..."
-  # launch on Wayland without 'env QT_QPA_PLATFORM="xcb"'
-  echo "    -> Removing bundled Qt5..."
-  find "bin/glnxa64" -type f -name 'libQt5*.so*' -exec \
-    rm -vf "{}" +
-  find "bin/glnxa64" -type l -name 'libQt5*.so*' -exec \
-    rm -f "{}" +
-
-  echo "    -> Removing bundled GTK2..."
-  find "cefclient/sys/os/glnxa64" -type f -exec \
-    rm -vf "{}" +
-  rm -f "cefclient/sys/os/glnxa64"/*
-
-  echo "    -> Removing bundled FluxBox..."
-  ln -vsf "/usr/bin/fluxbox" "sys/fluxbox/glnxa64/bin/fluxbox"
-  rm -f "sys/fluxbox/glnxa64/fluxbox.rights"
-
-  # echo "    -> Removing bundled OpenGL..."
-  # find "sys/opengl/lib/glnxa64" -type f -name 'lib*.so*' -exec \
-  #   rm -vf "{}" +
-  # rm -f "sys/opengl/lib/glnxa64"/*
-
-  # solves crashing issues related to outdated ABIs
-  echo "    -> Removing bundled GCC..."
-  find "sys/os/glnxa64" -type f \( -name '*gcc*.so*' -o -name '*gfortran*.so*' -o -name '*quadmath*.so*' -o -name '*stdc++*.so*' \) -exec \
-    rm -vf "{}" +
-  find "sys/os/glnxa64" \( -name '*gcc*' -o -name '*gfortran*' -o -name '*quadmath*' -o -name '*stdc++*' \) -exec \
-    rm -f "{}" +
-
-  echo "    -> Removing bundled Hunspell en_US dictionary..."
-  ln -vsf "/usr/share/myspell/dicts/en_US.aff" "sys/share/dict/en_US.aff"
-  ln -vsf "/usr/share/myspell/dicts/en_US.dic" "sys/share/dict/en_US.dic"
-  rm -f "sys/share/dict/hunspell-dict-en_us.rights"
-
-  echo "    -> Removing bundled Xvfb..."
-  ln -vsf "/usr/bin/Xvfb" "sys/Xvfb/glnxa64/bin/Xvfb"
-  rm -f "sys/Xvfb/glnxa64/Xvfb.rights"
-
-  echo "    -> Modifying GCC version used by MEX..."
+  echo "  -> Modifying GCC version used by MEX..."
   find "bin/glnxa64/mexopts" -type f -name '*.xml' -exec \
     sed -e "s|/usr/local|/usr|g" \
         -e "s|gcc|gcc-${pkgbase}|g" \
@@ -312,99 +274,14 @@ build() {
         -e "s|gfortran|gfortran-${pkgbase}|g" \
         -i "{}" +
 
-  echo "    -> Downgrading GnuTLS version..."
+  echo "  -> Downgrading GnuTLS version..."
   find "/usr/lib/gnutls3.8.9" -maxdepth 1 -type f,l -name 'lib*.so*' -exec \
     ln -vsf {} bin/glnxa64/ \;
 }
 
 package_matlab() {
   depends=(
-    # https://github.com/mathworks-ref-arch/container-images/tree/main/matlab-deps
-    # Arch                  # Debian / RHEL
-    'alsa-lib'              # libasound2t64
-    'at-spi2-core'          # libatk-bridge2.0-0t64
-                            # libatk1.0-0t64
-                            # libatspi2.0-0t64
-    'ca-certificates'       # ca-certificates
-    # 'cairo'               # libcairo-gobject2
-    #                       # libcairo2
-    # 'debianutils'         # debianutils
-    'fontconfig'            # libfontconfig1
-    # 'fribidi'             # libfribidi0
-    'gcc-libs'              # libatomic1
-    'gdk-pixbuf2'           # libgdk-pixbuf-2.0-0
-    'glib2'                 # libglib2.0-0t64
-    'glibc'                 # libc6
-    # 'glibc-locales'       # locales
-    #                       # locales-all
-    'gst-plugins-base-libs' # libgstreamer-plugins-base1.0-0
-    'gstreamer'             # libgstreamer1.0-0
-    # 'gtk3'                # libgtk-3-0t64
-    # 'libcap'              # libcap2
-    # 'libcups'             # libcups2t64
-    'libdrm'                # libdrm2
-    'libgl'                 # libgl1
-    'libice'                # libice6
-    # 'libltdl'             # libltdl7
-    # 'libprocps'           # procps
-    'libsndfile'            # libsndfile1
-    # 'libtirpc'            # libtirpc3t64
-    # 'libuhd'              # libuhd4.6.0-dpdk
-    'libxcomposite'         # libxcomposite1
-    'libxcrypt-compat'      # libcrypt1
-    # 'libxcursor'          # libxcursor1
-    # 'libxdamage'          # libxdamage1
-    'libxfixes'             # libxfixes3
-    # 'libxfont2'           # libxfont2
-    'libxft'                # libxft2
-    # 'libxinerama'         # libxinerama1
-    'libxrandr'             # libxrandr2
-    'libxt'                 # libxt6t64
-    # 'libxtst'             # libxtst6
-    'libxxf86vm'            # libxxf86vm1
-    # 'make'                # make
-    'mesa'                  # libgbm1
-    # 'net-tools'           # net-tools
-    'nspr'                  # libnspr4
-    'nss'                   # libnss3
-    # 'numactl'             # libnuma1
-    # 'opa-psm2'            # libpsm2-2
-    # 'openucx'             # libucx0
-    'pam'                   # libpam0g
-    'pango'                 # libpango-1.0-0
-                            # libpangocairo-1.0-0
-                            # libpangoft2-1.0-0
-    'pixman'                # libpixman-1-0
-    # 'rdma-core'           # ibverbs-providers
-                            # libibverbs1
-                            # librdmacm1t64
-    # 'sudo'                # sudo
-    'unzip'                 # unzip
-    'util-linux-libs'       # libuuid1
-    'which'                 # which.x86_64
-    # 'xorg-setxkbmap'      # x11-xkb-utils
-    # 'xorg-xkbcomp'
-    # 'xorg-xkbevd'
-    # 'xorg-xkbprint'
-    # 'xorg-xkbutils'
-    'wget'                  # wget
-    'zlib'                  # zlib1g
-
-    # removed manually
-    'qt5-base'
-    'qt5-gamepad'
-    'qt5-svg'
-    # 'qt5-websockets'
-    'qt5-x11extras'
-    # 'qt5-xmlpatterns'
-    # 'fluxbox'
-    # 'gtk2'
-    # 'libgl'
-    # 'glu'
-    # 'gcc-libs'
-    # 'hunspell-en_us'
-    # 'xorg-server-xvfb'
-
+    "${pkgname}-meta"
     'sh'
   )
   optdepends=(
@@ -416,42 +293,6 @@ package_matlab() {
     "java-${pkgbase}: required for certain products and features"
     'matlab-gcc: GCC runtime dependency'
     'matlab-gcc-fortran: GFortran runtime dependency'
-
-    'qt5-websockets'
-    'qt5-xmlpatterns'
-    'fluxbox'
-    'gtk2'
-    'hunspell-en_us'
-    'xorg-server-xvfb'
-
-    'cairo: listed in the original depends as libcairo-gobject2, libcairo2'
-    # 'debianutils: listed in the original depends as debianutils'
-    'fribidi: listed in the original depends as libfribidi0'
-    'glibc-locales: listed in the original depends as locales, locales-all'
-    'gtk3: listed in the original depends as libgtk-3-0t64'
-    'libcap: listed in the original depends as libcap2'
-    'libcups: listed in the original depends as libcups2t64'
-    'libltdl: listed in the original depends as libltdl7'
-    'libprocps: listed in the original depends as procps'
-    'libtirpc: listed in the original depends as libtirpc3t64'
-    'libuhd: listed in the original depends as libuhd4.6.0-dpdk'
-    'libxcursor: listed in the original depends as libxcursor1'
-    'libxdamage: listed in the original depends as libxdamage1'
-    'libxfont2: listed in the original depends as libxfont2'
-    'libxinerama: listed in the original depends as libxinerama1'
-    'libxtst: listed in the original depends as libxtst6'
-    'make: listed in the original depends as make'
-    'net-tools: listed in the original depends as net-tools'
-    'numactl: listed in the original depends as libnuma1'
-    'opa-psm2: listed in the original depends as libpsm2-2'
-    'openucx: listed in the original depends as libucx0'
-    'rdma-core: listed in the original depends as ibverbs-providers, libibverbs1, librdmacm1t64'
-    'sudo: listed in the original depends as sudo'
-    'xorg-setxkbmap: listed in the original depends as x11-xkb-utils'
-    'xorg-xkbcomp: listed in the original depends as x11-xkb-utils'
-    'xorg-xkbevd: listed in the original depends as x11-xkb-utils'
-    'xorg-xkbprint: listed in the original depends as x11-xkb-utils'
-    'xorg-xkbutils: listed in the original depends as x11-xkb-utils'
   )
   provides+=(
     "${pkgname}-release=${_release}"
@@ -501,9 +342,7 @@ package_java-matlab() {
   pkgdesc+=" (Java components)"
   depends=(
     "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
-    # https://www.mathworks.com/support/requirements/openjdk.html
-    'java-environment<=21'
-    'java-environment>=8'
+    "${pkgname}-meta"
   )
   provides=(
     "${pkgname}-release=${_release}"
