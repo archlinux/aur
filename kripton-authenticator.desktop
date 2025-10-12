@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kripton Authenticator
+Comment=A simple terminal-based TOTP authenticator with encrypted storage
+Exec=kripton-authenticator  
+Icon=kripton-authenticator
+Terminal=true 
+Type=Application
+Categories=Utility;Security;

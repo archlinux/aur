@@ -1,0 +1,17 @@
+pkgbase = kripton-authenticator-bin
+	pkgdesc = A secure, command-line Time-based One-time Password (TOTP) authenticator application written in Rust. It securely stores your TOTP secrets using AES-256-GCM encryption, Argon2id for strong master key derivation and Zeroizing for cold boot attacks. (Pre-compiled binary)
+	pkgver = 2.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/clauderarch/kripton-authenticator
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = https://github.com/clauderarch/kripton-authenticator/releases/download/v2.0.0/kripton-authenticator-2.0.0-bin-x86_64.tar.gz
+	source = kripton-authenticator.desktop
+	source = kripton-auth-logo.png
+	sha256sums = 24e662d65dbf50f51d8f448ee217e3e2493b7778dcc71a0f799fd722a0a8e6aa
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kripton-authenticator-bin
