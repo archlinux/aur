@@ -11,7 +11,7 @@ makedepends=("cargo" "rust" "pkgconf" "pkg-config" "clang")
 provides=("$pkgname")
 conflicts=("hyprviz-bin")
 source=("https://github.com/timasoft/hyprviz/archive/refs/tags/v0.7.0.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('88c8e179956cfc2be795777323347e2245a808f33ba2dfb1e5e021420e35fead')
 
 build() {
   cd "${srcdir}/hyprviz-${pkgver}"
