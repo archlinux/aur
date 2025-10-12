@@ -11,7 +11,7 @@ depends=('sdl2')
 makedepends=('cmake' 'gcc' 'git')
 conflicts=('chocolate-quake-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Henrique194/chocolate-quake/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('6b03bef8c9e374c267a2939c78c33829e85ac8cfc113a8206948062959033bec')
+sha256sums=('bad9adffccb71addd821a3c82242ad29d4be38a530fd1f798e63ada5716b666c')
 
 build() {
 	cd "$pkgname-$pkgname-$pkgver/"
