@@ -7,7 +7,7 @@ arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
 source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Phoenix/-/raw/5c48e1353cb4119a83364b945af4091594350fc3/archives/phoenix-flatpak.zip")
-sha512sums=('')
+sha512sums=('618be90952bb8fb2cf5c9caa971b69a68d8e04c6327b8c368691a1db8a8257b554e0d3533e5573cdc3d5a878814efc54b9363f24a73efb9791bd7d86d6c2a8fa')
 makedepends=('unzip')
 
 pkgver() {
