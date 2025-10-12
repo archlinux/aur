@@ -1,6 +1,6 @@
 pkgname=cat-git
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source highly customizable shell made in C#."
 arch=('any')
 url="https://github.com/lunaNoir25/CAT"
