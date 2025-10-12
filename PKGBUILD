@@ -7,7 +7,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.30.0.r95.g58c3ca0
+pkgver=2.31.1.r28.g7214aaf
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -59,6 +59,9 @@ prepare() {
 
   cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # Fix for Qt 6.10
+  sed -E -e '/\bCore\b/i GuiPrivate QmlPrivate' -i CMakeLists.txt
 }
 
 pkgver() {
@@ -67,7 +70,6 @@ pkgver() {
   _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
   _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
   _hash=$(git rev-parse --short=7 HEAD)
-
   printf '%s.r%s.g%s' "${_tag#v}" "$_revision" "$_hash"
 }
 
@@ -87,10 +89,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
