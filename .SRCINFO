@@ -1,7 +1,7 @@
 pkgbase = espressif-ide-bin
 	pkgdesc = Eclipse-based IDE for ESP-IDF development
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espressif/idf-eclipse-plugin
 	arch = x86_64
 	license = EPL
@@ -26,6 +26,6 @@ pkgbase = espressif-ide-bin
 	source = espressif-ide.png
 	sha256sums = 71b1d278f4db1809a676b9dc57ecf2ad7aeeb161550992400400cd2559dc6b81
 	sha256sums = db9e1eec551b3254d6b8da3b8d972cb76a9c405f7c7894f090f193ee700bcdfd
-	sha256sums = SKIP
+	sha256sums = f60870033123f7400a436fdc495a2bec3b50c96ffe2e4ad451296f1ae224e336
 
 pkgname = espressif-ide-bin
