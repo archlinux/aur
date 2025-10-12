@@ -1,0 +1,5 @@
+[librius-bin]
+source = "github"
+github = "umpire274/librius"
+use_latest_release = true
+prefix = "v"
