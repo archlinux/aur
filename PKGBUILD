@@ -1,7 +1,7 @@
 # Maintainer: Mrinmoy <grx8x0mfy@mozmail.com>
 pkgname=ulaa-bin
 _pkgname=ulaa-browser
-pkgver=2.36.0
+pkgver=2.36.1
 pkgrel=1
 epoch=
 pkgdesc="Private, Secure & Fast Browsing"
@@ -14,7 +14,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=(ulaa-browser-stable)
-conflicts=(ulaa-browser-stable)
+conflicts=(ulaa-browser ulaa-browser-bin)
 replaces=()
 backup=()
 options=(!debug)
