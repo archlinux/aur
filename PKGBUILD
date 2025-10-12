@@ -7,7 +7,7 @@
 
 _srcname=dash-to-dock
 pkgname=gnome-shell-extension-ubuntu-dock-git
-pkgver=100ubuntu2.r12.g5b3db6af
+pkgver=102ubuntu1.r0.g1faf3f6e
 pkgrel=1
 pkgdesc="A dock for the Gnome Shell, default Ubuntu experience"
 arch=('any')

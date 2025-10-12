@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ubuntu-dock-git
 	pkgdesc = A dock for the Gnome Shell, default Ubuntu experience
-	pkgver = 100ubuntu2.r12.g5b3db6af
+	pkgver = 102ubuntu1.r0.g1faf3f6e
 	pkgrel = 1
 	url = https://github.com/micheleg/dash-to-dock/tree/ubuntu-dock
 	arch = any
