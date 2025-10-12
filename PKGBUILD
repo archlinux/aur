@@ -13,13 +13,15 @@ makedepends=('cmake' 'make')
 replaces=()
 backup=()
 options=()
-source=("$tlRender-${pkgver}.tar.gz::https://github.com/darbyjohnston/tlRender/archive/refs/tags/${pkgver}.tar.gz"
+source=("tlRender-${pkgver}.tar.gz::https://github.com/darbyjohnston/tlRender/archive/refs/tags/${pkgver}.tar.gz"
 		"0001-minizip-ng.patch" "zlibng-config.cmake" "dynamic-libjpeg-turbo-and-sdl2.patch")
 noextract=()
 sha256sums=('7bf07511c699b868607a3ac7fc07aa1347bda15dedd8cfb1a96761debee6f880'
             'c22d9bf779d8298af6c89c86c63c07308232c6c28ad81458ad63a92c00728e6b'
             '72d993ec6dceff21552f22c25aff2bc8ceea4cb7315029e0ab6bf7878af9ec21'
             'b1fb3d32c55639463946a10e0af7b13e1e036224712252dea8ace09575a4fc49')
+
+CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
 
 build() {
 	cd "$srcdir/tlRender-${pkgver}"
