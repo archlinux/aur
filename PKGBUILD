@@ -1,8 +1,8 @@
 # Maintainer: Mrinmoy <grx8x0mfy@mozmail.com>
 pkgname=ulaa-bin
-_pkgname=ulaa-browser
+_pkgname=Ulaa-Browser
 pkgver=2.36.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Private, Secure & Fast Browsing"
 arch=(x86_64)
@@ -20,9 +20,9 @@ backup=()
 options=(!debug)
 install=
 changelog=
-source_x86_64=(${_pkgname}-${pkgver}-${pkgrel}.deb::https://ulaa.zoho.com/release/linux/stable/${_pkgname}-v${pkgver}-amd64.deb)
+source_x86_64=(${pkgname}-${pkgver}-${pkgrel}.deb::https://ulaa.zoho.com/release/linux/stable/${_pkgname}-v${pkgver}-amd64.deb)
 noextract=()
-sha256sums_x86_64=(1cb083f2794642ee1f1052f84de24d35d0e4bc722e3f8ed0b7ff09848dd40424)
+sha256sums_x86_64=(10eae0b9dcbf35a6ccfe34f74bb146386a1ca9b585d5bddf80f3f0d0a5501027)
 validpgpkeys=()
 
 prepare() {
