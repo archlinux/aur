@@ -1,0 +1,19 @@
+pkgbase = xjtutoolbox
+	pkgdesc = XJTUToolBox with bundled Python library for Manjaro
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yan-xiaoo/XJTUToolBox
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-virtualenv
+	makedepends = python-pillow
+	depends = python
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libnotify
+	source = xjtutoolbox-1.0.0.tar.gz::https://github.com/yan-xiaoo/XJTUToolBox/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 23abdda1d7f2d85defe7b8b3b56a34cf05f1ae623a6a5532203f4e4ebc0abe27
+
+pkgname = xjtutoolbox
