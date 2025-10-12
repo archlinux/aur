@@ -1,3 +1,4 @@
+# Maintainer: Pulsar33550336 <pulsar33550336@163.com>
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname='muon-ssh'
 pkgver=3.0.0
