@@ -16,8 +16,6 @@ pkgver() {
 }
 
 build() {
-  cd $pkgname
-
   dotnet build CAT.sln --configuration Release
 }
 
