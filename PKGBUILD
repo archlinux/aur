@@ -22,7 +22,7 @@ build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   rm -fr build
   patch -p1 < "$srcdir/glad-lib-prefix.patch"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -Dfeather_tk_TESTS=OFF -Dfeather_tk_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_BUILD_SHARED=ON -B build .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -Dfeather_tk_TESTS=OFF -Dfeather_tk_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Release -B build .
   cmake --build build --parallel
 }
 
