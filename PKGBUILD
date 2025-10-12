@@ -1,22 +1,19 @@
-# Maintainer: adogecheems <adogecheems@outlook.com>
+# Maintainer: adogecheems <adogecheems at outlook dot com>
 
 pkgname=unrpyc1
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A ren'py script decompiler"
 arch=("any")
 url="https://github.com/CensoredUsername/unrpyc"
 license=('MIT')
 depends=("python2")
 makedepends=("python2-setuptools")
-source=("${pkgname}.zip::${url}/archive/refs/heads/legacy.zip")
-noextract=("${pkgname}.zip")
+source=("unrpyc-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare () {
-    unzip -q "${srcdir}/${pkgname}.zip" -d "${srcdir}"
-    
-    cd "${srcdir}/unrpyc-legacy"
+    cd "${srcdir}/unrpyc-$pkgver"
     mv deobfuscate.py deobfuscate1.py
     sed -i "/scripts=/s/]/, 'deobfuscate1.py']/" setup.py
     sed -i "/py_modules=/s/\.deobfuscate/\.deobfuscate1/" setup.py
@@ -25,10 +22,10 @@ prepare () {
 
 package() {
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    install -m644 "${srcdir}/unrpyc-legacy/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    cd "${srcdir}/unrpyc-legacy"
+
+    install -m644 "${srcdir}/unrpyc-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    cd "${srcdir}/unrpyc-$pkgver"
     python2 setup.py install --root="${pkgdir}"
     mv "${pkgdir}/usr/bin/unrpyc.py" "${pkgdir}/usr/bin/unrpyc1"
 }
