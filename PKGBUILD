@@ -2,10 +2,10 @@
 
 # shellcheck shell=bash
 pkgname=zig-master-bin
-pkgver=0.16.0_dev.238.g580b6d1fa
+pkgver=0.16.0_dev.427.g86077fe6b
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
-arch=('aarch64' 'armv7h' 'i686' 'powerpc64le' 'riscv64' 'x86_64')
+arch=('aarch64' 'armv7h' 'i686' 'loong64' 'powerpc64le' 'riscv64' 'x86_64')
 url="https://ziglang.org/"
 license=('MIT')
 provides=('zig' 'zig-master')
@@ -18,6 +18,7 @@ case "${CARCH}" in
     'aarch64'     ) _arch='aarch64';;
     'armv7h'      ) _arch='arm';;
     'i686'        ) _arch='x86';;
+    'loong64'     ) _arch='longarch64';;
     'powerpc64le' ) _arch='powerpc64le';;
     'riscv64'     ) _arch='riscv64';;
     'x86_64'      ) _arch='x86_64';;
