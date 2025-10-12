@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=4.4.8
 _build=1308
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -23,7 +23,6 @@ source=("https://github.com/processing/processing4/archive/processing-$_build-$p
 sha256sums=('05c1603a6e5b791126e76b595edc3ad044809fba45ea09fb6e21f64adca87a65'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab')
-install='processing.install'
 
 prepare() {
   # Check if OpenJDK 17 executable is actually installed
@@ -63,6 +62,7 @@ build() {
 
 package_processing() {
   optdepends=('processing-examples: Examples for Processing')
+  install='processing.install'
 
   cd "$pkgbase"
 
@@ -113,6 +113,7 @@ package_processing() {
   # Clean up unwanted files
   rm "$pkgdir/usr/share/applications/mimeinfo.cache"
   rm -r "$pkgdir/usr/share/desktop-directories"
+  rm -r "$pkgdir/usr/share/processing/lib/app/resources/modes/java/examples"
   find "$pkgdir/usr/share/mime/" -maxdepth 1 -type f -exec rm {} \;
 
   # Symbolic links in /usr/bin
