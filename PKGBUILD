@@ -10,7 +10,7 @@ depends=('dotnet-runtime')
 makedepends=('git' 'dotnet-sdk')
 conflicts=()
 source=("git+${url}.git" "git+https://github.com/lunaNoir25/CAT-data.git")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$pkgname"
