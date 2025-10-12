@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.11.0.r62.g999960a
+pkgver=0.11.0.r63.g6b6294a
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -89,6 +89,8 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# remove hardcoded flag
 	sed -i '/-march=/d' CMakeLists.txt
+	# use system glslang
+	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
 }
 
 build() {
