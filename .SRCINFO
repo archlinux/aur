@@ -1,0 +1,18 @@
+pkgbase = ligen
+	pkgdesc = A blazing fast gui autoclicker for linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shabman/ligen
+	arch = x86_64
+	arch = aarch64
+    arch = arm64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = gcc-libs
+    depends = glibc
+	source = git+https://github.com/shabman/ligen.git
+	sha512sums = SKIP
+
+pkgname = ligen
