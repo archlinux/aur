@@ -1,41 +1,25 @@
-# Maintainer: Václav Šmejkal <business.engo150@gmail.com>
-
+# Maintainer: Václav Šmejkal <engo@satan.red>
 pkgname=why2
-pkgver=v
+pkgver=0.2.8
 pkgrel=1
-epoch=
-pkgdesc="Installation of WHY2 Encryption System library on your machine!"
-arch=(x86_64)
-url="https://github.com/ENGO150/WHY2.git"
-license=('MIT')
-groups=()
-depends=()
-makedepends=(make git gcc curl json-c)
-checkdepends=()
-optdepends=()
-provides=(why2)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+pkgdesc="Lightweight, fast, secure, and easy to use encryption system."
+arch=('x86_64' 'aarch64')
+url="https://git.satan.red/ENGO150/WHY2.git"
+license=('GPL-3.0-only')
+makedepends=('git' 'rust')
+source=("git+$url#branch=release")
+sha256sums=('SKIP')
 
-pkgver() {
-	cd "${_pkgname}"
+options=('!debug')
 
-	printf "vr%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() {
+  cd "WHY2"
+  cargo build --bin why2 --features client --release --locked
+  cargo build --bin why2-server --features server --release --locked
 }
 
 package() {
-	cd "WHY2"
-
-	make install
-
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  cd "WHY2"
+  install -Dm755 "target/release/why2" "$pkgdir/usr/bin/why2"
+  install -Dm755 "target/release/why2-server" "$pkgdir/usr/bin/why2-server"
 }
