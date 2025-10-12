@@ -1,0 +1,14 @@
+pkgbase = prayers-bin
+	pkgdesc = TUI application to display Islamic prayer times based on your location
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/fuad-daoud/prayers
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = prayers-bin-0.0.1-x86_64::https://github.com/fuad-daoud/prayers/releases/download/v0.0.1/prayers-linux-amd64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = prayers-bin-0.0.1-aarch64::https://github.com/fuad-daoud/prayers/releases/download/v0.0.1/prayers-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = prayers-bin
