@@ -1,5 +1,5 @@
 pkgname=xjtutoolbox
-pkgver=1.0.0
+pkgver=1.2,1
 pkgrel=1
 pkgdesc="XJTUToolBox with bundled Python library for Manjaro"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'gtk3' 'webkit2gtk' 'libnotify')
 makedepends=('git' 'python' 'python-virtualenv' 'python-pillow')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23abdda1d7f2d85defe7b8b3b56a34cf05f1ae623a6a5532203f4e4ebc0abe27')
+sha256sums=('e13d1ba8efc77ad0777cc0239ae78f9ff8b910baed77f758cfab98bc50697428')
 
 prepare() {
     cd "$srcdir/XJTUToolBox-$pkgver"
@@ -47,6 +47,7 @@ build() {
 }
 
 package() {
+    echo $srcdir
     # 安装主程序
     install -Dm755 "$srcdir/XJTUToolBox-$pkgver/dist/XJTUToolbox" "$pkgdir/usr/bin/xjtutoolbox"
 
