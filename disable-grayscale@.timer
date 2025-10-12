@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily timer to disable grayscale effect at %i
+
+[Timer]
+# Use as: systemctl --user enable disable-grayscale@6:00.timer
+OnCalendar=%i
+Persistent=false
+
+[Install]
+WantedBy=timers.target

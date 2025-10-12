@@ -1,0 +1,11 @@
+[Unit]
+Description=Enable KWin Grayscale Effect
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'if command -v qdbus >/dev/null 2>&1; then \
+  qdbus org.kde.KWin /Effects org.kde.kwin.Effects.loadEffect kwin6_effect_grayscale; \
+else \
+  qdbus6 org.kde.KWin /Effects org.kde.kwin.Effects.loadEffect kwin6_effect_grayscale; \
+fi'

@@ -1,0 +1,7 @@
+*.swp
+*.swo
+
+*.pkg.tar.*
+*.tar.*
+pkg
+src

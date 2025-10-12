@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily timer to enable grayscale effect at %i
+
+[Timer]
+OnCalendar=%i
+Persistent=false
+
+[Install]
+WantedBy=timers.target
