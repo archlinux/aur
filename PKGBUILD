@@ -2,14 +2,32 @@
 pkgname=pacsea-bin
 pkgver=0.4.0
 _tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
-depends=('pacman' 'curl')
-optdepends=('paru: for AUR package installation'
-            'yay: alternative AUR helper')
+depends=('pacman' 'curl' 'bash' 'sudo')
+optdepends=(
+  'paru: AUR package installation'
+  'yay: alternative AUR helper'
+  'wl-clipboard: clipboard support on Wayland'
+  'xclip: clipboard support on X11'
+  'xdg-utils: open URLs (xdg-open)'
+  'reflector: update Arch mirrors'
+  'alacritty: run external commands in a terminal'
+  'kitty: run external commands in a terminal'
+  'xterm: run external commands in a terminal'
+  'gnome-terminal: run external commands in a terminal'
+  'konsole: run external commands in a terminal'
+  'xfce4-terminal: run external commands in a terminal'
+  'tilix: run external commands in a terminal'
+  'mate-terminal: run external commands in a terminal'
+  'neovim: external editor'
+  'vim: external editor'
+  'helix: external editor'
+  'nano: external editor'
+)
 provides=('pacsea')
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
