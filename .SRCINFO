@@ -1,7 +1,7 @@
 pkgbase = pgadmin4-server-bin
 	pkgdesc = The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.
 	pkgver = 9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pgadmin.org/
 	arch = x86_64
 	license = PostgreSQL
@@ -9,6 +9,7 @@ pkgbase = pgadmin4-server-bin
 	depends = krb5
 	depends = python-dbus
 	provides = pgadmin4-server
+	conflicts = pgadmin4-server
 	source = pgadmin4-server-9.8-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-server_9.8_amd64.deb
 	sha256sums = 7cd21f185f7c5790edd9214ddf03389244e56c98afafd2d6db0c8096ae508a1c
 
