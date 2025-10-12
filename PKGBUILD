@@ -2,7 +2,7 @@
 
 pkgname="termux-elf-cleaner"
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to remove unused ELF sections causing warnings"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/termux/${pkgname}"
@@ -13,10 +13,12 @@ depends=(
 )
 makedepends=(
   'cmake>=3.25'
+  'git'
 )
-_pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c3c6fb33ad8d1fdfe035eee3a5419f54442b93b1a97c4151b31b82c5626a06a')
+_pkgsrc="${url##*/}"
+source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed")
+sha256sums=('182e1988326907c62b9b5d765d9303882e15fea5eaa940157f8e4c83c8f9ba5a')
+validpgpkeys=('2C7F29AE97891F6419A9E2CDB0076E490B71616B') # Henrik Grimler <grimler@termux.org>
 
 build() {
   local cmake_options=(
