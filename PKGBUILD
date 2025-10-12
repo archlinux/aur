@@ -43,5 +43,4 @@ exec electron /usr/share/fontbase/app/ \$@
 	cd "$srcdir/$pkgname/usr/share/icons/hicolor"
 	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
 }
-sha256sums=('d21c2ab57aaa167875383c7858b139766c5c6003e6c2b5e6193e609046e8ba95')
 sha256sums=('ad20bde8374eeb92843af9cf605a41ab9637efc2a430bbe95e3d4bbdfd066e8c')
