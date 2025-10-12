@@ -4,7 +4,7 @@ pkgbase=python-uncompresspy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Pure Python package for uncompressing LZW files (.Z)"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools'
              'python-installer')  # wheel required by new setuptools
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d06f8c664b0ea4432cfd4783ea7de4b9')
+md5sums=('b281b85fd089d10f56d346c5da3cf95a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -34,7 +34,7 @@ build() {
 
 package_python-uncompresspy() {
     depends=('python>=3.10')
-    optdepends=('python-uncompresspy-doc: Documentation for uncompresspy')
+#   optdepends=('python-uncompresspy-doc: Documentation for uncompresspy')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
