@@ -16,10 +16,14 @@ pkgver() {
 }
 
 build() {
+  cd $pkgname
+
   dotnet build CAT.sln --configuration Release
 }
 
 package() {
+  cd $pkgname
+
   local project_path="CAT/CAT.csproj" 
   local install_dir="$pkgdir/usr/share/$pkgname"
   local executable_name="CAT" 
