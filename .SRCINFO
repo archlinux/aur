@@ -1,6 +1,6 @@
 pkgbase = kubectl-find
 	pkgdesc = plugin for kubectl that gives you a UNIX find-like experience
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 4
 	url = https://github.com/alikhil/kubectl-find
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = kubectl-find
 	depends = kubectl
 	depends = glibc
 	depends = bash
-	source = https://github.com/alikhil/kubectl-find/archive/v0.3.1/kubectl-find-0.3.1.tar.gz
-	sha512sums = 66f4c79f4305728a64149c8faffe5382d6203d5e2ad02fb49dfeffa90cfd0c8f1056445f5b98281715819b1de312857717681b0c77adf0c9e95a4df0434358db
-	b2sums = 196c926e10d32efe5a7167e7da93b6d2f5f81ff10058291437f9b649edcc1ca19b4996f83b7c64dbc32e4beacbfd039b705d565b1d72d1772ff886a1052e655e
+	source = https://github.com/alikhil/kubectl-find/archive/v0.4.1/kubectl-find-0.4.1.tar.gz
+	sha512sums = 1b20807f146c76eb5319c050bb37552cca85aeb15211bb2030a54916401e8ce6eb56dbf16c0b5148f2f42345d8bca5970e55565aedbf712b0305447c4f9c8014
+	b2sums = b47e3623cf6390f4c35e0482f85dc221f799adfdc51d6b9db97c3632b3636f2784716cfbae9547134f77c56c32f7472400254ac01363820f3a6db19c796c4e4b
 
 pkgname = kubectl-find
