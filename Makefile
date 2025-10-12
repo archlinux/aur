@@ -1,8 +1,11 @@
 .ONESHELL:
 SHELL=bash
+SHELOPTS=-euo pipefail
+.PHONY: check-upstream update-checksums build test shell
 
 .buildenvid: build-dev.Dockerfile
 	docker build \
+	  --net=host \
 	  -f build-dev.Dockerfile \
 	  -t archlinux-build-dev \
 	  --build-arg USERID=$$(id -u) \
@@ -10,9 +13,17 @@ SHELL=bash
 	  --iidfile .buildenvid \
 	  .
 
-BUILDENV=docker run --rm -v $(PWD):/build -i $$(cat .buildenvid)
+BUILDENV=docker run $(BUILDENVOPTS) --rm -v $(PWD):/build -i $$(cat .buildenvid)
 
-.PHONY: update-checksums
+check-upstream: BUILDENVOPTS:=-t
+check-upstream:
+	-$(BUILDENV) pkgctl version check
+
+update-to-upstream: BUILDENVOPTS:=-t
+update-to-upstream:
+	-$(BUILDENV) pkgctl version upgrade
+
+
 update-checksums: PKGBUILD .buildenvid
 	$(BUILDENV) <<EOF
 	makepkg --noconfirm -s -e -o -C -c
@@ -24,14 +35,20 @@ update-checksums: PKGBUILD .buildenvid
 	makepkg --printsrcinfo > .SRCINFO
 	EOF
 
-VERSION=$(shell sed -En "s/pkgver='(.*)'/\1/p" PKGBUILD)
-ARCH=x86_64
-PACKAGES=exfetch-$(VERSION)-1-$(ARCH).pkg.tar.zst exfetch-debug-$(VERSION)-1-$(ARCH).pkg.tar.zst
-
-$(PACKAGES): PKGBUILD .buildenvid
+build: PKGBUILD .buildenvid
 	$(BUILDENV) <<EOF
 	namcap PKGBUILD
 	makepkg --noconfirm -s
 	makepkg --noconfirm -i
-	namcap $PACKAGE
+	namcap $$(makepkg --packagelist)
 	EOF
+
+test:
+	$(BUILDENV) <<EOF
+	makepkg --packagelist | xargs namcap
+	makepkg --noconfirm -i
+	exfetch
+	EOF
+
+shell: .buildenvid
+	docker run --rm -v $(PWD):/build -ti $$(cat .buildenvid)
