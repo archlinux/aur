@@ -1,6 +1,6 @@
 pkgbase = precice-cli
 	pkgdesc = A unified command line interface for preCICE tools
-	pkgver = 0.2.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/precice/cli
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = precice-cli
 	depends = precice-profiling
 	depends = precice-config-check
 	depends = precice-case-generate
-	source = git+https://github.com/precice/cli.git#tag=v0.2.0
-	sha512sums = c5a6f4e47a5f3449f3f55629c7a2bda810eaa9160839a3981c5e89f6c176cf716b27416a64311927a38cb01c65ef893cfc00379a7580a0f9de9f6f5d2fa3d399
+	source = git+https://github.com/precice/cli.git#tag=v1.0.0
+	sha512sums = d23b19d9cb3546a2f48c8633a2a4ed502b672ecd6079735670247cb4e24a073829cd88810244b00e60e7b8479420738e2627d1fe034e8733eed02bf1c7e7e248
 
 pkgname = precice-cli
