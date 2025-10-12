@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-normalize
 pkgver=1.33.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Normalize loudness of audio and video files using FFmpeg'
 arch=(any)
 url=https://github.com/slhck/ffmpeg-normalize
@@ -22,13 +22,13 @@ sha512sums=('ee83d9ab48cf2a2e4e16e1fb1b9442e9a4b247fb4535de75c03ca823422d24d1a08
 build() {
   cd $pkgname-$pkgver
   #python -m build --no-isolation --wheel
-  uv --no-cache --offline build --no-build-isolation --out-dir=dist --wheel .
+  uv --no-cache --no-managed-python --offline build --no-build-isolation --out-dir=dist --wheel .
 }
 
 check() {
   cd $pkgname-$pkgver
   uv venv --no-managed-python --system-site-packages
-  uv --no-cache --offline pip install --link-mode=copy --no-deps dist/*.whl
+  uv --no-cache --no-managed-python --offline pip install --link-mode=copy --no-deps dist/*.whl
   PATH=".venv/bin:$PATH" ./.venv/bin/python -m pytest tests
 }
 
