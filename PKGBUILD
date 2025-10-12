@@ -7,7 +7,7 @@ _pkgver=12.5.0.1
 
 pkgname=${_pkgname}-catppuccin-bin
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
