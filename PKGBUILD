@@ -5,7 +5,7 @@
 
 _pkgname=kirigami
 pkgname=mingw-w64-${_pkgname}
-pkgver=6.4.0
+pkgver=6.19.0
 pkgrel=1
 pkgdesc="A QtQuick based components set (mingw-w64)"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(mingw-w64-crt mingw-w64-qt6-{declarative,shadertools,svg,5compat})
 makedepends=(mingw-w64-gcc mingw-w64-extra-cmake-modules qt6-base qt6-declarative qt6-tools qt6-shadertools ninja)
 groups=(mingw-w64-kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('eca20cd9ce72d0eeb57bd5fba394f20d83bb4612ac4a4c23fb8ca74a93188c37'
+sha256sums=('8c6685dde55f001cc621b38c61486d0e9e2ef7fb1d502ca5dd049112229ea7cc'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB # David Faure <faure@kde.org>
               E0A3EB202F8E57528E13E72FD7574483BB57B18D # Jonathan Esk-Riddell <jr@jriddell.org>
