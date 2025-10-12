@@ -1,7 +1,7 @@
 # Original Maintainer: bko <aur at bil dot co dot ua>
 # Maintainer: higorslva <higor.slva at outlook dot com>
 
-pkgname=pgadmin4-server-bin
+pkgname=pgadmin4-server
 pkgver=9.8
 pkgrel=1
 pkgdesc='The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
