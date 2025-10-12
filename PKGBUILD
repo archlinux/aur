@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher-bin
-pkgver=8.8.0.0
+pkgver=8.8.2.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!strip')
 source=("PixelFlasher-$pkgver::$url/releases/download/v$pkgver/PixelFlasher_Ubuntu_24_04"
         'PixelFlasher.desktop'
         'PixelFlasher.png')
-sha256sums=('db2d28625e37594d6baab91ad2d0956b9b710a1d6bc94fefc895b86708e2d0ea'
+sha256sums=('c1e3b8299a9bf9084807a3b82eb6f76530b161301d677941d7d24da70de6265e'
             '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34'
             '5b3636592d9c437e5ffca64382ac969cb6b35cc8675c7e3e464b56e4c068d199')
 
