@@ -1,0 +1,4 @@
+[quickshell]
+source = "git"
+git = "https://git.outfoxxed.me/outfoxxed/quickshell"
+prefix = "v"
