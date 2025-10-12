@@ -1,9 +1,8 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = 4.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.processing.org/
-	install = processing.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -30,6 +29,7 @@ pkgbase = processing
 	sha256sums = 603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab
 
 pkgname = processing
+	install = processing.install
 	optdepends = processing-examples: Examples for Processing
 
 pkgname = processing-examples
