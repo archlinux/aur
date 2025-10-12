@@ -32,11 +32,22 @@ package() {
   # 如果需要：添加可执行文件到系统路径
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/bin/zed" "$pkgdir/usr/bin/zed"
-  # 安装图标文件夹
-  if [ -d "$srcdir/$_path.app/share/icons" ]; then
-    install -d "$pkgdir/usr/share/icons"
-    cp -r "$srcdir/$_path.app/share/icons" "$pkgdir/usr/share/"
-  fi
+  # 安装图标文件
+  _icon_sizes=("512x512" "1024x1024")
+  for size in "${_icon_sizes[@]}"; do
+    if [ -f "$srcdir/$_path.app/share/icons/hicolor/$size/apps/zed.png" ]; then
+      install -Dm644 "$srcdir/$_path.app/share/icons/hicolor/$size/apps/zed.png" \
+        "$pkgdir/usr/share/icons/hicolor/$size/apps/zed-cn.png"
+    fi
+  done
   # 如果需要：桌面文件
   install -Dm644 "$srcdir/$_path.app/share/applications/$_path.desktop" "$pkgdir/usr/share/applications/zed-cn.desktop"
+
+  # 移除调试符号（避免生成debug包）
+  find "$pkgdir" -name "*.debug" -delete
+  strip --strip-all "$pkgdir/opt/$pkgname/bin/zed" 2>/dev/null || true
+  strip --strip-all "$pkgdir/opt/$pkgname/libexec/zed-editor" 2>/dev/null || true
+  
 }
+# 明确指定不构建debug包
+options=('!debug')

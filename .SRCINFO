@@ -7,6 +7,7 @@ pkgbase = zed-cn
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	provides = zed-cn
 	conflicts = zed-cn
+	options = !debug
 	source = zed-cn-20251010.tar.gz::https://github.com/TC999/zed-loc/releases/download/20251010/zed-linux-x86_64.tar.gz
 	sha512sums = SKIP
 
