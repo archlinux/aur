@@ -2,11 +2,12 @@
 pkgname=pacsea-bin
 pkgver=0.4.1
 _tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
+options=('!strip')
 depends=('pacman' 'curl' 'bash' 'sudo')
 optdepends=(
   'paru: AUR package installation'
@@ -19,7 +20,7 @@ optdepends=(
   'neovim: external editor'
   'downgrade: Downgrade of Packages'
 )
-provides=('pacsea')
+provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
