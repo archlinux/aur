@@ -2,7 +2,7 @@
 _gitname=plasma-panel-spacer-extended
 pkgname=plasma6-applets-panel-spacer-extended
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mouse gestures for the KDE Plasma Panel, drag window, run any shortcut, command, application with configurable mouse actions!"
 arch=('any')
 url="https://github.com/luisbocanegra/$_gitname"
@@ -21,4 +21,6 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
+  chmod 755 "$pkgdir/usr/share/plasma/plasmoids/luisbocanegra.panelspacer.extended/contents/ui/tools/get_shortcuts.sh"
+  chmod 755 "$pkgdir/usr/share/plasma/plasmoids/luisbocanegra.panelspacer.extended/contents/ui/tools/run_kwin_script.sh"
 }
