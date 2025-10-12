@@ -17,7 +17,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'pulse-native-provider: Audio support')
 source_x86_64=("glide.linux-x86_64.tar.xz::${url}/releases/download/${pkgver}/glide.linux-x86_64.tar.xz")
 source_aarch64=("glide.linux-aarch64.tar.xz::${url}/releases/download/${pkgver}/glide.linux-aarch64.tar.xz")
-sha256sums=('62d62511f6fa4d756564e08b91473c523fd7011d') # Replace with actual checksum
+#sha256sums=('62d62511f6fa4d756564e08b91473c523fd7011d') # Replace with actual checksum
 sha256sums_x86_64=('bf76c92d0fb70380d304869f400307c8f7642feef57299d095a6c9600b245202')
 sha256sums_aarch64=('c43188af34258670bac0f232dbd34eda3beaa58f8c31e51a70039ea68e686bac')
 

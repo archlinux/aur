@@ -20,7 +20,6 @@ pkgbase = glide-browser-bin
 	provides = glide-browser-bin=0.1.52a
 	conflicts = glide-browser-bin
 	options = !strip
-	sha256sums = 62d62511f6fa4d756564e08b91473c523fd7011d
 	source_x86_64 = glide.linux-x86_64.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.52a/glide.linux-x86_64.tar.xz
 	sha256sums_x86_64 = bf76c92d0fb70380d304869f400307c8f7642feef57299d095a6c9600b245202
 	source_aarch64 = glide.linux-aarch64.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.52a/glide.linux-aarch64.tar.xz
