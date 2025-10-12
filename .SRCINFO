@@ -1,0 +1,15 @@
+pkgbase = perl-devel-confess
+	pkgdesc = Include stack traces on all warnings and errors
+	pkgver = 0.009004
+	pkgrel = 1
+	url = https://metacpan.org/release/Devel-Confess
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Devel-Confess-0.009004.tar.gz
+	md5sums = 7da7300a9aae74dc5c4c3b1105789389
+	sha512sums = 29f807e378bcb286d111f82f9ad564a610ca9813ba040a137ef149179c6909859f46a4a528eed6aea12162cdb291d8f79c7f7864c64b0ce77a44d16c3d207f25
+
+pkgname = perl-devel-confess
