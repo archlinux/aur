@@ -1,7 +1,7 @@
 # Maintainer: Hongyang Chun <your-email@example.com>
 pkgname=hyprland-monitor-manager
 pkgver=1.0.0
-pkgrel=4
+pkgrel=7
 pkgdesc="Smart monitor and lid management for Hyprland with automatic detection and configuration"
 arch=('any')
 url="https://github.com/hongyangchun/hyprland-monitor-manager"
@@ -12,12 +12,12 @@ optdepends=(
     'dunst: alternative notification daemon'
 )
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4f1c03c52647fdda4780a69417018ddf713245bf2becbc2f44dab28cdfbb4225')  # Will be updated when creating release
+source=()
+sha256sums=()
 backup=('etc/systemd/logind.conf.d/lid-switch.conf')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$startdir"
     
     # Install main script
     install -Dm755 monitor-manager.sh "$pkgdir/usr/share/$pkgname/monitor-manager.sh"
@@ -36,8 +36,6 @@ package() {
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 README_CN.md "$pkgdir/usr/share/doc/$pkgname/README_CN.md"
-    install -Dm644 OPTIMIZATION.md "$pkgdir/usr/share/doc/$pkgname/OPTIMIZATION.md"
-    install -Dm644 NOTIFICATIONS.md "$pkgdir/usr/share/doc/$pkgname/NOTIFICATIONS.md"
     install -Dm644 monitor-configs/README.md "$pkgdir/usr/share/doc/$pkgname/monitor-configs-README.md"
     
     # Install license
