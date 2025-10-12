@@ -1,5 +1,5 @@
 pkgbase = xjtutoolbox
-	pkgdesc = XJTUToolBox with bundled Python library for Manjaro
+	pkgdesc = XJTUToolBox with bundled Python library for Arch Linux
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/yan-xiaoo/XJTUToolBox
