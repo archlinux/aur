@@ -1,6 +1,6 @@
 pkgname=cat-git
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="An open-source highly customizable shell made in C#."
 arch=('any')
 url="https://github.com/lunaNoir25/CAT"
@@ -33,7 +33,8 @@ package() {
   dotnet publish "$project_path" \
     --configuration Release \
     --output "$install_dir" \
-    --self-contained false \
+    --self-contained true \
+    --runtime linux-x64 \
     -p:PublishReadyToRun=true
 
   mkdir -p "$pkgdir/usr/bin"
