@@ -1,0 +1,14 @@
+pkgbase = ttf-cuneiform-fonts
+	pkgdesc = Meta package for Unicode cuneiform fonts by Sylvie Vanséveren
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://www.hethport.uni-wuerzburg.de/cuneifont/
+	arch = any
+	license = CC-BY-SA-4.0
+	depends = ttf-santakku
+	depends = ttf-assurbanipal
+	depends = ttf-ullikummi
+	depends = ttf-esagil
+	depends = ttf-bistun
+
+pkgname = ttf-cuneiform-fonts
