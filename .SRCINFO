@@ -1,0 +1,21 @@
+pkgbase = mi-home-toolkit
+	pkgdesc = Effortlessly manage Mi Home smart devices, such as viewing device info and enabling LAN mode for bulbs.
+	pkgver = 1.4.0
+	pkgrel = 8
+	url = https://github.com/ApplY3D/mi-home-toolkit
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pnpm
+	makedepends = pkgconf
+	makedepends = mold
+	makedepends = webkit2gtk-4.1
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk
+	source = mi-home-toolkit-1.4.0.tar.gz::https://github.com/ApplY3D/mi-home-toolkit/archive/refs/tags/v1.4.0.tar.gz
+	source = mi-home-toolkit.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mi-home-toolkit

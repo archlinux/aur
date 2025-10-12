@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mi Home Toolkit
+Comment=Effortlessly manage Mi Home smart devices, such as viewing device info and enabling LAN mode for bulbs.
+Exec=mi-home-toolkit
+Icon=mi-home-toolkit
+Terminal=false
+Categories=Utility;Network;
+Keywords=xiaomi;mi;home;iot;smart;devices;
+StartupNotify=true
