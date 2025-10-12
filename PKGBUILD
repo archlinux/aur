@@ -2,7 +2,7 @@
 
 pkgbase=nautilus-scripts
 pkgname=('nautilus-scripts' 'nautilus-scripts-dolphin')
-pkgver=22.3
+pkgver=22.4
 pkgrel=1
 pkgdesc='A set of actions for extending the functionality of the GNOME Files (Nautilus), Dolphin, Caja, Nemo, PCManFM-Qt and Thunar file managers.'
 url=https://github.com/cfgnunes/nautilus-scripts
@@ -14,7 +14,7 @@ depends=(
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-md5sums=('ce32a6b4f440c1f89f08d854e9f91326')
+md5sums=('a79b59bcb9d8707f23cfd8e5f0de4be2')
 
 package_nautilus-scripts() {
   install="${pkgname}.install"
