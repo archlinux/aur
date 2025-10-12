@@ -42,12 +42,11 @@ build() {
     pyinstaller --clean --onefile \
         --name "XJTUToolbox Updater" \
         --add-binary "$libpython:." \
-        --icon "assets/icons/updater_icon.ico" \
+        --icon "$srcdir/XJTUToolBox-$pkgver/assets/icons/updater_icon.ico" \
         updater.py
 }
 
 package() {
-    echo $srcdir
     # 安装主程序
     install -Dm755 "$srcdir/XJTUToolBox-$pkgver/dist/XJTUToolbox" "$pkgdir/usr/bin/xjtutoolbox"
 
