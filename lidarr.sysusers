@@ -1,0 +1,3 @@
+u lidarr - "Lidarr Daemon" /var/lib/lidarr
+g media  -
+m lidarr media

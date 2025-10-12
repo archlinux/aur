@@ -1,0 +1,6 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/lidarr/logs   0755 lidarr media
+Z /var/lib/lidarr        - lidarr media
+L /var/log/lidarr        - - - - /var/lib/lidarr/logs/
+L /run/lidarr/lidarr.pid - - - - /var/lib/lidarr/lidarr.pid
+L /etc/lidarr/config.xml - - - - /var/lib/lidarr/config.xml
