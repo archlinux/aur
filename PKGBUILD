@@ -77,7 +77,8 @@ options=(!lto)  # comment this line out if you've got better than 32 GB of ram t
 sha256sums=('3ff25c0603d310a68d7ac7f4207e7bb2f7006b038ad312322d141b77c9164d83'
             'SKIP'
             'b4c2585efd9c21c6351b6278098b4bcf7395e23b9721c391b3bcb72983b6ebf8'
-            '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0')
+            '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0'
+            'd364dbb165848e0327a941390c1be0fdc6691e6f4952d8233368a563e2594843')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
