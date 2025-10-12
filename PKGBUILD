@@ -4,14 +4,14 @@ _pkgbase=omarchist
 pkgname=${_pkgbase}-git
 # The pkgver is a placeholder; the pkgver() function will generate the real one.
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI app for Omarchy (development build from dev branch)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
 license=('MIT')
 
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup' 'cairo' 'gdk-pixbuf2' 'glib2' 'pango' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('git' 'cargo' 'rust' 'nodejs' 'npm' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
+makedepends=('git' 'zstd' 'cargo' 'rust' 'nodejs' 'npm' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
 install=${pkgname}.install
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}-bin" "${_pkgbase}")
