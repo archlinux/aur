@@ -1,6 +1,6 @@
 # Maintainer: Eric Zhao <21zhaoe@protonmail.com>
 pkgname=ttf-cuneiform-fonts
-pkgver=1.000
+pkgver=20210910
 pkgrel=1
 pkgdesc='Meta package for Unicode cuneiform fonts by Sylvie Vanséveren'
 arch=(any)
