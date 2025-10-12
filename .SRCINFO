@@ -23,7 +23,9 @@ pkgbase = espressif-ide-bin
 	depends = maven
 	source = espressif-ide-3.6.0.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-linux.gtk.x86_64/latest
 	source = espressif-ide.desktop
+	source = espressif-ide.png
 	sha256sums = 71b1d278f4db1809a676b9dc57ecf2ad7aeeb161550992400400cd2559dc6b81
 	sha256sums = db9e1eec551b3254d6b8da3b8d972cb76a9c405f7c7894f090f193ee700bcdfd
+	sha256sums = SKIP
 
 pkgname = espressif-ide-bin
