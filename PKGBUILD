@@ -3,8 +3,8 @@
 # Former Contributor: 0x715C
 
 pkgname=alda-bin
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('i686' 'x86_64')
 url='https://github.com/alda-lang/alda'
@@ -16,9 +16,9 @@ source=("alda-player-$pkgver::https://alda-releases.nyc3.digitaloceanspaces.com/
 # I know namcap complains about having arch-specific sources, but upstream calls x86_64 amd64 and i686 i386. I didn't want to complicate things with an if statement
 source_x86_64=("alda-$pkgver-x86_64::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/client/linux-amd64/alda")
 source_i686=("alda-$pkgver-i686::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/client/linux-386/alda")
-b2sums=('638abeaa706f8afa82884a40c5333a694e696681f67205de6991dda8f230b22c1776332031a8c69e523a8bbde7fcfe23addc0718442c2bc9868e19ec863645be')
-b2sums_x86_64=('6be830b6b54f594f3042d47238e26e057b717bbaa08077f0cf5851f6e4de09625e6302afb632adfc1b68b65e4014fe4859be362b5af7e41ebafee930878c15a7')
-b2sums_i686=('1cd828cd7b2c3f84f231b1caf4660d1535ca68d67e192352ae82087c24bd8225d5a0fa876219ee92a81c10263a59381672ababce03ef4412a34ebb678e9c37f9')
+b2sums=('d30ab7e2feb624e5abc14b4c7035013754acfd66b013f6fcff5557ecde809ae36a67f74a7271d24a971c8cabb04f866428fded225adbe5a6ac44f28bfc962bec')
+b2sums_x86_64=('85ebb6405265b6a89e2d20379dd5747426dd4e3dabcd38a962c49913a35ee3ddf27f6ed466b94c830ea9234769885903c4a84537f24078eabc7c51dfd58649a9')
+b2sums_i686=('745b40f3877f0e7ee7ef345438a3e6a990be08bab585a6f4e0ccfc0cf863a43b1eb7add0aa519290714a1adc70717af79ce41a847e0e4bc24e02f0a06ded4604')
 
 package() {
   install -Dv "alda-$pkgver-$CARCH" "$pkgdir/usr/bin/alda"
