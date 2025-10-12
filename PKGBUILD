@@ -1,13 +1,13 @@
 # Maintainer: Nico Rittstieg <nico dot rittstieg at gmx dot de>
 pkgname=ntag
 pkgver=1.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio file tag editor, created with JavaFX"
 arch=('x86_64')
 url="https://github.com/nrittsti/ntag"
 license=('GPL3')
 source=("https://github.com/nrittsti/ntag/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux_bin.tar.gz")
-sha256sums=('f7a286b6d478637e4cc90ad216166c640a5ac1d5be2c1eb261abe43babf22d5e')
+sha256sums=('536fad7a097338af2c596d6a8a6da7146fc558bf2ccb0f5b4cf685f81e6c7e3f')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}-linux_bin"
