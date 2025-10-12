@@ -5,15 +5,15 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Blazing-fast async segmented file downloader"
 arch=('x86_64')
-url="https://github.com/kdownload/kdownload"
+url="https://github.com/compiledkernel-idk/kdownload"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'rust' 'perl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kdownload/kdownload/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d1176558d5efc4d7d3784ed55862138c69ae32cacd63be64873d35ea9d34d30d')
+makedepends=('cargo' 'rust' 'git')
+source=("git+https://github.com/compiledkernel-idk/kdownload.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   export CFLAGS="${CFLAGS//-flto=auto/}"
   export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
   export LDFLAGS="${LDFLAGS//-Wl,--as-needed/}"
@@ -25,7 +25,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   export CFLAGS="${CFLAGS//-flto=auto/}"
   export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
   export LDFLAGS="${LDFLAGS//-Wl,--as-needed/}"
@@ -37,7 +37,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   install -Dm755 target/release/kdownload "$pkgdir/usr/bin/kdownload"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
