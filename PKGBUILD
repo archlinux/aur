@@ -3,7 +3,7 @@
 
 pkgname=electricsheep
 pkgver=3.0.2
-pkgrel=13
+pkgrel=14
 _gitcommit=f3417c7a5b6bf5bc56d2cb5572ebfad3661dc740
 pkgdesc='Screensaver that realize the collective dream of sleeping computers from all over the internet'
 url='http://community.electricsheep.org/'
