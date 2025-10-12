@@ -1,6 +1,6 @@
 # Maintainer: Cezary Switala <cezary.switala@proton.me>
 pkgname=niri-switch
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A fast task switcher for the niri compositor"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk4' 'gtk4-layer-shell' 'niri')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kiki-Bouba-Team/niri-switch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b8461227acd0cb89cebc418ff9ced9080ade8aeb0dda840851ab474b5cc4252')
+sha256sums=('83e51588fc3e6251d7f58fd986dfa6e63e89cc29be54eaf50cd484f3cb50259e')
 
 # Do not generate the debug packages
 options=('!debug')
