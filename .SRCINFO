@@ -1,6 +1,6 @@
 pkgbase = opera-proxy-git
 	pkgdesc = Standalone Opera VPN client as http-proxy backend only
-	pkgver = 1.11.2.r0.g85703cc
+	pkgver = 1.12.0.r0.g6ddb8d2
 	pkgrel = 1
 	url = https://github.com/Snawoot/opera-proxy
 	arch = i686
