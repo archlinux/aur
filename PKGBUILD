@@ -1,5 +1,5 @@
 pkgname=cat-git
-pkgver=r0.a1b2c3d
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An open-source highly customizable shell made in C#."
 arch=('any')
@@ -12,7 +12,6 @@ source=("git+${url}.git")
 sha256sums=('SKIP') 
 
 pkgver() {
-  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
