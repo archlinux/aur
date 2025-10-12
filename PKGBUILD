@@ -2,7 +2,7 @@
 
 pkgname=kuzu-bin
 _gitname=kuzu
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 epoch=
 pkgdesc="In-process property graph database management system (GDBMS) built for query speed and scalability"
@@ -22,8 +22,8 @@ install=
 changelog=
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v${pkgver}/kuzu_cli-linux-x86_64.tar.gz"
         "lib${pkgname}-v${pkgver}.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v${pkgver}/libkuzu-linux-x86_64.tar.gz")
-sha256sums=('24a9a384f454c440f636f33e21494bdc998b031580e78367130daf58eea9d408'
-            '47b4b370fb36c5a34c5fd61d04a3aa454804694b0678db97209c670abf502875')
+sha256sums=('5b6c589b34f1b661b1d58fd35003cb2212cdfd53b8dd660e343adb25754c5003'
+            'e99f9671ebfacf4d6208aa4b94490016e4ac9be242deed1fea78afb31c058ebd')
 
 package() {
   mkdir -p "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/bin"
