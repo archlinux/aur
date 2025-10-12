@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=seer-gdb
-pkgver=2.5
-pkgrel=2
+pkgver=2.6
+pkgrel=1
 pkgdesc="A gui frontend to gdb"
 arch=('x86_64' 'aarch64')
 url="https://github.com/epasveer/seer.git"
@@ -12,12 +12,6 @@ makedepends=('git' 'cmake')
 provides=('seergdb')
 source=("${pkgname}::git+https://github.com/epasveer/seer.git#tag=v$pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  cd $pkgname
-
-  git cherry-pick -n c6afe8797b234a0be24d1cbbc177799bb74414ec
-}
 
 build() {
   cmake -B build -S ${pkgname}/src \
