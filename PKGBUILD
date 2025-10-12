@@ -5,14 +5,25 @@ pkgbase=qadwaitadecorations
 _pkgname=QAdwaitaDecorations
 pkgname=(qadwaitadecorations-qt5 qadwaitadecorations-qt6)
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt decoration plugin implementing Adwaita-like client-side decorations'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url='https://github.com/FedoraQt/QAdwaitaDecorations'
 license=(LGPL2.1-or-later)
-makedepends=(make cmake qt5-wayland-decorations qt6-wayland qt5-svg qt6-svg)
-source=("https://github.com/FedoraQt/QAdwaitaDecorations/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('6cd96efca241a4b60fb6bf449c64dbad713b223c36e003ae89f45e34739d56d1')
+makedepends=(make cmake qt5-base qt5-wayland-decorations qt6-base qt6-wayland qt5-svg qt6-svg)
+source=("https://github.com/FedoraQt/QAdwaitaDecorations/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
+		qt6.10.patch)
+sha256sums=('6cd96efca241a4b60fb6bf449c64dbad713b223c36e003ae89f45e34739d56d1'
+            '7537aac54c247f3cde7c8a52d43d2d04d2dde6d6b7369d94dc46a23978f0468c')
+
+prepare() {
+  # THESE ARE ALL DIRTY HACKS! EVERYONE SHOULD FEEL BAD JUST USING THIS!
+  cd $_pkgname-$pkgver
+  patch -p1 -i $srcdir/qt6.10.patch
+  mkdir $srcdir/$_pkgname-$pkgver-qt6
+  cp -r ./* $srcdir/$_pkgname-$pkgver-qt6/  
+  sed -i 's/setMouseCursor/applyCursor/g' $srcdir/$_pkgname-$pkgver-qt6/src/qadwaitadecorations.cpp
+}
 
 build() {
   cmake -B build-$pkgver-qt5 -S $_pkgname-$pkgver \
@@ -21,7 +32,8 @@ build() {
         -DUSE_QT6=false
   make -C build-$pkgver-qt5
 
-  cmake -B build-$pkgver-qt6 -S $_pkgname-$pkgver \
+# Follow-up from the dirty, dirty hack in prepare()
+  cmake -B build-$pkgver-qt6 -S $_pkgname-$pkgver-qt6 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_QT6=true
   make -C build-$pkgver-qt6

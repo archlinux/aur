@@ -1,0 +1,31 @@
+diff --unified --recursive --text a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2025-10-03 09:58:37.124506441 -0600
++++ b/CMakeLists.txt	2025-10-10 12:09:16.751878499 -0600
+@@ -23,7 +23,7 @@
+ include(FeatureSummary)
+ 
+ if (USE_QT6)
+-    find_package(QT NAMES Qt6 COMPONENTS Core Gui Svg Wayland Widgets REQUIRED)
++    find_package(QT NAMES Qt6 COMPONENTS Core Gui Svg Wayland Widgets GuiPrivate WaylandClientPrivate REQUIRED)
+ else()
+     find_package(QT NAMES Qt5 COMPONENTS Core Gui Svg Wayland Widgets REQUIRED)
+ endif()
+diff --unified --recursive --text a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2025-09-06 17:02:25.500405101 -0600
++++ b/src/CMakeLists.txt	2025-10-10 12:09:59.254329296 -0600
+@@ -4,6 +4,14 @@
+     qadwaitadecorations.cpp
+ )
+ 
++# Private targets need to be included explicitly since
++# https://code.qt.io/cgit/qt/qtbase.git/commit/?id=ad7b94e163ac5c3959a7e38d7f48536be288a187
++# but this is only available for Qt >= 6.9, see https://bugreports.qt.io/browse/QTBUG-87776
++if (Qt6Gui_VERSION VERSION_GREATER_EQUAL 6.9.0)
++    find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS GuiPrivate)
++    find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS WaylandClientPrivate)
++endif()
++
+ add_library(qadwaitadecorations MODULE ${qadwaitadecorations_SRCS})
+ target_link_libraries(qadwaitadecorations
+     Qt${QT_VERSION_MAJOR}::Core
+
