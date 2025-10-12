@@ -18,10 +18,6 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1c3c6fb33ad8d1fdfe035eee3a5419f54442b93b1a97c4151b31b82c5626a06a')
 
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-}
-
 build() {
   local cmake_options=(
     -G 'Unix Makefiles'
