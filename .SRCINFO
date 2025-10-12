@@ -1,6 +1,6 @@
 pkgbase = python-dnaio
 	pkgdesc = Python library for very efficient parsing and writing of FASTQ and FASTA files
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/marcelm/dnaio/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-dnaio
 	depends = python
 	depends = python-xopen
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/d/dnaio/dnaio-1.2.3.tar.gz
-	sha256sums = aad456d9f6272339958b2c5af32fd64d77a50aca12e394e7a143b4129d49b0b9
+	source = https://files.pythonhosted.org/packages/source/d/dnaio/dnaio-1.2.4.tar.gz
+	sha256sums = a7570311f29e8b3c1ea39a60f57b7baf8dad8f2508595c58d4278c5571463166
 
 pkgname = python-dnaio
