@@ -1,4 +1,4 @@
-pkgbase = pgadmin4-server
+pkgbase = pgadmin4-server-bin
 	pkgdesc = The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.
 	pkgver = 9.8
 	pkgrel = 1
