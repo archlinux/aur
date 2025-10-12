@@ -1,8 +1,8 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xforms
 pkgver=1.2.5pre1
-pkgrel=5
+pkgrel=6
 pkgdesc="A graphical user interface toolkit for X Window Systems."
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -19,7 +19,7 @@ build() {
   make 
   cd doc
   make info
-  make pdf
+#  make pdf
 }
 
 package() {
@@ -29,6 +29,6 @@ package() {
   install -d "$pkgdir"/usr/share/info 
   install -m644 doc/$pkgname.info* \
     "$pkgdir"/usr/share/info
-  install -Dm644 doc/$pkgname.pdf \
-    "$pkgdir"/usr/share/doc/$pkgname/$pkgname.pdf
+#  install -Dm644 doc/$pkgname.pdf \
+#    "$pkgdir"/usr/share/doc/$pkgname/$pkgname.pdf
 }

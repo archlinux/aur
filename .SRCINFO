@@ -1,7 +1,7 @@
 pkgbase = xforms
 	pkgdesc = A graphical user interface toolkit for X Window Systems.
 	pkgver = 1.2.5pre1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://xforms-toolkit.org/
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = xforms
 	sha256sums = SKIP
 
 pkgname = xforms
-
