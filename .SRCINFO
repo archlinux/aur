@@ -1,6 +1,6 @@
 pkgbase = python-argparse-from-file
 	pkgdesc = Wrapper around argparse to prepend options from a user configuration file
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/bulletmark/argparse-from-file
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-argparse-from-file
 	makedepends = python-setuptools-scm
 	depends = python>=3.8
 	depends = python-platformdirs
-	source = python-argparse-from-file-1.4.tar.gz::https://github.com/bulletmark/argparse-from-file/archive/1.4.tar.gz
-	sha1sums = 17113f4bf815b25c9a5cf02463c607c1c5f2b675
+	source = python-argparse-from-file-1.5.tar.gz::https://github.com/bulletmark/argparse-from-file/archive/1.5.tar.gz
+	sha1sums = 899bc5f010cd2f16cb4641c575a8f417122e1c3f
 
 pkgname = python-argparse-from-file
