@@ -1,18 +1,18 @@
 # Maintainer: notfire <luke@notfire.cc>
 _maintainer_email="luke@notfire.cc"
 pkgname=fadein
-pkgver=4.2.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Professional screenwriting software (DEMO)"
 arch=('x86_64')
 url="http://www.fadeinpro.com/"
 # No license file is provided.
 license=('custom')
-depends=('gtk2')
-source=("$pkgname-$pkgver.tar.gz::http://www.fadeinpro.com/download/demo/fadein-linux-amd64-demo.tar.gz")
-sha512sums=('d957d65433f47f2dd4230ef4cd2831168211227b8e22e5312c2a0f2e9f48ac34abbab648474ce8631b9948cb0a496e3aa179f77c4d6d9fc854532351b72d0003')
+depends=('gtk2 webkit2gtk-4.1')
+source=("$pkgname-$pkgver.tar.gz::https://www.fadeinpro.com/download/demo/fadein-linux-x86_64-demo.tar.gz")
+sha512sums=('2f7333ff0dfe28fd94ba8a941d5c770097716e73c4d34ca3ec3e05956d0c1289118355fc44e257582332efd3bed34a97b2c62fad59d42271d005d87a27666172')
 
-_vendor_name="fadein-linux-amd64"
+_vendor_name="fadein-linux-x86_64"
 
 _current_version="$(curl -s 'https://www.fadeinpro.com/page.pl?content=version_notes' | sed -n 's/.*The current version is <b>\(.\..\..\)<\/b>.*/\1/p')"
 
