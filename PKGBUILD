@@ -1,8 +1,8 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-bin
-pkgver=0.4.0
+pkgver=0.4.1
 _tag="v$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -16,24 +16,15 @@ optdepends=(
   'xdg-utils: open URLs (xdg-open)'
   'reflector: update Arch mirrors'
   'alacritty: run external commands in a terminal'
-  'kitty: run external commands in a terminal'
-  'xterm: run external commands in a terminal'
-  'gnome-terminal: run external commands in a terminal'
-  'konsole: run external commands in a terminal'
-  'xfce4-terminal: run external commands in a terminal'
-  'tilix: run external commands in a terminal'
-  'mate-terminal: run external commands in a terminal'
   'neovim: external editor'
-  'vim: external editor'
-  'helix: external editor'
-  'nano: external editor'
+  'downgrade: Downgrade of Packages'
 )
 provides=('pacsea')
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
 sha256sums=('a413cbf202e55e297441bea3b25f77ed2a0193cc123bc346daff1ff4f2fb9484'
-            '03d64008617571471fa99ef1c621db31f44a74ecbc98c949f0abb87ac5793308')
+            '55bfa1661149760d069eb27671bc797646dab8e0766c96d37bba22de1888e021')
 
 package() {
   : "${pkgdir:?pkgdir is not set}"
