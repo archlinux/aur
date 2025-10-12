@@ -4,8 +4,8 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=6.1.3
-pkgrel=3
+pkgver=6.2.2
+pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -71,23 +71,15 @@ _td_commit=6d74326c5ce53aeb52496f157f0080d9b8515970
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
-  glib2.86.patch
-  0001-Fix-compatibility-with-ffmpeg-8.patch
-  0002-kde-theme-injection-fix.patch
+  0001-kde-theme-injection-fix.patch
 )
-sha512sums=('951fbf4a9e0a5929130614aefdf2ac18d8d8e65b2d8d4d55da857136f17114e6a17677db9bb0585cfed121c3fe73e13b4db47b6da30fca7c276f33127eb3dba7'
+sha512sums=('20b8b0d7abd4d1e936e3096d408b002a38d6a81140a14a83a7f404d889369952c418fa58aa3d1f28853aa4a2d75c715bb7908b4e71f142ef04df46b7c6e89a63'
             '6dc6e684a0bf35bb83f6fa6579a0da82d604190b222f2cd2de9b8ef5b93f5f18ac9a8733e2c5cf2a64ed9933b346ea31e26a4bcc0039956280ec2deef9649457'
-            'd1651683e0fecb43e37d5d01d75ae4b42fc1cfbf1d96eee42d37eb901b7d0cc22c4bc21b828dad2f4b40abe26923ed11f8c44dc759f969ca7efdc48280da9e23'
-            'e7cdad88fb82f1bd519b46d45a77a487219dc46434cc02fa422e00302d0156de201021f83bdea24e6ec47d4393c7e74bd4cdb16adfd8f3774468c3ba11544e2c'
             '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
 prepare() {
-  # Fix build with glib2 2.86
-  patch -d "tdesktop-$pkgver-full" -Np1 -i ../glib2.86.patch
-  # Fix compatibility with ffmpeg 8
-  patch -d "tdesktop-$pkgver-full" -Np1 -i ../0001-Fix-compatibility-with-ffmpeg-8.patch
   # Fix tray unread counter in KDE
-  patch -d "tdesktop-$pkgver-full" -Np1 -i ../0002-kde-theme-injection-fix.patch
+  patch -d "tdesktop-$pkgver-full" -Np1 -i ../0001-kde-theme-injection-fix.patch
 }
 
 build() {
