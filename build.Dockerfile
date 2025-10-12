@@ -1,6 +1,6 @@
 FROM archlinux:latest
 
-RUN pacman --noconfirm -Syyu base-devel namcap
+RUN pacman --noconfirm -Syyu base-devel namcap devtools
 RUN mkdir /build && chown -R alpm:alpm /build
 RUN echo "alpm ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /build
