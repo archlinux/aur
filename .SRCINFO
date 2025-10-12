@@ -1,0 +1,14 @@
+pkgbase = donkey-gauntlet-git
+	pkgdesc = A simple Python/Pygame game inspired by Donkey.bas
+	pkgver = 0.1.1.1.gdf085ff
+	pkgrel = 1
+	url = https://github.com/peterclifton/donkey-gauntlet
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	source = git+https://github.com/peterclifton/donkey-gauntlet.git
+	sha256sums = SKIP
+
+pkgname = donkey-gauntlet-git
