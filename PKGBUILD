@@ -1,7 +1,7 @@
 # Maintainer: Eric Zhao <21zhaoe@protonmail.com>
 pkgbase=ttf-santakku
 pkgname=ttf-santakku
-pkgver=2.001
+pkgver=1.000
 pkgrel=1
 pkgdesc='Old Babylonian cuneiform fonts'
 provides=(ttf-santakku)
