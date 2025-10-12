@@ -2,21 +2,19 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-git
-pkgver=r6078.19e9dd1c
+pkgver=r6506.155299a9
 pkgrel=1
 epoch=1
-pkgdesc="Clipboard manager with searchable and editable history."
-url="https://github.com/hluk/CopyQ"
+pkgdesc='Clipboard manager with searchable and editable history.'
+url='https://github.com/hluk/CopyQ'
 arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('hicolor-icon-theme' 'libxtst' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'desktop-file-utils' 'knotifications5')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'qt5-tools')
-optdepends=('copyq-plugin-itemweb-git')
-provides=('copyq')
-conflicts=('copyq')
-source=("$pkgname::git+https://github.com/hluk/CopyQ.git")
+license=('GPL-3.0')
+depends=('hicolor-icon-theme' 'qt6-svg' 'qt6-wayland' 'knotifications' 'kstatusnotifieritem')
+makedepends=('git' 'extra-cmake-modules' 'qt6-tools')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
-install=
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -28,8 +26,7 @@ build() {
 	mkdir -p build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DWITH_WEBKIT=0 \
-	      -DWITH_QT5=TRUE $srcdir/$pkgname
+	      -DWITH_QT6=TRUE $srcdir/$pkgname
 	make
 }
 
