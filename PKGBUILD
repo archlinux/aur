@@ -489,7 +489,7 @@ prepare() {
   fi
 
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    patch -d "${srcdir}/whisper.cpp-${_whispercpp_ver}"-Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+    patch -d "${srcdir}/whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
     sed -i 's|in->pts, 0|in->pts|g' libavcodec/lcevcdec.c libavfilter/vf_lcevc.c
   fi
 }
