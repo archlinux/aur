@@ -4,21 +4,21 @@
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
 pkgver=1.3.0.r0.g3ed1819
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
 license=('GPL-2.0-or-later')
 depends=(
 	'qt6-base'
-	'qt6-quick3d'
+	'qt6-declarative'
+	'qt6-shadertools'
 	'qt6-grpc'
 	'hicolor-icon-theme'
 	'curl'
 	'openssl'
 	'dbus'
 	'ffmpeg'
-	'fmt'
 	'cubeb-git'
 	'kdsingleapplication'
 	'qcmbackend-git'
