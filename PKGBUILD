@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Firstp1ck/UsrGrp-Manager-TUI"
 license=('MIT')
 depends=('glibc' 'shadow')
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'cargo')
 provides=("usrgrp-manager=${pkgver}")
 conflicts=('usrgrp-manager' 'usrgrp-manager-bin')
 source=("${pkgname}::git+${url}.git")
@@ -30,6 +30,7 @@ prepare() {
     cd "${srcdir}/${pkgname}" || exit 1
     
     # Download/update cargo dependencies
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -48,6 +49,7 @@ check() {
     cd "${srcdir}/${pkgname}" || exit 1
     
     # Run tests
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
