@@ -1,7 +1,7 @@
 # Maintainer: Eric Zhao <21zhaoe@protonmail.com>
 pkgbase=ttf-ullikummi
 pkgname=ttf-ullikummi
-pkgver=1.000
+pkgver=20210910
 pkgrel=1
 pkgdesc='Hittite cuneiform fonts'
 provides=(ttf-ullikummi)
