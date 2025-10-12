@@ -1,8 +1,8 @@
 # Maintainer: Berk Kapla <berkkapla82@proton.me>
 
 pkgname=kdownload
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Blazing-fast async segmented file downloader"
 arch=('x86_64')
 url="https://github.com/compiledkernel-idk/kdownload"
