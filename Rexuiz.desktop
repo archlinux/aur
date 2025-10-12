@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Rexuiz
+Categories=Game;ActionGame;
+Type=Application
+Keywords=first person shooter;fps;3d;deathmatch;
+Exec=/usr/bin/rexuiz
+Comment=A fast-paced multiplayer first-person shooter
+Icon=/usr/share/icons/hicolor/128x128/apps/rexuiz.ico
+StartupNotify=true
+Terminal=false

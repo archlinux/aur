@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# not a symlink because startup script relies on it's path
+/opt/Rexuiz/rexuiz-linux-sdl-x86_64 "$@"
