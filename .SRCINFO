@@ -1,7 +1,7 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
 	pkgver = 6.1.14
-	pkgrel = 0.1
+	pkgrel = 0.2
 	url = https://asus-linux.org
 	arch = x86_64
 	license = MPL-2.0
@@ -24,14 +24,13 @@ pkgname = asusctl
 	install = asusctl.install
 	depends = gcc-libs
 	depends = glibc
-	depends = hicolor-icon-theme
 	depends = libusb
 	depends = systemd
 	depends = systemd-libs
 	optdepends = acpi_call: fan control
-	optdepends = supergfxctl: hybrid GPU control
 	optdepends = asusctltray: tray profile switcher
 	optdepends = rog-control-center: app to control asusctl
+	optdepends = supergfxctl: hybrid GPU control
 	conflicts = gnome-shell-extension-asusctl-gnome
 
 pkgname = rog-control-center
