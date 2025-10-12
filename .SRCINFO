@@ -1,0 +1,17 @@
+pkgbase = termux-elf-cleaner
+	pkgdesc = Utility to remove unused ELF sections causing warnings
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/termux/termux-elf-cleaner
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake>=3.25
+	depends = gcc-libs
+	depends = glibc
+	source = termux-elf-cleaner-3.0.1.tar.gz::https://github.com/termux/termux-elf-cleaner/archive/refs/tags/v3.0.1.tar.gz
+	sha256sums = 1c3c6fb33ad8d1fdfe035eee3a5419f54442b93b1a97c4151b31b82c5626a06a
+
+pkgname = termux-elf-cleaner

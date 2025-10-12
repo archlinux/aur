@@ -1,0 +1,4 @@
+[termux-elf-cleaner]
+source = "git"
+git = "https://github.com/termux/termux-elf-cleaner.git"
+prefix = "v"
