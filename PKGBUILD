@@ -1,7 +1,7 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
 url="https://github.com/furudbat/wayland-vpets"
@@ -14,10 +14,12 @@ sha256sums=('ded601d5d293528fe207ca3d313a0ac098110d04879e322e6be83b0d7b8717c2')
 
 build() {
     cd "$srcdir/wayland-vpets-$pkgver"
-	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFEATURE_LAZY_LOAD_ASSETS=ON -DFEATURE_MULTI_VERSIONS=ON
-	cmake --build build
-	cmake --build build --target manpages
-	cd build && cpack
+	cmake -S . -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DFEATURE_LAZY_LOAD_ASSETS=ON -DFEATURE_MULTI_VERSIONS=ON \
+        -Wno-dev
+	cmake --build build --parallel "$(nproc)"
+	cmake --build build --target manpages --parallel "$(nproc)"
 }
 
 package() {
@@ -36,6 +38,8 @@ package() {
     install -Dm644 examples/clippy.bongocat.conf "$pkgdir/usr/share/${pkgname}/clippy.bongocat.conf.example"
     install -Dm644 examples/digimon.bongocat.conf "$pkgdir/usr/share/${pkgname}/digimon.bongocat.conf.example"
     install -Dm644 examples/pokemon.bongocat.conf "$pkgdir/usr/share/${pkgname}/pokemon.bongocat.conf.example"
+    install -Dm644 examples/cpu-digimon.bongocat.conf "$pkgdir/usr/share/${pkgname}/cpu-digimon.bongocat.conf.example"
+    install -Dm644 examples/moving-digimon.bongocat.conf "$pkgdir/usr/share/${pkgname}/moving-digimon.bongocat.conf.example"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
