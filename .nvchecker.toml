@@ -1,0 +1,4 @@
+[termux-create-package]
+source = "git"
+git = "https://github.com/termux/termux-create-package.git"
+prefix = "v"

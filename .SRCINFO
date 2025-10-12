@@ -1,0 +1,20 @@
+pkgbase = termux-create-package
+	pkgdesc = Utility to remove unused ELF sections causing warnings
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/termux/termux-create-package
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-ruamel-yaml: YAML support
+	provides = python-termux-create-package
+	conflicts = python-termux-create-package
+	source = termux-create-package-0.12.0.tar.gz::https://github.com/termux/termux-create-package/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 13bcc1264844e9865eeab19805f24ff28bbfac8d39c11bca66f4357fa70e6ace
+
+pkgname = termux-create-package
