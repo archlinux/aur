@@ -1,5 +1,5 @@
 pkgname=cat-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An open-source highly customizable shell made in C#."
 arch=('any')
@@ -34,6 +34,5 @@ package() {
     --self-contained false \
     -p:PublishReadyToRun=true
 
-  install -Dm755 /dev/null "$pkgdir/usr/bin/catsh"
   ln -s "$install_dir/$executable_name" "$pkgdir/usr/bin/catsh"
 }
