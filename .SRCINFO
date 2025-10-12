@@ -11,7 +11,7 @@ pkgbase = kripton-authenticator-bin
 	source = kripton-authenticator.desktop
 	source = kripton-auth-logo.png
 	sha256sums = f1ae3f064846e809485c817251271911cbf3139ea13a620c4e08ab30cc56e1ee
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 5c9cfee8d758686dc2426284b7b9ebb08a4fc5ae20fbfe647a5d69c25d546c70
+	sha256sums = a04b394125d96dcbc94935cebcd5f26d4ad3f64b0ca8e41f7a437690422882c3
 
 pkgname = kripton-authenticator-bin
