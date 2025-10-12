@@ -41,7 +41,7 @@ package() {
 
   cat > "$pkgdir/usr/bin/catsh" <<EOF
 #!/bin/sh
-exec "$install_dir/$executable_name" "\$@"
+exec "/usr/share/$pkgname/$executable_name" "\$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/catsh"
