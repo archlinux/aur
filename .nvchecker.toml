@@ -1,0 +1,4 @@
+[otf-latin-modern]
+source = "regex"
+url = "https://www.gust.org.pl/projects/e-foundry/latin-modern/download"
+regex = 'lm(\d+\.\d+)otf.zip'
