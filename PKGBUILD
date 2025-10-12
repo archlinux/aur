@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=prayers-bin
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="TUI application to display Islamic prayer times based on your location"
 arch=('x86_64' 'aarch64')
