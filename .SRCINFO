@@ -1,7 +1,7 @@
 pkgbase = lavanda-gtk-theme-git
 	pkgdesc = Lavanda theme for GNOME/GTK based desktop environments
 	pkgver = 2024.04.28.r16.g9e6517b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Lavanda-gtk-theme
 	arch = any
 	license = GPL-3.0
@@ -9,6 +9,8 @@ pkgbase = lavanda-gtk-theme-git
 	makedepends = gettext
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = gnome-themes-extra: for gtk2 themes
+	options = !strip
+	options = !debug
 	source = lavanda-gtk-theme::git+https://github.com/vinceliuice/Lavanda-gtk-theme.git
 	source = index.theme
 	sha256sums = SKIP

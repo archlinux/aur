@@ -4,7 +4,7 @@ pgkbase='lavanda-gtk-theme-git'
 _pkgbase='lavanda-gtk-theme'
 pkgname=('lavanda-gtk-theme-git' 'lavanda-compact-gtk-theme-git' 'lavanda-sea-gtk-theme-git' 'lavanda-sea-compact-gtk-theme-git')
 pkgver='2024.04.28.r16.g9e6517b'
-pkgrel=1
+pkgrel=2
 pkgdesc="Lavanda theme for GNOME/GTK based desktop environments"
 url="https://github.com/vinceliuice/Lavanda-gtk-theme"
 arch=('any')
@@ -74,7 +74,7 @@ _build() {
       if [[ "${_gtk_variants[*]}" == *"${gtk}"* ]]; then
         install -d -m '0755' "${_pkgdir}/${gtk}"
         install -D -m '0644' -t "${_pkgdir}/${gtk}/assets" "assets/gtk/assets${variant%'-Compact'}"/*
-        install -D -m '0644' -t "${_pkgdir}/${gtk}/assets" "assets/gtk/scalable"/*
+        install -D -m '0644' -t "${_pkgdir}/${gtk}/assets/scalable" "assets/gtk/scalable"/*
         install -D -m '0644' -T "assets/gtk/thumbnails/thumbnail${variant%'-Compact'}${colour#'-Light'}.png" "${_pkgdir}/${gtk}/thumbnail.png"
         sassc ${_sass_opts[@]} "main/${gtk}/gtk${variant%'-Compact'}${colour}.scss" "${_pkgdir}/${gtk}/gtk.css"
         sassc ${_sass_opts[@]} "main/${gtk}/gtk${variant%'-Compact'}-Dark.scss" "${_pkgdir}/${gtk}/gtk-dark.css"
