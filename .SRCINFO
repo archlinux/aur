@@ -1,0 +1,17 @@
+pkgbase = crunch64-cli
+	pkgdesc = A utility for compressing/decompressing files with common n64 formats
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/decompals/crunch64
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = crunch64-0.5.3.tar.gz::https://github.com/decompals/crunch64/archive/0.5.3.tar.gz
+	sha512sums = 61787f02874829935e7532146204a7d2d6fb415a6800840d697aa3c2b2ab58782307e07d25712dfab0a8bdd43d748d4b58aead3cde4b28862035209f558137c8
+
+pkgname = crunch64-cli
