@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=5.0.0.3.r0.g773d12f
+pkgver=5.0.0.3.r5.g504162b
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -50,6 +50,7 @@ prepare() {
 	git config submodule.src/shared/thirdparty/sourcepp.url "$srcdir/sourcepp"
 	git config submodule.cmake/cmake-helpers.url "$srcdir/cmake-helpers"
 	git -c protocol.file.allow=always submodule update
+	sed -i '14i #include <QQuaternion>' src/gui/plugins/previews/mdl/MDLPreview.h
 }
 
 build() {
