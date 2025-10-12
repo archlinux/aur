@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang krasjet
 pkgname=fontbase
-pkgver=2.20.7
+pkgver=2.23.1
 pkgrel=1
 pkgdesc="FontBase is the font manager of the new generation, built by designers, for designers."
 arch=('x86_64' 'i686')
@@ -44,3 +44,4 @@ exec electron /usr/share/fontbase/app/ \$@
 	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
 }
 sha256sums=('d21c2ab57aaa167875383c7858b139766c5c6003e6c2b5e6193e609046e8ba95')
+sha256sums=('ad20bde8374eeb92843af9cf605a41ab9637efc2a430bbe95e3d4bbdfd066e8c')
