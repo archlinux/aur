@@ -1,13 +1,6 @@
 --- src/processing4-processing-1307-4.4.7/app/build.gradle.kts	2025-08-28 20:00:51.000000000 +0200
 +++ src/processing4-processing-1307-4.4.7/app/build.gradle.kts.orig	2025-09-24 09:37:29.661129704 +0200
-@@ -412,12 +412,12 @@
-         "includeCore",
-         "includeJavaMode",
-         "includeSharedAssets",
--        "includeProcessingExamples",
--        "includeProcessingWebsiteExamples",
-+        //"includeProcessingExamples",
-+        //"includeProcessingWebsiteExamples",
+@@ -417,7 +417,7 @@
          "includeJavaModeResources",
          "renameWindres"
      )

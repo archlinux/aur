@@ -2,16 +2,19 @@
 # Maintainer: Torben <git@letorbi.com>
 # Contributor: F. Rødseth <xyproto@archlinux.org>
 
-pkgname=processing
+pkgbase=processing
+pkgname=(
+  processing
+  processing-examples
+)
 pkgver=4.4.7
 _build=1307
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
 license=(GPL LGPL)
 depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
-optdepends=('processing-examples: Examples for Processing')
 makedepends=(gradle8)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
@@ -19,7 +22,7 @@ source=("https://github.com/processing/processing4/archive/processing-$_build-$p
 	    'no_jdk_download.patch')
 sha256sums=('b0f908ffd219ef35394f7df72a8df00ca78aa89946d387bf0a4b2997852689d8'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '5ec5c1814c97c2a4d81c3af9129ba2855e9f90b92aa99d9b1cb5b0d0e995021e')
+            '603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab')
 install='processing.install'
 
 prepare() {
@@ -35,20 +38,20 @@ prepare() {
   fi
 
   # Symbolic link for not having to repeat the revision number
-  ln -sf "${pkgname}4-processing-$_build-$pkgver" "$pkgname"
+  ln -sf "${pkgbase}4-processing-$_build-$pkgver" "$pkgbase"
 
   # Don't download JDK and JFX files during build process
-  patch "$pkgname/app/build.gradle.kts" < no_jdk_download.patch
+  patch "$pkgbase/app/build.gradle.kts" < no_jdk_download.patch
 
   # Disable update check in default preferences
-  patch "$pkgname/build/shared/lib/defaults.txt" < disable_update_check.patch
+  patch "$pkgbase/build/shared/lib/defaults.txt" < disable_update_check.patch
 
   # Pass version number to build process
-  echo "version=$pkgver" > "$pkgname/gradle.properties"
+  echo "version=$pkgver" > "$pkgbase/gradle.properties"
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgbase"
 
   # Create *.desktop file using the existing template file
   sed -e "s,<BINARY_LOCATION>,/usr/share/processing/bin/Processing,g" \
@@ -58,8 +61,10 @@ build() {
   JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle8 createDistributable
 }
 
-package() {
-  cd "$pkgname"
+package_processing() {
+  optdepends=('processing-examples: Examples for Processing')
+
+  cd "$pkgbase"
 
   install -d "$pkgdir/usr/share/processing/"
   cp -r app/build/compose/binaries/main/app/Processing/* "$pkgdir/usr/share/processing/"
@@ -118,4 +123,12 @@ package() {
   rm -rf "$pkgdir/usr/share/processing/lib/runtime" # TODO prevent that the runtime is added at all
   ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/runtime"
   ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/app/resources/jdk-17.0.14+7"
+}
+
+package_processing-examples() {
+  pkgdesc+=" (examples)"
+  depends=()
+
+  install -d "$pkgdir/usr/share/processing/lib/app/resources/modes/java/"
+  cp -r "$pkgbase/app/build/resources-bundled/common/modes/java/examples" "$pkgdir/usr/share/processing/lib/app/resources/modes/java/"
 }
