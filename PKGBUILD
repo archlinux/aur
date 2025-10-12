@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-bin
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension for music player"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/pear-devs/pear-desktop"
@@ -29,7 +29,7 @@ package(){
   bsdtar xfv data.tar.xz -C "$pkgdir"
 
   desktop-file-edit --set-key=Exec --set-value="youtube-music %U" \
-    "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
+    "$pkgdir/usr/share/applications/youtube-music.desktop"
 
   install -Dm755 youtube-music.sh "$pkgdir/usr/bin/youtube-music"
 

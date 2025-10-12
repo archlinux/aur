@@ -1,7 +1,7 @@
 pkgbase = pear-desktop-bin
 	pkgdesc = Extension for music player
 	pkgver = 3.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pear-devs/pear-desktop
 	install = youtube-music.install
 	arch = x86_64
