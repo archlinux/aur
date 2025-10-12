@@ -1,0 +1,17 @@
+pkgbase = shape-git
+	pkgdesc = A farsi/arabic shaping preprocessor for neatroff.
+	pkgver = r202.0c97acf
+	pkgrel = 1
+	url = http://litcave.rudi.ir/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = neatroff
+	provides = shape
+	conflicts = shape
+	conflicts = shape-hg
+	source = shape-git::git+https://github.com/aligrudi/neatroff_make
+	md5sums = SKIP
+
+pkgname = shape-git
