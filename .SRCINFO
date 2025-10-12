@@ -1,8 +1,9 @@
 pkgbase = hyprland-monitor-manager
 	pkgdesc = Smart monitor and lid management for Hyprland with automatic detection and configuration
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hongyangchun/hyprland-monitor-manager
+	install = hyprland-monitor-manager.install
 	arch = any
 	license = MIT
 	depends = hyprland
