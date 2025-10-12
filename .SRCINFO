@@ -1,0 +1,14 @@
+pkgbase = spit-git
+	pkgdesc = Atomically create a file with content
+	pkgver = r10.ea0786e
+	pkgrel = 1
+	url = https://github.com/leahneukirchen/spit
+	arch = x86_64
+	license = public-domain
+	makedepends = git
+	provides = spit-git
+	conflicts = spit-git
+	source = spit-git::git+https://github.com/leahneukirchen/spit
+	sha256sums = SKIP
+
+pkgname = spit-git
