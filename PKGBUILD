@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 _reponame=obs-ptz
-pkgname=$_reponame-controls
-pkgver=0.18.0
+pkgname="$_reponame-controls"
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a PTZ Camera control dock"
 arch=("x86_64" "aarch64")
