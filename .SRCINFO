@@ -1,7 +1,7 @@
 pkgbase = omarchist-git
 	pkgdesc = A GUI app for Omarchy (development build from dev branch).
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tahayvr/omarchist
 	install = omarchist-git.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = omarchist-git
 	license = MIT
 	makedepends = git
 	makedepends = zstd
+	makedepends = pkgconf
 	makedepends = cargo
 	makedepends = rust
 	makedepends = nodejs
