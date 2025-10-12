@@ -1,6 +1,6 @@
 pkgbase = pikeru
 	pkgdesc = A system file picker with proper thumbnails and search
-	pkgver = 1.8
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/dvhar/pikeru
 	install = pikeru.install
@@ -16,7 +16,7 @@ pkgbase = pikeru
 	optdepends = epub-thumbnailer-git: epub thumbnail support
 	options = !debug
 	options = !lto
-	source = pikeru-1.8.tar.gz::https://github.com/dvhar/pikeru/archive/refs/tags/1.8.tar.gz
-	sha512sums = 392b2f0d98eeb9400359632c2e10b56045273c597f6e6d7cc8b0a254a2c84bd8110653599c7168610a87eb1a7c6e7dd181b7505dbdc2bbceacb65d371a73bed6
+	source = pikeru-1.8.1.tar.gz::https://github.com/dvhar/pikeru/archive/refs/tags/1.8.1.tar.gz
+	sha512sums = 8b78992aae414830872de8fd9911b66155f0a82f307e08352245cb30ca78a03c013fc5543458d63fc77a36ef48c67e6de60c0f95ff98d853acff9c3b0cf80494
 
 pkgname = pikeru

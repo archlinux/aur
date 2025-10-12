@@ -1,7 +1,7 @@
 # Maintainer: dvhar <jnk at davosaur dot com>
 
 pkgname=pikeru
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A system file picker with proper thumbnails and search"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ffmpeg' 'xdg-desktop-portal' 'sqlite' 'poppler')
 makedepends=('cargo' 'clang' 'scdoc')
 optdepends=('epub-thumbnailer-git: epub thumbnail support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dvhar/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('392b2f0d98eeb9400359632c2e10b56045273c597f6e6d7cc8b0a254a2c84bd8110653599c7168610a87eb1a7c6e7dd181b7505dbdc2bbceacb65d371a73bed6')
+sha512sums=('8b78992aae414830872de8fd9911b66155f0a82f307e08352245cb30ca78a03c013fc5543458d63fc77a36ef48c67e6de60c0f95ff98d853acff9c3b0cf80494')
 options=(!debug !lto)
 install="${pkgname}.install"
 
