@@ -1,11 +1,11 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=fzy-git
-pkgver=1.0.r38.gc2d816d
+pkgver=1.1.r4.g34b8886
 pkgrel=1
 pkgdesc="A fuzzy text selector menu for the terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/jhawthorn/fzy"
-license=('custom:MIT')
+license=('custom:MIT-0')
 depends=('glibc')
 makedepends=('git')
 provides=('fzy')
