@@ -2,7 +2,7 @@
 pkgname=espressif-ide-bin
 _name=espressif-ide
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Eclipse-based IDE for ESP-IDF development'
 arch=('x86_64')
 url="https://github.com/espressif/idf-eclipse-plugin"
