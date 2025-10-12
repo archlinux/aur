@@ -20,6 +20,7 @@ pkgbase = pacsea-git
 	optdepends = alacritty: run external commands in a terminal
 	optdepends = neovim: external editor
 	optdepends = downgrade: Downgrade of Packages
+	provides = pacsea
 	conflicts = pacsea
 	conflicts = pacsea-bin
 	source = git+https://github.com/Firstp1ck/Pacsea.git

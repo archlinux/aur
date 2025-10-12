@@ -20,6 +20,7 @@ optdepends=(
 )
 makedepends=('cargo' 'git')
 conflicts=('pacsea' 'pacsea-bin')
+provides=('pacsea')
 source=("git+https://github.com/Firstp1ck/Pacsea.git")
 sha256sums=('SKIP')
 
@@ -34,13 +35,23 @@ prepare() {
   : "${srcdir:?srcdir is not set}"
   cd "$srcdir/Pacsea" || exit 1
   # Fetch dependencies according to Cargo.lock to ensure reproducible builds
-  cargo fetch --locked
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   : "${srcdir:?srcdir is not set}"
   cd "$srcdir/Pacsea" || exit 1
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  : "${srcdir:?srcdir is not set}"
+  cd "$srcdir/Pacsea" || exit 1
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
