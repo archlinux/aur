@@ -1,0 +1,21 @@
+pkgbase = tcp_pubsub-bin
+	pkgdesc = TCP based publish-subscribe library for C++
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/eclipse-ecal/tcp_pubsub
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = tcp_pubsub
+	provides = libtcp_pubsub.so
+	conflicts = tcp_pubsub
+	noextract = tcp_pubsub-2.0.1-x86_64.deb
+	source = tcp_pubsub-2.0.1-README.md::https://github.com/eclipse-ecal/tcp_pubsub/raw/refs/tags/v2.0.1/README.md
+	source = tcp_pubsub-2.0.1-LICENSE::https://github.com/eclipse-ecal/tcp_pubsub/raw/refs/tags/v2.0.1/LICENSE
+	sha256sums = 5454720e943c596f0436639ece2f0431a5f793827e2ef72aa49556ac9a4d6651
+	sha256sums = 5d13d80e899053bbc052aa83842f137dfbfa2be1e812444b3dae423330780cab
+	source_x86_64 = tcp_pubsub-2.0.1-x86_64.deb::https://github.com/eclipse-ecal/tcp_pubsub/releases/download/v2.0.1/tcp_pubsub-2.0.1-ubuntu-24.04-shared.deb
+	sha256sums_x86_64 = 4bca6df86c83f15026356a5b10c4e754959e9e4494502deed1537ad10922034c
+
+pkgname = tcp_pubsub-bin

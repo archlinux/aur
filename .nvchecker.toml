@@ -1,0 +1,5 @@
+[tcp_pubsub-bin]
+source = "github"
+github = "eclipse-ecal/tcp_pubsub"
+use_latest_release = true
+prefix = "v"
