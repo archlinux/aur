@@ -17,7 +17,7 @@ depends=(
   gcc-libs
   glib2
   glibc
-  electron30
+  electron30-bin
   libsecret
   libx11
   libxkbfile
