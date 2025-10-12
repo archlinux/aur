@@ -39,5 +39,10 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin"
 
-  ln -s "$install_dir/$executable_name" "$pkgdir/usr/bin/catsh"
+  cat > "$pkgdir/usr/bin/catsh" <<EOF
+#!/bin/sh
+exec "$install_dir/$executable_name" "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/catsh"
 }
