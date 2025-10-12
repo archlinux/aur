@@ -1,0 +1,11 @@
+pkgbase = keychron-q3-max-udev
+	pkgdesc = udev rule for the Keychron Q3 Max wireless keyboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = 0BSD
+	depends = qmk
+	source = 70-keychron-q3-max.rules
+	sha256sums = c37ffe5397840cb3e39181c1262ca262afefe4065918870f41bc623549fdee7d
+
+pkgname = keychron-q3-max-udev

@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2025 Michał Gawron <mgawron@metacode.pl>
+#
+# SPDX-License-Identifier: 0BSD
+
+# Keychron Q3 Max
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="d030", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="d030", TAG+="uaccess"
+
+# Keychron Link
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0830", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0830", TAG+="uaccess"
