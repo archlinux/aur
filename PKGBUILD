@@ -1,8 +1,8 @@
 # Maintainer: BNDays27 <brionical@proton.me>
 _pkgname=crosspatch
 pkgname=$_pkgname-bin
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 install=crosspatch.install
 pkgdesc="(UNNOFFICIAL PACKAGE) A mod Manager for Sonic Racing: CrossWorlds"
 arch=(x86_64)
@@ -10,25 +10,29 @@ url="https://github.com/NickPlayzGITHUB/CrossPatch"
 license=('GPL')
 depends=()
 provides=("crosspatch")
-source=("$_pkgname-$pkgver::$url/releases/download/1.0.8/CrossPatch_Linux.${pkgver}bin"
+source=("$_pkgname-$pkgver.zip::https://github.com/NickPlayzGITHUB/CrossPatch/releases/download/$pkgver/CrossPatch${pkgver}_linux.zip"
 	"https://raw.githubusercontent.com/NickPlayzGITHUB/CrossPatch/refs/heads/main/assets/CrossP.png")
-sha256sums=("610906e951221d76f2c5b80728dd64af63d2dd1f0c92f88e1aac5436f7466b5f"
+sha256sums=("651b2b171a2a625d0c0bf58fed3591dd7a2b80f472add870c6ca2b0cc1525835"
 	SKIP)
 
 package() {
-install -Dm755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/opt/CrossPatch/$_pkgname"
+mkdir -p $pkgdir/opt/CrossPatch
+cp -r  * "$pkgdir/opt/CrossPatch/"
+rm $pkgdir/opt/CrossPatch/CrossP.png
+rm $pkgdir/opt/CrossPatch/${_pkgname}-${pkgver}.zip
 mkdir -p $pkgdir/usr/bin
-echo -e "#!/usr/bin/sh\nexec /opt/CrossPatch/$_pkgname \"\$@\"" >> $pkgdir/usr/bin/$_pkgname
+echo -e "#!/usr/bin/sh\nexec /opt/CrossPatch/CrossPatch.bin \"\$@\"" >> $pkgdir/usr/bin/$_pkgname
 chmod +x $pkgdir/usr/bin/$_pkgname
 install -Dm644 "$srcdir/CrossP.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Name=CrossPatch
 Comment=An easy to use mod manager for Sonic Racing: Crossworlds
-Exec=$_pkgname
+Exec=/opt/CrossPatch/CrossPatch.bin %U
 Path=/opt/CrossPatch/
 Terminal=false
 Categories=Game;
+MimeType=x-scheme-handler/crosspatch
 Type=Application
 Icon=$_pkgname
 END
