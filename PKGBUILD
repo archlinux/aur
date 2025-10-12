@@ -1,7 +1,7 @@
 # Maintainer: Eric Zhao <21zhaoe@protonmail.com>
 pkgbase=ttf-assurbanipal
 pkgname=ttf-assurbanipal
-pkgver=1.000
+pkgver=20210910
 pkgrel=1
 pkgdesc='Neo-Assyrian cuneiform font'
 provides=(ttf-assurbanipal)
