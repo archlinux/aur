@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="brn2-git"
-pkgver=r1501.091293f
+pkgver=r1505.8af372a
 pkgrel=1
 pkgdesc="fast bulk renamer with swapping"
 arch=(x86_64)
