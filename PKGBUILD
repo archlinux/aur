@@ -35,6 +35,7 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    export PERL_XXX_DUMPER=''  #  workaround for bug: test fails if set not to YAML
     make test
   )
 }
