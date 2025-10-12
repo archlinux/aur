@@ -1,17 +1,16 @@
 # Maintainer: acceleration3 <acceleration23@gmail.com>
 pkgname=mi-home-toolkit
 pkgver=1.4.0
-pkgrel=8
+pkgrel=1
 pkgdesc="Effortlessly manage Mi Home smart devices, such as viewing device info and enabling LAN mode for bulbs."
 arch=('x86_64')
 url="https://github.com/ApplY3D/mi-home-toolkit"
-license=('MIT')
 depends=('glibc' 'gtk3' 'webkit2gtk')
 makedepends=('rust' 'pnpm' 'pkgconf' 'mold' 'webkit2gtk-4.1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('510d0d55e984563a15aecbc26668d1eb06024eb6a4e736ee849b87b48c90c886'
+            '7ccdfeabb2aa44abe6a707169d738619b19f8f8af8ab9b34c4bb177e0c700c67')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
