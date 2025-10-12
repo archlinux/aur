@@ -1,4 +1,4 @@
-# Maintainer: Umpire274 <umpire274@gmail.com>
+# Maintainer: Alessandro Maestri <umpire274@gmail.com>
 pkgname=librius
 pkgver=0.1.0
 pkgrel=1
