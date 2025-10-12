@@ -1,0 +1,15 @@
+pkgbase = portunix
+	pkgdesc = Portunix CLI – intelligent developer environment automation toolkit
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/cassandragargoyle/Portunix
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = portunix
+	conflicts = portunix-bin
+	source = portunix-1.7.5.tar.gz::https://github.com/cassandragargoyle/Portunix/archive/refs/tags/v1.7.5.tar.gz
+	sha256sums = 4d7d24e330b6f8170602f54e6e02245435f5b49baa362178ebe5e03298826172
+
+pkgname = portunix
