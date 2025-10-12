@@ -9,7 +9,7 @@ license=('MIT')
 depends=('dotnet-runtime')
 makedepends=('git' 'dotnet-sdk')
 conflicts=()
-source=("git+${url}.git")
+source=("git+${url}.git" "git+https://github.com/lunaNoir25/CAT-data.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,6 +33,8 @@ package() {
     --output "$install_dir" \
     --self-contained false \
     -p:PublishReadyToRun=true
+
+    cp -r ../CAT-data ~/.config/CAT/
 
   local executable_name="CAT"
   
