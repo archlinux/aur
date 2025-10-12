@@ -10,7 +10,8 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 provides=('kdownload')
 conflicts=('kdownload')
-source=("kdownload-${pkgver}::https://github.com/compiledkernel-idk/kdownload/releases/download/v${pkgver}/kdownload-x86_64-linux"
+_releasetag="1.1"
+source=("kdownload-${pkgver}::https://github.com/compiledkernel-idk/kdownload/releases/download/${_releasetag}/kdownload-x86_64-linux"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/compiledkernel-idk/kdownload/v${pkgver}/LICENSE"
         "README-${pkgver}.md::https://raw.githubusercontent.com/compiledkernel-idk/kdownload/v${pkgver}/README.md")
 sha256sums=('SKIP'
