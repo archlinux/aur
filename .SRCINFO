@@ -1,6 +1,6 @@
 pkgbase = google-chrome-dev
 	pkgdesc = The popular web browser by Google (Dev Channel)
-	pkgver = 143.0.7445.0
+	pkgver = 143.0.7461.2
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-dev.install
@@ -21,10 +21,10 @@ pkgbase = google-chrome-dev
 	provides = google-chrome
 	options = !emptydirs
 	options = !strip
-	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_143.0.7445.0-1_amd64.deb
+	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_143.0.7461.2-1_amd64.deb
 	source = eula_text.html
 	source = google-chrome-unstable.sh
-	sha512sums = d756e4351b108485e0bef853d402268ff4ae21d07109e2b8e4233ee25f08e72a24352b1ce29c1b741551afdedb21817c748522179db7b6eab3673ff5f6b63706
+	sha512sums = 40176f9fb85e74b55b425efefb64f32329d500f8eb459f51a1df4ba0e2cc04a7e4f2d32de6dd5421fa3e65aed19f5d27f40683afb787f5bc91f5642b40eb6ccd
 	sha512sums = a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396
 	sha512sums = 445eb36a588f49af018ded3d852b63e0523ffac20c25be721f3ef4663591256849432bebb3d9f352e4f53cbe1fb77fa67cf8911c9161f826490a21adbdcc81f4
 
