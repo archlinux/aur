@@ -3,7 +3,7 @@
 pkgname="neothesia"
 _pkgname="Neothesia"
 pkgver="0.3.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Flashy Synthesia Like Software For Linux, Windows and MacOS"
 arch=("x86_64")
 url="https://polymeilex.github.io/Neothesia/"
@@ -14,13 +14,15 @@ source=("https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v$pkgver.tar.
 sha256sums=('994ff7de5e91d41a267d478b52ebdc05d12e81a8a5dba49bd5e1addda9ea65ee')
 
 prepare() {
-	cd "$srcdir/$_pkgname-$pkgver"
+    cp ../ffmpeg-sys.patch "$srcdir/"
+    cd "$srcdir/$_pkgname-$pkgver"
+    patch -Np1 -i ../ffmpeg-sys.patch
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release --bin neothesia
@@ -29,7 +31,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname-cli"
     install -Dm0644 -t "$pkgdir/usr/share/applications/" "flatpak/com.github.polymeilex.neothesia.desktop"
