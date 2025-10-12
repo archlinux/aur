@@ -1,0 +1,5 @@
+[packemon-bin]
+source = "github"
+github = "ddddddO/packemon"
+use_latest_release = true
+prefix = "v"
