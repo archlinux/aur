@@ -1,7 +1,7 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
-pkgver=2.0_beta55
+pkgver=2.0_beta56
 _pkgver=${pkgver//_/-}
 pkgrel=2
 arch=('x86_64')
@@ -46,7 +46,7 @@ makedepends=(
 )
 #options=('strip')
 source=("https://releases.threema.ch/desktop/${_pkgver}/threema-desktop-v${_pkgver}-source.7z")
-b2sums=('4a41ba214305f54f021af948ccc837545a41a4e726aa41676a742d326e80f509ba7268ab9cb876f6f2bde805216162e3e2b89b4351000f3345cab222b7cd8c82') # Use get-checksum.sh to update
+b2sums=('04dc0f262059323e4bd0b7dba33e80c4be68cf114dd4f48b42177297f48a059a139464971f816d871e68a425f200a0e03383273d01f2c810d47213af2147f844') # Use get-checksum.sh to update
 
 # See https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -65,6 +65,24 @@ prepare() {
 
   # Patch version to indicate this is an AUR package
   sed -i -s 's/"version": "'${_pkgver}'"/"version": "'${_pkgver}-aur'"/' package.json
+
+  # Right now the used version of wasm-bindgen in libthreema and the installed
+  # version of wasm-bindgen-cli on the system need to match. Otherwise, you get
+  # this error while building:
+  #
+  # > it looks like the Rust project used to create this Wasm file was linked against
+  # > version of wasm-bindgen that uses a different bindgen format than this binary:
+  #
+  # To achieve this, we have two options:
+  # - Patch threema-desktop sources to use the latest version
+  # - Download a specific version of wasm-bindgen-cli
+  #
+  # For now, the first approach is chosen (even though this might break things
+  # when wasm-bindgen does an incompatible upgrade).
+  BINDGEN_VERSION=$(wasm-bindgen --version | awk '{ print $NF }')
+  cd libs/libthreema/lib/
+  sed -i '/^wasm-bindgen[ =]/s/version = "=.*"/version = "='$BINDGEN_VERSION'"/' Cargo.toml
+  cargo fetch
 }
 
 build() {

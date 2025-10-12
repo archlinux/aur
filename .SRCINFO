@@ -1,6 +1,6 @@
 pkgbase = threema-desktop-beta
 	pkgdesc = Threema Desktop 2.0 Beta.
-	pkgver = 2.0_beta55
+	pkgver = 2.0_beta56
 	pkgrel = 2
 	url = https://github.com/threema-ch/threema-desktop
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = threema-desktop-beta
 	depends = nss
 	depends = pango
 	depends = systemd-libs
-	source = https://releases.threema.ch/desktop/2.0-beta55/threema-desktop-v2.0-beta55-source.7z
-	b2sums = 4a41ba214305f54f021af948ccc837545a41a4e726aa41676a742d326e80f509ba7268ab9cb876f6f2bde805216162e3e2b89b4351000f3345cab222b7cd8c82
+	source = https://releases.threema.ch/desktop/2.0-beta56/threema-desktop-v2.0-beta56-source.7z
+	b2sums = 04dc0f262059323e4bd0b7dba33e80c4be68cf114dd4f48b42177297f48a059a139464971f816d871e68a425f200a0e03383273d01f2c810d47213af2147f844
 
 pkgname = threema-desktop-beta
