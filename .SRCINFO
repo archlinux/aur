@@ -1,11 +1,11 @@
 pkgbase = salahtime
-	pkgdesc = A small C program for displaying the Islamic prayer time for a specific city, defaults to Copenhagen in Denmark
-	pkgver = 1.1.0
+	pkgdesc = A small C program for displaying the Islamic prayer time for a specific city
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://codeberg.org/unixdigest/salahtime
 	arch = any
 	license = CC BY 4.0
-	source = https://codeberg.org/unixdigest/salahtime/archive/1.1.0.zip
-	md5sums = f55f7d6c4b36e0733539bf013154d0e8
+	source = https://codeberg.org/unixdigest/salahtime/archive/1.1.1.zip
+	md5sums = 7cb94d03dc165491aef09aaeddf9da97
 
 pkgname = salahtime
