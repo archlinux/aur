@@ -1,21 +1,21 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Contributor: <mumei AT airmail DOT cc>
 
 _pkgname=Cynthiune
 pkgname=cynthiune.app
-pkgrel=3
+pkgrel=4
 pkgver=1.0.0
 pkgdesc='Free software and romantic music player for GNUstep'
 arch=('i686' 'x86_64')
 url='http://gap.nongnu.org/cynthiune/index.html'
 license=('GPL')
 groups=('gnustep-apps')
-depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad' 'pulseaudio-alsa')
-optdepends=('libid3tag' 'libvorbis' 'libogg' 'libmpcdec' 'esound')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad' 'pulseaudio-alsa' 'libid3tag' 'audiofile' 'libmodplug' 'libao')
+optdepends=('libvorbis' 'libogg' 'libmpcdec' 'esound')
 makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz"
-        "http://http.debian.net/debian/pool/main/c/cynthiune.app/cynthiune.app_1.0.0-2.debian.tar.xz")
+        "http://http.debian.net/debian/pool/main/c/cynthiune.app/cynthiune.app_1.0.0-4.debian.tar.xz")
 sha256sums=('3cc5228c8cdb66256bbcec4b317bbd3853397f09ec9b7378a7f65140eff5bcaf'
-            '7b74006468777e24b3ca077449f95bf1fff529672d6c6fec61fd276e379716b7')
+            '64966bef492c4ddf4907c7c2832c4eb80d932ccee190bb3b06490f321ce5a2dd')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -35,6 +35,8 @@ prepare() {
   if test "$pkg-config --exists esound" != 0; then
     sed -i '118,120{s/^.*//}' GNUmakefile
   fi
+  # Disable taglib
+  sed -i '81,83{s/^.*//}' GNUmakefile
 }
 
 build() {
