@@ -1,0 +1,23 @@
+pkgbase = ocr4linux-x11
+	pkgdesc = A versatile text extraction tool to extract text from a screenshot of a selected area OCR, and copy it to the clipboard (X11).
+	pkgver = 1.3.0
+	pkgrel = 0
+	url = https://github.com/moheladwy/OCR4Linux
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = tesseract
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pytesseract
+	depends = python-opencv
+	depends = xclip
+	depends = scrot
+	depends = rofi
+	source = https://github.com/moheladwy/OCR4Linux/archive/refs/tags/v1.3.0.tar.gz
+	source = 01-fix-directories.patch
+	sha256sums = 3b202fddf3d5f184ac6176e4137a520e1072221f34fc735e38adbad5166e7686
+	sha256sums = 7fe530e59f52b8da64a2ad24e85032245bf20b3bac23b963f4af11e3c5149155
+
+pkgname = ocr4linux-x11

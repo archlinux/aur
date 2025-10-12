@@ -1,0 +1,45 @@
+diff --git a/OCR4Linux.sh b/OCR4Linux.sh
+index 340fb10..011c5ed 100755
+--- a/OCR4Linux.sh
++++ b/OCR4Linux.sh
+@@ -32,10 +32,10 @@
+ # ========================================================================================================================
+ 
+ SCREENSHOT_NAME="screenshot_$(date +%d%m%Y_%H%M%S).jpg"
+-SCREENSHOT_DIRECTORY="$HOME/Pictures/screenshots"
+-OCR4Linux_HOME="$HOME/.config/OCR4Linux"
+-OCR4Linux_PYTHON_NAME="OCR4Linux.py"
+-TEXT_OUTPUT_FILE_NAME="output_text.txt"
++OCR4Linux_HOME="$HOME/.cache/OCR4Linux"
++SCREENSHOT_DIRECTORY="${OCR4Linux_HOME}/screenshots"
++OCR4Linux_PYTHON_NAME="/usr/bin/OCR4Linux.py"
++TEXT_OUTPUT_FILE_NAME="output_text_$(date +%d%m%Y_%H%M%S).txt"
+ LOGS_FILE_NAME="OCR4Linux.log"
+ SLEEP_DURATION=0.5
+ REMOVE_SCREENSHOT=false
+@@ -137,8 +137,8 @@ check_if_files_exist() {
+     fi
+ 
+     # Check if the python script exists.
+-    if [ ! -f "$OCR4Linux_HOME/$OCR4Linux_PYTHON_NAME" ]; then
+-        log_message "ERROR: $OCR4Linux_PYTHON_NAME not found in $OCR4Linux_HOME"
++    if [ ! -f "$OCR4Linux_PYTHON_NAME" ]; then
++        log_message "ERROR: $OCR4Linux_PYTHON_NAME not found"
+         exit 1
+     fi
+ }
+@@ -218,12 +218,12 @@ extract_text() {
+     fi
+     
+     if [ -n "$lang_string" ]; then
+-        python "$OCR4Linux_HOME/$OCR4Linux_PYTHON_NAME" \
++        python "$OCR4Linux_PYTHON_NAME" \
+             "$SCREENSHOT_DIRECTORY/$SCREENSHOT_NAME" \
+             "$OCR4Linux_HOME/$TEXT_OUTPUT_FILE_NAME" \
+             --langs "$lang_string"
+     else
+-        python "$OCR4Linux_HOME/$OCR4Linux_PYTHON_NAME" \
++        python "$OCR4Linux_PYTHON_NAME" \
+             "$SCREENSHOT_DIRECTORY/$SCREENSHOT_NAME" \
+             "$OCR4Linux_HOME/$TEXT_OUTPUT_FILE_NAME"
+     fi
