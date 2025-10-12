@@ -3,7 +3,7 @@
 _pkgname="fineftp-server"
 pkgname="${_pkgname}-bin"
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal FTP server library for Windows and Unix flavors"
 arch=('aarch64' 'x86_64')
 url="https://github.com/eclipse-ecal/${_pkgname}"
@@ -41,7 +41,7 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  cp -vaT "${_pkgsrc}-${CARCH}" "${pkgdir}"
+  cp -vaT --no-preserve=ownership "${_pkgsrc}-${CARCH}" "${pkgdir}"
 
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"

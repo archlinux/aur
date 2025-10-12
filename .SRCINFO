@@ -1,7 +1,7 @@
 pkgbase = fineftp-server-bin
 	pkgdesc = Minimal FTP server library for Windows and Unix flavors
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse-ecal/fineftp-server
 	arch = aarch64
 	arch = x86_64
