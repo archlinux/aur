@@ -1,7 +1,7 @@
-# Maintainer: Ross Ceb aur@roceb.xyz 
+# Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=glide-browser-bin
 _binaryname=glide-bin
-pkgver=0.1.51a
+pkgver=0.1.52a
 pkgrel=1
 pkgdesc="An extensible and keyboard-focused web browser built on Firefox"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'pulse-native-provider: Audio support')
 source_x86_64=("glide.linux-x86_64.tar.xz::${url}/releases/download/${pkgver}/glide.linux-x86_64.tar.xz")
 source_aarch64=("glide.linux-aarch64.tar.xz::${url}/releases/download/${pkgver}/glide.linux-aarch64.tar.xz")
-#sha256sums=('SKIP') # Replace with actual checksum
-sha256sums_x86_64=('790f22b67f17bc536e2f2a4aaee4cba56cb30ebf3df652d3301537c8dfb219e5')
-sha256sums_aarch64=('7b137a54971c865a82ebe16b94a0cd0e9281b152dd18c28dd65e2e60cecc9479')
+sha256sums=('62d62511f6fa4d756564e08b91473c523fd7011d') # Replace with actual checksum
+sha256sums_x86_64=('bf76c92d0fb70380d304869f400307c8f7642feef57299d095a6c9600b245202')
+sha256sums_aarch64=('c43188af34258670bac0f232dbd34eda3beaa58f8c31e51a70039ea68e686bac')
 
 package() {
 # Create directories
@@ -57,5 +57,3 @@ for i in 16x16 32x32 48x48 64x64 128x128; do
           "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_binaryname.png
 done
 }
-
-
