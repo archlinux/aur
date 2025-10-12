@@ -1,7 +1,7 @@
 pkgbase = cat-git
 	pkgdesc = An open-source highly customizable shell made in C#.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lunaNoir25/CAT
 	arch = any
 	license = MIT
