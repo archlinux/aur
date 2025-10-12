@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sciteco-git
-pkgver=r1097.52d66c5
+pkgver=r1430.f223cfa
 pkgrel=1
 pkgdesc='Advanced TECO dialect and interactive screen editor based on Scintilla'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('git' 'groff')
 depends=('ncurses')
 conflicts=("${pkgname%-*}")
-source=("$pkgname::git+$url")
+source=("$pkgname::git+git://git.fmsbw.de/sciteco")
 md5sums=('SKIP')
 
 pkgver() {
