@@ -1,5 +1,6 @@
-# Maintainer: Daniel Micay <danielmicay@gmail.com>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: David Herrmann <dh.herrmann@gmail.com>
+
 pkgname=libtsm
 pkgver=4.2.0
 pkgrel=1
