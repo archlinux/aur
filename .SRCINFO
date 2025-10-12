@@ -1,6 +1,6 @@
 pkgbase = kdownload
 	pkgdesc = Blazing-fast async segmented file downloader
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/compiledkernel-idk/kdownload
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kdownload
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/compiledkernel-idk/kdownload.git#tag=v0.1.0
+	source = git+https://github.com/compiledkernel-idk/kdownload.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = kdownload
