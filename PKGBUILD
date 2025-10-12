@@ -1,18 +1,18 @@
 # Maintainer: Nico Rittstieg <nico dot rittstieg at gmx dot de>
 pkgname=ntag
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="Audio file tag editor, created with JavaFX"
 arch=('x86_64')
 url="https://github.com/nrittsti/ntag"
 license=('GPL3')
 source=("https://github.com/nrittsti/ntag/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux_bin.tar.gz")
-sha256sums=('c6e06888330790d70783e02b7ea2624eb1a87fb3ac60a548bc89f14a89ad04b5')
+sha256sums=('f7a286b6d478637e4cc90ad216166c640a5ac1d5be2c1eb261abe43babf22d5e')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -dm755 "${pkgdir}/opt/ntag/lib"
-	install -Dm644 lib/*.jar "${pkgdir}/opt/ntag/lib"
+	cd "${srcdir}/${pkgname}-${pkgver}-linux_bin"
+	install -dm755 "${pkgdir}/opt/ntag/libs"
+	install -Dm644 libs/*.jar "${pkgdir}/opt/ntag/libs"
 	install -Dm644 *.{jar,png,txt,pdf,properties} "${pkgdir}/opt/ntag"
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
