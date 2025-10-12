@@ -1,5 +1,5 @@
 pkgbase = ligen-git
-	pkgdesc = A blazing fast gui autoclicker for linux
+	pkgdesc = A simple CLI tool to inject LICENSE headers into your code 
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/shabman/ligen
