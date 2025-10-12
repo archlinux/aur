@@ -1,0 +1,21 @@
+pkgbase = perl-xxx
+	pkgdesc = See Your Data in the Nude
+	pkgver = 0.38
+	pkgrel = 1
+	url = https://metacpan.org/release/XXX
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-yaml-pp>=0.018
+	depends = perl>=5.8.1
+	optdepends = perl-data-dump
+	optdepends = perl-data-dump-color
+	optdepends = perl-yaml-xs
+	optdepends = perl-yaml
+	optdepends = perl-json-color
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/XXX-0.38.tar.gz
+	md5sums = 684d4dba7d12b4a303d207166231f0fb
+	sha512sums = bb157d2efed5a832633481c52de0486780bf4f16cfc39f76d983d4ee3dc6cb6a6e88b7d28357884bce39befc1b6571525ba68332b2e44b35565160cd911d09bc
+
+pkgname = perl-xxx
