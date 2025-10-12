@@ -1,7 +1,7 @@
 # Maintainer: Hongyang Chun <your-email@example.com>
 pkgname=hyprland-monitor-manager
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart monitor and lid management for Hyprland with automatic detection and configuration"
 arch=('any')
 url="https://github.com/hongyangchun/hyprland-monitor-manager"
@@ -74,4 +74,19 @@ post_install() {
 
 post_upgrade() {
     post_install
+}
+
+post_remove() {
+    echo ""
+    echo "==> Stopping monitor-manager daemon..."
+    pkill -f "monitor-manager.sh.*daemon" 2>/dev/null || true
+    pkill -f "hmonitor.*daemon" 2>/dev/null || true
+    
+    echo "==> Please manually remove monitor-manager from your Hyprland config:"
+    echo "    - Remove 'exec-once = hmonitor daemon' from hyprland.conf or autostart.conf"
+    echo "    - Remove keybindings if any (e.g. 'hmonitor toggle')"
+    echo ""
+    echo "==> User configuration files preserved at:"
+    echo "    ~/.config/hypr/monitor-configs/"
+    echo ""
 }
