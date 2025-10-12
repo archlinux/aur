@@ -3,8 +3,8 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.0_qsql.r239.g6a7ba5e
-pkgrel=1
+pkgver=1.3.0.r0.g3ed1819
+pkgrel=3
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -36,15 +36,34 @@ makedepends=(
 optdepends=('qcm-ncm-plugin-git: Netease Cloud Music plugin')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=(
+	"git+${url}.git"
+	"git+https://github.com/hypengw/rstd.git"
+	"git+https://github.com/hypengw/ncrequest.git"
+	"git+https://github.com/hypengw/kstore.git"
+	"git+https://github.com/hypengw/QmlMaterial.git"
+	"git+https://github.com/ilqvya/random.git"
+	"fix-kdsingleapplication.patch"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '08a3aa14c098044dd4a129a292558df4ecfaf7bbeec0b295e5d8009c5939c422')
 
 pkgver() {
 	git -C Qcm describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
-	git lfs install
+	patch -d Qcm -Np1 -i ../fix-kdsingleapplication.patch
+
+	cd QmlMaterial
+	git lfs install --local
+	git remote add network-origin https://github.com/hypengw/QmlMaterial.git
+	git lfs pull network-origin
 }
 
 build() {
@@ -53,6 +72,12 @@ build() {
 		-G Ninja \
 		-D CMAKE_BUILD_TYPE=None \
 		-D CMAKE_INSTALL_PREFIX=/usr \
+		-D FETCHCONTENT_FULLY_DISCONNECTED=ON \
+		-D FETCHCONTENT_SOURCE_DIR_RSTD="${srcdir}/rstd" \
+		-D FETCHCONTENT_SOURCE_DIR_NCREQUEST="${srcdir}/ncrequest" \
+		-D FETCHCONTENT_SOURCE_DIR_KSTORE="${srcdir}/kstore" \
+		-D FETCHCONTENT_SOURCE_DIR_QML_MATERIAL="${srcdir}/QmlMaterial" \
+		-D FETCHCONTENT_SOURCE_DIR_RANDOM="${srcdir}/random" \
 		-D CMAKE_CXX_COMPILER=clang++ # Require clang 20+ to build
 
 	cmake --build build
