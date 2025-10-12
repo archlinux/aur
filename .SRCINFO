@@ -6,13 +6,12 @@ pkgbase = otf-latin-modern-compat
 	arch = any
 	license = LicenseRef-GFL
 	makedepends = python-fonttools
-	provides = otf-latin-modern
-	conflicts = otf-latin-modern
+	optdepends = otf-latin-modern
 	source = http://www.gust.org.pl/projects/e-foundry/latin-modern/download/lm2.006otf.zip
 	source = http://www.gust.org.pl/projects/e-foundry/licenses/GUST-FONT-LICENSE.txt
 	source = update-fonts.py
 	sha256sums = 608a6f3de9fbafd70f977fbf21ca32850178dd19b11530385358840c8f291f06
 	sha256sums = 5eb61bb836bb1845ef668717cb15b382e997748ce2629e4388cc5e4c3fa4e433
-	sha256sums = 1b9b18f141b10dacd7368762f03e38b11536af88eb723c27a8017df9c4801946
+	sha256sums = 4d5f09956351c27228433789df9630d49c688fb0dde6c0fc86455a4aef710310
 
 pkgname = otf-latin-modern-compat
