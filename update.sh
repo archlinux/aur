@@ -12,7 +12,7 @@ CURRENT_VERSION=${CURRENT_VERSION#*=}
 echo "VERSION: ${VERSION}"
 echo "CURRENT_VERSION: ${CURRENT_VERSION}"
 
-if [ "${CURRENT_VERSION}" == "${VERSION}" ] ; then
+if [ "${CURRENT_VERSION}" == "${VERSION}a" ] ; then
     echo -e "\nno update needed\nexit\n"
     exit 0
 fi
@@ -27,7 +27,7 @@ sed -E "s#(_tag=).*#\1$VERSION#" -i PKGBUILD
 
 jq -c -r '.[] | [ "printf", "\n# %s\n\n%s\n\n__________\n", .name, .body ] | @sh' < releases.json | bash > CHANGELOG
 
-rm -r src pkg SlimeVR-amd64.appimage
+rm -r src pkg SlimeVR-amd64.appimage || true
 
 updpkgsums
 makepkg -sf
