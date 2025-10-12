@@ -1,5 +1,5 @@
 pkgbase = pg2parquet
-	pkgdesc = Command line tool for inspecting Parquet files
+	pkgdesc = Export PostgreSQL table or query into Parquet file
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/exyi/pg2parquet
