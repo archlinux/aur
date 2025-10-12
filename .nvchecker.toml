@@ -1,0 +1,5 @@
+[fineftp-server-bin]
+source = "github"
+github = "eclipse-ecal/fineftp-server"
+use_latest_release = true
+prefix = "v"
