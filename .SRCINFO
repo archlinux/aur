@@ -1,7 +1,7 @@
 pkgbase = python-pypinyin-dict
 	pkgdesc = 使用 pinyin-data 和 phrase-pinyin-data 中的拼音数据文件覆盖 pypinyin 中的自带拼音数据，实现只使用某个或某些拼音数据文件中的拼音数据的需求
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/pypinyin-dict
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-pypinyin-dict
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pypinyin
+	depends = pypinyin
 	provides = python-pypinyin-dict
 	conflicts = python-pypinyin-dict
 	options = !strip

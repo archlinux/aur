@@ -3,7 +3,7 @@
 pkgname=python-pypinyin-dict
 _name=${pkgname#python-}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="使用 pinyin-data 和 phrase-pinyin-data 中的拼音数据文件覆盖 pypinyin 中的自带拼音数据，实现只使用某个或某些拼音数据文件中的拼音数据的需求"
 arch=('any')
@@ -15,8 +15,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
-    # AUR
-    python-pypinyin
+    pypinyin
 )
 makedepends=(
     python-build
