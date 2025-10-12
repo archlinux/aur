@@ -2,7 +2,7 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgrel=5
+pkgrel=6
 pkgver=0.1
 _name="tuxnix-sway"
 pkgname="$_name"
@@ -17,14 +17,14 @@ sha512sums=('SKIP')
 
 package() {
     cd "$srcdir/$_name"
-    install -Dm644 sway-desktop.config "$pkgdir/etc/skel/.config/sway/config"
-    install -Dm644 sway-desktop.config "$pkgdir/etc/skel/.config/sway/desktop/config"
-    install -Dm644 sway-desktop.config "$pkgdir/etc/skel/.config/sway/desktop-w/config"
+    install -Dm644 sway-desk-M.config "$pkgdir/etc/skel/.config/sway/config"
+    install -Dm644 sway-desk-M.config "$pkgdir/etc/skel/.config/sway/desk-M/config"
+    install -Dm644 sway-desk-W.config "$pkgdir/etc/skel/.config/sway/desk-W/config"
     install -Dm644 sway-ardour.config "$pkgdir/etc/skel/.config/sway/ardour/config"
     install -Dm644 waybar.config "$pkgdir/etc/skel/.config/waybar/config"
     install -Dm644 style.css "$pkgdir/etc/skel/.config/waybar/style.css"
-    install -Dm605 keybindings-md.sh "$pkgdir/usr/local/bin/keys-md"
-    install -Dm605 keybindings-html.sh "$pkgdir/usr/local/bin/keys-html"
+    install -Dm605 keys-md "$pkgdir/usr/local/bin/keys-md"
+    install -Dm605 keys-html "$pkgdir/usr/local/bin/keys-html"
     install -Dm605 sway-switch "$pkgdir/usr/local/bin/sway-switch"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
