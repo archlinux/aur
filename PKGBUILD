@@ -1,7 +1,7 @@
 # Maintainer: Eric Zhao <21zhaoe@protonmail.com>
 pkgbase=ttf-bisitun
 pkgname=ttf-bisitun
-pkgver=1.000
+pkgver=20210910
 pkgrel=1
 pkgdesc='Old Persian cuneiform font'
 provides=(ttf-bisitun)
