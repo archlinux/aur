@@ -1,4 +1,4 @@
-[youtube-music]
+[pear-desktop-bin]
 source = "git"
-git = "https://github.com/th-ch/youtube-music.git"
+git = "https://github.com/pear-devs/pear-desktop.git"
 prefix = "v"
