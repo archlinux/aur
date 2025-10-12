@@ -3,7 +3,7 @@
 
 _name=outline-client
 pkgname=${_name}-appimage
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
@@ -12,13 +12,13 @@ url="https://getoutline.org"
 license=("Apache-2.0")
 
 _appimage="Outline-Client_${pkgver}.AppImage"
-source=("${_appimage}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/2/Outline-Client.AppImage"
+source=("${_appimage}::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage"
         "${pkgname}.install")
 options=('!strip' '!debug')
 depends=('fuse2' 'nss')
 install=${pkgname}.install
 
-sha512sums=('fe8344a38d698c303861e9101a3d385e8b5b1e38dcf40a322143ceecd3df6e2142f56789d328d37a2b26d41434906eb45a26c0e62da0faa79214d9a4ab741f69'
+sha512sums=('1493c87cb9b027b5e28db92b90b80998051956294ab733881af35cb8c7f28cc9972b009520ceae35fdefd58a0c7a588c514fb9981ad516091df6878eeacb4fce'
             'a1704e707b0b0a927fae068647eccb426bb51ad2081d27ee18e8991949e9135d28fe502d1a1dba27d333025edd235614b195758d14be2d0eeb97172bea851ddd')
 
 prepare() {
