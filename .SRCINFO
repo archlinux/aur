@@ -1,6 +1,6 @@
 pkgbase = hypr-bg-manager
 	pkgdesc = Dynamic wallpaper manager for Hyprland with multiple service backends and trigger modes
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/joao-paulo-santos/hypr-bg-manager
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = hypr-bg-manager
 	optdepends = hyprpaper: Native Hyprland wallpaper service
 	optdepends = swaybg: Lightweight wallpaper service
 	optdepends = mpvpaper: Video wallpaper service
-	source = hypr-bg-manager-1.0.0.tar.gz::https://github.com/joao-paulo-santos/hypr-bg-manager/archive/v1.0.0.tar.gz
-	sha256sums = cb4ab89fbc7d556619eafd3c57674ce3b05779baf2ec6ad4ff09f302e37e264f
+	source = hypr-bg-manager-1.0.1.tar.gz::https://github.com/joao-paulo-santos/hypr-bg-manager/archive/v1.0.1.tar.gz
+	sha256sums = 03b205bc364f846c2ddee96debaf536ece3f1924ccfd2f6f95fb1f1d6aa3ff92
 
 pkgname = hypr-bg-manager

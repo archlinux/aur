@@ -1,6 +1,6 @@
 # Maintainer: Joao Paulo Santos <lw.joao.paulo.santos@gmail.com>
 pkgname=hypr-bg-manager
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Dynamic wallpaper manager for Hyprland with multiple service backends and trigger modes"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
     'mpvpaper: Video wallpaper service'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cb4ab89fbc7d556619eafd3c57674ce3b05779baf2ec6ad4ff09f302e37e264f')
+sha256sums=('03b205bc364f846c2ddee96debaf536ece3f1924ccfd2f6f95fb1f1d6aa3ff92')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
