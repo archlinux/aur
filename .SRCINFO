@@ -1,4 +1,4 @@
-pkgbase = ligen
+pkgbase = ligen-git
 	pkgdesc = A blazing fast gui autoclicker for linux
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = ligen
 	source = git+https://github.com/shabman/ligen.git
 	sha512sums = SKIP
 
-pkgname = ligen
+pkgname = ligen-git
