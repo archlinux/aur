@@ -3,7 +3,7 @@
 pkgname="termux-elf-cleaner"
 pkgver=3.0.1
 pkgrel=1
-pkgdesc=" Utility to remove unused ELF sections causing warnings"
+pkgdesc="Utility to remove unused ELF sections causing warnings"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/termux/${pkgname}"
 license=('GPL-3.0-or-later')
