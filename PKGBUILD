@@ -6,11 +6,9 @@ pkgdesc='Atomically create a file with content'
 arch=(x86_64)
 url='https://github.com/leahneukirchen/spit'
 license=('public-domain')
-groups=()
-depends=()
 makedepends=('git')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
