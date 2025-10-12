@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3806.cf3d62732
+pkgver=r3816.3df27923b
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -61,7 +61,6 @@ source=(
 	'vita3k-libfat16'::'git+https://github.com/Vita3K/libfat16.git'
 	'vita3k-printf'::'git+https://github.com/Vita3K/printf.git'
 	'vita3k-psvpfstools'::'git+https://github.com/Vita3K/psvpfstools.git'
-	'vita3k-unicorn'::'git+https://github.com/Vita3K/unicorn.git'
 	'vita3k-zlib'::'git+https://github.com/korewawatchful/zlib.git'
 	'xxHash'::'git+https://github.com/Cyan4973/xxHash.git'
 	'yaml-cpp'::'git+https://github.com/jbeder/yaml-cpp.git'
@@ -89,7 +88,6 @@ sha256sums=(
 	'SKIP'
 	'18009fe1d5e6b44854ab360d0ec01955858d5ddf03f0a807a97cf1c3491d77f7'
 
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -179,7 +177,6 @@ prepare() {
 			['vita3k-libfat16']='external/libfat16'
 			['vita3k-printf']='external/printf'
 			['vita3k-psvpfstools']='external/psvpfstools'
-			['vita3k-unicorn']='external/unicorn'
 			['xxHash']='external/xxHash'
 			['yaml-cpp']='external/yaml-cpp'
 		)
