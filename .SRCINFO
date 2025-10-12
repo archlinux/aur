@@ -1,0 +1,16 @@
+pkgbase = pg2parquet
+	pkgdesc = Command line tool for inspecting Parquet files
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/exyi/pg2parquet
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = zstd
+	source = https://github.com/exyi/pg2parquet/archive/refs/tags/v0.2.2.tar.gz
+	b2sums = fdf2b95ff024e038873662f24a5dad6be4ef39773411545d64dc9f50a1b9fbe65cf1d8e1c4285f8e3ffef3eff87e1c61b780f77a98feb5ab4a140f8b4132b9d9
+
+pkgname = pg2parquet
