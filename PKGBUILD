@@ -1,7 +1,7 @@
 # Maintainer: Eric Zhao <21zhaoe@protonmail.com>
 pkgbase=ttf-esagil
 pkgname=ttf-esagil
-pkgver=1.000
+pkgver=20210910
 pkgrel=1
 pkgdesc='Neo-Babylonian cuneiform font'
 provides=(ttf-esagil)

@@ -1,6 +1,6 @@
 pkgbase = ttf-esagil
 	pkgdesc = Neo-Babylonian cuneiform font
-	pkgver = 1.000
+	pkgver = 20210910
 	pkgrel = 1
 	url = https://www.hethport.uni-wuerzburg.de/cuneifont/
 	arch = any
