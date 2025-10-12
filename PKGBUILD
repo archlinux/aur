@@ -2,7 +2,7 @@
 
 pkgname=kdownload
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazing-fast async segmented file downloader"
 arch=('x86_64')
 url="https://github.com/compiledkernel-idk/kdownload"
@@ -38,7 +38,7 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 target/release/kdownload "$pkgdir/usr/bin/kdownload"
+  install -Dm755 "$srcdir/target/release/kdownload" "$pkgdir/usr/bin/kdownload"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
