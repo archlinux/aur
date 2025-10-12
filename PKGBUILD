@@ -10,8 +10,8 @@ arch=('any')
 url="https://github.com/cardillan/mindcode"
 license=('MIT')
 provides=(mindcode)
-depends=(jre24-openjdk)
-source=("https://github.com/cardillan/mindcode/releases/download/v3.3.1/mindcode.jar")
+depends=('jre-openjdk>=24.0')
+source=("https://github.com/cardillan/mindcode/releases/download/v$pkgver/mindcode.jar")
 sha512sums=('cf59ccdf547a8258f72ecc7fd8957f5fa6b5c134b3e3fb1ab73204b5f8b79709f67faed09bcfb45c9e599004de7b03dcb234b4205c5f360e599090c398bb294d')
 
 build(){ :; }
