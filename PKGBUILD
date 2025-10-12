@@ -1,7 +1,7 @@
 pkgname=xjtutoolbox
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="XJTUToolBox with bundled Python library for Manjaro"
+pkgdesc="XJTUToolBox with bundled Python library for Arch Linux"
 arch=('x86_64')
 url="https://github.com/yan-xiaoo/XJTUToolBox"
 license=('MIT')
