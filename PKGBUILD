@@ -4,14 +4,13 @@
 # you also find the URL of a binary repository.
 
 _reponame=reflective-rapidjson
-_llvmver=20
 pkgname=reflective-rapidjson
 pkgver=0.0.16
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
 license=(GPL-2.0-or-later)
-depends=('c++utilities' 'rapidjson' "llvm-libs>=${_llvmver}.0.0" "llvm-libs<$((_llvmver + 1)).0.0" 'clang')
+depends=('c++utilities' 'rapidjson' 'llvm-libs' 'clang')
 optdepends=("boost: use Boost.Hana instead of code generator"
             "$pkgname-doc: API documentation")
 makedepends=('cmake' 'ninja' 'clang-tools-extra' 'llvm')
@@ -37,7 +36,7 @@ check() {
 }
 
 package() {
-  depends+=('libc++utilities.so')
+  depends+=('libc++utilities.so' 'libLLVM.so')
 
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
