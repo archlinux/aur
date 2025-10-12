@@ -13,7 +13,7 @@
  /**
 --- a/libavformat/utils.c
 +++ b/libavformat/utils.c
-@@ -47,6 +47,13 @@
+@@ -51,6 +51,13 @@
   * various utility functions for use within FFmpeg
   */
  
