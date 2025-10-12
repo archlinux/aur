@@ -4,7 +4,7 @@
 
 _gitname=Apktool
 pkgname=android-apktool-git
-pkgver=2.11.1.r23.g42f94d54
+pkgver=2.12.1.r23.ga9642c79
 pkgrel=1
 pkgdesc="a tool for reengineering Android apk files"
 arch=(any)
@@ -30,7 +30,7 @@ build() {
   cd "$srcdir/$_gitname"
 
   # Build (OpenJDK sometimes fails to find aapt)
-  gradle build proguard --no-daemon
+  ./gradlew build proguard --no-daemon
 }
 
 package() {
