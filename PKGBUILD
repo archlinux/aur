@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-frei0r-plugins
 _pkgname=frei0r-plugins
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Collection of video effect plugins (mingw-w64)'
 arch=(any)
@@ -29,15 +29,14 @@ optdepends=(
   'mingw-w64-opencv: facebl0r and facedetect plugins'
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver")
-b2sums=(0a79a0913ce69814a01e37204233813fcd566bf2df4b3d97da9161c397b66a1e8f52eccbe4d27f34f3a5d1cffd6a22cf4fbacbe28fdc39331c27d9d294d59a5b)
+b2sums=(7f51c27cec02b3bd86e3054d0a56f07ad4785ab4d1aa742663947ce7e497912782c6085e969847b4f6cf1b3ca9055743b11d48bad628874ba3e8385ef34f5430)
 validpgpkeys=(6113D89CA825C5CEDD02C87273B35DA54ACB7D10) # Denis Roio (Jaromil)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -S frei0r -B build-${_arch} -G Ninja \
-                   -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    ${_arch}-cmake -S frei0r -B build-${_arch} -G Ninja
     cmake --build build-${_arch}
   done
 }
