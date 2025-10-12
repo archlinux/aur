@@ -1,6 +1,6 @@
 pkgbase = rc-git
 	pkgdesc = Independent re-implementation for Unix of the Plan 9 shell (from circa 1992).
-	pkgver = 1.7.4.r631.554ccf5
+	pkgver = 1.7.4.r663.2bab312
 	pkgrel = 1
 	url = https://github.com/rakitzis/rc
 	install = rc-git.install

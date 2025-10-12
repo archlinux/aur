@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rc-git
-pkgver=1.7.4.r631.554ccf5
+pkgver=1.7.4.r663.2bab312
 pkgrel=1
 pkgdesc='Independent re-implementation for Unix of the Plan 9 shell (from circa 1992).'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$pkgname"
 	make config.h
-	make EDIT=readline RC_ADDON=1 RC_DEVELOP=1
+	CFLAGS="$CFLAGS -std=gnu11" make EDIT=readline RC_ADDON=1 RC_DEVELOP=1
 }
 
 #check() {
