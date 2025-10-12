@@ -3,13 +3,12 @@
 # Custom variables
 _name="acer-wmi-battery"
 _user="frederik-h"
-_ver=0.1.0  # Based on current version of released package
 
 # Main info
 pkgname="${_name}-dkms-git"
-pkgver="r11.4e605fb"
+pkgver="r19.0889d3e"
 pkgrel=1
-pkgdesc="For Acer laptops -- kernel module to set Battery Charge Limit to 80%."
+pkgdesc="For Acer laptops — set Battery Charge Limit to 80% and prolong your battery's lifespan."
 arch=('any')
 url="https://github.com/${_user}/${_name}"
 license=('GPL-2.0')
@@ -37,14 +36,14 @@ pkgver() {
 
 package() {
   # Copy dkms.conf
-  install -Dm644 dkms.conf -t "${pkgdir}"/usr/src/"${_name}-${_ver}/"
+  install -Dm644 dkms.conf -t "${pkgdir}"/usr/src/"${_name}-${pkgver}/"
 
-  # Set version
-  sed -e "s/@PKGVER@/${_ver}/" \
-      -i "${pkgdir}"/usr/src/"${_name}-${_ver}"/dkms.conf
+  # Set version for the DKMS config file
+  sed -e "s/@PKGVER@/${pkgver}/" \
+      -i "${pkgdir}"/usr/src/"${_name}-${pkgver}"/dkms.conf
 
   # Copy sources (including Makefile)
-  cp -r "${srcdir}/${_name}"/*  "${pkgdir}"/usr/src/"${_name}-${_ver}"
+  cp -r "${srcdir}/${_name}"/*  "${pkgdir}"/usr/src/"${_name}-${pkgver}"
 
   # Copy "acer-wmi-battery.conf" to "modules-load.d" directory
   install -Dm644 acer-wmi-battery.conf -t "${pkgdir}"/usr/lib/modules-load.d/
