@@ -16,7 +16,7 @@ pkgver() {
 }
 
 build() {
-  dotnet build CAT.sln --configuration Release
+  dotnet build CAT/CAT.csproj --configuration Release
 }
 
 package() {
