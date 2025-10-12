@@ -1,7 +1,7 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.0.r2.ga172c901
-pkgrel=2
+pkgver=0.4.0.r3.g8fd99c06
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -16,6 +16,7 @@ optdepends=(
   'reflector: update Arch mirrors'
   'alacritty: run external commands in a terminal'
   'neovim: external editor'
+  'downgrade: Downgrade of Packages'
 )
 makedepends=('cargo' 'git')
 conflicts=('pacsea' 'pacsea-bin')
