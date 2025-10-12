@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.93.r0.g2e49cb92
+pkgver=1.2.94.r0.g57c03be3
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -101,7 +101,7 @@ package() {
     cd "$srcdir/$_pkgname"
     python setup.py install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
 
-    for config in bands.json bands-*.json bookmarks.json openwebrx.conf; do
+    for config in bands.json bands-*.json openwebrx.conf; do
         install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
 
