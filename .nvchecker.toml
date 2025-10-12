@@ -1,4 +1,5 @@
 [anvil-bin]
-source = "git"
-git = "https://github.com/rocajuanma/anvil.git"
+source = "github"
+github = "rocajuanma/anvil"
+use_latest_release = true
 prefix = "v"
