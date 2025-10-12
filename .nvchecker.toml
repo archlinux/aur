@@ -1,0 +1,5 @@
+["xgo"]
+source = "github"
+github = "goplus/xgo"
+use_latest_release = true
+prefix = "v"

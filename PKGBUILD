@@ -2,7 +2,7 @@
 
 _pkgauthor=goplus
 pkgname=xgo
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='The first AI-native programming language that integrates software engineering into a unified whole'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ replaces=('goplus')
 makedepends=('go')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('838bb0a6145f7fd475908378adce274a6d5f7ee43ec78496738302aa89a1044a')
+sha256sums=('68ef472acd5853f69d5378845d92619c51834a637092e2bf0924ad1cea2dd1ac')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
