@@ -1,14 +1,14 @@
 pkgbase = kwin6-grayscale-effect-git
 	pkgdesc = KWin grayscale effect for Plasma 6 (VCS package tracking the plasma6 branch)
 	pkgver = r52.624a666
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lliurex/kwin-grayscale-effect
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = kwin
-	provides = kwin6-effect-grayscale
-	conflicts = kwin6-effect-grayscale
+	provides = kwin6-grayscale-effect
+	conflicts = kwin6-grayscale-effect
 	source = kwin-grayscale-effect::git+https://github.com/lliurex/kwin-grayscale-effect.git#branch=plasma6
 	sha256sums = SKIP
 
