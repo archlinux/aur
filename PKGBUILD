@@ -1,5 +1,5 @@
 pkgname=xjtutoolbox
-pkgver=1.2,1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="XJTUToolBox with bundled Python library for Manjaro"
 arch=('x86_64')
