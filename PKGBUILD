@@ -5,7 +5,7 @@
 pkgname='python-atproto-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.0.62.r1.gceaa1f1
+pkgver=0.0.62.r3.g7ed3650
 pkgrel=1
 pkgdesc='The AT Protocol (Bluesky) SDK for Python (development version)'
 arch=('any')
@@ -57,7 +57,7 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGES,README,SECURITY}.md
-  cp -vfax examples "$pkgdir/usr/share/doc/"
+  cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # eof
