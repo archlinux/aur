@@ -23,7 +23,7 @@ provides=('pacsea')
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('a413cbf202e55e297441bea3b25f77ed2a0193cc123bc346daff1ff4f2fb9484'
+sha256sums=('fafe1e3120ee3a0ab64130a99972b6540efd2a41e47a4dbf6814380a34b082f1'
             '55bfa1661149760d069eb27671bc797646dab8e0766c96d37bba22de1888e021')
 
 package() {
