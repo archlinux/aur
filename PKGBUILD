@@ -1,6 +1,6 @@
 _pkgname=extra-cmake-modules
 pkgname=mingw-w64-$_pkgname
-pkgver=6.4.0
+pkgver=6.19.0
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake (mingw-w64)'
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(ninja)
 options=(staticlibs !strip !buildflags)
 groups=(mingw-w64-kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('ced3f20741ddad24185dc1280a0c0d9171ba2508f84762417d74808561295add'
+sha256sums=('a4f0c1d8181f43e9af4b9b44696c77760b5bc9dae5bdb921f090bce664e9ca84'
             'SKIP')
 
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB # David Faure <faure@kde.org>
