@@ -1,6 +1,6 @@
 pkgbase = chronograph
 	pkgdesc = Sync lyrics of your loved songs
-	pkgver = 5.0.1
+	pkgver = 5.1
 	pkgrel = 1
 	url = https://github.com/Dzheremi2/Chronograph
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = chronograph
 	depends = python-requests
 	depends = python-urllib3
 	depends = python-yaml
-	source = Chronograph-5.0.1.tar.gz::https://github.com/Dzheremi2/Chronograph/archive/refs/tags/v5.0.1.tar.gz
-	sha256sums = 2d0f2a31f18f2c097b96ad3e1b970cf79f0900f7cb0bfb02222024699a3dbb61
+	source = Chronograph-5.1.tar.gz::https://github.com/Dzheremi2/Chronograph/archive/refs/tags/v5.1.tar.gz
+	sha256sums = 0f5a7a3b5921521613f9653ab5177b07a06c41293a601b1a81db22efa3f19c65
 
 pkgname = chronograph
