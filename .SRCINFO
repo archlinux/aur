@@ -9,6 +9,7 @@ pkgbase = cat-git
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
 	source = git+https://github.com/lunaNoir25/CAT.git
+	source = git+https://github.com/lunaNoir25/CAT-data.git
 	sha256sums = SKIP
 
 pkgname = cat-git
