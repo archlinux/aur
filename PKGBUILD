@@ -10,7 +10,7 @@
 pkgbase=qadwaitadecorations-git
 _pkgname=QAdwaitaDecorations
 pkgname=(qadwaitadecorations-qt5-git qadwaitadecorations-qt6-git)
-pkgver=0.1.3.r0.g795bd8d
+pkgver=0.1.7.r0.g074d556
 pkgrel=1
 pkgdesc='Qt decoration plugin implementing Adwaita-like client-side decorations'
 arch=(x86_64)
@@ -30,6 +30,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT6=OFF
   cmake --build build-qt5
+
+  # https://github.com/FedoraQt/QAdwaitaDecorations/issues/87#issuecomment-3393943576
+  sed -E -e 's&\b(Core)\b&\1 GuiPrivate WaylandClientPrivate&' -i $_pkgname/CMakeLists.txt
+  sed -E -e 's&setMouseCursor&applyCursor&g' -i $_pkgname/src/qadwaitadecorations.cpp
 
   cmake -B build-qt6 -S $_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
