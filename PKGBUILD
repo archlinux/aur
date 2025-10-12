@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.0
-pkgrel=5
+pkgrel=6
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag' 'openmesh' 'opensubdiv' 'opencolorio'
          'alembic' 'opengv' 'opencv' 'popsift' 'assimp' 'onnx' 'onnxruntime' 'cuda' 'swig' 'openimageio' 'usd')
 makedepends=('boost' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon'
-             'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'libe57format')
+             'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann')
 optdepends=('apriltag: Recognition of Apriltags'
 			'libe57format: e57 3d imaging format I/O')
 source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
@@ -39,6 +39,11 @@ sha256sums=('abdd3b872de2d42d089728fc1ee151c24a1ed78297fc8713c9efd02801bdcc90'
             'b474a12823b1fb0e1613bba0d7bd455f63124aa8c29b3d00df94f0a3c00ab900')
 
 prepare() {
+  #Fix ffmpeg bug
+  sed 's|avcodec_close(|avcodec_free_context(\&|g' -i OpenImageIO-2.5.18.0/src/ffmpeg.imageio/ffmpeginput.cpp
+  #sed 's|avcodec_close(|avcodec_free_context(\&|g' -i lib/tlIO/FFmpegReadAudio.cpp
+  #sed 's|FF_PROFILE_UNKNOWN|AV_PROFILE_UNKNOWN|g' -i lib/tlIO/FFmpegWrite.cpp
+
   cd AliceVision
 
   git submodule init
