@@ -9,7 +9,7 @@ pkgname=(
   "protoc-gen-go-rpc-tmpl"
   "protoc-gen-json-field"
 )
-pkgver=1.15.2
+pkgver=1.15.3
 pkgrel=1
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 )
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b161e330802f7a1f9038ad254e0ff11da8619ef08e94d3534ad20f4ee4c9c12d')
+sha256sums=('0cab423b1ccc993863a387eed2a5f75ef315cab69dba54bc1dcbbcab07094905')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
