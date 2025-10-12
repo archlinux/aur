@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nextvi-git
-pkgver=r885.faa0ed6
+pkgver=r1339.e1ddf09
 pkgrel=1
 pkgdesc='Next version of neatvi (a small vi/ex editor) for editing bidirectional UTF-8 text'
 arch=('i686' 'x86_64')
