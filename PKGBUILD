@@ -8,7 +8,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base}"
 license=(MIT)
-depends=(python-typing_extensions python-orjson python-polars python-matplotlib graphviz)
+depends=(python-typing_extensions python-orjson python-polars python-matplotlib)
 makedepends=(python-build python-installer python-setuptools-git-versioning git)
 checkdepends=(python-pytest)
 source=(git+${url}.git#tag=v${pkgver})
