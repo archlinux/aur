@@ -1,6 +1,6 @@
 # Maintainer: Aleks Rutins <keeper@farthergate.com>
 pkgname=cheetah
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A fast, simple static site generator with a twist"
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=(cargo)
 provides=("cheetah")
 conflicts=("cheetah-git")
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~aleksrutins/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('209eca28ba31e4b5a9ec4ebc4ce830847291ec86cb35084f1a9d2bfc3cd32e7b')
 
 prepare() {
