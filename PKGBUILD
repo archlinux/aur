@@ -4,7 +4,7 @@
 
 pkgname=meshroom
 pkgver=2025.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, open-source 3D Reconstruction Software based on the AliceVision framework"
 arch=('x86_64')
 url="https://alicevision.org/#meshroom"
@@ -30,6 +30,11 @@ prepare() {
 
   # Patch qt6/pyside6 bug
   patch -p1 -i ../fix-qt-errors.patch
+
+  cd ../QtAliceVision
+
+  # Patch a qt6 include bug
+  sed -e '/find_package(Qt6 REQUIRED COMPONENTS Gui)/a\find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)' -i src/qtAliceVision/CMakeLists.txt
 
 }
 
