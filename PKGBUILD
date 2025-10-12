@@ -16,6 +16,8 @@ pkgver() {
 }
 
 build() {
+  cd $pkgname
+
   dotnet build CAT/CAT.csproj --configuration Release
 }
 
