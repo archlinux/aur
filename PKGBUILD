@@ -1,6 +1,6 @@
 # Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
 pkgname=dnsjit-git
-pkgver=1.2.1.r1.d78c34f
+pkgver=1.5.0.r11.505e23c
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
