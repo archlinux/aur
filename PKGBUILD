@@ -1,6 +1,6 @@
 # Maintainer: AndreLeclercq <andre.leclercq.io@protonmail.com>
 pkgname=sshctl-git
-pkgver=0.1.7.r73.976a64e
+pkgver=0.1.7.r74.1013f75
 pkgrel=1
 pkgdesc="SSH connection manager CLI tool (development version)"
 arch=('x86_64')
