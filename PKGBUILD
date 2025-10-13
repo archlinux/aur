@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opencomic
 _pkgname=OpenComic
-pkgver=1.6.3
+pkgver=1.6.4
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -17,8 +17,6 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'
-    'libvips'
-    'python'
 )
 makedepends=(
     'npm'
@@ -30,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('370da94387244d358992eb44afbf779f8e2bae34c2d151b4af13f81274930542'
+sha256sums=('74b9d066086630c9b0792bfc07e4ac17dd164d100af9f9b8eb6f032bc835ffc8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
