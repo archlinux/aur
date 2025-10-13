@@ -5,8 +5,8 @@
 
 _pkgname='nullfsvfs'
 pkgname='nullfsvfs-dkms'
-pkgver=0.19
-pkgrel=2
+pkgver=0.20
+pkgrel=1
 pkgdesc='Virtual black hole file system that behaves like /dev/null'
 arch=('any')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
@@ -33,10 +33,10 @@ package() {
 }
 
 sha256sums=(
-  '90b0cfddefd4c105a3254bf5e0104429b305e5bd57e51a1b625669ec1b64cae6'
+  'b5f90b007cbc941a52227eb46a47125d4ace0e6fc3392ab7e4ab61828b4a3249'
 )
 b2sums=(
-  '59c330ff653c1827843c104794ef8c496edfee45dd8c9f3c3fc4b322087793b85fe9ef1ab048294682c4ce590fff28aa1026a9a7c5e8f27f15e26d5d18e5669a'
+  '2c21edaba4fc64ddfa24bde0202fc8f8e6bb1eaba409222dd1ba9db67dfa7e407bd2345589923d2bbf9c21fa0cabba5fa850ffc61426b3af0d61e744b657ca03'
 )
 
 # eof
