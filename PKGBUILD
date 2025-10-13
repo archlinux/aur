@@ -1,10 +1,12 @@
 #
+# PKGBUILD for ddhx
+#
 # Maintainer: Uffe Jakobsen: uffe _.at._ uffe _.dot._ org
 #
 
 pkgname=ddhx
 _pkgname=ddhx
-pkgver=0.5.1
+pkgver=0.6.0
 pkg_name_ver="${_pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
@@ -16,8 +18,7 @@ makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
 source=("https://github.com/dd86k/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-#https://github.com/dd86k/ddhx/archive/refs/tags/v0.5.1.tar.gz
-sha256sums=('1bb85a128270dcde9cf6ad62fd993e695d3d785f04e593a08610d97f31c33bf9')
+sha256sums=('ba6520ae8a8dd998a44b4c84a61cb4ccfee7eb54f4d4dfac780479b257de6cee')
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
@@ -42,3 +43,7 @@ package() {
 	#install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
 	#install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
+
+#
+# EOF
+#
