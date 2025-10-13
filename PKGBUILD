@@ -23,7 +23,4 @@ package(){
 
     # Install package
     tar -Jxf data.tar.xz -C "$pkgdir"
-    
-    # Fix for wrong permissions on subdirs
-    # find "$pkgdir" -type d -exec chmod 755 {} \;
 }
