@@ -1,16 +1,17 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Leonardo Amaral <archlinux at leonardoamaral dot com dot br>
 
-pkgname="git-remote-rclone"
-pkgver=0.1
+pkgname="git-remote-rclone-crypt"
+pkgver=0.2
 pkgrel=1
-pkgdesc="Git remote helper for rclone-supported services"
-url="https://github.com/datalad/git-remote-rclone"
+pkgdesc="Git remote helper for rclone-supported services with crypt support"
+url="https://github.com/redstreet/git-remote-rclone"
 license=("MIT")
 arch=("any")
+conflicts=("git-remote-rclone")
 depends=("git" "rclone" "p7zip")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('23a6608027f7399d882485502961d6a91f950157f8b4fccf3278492010c339f1')
+sha256sums=('d4b2fcabc4b57cdc0eb8e115518ee67f988ae5a8be0f229c455b0b6fc060c6fb')
 options=("!strip")
 
 build(){
