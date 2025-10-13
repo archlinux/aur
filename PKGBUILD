@@ -3,10 +3,10 @@
 pkgname=shadps4-nightly-bin
 _pkgname=shadPS4
 _pkgid=net.shadps4.shadPS4
-pkgver=2025.10.08.999960a
-_date=2025-10-08
-_commit=999960a6e6cd11183519b389731ad1efbe1275d0
-_shortcommit=999960a
+pkgver=2025.10.12.a7376dd
+_date=2025-10-12
+_commit=a7376dd41fecf95643b5dd945529a95cb9444b39
+_shortcommit=a7376dd
 pkgrel=1
 pkgdesc="Unofficial nightly release of the shadPS4 PlayStation 4 emulator (Nightly pre-release version)"
 arch=('x86_64')
