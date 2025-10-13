@@ -2,7 +2,7 @@
 
 # shellcheck shell=bash
 pkgname=zig-master-bin
-pkgver=0.16.0dev.725+923ddd94a
+pkgver=0.16.0dev.731+958faa703
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
 arch=('aarch64' 'armv7h' 'i686' 'loong64' 'powerpc64le' 'riscv64' 'x86_64')
@@ -32,7 +32,7 @@ _tarball_sha256=$(jq -r ".master.\"${_arch}-linux\".shasum" <<< "${_index_json}"
 _tarball=$(basename "${_tarball_url}")
 
 pkgver() {
-    sed 's/-/_/g; s/+/.g/g' <<< "${_master_version}"
+    sed 's/-//g' <<< "${_master_version}"
 }
 
 source=("${_tarball_url}" "${_tarball_url}.minisig")
