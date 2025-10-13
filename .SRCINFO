@@ -1,7 +1,7 @@
 pkgbase = gr-limesdr-git
 	pkgdesc = gr-limesdr Plugin for GNURadio
 	pkgver = 3.0.1.r69.gd0fac85
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/myriadrf/gr-limesdr
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = gr-limesdr-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = pybind11
+	depends = libfmt.so
 	depends = libgnuradio-pmt.so
 	depends = libgnuradio-runtime.so
 	depends = libspdlog.so

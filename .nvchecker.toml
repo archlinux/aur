@@ -1,4 +1,0 @@
-[gr-limesdr-git]
-source = "git"
-git = "https://github.com/myriadrf/gr-limesdr.git"
-prefix = "v"

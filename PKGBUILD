@@ -4,13 +4,14 @@
 _pkgname="gr-limesdr"
 pkgname="$_pkgname-git"
 pkgver=3.0.1.r69.gd0fac85
-pkgrel=5
+pkgrel=6
 pkgdesc="gr-limesdr Plugin for GNURadio"
 url="https://github.com/myriadrf/gr-limesdr"
 license=('MIT')
 arch=('x86_64')
 
 depends=(
+  'libfmt.so'              # fmt
   'libgnuradio-pmt.so'     # gnuradio
   'libgnuradio-runtime.so' # gnuradio
   'libspdlog.so'           # spdlog
