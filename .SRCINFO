@@ -1,16 +1,19 @@
 pkgbase = animeko-appimage-alpha
-	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台，云收藏同步 (Bangumi)，离线缓存，BitTorrent，弹幕云过滤。100% Kotlin/Compose Multiplatform
-	pkgver = v5.0.0_alpha04
+	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台
+	pkgver = 5.1.0alpha02
 	pkgrel = 1
-	url = https://myani.org
+	url = https://github.com/open-ani/animeko/
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	depends = vlc
+	makedepends = 7zip
+	depends = vlc-plugin-ffmpeg
+	depends = vlc-plugin-dvb
+	depends = vlc-plugin-pulse
 	depends = gvfs
 	provides = animeko
-	noextract = ani-5.0.0-alpha04-linux-x86_64.appimage
+	conflicts = animeko
 	options = !strip
-	source_x86_64 = ani-5.0.0-alpha04-linux-x86_64.appimage::https://github.com/open-ani/animeko/releases/download/v5.0.0-alpha04/ani-5.0.0-alpha04-linux-x86_64.appimage
-	sha1sums_x86_64 = cf3ee678b3b309d3b7200d0fe20960ff349528ae
+	source_x86_64 = https://d.myani.org/v5.1.0-alpha02/ani-5.1.0-alpha02-linux-x86_64.appimage
+	sha512sums_x86_64 = de2a3ed31949e84ba6522f36e11388c72b65b23ea7c5657ff4e6691c4ec3859af23d5aabc1e48420e59ccc913548330e33560dbf22521667d083696e272863ce
 
 pkgname = animeko-appimage-alpha
