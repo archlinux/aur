@@ -7,6 +7,12 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## Update to 20251007
+
+### Added
+
+- AC_Safeweb_v12.crt
+
 ## Update to 20250822
 
 ### Deleted
