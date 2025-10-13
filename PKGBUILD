@@ -1,18 +1,18 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com> 
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=torzu
 pkgname=torzu
 pkgver=2025.04.16
 _pkgver=2025-04-16
-pkgrel=1
+pkgrel=2
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
-provides=('torzu')
-depends=('alsa-lib' 'brotli' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib')
-makedepends=('curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs' 'spirv-headers')
-conflicts=('torzu-git')
-options=(!debug lto strip)
+depends=('brotli' 'enet' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib' 'zydis' 'boost-libs' 'fmt' 'ffmpeg4.4' 'spirv-tools' 'zstd' 'libva' 'openssl' 'libusb' 'opus' 'speexdsp')
+makedepends=('git' 'cmake' 'ninja' 'boost' 'catch2' 'llvm-libs' 'llvm' 'spirv-headers' 'nlohmann-json' 'doxygen' 'vulkan-headers')
+optdepends=('gamemode: gamemode support')
+options=(!debug)
 source=(git+https://notabug.org/litucks/torzu#tag=$_pkgver
   git+https://github.com/lsalzman/enet.git
   cubeb::git+http://github.com/mozilla/cubeb.git
@@ -82,16 +82,16 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/torzu"
+  cd "$srcdir"
    # Fix to help cmake find libusb
-  CXXFLAGS+=" -I/usr/include/libusb-1.0"
+  export CXXFLAGS+=" -I/usr/include/libusb-1.0"
   
-  cmake -B build -G Ninja \
+  cmake -B build -G Ninja -S ${pkgname} \
     -DYUZU_USE_BUNDLED_VCPKG=OFF \
+    -DYUZU_USE_QT_WEB_ENGINE=ON \
     -DYUZU_CHECK_SUBMODULES=OFF \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-march=x86-64-v2" \
+    -DCMAKE_BUILD_TYPE=None \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT_TRANSLATION=OFF \
     -DYUZU_USE_EXTERNAL_SDL2=OFF \
@@ -104,12 +104,30 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DYUZU_ROOM=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DTITLE_BAR_FORMAT_RUNNING="torzu | ${pkgver} {}" \
+    -DTITLE_BAR_FORMAT_IDLE="torzu | ${pkgver} {}" \
+    -DFFmpeg_INCLUDE_DIR="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_avcodec="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_avdevice="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_avfilter="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_avformat="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_avutil="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_postproc="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_swscale="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_INCLUDE_swresample="/usr/include/ffmpeg4.4" \
+  -DFFmpeg_LIBRARY_avcodec="/usr/lib/ffmpeg4.4/libavcodec.so" \
+  -DFFmpeg_LIBRARY_avdevice="/usr/lib/ffmpeg4.4/libavdevice.so" \
+  -DFFmpeg_LIBRARY_avfilter="/usr/lib/ffmpeg4.4/libavfilter.so" \
+  -DFFmpeg_LIBRARY_avformat="/usr/lib/ffmpeg4.4/libavformat.so" \
+  -DFFmpeg_LIBRARY_avutil="/usr/lib/ffmpeg4.4/libavutil.so" \
+  -DFFmpeg_LIBRARY_swresample="/usr/lib/ffmpeg4.4/libswresample.so" \
+  -DFFmpeg_LIBRARY_swscale="/usr/lib/ffmpeg4.4/libswscale.so" \
     -Wno-dev
-  ninja -C build
+  cmake --build build
 } 
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C $srcdir/torzu/build install
+  DESTDIR="$pkgdir/" cmake --install build
 
 }
 
