@@ -5,7 +5,7 @@
 
 _pkgname=bctoolbox
 pkgname=bctoolbox-openssl
-pkgver=5.4.12
+pkgver=5.4.46
 pkgrel=1
 pkgdesc='A library written in C that allows you to create and run audio and video streams'
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}"
 provides=("${_pkgname}=${pkgver}"
           'libbctoolbox.so=1-64')
 source=("https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('1833c0dd2630cadf87686c1f14771cf9c173f6fd04a527f47213de7e0f7d0a7c')
+sha256sums=('cb0c467905e78f501ae93deefdc93da78d96614ee40cc5260c8b2148e50ed49d')
 
 build() {
   cmake -B build -S "$_pkgname-$pkgver" \
