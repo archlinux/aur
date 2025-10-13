@@ -8,6 +8,7 @@ pkgbase = why2
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = rust
+	depends = openssl
 	options = !debug
 	source = git+https://github.com/ENGO150/WHY2.git#branch=release
 	sha256sums = SKIP
