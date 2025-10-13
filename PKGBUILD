@@ -10,7 +10,7 @@
 pkgbase=qadwaitadecorations-git
 _pkgname=QAdwaitaDecorations
 pkgname=(qadwaitadecorations-qt5-git qadwaitadecorations-qt6-git)
-pkgver=0.1.3.r0.g795bd8d
+pkgver=0.1.7.r1.ge6da80a
 pkgrel=1
 pkgdesc='Qt decoration plugin implementing Adwaita-like client-side decorations'
 arch=(x86_64)
