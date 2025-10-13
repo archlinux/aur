@@ -6,7 +6,7 @@
 _pkgname="flycast"
 pkgname="$_pkgname"
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
@@ -15,14 +15,21 @@ arch=('x86_64')
 depends=(
   'alsa-lib'
   'hicolor-icon-theme'
+  'libao'
+  'libcdio'
   'libgl'
+  'libpulse'
   'libzip'
+  'miniupnpc'
+  'sdl2'
 )
 makedepends=(
   'cmake'
   'git'
+  'glslang'
   'ninja'
   'python'
+  'vulkan-headers'
 )
 
 if [[ "${_build_clang::1}" == "t" ]]; then
@@ -32,75 +39,39 @@ if [[ "${_build_clang::1}" == "t" ]]; then
   )
 fi
 
-_source_main() {
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-  sha256sums=('b76ec69017b8e3fa6f1815ee8cb8396d7f56d0928d21fa85c3a196e94ee24fa7')
-}
-
-_source_flycast() {
-  local _sources_add=(
-    'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'::'core/deps/libadrenotools'
-    'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'::'core/deps/asio'
-    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'::'core/deps/libchdr'
-    #'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'::'core/deps/breakpad'
-    #'google.googletest'::'git+https://github.com/google/googletest.git'::'core/deps/googletest'
-    #'google.oboe'::'git+https://github.com/google/oboe.git'::'core/deps/oboe'
-    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'::'core/deps/VulkanMemoryAllocator'
-    'harmonytf.discord-rpc'::'git+https://github.com/harmonytf/discord-rpc.git'::'core/deps/discord-rpc'
-    'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'::'core/deps/glslang'
-    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'::'core/deps/Vulkan-Headers'
-    'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'::'core/deps/SDL'
-    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'::'core/deps/rcheevos'
-    'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'::'core/deps/luabridge'
-    'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'::'core/deps/Spout'
-    'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'::'core/deps/Syphon'
-  )
-
-  local _p _idx _src _sm_prep _sm_func
-  for _p in ${_sources_add[@]}; do
-    _idx="${_p%%::*}"
-    _sm_prep+=("${_idx}::${_p##*::}")
-    _src="${_p%::*}"
-    source+=("$_src")
-    sha256sums+=('SKIP')
-  done
-
-  eval "_prepare_flycast() (
-    cd \"\$srcdir/\$_pkgsrc\"
-    local _submodules=(${_sm_prep[@]})
-    _submodule_update
-  )"
-}
-
-_source_main
-_source_flycast
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
+sha256sums=('b76ec69017b8e3fa6f1815ee8cb8396d7f56d0928d21fa85c3a196e94ee24fa7')
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
+  cd "$_pkgsrc"
+  git rm -r core/deps/SDL
+  git rm -r core/deps/Vulkan-Headers
+  git rm -r core/deps/breakpad
+  git rm -r core/deps/glslang
+  git rm -r core/deps/googletest
+  git rm -r core/deps/oboe
+  git submodule update --init --depth=1
 
-  _run_if_exists _prepare_flycast
+  # use system vulkan-headers
+  sed -E -e '/add_subdirectory/s&^.*Vulkan-Headers.*$&find_package(VulkanHeaders)&' -i CMakeLists.txt
 
-  sed -e '1i #include <cstdint>' -i "$_pkgsrc/core/deps/glslang/SPIRV/SpvBuilder.h"
-  sed -e '1i #include <cstddef>' -i "$_pkgsrc/core/network/miniupnp.cpp"
+  sed -E -e 's&vk::(resultCheck|DynamicLoader)&vk::detail::\1&' \
+    -i core/rend/vulkan/vmallocator.cpp \
+    core/rend/vulkan/vmallocator.h \
+    core/rend/vulkan/vulkan_context.cpp
+
+  # fix missing headers
+  sed -e '1i #include <cstddef>' -i core/network/miniupnp.cpp
+  sed -e '1i #include <set>' -i core/rend/vulkan/vulkan_context.cpp
 }
 
 build() {
   if [[ "${_build_clang::1}" == "t" ]]; then
-    local _ldflags
     export CC CXX LDFLAGS
     CC=clang
     CXX=clang++
-
-    _ldflags=(${LDFLAGS})
-    LDFLAGS="${_ldflags[@]//-fuse-ld=*/} -fuse-ld=lld"
+    LDFLAGS="$(sed -E -e 's/\S*fuse-ld\S*//g' <<< "$LDFLAGS") -fuse-ld=lld"
   fi
 
   export CFLAGS CXXFLAGS
@@ -113,8 +84,13 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DUSE_BREAKPAD=OFF
+    -DBUILD_TESTING=$CHECKFUNC
     -Wno-dev
+
+    -DUSE_BREAKPAD=OFF
+    -DUSE_HOST_GLSLANG=ON
+    -DUSE_HOST_SDL=ON
+    -DUSE_LIBCDIO=ON
   )
 
   cmake "${_cmake_options[@]}"
@@ -123,10 +99,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
