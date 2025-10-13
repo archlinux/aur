@@ -14,17 +14,31 @@ export NODE_ENV=production
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export _FLAGS_FILE="${XDG_CONFIG_HOME}/${_CFGDIR}@appname@-flags.conf"
 declare -a _USER_FLAGS
+_FLAGS_FILE="${XDG_CONFIG_HOME}/@appname@-flags.conf"
+declare -a flags
 if [[ -f "${_FLAGS_FILE}" ]]; then
-    while read -r line; do
-        if [[ ! "${line}" =~ ^[[:space:]]*#.* ]]; then
-            _USER_FLAGS+=("${line}")
-        fi
-    done < "${_FLAGS_FILE}"
+    mapfile -t < "${_FLAGS_FILE}"
+fi
+for line in "${MAPFILE[@]}"; do
+    if [[ ! "${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "${line}" ]]; then
+        flags+=("${line}")
+    fi
+done
+_WAYLAND_OPTION=false
+for arg in "$@"; do
+    if [[ "${arg}" == "--wayland" ]]; then
+        _WAYLAND_OPTION=true
+        break
+    fi
+done
+if [[ "${_WAYLAND_OPTION}" == true ]]; then
+    echo "Forcing Wayland"
+    flags+=("--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL" "--ozone-platform=wayland")
 fi
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-   unset DISPLAY
-   exec electron@electronversion@ "${_APPDIR}/out/cli.js" --enable-features=UseOzonePlatform --ozone-platform=wayland "${_APPDIR}/@appname@.js" "$@"
+    unset DISPLAY
+    exec electron@electronversion@ "${_APPDIR}/out/cli.js" --enable-features=UseOzonePlatform --ozone-platform=wayland "${_APPDIR}/@appname@.js" "$@"
 else
-   ELECTRON_RUN_AS_NODE=1 exec electron@electronversion@ "${_APPDIR}/out/cli.js" "${_APPDIR}/@appname@.js" "$@"
+    ELECTRON_RUN_AS_NODE=1 exec electron@electronversion@ "${_APPDIR}/out/cli.js" "${_APPDIR}/@appname@.js" "$@"
 fi

@@ -5,7 +5,7 @@ _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
 pkgver=1.105.06808
 _electronversion=37
-pkgrel=3
+pkgrel=4
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
 arch=(
     'aarch64'
