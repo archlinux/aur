@@ -1,7 +1,7 @@
 # Maintainer: BNDays27 <brionical@proton.me>
 _pkgname=crosspatch
 pkgname=$_pkgname-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 install=crosspatch.install
 pkgdesc="(UNNOFFICIAL PACKAGE) A mod Manager for Sonic Racing: CrossWorlds"
