@@ -1,6 +1,6 @@
 pkgbase = melonds-git
 	pkgdesc = DS emulator, sorta
-	pkgver = 1.0.r16.g367d05b
+	pkgver = 1.0.r35.g91ab680
 	pkgrel = 1
 	url = https://github.com/melonDS-emu/melonDS
 	arch = i686
@@ -20,7 +20,6 @@ pkgbase = melonds-git
 	depends = enet
 	depends = faad2
 	depends = libarchive
-	depends = libepoxy
 	depends = libslirp
 	depends = qt6-base
 	depends = qt6-multimedia
