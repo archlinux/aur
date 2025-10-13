@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
 url="https://codeberg.org/DNS-OARC/dnsjit"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'luajit'
     'libpcap'
