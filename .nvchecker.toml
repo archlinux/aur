@@ -1,0 +1,5 @@
+["gocurl-bin"]
+source = "github"
+github = "ameshkov/gocurl"
+use_latest_release = true
+prefix = "v"
