@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=asset-ripper
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Tool for extracting assets from Unity serialized files and asset bundles.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('firefox' 'chromium')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AssetRipper/AssetRipper/archive/refs/tags/$pkgver.tar.gz")
 
-sha256sums=('89a465f755dcb41d1487c99323a0f28c22e63d3ff06d86e49d82fbd5f1b4cf59')
+sha256sums=('cc4d6f091321fd72fa3b62bc29fef9e4ee4562e35e654d1b4f7c80e75c17e0f4')
 
 _srcdir="AssetRipper-$pkgver"
 _exeName="AssetRipper.GUI.Free"
@@ -27,7 +27,7 @@ build() {
   cd "${_srcdir}/Source/AssetRipper.GUI.Free"
 
   dotnet publish --self-contained -c Release -o "${srcdir}/build"
-  ls -lha "${srcdir}/build"
+  #ls -lha "${srcdir}/build"
 }
 
 package() {
