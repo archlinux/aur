@@ -2,7 +2,7 @@
 
 # shellcheck shell=bash
 pkgname=zig-master-bin
-pkgver=0.16.0_dev.427.g86077fe6b
+pkgver=0.16.0dev.725+923ddd94a
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
 arch=('aarch64' 'armv7h' 'i686' 'loong64' 'powerpc64le' 'riscv64' 'x86_64')
@@ -47,9 +47,13 @@ verify() {
 package() {
     cd "${srcdir}/${_tarball%.tar.*}" || return
 
-    install -dm755 "${pkgdir}/usr/lib/zig"
-    cp -a ./* "${pkgdir}/usr/lib/zig/"
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s /usr/lib/zig/zig "${pkgdir}/usr/bin/zig"
+    install -D zig "${pkgdir}/usr/bin/zig"
+
+    install -d "${pkgdir}/usr/lib/zig"
+    cp -a lib/* "${pkgdir}/usr/lib/zig/"
+
+    install -d "${pkgdir}/usr/share/doc/zig"
+    cp -a doc/* "${pkgdir}/usr/share/doc/zig"
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
