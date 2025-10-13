@@ -3,7 +3,7 @@
 pkgbase=django-rq
 pkgname=('python-django-rq')
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple app that provides django integration for RQ (Redis Queue)"
 arch=('any')
 license=('MIT')
@@ -17,6 +17,6 @@ package_python-django-rq() {
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  python setup.py install --root="${pkgdir}" -O1
+  python install --root="${pkgdir}" -O1
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }

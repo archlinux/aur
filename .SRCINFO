@@ -1,7 +1,7 @@
 pkgbase = django-rq
 	pkgdesc = A simple app that provides django integration for RQ (Redis Queue)
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ui/django-rq
 	arch = any
 	license = MIT
