@@ -12,13 +12,13 @@ provides=('bab')
 conflicts=('bab')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.8/bab_0.0.8_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f9691316f1a8aac88de231988694394aae78d9d3041507207310ef2b3e7d0bc8')
+sha256sums_aarch64=('18cc1982a0df0127785c25a734c6b0683ac007802ee16a4b2d027da10fff88e5')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.8/bab_0.0.8_Linux_armv7.tar.gz")
-sha256sums_armv7h=('66645ccb10a759acbb434d9e5e1e9c7b4964ded048eed8981306b60152885051')
+sha256sums_armv7h=('6396277bd8940e6921999bdc6293e752a23aa5e88d287c5719946214c114138c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.8/bab_0.0.8_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('7410dd8045de9d01b6e40d354a2876b4a7188d5e66ebcbc2199cf2b9a67bfa15')
+sha256sums_x86_64=('cd865f69d4f9481517c1ee135cec947a166107ee430e51b3d64d81b5b559adf1')
 
 package() {
   # Binary
