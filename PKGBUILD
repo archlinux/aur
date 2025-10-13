@@ -7,7 +7,7 @@ _pkgver=145.0a1
 _pkgverx=_FP1
 pkgver=${_pkgver}${_pkgverx}
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized Firefox for GNU/Linux & Windows"
 url="https://github.com/CYFARE/HellFire"
 license=('MPL')
@@ -16,14 +16,13 @@ conflicts=("$_pkgname")
 
 arch=('x86_64')
 
-# Copied from Firefox pkgbuild
 depends=(
   alsa-lib
   at-spi2-core
   bash
   cairo
   dbus
-  ffmpeg
+  ffmpeg4.4
   fontconfig
   freetype2
   gcc-libs
