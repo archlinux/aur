@@ -1,20 +1,20 @@
-# Contributor: Ordoban <dirk.langer@vvovgonik.de> 
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-critic-pulp'
-pkgver='99'
+pkgver='100'
 pkgrel='1'
 pkgdesc="some add-on perlcritic policies"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-io-string>=1.02' 'perl-list-moreutils>=0.24' 'perl-ppi>=1.220' 'perl-perl-critic>=1.084' 'perl-pod-minimumversion>=50' 'perl-pod-parser>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Perl-Critic-Pulp'
-source=('http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Perl-Critic-Pulp-99.tar.gz')
-md5sums=('d4eb22b458bdca8d175d6d2c2feb89a4')
-sha512sums=('11c48f61133e20c74d00002df181efb9ad825afa6441d78fd841a253e98d39c5d230196031d674c11547fb9fa3f0dc78b20f2118f128c09bfc5a217da79460b7')
-_distdir="Perl-Critic-Pulp-99"
+source=("http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Perl-Critic-Pulp-$pkgver.tar.gz")
+md5sums=('17edf2a21d2ff4f368aa3390669895a5')
+sha512sums=('2d683d70737649137d143ab52c7a0f122ec4f1719da5dc9e1a34362d8f34cb8d8f7ed51ad954e883a5c5c796b9c4ededdd4934594eb283c6c194f2c1a285670a')
+_distdir="Perl-Critic-Pulp-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
