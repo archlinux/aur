@@ -48,8 +48,6 @@ pkgver() {
 }
 
 build() {
-  sed -E -e 's&\b(Qt6::)?(Widgets)\b&\1\2 \1GuiPrivate&' -i "$_gitname"/src/frontend/qt_sdl/CMakeLists.txt
-
   export CC CXX CFLAGS CXXFLAGS LDFLAGS
   CFLAGS+=" -DNDEBUG"
   CXXFLAGS+=" -DNDEBUG"
