@@ -1,7 +1,7 @@
 pkgbase = gr-lora_sdr-git
 	pkgdesc = GNU Radio blocks for fully-functional LoRa transceiver
 	pkgver = 1.0.0.r136.ga8143cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tapparelj/gr-lora_sdr
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,5 +20,6 @@ pkgbase = gr-lora_sdr-git
 pkgname = gr-lora_sdr-git
 	depends = gnuradio>=3.10
 	depends = python
+	depends = python-gnuradio
 	depends = python-loudify
 	depends = python-pandas

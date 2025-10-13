@@ -6,7 +6,7 @@
 _pkgname="gr-lora_sdr"
 pkgname="$_pkgname-git"
 pkgver=1.0.0.r136.ga8143cb
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Radio blocks for fully-functional LoRa transceiver"
 url="https://github.com/tapparelj/gr-lora_sdr"
 license=('GPL-3.0-or-later')
@@ -57,6 +57,7 @@ build() {
 
 package() {
   depends+=(
+    'python-gnuradio'
     'python-loudify' # AUR
     'python-pandas'
   )
