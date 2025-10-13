@@ -1,25 +1,29 @@
 pkgbase = hw-probe-git
 	pkgdesc = Probe for hardware, check its operability and upload result to https://linux-hardware.org
-	pkgver = 1.6.5
+	pkgver = 1.6.6+1.gab1b903c2a
 	pkgrel = 1
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
 	license = LGPL-2.1-or-later OR BSD-4-Clause
 	makedepends = git
-	depends = perl>=5
+	depends = perl
 	depends = hwinfo
 	depends = curl
 	depends = dmidecode
 	depends = pciutils
 	depends = usbutils
 	depends = net-tools
-	depends = v4l-utils-git
+	depends = v4l-utils
 	depends = acpica
-	optdepends = hdparm
-	optdepends = smartmontools
-	optdepends = inxi
-	optdepends = pnputils
-	provides = hw-probe=1.6.5
+	optdepends = hdparm: read IDE drive/driver parameters
+	optdepends = smartmontools: monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+	optdepends = inxi: read system information via inxi
+	optdepends = efibootmgr: read information from the EFI Boot Manager
+	optdepends = 7zip: used for benchmarking in -check-extended (and -check-7z)
+	optdepends = memtester: used in -check (and -check-memory)
+	optdepends = mesa-utils: for glxinfo and glxgears used in -check (and -check-graphics).
+	optdepends = perl-json-xs: JSON-formatted /root/HW_PROBE/LATEST/hw.info/devices.json
+	provides = hw-probe=1.6.6
 	conflicts = hw-probe
 	source = git+https://github.com/linuxhw/hw-probe
 	sha256sums = SKIP
