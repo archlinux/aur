@@ -1,0 +1,50 @@
+diff -ura a/extension.js b/extension.js
+--- a/extension.js	2025-10-13 18:53:15.435665940 +0200
++++ b/extension.js	2025-10-13 18:56:30.122762799 +0200
+@@ -113,7 +113,7 @@
+ 
+             this.resizedActor = null;
+             
+-            if (actor.metaWindow.get_maximized()) {
++            if (actor.metaWindow.get_maximize_flags()) {
+                 this.destroyActorEffect(actor);
+ 
+                 if (!this.settingsData.MAXIMIZE_EFFECT.get()) {
+@@ -122,9 +122,9 @@
+ 
+                 let monitor = Main.layoutManager.monitors[actor.meta_window.get_monitor()];
+                 
+-                if (actor.metaWindow.get_maximized() === Meta.MaximizeFlags.BOTH || 
++                if (actor.metaWindow.get_maximize_flags() === Meta.MaximizeFlags.BOTH ||
+                         (
+-                            actor.metaWindow.get_maximized() === Meta.MaximizeFlags.VERTICAL && 
++                            actor.metaWindow.get_maximize_flags() === Meta.MaximizeFlags.VERTICAL &&
+                             (
+                                 (sourceRect.y != targetRect.y) || 
+                                 (sourceRect.y + sourceRect.height != targetRect.y + targetRect.height) || 
+@@ -199,4 +199,4 @@
+         }
+     }
+ 
+-}
+\ No newline at end of file
++}
+diff -ura a/metadata.json b/metadata.json
+--- a/metadata.json	2025-10-13 18:53:15.435665940 +0200
++++ b/metadata.json	2025-10-13 18:57:14.921092940 +0200
+@@ -2,13 +2,10 @@
+   "description": "Compiz wobbly windows effect thanks to compiz plugin engine.\n\nDoes NOT requires any external library\n\nNB:\nIn case of update error please restart Gnome Shell (on Xorg press ALT+F2 then write r and press enter, on Wayland end the session and log in again)\n\n-----------------------------------\n  Video\n-----------------------------------\nhttps://youtu.be/G8bAVIB9A7A",
+   "name": "Compiz windows effect",
+   "shell-version": [
+-    "45",
+-    "46",
+-    "47",
+-    "48"
++    "49"
+   ],
+   "url": "https://github.com/hermes83/compiz-windows-effect",
+   "uuid": "compiz-windows-effect@hermes83.github.com",
+   "settings-schema": "org.gnome.shell.extensions.com.github.hermes83.compiz-windows-effect",
+-  "version": 26
++  "version": 27
+ }

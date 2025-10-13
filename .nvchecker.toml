@@ -1,0 +1,4 @@
+[gnome-shell-extension-compiz-windows-effect-git]
+source = "git"
+git = "https://github.com/hermes83/compiz-windows-effect"
+use_commit = true
