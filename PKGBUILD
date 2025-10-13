@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/ENGO150/WHY2.git"
 license=('GPL-3.0-only')
 depends=('openssl')
-makedepends=('git' 'rust')
+makedepends=('git' 'rust' 'pkgconf')
 source=("git+$url#branch=release")
 sha256sums=('SKIP')
 
