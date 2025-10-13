@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whispering-bin
 _pkgname=Whispering
-pkgver=7.5.2
+pkgver=7.5.3
 pkgrel=1
 pkgdesc="An open-source transcription application that provides global speech-to-text functionality, with options such as keyboard shortcuts and automatic copy and paste to make dictating as seamless as possible.(Prebuilt version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/epicenter-so/epicenter/v${pkgver}/LICENSE"
 )
-sha256sums=('3c57ec61db7a80e90c52cc5b56714d151582d4b8b94183f1d546cda31adca975'
+sha256sums=('3cbd592b6890cff9bb74c7f238bb09c78fa8a47bb3cd5fe1635a9ebb05fe1288'
             'c619bbe548615d39e9928c5f86dc1c3a76defc9f99e35273f539aad092fedb9a')
 prepare() {
     sed -i -e "
