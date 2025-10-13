@@ -1,0 +1,4 @@
+[xjobs]
+source = "regex"
+url = "https://www.maier-komor.de/xjobs.html"
+regex = "<a href=\"xjobs/xjobs-20250529.tgz\"> Version ([\\d]*) md5:.*  \\(current release\\) </a><br>"

@@ -4,18 +4,18 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=xjobs
-pkgver=20250209
+pkgver=20250529
 pkgrel=1
 pkgdesc="A utility like xargs, but with enhanced support for multiprocessor machines"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url="http://www.maier-komor.de/xjobs.html"
 license=('GPL-2.0')
 depends=('glibc' 'ncurses')
 makedepends=('make' 'gcc')
 source=("http://www.maier-komor.de/xjobs/${pkgname}-${pkgver}.tgz")
-md5sums=('61d12fac69b7f7b97f10655754b58399')
-sha1sums=('2034ec50ab776be2a38cc21675a08875a7f23863')
-sha256sums=('23b56eecdba72441388a82daa7e18f9ea206da37f34b1e968f674e4266fdbee9')
+md5sums=('bc0e943864e4c2f0f49d0179fa93c2da')
+sha1sums=('fc028e61010af90ddd9b7efc43bcc2c4ed3c82d4')
+sha256sums=('1d1ee4ab1f4de5f9fc24c2852b489eac0c2b085964a8aa364bf9b1416f54138e')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
