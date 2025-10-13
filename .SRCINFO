@@ -1,6 +1,6 @@
 pkgbase = visty-git
 	pkgdesc = Simple Video Player based on Electron.(Use system-wide electron)
-	pkgver = 0.0.5.de.r1.g5acf736
+	pkgver = 0.0.5.de.r0.g5e7fc1b
 	pkgrel = 1
 	url = https://github.com/fiahfy/visty
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = visty-git
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = yarn
-	depends = electron36
+	depends = electron38
 	provides = visty=0.0.5.de
 	conflicts = visty
 	source = visty.git::git+https://github.com/fiahfy/visty.git
 	source = visty.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = visty-git
