@@ -1,55 +1,43 @@
-# Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Rinne <aur@rinne.in>
-
-_pkgname=animeko
-_appimage=ani-5.0.0-beta02-linux-x86_64.appimage
+# Maintainer:  shinka <shinnkka1@gmail.com>
+# Contributor:  Rinne <aur@rinne.in>
 
 pkgname=animeko-appimage-beta
-pkgver=v5.0.0_beta02
+_pkgname=animeko
+pkgver="5.0.1"
+_pkgver="5.0.1"
 pkgrel=1
-pkgdesc="集找番、追番、看番的一站式弹幕追番平台，云收藏同步 (Bangumi)，离线缓存，BitTorrent，弹幕云过滤。100% Kotlin/Compose Multiplatform"
+pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
-url="https://myani.org"
+url='https://github.com/open-ani/animeko/'
 license=('AGPL-3.0-or-later')
-depends=('vlc' 'gvfs')
+source_x86_64=("https://d.myani.org/v${_pkgver}/ani-${_pkgver}-linux-${CARCH}.appimage")
+sha512sums_x86_64=('e9b6bbba0c459304944e780bd256271ef64c8bcadef63addd75f92bf84500c439bbda13340cbe00e5dcfc5336a13e9e63daf2a228ba1bcb92c2df874a761c9bf')
+depends=('vlc-plugin-ffmpeg' 'vlc-plugin-dvb' 'vlc-plugin-pulse' 'gvfs')
+conflicts=('animeko')
 provides=('animeko')
-options=(!strip)
-source_x86_64=("${_appimage}::https://github.com/open-ani/animeko/releases/download/v5.0.0-beta02/ani-5.0.0-beta02-linux-x86_64.appimage")
-noextract=("${_appimage}")
-sha1sums_x86_64=('ea45d0cfb3832ca719d63e7d646046682253393e')
+makedepends=('7zip')
+options=('!strip')
 
 prepare() {
-    chmod +x "${_appimage}"
-    rm -rf ./squashfs-root
-    # ./"${_appimage}" --appimage-extract
-    ./"${_appimage}" --appimage-extract ${_pkgname}.desktop
-    ./"${_appimage}" --appimage-extract icon.png
-}
-
-build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -e "s|Exec=.*|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" -e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" -e "s|Name=.*|Name=Animeko Beta|" "squashfs-root/${_pkgname}.desktop"
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    # chmod -R a-x+rX squashfs-root/usr
+  chmod +x "${srcdir}/ani-${_pkgver}-linux-${CARCH}.appimage"
+  7z x ${srcdir}/ani-${_pkgver}-linux-${CARCH}.appimage -o${srcdir}/squashfs-root
+  sed -i -E "s|Exec=Ani|Exec=/usr/bin/${_pkgname}|g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
+  sed -i -E "s|Icon=icon|Icon=${_pkgname}|g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    # install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
+  install -d "${pkgdir}/opt/${_pkgname}"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+  install -d "${pkgdir}/usr/share/applications"
+  rm -r "${srcdir}/squashfs-root/usr/lib/app/resources"
+  cp -r "${srcdir}/squashfs-root/usr" "${pkgdir}/opt/${_pkgname}/"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm755 "${srcdir}/squashfs-root/AppRun" "${pkgdir}/opt/${_pkgname}/AppRun"
 
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    cp -a "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+  ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
-    # Symlink license
-    # install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    # ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
