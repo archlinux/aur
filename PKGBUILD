@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=warteschlangensimulator-appimage
 _appname=Warteschlangensimulator
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="A free, platform independent, discrete-event, stochastic simulator which allows to model queueing systems in form of flowcharts."
 arch=("x86_64")
@@ -19,7 +19,7 @@ _install_path="/opt/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_appname}-${CARCH}.AppImage"
 )
-sha256sums=('6e85294f3c4e1a8684db5fda6eb704872aaa2a4104a5e47e6bd76f638c924037')
+sha256sums=('cf7c63630e2fde1b3e5b8eaef184d91ba824a7ea18954ede5cf89671f3c5d231')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
