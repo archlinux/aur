@@ -1,6 +1,6 @@
 pkgbase = apipost-bin
 	pkgdesc = Apipost = Postman + Swagger + Mock + Jmeter
-	pkgver = 8.2.3
+	pkgver = 8.2.4
 	pkgrel = 1
 	url = https://www.apipost.cn/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = apipost-bin
 	optdepends = libappindicator-gtk3
 	provides = apipost
 	conflicts = apipost
-	source_x86_64 = apipost_linux_x64_8.2.3.deb::https://www.apipost.cn/dl.php?client=Linux&arch=x64&version=8.2.3
-	sha256sums_x86_64 = c1e77d486de44f4b9d8b72875315e07b51ef5260a6b5ee2f4505c8d7e8082171
-	source_aarch64 = apipost_linux_arm64_8.2.3.deb::https://www.apipost.cn/dl.php?client=Linux&arch=arm64&version=8.2.3
-	sha256sums_aarch64 = 0881677c8be3752248f7f4a9d9e346a18f3c9e95600bd1082104bf783b0560fa
+	source_x86_64 = apipost_linux_x64_8.2.4.deb::https://www.apipost.cn/dl.php?client=Linux&arch=x64&version=8.2.4
+	sha256sums_x86_64 = 848716a9727cc2bbb07a93b32629f46d8493d390758559d80e517efbd9bbd630
+	source_aarch64 = apipost_linux_arm64_8.2.4.deb::https://www.apipost.cn/dl.php?client=Linux&arch=arm64&version=8.2.4
+	sha256sums_aarch64 = 6c64d494619c36739985a3563beda4c7c68d6127707577e7940fa799bf0a152f
 
 pkgname = apipost-bin
