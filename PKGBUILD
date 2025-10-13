@@ -3,7 +3,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=miracle-wm
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Wayland compositor based on mir"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ depends=('mir'
     )
 makedepends=('cmake' 'nlohmann-json' 'ninja' 'glm' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3030ba7b3c2959e8b14810400e61358b9dea08552157889760afd708629ce5d')
+sha256sums=('6ed205691c2c01e71d38242986e79434e0ba278e1a700530199def43d311ccc6')
 
 prepare() {
     sed -i 's/python3/python/g' $srcdir/${pkgname}-${pkgver}/session/usr/bin/libexec/miracle-wm-wait-sni-ready
