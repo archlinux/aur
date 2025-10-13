@@ -1,6 +1,6 @@
 pkgbase = sshctl-git
 	pkgdesc = SSH connection manager CLI tool (development version)
-	pkgver = 0.1.7.r70.6257f39
+	pkgver = 0.1.7.r71.befcde8
 	pkgrel = 1
 	url = https://github.com/AndreLeclercq/sshctl
 	arch = x86_64
