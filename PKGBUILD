@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-initial-setup-git
-pkgver=1.0.0.beta.1.r0.g55c6006
+pkgver=1.0.0.beta.1.1.r42.g947186e
 pkgrel=1
 pkgdesc="COSMIC Initial Setup"
 arch=('x86_64' 'aarch64')
