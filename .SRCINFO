@@ -1,0 +1,16 @@
+pkgbase = proslenkey
+	pkgdesc = A lightweight GTK4 application launcher for Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hikyae/proslenkey
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-gobject
+	depends = gtk4-layer-shell
+	source = proslenkey-1.0.0.tar.gz::https://github.com/hikyae/proslenkey/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7afc4443242085dbff7fece5ea85052089fd8d0a5c999069a1893709e4c47065
+
+pkgname = proslenkey
