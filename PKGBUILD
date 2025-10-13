@@ -150,6 +150,7 @@ build()
         fi
     done
 
+    cd "${srcdir}"/"${pkgname}"/ || exit 1
     ./console development:disable
 }
 
