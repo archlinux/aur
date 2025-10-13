@@ -1,6 +1,6 @@
 pkgbase = python-flash-attention
 	pkgdesc = Fast and memory-efficient exact attention
-	pkgver = 2.7.4
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/Dao-AILab/flash-attention
 	arch = x86_64
@@ -14,11 +14,13 @@ pkgbase = python-flash-attention
 	makedepends = python-wheel
 	depends = python-einops
 	depends = python-pytorch-cuda
-	source = flash-attention-2.7.4.tar.gz::https://github.com/HazyResearch/flash-attention/archive/refs/tags/v2.7.4.tar.gz
-	source = cutlass-4c42f73f.tar.gz::https://github.com/NVIDIA/cutlass/archive/4c42f73fdab5787e3bb57717f35a8cb1b3c0dc6d.tar.gz
-	source = flash-attention.diff
-	sha256sums = e55f8df2ab4bc57e7e33bc38e76f3b205f27ce6e3f7583009f6b26244b9a08c3
-	sha256sums = d9f1831aef8913fc281429c426ee46d992f69e4afea4c78a0d975f6ad649f994
-	sha256sums = SKIP
+	source = flash-attention-2.8.3.tar.gz::https://github.com/HazyResearch/flash-attention/archive/refs/tags/v2.8.3.tar.gz
+	source = cutlass-dc481792.tar.gz::https://github.com/NVIDIA/cutlass/archive/dc4817921edda44a549197ff3a9dcf5df0636e7b.tar.gz
+	source = 0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch
+	source = 0002-setup.py-Remove-ninja-from-setup_requires.patch
+	sha256sums = 61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba
+	sha256sums = f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56
+	sha256sums = 3ebe511837ed96ec1447cac932acac6f9cfd742e5f0330891d7ebb1ed390b83d
+	sha256sums = d4cb7adf04b757213192e08c0ca3338339768115b1adc2856d625d633915b069
 
 pkgname = python-flash-attention

@@ -1,8 +1,9 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=python-flash-attention
 _pkgname=${pkgname#python-}
-pkgver=2.7.4
-pkgrel=2
+pkgver=2.8.3
+pkgrel=1
 pkgdesc='Fast and memory-efficient exact attention'
 arch=('x86_64')
 url='https://github.com/Dao-AILab/flash-attention'
@@ -12,14 +13,17 @@ depends=('python-einops' 'python-pytorch-cuda')
 makedepends=('ninja' 'python-build' 'python-installer' 'python-packaging'
              'python-psutil' 'python-setuptools' 'python-wheel')
 optdepends=()
-cutlass_commit_full=4c42f73fdab5787e3bb57717f35a8cb1b3c0dc6d
+cutlass_commit_full=dc4817921edda44a549197ff3a9dcf5df0636e7b
 cutlass_commit=${cutlass_commit_full:0:8}
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/HazyResearch/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
-        'flash-attention.diff')
-sha256sums=('e55f8df2ab4bc57e7e33bc38e76f3b205f27ce6e3f7583009f6b26244b9a08c3'
-            'd9f1831aef8913fc281429c426ee46d992f69e4afea4c78a0d975f6ad649f994'
-            'SKIP')
+        '0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch'
+        '0002-setup.py-Remove-ninja-from-setup_requires.patch')
+sha256sums=('61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba'
+            'f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56'
+            '3ebe511837ed96ec1447cac932acac6f9cfd742e5f0330891d7ebb1ed390b83d'
+            'd4cb7adf04b757213192e08c0ca3338339768115b1adc2856d625d633915b069')
+
 
 prepare() {
     ln -sf cutlass-$cutlass_commit_full cutlass-$cutlass_commit
@@ -28,7 +32,8 @@ prepare() {
     ln -sf ../../cutlass-$cutlass_commit_full $_pkgname-$pkgver/csrc/cutlass
 
     cd $_pkgname-$pkgver
-    patch -p 1 -i ../flash-attention.diff
+    patch -p 1 -i "${srcdir}/0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch"
+    patch -p 1 -i "${srcdir}/0002-setup.py-Remove-ninja-from-setup_requires.patch"
 }
 
 build() {
