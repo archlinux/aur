@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: asukaminato <asukaminato at nyan dot eu dot org>
 # Contributor: Bradley Nelson <bradleynelson102 at gmail dot com>
 # Contributor: liberodark Frederic Bezies
