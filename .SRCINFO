@@ -1,0 +1,12 @@
+pkgbase = hcledit-bin
+	pkgdesc = A command line editor for HCL
+	pkgver = 0.2.17
+	pkgrel = 1.0
+	url = https://github.com/minamijoyo/hcledit
+	arch = x86_64
+	license = MIT
+	replaces = hcledit
+	source = https://github.com/minamijoyo/hcledit/releases/download/v0.2.17/hcledit_0.2.17_linux_amd64.tar.gz
+	sha256sums = 5e085bd319c84c74e87b915ab2c1f95afccb2d4326be481fbe19c1d7a0eb5fee
+
+pkgname = hcledit-bin
