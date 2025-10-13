@@ -1,4 +1,4 @@
-# Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
+# Maintainer: Petr Spacek <pspacek@isc.org>
 pkgname=dnsjit-git
 pkgver=1.5.0.r11.505e23c
 pkgrel=1
