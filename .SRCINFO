@@ -19,7 +19,6 @@ pkgbase = quickshell
 	depends = jemalloc
 	depends = qt6-svg
 	depends = libpipewire
-	depends = qt6-wayland
 	depends = libxcb
 	depends = wayland
 	depends = libdrm
