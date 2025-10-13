@@ -1,7 +1,7 @@
 # Maintainer: Dan Denkijin <dandenkijin at gmail dot com>
 
 pkgname=qinti
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Klingon Glpyh font patcher"
 arch=('x86_64') # Adjust as needed (e.g., 'any', 'aarch64')
