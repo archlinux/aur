@@ -1,5 +1,5 @@
 pkgname=python-seabreeze
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Python module for oceanoptics spectrometers"
 arch=(x86_64)
@@ -23,24 +23,16 @@ checkdepends=(
 python-pytest
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ap--/python-seabreeze/archive/v${pkgver}.tar.gz")
-sha256sums=('343683e32a49c35406373e59fab1fea367e5cdaf2e934a7e1df8c1c09a0b9952')
+sha256sums=('03090092177dcd90471a19836172d8bbd14e0f6df50dfad6eec34e8f7eb5753f')
 
 prepare(){
 	cd python-seabreeze-${pkgver}
-
-	#curl --silent https://patch-diff.githubusercontent.com/raw/ap--/python-seabreeze/pull/143.patch | patch -p1
-
-	# version it ourselves because we don't have a .git folder
-	echo "[metadata]" > setup.cfg
-	echo "version = ${pkgver}" >> setup.cfg
-	echo "__version__ = \"${pkgver}\"" > src/seabreeze/_version.py
-	sed '/use_scm_version={/,+5 d' -i setup.py
 
 }
   
 build(){
 	cd python-seabreeze-${pkgver}
-	python -m build --wheel --no-isolation
+	SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}" python -m build --wheel --no-isolation
 }
 
 check() {
