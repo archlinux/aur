@@ -1,6 +1,6 @@
 pkgbase = flutter-gtk
 	pkgdesc = Flutter GTK embedder runtime(latest stable version).
-	pkgver = 3.35.5
+	pkgver = 3.35.6
 	pkgrel = 1
 	url = https://flutter.dev/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = flutter-gtk
 	depends = gtk3
 	depends = libepoxy
 	depends = cairo
-	provides = libflutter_linux_gtk.so.3.35.5
-	source_x86_64 = gtk-release-x64-d3d45dcf251823c1769909cd43698d126db38deb.zip::https://storage.googleapis.com/flutter_infra_release/flutter/d3d45dcf251823c1769909cd43698d126db38deb/linux-x64-release/linux-x64-flutter-gtk.zip
-	sha256sums_x86_64 = 38c3740a2e238a467bb4e9752ba3c0f0ce157c64d193b6c641d4d1735f41dfd7
-	source_aarch64 = gtk-release-arm64-d3d45dcf251823c1769909cd43698d126db38deb.zip::https://storage.googleapis.com/flutter_infra_release/flutter/d3d45dcf251823c1769909cd43698d126db38deb/linux-arm64-release/linux-arm64-flutter-gtk.zip
-	sha256sums_aarch64 = b0968d9363c898c40e1846b20089ca80a2c5a1eb1a2d49a586b51daae42554cf
+	provides = libflutter_linux_gtk.so.3.35.6
+	source_x86_64 = gtk-release-x64-d2913632a4578ee4d0b8b1c4a69888c8a0672c4b.zip::https://storage.googleapis.com/flutter_infra_release/flutter/d2913632a4578ee4d0b8b1c4a69888c8a0672c4b/linux-x64-release/linux-x64-flutter-gtk.zip
+	sha256sums_x86_64 = 46a18cd4ae4e904570695fd1c86b1131c611e1269b182fd33c87ef05f446406d
+	source_aarch64 = gtk-release-arm64-d2913632a4578ee4d0b8b1c4a69888c8a0672c4b.zip::https://storage.googleapis.com/flutter_infra_release/flutter/d2913632a4578ee4d0b8b1c4a69888c8a0672c4b/linux-arm64-release/linux-arm64-flutter-gtk.zip
+	sha256sums_aarch64 = 81da32fcc11606a54dbfd763e34c06ef3fae7f2b0b6951185856c6ef60642e85
 
 pkgname = flutter-gtk
