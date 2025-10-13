@@ -1,15 +1,15 @@
 pkgbase = ruby-version_gem
 	pkgdesc = Enhance that VERSION! Sugar for boring Version modules.
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/pboling/version_gem
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = version_gem-1.1.8.gem
+	noextract = version_gem-1.1.9.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/version_gem-1.1.8.gem
-	sha256sums = a964767ecbe36551b9ff2e59099548c27569f2f7f94bdb09f609d76393a8e008
+	source = https://rubygems.org/downloads/version_gem-1.1.9.gem
+	sha256sums = 0c1a0962ae543c84a00889bb018d9f14d8f8af6029d26b295d98774e3d2eb9a4
 
 pkgname = ruby-version_gem
