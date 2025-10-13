@@ -2,7 +2,7 @@
 _base_ver=10
 pkgname=grayjay-git
 _appname=Grayjay
-pkgver=9.r15.g1f74766
+pkgver=10.r17.g04a4c7e
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
