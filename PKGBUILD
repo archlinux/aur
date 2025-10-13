@@ -1,6 +1,6 @@
 # Maintainer: Demetrio <demetrio108@protonmail.com>
 pkgname=sllm-git
-pkgver=v0.1.0.r0.g977c067
+pkgver=v0.2.0.r1.gb07fa8c
 pkgrel=1
 pkgdesc="A simple CLI tool written in Rust for calling Large Language Models via the OpenRouter API."
 arch=('x86_64')
