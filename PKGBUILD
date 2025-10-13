@@ -2,7 +2,7 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgrel="7"
+pkgrel="8"
 pkgver="0.1"
 _name="tuxnix-sway"
 pkgname="$_name"
@@ -22,6 +22,7 @@ package() {
     install -Dm644 desk-M.config "$pkgdir/etc/skel/.config/sway/desk-M/config"
     install -Dm644 desk-W.config "$pkgdir/etc/skel/.config/sway/desk-W/config"
     install -Dm644 ardour.config "$pkgdir/etc/skel/.config/sway/ardour/config"
+    install -Dm644 Testdesk.config "$pkgdir/etc/skel/.config/sway/Testdesk/config"
     install -Dm644 waybar.config "$pkgdir/etc/skel/.config/waybar/config"
     install -Dm644 style.css "$pkgdir/etc/skel/.config/waybar/style.css"
     install -Dm605 keys-md "$pkgdir/usr/local/bin/keys-md"
