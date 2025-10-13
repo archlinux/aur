@@ -1,0 +1,10 @@
+# Build artifacts - DO NOT push to AUR
+src/
+pkg/
+hyprmarker/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.log
+
+# Only PKGBUILD and .SRCINFO should be in AUR repo
