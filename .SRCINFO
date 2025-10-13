@@ -1,0 +1,16 @@
+pkgbase = ecaptureq-bin
+	pkgdesc = A cross-platform GUI for ecapture
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/gojue/ecaptureQ
+	arch = x86_64
+	license = mit
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = ecapture: CLI eBPF-based TLS capture tool (conflicts with ecapture-bin)
+	optdepends = ecapture-bin: Prebuilt binary of ecapture (conflicts with ecapture)
+	source = eCaptureQ_0.1.5_amd64.deb::https://github.com/gojue/ecaptureQ/releases/download/v0.1.5/eCaptureQ_0.1.5_amd64.deb
+	md5sums = 70dca57edf0ecf164aa2db1df8d67b56
+
+pkgname = ecaptureq-bin
