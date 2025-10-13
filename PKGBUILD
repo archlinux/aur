@@ -6,8 +6,9 @@ pkgbase=tlp-git
 pkgname=(
   tlp-git
   tlp-rdw-git
+  tlp-pd-git
 )
-pkgver=1.6.0.b1.r3.267d0cb
+pkgver=1.8.0.r179.e2681cb
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
@@ -24,7 +25,7 @@ pkgver() {
 }
 
 package_tlp-git() {
-  pkgdesc='Linux Advanced Power Management'
+  pkgdesc='Optimize laptop battery life'
   depends=(
     hdparm
     iw
@@ -39,6 +40,8 @@ package_tlp-git() {
     'ethtool: Disable Wake On Lan'
     'smartmontools: Display S.M.A.R.T. data in tlp-stat'
     'tp_smapi: ThinkPad battery functions'
+    'tlp-rdw: Switch wifi and bluetooth on/off automatically'
+    'tlp-pd: Switch power profiles from the desktop'
   )
   provides=(tlp)
   conflicts=(
@@ -57,7 +60,7 @@ package_tlp-git() {
 }
 
 package_tlp-rdw-git() {
-  pkgdesc='Linux Advanced Power Management - Radio Device Wizard'
+  pkgdesc='Switch wifi and bluetooth on/off automatically'
   depends=(
     networkmanager
     tlp
@@ -66,6 +69,29 @@ package_tlp-rdw-git() {
   conflicts=(tlp-rdw)
 
   make DESTDIR="${pkgdir}" -C TLP install-rdw install-man-rdw
+}
+
+package_tlp-pd-git() {
+  pkgdesc='Switch power profiles from the desktop'
+  depends=(
+    polkit
+    python-dbus
+    python-gobject
+    tlp
+  )
+  provides=(
+    tlp-pd
+  )
+  conflicts=(
+    power-profiles-daemon
+    tlp-pd
+  )
+
+  export TLP_NO_INIT=1
+  export TLP_SBIN=/usr/bin
+  export TLP_WITH_ELOGIND=0
+
+  make DESTDIR="${pkgdir}" -C TLP install-pd install-man-pd
 }
 
 # vim: ts=2 sw=2 et:
