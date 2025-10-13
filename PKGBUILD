@@ -1,6 +1,6 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
-pkgname=ruby-github-markup
+pkgname=ruby-github-markup-git
 _gemname=${pkgname#ruby-}
 _dirname=markup
 pkgver=5.0.1.r69.g2b0e7f2

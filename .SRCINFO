@@ -1,4 +1,4 @@
-pkgbase = ruby-github-markup
+pkgbase = ruby-github-markup-git
 	pkgdesc = The code GitHub uses to render README.markup
 	pkgver = 5.0.1.r69.g2b0e7f2
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = ruby-github-markup
 	source = git+https://github.com/github/markup.git
 	sha512sums = SKIP
 
-pkgname = ruby-github-markup
+pkgname = ruby-github-markup-git
