@@ -1,0 +1,18 @@
+pkgbase = kov2025-bin
+	pkgdesc = Local government council elections 2025 Internet Voting application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.valimised.ee/en
+	arch = x86_64
+	license = custom
+	depends = libxft
+	depends = libxfixes
+	depends = hicolor-icon-theme
+	source = https://www.valimised.ee/valijarakendus/KOV_2025.bin
+	source = kov2025.png
+	source = kov2025.desktop
+	sha256sums = faf5d7849dbe876fc984e2500dfee8ec33ff1cdb8f554dc157ee20bcf688cf42
+	sha256sums = 034c7c8c15a9dbdbef70a26c78b0daac06dc59feee25b17aff47a00cd5e36fd3
+	sha256sums = c3149188ccca0558cbcb00e189e0b7364f8ade00e7c4d5c2c8e20ce2cdd6eaa7
+
+pkgname = kov2025-bin
