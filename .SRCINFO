@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-trs
 	pkgdesc = Chicahuaxtla Triqui language pack for Firefox Nightly
-	pkgver = 145.0a1.20251012.212113
+	pkgver = 145.0a1.20251013.083223
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-trs
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-trs-145.0a1.20251012.212113.xpi
-	source = firefox-nightly-i18n-trs-145.0a1.20251012.212113.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-145.0a1.trs.langpack.xpi
-	sha256sums = 2434b8b3039e61f058d7f4765e95d5b0a85203d4b4a321c79bd28581d3f672d2
+	noextract = firefox-nightly-i18n-trs-145.0a1.20251013.083223.xpi
+	source = firefox-nightly-i18n-trs-145.0a1.20251013.083223.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-145.0a1.trs.langpack.xpi
+	sha256sums = d8c30a77b2003be18fca7c82b1e92b2f93f293d011cecb2310a131b8b5af4360
 
 pkgname = firefox-nightly-i18n-trs
