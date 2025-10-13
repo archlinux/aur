@@ -1,0 +1,5 @@
+[ghorg-bin]
+source = "github"
+github = "gabrie30/ghorg"
+use_latest_release = true
+prefix = "v"
