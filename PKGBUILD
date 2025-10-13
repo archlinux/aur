@@ -1,6 +1,6 @@
 # Maintainer: lyk <lyk-boya@outlook.com>
 pkgname=ttf-lxgw-wenkai-nerd
-pkgver=1.520
+pkgver=1.521
 pkgrel=1
 pkgdesc="LXGW WenKai patched with Nerd Font glyphs"
 arch=('any')
@@ -8,10 +8,10 @@ url="https://github.com/Yikai-Liao/LxgwWenKaiNerdFont"
 license=('OFL')
 depends=()
 makedepends=('unzip')
-_tag='v1.520'
+_tag='v1.521'
 source=("https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/${_tag}/lxgw-wenkai-nerd.zip" \
         "OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/${_tag}/OFL.txt")
-sha256sums=('bc779c8dc41db7c042ca38c45a6ed79a1591bf89cb8204fc11587bd1fd37aa24'
+sha256sums=('c0727ce68a6a8d6e8aff764c0c01900e618e9ee1ad8ae40408e8490a38f8676d'
             'ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614')
 
 package() {
