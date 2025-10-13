@@ -5,7 +5,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=hyperion-hercules
-pkgver=4.8
+pkgver=4.9
 pkgrel=1
 pkgdesc='Software implementation of System/370 and ESA/390'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('x3270: terminal support')
 conflicts=('hercules')
 options=('!makeflags')
 source=("https://github.com/SDL-Hercules-390/hyperion/archive/refs/tags/Release_${pkgver}.tar.gz")
-sha256sums=('91ac45a1cce8196f32a7d7918db6f935c29a891cd0baedeec70f9290bce91de9')
+sha256sums=('a4ace85ee03c222d8885e7f54d767c2c7d9dc491c2bb0eb47c7b948c9c58fdd6')
 
 prepare() {
   ln -sf "hyperion-Release_${pkgver}" p
