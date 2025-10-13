@@ -1,6 +1,6 @@
 # Maintainer: Dogfetus <dogfetus@hotmail.com> 
 pkgname=mal
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A terminal client for MyAnimeList (integrated with ani-cli) written in rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('rust' 'cargo')
 options=(!lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('38106e0fbe6040192c6993a5d97d8bfc36735077d5cb44c80832a8a619f5b626')
+sha256sums=('edc8bc0311830ae54eb07ac00c2cf4c5ce943a733799590a214035b1f127e246')
 
 build() {
   cd "mal-cli-$pkgver"
