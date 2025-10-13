@@ -1,6 +1,6 @@
 pkgbase = libosmo-sccp-git
-	pkgdesc = Osmocom SCCP + Sigtran (M3UA, SUA) library
-	pkgver = 1.9.0.r0.g428ea840
+	pkgdesc = Osmocom library for SCCP (DEPRECATED)
+	pkgver = 1.9.0.r4.gdc822182
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmo-sccp
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libosmo-sccp-git
 	depends = libosmo-netif-git
 	depends = lksctp-tools
 	depends = talloc
-	provides = libosmo-sccp=1.9.0.r0.g428ea840
+	provides = libosmo-sccp=1.9.0.r4.gdc822182
 	provides = libosmo-sigtran.so=10-64
 	conflicts = libosmo-sccp
 	backup = etc/osmocom/osmo-stp.cfg
