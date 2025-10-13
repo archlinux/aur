@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Mote-Software
-pkgver=1.13.4
+pkgver=1.13.5
 pkgrel=1
 
 _npmname=nanocoder
@@ -24,8 +24,8 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkg
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('eae1b8bf4e1aaeed94cbec1bcd6757a9f2f37f674d8170306a686658722f457ed4d54e9b8695659af574521d082ecc19c4f2fbdfb6927ff0e8275bf188e69724'
-        '6402d5bff98c69e740c33c4050491967e0bab2b4ce417b52178311cae6003c3460266ad35c0d3f65b4e0d7aacb272790911227562a1f2c5eae06362d0b403e17'
+b2sums=('5b2923c2e645f451506e08c277179bc4fd6f7a81aa5b2ba301c86ec52af816f2f3f09b02e981bc6a78385cb7fb50ad83708eac4388f4247bfa6a41a203b8c045'
+        '4f92397cbd94f264d25df5eaf170c1948de9d1274c782446adb752514446b22b75b343a13172f0904481937f99d7a2b23e71c355b6c3617fdf4d663b4b7a00a6'
         '346c4fc0cfa08bf4d47a336df216cf8d7352cba66aecff5839700cf5eba59a15e2c5d1275297a8448b04639c37dd445d9ac0dea9bd404bced5fbf62f0b53537b')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
