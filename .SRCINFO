@@ -1,0 +1,19 @@
+pkgbase = beads-git
+	pkgdesc = Dependency-aware issue tracker for AI-supervised coding workflows (git version)
+	pkgver = r28.g00b0292
+	pkgrel = 1
+	url = https://github.com/steveyegge/beads
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.21
+	makedepends = git
+	depends = glibc
+	provides = beads
+	provides = bd
+	conflicts = beads
+	conflicts = beads-bin
+	source = git+https://github.com/steveyegge/beads.git
+	sha256sums = SKIP
+
+pkgname = beads-git
