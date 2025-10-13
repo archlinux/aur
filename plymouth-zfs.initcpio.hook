@@ -1,3 +1,5 @@
+# shellcheck shell=ash
+
 #
 # WARNING: This script is parsed by ash in busybox at boot time, not bash!
 # http://linux.die.net/man/1/ash
@@ -6,6 +8,7 @@
 #
 ZPOOL_FORCE=""
 ZPOOL_IMPORT_FLAGS=""
+ZFS_BOOT_ONLY=""
 
 zfs_get_bootfs () {
     for zfs_dataset in $(zpool list -H -o bootfs); do
@@ -28,31 +31,85 @@ zfs_get_bootfs () {
 zfs_decrypt_fs() {
     dataset=$1
 
-    # check if 'zfs load-key' is available
-    zfs 2>&1 | grep load-key > /dev/null || return 0
+    # Make sure dataset is encrypted; get fails if ZFS does not support encryption
+    encryption="$(zfs get -H -o value encryption "${dataset}" 2>/dev/null)" || return 0
+    [ "${encryption}" != "off" ] || return 0
 
-    # check if dataset is encrypted
-    [ "$(zfs get -H -o value encryption "${dataset}")" != "off" ] || return 0
+    # Make sure the dataset is locked
+    keystatus="$(zfs get -H -o value keystatus "${dataset}")" || return 0
+    [ "${keystatus}" != "available" ] || return 0
 
-    # check if key is already loaded
-    [ "$(zfs get -H -o value keystatus "${dataset}")" != "available" ] || return 0
+    # Make sure the encryptionroot is sensible
+    encryptionroot="$(zfs get -H -o value encryptionroot "${dataset}")" || return 0
+    [ "${encryptionroot}" != "-" ] || return 0
 
-    # get the encryption root
-    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
-
-    # export encription root to be used by other hooks (SSH)
+    # Export encryption root to be used by other hooks (SSH)
     echo "${encryptionroot}" > /.encryptionroot
 
-    # loop until we get the correct password or key is unlocked by another vector (SSH for instance)
-    # while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ] &&
-    #   ! eval zfs load-key "${encryptionroot}"; do
-    #     sleep 2
-    # done
-    # finally load the key
-    plymouth ask-for-password --prompt="Password for ${dataset} dataset" --dont-pause-progress --number-of-tries=5 --command="zfs load-key ${encryptionroot}"
-    
-    # retry if key wasn't loaded
-    [ "$(zfs get -H -o value keystatus "${dataset}")" != "available" ] && zfs_decrypt_fs "${dataset}"
+    prompt_override=""
+    if keylocation="$(zfs get -H -o value keylocation "${encryptionroot}")"; then
+        # If key location is a file, determine if it can by overridden by prompt
+        if [ "${keylocation}" != "prompt" ]; then
+            if keyformat="$(zfs get -H -o value keyformat "${encryptionroot}")"; then
+                [ "${keyformat}" = "passphrase" ] && prompt_override="yes"
+            fi
+        fi
+
+        # If key location is a local file, check if file exists
+        if [ "${keylocation%%://*}" = "file" ]; then
+            keyfile="${keylocation#file://}"
+
+            # If file not yet exist, wait for udev to create device nodes
+            if [ ! -r "${keyfile}" ]; then
+                udevadm settle
+
+                # Wait for udev up to 10 seconds
+                if [ ! -r "${keyfile}" ]; then
+                    echo "Waiting for key ${keyfile} for ${encryptionroot}..."
+                    for _ in $(seq 1 20); do
+                        sleep 0.5s
+                        [ -r "${keyfile}" ] && break
+                    done
+                fi
+
+                if [ ! -r "${keyfile}" ]; then
+                    echo "Key ${keyfile} for ${encryptionroot} hasn't appeared. Trying anyway."
+                fi
+            fi
+        fi
+    fi
+
+    # Loop until key is loaded here or by another vector (SSH, for instance)
+    while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ]; do
+        # Try the default loading mechanism
+        plymouth ask-for-password \
+            --prompt="Password for ${dataset} dataset" \
+            --dont-pause-progress \
+            --number-of-tries=1 \
+            --command="zfs load-key ${encryptionroot}"
+
+        # Check if key was loaded
+        [ "$(zfs get -H -o value keystatus "${dataset}")" = "available" ] && break
+
+        # Load failed, try a prompt if the failure was not a prompt
+        if [ -n "${prompt_override}" ]; then
+            echo "Unable to load key ${keylocation}; please type the passphrase"
+            echo "To retry the file, interrupt now or repeatedly input a wrong passphrase"
+
+            # Try the default loading mechanism
+            plymouth ask-for-password \
+                --prompt="Password for ${dataset} dataset" \
+                --dont-pause-progress \
+                --number-of-tries=1 \
+                --command="zfs load-key ${encryptionroot}"
+
+            # Check if key was loaded
+            [ "$(zfs get -H -o value keystatus "${dataset}")" = "available" ] && break
+        fi
+
+        # Throttle retry attempts
+        sleep 2
+    done
 
     if [ -f /.encryptionroot ]; then
         rm /.encryptionroot
@@ -74,7 +131,7 @@ zfs_mount_handler () {
     local pool="${ZFS_DATASET%%/*}"
     local rwopt_exp="${rwopt:-ro}"
 
-    if ! zpool list -H "${pool}" 2>1 > /dev/null ; then
+    if ! zpool list -H "${pool}" > /dev/null 2>&1; then
         if [ ! "${rwopt_exp}" = "rw" ]; then
             msg "ZFS: Importing pool ${pool} readonly."
             ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -o readonly=on"
@@ -90,7 +147,7 @@ zfs_mount_handler () {
 
     local node="$1"
     local rootmnt=$(zfs get -H -o value mountpoint "${ZFS_DATASET}")
-    local tab_file="${node}/etc/fstab"
+    local tab_file="/etc/fstab"
     local zfs_datasets="$(zfs list -H -o name -t filesystem -r ${ZFS_DATASET})"
 
     # Mount the root, and any child datasets
@@ -98,7 +155,7 @@ zfs_mount_handler () {
         mountpoint=$(zfs get -H -o value mountpoint "${dataset}")
         canmount=$(zfs get -H -o value canmount "${dataset}")
         # skip dataset
-        [ ${canmount} = "off" -o ${mountpoint} = "none" ] && continue
+        [ ${dataset} != "${ZFS_DATASET}" -a \( ${canmount} = "off" -o ${canmount} = "noauto" -o ${mountpoint} = "none" \) ] && continue
         if [ ${mountpoint} = "legacy" ]; then
             if [ -f "${tab_file}" ]; then
                 if findmnt -snero source -F "${tab_file}" -S "${dataset}" > /dev/null 2>&1; then
@@ -119,6 +176,9 @@ set_flags() {
     # Force import the pools, useful if the pool has not properly been exported using 'zpool export <pool>'
     [ ! "${zfs_force}" = "" ] && ZPOOL_FORCE="-f"
 
+    # Disable late hook, useful if we want to use zfs-import-cache.service instead
+    [ ! "${zfs_boot_only}" = "" ] && ZFS_BOOT_ONLY="1"
+
     # Add import directory to import command flags
     [ ! "${zfs_import_dir}" = "" ] && ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -d ${zfs_import_dir}"
     [ "${zfs_import_dir}" = "" ] && [ -f /etc/zfs/zpool.cache.org ] && ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -c /etc/zfs/zpool.cache.org"
@@ -133,6 +193,7 @@ run_hook() {
     case ${root} in
         # root=zfs
         "zfs")
+            ZFS_DATASET="bootfs"
             mount_handler="zfs_mount_handler"
             ;;
         # root=ZFS=... syntax (grub)
@@ -179,7 +240,7 @@ run_hook() {
                               { exit 1 }
                           }" && break
         fi
-        [ $break_after == 1 ] && break
+        [ $break_after = 1 ] && break
         sleep 1
     done
     kill $pid > /dev/null 2>&1
@@ -187,8 +248,8 @@ run_hook() {
 
 run_latehook () {
     set_flags
-    # only run zpool import, if flags were set (cache file found / zfs_import_dir specified)
-    [ ! "${ZPOOL_IMPORT_FLAGS}" = "" ] && zpool import ${ZPOOL_IMPORT_FLAGS} -N -a ${ZPOOL_FORCE}
+    # only run zpool import, if flags were set (cache file found / zfs_import_dir specified) and zfs_boot_only is not set
+    [ ! "${ZPOOL_IMPORT_FLAGS}" = "" ] && [ "${ZFS_BOOT_ONLY}" = "" ] && zpool import ${ZPOOL_IMPORT_FLAGS} -N -a ${ZPOOL_FORCE}
 }
 
 # vim:set ts=4 sw=4 ft=sh et:

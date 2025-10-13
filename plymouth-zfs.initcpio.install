@@ -1,8 +1,6 @@
 #!/bin/bash
 
 build() {
-   
-    # zfs
     map add_module \
         zavl \
         znvpair \
@@ -12,8 +10,6 @@ build() {
         spl
 
     map add_binary \
-        arcstat \
-        dbufstat \
         fsck.zfs \
         mount.zfs \
         seq \
@@ -24,10 +20,10 @@ build() {
         zinject \
         zpool \
         zstreamdump \
-        ztest \
         /lib/udev/vdev_id \
         /lib/udev/zvol_id \
-        findmnt
+        findmnt \
+        udevadm
 
     map add_file \
         /lib/udev/rules.d/60-zvol.rules \
@@ -38,20 +34,15 @@ build() {
     map add_dir \
         /etc/zfs/zed.d
 
-    # add plymouth prompt support
-    add_binary "/usr/lib/plymouth/label.so"
-    add_binary "/usr/lib/plymouth/text.so"
-    add_file "/usr/share/fonts/TTF/DejaVuSans.ttf"
-    add_file "/etc/fonts/fonts.conf"
-    add_file "/etc/fonts/conf.d/60-latin.conf"
-
     add_runscript
 
     # allow mount(8) to "autodetect" ZFS
     echo 'zfs' >>"${BUILDROOT}/etc/filesystems"
 
-    [[ -f /etc/zfs/zpool.cache ]] && add_file "/etc/zfs/zpool.cache"
+    [[ -f /etc/zfs/zpool.cache ]] && cp "/etc/zfs/zpool.cache" "${BUILDROOT}/etc/zfs/zpool.cache.org"
     [[ -f /etc/modprobe.d/zfs.conf ]] && add_file "/etc/modprobe.d/zfs.conf"
+    [[ -f /etc/hostid ]] && add_file "/etc/hostid"
+    [[ -f /etc/fstab ]] && add_file "/etc/fstab"
 }
 
 help() {
