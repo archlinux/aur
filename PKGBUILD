@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=sshguard-git
-pkgver=2.5.1.r15.gfbce1e1
+pkgver=2.5.1.r17.ge1da42d
 pkgrel=1
 pkgdesc="Brute force detector for SSH, Exim, VSFTPD and more. Blocks by ip with iptables"
 arch=('i686' 'x86_64')
