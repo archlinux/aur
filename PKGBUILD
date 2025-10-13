@@ -44,11 +44,10 @@ makedepends=('python-setuptools'
 #             'ds9'
 #             'stk')-xvfb   # bokeh already in makedepends, scipy,typing_extensions <- arviz,optimagic
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "sherpa-test-data-${pkgver}.tar.gz::https://github.com/sherpa/sherpa-test-data/archive/refs/tags/4.17.1.tar.gz"
+#       "sherpa-test-data-${pkgver}.tar.gz::https://github.com/sherpa/sherpa-test-data/archive/refs/tags/4.17.1.tar.gz"
         "${pkgver}-setup.cfg::https://github.com/sherpa/sherpa/raw/refs/tags/${pkgver}/setup.cfg"
         'sherpa_local_fftw.patch')
 md5sums=('6342a97253fb0e65298379c061d6b2fe'
-         '20697fdb974f77e9a1261398ad855e51'
          '089ef5cc28f1702d2f58989bd422d006'
          '4f6a822dd67d19c0170521bad3f30b4f')
 
