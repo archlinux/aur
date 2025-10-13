@@ -1,3 +1,8 @@
+# Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
+# Contributor: H3rmt
+
+# This is a fork of the original hyprswitch as it got renamed to hyprshell!
+
 pkgname=hyprswitch
 # x-release-please-start-version
 pkgver=3.3.2
@@ -5,11 +10,12 @@ pkgver=3.3.2
 pkgrel=1
 pkgdesc="A CLI/GUI that allows switching between windows in Hyprland"
 arch=('any')
-url="https://github.com/h3rmt/hyprswitch/"
+url="https://github.com/egnrse/hyprswitch/"
 license=("MIT")
 makedepends=('cargo')
 depends=('hyprland' 'gtk4-layer-shell' 'gtk4')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/egnrse/hyprswitch/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4007e7dbc8d47b1a2a0afd17ceb0323ea1ae63d07cf0f9e85d6e4c99bc052e10')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -31,4 +37,3 @@ package() {
 post_install() {
     echo "Please restart the hyprswitch daemon"
 }
-sha256sums=('bb6eafec7a725c9ea0bc8ecef1f09687cdb3e0b4a740430d6e8ad601e6d55d22')
