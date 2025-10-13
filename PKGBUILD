@@ -8,7 +8,7 @@ arch=(any) # no native modules
 license=('LGPL-3.0-only')
 url=https://github.com/VOICEVOX/voicevox
 depends=(7zip bash)
-optdepends=(voicevox-core)
+optdepends=(voicevox-engine)
 makedepends=(npm pnpm nodejs-lts-jod git)
 source=( #"git+${url}.git#tag=$pkgver"
 ${url}/archive/refs/tags/${pkgver}.tar.gz
@@ -38,7 +38,10 @@ package() {
   depends+=($_electron)
   install -d "$pkgdir"/usr/lib/VOICEVOX #sync install path with -bin
   cp -r --reflink=auto dist_electron/linux-unpacked/resources "$pkgdir"/usr/lib/VOICEVOX/resources 
-  echo -e "#!/bin/bash\n/usr/bin/${_electron} /usr/lib/VOICEVOX/resources/app.asar \"\$@\"" | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/voicevox
   install -Dm644 dist/icon.png "$pkgdir"/usr/share/pixmaps/voicevox.png
   install -Dm644 "$srcdir"/voicevox.desktop -t "$pkgdir"/usr/share/applications
+  # Use system Electron
+  echo -e "#!/bin/bash\n/usr/bin/${_electron} /usr/lib/VOICEVOX/resources/app.asar \"\$@\"" | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/voicevox
+  install -d "$pkgdir"/usr/lib/$_electron
+  ln -sf /usr/lib/VOICEVOX/vv-engine -t "$pkgdir"/usr/lib/$_electron
 }
