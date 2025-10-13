@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ach
 	pkgdesc = Acholi language pack for Firefox Nightly
-	pkgver = 145.0a1.20251012.212113
+	pkgver = 145.0a1.20251013.083223
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ach
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ach-145.0a1.20251012.212113.xpi
-	source = firefox-nightly-i18n-ach-145.0a1.20251012.212113.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-145.0a1.ach.langpack.xpi
-	sha256sums = de61ef84c5481278218c0418bfbf977748aeabf5fb05f7d63c927a5822af3316
+	noextract = firefox-nightly-i18n-ach-145.0a1.20251013.083223.xpi
+	source = firefox-nightly-i18n-ach-145.0a1.20251013.083223.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-145.0a1.ach.langpack.xpi
+	sha256sums = 878b0f1fe9901cd2f55129bec0d30762677e9a70e4cd475dfa5653e22c74554b
 
 pkgname = firefox-nightly-i18n-ach
