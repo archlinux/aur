@@ -7,7 +7,7 @@
 # Based on https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=todoist-appimage
 
 pkgname=mochi-appimage
-pkgver=1.18.9
+pkgver=1.19.6
 pkgrel=1
 pkgdesc="Flash cards / spaced repetition using markdown"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "https://mochi.cards/releases/${_appimage}"
     "LICENSE"
 )
-sha512sums=('432b156c19012592ae14b2b2b660cdaee3b5dc5d9496fd060f359033c81e1ffeefdc6eb1b6ede0f6ef1152a72048262f27d117a3dae897a0e4d19ba0ffe5f891'
+sha512sums=('5f48b670af47a1a11d201cb5d5e25f4faafe827406dbf3d19e3bb23b1410bbe500111791bc66916ac243b913070ea965b18481f6cb0da9909a7697047c3c9b8d'
             '9a5639982c3181ebb45a90756ec08ed7b2174dce0342abaf8377587d29fe1733e31394b09b87483ded952a467dc2707d1461045f62e5928fdc48490d69d0c3ff')
 noextract=("${_appimage}")
 
