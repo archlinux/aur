@@ -1,0 +1,124 @@
+Description: jazip patches up to 0.34-14
+ This patch includes all patches to jazip, abandonned upstream, since the
+ last official version.  It contains the following fixes:
+  * Correctly check bounds on command line arguments, avoiding crashes and
+    possible exploitation.  Patch from Steve Kemp <skx@debian.org>.
+    Thanks!  (closes: #194577)
+  * mount_z.c: include sys/mount.h and sys/vfs.h instead of linux/fs.h
+    (closes: #200167)
+  * Bug fix: Copy the definition of struct partition from the kernel
+    header instead of including kernel header linux/genhd.h.
+    Thanks to Daniel Schepler <schepler@math.berkeley.edu> (Closes: #225418).
+  * Bug fix: Define getenv properly.  Thanks to lamont@debian.org
+    for reporting it. (Closes: #226537)
+  * Bug fix: "FTBFS: main.c:13:23: error: X11/forms.h: No such file or
+    directory", thanks to Lucas Nussbaum (Closes: #551249).  Adapt to new
+    libforms1 library.
+
+--- jazip-0.34.orig/jazip.conf
++++ jazip-0.34/jazip.conf
+@@ -1,4 +1,4 @@
+-# Configuration file for jaZip
++# /etc/jazip.conf - Configuration file for jaZip
+ #
+ # Raw Device         Mount Point		  Read but ignored
+   /dev/sda              /zip                      auto    auto        0 0
+--- jazip-0.34.orig/main.c
++++ jazip-0.34/main.c
+@@ -11,8 +11,10 @@
+  */
+ 
+ #include <forms.h>
+-#include	<mntent.h>
++#include <mntent.h>
+ #include <unistd.h>
++#include <stdlib.h> /* Define getenv properly.  Thanks to lamont@debian.org
++                       for reporting it. -Peter S Galbraith <psg@debian.org> */
+ #include "pixmaps.h"
+ #include "jazip.h"
+ 
+@@ -37,11 +39,10 @@ int main(int argc, char *argv[])
+ 
+ 	/* Attempt to dodge possible buffer overflow in xforms */
+ 	display = getenv("DISPLAY");
+-	if (strlen(display) > 256){
++	if ((display != NULL)&&(strlen(display) > 256)){
+ 		display[256] = '\0';
+ 		setenv("DISPLAY", display,1);
+ 	}
+-
+ 	fl_initialize (&argc, argv, 0, 0, 0);
+ 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
+ 	fd_jazip = create_form_jazip();
+@@ -54,7 +55,9 @@ int main(int argc, char *argv[])
+ 	}
+ 
+ 	if (argv[1] && (strncmp (argv[1], "-", 1))) {
+-		strcpy (dev, argv[1]);
++                /* Use strncpy instead of strcpy, avoiding crash and exploit
++                   vulnarability.  Steve Kemp <skx@stevekemp.f9.co.uk> */
++		strncpy (dev, argv[1], sizeof(dev)-1);
+ 		while(  mp = getmntent (jazipconf) ){
+ 			if( !strcmp( mp->mnt_fsname, dev ) ) {
+ 				found = 1; 
+@@ -69,7 +72,9 @@ int main(int argc, char *argv[])
+ 		}
+ 	} else {
+ 		mp = getmntent (jazipconf);
+-		strcpy (dev, mp->mnt_fsname);
++                /* Use strncpy instead of strcpy, avoiding crash and exploit
++                   vulnarability.  Steve Kemp <skx@stevekemp.f9.co.uk> */
++		strncpy (dev, mp->mnt_fsname,sizeof(dev)-1);
+ 		endmntent (jazipconf);
+ 	}
+ 
+--- jazip-0.34.orig/mount_z.c
++++ jazip-0.34/mount_z.c
+@@ -11,16 +11,34 @@
+  */
+ 
+ #include <mntent.h>
++/* Use sys/mount.h instead of now deprecated method of using kernel header
++   linux/fs.h - Matthew Wilcox <willy@debian.org> */
++#include <sys/mount.h>
++#include <sys/vfs.h>
+ #include <forms.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+-#include <linux/genhd.h>
+-#include <linux/fs.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include "jazip.h"
+ 
++/* Copy the definition of struct partition from the kernel header instead
++   of including kernel header linux/genhd.h
++   Daniel Schepler <schepler@math.berkeley.edu> */
++struct partition {
++	unsigned char boot_ind;
++	unsigned char head;
++	unsigned char sector;
++	unsigned char cyl;
++	unsigned char sys_ind;
++	unsigned char end_head;
++	unsigned char end_sector;
++	unsigned char end_cyl;
++	unsigned int start_sect;
++	unsigned int nr_sects;
++} __attribute__((packed));
++
+ #define MAXIMUM_PARTS   60
+ #define SECTOR_SIZE  512
+ #define offset(b, n) ((struct partition *)((b) + 0x1be + \
+--- jazip-0.34.orig/jazip.h
++++ jazip-0.34/jazip.h
+@@ -19,7 +19,7 @@
+ 
+ #define IOMEGA_FSTAB	"/etc/jazip.conf"
+ #define LOCK_FILE		"/etc/mtab~"
+-#define DOCDIR			"/usr/doc/jaZip-0.34"  /* this should match the makefile */
++#define DOCDIR			"/usr/share/jazip"  /* this should match the makefile */
+ 
+ /* define a few things to help with deciphering menu selections */
+ #define FILE_EXIT		1

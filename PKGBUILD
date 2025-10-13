@@ -11,26 +11,31 @@ license=('GPL')
 depends=('xforms')
 makedepends=('linux-headers')
 install=jazip.install
+# all_patches_to_0.34-14 and copyright were originally from
+# https://deb.debian.org/debian/pool/main/j/jazip/jazip_0.34-15.1.debian.tar.gz
+# but Debian no longer packages jaZip
 source=("https://structbio.vanderbilt.edu/~jsmith/jazip/jaZip-$_jazver.src.tar.gz"
-        "https://deb.debian.org/debian/pool/main/j/jazip/jazip_$_jazver-$_debver.debian.tar.gz")
+        'all_patches_to_0.34-14'
+        'copyright')
 sha256sums=('d3575c7b9b3d0d8083d7c4752d6d946fac99b71a17fe99918b11e9737592118c'
-            '40d37ca1b779f72830e38a81804a2c3e33fbfb39ed02e6be91a433d8d0315b25')
+            'SKIP'
+            'SKIP')
 
 prepare() {
 	cd "jaZip-$_jazver"
-	cat ../debian/patches/all_patches_to_0.34-14 | patch -p1
+	cat ../all_patches_to_0.34-14 | patch -p1
 }
 
 build() {
 	cd "jaZip-$_jazver"
-	make CFLAGS='-O -fcommon'
+	make CFLAGS='-O -std=gnu99 -fcommon -fpermissive'
 }
 
 package() {
 	cd "jaZip-$_jazver"
 	install -Dm755 jazip "$pkgdir/usr/bin/jazip"
 	install -Dm644 jazip.conf "$pkgdir/etc/jazip.conf"
-	install -Dm644 ../debian/copyright "$pkgdir/usr/share/licenses/jazip"
+	install -Dm644 ../copyright "$pkgdir/usr/share/licenses/jazip"
 	mkdir -p "$pkgdir/usr/share/jazip"
 	cp docs/*.help "$pkgdir/usr/share/jazip"
 }
