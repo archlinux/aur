@@ -1,0 +1,5 @@
+["stacer-bin"]
+source = "github"
+github = "QuentiumYT/Stacer"
+use_latest_release = true
+prefix = "v"

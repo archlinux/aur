@@ -16,8 +16,8 @@ conflicts=('stacer' 'stacer-git')
 
 options=('!strip')
 
-source_x86_64=("https://launchpad.net/~quentiumyt/+archive/ubuntu/${pkgname%-bin}/+files/${pkgname%-bin}_${pkgver}-${pkgrel}+noble_amd64.deb")
-sha512sums_x86_64=('7a59aaabcfc6cb77c000d06558db0881a9ae2fed08eaa5e09a73679bb0de4c5b5036753fb2035a24bda1bf444b04f1b61a19653bfcf15b08ee0a17128b83b050')
+source_x86_64=("https://github.com/QuentiumYT/Stacer/releases/download/v${pkgver}/stacer_${pkgver}-${pkgrel}_amd64.deb")
+sha512sums_x86_64=('e7e9d0ea65c72ad217df154c5bd21057865d73d382cbceec7ff300e1d635cad5cb3eeb33776719eaba8dc6615954fd4ffc02120c42a49ddb3e42888e9f1c4f25')
 
 
 package() {
