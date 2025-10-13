@@ -1,17 +1,20 @@
-pkgbase = ruby-github-markup-git
+pkgbase = ruby-github-markup
 	pkgdesc = The code GitHub uses to render README.markup
-	pkgver = 4.0.0.r5.g4690850
+	pkgver = 5.0.1.r69.g2b0e7f2
 	pkgrel = 1
 	url = https://github.com/github/markup
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = ruby-rdoc
 	depends = ruby
+	depends = ruby-rdoc
+	optdepends = ruby-redcarpet: HTML
+	optdepends = ruby-redcloth: Textile
+	optdepends = asciidoctor: AsciiDoc
 	provides = ruby-github-markup
 	conflicts = ruby-github-markup
 	options = !emptydirs
 	source = git+https://github.com/github/markup.git
 	sha512sums = SKIP
 
-pkgname = ruby-github-markup-git
+pkgname = ruby-github-markup

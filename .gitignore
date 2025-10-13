@@ -1,0 +1,8 @@
+src/
+pkg/
+markup/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.gem
+*.log
