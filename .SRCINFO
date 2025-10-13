@@ -1,14 +1,19 @@
 pkgbase = mpd-server-minimal
 	pkgdesc = Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over alsa as server running under mpd user.
-	pkgver = 0.23.15
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = GPL
-	makedepends = boost
+	license = BSD-2-Clause
+	license = GPL-2.0-or-later
+	license = ISC
+	license = LGPL-2.1-only
+	checkdepends = gtest
+	makedepends = git
 	makedepends = meson
+	makedepends = python-sphinx
 	makedepends = systemd
 	depends = alsa-lib
 	depends = flac
@@ -18,26 +23,23 @@ pkgbase = mpd-server-minimal
 	depends = liburing
 	depends = systemd-libs
 	depends = zlib
-	provides = mpd=0.23.15
+	provides = mpd=0.24.3
 	conflicts = mpd
 	backup = etc/mpd.conf
-	source = https://www.musicpd.org//download/mpd/0.23/mpd-0.23.15.tar.xz
-	source = https://www.musicpd.org//download/mpd/0.23/mpd-0.23.15.tar.xz.sig
+	source = mpd::git+https://github.com/MusicPlayerDaemon/MPD?signed#tag=v0.24.3
 	source = mpd.conf
 	source = mpd.sysusers
 	source = mpd.tmpfiles
 	source = mpd.service.override
 	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
-	sha512sums = 12329dbd0c1994c1bd95b88ce2a62a4c1d691b655e9e4fac7e9ef7066d0be3422b26fad3ea6ca144ba9b21add0a7c492c4f74fd2b68a1539bff2e0d2714db709
-	sha512sums = SKIP
+	sha512sums = 896e637cd662ee8f9c58a724d41546cf6659b2f7edc67a3380d3bd01ea59085c4032b4819f6f974285931fe1282be26c597ef3d83007beffe3b5dd5de1ce845e
 	sha512sums = 25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1
-	sha512sums = d6f36996089cbe746f7d7062e12723d8a41a0118da9301c053e4c244221d7a32b2b0c3d64b604714243be50a98dde00f2513680dc43fc6ac12622200fc234f73
+	sha512sums = 16270936135ed71c733bb0b0d1b513c0931e5f81815522bcdf3827b7781f4e99bcf003d73132fea4871bd915887e970c30144574abebdf1ebec1d6ba2ee60ddd
 	sha512sums = db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d
 	sha512sums = c1782b82f9db1d30aece43a07230c5d57370f2494a16e108af03815d83968805472f10f53ea5495cf0e08ff8f245430c3c3bc44025af43aaf9ecd12fcd6afc6c
-	b2sums = 78036078b850afab900b5d50e44ce83cbbf900369f5028d4177fdbfc4128dd3c35c59a773528a1fcfcc0179d0e579566b827fe87ef780a88082dc3b7f70cd5e7
-	b2sums = SKIP
+	b2sums = 1475144c4bc141894f1984500508594fa9f3c8e6196a0328e76649b0e91ddc9e1b7ee5f82f2b5fdda29b17bfc6c8bb4ea870d1c601b219aa954923b560df18f0
 	b2sums = 0969a3c477b6a3f34b44e067e515d7f306414dd14e0163584417b9d071e3cc825898219f7ff66ead7905b15429b8411304052d3b2b14a72e560bfabf9bf0adcf
-	b2sums = 97e7d992a0c347fa6f34464136e5b603bdf50eb4a4718504c951ab9ef34d17f0f7b9f917974d049b88e54185dce2f64eb0e59fd40aa921b11d9703219809c29e
+	b2sums = 135630d85a5f1a89b98b209aa4e71adb2b48efd4902bfa709c00bb59bca1716c3b70fee8220d4d06ef5ccdbdc5c959f30003a4bdc1c5211b36a2c4a00e1d694c
 	b2sums = d7b587c25dd5830c27af475a8fdd8102139d7c8fdd6f04fe23b36be030e4411582e289f575c299255ff8183096f7d47247327276f9a24641cbd032d9675b837a
 	b2sums = 753664445d7d5cc0b36f51ac66549beea403b9731cbcb81b0a782974a0a73d90559ba93e6afcaa470b6f2f5a844c09ef695bdf3b1e6dfee97aa080f41b7fe513
 

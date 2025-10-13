@@ -2,32 +2,36 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-server-minimal
-pkgver=0.23.15
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over alsa as server running under mpd user."
 arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
-license=(GPL)
+license=(
+  BSD-2-Clause
+  GPL-2.0-or-later
+  ISC
+  LGPL-2.1-only
+)
 depends=(alsa-lib flac fmt icu libmpdclient liburing systemd-libs zlib)
-makedepends=(boost meson systemd)
-provides=("${_pkgname}=${pkgver}")
-conflicts=(${_pkgname})
+makedepends=(git meson python-sphinx systemd)
+checkdepends=(gtest)
+provides=("$_pkgname=$pkgver")
+conflicts=($_pkgname)
 backup=(etc/${_pkgname}.conf)
-source=("${url}/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
-        ${_pkgname}.conf
-        ${_pkgname}.sysusers
-        ${_pkgname}.tmpfiles
-        ${_pkgname}.service.override)
-sha512sums=(12329dbd0c1994c1bd95b88ce2a62a4c1d691b655e9e4fac7e9ef7066d0be3422b26fad3ea6ca144ba9b21add0a7c492c4f74fd2b68a1539bff2e0d2714db709
-            SKIP
+source=($_pkgname::git+https://github.com/MusicPlayerDaemon/MPD?signed#tag=v$pkgver
+        $_pkgname.conf
+        $_pkgname.sysusers
+        $_pkgname.tmpfiles
+        $_pkgname.service.override)
+sha512sums=(896e637cd662ee8f9c58a724d41546cf6659b2f7edc67a3380d3bd01ea59085c4032b4819f6f974285931fe1282be26c597ef3d83007beffe3b5dd5de1ce845e
             25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1
-            d6f36996089cbe746f7d7062e12723d8a41a0118da9301c053e4c244221d7a32b2b0c3d64b604714243be50a98dde00f2513680dc43fc6ac12622200fc234f73
+            16270936135ed71c733bb0b0d1b513c0931e5f81815522bcdf3827b7781f4e99bcf003d73132fea4871bd915887e970c30144574abebdf1ebec1d6ba2ee60ddd
             db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d
             c1782b82f9db1d30aece43a07230c5d57370f2494a16e108af03815d83968805472f10f53ea5495cf0e08ff8f245430c3c3bc44025af43aaf9ecd12fcd6afc6c)
-b2sums=(78036078b850afab900b5d50e44ce83cbbf900369f5028d4177fdbfc4128dd3c35c59a773528a1fcfcc0179d0e579566b827fe87ef780a88082dc3b7f70cd5e7
-        SKIP
+b2sums=(1475144c4bc141894f1984500508594fa9f3c8e6196a0328e76649b0e91ddc9e1b7ee5f82f2b5fdda29b17bfc6c8bb4ea870d1c601b219aa954923b560df18f0
         0969a3c477b6a3f34b44e067e515d7f306414dd14e0163584417b9d071e3cc825898219f7ff66ead7905b15429b8411304052d3b2b14a72e560bfabf9bf0adcf
-        97e7d992a0c347fa6f34464136e5b603bdf50eb4a4718504c951ab9ef34d17f0f7b9f917974d049b88e54185dce2f64eb0e59fd40aa921b11d9703219809c29e
+        135630d85a5f1a89b98b209aa4e71adb2b48efd4902bfa709c00bb59bca1716c3b70fee8220d4d06ef5ccdbdc5c959f30003a4bdc1c5211b36a2c4a00e1d694c
         d7b587c25dd5830c27af475a8fdd8102139d7c8fdd6f04fe23b36be030e4411582e289f575c299255ff8183096f7d47247327276f9a24641cbd032d9675b837a
         753664445d7d5cc0b36f51ac66549beea403b9731cbcb81b0a782974a0a73d90559ba93e6afcaa470b6f2f5a844c09ef695bdf3b1e6dfee97aa080f41b7fe513)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
@@ -37,7 +41,8 @@ build() {
     -D documentation=disabled
     -D html_manual=false
     -D manpages=false
-    -D test=false
+    -D test=true
+    -D libfuzzer=false
     -D syslog=disabled
     -D inotify=true
     -D io_uring=enabled
@@ -60,7 +65,6 @@ build() {
     -D nfs=disabled
     -D smbclient=disabled
     -D qobuz=disabled
-    -D soundcloud=disabled
     -D bzip2=disabled
     -D iso9660=disabled
     -D zzip=disabled
@@ -112,27 +116,31 @@ build() {
     -D expat=disabled
     -D icu=enabled
     -D iconv=disabled
+    -D nlohmann_json=disabled
     -D pcre=disabled
     -D sqlite=disabled
-    -D yajl=disabled
     -D zlib=enabled
     -D zeroconf=disabled
     -D b_ndebug=true
   )
 
-  arch-meson "${_meson_options[@]}" build ${_pkgname}-${pkgver}
-  ninja -C build
+  arch-meson $_pkgname build "${_meson_options[@]}"
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
+  install -vDm644 $_pkgname/doc/mpdconf.example -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 $_pkgname/LICENSES/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm644 $_pkgname.service.override "$pkgdir/usr/lib/systemd/system/mpd.service.d/00-arch.conf"
+  install -vDm644 $_pkgname.conf -t "$pkgdir"/etc/
+  install -vDm644 $_pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -vDm644 $_pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 
-    install -vDm644 ${_pkgname}-${pkgver}/doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
-    install -vDm644 ${_pkgname}.conf -t "${pkgdir}"/etc/
-    install -vDm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-    install -vDm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
-    install -vDm644 ${_pkgname}.service.override "${pkgdir}"/usr/lib/systemd/system/mpd.service.d/00-arch.conf
-
-    # Remove user service
-    rm -rf "${pkgdir}"/usr/lib/systemd/user/
+  # Remove user service
+  rm -rf "${pkgdir}"/usr/lib/systemd/user/
 }
