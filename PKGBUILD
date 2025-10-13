@@ -20,6 +20,6 @@ build(){
 }
 
 package(){
- cd "$pkgname-$pkgver"
+ cd "$(echo $pkgname | xargs basename -s '-crypt')-$pkgver"
  python setup.py install --root="$pkgdir" --optimize=1
 }
