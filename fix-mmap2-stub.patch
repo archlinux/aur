@@ -1,0 +1,14 @@
+diff --git a/libksm_preload.c b/libksm_preload.c
+index 75e14a9..20e3f3b 100644
+--- a/libksm_preload.c
++++ b/libksm_preload.c
+@@ -109,7 +109,8 @@ kernel_mmap2 (void *start, size_t length, int prot, int flags,
+  * function should not be called. If it is called, it error()s.
+  */
+ static void *
+-kernel_mmap2 ()
++kernel_mmap2 (void *start, size_t length, int prot, int flags,
++              int fd, off_t pgoffset)
+ {
+   error (1, 0, "ksm_preload: Fatal error: mmap2 was called but not"
+          " exported. Please contact unbrice@vleu.net .");

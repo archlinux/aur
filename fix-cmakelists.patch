@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7abb1dd..99b14ee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # TODO(unbrice): Confirm it works with earlier versions.
+ # So far, it's tested with 2.8.12.2
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 2.8...3.10)
+ 
+ project(KSM_PRELOAD)
+ 
+@@ -9,7 +9,7 @@ target_link_libraries(ksm_preload dl)
+ install(
+     TARGETS ksm_preload
+     RUNTIME DESTINATION bin
+-    LIBRARY DESTINATION share/ksm_preload
++    LIBRARY DESTINATION lib/
+     NAMELINK_SKIP
+ )
+ 

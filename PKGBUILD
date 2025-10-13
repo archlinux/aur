@@ -1,20 +1,24 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 _pkgname=ksm_preload
 pkgname=$_pkgname-git
-pkgver=0.10.9.r459df0e
-pkgrel=3
+pkgver=0.10.10.r5645e4a
+pkgrel=1
 pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
 url=http://vleu.net/ksm_preload/
 arch=(i686 x86_64)
 license=(GPL3)
 source=("git+https://github.com/unbrice/$_pkgname.git"
-        ksm-wrapper)
+        ksm-wrapper
+        fix-cmakelists.patch
+        fix-mmap2-stub.patch)
 optdepends=('sh: ksm-wrapper script')
 makedepends=(cmake git)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 sha256sums=('SKIP'
-            '8f02470b27c1678ad6041e8c6d3d3bac218c54b14cd306d921e806464b4ca5bd')
+            '8f02470b27c1678ad6041e8c6d3d3bac218c54b14cd306d921e806464b4ca5bd'
+            '355b14fdb1d4121ec021fb3cf5985cf1cc3d8730fe8ddee98705c29847718e12'
+            'b748f505fbb02c1731c1d6564c40290224c7110b3d5dfb950e64b06d9358c3c9')
 
 cdgit() { cd -- "$_pkgname"; }
 
@@ -34,7 +38,10 @@ prepare() {
     # libraries, because /usr/share is supposed to be arch-independent...
     # This will still need a little hacking of ksm-wrapper to get it
     # working with lib32 programs too.
-    sed -i.orig 's.\(LIBRARY DESTINATION\) share/ksm_preload.\1 lib/.g' CMakeLists.txt
+    patch -Np1 < ../fix-cmakelists.patch
+    # Fix mmap2 stub to compile on compilers targeting newer C standards
+    # (empty argument list no longer means unspecified amount of arguments)
+    patch -Np1 < ../fix-mmap2-stub.patch
 }
 
 build() {
@@ -48,7 +55,5 @@ package() {
     make install DESTDIR="$pkgdir"
 
     # Install replacement ksm-wrapper afterwards
-    # The original is unnecessarily complex and is full of silly mistakes.
-    # I will one day get around to poking the author about that...
     install -m755 -Dt "$pkgdir/usr/bin" ../ksm-wrapper
 }
