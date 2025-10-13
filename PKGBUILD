@@ -12,12 +12,12 @@ optdepends=(
     'dunst: alternative notification daemon'
 )
 install=$pkgname.install
-source=()
-sha256sums=()
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 backup=('etc/systemd/logind.conf.d/lid-switch.conf')
 
 package() {
-    cd "$startdir"
+    cd "$srcdir/$pkgname-$pkgver"
     
     # Install main script
     install -Dm755 monitor-manager.sh "$pkgdir/usr/share/$pkgname/monitor-manager.sh"

@@ -13,5 +13,7 @@ pkgbase = hyprland-monitor-manager
 	optdepends = mako: notification daemon for Wayland
 	optdepends = dunst: alternative notification daemon
 	backup = etc/systemd/logind.conf.d/lid-switch.conf
+	source = hyprland-monitor-manager-1.0.0.tar.gz::https://github.com/hongyangchun/hyprland-monitor-manager/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = hyprland-monitor-manager
