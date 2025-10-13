@@ -4,9 +4,9 @@
 
 pkgname=libosmo-abis
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom library for A-bis interface"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://osmocom.org/projects/libosmo-abis"
 license=('GPL-2.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later')
 depends=('libosmocore' # TODO: libosmocore>=1.9.0
