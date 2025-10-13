@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 # Contributor: philomath <philomath868 AT gmail DOT com>
 # Contributor: aksr <aksr at t-com dot me>
