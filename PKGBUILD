@@ -25,7 +25,7 @@ prepare() {
 
 package() {
   install -Dm644 VOICEVOX/resources/app.asar "$pkgdir"/usr/lib/VOICEVOX/resources/app.asar
-  install -Dm644 voicevox.desktop "$pkgdir"/usr/share/applications
+  install -Dm644 voicevox.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 VOICEVOX/vv-engine/resources/engine_manifest_assets/icon.png "$pkgdir"/usr/share/pixmaps/voicevox.png
   # Use system binaries
   ln -sf /usr/lib/7zip/7z "$pkgdir"/usr/lib/VOICEVOX/7zzs
