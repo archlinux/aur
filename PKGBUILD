@@ -114,6 +114,7 @@ build() {
 package() {
   cd "$_dirname"-build32
   DESTDIR="$pkgdir" ninja install
+  rm -rf "$pkgdir"/usr/share/openxr
   cd ../"$_dirname"-build64
   DESTDIR="$pkgdir" ninja install
 }
