@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.24.3
+pkgver=0.24.5
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over pipewire through socket connection as user."
 arch=(i686 x86_64 armv7h)
@@ -13,14 +13,28 @@ license=(
   ISC
   LGPL-2.1-only
 )
-depends=(flac fmt icu libmpdclient libpipewire liburing systemd-libs zlib)
-makedepends=(git meson python-sphinx systemd)
+depends=(
+  flac
+  fmt
+  icu
+  libmpdclient
+  libpipewire
+  liburing
+  systemd-libs
+  zlib
+)
+makedepends=(
+  git
+  meson
+  python-sphinx
+  systemd
+)
 checkdepends=(gtest)
 provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname)
 source=($_pkgname::git+https://github.com/MusicPlayerDaemon/MPD?signed#tag=v$pkgver)
-sha512sums=(896e637cd662ee8f9c58a724d41546cf6659b2f7edc67a3380d3bd01ea59085c4032b4819f6f974285931fe1282be26c597ef3d83007beffe3b5dd5de1ce845e)
-b2sums=(1475144c4bc141894f1984500508594fa9f3c8e6196a0328e76649b0e91ddc9e1b7ee5f82f2b5fdda29b17bfc6c8bb4ea870d1c601b219aa954923b560df18f0)
+sha512sums=(373e41c0b1f093be0e079480b38296df4c6ee1bd2721ead08f1311538b115fff8eec99c406d98e9a92ed090f51bc2baeda0022603276e6ac9c8a7404976f0469)
+b2sums=(2ca7daf77960e24dc9f89380f36efe170bad0df17cd90b5bb3c0b7f24b6d68ad8b07f0fb0a6f73609bf98d5494a653c908793861a1d8b0cf5b2b527d6addd23b)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 build() {
@@ -127,3 +141,5 @@ package() {
   rm -vrf "$pkgdir"/usr/lib/systemd/system/
   sed -e 's/After=network.target /After=/g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "$pkgdir"/usr/lib/systemd/user/mpd.service
 }
+
+# vim:set sw=2 sts-=1 et:
