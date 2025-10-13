@@ -10,6 +10,7 @@ pkgbase = nrc
 	depends = gtk3
 	depends = webkit2gtk
 	depends = xdg-utils
+	depends = libayatana-appindicator
 	source = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.10-beta.3/NoRiskClient-Linux.deb
 	sha256sums = SKIP
 

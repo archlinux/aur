@@ -15,7 +15,7 @@ pkgdesc="NoRiskClient Launcher – A Minecraft client from the YouTuber of the s
 arch=('x86_64')
 url="https://norisk.gg/"
 license=('GPLv3')
-depends=('glibc' 'gtk3' 'webkit2gtk' 'xdg-utils')
+depends=('glibc' 'gtk3' 'webkit2gtk' 'xdg-utils' 'libayatana-appindicator')
 makedepends=('dpkg')
 options=()
 
