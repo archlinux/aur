@@ -4,8 +4,8 @@
 _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
-pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
-pkgrel=9
+pkgver=0.22.0+29.r3904.20241005.abee4dbe
+pkgrel=1
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
   'x86_64'
