@@ -13,7 +13,7 @@ conflicts=('bab-bin')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/archive/refs/tags/v0.0.8.tar.gz")
-sha256sums=('27004ab4989d28a3e33651a204c0378f1ffde52c8041d2f6f7e7e5d9ac74b936')
+sha256sums=('7f616371ccb36664f0771b447aa0d49f653877cfce8d43b7831828135a1965bc')
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
@@ -26,8 +26,8 @@ build() {
   go build \
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X github.com/bab-sh/bab/internal/version.Version=${pkgver} \
-  -X github.com/bab-sh/bab/internal/version.Commit=8512608dc8017e520dfd43dc96093914f2360480 \
-  -X github.com/bab-sh/bab/internal/version.Date=2025-10-13T14:03:37Z \
+  -X github.com/bab-sh/bab/internal/version.Commit=d8afeff2b3d820b7631c8b90b4370adb8f519cbd \
+  -X github.com/bab-sh/bab/internal/version.Date=2025-10-13T14:12:18Z \
   -X github.com/bab-sh/bab/internal/version.BuiltBy=aur" \
   -o bab .
 
