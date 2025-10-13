@@ -1,7 +1,7 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=bbmap
-pkgver=39.36
+pkgver=39.38
 pkgrel=1
 pkgdesc="A short read aligner and other bioinformatic tools"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'samtools: for BAM output'
 )
 source=("${pkgname}"-"${pkgver}".tar.gz::https://downloads.sourceforge.net/project/"${pkgname}"/BBMap_"${pkgver}".tar.gz)
-sha256sums=('f5e87b409fa58fea352343177d208c0c03536cf9569cb802a7006db754a6f99b')
+sha256sums=('a6d3a9b18a3c9228e7d7a570a9f3025237a6fd16f47ee850e5c11caaf15a9aa4')
 
 build() {
   cd "${srcdir}"/"${pkgname}"/jni
