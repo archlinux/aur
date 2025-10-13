@@ -1,6 +1,6 @@
 post_install() {
   echo "Activating the timers:"
   echo "systemctl --user daemon-reload"
-  echo "systemctl --user enable enable-grayscale@21:00.timer"
-  echo "systemctl --user enable disable-grayscale@6:00.timer"
+  echo "systemctl --user enable --now enable-grayscale@21:00.timer"
+  echo "systemctl --user enable --now disable-grayscale@6:00.timer"
 }

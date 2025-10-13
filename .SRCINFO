@@ -1,7 +1,7 @@
 pkgbase = kwin-grayscale-timers
 	pkgdesc = Systemd user timers to toggle Grayscale timers on a schedule
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reactormonk/kwin-grayscale-effect
 	install = kwin-grayscale-timers.install
 	arch = any

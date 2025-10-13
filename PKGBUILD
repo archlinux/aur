@@ -2,7 +2,7 @@
 
 pkgname='kwin-grayscale-timers'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd user timers to toggle Grayscale timers on a schedule"
 depends=('kwin6-grayscale-effect')
 arch=('any')
