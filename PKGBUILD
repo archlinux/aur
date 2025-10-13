@@ -12,7 +12,7 @@ depends=()
 provides=("crosspatch")
 source=("$_pkgname-$pkgver.zip::https://github.com/NickPlayzGITHUB/CrossPatch/releases/download/$pkgver/CrossPatch${pkgver}_linux.zip"
 	"https://raw.githubusercontent.com/NickPlayzGITHUB/CrossPatch/refs/heads/main/assets/CrossP.png")
-sha256sums=("651b2b171a2a625d0c0bf58fed3591dd7a2b80f472add870c6ca2b0cc1525835"
+sha256sums=("641cea8d61c71ac34c6c22461f84d81f86e7f7c6b3c30b680603b38cf47c828d"
 	SKIP)
 
 package() {
