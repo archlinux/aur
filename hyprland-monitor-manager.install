@@ -37,11 +37,41 @@ post_remove() {
     pkill -f "monitor-manager.sh.*daemon" 2>/dev/null || true
     pkill -f "hmonitor.*daemon" 2>/dev/null || true
     
-    echo "==> Please manually remove monitor-manager from your Hyprland config:"
-    echo "    - Remove 'exec-once = hmonitor daemon' from hyprland.conf or autostart.conf"
-    echo "    - Remove keybindings if any (e.g. 'hmonitor toggle')"
+    echo "==> Cleaning up autostart entries..."
+    # Clean up for all users (only root can do this safely, so we provide commands)
+    if [ -n "$SUDO_USER" ]; then
+        USER_HOME=$(eval echo ~$SUDO_USER)
+        HYPR_CONFIG="$USER_HOME/.config/hypr"
+        
+        # Remove from autostart.conf
+        if [ -f "$HYPR_CONFIG/autostart.conf" ]; then
+            sed -i '/hmonitor daemon/d' "$HYPR_CONFIG/autostart.conf" 2>/dev/null || true
+            sed -i '/# Hyprland Monitor Manager/d' "$HYPR_CONFIG/autostart.conf" 2>/dev/null || true
+            echo "   ✓ Removed from autostart.conf"
+        fi
+        
+        # Remove from hyprland.conf
+        if [ -f "$HYPR_CONFIG/hyprland.conf" ]; then
+            sed -i '/hmonitor daemon/d' "$HYPR_CONFIG/hyprland.conf" 2>/dev/null || true
+            sed -i '/# Hyprland Monitor Manager/d' "$HYPR_CONFIG/hyprland.conf" 2>/dev/null || true
+        fi
+    else
+        echo "==> Please manually remove monitor-manager from your Hyprland config:"
+        echo "    - Remove 'exec-once = hmonitor daemon' from hyprland.conf or autostart.conf"
+        echo "    - Remove keybindings if any (e.g. 'hmonitor toggle')"
+    fi
+    
+    echo "==> Cleaning up temporary files..."
+    rm -f /tmp/monitor-manager*.log 2>/dev/null || true
+    rm -f /tmp/monitor-manager-inhibit.lock 2>/dev/null || true
+    echo "   ✓ Temporary files cleaned"
+    
     echo ""
     echo "==> User configuration files preserved at:"
     echo "    ~/.config/hypr/monitor-configs/"
+    echo ""
+    echo "==> To completely remove configuration files:"
+    echo "    rm -rf ~/.config/hypr/monitor-configs/"
+    echo "    rm -rf ~/.config/hypr/monitor-configs.backup*/"
     echo ""
 }
