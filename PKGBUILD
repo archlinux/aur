@@ -51,11 +51,7 @@ package_tlp-git() {
 
   export TLP_NO_INIT=1
   export TLP_SBIN=/usr/bin
-  export TLP_SDSL=/usr/lib/systemd/system-sleep
-  export TLP_SYSD=/usr/lib/systemd/system
-  export TLP_ULIB=/usr/lib/udev
   export TLP_WITH_ELOGIND=0
-  export TLP_WITH_SYSTEMD=1
 
   make DESTDIR="${pkgdir}" -C TLP install-tlp install-man-tlp
 }
