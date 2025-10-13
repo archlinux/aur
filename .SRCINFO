@@ -1,0 +1,21 @@
+pkgbase = netcheck
+	pkgdesc = Check network connectivity
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/gene-git/netcheck
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-hatch
+	makedepends = rsync
+	depends = python>3.13
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = pyconcurrent
+	source = git+https://github.com/gene-git/netcheck#tag=1.9.1
+	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
+	sha512sums = SKIP
+
+pkgname = netcheck
