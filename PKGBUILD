@@ -4,26 +4,16 @@
 
 _pkgname=icann-rdap
 pkgname="$_pkgname-bin"
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
-#epoch=
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/icann/$_pkgname"
 _rawurl="https://raw.githubusercontent.com/icann/$_pkgname/refs/heads/main"
 license=('Apache-2.0 OR MIT')  # SPDX-License-Identifier: Apache-2.0 OR MIT
-#groups=()
 depends=('gcc-libs' 'glibc')
-#makedepends=()
-#checkdepends=()
-#optdepends=()
 provides=('rdap' "$_pkgname")
 conflicts=('openrdap-client' "${provides[@]}")
-#replaces=()
-#backup=()
-#options=()
-#install=
-#changelog=
 source_aarch64=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
   "$_rawurl/LICENSE-APACHE"
@@ -40,8 +30,7 @@ source_x86_64=(
   "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
   "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
 )
-#noextract=()
-#validpgpkeys=()
+_skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   # Binaries
@@ -63,12 +52,12 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '8033d39d86c1a076e5a83a2dcfa79677b13d92db321b5934c5389e939e6c928b'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  '399e550c33ac33c4bc26fae0b4400ad61de3e018244409f18f78654d5a976c76'
+  "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  'b73fa263b20f1f017560c88774d281deabcd24a8daaada64f36e334619ef7a86'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  '92ceae2844add20995ce18d0edebb665521da751c6a77a3d6e2baac457c84a03'
+  "${_skip[@]}"
 )
 
 # eof
