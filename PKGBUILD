@@ -32,10 +32,7 @@ prepare() {
 }
 
 build() {
-    export CC=/usr/bin/gcc-13
-    export CXX=/usr/bin/g++-13
     export CUDA_HOME=/opt/cuda
-    export NVCC_CCBIN=$CC
 
     # Force building FA locally for CUDA (no ROCM).
     export FLASH_ATTENTION_FORCE_BUILD=TRUE
