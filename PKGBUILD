@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=adbmanager-bin
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 pkgdesc="ADB manager for Android devices.(Prebuilt version)"
 arch=('x86_64')
@@ -15,12 +15,13 @@ depends=(
     'nmap'
     'gtk2'
     'sakura'
+    'qt6pas'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('34381d30fb4e91e34b3c47eab26ce103cdbbd08a701ec39d0235dc8bf2474406'
+sha256sums=('ea98ef7afbedc0bb5b4d1e42d4b00c1f53653c0fd5d88d789b91627a1a1160b9'
             'b046dc662796f382c9300642d94724a97c20baf60de1fe9b34844a6a735aaf7d')
 prepare() {
     sed -i -e "
