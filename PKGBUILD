@@ -3,16 +3,17 @@
 # Contributor: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 
 _gitname=Apktool
+_java_version=21
 pkgname=android-apktool-git
-pkgver=2.12.1.r23.ga9642c79
-pkgrel=1
+pkgver=2.12.1.r24.g96779b52
+pkgrel=2
 pkgdesc="a tool for reengineering Android apk files"
 arch=(any)
 url="https://ibotpeaches.github.io/Apktool/"
 license=(Apache)
 depends=(bash 'java-runtime>=8' android-sdk-build-tools)
 conflicts=(android-apktool)
-makedepends=(git 'java-environment>=8' gradle) # openjdk has had issues in the past, be warned!
+makedepends=(git jre${_java_version}-openjdk gradle)
 source=("git+https://github.com/iBotPeaches/$_gitname.git")
 sha512sums=('SKIP')
 
@@ -22,10 +23,9 @@ pkgver() {
 }
 
 build() {
-  pacman -Qs openjdk &> /dev/null && printf "\033[31;1mWarning, there has been issues in the past with OpenJDK and apktool. Please install Oracle's JDK before marking the package as broken.\n\033[0m\n"
-
   # aapt cannot be found without this line
-  PATH="/opt/android-sdk/build-tools/$(ls -1 /opt/android-sdk/build-tools/ | head -1):$PATH"
+  export JAVA_HOME=/usr/lib/jvm/java-${_java_version}-openjdk
+  export PATH="/opt/android-sdk/build-tools/$(ls -1 /opt/android-sdk/build-tools/ | head -1):$PATH"
 
   cd "$srcdir/$_gitname"
 

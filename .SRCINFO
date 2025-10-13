@@ -1,12 +1,12 @@
 pkgbase = android-apktool-git
 	pkgdesc = a tool for reengineering Android apk files
-	pkgver = 2.12.1.r23.ga9642c79
-	pkgrel = 1
+	pkgver = 2.12.1.r24.g96779b52
+	pkgrel = 2
 	url = https://ibotpeaches.github.io/Apktool/
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment>=8
+	makedepends = jre21-openjdk
 	makedepends = gradle
 	depends = bash
 	depends = java-runtime>=8
