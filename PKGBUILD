@@ -1,16 +1,16 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Contributor: <mumei AT airmail DOT cc>
 
 _pkgname=MPDCon
 pkgname=mpdcon.app
-pkgrel=1
+pkgrel=2
 pkgver=1.5.1
 pkgdesc='A client for the Music Player Daemon (MPD)'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.nongnu.org/gap/mpdcon/index.html'
 license=('GPL')
 groups=('gnustep-apps')
-depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'sqlclient' 'libmpdclient')
-makedepends=('gcc-objc' 'gnustep-make' 'libbsd')
+depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'sqlclient' 'libmpdclient' 'libbsd')
+makedepends=('gcc-objc' 'gnustep-make')
 source=("http://savannah.nongnu.org/download/gap/MPDCon-1.5.1.tar.gz")
 sha256sums=('24afca2f8bee967849e28d046dcfc364e26d2dd26ab3c027de2987c89b7ee8da')
 
