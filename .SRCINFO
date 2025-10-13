@@ -1,0 +1,14 @@
+pkgbase = sllm-git
+	pkgdesc = A simple CLI tool written in Rust for calling Large Language Models via the OpenRouter API.
+	pkgver = v0.1.0.r0.g977c067
+	pkgrel = 1
+	url = https://github.com/demetrio108/sllm
+	arch = x86_64
+	license = UNLICENSE
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/demetrio108/sllm
+	sha256sums = SKIP
+
+pkgname = sllm-git
