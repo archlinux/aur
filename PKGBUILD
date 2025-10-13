@@ -2,7 +2,7 @@
 
 pkgname=voicevox
 pkgver=0.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A text-to-speech software'
 arch=(any) # no native modules
 license=('LGPL-3.0-only')
@@ -20,6 +20,7 @@ export HOME=/tmp/pnpmhome
 
 prepare(){
   cd voicevox-$pkgver
+  sed -i "s|vv-engine/run.exe|/usr/lib/VOICEVOX/vv-engine/run|" .env.production # for system Electron
   pnpm install --ignore-scripts # do not DL 900 MB Chromiums
 }
 
@@ -42,6 +43,4 @@ package() {
   install -Dm644 "$srcdir"/voicevox.desktop -t "$pkgdir"/usr/share/applications
   # Use system Electron
   echo -e "#!/bin/bash\n/usr/bin/${_electron} /usr/lib/VOICEVOX/resources/app.asar \"\$@\"" | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/voicevox
-  install -d "$pkgdir"/usr/lib/$_electron
-  ln -sf /usr/lib/VOICEVOX/vv-engine -t "$pkgdir"/usr/lib/$_electron
 }
