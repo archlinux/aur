@@ -6,17 +6,17 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v29.1
+pkgver=v30.0
 pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1759024244
+epoch=1760374425
 
 
-# Release commit for 29.1
-_commit=fed4a26fd64bf38adda80f11b8f7fdfade523e46
+# Release commit for 30.0
+_commit=6cfd509e54d31b82c0db8c0a9abc21e9c1b19ee4
 
 
 pkgdesc='This package provides the Namecoin Core GUI client, CLI daemon, and daemon user service.'
@@ -24,8 +24,8 @@ pkgdesc='This package provides the Namecoin Core GUI client, CLI daemon, and dae
 arch=('i686' 'x86_64')
 url='https://namecoin.org/'
 license=('MIT')
-depends=('desktop-file-utils' 'openssl' 'boost' 'boost-libs' 'libevent' 'qt5-base'
-         'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq' 'sqlite')
+depends=('desktop-file-utils' 'openssl' 'boost' 'boost-libs' 'libevent' 'qt6-base'
+         'qt6-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq' 'sqlite')
 makedepends=('git' 'gzip' 'patch' 'make' 'coreutils' 'cmake' 'doxygen')
 provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
           'namecoin-qt' 'namecoin-tx')
@@ -49,7 +49,7 @@ build() {
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
     make "CMAKE_POLICY_VERSION_MINIMUM=4.0" STATIC=1 -C depends NO_BOOST=1 NO_LIBEVENT=1 NO_QT=1 NO_SQLITE=1 NO_ZMQ=1 NO_USDT=1 NO_QR=1
-    cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM="4.0" -DCMAKE_INSTALL_PREFIX="/usr" -DBerkeleyDB_INCLUDE_DIR:PATH="${srcdir}/namecoin-core/depends/${PLATFORMNAME}/include" -DBerkeleyDB_LIB_DIR:PATH="${srcdir}/namecoin-core/depends/${PLATFORMNAME}/lib" -DWITH_BDB=ON -DENABLE_WALLET=ON -DSECP256K1_INSTALL=ON -DREDUCE_EXPORTS=ON -DBUILD_UTIL_CHAINSTATE=OFF -DBUILD_GUI=ON -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON -DBUILD_WALLET_TOOL=ON -DBUILD_TX=ON -DBUILD_UTIL=ON -DWITH_ZMQ=ON -DAPPEND_LDFLAGS="-static-libstdc++ -s -w"
+    cmake -B build -DCMAKE_POLICY_VERSION_MINIMUM="4.0" -DCMAKE_INSTALL_PREFIX="/usr" -DBerkeleyDB_INCLUDE_DIR:PATH="${srcdir}/namecoin-core/depends/${PLATFORMNAME}/include" -DBerkeleyDB_LIB_DIR:PATH="${srcdir}/namecoin-core/depends/${PLATFORMNAME}/lib" -DWITH_BDB=ON -DENABLE_WALLET=ON -DSECP256K1_INSTALL=ON -DREDUCE_EXPORTS=ON -DBUILD_UTIL_CHAINSTATE=OFF -DBUILD_GUI=ON -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON -DBUILD_WALLET_TOOL=ON -DBUILD_TX=ON -DBUILD_UTIL=ON -DWITH_ZMQ=ON -DENABLE_IPC=OFF -DAPPEND_LDFLAGS="-static-libstdc++ -s -w"
     cmake --build build
 }
 
