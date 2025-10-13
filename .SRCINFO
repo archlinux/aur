@@ -1,5 +1,5 @@
 pkgbase = beads-git
-	pkgdesc = Dependency-aware issue tracker for AI-supervised coding workflows (git version)
+	pkgdesc = A memory upgrade for your coding agent (git version)
 	pkgver = r28.g00b0292
 	pkgrel = 1
 	url = https://github.com/steveyegge/beads
