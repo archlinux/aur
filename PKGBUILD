@@ -7,7 +7,7 @@
 _pkgname="qtscrcpy"
 pkgname="$_pkgname"
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -31,7 +31,7 @@ _pkgsrc_core="qtscrcpycore"
 source=(
   "$_pkgname"::"git+$url.git#tag=v$pkgver"
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
-  "path-fix.patch"
+  "0001-fix-paths.patch"
 )
 sha256sums=(
   'SKIP'
@@ -45,7 +45,10 @@ prepare() {
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/qtscrcpycore"
   git -c protocol.file.allow=always submodule update
 
-  patch -Np1 -F100 -i "$srcdir/path-fix.patch"
+  patch -Np1 -F100 -i "../0001-fix-paths.patch"
+
+  # fix for Qt 6.10
+  sed -E -e 's&(COMPONENTS)&\1 GuiPrivate&' -i QtScrcpy/CMakeLists.txt
 }
 
 build() {
@@ -56,7 +59,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_SKIP_RPATH=ON
-    -DQT_VERSION_MAJOR=6
+    -DQT_DESIRED_VERSION=6
     -Wno-dev
   )
 

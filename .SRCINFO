@@ -1,7 +1,7 @@
 pkgbase = qtscrcpy
 	pkgdesc = Android real-time screencast control tool
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barry-ran/QtScrcpy
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = qtscrcpy
 	backup = etc/qtscrcpy/config.ini
 	source = qtscrcpy::git+https://github.com/barry-ran/QtScrcpy.git#tag=v3.3.1
 	source = qtscrcpycore::git+https://github.com/barry-ran/QtScrcpyCore.git
-	source = path-fix.patch
+	source = 0001-fix-paths.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 16c9470136d4ab84af22b9689e5767b38e7be4eaa41b069546480a44a2776c36
