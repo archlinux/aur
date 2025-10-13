@@ -1,0 +1,18 @@
+pkgbase = pplx-zero
+	pkgdesc = Minimal, fast Perplexity AI search CLI - zero configuration, zero compromises
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/codewithkenzo/pplx-zero
+	arch = any
+	license = MIT
+	makedepends = bun
+	depends = nodejs
+	provides = pplx
+	conflicts = pplx
+	conflicts = pplx-search-engine
+	conflicts = perplexity-fusion-search
+	options = !strip
+	source = pplx-zero-1.0.0.tar.gz::https://github.com/codewithkenzo/pplx-zero/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pplx-zero
