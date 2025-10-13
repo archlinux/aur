@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname='Media Hoarder'
-pkgver=1.4.4
+pkgver=1.4.5
 _electronversion=13
 pkgrel=1
 pkgdesc="The media frontend for data hoarders and movie lovers.(Prebuilt version.Use system-wide electron)"
@@ -21,9 +21,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e93c62638a45d5a8c3c8909b738f1961d0c840f79c421c50c20d30652d74bf5d'
+sha256sums=('ffed84824bd25165a221b83a1360f92eb2aaa03f9418345c86bc65d74f1b703b'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
+
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,6 +37,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/data\/${pkgname%-bin}.db_initial/..\/..\/${pkgname%-bin}\/data\/${pkgname%-bin}.db_initial/g" \
