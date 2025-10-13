@@ -1,7 +1,7 @@
 pkgbase = xrdesktop
 	pkgdesc = Library for XR interaction with classical desktop compositors
 	pkgver = 0.16.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.freedesktop.org/xrdesktop/xrdesktop
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = xrdesktop
 	depends = g3k
 	depends = hicolor-icon-theme
 	optdepends = dconf
-	optdepends = python
+	optdepends = python-gobject: for xrd-settings
 	source = https://gitlab.freedesktop.org/xrdesktop/xrdesktop/-/archive/0.16.0/xrdesktop-0.16.0.tar.gz
 	sha256sums = 8d7a90c181b7a901686df7d8bee612b960eb4703b838df100f3080678c87c0c1
 
