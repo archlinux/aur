@@ -1,7 +1,7 @@
 # Maintainer: atomicfs
 
 pkgname=firmware-action
-pkgver=0.17.5
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
