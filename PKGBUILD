@@ -32,6 +32,9 @@ prepare() {
 }
 
 build() {
+    # By doing this the build will only consume below 40GB of system memory.
+    export MAX_JOBS=4
+
     export CUDA_HOME=/opt/cuda
 
     # Force building FA locally for CUDA (no ROCM).
