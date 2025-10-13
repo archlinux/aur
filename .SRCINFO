@@ -1,7 +1,7 @@
 pkgbase = nitrox
 	pkgdesc = An open-source, multiplayer modification for the game Subnautica.
 	pkgver = 1.8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SubnauticaNitrox/Nitrox
 	arch = x86_64
 	arch = aarch64
