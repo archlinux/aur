@@ -2,32 +2,34 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.23.15
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over pipewire through socket connection as user."
 arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
-license=(GPL)
-depends=(flac fmt icu libmpdclient liburing libpipewire systemd-libs zlib)
-makedepends=(boost git meson python-sphinx systemd)
-provides=("${_pkgname}=${pkgver}")
-conflicts=(${_pkgname})
-source=(${_pkgname}::git+https://github.com/MusicPlayerDaemon/MPD.git#tag=v${pkgver}?signed)
-sha512sums=(bce2314087725e709e5936f9e5e74ac1b4713cb3402aecf75ebc81d7eb7cab0237a6dfc90ba71672ffe60593a9c627b918c44c79e4f081b1b8987dbc2c029e17)
-b2sums=(c48d421ed44e13026ae880f62e03577b8a9dbf23e05adb217f5cfbc5702a7a66d08c353e9d85784203e0e511d23037836dad3053b9a82748c46f1b9d5a5d17a0)
+license=(
+  BSD-2-Clause
+  GPL-2.0-or-later
+  ISC
+  LGPL-2.1-only
+)
+depends=(flac fmt icu libmpdclient libpipewire liburing systemd-libs zlib)
+makedepends=(git meson python-sphinx systemd)
+checkdepends=(gtest)
+provides=("$_pkgname=$pkgver")
+conflicts=($_pkgname)
+source=($_pkgname::git+https://github.com/MusicPlayerDaemon/MPD?signed#tag=v$pkgver)
+sha512sums=(896e637cd662ee8f9c58a724d41546cf6659b2f7edc67a3380d3bd01ea59085c4032b4819f6f974285931fe1282be26c597ef3d83007beffe3b5dd5de1ce845e)
+b2sums=(1475144c4bc141894f1984500508594fa9f3c8e6196a0328e76649b0e91ddc9e1b7ee5f82f2b5fdda29b17bfc6c8bb4ea870d1c601b219aa954923b560df18f0)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
-
-prepare() {
-  cd ${_pkgname}
-  git -c user.name=builduser -c user.email=builduser@build.archlinux.org cherry-pick 1402869715e3efca87942d79c3173a6b21a6925d
-}
 
 build() {
   local _meson_options=(
     -D documentation=enabled
     -D html_manual=false
     -D manpages=true
-    -D test=false
+    -D test=true
+    -D libfuzzer=false
     -D syslog=disabled
     -D inotify=false
     -D io_uring=enabled
@@ -50,7 +52,6 @@ build() {
     -D nfs=disabled
     -D smbclient=disabled
     -D qobuz=disabled
-    -D soundcloud=disabled
     -D bzip2=disabled
     -D iso9660=disabled
     -D zzip=disabled
@@ -102,22 +103,27 @@ build() {
     -D expat=disabled
     -D icu=enabled
     -D iconv=disabled
+    -D nlohmann_json=disabled
     -D pcre=disabled
     -D sqlite=disabled
-    -D yajl=disabled
     -D zlib=enabled
     -D zeroconf=disabled
     -D b_ndebug=true
   )
 
-  arch-meson "${_meson_options[@]}" build ${_pkgname}
-  ninja -C build
+  arch-meson $_pkgname build "${_meson_options[@]}"
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
-    install -vDm644 ${_pkgname}/doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
-    # Remove system services and clean user one
-    rm -vrf "${pkgdir}"/usr/lib/systemd/system/
-    sed -e 's/After=network.target /After=/g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
+  meson install -C build --destdir "$pkgdir"
+  install -vDm644 $_pkgname/doc/mpdconf.example -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 $_pkgname/LICENSES/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  # Remove system services and clean user one
+  rm -vrf "$pkgdir"/usr/lib/systemd/system/
+  sed -e 's/After=network.target /After=/g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "$pkgdir"/usr/lib/systemd/user/mpd.service
 }

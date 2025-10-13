@@ -1,13 +1,16 @@
 pkgbase = mpd-minimal
 	pkgdesc = Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over pipewire through socket connection as user.
-	pkgver = 0.23.15
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = GPL
-	makedepends = boost
+	license = BSD-2-Clause
+	license = GPL-2.0-or-later
+	license = ISC
+	license = LGPL-2.1-only
+	checkdepends = gtest
 	makedepends = git
 	makedepends = meson
 	makedepends = python-sphinx
@@ -16,15 +19,15 @@ pkgbase = mpd-minimal
 	depends = fmt
 	depends = icu
 	depends = libmpdclient
-	depends = liburing
 	depends = libpipewire
+	depends = liburing
 	depends = systemd-libs
 	depends = zlib
-	provides = mpd=0.23.15
+	provides = mpd=0.24.3
 	conflicts = mpd
-	source = mpd::git+https://github.com/MusicPlayerDaemon/MPD.git#tag=v0.23.15?signed
+	source = mpd::git+https://github.com/MusicPlayerDaemon/MPD?signed#tag=v0.24.3
 	validpgpkeys = 0392335A78083894A4301C43236E8A58C6DB4512
-	sha512sums = bce2314087725e709e5936f9e5e74ac1b4713cb3402aecf75ebc81d7eb7cab0237a6dfc90ba71672ffe60593a9c627b918c44c79e4f081b1b8987dbc2c029e17
-	b2sums = c48d421ed44e13026ae880f62e03577b8a9dbf23e05adb217f5cfbc5702a7a66d08c353e9d85784203e0e511d23037836dad3053b9a82748c46f1b9d5a5d17a0
+	sha512sums = 896e637cd662ee8f9c58a724d41546cf6659b2f7edc67a3380d3bd01ea59085c4032b4819f6f974285931fe1282be26c597ef3d83007beffe3b5dd5de1ce845e
+	b2sums = 1475144c4bc141894f1984500508594fa9f3c8e6196a0328e76649b0e91ddc9e1b7ee5f82f2b5fdda29b17bfc6c8bb4ea870d1c601b219aa954923b560df18f0
 
 pkgname = mpd-minimal
