@@ -1,6 +1,6 @@
 pkgbase = elephant-bluetooth
 	pkgdesc = bluetooth provider for elephant
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-bluetooth
 	makedepends = go
 	provides = elephant-bluetooth
 	conflicts = elephant-bluetooth
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.1.6.tar.gz
-	sha256sums = 3d56668a4de7cdd1bbc390ed3850fa7080e18c0da8a97f87e01689b2198281d3
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.1.7.tar.gz
+	sha256sums = 69ee2229f70878d10dd84cb7acd4c996bde70b28f763db5fc152f53b36cc1f92
 
 pkgname = elephant-bluetooth
