@@ -6,14 +6,10 @@
 ## options
 : ${_plugin_aja:=false}
 
-# build-aux/modules/99-cef.json
-: ${_cef_branch:=6533}
-: ${_cef_ver=_v6}
-
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
 pkgver=32.0.1.r0.g0b12296
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
 license=("GPL-2.0-or-later")
@@ -76,8 +72,8 @@ else
   _plugin_aja='OFF'
 fi
 
-provides=("obs-studio=$pkgver")
-conflicts=("obs-studio")
+provides=("$_pkgname=${pkgver%%.g*}")
+conflicts=("$_pkgname")
 
 options=('!lto' '!strip')
 
@@ -103,13 +99,16 @@ _source_cef() {
     'nss'
   )
 
-  _cef_src="cef_binary_${_cef_branch}_linux_${CARCH}"
-  _cef_ext="tar.xz"
-  _cef_filename="$_cef_src$_cef_ver.$_cef_ext"
-  _cef_dl_url="https://cdn-fastly.obsproject.com/downloads"
+  local _response _cef_dl_url _cef_hash _cef_filename
+  _response=$(curl -Ssf --follow --retry 3 "$url/raw/refs/heads/master/build-aux/modules/99-cef.json")
 
-  source+=("$_cef_filename"::"$_cef_dl_url/$_cef_filename")
-  sha256sums+=('SKIP')
+  _cef_dl_url=$(grep -Pom1 '"url": "\K[^"]+' <<< "$_response")
+  _cef_hash=$(grep -Pom1 '"sha256": "\K[0-9a-f]+' <<< "$_response")
+  _cef_filename=$(basename "$_cef_dl_url")
+  _cef_src=$(sed -E 's&(_v[0-9]+)?\..*$&&' <<< "$_cef_filename")
+
+  source+=("$_cef_filename"::"$_cef_dl_url")
+  sha256sums+=("$_cef_hash")
 }
 
 _source_main
@@ -125,11 +124,21 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  gitconf="protocol.file.allow=always"
+  local gitconf="protocol.file.allow=always"
 
+  git rm -r deps/libdshowcapture/src
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c $gitconf submodule update
+
+  # fix for Qt 6.10
+  sed -e 's&Qt::GuiPrivate&&' \
+    -i frontend/cmake/os-freebsd.cmake frontend/cmake/os-linux.cmake
+
+  sed -e '/GuiPrivate/d' \
+    -i frontend/plugins/aja-output-ui/CMakeLists.txt \
+    frontend/plugins/decklink-output-ui/CMakeLists.txt \
+    frontend/plugins/frontend-tools/CMakeLists.txt
 }
 
 build() (
@@ -149,8 +158,6 @@ build() (
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON
     -DENABLE_BROWSER=ON # qrcodegencpp-cmake
     -DENABLE_LIBFDK=ON
-    -DENABLE_UNIT_TESTS=OFF
-    -DBUILD_TESTS=OFF
     -Wno-dev
 
     -DENABLE_AJA="${_plugin_aja:?}"
