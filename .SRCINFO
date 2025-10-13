@@ -1,21 +1,21 @@
 pkgbase = simple-web-server-bin
 	pkgdesc = Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.15
-	pkgrel = 3
+	pkgver = 1.2.17
+	pkgrel = 1
 	url = https://simplewebserver.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron33
-	provides = simple-web-server=1.2.15
+	depends = electron38
+	provides = simple-web-server=1.2.17
 	conflicts = simple-web-server
-	source = LICENSE-1.2.15::https://raw.githubusercontent.com/terreng/simple-web-server/v1.2.15/LICENSE
+	source = LICENSE-1.2.17::https://raw.githubusercontent.com/terreng/simple-web-server/v1.2.17/LICENSE
 	source = simple-web-server.sh
 	sha256sums = 57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = simple-web-server-1.2.15-aarch64.rpm::https://github.com/terreng/simple-web-server/releases/download/v1.2.15/Simple-Web-Server-Linux-1.2.15-aarch64.rpm
-	sha256sums_aarch64 = 8e153f6e0b980e7e17ab004bd3693a68977363338ca5c8d0b023e09330c60707
-	source_x86_64 = simple-web-server-1.2.15-x86_64.rpm::https://github.com/terreng/simple-web-server/releases/download/v1.2.15/Simple-Web-Server-Linux-1.2.15-x86_64.rpm
-	sha256sums_x86_64 = 1b9bedc5cfc59edf8bb546dbcae3c92daf1f13c5225c3bb0a884fe7366df3836
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = simple-web-server-1.2.17-aarch64.deb::https://github.com/terreng/simple-web-server/releases/download/v1.2.17/Simple-Web-Server-Linux-1.2.17-arm64.deb
+	sha256sums_aarch64 = 7cb409ad22cf74c31fee737e7c04a5194873b05deb9e886d9d3c90b9e3a50e70
+	source_x86_64 = simple-web-server-1.2.17-x86_64.rdebpm::https://github.com/terreng/simple-web-server/releases/download/v1.2.17/Simple-Web-Server-Linux-1.2.17-amd64.deb
+	sha256sums_x86_64 = 6a39be7f723f4305bab5aa8b60dd2a5372939b85aa46db2bf10366e02de71411
 
 pkgname = simple-web-server-bin

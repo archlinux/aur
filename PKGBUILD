@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-web-server-bin
 _pkgname=Simple-Web-Server
-pkgver=1.2.15
-_electronversion=33
-pkgrel=3
+pkgver=1.2.17
+_electronversion=38
+pkgrel=1
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -17,16 +17,20 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rdebpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}-amd64.deb")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/terreng/simple-web-server/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('8e153f6e0b980e7e17ab004bd3693a68977363338ca5c8d0b023e09330c60707')
-sha256sums_x86_64=('1b9bedc5cfc59edf8bb546dbcae3c92daf1f13c5225c3bb0a884fe7366df3836')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('7cb409ad22cf74c31fee737e7c04a5194873b05deb9e886d9d3c90b9e3a50e70')
+sha256sums_x86_64=('6a39be7f723f4305bab5aa8b60dd2a5372939b85aa46db2bf10366e02de71411')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname//-/ }/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,6 +39,8 @@ prepare() {
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\"\/opt\/${_pkgname//-/ }\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
