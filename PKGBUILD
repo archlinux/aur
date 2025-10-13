@@ -1,6 +1,6 @@
 # Maintainer: Hongyang Chun <your-email@example.com>
 pkgname=hyprland-monitor-manager
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Smart monitor and lid management for Hyprland with automatic detection and configuration"
 arch=('any')
