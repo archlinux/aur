@@ -4,7 +4,7 @@ pkgver=1.2.1.r1.d78c34f
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
-url="https://github.com/DNS-OARC/dnsjit"
+url="https://codeberg.org/DNS-OARC/dnsjit"
 license=('GPL3')
 depends=(
     'luajit'
@@ -21,7 +21,7 @@ makedepends=(
     )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/DNS-OARC/${pkgname%-git}.git")
+source=("git+https://codeberg.org/DNS-OARC/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
