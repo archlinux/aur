@@ -12,7 +12,7 @@ pkgname='netcheck'
 pkgdesc='Check network connectivity'
 _gitname='netcheck'
 
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 url="https://github.com/gene-git/netcheck"
 
@@ -20,7 +20,12 @@ arch=(any)
 license=(MIT)
 
 # To build docs uncommont sphinx/texlive
-depends=('python>3.13' 'python-pandas' 'python-matplotlib' 'pyconcurrent')
+depends=('python>3.13'
+         'python-pandas'
+         'python-matplotlib'
+         'pyconcurrent'
+         'python-dateutil')
+
 makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )

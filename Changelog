@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : netcheck
- Tags         :  ➙ 1.9.1
-              :  ➙ 2025-10-13
+ Tags         : 1.9.1 ➙ 1.9.2
+              : 2025-10-13 ➙ 2025-10-13
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-10-13   : 1.9.2
+              - Add missing depenency python-dateutil in Arch PKGBUILD
+              - update Docs Changelogs
 
  2025-10-13   : 1.9.1
               - Update AUR PKGBUILD with current version
