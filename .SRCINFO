@@ -1,0 +1,19 @@
+pkgbase = sshctl-bin
+	pkgdesc = SSH connection manager CLI tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/AndreLeclercq/sshctl
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = sshctl
+	conflicts = sshctl
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/AndreLeclercq/sshctl/v0.2.0/LICENSE
+	source = README-0.2.0.md::https://raw.githubusercontent.com/AndreLeclercq/sshctl/v0.2.0/README.md
+	sha256sums = e7f548f1aa97fa7643e69bbca7eb0527defb3ea4ccca1d8871df9b5a2a6821fa
+	sha256sums = 5fbc74dd0dffb6115dafcbc5a63ceca04011002c421bd4db6c135b4d2e421923
+	source_x86_64 = sshctl-x86_64-0.2.0.txz::https://github.com/AndreLeclercq/sshctl/releases/download/v0.2.0/sshctl-v0.2.0-linux-x86_64.tar.xz
+	sha256sums_x86_64 = ee787929ccdb5a76724d2e5dd2dbb9d4ae2dc8fc55db2d79d9bd1bd0b8a6fc2e
+
+pkgname = sshctl-bin

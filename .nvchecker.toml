@@ -1,0 +1,5 @@
+[sshctl-bin]
+source = "github"
+github = "AndreLeclercq/sshctl"
+use_latest_release = true
+prefix = "v"
