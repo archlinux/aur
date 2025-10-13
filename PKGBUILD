@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Maestri <umpire274@gmail.com>
 pkgname=librius
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A fast, minimalist CLI to manage your personal book collection — built in Rust."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('24cd5707f9bdd5551108ab423e814f0a3cccb331a5ffa7454e34cdd6bcd7be81')
+sha256sums=('beab9fd46a5c020ba539833820a7299db50a3087b2de75979247eb6b5f893e7b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
