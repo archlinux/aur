@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 pkgname=sysd-manager
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A systemd GUI to manage your Services, Timers, Sockets and other units. You can enable, disable, stop and start them. Also, you can view their config file and peak at their journal logs."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=CHANGELOG.md
-_commit=4a020bdd15c0f9b3c08fe7569386208b82c91296
+_commit=3ad296d443f09a55da068698fd01a187c9fe764d
 source=("https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('bbeab8d64d8962d261860a301f38a7ef9a6687d2663503e9ae7f55fc2de01d2b')
