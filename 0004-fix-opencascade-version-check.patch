@@ -1,7 +1,7 @@
 https://github.com/supermerill/SuperSlicer/issues/3912#issuecomment-1675135988
 
---- src/occt_wrapper/CMakeLists.txt.bak	2024-11-20 13:23:45.624527309 +0100
-+++ src/occt_wrapper/CMakeLists.txt	2024-11-20 13:23:56.347478724 +0100
+--- a/src/occt_wrapper/CMakeLists.txt	2024-11-20 13:23:45.624527309 +0100
++++ b/src/occt_wrapper/CMakeLists.txt	2024-11-20 13:23:56.347478724 +0100
 @@ -19,7 +19,12 @@
  
  generate_export_header(OCCTWrapper)

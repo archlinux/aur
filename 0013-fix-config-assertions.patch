@@ -1,0 +1,191 @@
+From 36e5acadd1eca97ff50c9e55539494de3bb06257 Mon Sep 17 00:00:00 2001
+From: supermerill <merill@free.fr>
+Date: Thu, 27 Jun 2024 14:42:07 +0200
+Subject: [PATCH] fix linux and some warnings
+
+---
+ src/libslic3r/PlaceholderParser.cpp |  2 +-
+ src/libslic3r/Preset.cpp            |  2 +-
+ src/libslic3r/Print.cpp             |  2 +-
+ src/libslic3r/PrintConfig.cpp       | 63 ++++++++++++++++-------------
+ src/slic3r/GUI/GraphDialog.cpp      |  2 +-
+ 5 files changed, 39 insertions(+), 32 deletions(-)
+
+diff --git a/src/libslic3r/PlaceholderParser.cpp b/src/libslic3r/PlaceholderParser.cpp
+index e143f272707..013228f5f82 100644
+--- a/src/libslic3r/PlaceholderParser.cpp
++++ b/src/libslic3r/PlaceholderParser.cpp
+@@ -1810,7 +1810,7 @@ void PlaceholderParser::parse_custom_variables(const ConfigOptionStrings& filame
+     std::map<std::string, std::vector<std::string>> name2var_array;
+     const std::vector<std::string> empty_array(filament_custom_variables.values.size());
+ 
+-    for (int extruder_id = 0; extruder_id < filament_custom_variables.values.size(); ++extruder_id)
++    for (size_t extruder_id = 0; extruder_id < filament_custom_variables.values.size(); ++extruder_id)
+     {
+         std::string raw_text = filament_custom_variables.values[extruder_id];
+         boost::erase_all(raw_text, "\r");
+diff --git a/src/libslic3r/Preset.cpp b/src/libslic3r/Preset.cpp
+index 6c62a83846c..4dc23cda34c 100644
+--- a/src/libslic3r/Preset.cpp
++++ b/src/libslic3r/Preset.cpp
+@@ -314,7 +314,7 @@ void Preset::normalize(DynamicPrintConfig &config)
+                 static_cast<ConfigOptionVectorBase*>(opt)->resize(n, defaults.option(key));
+         }
+         // The following keys are mandatory for the UI, but they are not part of FullPrintConfig, therefore they are handled separately.
+-        for (const std::string &key : { "filament_settings_id" }) {
++        for (const char *key : {"filament_settings_id"}) {
+             auto *opt = config.option(key, false);
+             assert(opt == nullptr || opt->type() == coStrings);
+             if (opt != nullptr && opt->type() == coStrings)
+diff --git a/src/libslic3r/Print.cpp b/src/libslic3r/Print.cpp
+index 40dad440ad5..c4263f1e968 100644
+--- a/src/libslic3r/Print.cpp
++++ b/src/libslic3r/Print.cpp
+@@ -1788,7 +1788,7 @@ DynamicConfig PrintStatistics::config() const
+ DynamicConfig PrintStatistics::placeholders()
+ {
+     DynamicConfig config;
+-    for (const std::string &key : { 
++    for (const char *key : { 
+         "print_time", "normal_print_time", "silent_print_time", 
+         "used_filament", "extruded_volume", "total_cost", "total_weight", 
+         "total_toolchanges", "total_wipe_tower_cost", "total_wipe_tower_filament",
+diff --git a/src/libslic3r/PrintConfig.cpp b/src/libslic3r/PrintConfig.cpp
+index 741682dfeaa..efe0d8ecf99 100644
+--- a/src/libslic3r/PrintConfig.cpp
++++ b/src/libslic3r/PrintConfig.cpp
+@@ -7917,17 +7917,19 @@ void PrintConfigDef::handle_legacy(t_config_option_key &opt_key, std::string &va
+ 
+     // In PrusaSlicer 2.3.0-alpha0 the "monotonic" infill was introduced, which was later renamed to "monotonous".
+     if (value == "monotonous" && (opt_key == "top_fill_pattern" || opt_key == "bottom_fill_pattern" || opt_key == "fill_pattern"
+-            || opt_key == "solid_fill_pattern" || opt_key == "bridge_fill_pattern" || opt_key == "support_material_interface_pattern"))
++            || opt_key == "solid_fill_pattern" || opt_key == "bridge_fill_pattern" || opt_key == "support_material_interface_pattern")) {
+         value = "monotonic";
++    }
+     // some changes has occurs between rectilineargapfill and monotonicgapfill. Set them at the right value for each type
+     if (value == "rectilineargapfill" && (opt_key == "top_fill_pattern" || opt_key == "bottom_fill_pattern") )
+         value = "monotonicgapfill";
+-    if (opt_key == "fill_pattern" || opt_key == "support_material_interface_pattern")
+-        if (value == "rectilineargapfill")
++    if (opt_key == "fill_pattern" || opt_key == "support_material_interface_pattern") {
++        if (value == "rectilineargapfill") {
+             value = "rectilinear";
+-        else if (value == "monotonicgapfill")
++        } else if (value == "monotonicgapfill") {
+             value = "monotonic";
+-
++        }
++    }
+     if (ignore.find(opt_key) != ignore.end()) {
+         opt_key = "";
+         return;
+@@ -7937,9 +7939,9 @@ void PrintConfigDef::handle_legacy(t_config_option_key &opt_key, std::string &va
+         opt_key = "raft_first_layer_density";
+         value = "100";
+     }
+-    if (boost::starts_with(opt_key, "thin_perimeters") && value == "1")
++    if (boost::starts_with(opt_key, "thin_perimeters") && value == "1") {
+         value = "100%";
+-
++    }
+     if ("fan_always_on" == opt_key) {
+         if (value != "1") {
+             //min_fan_speed is already converted to default_fan_speed, just has to deactivate it if not always_on
+@@ -7968,8 +7970,9 @@ void PrintConfigDef::handle_legacy(t_config_option_key &opt_key, std::string &va
+                 }
+             }
+         }
+-        if (remove_unkown_keys)
++        if (remove_unkown_keys) {
+             opt_key = "";
++        }
+         return;
+     }
+ }
+@@ -8149,13 +8152,13 @@ void _convert_from_prusa(CONFIG_CLASS& conf, const DynamicPrintConfig& global_co
+     // set phony entries
+     if (with_phony) {
+         for (auto &[opt_key_width, opt_key_spacing] :
+-             {std::pair<char *, char *>{"extrusion_width", "extrusion_spacing"},
+-              std::pair<char *, char *>{"perimeter_extrusion_width", "perimeter_extrusion_spacing"},
+-              std::pair<char *, char *>{"external_perimeter_extrusion_width", "external_perimeter_extrusion_spacing"},
+-              std::pair<char *, char *>{"first_layer_extrusion_width", "first_layer_extrusion_spacing"},
+-              std::pair<char *, char *>{"infill_extrusion_width", "infill_extrusion_spacing"},
+-              std::pair<char *, char *>{"solid_infill_extrusion_width", "solid_infill_extrusion_spacing"},
+-              std::pair<char *, char *>{"top_infill_extrusion_width", "top_infill_extrusion_spacing"}}) {
++             {std::pair<const char *, const char *>{"extrusion_width", "extrusion_spacing"},
++              std::pair<const char *, const char *>{"perimeter_extrusion_width", "perimeter_extrusion_spacing"},
++              std::pair<const char *, const char *>{"external_perimeter_extrusion_width", "external_perimeter_extrusion_spacing"},
++              std::pair<const char *, const char *>{"first_layer_extrusion_width", "first_layer_extrusion_spacing"},
++              std::pair<const char *, const char *>{"infill_extrusion_width", "infill_extrusion_spacing"},
++              std::pair<const char *, const char *>{"solid_infill_extrusion_width", "solid_infill_extrusion_spacing"},
++              std::pair<const char *, const char *>{"top_infill_extrusion_width", "top_infill_extrusion_spacing"}}) {
+             // if prusa has defined a width, or if the conf has a default spacing that need to be overwritten
+             if (conf.option(opt_key_width) != nullptr || conf.option(opt_key_spacing) != nullptr) {
+                 ConfigOption *opt_new = print_config_def.get(opt_key_spacing)->default_value.get()->clone();
+@@ -8256,13 +8259,13 @@ void _deserialize_maybe_from_prusa(const std::map<t_config_option_key, std::stri
+     if (with_phony) {
+         const ConfigDef *def = config.def();
+         for (const auto& [opt_key_width, opt_key_spacing] :
+-                {std::pair<char *, char *>{"extrusion_width", "extrusion_spacing"},
+-                std::pair<char *, char *>{"perimeter_extrusion_width", "perimeter_extrusion_spacing"},
+-                std::pair<char *, char *>{"external_perimeter_extrusion_width", "external_perimeter_extrusion_spacing"},
+-                std::pair<char *, char *>{"first_layer_extrusion_width", "first_layer_extrusion_spacing"},
+-                std::pair<char *, char *>{"infill_extrusion_width", "infill_extrusion_spacing"},
+-                std::pair<char *, char *>{"solid_infill_extrusion_width", "solid_infill_extrusion_spacing"},
+-                std::pair<char *, char *>{"top_infill_extrusion_width", "top_infill_extrusion_spacing"}}) {
++                {std::pair<const char *, const char *>{"extrusion_width", "extrusion_spacing"},
++                std::pair<const char *, const char *>{"perimeter_extrusion_width", "perimeter_extrusion_spacing"},
++                std::pair<const char *, const char *>{"external_perimeter_extrusion_width", "external_perimeter_extrusion_spacing"},
++                std::pair<const char *, const char *>{"first_layer_extrusion_width", "first_layer_extrusion_spacing"},
++                std::pair<const char *, const char *>{"infill_extrusion_width", "infill_extrusion_spacing"},
++                std::pair<const char *, const char *>{"solid_infill_extrusion_width", "solid_infill_extrusion_spacing"},
++                std::pair<const char *, const char *>{"top_infill_extrusion_width", "top_infill_extrusion_spacing"}}) {
+             const ConfigOption *opt_width = config.option(opt_key_width);
+             const ConfigOption *opt_spacing = config.option(opt_key_spacing);
+             if (opt_width && opt_spacing) {
+@@ -8822,8 +8823,10 @@ DynamicPrintConfig* DynamicPrintConfig::new_from_defaults_keys(const std::vector
+ 
+ const ConfigOption *MultiPtrPrintConfig::optptr(const t_config_option_key &opt_key) const
+ {
+-    for (auto conf : storages) {
++    for (ConfigBase *conf : storages) {
++#ifdef _DEBUG
+         assert(conf->exists());
++#endif
+         const ConfigOption *opt = conf->optptr(opt_key);
+         if (opt)
+             return opt;
+@@ -8833,8 +8836,10 @@ const ConfigOption *MultiPtrPrintConfig::optptr(const t_config_option_key &opt_k
+ ConfigOption *MultiPtrPrintConfig::optptr(const t_config_option_key &opt_key, bool create)
+ {
+     assert(!create);
+-    for (auto conf : storages) {
++    for (ConfigBase *conf : storages) {
++#ifdef _DEBUG
+         assert(conf->exists());
++#endif
+         ConfigOption *opt = conf->optptr(opt_key);
+         if (opt)
+             return opt;
+@@ -8846,8 +8851,10 @@ t_config_option_keys MultiPtrPrintConfig::keys() const
+     assert(false);
+     // shouldn't need ot call that
+     t_config_option_keys keys;
+-    for (auto conf : storages) {
++    for (ConfigBase *conf : storages) {
++#ifdef _DEBUG
+         assert(conf->exists());
++#endif
+         append(keys, conf->keys());
+     }
+     return keys;
+@@ -8919,7 +8926,7 @@ double min_object_distance(const ConfigBase *config, double ref_height /* = 0*/)
+     double base_dist = 0;
+     //std::cout << "START min_object_distance =>" << base_dist << "\n";
+     const ConfigOptionBool* co_opt = config->option<ConfigOptionBool>("complete_objects");
+-    if (config->option("parallel_objects_step")->get_float() > 0 || co_opt && co_opt->value) {
++    if ((config->option("parallel_objects_step")->get_float() > 0) || (co_opt && co_opt->value)) {
+         double skirt_dist = 0;
+         try {
+             std::vector<double> vals = dynamic_cast<const ConfigOptionFloats*>(config->option("nozzle_diameter"))->get_values();
