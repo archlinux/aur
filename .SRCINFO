@@ -15,6 +15,7 @@ pkgbase = tuxnix-sway
 	depends = otf-font-awesome
 	depends = qt6ct
 	depends = waybar
+	optdepends = falkon: key list (mod+k)
 	source = git+https://codeberg.org/tuxnix/tuxnix-sway
 	sha512sums = SKIP
 

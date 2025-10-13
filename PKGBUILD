@@ -11,16 +11,17 @@ url='https://codeberg.org/tuxnix/tuxnix-sway'
 arch=('any')
 license=('GLPv2-only')
 depends=('alacritty' 'bemenu' 'foot' 'htop' 'kdialog' 'sway' 'otf-font-awesome' 'qt6ct' 'waybar')
+optdepends=('falkon: key list (mod+k)')
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/tuxnix-sway')
 sha512sums=('SKIP')
 
 package() {
     cd "$srcdir/$_name"
-    install -Dm644 sway-desk-M.config "$pkgdir/etc/skel/.config/sway/config"
-    install -Dm644 sway-desk-M.config "$pkgdir/etc/skel/.config/sway/desk-M/config"
-    install -Dm644 sway-desk-W.config "$pkgdir/etc/skel/.config/sway/desk-W/config"
-    install -Dm644 sway-ardour.config "$pkgdir/etc/skel/.config/sway/ardour/config"
+    install -Dm644 desk-M.config "$pkgdir/etc/skel/.config/sway/config"
+    install -Dm644 desk-M.config "$pkgdir/etc/skel/.config/sway/desk-M/config"
+    install -Dm644 desk-W.config "$pkgdir/etc/skel/.config/sway/desk-W/config"
+    install -Dm644 ardour.config "$pkgdir/etc/skel/.config/sway/ardour/config"
     install -Dm644 waybar.config "$pkgdir/etc/skel/.config/waybar/config"
     install -Dm644 style.css "$pkgdir/etc/skel/.config/waybar/style.css"
     install -Dm605 keys-md "$pkgdir/usr/local/bin/keys-md"
