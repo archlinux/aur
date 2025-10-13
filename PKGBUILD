@@ -15,7 +15,7 @@ sha256sums=('d4b2fcabc4b57cdc0eb8e115518ee67f988ae5a8be0f229c455b0b6fc060c6fb')
 options=("!strip")
 
 build(){
- cd "$pkgname-$pkgver"
+ cd "$(echo $pkgname | xargs basename -s '-crypt')-$pkgver"
  python setup.py build
 }
 
