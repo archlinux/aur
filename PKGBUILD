@@ -7,12 +7,16 @@ arch=('x86_64')
 url="https://codeberg.org/DNS-OARC/dnsjit"
 license=('GPL-3.0-or-later')
 depends=(
-    'luajit'
-    'libpcap'
-    'lmdb'
+    'gcc-libs'
+    'glibc'
     'gnutls'
     'libck'
+    'libpcap'
+    'lmdb'
+    'luajit'
     'lz4'
+    'xz'
+    'zlib'
     'zstd'
     )
 makedepends=(
