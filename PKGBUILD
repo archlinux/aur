@@ -2,7 +2,7 @@
 pkgname=hcledit-bin
 pkgbase=hcledit-bin
 pkgver=0.2.17
-pkgrel=1.0
+pkgrel=1
 pkgdesc='A command line editor for HCL'
 arch=('x86_64')
 url='https://github.com/minamijoyo/hcledit'
