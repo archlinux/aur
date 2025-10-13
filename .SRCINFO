@@ -1,6 +1,6 @@
 pkgbase = go-hass-agent-bin
 	pkgdesc = A Home Assistant, native app integration for desktop/laptop devices.Written in Go.(Prebuilt version)
-	pkgver = 14.0.3
+	pkgver = 14.1.0
 	pkgrel = 1
 	url = https://github.com/joshuar/go-hass-agent
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = go-hass-agent-bin
 	license = MIT
 	depends = libx11
 	depends = libglvnd
-	provides = go-hass-agent=14.0.3
+	provides = go-hass-agent=14.1.0
 	conflicts = go-hass-agent
-	source_aarch64 = go-hass-agent-14.0.3-aarch64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v14.0.3/go-hass-agent-14.0.3-1.aarch64.rpm
-	sha256sums_aarch64 = 9e0734446b5565e6a8feb5072785b903c5f70ea98a47fff56104114f06ea07bb
-	source_armv7h = go-hass-agent-14.0.3-armv7h.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v14.0.3/go-hass-agent-14.0.3-1.armv7.rpm
-	sha256sums_armv7h = cda43669450636b4e91c77d473df19d74736bf071feb70d1202d066aa700758f
-	source_x86_64 = go-hass-agent-14.0.3-x86_64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v14.0.3/go-hass-agent-14.0.3-1.x86_64.rpm
-	sha256sums_x86_64 = 99c1fb091b936e042af42003c78dd37f4fa3c67f70cf524263636270ff3944ae
+	source_aarch64 = go-hass-agent-14.1.0-aarch64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v14.1.0/go-hass-agent-14.1.0-1.aarch64.rpm
+	sha256sums_aarch64 = e24afc1c6901d9dbc4863ad904c9feb9acd4bc5c513835c0eb92e1c46a8a2126
+	source_armv7h = go-hass-agent-14.1.0-armv7h.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v14.1.0/go-hass-agent-14.1.0-1.armv7.rpm
+	sha256sums_armv7h = e0f37848bd4140e6e739560ef0960a189d0fd4f9d46f68a069211ed643f5faba
+	source_x86_64 = go-hass-agent-14.1.0-x86_64.rpm::https://github.com/joshuar/go-hass-agent/releases/download/v14.1.0/go-hass-agent-14.1.0-1.x86_64.rpm
+	sha256sums_x86_64 = c261ed06db79f48a267831eebb35fa49e3251c47df2db837f371a8fe7ad300fb
 
 pkgname = go-hass-agent-bin
