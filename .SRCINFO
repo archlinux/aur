@@ -1,7 +1,7 @@
 pkgbase = voicevox
 	pkgdesc = A text-to-speech software
 	pkgver = 0.24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VOICEVOX/voicevox
 	arch = any
 	license = LGPL-3.0-only

@@ -2,7 +2,7 @@
 
 pkgname=voicevox
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A text-to-speech software'
 arch=(any) # no native modules
 license=('LGPL-3.0-only')
@@ -36,8 +36,8 @@ package() {
   cd voicevox-$pkgver
   _electron=electron$(npm pkg get devDependencies.electron | grep -oE '[0-9][0-9]') # for --repackage
   depends+=($_electron)
-  install -d "$pkgdir"/usr/lib/VOICEVOX #sync install path with -bin
-  cp -r --reflink=auto dist_electron/linux-unpacked/resources "$pkgdir"/usr/lib/VOICEVOX/resources 
+  install -d "$pkgdir"/usr/lib #sync install path with -bin
+  cp -r --reflink=auto dist_electron/linux-unpacked "$pkgdir"/usr/lib/VOICEVOX
   install -Dm644 dist/icon.png "$pkgdir"/usr/share/pixmaps/voicevox.png
   install -Dm644 "$srcdir"/voicevox.desktop -t "$pkgdir"/usr/share/applications
   # Use system Electron
