@@ -4,7 +4,7 @@
 
 _gemname=oauth
 pkgname=ruby-$_gemname
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='OAuth for Ruby'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('ruby-oauth-tty' 'ruby-snaky_hash' 'ruby-version_gem')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('38902b7f0f5ed91e858d6353f5e1e06b2c16a8aa0fd91984671eab1a1d1cddeb')
+sha256sums=('e29a96f9accd2b269caa5941d82f37d484ffe5da777a699feb766c51c856fb86')
 options=(!emptydirs)
 
 package() {
@@ -30,7 +30,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
 }

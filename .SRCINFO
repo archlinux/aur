@@ -1,6 +1,6 @@
 pkgbase = ruby-oauth
 	pkgdesc = OAuth for Ruby
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/oauth-xx/oauth-ruby
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ruby-oauth
 	depends = ruby-oauth-tty
 	depends = ruby-snaky_hash
 	depends = ruby-version_gem
-	noextract = oauth-1.1.0.gem
+	noextract = oauth-1.1.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/oauth-1.1.0.gem
-	sha256sums = 38902b7f0f5ed91e858d6353f5e1e06b2c16a8aa0fd91984671eab1a1d1cddeb
+	source = https://rubygems.org/downloads/oauth-1.1.2.gem
+	sha256sums = e29a96f9accd2b269caa5941d82f37d484ffe5da777a699feb766c51c856fb86
 
 pkgname = ruby-oauth
