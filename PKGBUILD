@@ -5,7 +5,7 @@ pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
 pkgver=4.8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
 url="https://www.todesk.com/"
@@ -40,7 +40,8 @@ _install() {
 build() {
   mkdir -p ${srcdir}/build
 
-  tar -xf ${srcdir}/data.tar.xz -C ${srcdir}/build 
+  [ -f "${srcdir}/data.tar.xz"  ] && tar -xf ${srcdir}/data.tar.xz -C ${srcdir}/build 
+  [ -f "${srcdir}/data.tar.zst"  ] && tar -xf ${srcdir}/data.tar.zst -C ${srcdir}/build 
 }
 
 package() {
