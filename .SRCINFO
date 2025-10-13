@@ -1,6 +1,6 @@
 pkgbase = r-styler
 	pkgdesc = Non-Invasive Pretty Printing of R Code
-	pkgver = 1.10.3
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=styler
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-styler
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/styler_1.10.3.tar.gz
-	sha256sums = adb9c22111a8669bdce6d4a5c09e0ad353e07c3488373484a258028203bfda41
+	source = https://cran.r-project.org/src/contrib/styler_1.11.0.tar.gz
+	sha256sums = f08760782b2ead047dd8f166a7cd5e01ace8d713087712bf61d193f610fbfe18
 
 pkgname = r-styler
