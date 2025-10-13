@@ -1,5 +1,6 @@
-# Maintainer: Yuandi <realyuandi42@gmail.com>
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: T-1990 <address at domain dot>
+# Contributor: Yuandi <realyuandi42@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sebastian Reuße <seb@wirrsal.net>
 
 pkgname=zsh-autopair-git
@@ -25,6 +26,8 @@ pkgver() {
 package() {
 	cd "$_name"
 	install -Dm644 autopair.zsh -t "$pkgdir/usr/share/zsh/plugins/$_name/"
+	install -Dm644 autopair.plugin.zsh -t "$pkgdir/usr/share/zsh/plugins/$_name/"
+	install -Dm644 zsh-autopair.plugin.zsh -t "$pkgdir/usr/share/zsh/plugins/$_name/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
