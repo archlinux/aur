@@ -1,8 +1,8 @@
 pkgbase = qolibri-bin
 	pkgdesc = A QT-based EPWING dictionary viewer
 	pkgver = 2.1.4
-	pkgrel = 4
-	url = https://github.com/ludios/qolibri/
+	pkgrel = 5
+	url = https://github.com/mvf/qolibri/
 	arch = x86_64
 	arch = i686
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = qolibri-bin
 	depends = zlib
 	depends = libeb
 	conflicts = qolibri
-	source = https://github.com/ludios/qolibri/releases/download/2.1.4/qolibri_2.1.4_amd64.deb
+	source = https://github.com/mvf/qolibri/releases/download/2.1.4/qolibri_2.1.4_amd64.deb
 	sha1sums = 9c2d723bed6ac53fa5ab9f55f0ca9ee21d7a65d3
 
 pkgname = qolibri-bin
