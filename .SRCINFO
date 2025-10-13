@@ -1,6 +1,6 @@
 pkgbase = anvil-bin
 	pkgdesc = Streamline tool installation and team onboarding
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/rocajuanma/anvil
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = anvil-bin
 	depends = glibc
 	provides = anvil
 	conflicts = anvil
-	source = LICENSE-2.2.0::https://raw.githubusercontent.com/rocajuanma/anvil/v2.2.0/LICENSE
-	source = README-2.2.0.md::https://raw.githubusercontent.com/rocajuanma/anvil/v2.2.0/README.md
+	source = LICENSE-2.2.1::https://raw.githubusercontent.com/rocajuanma/anvil/v2.2.1/LICENSE
+	source = README-2.2.1.md::https://raw.githubusercontent.com/rocajuanma/anvil/v2.2.1/README.md
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 	sha256sums = 6d6342104bd01b501138988fdf740b82522493d2b93b4951817ae13ac1a13b37
-	source_x86_64 = anvil-x86_64-2.2.0::https://github.com/rocajuanma/anvil/releases/download/v2.2.0/anvil-linux-amd64
-	sha256sums_x86_64 = 89c116ec66a2229498b0e22e47ef4af36e449180ffaa46496ffcd81dc346a8be
-	source_aarch64 = anvil-aarch64-2.2.0::https://github.com/rocajuanma/anvil/releases/download/v2.2.0/anvil-linux-arm64
-	sha256sums_aarch64 = de74092f5c341e1c4c698552369aebd8e5980ddbd5fc362c929b8a967ee8f154
+	source_x86_64 = anvil-x86_64-2.2.1::https://github.com/rocajuanma/anvil/releases/download/v2.2.1/anvil-linux-amd64
+	sha256sums_x86_64 = 0007899d8bbbcb1e34fbb22e4d10aa39385457eb2ba5548a3c95870f6124d638
+	source_aarch64 = anvil-aarch64-2.2.1::https://github.com/rocajuanma/anvil/releases/download/v2.2.1/anvil-linux-arm64
+	sha256sums_aarch64 = fac5afb6b76f32782eb96151536d729f8b410268c08e3d75ae5578c184a56309
 
 pkgname = anvil-bin
