@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-calc
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='calc provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-calc')
 provides=('elephant-calc')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3d56668a4de7cdd1bbc390ed3850fa7080e18c0da8a97f87e01689b2198281d3')
+sha256sums=('69ee2229f70878d10dd84cb7acd4c996bde70b28f763db5fc152f53b36cc1f92')
 
 build() {
     cd elephant-${pkgver}/internal/providers/calc
