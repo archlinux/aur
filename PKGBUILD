@@ -6,14 +6,14 @@ _gitname=Apktool
 _java_version=21
 pkgname=android-apktool-git
 pkgver=2.12.1.r24.g96779b52
-pkgrel=2
+pkgrel=3
 pkgdesc="a tool for reengineering Android apk files"
 arch=(any)
 url="https://ibotpeaches.github.io/Apktool/"
 license=(Apache)
 depends=(bash 'java-runtime>=8' android-sdk-build-tools)
 conflicts=(android-apktool)
-makedepends=(git jre${_java_version}-openjdk gradle)
+makedepends=(git jdk${_java_version}-openjdk gradle)
 source=("git+https://github.com/iBotPeaches/$_gitname.git")
 sha512sums=('SKIP')
 
