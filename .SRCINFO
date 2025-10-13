@@ -11,7 +11,8 @@ pkgbase = searchmonkey-gtk
 	depends = libzip
 	depends = poppler-glib
 	source = https://sourceforge.net/projects/searchmonkey/files/gSearchmonkey%20GTK%20%28Gnome%29/0.8.3%20%5Bstable%5D/searchmonkey-0.8.3.tar.gz
+	source = build.patch
 	md5sums = abb2247e67cc0fa5f8a9bee13c531625
+	md5sums = f4f6f7dab591544401d3b7544967610d
 
 pkgname = searchmonkey-gtk
-

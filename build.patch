@@ -1,0 +1,64 @@
+diff -ura old/src/callbacks.c searchmonkey-0.8.3/src/callbacks.c
+--- old/src/callbacks.c	2018-02-05 17:28:50.000000000 -0600
++++ searchmonkey-0.8.3/src/callbacks.c	2025-10-11 01:44:22.826274815 -0500
+@@ -2,6 +2,7 @@
+ #  include <config.h>
+ #endif
+ 
++#include <glib/gstdio.h>
+ #include <gtk/gtk.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <gdk/gdk.h>
+@@ -23,6 +24,7 @@
+ GtkWidget *testRegExDialog1 = NULL;
+ GtkWidget *fileRegexWizard = NULL;
+ GtkWidget *contextRegexWizard = NULL;
++extern void clearComboBox2(GtkWidget *comboBox);
+ 
+ void
+ on_window1_destroy                     (GtkObject       *object,
+diff -ura old/src/misc.c searchmonkey-0.8.3/src/misc.c
+--- old/src/misc.c	2018-02-05 17:03:43.000000000 -0600
++++ searchmonkey-0.8.3/src/misc.c	2025-10-11 01:44:56.287046135 -0500
+@@ -13,6 +13,7 @@
+ #include "interface.h" /* glade requirement */
+ #include "support.h" /* glade requirement */
+ #include "misc.h"
++#include "savestate.h"
+ #include <regex.h>
+ 
+ /****************************************************
+diff -ura old/src/savestate.c searchmonkey-0.8.3/src/savestate.c
+--- old/src/savestate.c	2018-02-05 17:28:50.000000000 -0600
++++ searchmonkey-0.8.3/src/savestate.c	2025-10-11 01:46:26.732131021 -0500
+@@ -23,6 +23,7 @@
+ #include "search.h" /* Add in column definitions */
+ #include "misc.h" /* Everything else */
+ #include "savestate.h"
++#include "systemio.h"
+ 
+ /* Externals */
+ extern GtkWidget *mainWindowApp; /* Holds pointer to the main searchmonkey GUI. Declared in main.c */
+diff -ura old/src/savestate.h searchmonkey-0.8.3/src/savestate.h
+--- old/src/savestate.h	2018-02-05 17:03:43.000000000 -0600
++++ searchmonkey-0.8.3/src/savestate.h	2025-10-11 01:45:40.009053986 -0500
+@@ -9,6 +9,8 @@
+ #ifndef SAVESTATE_H
+ #define SAVESTATE_H
+ 
++#include "search.h"
++
+ /* Externals */
+ extern gchar *gConfigFile; /* Holds pointer to the configuration file location. Declared in main.c*/
+ 
+diff -ura old/src/search.c searchmonkey-0.8.3/src/search.c
+--- old/src/search.c	2018-02-05 17:29:04.000000000 -0600
++++ searchmonkey-0.8.3/src/search.c	2025-10-11 01:40:55.977506648 -0500
+@@ -4,6 +4,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <glib.h>
++#include <glib/gprintf.h>
+ #include <stdlib.h>
+ #include <sys/stat.h>
+ #include <time.h>
