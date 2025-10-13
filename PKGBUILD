@@ -1,7 +1,7 @@
 # Maintainer: xeyossr (axrona)
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli
-pkgver=4.6.0+patch.1
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('x86_64' 'aarch64')
