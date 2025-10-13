@@ -1,6 +1,6 @@
 pkgname=rash-sh
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='rash, the rat ass shell, is a rudimentary shell written in C'
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url='https://git.myriation.xyz/parker_macdonald/rash'
