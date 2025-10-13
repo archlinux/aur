@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 pkgname=sysd-manager
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A systemd GUI to manage your Services, Timers, Sockets and other units. You can enable, disable, stop and start them. Also, you can view their config file and peak at their journal logs."
 arch=('x86_64' 'aarch64')
