@@ -14,7 +14,6 @@ depends=(
   'jemalloc'
   'qt6-svg'
   'libpipewire'
-  'qt6-wayland'
   'libxcb'
   'wayland'
   'libdrm'
