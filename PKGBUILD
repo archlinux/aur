@@ -4,9 +4,9 @@
 
 pkgname=libosmo-sccp
 pkgver=1.9.0
-pkgrel=1
-pkgdesc="Osmocom library for SCCP"
-arch=('any')
+pkgrel=2
+pkgdesc="Osmocom library for SCCP (DEPRECATED)"
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://osmocom.org/projects/libosmo-sccp"
 license=('GPL-2.0-or-later')
 # TODO: libosmocore>=1.9.0 libosmo-netif>=1.4.0
