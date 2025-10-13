@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=quisk
-pkgver=4.2.45
+pkgver=4.2.46
 pkgrel=1
 pkgdesc='Software Defined Radio (SDR) transceiver that can control various radio hardware.'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
   'icon.png'
   'quisk.desktop'
 )
-b2sums=('9f2154415e8ba5dac4a1406d0fed9f25eec1066a7c5e10f7616d31cc87bc07e9f39594a2907a8327be88b117dcdc675ba09cbadbf6ac0276abadde9aa29c0079'
+b2sums=('1632a1ad67839a571e6ae303f92ee7e94316d3560648381451e6b0d48693442d0f3ca74bd65457e8a9435ff442dc4f81a35bbb02847cd0e131d13392ebbe32c9'
         '11e81951156ed35888ccdd1a528a4adab29dc0a5d4b5aa1e3cc64e476ec7770ce034e7f403ad93e374a169d0f5df7e4e9080cd837f756a3b9de67a8d0613a00a'
         'c54e29d4595a31b4f33203396b84808c00a91db58416c8b25ec6e4ded0635a53146d11d21b4ac41bf9b4897711413f35c921d39e2c7e820b4b69ffb303354014')
 
