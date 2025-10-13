@@ -1,6 +1,6 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 epoch=
 pkgdesc="smooll's Color Picker"
@@ -14,9 +14,10 @@ checkdepends=()
 optdepends=("libx11: X11 support"
             "libxcb: X11 support"
             "xcb-util-image: taking screenshots on X11"
+            "xsel: clipboard support"
             "wayland: Wayland support"
-            "wayland-protocols: Wayland support"
             "sdbus-cpp: handling screenshots on Wayland"
+            "wl-clipboard: clipboard support"
             "xdg-desktop-portal: taking screenshots on Wayland"
             "xdg-desktop-portal-cosmic: taking screenshots on COSMIC"
             "xdg-desktop-portal-dde: taking screenshots on Deepin"
@@ -34,7 +35,7 @@ install=
 changelog=
 source=("https://github.com/smooll-d/scolorpicker/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("de98104508365454013d632e220b437452e418a3e532f864d1b94ceed0500924")
+sha256sums=("e7040bbe7b7df33606588b6cb4abad0d963f9e193998f57966d5422d0863fc12")
 validpgpkeys=()
 
 build() {
