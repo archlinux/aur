@@ -8,7 +8,7 @@ pkgbase = shadps4-nightly-bin
 	provides = shadps4
 	conflicts = shadps4
 	options = !strip
-	source = shadps4-linux-qt-2025-10-13-17fab7f.zip::https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-10-13-17fab7fdf100fb0d7847f305f117286ab4d76aa6/shadps4-linux-qt-2025-10-13-17fab7f.zip
+	source = shadps4-linux-qt-2025-10-13-17fab7f.zip::https://github.com/mdmrk/shadps4-nightly-bin/releases/download/v2025.10.13.17fab7f/shadps4-linux-qt-2025-10-13-17fab7f.zip
 	sha256sums = SKIP
 
 pkgname = shadps4-nightly-bin
