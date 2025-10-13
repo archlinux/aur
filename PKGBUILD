@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Fuad Daoud aur.fuad-daoud.com
 
 pkgname=prayers-bin
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="TUI application to display Islamic prayer times based on your location"
 arch=('x86_64' 'aarch64')
