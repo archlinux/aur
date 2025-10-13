@@ -1,6 +1,6 @@
 pkgbase = mir
 	pkgdesc = Canonical's display server
-	pkgver = 2.22.0
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://github.com/canonical/mir
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = mir
 	makedepends = python-dbus
 	makedepends = python-dbusmock
 	makedepends = glib2-devel
+	depends = apparmor
 	depends = boost-libs
 	depends = libglvnd
 	depends = lttng-ust
@@ -51,7 +52,7 @@ pkgbase = mir
 	optdepends = ttf-ubuntu-font-family: required for miral demos
 	optdepends = qt5-wayland: required for miral demos
 	optdepends = xcursor-dmz: opt requirement for miral demos
-	source = https://github.com/canonical/mir/releases/download/v2.22.0/mir-2.22.0.tar.xz
-	sha256sums = 6015f1d1919bea1c2f5ecab43a98f525572a005947ae9fb7d05a91251130dd35
+	source = https://github.com/canonical/mir/releases/download/v2.23.0/mir-2.23.0.tar.xz
+	sha256sums = 01c088b037f19c69d40c33514be15dd124411ce385af55d3772cfed5fe18d3eb
 
 pkgname = mir
