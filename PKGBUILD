@@ -27,4 +27,4 @@ package() {
   cd "$srcdir/qinti"
   install -Dm755 "target/release/qinti" "$pkgdir/usr/bin/qinti"
 }
-b2sums=('9623f2b7788a5a96e03c2336cf78775a3575ea22bab6bb586bd47e29e330948b6825b26dac3207d280f4bd431bf3d13f8013f023806f8d86b453f7f3e40143c7')
+b2sums=('f9eb40df071bfa1f2c6df0f8effd6b003786089bd70a47dda6288d38d7b328ce42f1d84751f32025a68502dbec9ad89cf53dbf9d204360b39c932cee510e623a')
