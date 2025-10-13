@@ -1,6 +1,6 @@
 # PKGBUILD (converted from hyprviz-bin)
 pkgname=hyprviz
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='GUI for configuring Hyprland!'
 url='https://github.com/timasoft/hyprviz'
@@ -10,8 +10,8 @@ depends=(gtk4 glib2 desktop-file-utils hyprland )
 makedepends=("cargo" "rust" "pkgconf" "pkg-config" "clang")
 provides=("$pkgname")
 conflicts=("hyprviz-bin")
-source=("https://github.com/timasoft/hyprviz/archive/refs/tags/v0.7.0.tar.gz")
-sha256sums=('88c8e179956cfc2be795777323347e2245a808f33ba2dfb1e5e021420e35fead')
+source=("https://github.com/timasoft/hyprviz/archive/refs/tags/v0.7.1.tar.gz")
+sha256sums=('6543e9508efbf8f62abf362d7a8b2348a937a026e520798def13d222aa74a613')
 
 build() {
   cd "${srcdir}/hyprviz-${pkgver}"
