@@ -8,7 +8,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${pkgname}"
@@ -36,15 +36,18 @@ optdepends=(
 _tar=${pkgname}-${pkgver}
 source=("https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz"
         "https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz.sig"
-        https://invent.kde.org/multimedia/subtitlecomposer/-/commit/0043f4434886c5aabe99705d40bd7f633b8b73e7.patch)
+        https://invent.kde.org/multimedia/subtitlecomposer/-/commit/0043f4434886c5aabe99705d40bd7f633b8b73e7.patch
+        https://invent.kde.org/multimedia/subtitlecomposer/-/commit/1e11d53565ab6df3ba8329072e7b4b12f9f88d72.patch)
 sha256sums=('72e9307f0c7669029f27178cee07395b3dae4cef99accc6720e41fa511b40fe5'
             'SKIP'
-            'c4c2f56356723abf1434e50445d9c69c5349dfc0fddcfff96a24b43d04bbcbaf')
+            'c4c2f56356723abf1434e50445d9c69c5349dfc0fddcfff96a24b43d04bbcbaf'
+            'c0b23c483d37e8724a7af9c97085cbf3c6cc2cb866a01dde8bab3def832ab7ef')
 validpgpkeys=('76F79007A54A4B68F1547928E2418746EF9D9B26')
 
 prepare() {
   cd "${srcdir}/${_tar}"
   patch -p1 -i ../0043f4434886c5aabe99705d40bd7f633b8b73e7.patch
+  patch -p1 -i ../1e11d53565ab6df3ba8329072e7b4b12f9f88d72.patch
 }
 
 build() {

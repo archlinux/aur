@@ -1,7 +1,7 @@
 pkgbase = subtitlecomposer
 	pkgdesc = Video subtitle editor
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/multimedia/subtitlecomposer
 	arch = i686
 	arch = x86_64
@@ -26,9 +26,11 @@ pkgbase = subtitlecomposer
 	source = https://download.kde.org/stable/subtitlecomposer/subtitlecomposer-0.8.2.tar.xz
 	source = https://download.kde.org/stable/subtitlecomposer/subtitlecomposer-0.8.2.tar.xz.sig
 	source = https://invent.kde.org/multimedia/subtitlecomposer/-/commit/0043f4434886c5aabe99705d40bd7f633b8b73e7.patch
+	source = https://invent.kde.org/multimedia/subtitlecomposer/-/commit/1e11d53565ab6df3ba8329072e7b4b12f9f88d72.patch
 	validpgpkeys = 76F79007A54A4B68F1547928E2418746EF9D9B26
 	sha256sums = 72e9307f0c7669029f27178cee07395b3dae4cef99accc6720e41fa511b40fe5
 	sha256sums = SKIP
 	sha256sums = c4c2f56356723abf1434e50445d9c69c5349dfc0fddcfff96a24b43d04bbcbaf
+	sha256sums = c0b23c483d37e8724a7af9c97085cbf3c6cc2cb866a01dde8bab3def832ab7ef
 
 pkgname = subtitlecomposer
