@@ -1,7 +1,7 @@
 pkgbase = cargo-xwin
 	pkgdesc = Cross compile Cargo project to Windows MSVC target with ease
-	pkgver = 0.20.0
-	pkgrel = 2
+	pkgver = 0.20.1
+	pkgrel = 1
 	url = https://github.com/rust-cross/cargo-xwin
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = cargo-xwin
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = cargo-xwin-0.20.0.tar.gz::https://static.crates.io/crates/cargo-xwin/cargo-xwin-0.20.0.crate
-	b2sums = 5cf5ed1f3f4cf6b38b3542a5632e832c993944534ccb66d3af3c1dfce9ffe88fbb8096b6ced66b2c813d42a5d418d7e8835bea1845dcc1d1762ee5c2346c9b70
+	source = cargo-xwin-0.20.1.tar.gz::https://static.crates.io/crates/cargo-xwin/cargo-xwin-0.20.1.crate
+	b2sums = 4e1e87fd7a64558b3459e475932fd8464601ca69990de02eac6e84b0ed77a4f22cc208f251631a80a9d9995f9d5e8ec36383e3a213cd71a717f2776949297fb7
 
 pkgname = cargo-xwin
