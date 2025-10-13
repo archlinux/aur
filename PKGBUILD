@@ -1,7 +1,7 @@
 # Maintainer: execrooted <execrooted@gmail.com>
 
 pkgname=droplet
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A colorful terminal weather animation tool written in Rust (rain and snow effects)"
 arch=('x86_64')
