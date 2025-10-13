@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+
+pkg_detect_latest() {
+	local api_url="https://im.qq.com/rainbow/linuxQQDownload"
+	local json_data version
+
+	json_data="$(curl -fsSL "${api_url}")"
+	if [[ -z "${json_data}" ]]; then
+		echo "Failed to fetch data from ${api_url}" >&2
+		return 1
+	fi
+
+	version="$(echo "${json_data}" | grep -Po '"version":\s*"\K[0-9]+\.[0-9]+\.[0-9]+' | head -n1)"
+	if [[ -z "${version}" ]]; then
+		echo "Failed to parse version from API response" >&2
+		return 1
+	fi
+
+	printf '%s\n' "${version}"
+}
+
+pkg_get_update_params() {
+	local version="$1"
+	local api_url="https://im.qq.com/rainbow/linuxQQDownload"
+	local json_data url filename
+
+	json_data="$(curl -fsSL "${api_url}")"
+	url="$(echo "${json_data}" | grep -Po 'https://[^"]+QQ_[0-9._]+x86_64[^"]+\.AppImage' | head -n1)"
+
+	if [[ -z "${url}" ]]; then
+		echo "Failed to extract AppImage download URL from API" >&2
+		return 1
+	fi
+
+	filename="${url##*/}"
+
+	# Extract date suffix from filename: QQ_3.2.18_250626_x86_64_01.AppImage
+	local date_suffix
+	date_suffix="$(echo "${filename}" | grep -Po '[0-9]{6}(?=_x86_64)' | head -n1)"
+
+	if [[ -z "${date_suffix}" ]]; then
+		echo "Failed to extract date suffix from filename: ${filename}" >&2
+		return 1
+	fi
+
+	local pkgver="${version}_${date_suffix}"
+
+	# Download and calculate SHA512
+	local tmpdir tmpfile sha512
+	tmpdir="$(mktemp -d)"
+	tmpfile="${tmpdir}/${filename}"
+
+	curl -fsSL --retry 3 --retry-delay 2 -o "${tmpfile}" "${url}"
+	sha512="$(sha512sum "${tmpfile}" | awk '{print $1}')"
+
+	# Cleanup
+	rm -rf "${tmpdir}"
+
+	# Return: url filename pkgver hash_algo checksum
+	printf '%s %s %s %s %s\n' "${url}" "${filename}" "${pkgver}" "sha512" "${sha512}"
+}
+
+pkg_update_files() {
+	local url="$1"
+	local filename="$2"
+	local pkgver="$3"
+	local hash_algo="$4"
+	local checksum="$5"
+	local pkgbuild="${PKG_DIR}/PKGBUILD"
+
+	# Extract version and date from pkgver: 3.2.18_250626
+	local version="${pkgver%_*}"
+	local date_suffix="${pkgver#*_}"
+
+	# Generate URLs and filenames for all architectures
+	local base_url="${url%/*}"
+	local url_x86_64="${base_url}/QQ_${version}_${date_suffix}_x86_64_01.AppImage"
+	local url_aarch64="${base_url}/QQ_${version}_${date_suffix}_arm64_01.AppImage"
+	local renamed_x86_64="QQ-${pkgver}-x86_64.AppImage"
+	local renamed_aarch64="QQ-${pkgver}-aarch64.AppImage"
+
+	# Update PKGBUILD
+	sed -i "s/^pkgver=.*/pkgver=${pkgver}/" "${pkgbuild}"
+	sed -i "s/^pkgrel=.*/pkgrel=1/" "${pkgbuild}"
+	sed -i "s|^_filename_x86_64=.*|_filename_x86_64=\"${renamed_x86_64}\"|" "${pkgbuild}"
+	sed -i "s|^_filename_aarch64=.*|_filename_aarch64=\"${renamed_aarch64}\"|" "${pkgbuild}"
+	sed -i "s|^source_x86_64=.*|source_x86_64=(\"${renamed_x86_64}::${url_x86_64}\")|" "${pkgbuild}"
+	sed -i "s|^source_aarch64=.*|source_aarch64=(\"${renamed_aarch64}::${url_aarch64}\")|" "${pkgbuild}"
+	sed -i "s/^${hash_algo}sums_x86_64=.*/${hash_algo}sums_x86_64=('${checksum}')/" "${pkgbuild}"
+
+	# Update the hardcoded version in launcher script
+	sed -i "s|x86_64) _appimage=\"QQ-[^\"]*-x86_64.AppImage\"|x86_64) _appimage=\"${renamed_x86_64}\"|" "${pkgbuild}"
+	sed -i "s|aarch64) _appimage=\"QQ-[^\"]*-aarch64.AppImage\"|aarch64) _appimage=\"${renamed_aarch64}\"|" "${pkgbuild}"
+
+	echo "Warning: Only x86_64 checksum updated. Please verify aarch64 manually." >&2
+
+	(
+		cd "${PKG_DIR}"
+		makepkg --printsrcinfo > .SRCINFO
+	)
+}
