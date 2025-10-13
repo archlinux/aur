@@ -1,6 +1,6 @@
 pkgbase = taskchampion-sync-server
 	pkgdesc = The server Taskwarrior syncs to
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://taskwarrior.org/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = taskchampion-sync-server
 	makedepends = rust
 	depends = gcc-libs
 	options = !lto
-	source = taskchampion-sync-server::git+https://github.com/GothenburgBitFactory/taskchampion-sync-server.git#tag=v0.7.0
+	source = taskchampion-sync-server::git+https://github.com/GothenburgBitFactory/taskchampion-sync-server.git#tag=v0.7.1
 	source = taskchampion-sync-server.service
-	b2sums = 36c3e63e2ba365905525faa38595a9a661d62e2571f9e245bcc608ffa550e99f8e47f8255a805a42305dd3e82422a015ba75ffc7e3155b1865cddbe8dfa6b9f2
+	b2sums = 7b5e9fcaae7ff76fe149193be6e066d97b6a345292c62c56e408d61c77838771875c712e992e672d741062aaeb0bda613393e9ab9c9b04675f18034b68de9a61
 	b2sums = 34e1a8e5ad5781c391448f00bc282a0496715c529d37df01dab6fc38f6782daada1c984cb470cd92769117c5bd1f42276585f8f1b02e30e95b562d2a06329970
 
 pkgname = taskchampion-sync-server
