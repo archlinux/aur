@@ -5,7 +5,7 @@
 
 pkgname='zsh-pure-prompt'
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretty, minimal and fast ZSH prompt'
 arch=('any')
 url='https://github.com/sindresorhus/pure'
@@ -17,7 +17,7 @@ sha256sums=('9f6822357e21567eb946ad4de867bc7aea32db3fd58d1d14076604daae305608')
 package() {
     cd pure-"${pkgver}"
 
-    install -Dm644 pure.zsh "${pkgdir}"/usr/share/zsh/functions/Prompts/prompt_pure_setup.zsh
-    install -Dm644 async.zsh "${pkgdir}"/usr/share/zsh/functions/Prompts/async.zsh
+    install -Dm644 pure.zsh "${pkgdir}"/usr/share/zsh/functions/Prompts/prompt_pure_setup
+    install -Dm644 async.zsh "${pkgdir}"/usr/share/zsh/functions/Prompts/async
     install -Dm644 license "${pkgdir}"/usr/share/licenses/zsh-pure-prompt/license
 }
