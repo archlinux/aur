@@ -3,14 +3,14 @@
 _pkgname=RespeQt
 pkgbase=respeqt-git
 pkgname=respeqt-git
-pkgver=r5.4.1RC2.r1.gccc3d17
+pkgver=r5.4.1RC2.r91.g73f75d7
 pkgrel=1
 pkgdesc="RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable."
 url="https://github.com/josch1710/RespeQt"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL-2.0-only')
-depends=('zlib' 'qt5-base' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-serialport' 'qt5-svg' 'libcups')
-makedepends=('git' 'qt5-tools' 'cmake')
+depends=('zlib' 'qt5-base' 'glibc' 'hicolor-icon-theme' 'qt5-serialport' 'qt5-svg' 'libcups')
+makedepends=('git' 'qt5-tools' 'cmake' 'debugedit')
 source=("$_pkgname::git+https://github.com/josch1710/RespeQt")
 md5sums=('SKIP')
 
@@ -23,6 +23,8 @@ build() {
   cd $_pkgname
   install -d build
   cd build
+  sed -i '31i\#include <sys/ioctl.h>\' ../src/serialport-unix.cpp
+  sed -i "s/termio.h/termios.h/" ../src/serialport-unix.cpp
   cmake ..
   make
 }
