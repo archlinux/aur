@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=vinegar
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
 url="https://vinegarhq.org"
@@ -15,16 +15,17 @@ optdepends=("gamemode: Gamemode integration"
             "vulkan-driver: Vulkan support in GUI"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
-source=("https://github.com/vinegarhq/vinegar/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("8c9b7b51069e2b768f7cfc6de2c58999b623cac60539a75cf01a39f59cfc1168")
+source=("https://github.com/vinegarhq/vinegar/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("57cc1124c90a33c436a9f5c3985b16a644f4fba805a24ccd9d5b131532aea572")
 
 prepare() {
-  cd "${pkgname}-v${pkgver}"
+  # Extract the tarball
+  cd "${pkgname}-${pkgver}"
   make clean
 }
 
 build() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
   export CGO_LDFLAGS="${LDFLAGS}"
@@ -38,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make PREFIX="/usr" BINPREFIX="/usr/lib/vinegar" DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
