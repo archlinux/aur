@@ -1,8 +1,10 @@
 # Maintainer: Angel Perez <near1297@nauta.cu>
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer: curlywei dewei0724@gmail.com
+
 pkgname=alien_package_converter
 pkgver=8.95
-pkgrel=5
+pkgrel=8
 pkgdesc="Alien is a program that converts between the rpm, dpkg, stampede slp, and slackware tgz file formats"
 arch=('any')
 url="http://joeyh.name/code/alien/"
@@ -10,11 +12,11 @@ license=('GPL2')
 depends=('perl' 'debhelper' 'cpio' 'rpm-org' 'bzip2')
 makedepends=('perl')
 options=('!emptydirs')
-source=("http://ftp.de.debian.org/debian/pool/main/a/alien/alien_$pkgver.tar.xz")
-sha256sums=('37a22587c33810feab323474bdadbf969fda2eb4e720b2ca01b40d82d6f71a17')
+source=("https://ftp.debian.org/debian/pool/main/a/alien/alien_${pkgver}.${pkgrel}.tar.xz")
+sha256sums=('586A649BC9366ACC15047D4C9F34E253208907142E12174EAFB4F3704FEA47A5')
 
 build() {
-cd "${srcdir}/alien-${pkgver}"
+cd "${srcdir}/alien"
   # Setting these env variables overwrites any command-line-options we don't want...
 export PERL_MM_USE_DEFAULT=1 \
 PERL5LIB="" \
@@ -28,6 +30,6 @@ make
 }
 
 package() {
-cd "${srcdir}/alien-${pkgver}"
+cd "${srcdir}/alien"
 make DESTDIR="${pkgdir}" install
 }
