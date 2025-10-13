@@ -1,6 +1,6 @@
 pkgbase = kddockwidgets-qt6
 	pkgdesc = KDAB's Dock Widget Framework for Qt 6
-	pkgver = 2.2.5
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/KDAB/KDDockWidgets
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kddockwidgets-qt6
 	depends = qt6-base>=6.2.0
 	depends = qt6-declarative
 	depends = spdlog>=1.8.0
-	source = https://github.com/KDAB/KDDockWidgets/archive/v2.2.5.tar.gz
-	b2sums = b938cf5d70b9ffaa43e21f7d6748552d9d8ded3c1eb4d7b7b71884bfe6ca925e8991a5eb566f51ed12a461f937372b0be9b2cc2588063ae93658a026ac6402ab
+	source = https://github.com/KDAB/KDDockWidgets/archive/v2.3.0.tar.gz
+	b2sums = ae89557839afd7c7557e4268175f43b58724c4f275aefdcdd6d329128bdecb12cf17af465749354055e11718511164252da15cf1f52b53d50be069de84ef2142
 
 pkgname = kddockwidgets-qt6
