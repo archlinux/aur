@@ -1,0 +1,14 @@
+pkgbase = moonlight-hook
+	pkgdesc = Pacman hook to automatically install moonlight after Discord updates
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = 0BSD
+	depends = bash
+	depends = moonlight-cli
+	source = moonlight-hook.hook
+	source = moonlight-hook.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = moonlight-hook
