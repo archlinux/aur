@@ -3,7 +3,7 @@ pkgname=ifind-bin
 _pkgname=iFinD
 _appname="com.51${pkgname%-bin}"
 pkgver=1.10.12.394.001
-pkgrel=1
+pkgrel=2
 pkgdesc="同花顺iFinD PC版提供资讯、行情、深度资料、数据浏览器、企业库等功能,满足用户多方面的使用需求。"
 arch=(
     'aarch64'
@@ -17,6 +17,7 @@ conflicts=("${pkgname%-bin}")
 options=(
     '!strip'
     '!emptydirs'
+    'staticlibs'
 )
 depends=(
     'nss'

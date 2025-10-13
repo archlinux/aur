@@ -1,7 +1,7 @@
 pkgbase = ifind-bin
 	pkgdesc = 同花顺iFinD PC版提供资讯、行情、深度资料、数据浏览器、企业库等功能,满足用户多方面的使用需求。
 	pkgver = 1.10.12.394.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.51ifind.com/
 	arch = aarch64
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = ifind-bin
 	conflicts = ifind
 	options = !strip
 	options = !emptydirs
+	options = staticlibs
 	source = ifind.sh
 	sha256sums = 936d2d4299699da4e66d836e9001e1ff43fef95c53aef61569a1c3f667283fcd
 	source_aarch64 = ifind-1.10.12.394.001-aarch64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_1.10.12.394.001_arm64_signed.deb
