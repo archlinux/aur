@@ -2,7 +2,7 @@
 
 _gemname=oauth-tty
 pkgname=ruby-$_gemname
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='OAuth 1.0 TTY Command Line Interface'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby-version_gem')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('34e25c307da4509d4deec266ff3690bbf42e391355f496201c029268862d8b17')
+sha256sums=('9e8bd1861d367cce18318d8f214f2e1a1d7cb3898de0a9ea79162b4fdecb3152')
 options=(!emptydirs)
 
 package() {
