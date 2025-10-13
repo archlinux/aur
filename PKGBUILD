@@ -1,8 +1,8 @@
 PACKAGER="Laurent Brock <incognito0135@protonmail.com>"
 pkgname=piavpn-bin
 
-pkgver=3.6.2
-build_number=08398
+pkgver=3.7
+build_number=08412
 # https://www.privateinternetaccess.com/pages/changelog
 
 epoch=1 # Switch versioning schemes for guaranteed upgrades
@@ -20,8 +20,8 @@ install=piavpn-bin.install
 source_x86_64=("https://installers.privateinternetaccess.com/download/pia-linux-${pkgver}-${build_number}.run")
 source_aarch64=("https://installers.privateinternetaccess.com/download/pia-linux-arm64-${pkgver}-${build_number}.run")
 options=(!strip)
-sha256sums_x86_64=('c513721e42e707a5fef03c4480a301fd542551ca357bd5205323ac9421dfaffd')
-sha256sums_aarch64=('7068bc24f7fdcd029e30c78b1ce81cabc06487f96972a7a937af02628f7aee2a')
+sha256sums_x86_64=('328b4f046822d20cfc3b0175f6c9e53773c1765b0d408455da37e9f6d5cbda8b')
+sha256sums_aarch64=('037937d19be0976f3bbbe9d6a85915888777c8732248f73f538302f6a5b71dd5')
 
 # == You need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service ==
 prepare() {
