@@ -5,7 +5,7 @@
 
 pkgname=zsh-autopair-git
 _name="${pkgname%-git}"
-pkgver=1.0.r6.g2ec3fd3
+pkgver=1.0.r9.g449a7c3
 pkgrel=1
 pkgdesc="Auto-close and delete matching delimiters in Zsh"
 arch=('any')
