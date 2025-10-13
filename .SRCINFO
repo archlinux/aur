@@ -1,7 +1,7 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
 	pkgver = 32.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -43,9 +43,9 @@ pkgbase = obs-studio-liberty
 	depends = pciutils
 	depends = python>=3.13
 	depends = qrcodegencpp-cmake
-	depends = qt6-base>=6.6.2
-	depends = qt6-svg>=6.6.2
-	depends = qt6-wayland>=6.6.2
+	depends = qt6-base>=6.10.0
+	depends = qt6-svg>=6.10.0
+	depends = qt6-wayland>=6.10.0
 	depends = rnnoise
 	depends = simde
 	depends = sndio
@@ -95,9 +95,11 @@ pkgbase = obs-studio-liberty
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz
+	source = qt_fix.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 790da9bf3a2495eb6d4d155ae89adea88a45f496b5996278d72df47a1dea662241b2b73d93be7fc56f83186805c591dcd718266575a74d1b25b6b93379ce74b3
+	sha512sums = 421e5d95869cab6abe621a04ad552c1e419b714c970dfecd3517b8aec1eba638fd56694ad76fbc843f3a9eda7c9ffb077ffde2a59084fae73b56a3ad1a0f6c9f
 
 pkgname = obs-studio-liberty

@@ -1,0 +1,49 @@
+diff '--color=auto' -aru obs-studio.orig/frontend/cmake/os-linux.cmake obs-studio.new/frontend/cmake/os-linux.cmake
+--- obs-studio.orig/frontend/cmake/os-linux.cmake	2025-09-26 13:36:36.000000000 +0300
++++ obs-studio.new/frontend/cmake/os-linux.cmake	2025-10-13 18:09:49.123130303 +0300
+@@ -3,7 +3,11 @@
+   obs-studio
+   PRIVATE OBS_INSTALL_PREFIX="${OBS_INSTALL_PREFIX}" $<$<BOOL:${ENABLE_PORTABLE_CONFIG}>:ENABLE_PORTABLE_CONFIG>
+ )
+-target_link_libraries(obs-studio PRIVATE Qt::GuiPrivate Qt::DBus)
++target_link_libraries(obs-studio PRIVATE Qt::DBus)
++
++if(Qt6_VERSION AND Qt6_VERSION VERSION_LESS "6.9.0")
++    target_link_libraries(obs-studio PRIVATE Qt::GuiPrivate)
++endif()
+ 
+ find_package(Libpci REQUIRED)
+ target_link_libraries(obs-studio PRIVATE Libpci::pci)
+diff '--color=auto' -aru obs-studio.orig/frontend/plugins/aja-output-ui/CMakeLists.txt obs-studio.new/frontend/plugins/aja-output-ui/CMakeLists.txt
+--- obs-studio.orig/frontend/plugins/aja-output-ui/CMakeLists.txt	2025-09-26 13:36:36.000000000 +0300
++++ obs-studio.new/frontend/plugins/aja-output-ui/CMakeLists.txt	2025-10-13 18:13:14.244272509 +0300
+@@ -47,7 +47,6 @@
+     Qt::Widgets
+     AJA::LibAJANTV2
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::X11>
+-    $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:Qt::GuiPrivate>
+ )
+ 
+ target_link_options(aja-output-ui PRIVATE $<$<PLATFORM_ID:Windows>:/IGNORE:4099>)
+diff '--color=auto' -aru obs-studio.orig/frontend/plugins/decklink-output-ui/CMakeLists.txt obs-studio.new/frontend/plugins/decklink-output-ui/CMakeLists.txt
+--- obs-studio.orig/frontend/plugins/decklink-output-ui/CMakeLists.txt	2025-09-26 13:36:36.000000000 +0300
++++ obs-studio.new/frontend/plugins/decklink-output-ui/CMakeLists.txt	2025-10-13 18:15:02.282968197 +0300
+@@ -38,7 +38,6 @@
+     Qt::Widgets
+     "$<$<PLATFORM_ID:Darwin>:$<LINK_LIBRARY:FRAMEWORK,Cocoa.framework>>"
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::X11>
+-    $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:Qt::GuiPrivate>
+ )
+ 
+ if(OS_WINDOWS)
+diff '--color=auto' -aru obs-studio.orig/frontend/plugins/frontend-tools/CMakeLists.txt obs-studio.new/frontend/plugins/frontend-tools/CMakeLists.txt
+--- obs-studio.orig/frontend/plugins/frontend-tools/CMakeLists.txt	2025-09-26 13:36:36.000000000 +0300
++++ obs-studio.new/frontend/plugins/frontend-tools/CMakeLists.txt	2025-10-13 18:18:07.511111774 +0300
+@@ -65,7 +65,6 @@
+     Qt::Widgets
+     "$<$<PLATFORM_ID:Darwin>:$<LINK_LIBRARY:FRAMEWORK,Cocoa>>"
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::X11>
+-    $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:Qt::GuiPrivate>
+ )
+ 
+ add_subdirectory("${CMAKE_SOURCE_DIR}/shared/obs-scripting" "${CMAKE_BINARY_DIR}/shared/obs-scripting")
