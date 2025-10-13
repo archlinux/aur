@@ -7,7 +7,7 @@ _dotnet_version=9.0
 
 pkgname=nitrox
 pkgdesc="An open-source, multiplayer modification for the game Subnautica."
-pkgrel=1
+pkgrel=2
 url="https://github.com/SubnauticaNitrox/Nitrox"
 license=("GPL-3.0-only")
 provides=("nitrox")
@@ -27,23 +27,33 @@ prepare() {
   export DOTNET_NOLOGO=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
+  local nitrox_runtime
   if [[ "$CARCH" == "x86_64" ]] then
-    export NITROX_RUNTIME="linux-x64"
+    nitrox_runtime="linux-x64"
   elif [[ "$CARCH" == "aarch64" ]] then
-    export NITROX_RUNTIME="linux-arm64"
+    nitrox_runtime="linux-arm64"
   else
     echo "Could not identify architecture $CARCH"
   fi
 
   cd "${srcdir}/Nitrox-${pkgver}"
-  dotnet restore --locked-mode Nitrox.sln --runtime ${NITROX_RUNTIME}
+  dotnet restore --locked-mode Nitrox.sln --runtime ${nitrox_runtime}
 }
 
 build() {
+  local nitrox_runtime
+  if [[ "$CARCH" == "x86_64" ]] then
+    nitrox_runtime="linux-x64"
+  elif [[ "$CARCH" == "aarch64" ]] then
+    nitrox_runtime="linux-arm64"
+  else
+    echo "Could not identify architecture $CARCH"
+  fi
+
   cd "${srcdir}/Nitrox-${pkgver}"
   dotnet build Nitrox.Launcher \
     --configuration Release \
-    --runtime ${NITROX_RUNTIME} \
+    --runtime ${nitrox_runtime} \
     --no-restore \
     --verbosity quiet
 
@@ -61,12 +71,20 @@ check() {
   cd "${srcdir}/Nitrox-${pkgver}"
   mkdir -p "${HOME}/.config"
   dotnet test Nitrox.Test/Nitrox.Test.csproj \
-    --runtime ${NITROX_RUNTIME} \
     --no-restore \
     --verbosity quiet
 }
 
 package() {
+  local nitrox_runtime
+  if [[ "$CARCH" == "x86_64" ]] then
+    nitrox_runtime="linux-x64"
+  elif [[ "$CARCH" == "aarch64" ]] then
+    nitrox_runtime="linux-arm64"
+  else
+    echo "Could not identify architecture $CARCH"
+  fi
+
   # Ensure the directories exist
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
@@ -75,7 +93,7 @@ package() {
 
   # Copy the package files to the appropriate directory
   install -d "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/Nitrox-${pkgver}/Nitrox.Launcher/bin/Release/net${_dotnet_version}/${NITROX_RUNTIME}/." \
+  cp -r "${srcdir}/Nitrox-${pkgver}/Nitrox.Launcher/bin/Release/net${_dotnet_version}/${nitrox_runtime}/." \
     "${pkgdir}/opt/${pkgname}"
   chmod +x "${pkgdir}/opt/${pkgname}/Nitrox.Launcher"
   chmod +x "${pkgdir}/opt/${pkgname}/NitroxServer-Subnautica"
