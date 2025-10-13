@@ -1,0 +1,36 @@
+pkgbase = r-finetune
+	pkgdesc = The ability to tune models is important. 'finetune' enhances the 'tune' package by providing more specialized methods for finding reasonable values of model tuning parameters.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=finetune
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cli
+	depends = r-dials
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-parsnip
+	depends = r-purrr
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-tidyselect
+	depends = r-vctrs
+	depends = r-workflows
+	optdepends = r-covr
+	optdepends = r-discrim
+	optdepends = r-kknn
+	optdepends = r-klar
+	optdepends = r-lme4
+	optdepends = r-modeldata
+	optdepends = r-ranger
+	optdepends = r-recipes
+	optdepends = r-rpart
+	optdepends = r-rsample
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-yardstick
+	source = https://cran.r-project.org/src/contrib/finetune_1.2.1.tar.gz
+	sha256sums = 81ac2a446f16d72e885d6d0fde93c9f4c43a42a18d65697287f3a3cd45c76c1f
+
+pkgname = r-finetune
