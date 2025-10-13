@@ -2,7 +2,7 @@ pkgbase = why2
 	pkgdesc = Lightweight, fast, secure, and easy to use encryption system.
 	pkgver = 0.2.9
 	pkgrel = 1
-	url = https://github.com/ENGO150/WHY2.git
+	url = https://git.satan.red/ENGO150/WHY2.git
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = why2
 	makedepends = pkgconf
 	depends = openssl
 	options = !debug
-	source = git+https://github.com/ENGO150/WHY2.git#branch=release
+	source = git+https://git.satan.red/ENGO150/WHY2.git#branch=release
 	sha256sums = SKIP
 
 pkgname = why2
