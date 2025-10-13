@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp
 pkgver=1.100
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -44,8 +44,10 @@ package() {
     install -d "$pkgdir/usr/share/koboldcpp"
 
     install -Dm644 ./*.so "$pkgdir/usr/share/koboldcpp/"
-    install -Dm644 ./embd_res/* "$pkgdir/usr/share/koboldcpp/embd_res"
     install -Dm644 ./json_to_gbnf.py "$pkgdir/usr/share/koboldcpp/"
+
+    install -d "$pkgdir/usr/share/koboldcpp/embd_res"
+    install -Dm644 ./embd_res/* "$pkgdir/usr/share/koboldcpp/embd_res"
 
     install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
     install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
