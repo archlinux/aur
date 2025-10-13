@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagefanreloaded-avalonia-bin
 _pkgname=ImageFanReloaded
-pkgver=1.2025.10.11
+pkgver=1.2025.10.12
 pkgrel=1
 pkgdesc="ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing.(Prebuilt version)"
 arch=(
@@ -31,8 +31,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4')
-sha256sums_aarch64=('e8a931074f6db08fac6d7a891383a3244b20b7497ed4a23de97ac7c9f05095bb')
-sha256sums_x86_64=('8f8ac0b7728780481029b7b14b18c660b4dd495684a5e76a5dbf12cef0a7cb35')
+sha256sums_aarch64=('74c57c9d66d20508517fd84a1abaf50125ce03ed180dee4ed96998a5c73b57e1')
+sha256sums_x86_64=('5a8163994bfecc9828aafb1723ae572e1cc9f7b1075584745226f991b2ae0439')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
