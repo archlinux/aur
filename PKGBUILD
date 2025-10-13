@@ -1,6 +1,6 @@
 # Maintainer: rvid <contact@rvid.eu>
 pkgname=reliquary-cli
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="CLI tool for communicating with the sanctum-based API, to help you manage your devices and shared secrets."
 arch=('any')

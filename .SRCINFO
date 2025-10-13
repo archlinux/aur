@@ -1,6 +1,6 @@
 pkgbase = reliquary-cli
 	pkgdesc = CLI tool for communicating with the sanctum-based API, to help you manage your devices and shared secrets.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://reliquary.se
 	arch = any
