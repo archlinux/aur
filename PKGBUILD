@@ -1,7 +1,7 @@
 # Maintainer: execrooted <execrooted@gmail.com>
 
 pkgname=droplet
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A colorful terminal weather animation tool written in Rust (rain and snow effects)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
+    cargo build --release --locked1
 }
 
 package() {
