@@ -2,3 +2,4 @@
 source = "github"
 github = "Gu1llaum-3/sshm"
 use_latest_release = true
+prefix = "v"
