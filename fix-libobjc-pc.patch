@@ -1,0 +1,11 @@
+diff --git a/libobjc.pc.in b/libobjc.pc.in
+index b870e73..59743b1 100644
+--- a/libobjc.pc.in
++++ b/libobjc.pc.in
+@@ -8,5 +8,5 @@ Description: GNUstep Objective-C runtime library
+ Version: @CPACK_PACKAGE_VERSION_MAJOR@.@CPACK_PACKAGE_VERSION_MINOR@.@CPACK_PACKAGE_VERSION_PATCH@
+ 
+ Cflags: -I${includedir}
+-Libs: -L${libdir} -lobjc
++Libs: -L${libdir} -lobjc2
+ @PC_LIBS_PRIVATE@
