@@ -1,6 +1,6 @@
 pkgbase = why2
 	pkgdesc = Lightweight, fast, secure, and easy to use encryption system.
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/ENGO150/WHY2.git
 	arch = x86_64
