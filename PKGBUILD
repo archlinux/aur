@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -44,7 +44,7 @@ source=(
 sha256sums=('a3b0e880047790d169223983d4f9a26a2196499275d57321b15e9578dd716a94')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    #find src -type f -print0 | xargs -0 sed -i 's/opt.backgroundBrush = {};/opt.backgroundBrush = Qt::NoBrush;/g'
+    sed -i "36i\#include <QElapsedTimer>" src/plugins/vumeter/vumeterwidget.cpp
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
