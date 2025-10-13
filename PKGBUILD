@@ -149,6 +149,8 @@ build()
             npm install
         fi
     done
+
+    ./console development:disable
 }
 
 package()
