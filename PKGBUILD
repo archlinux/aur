@@ -1,7 +1,7 @@
 # Maintainer: Leandro Guedes <leanguedes at icloud dot com>
 
 pkgname=kaichat
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Chat interface for AI models such as ollama'
 arch=(x86_64)
@@ -18,16 +18,21 @@ depends=(gcc-libs
          kdbusaddons
          ki18n
          kiconthemes
+         kio
+         knotifications
+         knotifyconfig
          kstatusnotifieritem
          ktextaddons
          kwidgetsaddons
          kwindowsystem
          kxmlgui
+         purpose
+         sonnet
          qt6-base)
 makedepends=(extra-cmake-modules
              kdoctools)
 source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('91040df50a655ac78f610897347b5a653d0e4c018d18aaf7855fdcf231e298bf')
+sha256sums=('166a771f25ea7452ced120d0608a99833a9e2ac2f179c0f175805cb0ac557ca1')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
