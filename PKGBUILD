@@ -1,6 +1,6 @@
 # Maintainer: AndreLeclercq <andre.leclercq.io@protonmail.com>
 pkgname=sshctl
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="SSH connection manager CLI tool (binary stable)"
 arch=('x86_64')
