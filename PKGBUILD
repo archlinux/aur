@@ -1,6 +1,6 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=getmesh
-pkgver=v1.1.5
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Integration, and lifecycle management CLI tool that ensures the use of supported and trusted versions of Istio"
 arch=(x86_64)
@@ -22,7 +22,7 @@ noextract=()
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed 's|-|.|g'
+  git describe --tags | sed 's|^v||; s|-|.|g'
 }
 
 prepare(){
