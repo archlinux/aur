@@ -1,5 +1,5 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
-_base_ver=9
+_base_ver=10
 pkgname=grayjay-git
 _appname=Grayjay
 pkgver=9.r15.g1f74766
