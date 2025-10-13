@@ -3,7 +3,7 @@ _pkgname=komodo
 _pkgcat=periphery
 pkgname=${_pkgname}-${_pkgcat}
 pkgver=1.19.5
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc='Periphery server for the komodo monitor'
 arch=('x86_64')
@@ -13,7 +13,6 @@ depends=('docker' 'glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 conflicts=('komodo-periphery-bin')
 backup=('etc/komodo-periphery.toml')
-options=('!lto')
 source=(
     "$_pkgname::git+https://github.com/moghtech/komodo.git#tag=v$pkgver"
     'komodo-peripheryd.service'
@@ -29,7 +28,7 @@ sha256sums=('f4c62e61220f2ed8618543f9973594a79be1f8a197910cde60d2c5ddeea6671a'
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo build --release --bin=${_pkgcat}
+    CFLAGS+=" -ffat-lto-objects" cargo build --release --bin=${_pkgcat}
 }
 
 _server_root="/srv/${pkgname}"

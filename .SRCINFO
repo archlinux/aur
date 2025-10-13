@@ -1,7 +1,7 @@
 pkgbase = komodo-periphery
 	pkgdesc = Periphery server for the komodo monitor
 	pkgver = 1.19.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://komo.do/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = komodo-periphery
 	depends = glibc
 	depends = gcc-libs
 	conflicts = komodo-periphery-bin
-	options = !lto
 	backup = etc/komodo-periphery.toml
 	source = komodo::git+https://github.com/moghtech/komodo.git#tag=v1.19.5
 	source = komodo-peripheryd.service
