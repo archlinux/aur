@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
 _pkgname=Kiwix-JS-Electron
-pkgver=3.7.1
-_electronversion=29
+pkgver=3.7.8
+_electronversion=38
 pkgrel=1
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
 arch=(
@@ -18,20 +18,17 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-arm64.AppImage")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('47307a0b6c6274fc7c8316185c99b42d32719b7d4665075be244f45cc2bd148f')
-sha256sums_i686=('c285993f778143517c91fd19f0fc609a55ac86aee8f2d114c0f3ea0acc9eae5a')
-sha256sums_x86_64=('7b3f0dacdfa3d243140f31b75c17dd3a320f5f213f4c306a8881a8b10b1de276')
+sha256sums_aarch64=('9b6595bd3cb0abd6aa5acaec8eb0073abd5e851e81e4964b8ef0dcaa02290e3f')
+sha256sums_i686=('8fab73fb8093c891f5f51f976bdf9915f0b66ab9c79d0b3f40cdb363bc274c09')
+sha256sums_x86_64=('ce1eb3673b94c38d3bc293ff595662b6b4bab94dc74859c5cfb50099698a7f55')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/${_pkgname//-/ }" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname//-/ }" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -43,6 +40,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
