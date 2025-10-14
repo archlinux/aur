@@ -2,7 +2,7 @@
 
 pkgname=sxwm
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiling window managers don't have to be difficult"
 arch=('i686' 'x86_64')
 url="https://github.com/uint23/sxwm"
