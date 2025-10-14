@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=orthos
-_pkgver=1.6.0
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3316b673163e98bcac6891dde1f2da72')
-b2sums=('0b4d2f621b5e0371a63f65b0d7aa5742492791f0815c6ac4b6e42b9294709f5a0e85df913efd27c1e4c333c171714a2637595c6e6062a5db76a9522b118f0475')
+md5sums=('fc387ad91ee65971623d3ee90e59d5ab')
+b2sums=('0eb6ebd348f6be488cbafb755b3d2475b26ad027cee452c61cece5368188db1893f4b9b9b450835bff8f75b70eac31531dcc8b324e47447fbfcce4b360ed257d')
 
 build() {
   mkdir build
