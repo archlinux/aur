@@ -2,7 +2,7 @@
 # namcap: ignore deps
 pkgname=tofuref-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI for the OpenTofu provider registry (prebuilt pipx binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/djetelina/tofuref"
@@ -20,6 +20,9 @@ package() {
   export PIPX_BIN_DIR="$pkgdir/usr/lib/tofuref/bin"
 
   pipx install . --python python3 >/dev/null 2>&1
+  
+  find "$pkgdir/usr/lib/tofuref/venvs/tofuref/bin" -type f -exec sed -i \
+      "1s|^#!.*python$|#!/usr/lib/tofuref/venvs/tofuref/bin/python|" {} +
 
   rm -f "$pkgdir/usr/lib/tofuref/bin/tofuref"
   ln -sf "/usr/lib/tofuref/venvs/tofuref/bin/tofuref" "$pkgdir/usr/lib/tofuref/bin/tofuref"

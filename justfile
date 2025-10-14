@@ -29,7 +29,7 @@ check:
 
 clean:
   yay -Rns  --noconfirm tofuref-bin
-  rm *.tar.gz
-  rm *.tar.zst
-  rm -rf pkg/
-  rm -rf src/
+  rm -f *.tar.gz
+  rm -f *.tar.zst
+  rm -f -rf pkg/
+  rm -f -rf src/
