@@ -1,0 +1,28 @@
+# Package build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+
+# Downloaded source files
+benchctl_Linux_*.tar.gz
+benchctl_Darwin_*.tar.gz
+benchctl_Windows_*.zip
+
+# Update script (local development only)
+update.sh
+
+# Temporary files
+*.tmp
+*.temp
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
