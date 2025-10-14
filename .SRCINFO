@@ -1,13 +1,13 @@
 pkgbase = feroxbuster
 	pkgdesc = A fast, simple, recursive content discovery tool written in Rust
-	pkgver = 2.11.0
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://github.com/epi052/feroxbuster
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	source = feroxbuster-2.11.0.tar.gz::https://github.com/epi052/feroxbuster/archive/refs/tags/v2.11.0.tar.gz
-	sha256sums = 61aa0a5654584c015ff58df69091ec40919b38235b20862975a8ab0649467a83
+	source = feroxbuster-2.13.0.tar.gz::https://github.com/epi052/feroxbuster/archive/refs/tags/v2.13.0.tar.gz
+	sha256sums = 41b3131870c07e3bb93f769444c1e59d3ec370a1c7195bf8bfa192ef179bcf01
 
 pkgname = feroxbuster
