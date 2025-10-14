@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-client
-pkgver=2.3.5
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A game about cooking (client)"
 arch=('any')
@@ -12,13 +12,16 @@ makedepends=('godot' 'ffmpeg')
 source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
         "hurrycurry-client"
         "hurrycurry-client.desktop")
-sha256sums=('d822c088806717055040d26d5c8e50508cf90a766b512b1acaabc7f42bc2d255'
-            '2853345b64837352f576397aac7659aa0306e03ca7de4cdd04bb64bab9c8706c'
+sha256sums=('d0f5a0dcaad2bdc532e706f7e261cb2468882e4a72b11feb6535080d573ab1e3'
+            '5f695c7f4e2fc8ba6ced19f54bb244ab056bcff565adb56855a85fe2c3149fc5'
             '2607233a774b1f74f10deb0ef1c594e418554c4b5701d0e700016368e6d59718')
 
 build() {
     cd "hurrycurry"
-    make client
+    make all_client
+    git reset --hard
+    sed -i "s/^const DISTRIBUTION := .*/const DISTRIBUTION := \"arch\"/" client/global.gd
+    sed -i "s/^const VERSION := .*/const VERSION := \"$pkgver-$pkgrel\"/" client/global.gd
     mkdir -p target/release
     godot --headless --export-pack wasm32-unknown-unknown ../target/release/client.pck client/project.godot
 }
