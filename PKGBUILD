@@ -7,22 +7,21 @@
 
 _pkgname=traverso
 pkgname=$_pkgname-git
-pkgver=traverso_0_49_1.r1354.gcdcb3b21
+pkgver=r3909.f347176
 pkgrel=1
 pkgdesc="Digital Audio Workstation with an innovative User Interface"
 arch=('x86_64')
-url="https://savannah.nongnu.org/projects/traverso/"
+url="https://savannah.gnu.org/projects/traverso/"
 license=('GPL')
-depends=('qt5-base' 'fftw' 'wavpack' 'lame' 'libmad' 'lilv' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('qt6-base' 'fftw' 'wavpack' 'lame' 'libmad' 'lilv' 'hicolor-icon-theme' 'desktop-file-utils')
+optdepends=('qt5-base: Can be used with qt5 (should be changed in PKGBUILD if you which to use it)')
 makedepends=('cmake')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+https://git.savannah.nongnu.org/git/traverso.git")
+source=("git+https://https.git.savannah.gnu.org/git/traverso.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
