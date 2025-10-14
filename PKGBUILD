@@ -1,7 +1,7 @@
 # Maintainer: Hugo Haldi <hugo dot haldi at gmail dot com>
 
 pkgname=swift-format
-pkgver=6.1.3
+pkgver=6.2
 pkgrel=1
 pkgdesc="Formatting technology for Swift source code"
 url="https://github.com/apple/swift-format"
@@ -10,13 +10,13 @@ license=('Apache-2.0')
 depends=('swift-bin')
 makedepends=('git')
 source=(
-  swift-format-${pkgver}.tar.gz::https://github.com/apple/swift-format/archive/swift-${pkgver}-RELEASE.tar.gz
+  swift-format-${pkgver}.tar.gz::https://github.com/swiftlang/swift-format/archive/refs/tags/602.0.0.tar.gz
 )
-sha256sums=('73223e04412147f0f71d9f92c257478348cddae0b4ac89034a37f478192903bc')
+sha256sums=('d72b8ca81face822b7ef9c5d9db87e2479c9851345406e0ea237dcaa047f5e0a')
 
 prepare() {
     rm -rf swift-format
-    mv swift-format-swift-${pkgver}-RELEASE swift-format
+    mv swift-format-602.0.0 swift-format
 }
 
 build() {
