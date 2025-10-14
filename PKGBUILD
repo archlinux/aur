@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="fga"
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
 arch=('aarch64' 'i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=(
 )
 _pkgsrc="${pkgname}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed")
-b2sums=('6c144dbedf6a3b477af35d4b9620b86632ee9e7985032fe0ca82107395c370073abedc3cf5cfac9b1b4298d0b4bfa0ed716cb915ea36cbcc275fb50f75cb504e')
+b2sums=('48e3498872c067c8a2bf4632e1453c0d73ba25151c25d29576f44a72cf7d7e2efe58e60a435069d0ddd2938b0d880c83de259494374d552dd3feada1e1ca7749')
 validpgpkeys=('510C64A6CDC3F0965291ED872E31AD2F054526F0') # Raghd Hamzeh <raghd.hamzeh@openfga.dev> (https://github.com/rhamzeh.gpg)
 
 prepare() {
