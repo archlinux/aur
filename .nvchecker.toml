@@ -1,0 +1,4 @@
+[minify-html]
+source = "git"
+git = "https://github.com/wilsonzlin/minify-html.git"
+prefix = "v"

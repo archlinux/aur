@@ -1,0 +1,26 @@
+diff --git a/minify-html-onepass-python/Cargo.toml b/minify-html-onepass-python/Cargo.toml
+index 7e9247c..6101939 100644
+--- a/minify-html-onepass-python/Cargo.toml
++++ b/minify-html-onepass-python/Cargo.toml
+@@ -12,6 +12,8 @@ edition = "2018"
+
+ [lib]
+ crate-type = ["cdylib"]
++# this is the name of the Python module (must not contain '-')
++name = "minify_html"
+
+ [dependencies]
+ minify-html-onepass = { path = "../minify-html-onepass" }
+diff --git a/minify-html-python/Cargo.toml b/minify-html-python/Cargo.toml
+index 6e43d92..ee78d84 100644
+--- a/minify-html-python/Cargo.toml
++++ b/minify-html-python/Cargo.toml
+@@ -12,6 +12,8 @@ edition = "2018"
+
+ [lib]
+ crate-type = ["cdylib"]
++# this is the name of the Python module (must not contain '-')
++name = "minify_html"
+
+ [dependencies]
+ minify-html = { path = "../minify-html" }

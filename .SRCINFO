@@ -1,0 +1,26 @@
+pkgbase = minify-html
+	pkgdesc = Extremely fast and smart HTML + JS + CSS minifier
+	pkgver = 0.16.4
+	pkgrel = 1
+	url = https://github.com/wilsonzlin/minify-html
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = maturin
+	makedepends = python-installer
+	source = minify-html-0.16.4.tar.gz::https://github.com/wilsonzlin/minify-html/archive/refs/tags/v0.16.4.tar.gz
+	source = Cargo.lock
+	source = python-module-name.patch
+	b2sums = 7706d048ef9f79dc67c8dd3095f2f1d0f4f5a12351af4a53f375b72dff6e978cbfe904f017e6ef05834fda4df65c99dae36d40c62eb557d5d58dc546d212ca15
+	b2sums = a70a3f1526ca44b37dced089a02e378aaf2344e98cfe3cfdf1656c15f3f79a1f45b68817803782d1d94e5bf33fd5a0edce935c1c7d451a81e0bc67a86f6917e6
+	b2sums = d42ea6b62bf5a933443bc9d984d4e17fdacb1dc1dc0cc11704b48a4aa54cdc25457ef4ff35c1997dff24ae7a9c8d4b6f7a7100148561dd80395b454577f3b43a
+
+pkgname = minify-html
+	depends = gcc-libs
+	depends = glibc
+
+pkgname = python-minify-html
+	pkgdesc = Extremely fast and smart HTML + JS + CSS minifier - Python bindings
+	depends = gcc-libs
+	depends = glibc
+	depends = python
