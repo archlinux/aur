@@ -1,29 +1,34 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.2.0 ➙ 7.7.0
-              : 2025-06-16 ➙ 2025-06-26
+ Tags         : 7.4.0 ➙ 7.7.2
+              : 2025-06-19 ➙ 2025-10-14
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
+ 2025-10-14   : 7.7.2
+              - Switch doc build to xelatex which handles unicode characters
+              - Drop unused dependency on pydantic from Arch PKGBUILD
+ 2025-06-26   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.7.0
+
  2025-06-26   : 7.7.0
-                run_prog: sync local copy with latest from pyconcurrent
- 2025-06-25     update Docs/Changelogs Docs/mkpkg.pdf for 7.6.0
+              - run_prog: sync local copy with latest from pyconcurrent
+ 2025-06-25   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.6.0
 
  2025-06-25   : 7.6.0
-                Use pyconcurrent.run_prog when available otherwise local copy.
+              - Use pyconcurrent.run_prog when available otherwise local copy.
                 Fix typo
- 2025-06-22     update Docs/Changelogs Docs/mkpkg.pdf for 7.5.0
+ 2025-06-22   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.5.0
 
  2025-06-22   : 7.5.0
-                Sync local copy of run_prog with latest from pyconcurrent
- 2025-06-19     update Docs/Changelogs Docs/mkpkg.pdf for 7.4.0
+              - Sync local copy of run_prog with latest from pyconcurrent
+ 2025-06-19   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.4.0
 
  2025-06-19   : 7.4.0
-                Keep internal copy of run_prog in sync with pyconcurrent
+              - Keep internal copy of run_prog in sync with pyconcurrent
                    For subprocess stdin add .flush() on the file object before closing
- 2025-06-16     update Docs/Changelogs Docs/mkpkg.pdf for 7.2.0
-
- 2025-06-16   : 7.2.0
-                run_prog: Fix one more possible hang. Add more exception checks that should
-                never happen.
- 2025-06-14     update Docs/Changelogs Docs/mkpkg.pdf for 7.1.0
+ 2025-06-16   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.2.0
