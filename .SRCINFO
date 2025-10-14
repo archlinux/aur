@@ -1,7 +1,7 @@
 pkgbase = ps7_libps3000
 	pkgdesc = Library for PicoScope 3000 series in PicoScope 7
-	pkgver = 4.0.146_3r6147
-	pkgrel = 2
+	pkgver = 4.0.149_3r6187
+	pkgrel = 1
 	url = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps3000/
 	install = ps7_libps3000.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ps7_libps3000
 	depends = libusb
 	conflicts = ps7b_libps3000
 	options = !strip
-	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps3000/libps3000_4.0.146-3r6147_amd64.deb
-	md5sums = 65e54f01b4f3a6de100873dde03d84d2
+	source = https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps3000/libps3000_4.0.149-3r6187_amd64.deb
+	md5sums = 9fdd882e5adf16cf7e090eb2b21e1b8b
 
 pkgname = ps7_libps3000
