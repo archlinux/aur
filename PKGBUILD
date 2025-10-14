@@ -1,6 +1,6 @@
 appname="zen-adblocker"
 pkgname="${appname}"-bin
-pkgver="0.12.0"
+pkgver="0.13.0"
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("Zen_linux_amd64_${pkgver}.tar.gz::https://github.com/anfragment/zen/rel
         "${appname}.desktop"
         "appicon.png::https://github.com/anfragment/zen/blob/v${pkgver}/assets/appicon.png?raw=true"
         "LICENSE::https://github.com/anfragment/zen/blob/v${pkgver}/LICENSE?raw=true")
-sha256sums=('c189176a693ad4ed7c3f3b938f97296196829dc736ab1cfbf1086aec1a777138'
+sha256sums=('3be6a04c0eecac6adaf788ddbf73034cf51e3a921f9a7f6a5df8780778430310'
             'b8fd4a272875b236b953bbeca99459cfcd6d6e10a1d00cf50eaadf742db27fc2'
             '86c811ab545ee63d398ddc2da04a75d968d349102a4b73a087e01cebc346f1e2'
             'd39888b5658d9207779b855f1626eca78ab97525dc2dbcdb1df4ebc199d414a6')
