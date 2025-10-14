@@ -78,7 +78,6 @@ conflicts=(
   "${_pkgname}-bash-completions"
   "${_pkgname}-zsh-completions"
 )
-options=()
 source=(
   "${_pkgname}"::git+https://github.com/tizonia/${_githubname}.git
   "fix_chromecast_placeholders_error.patch::https://github.com/tizonia/tizonia-openmax-il/files/9795320/fix_chromecast_placeholders_error.patch.txt"
@@ -96,6 +95,9 @@ if which ccache > /dev/null 2>&1; then
 else
   _USE_CCACHE=false
 fi
+# options+=('debug')  # To also build -debug package.
+# options+=('!lto')   # Also needed to also build -debug package.
+# options+=('!strip') # If -debug package is build, do not generate extra package, but keep debugging symbols in main package.
 
 prepare() {
   if command -v tizonia > /dev/null 2>&1 || [ -n "`pacman -Qqs tizonia`" ]; then
@@ -161,6 +163,15 @@ build() {
   CXXFLAGS+=" ${_CFLAGSAPPEND}"
   export CFLAGS
   export CXXFLAGS
+
+  ## For debugging: Show flags, and exit.
+  #echo "CFLAGS:"
+  #echo "${CFLAGS}"
+  #echo "CXXFLAGS:"
+  #echo "${CXXFLAGS}"
+  #echo "LDFLAGS:"
+  #echo "${LDFLAGS}"
+  #exit 1
 
   # CC and CXX environment variables seem to be ignored.
 
