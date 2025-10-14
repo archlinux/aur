@@ -3,33 +3,33 @@
 
 pkgname=proton-mail
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
 depends=('bash' 'electron35' 'hicolor-icon-theme')
 makedepends=('git' 'nodejs-lts' 'yarn')
-source=("WebClients-proton-inbox-desktop-$pkgver.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/proton-inbox-desktop@$pkgver.tar.gz"
+source=("WebClients-proton-inbox-desktop::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
         'proton-mail.desktop'
         'proton-mail.sh')
-b2sums=('0bd41ee8d0fdc3ce63b568692a1361df4bdad8bf98cb2c69dac420667c4f83fd2cc629e2f020668f68249d5bab9b28fff9aa4a846ab783db2590af5bcc85808b'
+b2sums=('SKIP'
         'dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be'
         '21605b0d31062d2b355e8422f319521a775efd41ef34571a114fd7f9f1ba07b39b4a27998fd11d2039baa7ba0650b804dfd41e0d591ead622fce68243dca1d88')
 
 prepare() {
-    cd WebClients-proton-inbox-desktop-$pkgver
+    cd WebClients-proton-inbox-desktop
     sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
 }
 
 build() {
-    cd WebClients-proton-inbox-desktop-$pkgver
+    cd WebClients-proton-inbox-desktop
     yarn install
     yarn workspace proton-inbox-desktop package
 }
 
 check() {
-    cd WebClients-proton-inbox-desktop-$pkgver
+    cd WebClients-proton-inbox-desktop
     yarn workspace proton-inbox-desktop test
 }
 
@@ -37,7 +37,7 @@ package() {
     install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
     install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-    cd WebClients-proton-inbox-desktop-$pkgver/applications/inbox-desktop
+    cd WebClients-proton-inbox-desktop/applications/inbox-desktop
 
     install -dm755 "$pkgdir/usr/share/$pkgname"
     cp -r "out/Proton Mail-linux-x64/resources"/* "$pkgdir/usr/share/$pkgname/"
