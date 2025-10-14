@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor <me@cordor.dev>
 pkgname=savestate
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 epoch=
 pkgdesc="A versatile game save backup manager, featuring Steam detection, Minecraft support, drag & drop, desktop shortcuts and emulator compatible."
@@ -22,15 +22,15 @@ changelog=
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/Matteo842/SaveState/archive/refs/tags/$pkgver.tar.gz"
 	"SaveState.png::https://github.com/Matteo842/SaveState/blob/$pkgver/icon.png?raw=true"
+	"SaveState-OneFile-Linux.spec::https://github.com/Matteo842/SaveState/raw/refs/heads/main/SaveState-OneFile-Linux.spec"
 	"requirements.patch"
-	"SaveState-OneFile-Linux.spec"
 )
 noextract=()
 sha256sums=(
-	'a65fbab8201cfd3c248286edc88d83df32b39d40c6f84678c5bc23a011134fbf'
+	'ad3a02d5d37000b108154094f6d17e2b301e4b13296f3e57a28acd477775c5ac'
 	'7f7b294aa10ef51f23dbccd814e2ce507269be889e444f2bf2b1fb5c50dcb15e'
-	'367ce17d16d84c18fd87028789d7520837d3c9e5f0d5c57a0ac8fa28ba0b3b84'
 	'ac19894ca894e119940a48ec62f51f25c8c8623e433f60d52fee8863a0c4fd61'
+	'367ce17d16d84c18fd87028789d7520837d3c9e5f0d5c57a0ac8fa28ba0b3b84'
 )
 validpgpkeys=()
 _name="SaveState"
