@@ -2,7 +2,7 @@
 # Contributor: Jingbei Li <i@jingbei.li>
 _base=mkl_random
 pkgname=python-${_base/_/-}
-pkgver=1.2.11
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="NumPy-based Python interface to Intel (R) MKL Random Number Generation functionality"
 arch=(x86_64)
