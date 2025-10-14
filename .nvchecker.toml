@@ -1,6 +1,3 @@
 [proton-mail]
-source = "github"
-github = "ProtonMail/WebClients"
-use_max_tag = true
-include_regex = "^proton-inbox-desktop@.*"
-prefix = "proton-inbox-desktop@"
+source = "cmd"
+cmd = "curl -s 'https://api.github.com/repos/ProtonMail/WebClients/branches' | jq -r '.[].name' | grep '^release/inbox-desktop@' | sed 's/release\\/inbox-desktop@//' | sort -V | tail -1"
