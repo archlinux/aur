@@ -1,6 +1,6 @@
 # Maintainer: wansing <mail at wansing dot org>
 pkgname=litestream
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Streaming S3 replication for SQLite.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "litestream.tmpfiles"
   "litestream@.service"
 )
-sha256sums=('9f0c1501e54bfeeec88da6e27668e178a6a09d33b552c547526cf5cb87c23143'
+sha256sums=('65f4d23f6dacc4154cdd4101ed2d0ae2b29394fd3e76609babd414912ad60445'
             'ff01a182a9138602692b9b55e01888bdf7a8c19f0f1c7be60bb165bd343dc7bf'
             '15775e0ad1842ace5683e2eb13b0d829a5d3df09e42c89fbc4daf82eef1897b4'
             'a13b26bf2886055647eb9fd607ca4b3b90b8faee457a13e9c043cee49220f1ba')
