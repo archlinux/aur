@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# force QT to run in X11 mode
+export QT_QPA_PLATFORM=xcb
+
+# reset trial period
+/opt/apps/com.foxit.foxitpdfeditor/files/countinstalltion
+
+/opt/apps/com.foxit.foxitpdfeditor/files/"Foxit PDF Editor" "$@"
