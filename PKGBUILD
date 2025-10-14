@@ -2,7 +2,7 @@
 # Maintainer: SFN
 pkgname=tl-render
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tlRender is an open source library for building playback and review applications for visual effects, film, and animation."
 arch=("x86_64")
 url="https://github.com/darbyjohnston/tlRender"
@@ -22,6 +22,7 @@ sha256sums=('7bf07511c699b868607a3ac7fc07aa1347bda15dedd8cfb1a96761debee6f880'
             'b1fb3d32c55639463946a10e0af7b13e1e036224712252dea8ace09575a4fc49')
 
 CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
+CXXFLAGS+=" -ffat-lto-objects" # lto problems with static libs
 
 build() {
 	cd "$srcdir/tlRender-${pkgver}"
