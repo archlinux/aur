@@ -12,7 +12,7 @@ pkgname='process-mem'
 pkgdesc='Display Memory Used by Process(es)'
 _gitname='process-mem'
 
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 url="https://github.com/gene-git/process-mem"
 
@@ -20,7 +20,7 @@ arch=(any)
 license=(MIT)
 
 # To build docs uncommont sphinx/texlive
-depends=('python>=3.13' 'python-pydantic' 'python-psutil')
+depends=('python>=3.13' 'python-psutil')
 makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
              'python-docutils'
             )

@@ -1,0 +1,36 @@
+-------------------------------------------------------
+ Changelog    : process-mem
+ Tags         : 1.1.0 ➙ 1.4.1
+              : 2024-09-30 ➙ 2025-10-14
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2025-10-14   : 1.4.1
+              - Drop unused pydantic dependency from Arch PKGBUILD
+ 2025-07-15   ⋯
+              - update Changelog and man page
+
+ 2025-07-15   : 1.4.0
+              - Tidy code: complies with PEP-8, PEP-257 and PEP-484 style and type annotations
+ 2024-12-31   ⋯
+              - update Changelog and man page
+
+ 2024-12-31   : 1.3.0
+              - Git tags are now signed.
+                Update SPDX tags
+                Add git signing key to Arch Package
+                Bump python vers
+ 2024-10-13   ⋯
+              - update Changelog and man page
+
+ 2024-10-13   : 1.2.0
+              - Split up and use separate files to simplify.
+                Add new sort options (defaut is by process name)
+                  -sm, --sort-mem       Sort by resident memory use instead of process name
+                  -sr, --sort-rev       Sort in reverse order
+ 2024-09-30   ⋯
+              - update Changelog and man page
+
+ 2024-09-30   : 1.1.0
+              - Sort output by process name.
+                Add (-v, --vers) option to display the version and exit
