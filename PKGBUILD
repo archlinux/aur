@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-	install -Dm755 "${srcdir}/bin/${_pkgname}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm755 "${srcdir}/bin/${_pkgname}" "$pkgdir/usr/bin/${pkgname}"
 
 	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
