@@ -1,4 +1,4 @@
-openvpn-manager-git
+openvpn-manager
 
 # Arquivos temporários do makepkg
 *.pkg.tar.zst
