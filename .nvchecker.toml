@@ -1,0 +1,5 @@
+[dragonfly-bin]
+source = "github"
+github = "dragonflydb/dragonfly"
+use_latest_release = true
+prefix = "v"
