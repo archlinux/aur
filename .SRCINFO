@@ -1,0 +1,19 @@
+pkgbase = python-siphash24
+	pkgdesc = Streaming-capable SipHash Implementation
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/dnicolodi/python-siphash24
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = cython
+	makedepends = meson
+	makedepends = meson-python
+	makedepends = cmake
+	makedepends = git
+	source = siphash24-1.8.tar.gz::https://github.com/dnicolodi/python-siphash24/archive/refs/tags/v1.8.tar.gz
+	sha256sums = 1c0c33048d2a7862682690a96780073248b7e30b08749ad114d749dfd74df94c
+
+pkgname = python-siphash24
