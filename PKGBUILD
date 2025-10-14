@@ -1,6 +1,6 @@
 # Maintainer: Bink
 pkgname=ktx-software-bin
-pkgver=4.4.0
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="KTX (Khronos Texture) Library and Tools"
 arch=("x86_64")
@@ -13,7 +13,7 @@ options=('!strip')
 source=(
     "https://github.com/KhronosGroup/KTX-Software/releases/download/v${pkgver}/KTX-Software-${pkgver}-Linux-x86_64.tar.bz2"
 )
-sha256sums=('942f7dd615a9330f54544dc4857a44a91c85d461376b11ec43065c8f49b1e048')
+sha256sums=('a8781bad05f9624edbf910b7f258cd0a4ba7d3e63b49ecc0a0ab440bf6a0a245')
 
 package() {
     cd "${srcdir}/KTX-Software-${pkgver}-Linux-x86_64"
