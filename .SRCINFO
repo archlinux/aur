@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-python313-bin
+pkgbase = mingw-w64-python314-bin
 	pkgdesc = The Python programming language (native MSVC version) (mingw-w64)
 	pkgver = 3.14.0
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = mingw-w64-python313-bin
 	sha256sums = 88d2da4eed42fa9a5f42ff58a8bc8988881bd6c547e297e46682c2687638a851
 	sha256sums = a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae
 
-pkgname = mingw-w64-python313-bin
+pkgname = mingw-w64-python314-bin

@@ -1,4 +1,4 @@
-pkgname=mingw-w64-python313-bin
+pkgname=mingw-w64-python314-bin
 pkgver=3.14.0
 _pybasever=314
 pkgrel=1
