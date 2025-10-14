@@ -4,7 +4,7 @@
 
 pkgname=python-trackpy
 _pkg="${pkgname#python-}"
-pkgver=0.6.4
+pkgver=0.7
 pkgrel=1
 pkgdesc="Python particle tracking toolkit"
 url="https://github.com/soft-matter/trackpy"
@@ -18,7 +18,7 @@ optdepends=("python-pims: simplifies image-reading"
             "python-numba: for accelerated feature-finding and linking"
             "python-pillow: for some display routines")
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('27edfef78628ce51378499852219f2c66352af08195c72742d4bd4d9a2f93024')
+sha256sums=('7c67af8d5242323f4469a3e0157146b42f82be9ae640c4bbff0a8a5888928818')
 
 build() {
 	cd "$_pkg-$pkgver"
