@@ -2,7 +2,7 @@
 
 _appname=groupfolders
 pkgname=nextcloud-app-groupfolders
-pkgver=19.1.7
+pkgver=19.1.8
 pkgrel=1
 pkgdesc="Admin-configured folders shared by everyone in a group."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/groupfolders"
 license=('AGPL')
 makedepends=('npm' 'jq' 'yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('c70be1e19e6bbfe38d27df99e4e89081242b73b014e0ea55f4b16c0739a81b856342e19843bd3e0e0160d6c31774c4711a14927fe0005b1e1d5df11f2c42b874')
+sha512sums=('2ab0c9d31b9457048defd2e3347db12644a4e1f23ed6d5c4404d6830672386c10fa42ecbb6f0c03581b36b88dacd58e64925a0a093493a22120e3efb4e629f78')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
