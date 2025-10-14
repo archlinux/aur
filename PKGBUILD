@@ -1,3 +1,5 @@
+# Maintainer: Keyu Tao <me@taoky.moe>
+
 pkgname=git-keeper-git
 _pkgname=git-keeper
 pkgver=rolling.r8.g0d0d6ef
