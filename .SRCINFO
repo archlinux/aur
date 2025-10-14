@@ -1,0 +1,27 @@
+pkgbase = rclone-manager
+	pkgdesc = User-friendly GUI for Rclone
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/RClone-Manager/rclone-manager
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = rclone
+	optdepends = 7zip: Encrypt/decrypt backup data
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/RClone-Manager/rclone-manager/releases/download/v0.1.4/Rclone.Manager_0.1.4_amd64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/RClone-Manager/rclone-manager/releases/download/v0.1.4/Rclone.Manager_0.1.4_arm64.deb
+	sha256sums_aarch64 = SKIP
+
+pkgname = rclone-manager
