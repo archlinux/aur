@@ -4,8 +4,8 @@
 
 _pkgname=aiortc
 pkgname=python-aiortc
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='WebRTC and ORTC implementation for Python using asyncio'
 arch=(any)
 url='https://github.com/aiortc/aiortc'
@@ -34,7 +34,7 @@ makedepends=(
 )
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/aiortc/aiortc/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('9f030cc416ce39298b5b0f0747c756dc9aa519f3270316f235ca37385e071e498095e8a13ae4ae4d865b376db72cb6db43b6c26a2037b53f1d50ba432158dc9d')
+sha512sums=('c7b4466440f4bd00b3e99017fb0923dce94a0d4374d87d886cef7ec38cccc86df6d5f67db1bd38ae7c1dd65f08f72f40f7740e8389721be90228e49d199fd65a')
 
 build() {
   cd "${_pkgname}-${pkgver}"
