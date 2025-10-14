@@ -8,8 +8,12 @@ arch=('x86_64')
 url='https://gitlab.com/veloren/airshipper'
 license=('GPL3')
 depends=('libxcb' 'gcc-libs')
-optdepends=('vulkan-icd-loader: GUI support'
-            'vulkan-driver: GUI support')
+optdepends=(
+	'vulkan-icd-loader: GUI support'
+    'vulkan-driver: GUI support'
+    'pulseaudio-alsa: audio support on pulseaudio'
+    'pipewire-alsa: audio support on pipewire'
+)
 provides=()
 conflicts=()
 install="airshipper.install"
