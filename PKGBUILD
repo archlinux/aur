@@ -2,7 +2,7 @@
 
 pkgname=plymouth-zfs
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='initcpio hook to support native zfs encryption for plymouth'
 arch=('any')
@@ -20,7 +20,7 @@ source=('plymouth-zfs.initcpio.hook'
         'plymouth-zfs.install')
 sha256sums=('85f40d5982eee4219b097ceb863b54775c357d1bf9cec7e5b011a9d1ba451a4b'
             '2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913'
-            '87cb3eb0b6ce861e8042ab053dea37c567f2e979cb5f3315b50a63e0a297b6c5')
+            'b6b48926cf1a05ed329410e846bc177d854ef2774c3ed8130979fa9c2e94c0e0')
 
 package() {
   cd "$srcdir"

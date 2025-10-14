@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 post_install() {
-  echo "Note: Remember to replace the 'zfs' hook with 'plymouth-zfs' in '/etc/mkinitpcio.conf'"
+  echo "Note: Remember to replace the 'zfs' hook with 'plymouth-zfs' in '/etc/mkinitcpio.conf'"
 }
