@@ -11,6 +11,7 @@ pkgbase = jdk21-graalvm-ee-bin
 	depends = java-environment-common
 	provides = java-runtime=21
 	provides = java-environment=21
+	provides = java-environment-openjdk=21
 	options = staticlibs
 	options = !debug
 	source_x86_64 = https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.8_linux-x64_bin.tar.gz

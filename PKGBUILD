@@ -14,7 +14,8 @@ depends=('java-runtime-common'
 	'java-environment-common')
 makedepends=()
 provides=("java-runtime=${_java}"
-	"java-environment=${_java}")
+	"java-environment=${_java}"
+	"java-environment-openjdk=${_java}")
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
