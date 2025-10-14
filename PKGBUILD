@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=2025.35
+pkgver=2025.36
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('git-credential-manager: third-party authentication support')
 makedepends=('dotnet-sdk-9.0' 'desktop-file-utils')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1ae6825d57b2e45ca73ef05a048f62bededa6b72b852c01d2aa7c88befbb253')
+sha256sums=('69652acba911d4ddf59cfeac94fcf370d722cc838a66c22b3aac4a590b3d5626')
 
 
 
