@@ -1,6 +1,6 @@
 pkgbase = droidcam-obs-plugin
 	pkgdesc = plugin for droidcam obs
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://dev47apps.com/obs/
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = droidcam-obs-plugin
 	depends = libusbmuxd
 	depends = libjpeg-turbo
 	depends = libimobiledevice
-	conflicts = droidcam-obs-plugin-git
 	provides = droidcam-obs-plugin
-	source = droidcam-obs-plugin::git+https://github.com/dev47apps/droidcam-obs-plugin.git#tag=d23271e5b54ad95a9e05782a91e021776b3a5314
+	conflicts = droidcam-obs-plugin-git
+	source = droidcam-obs-plugin::git+https://github.com/dev47apps/droidcam-obs-plugin.git#tag=73ec2a01e234e6b2287866c25b4242dca6d9d2f6
+	source = device_discovery-fix.patch
 	sha256sums = SKIP
+	sha256sums = 3d8f8484af5953faf0ab57358b07ce02b014a880a346e11b5cc79812a31ca857
 
 pkgname = droidcam-obs-plugin
