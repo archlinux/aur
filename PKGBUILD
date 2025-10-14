@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-node
 pkgver=r2231.gbf320832
-pkgrel=6
+pkgrel=7
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -65,13 +65,9 @@ package() {
   ln -s /opt/ethoscope/services/ethoscope_backup_video.service ./
   ln -s /opt/ethoscope/services/virtuascope.service ./
 
-  # Add ethoscope packages to Python path instead of using pip
-  # This avoids pip installation and uses system packages instead
-  install -dm0755 "${pkgdir}/etc/profile.d"
-  echo 'export PYTHONPATH="/opt/ethoscope/src/node:/opt/ethoscope/src/ethoscope:${PYTHONPATH}"' > "${pkgdir}/etc/profile.d/ethoscope.sh"
-
-  # To revert to pip-based installation: Comment out the 3 lines above and uncomment
-  # the pip install commands in ethoscope-node.install (post_install and post_upgrade)
+  # Note: Python packages are installed via pip in the .install script
+  # This generates .egg-info metadata and registers console script entry points
+  # Dependencies are provided by pacman packages
 
 }
 
