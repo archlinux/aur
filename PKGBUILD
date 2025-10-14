@@ -2,8 +2,8 @@
 # Contributor: mawcomw  <mawcomw@gmail.com>
 
 pkgname=limesurvey
-_pkgver="6.15.14"
-_pkgdate="250924"
+_pkgver="6.15.17"
+_pkgdate="251013"
 _foldername=${pkgname}
 pkgver=$_pkgver+$_pkgdate
 pkgrel=1
@@ -15,7 +15,7 @@ url="https://www.limesurvey.org"
 source=(
 https://download.limesurvey.org/latest-master/limesurvey${pkgver}.zip
 )
-sha256sums=('33b709691dbe9b6c66b646540f7daa4e6fa94e8e2895ac8412216ae8d17b52f3')
+sha256sums=('97699320cadc20fc1b2dc43eee2896b9d814def911e25a9ad5fec44b07211460')
 
 optdepends=('apache: a supported application server'
 	    'nginx: a supported application server'
