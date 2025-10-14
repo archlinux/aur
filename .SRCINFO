@@ -1,0 +1,13 @@
+pkgbase = rmeet
+	pkgdesc = Rmeet
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://rmeet.crc.com.cn/
+	arch = x86_64
+	license = LicenseRef-rmeet
+	options = !strip
+	options = !debug
+	source = https://rmeetapp.crc.com.cn/downloads/apps/linux/x86/Rmeet-v2.0.0-1-x86-prod-setup.deb
+	md5sums = 25c7e5c4d0db1c880414eec936c88f4f
+
+pkgname = rmeet
