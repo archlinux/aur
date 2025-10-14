@@ -2,14 +2,14 @@
 
 _omit_libs=true
 _omit_dlls=false
-_electron_ver=37
+_electron_ver=38
 _dotnet_ver=9.0
-_runtime_ver=8
-_sdk_ver=109
+_runtime_ver=9
+_sdk_ver=110
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2025.09.10'
+pkgver='2025.10.11'
 pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
@@ -18,11 +18,11 @@ depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' "dotnet-runtime-$_dotnet_v
 makedepends=('squashfs-tools')
 conflicts=('vrcx')
 provides=('vrcx')
-source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkgver//./}_x64.AppImage"
+source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkgver}_x64.AppImage"
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('5b2a0c2491ba5ab8a587d7f32431261a3468235a02cfb0bfd3f93cf8eeecad90'
+sha256sums=('ee4e07ecdae30fe1810467cfbb9e5c7238c4f7163d05c9296f98244b03234957'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
             '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
@@ -114,7 +114,7 @@ extract_appimage() (
 
 build() {
     mkdir opt
-    extract_appimage "VRCX_${pkgver//./}_x64.AppImage" opt/vrcx -no-xattrs
+    extract_appimage "VRCX_${pkgver}_x64.AppImage" opt/vrcx -no-xattrs
     rm -f opt/vrcx/AppRun
     rm -f opt/vrcx/.DirIcon
     rm -f opt/vrcx/vrcx.desktop
