@@ -1,0 +1,14 @@
+pkgbase = git-keeper-git
+	pkgdesc = Tracks specified git repos for sysadmins
+	pkgver = rolling.r8.g0d0d6ef
+	pkgrel = 1
+	url = https://github.com/taoky/git-keeper
+	arch = any
+	license = MIT
+	makedepends = go-md2man
+	depends = python
+	depends = git
+	source = git+https://github.com/taoky/git-keeper.git#branch=master
+	md5sums = SKIP
+
+pkgname = git-keeper-git
