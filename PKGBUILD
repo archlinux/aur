@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitbutler
-pkgver=0.16.9
+pkgver=0.16.10
 pkgrel=1
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
@@ -21,7 +21,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
-sha256sums=('7fcd877c416ccd79930d9c65b4941446aa62c563f597a0e87f022aaf0b27c494')
+sha256sums=('5573dd2963e31031d5f5b93cd1f3f199326991b05b9446f7696358ed9ffdfde5')
 
 prepare() {
 	cd "$_archive"
