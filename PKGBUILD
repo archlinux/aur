@@ -8,7 +8,11 @@ arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
 makedepends=('base-devel' 'git' 'gcc-fortran' 'rsync' 'wget' 'fping' )
-depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'sshpass' 'cloudflared' 'gcc')
+depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'sshpass' 'cloudflared' 'gcc'
+         'python-bottle' 'python-cherrypy' 'python-mysql-connector' 'python-netifaces'
+         'python-gitpython' 'python-zeroconf' 'python-numpy' 'python-opencv' 'python-pyserial'
+         'python-psutil' 'python-requests' 'python-scipy' 'python-dateutil' 'python-mattermostdriver')
+optdepends=('python-picamera2: Raspberry Pi camera support for ethoscope devices')
 provides=('ethoscope')
 install="ethoscope-node.install"
 source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
@@ -60,6 +64,14 @@ package() {
   ln -s /opt/ethoscope/services/ethoscope_backup_unified.service ./
   ln -s /opt/ethoscope/services/ethoscope_backup_video.service ./
   ln -s /opt/ethoscope/services/virtuascope.service ./
+
+  # Add ethoscope packages to Python path instead of using pip
+  # This avoids pip installation and uses system packages instead
+  install -dm0755 "${pkgdir}/etc/profile.d"
+  echo 'export PYTHONPATH="/opt/ethoscope/src/node:/opt/ethoscope/src/ethoscope:${PYTHONPATH}"' > "${pkgdir}/etc/profile.d/ethoscope.sh"
+
+  # To revert to pip-based installation: Comment out the 3 lines above and uncomment
+  # the pip install commands in ethoscope-node.install (post_install and post_upgrade)
 
 }
 

@@ -9,10 +9,10 @@ post_install() {
     #setting the bare installation folder as safe.directory
     git config --system --add safe.directory /srv/git/ethoscope.git
 
-    #installing python modules
-    cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages
-    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages  
-    
+    # Note: Python modules are NOT installed via pip
+    # Instead, PYTHONPATH is set via /etc/profile.d/ethoscope.sh
+    # All dependencies are provided by pacman packages
+
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
     echo "enabling the GIT server on the node and NTP service"
@@ -39,9 +39,9 @@ post_upgrade() {
     #setting the bare installation folder as safe.directory
     git config --system --add safe.directory /srv/git/ethoscope.git
 
-    echo "updating python packages in editable mode"
-    cd /opt/ethoscope/src/node && pip install -e . --break-system-packages
-    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
+    # Note: Python modules are NOT installed via pip
+    # Instead, PYTHONPATH is set via /etc/profile.d/ethoscope.sh
+    # All dependencies are provided by pacman packages
 }
 
 # arg 1:  the old package version
@@ -60,3 +60,17 @@ post_remove() {
     rm -rf /opt/ethoscope
     rm -rf /srv/git/ethoscope.git
 }
+
+# Alternative pip-based installation (not executed, kept for reference)
+# Uncomment the sections below in post_install() and post_upgrade() if you want
+# to revert to pip-based installation (also update PKGBUILD accordingly)
+#
+# For post_install(), replace the note with:
+#     #installing python modules
+#     cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages
+#     cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
+#
+# For post_upgrade(), replace the note with:
+#     echo "updating python packages in editable mode"
+#     cd /opt/ethoscope/src/node && pip install -e . --break-system-packages
+#     cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
