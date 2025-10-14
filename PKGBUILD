@@ -1,6 +1,6 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=hyprmarker
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='ZoomIt-like screen annotation tool for Wayland compositors with wlr-layer-shell support'
 arch=('x86_64' 'aarch64')
