@@ -1,18 +1,18 @@
 pkgbase = scyther
 	pkgdesc = Tool for the symbolic analysis of security protocols
-	pkgver = v1.1.3
-	pkgrel = 2
+	pkgver = v1.2.1
+	pkgrel = 3
 	url = https://www.cs.ox.ac.uk/people/cas.cremers/scyther/
 	arch = x86_64
 	license = GPL2
-	depends = python2
+	depends = python
 	depends = graphviz
-	depends = wxpython
-	source = http://www.cs.ox.ac.uk/people/cas.cremers/downloads/scyther/scyther-linux-v1.1.3.tgz
+	depends = python-wxpython
+	source = http://www.cs.ox.ac.uk/people/cas.cremers/downloads/scyther/scyther-linux-v1.2.1.tgz
 	source = scyther.desktop
 	source = scyther
-	sha256sums = 5829daf7252ca92ed40041bbdb0012c091d36f16855d802ed7a792f3f8dad6a6
+	sha256sums = 266324f77bd8102ae96b0e884ba705ca17adaff4e75727e59e164b097d7426ff
 	sha256sums = d3bc8366a76892d47252c517246310e76e8e14af7856fb85a89b7e1de1c9dc07
-	sha256sums = 1908f0474a2e546dbc52f2899a5ca665458a623e8c7dd6b5359eb5c1ae37921b
+	sha256sums = d744b78f244d11b4d3a1786709824c0c8432b50f68bfbbcbf3afc736acadb765
 
 pkgname = scyther

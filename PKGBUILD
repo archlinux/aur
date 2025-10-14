@@ -1,11 +1,11 @@
 # Maintainer: Lukas Tobler <luk4s.tobler@gmail.com>
 
 pkgname=scyther
-pkgver=v1.1.3
-pkgrel=2
+pkgver=v1.2.1
+pkgrel=3
 pkgdesc="Tool for the symbolic analysis of security protocols"
 arch=('x86_64')
-depends=('python2' 'graphviz' 'wxpython')
+depends=('python' 'graphviz' 'python-wxpython')
 url="https://www.cs.ox.ac.uk/people/cas.cremers/scyther/"
 license=('GPL2')
 source=(
@@ -13,9 +13,9 @@ source=(
     'scyther.desktop'
     'scyther'
 )
-sha256sums=('5829daf7252ca92ed40041bbdb0012c091d36f16855d802ed7a792f3f8dad6a6'
+sha256sums=('266324f77bd8102ae96b0e884ba705ca17adaff4e75727e59e164b097d7426ff'
             'd3bc8366a76892d47252c517246310e76e8e14af7856fb85a89b7e1de1c9dc07'
-            '1908f0474a2e546dbc52f2899a5ca665458a623e8c7dd6b5359eb5c1ae37921b')
+            'd744b78f244d11b4d3a1786709824c0c8432b50f68bfbbcbf3afc736acadb765')
 
 package() {
     mkdir -p ${pkgdir}/usr/share/
