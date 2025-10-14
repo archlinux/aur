@@ -1,6 +1,6 @@
 # Maintainer: Hongyang Chun <your-email@example.com>
 pkgname=hyprland-monitor-manager
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Smart monitor and lid management for Hyprland with automatic detection and configuration"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 )
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c66345468953dcfbf07d040773798cc5a67de82219f5bacbb6691505d413a346')
+sha256sums=('98588bd417092bd84297d2ddb890695f5f77d92d6fbc0a1c062c8d7036de54cc')
 backup=('etc/systemd/logind.conf.d/lid-switch.conf')
 
 package() {
