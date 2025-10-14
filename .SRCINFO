@@ -1,6 +1,6 @@
 pkgbase = crush
 	pkgdesc = A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://charm.sh/crush
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = crush
 	conflicts = crush
 	provides = crush
 	
-	source = https://github.com/charmbracelet/crush/releases/download/v0.11.0/crush-0.11.0.tar.gz
-	sha256sums = e50666f7f0dc0465bd119de4b9e3eb9dcd0ffc100bd57635feadb3e0a65cd932
+	source = https://github.com/charmbracelet/crush/releases/download/v0.11.1/crush-0.11.1.tar.gz
+	sha256sums = dd1b72fe132b3966de02a90d8369d433513c068d7d32f05e950eaedcac380723
 	
 pkgname = crush
