@@ -1,10 +1,10 @@
 # Maintainer: schnur[at]i2pmail.org
 
 pkgname=nrc
-_pkgver=0.6.10
+_pkgver=0.6.11
 _channel=beta
-_rel=4
-_is_beta=true
+_rel=
+_is_beta=false
 if [ "${_is_beta}" = "false" ]; then
     pkgver=${_pkgver}
 else
