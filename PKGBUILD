@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=2.3.5
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/a
         "hurrycurry.yaml"
         "tmpfiles.conf"
         "sysusers.conf")
-sha256sums=('d822c088806717055040d26d5c8e50508cf90a766b512b1acaabc7f42bc2d255'
+sha256sums=('d0f5a0dcaad2bdc532e706f7e261cb2468882e4a72b11feb6535080d573ab1e3'
             '2e10c8882ef4847586f03ac5feb469294c1b2304928f8df41db12a1d84569eb7'
             'dec75b020f3a0bfc5c22f0fa013fe03d06feab608f9d4a42fb46d05dbed56844'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -37,9 +37,8 @@ build() {
     cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-replaytool
     cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-registry
     cargo build --frozen --release --target "$(rust_chost)" --bin hurrycurry-discover
-    make -C data all
-    # make -C test-client # TODO currently broken
-    make -C data recipes/default.svg
+    make all_data
+    make all_testclient
 }
 package() {
     install -Dm755 hurrycurry/target/"$(rust_chost)"/release/hurrycurry-server "$pkgdir/usr/bin/hurrycurry-server"
@@ -56,8 +55,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/hurrycurry/test-client/locale"
     install -Dm664 -t "$pkgdir/usr/share/hurrycurry/test-client/locale" hurrycurry/test-client/locale/*
     install -Dm644 hurrycurry/data/index.yaml "$pkgdir/usr/share/hurrycurry/data/index.yaml"
-    install -Dm664 -t "$pkgdir/usr/share/hurrycurry/data/recipes" hurrycurry/data/recipes/*.yaml 
-    install -Dm664 -t "$pkgdir/usr/share/hurrycurry/data/maps" hurrycurry/data/maps/*.yaml 
-    install -Dm664 hurrycurry/data/book.json "$pkgdir/usr/share/hurrycurry/data/book.json" 
-    install -Dm664 -t "$pkgdir/usr/share/doc/hurrycurry/recipes" hurrycurry/data/recipes/*.svg 
+    install -Dm644 -t "$pkgdir/usr/share/hurrycurry/data/recipes" hurrycurry/data/recipes/*.yaml 
+    install -Dm644 -t "$pkgdir/usr/share/hurrycurry/data/maps" hurrycurry/data/maps/*.yaml
 }
