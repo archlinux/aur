@@ -2,13 +2,13 @@
 
 pkgname=ethoscope-node
 pkgver=r2231.gbf320832
-pkgrel=7
+pkgrel=8
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
 makedepends=('base-devel' 'git' 'gcc-fortran' 'rsync' 'wget' 'fping' )
-depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'sshpass' 'cloudflared' 'gcc'
+depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-wheel' 'python-pip' 'sshpass' 'cloudflared' 'gcc'
          'python-bottle' 'python-cherrypy' 'python-mysql-connector' 'python-netifaces'
          'python-gitpython' 'python-zeroconf' 'python-numpy' 'python-opencv' 'python-pyserial'
          'python-psutil' 'python-requests' 'python-scipy' 'python-dateutil' 'python-mattermostdriver')

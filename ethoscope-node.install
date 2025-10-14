@@ -11,9 +11,10 @@ post_install() {
 
     # Installing python modules in editable mode
     # This creates .egg-info metadata and registers console script entry points
+    # --no-build-isolation: Use system setuptools/wheel instead of downloading (no network in chroot)
     echo "Installing Python packages in editable mode..."
-    cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages
-    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
+    cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages --no-build-isolation
+    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages --no-build-isolation
 
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
@@ -48,8 +49,8 @@ post_upgrade() {
 
     # Update python packages in editable mode
     echo "Updating Python packages in editable mode..."
-    cd /opt/ethoscope/src/node && pip install -e . --break-system-packages
-    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
+    cd /opt/ethoscope/src/node && pip install -e . --break-system-packages --no-build-isolation
+    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages --no-build-isolation
 }
 
 # arg 1:  the old package version
