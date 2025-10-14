@@ -12,11 +12,20 @@ options=('!lto')
 provides=('mullvad-socks')
 conflicts=('mullvad-socks' 'mullvad-socks-bin')
 
+pkgver() {
+	date +%Y%m%d
+}
+
+prepare() {
+	cd $pkgname
+	cargo fetch
+}
+
 build() {
 	cd $pkgname
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --release
+	cargo build --release --offline
 }
 
 package() {
