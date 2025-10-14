@@ -1,0 +1,23 @@
+pkgbase = vibranium-binfmt
+	pkgdesc = Adds config files to systemd to allow the user to click on any .exe or.msi windows programs and seemlessly work on linux. Note, not all apps work seamlessly on wine. Please vist wineHQ if you have issues
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Gabrielx36/Vibranium-binfmt.git
+	install = vibranium.binfmt.install
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = wine
+	depends = systemd
+	depends = wine-gecko
+	depends = wine-mono
+	options = !lto
+	backup = etc/binfmt.d/wine-pe.conf
+	backup = etc/binfmt.d/wine-msi.conf
+	source = wine-pe.conf
+	source = wine-msi.conf
+	sha256sums = 7673aec85a437adaa13ce6063d96d1a7ca7b233d907459070608ffc280a3789a
+	sha256sums = 88d0fe342010a0076087a445d83b2482e260aa4e0ff4997564b22b4baee03240
+	sha512sums = baeb328fc8d2ab5979d7de192c7f26d8cdf3c48cbd8e106044e6a92876e83275fee3abca11db3d27805675b171f4ae7b9905b0954294a1f404e740a4ee206af4
+	sha512sums = 2695d100fcb7247fe9cce69792d35f6efa60bd3a08ce755c583b541fd713fa935d8dd9e5f6dd9f8196560a380562071fe6d1686293e55b5fa466b5b3004bdd42
+
+pkgname = vibranium-binfmt

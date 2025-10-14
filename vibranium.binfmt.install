@@ -1,0 +1,11 @@
+post_install(){
+systemctl restart systemd-binfmt || true;
+ 
+}
+post_upgrade(){
+systemctl restart systemd-binfmt || true;
+ 
+}
+post_remove() {
+systemctl restart systemd-binfmt || true;  
+}
