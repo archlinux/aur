@@ -1,0 +1,10 @@
+pkgbase = mi-home-toolkit-bin
+	pkgdesc = Effortlessly manage Mi Home smart devices, such as viewing device info and enabling LAN mode for bulbs.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/ApplY3D/mi-home-toolkit
+	arch = x86_64
+	source = mi-home-toolkit-bin-1.4.0.deb::https://github.com/ApplY3D/mi-home-toolkit/releases/download/v1.4.0/MiHomeToolkit-1.4.0-linux_amd64.deb
+	sha256sums = 5804992ba50d041d50b24471420d71346e939b069d5403e10690fb70c2accfd0
+
+pkgname = mi-home-toolkit-bin
