@@ -2,7 +2,7 @@
 # Maintainer: SFN
 pkgname=feather-tk
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight toolkit for building cross-platform applications"
 arch=("x86_64")
 url="https://github.com/darbyjohnston/feather-tk"
@@ -19,6 +19,7 @@ sha256sums=('4cd8645028deaec03959569db757525b43753eb1bdae4adb71107b58ca4cbb03'
             '557cf3344789c551953005d6d69e81d2682933a517f4797b2c332e0997e7c594')
 
 CFLAGS+=" -ffat-lto-objects" #lto problems with static libs
+CXXFLAGS+=" -ffat-lto-objects" #lto problems with static libs
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
