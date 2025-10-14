@@ -1,7 +1,7 @@
 pkgbase = claw
 	pkgdesc = Crustacean powered clipboard manager for X11 & Wayland
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saltnpepper97/claw
 	install = claw.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = claw
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
