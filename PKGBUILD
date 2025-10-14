@@ -1,8 +1,8 @@
 # Maintainer: El Bachir <bachiralfa@gmail.com>
 
 pkgname=sxwm
-pkgver=1.6
-pkgrel=4
+pkgver=1.7
+pkgrel=1
 pkgdesc="Tiling window managers don't have to be difficult"
 arch=('i686' 'x86_64')
 url="https://github.com/uint23/sxwm"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libx11' 'libxinerama' 'libxcursor')
 makedepends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/uint23/sxwm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('490700121bb0ecba1b8731a39a08fa03fca15349e5b2703b1f5a65fda3ceee86')
+sha256sums=('874f28d2a5c625fc4a7d91aae7a96a58760ff64fa223a3398048a18071219570')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
