@@ -1,4 +1,5 @@
-# Maintainer: Winston Astrachan <rew1red [at] rew1 [dot] red>
+# Maintainer: xYc4t <xYc4t [at] proton [dot] me>
+# Contributor: Winston Astrachan <rew1red [at] rew1 [dot] red>
 # Contributor: xiota
 # Contributor: Benjamin Hedrich <code [at] pagenotfound [dot] de>
 # Contributor: Sitansh Rajput <me [at] lostpolaris [dot] com>
@@ -8,7 +9,7 @@
 
 _pkgname="beekeeper-studio"
 pkgname="$_pkgname-bin"
-pkgver=5.4.1
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more"
 arch=('x86_64' 'aarch64')
@@ -32,8 +33,8 @@ noextract=(
     "${_pkgname}-${pkgver}-aarch64.tar.xz"
 )
 sha256sums=('9e83b98f1773a830db2b30043051d4e179fea73cdb0168feb7b2965ee6075ebf')
-sha256sums_x86_64=('56b34651df007582632c6d356e9c7caf9995d43ec92109e87a5f04fd1be1b902')
-sha256sums_aarch64=('948db976f44657c1d0143331ba0f9f34e9c5c576c9c7b6390705529d1eb3c8a1')
+sha256sums_x86_64=('69a8756f120350332ad5869a8eecb2e6c915b2d27f25c0cb7061bd69ac6c3414')
+sha256sums_aarch64=('06d8cfba95c7e8138e25e6df0b9a9517eaeee7e98b4fdbd35ad3c3890d5b4785')
 
 package() {
     # Install commercial license
