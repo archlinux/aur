@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'libcap' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.71
+pkgver=2.72
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
@@ -19,9 +19,11 @@ options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
   "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+  "0001-cmd-snap-confine-snap-confine-update-AppArmor-profil.patch"
 )
 
-sha256sums=('426fced4b4e06fd36a10f18e6fe1efd21281c4fc73f4ada8bba9db2e80c7ea34')
+sha256sums=('53d74e663527bae667a254da8a029aa4b0b8f559ca515d214da8dbb29dc6ccc7'
+           '3584cdfabde12d1739342bc1bd73705bb5d9d3aed4ab038a478657fd4ede7364')
 
 
 prepare() {
@@ -142,6 +144,9 @@ package() {
 
   # Install the "info" data file with snapd version
   install -m 644 -D "data/info" "$pkgdir/usr/lib/snapd/info"
+
+  # Install the news file
+  install -m 644 -D "NEWS.md" "$pkgdir/usr/share/doc/snapd/NEWS.md"
 
   # these locations are created at runtime but were not part of the packaging
   # previously, thus would trigger a file conflict on upgrade
