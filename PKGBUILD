@@ -12,21 +12,21 @@ optdepends=('openvpn3-indicator-git')
 conflicts=('openvpn-manager')
 provides=('openvpn-manager')
 makedepends=('git' 'cargo')
-source=("${pkgname}"::"git+https://github.com/neiesc/openvpn-manager")
+source=("openvpn-manager"::"git+https://github.com/neiesc/openvpn-manager")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/openvpn-manager"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/openvpn-manager"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$srcdir/openvpn-manager"
+  install -Dm755 "target/release/openvpn-manager" "$pkgdir/usr/bin/openvpn-manager"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
