@@ -1,7 +1,7 @@
 pkgbase = ethoscope-node
 	pkgdesc = A platform for monitoring animal behaviour in real time from a raspberry pi
 	pkgver = r2231.gbf320832
-	pkgrel = 3
+	pkgrel = 4
 	url = http://lab.gilest.ro/ethoscope
 	install = ethoscope-node.install
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = ethoscope-node
 	depends = python-pip
 	depends = sshpass
 	depends = cloudflared
+	depends = gcc
 	provides = ethoscope
 	source = ethoscope-node::git+https://github.com/gilestrolab/ethoscope.git
 	md5sums = SKIP
