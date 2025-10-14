@@ -1,7 +1,7 @@
 pkgbase = darkly-bin
 	pkgdesc = Fork of Lightly (A modern style for Qt applications)
 	pkgver = 0.5.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bali10050/darkly
 	arch = x86_64
 	arch = aarch64
@@ -21,6 +21,7 @@ pkgbase = darkly-bin
 	depends = kiconthemes5
 	depends = kirigami2
 	depends = kwindowsystem5
+	depends = libplasma
 	conflicts = darkly
 	options = !emptydirs
 	options = !debug
