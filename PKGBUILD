@@ -1,6 +1,6 @@
 # Maintainer: BNDays27 <brionical@proton.me>
 pkgname=hedgemodmanager-git
-pkgver=8.0.0.beta4.r24
+pkgver=8.0.0.beta4.r37
 pkgrel=1
 epoch=1
 pkgdesc="(UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC."
@@ -29,6 +29,7 @@ build() {
 # check() {}
 
 package() {
+  install -Dm644 $srcdir/hedgemodmanager/LICENSE.md $pkgdir/usr/share/licenses/${pkgname}/LICENSE
   mkdir -p $pkgdir/opt/HedgeModManager
   mkdir -p $pkgdir/usr/bin
   install -Dm644 $srcdir/hedgemodmanager/flatpak/hedgemodmanager.png $pkgdir/usr/share/icons/hicolor/256x256/apps/io.github.hedge_dev.hedgemodmanager.png
