@@ -1,14 +1,14 @@
 pkgbase = cooklang-chef
 	pkgdesc = A CLI to manage cooklang recipes
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/Zheoni/cooklang-chef
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = cooklang-chef-0.10.1.tar.gz::https://github.com/Zheoni/cooklang-chef/archive/refs/tags/v0.10.1.tar.gz
-	source = LICENSE::https://github.com/Zheoni/cooklang-chef/raw/v0.10.1/LICENSE
-	sha256sums = e3196c928377613b151052f21b85ffd491f9477e57be5e89745708745efb8346
+	source = cooklang-chef-0.10.2.tar.gz::https://github.com/Zheoni/cooklang-chef/archive/refs/tags/v0.10.2.tar.gz
+	source = LICENSE::https://github.com/Zheoni/cooklang-chef/raw/v0.10.2/LICENSE
+	sha256sums = c217674fc4715ce48d86373e9b9b69f4e1fe9e5f5cc7474b674b281d32646016
 	sha256sums = e46fe296aa7c51286e420c91ee23780034495f2e9033ed40e2eb3ee4118610be
 
 pkgname = cooklang-chef
