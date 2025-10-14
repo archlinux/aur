@@ -1,7 +1,7 @@
 pkgbase = rclone-manager-git
 	pkgdesc = User-friendly GUI for Rclone
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RClone-Manager/rclone-manager
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = rclone-manager-git
 	makedepends = libappindicator-gtk3
 	makedepends = librsvg
 	makedepends = cargo
-	makedepends = pnpm
+	makedepends = npm
 	makedepends = nodejs
 	depends = cairo
 	depends = desktop-file-utils
