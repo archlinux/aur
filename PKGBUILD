@@ -1,5 +1,5 @@
 # Maintainer: Edinei Cavalcanti <hi@edinei.dev>
-pkgbase=openvpn-manager
+pkgbase=openvpn-manager-git
 pkgname=('openvpn-manager-git')
 pkgver=22.3a96297
 pkgrel=1
