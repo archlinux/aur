@@ -1,21 +1,19 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=vacuum
 pkgver=0.18.5
-pkgrel=2
+pkgrel=3
 pkgdesc='fast, lightweight OpenAPI linter and quality checking tool'
 arch=('aarch64' 'i686' 'x86_64')
 url=https://quobix.com/vacuum/
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-# "https://github.com/daveshanley/vacuum/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz"
 source=(
     "git+https://github.com/daveshanley/vacuum.git#tag=v${pkgver}"
 )
 sha256sums=('b6229ec27dafdbac748e6567f42aee3303b5f0bbfe5b38b1f8bccba11ded8982')
 
 build() {
-    #_commit=$(bsdcat "$pkgname"-"$pkgver".tar.gz | git get-tar-commit-id)
     cd "$pkgname"
     export CGO_ENABLED=1
     export CGO_LDFLAGS=$LDFLAGS
@@ -23,7 +21,6 @@ build() {
     export CGO_CPPFLAGS=$CPPFLAGS
     export CGO_CXXFLAGS=$CXXFLAGS
     export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
-    #TZ=UTC printf -v _date '%(%FT%TZ)T' "$SOURCE_DATE_EPOCH"
     go build -ldflags "-linkmode=external"
 
     ./"$pkgname" completion bash >completion.bash
