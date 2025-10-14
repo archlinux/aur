@@ -12,7 +12,7 @@ pkgbase = openvpn-manager-git
 	optdepends = openvpn3-indicator-git
 	provides = openvpn-manager
 	conflicts = openvpn-manager
-	source = openvpn-manager::git+https://github.com/neiesc/openvpn-manager
+	source = openvpn-manager-git::git+https://github.com/neiesc/openvpn-manager
 	sha512sums = SKIP
 
 pkgname = openvpn-manager-git
