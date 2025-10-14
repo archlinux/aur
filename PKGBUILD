@@ -8,11 +8,11 @@
 # Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=35.r25.gf60ad6c
+pkgver=35.r37.gd9ad4e4
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
-url="http://repo.or.cz/w/llpp.git"
+url='http://repo.or.cz/w/llpp.git'
 license=('custom')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")

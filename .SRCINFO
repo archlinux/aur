@@ -1,6 +1,6 @@
 pkgbase = llpp-git
 	pkgdesc = A graphical PDF viewer which aims to superficially resemble less(1).
-	pkgver = 35.r25.gf60ad6c
+	pkgver = 35.r37.gd9ad4e4
 	pkgrel = 1
 	url = http://repo.or.cz/w/llpp.git
 	arch = i686
