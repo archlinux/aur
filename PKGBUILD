@@ -4,7 +4,7 @@
 _name=ydata-profiling
 pkgname=python-ydata-profiling
 pkgver=4.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=(any)
 url='https://github.com/ydataai/ydata-profiling'
@@ -67,6 +67,10 @@ prepare() {
   # drop version constraints for setuptools
   sed -i 's|"setuptools>=72.0.0,<80.0.0"|"setuptools"|' $_name-$pkgver/pyproject.toml
   sed -i 's|"setuptools-scm>=8.0.0,<9.0.0"|"setuptools-scm"|' $_name-$pkgver/pyproject.toml
+
+  # disable ydata-sdk advertisement
+  # https://github.com/ydataai/ydata-profiling/blob/develop/src/ydata_profiling/utils/information.py
+  sed -i 's|^SUPPRESS_BANNER = .*|SUPPRESS_BANNER = True|' $_name-$pkgver/src/ydata_profiling/utils/information.py
 }
 
 build() {
