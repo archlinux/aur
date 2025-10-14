@@ -1,0 +1,4 @@
+[scratchmark]
+source = "git"
+git = "https://github.com/sevonj/scratchmark.git"
+prefix = "v"
