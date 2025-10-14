@@ -1,0 +1,23 @@
+post_install() {
+    echo "Rebuilding font cache..."
+    fc-cache -f /usr/share/fonts/jotite
+    
+    # Create symlink for fontconfig
+    if [ ! -e /etc/fonts/conf.d/69-jotite.conf ]; then
+        ln -sf /etc/fonts/conf.avail/69-jotite.conf /etc/fonts/conf.d/69-jotite.conf
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Remove fontconfig symlink
+    rm -f /etc/fonts/conf.d/69-jotite.conf
+}
+
+post_remove() {
+    echo "Rebuilding font cache..."
+    fc-cache -f
+}
