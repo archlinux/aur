@@ -3,7 +3,7 @@
 
 pkgname='perl-excel-writer-xlsx'
 pkgver='1.15'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Create a new file in the Excel 2007+ XLSX format."
 arch=('any')
 license=('PerlArtistic' 'GPL')
