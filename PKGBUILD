@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=note-gen-bin
 _pkgname=NoteGen
-pkgver=0.21.3
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="An AI notebook that focuses on recording and writing and is cross-platform.(Prebuilt version)一款专注于记录和写作的跨端AI笔记"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/codexu/note-gen/${pkgname%-bin}-v${pkgver}/LICENSE"
 )
-sha256sums=('963ec488f7bc4f9414555664f0bd5e48c6a9b13c38dfa49addfbb0bdd053738f'
+sha256sums=('19458553282a8143f4e1c53908029a485335e882e1c2fd55aaa87c4fb98b15e2'
             'b55c98ae197475e699fccf634d9fff328b4552cc7143f9e7055f5bc71e55a949')
 prepare() {
     sed -i -e "
