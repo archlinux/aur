@@ -1,5 +1,5 @@
 pkgbase = netbird
-	pkgver = 0.59.5
+	pkgver = 0.59.6
 	pkgrel = 1
 	url = https://netbird.io
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = netbird
 	arch = aarch64
 	arch = riscv64
 	makedepends = go
-	source = netbird-0.59.5.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.59.5.tar.gz
-	sha256sums = 515ddfd0077613b0723cb9c9664ca990f34af0514b97b05edce55e1bf560462b
+	source = netbird-0.59.6.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.59.6.tar.gz
+	sha256sums = 7c6e27e66d041dbfa10c05f611fc464e0d48dff6870e8408147328ea166e1a42
 
 pkgname = netbird
 	pkgdesc = WireGuard-based overlay network: client
