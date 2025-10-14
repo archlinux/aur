@@ -2,7 +2,7 @@
 
 _pkgname="jiratui"
 pkgname="${_pkgname}-git"
-pkgver=1.1.0.r7.g77005bd
+pkgver=1.3.0.r0.g31341b6
 pkgrel=1
 pkgdesc="A Textual User Interface for interacting with Atlassian Jira from your shell"
 arch=('any')
@@ -12,7 +12,8 @@ makedepends=(
 	'git' 
 	'python-build' 
 	'python-installer'
-	'python-uv-build'
+	'python-uv-build>=0.9.2'
+	'python-uv-build<0.10.0'
 )
 depends=(
 	'python>=3.10' 
@@ -22,6 +23,9 @@ depends=(
 	'python-json-logger>=3.3.0' 
   'python-textual>=6.1.0' 
 	'python-yaml>=6.0.2' 
+	'python-magic>=0.4.27'
+	'python-textual-image>=0.8.2'
+	'python-gitpython>=3.1.45'
 	'python-linkify-it-py'
 	'python-xdg-base-dirs'
 	'python-dateutil'
