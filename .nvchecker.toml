@@ -1,0 +1,4 @@
+[hostscope]
+source = "regex"
+url = "https://www.maier-komor.de/hostscope.html"
+regex = "<a href=\"hostscope/hostscope-V8.0.tgz\"> Version ([\\d\\.]*) md5=23f0b640f1c964239131fb233ac64f01  \\(current release\\)</a><br>"

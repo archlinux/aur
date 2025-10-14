@@ -1,0 +1,18 @@
+pkgbase = hostscope
+	pkgdesc = Linux system monitoring tool for multiple hosts
+	pkgver = 8.0
+	pkgrel = 1
+	url = http://www.maier-komor.de/hostscope.html
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = ncurses
+	source = http://www.maier-komor.de/hostscope/hostscope-V8.0.tgz
+	md5sums = 23f0b640f1c964239131fb233ac64f01
+	sha1sums = 0870d42f7ab9fa6a912b53fe30d760cf238547c3
+	sha256sums = 9b9d460fc182e03d5e225caa63f6737f769d2e4d6e76f244120ea88d64f4864b
+
+pkgname = hostscope
