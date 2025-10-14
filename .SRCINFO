@@ -1,0 +1,24 @@
+pkgbase = karing-bin
+	pkgdesc = Simple & Powerful proxy utility, Support routing rules for clash/sing-box
+	pkgver = 1.2.5.873
+	pkgrel = 1
+	url = https://github.com/KaringX/karing
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = glib2
+	depends = libnotify
+	depends = libsecret
+	depends = xdg-user-dirs
+	depends = zenity
+	depends = libkeybinder3
+	optdepends = libappindicator-gtk3: for system tray icon support
+	provides = karing
+	conflicts = karing
+	conflicts = karing-git
+	noextract = karing-bin-1.2.5.873.deb
+	source = karing-bin-1.2.5.873.deb::https://github.com/KaringX/karing/releases/download/v1.2.5.873/karing_1.2.5.873_linux_amd64.deb
+	sha256sums = 4abcffb474610e1f556e8f8998e52d4e9a9a2ae89eaeb1b08550b0ea7a8bc130
+
+pkgname = karing-bin
