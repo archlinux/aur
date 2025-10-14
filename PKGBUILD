@@ -1,8 +1,8 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.36.7
-pkgrel=4
+pkgver=0.36.8
+pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -44,7 +44,7 @@ source=("${url}/archive/v${pkgver}.zip"
         "builder-lambda-core-post-extract-fix.patch"
         "builder-nixpacks-core-post-extract-fix.patch"
         "builder-pack-core-post-extract-fix.patch")
-sha256sums=('a4c7e2928d2b15a3768915e8fdf35508bdecdf5aafa6ae0a40e11d46b5419f49'
+sha256sums=('6c50511c3cd6dffb787faf322c710400d6b905b2b58ef00454d713351a4c1c4a'
             '8830ca7b44118da8e2f35aca271429cfa93e7f21126df6696a0d0d608d979f2b'
             'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd'
             'bae0fa706e39f5491df96ec81ebd0f5ad60c3e9843dd1c88e01a761731f20d3a'
