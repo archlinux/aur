@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-node
 pkgver=r2231.gbf320832
-pkgrel=4
+pkgrel=5
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -35,21 +35,19 @@ package() {
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
   git fetch origin
   
+  #clone working copy from bare repo (avoids git alternates issues)
+  cd "${pkgdir}/opt"
+  git clone "${pkgdir}/srv/git/ethoscope.git" ethoscope
+
   #setting python3 branch
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgdir}/opt/ethoscope"
   git checkout ${_git_branch}
 
-  #cp node server and node updater
-  cd "${srcdir}"
-  cp -R --no-dereference --preserve=mode,links -v "${pkgname}" "${pkgdir}/opt/ethoscope"
-
-  #changing the remote GIT source to local BARE created during installation
-  cd "${pkgdir}/opt/ethoscope"
-
-  #remove git alternates to prevent references to temporary build directory
-  rm -f .git/objects/info/alternates
-
+  #set remote to local bare repo and clean logs with pkgdir references
   git remote set-url origin /srv/git/ethoscope.git
+
+  #remove git logs that contain pkgdir references
+  rm -rf .git/logs
   
   # Install service files as symbolic links
   cd "${pkgdir}/usr/lib/systemd/system/"
