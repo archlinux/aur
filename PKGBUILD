@@ -25,7 +25,7 @@ prepare(){
   cd voicevox
   sed -i "s|vv-engine/run.exe|/usr/lib/VOICEVOX/vv-engine/run|" .env.production # for system Electron
   pnpm install
-  # We need Electron to flib fuses bit. But we don't need 2 caches
+  # Block 2nd Electron cache
   ln -sf ${XDG_CACHE_HOME}/electron/*/electron*.zip -t ${XDG_CACHE_HOME}/electron
 }
 
@@ -33,7 +33,6 @@ build(){
   cd voicevox
   pnpm run electron:build --linux --dir #-c.electronVersion=$(cat /usr/lib/${_electron}/version)
   ln -sf /usr/lib/7zip/7z dist_electron/linux-unpacked/7zzs
-  rm -rf dist_electron/linux-unpacked/voicevox
 }
 
 package() {
