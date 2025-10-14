@@ -3,12 +3,12 @@
 
 pkgname=xdaliclock
 pkgver=2.48
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced xclock substitute"
 arch=(i686 x86_64)
 url="https://www.jwz.org/xdaliclock/"
 license=('custom')
-depends=('libxext' 'libxt')
+depends=('gtk3' 'libxext' 'libxt')
 source=(https://www.jwz.org/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('4519fe96551a9d784105a8e4306afebe')
 sha256sums=('0598aa8d3492020bd3ff9e8e24370a878a433fdbaa561479702c7cf47fb914b4')
