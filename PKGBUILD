@@ -1,10 +1,10 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Joe Pizzimenti <joe.pizzimenti2@gmail.com>
 
 pkgname=openmodelica-bin
 _omver=1.25.4
 _debver=1
 pkgver=${_omver}
-pkgrel=6
+pkgrel=7
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-compiled Debian Trixie binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
