@@ -2,7 +2,7 @@
 
 pkgname=ruby-unicode-blocks
 _name="${pkgname#ruby-}"
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Unicode Blocks of a Ruby String'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(be31b8e19479a2bfb04803cccac02781ee12d2e99d0ee6f1dbbc976c3d2139cd)
+sha256sums=(80b8b11076aa9eaad4b070c37476403e5332252fb24321ffb6ff441ddf87dbb1)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
