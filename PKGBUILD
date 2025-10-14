@@ -1,7 +1,7 @@
 # Maintainer: RouHim
 
 pkgname=binvec-bin
-pkgver=1.20.5
+pkgver=1.20.6
 pkgrel=1
 pkgdesc="A simple application to convert raster graphics to vector graphics (pre-compiled)"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -14,7 +14,7 @@ options=('!strip')
 
 # Source code archive for desktop files and icons
 source=("binvec-${pkgver}.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f7775f23efe97485db76afffe50a6e84bfe58b5b6b8ec9b2d2d04e791cb48294')
+sha256sums=('b1772a295f4d8c899840e6c6b1739709505f6f62ef1584c57aa0b0b2004ea162')
 sha256sums_x86_64=('ba7ffdeeb067f42ae3a6ba561178d4795db1fec54e84c40765ed98b0cff1debe')
 sha256sums_aarch64=('ba7ffdeeb067f42ae3a6ba561178d4795db1fec54e84c40765ed98b0cff1debe')
 sha256sums_armv7h=('ba7ffdeeb067f42ae3a6ba561178d4795db1fec54e84c40765ed98b0cff1debe')
