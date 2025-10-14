@@ -3,7 +3,7 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
 pkgver=4.2.15
-pkgrel=1
+pkgrel=2
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
 _vdrapi=9
