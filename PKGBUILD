@@ -2,7 +2,7 @@
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 
 pkgname=droidcam-obs-plugin-git
-pkgver=2.4.2.r0.73ec2a0
+pkgver=2.4.2.r1.161cb95
 pkgrel=1
 pkgdesc="plugin for droidcam obs"
 arch=('x86_64' 'i686')
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}" "device_discovery-fix.patch")
+source=("${pkgstem}::git+${srcurl}")
 noextract=()
-sha256sums=('SKIP' '3d8f8484af5953faf0ab57358b07ce02b014a880a346e11b5cc79812a31ca857')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgstem"
@@ -32,7 +32,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgstem"
 	mkdir -p build
-   patch -Np1 < "$srcdir/device_discovery-fix.patch"
 }
 
 build() {
