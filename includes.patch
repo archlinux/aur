@@ -1,0 +1,96 @@
+diff --git a/hal/cpp/include/metavision/hal/facilities/i_digital_crop.h b/hal/cpp/include/metavision/hal/facilities/i_digital_crop.h
+index ab69c81..877bbc6 100644
+--- a/hal/cpp/include/metavision/hal/facilities/i_digital_crop.h
++++ b/hal/cpp/include/metavision/hal/facilities/i_digital_crop.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_FACILITY_DIGITAL_CROP_H
+ #define METAVISION_HAL_FACILITY_DIGITAL_CROP_H
+
++#include <stdint.h>
+ #include "metavision/hal/facilities/i_registrable_facility.h"
+
+ namespace Metavision {
+diff --git a/hal/cpp/include/metavision/hal/facilities/i_digital_event_mask.h b/hal/cpp/include/metavision/hal/facilities/i_digital_event_mask.h
+index fd4ea0c..aa212d2 100644
+--- a/hal/cpp/include/metavision/hal/facilities/i_digital_event_mask.h
++++ b/hal/cpp/include/metavision/hal/facilities/i_digital_event_mask.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_FACILITY_DIGITAL_EVENT_MASK
+ #define METAVISION_HAL_FACILITY_DIGITAL_EVENT_MASK
+
++#include <stdint.h>
+ #include <vector>
+ #include <tuple>
+
+diff --git a/hal/cpp/include/metavision/hal/facilities/i_event_rate_activity_filter_module.h b/hal/cpp/include/metavision/hal/facilities/i_event_rate_activity_filter_module.h
+index 7a68e69..daa0555 100644
+--- a/hal/cpp/include/metavision/hal/facilities/i_event_rate_activity_filter_module.h
++++ b/hal/cpp/include/metavision/hal/facilities/i_event_rate_activity_filter_module.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_I_EVENT_RATE_ACTIVITY_FILTER_MODULE_H
+ #define METAVISION_HAL_I_EVENT_RATE_ACTIVITY_FILTER_MODULE_H
+
++#include <stdint.h>
+ #include <string>
+
+ #include "metavision/hal/facilities/i_registrable_facility.h"
+diff --git a/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h b/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h
+index 5b09ddf..065eadb 100644
+--- a/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h
++++ b/hal/cpp/include/metavision/hal/facilities/i_hw_identification.h
+@@ -15,6 +15,7 @@
+ #include <map>
+ #include <string>
+ #include <vector>
++#include <stdint.h>
+
+ #include "metavision/hal/utils/device_config.h"
+ #include "metavision/hal/utils/raw_file_header.h"
+diff --git a/hal/cpp/samples/metavision_hal_evk4_sample_plugin/include/sample_digital_event_mask.h b/hal/cpp/samples/metavision_hal_evk4_sample_plugin/include/sample_digital_event_mask.h
+index 67dfaa2..b70f71f 100644
+--- a/hal/cpp/samples/metavision_hal_evk4_sample_plugin/include/sample_digital_event_mask.h
++++ b/hal/cpp/samples/metavision_hal_evk4_sample_plugin/include/sample_digital_event_mask.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_SAMPLE_DIGITAL_EVENT_MASK_H
+ #define METAVISION_HAL_SAMPLE_DIGITAL_EVENT_MASK_H
+
++#include <stdint.h>
+ #include <metavision/hal/facilities/i_digital_event_mask.h>
+
+
+diff --git a/hal_psee_plugins/include/devices/common/evk2_system_control.h b/hal_psee_plugins/include/devices/common/evk2_system_control.h
+index dc06fab..8a5afab 100644
+--- a/hal_psee_plugins/include/devices/common/evk2_system_control.h
++++ b/hal_psee_plugins/include/devices/common/evk2_system_control.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_HAL_EVK2_SYSTEM_CONTROL_H
+ #define METAVISION_HAL_EVK2_SYSTEM_CONTROL_H
+
++#include <stdint.h>
+ #include <string>
+ #include <memory>
+
+diff --git a/sdk/modules/base/cpp/include/metavision/sdk/base/events/event_erc_counter.h b/sdk/modules/base/cpp/include/metavision/sdk/base/events/event_erc_counter.h
+index 9819ae1..d02bd08 100644
+--- a/sdk/modules/base/cpp/include/metavision/sdk/base/events/event_erc_counter.h
++++ b/sdk/modules/base/cpp/include/metavision/sdk/base/events/event_erc_counter.h
+@@ -12,6 +12,7 @@
+ #ifndef METAVISION_SDK_BASE_EVENT_ERC_COUNTER_H
+ #define METAVISION_SDK_BASE_EVENT_ERC_COUNTER_H
+
++#include <stdint.h>
+ #include <ostream>
+ #include "metavision/sdk/base/utils/detail/struct_pack.h"
+ #include "metavision/sdk/base/utils/timestamp.h"
+diff --git a/sdk/modules/base/cpp/include/metavision/sdk/base/events/raw_event_frame_histo.h b/sdk/modules/base/cpp/include/metavision/sdk/base/events/raw_event_frame_histo.h
+index 0394595..a5bd1a7 100644
+--- a/sdk/modules/base/cpp/include/metavision/sdk/base/events/raw_event_frame_histo.h
++++ b/sdk/modules/base/cpp/include/metavision/sdk/base/events/raw_event_frame_histo.h
+@@ -15,6 +15,7 @@
+ #include <memory>
+ #include <stdexcept>
+ #include <vector>
++#include <stdint.h>
+
+ #include "metavision/sdk/base/events/detail/event_traits.h"
+

@@ -2,7 +2,7 @@
 pkgname=openeb-git
 _pkgname=openeb
 pkgdesc="Open source SDK for event based cameras by Prophesee"
-pkgver=r91.09c57ca
+pkgver=r153.0499c95
 pkgrel=1
 arch=('any')
 license=(custom)
@@ -10,8 +10,9 @@ url="https://github.com/prophesee-ai/openeb"
 depends=(opencv boost eigen libusb glew glfw hdf5 ffmpeg openscenegraph libcanberra)
 optdepends=('cuda: machine learning samples')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/prophesee-ai/openeb")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/prophesee-ai/openeb" includes.patch)
+sha256sums=('SKIP'
+            '3482f105c35382f30358a174300f653c42337f97af8db95560e46b09d441e942')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -28,4 +29,8 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+}
+
+prepare() {
+	patch -d "${_pkgname}" -Np 1 -i ../includes.patch
 }
