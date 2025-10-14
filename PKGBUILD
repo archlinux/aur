@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scam
-_pkgver=1.2-19
+_pkgver=1.2-20
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1a7d5476ee3a377715725c9e07a378c0')
-b2sums=('8e4da7223afc89a8df0252da245f4c1c257e0c8fd00c2d1d1005b9af93aa63f50fd9aabe755b306c08fea6686fc16c7754ffc6fb06cec8c6a0993f5fc059eff0')
+md5sums=('c33bb135c90f0e0687beab45cb569283')
+b2sums=('0358bc21879feed3dac9a86f696277669739b6079332ebf204bb04220d33b0c4076113a488fa050bc973eaa9a05245aa755da8f0e29b5772fbd8f216fcb60cc8')
 
 build() {
   mkdir build
