@@ -1,0 +1,14 @@
+pkgbase = ssh-dashboard-git
+	pkgdesc = A simple SSH dashboard
+	pkgver = r20b4e3c
+	pkgrel = 1
+	url = https://github.com/AlpinDale/ssh-dashboard
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = openssh
+	source = git+https://github.com/AlpinDale/ssh-dashboard.git
+	sha256sums = SKIP
+
+pkgname = ssh-dashboard-git
