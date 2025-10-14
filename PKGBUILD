@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-live
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 _vdrapi=9
 epoch=1
@@ -19,7 +19,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MarkusEh/vdr-plugin-live/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('364a6b0deed95bbcb41fa5360ad2c0a1fb40d3a47dae9aed78d7aae468d976b3'
+sha256sums=('9915141d36d5c5254ef436016a2713be39e0555084a2e588d80522ec964b86ed'
             'a14466937a4c618341ca3120bf353ca5b207dda0aca3b605532d3500415d7fea')
 
 build() {
