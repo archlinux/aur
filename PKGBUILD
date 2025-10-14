@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl-archive-zip>=1.3')
 makedepends=()
 url='https://metacpan.org/release/Excel-Writer-XLSX'
-source=('http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/Excel-Writer-XLSX-${pkgver}.tar.gz')
+source=('http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/Excel-Writer-XLSX-1.15.tar.gz')
 md5sums=('7f69ac42fa6a4aa0a55f9641d7f07273')
 sha512sums=('0c23740802f281b3657ab7b4f78c17861176e608a630d0add173caf5b50faf1b6222705e492ffb0845d88faac973f93d84618d44c73456f16227f2582438cf12')
 _distdir="Excel-Writer-XLSX-${pkgver}"
