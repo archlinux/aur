@@ -12,16 +12,16 @@ provides=('cli')
 conflicts=('cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.7/cli_0.43.7_linux_arm64.tar.gz")
-sha256sums_aarch64=('097202a6afd27296d0d746d35c17ce64752d85bff26d6e0ed865283337dbbcb6')
+sha256sums_aarch64=('2604ccdea5e8d8f5fe484d9000e95c490f0b4dadc87425464a4b4a3f1cb9b545')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.7/cli_0.43.7_linux_armv7.tar.gz")
-sha256sums_armv7h=('da163e69be0d0df38d9984e97e20044288225827fab200a2d4df4cb955eb4f31')
+sha256sums_armv7h=('cbb7538d500c09b5fd27dbeff4c1d6cbfb1e933a29bc58eb28bc33a0378fdc60')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.7/cli_0.43.7_linux_386.tar.gz")
-sha256sums_i686=('55c57b34bc5d39b4c219b12652236d04c04f71a0f3c535476a2c74e7867eec01')
+sha256sums_i686=('61e89bd52a2e59194cc68c932557b98e890c17dd045b81f0da63d91de934672e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.7/cli_0.43.7_linux_amd64.tar.gz")
-sha256sums_x86_64=('a36326fdb5c50f422955c65b7f535b464364dabd8e3baf7c7acf241f3dc6e186')
+sha256sums_x86_64=('b25d91ccbf5634ea387470bdf81579c828c41c44a36ae1fbe8a4e08addd115bf')
 
 package() {
   # bin
