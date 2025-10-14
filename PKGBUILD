@@ -1,12 +1,13 @@
 # Maintainer: Hecori (https://github.com/Hecori/obsolete-appimagetool-gms2)
 # Contributor: Ayami
+# Contributor: ahmubashshir
 
 # based on appimagetool-bin PKGBUILD by Ayami
 
 _pkgname='appimagetool'
 pkgname="obsolete-appimagetool-bin"
 pkgver=13
-pkgrel=0
+pkgrel=1
 pkgdesc='Package desktop applications as AppImages (Obsolete version, compatible with Game Maker Studio, at least as on today 21/08/2025)'
 arch=('x86_64' 'armhf' 'i686' 'aarch64')
 url='https://github.com/AppImage/AppImageKit/releases/download/'
@@ -33,6 +34,5 @@ sha256sums_i686=('104978205c888cb2ad42d1799e03d4621cb9a6027cfb375d069b394a82ff15
 sha256sums_aarch64=('334e77beb67fc1e71856c29d5f3f324ca77b0fde7a840fdd14bd3b88c25c341f')
 
 package(){
-  sudo install -m 0755 obsolete-${_pkgname}-${arch}.AppImage /usr/local/bin/appimagetool
+  install -Dm 0755 obsolete-${_pkgname}-${arch}.AppImage "$pkgdir/usr/local/bin/appimagetool"
 }
-
