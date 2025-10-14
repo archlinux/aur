@@ -9,17 +9,12 @@ post_install() {
     #setting the bare installation folder as safe.directory
     git config --system --add safe.directory /srv/git/ethoscope.git
 
-    #echo "changing the remote GIT source to local BARE created during installation"
-    cd /opt/ethoscope
-    git remote set-url origin /srv/git/ethoscope.git
-    git checkout dev
-    
     #installing python modules
     cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages
     cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages  
     
     echo "enabling NODE specific systemd service files"
-    systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
+    systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
     echo "enabling the GIT server on the node and NTP service"
     systemctl enable git-daemon.socket ntpd.service 
     
@@ -41,13 +36,10 @@ post_install() {
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-    echo "changing the remote GIT source to local BARE created during installation"
-    cd /opt/ethoscope
-    git remote set-url origin /srv/git/ethoscope.git
+    #setting the bare installation folder as safe.directory
+    git config --system --add safe.directory /srv/git/ethoscope.git
 
-    #setting branch
-    git checkout dev
-
+    echo "updating python packages in editable mode"
     cd /opt/ethoscope/src/node && pip install -e . --break-system-packages
     cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages
 }
@@ -55,10 +47,10 @@ post_upgrade() {
 # arg 1:  the old package version
 pre_remove() {
     echo "disabling systemd service files"
-    systemctl stop ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service
-    systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service
-    systemctl stop git-daemon.socket
-    systemctl disable git-daemon.socket
+    systemctl stop ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
+    systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
+    systemctl stop git-daemon.socket ntpd.service
+    systemctl disable git-daemon.socket ntpd.service
 
 }
 
