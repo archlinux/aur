@@ -1,6 +1,6 @@
 pkgbase = r-vscdebugger
 	pkgdesc = Support for Visual Studio Code Debugger
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/ManuelHentschel/vscDebugger
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = r-vscdebugger
 	depends = r
 	depends = r-jsonlite
 	depends = r-r6
-	source = https://github.com/ManuelHentschel/vscDebugger/releases/download/v0.5.4/vscDebugger_0.5.4.tar.gz
+	source = https://github.com/ManuelHentschel/vscDebugger/releases/download/v0.5.5/vscDebugger_0.5.5.tar.gz
 	source = LICENSE::https://github.com/ManuelHentschel/vscDebugger/raw/master/LICENSE.md
-	sha256sums = 187eb0ba1e62d1f61713adc3e8890572259fad04fba1a2bca73d8357b9e46f29
+	sha256sums = 8905ae08d93967b8dce862dbd92af576d18e9777c295302ab4a246b472f4c104
 	sha256sums = 54ee5b8054493e7cd776fded707521874c45a87b945fc1bf518e4e263132541c
 
 pkgname = r-vscdebugger
