@@ -1,14 +1,14 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=herokuish
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc='Utility for emulating Heroku build and runtime tasks in containers'
 arch=('x86_64')
 url='https://github.com/gliderlabs/herokuish'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('62218d46794bb73a523ab19d97cd797bd903acadc8f7397a7c38f066868cd4f3')
+sha256sums=('cc5d7bbd17d80beba1b7f659f49b0d3b7dc23124a570571e062a0fec9c4dc971')
 makedepends=('go'
              'go-bindata')
 
