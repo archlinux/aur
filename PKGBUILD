@@ -1,5 +1,4 @@
-# Maintainer: ExaFlow Team <support@exaflow.dev>
-# Contributor: Your Name <your.email@example.com>
+# Maintainer: Kenzo <codewithkenzo@gmail.com>
 
 pkgname=exaflow-git
 pkgver=2.1.1.r0.gd9fdcdc
@@ -65,7 +64,7 @@ check() {
 
 post_install() {
   echo
-  echo "🚀 ExaFlow v$pkgver has been installed successfully!"
+  echo "ExaFlow v$pkgver has been installed successfully!"
   echo
   echo "Quick start:"
   echo "  export EXA_API_KEY=your_api_key_here"
@@ -76,8 +75,7 @@ post_install() {
   echo "  exaflow-mcp"
   echo
   echo "Documentation:"
-  echo "  man exaflow"
-  echo "  https://github.com/codewithkenzo/exa-personal-tool"
+  echo "  https://github.com/codewithkenzo/exaflow"
   echo
 }
 
