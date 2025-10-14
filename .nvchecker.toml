@@ -1,0 +1,5 @@
+["markterm-bin"]
+source = "github"
+github = "ralsina/markterm"
+use_latest_release = true
+prefix = "v"
