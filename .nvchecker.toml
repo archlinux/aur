@@ -1,0 +1,5 @@
+["mussel"]
+source = "github"
+github = "gianndev/mussel"
+use_latest_release = true
+prefix = "v"

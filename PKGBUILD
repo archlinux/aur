@@ -2,8 +2,8 @@
 
 _pkgauthor=gianndev
 pkgname=mussel
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="The Mussel Programming Language"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -14,7 +14,7 @@ provides=("${pkgname}")
 makedepends=('make' 'rust')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ac7741fb5e03432714cfe89945049677ee488f897eb54aac15d7eb2d8feed1a8')
+sha256sums=('1c0d8ae88e58e0d7203f3ffda1aa6157c3e81012ee7dbced516bfddcc753a579')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
