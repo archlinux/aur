@@ -1,0 +1,19 @@
+pkgbase = hyprdvd
+	pkgdesc = Bouncy DVD-like terminal
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nevimmu/hyprdvd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-argcomplete
+	depends = python-dbus
+	source = hyprdvd-0.3.0::https://github.com/nevimmu/hyprdvd/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprdvd
