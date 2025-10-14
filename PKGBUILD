@@ -6,7 +6,7 @@
 pkgname='dupe-krill'
 pkgver=1.5.0
 pkgrel=1
-pkgdesc='An incremental file deduplicator to replace files with identical content with hardlinks.'
+pkgdesc='An incremental file deduplicator to replace files with identical content with hardlinks or reflinks.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kornelski/${pkgname}"
 license=('MIT')
