@@ -5,7 +5,7 @@ pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=stable
 # `$_pkgver` is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.4
+_pkgver=1.21.5
 
 # `makepkg` doesn't support hyphens in `$pkgver`, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
@@ -20,7 +20,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "$pkgname.desktop"
         "vsmodinstall-handler.desktop")
-md5sums=("c4931af06064d945ee74c064f371b0c8"
+md5sums=("d360857b7c8d56c0e165185b2d65c21c"
          "0cd6360c157fc7dc4d52952e83483e7d"
          "8ccc9b49290dda21199b14ac3cd4ac7e")
 
