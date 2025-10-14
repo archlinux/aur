@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Barones Free Space Cleaner
+GenericName=Free Space Wipe
+Comment=Securely wipe free space on drives
+Exec=barones-free-space-cleaner
+Icon=barones-free-space-cleaner
+Terminal=false
+Categories=System;Utility;
+Keywords=disk;wipe;secure;delete;privacy;
+
