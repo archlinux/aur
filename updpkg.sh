@@ -21,3 +21,5 @@ makepkg -srif || true
 git commit -m "Bump to ${latest}" PKGBUILD
 git clean -f .
 rm -f *tgz *zst
+
+git push origin master
