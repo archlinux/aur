@@ -10,6 +10,7 @@ pkgbase = python-mpi4py-intel
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = cython
+	makedepends = procps-ng
 	depends = python
 	depends = intel-oneapi-basekit
 	provides = python-mpi4py
