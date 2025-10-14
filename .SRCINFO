@@ -1,0 +1,21 @@
+pkgbase = exaflow-git
+	pkgdesc = Advanced semantic search & AI integration toolkit with Exa API and MCP server support
+	pkgver = 2.1.1.r0.gd9fdcdc
+	pkgrel = 1
+	url = https://github.com/codewithkenzo/exaflow
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = typescript
+	depends = nodejs>=18.0.0
+	optdepends = bun: Faster JavaScript runtime (recommended)
+	provides = exaflow
+	provides = exaflow-mcp
+	conflicts = exaflow-bin
+	source = git+https://github.com/codewithkenzo/exaflow.git
+	sha256sums = SKIP
+
+pkgname = exaflow-git
