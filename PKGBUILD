@@ -13,7 +13,7 @@ _origin="https://cli.moonbitlang.com"
 source=("https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz"
         "https://cli.moonbitlang.cn/cores/core-latest.tar.gz"
         "moon.sh")
-sha256sums=('7814c5c3195993730a65578c7fab6daeba20261c0e10541af51c8072039b4dbe' 'a724536bbe3822494f67f8f7d5656a68709b8baa43a346d420163f82be9b140d' 'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
+sha256sums=('5f514346e9cf17454ed03edf5732d3a90738d958e6d10b51aebb20a76d9be062' 'dff1e0c1700153ef9684fb709b7fff98d4c0cc3aa423785baa98e453722b58dc' 'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
 package() {
   # Install main runtime binary (kept under /usr/lib so the wrapper can live in /usr/bin)
   install -Dm 755 "${srcdir}/bin/moon" "${pkgdir}/usr/lib/moon"
