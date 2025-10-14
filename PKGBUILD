@@ -1,8 +1,9 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-_pkgname="restic-browser"
+_tarname="Restic-Browser"
+_pkgname="${_tarname,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A GUI to browse and restore restic backup repositories."
 arch=("x86_64")
@@ -11,21 +12,21 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 license=("MIT")
 depends=("restic" "webkit2gtk")
-source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Restic-Browser-v${pkgver}-linux.zip"
-        "${_pkgname}.png::https://raw.githubusercontent.com/emuell/${_pkgname}/master/src-tauri/icons/icon.png"
+source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_tarname}-v${pkgver}-linux.zip"
+        "${_pkgname}.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/icon.png"
         "${_pkgname}.desktop"
-        "https://raw.githubusercontent.com/emuell/${_pkgname}/master/LICENSE")
-sha256sums=('803948340de889428d5ec160c1fcc042690984929bead70be022e79f71c3373b'
+        "LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
+sha256sums=('7db8b5356c003cd97cfabeb6acf81c4d31be19caad5295976551661d1835a2b3'
             '3a9f06e4bc146fb3231d58b726dfdc0965809996411523b8edcb37289980b744'
             '74e63083d076cdd3f5de3917e5c242b40e61119fbc3aaac013607b63824a8f71'
-            'cd66a6138587ba65a3be1629ed36820c9c20ad1f630f5b311fcff219610b5f7e')
+            '126dd1280b1326514b22d0ef4d2020bdea66fd6d64f455c73ae29ac94a04e2da')
 
 prepare() {
-    tar -xf "${_pkgname}.tar"
+    tar -xf "${_tarname}.tar"
 }
 
 package() {
-    install -Dm755 "${_pkgname}"         "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${_tarname}"         "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_pkgname}.png"     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 LICENSE               "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"

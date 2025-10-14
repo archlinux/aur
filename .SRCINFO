@@ -1,6 +1,6 @@
 pkgbase = restic-browser-bin
 	pkgdesc = A GUI to browse and restore restic backup repositories.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/emuell/restic-browser
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = restic-browser-bin
 	depends = webkit2gtk
 	provides = restic-browser
 	conflicts = restic-browser
-	source = restic-browser-0.3.2.zip::https://github.com/emuell/restic-browser/releases/download/v0.3.2/Restic-Browser-v0.3.2-linux.zip
-	source = restic-browser.png::https://raw.githubusercontent.com/emuell/restic-browser/master/src-tauri/icons/icon.png
+	source = restic-browser-0.3.3.zip::https://github.com/emuell/restic-browser/releases/download/v0.3.3/Restic-Browser-v0.3.3-linux.zip
+	source = restic-browser.png::https://github.com/emuell/restic-browser/raw/refs/tags/v0.3.3/src-tauri/icons/icon.png
 	source = restic-browser.desktop
-	source = https://raw.githubusercontent.com/emuell/restic-browser/master/LICENSE
-	sha256sums = 803948340de889428d5ec160c1fcc042690984929bead70be022e79f71c3373b
+	source = LICENSE::https://github.com/emuell/restic-browser/raw/refs/tags/v0.3.3/LICENSE
+	sha256sums = 7db8b5356c003cd97cfabeb6acf81c4d31be19caad5295976551661d1835a2b3
 	sha256sums = 3a9f06e4bc146fb3231d58b726dfdc0965809996411523b8edcb37289980b744
 	sha256sums = 74e63083d076cdd3f5de3917e5c242b40e61119fbc3aaac013607b63824a8f71
-	sha256sums = cd66a6138587ba65a3be1629ed36820c9c20ad1f630f5b311fcff219610b5f7e
+	sha256sums = 126dd1280b1326514b22d0ef4d2020bdea66fd6d64f455c73ae29ac94a04e2da
 
 pkgname = restic-browser-bin
