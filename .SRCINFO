@@ -1,0 +1,16 @@
+pkgbase = larch-greet-git
+	pkgdesc = A tiny session manager written in Rust
+	pkgver = r12.24499e0
+	pkgrel = 1
+	url = https://codeberg.org/lucia-selvlysende/larch-greet
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	options = !debug
+	source = larch-greet-git::git+https://codeberg.org/lucia-selvlysende/larch-greet
+	sha512sums = SKIP
+
+pkgname = larch-greet-git
