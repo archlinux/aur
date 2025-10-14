@@ -1,15 +1,20 @@
 pkgbase = python-dask-sphinx-theme
 	pkgdesc = Sphinx theme for Dask documentation
-	pkgver = 3.0.6
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/dask/dask-sphinx-theme
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-nose
-	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/d/dask_sphinx_theme/dask_sphinx_theme-3.0.6.tar.gz
-	md5sums = 0e29bb72e246fe45b74ae97e76940d76
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/d/dask_sphinx_theme/dask_sphinx_theme-4.0.0.tar.gz
+	md5sums = dbd40dcc188616a7ddfeea95f307443c
 
 pkgname = python-dask-sphinx-theme
+	depends = python-yaml
+	depends = python-numpydoc
 	depends = python-jsonschema
 	depends = python-sphinx-book-theme
