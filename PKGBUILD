@@ -1,5 +1,5 @@
 pkgname=moonbit-bin
-pkgver=0.1.20250918
+pkgver=0.1.20251014
 pkgrel=1
 pkgdesc="Intelligent developer platform for Cloud and Edge using WASM"
 arch=('x86_64')
@@ -13,7 +13,7 @@ _origin="https://cli.moonbitlang.com"
 source=("https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz"
         "https://cli.moonbitlang.cn/cores/core-latest.tar.gz"
         "moon.sh")
-sha256sums=('3f40d8f557980e83ec92ee69734e668b61471b8d23b523c8c8055f2c056092be' 'c7da5f5f218ede9829c4bdb19affbe08910670de569ce4626b90625e1be249f9' 'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
+sha256sums=('7814c5c3195993730a65578c7fab6daeba20261c0e10541af51c8072039b4dbe' 'a724536bbe3822494f67f8f7d5656a68709b8baa43a346d420163f82be9b140d' 'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
 package() {
   # Install main runtime binary (kept under /usr/lib so the wrapper can live in /usr/bin)
   install -Dm 755 "${srcdir}/bin/moon" "${pkgdir}/usr/lib/moon"
