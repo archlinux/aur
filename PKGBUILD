@@ -1,7 +1,7 @@
 # Maintainer: Edinei Cavalcanti <hi@edinei.dev>
 pkgbase=openvpn-manager-git
 pkgname=('openvpn-manager-git')
-pkgver=22.3a96297
+pkgver=23.fbccf7b
 pkgrel=1
 pkgdesc="Command-line tool to manage OpenVPN 2.x and OpenVPN 3.x (start/stop VPN and more commands)."
 arch=('x86_64')
