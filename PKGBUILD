@@ -1,6 +1,6 @@
 # Maintainer: Bink
 pkgname=ktx-software
-pkgver=4.4.0
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="KTX (Khronos Texture) Library and Tools"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("cmake" "zstd")
 provides=("ktx-software")
 conflicts=("ktx-software" "ktx_software")
 source=("https://github.com/KhronosGroup/KTX-Software/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3585d76edcdcbe3a671479686f8c81c1c10339f419e4b02a9a6f19cc6e4e0612')
+sha256sums=('9412cb45045a503005acd47d98f9e8b47154634a50b4df21e17a1dfa8971d323')
 
 build() {
   cd "${srcdir}/KTX-Software-${pkgver}" || exit
