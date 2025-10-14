@@ -8,7 +8,7 @@ pkgname=(
   gdk-pixbuf2-noglycin-docs
 )
 pkgver=2.44.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An image loading library, without glycin"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
 arch=(x86_64)
