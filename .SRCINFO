@@ -1,7 +1,7 @@
 pkgbase = libleif
 	pkgdesc = Minimal, configurable & GPU accelerated Immediate Mode UI Library written with modern OpenGL
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cococry/leif
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,8 @@ pkgbase = libleif
 	makedepends = make
 	makedepends = gcc
 	makedepends = glfw
+	makedepends = cglm
+	makedepends = libclipboard
 	provides = libleif
 	source = leif::git+https://github.com/cococry/leif.git
 	sha256sums = SKIP
