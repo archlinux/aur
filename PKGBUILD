@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-node
 pkgver=r2231.gbf320832
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -41,10 +41,14 @@ package() {
 
   #cp node server and node updater
   cd "${srcdir}"
-  cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/ethoscope"
-  
+  cp -R --no-dereference --preserve=mode,links -v "${pkgname}" "${pkgdir}/opt/ethoscope"
+
   #changing the remote GIT source to local BARE created during installation
   cd "${pkgdir}/opt/ethoscope"
+
+  #remove git alternates to prevent references to temporary build directory
+  rm -f .git/objects/info/alternates
+
   git remote set-url origin /srv/git/ethoscope.git
   
   # Install service files as symbolic links
