@@ -1,6 +1,6 @@
 pkgbase = hyprland-monitor-manager
 	pkgdesc = Smart monitor and lid management for Hyprland with automatic detection and configuration
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/hongyangchun/hyprland-monitor-manager
 	install = hyprland-monitor-manager.install
@@ -13,7 +13,7 @@ pkgbase = hyprland-monitor-manager
 	optdepends = mako: notification daemon for Wayland
 	optdepends = dunst: alternative notification daemon
 	backup = etc/systemd/logind.conf.d/lid-switch.conf
-	source = hyprland-monitor-manager-1.2.1.tar.gz::https://github.com/hongyangchun/hyprland-monitor-manager/archive/v1.2.1.tar.gz
-	sha256sums = 8c92365d022482932c29b32554affb39d57f0e719b1073e57d2340d3c038c867
+	source = hyprland-monitor-manager-1.2.2.tar.gz::https://github.com/hongyangchun/hyprland-monitor-manager/archive/v1.2.2.tar.gz
+	sha256sums = c66345468953dcfbf07d040773798cc5a67de82219f5bacbb6691505d413a346
 
 pkgname = hyprland-monitor-manager
