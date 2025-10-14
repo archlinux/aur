@@ -2,7 +2,7 @@
 
 pkgname='magiskboot-bin'
 pkgver=29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="magiskboot binary from magisk offical release"
 arch=(
   x86_64
@@ -10,11 +10,10 @@ arch=(
   aarch64
   armv7h
 )
-license=('GPL3')
+license=('GPL-3.0')
 url="https://github.com/topjohnwu/Magisk"
-conflicts=('magiskboot' 'magiskboot-git')
+conflicts=('magiskboot')
 provides=('magiskboot')
-makedepends=('unzip')
 source=(
    "https://github.com/topjohnwu/Magisk/releases/download/v$pkgver/Magisk-v$pkgver.apk"
 )
@@ -30,7 +29,7 @@ package() {
         install -Dm755 lib/arm64-v8a/libmagiskboot.so ${pkgdir}/usr/bin/magiskboot
     elif [ ${CARCH} = "i686" ]; then
         install -Dm755 lib/x86/libmagiskboot.so ${pkgdir}/usr/bin/magiskboot
-    elif [ ${CARCH} = "armeabi-v7a" ]; then
-        install -Dm755 lib/arm64-v8a/libmagiskboot.so ${pkgdir}/usr/bin/magiskboot
+    elif [ ${CARCH} = "armv7h" ]; then
+        install -Dm755 lib/armeabi-v7a/libmagiskboot.so ${pkgdir}/usr/bin/magiskboot
     fi
 }
