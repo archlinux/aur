@@ -1,9 +1,9 @@
-# Maintainer: Rasmus Moorats <xx+aur@nns.ee>
-
+# Maintainer: zoeyrae <zoey.ronain at gmail dot com>
+# Contributor: Rasmus Moorats <xx+aur@nns.ee>
 _java=21
-_java_minor=+8.1
+_java_minor=12.1
 pkgname="jdk${_java}-graalvm-ee-bin"
-pkgver=21.0.6
+pkgver=21.0.8
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
@@ -18,13 +18,13 @@ provides=("java-runtime=${_java}"
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
-sha256sums_x86_64=('9089225518328ae0f6bc95ca303c44d8b9dc7fc7a8f1b29def90bab198450861')
-sha256sums_aarch64=('771b308852853cf93f7a3fc429741dd17502b8c5fa91930de6af8ded461e2dc3')
+sha256sums_x86_64=('c8035b3ce6e45f1481752c6b38153bb4a53eeb477c5345d5bec5ca44ed18a056')
+sha256sums_aarch64=('aa1100beb3377717a0ba1937e51878c48917615922a36c4508baf46927a9a6e4')
 source_x86_64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
 
 package() {
-	cd "graalvm-jdk-${pkgver}${_java_minor}"
+	cd "graalvm-jdk-${pkgver}+${_java_minor}"
 	mkdir -p "$pkgdir/usr/lib/jvm/java-${_java}-graalvm-ee/"
 	cp -a -t "$pkgdir/usr/lib/jvm/java-${_java}-graalvm-ee/" *
 	install -DTm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
