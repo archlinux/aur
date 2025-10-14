@@ -11,7 +11,7 @@ url="https://github.com/emuell/${_pkgname}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 license=("MIT")
-depends=("restic" "webkit2gtk")
+depends=("restic" "webkit2gtk-4.1")
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_tarname}-v${pkgver}-linux.zip"
         "${_pkgname}.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/icon.png"
         "${_pkgname}.desktop"
