@@ -1,14 +1,15 @@
 # Maintainer: Max Berggren <maxberggren@gmail.com>
 pkgname=jotite
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering"
 arch=('any')
 url="https://github.com/maxberggren/omarchy-jotite"
 license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'fontconfig')
+install=jotite.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bf51111980ceb7adc5a6391e78943209e478292caedf57fc6d653d0dddbdf7dd')
+sha256sums=('21b276535b8191ce26078908821674726cc17dabd5dc0610e6f6b8b61b807f4a')
 
 package() {
     cd "$srcdir/omarchy-jotite-$pkgver"
@@ -16,9 +17,24 @@ package() {
     # Install the main script
     install -Dm755 jotite.js "$pkgdir/usr/bin/jotite"
 
-    # Install desktop file (if you have one)
+    # Install desktop file
     install -Dm644 jotite.desktop "$pkgdir/usr/share/applications/jotite.desktop"
 
-    # Install icon (if you have one)
+    # Install icon
     install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/jotite.png"
+
+    # Install custom font (pxlxxl)
+    install -Dm644 pxlxxl.ttf "$pkgdir/usr/share/fonts/jotite/pxlxxl.ttf"
+    
+    # Install font license
+    install -Dm644 pxlxxl-eula.txt "$pkgdir/usr/share/licenses/$pkgname/pxlxxl-eula.txt"
+    
+    # Install fontconfig configuration
+    install -Dm644 /dev/stdin "$pkgdir/etc/fonts/conf.avail/69-jotite.conf" <<'EOF'
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <dir>/usr/share/fonts/jotite</dir>
+</fontconfig>
+EOF
 }
