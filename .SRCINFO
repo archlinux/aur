@@ -1,0 +1,23 @@
+pkgbase = python-sphinx-remove-toctrees
+	pkgdesc = Reduce your documentation build size by selectively removing toctrees from pages
+	pkgver = 1.0.0.post1
+	pkgrel = 1
+	url = https://github.com/executablebooks/sphinx-remove-toctrees
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-book-theme
+	makedepends = python-myst-parser
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_remove_toctrees/sphinx_remove_toctrees-1.0.0.post1.tar.gz
+	md5sums = a348043f08b63f73a767206e2ced0c9d
+
+pkgname = python-sphinx-remove-toctrees
+	depends = python>=3.9
+	depends = python-sphinx>=5
+	optdepends = python-sphinx-remove-toctrees-doc: Documentation for sphinx-remove-toctrees
+
+pkgname = python-sphinx-remove-toctrees-doc
+	pkgdesc = Documentation for Python Remove toctrees from Sphinx pages module
