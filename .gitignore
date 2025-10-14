@@ -5,3 +5,4 @@
 !PKGBUILD
 !Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 !nuget-source.patch
+!powershell.install
