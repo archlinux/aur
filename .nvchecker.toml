@@ -1,0 +1,4 @@
+[framework-tool-tui]
+source = "git"
+git = "https://github.com/grouzen/framework-tool-tui.git"
+prefix = "v"
