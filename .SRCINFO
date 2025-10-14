@@ -1,0 +1,13 @@
+pkgbase = coremail
+	pkgdesc = Coremail 邮箱客户端 安全省心，轻松连通世界
+	pkgver = 4.2.1
+	pkgrel = 1427
+	url = https://www-lunkr.coremail.cn/
+	arch = x86_64
+	license = LicenseRef-coremail
+	options = !strip
+	options = !debug
+	source = https://lunkrcdn.icoremail.net/cab/publish/lunkr4mail/cn.coremail.cmclient-ubuntu_4.2.1-1427_amd64.ubuntu.deb
+	md5sums = 4b37ad3c5048634932c46b57847e9de8
+
+pkgname = coremail
