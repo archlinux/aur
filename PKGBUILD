@@ -14,6 +14,6 @@ sha512sums=('1c27ed61f553af93fa56e54b85bd2f5e45337eee5d5f885c0773821f641351584ca
 
 package() {
   cd "$pkgname-$pkgver"
-  cmake . && make && make install
+  cmake . && make && sudo make install
 }
 
