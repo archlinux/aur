@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="geargrafx"
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="PC Engine / TurboGrafx-16 emulator and debugger"
 url="https://github.com/drhelius/Geargrafx"
@@ -13,14 +13,11 @@ source=(
     "geargrafx.desktop"
 )
 sha256sums=(
-    "fed724eb3586b60b4eb402c6497cd6fab0a93488a98d5f117bf495094aa02a5b"
+    "fc9ebb8ba4639cfd6cff556e280199456f02ff64501ff479a6c5dec1b3aef0c4"
     "14e9061980e38d4fb8d42b559a640f4a65352269f56751c55eeff1fa1e8fd3bd"
 )
 
 build() {
-    # Temporary change to fix a build error from an invalid sdl2-compat flag
-    # See https://github.com/drhelius/Gearboy/issues/194 for more details
-    sed -i '70s/static-libs/libs/' $srcdir/Geargrafx-${pkgver}/platforms/shared/makefiles/Makefile.common
     cd $srcdir/Geargrafx-${pkgver}/platforms/linux
     make
 }
