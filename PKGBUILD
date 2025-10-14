@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc')
 # makedepends=('rust' 'git')
 
-source=("https://github.com/clauderarch/kripton-authenticator/releases/download/v${pkgver}/kripton-authenticator-${pkgver}-bin.tar.gz" 
+source=("https://github.com/clauderarch/kripton-authenticator/releases/download/${pkgver}/kripton-authenticator-${pkgver}-bin.tar.gz" 
         "kripton-authenticator.desktop"
         "kripton-auth-logo.png")
 sha256sums=('cb5f25f8d574afb48ac3b765721e67168e3d209a0d47bda8a506cec677042cdb'
