@@ -5,7 +5,7 @@
 # basic info
 pkgname="vinyl-git"
 _pkgname="vinyl"
-pkgver=r108.981417a
+pkgver=r110.f16a505
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
@@ -16,7 +16,7 @@ build_dir="build_kf6"
 
 makedepends=(
   'cmake'
-  'extra-cmake-modules>=6.7.0'
+  'extra-cmake-modules>=6.13.0'
   'git'
 )
 
@@ -44,6 +44,7 @@ depends=(
   'python-cairosvg'
   'python-lxml'
   'xorg-xcursorgen'
+  'libplasma>=6.3.0'
 )
 
 depends=("${depends[@]}")
