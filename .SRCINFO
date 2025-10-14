@@ -1,14 +1,15 @@
 pkgbase = bluray_info
 	pkgdesc = Linux/BSD Blu-ray utilities - bluray_info, bluray_copy
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/beandog/bluray_info
 	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = cmake
 	depends = libaacs
 	depends = libbluray
-	source = bluray_info-2.0.tar.gz::https://github.com/beandog/bluray_info/archive/refs/tags/2.0.tar.gz
-	sha256sums = 7af484a6fa75389705620b1bcefd5f9334963b1edf3249441fb6512f09bc477a
+	source = bluray_info-2.1.tar.gz::https://github.com/beandog/bluray_info/archive/refs/tags/2.1.tar.gz
+	sha256sums = 7ba88f52df3147feb3987c2e4b4fe81028ccc6e2e07465c9b24aa943e6aac9b8
 
 pkgname = bluray_info
