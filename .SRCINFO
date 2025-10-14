@@ -1,11 +1,12 @@
 pkgbase = xdaliclock
 	pkgdesc = An advanced xclock substitute
 	pkgver = 2.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jwz.org/xdaliclock/
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = gtk3
 	depends = libxext
 	depends = libxt
 	source = https://www.jwz.org/xdaliclock/xdaliclock-2.48.tar.gz
