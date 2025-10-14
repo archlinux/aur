@@ -3,7 +3,7 @@
 
 pkgname=ruby-unicode-name
 _name="${pkgname#ruby-}"
-pkgver=1.13.5
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Unicode character names in Ruby'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby 'ruby-unicode-types')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(f6b6905db8c81441a8aec99d1fd8187456ed4fa1bf9954c0aa6b6e4aaea12259)
+sha256sums=(b350dcdeb503748c8ad05c472e8078570fbf3231a73be53431c15db10bbedbdd)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
