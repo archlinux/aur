@@ -13,7 +13,7 @@ optdepends=(
 )
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8c92365d022482932c29b32554affb39d57f0e719b1073e57d2340d3c038c867')
 backup=('etc/systemd/logind.conf.d/lid-switch.conf')
 
 package() {

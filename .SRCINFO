@@ -14,6 +14,6 @@ pkgbase = hyprland-monitor-manager
 	optdepends = dunst: alternative notification daemon
 	backup = etc/systemd/logind.conf.d/lid-switch.conf
 	source = hyprland-monitor-manager-1.2.1.tar.gz::https://github.com/hongyangchun/hyprland-monitor-manager/archive/v1.2.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 8c92365d022482932c29b32554affb39d57f0e719b1073e57d2340d3c038c867
 
 pkgname = hyprland-monitor-manager
