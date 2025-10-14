@@ -1,16 +1,33 @@
 pkgbase = protoc-gen-validate
 	pkgdesc = Protoc plugin to generate polyglot message validators
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bufbuild/protoc-gen-validate
+	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = protoc-gen-validate-go
 	options = !debug
 	source = protoc-gen-validate::git+https://github.com/bufbuild/protoc-gen-validate.git#tag=v1.2.1
 	sha256sums = 968c62bd5446832b6f9b5fe640ceeb37f317729eda6e1d62dfbd832e4f679f60
 
 pkgname = protoc-gen-validate
+	depends = glibc
+	depends = protobuf
+
+pkgname = protoc-gen-validate-cpp
+	pkgdesc = Protoc plugin to generate polyglot message validators - cpp target
+	depends = glibc
+	depends = protoc-gen-validate=1.2.1
+
+pkgname = protoc-gen-validate-go
+	pkgdesc = Protoc plugin to generate polyglot message validators - go target
+	depends = glibc
+	depends = protoc-gen-validate=1.2.1
+
+pkgname = protoc-gen-validate-java
+	pkgdesc = Protoc plugin to generate polyglot message validators - java target
+	depends = glibc
+	depends = protoc-gen-validate=1.2.1

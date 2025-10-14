@@ -1,24 +1,37 @@
 # Maintainer: Brody <archfan at brodix dot de>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=protoc-gen-validate
+_langs=(
+  cpp
+  go
+  java
+)
+pkgbase=protoc-gen-validate
+pkgname=(
+  ${pkgbase}
+  ${_langs[@]/#/${pkgbase}-}
+)
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Protoc plugin to generate polyglot message validators'
-arch=(x86_64)
-url=https://github.com/bufbuild/${pkgname}
+arch=(
+  aarch64
+  x86_64
+)
+url=https://github.com/bufbuild/${pkgbase}
 license=(Apache-2.0)
 depends=(glibc)
 makedepends=(
   git
   go
 )
-provides=(${pkgname}-go)
 options=(!debug)
-source=(${pkgname}::git+${url}.git#tag=v${pkgver})
+source=(${pkgbase}::git+${url}.git#tag=v${pkgver})
 sha256sums=('968c62bd5446832b6f9b5fe640ceeb37f317729eda6e1d62dfbd832e4f679f60')
 
+
 prepare() {
-  cd ${pkgname}
+  cd ${pkgbase}
 
   export GOFLAGS='-mod=readonly'
 
@@ -32,7 +45,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}
+  cd ${pkgbase}
 
   local _ldflags
   _ldflags=(
@@ -51,23 +64,32 @@ build() {
   go build \
     -v \
     -ldflags "${_ldfags[*]}" \
-    -o out/${pkgname} \
+    -o out/${pkgbase} \
     .
+
+  local _lang
+  for _lang in "${_langs[@]}"; do
+    go build \
+      -v \
+      -ldflags "${_ldfags[*]}" \
+      -o out/${pkgbase}-${_lang} \
+      ./cmd/${pkgbase}-${_lang}
+  done
 }
 
 check() {
-  cd ${pkgname}
+  cd ${pkgbase}
 
   go test ./...
 }
 
-package() {
-  cd ${pkgname}
+package_protoc-gen-validate() {
+  depends+=(protobuf)
+
+  cd ${pkgbase}
 
   install -Dm755 -t "${pkgdir}"/usr/bin \
     out/${pkgname}
-  ln -sr "${pkgdir}"/usr/bin/${pkgname} \
-    "${pkgdir}"/usr/bin/${pkgname}-go \
 
   install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} \
     README.md
@@ -75,5 +97,18 @@ package() {
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname} \
     LICENSE
 }
+
+for _lang in "${_langs[@]}"; do
+  eval "
+package_${pkgbase}-${_lang}() {
+  pkgdesc+=' - ${_lang} target'
+  depends+=('${pkgbase}=${pkgver}')
+
+  cd '${pkgbase}'
+
+  install -Dm755 -t \"\${pkgdir}\"/usr/bin \
+    out/'${pkgbase}-${_lang}'
+}"
+done
 
 # vim: ts=2 sw=2 et:
