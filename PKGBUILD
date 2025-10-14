@@ -11,7 +11,7 @@
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
 pkgver=0.10.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -126,8 +126,6 @@ END
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 name=logseq
 flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
 
@@ -148,9 +146,11 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-ALL_OFF="\$(tput sgr0)"
-BOLD="\$(tput bold)"
-YELLOW="\$(tput setaf 3)"
+if tput bold &> /dev/null; then
+  ALL_OFF="\$(tput sgr0)"
+  BOLD="\$(tput bold)"
+  YELLOW="\$(tput setaf 3)"
+fi
 
 ${_warning_eol:+printf "\"\${BOLD}\${YELLOW}WARNING:\${ALL_OFF} %s\\n\"" '${_warning_eol:-see https://endoflife.date/electron}'}
 
