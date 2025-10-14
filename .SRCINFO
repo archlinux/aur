@@ -1,0 +1,26 @@
+pkgbase = mullvad-udp-over-tcp-git
+	pkgdesc = Proxy UDP traffic over a TCP stream (provides tcp2udp and udp2tcp binaries). Latest git checkout.
+	pkgver = 0.4.0+35.r201.20250918.13e894a
+	pkgrel = 1
+	url = https://github.com/mullvad/udp-over-tcp
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	checkdepends = cargo
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = mullvad-udp-over-tcp=0.4.0+35.r201.20250918.13e894a
+	provides = tcp2udp=0.4.0+35.r201.20250918.13e894a
+	provides = udp2tcp=0.4.0+35.r201.20250918.13e894a
+	conflicts = mullvad-udp-over-tcp
+	conflicts = tcp2udp
+	conflicts = udp2tcp
+	source = mullvad-udp-over-tcp::git+https://github.com/mullvad/udp-over-tcp.git
+	sha256sums = SKIP
+
+pkgname = mullvad-udp-over-tcp-git
