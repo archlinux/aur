@@ -2,27 +2,24 @@
 # Contributor: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=kerncraft-git
-pkgrel=2
+pkgrel=3
 pkgver=r1290
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
 arch=('any')
 url="https://github.com/RRZE-HPC/kerncraft"
 license=('GPLv3')
 depends=('python'
-         'python-yaml'
          'python-pycachesim'
          'python-sympy'
-         'python-pylru'
          'python-numpy'
          'python-pycparser'
          'likwid'
          'python-ruamel-yaml'
          'python-compress-pickle'
          'python-osaca'
-         'python-pyparsing'
-         'python-networkx'
-         'python-psutil')
-makedepends=('git' 'python-setuptools')
+         'python-psutil'
+         'python-setuptools')
+makedepends=('git')
 optdepends=('iaca' 'gcc' 'python-matplotlib')
 source=('git+https://github.com/RRZE-HPC/kerncraft.git')
 sha256sums=('SKIP')
