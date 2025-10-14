@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-dynamic-calendar-and-clocks-icons-reborn
  _uuid=dynamic-calendar-and-clocks-icons-reborn@thecalamityjoe87.github.com
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Let Calendar, Clocks and Weather icons show current date, time and weather."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gnome-shell')
 provides=('gnome-shell-extension-dynamic-calendar-and-clocks-icons')
 conflicts=('gnome-shell-extension-dynamic-calendar-and-clocks-icons')
 source=("dynamic-calendar-and-clocks-icons-reborn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7fd800aafee5c4fe5807b12f95c77cc599428acc9ab967350545f6d0086ca715')
+sha256sums=('be39a84604c1170f3905b1e4f28ea0196045aaee456c5ed09d64b23e1b29bc7c')
 
 package() {
   cd "dynamic-calendar-and-clocks-icons-reborn-$pkgver"
