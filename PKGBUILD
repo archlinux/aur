@@ -45,6 +45,14 @@ sha256sums=('a3b0e880047790d169223983d4f9a26a2196499275d57321b15e9578dd716a94')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i "36i\#include <QElapsedTimer>" src/plugins/vumeter/vumeterwidget.cpp
+    sed -i -e "
+        136i\    const QString baseName = info.completeBaseName();
+        145i\    for(const QString& file : files) {
+        145i\        if(QFileInfo{file}.completeBaseName().compare(baseName, Qt::CaseInsensitive) == 0) {
+        145i\            return dir.absoluteFilePath(file);
+        145i\        }
+        145i\    }
+    " src/core/playlist/parsers/cueparser.cpp
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
