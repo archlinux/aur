@@ -3,10 +3,10 @@
 pkgname=shadps4-nightly-bin
 _pkgname=shadPS4
 _pkgid=net.shadps4.shadPS4
-pkgver=2025.10.13.17fab7f
-_date=2025-10-13
-_commit=17fab7fdf100fb0d7847f305f117286ab4d76aa6
-_shortcommit=17fab7f
+pkgver=2025.10.14.db9921b
+_date=2025-10-14
+_commit=db9921baf2e345fed15e6cbb95731088c5fbddf2
+_shortcommit=db9921b
 pkgrel=1
 pkgdesc="Unofficial nightly release of the shadPS4 PlayStation 4 emulator (Nightly pre-release version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 provides=('shadps4')
 conflicts=('shadps4')
 _appimage=Shadps4-qt.AppImage
-source=("shadps4-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-nightly-bin/releases/download/v2025.10.13.17fab7f/shadps4-linux-qt-2025-10-13-17fab7f.zip")
+source=("shadps4-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-nightly-bin/releases/download/v2025.10.14.db9921b/shadps4-linux-qt-2025-10-14-db9921b.zip")
 sha256sums=('SKIP')
 
 prepare() {
