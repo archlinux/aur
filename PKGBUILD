@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=8.3.0
+pkgver=9.0.0
 pkgrel=0
 epoch=
 pkgdesc='Modern N64 Emulator'
@@ -11,8 +11,8 @@ groups=()
 depends=(
 	'glibc'
 	'gcc-libs'
-	'qt5-base'
-	'qt5-svg'
+	'qt6-base'
+	'qt6-svg'
 	'findutils'
 	'xdg-utils'
 	'sdl2'
@@ -25,12 +25,13 @@ depends=(
 	'fuse'
 	'noto-fonts'
 	'udisks2'
+	'zlib'
 )
 makedepends=(
 	'gcc'
-	'qt5-declarative'
+	'qt6-declarative'
 	'make'
-	'qt5-tools'
+	'qt6-tools'
 )
 checkdepends=()
 optdepends=('noto-fonts-cjk')
@@ -41,14 +42,14 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog='parallel-launcher.changelog'
-source=('https://gitlab.com/-/project/22150690/uploads/2e76ba01343c58efd076346d0970aac5/parallel-launcher-8.3.0.tar.gz')
+source=('https://gitlab.com/-/project/22150690/uploads/0a2363979e754cf8fd6475d6d4c24bb2/parallel-launcher-9.0.0.tar.gz')
 noextract=()
-sha256sums=('a16b5d8accfbc4320bc0aed1b40d4d4c75bd0a1c13f2950896451f6b6a6ed4a9')
+sha256sums=('08d7178e0fe775465c74331346e994e1531d5826d8af8b1f575dd45264824e9a')
 validpgpkeys=()
 
 build() {
-	qmake-qt5 app.pro -spec linux-g++
-	lrelease app.pro
+	qmake6 app.pro -spec linux-g++
+	/usr/lib/qt6/bin/lrelease app.pro
 	make -j `nproc`
 }
 

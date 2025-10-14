@@ -1,3 +1,15 @@
+### v9.0.0 (Tue Oct 14 2025)
+* Updated to Qt6
+* Added a portable Windows version
+* Controller mapping has been improved to allow you to transform your analog stick position to better map to an N64 controller gate
+* Parallel Launcher settings, data, and roms can now be exported and imported
+* Improved UI scaling on high DPI screens
+* The UI style is now consistent across all operating systems
+* The Windows installer now correctly installs to Program Files by default instead of Program Files (x86)
+* Virtual SD cards are now correctly stored with the .raw extension instead of the (incorrect) .iso extension
+* Updated the bundled SDL2 library on Windows, which should improve controller support
+* Added a setting to display time using a 24-hour clock instead of a 12-hour clock
+
 ### v8.3.0 (Wed Jul 30 2025)
 * Parallel Launcher now supports cloud saves when RHDC integration is enabled. This feature can be turned on and off in settings
 * Users running the 32-bit version of Parallel Launcher on a 64-bit Windows machine will now be prompted to switch to the 64-bit version. If the 32-bit version of RetroArch or ParallelN64 is found while running the 64-bit version of Parallel Launcher, the correct 64-bit version will be downloaded to replace it.
