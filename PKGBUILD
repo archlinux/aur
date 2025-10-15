@@ -11,7 +11,7 @@ license=('0BSD')
 depends=('qt6-base' 'hyprland' 'jq')
 makedepends=('cmake' 'qt6-tools' 'gcc' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/xyrd/hyprsessionmanager/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('07143b4cea6ec83dff1102b945514c508d4808486e8e2bbb3bcfd6f323ff973f')
+sha256sums=('6a607820be21cabae269d48f1472a58a596e5439a5f9eab86bfc3b56af7b06be')
 
 build() {
   cd "${srcdir}/hyprsessionmanager-${pkgver}"
