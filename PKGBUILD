@@ -2,7 +2,7 @@
 
 pkgname=mediawarp
 _name=MediaWarp
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
 arch=($CARCH)
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.tmpfiles"
     "${pkgname}.sysusers"
 )
-sha256sums=('c6f3ca44f8b3ea8b83e7100882b3fca2aa019c261db98aa79af296e92e99336e'
+sha256sums=('3bf3e5356e0600b0f31ef7b68af3f8f748136074a1ba82732895174364ff74dc'
             'SKIP'
             'SKIP'
             'SKIP'
