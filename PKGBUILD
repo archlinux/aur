@@ -8,7 +8,7 @@
 
 _pkgname="sunshine"
 pkgname="$_pkgname-git"
-pkgver=2025.1007.152916.r0.gf52891d
+pkgver=2025.1014.193231.r0.g179c01a
 pkgrel=1
 pkgdesc="A self-hosted GameStream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
@@ -85,11 +85,11 @@ build() {
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
-  export CC="gcc${_cuda_gcc_version:+-_cuda_gcc_version}"
-  export CXX="g++${_cuda_gcc_version:+-_cuda_gcc_version}"
+  export CC="gcc${_cuda_gcc_version:+-$_cuda_gcc_version}"
+  export CXX="g++${_cuda_gcc_version:+-$_cuda_gcc_version}"
 
   export CUDA_PATH=/opt/cuda
-  export NVCC_CCBIN="/usr/bin/g++${_cuda_gcc_version:+-_cuda_gcc_version}"
+  export NVCC_CCBIN="/usr/bin/g++${_cuda_gcc_version:+-$_cuda_gcc_version}"
 
   local _cmake_options=(
     -B build
