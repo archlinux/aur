@@ -4,27 +4,59 @@ _Name="AHFormatter"
 pkgname="${_Name,,}"
 pkgver=7.4.11.66458
 _pkgver="$(awk -F. '{print $1 "." $2}' <<< "$pkgver")"
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary publishing engine. Generate PDF from XML or HTML. Format with XSL-FO or CSS."
 arch=('x86_64')
 url="https://www.antennahouse.com/formatter-v${pkgver%%.*}"
 license=('custom:Antenna House EULA')
-depends=('gcc-libs' 'glibc' 'icu74' 'sh' 'util-linux-libs')
-optdepends=('java-runtime>=8: Java bindings')
-provides=('libAHCGM.so' 'libAHCommon.so' 'libAHFontService.so' 'libAHGraphicService.so'
-          'libAHMathML.so' 'libAHPDFLib.so' 'libAHRasterizer.so' 'libAHskia.so' 'libAHSVG.so'
-          'libOOXMLCreator.so' 'libPDFCreator.so' 'libPDFLinearizer.so' 'libPDFRes.so'
-          'libPDFToolPage.so' 'libPSCreator.so' 'libSVGCreator.so' 'libXfoCommon.so'
-          'libXfoEngine.so' 'libXfoFont.so' 'libXfoGraphic.so' 'libXfoHyphen.so'
-          'libXfoInterface.so' 'libXfoRender.so' 'libXfoText.so' # 'libXfoJavaCtl74.so' ???
-          'libXfoTrans.so' 'libXPSCreator.so')
-backup=("etc/${pkgname}/font-config.xml"
-        "etc/${pkgname}/html.css")
+depends=(
+  'gcc-libs'
+  'glibc'
+  'icu74'
+  'sh'
+  'util-linux-libs'
+)
+optdepends=(
+  'java-runtime>=8: Java bindings'
+)
+provides=(
+  'libAHCGM.so'
+  'libAHCommon.so'
+  'libAHFontService.so'
+  'libAHGraphicService.so'
+  'libAHMathML.so'
+  'libAHPDFLib.so'
+  'libAHRasterizer.so'
+  'libAHskia.so'
+  'libAHSVG.so'
+  'libOOXMLCreator.so'
+  'libPDFCreator.so'
+  'libPDFLinearizer.so'
+  'libPDFRes.so'
+  'libPDFToolPage.so'
+  'libPSCreator.so'
+  'libSVGCreator.so'
+  'libXfoCommon.so'
+  'libXfoEngine.so'
+  'libXfoFont.so'
+  'libXfoGraphic.so'
+  'libXfoHyphen.so'
+  'libXfoInterface.so'
+  'libXfoRender.so'
+  'libXfoText.so'
+  # 'libXfoJavaCtl74.so' ???
+  'libXfoTrans.so'
+  'libXPSCreator.so'
+)
+backup=(
+  "etc/${pkgname}/font-config.xml"
+  "etc/${pkgname}/html.css"
+)
 install="${pkgname}.install"
 _pkgsrc="${pkgname}-${_pkgver}"
 source=("${pkgname}.sh")
 source_x86_64=("local://${_Name}V${_pkgver//./}-${_pkgver}E-MR10.x86_64.rpm.gz")
-sha256sums=('688495a839d33ea792617d15a2ba23d0b8dae30bac1744679dccf9dd42dd2a38')
+sha256sums=('394440f3bc32e579398c2a8989125ac9412ecbe4454a6bccf5dd3d96cb28496e')
 sha256sums_x86_64=('27e6fc937fd49b656122b2712eaf7c6a503989efcf644528cde0a14ec4ff6662')
 
 prepare() {
@@ -59,7 +91,7 @@ package() {
 
   install -vd "${pkgdir}/usr/lib"
   find "lib" -type f,l \( -name 'lib*.so*' ! -name 'libicu*' \) -execdir \
-    cp -vP "{}" "${pkgdir}/usr/lib/{}" \;
+    cp -va "{}" "${pkgdir}/usr/lib/{}" \;
   find "lib" -type f -name '*.jar' -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/java/${pkgname}/{}" \;
 
