@@ -1,24 +1,28 @@
 pkgbase = psi-plugins.lv2-git
 	pkgdesc = A small collection of LV2 plugins ideal for (but not limited to) electronic music (git version)
 	pkgver = 0.0.1.r16.83f318d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ycollet/psi-plugins
 	arch = x86_64
 	groups = lv2-plugins
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = lv2
 	makedepends = ntk
 	makedepends = python2
+	depends = gcc-libs
+	depends = glibc
+	optdepends = lv2-host: for loading the LV plugins
 	provides = psi-plugins.lv2
-	provides = psi-plugins.lv2=0.0.1
 	conflicts = psi-plugins.lv2
 	source = psi-plugins.lv2::git+https://github.com/ycollet/psi-plugins
 	source = psi-plugins-lv2ui-descriptor.diff
-	md5sums = SKIP
-	md5sums = 08eab2c4c57bdb162b4397baad61e39b
+	sha256sums = SKIP
+	sha256sums = c0664d2897fb34bf6d6896b54c54aae904758b0a535c30a5a5ea54c9648d0522
 
 pkgname = psi-plugins.lv2-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libcairo.so
 	depends = libntk.so
 	depends = libntk_images.so
-
