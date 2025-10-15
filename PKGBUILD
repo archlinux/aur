@@ -6,12 +6,12 @@ pkgrel=1
 OPTIONS=-debug
 pkgdesc="Session manager for Hyprland with Qt6 GUI"
 arch=('x86_64')
-url="https://github.com/rxmlp/hyprsessionmanager"
+url="https://codeberg.org/xyrd/hyprsessionmanager"
 license=('0BSD')
 depends=('qt6-base' 'hyprland' 'jq')
 makedepends=('cmake' 'qt6-tools' 'gcc' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rxmlp/hyprsessionmanager/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('42aa24373ba45421ed11806cf370cc3b8d6e759468c758b9b6349a0c69fe8998')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/xyrd/hyprsessionmanager/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('07143b4cea6ec83dff1102b945514c508d4808486e8e2bbb3bcfd6f323ff973f')
 
 build() {
   cd "${srcdir}/hyprsessionmanager-${pkgver}"
