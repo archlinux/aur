@@ -1,6 +1,6 @@
 pkgbase = oq-openapi-viewer-git
 	pkgdesc = Terminal OpenAPI Spec viewer
-	pkgver = 36.1878543
+	pkgver = 40.c3bbc75
 	pkgrel = 1
 	url = https://github.com/plutov/oq
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Edinei Cavalcanti <hi@edinei.dev>
 pkgname=oq-openapi-viewer-git
-pkgver=36.1878543
+pkgver=40.c3bbc75
 pkgrel=1
 pkgdesc="Terminal OpenAPI Spec viewer"
 arch=('x86_64')
