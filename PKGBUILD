@@ -2,18 +2,18 @@
 
 pkgname=focaltech-spi-dkms
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SPI module for FocalTech FTE3600, FTE4800, FTE6600 and FTE6900 fingerprint readers"
 arch=('x86_64')
-url="https://github.com/ftfpteams/ubuntu_spi"
+url="https://github.com/vobademi/FTEXX00-Ubuntu"
 license=('GPL-2.0') # The license is indicated in focal_spi.c.
 depends=('dkms')
 makedepends=('git' 'tar' 'linux-headers')
-source=("git+https://github.com/ftfpteams/ubuntu_spi.git")
+source=("git+https://github.com/vobademi/FTEXX00-Ubuntu.git")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/ubuntu_spi"
+  cd "$srcdir/FTEXX00-Ubuntu"
 
   # Rename kernel header for recent kernel versions
   sed -i 's#<asm/unaligned.h>#<linux/unaligned.h>#' focal_spi.c
@@ -34,7 +34,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir/ubuntu_spi"
+  cd "$srcdir/FTEXX00-Ubuntu"
 
   # Create DKMS source directory
   install -dm755 "$pkgdir/usr/src/$pkgname-$pkgver"
