@@ -10,7 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expand browser filter to other unit properties
 - Fix Flatpak save file in home directory (make a warning)
 - Sort user defined columns context
-- Handle journal logs style format
+
+## [2.2.0] - 2025-10-15
+### Added
+- Column manager UX improvements
+  - Focus on added property
+  - Focus on property's column when open from browser
+  - Show a Toast on added property
+  - Keep track of column order
+- Translation German
+- Translation Portuguese Brazil
 
 ## [2.1.0] - 2025-10-13
 ### Added
