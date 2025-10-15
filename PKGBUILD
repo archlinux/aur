@@ -3,7 +3,7 @@
 _binname="Restic-Browser"
 pkgname="${_binname,,}"
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to browse and restore restic backup repositories."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/emuell/${pkgname}"
@@ -11,7 +11,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 license=("MIT")
 depends=("restic" "webkit2gtk-4.1")
-makedepends=("appmenu-gtk-module" "cargo" "gtk3" "jq" "libappindicator-gtk3" "librsvg" "libvips" "nodejs" "npm" "restic" "webkit2gtk-4.1")
+makedepends=("appmenu-gtk-module" "cargo" "gtk3" "jq" "libappindicator-gtk3" "librsvg" "nodejs" "npm" "openssl" "restic" "xdotool" "webkit2gtk-4.1")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('32b4b6deffb052c9d406a9e02beff1b38ff327066521041995f92927485fa70a'
