@@ -1,10 +1,10 @@
 pkgbase = wa
 	pkgdesc = wa
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kizenreidowa/wa
 	arch = any
-	license = AGPL-3.0
+	license = AGPL-3.0-or-later
 	depends = cmake
 	provides = wa
 	source = https://github.com/kizenreidowa/wa/archive/refs/tags/0.0.0.tar.gz

@@ -2,11 +2,11 @@
 
 pkgname=wa
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="wa"
 arch=('any')
 url="https://github.com/kizenreidowa/wa"
-license=('AGPL-3.0')
+license=('AGPL-3.0-or-later')
 depends=('cmake')
 provides=('wa')
 source=("https://github.com/kizenreidowa/wa/archive/refs/tags/$pkgver.tar.gz")
