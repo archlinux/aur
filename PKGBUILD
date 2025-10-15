@@ -3,7 +3,7 @@
 
 _pkgauthor=ChausseBenjamin
 _pkgname=termpicker
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}
 pkgver=1.5.0
 pkgrel=1
 pkgdesc="A color picker for the terminal"

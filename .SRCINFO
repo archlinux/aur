@@ -22,4 +22,4 @@ pkgbase = termpicker-bin
 	source_aarch64 = https://github.com/ChausseBenjamin/termpicker/releases/download/v1.5.0/termpicker_Linux_arm64.tar.gz
 	sha256sums_aarch64 = bd1e38f187966e5a4ee426cc8f1109e7d306cc4c951f20f37a788835a7cac139
 
-pkgname = termpicker-bin
+pkgname = termpicker
