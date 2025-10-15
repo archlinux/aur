@@ -51,6 +51,6 @@ package() {
         install -D -m644 -t "${pkgdir}/usr/lib/firmware/gchd/" "$f"
     done
     for f in ${srcdir}/${pkgname%-git}/udev-rules/*; do
-        install -D -m644 -t "${pkgdir}/etc/udev/rules.d/" "$f"
+        install -D -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "$f"
     done
 }

@@ -1,0 +1,4 @@
+*.msi
+pkg/
+src/
+elgato-gchd*
