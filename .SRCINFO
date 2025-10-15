@@ -1,7 +1,7 @@
 pkgbase = wa
 	pkgdesc = wa
 	pkgver = 0.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kizenreidowa/wa
 	arch = any
 	license = AGPL-3.0-or-later

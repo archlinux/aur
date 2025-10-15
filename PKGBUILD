@@ -1,8 +1,8 @@
 # Maintainer: hackia <hackia at eytukan dot com>
 
-pkgname=wa
+pkgname="wa"
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="wa"
 arch=('any')
 url="https://github.com/kizenreidowa/wa"
