@@ -1,0 +1,16 @@
+430c430
+<                     ips = re.findall('inet6? (.+?)\s', output)
+---
+>                     ips = re.findall(r'inet6? (.+?)\s', output)
+432c432
+<                     ips = [x.strip('addr:') for x in re.findall('inet6? (.+?)\s', output)]
+---
+>                     ips = [x.strip('addr:') for x in re.findall(r'inet6? (.+?)\s', output)]
+436c436
+<             ips = [x for x in re.findall('inet6? (.+?)\s', output)]
+---
+>             ips = [x for x in re.findall(r'inet6? (.+?)\s', output)]
+443c443
+<         '''
+---
+>         r'''

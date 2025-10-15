@@ -1,0 +1,4 @@
+34c34
+< locale.resetlocale(locale.LC_NUMERIC)
+---
+> locale.setlocale(locale.LC_NUMERIC)

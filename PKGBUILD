@@ -6,11 +6,17 @@ arch=('any')
 url="https://my.panopta.com"
 license=('custom')
 depends=('python' 'cronie')
-source=("https://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz" "panopta-agent.cron" "license.txt")
+source=('https://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz'
+        'panopta-agent.cron'
+        'license.txt'
+        'agent.py.patch'
+        'agent_util.py.patch')
 install=$pkgname.install
 md5sums=('e8ac052af8f4cf832ecc2d07d5306e24'
          '0e1c4e4fa5ff801fe9503307c39e73b2'
-         '2a657feea0ec01bf57ffad93686ea9c2')
+         '2a657feea0ec01bf57ffad93686ea9c2'
+         'eb827036a06efca50d60c19b34930af8'
+         '60fe3dfc37ab85e264d47309eaae1597')
 
 pkgver() {
     cd "$srcdir"
@@ -29,6 +35,9 @@ package() {
     rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/sparc/"
     rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/sunos5/"
     rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/freebsd*/"
+    # Patch agent.py and agent_util.py that have some lingering python2 syntax.
+    patch "$pkgdir/usr/lib/panopta-agent/library/agent.py" "$srcdir/agent.py.patch"
+    patch "$pkgdir/usr/lib/panopta-agent/library/agent_util.py" "$srcdir/agent_util.py.patch"
 
     # /usr/bin
     mkdir -p "$pkgdir/usr/bin/$pkgname"
