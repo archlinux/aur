@@ -17,12 +17,12 @@ makedepends=('help2man')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}::${_urlraw}/README.md")
-source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[1]}-unknown-linux-musl.tar.gz")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('0fba33e712b47fff4ac42c8ffe9862a045b62b496c3843b781cda79d1714aa51'
             'f3da2e0307b0742a8d3949bd282cd73c80cf6eace75d4b19efe221f92472ce9d')
 sha256sums_x86_64=('a10bd11271150b3621baf3deacf901669b9abe5ce0b579b0cf2f9f4c83f36c2c')
-sha256sums_aarch64=('a10bd11271150b3621baf3deacf901669b9abe5ce0b579b0cf2f9f4c83f36c2c')
+sha256sums_aarch64=('1b890d235986811ccf71ed802d0095cb67119ea31a022229722f6beab41a9b81')
 
 
 build() {
