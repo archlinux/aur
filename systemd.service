@@ -1,0 +1,13 @@
+[Unit]
+Description=Express.js proxy for Piped that injects OpenGraph meta to the HTML body.
+After=network.target
+
+[Service]
+User=piped
+EnvironmentFile=/etc/webapps/piped/html-proxy.env
+WorkingDirectory=/usr/share/webapps/piped/html-proxy
+ExecStart=npm start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
