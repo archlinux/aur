@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=141.0.7390.65
+pkgver=141.0.7390.107
 pkgrel=1
 # optionally modify to fit your specific hardware
 # hacky way to determine subarch
