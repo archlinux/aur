@@ -2,7 +2,7 @@
 
 _appname=user_oidc
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=8.0.0
+pkgver=8.1.0
 pkgrel=1
 pkgdesc='OIDC connect user backend for Nextcloud'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(composer
              yq)
 _archive="$_appname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('3482278d1806271e4f0aba4f3f52f925eb1f8dda1e80210fa8198fbf9a0004bb')
+sha256sums=('71a1d8e840f1fa20d1b507521cd22d58e278e728beb4ccd258edc9adba436419')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
