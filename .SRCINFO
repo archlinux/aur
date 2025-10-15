@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 0.1.8.r0.g2008977
-	pkgrel = 3
+	pkgver = 0.1.15.r4.g3904d6f
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -18,10 +18,11 @@ pkgbase = dms-shell-git
 	optdepends = cliphist: Clipboard history functionality
 	optdepends = matugen: Dynamic wallpaper-based theming
 	optdepends = networkmanager: Required for network management
-	optdepends = qt5ct: Qt5 application theming
+	optdepends = qt6-multimedia: Sound effect support
+	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
-	provides = dms-shell=0.1.8.r0.g2008977
+	provides = dms-shell=0.1.15.r4.g3904d6f
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = git+https://github.com/AvengeMedia/danklinux.git
@@ -34,7 +35,8 @@ pkgname = dms-shell-git
 	optdepends = cliphist: Clipboard history functionality
 	optdepends = matugen: Dynamic wallpaper-based theming
 	optdepends = networkmanager: Required for network management
-	optdepends = qt5ct: Qt5 application theming
+	optdepends = qt6-multimedia: Sound effect support
+	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
 	optdepends = dms-shell-hyprland: Hyprland specific dependencies

@@ -6,7 +6,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.1.10.r4.g3904d6f
+pkgver=0.1.15.r1.g16360dd
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -22,7 +22,8 @@ optdepends=('brightnessctl: Laptop display brightness control'
             'cliphist: Clipboard history functionality'
             'matugen: Dynamic wallpaper-based theming'
             'networkmanager: Required for network management'
-            'qt5ct: Qt5 application theming'
+            'qt6-multimedia: Sound effect support'
+            'power-profiles-daemon: Set power profile'
             'qt6ct: Qt6 application theming'
             'wl-clipboard: Copy functionality for PIDs and other elements')
 makedepends=(git
