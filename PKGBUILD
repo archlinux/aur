@@ -1,7 +1,7 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
 pkgname=otree-release
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A command line tool to view objects (JSON/YAML/TOML) in TUI tree widget"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/fioncat/otree"
 license=('MIT')
 
 source=("$pkgname-$pkgver::https://github.com/fioncat/otree/releases/download/v${pkgver}/otree-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('f0d902a81c8d4d62a8a9a6174b3d3d217dd4b4b4fe97f4a905807b993a459141')
+sha256sums=('10a348593468bc34ee28d7e331f69cb6fb37fe4733bc220b200d49edff4aa1ee')
 
 options=('!strip' '!debug')
 
