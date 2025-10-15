@@ -2,7 +2,7 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2025.9
+_pkgver=2025.10
 _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
@@ -28,22 +28,22 @@ makedepends=(
   'libxcrypt-compat'
   'nvm'
   'protobuf'
-  'typescript'
+#  'typescript'  ## build fails with current version
 )
 optdepends=('libappindicator-gtk3: tray icon')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('ec596f1f2db0c86f91a69231a45475a50a30a92781b20b561ffef44b4101f857'
+sha256sums=('0547240027f8b53b0c63739b5356691e412140681df4bee578cbe7377e138995'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -94,6 +94,7 @@ prepare() {
   nvm install "${_nodeversion}"
 
   echo "Installing JavaScript dependencies..."
+  npm install --install-strategy=shallow typescript@5.6.3
   npm ci --no-audit --no-fund
   popd
 }
