@@ -3,7 +3,7 @@
 # Maintainer: someone5678 <someone5678 dot dev at google dot com>
 
 pkgname=ktfmt
-pkgver=0.58
+pkgver=0.59
 pkgrel=1
 pkgdesc='A program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions'
 url='https://github.com/facebook/ktfmt'
@@ -15,7 +15,7 @@ source=(
   "$pkgname"
   "https://raw.githubusercontent.com/facebook/$pkgname/refs/tags/v$pkgver/LICENSE"
 )
-sha256sums=('0369a4351367b0de2374b0f1c3962ef7d5d222a4bc58d7197d06948d46e4bea5'
+sha256sums=('a493271c137074436a133d72e9e323f91604c97e0c40555629ec39598efead54'
             '62228af9300c9ee416aeef97fb589a91ddcd321e6b262e5e5c0924d26cb4ef52'
             '5f1521fb886be393d8afc4655ab7c6ffe84e1d4f15dfd321ceec3ce62968d058')
 
