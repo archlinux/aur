@@ -1,0 +1,5 @@
+["termpicker-bin"]
+source = "github"
+github = "ChausseBenjamin/termpicker"
+use_latest_release = true
+prefix = "v"
