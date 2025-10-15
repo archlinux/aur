@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/xyrd/hyprsessionmanag
 sha256sums=('6a607820be21cabae269d48f1472a58a596e5439a5f9eab86bfc3b56af7b06be')
 
 build() {
-  cd "${srcdir}/hyprsessionmanager-${pkgver}"
+  cd "${srcdir}/hyprsessionmanager"
   mkdir -p build
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/hyprsessionmanager-${pkgver}/build"
+  cd "${srcdir}/hyprsessionmanager/build"
   install -Dm755 hyprsessionmanager "$pkgdir/usr/bin/hyprsessionmanager"
   install -Dm644 ../hyprsessionmanager.desktop "$pkgdir/usr/share/applications/hyprsessionmanager.desktop"
   install -Dm644 ../logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprsessionmanager.svg"
