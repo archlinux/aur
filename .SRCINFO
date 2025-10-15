@@ -5,6 +5,7 @@ pkgbase = sagemath-git
 	url = http://www.sagemath.org
 	arch = x86_64
 	license = GPL-2.0-or-later
+	checkdepends = python-pytest
 	makedepends = bliss
 	makedepends = boost
 	makedepends = coxeter

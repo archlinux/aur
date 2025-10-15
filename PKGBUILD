@@ -135,6 +135,7 @@ makedepends=(bliss
              shared_meataxe
              sirocco
              treedec)
+checkdepends=(python-pytest)
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
