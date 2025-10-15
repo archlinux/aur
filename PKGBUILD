@@ -1,25 +1,27 @@
 # Maintainer:
 
+: ${_build_deps:=true}
+: ${_ver_kddockwidgets:=2.3.0}
+: ${_ver_plutovg:=1.3.1}
+: ${_ver_plutosvg:=0.0.7}
+
 : ${_commit=e4af1c424451c6b65c5c387404315cef77e9901b}
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  kddockwidgets-qt6 # AUR
   libpcap
   libpng
   libwebp
   libxi
   libxrandr
-  plutosvg # AUR
-  plutovg  # AUR
   qt6-base
   sdl3
 )
@@ -52,7 +54,7 @@ install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+$url.git#commit=${_commit:-v$pkgver}"
+  "$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}"
   "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
 )
 sha256sums=(
@@ -60,17 +62,123 @@ sha256sums=(
   'SKIP'
 )
 
+if [ "${_build_deps::1}" != "t" ]; then
+  eval "depends+=(
+    ## AUR
+    kddockwidgets-qt6
+    plutosvg
+    plutovg
+  )"
+else
+  eval "depends+=(
+    # kddockwidgets
+    qt6-declarative
+
+    # plutosvg
+    freetype2
+  )"
+
+  eval "makedepends+=(
+    patchelf
+  )"
+
+  _pkgsrc_kddockwidgets="kddockwidgets"
+  _pkgsrc_plutovg="plutovg"
+  _pkgsrc_plutosvg="plutosvg"
+  source+=(
+    "$_pkgsrc_kddockwidgets"::"git+https://github.com/KDAB/KDDockWidgets.git${_ver_kddockwidgets:+#tag=v$_ver_kddockwidgets}"
+    "$_pkgsrc_plutovg"::"git+https://github.com/sammycage/plutovg.git${_ver_plutovg:+#tag=v$_ver_plutovg}"
+    "$_pkgsrc_plutosvg"::"git+https://github.com/sammycage/plutosvg.git${_ver_plutosvg:+#tag=v$_ver_plutosvg}"
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+
+  _build_deps() {
+    local _cmake_options
+
+    echo "Building kddockwidgets..."
+    _cmake_options=(
+      -B "build_${_pkgsrc_kddockwidgets}"
+      -S "$_pkgsrc_kddockwidgets"
+      -G Ninja
+      -DCMAKE_BUILD_TYPE=None
+      -DCMAKE_INSTALL_PREFIX='/usr'
+      -DBUILD_SHARED_LIBS=ON
+      -Wno-dev
+
+      -DKDDockWidgets_EXAMPLES=OFF
+      -DKDDockWidgets_FRONTENDS='qtwidgets;qtquick'
+      -DKDDockWidgets_NO_SPDLOG=ON
+      -DKDDockWidgets_QT6=ON
+      -DKDDockWidgets_X11EXTRAS=OFF
+    )
+
+    cmake "${_cmake_options[@]}"
+    cmake --build "build_${_pkgsrc_kddockwidgets}"
+    DESTDIR="deps" cmake --install "build_${_pkgsrc_kddockwidgets}"
+
+    echo "Building plutovg..."
+    _cmake_options=(
+      -B "build_${_pkgsrc_plutovg}"
+      -S "$_pkgsrc_plutovg"
+      -G Ninja
+      -DCMAKE_BUILD_TYPE=None
+      -DCMAKE_INSTALL_PREFIX='/usr'
+      -DBUILD_SHARED_LIBS=ON
+      -Wno-dev
+    )
+
+    cmake "${_cmake_options[@]}"
+    cmake --build "build_${_pkgsrc_plutovg}"
+    DESTDIR="deps" cmake --install "build_${_pkgsrc_plutovg}"
+
+    echo "Building plutosvg..."
+
+    # allow newer plutovg
+    sed -E \
+      -e 's&(find_package\(plutovg).*$&\1 REQUIRED)&' \
+      -i "$_pkgsrc_plutosvg/CMakeLists.txt"
+
+    _cmake_options=(
+      -B "build_${_pkgsrc_plutosvg}"
+      -S "$_pkgsrc_plutosvg"
+      -G Ninja
+      -DCMAKE_BUILD_TYPE=None
+      -DCMAKE_INSTALL_PREFIX='/usr'
+      -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+      -DCMAKE_SKIP_RPATH=ON
+      -DBUILD_SHARED_LIBS=ON
+      -Wno-dev
+
+      -DPLUTOSVG_BUILD_EXAMPLES=ON
+      -DPLUTOSVG_ENABLE_FREETYPE=ON
+    )
+
+    cmake "${_cmake_options[@]}"
+    cmake --build "build_${_pkgsrc_plutosvg}"
+    DESTDIR="deps" cmake --install "build_${_pkgsrc_plutosvg}"
+  }
+fi
+
 prepare() {
   cd "$_pkgsrc"
 
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
-    -i "cmake/BuildParameters.cmake"
+    -i cmake/BuildParameters.cmake
 
   # adjust data path
   sed -E -e '/CMAKE_INSTALL_FULL_DATADIR/s@/PCSX2\b@/'"${_pkgname}@" \
-    -i "pcsx2/CMakeLists.txt" \
-    "cmake/BuildParameters.cmake"
+    -i pcsx2/CMakeLists.txt \
+    cmake/BuildParameters.cmake
+
+  # fix for Qt 6.10
+  sed -E -e 's@\b(Qt6::)?(Gui)\b@\1\2 \1\2Private@' \
+    -i cmake/SearchForStuff.cmake \
+    pcsx2-qt/CMakeLists.txt
 }
 
 pkgver() {
@@ -79,22 +187,27 @@ pkgver() {
 }
 
 build() (
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  export CC CXX LDFLAGS
   CC=clang
   CXX=clang++
+  LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' <<< "$LDFLAGS") -fuse-ld=lld"
 
-  local _ldflags=(${LDFLAGS})
-  LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+  local _cmake_options
+  if [[ "${_build_deps::1}" == t ]]; then
+    _build_deps
+  fi
 
   echo "Building pcsx2..."
-  local _cmake_pcsx2
-
-  _cmake_pcsx2+=(
-    -S "$_pkgsrc"
+  _cmake_options=(
     -B build
+    -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+    -DENABLE_TESTS=$CHECKFUNC
+    -Wno-dev
+
     -DDISABLE_ADVANCE_SIMD=ON # misnamed; enables multi-arch
     -DENABLE_SETCAP=OFF
     -DPACKAGE_MODE=ON
@@ -103,11 +216,11 @@ build() (
     -DUSE_VULKAN=ON
     -DWAYLAND_API=ON
     -DX11_API=ON
-    -DENABLE_TESTS=$CHECKFUNC
-    -Wno-dev
   )
 
-  cmake "${_cmake_pcsx2[@]}"
+  echo "${_cmake_options[@]}"
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 
   echo "Archiving game patches..."
@@ -137,4 +250,10 @@ StartupNotify=true
 StartupWMClass=$_pkgname
 Categories=Game;Emulator
 END
+
+  if [[ "${_build_deps::1}" == t ]]; then
+    mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
+    cp "deps/usr/lib"/*.so* "$pkgdir/usr/lib/$_pkgname/"
+    patchelf --add-rpath "/usr/lib/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  fi
 }
