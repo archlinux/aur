@@ -1,13 +1,12 @@
 pkgbase = perl-regexp-pattern-license
 	pkgdesc = Regular expressions for legal licenses
 	pkgver = 3.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/build-common-team/regexp-pattern-license
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = perl-regexp-pattern
 	checkdepends = perl-re-engine-re2
-	checkdepends = perl-test2-suite
 	checkdepends = perl-test-regexp-pattern
 	checkdepends = perl-test-without-module
 	checkdepends = perl-try-tiny

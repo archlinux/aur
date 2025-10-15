@@ -2,13 +2,13 @@
 
 pkgname=perl-regexp-pattern-license
 pkgver=3.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Regular expressions for legal licenses"
 arch=('any')
 url="https://salsa.debian.org/build-common-team/regexp-pattern-license"
 license=('GPL-3.0-or-later')
 depends=('perl')
-checkdepends=('perl-regexp-pattern' 'perl-re-engine-re2' 'perl-test2-suite'
+checkdepends=('perl-regexp-pattern' 'perl-re-engine-re2'
               'perl-test-regexp-pattern' 'perl-test-without-module'
               'perl-try-tiny')
 optdepends=('perl-re-engine-re2')
