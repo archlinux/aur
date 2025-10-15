@@ -1,29 +1,28 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
-_modname=codec_opus
 _modver=1.3.0
-pkgname=asterisk-${_modname}
-_astver=22.0
+pkgname=asterisk-codec_opus
+_astver=23.0
 pkgver=${_astver}_${_modver}
 pkgrel=1
 pkgdesc="Opus Software Codec for Asterisk"
 url=https://digium.com
-license=(EULA)
+license=(LicenseRef-Digium-EULA)
 arch=(x86_64)
-source=(https://downloads.digium.com/pub/telephony/codec_opus/asterisk-${_astver}/x86-64/${_modname}-${pkgver}-${arch}.tar.gz)
-sha256sums=('889e6b3d7f096c84271e9b10c1a2050382738bd2dda82e1fc76cb1e10472e20d')
+source=(https://downloads.digium.com/pub/telephony/codec_opus/asterisk-${_astver}/x86-64/codec_opus-${pkgver}-x86_64.tar.gz)
+sha256sums=('bb0f1dd87c716686be9b23facf60b3265018c0550b4202add07ae7a028bfaa1f')
 
 package() {
-	depends+=('asterisk>=22.0.0' 'asterisk<23.0.0')
+	depends+=('asterisk>=23.0.0' 'asterisk<24.0.0')
 
-	cd ${_modname}-${pkgver}-${arch}
+	cd codec_opus-${pkgver}-x86_64
 
 	install -Dt "${pkgdir}"/usr/lib/asterisk/modules -m0755 codec_opus.so
 	install -Dt "${pkgdir}"/usr/lib/asterisk/modules -m0755 format_ogg_opus.so
 
-	install -dm750 "${pkgdir}"/var/lib/asterisk/{,documentation,documentation/thirdparty}
+	install -dm0750 "${pkgdir}"/var/lib/asterisk/{,documentation,documentation/thirdparty}
 	install -Dt "${pkgdir}"/var/lib/asterisk/documentation/thirdparty -m0644 codec_opus_config-en_US.xml
 
-	install -Dt "${pkgdir}"/usr/share/licenses/asterisk/modules/${_modname} -m0644 LICENSE
-	install -Dt "${pkgdir}"/usr/share/doc/asterisk/modules/${_modname} -m0644 README
+	install -Dt "${pkgdir}"/usr/share/licenses/asterisk/modules/codec_opus -m0644 LICENSE
+	install -Dt "${pkgdir}"/usr/share/doc/asterisk/modules/codec_opus -m0644 README
 }
