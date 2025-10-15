@@ -37,5 +37,5 @@ package() {
   gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 
   install -Dm644 "nvrs.toml" "${pkgdir}/usr/share/doc/${pkgname}/samples/nvrs.toml"
-  install -Dm644 "keyfile.toml" "${pkgdir}/usr/share/doc/${pkgname}/samples/n_keyfile.toml"
+  install -Dm644 "n_keyfile.toml" "${pkgdir}/usr/share/doc/${pkgname}/samples/n_keyfile.toml"
 }
