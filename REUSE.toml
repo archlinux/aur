@@ -25,5 +25,5 @@ SPDX-License-Identifier = "0BSD"
 path = [
     "enable-fstack-protector-strong-by-default.patch",
 ]
-SPDX-FileCopyrightText = "clang19 contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-FileCopyrightText = "clang contributors"
+SPDX-License-Identifier = "Apache-2.0 WITH LLVM-exception"
