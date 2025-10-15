@@ -89,9 +89,9 @@ pkgver() {
 }
 
 prepare() {
-  # Set rust/cargo home to the build source dir
-  [[ -z "$CARGO_HOME" ]] && export CARGO_HOME="$srcdir/build/cargo-home"
-  [[ -z "$RUSTUP_HOME" ]] && export RUSTUP_HOME="$srcdir/build/rustup-home"
+  ## Set rust/cargo home to the build source dir
+  #[[ -z "$CARGO_HOME" ]] && export CARGO_HOME="$srcdir/build/cargo-home"
+  #[[ -z "$RUSTUP_HOME" ]] && export RUSTUP_HOME="$srcdir/build/rustup-home"
 
   cd "$srcdir/mozc" || exit
 
