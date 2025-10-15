@@ -1,0 +1,5 @@
+[benben]
+source = 'htmlparser'
+url = 'https://chiselapp.com/user/MistressRemilia/repository/benben/wiki?name=Releases'
+xpath = '/html/body//ul/li/a[starts-with(text(), "Benben v")]'
+prefix = 'Benben v'
