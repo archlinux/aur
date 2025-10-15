@@ -1,21 +1,23 @@
 pkgbase = ceres-solver-git
 	pkgdesc = Solver for nonlinear least squares problems
-	pkgver = r1467.db1f5b57
+	pkgver = 2.2.0.r135.gf9b7b6651
 	pkgrel = 1
 	url = http://ceres-solver.org/
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
+	makedepends = git
 	depends = google-glog>=0.3.4
 	depends = eigen>=3.3.4
 	depends = suitesparse>=4.4.5
+	depends = abseil-cpp
 	optdepends = openmp
-	provides = ceres-solver=r1467.db1f5b57
+	optdepends = cuda: cuda accel for CGNR and dense qr, normal Cholesky and Shur
+	optdepends = cudss: cuda accel for sparse normal Cholesky and Schur
+	provides = ceres-solver=2.2.0.r135.gf9b7b6651
 	conflicts = ceres-solver
 	options = staticlibs
 	source = ceres-solver-git::git+https://github.com/ceres-solver/ceres-solver.git
 	sha256sums = SKIP
 
 pkgname = ceres-solver-git
-

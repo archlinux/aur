@@ -1,16 +1,18 @@
 # Contributor: dtag <dtag00@gmail.com>
 
 pkgname=ceres-solver-git
-pkgver=r1467.db1f5b57
+pkgver=2.2.0.r135.gf9b7b6651
 pkgrel=1
 pkgdesc="Solver for nonlinear least squares problems"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://ceres-solver.org/"
 license=('LGPL')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('google-glog>=0.3.4' 'eigen>=3.3.4'
-      'suitesparse>=4.4.5')
-optdepends=('openmp')
+      'suitesparse>=4.4.5' 'abseil-cpp')
+optdepends=('openmp'
+			'cuda: cuda accel for CGNR and dense qr, normal Cholesky and Shur'
+			'cudss: cuda accel for sparse normal Cholesky and Schur')
 source=("${pkgname}::git+https://github.com/ceres-solver/ceres-solver.git")
 sha256sums=('SKIP')
 provides=("ceres-solver=${pkgver}")
@@ -25,8 +27,7 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
             '-D BUILD_EXAMPLES=OFF')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C "${srcdir}/$pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
