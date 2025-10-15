@@ -1,0 +1,5 @@
+[python-cuqipy]
+source = "github"
+github = "CUQI-DTU/CUQIpy"
+use_latest_release = "true"
+prefix = "v"
