@@ -11,7 +11,7 @@ post_install() {
     mkdir -p /etc/panopta-agent
 
     # Perform the install handshake
-    python2 /usr/bin/panopta-agent/panopta_agent.py --install
+    python /usr/bin/panopta-agent/panopta_agent.py --install
 
     # Change owner of needed directories to the agent user
     # The initial handshake is performed as root, so update these permissions after
