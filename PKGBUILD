@@ -164,6 +164,13 @@ build() {
     -C setup-args=-Dbuild-docs=false
 }
 
+check() {
+  cd sage
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -v
+}
+
 package() {
   cd sage
   python -m installer --destdir="$pkgdir" dist/*.whl
