@@ -4,12 +4,12 @@ _org='stack-of-tasks'
 _pkgname=eigenpy
 pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=3.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
-depends=('boost-libs' 'gcc-libs' 'glibc')
+depends=('boost-libs' 'gcc-libs' 'glibc' 'python')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen3' 'jrl-cmakemodules' 'boost' 'python-numpy' 'python-scipy')
 source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -19,6 +19,7 @@ build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DEigen3_ROOT=/opt/eigen3 \
         -Wno-dev
     # This require a lot of ram to build.
     cmake --build "build-$pkgver" -j 1
