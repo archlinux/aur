@@ -1,15 +1,15 @@
 pkgname=panopta-agent
-pkgver=2022.20.5
+pkgver=2022.47.9
 pkgrel=1
 pkgdesc="Panopta monitoring agent"
 arch=('any')
 url="https://my.panopta.com"
 license=('custom')
-depends=('python2' 'cronie')
-source=("http://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz" "panopta-agent.cron" "license.txt")
+depends=('python' 'cronie')
+source=("https://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz" "panopta-agent.cron" "license.txt")
 install=$pkgname.install
-md5sums=('SKIP'
-         '0e1c4e4fa5ff801fe9503307c39e73b2'
+md5sums=('e8ac052af8f4cf832ecc2d07d5306e24'
+         '50b8bd64e1111f8adf6ffeb55ed37215'
          '2a657feea0ec01bf57ffad93686ea9c2')
 
 pkgver() {
