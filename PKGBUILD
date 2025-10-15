@@ -2,7 +2,7 @@
 
 pkgname=keyboard-center2
 _pkgname=keyboard-center
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
