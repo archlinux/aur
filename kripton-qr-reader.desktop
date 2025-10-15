@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Kripton QR Reader
+Comment=A CLI tool for reading QR codes from images, with directory scanning and persistent settings.
+Exec=kripton-qr-reader
+Icon=kripton-qr-reader
+Terminal=true 
+Type=Application
+Categories=Utility;Security;
+Name[en_US]=Kripton QR Reader
