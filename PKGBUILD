@@ -78,6 +78,10 @@ sha512sums=('29f6ea3cc8b6a43e5305a89a198e349995fe04e04ca8b8973c2546bba1e01d9b79c
             '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
             'd964584b7b2ffaa031d527bf4e8c53e2aadffc87c073b5d87841172ad8fc0ea7b341161bac84b3c0df2ab7df8dff4655087a45debb2ec3839f2743e253f115e3')
 
+
+# Set default rustup toolchain
+export RUSTUP_TOOLCHAIN=stable
+
 pkgver() {
   cd "${srcdir}/mozc" || exit
   source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
@@ -85,6 +89,10 @@ pkgver() {
 }
 
 prepare() {
+  # Set rust/cargo home to the build source dir
+  [[ -z "$CARGO_HOME" ]] && export CARGO_HOME="$srcdir/build/cargo-home"
+  [[ -z "$RUSTUP_HOME" ]] && export RUSTUP_HOME="$srcdir/build/rustup-home"
+
   cd "$srcdir/mozc" || exit
 
   git submodule init
@@ -116,6 +124,7 @@ prepare() {
   # すだちを優先
   msg '1. Build the rust program(dict-to-mozc), it may take some time...'
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
+  [[ -z "$TARGET" ]] && TARGET=$(rustc -vV | sed -n 's/host: //p')
   unset RUSTC
   #CC_=$CC
   #unset CC
