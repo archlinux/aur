@@ -1,4 +1,4 @@
-pkgname=clash-verge-rev-autobuild-bin
+pkgname=clash-verge-rev-autobuild-latest-bin
 _pkgname=clash-verge-rev
 pkgver=2.4.3+autobuild.1015.ef9ccaf
 pkgrel=1

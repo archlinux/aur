@@ -1,4 +1,4 @@
-pkgbase = clash-verge-rev-autobuild-bin
+pkgbase = clash-verge-rev-autobuild-latest-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri (auto-updates from latest.json)
 	pkgver = 2.4.3+autobuild.1015.ef9ccaf
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = clash-verge-rev-autobuild-bin
 	source = latest.json::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/latest.json
 	sha512sums = SKIP
 
-pkgname = clash-verge-rev-autobuild-bin
+pkgname = clash-verge-rev-autobuild-latest-bin
