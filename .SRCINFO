@@ -1,7 +1,7 @@
 pkgbase = restic-browser-bin
 	pkgdesc = A GUI to browse and restore restic backup repositories.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emuell/restic-browser
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = restic-browser-bin
 	source = restic-browser-0.3.3.zip::https://github.com/emuell/restic-browser/releases/download/v0.3.3/Restic-Browser-v0.3.3-linux.zip
 	source = restic-browser.png::https://github.com/emuell/restic-browser/raw/refs/tags/v0.3.3/src-tauri/icons/icon.png
 	source = restic-browser.desktop
-	source = LICENSE::https://github.com/emuell/restic-browser/raw/refs/tags/v0.3.3/LICENSE
+	source = restic-browser-LICENSE::https://github.com/emuell/restic-browser/raw/refs/tags/v0.3.3/LICENSE
 	sha256sums = 7db8b5356c003cd97cfabeb6acf81c4d31be19caad5295976551661d1835a2b3
 	sha256sums = 3a9f06e4bc146fb3231d58b726dfdc0965809996411523b8edcb37289980b744
 	sha256sums = 74e63083d076cdd3f5de3917e5c242b40e61119fbc3aaac013607b63824a8f71
