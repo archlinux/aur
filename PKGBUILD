@@ -2,7 +2,7 @@
 # Contributor:  GasparVardanyan <gaspar_pm@proton.me>
 pkgname='awcc-bin'
 pkgrel=2
-pkgver=1.6.0
+pkgver=1.8.0
 pkgdesc="An unofficial alternative to Alienware Command Centre of Windows for the Dell G series"
 arch=('x86_64')
 url="https://github.com/tr1xem/AWCC"
@@ -12,7 +12,7 @@ provides=("awcc")
 conflicts=('awcc-git')
 install='awcc.install'
 source=("AWCC-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/AWCC-v${pkgver}.tar.gz")
-sha256sums=('3e14412a8c11aea32baf5299b0c8f69a80a4b38c5790dbc1aaa63804c626d759')
+sha256sums=('64b383e31e86e2b21e1678c8d6b0847c56ccdbc8ccdcf9c847255e3a02f18ade')
 
 package() {
     cd "$srcdir/"
