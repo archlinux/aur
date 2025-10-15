@@ -4,7 +4,7 @@
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
