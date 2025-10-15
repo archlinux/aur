@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=nextmeeting
-pkgver=1.5.5
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="An utility tool to show you next meeting with gcalcli"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/chmouel/nextmeeting"
 license=('Apache')
 depends=('python-dateutil' 'gcalcli')
 source=("https://github.com/chmouel/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('35c49c8ab5887d622691facef43e5ec791cb7ac3e576ad83a6d4f2c7b97e8c81')
+sha256sums=('c0dc02f24c7e395ab5bf0d9dd6a1879b813d740d062155e5d0cec9dee94ad86c')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 build() {
