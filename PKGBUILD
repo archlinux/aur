@@ -25,32 +25,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 # -----------------------------------------------------------------------------
-# Info:
+# INFO:
 #   TKG-Installer
-#   Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) from the Frogging-Family repositories.
-#   Interactive Fuzzy finder fzf menue mode.
-#   Quick direct command-line mode.
-#   Preview readme and configuration.
-#   Edit configuration files using your preferred editor.
-#   Optional download configuration files.
-# Details:
-#   This script handles installation, configuration for TKG/Frogminer packages.
+#   Easily build the TKG packages from the Frogging-Family repositories.
+# DESCRIPTION:
+#   This script handles building, installation and configuration for TKG/Frogminer packages.
 #   It uses color output and Unicode icons for better readability.
 #   Do not run as root. Use a dedicated user for security.
-#   See https://github.com/damachine/tkginstaller further details.
-# Usage:
-#   Interactive (Menu-mode)
+#   See https://github.com/damachine/tkginstaller for details.
+# USAGE:
+#   Interactive (Menu-mode) Run the script without arguments to enter the menu:
 #       run: tkginstaller
-#   Command-line (Direct-mode)
-#   Skip the menu and run specific actions directly:
-#   Examples:
+#   Command-line (Direct-mode) Skip the menu and run specific actions directly:
 #       run: tkginstaller linux          # Install Linux-TKG
-#       run: tkginstaller nvidia         # Install Nvidia-TKG
-#       run: tkginstaller mesa           # Install Mesa-TKG
-#       run: tkginstaller wine           # Install Wine-TKG
-#       run: tkginstaller proton         # Install Proton-TKG
 #       run: tkginstaller linux config   # Edit Linux-TKG config
-#       run: tkginstaller l c            # Edit Linux-TKG config (short)
 #   Show all available commands and shortcuts!
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
@@ -60,7 +48,7 @@ pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
 conflicts=('tkginstaller')
-pkgdesc="Manage the popular TKG packages (Kernel, Nvidia, Mesa, Wine, Proton) from the Frogging-Family repositories."
+pkgdesc="Easily build the TKG packages from the Frogging-Family repositories."
 arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
@@ -68,7 +56,7 @@ depends=('bat' 'curl' 'glow' 'fzf' 'git')
 optdepends=('nano: for editing config files'
             'onefetch: for git info display')
 source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
-sha256sums=('SKIP')
+sha256sums=('50d92fa19b0f5f64562cb54f7e15f9d3fb9198b3bd22208c28199435859f260e')
 
 package() {
     install -Dm755 "$srcdir/tkginstaller.sh" "$pkgdir/usr/bin/tkginstaller"
