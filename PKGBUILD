@@ -95,72 +95,6 @@ else
     'SKIP'
     'SKIP'
   )
-
-  _build_deps() {
-    local _cmake_options
-
-    echo "Building kddockwidgets..."
-    _cmake_options=(
-      -B "build_${_pkgsrc_kddockwidgets}"
-      -S "$_pkgsrc_kddockwidgets"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX='/usr'
-      -DBUILD_SHARED_LIBS=ON
-      -Wno-dev
-
-      -DKDDockWidgets_EXAMPLES=OFF
-      -DKDDockWidgets_FRONTENDS='qtwidgets;qtquick'
-      -DKDDockWidgets_NO_SPDLOG=ON
-      -DKDDockWidgets_QT6=ON
-      -DKDDockWidgets_X11EXTRAS=OFF
-    )
-
-    cmake "${_cmake_options[@]}"
-    cmake --build "build_${_pkgsrc_kddockwidgets}"
-    DESTDIR="deps" cmake --install "build_${_pkgsrc_kddockwidgets}"
-
-    echo "Building plutovg..."
-    _cmake_options=(
-      -B "build_${_pkgsrc_plutovg}"
-      -S "$_pkgsrc_plutovg"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX='/usr'
-      -DBUILD_SHARED_LIBS=ON
-      -Wno-dev
-    )
-
-    cmake "${_cmake_options[@]}"
-    cmake --build "build_${_pkgsrc_plutovg}"
-    DESTDIR="deps" cmake --install "build_${_pkgsrc_plutovg}"
-
-    echo "Building plutosvg..."
-
-    # allow newer plutovg
-    sed -E \
-      -e 's&(find_package\(plutovg).*$&\1 REQUIRED)&' \
-      -i "$_pkgsrc_plutosvg/CMakeLists.txt"
-
-    _cmake_options=(
-      -B "build_${_pkgsrc_plutosvg}"
-      -S "$_pkgsrc_plutosvg"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX='/usr'
-      -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
-      -DCMAKE_SKIP_RPATH=ON
-      -DBUILD_SHARED_LIBS=ON
-      -Wno-dev
-
-      -DPLUTOSVG_BUILD_EXAMPLES=ON
-      -DPLUTOSVG_ENABLE_FREETYPE=ON
-    )
-
-    cmake "${_cmake_options[@]}"
-    cmake --build "build_${_pkgsrc_plutosvg}"
-    DESTDIR="deps" cmake --install "build_${_pkgsrc_plutosvg}"
-  }
 fi
 
 prepare() {
@@ -192,24 +126,39 @@ build() (
   CXX=clang++
   LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' <<< "$LDFLAGS") -fuse-ld=lld"
 
-  local _cmake_options
-  if [[ "${_build_deps::1}" == t ]]; then
-    _build_deps
-  fi
-
-  echo "Building pcsx2..."
+  local _cmake_options _cmake_kddockwidgets _cmake_plutovg _cmake_plutosvg
   _cmake_options=(
-    -B build
-    -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
-    -DENABLE_TESTS=$CHECKFUNC
+    -DCMAKE_SKIP_RPATH=ON
     -Wno-dev
+  )
 
+  _cmake_kddockwidgets=(
+    -DBUILD_SHARED_LIBS=ON
+    -DKDDockWidgets_EXAMPLES=OFF
+    -DKDDockWidgets_FRONTENDS='qtwidgets;qtquick'
+    -DKDDockWidgets_NO_SPDLOG=ON
+    -DKDDockWidgets_QT6=ON
+    -DKDDockWidgets_X11EXTRAS=OFF
+  )
+
+  _cmake_plutovg=(
+    -DBUILD_SHARED_LIBS=ON
+  )
+
+  _cmake_plutosvg=(
+    -DBUILD_SHARED_LIBS=ON
+    -DPLUTOSVG_BUILD_EXAMPLES=ON
+    -DPLUTOSVG_ENABLE_FREETYPE=ON
+  )
+
+  _cmake_pcsx2=(
     -DDISABLE_ADVANCE_SIMD=ON # misnamed; enables multi-arch
     -DENABLE_SETCAP=OFF
+    -DENABLE_TESTS=$CHECKFUNC
     -DPACKAGE_MODE=ON
     -DUSE_ASAN=OFF
     -DUSE_BACKTRACE=OFF
@@ -218,10 +167,24 @@ build() (
     -DX11_API=ON
   )
 
-  echo "${_cmake_options[@]}"
+  local _deps i _source _options
+  if [[ "${_build_deps::1}" == t ]]; then
+    _deps=(
+      kddockwidgets
+      plutovg
+      plutosvg
+    )
+  fi
 
-  cmake "${_cmake_options[@]}"
-  cmake --build build
+  local _pkgsrc_pcsx2="$_pkgsrc"
+  for i in ${_deps[@]} pcsx2; do
+    printf "\nBuilding %s...\n" "$i"
+    _source="_pkgsrc_$i"
+    eval "_options=(\"\${_cmake_${i}[@]}\")"
+    cmake "${_cmake_options[@]}" "${_options[@]}" -B "build_${i}" -S "${!_source}"
+    cmake --build "build_${i}"
+    DESTDIR="deps" cmake --install "build_${i}"
+  done
 
   echo "Archiving game patches..."
   cd pcsx2_patches
@@ -229,7 +192,7 @@ build() (
 )
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build_pcsx2
   ln -sf pcsx2-qt "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 patches.zip -t "$pkgdir/usr/share/$_pkgname/resources/"
