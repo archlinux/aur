@@ -1,0 +1,5 @@
+["gman-bin"]
+source = "github"
+github = "Dark-Alex-17/gman"
+use_latest_release = true
+prefix = "v"
