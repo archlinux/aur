@@ -1,7 +1,7 @@
 
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
@@ -43,11 +43,11 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    '0f23d3f1d8af19014e596812671ed84bc9c77255d661b76edd8e523628d5da2d'
+    '59627d47f6beefdf82794f6cfa95ada774c96d5320ca5961452ddcc56bd612d9'
 )
 
 sha256sums_aarch64=(
-    '61d2a2808ec823816a4352905220ac303aa75af19f629f52b38720bd814a747d'
+    'dc14879431094e198e5c611bd5e50d27e7543430ad800f714cc302c4a721c42e'
 )
 
 package() {
