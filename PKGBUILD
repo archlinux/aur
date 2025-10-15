@@ -2,12 +2,13 @@
 # namcap: ignore deps
 pkgname=tofuref-bin
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="TUI for the OpenTofu provider registry (prebuilt pipx binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/djetelina/tofuref"
 license=('MIT')
-depends=('python' 'python-pipx')
+depends=('python')
+makedepends=('python-pipx')
 source=("tofuref-$pkgver.tar.gz::https://github.com/djetelina/tofuref/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('982af35a44bf104494eccc083a8caec992cbe23655d979352873dc26957488e9')
 
@@ -33,6 +34,6 @@ package() {
   find "$pkgdir/usr/lib/tofuref" -type f \( -name '*.log' -o -name 'direct_url.json' -o -name 'pipx_metadata.json' \) -delete
   find "$pkgdir/usr/lib/tofuref" -type d -empty -delete
   find "$pkgdir/usr/lib/tofuref" -name '*.pyc' -delete
-  find "$pkgdir/usr/lib/tofuref/venvs/tofuref/lib" -type d \( -name 'tests' -o -name '*.dist-info' \) -exec rm -rf {} +
+  find "$pkgdir/usr/lib/tofuref/venvs/tofuref/lib" -type d -name 'tests' -exec rm -rf {} +
 }
 

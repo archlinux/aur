@@ -1,14 +1,14 @@
 pkgbase = tofuref-bin
 	pkgdesc = TUI for the OpenTofu provider registry (prebuilt pipx binary)
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/djetelina/tofuref
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = MIT
+	makedepends = python-pipx
 	depends = python
-	depends = python-pipx
 	source = tofuref-1.6.0.tar.gz::https://github.com/djetelina/tofuref/archive/refs/tags/v1.6.0.tar.gz
 	sha256sums = 982af35a44bf104494eccc083a8caec992cbe23655d979352873dc26957488e9
 
