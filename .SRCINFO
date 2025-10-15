@@ -1,0 +1,12 @@
+pkgbase = tux-colored
+	pkgdesc = Colorful Tux penguin with configurable colors
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://example.com
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = tux.cpp
+	md5sums = SKIP
+
+pkgname = tux-colored
