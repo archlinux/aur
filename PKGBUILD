@@ -1,7 +1,7 @@
 # Maintainer: Michael Hupf <michihupf at protonmail dot com>
 _pkgname=cs-demo-manager
 pkgname=$_pkgname-appimage
-pkgver=3.16.0
+pkgver=3.16.1
 pkgrel=2
 pkgdesc="Companion application for Counter-Strike demos."
 arch=('any')
@@ -14,7 +14,7 @@ noextract=("$_appimage")
 source=("$_appimage::https://github.com/akiver/$_pkgname/releases/download/v$pkgver/$_appimage"
     "AKIVER_LICENSE::https://raw.githubusercontent.com/akiver/$_pkgname/refs/tags/v$pkgver/LICENSE"
     )
-sha256sums=('af88017bcca941f85e260c7e79b7cb1d9ffdda0c48a7bd10956c26a9052e96bc'
+sha256sums=('60c968db4874b428ab80aa32079c195188ff82e6aa49a053faa97b28a025f185'
             '13c63653c5aab89a5515ebb31b6c1dd518006cf7bd8d30e157007ab04aee1f93')
 
 prepare() {
