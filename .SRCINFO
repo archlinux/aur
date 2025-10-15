@@ -1,24 +1,24 @@
 pkgbase = pocket-casts-desktop-bin
 	pkgdesc = The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.10.5
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/felicianotech/pocket-casts-desktop-app
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron36
-	provides = pocket-casts=0.10.5
+	provides = pocket-casts=0.11.0
 	conflicts = pocket-casts-desktop
 	conflicts = pocket-casts
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-0.10.5::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/v0.10.5/LICENSE
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/v0.11.0/LICENSE
 	source = pocket-casts-desktop.sh
 	sha256sums = 5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = pocket-casts-desktop-0.10.5-aarch64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.10.5/pocket-casts-0.10.5-1.arm64.rpm
-	sha256sums_aarch64 = 85395fba92a7492b7044b4ab0015dcb16d95f4050dc8074ab138a9b81594e98d
-	source_x86_64 = pocket-casts-desktop-0.10.5-x86_64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.10.5/pocket-casts-0.10.5-1.x86_64.rpm
-	sha256sums_x86_64 = 2bbd38693689b3f6d246c9042cbe5408d6078ce4dab339b542104ee3cd567ddf
+	source_aarch64 = pocket-casts-desktop-0.11.0-aarch64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.11.0/pocket-casts-0.11.0-1.arm64.rpm
+	sha256sums_aarch64 = c2df39d90ca9aaa5d284c78ebee1d881dd9966109bebf6411610485e94797f52
+	source_x86_64 = pocket-casts-desktop-0.11.0-x86_64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.11.0/pocket-casts-0.11.0-1.x86_64.rpm
+	sha256sums_x86_64 = 2f14de1ba0c23d7de7b29a1622d47e7c739e9601623451866901e3f409dbb7a4
 
 pkgname = pocket-casts-desktop-bin
