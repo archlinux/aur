@@ -1,3 +1,0 @@
-#!/bin/bash
-export PYTHONPATH=/usr/lib/VOICEVOX/vv-engine LD_LIBRARY_PATH=/usr/lib/VOICEVOX/vv-engine
-exec /usr/bin/@ELECTRON@ --app=/usr/lib/VOICEVOX/resources/app.asar "$@"
