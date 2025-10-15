@@ -1,0 +1,5 @@
+[docker-language-server-bin]
+source = "github"
+github = "docker/docker-language-server"
+use_latest_release = true
+prefix = "v"
