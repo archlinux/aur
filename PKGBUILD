@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=1.0p5de
+pkgver=1.0p7b
 pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
@@ -60,7 +60,7 @@ conflicts=(${pkgname%-bin})
 options=(!debug)
 source=("${pkgname%-desktop-bin}-$pkgver.tar.gz::$url/files/${pkgname/-desktop/}-release.tar.gz/download")
 noextract=("${pkgname%-desktop-bin}-$pkgver.tar.gz")
-b2sums=('84fe5d47271513f4e32e91cdd094be44e49c4dba51c8e5ae0d732012c084e52c63adc0f2ba056bd2fc6aaf758e76a15193b531692c5ca91b20c347b11e51aedb')
+b2sums=('1a9ef146446e35029a250ee4a1a30dd02e73312239b2c45f299a6065961a79aab04721e639f17397c02cd9387439b2c2edfc3c9f6a4b556a6fb9351e7745c074')
 
 package() {
   install -vd "$pkgdir"/opt/${pkgname%-desktop-bin}
