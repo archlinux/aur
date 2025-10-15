@@ -4,8 +4,8 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.9
-pkgrel=2
+pkgver=2025.10
+pkgrel=1
 _nodeversion=22
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -26,17 +26,17 @@ makedepends=(
   'libxcrypt-compat'
   'nvm'
   'protobuf'
-  'typescript'
+#  'typescript'  ## build fails with current version
 )
 optdepends=('libappindicator-gtk3: tray icon')
 install="$pkgname.install"
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
         "git+https://github.com/mullvad/wireguard-go.git"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('ec596f1f2db0c86f91a69231a45475a50a30a92781b20b561ffef44b4101f857'
+sha256sums=('0547240027f8b53b0c63739b5356691e412140681df4bee578cbe7377e138995'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -87,6 +87,7 @@ prepare() {
   nvm install "${_nodeversion}"
 
   echo "Installing JavaScript dependencies..."
+  npm install --install-strategy=shallow typescript@5.6.3
   npm ci --no-audit --no-fund
   popd
 }
