@@ -1,7 +1,7 @@
 pkgbase = qfinderpro-bin
 	pkgdesc = Quickly find and easily access all of the QNAP NAS on the same LAN.
 	pkgver = 7.12.3.0521
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.qnap.com/en/utilities/essentials
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = qfinderpro-bin
 	depends = libxau
 	depends = libxcb
 	depends = libxdmcp
-	depends = openssl
+	depends = openssl-1.1
 	depends = pcre2
 	depends = qt5-base
 	depends = qt5-svg
