@@ -1,7 +1,7 @@
 # Maintainer: Kharec <sandro@cazzaniga.fr>
 pkgname=docker-language-server
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.1
+pkgrel=1
 pkgdesc="Language server for Dockerfiles, Compose and Bake files"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/docker/docker-language-server"
@@ -9,7 +9,7 @@ license=('Apache')
 depends=()
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a5a881baebc3486bb0d39953a2538a6162470319c4e21448bac1176c72b9ce90')
+sha256sums=('df94194ce63f0a1217944c72b941a842101aee7b7dd16018d71818d070d146a8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,10 +32,10 @@ package() {
   install -Dm755 build/docker-language-server "${pkgdir}/usr/bin/docker-language-server"
   ln -s docker-language-server "${pkgdir}/usr/bin/docker-langserver"
   install -d "${pkgdir}/usr/share/bash-completion/completions" \
-             "${pkgdir}/usr/share/zsh/site-functions" \
-             "${pkgdir}/usr/share/fish/vendor_completions.d"
-  ./build/docker-language-server completion bash > "${pkgdir}/usr/share/bash-completion/completions/docker-language-server"
-  ./build/docker-language-server completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_docker-language-server"
-  ./build/docker-language-server completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/docker-language-server.fish"
+    "${pkgdir}/usr/share/zsh/site-functions" \
+    "${pkgdir}/usr/share/fish/vendor_completions.d"
+  ./build/docker-language-server completion bash >"${pkgdir}/usr/share/bash-completion/completions/docker-language-server"
+  ./build/docker-language-server completion zsh >"${pkgdir}/usr/share/zsh/site-functions/_docker-language-server"
+  ./build/docker-language-server completion fish >"${pkgdir}/usr/share/fish/vendor_completions.d/docker-language-server.fish"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
