@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 6.17.0 Kernel Configuration
+# Linux/um 6.17.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 15.2.1 20250813"
 CONFIG_CC_IS_GCC=y
@@ -1404,7 +1404,6 @@ CONFIG_PROC_MEM_ALWAYS_FORCE=y
 # CONFIG_SECURITYFS is not set
 # CONFIG_STATIC_USERMODEHELPER is not set
 CONFIG_DEFAULT_SECURITY_DAC=y
-CONFIG_LSM="yama,loadpin,safesetid,integrity"
 
 #
 # Kernel hardening options
