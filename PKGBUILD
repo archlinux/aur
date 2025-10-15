@@ -3,7 +3,7 @@
 
 pkgname=winboat
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -44,7 +44,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  npm ci
+  npm install
   npm run build:linux-gs
 
   # Clean module cache for makepkg -C
