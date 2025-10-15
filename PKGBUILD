@@ -1,7 +1,7 @@
 # Maintainer: Qiu Wenbo <crab2313 at gmail dot com>
 
 pkgname=switch-tools
-pkgver=1.12.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Helper tools for Switch homebrew development"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/switchbrew/switch-tools"
 license=('custom:ISC')
 
 source=("https://github.com/switchbrew/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('460b19fb3f597db584cefc3be0c08ebf61d26c3e342eea0b61da727e67ad60d6')
+sha256sums=('858d5c286309ca7add47ded473779e6c9a00b24febf83516df86c44d8b744eb2')
 
 build() {
   cd "$pkgname-$pkgver"
