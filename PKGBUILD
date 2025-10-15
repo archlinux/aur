@@ -10,7 +10,7 @@ depends=('qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'java-runtime' 'z
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'java-environment>=8')
 provides=('prismlauncher-offline')
 conflicts=('prismlauncher')
-source=("prismlauncher-cracked::git+https://github.com/Diegiwg/PrismLauncher-Cracked.git#tag=v${pkgver}"
+source=("prismlauncher-cracked::git+https://github.com/Diegiwg/PrismLauncher-Cracked.git"
         "libnbtplusplus::git+https://github.com/PrismLauncher/libnbtplusplus.git"
         "filesystem::git+https://github.com/gulrak/filesystem.git")
 sha256sums=('SKIP'
