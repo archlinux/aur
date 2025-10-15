@@ -2,14 +2,14 @@
 
 _pkgname=it-tools
 pkgname="${_pkgname}-web"
-pkgver=2025.8.31_13b8f041
+pkgver=2025.10.12
 pkgrel=1
 pkgdesc='Collection of handy online tools for developers, with great UX'
 arch=('any')
 url="https://github.com/sharevb/${_pkgname}"
 license=('GPL-3.0-only')
-source=("${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.zip")
-b2sums=('a01e6e189fb608f22a3fbc1d4b00c439eb93b6520de5baf909d855ccfe70d83420ebd6c761740e99bad968ebc093c193dd063264938c6048377f1a5dee94b9a6')
+source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.zip")
+b2sums=('2cad411476ea4ee730bb4513877b4e2031708d956700d4aa6cb3e48a463d61ad2ed180b985d7f10c32cb5e73f3174dd1ba1b9a6e6ca65122325f901d5e459f7c')
 
 package() {
   local _dest_dir="/usr/share/webapps/${_pkgname}"
