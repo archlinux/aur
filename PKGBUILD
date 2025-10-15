@@ -2,7 +2,7 @@
 
 pkgname=kazumi-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 arch=('x86_64')
