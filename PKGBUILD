@@ -2,9 +2,9 @@
 
 pkgname=kwin-x11-lite
 _pkgname=kwin-x11
-pkgver=6.4.5.1
+pkgver=6.4.5.2
 _pkgver=6.4.5
-pkgrel=2
+pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
 url='https://github.com/KDE-Lite/kwin-x11-lite'
@@ -75,7 +75,7 @@ conflicts=($_pkgname $_pkgname-improved)
 source=("git+${url}.git#tag=${pkgver}")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('adeeee56cf227bc2429e1f429bd8b434200c217ce2ca729fcd2435425ecd184b')
+sha256sums=('92f40f7509b63d1f3c011cf93c1fcc4eef597c7518e3cee1cf6288c3d928f300')
 
 build() {
   cmake -B build -S $pkgname \
