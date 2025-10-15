@@ -2,16 +2,16 @@
 # Modified from poi's PKGBUILD
 # Contributor: Jianfeng Zhang <swordfeng123@gmail.com>
 _pkgname=poi
-_electron=electron36
+_electron=electron38
 pkgname=${_pkgname}_arch_electron
-pkgver=11.0.0.beta.9.0.6999595
+pkgver=11.0.0.beta.9.4.gc76ca9ee
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool, using the system provided electron"
 arch=('any')
 url="https://github.com/poooi/poi/"
 license=('MIT')
 depends=("${_electron}" 'nodejs' 'nss' 'libxss' 'gtk3')
-makedepends=('git' 'nodejs' 'imagemagick' 'zlib' 'unzip' 'gulp' 'npm' 'python2' 'jq')
+makedepends=('git' 'nodejs' 'imagemagick' 'zlib' 'unzip' 'gulp' 'npm' 'jq')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/poooi/poi.git"
