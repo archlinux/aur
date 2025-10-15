@@ -1,0 +1,29 @@
+pkgbase = aquaria-ose-git
+	pkgdesc = A 2D fantasy underwater action-adventure game (Open Source Edition engine = v1.1.3 + many improvements)
+	pkgver = 1.1.3+o1.002+g620.5f51dc4
+	pkgrel = 2
+	url = https://github.com/AquariaOSE/Aquaria
+	install = aquaria-ose.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = sdl2
+	depends = openal
+	depends = gcc-libs
+	optdepends = aquaria-data-hib: Game data from the Humble Bundle release
+	conflicts = aquaria-hib-git
+	conflicts = aquaria-hib-hg
+	conflicts = aquaria
+	conflicts = aquaria-hib
+	conflicts = aquaria-git
+	conflicts = aquaria-ose
+	replaces = aquaria-git
+	replaces = aquaria-hib-git
+	replaces = aquaria-hib-hg
+	source = git+https://github.com/AquariaOSE/Aquaria
+	source = aquaria-ose.desktop
+	sha256sums = SKIP
+	sha256sums = 24ceb467f957fa045c5f824d6b9137a9f1bc7920b3dd3b96ae044a70556100a8
+
+pkgname = aquaria-ose-git
