@@ -4,7 +4,7 @@ _org='coal-library'
 _pkgname='coal'
 pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Detection Library, previously known as hpp-fcl"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
@@ -33,6 +33,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DINSTALL_DOCUMENTATION=ON \
         -DBUILD_DOCUMENTATION=ON \
+        -DEigen3_ROOT=/opt/eigen3 \
         -Wno-dev
     cmake --build "build-$pkgver"
 }
