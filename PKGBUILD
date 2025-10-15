@@ -9,9 +9,9 @@ options=('!lto')
 pkgdesc='A static site generator for video publishing'
 pkgname=hyper8-cli
 pkgrel=1
-pkgver=0.24.0
+pkgver=1.0.0
 provides=('hyper8')
-sha256sums=('88af4055f15ca9a19739e00c3e7ddd35e2dd9f916236089fea1d58b136212ed8')
+sha256sums=('6786c2b4bad6b5f70d6859a55a17e47905209cebc780dd78e4bd25615988f450')
 url='https://simonrepp.com/hyper8'
 
 source=("hyper8-${pkgver}.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/${pkgver}.tar.gz")
