@@ -1,6 +1,6 @@
 pkgbase = ringer-client-desktop
 	pkgdesc = A new cross platform messaging app.(Use system-wide electron)
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://lifplatforms.com/ringer.html
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = ringer-client-desktop
 	conflicts = ringer-client-desktop
 	options = !strip
 	options = !emptydirs
-	source = ringer-client-desktop-5.2.0::git+https://github.com/Lif-Platforms/Ringer-Client-Desktop#tag=5.2.0
+	source = ringer-client-desktop-5.2.1::git+https://github.com/Lif-Platforms/Ringer-Client-Desktop#tag=5.2.1
 	source = ringer-client-desktop.desktop
 	source = ringer-client-desktop.sh
-	sha256sums = 0cb41995cf13b91214d739f05392be26e2810c4f5d395767c8e754b3ca2d3cd8
+	sha256sums = a156c5bf387f967f85c71750b9a3f4b687130035b0485b678133d45b50fc5d15
 	sha256sums = 5ae75de25c7204dba7bfbbbe3c9f58cf6f565963359735a471e1f61ee8692181
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = ringer-client-desktop
