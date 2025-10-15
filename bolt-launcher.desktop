@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: 0BSD
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Bolt
+GenericName=Bolt Launcher
+Comment=Third-party Jagex launcher
+Keywords=games;
+Exec=bolt-launcher %U
+Icon=bolt-launcher
+Categories=Game;
+StartupWMClass=BoltLauncher
