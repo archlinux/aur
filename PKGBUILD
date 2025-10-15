@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.89.0
+pkgver=1.89.1
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database.Written in Go.(Prebuilt version)"
 arch=(
@@ -19,8 +19,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.rpm")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('f1393e76effc85e2955149ffb5b194aa00948689378dc4ed848a374210dc5f80')
-sha256sums_x86_64=('f5592338a70b487097722c58335b2f7bae9dc744b3897d021a7c28706cb9459f')
+sha256sums_aarch64=('6d7ab1a76dc1c2ae9a5f84eb30545dcd5f14cd627de4004e7b255d1630f9b5f2')
+sha256sums_x86_64=('0060bdba2258bfed2bdf0d559088d7e6a66b832d7d2b8e4aca45fe30aa6e072b')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
