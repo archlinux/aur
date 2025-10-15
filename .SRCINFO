@@ -1,0 +1,23 @@
+pkgbase = savvy-cli-bin
+	pkgdesc = Automatically capture and surface your team's tribal knowledge
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/getsavvyinc/savvy-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = savvy
+	conflicts = savvy-cli
+	source = LICENSE-0.23.0::https://raw.githubusercontent.com/getsavvyinc/savvy-cli/0.23.0/LICENSE
+	source = README-0.23.0.md::https://raw.githubusercontent.com/getsavvyinc/savvy-cli/0.23.0/README.md
+	sha256sums = d2ecd5c1cdeff135927e7cc0d307796ee294518a000dc993636cdf629a9c47e5
+	sha256sums = e402f17bda18b4dae93f31d46d8ced78b686a7c68930284683ed65bbdf8a8ee0
+	source_x86_64 = savvy-cli-x86_64-0.23.0::https://github.com/getsavvyinc/savvy-cli/releases/download/0.23.0/savvy_linux_x86_64
+	sha256sums_x86_64 = 1659a697c46caeb7213e034c1df2f9b9fcda601bfa03e54f713a195dc0f2b287
+	source_i686 = savvy-cli-i686-0.23.0::https://github.com/getsavvyinc/savvy-cli/releases/download/0.23.0/savvy_linux_i386
+	sha256sums_i686 = 4d6b356c83c3c3fe78a450f7fbc3d2e401fefd3f0825c8a6e349b94b88aadc8e
+	source_aarch64 = savvy-cli-aarch64-0.23.0::https://github.com/getsavvyinc/savvy-cli/releases/download/0.23.0/savvy_linux_arm64
+	sha256sums_aarch64 = 05794617c76c4690e72cd2c771d068fc17c453d102f378fc5570bdb98469a49e
+
+pkgname = savvy-cli-bin

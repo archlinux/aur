@@ -1,0 +1,5 @@
+[savvy-cli-bin]
+source = "github"
+github = "getsavvyinc/savvy-cli"
+use_latest_release = true
+prefix = "v"
