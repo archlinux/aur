@@ -1,0 +1,13 @@
+diff --git a/gdk-pixbuf/io-bmp.c b/gdk-pixbuf/io-bmp.c
+index 0eca48ed280773f8d1b9fce52a7430276f14d81e..f1b68a596445a0d1bf4ead61547cf5afeb4d0133 100644
+--- a/gdk-pixbuf/io-bmp.c
++++ b/gdk-pixbuf/io-bmp.c
+@@ -129,7 +129,7 @@ static void DumpBIH(unsigned char *BIH)
+ struct headerpair {
+ 	guint32 size;
+ 	guint32 width;
+-	guint32 height;
++	gint32 height;
+ 	guint depth;
+ 	guint Negative;		/* Negative = 1 -> top down BMP,
+ 				   Negative = 0 -> bottom up BMP */
