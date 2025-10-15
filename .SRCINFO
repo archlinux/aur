@@ -1,16 +1,13 @@
 pkgbase = python-inotify
 	pkgdesc = Access inotify events via python (this is not related to python-pynotify)
-	pkgver = 0.2.10
-	pkgrel = 4
-	url = https://pypi.org/project/inotify/0.2.10/
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://pypi.org/project/inotify/0.2.12/
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/inotify/inotify-0.2.10.tar.gz
-	source = inotify-0.2.10.tar.gz.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha256sums = 974a623a338482b62e16d4eb705fb863ed33ec178680fc3e96ccdf0df6c02a07
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/i/inotify/inotify-0.2.12.tar.gz
+	sha256sums = 9aee407f92c7d51a2ce50f3b78291a9094e334e34bd68e82bf60020795fa2c94
 
 pkgname = python-inotify
