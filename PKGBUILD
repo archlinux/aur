@@ -6,7 +6,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=143.0.4
+pkgver=144.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Static binaries from upstream"
 arch=('x86_64' 'i686')
@@ -33,9 +33,9 @@ source=($_pkgname.sh
 sha256sums=('9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef'
             '1c432537a46ffe64b3069bc2c2e7e069797223607b181e77492e74b38e90c730')
-sha256sums_x86_64=('2cb91bd5c8755a83d65e4ef46a2ce99cfcc0b94e04673669e5e5384320384339'
+sha256sums_x86_64=('c66a48222ff67d51560240d321895c6926c9b3af345cbf688ced8517781d88d1'
                    'SKIP')
-sha256sums_i686=('87ae36478b35b8bed26ae11d8747a316a3f8a89681b4b42c05b7159d076c67cc'
+sha256sums_i686=('46ffbaf8ab3b68ae7ef3feaffe2339782ecbbd521d08adce61e712cf63589563'
                  'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
