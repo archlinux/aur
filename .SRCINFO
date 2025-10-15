@@ -1,7 +1,7 @@
 pkgbase = ruyi
 	pkgdesc = RuyiSDK Package Manager
 	pkgver = 0.41.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruyisdk/ruyi
 	arch = any
 	license = Apache-2.0
@@ -23,7 +23,6 @@ pkgbase = ruyi
 	depends = python-tomlkit
 	depends = python-typing_extensions
 	depends = python-yaml
-	depends = sh
 	optdepends = android-tools: fastboot support
 	optdepends = bash: ruyi use bash as default shell
 	optdepends = bzip2: bzip file support
@@ -39,7 +38,9 @@ pkgbase = ruyi
 	provides = python-ruyi
 	source = ruyi-0.41.0.tar.gz::https://github.com/ruyisdk/ruyi/archive/refs/tags/0.41.0.tar.gz
 	source = config.toml
+	source = ruyi-completion
 	sha512sums = a3044fae1f3533bcd5524040d2d022a6f782fa8136c2f99153c30cb38920a328c9340c1b4b24f271b6ff863bb40dcdfc9879da6a33ededaa81bec6ff1d3a115a
 	sha512sums = 03b9a18c495c37203e5c56518e1ab94118b3bf99e83c99924f3eeca7be64ac3b03d744c105ac99ab703c40e570195a7ed39785e5beef5f619bdf868bd6add6f6
+	sha512sums = 8fb7bdd45b70ee740fcf279037a62463e13da589221bb52793a074e4063bf8b7d306fef0879980a1be893d76a0536c4ab6b124aec576b96372a8898f5307d609
 
 pkgname = ruyi

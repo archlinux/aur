@@ -2,7 +2,7 @@
 
 pkgname=ruyi
 pkgver=0.41.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RuyiSDK Package Manager"
 arch=(any)
 url="https://github.com/ruyisdk/ruyi"
@@ -74,5 +74,5 @@ package() {
   install -Dm644 LICENSE*.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 ../config.toml -t "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm644 ../ruyi-completion -t "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 ../ruyi-completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
