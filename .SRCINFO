@@ -1,7 +1,7 @@
 pkgbase = blocky-bin
 	pkgdesc = Fast and lightweight DNS proxy as ad-blocker
 	pkgver = 0.27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/0xERR0R/blocky
 	arch = x86_64
 	arch = aarch64
