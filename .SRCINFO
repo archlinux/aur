@@ -1,0 +1,27 @@
+pkgbase = darkly-qt5-git
+	pkgdesc = Modern style for KF5/Qt5 applications (fork of Lightly)
+	pkgver = 0.5.23.r0.gc1446a0
+	pkgrel = 2
+	url = https://github.com/Bali10050/Darkly
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	depends = frameworkintegration5
+	depends = kcmutils5
+	depends = kconfigwidgets5
+	depends = kiconthemes5
+	depends = kirigami2
+	depends = kwindowsystem5
+	optdepends = darkly-qt6: KF6/Qt6 support
+	provides = darkly-qt5
+	conflicts = darkly
+	conflicts = darkly-qt5
+	options = !emptydirs
+	source = darkly::git+https://github.com/Bali10050/Darkly.git
+	sha256sums = SKIP
+
+pkgname = darkly-qt5-git
