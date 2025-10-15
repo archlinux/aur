@@ -1,0 +1,13 @@
+pkgbase = rei
+	pkgdesc = rei
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/kizenreidowa/rei
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = cmake
+	provides = rei
+	source = https://github.com/kizenreidowa/rei/archive/refs/tags/0.0.0.tar.gz
+	sha512sums = aa461da87dde6a7c077bea460c9a2122d4f8ff6476f521a5d703e29dbed83548412af3df3ce32a52a6eabde8a2c7d00d5f361c9f8dcbaf9bfe697b1987a749f0
+
+pkgname = rei
