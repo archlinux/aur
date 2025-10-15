@@ -1,11 +1,12 @@
-# Maintainer: Filipp Andjelo <filipp dot andjelo at gmail.com>
+# Maintainer: derivativeoflog7 <derivativeoflog7+aur at outlook dot com>
+# Contributor: Filipp Andjelo <filipp dot andjelo at gmail.com>
 
 pkgname=elgato-gchd-git
-pkgver=r147.e5bc6b9
-pkgrel=2
+pkgver=r148.463e19f
+pkgrel=1
 pkgdesc="Elgato Game Capture HD Driver"
 arch=('i686' 'x86_64')
-url="https://github.com/tolga9009/elgato-gchd"
+url="https://github.com/Sir-Boops/elgato-gchd"
 license=('MIT')
 depends=('libusb')
 makedepends=('git' 'cmake' 'p7zip')
@@ -13,11 +14,11 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
     "git+${url}.git" 
-    "https://edge.elgato.com/egc/windows/egcw/3.70/final/GameCaptureSetup_3.70.43.3043_x64.msi"
+    "https://edge.elgato.com/egc/windows/egcw/3.70/final/GameCaptureSetup_3.70.56.3056_x64.msi"
 )
 sha256sums=(
     'SKIP'
-    '8f4a81e0e4cc794eaf1c9e33c2c8ade8b345de1e524369fc7e31d8dff3f83d5e'
+    '403b03518ac5170e52238fdbc5ce757b9901b16e123101ec5db2c46d640ae949'
 )
 
 pkgver() {
@@ -27,7 +28,7 @@ pkgver() {
 
 prepare() {
     mkdir -p "${srcdir}/firmware"
-    7z e -aoa -o"${srcdir}" GameCaptureSetup_3.70.43.3043_x64.msi x86_yPushFile3.dll
+    7z e -aoa -o"${srcdir}" GameCaptureSetup_3.70.56.3056_x64.msi x86_yPushFile3.dll
     7z e -aoa -o"${srcdir}/firmware" -r "${srcdir}/x86_yPushFile3.dll" \
         MB86H57_H58_IDLE \
         MB86H57_H58_ENC_H \
@@ -39,7 +40,8 @@ build() {
     cmake -B "${srcdir}/build" \
           -S "$srcdir/${pkgname%-git}" \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX="/usr"
+          -DCMAKE_INSTALL_PREFIX="/usr" \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake --build "${srcdir}/build"
 }
 

@@ -1,8 +1,8 @@
 pkgbase = elgato-gchd-git
 	pkgdesc = Elgato Game Capture HD Driver
-	pkgver = r147.e5bc6b9
-	pkgrel = 2
-	url = https://github.com/tolga9009/elgato-gchd
+	pkgver = r148.463e19f
+	pkgrel = 1
+	url = https://github.com/Sir-Boops/elgato-gchd
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -12,10 +12,9 @@ pkgbase = elgato-gchd-git
 	depends = libusb
 	provides = elgato-gchd
 	conflicts = elgato-gchd
-	source = git+https://github.com/tolga9009/elgato-gchd.git
-	source = https://edge.elgato.com/egc/windows/egcw/3.70/final/GameCaptureSetup_3.70.43.3043_x64.msi
+	source = git+https://github.com/Sir-Boops/elgato-gchd.git
+	source = https://edge.elgato.com/egc/windows/egcw/3.70/final/GameCaptureSetup_3.70.56.3056_x64.msi
 	sha256sums = SKIP
-	sha256sums = 8f4a81e0e4cc794eaf1c9e33c2c8ade8b345de1e524369fc7e31d8dff3f83d5e
+	sha256sums = 403b03518ac5170e52238fdbc5ce757b9901b16e123101ec5db2c46d640ae949
 
 pkgname = elgato-gchd-git
-
