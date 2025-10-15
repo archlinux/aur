@@ -99,11 +99,11 @@ build() (
   export BUILD_VERSION="${pkgver}"
   export COMMIT="$(git -C "$_pkgsrc" rev-parse HEAD)"
 
-  export CC="gcc${_cuda_gcc_version:+-_cuda_gcc_version}"
-  export CXX="g++${_cuda_gcc_version:+-_cuda_gcc_version}"
+  export CC="gcc${_cuda_gcc_version:+-$_cuda_gcc_version}"
+  export CXX="g++${_cuda_gcc_version:+-$_cuda_gcc_version}"
 
   export CUDA_PATH=/opt/cuda
-  export NVCC_CCBIN="/usr/bin/g++${_cuda_gcc_version:+-_cuda_gcc_version}"
+  export NVCC_CCBIN="/usr/bin/g++${_cuda_gcc_version:+-$_cuda_gcc_version}"
 
   local _cmake_options=(
     -B build
