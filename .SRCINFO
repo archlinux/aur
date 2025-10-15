@@ -1,7 +1,7 @@
 pkgbase = foxit-pdf-editor
 	pkgdesc = Foxit PDF Editor
 	pkgver = 12.3.3.0409
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/
 	arch = x86_64
 	license = custom
@@ -12,6 +12,8 @@ pkgbase = foxit-pdf-editor
 	depends = libxml2-legacy
 	options = !strip
 	source = foxit-pdf-editor
-	sha256sums = a967191e986549591dc4dde4ee34023e06bd1b1dec47ccac109ab215a7fd7685
+	source = foxit-linux-login.js
+	sha256sums = c04f8252a7bccaca174da9afb27d7622029f4dc192ff264520833a8eccff05c5
+	sha256sums = 1abc0c476d9a4f5e71f84085f95544a3d1550c681350533c52803c6c0d161565
 
 pkgname = foxit-pdf-editor

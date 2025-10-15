@@ -2,7 +2,7 @@
 
 pkgname=foxit-pdf-editor
 pkgver=12.3.3.0409
-pkgrel=1
+pkgrel=2
 pkgdesc="Foxit PDF Editor"
 arch=('x86_64')
 url="https://developer.android.com/"
@@ -11,8 +11,10 @@ makedepends=('patchelf')
 depends=('icu66-bin' 'libvpx1.10' 'libwebp' 'libxml2-legacy' )
 options=('!strip')
 DLAGENTS=("https::")
-source=('foxit-pdf-editor')
-sha256sums=('a967191e986549591dc4dde4ee34023e06bd1b1dec47ccac109ab215a7fd7685')
+source=('foxit-pdf-editor'
+        'foxit-linux-login.js')
+sha256sums=('c04f8252a7bccaca174da9afb27d7622029f4dc192ff264520833a8eccff05c5'
+            '1abc0c476d9a4f5e71f84085f95544a3d1550c681350533c52803c6c0d161565')
 
 _get_auth_url() {
     # bash rewrite of the js function from https://cn.fuxinsoft.cn/pdf-editor-linux/
@@ -45,6 +47,7 @@ package() {
 
   # use custom launcher script
   install -Dm755 "${srcdir}/foxit-pdf-editor" -t "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/foxit-linux-login.js" -t "${pkgdir}/usr/bin/"
   # update desktop files
   sed -i "s|Exec=/opt/apps/com.foxit.foxitpdfeditor/files/FoxitPDFEditor.sh|Exec=foxit-pdf-editor|g" "${pkgdir}/usr/share/applications/com.foxit.foxitpdfeditor.desktop"
   cp --update=all "${pkgdir}/usr/share/applications/com.foxit.foxitpdfeditor.desktop" "${pkgdir}/opt/apps/com.foxit.foxitpdfeditor/entries/applications/com.foxit.foxitpdfeditor.desktop"

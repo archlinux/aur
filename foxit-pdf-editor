@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
+export SELFPATH="/opt/apps/com.foxit.foxitpdfeditor/files/"
+
 # force QT to run in X11 mode
 export QT_QPA_PLATFORM=xcb
 
-# reset trial period
-/opt/apps/com.foxit.foxitpdfeditor/files/countinstalltion
+# disable dark mode
+export XDG_CURRENT_DESKTOP=GNOME
 
-/opt/apps/com.foxit.foxitpdfeditor/files/"Foxit PDF Editor" "$@"
+# set library path
+export QT_QPA_PLATFORM_PLUGIN_PATH="$SELFPATH/plugins"
+export QT_PLUGIN_PATH="$SELFPATH/plugins"
+export LD_LIBRARY_PATH=$SELFPATH/lib:$SELFPATH/rmssdk:$SELFPATH/plugins:$LD_LIBRARY_PATH
+
+"$SELFPATH/Foxit PDF Editor" "$@"
