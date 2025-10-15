@@ -1,0 +1,19 @@
+pkgbase = update-alternatives-git
+	pkgdesc = A simple update-alternatives replacement written in Rust
+	pkgver = r46.1f33af6
+	pkgrel = 1
+	url = https://github.com/fthomys/update-alternatives
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = update-alternatives
+	conflicts = update-alternatives
+	options = !debug
+	source = git+https://github.com/fthomys/update-alternatives.git
+	sha256sums = SKIP
+
+pkgname = update-alternatives-git
