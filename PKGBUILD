@@ -2,7 +2,7 @@
 # Contributor: Josh King <josh@throneless.tech>
 
 pkgname="rke2-bin"
-pkgver="1.32.1+rke2r1"
+pkgver="1.32.2+rke2r1"
 pkgrel="1"
 pkgdesc="Rancher's next-generation Kubernetes distribution"
 url="https://rke2.io"
@@ -14,7 +14,7 @@ conflicts=("rke2")
 source=(
     "${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/rancher/rke2/releases/download/v${pkgver}/rke2.linux-amd64.tar.gz"
 )
-b2sums=('8ec3945a0431fa76affd64966424e876e971cce039078a1c7f9b258dc1b113c64974de6a72cb109cef25133687665ba0c68345fdf2f3052416e5707bf7df30b0')
+b2sums=('cfb969327a5cb4f6b6f728139c2a18671c9cd192400a6f3a18d8652211d5325c9de1c8f566b3f65f12c6f3672458644a51c7496138d580bdc3382bd5b310cabd')
 
 prepare() {
     sed -i -e 's/\/usr\/local/\/usr/g' -e 's/\/sbin/\/usr\/bin/g' $srcdir/lib/systemd/system/rke2-agent.service
