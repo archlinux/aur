@@ -1,6 +1,6 @@
 pkgbase = yson-tools
 	pkgdesc = A set of tools for working with YSON format
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/lesf0/yson-tools
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = yson-tools
 	makedepends = git
 	makedepends = go
 	depends = jq
+	depends = python-jsondiff
 	provides = yson-tools
 	conflicts = yson-tools-git
-	source = git+https://github.com/lesf0/yson-tools.git#tag=v0.3.1
+	source = git+https://github.com/lesf0/yson-tools.git#tag=v0.3.3
 	sha256sums = SKIP
 
 pkgname = yson-tools
