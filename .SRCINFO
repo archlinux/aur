@@ -1,0 +1,27 @@
+pkgbase = fcp-support-git
+	pkgdesc = Focusrite Control Protocol user-space driver for Scarlett 4th Gen big models (16i16, 18i16, 18i20)
+	pkgver = r21.edae476
+	pkgrel = 1
+	url = https://github.com/geoffreybennett/fcp-support
+	install = fcp-support-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = systemd-libs
+	depends = openssl
+	depends = zlib
+	depends = json-c
+	depends = libcap
+	optdepends = alsa-scarlett-gui-git: GUI for controlling Focusrite interfaces
+	optdepends = scarlett4-firmware: Firmware files for Scarlett 4th Gen (required for first-time setup)
+	provides = fcp-support
+	conflicts = fcp-support
+	source = git+https://github.com/geoffreybennett/fcp-support.git
+	sha256sums = SKIP
+
+pkgname = fcp-support-git

@@ -1,0 +1,71 @@
+post_install() {
+    echo ""
+    echo "==> Setting required capabilities on fcp-server..."
+    if ! setcap cap_sys_rawio+ep /usr/bin/fcp-server; then
+        echo "WARNING: Failed to set capabilities on fcp-server"
+        echo "         You may need to run manually: sudo setcap cap_sys_rawio+ep /usr/bin/fcp-server"
+    fi
+
+    echo "==> Reloading systemd and udev..."
+    systemctl daemon-reload
+    udevadm control --reload-rules
+
+    echo "==> Triggering udev for Focusrite devices..."
+    udevadm trigger --action=add --subsystem-match=sound --attr-match=idVendor=1235
+
+    echo ""
+    echo "==> Focusrite Control Protocol Server installed successfully!"
+    echo ""
+    echo "    The fcp-server service should now be running if your"
+    echo "    Focusrite Scarlett 4th Gen device (16i16/18i16/18i20) is connected."
+    echo ""
+    echo "==> Check service status:"
+    echo "    systemctl status fcp-server@*"
+    echo ""
+    echo "==> Make sure you are in the 'audio' group:"
+    echo "    sudo usermod -a -G audio \$USER"
+    echo "    (then log out and back in)"
+    echo ""
+    echo "==> Install 'alsa-scarlett-gui-git' for a graphical interface:"
+    echo "    yay -S alsa-scarlett-gui-git"
+    echo ""
+    echo "==> Firmware update required on first use:"
+    echo "    Install scarlett4-firmware package and run:"
+    echo "    fcp-tool --update-firmware"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Setting required capabilities on fcp-server..."
+    if ! setcap cap_sys_rawio+ep /usr/bin/fcp-server; then
+        echo "WARNING: Failed to set capabilities on fcp-server"
+        echo "         You may need to run manually: sudo setcap cap_sys_rawio+ep /usr/bin/fcp-server"
+    fi
+
+    echo "==> Reloading systemd and udev..."
+    systemctl daemon-reload
+    udevadm control --reload-rules
+
+    echo "==> Restarting fcp-server..."
+    systemctl restart fcp-server@* 2>/dev/null || true
+
+    echo ""
+    echo "==> fcp-support has been updated"
+    echo "    Service status: systemctl status fcp-server@*"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "==> Stopping fcp-server services..."
+    systemctl stop 'fcp-server@*' 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo "==> Reloading systemd and udev..."
+    systemctl daemon-reload
+    udevadm control --reload-rules
+    echo ""
+}
