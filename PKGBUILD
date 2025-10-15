@@ -9,7 +9,7 @@ url="https://github.com/c0nradLC/homodoro"
 license=('GPL3')
 depends=('libnotify' 'sdl2_mixer')
 source=("homodoro-bin::$url/releases/download/v$pkgver/homodoro-bin")
-sha256sums=('2a567c0d6f6fcf36cee22881f767f65cd155a63fdf3462496a7a554e1f357cc4')
+sha256sums=('9d783876fdc82dd0fc06949d18452276c41652672b6e8927e0676e0641f125b3')
 noextract=("homodoro-bin")
 
 package() {
