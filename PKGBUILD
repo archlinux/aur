@@ -3,18 +3,22 @@
 _pkgauthor=adamperkowski
 _pkgname=nvrs
 pkgname=${_pkgname}-bin
-pkgver=0.1.7
-pkgrel=4
+pkgver=0.1.9
+pkgrel=1
+_pkgvername=v${pkgver}
 pkgdesc='Fast new version checker for software releases'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64')
 license=('MIT')
+
 depends=('glibc' 'gcc-libs' 'openssl')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v0.1.7.tar.gz")
-sha256sums_x86_64=('bdedf5eba91c538630b5ea8ed49e94fdf83c08109d5705b6513e7dfda1d51cf7')
+
+options=(!strip)
+source_x86_64=("${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.tar.gz")
+sha256sums_x86_64=('d5dd2c4becca7eefe0acdd121871d584301ca5a99c7a1f21b8d5caeb9d811275')
 
 
 package() {

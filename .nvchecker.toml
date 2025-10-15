@@ -1,0 +1,5 @@
+["nvrs-bin"]
+source = "github"
+github = "adamperkowski/nvrs"
+use_latest_release = true
+prefix = "v"
