@@ -1,11 +1,12 @@
 pkgbase = sanctum-git
 	pkgdesc = Sanctum is a small, reviewable, capable, pq-secure and fully privilege separated VPN daemon for OpenBSD, Linux and MacOS.
 	pkgver = r641.4b6c8e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorisvink/sanctum
 	arch = any
-	license = MIT
+	license = ISC
 	makedepends = pkgconf
+	makedepends = libsodium
 	makedepends = git
 	makedepends = make
 	makedepends = gcc

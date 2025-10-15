@@ -1,13 +1,13 @@
 # Maintainer: @rvid <contact@rvid.eu>
 pkgname=sanctum-git
 pkgver=r641.4b6c8e7
-pkgrel=1
+pkgrel=2
 pkgdesc="Sanctum is a small, reviewable, capable, pq-secure and fully privilege separated VPN daemon for OpenBSD, Linux and MacOS."
 arch=('any')
 url="https://github.com/jorisvink/sanctum"
-license=('MIT')
+license=('ISC')
 depends=('libsodium')
-makedepends=('pkgconf' 'git' 'make' 'gcc')
+makedepends=('pkgconf' 'libsodium' 'git' 'make' 'gcc')
 source=("git+$url.git")
 md5sums=('SKIP')
 
