@@ -1,0 +1,6 @@
+Python-3.15*.tar.xz
+Python-3.15*.tar.xz.sigstore
+src/
+pkg/
+python315-*.pkg*
+*.log
