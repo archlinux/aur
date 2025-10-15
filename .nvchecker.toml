@@ -1,0 +1,5 @@
+["otree-bin"]
+source = "github"
+github = "fioncat/otree"
+use_latest_release = true
+prefix = "v"
