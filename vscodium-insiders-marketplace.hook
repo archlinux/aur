@@ -2,9 +2,9 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = vscodium
+Target = vscodium-insiders
 
 [Action]
 Description = [vscodium-marketplace] Patching product.json...
-Exec = /usr/share/vscodium/resources/app/patch.sh
+Exec = /usr/share/vscodium-insiders/resources/app/patch.py
 When = PostTransaction
