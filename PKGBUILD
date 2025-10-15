@@ -18,6 +18,7 @@ makedepends=(
     'git'
     'python'
     'python-pip'
+    'sqlite'
 )
 
 # Fetch source code tagged v1.0.0

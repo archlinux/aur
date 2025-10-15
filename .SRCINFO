@@ -8,6 +8,7 @@ pkgbase = habit
 	makedepends = git
 	makedepends = python
 	makedepends = python-pip
+	makedepends = sqlite
 	source = habit-1.0.0::git+https://github.com/nazmul-alom-shanto/habit-cli.git#tag=v1.0.0
 	sha256sums = SKIP
 
