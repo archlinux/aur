@@ -1,6 +1,6 @@
 pkgname=ashpd-demo
-pkgver=0.11.0
-_demo_pkgver=0.5.0
+_pkgname=ashpd
+pkgver=0.12.0
 pkgrel=1.0
 pkgdesc='asph-demo'
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,11 @@ url='https://github.com/bilelmoussaoui/ashpd'
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'libshumate')
 makedepends=('git' 'ninja' 'meson' 'rust')
-source=("$pkgname-${pkgver}.tar.gz::https://github.com/bilelmoussaoui/ashpd/releases/download/${_demo_pkgver}-demo/ashpd-demo-${_demo_pkgver}.tar.xz")
-sha256sums=('1387915d6bb238aa5d2c658a735f5ee96f99704210e01d96b56ad96024c51215')
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/bilelmoussaoui/ashpd/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('554cef0e282bbf240d78490e7db7df8ccf7c5e4e16589343d815bb0e59de2b9a')
 
 build() {
-  cd $pkgname-${_demo_pkgver}
+  cd ${_pkgname}-${pkgver}/ashpd-demo
   meson setup \
     -Dprefix=/usr \
     -Dbuildtype=release \
@@ -21,6 +21,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-${_demo_pkgver}
+  cd ${_pkgname}-${pkgver}/ashpd-demo
   DESTDIR="$pkgdir" ninja -C build install
 }
