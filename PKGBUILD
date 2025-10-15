@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=openspec
-pkgver=0.11.0 # renovate: datasource=github-tags depName=Fission-AI/OpenSpec
+pkgver=0.12.0 # renovate: datasource=github-tags depName=Fission-AI/OpenSpec
 pkgrel=1
 pkgdesc="AI-native system for spec-driven development"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fission-AI/OpenSpec/archive/v${pkgver}.tar.gz")
-sha256sums=('6cb8ff64cf9c99e761d04cecbc1be727a1e5412793753a2bf5e5502ba39d06e9')
+sha256sums=('71dd747db2833ea03f35ed6c90c6822557bfe2fc1b91cce03f0943b794f36006')
 
 prepare() {
   cd "${srcdir}/OpenSpec-${pkgver}"
