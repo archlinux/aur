@@ -1,6 +1,6 @@
 pkgbase = python-gdtoolkit
 	pkgdesc = Independent set of tools for working with GDScript - parser, linter and formatter
-	pkgver = 4.3.4
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/Scony/godot-gdscript-toolkit
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-gdtoolkit
 	depends = python-regex
 	depends = python-six
 	depends = python-lark-parser
-	source = https://files.pythonhosted.org/packages/source/g/gdtoolkit/gdtoolkit-4.3.4.tar.gz
-	sha256sums = 42f8d528829a081809c8492c5936729b9fafca640fc46026ae98299fe0d3a93a
+	source = https://files.pythonhosted.org/packages/source/g/gdtoolkit/gdtoolkit-4.5.0.tar.gz
+	sha256sums = 1ab17fb5400d86e4ae66d9c94992f4e3a9b6c27d618d4094782e66101efb3e9a
 
 pkgname = python-gdtoolkit
