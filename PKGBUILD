@@ -7,7 +7,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-2
 pkgver=2.10.38
-pkgrel=6
+pkgrel=7
 pkgdesc='GNU Image Manipulation Program'
 url='https://www.gimp.org/'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.t
 sha256sums=('50a845eec11c8831fe8661707950f5b8446e35f30edfb9acf98f85c1133f856e'
             'ac3e8b44cf391f4ab3050652f2cc1f146f451fb25178d5a596d905f5bad13fcf'
             '24814e981121830242f0a9b7d1da99e7282b247b87b482e2b394cff75b4675ef'
-            '7fd3e948c8421016fd07bf0e40addc60a2f39fb8abf6e0e20905ce5bdbed3399'
+            '58e37c285ada0b40be29580fb8906578913a8e0427b5cea1dd52b1c3b3fe1777'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
@@ -47,7 +47,6 @@ prepare() {
 
   patch -Np1 < ../0001-no-check-update.patch
   patch -Np1 < ../0002-fix-detection-of-libheif-1.15.0.patch
-  # fixes compilation on gcc++
   patch -Np1 < ../0003-typevars.patch
 
   autoreconf -fvi -I /usr/share/gettext/m4
@@ -56,7 +55,8 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
 
-  export CFLAGS+=" -Wno-incompatible-pointer-types"
+  # oh my god shut UP
+  export CFLAGS+=" -std=gnu11 -w -fpermissive -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
 
   ./configure \
     --prefix=/usr \
