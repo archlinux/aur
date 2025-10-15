@@ -1,0 +1,26 @@
+From f3d8a2ba96b8f9cbd327b55c17e3428ce6d7af9e Mon Sep 17 00:00:00 2001
+From: Madeline Mewmews <maddie@mewmews.gay>
+Date: Tue, 8 Oct 2024 16:01:25 -0500
+Subject: [PATCH] Update Arch Linux patch
+
+Signed-off-by: Madeline Mewmews <maddie@mewmews.gay>
+---
+ src/gameconfigfile.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
+index b61279ebc..75da8e4e0 100644
+--- a/src/gameconfigfile.cpp
++++ b/src/gameconfigfile.cpp
+@@ -181,6 +181,8 @@ FGameConfigFile::FGameConfigFile ()
+ 		SetValueForKey("Path", "/usr/local/share/doom/fm_banks", true);
+ 		SetValueForKey("Path", "/usr/local/share/games/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/local/share/games/doom/fm_banks", true);
++		SetValueForKey("Path", "$PROGDIR/soundfonts", true);
++		SetValueForKey("Path", "$PROGDIR/fm_banks", true);
+ 		SetValueForKey("Path", "/usr/share/doom/soundfonts", true);
+ 		SetValueForKey("Path", "/usr/share/doom/fm_banks", true);
+ 		SetValueForKey("Path", "/usr/share/games/doom/soundfonts", true);
+-- 
+2.46.1
+
