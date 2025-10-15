@@ -1,6 +1,6 @@
 pkgbase = homodoro-bin
 	pkgdesc = Simple Pomodoro timer and task management TUI application written in Haskell with Brick
-	pkgver = 0.2.0.0
+	pkgver = 0.2.0.1
 	pkgrel = 1
 	url = https://github.com/c0nradLC/homodoro
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = homodoro-bin
 	depends = libnotify
 	depends = sdl2_mixer
 	noextract = homodoro-bin
-	source = homodoro-bin::https://github.com/c0nradLC/homodoro/releases/download/v0.2.0.0/homodoro-bin
-	sha256sums = 6573c7f80dbf0618b73f67caaf2d7ab6b975ea6aa34b3568de13a772de81cb47
+	source = homodoro-bin::https://github.com/c0nradLC/homodoro/releases/download/v0.2.0.1/homodoro-bin
+	sha256sums = 2a567c0d6f6fcf36cee22881f767f65cd155a63fdf3462496a7a554e1f357cc4
 
 pkgname = homodoro-bin
