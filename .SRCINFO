@@ -1,6 +1,6 @@
 pkgbase = python-pypinfo
 	pkgdesc = View PyPI download statistics with ease
-	pkgver = 22.0.0
+	pkgver = 23.0.0
 	pkgrel = 1
 	url = https://github.com/ofek/pypinfo
 	changelog = CHANGELOG.rst
@@ -17,7 +17,7 @@ pkgbase = python-pypinfo
 	depends = python-platformdirs
 	depends = python-tinydb
 	depends = python-tinyrecord
-	source = python-pypinfo-22.0.0.tar.gz::https://github.com/ofek/pypinfo/archive/refs/tags/22.0.0.tar.gz
-	sha256sums = c31f21ecde1fb373a3ad9f7c7f46d1f43681de8052c5ba794cfe18c17ac12534
+	source = python-pypinfo-23.0.0.tar.gz::https://github.com/ofek/pypinfo/archive/refs/tags/23.0.0.tar.gz
+	sha256sums = 88dc82228e39b0510841537cec5ab074fc3a0e9f7cb2c7e7685fa03ce1487091
 
 pkgname = python-pypinfo

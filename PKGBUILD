@@ -4,7 +4,7 @@
 
 pkgname=python-pypinfo
 _pkg="${pkgname#python-}"
-pkgver=22.0.0
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="View PyPI download statistics with ease"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 changelog='CHANGELOG.rst'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c31f21ecde1fb373a3ad9f7c7f46d1f43681de8052c5ba794cfe18c17ac12534')
+sha256sums=('88dc82228e39b0510841537cec5ab074fc3a0e9f7cb2c7e7685fa03ce1487091')
 
 build() {
 	cd "$_pkg-$pkgver"

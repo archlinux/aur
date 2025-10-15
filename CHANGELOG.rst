@@ -6,6 +6,13 @@ Important changes are emphasized.
 Unreleased
 ^^^^^^^^^^
 
+23.0.0
+^^^^^^
+
+- Add support for Python 3.13 and 3.14
+- Drop support for EOL Python 3.8 and 3.9
+- Add ``--dry-run`` to check how many bytes would be billed, but don't actually run query
+
 22.0.0
 ^^^^^^
 
