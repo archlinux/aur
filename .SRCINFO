@@ -1,12 +1,13 @@
 pkgbase = python-llm-gemini
 	pkgdesc = LLM plugin to access Google's Gemini family of models
-	pkgver = 0.26
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/simonw/llm-gemini
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-inline-snapshot
+	checkdepends = python-nest-asyncio
 	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-recording
 	makedepends = python-build
 	makedepends = python-installer
@@ -17,7 +18,7 @@ pkgbase = python-llm-gemini
 	depends = python-llm
 	depends = python-ijson
 	depends = python-pydantic
-	source = llm-gemini-0.26.tar.gz::https://github.com/simonw/llm-gemini/archive/0.26.tar.gz
-	sha512sums = 833dcbf9e741980c72c60a08ce1bbdf8976a198a46a62c0bab10dbaa6bbec3c6be12a8c108c9bb6e70a8bb68fff4cdeb56ad52249789b7802643724fc7bf4f37
+	source = llm-gemini-0.26.1.tar.gz::https://github.com/simonw/llm-gemini/archive/0.26.1.tar.gz
+	sha512sums = 31e0e7101314f2544a56763f89f0127f7006fd0f4a383f715c8c868182f6a2a6ec56ce51b0ab609aff74919aee8eca203fddd81296886c85a1a1ef3c908a95ca
 
 pkgname = python-llm-gemini
