@@ -8,6 +8,7 @@ url="https://github.com/jorisvink/sanctum"
 license=('ISC')
 depends=('libsodium')
 makedepends=('pkgconf' 'libsodium' 'git' 'make' 'gcc')
+provides=('sanctum')
 source=("git+$url.git")
 md5sums=('SKIP')
 

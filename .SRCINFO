@@ -11,6 +11,7 @@ pkgbase = sanctum-git
 	makedepends = make
 	makedepends = gcc
 	depends = libsodium
+	provides = sanctum
 	source = git+https://github.com/jorisvink/sanctum.git
 	md5sums = SKIP
 
