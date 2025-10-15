@@ -1,6 +1,6 @@
 pkgbase = hyprsessionmanager-git
 	pkgdesc = Session manager for Hyprland with Qt6 GUI
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/rxmlp/hyprsessionmanager
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = hyprsessionmanager-git
 	depends = qt6-base
 	depends = hyprland
 	depends = jq
-	source = hyprsessionmanager-git-0.1.tar.gz::https://github.com/rxmlp/hyprsessionmanager/archive/refs/tags/0.1.tar.gz
-	sha256sums = 9efe8d68eb984a42fd33bcfa6bd5a6657607aa086da4ddac945701bc79bea1a9
+	source = hyprsessionmanager-git-0.2.tar.gz::https://github.com/rxmlp/hyprsessionmanager/archive/refs/tags/0.2.tar.gz
+	sha256sums = 42aa24373ba45421ed11806cf370cc3b8d6e759468c758b9b6349a0c69fe8998
 
 pkgname = hyprsessionmanager-git
