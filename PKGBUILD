@@ -15,6 +15,7 @@ package() {
 	#There might be a better way of going about this, but right now this works.
 	mkdir -m=644 -p "$pkgdir"/opt/Helion/SoundFonts
 	install -Dm755 ./Helion "$pkgdir"/opt/Helion/
+	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/assets.pk3
 	install -Dm644 ./README.md "$pkgdir"/opt/Helion/
 	install -Dm644 ./SoundFonts/Default.sf2 "$pkgdir"/opt/Helion/SoundFonts/
 	mkdir -m=644 -p "$pkgdir"/usr/share/applications/
