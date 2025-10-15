@@ -4,7 +4,7 @@ _org='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
@@ -31,6 +31,7 @@ build() {
         -DBUILD_WITH_CODEGEN_SUPPORT=OFF \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DEigen3_ROOT=/opt/eigen3 \
         -Wno-dev
     cmake --build "build-$pkgver" -j 1
 }
