@@ -3,13 +3,13 @@
 
 pkgname='kikoplay'
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3' 'MIT')
 url="https://github.com/KikoPlayProject/KikoPlay"
 # using standalone liblua53.a, remove 'lua53' from depends.
-depends=('mpv' 'qt6-webengine' 'qt6-websockets' 'onnxruntime-cpu')
+depends=('mpv' 'qt6-webengine' 'qt6-websockets' 'onnxruntime')
 makedepends=('cmake' 'git' 'protobuf')
 optdepends=('aria2: for downloading')
 conflicts=('kikoplay-bin' 'kikolpay-beta' 'kikoplay-git')
