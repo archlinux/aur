@@ -2,16 +2,18 @@
 
 pkgname=fastmail
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Email and calendar made better'
-license=('Commercial')
+license=('custom:fastmail')
 url='https://www.fastmail.com'
 arch=('x86_64')
 options=('!strip')
 depends=('gtk3' 'nss' 'alsa-lib')
 _appimg="Fastmail-${pkgver}.AppImage"
-source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}")
-sha512sums=('862a32dc1a5667cfb441fd5caf63deb3be8fb535de44e1e3afde40a8faa5a9ee8c251e09dadabd74a17ce1c87d37923ecd0f31661bed0cc2b33f638443213e50')
+source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
+        "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
+sha512sums=('862a32dc1a5667cfb441fd5caf63deb3be8fb535de44e1e3afde40a8faa5a9ee8c251e09dadabd74a17ce1c87d37923ecd0f31661bed0cc2b33f638443213e50'
+            'c544bd5496ec83a0b2475eb12070951ac92da66a6314357165ba517f986412f2c54b303186efc2c068562ac345108eeef56e7926a920cbbd820e700607d8b220')
 
 prepare() {
   chmod +x "${_appimg}"
@@ -41,4 +43,6 @@ package() {
   done
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
+
+  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
