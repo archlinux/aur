@@ -2,7 +2,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -21,7 +21,8 @@ optdepends=(
     'wl-clipboard: Copy functionality for PIDs and other elements'
     'cliphist: Clipboard history functionality'
     'cava: Audio visualizer'
-    'qt5ct: Qt5 application theming'
+    'qt6-multimedia: Sound effect support'
+    'power-profiles-daemon: Set power profile'
     'qt6ct: Qt6 application theming'
 )
 provides=('dms')
