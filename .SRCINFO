@@ -6,6 +6,7 @@ pkgbase = dmotp-git
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
+	makedepends = git
 	depends = python
 	depends = python-pyotp
 	depends = python-cryptography

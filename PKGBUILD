@@ -1,12 +1,13 @@
 # Maintainer: twistedturtle <hindredkin at gmail.com>
 pkgname=dmotp-git
-pkgver=r16.5683202
-pkgrel=4
+pkgver=r23.3f6e821
+pkgrel=1
 pkgdesc="CLI TOTP authenticator"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/dmotp/dmotp"
 license=('GPL2')
 depends=("python" "python-pyotp" "python-cryptography" "python-pyperclip")
+makedepends=('git')
 optdepends=("xsel" "xclip")
 provides=("dmotp")
 source=("git+https://gitlab.com/dmotp/dmotp.git")
