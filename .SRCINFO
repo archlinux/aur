@@ -1,6 +1,6 @@
 pkgbase = mintstick
 	pkgdesc = A graphical tool that allows you to format USB sticks and create bootable USB sticks.
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/linuxmint/mintstick
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = mintstick
 	depends = util-linux
 	depends = xapp
 	conflicts = mintstick-git
-	source = mintstick-1.6.3.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.6.3.tar.xz
-	sha256sums = 3aebd6927c62e4bbc8ccb48c6978999e40391cfe70048807586070044a1314ac
+	source = mintstick-1.6.4.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.6.4.tar.xz
+	sha256sums = d82f1ccc02499a55f0fdc0b2b042bcbb0d194acb161456080608ca1dbc863c9e
 
 pkgname = mintstick

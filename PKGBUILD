@@ -1,7 +1,7 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mintstick
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A graphical tool that allows you to format USB sticks and create bootable USB sticks."
 arch=('any')
@@ -37,7 +37,7 @@ conflicts=(
     'mintstick-git'
 )
 source=("${pkgname}-${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('3aebd6927c62e4bbc8ccb48c6978999e40391cfe70048807586070044a1314ac')
+sha256sums=('d82f1ccc02499a55f0fdc0b2b042bcbb0d194acb161456080608ca1dbc863c9e')
 
 package() {
     cd "$pkgname"
