@@ -1,8 +1,8 @@
 # Maintainer: Joerg Weislogel <mutoroglin at posteo dot de>
 
 pkgname=libcava
-pkgver=0.10.4
-pkgrel=1
+pkgver=0.10.6
+pkgrel=2
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.'
 arch=('x86_64')
 url='https://github.com/LukashonakV/cava'
@@ -26,11 +26,20 @@ makedepends=(
     'autoconf-archive'
 )
 source=(
+    libcava-0.10.6-2.patch
     "$pkgname-$pkgver.tar.gz::https://github.com/LukashonakV/cava/archive/$pkgver.tar.gz"
 )
-sha256sums=('7bc1c1f9535f2bcc5cd2ae8a2434a2e3a05f5670b1c96316df304137ffc65756'
+sha256sums=('f23871d34e6ba080923903735860b99f9db705bdbabca089da06f7ebbf82482a'
+            'e715c4c6a625b8dc063e57e8e81c80e4d1015ec1b98db69a283b2c6770f839f4'
 )
 options=(!lto)
+
+prepare() {
+    echo $(pwd)
+    cd "cava-$pkgver"
+
+    patch -p1 -i ../libcava-0.10.6-2.patch
+}
 
 build() {
     cd "cava-${pkgver}"
