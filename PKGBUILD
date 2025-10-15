@@ -2,7 +2,7 @@
 
 pkgname=foxit-pdf-editor
 pkgver=12.3.3.0409
-pkgrel=2
+pkgrel=3
 pkgdesc="Foxit PDF Editor"
 arch=('x86_64')
 url="https://developer.android.com/"
@@ -47,7 +47,8 @@ package() {
 
   # use custom launcher script
   install -Dm755 "${srcdir}/foxit-pdf-editor" -t "${pkgdir}/usr/bin/"
-  install -Dm755 "${srcdir}/foxit-linux-login.js" -t "${pkgdir}/usr/bin/"
+  # frida script for signing in 
+  install -Dm644 "${srcdir}/foxit-linux-login.js" -t "${pkgdir}/opt/apps/com.foxit.foxitpdfeditor/files/"
   # update desktop files
   sed -i "s|Exec=/opt/apps/com.foxit.foxitpdfeditor/files/FoxitPDFEditor.sh|Exec=foxit-pdf-editor|g" "${pkgdir}/usr/share/applications/com.foxit.foxitpdfeditor.desktop"
   cp --update=all "${pkgdir}/usr/share/applications/com.foxit.foxitpdfeditor.desktop" "${pkgdir}/opt/apps/com.foxit.foxitpdfeditor/entries/applications/com.foxit.foxitpdfeditor.desktop"
