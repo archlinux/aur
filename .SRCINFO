@@ -1,0 +1,15 @@
+pkgbase = habit
+	pkgdesc = A minimalist, cross-platform CLI tool to track and build habits.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nazmul-alom-shanto/habit-cli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-pip
+	makedepends = python-pyinstaller
+	source = habit-1.0.0::git+https://github.com/nazmul-alom-shanto/habit-cli.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = habit
