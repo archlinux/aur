@@ -1,0 +1,15 @@
+pkgbase = fastmail
+	pkgdesc = Email and calendar made better
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.fastmail.com
+	arch = x86_64
+	license = Commercial
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	options = !strip
+	source = Fastmail-1.0.1.AppImage::https://dl.fastmailcdn.com/desktop/production/linux/x64/Fastmail-1.0.1.AppImage
+	sha512sums = 862a32dc1a5667cfb441fd5caf63deb3be8fb535de44e1e3afde40a8faa5a9ee8c251e09dadabd74a17ce1c87d37923ecd0f31661bed0cc2b33f638443213e50
+
+pkgname = fastmail
