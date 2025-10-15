@@ -1,0 +1,33 @@
+# Maintainer: Fabian Thomys <git@fthomys.me>
+pkgname=update-alternatives-git
+pkgver=r46.1f33af6
+pkgrel=1
+pkgdesc="A simple update-alternatives replacement written in Rust"
+arch=('x86_64')
+url="https://github.com/fthomys/update-alternatives"
+options=('!debug')
+license=('MIT')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'rust' 'cargo')
+provides=('update-alternatives')
+conflicts=('update-alternatives')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/update-alternatives"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/update-alternatives"
+  cargo build --release --locked
+}
+
+package() {
+  cd "${srcdir}/update-alternatives"
+  install -Dm755 "target/release/update-alternatives" "${pkgdir}/usr/bin/update-alternatives"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "man/update-alternatives.1" "$pkgdir/usr/share/man/man1/update-alternatives.1"
+}
+
