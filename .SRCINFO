@@ -1,7 +1,7 @@
 pkgbase = panopta-agent
 	pkgdesc = Panopta monitoring agent
 	pkgver = 2022.47.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://my.panopta.com
 	install = panopta-agent.install
 	arch = any
@@ -11,8 +11,12 @@ pkgbase = panopta-agent
 	source = https://packages.panopta.com/tar/panopta-agent-tarball-latest.tar.gz
 	source = panopta-agent.cron
 	source = license.txt
+	source = agent.py.patch
+	source = agent_util.py.patch
 	md5sums = e8ac052af8f4cf832ecc2d07d5306e24
 	md5sums = 0e1c4e4fa5ff801fe9503307c39e73b2
 	md5sums = 2a657feea0ec01bf57ffad93686ea9c2
+	md5sums = eb827036a06efca50d60c19b34930af8
+	md5sums = 60fe3dfc37ab85e264d47309eaae1597
 
 pkgname = panopta-agent

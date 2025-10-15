@@ -1,6 +1,6 @@
 pkgname=panopta-agent
 pkgver=2022.47.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Panopta monitoring agent"
 arch=('any')
 url="https://my.panopta.com"
