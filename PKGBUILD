@@ -3,7 +3,7 @@
 _pkgauthor=adamperkowski
 _pkgname=nvrs
 pkgname=${_pkgname}-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc='Fast new version checker for software releases'
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 
 options=(!strip)
 source_x86_64=("${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.tar.gz")
-sha256sums_x86_64=('93a4821367857a13dabd16b6801b332bcd858b344293eee5fa7d426c9a6093d9')
+sha256sums_x86_64=('3ccf67ef1cef7cc5f9f6968da6aebaf9612b55723161b64a17045cb4bb54d4ed')
 
 
 package() {
@@ -37,5 +37,5 @@ package() {
   gzip "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 
   install -Dm644 "nvrs.toml" "${pkgdir}/usr/share/doc/${pkgname}/samples/nvrs.toml"
-  install -Dm644 "n_keyfile.toml" "${pkgdir}/usr/share/doc/${pkgname}/samples/n_keyfile.toml"
+  install -Dm644 "keyfile.toml" "${pkgdir}/usr/share/doc/${pkgname}/samples/keyfile.toml"
 }
