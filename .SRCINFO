@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 140.3.1
+	pkgver = 140.4.0
 	pkgrel = 1
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
@@ -55,15 +55,15 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-140.3.1esr.source.tar.xz
+	noextract = firefox-140.4.0esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla-140.3.1-b7f0c6b.tar.gz::https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-b7f0c6b7d19ececd92640f26eaa43cfec29cf728.tar.gz
-	source = https://archive.mozilla.org/pub/firefox/releases/140.3.1esr/source/firefox-140.3.1esr.source.tar.xz
-	sha256sums = c0b709b251bf953e36ddd5348388261fa89592af20278a3573119aad69d336a3
-	sha256sums = 0b43b3a1c4f40765d96eb2094d38838f5d01b7280ad8b9b0a17612bed9c36735
+	source = gnuzilla-140.4.0-579bc28.tar.gz::https://cgit.git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-579bc2897077119e38a7e1493bca6ec97a06a36a.tar.gz
+	source = https://archive.mozilla.org/pub/firefox/releases/140.4.0esr/source/firefox-140.4.0esr.source.tar.xz
+	sha256sums = d66d986862a8c4e18dfbdeb931e118c3882e3c2357ef099bdc4a281cf3395395
+	sha256sums = 49f20673171046bc7b64f4caa340c46e1e105b9107f0ef68b7a94f379bcea4f7
 
 pkgname = icecat
