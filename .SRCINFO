@@ -1,0 +1,17 @@
+pkgbase = hexecute
+	pkgdesc = Launch apps by casting spells!
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ThatOtherAndrew/Hexecute
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = git
+	depends = wayland
+	depends = wayland-protocols
+	options = !lto
+	source = hexecute-0.2.0.tar.gz::https://github.com/ThatOtherAndrew/Hexecute/archive/v0.2.0.tar.gz
+	sha256sums = 0616819284e1f4ee23b5901d30896dd4453a9240cc555874d5f4420293069481
+
+pkgname = hexecute
