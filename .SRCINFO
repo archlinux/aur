@@ -1,6 +1,6 @@
 pkgbase = nvrs-bin
 	pkgdesc = Fast new version checker for software releases
-	pkgver = 0.1.9
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/adamperkowski/nvrs
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = nvrs-bin
 	depends = openssl
 	provides = nvrs
 	conflicts = nvrs
-	source_x86_64 = https://github.com/adamperkowski/nvrs/releases/download/v0.1.9/nvrs-v0.1.9.tar.gz
-	sha256sums_x86_64 = d5dd2c4becca7eefe0acdd121871d584301ca5a99c7a1f21b8d5caeb9d811275
+	options = !strip
+	source_x86_64 = https://github.com/adamperkowski/nvrs/releases/download/v0.1.8/nvrs-v0.1.8.tar.gz
+	sha256sums_x86_64 = 93a4821367857a13dabd16b6801b332bcd858b344293eee5fa7d426c9a6093d9
 
 pkgname = nvrs-bin

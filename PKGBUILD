@@ -3,7 +3,7 @@
 _pkgauthor=adamperkowski
 _pkgname=nvrs
 pkgname=${_pkgname}-bin
-pkgver=0.1.9
+pkgver=0.1.8
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc='Fast new version checker for software releases'
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 
 options=(!strip)
 source_x86_64=("${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.tar.gz")
-sha256sums_x86_64=('d5dd2c4becca7eefe0acdd121871d584301ca5a99c7a1f21b8d5caeb9d811275')
+sha256sums_x86_64=('93a4821367857a13dabd16b6801b332bcd858b344293eee5fa7d426c9a6093d9')
 
 
 package() {
