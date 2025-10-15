@@ -5,7 +5,7 @@
 # https://www.kernel.org/category/releases.html
 # 6.12 Greg Kroah-Hartman & Sasha Levin  2024-11-17  Dec, 2026
 _LLL_VER=6.12
-_LLL_SUBVER=40
+_LLL_SUBVER=52
 
 #PKGEXT='.pkg.tar'
 
@@ -117,10 +117,10 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'SKIP'
-            '8c0ccb29085778e8c129965c43439f110415a5ef2762306a92682cdc63b8e3e8'
+            'bc2db9911f8e3c7e88f8ae37cd2baf9151a630bdf32cf4025a9cc606b1a57e8c'
             'dd78d56eeddb61e152a31cd059148122963f423153f5274cb7b2bc026c6b74aa'
             'ab67a7d55b06dfa9a23dc20db8b34f58732c753dc62a480b984bbac5c5323cf4'
-            '77d17550cb795f66ce3518f6511ab389d5ae79d1974ae316956bc990d70a5c01')
+            'bdfc2a723cde301e363088f1a311fe4e087dccae368a10d240e7f05ee6cd7ddb')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
