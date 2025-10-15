@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname="galaxy-flasher"
-pkgver=alpha.v2025.08.25
+pkgver=alpha.v2025.10.15
 pkgrel=0
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"
@@ -18,9 +18,11 @@ depends=(
   'thor-flash-utility'
   'python-i18n'
   'python-gobject'
+  'python-langcodes'
 )
 makedepends=(
   'git'
+  'glib2'
 )
 
 source=("git+$url.git")
@@ -28,8 +30,12 @@ sha256sums=('SKIP')
 
 package() {
 	install -Dm 644 "$srcdir/$pkgname/assets/page.codeberg.ethicalhaquer.galaxyflasher.svg" "$pkgdir/usr/share/pixmaps/galaxy-flasher.svg"
- install -d "${pkgdir}/opt"	
+	install -d "${pkgdir}/opt"
+	cd "$srcdir/$pkgname/src/resources"
+	glib-compile-resources "resources.gresource.xml"
 	cp -r "$srcdir/$pkgname" "$pkgdir/opt/galaxy-flasher"
+	install -d "$pkgdir/usr/share/icons/galaxy-flasher"
+	cp -r "$srcdir/$pkgname/src/resources/icons" "$pkgdir/usr/share/icons/galaxy-flasher"
 	if [ -f "/home/$USER/.config/galaxy-flasher/settings.json" ]; 
 	then
 	echo -e "\e[32msettings.json already in .config/galaxy-flasher! :3"

@@ -1,11 +1,12 @@
 pkgbase = galaxy-flasher
 	pkgdesc = A GUI for Samsung flash-tools
-	pkgver = alpha.v2025.08.25
+	pkgver = alpha.v2025.10.15
 	pkgrel = 0
 	url = https://codeberg.org/ethical_haquer/galaxy-flasher
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
+	makedepends = glib2
 	depends = gtk4
 	depends = python3
 	depends = libadwaita
@@ -14,6 +15,7 @@ pkgbase = galaxy-flasher
 	depends = thor-flash-utility
 	depends = python-i18n
 	depends = python-gobject
+	depends = python-langcodes
 	source = git+https://codeberg.org/ethical_haquer/galaxy-flasher.git
 	sha256sums = SKIP
 
