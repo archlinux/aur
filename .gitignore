@@ -1,0 +1,13 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar*
+
+# Downloaded files
+latest.json
+*.deb
+data.tar.gz
+
+# Temporary files
+*~
+*.swp
