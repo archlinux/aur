@@ -4,7 +4,7 @@ pkgname=openmodelica-bin
 _omver=1.25.4
 _debver=1
 pkgver=${_omver}
-pkgrel=7
+pkgrel=8
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-compiled Debian Trixie binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -21,8 +21,10 @@ depends=(
 
 optdepends=(
     'gnuplot: For 2D plotting from scripts'
-    'texlive-latex-base: For DrModelica/DrControl documentation generation'
-    'dvipng: For rendering LaTeX equations in OMNotebook'
+    'libxslt: For XML report and documentation generation' #listed as 'xsltproc' in .deb
+    'texlive-latex: For DrModelica/DrControl documentation generation' #listed as 'texlive-latex-base' in .deb
+    'texlive-bin: For rendering LaTeX equations in OMNotebook' #listed as 'dvipng' in .deb
+    'texlive-binextra: For rendering LaTeX equations in OMNotebook' #listed as 'dvipng' in .deb
 )
 
 _baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib-trixie"
