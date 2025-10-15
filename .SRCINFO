@@ -1,7 +1,7 @@
 pkgbase = kikoplay
 	pkgdesc = linux danmaku player
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KikoPlayProject/KikoPlay
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = kikoplay
 	depends = mpv
 	depends = qt6-webengine
 	depends = qt6-websockets
-	depends = onnxruntime-cpu
+	depends = onnxruntime
 	optdepends = aria2: for downloading
 	conflicts = kikoplay-bin
 	conflicts = kikolpay-beta
