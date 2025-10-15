@@ -24,7 +24,8 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "1.12.4-shared_nowide.patch",
+    "boost-1.89.patch",
     "librapidjson-1.1.patch",
 ]
 SPDX-FileCopyrightText = "leatherman contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "Apache-2.0"

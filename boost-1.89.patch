@@ -1,0 +1,91 @@
+diff -ru leatherman-1.12.9.orig/curl/CMakeLists.txt leatherman-1.12.9/curl/CMakeLists.txt
+--- leatherman-1.12.9.orig/curl/CMakeLists.txt	2025-10-15 21:45:15.355325969 +0200
++++ leatherman-1.12.9/curl/CMakeLists.txt	2025-10-15 21:47:36.120475338 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS regex system filesystem)
++find_package(Boost 1.54 REQUIRED COMPONENTS regex filesystem)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+diff -ru leatherman-1.12.9.orig/dynamic_library/CMakeLists.txt leatherman-1.12.9/dynamic_library/CMakeLists.txt
+--- leatherman-1.12.9.orig/dynamic_library/CMakeLists.txt	2025-10-15 21:45:15.359735031 +0200
++++ leatherman-1.12.9/dynamic_library/CMakeLists.txt	2025-10-15 21:47:36.120691989 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS regex system)
++find_package(Boost 1.54 REQUIRED COMPONENTS regex)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+diff -ru leatherman-1.12.9.orig/execution/CMakeLists.txt leatherman-1.12.9/execution/CMakeLists.txt
+--- leatherman-1.12.9.orig/execution/CMakeLists.txt	2025-10-15 21:45:15.366959357 +0200
++++ leatherman-1.12.9/execution/CMakeLists.txt	2025-10-15 21:47:36.120912131 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.73 REQUIRED COMPONENTS regex filesystem system nowide)
++find_package(Boost 1.73 REQUIRED COMPONENTS regex filesystem nowide)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ if ("${CMAKE_SYSTEM_NAME}" MATCHES "SunOS")
+diff -ru leatherman-1.12.9.orig/file_util/CMakeLists.txt leatherman-1.12.9/file_util/CMakeLists.txt
+--- leatherman-1.12.9.orig/file_util/CMakeLists.txt	2025-10-15 21:45:15.368125929 +0200
++++ leatherman-1.12.9/file_util/CMakeLists.txt	2025-10-15 21:47:36.121162725 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.73 REQUIRED COMPONENTS regex filesystem system nowide)
++find_package(Boost 1.73 REQUIRED COMPONENTS regex filesystem nowide)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+diff -ru leatherman-1.12.9.orig/locale/CMakeLists.txt leatherman-1.12.9/locale/CMakeLists.txt
+--- leatherman-1.12.9.orig/locale/CMakeLists.txt	2025-10-15 21:45:15.370208341 +0200
++++ leatherman-1.12.9/locale/CMakeLists.txt	2025-10-15 21:47:36.121554260 +0200
+@@ -1,5 +1,5 @@
+ if (LEATHERMAN_USE_LOCALES)
+-    find_package(Boost 1.54 REQUIRED COMPONENTS locale system)
++    find_package(Boost 1.54 REQUIRED COMPONENTS locale)
+     if (BOOST_STATIC AND LEATHERMAN_USE_ICU)
+         find_package(ICU COMPONENTS i18n uc)
+     endif()
+diff -ru leatherman-1.12.9.orig/logging/CMakeLists.txt leatherman-1.12.9/logging/CMakeLists.txt
+--- leatherman-1.12.9.orig/logging/CMakeLists.txt	2025-10-15 21:45:15.374866529 +0200
++++ leatherman-1.12.9/logging/CMakeLists.txt	2025-10-15 21:47:36.121920024 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS log log_setup thread date_time filesystem system chrono regex)
++find_package(Boost 1.54 REQUIRED COMPONENTS log log_setup thread date_time filesystem chrono regex)
+ find_package(Threads)
+ 
+ add_leatherman_deps(${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+diff -ru leatherman-1.12.9.orig/ruby/CMakeLists.txt leatherman-1.12.9/ruby/CMakeLists.txt
+--- leatherman-1.12.9.orig/ruby/CMakeLists.txt	2025-10-15 21:45:15.375087858 +0200
++++ leatherman-1.12.9/ruby/CMakeLists.txt	2025-10-15 21:47:36.122256733 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS regex filesystem system)
++find_package(Boost 1.54 REQUIRED COMPONENTS regex filesystem)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+diff -ru leatherman-1.12.9.orig/tests/CMakeLists.txt leatherman-1.12.9/tests/CMakeLists.txt
+--- leatherman-1.12.9.orig/tests/CMakeLists.txt	2025-10-15 21:45:15.376299339 +0200
++++ leatherman-1.12.9/tests/CMakeLists.txt	2025-10-15 21:49:38.933879868 +0200
+@@ -1,4 +1,4 @@
+-set(BOOST_REQUIRED_COMPONENTS system date_time chrono log log_setup thread filesystem regex nowide)
++set(BOOST_REQUIRED_COMPONENTS date_time chrono log log_setup thread filesystem regex nowide)
+ if (LEATHERMAN_USE_LOCALES)
+     set(BOOST_REQUIRED_COMPONENTS ${BOOST_REQUIRED_COMPONENTS} locale)
+ endif()
+diff -ru leatherman-1.12.9.orig/util/CMakeLists.txt leatherman-1.12.9/util/CMakeLists.txt
+--- leatherman-1.12.9.orig/util/CMakeLists.txt	2025-10-15 21:45:15.379078496 +0200
++++ leatherman-1.12.9/util/CMakeLists.txt	2025-10-15 21:47:36.122583105 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.73 REQUIRED date_time chrono system nowide)
++find_package(Boost 1.73 REQUIRED date_time chrono nowide)
+ 
+ add_leatherman_deps(${Boost_LIBRARIES})
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
+diff -ru leatherman-1.12.9.orig/windows/CMakeLists.txt leatherman-1.12.9/windows/CMakeLists.txt
+--- leatherman-1.12.9.orig/windows/CMakeLists.txt	2025-10-15 21:45:15.385876995 +0200
++++ leatherman-1.12.9/windows/CMakeLists.txt	2025-10-15 21:47:36.122754358 +0200
+@@ -1,4 +1,4 @@
+-find_package(Boost 1.54 REQUIRED COMPONENTS filesystem regex system)
++find_package(Boost 1.54 REQUIRED COMPONENTS filesystem regex)
+ 
+ add_leatherman_deps(Wbemuuid.lib userenv.lib "${Boost_LIBRARIES}")
+ add_leatherman_includes("${Boost_INCLUDE_DIRS}")
