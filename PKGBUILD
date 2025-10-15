@@ -18,7 +18,6 @@ makedepends=(
     'git'
     'python'
     'python-pip'
-    'python-pyinstaller' 
 )
 
 # Fetch source code tagged v1.0.0
