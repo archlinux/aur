@@ -2,7 +2,7 @@
 # Maintainer: Ashley Watson <ashley.watson@proton.me>
 
 pkgname=datadog-agent
-pkgver=7.67.0
+pkgver=7.71.2
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
@@ -12,6 +12,7 @@ url='https://datadoghq.com'
 depends=('sysstat' 'libxcrypt-compat')
 makedepends=('pcre')
 options=('!strip')
+install='datadog-agent.install'
 source=("${pkgname}-${pkgver}-${_agentrel}-Release::https://apt.datadoghq.com/dists/stable/Release"
         "${pkgname}-${pkgver}-${_agentrel}-Release.sig::https://apt.datadoghq.com/dists/stable/Release.gpg"
         'datadog-agent.sysusers'
@@ -26,10 +27,10 @@ sha512sums=('SKIP'
             'SKIP'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '8878b8118bb980f43d8686dc87f516768c300bb7d05788bc3a8961aa4009e118b5a22a8f5c9759fd9bcd906243ef10bf06c4c4cf27c62b4d1a1e04bca274f78b')
-sha256sums_x86_64=('SKIP'
-                   '1eb2f6e8d9c0f05901f9e6c1df59c9902b112d79b58dcc28019fe0abcfc6b0c3')
-sha256sums_aarch64=('SKIP'
-                    'dc79b6867e9c3a729cf2dd4c55e63f1aa28a890338772358fcd97a8037123eaa')
+sha512sums_x86_64=('SKIP'
+                   'c59cb4b309c8432476ddeaacdcd4b23db6a29b7547f0db4ef6c0e97b71c9be9cb8b2e3a1b6aba1edcaeae9c480b16976a9f381a112637997753f3aae8cabbf98')
+sha512sums_aarch64=('SKIP'
+                    '0ae226bada4c4fcd14015dbac7ddbd7bbe5ae49f67a857a18b1e2802b086493be80d085e70d52c6dd853a720a84491284fe9f745afa92ebbb3bcbde51345809d')
 
 prepare() {
     case "$CARCH" in
@@ -63,9 +64,6 @@ package() {
 
     install -Dm644 "$srcdir"/datadog-agent.sysusers "$pkgdir"/usr/lib/sysusers.d/datadog-agent.conf
     install -Dm644 "$srcdir"/datadog-agent.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/datadog-agent.conf
-
-    mv "${pkgdir}/lib/systemd" "${pkgdir}/usr/lib/"
-    rmdir "${pkgdir}/lib"
 
     ln -sf /opt/datadog-agent/bin/agent/agent "${pkgdir}/usr/bin/datadog-agent"
 }

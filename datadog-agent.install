@@ -1,0 +1,16 @@
+#!/bin/sh
+
+post_install() {
+    /opt/datadog-agent/embedded/bin/installer postinst datadog-agent deb
+}
+
+pre_upgrade() {
+    /opt/datadog-agent/embedded/bin/installer prerm --upgrade datadog-agent deb
+}
+
+pre_remove() {
+    /opt/datadog-agent/embedded/bin/installer prerm datadog-agent deb
+}
+
+
+
