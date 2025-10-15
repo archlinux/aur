@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=2.8.4
-pkgrel=2
+pkgver=2.8.5
+pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/MHSanaei/$pkgname"
@@ -16,6 +16,7 @@ makedepends=(go)
 optdepends=(
   'acme.sh: Certificate Management'
   'fail2ban: IP Limit Management'
+  'openldap: LDAP integration'
   'openssh: SSH Port Forwarding Management'
   'speedtest-cli: Speedtest by Ookla'
   'ufw: Firewall Management'
@@ -23,7 +24,7 @@ optdepends=(
 options=(!debug)
 install=$pkgname.install
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('4758952f3f4c71637509cf54419354321b79c7ca14ccd48ae3d20242be331dfae458856baa47363b75402d7eb882e16881afa05e0dc94b329eba558616696894')
+b2sums=('9408a4cead4d56c8c70217aba031c61accea4ece6de540f590f86c3e3a7889e39636f680588180d2c1d9b535edfea6c9bf99df34d3ecd29a33a5a554ce8c3233')
 
 prepare() {
   cd $pkgname-$pkgver
