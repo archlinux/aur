@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
@@ -32,7 +32,7 @@ build() {
     sed -i -E "s|Name=MuseScore Studio.*|Name=MuseScore Studio ${pkgver}|"\
         "squashfs-root/org.musescore.MuseScore4portable.desktop"
     # We need to match the WMClass of the AppImage which is different from the provided desktop file
-    sed -i -E "s|StartupWMClass=.*|StartupWMClass=MuseScore4|"\
+    sed -i -E "s|StartupWMClass=.*|StartupWMClass=mscore4portable|"\
         "squashfs-root/org.musescore.MuseScore4portable.desktop"
 
     # Fix permissions; .AppImage permissions are 700 for all directories
