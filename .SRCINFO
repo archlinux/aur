@@ -1,0 +1,12 @@
+pkgbase = downjack-bin
+	pkgdesc = Set up your gitignore and license files like using a lumberjack
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chardoncs/downjack
+	arch = x86_64
+	license = MIT
+	depends = git
+	source = https://github.com/chardoncs/downjack/releases/download/v0.1.0/downjack-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 1cb0fe2a3c48fd40cca864428ac3cab20c2e6e56f82ff0b4e2558adebf566d11
+
+pkgname = downjack-bin
