@@ -1,7 +1,7 @@
 # Maintainer: RXMLP <rxmlp-aur@use.startmail.com>
 
 pkgname=hyprsessionmanager-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 OPTIONS=-debug
 pkgdesc="Session manager for Hyprland with Qt6 GUI"
