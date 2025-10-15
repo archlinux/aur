@@ -16,7 +16,7 @@ source=(
 noextract=()
 sha256sums=(
     "67c14bf242d302b05d466339d54f89e96b2b2477e9cde68367c6c3bd8f8fa49e"
-    "2f806cd13de2f712cdd6bc98d10d50ccd053f47ad585faf8d271a940329b54c4"
+    "e506354a746daf7fe842c7c5a79034dc4677b1efc3784683bfcfdbc38d6e2365"
 )
 
 package() {
