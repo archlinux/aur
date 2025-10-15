@@ -1,0 +1,15 @@
+pkgbase = gimp-plugin-xsanecli-git
+	pkgdesc = GIMP 3.0 plug-in for scanning via XSane
+	pkgver = 0.0.0.r5.d4fa7e8
+	pkgrel = 1
+	url = https://yingtongli.me/git/gimp-xsanecli
+	arch = any
+	license = GPL-3.0-or-later
+	depends = gimp
+	depends = xsane
+	provides = gimp-plugin-xsanecli
+	conflicts = gimp-plugin-xsanecli
+	source = git+https://yingtongli.me/git/RunasSudo/gimp-xsanecli.git
+	sha256sums = SKIP
+
+pkgname = gimp-plugin-xsanecli-git
