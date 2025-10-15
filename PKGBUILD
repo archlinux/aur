@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname="galaxy-flasher"
-pkgver=alpha.v2025.10.15
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"
@@ -22,12 +22,11 @@ depends=(
   'python-language-data'
 )
 makedepends=(
-  'git'
   'glib2'
 )
 
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("https://codeberg.org/ethical_haquer/Galaxy-Flasher/archive/v0.7.0-alpha.zip")
+sha256sums=('cf6618dddf352c2df94bae8887206b2f8b00259bde3eef83e409f80d58270eac')
 
 package() {
 	install -Dm 644 "$srcdir/$pkgname/assets/page.codeberg.ethicalhaquer.galaxyflasher.svg" "$pkgdir/usr/share/pixmaps/galaxy-flasher.svg"
@@ -45,7 +44,7 @@ package() {
 	install -d 755 "${pkgdir}/home/$USER/.config/galaxy-flasher"
 	chmod +x ${pkgdir}/home/$USER/.config/galaxy-flasher
 	cat <<EOF > "${pkgdir}/home/$USER/.config/galaxy-flasher/settings.json"
-{"odin4_file": "/bin/odin4", "flash_tool": "odin4", "thor_file": "/opt/thor-flash-utility/TheAirBlow.Thor.Shell"}
+{"odin4_file": "/bin/odin4", "flash_tool": "odin4", "thor_file": "/usr/bin/thor-flash-utility"}
 EOF
 	chown -R $USER:$USER ${pkgdir}/home/$USER/.config/galaxy-flasher
 	fi
