@@ -22,8 +22,8 @@ options=('!lto')
 pkgdesc='A static site generator for video publishing'
 pkgname=hyper8-bin
 pkgrel=1
-pkgver=0.24.0
-sha256sums_x86_64=('c3142d42be723d418178cabc5824a3647c92cd49cee145d470270737818e2ab8')
+pkgver=1.0.0
+sha256sums_x86_64=('e44ab832263f0ad17bb018c17c8be4b1553d2a024b89d93d4bedc420d52bb194')
 url='https://simonrepp.com/hyper8'
 
 source_x86_64=("https://simonrepp.com/hyper8/packages/hyper8_${pkgver}-1+deb12_amd64.deb")
