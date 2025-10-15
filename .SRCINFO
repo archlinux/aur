@@ -1,0 +1,17 @@
+pkgbase = libkyrka-git
+	pkgdesc = libkyrka implements the sanctum protocol in library form allowing you to establish sanctum tunnels directly from your application without the need for the actual daemon.
+	pkgver = r133.c8ac731
+	pkgrel = 1
+	url = https://github.com/jorisvink/libkyrka
+	arch = any
+	license = ISC
+	makedepends = libsodium
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = libsodium
+	provides = libkyrka
+	source = git+https://github.com/jorisvink/libkyrka.git
+	md5sums = SKIP
+
+pkgname = libkyrka-git
