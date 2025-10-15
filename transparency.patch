@@ -1,4 +1,4 @@
-From 5472a950c5fdc1ccd34ee8952a846ded0c8ae178 Mon Sep 17 00:00:00 2001
+From 69299f009fe91f96a73a4401ae3e984a8d60ae92 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.49.0
+2.51.0
 
 
-From ebd78f3ca83caa148fe19b5e32cc2d8477a0abe2 Mon Sep 17 00:00:00 2001
+From 388503fc816da4d1b1e8a91eea40f12954c8e560 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.49.0
+2.51.0
 
 
-From 0a681b06e24a5b2ffa84ceea614add94dadf8bb4 Mon Sep 17 00:00:00 2001
+From 1998dd0d2065139d5102dd57bff01cab858c4759 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -431,10 +431,10 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.49.0
+2.51.0
 
 
-From 4f43a3ad6fa4e431a65bbf05c53afde9753ff8b0 Mon Sep 17 00:00:00 2001
+From 9e1f87e2f9a5bb59994d48c0110d172f35fb856a Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -889,10 +889,10 @@ index e18510c4..17724733 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/ca.po b/po/ca.po
-index b59dea1f..e2db3c00 100644
+index e51f4e84..2353d22b 100644
 --- a/po/ca.po
 +++ b/po/ca.po
-@@ -2584,3 +2584,15 @@ msgstr "Ha fallat l'anàlisi dels arguments: %s\n"
+@@ -2578,3 +2578,15 @@ msgstr "Ha fallat l'anàlisi dels arguments: %s\n"
  #~ msgctxt "theme variant"
  #~ msgid "Dark"
  #~ msgstr "Fosc"
@@ -1837,10 +1837,10 @@ index bc2bb7f0..d2a83a00 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/lt.po b/po/lt.po
-index 8473eef9..9a242ad2 100644
+index 73aa4359..fa9c7383 100644
 --- a/po/lt.po
 +++ b/po/lt.po
-@@ -2796,3 +2796,15 @@ msgstr "Nepavyko apdoroti argumentų: %s\n"
+@@ -2868,3 +2868,15 @@ msgstr "Nepavyko apdoroti argumentų: %s\n"
  
  #~ msgid "Whether to use a dark theme variant"
  #~ msgstr "Ar naudoti tamsų temos variantą"
@@ -2828,10 +2828,10 @@ index e3feef65..6371c036 100644
  #~ msgid "_Next Tab"
  #~ msgstr "_Варақаи навбатӣ"
 diff --git a/po/th.po b/po/th.po
-index 63263749..496da331 100644
+index bfed2f62..ef4ce75a 100644
 --- a/po/th.po
 +++ b/po/th.po
-@@ -2308,23 +2308,23 @@ msgstr "ปิ_ดหน้าต่าง"
+@@ -2929,17 +2929,17 @@ msgstr "แจงอาร์กิวเมนต์ไม่สำเร็จ
  #~ msgid "Default size:"
  #~ msgstr "ขนาดปริยาย:"
  
@@ -2855,25 +2855,28 @@ index 63263749..496da331 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "ตามโลแคลปัจจุบัน"
- 
--#~ msgid "_Set Title…"
--#~ msgstr "ตั้งป้าย_ชื่อ…"
-+msgid "_Set Title…"
-+msgstr "ตั้งป้าย_ชื่อ…"
- 
- #~ msgid "_Next Tab"
- #~ msgstr "แท็บ_ถัดไป"
-@@ -2803,8 +2803,8 @@ msgstr "ปิ_ดหน้าต่าง"
+@@ -3343,8 +3343,8 @@ msgstr "แจงอาร์กิวเมนต์ไม่สำเร็จ
  #~ msgid "_Solid color"
  #~ msgstr "สี_ทึบ"
  
 -#~ msgid "_Transparent background"
 -#~ msgstr "พื้นหลังโปร่งแ_สง"
 +msgid "Transparent background"
-+msgstr "พื้นหลังโปร่งแสง"
++msgstr "พื้นหลังโปร่งแ_สง"
  
  #~ msgid ""
- #~ "You already have a profile called “%s”. Do you want to create another "
+ #~ "You already have a profile called “%s”. Do you want to create another profile with the same name?"
+@@ -3773,8 +3773,8 @@ msgstr "แจงอาร์กิวเมนต์ไม่สำเร็จ
+ #~ msgid "_Keyboard Shortcuts..."
+ #~ msgstr "ปุ่ม_ลัด..."
+ 
+-#~ msgid "_Set Title..."
+-#~ msgstr "ตั้ง_หัวเรื่อง..."
++msgid "_Set Title..."
++msgstr "ตั้ง_หัวเรื่อง..."
+ 
+ #~ msgid ""
+ #~ "True if the cursor should blink when the terminal has focus, for windows/tabs with this profile."
 diff --git a/po/tr.po b/po/tr.po
 index 8e5489f3..0057036c 100644
 --- a/po/tr.po
@@ -3156,5 +3159,5 @@ index d692f648..4bdaac8a 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.49.0
+2.51.0
 
