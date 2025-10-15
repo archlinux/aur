@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.65.0
+pkgver=1.65.2
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -52,13 +52,11 @@ prepare() {
   # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base}).
-  # Work around spurious use of lodash/debounce instead of lodash.debounce.
   # Removing @theia/ai-vercel-ai because it pulls in opentelemetry.
   # Add postinstall script.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
   grep -vE "@theia/(ai-vercel-ai|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
-  jq '.dependencies.lodash = "^4.0.8" |
-      .scripts.postinstall = "theia-patch"' >package.json
+  jq '.scripts.postinstall = "theia-patch"' >package.json
 }
 
 build() {
