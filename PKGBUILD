@@ -5,17 +5,14 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-flatpak
-pkgver=11.7.3
-_commit=06c846c0310030ee45870b190359553b1c105f77
+pkgver=11.7.3+10+g52ee429
+_commit=52ee429e1fd8555d0fb54d8d46b968a46b3aefe8            
 pkgrel=1
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/$_pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-    'desktop-file-utils'
-    'gnutls'
-    'gtk4'
     'libadwaita'
     'libhandy'
     'libnotify'
@@ -23,20 +20,18 @@ depends=(
     'pamac-cli'
 )
 optdepends=(
-    'lxsession: needed for authentification in Xfce, LXDE etc.'
-    'polkit-gnome: needed for authentification in Cinnamon, Gnome'
-    'plymouth: offline upgrades'
+	'mate-polkit: authentication agent for Mate'
+	'polkit-gnome: legacy authentication agent for Gnome'
+	'polkit-kde-agent: authentication agent for KDE'
+	'polkit-qt5: Qt5 based authentication agent'
+	'plymouth: offline upgrades'
 )
 makedepends=(
     'asciidoc'
-    'gettext'
     'git'
     'gobject-introspection'
-    'itstool'
     'meson'
-    'ninja'
     'vala'
-    'xorgproto'
 )
 provides=("pamac=$pkgver-$pkgrel")
 conflicts=(
@@ -47,13 +42,13 @@ conflicts=(
 )
 options=(!emptydirs)
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('d9df19c697a000de65514617545323ed7e7ada162aaceed6d91827d0775b9d56')
+sha256sums=('7f55b73884c077fcf7b27f8682871a40b941802e9038229ac2b14ef4f816c0d1')
 
-#_srcdir="$_pkgname-$pkgver"
+_srcdir="$_pkgname-$pkgver"
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {

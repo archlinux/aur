@@ -1,6 +1,6 @@
 pkgbase = pamac-flatpak
 	pkgdesc = A GUI frontend for libalpm. With Flatpak support
-	pkgver = 11.7.3
+	pkgver = 11.7.3+10+g52ee429
 	pkgrel = 1
 	url = https://github.com/manjaro/pamac
 	arch = i686
@@ -11,32 +11,27 @@ pkgbase = pamac-flatpak
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = asciidoc
-	makedepends = gettext
 	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = itstool
 	makedepends = meson
-	makedepends = ninja
 	makedepends = vala
-	makedepends = xorgproto
-	depends = desktop-file-utils
-	depends = gnutls
-	depends = gtk4
 	depends = libadwaita
 	depends = libhandy
 	depends = libnotify
 	depends = libpamac-flatpak
 	depends = pamac-cli
-	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
-	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
+	optdepends = mate-polkit: authentication agent for Mate
+	optdepends = polkit-gnome: legacy authentication agent for Gnome
+	optdepends = polkit-kde-agent: authentication agent for KDE
+	optdepends = polkit-qt5: Qt5 based authentication agent
 	optdepends = plymouth: offline upgrades
-	provides = pamac=11.7.3-1
+	provides = pamac=11.7.3+10+g52ee429-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-all
 	conflicts = pamac-nosnap
 	options = !emptydirs
-	source = git+https://github.com/manjaro/pamac.git#commit=06c846c0310030ee45870b190359553b1c105f77
-	sha256sums = d9df19c697a000de65514617545323ed7e7ada162aaceed6d91827d0775b9d56
+	source = git+https://github.com/manjaro/pamac.git#commit=52ee429e1fd8555d0fb54d8d46b968a46b3aefe8
+	sha256sums = 7f55b73884c077fcf7b27f8682871a40b941802e9038229ac2b14ef4f816c0d1
 
 pkgname = pamac-flatpak
