@@ -1,6 +1,6 @@
 # Maintainer: Clement Vassaux <locoxduturfu@gmail.com>
 pkgname=kotofetch
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 pkgdesc="Minimalist fetch tool for Japanese quotes (written in Rust)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "https://raw.githubusercontent.com/hxpe-dev/kotofetch/v$pkgver/README.md"
   "https://raw.githubusercontent.com/hxpe-dev/kotofetch/v$pkgver/LICENSE"
 )
-sha256sums=('e0c430e3037d218cde302ea5f899ecfd33280c6304ceafef96a188c4d2697305' 'SKIP' 'SKIP')
+sha256sums=('5340709befbf5935342e4bf5942e75f09087c012019e8fd2a924108867db3899' 'SKIP' 'SKIP')
 options=('!debug')
 
 package() {
