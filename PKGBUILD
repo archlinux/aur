@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notion-electron-bin
 _pkgname='Notion Electron'
-pkgver=1.7.10
+pkgver=1.7.11
 _electronversion=38
 pkgrel=1
 pkgdesc="An unofficial desktop application for Notion, built using Electron.(Prebuilt version.Use system-wide electron)"
@@ -21,12 +21,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/anechunaev/notion-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ca46cf5a2cf8af4136a47da23a230615c161e71d3184587229dcc0fba60f8653'
+sha256sums=('72463e1cee8e203b9575e19ae0001a53cc814d2a8c5597de288d3b61ca5904b9'
             'f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
