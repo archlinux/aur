@@ -3,12 +3,12 @@
 # Contributor: Kim Scarborough <sluggo@unknown.nu>
 
 pkgname=cantata-git
-pkgver=3.3.1.r10.g60aaf95
-pkgrel=1
+pkgver=3.3.1.r21.gdc5a0ce
+pkgrel=2
 pkgdesc="Qt6 graphical client for Music Player Daemon (MPD), nullobsi fork"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/nullobsi/cantata"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(qt6-base
          qt6-multimedia
          qt6-svg
@@ -24,6 +24,7 @@ depends=(qt6-base
          udisks2
          ffmpeg
 		 kitemviews
+		 karchive
 
         avahi gcc-libs zlib glibc
          )
