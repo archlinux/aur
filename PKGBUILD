@@ -23,6 +23,12 @@ package() {
     # /usr/lib
     mkdir -p "$pkgdir/usr/lib/$pkgname"
     cp -r lib/* "$pkgdir/usr/lib/$pkgname"
+    # Remove unneeded dependencies for other platforms
+    rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/linux2/"
+    rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/linux2-32/"
+    rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/sparc/"
+    rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/sunos5/"
+    rm -rf "$pkgdir/usr/lib/panopta-agent/dependencies/freebsd*/"
 
     # /usr/bin
     mkdir -p "$pkgdir/usr/bin/$pkgname"
