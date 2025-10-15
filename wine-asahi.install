@@ -1,0 +1,25 @@
+post_install() {
+    echo "Wine ARM64EC has been installed."
+    echo ""
+    echo "IMPORTANT: To use ARM64EC support, you need to load the ntsync module:"
+    echo "    sudo modprobe ntsync"
+    echo ""
+    echo "To load it automatically at boot, add 'ntsync' to /etc/modules-load.d/ntsync.conf:"
+    echo "    echo 'ntsync' | sudo tee /etc/modules-load.d/ntsync.conf"
+    echo ""
+    echo "This Wine build includes experimental ARM64EC support for running"
+    echo "Windows x86 and x86_64 applications on ARM64 via FEX-Emu."
+    echo ""
+    echo "Note: This is experimental software and may be unstable."
+}
+
+post_upgrade() {
+    echo "Wine ARM64EC has been upgraded."
+    echo ""
+    echo "Remember to update your wine prefix:"
+    echo "    wineboot -u"
+}
+
+post_remove() {
+    echo "Wine ARM64EC has been removed."
+}
