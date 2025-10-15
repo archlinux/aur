@@ -1,0 +1,22 @@
+pkgbase = spider-git
+	pkgdesc = Install and integrate web apps into the GNOME desktop
+	pkgver = v0.0.8
+	pkgrel = 1
+	url = https://github.com/Zaedus/spider
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = curl
+	provides = spider
+	conflicts = spider
+	source = spider-git::git+https://github.com/Zaedus/spider.git#branch=development
+	sha256sums = SKIP
+
+pkgname = spider-git
