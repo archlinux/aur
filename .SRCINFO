@@ -1,11 +1,10 @@
 pkgbase = perl-string-copyright
 	pkgdesc = Representation of text-based copyright statements
 	pkgver = 0.003014
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/build-common-team/string-copyright
 	arch = any
 	license = AGPL-3.0-or-later
-	checkdepends = perl-test2-suite
 	checkdepends = perl-test-without-module
 	depends = perl
 	depends = perl-exporter-tiny
