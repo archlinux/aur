@@ -2,8 +2,8 @@
 # Contributor: Kimiblock Zhou <pn3535 at icloud dot com>
 
 pkgname=qcm
-pkgver=1.3.0
-pkgrel=4
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -34,7 +34,7 @@ makedepends=(
 )
 optdepends=('qcm-ncm-plugin: Netease Cloud Music plugin')
 source=(
-	"git+${url}.git#tag=v${pkgver}"
+	"git+${url}.git#tag=${pkgver}"
 	"git+https://github.com/hypengw/rstd.git"
 	"git+https://github.com/hypengw/ncrequest.git"
 	"git+https://github.com/hypengw/kstore.git"
@@ -42,7 +42,7 @@ source=(
 	"git+https://github.com/ilqvya/random.git"
 	"fix-kdsingleapplication.patch"
 )
-sha256sums=('cd2cdea3c2e1340bb36cb7446b89acef3940afe39032aef07e2451bf378f62d1'
+sha256sums=('5c501bbcaa01bf34b64293f8fbe403e8b7c6a643a030bd08da68ddd6776b05da'
             'SKIP'
             'SKIP'
             'SKIP'
