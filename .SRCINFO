@@ -1,0 +1,13 @@
+pkgbase = discord-updater-tool
+	pkgdesc = A tool to download and install the latest Discord version to resolve update issues.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/execrooted/discord-updater
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/execrooted/discord-updater/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = discord-updater-tool
