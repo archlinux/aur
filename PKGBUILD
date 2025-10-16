@@ -29,7 +29,7 @@ provides=(hydownloader)
 source=(
   "git+https://gitgud.io/thatfuckingbird/hydownloader.git#commit=$_commit"
 )
-sha512sums=('e2f5b9211473cde7c85fdcb164596f2ed26977d349cefe4ecf1bef9bab3a35ab68fcc752eb9d83a3ec1f5cbba007fc5e780681ec57840e99aa437cc3956d97f7')
+sha512sums=('4fe921740d7da8daf5ab105141a6366e66ea8cec6bfdcf6f29458c7a5b8b0a2ded177ce14bbc1b2a45f0106f3713f92239a3801a657187801a36fd93686211ac')
 conflicts=(hydownloader-git)
 optdepends=(
   'hydownloader-systray: Remote management GUI for hydownloader'
