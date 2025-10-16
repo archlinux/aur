@@ -1,7 +1,8 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=tabdance
-pkgver=0.0.1
+pkgver=0.0.24
 pkgrel=1
+pkgdesc='WIP: private preview'
 arch=('x86_64')
 url='https://tab.dance'
 license=('custom: commercial')
@@ -9,9 +10,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 build() {
-	echo TODO
+    gh release download --repo tab-dance/tabdance "v${pkgver}" --pattern "tabdance_${pkgver}_linux_amd64.tar.gz"
+    tar -xzf "tabdance_${pkgver}_linux_amd64.tar.gz" tabdance
 }
 
 package() {
-	echo TODO
+    mkdir -p "${pkgdir}/usr/bin"
+    cp "${srcdir}/tabdance" "${pkgdir}/usr/bin/"
 }
