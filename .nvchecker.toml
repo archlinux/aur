@@ -1,0 +1,5 @@
+["dtop-bin"]
+source = "github"
+github = "amir20/dtop"
+use_latest_release = true
+prefix = "v"
