@@ -1,7 +1,7 @@
 pkgbase = rustpython
 	pkgdesc = A Python Interpreter written in Rust
-	pkgver = 0.4.0+44
-	pkgrel = 2
+	pkgver = 0.4.0+51
+	pkgrel = 1
 	url = https://github.com/RustPython/RustPython
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rustpython
 	depends = libffi
 	depends = openssl
 	depends = xz
-	source = rustpython-0.4.0+44.tar.gz::https://github.com/RustPython/RustPython/archive/refs/tags/2025-08-25-main-44.tar.gz
-	sha256sums = 2a923fe97710eb2f7cdb86941d0f42b6a233f7d51aaa5ef4f4aee17c845a6b22
+	source = rustpython-0.4.0+51.tar.gz::https://github.com/RustPython/RustPython/archive/refs/tags/2025-10-13-main-51.tar.gz
+	sha256sums = e14d1607bab224286b87d9fc709d5950079726d928075399050334e448d0d423
 
 pkgname = rustpython
