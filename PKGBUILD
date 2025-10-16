@@ -5,7 +5,7 @@
 # To refresh with a new build, delete previously downloaded postgresql-snapshot.tar.bz2
 
 pkgbase=postgresql-devel
-pkgver=18devel
+pkgver=19devel
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
@@ -13,8 +13,9 @@ url='https://www.postgresql.org/'
 arch=('x86_64')
 # provides=("postgresql")
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
-             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt')
+depends=('bash' 'gcc-libs' 'glibc' 'icu' 'krb5' 'libldap' 'libxml2' 'libxslt' 'llvm-libs'
+    'openssl' 'pam' 'readline' 'systemd-libs' 'util-linux-libs' 'lz4' 'zlib' 'zstd')
+makedepends=('python' 'perl' 'tcl' 'systemd' 'llvm' 'clang' 'libxslt' 'docbook-xml' 'docbook-xsl')
 source=(https://ftp.postgresql.org/pub/snapshot/dev/postgresql-snapshot.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
@@ -25,7 +26,7 @@ source=(https://ftp.postgresql.org/pub/snapshot/dev/postgresql-snapshot.tar.bz2
         pgenv.sh)
 sha256sums=('SKIP'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
-            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
+            'f579fe03f93418855f597e8f437fda7e3520e08296709c6c8d7102ab90f8451f'
             'cfb3bee0f7fc98c8c81aa3a73398bc0446822af86479b5a8ee0c67faae46ec1c'
             '55c7282fdb116741a5de1c572a1b727b6c53a38b8c13d7c4b5d7a62e654084b2'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
@@ -122,7 +123,7 @@ package_postgresql-devel-libs() {
   # these headers are needed by the public headers of the interfaces
   install -m 644 pg_config.h "${pkgdir}/opt/${pkgbase}/include"
   install -m 644 pg_config_os.h "${pkgdir}/opt/${pkgbase}/include"
-  install -m 644 pg_config_ext.h "${pkgdir}/opt/${pkgbase}/include"
+  #install -m 644 pg_config_ext.h "${pkgdir}/opt/${pkgbase}/include"
   install -m 644 postgres_ext.h "${pkgdir}/opt/${pkgbase}/include"
   install -m 644 libpq/libpq-fs.h "${pkgdir}/opt/${pkgbase}/include/libpq"
   install -m 644 pg_config_manual.h "${pkgdir}/opt/${pkgbase}/include"
