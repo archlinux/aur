@@ -3,24 +3,21 @@
 pkgname=droplet
 pkgver=0.1.3
 pkgrel=1
-pkgdesc="A colorful terminal weather animation tool written in Rust (rain and snow effects)"
-arch=('x86_64')
-url="https://github.com/execrooted/droplet"
+pkgdesc="droplet is no longer a package. Please run paru -S root_rain to install the new updated package. You can remove this one with paru -R droplet"
+arch=('any')
+url="https://github.com/execrooted/root_rain"
 license=('MIT')
 depends=()
-makedepends=('rust' 'cargo')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
-
-build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
-}
+makedepends=()
+source=()
+sha256sums=()
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # This package is deprecated - it just prints a message
+    mkdir -p "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/droplet" << 'SCRIPT_EOF'
+#!/bin/bash
+echo "droplet is no longer a package. Please run paru -S root_rain to install the new updated package. You can remove this one with paru -R droplet"
+SCRIPT_EOF
+    chmod +x "$pkgdir/usr/bin/droplet"
 }
-
