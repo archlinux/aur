@@ -1,7 +1,7 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=kissat
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A keep it simple and clean bare metal SAT solver written in C"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 conflicts=('kitty')
 _srcname="${pkgname}-rel-${pkgver}"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arminbiere/kissat/archive/refs/tags/rel-${pkgver}.tar.gz")
-b2sums=('f098e70db9f054b250893615c9ca76061b9f2bf961878be21f7fb7f0844836e95beba132d1ee875810b4b7acb2bc9a3ffa271be2fc58c3911f89ebc6fd011d5f')
+b2sums=('cb77022b27fabdabe4a1ce58c84f41dd6035811068a2c15e912b7550ea4b29ab0f6ccfec1ec4936e237daffedd62c9719b7a72c4d6dc1557d74b9a55ac58d602')
 
 build() {
     cd "${srcdir}/${_srcname}"
