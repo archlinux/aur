@@ -1,6 +1,6 @@
 # Maintainer: Chip <itsjustchipoverhere@proton.me>
 
-pkgname=rblx-silver
+pkgname=rblx-silver-bin
 pkgver=0.0.2
 pkgrel=1
 pkgdesc="A bootstrapper for Sober"
