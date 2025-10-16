@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=bazaar
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub"
 arch=('x86_64')
@@ -35,7 +35,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9010abc6663f43e94ef98b13326725d54b6cb0d501c8068a545fc7fefe258006')
+sha256sums=('37ffd2687dd954a15c07f556efd8d386574a929ba85197bbb14ecc478d4956c8')
 
 build() {
 	cd "${pkgname}-${pkgver}"
