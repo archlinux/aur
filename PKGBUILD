@@ -13,7 +13,7 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('BSD-2-Clause')
 
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}"{,-git})
 provides=("${_pkgexecs[@]}")
 
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"

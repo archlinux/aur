@@ -8,6 +8,7 @@ pkgbase = slick-bin
 	arch = aarch64
 	license = BSD-2-Clause
 	conflicts = slick
+	conflicts = slick-git
 	source = slick-0.0.17.tgz::https://github.com/mcandre/slick/releases/download/v0.0.17/slick-0.0.17.tgz
 	source = README-0.0.17.md::https://raw.githubusercontent.com/mcandre/slick/v0.0.17/README.md
 	source = LICENSE-0.0.17::https://raw.githubusercontent.com/mcandre/slick/v0.0.17/LICENSE.md
