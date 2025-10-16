@@ -1,0 +1,29 @@
+pkgbase = libinput-epp
+	pkgdesc = Replaces Adaptive acceleration with Windows' Enhance Pointer Precision
+	pkgver = 1.29.1
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/tehabstract/libinput-epp
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = check
+	depends = mtdev
+	depends = libevdev
+	depends = libwacom
+	depends = systemd-libs
+	depends = glibc
+	optdepends = gtk4: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-libevdev: libinput measure
+	optdepends = python-yaml: used by various tools
+	provides = libinput=1.29.1
+	provides = libinput
+	provides = libinput.so=10-64
+	conflicts = libinput
+	source = libinput-epp-1.29.1.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/1.29.1/libinput-epp-1.29.1.tar.gz
+	sha256sums = 5634b9d96db19a359560dd94e0bbd931030c9a526ce7299827b1ca7aa9ee9583
+
+pkgname = libinput-epp
