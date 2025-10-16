@@ -1,0 +1,17 @@
+pkgbase = foondot
+	pkgdesc = A very simple dotfile sync utility written i Go.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/foonly/foondot
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = go
+	makedepends = make
+	provides = foondot
+	conflicts = foondot
+	options = !debug
+	options = !lto
+	source = foondot-0.4.1.tar.gz::https://github.com/foonly/foondot/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 332dba4edec277fc01dd0de777c7721f859827eae344e395280c0744f191516a
+
+pkgname = foondot
