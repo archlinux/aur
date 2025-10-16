@@ -36,6 +36,7 @@ pkgbase = python-mlflow
 	depends = python-sqlparse
 	depends = python-opentelemetry-sdk
 	depends = python-opentelemetry-exporter-otlp-proto-common
+	depends = python-databricks-agent
 	optdepends = python-scikit-learn: for mlflow[extras, pipelines]
 	optdepends = python-pyarrow: for mlflow[extras, pipelines]
 	optdepends = python-boto3: for mlflow[extras]

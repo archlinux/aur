@@ -14,7 +14,7 @@ depends=('python' 'python-alembic' 'python-docker' 'python-flask' 'python-numpy'
     'python-entrypoints' 'python-gitpython' 'python-pyaml'
     'python-protobuf' 'python-pytz' 'python-requests' 'python-packaging'
     'python-importlib-metadata' 'python-sqlparse' 'python-opentelemetry-sdk'
-    'python-opentelemetry-exporter-otlp-proto-common', 'python-databricks-agent')
+    'python-opentelemetry-exporter-otlp-proto-common' 'python-databricks-agent')
 optdepends=('python-scikit-learn: for mlflow[extras, pipelines]'
             'python-pyarrow: for mlflow[extras, pipelines]'
             'python-boto3: for mlflow[extras]'
