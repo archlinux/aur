@@ -21,21 +21,15 @@ aarch64)
 	;;
 esac
 
-source=("buck2-${_platform}.zst::https://github.com/facebook/buck2/releases/download/${pkgver}/buck2-${_platform}.zst")
+source=("https://github.com/facebook/buck2/releases/download/latest/buck2-${_platform}.zst")
 
 package() {
 	cd "$srcdir"
 
-	_homedir=$(eval echo "~$USER")
-	_cargo_bin_dir="$_homedir/.cargo/bin"
-
-	mkdir -p "$pkgdir/$_cargo_bin_dir"
-
-	zstd -d "buck2-${_platform}.zst" -c >buck2
-	install -Dm755 buck2 "$pkgdir/$_cargo_bin_dir/buck2"
+	zstd -d -f "buck2-${_platform}.zst" -c >buck2
+	install -Dm755 buck2 "$pkgdir/usr/bin/buck2"
 }
 
 post_install() {
-	echo "buck2 has been installed to ~/.cargo/bin/buck2"
-	echo "Make sure ~/.cargo/bin/ is in your PATH"
+	echo "buck2 has been installed to /usr/bin/buck2"
 }

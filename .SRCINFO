@@ -9,7 +9,7 @@ pkgbase = buck2-bin
 	license = MIT
 	depends = zstd
 	options = !strip
-	source = buck2-x86_64-unknown-linux-gnu.zst::https://github.com/facebook/buck2/releases/download/2025.10.13/buck2-x86_64-unknown-linux-gnu.zst
+	source = https://github.com/facebook/buck2/releases/download/latest/buck2-x86_64-unknown-linux-gnu.zst
 	sha256sums = 46667d48fcff3534239582a1524df7135d8d903328a4d73aaae15cf3c7ad39f8
 
 pkgname = buck2-bin
