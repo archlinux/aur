@@ -3,7 +3,7 @@
 _basename="zig"
 pkgver=0.14.1
 _pkgver="${pkgver%.*}"
-pkgrel=2
+pkgrel=3
 
 _pkgname="${_basename}${_pkgver}"
 pkgname="${_pkgname}-bin"
@@ -27,6 +27,9 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+)
+options=(
+  '!strip'
 )
 source_aarch64=("${url}/download/${pkgver}/${_basename}-aarch64-linux-${pkgver}.tar.xz"
                 "${url}/download/${pkgver}/${_basename}-aarch64-linux-${pkgver}.tar.xz.minisig")
