@@ -1,6 +1,6 @@
 # Maintainer: execrooted <execrooted@gmail.com>
 
-pkgname=discord-updater-tool
+pkgname=discrd-updater
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A tool to download and install the latest Discord version to resolve update issues."
@@ -19,7 +19,7 @@ build() {
 
 package() {
     cd "$srcdir/discord-updater-$pkgver"
-    install -Dm755 "target/release/discord-updater" "$pkgdir/usr/bin/discord-updater-tool"
+    install -Dm755 "target/release/discord-updater" "$pkgdir/usr/bin/discrd-updater"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

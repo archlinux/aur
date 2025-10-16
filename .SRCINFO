@@ -1,4 +1,4 @@
-pkgbase = discord-updater-tool
+pkgbase = discrd-updater
 	pkgdesc = A tool to download and install the latest Discord version to resolve update issues.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = discord-updater-tool
 	source = https://github.com/execrooted/discord-updater/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = discord-updater-tool
+pkgname = discrd-updater
