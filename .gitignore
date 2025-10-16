@@ -1,6 +1,5 @@
-*
-
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!yarc-launcher.desktop
+pkg/
+src/
+*.log
+*.tar
+*.tar.*
