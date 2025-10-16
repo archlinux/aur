@@ -7,7 +7,7 @@ pkgdesc="A color picker for the terminal"
 arch=('x86_64')
 url="https://github.com/ChausseBenjamin/termpicker"
 license=('Beerware')
-options=()
+options=('!debug')
 depends=()
 makedepends=('git' 'go' 'upx')
 optdepends=(
@@ -24,8 +24,10 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/${pkgname}"
   commit_hash=$(git rev-parse --short HEAD)
+  export GOAMD64=v3
+  export CGO_ENABLED=0
   go generate ./...
-  go build -ldflags "-s -w -X main.version=${pkgver}-git" -o termpicker .
+  go build -trimpath -ldflags "-s -w -X main.version=${pkgver}-git" -o termpicker .
   upx -9 termpicker
 }
 

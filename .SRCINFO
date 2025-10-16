@@ -13,6 +13,7 @@ pkgbase = termpicker-git
 	provides = termpicker
 	conflicts = termpicker
 	conflicts = termpicker-bin
+	options = !debug
 	source = termpicker-git::git+https://github.com/ChausseBenjamin/termpicker.git#tag=v1.5.0
 	sha256sums = SKIP
 
