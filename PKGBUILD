@@ -85,11 +85,12 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/$_pkgname/
+  export LD_PRELOAD=          # kill fakeroot crash
+  cd "$srcdir/$_pkgname"
 	
 	# config
-  install -Dm 644 run/john.conf -t "${pkgdir}/etc/john" 2>/dev/null || true
-  install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john" 2>/dev/null || true
+  install -Dm 644 run/john.conf -t "${pkgdir}/etc/john"
+  install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
 
   # opencl
   install -d "${pkgdir}/usr/share/john/opencl"
