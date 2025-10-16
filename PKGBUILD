@@ -11,8 +11,6 @@ depends=(
   'python>=3.10'
   'python-boto3>=1'
   'python-botocore'
-  'python-databricks-connect'
-  'python-databricks-sdk>=0.58.0'
   'python-dataclasses-json'
   'python-httpx'
   'python-jinja>=3.0.0'
@@ -23,8 +21,6 @@ depends=(
   'python-tiktoken>=0.8.0'
   'python-tqdm'
   'python-urllib3>=2.0'
-  'python-whenever>=0.7.3'
-  'python-whenever<0.7.4'
 )
 makedepends=(python-installer)
 _wheel="databricks_agents-${pkgver}-py3-none-any.whl"
