@@ -11,6 +11,7 @@ pkgbase = crit-bin
 	depends = gcc-libs
 	provides = crit
 	conflicts = crit
+	conflicts = crit-git
 	source = crit-0.0.10.tgz::https://github.com/mcandre/crit/releases/download/v0.0.10/crit-0.0.10.tgz
 	source = README-0.0.10.md::https://raw.githubusercontent.com/mcandre/crit/v0.0.10/README.md
 	source = LICENSE-0.0.10::https://raw.githubusercontent.com/mcandre/crit/v0.0.10/LICENSE.md

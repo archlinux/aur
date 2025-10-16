@@ -15,8 +15,8 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('BSD-2-Clause')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs')
+conflicts=("${_pkgname}"{,-git})
 
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
