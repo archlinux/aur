@@ -1,0 +1,13 @@
+pkgbase = rpi-keyboard-config-git
+	pkgdesc = A Python library and command-line tool for configuring Raspberry Pi keyboards, including keymap customisation and RGB LED control
+	pkgver = 20250915.r1.771a82d
+	pkgrel = 1
+	url = https://github.com/raspberrypi/rpi-keyboard-config
+	arch = any
+	license = BSD-3-Clause
+	depends = python
+	provides = rpi-keyboard-config
+	source = git+https://github.com/raspberrypi/rpi-keyboard-config
+	sha512sums = SKIP
+
+pkgname = rpi-keyboard-config-git
