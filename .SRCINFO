@@ -5,7 +5,6 @@ pkgbase = pgadmin4-server
 	url = https://www.pgadmin.org/
 	arch = x86_64
 	license = PostgreSQL
-	makedepends = git
 	makedepends = python
 	makedepends = python-pip
 	makedepends = postgresql-libs
