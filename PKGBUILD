@@ -27,8 +27,11 @@ source=("$_pkgname::git+https://github.com/openwall/john.git#branch=bleeding-jum
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
