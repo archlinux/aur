@@ -1,6 +1,6 @@
 _pyname=pyexiv2
 pkgname=python-${_pyname}
-pkgver=2.15.4
+pkgver=2.15.5
 pkgrel=1
 pkgdesc="Read and write image metadata, including EXIF, IPTC, XMP, ICC Profile"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=()
 conflicts=('python-exiv2')
 source=("https://github.com/LeoHsiao1/pyexiv2/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('44771e2034a77199c1d6fbbb64e3c961c831951a7005ceff2dfbd3eaaed7f9b4e3a5b44546beb4d9e4d37e2f63a10aa7a9ff646f083806e98c53ec2dffcae995')
+b2sums=('35b030ba0e7e65e788c4d37d11c93d3ef71911211bd9e6b0fa823b9a3935a6b3f823ea69e62f38a4a957127e1268e07d0c3925948900d07ed782213ac71a7b03')
 
 build() {
   cd "${_pyname}-${pkgver}/${_pyname}/lib"
