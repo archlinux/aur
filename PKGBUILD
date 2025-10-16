@@ -6,25 +6,14 @@
 
 : ${_build_clang:=false}
 
-: ${_build_level:=1}
-: ${_build_git:=true}
-
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-
-unset _pkgtype
-[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
-[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
-[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
 _pkgname="dolphin-emu-primehack"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2503.r9.g997ae46
-pkgrel=2
+pkgname="$_pkgname-git"
+pkgver=2503.1.r10.gfb402c8
+pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 
 depends=(
   'alsa-lib'
@@ -66,113 +55,50 @@ if [[ "${_build_clang::1}" == "t" ]]; then
     llvm
   )
 else
-  options+=(!lto)
+  options+=('!lto')
 fi
 
-_source_main() {
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-  options+=(!emptydirs)
+options+=(!emptydirs)
 
-  _pkgsrc="xiota.primehack"
-  source=("$_pkgsrc"::"git+$url.git#branch=${_branch:-wip}")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-_source_dolphin() {
-  local _sources_add=(
-    #'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
-    #'curl'::'git+https://github.com/curl/curl.git'
-    'cyan4973.xxhash'::'git+https://github.com/Cyan4973/xxHash.git'
-    #'dolphin-emu.ext-win-ffmpeg'::'git+https://github.com/dolphin-emu/ext-win-ffmpeg.git'
-    #'dolphin-emu.ext-win-qt'::'git+https://github.com/dolphin-emu/ext-win-qt.git'
-    'epezent.implot'::'git+https://github.com/epezent/implot.git'
-    'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
-    #'google.googletest'::'git+https://github.com/google/googletest.git'
-    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
-    #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
-    'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-    #'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
-    #'libusb'::'git+https://github.com/libusb/libusb.git'
-    #'libusb.hidapi'::'git+https://github.com/libusb/hidapi.git'
-    'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
-    #'lz4'::'git+https://github.com/lz4/lz4.git'
-    'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
-    'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
-    #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'
-    'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
-    #'sfml'::'git+https://github.com/SFML/SFML.git'
-    'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'
-    'zlib-ng'::'git+https://github.com/zlib-ng/zlib-ng.git'
-    'zlib-ng.minizip-ng'::'git+https://github.com/zlib-ng/minizip-ng.git'
-  )
-
-  local _p
-  for _p in ${_sources_add[@]}; do
-    source+=("$_p")
-    sha256sums+=('SKIP')
-  done
-
-  _prepare_dolphin() (
-    cd "$srcdir/$_pkgsrc"
-    local _submodules=(
-      #'bylaws.libadrenotools'::'Externals/libadrenotools'
-      #'curl'::'Externals/curl/curl'
-      'cyan4973.xxhash'::'Externals/xxhash/xxHash'
-      #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
-      #'dolphin-emu.ext-win-qt'::'Externals/Qt'
-      'epezent.implot'::'Externals/implot/implot'
-      'fmtlib.fmt'::'Externals/fmt/fmt'
-      #'google.googletest'::'Externals/gtest'
-      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
-      #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
-      'khronosgroup.vulkan-headers'::'Externals/Vulkan-Headers'
-      #'libsdl-org.sdl'::'Externals/SDL/SDL'
-      #'libusb'::'Externals/libusb/libusb'
-      #'libusb.hidapi'::'Externals/hidapi/hidapi-src'
-      'lsalzman.enet'::'Externals/enet/enet'
-      #'lz4'::'Externals/lz4/lz4'
-      'mgba-emu.mgba'::'Externals/mGBA/mgba'
-      'mozilla.cubeb'::'Externals/cubeb/cubeb'
-      #'randy408.libspng'::'Externals/libspng/libspng'
-      'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
-      #'sfml'::'Externals/SFML/SFML'
-      'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
-      'zlib-ng'::'Externals/zlib-ng/zlib-ng'
-      'zlib-ng.minizip-ng'::'Externals/minizip-ng/minizip-ng'
-    )
-    _submodule_update
-  )
-}
-
-_source_main
-_source_dolphin
+_pkgsrc="xiota.primehack"
+source=("$_pkgsrc"::"git+$url.git#branch=${_branch:-wip}")
+sha256sums=('SKIP')
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
-  _run_if_exists _prepare_dolphin
+  cd "$_pkgsrc"
+  git rm -r 'Externals/FFmpeg-bin'
+  git rm -r 'Externals/Qt'
+  git rm -r 'Externals/SDL/SDL'
+  git rm -r 'Externals/curl/curl'
+  git rm -r 'Externals/gtest'
+  git rm -r 'Externals/hidapi/hidapi-src'
+  git rm -r 'Externals/libadrenotools'
+  git rm -r 'Externals/libspng/libspng'
+  git rm -r 'Externals/libusb/libusb'
+  git rm -r 'Externals/lz4/lz4'
+  git rm -r 'Externals/spirv_cross/SPIRV-Cross'
+  git submodule update --init --depth=1
 
   # Delete gcc specific options
-  sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
+  sed '/_ARCHIVE_/d' -i CMakeLists.txt
+
+  # Fix for Qt 6.10
+  sed -E -e '/COMPONENTS/s&\b(Widgets)\b&\1 GuiPrivate&' \
+    -e '$ a target_link_libraries(dolphin-emu PRIVATE Qt6::GuiPrivate)' \
+    -i Source/Core/DolphinQt/CMakeLists.txt
 }
 
-build() {
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() (
   export CC CXX CFLAGS CXXFLAGS LDFLAGS
-  local _pkgver _cmake_options _ldflags _cflags _cxxflags
+  local _pkgver _cmake_options
 
   # Fix version string
   _pkgver=$(pkgver)
@@ -191,6 +117,7 @@ END
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     -DENABLE_AUTOUPDATE=OFF
     # -DENABLE_ANALYTICS=OFF # default:Opt-in
@@ -222,23 +149,9 @@ END
     _cmake_options+=(-DENABLE_LTO=OFF)
   fi
 
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-    _cflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
-    )
-    CFLAGS="${_cflags[@]}"
-
-    _cxxflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
-    )
-    CXXFLAGS="${_cxxflags[@]}"
-  fi
-
   cmake "${_cmake_options[@]}"
   cmake --build build
-}
+)
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
@@ -247,10 +160,4 @@ package() {
     "$pkgdir/usr/lib/udev/rules.d/51-usb-device-primehack.rules"
 
   rm -rf "$pkgdir"/usr/{include,lib/libdiscord-rpc.a}
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
