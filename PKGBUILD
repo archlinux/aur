@@ -7,7 +7,7 @@ pkgname=visual-paradigm
 _pkgver_major=17.3
 _pkgver_minor=20250943
 pkgver=${_pkgver_major}.${_pkgver_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="UML design application (Free 30-day trial)"
 url='https://www.visual-paradigm.com/download/'
 arch=('x86_64')
@@ -40,13 +40,13 @@ package() {
   mkdir -p "${pkgdir}/usr/share/${pkgname}/Application"
   cp -r "${srcdir}/Visual_Paradigm_CE_${_pkgver_major}/Application/" "${pkgdir}/usr/share/${pkgname}/"
   cp -r "${srcdir}/Visual_Paradigm_CE_${_pkgver_major}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
-  cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
-  cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
+  install -Dm 644 "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
+  install -Dm 644 "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/bin"
   ln -sr "${pkgdir}/usr/share/${pkgname}/Application/bin/Visual_Paradigm" "${pkgdir}/usr/bin/${pkgname}"
   mkdir -p ${pkgdir}/usr/share/mime/packages
-  cp "x-visual-paradigm.xml" "${pkgdir}/usr/share/mime/packages/x-visual-paradigm.xml"
+  install -Dm 644 "x-visual-paradigm.xml" "${pkgdir}/usr/share/mime/packages/x-visual-paradigm.xml"
 
   # Fix permissions
   cd "${pkgdir}/usr/share/${pkgname}/Application/scripts"

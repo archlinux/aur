@@ -1,7 +1,7 @@
 pkgbase = visual-paradigm
 	pkgdesc = UML design application (Free 30-day trial)
 	pkgver = 17.3.20250943
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.visual-paradigm.com/download/
 	arch = x86_64
 	license = custom
