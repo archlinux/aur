@@ -1,7 +1,7 @@
 # Maintainer: Nick Haghiri (n s dot hag hiri at G mail dot com)
 pkgname=hexcore-link
 pkgver=2.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Hexcore Link for ANNE PRO 2D and other keyboards with firmware versions higher than 3.0"
 arch=('x86_64')
 url="https://www.hexcore.xyz/hexcore-link"
@@ -12,7 +12,7 @@ install=${pkgname}.install
 
 DLAGENTS='https::/usr/bin/curl -qgC - -e https://www.hexcore.xyz/hexcore-link -o %o %u'
 
-source_x86_64=("https://s5.hexcore.xyz/releases/software/hexcore-link/linux/tar/HexcoreLink_${pkgver}_x64.tar.gz"
+source_x86_64=("https://hexcore.xyz/releases/software/hexcore-link/linux/tar/HexcoreLink_${pkgver}_x64.tar.gz"
 "deb_extra_files_hexcore.tar.gz")
 sha256sums_x86_64=('726f2062d2446d2101e6b2eec5e95d186c1a0a15e21ede69e5ff573ec30d24e9'
 '94e4942cc7408feb419e76aa2867e50bdf2bedefd734eb367286b5a7844d2c46')
