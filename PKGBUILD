@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-async-tkinter-loop
 _name=${pkgname#python-}
-pkgver=0.9.3
+pkgver=0.10.2
 pkgrel=1
 epoch=1
 pkgdesc="Asynchronous mainloop implementation for tkinter."
@@ -21,10 +21,11 @@ makedepends=(
 checkdepends=(
   'python-customtkinter'
   'python-pytest'
+  'python-pytest-timeout'
   'xorg-server-xvfb'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/insolor/async-tkinter-loop/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('164e57e9438ee61e7d9e5e487b972a93617ee1a552c953f2ecdc5f9c71f938b3')
+sha256sums=('5ef34f2612003341d147832becfe1978dadad55c6d5c532e30dc8a5bfd5c6d64')
 
 build() {
   cd "$_name-$pkgver"
