@@ -5,6 +5,7 @@ pkgbase = cplex
 	url = https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer
 	arch = x86_64
 	license = custom
+	makedepends = java-runtime-headless
 	depends = gcc-libs
 	optdepends = python310: for Python 3.10 bindings
 	optdepends = python39: for Python 3.9 bindings

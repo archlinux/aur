@@ -14,6 +14,7 @@ arch=('x86_64')
 url='https://www.ibm.com/products/ilog-cplex-optimization-studio/cplex-optimizer'
 license=('custom')
 depends=('gcc-libs')
+makedepends=('java-runtime-headless')
 options=('!strip')
 optdepends=(
 	'python310: for Python 3.10 bindings'
