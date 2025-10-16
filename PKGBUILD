@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=agentgateway-bin # renovate: datasource=github-releases depName=agentgateway/agentgateway
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Next Generation Agentic Proxy for AI Agents and MCP servers"
 arch=('x86_64' 'aarch64')
@@ -20,14 +20,12 @@ source=(
 source_x86_64=("${url}/releases/download/v${pkgver}/agentgateway-linux-amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/agentgateway-linux-arm64")
 
-sha256sums=(
-  'ccbf401f366bd723ff37c7ff726861addc4f023acfd13947c4154fd1865aaca8'
+sha256sums=('ccbf401f366bd723ff37c7ff726861addc4f023acfd13947c4154fd1865aaca8'
   '27f129b0434a4bb00a276f9c391dab3280cf9c657fefd1b358aded52c7937afb'
   '1ade18462998f6f52b533bb423803c2d41c8b944bf2528d6de9302ee9163a583'
-  'ba427c38951680ce792919096aed859f6fe44e5bbde3b48d98411478ebb3500c'
-)
-sha256sums_x86_64=('f7ed99f71a977bcca39f13e6fee5de8431d691b295aa660af866cdd487954357')
-sha256sums_aarch64=('6a4cb96f95a5a9b5a30d74ce19e79e06ad870e043dca804fa07e3794a0c5e623')
+  'ba427c38951680ce792919096aed859f6fe44e5bbde3b48d98411478ebb3500c')
+sha256sums_x86_64=('eabbc488e7a30b5f2e4dc669fa40bcec0d9f2358b2da1ccfc73294c68b70a296')
+sha256sums_aarch64=('4e8c01f114f5d50ede33603d7bb356ad556818a0acc0fcbaefef56a4199e8862')
 
 package() {
   if [ "${CARCH}" = "x86_64" ]; then
