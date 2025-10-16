@@ -7,6 +7,7 @@ pkgbase = termpicker-git
 	license = Beerware
 	makedepends = git
 	makedepends = go
+	makedepends = upx
 	optdepends = wl-clipboard: clipboard support on wayland
 	optdepends = xsel: clipboard support on X11
 	provides = termpicker

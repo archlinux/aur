@@ -9,7 +9,7 @@ url="https://github.com/ChausseBenjamin/termpicker"
 license=('Beerware')
 options=()
 depends=()
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'upx')
 optdepends=(
   'wl-clipboard: clipboard support on wayland'
   'xsel: clipboard support on X11'
@@ -26,6 +26,7 @@ build() {
   commit_hash=$(git rev-parse --short HEAD)
   go generate ./...
   go build -ldflags "-s -w -X main.version=${pkgver}-git" -o termpicker .
+  upx -9 termpicker
 }
 
 package() {
