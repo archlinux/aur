@@ -1,0 +1,5 @@
+["chadtop-bin"]
+source = "github"
+github = "ethanrutt/chadtop"
+use_latest_release = true
+prefix = "v"
