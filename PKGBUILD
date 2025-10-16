@@ -1,142 +1,135 @@
-# Maintainer: Erhan Karabulut <x9x@keemail.me>
+# Maintainer: YOUR_NAME <you at domain dot tld>
 # based on the original john-git PKGBUILD by David Ryskalczyk
-
-_pkgname=john
-pkgname=john-bj-git
-pkgver=1.9.0.Jumbo.1.1832.gcb0c337e7    # auto-filled
+pkgname=john-bj-git         # change to any *free* AUR name
+pkgver=1.9.0.r0.gc5b4c8e    # auto-filled
 pkgrel=1
 pkgdesc="John the Ripper – bleeding-jumbo branch (yescrypt, OpenCL, MPI, CPU fall-backs)"
-arch=('i686' 'x86_64' "aarch64")
-url="http://www.openwall.com/$_pkgname/"
+arch=('x86_64' 'aarch64' 'i686')
+url="https://www.openwall.com/john/"
 license=('GPL2' 'custom')
 depends=('openssl' 'gmp' 'libpcap' 'openmpi' 'gcc-libs' 'opencl-icd-loader')
-makedepends=('git' 'libgsf' 'libxml2' 'nss' 'opencl-headers' 'pkg-config')
-optdepends=("perl: for executing some of the scripts at /usr/share/john"
-            "ruby: for executing some of the scripts at /usr/share/john"
-            "python: for executing some of the scripts at /usr/share/john"
-            "nss: to use mozilla2john"
-            "libgsf: to use office2john"
-            "libxml2: to use office2john"
-            "perl-compress-raw-lzma: to use 7z2john"
-            "python-scapy: to use oracle2john")
+makedepends=('git' 'opencl-headers' 'nss' 'libxml2' 'libgsf' 'rpcsvc-proto')
+optdepends=('perl: helper scripts'
+            'ruby: helper scripts'
+            'python: helper scripts'
+            'nss: mozilla2john'
+            'libgsf: office2john'
+            'libxml2: office2john'
+            'python-scapy: oracle2john')
 provides=('john')
 conflicts=('john')
 backup=('etc/john/john.conf')
 options=('!strip')
-source=("$_pkgname::git+https://github.com/openwall/john.git#branch=bleeding-jumbo")
-md5sums=('SKIP')
+source=("john::git+https://github.com/openwall/john.git#branch=bleeding-jumbo")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    cd "$srcdir/john"
+    git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname/src"
-  #export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+    cd john/src
 
-  local CFLAGS="${CFLAGS} -DCPU_FALLBACK"
-  local options=(
-    --prefix=/usr
-    --with-systemwide
-    --disable-native-tests
-    --enable-openmp
-    --enable-mpi
-    --enable-opencl
-    --enable-pkg-config
-    --enable-pcap
-  )
+    # allow build on glibc ≥ 2.36 (rpc/types.h removed)
+    export CPPFLAGS="-I/usr/include/tirpc"
+    export LDFLAGS="-ltirpc"
 
-  if [[ "${CARCH}" == "x86_64" ]]; then
-    ./configure "${options[@]}" CFLAGS="${CFLAGS/-DCPU_FALLBACK}"
-    make clean; make
-    mv ../run/john{,-non-avx}
-    ./configure "${options[@]}" CFLAGS="${CFLAGS} -mavx"
-    make clean; make
-    mv ../run/john{,-non-xop}
-    ./configure "${options[@]}" CFLAGS="${CFLAGS} -mxop"
-    make clean; make
-  elif [[ "${CARCH}" == "aarch64" ]]; then
-    ./configure "${options[@]}" CFLAGS="${CFLAGS/-DCPU_FALLBACK}"
-    make clean; make
-  elif [[ "${CARCH}" == "i686" ]]; then
-    ./configure "${options[@]}" CFLAGS="${CFLAGS}"
-    make clean; make
-    mv ../run/john{,-non-mmx}
-    ./configure "${options[@]}" CFLAGS="${CFLAGS} -mmmx"
-    make clean; make
-    mv ../run/john{,-non-sse}
-    ./configure "${options[@]}" CFLAGS="${CFLAGS} -msse2"
-    make clean; make
-    mv ../run/john{,-non-avx}
-    ./configure "${options[@]}" CFLAGS="${CFLAGS} -mavx"
-    make clean; make
-    mv ../run/john{,-non-xop}
-    ./configure "${options[@]}" CFLAGS="${CFLAGS} -mxop"
-    make clean; make
-  else
-    ./configure "${options[@]}" CFLAGS="${CFLAGS}"
-    make clean; make
-  fi
-    
+    local common=(
+        --prefix=/usr
+        --with-systemwide
+        --disable-native-tests
+        --enable-openmp
+        --enable-mpi
+        --enable-opencl
+        --enable-pkg-config
+        --enable-pcap
+    )
+
+    case "$CARCH" in
+        x86_64)
+            # generic
+            CFLAGS="${CFLAGS/-march=*}" ./configure "${common[@]}"
+            make clean && make
+            mv -v ../run/john{,-non-avx}
+            # AVX
+            ./configure "${common[@]}" CFLAGS="$CFLAGS -mavx"
+            make clean && make
+            mv -v ../run/john{,-non-xop}
+            # XOP  (keep this one as plain 'john')
+            ./configure "${common[@]}" CFLAGS="$CFLAGS -mxop"
+            make clean && make
+            ;;
+        i686)
+            for flag in "" -mmmx -msse2 -mavx -mxop; do
+                [[ $flag ]] && CFLAGS="$CFLAGS $flag"
+                ./configure "${common[@]}" CFLAGS="$CFLAGS"
+                make clean && make
+                [[ $flag ]] && mv -v ../run/john{,"-${flag#-}"}
+            done
+            ;;
+        aarch64|*)
+            ./configure "${common[@]}" CFLAGS="$CFLAGS"
+            make clean && make
+            ;;
+    esac
+
+    # sanity check – must exist
+    [[ -x ../run/john ]] || { echo "FATAL: john binary not built"; return 1; }
 }
 
 package() {
-  cd ${srcdir}/$_pkgname/
-	
-  # config
-  install -Dm 644 run/john.conf -t "${pkgdir}/etc/john"
-  install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
+    cd john
 
-  # opencl
-  install -d "${pkgdir}/usr/share/john/opencl"
-  cp -r run/opencl/* "${pkgdir}/usr/share/john/opencl"
-  chmod -R o+r "${pkgdir}/usr/share/john/opencl"
-
-  # docs
-  install -d "${pkgdir}/usr/share/doc/john"
-  cp -rL doc/* "${pkgdir}/usr/share/doc/john"
-  rm "${pkgdir}/usr/share/doc/john/README"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 doc/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  chmod -R o+r "${pkgdir}"/usr/share/doc/john/*
-
-  # completion
-  install -Dm 644 run/john.bash_completion "${pkgdir}/usr/share/bash-completion/completions/john"
-  install -Dm 644 run/john.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_john"
-
-  # scripts
-  install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/john"
-  install -Dm 755 run/{*.py,*.pl,*.rb,*.lua,*.js,mailer,benchmark-unify} -t "${pkgdir}/usr/lib/john"
-  for ext in lua pl rb py; do
-    for script in run/*."${ext}"; do
-      ln -sf "/usr/lib/john/$(basename "${script}")" "${pkgdir}/usr/bin/$(basename "${script/.${ext}/}")"
+    # main binary + CPU fall-backs
+    install -Dm755 run/john -t "$pkgdir/usr/bin"
+    for cpu in non-avx non-xop non-sse2 non-mmx; do
+        [[ -e run/john-$cpu ]] && install -Dm755 run/john-$cpu -t "$pkgdir/usr/bin"
     done
-  done
 
-  # binaries
-  install -Dm 755 run/john -t "${pkgdir}/usr/bin"
-  install -Dm 755 run/john-non-* -t "${pkgdir}/usr/bin"||true
-  local john_bins=(bitlocker2john calc_stat cprepair dmg2john eapmd5tojohn genmkvpwd hccap2john \
-                   keepass2john mkvcalcproba putty2john racf2john raw2dyna SIPdump uaf2john \
-                   vncpcap2john wpapcap2john)
-  for bin in "${john_bins[@]}"; do
-    install -Dm 755 "run/${bin}" -t "${pkgdir}/usr/lib/john"
-    ln -sf "/usr/lib/john/${bin}" "${pkgdir}/usr/bin/${bin}"
-  done
+    # config & data files
+    install -Dm644 run/john.conf -t "$pkgdir/etc/john"
+    install -Dm644 run/*.chr run/*.lst run/dictionary* run/stats -t "$pkgdir/usr/share/john"
+    install -Dm644 run/rules/* -t "$pkgdir/usr/share/john/rules"
 
-  # symlink john
-  for link in $(find run -maxdepth 1 -type l); do
-    ln -s john "${pkgdir}/usr/bin/$(basename "${link}")"
-    ln -s /usr/bin/john "${pkgdir}/usr/lib/john/$(basename "${link}")"
-  done
+    # OpenCL kernels
+    if [[ -d run/opencl ]]; then
+        install -d "$pkgdir/usr/share/john/opencl"
+        cp -a run/opencl/* "$pkgdir/usr/share/john/opencl"
+        chmod -R a+r "$pkgdir/usr/share/john/opencl"
+    fi
 
-  # data
-  install -Dm 644 run/*.chr run/*.lst run/dictionary* run/stats -t "${pkgdir}/usr/share/john"
-  install -Dm 644 run/rules/* -t "${pkgdir}/usr/share/john/rules"
+    # docs & licence
+    install -d "$pkgdir/usr/share/doc/john" "$pkgdir/usr/share/licenses/$pkgname"
+    cp -a doc/* "$pkgdir/usr/share/doc/john"
+    install -Dm644 doc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    chmod -R a+r "$pkgdir/usr/share/doc/john"
+
+    # shell completions
+    install -Dm644 run/john.bash_completion "$pkgdir/usr/share/bash-completion/completions/john"
+    install -Dm644 run/john.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_john"
+
+    # helper scripts
+    install -d "$pkgdir/usr/lib/john" "$pkgdir/usr/bin"
+    install -m755 run/{*.py,*.pl,*.rb,*.lua,mailer,benchmark-unify} -t "$pkgdir/usr/lib/john" 2>/dev/null || true
+    for ext in pl py rb lua; do
+        for s in "$pkgdir"/usr/lib/john/*."$ext"; do
+            [[ -e $s ]] && ln -s "/usr/lib/john/${s##*/}" "$pkgdir/usr/bin/${s##*/}"
+        done
+    done
+
+    # *2john tools
+    local tools=(bitlocker2john calc_stat cprepair dmg2john eapmd5tojohn genmkvpwd hccap2john \
+                 keepass2john mkvcalcproba putty2john racf2john raw2dyna SIPdump uaf2john \
+                 vncpcap2john wpapcap2john)
+    for t in "${tools[@]}"; do
+        [[ -x run/$t ]] && install -Dm755 run/$t -t "$pkgdir/usr/lib/john" \
+                         && ln -s "/usr/lib/john/$t" "$pkgdir/usr/bin/$t"
+    done
+
+    # legacy symlinks (unshadow, unique, etc.)
+    for l in run/john-*; do
+        [[ -L $l ]] && ln -s john "$pkgdir/usr/bin/${l#run/john-}"
+    done
 }
-
-# vim:set ts=2 sw=2 et:
