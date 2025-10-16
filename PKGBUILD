@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r866.cda23db6
+pkgver=r877.001549b1
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -18,7 +18,9 @@ depends=(
   'libkeybinder3'
   'mpv'
   'libsecret'
+  'libpdfium-nojs'
 )
+
 makedepends=(
   'git'
   'unzip'

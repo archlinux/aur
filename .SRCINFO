@@ -1,6 +1,6 @@
 pkgbase = solian-git
 	pkgdesc = Next Generation Network Center (unstable)
-	pkgver = r866.cda23db6
+	pkgver = r877.001549b1
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = solian-git
 	depends = libkeybinder3
 	depends = mpv
 	depends = libsecret
+	depends = libpdfium-nojs
 	provides = solian
 	conflicts = solian
 	conflicts = solian-bin
