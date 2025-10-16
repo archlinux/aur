@@ -11,6 +11,7 @@ pkgbase = factorio-bin
 	depends = gcc-libs
 	provides = factorio
 	conflicts = factorio
+	conflicts = factorio-git
 	source = factorio-0.0.15.tgz::https://github.com/mcandre/factorio/releases/download/v0.0.15/factorio-0.0.15.tgz
 	source = README-0.0.15.md::https://raw.githubusercontent.com/mcandre/factorio/v0.0.15/README.md
 	source = LICENSE-0.0.15::https://raw.githubusercontent.com/mcandre/factorio/v0.0.15/LICENSE.md
