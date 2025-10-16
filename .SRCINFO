@@ -1,8 +1,8 @@
 pkgbase = pharm-record
 	pkgdesc = A PySide6-based medication tracking application.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
-	url = https://codeberg.org/wonderfox/pharm-record/archive/v0.1.tar.gz
+	url = https://codeberg.org/wonderfox/pharm-record/
 	arch = any
 	license = CC-BY-SA-4.0
 	makedepends = python-build
@@ -14,7 +14,7 @@ pkgbase = pharm-record
 	depends = python-platformdirs
 	depends = pyside6
 	depends = shiboken6
-	source = pharm-record-0.1.tar.gz::https://codeberg.org/wonderfox/pharm-record/archive/v0.1.tar.gz
-	sha256sums = 59964cf5ffe1826199eb0eccd8d87f31c7abc1c5dc64cf16705d2f8abfc55c05
+	source = pharm-record-0.2.tar.gz::https://codeberg.org/wonderfox/pharm-record/archive/v0.2.tar.gz
+	sha256sums = e6f0db7e479d5473142aedb4dd8e198af3cf126459dfa92d189d970b0649384e
 
 pkgname = pharm-record
