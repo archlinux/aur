@@ -7,7 +7,11 @@ pkgbase = csrf-brute
 	license = MIT
 	depends = python
 	depends = python-requests
-	source = csrf-brute-1.0.0.tar.gz
+	source = csrf_hydra.py
+	source = LICENSE
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = csrf-brute
