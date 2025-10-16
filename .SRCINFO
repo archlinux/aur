@@ -1,0 +1,26 @@
+pkgbase = python-databricks-agent
+	pkgdesc = Mosaic AI Agent Framework SDK
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://pypi.org/project/databricks-agents/
+	arch = any
+	license = custom:Databricks Proprietary License
+	makedepends = python-installer
+	depends = python>=3.10
+	depends = python-boto3>=1
+	depends = python-botocore
+	depends = python-dataclasses-json
+	depends = python-httpx
+	depends = python-jinja>=3.0.0
+	depends = python-langchain-openai
+	depends = python-openai
+	depends = python-pydantic>=2
+	depends = python-tenacity>=8.5
+	depends = python-tiktoken>=0.8.0
+	depends = python-tqdm
+	depends = python-urllib3>=2.0
+	noextract = databricks_agents-1.8.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/69/e9/0301192f3f934f2e989430324b282803c40166b258c52ac1fdf73759f1e9/databricks_agents-1.8.0-py3-none-any.whl
+	sha256sums = adc2743c431630d42f5e963bd2792880db2aef91030e9b71576e3900ce185ec3
+
+pkgname = python-databricks-agent
