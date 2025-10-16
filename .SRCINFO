@@ -9,7 +9,6 @@ pkgbase = shadps4
 	makedepends = boost>=1.84
 	makedepends = cmake>=3.16.3
 	makedepends = ffmpeg
-	makedepends = fmt>=10.2
 	makedepends = git
 	makedepends = half>=1.12
 	makedepends = libpng>=1.6
@@ -51,7 +50,9 @@ pkgbase = shadps4
 	source = git+https://github.com/shadps4-emu/ext-hwinfo
 	source = git+https://github.com/shadps4-emu/ext-libusb.git
 	source = git+https://github.com/KhronosGroup/glslang.git
+	source = git+https://github.com/shadps4-emu/ext-fmt.git
 	b2sums = 95f369b4cd97757730b8f0f36c94ab0a7b36a6297e7291643943049733cb05bc939776152d4ddb68941ef948e399b113f59ed3e3773e591c4ef302d622f74def
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

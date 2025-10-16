@@ -21,7 +21,6 @@ makedepends=(
 	'boost>=1.84'
 	'cmake>=3.16.3'
 	'ffmpeg'
-	'fmt>=10.2'
 	'git'
 	'half>=1.12'
 	'libpng>=1.6'
@@ -60,8 +59,10 @@ source=(
 	"git+https://github.com/shadps4-emu/ext-hwinfo"
 	"git+https://github.com/shadps4-emu/ext-libusb.git"
 	"git+https://github.com/KhronosGroup/glslang.git"
+	"git+https://github.com/shadps4-emu/ext-fmt.git"
 )
 b2sums=('95f369b4cd97757730b8f0f36c94ab0a7b36a6297e7291643943049733cb05bc939776152d4ddb68941ef948e399b113f59ed3e3773e591c4ef302d622f74def'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -84,6 +85,7 @@ prepare() {
 	git config submodule.externals/ext-libusb.url "../ext-libusb"
 	git config submodule.externals/hwinfo.url "../ext-hwinfo"
 	git config submodule.externals/glslang.url "../glslang"
+	git config submodule.externals/fmt.url "../ext-fmt"
     git -c protocol.file.allow=always submodule update
 
 }
