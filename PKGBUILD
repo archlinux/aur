@@ -5,7 +5,7 @@
 _pkgname=obs-captions-plugin
 _gitname=OBS-captions-plugin
 pkgname=${_pkgname}-bin
-pkgver=0.32
+pkgver=0.33
 pkgrel=1
 pkgdesc='Standalone OBS Studio plugin providing closed captioning via Google Cloud Speech Recognition API'
 arch=('x86_64' 'x86_64_v3')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 depends=('obs-studio>=30' 'qt6-tools')
 _zipfile="Closed_Captions_Plugin__v${pkgver}_Linux.zip"
 source=("$url/releases/download/v${pkgver}/$_zipfile")
-b2sums=('09bfa24c80428360b90c7536fe00235331a4db0b4649ef3baa528305c7b1a8a0a498da8fef47e7f06ad033491a18aa4f82fdbebfa99875c2ac41ffd980df3edf')
+b2sums=('39c195937d5a354705aca596173985a3ffe764cb3e81071a1199a0634bfaf60266de9d5ec3428d1f303cbc55010ca5c21aa5de6d960bb04458af1a9ae55035cf')
 
 package() {
     cd "${_zipfile%.*}"
