@@ -1,4 +1,4 @@
-pkgbase = rblx-silver
+pkgbase = rblx-silver-bin
 	pkgdesc = A bootstrapper for Sober
 	pkgver = 0.0.2
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = rblx-silver
 	sha256sums = 955fc0a2ab88a1d11ff671fa540da67146e2e109b2b56e32cec3a6b76f5c18a2
 	sha256sums = ad831dfbbbffc6c16532e306cb879c126de4a17c88832d2a327dc7138d0336f8
 
-pkgname = rblx-silver
+pkgname = rblx-silver-bin
