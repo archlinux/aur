@@ -1,5 +1,5 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
-pkgname=ImageViewer
+pkgname=imageviewer-qt
 pkgver=1.8.1
 pkgrel=1
 license=('GPL-3.0')

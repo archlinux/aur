@@ -1,4 +1,4 @@
-pkgbase = ImageViewer
+pkgbase = imageviewer-qt
 	pkgdesc = Simple, cross-platform image viewer
 	pkgver = 1.8.1
 	pkgrel = 1
@@ -33,9 +33,9 @@ pkgbase = ImageViewer
 	depends = libjxl
 	optdepends = kimageformats
 	optdepends = qt6-imageformats
-	provides = ImageViewer=1.8.1
-	conflicts = ImageViewer
-	source = ImageViewer-1.8.1.tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v1.8.1/ImageViewer-1.8.1.tar.xz
+	provides = imageviewer-qt=1.8.1
+	conflicts = imageviewer-qt
+	source = imageviewer-qt-1.8.1.tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v1.8.1/ImageViewer-1.8.1.tar.xz
 	sha256sums = 38d99d1ecfed479b1815d30437ece03f03df54a4a59c9285daa5a768484fcc49
 
-pkgname = ImageViewer
+pkgname = imageviewer-qt
