@@ -4,7 +4,7 @@
 
 pkgname=libwhereami
 pkgver=0.5.0
-pkgrel=21
+pkgrel=22
 pkgdesc='Library to report hypervisor information from inside a VM'
 arch=('x86_64')
 url='https://github.com/puppetlabs/libwhereami'
@@ -15,8 +15,15 @@ depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_execution.so'
 makedepends=('boost' 'cmake' 'rapidjson' 'curl')
 checkdepends=('python')
 provides=('libwhereami.so')
-source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('e9a0332f4ec0a2e6201cdf6212f2f1ced5a948e94aaa638c8d8a69f7306828b6168924775788b31316eecab59377a5ebd9310293e8e708e418c68fe47b248c13')
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+         boost-1.89.patch)
+sha512sums=('e9a0332f4ec0a2e6201cdf6212f2f1ced5a948e94aaa638c8d8a69f7306828b6168924775788b31316eecab59377a5ebd9310293e8e708e418c68fe47b248c13'
+            '1e4cc9473c00f6b6df01355804b8ac1759b9930c22dc53d277d3773c2cc57eb05f5b008325870264fc7f6646d7385723902730f7b8ce8396c2a9398540c9f5f7')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 -i ../boost-1.89.patch
+}
 
 build() {
   cd ${pkgname}-${pkgver}

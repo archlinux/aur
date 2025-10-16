@@ -1,0 +1,12 @@
+diff -ru libwhereami-0.5.0.orig/CMakeLists.txt libwhereami-0.5.0/CMakeLists.txt
+--- libwhereami-0.5.0.orig/CMakeLists.txt	2025-10-16 22:02:05.465547146 +0200
++++ libwhereami-0.5.0/CMakeLists.txt	2025-10-16 22:02:24.096068326 +0200
+@@ -36,7 +36,7 @@
+ ## Pull in helper macros for working with leatherman libraries
+ include(leatherman)
+ 
+-list(APPEND BOOST_COMPONENTS filesystem regex system thread)
++list(APPEND BOOST_COMPONENTS filesystem regex thread)
+ 
+ # Add other dependencies
+ find_package(Boost 1.54 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
