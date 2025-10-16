@@ -6,6 +6,8 @@ pkgdesc='WIP: private preview'
 arch=('x86_64')
 url='https://tab.dance'
 license=('custom: commercial')
+depends=('github-cli')
+makedepends=('github-cli')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 

@@ -5,6 +5,8 @@ pkgbase = tabdance
 	url = https://tab.dance
 	arch = x86_64
 	license = custom: commercial
+	makedepends = github-cli
+	depends = github-cli
 	provides = tabdance
 	conflicts = tabdance
 
