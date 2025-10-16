@@ -2,8 +2,8 @@
 
 pkgname=hydownloader
 pkgver=0.65.0
-pkgrel=1
-_commit=e0b3ada3832058e078b62b0f84fdbca1470740fa
+pkgrel=2
+_commit=9836f6d5637abae649083b006db897cb6d218213
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
 url="https://gitgud.io/thatfuckingbird/hydownloader"
@@ -22,8 +22,8 @@ depends=(
   python-pysocks
 )
 makedepends=(
-	python-poetry
-	git
+  python-poetry
+  git
 )
 provides=(hydownloader)
 source=(
@@ -32,8 +32,8 @@ source=(
 sha512sums=('e2f5b9211473cde7c85fdcb164596f2ed26977d349cefe4ecf1bef9bab3a35ab68fcc752eb9d83a3ec1f5cbba007fc5e780681ec57840e99aa437cc3956d97f7')
 conflicts=(hydownloader-git)
 optdepends=(
-    'hydownloader-systray: Remote management GUI for hydownloader'
-    'hydrus: Danbooru-like image tagging and searching system for the desktop'
+  'hydownloader-systray: Remote management GUI for hydownloader'
+  'hydrus: Danbooru-like image tagging and searching system for the desktop'
 )
 
 prepare() {
