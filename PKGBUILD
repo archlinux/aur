@@ -30,7 +30,7 @@ prepare() {
 
 package() {
     cd "$_pkgname"
-    install -Dm755 ./wrapper.sh "$pkgdir/usr/bin/declarages"
+    install -Dm755 ./wrapper.sh "$pkgdir/usr/bin/$_pkgname"
     mkdir -p "$pkgdir/usr/share/$_pkgname"
     cp -rf ./* "$pkgdir/usr/share/$_pkgname/"
 }
