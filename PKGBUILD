@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=2025.18.2
+pkgver=2025.19
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 )
-sha256sums=('166ecd1ccc6395f430cdd712a0ba9a2f597d3b333ed2babbd494edd6bdfbc0e1'
+sha256sums=('21a19bb2c5424d5e612298b5e3f41a7c243391864b42b4062da5eb4ab037b3ce'
             '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598')
 makedepends=(
 	cmake
@@ -50,8 +50,8 @@ prepare() {
 			sed -e 's/"spirv-tools\/include\/\(.*\)"/<\1>/g' \
 			-i {} \+
 
-	# Change libslang.so -> libshader-slang.so
-	sed -e "s/LINK_WITH_PRIVATE slang-common-objects/&\nOUTPUT_NAME $pkgname/g" \
+	# Change libslang.so -> libslang-compiler.so
+	sed -e "s/LINK_WITH_PRIVATE slang-common-objects/&\nOUTPUT_NAME slang-compiler/g" \
 		-i source/slang/CMakeLists.txt
 
 	# Add include prefix
@@ -69,9 +69,6 @@ prepare() {
 	# Use system stb
 	sed -e 's#${CMAKE_CURRENT_LIST_DIR}/stb#/usr/include/stb#' \
 		-i external/CMakeLists.txt
-
-	# https://github.com/shader-slang/slang/issues/8543
-	find . -type f -exec sed -i "s/OpRayQueryGetIntersectionClusterIdNV/OpRayQueryGetClusterIdNV/g" {} \+
 }
 
 build() {
