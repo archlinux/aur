@@ -1,7 +1,7 @@
 pkgbase = linux-keep-modules
 	pkgdesc = Preserve the Linux kernel modules during and after an upgrade
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jamescherti/archlinux-linux-keep-modules
 	install = linux-keep-modules.install
 	arch = any
@@ -19,6 +19,6 @@ pkgbase = linux-keep-modules
 	b2sums = 59b9214635dd0572083c6179dd8490a1f327d0babfe3244a177fd53ecddef27530e363b385f3ac96da424baba45b098cdf8f8db46b33ce4fc92fcfc106e74b69
 	b2sums = 64fc2de25de38951e806fdae6e200afb8f4345f3401c33271161db092b1e65b87538d156808e3f35e36e5368f924f7f18e97b231a1c26bfe4e37aa5f0a8b5916
 	b2sums = 1acb40ad58847fdfd5536829e374cc54a39f732d94e8023a8033bcbda81546c3ee9bafb1e6a8553b2919e9598cb2f37b1ac879210144201a0240fc0bd5fa47cd
-	b2sums = c2df9002ff02b80d22cfe961cad83bf69046804e1b19111a84cb690b2fce04c0e7d66a0a2d2576b7080fa6457a645899b1551d339f14b6366b44e84a3e4080d0
+	b2sums = ea25c56d7ada9c0e2a41781e516052199369806f995ef77e65ee243c11884fd930a5df92055c44d224485032e8d3d737543c613f10b0158955169a3430bcb700
 
 pkgname = linux-keep-modules

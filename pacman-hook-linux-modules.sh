@@ -24,8 +24,23 @@
 
 set -euf -o pipefail
 
+RSYNC_OPTS=(-a --xattrs --hard-links --acls)
+MODULES_BASE_DIR="/usr/lib/modules"
+BACKUP_SUBDIR_NAME="pacman-hook-backup"
+KERNEL_VER="$(uname -r)"
+BACKUP_MODULES_SRC="${MODULES_BASE_DIR}/${KERNEL_VER}"
+BACKUP_MODULES_DEST="${MODULES_BASE_DIR}/${BACKUP_SUBDIR_NAME}/${KERNEL_VER}"
+
 log() {
   echo "[pacman-hook-linux-modules]" "$@"
+}
+
+# shellcheck disable=SC2329
+error_handler() {
+  local errno="$?"
+  log "[ERROR] ${BASH_SOURCE[1]}:${BASH_LINENO[0]}" \
+    "(${BASH_COMMAND} exited with status $errno)" >&2
+  exit "${errno}"
 }
 
 #
@@ -74,7 +89,7 @@ cleanup_linux_modules() {
 
   readarray -t list_modules < <(ls --almost-all -1 "${MODULES_BASE_DIR}")
   if [[ ${#list_modules[@]} -eq 0 ]]; then
-    echo "Nothing to do."
+    log "Nothing to do."
     return 0
   fi
 
@@ -82,9 +97,9 @@ cleanup_linux_modules() {
   for cur_kernel_ver in "${list_modules[@]}"; do
     local cur_backup_modules_src="${MODULES_BASE_DIR}/${cur_kernel_ver}"
 
-    if [[ -d "$cur_backup_modules_src" ]] && \
-          [[ "$KERNEL_VER" != "$cur_kernel_ver" ]] && \
-          ! pacman -Qo "$cur_backup_modules_src" >/dev/null 2>&1; then
+    if [[ -d "$cur_backup_modules_src" ]] \
+      && [[ "$KERNEL_VER" != "$cur_kernel_ver" ]] \
+      && ! pacman -Qo "$cur_backup_modules_src" >/dev/null 2>&1; then
       local sub_fileordir
       local sub_fileordir_found=0
       if [[ "$cur_kernel_ver" = "$BACKUP_SUBDIR_NAME" ]]; then
@@ -109,26 +124,22 @@ cleanup_linux_modules() {
   done
 
   if [[ $cleanup_done -eq 0 ]]; then
-    echo "Nothing to do."
+    log "Nothing to do."
   fi
 
   return "$errno"
 }
 
 print_usage() {
-  echo "Usage: $0 <backup|restore|cleanup>"
+  log "Usage: $0 <backup|restore|cleanup>"
 }
 
 main() {
-  RSYNC_OPTS=(-a --xattrs --hard-links --acls --sparse)
-  KERNEL_VER="$(uname -r)"
-  MODULES_BASE_DIR="/usr/lib/modules"
-  BACKUP_SUBDIR_NAME="pacman-hook-backup"
-  BACKUP_MODULES_SRC="${MODULES_BASE_DIR}/${KERNEL_VER}"
-  BACKUP_MODULES_DEST="${MODULES_BASE_DIR}/${BACKUP_SUBDIR_NAME}/${KERNEL_VER}"
+  trap "error_handler" ERR
+  set -o errtrace
 
   if [[ "$KERNEL_VER" = "" ]]; then
-    echo "Error: invalid value returned by the command 'uname -r'." >&2
+    log "Error: invalid value returned by the command 'uname -r'." >&2
     exit 1
   fi
 

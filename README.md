@@ -6,36 +6,34 @@ The pacman package **linux-keep-modules**, written by [James Cherti](https://www
 
 The **linux-keep-modules** package keeps your system running smoothly and maintains stability even during major Linux kernel upgrades.
 
-## Make and install the linux-keep-modules package
+## Make and install linux-keep-modules
 
-Clone the repository and change the current directory to 'archlinux-linux-keep-modules/':
+Clone the repository:
 ```
-$ git clone https://github.com/jamescherti/archlinux-linux-keep-modules.git
-$ cd archlinux-linux-keep-modules/
+git clone https://github.com/jamescherti/archlinux-linux-keep-modules.git
+```
+
+Change the current directory to 'archlinux-linux-keep-modules/':
+```
+cd archlinux-linux-keep-modules/
 ```
 
 Make the `linux-keep-modules` package:
 ```
-$ makepkg -f
-==> Making package: linux-keep-modules
-==> Checking runtime dependencies...
-==> Checking buildtime dependencies...
-...
-==> Finished making: linux-keep-modules
+makepkg -f
 ```
 
 Install the `linux-keep-modules` package:
 ```
-$ sudo pacman -U linux-keep-modules-*-any.pkg.tar.*
+sudo pacman -U linux-keep-modules-*-any.pkg.tar.*
 ```
 
 Finally, enable the cleanup-linux-modules service:
 ```
-$ sudo systemctl daemon-reload
-$ sudo systemctl enable cleanup-linux-modules
+systemctl enable cleanup-linux-modules
 ```
 
-(The cleanup-linux-modules service deletes at boot time the Linux kernel modules that are not owned by any a package at boot time)
+The **cleanup-linux-modules** service deletes at boot time the Linux kernel modules that are not owned by any a package at boot time.
 
 ## Links
 - [AUR package: linux-keep-modules](https://aur.archlinux.org/packages/linux-keep-modules)
