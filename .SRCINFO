@@ -1,13 +1,13 @@
 pkgbase = mpvc
 	pkgdesc = An mpc-like CLI tool for mpv
-	pkgver = 1.4.8
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = https://github.com/neeshy/mpvc
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = mpv
-	source = mpvc-1.4.8.tar.gz::https://github.com/neeshy/mpvc/archive/v1.4.8.tar.gz
-	sha256sums = 51f23ffbc5674306e87db6492fb21dffea6e0fe1096ca5f5d8fbbbd7b7c40c70
+	source = mpvc-1.4.9.tar.gz::https://github.com/neeshy/mpvc/archive/v1.4.9.tar.gz
+	sha256sums = 0987ce74d07682abf0a7275a9503f90a3d9b6ec78adba850d041723ecc4a819b
 
 pkgname = mpvc
