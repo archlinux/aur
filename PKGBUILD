@@ -27,7 +27,7 @@ build() {
     -D udev-dir=/usr/lib/udev \
     -D documentation=false
 
-  meson configure build
+  meson configure --no-pager build
   meson compile -C build
 }
 
