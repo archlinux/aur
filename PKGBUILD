@@ -1,3 +1,7 @@
+# NOTE: Cisco Packet Tracer must be downloaded manually from:
+#       https://www.netacad.com/resources/lab-downloads
+#       Place the .deb file in the same directory as this PKGBUILD before building.
+
 # Maintainer: Sx4DoW <yuformini9@gmail.com>
 pkgname=packettracer900-bin
 pkgver=9.0.0
