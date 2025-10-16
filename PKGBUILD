@@ -16,7 +16,7 @@ makedepends=('desktop-file-utils' 'fakeroot' 'tar' 'libarchive')
 options=('!strip' '!emptydirs')
 
 # The user must download CiscoPacketTracer900_Open_Beta_July_Build680_linux_amd64.deb manually
-source=("manual:CiscoPacketTracer900_Open_Beta_July_Build680_linux_amd64.deb"
+source=("CiscoPacketTracer900_Open_Beta_July_Build680_linux_amd64.deb"
         "packettracer.sh"
         "cisco-pt.desktop")
 sha256sums=('SKIP'
