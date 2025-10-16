@@ -6,7 +6,7 @@
 pkgname=packettracer900-bin
 pkgver=9.0.0
 pkgrel=1
-pkgdesc="Cisco Packet Tracer 9.0.0 - Network simulation tool"
+pkgdesc="Cisco Packet Tracer 9.0.0 - Network simulation tool (user must download the .deb file, check README for more info)"
 arch=('x86_64')
 url="https://www.netacad.com/courses/packet-tracer"
 license=('Proprietary')
