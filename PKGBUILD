@@ -1,6 +1,6 @@
 # Maintainer: Fabian Thomys <git@fthomys.me>
 pkgname=update-alternatives-git
-pkgver=r46.1f33af6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A simple update-alternatives replacement written in Rust"
 arch=('x86_64')
