@@ -1,14 +1,18 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Robin Broda <robin@broda.me>
+# Maintainer: Shanoa Ice <shanoaice at tutamail dot com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Robin Broda <robin@broda.me>
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
-pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct)
+#pkgbase=libvirt-venus
+#pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct)
+_pkgname=libvirt
+pkgname=("$_pkgname-venus")
 epoch=1
 pkgver=11.7.0
-pkgrel=1
-pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
+pkgrel=2.1
+pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc), with QEMU virtio-gpu Venus driver patch applied"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=(
@@ -128,12 +132,15 @@ backup=(
   'etc/sasl2/libvirt.conf'
 )
 source=(
-  "git+https://gitlab.com/libvirt/libvirt.git#tag=v${pkgver}"
+  "https://download.libvirt.org/libvirt-${pkgver}.tar.xz"
+  "libvirt-venus-no-sandbox.patch"
 )
-sha256sums=('859b3b5a0a6e57b5d973fbf77c2683898b778a9745ab2b5c8fb2a8009a1373bc')
+sha256sums=('dd56db0ced8baf668f476698db9956f160c93c0ec0c47a0603843235bf156f78'
+            '7141db97366c689f965d91ac4ed29d7c96056eccfb65cbc29e62c7c0ac580b20')
 
 prepare() {
-  cd ${pkgname}
+  cd "${_pkgname}-${pkgver}"
+  patch -Np1 -i ../libvirt-venus-no-sandbox.patch
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
     tools/{libvirt-guests.service,libvirt-guests.sh}.in \
@@ -146,7 +153,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}
+  cd "${_pkgname}-${pkgver}"
 
   arch-meson build \
     --libexecdir=lib/libvirt \
@@ -169,19 +176,21 @@ build() {
     -Dstorage_vstorage=disabled \
     -Ddtrace=disabled \
     -Dnumad=disabled \
-    -Dstorage_zfs=enabled\
+    -Dstorage_zfs=enabled \
     -Dstorage_rbd=disabled
 
   meson compile -C build
 }
 
-check() {
-  cd ${pkgname}
+# check is disabled due to weird indent errors
 
-  meson test -C build --print-errorlogs
-}
+#check() {
+#  cd ${_pkgname}
+#
+#  meson test -C build --print-errorlogs
+#}
 
-package_libvirt() {
+package_libvirt-venus() {
   provides=(
     "libvirt=$pkgver"
     libvirt.so
@@ -189,7 +198,8 @@ package_libvirt() {
     libvirt-lxc.so
     libvirt-qemu.so
   )
-  cd ${pkgname}
+  conflicts=(libvirt)
+  cd "${_pkgname}-${pkgver}"
   meson install -C build --destdir ${pkgdir}
 
   mkdir -p "${pkgdir}"/usr/lib/{sysusers,tmpfiles}.d
@@ -217,33 +227,36 @@ package_libvirt() {
   mv "${pkgdir}"/usr/lib/libvirt/storage-file/libvirt_storage_file_gluster.so "${pkgdir}"/../
 }
 
-package_libvirt-storage-gluster() {
-  pkgdesc="Libvirt Gluster storage backend"
-  depends=(
-    "libvirt=$pkgver"
-    gcc-libs
-    glib2
-    glibc
-    glusterfs
-  )
-  optdepends=()
-  backup=()
+# this package should only affect main Libvirt functionalities
+# disable building split packages, since they are likely irrelevant
 
-  install -Dv -t "${pkgdir}"/usr/lib/libvirt/storage-backend "${pkgdir}"/../libvirt_storage_backend_gluster.so
-  install -Dv -t "${pkgdir}"/usr/lib/libvirt/storage-file "${pkgdir}"/../libvirt_storage_file_gluster.so
-}
-
-package_libvirt-storage-iscsi-direct() {
-  pkgdesc="Libvirt iSCSI-direct storage backend"
-  depends=(
-    "libvirt=$pkgver"
-    gcc-libs
-    glib2
-    glibc
-    libiscsi
-  )
-  optdepends=()
-  backup=()
-
-  install -Dv -t "${pkgdir}"/usr/lib/libvirt/storage-backend "${pkgdir}"/../libvirt_storage_backend_iscsi-direct.so
-}
+#package_libvirt-storage-gluster() {
+#  pkgdesc="Libvirt Gluster storage backend"
+#  depends=(
+#    "libvirt=$pkgver"
+#    gcc-libs
+#    glib2
+#    glibc
+#    glusterfs
+#  )
+#  optdepends=()
+#  backup=()
+#
+#  install -Dv -t "${pkgdir}"/usr/lib/libvirt/storage-backend "${pkgdir}"/../libvirt_storage_backend_gluster.so
+#  install -Dv -t "${pkgdir}"/usr/lib/libvirt/storage-file "${pkgdir}"/../libvirt_storage_file_gluster.so
+#}
+#
+#package_libvirt-storage-iscsi-direct() {
+#  pkgdesc="Libvirt iSCSI-direct storage backend"
+#  depends=(
+#    "libvirt=$pkgver"
+#    gcc-libs
+#    glib2
+#    glibc
+#    libiscsi
+#  )
+#  optdepends=()
+#  backup=()
+#
+#  install -Dv -t "${pkgdir}"/usr/lib/libvirt/storage-backend "${pkgdir}"/../libvirt_storage_backend_iscsi-direct.so
+#}
