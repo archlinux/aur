@@ -11,7 +11,7 @@ options=(!strip)
 source_x86_64=("https://github.com/intesi-group/ig-desk/releases/download/v${igdeskver}-${igdeskrel}/IGDesk-${igdeskver}_${igdeskrel}-x86_64.AppImage")
 
 noextract=("${pkgname}-${pkgver}-${arch}.AppImage")
-sha256sums_x86_64=('af475ad2af860cacac4b715e1c8709054488ab5afd5f7543b057c69bc1ecd4ca')
+sha256sums_x86_64=('073baaa2bbc9951a3fd7a86df9e2862a39a7f47e6d5e18370af8fb175a953798')
 
 package() {
 	install -Dm755 "${srcdir}/IGDesk-${pkgver}-${arch}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}"
