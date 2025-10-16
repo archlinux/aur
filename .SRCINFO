@@ -1,0 +1,21 @@
+pkgbase = crit-bin
+	pkgdesc = Rust cross-compiler
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/mcandre/crit
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = crit
+	conflicts = crit
+	source = crit-0.0.10.tgz::https://github.com/mcandre/crit/releases/download/v0.0.10/crit-0.0.10.tgz
+	source = README-0.0.10.md::https://raw.githubusercontent.com/mcandre/crit/v0.0.10/README.md
+	source = LICENSE-0.0.10::https://raw.githubusercontent.com/mcandre/crit/v0.0.10/LICENSE.md
+	sha256sums = 4a204cb4e820161ab7401772d2bca9c09ce15e8a74b5a81a4f403932310aa7f1
+	sha256sums = b26e5f8c66199e2cb8e7b1d09cb55de82ca5329ce1a7c7a98a2b2507d9bb111f
+	sha256sums = 57f53599a9a2272ea3ac34a2ca701bb512fec522b905ef5fc06671cd1636eeec
+
+pkgname = crit-bin
