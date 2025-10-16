@@ -2,7 +2,7 @@
 
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Multi-format archive and compression library - 32bit"
 arch=(x86_64)
@@ -30,7 +30,7 @@ makedepends=(
 )
 provides=(libarchive.so)
 source=($_name::git+$_url.git?signed#tag=v$pkgver)
-sha256sums=('1857fc0288334ba5de7a0e9acbec647f610925c692c513a1a8b2e06dc11035c4')
+sha256sums=('39bc2068fcde8eb5b95e286072c4ccbb127857a82fb2fcd05f0d29089ea73dcc')
 validpgpkeys=(
   DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B  # Martin Matuska <martin@matuska.org>
 )
