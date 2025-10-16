@@ -11,6 +11,7 @@ pkgbase = nordvpn-bin
 	arch = armeabi
 	license = GPL3
 	depends = libxml2-legacy
+	optdepends = nordvpn-gui: Graphical Interface for NordVPN
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
 	source_x86_64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_4.2.0_amd64.deb
