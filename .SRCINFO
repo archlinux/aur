@@ -1,7 +1,7 @@
 pkgbase = termpicker
 	pkgdesc = A color picker for the terminal
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChausseBenjamin/termpicker
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = termpicker
 	optdepends = xsel: clipboard support on X11
 	provides = termpicker
 	conflicts = termpicker
+	options = !debug
 	source = LICENSE-1.5.0::https://raw.githubusercontent.com/ChausseBenjamin/termpicker/v1.5.0/LICENSE
 	source = README-1.5.0.md::https://raw.githubusercontent.com/ChausseBenjamin/termpicker/v1.5.0/README.md
 	sha256sums = bf9abdea4e804279ff552c3d4f25d3dc82463760f999bf2b26960f8788debad8
