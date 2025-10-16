@@ -1,0 +1,56 @@
+diff --git a/forge.config.js b/forge.config.js
+index 010235b..293fc75 100644
+--- a/forge.config.js
++++ b/forge.config.js
+@@ -6,50 +6,9 @@ module.exports = {
+     },
+     rebuildConfig: {},
+     makers: [
+-        {
+-            name: '@electron-forge/maker-squirrel',
+-            config: {
+-                name: 'CVRX',
+-                authors: 'CVRX',
+-                description: 'CVRX Desktop App',
+-                // URL to an ICO file to use as the application icon (displayed in Control Panel > Programs and Features).
+-                iconUrl: 'https://raw.githubusercontent.com/AstroDogeDX/CVRX/main/icon/cvrx-logo.ico',
+-                // The ICO file to use as the icon for the generated Setup.exe
+-                setupIcon: 'icon/cvrx-logo.ico',
+-                loadingGif: 'icon/loading.gif',
+-                setupExe: `CVRX-v${version}-Windows.exe`,
+-            },
+-        },
+         {
+             name: '@electron-forge/maker-zip',
+             platforms: ['linux'],
+         },
+-        {
+-            name: '@electron-forge/maker-deb',
+-            config: {
+-                options: {
+-                    maintainer: 'CVRX',
+-                    homepage: 'https://github.com/AstroDogeDX/CVRX',
+-                    icon: 'icon/cvrx-logo.png',
+-                },
+-            },
+-        },
+-        {
+-            name: '@electron-forge/maker-rpm',
+-            config: {
+-                options: {
+-                    icon: 'icon/cvrx-logo.png',
+-                    homepage: 'https://github.com/AstroDogeDX/CVRX',
+-                },
+-            },
+-        },
+-        {
+-            name: '@electron-forge/maker-dmg',
+-            config: {
+-                overwrite: true,
+-                icon: 'icon/cvrx-logo.icns',
+-                name: `CVRX-v${version}-MacOS`,
+-            },
+-        },
+-    ],
++   ],
+ };

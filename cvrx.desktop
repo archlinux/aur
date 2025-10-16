@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CVRX
+GenericName=ChilloutVR Companion
+Comment=A standalone companion app for ChilloutVR that expands the user experience!
+Exec=cvrx
+Icon=cvrx
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupNotify=true

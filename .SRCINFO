@@ -1,0 +1,25 @@
+pkgbase = cvrx
+	pkgdesc = A standalone companion app for ChilloutVR that expands the user experience!
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = https://github.com/AstroDogeDX/CVRX
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = unzip
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	source = https://github.com/AstroDogeDX/CVRX/archive/refs/tags/v1.0.14.tar.gz
+	source = only-linux.patch
+	source = cvrx.desktop
+	sha256sums = b17a921b0a43048404119f8e528a31ac689ee8d9c2110b8dacbe89f54df70558
+	sha256sums = 0481b790a8a135fb23295eeb87314bdef25f8c096e1a264c8bfdf59d9746802b
+	sha256sums = cbf5f1c452810bd4c2f88de6785ff0cacc4030edb91fe33e08fa30086ea682dd
+
+pkgname = cvrx
