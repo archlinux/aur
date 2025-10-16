@@ -10,7 +10,7 @@ depends=('tmux')
 provides=('tmuxai')
 conflicts=('tmuxai' 'tmuxai-git')
 source=("https://github.com/alvinunreal/tmuxai/releases/download/v${pkgver}/tmuxai_Linux_amd64.tar.gz")
-sha256sums=('e9c2de025b0cf00a085eee41e8b2b86925234101e11974ff0e597d2e103ad110')
+sha256sums=('5ad6fde1e292ef123c9225779d9c96925e5fad5fad0fc98ed29b49dac01f91b0')
 
 package() {
     # Install binary
