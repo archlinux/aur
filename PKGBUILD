@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 pkgname='zlog'
 pkgver='1.2.18'
-pkgrel=2
+pkgrel=1
 pkgdesc='A reliable pure C logging library.'
 arch=('x86_64')
 url='https://hardysimpson.github.io/zlog/'
