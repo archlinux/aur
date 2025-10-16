@@ -1,8 +1,8 @@
 # Maintainer: YOUR_NAME <you at domain dot tld>
 # Based on the original john-git PKGBUILD by David Ryskalczyk
 
-pkgname=john-bj-git          # change to any *free* AUR name
-pkgver=1.9.0.r0.gc5b4c8e     # auto-filled
+pkgname=john-bj-git
+pkgver=1.9.0.r0.gc5b4c8e
 pkgrel=1
 pkgdesc="John the Ripper – bleeding-jumbo branch (yescrypt, OpenCL, MPI, CPU fall-backs)"
 arch=('x86_64' 'aarch64' 'i686')
@@ -57,14 +57,14 @@ build() {
             # generic
             CFLAGS="${CFLAGS/-march=*}" ./configure "${common_opts[@]}"
             make clean && make
-            mv -v ../run/john{,-non-avx}
+            mv -v ../run/john ../run/john-non-avx
 
             # AVX
             ./configure "${common_opts[@]}" CFLAGS="$CFLAGS -mavx"
             make clean && make
-            mv -v ../run/john{,-non-xop}
+            mv -v ../run/john ../run/john-non-xop
 
-            # XOP (keep this one as plain 'john')
+            # XOP (plain 'john')
             ./configure "${common_opts[@]}" CFLAGS="$CFLAGS -mxop"
             make clean && make
             ;;
@@ -73,7 +73,7 @@ build() {
                 [[ $flag ]] && CFLAGS="$CFLAGS $flag"
                 ./configure "${common_opts[@]}" CFLAGS="$CFLAGS"
                 make clean && make
-                [[ $flag ]] && mv -v ../run/john{,"-${flag#-}"}
+                [[ $flag ]] && mv -v ../run/john "../run/john-${flag#-}"
             done
             ;;
         aarch64|*)
@@ -82,26 +82,25 @@ build() {
             ;;
     esac
 
-    # sanity check
     [[ -x ../run/john ]] || { echo "FATAL: john binary not built"; return 1; }
 }
 
 package() {
     cd "$srcdir/john"
 
-    # Main binary + CPU fall-backs
+    # main binary + CPU fall-backs
     install -Dm755 run/john -t "$pkgdir/usr/bin"
     for cpu in non-avx non-xop non-sse2 non-mmx; do
         [[ -e run/john-$cpu ]] && install -Dm755 run/john-$cpu -t "$pkgdir/usr/bin"
     done
 
-    # Symlinks for legacy tools
+    # symlinks for legacy tools
     for link in unshadow unafs unique undrop rar2john zip2john gpg2john base64conv; do
         rm -f "$pkgdir/usr/bin/$link"
         ln -s /usr/bin/john "$pkgdir/usr/bin/$link"
     done
 
-    # Helper scripts
+    # helper scripts
     install -d "$pkgdir/usr/lib/john" "$pkgdir/usr/bin"
     install -m755 run/{*.py,*.pl,*.rb,*.lua,mailer,benchmark-unify} -t "$pkgdir/usr/lib/john" 2>/dev/null || true
     for ext in pl py rb lua; do
@@ -119,8 +118,9 @@ package() {
                          && ln -s "/usr/lib/john/$t" "$pkgdir/usr/bin/$t"
     done
 
-    # Config & data files
+    # config & data files
     install -Dm644 run/john.conf -t "$pkgdir/etc/john"
+    install -Dm644 run/john.conf -t "$pkgdir/usr/share/john/john.conf"
     install -Dm644 run/*.chr run/*.lst run/dictionary* run/stats -t "$pkgdir/usr/share/john"
     install -Dm644 run/rules/* -t "$pkgdir/usr/share/john/rules"
 
@@ -131,14 +131,14 @@ package() {
         chmod -R a+r "$pkgdir/usr/share/john/opencl"
     fi
 
-    # Docs & licenses
+    # docs & license
     install -d "$pkgdir/usr/share/doc/john" "$pkgdir/usr/share/licenses/$pkgname"
     cp -a doc/* "$pkgdir/usr/share/doc/john"
     install -Dm644 doc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     chmod -R a+r "$pkgdir/usr/share/doc/john"
 
-    # Shell completions
+    # shell completions
     install -Dm644 run/john.bash_completion "$pkgdir/usr/share/bash-completion/completions/john"
     install -Dm644 run/john.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_john"
 }
