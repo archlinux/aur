@@ -1,6 +1,6 @@
 pkgbase = kripton-qr-reader
 	pkgdesc = A CLI tool for reading QR codes from images, with directory scanning and persistent settings.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/clauderarch/kripton-qr-reader
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = kripton-qr-reader
 	makedepends = cargo
 	makedepends = rust
 	depends = libwebp
-	source = https://github.com/clauderarch/kripton-qr-reader/archive/5b56a3cd5700bcd203cee3a59b2c0f2179d8f433.tar.gz
+	source = https://github.com/clauderarch/kripton-qr-reader/archive/2bc1802abca252072e6a58db4dced2ff1e3184d3.tar.gz
 	source = kripton-qr-reader.desktop
 	source = kripton-qr-reader.png
-	sha256sums = 2beea1bbc00ba249068e226d4d5bd9a5b753404afed0835ce2d075f0ec3ab5d1
+	sha256sums = 00c3f64d56b39557a6ce3204a7306237e0f49a0304da3c2ed3ae77262ff1d698
 	sha256sums = 9f932b4e9b00714e007aa2b23ab2db22fa7dd3b1ca71472542c78f465b035a4a
 	sha256sums = ebb078dc1620b61ecb61c4f63419e4289d2852fa3da31800e39c133f676cc643
 
