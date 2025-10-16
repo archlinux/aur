@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=xword-dl
-pkgver=2025.10.3
+pkgver=2025.10.14
 pkgrel=1
 pkgdesc='Command-line tool to download .puz files for online crossword puzzles'
 arch=(any)
@@ -20,9 +20,13 @@ depends=(
 	python-xmltodict
 	python-yaml
 )
-makedepends=(git python-hatchling python-hatch-vcs)
+makedepends=(git python-build python-hatchling python-hatch-vcs python-installer)
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('333c09072afc33be9adc860e0ce277b4bef14d43770469e1cd9982dbce3856f4')
+sha256sums=('9ab742747f8445314e8100d997c16df6c5afeb2035686375d90462f2ab540fbc')
+
+prepare() {
+	git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
 	cd "${pkgname}"
