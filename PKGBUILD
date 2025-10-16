@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <nomadcxx@gmail.com>
 pkgname=gslapper
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="gSlapper, a GStreamer-based video wallpaper application that replaces mpvpaper with better NVIDIA & Wayland support"
 arch=('x86_64')
 url="https://github.com/Nomadcxx/gSlapper"
