@@ -12,6 +12,7 @@ _barch=('x86_64' 'i386' 'arm64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('Beerware')
+options=('!debug')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
