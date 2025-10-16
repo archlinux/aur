@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-    "fd7d955a8a77de17a64c20bce91f24bbbd8626d5d3e7b51daba60e5afa6f4612"
+    "39c7ea6bcb32be5d9cf01b0b375f5ec2b211744a9a45bf6ccce18140b1753562"
 )
 
 prepare() {
