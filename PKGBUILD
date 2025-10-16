@@ -3,12 +3,12 @@
 
 pkgname=qtchess
 pkgver=2025.05.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Online chess game client written in Qt'
 url='https://textbrowser.github.io/qtchess/'
 arch=('i686' 'x86_64')
 license=('custom:3-clause BSD')
-depends=('qt5-base' 'libgl')
+depends=('qt5-base')
 makedepends=('qt5-tools')
 source=(qtchess-${pkgver}.tar.gz::"https://github.com/textbrowser/qtchess/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('329417fa3f6a5bbede7c542214c1af2703175da762c6efed4c04a27e549521b3')
