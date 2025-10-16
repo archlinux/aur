@@ -1,0 +1,18 @@
+pkgbase = slick-bin
+	pkgdesc = A CI-ready shell language syntax checker
+	pkgver = 0.0.17
+	pkgrel = 1
+	url = https://github.com/mcandre/slick
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	conflicts = slick
+	source = slick-0.0.17.tgz::https://github.com/mcandre/slick/releases/download/v0.0.17/slick-0.0.17.tgz
+	source = README-0.0.17.md::https://raw.githubusercontent.com/mcandre/slick/v0.0.17/README.md
+	source = LICENSE-0.0.17::https://raw.githubusercontent.com/mcandre/slick/v0.0.17/LICENSE.md
+	sha256sums = deaa6ac8ea44d2df2ae7394f97e9aac2ff27bdb1c555d94d4688b6db0398e3f0
+	sha256sums = bbfd5987134a3df4dbf6c63d0184154a9c8c861f88abc98594e60587f4525d2a
+	sha256sums = 209f2bba163b033a6911ed879497d720a64095962f5b38dac2c476674d328269
+
+pkgname = slick-bin

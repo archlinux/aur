@@ -1,0 +1,5 @@
+["slick-bin"]
+source = "github"
+github = "mcandre/slick"
+use_latest_release = true
+prefix = "v"
