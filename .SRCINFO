@@ -1,0 +1,22 @@
+pkgbase = kirill-bin
+	pkgdesc = A JSON document integrity checker
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/mcandre/kirill
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = kirill
+	conflicts = kirill
+	conflicts = kirill-git
+	source = kirill-0.0.4.tgz::https://github.com/mcandre/kirill/releases/download/v0.0.4/kirill-0.0.4.tgz
+	source = README-0.0.4.md::https://raw.githubusercontent.com/mcandre/kirill/v0.0.4/README.md
+	source = LICENSE-0.0.4::https://raw.githubusercontent.com/mcandre/kirill/v0.0.4/LICENSE.md
+	sha256sums = 3bf0fb5d132bc219ef4fd21bea79baa987fe29d455c5d53472374f8a23362e2a
+	sha256sums = 4519e45ecc0a4f1996cb7975a8b7a7bd1db3d3bd809ac4c99a55dabc672f214f
+	sha256sums = 101d1171849ca84c68bc5a59bbd8e54f18a4f8ab7e9bdc3d3fdfb7c173ffbf7f
+
+pkgname = kirill-bin

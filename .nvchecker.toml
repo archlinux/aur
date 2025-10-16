@@ -1,0 +1,5 @@
+["kirill-bin"]
+source = "github"
+github = "mcandre/kirill"
+use_latest_release = true
+prefix = "v"
