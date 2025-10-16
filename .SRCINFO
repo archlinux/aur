@@ -1,6 +1,6 @@
 pkgbase = zrok-bin
 	pkgdesc = An open source sharing solution built on OpenZiti
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/openziti/zrok
 	install = zrok-bin.install
@@ -14,11 +14,11 @@ pkgbase = zrok-bin
 	options = !debug
 	source = zrok-agent.service
 	sha256sums = e510465ca8b29a514ef67f3d5bc41d613413a88781c17f88afdaa594fb4bfe7c
-	source_x86_64 = zrok-bin-1.1.8-linux-amd64.tar.gz::https://github.com/openziti/zrok/releases/download/v1.1.8/zrok_1.1.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = a990136a38c37f6c310761967aee070919a9200e0eb13226ad63e303f443b7b6
-	source_aarch64 = zrok-bin-1.1.8-linux-arm64.tar.gz::https://github.com/openziti/zrok/releases/download/v1.1.8/zrok_1.1.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = 150396ab7e799af7859508002ff079e05bb7da027828ebefd7a7a6631a44c88e
-	source_armv7h = zrok-bin-1.1.8-linux-armv7.tar.gz::https://github.com/openziti/zrok/releases/download/v1.1.8/zrok_1.1.8_linux_armv7.tar.gz
-	sha256sums_armv7h = b6fd23193eb05e3fffe80f59f0fddfef50b76972d15e945e2651756019fd790a
+	source_x86_64 = zrok-bin-1.1.9-linux-amd64.tar.gz::https://github.com/openziti/zrok/releases/download/v1.1.9/zrok_1.1.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = 807a098562e2a699370b8f256152061ae26bb61ef45e8140895d100b795ebfce
+	source_aarch64 = zrok-bin-1.1.9-linux-arm64.tar.gz::https://github.com/openziti/zrok/releases/download/v1.1.9/zrok_1.1.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = 929379e950400b67fc46e1b34f6acbea5e99ba100c9765fe8ee54c438b920d59
+	source_armv7h = zrok-bin-1.1.9-linux-armv7.tar.gz::https://github.com/openziti/zrok/releases/download/v1.1.9/zrok_1.1.9_linux_armv7.tar.gz
+	sha256sums_armv7h = 0842135051fd78fe239a5f6cde03bea109c07133283c3eb71cd9bd4b3b1fdc3c
 
 pkgname = zrok-bin
