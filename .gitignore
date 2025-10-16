@@ -1,0 +1,7 @@
+# Ignore the actual .deb binary
+*.deb
+
+# Ignore other temporary build files
+pkg/
+src/
+*.tar.*
