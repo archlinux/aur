@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-normalize
 	pkgdesc = Normalize loudness of audio and video files using FFmpeg
-	pkgver = 1.33.1
-	pkgrel = 4
+	pkgver = 1.33.2
+	pkgrel = 1
 	url = https://github.com/slhck/ffmpeg-normalize
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = ffmpeg-normalize
 	depends = python-ffmpeg-progress-yield
 	depends = python-mutagen
 	depends = python-tqdm
-	source = ffmpeg-normalize-1.33.1.tar.gz::https://github.com/slhck/ffmpeg-normalize/archive/v1.33.1.tar.gz
-	sha512sums = ee83d9ab48cf2a2e4e16e1fb1b9442e9a4b247fb4535de75c03ca823422d24d1a087598fb3a4ba6e4e91d8bf75e24b1904faece2eb243392b8c91383f329d652
+	source = ffmpeg-normalize-1.33.2.tar.gz::https://github.com/slhck/ffmpeg-normalize/archive/v1.33.2.tar.gz
+	sha512sums = 0f6fa0e329a6b3c7d1202e49480a1d8ff2210412059e046c72ce92a97b4fdecd0ea770e3fcfa26c1e9b1f5345f3121594d96cc980238c04e7b8bbb6e76cda62e
 
 pkgname = ffmpeg-normalize
