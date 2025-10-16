@@ -9,7 +9,6 @@ _pkgvername=v${pkgver}
 pkgdesc="Go cross-compiler"
 arch=('x86_64' 'i686' 'aarch64')
 _barch=('amd64' '386' 'arm64')
-_clib='gnu'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('BSD-2-Clause')
