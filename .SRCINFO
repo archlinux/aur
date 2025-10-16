@@ -1,16 +1,16 @@
 pkgbase = ggc
 	pkgdesc = A modern Git CLI tool with both traditional command-line and interactive incremental-search UI
-	pkgver = 7.0.2
+	pkgver = 7.0.3
 	pkgrel = 1
 	url = https://github.com/bmf-san/ggc
 	arch = x86_64
-	arch = arm64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	provides = ggc
 	conflicts = ggc-bin
 	conflicts = ggc-git
-	source = ggc-7.0.2.tar.gz::https://github.com/bmf-san/ggc/archive/refs/tags/v7.0.2.tar.gz
-	sha256sums = ab7bb474e99cd108fbade595be43375da4afad52c74b3d53ae58d1340cc3d7a4
+	source = ggc-7.0.3.tar.gz::https://github.com/bmf-san/ggc/archive/refs/tags/v7.0.3.tar.gz
+	sha256sums = ec6d86cfb273e56be3d93468f1441a3b367de2b07b9133ec08db8d7c7381c81c
 
 pkgname = ggc
