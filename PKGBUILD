@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email>
 pkgname=pharm-record
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A PySide6-based medication tracking application."
 arch=('any')
@@ -9,7 +9,7 @@ license=('CC-BY-SA-4.0')
 depends=('python' 'python-platformdirs' 'pyside6' 'shiboken6')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/wonderfox/pharm-record/archive/v$pkgver.tar.gz")
-sha256sums=('a11fd1260704183dda8de0f72cdc74db3a8f2533f34a7443d036d9fa77ff1243')
+sha256sums=('08afefa092f1fd26db8113e1d84c20bf441fc9e46e8fa41e12c1ab3c1f66ff88')
 
 build() {
     cd "$srcdir/$pkgname"
