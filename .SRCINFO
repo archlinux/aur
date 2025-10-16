@@ -1,7 +1,7 @@
 pkgbase = zig-mach-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
 	pkgver = 0.14.0dev.2577+271452d22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ziglang.org
 	arch = aarch64
 	arch = armv7h
@@ -16,6 +16,7 @@ pkgbase = zig-mach-bin
 	makedepends = minisign
 	provides = zig-mach=0.14.0dev.2577+271452d22
 	conflicts = zig-mach
+	options = !strip
 	source = https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.2577+271452d22.tar.xz
 	source = https://pkg.machengine.org/zig/zig-linux-x86_64-0.14.0-dev.2577+271452d22.tar.xz.minisig
 	sha256sums = 7be6abdebfa970c6138d165b348d0464e84f16f531e71cb20c0e052fae1d8c8d

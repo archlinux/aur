@@ -4,7 +4,7 @@ _basename="zig"
 _pkgname="${_basename}-mach"
 pkgname="${_pkgname}-bin"
 pkgver=0.14.0dev.2577+271452d22
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   'aarch64'
@@ -27,6 +27,9 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+)
+options=(
+  '!strip'
 )
 
 if   [ "${CARCH}" = 'aarch64'     ]; then _arch=aarch64;
