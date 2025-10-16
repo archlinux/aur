@@ -4,7 +4,7 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.9.9 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/code
+pkgver=0.9.10 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/code
 pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
@@ -32,7 +32,6 @@ depends=(
 )
 optdepends=('python-mysqlclient: Ampache and Prokyon 3 support'
   'python-irc: IRC notification support')
-conflicts=('idjc-git')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
@@ -54,4 +53,4 @@ package() {
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha256sums=('c6b3ce1fef56959575c18baabae7586928a0843baa1ada331055578e966ef5f9')
+sha256sums=('aadd48058086baf2d95198926a60bf86b2f03fe1fdeb6b7a36cfdb0a5009ac4d')
