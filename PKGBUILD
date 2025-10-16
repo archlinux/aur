@@ -32,8 +32,8 @@ package() {
   install -Dm644 README.txt "$pkgdir/usr/share/doc/$pkgname/README_GTK"
   install -Dm644 ../README "$pkgdir/usr/share/doc/$pkgname/README"
 
-  install -Dm644 icon-48x48.xpm "$pkgdir/usr/share/icons/hicolor/48x48/apps/plus42.xpm"
-  install -Dm644 icon-128x128.xpm "$pkgdir/usr/share/icons/hicolor/128x128/apps/plus42.xpm"
+  install -Dm644 icon-48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/plus42.png"
+  install -Dm644 icon-128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/plus42.png"
 
   ln -s /usr/bin/plus42dec "$pkgdir/usr/bin/plus42"
 
