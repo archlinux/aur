@@ -2,21 +2,23 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.58b0
+pkgver=0.59b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('2e65b7e72a1d295dacdd20479943cb262d44f45589c9358e41d6ad6d3c7e90ac0703bdf36d0a536387c40f4bd023012ae1a1ba78187ea324152f6b1ce8fb3515')
+b2sums=('67a2f630d555819745c784bdefaa2c251096bf3cffb93ed07ecaeed8c3b02fc0adb2cd8cfc12aef5ace6c9306bb1a2f62d9f8819a6bbc80290ea6862118847ff')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
+    "python-opentelemetry-exporter-credential-provider-gcp"
     "python-opentelemetry-exporter-prometheus-remote-write"
     "python-opentelemetry-exporter-richconsole"
     "python-opentelemetry-instrumentation-google-genai"
     "python-opentelemetry-instrumentation-langchain"
+    "python-opentelemetry-instrumentation-openai-agents-v2"
     "python-opentelemetry-instrumentation-openai-v2"
     "python-opentelemetry-instrumentation-vertexai"
     "python-opentelemetry-instrumentation-weaviate"
@@ -84,10 +86,12 @@ pkgname=(
     "python-opentelemetry-util-http"
 )
 _pkgdescs=(
+    "GCP OTLP Exporter Credential Provider for OpenTelemetry"
     "Prometheus Remote Write Metrics Exporter for OpenTelemetry"
     "Rich Console Exporter for OpenTelemetry"
     "OpenTelemetry"
     "OpenTelemetry Official Langchain instrumentation"
+    "OpenTelemetry OpenAI Agents instrumentation (barebones)"
     "OpenTelemetry Official OpenAI instrumentation"
     "OpenTelemetry Official VertexAI instrumentation"
     "OpenTelemetry Official Weaviate Client Instrumentation"
@@ -155,10 +159,12 @@ _pkgdescs=(
     "Web util for OpenTelemetry"
 )
 _urls=(
+    "${_url}/tree/main/exporter/opentelemetry-exporter-credential-provider-gcp"
     "${_url}/tree/main/exporter/opentelemetry-exporter-prometheus-remote-write"
     "${_url}/tree/main/exporter/opentelemetry-exporter-richconsole"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-google-genai"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-langchain"
+    "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-agents-v2"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-weaviate"
@@ -226,12 +232,14 @@ _urls=(
     "${_url}/tree/main/util/opentelemetry-util-http"
 )
 _depends=(
+    "python-google-auth python-grpcio python-requests"
     "python-opentelemetry-api python-opentelemetry-sdk python-protobuf python-requests python-snappy"
     "python-opentelemetry-api python-opentelemetry-sdk python-opentelemetry-semantic-conventions python-rich"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
@@ -299,8 +307,10 @@ _depends=(
 _optdepends=(
     ""
     ""
+    ""
     "python-google-genai"
     "python-langchain"
+    "python-openai-agents"
     "python-openai"
     "python-google-cloud-aiplatform"
     "python-weaviate-client"
@@ -364,7 +374,7 @@ _optdepends=(
     ""
     ""
     ""
-    "python-pytest"
+    "python-fsspec python-pytest"
     ""
 )
 

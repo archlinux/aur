@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.58b0
+	pkgver = 0.59b0
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -7,8 +7,16 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.58b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.58b0.tar.gz
-	b2sums = 2e65b7e72a1d295dacdd20479943cb262d44f45589c9358e41d6ad6d3c7e90ac0703bdf36d0a536387c40f4bd023012ae1a1ba78187ea324152f6b1ce8fb3515
+	source = opentelemetry-python-contrib-0.59b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.59b0.tar.gz
+	b2sums = 67a2f630d555819745c784bdefaa2c251096bf3cffb93ed07ecaeed8c3b02fc0adb2cd8cfc12aef5ace6c9306bb1a2f62d9f8819a6bbc80290ea6862118847ff
+
+pkgname = python-opentelemetry-exporter-credential-provider-gcp
+	pkgdesc = GCP OTLP Exporter Credential Provider for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter/opentelemetry-exporter-credential-provider-gcp
+	depends = python-google-auth
+	depends = python-grpcio
+	depends = python-requests
+	optdepends = 
 
 pkgname = python-opentelemetry-exporter-prometheus-remote-write
 	pkgdesc = Prometheus Remote Write Metrics Exporter for OpenTelemetry
@@ -35,6 +43,7 @@ pkgname = python-opentelemetry-instrumentation-google-genai
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-genai
 	optdepends = python-google-genai
 
 pkgname = python-opentelemetry-instrumentation-langchain
@@ -44,6 +53,15 @@ pkgname = python-opentelemetry-instrumentation-langchain
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
 	optdepends = python-langchain
+
+pkgname = python-opentelemetry-instrumentation-openai-agents-v2
+	pkgdesc = OpenTelemetry OpenAI Agents instrumentation (barebones)
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-agents-v2
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-genai
+	optdepends = python-openai-agents
 
 pkgname = python-opentelemetry-instrumentation-openai-v2
 	pkgdesc = OpenTelemetry Official OpenAI instrumentation
@@ -59,6 +77,7 @@ pkgname = python-opentelemetry-instrumentation-vertexai
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-genai
 	optdepends = python-google-cloud-aiplatform
 
 pkgname = python-opentelemetry-instrumentation-weaviate
@@ -649,6 +668,7 @@ pkgname = python-opentelemetry-util-genai
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
+	optdepends = python-fsspec
 	optdepends = python-pytest
 
 pkgname = python-opentelemetry-util-http
