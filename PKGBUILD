@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kaas-bin
 _pkgname=Kaas
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Cross-platform desktop LLM client for OpenAI ChatGPT, Anthropic Claude, Microsoft Azure and more, with a focus on privacy and security."
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgname%-bin}-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/0xfrankz/Kaas/${pkgname%-bin}-v${pkgver}/LICENSE"
 )
-sha256sums=('a4ddcbab64ce9239781705f2c162758ed1d3afaa840669cf42789cdb3b946087'
+sha256sums=('df151ecb7b9a293802ebcc11590b0ac441cf09dd23844c9d455e93ca659ddd55'
             '92369ee89bbdda6b7d05ad8667c9b354ede5d80e2e9ebb2aca2bbb9f156b44e1')
 prepare() {
     sed -e "
