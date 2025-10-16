@@ -1,0 +1,13 @@
+pkgbase = csrf-brute
+	pkgdesc = CSRF-aware brute force tool with Hydra-style syntax
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/black-shadow/csrf-brute
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	source = csrf-brute-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = csrf-brute
