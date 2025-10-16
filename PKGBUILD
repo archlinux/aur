@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-epitran
-pkgver=1.24
+pkgver=1.34.0 # renovate: datasource=github-tags depName=dmort27/epitran
 pkgrel=1
 pkgdesc="A library and tool for transliterating orthographic text as IPA (International Phonetic Alphabet)."
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 url="https://github.com/dmort27/epitran"
 license=('MIT')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 
 package() {
   cd ${pkgname##python-}-$pkgver
@@ -18,4 +18,4 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('ca43d62a7c6f4441e409327cdf093a44758d82e8e71a5e6c59884d61621ced6e')
+sha256sums=('5633ddc3a7146b0555f5f6323d03e7334c2b89ec0ae7e18f378337a8c72b97fc')
