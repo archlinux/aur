@@ -1,3 +1,17 @@
+2.15.1-1
+  - New upstream version 2.15.1
+    https://github.com/Icinga/icinga2/releases/tag/v2.15.1
+  - CVE-2025-61907: Prevent API users from accessing variables and objects they
+    don't have access to within filter expressions. This allowed authenticated
+    API users to learn information they aren't allowed to access directly.
+  - CVE-2025-61908: Add a missing null pointer check while evaluating
+    expressions. This allowed authenticated API users to crash the Icinga 2
+    daemon by supplying a crafted filter expression.
+  - CVE-2025-61909: Don't send signals as root in safe-reload script and
+    logrotate config. This allowed a limited privilege escalation from the
+    Icinga 2 service user to root. The scope is limited to sending SIGHUP or
+    SIGUSR1 to an arbitrary process.
+
 2.15.0-1
   - New upstream version 2.15.0
     https://github.com/Icinga/icinga2/releases/tag/v2.15.0
