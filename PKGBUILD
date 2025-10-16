@@ -1,8 +1,8 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2025.09.10
-pkgrel=2
+pkgver=2025.10.11
+pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
@@ -17,15 +17,21 @@ source=(
     "build.patch"
 )
 
-sha256sums=('d898044dac496e1d621f2388cec024df9d94999f6b8d8f92ac2bf33a036febf5'
+sha256sums=('8f385fc02f9e9821ea451a53cfef62413638e122b45af96e787fb116022e8b49'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            '8b464aaa69ad89fd6e14e5d65e138b668f54e074a2c9bfcb99dacca90550377d')
+            'cb78754ccba9d260e62e9b2d6f25668a98dbc71cf765e7aff173a5f43053c324')
             
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
     patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
-    npm ci
+
+    # WORKAROUND: Upstream lock file is out of sync.
+    # Prefer package.json until it gets fixed upstream.
+    # npm ci
+
+    npm install --package-lock-only --no-fund
+    npm ci --no-fund
 }
 
 build() {
@@ -39,8 +45,8 @@ build() {
         -t:"Restore;Clean;Build" \
         -m -r linux-x64
     
-    npm run prod-linux
-    npm run build-electron
+    npm run prod-linux --no-fund
+    npm run build-electron --no-fund
 }
 
 package() {
@@ -58,7 +64,7 @@ package() {
     # Install icons in multiple sizes
     for size in 16 24 32 64 128 256 512; do
         install -dm755 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-        magick "VRCX.png" -resize "${size}x${size}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/vrcx.png"
+        magick "images/VRCX.png" -resize "${size}x${size}" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/vrcx.png"
     done
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

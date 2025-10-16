@@ -1,7 +1,7 @@
 pkgbase = vrcx
 	pkgdesc = Friendship management tool for VRChat (built with Electron)
-	pkgver = 2025.09.10
-	pkgrel = 2
+	pkgver = 2025.10.11
+	pkgrel = 1
 	url = https://github.com/vrcx-team/VRCX
 	arch = x86_64
 	license = MIT
@@ -21,11 +21,11 @@ pkgbase = vrcx
 	conflicts = vrcx-bin
 	options = !debug
 	options = !lto
-	source = vrcx-2025.09.10.tar.gz::https://github.com/vrcx-team/VRCX/archive/refs/tags/v2025.09.10.tar.gz
+	source = vrcx-2025.10.11.tar.gz::https://github.com/vrcx-team/VRCX/archive/refs/tags/v2025.10.11.tar.gz
 	source = vrcx.desktop
 	source = build.patch
-	sha256sums = d898044dac496e1d621f2388cec024df9d94999f6b8d8f92ac2bf33a036febf5
+	sha256sums = 8f385fc02f9e9821ea451a53cfef62413638e122b45af96e787fb116022e8b49
 	sha256sums = 3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5
-	sha256sums = 8b464aaa69ad89fd6e14e5d65e138b668f54e074a2c9bfcb99dacca90550377d
+	sha256sums = cb78754ccba9d260e62e9b2d6f25668a98dbc71cf765e7aff173a5f43053c324
 
 pkgname = vrcx
