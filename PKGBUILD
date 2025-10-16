@@ -3,7 +3,7 @@
 pkgname=shadps4
 pkgver=0.11.0
 _pkgname=shadPS4
-pkgrel=2
+pkgrel=3
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
@@ -59,8 +59,10 @@ source=(
 	"git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 	"git+https://github.com/shadps4-emu/ext-hwinfo"
 	"git+https://github.com/shadps4-emu/ext-libusb.git"
+	"git+https://github.com/KhronosGroup/glslang.git"
 )
 b2sums=('95f369b4cd97757730b8f0f36c94ab0a7b36a6297e7291643943049733cb05bc939776152d4ddb68941ef948e399b113f59ed3e3773e591c4ef302d622f74def'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -81,6 +83,7 @@ prepare() {
 	git config submodule.externals/zydis.url "../zydis"
 	git config submodule.externals/ext-libusb.url "../ext-libusb"
 	git config submodule.externals/hwinfo.url "../ext-hwinfo"
+	git config submodule.externals/glslang.url "../glslang"
     git -c protocol.file.allow=always submodule update
 
 }
