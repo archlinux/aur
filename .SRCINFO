@@ -1,0 +1,19 @@
+pkgbase = declarages
+	pkgdesc = A way to manage your packages in lua
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/initMayday/declarages.git
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = lua
+	optdepends = git: pacman core
+	optdepends = pacman-contrib: pacman core
+	optdepends = flatpak: flatpak core
+	optdepends = nix: nix core
+	provides = declarages
+	conflicts = declarages
+	source = declarages::git+https://github.com/initMayday/declarages.git
+	sha256sums = SKIP
+
+pkgname = declarages
