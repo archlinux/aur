@@ -1,7 +1,7 @@
 pkgbase = update-alternatives-git
 	pkgdesc = A simple update-alternatives replacement written in Rust
-	pkgver = 0.6.0
-	pkgrel = 1
+	pkgver = r70
+	pkgrel = 2
 	url = https://github.com/fthomys/update-alternatives
 	arch = x86_64
 	license = MIT
