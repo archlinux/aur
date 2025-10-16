@@ -1,6 +1,6 @@
 pkgbase = lune-git
 	pkgdesc = [Latest Git Commit] A standalone Luau script runtime
-	pkgver = 0.10.2.r2.g8e09fd42
+	pkgver = 0.10.4.r1.g43484f13
 	pkgrel = 1
 	url = https://lune-org.github.io/docs
 	arch = x86_64

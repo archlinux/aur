@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=lune-git
-pkgver=0.10.2.r2.g8e09fd42
+pkgver=0.10.4.r1.g43484f13
 pkgrel=1
 pkgdesc="[Latest Git Commit] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
