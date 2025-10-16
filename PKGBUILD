@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='kwin-scripts-kzones'
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='KDE KWin Script for snapping windows into zones'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/gerritdevriese/kzones'
 license=('GPL-3.0-only')
 depends=('kwin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gerritdevriese/kzones/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8fb041756fce66d743cf194b2666493422d6213c2d3adecf18b8c4589ca04a48')
+sha256sums=('da8313d46df76f2ee779fd2b9bb373a89c8729917f51c1434fdcd9e848988b2b')
 
 package() {
 	cd "kzones-${pkgver}"
