@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=zluda-git
-pkgver=5.r0.g1c0c421
+pkgver=6.preview.7.r0.g14b8482
 pkgrel=1
 pkgdesc='A drop-in replacement for CUDA on non-NVIDIA GPUs (git version)'
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
     'glibc'
     'hip-runtime-amd'
     'hipblaslt'
+    'miopen-hip'
     'rocblas'
     'rocm-smi-lib')
 makedepends=(
