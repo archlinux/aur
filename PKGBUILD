@@ -1,6 +1,6 @@
 # Maintainer: FAHAD ALYAMI <thecord2000@gmail.com>
 pkgname=tmuxai-bin
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="AI-Powered, Non-Intrusive Terminal Assistant for tmux (binary release)"
 arch=('x86_64')
