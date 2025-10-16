@@ -90,8 +90,8 @@ pkgver() {
 
 prepare() {
   ## Set rust/cargo home to the build source dir
-  #[[ -z "$CARGO_HOME" ]] && export CARGO_HOME="$srcdir/build/cargo-home"
-  #[[ -z "$RUSTUP_HOME" ]] && export RUSTUP_HOME="$srcdir/build/rustup-home"
+  #[ -z "$CARGO_HOME" ] && export CARGO_HOME="$srcdir/build/cargo-home"
+  #[ -z "$RUSTUP_HOME" ] && export RUSTUP_HOME="$srcdir/build/rustup-home"
 
   cd "$srcdir/mozc" || exit
 
@@ -124,7 +124,7 @@ prepare() {
   # すだちを優先
   msg '1. Build the rust program(dict-to-mozc), it may take some time...'
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
-  [[ -z "$TARGET" ]] && TARGET=$(rustc -vV | sed -n 's/host: //p')
+  [ -z "$TARGET" ] && TARGET=$(rustc -vV | sed -n 's/host: //p')
   unset RUSTC
   #CC_=$CC
   #unset CC
