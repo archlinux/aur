@@ -2,7 +2,7 @@
 
 pkgname=gimp-appimage
 _pkgname=gimp
-pkgver=3.0.4
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program AppImage"
 provides=('gimp')
@@ -17,7 +17,7 @@ _filename=GIMP-${pkgver}-x86_64.AppImage
 source=(
   https://download.gimp.org/gimp/v3.0/linux/GIMP-${pkgver}-x86_64.AppImage
 )
-sha512sums=('f2d96f79cc4cff291700742565499fe825e5f36554e77ff2b5cbc31089c1a8ba79e77b7e8b4898fe40a020dbe24d1c9fa6b6f5954aeb0e5a4d61725e7501c39a')
+sha512sums=('d85e0f114eb623d09114ced8004b5f5885d5b27bbdb3578451ff2cebb67daa055a53316c71166db0dc2f10b578537622b8f8237b31f6be229bfc710b3b004533')
 
 prepare() {
   cd "${srcdir}"
