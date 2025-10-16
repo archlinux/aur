@@ -1,7 +1,7 @@
 # Maintainer: Ayushmaan Padhi <padhiayushmaan@gmail.com>
 
 pkgname=cloudflare-warp-minimal-bin
-pkgver=2025.7.176.0
+pkgver=2025.8.779.0
 pkgrel=1
 pkgdesc="Minimal Cloudflare WARP client"
 arch=('x86_64')
