@@ -1,0 +1,15 @@
+pkgbase = tetoservice-git
+	pkgdesc = A tool to manage services on all init-systems
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://git.teto.party/pkgs/tetoservice
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = sh
+	source = tetoservice-git-0.0::git+https://git.teto.party/pkgs/tetoservice.git#commit=2b632fe77554558573f6a8117bbb29d8f39c2738
+	source = tetofix.patch
+	sha256sums = 5fb114c2a91352272d0e5edcfa88dbafeedd1a1fc8b78230d80c4370a6c2bd6a
+	sha256sums = 17c8ce0b5766d6cc9ae1248c0c30daea30f75d900c8918ae28f15a8d7085f388
+
+pkgname = tetoservice-git

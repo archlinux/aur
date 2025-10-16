@@ -1,0 +1,4 @@
+pkg/
+src/
+tetoservice-git-*/
+*.pkg.tar.zst
