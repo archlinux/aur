@@ -2,13 +2,13 @@
 # Contributor: pplx-zero package maintainer
 
 pkgname=pplx-zero
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Fast Perplexity AI search CLI with multimodal support - minimal setup, maximal results"
 arch=('any')
 url="https://github.com/codewithkenzo/pplx-zero"
 license=('MIT')
-depends=('nodejs')
+depends=('bun')
 makedepends=('bun')
 provides=('pplx')
 conflicts=('pplx' 'pplx-search-engine' 'perplexity-fusion-search')
@@ -33,7 +33,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   # Install dependencies and build
-  bun install --frozen-lockfile
+  bun install
   bun run build
 
   # Verify binary was created
@@ -42,8 +42,8 @@ build() {
     exit 1
   fi
 
-  # Add shebang for Node.js execution
-  echo '#!/usr/bin/env node' > dist/pplx
+  # Add shebang for Bun execution
+  echo '#!/usr/bin/env bun' > dist/pplx
   cat dist/cli.js >> dist/pplx
   chmod +x dist/pplx
 }
