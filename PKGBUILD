@@ -58,13 +58,13 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib"
 
 	# Cplex libraries.
-	install -m755  "./cplex/lib/${_archdir}/static_pic/"*.a "${pkgdir}/usr/lib"
+	install -m644  "./cplex/lib/${_archdir}/static_pic/"*.a "${pkgdir}/usr/lib"
 
 	# Concert libraries.
-	install -m755 "./concert/lib/${_archdir}/static_pic/"*.a "${pkgdir}/usr/lib"
+	install -m644 "./concert/lib/${_archdir}/static_pic/"*.a "${pkgdir}/usr/lib"
 
 	# Constraint Optimizer libraries.
-	install -m755 "./cpoptimizer/lib/${_archdir}/static_pic/"*.a "${pkgdir}/usr/lib"
+	install -m644 "./cpoptimizer/lib/${_archdir}/static_pic/"*.a "${pkgdir}/usr/lib"
 
 	### Install C/C++ headers:
 	install -dm755 "${pkgdir}/usr/include"
