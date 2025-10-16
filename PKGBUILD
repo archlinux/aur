@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cultivation
 _pkgname=Cultivation
-pkgver=1.5.9
+pkgver=1.6.0
 _nodeversion=18
 pkgrel=1
 pkgdesc="A custom launcher designed to make it as easy as possible to proxy anime game traffic to private servers."
@@ -24,7 +24,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('1eeb605444bd3bd1c38a531d4e76ba7bff459d98f6bfe38482df24a33eb7071b')
+sha256sums=('0d49e5e9a5c9684457ad6796f71d3a1ba58e0b7a3ddbaaf5e1aac851da76efe3')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -32,7 +32,6 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
     HOME="${srcdir}/.electron-gyp"
     export CARGO_HOME="${srcdir}/.cargo"
@@ -56,10 +55,12 @@ prepare() {
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
         sed -i "s/https:\/\/github.com\/an-anime-team/https:\/\/github.moeyy.xyz\/https:\/\/github.com\/an-anime-team/g" src-tauri/Cargo.toml
     fi
+    _ensure_local_nvm
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     sed -i "s/\"targets\": \"all\"/\"targets\": \"deb\"/g" src-tauri/tauri.conf.json
     NODE_ENV=production     yarn run build
 }
