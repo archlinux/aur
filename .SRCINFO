@@ -1,0 +1,15 @@
+pkgbase = fooyin-plugin-msuinput-git
+	pkgdesc = Fooyin input plugin for MSU-1 PCM audio playback
+	pkgver = 0.1.1.r5.gd73b6d2
+	pkgrel = 1
+	url = https://github.com/Vo1dTear/fooyin-plugin-msuinput
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = fooyin
+	source = fooyin-plugin-msuinput-git::git+https://github.com/Vo1dTear/fooyin-plugin-msuinput.git
+	sha256sums = SKIP
+
+pkgname = fooyin-plugin-msuinput-git
