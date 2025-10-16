@@ -1,0 +1,5 @@
+["factorio-bin"]
+source = "github"
+github = "mcandre/factorio"
+use_latest_release = true
+prefix = "v"

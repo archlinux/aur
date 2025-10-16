@@ -1,0 +1,21 @@
+pkgbase = factorio-bin
+	pkgdesc = Go cross-compiler
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/mcandre/factorio
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = factorio
+	conflicts = factorio
+	source = factorio-0.0.15.tgz::https://github.com/mcandre/factorio/releases/download/v0.0.15/factorio-0.0.15.tgz
+	source = README-0.0.15.md::https://raw.githubusercontent.com/mcandre/factorio/v0.0.15/README.md
+	source = LICENSE-0.0.15::https://raw.githubusercontent.com/mcandre/factorio/v0.0.15/LICENSE.md
+	sha256sums = 21e2a499b8cee670c55b7d38ab8060572671badafb92dade82eaa8b5ad4eddd7
+	sha256sums = bbd8dcfa37f15bb9f5f9d0ba9f8e3050f15fc4e4112bdc8b0a4104e1dbdb659e
+	sha256sums = 6add2b3f8c452746c586f4462b3e969fd202382dd5c5bf3378cb9ccc6825e047
+
+pkgname = factorio-bin
