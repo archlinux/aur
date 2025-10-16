@@ -1,6 +1,6 @@
 pkgbase = blisk-browser-stable
 	pkgdesc = The browser from blisk.io. Blisk is the first developer-oriented browser. It provides teams and freelancers with a workspace to develop and test modern web applications at least twice faster.
-	pkgver = 24.0.411.33
+	pkgver = 25.0.115.28
 	pkgrel = 1
 	url = https://blisk.io
 	arch = i686
@@ -40,6 +40,6 @@ pkgbase = blisk-browser-stable
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://blisk.io/download/installer/?os=linux-rpm
-	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = 59288ef7390f59a134341a18c489d8912250bf5ae3aceaf0755e1e5b9fefaceae915cfdb136b176d74d8caea8b9779460437a2926201e1d33c5b3265be7cc653
 
 pkgname = blisk-browser-stable
