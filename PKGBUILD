@@ -1,8 +1,8 @@
 pkgname=systemd-lsp
 
-: ${_fragment:=tag=v2025.07.14}
+: "${_fragment:=tag=v2025.10.16}"
 
-pkgver=2025.07.14
+pkgver=2025.10.16
 pkgrel=1
 
 pkgdesc='A language server implementation for systemd unit files made in rust'
@@ -14,26 +14,24 @@ license=(MIT)
 makedepends=(git cargo)
 
 source=("git+$url.git#$_fragment")
-sha256sums=('164a23ba0034e2656d6a827601e6e1dc92a7897fae2007c88c00e96a4a5f32ff')
+sha256sums=('9afb51c3e8c7e206dc3027c03d9027d40552fde9f09f4ec6194c79027c717f85')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's/^v//; s/-/+/g'
 }
 
 prepare() {
-	cd "$pkgname"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path "$pkgname/Cargo.toml"
 }
 
 build() {
-	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --all-features --manifest-path "$pkgname/Cargo.toml"
 }
 
 package() {
-	cd "$pkgname"
-
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname/LICENSE"
 	install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
 }
