@@ -1,7 +1,7 @@
 pkgbase=gvfs-git
 _pkgbase=gvfs
 pkgname=(gvfs-git gvfs-{smb,afc,gphoto2,goa,mtp,nfs,google}-git)
-pkgver=1.44.1+4+g94e12375
+pkgver=1.58.0+3+g04b74878
 pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO"
 url="https://wiki.gnome.org/Projects/gvfs"
@@ -11,7 +11,7 @@ depends=('avahi' 'dconf' 'fuse3' 'libarchive' 'libcdio-paranoia' 'libsoup' 'udis
          'libbluray' 'libgudev' 'gcr' 'psmisc' 'gsettings-desktop-schemas>=3.34.0')
 makedepends=('dbus' 'libgphoto2' 'libimobiledevice' 'smbclient' 'docbook-xsl' 'gtk3' 'libmtp'
              'gnome-online-accounts' 'libnfs' 'libgdata' 'git' 'gtk-doc' 'python' 'meson'
-             'openssh')
+             'openssh' 'glib2-devel')
 source=("git+https://gitlab.gnome.org/GNOME/gvfs.git"
         gvfsd.hook)
 sha512sums=('SKIP'
