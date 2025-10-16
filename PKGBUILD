@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=zizmor-git
-pkgver=1.5.2.r520.d2fa211
+pkgver=1.15.2.r908.ac4cab32
 pkgrel=1
 pkgdesc='A static analysis tool for GitHub Actions'
 arch=('x86_64')
@@ -24,7 +24,7 @@ prepare() {
 pkgver() {
   cd "${_git_folder}"
   printf "%s.r%s.%s" \
-    "$(cargo pkgid | cut -d# -f2 | cut -d@ -f2 | cut -d: -f2 | sed 's/-/_/g')" \
+    "$(cargo pkgid --package zizmor | cut -d# -f2 | cut -d@ -f2 | cut -d: -f2 | sed 's/-/_/g')" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
