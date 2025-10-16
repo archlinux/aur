@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-dune
+	pkgdesc = Quotes from Frank Herbert's 'Dune' series
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/agoodno/fortune-dune
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = fortune-mod-dune::git+https://github.com/agoodno/fortune-dune.git?#tag=66f5360604c7a9c0e2b59e78c6d00e27092816b8
+	sha256sums = 192024646acaa841f5dd36212398132994355a87bf85a3d6b65c21309bdf91a6
+
+pkgname = fortune-mod-dune
