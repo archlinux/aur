@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="paperless-ngx: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
@@ -68,7 +68,7 @@ options=("!strip")
 install="paperless.install"
 
 prepare(){
- uv venv -q "$srcdir/venv"
+ uv venv --clear --no-managed-python -q "$srcdir/venv"
  source "$srcdir/venv/bin/activate"
  uv pip install -r "$srcdir/$_pkgname/requirements.txt"
  deactivate
