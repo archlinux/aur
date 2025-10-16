@@ -21,7 +21,7 @@ optdepends=("perl: for executing some of the scripts at /usr/share/john"
             "python-scapy: to use oracle2john")
 provides=('john')
 conflicts=('john')
-backup=('etc/john/john.conf')
+backup=()
 options=('!strip')
 source=("$_pkgname::git+https://github.com/openwall/john.git#branch=bleeding-jumbo")
 md5sums=('SKIP')
@@ -85,11 +85,12 @@ build() {
 }
 
 package() {
-  export LD_PRELOAD=          # kill fakeroot crash
-  cd "$srcdir/$_pkgname"
+  cd ${srcdir}/$_pkgname/
 	
 	# config
-  install -Dm 644 run/john.conf -t "${pkgdir}/etc/john"
+  mkdir -p "$pkgdir/etc/john" "$pkgdir/usr/share/john"
+  echo '# john default config' > "$pkgdir/etc/john/john.conf"
+  echo '# john default config' > "$pkgdir/usr/share/john/john.conf"
   install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
 
   # opencl
