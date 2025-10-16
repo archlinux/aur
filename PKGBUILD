@@ -18,9 +18,16 @@ options=('!lto')
 source=("git+$url.git#tag=$pkgname-v$pkgver")
 sha256sums=('c9d3054308a91ed450ce261d04758c97a8a82a30b9dd5c8dcf3aaaa2e2638ff3')
 
+prepare() {
+  cd openstack
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd openstack
-  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --bin ostui
 }
 
