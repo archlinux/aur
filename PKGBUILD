@@ -1,37 +1,25 @@
-pkgname='discord-updater'
-pkgver='1.0.0'
+# Maintainer: execrooted <execrooted@gmail.com>
+
+pkgname=discord-updater
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
+pkgdesc="A tool to download and install the latest Discord version to resolve update issues."
 arch=('x86_64')
-url='https://discordapp.com/'
-provides=('discord')
-conflicts=('discord')
-license=('custom')
-depends=('gtk3' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'libc++' 'xdg-utils' 'xterm' 'curl')
-optdepends=(
-  'libpulse: For pulseaudio support'
-  'noto-fonts-emoji: Google font for emoji support.'
-  'ttf-symbola: Font for emoji support.'
-)
+url="https://github.com/execrooted/discord-updater"
+license=('MIT')
+depends=()
+makedepends=('rust' 'cargo')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
-source=(
-  'discord.sh'
-  'discord.desktop'
-  'discord.png'
-)
-
-sha256sums=(
-  '7aa198b1e0caf352dc30bdbf474846399b3a245cbf6d235db5ac66327758040e'
-  '6d2adfd530398b012c805d4721f33f197f839ebda55c2cbc28d06a8addb8e5a9'
-  '21742e243c6c7a93529f4bf1d34571c8d78a29e946057c54b362b405907e1b6b'
-)
+build() {
+    cd "$srcdir/discord-updater-$pkgver"
+    cargo build --release --locked
+}
 
 package() {
-  install -d "$pkgdir"/usr/bin/
-  install -d "$pkgdir"/usr/share/applications/
-  install -d "$pkgdir"/usr/share/pixmaps/
-
-  install -m755 -T "$srcdir"/discord.sh      "$pkgdir"/usr/bin/discord
-  install -m644    "$srcdir"/discord.png     "$pkgdir"/usr/share/pixmaps/discord.png
-  install -m644    "$srcdir"/discord.desktop "$pkgdir"/usr/share/applications
+    cd "$srcdir/discord-updater-$pkgver"
+    install -Dm755 "target/release/discord-updater" "$pkgdir/usr/bin/discord-updater"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
