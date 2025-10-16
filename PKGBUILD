@@ -1,5 +1,5 @@
 pkgname=pgadmin4-bin
-pkgver=9.8
+pkgver=9.9
 pkgrel=1
 pkgdesc='Installs all required components to run pgAdmin in desktop and web modes. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
 arch=('x86_64')
