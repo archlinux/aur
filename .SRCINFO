@@ -1,10 +1,11 @@
 pkgbase = you-get-git
 	pkgdesc = A YouTube/Youku/Niconico video downloader written in Python 3.
-	pkgver = 0.4.1743.20250104.2595
+	pkgver = 0.4.1743.20250427.2600
 	pkgrel = 1
 	url = https://www.soimort.org/you-get/
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

@@ -2,14 +2,14 @@
 # Contributor: MYT1 <myt1 @ QQ DOC com>
 # Contributor: lilydjwg <lilydjwg@gmail.com>
 pkgname=you-get-git
-pkgver=0.4.1743.20250104.2595
+pkgver=0.4.1743.20250427.2600
 pkgrel=1
 pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
 url="https://www.soimort.org/you-get/"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-dukpy')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-pysocks: for socks proxy support')
 conflicts=(you-get)
 provides=(you-get)
