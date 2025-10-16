@@ -1,12 +1,12 @@
 pkgbase = downlords-faf-client
 	pkgdesc = Official client for Forged Alliance Forever
 	pkgver = 2025.9.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.faforever.com/
 	arch = any
 	license = MIT
-	depends = jdk21-openjdk
+	depends = jdk25-openjdk
 	depends = gtk3
 	depends = lib32-libxcomposite
 	source = https://github.com/FAForever/downlords-faf-client/releases/download/v2025.9.2/faf_unix_2025_9_2.tar.gz

@@ -4,13 +4,13 @@ pkgname=downlords-faf-client
 pkgver=2025.9.2
 _pkgver="${pkgver//./_}"
 _filename="faf_unix_${_pkgver}.tar.gz"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Official client for Forged Alliance Forever"
 url="https://www.faforever.com/"
 arch=('any')
 license=('MIT')
-depends=('jdk21-openjdk' 'gtk3' 'lib32-libxcomposite')
+depends=('jdk25-openjdk' 'gtk3' 'lib32-libxcomposite')
 source=("https://github.com/FAForever/downlords-faf-client/releases/download/v${pkgver}/$_filename"
         "https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png"
         'DownlordsFafClient.desktop'
