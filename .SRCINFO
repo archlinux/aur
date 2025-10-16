@@ -1,0 +1,16 @@
+pkgbase = iio-niri
+	pkgdesc = Listen to iio-sensor-proxy and updates Niri output orientation depending on the accelerometer orientation.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Zhaith-Izaliel/iio-niri
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = dbus
+	depends = iio-sensor-proxy
+	depends = niri
+	source = https://github.com/Zhaith-Izaliel/iio-niri/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = iio-niri
