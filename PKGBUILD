@@ -4,7 +4,7 @@
 
 _pkgname=my_basic
 pkgname=$_pkgname-git
-pkgver=r1079.gc760bef
+pkgver=r1091.g4d4d153
 pkgrel=1
 pkgdesc="BASIC interpreter"
 arch=('i686' 'x86_64')
