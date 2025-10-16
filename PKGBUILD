@@ -3,7 +3,7 @@
 _basename="zig"
 pkgver=0.9.1
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 
 _pkgname="${_basename}${_pkgver}"
 pkgname="${_pkgname}-bin"
@@ -26,6 +26,9 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+)
+options=(
+  '!strip'
 )
 source=("${_basename}-${pkgver}-README.md::${_url}/raw/refs/tags/${pkgver}/README.md")
 source_aarch64=("${url}/download/${pkgver}/${_basename}-linux-aarch64-${pkgver}.tar.xz"
