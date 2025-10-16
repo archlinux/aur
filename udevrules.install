@@ -1,0 +1,26 @@
+RULES='ATTRS{idVendor}=="0694",ATTRS{idProduct}=="0001",MODE="0666",GROUP="network"'
+RULES_FILE="/etc/udev/rules.d/90-legotower.rules"
+
+install_udev_rules(){
+    if [ ! -f "$RULES_FILE" ]; then
+        echo "add udev rule for lego USB tower: $RULES_FILE"
+        echo "$RULES" > "$RULES_FILE"
+    else
+        echo "udev rule for lego USB tower allready exist: $RULES_FILE"
+    fi
+}
+
+post_install() {
+    install_udev_rules
+}
+
+post_upgrade() {
+    install_udev_rules
+}
+
+post_remove() {
+    if [ -f "$RULES_FILE" ]; then
+        echo "remove udev rule for lego USB tower: $RULES_FILE"
+        rm "$RULES_FILE"
+    fi
+}

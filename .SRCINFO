@@ -1,0 +1,15 @@
+pkgbase = nqc-git
+	pkgdesc = Not Quite C is a simple language with a C-like syntax that can be used to program LEGO’s RCX programmable brick (from the MindStorms set). [from github source]
+	pkgver = v4.1.0.r7.gd886155
+	pkgrel = 1
+	url = https://brickbot.github.io/nqc/
+	install = udevrules.install
+	arch = i686
+	arch = x86_64
+	license = custom:MPL
+	makedepends = bison
+	makedepends = git
+	source = nqc-git-commit_d886155906ecf5ee3a4b467e80c734fda0381f80::git+https://github.com/BrickBot/nqc.git#commit=d886155906ecf5ee3a4b467e80c734fda0381f80
+	sha512sums = 5d82ce31897ac9d60c2239160417d657b381e5c970f5c2ef56f105120ba0bc2c1e3e9d78f0d8e0399b63d594b318b9e95ae5f5988807354713f988351227fb9d
+
+pkgname = nqc-git
