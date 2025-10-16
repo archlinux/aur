@@ -49,7 +49,7 @@ package() {
   # Install systemd tmpfiles file
   install -Dm644 "${srcdir}/${pkgname%%-bin}.tmpfiles" \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%%-bin}.conf"
-    
+
   # Install default configuration file
   install -Dm644 "${srcdir}/${pkgname%%-bin}.yaml" \
     "${pkgdir}/etc/agentgateway/${pkgname%%-bin}.yaml"
