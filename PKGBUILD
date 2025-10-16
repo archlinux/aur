@@ -1,9 +1,10 @@
+
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 
 _pkgname=Trezor-Suite
 _upkgname=trezor-suite
 pkgname=trezor-suite-appimage
-pkgver=25.9.3
+pkgver=25.10.1
 pkgrel=1
 pkgdesc="desktop app for Trezor hardware wallets"
 arch=('x86_64' 'arm64')
@@ -18,7 +19,7 @@ validpgpkeys=('EB483B26B078A4AA1B6F425EE21B6950A2ECB65C')
 source=("https://github.com/trezor/trezor-suite/releases/download/v$pkgver/$_pkgname-$pkgver-linux-$arch.AppImage"{,.asc})
 #source=("https://data.trezor.io/suite/releases/desktop/latest/$_pkgname-$pkgver-linux-$arch.AppImage"
 #        "satoshilabs-2021-signing-key::https://trezor.io/security/satoshilabs-2021-signing-key.asc")
-sha256sums=('193bb684eca229f20fb04546ec3b58d48519f5d61b2fbebae8425e9a63d4502d'
+sha256sums=('5a0975649d31b41b3f7883ab38ef30b4b75db98dcd901635061e221d7cfef337'
             'SKIP')
 
 prepare() {
