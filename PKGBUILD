@@ -21,7 +21,7 @@ source=(
   "LICENSE::https://github.com/Nias26/YTMPlaylistSync/releases/download/v$pkgver/LICENSE"
 )
 sha256sums=(
-  "b4b1df3c78d7f40a4d2316f3cdbb92da42addaf6080477c17063be71266b34a0"
+  "76c50a06db380a349f4cc80ba762cb8073532f890543c47033d593741129ec74"
   "0afe56a95cbfc12001182dc98ed965083dde7f3f1247c53b611c9ee8dde150fd"
 )
 
