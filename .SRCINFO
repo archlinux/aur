@@ -1,0 +1,37 @@
+pkgbase = john-bj-git
+	pkgdesc = John the Ripper – bleeding-jumbo branch (yescrypt, OpenCL, MPI, CPU fall-backs)
+	pkgver = 1.9.0.r0.gc5b4c8e
+	pkgrel = 1
+	url = https://www.openwall.com/john/
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL2
+	license = custom
+	makedepends = git
+	makedepends = opencl-headers
+	makedepends = nss
+	makedepends = libxml2
+	makedepends = libgsf
+	makedepends = rpcsvc-proto
+	depends = openssl
+	depends = gmp
+	depends = libpcap
+	depends = openmpi
+	depends = gcc-libs
+	depends = opencl-icd-loader
+	optdepends = perl: helper scripts
+	optdepends = ruby: helper scripts
+	optdepends = python: helper scripts
+	optdepends = nss: mozilla2john
+	optdepends = libgsf: office2john
+	optdepends = libxml2: office2john
+	optdepends = python-scapy: oracle2john
+	provides = john
+	conflicts = john
+	options = !strip
+	backup = etc/john/john.conf
+	source = john::git+https://github.com/openwall/john.git#branch=bleeding-jumbo
+	sha256sums = SKIP
+
+pkgname = john-bj-git
