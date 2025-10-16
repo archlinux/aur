@@ -79,7 +79,7 @@ build() {
 }
 
 package() {
-    cd john
+    cd "$srcdir/john"
 
     # main binary + CPU fall-backs
     install -Dm755 run/john -t "$pkgdir/usr/bin"
@@ -87,28 +87,11 @@ package() {
         [[ -e run/john-$cpu ]] && install -Dm755 run/john-$cpu -t "$pkgdir/usr/bin"
     done
 
-    # config & data files
-    install -Dm644 run/john.conf -t "$pkgdir/etc/john"
-    install -Dm644 run/*.chr run/*.lst run/dictionary* run/stats -t "$pkgdir/usr/share/john"
-    install -Dm644 run/rules/* -t "$pkgdir/usr/share/john/rules"
-
-    # OpenCL kernels
-    if [[ -d run/opencl ]]; then
-        install -d "$pkgdir/usr/share/john/opencl"
-        cp -a run/opencl/* "$pkgdir/usr/share/john/opencl"
-        chmod -R a+r "$pkgdir/usr/share/john/opencl"
-    fi
-
-    # docs & licence
-    install -d "$pkgdir/usr/share/doc/john" "$pkgdir/usr/share/licenses/$pkgname"
-    cp -a doc/* "$pkgdir/usr/share/doc/john"
-    install -Dm644 doc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-    chmod -R a+r "$pkgdir/usr/share/doc/john"
-
-    # shell completions
-    install -Dm644 run/john.bash_completion "$pkgdir/usr/share/bash-completion/completions/john"
-    install -Dm644 run/john.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_john"
+    # symlinks for legacy tools
+    for link in unshadow unafs unique undrop rar2john zip2john gpg2john base64conv; do
+        rm -f "$pkgdir/usr/bin/$link"
+        ln -s /usr/bin/john "$pkgdir/usr/bin/$link"
+    done
 
     # helper scripts
     install -d "$pkgdir/usr/lib/john" "$pkgdir/usr/bin"
@@ -128,8 +111,26 @@ package() {
                          && ln -s "/usr/lib/john/$t" "$pkgdir/usr/bin/$t"
     done
 
-    # legacy symlinks (unshadow, unique, etc.)
-    for l in run/john-*; do
-        [[ -L $l ]] && ln -s john "$pkgdir/usr/bin/${l#run/john-}"
-    done
+    # config & data files
+    install -Dm644 run/john.conf -t "$pkgdir/etc/john"
+    install -Dm644 run/*.chr run/*.lst run/dictionary* run/stats -t "$pkgdir/usr/share/john"
+    install -Dm644 run/rules/* -t "$pkgdir/usr/share/john/rules"
+
+    # OpenCL kernels
+    if [[ -d run/opencl ]]; then
+        install -d "$pkgdir/usr/share/john/opencl"
+        cp -a run/opencl/* "$pkgdir/usr/share/john/opencl"
+        chmod -R a+r "$pkgdir/usr/share/john/opencl"
+    fi
+
+    # docs & license
+    install -d "$pkgdir/usr/share/doc/john" "$pkgdir/usr/share/licenses/$pkgname"
+    cp -a doc/* "$pkgdir/usr/share/doc/john"
+    install -Dm644 doc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    chmod -R a+r "$pkgdir/usr/share/doc/john"
+    
+    # shell completions
+    install -Dm644 run/john.bash_completion "$pkgdir/usr/share/bash-completion/completions/john"
+    install -Dm644 run/john.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_john"
 }
