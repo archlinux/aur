@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=monero-gui-static-bin
-pkgver=0.18.4.0
+pkgver=0.18.4.3
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable peer-to-peer currency"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(
 provides=(monero monero-gui)
 conflicts=(monero monero-gui)
 source=("https://downloads.getmonero.org/gui/monero-gui-linux-x64-v${pkgver}.tar.bz2")
-sha256sums=('e276f9e67396515f671a08c5438fb1db4358c9d8946ec7ef79b9dda552092ad7')
+sha256sums=('0bd84de0a7c18b2a3ea8e8eff2194ae000cf1060045badfd4ab48674bc1b9325')
 
 package() {
 	cd "monero-gui-v$pkgver"
