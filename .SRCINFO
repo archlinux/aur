@@ -1,6 +1,6 @@
 pkgbase = capacities-appimage
 	pkgdesc = Personal Knowledge Management app - A studio for your mind
-	pkgver = 1.53.32
+	pkgver = 1.54.4
 	pkgrel = 1
 	url = https://capacities.io/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = capacities-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	provides = capacities
-	noextract = capacities-x86_64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.53.32.AppImage
-	noextract = capacities-aarch64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.53.32-arm64.AppImage
+	noextract = capacities-x86_64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.54.4.AppImage
+	noextract = capacities-aarch64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.54.4-arm64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = capacities-x86_64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.53.32.AppImage
-	sha256sums_x86_64 = 5dcc4ae4bda6f9830e44ae7f5efff84a2bfea9745ae16a81d6f84f0ecfacca5a
-	source_aarch64 = capacities-aarch64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.53.32-arm64.AppImage
-	sha256sums_aarch64 = 456af1a55b0ef3057053af1bf25162c826099c1c1512bdf40939d4340bf50890
+	source_x86_64 = capacities-x86_64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.54.4.AppImage
+	sha256sums_x86_64 = 76dcde2d796c3921e29b29375e3433d5791813c9cd5cbfe190d1f05d6be11457
+	source_aarch64 = capacities-aarch64.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.54.4-arm64.AppImage
+	sha256sums_aarch64 = d64ba613378e4110cda2470d544209809e53d15f6c57caa8580d5b8c1b11456c
 
 pkgname = capacities-appimage
