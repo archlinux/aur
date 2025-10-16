@@ -11,6 +11,7 @@ pkgbase = unmake-bin
 	depends = gcc-libs
 	provides = unmake
 	conflicts = unmake
+	conflicts = unmake-git
 	source = unmake-0.0.23.tgz::https://github.com/mcandre/unmake/releases/download/v0.0.23/unmake-0.0.23.tgz
 	source = README-0.0.23.md::https://raw.githubusercontent.com/mcandre/unmake/v0.0.23/README.md
 	source = LICENSE-0.0.23::https://raw.githubusercontent.com/mcandre/unmake/v0.0.23/LICENSE.md
