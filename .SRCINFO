@@ -1,6 +1,6 @@
 pkgbase = zoekt-git
 	pkgdesc = Zoekt is a text search engine intended for use with source code.
-	pkgver = 91259775
+	pkgver = 90faf6de
 	pkgrel = 1
 	url = https://github.com/sourcegraph/zoekt
 	arch = i686

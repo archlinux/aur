@@ -2,7 +2,7 @@
 _pkgname=zoekt
 pkgname=zoekt-git
 pkgbase=zoekt-git
-pkgver=91259775
+pkgver=90faf6de
 pkgrel=1
 pkgdesc='Zoekt is a text search engine intended for use with source code.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ pkgver() {
   git describe --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
-prepare(){
+prepare() {
   cd "$_pkgname"
   mkdir -p build/
 }
