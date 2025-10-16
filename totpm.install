@@ -1,7 +1,21 @@
 post_install() {
-  chown totpm:root /usr/bin/totpm
-  chmod 4755 /usr/bin/totpm
-  chown totpm:root /var/lib/totpm
+  # Wait up to 10 seconds for user 'totpm' to appear
+  for i in $(seq 1 10); do
+    if id totpm &>/dev/null; then
+      break
+    fi
+    sleep 1
+  done
+
+  # Proceed only if user exists
+  if id totpm &>/dev/null; then
+    chown totpm:root /usr/bin/totpm
+    chmod 4755 /usr/bin/totpm
+    chown totpm:root /var/lib/totpm
+  else
+    echo "Warning: User 'totpm' not found after waiting, skipping chown 
+    You will need to manually emit 'chown totpm:root /usr/bin/totpm'"
+  fi
 }
 
 post_upgrade() {

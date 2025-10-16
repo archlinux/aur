@@ -2,7 +2,7 @@
 
 pkgname=totpm
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A TPM-backed command line TOTP/2FA client, using fprintd for user presence checking."
 url="https://github.com/koditoriet/totpm"
 license=("MIT")
