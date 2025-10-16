@@ -27,7 +27,7 @@ source=("$_pkgname::git+https://github.com/openwall/john.git#branch=bleeding-jum
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/john"
+    cd "$srcdir/$_pkgname"
     git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
