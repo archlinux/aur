@@ -1,0 +1,5 @@
+["stank-bin"]
+source = "github"
+github = "mcandre/stank"
+use_latest_release = true
+prefix = "v"
