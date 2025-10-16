@@ -1,0 +1,15 @@
+pkgbase = vapoursynth-plugin-zsmooth-git
+	pkgdesc = Plugin for VapourSynth: zsmooth (GIT version)
+	pkgver = r410.811e14b
+	pkgrel = 1
+	url = https://github.com/adworacz/zsmooth
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = vapoursynth
+	provides = vapoursynth-plugin-zsmooth
+	conflicts = vapoursynth-plugin-zsmooth
+	source = zsmooth::git+https://github.com/adworacz/zsmooth.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-zsmooth-git
