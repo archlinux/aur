@@ -1,12 +1,13 @@
 # Maintainer: Benjamin Chausse <benjamin@chausse.xyz>
 
 pkgname=termpicker-git
-pkgver=v1.4.1.r7.gf4a7a02
+pkgver=v1.5.0
 pkgrel=1
 pkgdesc="A color picker for the terminal"
 arch=('x86_64')
 url="https://github.com/ChausseBenjamin/termpicker"
 license=('Beerware')
+options=()
 depends=()
 makedepends=('git' 'go')
 optdepends=(
@@ -15,18 +16,16 @@ optdepends=(
 )
 provides=('termpicker')
 conflicts=('termpicker' 'termpicker-bin')
-source=("${pkgname}::git+https://github.com/ChausseBenjamin/termpicker.git")
+source=("${pkgname}::git+https://github.com/ChausseBenjamin/termpicker.git#tag=v1.5.0")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+
 
 build() {
   cd "$srcdir/${pkgname}"
+  commit_hash=$(git rev-parse --short HEAD)
   go generate ./...
-  go build -o termpicker .
+  go build -ldflags "-s -w -X main.version=${pkgver}-git" -o termpicker .
 }
 
 package() {
