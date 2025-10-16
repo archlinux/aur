@@ -1,13 +1,15 @@
 # Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Matt Harrison <matt@harrison.us.com>
 
 pkgname=silverbullet
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc='Clean Markdown-based writing/note taking application'
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'riscv64')
 url='https://github.com/silverbulletmd/silverbullet'
 license=('MIT')
 depends=('bash')
+makedepends=('go' 'deno' 'git')
 backup=("etc/default/$pkgname")
 install=$pkgname.install
 source=(
@@ -16,7 +18,7 @@ source=(
   "$pkgname-user.service"
   "$pkgname.sh"
 )
-sha256sums=('f8fa9c5d9c2e90bd0151a5451bbbb93722fddddeebdc0bed4ff6231ddd0e077f'
+sha256sums=('3f3c214a7290f2c1c229c187adb3ee9dd4f517313e7fc4f24916213eb3fea13e'
             '93ac8414f9af3c29e43554468f2f5f5e37cbe0792d57e84a9f5228305aeed89d'
             '5f01fe05f871f60277508f8cf39e879a7db18f1ff45c1ef7b2359089bfe1a0bd'
             'c208d9388a720462991bcd4842d33e8fdf43daa3c17751f2801233af9ddd5b33')
