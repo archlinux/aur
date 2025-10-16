@@ -2,7 +2,7 @@
 _pkgname="symlink-manager"
 pkgname="$_pkgname"
 pkgrel=1
-pkgver=1
+pkgver=v1.0.0
 pkgdesc='A way to manage your symlinks in lua'
 arch=('any')
 url='https://github.com/initMayday/symlink-manager.git'

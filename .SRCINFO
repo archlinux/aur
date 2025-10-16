@@ -1,6 +1,6 @@
 pkgbase = symlink-manager
 	pkgdesc = A way to manage your symlinks in lua
-	pkgver = 1
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/initMayday/symlink-manager.git
 	arch = any
