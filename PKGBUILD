@@ -1,0 +1,129 @@
+# Maintainer: develOseven <devel.oseven@gmail.com>
+pkgname=avoc
+pkgver=0.0.3
+pkgrel=1
+epoch=
+_python_version=3.12.3
+_pkghashes="
+	--hash=sha256:4d93b23b9686a20a419b32a07103b4ce9676e5eedf8e3024f5625dcd5671dd0a
+	--hash=sha256:fbe9d01d9ac6644ecc46316d292954ad4ace056477555a20c6eeab0d16236032
+"
+pkgdesc="Local Realtime Voice Changer for Desktop"
+arch=('x86_64')
+url="https://github.com/develOseven/avoc"
+license=(
+	'Apache-2.0'
+	'BSD-3-Clause'
+	'ISC'
+	'LGPL-2.0-or-later'
+	'LGPL-2.1'
+	'LGPL-3.0-only'
+	'LicenseRef-NVIDIA-Proprietary'
+	'MIT'
+	'MPL-2.0'
+	'PSF-2.0'
+	'Unlicense'
+)
+groups=()
+depends=(
+	pyenv
+	python
+)
+makedepends=(
+	base-devel
+	cmake
+	jq
+)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=(
+	"https://raw.githubusercontent.com/develOseven/avoc/24403df3778b7b9346b0fc90894a20e9dfb5325e/requirements-$_python_version.hashes.txt"
+	"https://raw.githubusercontent.com/develOseven/avoc/24403df3778b7b9346b0fc90894a20e9dfb5325e/requirements-licenses-$_python_version.hashes.txt"
+)
+noextract=()
+validpgpkeys=()
+
+_pyenv_shell() {
+	export PYENV_ROOT="$HOME/.pyenv"
+	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init - bash)"
+}
+
+prepare() {
+	_pyenv_shell
+	mkdir -p "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
+	pyenv install --skip-existing $_python_version
+	pyenv local $_python_version
+	python -m venv .venv
+}
+
+build() {
+	_pyenv_shell
+	cd "$pkgname-$pkgver"
+	source .venv/bin/activate
+	# Workaround for onnxsim that uses onnx/optimizer pre 31194ccb971bbbcc8218e103c7b0a8049ddddc3e.
+	CMAKE_ARGS="-DCMAKE_POLICY_VERSION_MINIMUM=3.5" \
+		pip install --require-virtualenv --require-hashes \
+		--requirement ../requirements-$_python_version.hashes.txt \
+		--requirement <(echo $pkgname==$pkgver $_pkghashes)
+}
+
+check() {
+	_pyenv_shell
+	cd "$pkgname-$pkgver"
+	source .venv/bin/activate
+	pip show --require-virtualenv $pkgname
+}
+
+package() {
+	_pyenv_shell
+	cd "$pkgname-$pkgver"
+	source .venv/bin/activate
+
+	# Find the *.desktop and the icon.
+	_pkg_files=$(pip show --require-virtualenv --files avoc)
+	_site_packages=$(echo "$_pkg_files" | sed -nre 's/^Location:\s*(.*$)/\1/p')
+	_desktop_file="$_site_packages/$(echo "$_pkg_files" | sed -nre 's/^\s*(.*AVoc.desktop$)/\1/p')"
+	_icon_file="$_site_packages/$(echo "$_pkg_files" | sed -nre 's/^\s*(.*AVoc.svg$)/\1/p')"
+
+	# Copy the venv.
+	mkdir -p "$pkgdir/opt"
+	cp -rT . "$pkgdir/opt/$pkgname"
+
+	# Fix the venv.
+	_o_venv="$PWD"
+	_d_venv="/opt/$pkgname"
+	_sub='{while(i=index($0,t)){$0 = substr($0,1,i-1) r substr($0,i+length(t))} print}'
+	find "$pkgdir/opt/$pkgname" \
+		\( -name "pyvenv.cfg" -o -path "$pkgdir/opt/$pkgname/.venv/bin/*" \) -a \
+		-type f \
+		-exec awk -i inplace -v t="$_o_venv" -v r="$_d_venv" "$_sub" {} \;
+
+	# Generate the license file.
+	_package_python_deps="$(echo $pkgname; pip list --format=json 2>/dev/null | jq -r '.[].name')"
+	pip install --require-virtualenv --require-hashes \
+		--requirement ../requirements-licenses-$_python_version.hashes.txt
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	pip-licenses --with-license-file --format=json --packages $_package_python_deps | \
+		awk -v t="$_o_venv" -v r="$_d_venv" "$_sub" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	cd "$pkgdir/opt/$pkgname"
+
+	# Install the *.desktop and the icon.
+	mkdir -p "$pkgdir/usr/share/applications/"
+	cp -t "$pkgdir/usr/share/applications/" "$_desktop_file"
+	sed -i -re '/^\s*Icon\s*=/d' "$pkgdir/usr/share/applications/AVoc.desktop"
+	echo "Icon=$(echo $_icon_file | awk -v t="$_o_venv" -v r="$_d_venv" "$_sub")" >> \
+		"$pkgdir/usr/share/applications/AVoc.desktop"
+	echo "Path=/opt/$pkgname" >> "$pkgdir/usr/share/applications/AVoc.desktop"
+}
+sha256sums=('7e3b8d8056fbfc8d3e2856735e100b08d942de9a969ca30533a5458856588725'
+            '7e255a21e207f1ff5b41132ee08830850e71da51778611b8653b2b686dc1e39e')
