@@ -1,26 +1,20 @@
 pkgbase = gslapper
 	pkgdesc = mpvpaper replacement using GStreamer backend
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nomadcxx/gSlapper
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
-	makedepends = wayland-scanner
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = wayland
-	depends = wayland-protocols
-	depends = mesa
-	depends = glibc
 	optdepends = gst-plugins-ugly: additional codec support
 	optdepends = gst-libav: FFmpeg-based codec support
-	optdepends = nvidia-utils: NVIDIA hardware acceleration
-	optdepends = mesa-vdpau: AMD/Intel hardware acceleration
 	source = gslapper-1.2.1.tar.gz::https://github.com/Nomadcxx/gSlapper/archive/v1.2.1.tar.gz
 	sha256sums = bd043205a43e6031b54ed655bec2536857ad5b143d93c7c4b5e84573e990933c
 
