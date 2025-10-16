@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
 _pkgname=pyload_ng
-pkgver=0.5.0b3.dev88
+pkgver=0.5.0b3.dev93
 pkgrel=1
 pkgdesc="Free and Open Source download manager written in Python"
 url="https://pyload.net/"
@@ -13,7 +13,6 @@ python-bitmath
 python-certifi
 python-cheroot
 python-cryptography
-python-dukpy
 python-filetype
 python-flask
 python-flask-babel
@@ -22,7 +21,10 @@ python-flask-compress
 python-flask-session
 python-flask-themes2
 python-jinja
+python-packaging
 python-pycurl
+python-pydantic
+python-pyminiracer
 python-semver
 python-setuptools
 python-werkzeug
@@ -37,14 +39,12 @@ optdepends=('apprise'
             'python-colorlog'
             'python-dbus'
             'python-importlib-metadata'
-            'python-js2py'
             'python-magic'
             'python-pillow'
-            'python-pycryptodomex'
             'python-send2trash'
 	    'python-slixmpp')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('e985585e2631524a509831bf686120065272da850608d0e422c52dd1345c6aba')
+sha256sums=('b93d0969f658a28d1404bf01d3ddcd249559ae43c2fdcbd797805b9cbcdb350e')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
