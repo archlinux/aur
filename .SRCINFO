@@ -1,0 +1,14 @@
+pkgbase = gazelle-tui
+	pkgdesc = Minimal NetworkManager TUI with complete 802.1X enterprise WiFi support
+	pkgver = 0.1.0
+	pkgrel = 3
+	url = https://github.com/Zeus-Deus/gazelle-tui
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-textual
+	depends = networkmanager
+	source = gazelle-tui-0.1.0.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v0.1.0.tar.gz
+	sha256sums = b89d47c3289c2ff78b078f0d6c688ed4795bd0a4b19de864dea700757d27862e
+
+pkgname = gazelle-tui
