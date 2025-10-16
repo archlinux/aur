@@ -1,0 +1,14 @@
+pkgbase = grub-theme-davidrevoy-gnulinux
+	pkgdesc = Grub Theme with artwork Gnu/Linux by David Revoy
+	pkgver = 1
+	pkgrel = 1
+	url = https://framagit.org/Europrimus/grub-theme-davidRevoy-gnuLinux
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = grub_theme::git+https://framagit.org/Europrimus/grub-theme-davidRevoy-gnuLinux.git#commit=22843b5bba21cd53befc0fe56fbfe52e795f4e6e
+	sha256sums = 1e5d57a9c439633778f26497e7198d747783c2828b2cd637382086fa001457dc
+
+pkgname = grub-theme-davidrevoy-gnulinux
+	install = theme.install
+	depends = grub
