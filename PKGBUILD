@@ -1,7 +1,7 @@
 # Maintainer: Sato Ki <satoki at em dot advant dot click>
 pkgname=qfinderpro-bin
 pkgver=7.12.3.0521
-pkgrel=4
+pkgrel=5
 pkgdesc="Quickly find and easily access all of the QNAP NAS on the same LAN."
 url="https://www.qnap.com/en/utilities/essentials"
 arch=('x86_64')
@@ -21,7 +21,6 @@ depends=(
   'qt5-base'
   'qt5-svg'
   'zlib'
-  'zlib-ng-compat'
 )
 source=(
   "${pkgname}-${pkgver}.deb::https://download.qnap.com/Storage/Utility/QNAPQfinderProUbuntux64-${pkgver}.deb"
