@@ -10,6 +10,7 @@ pkgbase = update-alternatives-git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	depends = zenity
 	provides = update-alternatives
 	conflicts = update-alternatives
 	options = !debug

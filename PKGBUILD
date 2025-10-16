@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/fthomys/update-alternatives"
 options=('!debug')
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'zenity')
 makedepends=('git' 'rust' 'cargo')
 provides=('update-alternatives')
 conflicts=('update-alternatives')
@@ -29,5 +29,6 @@ package() {
   install -Dm755 "target/release/update-alternatives" "${pkgdir}/usr/bin/update-alternatives"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "man/update-alternatives.1" "$pkgdir/usr/share/man/man1/update-alternatives.1"
+  install -Dm755 "data/update-alternatives.desktop" "$pkgdir/usr/share/applications/update-alternatives.desktop"
 }
 
