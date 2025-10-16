@@ -13,7 +13,8 @@ depends=('python' 'python-alembic' 'python-docker' 'python-flask' 'python-numpy'
     'python-click' 'python-cloudpickle' 'python-databricks-cli'
     'python-entrypoints' 'python-gitpython' 'python-pyaml'
     'python-protobuf' 'python-pytz' 'python-requests' 'python-packaging'
-    'python-importlib-metadata' 'python-sqlparse', 'python-opentelemetry-sdk', 'python-opentelemetry-exporter-otlp-proto-common')
+    'python-importlib-metadata' 'python-sqlparse' 'python-opentelemetry-sdk'
+    'python-opentelemetry-exporter-otlp-proto-common', 'python-databricks-agent')
 optdepends=('python-scikit-learn: for mlflow[extras, pipelines]'
             'python-pyarrow: for mlflow[extras, pipelines]'
             'python-boto3: for mlflow[extras]'
@@ -35,7 +36,7 @@ optdepends=('python-scikit-learn: for mlflow[extras, pipelines]'
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
-sha256sums=('14f0239b2f0c29c9819bd3927bb5328386a77b0499ab0c91b78c145d1f4fbd70')
+sha256sums=('d3a5a92c2cdbb253b6762baebf0ed91183d37ead2cac977ed8c39fbe97b179e7')
 
 _pkgname=mlflow
 
@@ -54,4 +55,3 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('d3a5a92c2cdbb253b6762baebf0ed91183d37ead2cac977ed8c39fbe97b179e7')
