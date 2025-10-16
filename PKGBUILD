@@ -2,7 +2,7 @@
 # based on the original john-git PKGBUILD by David Ryskalczyk
 
 _pkgname=john
-pkgname=john-bj-git         # change to any *free* AUR name
+pkgname=john-bj-git
 pkgver=1.9.0.Jumbo.1.1832.gcb0c337e7    # auto-filled
 pkgrel=1
 pkgdesc="John the Ripper – bleeding-jumbo branch (yescrypt, OpenCL, MPI, CPU fall-backs)"
@@ -21,7 +21,7 @@ optdepends=("perl: for executing some of the scripts at /usr/share/john"
             "python-scapy: to use oracle2john")
 provides=('john')
 conflicts=('john')
-backup=()
+backup=('etc/john/john.conf')
 options=('!strip')
 source=("$_pkgname::git+https://github.com/openwall/john.git#branch=bleeding-jumbo")
 md5sums=('SKIP')
@@ -88,9 +88,7 @@ package() {
   cd ${srcdir}/$_pkgname/
 	
 	# config
-  mkdir -p "$pkgdir/etc/john" "$pkgdir/usr/share/john"
-  echo '# john default config' > "$pkgdir/etc/john/john.conf"
-  echo '# john default config' > "$pkgdir/usr/share/john/john.conf"
+  install -Dm 644 run/john.conf -t "${pkgdir}/etc/john"
   install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
 
   # opencl
