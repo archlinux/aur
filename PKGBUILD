@@ -29,7 +29,8 @@ pkgver() {
 }
 
 build() {
-    cd john/src
+    export LD_PRELOAD=          # neutralise fakeroot bug
+    cd "$srcdir/john/src"
 
     # allow build on glibc ≥ 2.36 (rpc/types.h removed)
     export CPPFLAGS="-I/usr/include/tirpc"
