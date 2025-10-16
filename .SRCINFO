@@ -8,7 +8,7 @@ pkgbase = tfblib
 	makedepends = cmake
 	depends = glibc
 	provides = libtfb.so
-	source = tfblib-0.1.1.tar.gz::https://github.com/vvaltchev/tfblib/archive/v0.1.1.tar.gz
-	sha256sums = 957cdf360ed247cd0e4ced377ae9a6e7261d60a5216cd1f63e50814d6bdd3c8e
+	source = tfblib-0.1.1.tar.gz::https://github.com/vvaltchev/tfblib/archive/dbcefc6a351517dee782cc822488a09c734db89c.tar.gz
+	sha256sums = 98c0b8ba3b4a333231b665215433f46b11cbfce9424eeadc85ebf3a86335f95f
 
 pkgname = tfblib
