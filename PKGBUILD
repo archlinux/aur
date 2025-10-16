@@ -12,7 +12,7 @@ provides=('cloudflare-warp-minimal-bin')
 conflicts=('cloudflare-warp-bin' 'cloudflare-warp')
 source=("https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_${pkgver}_amd64.deb")
 #Debian Package Index: https://pkg.cloudflareclient.com/dists/trixie/main/binary-amd64/Packages
-sha256sums=('1e316db69619eb4053b172fdcf4492e09f303677ed2ed84fbec6b94996f763b6')
+sha256sums=('b52c1b772a065cbb660a9e744ab5452725a06de3a958ed1fecf1f492f478882d')
 
 prepare() {
     bsdtar -xzf data.tar.gz -C "$srcdir"
