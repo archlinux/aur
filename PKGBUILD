@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DALEX
-_pkgver=2.5.2
+_pkgver=2.5.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('38587f3e8432848e5af64f1d14627848')
-b2sums=('2bcf1059bbd1e290925d324dcb835b147a453d11a7365d960096b72623fe2bb3ef6d4d75531245cb9a77e8a29184436ef01d2f8e999a06ce1a95cd522747458d')
+md5sums=('15d49c3caeac7d8307ed2f0873a44785')
+b2sums=('dc499651b877e06d147d5d4e08008a421496dc50211577097f279d0e213a742b8360cf31e0331742df2c9dbeda00a08b4c4e8c93024cb3be8c12b79f685b36ab')
 
 build() {
   mkdir build
