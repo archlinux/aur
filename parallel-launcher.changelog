@@ -1,3 +1,8 @@
+### v9.0.1 (Thu Oct 16 2025)
+* Fixed a crash when launching a rom on MacOS
+* Fixed some text displaying in the wrong colour on certain Linux distros
+* Fixed SRAM and FlashRAM save data not being imported correctly from Project64 save files
+
 ### v9.0.0 (Tue Oct 14 2025)
 * Updated to Qt6
 * Added a portable Windows version
