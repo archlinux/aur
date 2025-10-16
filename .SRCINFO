@@ -1,7 +1,7 @@
 pkgbase = fastmail
-	pkgdesc = Email and calendar made better
+	pkgdesc = Email made better
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.fastmail.com
 	arch = x86_64
 	license = custom:fastmail

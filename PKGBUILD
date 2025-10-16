@@ -2,8 +2,8 @@
 
 pkgname=fastmail
 pkgver=1.0.1
-pkgrel=2
-pkgdesc='Email and calendar made better'
+pkgrel=3
+pkgdesc='Email made better'
 license=('custom:fastmail')
 url='https://www.fastmail.com'
 arch=('x86_64')
@@ -20,9 +20,13 @@ prepare() {
   "./${_appimg}" --appimage-extract
 
   cd squashfs-root
-  sed -e "s/AppRun --no-sandbox/${pkgname}/g" -i production.desktop
-  sed -e "s/production/${pkgname}/g" -i production.desktop
-  sed -e "/X-AppImage-Version/d" -i production.desktop
+  desktop-file-edit \
+    --set-key=Exec \
+    --set-value="${pkgname} %U" \
+    --set-icon="${pkgname}" \
+    --add-category=Network \
+    --remove-key=X-AppImage-Version \
+    production.desktop
 
   rm "AppRun" "resources/app-update.yml"
 }
