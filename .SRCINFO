@@ -1,7 +1,7 @@
 pkgbase = zig0.11-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ziglang.org
 	arch = aarch64
 	arch = armv7h
@@ -13,6 +13,7 @@ pkgbase = zig0.11-bin
 	makedepends = minisign
 	provides = zig0.11
 	conflicts = zig0.11
+	options = !strip
 	source_aarch64 = https://ziglang.org/download/0.11.0/zig-linux-aarch64-0.11.0.tar.xz
 	source_aarch64 = https://ziglang.org/download/0.11.0/zig-linux-aarch64-0.11.0.tar.xz.minisig
 	sha256sums_aarch64 = 956eb095d8ba44ac6ebd27f7c9956e47d92937c103bf754745d0a39cdaa5d4c6
