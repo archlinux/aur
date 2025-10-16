@@ -1,0 +1,32 @@
+# Maintainer: initMayday <initMayday@protonmail.com>
+_pkgname="symlink-manager"
+pkgname="$_pkgname"
+pkgrel=1
+pkgver=1
+pkgdesc='A way to manage your symlinks in lua'
+arch=('any')
+url='https://github.com/initMayday/symlink-manager.git'
+makedepends=('git')
+depends=('lua')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+license=('CC-BY-NC-SA-4.0')
+source=("$_pkgname::git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$_pkgname"
+    git describe --tags --abbrev=0
+}
+
+prepare() {
+    cd "$_pkgname"
+    git checkout "$(git describe --tags --abbrev=0)"
+}
+
+package() {
+    cd "$_pkgname"
+    install -Dm755 ./wrapper.sh "$pkgdir/usr/bin/$_pkgname"
+    mkdir -p "$pkgdir/usr/share/$_pkgname"
+    cp -rf ./* "$pkgdir/usr/share/$_pkgname/"
+}
