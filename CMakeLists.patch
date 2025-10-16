@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d051d0b..dee1350 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,6 +71,11 @@ find_package(SDL2 REQUIRED)
+ find_package(spdlog REQUIRED)
+ # find_package(FFMPEG REQUIRED COMPONENTS AVCODEC AVFORMAT AVUTIL SWSCALE SWRESAMPLE)
+ find_package(Qt6 6.8 REQUIRED COMPONENTS Quick Gui OpenGL QuickControls2 Quick3D Sql QuickTest Multimedia Network Widgets Svg REQUIRED)
++if (Qt6_VERSION VERSION_GREATER_EQUAL 6.10.0)
++    find_package(Qt6 OPTIONAL_COMPONENTS
++        GuiPrivate
++    )
++endif()
+ find_package(cpr REQUIRED)
+ find_package(GTest REQUIRED)
+ find_package(nlohmann_json REQUIRED)

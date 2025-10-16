@@ -2,7 +2,7 @@
 
 pkgname=firelight
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A libretro-based frontend"
 arch=("x86_64")
 url="https://github.com/firelight-emulator/firelight"
@@ -30,14 +30,18 @@ makedepends=(
 source=(
     "firelight::git+${url}.git#tag=v${pkgver}"
     "firelight.desktop"
+    "CMakeLists.patch" # Temporary fix for Qt 6.10
 )
 sha256sums=(
     "SKIP"
     "3cdb9183d4c875831ccd0dd859ffa915fc8d64032d076aefa0f8cf8d88e8f0b3"
+    "6a0582ad0469c7b898c6d46e35fa8b9eb3c8345274381071ec2f4ef53267eac1"
 )
 
 prepare() {
+    cp CMakeLists.patch $srcdir/firelight
     cd $srcdir/firelight
+    git apply CMakeLists.patch
     git submodule update --init --recursive
 }
 
