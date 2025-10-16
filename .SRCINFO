@@ -1,8 +1,8 @@
 pkgbase = nvidia-open-tinygrad-git
 	pkgdesc = NVIDIA open GPU kernel modules (tinygrad git version)
-	pkgver = 550.78.r0.g083cd9cf1
+	pkgver = 580.95.05.r0.g2b436058a
 	pkgrel = 1
-	url = https://github.com/tinygrad/open-gpu-kernel-modules
+	url = https://github.com/tinygrad/open-gpu-kernel-modules/
 	arch = x86_64
 	license = MIT
 	license = GPL-2.0-only
@@ -11,25 +11,29 @@ pkgbase = nvidia-open-tinygrad-git
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=550.78
-	source = 100-nvidia-open-tinygrad.patch
+	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git
+	source = 100-nvidia-open-tinygrad-p2p-changes.patch
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
 	source = 140-nvidia-open-gcc-sls.patch
-	sha256sums = faef40041ae271d86fdee124809a2b6f7bbd49263dc5bf61585ce6461bc2cd9e
-	sha256sums = ccb296e9632bdda5b9897938e4439172db8b6c4fb7698a0edca3d87df17f15a6
+	source = 150-nvidia-open-make-modeset-fbdev-default.patch
+	source = 160-nvidia-open-linux6.15-fix.patch
+	sha256sums = SKIP
+	sha256sums = 9a12756765111d5f8c9f720558bb0c000dd325557146f201fb9a0a4cd0dc3441
 	sha256sums = 009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
-	sha256sums = 15421d72aabc569c69762c77c7a37ad7be617f08e3c833318cecdeb5500e8ef4
-	sha256sums = 71158935db9494bf8a18c34b29e2be19424ba09ce3017b9d9d7b6509f6090118
+	sha256sums = 5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501
+	sha256sums = 4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba
+	sha256sums = b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca
+	sha256sums = 4510eecef976c79ee4626fa5dbeecd316d554b5344c0e73503a47b1506e1d0af
 
 pkgname = nvidia-open-tinygrad-dkms-git
 	pkgdesc = NVIDIA open GPU kernel modules (tinygrad git version)
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils>=550
-	provides = nvidia-open=550.78.r0.g083cd9cf1
+	depends = nvidia-utils>=580.95
+	provides = nvidia-open=580.95.05.r0.g2b436058a
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
