@@ -3,13 +3,13 @@
 pkgname=iipython-feishin-bin
 pkgdesc='Fork of Feishin with additional features.'
 pkgver=25.10.14
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/iipythonx/feishin'
 license=('GPL3')
 optdepends=('mpv: Alternative audio backend')
 provides=("${pkgname%-bin}")
-conflicts=('feishin')
+conflicts=("feishin", "feishin-bin-debug", "feishin-debug")
 _filename=feishin-${pkgver//_/-}-linux
 source=("feishin.desktop")
 source_x86_64=("https://github.com/iipythonx/feishin/releases/download/${pkgver//_/-}/${_filename}-x64.tar.xz")
