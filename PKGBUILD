@@ -48,5 +48,5 @@ package() {
   install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}/LICENSE"
 
   # Create a symlink for mimalloc 2.x compatibility (needed by e.g. mold)
-  ln -sv libmimalloc.so.3.0 "${pkgdir}/usr/lib/libmimalloc.so.2"
+  ln -sv libmimalloc.so "${pkgdir}/usr/lib/libmimalloc.so.2"
 }
