@@ -1,32 +1,164 @@
 pkgbase = benben
 	pkgdesc = Multi-format, fast and efficient command line audio player and audio converter
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://chiselapp.com/user/MistressRemilia/repository/benben
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	makedepends = crystal
 	makedepends = fossil
+	makedepends = git
+	makedepends = gzip
+	makedepends = meson
+	makedepends = ninja
 	makedepends = python-docutils
-	makedepends = ruby
-	makedepends = shards
-	makedepends = tcl
+	makedepends = sbcl
 	makedepends = texinfo
-	depends = gc
-	depends = gmp
+	depends = alsa-lib
 	depends = libao
-	depends = libpulse
 	depends = libsidplayfp
-	depends = libvorbis
-	depends = libxml2
 	depends = libxmp
 	depends = libyaml
 	depends = mpg123
 	depends = opus
-	depends = portaudio
 	depends = slang
 	depends = wavpack
-	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.6.2
+	depends = zstd
+	options = !strip
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.7.0
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remi-slang/#tag=v0.2.1
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remiaudio/#tag=v0.1.2
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remimarshal/#tag=v0.4.2
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-sdm/#tag=v0.99.37
+	source = fossil+https://nanako.mooo.com/fossil/cl-remichips/#tag=v0.1.3
+	source = fossil+https://nanako.mooo.com/fossil/cl-remiyaml/#tag=v0.2.1
+	source = fossil+https://nanako.mooo.com/fossil/satousynth/#tag=v0.1.3
+	source = fossil+https://nanako.mooo.com/fossil/libremicsid/#commit=f52087551c9a39bdfa879ab49d2ff73ade3aa5ec884c7e4f7ee9875d595e5f7c
+	source = git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=8514d8e68ed0c733abf7f96f9e91b24912686dc4
+	source = git+https://github.com/cl-babel/babel.git#commit=23c14409dc89538b8a0bb2667a9784a5a72b795f
+	source = git+https://github.com/cffi/cffi.git#commit=48eaef6f64c2c4830f3a1104432c66e6bad721a4
+	source = git+https://github.com/edicl/cl-ppcre.git#commit=a2ea581c23fdc184168423adbd4b4c1f48d42743
+	source = git+https://github.com/muyinliu/cl-cpus#commit=c1e3ae5722c480e69be9eab2369d6ae0f7d4fb9e
+	source = git+https://codeberg.org/shinmera/trivial-indent.git#commit=fc7380b0f5683a6f531150c4bfca724a621cfc0b
+	source = git+https://github.com/marijnh/ST-JSON#commit=4a0025bcc5b6921454822f1b9f38f697b4eeaf43
+	source = git+https://github.com/sharplispers/lparallel#commit=70225f4b234d5765cd833d4b9a3c094976540c49
+	source = git+https://github.com/trivial-garbage/trivial-garbage.git#commit=3474f6414b73d4e3aa2d5c53080f4247a34f6380
+	source = git+https://github.com/glv2/cl-zstd#commit=2f0c95e7451def47df5919227f299b64d4a0464e
+	source = git+https://github.com/fukamachi/quri.git#commit=45e0ff7f15a96ae9aef02b977375c6984d57a608
+	source = git+https://github.com/ruricolist/FXML.git#commit=a0e73bb48ef03adea94a55986cc27f522074c8e1
+	source = git+https://github.com/trivial-features/trivial-features.git#commit=d249a62aaf022902398a7141ae17217251fc61db
+	source = git+https://github.com/trivial-gray-streams/trivial-gray-streams.git#commit=a7ead683666849762ea657dac9137d693c5a4929
+	source = git+https://github.com/sharplispers/parse-number.git#commit=cb9e48758a51ddf3296b56c41ce0006617b00916
+	source = git+https://github.com/sionescu/bordeaux-threads.git#commit=4aa13eb422bacd092c43abdade2943f5966bbff3
+	source = git+https://codeberg.org/glv/cl-octet-streams.git#commit=f461922999ba022325aab6f157234b926514e720
+	source = git+https://github.com/sharplispers/split-sequence.git#commit=89a10b4d697f03eb32ade3c373c4fd69800a841a
+	source = git+https://github.com/Publitechs/cl-utilities.git#commit=6b4de39201d439330aec0b3589931aa3be570e66
+	source = git+https://github.com/antifuchs/idna.git#commit=bf789e6029b695ecba635964deac38130f55c7b4
+	source = git+https://github.com/edicl/flexi-streams.git#commit=4951d575b8f73270802a03cc5812b8310409caa9
+	source = git+https://github.com/melisgl/named-readtables.git#commit=8bd0045267007f03d7a59211d4446a1d8aa7c26c
+	source = git+https://github.com/melisgl/mgl-pax.git#commit=18f1d93b962781f273d2362bd190ce1744c120c4
+	source = git+https://github.com/edicl/cl-who.git#commit=4d4af9871c310f2fa57de7478841d88eaad3889d
+	source = git+https://github.com/ruricolist/serapeum.git#commit=5959fd0f2deeaeaf4709feff84038691b0974eae
+	source = git+https://github.com/guicho271828/trivia.git#commit=4383dd894f7c9861673aad78d8f09e5587bc9616
+	source = git+https://github.com/guicho271828/type-i.git#commit=4407a6852e76e795f697180dfb01749b49cc7b0c
+	source = git+https://gitlab.common-lisp.net/iterate/iterate.git#commit=26cf129a03b45d6dd7d2a659622244d20a9ab6f5
+	source = git+https://github.com/Bike/introspect-environment.git#commit=69a50ac84b4c23447521dfab008cc20e4bfbee82
+	source = git+https://github.com/guicho271828/lisp-namespace.git#commit=699fccb6727027343bb5fca69162a3113996edfc
+	source = git+https://github.com/Zulu-Inuoe/trivial-cltl2.git#commit=2ada8722dc1d7bae1f49832a2ca26b25b90055d3
+	source = git+https://github.com/pkhuong/string-case.git#commit=718c761e33749e297cd2809c7ba3ade1985c49f7
+	source = git+https://gitlab.common-lisp.net/parse-declarations/parse-declarations.git#commit=549aebbfb9403a7fe948654126b9c814f443f4f2
+	source = git+https://github.com/ruricolist/trivial-file-size.git#commit=60fd1bf8c573c733a775580cb96abdaaa7413ba8
+	source = git+https://github.com/cbaggers/trivial-macroexpand-all.git#commit=933270ac7107477de1bc92c1fd641fe646a7a8a9
+	source = git+https://github.com/lmj/global-vars.git#commit=c749f32c9b606a1457daa47d59630708ac0c266e
+	source = git+https://github.com/pcostanza/closer-mop.git#commit=2ed394658373e061ee08a0a1dcbf77ee40ae7e15
+	source = git+https://codeberg.org/shinmera/trivial-arguments.git#commit=a0a33af4ad0a6e4cffd6217c3f21a2bfa7e97b2a
+	source = git+https://codeberg.org/shinmera/atomics.git#commit=ff170cbf8028185e6a011678033954669bf6dfdc
+	source = git+https://codeberg.org/shinmera/documentation-utils.git#commit=0665d6e43d135d02658292ac1dae3b17ff426889
+	source = git+https://codeberg.org/shinmera/mmap.git#commit=97d2de19807a7510fd1c4dd5c6845bf66f6722da
+	source = git+https://codeberg.org/shinmera/pathname-utils.git#commit=c4a90bd10f0a0de9e893c7ac191009fc8323db2e
+	source = git+https://github.com/stylewarning/computable-reals.git#commit=607a5d5b95387c06f92a661aa5562a7be0f5cad8
+	source = git+https://github.com/fukamachi/dexador.git#commit=d7ac217819e9156abe10cd28ba7a2d548be03cad
+	source = git+https://github.com/fukamachi/fast-http.git#commit=2232fc9b1e03313f9357824125b4a5327ec7b84b
+	source = git+https://github.com/fukamachi/proc-parse.git#commit=3afe2b76f42f481f44a0a495256f7abeb69cef27
+	source = git+https://github.com/fukamachi/xsubseq.git#commit=5ce430b3da5cda3a73b9cf5cee4df2843034422b
+	source = git+https://github.com/fukamachi/smart-buffer.git#commit=619759d8a6f821773bbc65c0bda553d30e51e6f3
+	source = git+https://github.com/rpav/fast-io.git#commit=a4c5ad600425842e8b6233b1fa22610ffcd874c3
+	source = git+https://github.com/sionescu/static-vectors.git#commit=3d9d89b4950b72e0e5bdacfcdfd366bde72386d2
+	source = git+https://github.com/edicl/chunga.git#commit=5cd13fe0f6268d0bc580f49b0bc70227fe03ecf3
+	source = git+https://github.com/dlowe-net/local-time.git#commit=fea5b154ad02e8eb68434c31770be6913c099d64
+	source = git+https://codeberg.org/shinmera/trivial-mimes.git#commit=01cb46b062d6804ce707352e3de593c104f1cdeb
+	source = git+https://github.com/fukamachi/cl-cookie.git#commit=6bcb74ac6fb331f9677cdc98c5b0b9f92246d6a7
+	source = git+https://github.com/darabi/cl-base64.git#commit=80496b74293e956364b2d3dbdfc87d74bfeeeda4
+	source = git+https://github.com/usocket/usocket.git#commit=6456a3f7ece05c8b8f077dd079daffb8de122ead
+	source = git+https://github.com/cl-plus-ssl/cl-plus-ssl.git#commit=e6963f24a2ad2a8c3fc113697bae54e0f15c05b0
+	source = git+https://github.com/sharplispers/chipz.git#commit=6f803684415704114f213c64e13b231627e7777f
+	source = git+https://github.com/sharplispers/chipz.git#commit=6f803684415704114f213c64e13b231627e7777f
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = benben
