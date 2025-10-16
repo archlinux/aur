@@ -1,12 +1,12 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgbase=commafeed
 pkgver=5.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Reader inspired self-hosted personal RSS reader (native standalone version)"
 url="https://github.com/Athou/commafeed"
 arch=('x86_64')
 license=('APACHE-2.0')
-makedepends=('jdk21-graalvm-bin')
+makedepends=('jdk25-graalvm-bin')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Athou/${pkgbase}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgbase}.service"
         "sysusers.conf"
@@ -18,8 +18,8 @@ sha256sums=('726a5f42c86d22f8f44f38e891871137eccc8cf68c557c2db47ff0aa0655be7c'
 
 build() {
   cd "${srcdir}"/${pkgbase}-${pkgver}
-  export JAVA_HOME=/usr/lib/jvm/java-21-graalvm/
-  export GRAALVM_HOME=/usr/lib/jvm/java-21-graalvm/
+  export JAVA_HOME=/usr/lib/jvm/java-25-graalvm/
+  export GRAALVM_HOME=/usr/lib/jvm/java-25-graalvm/
   for db in h2 postgresql mysql mariadb; do
      ./mvnw package -P${db} -Pnative -DskipTests
   done
