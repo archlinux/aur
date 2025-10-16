@@ -5,8 +5,9 @@
 
 pkgname=equicord
 _pkgname=Equicord
-pkgver=0.0.112.ga5ed19ab
+pkgver=0.0.112.r5527ga5ed19ab
 pkgrel=1
+epoch=2
 pkgdesc='The other cutest Discord client mod'
 arch=('x86_64')
 url='https://equicord.org/'
@@ -30,9 +31,17 @@ sha512sums=('SKIP'
 
 pkgver() {
     local discord_ver=$(grep -oE '^pkgver=(.*?)$' discord-pkgbuild)
-    local commit_sha=$(cd equicord-source && git rev-parse --short HEAD)
+    local equicord_ver
+    {
+        local commits sha
+        pushd equicord-source
+            commits=$(git rev-list --count HEAD)
+            sha=$(git rev-parse --short HEAD)
+        popd
+        equicord_ver="r${commits}g${sha}"
+    } > /dev/null
 
-    echo "${discord_ver#pkgver=}.g${commit_sha}"
+    echo "${discord_ver#pkgver=}.${equicord_ver}"
 }
 
 _ensure_local_nvm() {
@@ -58,7 +67,7 @@ prepare() {
 
 build() {
     export PNPM_HOME="$srcdir/pnpm-home"
-    local discord_ver="${pkgver%%.g*}"
+    local discord_ver="${pkgver%%.r*}"
     
     echo "Downloading discord: v$discord_ver"
     wget "https://dl.discordapp.net/apps/linux/$discord_ver/discord-$discord_ver.tar.gz" \
@@ -103,7 +112,7 @@ build() {
 }
 
 package() {
-  local discord="discord-${pkgver%%.g*}"
+  local discord="discord-${pkgver%%.r*}"
 
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -a "$discord/." "$pkgdir/usr/lib/$pkgname"
