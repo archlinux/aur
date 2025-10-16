@@ -20,7 +20,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2023.12.r70.g4f902690c
+pkgver=2025.07.r7.g18ee8e55d
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -56,8 +56,8 @@ build() {
                   '-DCMAKE_CXX_COMPILER=g++-14'
                 )
   cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab"
-# Fix gcc:13 build
-  sed -i '1 i\#include <cstdint>' "${srcdir}"/meshlab/src/external/downloads/{nexus-master/src/corto/include/corto/tunstall.h,libE57Format-2.3.0/include/E57Format.h}
+# Fix gcc:14 build
+  sed -i '1 i\#include <algorithm>' "${srcdir}"/meshlab/src/external/downloads/lib3mf-2.4.1/Source/Model/Writer/v100/NMR_ResourceDependencySorter.cpp
 # shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
   ninja ${MAKEFLAGS:--j1} -C "${srcdir}/build"
 }

@@ -1,6 +1,6 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2023.12.r7.gdfb630012
+	pkgver = 2025.07.r7.g18ee8e55d
 	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = meshlab-git
 	makedepends = muparser
 	makedepends = lib3ds
 	makedepends = openctm-tools
-	makedepends = gcc12
+	makedepends = gcc14
 	depends = bzip2
 	depends = cgal
 	depends = glew
