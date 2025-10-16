@@ -1,10 +1,10 @@
 # Maintainer: Amolith <amolith@secluded.site>
 
 pkgname=ggc-git
-pkgver=r547.6452f8e
+pkgver=r568.c3cf13e
 pkgrel=1
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
-arch=('x86_64' 'arm64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/bmf-san/ggc"
 license=('MIT')
 provides=('ggc')
