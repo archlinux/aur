@@ -1,7 +1,7 @@
 pkgbase = anycubicslicernext-bin
 	pkgdesc = Anycubic Slicer is an open source slicer for FDM printers
 	pkgver = 1.3.7171
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ANYCUBIC-3D/AnycubicSlicer
 	arch = x86_64
 	license = AGPL-3.0
@@ -14,6 +14,7 @@ pkgbase = anycubicslicernext-bin
 	depends = libglvnd
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	depends = gst-libav
 	depends = dbus
 	depends = libsoup3
 	depends = noto-fonts
