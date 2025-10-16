@@ -1,13 +1,13 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 pkgname='zlog'
-pkgver='1.2.16'
+pkgver='1.2.18'
 pkgrel=2
 pkgdesc='A reliable pure C logging library.'
 arch=('x86_64')
 url='https://hardysimpson.github.io/zlog/'
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HardySimpson/zlog/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('4dcfe75a1acbb5c4513bbe168f935993')
+md5sums=('5f99a30e61af3b62db4986e277f69cf9')
 options=('staticlibs')
 install=$pkgname.install
 

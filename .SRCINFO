@@ -1,13 +1,13 @@
 pkgbase = zlog
 	pkgdesc = A reliable pure C logging library.
-	pkgver = 1.2.16
+	pkgver = 1.2.18
 	pkgrel = 2
 	url = https://hardysimpson.github.io/zlog/
 	install = zlog.install
 	arch = x86_64
 	license = GPL2
 	options = staticlibs
-	source = zlog-1.2.16.tar.gz::https://github.com/HardySimpson/zlog/archive/refs/tags/1.2.16.tar.gz
-	md5sums = 4dcfe75a1acbb5c4513bbe168f935993
+	source = zlog-1.2.18.tar.gz::https://github.com/HardySimpson/zlog/archive/refs/tags/1.2.18.tar.gz
+	md5sums = 5f99a30e61af3b62db4986e277f69cf9
 
 pkgname = zlog
