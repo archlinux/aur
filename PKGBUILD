@@ -1,4 +1,4 @@
-# Maintainer: YOUR_NAME <you at domain dot tld>
+# Maintainer: Erhan Karabulut <x9x@keemail.me>
 # Based on the original john-git PKGBUILD by David Ryskalczyk
 
 pkgname=john-bj-git
@@ -37,7 +37,6 @@ pkgver() {
 build() {
     cd "$srcdir/john/src"
 
-    # allow build on glibc ≥ 2.36 (rpc/types.h removed)
     export CPPFLAGS="-I/usr/include/tirpc"
     export LDFLAGS="-ltirpc"
 
@@ -54,19 +53,20 @@ build() {
 
     case "$CARCH" in
         x86_64)
-            # generic
+            # generic (non-XOP) becomes default
             CFLAGS="${CFLAGS/-march=*}" ./configure "${common_opts[@]}"
             make clean && make
-            mv -v ../run/john ../run/john-non-avx
+            mv -v ../run/john ../run/john-non-xop
 
             # AVX
             ./configure "${common_opts[@]}" CFLAGS="$CFLAGS -mavx"
             make clean && make
-            mv -v ../run/john ../run/john-non-xop
+            mv -v ../run/john ../run/john-non-avx
 
-            # XOP (plain 'john')
+            # XOP (optional, only for CPUs that support it)
             ./configure "${common_opts[@]}" CFLAGS="$CFLAGS -mxop"
             make clean && make
+            mv -v ../run/john ../run/john-xop
             ;;
         i686)
             for flag in "" -mmmx -msse2 -mavx -mxop; do
@@ -82,15 +82,17 @@ build() {
             ;;
     esac
 
-    [[ -x ../run/john ]] || { echo "FATAL: john binary not built"; return 1; }
+    [[ -x ../run/john-non-xop ]] || { echo "FATAL: john binary not built"; return 1; }
 }
 
 package() {
     cd "$srcdir/john"
 
-    # main binary + CPU fall-backs
-    install -Dm755 run/john -t "$pkgdir/usr/bin"
-    for cpu in non-avx non-xop non-sse2 non-mmx; do
+    # default binary: non-XOP version for all CPUs
+    install -Dm755 run/john-non-xop -t "$pkgdir/usr/bin/john"
+
+    # CPU fallback binaries
+    for cpu in non-avx non-sse2 non-mmx xop; do
         [[ -e run/john-$cpu ]] && install -Dm755 run/john-$cpu -t "$pkgdir/usr/bin"
     done
 
