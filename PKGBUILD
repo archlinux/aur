@@ -87,7 +87,7 @@ build() {
 package() {
   cd ${srcdir}/$_pkgname/
 	
-	# config
+  # config
   install -Dm 644 run/john.conf -t "${pkgdir}/etc/john"
   install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
 
