@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus
 pkgname=gazelle-tui
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Minimal NetworkManager TUI with complete 802.1X enterprise WiFi support"
 arch=('any')
