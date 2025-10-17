@@ -3,8 +3,8 @@
 
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.2.1.r4.g5bdfb77
-pkgrel=2
+pkgver=v1.3.0
+pkgrel=1
 pkgdesc="Multi-browser, real-time, extension-free bookmark manager"
 arch=('i686' 'x86_64')
 makedepends=(git git-lfs go make sqlite)
@@ -70,7 +70,16 @@ package() {
     install -Dm 644 $_doc -t "$pkgdir"/usr/share/doc/"${_pkgname}"
   done
 
-  install -Dm 644 contrib/rofi.sh "${pkgdir}/usr/share/doc/${_pkgname}/rofi-example.sh"
+  install -Dm 755 contrib/rofi.sh "${pkgdir}/usr/share/${_pkgname}/scripts/rofi-suki.sh"
+
+
+  # marktab
+  install -Dm 644 contrib/marktab/example.marktab "${pkgdir}/usr/share/doc/${_pkgname}/example.marktab"
+
+  for mt_script in $(find contrib/marktab/scripts -type f -print); do
+    msg2 $mt_script
+    install -Dm 755 $mt_script "${pkgdir}/usr/share/${_pkgname}/scripts/marktab/$(basename $mt_script)"
+  done
 
   install -Dm 644 contrib/${_pkgname}.1 \
     "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
