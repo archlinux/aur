@@ -14,7 +14,6 @@ makedepends=(
     'brotli'
     'cmake'
     'doxygen'
-    'gdk-pixbuf2'
     'giflib'
     'git'
     'gperftools'
@@ -80,6 +79,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
+        -DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF:BOOL='NO' \
         -Wno-dev
     cmake --build build
     make -C build doc
@@ -100,7 +100,6 @@ package_libjxl() {
         'libjpeg-turbo'
         'libpng')
     optdepends=(
-        'gdk-pixbuf2: for gdk-pixbuf loader'
         'java-runtime: for JNI bindings')
     provides=(
         'libjxl.so'
