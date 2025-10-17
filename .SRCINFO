@@ -1,0 +1,27 @@
+pkgbase = fowl
+	pkgdesc = Forward over Wormhole: streams over magic-wormhole Dilation connections
+	pkgver = 25.9.0
+	pkgrel = 1
+	url = https://pypi.org/project/fowl
+	arch = any
+	license = MIT
+	checkdepends = python-hypothesis
+	checkdepends = python-magic-wormhole-mailbox-server
+	checkdepends = python-pytest
+	checkdepends = python-pytest-twisted
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = magic-wormhole
+	depends = python
+	depends = python-attrs
+	depends = python-click
+	depends = python-humanize
+	depends = python-msgpack
+	depends = python-rich
+	depends = python-twisted
+	source = https://files.pythonhosted.org/packages/source/f/fowl/fowl-25.9.0.tar.gz
+	sha256sums = 93795643212f1ece96f676a94cd4520a2c047a3f4bbb94948a93b1091afd8e6b
+
+pkgname = fowl
