@@ -34,4 +34,12 @@ package () {
 	cd "${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 wf-shell.ini.example "${pkgdir}/usr/share/doc/${pkgname}/wf-shell.ini.example"
+
+    # what the hell is wrong with this package?
+	rm -rf "${pkgdir}/usr/include"
+	rm -rf "${pkgdir}/usr/lib/girepository-1.0"
+	rm -f "${pkgdir}/usr/lib/libgtk4-layer-shell.so{,.0,.1.1.1}"
+	rm -f "${pkgdir}/usr/lib/liblayer-shell-preload.so"
+	rm -f "${pkgdir}/usr/lib/pkgconfig/gtk4-layer-shell-0.pc"
+	rm -rf "${pkgdir}/usr/share/{git-1.0,vala}"
 }
