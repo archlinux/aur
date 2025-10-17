@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=picoscope7
 pkgver=7.2.3.7282
-pkgrel=1
+pkgrel=2
 pkgdesc="PicoScope 7 Test and Measurment Stable"
 arch=('x86_64')
 url="https://www.picotech.com/downloads/linux"
@@ -35,12 +35,13 @@ package() {
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
-  mkdir -p $pkgdir/usr/bin
-  ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
+  # mkdir -p $pkgdir/usr/bin
+  # ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
 
-  mkdir -p $pkgdir/opt/picoscope/scripts
-  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
-  mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
+  # mkdir -p $pkgdir/opt/picoscope/scripts
+  # tar -xf control.tar.* -C "${pkgdir}/opt/picoscope/scripts" ./postinst
+  # mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
 
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/doc/picoscope/copyright" 
+  tar -xf control.tar.* -C "${pkgdir}/opt/picoscope" ./copyright
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/opt/picoscope/copyright" 
 }
