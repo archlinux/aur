@@ -1,0 +1,20 @@
+pkgbase = gyatt-git
+	pkgdesc = A next-gen version control system with built-in server and planned IPFS support
+	pkgver = r10.c66ce1c
+	pkgrel = 1
+	url = https://github.com/trashhpandaaaa/gyatt
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = zlib
+	provides = gyatt
+	conflicts = gyatt
+	source = git+https://github.com/trashhpandaaaa/gyatt.git
+	sha256sums = SKIP
+
+pkgname = gyatt-git
