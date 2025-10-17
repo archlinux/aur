@@ -1,20 +1,19 @@
 pkgbase = tosu-overlay
-	pkgdesc = Overlay for osu! Powered by Tosu, GTK and Webkit
-	pkgver = v1.0.3
+	pkgdesc = Overlay for osu! Powered by tosu, qt6 and qt6 webengine
+	pkgver = v2.0.0
 	pkgrel = 1
-	url = https://github.com/K4zoku/tosu-overlay
+	url = https://github.com/K4zoku/tosu-overlay-qt
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = make
-	makedepends = pkgconf
-	makedepends = clang
-	depends = gtk3
-	depends = webkit2gtk-4.1
-	depends = gtk-layer-shell
-	depends = xcb-util-wm
+	makedepends = gcc
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = layer-shell-qt
 	provides = tosu-overlay
 	conflicts = tosu-overlay
-	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay.git#tag=v1.0.3
+	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay-qt.git#tag=v2.0.0
 	sha256sums = SKIP
 
 pkgname = tosu-overlay

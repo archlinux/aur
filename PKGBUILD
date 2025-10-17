@@ -1,34 +1,28 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 pkgname=tosu-overlay
-pkgver=v1.0.3
+pkgver=v2.0.0
 pkgrel=1
-pkgdesc="Overlay for osu! Powered by Tosu, GTK and Webkit"
+pkgdesc="Overlay for osu! Powered by tosu, qt6 and qt6 webengine"
 arch=('x86_64')
-url="https://github.com/K4zoku/tosu-overlay"
+url="https://github.com/K4zoku/tosu-overlay-qt"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'gtk-layer-shell' 'xcb-util-wm')
-makedepends=('make' 'pkgconf' 'clang')
+depends=('qt6-base' 'qt6-webengine' 'layer-shell-qt')
+makedepends=('cmake' 'make' 'gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("tosu-overlay::git+https://github.com/K4zoku/tosu-overlay.git#tag=${pkgver}")
+source=("tosu-overlay::git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}"
-	make BUILD_PROFILE=RELEASE
+	./build.sh
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    mkdir -p "${pkgdir}/usr/share/applications"
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-    mkdir -p "${pkgdir}/usr/share/kglobalaccel"
-
-	cd "${srcdir}/${pkgname}"
-	make PREFIX="${pkgdir}/usr" install
-    install -Dm644 "logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    cd "${srcdir}/${pkgname}"
+    install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "src/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "distribution/app.tosu.overlay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    ln -s "${pkgdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/kglobalaccel/${pkgname}.desktop"
+    install -Dm644 "distributions/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
+
