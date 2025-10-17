@@ -2,15 +2,15 @@
 # Contributor: Nick Lay <layns(at)mail(dot)uc(dot)edu>
 
 ## options
-: ${_branch=primehack-aur}
-
 : ${_build_clang:=false}
+
+: ${_branch=primehack-aur}
 
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname-git"
-pkgver=2503.1.r10.gfb402c8
+pkgver=2509.r10.g060c588
 pkgrel=1
-pkgdesc='A Gamecube and Wii emulator with mouselook controls'
+pkgdesc="A Gamecube and Wii emulator with mouselook controls"
 url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
@@ -19,13 +19,17 @@ depends=(
   'alsa-lib'
   'bluez-libs'
   'bzip2'
-  'ffmpeg'
   'hidapi'
+  'libavcodec.so'  # ffmpeg
+  'libavformat.so' # ffmpeg
+  'libavutil.so'   # ffmpeg
   'libevdev'
+  'libfmt.so'
   'libgl'
   'liblzma.so'
   'libpulse'
   'libspng'
+  'libswscale.so' # ffmpeg
   'libudev.so'
   'libusb'
   'libx11'
@@ -38,7 +42,7 @@ depends=(
   'pugixml'
   'qt6-base'
   'qt6-svg'
-  'sdl2'
+  'sdl3'
   'zstd'
 )
 makedepends=(
@@ -46,6 +50,7 @@ makedepends=(
   'git'
   'ninja'
   'python'
+  'vulkan-headers'
 )
 
 if [[ "${_build_clang::1}" == "t" ]]; then
@@ -64,7 +69,7 @@ conflicts=("$_pkgname")
 options+=(!emptydirs)
 
 _pkgsrc="xiota.primehack"
-source=("$_pkgsrc"::"git+$url.git#branch=${_branch:-wip}")
+source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
 prepare() {
@@ -72,13 +77,16 @@ prepare() {
   git rm -r 'Externals/FFmpeg-bin'
   git rm -r 'Externals/Qt'
   git rm -r 'Externals/SDL/SDL'
+  git rm -r 'Externals/Vulkan-Headers'
   git rm -r 'Externals/curl/curl'
+  git rm -r 'Externals/fmt/fmt'
   git rm -r 'Externals/gtest'
   git rm -r 'Externals/hidapi/hidapi-src'
   git rm -r 'Externals/libadrenotools'
   git rm -r 'Externals/libspng/libspng'
   git rm -r 'Externals/libusb/libusb'
   git rm -r 'Externals/lz4/lz4'
+  git rm -r 'Externals/miniupnpc/miniupnp'
   git rm -r 'Externals/spirv_cross/SPIRV-Cross'
   git submodule update --init --depth=1
 
@@ -105,7 +113,7 @@ build() (
   install /dev/stdin "$srcdir/$_pkgsrc/Source/Core/Common/scmrev.h.in" << END
 #define SCM_REV_STR "\${DOLPHIN_WC_REVISION}"
 #define SCM_DESC_STR "${_pkgver:?}"
-#define SCM_BRANCH_STR "${_branch:-wip}"
+#define SCM_BRANCH_STR "$_branch"
 #define SCM_COMMITS_AHEAD_MASTER 0
 #define SCM_DISTRIBUTOR_STR "aur.archlinux.org"
 #define SCM_UPDATE_TRACK_STR ""
@@ -126,9 +134,8 @@ END
     -DUSE_SANITIZERS=OFF # cubeb
 
     -DUSE_SYSTEM_ENET=OFF
-    -DUSE_SYSTEM_FMT=OFF
+    -DUSE_SYSTEM_FMT=ON
     -DUSE_SYSTEM_LIBMGBA=OFF
-    -DUSE_SYSTEM_MINIZIP=OFF
     -DUSE_SYSTEM_XXHASH=OFF
     -DENABLE_TESTS=OFF
     -Wno-dev
