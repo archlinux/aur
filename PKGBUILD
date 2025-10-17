@@ -6,7 +6,6 @@ pkgdesc="A cross-platform, local, simple, fast, and distraction free CLI applica
 arch=('x86_64')
 url="https://github.com/nate-craft/auditorium"
 license=('MIT')
-makedepends=("cargo")
 depends=("mpv" "ffmpeg")
 conflicts=("auditorium-minimal")
 source=("https://github.com/nate-craft/auditorium/releases/download/${pkgver}/auditorium-v${pkgver}-linux-amd64")
