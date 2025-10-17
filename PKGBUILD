@@ -2,20 +2,19 @@
 # Contributor: Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-service-bin
 _pkgname=mkl-service
-_pkgver=2.4.0
-_build=py313h5eee18b_1
-pkgver="${_pkgver}.anaconda${_build##*_}"
+pkgver=2.5.2
+_build=py313hacdc0fc_0
 pkgrel=1
 pkgdesc="Python bindings to MKL service functions - prebuilt binaries from Anaconda"
 arch=(x86_64)
 license=(BSD-3-Clause)
 url="https://github.com/IntelPython/mkl-service"
-provides=("python-mkl-service=$_pkgver")
+provides=("python-mkl-service=${pkgver}")
 conflicts=(python-mkl-service)
 depends=(python intel-oneapi-mkl)
 makedepends=(jq)
-source=(https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2)
-sha256sums=('26ebda71e094f16416a219a2cb0cfd96de279646dfe84c01510d78e8e4003742')
+source=(https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${pkgver}-${_build}.tar.bz2)
+sha256sums=('bebf72237c6e333f197cda72ee162be97e937ca74dd452435a8efc34531ff58a')
 
 prepare() {
   # Prefix replacement

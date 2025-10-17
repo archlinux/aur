@@ -1,6 +1,6 @@
 pkgbase = python-mkl-service-bin
 	pkgdesc = Python bindings to MKL service functions - prebuilt binaries from Anaconda
-	pkgver = 2.4.0.anaconda1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/IntelPython/mkl-service
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = python-mkl-service-bin
 	makedepends = jq
 	depends = python
 	depends = intel-oneapi-mkl
-	provides = python-mkl-service=2.4.0
+	provides = python-mkl-service=2.5.2
 	conflicts = python-mkl-service
-	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl-service-2.4.0-py313h5eee18b_1.tar.bz2
-	sha256sums = 26ebda71e094f16416a219a2cb0cfd96de279646dfe84c01510d78e8e4003742
+	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl-service-2.5.2-py313hacdc0fc_0.tar.bz2
+	sha256sums = bebf72237c6e333f197cda72ee162be97e937ca74dd452435a8efc34531ff58a
 
 pkgname = python-mkl-service-bin
