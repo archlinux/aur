@@ -61,6 +61,6 @@ package() {
     cp -a "${srcdir}/bin/internal" "${pkgdir}/usr/share/moonbit/internal/"
   fi
 }
-sha256sums=('8a2c1a8ed670bcb9b1f6b98b3e9703985117fe2be01d40ea886cf699bc0571e6'
+sha256sums=('c704ad1c01f3083a6dd5ca0e2c0ef0daf6c4f709e52e31895b90de20133dc808'
             '5ab1092ce08730e393bb1f1af3943bac83573ffaa270469bc3e0fb1c41880206'
             'a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3')
