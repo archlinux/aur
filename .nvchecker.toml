@@ -1,0 +1,3 @@
+[python-ipspot]
+source = "pypi"
+pypi = "ipspot"
