@@ -7,6 +7,7 @@ pkgbase = auditorium-minimal
 	license = MIT
 	makedepends = cargo
 	depends = mpv
+	depends = ffmpeg
 	conflicts = auditorium
 	source = https://github.com/nate-craft/auditorium/releases/download/1.2.4/auditorium-minimal-v1.2.4-linux-amd64
 	sha256sums = 83baaf6a8787218a32626c00deff69a2694e0d728cbcfd5e1ab301962f63b7ed
