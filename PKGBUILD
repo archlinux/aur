@@ -2,13 +2,14 @@
 
 pkgname=fastmail
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Email made better'
 license=('custom:fastmail')
 url='https://www.fastmail.com'
 arch=('x86_64')
 options=('!strip')
 depends=('gtk3' 'nss' 'alsa-lib')
+makedepends=('desktop-file-utils')
 _appimg="Fastmail-${pkgver}.AppImage"
 source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
         "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
@@ -32,8 +33,8 @@ prepare() {
 }
 
 package() {
-   install -d "${pkgdir}/opt/${pkgname}"
-   cp -a "squashfs-root/." "${pkgdir}/opt/${pkgname}/"
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -a "squashfs-root/." "${pkgdir}/opt/${pkgname}/"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/production" "${pkgdir}/usr/bin/${pkgname}"

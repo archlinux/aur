@@ -1,10 +1,11 @@
 pkgbase = fastmail
 	pkgdesc = Email made better
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.fastmail.com
 	arch = x86_64
 	license = custom:fastmail
+	makedepends = desktop-file-utils
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
