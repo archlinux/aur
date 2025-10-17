@@ -1,15 +1,16 @@
 # Maintainer: mr-scrpt <mr.scrpt@gmail.com>
 pkgname=pass-keyboard-control
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-generated keyboard-driven GUI for Unix password manager (pass) with total keyboard control"
 arch=('any')
 url="https://github.com/mr-scrpt/pass-keyboard-control"
 license=('MIT')
 depends=(
     'python'
-    'python-pyside6'
+    'pyside6'
     'python-qtawesome'
+    'python-qt-material'
     'pass'
     'gnupg'
 )
