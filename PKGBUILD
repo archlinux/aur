@@ -1,12 +1,12 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 _pkgname=niri-autoname-workspaces
 pkgname=${_pkgname}-git
-pkgver=r7.cda6272
+pkgver=r16.8957eda
 pkgrel=1
 pkgdesc="Show icons for running programs in the niri window manager"
 arch=(x86_64)
 url="https://github.com/justbuchanan/niri-autoname-workspaces"
-license=('Unknown')
+license=('MIT')
 depends=('niri' 'ttf-font-nerd' 'glibc' 'gcc-libs')
 makedepends=(cargo git)
 provides=(${_pkgname})
@@ -37,6 +37,6 @@ build() {
 package() {
     cd "${_pkgname}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}"
-    # install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

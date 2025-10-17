@@ -1,10 +1,10 @@
 pkgbase = niri-autoname-workspaces-git
 	pkgdesc = Show icons for running programs in the niri window manager
-	pkgver = r7.cda6272
+	pkgver = r16.8957eda
 	pkgrel = 1
 	url = https://github.com/justbuchanan/niri-autoname-workspaces
 	arch = x86_64
-	license = Unknown
+	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = niri
