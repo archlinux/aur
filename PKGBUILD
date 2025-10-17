@@ -2,8 +2,8 @@
 _pkgname=ValveResourceFormat
 pkgbase=source2viewer
 pkgname=(source2viewer source2viewer-cli)
-pkgver=14.1
-pkgrel=3
+pkgver=15.0
+pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -14,7 +14,7 @@ options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('af6c63af72f0673a61c0e73d275df39fad146af9ef8b36871145f6c0a70cdf1f')
+sha256sums=('8e7a7bfa748f2f758e003a88cd3366f5a08caf02a8e6bd83120000547e041ec2')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
