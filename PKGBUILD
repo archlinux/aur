@@ -1,24 +1,16 @@
 # Maintainer: SaultDon <sault.don gmail>
 pkgname=filegdb-api
 _pkgname=FileGDB_API
-pkgver=1.5.1
-pkgrel=5
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/Esri/file-geodatabase-api"
 license=('APACHE')
 makedepends=('libxml2' 'gcc')
 changelog=$pkgname.changelog
-case $CARCH in
-i686)
-  source=($pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/${_pkgname}_${pkgver}/${_pkgname}_${pkgver//./_}-32gcc51.tar.gz)
-  md5sums=('145f760871892b822b5f26442e2e8255')
-  ;; 
-x86_64)
-  source=($pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/${_pkgname}_${pkgver}/${_pkgname}_${pkgver//./_}-64gcc51.tar.gz)
-  md5sums=('10a18003adaa6ccf0c4d8e6bb8da1e4f')
-  ;; 
-esac
+source=($pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/${_pkgname}_${pkgver}/${_pkgname}-RHEL8-64gcc83.tar.gz)
+b2sums=('19e284a710b0ac7b483ddf7cb940d8aef7b5f525f43105796d239868a505cff1704ac26d641e644ccb76e59f0335d504f421b6476de7d0eb101671f05c14e819')
 
 prepare() {
     cd $srcdir
@@ -68,7 +60,8 @@ package() {
     mkdir -p $pkgdir/usr/{lib,share/{doc,licenses}/$pkgname}
     mkdir -p $pkgdir/usr/include/${pkgname}/
 
-    rm -r $srcdir/${pkgname}/lib/libstdc++.so*
+    #rm -r $srcdir/${pkgname}/lib/libstdc++.so*
+    rm -r $srcdir/${pkgname}/lib/make.include
     install -Dm755 $srcdir/${pkgname}/lib/* "$pkgdir/usr/lib/"
     install -Dm755 $srcdir/${pkgname}/include/* "$pkgdir/usr/include/$pkgname"
 
