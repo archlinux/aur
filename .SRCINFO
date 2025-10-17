@@ -1,6 +1,6 @@
 pkgbase = python-iterdir
 	pkgdesc = python iterate over path tree.
-	pkgver = 0.0.7.1
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://pypi.org/project/iterdir
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-iterdir
 	conflicts = python-iterdir
 	options = !strip
 	options = !debug
-	source = iterdir-0.0.7.1.tar.gz::https://files.pythonhosted.org/packages/source/i/iterdir/iterdir-0.0.7.1.tar.gz
-	sha256sums = 196d985276b6b7111168ccb015379754233db63f06efa64a5d8a076ea253c66a
+	source = iterdir-0.0.8.tar.gz::https://files.pythonhosted.org/packages/source/i/iterdir/iterdir-0.0.8.tar.gz
+	sha256sums = d24135dfb68b10ad51a1d13ed4362cc62cc5a3c55a6641602a72b4b83c20688b
 
 pkgname = python-iterdir

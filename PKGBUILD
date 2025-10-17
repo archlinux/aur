@@ -2,7 +2,7 @@
 
 pkgname=python-iterdir
 _name=${pkgname#python-}
-pkgver=0.0.7.1
+pkgver=0.0.8
 pkgrel=1
 epoch=
 pkgdesc="python iterate over path tree."
@@ -24,7 +24,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('196d985276b6b7111168ccb015379754233db63f06efa64a5d8a076ea253c66a')
+sha256sums=('d24135dfb68b10ad51a1d13ed4362cc62cc5a3c55a6641602a72b4b83c20688b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
