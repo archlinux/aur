@@ -3,7 +3,7 @@
 # Contributor: Stephen304
 
 pkgname=crowdsec
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/notifications/{email,file,http,sentinel,slack,splunk}.yaml)
 install=crowdsec.install
 source=("git+https://github.com/crowdsecurity/crowdsec.git#tag=v${pkgver}")
-sha256sums=('d5b3d3ace01675121ce69a58f50e543f1f16cc843dcbacfd20a6962fab4f3391')
+sha256sums=('81be9b60d1b25561b9c16f89954f738a18e08623d3db1ae07bbe8e320ca3b088')
 
 prepare() {
     cd "${pkgname}/config"
@@ -32,31 +32,28 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     make -j1 BUILD_VERSION="v${pkgver}" build
-
-    ./cmd/crowdsec-cli/cscli completion bash > completion.bash
-    ./cmd/crowdsec-cli/cscli completion fish > completion.fish
-    ./cmd/crowdsec-cli/cscli completion zsh > completion.zsh
 }
 
 package() {
     cd "${pkgname}"
     install -Dm755 cmd/crowdsec/crowdsec cmd/crowdsec-cli/cscli -t "${pkgdir}/usr/bin"
-    install -Dm644 config/crowdsec.service -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm600 config/detect.yaml -t "${pkgdir}/var/lib/${pkgname}/data"
-    install -Dm644 config/{acquis,config,console,profiles,simulation}.yaml -t "${pkgdir}/etc/${pkgname}"
-    install -Dm600 config/{local_api_credentials,online_api_credentials}.yaml -t "${pkgdir}/etc/${pkgname}"
+    install -Dm644 config/{acquis,console,profiles,simulation}.yaml -t "${pkgdir}/etc/${pkgname}"
+    install -Dm600 config/{config,local_api_credentials,online_api_credentials}.yaml -t "${pkgdir}/etc/${pkgname}"
     install -Dm644 config/context.yaml -t "${pkgdir}/etc/${pkgname}/console"
     install -Dm644 config/patterns/* -t "${pkgdir}/etc/${pkgname}/patterns"
+    install -Dm644 debian/crowdsec.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 debian/crowdsec-hubupdate.{service,timer} -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     for i in email file http sentinel slack splunk; do
-        install -Dm751 "cmd/notification-${i}/notification-${i}" -t "${pkgdir}/usr/lib/${pkgname}/plugins"
-        install -Dm644 "cmd/notification-${i}/${i}.yaml" -t "${pkgdir}/etc/${pkgname}/notifications"
+        install -Dm551 "cmd/notification-${i}/notification-${i}" -t "${pkgdir}/usr/lib/${pkgname}/plugins"
+        install -Dm600 "cmd/notification-${i}/${i}.yaml" -t "${pkgdir}/etc/${pkgname}/notifications"
     done
 
     install -d "${pkgdir}/etc/${pkgname}"/{acquis.d,hub}
 
-    install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/cscli"
-    install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/cscli.fish"
-    install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_cscli"
+    ./cmd/crowdsec-cli/cscli completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/cscli"
+    ./cmd/crowdsec-cli/cscli completion fish |install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/cscli.fish"
+    ./cmd/crowdsec-cli/cscli completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_cscli"
 }
