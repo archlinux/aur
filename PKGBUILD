@@ -2,7 +2,7 @@
 
 _V=1.4.5
 pkgver=r368.9aed33b
-pkgrel=1
+pkgrel=3
 arch=(any)
 
 pkgname=apkeditor-git
@@ -18,13 +18,9 @@ _J=8
 depends=(jre$_J-openjdk-headless)
 makedepends=(jdk$_J-openjdk git)
 
-_v() {
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse "$@" HEAD)"
-}
-
 pkgver() {
 	cd APKEditor
-	_v --short=7
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -33,7 +29,7 @@ build() {
 	[[ JavaVersion.VERSION_1_8 = `find "$srcdir" -name build.gradle | xargs grep -h VERSION | tr -s " " | cut -d " " -f 3 | sort | uniq` ]]
 	export JAVA_HOME=/usr/lib/jvm/java-$_J-openjdk
 
-	# smali
+	# smali aka smali-lib
 	ln -sv "smali-lib" smali
 
 	# remove prebuilt libs
@@ -60,7 +56,6 @@ build() {
 	# build apkeditor
 	cd "$srcdir"/APKEditor
 	./gradlew fatJar
-	#find `realpath .` -type f -name "*.jar" | sort | xargs ls -lh --sort=size
 
 }
 
@@ -73,9 +68,9 @@ package() {
 
 	# dump version
 	ln -sv "smali-lib" smali
-	for i in $_P ARSCLib JCommand smali; do
+	for i in $_P APKEditor ARSCLib JCommand smali; do
 		cd "$srcdir"/$i
-		printf "${i^^}=%s\n" `_v`
+		printf "${i^^}=%s # r%s\n" "$(git rev-parse HEAD)" "$(git rev-list --count HEAD)"
 	done >"$pkgdir"/$_S/VERSION
 
 # runner
