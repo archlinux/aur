@@ -1,11 +1,12 @@
 pkgbase = carafe-bin
-	pkgdesc = Tiny management tool for wine carafes
+	pkgdesc = Tiny management tool for wine bottles/carafes
 	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/Jelmerro/carafe
 	arch = x86_64
 	license = GPL3
 	depends = python
+	depends = wine
 	source = LICENSE-1.5.1::https://raw.githubusercontent.com/Jelmerro/carafe/1.5.1/LICENSE
 	source = README-1.5.1.md::https://raw.githubusercontent.com/Jelmerro/carafe/1.5.1/README.md
 	sha512sums = 78c48ef9ccd1bea4b42a774f73eccad9311efd24a7d3e4b50a8a0346b468d20c725476368b2efe2ab68c5ac268221299117274aa477bf32625200e5367de7601
