@@ -1,4 +1,5 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Gobidev <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
 # Contributor: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
 
