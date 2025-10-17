@@ -3,7 +3,7 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r1355.477e9be
+pkgver=r1395.32376b3
 pkgrel=1
 arch=('any')
 depends=(
@@ -55,6 +55,7 @@ build() {
 
 package() {
   cd $srcdir/${_pkgname}
+  git submodule update --init
   make DESTDIR="${pkgdir}" install_extras
   python3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

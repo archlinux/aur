@@ -1,6 +1,6 @@
 pkgbase = cobib-git
 	pkgdesc = Console Bibliography
-	pkgver = r1355.477e9be
+	pkgver = r1395.32376b3
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib
 	arch = any
