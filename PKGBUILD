@@ -4,7 +4,7 @@
 _base=ray
 pkgname=python-${_base}
 pkgver=2.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and simple framework for building and running distributed applications"
 arch=(x86_64)
 url="https://github.com/${_base}-project/${_base}"
@@ -38,6 +38,11 @@ optdepends=('python-pandas: for ray[data, tune, rllib]'
 )
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
 sha512sums=('ec19884076936d35810acf8ce3cad52457a9d0158dd2d0f04a22d8ce3d5349ce840074e0ef99e8faa2049de20e7072bdab5c4a4f57e99e7b38fa29b355068fd5')
+
+prepare() {
+  # https://github.com/ray-project/ray/pull/56243
+  sed -i '16i #include <cstdint>' ${_base}-${_base}-${pkgver}/src/ray/observability/open_telemetry_metric_recorder.h
+}
 
 build() {
   cd ${_base}-${_base}-${pkgver}/python
