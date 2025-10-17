@@ -16,5 +16,6 @@ if ! git remote get-url aur > /dev/null 2>&1; then
 fi
 git fetch aur
 git push --set-upstream aur master
+rm -r .git/
 
 printf "Attempted upload of %s\n" "$BIN_NAME"
