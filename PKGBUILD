@@ -9,8 +9,8 @@ url="https://github.com/darrenburns/dunk"
 license=('MIT')
 depends=('python' 'python-unidiff' 'python-rich')
 makedepends=('uv' 'python-installer' 'python-hatchling')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/darrenburns/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('50dc9902abb2eb943489df5cca72a4db41c456b65b5b83ead82f0be2e0d4f0ee')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/darrenburns/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('2349a8139481e94678debc57db4d09244a46303d3373ac8424ad9e3fc1c8fa03')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
