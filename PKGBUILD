@@ -1,6 +1,6 @@
 # Maintainer: Anders <clauderarch@tutamail.com>
 pkgname=kripton-qr-reader-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A CLI tool for reading QR codes from images, with directory scanning and persistent settings. (Pre-compiled binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libwebp')
 source=("https://github.com/clauderarch/kripton-qr-reader/releases/download/v${pkgver}/kripton-qr-reader-${pkgver}-bin.tar.gz" 
         "kripton-qr-reader.desktop"
         "kripton-qr-reader.png")
-sha256sums=('d691e42854e6b916f2720705cd3ef03ff02ea2e48669b9d26c2b99f23a10a088'
+sha256sums=('1e505170ed567068187baac6fe8ff5a02e230828233c064bd74245542d61bd23'
             '9f932b4e9b00714e007aa2b23ab2db22fa7dd3b1ca71472542c78f465b035a4a'
             'ebb078dc1620b61ecb61c4f63419e4289d2852fa3da31800e39c133f676cc643')
 
