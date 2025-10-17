@@ -1,0 +1,3 @@
+Z /etc/searxng/settings.yml - root searxng
+Z /etc/searxng/limiter.toml - root searxng
+Z /var/lib/searxng - root searxng
