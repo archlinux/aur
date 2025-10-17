@@ -1,6 +1,6 @@
 pkgbase = codeclip
 	pkgdesc = A fast, minimal CLI tool to dump codebases or files into Markdown with clipboard integration
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/andrepadez/codeclip
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = codeclip
 	makedepends = gcc
 	depends = glibc
 	depends = coreutils
-	source = https://github.com/andrepadez/codeclip/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/andrepadez/codeclip/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = codeclip

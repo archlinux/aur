@@ -1,6 +1,6 @@
 # Maintainer: pastilhas <andre.padez@gmail.com>
 pkgname=codeclip
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast, minimal CLI tool to dump codebases or files into Markdown with clipboard integration"
 arch=('x86_64')
