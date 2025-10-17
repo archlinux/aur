@@ -25,6 +25,7 @@ build() {
   mkdir -p "$COREPACK_HOME/bin"
   corepack enable --install-directory "$COREPACK_HOME/bin"
   export PATH="$COREPACK_HOME/bin:$PATH"
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
   corepack prepare yarn@stable --activate
 
   pushd . && cd web
