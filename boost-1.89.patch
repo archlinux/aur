@@ -1,0 +1,23 @@
+diff -ru PrusaSlicer-version_2.9.3.orig/CMakeLists.txt PrusaSlicer-version_2.9.3/CMakeLists.txt
+--- PrusaSlicer-version_2.9.3.orig/CMakeLists.txt	2025-10-17 21:02:31.812268131 +0200
++++ PrusaSlicer-version_2.9.3/CMakeLists.txt	2025-10-17 21:02:51.666914901 +0200
+@@ -370,7 +370,7 @@
+ # boost::process was introduced first in version 1.64.0,
+ # boost::beast::detail::base64 was introduced first in version 1.66.0
+ set(MINIMUM_BOOST_VERSION "1.83.0")
+-set(_boost_components "system;filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams;nowide")
++set(_boost_components "filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams;nowide")
+ find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
+ 
+ find_package(Eigen3 3.3.7 REQUIRED)
+diff -ru PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/Bonjour.cpp PrusaSlicer-version_2.9.3/src/slic3r/Utils/Bonjour.cpp
+--- PrusaSlicer-version_2.9.3.orig/src/slic3r/Utils/Bonjour.cpp	2025-10-17 21:02:31.955125226 +0200
++++ PrusaSlicer-version_2.9.3/src/slic3r/Utils/Bonjour.cpp	2025-10-17 21:23:23.929471564 +0200
+@@ -16,6 +16,7 @@
+ #include <boost/format.hpp>
+ #include <boost/log/trivial.hpp>
+ #include <boost/bind/bind.hpp>
++#include <boost/asio/deadline_timer.hpp>
+ 
+ using boost::optional;
+ using boost::system::error_code;
