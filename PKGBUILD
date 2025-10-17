@@ -3,7 +3,7 @@
 pkgname=fortsh
 pkgver=5.2.10
 pkgrel=1
-pkgdesc='Fortran Shell - A modern shell implementation with AST-based parsing'
+pkgdesc='Fortran unix shell balancing friendliness and parity'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortsh'
 license=('MIT')
