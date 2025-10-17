@@ -1,6 +1,6 @@
 pkgbase = pass-keyboard-control
 	pkgdesc = AI-generated keyboard-driven GUI for Unix password manager (pass) with total keyboard control
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mr-scrpt/pass-keyboard-control
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = pass-keyboard-control
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = pyside6
+	depends = qt6-tools
 	depends = python-qtawesome
 	depends = python-qt-material
 	depends = pass
@@ -18,7 +19,7 @@ pkgbase = pass-keyboard-control
 	optdepends = git: for synchronization with remote repositories
 	optdepends = xclip: for clipboard support
 	optdepends = wl-clipboard: for clipboard support on Wayland
-	source = pass-keyboard-control-1.0.1.tar.gz::https://github.com/mr-scrpt/pass_app/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = bdd1a3b8f5482b817f9688d32acf8420300f871b501ad5fed323d24d61eae002
+	source = pass-keyboard-control-1.0.2.tar.gz::https://github.com/mr-scrpt/pass_app/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = edaceb7b007d2a5dbe404548e879e25f2ac3365f99cfd2215c97024a9bd58b8b
 
 pkgname = pass-keyboard-control
