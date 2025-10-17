@@ -15,7 +15,7 @@ license=('GPL-2.0-only')
 options=('!strip')
 provides=('shadps4')
 conflicts=('shadps4')
-_appimage=Shadps4-qt.AppImage
+_appimage=shadPS4QtLauncher-qt.AppImage
 source=("shadps4-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-nightly-bin/releases/download/v2025.10.16.175156c/shadps4-linux-qt-2025-10-16-175156c.zip")
 sha256sums=('SKIP')
 
