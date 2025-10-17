@@ -1,7 +1,7 @@
 # Maintainer: execRooted <execrooted@gmail.com>
 
 pkgname=filebyte
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A CLI tool to list files and directories with sizes in various units"
 arch=('x86_64')
