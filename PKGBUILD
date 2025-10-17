@@ -1,19 +1,18 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 # Contributor: <agustinballesteros04@gmail.com>
 pkgname=kew
-pkgver=3.5.3
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A terminal music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
 license=('GPL-2.0-only')
-depends=('fftw' 'chafa' 'glib2' 'opus' 'opusfile' 'libvorbis' 'taglib' 'libogg')
-optdepends=('faad2: AAC decoding')
+depends=('fftw' 'chafa' 'glib2' 'opus' 'opusfile' 'libvorbis' 'taglib' 'libogg' 'faad2')
 replaces=('cue-music-command')
 conflicts=('kew-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('694eb7811c4afca43607e29fb26bfd996cd424ca5595c6ceacaf811db9e370ec3450cba49eacf99eb08ba0bb8ffe4ea3b181db85d0d71faa11702e19763816ed')
+sha512sums=('b8bef0c388c42c7500749d84d2d78c118ccdd34a1212007f942b35cd6fae1af0c28dc5fd3aa94e8fbae91df05cdb765180e145e50a7f6d6efa8ac9e5015cb3bb')
 
 build() {
     cd "$pkgname-$pkgver"
