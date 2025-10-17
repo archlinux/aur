@@ -2,7 +2,7 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=wxedid
-pkgver=0.0.32
+pkgver=0.0.33
 pkgrel=1
 pkgdesc='wxWidgets-based EDID (Extended Display Identification Data) editor'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://sourceforge.net/projects/${pkgname}/"
 license=('GPL-3.0-or-later')
 depends=('wxwidgets-gtk3')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('46aaf8a9fb578ea2ed725aa6a60a33f359dc76701226695d1f8e5c252d1fa834dc972fbf1f8788e4045699115bf3e7143bc70bc9d2b6a9731e69e0f51dfb6376')
+sha512sums=('e09fcf9cc4c538c9ed7d8b92568cd16fbfaa84f58b9b8bf95de7d6e215606d4de5e5f7ecbf041cf676591cb93e1c36479ec88615684e4e4f4700af41c01074c9')
 
 build() {
 	cd "${pkgname}-${pkgver}"
