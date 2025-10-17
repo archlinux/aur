@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://github.com/nate-craft/auditorium"
 license=('MIT')
 makedepends=("cargo")
-depends=("mpv")
-conflicts=('auditorium-minimal')
+depends=("mpv" "ffmpeg")
+conflicts=("auditorium-minimal")
 source=("https://github.com/nate-craft/auditorium/releases/download/${pkgver}/auditorium-v${pkgver}-linux-amd64")
 sha256sums=("fa15fc913384af791cdf0ba71edf2a4a11d99e21df2fd2d63be6e2f34f36d7fb")
 
