@@ -1,6 +1,6 @@
 pkgbase = php-legacy-imap
 	pkgdesc = PHP legacy extension for imap (excluded from official php packages)
-	pkgver = 8.2.25
+	pkgver = 8.2.29
 	pkgrel = 1
 	url = https://www.php.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = php-legacy-imap
 	depends = php-legacy
 	depends = c-client
 	depends = libxcrypt
-	source = https://php.net/distributions/php-8.2.25.tar.xz
-	sha256sums = 330b54876ea1d05ade12ee9726167332058bccd58dffa1d4e12117f6b4f616b9
+	source = https://php.net/distributions/php-8.2.29.tar.xz
+	sha256sums = 475f991afd2d5b901fb410be407d929bc00c46285d3f439a02c59e8b6fe3589c
 
 pkgname = php-legacy-imap
