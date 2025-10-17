@@ -5,7 +5,7 @@ pkgbase = argfetch
 	url = https://github.com/f3d31206/rafetch.git
 	arch = x86_64
 	license = GPL
-	source = ("fetch.sh")
+	source = fetch.sh
 	md5sums = SKIP
 
 pkgname = argfetch
