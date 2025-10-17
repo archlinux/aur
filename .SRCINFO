@@ -1,7 +1,7 @@
 pkgbase = scribus-unstable
 	pkgdesc = A desktop publishing program - Unstable branch 1.7.x
 	pkgver = 1.7.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.scribus.net
 	arch = i686
 	arch = x86_64
@@ -54,6 +54,8 @@ pkgbase = scribus-unstable
 	source = fix_build_with_poppler_25.06.0.patch
 	source = fix_build_with_poppler_25.07.0.patch
 	source = fix_build_with_poppler_25.09.0.patch
+	source = fix_build_with_poppler_25.10.0.patch
+	source = 0001-Fix-build-with-Qt-6.10.patch
 	validpgpkeys = 5086B8D68E70FDDF4C40045AEF7B95E7F60166DA
 	validpgpkeys = 757F5E9B13DD648887AD50092D47C099E782504E
 	validpgpkeys = 6558BE84D27273A438A151198BEA48118AEBEE64
@@ -64,5 +66,7 @@ pkgbase = scribus-unstable
 	sha256sums = 59fc92d5ffd0da221e71fd634b6af68be2365ccb382687c795dce0f8d6355c0d
 	sha256sums = 167769e255f8994d86094b45e9723145028f98dd2f0fa1a1ddd3a04beb982d2a
 	sha256sums = 53be1392c55ea5041e8b8b17d35b422e093cb325a1d317f2ff32456a1c586e92
+	sha256sums = 689edf58294d1f51478b254fc7cbf93410886370148f3b3beb612386ecd446b3
+	sha256sums = e12d1fdb984de38897439b40650583312c03682124fae87fc23a1fa73271f3f4
 
 pkgname = scribus-unstable
