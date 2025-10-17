@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=miro-pdf-git
-pkgver=0.6.1.r0.gddde421
+pkgver=0.6.2.r4.g5091a82
 pkgrel=1
 pkgdesc="A native pdf viewer for Windows and Linux (Wayland/X11) with configurable keybindings."
 arch=('x86_64')
 url="https://github.com/vincent-uden/miro"
 license=('AGPL-3.0-or-later')
 depends=('glibc' 'gcc-libs' 'fontconfig')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'clang')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
 source=("$pkgname::git+$url.git")
