@@ -13,7 +13,7 @@ sha256sums=('12be6514df6272c0fcb328122b534af6b12abdd52435c19f40ee1707cc43ac98')
 
 build() {
     cd "micropython-${pkgver}/mpy-cross"
-    make
+    make --jobs
 }
 
 package() {
