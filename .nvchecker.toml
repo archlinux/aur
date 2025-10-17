@@ -1,0 +1,5 @@
+["fsql-bin"]
+source = "github"
+github = "kashav/fsql"
+use_latest_release = true
+prefix = "v"
