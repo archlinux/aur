@@ -2,15 +2,15 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgrel="10"
-pkgver="0.1"
+pkgrel="0"
+pkgver="0.2"
 _name="tuxnix-sway"
 pkgname="$_name"
 pkgdesc='Sway configuration of tuxnix'
 url='https://codeberg.org/tuxnix/tuxnix-sway'
 arch=('any')
 license=('GLPv2-only')
-depends=('alacritty' 'bemenu' 'foot' 'htop' 'kdialog' 'sway' 'otf-font-awesome' 'qt6ct' 'waybar')
+depends=('alacritty' 'archlinux-xdg-menu' 'bemenu' 'foot' 'htop' 'kdialog' 'sway' 'otf-font-awesome' 'qt6ct' 'waybar')
 optdepends=('falkon: key list (mod+k)')
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/tuxnix-sway')

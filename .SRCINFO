@@ -1,12 +1,13 @@
 pkgbase = tuxnix-sway
 	pkgdesc = Sway configuration of tuxnix
-	pkgver = 0.1
-	pkgrel = 10
+	pkgver = 0.2
+	pkgrel = 0
 	url = https://codeberg.org/tuxnix/tuxnix-sway
 	arch = any
 	license = GLPv2-only
 	makedepends = git
 	depends = alacritty
+	depends = archlinux-xdg-menu
 	depends = bemenu
 	depends = foot
 	depends = htop
