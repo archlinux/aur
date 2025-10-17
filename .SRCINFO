@@ -1,0 +1,11 @@
+pkgbase = pkgmate-bin
+	pkgdesc = TUI for application to manage your dependencies
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fuad-daoud/pkgmate
+	arch = x86_64
+	license = MIT
+	source_x86_64 = pkgmate-bin-0.1.1-x86_64::https://github.com/fuad-daoud/pkgmate/releases/download/0.1.1/pkgmate-linux-amd64
+	sha256sums_x86_64 = SKIP
+
+pkgname = pkgmate-bin
