@@ -6,18 +6,18 @@ pkgrel=1
 pkgdesc="MicroPython cross compiler compiles .py scripts into .mpy files"
 arch=('any')
 license=('MIT')
-url=https://github.com/micropython/micropython/tree/master/mpy-cross
-source=(https://github.com/micropython/micropython/releases/download/v${pkgver}/micropython-${pkgver}.tar.xz)
 sha256sums=('0ab283c2fc98d466c1ff26692bee46abaeeab55d488a36fc3cb6372cb8fb390d')
 makedepends=('python')
+url='https://github.com/micropython/micropython/tree/master/mpy-cross'
+source=("https://github.com/micropython/micropython/releases/download/v${pkgver}/micropython-${pkgver}.tar.xz")
 
 build() {
-    cd micropython-${pkgver}/mpy-cross
+    cd "micropython-${pkgver}/mpy-cross"
     make
 }
 
 package() {
-    cd micropython-${pkgver}/mpy-cross
-    install -Dm0755 build/mpy-cross ${pkgdir}/usr/bin/mpy-cross
+    cd "micropython-${pkgver}/mpy-cross"
+    install -Dm0755 build/mpy-cross "${pkgdir}/usr/bin/mpy-cross"
 }
 
