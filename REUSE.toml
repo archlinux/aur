@@ -17,13 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "fix_glslang_linking.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "fix_glslang_linking.patch",
-]
-SPDX-FileCopyrightText = "libplacebo contributors"
-SPDX-License-Identifier = "LGPL-2.1-or-later"
