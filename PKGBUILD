@@ -1,22 +1,22 @@
 # Maintainer: Fabian Thomys <git@fthomys.me>
 pkgname=update-alternatives-git
-pkgver=r70
-pkgrel=2
+pkgver=r0.g0
+pkgrel=1
 pkgdesc="A simple update-alternatives replacement written in Rust"
 arch=('x86_64')
 url="https://github.com/fthomys/update-alternatives"
 options=('!debug')
-license=('MIT')
+license=('BSD')
 depends=('gcc-libs' 'glibc' 'zenity')
 makedepends=('git' 'rust' 'cargo')
-provides=('update-alternatives')
+provides=("update-alternatives-git=${pkgver}" "update-alternatives")
 conflicts=('update-alternatives')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/update-alternatives"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
