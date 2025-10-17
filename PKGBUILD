@@ -8,6 +8,7 @@ url="https://github.com/nate-craft/auditorium"
 license=('MIT')
 makedepends=("cargo")
 depends=("mpv")
+conflicts=('auditorium')
 source=("https://github.com/nate-craft/auditorium/releases/download/${pkgver}/auditorium-minimal-v${pkgver}-linux-amd64")
 sha256sums=("83baaf6a8787218a32626c00deff69a2694e0d728cbcfd5e1ab301962f63b7ed")
 
