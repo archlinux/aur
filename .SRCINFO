@@ -1,6 +1,6 @@
 pkgbase = python-pyrime
 	pkgdesc = rime for python, attached to prompt-toolkit keybindings for some prompt-toolkit applications such as ptpython
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/pyrime
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pyrime
 	depends = python-platformdirs
 	optdepends = ptpython
 	optdepends = python-prompt_toolkit
-	source = https://files.pythonhosted.org/packages/cp313/p/pyrime/pyrime-0.1.0-cp313-cp313-manylinux_2_17_x86_64.whl
-	sha256sums = 22b739e144b31ba91490b871de25bca19e2069f7e994a6426f75706c6a2c9558
+	source = https://files.pythonhosted.org/packages/cp313/p/pyrime/pyrime-0.1.1-cp313-cp313-manylinux_2_17_x86_64.whl
+	sha256sums = 423dd7caf010f7a41df62013a68b8a8a05e60dedd735547d959ac0dd61ccf9e3
 
 pkgname = python-pyrime
