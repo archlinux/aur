@@ -1,0 +1,20 @@
+pkgbase = streambooru-bin
+	pkgdesc = StreamBooru - multi-site booru browser (Electron)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Amateur-God/StreamBooru
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = electron
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = asoundlib
+	source = streambooru-bin-0.1.5.tar.gz::https://github.com/Amateur-God/StreamBooru/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = fb5b379dad18186a394180351bd5af506162a05b2974484af09f88630cd5debc
+
+pkgname = streambooru-bin
