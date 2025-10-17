@@ -144,9 +144,7 @@ END
   if [[ "${_build_clang::1}" == "t" ]]; then
     CC=clang
     CXX=clang++
-
-    _ldflags=(${LDFLAGS})
-    LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+    LDFLAGS="$(sed -E -e 's/\S*fuse-ld\S*//g' <<< "$LDFLAGS") -fuse-ld=lld"
 
     _cmake_options+=(
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
