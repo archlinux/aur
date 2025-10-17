@@ -1,7 +1,7 @@
 # Maintainer: Niklas Schönberg <niklas@foonly.dev>
 
 pkgname=foondot
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A very simple dotfile sync utility written i Go."
 url="https://github.com/foonly/${pkgname}"
@@ -12,7 +12,7 @@ conflicts=("foondot")
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!debug !lto)
-sha256sums=('a7e37090a20a291f9f041a28e04b43f2de04e834845c7cbe11de1d380e7f922b')
+sha256sums=('ee6dcf161f7ef7a187d0224fddcdf76a4d2071c365a98c7c37f14721a67bc2df')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
