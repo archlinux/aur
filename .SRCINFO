@@ -1,7 +1,7 @@
 pkgbase = benben
 	pkgdesc = Multi-format, fast and efficient command line audio player and audio converter
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chiselapp.com/user/MistressRemilia/repository/benben
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -91,8 +91,6 @@ pkgbase = benben
 	source = git+https://github.com/usocket/usocket.git#commit=6456a3f7ece05c8b8f077dd079daffb8de122ead
 	source = git+https://github.com/cl-plus-ssl/cl-plus-ssl.git#commit=e6963f24a2ad2a8c3fc113697bae54e0f15c05b0
 	source = git+https://github.com/sharplispers/chipz.git#commit=6f803684415704114f213c64e13b231627e7777f
-	source = git+https://github.com/sharplispers/chipz.git#commit=6f803684415704114f213c64e13b231627e7777f
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

@@ -2,7 +2,7 @@
 pkgname=benben
 pkgdesc='Multi-format, fast and efficient command line audio player and audio converter'
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(AGPL-3.0-or-later)
 depends=(
@@ -111,11 +111,6 @@ _git_source "6bcb74ac6fb331f9677cdc98c5b0b9f92246d6a7" "https://github.com/fukam
 _git_source "80496b74293e956364b2d3dbdfc87d74bfeeeda4" "https://github.com/darabi/cl-base64.git"
 _git_source "6456a3f7ece05c8b8f077dd079daffb8de122ead" "https://github.com/usocket/usocket.git"
 _git_source "e6963f24a2ad2a8c3fc113697bae54e0f15c05b0" "https://github.com/cl-plus-ssl/cl-plus-ssl.git"
-_git_source "6f803684415704114f213c64e13b231627e7777f" "https://github.com/sharplispers/chipz.git"
-
-#
-# Additional modules.
-#
 _git_source "6f803684415704114f213c64e13b231627e7777f" "https://github.com/sharplispers/chipz.git"
 
 source=(
