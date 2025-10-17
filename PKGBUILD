@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=5.2.10
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Fortran unix shell balancing friendliness and parity'
 arch=('x86_64')
