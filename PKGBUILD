@@ -1,7 +1,7 @@
 # Maintainer: mr-scrpt <mr.scrpt@gmail.com>
 pkgname=pass-keyboard-control
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AI-generated keyboard-driven GUI for Unix password manager (pass) with total keyboard control"
 arch=('any')
 url="https://github.com/mr-scrpt/pass-keyboard-control"
@@ -29,12 +29,12 @@ sha256sums=('fee5ab1ace1cf1d60192ffd264346a0223662948fabe9d096213ee015920a16c')
 
 build() {
     cd "pass_app-${pkgver}"
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "pass_app-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install desktop file
     install -Dm644 pass-kb.desktop "$pkgdir/usr/share/applications/pass-kb.desktop"
