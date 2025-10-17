@@ -7,7 +7,7 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=25.05.0.44
+pkgver=25.08.0.88
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=(x86_64 aarch64)
@@ -44,8 +44,8 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4'
             '0e3a6c7cf7fa9eee7dcde7356e90ffa1cb312bffc0813a0bf123d2f918dc369d'
             '739da3fca95d07fc3076522acc6b6c1b12b988047bd2fb3c87e37231e49f2e1f')
-sha256sums_x86_64=('1d731722700153cd24e229f423e8bd7dc217eaed4aa3591620ba72fd5ed7983b')
-sha256sums_aarch64=('47f2d99cdacfb607c79e9b257bd7d9caa7ee1bb0658873ce94c6e598ba38917c')
+sha256sums_x86_64=('79ab907fc28866589b1af0ef826a2ec0bf5c1c6651cd1629379520868e3cdda6')
+sha256sums_aarch64=('30e3f39718be198b0d8acbeb47c1bf5abe5b7ee0ef13cdefc15a646aa75be934')
 install=citrix-client.install
 
 package() {
@@ -80,8 +80,6 @@ package() {
 
     # fix permissions
     chmod -R a+r "${pkgdir}$ICAROOT"
-
-    rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
 
     # Install License
     install -m644 -D -t "${pkgdir}$ICAROOT" nls/en.UTF-8/eula.txt
