@@ -1,14 +1,14 @@
 pkgbase = cusparselt
 	pkgdesc = A high-performance CUDA library dedicated to general matrix-matrix operations in which at least one operand is a sparse matrix
 	pkgver = 0.8.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.nvidia.com/cuda/cusparselt
 	arch = x86_64
 	license = NVIDIA Software License
 	depends = cuda
 	options = !debug
 	options = !strip
-	source = cusparselt-0.8.1.1.tar.gz::https://developer.download.nvidia.com/compute/cusparselt/redist/libcusparse_lt/linux-x86_64/libcusparse_lt-linux-x86_64-0.8.1.1_cuda13-archive.tar.xz
+	source = cusparselt-0.8.1.1.tar.xz::https://developer.download.nvidia.com/compute/cusparselt/redist/libcusparse_lt/linux-x86_64/libcusparse_lt-linux-x86_64-0.8.1.1_cuda13-archive.tar.xz
 	sha256sums = 82dd3e5ebc199a27011f58857a80cd825e77bba634ab2286ba3d4e13115db89a
 
 pkgname = cusparselt
