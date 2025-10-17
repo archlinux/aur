@@ -1,6 +1,6 @@
 pkgbase = rog-perf-tuner
 	pkgdesc = RogPerfTuner - An utility to manage Asus Rog laptop performance and RGB lighting
-	pkgver = 4.5.1
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/RogPerfTuner
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rog-perf-tuner
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
+	makedepends = fuse2
 	makedepends = ninja
 	makedepends = npm
 	makedepends = pkgconf
@@ -18,7 +19,6 @@ pkgbase = rog-perf-tuner
 	makedepends = zip
 	depends = asusctl
 	depends = coreutils
-	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = hidapi
 	depends = libusb
@@ -30,8 +30,10 @@ pkgbase = rog-perf-tuner
 	depends = qt6-svg
 	depends = qtkeychain-qt6
 	depends = scx-scheds
+	depends = spdlog
 	depends = upower
-	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#tag=4.5.1
+	depends = yaml-cpp
+	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#tag=4.5.2
 	options = !strip
 	options = !debug
 	options = !lto

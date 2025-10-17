@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="RogPerfTuner - An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -24,7 +24,6 @@ options=(
 depends=(
   'asusctl'
   'coreutils'
-  'fuse2'
   'hicolor-icon-theme'
   'hidapi'
   'libusb'
@@ -36,13 +35,16 @@ depends=(
   'qt6-svg'
   'qtkeychain-qt6'
   'scx-scheds'
+  'spdlog'
   'upower'
+  'yaml-cpp'
 )
 makedepends=(
   'base-devel'
   'clang'
   'cmake'
   'git'
+  'fuse2'
   'ninja'
   'npm'
   'pkgconf'
@@ -86,16 +88,17 @@ build() {
 }
 
 package() {
-    cd "$srcdir/RogPerfTuner/dist/appimage-fs"
+    cd "$srcdir/RogPerfTuner"
 
-    install -Dm755 ../RogPerfTuner.AppImage \
-        "$pkgdir/usr/bin/rog-perf-tuner"
+    install -Dm755 build/RogPerfTuner/RogPerfTuner "$pkgdir/usr/bin/rog-perf-tuner"
+    
+    install -d "$pkgdir/usr/share/rog-perf-tuner"
+    cp -r build/assets/* "$pkgdir/usr/share/rog-perf-tuner/"
+    chmod -R 755 "$pkgdir/usr/share/rog-perf-tuner/"
 
     install -d "$pkgdir/usr/share/applications"
     sed -e 's|Exec=usr/bin/RogPerfTuner|Exec=/usr/bin/rog-perf-tuner|' \
         -e 's|Icon=icon|Icon=rog-perf-tuner|' \
-        rog-perf-tuner.desktop > "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
+        resources/RogPerfTuner.desktop > "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
 
-    install -Dm644 icon.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/rog-perf-tuner.svg"
 }
