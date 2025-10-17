@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/f3d31206/rafetch.git"
 license=('GPL')
 depends=()
-source=fetch.sh
+source=("fetch.sh")
 md5sums=('SKIP')  # o el hash correspondiente
 
 
