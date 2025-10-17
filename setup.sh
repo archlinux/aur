@@ -11,6 +11,6 @@ makepkg --printsrcinfo > .SRCINFO
 git add .
 git commit -m "Version $VERSION"
 git fetch aur
-git push --set-upstream aur main
+git push --set-upstream aur master
 
 printf "Attempted upload of %s\n" "$BIN_NAME"
