@@ -1,0 +1,14 @@
+pkgbase = ollama-grid-search-bin
+	pkgdesc = A tool to perform grid search on models using Ollama
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/dezoito/ollama-grid-search
+	arch = x86_64
+	license = MIT
+	makedepends = dpkg
+	noextract = ollama-grid-search_0.9.1_amd64.deb
+	options = !strip
+	source_x86_64 = ollama-grid-search_0.9.1_amd64.deb::https://github.com/dezoito/ollama-grid-search/releases/download/v0.9.1/ollama-grid-search_0.9.1_amd64.deb
+	sha256sums_x86_64 = 3736a0307ce04ac7f44e5e747e96dde2eee6a9ef8575cdb2e56f91ac1b917279
+
+pkgname = ollama-grid-search-bin
