@@ -1,0 +1,14 @@
+pkgbase = nodejs-web-shared-folder
+	pkgdesc = HTTP server for sharing files and folders via a web interface
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/Mendeo/web-shared-folder
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = web-shared-folder-4.1.0.tgz
+	source = https://registry.npmjs.org/web-shared-folder/-/web-shared-folder-4.1.0.tgz
+	sha256sums = cd153eb70f666f0924e8633559fdca9cd750a24b1f532006f4d2d3c3673b4e94
+
+pkgname = nodejs-web-shared-folder
