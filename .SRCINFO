@@ -1,0 +1,22 @@
+pkgbase = apkeditor-git
+	pkgdesc = powerful android apk editor - aapt/aapt2 independent
+	pkgver = r368.9aed33b
+	pkgrel = 1
+	url = https://github.com/REAndroid/APKEditor
+	arch = any
+	license = Apache-2.0
+	makedepends = jdk8-openjdk
+	makedepends = git
+	depends = jre8-openjdk-headless
+	provides = apkeditor=1.4.5
+	conflicts = apkeditor
+	source = git+https://github.com/REAndroid/APKEditor
+	source = git+https://github.com/REAndroid/ARSCLib
+	source = git+https://github.com/REAndroid/JCommand
+	source = git+https://github.com/REAndroid/smali-lib
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = apkeditor-git
