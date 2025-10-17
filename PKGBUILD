@@ -1,7 +1,7 @@
 # Maintainer: fnrir <fnr1r0@protonmail.com>
 pkgname=vscodium-prod-patcher
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Universal patcher for VSCodium"
 arch=(any)
@@ -11,7 +11,7 @@ groups=()
 depends=(
 	vscodium
 	pyalpm
-	python-toml
+	python-mashumaro python-toml
 )
 makedepends=(
 	python-build python-installer python-wheel
@@ -44,7 +44,11 @@ build() {
 		< vscodium-prod-patcher.hook.in \
 		> vscodium-prod-patcher.hook
 	cd "$pkgname"
-	just build
+	python -m build --wheel --no-isolation \
+		--outdir dist
+	python -m build --wheel --no-isolation \
+        --outdir dist \
+        src/vscodium_prod_patcher_alpm_ini
 }
 
 package() {
