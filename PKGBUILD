@@ -21,16 +21,17 @@ pkgver() {
 }
 
 build() {
-    mkdir -p "${srcdir}/build"
-    cd "${srcdir}/build"
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        "${srcdir}/${_gitname}"
-    make
+    local cmake_options=(
+        -B build
+        -S $_gitname
+        -W no-dev
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D CMAKE_BUILD_TYPE=None
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 package() {
-    cd "${srcdir}/build"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="$pkgdir" cmake --install build
 }
