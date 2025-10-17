@@ -2,7 +2,7 @@
 
 pkgname=python-emdbg
 _name=${pkgname#python-}
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 epoch=
 pkgdesc="Tools for debugging and profiling ARM Cortex-M devices as found on the PX4 Autopilot FMU boards"
@@ -42,7 +42,7 @@ checkdepends=()
 options=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('3a1097a2075fa547e47c3d0b4a3dfdf74089afdb99c0cb0a0702ed37cdbfa6fa')
+sha256sums=('14828260c12d2f741a2a0c0f74bcfc5a05b1c28a7da0703f5f2937947c2e60eb')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
