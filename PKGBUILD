@@ -42,10 +42,8 @@ depends=(
 )
 source=(
   "ladybird-nightly-${pkgver}.tar.zst::https://github.com/mdmrk/ladybird-nightly-bin/releases/download/vr72235.1a3635cda57/ladybird-nightly-r72235.1a3635cda57.tar.zst"
-  "org.ladybird.Ladybird.desktop"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
 )
 
@@ -62,19 +60,14 @@ package() {
     done
   ' sh {} +
 
-  # Install desktop file
+  # Make the desktop file point to the file in /opt
   RELATIVE_DESKTOP_FILE_PATH='usr/share/applications/org.ladybird.Ladybird.desktop'
-  
-  # Install to both /opt/ladybird and system locations
-  install -Dm644 "${srcdir}/org.ladybird.Ladybird.desktop" \
-    "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}"
-  
-  install -Dm644 "${srcdir}/org.ladybird.Ladybird.desktop" \
-    "${pkgdir}/${RELATIVE_DESKTOP_FILE_PATH}"
-  
-  # Make the desktop file in /opt point to the correct executable
   sed -i -e 's#Exec=Ladybird #Exec=/opt/ladybird/usr/bin/Ladybird #' \
     "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}"
+  
+  # Install desktop file to system location
+  install -Dm644 "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}" \
+    "${pkgdir}/${RELATIVE_DESKTOP_FILE_PATH}"
 
   # Ensure proper permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
