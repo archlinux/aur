@@ -1,0 +1,12 @@
+pkgbase = cuda-boost-bypass
+	pkgdesc = CUDA perfboost bypass preloadable library
+	pkgver = 20250808
+	pkgrel = 1
+	url = https://gist.github.com/Ristovski/c81502f850ba095320353ec2094b14cf
+	arch = any
+	license = MIT
+	makedepends = gcc
+	source = boost_bypass.c
+	sha256sums = dce3c002c7e3d8eabe501dcf1e7939196e8fae167e6334396eef87f29fc45a5a
+
+pkgname = cuda-boost-bypass
