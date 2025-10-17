@@ -1,0 +1,4 @@
+["carafe-bin"]
+source = "github"
+github = "Jelmerro/carafe"
+use_latest_release = true
