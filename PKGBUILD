@@ -38,7 +38,7 @@ depends=(
     'python-pillow'
     'python-cryptography'
     'python-psutil'
-    #'python-pytorch'
+    'python-pytorch'
     'python-tornado'
 )
 options=(

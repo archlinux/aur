@@ -31,6 +31,7 @@ pkgbase = final2x-bin
 	depends = python-pillow
 	depends = python-cryptography
 	depends = python-psutil
+	depends = python-pytorch
 	depends = python-tornado
 	conflicts = final2x
 	options = !strip
