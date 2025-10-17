@@ -4,7 +4,7 @@ pkgname=openmodelica-bin
 _omver=1.25.5
 _debver=1
 pkgver=${_omver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-compiled Debian Trixie binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -12,19 +12,13 @@ license=('OSMC-PL')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-git')
 
-depends=(
-    'glibc' 'gcc-libs' 'qt6-base' 'qt6-svg' 'qt6-webengine' 'qt6-declarative'
-    'qt6-tools' 'qt6-5compat' 'lapack' 'blas' 'expat' 'curl' 'clang' 'cmake' 'mesa'
-    'ncurses' 'readline' 'icu' 'unzip' 'zip' 'hwloc' 'libxml2' 'hdf5' 'boost-libs'
-)
+depends=('blas' 'boost-libs' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'mesa' 'ncurses' 'openscenegraph' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-tools' 'qt6-webengine' 'readline')
 
 optdepends=(
-    'gnuplot: For 2D plotting from scripts'
-    'libxslt: For XML report and documentation generation' #listed as 'xsltproc' in .deb
+    'java-runtime: For Java CORBA interface'
     'omniorb: For OMOptim, OMShell, and OMPython'
-    'texlive-latex: For DrModelica/DrControl documentation generation' #listed as 'texlive-latex-base' in .deb
-    'texlive-bin: For rendering LaTeX equations in OMNotebook' #listed as 'dvipng' in .deb
-    'texlive-binextra: For rendering LaTeX equations in OMNotebook' #listed as 'dvipng' in .deb
+    'texlive-bin: For LaTeX documentation generation in OMNotebook'
+    'texlive-latex: For LaTeX documentation generation in OMNotebook'
 )
 
 _baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib-trixie"
