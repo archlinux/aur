@@ -11,7 +11,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher-bin
-pkgver=9.4.1
+pkgver=9.4.2
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 source=("https://github.com/unmojang/FjordLauncher/releases/download/${pkgver}/FjordLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz")
 noextract=("FjordLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz")
-sha256sums=('13012c8bb6689bcc25a8ea72d878c286a3648903ccdf283cebce514072ea2f45')
+sha256sums=('7cc0e27b5c5033da9ee997efd47db1f7358153ae6cc64c1353a497fe0f6a7fb3')
 
 package() {
     install -d "${pkgdir}/usr"
