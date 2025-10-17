@@ -1,7 +1,7 @@
 # Maintainer: savew (savew@savew.dev)
 
 pkgname=ffetch
-pkgver=0.2.19
+pkgver=0.2.20
 pkgrel=1
 pkgdesc='CLI tool to fetch system info.'
 url='https://github.com/0l3d/ffetch'
