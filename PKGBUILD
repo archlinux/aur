@@ -1,7 +1,7 @@
 # Maintainer: fnrir <fnr1r0@protonmail.com>
 pkgname=vscodium-prod-patcher
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Universal patcher for VSCodium"
 arch=(any)
@@ -11,7 +11,8 @@ groups=()
 depends=(
 	vscodium
 	pyalpm
-	python-mashumaro python-toml
+	python-toml
+	python-mashumaro python-tomli python-tomli-w
 )
 makedepends=(
 	python-build python-installer python-wheel

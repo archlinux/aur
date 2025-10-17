@@ -1,7 +1,7 @@
 pkgbase = vscodium-prod-patcher
 	pkgdesc = Universal patcher for VSCodium
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fnr1r/vscodium-prod-patcher
 	arch = any
 	license = GPL
@@ -11,8 +11,10 @@ pkgbase = vscodium-prod-patcher
 	makedepends = python-hatchling
 	depends = vscodium
 	depends = pyalpm
-	depends = python-mashumaro
 	depends = python-toml
+	depends = python-mashumaro
+	depends = python-tomli
+	depends = python-tomli-w
 	optdepends = python-inquirer: tui configuration
 	options = !debug
 	source = git+https://github.com/fnr1r/vscodium-prod-patcher#tag=v1.1.0
