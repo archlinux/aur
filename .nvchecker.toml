@@ -1,0 +1,5 @@
+[minmon-bin]
+source = "github"
+github = "flo-at/minmon"
+use_latest_release = true
+prefix = "v"
