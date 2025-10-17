@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Godot Next
+Comment=Multi-platform 2D and 3D game engine
+Exec=/usr/bin/godot-next
+Icon=godot
+Terminal=false
+Type=Application
+Categories=Development;Game;IDE;
+StartupWMClass=Godot
