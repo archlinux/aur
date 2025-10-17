@@ -8,8 +8,8 @@ url="https://github.com/S9yN37/SubtitleTools"
 license=('AGPL3')
 source_x86_64=("${url}/releases/download/v${pkgver}/SubtitleTools-v${pkgver}-linux-x64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/SubtitleTools-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('5e6b9355e7376cdda0e7027d4362c12ca77701c1143bf271841ad39270c6feae')
+sha256sums_aarch64=('6f793fc60f50aa9242a434c195ae120d43204ed4a8ef4f9dd34eba6544926359')
 
 pkgver() {
   curl -s "https://api.github.com/repos/S9yN37/SubtitleTools/releases/latest" \
