@@ -1,0 +1,22 @@
+pkgbase = llrt-no-sdk-bin
+	pkgdesc = Lightweight JavaScript runtime for serverless applications (NO @aws-sdk bundled, runtime only)
+	pkgver = 0.7.0beta
+	pkgrel = 1
+	url = https://github.com/awslabs/llrt
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = typescript: transpiler for TypeScript code with type checking support
+	optdepends = esbuild: fast compiler and bundler for JavaScript and TypeScript
+	optdepends = swc-js-bin: drop-in replacement for Babel with compilation and polyfill support
+	optdepends = bun-bin: fast runtime, compiler, and bundler for JavaScript and TypeScript
+	provides = llrt
+	conflicts = llrt
+	source = llrt-no-sdk-bin-0.7.0-beta-source.zip::https://github.com/awslabs/llrt/archive/refs/tags/v0.7.0-beta.zip
+	sha256sums = e8d38b80657ea515366003b217b16a33a0214228f89d6915b52604e0c4e040c6
+	source_x86_64 = llrt-no-sdk-bin-0.7.0-beta-x86_64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-x64-no-sdk.zip
+	sha256sums_x86_64 = c55879dcb3150691bdd9853e960cff3047e7f9c550c776f832bf9dad886aa623
+	source_aarch64 = llrt-no-sdk-bin-0.7.0-beta-aarch64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-arm64-no-sdk.zip
+	sha256sums_aarch64 = efea1bb318d6fddc10d10fa6555a3978156788b16c7518981d214dfcfac4efa0
+
+pkgname = llrt-no-sdk-bin
