@@ -2,7 +2,7 @@
 
 _pkgname='cobib-zotero'
 pkgname="${_pkgname}-git"
-pkgver=r19.43fb9f8
+pkgver=r21.44ae00d
 pkgrel=1
 arch=('any')
 depends=(
@@ -38,6 +38,7 @@ build() {
 
 package() {
   cd $srcdir/${_pkgname}
+  git submodule update --init
   make DESTDIR="${pkgdir}" install_extras
   python3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

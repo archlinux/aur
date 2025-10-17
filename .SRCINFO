@@ -1,6 +1,6 @@
 pkgbase = cobib-zotero-git
 	pkgdesc = Zotero importer plugin for coBib
-	pkgver = r19.43fb9f8
+	pkgver = r21.44ae00d
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib-zotero
 	arch = any
