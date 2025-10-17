@@ -38,8 +38,11 @@ package () {
     # what the hell is wrong with this package?
 	rm -rf "${pkgdir}/usr/include"
 	rm -rf "${pkgdir}/usr/lib/girepository-1.0"
-	rm -f "${pkgdir}/usr/lib/libgtk4-layer-shell.so{,.0,.1.1.1}"
+	rm -f "${pkgdir}/usr/lib/libgtk4-layer-shell.so"
+	rm -f "${pkgdir}/usr/lib/libgtk4-layer-shell.so.0"
+	rm -f "${pkgdir}/usr/lib/libgtk4-layer-shell.so.1.1.1"
 	rm -f "${pkgdir}/usr/lib/liblayer-shell-preload.so"
 	rm -f "${pkgdir}/usr/lib/pkgconfig/gtk4-layer-shell-0.pc"
-	rm -rf "${pkgdir}/usr/share/{git-1.0,vala}"
+	rm -rf "${pkgdir}/usr/share/gir-1.0"
+	rm -rf "${pkgdir}/usr/share/vala"
 }
