@@ -1,0 +1,22 @@
+pkgbase = git-withme
+	pkgdesc = Encrypted, peer-to-peer Git for two+ people
+	pkgver = 25.10.0
+	pkgrel = 1
+	url = https://pypi.org/project/git-withme
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = fowl
+	depends = magic-wormhole
+	depends = python
+	depends = python-click
+	depends = python-humanize
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/g/git-withme/git_withme-25.10.0.tar.gz
+	sha256sums = d5a178718658f8e69e364bcc6cecc22475698b98023de9f2a31d830b3642d3ec
+
+pkgname = git-withme
