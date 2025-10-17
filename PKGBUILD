@@ -4,7 +4,7 @@
 
 pkgname=pianoteq-trial-bin
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 _name="Pianoteq ${pkgver%%.*}"
 pkgdesc='Physical modelling piano instrument standalone program, VST3 and LV2 plugin. Trial version'
 arch=(aarch64 armv7h x86_64)
@@ -54,8 +54,8 @@ package() {
   ln -sf "$_name" "$pkgdir"/usr/bin/${pkgname%-bin}-${pkgver%%.*}
   # Install VST3 plug-in bundle
   install -vDm 755 "$_archdir/$_name.vst3"/Contents/$CARCH-linux/*.so \
-    -t "$pkgdir"/usr/lib/vst3/Contents/$CARCH-linux
-  # Install V2 plug-in bundle
+    -t "$pkgdir/usr/lib/vst3/$_name.vst3"/Contents/$CARCH-linux
+  # Install LV2 plug-in bundle
   install -vDm 755 "$_archdir/$_name.lv2"/*.so -t "$pkgdir/usr/lib/lv2/$_name.lv2"
   install -vDm 644 "$_archdir/$_name.lv2"/*.ttl -t "$pkgdir/usr/lib/lv2/$_name.lv2"
 

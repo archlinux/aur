@@ -1,7 +1,7 @@
 pkgbase = pianoteq-trial-bin
 	pkgdesc = Physical modelling piano instrument standalone program, VST3 and LV2 plugin. Trial version
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.modartt.com/pianoteq
 	arch = aarch64
 	arch = armv7h
