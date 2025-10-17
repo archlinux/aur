@@ -1,7 +1,7 @@
 pkgbase = 7zip-natspec
 	pkgdesc = File archiver for extremely high compression, using libnatspec patch
 	pkgver = 25.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.7-zip.org
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -11,6 +11,7 @@ pkgbase = 7zip-natspec
 	depends = glibc
 	depends = gcc-libs
 	depends = sh
+	depends = libnatspec
 	provides = p7zip
 	provides = 7zip
 	conflicts = p7zip

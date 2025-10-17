@@ -4,12 +4,12 @@
 pkgname=7zip-natspec
 _pkgname=7zip
 pkgver=25.01
-pkgrel=1
+pkgrel=2
 pkgdesc="File archiver for extremely high compression, using libnatspec patch"
 arch=('x86_64')
 url="https://www.7-zip.org"
 license=('LGPL-2.1-or-later' 'BSD-3-Clause' 'LicenseRef-UnRAR')
-depends=('glibc' 'gcc-libs' 'sh')
+depends=('glibc' 'gcc-libs' 'sh' 'libnatspec')
 makedepends=('uasm')
 provides=('p7zip' '7zip')
 conflicts=('p7zip' '7zip')
