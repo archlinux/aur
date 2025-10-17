@@ -1,6 +1,6 @@
 pkgbase = r-rhdf5client
 	pkgdesc = Access HDF5 content from HDF Scalable Data Service
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rhdf5client
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = r-rhdf5client
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5client_1.30.0.tar.gz
-	md5sums = 31de5fbf5eb892244746cf8e673d3d9e
-	b2sums = 493bd02e860eaf92e57c2f2bf55d3cc1fca83381659523f39784dd0ddab345cf18b637cf2f6453deb8db8b5d8cb0e715a08b47bf6c203c0990c28ed45093ef73
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5client_1.30.1.tar.gz
+	md5sums = 744c6bcdd64d6661f105b91dfcad8b9c
+	b2sums = d1bdf8cd250f8e465ff5e7febb7b88233e0aa83cba584cfddf9d0d07d7a33c078312a7f98c77d3217963e537a153079a085540960dbc8913365bacb8cb91c868
 
 pkgname = r-rhdf5client
