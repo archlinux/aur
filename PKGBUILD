@@ -2,7 +2,7 @@
 
 pkgname=searxng-git
 _pkgname=searxng
-pkgver=r8653.0f153cd
+pkgver=r8770.36538e6
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -25,7 +25,7 @@ source=(git+$_giturl#branch=$_gitbranch
 b2sums=('SKIP'
         '01513dcd99859884e443e3649dd952e169bec6abb165c8bbea71cb36967c8e6fc8f650b924a0961ae9da1419527739c910f886b66a6400a68aec1d24e18f0ea9'
         '3487c220d6c538dba60671aaaf0927746d8ede4d47f901e01542efdf74dc067ade3d3ee30b500f08d3ef00c2ceba460961e0f4329a4afc32b83e42d8761d5e41'
-        '44696a2b6b297d74fe5345ad7f15d35d48ad2290dbf778947d24b91233bafe153649f7ad359c2dd360693904ba60e9e0f8473e521267fdd45dd3730ad163a9c6'
+        '741c5211e15d4dd501991f0482282ca1e7b5bb7b932aa4df40ed9f87509aa466125d5d01aa413aa6303b31c27d399f55cb91b5efe59954d90eb229294c1c240f'
         '99bb7a7dfdab65a8844beb7dd4924601e2f9e85aacacc526a18881dc53e1fa270ff2653c5ada2ce0f92ecebac8917afa974116c09b3e61977b21d70b0f6a4d37')
 
 pkgver() {
@@ -66,6 +66,7 @@ package() {
   pip install virtualenv-tools4
   cd .venv
   virtualenv-tools --update-path /var/lib/searxng/.venv/
+  sed -i "s|$(pwd)|/var/lib/searxng/.venv/|g" bin/* pyvenv.cfg
 
   # Copy the .venv directory
   rm -rf "bin/__pycache__"
