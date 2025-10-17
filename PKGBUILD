@@ -1,6 +1,6 @@
 # Maintainer: Anders <clauderarch@tutamail.com>
 pkgname=kripton-authenticator
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="A secure, command-line Time-based One-time Password (TOTP) authenticator application written in Rust. It securely stores your TOTP secrets using AES-256-GCM encryption, Argon2id for strong master key derivation and Zeroizing for cold boot attacks."
 arch=('x86_64')
@@ -8,14 +8,14 @@ url="https://github.com/clauderarch/kripton-authenticator"
 license=('GPL3')
 depends=(glibc)
 makedepends=('rust' 'git')
-source=("https://github.com/clauderarch/kripton-authenticator/archive/cafca30235bda27399596e8673ca3f7d4d8c0d14.tar.gz"
+source=("https://github.com/clauderarch/kripton-authenticator/archive/2f06330923cef3b884258e73c378508eaebd5458.tar.gz"
         "kripton-authenticator.desktop"
         "kripton-auth-logo.png")
-sha256sums=('c5971fe2d4557b33ce07426c2232148f55dd4ee5d195caa3cfb0db5bbd76924d' 
+sha256sums=('7ce4d7c540e1f8a313b0d22db048201be0646b6e60f2916000320bc4cdc1e4dd' 
             '5c9cfee8d758686dc2426284b7b9ebb08a4fc5ae20fbfe647a5d69c25d546c70'
             'a04b394125d96dcbc94935cebcd5f26d4ad3f64b0ca8e41f7a437690422882c3')
 
-_pkgname_dir="${pkgname}-cafca30235bda27399596e8673ca3f7d4d8c0d14"
+_pkgname_dir="${pkgname}-2f06330923cef3b884258e73c378508eaebd5458"
 
 build() {
   cd "$srcdir/$_pkgname_dir"
