@@ -1,0 +1,4 @@
+[bindfs]
+source = "regex"
+url = "https://bindfs.org/"
+regex = "<p>Download the latest bindfs source code here: <a href=\"downloads/bindfs-[\\d\\.]*.tar.gz\">bindfs-([\\d\\.]*).tar.gz</a>.</p>"
