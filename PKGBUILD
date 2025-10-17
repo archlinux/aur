@@ -1,47 +1,47 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Maintainer: napaalm <nap@napaalm.xyz>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: spider-mario <spidermario@free.fr>
+# Contributor: CrocoDuck <crocoduck dot oducks at gmail dot com>
+# Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
-_name="Pianoteq 8"
 pkgname=pianoteq
-pkgver=8.4.3
-pkgrel=2
-pkgdesc="Physical modelling piano instrument as a standalone program, VST2 and LV2 plugin"
+pkgver=9.0.1
+pkgrel=1
+_name="Pianoteq ${pkgver%%.*}"
+pkgdesc='Physical modelling piano instrument standalone program, VST3 and LV2 plugin. STANDARD version'
 arch=(aarch64 armv7h x86_64)
-url='https://www.modartt.com/pianoteq'
+url="https://www.modartt.com/pianoteq"
 license=(LicenseRef-EULA)
-groups=(lv2-plugins pro-audio vst-plugins)
-depends=(alsa-lib freetype2 gcc-libs glibc libglvnd ttf-font)
+groups=(lv2-plugins pro-audio vst3-plugins)
+depends=(alsa-lib fontconfig freetype2 gcc-libs glibc libglvnd ttf-font)
 makedepends=(gendesk)
 optdepends=(
   'jack: JACK support for stand-alone application'
   'lv2-host: for loading the LV2 plugin'
-  'vst-host: for loading the VST2 plugin'
+  'vst3-host: for loading the VST3 plugin'
 )
-conflicts=(pianoteq-stage pianoteq-standard-trial-bin)
-# The source package must be downloaded manually.
-# This can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_linux_v810.7z
-source=("local://pianoteq_linux_v${pkgver//./}.7z"
+conflicts=(pianoteq-stage pianoteq-trial-bin)
+source=("local://pianoteq_setup_v${pkgver//./}.tar.xz"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('ef6795f9dde3c116494ace88e1ed39e59ad1fddbe787001a33adde644400b4e8'
+sha256sums=('66b78df641ba0fb95b9d4090516ce2681a89005763736bb61e60e4caf4da9f70'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
+  cd "$_name"
+  # Generate Desktop Entry
   gendesk -f -n \
-    --pkgname="$pkgname" \
+    --pkgname=$pkgname \
     --pkgdesc="$pkgdesc" \
     --name="$_name" \
-    --exec="${pkgname}${pkgver%%.*}" \
+    --exec="\"$_name\"" \
     --categories='Audio;AudioVideo;AudioVideoEditing;Midi;Music;Sequencer;'
 }
 
 package() {
-  depends+=(libfreetype.so libasound.so)
+  depends+=(libasound.so libfreetype.so libfontconfig.so)
   cd "$_name"
 
   # Define architecture specific directory
-  # (i686 is no longer supported):
   if [[ "$CARCH" == x86_64 ]]; then
     _archdir=x86-64bit
   elif [[ "$CARCH" == armv7h ]]; then
@@ -50,25 +50,23 @@ package() {
     _archdir=arm-64bit
   fi
 
-  # Install the program files:
-  install -Dm 755 "$_archdir/$_name" -t "$pkgdir"/usr/bin
+  # Install stand-alone executable and symlink
+  install -vDm 755 "$_archdir/$_name" -t "$pkgdir"/usr/bin
   ln -sf "$_name" "$pkgdir"/usr/bin/${pkgname}${pkgver%%.*}
+  # Install VST3 plug-in bundle
+  install -vDm 755 "$_archdir/$_name.vst3"/Contents/$CARCH-linux/*.so \
+    -t "$pkgdir/usr/lib/vst3/$_name.vst3"/Contents/$CARCH-linux
+  # Install LV2 plug-in bundle
+  install -vDm 755 "$_archdir/$_name.lv2"/*.so -t "$pkgdir/usr/lib/lv2/$_name.lv2"
+  install -vDm 644 "$_archdir/$_name.lv2"/*.ttl -t "$pkgdir/usr/lib/lv2/$_name.lv2"
 
-  # Install the LV2 plugin bundle:
-  install -Dm644 "$_archdir/$_name.lv2"/*.ttl -t "$pkgdir/usr/lib/lv2/$_name.lv2"
-  install -Dm755 "$_archdir/$_name.lv2"/${_name/ /_}.so -t "$pkgdir/usr/lib/lv2/$_name.lv2"
+  # Install desktop launcher
+  install -vDm 644 "$srcdir"/pianoteq_icon_128.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -vDm 644 $pkgname.desktop -t "$pkgdir"/usr/share/applications
 
-  # Install the VST2 plugin (same binary as the one in the LV2 bundle):
-  install -dm755 "$pkgdir"/usr/lib/vst
-  ln -sf "../lv2/$_name.lv2/${_name/ /_}.so" "$pkgdir/usr/lib/vst/$_name.so"
+  # Install license
+  install -vDm 644 *Licence* -t "$pkgdir"/usr/share/licenses/$pkgname
 
-  # Install desktop launcher:
-  install -Dm 644 "$srcdir"/pianoteq_icon_128.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-  install -Dm 644 "$srcdir"/$pkgname.desktop -t "$pkgdir"/usr/share/applications/
-
-  # Install the license:
-  install -Dm644 Licence* -t "$pkgdir"/usr/share/licenses/$pkgname
-
-  # Install the documentation:
-  install -Dm644 README_LINUX.txt Documentation/* -t "$pkgdir"/usr/share/doc/$pkgname
+  # Install documentation
+  install -vDm 644 README_LINUX.txt Documentation/* -t "$pkgdir"/usr/share/doc/$pkgname
 }
