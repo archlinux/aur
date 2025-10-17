@@ -8,6 +8,8 @@ sed -i "s/^pkgver=.*/pkgver=${VERSION}/" PKGBUILD
 sed -i "s/^sha256sums=.*/sha256sums=(\"${CHECKSUM}\")/" PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
+
+# Allow keeping PKGBUILD in the same repository without git submodules
 git init
 git add .
 git commit -m "Version $VERSION"
@@ -16,6 +18,6 @@ if ! git remote get-url aur > /dev/null 2>&1; then
 fi
 git fetch aur
 git push --set-upstream aur master
-rm -r .git/
+rm -rf .git/
 
 printf "Attempted upload of %s\n" "$BIN_NAME"
