@@ -2,7 +2,7 @@
 # Maintainer: Filip Mikina <filipmikina at gmail dot com>
 
 pkgname='hyprdynamicmonitors-bin'
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Dynamic monitor configuration for Hyprland.'
 url='https://github.com/fiffeek/hyprdynamicmonitors'
@@ -12,14 +12,14 @@ provides=('hyprdynamicmonitors-bin')
 conflicts=('hyprdynamicmonitors')
 optdepends=('hyprland' 'upower')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.0/hyprdynamicmonitors_Linux_arm64.tar.gz")
-sha256sums_aarch64=('fc2087120d1cfc6de5d9a1dcefcf0fd304499b53bc12825e2d0b994687510b5a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.1/hyprdynamicmonitors_Linux_arm64.tar.gz")
+sha256sums_aarch64=('2931a45d87d8d33416d9d06f0d4d2454a79b151213a84f60eeb561e66374721f')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.0/hyprdynamicmonitors_Linux_i386.tar.gz")
-sha256sums_i686=('78aa6c70f8aa69e665b0ddc08e4fceeefd5c79c945da4af8ff583f2b93add02f')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.1/hyprdynamicmonitors_Linux_i386.tar.gz")
+sha256sums_i686=('7b7a658e3e4ced50f0b0349d8ecf2cfa1e290231a310f9e59ea057dcd617760a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.0/hyprdynamicmonitors_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('43ba2dcf5b76f59209910b3415f71ea8a7d006088c604f19b5a7177bf6e1af62')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.1/hyprdynamicmonitors_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('249cf1f4879670793e1d3ccdd312bcc66ed579ff49f0d4366a54900dfdecaf25')
 
 package() {
   # bin
@@ -27,6 +27,9 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/hyprdynamicmonitors/LICENSE"
+
+  # systemd
+  install -Dm644 "./infrastructure/systemd/hyprdynamicmonitors.service" "${pkgdir}/usr/lib/systemd/user/hyprdynamicmonitors.service"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
