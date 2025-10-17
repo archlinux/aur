@@ -6,7 +6,6 @@ pkgdesc="A minimal version of the popular cross-platform, local, simple, fast, a
 arch=('x86_64')
 url="https://github.com/nate-craft/auditorium"
 license=('MIT')
-makedepends=("cargo")
 depends=("mpv" "ffmpeg")
 conflicts=('auditorium')
 source=("https://github.com/nate-craft/auditorium/releases/download/${pkgver}/auditorium-minimal-v${pkgver}-linux-amd64")
