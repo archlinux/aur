@@ -1,21 +1,23 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-book-of-hours
-pkgver=2025.6.d.3
+pkgver=2025.8.e.4
 pkgrel=1
 pkgdesc='Elegant, melancholy, combat-free RPG set in an occult library. GOG version.'
 _shortname="${pkgname#gog-}"
 arch=('x86_64')
 url="https://www.gog.com/en/game/${_shortname//-/_}"
-license=('custom')
+license=('LicenseRef-eula')
 depends=(
   'bash'
   'cairo'
+  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
   'gtk2'
   'pango'
+  'zlib'
 )
 makedepends=('lgogdownloader')
 options=('!strip')
@@ -26,9 +28,9 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=('8bcf6da1ed23e9875e8b7b7dff5ba32d8ec7dc65105a0ff6b0133f0fc4359ca5cfa721272e5ec950e2d36a38f9ec0bac7b5089a2ab52a778bed049a53c63c9cd'
+sha512sums=('4d64a27de332715fcbc7ff8302bd11513d18abcb188a81e3c9c71b3d69f3bd88d5c3d0e9da4c81cb5f1284742cc1e8e0e3597992770d4a310bb159ec09421d14'
             '3850a34515d52636af8ee4aaa6cabee65cd981c1702deff98f46e581ed509b6a86daa5bf24bea9d8162eb6cf91bed03b61c1d261ede7d8d70fc6212bbf25e896'
-            '1e5b3162716f0ea60e56a5e81ea37f6f85a205d00073926a705302632f7be84bcbc9f9375d917c6827bc949e78b532abbaa79c54d4a01315b82f76cf246de41c')
+            '9719d7906aa684b77b3ec27592f3628f3b1e1651a043a6eac018571fe17cfe6fbf6a5a64cf130aa42eec0a8059dd65d12f03a1f9ca3c3f284da2b5720cee8f9e')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
