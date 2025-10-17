@@ -8,8 +8,12 @@ sed -i "s/^pkgver=.*/pkgver=${VERSION}/" PKGBUILD
 sed -i "s/^sha256sums=.*/sha256sums=(\"${CHECKSUM}\")/" PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
+git init
 git add .
 git commit -m "Version $VERSION"
+if ! git remote get-url aur > /dev/null 2>&1; then
+    git remote add aur ssh://aur@aur.archlinux.org/auditorium-minimal.git
+fi
 git fetch aur
 git push --set-upstream aur master
 
