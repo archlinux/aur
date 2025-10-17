@@ -1,6 +1,6 @@
 # Maintainer: mr-scrpt <mr.scrpt@gmail.com>
 pkgname=pass-keyboard-control
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="AI-generated keyboard-driven GUI for Unix password manager (pass) with total keyboard control"
 arch=('any')
@@ -27,7 +27,7 @@ makedepends=(
     'python-setuptools-scm'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mr-scrpt/pass_app/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('edaceb7b007d2a5dbe404548e879e25f2ac3365f99cfd2215c97024a9bd58b8b')
+sha256sums=('07ab5aa736283edaa312077389922a1512d57dba8f0ac9d3f73f20024bc90d2a')
 
 build() {
     cd "pass_app-${pkgver}"
