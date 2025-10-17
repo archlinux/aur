@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=5.3.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -68,7 +68,7 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '5e5f34cbf6f318d39aa334a785051f0ab95bbcaaed33fc3d0764a263262630d5'
+  '734187ff7cd6f978be529d781eee9803b93c6c0f62e298bae79c1032b1754da1'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
   'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
 )
@@ -108,14 +108,6 @@ check() {
   )
 
   local skip_tests=(
-    # Needs the package to already be installed to access jupyterhub-singleuser.
-    'test_server_token_role'
-
-    # Tries to test errors/warnings, but some of the expected responses are set
-    # to None which pytest fails on.
-    'test_creating_roles'
-    'test_delete_roles'
-
     # Intermittent failures. For now, trust the upstream CI.
     'test_external_service'
     'test_single_user_spawner'
@@ -145,10 +137,11 @@ check() {
   testargs+=('-k' "${karg:5}")  # Trim the leading ' and '.
 
   # Install into a local temporary virtual environment and run the tests there.
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/jupyterhub-$pkgver"-*.whl
   test-env/bin/python ci/check_installed_data.py
-  test-env/bin/python -m pytest -v jupyterhub "${testargs[@]}"
+  PATH="${srcdir}/jupyterhub/test-env/bin:$PATH" test-env/bin/python -m pytest -x -v jupyterhub "${testargs[@]}"
 }
 
 package() {
