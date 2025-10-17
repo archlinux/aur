@@ -1,6 +1,6 @@
 pkgbase = kc57-drivers-dkms
 	pkgdesc = Intel NUC X15(LAPKC51E, LAPKC71E, LAPKC71F) kernel module drivers for general hardware I/O using the SysFS interface
-	pkgver = 4.16.0
+	pkgver = 4.17.0
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-drivers
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = kc57-drivers-dkms
 	conflicts = tuxedo-drivers-dkms
 	conflicts = tuxedo-keyboard-dkms
 	options = !debug
-	source = tuxedo-drivers-4.16.0.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v4.16.0.tar.gz
+	source = tuxedo-drivers-4.17.0.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v4.17.0.tar.gz
 	source = kc57_battery.c::https://raw.githubusercontent.com/right-0903/kc57_battery/tuxedo/battery.c
 	source = kc57_battery.h::https://raw.githubusercontent.com/right-0903/kc57_battery/tuxedo/kc57_battery.h
 	source = tuxedo_io.conf
