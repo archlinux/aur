@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=("cargo")
 depends=("mpv")
 source=("https://github.com/nate-craft/auditorium/releases/download/${pkgver}/auditorium-minimal-v${pkgver}-linux-amd64")
-sha256sums=83baaf6a8787218a32626c00deff69a2694e0d728cbcfd5e1ab301962f63b7ed
+sha256sums=("83baaf6a8787218a32626c00deff69a2694e0d728cbcfd5e1ab301962f63b7ed")
 
 package() {
     install -Dm755 "$srcdir/auditorium-minimal-v${pkgver}-linux-amd64" "$pkgdir/usr/bin/auditorium"
