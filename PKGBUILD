@@ -1,25 +1,37 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
 url='https://nordvpn.com'
-license=('Proprietary')
-depends=('nordvpn' 'gtk3')
+license=('GPL-3.0-only')
+depends=('nordvpn' 'gtk3' 'hicolor-icon-theme')
+makedepends=('flutter')
 options=('!debug')
 install=daemon_restart.install
-source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_${pkgver}_amd64.deb"
+source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/4.2.0.tar.gz"
+		"nordvpn-gui.desktop"
 		"daemon_restart.install")
-sha256sums=('6b36488e342b0109420f55de5724dcb76140144f6cc3b67bb767da670763491b'
+sha256sums=('6990edbea98522714111dac9889358a65d7d03b9c8c02c9076f7144cbf63c342'
+            'bce0edf1b5130899b7621f0de8355f0c6fa07374957ef893a5f5065fd9c98952'
             'b3bc3b4519769cc9c78258b16eb44765ddd8168951997d8bafdc7b8fcb73d868')
+
 prepare() {
-	ar xv nordvpn-gui_${pkgver}_amd64.deb
-	tar -xvzf data.tar.gz
+		tar -xvzf ${pkgver}.tar.gz
+}
+build() {
+	cd $srcdir/nordvpn-linux-${pkgver}/gui
+	sed -i s/0.0.1/${pkgver}/ $srcdir/nordvpn-linux-${pkgver}/gui/pubspec.yaml
+	flutter build linux
 }
 package() {
-	cp -rf $srcdir/opt $pkgdir/opt
-	cp -rf $srcdir/usr $pkgdir/usr
+	install -dm755 $pkgdir/opt/nordvpn-gui
+	cp -rf $srcdir/nordvpn-linux-${pkgver}/gui/build/linux/x64/release/bundle/* $pkgdir/opt/nordvpn-gui
+	install -dm644 $pkgdir/usr/share/icons/hicolor/scalable/apps
+	install -dm744 $pkgdir/usr/share/applications
+	install -Dm644 $srcdir/nordvpn-linux-${pkgver}/gui/web/icons/icon-512.png $pkgdir/usr/share/icons/hicolor/scalable/apps/nordvpn-gui.png
+	install -Dm744 $srcdir/nordvpn-gui.desktop -t $pkgdir/usr/share/applications
 	install -dm755 $pkgdir/usr/bin
-	ln -s /opt/nordvpn-gui/nordvpn-gui $pkgdir/usr/bin/nordvpn-gui 
+	ln -s /opt/nordvpn-gui/nordvpn-gui $pkgdir/usr/bin/nordvpn-gui
 }

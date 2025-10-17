@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NordVPN
+Comment=The best online VPN service for speed and security.
+Exec=nordvpn-gui
+Icon=nordvpn-gui.png
+Terminal=false
+Type=Application
+Categories=Network;Security;Utility;
