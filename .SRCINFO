@@ -1,7 +1,7 @@
 pkgbase = shape-git
 	pkgdesc = A farsi/arabic shaping preprocessor for neatroff.
 	pkgver = r202.0c97acf
-	pkgrel = 1
+	pkgrel = 2
 	url = http://litcave.rudi.ir/
 	arch = i686
 	arch = x86_64

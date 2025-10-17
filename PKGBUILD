@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=shape-git
 pkgver=r202.0c97acf
-pkgrel=1
+pkgrel=2
 pkgdesc='A farsi/arabic shaping preprocessor for neatroff.'
 arch=(i686 x86_64)
 url='http://litcave.rudi.ir/'
@@ -25,7 +25,7 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname/shape"
-	install -D -m755 shape $pkgdir/usr/bin/shape
+	install -D -m755 shape $pkgdir/usr/bin/neatshape
 	sed '1,17!d' shape.c > LICENSE
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
