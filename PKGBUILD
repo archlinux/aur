@@ -1,13 +1,12 @@
 # Maintainer: ParsaGP <psrzp1386@gmail.com>
 pkgname=beatmapexporter-cli-bin
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="osu!lazer Beatmap Exporter utility - CLI version"
 arch=("x86_64")
 url="https://github.com/kabiiQ/BeatmapExporter"
 license=("MIT")
 depends=()
-makedepends=("curl")
 options=('!strip')
 source=(
     "BeatmapExporterCLI::https://github.com/kabiiQ/BeatmapExporter/releases/download/v${pkgver}/linux-BeatmapExporterCLI"
