@@ -6,7 +6,7 @@
 pkgname=easyeffects-git
 pkgver=7.1.7.r937.gad1ae4dd7
 pkgrel=1
-pkgdesc='Audio Effects for Pipewire applications'
+pkgdesc='Audio Effects for PipeWire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL-3.0-only')
@@ -32,6 +32,7 @@ depends=(
   'soundtouch'
   'speexdsp'
   'tbb'
+  'webrtc-audio-processing'
   'zita-convolver'
 )
 makedepends=('appstream-glib' 'cmake' 'extra-cmake-modules' 'git' 'intltool' 'ladspa' 'ninja')

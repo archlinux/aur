@@ -1,5 +1,5 @@
 pkgbase = easyeffects-git
-	pkgdesc = Audio Effects for Pipewire applications
+	pkgdesc = Audio Effects for PipeWire applications
 	pkgver = 7.1.7.r937.gad1ae4dd7
 	pkgrel = 1
 	url = https://github.com/wwmm/easyeffects
@@ -38,6 +38,7 @@ pkgbase = easyeffects-git
 	depends = soundtouch
 	depends = speexdsp
 	depends = tbb
+	depends = webrtc-audio-processing
 	depends = zita-convolver
 	optdepends = calf: limiter, exciter, bass enhancer and others
 	optdepends = lsp-plugins: equalizer, compressor, delay, loudness
