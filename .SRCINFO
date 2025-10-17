@@ -1,0 +1,23 @@
+pkgbase = songfetch
+	pkgdesc = A Linux CLI tool that displays current song information in the terminal, similar to neofetch
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/fwtwoo/songfetch
+	arch = any
+	license = GPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = playerctl
+	optdepends = ascii-magic
+	optdepends = mpdris2: For MPD support
+	optdepends = cmus-mpris: For cmus support
+	optdepends = pipewire: For PipeWire audio backend
+	optdepends = pulseaudio: For PulseAudio backend
+	source = songfetch-1.0.2.tar.gz::https://github.com/fwtwoo/songfetch/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 1b4c73283d7b5981b314ae3f77b6150947077aa505ab8869bb12bce0df6f7bf4
+
+pkgname = songfetch
