@@ -34,7 +34,7 @@ prepare() {
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            '154408a439c61cff7f1fc22c78bd2ad20e4b342c2b20c6642e824b8fe18d6496')
+            '58547be7c7458a7af79e41d86aaedf3160b69de3891bdb709095c5106eb19302')
 
 package() {
 	# Creating needed directories
