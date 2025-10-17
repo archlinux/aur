@@ -1,5 +1,5 @@
 pkgbase = shadps4-nightly-bin
-	pkgdesc = Nightly release of the shadPS4 PlayStation 4 emulator
+	pkgdesc = Nightly release of the shadPS4 PlayStation 4 emulator (Qt launcher)
 	pkgver = 2025.10.14.db9921b
 	pkgrel = 1
 	url = https://shadps4.net/
