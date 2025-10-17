@@ -1,13 +1,14 @@
 pkgbase = pass-keyboard-control
 	pkgdesc = AI-generated keyboard-driven GUI for Unix password manager (pass) with total keyboard control
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mr-scrpt/pass-keyboard-control
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = pyside6
 	depends = python-qtawesome
