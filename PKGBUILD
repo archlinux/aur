@@ -98,11 +98,13 @@ build() {
   patch -Np1 -i "../$pkgname-$pkgver-ruby_paths.patch"
 }
 
-## tests fail: https://github.com/samaaron/sonic-pi/issues/1865
+# Tests fail because they require the package to be fully installed first
+# The test suite tries to load files from /usr/share/sonic-pi/ which don't exist during build
+# See: https://github.com/samaaron/sonic-pi/issues/1865
 #check() {
-#  cd "$pkgname-$pkgver"
-#  cd app/server/ruby/test
-#  rake test
+# cd "$pkgname-$pkgver"
+# cd app/server/ruby/test
+# rake test
 #}
 
 package() {
