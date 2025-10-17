@@ -1,11 +1,12 @@
 pkgbase = trezor-suite-bin
 	pkgdesc = Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)
 	pkgver = 25.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trezor.io/trezor-suite
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-T-RSL
+	makedepends = asar
 	depends = electron38
 	depends = trezor-udev
 	provides = trezor-suite=25.10.1
