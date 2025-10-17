@@ -10,9 +10,9 @@ arch=('x86_64')
 _arch=('amd64')
 license=('MIT')
 makedepends=('dpkg')
-noextract=("${_deb}")
 options=(!strip)
 _deb="${_pkgname}_${pkgver}_${_arch}.deb"
+noextract=("${_deb}")
 source_x86_64=("${_deb}::https://github.com/dezoito/${_pkgname}/releases/download/v${pkgver}/${_deb}")
 sha256sums_x86_64=('3736a0307ce04ac7f44e5e747e96dde2eee6a9ef8575cdb2e56f91ac1b917279')
 
