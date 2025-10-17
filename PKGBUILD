@@ -2,7 +2,7 @@
 
 pkgname=battlecity-git
 _gitname=battlecity
-pkgver=0.1.0.r0.g0060076
+pkgver=0.1.0.r0.g82c4222
 pkgrel=1
 pkgdesc="Remake of multidirectional shooter video game from NES"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/\([^-]*-\)g/\1r/' | sed 's/\([^-]*\)-\([^-]*\)/r\2.g/'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

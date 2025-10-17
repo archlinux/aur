@@ -1,6 +1,6 @@
 pkgbase = battlecity-git
 	pkgdesc = Remake of multidirectional shooter video game from NES
-	pkgver = 0.1.0.r0.g0060076
+	pkgver = 0.1.0.r0.g82c4222
 	pkgrel = 1
 	url = https://github.com/gunnerson/battlecity
 	arch = x86_64
