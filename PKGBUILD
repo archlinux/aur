@@ -2,27 +2,27 @@
 
 _pkgname="wipemychat"
 pkgname="${_pkgname}-bin"
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Delete all your messages in public and private Telegram chats"
-arch=('x86_64' 'aarch64' 'i686')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/rusq/${_pkgname}"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENCE")
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
+source=("${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENCE")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('94688aa50664745dbc71e7cc5f7b22fa189b130a15ae654944aecf8763ce023c')
-sha256sums_aarch64=('38cd754d96d568ad556cdcbca57627c4c528831eaf3e64d166a1f0b19123a300')
-sha256sums_i686=('456700516ba656530f3535ca728045f4c7edbc351fee798e2c61516092c5b780')
+sha256sums_aarch64=('8020b60c7eb281ffb1b3548c14bdd61389c374e1ca36adadcc7d2077b0d1956b')
+sha256sums_i686=('1d3730408c59fd6deb8d84e757a1f70dac26dafe069c070534093a161300e8c2')
+sha256sums_x86_64=('48f49a9c5c4dd51af54beb6f375a350b6fc0482643b12e867f960c652c890857')
 
 package() {
   cd "${srcdir}"
   install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
