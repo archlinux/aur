@@ -1,0 +1,5 @@
+["redli-bin"]
+source = "github"
+github = "IBM-Cloud/redli"
+use_latest_release = true
+prefix = "v"
