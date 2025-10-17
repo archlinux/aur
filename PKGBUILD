@@ -26,7 +26,11 @@ makedepends=(
   ruby-prime ruby-erb ruby-rexml
 )
 checkdepends=(ruby-rake)
-optdepends=('sox: for further effects')
+optdepends=(
+  'jack2: JACK audio server for low-latency audio routing'
+  'sc3-plugins: additional synthesis UGens for SuperCollider'
+  'sox: audio processing and sample manipulation'
+)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/sonic-pi-net/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
   $pkgname-$pkgver-gui_paths.patch
