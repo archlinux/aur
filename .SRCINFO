@@ -1,8 +1,8 @@
 pkgbase = droplet
-	pkgdesc = droplet is no longer a package. Please run paru -S root_rain to install the new updated package. You can remove this one with paru -R droplet
-	pkgver = 0.1.3
+	pkgdesc = Transitional package. Please install 'root_rain' instead.
+	pkgver = 0.1.4
 	pkgrel = 1
-	url = https://github.com/execrooted/root_rain
+	url = https://github.com/execrooted/droplet-old
 	arch = any
 	license = MIT
 
