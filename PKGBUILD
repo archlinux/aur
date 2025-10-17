@@ -3,7 +3,7 @@ pkgname=llrt-std-sdk-bin
 pkgver=0.7.0beta
 _pkgver="${pkgver//beta/-beta}" # For GitHub urls
 _pkgid="$pkgname-$_pkgver" # For filenames unique id
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight JavaScript runtime for serverless applications (STANDARD @aws-sdk bundled)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/awslabs/llrt'
@@ -12,7 +12,7 @@ optdepends=(
   'typescript: transpiler for TypeScript code with type checking support'
   'esbuild: fast compiler and bundler for JavaScript and TypeScript'
   'swc-js-bin: drop-in replacement for Babel with compilation and polyfill support'
-  'bun: fast runtime, compiler, and bundler for JavaScript and TypeScript')
+  'bun-bin: fast runtime, compiler, and bundler for JavaScript and TypeScript')
 provides=('llrt')
 conflicts=('llrt')
 source=("$_pkgid-source.zip::$url/archive/refs/tags/v$_pkgver.zip")
