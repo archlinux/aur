@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matrixTests
-_pkgver=0.2.3
+_pkgver=0.2.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast Statistical Hypothesis Tests on Rows and Columns of Matrices"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-pmcmrplus
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1da89222ad89baef2d138cf93713b3b5')
-b2sums=('c048f945f3c1c22978ea35716ea5d31c02c71ec9fed8e29eb8db0b0bbd18dbf789ed4be7c30a90d50ccde87bb0abced0a150b48b600d947921a10c372b04f712')
+md5sums=('96b2e74ea3ae52c7f2987746aec6ccab')
+b2sums=('1819b37baf337cdac4bfedff3638a2765a7c9b4274c794d8631f699197f9d76045470cbdefac78cbebe7375bb61916b46018d3eff30dfd666b78296fcadcd259')
 
 build() {
   mkdir build
