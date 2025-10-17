@@ -1,3 +1,5 @@
+# Maintainer: Filip Repstad Spanne <filip.spanne@gmail.com>
+#
 pkgname=vespa-cli
 pkgver=8.589.18
 pkgrel=1
