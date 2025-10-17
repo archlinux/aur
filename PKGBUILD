@@ -1,13 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ecode
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 arch=('x86_64' 'aarch64')
 url="https://github.com/SpartanJ/ecode"
 license=('MIT')
 depends=(
+  'glibc'
   'hicolor-icon-theme'
+  'libelf'
   'libglvnd'
   'sdl2'
 )
@@ -21,7 +23,7 @@ source=("git+https://github.com/SpartanJ/eepp.git#tag=$pkgname-$pkgver"
         'git+https://github.com/SpartanJ/soil2.git'
         'git+https://github.com/jimon/premake-ninja.git'
         'git+https://github.com/Jarod42/premake-cmake.git')
-sha256sums=('7794bd4493158d7feb5433127589d939b814b12c4983b605c3b3832ecf060820'
+sha256sums=('d4345f06a7a87cea9664cf799fe10a9245ea55c4862f45c6cccd5f525b86a8b6'
             'SKIP'
             'SKIP'
             'SKIP'
