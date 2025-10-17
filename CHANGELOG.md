@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Expand browser filter to other unit properties
 - Fix Flatpak save file in home directory (make a warning)
-- Sort user defined columns context
+
+## [2.3.0] - 2025-10-17
+### Added
+- Sorting on user defined unit's property columns
 
 ## [2.2.0] - 2025-10-15
 ### Added
