@@ -26,7 +26,7 @@ build() {
         -S $_gitname
         -W no-dev
         -D CMAKE_INSTALL_PREFIX=/usr
-        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_BUILD_TYPE=Release
     )
     cmake "${cmake_options[@]}"
     cmake --build build
