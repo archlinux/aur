@@ -1,5 +1,5 @@
 pkgname=streambooru-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="StreamBooru - multi-site booru browser (Electron)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPLv3')
 depends=('electron' 'nss' 'gtk3' 'libxss' 'libxtst' 'alsa-lib')
 makedepends=('npm' 'nodejs' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Amateur-God/StreamBooru/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7666fd3f128803232c07581d0bb2ddf4192697b3aa7f8b5a8c8e421644d957b4')
+sha256sums=('b5bddb263963f307a5eda57fc2ad2c9e33a71fc12b9f9933baff7af5110d9a3d')
 
 build() {
   cd "${srcdir}/StreamBooru-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = streambooru-bin
 	pkgdesc = StreamBooru - multi-site booru browser (Electron)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Amateur-God/StreamBooru
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = streambooru-bin
 	depends = libxss
 	depends = libxtst
 	depends = alsa-lib
-	source = streambooru-bin-0.1.6.tar.gz::https://github.com/Amateur-God/StreamBooru/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 7666fd3f128803232c07581d0bb2ddf4192697b3aa7f8b5a8c8e421644d957b4
+	source = streambooru-bin-0.1.7.tar.gz::https://github.com/Amateur-God/StreamBooru/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = b5bddb263963f307a5eda57fc2ad2c9e33a71fc12b9f9933baff7af5110d9a3d
 
 pkgname = streambooru-bin
