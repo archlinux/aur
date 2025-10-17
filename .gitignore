@@ -1,17 +1,41 @@
-src/
-pkg/
-coolerdash/
-*.pkg.tar.*
-*.tar.*
+# Source files
+bin/
+build/
+.cache/
+.makepkg/
+*/src/
+src/*
+*/pkg/
+pkg/*
+*.tgz
+*.xz
 *.zip
 *.gz
-*.xz
 *.zst
+*.bz2
+*.7z
+*.rar
+*.pkg
+*.pkg.*
+*.tar.gz
+*.files
+*.bak
+*.run
 
 # OS files
+*~
 .directory
 .DS_Store
 Thumbs.db
+.Trash-*
+logs/*
+temp/
+gnupg/
+*.orig
+*.old
+*.tmp
+*.log
+*.bak
 
 # Editor files
 *.code-workspace
@@ -19,7 +43,16 @@ Thumbs.db
 *.swp
 *.swo
 .vscode/
+.idea/
 .qodo/
+.codacy/
+.codacy.*
 
-#Ignore vscode AI rules
-.github/instructions/codacy.instructions.md
+############################
+
+# Internal files
+coolerdash/
+
+# GitHub files
+.github/
+.gitlab/
