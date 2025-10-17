@@ -1,6 +1,6 @@
 pkgbase = painting-droid-bin
 	pkgdesc = AI-powered cross-platform painting app inspired by the legendary MS Paint.(Prebuilt version)
-	pkgver = 0.2.25
+	pkgver = 0.2.27
 	pkgrel = 1
 	url = https://www.paintingdroid.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = painting-droid-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = painting-droid=0.2.25
+	provides = painting-droid=0.2.27
 	conflicts = painting-droid
-	source = painting-droid-0.2.25.rpm::https://github.com/mateuszmigas/painting-droid/releases/download/app-v0.2.25/Painting.Droid-0.2.25-1.x86_64.rpm
-	sha256sums = 5f08358872d129205bb5ac2c198585c760d84698a04d20efedd28bd17c07a8b8
+	source = painting-droid-0.2.27.rpm::https://github.com/mateuszmigas/painting-droid/releases/download/app-v0.2.27/Painting.Droid-0.2.27-1.x86_64.rpm
+	sha256sums = cbd3f532ea7187dcfd67db9de9b406f4802a57dbe11c0c35dd9c5a316d739a35
 
 pkgname = painting-droid-bin

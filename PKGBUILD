@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=painting-droid-bin
 _pkgname='Painting Droid'
-pkgver=0.2.25
+pkgver=0.2.27
 pkgrel=1
 pkgdesc="AI-powered cross-platform painting app inspired by the legendary MS Paint.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('5f08358872d129205bb5ac2c198585c760d84698a04d20efedd28bd17c07a8b8')
+sha256sums=('cbd3f532ea7187dcfd67db9de9b406f4802a57dbe11c0c35dd9c5a316d739a35')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
