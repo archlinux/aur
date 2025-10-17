@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ optdepends=(
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a4ae3707acdb0484b57757a0bc2d0ec5f71d2dee54dbeac4db1daffe02b6a75')
-backup=('etc/greetd/niri-greeter-config.kdl' 'etc/greetd/kitty.conf')
+sha256sums=('c54bd57eaf3596115caeede586ed6a512e7961cafff034f23dc6f417e71ca7a6')
+backup=('etc/greetd/config.toml' 'etc/greetd/niri-greeter-config.kdl')
 install=${pkgname}.install
 
 build() {
@@ -108,7 +108,7 @@ window-rule {
 
 spawn-at-startup "swww-daemon"
 
-spawn-sh-at-startup "kitty --start-as=fullscreen --config=/etc/greetd/kitty.conf /usr/local/bin/sysc-greet; niri msg action quit --skip-confirmation"
+spawn-sh-at-startup "XDG_CACHE_HOME=/tmp/greeter-cache HOME=/var/lib/greeter kitty --start-as=fullscreen --config=/etc/greetd/kitty.conf /usr/local/bin/sysc-greet; niri msg action quit --skip-confirmation"
 
 binds {
 }

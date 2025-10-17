@@ -1,7 +1,13 @@
 post_install() {
     echo "==> Creating greeter user..."
+    # FIXED 2025-10-15 - Add render group for Intel/AMD iGPU support on laptops
+    # Modern Linux uses 'render' group for /dev/dri/renderD* device access
     if ! id greeter &>/dev/null; then
-        useradd -M -G video -s /usr/bin/nologin greeter
+        useradd -M -G video,render,input -s /usr/bin/nologin greeter
+    else
+        # User exists - ensure they have required groups for GPU access
+        # CRITICAL: Fixes "greeter exited without creating session" on laptops
+        usermod -aG video,render,input greeter
     fi
 
     echo "==> Setting permissions..."
@@ -10,7 +16,8 @@ post_install() {
     chmod 755 /var/lib/greeter
 
     echo "==> Configuring greetd..."
-    if [ ! -f /etc/greetd/config.toml ]; then
+    # Create greetd config if it doesn't exist or is empty
+    if [ ! -s /etc/greetd/config.toml ]; then
         cat > /etc/greetd/config.toml <<'EOF'
 [terminal]
 vt = 1
@@ -18,33 +25,45 @@ vt = 1
 [default_session]
 command = "niri -c /etc/greetd/niri-greeter-config.kdl"
 user = "greeter"
+
+[initial_session]
+command = "niri -c /etc/greetd/niri-greeter-config.kdl"
+user = "greeter"
 EOF
-        echo "  Created /etc/greetd/config.toml"
+        echo "Created /etc/greetd/config.toml"
     else
-        echo "  /etc/greetd/config.toml already exists (not modified)"
-        echo "  You may need to manually update it to use sysc-greet"
+        echo "Existing /etc/greetd/config.toml found, not modifying"
     fi
+
+    echo "==> Enabling greetd service..."
+    systemctl enable greetd.service
 
     echo ""
     echo "==> sysc-greet installed successfully!"
     echo ""
-    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀"
-    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀"
-    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀"
-    echo "                      //  SEE YOU SPACE COWBOY //"
-    echo ""
-    echo "To use sysc-greet:"
-    echo "  1. Enable greetd service (if not already enabled):"
-    echo "     systemctl enable greetd.service"
-    echo ""
-    echo "  2. Reboot to see sysc-greet"
-    echo ""
-    echo "If you had a different greeter configured, check /etc/greetd/config.toml"
+    echo "Reboot to see sysc-greet"
     echo ""
 }
 
 post_upgrade() {
-    post_install
+    echo "==> Updating greeter user groups..."
+    # FIXED 2025-10-15 - Add render group for Intel/AMD iGPU support on laptops
+    usermod -aG video,render,input greeter 2>/dev/null || true
+
+    echo "==> Setting permissions..."
+    chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
+    chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
+
+    echo ""
+    echo "==> sysc-greet upgraded successfully!"
+    echo ""
+    echo "NOTE: greetd service was NOT restarted automatically."
+    echo "To apply changes:"
+    echo "  - Reboot your system, OR"
+    echo "  - Manually restart: sudo systemctl restart greetd.service"
+    echo ""
+    echo "WARNING: Restarting greetd will kill your current session!"
+    echo ""
 }
 
 pre_remove() {
