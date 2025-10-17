@@ -4,8 +4,8 @@ _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 _electron='electron38'
-pkgver=2.129.0.r0.g8b4e74c
-pkgrel=2
+pkgver=2.131.0.r0.g0ee34de
+pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -35,11 +35,16 @@ build() {
   _nvm_install
 
   export UV_USE_IO_URING=0
-  pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
-  pnpm build:lld
+  pnpm i --filter="${_appname}..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
+  pnpm build:lld:deps
+  pnpm desktop build
 
-  sed -e "s/AppRun --no-sandbox/${_appname}/g" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
-  sed -e "/X-AppImage-Version/d" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
+  desktop-file-edit \
+    --set-key=Exec \
+    --set-value="${_appname} %U" \
+    --add-category=Network \
+    --remove-key=X-AppImage-Version \
+    "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = ledger-live-git
 	pkgdesc = Maintain your Ledger devices (git-main)
-	pkgver = 2.129.0.r0.g8b4e74c
-	pkgrel = 2
+	pkgver = 2.131.0.r0.g0ee34de
+	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
