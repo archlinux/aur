@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=picoscope7
 pkgver=7.2.3.7282
-pkgrel=2
+pkgrel=3
 pkgdesc="PicoScope 7 Test and Measurment Stable"
 arch=('x86_64')
 url="https://www.picotech.com/downloads/linux"
