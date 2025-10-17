@@ -3,7 +3,7 @@
 _pkgauthor=umpire274
 _pkgname=librius
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.3.5
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A fast, minimalist CLI to manage your personal book collection"
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('a107c2bfe7d413322b0fe5635353247240b6cb6f1fc08e0171da3ac83d903cf7')
+sha256sums_x86_64=('7ccc83896be80c7e4f5869a2b4b2922301ea4b5cc604ebde57c23b605e60f732')
 
 
 package() {
