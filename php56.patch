@@ -1,15 +1,15 @@
---- src/Composer/Compiler.php	2016-04-10 22:22:14.056406238 +0100
-+++ src/Composer/Compiler.php	2016-04-10 22:39:13.935566040 +0100
-@@ -183,7 +183,7 @@
-     private function addComposerBin($phar)
+--- src/Composer/Compiler.php	(revision 0374e6fa9d20beeffa0765c890ace6b33cbb33bd)
++++ src/Composer/Compiler.php	(date 1760694673380)
+@@ -254,7 +254,7 @@
+     private function addComposerBin(\Phar $phar)
      {
          $content = file_get_contents(__DIR__.'/../../bin/composer');
--        $content = preg_replace('{^#!/usr/bin/env php\s*}', '', $content);
-+        $content = preg_replace('{^#!/usr/bin/env php56\s*}', '', $content);
+-        $content = Preg::replace('{^#!/usr/bin/env php\s*}', '', $content);
++        $content = Preg::replace('{^#!/usr/bin/env php56\s*}', '', $content);
          $phar->addFromString('bin/composer', $content);
      }
  
-@@ -224,7 +224,7 @@
+@@ -298,7 +298,7 @@
      private function getStub()
      {
          $stub = <<<'EOF'
@@ -18,32 +18,41 @@
  <?php
  /*
   * This file is part of Composer.
---- bin/composer	2016-04-10 22:22:14.046406311 +0100
-+++ bin/composer	2016-04-10 22:48:17.648083417 +0100
+--- bin/composer	(revision 0374e6fa9d20beeffa0765c890ace6b33cbb33bd)
++++ bin/composer	(date 1760696794954)
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env php
 +#!/usr/bin/env php56
  <?php
  
- if (PHP_SAPI !== 'cli') {
---- bin/compile	2016-08-24 09:10:26.184072313 +0200
-+++ bin/compile	2016-08-24 09:10:27.550751053 +0200
+ if (PHP_SAPI !== 'cli' && PHP_SAPI !== 'phpdbg') {
+
+--- bin/compile	(revision 0374e6fa9d20beeffa0765c890ace6b33cbb33bd)
++++ bin/compile	(date 1760695957083)
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env php
 +#!/usr/bin/env php56
  <?php
-
+ 
  $cwd = getcwd();
-@@ -10,9 +10,9 @@
+@@ -10,17 +10,17 @@
  }
  // Install with the current version to force it having the right ClassLoader version
  // Install without dev packages to clean up the included classmap from phpunit classes
--shell_exec('php bin/composer config autoloader-suffix ComposerPhar' . $ts);
--shell_exec('php bin/composer install -q --no-dev');
--shell_exec('php bin/composer config autoloader-suffix --unset');
-+shell_exec('php56 bin/composer config autoloader-suffix ComposerPhar' . $ts);
-+shell_exec('php56 bin/composer install -q --no-dev');
-+shell_exec('php56 bin/composer config autoloader-suffix --unset');
- chdir($cwd);
-
- require __DIR__.'/../src/bootstrap.php';
+-exec('php bin/composer config autoloader-suffix ComposerPhar' . $ts, $output, $result);
++exec('php56 bin/composer config autoloader-suffix ComposerPhar' . $ts, $output, $result);
+ if (0 !== $result) {
+     echo 'Could not set the autoloader suffix, make sure exec is allowed and php can be found in your PATH';
+     exit(1);
+ }
+-exec('php bin/composer install -q --no-dev', $output, $result);
++exec('php56 bin/composer install -q --no-dev', $output, $result);
+ if (0 !== $result) {
+     echo 'Could not remove dev deps, make sure exec is allowed and php can be found in your PATH';
+     exit(1);
+ }
+-exec('php bin/composer config autoloader-suffix --unset', $output, $result);
++exec('php56 bin/composer config autoloader-suffix --unset', $output, $result);
+ if (0 !== $result) {
+     echo 'Could not remove the autoloader suffix, make sure exec is allowed and php can be found in your PATH';
+     exit(1);

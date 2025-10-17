@@ -4,7 +4,7 @@
 
 pkgname=php56-composer
 epoch=1
-pkgver=1.9.0
+pkgver=2.2.25
 pkgrel=2
 pkgdesc="Dependency Manager for PHP 5.6"
 arch=('any')
@@ -15,12 +15,10 @@ makedepends=('git')
 source=(
     "${pkgname}::git+https://github.com/composer/composer.git#tag=${pkgver}"
     'php56.patch'
-    'phpunit56.patch'
 )
 sha256sums=(
     'SKIP'
-    '9514fe689925720256dc94f7d0a4ea7a0f232f5bd76dbb08dfdd48a691ec4ee5'
-    'fc5dfa06b58369c17d44eff9a595eaf8ed7dadef184da1fea06ae3562b8af24f'
+    'bfaf8a8b4449afa77609f76d73240f23a95cd924768a5bf3d8f7ac1980a15e80'
 )
 
 prepare() {
