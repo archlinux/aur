@@ -30,15 +30,20 @@ sha256sums=(
 )
 
 package() {
-  cp -a "${srcdir}/opt" "${pkgdir}/"
-  cp -a "${srcdir}/usr" "${pkgdir}/"
+  install -d "${pkgdir}/opt"
+  cp -a "${srcdir}/opt/ladybird" "${pkgdir}/opt/"
 
-  RELATIVE_DESKTOP_FILE_PATH='usr/share/applications/org.ladybird.Ladybird.desktop'
-  sed -i -e 's#Exec=Ladybird #Exec=/opt/ladybird/usr/bin/Ladybird #' \
-    "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}"
+  install -d "${pkgdir}/usr"
+  mv "${pkgdir}/opt/ladybird/usr/share" "${pkgdir}/usr/"
+
+  sed -i 's#^Exec=.*#Exec=/opt/ladybird/usr/bin/Ladybird %U#' \
+    "${pkgdir}/usr/share/applications/org.ladybird.Ladybird.desktop"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/ladybird/usr/bin/Ladybird "${pkgdir}/usr/bin/ladybird"
+
+  install -Dm644 "${srcdir}/opt/ladybird/usr/share/licenses/ladybird-nightly-build/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
-  install -Dm644 "${pkgdir}/opt/ladybird/${RELATIVE_DESKTOP_FILE_PATH}" \
-    "${pkgdir}/${RELATIVE_DESKTOP_FILE_PATH}"
-
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+  rm -rf "${pkgdir}/usr/share/licenses/ladybird-nightly-build"
 }
