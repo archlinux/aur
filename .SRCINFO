@@ -1,7 +1,7 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://final2x.tohru.top/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -31,7 +31,6 @@ pkgbase = final2x-bin
 	depends = python-pillow
 	depends = python-cryptography
 	depends = python-psutil
-	depends = python-pytorch
 	depends = python-tornado
 	conflicts = final2x
 	options = !strip

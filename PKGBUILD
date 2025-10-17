@@ -4,7 +4,7 @@ _pkgname=Final2x
 pkgver=4.0.0
 _electronversion=27
 _pyver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 license=('BSD-3-Clause')
@@ -38,7 +38,7 @@ depends=(
     'python-pillow'
     'python-cryptography'
     'python-psutil'
-    'python-pytorch'
+    #'python-pytorch'
     'python-tornado'
 )
 options=(
@@ -60,7 +60,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
+        s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
