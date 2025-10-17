@@ -39,6 +39,12 @@ package() {
   sed -i 's#^Exec=.*#Exec=/opt/ladybird/usr/bin/Ladybird %U#' \
     "${pkgdir}/usr/share/applications/org.ladybird.Ladybird.desktop"
 
+  sed -i 's#^Exec=.*#Exec=/opt/ladybird/usr/bin/Ladybird %U#' \
+    "${pkgdir}/usr/share/applications/org.ladybird.Ladybird.desktop"
+
+  sed -i 's#^Icon=.*#Icon=org.ladybird.Ladybird#' \
+    "${pkgdir}/usr/share/applications/org.ladybird.Ladybird.desktop"
+
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/ladybird/usr/bin/Ladybird "${pkgdir}/usr/bin/ladybird"
 
