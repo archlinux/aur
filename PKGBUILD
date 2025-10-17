@@ -1,4 +1,10 @@
 # Maintainer: Nathan Pilkington <npil>
+# Contributor: Christian Heusel <gromit@archlinux.org>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andreas Schleifer <segaja@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Balló György <bgyorgy@archlinux.org>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=sonic-pi
