@@ -47,7 +47,7 @@ backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
 _commit=055ef987ccb34c897b8657b50236906e1f90b209
 source=("git+https://github.com/damachine/coolerdash.git#commit=$_commit")
-sha256sums=('SKIP')
+sha256sums=('05b30261609308751da37019bf0c4e65bb0435a42ef3fdb82162d052121efed4')
 
 # https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
 pkgver() {
