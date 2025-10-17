@@ -1,12 +1,12 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mlinpxplugin"
 pkgver="1.0.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="MyLibrary plugin for .inpx collections import"
 arch=('x86_64')
 provides=("${pkgname}")
 source=("https://github.com/ProfessorNavigator/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-url="https://github.com/ProfessorNavigator/mylibrary"
+url="https://github.com/ProfessorNavigator/mlinpxplugin"
 license=('GPL-3.0-only')
 makedepends=('cmake' 'pkgconf' 'gcc')
 depends=('mylibrary')
