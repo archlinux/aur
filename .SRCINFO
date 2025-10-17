@@ -5,6 +5,7 @@ pkgbase = ladybird-nightly-bin
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
 	license = BSD-2-Clause
+	makedepends = patchelf
 	depends = curl
 	depends = fast_float
 	depends = ffmpeg
@@ -34,6 +35,8 @@ pkgbase = ladybird-nightly-bin
 	conflicts = ladybird-git
 	options = !strip
 	source = ladybird-nightly-r72235.1a3635cda57.tar.zst::https://github.com/mdmrk/ladybird-nightly-bin/releases/download/vr72235.1a3635cda57/ladybird-nightly-r72235.1a3635cda57.tar.zst
+	source = org.ladybird.Ladybird.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ladybird-nightly-bin
