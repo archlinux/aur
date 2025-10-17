@@ -1,6 +1,6 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
-	pkgver = 4.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mylibrary
 	depends = libarchive
 	depends = imagemagick
 	provides = mylibrary
-	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v4.2.tar.gz
-	sha256sums = e5dbc4ead2bf52cba6d2077340ec32794650e4a1eae9cc957609b7ea0c20d2d6
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v4.2.1.tar.gz
+	sha256sums = b2d1a91e5cddefaf58b8c74acd54255dd09ed793fd04cb1a4f12b222a52d9fcf
 
 pkgname = mylibrary

@@ -1,6 +1,6 @@
 #Maintainer: Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mylibrary"
-pkgver="4.2"
+pkgver="4.2.1"
 pkgrel="1"
 pkgdesc="Home librarian"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/ProfessorNavigator/mylibrary"
 license=('GPL-3.0-only')
 makedepends=('cmake' 'pkgconf' 'gcc' 'doxygen' 'texlive-latex' 'texlive-latexrecommended' 'texlive-latexextra' 'texlive-plaingeneric' 'texlive-fontsrecommended' 'texlive-fontutils')
 depends=('gtkmm-4.0' 'icu' 'libgcrypt' 'poppler' 'djvulibre' 'libarchive' 'imagemagick')
-sha256sums=('e5dbc4ead2bf52cba6d2077340ec32794650e4a1eae9cc957609b7ea0c20d2d6')
+sha256sums=('b2d1a91e5cddefaf58b8c74acd54255dd09ed793fd04cb1a4f12b222a52d9fcf')
 
 build() {   
    local cmake_options=(
@@ -27,6 +27,7 @@ build() {
     -D CREATE_PDF_DOCS_PLUGINIFC=ON
   )
   cmake "${cmake_options[@]}"
+  cmake --build build --target test
   cmake --build build --parallel $(nproc)
 }
 
