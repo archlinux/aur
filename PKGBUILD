@@ -4,8 +4,8 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=bkmr
-pkgver=6.2.5
-pkgrel=2
+pkgver=6.2.6
+pkgrel=1
 pkgdesc="A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management"
 url="https://github.com/sysid/$pkgname"
 license=('BSD-3-Clause')
@@ -13,10 +13,13 @@ arch=('x86_64' 'i686' 'aarch64' 'arm')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cbf076fe31c70ccc279a1b2bf776fa44e331a0ca1fef348803649d6e278c64e6')
+sha256sums=('7cdb4fd78b4a75995f0009529110d58246b301f2da00a616ba976c27d46c5ac3')
 options=('!lto')
 
-case "$CARCH" in
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  case "$CARCH" in
   x86_64|i686|aarch64)
     _target="$CARCH-unknown-linux-gnu" ;;
   arm)
@@ -24,10 +27,7 @@ case "$CARCH" in
     *)
     printf 'Architecture %s is not supported\n' "$CARCH" >&2
     exit 1 ;;
-esac
-
-prepare() {
-  cd "$pkgname-$pkgver"
+  esac
 
   cargo fetch --manifest-path $pkgname/Cargo.toml --target "$_target"
 }
