@@ -1,16 +1,16 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot -de>
 
-_plugin_uri='http://geontime.com/geonkick'
+_plugin_uri='http://geonkick.org/geonkick'
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=2.10.2.r34.228bba0
+pkgver=3.6.2.r1915.385449a2
 pkgrel=1
 pkgdesc='A free software percussion synthesizer (git version)'
 arch=(x86_64)
 url='https://geonkick.org'
 license=(GPL-3.0-or-later)
 groups=(lv2-plugins pro-audio vst3-plugins)
-depends=(gcc-libs glibc cairo hicolor-icon-theme libx11 libsndfile)
+depends=(gcc-libs glibc cairo hicolor-icon-theme libsndfile libx11)
 makedepends=(cmake git jack lv2 rapidjson sord vst3sdk)
 checkdepends=(lv2lint)
 optdepends=(
@@ -41,7 +41,7 @@ build() {
 }
 
 check() {
-  lv2lint -S nowarn -M pack -I $_pkgname/src/plugin/lv2/$_pkgname.lv2 "$_plugin_uri"
+  lv2lint -S nowarn -s "rk__*" -s "_Z*" -M pack -I $_pkgname-build/src/plugin/lv2/ "$_plugin_uri"
 }
 
 
