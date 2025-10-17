@@ -1,7 +1,7 @@
 # Maintainer: Maria Nicolae <maria@marianicolae.com>
 
 pkgname=epubsynth
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A command-line program for generating EPUB documents'
 
@@ -15,7 +15,7 @@ makedepends=(python-build
              python-setuptools)
 
 source=("https://marianicolae.com/files/software/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('819750e84902f1808293fc54fa5100024c3225b650e9119c8583a80887257f82')
+sha256sums=('49639e1817afda225a96e700f773d45c0a5e885d3fd5be734f49fadf20151acb')
 
 build() {
     cd ${srcdir}
