@@ -1,6 +1,6 @@
 pkgbase = rnsh
 	pkgdesc = Shell over Reticulum
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/acehoss/rnsh
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = rnsh
 	depends = python-rns
 	depends = python-docopt
 	depends = python-tomli
-	source = rnsh-0.1.6::https://github.com/acehoss/rnsh/archive/refs/tags/release/v0.1.6.tar.gz
-	sha256sums = 35fb9f3a99eab96edafbb85f2c0ed999d629f907d7ee541261f9dcda871a0805
+	source = rnsh-0.1.7::https://github.com/acehoss/rnsh/archive/refs/tags/release/v0.1.7.tar.gz
+	sha256sums = 555f0c3a1a5fa6be93de664deec290f278e39c0ec5d087921ecdeb72cff11e2e
 
 pkgname = rnsh

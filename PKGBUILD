@@ -1,7 +1,7 @@
 # Maintainer: Moonlit Tune <moonlit underscore tune at protonmail dot com>
 
 pkgname=rnsh
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Shell over Reticulum"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 url="https://github.com/acehoss/rnsh"
 license=('MIT')
 source=($pkgname-$pkgver::$url/archive/refs/tags/release/v$pkgver.tar.gz)
-sha256sums=('35fb9f3a99eab96edafbb85f2c0ed999d629f907d7ee541261f9dcda871a0805')
+sha256sums=('555f0c3a1a5fa6be93de664deec290f278e39c0ec5d087921ecdeb72cff11e2e')
 
 build() {
   cd "$srcdir/$pkgname-release-v$pkgver"
