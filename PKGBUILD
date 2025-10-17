@@ -1,7 +1,7 @@
 # Maintainer: mr-scrpt <mr.scrpt@gmail.com>
 pkgname=pass-keyboard-control
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-generated keyboard-driven GUI for Unix password manager (pass) with total keyboard control"
 arch=('any')
 url="https://github.com/mr-scrpt/pass-keyboard-control"
@@ -20,7 +20,6 @@ optdepends=(
     'wl-clipboard: for clipboard support on Wayland'
 )
 makedepends=(
-    'python-setuptools'
     'python-build'
     'python-installer'
     'python-wheel'
