@@ -1,16 +1,18 @@
 pkgbase = php56-composer
 	pkgdesc = Dependency Manager for PHP 5.6
 	pkgver = 2.2.25
-	pkgrel = 2
+	pkgrel = 1
 	epoch = 1
 	url = https://getcomposer.org/
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = php56
+	depends = php56-cli
 	source = php56-composer::git+https://github.com/composer/composer.git#tag=2.2.25
 	source = php56.patch
-	sha256sums = SKIP
-	sha256sums = bfaf8a8b4449afa77609f76d73240f23a95cd924768a5bf3d8f7ac1980a15e80
+	source = https://raw.githubusercontent.com/composer/getcomposer.org/1c8d2b11a3b7ba1bff7fce9c936cd36c61ddb791/web/installer
+	sha384sums = SKIP
+	sha384sums = 7c0ceb28e5f8a4e9ea64a0fad3eaecd8234b46e7a71a7f42cde87a8c82d865ae4858bb1133c268cbf941d4fa52a93a96
+	sha384sums = ed0feb545ba87161262f2d45a633e34f591ebb3381f2e0063c345ebea4d228dd0043083717770234ec00c5a9f9593792
 
 pkgname = php56-composer
