@@ -1,7 +1,7 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
 pkgver=4.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="RogPerfTuner - An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
     'x86_64'
@@ -96,6 +96,6 @@ package() {
     cp -r build/assets/* "$pkgdir/usr/share/rog-perf-tuner/"
     chmod -R 755 "$pkgdir/usr/share/rog-perf-tuner/"
 
-    install -Dm755 resources/RogPerfTuner.desktop > "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
+    install -Dm755 resources/RogPerfTuner.desktop "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
 
 }
