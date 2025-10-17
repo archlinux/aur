@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "https://github.com/throneproj/routeprofiles/raw/refs/heads/rule-set/srslist.h")
 sha256sums=('a603b1640b85cbb92f3edadca4d38d545580f0691d760ad7680f6aa6a8cfba57'
             'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62'
-            '83994de47ca63e82c8e950d5434aad73f484834f613ef34be82e273d9da44f74')
+            'SKIP')
 
 prepare() {
     mkdir -p build
