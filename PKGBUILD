@@ -1,4 +1,4 @@
-pkgname=rafetch
+pkgname=argfetch
 pkgver=1.0
 pkgrel=1
 pkgdesc="FETCH ARGENTINO"
