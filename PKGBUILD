@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grx-bin
 _appname=GRX
-pkgver=3.3.4
+pkgver=4.0.1
 _electronversion=32
-pkgrel=2
+pkgrel=1
 pkgdesc="Fastest Web Gerber Renderer.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://grx.electronicloud.app/"
@@ -19,9 +19,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hpcreery/GRX/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('de4c00fbfce06fba64a8615964e2ec93a5abe375e6668ee0ed68f126bfcff96b'
+sha256sums=('c6c4db72c9b9b6ad66ded0f2b289cdfec0800577b3d129b338d9a0b53a7f428f'
             '6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_appname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -31,6 +35,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_appname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
