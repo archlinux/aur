@@ -1,10 +1,10 @@
 # Maintainer: Joe Pizzimenti <joe.pizzimenti2@gmail.com>
 
 pkgname=openmodelica-bin
-_omver=1.25.4
+_omver=1.25.5
 _debver=1
 pkgver=${_omver}
-pkgrel=8
+pkgrel=1
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-compiled Debian Trixie binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -16,12 +16,12 @@ depends=(
     'glibc' 'gcc-libs' 'qt6-base' 'qt6-svg' 'qt6-webengine' 'qt6-declarative'
     'qt6-tools' 'qt6-5compat' 'lapack' 'blas' 'expat' 'curl' 'clang' 'cmake' 'mesa'
     'ncurses' 'readline' 'icu' 'unzip' 'zip' 'hwloc' 'libxml2' 'hdf5' 'boost-libs'
-    'omniorb'
 )
 
 optdepends=(
     'gnuplot: For 2D plotting from scripts'
     'libxslt: For XML report and documentation generation' #listed as 'xsltproc' in .deb
+    'omniorb: For OMOptim, OMShell, and OMPython'
     'texlive-latex: For DrModelica/DrControl documentation generation' #listed as 'texlive-latex-base' in .deb
     'texlive-bin: For rendering LaTeX equations in OMNotebook' #listed as 'dvipng' in .deb
     'texlive-binextra: For rendering LaTeX equations in OMNotebook' #listed as 'dvipng' in .deb
@@ -49,23 +49,23 @@ source=(
     "${_baseurl}/libomccpp_${_omver}-${_debver}_amd64.deb"
 )
 
-sha256sums=('14f670cfbba7b2a1d204862239e55b9ff8b310f7aa6515b9fa0981ee635f8c10'
-            '69edff7d0c856084da67d227ae83ae2618010b97b0bdfbebf8686f7e8a85daab'
-            'e7e11c76c811bee209fd717583e65dbaa25c10a340ca3472d8add6c599397469'
-            'c06fed4c7d69521b9ab45f4d3b019847a910765b00509eaaf40f527fff6c95d9'
-            '00fed9d45bac6cb9f0c5ec73bcd5401a5a35071aa4e5b4c9175b15f87c392196'
-            '7a4da8e710ecab621bb521ee643ab620bfba8b8a4065e32ad33c1e4cb8f57805'
-            '6fc744d6e35c075e9a4f966793ef0ae61f29325513e85cd411c849b2360928fb'
-            'f13831cc0e6ac0de7b63e3b8eb27463afc41c126cffc0b9de638d25b264ccf4b'
-            '4a40483af03eb342476485f2b12bef429ad42cd02512ea720186c342f4ca0a0d'
-            '1bb7aaf811ce99dd81e16b02c325d4a0479993936c1cec0586da4828699053b9'
-            '0bba85dbd0b6b4743c64642d810daa59d75c6ddd68b1623a64c062accbcdad5e'
-            '35dbc9035987f97bf14d10c56e3a36522ba4f272fe01c4139e75eaa42ab25869'
-            '96bfd213cca28d3b8f27050d17e708d1610151f8dc06cdff22208bed3ac02f25'
-            '5f25d324bd80d1743c7f0ce5d69b724531f35854225611cab9e81b46047d816b'
-            '1ef15b1195be7914058460dfb693cb20fee11dda1d4984a87a1f68b8ad45326c'
-            '3160204a900c87448f0a7c682c089b136560e7e20e4de0985305a1fbacdf541c'
-            'f9e6fe0d29a536d5d906f62cc4e841152d6d24f4faab5537f7d29da59a99be63')
+sha256sums=('79967f91a2c51fd2998fe3b7809916075eb185653ec88144f6aa6337b3e16d26'
+            'be09a04c60ef28507680e9b0938bba7c2ea43ed8eaec298e1e00b1592dbbd961'
+            '974bda9234cefedfc7dd0aaf0a5d2c32e8f923c8415dcc64f8f2b83eef702bde'
+            '9aa9b13b4ea11d5caf380b36ff119765fc172578cc6eca69215ce1ddaf39ea8f'
+            '2dfbd3419bd86e348d5b77f3ee5e80c2bdef1a7cad66ed3bf41137a4c1568691'
+            '89e3e18d369e59e581cbe90aed8c108ac14c3d823eedfa996123bdf0b75597f8'
+            '7236dfb5ae3819e99a3c9a1d837a66b2a89dc216d317f5b7b7290eeb7cd14577'
+            'ff41154fac94d9dd21964ce92900919bda01f7f2286f26e28ffd58310306ca9a'
+            '60ff44dfa5f41db444f20f3e765f291f76463829b08706fead1fba7aa179db94'
+            '61b7c5a72d787fbb7f98abd1f73f3dbe70514fc56526dbc49941be7877d22dfb'
+            'cf7d8c3a1c0429b47914c9f1ea8e045dbf2a1d71f0912000d69ad8fd9bf99852'
+            '663c995d50f63e8fd59731669c84dad4758de22931d8b9bd824ccbe23ca91554'
+            '347af2e0a959f3c0a8bba2bc03e66d7f54c2d6cfe056e92c1f01386abcef0942'
+            '9f2bc7166f9cfc88e0cc49fe154cc92701116b1abf9ea03f9cf374f853ec636d'
+            '4ad87e6e2a5190f198cd8a3edd065a95270f6560768e473b008f7b005bd69135'
+            '3e3b6e67b39cedf7b9f3aaf0ce476e1bf0f8c95f77c6789241d92b0c1e109039'
+            '0587f1c3d40af9e472b57d19fc68eaac3ad144c240662f909ea76c13317eb4e7')
 
 package() {
     for deb in "${source[@]}"; do
