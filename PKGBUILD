@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=echoplayer-bin
 _pkgname=EchoPlayer
-pkgver=1.0.0
+pkgver=1.1.1
 _electronversion=37
 pkgrel=1
 pkgdesc="A video player designed for language learners, helping users learn foreign languages through sentence-by-sentence intensive listening.(Prebuilt version.Use system-wide electron)"
@@ -15,6 +15,8 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'python'
+    'python-pydantic'
 )
 options=(
     '!strip'
@@ -24,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('7c6d6a2c5a49e99e72eff21d22c658c50d313598a47f7b6268912ea334d0c3cc')
-sha256sums_x86_64=('3b3d792f3c6b5ab0a923da4f56d02d392dac770ca86f080fdc27d8c44ee01a5e')
+sha256sums_aarch64=('a5d066587ff916bc9fb7ccb254c160e50f829cfcb6dabd7ecfd981112769f17d')
+sha256sums_x86_64=('840be770dfe3378c1c6267778346d905d0f06bb46d0ddedfb5b009a9e2cc4883')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
