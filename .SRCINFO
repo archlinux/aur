@@ -1,0 +1,12 @@
+pkgbase = vespa-cli
+	pkgdesc = Command-line interface for Vespa AI search and data serving platform
+	pkgver = 8.589.18
+	pkgrel = 1
+	url = https://vespa.ai
+	arch = x86_64
+	license = Apache
+	depends = bash
+	source = https://github.com/vespa-engine/vespa/releases/download/v8.589.18/vespa-cli_8.589.18_linux_amd64.tar.gz
+	sha256sums = 686e8bedd2fa6d1fe5acff0fa0737dcaa1049ca87d9059c7167ff7bcfee430f6
+
+pkgname = vespa-cli
