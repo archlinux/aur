@@ -1,24 +1,24 @@
 # Maintainer: Satakun Utama <linesofcodes at dailitation dot xyz>
 
 pkgname=vencoder-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A graphical tool to transcode video"
 arch=("x86_64" "armv7h" "aarch64")
-url=https://gitskette.dailitation.xyz/linesofcodes/vencoder
+url=https://github.com/lines-of-codes/Vencoder
 license=("GPL-3.0-or-later")
 depends=("ffmpeg" "gtk3")
-source=("https://gitskette.dailitation.xyz/linesofcodes/vencoder/releases/download/${pkgver}/vencoder-release.zip"
-    "https://gitskette.dailitation.xyz/linesofcodes/vencoder/archive/${pkgver}.tar.gz")
-b2sums=('2e841eef92c9e5b400dc471a2ec818ecdb2475e32aafa64f18201d8a4a566905057f039b88b97ca86c5c7559ccf3db2052f6e9a8c622d0e9aff6fdd03141a092'
-    'c07c2b23cd3602f19f5add8aeaa3c9f7a5277cf89a34e6c7cb9ba060f5ab2a7e1b6e482c40882c3bcd8c1184dbccfc4f49372b50f115bf91845f252fb53d40b9')
+source=("https://github.com/lines-of-codes/Vencoder/releases/download/v${pkgver}/vencoder-release.zip"
+    "https://github.com/lines-of-codes/Vencoder/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('abb223e7c9b1fc408b3a69dfbc789f637dc5adcd13e60c2a2599346f604954c7f0636aeab892fa66d9acad30c468de3281ed2310112d8675537c24cdef363fb9'
+        '7d6e93537816bb3ffe96bd72a0469343604fa2d1bcca0b7ea57bb33810049638f440cac6fe4c03e624acff1011e5573978d8a1ae4d7152e986f4bb2b328f6526')
 options=("!strip")
 
 _dest="/opt/vencoder-bin"
 
 package() {
     install -d "$pkgdir/$_dest" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
-    install "$srcdir/vencoder/meta/xyz.dailitation.linesofcodes.vencoder.desktop" "$pkgdir/usr/share/applications/xyz.dailitation.linesofcodes.vencoder.desktop"
+    install "$srcdir/Vencoder-${pkgver}/meta/xyz.dailitation.linesofcodes.vencoder.desktop" "$pkgdir/usr/share/applications/xyz.dailitation.linesofcodes.vencoder.desktop"
 
     ln -s "/tmp" "$pkgdir$_dest/.tmp"
 
