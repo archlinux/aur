@@ -1,5 +1,5 @@
 pkgbase = shadps4-nightly-bin
-	pkgdesc = Unofficial nightly release of the shadPS4 PlayStation 4 emulator (Nightly pre-release version)
+	pkgdesc = Nightly release of the shadPS4 PlayStation 4 emulator
 	pkgver = 2025.10.14.db9921b
 	pkgrel = 1
 	url = https://shadps4.net/
