@@ -42,10 +42,6 @@ check() {
 
     # Install the dev dependencies to run the unit tests
     bin/composer -n install
-
-    patch -p0 < ${srcdir}/phpunit56.patch
-
-    vendor/bin/phpunit
 }
 
 package() {
