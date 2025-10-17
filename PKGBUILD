@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=thorium
-pkgver=1.1.2
+pkgver=1.3.0
 pkgrel=1
 _rustupver=nightly-2025-08-01
 pkgdesc="A highly scalable, distributed malware analysis and data generation framework"
@@ -19,7 +19,7 @@ makedepends=(
     git
 )
 source=($pkgname::git+https://github.com/cisagov/thorium.git#tag=$pkgver)
-b2sums=('d7999e7e22e2613386cae3ae81532eef6b0d4cddabe0407069870b417985e0e85f639bb3bcdb188c72ab93cf352dfd4f98934d5c61f8c09b3fb96ef8d13293be')
+b2sums=('1daa732b255640839d733ed2de410d0e0422371a71734cc51baea6cae7822dec3d7fe57c8e268596bde88b8ab19c88ebac33e30af28d04a0ffa374c6c18e3399')
 options=(!lto)
 
 prepare() {
@@ -41,13 +41,13 @@ build() {
 # TODO: run tests when they are fixed
 # See: https://github.com/cisagov/thorium/issues/26
 
-#check() {
+# check() {
 #    cd $pkgname
 #    export RUSTUP_TOOLCHAIN=$_rustupver
 #    export OPENSSL_NO_VENDOR=1
 #    export RUSTFLAGS="$RUSTFLAGS -C target-feature=+aes,+sse2"
 #    cargo test --frozen
-#}
+# }
 
 package() {
     cd $pkgname/target/release
