@@ -1,31 +1,48 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wipemychat"
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Delete all your messages in public and private Telegram chats"
-arch=('x86_64' 'aarch64' 'i686')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/rusq/${pkgname}"
-license=('GPL-3.0-or-later')
-depends=('glibc')
-makedepends=('go')
-_pkgsrc="${pkgname}-${pkgver}"
+license=('GPL-3.0-only')
+depends=(
+  'glibc'
+)
+makedepends=(
+  'go'
+)
+_pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b309c19e2d394c722a6198a2cca9f7ad5353c837ede12bc94031e1143a5dd600')
+sha256sums=('315a3ec5e71fc85563ea1b48f75261611b9961003243bff44e75d6b8f828623c')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  chmod -R ug+Xwr "${GOMODCACHE}"
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" .
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
 }
 
 package() {
