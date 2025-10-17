@@ -23,6 +23,8 @@ pkgbase = pgadmin4-server
 	depends = python-dbus
 	provides = pgadmin4-server
 	source = pgadmin4-9.9.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v9.9/source/pgadmin4-9.9.tar.gz
+	source = server.patch
 	sha256sums = 108e16272f82a87eb6483f401f54e46326da8c48e014ab2dd742640dc6f995f2
+	sha256sums = c90b3cd931f9ae5b76ff21f459fba752f827e68638b951aa1a117175
 
 pkgname = pgadmin4-server

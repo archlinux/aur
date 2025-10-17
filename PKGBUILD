@@ -10,12 +10,12 @@ url='https://www.pgadmin.org/'
 depends=('postgresql-libs' 'krb5' 'python-dbus')
 makedepends=("python" "python-pip" "postgresql-libs" "gcc" "nodejs" "pkgconf" "cmake" "dbus" "npm" "wget" "unzip" "syft" "patch")
 provides=('pgadmin4-server')
-source=("pgadmin4-${pkgver}.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/pgadmin4-${pkgver}.tar.gz")
-sha256sums=('108e16272f82a87eb6483f401f54e46326da8c48e014ab2dd742640dc6f995f2')
+source=("pgadmin4-${pkgver}.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/pgadmin4-${pkgver}.tar.gz" "server.patch")
+sha256sums=('108e16272f82a87eb6483f401f54e46326da8c48e014ab2dd742640dc6f995f2' '94c19eb03718ff2002408a9159c1646102576911e4146d75d39f3bb2eb60fc27')
 
 prepare() {
   cd "$srcdir/pgadmin4-${pkgver}"
-  patch -p1 < "../../server.patch"
+  patch -p1 <"../server.patch"
 }
 
 build() {
