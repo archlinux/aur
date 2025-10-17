@@ -9,6 +9,6 @@ pkgbase = ffetch
 	depends = xorg-xprop
 	depends = coreutils
 	source = https://github.com/0l3d/ffetch/releases/download/v0.2.20/ffetch-v0.2.20-linux-x86_64.tar.gz
-	sha256sums = 146f6e1f24ea32d48eab58d06fcb4a4f498840bd11e65c73d6947ab252956f53
+	sha256sums = a1c772b2e6aff352c64e4eea24f2a81f9efd1cedb22bd6b06ffd9e6bf36f87fa
 
 pkgname = ffetch
