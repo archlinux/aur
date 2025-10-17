@@ -12,7 +12,7 @@ pkgver=20250903
 _pkgver=dev-${pkgver}
 _vboxver='7.2.0'
 _vboxsubver=''
-pkgrel=2
+pkgrel=3
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -56,7 +56,8 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '018-upate-xclient-script.patch'
         '020-python-3-12.patch'
         '021-python-3-13.patch'
-        '022-FE-Qt-VBox-Manager-Create-destroy-notification-center.patch')
+        '022-FE-Qt-VBox-Manager-Create-destroy-notification-center.patch'
+        '023-new-curl.patch')
 sha256sums=('4f2804ff27848ea772aee6b637bb1e10ee74ec2da117c257413e2d2c4f670ba0'
             '2ef6f86c3f56a4f1c10681b057cf448ba00c56c292fce38b01e67d528fecad82'
             'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
@@ -80,7 +81,8 @@ sha256sums=('4f2804ff27848ea772aee6b637bb1e10ee74ec2da117c257413e2d2c4f670ba0'
             '2540381de895fabbcc68d820c1f72ba644ef566ff5dab0f60be055c7b45cc06f'
             'ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6'
             'a8e53afe996c3de401824261ac4228eb8960af0832de2a8f101e9aa6ddb442f8'
-            '98c0b249d8b97b8d374f104fbc531ddc71f0b3b67b28261cf950c1f93ca248af')
+            '98c0b249d8b97b8d374f104fbc531ddc71f0b3b67b28261cf950c1f93ca248af'
+            '4f5c525160ebe0e1f051cfe4fc7e69d8067b618934b3f5cd3ebfad0b2cc57d89')
 
 prepare() {
     cd "VirtualBox-${_vboxver}"
@@ -114,7 +116,6 @@ build() {
         --enable-vde \
         --enable-vnc \
         --enable-webservice \
-        --build-libcurl \
         --with-makeself=/usr/bin/echo
     # fake makeself binary to compile without nofatal
     # makeself is used by linux installer. we don't need it.

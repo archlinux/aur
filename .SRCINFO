@@ -1,7 +1,7 @@
 pkgbase = virtualbox-kvm
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (KVM backend)
 	pkgver = 20250903
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cyberus-technology/virtualbox-kvm
 	arch = x86_64
 	license = GPL-3.0-only AND (GPL-3.0-only OR CDDL-1.0)
@@ -97,6 +97,7 @@ pkgbase = virtualbox-kvm
 	source = 020-python-3-12.patch
 	source = 021-python-3-13.patch
 	source = 022-FE-Qt-VBox-Manager-Create-destroy-notification-center.patch
+	source = 023-new-curl.patch
 	sha256sums = 4f2804ff27848ea772aee6b637bb1e10ee74ec2da117c257413e2d2c4f670ba0
 	sha256sums = 2ef6f86c3f56a4f1c10681b057cf448ba00c56c292fce38b01e67d528fecad82
 	sha256sums = f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04
@@ -121,5 +122,6 @@ pkgbase = virtualbox-kvm
 	sha256sums = ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6
 	sha256sums = a8e53afe996c3de401824261ac4228eb8960af0832de2a8f101e9aa6ddb442f8
 	sha256sums = 98c0b249d8b97b8d374f104fbc531ddc71f0b3b67b28261cf950c1f93ca248af
+	sha256sums = 4f5c525160ebe0e1f051cfe4fc7e69d8067b618934b3f5cd3ebfad0b2cc57d89
 
 pkgname = virtualbox-kvm
