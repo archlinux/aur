@@ -21,9 +21,14 @@ if [[ "$current_version" != "$new_version" ]]; then
   sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 else
   echo "pkgver already at ${new_version}."
+  exit 0
 fi
 
 echo "Regenerating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
+
+git add PKGBUILD
+git add .SRCINFO
+git commit -m "Update pkgver to ${new_version}"
 
 echo "Done."
