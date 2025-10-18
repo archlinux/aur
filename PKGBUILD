@@ -1,6 +1,6 @@
 # Maintainer: gunererd <your-email@example.com>
 pkgname=helix-health
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Overengineered helix --health"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('helix')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0e952e12f6137cace1f820a0b77fe8fb02c101db6cde9f1cb59b71d6e9c7a80c')
+sha256sums=('4c2db5a91f1195bda83896432e1f8ee4074ee86f8dc42005ed8ee7e2b0e60db8')
 
 build() {
   cd "$pkgname-$pkgver"
