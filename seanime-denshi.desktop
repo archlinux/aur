@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=
+Comment=Seanime Denshi
+Exec=seanime-denshi
+StartupWMClass=seanime-denshi
+Icon=seanime-denshi
+Name=Seanime Denshi
+Terminal=false
+Type=Application

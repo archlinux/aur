@@ -1,0 +1,2 @@
+#!/bin/sh
+exec @ELECTRON@ /usr/lib/seanime-denshi/app.asar --disable-dev-mode "$@"
