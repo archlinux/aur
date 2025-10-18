@@ -1,0 +1,5 @@
+[leenfetch-bin]
+source = "github"
+github = "drunkleen/leenfetch"
+use_latest_release = true
+prefix = "v"
