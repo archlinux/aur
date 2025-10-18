@@ -1,5 +1,5 @@
 post_upgrade() {
-  echo ">>    Remember to check for changes in /usr/lib/librewolf-hellfire/librewolf.cfg.pacnew"
+  echo ">>    Remember to check for changes in /usr/lib/librewolf/librewolf.cfg.pacnew"
   echo ">>    as those will not automatically overwrite your existing librewolf.cfg."
   echo ">>    "
   echo ">>    We would encourage you to migrate your own changes to the new overrides file"

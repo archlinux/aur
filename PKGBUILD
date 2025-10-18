@@ -8,12 +8,13 @@
 
 pkgname=librewolf-hellfire
 _pkgname=LibreWolf-HellFire
+_appname=librewolf
 epoch=1
 pkgver=141.0.3_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
-pkgrel=2
+pkgrel=3
 pkgdesc="LibreWolf with HellFire performance optimizations - privacy-focused Firefox fork with extreme performance tuning"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -102,8 +103,8 @@ fi
 provides=('librewolf')
 conflicts=('librewolf')
 
-backup=('usr/lib/librewolf-hellfire/librewolf.cfg'
-        'usr/lib/librewolf-hellfire/distribution/policies.json')
+backup=("usr/lib/${_appname}/librewolf.cfg"
+        "usr/lib/${_appname}/distribution/policies.json")
 options=(
   !debug
   !emptydirs
@@ -119,7 +120,7 @@ source=(
 )
 
 sha256sums=('a42535781168f3b2f398125a16ea925aaa31f07e0739bf41c12efc2cd39ccdce'
-            'e866c96f3dfb8db2acc57f8ebc44cd3bda64a5cf1ed125e1fc657a375e549ece'
+            '6faf23e9e75799c7000c153463fb0e8d5c3d7fb8c167aea603142b1037bfa540'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
@@ -143,11 +144,11 @@ export CC='clang'
 export CXX='clang++'
 
 # Branding
-ac_add_options --with-app-name=${pkgname}
+ac_add_options --with-app-name=${_appname}
 # TODO: re-evaluate
 ac_add_options --enable-update-channel=release
 
-export MOZ_APP_REMOTINGNAME=${pkgname}
+export MOZ_APP_REMOTINGNAME=${_appname}
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -342,7 +343,7 @@ package() {
   cd librewolf-$_firefoxver-$_librewolfver
   DESTDIR="$pkgdir" ./mach install
 
-  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/${_appname}/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
@@ -353,7 +354,7 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // pref("extensions.autoDisableScopes", 11);
 END
 
-  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  local distini="$pkgdir/usr/lib/${_appname}/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 
 [Global]
@@ -386,14 +387,14 @@ END
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/librewolf "\$@"
+exec /usr/lib/${_appname}/librewolf "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/librewolf-bin"
+  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/${_appname}/librewolf-bin"
   # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  local nssckbi="$pkgdir/usr/lib/${_appname}/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
