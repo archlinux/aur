@@ -1,6 +1,6 @@
 pkgbase = renpy-git
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs (dev channel)
-	pkgver = 8.4.0.25071206.r0.g8881389
+	pkgver = 8.4.1.25072401.r390.gfd38803
 	pkgrel = 1
 	url = http://www.renpy.org
 	install = renpy.install

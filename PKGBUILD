@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.4.0.25071206.r0.g8881389
+pkgver=8.4.1.25072401.r390.gfd38803
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
-	export CFLAGS+=" $(pkg-config --cflags ftgl)"
+	export CFLAGS+=" $(pkg-config --cflags sdl2 ftgl)"
 
 	local _version="${pkgver%.*}"
 	_version="${_version%.*}"
