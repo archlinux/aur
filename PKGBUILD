@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: ParadiseofMagic <keonfarrugia@gmail.com>
 pkgname='2bwm'
 pkgver=0.3
 pkgrel=1
@@ -8,7 +9,7 @@ url="https://github.com/venam/2bwm"
 license=('ISC')
 depends=('xcb-util-wm' 'xcb-util-keysyms' 'xcb-util-xrm')
 conflicts=('2bwm-git' 'mcwm' 'mcwm-git') # due to /usr/bin/hidden program
-makedepends=('git' 'xcb-util')
+makedepends=('git' 'xcb-util' 'xorgproto')
 source=("$pkgname::git+https://github.com/bbidulock/2bwm.git#tag=v${pkgver}" '2bwm.desktop' '2bwm.copying')
 md5sums=('SKIP'
          '4342d9210effbe4bfb58722f4275aa5c'
