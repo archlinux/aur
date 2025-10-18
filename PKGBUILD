@@ -1,0 +1,28 @@
+# Maintainer: gunererd <your-email@example.com>
+pkgname=helix-health
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Overengineered helix --health"
+arch=('x86_64')
+url="https://github.com/gunererd/helix-health"
+license=('MIT')
+depends=('helix')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('0e952e12f6137cace1f820a0b77fe8fb02c101db6cde9f1cb59b71d6e9c7a80c')
+
+build() {
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o helix-health
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 helix-health "$pkgdir/usr/bin/helix-health"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
