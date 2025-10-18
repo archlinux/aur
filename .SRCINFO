@@ -1,7 +1,7 @@
 pkgbase = gog-a-short-hike
 	pkgdesc = Hike, climb, and soar through the peaceful mountainside landscapes of Hawk Peak Provincial Park.
-	pkgver = 1.9.v3.51666
-	pkgrel = 2
+	pkgver = 1.10.1.85630
+	pkgrel = 1
 	url = http://ashorthike.com/
 	arch = x86_64
 	license = custom
@@ -9,9 +9,9 @@ pkgbase = gog-a-short-hike
 	depends = zlib
 	source = gog-a-short-hike
 	source = gog-a-short-hike.desktop
-	source = a_short_hike_1_9_v3_51666.sh::gogdownloader://a_short_hike/en3installer0
+	source = a_short_hike_1_10_1_patched_85630.sh::gogdownloader://a_short_hike/en3installer0
 	sha256sums = 50a0a69e8dfc3120896e3291b56224f208db80d832e5e497bfb39d8de9b15099
-	sha256sums = 2b81ba692e940f059bd52c460c5d7e92bf236a00e99cb81fa8afb29af3e77b6a
-	sha256sums = 2f2c82a481636b587a211ace7f5c92f523cd88f2a05ba3dbfdac848d3f622266
+	sha256sums = e4a58e5a8ee24326ce1eb9e8e1c285a65545dba38d87d62e501ce0cab1198334
+	sha256sums = a14d295f2f2831e9fdaa85e1843d595ad549233ba89c5cdb349903e74a912894
 
 pkgname = gog-a-short-hike
