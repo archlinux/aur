@@ -3,7 +3,7 @@
 
 pkgname=clasp-cl
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Bringing Common Lisp and C++ Together'
 arch=('x86_64')
 url='https://github.com/clasp-developers/clasp'
@@ -40,7 +40,8 @@ build() {
     --package-path=$pkgdir \
     --bin-path=/usr/bin/ \
     --share-path=/usr/share/clasp/ \
-    --lib-path=/usr/lib/clasp/
+    --lib-path=/usr/lib/clasp/ \
+    --dylib-path=/usr/lib/
 
   ninja -C build
 }
