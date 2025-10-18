@@ -3,13 +3,13 @@
 _srcname=alloy
 pkgname=grafana-${_srcname}
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenTelemetry Collector distribution with programmable pipelines'
 arch=('x86_64' 'aarch64')
 url='https://grafana.com/oss/alloy-opentelemetry-collector/'
 license=('Apache-2.0')
 depends=('glibc')
-makedepends=('inetutils' 'git' 'go' 'systemd')
+makedepends=('docker' 'inetutils' 'git' 'go' 'systemd')
 backup=("etc/default/${pkgname}" "etc/${pkgname}/config.alloy")
 options=('!lto')
 source=(git+https://github.com/grafana/alloy.git#tag=v${pkgver}
