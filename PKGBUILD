@@ -2,14 +2,14 @@
 
 pkgname=wlr-sunclock-git
 _pkgname=wlr-sunclock
-pkgver=r33.bf2d38f
+pkgver=r43.9d24fc5
 pkgrel=1
 pkgdesc='Displays a sunclock desktop widget using the layer shell protocol'
 arch=(x86_64)
 url='https://github.com/sentriz/wlr-sunclock'
 license=('LGPL3')
 groups=()
-depends=('gtk3' 'gobject-introspection' 'gtk-layer-shell')
+depends=('gtk4' 'gtk4-layer-shell' 'gobject-introspection')
 makedepends=('git' 'meson' 'ninja')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
