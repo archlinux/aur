@@ -9,6 +9,7 @@ pkgbase = capacity-tester
 	license = GPL3
 	makedepends = gcc
 	makedepends = make
+	makedepends = qt5-tools
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	source = capacity-tester-0.6.tar.gz::https://github.com/c0xc/CapacityTester/archive/v0.6.tar.gz
