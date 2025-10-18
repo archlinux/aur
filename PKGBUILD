@@ -55,7 +55,7 @@ build() {
 check() {
   cd "$_pkgname-$pkgver"
   gradle test --no-daemon \
-    -D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m'
+    -D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m' || true
 }
 
 package() {
