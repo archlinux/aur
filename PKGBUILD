@@ -1,4 +1,4 @@
-# Maintainer: Nathan Chere <git@nathanchere.com.au>
+# Maintainer: Nathan Chere <aur@nathanchere.com.au>
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 _appname=Grayjay
