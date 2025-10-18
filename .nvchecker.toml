@@ -1,4 +1,5 @@
-["moor-bin"]
-source = "git"
-git = "https://github.com/walles/moor.git"
+[moor-bin]
+source = "github"
+github = "walles/moor"
+use_latest_release = true
 prefix = "v"
