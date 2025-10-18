@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Peter Hatina <phatina AT gmail.com>
 pkgname=lib32-glm
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://glm.g-truc.net"
 depends=('glm')
 makedepends=('cmake' 'ninja' 'lib32-gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/g-truc/glm/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('c6c6fa1ea7a7e97820e36ee042a78be248ae828c99c1b1111080d9bf334a5160c9993a70312351c92a867cd49907c95f9f357c8dfe2bc29946da6e83e27ba20c')
+sha512sums=('e66e4f192f6579128198c47ed20442dda13c741f371b447722b7449200f05785e1b69386a465febf97f33b437f6eb69b3fb282e1e9eabf6261eb7b57998cd68c')
 
 build() {
   export CC='gcc -m32'
