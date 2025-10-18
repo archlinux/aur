@@ -1,0 +1,23 @@
+pkgbase = startlive-git
+	pkgdesc = 绕过B站直播姬获取推流地址
+	pkgver = 0.6.5.r11.geb42a13
+	pkgrel = 1
+	url = https://github.com/Radekyspec/StartLive
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = python-pillow
+	depends = python-qrcode
+	depends = python-requests
+	depends = python-pysocks
+	depends = python-obsws
+	depends = python-keyring
+	depends = python-darkdetect
+	depends = python-pyqtdarktheme-fork
+	provides = startlive
+	source = startlive::git+https://github.com/Radekyspec/StartLive.git
+	sha256sums = SKIP
+
+pkgname = startlive-git
