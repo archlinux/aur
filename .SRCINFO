@@ -1,0 +1,17 @@
+pkgbase = ossfs2-bin
+	pkgdesc = A High Performance OSS POSIX Client for Alibaba Cloud Object Storage Service
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://www.alibabacloud.com/help/en/oss/developer-reference/ossfs
+	arch = x86_64
+	license = LicenseRef-AlibabaCloud
+	makedepends = patchelf
+	depends = glibc
+	provides = ossfs2
+	conflicts = ossfs
+	source = ossfs2_2.0.3_linux_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs2_2.0.3_linux_x86_64.rpm
+	source = LICENSE
+	sha256sums = 75d21162db5fca746db09d45ac6e47504dd2e1e8ebb2a6ccedf8cdee6aca56c1
+	sha256sums = SKIP
+
+pkgname = ossfs2-bin
