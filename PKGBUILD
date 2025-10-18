@@ -5,7 +5,7 @@
 
 pkgname=python-uncompyle6
 _name=${pkgname#python-}
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="Python byte-code disassembler and source-code converter."
 arch=('any')
@@ -15,12 +15,19 @@ depends=('python-click'
          'python-spark-parser>=1.8.9'
          'python-spark-parser<1.9.2'
          'python-xdis>=6.1.0'
-         'python-xdis<6.2.0')
-makedepends=('python-setuptools')
+         'python-xdis<6.3')
+makedepends=('python-build'
+             'python-installer'
+             'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('6f70980ffe08a64b114b6871832fd02d86c99035f8976a8f1f8121dad6fca425')
+sha256sums=('78b764d4c843b0455fb39db6deb421a48d5d3ebb846537ba6444afe107c4ebc1')
+
+build() {
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
