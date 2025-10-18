@@ -1,4 +1,4 @@
-# Maintainer: Nathan Chere <git@nathanchere.com.au>
+# Maintainer: Nathan Chere <aur@nathanchere.com.au>
 _base_ver=10
 pkgname=grayjay-git
 _appname=Grayjay
