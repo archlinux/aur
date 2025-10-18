@@ -1,6 +1,6 @@
 pkgbase = python-langchain-text-splitters
 	pkgdesc = LangChain text splitting utilities
-	pkgver = 0.3.11
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/text-splitters
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-langchain-text-splitters
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
 	depends = python-langchain-core
-	source = langchain-text-splitters-0.3.11.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-text-splitters/langchain_text_splitters-0.3.11.tar.gz
-	sha256sums = 7a50a04ada9a133bbabb80731df7f6ddac51bc9f1b9cab7fa09304d71d38a6cc
+	source = langchain-text-splitters-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-text-splitters/langchain_text_splitters-1.0.0.tar.gz
+	sha256sums = d8580a20ad7ed10b432feb273e5758b2cc0902d094919629cec0e1ad691a6744
 
 pkgname = python-langchain-text-splitters
