@@ -1,13 +1,13 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 
 pkgname=paracon
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Paracon is a packet radio terminal for Linux, Mac and Windows."
 arch=('x86_64')
 url="https://github.com/mfncooper/paracon"
 license=('MIT')
-depends=('python>=3.7')
+depends=('python>=3.9')
 provides=("$pkgname")
 source_x86_64=("${pkgname}-${pkgver}::$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums_x86_64=('a8d7f6489fb3ea904b7724ab044b9092c4a348b08574ab2a7cfae50149f91a54')
