@@ -6,7 +6,7 @@
 pkgname=equicord
 _pkgname=Equicord
 pkgver=0.0.112.r5542gb7ba9e9f
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='The other cutest Discord client mod'
 arch=('x86_64')
@@ -62,6 +62,11 @@ prepare() {
         _ensure_local_nvm
         nvm install --lts
         pnpm install --frozen-lockfile
+
+        sed -i \
+            -e '#async function fetchUpdates\(\) {#a return false;' \
+            -e '#async function applyUpdates\(\) {#a return false;' \
+            src/main/updater/http.ts
     popd
 }
 
@@ -102,7 +107,7 @@ build() {
     
     pushd equicord-source
         _ensure_local_nvm
-        pnpm build
+        EQUICORD_REMOTE="Equicord/Equicord" pnpm buildStandalone
         cp -a dist "../discord-$discord_ver"
 
         rm -rf "../discord-$discord_ver/dist/Installer"
