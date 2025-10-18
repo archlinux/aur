@@ -1,16 +1,17 @@
 pkgbase = splayer
 	pkgdesc = Splayer | A minimalist music player
-	pkgver = 3.0.0_beta.2
+	pkgver = 3.0.0_beta.3
 	pkgrel = 1
 	url = https://github.com/imsyy/SPlayer
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
-	provides = splayer=3.0.0_beta.2
+	provides = splayer=3.0.0_beta.3
 	conflicts = splayer
-	noextract = splayer-3.0.0-beta.2.pacman
+	noextract = splayer-3.0.0-beta.3-x64.pacman
 	options = !strip
 	options = !debug
-	source = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.2/splayer-3.0.0-beta.2.pacman
-	sha256sums = d6d0983ac32acf239c7b092debc14476eafe5a93706270525f0017cc2452ea4c
+	source = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.3/splayer-3.0.0-beta.3-x64.pacman
+	sha256sums = 93e1612a817e95eb1319caf80e46dc817bf75f4f6f0ea1e287c5903d9c2febf1
 
 pkgname = splayer
