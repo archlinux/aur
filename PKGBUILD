@@ -9,8 +9,7 @@ license=('MIT')
 depends=('python' 'python-gobject' 'gtk3' 'python-pip')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AZNIT11/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed  -
-')  # Replace with actual checksum after uploading to GitHub
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -31,12 +30,8 @@ package() {
     install -Dm644 instagram-reels-downloader.desktop \
         "${pkgdir}/usr/share/applications/instagram-reels-downloader.desktop"
     
-    # Install icon
-    install -Dm644 icon.png \
-        "${pkgdir}/usr/share/pixmaps/instagram-reels-downloader.png"
-    
     # Install documentation
-    install -Dm644 README-NATIVE.md \
+    install -Dm644 README.md \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     
     # Install license
