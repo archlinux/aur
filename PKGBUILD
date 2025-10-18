@@ -2,9 +2,9 @@
 
 _pkgname=xsystem4
 pkgname=${_pkgname}-git
-pkgver=1.0.0.r0.gd3cb6b4
+pkgver=1.0.0.r9.g43c6a28
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
@@ -14,20 +14,22 @@ url="https://github.com/nunuhara/xsystem4"
 license=('GPL-2.0-only')
 depends=(chibi-scheme ffmpeg freetype2 libffi libpng libsndfile libjpeg-turbo libwebp sdl2 zlib)
 makedepends=(bison flex glew meson)
+source=("${pkgname}::git+https://github.com/nunuhara/xsystem4.git")
 conflicts=(${_pkgname})
+sha256sums=('SKIP')
 prepare () {
-	git clone --recursive $url
+	cd "$srcdir/${pkgname}"
+	mkdir build
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	mkdir build
+	cd "$srcdir/${pkgname}"
 	meson setup build --prefix /usr
 	ninja -C build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${pkgname}"
   DESTDIR="$pkgdir" ninja -C build install
 
   echo "#######################################################################"
