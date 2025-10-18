@@ -1,9 +1,8 @@
 pkgbase = dedupe-dir
-	pkgdesc = Dedupes the home directory once a week, using duperemove
+	pkgdesc = Dedupes directories of your choosing once a week.
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
-	depends = btrfs-progs
 	depends = systemd
 	depends = duperemove
 	depends = coreutils

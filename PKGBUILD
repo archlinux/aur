@@ -3,10 +3,10 @@
 
 pkgname=dedupe-dir
 pkgver=0.4
-pkgrel=2
-pkgdesc='Dedupes the home directory once a week, using duperemove'
+pkgrel=3
+pkgdesc='Dedupes directories of your choosing once a week.'
 arch=('any')
-depends=('btrfs-progs' 'systemd' 'duperemove' 'coreutils')
+depends=('systemd' 'duperemove' 'coreutils')
 source=(
     "dedupe.timer::https://raw.githubusercontent.com/theblu3j/dedupe/refs/heads/main/dedupe.timer"
     "dedupe.service::https://raw.githubusercontent.com/theblu3j/dedupe/refs/heads/main/dedupe.service"
