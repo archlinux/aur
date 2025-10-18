@@ -1,7 +1,7 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 
 pkgname=teamspeak
-pkgver=6.0.0beta3
+pkgver=6.0.0beta3.2
 pkgrel=1
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
@@ -19,7 +19,7 @@ optdepends=('libpulse')
 arch=('x86_64')
 source=("teamspeak-client-$pkgver.tar.xz::https://files.teamspeak-services.com/pre_releases/client/${pkgver/beta/-beta}/teamspeak-client.tar.gz"
         "teamspeak-client.desktop")
-sha512sums=('2bbfd10b5877260a8343b719bc5b6571c114d8c39dd5cee61f9d1156d4f3c015743348c3bf06451f23299b759618ccea2b0de4b635862a50b49f0cd8027eb8e0'
+sha512sums=('92c0a9917d42514510f10b4f46c36ccb8e831e0cc441652d911265d2cd7a557eede9bbdab31bf30048118026b93932331b96f381a602dd371efb53ec29e9c0c8'
             '28f6cfbb842cd25d51819eccaa282aa0edd1e5b37e7eb14ef7e7e07723bd83fa7b3babc8f303021f83d3591a7d7f4db824f770c86d1b6a7326466e256cf787d0')
 
 package() {
