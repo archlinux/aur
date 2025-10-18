@@ -1,6 +1,6 @@
 pkgbase = python-langserve
 	pkgdesc = A library to deploy LangChain runnables and chains as a REST API.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langserve
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-langserve
 	depends = python-langchain-core
 	depends = python-orjson
 	depends = python-pydantic
-	source = langserve-0.3.2.tar.gz::https://github.com/langchain-ai/langserve/archive/refs/tags/v0.3.2.tar.gz
-	b2sums = af561e76054c3b7682828112332fe430b824a8893c23a6d5ab537a041b1ae50537721345c9f97f7b69ec89679df53ffdc8a0a2dac44b602f74c2855f6bfef214
+	source = langserve-0.3.3.tar.gz::https://github.com/langchain-ai/langserve/archive/refs/tags/v0.3.3.tar.gz
+	b2sums = 48b4d259bc75c33435ac1c58c42af702bd8d9a7da99d5bcfcf19b7f49af71a6bdf85d6cd60f1562f23f921de2c506d2684b466ab413746d340374ac62722173a
 
 pkgname = python-langserve

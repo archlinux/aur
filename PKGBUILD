@@ -2,7 +2,7 @@
 
 _pkgname=langserve
 pkgname="python-${_pkgname}"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A library to deploy LangChain runnables and chains as a REST API."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-httpx' 'python-fastapi' 'python-sse-starlette' 'python-langchain-core' 'python-orjson' 'python-pydantic')
 makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('af561e76054c3b7682828112332fe430b824a8893c23a6d5ab537a041b1ae50537721345c9f97f7b69ec89679df53ffdc8a0a2dac44b602f74c2855f6bfef214')
+b2sums=('48b4d259bc75c33435ac1c58c42af702bd8d9a7da99d5bcfcf19b7f49af71a6bdf85d6cd60f1562f23f921de2c506d2684b466ab413746d340374ac62722173a')
 
 build() {
     cd "${_pkgname}-${pkgver}"
