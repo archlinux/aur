@@ -1,7 +1,7 @@
 pkgbase = btrfs-snapshots
 	pkgdesc = Manage timestamped collections of btrfs snapshots
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmcantrell/btrfs-snapshots
 	arch = any
 	license = MIT
