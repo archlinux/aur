@@ -20,9 +20,24 @@ build() {
   export CGO_ENABLED=0
   # compare with: https://github.com/authzed/spicedb/blob/main/.goreleaser.yml
   go build -trimpath -ldflags "-s -w -X github.com/jzelinskie/cobrautil/v2.Version=v${pkgver}" -o "$pkgname" -v -o "$pkgname" "./cmd/$pkgname"
+  "./$pkgname" completion bash > bash-completion.sh
+  "./$pkgname" completion fish > fish-completion.fish
+  "./$pkgname" completion zsh > zsh-completion.zsh
 }
 
 package() {
   install -D -m755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+  local bash_completions_dir="$pkgdir/usr/share/bash-completion/completions"
+  install -D -d -m755 "$bash_completions_dir"
+  install -m644 "$srcdir/$pkgname/bash-completion.sh" "$bash_completions_dir/$pkgname"
+
+  local zsh_completions_dir="$pkgdir/usr/share/zsh/site-functions/"
+  install -D -d -m755 "$zsh_completions_dir"
+  install -m644 "$srcdir/$pkgname/zsh-completion.zsh" "$zsh_completions_dir/_$pkgname"
+
+  local fish_completions_dir="$pkgdir/usr/share/fish/vendor_completions.d"
+  install -D -d -m755 "$fish_completions_dir"
+  install -m644 "$srcdir/$pkgname/fish-completion.fish" "$fish_completions_dir/$pkgname.fish"
 }
 
