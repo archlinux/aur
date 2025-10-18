@@ -1,0 +1,11 @@
+--- PKGBUILD
++++ PKGBUILD
+@@ -6,7 +6,7 @@
+ # Contributor: John Proctor <jproctor@prium.net>
+ 
+ pkgname=pcre2
+-pkgver=10.45
++pkgver=10.46
+ pkgrel=1
+ pkgdesc='A library that implements Perl 5-style regular expressions. 2nd version'
+ arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-pcre2
 	pkgdesc = A library that implements Perl 5-style regular expressions. 2nd version (mingw-w64)
-	pkgver = 10.45
+	pkgver = 10.46
 	pkgrel = 1
 	url = https://github.com/PCRE2Project/pcre2
 	arch = any
@@ -18,13 +18,13 @@ pkgbase = mingw-w64-pcre2
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = pcre2::git+https://github.com/PCRE2Project/pcre2?signed#tag=pcre2-10.45
+	source = pcre2::git+https://github.com/PCRE2Project/pcre2?signed#tag=pcre2-10.46
 	source = sljit::git+https://github.com/zherczeg/sljit.git
 	validpgpkeys = 45F68D54BBE23FB3039B46E59766E084FB0F43D8
 	validpgpkeys = A95536204A3BB489715231282A98E77EB6F24CA8
-	sha512sums = 02e1b9972c00e3eae7d07ddf0519f19b5291c979fa316453d24fea41adce3e3213f484049091df448765b799b66556901c24a6238fd48a1eef79614319a1c68e
+	sha512sums = 0adb31a8db7fbe33af3155ffccc117cbf604ac290fbbc5087638497dd7d22ab30b493dad7a0d9d3532980cf56ca76fc992b0e279d8ff641e9f9a31a1e28ef9a8
 	sha512sums = SKIP
-	b2sums = 196dfcbf6f096b91cb2b72cd1eab53e42a72435f27224fb02fb846f52939d2ae44f1d3ef6d59c024919be9dc00774e13e1bf3c82bec2acb1ac1cf64d66a721cc
+	b2sums = 499d16dc44df9f2d352e3f954f576369cc7a11018e46d96ec24f33ffba6eec55b670fd5437b02a013db1c8f63612ebfaafb87a2d762a1f9c8ba271ef3727f1d5
 	b2sums = SKIP
 
 pkgname = mingw-w64-pcre2
