@@ -13,9 +13,23 @@ makedepends=('curl' 'jq')
 _pkgver=$(curl -Ls "https://github.com/libnyanpasu/clash-nyanpasu/releases/download/pre-release/latest.json" | jq -r '.version')
 pkgver=$(echo "${_pkgver}" | sed 's/-/_/')
 
-source=("${_pkgname}-${_pkgver}-${arch}.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/pre-release/Clash.Nyanpasu_${_pkgver}_amd64.deb")
-sha256sums=('SKIP')
+source=("${_pkgname}-${_pkgver}-${arch}.deb::https://github.com/LibNyanpasu/clash-nyanpasu/releases/download/pre-release/Clash.Nyanpasu_${_pkgver}_amd64.deb"
+"logo.svg::https://github.com/libnyanpasu/clash-nyanpasu/raw/refs/heads/main/frontend/nyanpasu/src/assets/image/logo.svg")
+sha256sums=('SKIP'
+'07bdec01fa4fab2015ef605371e0760f0ba45d60fbee4795a5f56cd5638f3d23')
 
 package() {
   tar xpf data.tar.gz -C ${pkgdir}
+
+  # Fix icons
+  install -Dm644 logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+  mv "${pkgdir}/usr/share/icons/hicolor/32x32/apps/Clash Nyanpasu.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
+  mv "${pkgdir}/usr/share/icons/hicolor/128x128/apps/Clash Nyanpasu.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  mv "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/Clash Nyanpasu.png" "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/${_pkgname}.png"
+  sed -i "s/Icon=Clash Nyanpasu/Icon=${_pkgname}/" "${pkgdir}/usr/share/applications/Clash Nyanpasu.desktop"
+
+  # Fix program name for autostart
+  mv "${pkgdir}/usr/bin/Clash Nyanpasu" "${pkgdir}/usr/bin/${_pkgname}"
+  mv "${pkgdir}/usr/lib/Clash Nyanpasu" "${pkgdir}/usr/lib/${_pkgname}"
+  sed -i "s/Exec=\"Clash Nyanpasu\"/Exec=${_pkgname}/" "${pkgdir}/usr/share/applications/Clash Nyanpasu.desktop"
 }
