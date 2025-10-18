@@ -1,7 +1,7 @@
 # Maintainer: Zeus-Deus
 pkgname=gazelle-tui
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Minimal NetworkManager TUI with complete 802.1X enterprise WiFi support"
 arch=('any')
 url="https://github.com/Zeus-Deus/gazelle-tui"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-textual' 'networkmanager' 'networkmanager-openvpn')
 optdepends=('networkmanager-wireguard: For WireGuard VPN support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v$pkgver.tar.gz")
-sha256sums=('5f300d82e1fbb654204910e003eb6d52d9882c42ef37572135df37e2245d2691')
+sha256sums=('65e1674a51bbb976c684c5c1005ecc94847721ea5abf419d378793ee1f1b9656')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
