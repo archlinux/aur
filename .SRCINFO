@@ -1,13 +1,16 @@
 pkgbase = zune-git
 	pkgdesc = A Luau runtime, similar to Lune, Node, or Bun.
 	pkgver = v0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Scythe-Technology/zune
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = zig
 	depends = glibc
+	provides = zune
+	conflicts = zune
+	conflicts = zune-bin
 	source = git+https://github.com/Scythe-Technology/zune.git
 	sha256sums = SKIP
 
