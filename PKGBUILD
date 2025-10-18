@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('jre17-openjdk')
 source=("https://github.com/Card-Forge/forge/releases/download/forge-$pkgver/forge-installer-$pkgver.tar.bz2"
 	"https://github.com/Card-Forge/forge/raw/e16a80e822dd040cc6c768152f3493eb4f2ce09a/AppIcon.png")
-sha1sums=('0d37e67558cdb19b47fc8f2fdc34fcddf78a5d40'
+sha1sums=('aa07a73870fbfdc8a6d8b4c6249e85bc978a8d47'
           '9a957969da65cf281ceb31a3737bb3b8b799f14b')
 
 package() {
