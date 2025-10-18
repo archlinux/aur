@@ -22,6 +22,7 @@ sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
 # Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
 # In clang-16, there seems to be no problem without this option specified.
 # (The -ffat-lto-objects option is planned to be supported from clang-17.)
+CC=${CC:-$(command -v gcc || command -v clang)}
 [[ $CC =~ gcc ]] && export LTOFLAGS+=" -ffat-lto-objects"
 unset LD
 # musl build for openssl-sys
