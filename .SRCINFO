@@ -1,8 +1,8 @@
 pkgbase = python-pyfonts
 	pkgdesc = A simple and reproducible way of using fonts in matplotlib
-	pkgver = 1.1.1
+	pkgver = 1.1.3
 	pkgrel = 1
-	url = https://github.com/JosephBARBIERDARNAL/pyfonts
+	url = https://github.com/y-sunflower/pyfonts
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
@@ -11,7 +11,7 @@ pkgbase = python-pyfonts
 	makedepends = python-setuptools-scm
 	depends = python-matplotlib
 	depends = python-requests
-	source = pyfonts-1.1.1.tar.gz::https://github.com/JosephBARBIERDARNAL/pyfonts/archive/v1.1.1.tar.gz
-	sha512sums = 83340aa8ae81536f1603e0561d396ef1285b0910e9d0f796197eac4fcdc2e14df9462b2158816cbacabab373fea0b2dcfce0d8da85a88fe319d95c4cb8f3339b
+	source = pyfonts-1.1.3.tar.gz::https://github.com/y-sunflower/pyfonts/archive/v1.1.3.tar.gz
+	sha512sums = dec75be884790144337f011d3e08e7c642dde210f2b296a2a3c14dde7992f3d915cd994f3c1bf2256aeaa8ace19eb17a8fb3235db482cb6351201cda4a2377e3
 
 pkgname = python-pyfonts

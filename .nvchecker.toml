@@ -1,5 +1,5 @@
 [python-pyfonts]
 source = "github"
-github = "JosephBARBIERDARNAL/pyfonts"
+github = "y-sunflower/pyfonts"
 use_latest_release = "true"
 prefix = "v"
