@@ -4,12 +4,12 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A beautiful native GTK application for downloading Instagram reels with one click"
 arch=('any')
-url="https://github.com/AZNIT11/instagram-reels-downloader"
+url="https://github.com/Aznit11/instagram-reels-downloader"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk3' 'python-pip')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AZNIT11/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aznit11/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('70b6da77f36f9256370d4591b615e3e8cd4b56239a39d16be5399cb5908b22aa')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
