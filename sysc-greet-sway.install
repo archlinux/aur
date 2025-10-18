@@ -1,0 +1,82 @@
+post_install() {
+    echo "==> Creating greeter user..."
+    # FIXED 2025-10-15 - Add render group for Intel/AMD iGPU support on laptops
+    # Modern Linux uses 'render' group for /dev/dri/renderD* device access
+    if ! id greeter &>/dev/null; then
+        useradd -M -G video,render,input -s /usr/bin/nologin greeter
+    else
+        # User exists - ensure they have required groups for GPU access
+        # CRITICAL: Fixes "greeter exited without creating session" on laptops
+        usermod -aG video,render,input greeter
+    fi
+
+    echo "==> Setting permissions..."
+    chown -R greeter:greeter /var/cache/sysc-greet
+    chown -R greeter:greeter /var/lib/greeter
+    chmod 755 /var/lib/greeter
+
+    echo "==> Configuring greetd..."
+    # Create greetd config if it doesn't exist or is empty
+    if [ ! -s /etc/greetd/config.toml ]; then
+        cat > /etc/greetd/config.toml <<'INNEREOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "sway --unsupported-gpu -c /etc/greetd/sway-greeter-config"
+user = "greeter"
+
+[initial_session]
+command = "sway --unsupported-gpu -c /etc/greetd/sway-greeter-config"
+user = "greeter"
+INNEREOF
+        echo "Created /etc/greetd/config.toml"
+    else
+        echo "Existing /etc/greetd/config.toml found, not modifying"
+    fi
+
+    echo "==> Enabling greetd service..."
+    systemctl enable greetd.service
+
+    echo ""
+    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
+    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀   "
+    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
+    echo "                      //  SEE YOU SPACE COWBOY //"
+    echo ""
+    echo "==> sysc-greet (Sway) installed successfully!"
+    echo ""
+    echo "Reboot to see sysc-greet"
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Updating greeter user groups..."
+    # FIXED 2025-10-15 - Add render group for Intel/AMD iGPU support on laptops
+    usermod -aG video,render,input greeter 2>/dev/null || true
+
+    echo "==> Setting permissions..."
+    chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
+    chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
+
+    echo ""
+    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
+    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀   "
+    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
+    echo "                      //  SEE YOU SPACE COWBOY //"
+    echo ""
+    echo "==> sysc-greet (Sway) upgraded successfully!"
+    echo ""
+    echo "NOTE: greetd service was NOT restarted automatically."
+    echo "To apply changes:"
+    echo "  - Reboot your system, OR"
+    echo "  - Manually restart: sudo systemctl restart greetd.service"
+    echo ""
+    echo "WARNING: Restarting greetd will kill your current session!"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Disabling greetd service..."
+    systemctl disable greetd.service 2>/dev/null || true
+}
