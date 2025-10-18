@@ -1,19 +1,14 @@
 pkgbase = relibre
-	pkgdesc = Native webview app to generate single-file landing pages for music releases
+	pkgdesc = Music release one-page generator (builds a native WebKitGTK app that exports a single self-hostable HTML file)
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.circlewithadot.net/incentive/relibre
 	arch = x86_64
 	license = AGPL3
 	makedepends = go
-	makedepends = git
 	depends = gtk3
-	depends = webkit2gtk
-	depends = libsoup3
-	depends = hicolor-icon-theme
-	provides = relibre
-	conflicts = relibre-bin
-	source = relibre::git+https://git.circlewithadot.net/incentive/relibre.git#tag=v0.2.0
-	sha256sums = SKIP
+	depends = webkit2gtk-4.1
+	source = https://git.circlewithadot.net/incentive/relibre/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 88eed221ffb97f1dbc58a5cfc6939855713dbfb450fc8baad79e8267d1efd9a6
 
 pkgname = relibre
