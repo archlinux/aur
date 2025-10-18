@@ -1,21 +1,20 @@
-# Maintainer: Nelson Estevão <nelsonmestevao@proton.me>
-
+# Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname="livebook"
-pkgver="0.12.1"
-pkgrel="1"
+pkgver=0.17.2
+pkgrel=1
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks"
-arch=("x86_64")
-url="https://livebook.dev"
-license=("Apache-2.0")
-conflicts=("$pkgname")
-provides=("$pkgname")
-depends=("elixir")
-makedepends=("elixir")
+arch=('any')
+url='https://livebook.dev'
+_github_url="https://github.com/livebook-dev/livebook"
+license=('Apache-2.0')
+depends=('elixir>=1.18' 'erlang-parsetools' 'erlang-asn1' 'erlang-inets' 'erlang-os_mon' 'erlang-runtime_tools' 'erlang-ssl' 'erlang-xmerl')
+makedepends=('elixir')
+sha256sums=()
 
 build() {
-    mix local.hex --force
-    mix local.rebar --force
-    mix escript.install hex livebook "$pkgver"
+    mix local.hex --force --if-missing
+    mix local.rebar --force --if-missing
+    mix escript.install --force hex livebook "${pkgver}"
 }
 
 check() {
@@ -23,7 +22,6 @@ check() {
 }
 
 package() {
-    # Copy the installed package to the package directory
-    mkdir -p "$pkgdir/usr/bin"
-    cp -r "$HOME/.mix/escripts/livebook" "$pkgdir/usr/bin"
+    local escript_dir="${HOME}/.mix/escripts"
+    install -Dm755 "${escript_dir}/livebook" "${pkgdir}/usr/bin/livebook"}
 }

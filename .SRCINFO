@@ -1,13 +1,18 @@
 pkgbase = livebook
 	pkgdesc = Automate code & data workflows with interactive Elixir notebooks
-	pkgver = 0.12.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://livebook.dev
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
 	makedepends = elixir
-	depends = elixir
-	provides = livebook
-	conflicts = livebook
+	depends = elixir>=1.18
+	depends = erlang-parsetools
+	depends = erlang-asn1
+	depends = erlang-inets
+	depends = erlang-os_mon
+	depends = erlang-runtime_tools
+	depends = erlang-ssl
+	depends = erlang-xmerl
 
 pkgname = livebook
