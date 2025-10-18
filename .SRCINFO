@@ -1,0 +1,16 @@
+pkgbase = logparse-git
+	pkgdesc = Shell script that parses Caddy's JSON log files and outputs them as formatted text (development version)
+	pkgver = r7.g01578e4
+	pkgrel = 1
+	url = https://git.tnonline.net/Forza/logparse
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = jq
+	provides = logparse
+	conflicts = logparse
+	source = git+https://git.tnonline.net/Forza/logparse.git
+	sha256sums = SKIP
+
+pkgname = logparse-git
