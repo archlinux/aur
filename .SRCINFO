@@ -11,6 +11,8 @@ pkgbase = python-tidalapi-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	provides = python-tidalapi
+	conflicts = python-tidalapi
 	source = git+https://github.com/EbbLabs/python-tidal.git
 	sha256sums = SKIP
 
