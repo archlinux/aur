@@ -2,7 +2,7 @@
 
 pkgbase=python-luwen
 pkgname=(python-luwen luwencpp)
-pkgver=0.7.13
+pkgver=0.7.14
 pkgrel=1
 pkgdesc="Python package for the tenstorrent system interface library"
 arch=('x86_64')
