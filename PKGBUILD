@@ -16,7 +16,7 @@ options=('!strip')
 provides=('shadps4-qtlauncher')
 conflicts=('shadps4-qtlauncher')
 _appimage=shadPS4QtLauncher-qt.AppImage
-source=("shadps4-qtlauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/v2025.10.14.db9921b/shadps4-qtlauncher-linux-qt-2025-10-14-db9921b.zip")
+source=("shadps4-qtlauncher-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/v2025.10.14.db9921b/shadps4-qtlauncher-qt-2025-10-14-db9921b.zip")
 sha256sums=('SKIP')
 
 prepare() {
