@@ -6,7 +6,7 @@
 pkgname=equicord-openasar
 _pkgname=equicord
 pkgver=0.0.112.r5542gb7ba9e9f.r846gbf8a71e
-pkgrel=1
+pkgrel=2
 pkgdesc='The other cutest Discord client mod (with OpenAsar)'
 arch=('x86_64')
 url='https://equicord.org/'
@@ -79,6 +79,11 @@ prepare() {
         _ensure_local_nvm
         nvm install --lts
         pnpm install --frozen-lockfile
+
+        sed -i \
+            -e '#async function fetchUpdates\(\) {#a return false;' \
+            -e '#async function applyUpdates\(\) {#a return false;' \
+            src/main/updater/http.ts
     popd
 
     pushd openasar-source
@@ -133,7 +138,7 @@ build() {
     
     pushd equicord-source
         _ensure_local_nvm
-        pnpm build
+        EQUICORD_REMOTE="Equicord/Equicord" pnpm buildStandalone
         cp -a dist "../discord-$discord_ver"
 
         rm -rf "../discord-$discord_ver/dist/Installer"
