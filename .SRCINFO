@@ -1,0 +1,19 @@
+pkgbase = rusty-path-of-building
+	pkgdesc = An offline build planner for Path of Exile using the cross-platform 'rusty-path-of-building' runtime
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/meehl/rusty-path-of-building
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = zlib
+	depends = luajit
+	depends = lua51-curl
+	depends = lua51-luautf8
+	provides = rusty-path-of-building
+	options = !lto
+	source = rusty-path-of-building-0.1.0.tar.gz::https://github.com/meehl/rusty-path-of-building/archive/v0.1.0.tar.gz
+	b2sums = c2f247ed0a0527254443faa3b65ce0a1daee7f22117c76538bc0050bb596cdea2c428053ff51618073e7d6d2ae4cd0b06fb663eb5e947a47aa4817309b574eff
+
+pkgname = rusty-path-of-building
