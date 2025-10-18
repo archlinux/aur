@@ -15,5 +15,5 @@ source=("https://github.com/mimblewimble/grin-wallet/releases/download/v${pkgver
 sha256sums=('398b27c9aafcccf4563658e9eef1f20b75e28e2f1b515cd6a251d890af77106e')
 
 package() {
-    install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/grin-wallet"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/grin-wallet"
 }
