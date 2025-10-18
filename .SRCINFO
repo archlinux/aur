@@ -1,6 +1,6 @@
 pkgbase = python-langchain-chroma
 	pkgdesc = An integration package connecting Chroma and LangChain
-	pkgver = 0.2.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/partners/chroma
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-langchain-chroma
 	depends = python-chromadb
 	depends = python-langchain-core
 	depends = python-numpy
-	source = langchain-chroma-0.2.6.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-chroma/langchain_chroma-0.2.6.tar.gz
-	b2sums = a3d6bed812f23acb2109eefd0789035e789b170fee125fb6165484ac0942da757247cf71cbebbefa69e386fec2545c53c8eb4113ce1bf81f52a8bdba626f2e21
+	source = langchain-chroma-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-chroma/langchain_chroma-1.0.0.tar.gz
+	b2sums = 0f0ba304ee8a5776a550fa9e4c1f5619cdf6a363642ea1fb36d783b169ab6ee3c001fd8f77691d3478fd9586ccc96c4709ecd801f0a525be161afca6d1e33769
 
 pkgname = python-langchain-chroma
