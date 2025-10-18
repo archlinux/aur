@@ -1,40 +1,33 @@
 # Maintainer: teraflops <me@priet.usº>
+# Maintainer: Carlos Prieto <cprieto.ortiz@gmail.com>
 
-pkgname=python-mopidy-tidal-git
-_pkgname=mopidy-tidal
-pkgver=0.3.11.r0.ge27a79d
+pkgbase=python-tidalapi-git
+pkgname=('python-tidalapi-git')
+pkgver=0.8.8.r0.g29d5153
 pkgrel=1
-pkgdesc="TIDAL music service integration for Mopidy"
+pkgdesc="Unofficial Python API for TIDAL music streaming service"
 arch=('any')
-url="https://github.com/tehkillerbee/mopidy-tidal"
-license=('Apache')
-depends=('python' 'python-tidalapi' 'python-pykka' 'python-requests' 'mopidy' 'python-mpegdash')
+url="https://github.com/EbbLabs/python-tidal"
+license=('LGPL3')
+depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-provides=('mopidy-tidal')
-conflicts=('mopidy-tidal')
-source=("git+$url.git")
+source=("git+https://github.com/EbbLabs/python-tidal.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags --long 2>/dev/null \
-    | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g' \
-    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  : 
+  cd "${srcdir}/python-tidal"
+  # genera una versión basada en los commits
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g' || \
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/python-tidal"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/python-tidal"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
