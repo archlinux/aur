@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=librsvg-git
-pkgver=2.60.0.r223.g822f3229a
+pkgver=2.61.1.r39.g569c2c2b7
 pkgrel=1
 epoch=2
 pkgdesc="SVG rendering library"
@@ -16,7 +16,6 @@ depends=(
   dav1d
   freetype2
   gcc-libs
-  gdk-pixbuf2
   glib2
   glibc
   harfbuzz
@@ -34,16 +33,16 @@ makedepends=(
   rust
   vala
 )
-provides=(librsvg-${pkgver%%.*}.so "${pkgname%-git}")
+provides=(librsvg-${pkgver%%.*}.so "${pkgname%-git}" "${pkgname%-git}-docs")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitlab.gnome.org/GNOME/librsvg.git")
 sha256sums=('SKIP')
 
+# Use debug
+export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
+
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-
-# Use debug
-export CARGO_PROFILE_RELEASE_DEBUG=2
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -58,6 +57,7 @@ prepare() {
 build() {
   local meson_options=(
     -D avif=enabled
+    -D pixbuf-loader=disabled
   )
 
   arch-meson librsvg build "${meson_options[@]}"
