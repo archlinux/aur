@@ -1,0 +1,15 @@
+pkgbase = llrt-bin
+	pkgdesc = Lightweight JavaScript runtime for serverless applications (STANDARD @aws-sdk bundled)
+	pkgver = 0.7.0beta
+	pkgrel = 1
+	url = https://github.com/awslabs/llrt
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = llrt-std-sdk-bin
+	optdepends = typescript: transpiler for TypeScript code with type checking support
+	optdepends = esbuild: fast compiler and bundler for JavaScript and TypeScript
+	optdepends = swc-js-bin: drop-in replacement for Babel with compilation and polyfill support
+	optdepends = bun-bin: fast runtime, compiler, and bundler for JavaScript and TypeScript
+
+pkgname = llrt-bin
