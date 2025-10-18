@@ -8,7 +8,7 @@ pkgname=(
   'llrt-all-bin')
 pkgver=0.7.0beta
 _pkgver="${pkgver//beta/-beta}" # For GitHub urls
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url='https://github.com/awslabs/llrt'
 license=('Apache-2.0')
@@ -40,7 +40,7 @@ noextract=("${source_x86_64[@]%%::*}" "${source_aarch64[@]%%::*}")
 _install_llrt() {
   local target_pkgname="$1"
   local target_suffix="$2"
-  tar -xf "target_pkgname-$_pkgver-$CARCH.zip" -C "$srcdir"
+  tar -xf "$target_pkgname-$_pkgver-$CARCH.zip" -C "$srcdir"
   install -Dm755 "$srcdir/llrt" "$pkgdir/usr/bin/llrt$target_suffix"
 }
 
