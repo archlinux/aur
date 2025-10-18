@@ -1,0 +1,16 @@
+pkgbase = dmgwiz
+	pkgdesc = Extract filesystem data from DMG files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/citruz/dmgwiz
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = bzip2
+	source = dmgwiz-1.0.0.tar.gz::https://github.com/citruz/dmgwiz/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 799cb71d6c66ab47fb6c3772fbc2c0de3893720b4eae2851a5a473015bb8e5d0
+
+pkgname = dmgwiz
