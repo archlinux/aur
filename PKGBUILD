@@ -1,6 +1,6 @@
 # Maintainer: gunererd <your-email@example.com>
 pkgname=helix-health
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Overengineered helix --health"
 arch=('x86_64')

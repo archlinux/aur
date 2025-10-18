@@ -1,13 +1,13 @@
 pkgbase = helix-health
 	pkgdesc = Overengineered helix --health
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/gunererd/helix-health
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = helix
-	source = helix-health-1.0.1.tar.gz::https://github.com/gunererd/helix-health/archive/v1.0.1.tar.gz
+	source = helix-health-1.0.2.tar.gz::https://github.com/gunererd/helix-health/archive/v1.0.2.tar.gz
 	sha256sums = 091f6a257b1a11f676bec00bb201632d8395ac1e929c51e58b592defae7d3f18
 
 pkgname = helix-health
