@@ -1,0 +1,17 @@
+pkgbase = fuss
+	pkgdesc = A tree utility for dirty git files, written in modern Fortran
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FortranGoingOnForty/fuss
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = gcc-fortran
+	makedepends = make
+	depends = glibc
+	depends = git
+	source = git+https://github.com/FortranGoingOnForty/fuss.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = fuss
