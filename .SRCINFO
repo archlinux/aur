@@ -1,6 +1,6 @@
 pkgbase = gtk3-classic-xfce
 	pkgdesc = Patched GTK+3 that provides a more classic experience, with patches for xfce
-	pkgver = 3.24.49
+	pkgver = 3.24.51
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
@@ -42,10 +42,10 @@ pkgbase = gtk3-classic-xfce
 	optdepends = colord: color management support
 	optdepends = dconf: default GSettings backend
 	optdepends = libcups: printer support in print dialog
-	provides = gtk3-classic=3.24.49
-	provides = gtk3=3.24.49
-	provides = gtk3-typeahead=3.24.49
-	provides = gtk3-mushrooms=3.24.49
+	provides = gtk3-classic=3.24.51
+	provides = gtk3=3.24.51
+	provides = gtk3-typeahead=3.24.51
+	provides = gtk3-mushrooms=3.24.51
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -57,15 +57,15 @@ pkgbase = gtk3-classic-xfce
 	conflicts = gtk3-nocsd
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=d20969e08403d4df124ef44138977b9cff6e4c44
-	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.49/gtk-3.24.49.tar.gz
-	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/8f2788260973cbce3821ba4a4bacd265ef468425/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=e017c8db0b74d960bf72d9f33809852e00a2462b
+	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.51/gtk-3.24.51.tar.gz
+	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/f5ba7bf3a87dacd8f332e083eaecaee25be8636b/gtk-query-immodules-3.0.hook
 	source = settings.ini
 	source = appearance__file-chooser-xfce.patch
-	sha256sums = 6fbfbe5eee1d8dff978a3d2c9fb2ac0e0ad3f0fe78b227225d18ed144de8d0d9
-	sha256sums = a2958d82986c81794e953a3762335fa7c78948706d23cced421f7245ca544cbc
+	sha256sums = 5683fcc308129a9d1a2fcb3fe69df720c58b00ad16266d9038258bc17d4f93a5
+	sha256sums = f3c87a20b3380b69efa720f412a0fea6ab6edce021f8ffaf5c4531fe1321b24f
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
-	sha256sums = c443bfa1f70ac5ce2102c83b38b193e78f614b606cb0dae807ecd25d591f1e99
+	sha256sums = d0ada6a7a4124f8cf5b1a1881029b7eb9f0bbda777080b9acc62ef449319a6f2
 
 pkgname = gtk3-classic-xfce
