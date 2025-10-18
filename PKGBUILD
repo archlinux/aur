@@ -1,8 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
-_base_ver=10
 pkgname=grayjay-git
 _appname=Grayjay
-pkgver=10.r17.g04a4c7e
+pkgver=11.r0.gbf547a9
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
@@ -34,9 +33,8 @@ export GIT_LFS_SKIP_SMUDGE=1
 
 pkgver() {
     cd "${srcdir}/${_appname}"
-    local commits=$(git rev-list --count $_base_ver..HEAD 2>/dev/null || echo 0)
-    local hash=$(git rev-parse --short HEAD 2>/dev/null || echo 000000)
-    printf "%s.r%s.g%s" "$_base_ver" "$commits" "$hash"
+    git fetch --tags
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
