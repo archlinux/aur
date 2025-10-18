@@ -1,0 +1,126 @@
+--- a/build/Makefile.lnx.mk
++++ b/build/Makefile.lnx.mk
+@@ -11,7 +11,7 @@
+ #  * debug  - 0, 1
+ #  * depend - 0, 1
+ 
+-CXX = ccache clang++
++CXX = clang++
+ 
+ DEPEND = .depend
+ ARCH = $(shell uname -m)
+--- a/plugins/binding/capi/CMakeLists.txt
++++ b/plugins/binding/capi/CMakeLists.txt
+@@ -27,9 +27,9 @@ if(WIN32)
+ 	)
+ elseif(UNIX AND NOT APPLE)
+ 	add_definitions(-D_LINUX=1)
+-	link_directories(
+-		../../../lib/linux/x64
+-	)
++	#link_directories(
++	#	../../../lib/linux/x64
++	#)
+ elseif(UNIX AND APPLE)
+ 	add_definitions(-D_MACOS=1)
+ 	link_directories(
+@@ -44,12 +44,12 @@ set(SRCS
+ )
+ 
+ project(capi)
+-add_executable(main ${SRCS})
+-set_target_properties(main PROPERTIES DEBUG_POSTFIX "_x64d")
+-set_target_properties(main PROPERTIES RELEASE_POSTFIX "_x64")
+-set_target_properties(main PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+-target_link_libraries(main debug Tellusim_x64d optimized Tellusim_x64)
++add_library(TellusimC ${SRCS})
++set_target_properties(TellusimC PROPERTIES DEBUG_POSTFIX "_x64d")
++set_target_properties(TellusimC PROPERTIES RELEASE_POSTFIX "_x64")
++set_target_properties(TellusimC PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
++target_link_libraries(TellusimC debug Tellusim_x64d optimized Tellusim_x64)
+ 
+ if(NOT WIN32)
+-	target_link_libraries(main)
++	target_link_libraries(TellusimC)
+ endif()
+--- a/plugins/binding/java/CMakeLists.txt
++++ b/plugins/binding/java/CMakeLists.txt
+@@ -27,9 +27,9 @@ if(WIN32)
+ 	)
+ elseif(UNIX AND NOT APPLE)
+ 	add_definitions(-D_LINUX=1)
+-	link_directories(
+-		../../../lib/linux/x64
+-	)
++	#link_directories(
++	#	../../../lib/linux/x64
++	#)
+ elseif(UNIX AND APPLE)
+ 	add_definitions(-D_MACOS=1)
+ 	link_directories(
+@@ -44,12 +44,12 @@ set(SRCS
+ )
+ 
+ project(java)
+-add_executable(main ${SRCS})
+-set_target_properties(main PROPERTIES DEBUG_POSTFIX "_x64d")
+-set_target_properties(main PROPERTIES RELEASE_POSTFIX "_x64")
+-set_target_properties(main PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+-target_link_libraries(main debug Tellusim_x64d optimized Tellusim_x64)
++add_library(TellusimJNI ${SRCS})
++set_target_properties(TellusimJNI PROPERTIES DEBUG_POSTFIX "_x64d")
++set_target_properties(TellusimJNI PROPERTIES RELEASE_POSTFIX "_x64")
++set_target_properties(TellusimJNI PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
++target_link_libraries(TellusimJNI debug Tellusim_x64d optimized Tellusim_x64)
+ 
+ if(NOT WIN32)
+-	target_link_libraries(main)
++	target_link_libraries(TellusimJNI)
+ endif()
+deleted file mode 100644
+Binary files a/plugins/binding/java/tellusim.jar and /dev/null differ
+--- a/plugins/binding/python/CMakeLists.txt
++++ b/plugins/binding/python/CMakeLists.txt
+@@ -27,9 +27,9 @@ if(WIN32)
+ 	)
+ elseif(UNIX AND NOT APPLE)
+ 	add_definitions(-D_LINUX=1)
+-	link_directories(
+-		../../../lib/linux/x64
+-	)
++	#link_directories(
++	#	../../../lib/linux/x64
++	#)
+ elseif(UNIX AND APPLE)
+ 	add_definitions(-D_MACOS=1)
+ 	link_directories(
+@@ -44,12 +44,12 @@ set(SRCS
+ )
+ 
+ project(python)
+-add_executable(main ${SRCS})
+-set_target_properties(main PROPERTIES DEBUG_POSTFIX "_x64d")
+-set_target_properties(main PROPERTIES RELEASE_POSTFIX "_x64")
+-set_target_properties(main PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+-target_link_libraries(main debug Tellusim_x64d optimized Tellusim_x64)
++add_library(TellusimPy ${SRCS})
++set_target_properties(TellusimPy PROPERTIES DEBUG_POSTFIX "_x64d")
++set_target_properties(TellusimPy PROPERTIES RELEASE_POSTFIX "_x64")
++set_target_properties(TellusimPy PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
++target_link_libraries(TellusimPy debug Tellusim_x64d optimized Tellusim_x64)
+ 
+ if(NOT WIN32)
+-	target_link_libraries(main)
++	target_link_libraries(TellusimPy)
+ endif()
+--- a/tools/Makefile.unx.mk
++++ b/tools/Makefile.unx.mk
+@@ -23,7 +23,7 @@ endif
+ # Platform configuration
+ #
+ ifeq "$(shell uname -s)" "Linux"
+-	LDFLAGS = -Wl,-rpath,./,-rpath,../../source,-rpath,../../lib/linux/$(ARCH)
++	#LDFLAGS = -Wl,-rpath,./,-rpath,../../source,-rpath,../../lib/linux/$(ARCH)
+ else ifeq "$(shell uname -s)" "Darwin"
+ 	LDFLAGS = -Wl,-rpath,@loader_path/,-rpath,@loader_path/../../source/,-rpath,@loader_path/../../lib/macos/$(ARCH)/
+ else

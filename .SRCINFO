@@ -1,0 +1,25 @@
+pkgbase = tellusim-core-sdk-git
+	pkgdesc = Cross-platform C++ SDK for graphics, compute and simulation (git version)
+	pkgver = r22.fdd3b31
+	pkgrel = 1
+	url = https://tellusim.com/
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = java-environment
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	optdepends = java-runtime: for java bindings
+	optdepends = python: for python bindings
+	provides = tellusim-core-sdk
+	conflicts = tellusim-core-sdk
+	options = !strip
+	source = git+https://github.com/Tellusim/Tellusim_Core_SDK.git#branch=linux_x64
+	source = 010-tellesium-core-sdk-fix-build.patch
+	sha256sums = SKIP
+	sha256sums = 6789d50a92e25014349f573d98bddbb78958d052c8f298fa08d22e29492b1295
+
+pkgname = tellusim-core-sdk-git
