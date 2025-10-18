@@ -52,7 +52,7 @@ index d459920..bd7c46d 100644
    return vala_available;
  }
  
-@@ -73,16 +73,10 @@ let typescript_available = null;
+@@ -73,17 +73,10 @@ let typescript_available = null;
  export function isTypeScriptAvailable() {
    typescript_available ??=
      isTypeScriptEnabled() &&
@@ -62,10 +62,11 @@ index d459920..bd7c46d 100644
    return typescript_available;
  }
  
--const llvm = "llvm18";
--const node = "node20";
+-// FIXME: read from manifest
+-const llvm = "llvm21";
+-const node = "node24";
 -const runtime = getFlatpakInfo().get_string("Application", "runtime");
--const freedesktop_version = runtime.endsWith("master") ? "24.08" : "24.08";
+-const freedesktop_version = runtime.endsWith("master") ? "25.08" : "25.08";
 -
  export function isTypeScriptEnabled() {
    return settings.get_boolean("typescript");
