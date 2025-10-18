@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
 pkgver=2025.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
