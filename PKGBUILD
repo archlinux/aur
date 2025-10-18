@@ -1,6 +1,6 @@
 # Maintainer: mdmrk <mariodavo.20@gmail.com>
 
-pkgname=shadps4-qtlauncher-nightly-bin
+pkgname=shadps4-qtlauncher-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadPS4QtLauncher
 pkgver=2025.10.14.db9921b
@@ -8,7 +8,7 @@ _date=2025-10-14
 _commit=db9921baf2e345fed15e6cbb95731088c5fbddf2
 _shortcommit=db9921b
 pkgrel=1
-pkgdesc="Nightly release of the shadPS4QtLauncher PlayStation 4 emulator launcher"
+pkgdesc="shadPS4 PlayStation 4 emulator Qt launcher"
 arch=('x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-only')
@@ -16,7 +16,7 @@ options=('!strip')
 provides=('shadps4-qtlauncher')
 conflicts=('shadps4-qtlauncher')
 _appimage=shadPS4QtLauncher-qt.AppImage
-source=("shadps4-qtlauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-nightly-bin/releases/download/v2025.10.14.db9921b/shadps4-qtlauncher-linux-qt-2025-10-14-db9921b.zip")
+source=("shadps4-qtlauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/v2025.10.14.db9921b/shadps4-qtlauncher-linux-qt-2025-10-14-db9921b.zip")
 sha256sums=('SKIP')
 
 prepare() {
