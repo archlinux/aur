@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=spicedb
-pkgver=v1.45.4
+pkgver=1.46.0
 pkgrel=1
 pkgdesc="Open Source, Google Zanzibar-inspired database for scalably storing and querying fine-grained authorization data"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,13 +12,14 @@ makedepends=(git go)
 optdepends=()
 provides=("$pkgname")
 validpgpkeys=(968479a1aff927e37d1a566bb5690eeebb952194)
-source=("git+https://github.com/authzed/spicedb.git#commit=4ff0d47bd4095f24fe2e11606d3ba7c7f9fad93c")
-sha256sums=('6e688bc80f6f05dd5d95437d480d9fda492d23586a10d928e210cdd5dae1c6f9')
+source=("git+https://github.com/authzed/spicedb.git#commit=5d778d4e70a3a908395b8a75a01443552811a9e9")
+sha256sums=('006d2a142ce4aaa3fe1f511224cbfa281f37fc20942d606860c0dc49a1648651')
 
 build() {
   cd "$srcdir/$pkgname"
   export CGO_ENABLED=0
-  go build -trimpath -o "$pkgname" -v -o "$pkgname" "./cmd/$pkgname"
+  # compare with: https://github.com/authzed/spicedb/blob/main/.goreleaser.yml
+  go build -trimpath -ldflags "-s -w -X github.com/jzelinskie/cobrautil/v2.Version=v${pkgver}" -o "$pkgname" -v -o "$pkgname" "./cmd/$pkgname"
 }
 
 package() {
