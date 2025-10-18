@@ -1,0 +1,18 @@
+pkgbase = sqlpage
+	pkgdesc = Fast SQL-only data application builder. Automatically build a UI on top of SQL queries.
+	pkgver = 0.38.0
+	pkgrel = 1
+	url = https://sql-page.com
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = sqlpage-0.38.0.tar.gz::https://github.com/sqlpage/SQLPage/archive/v0.38.0.tar.gz
+	b2sums = fc011787cfc9570e4a76c347619a3219b2c3c2d7c992bd042dfa4bbe4010246117b35706b7895bd6e3cc750aac9b4e2677f98f861cbec171527fcc32276c2da9
+
+pkgname = sqlpage
