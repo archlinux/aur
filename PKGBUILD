@@ -4,7 +4,7 @@
 _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc='wayland application runner'
@@ -53,22 +53,22 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '3b03f13bd3377daa0058c9679ed5cf9378d0a8f9523b36414d0898d93ca64686'
-            '683da63633d686f44d1492e652acf3bb95e02e354f4630954cd5e702da2cba8e'
-            'dcd4e5463db30e4a4c204380087f472b8a338e275bfea8d9b75a17da1437e2ad'
-            '4b5a6bd9074ae07f5d05bdebb26f2922f710b2b5d8aaddba6da5c5d06c21d1e5'
-            '9da14438e381542cb56aae33ca76e04caa6f39f2b3e577f5f188954819126bff'
-            '9a6df71bac60109c06b6667a38cf359f678ac7abae6c4d31cca8ba86c2df47c3'
-            '230232b3df8058708e88d614d6f42b247f0c074304fb5b354f702b1843ba74f0'
-            '720fc46916fdf1fd916caa3d418e9544413a5b79a9cd717e077d936b2f5cafa2'
-            'cac945fa4d4d6894b2bd062a2fbfbedd9c25b774042bfb8cf9b71c32dea49285'
-            '0f587b5f21467d1e3f931b661796a77102a19ee3c0b1cd7776e56f935190aad4'
-            'c951db2edae2a8c7040dfc6227c00227f86010c45baa348bd9adab231d80a717'
-            '0f587b5f21467d1e3f931b661796a77102a19ee3c0b1cd7776e56f935190aad4'
+            '6da90528fad39c1158ef7240ea70dbef03c0bd0ba3be2d665215e938d0dec3c6'
+            'cc57e3b68af082e1b3f27caf2a0d639ae0dc389388e758b253365b856d5ca1fe'
+            'd6dac24c66c6e851e4a0f702154ccd92a1b0f64990beeff393b530ccd1089721'
+            'e9613245a50e92f6da1e6f09bc84473fae716ee4c30b2536a4f0b285a1536c94'
+            '1c08b011b1c28ca332c96888e4b8fc02f36ec1e057986acfca568dfa4cccf73f'
+            '4ef0723f1e30a03598058e665748fdbdb1d1c9159a37e88618c791f12694c858'
+            '4fe8af0457cdf1631ff3b6ac4ead13111e9044ab8071bcfe4dcbf48d0af0ff98'
+            'd263ce6a3335d42560e7ddbffcdc1186744bcc7ae04cd6282bb188dd7d6f5c9a'
+            '7c7287e0f42c590f00a15d4266290e20240e55701a53cc9d277daf66e9c9a9c0'
+            '34ef99fced5e26a34a834e3edb2e4162823cafea1002f7c753522a05d59ef1fd'
+            '8e812699db2aa167663ccfdaf865e88a833623593f252fab97d820f7d0d7e718'
+            '34ef99fced5e26a34a834e3edb2e4162823cafea1002f7c753522a05d59ef1fd'
             '5175c88a9bb7db96ea7286eb0226afd89caa2f2aa178a64a00fc2348016db0e3'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
-            '66961a22014a49b15e840c5a1f764ed1bf9efd759dc4bc8ab74fa122a91e7302')
-sha256sums_x86_64=('baff2435d5e36cb87feb1c24911451f65eba97ec5c8ebd8213c84d562b936314')
+            'd00bbd3c3355d44bffedf2bfcea90a67ca4fb098d2f72637a9a185ef9a2cee98')
+sha256sums_x86_64=('1392943305bcb04ae880458be0b5e7fbff6a1abea8e0fdafd10108f3415a90e1')
 
 prepare() {
     cd "${srcdir}" || exit 1
