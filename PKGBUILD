@@ -3,7 +3,7 @@
 pkgbase=qwhitesurgtkdecorations
 _pkgname=QWhiteSurGtkDecorations
 pkgname=(qwhitesurgtkdecorations-qt5 qwhitesurgtkdecorations-qt6)
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc=' Qt decoration plugin implementing WhiteSur-gtk-like client-side decorations'
 arch=('x86_64')
@@ -38,4 +38,5 @@ package_qwhitesurgtkdecorations-qt6() {
 
   DESTDIR="$pkgdir" make -C build-$pkgver-qt6 install
 }
-sha256sums=('8b79f53805c1f7f64c3ecb972731e8057273936deb8c90c73d5bc08175040d8a')
+
+sha256sums=('2843131b0dbd2d9c2ea596a76c77a1f7053649f8e14f108ef750373d905dcbf9')
