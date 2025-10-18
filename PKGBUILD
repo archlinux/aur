@@ -17,24 +17,24 @@ b2sums=('5761998f6e9774fbbe939b4fb3a114cc436a2943e4c9082e68435659f9fce6375b332b0
 options=(!lto)
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --all-features
+  cd "${pkgname}-${pkgver}"
+  cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
-    cargo test --frozen --all-features
+  cd "${pkgname}-${pkgver}"
+  cargo test --frozen --all-features
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 target/release/ttdl "${pkgdir}/usr/bin/ttdl"
-	install -Dm644 ttdl.toml "${pkgdir}/etc/ttdl.toml"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 target/release/ttdl "${pkgdir}/usr/bin/ttdl"
+  install -Dm644 ttdl.toml "${pkgdir}/etc/ttdl.toml"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
