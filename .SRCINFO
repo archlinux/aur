@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bm3dhip-git
 	pkgdesc = Plugin for Vapoursynth: bm3dhip (GIT version)
-	pkgver = 2.14.22.g200250b
+	pkgver = 2.16.1.g97ec62e
 	pkgrel = 1
 	url = https://github.com/WolframRhodium/VapourSynth-BM3DCUDA
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-bm3dhip-git
 	depends = vapoursynth
 	depends = rocm-hip-runtime
 	depends = rocm-device-libs
+	depends = libxml2-legacy
 	provides = vapoursynth-plugin-bm3dhip
 	conflicts = vapoursynth-plugin-bm3dhip
 	options = !debug

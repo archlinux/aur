@@ -4,13 +4,13 @@
 
 _plug=bm3dhip
 pkgname="vapoursynth-plugin-${_plug}-git"
-pkgver=2.14.22.g200250b
+pkgver=2.16.1.g97ec62e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BM3DCUDA'
 license=('GPL')
-depends=('vapoursynth' 'rocm-hip-runtime' 'rocm-device-libs')
+depends=('vapoursynth' 'rocm-hip-runtime' 'rocm-device-libs' 'libxml2-legacy')
 makedepends=('git' 'cmake')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
