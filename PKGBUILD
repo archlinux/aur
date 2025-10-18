@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
 pkgname=python-mkvinfo
 _origpkgname=mkvinfo
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Python library for probing matroska files with mkvmerge."
 arch=("x86_64")
@@ -15,8 +15,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/af/c3/eac243e59cd75072357b6487ee702e6dd4a2948ce9a2caf6ee305de19c03/mkvinfo-0.0.2.tar.gz")
-sha256sums=("1e827aca3c273dbe635be4a6dbb36fe32d31192e3d85479ad5faff5141dd6cb1")
+source=("https://files.pythonhosted.org/packages/a0/06/bf3c250a733db9b2c6a6adb1936697b1adeb26b0dfadf3ab2a68d27f0d99/mkvinfo-0.0.3.tar.gz")
+sha256sums=("d2e92864746ebe14eab5ff1a4d2d6046e6a93f6a0e1039d27da91515633acfa3")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
