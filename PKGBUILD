@@ -1,7 +1,7 @@
 # Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=espanso-x11-bin
-pkgver=2.2.7
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Cross-platform Text Expander written in Rust'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     'espanso.desktop'
 )
 sha256sums=(
-    'c84effb9d0c06dea6970df9a56b507fc99435c8416e54857727a1db9da0e238c'
+    'b0ce546786f6a54b31e0a30df0a797804fadf0a89b5b189ea115d25cb410866c'
     '0448185f394858b1f06c6458869e932da317501759c3f018a696d7789b15e8b9'
     '8c031ec3a53e678883fc72b6789b4e35ef12e3d543a40088adf808c5f851ad9f'
     'SKIP'
