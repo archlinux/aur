@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=authzed-zed
-pkgver=v0.33.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Official command-line tool for managing SpiceDB"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ build() {
   cd "$srcdir/zed"
   export CGO_ENABLED=0
   # compare with: https://github.com/authzed/zed/blob/main/.goreleaser.yml
-  go build -trimpath -ldflags "-s -w -X github.com/jzelinskie/cobrautil/v2.Version=${pkgver}" -o "$_binname" "./cmd/$_binname"
+  go build -trimpath -ldflags "-s -w -X github.com/jzelinskie/cobrautil/v2.Version=v${pkgver}" -o "$_binname" "./cmd/$_binname"
   "./$_binname" completion bash > bash-completion.sh
   "./$_binname" completion fish > fish-completion.fish
   "./$_binname" completion zsh > zsh-completion.zsh
