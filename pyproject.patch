@@ -1,19 +1,29 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index ccf9c2a..6edca92 100644
+index 925742b4c33..1a97ec77faf 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -28,13 +28,10 @@ requires = [
-     # API temporarily restored and shim used. Please fix
-     # Setuptools will drop support for setup.py past 80
-     # min version for recursive glob package data support
--    "setuptools>=62.3.0,<80.0",
-+    "setuptools",
-     "wheel",
--    "astunparse",
-     "numpy",
+@@ -1,12 +1,9 @@
+-# Package ######################################################################
+ 
+ [build-system]
+ requires = [
+     # 70.1.0: min version for integrated bdist_wheel command from wheel package
+     # 77.0.0: min version for SPDX expression support for project.license
+-    "setuptools>=70.1.0,<80.0",
+-    "cmake>=3.27",
 -    "ninja",
++    "setuptools",
+     "numpy",
+     "packaging",
      "pyyaml",
--    "cmake",
-     "typing-extensions>=4.10.0",
-     "requests",
- ]
+@@ -22,9 +19,7 @@ dev = [
+     # in PyTorch root until the project fully migrates to pyproject.toml
+     # after which this can be removed as it is already specified in the
+     # [build-system] section
+-    "setuptools>=70.1.0,<80.0",  # setuptools develop deprecated on 80.0
+-    "cmake>=3.27",
+-    "ninja",
++    "setuptools",  # setuptools develop deprecated on 80.0
+     "numpy",
+     "packaging",
+     "pyyaml",
