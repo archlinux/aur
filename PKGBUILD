@@ -3,13 +3,13 @@
 _srcname=alloy
 pkgname=grafana-${_srcname}
 pkgver=1.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenTelemetry Collector distribution with programmable pipelines'
 arch=('x86_64' 'aarch64')
 url='https://grafana.com/oss/alloy-opentelemetry-collector/'
 license=('Apache-2.0')
 depends=('glibc')
-makedepends=('docker' 'inetutils' 'git' 'go' 'systemd')
+makedepends=('inetutils' 'git' 'go' 'systemd' 'yarn')
 backup=("etc/default/${pkgname}" "etc/${pkgname}/config.alloy")
 options=('!lto')
 source=(git+https://github.com/grafana/alloy.git#tag=v${pkgver}
@@ -20,9 +20,14 @@ b2sums=('0a76cbaf64810b844ce6356cc3d64f0b06dfa8054ba397055546d29adca8f339f913812
         'a7219797bedadc3669ec21e12693e366d440720e6cc9c9ae9cf7ed019d0c93858e1fa605455977f0fc210d3228b2419fc22931c9d2af7dc9836ecdd65a8a7b13')
 
 build() {
-  cd ${_srcname}
+  # build static assets used by Alloy UI
+  # https://github.com/grafana/alloy/tree/main/internal/web/ui
+  cd ${_srcname}/internal/web/ui
+  go generate -tags builtinassets
+
+  cd ${srcdir}/${_srcname}
   export GOPATH="${srcdir}"
-  export GO_TAGS=promtail_journal_enabled
+  export GO_TAGS="promtail_journal_enabled,builtinassets"
   make alloy
 }
 
