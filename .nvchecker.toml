@@ -1,0 +1,5 @@
+[android-ondk-bin]
+source = "github"
+github = "topjohnwu/ondk"
+use_latest_release = true
+prefix = "v"

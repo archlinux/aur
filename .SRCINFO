@@ -1,0 +1,28 @@
+pkgbase = android-ondk-bin
+	pkgdesc = Oxidized NDK - NDK repackaged with Rust toolchain
+	pkgver = r29.2
+	pkgrel = 1
+	url = https://github.com/topjohnwu/ondk
+	arch = x86_64
+	license = Apache-2.0
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	optdepends = ncurses5-compat-libs: for curses module in bundled Python
+	optdepends = bzip2: for bz2 module in bundled Python
+	optdepends = libxcrypt-compat: for crypt module in bundled Python
+	optdepends = python: various helper scripts
+	optdepends = perl: various helper scripts
+	optdepends = libc++: for some LLVM components
+	provides = android-ondk=r29.2
+	provides = android-ondk-r29.2
+	conflicts = android-ondk
+	conflicts = android-ondk-r29.2
+	options = !strip
+	options = !debug
+	source_x86_64 = android-ondk-r29.2-x86_64.tar.xz::https://github.com/topjohnwu/ondk/releases/download/r29.2/ondk-r29.2-linux.tar.xz
+	sha256sums_x86_64 = ad97b965f91ab6ff796bbf43227bf18420a49b87c069d39b61bcdc496ba78494
+	b2sums_x86_64 = 3d619d665c72cc59ca4d68402d6ca00b9e96a12d29d45949245c34d0f389660e18a2827ae66fe045221d7d3a05b0cecb96e86907ee108319719d0449a752ce72
+
+pkgname = android-ondk-bin
