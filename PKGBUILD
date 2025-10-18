@@ -30,7 +30,7 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm644 -T $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 -T icon.png "$pkgdir/usr/share/icons/$pkgname.png"
+  install -Dm644 -T icon.png "$pkgdir/usr/share/icons/$pkgname"
   target/release/$pkgname --generate-man > simp.1
   gzip simp.1
   install -Dm644 -T simp.1.gz "$pkgdir/usr/share/man/man1/simp.1.gz"
