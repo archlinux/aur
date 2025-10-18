@@ -2,7 +2,7 @@
 
 pkgname=shadps4-qtlauncher-bin
 _pkgname=shadPS4QtLauncher
-_pkgid=net.shadps4.shadPS4QtLauncher
+_pkgid=net.shadps4.shadPS4
 pkgver=2025.10.18.4c9efe0
 _date=2025-10-18
 _commit=4c9efe028e673fbfdb507b9a627fa5bd94bdcd6d
