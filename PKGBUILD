@@ -1,7 +1,7 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 pkgname=sfpi-bin
 pkgver=7.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tenstorrent SFPU programming interface"
 arch=('x86_64')
 url="https://github.com/tenstorrent/sfpi"
@@ -16,8 +16,8 @@ options=('!strip')
 
 package() {
     cd "$srcdir"/sfpi
-    mkdir -p "$pkgdir/opt/tenstorrent"
-    cp -r compiler "$pkgdir/opt/tenstorrent/sfpi"
+    mkdir -p "$pkgdir/opt/tenstorrent/sfpi"
+    cp -r compiler "$pkgdir/opt/tenstorrent/sfpi/compiler"
     cp -r include "$pkgdir/opt/tenstorrent/sfpi/include"
 }
 
