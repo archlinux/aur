@@ -1,0 +1,15 @@
+pkgbase = electrotility
+	pkgdesc = Ultimate Linux Power Utility Tool
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Rronnurboja/electrotility
+	arch = any
+	license = GPL3
+	depends = bash
+	optdepends = curl: for downloading components
+	optdepends = wget: alternative download tool
+	optdepends = git: for some development features
+	source = electrotility-2.0.0.tar.gz::https://github.com/Rronnurboja/electrotility/archive/refs/tags/v2.0.0.tar.gz
+	md5sums = c29c2476eedd9153de6dd8714e3daa31
+
+pkgname = electrotility
