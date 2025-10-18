@@ -6,7 +6,7 @@
 pkgname=smokinguns-git
 _pkgname=${pkgname%-git}
 pkgver=1.1.r859.gf5d9ecf2
-pkgrel=8
+pkgrel=9
 pkgdesc='A semi-realistic simulation of the old west great atmosphere built on id Tech 3.'
 url="https://www.smokin-guns.org"
 arch=('i686' 'x86_64')
