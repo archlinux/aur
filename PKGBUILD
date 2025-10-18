@@ -5,7 +5,7 @@
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.6.1
+pkgver=10.7.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
@@ -14,7 +14,6 @@ arch=('i686' 'x86_64')
 
 makedepends=(
   'lazarus'
-  'xmlstarlet'
 )
 optdepends=(
   'unace'
@@ -35,7 +34,7 @@ options=('!debug')
 _pkgsrc="PeaZip-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"https://github.com/peazip/PeaZip/archive/$pkgver.$_pkgext")
-sha256sums=('93d5145d09279db1b168469251e4b3b64b59ea13b2cfb0f487e1fd26a5d40b6b')
+sha256sums=('6b7a7798e98fec43b9c6f64a5d8f582755de6d803d3c86f25094ceba9c944e9b')
 
 _packets=(
   "$_pkgsrc"/peazip-sources/dev/metadarkstyle/metadarkstyle.lpk
@@ -72,31 +71,24 @@ prepare() {
 
   # remove buttons from about dialog
   local _buttons=(
-    Form_peach.baboutbin
-    Form_peach.baboutchangelog
-    Form_peach.baboutfaq
-    Form_peach.baboutlocalhelp
-    Form_peach.baboutplugindir
-    Form_peach.baboutplugins
-    Form_peach.baboutremoveunace
-    Form_peach.baboutremoveunrar
-    Form_peach.baboutsupport
-    Form_peach.baboutthemes
-    Form_peach.babouttos
-    Form_peach.babouttracker
-    Form_peach.babouttranslations
-    Form_peach.baboutup
-    Form_peach.baboutweb
+    FormPeach.baboutbin
+    FormPeach.baboutchangelog
+    FormPeach.baboutfaq
+    FormPeach.baboutlocalhelp
+    FormPeach.baboutplugindir
+    FormPeach.baboutplugins
+    FormPeach.baboutremoveunace
+    FormPeach.baboutremoveunrar
+    FormPeach.baboutsupport
+    FormPeach.baboutthemes
+    FormPeach.babouttos
+    FormPeach.babouttracker
+    FormPeach.babouttranslations
+    FormPeach.baboutup
+    FormPeach.baboutweb
   )
   for i in ${_buttons[@]}; do
     sed -E -e "/^${i//./\\.}.Caption:=/s&^.*\$&${i}.Visible:=False;&" -i "$_pkgsrc/peazip-sources/dev/peach.pas"
-  done
-
-  # compiler/linker options
-  for i in ${_packets[@]}; do
-    xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value="-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know -k-z -kibt -k-z -kshstk"/></Other>\n\1&' \
-      -i "$i"
   done
 }
 
@@ -108,6 +100,7 @@ build() {
     --os='linux'
     --primary-config-path='config'
     --widgetset="$_widgets"
+    --opt="-O3 -Sa -CX -XX -k--sort-common -k--as-needed -k-z -krelro -k-z -know"
   )
 
   for i in ${_packets[@]}; do
