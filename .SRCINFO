@@ -1,0 +1,14 @@
+pkgbase = ocaml-fiber
+	pkgdesc = Dune's monadic structured concurrency library
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://github.com/ocaml-dune/fiber
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	depends = ocaml
+	options = !strip
+	source = ocaml-fiber-3.7.0.tar.gz::https://github.com/ocaml-dune/fiber/archive/refs/tags/3.7.0.tar.gz
+	b2sums = b3df6c27fd4e927e38997e0b90253c96a93632a13ab2aefb6c0ed0d396f17951b3a55dc2015b8c0a5fe5a2fb5270baf697982680de7461a8daaf8cbd5d0e14c7
+
+pkgname = ocaml-fiber
