@@ -1,6 +1,6 @@
 pkgbase = ladybird-nightly-bin
 	pkgdesc = Nightly release of the Ladybird web browser
-	pkgver = r72235.1a3635cda57
+	pkgver = r72241.7fb65283c23
 	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ladybird-nightly-bin
 	conflicts = ladybird
 	conflicts = ladybird-git
 	options = !strip
-	source = ladybird-nightly-r72235.1a3635cda57.tar.zst::https://github.com/mdmrk/ladybird-nightly-bin/releases/download/vr72235.1a3635cda57/ladybird-nightly-r72235.1a3635cda57.tar.zst
+	source = ladybird-nightly-r72241.7fb65283c23.tar.zst::https://github.com/mdmrk/ladybird-nightly-bin/releases/download/vr72235.1a3635cda57/ladybird-nightly-r72235.1a3635cda57.tar.zst
 	sha256sums = SKIP
 
 pkgname = ladybird-nightly-bin

@@ -2,8 +2,8 @@
 
 pkgname=ladybird-nightly-bin
 _pkgname=ladybird
-pkgver=r72235.1a3635cda57
-_shortcommit=1a3635cda57
+pkgver=r72241.7fb65283c23
+_shortcommit=7fb65283c23
 pkgrel=1
 pkgdesc="Nightly release of the Ladybird web browser"
 arch=('x86_64')
