@@ -6,6 +6,7 @@
 !PKGBUILD
 !.SRCINFO
 !LICENSE*
+!*.patch
 
 # Allow specifically
 !cuda.sh

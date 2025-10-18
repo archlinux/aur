@@ -1,19 +1,19 @@
-# Maintainer: Stephan Düsterhaupt <me at stephanduesterhaupt dot de>
-# Maintainer: Ivo Noack <ivo at insonic dot de>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Stephan Düsterhaupt <me at stephanduesterhaupt dot de>
+# Contributor: Ivo Noack <ivo at insonic dot de>
 
-pkgname=cuda-12.5
-pkgver=12.5.0
-_driverver=555.42.02
-_reqdriverver=555.42
-pkgrel=3
-pkgdesc="NVIDIA's GPU programming toolkit"
+pkgname=cuda-12.9
+pkgver=12.9.1
+_driverver=575.57.08
+pkgrel=1
+pkgdesc="NVIDIA's GPU programming toolkit version 12.9 (Maxwell/Pascal/Volta support)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
 license=('custom:NVIDIA')
-depends=('gcc-libs'  'gcc' 'opencl-nvidia' 'nvidia-utils')
-conflicts=('cuda' 'cudnn')
+depends=('gcc14' 'opencl-nvidia' 'nvidia-utils')
+conflicts=('cuda')
 replaces=('cuda-toolkit' 'cuda-sdk')
-provides=('cuda-toolkit' 'cuda-sdk' 'cuda=12.5')
+provides=('cuda-toolkit' 'cuda-sdk' 'cuda=12.9')
 optdepends=('gdb: for cuda-gdb'
             'java-runtime=8: for nsight and nvvp')
 options=(!strip staticlibs)
@@ -22,9 +22,12 @@ source=(http://developer.download.nvidia.com/compute/cuda/${pkgver}/local_instal
         cuda.sh
         cuda.conf
         cuda-findgllib_mk.diff
-        *.pc)
-sha512sums=('84fa3ad278217a0fbea97d2d880f625e7e7074a12e98d50d664daaf8298d7d8dd7b222c6f5815636e484df8f1e75c062c70c09f744d139652d960ca8c064114e'
-            '79aa6fbeff13a2bcef5791c2288d4b072dfe7b17593261ee79302dc6c77ae368e73f5cac9ce38893fc0068e4895f5cde475faf507fac058fb697c8da3198587f'
+        *.pc
+        fix-glibc241.patch
+        fix-glibc242.patch
+        4972.patch)
+sha512sums=('fc29c5fc1121fb6634f1fe396abe7f34d351686454516269e9143e678ea178f906a35b916b8bb2d96ecfcfc705dda7d0f4547f7e7f00d36e392d981a766b6a56'
+            '742a3eaea8574f09cd9aa9c820f2f93ba6272651a3bcadc4b274fe931ca7c19810e8322c38dc05c17fa2ed741851c813a5562604901b670bd76726718dcc57d6'
             '714d973bc79446f73bebe85306b3566fe25b554bcbcba2fcbe76709a3eca71fb5d183ab4da2d3b5e9326cb9cd8d13a93f6d4a005ea5a41f7ef8e6c6e81e06b5e'
             '41d6b6cad934f135eafde610d1cbd862033977fd4416a4b6abaa47709a70bab7fcf6f8377c21329084fb9db13f2a8c8c20e93c15292d7d4a6448d70a33b23f1b'
             '74772d4268e3af8d2b5ae58c1f4eefd1ddf9a8192befef8f481242ed1fb0c1791721329b984151be05dd56eadb28d86ecebe2cb4aaa2dba88d4783a9fd17b144'
@@ -54,7 +57,10 @@ sha512sums=('84fa3ad278217a0fbea97d2d880f625e7e7074a12e98d50d664daaf8298d7d8dd7b
             'ed53dea2a2d2b9ddba1b3dafd61866f85e04b6b1bd1edd61942c6653fa611c2a81a9b78b81942d912b2cf64ccf3ed652c2028ea0bb212cbb2e3e9d42a85a6347'
             'c4f675309d8cd071fbb357c0727aeb88b2db08ba9e454b9b210c0cdf686bc01df374a4a7bd25a8e89f6203c64f3f25001c6137de2b0986f61aa7cfae576c90d7'
             'db83179b5e2c1f540582938a019a450dbba9e3016922dd04ec0b665466f25e768fa292a8cf9c165dda1a9d25b05f5619eae1dbaf415f474bbbd0d50de7633930'
-            '3b4e1afb0b7094fca733344f626e9bd65945a4bb68fc920642ae909fea177993fc1daf2655fa470ecb77f87e08abd2c923becf175e4bc6b10770ee882948e70b')
+            '3b4e1afb0b7094fca733344f626e9bd65945a4bb68fc920642ae909fea177993fc1daf2655fa470ecb77f87e08abd2c923becf175e4bc6b10770ee882948e70b'
+            'ce0abfc5165b586c5f11b1f64f5f2af80d16a095fd737820c85ae6b86dd24ff4ffe954df97893d4a712e69dd0e67742ca13ea266018b25134c5a23dbf453c046'
+            'c7c7dbb0e21cb2342ede4bf730fe1191d59879e03151707c5519f4cafb64f1f7fdc3211f9d451ca789ab362de67cd43c2d4e1e2a714c8537a601b36cb63cb5b2'
+            '3976bed1772e30296ce6cbb2ea6dcfef0bcff067343987ffc6ac0adbb5457cd46db1ef286ac576512e606414e431d4f51507bb877f419b0ecfc554d338e54929')
 
 prepare() {
   sh cuda_${pkgver}_${_driverver}_linux.run --target "${srcdir}" --noexec
@@ -114,6 +120,16 @@ package() {
   # NVIDIA has trouble with counting and numbering 
   # as well as the elusive concept of a SONAME so...
   # ln -s /opt/cuda/targets/x86_64-linux/lib/libcudart.so.11.1.74 "${pkgdir}/opt/cuda/targets/x86_64-linux/lib/libcudart.so.11.1"
+
+
+  # Patch for compatibility with glibc 2.41
+  patch -p1 -d "${pkgdir}" -i "$srcdir"/fix-glibc241.patch --no-backup-if-mismatch
+
+  # Patch for compatibility with glibc 2.42
+  patch -p1 -d "${pkgdir}" -i "$srcdir"/fix-glibc242.patch
+
+  # Fix for https://github.com/NVIDIA/cccl/issues/4967
+  patch -p2 -d "${pkgdir}/opt/cuda/targets/x86_64-linux" -i "$srcdir"/4972.patch --no-backup-if-mismatch
 }
 
 # vim:set ts=2 sw=2 et:
