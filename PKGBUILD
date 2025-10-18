@@ -1,6 +1,6 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname="livebook-git"
-pkgver=r3299.8514f12d2
+pkgver=.r0.g293b1cb
 pkgrel=1
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks (git version)"
 arch=('any')
@@ -16,7 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/livebook"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git fetch --tags
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
