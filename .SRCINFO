@@ -1,6 +1,6 @@
 pkgbase = walker
 	pkgdesc = wayland application runner
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/abenz1267/walker
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = walker
 	depends = elephant-providerlist
 	provides = walker
 	conflicts = walker
-	source = https://github.com/abenz1267/walker/archive/refs/tags/v2.5.1.tar.gz
-	sha256sums = 2540caef3e7c2f96edda2f2dac9251a130ce6889836d63b5039c1e50efc342f2
+	source = https://github.com/abenz1267/walker/archive/refs/tags/v2.5.2.tar.gz
+	sha256sums = 1a8d2fe138ee522fa12d772d7c0489ffb288b39e025777aa827b5f3b544eaf3e
 
 pkgname = walker
