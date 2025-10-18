@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Moyurd
+StartupWMClass=Moyurd
+Comment=A keyboard-driven and simple Epub reader
+GenericName=Epub Reader
+Exec=moyurd %u
+Icon=moyurd
+Categories=Office;Viewer;
+MimeType=application/epub+zip;
+
