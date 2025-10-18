@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c54bd57eaf3596115caeede586ed6a512e7961cafff034f23dc6f417e71ca7a6')
+sha256sums=('701f76b33782199d3a8e9c4d6b72e9421821af5176e54fa4a7ec2db7b661f3f8')
 backup=('etc/greetd/config.toml' 'etc/greetd/niri-greeter-config.kdl')
 install=${pkgname}.install
 
