@@ -1,6 +1,6 @@
 pkgbase = python-guardpost
 	pkgdesc = Framework to handle authentication and authorization.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://pypi.org/project/guardpost
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-guardpost
 	conflicts = python-guardpost
 	options = !strip
 	options = !debug
-	source = guardpost-1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/g/guardpost/guardpost-1.0.3.tar.gz
-	sha256sums = 14cf46b038dba183896daa98e6f6d8c2655dbdc9b6cfa0834e468260622ebc97
+	source = guardpost-1.0.4.tar.gz::https://files.pythonhosted.org/packages/source/g/guardpost/guardpost-1.0.4.tar.gz
+	sha256sums = 0e3461d3303c7aecdaa65a05e39ef6d8b26ce1a4ebe4b9724b573b562487960c
 
 pkgname = python-guardpost
