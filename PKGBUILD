@@ -1,4 +1,4 @@
-# Maintainer: Nathan Chere <git@nathanchere.com.au>
+# Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=grayjay-bin
 pkgver=11
 pkgrel=1
