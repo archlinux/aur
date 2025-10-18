@@ -7,9 +7,7 @@ pkgbase = root_rain
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/execrooted/root_rain/archive/refs/tags/v0.1.3.tar.gz
 	source = rr.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b723b92484a23c2ec7f19c6a08b57d9a60a4f9711025e1668f05c23c7e740c10
 
 pkgname = root_rain
