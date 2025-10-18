@@ -1,40 +1,59 @@
 pkgname=streambooru-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
-pkgdesc="StreamBooru - multi-site booru browser (Electron)"
+pkgdesc="StreamBooru — cross‑platform Electron app to browse multiple booru sites"
 arch=('x86_64')
 url="https://github.com/Amateur-God/StreamBooru"
-license=('GPLv3')
-depends=('electron' 'nss' 'gtk3' 'libxss' 'libxtst' 'alsa-lib')
-makedepends=('npm' 'nodejs' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Amateur-God/StreamBooru/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b5bddb263963f307a5eda57fc2ad2c9e33a71fc12b9f9933baff7af5110d9a3d')
+license=('GPL3')
 
-build() {
-  cd "${srcdir}/StreamBooru-${pkgver}"
-  npm ci
-  npx electron-builder --linux dir --config electron-builder.yml
-}
+# Electron runtime deps commonly needed on Arch
+depends=('alsa-lib' 'nss' 'gtk3' 'libxss' 'libxtst')
+optdepends=(
+  'libappindicator-gtk3: tray icon support'
+  'libnotify: desktop notifications'
+  'xdg-utils: open links with xdg-open'
+)
+
+provides=('streambooru')
+conflicts=('streambooru')
+
+# Download the prebuilt Linux tarball from Releases and install wrapper + desktop entry
+source=(
+  "https://github.com/Amateur-God/StreamBooru/releases/download/v${pkgver}/StreamBooru-${pkgver}-linux-x64.tar.gz"
+  "streambooru.sh"
+  "streambooru.desktop"
+)
+sha256sums=(
+  '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5' # StreamBooru-${pkgver}-linux-x64.tar.gz
+  'SKIP'       # streambooru.sh (tracked in this repo)
+  'SKIP'       # streambooru.desktop (tracked in this repo)
+)
 
 package() {
-  cd "${srcdir}/StreamBooru-${pkgver}"
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -r dist/linux-unpacked/* "${pkgdir}/opt/${pkgname}/"
-  # launcher
-  install -d "${pkgdir}/usr/bin"
-  printf '#!/bin/sh\nexec /usr/bin/electron /opt/%s --no-sandbox "$@"\n' "${pkgname}" > "${pkgdir}/usr/bin/${pkgname}"
-  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-  # desktop entry (optional)
-  install -d "${pkgdir}/usr/share/applications"
-  cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=StreamBooru
-Comment=Multi-site booru browser
-Exec=${pkgname} %U
-Icon=streambooru
-Terminal=false
-Categories=Network;Utility;
-EOF
+  install -d "${pkgdir}/opt/streambooru-bin" \
+             "${pkgdir}/usr/bin" \
+             "${pkgdir}/usr/share/applications" \
+             "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+
+  # Unpack prebuilt app into /opt/streambooru-bin
+  tar -xzf "${srcdir}/StreamBooru-${pkgver}-linux-x64.tar.gz" \
+      -C "${pkgdir}/opt/streambooru-bin" --strip-components=1
+
+  # Ensure chrome-sandbox has correct permissions for Electron's sandbox (common for -bin packages)
+  if [[ -f "${pkgdir}/opt/streambooru-bin/chrome-sandbox" ]]; then
+    chmod 4755 "${pkgdir}/opt/streambooru-bin/chrome-sandbox" || true
+  fi
+
+  # Install launcher wrapper and a compatibility symlink
+  install -Dm755 "${srcdir}/streambooru.sh" "${pkgdir}/usr/bin/streambooru"
+  ln -s streambooru "${pkgdir}/usr/bin/streambooru-bin"
+
+  # Desktop entry
+  install -Dm644 "${srcdir}/streambooru.desktop" "${pkgdir}/usr/share/applications/streambooru.desktop"
+
+  # Icon if present (adjust if your build keeps icons elsewhere)
+  if [[ -f "${pkgdir}/opt/streambooru-bin/resources/app.asar.unpacked/build/icon.png" ]]; then
+    install -Dm644 "${pkgdir}/opt/streambooru-bin/resources/app.asar.unpacked/build/icon.png" \
+      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/streambooru.png"
+  fi
 }
