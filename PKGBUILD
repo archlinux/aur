@@ -2,7 +2,7 @@
 
 pkgname=capacity-tester
 _pkgname=CapacityTester
-pkgver=0.6
+pkgver=0.7c
 pkgrel=1
 pkgdesc="A simple tool that attempts to determine if a drive is a fake or not."
 arch=("x86_64" "i686" "aarch64")
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("hicolor-icon-theme" "qt5-base")
 makedepends=("gcc" "make" "qt5-tools")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('af38aede9cddc47d7bc1748f3fa9fcbffb6b6663d7ce1b05de8c03c7c772869e5550a899316a462c9b317b2bba8933f5789e1493e53ce378212e23058a1f4ecb')
+sha512sums=('fa902c9ff3126b31df4ae5d72d5fcd1940bee64760f2e5132f2ac9e538320db394fbac51fc2a1b9d6cbc1889c3f2899bb520d9e051e2204adbc0ddc7e2c93e19')
 
 build() {
     cd ${_pkgname}-${pkgver}
