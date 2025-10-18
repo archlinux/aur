@@ -1,8 +1,9 @@
 pkgbase = sysc-greet-sway
 	pkgdesc = Graphical console greeter for greetd with Sway as the compositor
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Nomadcxx/sysc-greet
+	install = sysc-greet-sway.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
