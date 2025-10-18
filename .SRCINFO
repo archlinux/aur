@@ -8,7 +8,7 @@ pkgbase = shadps4-qtlauncher-bin
 	provides = shadps4-qtlauncher
 	conflicts = shadps4-qtlauncher
 	options = !strip
-	source = shadps4-qtlauncher-2025-10-18-4c9efe0.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2025-10-18-4c9efe028e673fbfdb507b9a627fa5bd94bdcd6d/shadps4-qtlauncher-2025-10-18-4c9efe0.zip
+	source = shadPS4QtLauncher-linux-qt-2025-10-18-4c9efe0.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2025-10-18-4c9efe028e673fbfdb507b9a627fa5bd94bdcd6d/shadPS4QtLauncher-linux-qt-2025-10-18-4c9efe0.zip
 	sha256sums = SKIP
 
 pkgname = shadps4-qtlauncher-bin

@@ -16,7 +16,7 @@ options=('!strip')
 provides=('shadps4-qtlauncher')
 conflicts=('shadps4-qtlauncher')
 _appimage=shadPS4QtLauncher-qt.AppImage
-source=("shadps4-qtlauncher-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2025-10-18-4c9efe028e673fbfdb507b9a627fa5bd94bdcd6d/shadps4-qtlauncher-2025-10-18-4c9efe0.zip")
+source=("shadPS4QtLauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2025-10-18-4c9efe028e673fbfdb507b9a627fa5bd94bdcd6d/shadPS4QtLauncher-linux-qt-2025-10-18-4c9efe0.zip")
 sha256sums=('SKIP')
 
 prepare() {
@@ -33,5 +33,6 @@ package() {
     ln -sf "/opt/${_pkgname}/AppRun" "$pkgdir/usr/bin/shadps4-qtlauncher"
     install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.svg" -t "$pkgdir/usr/share/pixmaps"
     install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.desktop" -t "$pkgdir/usr/share/applications"
+    sed -i "s|Exec=shadPS4QtLauncher|Exec=shadps4-qtlauncher|" "$pkgdir/usr/share/applications/${_pkgid}.desktop"
     chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
