@@ -1,13 +1,13 @@
 # Maintainer: Krister Bäckman <ixevix@gmail.com>
 
 pkgname=virtwold
-pkgver=23.12.0
-pkgrel=2
+pkgver=25.10.0
+pkgrel=1
 pkgdesc='Wake-on-LAN for libvirt based VMs'
 depends=('glibc' 'libvirt')
 makedepends=('git' 'go' 'libvirt')
 source=("https://github.com/ScottESanDiego/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a3ecd37a53a3c1628a93f45876053aa3f3dddfd71e9c7688377410e4a16e934a')
+sha256sums=('874597279e0188bedfa73cdb1c8e86bc652b3bbd3dd2389970670a3854d486f1')
 arch=('x86_64')
 url='https://github.com/ScottESanDiego/virtwold'
 

@@ -1,7 +1,7 @@
 pkgbase = virtwold
 	pkgdesc = Wake-on-LAN for libvirt based VMs
-	pkgver = 23.12.0
-	pkgrel = 2
+	pkgver = 25.10.0
+	pkgrel = 1
 	url = https://github.com/ScottESanDiego/virtwold
 	arch = x86_64
 	makedepends = git
@@ -9,7 +9,7 @@ pkgbase = virtwold
 	makedepends = libvirt
 	depends = glibc
 	depends = libvirt
-	source = https://github.com/ScottESanDiego/virtwold/archive/refs/tags/23.12.0.tar.gz
-	sha256sums = a3ecd37a53a3c1628a93f45876053aa3f3dddfd71e9c7688377410e4a16e934a
+	source = https://github.com/ScottESanDiego/virtwold/archive/refs/tags/25.10.0.tar.gz
+	sha256sums = 874597279e0188bedfa73cdb1c8e86bc652b3bbd3dd2389970670a3854d486f1
 
 pkgname = virtwold
