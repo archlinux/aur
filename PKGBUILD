@@ -14,21 +14,21 @@ b2sums=('6f619aecbc0035040e96cc22741079b2be3aa0298b60e6c3b1474979903470174dc1721
 options=(!lto)
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --all-features
+  cd "${pkgname}-${pkgver}"
+  cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
-    cargo test --frozen --all-features
+  cd "${pkgname}-${pkgver}"
+  cargo test --frozen --all-features
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm755 -t "${pkgdir}/usr/bin" target/release/grin-wallet
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 -t "${pkgdir}/usr/bin" target/release/grin-wallet
 }
