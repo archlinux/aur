@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expand browser filter to other unit properties
 - Fix Flatpak save file in home directory (make a warning)
 
+## [2.4.0] - 2025-10-18
+### Added
+- Disable & Enable option in the popup menu
+
+### Fixed
+- Popup menu appearance issues
+- Inactive unit display style behavior
+
 ## [2.3.0] - 2025-10-17
 ### Added
 - Sorting on user defined unit's property columns
