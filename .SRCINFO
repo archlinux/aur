@@ -1,6 +1,6 @@
 pkgbase = easyepg-lite-git
 	pkgdesc = XMLTV grabber tool using Gracenote's TMS API
-	pkgver = r87.475a818
+	pkgver = r149.6756605
 	pkgrel = 1
 	url = https://github.com/sunsettrack4/script.service.easyepg-lite
 	arch = any

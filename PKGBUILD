@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=easyepg-lite-git
-pkgver=r87.475a818
+pkgver=r149.6756605
 pkgrel=1
 pkgdesc="XMLTV grabber tool using Gracenote's TMS API"
 url="https://github.com/sunsettrack4/script.service.easyepg-lite"
@@ -37,4 +37,6 @@ package() {
 	cp -r "$srcdir/$pkgname/"{main.py,resources} "$pkgdir/usr/lib/$pkgname"
 	install -Dm0755 "$srcdir/startup.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
+	ln -sf "/var/lib/$pkgname/channels.db" "$pkgdir/usr/lib/$pkgname/resources/data/db/"
 }
