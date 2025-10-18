@@ -1,0 +1,18 @@
+pkgbase = lenovo-legion16irx9h
+	pkgdesc = Lenovo Legion Pro 7 16IRX9H driver
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bolekjar/LenovoLegion/archive/refs/tags/release/1.0.0.tar.gz
+	install = default.install
+	arch = x86_64
+	license = GPL3
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = dkms
+	depends = make
+	depends = gcc
+	depends = qt6-charts
+	source = LenovoLegion-release-1.0.0.tar.gz::https://github.com/bolekjar/LenovoLegion/archive/refs/tags/release/1.0.0.tar.gz
+	sha256sums = 99c0a64efa571a2e321e7f92d875ebef5ed33eaaf3d847c8d7505d6abc85499e
+
+pkgname = lenovo-legion16irx9h
