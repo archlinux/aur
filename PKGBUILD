@@ -47,6 +47,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "item_symbols-${pkgver}.xml::${_urlraw}/resources/themes/default/item_symbols.xml"
         "item_todo-${pkgver}.xml::${_urlraw}/resources/themes/default/item_todo.xml"
         "item_unicode-${pkgver}.xml::${_urlraw}/resources/themes/default/item_unicode.xml"
+        "keybind-${pkgver}.xml::${_urlraw}/resources/themes/default/keybind.xml"
         "layout-${pkgver}.xml::${_urlraw}/resources/themes/default/layout.xml"
         "preview-${pkgver}.xml::${_urlraw}/resources/themes/default/preview.xml"
         "style-${pkgver}.css::${_urlraw}/resources/themes/default/style.css")
@@ -65,6 +66,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '34ef99fced5e26a34a834e3edb2e4162823cafea1002f7c753522a05d59ef1fd'
             '8e812699db2aa167663ccfdaf865e88a833623593f252fab97d820f7d0d7e718'
             '34ef99fced5e26a34a834e3edb2e4162823cafea1002f7c753522a05d59ef1fd'
+            '8113e9f81aaa28bba9c4526c9bbbeb940600d842d9d5cec144fcc86e975184a9'
             '5175c88a9bb7db96ea7286eb0226afd89caa2f2aa178a64a00fc2348016db0e3'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             'd00bbd3c3355d44bffedf2bfcea90a67ca4fb098d2f72637a9a185ef9a2cee98')
