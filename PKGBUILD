@@ -1,8 +1,8 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
+pkgdesc="Graphical console greeter for greetd with Hyprland as the compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-greet"
 license=('MIT')
@@ -14,8 +14,7 @@ makedepends=('go>=1.21')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-sway' 'sysc-greet')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v${pkgver}.tar.gz")
-sha256sums=('701f76b33782199d3a8e9c4d6b72e9421821af5176e54fa4a7ec2db7b661f3f8')
-backup=('etc/greetd/config.toml' 'etc/greetd/hyprland-greeter-config.conf')
+sha256sums=('1aa07f2d3437888ce27f0efdea400c627ebb32d52bc015cfe0b9eba601a5872d')
 install=sysc-greet-hyprland.install
 
 build() {
@@ -43,9 +42,6 @@ package() {
     install -dm755 "${pkgdir}/usr/share/sysc-greet/fonts"
     cp -r fonts/* "${pkgdir}/usr/share/sysc-greet/fonts/"
 
-    # Install kitty config
-    install -Dm644 config/kitty-greeter.conf "${pkgdir}/etc/greetd/kitty.conf"
-
     # Install Assets if present
     if [ -d "Assets" ]; then
         install -dm755 "${pkgdir}/usr/share/sysc-greet/Assets"
@@ -58,68 +54,16 @@ package() {
         cp -r wallpapers/* "${pkgdir}/usr/share/sysc-greet/wallpapers/" 2>/dev/null || true
     fi
 
-    # Install greetd configs
-    install -Dm644 /dev/stdin "${pkgdir}/etc/greetd/hyprland-greeter-config.conf" <<'EOF'
-# SYSC-Greet Hyprland config for greetd greeter session
-# Monitors auto-detected by Hyprland at runtime
-
-# No animations for faster greeter startup
-animations {
-    enabled = false
-}
-
-# Minimal decorations
-decoration {
-    rounding = 0
-    blur {
-        enabled = false
-    }
-}
-
-# Greeter doesn't need gaps
-general {
-    gaps_in = 0
-    gaps_out = 0
-    border_size = 0
-}
-
-# CHANGED 2025-10-18 - Disable Hyprland wallpaper/logo for greeter
-misc {
-    disable_hyprland_logo = true
-    disable_splash_rendering = true
-    background_color = rgb(000000)
-}
-
-# Input configuration
-input {
-    kb_layout = us
-    repeat_delay = 400
-    repeat_rate = 40
-
-    touchpad {
-        tap-to-click = true
-    }
-}
-
-# Disable all keybindings (security for greeter)
-# No binds = no user control
-
-# Window rules for kitty greeter
-windowrulev2 = fullscreen, class:^(kitty)$
-windowrulev2 = opacity 1.0 override, class:^(kitty)$
-
-# Layer rules for wallpaper daemon
-layerrule = blur, wallpaper
-
-# Startup applications
-exec-once = swww-daemon
-exec-once = XDG_CACHE_HOME=/tmp/greeter-cache HOME=/var/lib/greeter kitty --start-as=fullscreen --config=/etc/greetd/kitty.conf /usr/local/bin/sysc-greet && hyprctl dispatch exit
-EOF
-
     # Create cache directory
     install -dm755 "${pkgdir}/var/cache/sysc-greet"
     install -dm755 "${pkgdir}/var/lib/greeter/Pictures/wallpapers"
 
-    # Install README
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/sysc-greet/README.md"
+    # Install documentation if it exists
+    if [ -f README.md ]; then
+        install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    fi
+    
+    if [ -f LICENSE ]; then
+        install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
 }
