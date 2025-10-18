@@ -1,5 +1,5 @@
 pkgbase = relibre
-	pkgdesc = Music release one-page generator (builds a native WebKitGTK app that exports a single self-hostable HTML file)
+	pkgdesc = Music release one-page generator (native WebKitGTK app that exports a single self-hostable HTML file)
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.circlewithadot.net/incentive/relibre
@@ -7,8 +7,8 @@ pkgbase = relibre
 	license = AGPL3
 	makedepends = go
 	depends = gtk3
-	depends = webkit2gtk-4.1
+	depends = webkit2gtk
 	source = https://git.circlewithadot.net/incentive/relibre/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 88eed221ffb97f1dbc58a5cfc6939855713dbfb450fc8baad79e8267d1efd9a6
+	sha256sums = 36a4e4bd61da0e1e7f0f845c47c7d13cd7af1da84e38894676263d87b3e91577
 
 pkgname = relibre
