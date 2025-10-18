@@ -5,7 +5,7 @@
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=3.8.1
-pkgver=3.7.0.2.r244.gc5c02decf
+pkgver=3.8.1.r12.gc5c02decf
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -13,8 +13,10 @@ license=(GPL-2.0-or-later)
 arch=(x86_64)
 depends=(glibc # libm.so libc.so
          gmp # libgmp.so
+         lua
          zlib)
-makedepends=(git
+makedepends=(ghc
+             git
              stack)
 optdepends=('pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-context: for pdf output using context engine'
@@ -53,6 +55,8 @@ build() {
 		--install-ghc \
 		--ghc-options='-fdiagnostics-color=always' \
 		--flag 'pandoc:embed_data_files' \
+		--flag 'lua:system-lua' \
+		--flag 'lua:pkg-config' \
 		--fast
 }
 
