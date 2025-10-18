@@ -1,14 +1,16 @@
 pkgbase = python-xdis
 	pkgdesc = Python cross-version bytecode library and disassembler
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 6.1.8
+	pkgrel = 1
 	url = https://github.com/rocky/python-xdis
 	arch = any
 	license = GPL2
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-click
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/x/xdis/xdis-6.1.0.tar.gz
-	sha256sums = 355fd36db210e9117167e0821e2bcc12ac3da8bcc15d52e1542ad422ad2629cc
+	source = https://files.pythonhosted.org/packages/source/x/xdis/xdis-6.1.8.tar.gz
+	sha256sums = a070c390f814395d672a8732b8b5e8e09cdeeaac1b32497e8061c24f126f6d69
 
 pkgname = python-xdis
