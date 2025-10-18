@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("hicolor-icon-theme" "qt5-base")
 makedepends=("gcc" "make")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('e8bd704f1cf48a3e54ed3d90ae1344d91d2044224ed663943d200636d16257e9a79572557533fe4541153f7b92b8acb93e205f0fc22c29c04ccf299cf9d66337')
+sha512sums=('af38aede9cddc47d7bc1748f3fa9fcbffb6b6663d7ce1b05de8c03c7c772869e5550a899316a462c9b317b2bba8933f5789e1493e53ce378212e23058a1f4ecb')
 
 build() {
     cd ${_pkgname}-${pkgver}
