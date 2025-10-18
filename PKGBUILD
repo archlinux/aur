@@ -1,7 +1,7 @@
 # Maintainer: Rron Nurboja <rronnurboja@gmail.com>
 pkgname=electrotility
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ultimate Linux Power Utility Tool"
 arch=('any')
 url="https://github.com/Rronnurboja/electrotility"
@@ -12,9 +12,10 @@ optdepends=(
     'wget: alternative download tool'
     'git: for some development features'
 )
-source=("electrotility.sh::https://raw.githubusercontent.com/Rronnurboja/electrotility/main/electrotility.sh")
+source=("git+https://github.com/Rronnurboja/electrotility.git")
 md5sums=('SKIP')
 
 package() {
-    install -Dm755 "$srcdir/electrotility.sh" "$pkgdir/usr/bin/electrotility"
+    cd "$srcdir/electrotility"
+    install -Dm755 electrotility.sh "$pkgdir/usr/bin/electrotility"
 }
