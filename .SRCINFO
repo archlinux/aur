@@ -1,0 +1,20 @@
+pkgbase = vertd-bin
+	pkgdesc = VERT's solution to crappy video conversion services.
+	pkgver = nightly.81
+	pkgrel = 1
+	url = https://github.com/VERT-sh/vertd
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = ffmpeg
+	optdepends = libva-intel-driver
+	provides = vertd
+	conflicts = vertd
+	options = !debug
+	source = vertd::https://github.com/VERT-sh/vertd/releases/download/nightly-91c1e481cbfe79f787102ac7844a4938224ec876/vertd-linux-x86_64
+	source = LICENSE::https://github.com/VERT-sh/vertd/blob/main/LICENSE
+	source = systemd.service
+	sha256sums = 2e11a59045e4588504f3b5deb50f0f214a88131a0d9082e85cb1f7dc22555d4d
+	sha256sums = bab97d739915e2363b4d659b671127a91383e6410af5be8e606f8b64143cfd59
+	sha256sums = a1ec3e72000c476d6f10f09041b4c67ad2d823da2598731682e012d615a036cf
+
+pkgname = vertd-bin
