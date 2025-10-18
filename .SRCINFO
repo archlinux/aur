@@ -1,6 +1,6 @@
 pkgbase = talhelper
 	pkgdesc = A tool to help create Talos clusters in your GitOps repository
-	pkgver = 3.0.37
+	pkgver = 3.0.38
 	pkgrel = 1
 	url = https://budimanjojo.github.io/talhelper
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = talhelper
 	optdepends = talosctl: apply generated configuration
 	optdepends = sops: manage secrets
 	options = !lto
-	source = talhelper::git+https://github.com/budimanjojo/talhelper#tag=v3.0.37
-	sha512sums = 285f37924636642bfb78136538199bcc2233244d6c69969e59179650aa6ad91b43033f2f7146a42425af4eae0e13b92d792896d3ec52526637da5f9cddce942a
-	b2sums = 6c4a3933e592c6fdec1db1dbb8845ff36d9caefb559fc10a24351b801c1a58fc9378811a71df8412a316644a387856849b2c0aef9dc8184311a799055d3e29f7
+	source = talhelper::git+https://github.com/budimanjojo/talhelper#tag=v3.0.38
+	sha512sums = 9a0c2b9c7af6b3460c4e3df7c9d095a25945058e22ccc0111589533bcd5d9b5f9c6cffd70d8ed169619f49e455086cadbc3efadb6c2dfbffec737df1d8721efb
+	b2sums = 533bff04177bb5c6baeff078cb30aa2cb727ee1643c733d9edd6284ec3b5b4f65fa0b78ab53568a04387ea1455169e886bebf0895716f9a17e5f9033be25f1d0
 
 pkgname = talhelper
