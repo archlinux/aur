@@ -1,6 +1,6 @@
 pkgbase = qlipmon
 	pkgdesc = clipboard manager with rofi plugin and dbus interface
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/vcalv/qlipmon
 	install = qlipmon.install
@@ -9,9 +9,10 @@ pkgbase = qlipmon
 	depends = qt6-base
 	optdepends = rofi: for rofi integration
 	optdepends = systemd: automate start
-	provides = qlipmon=2.1.0
+	optdepends = xdotool: for autopaste on select in rofi
+	provides = qlipmon=2.2.0
 	conflicts = qlipmon-git
-	source = qlipmon-2.1.0.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/2.1.0.tar.gz
-	sha512sums = 6ca32fe12532433bbe38ea9d59767915ad468b68398871739e36de861b760bd77509f3911c8c529b2062644170be6ed46b8dff8e114f08134c2f371075a66fe1
+	source = qlipmon-2.2.0.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/2.2.0.tar.gz
+	sha512sums = ba4c3d725029ed6f6fe5b1c81356d35252aab89d0e25e6fc31d1e33f32eb3eb0aebedb94270b62de990205fde4f7c67bf8753936da58eddad6ca15fcb066d864
 
 pkgname = qlipmon

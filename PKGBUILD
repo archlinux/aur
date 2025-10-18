@@ -1,6 +1,6 @@
 # Maintainer: VCalV
 pkgname=qlipmon
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="clipboard manager with rofi plugin and dbus interface"
 arch=('x86_64')
@@ -13,6 +13,7 @@ checkdepends=()
 optdepends=(
 	'rofi: for rofi integration'
 	'systemd: automate start'
+	'xdotool: for autopaste on select in rofi'
 )
 provides=(qlipmon=${pkgver})
 conflicts=(qlipmon-git)
@@ -23,7 +24,7 @@ install="$pkgname".install
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha512sums=('6ca32fe12532433bbe38ea9d59767915ad468b68398871739e36de861b760bd77509f3911c8c529b2062644170be6ed46b8dff8e114f08134c2f371075a66fe1')
+sha512sums=('ba4c3d725029ed6f6fe5b1c81356d35252aab89d0e25e6fc31d1e33f32eb3eb0aebedb94270b62de990205fde4f7c67bf8753936da58eddad6ca15fcb066d864')
 validpgpkeys=()
 
 prepare() {
