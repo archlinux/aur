@@ -1,0 +1,34 @@
+--- libquicktime-1.2.4/plugins/ffmpeg/audio.c.pre	2025-10-19 04:20:34.300236720 +0800
++++ libquicktime-1.2.4/plugins/ffmpeg/audio.c	2025-10-19 04:25:43.615317477 +0800
+@@ -467,8 +467,12 @@
+   if(codec->avctx)
+     {
+     if(codec->initialized)
++#if LIBAVCODEC_VERSION_MAJOR >= 62
++      avcodec_free_context(&codec->avctx);
++#else
+       avcodec_close(codec->avctx);
+-    av_free(codec->avctx);
++      av_free(codec->avctx);
++#endif
+     }
+   if(codec->sample_buffer)
+     free(codec->sample_buffer);
+
+--- libquicktime-1.2.4/plugins/ffmpeg/video.c.pre	2025-10-19 04:20:40.867344605 +0800
++++ libquicktime-1.2.4/plugins/ffmpeg/video.c	2025-10-19 04:26:07.792714561 +0800
+@@ -241,9 +241,13 @@
+     {
+     if(codec->avctx->stats_in)
+       av_free(codec->avctx->stats_in);
++#if LIBAVCODEC_VERSION_MAJOR >= 62
++    avcodec_free_context(&codec->avctx);
++#else
+     avcodec_close(codec->avctx);
++    av_free(codec->avctx);
++#endif
+     }
+-  av_free(codec->avctx);
+         
+   if(codec->frame_buffer) free(codec->frame_buffer);
+   if(codec->buffer) free(codec->buffer);

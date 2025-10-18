@@ -1,0 +1,12 @@
+--- libquicktime-1.2.4/configure.ac.orig   2025-10-19 04:46:02.854338399 +0800
++++ libquicktime-1.2.4/configure.ac        2025-10-19 04:46:19.662614385 +0800
+@@ -255,7 +255,7 @@
+   AC_TRY_RUN([
+     #include <lame/lame.h>
+     #include <stdio.h>
+-    main()
++    int main()
+     {
+     int version_major;
+     int version_minor;
+
