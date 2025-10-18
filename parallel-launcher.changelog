@@ -1,6 +1,11 @@
+### v9.0.2 (Sat Oct 18 2025)
+* Fixed the 'Open Containing Folder' action not opening the correct location on Windows if the rom file path ends up having mixed forward slash and backslash directory separators
+* Fixed the arrow keys not being able to be assigned to any keyboard controls on Windows
+* Fixed a bug where Parallel Launcher would freeze in the background and not launch the emulator if opened using the Play Now button on RHDC while cloud saves are enabled
+
 ### v9.0.1 (Thu Oct 16 2025)
 * Fixed a crash when launching a rom on MacOS
-* Fixed some text displaying in the wrong colour on certain Linux distros
+* Fixed some text displaying in the wrong colour on NixOS
 * Fixed SRAM and FlashRAM save data not being imported correctly from Project64 save files
 
 ### v9.0.0 (Tue Oct 14 2025)
