@@ -4,18 +4,18 @@
 # Contributor: Edoardo Brogiolo <edoardo@brogiolo.eu>
 # Contributor: Dimitris Kiziridis <ragouel@outlook.com>
 
-: ${_widgets:=gtk2}
+: ${_widgets:=GTK2}
 
-[[ "${_widgets::3}" == "gtk" ]] \
-  && : ${_cksum=feb0fc04c8324bde9b8827b11109b0683cf9961d15ed49410efeef5316ead105}
+[[ "$_widgets" == "GTK2" ]] \
+  && : ${_cksum=65b678cfc1a88954668075259e884b70cba2dcbbd75d3adda620aabe9341be70}
 
-: ${_pkgtype:=-${_widgets}-bin}
+: ${_pkgtype:=-${_widgets,,}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.6.1
+pkgver=10.7.0
 pkgrel=1
-pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
+pkgdesc="Cross-platform file and archive manager (${_widgets})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
@@ -33,11 +33,11 @@ optdepends=(
 )
 
 case "${_widgets::1}" in
-  'g')
-    _depends+=("${_widgets}")
+  g|G)
+    _depends+=("${_widgets,,}")
     ;;
-  'q')
-    _depends+=("${_widgets}-base")
+  q|Q)
+    _depends+=("${_widgets,,}-base")
     ;;
 esac
 
@@ -46,14 +46,14 @@ options=('!debug' '!emptydirs')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$pkgname-debug")
 
-_pkgsrc_plugins="peazip-additional-formats-plugin.6.LINUX"
+_pkgsrc_plugins="peazip-additional-formats-plugin.7.LINUX"
 source=(
-  "$url/releases/download/$pkgver/peazip-$pkgver.LINUX.${_widgets^^}-1.$CARCH.rpm"
+  "$url/releases/download/$pkgver/peazip-$pkgver.LINUX.$_widgets-1.$CARCH.rpm"
   "https://cyfuture.dl.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/$_pkgsrc_plugins.tar"
 )
 sha256sums=(
   "${_cksum:-SKIP}"
-  'd2ce07156ce170625008caf384b53bff9b087331d7e12ee711aa94a200316c84'
+  'f74abf2c3d97a72c80457d6dff369929bcfd0df619b0235d81a9b82f888a3d4c'
 )
 
 prepare() {
@@ -95,7 +95,7 @@ prepare() {
     zstd
   )
   for i in "${_symlinks[@]}"; do
-    install -dm755 "$_plugin_path/$i"
+    mkdir -pm755 "$_plugin_path/$i"
     ln -sf "/usr/bin/$i" "$_plugin_path/$i/$i"
   done
 
