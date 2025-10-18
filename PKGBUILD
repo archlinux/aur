@@ -1,19 +1,20 @@
-# Maintainer: Stephan Düsterhaupt <me at stephanduesterhaupt dot de>
-# Maintainer: Ivo Noack <ivo at insonic dot de>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Stephan Düsterhaupt <me at stephanduesterhaupt dot de>
+# Contributor: Ivo Noack <ivo at insonic dot de>
 
-pkgname=cudnn9.3-cuda12.5
-pkgver=9.3.0.75
-_pkgver=9.3.0
-cudaver=12.5
+pkgname=cudnn9.10-cuda12.9
+pkgver=9.10.2.21
+_pkgver=9.10.2
+cudaver=12.9
 _cudaver=12
-_majorver=8
 pkgrel=1
-pkgdesc="NVIDIA CUDA Deep Neural Network library"
+pkgdesc="NVIDIA CUDA Deep Neural Network library version 9.10 (Maxwell/Pascal/Volta support)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuDNN"
 license=('custom')
 conflicts=('cudnn')
-depends=('cuda=12.5')
+provides=('cudnn=9.10')
+depends=('cuda=12.9')
 # To figure out these URLs, check out the Dockerfiles at
 # https://gitlab.com/nvidia/container-images/cuda/-/tree/master/dist for the appropriate cuda version
 # or make an NVIDIA Developer account.
@@ -21,7 +22,7 @@ depends=('cuda=12.5')
 source=("https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/cudnn-linux-x86_64-${pkgver}_cuda${_cudaver}-archive.tar.xz"
         "NVIDIA_SLA+cuDNN_Supp_Feb2017_release.pdf")
 
-sha512sums=('a5bde12da001a0ee30d4a00db70de0fd8f783e35e22c9d10cef56a7d034da27eb79a5fe5493498289d0062c70a7168709ec797e6b87f1bfe79c737c22d0ccb7f'
+sha512sums=('3bb42370ea5be3eade3a3203de3d925ed67169e7c019aee9e5c3e9d77422fd2c3e6682ecb7398e4be20d106b9f29ae8ff3adcdba891e129fbb04a441f165713f'
             '38bbb7eb287914e4d7ba79da20a47222382687832d4ba0290715199a129c08715a23681800cf8d381f40e24202470a7b20505a31c8cea51a78762a740860251b')
 
 noextract=("cudnn-linux-x86_64-${pkgver}_cuda${_cudaver}-archive.tar.xz")
