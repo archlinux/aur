@@ -1,6 +1,6 @@
 pkgbase = canboat
 	pkgdesc = CAN Boat provides NMEA 2000 and NMEA 0183 utilities. It contains a NMEA 2000 PGN decoder and can read and write N2K messages. It is not meant as an end-user tool but as a discovery mechanism for delving into NMEA 2000 networks.
-	pkgver = 6.1.2
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = https://github.com/canboat/canboat
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = canboat
 	depends = ksh
 	provides = canboat
 	conflicts = canboat
-	source = canboat-6.1.2.tar.gz::https://github.com/canboat/canboat/archive/refs/tags/v6.1.2.tar.gz
-	sha256sums = 17f107ba87d25a1b681c4928994154a8ea60aab554944ad9c1287508293fad67
+	source = canboat-6.1.3.tar.gz::https://github.com/canboat/canboat/archive/refs/tags/v6.1.3.tar.gz
+	sha256sums = 4b219c0f6dbcb76c9da05ef3748360afb01a982f94fc9fc1fc2a6ff2d2fe5d60
 
 pkgname = canboat
