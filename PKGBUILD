@@ -3,7 +3,7 @@
 
 pkgname='downjack-bin'
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Set up your gitignore and license files like using a lumberjack'
 url='https://github.com/chardoncs/downjack'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -25,7 +25,7 @@ source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chardoncs
 sha256sums_x86_64=('e2b15de18f38c96aa8dbcaf2867e46db3e27121278500bcfc25205dcfb23091f')
 
 package() {
-  cd "${srcdir}/downjack_${pkgver}_Linux_${CARCH}"
+  cd "${srcdir}/downjack_Linux_${CARCH}"
   # bin
   install -Dm755 "./downjack" "${pkgdir}/usr/bin/downjack"
   # license
