@@ -123,14 +123,25 @@ prepare() {
   #sed -e "/components.*/d" -i rust-toolchain.toml
   # すだちを優先
   msg '1. Build the rust program(dict-to-mozc), it may take some time...'
-  rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
-  [ -z "$TARGET" ] && TARGET=$(rustc -vV | sed -n 's/host: //p')
+  #rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
+  TARGETS=$(rustc -vV | sed -n 's|^host: \([^-]*-[^-]*-[^-]*\)-gnu$|\1|p'); TARGETS=$(rustup target list --installed | grep "$TARGETS"); : "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1)}" "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1)}"
+  : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
+  #[ -z "$TARGET" ] && TARGET=$(rustc -vV | sed -n 's/host: //p')
+  echo $RUSTC
   unset RUSTC
-  #CC_=$CC
-  #unset CC
-  #export CC=gcc
-  RUSTFLAGS="-Clink-arg=-Bmold -Clink-arg=-Wno-error=implicit-function-declaration" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
-  #export CC=$CC_
+  CC_=$CC
+  CFLAGS_=$CFLAGS
+  unset CC
+  : "${CC:=$(command -v clang || command -v gcc)}"
+  export CC
+  unset CFLAGS
+  expr "$CC" : ".*gcc" >/dev/null && : "${CFLAGS:=-std=c11 -Bmold -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration}"
+  echo $CC
+  echo $CFLAGS
+  export CFLAGS
+  CC="$CC" CFLAGS="$CFLAGS" RUSTFLAGS="-Clink-arg=-Bmold" cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
+  export CC=$CC_
+  export CFLAGS=$CFLAGS_
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   #cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
