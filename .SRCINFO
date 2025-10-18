@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-sr
 	pkgdesc = Serbian language pack for Firefox Nightly
-	pkgver = 146.0a1.20251017.210534
+	pkgver = 146.0a1.20251018.091819
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-sr
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-sr-146.0a1.20251017.210534.xpi
-	source = firefox-nightly-i18n-sr-146.0a1.20251017.210534.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.sr.langpack.xpi
-	sha256sums = 9d719d585af1a1d770a54013b2fd24dda75e65b8a9afa663acfcf343e36becfd
+	noextract = firefox-nightly-i18n-sr-146.0a1.20251018.091819.xpi
+	source = firefox-nightly-i18n-sr-146.0a1.20251018.091819.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.sr.langpack.xpi
+	sha256sums = 024e52abc5b6ad10693553d22ddca5cd263467930d9d030bc1ea115c690bb8f6
 
 pkgname = firefox-nightly-i18n-sr
