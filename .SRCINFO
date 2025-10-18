@@ -1,7 +1,7 @@
 pkgbase = sysc-greet-sway
-	pkgdesc = A beautiful terminal greeter for greetd with Sway support
+	pkgdesc = Graphical console greeter for greetd with Sway as the compositor
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nomadcxx/sysc-greet
 	arch = x86_64
 	license = MIT

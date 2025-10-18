@@ -2,8 +2,8 @@
 
 pkgname=sysc-greet-sway
 pkgver=1.0.4
-pkgrel=1
-pkgdesc="A beautiful terminal greeter for greetd with Sway support"
+pkgrel=2
+pkgdesc="Graphical console greeter for greetd with Sway as the compositor"
 arch=('x86_64')
 url="https://github.com/Nomadcxx/sysc-greet"
 license=('MIT')
