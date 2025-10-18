@@ -1,0 +1,14 @@
+pkgbase = shadps4-qtlauncher-nightly-bin
+	pkgdesc = Nightly release of the shadPS4QtLauncher PlayStation 4 emulator launcher
+	pkgver = 2025.10.14.db9921b
+	pkgrel = 1
+	url = https://shadps4.net/
+	arch = x86_64
+	license = GPL-2.0-only
+	provides = shadps4-qtlauncher
+	conflicts = shadps4-qtlauncher
+	options = !strip
+	source = shadps4-qtlauncher-linux-qt-2025-10-14-db9921b.zip::https://github.com/mdmrk/shadps4-qtlauncher-nightly-bin/releases/download/v2025.10.14.db9921b/shadps4-qtlauncher-linux-qt-2025-10-14-db9921b.zip
+	sha256sums = SKIP
+
+pkgname = shadps4-qtlauncher-nightly-bin
