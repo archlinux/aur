@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-gobject' 'gtk3' 'yt-dlp')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aznit11/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('093c32db093b7b3821365dd0294f16ab15f9e684a2f89e99cf52728b531fc1bf')
+sha256sums=('ce1e40daa35af014c87a2a9f678e6cb5399107528c0abdaaa32b4a78bfb8d57c')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
