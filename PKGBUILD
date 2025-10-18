@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=instagram-reels-downloader
 pkgver=1.0.1
-pkgrel=3
+pkgrel=1
 pkgdesc="A beautiful native GTK application for downloading Instagram reels with one click"
 arch=('any')
 url="https://github.com/Aznit11/instagram-reels-downloader"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-gobject' 'gtk3' 'yt-dlp')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aznit11/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('093c32db093b7b3821365dd0294f16ab15f9e684a2f89e99cf52728b531fc1bf')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
