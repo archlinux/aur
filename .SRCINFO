@@ -1,14 +1,17 @@
 pkgbase = downjack
 	pkgdesc = Set up your gitignore and license files like using a lumberjack
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/chardoncs/downjack
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	license = MIT
+	optdepends = git
 	makedepends = go
-	depends = git
-	source = https://github.com/chardoncs/downjack/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = aebdcb73e3b5044c52b262a1db5f66525a5be95bcf57f36f8e5aa1d9076a4d48
-
+	conflicts = downjack
+	provides = downjack
+	
+	source = https://github.com/chardoncs/downjack/releases/download/v0.1.1/downjack-0.1.1.tar.gz
+	sha256sums = 1c4003256ef9416b09c317c9734993d7326d8fa599c6dd2cfc42a72795e2409b
+	
 pkgname = downjack
