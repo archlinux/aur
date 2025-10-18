@@ -2,7 +2,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=dream-background-remover
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="GIMP Plugin which integrates Replicate's AI for image background removal"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'gettext' 'python')
 provides=('dream-background-remover')
 conflicts=('dream-background-remover')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zquestz/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bb94756f0088324f04e75b770e7580dcb70e8e97f3ff9fba4988b4d676ff2a87')
+sha256sums=('3e64eb3e0780cd8335b578b1823b7646943404e902db8c18d766a33ce1fb7569')
 
 build() {
   cd ${pkgname}-${pkgver}
