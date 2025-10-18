@@ -1,7 +1,7 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=cando
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bringing Common Lisp and C++ Together, including Cando"
 arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
@@ -25,7 +25,8 @@ build() {
     --extensions=cando,seqan-clasp \
     --bin-path=/usr/bin/ \
     --share-path=/usr/share/clasp/ \
-    --lib-path=/usr/lib/clasp/
+    --lib-path=/usr/lib/clasp/ \
+    --dylib-path=/usr/lib/
   ninja -C build
 }
 
