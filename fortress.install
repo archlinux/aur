@@ -1,0 +1,30 @@
+post_install() {
+    echo ""
+    echo "===================================================================="
+    echo "  FORTRESS - Terminal File Explorer"
+    echo "===================================================================="
+    echo ""
+    echo "  The 'fortress' command is now available!"
+    echo ""
+    echo "  Shell integration (cd-on-exit) has been installed:"
+    echo "    • Bash: Auto-loaded via /etc/profile.d/fortress.sh"
+    echo "    • Fish: Auto-loaded via vendor_functions.d"
+    echo "    • Zsh:  Add to ~/.zshrc:"
+    echo "            source /usr/share/fortress/fortress.sh"
+    echo ""
+    echo "  You may need to restart your shell or run:"
+    echo "    source /etc/profile.d/fortress.sh  # bash"
+    echo ""
+    echo "  Usage:"
+    echo "    fortress  - Start the file explorer"
+    echo "    Press 'c' on a directory to cd there and exit"
+    echo ""
+    echo "  Documentation: /usr/share/doc/fortress/"
+    echo ""
+    echo "===================================================================="
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
