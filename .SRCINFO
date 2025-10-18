@@ -1,0 +1,18 @@
+pkgbase = gameoflife-git
+	pkgdesc = Simple Game of Life written in C
+	pkgver = r9.ec3b15f
+	pkgrel = 1
+	url = https://github.com/xolider/game-of-life
+	arch = x86_64
+	license = GPL-1.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = sdl3
+	depends = glibc
+	depends = sdl3_ttf
+	depends = ttf-roboto
+	source = gameoflife-git-r9.ec3b15f-1::git+https://github.com/xolider/game-of-life.git
+	sha256sums = SKIP
+
+pkgname = gameoflife-git
