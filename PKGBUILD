@@ -1,7 +1,7 @@
-# Maintainer: Markus Meissner <coder@safemailbox.de>
+# Contributor: Markus Meissner <coder@safemailbox.de>
 
 pkgname=asus-fan-dkms-git 
-pkgver=v0.9.1.r58.g41d132c
+pkgver=0.9.1.r103.g3cb81f1
 pkgrel=1
 _realname=asus-fan
 _modname=asus_fan
@@ -19,7 +19,7 @@ source=("${pkgname}::git+https://github.com/daringer/asus-fan.git")
 
 pkgver() {
 	  cd "${srcdir}/${pkgname}"
-	  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     }
 
 package() {
