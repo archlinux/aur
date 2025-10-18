@@ -2,7 +2,7 @@
 # Contributor: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 
 pkgname=swww-git
-pkgver=0.10.3.r12.g66d270f
+pkgver=0.11.2.r28.g460328b
 pkgrel=1
 pkgdesc='Efficient animated wallpaper daemon for Wayland, controlled at runtime'
 #arch=(x86_64)
@@ -36,7 +36,7 @@ build() {
   cargo build --frozen --release --all-features
 
   # Man pages
-  ./doc/gen.sh
+  ./doc/gen.sh || true
 }
 
 check() {
