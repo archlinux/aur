@@ -159,6 +159,7 @@ Module: requests
     open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/mineru.py
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
     open_webui/retrieval/models/external.py
@@ -204,6 +205,7 @@ Module: fastapi
     open_webui/functions.py
     open_webui/main.py
     open_webui/retrieval/loaders/datalab_marker.py
+    open_webui/retrieval/loaders/mineru.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
     open_webui/routers/channels.py
@@ -1413,6 +1415,7 @@ Module: langchain_core.documents
     open_webui/retrieval/loaders/external_document.py
     open_webui/retrieval/loaders/external_web.py
     open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/mineru.py
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
     open_webui/retrieval/loaders/youtube.py
@@ -1715,6 +1718,9 @@ Module: open_webui.retrieval.loaders.mistral
   Imported in:
     open_webui/retrieval/loaders/main.py
 Module: open_webui.retrieval.loaders.datalab_marker
+  Imported in:
+    open_webui/retrieval/loaders/main.py
+Module: open_webui.retrieval.loaders.mineru
   Imported in:
     open_webui/retrieval/loaders/main.py
 Module: langchain_core.document_loaders
