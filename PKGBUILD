@@ -6,6 +6,11 @@ pkgdesc="GTK4 app and CLI that monitor PipeWire Bluetooth codecs with an optiona
 arch=('any')
 url="https://github.com/ezrakhuzadi/bluetooth-bitrate-manager"
 license=('MIT')
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+)
 depends=(
     'python'
     'python-gobject'
