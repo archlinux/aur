@@ -1,0 +1,22 @@
+pkgbase = brother-dcpt730dw
+	pkgdesc = Brother printer driver (lpd/cups) for the DCP-T730DW multifuncional printer
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpt730dw_all
+	install = dcpt730dw.install
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = a2ps
+	depends = cups
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan4: making dcpt730dw scanner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf106527/dcpt730dwpdrv-3.6.1-1.amd64.deb
+	source = spool.patch
+	sha256sums = b440b688d6be2e9a9a69a2bf4df3f56c90d52e149858bcfde3855eb0ca051890
+	sha256sums = cf9d1cece4f2797e8db4cfbccf81260b34dbbf046411d194c4f2db2a0af27a97
+
+pkgname = brother-dcpt730dw
