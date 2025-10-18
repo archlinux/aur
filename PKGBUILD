@@ -13,22 +13,22 @@ b2sums=('2cae865ce0adab5a0d8ee69d2492cc28ff68373a8263bb12425a28fbf38ef7fd736376f
 options=(!lto)
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --all-features
+  cd "${pkgname}-${pkgver}"
+  cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
-    cargo test --frozen --all-features
+  cd "${pkgname}-${pkgver}"
+  cargo test --frozen --all-features
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm755 -t "${pkgdir}/usr/bin" target/release/ckb-cli
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 -t "${pkgdir}/usr/bin" target/release/ckb-cli
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
 }
