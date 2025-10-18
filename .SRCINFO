@@ -1,15 +1,10 @@
 pkgbase = bluetooth-bitrate-manager
 	pkgdesc = GTK4 app and CLI that monitor PipeWire Bluetooth codecs with an optional high-bitpool SBC rebuild
-	pkgver = 0.1.0
+	pkgver = 0.1.0.r2.g2faa35c
 	pkgrel = 1
 	url = https://github.com/ezrakhuzadi/bluetooth-bitrate-manager
 	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python
 	depends = python-gobject
 	depends = gtk4
@@ -26,7 +21,7 @@ pkgbase = bluetooth-bitrate-manager
 	optdepends = curl: fetch gdbus-codegen helper when rebuilding the SBC codec
 	provides = bluetooth-audio-boost
 	conflicts = bluetooth-audio-boost
-	source = git+https://github.com/ezrakhuzadi/bluetooth-bitrate-manager.git#tag=v0.1.0
+	source = git+https://github.com/ezrakhuzadi/bluetooth-bitrate-manager.git#branch=main
 	sha256sums = SKIP
 
 pkgname = bluetooth-bitrate-manager
