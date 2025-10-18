@@ -1,5 +1,5 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
-# Maintainer: ParadiseofMagic <keonfarrugia@gmail.com>
+# Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname='2bwm'
 pkgver=0.3
 pkgrel=1
