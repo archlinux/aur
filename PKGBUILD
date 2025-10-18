@@ -2,7 +2,7 @@
 _base=optimistix
 pkgname=python-${_base}
 pkgdesc="Nonlinear optimisation in JAX and Equinox"
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 arch=(any)
 url="https://github.com/patrick-kidger/${_base}"
@@ -11,7 +11,7 @@ depends=(python-lineax)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-beartype)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e7fb05df01fc888e28b76cc3f566a9bbec9ad58445193240d94f46dac81f40221526e772fd86e6ef20d3432172824036d5da452b5747023145865ee135907c99')
+sha512sums=('ce426f5c533d3b55214cdcfee7d166abda2f245d3ddf414eafdfd4eba5c1304be4838f5a16eb370431e27f02ffaa7879e0db53d01928dc4d511088824ad5bda9')
 
 build() {
   cd ${_base}-${pkgver}
