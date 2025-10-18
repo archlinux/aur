@@ -1,6 +1,6 @@
 pkgbase = streambooru-bin
 	pkgdesc = StreamBooru — cross‑platform Electron app to browse multiple booru sites
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/Amateur-God/StreamBooru
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = streambooru-bin
 	optdepends = xdg-utils: open links with xdg-open
 	provides = streambooru
 	conflicts = streambooru
-	source = https://github.com/Amateur-God/StreamBooru/releases/download/v0.1.8/StreamBooru-0.1.8-linux-x64.tar.gz
+	source = https://github.com/Amateur-God/StreamBooru/releases/download/v0.1.9/StreamBooru-0.1.9.tar.gz
 	source = streambooru.sh
 	source = streambooru.desktop
 	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
