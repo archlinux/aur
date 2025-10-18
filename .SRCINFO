@@ -1,6 +1,6 @@
 pkgbase = python-universal_pathlib
 	pkgdesc = pathlib api extended to use fsspec backends
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/fsspec/universal_pathlib
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-universal_pathlib
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-fsspec
-	source = https://files.pythonhosted.org/packages/source/u/universal_pathlib/universal_pathlib-0.3.3.tar.gz
-	sha256sums = 78601aee7d470db077990d803d33511f081dddcca53c460b984ce86bb33dccff
+	source = https://files.pythonhosted.org/packages/source/u/universal_pathlib/universal_pathlib-0.3.4.tar.gz
+	sha256sums = 8472df61ea931eb7e8158abf5a12ec9c45103dc58716c0103cf5e88712fa357a
 
 pkgname = python-universal_pathlib
