@@ -1,7 +1,7 @@
 pkgname=tabracing
 _pkgname=TAB
-pkgver=1.0.2.aurpatch
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Unofficial TAB Australia desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
 url="https://gitlab.com/linuxbombay/tab/"
@@ -22,7 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
+    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/tabracing" "$pkgdir/usr/bin/tabracing"
 
     # Desktop Entry
