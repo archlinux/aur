@@ -1,35 +1,13 @@
 pkgbase = packettracer
 	pkgdesc = A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network
-	pkgver = 8.2.2
+	pkgver = 9.0.0
 	pkgrel = 1
-	url = https://www.netacad.com/courses/packet-tracer
+	url = https://www.netacad.com/resources/lab-downloads
 	arch = x86_64
 	license = LicenseRef-Cisco-EULA
 	options = !strip
 	options = !emptydirs
-	source = local://Packet_Tracer822_amd64_signed.deb
-	source = packettracer.sh
-	source = cisco-pt.desktop
-	source = cisco-ptsa.desktop
-	sha512sums = 55835357b01449150f5c962d852f2921d4e39f697297cb34471b8cc83a91bced6c31703cc28a90e61db7a9a32e5534de4f11e5c4f6735f400456d25a013fadde
-	sha512sums = 3bb9bf12a31e9acf1526918dfed7fbd0dcac333afd40de9a325d7139d88b07e9dda9173294b99a537571828d2e1f5e7b7f1a4b5c1af976f8df29159ddd0c6ad0
-	sha512sums = 53eb2b6ac46a22ff519b01ba33628d31ef1b1d87be6fa45bed36ce49e61e6c99c21761751e6cc8135cf78fda25fe44cb49bd6762ed0fc71c1a8b952b50039b25
-	sha512sums = 619585cef99634e950b5906bddd995e85b0ddfcf426ef9eff93450aafd88299e7eed15a783ed3bdd3aab14a781093b740a62bdaa2f0750c94c18f1403030771a
-	depends = openssl>=1.0
-	depends = dbus
-	depends = icu
-	depends = glib2
-	depends = libxml2-legacy
-	depends = libjpeg-turbo
-	depends = nss
-	depends = libxss
-	depends = java-runtime>=1.7.0
-	depends = qt5-multimedia
-	depends = qt5-webengine
-	depends = qt5-svg
-	depends = qt5-networkauth
-	depends = qt5-websockets
-	depends = qt5-script
-	depends = qt5-speech
+	source = local://CiscoPacketTracer_900_Ubuntu_64bit.deb
+	sha512sums = 5a92952435fd4829eb9f84602e21328dcd47b9dc59265d7f84a4162d85f270c9628c800197464a07f79bdf9fe6b728721d91d87fe3255a07e19d7fe4d2069865
 pkgname = packettracer
 
