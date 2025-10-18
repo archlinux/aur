@@ -5,7 +5,7 @@ pkgname=youtube-downloader-bin
 _pkgname=youtube-downloader
 pkgver=3.9.17
 pkgrel=1
-build=1010
+build=251015
 pkgdesc='YouTube Downloader by MediaHuman'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
@@ -18,8 +18,8 @@ depends=('hicolor-icon-theme'
          'ffmpeg')
 provides=('youtube-downloader')
 conflicts=('youtube-downloader')
-source_x86_64=("${pkgname}-$(date +%F-%H).amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb")
-sha256sums_x86_64=('46a0bd9c2f71644149a36897438b58352e18d67befb77e0bd028801d79a67d55')
+source_x86_64=("${pkgname}-${build}.amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb")
+sha256sums_x86_64=('54afbd5b666b78efde5c5c7c67807397f391f0ada2708c0c98feaada62254408')
 
 pkgver() {
   bsdtar -xf control.tar.xz -C .

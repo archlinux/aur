@@ -13,7 +13,7 @@ pkgbase = youtube-downloader-bin
 	depends = ffmpeg
 	provides = youtube-downloader
 	conflicts = youtube-downloader
-	source_x86_64 = youtube-downloader-bin-2025-10-14-09.amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb
-	sha256sums_x86_64 = 46a0bd9c2f71644149a36897438b58352e18d67befb77e0bd028801d79a67d55
+	source_x86_64 = youtube-downloader-bin-251015.amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb
+	sha256sums_x86_64 = 54afbd5b666b78efde5c5c7c67807397f391f0ada2708c0c98feaada62254408
 
 pkgname = youtube-downloader-bin
