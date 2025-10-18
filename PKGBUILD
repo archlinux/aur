@@ -2,12 +2,14 @@
 
 pkgname=zune-git
 pkgver=v0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Luau runtime, similar to Lune, Node, or Bun.'
 url='https://github.com/Scythe-Technology/zune'
 license=('MIT')
 depends=('glibc')
 makedepends=('zig')
+provides=('zune')
+conflicts=('zune' 'zune-bin')
 arch=('x86_64' 'aarch64')
 source=("git+$url.git")
 sha256sums=('SKIP')
