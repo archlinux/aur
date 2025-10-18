@@ -1,17 +1,18 @@
 pkgbase = jupyterhub-sudospawner
 	pkgdesc = Spawn JupyterHub single-user servers with sudo
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/jupyterhub/sudospawner
 	arch = any
 	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pytest-tornado
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = jupyterhub
-	depends = jupyter-notebook
-	source = sudospawner-0.5.2.tar.gz::https://github.com/jupyterhub/sudospawner/archive/0.5.2.tar.gz
-	sha256sums = bee2f1fff8795918408a9cf9eef5988b5eff48c2dac38d37adba2cbdd8a578a5
+	source = sudospawner-1.0.0.tar.gz::https://github.com/jupyterhub/sudospawner/archive/1.0.0.tar.gz
+	sha256sums = afca1a9a7af2df55997705a2d00bda26b0f2182db3d0492ef0e7ad910817d128
 
 pkgname = jupyterhub-sudospawner
