@@ -12,7 +12,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
 makedepends=('rustup' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils')
-depends=('git' 'pacman' 'paru')
+depends=('git' 'pacman')
 #conflicts=('paru')
 #replaces=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
@@ -22,7 +22,7 @@ sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
 # Add -ffat-lto-objects flag to LTOFLAGS to prevent mangling of static libs.(gcc)
 # In clang-16, there seems to be no problem without this option specified.
 # (The -ffat-lto-objects option is planned to be supported from clang-17.)
-CC=${CC:-$(command -v gcc || command -v clang)}
+: "${CC:=$(command -v gcc || command -v clang)}"
 [[ $CC =~ gcc ]] && export LTOFLAGS+=" -ffat-lto-objects"
 unset LD
 # musl build for openssl-sys
@@ -46,7 +46,6 @@ case "$CARCH" in
     ARCH=$CARCH
     ;;
 esac
-[[ $(rustup target list | grep "$ARCH"- | grep musl) ]] && TARGET=$(rustup target list | grep "$ARCH"- |grep musl|head -n1|cut -d" " -f1) || TARGET=$(rustup target list | grep "$ARCH"- |grep -v musl|head -n1|cut -d" " -f1)
 
 checkver() {
   test "$(echo "$@" | tr " " "\n" | sort -Vr | head -n 1)" == "$1";
@@ -54,6 +53,9 @@ checkver() {
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+  rustup update stable
+  TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
+  : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
   echo $TARGET
   rustup target add $TARGET
   cargo fetch --locked --target $TARGET
@@ -61,6 +63,9 @@ prepare() {
 
 build () {
   cd $srcdir/pacman-static
+  TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
+  : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
+  echo $TARGET
 
   # If pacman-static(6.1.0) is not installed, build and install it.(Because it requires libalpm.a.)
   # Build and install pacman-static if the version is not greater than or not equal to 6.1.0-1 or if the package cannot read symbols in the static link library(libalpm.a).
@@ -109,6 +114,9 @@ build () {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
+  TARGETS=$(rustup target list | grep "$ARCH"-); : "${TARGET:=$(echo "$TARGETS" | grep musl | head -n1 | cut -d' ' -f1)}" "${TARGET:=$(echo "$TARGETS" | grep -v musl | head -n1 | cut -d' ' -f1)}"
+  : "${TARGET:=$(rustc -vV | sed -n 's/^host: //p')}"
+  echo $TARGET
   install -Dm755 target/$TARGET/release/paru "${pkgdir}/usr/bin/paru-static"
   #install -Dm644 paru.conf "${pkgdir}/etc/paru.conf"
 
