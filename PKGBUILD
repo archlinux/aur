@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archi
 sha256sums=('b89d47c3289c2ff78b078f0d6c688ed4795bd0a4b19de864dea700757d27862e')
 
 package() {
-    cd "$srcdir/$pkgname-0.1.0"
+    cd "$srcdir/$pkgname-$pkgver"
     
     # Create gazelle package directory
     install -d "$pkgdir/usr/share/gazelle-tui"
