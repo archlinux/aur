@@ -1,0 +1,11 @@
+pkgbase = otf-mbm-ow-font
+	pkgdesc = An Outer Wilds inspired font
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/martibarimaff/mbm-OW-Font
+	arch = any
+	license = OFL
+	source = https://github.com/martibarimaff/mbm-OW-Font/releases/download/v1.000/otf-mbm-ow-font.tar.gz
+	sha256sums = 1bfa55740b750d93570d2e5fa226f5d7ff595654fe7c793e414239e9ce6d4650
+
+pkgname = otf-mbm-ow-font
