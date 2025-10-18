@@ -1,6 +1,6 @@
 pkgbase = riscv32-gnu-toolchain-glibc-llvm-bin
 	pkgdesc = GNU toolchain for riscv32 Linux, including GCC and clang.
-	pkgver = 2025.09.28
+	pkgver = 2025.10.18
 	pkgrel = 1
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = riscv32-gnu-toolchain-glibc-llvm-bin
 	provides = riscv32-gnu-toolchain-glibc-bin
 	conflicts = riscv32-gnu-toolchain-glibc-bin
 	options = !strip
-	source = https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.09.28/riscv32-glibc-ubuntu-24.04-llvm-nightly-2025.09.28-nightly.tar.xz
-	sha512sums = 64129aee08392c98349a0b4a4dae47a90b9aa9dabc18fc6e41b505fc97b17025c4e309dd161da1b9434c838801c83e6db42d858dac02501c07e1c808bd4a42f8
+	source = https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.10.18/riscv32-glibc-ubuntu-24.04-llvm.tar.xz
+	sha512sums = ba56276a3fc9d8eb76e449442ce9481a1638fcb650739bd96c1799bee7b1ef657c0b154d7a60c4f88f8fa936e856fb85cc3dda1695d0d200a53d8b0a365d122e
 
 pkgname = riscv32-gnu-toolchain-glibc-llvm-bin
