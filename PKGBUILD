@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.9')
 provides=("$pkgname")
 source_x86_64=("${pkgname}-${pkgver}::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums_x86_64=('a8d7f6489fb3ea904b7724ab044b9092c4a348b08574ab2a7cfae50149f91a54')
+sha256sums_x86_64=('db1d629e2f2cd352412fdd9fd753f2f9ff9303ad01791cd1d04ba97144cff5fa')
 
 build() {
     cd "$pkgname-$pkgver"
