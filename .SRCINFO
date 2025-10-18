@@ -13,7 +13,7 @@ pkgbase = youtube-to-mp3
 	depends = taglib1
 	depends = ffmpeg
 	conflicts = youtube-to-mp3
-	source_x86_64 = youtube-to-mp3-2025-10-14-09.amd64.deb::https://schinfo.de/MediaHuman/YouTubeToMP3.amd64.deb
-	sha256sums_x86_64 = 75a76f5aa243b8bbdcb4889c73e1b19620b5c64d98e9195764c99c2e6ec69901
+	source_x86_64 = youtube-to-mp3-251015.amd64.deb::https://schinfo.de/MediaHuman/YouTubeToMP3.amd64.deb
+	sha256sums_x86_64 = a027363c947c7c06338610436dc1596da6350ba8ce50fbf78265fd17b38a5cd2
 
 pkgname = youtube-to-mp3
