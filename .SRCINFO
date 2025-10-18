@@ -1,0 +1,13 @@
+pkgbase = rpi-keyboard-fw-update-git
+	pkgdesc = The firmware binaries for the (RP2040-powered) keyboards in the Raspberry Pi 500 and 500+, and a script for updating the firmware
+	pkgver = 20250924.r34.ee4f1cb
+	pkgrel = 1
+	url = https://github.com/raspberrypi/keyboard-firmware
+	arch = any
+	license = BSD-3-Clause
+	depends = bash
+	provides = rpi-keyboard-fw-update
+	source = git+https://github.com/raspberrypi/keyboard-firmware
+	sha512sums = SKIP
+
+pkgname = rpi-keyboard-fw-update-git
