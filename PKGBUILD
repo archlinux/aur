@@ -1,6 +1,7 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki/>
+# Contributor: hildigerr <https://aur.archlinux.org/account/hildigerr>
 # Contributor: leper <blubblub@mail.ru>
-# shellcheck disable=SC2034,2154,2148
+# shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname=smokinguns-git
 _pkgname=${pkgname%-git}
@@ -12,7 +13,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 changelog=.CHANGELOG
 depends=('freetype2' 'hicolor-icon-theme' 'libgl' 'libjpeg-turbo' 'libogg' 'sdl' 'speex' 'zlib')
-makedepends=('git' 'glu' 'openal')
+makedepends=('git' 'glu' 'openal' 'gcc14')
 conflicts=('smokinguns-bin' 'smokinguns' 'smokinguns-data')
 provides=('smokinguns-data' 'smokinguns')
 source=("$pkgname::git+https://github.com/smokin-guns/SmokinGuns.git"
@@ -49,10 +50,25 @@ prepare() {
 
     # https://github.com/smokin-guns/SmokinGuns/issues/11
     patch --forward --strip=1 --input="$srcdir/$pkgname-#11-build-fail.patch"
+
+    # This makes yylex compile with gcc > 13
+    # Add `int yylex(void);` declaration after the `%{` block start (hildigerr)
+    sed -i '/^%{.*/a int yylex(void);' code/tools/lcc/lburg/gram.y
 }
 
 build() {
     cd "$pkgname" || exit
+
+    # lcc needs gcc < 15
+    # https://github.com/drh/lcc/issues/56
+    export TOOLS_CC="/usr/bin/gcc-14"
+
+    # yylex needs gcc < 14
+    # export CC="/usr/bin/gcc-13"
+
+    # > […] the list is optimized out in Sys_ListFiles() by the compiler. That's why I added CFLAGS="-O0 -g". (hildigerr)
+    export CFLAGS="-g -O0"
+
     make
 }
 

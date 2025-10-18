@@ -10,6 +10,7 @@ pkgbase = smokinguns-git
 	makedepends = git
 	makedepends = glu
 	makedepends = openal
+	makedepends = gcc14
 	depends = freetype2
 	depends = hicolor-icon-theme
 	depends = libgl
@@ -33,4 +34,3 @@ pkgbase = smokinguns-git
 	sha512sums = 4ad6e8c1775ccce791810349febfbcc9235bb4cc1310d0b5eb61ea522558c32457e192ab1b9860215d72441c708638cfa845af56e4749a0bfeecaa5bf120d051
 
 pkgname = smokinguns-git
-
