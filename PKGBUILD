@@ -9,7 +9,7 @@ license=('MIT')
 depends=('helix')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4c2db5a91f1195bda83896432e1f8ee4074ee86f8dc42005ed8ee7e2b0e60db8')
+sha256sums=('091f6a257b1a11f676bec00bb201632d8395ac1e929c51e58b592defae7d3f18')
 
 build() {
   cd "$pkgname-$pkgver"
