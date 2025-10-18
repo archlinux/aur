@@ -1,6 +1,6 @@
 pkgname=clash-verge-rev-autobuild-latest-bin
 _pkgname=clash-verge-rev
-pkgver=2.4.3+autobuild.1015.ef9ccaf
+pkgver=2.4.3+autobuild.1018.210c12a
 pkgrel=1
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri (auto-updates from latest.json)"
 arch=('x86_64' 'aarch64' 'armv7h')
