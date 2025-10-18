@@ -1,6 +1,6 @@
 pkgbase = raindrop
 	pkgdesc = All-in-one bookmark manager
-	pkgver = 5.6.94
+	pkgver = 5.6.95
 	pkgrel = 1
 	url = https://raindrop.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = raindrop
 	makedepends = npm
 	makedepends = jq
 	provides = raindrop
-	source = raindrop::git+https://github.com/raindropio/desktop#tag=v5.6.94
+	source = raindrop::git+https://github.com/raindropio/desktop#tag=v5.6.95
 	source = git+https://github.com/raindropio/app
 	source = remove-sentry.patch
 	source = raindrop.desktop
