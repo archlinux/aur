@@ -1,6 +1,6 @@
 pkgbase = llrt-bin
 	pkgver = 0.7.0beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/awslabs/llrt
 	arch = x86_64
 	arch = aarch64
