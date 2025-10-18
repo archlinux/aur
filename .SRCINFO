@@ -1,6 +1,6 @@
 pkgbase = opencode
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 0.15.7
+	pkgver = 0.15.8
 	pkgrel = 1
 	url = https://github.com/sst/opencode
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = opencode
 	conflicts = opencode-bin
 	options = !debug
 	options = !strip
-	source = opencode-0.15.7.tar.gz::https://github.com/sst/opencode/archive/v0.15.7.tar.gz
+	source = opencode-0.15.8.tar.gz::https://github.com/sst/opencode/archive/v0.15.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = opencode
