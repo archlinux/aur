@@ -1,0 +1,23 @@
+pkgbase = livebook-git
+	pkgdesc = Automate code & data workflows with interactive Elixir notebooks (git version)
+	pkgver = r1234.abcdef0
+	pkgrel = 1
+	url = https://livebook.dev
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = elixir
+	depends = elixir>=1.18
+	depends = erlang-parsetools
+	depends = erlang-asn1
+	depends = erlang-inets
+	depends = erlang-os_mon
+	depends = erlang-runtime_tools
+	depends = erlang-ssl
+	depends = erlang-xmerl
+	provides = livebook
+	conflicts = livebook
+	source = git+https://github.com/livebook-dev/livebook.git
+	sha256sums = SKIP
+
+pkgname = livebook-git

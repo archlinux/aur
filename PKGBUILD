@@ -1,0 +1,42 @@
+# Maintainer: Nathan Chere <aur@nathanchere.com.au>
+pkgname="livebook-git"
+pkgver=r3299.8514f12d2
+pkgrel=1
+pkgdesc="Automate code & data workflows with interactive Elixir notebooks (git version)"
+arch=('any')
+url='https://livebook.dev'
+_github_url="https://github.com/livebook-dev/livebook"
+license=('Apache-2.0')
+depends=('elixir>=1.18' 'erlang-parsetools' 'erlang-asn1' 'erlang-inets' 'erlang-os_mon' 'erlang-runtime_tools' 'erlang-ssl' 'erlang-xmerl')
+makedepends=('git' 'elixir')
+provides=('livebook')
+conflicts=('livebook')
+source=("git+https://github.com/livebook-dev/livebook.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/livebook"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${srcdir}/livebook"
+
+    export MIX_ENV=prod
+
+    mix local.hex --force --if-missing
+    mix local.rebar --force --if-missing
+
+    mix deps.get --only prod
+    mix escript.build
+}
+
+check() {
+    cd "${srcdir}/livebook"
+    ./livebook --version
+}
+
+package() {
+    cd "${srcdir}/livebook"
+    install -Dm755 livebook "${pkgdir}/usr/bin/livebook"
+}
