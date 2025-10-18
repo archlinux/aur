@@ -25,7 +25,6 @@ depends=(
     'libsm'
     'gcc-libs'
     'libpcap'
-    'faudio'
     'desktop-file-utils'
 )
 makedepends=('dotnet-sdk>=8' 'git')
@@ -46,6 +45,7 @@ optdepends=(
     'lib32-libsm'
     'lib32-gcc-libs'
     'lib32-libpcap'
+    'faudio'
     'lib32-faudio'
 )
 options=('!strip' '!debug')
