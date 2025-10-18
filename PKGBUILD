@@ -1,7 +1,7 @@
 # Maintainer: Mia Sireneva <mia_sireneva@riseup.net>
 
 pkgname=mediamtx-bin
-pkgver=1.12.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='Ready-to-use and zero-dependency real-time media server and media proxy that allows to publish, read, proxy, record and playback video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ source=(
 
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_amd64.tar.gz")
 source_armv7h=("$url/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_armv7.tar.gz")
-source_aarch64=("$url/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_arm64v8.tar.gz")
+source_aarch64=("$url/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_arm64.tar.gz")
 
 sha256sums=(
 	'fbae4d196086e770a0a4f10ac03b1e4180517381bbc03d9acc16b6d4f7fe3a71'
@@ -29,9 +29,9 @@ sha256sums=(
 	'80442dadb22e57529b456c76bf33ac364cd022f134fc5290dc54a7e2f8378124'
 )
 
-sha256sums_x86_64=('8bbf936e70a8abc80fdb2d0d67c1b53df6a3bfcf4d819ac730a4b0fddcc793bf')
-sha256sums_armv7h=('0b96fb21da1abbf612518daf3978055cb608157cecad2d076b47f644a6aac28b')
-sha256sums_aarch64=('fdeb6e1649f82949c33c7619403147dabadf5a3fb178cf29805d3ea0fa5a2886')
+sha256sums_x86_64=('8143486d886cc2d5c76f98d687cfb2ee6daf947fd45989c9322c0618057dcf5b')
+sha256sums_armv7h=('627182d3cfd24693f17611f07bafbe95d47f5223cf39bd296d7d0f408a909fe9')
+sha256sums_aarch64=('c9ad9ae5f93c1a84a3a52055f630687498b98566e735b5177ed604fefa7072b5')
 
 package() {
 	cd "$srcdir"

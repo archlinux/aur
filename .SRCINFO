@@ -1,6 +1,6 @@
 pkgbase = mediamtx-bin
 	pkgdesc = Ready-to-use and zero-dependency real-time media server and media proxy that allows to publish, read, proxy, record and playback video and audio streams
-	pkgver = 1.12.0
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/bluenviron/mediamtx
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = mediamtx-bin
 	sha256sums = 22b549d42f74e18ba8ee054248a447fd406dabe77f280766588ece12e1846b5c
 	sha256sums = 7e3736dfad3141a3f263fb29a05885670961f07dfbdad8bdbb5de41e3433f3b0
 	sha256sums = 80442dadb22e57529b456c76bf33ac364cd022f134fc5290dc54a7e2f8378124
-	source_x86_64 = https://github.com/bluenviron/mediamtx/releases/download/v1.12.0/mediamtx_v1.12.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8bbf936e70a8abc80fdb2d0d67c1b53df6a3bfcf4d819ac730a4b0fddcc793bf
-	source_armv7h = https://github.com/bluenviron/mediamtx/releases/download/v1.12.0/mediamtx_v1.12.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 0b96fb21da1abbf612518daf3978055cb608157cecad2d076b47f644a6aac28b
-	source_aarch64 = https://github.com/bluenviron/mediamtx/releases/download/v1.12.0/mediamtx_v1.12.0_linux_arm64v8.tar.gz
-	sha256sums_aarch64 = fdeb6e1649f82949c33c7619403147dabadf5a3fb178cf29805d3ea0fa5a2886
+	source_x86_64 = https://github.com/bluenviron/mediamtx/releases/download/v1.15.2/mediamtx_v1.15.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8143486d886cc2d5c76f98d687cfb2ee6daf947fd45989c9322c0618057dcf5b
+	source_armv7h = https://github.com/bluenviron/mediamtx/releases/download/v1.15.2/mediamtx_v1.15.2_linux_armv7.tar.gz
+	sha256sums_armv7h = 627182d3cfd24693f17611f07bafbe95d47f5223cf39bd296d7d0f408a909fe9
+	source_aarch64 = https://github.com/bluenviron/mediamtx/releases/download/v1.15.2/mediamtx_v1.15.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = c9ad9ae5f93c1a84a3a52055f630687498b98566e735b5177ed604fefa7072b5
 
 pkgname = mediamtx-bin
