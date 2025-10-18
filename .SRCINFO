@@ -1,7 +1,7 @@
 pkgbase = ctune-git
 	pkgdesc = NCurses internet radio player for Linux.
-	pkgver = v1.3.6
-	pkgrel = 1
+	pkgver = v1.3.7
+	pkgrel = 0
 	url = https://github.com/An7ar35/ctune
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = ctune-git
 	depends = ffmpeg
 	depends = alsa-lib
 	depends = libbsd
+	depends = json-c
 	optdepends = pulseaudio: for PulseAudio plugin support
 	optdepends = pipewire-pulse: for using the pulseaudio plugin on Pipewire
 	optdepends = pipewire: for PipeWire plugin support
@@ -24,7 +25,7 @@ pkgbase = ctune-git
 	optdepends = pandoc-cli: To compile the man page from source
 	provides = ctune
 	conflicts = ctune
-	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.6
+	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.7
 	sha512sums = SKIP
 
 pkgname = ctune-git
