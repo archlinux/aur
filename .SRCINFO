@@ -1,17 +1,17 @@
 pkgbase = splayer-appimage
 	pkgdesc = 🎉 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐 | A minimalist music player
-	pkgver = 3.0.0_beta.2
+	pkgver = 3.0.0_beta.3
 	pkgrel = 1
 	url = https://github.com/imsyy/SPlayer
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = fuse2
-	provides = splayer=3.0.0_beta.2
+	provides = splayer=3.0.0_beta.3
 	conflicts = splayer
 	noextract = SPlayer.AppImage
 	options = !strip
 	options = !debug
-	source = SPlayer.AppImage::https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.2/splayer-3.0.0-beta.2.AppImage
-	sha256sums = 274d667e562397b103e4a8568bd3c600568d12b8e7442cf75c96367ba7983f76
+	source = SPlayer.AppImage::https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.3/splayer-3.0.0-beta.3-x86_64.AppImage
+	sha256sums = 3e408974f96ac89e6e9dcc0bd7b1b07010ec7fb14182d95dbe6da5030c0e87f4
 
 pkgname = splayer-appimage

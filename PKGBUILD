@@ -4,7 +4,7 @@ _pkgname=splayer
 _Pkgname=SPlayer
 
 pkgname=splayer-appimage
-pkgver=3.0.0_beta.2
+pkgver=3.0.0_beta.3
 pkgrel=1
 pkgdesc="🎉 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐 | A minimalist music player"
 arch=('x86_64')
@@ -15,10 +15,10 @@ conflicts=("${_pkgname}")
 options=(!strip !debug)
 depends=('fuse2')
 source=(
-    "${_Pkgname}.AppImage::${url}/releases/download/v${pkgver//_/-}/splayer-${pkgver//_/-}.AppImage"
+    "${_Pkgname}.AppImage::${url}/releases/download/v${pkgver//_/-}/splayer-${pkgver//_/-}-x86_64.AppImage"
 )
 sha256sums=(
-    "274d667e562397b103e4a8568bd3c600568d12b8e7442cf75c96367ba7983f76"	
+    "3e408974f96ac89e6e9dcc0bd7b1b07010ec7fb14182d95dbe6da5030c0e87f4"
 )
 
 _appimage="${_Pkgname}.AppImage"
@@ -30,9 +30,10 @@ prepare() {
 }
 
 build() {
-    sed -i -e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" "squashfs-root/${_pkgname}.desktop"
+    sed -i -e "s|Icon=.*|Icon=${_pkgname}|" "squashfs-root/${_Pkgname}.desktop"
     # Change Exec
-    sed -i -e "s|Exec=.*|Exec=splayer --no-sandbox %U|" "squashfs-root/${_pkgname}.desktop"
+    sed -i -e "s|Exec=.*|Exec=splayer --no-sandbox %U|" "squashfs-root/${_Pkgname}.desktop"
+    sed -i -e "s|Categories=.*|Categories=AudioVideo;Audio;Player;|" "squashfs-root/${_Pkgname}.desktop"
 
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -41,11 +42,11 @@ package() {
 
     install -Dm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
 
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_Pkgname}.desktop" "${pkgdir}/usr/share/applications/${_Pkgname}.desktop"
 
     install -dm755 "${pkgdir}/usr/share"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
-    ln -s "$(realpath ${srcdir}/squashfs-root/${_pkgname}.png --relative-to ${srcdir}/squashfs-root/usr/share/icons)" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    ln -s "${_Pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
