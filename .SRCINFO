@@ -1,6 +1,6 @@
 pkgbase = appimagelauncher
 	pkgdesc = Helper for running and integrating AppImages
-	pkgver = 3.0.0_beta_1
+	pkgver = 3.0.0_beta_2
 	pkgrel = 1
 	url = https://github.com/TheAssassin/AppImageLauncher
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = appimagelauncher
 	depends = librsvg
 	depends = libarchive
 	depends = squashfuse
-	source = appimagelauncher-3.0.0_beta_1.tag.gz::https://github.com/TheAssassin/AppImageLauncher/archive/refs/tags/v3.0.0-beta-1.tar.gz
+	source = appimagelauncher-3.0.0_beta_2.tag.gz::https://github.com/TheAssassin/AppImageLauncher/archive/refs/tags/v3.0.0-beta-2.tar.gz
 	source = appimage-binfmt-remove.hook
-	sha256sums = 2763d517d4df5b53f22266c22add4550411abc5b9a7b0b534c342c717f316fea
+	sha256sums = 3cd3c2557c3d54b6d6085fc84a6fea279c3eff5bc6f315ef99bd216ff5ba4dd1
 	sha256sums = 72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81
 
 pkgname = appimagelauncher
