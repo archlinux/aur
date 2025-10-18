@@ -1,4 +1,5 @@
 pkgbase = xtemplate-bin
+	pkgdesc = A html/template-based hypertext preprocessor and rapid application development web server written in Go.
 	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/infogulch/xtemplate
