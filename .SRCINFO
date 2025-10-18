@@ -1,6 +1,6 @@
 pkgbase = yosys-git
 	pkgdesc = A framework for RTL synthesis
-	pkgver = 0.57.r266.gb8b0f80
+	pkgver = 0.58.r75.g272aa9c
 	pkgrel = 1
 	url = https://github.com/YosysHQ/yosys
 	arch = x86_64
@@ -9,18 +9,31 @@ pkgbase = yosys-git
 	checkdepends = iverilog
 	makedepends = boost
 	makedepends = git
+	makedepends = python
+	makedepends = python-cxxheaderparser
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = boost-libs
 	depends = gtkwave
 	depends = libffi
-	depends = python
 	depends = tcl
+	depends = pybind11
+	depends = python
+	depends = python-click
 	optdepends = graphviz: Schematics display support
 	optdepends = xdot: Design netlist display support
-	provides = yosys=0.57.r266
+	provides = yosys=0.58.r75
 	conflicts = yosys
+	options = !lto
 	source = yosys::git+https://github.com/YosysHQ/yosys.git
 	source = git+https://github.com/YosysHQ/abc.git
+	source = 0001-verilog-port-renaming.patch
+	source = 0002-verilog-port-renaming-tests.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = ac658080f906a24d9015e35276ea58ee3565cf8d4171da9bd11f1e973fec5bda
+	sha256sums = 11913a84a3d51e5a71d194a8e0ae5092672d083d79bf55c42b2d5d0e4ac6d6d7
 
 pkgname = yosys-git

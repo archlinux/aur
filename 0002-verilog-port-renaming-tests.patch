@@ -1,0 +1,172 @@
+From 950cb53f25a88c8677fcce082da352c822d4c5d0 Mon Sep 17 00:00:00 2001
+From: xiota <>
+Date: Sat, 18 Oct 2025 01:03:41 +0000
+Subject: verilog_parser: add port renaming tests
+
+---
+ tests/verilog/port_rename_equivalence.ys | 22 ++++++++++++++++++++++
+ tests/verilog/port_rename_error_1.ys     | 12 ++++++++++++
+ tests/verilog/port_rename_error_2.ys     | 12 ++++++++++++
+ tests/verilog/port_rename_error_3.ys     | 15 +++++++++++++++
+ tests/verilog/port_rename_error_4.ys     | 16 ++++++++++++++++
+ tests/verilog/port_rename_error_5.ys     | 14 ++++++++++++++
+ tests/verilog/port_rename_pass_1.ys      | 14 ++++++++++++++
+ 7 files changed, 105 insertions(+)
+ create mode 100644 tests/verilog/port_rename_equivalence.ys
+ create mode 100644 tests/verilog/port_rename_error_1.ys
+ create mode 100644 tests/verilog/port_rename_error_2.ys
+ create mode 100644 tests/verilog/port_rename_error_3.ys
+ create mode 100644 tests/verilog/port_rename_error_4.ys
+ create mode 100644 tests/verilog/port_rename_error_5.ys
+ create mode 100644 tests/verilog/port_rename_pass_1.ys
+
+diff --git a/tests/verilog/port_rename_equivalence.ys b/tests/verilog/port_rename_equivalence.ys
+new file mode 100644
+index 000000000..5dde84dbe
+--- /dev/null
++++ b/tests/verilog/port_rename_equivalence.ys
+@@ -0,0 +1,22 @@
++# Equivalence
++read_verilog << EOF
++module gold(input a, input b, output c);
++    assign c = a + b;
++endmodule
++
++module gate_header (
++    .a(x),
++    .b(y),
++    .c(z)
++);
++    input x;
++    input y;
++    output z;
++
++    assign z = x + y;
++endmodule
++EOF
++
++equiv_make gold gate_header equiv_header
++equiv_simple
++equiv_status -assert
+diff --git a/tests/verilog/port_rename_error_1.ys b/tests/verilog/port_rename_error_1.ys
+new file mode 100644
+index 000000000..a0b36163f
+--- /dev/null
++++ b/tests/verilog/port_rename_error_1.ys
+@@ -0,0 +1,12 @@
++# Multiple names for the same inout port
++logger -expect error "Missing details for module port" 1
++read_verilog << EOF
++module gate_multi_inout (
++    .i(a),
++    .o(a)
++);
++    inout a;
++endmodule
++EOF
++logger -check-expected
++design -reset
+diff --git a/tests/verilog/port_rename_error_2.ys b/tests/verilog/port_rename_error_2.ys
+new file mode 100644
+index 000000000..b635022a0
+--- /dev/null
++++ b/tests/verilog/port_rename_error_2.ys
+@@ -0,0 +1,12 @@
++# Multiple names for the same input port
++logger -expect error "Missing details for module port" 1
++read_verilog << EOF
++module gate_multi_inout (
++    .i(a),
++    .j(a)
++);
++    input a;
++endmodule
++EOF
++logger -check-expected
++design -reset
+diff --git a/tests/verilog/port_rename_error_3.ys b/tests/verilog/port_rename_error_3.ys
+new file mode 100644
+index 000000000..b2867fbb0
+--- /dev/null
++++ b/tests/verilog/port_rename_error_3.ys
+@@ -0,0 +1,15 @@
++# Multiple names for an output port
++logger -expect error "Missing details for module port" 1
++read_verilog << EOF
++module gate_multi_output (
++    a,
++    .c(b),
++    .b(b)
++);
++    input a;
++    output b;
++    assign b = a;
++endmodule
++EOF
++logger -check-expected
++design -reset
+diff --git a/tests/verilog/port_rename_error_4.ys b/tests/verilog/port_rename_error_4.ys
+new file mode 100644
+index 000000000..e75acceae
+--- /dev/null
++++ b/tests/verilog/port_rename_error_4.ys
+@@ -0,0 +1,16 @@
++# Swapping names for two ports
++logger -expect error "not declared in module header" 1
++read_verilog << EOF
++module gate_swap (
++    .a(b),
++    .b(a),
++    c
++);
++    input a;
++    input b;
++    output c;
++    assign c = a & !b;
++endmodule
++EOF
++logger -check-expected
++design -reset
+diff --git a/tests/verilog/port_rename_error_5.ys b/tests/verilog/port_rename_error_5.ys
+new file mode 100644
+index 000000000..a1268437c
+--- /dev/null
++++ b/tests/verilog/port_rename_error_5.ys
+@@ -0,0 +1,14 @@
++# ANSI-style renaming
++logger -expect error "syntax error" 1
++read_verilog << EOF
++module gate_ansi (
++    input  .alias_a(a),
++    output .alias_b(b)
++);
++    wire a;
++    wire b;
++    assign b = a;
++endmodule
++EOF
++logger -check-expected
++design -reset
+diff --git a/tests/verilog/port_rename_pass_1.ys b/tests/verilog/port_rename_pass_1.ys
+new file mode 100644
+index 000000000..87aa87200
+--- /dev/null
++++ b/tests/verilog/port_rename_pass_1.ys
+@@ -0,0 +1,14 @@
++# Partial aliasing
++read_verilog << EOF
++module gate_swap (
++    .a(a),
++    .b(b),
++    c
++);
++    input a;
++    input b;
++    output c;
++    assign c = a & !b;
++endmodule
++EOF
++design -reset
+-- 
+2.51.1.dirty
+
