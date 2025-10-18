@@ -1,16 +1,14 @@
 pkgbase = bookget-bin
-	pkgdesc = 数字古籍图书下载工具，已支持约 50+ 个数字图书馆。
+	pkgdesc = A tool for downloading digitized classics, currently supporting 50+ digital libraries.
 	pkgver = 25.0701
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deweizhu/bookget
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = glibc
 	optdepends = dezoomify-rs: Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others
 	provides = bookget
 	conflicts = bookget-git
 	conflicts = bookget
-	options = !debug
 	source = bookget-25.0701::https://github.com/deweizhu/bookget/releases/download/v25.0701/bookget-linux
 	sha256sums = 44d973a48c649e8f5786bc51f988f8f482e6d66628863639fd87f108bdb9653c
 
