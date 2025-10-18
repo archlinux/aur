@@ -1,6 +1,6 @@
 pkgbase = ura-git
 	pkgdesc = A highly customizable Wayland compositor driven by Lua
-	pkgver = r147.28ae929
+	pkgver = r194.c1148a0
 	pkgrel = 1
 	url = https://github.com/levinion/ura
 	arch = any
