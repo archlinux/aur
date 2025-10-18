@@ -1,6 +1,6 @@
 pkgbase = llrt-bin
 	pkgver = 0.7.0beta
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/awslabs/llrt
 	arch = x86_64
 	arch = aarch64
@@ -11,21 +11,21 @@ pkgbase = llrt-bin
 	optdepends = bun-bin: fast runtime, compiler, and bundler for JavaScript and TypeScript
 	provides = llrt
 	conflicts = llrt
-	noextract = llrt-std-sdk-bin-0.7.0-beta-x86_64.zip
+	noextract = llrt-bin-0.7.0-beta-x86_64.zip
 	noextract = llrt-full-sdk-bin-0.7.0-beta-x86_64.zip
 	noextract = llrt-no-sdk-bin-0.7.0-beta-x86_64.zip
-	noextract = llrt-std-sdk-bin-0.7.0-beta-aarch64.zip
+	noextract = llrt-bin-0.7.0-beta-aarch64.zip
 	noextract = llrt-full-sdk-bin-0.7.0-beta-aarch64.zip
 	noextract = llrt-no-sdk-bin-0.7.0-beta-aarch64.zip
 	source = llrt-bin-0.7.0-beta-source.zip::https://github.com/awslabs/llrt/archive/refs/tags/v0.7.0-beta.zip
 	sha256sums = e8d38b80657ea515366003b217b16a33a0214228f89d6915b52604e0c4e040c6
-	source_x86_64 = llrt-std-sdk-bin-0.7.0-beta-x86_64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-x64.zip
+	source_x86_64 = llrt-bin-0.7.0-beta-x86_64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-x64.zip
 	source_x86_64 = llrt-full-sdk-bin-0.7.0-beta-x86_64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-x64-full-sdk.zip
 	source_x86_64 = llrt-no-sdk-bin-0.7.0-beta-x86_64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-x64-no-sdk.zip
 	sha256sums_x86_64 = 12f065250f2c3f165949184017c021c97a2b7ff99fb2b89690488936e3117b14
 	sha256sums_x86_64 = 36a4e66845bab11a82763b0b90502a65d911cf29a752078a2daf34446257a94e
 	sha256sums_x86_64 = c55879dcb3150691bdd9853e960cff3047e7f9c550c776f832bf9dad886aa623
-	source_aarch64 = llrt-std-sdk-bin-0.7.0-beta-aarch64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-arm64.zip
+	source_aarch64 = llrt-bin-0.7.0-beta-aarch64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-arm64.zip
 	source_aarch64 = llrt-full-sdk-bin-0.7.0-beta-aarch64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-arm64-full-sdk.zip
 	source_aarch64 = llrt-no-sdk-bin-0.7.0-beta-aarch64.zip::https://github.com/awslabs/llrt/releases/download/v0.7.0-beta/llrt-linux-arm64-no-sdk.zip
 	sha256sums_aarch64 = 1e1e317f9ff44d03913d9c4f05603b4e0f5d45fbb789c7c1c28a0daf2087d328
@@ -33,19 +33,13 @@ pkgbase = llrt-bin
 	sha256sums_aarch64 = efea1bb318d6fddc10d10fa6555a3978156788b16c7518981d214dfcfac4efa0
 
 pkgname = llrt-bin
-	pkgdesc = Lightweight JavaScript runtime for serverless applications (DEFAULT to llrt-std-sdk-bin)
-	depends = llrt-std-sdk-bin
-	provides = 
-	conflicts = 
-
-pkgname = llrt-std-sdk-bin
-	pkgdesc = Lightweight JavaScript runtime for serverless applications (STANDARD @aws-sdk bundled)
+	pkgdesc = Lightweight JavaScript runtime, compiler, REPL, and test runner (STANDARD @aws-sdk bundled)
 
 pkgname = llrt-full-sdk-bin
-	pkgdesc = Lightweight JavaScript runtime for serverless applications (FULL @aws-sdk bundled)
+	pkgdesc = Lightweight JavaScript runtime, compiler, REPL, and test runner (FULL @aws-sdk bundled)
 
 pkgname = llrt-no-sdk-bin
-	pkgdesc = Lightweight JavaScript runtime for serverless applications (NO @aws-sdk bundled)
+	pkgdesc = Lightweight JavaScript runtime, compiler, REPL, and test runner (NO @aws-sdk bundled)
 
 pkgname = llrt-all-bin
-	pkgdesc = Lightweight JavaScript runtime for serverless applications (All bundle types installed: llrt, llrt-full-sdk, llrt-no-sdk)
+	pkgdesc = Lightweight JavaScript runtime, compiler, REPL, and test runner (All bundle types included with suffix: llrt, llrt-full-sdk, llrt-no-sdk)
