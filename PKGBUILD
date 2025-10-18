@@ -1,4 +1,4 @@
-# Maintainer: Nathan Chere <git@nathanchere.com.au>
+# Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname="livebook"
 pkgver=0.17.2
 pkgrel=1
