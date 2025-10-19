@@ -2,14 +2,14 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
 makedepends=('gcc-fortran' 'cmake'
              'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
-             'petsc<3.24' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
+             'petsc<3.25' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-pandas' 'python-numpy' 'python-scipy' 'python-h5py-openmpi' 'python-matplotlib' 'python-pyaml'
              'vtk' 'fmt' 'verdict')
 optdepends=('paraview: post-processing')
@@ -20,6 +20,11 @@ source=(https://damask-multiphysics.org/download/damask-${pkgver}.tar.xz
 sha512sums=('b1e5970560e95f23766f8bfe660da5da401eb3f57123c53687153cf5e56d3c41be62729431b7f5f1e6a6a5f7269e9eafd317fb5f975e0efd4edf33b361665dd6'
             'e492860add4f7b4b94f53e02f45ef059abacae0deb44c8946c583aedd77df8cc8ba4bd062449c979049b8e08d604c06601c871c5f5f09d8bf5b4fac4acb381ea'
             'a361a5c2edeb9186ca1073c93feae5fa34d1a7b4106745be8568be658f86de466b1974ead6a67a88c84e8752421662116e20ea8e4ca89e36fdcb304f8cfb619c')
+
+prepare() {
+  sed -i '24s/23/24/g' ${pkgname}-${pkgver}/src/CLI.f90
+  sed -i '14s/24/25/g' ${pkgname}-${pkgver}/CMakeLists.txt
+}
 
 build() {
   cmake -S ${pkgbase}-${pkgver} \
@@ -58,7 +63,7 @@ check() {
          -w $(mktemp -d)
 
   example_dir="$(pwd)"/${pkgbase}-${pkgver}/examples/mesh
-  mpirun -np 2 build-mesh/src/DAMASK_mesh \
+  ./build-mesh/src/DAMASK_mesh \
          -l "${example_dir}"/tensionY_mono.yaml \
          -g "${example_dir}"/monocrystal.msh \
          -m "${example_dir}"/material.yaml \

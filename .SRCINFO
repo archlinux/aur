@@ -1,7 +1,7 @@
 pkgbase = damask
 	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://damask-multiphysics.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -11,7 +11,7 @@ pkgbase = damask
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = petsc<3.24
+	makedepends = petsc<3.25
 	makedepends = hdf5-openmpi
 	makedepends = fftw-openmpi
 	makedepends = zlib
