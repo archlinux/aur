@@ -2,7 +2,7 @@
 
 pkgname=python-ttnn-git
 pkgver=0.62.0.dev20251019.r0.gbb02171262f
-pkgrel=3
+pkgrel=4
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -28,15 +28,9 @@ prepare() {
     git submodule update --init --recursive --remote
 
     # Dirty source patches (patching using the patch command is not stable enough)
-    sed -i '/add_subdirectory(tools)/d' CMakeLists.txt # Does not build (most likely LTO)
-    sed -i '/add_subdirectory(tools)/d' tt_metal/CMakeLists.txt # Does not build (most likely LTO)
-    sed -i '/add_subdirectory(examples)/d' ttnn/CMakeLists.txt # Not used in output
-    sed -i 's/#\(include(linking)\)/\1/' CMakeLists.txt # Arch is new enough that we can use the better linking parameters
     sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml # Forced version but it doesn't really need it
     sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml # DITTO
     sed -i 's/\[tool.scikit-build.cmake.define\]/\[tool.scikit-build.cmake.define\]\nENABLE_DISTRIBUTED = "OFF"\n/' pyproject.toml
-    sed -i 's/"lib64" if/"lib" if/' setup.py # Bad assumption. Arch installs to lib even if lib64 exist
-    sed -i '/copy_tree_with_patterns(build_dir \/ get_lib_dir(), self.build_lib + f"\/ttnn\/build\/lib", lib_patterns)/{p; s|get_lib_dir()|"ttnn"| }' setup.py # Additional install needed
 
     # Disable -Werror (sometimes triggers on GCC)
     find -name CMakeLists.txt | grep -v './build' | grep -v './.cpmcache' | xargs -n 1 sed -i -E 's/-Werror([[:space:]]|$)/ /g'
