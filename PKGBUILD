@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=regex-cli
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A command line tool for debugging, ad hoc benchmarking and generating regular expressions for Rust's regex crate"
 url="https://github.com/rust-lang/regex"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=(APACHE MIT)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('d02da827867bac1a6dbbac4739d7b0cce2eb0d60007b8ee62fe0e24da649d110a802328263430e4649ffeb3868b470573131f06b99956904b7100a45a528fd70')
+b2sums=('7906b31770e41ba1d69905449af33b86fd10b140905c1babb34a30d018fe59ee18ea919f74205a9805a30eebecaccc5c0ddab24406d8f11892493ab727866554')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
