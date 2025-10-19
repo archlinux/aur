@@ -3,7 +3,7 @@
 pkgname=shadps4
 pkgver=0.11.0
 _pkgname=shadPS4
-pkgrel=3
+pkgrel=4
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
@@ -91,6 +91,7 @@ prepare() {
 }
 
 build() {
+	sed -i s/"find_package(fmt 10.2.0 CONFIG)"// $srcdir/shadPS4/CMakeLists.txt
 	cmake -B build -S $_pkgname \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
