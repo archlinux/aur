@@ -1,6 +1,6 @@
 pkgbase = pass-secret-service-git
 	pkgdesc = An org.freedesktop.secrets provider with a pass backend.
-	pkgver = 0.5.0.r65.20250903.16ca040
+	pkgver = 0.5.1.r67.20250912.de68dcc
 	pkgrel = 1
 	url = https://github.com/grimsteel/pass-secret-service
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = pass-secret-service-git
 	optdepends = pass-secret-service-openrc: For (system-wide, not recommended) OpenRC init script.
 	optdepends = pass-secret-service-runit: For (system-wide, not recommended) runit init script.
 	optdepends = systemd: To launch the DBUS service automatically on systemd based systems.
-	provides = pass-secret-service=0.5.0.r65.20250903.16ca040
+	provides = pass-secret-service=0.5.1.r67.20250912.de68dcc
 	provides = org.freedesktop.secrets
 	conflicts = pass-secret-service
 	conflicts = gnome-keyring
