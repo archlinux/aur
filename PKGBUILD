@@ -7,7 +7,7 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
-pkgver=7.8.15.5092302
+pkgver=7.8.15.5101401
 pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64" 'aarch64')
@@ -33,12 +33,12 @@ source=("service-terms-zh_${pkgver}.html::https://terms.alicdn.com/legal-agreeme
 )
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
-sha512sums=('e8f6b011dce2b9ec5af567c310a39d08c94d821d3234edf81d01152e4008ce7c8343c9ee4150fcfc04babfbfaff8ec6b61b9b93bcd53e94e6e34211881c481e8'
+sha512sums=('9675c32e6df14e6f137b04eb046bbbb33d06b5515329b78fb45b41806833cf982124ed6198e1fcbc22a01283b80c728e1f8d891043b2ebd66c479aaaa8a78701'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             'b2493e7bddc2d701204899bcd82930f97779eec23485870c64665c525b9faca382a3c0e9e9c1bd18f8fa8157ea408943e542de56dc3410388e78f30732511f5c'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
-sha512sums_x86_64=('e1e18d7151c1b601b5c1bf22b7f7e9e10d8d1ff211b57252be60b32e08f3ba5d8aee5ec1159d249d4c6efd90ead804d9874d79a31cdf008e2d284087191f97e4')
-sha512sums_aarch64=('71e3ff20775b83798d59f177df18a3e5baf4f8d975fddc879ebec41d1e6ee3fd49fd27c860230ca2d923bcb32a5f838585acd9fb4bb5ccbe7759fd41bce5cc69')
+sha512sums_x86_64=('57e290f45d28b4d6fbbbb7d4cca77263d1e20d496bd3b5158718ec89ded1e9bb29db4c6bae916629d532b89a28f3480f587ff8e41df2b3838c31219fc8ea83fd')
+sha512sums_aarch64=('2f1ce65e79b32c656c167712a59aebe87d285bdfac081a8bc2c4ee55cc07f0a85c8dc5f63ec7f1ee482dabc3238272355af710b96e11ca106b8a6a095b03ece5')
 
 prepare() {
     tar -Jxf data.tar.xz -C "${srcdir}"
