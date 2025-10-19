@@ -1,7 +1,7 @@
 pkgbase = sponge
 	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
 	pkgver = 1.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go-sponge.com
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = sponge
 pkgname = sponge
 	depends = glibc
 	depends = protobuf
+	depends = go
 	depends = protoc-gen-doc
 	depends = protoc-gen-go
 	depends = protoc-gen-go-gin=1.15.3

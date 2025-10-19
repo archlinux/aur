@@ -10,7 +10,7 @@ pkgname=(
   "protoc-gen-json-field"
 )
 pkgver=1.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=('x86_64')
 url="https://go-sponge.com"
@@ -59,16 +59,17 @@ build() {
 
 package_sponge() {
   depends+=(
-   'protoc-gen-doc'
-   'protoc-gen-go'
-   "protoc-gen-go-gin=${pkgver}"
-   'protoc-gen-go-grpc'
-   "protoc-gen-go-rpc-tmpl=${pkgver}"
-   'protoc-gen-gotag'
-   "protoc-gen-json-field=${pkgver}"
-   'protoc-gen-openapiv2'
-   'protoc-gen-validate'
-   'swag'
+    'go'
+    'protoc-gen-doc'
+    'protoc-gen-go'
+    "protoc-gen-go-gin=${pkgver}"
+    'protoc-gen-go-grpc'
+    "protoc-gen-go-rpc-tmpl=${pkgver}"
+    'protoc-gen-gotag'
+    "protoc-gen-json-field=${pkgver}"
+    'protoc-gen-openapiv2'
+    'protoc-gen-validate'
+    'swag'
   )
 
   cd "${srcdir}/${_pkgsrc}"
