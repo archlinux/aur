@@ -60,7 +60,7 @@ optdepends=('bat: for syntax highlighting'
             'nano: for editing config files'
             'onefetch: for git info display')
 source=("tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh")
-sha256sums=('bcff8700aa128836b55971c386a06ea34cd2413a2cba1b8c1590b3736f768030')
+sha256sums=('4ca6019b17e89311275e70550886a9df4f1c6d613f6556a3ba60596f889c2c5f')
 
 package() {
     install -Dm755 "$srcdir/tkginstaller.sh" "$pkgdir/usr/bin/tkginstaller"
