@@ -1,6 +1,6 @@
 # Maintainer: killown
 pkgname=waypanel-git
-pkgver=0.9.7.2.7.g34740a8
+pkgver=0.9.8.1.165.g31c7f3a
 pkgrel=1
 pkgdesc="A lightweight, modular status panel for Wayfire written in Python with GTK4"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'gtk4-layer-shell'
   'bluez-tools'
   'wl-clipboard'
+  'uv'
 )
 
 makedepends=('git')
@@ -25,7 +26,6 @@ optdepends=(
   'swaylock: For lock screen integration'
   'pamixer: Volume control'
   'wl-clipboard: Clipboard plugin support'
-  'dunst: Notification area support'
 )
 
 source=("git+https://github.com/killown/waypanel.git")
