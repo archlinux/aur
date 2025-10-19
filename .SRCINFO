@@ -1,0 +1,22 @@
+pkgbase = lscolors-bin
+	pkgdesc = A tool to colorize paths using LS_COLORS
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/sharkdp/lscolors
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = lscolors
+	conflicts = lscolors
+	source_x86_64 = lscolors-x86_64-0.21.0.tgz::https://github.com/sharkdp/lscolors/releases/download/v0.21.0/lscolors-v0.21.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ae917b96439fa04f91db234db25a946abe317f79ed3f5a89bd569a1bc5621299
+	source_i686 = lscolors-i686-0.21.0.tgz::https://github.com/sharkdp/lscolors/releases/download/v0.21.0/lscolors-v0.21.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = da31497674e75bedba9ed4ec54513abebf8d14046dbe335b0e491775e05882ea
+	source_aarch64 = lscolors-aarch64-0.21.0.tgz::https://github.com/sharkdp/lscolors/releases/download/v0.21.0/lscolors-v0.21.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 11d336ebbd71c80a178148428f14d4af39750e4314f9122e98d8ed12c21753d5
+
+pkgname = lscolors-bin

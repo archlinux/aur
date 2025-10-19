@@ -1,0 +1,5 @@
+[lscolors-bin]
+source = "github"
+github = "sharkdp/lscolors"
+use_latest_release = true
+prefix = "v"
