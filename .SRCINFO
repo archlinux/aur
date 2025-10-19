@@ -1,12 +1,13 @@
 pkgbase = jj-fzf
 	pkgdesc = Text UI for Jujutsu based on fzf, centering around the jj log with key bindings for common operations
 	pkgver = 0.34.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/tim-janik/jj-fzf
 	arch = any
 	license = MPL
 	makedepends = make
 	makedepends = shellcheck
+	makedepends = pandoc
 	depends = bash
 	depends = grep
 	depends = jujutsu
