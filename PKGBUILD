@@ -1,28 +1,24 @@
-# Maintainer: Sleep-No-More <nninkovic95@gmail.com>
+# Maintainer: Sleep-No-More <sleepnomore@example.com>
 pkgname=cpmenu
-pkgver=0.0.10
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Circular Power Menu - A beautiful donut-shaped power menu for Wayland with smooth animations"
+pkgdesc="Modern circular power menu for Wayland desktop environments"
 arch=('x86_64')
-url="https://github.com/Sleep-No-More/cpm"
+url="https://github.com/Sleep-No-More/cpmenu"
 license=('MIT')
-depends=('gtk3' 'gtk-layer-shell' 'librsvg' 'hyprlock')
-makedepends=('meson' 'ninja')
-optdepends=(
-    'waybar: for integration with waybar'
-    'hyprland: optimized for hyprland compositor'
-)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Sleep-No-More/cpm/archive/v${pkgver}.tar.gz")
-sha256sums=('db260cda7943c71c006dd5bf42b550adbf7a8144cd063038e6fa7d0252ab88e4')
+depends=('gtk3' 'cairo')
+makedepends=('cargo' 'rust')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Sleep-No-More/cpmenu/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "cpm-${pkgver}"
-    meson setup build --prefix=/usr
-    ninja -C build
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
 }
 
 package() {
-    cd "cpm-${pkgver}"
-    DESTDIR="${pkgdir}" ninja -C build install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$pkgname-$pkgver"
+    install -Dm755 target/release/cpmenu "$pkgdir/usr/bin/cpmenu"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
