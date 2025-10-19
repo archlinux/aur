@@ -1,6 +1,6 @@
 pkgbase = zig-waybar-contrib
 	pkgdesc = High-performance Waybar modules written in Zig for efficient system monitoring
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/erffy/zig-waybar-contrib
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zig-waybar-contrib
 	optdepends = cuda: NVIDIA GPU backend
 	provides = zig-waybar-contrib
 	conflicts = zig-waybar-contrib
-	source = git+https://github.com/erffy/zig-waybar-contrib.git#tag=1.4.1
+	source = git+https://github.com/erffy/zig-waybar-contrib.git#tag=1.4.2
 	md5sums = SKIP
 
 pkgname = zig-waybar-contrib

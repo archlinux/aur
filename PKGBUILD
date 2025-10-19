@@ -2,7 +2,7 @@
 
 _pkgbase="zig-waybar-contrib"
 pkgname="$_pkgbase"
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="High-performance Waybar modules written in Zig for efficient system monitoring"
 arch=('x86_64')
