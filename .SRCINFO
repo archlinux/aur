@@ -1,11 +1,12 @@
 pkgbase = emopick-git
-	pkgdesc = A tiny, emoji picker for the terminal (git dev version)
-	pkgver = r2.9381a2f
+	pkgdesc = A tiny, emoji picker for the terminal (git development version)
+	pkgver = r3.877858a
 	pkgrel = 1
 	url = https://gitlab.com/greyxor/emopick
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = git-lfs
 	depends = awk
 	depends = fzf
 	depends = unicode-emoji
