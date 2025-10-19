@@ -3,23 +3,16 @@
 export GIT_LFS_SKIP_SMUDGE=1
 
 pkgname=emopick-git
-pkgver=r3.877858a
+pkgver=r1.e6c4f35
 pkgrel=1
-pkgdesc="A tiny, emoji picker for the terminal (git development version)"
+pkgdesc="A tiny, emoji picker using awk and fzf for the terminal (git development version)"
 arch=('any')
 url="https://gitlab.com/greyxor/emopick"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('awk' 'fzf' 'unicode-emoji')
-makedepends=('git' 'git-lfs')
+makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-    export GIT_LFS_SKIP_SMUDGE=1
-  git lfs install --local
-}
-
 
 pkgver() {
   cd "$pkgname"
@@ -31,4 +24,5 @@ package() {
 
   install -Dm755 emopick.sh "$pkgdir/usr/bin/emopick"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
