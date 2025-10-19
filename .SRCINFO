@@ -1,19 +1,19 @@
 pkgbase = ttf-plemoljp-bin
 	pkgdesc = Plex Mono Language JP
-	pkgver = 2.0.4
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/yuru7/PlemolJP
 	arch = any
 	license = custom:OFL
 	provides = ttf-font
 	conflicts = ttf-plemoljp
-	source = PlemolJP_v2.0.4.zip::https://github.com/yuru7/PlemolJP/releases/download/v2.0.4/PlemolJP_v2.0.4.zip
-	source = PlemolJP_NF_v2.0.4.zip::https://github.com/yuru7/PlemolJP/releases/download/v2.0.4/PlemolJP_NF_v2.0.4.zip
-	source = PlemolJP_HS_v2.0.4.zip::https://github.com/yuru7/PlemolJP/releases/download/v2.0.4/PlemolJP_HS_v2.0.4.zip
-	source = LICENSE::https://github.com/yuru7/PlemolJP/raw/v2.0.4/LICENSE
-	sha256sums = 0bf19bd2a242e70582bb8c0be084c878e843f6aeaa9e00210828532285599757
-	sha256sums = 54fe7f4d2e857f43a13914ae38638a4205913b19feb3d2f80144c510f4a6a087
-	sha256sums = df082e9274b7ce87d4db8d98c9dae0de4c92cfa84e8b795fc1a98a2e5b88333d
+	source = PlemolJP_v3.0.0.zip::https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_v3.0.0.zip
+	source = PlemolJP_NF_v3.0.0.zip::https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_NF_v3.0.0.zip
+	source = PlemolJP_HS_v3.0.0.zip::https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_HS_v3.0.0.zip
+	source = LICENSE::https://github.com/yuru7/PlemolJP/raw/v3.0.0/LICENSE
+	sha256sums = 757de5ab50fe4f44bb3a3bffcbffec24f18af33dca9bd4e5d7949158fa84533e
+	sha256sums = 887e2d0db714d41ac26ab924bdd3a172b922f57b2b480af01e0147180eac3d80
+	sha256sums = 52c4de59f5030caf9e3c88aa304d281c7ea987e2c30fa0441ca162eede2bff12
 	sha256sums = 52bbb5e729acc62435831d20641ece6a919e610100285ba183ef4d7233fb1e9a
 
 pkgname = ttf-plemoljp-bin
