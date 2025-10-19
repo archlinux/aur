@@ -1,0 +1,19 @@
+pkgbase = android4-screen-control
+	pkgdesc = GUI tool to control Android 4.x devices (scrcpy alternative for old Android)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/shinichiroisumi/android4-screen-control
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pillow
+	depends = tk
+	depends = android-tools
+	source = android4-screen-control.py::https://github.com/shinichiroisumi/android4-screen-control/blob/main/index.py
+	source = LICENSE::https://github.com/shinichiroisumi/android4-screen-control/blob/main/LICENSE
+	source = android4-screen-control.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = android4-screen-control
