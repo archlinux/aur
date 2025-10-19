@@ -1,12 +1,12 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nordvpn.com
 	install = daemon_restart.install
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = flutter
+	makedepends = flutter-bin
 	depends = nordvpn
 	depends = gtk3
 	depends = hicolor-icon-theme

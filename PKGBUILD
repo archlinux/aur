@@ -1,13 +1,13 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
 url='https://nordvpn.com'
 license=('GPL-3.0-only')
 depends=('nordvpn' 'gtk3' 'hicolor-icon-theme')
-makedepends=('flutter')
+makedepends=('flutter-bin')
 options=('!debug')
 install=daemon_restart.install
 source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/4.2.0.tar.gz"
