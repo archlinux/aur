@@ -230,49 +230,13 @@ prepare() {
   # into the torch folder. Disable this behavior.
   patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
 
-  cd third_party/XNNPACK
-  git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
-  cd ../..
-
   # Fix build with CUDA 13 (CCCL headers path changed)
   sed -i 's|${CUDA_TOOLKIT_INCLUDE}|${CUDA_TOOLKIT_INCLUDE}/cccl|' cmake/Modules/FindCUB.cmake
-
-  # [ATen][CUDA][cuFFT] Guard against deprecated error codes
-  # https://github.com/pytorch/pytorch/commit/25343b343e6dd87f89ae0f37d5d44bf9344b8cff
-  git cherry-pick -X theirs --no-commit 25343b343e6dd87f89ae0f37d5d44bf9344b8cff
-
-  # [ATen][CUDA][CUB] Implement changes to CCCL (CUB/Thrust/LibCUDACXX) usage in ATen (#153373)
-  # https://github.com/pytorch/pytorch/commit/51eb8e8f84bb9aa901cff17dd649e18b17a8908c
-  git cherry-pick -X theirs --no-commit 51eb8e8f84bb9aa901cff17dd649e18b17a8908c
-
-  # [ATen][CUDA] Use new CCCL API in v2.8 (#160554)
-  # https://github.com/pytorch/pytorch/commit/d670304001429a1a833255a918ed788d7ec4989a
-  git cherry-pick -X theirs --no-commit d670304001429a1a833255a918ed788d7ec4989a
-
-  # [NVIDIA] Refactor Family Blackwell Support codegen
-  # https://github.com/pytorch/pytorch/commit/9c5601ecc316e5be548038bc24411acd7c74a032
-  git cherry-pick -X theirs --no-commit 9c5601ecc316e5be548038bc24411acd7c74a032
-
-  # Update tensorpipe submodule for CUDA 13
-  # https://github.com/pytorch/pytorch/commit/691d17a5c6f52b0bfec94ade1ac60d2956db65c0
-  cd third_party/tensorpipe
-  git cherry-pick -X theirs --no-commit af0118d13e52f5a08841464a768e01a0bf3e3075
-  cd ../..
 
   # Update flash-attention module for CUDA 13
   # https://github.com/Dao-AILab/flash-attention/commit/dfb664994c1e5056961c90d5e4f70bf7acc8af10
   cd third_party/flash-attention
   git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
-  cd ../..
-
-  # GCC 15 fixes
-  # Make TensorPipe compilable by gcc-14+
-  cd third_party/tensorpipe
-  git cherry-pick --no-commit 62a3ab9d816b2d824cb153ee43bcf2a2b7dc8fa3
-  cd ../..
-  # gloo/types.h: include cstdint
-  cd third_party/gloo
-  git cherry-pick --no-commit 54cbae0d3a67fa890b4c3d9ee162b7860315e341
   cd ../..
 
   # https://bugs.archlinux.org/task/64981
