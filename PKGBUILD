@@ -38,11 +38,12 @@ makedepends=(
   'git'
 
   ## Either:
-  'freetz-ng-devel'
+  # 'freetz-ng-devel'
 
   ## Or, if not specifying meta package 'freetz-ng-devel':
-  # 'ccache'
-  # 'glib2-devel'
+  #'ccache'
+  #'glib2-devel'
+  'subversion'
 )
 optdepends=(
   "ncftp: For alternative (more elaborate??) FTP client over inetutils' 'ftp'."
