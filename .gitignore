@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+mcp-handley-lab/
+venv/
+.mcp_handley_lab/
