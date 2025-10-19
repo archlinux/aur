@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lonkorush
+GenericName=Lonkorush
+Comment=Lonkrush App
+Exec=lonkorush %U
+Icon=lonkorush
+Type=Application
+Categories=Utility;Network;
+StartupNotify=true
