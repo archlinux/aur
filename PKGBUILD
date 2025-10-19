@@ -12,7 +12,6 @@ conflicts=('thinkpad_utils')
 source=("git+https://git.teto.party/pkgs/thinkpad_utils.git")
 md5sums=('SKIP')
 options=('!strip' '!emptydirs')
-install=thinkpad_utils.install
 
 pkgver() {
     cd "$srcdir/thinkpad_utils"
@@ -21,11 +20,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/thinkpad_utils"
-    
-    if [ -f /etc/thinkpad_utils.conf ]; then
-        . /etc/thinkpad_utils.conf
-        sed -i "s|static const char \*lock_cmd = \".*\";|static const char *lock_cmd = \"${LOCK_CMD:-}\";|" thinkpad_utils.c
-        sed -i "s|static const char \*lock_user = \".*\";|static const char *lock_user = \"${LOCK_USER:-}\";|" thinkpad_utils.c
+    if [ ! -f config.h ]; then
+        cp config.def.h config.h
     fi
 }
 
