@@ -3,7 +3,7 @@
 _pkgname='wikidoc'
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r34.20180311.7fb66a4
+pkgver=r36.20220419.f71e0cd
 pkgrel=1
 pkgdesc='Python script allows to create nice looking PDF files from a github wiki. Requires mardown-formatted wiki.'
 arch=('any')
