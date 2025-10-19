@@ -18,7 +18,7 @@ arch=(
   'i686'
   'x86_64'
 )
-url="http://www.gedanken.org.uk/software/wwwoffle/"
+url="https://www.gedanken.org.uk/software/wwwoffle/"
 license=('GPL2')
 depends=(
   'gnutls' 
@@ -67,10 +67,10 @@ backup=(
 install="${_pkgname}.install"
 options=('emptydirs')
 
-_svnurl="http://gedanken.org.uk/svn/wwwoffle/trunk"
+_svnurl="https://gedanken.org.uk/svn/wwwoffle/trunk"
 
 source=(
-  # "http://www.gedanken.org.uk/software/wwwoffle/download/${_pkgname}-${_pkgver}.tgz"
+  # "https://www.gedanken.org.uk/software/wwwoffle/download/${_pkgname}-${_pkgver}.tgz"
   "${_pkgname}::svn+${_svnurl}"
   'conf_d_wwwoffle'
   'initscript_openrc'
