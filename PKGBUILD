@@ -7,7 +7,7 @@ pkgname=kwin-hifps
 pkgver=6.4.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=4
-pkgdesc='An easy to use, but flexible, Wayland compositor'
+pkgdesc='An easy to use, but flexible, Wayland compositor - patched for high refresh rate animation smoothness'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
@@ -122,30 +122,19 @@ pkgver() {
 }
 
 prepare() {
-  echo ">>> Fixing docbook URLs (if any)..."
-  find "$srcdir" -name index.docbook -print0 | xargs -0 sed -i -e 's|url=" http|url="http|g' || true
-
   echo ">>> Syncing official Arch kwin repo files..."
   bash "$srcdir/sync_official.sh" "$PWD"
 
   echo ">>> Checking out kwin source at tag v${pkgver}..."
-  cd "$srcdir"
 
-  rm -rf kwin-src
-  mkdir kwin-src
-
-  # Clone into a normal (non-bare) working tree
-  git -C kwin fetch --all --tags --force
-  git clone "$srcdir/kwin" kwin-src --no-checkout
-
-  cd kwin-src
+  cd "$srcdir/kwin"
 
   # Checkout exact tag
   if git rev-parse "v${pkgver}" >/dev/null 2>&1; then
     git checkout "v${pkgver}"
   elif git rev-parse "Plasma/${pkgver}" >/dev/null 2>&1; then
     git checkout "Plasma/${pkgver}"
-  else
+  else  find "$srcdir" -name index.docbook -print0 | xargs -0 sed -i -e 's|url=" http|url="http|g' || true
     echo ">>> WARNING: tag v${pkgver} not found; using master branch as fallback."
     git checkout master
   fi
@@ -159,10 +148,13 @@ prepare() {
 
   echo ">>> Applying MR 7980 patch for frame pacing fixes..."
   patch -Np1 -i "${srcdir}/0001-retick.patch"
+
+  echo ">>> Fixing docbook URLs (if any)..."
+  find "$srcdir" -name index.docbook -print0 | xargs -0 sed -i -e 's|url=" http|url="http|g' || true
 }
 
 build() {
-  cmake -B build -S "$srcdir/kwin-src" \
+  cmake -B build -S "$srcdir/kwin" \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
