@@ -1,4 +1,5 @@
 snapgene_*_linux.rpm
+snapgene_*_linux.deb
 snapgene-*.pkg.tar
 PKGBUILD
 .vscode

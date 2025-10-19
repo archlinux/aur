@@ -3,7 +3,7 @@
 # Contributor: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=8.0.3
+pkgver=8.2.1
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=1
@@ -48,8 +48,14 @@ depends=('qt6-base'
          'openmp'
 )
 # A valid licence is required to use the full version of snapgene
-source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.rpm" "snapgene")
-sha512sums=('978e2fe41ba596b4d7757f19e2e051a9ba45ecec2247f963ac5f9effc4f3d89596e66f8af6168746aef62972867665f94d789b12933df8a6a06aa1af98fa5cf8' 'b6e85e1a3e1ed9d07159b58abf6fecfb76bfd19752b67fbf156baaab696df83aa8b0fcfc49c93263dd56ea2f47926ddc4dac0b4b011f53112426e8545d1197be')
+source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.deb"
+  "snapgene")
+sha256sums=('c202819aaefb75ffddd28a755fe19685e92479f76fcf5722e75099a2cf4e5cc7'
+  '754fdfb4131f8cb8f53560ea19362c3cc90ee14ea7cd68c353a9d3b8d132b993')
+
+prepare() {
+  tar -xf data.tar.xz
+}
 
 package() {
     cd "$pkgdir"
