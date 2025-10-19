@@ -5,7 +5,7 @@ _gitname=gpufetch
 _pkgname="${_gitname}-nocuda"
 pkgname="${_pkgname}-git"
 pkgver=0.25+15.r128.20251016.82ea16f
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple yet fancy GPU architecture fetching tool. Intel backend only."
 arch=(
   'x86_64'
@@ -15,17 +15,24 @@ provides=(
   "${_gitname}=${pkgver}"
   "${_pkgname}=${pkgver}"
   "${_gitname}-git=${pkgver}"
+  "${_gitname}-amd=${pkgver}"
+  "${_gitname}-intel=${pkgver}"
+  "${_gitname}-amd-git=${pkgver}"
+  "${_gitname}-intel-git=${pkgver}"
 )
 conflicts=(
   "${_gitname}"
   "${_pkgname}"
   "${_gitname}-git"
+  "${_gitname}-amd"
+  "${_gitname}-intel"
 )
 url="https://github.com/Dr-Noob/gpufetch"
 license=('MIT')
 depends=(
   'gcc-libs'
   'glibc'
+  'hsa-rocr'
   'pciutils'
 )
 makedepends=(
@@ -70,23 +77,32 @@ build() {
   cd "${srcdir}"
 
   local _gif
-  printf '%s\n' "  > Size-optimising image files ..."
+  printf '%s\n' "  > Size-optimising image and manpage files ..."
   zopflipng-parallel -m -- "${_gitname}"/pictures/*.png
   for _gif in "${_gitname}"/pictures/*.gif; do
+    printf '%s\n' "${_gif} ..."
     gifsicle -O3 "${_gif}" -o "${_gif}.optimised.gif"
     mv -f "${_gif}.optimised.gif" "${_gif}"
   done
+  printf '%s\n' "${_gitname}/gpufetch.1.gz ..."
   if [ -e "${_gitname}/gpufetch.1.gz" ]; then
+    if [ -e "${_gitname}/gpufetch.1" ]; then
+      rm "${_gitname}/gpufetch.1"
+    fi
     gunzip "${_gitname}/gpufetch.1.gz"
   fi
   gzip -9 "${_gitname}/gpufetch.1"
 
+  printf '%s\n' "  > Running 'cmake' ..."
   _cmake_config_option=()
 
   cmake -S "${_gitname}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_COLOR_MAKEFILE=ON \
+    -DENABLE_CUDA_BACKEND=OFF \
+    -DENABLE_HSA_BACKEND=ON \
+    -DENABLE_INTEL_BACKEND=ON \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     -DCMAKE_VERBOSE_MAKEFILE=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH=OFF \
@@ -94,14 +110,17 @@ build() {
     -Wno-dev \
     "${_cmake_config_options[@]}"
 
+  printf '%s\n' "  > Running 'make' ..."
   make -C build
 }
 
 package() {
   cd "${srcdir}"
 
+  printf '%s\n' "  > Running 'make install' ..."
   DESTDIR="${pkgdir}" make -C build install
 
+  printf '%s\n' "  > Installing documentation and license ..."
   cd "${_gitname}"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_gitname}"           git.log README.md CONTRIBUTING.md
