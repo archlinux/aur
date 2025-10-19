@@ -10,7 +10,7 @@ depends=('gtk3' 'cairo')
 source=("cpmenu::https://github.com/Sleep-No-More/cpmenu/releases/download/v${pkgver}/cpmenu"
         "LICENSE::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/v${pkgver}/LICENSE"
         "README.md::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/v${pkgver}/README.md")
-sha256sums=('0798ca04cc057d7c526834a52d0a41519e32b9c4'
+sha256sums=('84db68da89bc311fb3b6f1bfba1770a98bf265d9d38c5dbe56134e38abb62df8'
             'SKIP'
             'SKIP')
 
