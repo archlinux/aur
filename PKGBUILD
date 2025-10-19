@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd "cpm-${pkgver}"
-    ninja -C build install --destdir="${pkgdir}"
+    DESTDIR="${pkgdir}" ninja -C build install
     
     # Install license (optional)
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" || true
