@@ -1,7 +1,7 @@
 # Maintainer: macaquinyo <miamigoelmacaco@proton.me>
 # Contributor: 
 pkgname=yomikiru-bin
-pkgver=2.22.5
+pkgver=
 pkgrel=1
 pkgdesc="An offline desktop reader for manga, comics, webtoons, and novels. Offers a customizable reading experience with extensive settings, shortcuts, themes and layouts."
 arch=('x86_64')
