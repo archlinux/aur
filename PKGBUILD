@@ -39,7 +39,7 @@ esac
 
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
-pkgver=r770.20250819.09b91b6
+pkgver=r772.20251011.73a1f59
 pkgrel=1
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
