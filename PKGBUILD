@@ -2,7 +2,7 @@
 
 _pkgname=xsystem4
 pkgname=${_pkgname}-git
-pkgver=1.0.0.r9.g43c6a28
+pkgver=1.0.0.r11.g484b643
 pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -16,6 +16,7 @@ depends=(chibi-scheme ffmpeg freetype2 libffi libpng libsndfile libjpeg-turbo li
 makedepends=(bison flex glew meson)
 source=("${pkgname}::git+https://github.com/nunuhara/xsystem4.git")
 conflicts=(${_pkgname})
+provides=("xsystem4=${pkgver}")
 sha256sums=('SKIP')
 prepare () {
 	cd "$srcdir/${pkgname}"
