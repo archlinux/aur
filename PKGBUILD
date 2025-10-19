@@ -13,6 +13,6 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-  install -Dm755 $pkgname.py -t "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
