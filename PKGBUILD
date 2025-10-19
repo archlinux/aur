@@ -4,9 +4,9 @@ _pkgauthor=drunkleen
 _pkgname=leenfetch
 
 pkgname=${_pkgname}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Fast, minimal, customizable system info tool in Rust (Neofetch alternative)"
+pkgdesc="modern, minimal, and the fastest neofetch like system information tool, written in Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
