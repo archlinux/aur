@@ -1,12 +1,12 @@
 pkgbase = android-sdk-build-tools-zipalign-provides
 	pkgdesc = Dummy/ meta package that satisfies 'zipalign' dependency by 'android-sdk-build-tools'.
-	pkgver = r34.0.0
-	pkgrel = 2
+	pkgver = r35.0.1
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/android-sdk-build-tools
 	arch = any
 	license = LicenseRef-Custom: public domain
 	depends = android-sdk-build-tools
-	provides = zipalign=r34.0.0
+	provides = zipalign=r35.0.1
 	source = license-metapackage-pd.txt
 	sha256sums = 1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6
 
