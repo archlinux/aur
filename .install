@@ -1,0 +1,20 @@
+# Colored makepkg-like functions
+note() {
+  printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
+}
+
+_all_off="$(tput sgr0)"
+_bold="${_all_off}$(tput bold)"
+_blue="${_bold}$(tput setaf 4)"
+_yellow="${_bold}$(tput setaf 3)"
+
+post_install() {
+  note "Start to create links of vide."
+  sudo ln -sf /usr/bin/neovide /usr/local/bin/vide
+}
+
+pre_remove() {
+  note "start to remove links of vide."
+  sudo rm /usr/local/bin/vide
+}
+

@@ -1,23 +1,21 @@
 pkgbase = neovide-bin
-	pkgdesc = No Nonsense Neovim Client in Rust (prebuilt)
-	pkgver = 0.7.0
-	pkgrel = 3
-	url = https://github.com/Kethku/neovide
+	pkgdesc = No Nonsense Neovim Client in Rust
+	pkgver = 0.15.2
+	pkgrel = 1.0
+	url = https://github.com/neovide/neovide
+	install = .install
 	arch = x86_64
 	license = MIT
 	depends = neovim
+	depends = gcc-libs
 	depends = fontconfig
 	depends = freetype2
-	depends = libglvnd
-	depends = sndio
-	depends = vulkan-driver
-	provides = neovide
-	conflicts = neovide
-	conflicts = neovide-git
-	source_x86_64 = neovide-0.7.0-3::https://github.com/Kethku/neovide/releases/download/0.7.0/neovide
-	source_x86_64 = neovide.desktop::https://raw.githubusercontent.com/Kethku/neovide/0.7.0/assets/neovide.desktop
-	sha512sums_x86_64 = 7040cf19faf0fdd7d0b0c354f6e07bbf41a1b3007022bbb80a30dda7d5ee79bda0c64a653017d3f8aa5d4b29455f4874fcca4924f02f35cd3b35e00cf62dadd3
-	sha512sums_x86_64 = b34fca2f3eeddd9e31cc0008ee718f878f586f672600342addcfa1ebf76d27e4dbea47aa8f5756434ce607c8733c054655d20bbbc76a7d40900c9c56ccff30e2
+	depends = expat
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = brotli
+	source = neovide.AppImage::https://github.com/neovide/neovide/releases/download/0.15.2/neovide.AppImage
+	sha256sums = 3c1d694e2529e899157cf0fd5e01fcd0fb12f56e8f8f9336e4337c1abc7875c3
 
 pkgname = neovide-bin
-

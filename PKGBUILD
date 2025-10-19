@@ -1,30 +1,35 @@
-# Maintainer: jackreeds
-pkgname_orig=neovide
-pkgname=${pkgname_orig}-bin
-pkgver=0.7.0
-pkgrel=3
-pkgdesc="No Nonsense Neovim Client in Rust (prebuilt)"
-arch=('x86_64')
-url="https://github.com/Kethku/neovide"
+# Maintainer: Coffee Bean <beanc904@gmail.com>
+# Contributor: jackreeds
+pkgname=neovide-bin
+_pkgname=neovide
+pkgver=0.15.2
+pkgrel=1.0
+pkgdesc="No Nonsense Neovim Client in Rust"
+arch=(x86_64)
+url="https://github.com/neovide/neovide"
 license=('MIT')
-provides=('neovide')
-depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio' 'vulkan-driver')
-conflicts=('neovide' 'neovide-git')
-binname=${pkgname_orig}-${pkgver}-${pkgrel}
-source_x86_64=(
-    "${binname}::${url}/releases/download/${pkgver}/${pkgname_orig}"
-    "neovide.desktop::https://raw.githubusercontent.com/Kethku/neovide/${pkgver}/assets/neovide.desktop"
+depends=(
+  neovim
+  gcc-libs
+  fontconfig
+  freetype2
+  expat
+  zlib
+  bzip2
+  libpng
+  brotli
 )
-sha512sums_x86_64=(
-    '7040cf19faf0fdd7d0b0c354f6e07bbf41a1b3007022bbb80a30dda7d5ee79bda0c64a653017d3f8aa5d4b29455f4874fcca4924f02f35cd3b35e00cf62dadd3'
-    'b34fca2f3eeddd9e31cc0008ee718f878f586f672600342addcfa1ebf76d27e4dbea47aa8f5756434ce607c8733c054655d20bbbc76a7d40900c9c56ccff30e2'
-)
-
-prepare() {
-    sed -i 's/Icon=neovide/Icon=nvim/' neovide.desktop
-}
+install=.install
+source=("${_pkgname}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}.AppImage")
+sha256sums=(3c1d694e2529e899157cf0fd5e01fcd0fb12f56e8f8f9336e4337c1abc7875c3)
 
 package() {
-	install -Dm755 "${binname}" "$pkgdir/usr/bin/${pkgname_orig}"
-    install -Dm644 "neovide.desktop" "${pkgdir}/usr/share/applications/neovide.desktop"
+  chmod +x ${_pkgname}.AppImage
+  ./${_pkgname}.AppImage --appimage-extract
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }
+
