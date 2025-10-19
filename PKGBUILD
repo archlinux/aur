@@ -2,12 +2,12 @@
 
 pkgname=python-gvm
 pkgver=26.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='greenbone-vulnerability-manager tools'
 arch=('any')
 url="https://github.com/greenbone/python-gvm"
 license=('GPL-3.0-or-later')
-depends=('python')
+depends=('python-paramiko' 'python-lxml' 'python-httpx')
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
