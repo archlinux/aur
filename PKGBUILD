@@ -7,7 +7,7 @@ pkgver=3.0.0
 pkgrel=2
 arch=('x86_64')
 url='https://github.com/supermetrics-public/pecl-jsonpath'
-license=('PHP License')
+license=('PHP-3.01')
 depends=('php>=8.0')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 sha256sums=('198ae484102b4404d94e2ad0b38d1dbf78ec55067f0b92f0dfaa2afcad906268')
