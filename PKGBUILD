@@ -10,6 +10,7 @@ makedepends=(
     'git'
     'python-build'
     'python-installer'
+    'python-setuptools'
 )
 depends=(
     'python'
