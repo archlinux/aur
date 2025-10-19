@@ -1,7 +1,7 @@
 pkgbase = ecwolf
 	pkgdesc = Advanced source port for Wolfenstein 3D engine games
-	pkgver = 1.4.1
-	pkgrel = 4
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://maniacsvault.net/ecwolf/
 	install = ecwolf.install
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = ecwolf
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = sdl2_net
-	source = https://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.1-src.tar.xz
+	source = https://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.2-src.tar.xz
 	source = net.maniacsvault.ecwolf.desktop
-	source = gcc14.patch
-	sha256sums = 8ebd495d2806c9d0e736656970e736730a005d3b43c7f5729f52c812b22f9e2d
+	sha256sums = 2121fb3fc63e532423681dcddf5d3848e19e8c6b4e2e1bfa802b16a2d42f84f5
 	sha256sums = 97bbc02334b250b5ca9a7076d6761e9ae54c1259a37521449b2ecedcaebfdcc3
-	sha256sums = 79b1886e774da244ac05d0f8de5a332573730d742472911b59b5840532d4d1bc
 
 pkgname = ecwolf
