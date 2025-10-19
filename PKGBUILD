@@ -2,7 +2,7 @@
 
 pkgname=kubetail-cli
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time logging dashboard for Kubernetes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kubetail-org/kubetail"
