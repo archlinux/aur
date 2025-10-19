@@ -1,6 +1,6 @@
 pkgbase = imgui-git
 	pkgdesc = Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies.
-	pkgver = 1.92.2b+41.r9271.20250904.02af06ea5
+	pkgver = 1.92.4+9.r9402.20251018.e11b7a041
 	pkgrel = 1
 	url = https://github.com/ocornut/imgui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = imgui-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = imgui=1.92.2b+41.r9271.20250904.02af06ea5
+	provides = imgui=1.92.4+9.r9402.20251018.e11b7a041
 	conflicts = imgui
 	source = imgui::git+https://github.com/ocornut/imgui.git
 	source = imgui_CMakeLists.txt::https://github.com/microsoft/vcpkg/raw/refs/heads/master/ports/imgui/CMakeLists.txt
