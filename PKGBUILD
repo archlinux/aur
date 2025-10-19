@@ -1,7 +1,7 @@
 # Maintainer: Jonas Ohland <jonas.ohland@gmail.com>
 pkgname=mxl-git
-pkgver=0.7.5_ea3a570
-pkgrel=3
+pkgver=0.8.1_e793872
+pkgrel=2
 pkgdesc="Dynamic Media Facility: Media Exchange Layer"
 arch=("x86_64" "aarch64")
 depends=("util-linux-libs" "spdlog" "fmt" "gstreamer" "gst-plugins-base")
@@ -21,7 +21,7 @@ source=(
 sha256sums=(
     "SKIP"
     "d6913e1459ad785123c1dbfe6f8029c9d247cd0f76037ce52ae4a0d5172a3136"
-    "7c8ccb49c9b3fd5518626574a14998acabb7241956cb3176d027ed156d6877f6"
+    "9ba0963e224553b01c62f9660664a1372ca7cb664969a739ff10e6c2c8f310da"
 )
 
 pkgver() {
