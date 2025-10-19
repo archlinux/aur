@@ -4,7 +4,7 @@
 
 _pkgname=sshpilot
 pkgname="$_pkgname-git"
-pkgver=r2201.gae4fb34
+pkgver=r2195.g8d2b8bb
 pkgrel=1
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
