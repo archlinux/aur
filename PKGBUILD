@@ -3,7 +3,7 @@
 
 pkgname=mpz-qt5
 pkgver=1.1.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Music player for the large local collections (Qt5 version)'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"
@@ -20,7 +20,7 @@ build() {
     rm -rf build
     mkdir build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SYSTEM_TAGLIB=ON -DUSE_SYSTEM_YAMLCPP=ON -DUSE_QT5=ON ..
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SYSTEM_TAGLIB=ON -DUSE_SYSTEM_YAMLCPP=ON -DUSE_QT5=ON ..
     cmake --build .
 }
 
