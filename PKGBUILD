@@ -2,12 +2,12 @@
 
 pkgname=dorion-bin
 pkgver=6.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny alternative Discord client with a smaller footprint, snappier startup, themes, plugins and more!"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://spikehd.github.io/projects/dorion"
 license=('GPL3')
-depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
+depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'gst-plugins-good' 'gst-plugins-base' 'gst-plugins-bad')
 provides=('dorion')
 conflicts=('dorion')
 source_x86_64=("https://github.com/SpikeHD/Dorion/releases/download/v${pkgver}/Dorion_${pkgver}_amd64.deb")
