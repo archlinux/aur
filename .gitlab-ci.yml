@@ -4,7 +4,7 @@ variables:
   GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
 
 before_script:
-  - pacman -Syu --noconfirm sed jq binutils base-devel gtk3 libxss libindicator-gtk2 nss dbus-glib libdbusmenu-gtk2 git openssh
+  - pacman -Syu --noconfirm sed jq binutils gtk3 libxss libindicator-gtk2 nss dbus-glib libdbusmenu-gtk2 git openssh curl
   - useradd -m builduser
   - passwd -d builduser
   - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
@@ -60,16 +60,18 @@ release_job:
     - git config --global user.name "Mundo"
     - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
     - git fetch aur master
-    - git checkout -B temp-release aur/master
-    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
-    - su -c "cd ${CI_PROJECT_DIR} && makepkg --printsrcinfo > .SRCINFO" - builduser
+    - git stash
+    - git checkout master
+    - git stash pop
+    - git add PKGBUILD .SRCINFO
+    - git commit -m "temp commit for rebase"
+    - git rebase aur/master
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
     - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
-    - git add PKGBUILD .SRCINFO
-    - git commit -m "$commit_msg"
-    - git push aur HEAD:master
+    - git commit --amend -m "$commit_msg"
+    - git push aur master
 
   dependencies:
     - test_job
@@ -89,18 +91,16 @@ commit_job:
     - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
-    - git remote add glab "https://oauth2:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
-    - git fetch glab main
-    - git checkout -B temp-commit glab/main
-    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
-    - su -c "cd ${CI_PROJECT_DIR} && makepkg --printsrcinfo > .SRCINFO" - builduser
+    - git remote add glab "${CI_REPOSITORY_URL}"
+    - git fetch glab
+    - git checkout -b main
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
     - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
     - git add PKGBUILD .SRCINFO
     - git commit -m "$commit_msg"
-    - git push glab HEAD:main
+    - git push glab main
   dependencies:
     - release_job
   artifacts:
