@@ -1,6 +1,6 @@
 pkgbase = reskin
 	pkgdesc = A modern Linux desktop theming app for browsing, applying, and managing custom themes
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/iamnotmega/reskin
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = reskin
 	makedepends = desktop-file-utils
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	source = https://github.com/iamnotmega/reskin/archive/refs/tags/1.5.1.tar.gz
-	sha256sums = 64e3e14a739fdb2b1cf335248e6f0e0bb7427ee527948d61bb55250e63cf8e7d
+	source = https://github.com/iamnotmega/reskin/archive/refs/tags/1.5.2.tar.gz
+	sha256sums = d82e38ac425bccda21a5100d6620a4ade58d0c50459e05f4efb0c30ac90d3b4d
 
 pkgname = reskin
