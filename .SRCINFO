@@ -1,6 +1,6 @@
 pkgbase = komelia
 	pkgdesc = Komga media client
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/Snd-R/Komelia
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = komelia
 	depends = libvips
 	depends = org.freedesktop.secrets
 	optdepends = webkit2gtk-4.1: epub reader support
-	source = git+https://github.com/Snd-R/Komelia.git#commit=66e62c8e5fa2722315fecfb9e58e2a517daf2320
+	source = git+https://github.com/Snd-R/Komelia.git#commit=12bf63a98636e10d4bfe573a8366456593cb438f
 	source = git+https://github.com/Snd-R/ChipTextField.git#commit=a06f5f356cd0daa698404808100eade87d2614d8
 	source = git+https://github.com/Snd-R/compose-sonner.git#commit=5d43b3f958c881aae10708b7de54399bd7661d8a
 	source = git+https://github.com/Snd-R/secret-service.git#commit=efca0226a444fc7ca4be06858a457c50f63cd7b8
