@@ -1,0 +1,17 @@
+pkgbase = xpra-html5
+	pkgdesc = HTML5 client for Xpra
+	pkgver = 17.1
+	pkgrel = 1
+	url = https://github.com/Xpra-org/xpra-html5
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = python
+	makedepends = brotli
+	makedepends = gzip
+	makedepends = uglify-js
+	conflicts = xpra-html5-git
+	source = xpra-html5-17.1.tar.gz::https://github.com/Xpra-org/xpra-html5/archive/refs/tags/v17.1.tar.gz
+	sha256sums = 959ae19404b7eb9690c72d2a267683987cb259c21ebc01f286a455fffa949964
+
+pkgname = xpra-html5
