@@ -1,0 +1,13 @@
+pkgbase = tv-bin
+	pkgdesc = A fast, feature-rich CSV/TSV/delimited file viewer for the command line
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/codechenx/tv
+	arch = x86_64
+	license = Apache
+	provides = tv
+	conflicts = tv
+	source = https://github.com/codechenx/tv/releases/download/v0.7.1/tv_0.7.1_Linux_x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = tv-bin
