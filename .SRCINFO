@@ -1,0 +1,25 @@
+pkgbase = lonkorush
+	pkgdesc = Lonkorush
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kaktus000/lonkorush
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = git
+	depends = gtk3
+	depends = libx11
+	depends = libxcomposite
+	depends = libxrandr
+	depends = libxrender
+	depends = fuse2
+	source = https://github.com/Kaktus000/lonkorush/archive/refs/tags/Release-1.0.tar.gz
+	source = lonkorush.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lonkorush
