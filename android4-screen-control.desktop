@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Android 4 Screen Control
+Comment=Control old Android 4.x devices via ADB
+Exec=android4-screen-control
+Icon=android
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=android;adb;screen;control;
