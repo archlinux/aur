@@ -7,7 +7,7 @@ url="https://artofsmart.com.au"
 license=('custom')
 source=("https://github.com/Derukugis/art-of-smart-online/raw/refs/heads/master/art-of-smart-online.AppImage"
         "art-of-smart-online.desktop")
-sha256sums=('1bc2c743657bfeac6323afddc0554814aa9d271a7c31e64730763b4e6d0b9da7'
+sha256sums=('ae749bd3c192ee266a064d4cf4afa98c539a8ea0ef59af255c99fe14f5ca1771'
             'SKIP')
 
 package() {
