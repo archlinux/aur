@@ -16,13 +16,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Sleep-No-More/cpm/archi
 sha256sums=('c225e86375529e2b5644a8fa4afe219799ea2a666dabdb6676a47d4fd5c44c91')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "cpm-${pkgver}"
     meson setup build --prefix=/usr
     ninja -C build
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "cpm-${pkgver}"
     ninja -C build install --destdir="${pkgdir}"
     
     # Install license (optional)

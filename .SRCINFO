@@ -1,4 +1,4 @@
-pkgbase = cpm
+pkgbase = cpmenu
 	pkgdesc = Circular Power Menu - A beautiful donut-shaped power menu for Wayland
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -13,7 +13,7 @@ pkgbase = cpm
 	depends = hyprlock
 	optdepends = waybar: for integration with waybar
 	optdepends = hyprland: optimized for hyprland compositor
-	source = cpm-0.0.1.tar.gz::https://github.com/Sleep-No-More/cpm/archive/v0.0.1.tar.gz
+	source = cpmenu-0.0.1.tar.gz::https://github.com/Sleep-No-More/cpm/archive/v0.0.1.tar.gz
 	sha256sums = c225e86375529e2b5644a8fa4afe219799ea2a666dabdb6676a47d4fd5c44c91
 
-pkgname = cpm
+pkgname = cpmenu
