@@ -10,11 +10,11 @@ pkgname=librewolf-hellfire
 _pkgname=LibreWolf-HellFire
 _appname=librewolf
 epoch=1
-pkgver=141.0.3_1
+pkgver=144.0_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
-_firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
-pkgrel=3
+_firefoxver="${_fixedfirefoxver}" # Use full Firefox version for source URL
+pkgrel=1
 pkgdesc="LibreWolf with HellFire performance optimizations - privacy-focused Firefox fork with extreme performance tuning"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -119,7 +119,7 @@ source=(
   "default192x192.png"
 )
 
-sha256sums=('a42535781168f3b2f398125a16ea925aaa31f07e0739bf41c12efc2cd39ccdce'
+sha256sums=('7dbf8ebee436fd3efc5895b5151af0e23063ef1d3a47ff3da6d55dfcc1b047c6'
             '6faf23e9e75799c7000c153463fb0e8d5c3d7fb8c167aea603142b1037bfa540'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
 

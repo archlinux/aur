@@ -1,7 +1,7 @@
 pkgbase = librewolf-hellfire
 	pkgdesc = LibreWolf with HellFire performance optimizations - privacy-focused Firefox fork with extreme performance tuning
-	pkgver = 141.0.3_1
-	pkgrel = 3
+	pkgver = 144.0_1
+	pkgrel = 1
 	epoch = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -78,11 +78,11 @@ pkgbase = librewolf-hellfire
 	options = !makeflags
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/141.0.3-1/librewolf-141.0.3-1.source.tar.gz
+	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/144.0-1/librewolf-144.0-1.source.tar.gz
 	source = librewolf.desktop
 	source = default192x192.png
 	validpgpkeys = 034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
-	sha256sums = a42535781168f3b2f398125a16ea925aaa31f07e0739bf41c12efc2cd39ccdce
+	sha256sums = 7dbf8ebee436fd3efc5895b5151af0e23063ef1d3a47ff3da6d55dfcc1b047c6
 	sha256sums = 6faf23e9e75799c7000c153463fb0e8d5c3d7fb8c167aea603142b1037bfa540
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 
