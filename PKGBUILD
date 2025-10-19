@@ -1,7 +1,7 @@
 # Maintainer: Bono Fox <tiny4linux@bono-fox.de>
 
 pkgname=tiny4linux-gui
-pkgver=1.4.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A graphical interface for controlling the OBSBOT Tiny series."
 arch=('x86_64')
@@ -11,7 +11,7 @@ categories=('Utility')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$url/releases/download/v$pkgver/tiny4linux-$pkgver.tar.gz")
-sha256sums=('5c42dae0279b7f50de22f2663d41c7e6e272186e2401be08493d9eafb7331340')
+sha256sums=('90e5de5f5b3d0a1d3ab94983fae9f399b7c0c3a5df118d2487fa8eec4a84f142')
 
 build() {
   cargo build --release --locked
@@ -20,6 +20,6 @@ build() {
 package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm755 "src/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/tiny4linux.png"
+  install -Dm755 "target/release/assets/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/tiny4linux.png"
   install -Dm755 "src/gui/tiny4linux.desktop" "$pkgdir/usr/share/applications/tiny4linux.desktop"
 }
