@@ -1,6 +1,6 @@
 pkgbase = sponge-git
 	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
-	pkgver = 1.14.6.r0.ge03df22
+	pkgver = 1.15.3.r0.g2a9bca1
 	pkgrel = 1
 	url = https://go-sponge.com
 	arch = x86_64
@@ -15,17 +15,18 @@ pkgbase = sponge-git
 pkgname = sponge-git
 	depends = glibc
 	depends = protobuf
+	depends = go
 	depends = protoc-gen-doc
 	depends = protoc-gen-go
-	depends = protoc-gen-go-gin-git=1.14.6.r0.ge03df22
+	depends = protoc-gen-go-gin-git=1.15.3.r0.g2a9bca1
 	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-rpc-tmpl-git=1.14.6.r0.ge03df22
+	depends = protoc-gen-go-rpc-tmpl-git=1.15.3.r0.g2a9bca1
 	depends = protoc-gen-gotag
-	depends = protoc-gen-json-field-git=1.14.6.r0.ge03df22
+	depends = protoc-gen-json-field-git=1.15.3.r0.g2a9bca1
 	depends = protoc-gen-openapiv2
 	depends = protoc-gen-validate
 	depends = swag
-	provides = sponge=1.14.6
+	provides = sponge=1.15.3
 	conflicts = sponge
 
 pkgname = protoc-gen-go-gin-git
@@ -35,7 +36,7 @@ pkgname = protoc-gen-go-gin-git
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	provides = protoc-gen-go-gin=1.14.6
+	provides = protoc-gen-go-gin=1.15.3
 	conflicts = protoc-gen-go-gin
 
 pkgname = protoc-gen-go-rpc-tmpl-git
@@ -45,11 +46,11 @@ pkgname = protoc-gen-go-rpc-tmpl-git
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	provides = protoc-gen-go-rpc-tmpl=1.14.6
+	provides = protoc-gen-go-rpc-tmpl=1.15.3
 	conflicts = protoc-gen-go-rpc-tmpl
 
 pkgname = protoc-gen-json-field-git
 	pkgdesc = Protobuf plugin to generate JSON field code from proto files
 	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-json-field
-	provides = protoc-gen-json-field=1.14.6
+	provides = protoc-gen-json-field=1.15.3
 	conflicts = protoc-gen-json-field

@@ -11,7 +11,7 @@ _pkgname=(
 )
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgname[@]/%/-git}")
-pkgver=1.14.6.r0.ge03df22
+pkgver=1.15.3.r0.g2a9bca1
 pkgrel=1
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=('x86_64')
@@ -67,16 +67,17 @@ build() {
 
 package_sponge-git() {
   depends+=(
-   'protoc-gen-doc'
-   'protoc-gen-go'
-   "protoc-gen-go-gin-git=${pkgver}"
-   'protoc-gen-go-grpc'
-   "protoc-gen-go-rpc-tmpl-git=${pkgver}"
-   'protoc-gen-gotag'
-   "protoc-gen-json-field-git=${pkgver}"
-   'protoc-gen-openapiv2'
-   'protoc-gen-validate'
-   'swag'
+    'go'
+    'protoc-gen-doc'
+    'protoc-gen-go'
+    "protoc-gen-go-gin-git=${pkgver}"
+    'protoc-gen-go-grpc'
+    "protoc-gen-go-rpc-tmpl-git=${pkgver}"
+    'protoc-gen-gotag'
+    "protoc-gen-json-field-git=${pkgver}"
+    'protoc-gen-openapiv2'
+    'protoc-gen-validate'
+    'swag'
   )
   provides=(
     "${pkgname%-git}=${pkgver%%.r*}"
