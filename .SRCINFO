@@ -1,6 +1,6 @@
 pkgbase = perl-travel-routing-de-dbris-git
 	pkgdesc = dbris provides a commandline client and Perl module for the bahn.de public transit routing interface. It requests connections between two stops and prints the results as text or JSON.
-	pkgver = 0.07+r66.20250804.geff01dc
+	pkgver = 0.07+r67.20250928.g8a3a147
 	pkgrel = 1
 	epoch = 1
 	url = https://finalrewind.org/projects/Travel-Routing-DE-DBRIS/
@@ -19,8 +19,8 @@ pkgbase = perl-travel-routing-de-dbris-git
 	depends = perl-json
 	depends = perl-lwp-protocol-https
 	depends = perl-travel-status-de-dbris>=0.01
-	provides = perl-travel-routing-de-dbris=0.07+r66.20250804.geff01dc
-	provides = perl-travel-routing-de-dbris-zsh-completion=0.07+r66.20250804.geff01dc
+	provides = perl-travel-routing-de-dbris=0.07+r67.20250928.g8a3a147
+	provides = perl-travel-routing-de-dbris-zsh-completion=0.07+r67.20250928.g8a3a147
 	conflicts = perl-travel-routing-de-dbris
 	conflicts = perl-travel-routing-de-dbris-zsh-completion
 	options = !emptydirs
