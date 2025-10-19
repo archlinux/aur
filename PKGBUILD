@@ -2,14 +2,15 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
+petsc_excluded='3.25' # next PETSc release (exclude because API changes are expected)
 makedepends=('gcc-fortran' 'cmake'
              'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
-             'petsc<3.25' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
+             "petsc<${petsc_excluded}" 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-pandas' 'python-numpy' 'python-scipy' 'python-h5py-openmpi' 'python-matplotlib' 'python-pyaml'
              'vtk' 'fmt' 'verdict')
 optdepends=('paraview: post-processing')
@@ -75,7 +76,7 @@ check() {
 
 package_damask-grid() {
   pkgdesc='Grid solver for DAMASK'
-  depends=('petsc<3.24' 'openmpi' 'hdf5-openmpi' 'libfyaml' 'zlib' 'fftw-openmpi')
+  depends=("petsc<${petsc_excluded}" 'openmpi' 'hdf5-openmpi' 'libfyaml' 'zlib' 'fftw-openmpi')
   optdepends=('dream3d: pre-processing')
 
   install -m 644 -D ${pkgbase}-${pkgver}/examples/grid/* -t "${pkgdir}"/usr/share/doc/${pkgname}/
@@ -86,7 +87,7 @@ package_damask-grid() {
 
 package_damask-mesh() {
   pkgdesc='Mesh solver for DAMASK'
-  depends=('petsc<3.24' 'openmpi' 'hdf5-openmpi' 'libfyaml')
+  depends=("petsc<${petsc_excluded}" 'openmpi' 'hdf5-openmpi' 'libfyaml')
   optdepends=('neper: pre-processing')
 
   install -m 644 -D ${pkgbase}-${pkgver}/examples/mesh/* -t "${pkgdir}"/usr/share/doc/${pkgname}/

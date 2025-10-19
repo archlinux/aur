@@ -1,7 +1,7 @@
 pkgbase = damask
 	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://damask-multiphysics.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -40,7 +40,7 @@ pkgname = damask
 
 pkgname = damask-grid
 	pkgdesc = Grid solver for DAMASK
-	depends = petsc<3.24
+	depends = petsc<3.25
 	depends = openmpi
 	depends = hdf5-openmpi
 	depends = libfyaml
@@ -50,7 +50,7 @@ pkgname = damask-grid
 
 pkgname = damask-mesh
 	pkgdesc = Mesh solver for DAMASK
-	depends = petsc<3.24
+	depends = petsc<3.25
 	depends = openmpi
 	depends = hdf5-openmpi
 	depends = libfyaml
