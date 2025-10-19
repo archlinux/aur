@@ -1,6 +1,6 @@
 pkgbase = bab
-	pkgdesc = A modern task runner from simple to scaled
-	pkgver = 0.0.9
+	pkgdesc = Custom commands for every project
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = bab
 	conflicts = bab-bin
 	provides = bab
 	
-	source = https://github.com/bab-sh/bab/archive/refs/tags/v0.0.9.tar.gz
-	sha256sums = e798f72ca1c2ab5faee3b75d757043fee62d0973ff21ab4094967b2939ec4eb4
+	source = https://github.com/bab-sh/bab/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 49115398810d6ed6d1b13986a256c47b60f4bdd10acb7c030044910e01cc35e9
 	
 pkgname = bab
