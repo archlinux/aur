@@ -1,0 +1,13 @@
+pkgbase = gnome-icon-theme-gartoon-redux
+	pkgdesc = Cartoon-style SVG icon theme based on Gartoon (from Ubuntu package)
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://launchpad.net/gartoon-redux
+	arch = any
+	license = GPL2
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	source = https://archive.ubuntu.com/ubuntu/pool/universe/g/gartoon-redux/gnome-icon-theme-gartoon-redux_1.11-0ubuntu1_all.deb
+	sha256sums = SKIP
+
+pkgname = gnome-icon-theme-gartoon-redux
