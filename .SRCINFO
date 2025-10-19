@@ -1,5 +1,5 @@
 pkgbase = buck2-bin
-	pkgdesc = A large-scale build system from Meta, developed in Rust
+	pkgdesc = Build system, successor to Buck
 	pkgver = 2025.10.15
 	pkgrel = 1
 	url = https://github.com/facebook/buck2
@@ -7,9 +7,10 @@ pkgbase = buck2-bin
 	arch = aarch64
 	license = Apache
 	license = MIT
-	depends = zstd
-	options = !strip
-	source = https://github.com/facebook/buck2/releases/download/2025-10-15/buck2-x86_64-unknown-linux-gnu.zst
-	sha256sums = 2d5d81eddb6bd6f0cd7107b2614a87cfa8e1d8dc253873fb3c3605b21ec590f9
+	makedepends = curl
+	makedepends = jq
+	depends = dotslash
+	source = buck2-launcher.sh
+	sha256sums = SKIP
 
 pkgname = buck2-bin
