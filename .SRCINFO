@@ -1,6 +1,6 @@
 pkgbase = grain
 	pkgdesc = A modern web staple. A new language that puts academic language features to work
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/grain-lang/grain
 	arch = x86_64
