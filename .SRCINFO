@@ -1,6 +1,6 @@
 pkgbase = qliquidsfz-git
 	pkgdesc = Simple LiquidSFZ synthesizer GUI.
-	pkgver = 0.1.3r0.g7c37fc9
+	pkgver = 0.1.5.r1.g1f353ed
 	pkgrel = 1
 	url = https://github.com/be1/qliquidsfz
 	arch = i686
@@ -8,11 +8,10 @@ pkgbase = qliquidsfz-git
 	arch = aarch64
 	license = GPL
 	depends = jack
-	depends = liquidsfz
-	depends = qt5-base
-	depends = qt5-tools
+	depends = liquidsfz-git
+	depends = qt6-base
+	depends = qt6-tools
 	source = qliquidsfz-git::git+https://github.com/be1/qliquidsfz
 	sha512sums = SKIP
 
 pkgname = qliquidsfz-git
-

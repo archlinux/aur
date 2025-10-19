@@ -1,13 +1,13 @@
 # Maintainer: Benoît Rouits <brouits at free dor fr>
 pkgname=qliquidsfz-git
 _pkgname=qliquidsfz
-pkgver=0.1.3r0.g7c37fc9
+pkgver=0.1.5.r1.g1f353ed
 pkgrel=1
 pkgdesc="Simple LiquidSFZ synthesizer GUI."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/be1/qliquidsfz"
 license=('GPL')
-depends=('jack' 'liquidsfz' 'qt5-base' 'qt5-tools')
+depends=('jack' 'liquidsfz-git' 'qt6-base' 'qt6-tools')
 #conflicts=('qliquidsfz')
 source=("$pkgname::git+https://github.com/be1/$_pkgname")
 sha512sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  qmake PREFIX=/usr -config release
+  qmake6 PREFIX=/usr -config release
   make
 }
 
