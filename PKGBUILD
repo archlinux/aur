@@ -1,13 +1,13 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-ttnn-git
-pkgver=0.62.0.dev20250930.r14.g61b24300f56
+pkgver=0.62.0.dev20251019.r0.gbb02171262f
 pkgrel=1
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
 license=('Apache-2.0')
-makedepends=(python-build python-installer python-wheel python-setuptools 'gcc>=12' 'cmake>=3.29' ninja wget pkg-config xz curl mold python-pycapnp)
+makedepends=(python-build python-installer python-wheel python-setuptools 'gcc>=12' 'cmake>=3.29' ninja wget pkg-config xz curl mold python-scikit-build-core sfpi)
 depends=('python>=3.10' hwloc numactl boost tbb capstone sfpi python python-loguru python-networkx python-graphviz python-numpy)
 provides=("python-ttnn")
 conflicts=("python-ttnn")
@@ -25,7 +25,7 @@ prepare() {
     cd "$srcdir/tt-metal"
     git fetch --prune
     git submodule foreach --recursive git reset --hard
-    git submodule update --init --recursive
+    git submodule update --init --recursive --remote
 
     # Dirty source patches (patching using the patch command is not stable enough)
     sed -i '/add_subdirectory(tools)/d' CMakeLists.txt # Does not build (most likely LTO)
@@ -47,7 +47,9 @@ build() {
     cd "$srcdir/tt-metal"
 
     [[ -d dist ]] && (rm -r dist && mkdir dist)
-    python -m build --wheel --no-isolation
+    # makepkg generates debug symbols - they take forever to compress
+    # and we are going to decompress it and repackage anyway
+    WHEEL_COMPRESSION_LEVEL=0 python -m build --wheel --no-isolation
 }
 
 package() {
@@ -57,7 +59,6 @@ package() {
     rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 
     strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
-    strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/build/lib/*.so
 
     # Delete pyc
     find "$pkgdir" -name '*.pyc' -delete
