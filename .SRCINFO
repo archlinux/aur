@@ -1,0 +1,24 @@
+pkgbase = jetforce
+	pkgdesc = Experimental Gemini protocol server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/michael-lazar/jetforce
+	changelog = jetforce.changelog
+	arch = any
+	license = LicenseRef-FloodgapFSL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyopenssl
+	depends = python-twisted
+	optdepends = python-standard-cgi: for running the example CGIs
+	provides = jetforce
+	provides = jetforce-client
+	provides = python-jetforce
+	replaces = python-jetforce
+	source = jetforce-1.0.0.tar.gz::https://github.com/michael-lazar/jetforce/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a29637e168e1ac5b1d87f56786617f580737633b1344e1afd33177a1d2e5c2c8
+	b2sums = 6e4a5e13487fc74a3976f1b05efa0a632b062203705bc90f6470dfff60d844e79de155a93800aa2eba0942d83b646a5b77c141fb4f1f85819a63cc3c191e8764
+
+pkgname = jetforce
