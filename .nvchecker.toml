@@ -1,4 +1,4 @@
-[netsleuth]
+[lenspect]
 source = "git"
 git = "https://github.com/vmkspv/lenspect.git"
 prefix = "v"
