@@ -2,7 +2,7 @@
 
 pkgname=python-ttnn-git
 pkgver=0.62.0.dev20251019.r0.gbb02171262f
-pkgrel=1
+pkgrel=2
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -34,7 +34,7 @@ prepare() {
     sed -i 's/#\(include(linking)\)/\1/' CMakeLists.txt # Arch is new enough that we can use the better linking parameters
     sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml # Forced version but it doesn't really need it
     sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml # DITTO
-    sed -i 's/--release"/--release", "--cxx-compiler-path=g++", "--c-compiler-path=gcc", "--without-distributed"/' setup.py # Need more flags but no palce to invoke from build() - hack script
+    sed -i 's/\[tool.scikit-build.cmake.define\]/\[tool.scikit-build.cmake.define\]\nENABLE_DISTRIBUTED = "OFF"\n/' pyproject.toml
     sed -i 's/"lib64" if/"lib" if/' setup.py # Bad assumption. Arch installs to lib even if lib64 exist
     sed -i '/copy_tree_with_patterns(build_dir \/ get_lib_dir(), self.build_lib + f"\/ttnn\/build\/lib", lib_patterns)/{p; s|get_lib_dir()|"ttnn"| }' setup.py # Additional install needed
 
@@ -58,7 +58,7 @@ package() {
 
     rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 
-    strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
+    #strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
 
     # Delete pyc
     find "$pkgdir" -name '*.pyc' -delete
