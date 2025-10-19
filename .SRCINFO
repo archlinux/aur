@@ -1,6 +1,6 @@
 pkgbase = libhelium
 	pkgdesc = The application framework for tauOS apps.
-	pkgver = 1.8.70
+	pkgver = 1.8.71
 	pkgrel = 1
 	url = https://github.com/tau-OS/libhelium
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = libhelium
 	depends = glib2
 	depends = libgee
 	conflicts = libhelium-git
-	source = libhelium-1.8.70.tar.gz::https://github.com/tau-OS/libhelium/archive/refs/tags/1.8.70.tar.gz
+	source = libhelium-1.8.71.tar.gz::https://github.com/tau-OS/libhelium/archive/refs/tags/1.8.71.tar.gz
 	source = libhelium.patch
-	sha256sums = d5589d3d8d7acd2a7bf15f260ceaaf228a0d328c2710ca74c33d2d2603c1f8cb
+	sha256sums = 7cd24c395f67092b8aeeaefc336f3d9258bdd01839b098502c998ea1668d77f3
 	sha256sums = 10cf52c999db7484dc3bf220772cfa58f58c9d539c43c968727251bbf60e8ad6
 
 pkgname = libhelium

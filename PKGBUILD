@@ -1,8 +1,8 @@
 # Maintainer: Alyxia Sother <nylkvn@evfrhc.arg(rot13)>
 
 pkgname=libhelium
-pkgver="1.8.70"
-_pkgver="1.8.70"
+pkgver="1.8.71"
+_pkgver="1.8.71"
 pkgrel=1
 pkgdesc="The application framework for tauOS apps."
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ license=('LGPL3')
 
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/tau-OS/libhelium/archive/refs/tags/$_pkgver.tar.gz"
         "$pkgname.patch")
-sha256sums=('d5589d3d8d7acd2a7bf15f260ceaaf228a0d328c2710ca74c33d2d2603c1f8cb'
+sha256sums=('7cd24c395f67092b8aeeaefc336f3d9258bdd01839b098502c998ea1668d77f3'
             '10cf52c999db7484dc3bf220772cfa58f58c9d539c43c968727251bbf60e8ad6')
 
 prepare() {
