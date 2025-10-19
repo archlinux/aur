@@ -19,7 +19,7 @@ makedepends=(
 optdepends=(
   'python-ascii_magic: The needed AUR package (or install via pip/pipx as ascii-magic). For ASCII album art'
   'mpdris2: For MPD support'
-  'cmus-mpris: For cmus support'
+  'cmus: For cmus support'
   'pipewire: For PipeWire audio backend'
   'pulseaudio: For PulseAudio backend'
 )
