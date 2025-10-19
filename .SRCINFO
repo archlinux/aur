@@ -1,6 +1,6 @@
 pkgbase = vcvrack-cv-funk
 	pkgdesc = CV funk VCV Rack modules
-	pkgver = 2.0.31
+	pkgver = 2.0.32
 	pkgrel = 1
 	url = https://github.com/codygeary/CVfunk-Modules
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = vcvrack-cv-funk
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/codygeary/CVfunk-Modules#tag=v2.0.31
-	sha256sums = 5b61a4c6faba55d74071cd4e11a8bec91cfe199dc7151a0f8f35d66e21c089ff
+	source = git+https://github.com/codygeary/CVfunk-Modules#tag=v2.0.32
+	sha256sums = 0873ebb6208898342c3d43fb0bee2f0251bb56e7b988cbabf1c5afa1c55f5f18
 
 pkgname = vcvrack-cv-funk
