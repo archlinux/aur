@@ -1,15 +1,15 @@
 pkgname=abciview
 _pkgname=ABCiview
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial ABC iview desktop application."
-arch=('x86_64' 'arm7h' 'aarch64')
+arch=('x86_64')
 url="https://gitlab.com/linuxbombay/abciview"
 license=('GPL')
-depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('electron-castlab-bin' 'libelectron-electron-meta' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('73e151ee84166db7b585b3e78ad457690dcce6101de9e514b7ec5e42b72addb6')
+sha256sums=('9753207160f19cca65ab88d037721cf9c3da45da20a3dbedc32f3df62d3ab9d6')
 
 package() {
     cd "$srcdir/application-$pkgver"
@@ -22,7 +22,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
+    ln -s "/usr/bin/electroncastlab" "$pkgdir/opt/$_pkgname/electron"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin"
 
     # Desktop Entry

@@ -1,20 +1,18 @@
 pkgbase = abciview
 	pkgdesc = Unofficial ABC iview desktop application.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/abciview
 	arch = x86_64
-	arch = arm7h
-	arch = aarch64
 	license = GPL
 	makedepends = unzip
+	depends = electron-castlab-bin
 	depends = libelectron-electron-meta
-	depends = libelectron>=2025.1
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/abciview/application/-/archive/1.0.3/application-1.0.3.tar.bz2
-	sha256sums = 73e151ee84166db7b585b3e78ad457690dcce6101de9e514b7ec5e42b72addb6
+	source = https://gitlab.com/linuxbombay/abciview/application/-/archive/1.0.4/application-1.0.4.tar.bz2
+	sha256sums = 9753207160f19cca65ab88d037721cf9c3da45da20a3dbedc32f3df62d3ab9d6
 
 pkgname = abciview
