@@ -1,6 +1,6 @@
 pkgbase = vbx-git
 	pkgdesc = C-based CLI that plays mechanical keyboard sounds on keystrokes
-	pkgver = 0.2.0.r5.3ca659e
+	pkgver = 0.2.0.r47.93491af
 	pkgrel = 1
 	url = https://github.com/S4NKALP/vbx
 	install = vbx-git.install

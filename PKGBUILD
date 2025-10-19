@@ -1,7 +1,7 @@
 # Maintainer: Sankalp <sankalptharu50028@gmail.com>
 
 pkgname=vbx-git
-pkgver=0.2.0.r0.unknown
+pkgver=0.2.0.r47.93491af
 pkgrel=1
 pkgdesc="C-based CLI that plays mechanical keyboard sounds on keystrokes"
 arch=('x86_64' 'aarch64')
