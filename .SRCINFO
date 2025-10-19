@@ -1,0 +1,13 @@
+pkgbase = art-of-smart-online-bin
+	pkgdesc = Access your tutoring resources, notes, practice HSC questions, thousands of past papers, student forums & lots more!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://artofsmart.com.au
+	arch = x86_64
+	license = custom
+	source = https://resources.artofsmart.com.au/LMS/Art%20of%20Smart%20Online-1.0.0%20%28NEW%29.AppImage
+	source = art-of-smart-online.desktop
+	sha256sums = 4649f66f977132809ec3d8d6a1b12b54787d2ef748ba2fe0431d5e5edfafbcc7
+	sha256sums = SKIP
+
+pkgname = art-of-smart-online-bin

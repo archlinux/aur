@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Art of Smart Online
+Exec=art-of-smart-online
+Icon=art-of-smart-online
+Categories=Education;
+Comment=Art of Smart Online Learning Management System
+Terminal=false
