@@ -3,13 +3,14 @@
 _pkgname="sponge"
 pkgname="${_pkgname}-bin"
 pkgver=1.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=('x86_64')
 url="https://go-sponge.com"
 _url="https://github.com/go-dev-frame/${_pkgname}"
 license=('MIT')
 depends=(
+  'go'
   'protobuf'
   'protoc-gen-doc'
   'protoc-gen-go'
