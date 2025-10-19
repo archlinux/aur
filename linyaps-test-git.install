@@ -1,0 +1,33 @@
+_info() {
+    echo -e "\033[32m:: linyaps getting started:\033[0m"
+    echo -e "\033[32m:: linyaps 入门:\033[0m"
+    echo -e "   \033[32mEnglish: https://linyaps.org.cn/en/guide/start/whatis.html\033[0m"
+    echo -e "   \033[32m简中: https://linyaps.org.cn/guide/start/whatis.html\033[0m"
+}
+
+_en_ll() {
+    systemctl enable --now org.deepin.linglong.PackageManager.service 
+}
+
+_dis_ll() {
+    systemctl disable --now org.deepin.linglong.PackageManager.service 
+}
+
+post_install() {
+    _info
+    _en_ll
+}
+
+pre_upgrade() {
+    _info
+    _dis_ll
+}
+
+post_upgrade() {
+    _info
+    _en_ll
+}
+
+pre_remove() {
+    _dis_ll
+}
