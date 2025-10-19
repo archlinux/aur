@@ -1,10 +1,10 @@
-# Maintainer: Kainoa Kanter <kainoa@t1c.dev
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 # Based on aur/sshpilot
 # Upstream Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 _pkgname=sshpilot
 pkgname="$_pkgname-git"
-pkgver=r2191.g936c21c
+pkgver=r2201.gae4fb34
 pkgrel=1
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
