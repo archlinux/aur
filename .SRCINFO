@@ -1,0 +1,15 @@
+pkgbase = roon-mpris-bridge-git
+	pkgdesc = Bridge between Roon and MPRIS (via roon-kit)
+	pkgver = r10.g85c3551
+	pkgrel = 1
+	url = https://gitlab.com/teraflops/roon-mpris-bridge
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = roon-kit
+	source = roon-mpris-bridge-git::git+https://gitlab.com/teraflops/roon-mpris-bridge.git
+	sha256sums = SKIP
+
+pkgname = roon-mpris-bridge-git
