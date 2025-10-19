@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 pkgname=par2cmdline-git
 _gitname='par2cmdline'
-pkgver=20250801.e9bdb5b
+pkgver=20251019.2cc8bda
 pkgrel=1
 pkgdesc="A file verification and repair tool"
 url="https://github.com/BlackIkeEagle/par2cmdline"
