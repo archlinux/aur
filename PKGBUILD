@@ -4,14 +4,16 @@ _pkgname='wikidoc'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=r34.20180311.7fb66a4
-pkgrel=3
+pkgrel=1
 pkgdesc='Python script allows to create nice looking PDF files from a github wiki. Requires mardown-formatted wiki.'
 arch=('any')
-url='https://github.com/jobisoft/wikidoc'
+# url='https://github.com/jobisoft/wikidoc' # Original Python2 version.
+url='https://github.com/jpolton/wikidoc' # Python3 fork.
 license=('GPL2')
 depends=(
   'pandoc'
-  'python2'
+  #'python2'
+  'python>=3'
   'wkhtmltopdf'
 )
 makedepends=(
@@ -25,7 +27,7 @@ conflicts=(
 )
 
 source=(
-  "${_pkgname}::git+https://github.com/jobisoft/wikidoc.git"
+  "${_pkgname}::git+${url}.git"
 )
 sha256sums=(
   'SKIP'
@@ -34,8 +36,8 @@ sha256sums=(
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  msg2 "Patching for python2 ..."
-  sed -e '1s|#![[:space:]]*/usr/bin/python[[:space:]]*$|#!/usr/bin/python2|' -i wikidoc.py
+  #msg2 "Patching for python2 ..."
+  #sed -e '1s|#![[:space:]]*/usr/bin/python[[:space:]]*$|#!/usr/bin/python2|' -i wikidoc.py
 }
 
 pkgver () {
