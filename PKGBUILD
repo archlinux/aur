@@ -9,9 +9,41 @@ url="https://github.com/handley-lab/mcp-handley-lab"
 license=(MIT)
 depends=(
     python
-    python-pip
+    python-pydantic
+    python-pydantic-settings
+    python-google-api-python-client
+    python-google-auth-httplib2
+    python-google-auth-oauthlib
+    python-googlemaps
+    python-openai
+    python-anthropic
+    python-pillow
+    python-httpx
+    python-packaging
+    python-yaml
+    python-ruamel-yaml
+    python-tinydb
+    python-jmespath
+    python-watchdog
+    python-click
+    python-html2text
+    python-beautifulsoup4
+    python-markdownify
+    python-pendulum
+    python-dateparser
+    python-ftfy
+    python-inscriptis
+    python-selectolax
 )
-makedepends=(git python-build python-installer python-setuptools)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
+optdepends=(
+    'code2prompt: Codebase analysis'
+    'vim: Text editing'
+    'mutt: Email client'
+    'notmuch: Email indexing'
+    'msmtp: Email sending'
+    'offlineimap: Email syncing'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url.git")
@@ -30,4 +62,7 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
