@@ -3,7 +3,7 @@
 _pkgname=python-replicate
 pkgname="${_pkgname}-git"
 pkgver=1.0.7+2.r288.20250826.d2956ff
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to run machine learning models in the cloud from your own code, without having to set up any servers."
 arch=(
   'any'
@@ -16,7 +16,6 @@ depends=(
   'python-numpy'
   'python-packaging'
   'python-pydantic'
-  # 'python-respx'
   'python-requests'
 )
 makedepends=(
@@ -29,8 +28,9 @@ makedepends=(
 checkdepends=(
   'python-packaging>=21.3'
   'python-pytest>=7.1.2'
-  #'python-pytest-asyncio'
-  #'python-pytest-recording'
+  'python-pytest-asyncio'
+  'python-pytest-recording'
+  'python-respx'
   'python-responses>=0.21.0'
 )
 provides=(
