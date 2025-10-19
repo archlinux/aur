@@ -1,6 +1,6 @@
 # Maintainer: develOseven <devel.oseven@gmail.com>
 pkgname=avoc
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=
 _python_version=3.12.3
