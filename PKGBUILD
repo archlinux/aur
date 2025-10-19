@@ -8,7 +8,6 @@ url='https://github.com/gershnik/wsdd-native'
 license=('BSD-3-Clause')
 depends=('glibc' 'gcc-libs')
 makedepends=('cmake>=3.25' 'make' 'gcc>=11.3' 'git' 'libsystemd')
-conflicts=('wsdd')
 backup=('etc/wsddn.conf')
 source=("$pkgname-$pkgver.tar.bz2::https://github.com/gershnik/wsdd-native/releases/download/v$pkgver/wsddn-src-prefetch-$pkgver.tar.bz2")
 
