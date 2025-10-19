@@ -1,7 +1,7 @@
 pkgbase = sfpi-bin
 	pkgdesc = Tenstorrent SFPU programming interface
 	pkgver = 7.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/tenstorrent/sfpi
 	arch = x86_64
 	license = Apache-2.0
