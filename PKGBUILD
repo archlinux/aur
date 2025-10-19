@@ -1,7 +1,7 @@
 # Maintainer : shogeki < shogeki at gmail dot com >
 
 pkgname=uqm-megamod-git
-pkgver=0.8.3.r152.g99f15147
+pkgver=0.8.3.r263.g6ba5942f
 _pkgver=0.8.3
 pkgrel=1
 pkgdesc="A fork of The Ur-Quan Masters that remasters the HD mod with a veritable smorgasbord of extra features and options by JHGuitarFreak (Kohr-Ah Death). Latest Git version"
@@ -14,7 +14,7 @@ makedepends=("pkgconf" "lua" "git")
 depends=("libogg" "libpng" "libvorbis" "libgl" "sdl2" "zlib" "glu" "libmikmod" "lua52")
 conflicts=(uqm-megamod)
 source=(
-  "git+https://github.com/JHGuitarFreak/UQM-MegaMod.git"
+  "git+https://github.com/shogeki/UQM-MegaMod.git"
   "git+https://github.com/JHGuitarFreak/UQM-MegaMod-Content.git"
   "https://downloads.sourceforge.net/project/sc2/UQM%20Remix%20Packs/UQM%20Remix%20Pack%201/uqm-remix-disc1.uqm"
   "https://downloads.sourceforge.net/project/sc2/UQM%20Remix%20Packs/UQM%20Remix%20Pack%202/uqm-remix-disc2.uqm"
@@ -62,7 +62,7 @@ pkgver() {
 }
 
 build() {
-  CFLAGS+=" $(pkgconf --cflags lua52) $(pkgconf --cflags libmikmod)"
+  CFLAGS+=" $(pkgconf --cflags lua52) $(pkgconf --cflags libmikmod) -Wno-incompatible-pointer-types "
   LDFLAGS+=" $(pkgconf --libs lua52) $(pkgconf --libs libmikmod)"
   cd "${srcdir}/UQM-MegaMod"
   ./build.sh uqm
