@@ -1,6 +1,6 @@
 pkgbase = network-manager-applet-debug-git
 	pkgdesc = A system tray applet for NetworkManager. Debug build, latest git checkout.
-	pkgver = 1.37.0.dev+55.r5042.20250829.e488affe
+	pkgver = 1.37.0.dev+60.r5047.20251014.a1142ede
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
@@ -47,9 +47,9 @@ pkgname = network-manager-applet-debug-git
 	depends = libsecret
 	depends = libayatana-appindicator
 	depends = pango
-	provides = network-manager-applet=1.37.0.dev+55.r5042.20250829.e488affe
-	provides = network-manager-applet-debug=1.37.0.dev+55.r5042.20250829.e488affe
-	provides = network-manager-applet-git=1.37.0.dev+55.r5042.20250829.e488affe
+	provides = network-manager-applet=1.37.0.dev+60.r5047.20251014.a1142ede
+	provides = network-manager-applet-debug=1.37.0.dev+60.r5047.20251014.a1142ede
+	provides = network-manager-applet-git=1.37.0.dev+60.r5047.20251014.a1142ede
 	conflicts = network-manager-applet
 	conflicts = network-manager-applet-debug
 	conflicts = network-manager-applet-git-debug
@@ -65,9 +65,9 @@ pkgname = nm-connection-editor-debug-git
 	depends = jansson
 	depends = libnm
 	depends = libnma
-	provides = nm-connection-editor=1.37.0.dev+55.r5042.20250829.e488affe
-	provides = nm-connection-editor-debug=1.37.0.dev+55.r5042.20250829.e488affe
-	provides = nm-connection-editor-git=1.37.0.dev+55.r5042.20250829.e488affe
+	provides = nm-connection-editor=1.37.0.dev+60.r5047.20251014.a1142ede
+	provides = nm-connection-editor-debug=1.37.0.dev+60.r5047.20251014.a1142ede
+	provides = nm-connection-editor-git=1.37.0.dev+60.r5047.20251014.a1142ede
 	conflicts = nm-connection-editor
 	conflicts = nm-connection-editor-debug
 	conflicts = nm-connection-editor-git-debug
