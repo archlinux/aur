@@ -1,0 +1,25 @@
+From c45f02612a9dc9896d78420395ff1a32501aa3c6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sun, 19 Oct 2025 16:39:51 +0000
+Subject: [PATCH] Add support for gperf 3.3.x
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 754d121..c97d251 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1782,7 +1782,7 @@ then
+        gperf_good=yes
+        GPERF_LENGTH_TYPE="unsigned int"
+        ;;
+-    x3.1*)
++    x3.1*|x3.3*)
+        AC_MSG_RESULT(${gperf_ver})
+        gperf_good=yes
+        GPERF_LENGTH_TYPE=size_t
+-- 
+2.51.1.dirty
+

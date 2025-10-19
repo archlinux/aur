@@ -4,7 +4,7 @@ _bundlepkgname='ompss'
 pkgdesc='Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.'
 pkgver='2.3.0.20190627'
 _bundlepkgver='19.06'
-pkgrel='4'
+pkgrel='5'
 arch=('x86_64')
 url='https://pm.bsc.es/ompss'
 license=('GPL3')
@@ -14,9 +14,11 @@ source=("https://pm.bsc.es/ftp/${_bundlepkgname}/releases/${_bundlepkgname}-${_b
         # Generated with `git format-patch -5 --stdout 2a98963e7ff28f70cf2a8bcf42a792a1420f36e3`
         # on the mcxx repository at https://github.com/bsc-pm/mcxx
         migrate_scripts_to_python3.patch
+        0001-Add-support-for-gperf-3.3.x.patch
         "0001-Fix-build-with-Python-3.13-exec-eval-changes.patch")
 sha512sums=(159efc17ba446f3f2205a8c0580ed10fab263f8bdb7306d5444d1fc6a592f80d749c03031e7e416090360c36a51a38da083b2b2ed4e75dda5c55a103806d91d2
             0330f65d18065ed47b9af19cc3100be7b914b720bb5858a59b89473a29ffe32c12d84da6e3c7557a2aa1b0f8bc955c17000e19302724071caa2477eefdc71af1
+            3646fb1fcd20932caaf4653df52fdb0c6ad490643d026d4752692b775bfb571d835f2f46f60604ffe38ac57abcc6975218517d5b822f4acb2855363965939dd3
             fb59290edcf58b5c70390b462dea4df02f2eae028bed39aea0bb5c17caca6ec4a89e4545b1d4edf9a460c9de868e4b91f42fd7bd54d5fa5ffd98624daeb5003a)
 
 # WORKAROUND: The sources are outdated compared to Arch's environment,
@@ -28,6 +30,7 @@ prepare() {
 
 	# Backport Python 2 to 3 backports to OmpSs(1)
 	patch -Np1 -i "$srcdir/migrate_scripts_to_python3.patch"
+	patch -Np1 -i "$srcdir/0001-Add-support-for-gperf-3.3.x.patch"
 	autoreconf -fiv
 
 	patch -Np1 -i "$srcdir/0001-Fix-build-with-Python-3.13-exec-eval-changes.patch"
