@@ -3,13 +3,14 @@
 pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
+_java_version=17
 pkgver=0.81.0
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
-depends=('gcc-libs')
+depends=('gcc-libs' 'java-runtime')
 checkdepends=('cargo')
-makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang' 'java-environment=17' 'python')
+makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang' "java-environment=${_java_version}" 'python')
 options=(!lto)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('AGPL-3.0-only')
@@ -38,6 +39,8 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CARGO_NET_GIT_FETCH_WITH_CLI=true
+  export JAVA_HOME="$(ls -d /usr/lib/jvm/java-${_java_version}-* | head -n1)"
   ./build_jni.sh desktop
   GRADLE_USER_HOME="${srcdir}/.gradle" ./gradlew --no-daemon :client:assemble -PskipAndroid=true
 
