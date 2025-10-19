@@ -2,7 +2,7 @@
 
 pkgname=python-ttnn-git
 pkgver=0.62.0.dev20251019.r0.gbb02171262f
-pkgrel=2
+pkgrel=3
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -58,7 +58,7 @@ package() {
 
     rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
 
-    #strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
+    strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
 
     # Delete pyc
     find "$pkgdir" -name '*.pyc' -delete
