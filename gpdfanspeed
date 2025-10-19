@@ -20,7 +20,7 @@ set -e
 shopt -s extglob
 
 PROGRAMMENAME="gpdfanspeed"
-VERSION=20250501.01
+VERSION=20251019.01
 
 
 msg() {
@@ -54,7 +54,7 @@ printusage() {
   msg "    * 'auto':            Sets to automatically controlled by the firmware."
   msg "    * 'manual':          Sets to manually controlled."
   msg "    * 'max':             Sets to full speed."
-  msg "    * [0-9]+ms:          Sets the interval in ms in which the chip updates the readings."
+  # msg "    * [0-9]+ms:          Sets the interval in ms in which the chip updates the readings."
   msg ""
   msg "  $0 <-h|--help|help>"
   msg "    Prints this help message."
@@ -86,7 +86,7 @@ _rpmfile="fan1_input"
 _pwmsettingfile="pwm1"
 _controlmodefile="pwm1_enable"
 _pwmmodefile="pwm1_mode"
-_updateintervalfile="update_interval"
+# _updateintervalfile="update_interval"
 
 ## In debugfs ($DEBUGFSDIR/):
 _debugpwmsettingfile="pwm_reg"
@@ -106,7 +106,7 @@ case "${_action}" in
     _controlmode="$(<"${FANMONDIR}/${_controlmodefile}")"
     _setting="$(<"${FANMONDIR}/${_pwmsettingfile}")"
     _pwmmode="$(<"${FANMONDIR}/${_pwmmodefile}")"
-    _updateinterval="$(<"${FANMONDIR}/${_updateintervalfile}")"
+    # _updateinterval="$(<"${FANMONDIR}/${_updateintervalfile}")"
     if [ -r "${DEBUGFSDIR}/${_debugpwmsettingfile}" ]; then
       _pwm_reg="$(<"${DEBUGFSDIR}/${_debugpwmsettingfile}")"
     fi
@@ -152,7 +152,7 @@ case "${_action}" in
     msg     "  Speed setting (0..255): ${_setting}"
 
     msg     "  PWM Mode:               ${_pwmmodename}"
-    msg     "  Info update interval:   ${_updateinterval} ms"
+    # msg     "  Info update interval:   ${_updateinterval} ms"
   ;;
   'set')
   case "${_setting}" in
@@ -175,10 +175,10 @@ case "${_action}" in
     'max')
       printf '%s' '0' > "${FANMONDIR}/${_controlmodefile}"
     ;;
-    +([0-9])ms)
-      _value="${_setting%ms}"
-      printf '%s' "${_value}" > "${FANMONDIR}/${_updateintervalfile}"
-    ;;
+    # +([0-9])ms)
+    #   _value="${_setting%ms}"
+    #   printf '%s' "${_value}" > "${FANMONDIR}/${_updateintervalfile}"
+    # ;;
     *)
       errmsg "$0: Invalid setting '${_setting}'".
       errmsg ""
