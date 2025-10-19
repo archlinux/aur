@@ -7,7 +7,8 @@ url="https://artofsmart.com.au"
 license=('proprietary')
 source=("https://github.com/Derukugis/art-of-smart-online/raw/refs/heads/master/art-of-smart-online.AppImage"
         "art-of-smart-online.desktop")
-sha256sums=('SKIP')
+sha256sums=('ae749bd3c192ee266a064d4cf4afa98c539a8ea0ef59af255c99fe14f5ca1771'
+            'SKIP')
 
 package() {
     install -Dm755 "${srcdir}/art-of-smart-online.AppImage" "${pkgdir}/opt/art-of-smart-online/art-of-smart-online.AppImage"
