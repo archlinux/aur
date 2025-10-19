@@ -14,10 +14,8 @@ depends=(android-tools ffmpeg sdl2 glibc libusb hicolor-icon-theme)
 makedepends=(git meson)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-source=("git+https://github.com/Genymobile/${pkgname%-git}.git#branch=dev"
-        "$url/releases/download/v3.3.3/${pkgname%-git}-server-v3.3.3") # TODO: temp fix
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/Genymobile/${pkgname%-git}.git#branch=dev")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -25,12 +23,27 @@ pkgver() {
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  _url=$(grep '^PREBUILT_SERVER_URL=' "scrcpy/install_release.sh" | cut -d= -f2)
+  _sha256=$(grep '^PREBUILT_SERVER_SHA256=' "scrcpy/install_release.sh" | cut -d= -f2)
+  _file="${_url##*/}"
+
+  if [ ! -f "$_file" ]; then
+    curl -L -o "$_file" "$_url"
+  fi
+
+  echo "$_sha256 $_file" | sha256sum --check || {
+    echo "Error: server checksum failed"
+    exit 1
+  }
+}
+
 build() {
   mkdir -p build
   arch-meson build ${pkgname%-git} \
     -D b_lto=true \
     -D b_ndebug=true \
-    -D prebuilt_server=../${pkgname%-git}-server-v${pkgver%_*} \
+    -D prebuilt_server="../$_file" \
     --buildtype release
   ninja -C build
 }

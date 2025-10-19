@@ -16,8 +16,6 @@ pkgbase = scrcpy-git
 	provides = scrcpy
 	conflicts = scrcpy
 	source = git+https://github.com/Genymobile/scrcpy.git#branch=dev
-	source = https://github.com/Genymobile/scrcpy/releases/download/v3.3.3/scrcpy-server-v3.3.3
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = scrcpy-git
