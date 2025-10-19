@@ -1,6 +1,6 @@
 pkgbase = bluetooth-bitrate-manager
 	pkgdesc = GTK4 app and CLI that monitor PipeWire Bluetooth codecs with an optional high-bitpool SBC rebuild
-	pkgver = 0.1.0.r2.g6b63572
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ezrakhuzadi/bluetooth-bitrate-manager
 	arch = any
