@@ -1,6 +1,6 @@
 pkgbase = hyperledger-fabric
 	pkgdesc = A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/hyperledger/fabric
 	install = hyperledger-fabric.install
@@ -15,7 +15,7 @@ pkgbase = hyperledger-fabric
 	makedepends = git
 	makedepends = docker
 	depends = go
-	source = https://github.com/hyperledger/fabric/archive/v3.1.2.tar.gz
+	source = https://github.com/hyperledger/fabric/archive/v3.1.3.tar.gz
 	source = fabric-peer.conf
 	source = fabric-peer.service
 	source = hyperledger.sysusers
