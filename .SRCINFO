@@ -1,0 +1,24 @@
+pkgbase = pythia-panel
+	pkgdesc = pythia panel for lume-desktop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shinichiroisumi/lume-desktop
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	depends = python-pillow
+	depends = xdotool
+	depends = wmctrl
+	depends = pulseaudio
+	depends = alsa-utils
+	depends = wireless_tools
+	depends = net-tools
+	depends = acpi
+	depends = ttf-nerd-fonts-symbols
+	source = pythia-panel.py::https://github.com/shinichiroisumi/lume-desktop/blob/main/panel/panel.py
+	source = pythia-panel.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pythia-panel
