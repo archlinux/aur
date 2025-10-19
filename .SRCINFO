@@ -1,0 +1,27 @@
+pkgbase = qelectrotech-git
+	pkgdesc = libre and open source desktop application to create diagrams and schematics
+	pkgver = r8055.410c9293d
+	pkgrel = 1
+	url = https://qelectrotech.org/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-svg
+	depends = kcoreaddons5
+	depends = kwidgetsaddons5
+	depends = tk
+	depends = python
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	depends = sqlite
+	provides = qelectrotech
+	conflicts = qelectrotech
+	source = qelectrotech-git::git+https://github.com/qelectrotech/qelectrotech-source-mirror.git
+	source = install-dir.patch
+	sha256sums = SKIP
+	sha256sums = 2e972aca0da3700625ac37b8cec039dcee7c23db612204e5f161ad8ae1bf88df
+
+pkgname = qelectrotech-git
