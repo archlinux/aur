@@ -1,30 +1,33 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-jetforce'
 _pkgname="${pkgname/python-}"
-pkgver=0.10.1
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Experimental Gemini server written in Python'
 arch=('any')
-license=('LicenseRef-Floodgap')  # SPDX-License-Identifier: LicenseRef-Floodgap
+license=('LicenseRef-FloodgapFSL')  # SPDX-License-Identifier: LicenseRef-FloodgapFSL
 url='https://github.com/michael-lazar/jetforce'
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-)
-depends=(
-  'python'
-  'python-cryptography'
-  'python-pyopenssl'
-  'python-twisted'
 )
 makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
 )
-provides=('jetforce')
-conflicts=('jetforce')
+depends=(
+  'python'
+  'python-pyopenssl'
+  'python-twisted'
+)
+optdepends=(
+  'python-standard-cgi: for running the example CGIs'
+)
+provides=("$_pkgname")
+conflicts=("${provides[@]}")
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -37,17 +40,21 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGELOG,README}.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
+    examples/*.py
+  install -vDm0755 -t "$pkgdir/usr/share/doc/$pkgname/examples/cgi" \
+    examples/cgi/*.cgi
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 }
 
 sha256sums=(
-  'b6e4961cf2b3d1ae9d11b8a66cd7f3b7fd04db263cba38d6150af42fa8175dc8'
+  'a29637e168e1ac5b1d87f56786617f580737633b1344e1afd33177a1d2e5c2c8'
 )
 b2sums=(
-  '36eafdd2bcc1661817da147cfb6699c214e079109d894f0588ad872d68d4663af515a7d99fe60f7923a72195d06db1ed846a2f4c4e8155f164a4d8349a26d04f'
+  '6e4a5e13487fc74a3976f1b05efa0a632b062203705bc90f6470dfff60d844e79de155a93800aa2eba0942d83b646a5b77c141fb4f1f85819a63cc3c191e8764'
 )
 
 # eof
