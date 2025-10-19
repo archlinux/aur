@@ -1,6 +1,6 @@
 # Maintainer: Sleep-No-More <sleepnomore@example.com>
 pkgname=cpmenu
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Modern circular power menu for Wayland desktop environments"
 arch=('x86_64')
