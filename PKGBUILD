@@ -20,8 +20,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/thinkpad_utils"
-    if [ ! -f config.h ]; then
-        cp config.def.h config.h
+    if [[ -f "$srcdir/config.h" ]]; then
+      cp -fv "$srcdir/config.h" config.h
     fi
 }
 
