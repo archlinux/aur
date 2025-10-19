@@ -15,8 +15,11 @@ arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
 depends=(
+  abseil-cpp
   eigen
+  gcc-libs
   gflags
+  glibc
   google-glog
   intel-oneapi-mkl
   libuv
