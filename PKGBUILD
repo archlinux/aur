@@ -2,7 +2,7 @@
 
 pkgname=xsystem4
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a cross-platform implementation of AliceSoft's System 4 engine"
 arch=(x86_64)
 url="https://github.com/nunuhara/xsystem4"
@@ -10,13 +10,15 @@ license=('GPL-2.0-only')
 depends=(chibi-scheme ffmpeg freetype2 libffi libpng libsndfile libjpeg-turbo libwebp sdl2 zlib)
 makedepends=(bison flex glew meson)
 conflicts=(${pkgname}-git)
+source=("${pkgname}::git+https://github.com/nunuhara/xsystem4.git#tag=1.0.0")
+sha256sums=('SKIP')
 prepare () {
-	git clone --depth 1 --branch ${pkgver} ${url}.git
+	cd "$srcdir/${pkgname}"
+	mkdir build
 }
 
 build() {
 	cd "$srcdir/${pkgname}"
-	mkdir build
 	meson setup build --prefix /usr
 	ninja -C build
 }
