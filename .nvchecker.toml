@@ -1,0 +1,4 @@
+[python-llm-ollama]
+source = "github"
+github = "taketwo/llm-ollama"
+use_latest_release = true
