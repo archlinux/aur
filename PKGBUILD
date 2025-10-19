@@ -2,7 +2,7 @@
 # Contributor: Ayaka Mikazuki <ayaka@mail.shn.hk>
 
 pkgname=grain
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A modern web staple. A new language that puts academic language features to work"
 arch=('x86_64')
