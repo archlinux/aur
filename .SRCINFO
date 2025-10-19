@@ -1,7 +1,7 @@
 pkgbase = deezer-enhanced-bin
 	pkgdesc = An unofficial application for Deezer with enhanced features
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/duzda/deezer-enhanced
 	arch = x86_64
 	license = MIT
@@ -22,9 +22,9 @@ pkgbase = deezer-enhanced-bin
 	provides = deezer-enhanced
 	conflicts = deezer-enhanced
 	options = !debug
-	source = https://github.com/duzda/deezer-enhanced/releases/download/v1.3.0/deezer-enhanced-1.3.0.pacman
-	source = https://raw.githubusercontent.com/duzda/deezer-enhanced/v1.3.0/LICENSE
-	sha256sums = fa7f5d8bf7f74bbe1593dff273b161dd0b7b47b2283db58fc0f1deae0ad703a6
-	sha256sums = f2f5c024ea86b461c5f5b13fc2155c027ea34c3e0e1350327ec805328fb13966
+	source = https://github.com/duzda/deezer-enhanced/releases/download/v1.4.0/deezer-enhanced-1.4.0.pacman
+	source = https://raw.githubusercontent.com/duzda/deezer-enhanced/v1.4.0/LICENSE
+	sha256sums = 5fcd7282ce3e8162d02bc5e82488eb7cd91497794dfe29d9409d801fe1b8b1dd
+	sha256sums = 5e50f4bdfee35d29a860b03b2cc0ee07ed3fbfebda1fbd42e872b93a256c4247
 
 pkgname = deezer-enhanced-bin
