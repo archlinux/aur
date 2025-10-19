@@ -1,6 +1,6 @@
 --- a/contrib/i2pd.service
 +++ b/contrib/i2pd.service
-@@ -11,7 +11,7 @@ RuntimeDirectoryMode=0700
+@@ -12,7 +12,7 @@ RuntimeDirectoryMode=0700
  LogsDirectory=i2pd
  LogsDirectoryMode=0700
  Type=forking

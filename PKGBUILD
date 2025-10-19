@@ -5,21 +5,31 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.55.0.r3.g18707dd8
+pkgver=2.58.0.r48.g1891bd5b
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
 url='https://i2pd.website/'
 license=('BSD-3-Clause')
-depends=('boost-libs' 'libminiupnpc.so' 'openssl' 'zlib')
-makedepends=('git' 'cmake' 'boost' 'check')
+depends=(
+    'boost-libs'
+    'gcc-libs'
+    'glibc'
+    'libminiupnpc.so'
+    'openssl'
+    'zlib')
+makedepends=(
+    'boost'
+    'check'
+    'cmake'
+    'git')
 provides=('i2pd' 'i2p-router')
 conflicts=('i2pd')
 backup=('etc/i2pd/i2pd.conf'
         'etc/i2pd/tunnels.conf'
         'etc/logrotate.d/i2pd')
 source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
-        '005-i2pd-tests-use-arch-flags.conf'
+        '005-i2pd-tests-use-arch-flags.patch'
         '010-i2pd-config.patch'
         '020-i2pd-do-not-override-config.patch'
         '030-i2pd-systemd-service-hardening.patch'
@@ -29,14 +39,14 @@ source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
 sha256sums=('SKIP'
             '2ddf15f1c1cdf5d747a0af667145238023fd126ab00c65f2897cacae935015b1'
             'ed1bde650139731921bf3c8091b3332620404e7700fb9c486a4a806fe34e2d3b'
-            '805a82f23c244afbdfae0a4f30d1707301bc0e23437f83d1c84f13c33f62ea28'
-            '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
+            '3168e9bc1b15885b1658fac6efcd0741f7f82b571798380ecffa54eaa84aadde'
+            'aebb352395341db9d912685d32611c1f61f55cc5ae045917a7b87c44cfe9ed6e'
             'cfcb6b07b67aff3e3af12767f4649d88b9320dc71907b6c01b465e5c138cdaa3'
             '2f91fd455ea801df9a9bcc5f3f83def231d9149eec8b206588c8be21654e5b7c'
             'fe8cc2ec83cb5b5c2b2ec8cce9a989e0cb6fd347e00b84e03a17b12efd152fac')
 
 prepare() {
-    patch -d i2pd -Np1 -i "${srcdir}/005-i2pd-tests-use-arch-flags.conf"
+    patch -d i2pd -Np1 -i "${srcdir}/005-i2pd-tests-use-arch-flags.patch"
     patch -d i2pd -Np1 -i "${srcdir}/010-i2pd-config.patch"
     patch -d i2pd -Np1 -i "${srcdir}/020-i2pd-do-not-override-config.patch"
     patch -d i2pd -Np1 -i "${srcdir}/030-i2pd-systemd-service-hardening.patch"
