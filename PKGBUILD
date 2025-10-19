@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/thinkpad_utils"
     if [[ -f "$srcdir/config.h" ]]; then
-      cp -fv "$srcdir/config.h" config.h
+      cp -fv "$srcdir/config.h" $srcdir/thinkpad_utils/config.h
     fi
 }
 
