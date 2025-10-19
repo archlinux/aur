@@ -1,6 +1,6 @@
 pkgbase = fut-git
 	pkgdesc = Fusion Programming Language. Designed for implementing reusable components (libraries) for C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C, all from single codebase. Formerly called 'cito'/ 'Ć Programming Language'.
-	pkgver = 3.2.13.r2723.20250908.029537aa
+	pkgver = 3.2.13+1.r2724.20250915.3689c0b2
 	pkgrel = 1
 	url = http://github.com/fusionlanguage/fut
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = fut-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = fut=3.2.13.r2723.20250908.029537aa
-	provides = cito=3.2.13.r2723.20250908.029537aa
-	provides = cito-git=3.2.13.r2723.20250908.029537aa
+	provides = fut=3.2.13+1.r2724.20250915.3689c0b2
+	provides = cito=3.2.13+1.r2724.20250915.3689c0b2
+	provides = cito-git=3.2.13+1.r2724.20250915.3689c0b2
 	conflicts = fut
 	conflicts = cito
 	replaces = cito-git

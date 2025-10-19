@@ -3,7 +3,7 @@
 _projectname="fut"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=3.2.13.r2723.20250908.029537aa
+pkgver=3.2.13+1.r2724.20250915.3689c0b2
 pkgrel=1
 pkgdesc="Fusion Programming Language. Designed for implementing reusable components (libraries) for C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C, all from single codebase. Formerly called 'cito'/ 'Ć Programming Language'."
 arch=(
