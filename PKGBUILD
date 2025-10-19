@@ -6,7 +6,7 @@ _pythonvariant="python2" # Dowload and build a Python2 variant.
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r100.20190121.56726a3
-pkgrel=4
+pkgrel=1
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts. ${_pythonvariant} variant."
 arch=('any')
@@ -61,8 +61,7 @@ provides=(
   "${_pkgname}=${pkgver}"
 )
 source=(
-  # "${_pkgname}::git+https://github.com/simos/${_pkgname}.git" # Original repo.
-  "${_pkgname}::git+https://github.com/hupfdule/${_pkgname}.git" # Fork with some fixes.
+  "${_pkgname}::git+${url}.git"
   "keyboardlayouteditor.sh"
 )
 sha256sums=(
@@ -168,9 +167,20 @@ package() {
 
   _cmd install -D -m755 "${srcdir}/keyboardlayouteditor.sh" "${pkgdir}/usr/bin/keyboardlayouteditor"
 
-  for _docfile in 'ChangeLog-git.txt' 'README.md' 'TODO' 'screenshot.png' 'website.url'; do
+  for _docfile in 'ChangeLog-git.txt' 'README.md' 'TODO' 'website.url'; do
     _cmd install -D -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+
+  case "${_pythonvariant}" in
+    'python2')
+      for _docfile in 'screenshot.png'; do
+        _cmd install -D -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+      done
+    ;;
+    'python3')
+      true
+    ;;
+  esac
 
   _cmd install -D -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
