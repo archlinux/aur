@@ -4,7 +4,7 @@ pkgbase = php-event
 	pkgrel = 1
 	url = https://bitbucket.org/osmanov/pecl-event
 	arch = x86_64
-	license = PHP
+	license = PHP-3.01
 	depends = php>=5.4
 	depends = libevent
 	depends = openssl
