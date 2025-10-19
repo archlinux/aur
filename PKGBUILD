@@ -1,7 +1,7 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=0.17.1.r11.gbd6b5a1
+pkgver=0.17.1.r32.ga3c5189
 pkgrel=1
 makedepends=('rust' 'cargo' 'git' 'openssl')
 
@@ -34,6 +34,12 @@ pkgver() {
 build() {
     cd "$srcdir/ironbar"
     cargo build --release --locked
+
+    mkdir -p "$srcdir/ironbar/target/completions"
+
+    "$srcdir/ironbar/target/release/ironbar" --print-completions bash > "$srcdir/ironbar/target/completions/ironbar.bash"
+    "$srcdir/ironbar/target/release/ironbar" --print-completions zsh >  "$srcdir/ironbar/target/completions/_ironbar"
+    "$srcdir/ironbar/target/release/ironbar" --print-completions fish > "$srcdir/ironbar/target/completions/ironbar.fish"
 }
 
 package() {
