@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Access your tutoring resources, notes, practice HSC questions, thousands of past papers, student forums & lots more!"
 arch=('x86_64')
 url="https://artofsmart.com.au"
-license=('custom')
+license=('proprietary')
 source=("https://github.com/Derukugis/art-of-smart-online/raw/refs/heads/master/art-of-smart-online.AppImage"
         "art-of-smart-online.desktop")
 sha256sums=('SKIP')
