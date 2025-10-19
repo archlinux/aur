@@ -14,7 +14,7 @@ arch=(
   'x86_64'
 )
 url="https://github.com/marler8997/${pkgname}"
-license=('custom:None')
+license=('MIT')
 makedepends=(
   # "zig>=${_zig}"
   "zig${_zig%.*}-bin" # extra/zig0.14 has some weird packaging choices
