@@ -1,6 +1,6 @@
 pkgbase = gsad
 	pkgdesc = server talking to the Greenbone Vulnerability Management daemon (gvmd)
-	pkgver = 24.5.4
+	pkgver = 24.6.0
 	pkgrel = 1
 	url = https://github.com/greenbone/gsad
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = gsad
 	depends = libxml2.so
 	depends = zlib
 	optdepends = logrotate: for rotating logs
-	source = gsad-24.5.4.tar.gz::https://github.com/greenbone/gsad/archive/refs/tags/v24.5.4.tar.gz
-	source = gsad-24.5.4.tar.gz.asc::https://github.com/greenbone/gsad/releases/download/v24.5.4/gsad-24.5.4.tar.gz.asc
+	source = gsad-24.6.0.tar.gz::https://github.com/greenbone/gsad/archive/refs/tags/v24.6.0.tar.gz
+	source = gsad-24.6.0.tar.gz.asc::https://github.com/greenbone/gsad/releases/download/v24.6.0/gsad-24.6.0.tar.gz.asc
 	source = gsad.tmpfiles
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha256sums = f5e7fbf1a37d87ebf7ce3a50dbc55184cce4f2383c629a5fd8c638d9248e18dd
+	sha256sums = 50e2a9d85f8730dc269e63980e11fa6a6f1f8c052e0643b8e8848cc3dc122207
 	sha256sums = SKIP
 	sha256sums = 9d978e755f969c8635f1f729b38c2c116e20a954925322c33df1859cb3031f60
 
