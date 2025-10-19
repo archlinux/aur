@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname='vdr-skindesigner'
-pkgver=1.2.25
-pkgrel=4
+pkgver=1.2.26
+pkgrel=1
 _vdrapi=9
 pkgdesc="Highly customizable native true color skin for the Video Disc Recorder"
 url="https://gitlab.com/kamel5/skindesigner"
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/kamel5/skindesigner/-/arch
 install="$pkgname.install"
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 options=('!emptydirs')
-sha256sums=('0a46d822eb2af46769e8f54b072f733b32cb5b6be80a675c8a676603077929a2'
+sha256sums=('2e21ba8ffd49b93819b2bb8376ce553142e3df6f041a76b5c40a5f02259d5f9f'
             '25c1359cb6c61c3e7ebd6738fce6c21fa21f62ea4f274a522c30015210c3f4e5'
             'dcd2381d49d79bbfbf9cd2a7bdd5ec24c1fc2c00b4e8e58b68c9afc874f6650e')
 
