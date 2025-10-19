@@ -1,3 +1,4 @@
 src
 pkg
 buck2-*
+!buck2-launcher.sh
