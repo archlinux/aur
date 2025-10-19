@@ -1,0 +1,15 @@
+pkgbase = emopick-git
+	pkgdesc = A tiny, emoji picker for the terminal (git dev version)
+	pkgver = r2.9381a2f
+	pkgrel = 1
+	url = https://gitlab.com/greyxor/emopick
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = awk
+	depends = fzf
+	depends = unicode-emoji
+	source = emopick-git::git+https://gitlab.com/greyxor/emopick.git
+	sha256sums = SKIP
+
+pkgname = emopick-git
