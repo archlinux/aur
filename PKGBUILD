@@ -2,7 +2,7 @@
 
 pkgname='rusty-path-of-building'
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline build planner for Path of Exile using the cross-platform 'rusty-path-of-building' runtime"
 url='https://github.com/meehl/rusty-path-of-building'
 license=('MIT')
