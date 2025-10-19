@@ -1,6 +1,6 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
-	pkgver = 1.6.1
+	pkgver = 1.6.2.9.gc9ab647
 	pkgrel = 1
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
@@ -11,7 +11,7 @@ pkgbase = casual-pre-loader-git
 	makedepends = gendesk
 	depends = python>=3.11
 	depends = python-pyqt6>=6.8.0
-	depends = python-valve-parsers-git>=1.0.4
+	depends = python-valve-parsers-git>=1.0.6
 	depends = python-requests>=2.32.5
 	depends = python-packaging>=25.0
 	depends = python-platformdirs
