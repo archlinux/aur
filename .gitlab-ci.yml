@@ -60,8 +60,8 @@ release_job:
     - git config --global user.name "Mundo"
     - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
     - git fetch aur master
-    - git checkout master
     - git stash
+    - git checkout master
     - git rebase aur/master
     - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
     - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
