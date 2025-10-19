@@ -1,5 +1,5 @@
 pkgname=thinkpad_utils-git
-pkgver=r2.0e34a41
+pkgver=r6.063014b
 pkgrel=1
 pkgdesc="Auto-save/restore ThinkPad keyboard backlight with lid detection"
 arch=('x86_64' 'aarch64')

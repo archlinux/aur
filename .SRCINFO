@@ -1,6 +1,6 @@
 pkgbase = thinkpad_utils-git
 	pkgdesc = Auto-save/restore ThinkPad keyboard backlight with lid detection
-	pkgver = r2.0e34a41
+	pkgver = r6.063014b
 	pkgrel = 1
 	url = https://git.teto.party/pkgs/thinkpad_utils
 	arch = x86_64
