@@ -1,7 +1,7 @@
 pkgbase = gr-rds-git
 	pkgdesc = An FM-RDS Receiver for GNU Radio
-	pkgver = 3.10+r355.20250305.c1cba54
-	pkgrel = 2
+	pkgver = 3.10+r357.20251017.1b8aee1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/bastibl/gr-rds
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = gr-rds-git
 	depends = gnuradio>=3.9
 	depends = python>=3
 	depends = python-pyqt5
-	provides = gr-rds-doc=3.10+r355.20250305.c1cba54
-	provides = gr-rds=3.10+r355.20250305.c1cba54
+	provides = gr-rds-doc=3.10+r357.20251017.1b8aee1
+	provides = gr-rds=3.10+r357.20251017.1b8aee1
 	conflicts = gr-rds
 	conflicts = gr-rds-doc
 	source = gr-rds::git+https://github.com/bastibl/gr-rds.git
