@@ -14,7 +14,7 @@ arch=(
   'x86_64'
 )
 url="https://github.com/marler8997/${_pkgname}"
-license=('custom:None')
+license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
