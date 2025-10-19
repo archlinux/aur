@@ -1,4 +1,4 @@
-pkgbase = art-of-smart-online-bin
+pkgbase = art-of-smart-online
 	pkgdesc = Access your tutoring resources, notes, practice HSC questions, thousands of past papers, student forums & lots more!
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = art-of-smart-online-bin
 	sha256sums = 1bc2c743657bfeac6323afddc0554814aa9d271a7c31e64730763b4e6d0b9da7
 	sha256sums = SKIP
 
-pkgname = art-of-smart-online-bin
+pkgname = art-of-smart-online

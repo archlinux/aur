@@ -1,4 +1,4 @@
-pkgname=art-of-smart-online-bin
+pkgname=art-of-smart-online
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Access your tutoring resources, notes, practice HSC questions, thousands of past papers, student forums & lots more!"
