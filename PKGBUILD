@@ -1,14 +1,14 @@
 # Maintainer: OrkenWhite <orkenwhite@disroot.org>
 pkgname=emptty-runit
 pkgdesc="Runit init script for emptty"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 arch=('any')
 url="https://github.com/tvrzna/emptty"
 license=('MIT')
 depends=('emptty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0baab909b46468fefbb3b12b10cf3c1a9b574460b49d7d01880f9b088cd18e3b49816e01e6af4c1094197b2c78c5c7bb7e31e8494b1168bd25af42c6f9ebb05d')
+sha512sums=('38553e5a1785dede2b38e6d79dad201d02376b6cc10f7dc9952b337870e87c2d76391dc20c5affaa3f441631bfb617c68b13b468bf1217e35c59bf6cb7f98e92')
 
 package() {
   cd "emptty-$pkgver"
