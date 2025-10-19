@@ -1,18 +1,19 @@
-# Maintainer: Tong Chunli <tty2099@gmail.com>
+# Maintainer: Richard Dodd <richdodj@gmail.com>
+# Contributor: Tong Chunli <tty2099@gmail.com>
 
 pkgname=cyclonedds
-pkgver=0.8.1
+pkgver=0.10.5
 pkgrel=1
-pkgdesc='Eclipse Cyclone DDS is a very performant and robust open-source DDS implementation.'
+pkgdesc='Eclipse Cyclone DDS is a very performant and robust open-source implementation of Object Management Group Data-Distribution Service (OMG DDS).'
 arch=('x86_64')
 url='https://github.com/eclipse-cyclonedds/cyclonedds'
 license=('Eclipse')
-depends=('jdk')
+depends=('jdk-openjdk')
 makedepends=('cmake' 'maven')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/eclipse-cyclonedds/cyclonedds/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('ec830057682b7706492a3e9a6907c2ad6fefbd78b1794fcad21743901ff193ef')
+sha256sums=('ec3ec898c52b02f939a969cd1a276e219420e5e8419b21cea276db35b4821848')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
