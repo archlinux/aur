@@ -1,8 +1,8 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhddrm)
-pkgver=3.31
-pkgrel=2
+pkgver=3.33
+pkgrel=1
 _vdrapi=9
 pkgdesc="VDR output plugin with CUDA and Opengl"
 url="https://github.com/jojo61/vdr-plugin-softhdcuvid"
@@ -12,7 +12,7 @@ makedepends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm
 _plugname=${pkgbase//vdr-/}
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
         "50-$_plugname.conf")
-sha256sums=('b9b2e40e290a72e53ee91df173e27df9d043798347fc5f84cf52de157c0951c1'
+sha256sums=('d10fbd3efd3927b12960cb9cc1fed359c670466bbf30ffa199071c4e74386fc5'
             'ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af')
 
 if [ "$CARCH" == "x86_64" ] ; then
