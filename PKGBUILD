@@ -9,6 +9,7 @@ url="https://github.com/handley-lab/mcp-handley-lab"
 license=(MIT)
 depends=(
     python
+    python-mcp
     python-pydantic
     python-pydantic-settings
     python-google-api-python-client

@@ -11,6 +11,7 @@ pkgbase = mcp-handley-lab
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-mcp
 	depends = python-pydantic
 	depends = python-pydantic-settings
 	depends = python-google-api-python-client
