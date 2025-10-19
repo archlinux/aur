@@ -1,68 +1,37 @@
-#Maintainer: archdevlab <https://github.com/archdevlab>
+#Maintainer: Pedro Gameiro <https://github.com/pedrogameiro>
+#Contributor: archdevlab <https://github.com/archdevlab>
 
-major=2024.Q3.3
+major=2025.Q2.1
 
 pkgbase=amdvlk-bin
+pkgdesc="AMD's standalone Vulkan driver"
 pkgname=(amdvlk-bin lib32-amdvlk-bin)
 pkgver=${major}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://github.com/GPUOpen-Drivers/AMDVLK'
 license=(MIT)
-source=(https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${major}/amdvlk_${major}_amd64.deb
+options=('!strip' '!debug')
+source=(https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${major}/amdvlk-${major}.x86_64.rpm
         https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${major}/amdvlk_${major}_i386.deb)
-
-extract_deb(){
-  local tmpdir="$(basename "${1%.deb}")"
-  rm -Rf "$tmpdir"
-  mkdir "$tmpdir"
-  cd "$tmpdir"
-  ar x "$1"
-  tar -C "${pkgdir}" -xf data.tar.gz
-}
-
-move_libdir(){
-  local deb_libdir="$1"
-  local arch_libdir="$2"
-
-  if [ -d "${pkgdir}/${deb_libdir}" ]; then
-    if [ ! -d "${pkgdir}/${arch_libdir}" ]; then
-      mkdir -p "${pkgdir}/${arch_libdir}"
-    fi
-    mv -t "${pkgdir}/${arch_libdir}/" "${pkgdir}/${deb_libdir}"/*
-    find ${pkgdir} -type d -empty -delete
-  fi
-}
-
-move_copyright(){
-  find ${pkgdir}/usr/share/doc -name "changelog.Debian.gz" -delete
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-  find ${pkgdir}/usr/share/doc -name "copyright" -exec mv {} ${pkgdir}/usr/share/licenses/${pkgname} \;
-  find ${pkgdir}/usr/share/doc -type d -empty -delete
-}
+sha256sums=('932c79062e2487bb1f318136bcf666cb0342faea29e70f791b8f6f425d6afdf8'
+            '40985dbf2e62b158e85720c0469dd4c3f1e386b65b0a1c67b17491b2747e14d7')
 
 package_amdvlk-bin(){
-  pkgdesc="AMD's standalone Vulkan driver (Stable DEB Release)"
+  pkgdesc="AMD's standalone Vulkan driver (Stable RPM Release)"
   arch=(x86_64)
   conflicts=(amdvlk)
   provides=(amdvlk vulkan-driver)
 
-  extract_deb "${srcdir}"/amdvlk_${major}_amd64.deb
+  install -m755 -d "${pkgdir}"/usr/share/vulkan/implicit_layer.d
+  install -m755 -d "${pkgdir}"/usr/share/vulkan/icd.d
+  install -m755 -d "${pkgdir}"/usr/share/doc/amdvlk/
+  install -m755 -d "${pkgdir}"/usr/lib
 
-  move_libdir "usr/lib/x86_64-linux-gnu" "usr/lib"
-  move_libdir "etc" "usr/share"
-
-  sed -i 's|/x86_64-linux-gnu||' "$pkgdir/"usr/share/vulkan/icd.d/amd_icd64.json
-  sed -i 's|/x86_64-linux-gnu||' "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd64.json
-  mv "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd64.json "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd64.json.hide
-
-  move_copyright
-  mv "$pkgdir"/usr/share/doc/amdvlk/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/
-  rm -rf "$pkgdir"/usr/share/doc
-
-  # fix package file permission
-  # filesystem: 755  package: 775
-  chmod -R 755 "$pkgdir"/usr
+  install usr/lib64/amdvlk64.so "${pkgdir}"/usr/lib/amdvlk64.so
+  install etc/vulkan/icd.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd64.json
+  install etc/vulkan/implicit_layer.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/implicit_layer.d/amd_icd64.json
+  install usr/share/doc/amdvlk/LICENSE.txt "${pkgdir}"/usr/share/doc/amdvlk/LICENSE.txt
 }
 
 package_lib32-amdvlk-bin(){
@@ -72,28 +41,20 @@ package_lib32-amdvlk-bin(){
   conflicts=(lib32-amdvlk)
   provides=(lib32-amdvlk lib32-vulkan-driver)
 
-  extract_deb "${srcdir}"/amdvlk_${major}_i386.deb
+  tar -xf data.tar.gz
 
-  move_libdir "usr/lib/i386-linux-gnu" "usr/lib32"
-  move_libdir "etc" "usr/share"
+  install -m755 -d "${pkgdir}"/usr/share/vulkan/implicit_layer.d
+  install -m755 -d "${pkgdir}"/usr/share/vulkan/icd.d
+  install -m755 -d "${pkgdir}"/usr/lib32
+
+  install usr/lib/i386-linux-gnu/amdvlk32.so "${pkgdir}"/usr/lib32/amdvlk32.so
+  install etc/vulkan/icd.d/amd_icd32.json "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd32.json
+  install etc/vulkan/implicit_layer.d/amd_icd32.json "${pkgdir}"/usr/share/vulkan/implicit_layer.d/amd_icd32.json
 
   sed -i 's|/i386-linux-gnu||' "$pkgdir/"usr/share/vulkan/icd.d/amd_icd32.json
   sed -i 's|/lib|/lib32|' "$pkgdir/"usr/share/vulkan/icd.d/amd_icd32.json
   sed -i 's|/i386-linux-gnu||' "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd32.json
   sed -i 's|/lib|/lib32|' "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd32.json
-
-  mv "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd32.json "$pkgdir/"usr/share/vulkan/implicit_layer.d/amd_icd32.json.hide
-
-  move_copyright
-  mv "$pkgdir"/usr/share/doc/amdvlk/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/
-  rm -rf "$pkgdir"/usr/share/doc
-
-  # fix package file permission
-  # filesystem: 755  package: 775
-  chmod -R 755 "$pkgdir"/usr
 }
-
-sha256sums=('6c1f06c59ea032baeeb29401381a508ec481594d324481b78fe72a6db06d9267'
-            '7630cb02f050c3a93d7eddc4be3dba45a6b853536a228aaa520ffc28ce6f76bf')
 
 # vim:set ts=8 sts=2 sw=2 et:

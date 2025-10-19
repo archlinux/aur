@@ -1,16 +1,19 @@
 pkgbase = amdvlk-bin
-	pkgver = 2024.Q3.3
-	pkgrel = 1
+	pkgdesc = AMD's standalone Vulkan driver
+	pkgver = 2025.Q2.1
+	pkgrel = 2
 	url = https://github.com/GPUOpen-Drivers/AMDVLK
 	arch = x86_64
 	license = MIT
-	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2024.Q3.3/amdvlk_2024.Q3.3_amd64.deb
-	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2024.Q3.3/amdvlk_2024.Q3.3_i386.deb
-	sha256sums = 6c1f06c59ea032baeeb29401381a508ec481594d324481b78fe72a6db06d9267
-	sha256sums = 7630cb02f050c3a93d7eddc4be3dba45a6b853536a228aaa520ffc28ce6f76bf
+	options = !strip
+	options = !debug
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2025.Q2.1/amdvlk-2025.Q2.1.x86_64.rpm
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2025.Q2.1/amdvlk_2025.Q2.1_i386.deb
+	sha256sums = 932c79062e2487bb1f318136bcf666cb0342faea29e70f791b8f6f425d6afdf8
+	sha256sums = 40985dbf2e62b158e85720c0469dd4c3f1e386b65b0a1c67b17491b2747e14d7
 
 pkgname = amdvlk-bin
-	pkgdesc = AMD's standalone Vulkan driver (Stable DEB Release)
+	pkgdesc = AMD's standalone Vulkan driver (Stable RPM Release)
 	arch = x86_64
 	provides = amdvlk
 	provides = vulkan-driver
@@ -20,7 +23,7 @@ pkgname = lib32-amdvlk-bin
 	pkgdesc = AMD's standalone Vulkan driver (32-bit) (Stable DEB Release)
 	arch = i686
 	arch = x86_64
-	depends = amdvlk-bin=2024.Q3.3
+	depends = amdvlk-bin=2025.Q2.1
 	provides = lib32-amdvlk
 	provides = lib32-vulkan-driver
 	conflicts = lib32-amdvlk
