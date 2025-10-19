@@ -7,18 +7,15 @@ arch=('x86_64')
 url="https://github.com/Sleep-No-More/cpmenu"
 license=('MIT')
 depends=('gtk3' 'cairo')
-makedepends=('cargo' 'rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Sleep-No-More/cpmenu/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d0fb26c905879ea3f34086bdfa299cfc79460d10be032d26fc1dc81effa8cf0')
-
-build() {
-    cd "$pkgname-$pkgver"
-    cargo build --release --locked
-}
+source=("cpmenu::https://github.com/Sleep-No-More/cpmenu/releases/download/v${pkgver}/cpmenu"
+        "LICENSE::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/v${pkgver}/LICENSE"
+        "README.md::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/v${pkgver}/README.md")
+sha256sums=('0798ca04cc057d7c526834a52d0a41519e32b9c4'
+            'SKIP'
+            'SKIP')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 target/release/cpmenu "$pkgdir/usr/bin/cpmenu"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm755 "$srcdir/cpmenu" "$pkgdir/usr/bin/cpmenu"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
