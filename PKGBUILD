@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openjpeg2
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver} (mingw-w64)"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("openjpeg-${pkgver}.tar.gz::https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz"
         "0003-versioned-dlls.mingw.patch")
-sha256sums=('368fe0468228e767433c9ebdea82ad9d801a3ad1e4234421f352c8b06e7aa707'
+sha256sums=('a695fbe19c0165f295a8531b1e4e855cd94d0875d2f88ec4b61080677e27188a'
             '787cee06732de997a3a99b6a40676ea9335388d3a706071b6f266f7c47822197')
 
 prepare() {
