@@ -36,14 +36,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    set +o pipefail
-    local desc
-    desc=$(git describe --long --tags --abbrev=7 2>/dev/null) || desc=""
-    if [[ -n "$desc" ]]; then
-        printf '%s\n' "$desc" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    else
-        printf '0.1.0.r%s.g%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    fi
+    git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.1.0"
 }
 
 build() {
