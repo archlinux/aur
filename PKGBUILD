@@ -11,6 +11,11 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
+    'meson'
+    'ninja'
+    'gcc'
+    'pkgconf'
+    'curl'
 )
 depends=(
     'python'
@@ -23,12 +28,6 @@ depends=(
 optdepends=(
     'pipewire-pulse: provides pactl for bitrate detection (alternative: pulseaudio)'
     'pulseaudio: provides pactl if pipewire-pulse is not used'
-    'git: rebuild the SBC high-bitpool codec from the GUI'
-    'meson: rebuild the SBC high-bitpool codec from the GUI'
-    'ninja: rebuild the SBC high-bitpool codec from the GUI'
-    'gcc: rebuild the SBC high-bitpool codec from the GUI'
-    'pkgconf: rebuild the SBC high-bitpool codec from the GUI'
-    'curl: fetch gdbus-codegen helper when rebuilding the SBC codec'
 )
 provides=('bluetooth-audio-boost')
 conflicts=('bluetooth-audio-boost')
