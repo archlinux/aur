@@ -1,0 +1,65 @@
+post_install() {
+    if [ ! -f /etc/thinkpad_utils.conf ]; then
+        cat > /etc/thinkpad_utils.conf << 'EOF'
+# Lock command to run on lid close (leave empty to disable)
+LOCK_CMD=""
+
+# Username to run lock command as (required if LOCK_CMD is set)
+LOCK_USER=""
+EOF
+    fi
+    
+    echo ""
+    echo "==> thinkpad_utils - ThinkPad keyboard backlight manager"
+    echo "==> Automatically saves/restores keyboard backlight brightness"
+    echo "==> Optional: Detect lid close and run screen locker"
+    echo ""
+    echo "==> Configuration:"
+    echo "    1. Edit /etc/thinkpad_utils.conf"
+    echo "    2. Set LOCK_CMD (e.g., 'hyprlock') and LOCK_USER (your username)"
+    echo "    3. Reinstall: paru -S thinkpad_utils-git"
+    echo ""
+    echo "==> Enable service:"
+    echo "    systemctl enable --now thinkpad_utils"
+    echo "    OR"
+    echo "    rc-update add thinkpad_utils default && rc-service thinkpad_utils start"
+    echo ""
+    echo "==> Debug mode:"
+    echo "    thinkpad_utils -v"
+    echo ""
+    echo "==> More info: https://git.teto.party/pkgs/thinkpad_utils"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> thinkpad_utils upgraded"
+    echo "==> Check /etc/thinkpad_utils.conf for new options"
+    echo ""
+    
+    if systemctl is-active --quiet thinkpad_utils; then
+        echo "==> Restarting service..."
+        systemctl restart thinkpad_utils
+    fi
+    
+    if rc-service thinkpad_utils status >/dev/null 2>&1; then
+        echo "==> Restarting service..."
+        rc-service thinkpad_utils restart
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet thinkpad_utils; then
+        systemctl stop thinkpad_utils
+        systemctl disable thinkpad_utils
+    fi
+    
+    if rc-service thinkpad_utils status >/dev/null 2>&1; then
+        rc-service thinkpad_utils stop
+        rc-update del thinkpad_utils
+    fi
+    
+    echo ""
+    echo "==> Config kept at /etc/thinkpad_utils.conf (remove manually if desired)"
+    echo ""
+}

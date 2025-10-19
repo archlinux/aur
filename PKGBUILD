@@ -12,6 +12,7 @@ conflicts=('thinkpad_utils')
 source=("git+https://git.teto.party/pkgs/thinkpad_utils.git")
 md5sums=('SKIP')
 options=('!strip' '!emptydirs')
+install=thinkpad_utils.install
 
 pkgver() {
     cd "$srcdir/thinkpad_utils"
