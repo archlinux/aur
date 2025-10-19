@@ -3,7 +3,7 @@
 pkgname=deezer-enhanced-bin
 _pkgname=deezer-enhanced
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=('x86_64')
 url="https://github.com/duzda/deezer-enhanced"
@@ -32,6 +32,11 @@ package() {
   # Post install
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/deezer-enhanced/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Hopefully temp fix
+  sed -i '2s/.*/Name=Deezer Enhanced/' "${pkgdir}/usr/share/applications/deezer-enhanced.desktop"
+  sed -i '7s/.*/StartupWMClass=Deezer Enhanced/' "${pkgdir}/usr/share/applications/deezer-enhanced.desktop"
+  sed -i '9s/.*/Categories=Audio;AudioVideo;/' "${pkgdir}/usr/share/applications/deezer-enhanced.desktop"
 
   # SUID chrome-sandbox for Electron 5+
   chmod 4755 "${pkgdir}/opt/deezer-enhanced/chrome-sandbox" || true

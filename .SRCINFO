@@ -1,7 +1,7 @@
 pkgbase = deezer-enhanced-bin
 	pkgdesc = An unofficial application for Deezer with enhanced features
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duzda/deezer-enhanced
 	arch = x86_64
 	license = MIT
