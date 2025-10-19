@@ -1,7 +1,7 @@
 pkgname=songfetch
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="A Linux CLI tool that displays current song information in the terminal, similar to neofetch"
+pkgrel=2
+pkgdesc="A Linux CLI tool that displays current song info (ASCII art requires python-ascii_magic from AUR)"
 arch=('any')
 url="https://github.com/fwtwoo/songfetch"
 license=('GPL-2.0')
@@ -17,7 +17,7 @@ makedepends=(
   'python-setuptools'
 )
 optdepends=(
-  'ascii-magic'
+  'python-ascii_magic: The needed AUR package (or install via pip/pipx as ascii-magic). For ASCII album art'
   'mpdris2: For MPD support'
   'cmus-mpris: For cmus support'
   'pipewire: For PipeWire audio backend'
