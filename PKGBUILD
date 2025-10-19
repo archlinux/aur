@@ -2,10 +2,10 @@
 # Maintainer: Padya1201 <padya1201 at gmail dot com>
 
 pkgname=tachidesk-sorayomi-bin
-__pkgname="${pkgname%-bin}"
-__PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
-__binname="$(echo "$__pkgname" | tr - _)"
-pkgver=0.5.23
+_pkgname="${pkgname%-bin}"
+_PkgName="$(echo "$_pkgname" | sed -e "s/\b./\u\0/g")"
+_binname="$(echo "$_pkgname" | tr - _)"
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance'
 arch=('x86_64')
@@ -13,17 +13,25 @@ url="https://github.com/Suwayomi/$__PkgName"
 license=('MPL2')
 depends=('zenity' 'xdg-user-dirs' 'at-spi2-core')
 optdepends=('tachidesk-server')
-provides=("$__pkgname")
-conflicts=("$__pkgname")
-source=("$url/releases/download/$pkgver/$__pkgname-$pkgver-linux-x64.tar.gz")
-sha512sums=('0d755825277dfe9ba9341f589ffa653a3f86ef2e4b86e1c1f886b367feb0ede4b8a6f86706a4ef20c720abebca5f41eeafd229a891571fac78101f196c7339c1')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-linux-x64.tar.gz")
+sha256sums=('6bc97d5298bc55698e66085e29a0c9b84e3a3af0d4e0b38ae6bb34ce5e04b650')
 
 package() {
-    cd "$srcdir/"
-    install -dm755 "$pkgdir/opt/$__pkgname/"
-    cp -a "data/" "lib/" "$__binname" "$pkgdir/opt/$__pkgname/"
-    install -dm755 "$pkgdir/usr/bin/"
-    ln -sr "$pkgdir/opt/$__pkgname/$__binname" "$pkgdir/usr/bin/$__pkgname"
-    install -Dm644 "$__pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-    install -Dm644 "$__pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
+	cd ${pkgdir}
+
+    mkdir -p usr/share/applications usr/share/icons/hicolor/1024x1024/apps usr/bin opt/$_PkgName
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "usr/share/applications/"
+    install -Dm644 "${srcdir}/${_pkgname}.png" "usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
+    cp -a "${srcdir}/data/" "${srcdir}/lib/" "${srcdir}/${_binname}" "opt/$_PkgName/"
+    ln -sr "opt/$_PkgName/$_binname" "$pkgdir/usr/bin/${_pkgname}"
+
+    # cd "$srcdir/"
+    # install -dm755 "$pkgdir/opt/$__pkgname/"
+    # cp -a "data/" "lib/" "$__binname" "$pkgdir/opt/$__pkgname/"
+    # install -dm755 "$pkgdir/usr/bin/"
+    # ln -sr "$pkgdir/opt/$__pkgname/$__binname" "$pkgdir/usr/bin/$__pkgname"
+    # install -Dm644 "$__pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    # install -Dm644 "$__pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
 }
