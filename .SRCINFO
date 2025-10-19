@@ -1,0 +1,24 @@
+pkgbase = how-cli-bin
+	pkgdesc = Lightweight AI assistant for your CLI — turns 'WTF do I type?' into commands
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/patrykgruszka/how-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	provides = how
+	conflicts = how-cli
+	source = README-0.0.1.md::https://raw.githubusercontent.com/patrykgruszka/how-cli/v0.0.1/README.md
+	source = LICENSE
+	sha256sums = fafe1b34b8f8b2f461c96c9bba419ed04cf7f9995e9f111ea43c9d26b5a560df
+	sha256sums = 6f9a2fb009225de5cca1c2a24dfed7a68bc22657e455b4a3d63f065258b455d1
+	source_x86_64 = how-cli-x86_64-0.0.1.tgz::https://github.com/patrykgruszka/how-cli/releases/download/v0.0.1/how-v0.0.1-linux_amd64.tar.gz
+	sha256sums_x86_64 = ce7726972b0b0a7a04c3b0f0360a01effd79ad5f9e4a09e09ec41ea12fc8c5e8
+	source_i686 = how-cli-i686-0.0.1.tgz::https://github.com/patrykgruszka/how-cli/releases/download/v0.0.1/how-v0.0.1-linux_386.tar.gz
+	sha256sums_i686 = 4a876fd0f53b6bdb113718fc2768320451d4333002bd3376d3e00e8a0792d074
+	source_aarch64 = how-cli-aarch64-0.0.1.tgz::https://github.com/patrykgruszka/how-cli/releases/download/v0.0.1/how-v0.0.1-linux_arm64.tar.gz
+	sha256sums_aarch64 = 5f911ac03547529d5c8497c97bd3daea0ce828a7b25acc5e3139f7f4299c610f
+
+pkgname = how-cli-bin

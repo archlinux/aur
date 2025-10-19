@@ -1,0 +1,5 @@
+[how-cli-bin]
+source = "github"
+github = "patrykgruszka/how-cli"
+use_latest_release = true
+prefix = "v"
