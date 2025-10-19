@@ -9,7 +9,7 @@ pkgbase = sfpi-bin
 	makedepends = tar
 	makedepends = xz
 	depends = glibc
-	provides = sfpi
+	provides = sfpi=7.5.0
 	conflicts = sfpi
 	options = !strip
 	source = https://github.com/tenstorrent/sfpi/releases/download/7.5.0/sfpi_7.5.0_x86_64_linux.txz

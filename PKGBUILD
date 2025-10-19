@@ -8,7 +8,7 @@ url="https://github.com/tenstorrent/sfpi"
 license=('Apache-2.0' 'GPLv2')
 depends=('glibc')
 makedepends=('tar' 'xz')
-provides=('sfpi')
+provides=('sfpi=7.5.0')
 conflicts=('sfpi')
 source=("https://github.com/tenstorrent/sfpi/releases/download/${pkgver}/sfpi_${pkgver}_x86_64_linux.txz")
 b2sums=('12823b0d757a2e7ef66ef063bc867a432b60871fe5612088294e5f965edf72f39b39d7dcf18e4af2f529c2c308a3f02572dee3f1e9b10997f81eacca2e974b9e')
