@@ -1,7 +1,7 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 pkgname=sfpi-bin
 pkgver=7.5.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Tenstorrent SFPU programming interface"
 arch=('x86_64')
 url="https://github.com/tenstorrent/sfpi"
