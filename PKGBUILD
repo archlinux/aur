@@ -4,12 +4,12 @@
 
 pkgname=gvm-tools
 pkgver=25.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='greenbone-vulnerability-manager tools'
 arch=('any')
 url="https://github.com/greenbone/gvm-tools"
 license=('GPL-3.0-only')
-depends=('python')
+depends=('python-gvm')
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
