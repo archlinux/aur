@@ -1,6 +1,6 @@
 pkgbase = cmdcreate
 	pkgdesc = Allows you to create custom commands for your custom scripts
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/Meme-Supplier/cmdcreate
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cmdcreate
 	depends = bash
 	depends = curl
 	depends = nano
-	source = git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v0.6.7
+	source = git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v0.6.8
 	sha256sums = SKIP
 
 pkgname = cmdcreate
