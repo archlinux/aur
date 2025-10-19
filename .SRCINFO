@@ -5,6 +5,7 @@ pkgbase = libjxl
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = add-determinism
 	makedepends = asciidoc
 	makedepends = brotli
 	makedepends = cmake
