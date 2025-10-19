@@ -1,9 +1,0 @@
-# source & package directories
-/src/*
-/pkg/*
-
-# source tarballs
-*.tar.gz
-
-# archlinux packages
-*.pkg.tar*

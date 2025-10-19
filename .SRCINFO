@@ -5,10 +5,11 @@ pkgbase = ossutil
 	url = https://github.com/aliyun/ossutil
 	arch = x86_64
 	license = MIT
+	makedepends = go
 	provides = ossutil
 	conflicts = ossutil-bin
-	source = https://raw.githubusercontent.com/aliyun/ossutil/master/LICENSE
-	source = https://github.com/aliyun/ossutil/archive/refs/tags/v1.7.19.tar.gz
+	source = ossutil-LICENSE::https://raw.githubusercontent.com/aliyun/ossutil/master/LICENSE
+	source = ossutil-1.7.19.tar.gz::https://github.com/aliyun/ossutil/archive/refs/tags/v1.7.19.tar.gz
 	sha256sums = 5dee8031676245920361e38dde7cc4d91f2b063f1c5a2b2a66cab1c008845b0b
 	sha256sums = 25fb364cb1d1eb254a2629359c5e0c94a68e352846caeed0b45c971ac9a17dd5
 
