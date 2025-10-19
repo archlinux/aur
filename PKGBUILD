@@ -1,8 +1,8 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 
 pkgname=nova-music-git
-pkgver=0.1.0_75f40aa
-pkgrel=1
+pkgver=0.1.0_518cb07
+pkgrel=2
 pkgdesc="A music player written in the libcosmic toolkit"
 arch=('any')
 options=('!emptydirs')
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 makedepends=(just rust) # hah, "just rust"...
 depends=()
 
-source=('git+https://github.com/lunarsrl/NovaMusic.git#branch=next')
+source=('git+https://github.com/lunarsrl/NovaMusic.git#branch=main')
 sha512sums=(SKIP)
 
 build() {
