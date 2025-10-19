@@ -15,6 +15,7 @@ depends=(
     python-google-api-python-client
     python-google-auth-httplib2
     python-google-auth-oauthlib
+    python-google-genai
     python-googlemaps
     python-openai
     python-anthropic
