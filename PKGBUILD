@@ -16,6 +16,7 @@ depends=(
   'python-numpy'
   'python-packaging'
   'python-pydantic'
+  # 'python-respx'
   'python-requests'
 )
 makedepends=(
@@ -28,6 +29,8 @@ makedepends=(
 checkdepends=(
   'python-packaging>=21.3'
   'python-pytest>=7.1.2'
+  #'python-pytest-asyncio'
+  #'python-pytest-recording'
   'python-responses>=0.21.0'
 )
 provides=(
@@ -43,6 +46,8 @@ source=(
 sha256sums=(
   'SKIP'
 )
+
+unset REPLICATE_API_KEY # As notified in https://aur.archlinux.org/packages/python-replicate-git#comment-1040279
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
