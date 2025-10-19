@@ -1,6 +1,6 @@
 pkgbase = savestate
 	pkgdesc = A versatile game save backup manager, featuring Steam detection, Minecraft support, drag & drop, desktop shortcuts and emulator compatible.
-	pkgver = 1.4.5
+	pkgver = 1.4.6b
 	pkgrel = 1
 	url = https://github.com/Matteo842/SaveState
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = savestate
 	depends = zlib
 	provides = savestate
 	conflicts = savestate
-	source = savestate-1.4.5.tar.gz::https://github.com/Matteo842/SaveState/archive/refs/tags/1.4.5.tar.gz
-	source = SaveState.png::https://github.com/Matteo842/SaveState/blob/1.4.5/icon.png?raw=true
+	source = savestate-1.4.6b.tar.gz::https://github.com/Matteo842/SaveState/archive/refs/tags/1.4.6b.tar.gz
+	source = SaveState.png::https://github.com/Matteo842/SaveState/blob/1.4.6b/icon.png?raw=true
 	source = SaveState-OneFile-Linux.spec::https://github.com/Matteo842/SaveState/raw/refs/heads/main/SaveState-OneFile-Linux.spec
 	source = requirements.patch
 	sha256sums = ad3a02d5d37000b108154094f6d17e2b301e4b13296f3e57a28acd477775c5ac
