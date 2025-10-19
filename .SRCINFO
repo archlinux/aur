@@ -5,9 +5,9 @@ pkgbase = art-of-smart-online-bin
 	url = https://artofsmart.com.au
 	arch = x86_64
 	license = custom
-	source = https://resources.artofsmart.com.au/LMS/Art%20of%20Smart%20Online-1.0.0%20%28NEW%29.AppImage
+	source = art-of-smart-online.AppImage
 	source = art-of-smart-online.desktop
-	sha256sums = 4649f66f977132809ec3d8d6a1b12b54787d2ef748ba2fe0431d5e5edfafbcc7
+	sha256sums = 1bc2c743657bfeac6323afddc0554814aa9d271a7c31e64730763b4e6d0b9da7
 	sha256sums = SKIP
 
 pkgname = art-of-smart-online-bin
