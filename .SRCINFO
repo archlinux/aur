@@ -5,7 +5,7 @@ pkgbase = perl-gis-distance-git
 	url = https://github.com/bluefeet/GIS-Distance
 	arch = any
 	license = PerlArtistic
-	checkdepends = perl-test2-suite
+	checkdepends = perl-test-simple>=1.302200
 	makedepends = git
 	makedepends = perl-module-build-tiny
 	depends = perl

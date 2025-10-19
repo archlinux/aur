@@ -28,7 +28,7 @@ optdepends=(
   "perl-geo-point:      To be able to handle 'Geo::Point' objects."
 )
 checkdepends=(
-  'perl-test2-suite'
+  'perl-test-simple>=1.302200'
 )
 provides=(
   "${_pkgname}=${pkgver}"
