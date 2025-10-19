@@ -1,0 +1,19 @@
+--- a/src/gamepads.c	2025-09-22 18:19:18.000000000 +0200
++++ b/src/gamepads.c	2025-10-19 12:55:31.625298202 +0200
+@@ -6,6 +6,7 @@
+ 
+ #include <SDL3/SDL.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ // Maximum number of game controllers to support
+ #define MAX_CONTROLLERS 4
+@@ -47,7 +48,7 @@
+   SDL_Log("Trying to open game controller database from %s", db_filename);
+   SDL_IOStream *db_rw = SDL_IOFromFile(db_filename, "rb");
+   if (db_rw == NULL) {
+-    snprintf(db_filename, sizeof(db_filename), "%sgamecontrollerdb.txt", SDL_GetBasePath());
++    strcpy(db_filename, "/usr/share/m8c/gamecontrollerdb.txt");
+     SDL_Log("Trying to open game controller database from %s", db_filename);
+     db_rw = SDL_IOFromFile(db_filename, "rb");
+   }
