@@ -2,23 +2,23 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab-bin'
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='A modern task runner from simple to scaled'
+pkgdesc='Custom commands for every project'
 url='https://github.com/bab-sh/bab'
 arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('bab')
 conflicts=('bab')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.9/bab_0.0.9_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f9157ce012e18d67f56079eddbe70867a52699c3eb047a25f834a4a702a4bd30')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.1.0/bab_0.1.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('233a9abbbd99305f8ba9f71563bfb6de873bb63a4f2164ea297ce76c58c1e955')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.9/bab_0.0.9_Linux_armv7.tar.gz")
-sha256sums_armv7h=('a3abcbab1155dda63ba960a243eee0786659c09d8e63a50bc20da0ef0f7cf48b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.1.0/bab_0.1.0_Linux_armv7.tar.gz")
+sha256sums_armv7h=('5f47ba401628aa11ba64fddcddf7318df4cbdcc55c1c889fd5fae6aec8d2ee1a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.0.9/bab_0.0.9_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d7056c30adec4ff84299a973d46d3a143d902bbe314bcd69c4f8778027452ed7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v0.1.0/bab_0.1.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d33d12109efd103a86bdceb67c6a10b7fd68bc25f4d9a720a5fec83bc14f5bb1')
 
 package() {
   # Binary
