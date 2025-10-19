@@ -14,7 +14,7 @@ makedepends=("pkgconf" "lua" "git")
 depends=("libogg" "libpng" "libvorbis" "libgl" "sdl2" "zlib" "glu" "libmikmod" "lua52")
 conflicts=(uqm-megamod)
 source=(
-  "git+https://github.com/shogeki/UQM-MegaMod.git"
+  "git+https://github.com/JHGuitarFreak/UQM-MegaMod.git"
   "git+https://github.com/JHGuitarFreak/UQM-MegaMod-Content.git"
   "https://downloads.sourceforge.net/project/sc2/UQM%20Remix%20Packs/UQM%20Remix%20Pack%201/uqm-remix-disc1.uqm"
   "https://downloads.sourceforge.net/project/sc2/UQM%20Remix%20Packs/UQM%20Remix%20Pack%202/uqm-remix-disc2.uqm"
