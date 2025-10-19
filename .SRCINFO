@@ -1,6 +1,6 @@
 pkgbase = packrinth
 	pkgdesc = CLI tool for creating and maintaining your own Minecraft modpack.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://packrinth.thijzert.nl
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = packrinth
 	license = MIT
 	makedepends = cargo
 	options = !lto
-	source = packrinth-0.8.1.tar.gz::https://static.crates.io/crates/packrinth/packrinth-0.8.1.crate
-	sha256sums = 8ef10b4c44d6ebe9f4da58f7ca144dc61aa35ff1b8ab27d1d1899d84b86a8c6c
+	source = packrinth-0.8.2.tar.gz::https://static.crates.io/crates/packrinth/packrinth-0.8.2.crate
+	sha256sums = dee348eb9ce3426df0cc6787aba4e6f182af6914da9593112286ba616843e399
 
 pkgname = packrinth
