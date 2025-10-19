@@ -4,7 +4,7 @@
 
 pkgname=openlist-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="A new AList Fork to Anti Trust Crisis"
 arch=("x86_64" "aarch64" "loong64" "riscv64")
