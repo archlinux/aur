@@ -1,6 +1,6 @@
 # Maintainer: Sleep-No-More <nninkovic95@gmail.com>
 pkgname=cpmenu
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Circular Power Menu - A beautiful donut-shaped power menu for Wayland"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'hyprland: optimized for hyprland compositor'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Sleep-No-More/cpm/archive/v${pkgver}.tar.gz")
-sha256sums=('c225e86375529e2b5644a8fa4afe219799ea2a666dabdb6676a47d4fd5c44c91')
+sha256sums=('653661eeb4a888d1d3f176eaeae9efd5228d4ab708c2ff769dcba070f8771948')
 
 build() {
     cd "cpm-${pkgver}"
