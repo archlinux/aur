@@ -8,7 +8,7 @@ url="https://github.com/shinichiroisumi/lume-desktop"
 license=('MIT')
 depends=('python' 'tk' 'python-pillow' 'xdotool' 'wmctrl' 'pulseaudio'
          'alsa-utils' 'wireless_tools' 'net-tools' 'acpi' 'ttf-nerd-fonts-symbols')
-source=("$pkgname.py::https://github.com/shinichiroisumi/lume-desktop/blob/main/panel/panel.py"
+source=("$pkgname.py::https://github.com/shinichiroisumi/lume-desktop/blob/main/panel/pythia-panel.py"
         "$pkgname.desktop")
 sha256sums=('SKIP'
             'SKIP')
