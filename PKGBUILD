@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-files
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='files provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-files')
 provides=('elephant-files')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('03edd7885890181843cf32ddc685680ab1d303b75519d1e133508e7e647bc2cb')
+sha256sums=('86cec3f12f80d2bfb7d1653b2f7cd1fdfd105397406f58b682fa819654e374ff')
 
 build() {
     cd elephant-${pkgver}/internal/providers/files
