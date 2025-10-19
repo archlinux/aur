@@ -7,7 +7,7 @@ pkgname=(
     'caffe-git'
     'caffe-doc-git')
 pkgver=1.0.r136.g9b8915401
-pkgrel=2
+pkgrel=3
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)'
 arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -41,7 +41,7 @@ source=('git+https://github.com/BVLC/caffe.git'
         '010-caffe-opencv4-fix.patch'::'https://github.com/BVLC/caffe/commit/7f503bd9a19758a173064e299ab9d4cac65ed60f.patch'
         '020-caffe-protobuf3.19.4-fix.patch'::'https://github.com/BVLC/caffe/commit/1b317bab3f6413a1b5d87c9d3a300d785a4173f9.patch')
 sha256sums=('SKIP'
-            'b97ef0eba06ac554fd6c4516707d9b08e26b3ffc24ae1583e33befea91aa199f'
+            '403f65b68e66de35d151a6cc287acb2a5d9c08c1ca7ae45245756f43c553cf0f'
             '2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9'
             '65be5a646ab32e9b277b4352b702a57ac6c79af5258e12e33b9751f07d1031aa')
 
