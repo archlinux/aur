@@ -2,15 +2,13 @@
 # Contributor: Tommaso Sardelli <lacapannadelloziotom at gmail dot com>
 pkgname=bpftrace-git
 _pkgname=bpftrace
-pkgver=v0.24.rc0.r125.gc47f16f5
+pkgver=v0.24.rc0.r180.g57c2b5863
 pkgrel=1
 pkgdesc='High-level tracing language for Linux eBPF'
 arch=('i686' 'x86_64')
 url="https://github.com/bpftrace/bpftrace"
 license=('Apache-2.0')
-# As of 2025-09-03, libbpf-git is required to get a static linked version.
-# The main repo libbpf only provides a dynamic library, which isn't enough.
-depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'bpf' 'libbpf-git' 'libpcap' 'zstd' 'systemd-libs')
+depends=('glibc' 'gcc-libs' 'libelf' 'zlib' 'llvm-libs' 'clang' 'bcc' 'bpf' 'libpcap' 'zstd' 'systemd-libs')
 makedepends=('binutils' 'cmake' 'cargo' 'llvm' 'git' 'linux-headers' 'ninja' 'gtest' 'cereal'
              'asciidoctor' 'xxd')
 conflicts=('bpftrace')
@@ -19,8 +17,10 @@ _blazesymver=v0.2.0
 # Blazesym is not in the main archives, and the AUR package is very outdated.
 # Once either of those have a version we can depend on, we should switch over.
 source=("blazesym-${_blazesymver}.tar.gz::https://github.com/libbpf/blazesym/archive/refs/tags/${_blazesymver}.tar.gz"
+        "git+https://github.com/libbpf/libbpf.git"
         "git+https://github.com/bpftrace/bpftrace.git")
 sha512sums=('bff471268b98cf0d900a2fd1bee1eb86cfe3b54ad6ffd15b359a3e5601078f5b14c5c05a3b7e03b0d00f8a70a5c5cb2065438c5dd7107b4a5e7e4ad4ffec99fd'
+            'SKIP'
             'SKIP')
 options=('!strip' '!debug')
 
@@ -33,9 +33,17 @@ pkgver() {
 }
 
 prepare() {
+  (
     cd blazesym-${_blazesymver/#v/}
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  )
+  (
+    cd bpftrace
+    git submodule init
+    git config submodule.libbpf.url "$srcdir/libbpf"
+    git -c protocol.file.allow=always submodule update
+  )
 }
 
 build() {
@@ -49,9 +57,6 @@ build() {
     cp target/release/libblazesym_c.a ../blazesym-install/lib/
     cp -r capi/include/* ../blazesym-install/include/
   )
-  # Workaround for https://github.com/bpftrace/bpftrace/issues/4666
-  CFLAGS="$CFLAGS -I${srcdir}/blazesym-install/include" \
-  CXXFLAGS="$CXXFLAGS -I${srcdir}/blazesym-install/include" \
   cmake -S bpftrace -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
