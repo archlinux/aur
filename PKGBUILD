@@ -1,6 +1,6 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 license=('GPL-3.0')
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('kimageformats' 'qt6-imageformats')
 provides=("$pkgname=$pkgver")
 conflicts=("$pkgname")
 source=(ImageViewer-$pkgver.tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v$pkgver/ImageViewer-$pkgver.tar.xz)
-sha256sums=('38d99d1ecfed479b1815d30437ece03f03df54a4a59c9285daa5a768484fcc49')
+sha256sums=('69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab')
 
 prepare() {
   cp ImageViewer-$pkgver/src/ImageViewer/resources/icon/drawing.svg ImageViewer.svg
