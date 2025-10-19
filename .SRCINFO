@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-eo
 	pkgdesc = Esperanto language pack for Firefox Nightly
-	pkgver = 146.0a1.20251018.091819
+	pkgver = 146.0a1.20251018.210849
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-eo
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-eo-146.0a1.20251018.091819.xpi
-	source = firefox-nightly-i18n-eo-146.0a1.20251018.091819.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.eo.langpack.xpi
-	sha256sums = 10de0977b8b141881e5407053545650802a7817402840e54a27cae08e76755bf
+	noextract = firefox-nightly-i18n-eo-146.0a1.20251018.210849.xpi
+	source = firefox-nightly-i18n-eo-146.0a1.20251018.210849.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.eo.langpack.xpi
+	sha256sums = e6d3dab78c4a64a5763df86e8fb552dc07325aa2bdb8ea575333349ecf7afa8b
 
 pkgname = firefox-nightly-i18n-eo
