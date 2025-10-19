@@ -1,0 +1,4 @@
+[templedriver-bin]
+source = "snapcraft"
+snap = "templedriver"
+channel = "stable"
