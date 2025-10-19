@@ -1,7 +1,7 @@
 pkgbase = wlcs
 	pkgdesc = Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations.
-	pkgver = 1.7.0
-	pkgrel = 4
+	pkgver = 1.8.1
+	pkgrel = 1
 	url = https://github.com/canonical/wlcs
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = wlcs
 	depends = gcc-libs
 	depends = gtest
 	depends = wayland
-	source = https://github.com/canonical/wlcs/releases/download/v1.7.0/wlcs-1.7.0.tar.xz
-	sha512sums = ac8d33eef2ba7ebaaff46967e23f353c7eb41035568f3c703a05fe8f291602487b4b5a7e71ff72d00c41eaa8283a8fc4e5d3533385a449794986f667ae292240
+	source = https://github.com/canonical/wlcs/releases/download/v1.8.1/wlcs-1.8.1.tar.xz
+	sha512sums = 405ebec014bbe553c266a0b872e70dc8349e3e6ca2b8810e7c3acd605fa83b238a57551ba6af889eb34fded9523de1f0595799a422737ecb2d0132c1436d9a4d
 
 pkgname = wlcs
