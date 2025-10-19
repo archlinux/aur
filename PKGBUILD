@@ -9,7 +9,8 @@ depends=()
 makedepends=('git' 'gcc')
 provides=('thinkpad_utils')
 conflicts=('thinkpad_utils')
-source=("git+https://git.teto.party/pkgs/thinkpad_utils.git")
+source=("git+https://git.teto.party/pkgs/thinkpad_utils.git"
+        config.h)
 md5sums=('SKIP')
 options=('!strip' '!emptydirs')
 

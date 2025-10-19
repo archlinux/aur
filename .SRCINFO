@@ -13,6 +13,7 @@ pkgbase = thinkpad_utils-git
 	options = !strip
 	options = !emptydirs
 	source = git+https://git.teto.party/pkgs/thinkpad_utils.git
+	source = config.h
 	md5sums = SKIP
 
 pkgname = thinkpad_utils-git
