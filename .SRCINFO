@@ -1,0 +1,27 @@
+pkgbase = vbx-git
+	pkgdesc = C-based CLI that plays mechanical keyboard sounds on keystrokes
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/S4NKALP/VBX
+	install = vbx.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = systemd
+	depends = libpulse
+	depends = json-c
+	depends = libsndfile
+	depends = libinput
+	depends = libevdev
+	depends = systemd-libs
+	depends = acl
+	provides = vbx
+	conflicts = vbx
+	source = git+https://github.com/S4NKALP/VBX.git
+	sha256sums = SKIP
+
+pkgname = vbx-git
