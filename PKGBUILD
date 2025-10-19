@@ -8,8 +8,8 @@ pkgname=php-$_extname
 pkgver=3.0.0
 pkgrel=5
 pkgdesc="PHP extension for interfacing with MessagePack"
-arch=("i686" "x86_64")
-license=('3-Clause-BSD')
+arch=('i686' 'x86_64')
+license=('BSD-3-Clause')
 url='https://github.com/msgpack/msgpack-php'
 depends=('php>=7.0')
 source=("https://pecl.php.net/get/$_extname-${pkgver}.tgz")
@@ -34,8 +34,8 @@ check() {
 }
 
 package() {
-	cd $srcdir/$_extname-$pkgver
-	make INSTALL_ROOT=$pkgdir install
-	install -Dm644 $_extname.ini $pkgdir/etc/php/conf.d/$_extname.ini \
-  && install -vDm 644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
+  cd "${srcdir}/${_extname}-${pkgver}"
+  make INSTALL_ROOT="${pkgdir}" install
+  install -Dm644 "${_extname}.ini" "${pkgdir}/etc/php/conf.d/${_extname}.ini" \
+  && install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
