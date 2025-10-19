@@ -12,6 +12,7 @@ url="https://pypi.org/project/http-ece"
 license=('MIT')
 depends=(python python-cryptography)
 makedepends=(
+  'python-build'
   'python-installer'
   'python-setuptools'
   'python-wheel'

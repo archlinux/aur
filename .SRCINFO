@@ -5,6 +5,7 @@ pkgbase = python-http-ece
 	url = https://pypi.org/project/http-ece
 	arch = any
 	license = MIT
+	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
