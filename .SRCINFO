@@ -1,7 +1,7 @@
 pkgbase = ffmpeg7.1
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 7.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org
 	arch = x86_64
 	license = GPL-3.0-only
@@ -101,14 +101,16 @@ pkgbase = ffmpeg7.1
 	provides = libswresample.so
 	provides = libswscale.so
 	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n7.1.2
+	source = fix_build_with_v4l2_1.30.patch
 	source = 0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	source = 0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
-	source = fix_build_with_v4l2_1.30.patch
+	source = 0003-ffmpeg-glslang16-fix.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = 966f06bac6b3c703c58da8eaeeba70a1c93ee3e9773de2d1911ac10518cdea0af171333f0c1fd59f0e6eddc28a11d19d69ae136d386a57cb1ddf61e08fe76a04
+	b2sums = a713b3a4243cc5de3867f7c210172c094f50bd614c0c8be2c99d6161b06d43d9183ae9c442ac3056bfe06c28419e276d129b1235471466eedd340bf0c4780acb
 	b2sums = e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d
 	b2sums = a32aeff68032a78d661011654bbdba138002833f7d17d23bba6f95479ca22bef5697eb9e7e4cb9e0b5140fc23eab3aab16fc60962d62809c3c02f890599a8332
-	b2sums = a713b3a4243cc5de3867f7c210172c094f50bd614c0c8be2c99d6161b06d43d9183ae9c442ac3056bfe06c28419e276d129b1235471466eedd340bf0c4780acb
+	b2sums = 3e247ecf7c692d28fc226315d5807c8605c2b1926289b08182f1703eb888b7ca3f68e9cfe42a5897413eed05200206feed04aa37776efcc04aa39cd920cbff68
 
 pkgname = ffmpeg7.1
 	depends = alsa-lib
