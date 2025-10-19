@@ -39,7 +39,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.1.0"
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.3.1"
 }
 
 build() {
