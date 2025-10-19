@@ -1,6 +1,6 @@
 # Maintainer: Your Name <ezrakhuzadi@gmail.com>
 pkgname=bluetooth-bitrate-manager
-pkgver=0.1.0.r2.g2faa35c
+pkgver=0.1.0.r2.g6b63572
 pkgrel=1
 pkgdesc="GTK4 app and CLI that monitor PipeWire Bluetooth codecs with an optional high-bitpool SBC rebuild"
 arch=('any')
@@ -37,8 +37,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
+    set +o pipefail
     local desc
-    if desc=$(git describe --long --tags --abbrev=7 2>/dev/null); then
+    desc=$(git describe --long --tags --abbrev=7 2>/dev/null) || desc=""
+    if [[ -n "$desc" ]]; then
         printf '%s\n' "$desc" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
         printf '0.1.0.r%s.g%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
