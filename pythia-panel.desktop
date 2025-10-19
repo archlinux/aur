@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pythia Panel
+Comment=Minimal desktop panel for Pythia DE
+Exec=pythia-panel
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=false
+X-GNOME-Autostart-Enabled=true
