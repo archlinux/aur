@@ -1,9 +1,9 @@
 pkgname=tux-colored
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Colorful Tux penguin with configurable colors"
 arch=('x86_64')
-url="https://example.com"  # можно оставить заглушку
+url="https://thendsoft.su/tux"  # можно оставить заглушку
 license=('GPL')
 depends=('gcc-libs')
 source=("tux.cpp")
