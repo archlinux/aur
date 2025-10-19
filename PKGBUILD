@@ -84,9 +84,11 @@ provides=('kwin')
 groups=(plasma)
 source=(git+https://github.com/KDE/kwin.git
         0001-retick.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/7980.patch
+        0002_set_interval_1ms.patch
         sync_official.sh)
 sha256sums=('SKIP'
             'SKIP'
+            '50c1f127360a655fa3794218bbd6b1d6fb90c23da2b950355d103b7040a5aee2'
             '26b1d0926ab098d9da0b60270a368959887a6f2ee90e3f1c2c358e7325e8129c')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>

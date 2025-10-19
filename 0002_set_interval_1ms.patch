@@ -1,0 +1,122 @@
+diff --git a/src/effect/quickeffect.cpp b/src/effect/quickeffect.cpp
+index 4502f4f025..aee158ca86 100644
+--- a/src/effect/quickeffect.cpp
++++ b/src/effect/quickeffect.cpp
+@@ -442,6 +442,9 @@ void QuickSceneEffect::addScreen(Output *screen)
+     }
+     QQmlContext *context = new QQmlContext(parentContext);
+ 
++    auto animationDriver = QuickSceneAnimationDriver::instance();
++    animationDriver->setInterval(1);
++
+     d->contexts[screen].reset(context);
+     d->incubators[screen].reset(incubator);
+     d->delegate->create(*incubator, context);
+@@ -607,6 +610,66 @@ void QuickSceneEffect::touchCancel()
+     }
+ }
+ 
++QuickSceneAnimationDriver::QuickSceneAnimationDriver()
++    : QAnimationDriver(nullptr), interval(1)
++{
++    connect(this, &QAnimationDriver::started, this, &QuickSceneAnimationDriver::startTimer);
++    connect(this, &QAnimationDriver::stopped, this, &QuickSceneAnimationDriver::stopTimer);
++}
++
++QuickSceneAnimationDriver::~QuickSceneAnimationDriver()
++{
++    disconnect(this, &QAnimationDriver::started, this, &QuickSceneAnimationDriver::startTimer);
++    disconnect(this, &QAnimationDriver::stopped, this, &QuickSceneAnimationDriver::stopTimer);
++}
++
++void QuickSceneAnimationDriver::timerEvent(QTimerEvent *e)
++{
++    Q_ASSERT(e->id() == m_timer.id());
++    Q_UNUSED(e); // if the assertions are disabled
++    advance();
++}
++
++void QuickSceneAnimationDriver::startTimer()
++{
++    // always use a precise timer to drive animations
++    m_timer.start(interval, Qt::PreciseTimer, this);
++}
++
++void QuickSceneAnimationDriver::stopTimer()
++{
++    m_timer.stop();
++}
++
++void QuickSceneAnimationDriver::setInterval(int ms)
++{
++    interval = ms;
++    if (m_timer.isActive())
++    {
++        stopTimer();
++        startTimer();
++    }
++}
++
++int QuickSceneAnimationDriver::getInterval()
++{
++    return interval;
++}
++
++QuickSceneAnimationDriver *QuickSceneAnimationDriver::instance()
++{
++    QuickSceneAnimationDriver *inst;
++    static thread_local std::unique_ptr<QuickSceneAnimationDriver> animationDriver;
++    if (!animationDriver) {
++        inst = new QuickSceneAnimationDriver;
++        animationDriver.reset(inst);
++        animationDriver->install();
++    } else {
++        inst = animationDriver.get();
++    }
++    return inst;
++}
++
+ } // namespace KWin
+ 
+ #include "moc_quickeffect.cpp"
+diff --git a/src/effect/quickeffect.h b/src/effect/quickeffect.h
+index ca21c15796..646bce50ec 100644
+--- a/src/effect/quickeffect.h
++++ b/src/effect/quickeffect.h
+@@ -11,6 +11,7 @@
+ #include "effect/offscreenquickview.h"
+ 
+ #include <QQmlComponent>
++#include <QAnimationDriver>
+ 
+ namespace KWin
+ {
+@@ -184,6 +185,28 @@ private:
+     friend class QuickSceneEffectPrivate;
+ };
+ 
++class QuickSceneAnimationDriver : public QAnimationDriver
++{
++    Q_OBJECT
++public:
++    explicit QuickSceneAnimationDriver();
++    void setInterval(int ms);
++    int getInterval();
++    ~QuickSceneAnimationDriver() override;
++    static QuickSceneAnimationDriver *instance();
++
++protected:
++    void timerEvent(QTimerEvent *e) override;
++
++private Q_SLOTS:
++    void startTimer();
++    void stopTimer();
++
++private:
++    QBasicTimer m_timer;
++    int interval;
++};
++
+ } // namespace KWin
+ 
+ QML_DECLARE_TYPEINFO(KWin::QuickSceneView, QML_HAS_ATTACHED_PROPERTIES)
