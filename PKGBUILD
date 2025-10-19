@@ -4,7 +4,7 @@ _gitname="freetz-ng"
 _pkgname='fritzbox-push-firmware'
 pkgname="${_pkgname}-git"
 pkgver=ng25090+134.r26414.20251019.71601e8a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Pushes firmware files to AVM Fritz!Box routers via their bootloader FTP interface. Tool taken from the \"Freetz-NG\" project."
 arch=(
   'i486'
@@ -17,7 +17,7 @@ arch=(
   'riscv'
   'riscv64'
 )
-url="https://github.com/Freetz-NG/freetz-ng/tools"
+url="https://github.com/Freetz-NG/freetz-ng/tree/master/tools"
 license=('GPL-2.0-or-later')
 groups=()
 depends=(
@@ -36,9 +36,13 @@ depends=(
 )
 makedepends=(
   'git'
+
+  ## Either:
   'freetz-ng-devel'
-  #'ccache'  # As of 2024-07-25, this is not part of the dependency list of 'freetz-ng-devel', but needed. See https://aur.archlinux.org/packages/freetz-ng-devel#comment-983800.
-  #'glib2-devel'  # As of 2024-07-25, this is not part of the dependency list of 'freetz-ng-devel', but needed. See https://aur.archlinux.org/packages/freetz-ng-devel#comment-983799.
+
+  ## Or, if not specifying meta package 'freetz-ng-devel':
+  # 'ccache'
+  # 'glib2-devel'
 )
 optdepends=(
   "ncftp: For alternative (more elaborate??) FTP client over inetutils' 'ftp'."

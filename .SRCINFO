@@ -1,8 +1,8 @@
 pkgbase = fritzbox-push-firmware-git
 	pkgdesc = Pushes firmware files to AVM Fritz!Box routers via their bootloader FTP interface. Tool taken from the "Freetz-NG" project.
 	pkgver = ng25090+134.r26414.20251019.71601e8a5
-	pkgrel = 1
-	url = https://github.com/Freetz-NG/freetz-ng/tools
+	pkgrel = 2
+	url = https://github.com/Freetz-NG/freetz-ng/tree/master/tools
 	arch = i486
 	arch = i586
 	arch = i686
