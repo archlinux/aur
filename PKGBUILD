@@ -50,17 +50,20 @@ sha256sums=(
 
 case "${_use_acid_binvariant}" in
   'osx')
-    source+=("acid_${pkgver}.dmg::http://web.archive.org/web/20160528170551if_/http://www.zenoshrdlu.com/acid/acid.dmg")
+    #source+=("acid_${pkgver}.dmg::http://web.archive.org/web/20160528170551if_/http://www.zenoshrdlu.com/acid/acid.dmg")
+    source+=("acid_${pkgver}.dmg::http://www.zenoshrdlu.com/acid/acid.dmg")
     sha256sums+=('2c9b938e3d52d0cc643e2c575d1cfda413a45a11f2341af775060d3a8967e2f0')
     error "value '${_use_acid_binvariant}' of variable '\$_use_acid_binvariant' currently not supported. Aborting."
     false
   ;;
   'win')
-    source+=("acid_${pkgver}.zip::http://web.archive.org/web/20160528170535if_/http://www.zenoshrdlu.com/acid/acid.zip")
+    #source+=("acid_${pkgver}.zip::http://web.archive.org/web/20160528170535if_/http://www.zenoshrdlu.com/acid/acid.zip")
+    source+=("acid_${pkgver}.zip::http://www.zenoshrdlu.com/acid/acid.zip")
     sha256sums+=('3c335e1c6cc42fb511910b1268c43135c00fbbe33214a8a19775963a1e5635da')
   ;;
   'linux')
-    source+=("acid_${pkgver}.tar.gz::http://web.archive.org/web/20160528170601if_/http://www.zenoshrdlu.com/acid/acid.tar.gz")
+    #source+=("acid_${pkgver}.tar.gz::http://web.archive.org/web/20160528170601if_/http://www.zenoshrdlu.com/acid/acid.tar.gz")
+    source+=("acid_${pkgver}.tar.gz::http://www.zenoshrdlu.com/acid/acid.tar.gz")
     sha256sums+=('a370f40471d9c92b4c06d50555099e10c9566ce6250f98bbad6c6c08de31d987')
   ;;
   *)
