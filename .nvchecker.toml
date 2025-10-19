@@ -1,0 +1,4 @@
+[cc-map-editor-bin]
+source = "git"
+git = "https://github.com/CCDirectLink/crosscode-map-editor.git"
+prefix = "v"
