@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
-pkgver=0.25.8
+pkgver=0.25.10
 pkgrel=1
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('mingw-w64-meson'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://github.com/p11-glue/p11-kit?#tag=${pkgver}")
-sha256sums=('919ee995b72f2189fb1d1d2ee9b7331e6e3574eb432f72545591a0be188cb100')
+sha256sums=('0eec5b8794cb15f32696d748c2fcd98a28831d5ab8509399caa2f2b8bf36683f')
 
 pkgver() {
   cd "${srcdir}/p11-kit"
