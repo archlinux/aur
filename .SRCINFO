@@ -1,11 +1,11 @@
 pkgbase = gosec-bin
 	pkgdesc = Inspects source code for security problems by scanning the Go AST
-	pkgver = 2.22.9
+	pkgver = 2.22.10
 	pkgrel = 1
 	url = https://github.com/securego/gosec
 	arch = x86_64
 	license = Apache
-	source = https://github.com/securego/gosec/releases/download/v2.22.9/gosec_2.22.9_linux_amd64.tar.gz
-	b2sums = ac290006590048dfcfb6e692cb1c31f3713113d61deb2af6afc99e7f92ae1c724f3735823ad4ad190f588b0c1b0e5885d7eacad20c81af96f1f784501889ec05
+	source = https://github.com/securego/gosec/releases/download/v2.22.10/gosec_2.22.10_linux_amd64.tar.gz
+	b2sums = f64c2cfdf25e30196186204a578c1a12005dcd4074c424a612e4e9887f00e83d9a007b44f30c8d0ba3e58ff475c984834716b53a6a316452bdd388f520dbfbb0
 
 pkgname = gosec-bin
