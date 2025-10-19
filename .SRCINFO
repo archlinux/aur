@@ -1,0 +1,15 @@
+pkgbase = xsys35c
+	pkgdesc = System 3.x Compiler and Decompiler
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/kichikuou/xsys35c
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = meson
+	makedepends = asciidoctor
+	makedepends = git
+	depends = libpng
+	source = xsys35c::git+https://github.com/kichikuou/xsys35c.git#tag=v1.13.0
+	sha256sums = SKIP
+
+pkgname = xsys35c
