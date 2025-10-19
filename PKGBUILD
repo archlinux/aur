@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='UUID extension for PHP'
 arch=('x86_64')
 url='https://github.com/php/pecl-networking-uuid'
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('php>=7.0')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 sha256sums=('b7af055e2c409622f8c5e6242d1c526c00e011a93c39b10ca28040b908da3f37')
