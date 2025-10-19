@@ -1,7 +1,7 @@
 # Maintainer: Siddhesh Dharme <siddheshdharme18@gmail.com>
 
 pkgname=sync-yt
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='CLI tool to mirror YouTube playlists into local directories'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/sidtronics/sync-yt'
 license=('MIT')
 depends=(
     'python>=3.10'
-    'yt-dlp>=2025.08.27'
+    'yt-dlp'
 )
 makedepends=(
     'python-build'
@@ -17,7 +17,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('ce8d313f0c6bdf48823afb7dcf9ae1c4208c4ec8333594964f6a528dfc725b88af9b146d03a719b5d106bafdc077d9241c41876ce2915bd1123ff73a52132217')
+b2sums=('1067780ab78502464e3f8845d66c4d9211f84be29234227ccfeef0f4911ff1abbd4c2c38697c86c5a3744531e942cc5ee0b3260e2fc74e0ad473030ad030be51')
 
 build() {
     cd $pkgname-$pkgver
