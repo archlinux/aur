@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('dotslash')
 makedepends=('curl' 'jq')
 source=('buck2-launcher.sh')
-sha256sums=('SKIP')
+sha256sums=('153e6ebb32d8e014ce7e0b625663f3f5f36dc29e16fc7d6b253190ae739b9ce1')
 
 pkgver() {
 	_version=$(curl -sSL https://api.github.com/repos/facebook/buck2/releases | jq -r '.[1].tag_name')
