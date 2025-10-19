@@ -93,7 +93,7 @@ prepare() {
   #mkdir -p subprojects
   #ln -sv "${srcdir}/thunk_gen" subprojects/thunk_gen
 
-  sed -e 's|i586-pc|i686-pc|g' -i '32/Makefile'
+  sed -e 's|i586-pc|i686-pc|g' -i '32/makefile'
 
   set +u
 }
