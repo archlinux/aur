@@ -5,15 +5,15 @@ pkgname=ossutil-bin
 _pkgname=ossutil
 pkgver=1.7.19
 pkgrel=1
-pkgdesc="A user-friendly command-line tool to access AliCloud OSS."
+pkgdesc='A user-friendly command-line tool to access AliCloud OSS.'
 arch=('x86_64')
 url="https://github.com/aliyun/ossutil"
 license=('MIT')
-makedepend=('unzip')
+makedepends=('unzip')
 conflicts=('ossutil')
 provides=('ossutil')
 source=(
-  "https://raw.githubusercontent.com/aliyun/${_pkgname}/master/LICENSE"
+  "${pkgname}-LICENSE::https://raw.githubusercontent.com/aliyun/${_pkgname}/master/LICENSE"
   "${pkgname}-${pkgver}.zip::https://gosspublic.alicdn.com/${_pkgname}/${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.zip"
   )
 sha256sums=(
@@ -23,5 +23,5 @@ sha256sums=(
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-linux-amd64/ossutil64" "${pkgdir}/usr/bin/ossutil" \
-  && install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  && install -Dm644 "${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
