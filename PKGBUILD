@@ -22,6 +22,9 @@ depends=(
     'python-gobject'
     'gtk4'
     'libadwaita'
+    'glib2'
+    'shared-mime-info'
+    'adwaita-icon-theme'
     'pipewire'
     'wireplumber'
 )
