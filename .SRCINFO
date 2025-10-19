@@ -1,7 +1,7 @@
 pkgbase = gpufetch-nocuda-git
 	pkgdesc = Simple yet fancy GPU architecture fetching tool. Intel backend only.
-	pkgver = 0.25+9.r122.20231020.57caadf
-	pkgrel = 2
+	pkgver = 0.25+15.r128.20251016.82ea16f
+	pkgrel = 1
 	url = https://github.com/Dr-Noob/gpufetch
 	arch = x86_64
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = gpufetch-nocuda-git
 	depends = gcc-libs
 	depends = glibc
 	depends = pciutils
-	provides = gpufetch=0.25+9.r122.20231020.57caadf
-	provides = gpufetch-nocuda=0.25+9.r122.20231020.57caadf
-	provides = gpufetch-git=0.25+9.r122.20231020.57caadf
+	provides = gpufetch=0.25+15.r128.20251016.82ea16f
+	provides = gpufetch-nocuda=0.25+15.r128.20251016.82ea16f
+	provides = gpufetch-git=0.25+15.r128.20251016.82ea16f
 	conflicts = gpufetch
 	conflicts = gpufetch-nocuda
 	conflicts = gpufetch-git
