@@ -66,12 +66,13 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
-        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGXL_BUNDLE_LIBPNG:BOOL='false' \
         -DJPEGXL_ENABLE_AVX512:BOOL='true' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
         -DJPEGXL_ENABLE_OPENEXR:BOOL='false' \
+        -DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGIN_GIMP210:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
@@ -79,7 +80,6 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
-        -DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF:BOOL='NO' \
         -Wno-dev
     cmake --build build
     make -C build doc
