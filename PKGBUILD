@@ -1,14 +1,46 @@
 # Maintainer: dreieck
 
+_pythonvariant="python2" # Dowload and build a Python2 variant.
+# _pythonvariant="python3" # Download and build a Python3 fork. (2025-11-19: Does not really work.)
+
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r100.20190121.56726a3
 pkgrel=4
 epoch=1
-pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
+pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts. ${_pythonvariant} variant."
 arch=('any')
-# url="http://github.com/simos/keyboardlayouteditor" # Original repo.
-url="http://github.com/hupfdule/keyboardlayouteditor" # Fork with some fixes.
+case "${_pythonvariant}" in
+  'python2')
+    # url="http://github.com/simos/keyboardlayouteditor" # Original repo.
+    url="http://github.com/hupfdule/keyboardlayouteditor" # Fork with some fixes.
+    _pythondepends=(
+      'pygtk'
+      'python2'
+      #'python2-antlr3=3.1.2'
+      'python2-antlr3-3.1.2'
+      'python2-cairo'
+      'python2-gobject2'
+      'python2-lxml'
+    )
+    _pythonmakedepends=(
+      #'antlr3=3.1.2'
+      #'antlr3'
+    )
+  ;;
+  'python3')
+    url="https://github.com/dynga/keyboardlayouteditor" # _Partial_ python3 fork. As of 2025-11-19, I could not get it to work as python3 software.
+    _pythondepends=(
+      "python>=3" "python<4"
+      #"python-cairo"
+      #"python-gobject"
+      #"python-lxml"
+    )
+    _pythonmakedepends=(
+      'antlr3'
+    )
+  ;;
+esac
 license=('GPL3')
 # To run the application, you need the python UI binding packages. For Ubuntu 14.04, the packages below are already pre-installed.
 # * Cairo
@@ -16,18 +48,11 @@ license=('GPL3')
 # * GObject
 # * lxml
 depends=(
-  'pygtk'
-  'python2'
-  #'python2-antlr3=3.1.2'
-  'python2-antlr3-3.1.2'
-  'python2-cairo'
-  'python2-gobject2'
-  'python2-lxml'
+  "${_pythondepends[@]}"
 )
 makedepends=(
-  #'antlr3=3.1.2'
-  'antlr3-3.1.2'
   'git'
+  "${_pythonmakedepends[@]}"
 )
 optdepends=(
   'gucharmap: To open a character map and drag and drop characters.'
@@ -92,7 +117,6 @@ prepare() {
 }
 
 build() {
-
   _patch_for_python2() {
     # Arguments: Tiles to check if the shabeng line needs patching.
     # It patches the shabeng-line from 'python' to 'python2', if not already done.
@@ -114,13 +138,21 @@ build() {
   #   _cmd antlr3 "${_g}"
   # done
 
-  _patch_for_python2 *.py KeyboardLayoutEditor
+  case "${_pythonvariant}" in
+    'python2')
+      _patch_for_python2 *.py KeyboardLayoutEditor
+    ;;
+  esac
 
 
   _cmd cd utils
   _cmd antlr3 *.g
 
-  _patch_for_python2 *.py
+  case "${_pythonvariant}" in
+    'python2')
+      _patch_for_python2 *.py
+    ;;
+  esac
 }
 
 package() {
