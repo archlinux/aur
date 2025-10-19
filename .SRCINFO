@@ -1,15 +1,15 @@
 pkgbase = python-prompt_toolkit-doc-git
 	pkgdesc = Documentation for python package 'prompt_toolkit'.
-	pkgver = 3.0.52_0+gd8adbe9b
+	pkgver = 3.0.52_2+gfce0627b
 	pkgrel = 1
 	url = http://github.com/jonathanslenders/python-prompt-toolkit
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-sphinx
-	provides = python-prompt_toolkit-doc=3.0.52_0+gd8adbe9b
+	provides = python-prompt_toolkit-doc=3.0.52_2+gfce0627b
 	conflicts = python-prompt_toolkit-doc
-	replaces = python-prompt_toolkit-doc<=3.0.52_0+gd8adbe9b
+	replaces = python-prompt_toolkit-doc<=3.0.52_2+gfce0627b
 	options = emptydirs
 	source = python-prompt-toolkit::git+http://github.com/jonathanslenders/python-prompt-toolkit.git
 	sha256sums = SKIP
