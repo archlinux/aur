@@ -3,8 +3,8 @@
 # Contributor: Pedro <https://aur.archlinux.org/account/PedroHLC>
 
 pkgname=wlcs-git
-pkgver=1.7.0.r79.ge7c53c8
-pkgrel=2
+pkgver=1.8.1.r28.g0ef8536
+pkgrel=1
 pkgdesc="Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations."
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/canonical/wlcs"
@@ -22,8 +22,8 @@ pkgver() {
 }
 
 build() {
-  export CFLAGS+=" -Wno-error=unused-result -Wno-error=maybe-uninitialized"
-  export CXXFLAGS+=" -Wno-error=unused-result -Wno-error=maybe-uninitialized"
+  #export CFLAGS+=" -Wno-error=unused-result -Wno-error=maybe-uninitialized"
+  #export CXXFLAGS+=" -Wno-error=unused-result -Wno-error=maybe-uninitialized"
 
 	local _flags=(
     -DCMAKE_INSTALL_LIBDIR=lib/
