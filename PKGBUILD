@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/kubetail-org/kubetail"
 license=('apache')
 makedepends=('go')
-depends=('kubectl')
+depends=()
 provides=('kubetail')
 conflicts=('kubetail')
 
