@@ -16,7 +16,7 @@ pkgbase = bdelta-git
 	provides = bdelta=0.3.1.post2+g4782c58_20160919.fefefilesize
 	conflicts = bdelta
 	source = bdelta::git+https://github.com/jjwhitney/BDelta.git
-	source = fefefilesize.patch::https://ptrace.fefe.de/bdelta.diff
+	source = fefefilesize.patch
 	sha256sums = SKIP
 	sha256sums = 4e44a523b1c960c0ae428b822d700ca9610fe75a45c26e06679204a9cf19ea9c
 

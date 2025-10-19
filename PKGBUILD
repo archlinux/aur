@@ -44,7 +44,8 @@ _giturl="https://github.com/jjwhitney/BDelta.git"
 
 source=(
   "${_pkgname}::git+${_giturl}"
-  "fefefilesize.patch::https://ptrace.fefe.de/bdelta.diff"
+  # "fefefilesize.patch::https://ptrace.fefe.de/bdelta.diff" # (2025-10-19:) SSL certificate expired.
+  "fefefilesize.patch" # (2025-10-19:) For now, included in this package recipe repository, since the SSL certificate of https://ptrace.fefe.de/ has expored.
 )
 
 sha256sums=(
