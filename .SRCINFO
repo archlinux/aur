@@ -1,0 +1,17 @@
+pkgbase = aurix
+	pkgdesc = A simple and modern AUR helper written in Python
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/shinichiroisumi/aurix
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = git
+	depends = base-devel
+	source = aurix.py::https://github.com/shinichiroisumi/aurix/blob/main/aurix.py
+	source = LICENSE::https://github.com/shinichiroisumi/aurix/blob/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aurix
