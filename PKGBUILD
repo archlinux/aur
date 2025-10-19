@@ -2,7 +2,7 @@
 # Contributor: fabillo <fabillo@archlinux.org>
 
 pkgname=intiface-central
-pkgver=2.6.5
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="Intiface Central (Buttplug Frontend) Application for Desktop and Mobile "
 arch=('x86_64')
@@ -10,8 +10,11 @@ url="https://intiface.com/central/"
 license=('GPL-3.0-only')
 depends=('gtk3' 'openssl' 'bash' 'hicolor-icon-theme')
 makedepends=('rust' 'fvm' 'cmake' 'ninja' 'unzip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/intiface/intiface-central/archive/refs/tags/v$pkgver.tar.gz" "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/$pkgname/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md" 'intiface_central.desktop' 'run_intiface_central')
-sha512sums=('af1bd239fbcefe6387e6423c24f1e9443d7f1fa1c21953d5db544431cda7871d4eb99c6c0e9458f8ff9a3d134b826e9a979c6c92f16b251cb2112de199b8c6c4'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/intiface/intiface-central/archive/refs/tags/v$pkgver.tar.gz"
+    "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/$pkgname/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md"
+    'intiface_central.desktop'
+    'run_intiface_central')
+sha512sums=('655eb875cc89dc536b780c43bdd8abef601054bd3dfe3c37230a93bd611b04d2433f7eec3534fb05ef22f441944557af2e52a1288d57b73228fdc8925b94ed64'
   'f8ea2b3c07735021cd574e868f8433ed378049dbe42346d04c7488a62c28b267fdac04ce8a93ad9b01d1dc5fb7c32e6bbc5a35d1c03a84f440938d84b998853d'
   '3163ea9db8867daf0fe35580ebbbce966b4a783462a149d5a3a6aea04145262fbbd3aaf3ce82c5addf0ff9ca7a7424daab7e564f72106083b1ba3605d02996de'
   'c12f219a3de9b1587473c56bf999a0320980c9e4c9dcffa0b656fd82e1bd33e110054b52f6f6cade9815e222041f021c82ab8f0729bf21f75545b5d3fa096e32'
@@ -20,6 +23,7 @@ sha512sums=('af1bd239fbcefe6387e6423c24f1e9443d7f1fa1c21953d5db544431cda7871d4eb
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     fvm use 3.27.1 --force
+    fvm flutter config --enable-linux-desktop
 }
 
 build() {
