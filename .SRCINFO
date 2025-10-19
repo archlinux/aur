@@ -1,6 +1,6 @@
 pkgbase = rapidraw-git
 	pkgdesc = GPU-accelerated RAW image editor
-	pkgver = 1.4.1.r33.g4e5ec0a
+	pkgver = 1.4.3.r0.g8720242
 	pkgrel = 1
 	url = https://github.com/CyberTimon/RapidRAW
 	arch = x86_64
