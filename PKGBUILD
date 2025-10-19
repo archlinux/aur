@@ -4,7 +4,7 @@
 _pkgname=repomix
 pkgname="$_pkgname"
 pkgdesc="Repomix (formerly Repopack) is a powerful tool that packs your entire repository into a single, AI-friendly file."
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 license=("MIT")
 arch=(any)
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname-git")
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=(bbc1a5a3e04520e903ac166868a27c7a96121d7bbdcad43fde27f9053cc5dde4)
+sha256sums=(82b8cc0e1ba5d249544de5e1b12be43dcf782128f1d1c6ff9bc10560595f01c2)
 
 package() {
     npm install -g --omit=dev --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
