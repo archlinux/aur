@@ -300,7 +300,10 @@ _prepare() {
   # gfx950 lacks support for 128 bit atomics
   export PYTORCH_ROCM_ARCH="$(rocm-supported-gfx -e gfx950)"
   # Composable kernels is not supported for all architectures.
+  # https://github.com/pytorch/pytorch/issues/150187
   export USE_ROCM_CK_GEMM=OFF
+  export USE_ROCM_CK_SDPA=OFF
+  export USE_FBGEMM_GENAI=OFF
 
   # Compile source code for supported GPU archs in parallel (but using too many jobs is not helpful)
   export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=4 --gcc-install-dir=$(dirname $($CC -print-libgcc-file-name))"
@@ -310,6 +313,10 @@ _prepare() {
 
   # Fix build issues for onnx with cmake 4.0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+  # Fix ROCm build with glog (these macros are defined in /usr/lib/cmake/glog/glog-targets.cmake but for some reason
+  # this target is not applied when building some *.hip files)
+  HIPCC_COMPILE_FLAGS_APPEND+=" -DGLOG_USE_GLOG_EXPORT -DGLOG_USE_GFLAGS"
 }
 
 build() {
