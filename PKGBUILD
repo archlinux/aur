@@ -4,7 +4,7 @@
 _pkgname=igt-gpu-tools
 pkgname="$_pkgname-git"
 pkgver=2.2+104.r15533.20251003.b3d809d53
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 arch=(
@@ -54,6 +54,10 @@ depends=(
   systemd-libs
   # valgrind
   zlib
+)
+checkdepends=(
+  'rst2pdf'
+  'python-roman'  # Otherwise, in `check()`, when importing 'rst2pdf.pdfbuilder', error 'rst2pdf.pdfbuilder (exception: No module named roman)' is thrown.
 )
 optdepends=(
   "python>=3:              To use /usr/bin/code_cov_gather_on_test and /usr/bin/intel-gfx-fw-info"
