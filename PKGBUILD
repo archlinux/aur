@@ -1,4 +1,4 @@
-# Maintainer: Integral <integral@member.fsf.org>
+# Maintainer: George Hu <integral@archlinux.org>
 
 pkgname=linux-apfs-rw-dkms
 _pkgname=${pkgname%-dkms}
