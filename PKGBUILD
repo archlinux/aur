@@ -1,15 +1,16 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Torsten Keßler <tpkessler@archlinux.org>
+# Mainteiner: piernov <piernov@piernov.org>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Torsten Keßler <tpkessler@archlinux.org>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 _pkgname=pytorch
-pkgbase="python-${_pkgname}"
-pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
+pkgbase="python-${_pkgname}-cuda12.9"
+pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.8.0
-pkgrel=8
-_pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
+pkgrel=1
+_pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -39,27 +40,21 @@ depends=(
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
 makedepends=(
   cmake
-  cuda
-  cudnn
+  cuda-12.9
+  cudnn9.10-cuda12.9
   doxygen
+  gcc14
   git
-  hipblaslt
   magma-cuda
-  magma-hip
-  miopen-hip
-  nccl
+  nccl-cuda12.9
   ninja
   onednn
   pkgconfig
-  python-aotriton
   python-build
   python-installer
   python-setuptools
   python-triton
   python-yaml
-  rocm-hip-sdk
-  rocm-toolchain
-  roctracer
   shaderc
   vulkan-headers
 )
@@ -288,11 +283,8 @@ prepare() {
 
   cd "${srcdir}"
 
-  cp -r "${_pkgname}" "${_pkgname}-opt"
   cp -r "${_pkgname}" "${_pkgname}-cuda"
-  cp -r "${_pkgname}" "${_pkgname}-opt-cuda"
-  cp -r "${_pkgname}" "${_pkgname}-rocm"
-  cp -r "${_pkgname}" "${_pkgname}-opt-rocm"
+  mv "${_pkgname}" "${_pkgname}-opt-cuda"
 }
 
 # Common build configuration, called in all package() functions.
@@ -320,8 +312,8 @@ _prepare() {
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC="${NVCC_CCBIN/++/cc}"
-  export CXX="$NVCC_CCBIN"
+  export CC=/usr/bin/gcc-14
+  export CXX=/usr/bin/g++-14
   export CXXFLAGS+=" -Wno-error=maybe-uninitialized"
   export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
@@ -334,7 +326,7 @@ _prepare() {
   # the list of supported archs is in torch/utils/cpp_extension.py
   # https://github.com/pytorch/pytorch/blob/f9074c7332c3dfd43fe39e8733ec98f7f29b3e61/torch/utils/cpp_extension.py#L2417-L2420
   # (note that 8.8 is not supported)
-  export TORCH_CUDA_ARCH_LIST="7.5 8.0 8.6 8.7 8.9 9.0 10.0 10.3 11.0 12.0 12.1"
+  export TORCH_CUDA_ARCH_LIST="5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a 10.0 10.3 12.0 12.1"
 
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
@@ -344,34 +336,19 @@ _prepare() {
   export USE_ROCM_CK=OFF
 
   # Compile source code for supported GPU archs in parallel (but using too many jobs is not helpful)
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=4 --gcc-install-dir=$(dirname $($CC -print-libgcc-file-name))"
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=4 --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name))"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=4"
 
   export AOTRITON_INSTALLED_PREFIX=/usr
 
   # Fix build issues for onnx with cmake 4.0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+  # Limit number of threads to avoid running out of memory
+  export MAX_JOBS=20
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  echo "Building without cuda or rocm and without non-x86-64 optimizations"
-  _prepare
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  export USE_ROCM=0
-  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  python -m build --wheel --no-isolation
-
-  cd "${srcdir}/${_pkgname}-opt"
-  echo "Building without cuda or rocm and with non-x86-64 optimizations"
-  _prepare
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  export USE_ROCM=0
-  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  python -m build --wheel --no-isolation
-
   cd "${srcdir}/${_pkgname}-cuda"
   echo "Building with cuda and without non-x86-64 optimizations"
   _prepare
@@ -390,36 +367,7 @@ build() {
   export USE_ROCM=0
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
-  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  python -m build --wheel --no-isolation
-
-  cd "${srcdir}/${_pkgname}-rocm"
-  echo "Building with rocm and without non-x86-64 optimizations"
-  # -fcf-protection is not supported by HIP, see
-  # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
-  CXXFLAGS+=" -fcf-protection=none"
-  _prepare
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  export USE_ROCM=1
-  export MAGMA_HOME=/opt/rocm
-  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  # Conversion of CUDA to ROCm source files
-  python tools/amd_build/build_amd.py
-  patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
-  python -m build --wheel --no-isolation
-
-  cd "${srcdir}/${_pkgname}-opt-rocm"
-  echo "Building with rocm and with non-x86-64 optimizations"
-  _prepare
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  export USE_ROCM=1
-  export MAGMA_HOME=/opt/rocm
-  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  # Conversion of CUDA to ROCm source files
-  python tools/amd_build/build_amd.py
-  patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
+  echo "add_definitions(-march=x86-64-v3)" >>cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
 }
 
@@ -450,25 +398,9 @@ _package() {
   done
 }
 
-package_python-pytorch() {
-  pkgdesc="${_pkgdesc}"
-
-  cd "${srcdir}/${_pkgname}"
-  _package
-}
-
-package_python-pytorch-opt() {
-  pkgdesc="${_pkgdesc} (with AVX2 CPU optimizations)"
-  conflicts=(python-pytorch)
-  provides=(python-pytorch=${pkgver})
-
-  cd "${srcdir}/${_pkgname}-opt"
-  _package
-}
-
-package_python-pytorch-cuda() {
-  pkgdesc="${_pkgdesc} (with CUDA)"
-  depends+=(cuda nccl cudnn magma-cuda onednn)
+package_python-pytorch-cuda12.9() {
+  pkgdesc="${_pkgdesc} (with CUDA 12.9)"
+  depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -476,33 +408,13 @@ package_python-pytorch-cuda() {
   _package
 }
 
-package_python-pytorch-opt-cuda() {
-  pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
-  depends+=(cuda nccl cudnn magma-cuda onednn)
+package_python-pytorch-opt-cuda12.9() {
+  pkgdesc="${_pkgdesc} (with CUDA 12.9 and AVX2 CPU optimizations)"
+  depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
 
   cd "${srcdir}/${_pkgname}-opt-cuda"
-  _package
-}
-
-package_python-pytorch-rocm() {
-  pkgdesc="${_pkgdesc} (with ROCm)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn python-triton python-aotriton)
-  conflicts=(python-pytorch)
-  provides=(python-pytorch=${pkgver})
-
-  cd "${srcdir}/${_pkgname}-rocm"
-  _package
-}
-
-package_python-pytorch-opt-rocm() {
-  pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn python-triton python-aotriton)
-  conflicts=(python-pytorch)
-  provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
-
-  cd "${srcdir}/${_pkgname}-opt-rocm"
   _package
 }
 
