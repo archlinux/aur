@@ -1,0 +1,5 @@
+["cookcli-bin"]
+source = "github"
+github = "cooklang/cookcli"
+use_latest_release = true
+prefix = "v"
