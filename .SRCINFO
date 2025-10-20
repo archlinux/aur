@@ -5,6 +5,7 @@ pkgbase = jan-appimage
 	url = https://jan.ai/
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = jq
 	makedepends = minisign
 	depends = fontconfig
 	depends = fribidi
