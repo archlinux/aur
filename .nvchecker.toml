@@ -1,0 +1,5 @@
+[jan-appimage]
+source = "github"
+github = "menloresearch/jan"
+use_latest_release = "true"
+prefix = "v"
