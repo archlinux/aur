@@ -17,5 +17,5 @@ package() {
   install -Dm755 ${pkgname%-bin} "$pkgdir"/usr/bin/${pkgname%-bin}
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
-sha256sums_x86_64=('9e8bc0f0a67475c6581c93dccf81e03ef4399bd907b7f496e45d9f91f955842c')
-sha256sums_aarch64=('be8ada5e7bb4f368285df12752991e2573ba25fba64f9b1958ce8c7d647eb4b7')
+sha256sums_x86_64=('bd77dc37e3029dd80a023033dfbd08813b7d9035feb29cf69a525ac05a6b3c77')
+sha256sums_aarch64=('dae5cddfeccd209a63fb388b16add35d6f80c74c75e8a9160770b742df2369c3')
