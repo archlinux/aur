@@ -8,6 +8,6 @@ pkgbase = cshell
 	makedepends = gcc
 	makedepends = make
 	source = cshell-0.0.3.tar.gz::https://github.com/eshnd/cshell/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = e26d9b34fb40df63ca70c79225111534c721350b13829ccc007a4fd0358f9e8b
+	sha256sums = cff8ead808e9328b12ae53d8152febc505ce7acafd5299b7d01684e8f81b85f2
 
 pkgname = cshell
