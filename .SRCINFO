@@ -1,0 +1,20 @@
+pkgbase = obs-plugin-aitum-multistream-git-hexsec
+	pkgdesc = OBS Studio plugin for Aitum Multistream — stream to multiple platforms simultaneously (HexSec version)
+	pkgver = 1.0.0.r0.gabcdef
+	pkgrel = 4
+	url = https://github.com/Aitum/obs-aitum-multistream
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	makedepends = qt6-base
+	makedepends = qt6-tools
+	depends = obs-studio>=30.0.0
+	depends = qt6-base
+	depends = curl
+	provides = obs-plugin-aitum-multistream
+	source = git+https://github.com/Aitum/obs-aitum-multistream.git#branch=main
+	sha256sums = SKIP
+
+pkgname = obs-plugin-aitum-multistream-git-hexsec
