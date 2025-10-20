@@ -1,8 +1,8 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=ruby-memo_wise
 _gemname="${pkgname#ruby-}"
-pkgver=1.7.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='The wise choice for Ruby memoization'
 arch=('any')
@@ -13,8 +13,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('2e41323e89e220e48693dd0ef8d40d7e0de4863935bc1b705941db35420305191251b7d72b6542c59bcf73e4b5646136fdcdefded500d50178bc52759d761ad7')
-b2sums=('b3fd72a97d8eff2d73c3eb5fb623c0b5c027185028f8e5acb641b544fb632b7be452906f8284e8eb7d0f353de249ea1f808a503a9d0a2d0b0d1640a003134ccc')
+sha512sums=('97926dffad2d135b5d980e87cdf5e7f4a95f98459538522e6cbe78625727d350bcb39ff28a9cdc7df4de0f1ff55dce1ea85d4c364549910e1eb93cc3499b6188')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
