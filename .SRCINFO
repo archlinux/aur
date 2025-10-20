@@ -1,5 +1,5 @@
 pkgbase = hypryou-greeter
-	pkgdesc = Greetd config for hypryou greeter
+	pkgdesc = Greetd config for hypryou greeter.
 	pkgver = 1.0.0
 	pkgrel = 4
 	url = https://github.com/koeqaife/hyprland-material-you
