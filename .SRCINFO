@@ -1,0 +1,20 @@
+pkgbase = trilium-next-git
+	pkgdesc = A hierarchical note taking application
+	pkgver = 0.99.1.r627.g994a9de
+	pkgrel = 1
+	url = https://github.com/TriliumNext/Trilium
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = jq
+	makedepends = nvm
+	makedepends = pnpm
+	makedepends = python
+	depends = electron
+	provides = trilium
+	conflicts = trilium
+	source = trilium::git+https://github.com/TriliumNext/Trilium.git
+	sha256sums = SKIP
+
+pkgname = trilium-next-git
+	depends = electron
