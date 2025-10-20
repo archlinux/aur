@@ -1,17 +1,17 @@
 pkgbase = repath-studio-bin
 	pkgdesc = Scalable Vector Graphics Manipulation.Prebuilt version.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.9
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://github.com/re-path/studio
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = fuse2
-	depends = electron37
-	provides = repath-studio=0.4.9
+	depends = electron38
+	provides = repath-studio=0.4.10
 	conflicts = repath-studio
-	source = repath-studio-0.4.9-x86_64.AppImage::https://github.com/re-path/studio/releases/download/v0.4.9/repath-studio-linux.AppImage
+	source = repath-studio-0.4.10-x86_64.AppImage::https://github.com/re-path/studio/releases/download/v0.4.10/repath-studio-linux.AppImage
 	source = repath-studio.sh
-	sha256sums = f27d0046a622d98d103ffeb1da9ddd4035c7289938d91a6927db527b9dd14095
+	sha256sums = ae51f6a12a071cdc6f58965797689163d3059e1d792ed78020d315c97c80d6ba
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = repath-studio-bin
