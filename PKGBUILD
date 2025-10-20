@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notion-electron-bin
 _pkgname='Notion Electron'
-pkgver=1.7.11
+pkgver=1.7.12
 _electronversion=38
 pkgrel=1
 pkgdesc="An unofficial desktop application for Notion, built using Electron.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/anechunaev/notion-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('72463e1cee8e203b9575e19ae0001a53cc814d2a8c5597de288d3b61ca5904b9'
+sha256sums=('ba1e5e980d89f40af4d00014d2fb7560ee73761d086b502b74d0a0387994e351'
             'f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
