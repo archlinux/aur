@@ -1,8 +1,8 @@
 # Maintainer: nachtjasmin <nachtjasmin at posteo dot de>
 pkgname=kluctl
 pkgdesc='The missing glue to put together large Kubernetes deployments.'
-pkgver=2.22.0 # renovate: datasource=github-tags depName=kluctl/kluctl
-pkgrel=2
+pkgver=2.27.0 # renovate: datasource=github-tags depName=kluctl/kluctl
+pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/kluctl/kluctl/'
 license=('Apache')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 
 source=("https://github.com/kluctl/kluctl/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6fed4634a22c5d92da49a518696c9792fadd7e3d63bbb2f0354dddc9d3b95c58')
+sha256sums=('699fc10338436f335f853d58467cc5833aabb967042bec5538ae7af0e48bd2e2')
 
 build() {
   local _commit _flags
@@ -21,7 +21,6 @@ build() {
     -X=main.date="$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')"
     -linkmode=external
   )
-  # export CGO_ENABLED=0
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
