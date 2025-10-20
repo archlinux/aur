@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-cmap
 _pkgname=${pkgname#python-}
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Scientific colormaps for python, with only numpy dependency'
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD 3-Clause')
 depends=('python-numpy')
 makedepends=('python-build' 'python-hatch-vcs' 'python-installer')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b7d0d93c8c65c49ed5001cecdcc19c83b9cebd348af2b6644d7d6df6e5d6895b')
+sha256sums=('3091eb9782782eeddf99abb54ae49fbfa8bbd22ba68b840c35558be84c14f15c')
 
 build() {
     cd "${_pkgname}-${pkgver}"
