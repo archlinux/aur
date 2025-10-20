@@ -1,6 +1,4 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Alexander Ellul (aellul27) <igsalexcodes@gmail.com>
 
 pkgname=libfprint
 pkgver=1.94.9
