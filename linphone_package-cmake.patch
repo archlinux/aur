@@ -1,0 +1,11 @@
+diff --git a/linphone-app/cmake_builder/linphone_package/CMakeLists.txt b/linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+--- a/linphone-app/cmake_builder/linphone_package/CMakeLists.txt
++++ b/linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ #
+ ################################################################################
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.22)
+ project(LINPHONE_PACKAGE) # Dummy project.
+ 
