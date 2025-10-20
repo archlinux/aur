@@ -2,7 +2,7 @@
 
 pkgname=curl-impersonate-chrome
 pkgver=1.2.2
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
 url="https://github.com/lexiforest/curl-impersonate"
@@ -17,7 +17,7 @@ source=(
   "curl-impersonate-${pkgver}.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-md5sums=('30653529e4fa45ea97c845fd2518151d')
+sha256sums=('35a434900d36622cfa3350cb72f1cbd3a6385081437359181590b7b656ad00e6')
 
 prepare () {
   export CXXFLAGS+=" -Wno-error=stringop-overflow"
