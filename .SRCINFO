@@ -1,7 +1,7 @@
 pkgbase = sourcetrail
 	pkgdesc = Interactive source explorer for C/C++ and Java
 	pkgver = 2025.10.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/petermost/Sourcetrail
 	arch = x86_64
 	license = GPL-3.0-only

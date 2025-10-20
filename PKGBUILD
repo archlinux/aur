@@ -12,7 +12,7 @@
 _pkgname="sourcetrail"
 pkgname="$_pkgname"
 pkgver=2025.10.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive source explorer for C/C++ and Java'
 url="https://github.com/petermost/Sourcetrail"
 license=('GPL-3.0-only')
@@ -54,18 +54,27 @@ source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
-  magick "$_pkgsrc/src/resources/icon/logo_1024_1024.png" -resize 256x256 "$_pkgname.png"
+  cd "$_pkgsrc"
+
+  # resize icon
+  magick "src/resources/icon/logo_1024_1024.png" -resize 256x256 "../$_pkgname.png"
 
   # prevent failure from checkVersionRange
-  sed 's/FATAL_ERROR/WARNING/' -i "$_pkgsrc"/cmake/Sourcetrail.cmake
+  sed -e 's/FATAL_ERROR/WARNING/' -i cmake/Sourcetrail.cmake
+
+  # allow any boost version
+  sed -E -e '/set\(BOOST_MAX_VERSION/s&^.*$&set(BOOST_MAX_VERSION 99.99)&' -i CMakeLists.txt
+
+  # fix for boost 1.89
+  sed -E -e '/[Bb]oost::system/d' \
+    -e '/program_options/s&system&&' \
+    -i CMakeLists.txt src/lib_gui/platform/setupApp.cpp
 }
 
 build() (
   export CC=clang
   export CXX=clang++
-
-  local _ldflags=($LDFLAGS)
-  export LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+  export LDFLAGS="$(sed -E -e 's/\S*fuse-ld\S*//g' <<< "$LDFLAGS") -fuse-ld=lld"
 
   export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
   export LD_LIBRARY_PATH="/usr/lib/llvm${_ver_clang:-}/lib"
