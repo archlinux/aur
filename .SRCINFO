@@ -1,7 +1,7 @@
 pkgbase = vivarium-git
 	pkgdesc = A dynamic tiling Wayland compositor inspired by xmonad
 	pkgver = 0.0.4.r30.g1ffa436
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inclement/vivarium
 	install = vivarium-git.install
 	arch = x86_64

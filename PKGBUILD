@@ -3,7 +3,7 @@
 pkgname=vivarium-git
 _pkg="${pkgname%-git}"
 pkgver=0.0.4.r30.g1ffa436
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor inspired by xmonad"
 arch=('x86_64')
 url="https://github.com/inclement/vivarium"
@@ -26,6 +26,7 @@ pkgver() {
 build() {
 	meson --prefix=/usr --buildtype=release -Ddevelop=false -Dwerror=false "$_pkg" build
 	meson compile -C build
+	PKG_CONFIG_PATH='/usr/lib/wlroots0.15/pkgconfig'
 }
 
 # check() {
@@ -34,4 +35,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
+	install -Dm644 ${_pkg}.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 }
