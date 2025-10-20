@@ -3,6 +3,7 @@ pkgbase = espionage
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/serene-brew/ESPionage
+	install = package.install
 	arch = any
 	license = BSD-3-CLAUSE
 	makedepends = git

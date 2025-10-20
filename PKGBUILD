@@ -11,6 +11,7 @@ depends=('python')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/serene-brew/ESPionage/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+install=package.install
 
 package() {
   cd "$srcdir/ESPionage-$pkgver" || exit 1
