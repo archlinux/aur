@@ -4,17 +4,17 @@
 _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron38'
-pkgver=2.130.1
+pkgver=2.131.0
 pkgrel=1
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
 url='https://www.ledger.com/ledger-live'
 license=('MIT')
 depends=('ledger-udev' "${_electron}")
-makedepends=('node-gyp' 'python' 'pnpm' 'nvm')
+makedepends=('node-gyp' 'python' 'pnpm' 'nvm' 'desktop-file-utils')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('53279331c6a8f6587dd1f34276ff5dbd65058844d78d014a26f5325d453cd3ddb04237a8b0fb4076d8e412024e134f455900211d05876942908fa4cd68e8c8da'
+sha512sums=('80933f4e51ff233d28c10b406526d2b81849db7c7962042eca0bfd33f1f9662feec4c85850d1c24de4e2c09b4b901c81daabef1e6e0eab202684289196e3917b'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
@@ -23,7 +23,16 @@ _nvm_install() {
   nvm install "$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
 }
 
+_check_electron() {
+  expected_electron="electron$(sed -n 's/.*"electron":[^"]*"\([^.]*\).*/\1/p' ledger-live--ledgerhq-live-desktop-${pkgver}/apps/${_appname}/package.json)"
+  if [[ "${_electron}" != "${expected_electron}" ]]; then
+    echo -e "Using the wrong version of Electron! Expected '\e[32m${expected_electron}\e[0m' but using '\e[31m${_electron}\e[0m'."
+    exit 1
+  fi
+}
+
 prepare() {
+  _check_electron
   sed -i "s~@ELECTRON@~${_electron}~" "${_appname}.sh"
 }
 
@@ -38,8 +47,12 @@ build() {
   pnpm build:lld:deps
   pnpm desktop build
 
-  sed -e "s/AppRun --no-sandbox/${_appname}/g" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
-  sed -e "/X-AppImage-Version/d" -i "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
+  desktop-file-edit \
+    --set-key=Exec \
+    --set-value="${_appname} %U" \
+    --add-category=Network \
+    --remove-key=X-AppImage-Version \
+    "apps/${_appname}/dist/__appImage-x64/${_appname}.desktop"
 }
 
 package() {

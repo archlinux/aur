@@ -1,6 +1,6 @@
 pkgbase = ledger-live
 	pkgdesc = Maintain your Ledger devices
-	pkgver = 2.130.1
+	pkgver = 2.131.0
 	pkgrel = 1
 	url = https://www.ledger.com/ledger-live
 	arch = x86_64
@@ -9,11 +9,12 @@ pkgbase = ledger-live
 	makedepends = python
 	makedepends = pnpm
 	makedepends = nvm
+	makedepends = desktop-file-utils
 	depends = ledger-udev
 	depends = electron38
-	source = ledger-live-desktop-2.130.1.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@2.130.1.tar.gz
+	source = ledger-live-desktop-2.131.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@2.131.0.tar.gz
 	source = ledger-live-desktop.sh
-	sha512sums = 53279331c6a8f6587dd1f34276ff5dbd65058844d78d014a26f5325d453cd3ddb04237a8b0fb4076d8e412024e134f455900211d05876942908fa4cd68e8c8da
+	sha512sums = 80933f4e51ff233d28c10b406526d2b81849db7c7962042eca0bfd33f1f9662feec4c85850d1c24de4e2c09b4b901c81daabef1e6e0eab202684289196e3917b
 	sha512sums = 70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755
 
 pkgname = ledger-live
