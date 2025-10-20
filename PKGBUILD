@@ -1,7 +1,7 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=hyprmarker
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ZoomIt-like screen annotation tool for Wayland compositors with wlr-layer-shell support'
 arch=('x86_64' 'aarch64')
 url='https://github.com/devmobasa/hyprmarker'
@@ -35,13 +35,15 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
+    cargo build --frozen --release --manifest-path configurator/Cargo.toml
 }
 
 package() {
     cd "$pkgname"
 
-    # Install binary
+    # Install binaries
     install -Dm755 "target/release/hyprmarker" "$pkgdir/usr/bin/hyprmarker"
+    install -Dm755 "target/release/hyprmarker-configurator" "$pkgdir/usr/bin/hyprmarker-configurator"
 
     # Install systemd user service
     install -Dm644 packaging/hyprmarker.service "$pkgdir/usr/lib/systemd/user/hyprmarker.service"
