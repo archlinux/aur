@@ -1,6 +1,6 @@
 pkgbase = mbake
 	pkgdesc = A Python-based Makefile formatter and linter
-	pkgver = 1.4.0
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/EbodShojaei/bake
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mbake
 	depends = python-rich
 	depends = python-tomli
 	depends = python-typer
-	provides = python-mbake=1.4.0
-	source = git+https://github.com/EbodShojaei/bake.git#tag=v1.4.0
-	sha256sums = b788e514b2f40a85950738d8a5fa1d87da0028887c284ca0c1a5a4c669351839
+	provides = python-mbake=1.4.3
+	source = git+https://github.com/EbodShojaei/bake.git#tag=v1.4.3
+	sha256sums = cbd0c71c965590534c85f1f52cc5e455f52e27987ae598665e820a1f1d641fae
 
 pkgname = mbake
