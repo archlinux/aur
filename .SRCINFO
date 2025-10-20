@@ -1,7 +1,7 @@
 pkgbase = audiowmark
 	pkgdesc = Audio and video watermarking
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uplex.de/audiowmark/
 	arch = x86_64
 	arch = aarch64
