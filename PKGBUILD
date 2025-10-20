@@ -1,6 +1,6 @@
 # Maintainer: mirrar-app <iknowarch@proton.me>
 pkgname=editt-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Flutter-based image view and editor app for linux"
 arch=('x86_64')
@@ -30,10 +30,11 @@ EOF
 [Desktop Entry]
 Name=Editt
 Comment=Photo editing and viewing app
-Exec=editt
+Exec=editt %F
 Icon=/opt/editt/data/flutter_assets/assets/images/image.png
 Terminal=false
 Type=Application
-Categories=Utility;
+Categories=Graphics;2DGraphics;RasterGraphics;Viewer;
+MimeType=image/jpeg;image/png;image/webp;image/jpg;
 EOF
 }
