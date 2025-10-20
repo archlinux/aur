@@ -1,6 +1,6 @@
 pkgbase = drawingbot-v3
 	pkgdesc = DrawingBotV3 is a software for converting images into vector art
-	pkgver = 1.6.14
+	pkgver = 1.6.25
 	pkgrel = 1
 	url = https://github.com/SonarSonic/DrawingBotV3
 	install = drawingbot-v3.install
@@ -12,7 +12,7 @@ pkgbase = drawingbot-v3
 	provides = drawingbot-v3
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/SonarSonic/DrawingBotV3/releases/download/v1.6.14-stable-free/DrawingBotV3-Free-1.6.14-stable-linux.deb
-	sha256sums_x86_64 = 261141391fdf1000e3552d2d4bcb1ec1a0d773cf1c5f8f76373e581dfb5ab339
+	source_x86_64 = https://github.com/SonarSonic/DrawingBotV3/releases/download/v1.6.25-stable-free/DrawingBotV3-Free-1.6.25-stable-linux-x86-64.deb
+	sha256sums_x86_64 = 30657ed21f5a97139c63d3e59f6ac5793fc5ab8bebbf30fe205f3342c5a4eb6a
 
 pkgname = drawingbot-v3

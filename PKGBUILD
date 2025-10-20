@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Kuri <aur+drawingbot-v3@bkuri.com>
 pkgname=drawingbot-v3
-pkgver=1.6.14
+pkgver=1.6.25
 pkgrel=1
 pkgdesc="DrawingBotV3 is a software for converting images into vector art"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('gephi' 'xdg-utils' 'zlib')
 makedepends=()
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/SonarSonic/DrawingBotV3/releases/download/v${pkgver}-stable-free/DrawingBotV3-Free-${pkgver}-stable-linux.deb")
-sha256sums_x86_64=('261141391fdf1000e3552d2d4bcb1ec1a0d773cf1c5f8f76373e581dfb5ab339')
+source_x86_64=("https://github.com/SonarSonic/DrawingBotV3/releases/download/v${pkgver}-stable-free/DrawingBotV3-Free-${pkgver}-stable-linux-x86-64.deb")
+sha256sums_x86_64=('30657ed21f5a97139c63d3e59f6ac5793fc5ab8bebbf30fe205f3342c5a4eb6a')
 
 package(){
 	tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
