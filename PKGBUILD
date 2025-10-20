@@ -2,7 +2,7 @@
 
 _pkgname='cobib-zotero'
 pkgname="${_pkgname}-git"
-pkgver=r21.44ae00d
+pkgver=r23.5e951c2
 pkgrel=1
 arch=('any')
 depends=(
@@ -23,8 +23,11 @@ provides=('cobib-zotero')
 conflicts=('cobib-zotero')
 pkgdesc="Zotero importer plugin for coBib"
 url="https://gitlab.com/cobib/${_pkgname}"
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+    "${_pkgname}::git+${url}.git"
+    "git+https://gitlab.com/cobib/cobib-docs-theme.git"
+)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -36,9 +39,15 @@ build() {
   python3 -m build --wheel --no-isolation
 }
 
+prepare() {
+  cd $srcdir/${_pkgname}
+  git submodule init
+  git config submodule.theme.url "$srcdir/cobib-docs-theme"
+  git -c protocol.file.allow=always submodule update
+}
+
 package() {
   cd $srcdir/${_pkgname}
-  git submodule update --init
   make DESTDIR="${pkgdir}" install_extras
   python3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
