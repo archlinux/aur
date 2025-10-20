@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-wnnm-git
 	pkgdesc = Plugin for Vapoursynth: wnnm (GIT Version)
-	pkgver = 13.141baae
+	pkgver = 57.6d476bd
 	pkgrel = 1
 	url = https://github.com/WolframRhodium/VapourSynth-WNNM
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = vapoursynth-plugin-wnnm-git
 	makedepends = gcc
 	makedepends = ninja
 	makedepends = cmake
-	makedepends = python-pip
 	depends = vapoursynth
+	depends = python-mkl
 	provides = vapoursynth-plugin-wnnm
 	conflicts = vapoursynth-plugin-wnnm
 	options = debug

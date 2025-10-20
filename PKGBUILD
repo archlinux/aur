@@ -2,7 +2,7 @@
 
 _plug=wnnm
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=13.141baae
+pkgver=57.6d476bd
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url='https://github.com/WolframRhodium/VapourSynth-WNNM'
 license=('GPL2')
 depends=(
     'vapoursynth'
+    'python-mkl'
 )
 makedepends=(
     'git'
     'gcc'
     'ninja'
     'cmake'
-    'python-pip'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -47,9 +47,6 @@ prepare() {
         AVX2_FLAG="-mavx2"
     fi
 
-    # There is an intel-oneapi-mkl package in AUR, but it doesn't work.
-    pip install mkl-static
-
     rm -rf version2-2.01.04 vectorclass
     unzip ../vectorclass.zip
     mv version2-2.01.04 vectorclass
@@ -57,6 +54,7 @@ prepare() {
     CXX=g++ cmake -S . -B build -G Ninja -LA \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_CXX_FLAGS="-Wall $AVX2_FLAG -mfma -ffast-math" \
+        -D MKL_DIR=/opt/intel/oneapi/mkl/latest/lib/cmake/mkl/ \
         -D MKL_LINK=static \
         -D MKL_THREADING=sequential \
         -D MKL_INTERFACE=lp64 \
