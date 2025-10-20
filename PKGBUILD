@@ -1,6 +1,5 @@
 # Maintainer: Debjeet Banerjee <serene.brew.git@gmail.com>
 # Co Maintainer: Imon Chakraborty <serene.brew.git@gmail.com>
-
 pkgname=espionage-git
 pkgver=1.0.0
 pkgrel=1
@@ -9,14 +8,11 @@ arch=('any')
 url="https://github.com/serene-brew/ESPionage"
 license=('BSD-3-CLAUSE')
 depends=('python')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+makedepends=('git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/serene-brew/ESPionage/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-build() {
-  cd "${srcdir}/ESPionage-${pkgver}"
-}
-
 package() {
-  cd "${srcdir}/ESPionage-${pkgver}"
-  install -Dm755 install.sh "${pkgdir}/usr/bin/espionage-install"
+  cd "$srcdir/ESPionage-$pkgver" || exit 1
+  ./install.sh --prefix=/usr --destdir="$pkgdir"
 }
