@@ -1,7 +1,7 @@
 pkgbase = curl-impersonate
 	pkgdesc = A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl.
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = curl-impersonate
 	replaces = curl-impersonate-chrome
 	replaces = curl-impersonate-firefox
 	source = curl-impersonate-1.2.2.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v1.2.2.tar.gz
-	md5sums = 30653529e4fa45ea97c845fd2518151d
+	sha256sums = 35a434900d36622cfa3350cb72f1cbd3a6385081437359181590b7b656ad00e6
 	makedepends_x86_64 = gcc14
 
 pkgname = curl-impersonate
