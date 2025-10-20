@@ -1,7 +1,7 @@
 pkgbase = tosu-overlay
 	pkgdesc = Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt
-	pkgver = v2.0.1
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/K4zoku/tosu-overlay-qt
 	arch = x86_64
 	license = MIT

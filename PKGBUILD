@@ -1,8 +1,8 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 _pkgbase=tosu-overlay
 pkgname="${_pkgbase}"
-pkgver=v2.0.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt"
 arch=('x86_64')
 url="https://github.com/K4zoku/tosu-overlay-qt"
@@ -15,7 +15,7 @@ sha256sums=('7a0ece0ee43909715ff2b35194ac8a6e28641636d4031807bb56fd37d74dbb45')
 
 pkgver() {
     cd "${srcdir}/${_pkgbase}"
-    git describe
+    git describe | sed 's/^v//g'
 }
 
 build() {
