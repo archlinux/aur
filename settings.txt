@@ -1,0 +1,3 @@
+logo=logo.txt
+theme=cyan
+max_label_width=13

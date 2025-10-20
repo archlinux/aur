@@ -1,0 +1,20 @@
+pkgbase = nanofetch
+	pkgdesc = A lightweight system information tool written in C++
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tinyopsec/nanofetch
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = nanofetch.cpp
+	source = config.txt
+	source = options.txt
+	source = settings.txt
+	source = logo.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nanofetch
