@@ -1,0 +1,28 @@
+pkgbase = uzdoom-bin
+	pkgdesc = A fork of GZDoom, a feature-centric fork of ZDoom
+	pkgver = 4.15pre
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/gzdoom
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	license = GPL3
+	license = LGPL3
+	makedepends = unzip
+	depends = bzip2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libvpx>=1.14
+	depends = libwebp
+	depends = openal
+	depends = sdl2
+	depends = zmusic-bin
+	depends = libvpx
+	conflicts = uzdoom-git
+	source_x86_64 = uzdoom-4.15pre-x64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/4.15pre/-/raw/main/uzdoom-x64.tar.xz
+	sha256sums_x86_64 = 9a5896392a4334387e5a07905e496cce80dd5cc008067e4b1873d5db0bee0b4c
+	source_aarch64 = uzdoom-4.15pre-arm64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/4.15pre/-/raw/main/uzdoom-arm64.tar.xz
+	sha256sums_aarch64 = a243e8be9eee8c17433f484e2d0fcb2425f85a4291ee1a1b9d9d091b7794b664
+
+pkgname = uzdoom-bin
