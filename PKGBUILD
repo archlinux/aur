@@ -4,7 +4,7 @@
 _watch=("https://www.xnview.com/en/xnconvert" ">Version (\d[\d.]*\d+)\b")
 
 pkgname=xnconvert
-pkgver=1.105.0
+pkgver=1.106.0
 pkgrel=1
 pkgdesc="A powerful batch image-converter and resizer."
 url="https://www.xnview.com/en/xnconvert"
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
   '3c85bfca539dd2e4b0310eead5a50aae6ed66a5a63b370dd1b622043c69a15b5'
   '2ff8c57a0603c1811de45df55df59c0abdd77a15d61a9482789c9c78ce6cdf74'
-  'f5feba9e11cd9555031ba08d3273c9e6dad24097abcbe27b431547955ee925c7'
+  'cefa72a1f2252ca2b0be442d7f3036ed5516dab3475bd55c80e6d6bc7131094e'
 )
 
 package() {
