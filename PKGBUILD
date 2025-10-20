@@ -4,7 +4,7 @@
 # Contributor: beatgammit
 
 pkgname=servo-git
-pkgver=r49968.adfee3daa53
+pkgver=0.0.1.r16.g76bb1c8
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -37,7 +37,7 @@ makedepends=(rustup # doesn't work with system rust
              python-distlib
              python-virtualenv
              uv)
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 options=('!lto') # lto breaks linking
 backup=("etc/profile.d/${pkgname%-git}".{csh,sh})
@@ -46,7 +46,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
