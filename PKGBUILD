@@ -3,7 +3,7 @@
 
 pkgname=ruby-gdbm
 _gemname=${pkgname#ruby-}
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Ruby extension for GNU dbm."
 arch=("x86_64")
@@ -18,7 +18,7 @@ noextract=($_gemname-$pkgver.gem)
 license=("BSD-2-Clause")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('0b618465946a6e7a630b8dd3d10e30570cbc8fb8710bcb28f2db89058a7bbe77')
+sha256sums=('b14a4c7b0d0abbac9a021dc0e85cc9ba90efb2680edd4f80cc35c8752c880fac')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
