@@ -3,7 +3,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.3.18
+pkgver=1.3.20
 pkgrel=1
 pkgdesc='A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'gcc-libs')
 options=(!lto)
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8caea3cccc9e65b53656c6e7495f7cec44609bd787addec218055cb77cb910d4')
+sha256sums=('ca9e105033e7507a2f61ce39487a64dc987c9307b7b82f923cf2ba8ddf66baa8')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
