@@ -58,7 +58,6 @@ package() {
     mkdir -p "$pkgdir/usr/share/pixmaps/"
     install -Dm644 "$srcdir/linphone.png" "$pkgdir/usr/share/pixmaps/"
 
-    # Add linphone's own lib folder to LD_LIBRARY_PATH
     echo "#!/bin/bash" > "$pkgdir/opt/linphone/linphone-launcher"
     echo 'LD_LIBRARY_PATH="/opt/linphone/lib:$LD_LIBRARY_PATH" /opt/linphone/bin/linphone "$@"' >> "$pkgdir/opt/linphone/linphone-launcher"
     chmod +x "$pkgdir/opt/linphone/linphone-launcher"
