@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.9.12.r72.075aed9
+pkgver=1.9.13.r100.9b118c6
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -20,6 +20,7 @@ _qt=qt6
 depends=(
   sh
   curl
+  fmt
   gcc-libs
   glib2
   glibc
