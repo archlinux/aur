@@ -1,7 +1,7 @@
 pkgbase = hyprmarker
 	pkgdesc = ZoomIt-like screen annotation tool for Wayland compositors with wlr-layer-shell support
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/devmobasa/hyprmarker
 	arch = x86_64
 	arch = aarch64

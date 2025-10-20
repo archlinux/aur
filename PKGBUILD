@@ -1,7 +1,7 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=hyprmarker
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='ZoomIt-like screen annotation tool for Wayland compositors with wlr-layer-shell support'
 arch=('x86_64' 'aarch64')
 url='https://github.com/devmobasa/hyprmarker'
@@ -28,6 +28,9 @@ prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    if [[ -f configurator/Cargo.toml ]]; then
+        cargo fetch --locked --manifest-path configurator/Cargo.toml --target "$CARCH-unknown-linux-gnu"
+    fi
 }
 
 build() {
