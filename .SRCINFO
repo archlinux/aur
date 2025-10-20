@@ -1,6 +1,6 @@
 pkgbase = bash-pinyin-completion-rs
 	pkgdesc = Simple completion script for pinyin, written in rust.
-	pkgver = 1.0.0beta
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/AOSC-Dev/bash-pinyin-completion-rs
 	install = bash-pinyin-completion-rs.install
@@ -19,7 +19,7 @@ pkgbase = bash-pinyin-completion-rs
 	depends = bash-completion
 	depends = glibc
 	depends = gcc-libs
-	source = bash-pinyin-completion-rs-1.0.0beta.tar.gz::https://github.com/AOSC-Dev/bash-pinyin-completion-rs/archive/refs/tags/v1.0.0-beta.tar.gz
-	sha256sums = 0a1cc14018598be481713ca84d2c78fd9967d9009a9f826f70f8536a334a4590
+	source = bash-pinyin-completion-rs-1.0.0.tar.gz::https://github.com/AOSC-Dev/bash-pinyin-completion-rs/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = fac83fcf49a96bf25f66b45c88fba41b7699aadbdafcab880a60b3d84d89fe9b
 
 pkgname = bash-pinyin-completion-rs
