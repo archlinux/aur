@@ -2,12 +2,12 @@
 
 pkgname=linphone-desktop
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64)
 url='http://linphone.org'
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-multimedia' 'qt6-speech' 'qt6-tools' 'libpulse' 'libxcrypt-compat' 'v4l-utils' 'glew')
+depends=('qt6-base' 'qt6-declarative' 'qt6-networkauth' 'qt6-svg' 'qt6-multimedia' 'qt6-speech' 'qt6-tools' 'libpulse' 'libxcrypt-compat' 'v4l-utils' 'glew')
 makedepends=('coreutils' 'git' 'gendesk' 'cmake' 'yasm' 'nasm' 'doxygen' 'perl' 'python-pystache' 'python-six')
 source=(
   "git+https://gitlab.linphone.org/BC/public/linphone-desktop.git#tag=${pkgver}"
@@ -38,7 +38,7 @@ build() {
   gendesk -f -n \
      --pkgname="$pkgname" \
      --pkgdesc="$pkgdesc" \
-     --name=Linphone \
+     --name="Linphone Desktop 5" \
      --genericname="VoIP Client" \
      --categories=Network \
      --icon=linphone.png \
