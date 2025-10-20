@@ -47,7 +47,7 @@ package() {
 
   install -d "$pkgdir"/usr/{bin,lib/node_modules/$_pkgname}
   ln -s ../lib/node_modules/$_pkgname/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-  cp -r bin node_modules out package.json "$pkgdir"/usr/lib/node_modules/$_pkgname
+  cp -r bin l10n node_modules out package.json "$pkgdir"/usr/lib/node_modules/$_pkgname
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
