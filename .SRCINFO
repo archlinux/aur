@@ -1,6 +1,6 @@
 pkgbase = hyprmarker
 	pkgdesc = ZoomIt-like screen annotation tool for Wayland compositors with wlr-layer-shell support
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/devmobasa/hyprmarker
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hyprmarker
 	depends = wl-clipboard
 	depends = grim
 	depends = slurp
-	source = git+https://github.com/devmobasa/hyprmarker.git#tag=v0.3.0
+	source = git+https://github.com/devmobasa/hyprmarker.git#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = hyprmarker
