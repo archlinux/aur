@@ -3,7 +3,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.105.16954
+pkgver=1.105.17017
 _electronversion=37
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
@@ -50,9 +50,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_aarch64=('733d3c566fb4e307392ffb8c19b7b89e4221ab99cfe2d45d07bd08776d14d7ea')
-sha256sums_armv7h=('cf57b6f191a540b5930007caa17dbc640e3fbe38fecad5b488239844599fac9d')
-sha256sums_x86_64=('3df01fa01631e77ae51716d838b98b8e8fc148e0cb6238775f3ba41d8006b267')
+sha256sums_aarch64=('11c9f4c0d593bc2d5f5da40efbacf8e6025a29fc98670b7e58dd3e0108bbbe1d')
+sha256sums_armv7h=('663ff4e283efa7e477f378893d0e3cbcb2052c1a47b5c34dc24938ec6ecf9164')
+sha256sums_x86_64=('1a6b04504ae906e0d4d0da6afa7ce22776fb4c4fcb2e585e681e37b416c17611')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
