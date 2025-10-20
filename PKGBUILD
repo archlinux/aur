@@ -1,8 +1,9 @@
-# Maintainer: Muhammad Shammaas <cmshammaas@gmail.com>
+# Maintainer: Koeqaife <koeqaife@sharinflame.com>
+# Maintainer: Shamz <cmshammaas@gmail.com>
 pkgname=hypryou-greeter
 pkgver=1.0.0
 pkgrel=4
-pkgdesc="Greetd config for hypryou greeter.Credits : Koeqaife"
+pkgdesc="Greetd config for hypryou greeter."
 arch=('any')
 license=('custom')
 depends=(
