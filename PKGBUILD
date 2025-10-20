@@ -2,7 +2,7 @@
 
 pkgname=vyai
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight CLI tool to interact with the Gemini API from the terminal."
 arch=('x86_64' 'i686')
 url="https://github.com/vybraan/vyai"
@@ -31,7 +31,7 @@ check() {
 
 build() {
   cd "$srcdir/$pkgname"
-  go build -o vyai cmd/main.go
+  go build -ldflags "-s -w" -o vyai cmd/main.go
 }
 package() {
   install -Dm755 "$srcdir/$pkgname/vyai" "$pkgdir/usr/bin/vyai"
