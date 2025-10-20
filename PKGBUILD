@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=89bbce3130e03103dacc3c4c9bd0b8b2cbccb0d1
-_bcr_commit=2e38be281c26c4758de12b0f36fa5ed2ffe812b3
+_mozc_commit=da085634c3f4c86d37bc4b8dd29c0071ccdf6d8d
+_bcr_commit=cfea56c1da2f7130820cc4acc75f838529ab23f4
 _dict_to_mozc_commit=fb9f38e297c73a52b807007225b7c01c2530b0c6
 _branch=fcitx
 # Sudachi Dictionary
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.32.5981.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -58,8 +58,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         fcitx5-mozc-conf.patch
         )
 
-sha512sums=('13930d771680289b792cc59b1cb9dfdca34b0ef6dc4d66fe0c986e8c91bcd587564c98a6a910fe0b41f4c17794453355c635aa761a29f248b0c95944d045fe60'
-            '8d1f97b640507cc02809a7a8f34ad71a3587b99c486813e129100a605b3aaf56d8269173b9ad6f6e6f47d5bd91dc0c3d6c0aaeb820259c229b024d0f8eb895bc'
+sha512sums=('df7dfecb4e73477ec9b96b08c53f9ee17cdc24d6d5fc556d8cd57fbfad09d0a625d66929fcd71d372765c553f1c4c5559a5a25cea6c2730e306cb44dca1e5a38'
+            '3873655019e4a283e47cd99df054fa944113412725716d403e4ebcb0a1e485c71d593fa5bb5d58d73579fb859446dc20775113e2f48aecae4ba5f3d676019c3f'
             'f471c70ee7ad3951bafd80540d07ba32622946095b1696c6bb44d8131944d88a4d75c1077a6a5ca2fe122ad284cf76303e3c3432e5f253558977997d42e5e05d'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '48cd60ccec0f9a5f262c8f8865bcc794c023fc8a421a071c179922e5176ecbe83e554430de30c70efee2d47c0b3defec687ba89d66124d372798d0394fe3c767'
