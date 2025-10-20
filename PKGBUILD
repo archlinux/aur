@@ -1,67 +1,84 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+_zig=0.15
 pkgname="hevi"
-pkgver=1.1.0
-pkgrel=3
+_commit_rel="d56713927939494b194e9b04092eb7c22d2e480e" # 1.1.0
+_commit="6f46f9e6fbcfb7bd331dadbde7f6da48a6679b5c" # r28
+pkgver="1.1.0+r28+g${_commit::7}"
+pkgrel=1
 pkgdesc="A modern hex viewer"
-arch=('x86_64' 'aarch64' 'i686')
-url="https://arnau478.github.io/${pkgname}"
+arch=('aarch64' 'i686' 'x86_64')
+url="https://arnau478.github.io/hevi"
 _url="https://github.com/Arnau478/${pkgname}"
-license=('GPL-3.0-or-later')
-makedepends=('zig')
-_zig_deps=("ziggy-ae30921d8c98970942d3711553aa66ff907482fe.tar.gz::https://github.com/kristoff-it/ziggy/archive/ae30921d8c98970942d3711553aa66ff907482fe.tar.gz"
-           "known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz::https://github.com/ziglibs/known-folders/archive/0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz"
-           "zig-lsp-kit-1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz::https://github.com/MFAshby/zig-lsp-kit/archive/1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz"
-           "zig-yaml-beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz::https://github.com/kubkon/zig-yaml/archive/beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz")
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_zig_deps[@]}")
-noextract=("${_zig_deps[@]%%::*}")
-sha256sums=('d1c444301c65910b171541f1e3d1445cc3ff003dfc8218b976982f80bccd9ee0'
-            'd00b839371b6ea996ed09e9116b55a7bb0acca361a2670d6736a5293f4f315f9'
-            'a8457bc9d3ca509a1db8b46a0d402fecae2b17d4fe0f454f5d51a63cc2aa1a7b'
-            'eaa00a7f51971d526532251606e11bd6c1acb9ef50745b6e2025b8d0ea8a2e69'
-            '21df1918d1d200f376bca70ed1691def41b6380b0d7485dd39ffe186498ecedf')
+license=('GPL-3.0-only')
+makedepends=(
+  "zig>=${_zig}"
+)
+_zigdepends=(
+  # hevi
+  "ziggy-4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901.tar.gz::https://github.com/kristoff-it/ziggy/archive/4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901.tar.gz"
+  "pennant-df76de01bcf06eb1dcb40dbf04f7c219c3a35a7d.tar.gz::https://github.com/Arnau478/pennant/archive/df76de01bcf06eb1dcb40dbf04f7c219c3a35a7d.tar.gz"
+
+  # ziggy
+  "known-folders-aa24df42183ad415d10bc0a33e6238c437fc0f59.tar.gz::https://github.com/ziglibs/known-folders/archive/aa24df42183ad415d10bc0a33e6238c437fc0f59.tar.gz"
+  "lsp-kit-01c14e592d25dc57dfebba27b8bd2b4aa91c1140.tar.gz::https://github.com/kristoff-it/lsp-kit/archive/01c14e592d25dc57dfebba27b8bd2b4aa91c1140.tar.gz"
+)
+_pkgsrc="${pkgname}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
+        "${_zigdepends[@]}")
+noextract=("${_zigdepends[@]%%::*}")
+b2sums=('47c8d8ab6fcc874bed5cd2a583512c304fcaedbed3f798b4af89ba0819761f380995626f19e64f05cc145fc5f6f841d7edcf19b2c074b6b416e9892edda219cb'
+        '13ce20c231f31d629b399d5c115eff43e953d1c3d7f1a3b30de177c3b9a2eaa61f801b65483dbe51e18eb8ee7d0605fa2d8c892aca6e2e53fa5463805872ada6'
+        '6e54c840abb3d3ea958663e35f40dcb50d38daf906a02cfd96d56e874fcc1ff525d4c63356e565b0429c443e03da24ff89cc7813d401693e45f1b9195ff1dea1'
+        'c2d8a5062b1baf2868b4b6f58df9d065638a551c60bc7217a14e8395009a231603d2b2a8112fad7198ede43934f523c2b25654a54f89a088eabf72d23bd9b48d'
+        '492dbc25635417efebb71ed5b3c655b8ce95cf499a7c7f9def3af7377fbdb20b1f9fdf698fbd3689cce343a44ece116b858d950850bc7efacbccc894aaf2bef9')
 
 prepare() {
   cd "${srcdir}"
-  for dep in "${_zig_deps[@]}"; do
+  for dep in "${_zigdepends[@]}"; do
     zig fetch --global-cache-dir ./zig-global-cache "${dep%%::*}"
   done
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" zig build \
-    --summary all \
-    --prefix /usr \
-    --search-prefix /usr \
-    --global-cache-dir ../zig-global-cache \
-    --system ../zig-global-cache/p \
-    --verbose \
-    -Dtarget=native-linux.6.1-gnu.2.38 \
-    -Dcpu=baseline \
-    -Dpie \
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dcpu=baseline
     -Doptimize=ReleaseSafe
+    -Dpie
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="build" zig build "${zig_options[@]}"
 }
 
 check() {
-  cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" zig build test \
-    --summary all \
-    --prefix /usr \
-    --search-prefix /usr \
-    --global-cache-dir ../zig-global-cache \
-    --system ../zig-global-cache/p \
-    --verbose \
-    -Dtarget=native-linux.6.1-gnu.2.38 \
-    -Dpie \
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dcpu=baseline
     -Doptimize=ReleaseSafe
+    -Dpie
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="check" zig build "${zig_options[@]}"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  cp -va build/* "${pkgdir}"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
