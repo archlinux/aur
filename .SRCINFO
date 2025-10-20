@@ -1,7 +1,7 @@
 pkgbase = libcurl-impersonate-bin
 	pkgdesc = Series of patches that make curl requests look like Chrome
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = aarch64
 	arch = armv7h
@@ -14,10 +14,14 @@ pkgbase = libcurl-impersonate-bin
 	conflicts = curl-impersonate
 	options = !debug
 	source = https://raw.githubusercontent.com/lexiforest/curl-impersonate/master/LICENSE
-	md5sums = 8d7f9ceab1020bfc9b56031dfbac2968
+	sha256sums = 7d0c5f4b5b4c27299ad6759798772b866b3559ac5edb23845f36328eb734376d
 	source_aarch64 = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.2/libcurl-impersonate-v1.2.2.aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1d1db0fee9dbc3d29b71b128fac4fc60e952463b38902a8a1c39d64dfac293b4
 	source_armv7h = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.2/libcurl-impersonate-v1.2.2.arm-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = dc5a60ee89b3f1333d4b6da23efe79815ac514de3347efacd13dde7eb2eda3d0
 	source_i686 = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.2/libcurl-impersonate-v1.2.2.i386-linux-gnu.tar.gz
+	sha256sums_i686 = 36594e4cd3b050863698b6b109088da694516703051cd2cb4a776b71e1fc0650
 	source_x86_64 = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.2/libcurl-impersonate-v1.2.2.x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9602bf79b803a9ae3c94446c2c69936c4202aab11122437dcdb51a0dcc4c4671
 
 pkgname = libcurl-impersonate-bin
