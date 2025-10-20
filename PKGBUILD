@@ -17,12 +17,12 @@ makedepends=(
     'python-virtualenv'
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::file:///home/artem/Downloads/SuperLauncher/superlauncher-mc-$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/ludvig2457/SuperLauncherMC/archive/v$pkgver.tar.gz"
 )
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/SuperLauncherMC-$pkgver"
 
     # Установка директории лаунчера
     install -d "$pkgdir/usr/share/superlauncher-mc"
