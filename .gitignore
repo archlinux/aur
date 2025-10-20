@@ -1,4 +1,6 @@
 *.rpm
+*.zst
+*.pkg.tar.*
 *.xz
 pkg
 src
