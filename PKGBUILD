@@ -11,7 +11,6 @@ arch=("x86_64")
 url='https://pypi.org/project/kfactory/'
 license=("None")
 depends=(
-	"python-klayout"
 	"python-gitpython"
 	"python-loguru"
 	"python-rectangle-packer-git"

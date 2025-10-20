@@ -5,7 +5,6 @@ pkgbase = python-kfactory
 	url = https://pypi.org/project/kfactory/
 	arch = x86_64
 	license = None
-	depends = python-klayout
 	depends = python-gitpython
 	depends = python-loguru
 	depends = python-rectangle-packer-git
