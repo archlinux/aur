@@ -39,10 +39,10 @@ package() {
     # Устанавливаем библиотеки в venv
     "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install --upgrade pip
     "$pkgdir/usr/share/superlauncher-mc/venv/bin/python" -m pip install \
-        minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
+        pyqt6 minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
 
     # Создаём wrapper для запуска через venv напрямую
-    install -d "$pkgdir/usr/bin"  # <--- ВОТ ЭТА СТРОКА ОБЯЗАТЕЛЬНА!
+    install -d "$pkgdir/usr/bin"
     cat <<EOF > "$pkgdir/usr/bin/superlauncher-mc"
 #!/usr/bin/env bash
 DIR="/usr/share/superlauncher-mc"
