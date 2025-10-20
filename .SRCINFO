@@ -1,7 +1,7 @@
 pkgbase = jan-appimage
 	pkgdesc = An open source alternative to ChatGPT that runs 100% offline on your computer
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jan.ai/
 	arch = x86_64
 	license = Apache-2.0
