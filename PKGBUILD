@@ -2,13 +2,13 @@
 
 # shellcheck shell=bash
 pkgname=zig-master-bin
-pkgver=0.16.0dev.731+958faa703
+pkgver=0.16.0dev.747+493ad58ff
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)"
 arch=('aarch64' 'armv7h' 'i686' 'loong64' 'powerpc64le' 'riscv64' 'x86_64')
 url="https://ziglang.org/"
 license=('MIT')
-provides=('zig' 'zig-master')
+provides=('zig-master' 'zig-unstable')
 conflicts=('zig')
 replaces=('zig-nightly-bin')
 makedepends=('curl' 'jq' 'minisign')

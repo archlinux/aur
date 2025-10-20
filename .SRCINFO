@@ -1,6 +1,6 @@
 pkgbase = zig-master-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (master release)
-	pkgver = 0.16.0dev.731+958faa703
+	pkgver = 0.16.0dev.747+493ad58ff
 	pkgrel = 1
 	url = https://ziglang.org/
 	arch = aarch64
@@ -14,14 +14,14 @@ pkgbase = zig-master-bin
 	makedepends = curl
 	makedepends = jq
 	makedepends = minisign
-	provides = zig
 	provides = zig-master
+	provides = zig-unstable
 	conflicts = zig
 	replaces = zig-nightly-bin
 	options = !strip
-	source = https://ziglang.org/builds/zig-x86_64-linux-0.16.0-dev.731+958faa703.tar.xz
-	source = https://ziglang.org/builds/zig-x86_64-linux-0.16.0-dev.731+958faa703.tar.xz.minisig
-	sha256sums = 84a1bef86aeeda0dd850b7a1a49d659b45dcea9b7e65e7cc7da715b1e5bed345
+	source = https://ziglang.org/builds/zig-x86_64-linux-0.16.0-dev.747+493ad58ff.tar.xz
+	source = https://ziglang.org/builds/zig-x86_64-linux-0.16.0-dev.747+493ad58ff.tar.xz.minisig
+	sha256sums = 14a4aca191015a990827d3c0e11dd0d3d85b753527139df1dc0736075eecc5bf
 	sha256sums = SKIP
 
 pkgname = zig-master-bin
