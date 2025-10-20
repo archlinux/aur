@@ -1,0 +1,23 @@
+pkgbase = servo-bin
+	pkgdesc = A prototype web browser engine written in the Rust language
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://servo.org
+	arch = x86_64
+	license = MPL-2.0
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gst-plugins-bad-libs
+	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = hicolor-icon-theme
+	depends = systemd-libs
+	depends = zlib
+	provides = servo
+	conflicts = servo
+	source = servo-bin-0.0.1.tar.gz::https://github.com/servo/servo/releases/download/v0.0.1/servo-x86_64-linux-gnu.tar.gz
+	sha256sums = c26e0e00823eda7ef80d7121f9d2f94a4a059b6ded1ded3678e823877c82778d
+
+pkgname = servo-bin
