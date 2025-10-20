@@ -1,0 +1,4 @@
+[scafetch]
+source = "git"
+git = "https://github.com/iddev5/scafetch.git"
+prefix = "v"

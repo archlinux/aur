@@ -1,14 +1,16 @@
 pkgbase = scafetch
-	pkgdesc = A command-line tool to display information about your remote Git repositories in an aesthetic and visually pleasing way.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgdesc = Display information about your remote Git repositories in an aesthetic and visually pleasing way
+	pkgver = 0.1.1+r14+gc711134
+	pkgrel = 1
 	url = https://github.com/iddev5/scafetch
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = zig-master-bin
-	makedepends = git
-	makedepends = gyro-bin
-	source = git+https://github.com/iddev5/scafetch#tag=0.1.1
-	sha256sums = SKIP
+	makedepends = zig0.13
+	depends = glibc
+	noextract = ay-arg-80c1df8b85214bd8d3bd61458cd9e6533880dc1f.tar.gz
+	source = scafetch-c7111347a0ed83465d0fe311213633dfec47e235.tar.gz::https://github.com/iddev5/scafetch/archive/c7111347a0ed83465d0fe311213633dfec47e235.tar.gz
+	source = ay-arg-80c1df8b85214bd8d3bd61458cd9e6533880dc1f.tar.gz::https://github.com/iddev5/ay-arg/archive/80c1df8b85214bd8d3bd61458cd9e6533880dc1f.tar.gz
+	b2sums = 42ca12b6464216651db94c0835a122e83c6414509a8b92b147e4a3fec4d848583bbcb063615f18cc154e7f02b159377d99fa8058062ac2423f776a26f96ae25f
+	b2sums = bab878a3309af9f8d4b147fd4549512cf7525fada930e508cc360f00e2ba56c3ee779ed11d9ea8ce2ea18aff970c1dafc5d3f68676e55b4c859cb44860d8b29b
 
 pkgname = scafetch
