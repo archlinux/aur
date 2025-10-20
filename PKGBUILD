@@ -4,7 +4,7 @@
 options=(!debug !strip)
 
 pkgname=msdfgen-git
-pkgver=1.12.1.r4.ge3ced1e
+pkgver=1.12.1.r8.g6bccbb5
 pkgrel=1
 pkgdesc="Multi-channel signed distance field generator binary and library"
 url=https://github.com/Chlumsky/msdfgen
