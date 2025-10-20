@@ -2,7 +2,7 @@
 # New pacbro releases for Arch: https://github.com/cherio/pacbro
 
 pkgname=pacbro
-pkgver=1.0.14
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Package Browser for Arch, terminal multi-panel edition"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cherio/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d47495e2d9770ecc467834d2c7f58d9ff86dccb4ae06bf85ac04924e42ec78a4')
+sha256sums=('669d9b44885404a120ec3f3d88a0cc716b61331e03c32b78cb6bce489dcf3813')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
