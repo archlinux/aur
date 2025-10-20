@@ -2,7 +2,7 @@
 
 pkgname=ironbar-git
 pkgver=0.17.1.r32.ga3c5189
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo' 'git' 'openssl')
 
 depends=(
