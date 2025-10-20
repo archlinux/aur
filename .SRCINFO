@@ -1,10 +1,11 @@
 pkgbase = play-timer
 	pkgdesc = CLI-friendly easy-to-use timer app with native DE integration.
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/efogdev/mpris-timer
 	arch = x86_64
 	license = MIT
+	depends = libadwaita
 	depends = glib2
 	depends = gtk3
 	depends = wayland

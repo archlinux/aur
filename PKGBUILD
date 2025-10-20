@@ -2,13 +2,13 @@
 
 pkgname=play-timer
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI-friendly easy-to-use timer app with native DE integration."
 arch=('x86_64')
 curarch=$(uname -m)
 url="https://github.com/efogdev/mpris-timer"
 license=('MIT')
-depends=('glib2' 'gtk3' 'wayland' 'pulse-native-provider')
+depends=('libadwaita' 'glib2' 'gtk3' 'wayland' 'pulse-native-provider')
 source=("$pkgname-$curarch::$url/releases/download/$pkgver/$pkgname-$curarch"
         "$pkgname-$curarch.sha256::$url/releases/download/$pkgver/$pkgname-$curarch.sha256")
 sha256sums=('SKIP' 'SKIP')
