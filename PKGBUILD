@@ -2,7 +2,7 @@
 pkgname=utools-bin
 _pkgname=uTools
 # 更新日志 https://www.u-tools.cn/docs/guide/changelog.html
-pkgver=7.2.1
+pkgver=7.3.1
 _electronversion=22
 pkgrel=1
 pkgdesc="uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
@@ -22,11 +22,11 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://open.u-tools.cn/download/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.html::${url}/agreement.html"
 )
-sha256sums=('0ee3ba7867ffb5ac8c3e4cd6dc7d9c48f1790336c4a7653dc27b0d7575228eef'
+sha256sums=('89d1a81a63cb147e1ed4067dc6c7ba6158c9250e3e34d9e5d55e8988981a6a58'
             '986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
