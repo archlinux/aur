@@ -180,7 +180,7 @@ build() {
 }
 
 package_qt6-base-hifps() {
-  pkgdesc='A cross-platform application and UI framework'
+  pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
   depends+=(qt6-translations)
   conflicts=('qt6-base')
   provides=('qt6-base')
@@ -197,7 +197,7 @@ package_qt6-base-hifps() {
 }
 
 package_qt6-xcb-private-headers-hifps() {
-  pkgdesc='Private headers for Qt6 Xcb'
+  pkgdesc='Private headers for Qt6 Xcb - patched for high refresh rates for animations'
 
   depends=("qt6-base-hifps=$pkgver")
   optdepends=()
