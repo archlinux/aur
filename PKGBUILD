@@ -1,14 +1,14 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-formatador
-pkgver=1.1.0
-pkgrel=5
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='STDOUT text formatting'
 arch=(any)
 url='https://github.com/geemus/formatador'
 license=(MIT)
 depends=(
-  ruby
+  ruby-reline
 )
 makedepends=(
   ruby-rdoc
@@ -19,7 +19,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=(https://github.com/geemus/formatador/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('cde51ce5fbe5871628344010d3d311afdf4de279f69133146045b9834a45f2c8')
+sha256sums=('22a11f4f0e152a7d27eb5f34a6ea2c9eb2ce43c6ed76bf30c10ed84064beba42')
 
 build() {
   local _gemdir="$(gem env gemdir)"
