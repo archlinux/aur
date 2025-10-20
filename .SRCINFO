@@ -1,16 +1,16 @@
 pkgbase = navicat17-premium-en
 	pkgdesc = Manage and Develop Your Databases
-	pkgver = 17.3.1
-	pkgrel = 2
+	pkgver = 17.3.3
+	pkgrel = 1
 	url = https://www.navicat.com/en/products/navicat-premium
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	source = navicat17.desktop
 	sha256sums = 7b0dbf7ce350724266cc4d4648abd0092a765b013f349aa98fd61d32fe8d8d3e
-	source_x86_64 = navicat17-premium-en-x86_64-17.3.1.AppImage::https://dn.navicat.com/download/navicat17-premium-en-x86_64.AppImage
-	sha256sums_x86_64 = e6f19cb696c083799585a96bf9883788564d0b263ed3e6bdf2c95d854707926d
-	source_aarch64 = navicat17-premium-en-aarch64-17.3.1.AppImage::https://dn.navicat.com/download/navicat17-premium-en-aarch64.AppImage
-	sha256sums_aarch64 = af7d6efdbff71cef4f110b48afd019ff9355ad172027e1800873d608809961e7
+	source_x86_64 = navicat17-premium-en-x86_64-17.3.3.AppImage::https://dn.navicat.com/download/navicat17-premium-en-x86_64.AppImage
+	sha256sums_x86_64 = 8175e3d855cec36387513697e5762d774fe72ff13f84d99c9af7344c368e0944
+	source_aarch64 = navicat17-premium-en-aarch64-17.3.3.AppImage::https://dn.navicat.com/download/navicat17-premium-en-aarch64.AppImage
+	sha256sums_aarch64 = d7c25b50957c8c05d189555eadf6192ec8f2fb92b60e3c2a018f87aa3b659df8
 
 pkgname = navicat17-premium-en
