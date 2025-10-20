@@ -1,6 +1,5 @@
-*.tar.xz
-pkg/
-src/
-*.deb
-*.pkg.tar.zst
-helper.sh
+*
+!.gitignore
+!.nvchecker.toml
+!PKGBUILD
+!.SRCINFO

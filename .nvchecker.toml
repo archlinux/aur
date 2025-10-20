@@ -1,0 +1,4 @@
+["sirikali-bin"]
+source = "github"
+github = "mhogomchungu/sirikali"
+use_latest_release = true
