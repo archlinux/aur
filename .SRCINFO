@@ -1,9 +1,10 @@
 pkgbase = hypryou-utils
-	pkgdesc = Replacement for hyprland-qtutils as part of HyprYou project.Credits : Koeqaife
+	pkgdesc = Replacement for hyprland-qtutils as part of HyprYou project.
 	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://github.com/koeqaife/hyprland-material-you
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = gcc
