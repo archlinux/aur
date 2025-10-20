@@ -1,14 +1,14 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname='mprop-git'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=1
 pkgdesc="xprop like tool for maomaowm (get window id and title)"
 arch=('any')
 url="https://github.com/DreamMaoMao/mprop"
 license=('MIT')
-depends=('wlrctl' 'slurp' 'mangowc-git')
+depends=('wlrctl' 'slurp' 'mangowc')
 makedepends=('git') 
 source=('git+https://github.com/DreamMaoMao/mprop.git')
 sha256sums=('SKIP')

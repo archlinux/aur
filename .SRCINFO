@@ -1,6 +1,6 @@
 pkgbase = mprop-git
 	pkgdesc = xprop like tool for maomaowm (get window id and title)
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/DreamMaoMao/mprop
@@ -9,7 +9,7 @@ pkgbase = mprop-git
 	makedepends = git
 	depends = wlrctl
 	depends = slurp
-	depends = mangowc-git
+	depends = mangowc
 	source = git+https://github.com/DreamMaoMao/mprop.git
 	sha256sums = SKIP
 
