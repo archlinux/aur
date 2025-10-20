@@ -57,6 +57,7 @@ pkgbase = dolphin-emu-git
 	optdepends = pulseaudio: PulseAudio backend
 	options = !lto
 	source = dolphin-emu-git::git+https://github.com/dolphin-emu/dolphin
+	source = dolphin-emu-git-cppoptparse::git+https://github.com/weisslj/cpp-optparse.git
 	source = dolphin-emu-git-implot::git+https://github.com/epezent/implot.git
 	source = dolphin-emu-git-mgba::git+https://github.com/mgba-emu/mgba.git
 	source = dolphin-emu-git-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git
@@ -74,7 +75,8 @@ pkgbase = dolphin-emu-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 51c83bf74edbc1def40e6b4372036651f4d62c8a90c4edbeb1d572b9099ec4189f545dc1a0c3c4d993074a693d4f5e97c56f9cc78f2d7beacaa8f533b843e73f
+	b2sums = SKIP
+	b2sums = decfdc4c9a1e0715502bc492e6cc0f1217a486a5ca503d7246fe5dc6fd05799156a49f19f65cb0b6e6b56bbc8db2a6b5be0535ccd56b28a31f329ec506d0bb96
 	b2sums = d9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d
 
 pkgname = dolphin-emu-git

@@ -35,6 +35,7 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
 	"$pkgbase::git+https://github.com/$_mainpkgname/$_projectname"
+	"$pkgbase-cppoptparse::git+https://github.com/weisslj/cpp-optparse.git"
 	"$pkgbase-implot::git+https://github.com/epezent/implot.git"
 	"$pkgbase-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgbase-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
@@ -53,7 +54,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '51c83bf74edbc1def40e6b4372036651f4d62c8a90c4edbeb1d572b9099ec4189f545dc1a0c3c4d993074a693d4f5e97c56f9cc78f2d7beacaa8f533b843e73f'
+        'SKIP'
+        'decfdc4c9a1e0715502bc492e6cc0f1217a486a5ca503d7246fe5dc6fd05799156a49f19f65cb0b6e6b56bbc8db2a6b5be0535ccd56b28a31f329ec506d0bb96'
         'd9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d')
 
 _sourcedirectory="$pkgbase"
@@ -65,6 +67,7 @@ prepare() {
 
 	# Provide submodules
 	declare -A _submodules=(
+		[cppoptparse]='cpp-optparse/cpp-optparse'
 		[implot]='implot/implot'
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
@@ -81,7 +84,7 @@ prepare() {
 		git -c protocol.file.allow=always submodule update "$_path"
 	done
 
-	# Patch minimum glslang version, as it's used as an exact match (ABI v16 is compatible, see https://github.com/dolphin-emu/dolphin/pull/13974/files/cdfb389509b560b4a70661571d12edcebfb77fdf#r2384216168)
+	# Get rid of glslang version, as it's used as an exact match (ABI v16 is compatible, see https://github.com/dolphin-emu/dolphin/pull/13974/files/cdfb389509b560b4a70661571d12edcebfb77fdf#r2384216168)
 	patch --forward -p1 < "$srcdir/glslang-minimum-version.diff"
 
 	# Patch cmake_minimum_required below 3.5.0
