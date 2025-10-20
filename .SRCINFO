@@ -1,7 +1,7 @@
 pkgbase = play-timer-git
 	pkgdesc = CLI-friendly easy-to-use timer app with native DE integration.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/efogdev/mpris-timer
 	arch = x86_64
 	license = MIT
