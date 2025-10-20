@@ -1,6 +1,6 @@
 pkgbase = finamp
 	pkgdesc = An open source Jellyfin music player
-	pkgver = 0.9.19_beta
+	pkgver = 0.9.20_beta
 	pkgrel = 1
 	url = https://github.com/jmshrv/finamp
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = finamp
 	depends = gtk3
 	depends = pango
 	depends = libmpv.so
-	source = finamp-0.9.19_beta.tar.gz::https://github.com/jmshrv/finamp/archive/0.9.19-beta.tar.gz
-	b2sums = e73282ee9a684601c7497dd4ebe0ae7e1de7943aba6b9aec47c397dbb7a1a5a0aed5ea44ddc9b4d11d3e79fa4923ed78b3ff2d0fb9817e8e974cb3daed74c7c9
+	source = finamp-0.9.20_beta.tar.gz::https://github.com/jmshrv/finamp/archive/0.9.20-beta.tar.gz
+	b2sums = 0eaed477ec896d5e97062eeffa61ec746b5792381074f8b3277a27bad3138a7bd188f13cf8b1d8d1337f4939486dee2e9867bcaed5093eb645e15ea085d078f1
 
 pkgname = finamp
