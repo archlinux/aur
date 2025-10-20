@@ -1,4 +1,4 @@
-pkgbase = espionage
+pkgbase = espionage-git
 	pkgdesc = ESP8266 and EPS32 firmware binaries analysis toolkit
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = espionage
 	license = BSD-3-CLAUSE
 	makedepends = git
 	depends = python
-	source = espionage-1.0.0.tar.gz::https://github.com/serene-brew/ESPionage/archive/refs/tags/v1.0.0.tar.gz
+	source = espionage-git-1.0.0.tar.gz::https://github.com/serene-brew/ESPionage/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = espionage
+pkgname = espionage-git
