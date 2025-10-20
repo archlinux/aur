@@ -69,10 +69,10 @@ index d357d0527..b31ef7d14 100644
            onIndexChange(currentIndex + 1);
          }}
 diff --git a/packages/compass-components/src/components/workspace-tabs/tab.tsx b/packages/compass-components/src/components/workspace-tabs/tab.tsx
-index 092084220..940f68683 100644
+index 6baae0ac6..3d0933e38 100644
 --- a/packages/compass-components/src/components/workspace-tabs/tab.tsx
 +++ b/packages/compass-components/src/components/workspace-tabs/tab.tsx
-@@ -340,7 +340,7 @@ function Tab({
+@@ -341,7 +341,7 @@ function Tab({
  
            <IconButton
              className={cx(closeButtonStyles, 'workspace-tab-close-button')}
