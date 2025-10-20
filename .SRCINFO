@@ -1,21 +1,18 @@
 pkgbase = netron-bin
 	pkgdesc = Visualizer for neural network, deep learning and machine learning models.(Prebuilt version,use system-wide electron)
-	pkgver = 8.6.8
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://netron.app/
-	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron38
-	provides = netron=8.6.8
+	provides = netron=8.7.0
 	conflicts = netron
-	source = LICENSE-8.6.8::https://raw.githubusercontent.com/lutzroeder/netron/v8.6.8/LICENSE
+	source = LICENSE-8.7.0::https://raw.githubusercontent.com/lutzroeder/netron/v8.7.0/LICENSE
 	source = netron.sh
 	sha256sums = 535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = netron-8.6.8-aarch64.rpm::https://github.com/lutzroeder/netron/releases/download/v8.6.8/Netron-8.6.8-aarch64.rpm
-	sha256sums_aarch64 = a6438294452c61299350e61f9581963c76d6fb208c9dac631c6ce080550654e2
-	source_x86_64 = netron-8.6.8-x86_64.rpm::https://github.com/lutzroeder/netron/releases/download/v8.6.8/Netron-8.6.8-x86_64.rpm
-	sha256sums_x86_64 = cd6089e1ded072a76c63d087b65c8cdf88c15ceee9998c752585b2bf0ed8d813
+	source_x86_64 = netron-8.7.0-x86_64.rpm::https://github.com/lutzroeder/netron/releases/download/v8.7.0/Netron-8.7.0-x86_64.rpm
+	sha256sums_x86_64 = e6e87be9bafb08361a4fd3aec20b61e62566bef3a59df05dd3c3a4c1dfb6510a
 
 pkgname = netron-bin
