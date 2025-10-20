@@ -32,6 +32,6 @@ package() {
   install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
   mkdir -p "${pkgdir}/usr/local/bin"
-  ln -sf "${pkgdir}/usr/bin/neovide" "${pkgdir}/usr/local/bin/vide"
+  ln -sf "/usr/bin/neovide" "${pkgdir}/usr/local/bin/vide"
 }
 
