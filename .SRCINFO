@@ -1,9 +1,9 @@
-pkgbase = python-flash-attention
-	pkgdesc = Fast and memory-efficient exact attention. CUDA version.
+pkgbase = python-flash-attention-rocm-triton
+	pkgdesc = Fast and memory-efficient exact attentiontriton. ROCm Triton version.
 	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/Dao-AILab/flash-attention
-	arch = x86_64
+	arch = any
 	license = BSD-3-Clause
 	makedepends = ninja
 	makedepends = python-build
@@ -13,10 +13,10 @@ pkgbase = python-flash-attention
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-einops
-	depends = python-pytorch-cuda
+	depends = python-pytorch-rocm
+	depends = python-triton
+	depends = python-tqdm
 	source = git+https://github.com/Dao-AILab/flash-attention#tag=v2.8.3
-	source = git+https://github.com/NVIDIA/cutlass
 	sha256sums = 1be6e9eb9daa3a0294c164031fd15d026bcabadd89c5210a760f9f5f9e121ffd
-	sha256sums = SKIP
 
-pkgname = python-flash-attention
+pkgname = python-flash-attention-rocm-triton
