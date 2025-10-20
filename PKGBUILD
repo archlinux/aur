@@ -42,6 +42,7 @@ package() {
         minecraft-launcher-lib requests psutil pypresence packaging tqdm random-username
 
     # Создаём wrapper для запуска через venv напрямую
+    install -d "$pkgdir/usr/bin"  # <--- ВОТ ЭТА СТРОКА ОБЯЗАТЕЛЬНА!
     cat <<EOF > "$pkgdir/usr/bin/superlauncher-mc"
 #!/usr/bin/env bash
 DIR="/usr/share/superlauncher-mc"
