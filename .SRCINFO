@@ -1,7 +1,7 @@
 pkgbase = tuxnix-sway
 	pkgdesc = Sway configuration of tuxnix
 	pkgver = 0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/tuxnix/tuxnix-sway
 	arch = any
 	license = GLPv2-only

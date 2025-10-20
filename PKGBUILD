@@ -2,7 +2,7 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgrel="3"
+pkgrel="4"
 pkgver="0.2"
 _name="tuxnix-sway"
 pkgname="$_name"
