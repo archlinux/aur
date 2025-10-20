@@ -2,7 +2,7 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail.com>
 # Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 pkgname=fedora-wallpapers
-pkgver=38
+pkgver=42
 pkgrel=1
 pkgdesc="The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora ${pkver}."
 arch=("any")
@@ -28,6 +28,10 @@ depends=("beefy-miracle-backgrounds"
   "f36-backgrounds"
   "f37-backgrounds"
   "f38-backgrounds"
+  "f39-backgrounds"
+  "f40-backgrounds"
+  "f41-backgrounds"
+  "f42-backgrounds"
   "fedorainfinity-backgrounds"
   "goddard-backgrounds"
   "heisenbug-backgrounds"
