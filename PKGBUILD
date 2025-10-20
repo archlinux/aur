@@ -57,7 +57,7 @@ package() {
   cp package.json{,.bak}
   sed -i 's/workspace:~/*/' package.json
   rm -r node_modules
-  pnpm install --no-optional --prod --config.confirmModulesPurge=false
+  npm install --omit=dev --loglevel verbose
   rm -r node_modules/typescript
   mv package.json{.bak,}
 
