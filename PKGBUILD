@@ -2,14 +2,14 @@
 _pkgbase=tosu-overlay
 pkgname="${_pkgbase}"
 pkgver=v2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt"
 arch=('x86_64')
 url="https://github.com/K4zoku/tosu-overlay-qt"
 license=('MIT')
 depends=('tosu' 'qt6-base' 'qt6-webengine' 'layer-shell-qt')
-makedepends=('cmake' 'make' 'gcc')
-_tag=6d39cad6520f34f1069a3080eeed82bbb0f59bf1 # git rev-parse "v$pkgver"
+makedepends=('git' 'cmake' 'make' 'gcc')
+_tag=6d39cad6520f34f1069a3080eeed82bbb0f59bf1
 source=("${_pkgbase}::git+${url}.git#tag=${_tag}")
 sha256sums=('7a0ece0ee43909715ff2b35194ac8a6e28641636d4031807bb56fd37d74dbb45')
 
