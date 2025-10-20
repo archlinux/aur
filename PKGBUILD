@@ -4,7 +4,7 @@
 
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -35,33 +35,39 @@ build() {
 }
 
 package() {
-  install -vDm0644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 "LICENSE-$pkgver"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  _install() {
+    test -t 1 && _verbose='-v' || _verbose=''
+    # shellcheck disable=SC2086
+    install $_verbose "$@"
+  }
+
+  _install -Dm0644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  _install -Dm0644 "LICENSE-$pkgver"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd "$_pkgname-$CARCH-$_linux"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" tgrep
+  _install -Dm0755 -t "$pkgdir/usr/bin" tgrep
 
   # Bash
-  install -vDm0644 _completions.bash \
+  _install -Dm0644 _completions.bash \
     "$pkgdir/usr/share/bash-completion/completions/tgrep"
   # Elvish
-  install -vDm0644 _completions.elvish \
+  _install -Dm0644 _completions.elvish \
     "$pkgdir/usr/share/elvish/lib/tgrep.elv"
   # Fish
-  install -vDm0644 _completions.fish \
+  _install -Dm0644 _completions.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/tgrep.fish"
   # Zsh
-  install -vDm0644 _completions.zsh  \
+  _install -Dm0644 _completions.zsh  \
     "$pkgdir/usr/share/zsh/site-functions/_tgrep"
 }
 
 sha256sums_aarch64=(
-  'b23182fe73a3dac01f2b1923655d0a71110fc4011ad4d9d444e26717f52d76d6'
+  '413d5b0b4706c2e349284f75c70eb9d8eeb8be5b0b2f64cb9fc55672adb664d0'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 sha256sums_x86_64=(
-  '55a84cced74b2da139492e3264ea3e33753ac79f8d21671146631491b129adbc'
+  '089da5052965dc0ea8c5513132aaed0cede47b4c30a5155abba264dac713a19c'
   'SKIP' 'SKIP'  # Skip to my Lou!
 )
 
