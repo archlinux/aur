@@ -1,0 +1,45 @@
+# This function is executed after the package is installed.
+post_install() {
+  echo "==> ESPionage has been installed successfully."
+  echo "==> You can now run 'espionage --help' to see help menu"
+  echo "==> You can also use your package manager to uninstall espionage"
+  echo "==> Note: Application files have been placed in your home directory."
+}
+
+# This function is executed after the package is upgraded.
+post_upgrade() {
+  echo "==> ESPionage has been upgraded."
+}
+
+# This function is executed before the package files are removed.
+pre_remove() {
+  # Determine the correct user and home directory, even when run with sudo
+  if [ -n "$SUDO_USER" ]; then
+    USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+  else
+    # Fallback if not using sudo, though removal typically requires it
+    USER_HOME=$HOME
+  fi
+
+  # Define the directories that the install.sh script creates
+  LOCAL_DIR="$USER_HOME/.local/share/espionage"
+  APP_DIR="$USER_HOME/.local/lib/espionage"
+
+  echo "==> Cleaning up user-specific ESPionage files..."
+
+  if [ -d "$LOCAL_DIR" ]; then
+    echo "==> Removing data directory: $LOCAL_DIR"
+    rm -rf "$LOCAL_DIR"
+  fi
+
+  if [ -d "$APP_DIR" ]; then
+    echo "==> Removing application directory: $APP_DIR"
+    rm -rf "$APP_DIR"
+    sudo rm /usr/bin/espionage
+  fi
+}
+
+# This function is executed after the package files have been removed.
+post_remove() {
+  echo "==> ESPionage has been successfully removed."
+}
