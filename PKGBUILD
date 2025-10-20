@@ -10,7 +10,7 @@ arch=('any')
 url="https://gitlab.com/greyxor/emopick"
 license=('GPL-3.0-only')
 depends=('awk' 'fzf' 'unicode-emoji')
-makedepends=('git')
+makedepends=('git' 'git-lfs')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
