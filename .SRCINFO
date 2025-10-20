@@ -1,6 +1,6 @@
 pkgbase = python-xnum
 	pkgdesc = Simple and lightweight Python library that helps you convert digits between different numeral systems
-	pkgver = 0.9
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/openscilab/xnum
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-xnum
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://github.com/openscilab/xnum/archive/v0.9.tar.gz
-	sha256sums = 38c88ccfed8a41cd8ad90d73c959b8edc5c182deffc640a5f435de70d9169e6c
+	source = https://github.com/openscilab/xnum/archive/v1.0.tar.gz
+	sha256sums = a64395a4efd6be84ae8898b316379bc440350a10981abc8b13a40a01be7ca71e
 
 pkgname = python-xnum
