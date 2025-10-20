@@ -5,7 +5,7 @@
 
 pkgname=python-torchaudio-rocm
 _pkgname=audio
-pkgver=2.8.0
+pkgver=2.9.0
 _sox_ver=14.4.2
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCM support)"
@@ -39,22 +39,22 @@ provides=('python-torchaudio' "python-torchaudio=${pkgver}")
 source=(
 	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://downloads.sourceforge.net/project/sox/sox/$_sox_ver/sox-$_sox_ver.tar.bz2"
-	policy_min_3.5.patch
 )
-sha256sums=('8809e4b0fa1635a89d5b05fe8e6e1db79fc0cc2052474ef6e76e349755827c12'
-            '81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c'
-            'af89ba1d9a7324918797f56ee5a4f542907ed697c3cf7474c46946beafc94ed9')
+sha256sums=(
+	'e59e7bc53709b41a7c9d3f18f2bdeb8b2aaaffcc498b0b9c0b49b20425f121ac'
+	'81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c'
+)
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -N -p 1 -i "${srcdir}"/policy_min_3.5.patch
+	# patch -N -p 1 -i "${srcdir}"/policy_min_3.5.patch
 }
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"
 
-	# populate build architecture list similar to pkg arch:python-pytorch
-	# 2.8.0-5: gfx950 lacks support for 128 bit atomics
+	# populate build architecture list identical to pkg arch:python-pytorch
+	# python-pytorch 2.9.0-1: gfx950 lacks support for 128 bit atomics
 	_PYTORCH_ROCM_ARCH="$(rocm-supported-gfx -e gfx950)"
 	if test -n "$GPU_TARGETS"; then _PYTORCH_ROCM_ARCH="$GPU_TARGETS"; fi
 	if test -n "$AMDGPU_TARGETS"; then _PYTORCH_ROCM_ARCH="$AMDGPU_TARGETS"; fi
