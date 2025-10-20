@@ -3,7 +3,7 @@
 pkgname=neovide-bin
 _pkgname=neovide
 pkgver=0.15.2
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc="No Nonsense Neovim Client in Rust"
 arch=(x86_64)
 url="https://github.com/neovide/neovide"
@@ -19,7 +19,7 @@ depends=(
   libpng
   brotli
 )
-install=.install
+# install=.install
 source=("${_pkgname}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}.AppImage")
 sha256sums=(3c1d694e2529e899157cf0fd5e01fcd0fb12f56e8f8f9336e4337c1abc7875c3)
 
@@ -31,5 +31,7 @@ package() {
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+  mkdir -p "${pkgdir}/usr/local/bin"
+  ln -sf "${pkgdir}/usr/bin/neovide" "${pkgdir}/usr/local/bin/vide"
 }
 
