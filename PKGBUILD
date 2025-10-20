@@ -1,8 +1,9 @@
 # Maintainer : Adrien Czerny <adrien@czerny.fr>
 
 pkgname=cinnamon-applet-weather
-pkgver=3.8
-pkgrel=2
+pkgver=3.6.8
+pkgrel=1
+epoch=1
 pkgdesc="View your local weather forecast"
 arch=('any')
 url="https://cinnamon-spices.linuxmint.com/applets/view/17"
