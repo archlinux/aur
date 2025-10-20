@@ -3,7 +3,7 @@
 # Contributor: Mihai Bişog <mihai.bisog@gmail.com>
 
 pkgname=lib32-fmt
-pkgver=11.1.3
+pkgver=12.0.0
 pkgrel=1
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64)
@@ -16,12 +16,12 @@ makedepends=(
   ninja
 )
 source=(git+https://github.com/fmtlib/fmt.git#tag=${pkgver})
-b2sums=('cab07694562864d5549cffc87ecf3553be7bb8b8a4bc20fe105723b2ac0406aec12167cddc7f9cdbc247d3203cc122cef1b93e3b04efcb6171d5e46e66555fa5')
+b2sums=('3cc82aae85fc4283e28360b13d3a11eb0b1e8bbe59f4db9ad63fc9806c73d028298ca1b6ab0033a31a311054d7111d299db52a99203cb4d97be56bee7aad232f')
 
-pkgver() {
-  cd fmt
-  git describe --tags
-}
+#pkgver() {
+#  cd fmt
+#  git describe --tags
+#}
 
 build() {
   export CFLAGS="-m32 ${CFLAGS}"
