@@ -1,6 +1,6 @@
 pkgbase = gitfetch-python
 	pkgdesc = A neofetch-style CLI tool for GitHub statistics
-	pkgver = 1.0.20
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Matars/gitfetch
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gitfetch-python
 	depends = github-cli
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = gitfetch-python-1.0.20.tar.gz::https://github.com/Matars/gitfetch/archive/refs/tags/v1.0.20.tar.gz
-	sha256sums = 5dee1bb3e22ca12c5f712ef0fc8276837f7b70ac25cfab34b6f79bda5cc77b90
+	source = gitfetch-python-1.1.0.tar.gz::https://github.com/Matars/gitfetch/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = gitfetch-python
