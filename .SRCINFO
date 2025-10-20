@@ -1,6 +1,6 @@
 pkgbase = cobib-git
 	pkgdesc = Console Bibliography
-	pkgver = r1395.32376b3
+	pkgver = r1397.0c9a94a
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib
 	arch = any
@@ -31,6 +31,8 @@ pkgbase = cobib-git
 	provides = cobib
 	conflicts = cobib
 	source = cobib::git+https://gitlab.com/cobib/cobib.git
+	source = git+https://gitlab.com/cobib/cobib-docs-theme.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cobib-git
