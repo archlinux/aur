@@ -3,8 +3,8 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.35.1
-_electronversion=37
+pkgver=1.35.2
+_electronversion=38
 pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -26,13 +26,13 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('94263dc1407748a713f6e8691b700425b6e83e9f2058d77cf1e8516d6320260e')
-sha256sums_armv7h=('13da32ab5739adb7bdde1ced6f59e3dcfbce15ea53ab23ec6a0ebb3b5b7ffd10')
-sha256sums_x86_64=('9ce204945a22cb88be860dba1141c896f927982bca0940e1f08f87333a9556db')
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('f203db409b7d2bb955b1c90297cccbda6ecd597bfb3937590a8aa82719479f58')
+sha256sums_armv7h=('56b040d975aba1565a0388ed1bd7326a333d35594539efe4944c2575e7357754')
+sha256sums_x86_64=('f79952bd29b1f053e79187a398f6495d6951e9d7f33df8ce00cd138cabafecc5')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
