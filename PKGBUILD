@@ -2,7 +2,7 @@
 pkgname=duolingo-desktop-bin
 _appname=dl-desktop
 _pkgname=ro.go.hmlendea.DL-Desktop
-pkgver=4.1.0
+pkgver=4.1.1
 _electronversion=36
 pkgrel=1
 pkgdesc="Desktop client for the Duolingo language learning application.(Prebuilt version.Use system-wide electron)"
@@ -19,9 +19,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/v${pkgver}/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a0317e4f8d056b2668a088a83b81e92843257786e533bc8a26ae481922bc930c'
+sha256sums=('bda7e2dcf4bdf9e72998130784768de3705a546ce53774c66f52ec3072e99c28'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -30,6 +34,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_appname}\/${_appname}/${pkgname%-bin} %U/g
         s/${_pkgname}/${pkgname%-bin}/g
