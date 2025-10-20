@@ -1,0 +1,15 @@
+pkgbase = hypryou-greeter
+	pkgdesc = Greetd config for hypryou greeter
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://github.com/koeqaife/hyprland-material-you
+	install = hypryou-greeter.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = greetd
+	depends = hypryou
+	source = hypryou-greeter-1.0.0.tar.gz::https://github.com/koeqaife/hyprland-material-you/archive/refs/heads/v2.tar.gz
+	sha256sums = SKIP
+
+pkgname = hypryou-greeter

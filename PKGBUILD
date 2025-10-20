@@ -1,0 +1,21 @@
+# Maintainer: Muhammad Shammaas <cmshammaas@gmail.com>
+pkgname=hypryou-greeter
+pkgver=1.0.0
+pkgrel=4
+pkgdesc="Greetd config for hypryou greeter.Credits : Koeqaife"
+arch=('any')
+license=('custom')
+depends=(
+    'greetd'
+    'hypryou'
+)
+makedepends=('git')
+install="${pkgname}.install"
+url="https://github.com/koeqaife/hyprland-material-you"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koeqaife/hyprland-material-you/archive/refs/heads/v2.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    install -Dm644 "${srcdir}/hyprland-material-you-2/greeter/config.toml" \
+        "${pkgdir}/usr/share/${pkgname}/config.toml"
+}
