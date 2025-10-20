@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Vivarium
+Comment=A dynamic tiling Wayland compositor using wlroots
+Exec=vivarium
+Type=Application

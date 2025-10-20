@@ -18,6 +18,8 @@ pkgbase = vivarium-git
 	conflicts = vivarium
 	backup = etc/vivarium/config.toml
 	source = vivarium::git+https://github.com/inclement/vivarium
+	source = vivarium.desktop
 	md5sums = SKIP
+	md5sums = 5e55dab3aaf5a50d29309c59b08eb143
 
 pkgname = vivarium-git

@@ -16,8 +16,10 @@ provides=("$_pkg")
 conflicts=("$_pkg")
 backup=("etc/$_pkg/config.toml")
 install="$pkgname.install"
-source=("$_pkg::git+$url")
-md5sums=('SKIP')
+source=("$_pkg::git+$url"
+	"vivarium.desktop")
+md5sums=('SKIP'
+         '5e55dab3aaf5a50d29309c59b08eb143')
 
 pkgver() {
 	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
