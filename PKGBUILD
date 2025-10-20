@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/koeqaife/hyprland-material-you"
 install=hypryou.install
 license=('GPL3')
-source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you.git")
+source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 depends=(
