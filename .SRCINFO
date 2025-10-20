@@ -5,6 +5,7 @@ pkgbase = tosu
 	url = https://github.com/tosuapp/tosu
 	arch = x86_64
 	license = LGPL3
+	optdepends = tosu-overlay
 	provides = tosu
 	conflicts = tosu
 	options = !strip
