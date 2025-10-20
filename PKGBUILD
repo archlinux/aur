@@ -3,7 +3,7 @@
 
 _pkgname="usacloud"
 pkgname="${_pkgname}-bin"
-pkgver=1.16.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="CLI client for the Sakura Cloud"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -16,10 +16,10 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-arm.zip")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-386.zip")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux-amd64.zip")
-sha256sums_aarch64=('227316bd420c8353a328cf077c1db0135f18723dbeb5742860f07bc554c65f5d')
-sha256sums_armv7h=('0486ef6901cf8d14da0fdcac934b82463aa67361f91f98130905bd93df4f0590')
-sha256sums_i686=('1c56d6d0317f3f4ec61cf61f9944227c81526929d62f8485a6eb97c5149ff6c8')
-sha256sums_x86_64=('c8fe4dcdbae9f2568ac71dc1cdcaf67645b84538196668ee056e209ef247e119')
+sha256sums_aarch64=('c11dc7ae63a10caf52364d0347223bfd68689cc186381f07f23b7c047546abf8')
+sha256sums_armv7h=('01c071381be8e2f13b5adbf3d4fdda13300bb3d8f98adb3a173c1aae52e8e56d')
+sha256sums_i686=('090365ed9be05cd416925254c499fd2e791130fb03bbc840099777a084a0d322')
+sha256sums_x86_64=('bd8c63e97f47c0b8169f2055e3030032dbaa5f8b30da47584a1a1ae4f236c19b')
 
 prepare() {
   cd "${srcdir}"
