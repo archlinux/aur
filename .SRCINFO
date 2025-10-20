@@ -1,6 +1,6 @@
 pkgbase = rabs
 	pkgdesc = Generic imperative build system
-	pkgver = 2.36.1
+	pkgver = 2.37.1
 	pkgrel = 1
 	url = https://rabs.readthedocs.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rabs
 	license = MIT
 	depends = gc
 	provides = rabs
-	source = git+https://github.com/wrapl/rabs#tag=v2.36.1
+	source = git+https://github.com/wrapl/rabs#tag=v2.37.1
 	md5sums = SKIP
 
 pkgname = rabs
