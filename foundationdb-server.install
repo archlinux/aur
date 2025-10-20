@@ -1,0 +1,51 @@
+post_install() {
+  CLUSTER_FILE="/etc/foundationdb/fdb.cluster"
+  NEWDB=0
+
+  # 1. Create default cluster file if it doesn't exist
+  if [ ! -f "$CLUSTER_FILE" ]; then
+    echo "Creating new cluster file: $CLUSTER_FILE"
+    description=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
+    random_str=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 8)
+    echo "$description:$random_str@127.0.0.1:4500" >"$CLUSTER_FILE"
+    chown foundationdb:foundationdb "$CLUSTER_FILE"
+    chmod 0664 "$CLUSTER_FILE"
+    NEWDB=1
+  fi
+
+  # 2. Reload systemd daemon to recognize new service
+  systemctl daemon-reload
+
+  # 3. If we created a new DB, initialize it
+  if [ "$NEWDB" -eq 1 ]; then
+    echo "Configuring new single-node database..."
+    /usr/bin/fdbcli -C "$CLUSTER_FILE" --exec "configure new single memory; status" --timeout 20 || echo "WARNING: Initial database configuration failed."
+  fi
+
+  # 4. Print instructions (Arch does not auto-start services)
+  echo "---"
+  echo "FoundationDB server has been installed."
+  echo "To enable and start the service, run:"
+  echo "  sudo systemctl enable --now foundationdb.service"
+  echo "---"
+}
+
+post_upgrade() {
+  # Reload systemd daemon in case service file changed
+  systemctl daemon-reload
+  echo "---"
+  echo "FoundationDB server has been upgraded."
+  echo "To restart the service with the new version, run:"
+  echo "  sudo systemctl restart foundationdb.service"
+  echo "---"
+}
+
+pre_upgrade() {
+  # Stop service before upgrade
+  systemctl stop foundationdb.service || :
+}
+
+pre_remove() {
+  # Stop service before removal
+  systemctl stop foundationdb.service || :
+}

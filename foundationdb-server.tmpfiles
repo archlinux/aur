@@ -1,0 +1,4 @@
+# Type  Path                        Mode  User          Group          Age  Argument
+d       /var/lib/foundationdb/data  0700  foundationdb  foundationdb   -    -
+d       /var/log/foundationdb       0700  foundationdb  foundationdb   -    -
+d       /run/foundationdb           0755  foundationdb  foundationdb   -    -

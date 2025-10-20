@@ -1,0 +1,18 @@
+[Unit]
+Description=FoundationDB Process Monitor
+After=network.target
+
+[Service]
+Type=forking
+User=foundationdb
+Group=foundationdb
+
+# Executable is in /usr/lib, not /usr/sbin
+# We use a subdirectory for the PID file
+ExecStart=/usr/lib/foundationdb/fdbmonitor --conffile /etc/foundationdb/foundationdb.conf --lockfile /var/run/foundationdb/fdbmonitor.pid --daemonize
+
+Restart=on-failure
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target

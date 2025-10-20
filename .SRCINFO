@@ -1,0 +1,36 @@
+pkgbase = foundationdb
+	pkgdesc = FoundationDB scalable, fault-tolerant, ordered key-value store
+	pkgver = 7.3.67
+	pkgrel = 1
+	url = https://www.foundationdb.org
+	install = foundationdb-server.install
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	optdepends = python: for recommended features
+	conflicts = foundationdb
+	replaces = foundationdb
+	options = !debug
+	backup = etc/foundationdb/foundationdb.conf
+	source = https://github.com/apple/foundationdb/releases/download/7.3.67/foundationdb-clients_7.3.67-1_amd64.deb
+	source = https://github.com/apple/foundationdb/releases/download/7.3.67/foundationdb-server_7.3.67-1_amd64.deb
+	source = foundationdb-clients.sysusers
+	source = foundationdb-clients.tmpfiles
+	source = foundationdb-server.tmpfiles
+	source = foundationdb-server.service
+	source = foundationdb-server.install
+	sha256sums = 6e61112a35432e9e12c823681291b5ce4a3e07f5a77f5480c91362bf1ceef56e
+	sha256sums = 310b638bb262c9bbeff3ccd49db6faa045a552834c8706c46177d4e902bea792
+	sha256sums = 323a67bfef40289eabc1924d0032c7d9578c9d6c1da0de407b39ea81b40b53e2
+	sha256sums = d562815a86ef3343f55ef18c061298558f73e9cd23f6a9f10d630285057498a1
+	sha256sums = ef9f201d4de05d62278ceb6c0773f7522ea113c01407ecc4eac1b226de29f013
+	sha256sums = dded6e66c1e31d877ed7d9ead59f970f64c22569c36e52c6d2f4356757ea0341
+	sha256sums = 199726f9af1d8d4a73ee650faf5fa2f863c33b5bec71ebc166593528ded9abed
+
+pkgname = foundationdb-clients
+	pkgdesc = FoundationDB clients
+
+pkgname = foundationdb-server
+	pkgdesc = FoundationDB server daemon and utilities
+	depends = foundationdb-clients
+	depends = systemd

@@ -1,0 +1,3 @@
+# Type  Name          ID   GECOS (Comment)      Home Directory         Shell
+g       foundationdb  -    -                    -                      -
+u       foundationdb  -    "FoundationDB"       /var/lib/foundationdb  /bin/false
