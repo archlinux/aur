@@ -1,6 +1,6 @@
 pkgname=osu-tachyon
 _pkgname=${pkgname%}
-pkgver=2025.911.0
+pkgver=2025.1019.0
 pkgrel=1
 pkgdesc="osu!lazer unstable branch."
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
 )
 noextract=("osu.AppImage")
 sha256sums=(
-  '317c81e34f14318c764c2c3907ee2ef3dc43980dca911ab0c1b0561f6d959226'
+  'ce12930ac83afc5cb3b32e2cd7118298fbf1312de1b83361c4b521692e96d6d1'
   '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
   'SKIP'
   '19a9941f5f5aa627282ba80a45f1f04894bb62d4a9ee5e6729849f6df11e845c'
