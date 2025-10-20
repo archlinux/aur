@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -27,12 +27,16 @@
+@@ -27,12 +27,17 @@
  set(TARGET_OUTPUT_NAME_PREFIX "alibabacloud-oss-" CACHE STRING "The target's output name prefix")
  
  #Options
@@ -15,9 +15,10 @@
 +if(NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
 +    message(FATAL_ERROR "You must enable at least one of BUILD_SHARED_LIBS or BUILD_STATIC_LIBS.")
 +endif()
- 
++
  #Platform
  if (CMAKE_CROSSCOMPILING)
+ 	if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 --- a/sdk/CMakeLists.txt
 +++ b/sdk/CMakeLists.txt
 @@ -133,6 +133,7 @@
