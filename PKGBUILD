@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=chaosblade-bin
-pkgver=1.7.5
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Chaosblade: An Easy to Use and Powerful Chaos Engineering Toolkit"
 arch=(x86_64)
@@ -16,7 +16,7 @@ backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_amd64.tar.gz")
-sha256sums=('da6391c55721bdc92a5d3a82ce447de8f2967f75a973129f528ead10f841485d')
+sha256sums=('a49bb08dfe2a2292c60600ad8e34bf922fe11449317a03c67120838f6e7ee236')
 noextract=(${pkgname%-bin}-${pkgver}.tar.gz)
 
 package() {
