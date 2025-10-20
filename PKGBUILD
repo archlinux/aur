@@ -1,7 +1,8 @@
 # Maintainer: Justin Milam <jsmilam at gmail dot com>
 # Maintainer: Syco <sycolth at gmail dot com>
 pkgname=sngrep
-pkgver=1.8.2
+pkgver=1.8.3
+_commit=b84f0663e47de6f238d9f81eed67612a9ab616ef
 pkgrel=1
 pkgdesc="A tool for displaying SIP call message flows from a terminal"
 arch=('x86_64' 'i386')
@@ -12,7 +13,7 @@ makedepends=('git' 'sed')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 install=
-source=("${pkgname%}::git+https://github.com/irontec/sngrep.git#commit=219cb5b")
+source=("${pkgname%}::git+https://github.com/irontec/sngrep.git#commit=${_commit}")
 md5sums=('SKIP')
 
 build() {

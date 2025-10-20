@@ -1,6 +1,6 @@
 pkgbase = sngrep
 	pkgdesc = A tool for displaying SIP call message flows from a terminal
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/irontec/sngrep
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sngrep
 	depends = gnutls
 	provides = sngrep
 	conflicts = sngrep
-	source = sngrep::git+https://github.com/irontec/sngrep.git#commit=219cb5b
+	source = sngrep::git+https://github.com/irontec/sngrep.git#commit=b84f0663e47de6f238d9f81eed67612a9ab616ef
 	md5sums = SKIP
 
 pkgname = sngrep
