@@ -1,15 +1,17 @@
 pkgbase = mangojuice-bin
 	pkgdesc = A convenient alternative for setting up Mangohud (binary release)
-	pkgver = 0.8.1
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = libgee
+	makedepends = fuse2
 	depends = libadwaita
+	depends = libgee
+	depends = mangohud
 	provides = mangojuice
 	conflicts = mangojuice
-	source = https://github.com/radiolamp/mangojuice/releases/download/0.8.1/mangojuice_0.8.1-1_amd64.deb
-	sha256sums = 6a0a5877ebd8ca6e619b6f098cefb57df791993f70e2ff65ed5d7dc81a628692
+	source = https://github.com/radiolamp/mangojuice/releases/download/0.8.8/MangoJuice-0.8.8-x86_64.AppImage
+	sha256sums = b484a87b85e4a35353d12362993d9d84b517d5e6edd810d3edff78b3ce2d7048
 
 pkgname = mangojuice-bin
