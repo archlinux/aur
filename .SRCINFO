@@ -1,7 +1,7 @@
 pkgbase = jet-edit
 	pkgdesc = jet is a fast and intuitive regex find & replace cli
-	pkgver = r15.125704c
-	pkgrel = 7
+	pkgver = r20.fa9b61f
+	pkgrel = 1
 	url = https://github.com/NicoNex/jet
 	arch = any
 	license = GPL3

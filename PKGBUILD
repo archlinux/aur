@@ -2,8 +2,8 @@
 
 pkgname=jet-edit
 _pkgname=jet
-pkgver=r15.125704c
-pkgrel=7
+pkgver=r20.fa9b61f
+pkgrel=8
 pkgdesc="jet is a fast and intuitive regex find & replace cli"
 arch=('any')
 url="https://github.com/NicoNex/${_pkgname}"
