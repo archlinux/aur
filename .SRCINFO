@@ -8,6 +8,6 @@ pkgbase = cconsole
 	makedepends = gcc
 	makedepends = make
 	source = cconsole-0.1.0.tar.gz::https://github.com/eshnd/cconsole/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 74eadaef6407a55673949c222fd69bc58e9f4599ad4c667d1890fde24825e892
+	sha256sums = 32f59511f568ecad0536ed5a1db3a81a10497e87a62dcbc48b77dbc421db450b
 
 pkgname = cconsole

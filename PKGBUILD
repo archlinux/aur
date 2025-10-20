@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('gcc' 'make')
 source=("cconsole-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74eadaef6407a55673949c222fd69bc58e9f4599ad4c667d1890fde24825e892')
+sha256sums=('32f59511f568ecad0536ed5a1db3a81a10497e87a62dcbc48b77dbc421db450b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
