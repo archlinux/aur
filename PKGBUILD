@@ -10,19 +10,19 @@
 # Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=10.6.1
+pkgver=10.7.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
 depends=('7zip' 'brotli' 'hicolor-icon-theme' 'libx11' 'qt6pas' 'upx' 'zstd')
-optdepends=('zpaq')
+optdepends=('zpaq: install to use the system version')
 options=('!emptydirs')
 provides=("pea" "peazip")
 conflicts=("pea" "peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt6-1.x86_64.rpm")
-sha256sums=('748c9bbb7cf094ae30da17f2aac52e94f78821c1af88637bbcc51872676e3af6')
+sha256sums=('550675d1a21c45e1496c685a2db073def986e158fa492fc22c4254e02df7d775')
 
 prepare() {
 # Cleanup

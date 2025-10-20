@@ -1,6 +1,6 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (binary release)
-	pkgver = 10.6.1
+	pkgver = 10.7.0
 	pkgrel = 1
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = peazip-qt-bin
 	depends = qt6pas
 	depends = upx
 	depends = zstd
-	optdepends = zpaq
+	optdepends = zpaq: install to use the system version
 	provides = pea
 	provides = peazip
 	conflicts = pea
 	conflicts = peazip
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/10.6.1/peazip-10.6.1.LINUX.Qt6-1.x86_64.rpm
-	sha256sums = 748c9bbb7cf094ae30da17f2aac52e94f78821c1af88637bbcc51872676e3af6
+	source = https://github.com/peazip/PeaZip/releases/download/10.7.0/peazip-10.7.0.LINUX.Qt6-1.x86_64.rpm
+	sha256sums = 550675d1a21c45e1496c685a2db073def986e158fa492fc22c4254e02df7d775
 
 pkgname = peazip-qt-bin
