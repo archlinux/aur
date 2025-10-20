@@ -3,14 +3,14 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.2.2.r254.g137b2ce
+pkgver=0.2.2.r425.g8cc0cb8
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
 license=('MIT')
 arch=('x86_64')
 depends=(gcc-libs glibc oniguruma)
-makedepends=(git rust)
+makedepends=(git rust rust-src)
 options=(zipman)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -36,9 +36,12 @@ prepare(){
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
 export RUSTFLAGS="-C codegen-units=1 -C panic=abort ${RUSTFLAGS}" # PROFILE=release-fast does not work yet
+export RUSTC_BOOTSTRAP=1
 package(){
   cd ${pkgname%-git}
   make install DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/share/man/man1 PROFILE=release MULTICALL=y LN="ln -f" \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} \
+    CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort" \
+    SKIP_UTILS="runcon chcon arch kill more uptime hostname"
+  #install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
 }
