@@ -1,7 +1,7 @@
 
 
 pkgname=uutils-tar-git
-pkgver=0.0.1.g
+pkgver=0.0.1.a.g5f5f94f
 #pkgver() {
   # echo $pkgver
 #}
@@ -11,19 +11,14 @@ arch=('x86_64')
 url="https://github.com/uutils/tar"
 license=('MIT')
 depends=(gcc-libs)
-makedepends=(rust tar git)
+makedepends=(rust rust-src tar git)
 source=("uutils-tar::git+${url}.git")
 sha256sums=('SKIP')
 
-#prepare(){
-#  cd utils-tar
-#  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-#}
-
 build(){
   cd uutils-tar
-  export RUSTFLAGS="-C codegen-units=$(( $(nproc) / 2 + 1 )) ${RUSTFLAGS}"
-  cargo build --profile=release-fast
+  export RUSTFLAGS="-C codegen-units=1 ${RUSTFLAGS}" RUSTC_BOOTSTRAP=1
+  cargo build --profile=release-fast -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort
 }
 
 package() {
