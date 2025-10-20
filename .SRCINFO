@@ -1,6 +1,6 @@
 pkgbase = librius-bin
 	pkgdesc = A fast, minimalist CLI to manage your personal book collection
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/umpire274/librius
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = librius-bin
 	depends = gcc-libs
 	provides = librius
 	conflicts = librius
-	source_x86_64 = librius-x86_64-0.3.5.tgz::https://github.com/umpire274/librius/releases/download/v0.3.5/librius-0.3.5-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 7ccc83896be80c7e4f5869a2b4b2922301ea4b5cc604ebde57c23b605e60f732
+	source_x86_64 = librius-x86_64-0.4.0.tgz::https://github.com/umpire274/librius/releases/download/v0.4.0/librius-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 32a27d8347b865a46d68e75ea4efbe37121e47b00e48ea17e428be8408512fdf
 
 pkgname = librius-bin
