@@ -10,7 +10,7 @@ url="https://github.com/koeqaife/hyprland-material-you"
 install=hypryou.install
 license=('GPL3')
 source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('5e3f82dab13aac376e881de47b700b0123088ad4f632081c917181d4ec17a60f')
 
 depends=(
   'python'
