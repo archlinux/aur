@@ -1,0 +1,18 @@
+pkgbase = samloader
+	pkgdesc = Download Samsung firmware from official servers
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/samloader/samloader
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-pycryptodomex
+	depends = python-requests
+	depends = python-tqdm
+	source = samloader-0e53d8032699a4039ea6f5310ebec05f8f417f07.tar.gz::https://github.com/samloader/samloader/archive/0e53d8032699a4039ea6f5310ebec05f8f417f07.tar.gz
+	b2sums = 6eeb3d2e73c2bd91bdb05a41457e022964cbfc6b1921cd9b20d9aa4d8e560f762beea9a824f85ce1f17f81404f50c90e0eea7b0bde4d2c9cb7ad87146a44c0de
+
+pkgname = samloader
