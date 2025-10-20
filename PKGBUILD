@@ -31,9 +31,6 @@ optdepends=(
     "xdg-desktop-portal-gtk: a suggested XDG desktop portal"
     "xdg-desktop-portal-wlr: for portal-based screencasting and screenshotting"
 )
-# Trying not to clash with the already existing `pinnacle` package out there
-provides=(pinnacle-comp)
-conflicts=(pinnacle-comp)
 source=(
     "$_pkgname-$_pkgver.tar.gz::https://github.com/pinnacle-comp/pinnacle/archive/v$_pkgver.tar.gz"
     "https://github.com/pinnacle-comp/pinnacle/releases/download/v$_pkgver/pinnacle-api-$_pkgver-1.all.rock"
