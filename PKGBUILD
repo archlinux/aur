@@ -1,18 +1,18 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
+# Maintainer: Debjeet Banerjee <serene.brew.git@gmail.com>
+# Co Maintainer: Imon Chakraborty <serene.brew.git@gmail.com>
 pkgname=espionage
-pkgver=1.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="PyEFL D-Bus inspector"
+pkgdesc="ESP8266 and EPS32 firmware binaries analysis toolkit "
 arch=('any')
-url="https://phab.enlightenment.org/w/projects/espionage/"
-license=('GPL3')
-depends=('python-efl')
-source=("https://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1afe5d0c2cc293613fb6091131795b1d43d34efbfb211760c88018c4c8791a89')
+url="https://github.com/serene-brew/ESPionage"
+license=('BSD-3-CLAUSE')
+depends=('python')
+makedepends=('git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/serene-brew/ESPionage/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  python setup.py install --root="${pkgdir}"
+  cd "$srcdir/ESPionage-$pkgver" || exit 1
+  ./install.sh --prefix=/usr --destdir="$pkgdir"
 }
