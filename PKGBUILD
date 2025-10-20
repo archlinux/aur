@@ -2,7 +2,7 @@
 
 pkgname=play-timer
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI-friendly easy-to-use timer app with native DE integration."
 arch=('x86_64')
 curarch=$(uname -m)
