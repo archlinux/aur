@@ -1,17 +1,13 @@
-pkgbase = espionage-git
-	pkgdesc = PyEFL D-Bus inspector
-	pkgver = 0.9.r17.c7fa0fb
+pkgbase = espionage
+	pkgdesc = ESP8266 and EPS32 firmware binaries analysis toolkit
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://phab.enlightenment.org/w/projects/espionage/
-	install = espionage.install
+	url = https://github.com/serene-brew/ESPionage
 	arch = any
-	license = GPL3
+	license = BSD-3-CLAUSE
 	makedepends = git
-	depends = python-efl
-	provides = espionage=0.9.r17.c7fa0fb
-	conflicts = espionage
-	source = git://git.enlightenment.org/apps/espionage.git
+	depends = python
+	source = espionage-1.0.0.tar.gz::https://github.com/serene-brew/ESPionage/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = espionage-git
-
+pkgname = espionage
