@@ -27,7 +27,6 @@ pkgver() {
 build() {
     cd "${pkgname}"
 
-    ./configure --prefix=/usr
     make
 }
 
