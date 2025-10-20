@@ -2,7 +2,7 @@
 
 pkgname=vygrant
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="vygrant - OAuth2 authentication daemon"
 arch=('x86_64' 'i686')
 url="https://github.com/vybraan/vygrant"
@@ -31,7 +31,7 @@ check() {
 
 build() {
   cd "$srcdir/$pkgname"
-  go build -o vygrant main.go
+  go build -ldflags "-s -w" -o vygrant main.go
 }
 package() {
   install -Dm755 "$srcdir/$pkgname/vygrant" "$pkgdir/usr/bin/vygrant"

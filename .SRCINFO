@@ -1,7 +1,7 @@
 pkgbase = vygrant
 	pkgdesc = vygrant - OAuth2 authentication daemon
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vybraan/vygrant
 	arch = x86_64
 	arch = i686
