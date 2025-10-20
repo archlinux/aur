@@ -11,6 +11,7 @@ license=(' GPL-3.0-or-later')
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2') # Every other dependency is statically linked into the executable
 makedepends=('dotnet-sdk>=9.0' 'clang' 'git')
 provides=(helion)
+conflicts=(helion)
 source=("git+https://github.com/Helion-Engine/Helion")
 sha256sums=('SKIP')
 pkgver() {

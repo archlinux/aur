@@ -15,6 +15,7 @@ pkgbase = helion-git
 	depends = glibc
 	depends = glib2
 	provides = helion
+	conflicts = helion
 	source = git+https://github.com/Helion-Engine/Helion
 	sha256sums = SKIP
 
