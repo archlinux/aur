@@ -1,8 +1,8 @@
 
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
-pkgver=0.1.15
-pkgrel=2
+pkgver=0.1.17
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -44,11 +44,11 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    '59627d47f6beefdf82794f6cfa95ada774c96d5320ca5961452ddcc56bd612d9'
+    'cf0769ff81c970faa25fb54821ccbbfe0894c7ba5cf796c1a1be12824cb1112b'
 )
 
 sha256sums_aarch64=(
-    'dc14879431094e198e5c611bd5e50d27e7543430ad800f714cc302c4a721c42e'
+    '0e2767a6a56735caf9971e23e55c7bac1606e645ae5ef2ad46ccbd2356588761'
 )
 
 package() {
