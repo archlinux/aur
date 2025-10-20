@@ -1,0 +1,4 @@
+[trilium-next]
+source = "git"
+git = "https://github.com/TriliumNext/Trilium.git"
+prefix = "v"
