@@ -1,7 +1,7 @@
 # Maintainer: Ludvig <artemludvig79@gmail.com>
 
 pkgname=superlauncher-mc
-pkgver=1.4.0.8
+pkgver=1.4.0.9
 pkgrel=1
 pkgdesc="SuperLauncherMC — Advanced Minecraft launcher with mod and server support (new design release)"
 arch=('x86_64')
