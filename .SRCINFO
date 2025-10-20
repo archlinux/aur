@@ -1,0 +1,15 @@
+pkgbase = k3conf-git
+	pkgdesc = A Powerful Diagnostic Tool for Texas Instruments K3 based Processors
+	pkgver = v0.3
+	pkgrel = 1
+	url = https://git.ti.com/cgit/k3conf/k3conf/
+	arch = x86_64
+	license = BSD3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	source = git://git.ti.com/k3conf/k3conf.git#tag=v0.3
+	sha256sums = SKIP
+
+pkgname = k3conf-git
