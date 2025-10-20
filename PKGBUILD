@@ -7,7 +7,8 @@ arch=("x86_64" "aarch64")
 url="https://github.com/jmshrv/finamp"
 license=('MPL-2.0')
 depends=('gtk3' 'pango' 'libmpv.so')
-makedepends=('git' 'flutter-tool' 'flutter-target-linux' 'clang' 'cmake' 'ninja' 'xz')
+makedepends=('git' 'clang' 'cmake' 'ninja' 'xz')
+optdepends=('fvm' 'flutter-tool' 'flutter-target-linux')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver//_/-}.tar.gz")
 b2sums=('0eaed477ec896d5e97062eeffa61ec746b5792381074f8b3277a27bad3138a7bd188f13cf8b1d8d1337f4939486dee2e9867bcaed5093eb645e15ea085d078f1')
 
