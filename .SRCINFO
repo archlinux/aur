@@ -1,6 +1,6 @@
 pkgbase = lact-headless-bin
 	pkgdesc = Linux GPU Configuration Tool (headless binary release)
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/ilya-zlobintsev/LACT
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lact-headless-bin
 	depends = hwdata
 	provides = lact
 	conflicts = lact
-	source = https://github.com/ilya-zlobintsev/LACT/releases/download/v0.8.1/lact-headless-0.8.1-0.amd64.ubuntu-2404.deb
-	sha256sums = 982a02c54f2b0789ed567ab6cc6913c782d82207bd102e8456a25aa3d89f9230
+	source = https://github.com/ilya-zlobintsev/LACT/releases/download/v0.8.2/lact-headless-0.8.2-0.amd64.ubuntu-2404.deb
+	sha256sums = 227e77f5e1b78bfbcb059af5321d2ef9f34fd87c677faaa27ff37f75e4602293
 
 pkgname = lact-headless-bin
