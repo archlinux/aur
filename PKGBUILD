@@ -1,6 +1,6 @@
 pkgname=qtjambi
 pkgver=6.10.0
-pkgrel=2
+pkgrel=3
 qtver=6.10.0
 qtjambiver=6.10.0
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
@@ -17,19 +17,10 @@ prepare() {
   patch -p1 < ../../build_release_only.patch
   patch -p1 < ../../warn_off.patch
   patch -p1 < ../../rm_warn_dollar.patch
-  mkdir qtdir
-  ln -s /usr/lib/qt6/bin qtdir/bin
-  ln -s /usr/include/qt6 qtdir/include
-  ln -s /usr/lib qtdir/lib
-  ln -s /usr/lib/qt6 qtdir/libexec
-  ln -s /usr/lib/qt6/mkspecs qtdir/mkspecs
-  ln -s /usr/lib/qt6/plugins qtdir/plugins
-  ln -s /usr/lib/qt6/qml qtdir/qml
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${qtjambiver}"
-  export QTDIR="${srcdir}/${pkgname}-${qtjambiver}/qtdir"
   export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
   export JAVA_HOME_TARGET=$JAVA_HOME
   ant generator.make
