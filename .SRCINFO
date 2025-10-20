@@ -1,14 +1,19 @@
 pkgbase = python-rapidtables
 	pkgdesc = Super fast list of dicts to pre-formatted tables conversion library
 	pkgver = 0.1.11
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/alttch/rapidtables
 	arch = any
 	license = MIT
 	checkdepends = python-termcolor
+	makedepends = python-build
 	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = python-rapidtables-0.1.11.tar.gz::https://github.com/alttch/rapidtables/archive/da2737da6c210518e3044782d72de031c53d9a7e.tar.gz
+	source = python-rapidtables-0.1.11-pep518.diff::https://github.com/alttch/rapidtables/commit/4eb2b2878129e0420ca86798cfd0111392bb46dc.diff
 	b2sums = b198b723f24884cae5a303171f880c29410e72e25a3431ddfbb2992d39a5aafbed9f8a7ed5fd923f6793da7cff37426410f87cb98fc033d9a27dd56858ec3e8a
+	b2sums = a48314c9924c9955016fd544f5b5367d10dece4c51674f6bf77d5dec6dec055b046cdfb1b42daa752ce1a2f12de23e373152bf0869053b27f04b5d6fbcde83a2
 
 pkgname = python-rapidtables
