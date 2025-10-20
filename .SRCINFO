@@ -1,6 +1,6 @@
 pkgbase = wl-clipboard-rs
 	pkgdesc = A safe Rust reimplementation of the Wayland command-line copy/paste utilities
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/YaLTeR/wl-clipboard-rs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = wl-clipboard-rs
 	depends = gcc-libs
 	provides = wl-clipboard
 	conflicts = wl-clipboard
-	source = wl-clipboard-rs::git+https://github.com/YaLTeR/wl-clipboard-rs.git#tag=v0.9.1
-	b2sums = SKIP
+	source = wl-clipboard-rs::git+https://github.com/YaLTeR/wl-clipboard-rs.git#tag=v0.9.2
+	b2sums = 2639eabfb2661a9a1ab194f4b6f2fd68b7a1a2d7fe449e55711422ff1381e1098191556945f691e8b03e1696c85b60ee72a9ab9490fd060eec92c2792081bcdb
 
 pkgname = wl-clipboard-rs
