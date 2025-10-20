@@ -12,6 +12,12 @@ url='https://pypi.org/project/kfactory/'
 license=("None")
 depends=(
 	"python-gitpython"
+	"klayout"
+	"python-dotenv"
+	"python-aenum"
+	"python-aenum"
+	"python-cachetools"
+	"python-pydantic-settings"
 	"python-loguru"
 	"python-rectangle-packer-git"
 	"python-pydantic-extra-types"
