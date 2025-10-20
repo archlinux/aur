@@ -1,17 +1,18 @@
 pkgbase = play-timer
 	pkgdesc = CLI-friendly easy-to-use timer app with native DE integration.
-	pkgver = 2.2.1
-	pkgrel = 3
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://github.com/efogdev/mpris-timer
 	arch = x86_64
 	license = MIT
 	depends = libadwaita
 	depends = glib2
 	depends = gtk3
+	depends = gtk4
 	depends = wayland
 	depends = pulse-native-provider
-	source = play-timer-x86_64::https://github.com/efogdev/mpris-timer/releases/download/2.2.1/play-timer-x86_64
-	source = play-timer-x86_64.sha256::https://github.com/efogdev/mpris-timer/releases/download/2.2.1/play-timer-x86_64.sha256
+	source = play-timer-x86_64::https://github.com/efogdev/mpris-timer/releases/download/2.2.2/play-timer-x86_64
+	source = play-timer-x86_64.sha256::https://github.com/efogdev/mpris-timer/releases/download/2.2.2/play-timer-x86_64.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 
