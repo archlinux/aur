@@ -5,6 +5,7 @@ pkgbase = hypryou
 	url = https://github.com/koeqaife/hyprland-material-you
 	install = hypryou.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cython
 	makedepends = git
@@ -46,7 +47,7 @@ pkgbase = hypryou
 	optdepends = ttf-meslo-nerd-font-powerlevel10k: Font for alacritty
 	optdepends = alacritty: I recommend to use this terminal
 	optdepends = tela-circle-icon-theme-nord: Default icons
-	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git
+	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.1.5
 	sha256sums = SKIP
 
 pkgname = hypryou

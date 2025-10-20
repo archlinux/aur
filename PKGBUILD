@@ -1,7 +1,7 @@
 # Maintainer: Koeqaife <koeqaife@sharinflame.com>
 # Maintainer: Shamz <cmshammaas@gmail.com>
 pkgname=hypryou
-_pkgname=hyprland-material-you
+_pkgname="hyprland-material-you"
 pkgver=2.1.5
 pkgrel=1
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/koeqaife/hyprland-material-you"
 install=hypryou.install
 license=('GPL3')
-source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you/archive/refs/tags/v$pkgver.tar.gz")
+source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 depends=(
@@ -67,7 +67,11 @@ build() {
   python utils_cy/setup.py build_ext --build-lib utils_cy --build-temp "$(mktemp -d)"
   cd "$srcdir/$_pkgname/build"
 
-  COMMON_FLAGS="-Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wstrict-overflow=5 -O3 -flto -fno-plt -march=x86-64 -mtune=generic"
+  if [[ $CARCH == "x86_64" ]]; then
+    COMMON_FLAGS="-Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wstrict-overflow=5 -O3 -flto -fno-plt -march=x86-64 -mtune=generic"
+  else
+    COMMON_FLAGS="-Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wstrict-overflow=5 -O3 -flto"
+  fi
 
   gcc $COMMON_FLAGS client.c -o hypryouctl
   gcc $COMMON_FLAGS $(pkg-config --cflags --libs gtk4) -o hypryou-start hypryou-start.c
