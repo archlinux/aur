@@ -1,54 +1,24 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
-pkgname=hudkit-wayland
+_pkgname=hudkit-wayland
+pkgname=${_pkgname}
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Transparent click-through web browser overlay, using WebKit (Wayland fork)"
 arch=('x86_64')
 url="https://github.com/SparxySys/hudkit-wayland"
 license=('ISC')
 depends=('gtk3' 'webkit2gtk' 'gtk-layer-shell')
-makedepends=('make' 'pkgconf' 'gcc')
-source=("hudkit-wayland::git+https://github.com/SparxySys/hudkit-wayland.git")
-sha256sums=('SKIP')
-
-example_config=$(cat <<'EOF'
-{
-    "title": "example overlay", //Title of the window, to make it easier to identify
-    "url": "file:///path/to/file.html?OVERLAY_WS=ws://127.0.0.1:10501/ws", //URL to the overlay
-    "x": 100, // X position to display overlay at
-    "y": 100, // Y position to display overlay at
-    "width": 200, // Width of overlay
-    "height": 200, // Height of overlay
-    "monitor": 0, // on which display to render
-    "zoom": 1.0, // zoom level of browser, float
-    "hotkey": "<Ctrl>L" // Hotkey to lock/unlock the overlay
-}
-EOF
-)
-
-make_install=$(cat <<'EOF'
-install:
-	install -D -m 755 hudkit $(DESTDIR)/usr/bin/$(NAME)
-	install -D -m 644 config.json $(DESTDIR)/usr/share/doc/$(NAME)/examples/config.json
-EOF
-)
-
-prepare() {
-    echo "${example_config}" > "${srcdir}/hudkit-wayland/webkit/config.json"
-	cd "${srcdir}/hudkit-wayland/webkit"
-	echo "${make_install}" >> makefile
-}
+makedepends=('git' 'make' 'pkgconf' 'gcc')
+_commit=10e8a409ecfb4253cbe3e794239ebd36da95706f
+source=("${_pkgname}::git+${url}.git#commit=${_commit}")
+sha256sums=('4cef2af8fbd5a2ff68cd3c74816f85772e673956416750a282f34ebc4583a060')
 
 build() {
-    cd "${srcdir}/hudkit-wayland/webkit"
+    cd "${srcdir}/${_pkgname}/webkit"
 	make
 }
 
 package() {
-	cd "${srcdir}/hudkit-wayland/webkit"
-	make DESTDIR="${pkgdir}" NAME="${pkgname}" install
-}
-
-post_install() {
-    echo "Example configuration file is available at /usr/share/doc/${pkgname}/examples/config.json"
+	cd "${srcdir}/${_pkgname}/webkit"
+	install -Dm755 hudkit "${pkgdir}/usr/bin/${_pkgname}"
 }

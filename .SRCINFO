@@ -1,17 +1,18 @@
 pkgbase = hudkit-wayland
 	pkgdesc = Transparent click-through web browser overlay, using WebKit (Wayland fork)
 	pkgver = 4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SparxySys/hudkit-wayland
 	arch = x86_64
 	license = ISC
+	makedepends = git
 	makedepends = make
 	makedepends = pkgconf
 	makedepends = gcc
 	depends = gtk3
 	depends = webkit2gtk
 	depends = gtk-layer-shell
-	source = hudkit-wayland::git+https://github.com/SparxySys/hudkit-wayland.git
-	sha256sums = SKIP
+	source = hudkit-wayland::git+https://github.com/SparxySys/hudkit-wayland.git#commit=10e8a409ecfb4253cbe3e794239ebd36da95706f
+	sha256sums = 4cef2af8fbd5a2ff68cd3c74816f85772e673956416750a282f34ebc4583a060
 
 pkgname = hudkit-wayland
