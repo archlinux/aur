@@ -2,12 +2,12 @@
 
 pkgname=ravenna-alsa-daemon
 pkgver=1.1.93
-pkgrel=3
+pkgrel=4
 pkgdesc="A daemon for ALSA RAVENNA/AES67 Driver"
 url="https://github.com/bondagit/ravenna-alsa-lkm"
 license=("custom")
 arch=('x86_64' 'x86_64_v3' 'aarch64')
-depends=('glibc' 'avahi' 'ravenna-alsa-lkm-dkms' 'libcurl-compat')
+depends=('glibc' 'avahi' 'ravenna-alsa-lkm-dkms' 'libcurl-compat' 'openssl-1.1')
 source=("git+https://github.com/bondagit/ravenna-alsa-lkm.git#branch=aes67-daemon" 'ravenna-alsa.service' 'ravenna_start.sh')
 sha256sums=('SKIP'
             'cb8a2a9a19828c211b69c91752b65dece52302ccff4e051408e24ba4aa66c4b9'
