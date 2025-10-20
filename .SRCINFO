@@ -1,0 +1,16 @@
+pkgbase = elephant-windows
+	pkgdesc = windows provider for elephant
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	depends = fd
+	provides = elephant-windows
+	conflicts = elephant-windows
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 86cec3f12f80d2bfb7d1653b2f7cd1fdfd105397406f58b682fa819654e374ff
+
+pkgname = elephant-windows
