@@ -3,8 +3,8 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 pkgname=python-whois
 _name=python_whois
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc='Whois querying and parsing of domain registration information'
 arch=(any)
 url=https://pypi.org/project/python-whois/
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(python python-dateutil python-pysocks)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('18968c21484752fcc4b9a5f0af477ef6b8dc2e8bb7f1bd5c33831499c0dd41ca')
+sha256sums=('2e6de7b6d70e305a85f4859cd17781ee3f0da3a02a8e94f23cb4cdcd2e400bfa')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"

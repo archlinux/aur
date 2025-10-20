@@ -1,7 +1,7 @@
 pkgbase = python-whois
 	pkgdesc = Whois querying and parsing of domain registration information
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = https://pypi.org/project/python-whois/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-whois
 	depends = python
 	depends = python-dateutil
 	depends = python-pysocks
-	source = https://files.pythonhosted.org/packages/source/p/python_whois/python_whois-0.9.5.tar.gz
-	sha256sums = 18968c21484752fcc4b9a5f0af477ef6b8dc2e8bb7f1bd5c33831499c0dd41ca
+	source = https://files.pythonhosted.org/packages/source/p/python_whois/python_whois-0.9.6.tar.gz
+	sha256sums = 2e6de7b6d70e305a85f4859cd17781ee3f0da3a02a8e94f23cb4cdcd2e400bfa
 
 pkgname = python-whois
