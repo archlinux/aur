@@ -8,7 +8,7 @@ pkgbase = ghostty-rpc
 	depends = rust
 	depends = cargo
 	depends = systemd
-	source = https://github.com/vinayydv3695/ghostty-rpc/archive/refs/tags/v1.0.0.tar.gz
+	source = ghostty-rpc-1.0.0.tar.gz::https://github.com/vinayydv3695/ghostty-rpc/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ghostty-rpc
