@@ -5,7 +5,7 @@ pkgname=(
     'caffe-cuda-git'
     'caffe-cuda-doc-git')
 pkgver=1.0.r136.g9b8915401
-pkgrel=4
+pkgrel=5
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda support, git version)'
 arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -17,6 +17,7 @@ makedepends=(
     'doxygen'
     'gflags'
     'ghostscript'
+    'git'
     'google-glog'
     'hdf5'
     'leveldb'
