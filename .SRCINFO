@@ -1,7 +1,7 @@
 pkgbase = kluctl
 	pkgdesc = The missing glue to put together large Kubernetes deployments.
 	pkgver = 2.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kluctl/kluctl/
 	arch = x86_64
 	arch = i686
