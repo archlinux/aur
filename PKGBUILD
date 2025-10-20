@@ -1,6 +1,6 @@
 # Maintainer: Alexander Ellul (aellul27) <igsalexcodes@gmail.com>
 
-pkgname=libfprint
+pkgname=libfprint-06cb-00e9
 pkgver=1.94.9
 pkgrel=1
 pkgdesc="Library for fingerprint readers with support for 06cb:00e9. See this issue: https://gitlab.freedesktop.org/libfprint/libfprint/-/issues/614"
@@ -30,7 +30,10 @@ checkdepends=(
   cairo
   umockdev
 )
-provides=(libfprint-2.so)
+provides=(
+	"libfprint=1.94.9"
+	'libfprint-2.so'
+)	
 groups=(fprint)
 conflicts=(libfprint)
 source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v$pkgver"
