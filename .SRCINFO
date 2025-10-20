@@ -1,13 +1,13 @@
 pkgbase = cshell
 	pkgdesc = C version of Python shell
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/eshnd/cshell
 	arch = any
 	license = MIT
 	makedepends = gcc
 	makedepends = make
-	source = cshell-0.0.3.tar.gz::https://github.com/eshnd/cshell/archive/refs/tags/v0.0.3.tar.gz
+	source = cshell-0.0.4.tar.gz::https://github.com/eshnd/cshell/archive/refs/tags/v0.0.4.tar.gz
 	sha256sums = cff8ead808e9328b12ae53d8152febc505ce7acafd5299b7d01684e8f81b85f2
 
 pkgname = cshell
