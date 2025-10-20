@@ -1,0 +1,15 @@
+# https://wiki.gbe0.com/en/linux/snippets/btrfs-deduplicate
+
+[Unit]
+Description=Deduplicate BTRFS file system directories
+
+[Service]
+Type=oneshot
+Nice=15
+TimeoutSec=3600
+TimeoutStartSec=3600
+TimeoutStopSec=3600
+ExecStart=/usr/bin/dedupe
+
+[Install]
+WantedBy=default.target

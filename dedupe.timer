@@ -1,0 +1,15 @@
+# https://wiki.gbe0.com/en/linux/snippets/btrfs-deduplicate
+
+[Unit]
+Description=Deduplicate BTRFS directories weekly
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=Sat 20:00
+Persistent=true
+RandomizedDelaySec=7200
+Unit=dedupe.service
+
+[Install]
+WantedBy=timers.target
