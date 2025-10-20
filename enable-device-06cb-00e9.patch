@@ -1,0 +1,38 @@
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -246,6 +246,7 @@ usb:v06CBp00C2*
+ usb:v06CBp00C4*
+ usb:v06CBp00C6*
+ usb:v06CBp00DF*
++usb:v06CBp00E9*
+ usb:v06CBp00F0*
+ usb:v06CBp00F9*
+ usb:v06CBp00FC*
+@@ -380,7 +381,6 @@ usb:v06CBp00DA*
+ usb:v06CBp00DC*
+ usb:v06CBp00E4*
+ usb:v06CBp00E7*
+-usb:v06CBp00E9*
+ usb:v06CBp00FD*
+ usb:v06CBp00FF*
+ usb:v0A5Cp5801*
+--- a/libfprint/drivers/synaptics/synaptics.c
++++ b/libfprint/drivers/synaptics/synaptics.c
+@@ -36,6 +36,7 @@ static const FpIdEntry id_table[] = {
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00C4,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00C6,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00DF,  },
++  { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00E9,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00F0,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00F9,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x00FC,  },
+--- a/libfprint/fprint-list-udev-hwdb.c
++++ b/libfprint/fprint-list-udev-hwdb.c
+@@ -76,7 +76,6 @@ static const FpIdEntry allowlist_id_tabl
+   { .vid = 0x06cb, .pid = 0x00dc },
+   { .vid = 0x06cb, .pid = 0x00e4 },
+   { .vid = 0x06cb, .pid = 0x00e7 },
+-  { .vid = 0x06cb, .pid = 0x00e9 },
+   { .vid = 0x06cb, .pid = 0x00fd },
+   { .vid = 0x06cb, .pid = 0x00ff },
+   { .vid = 0x0a5c, .pid = 0x5801 },
