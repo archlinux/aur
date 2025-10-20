@@ -4,8 +4,8 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.3.3.r13.g2341293
-_electronversion=36
+pkgver=3.3.2.r0.gd9c5716
+_electronversion=37
 _nodeversion=22
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
