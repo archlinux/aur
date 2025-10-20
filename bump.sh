@@ -6,11 +6,11 @@
 # version. Very mutch a work in progress, DO NOT TRUST.
 #
 
-validated_for="6.17.1.arch1-1"
+validated_for="6.17.2.arch1-1"
 forceupd="n"
 
 # Getting current versions
-  curl -s -o .bump-pn https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/PKGBUILD/raw/\?ref\=main
+  curl -s -o .bump-pn https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/PKGBUILD/raw/\?ref\=6.17.2.arch1-1
   live_ver="$(grep pkgver= .bump-pn | cut -d'=' -f2)"
   live_rel="$(grep pkgrel= .bump-pn | cut -d'=' -f2)"
   local_ver="$(grep pkgver= PKGBUILD | cut -d'=' -f2)"
