@@ -12,6 +12,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Matars/gitfetch/archive/ref
 sha256sums=('350a0d006c0db5182fdbe82abffcbd0c17b5ad5036d79199eb5c7fe6f6f9fcdd')
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "gitfetch-$pkgver"
     python -m pip install --root="$pkgdir" --no-deps --no-warn-script-location .
 }
