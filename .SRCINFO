@@ -27,10 +27,4 @@ pkgbase = foundationdb
 	sha256sums = dded6e66c1e31d877ed7d9ead59f970f64c22569c36e52c6d2f4356757ea0341
 	sha256sums = 199726f9af1d8d4a73ee650faf5fa2f863c33b5bec71ebc166593528ded9abed
 
-pkgname = foundationdb-clients
-	pkgdesc = FoundationDB clients
-
-pkgname = foundationdb-server
-	pkgdesc = FoundationDB server daemon and utilities
-	depends = foundationdb-clients
-	depends = systemd
+pkgname = foundationdb

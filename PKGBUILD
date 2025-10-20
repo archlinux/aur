@@ -1,6 +1,6 @@
 # Maintainer: Hoang Dinh <dinhmanhhoang150197@gmail.com>
 pkgbase='foundationdb'
-pkgname=('foundationdb-clients' 'foundationdb-server')
+pkgname='foundationdb'
 pkgver='7.3.67'
 pkgrel='1'
 pkgdesc='FoundationDB scalable, fault-tolerant, ordered key-value store'
