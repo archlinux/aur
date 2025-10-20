@@ -3,14 +3,14 @@
 _plug=wnnm
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=57.6d476bd
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-WNNM'
 license=('MIT')
 depends=(
     'vapoursynth'
-    'python-mkl'
+    'intel-oneapi-mkl'
 )
 makedepends=(
     'git'

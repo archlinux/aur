@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-wnnm-git
 	pkgdesc = Plugin for Vapoursynth: wnnm (GIT Version)
 	pkgver = 57.6d476bd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WolframRhodium/VapourSynth-WNNM
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = vapoursynth-plugin-wnnm-git
 	makedepends = ninja
 	makedepends = cmake
 	depends = vapoursynth
-	depends = python-mkl
+	depends = intel-oneapi-mkl
 	provides = vapoursynth-plugin-wnnm
 	conflicts = vapoursynth-plugin-wnnm
 	options = debug
