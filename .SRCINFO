@@ -16,7 +16,6 @@ pkgbase = electrumx-git
 	depends = python-aiorpcx-git<0.26.0
 	depends = python-attrs
 	depends = python-plyvel
-	depends = python-pylru
 	depends = python-aiohttp>=3.3.0
 	depends = python-aiohttp<4.0.0
 	depends = python-websockets

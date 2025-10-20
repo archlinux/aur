@@ -14,7 +14,6 @@ depends=('leveldb'
          'python-aiorpcx-git>=0.25.0' 'python-aiorpcx-git<0.26.0'
          'python-attrs'
          'python-plyvel'
-         'python-pylru'
          'python-aiohttp>=3.3.0' 'python-aiohttp<4.0.0'
          'python-websockets'
          )
