@@ -1,5 +1,5 @@
 pkgbase = k3conf-git
-	pkgdesc = A Powerful Diagnostic Tool for Texas Instruments K3 based Processors
+	pkgdesc = Do not use this package it is discontinued
 	pkgver = v0.3
 	pkgrel = 1
 	url = https://git.ti.com/cgit/k3conf/k3conf/
