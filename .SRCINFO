@@ -1,26 +1,22 @@
 pkgbase = fcitx5-mozc-ut
-	pkgdesc = Fcitx5 module for Mozc (the Open Source edition of Google Japanese Input) bundled with the UT dictionary
-	pkgver = 2.31.5851.102.20250602
-	pkgrel = 2
-	url = https://github.com/google/mozc
+	pkgdesc = Mozc module for Fcitx5
+	pkgver = 2.32.5981.102
+	pkgrel = 1
+	url = https://github.com/fcitx/mozc
 	arch = x86_64
-	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND CC0-1.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-2.0-only AND GPL-2.0-or-later AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
+	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
+	makedepends = qt6-base
 	depends = fcitx5
-	depends = qt6-base
-	provides = fcitx5-mozc=2.31.5851.102
-	conflicts = emacs-mozc
-	conflicts = fcitx-mozc
+	depends = mozc>=2.32.5981.102
+	optdepends = fcitx5-configtool
+	provides = fcitx5-mozc=2.32.5981.102
 	conflicts = fcitx5-mozc
-	conflicts = ibus-mozc
-	conflicts = mozc
-	conflicts = mozc-ut
-	noextract = jawiki-20251001-pages-articles-multistream-index.txt.bz2
 	options = !distcc
 	options = !ccache
-	source = git+https://github.com/fcitx/mozc.git#commit=a6b57d8e5de15fc34df6e22927dcd0a00ca46641
+	source = mozc-fcitx::git+https://github.com/fcitx/mozc.git#commit=29e2b953deacc1b6aa35c28ffedb692399ee4c05
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010
 	source = git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224
 	source = git+https://github.com/google/googletest.git#commit=b514bdc898e2951020cbdca1304b75f5950d1f59
@@ -28,33 +24,13 @@ pkgbase = fcitx5-mozc-ut
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684
 	source = git+https://github.com/protocolbuffers/protobuf.git#commit=7cc670c1809e704ebeba90fb430d50e009f36727
 	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d
-	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=3e6d04df2efd9303caf7c6a7489749a392c52e73
-	source = git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=bf26bcbb1846f2e9cf35cbfcafcc91c015a1fb22
-	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=b43932b90dc5f9788383b708cb117f06d16df521
-	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=1f79374f1b5b83f143f3328091794dfa369271ef
-	source = git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=e33ac4ce808fa4253c6c97bf5178e229a4bfb50f
-	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=f9e05d2e06fc30137e4dadaf22966e6616442710
-	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=2d942f3f30ebe6fcab5e92ca0bd76a531c87c33f
-	source = git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=384ad926e306d5308839c6dedb63696f11703968
-	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=d1afebf15d8d63be62c2df2aceaf42cb1c243acd
-	source = https://dumps.wikimedia.org/jawiki/20251001/jawiki-20251001-pages-articles-multistream-index.txt.bz2
-	sha256sums = 70afabbad5df21ed4fc8e0fb520a660a54d32a56b9d81f4b76d79c442bcd24b2
-	sha256sums = e131bbdd4e207d6cc2930bca9db82d6da9e347175c1125d9d1f2e09a36652278
-	sha256sums = 5168bb8ea19e2f696eeecbdee991f28e496aea206a473fd7cb49b547f5d0c5af
-	sha256sums = c081295f2c22705e07fc430e152a30b36f949a179075d47d3e12ff3109d43c6a
-	sha256sums = 8a136786407526c64686c3f9990d6416d62c7e2d474ef4a75ced337ecfc58cef
-	sha256sums = 10a13d356071f2b0c2b6dcab1d841fae451f6a2020ee9b901533533fc7ac3008
-	sha256sums = 578ead09a4a3fbf2f70b6af56e0b385ca136c79a4f4a62c777cb13e7a6f733f5
-	sha256sums = abb86ac4d546c98d7d9a10fdeb1059d6e3395e892d5397fb03179361f37c98fe
-	sha256sums = 862da24719ef04346d57f99fa7c0a37b0fe246378cf30cb4a8def24aa12a1155
-	sha256sums = 81ed16f6b59f64e08482ea7ab676913584d95ecac00255e981374f02df2188e9
-	sha256sums = 5e276fa4fe063852ae54d18fc8adcb068c1f1b725b51cb3255f429439cc7ca9f
-	sha256sums = ca6d56ca8ae41a71ecffa2958f8d36349f869dc479f87f43a5b41569eb6c4736
-	sha256sums = 2bb007c54db6bb70d1771bffaeb05217c0e768cb176b9343ec0a25e9756d9f67
-	sha256sums = 2fa1dfeab0bc5a13ab1062b8257521d0102530093ad8ac6b5ca77d34ae3e3069
-	sha256sums = b6fc7068995ece29cf585f5c23c471f5f364e24516ac92b44defdc5ef987754c
-	sha256sums = bf1960c14d821a01a9717bbd22b3321844514796c59e6eae84afbb18c295f9c3
-	sha256sums = 18e64d1ef7a7589765b2d35eb4b4d05cc50251ccebc67c7d8a8042f30757cca9
-	sha256sums = 167a8c545318f45519cff0cd90321314e11d841aea067ffcce39731d90d8c368
+	b2sums = 463c1fb3d6c4fb3c19b3f334c1af1fa5b4f6b42af71cb4ff31d45a3ea19945f054546d9412ccd10f1caf3a7b375da0729d56eb9a8323d5c535ef214f636d25f0
+	b2sums = 45ca8cc8c61d9696365d19064e36be9edf38112f57e413063b0f72155fc8a67147768386eae005e1e23e9c95ede95ce1df0c630b1704a84f2d3e05397b0ddade
+	b2sums = eb54c87947561d6d985b3a244860a247a6ae41e5667ed6f4687dc864a3f02bc0b52d111c5b16025e06f44a1db31d7731c42eb38725521512b4c102475aebf585
+	b2sums = 89cbc8965037def33f8c46210b16c35e306fceb437f74aa0133e9a914dbc876d363394f4e7b94485e6d518e78f20db07a832751b0afd7a732e37c22eb1896435
+	b2sums = a6de318769bc421794d46b207eceb92920c7610cf107249183b40801fec3b1b079d679565de05e6a24b9970623563d914a8a674c5481a498d9fecf5a23e214ca
+	b2sums = 7abe2c678b7983fbc86b11b25e6f6f1dfc4dfe75b8db40510849ce8b06f415dc4932c16fa0bae213fa0a466d7a837363d0860024ac0e5bcb87f64dc23561c220
+	b2sums = d284ef75e86d80000a65afe5e1d60493a70af47acb664432e8e12e9cf84a33acfebd7751f75b4693d187c36def1bdca1d5f9e336dd2edea6c28120064f7956c3
+	b2sums = 8d105ce08ca103db180ec99c7845eee08d15abcc3e7cfce51d1b565a4ed5942be40aaefbc78e80e09e84c5583640d6a33feed7d3d9ec572c4a9ebf505ea6a7f5
 
 pkgname = fcitx5-mozc-ut
