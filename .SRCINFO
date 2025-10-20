@@ -1,6 +1,6 @@
 pkgbase = python-prov
 	pkgdesc = A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O (RDF)
-	pkgver = 2.0.2
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/prov/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-prov
 	depends = python-rdflib
 	depends = python-matplotlib
 	depends = python
-	source = python-prov-2.0.2.tar.gz::https://github.com/trungdong/prov/archive/2.0.2.tar.gz
-	sha1sums = 6e06adf194402fe9136c6534b0a6927399fd594b
+	source = python-prov-2.1.1.tar.gz::https://github.com/trungdong/prov/archive/2.1.1.tar.gz
+	sha1sums = 2a9e2011e347120723ccfd3439a8763bfca7fe16
 
 pkgname = python-prov
