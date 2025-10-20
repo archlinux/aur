@@ -1,6 +1,6 @@
 pkgbase = audius
 	pkgdesc = Audius music streaming client package
-	pkgver = 1.5.152
+	pkgver = 1.5.156
 	pkgrel = 1
 	url = https://audius.co
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = audius
 	depends = fuse2
 	provides = audius
 	conflicts = audius
-	noextract = Audius-1.5.152.AppImage
+	noextract = Audius-1.5.156.AppImage
 	options = !strip
-	source = Audius-1.5.152.AppImage::https://download.audius.co/Audius-1.5.152.AppImage
+	source = Audius-1.5.156.AppImage::https://download.audius.co/Audius-1.5.156.AppImage
 	sha256sums = SKIP
 
 pkgname = audius

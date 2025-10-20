@@ -2,7 +2,7 @@
 # Backup contact: admin@azccriminal.space
 
 pkgname=audius
-pkgver=1.5.152
+pkgver=1.5.156
 pkgrel=1
 pkgdesc="Audius music streaming client package"
 arch=('x86_64')
