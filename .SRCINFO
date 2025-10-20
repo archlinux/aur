@@ -1,0 +1,12 @@
+pkgbase = canpass
+	pkgdesc = Cool console password manager for your linux system!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://thendsoft.su/canpass.html
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = canpass.cpp
+	md5sums = SKIP
+
+pkgname = canpass
