@@ -1,45 +1,74 @@
-# Colored makepkg-like functions
-
-_all_off="$(tput sgr0)"
-_bold="${_all_off}$(tput bold)"
-_blue="${_bold}$(tput setaf 4)"
-_yellow="${_bold}$(tput setaf 3)"
-
-note() {
-  printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
-}
-
-pre_install(){
-  if [ "$(systemctl is-active --quiet rudesktop.service)" == "active" ]; then
-    systemctl --quiet stop rudesktop.service
-  fi
-}
-
-post_install(){
-  if [ -d "/etc/sudoers.d" ]; then
+post_install() {
+    echo "Running post-install script"
+    
+    # Create sudoers file
     echo "root ALL=(ALL) NOPASSWD:SETENV: ALL" > /etc/sudoers.d/rudesktop
-    chmod 440 /etc/sudoers.d/rudesktop
-  fi
 
-  /usr/bin/python3 /usr/share/rudesktop-client/files/patch-X11.py
+    # Patch X11 config
+    /usr/bin/python3 /usr/share/rudesktop-client/files/patch-X11.py || true
 
-  systemctl --quiet daemon-reload
+    # Set rendezvous domain
+    if [ -n "$RUDESKTOP_DOMAIN" ]; then
+        /usr/bin/rudesktop --rendezvous "$RUDESKTOP_DOMAIN" || true
+    fi
 
-  note "Please enable and start rudesktop service manually:"
-  note "  sudo systemctl enable --now rudesktop.service"
-  note "And for convinience:"
-  note "  xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop"
+    # Kickstart only on fresh install
+    if [ -z "$2" ]; then
+        /usr/bin/rudesktop --kickstart
+    fi
+
+    cp /usr/share/rudesktop-client/files/systemd/rudesktop.service /usr/lib/systemd/system/rudesktop.service
+
+    # Setup systemd services
+    systemctl daemon-reload
+    systemctl enable rudesktop
+    systemctl start rudesktop
+
+    cp /usr/share/rudesktop-client/files/systemd/rudesktop-user.service /usr/lib/systemd/user/rudesktop-user.service
+    systemctl --global enable rudesktop-user.service
+    loginctl list-users --no-legend | awk '{print $1, $2}' | while read -r uid username; do
+        sudo -u "$username" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+            systemctl --user daemon-reload || true
+
+        sudo -u "$username" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+            systemctl --user start rudesktop-user || true
+    done
+
+    xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop || true
+}
+
+pre_upgrade() {
+    echo "Stopping services before upgrade"
+    systemctl stop rudesktop || true
+    loginctl list-users --no-legend | awk '{print $1, $2}' | while read -r uid username; do
+        sudo -u "$username" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+            systemctl --user stop rudesktop-user || true
+    done
 }
 
 post_upgrade() {
-  systemctl --quiet daemon-reload
-
-  if [ -n "$RUDESKTOP_DOMAIN" ]; then
-    /usr/bin/rudesktop --rendezvous $RUDESKTOP_DOMAIN || true
-  fi
+    post_install "$@"
 }
 
 pre_remove() {
-  systemctl --quiet disable --now rudesktop.service
-  find /etc/sudoers.d/rudesktop -delete 2>/dev/null
+    pre_upgrade
+    systemctl disable rudesktop || true
+    systemctl --global disable rudesktop-user.service || true
+    loginctl list-users --no-legend | awk '{print $1, $2}' | while read -r uid username; do
+        sudo -u "$username" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+            systemctl --user disable rudesktop-user || true
+    done
+}
+
+post_remove() {
+    rm -f /etc/sudoers.d/rudesktop
+    rm -f /usr/lib/systemd/system/rudesktop.service
+    rm -f /usr/lib/systemd/user/rudesktop-user.service
+    rm -rf /usr/share/rudesktop-client
+    rm -f /usr/share/applications/rudesktop.desktop
+    update-desktop-database || true
 }
