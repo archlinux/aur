@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1757.2bdbf6d4
+pkgver=r1803.6ad05e5b
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
@@ -57,7 +57,7 @@ package() {
   cp package.json{,.bak}
   sed -i 's/workspace:~/*/' package.json
   rm -r node_modules
-  npm install --omit=dev
+  pnpm install --no-optional --prod --config.confirmModulesPurge=false
   rm -r node_modules/typescript
   mv package.json{.bak,}
 
