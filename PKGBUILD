@@ -3,7 +3,7 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r1397.0c9a94a
+pkgver=r1398.2019e8a
 pkgrel=1
 arch=('any')
 depends=(
@@ -17,7 +17,6 @@ depends=(
     'python-natsort'
     'python-pylatexenc'
     'python-requests'
-    'python-requests-oauthlib'
     'python-rich'
     'python-ruamel-yaml'
     'python-text-unidecode'

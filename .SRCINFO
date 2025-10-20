@@ -1,6 +1,6 @@
 pkgbase = cobib-git
 	pkgdesc = Console Bibliography
-	pkgver = r1397.0c9a94a
+	pkgver = r1398.2019e8a
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = cobib-git
 	depends = python-natsort
 	depends = python-pylatexenc
 	depends = python-requests
-	depends = python-requests-oauthlib
 	depends = python-rich
 	depends = python-ruamel-yaml
 	depends = python-text-unidecode
