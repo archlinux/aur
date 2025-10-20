@@ -1,0 +1,5 @@
+deigde-*.pkg.tar.zst
+dragengine-*.pkg.tar.zst
+dragengine*/
+pkg/
+src/

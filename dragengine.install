@@ -1,0 +1,22 @@
+post_install() {
+	# /usr/share/games/delauncher/games is only created not removed since
+	# it contains user installed games and should NOT be deleted if this
+	# package is uninstalled
+
+	if ! [ -d /usr/share/games ]; then
+		mkdir /usr/share/games
+		chmod 755 /usr/share/games
+	fi
+
+	if ! [ -d /usr/share/games/delauncher ]; then
+		mkdir /usr/share/games/delauncher
+		chgrp games /usr/share/games/delauncher
+		chmod 2775 /usr/share/games/delauncher
+	fi
+
+	if ! [ -d /usr/share/games/delauncher/games ]; then
+		mkdir /usr/share/games/delauncher/games
+		chgrp games /usr/share/games/delauncher/games
+		chmod 2775 /usr/share/games/delauncher/games
+	fi
+}
