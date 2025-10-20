@@ -1,6 +1,6 @@
 pkgbase = terraform-provider-alicloud-bin
 	pkgdesc = Terraform AliCloud provider.(Prebuilt version)
-	pkgver = 1.260.1
+	pkgver = 1.261.0
 	pkgrel = 1
 	url = https://www.terraform.io/docs/providers/alicloud/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = terraform-provider-alicloud-bin
 	arch = x86_64
 	license = MPL-2.0
 	depends = terraform
-	provides = terraform-provider-alicloud=1.260.1
+	provides = terraform-provider-alicloud=1.261.0
 	conflicts = terraform-provider-alicloud
-	source_aarch64 = terraform-provider-alicloud-1.260.1-aarch64.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.260.1/terraform-provider-alicloud_1.260.1_linux_arm64.zip
-	sha256sums_aarch64 = 21a9d0dfe28655eec1cf2f21ce25a9d9d2207dd22c21819a7ee0e0b20cf8896a
-	source_armv7h = terraform-provider-alicloud-1.260.1-armv7h.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.260.1/terraform-provider-alicloud_1.260.1_linux_arm.zip
-	sha256sums_armv7h = 06bb8984537cf86ba337958684573c31edee32f4167fff2cf0db149c4ce1de7a
-	source_i686 = terraform-provider-alicloud-1.260.1-i686.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.260.1/terraform-provider-alicloud_1.260.1_linux_386.zip
-	sha256sums_i686 = 48ec28b81dc5d5d634a0101e3a09ac47dbe984e36e71bcdc7ae78b453de6e945
-	source_x86_64 = terraform-provider-alicloud-1.260.1-x86_64.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.260.1/terraform-provider-alicloud_1.260.1_linux_amd64.zip
-	sha256sums_x86_64 = 96e6996fd461d461f83455ac799ea9cfd75b493df4e0a1d4d2bbce14406525e7
+	source_aarch64 = terraform-provider-alicloud-1.261.0-aarch64.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.261.0/terraform-provider-alicloud_1.261.0_linux_arm64.zip
+	sha256sums_aarch64 = 0292a1cf6509d6ae076b30bed30802271ffd8215b4df7496aadd4dd35dd976f6
+	source_armv7h = terraform-provider-alicloud-1.261.0-armv7h.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.261.0/terraform-provider-alicloud_1.261.0_linux_arm.zip
+	sha256sums_armv7h = 24046cb91339c02939b1c73881f87742bee5d3a6c3d620ef28aa88713cd20cfc
+	source_i686 = terraform-provider-alicloud-1.261.0-i686.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.261.0/terraform-provider-alicloud_1.261.0_linux_386.zip
+	sha256sums_i686 = 4d74332591d8525a23aaa440eb546c928c4b7b622ac3fa3ad6db009b400f61ea
+	source_x86_64 = terraform-provider-alicloud-1.261.0-x86_64.zip::https://github.com/aliyun/terraform-provider-alicloud/releases/download/v1.261.0/terraform-provider-alicloud_1.261.0_linux_amd64.zip
+	sha256sums_x86_64 = 3938debc5b6db638557f0bccababa79e1eda7a1bf7cc04b8bf9e8776e84ded93
 
 pkgname = terraform-provider-alicloud-bin
