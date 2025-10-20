@@ -1,8 +1,9 @@
-# Maintainer: Muhammad Shammaas <cmshammaas@gmail.com>
+# Maintainer: Koeqaife <koeqaife@sharinflame.com>
+# Maintainer: Shamz <cmshammaas@gmail.com>
 pkgname=hypryou-utils
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Replacement for hyprland-qtutils as part of HyprYou project.Credits : Koeqaife"
+pkgdesc="Replacement for hyprland-qtutils as part of HyprYou project."
 arch=('x86_64')
 url="https://github.com/koeqaife/hyprland-material-you"
 license=('GPL3')
