@@ -1,13 +1,13 @@
 pkgbase = vi-fortune
 	pkgdesc = Vietnamese fortune cookies for fortune-mod
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dino09324/vi-fortune
 	arch = any
 	groups = fortune-mods
 	license = GPL3
 	depends = fortune-mod
-	source = https://github.com/dino09324/vi-fortune/archive/refs/tags/v0.1-beta.tar.gz
+	source = vi-fortunev0.1-beta.tar.gz::https://github.com/dino09324/vi-fortune/archive/refs/tags/v0.1-beta.tar.gz
 	sha256sums = 625cbbef16fb9f45c55bbfcd1b951b13dc919a9bf8420a89feeca4c4e526dfdb
 
 pkgname = vi-fortune
