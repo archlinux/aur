@@ -1,7 +1,7 @@
 pkgbase = understand-bin
 	pkgdesc = Static analysis tool for maintaining, measuring & analyzing critical or large code bases.
 	pkgver = 7.2.1237
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scitools.com/
 	arch = x86_64
 	license = custom

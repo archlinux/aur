@@ -4,7 +4,7 @@ _pkgname=understand
 pkgname=$_pkgname-bin
 _pkgbuild=1237
 pkgver=7.2.$_pkgbuild
-pkgrel=1
+pkgrel=2
 pkgdesc="Static analysis tool for maintaining, measuring & analyzing critical or large code bases."
 arch=('x86_64')
 url="https://scitools.com/"
@@ -26,5 +26,5 @@ package() {
     install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "$pkgdir/opt/scitools/bin/linux64/${_pkgname}_64.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    install -Dm644 "$pkgdir/opt/scitools/bin/linux64/icon_32x32@2x.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
