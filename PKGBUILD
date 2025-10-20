@@ -2,7 +2,7 @@
 # Maintainer: JustinWayland<justintwayland@gmail.com>
 pkgname=helion
 pkgver=0.9.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
@@ -11,7 +11,7 @@ license=(' GPL-3.0-or-later')
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2')
 makedepends=('dotnet-sdk>=9.0' 'clang')
 source=("https://github.com/Helion-Engine/Helion/archive/refs/tags/${pkgver}.tar.gz" "change-desktop-target.patch")
-sha256sums=('cb893c0e92950919700dd3471ad7420fa44c1bc0a60ecff0f8148b62a796eec7' '55fbacd2387b4a70878731969fa044bcf91cdd6f1c03138606336fee7acd8f89')
+sha256sums=('cb893c0e92950919700dd3471ad7420fa44c1bc0a60ecff0f8148b62a796eec7' 'e8c91f9941d7805494edc950aa2375423392c91b9a5abc664a687e7047bce811')
 prepare() {
 	cd "$srcdir/Helion-${pkgver}"
 	patch -Np1 -i ../change-desktop-target.patch

@@ -1,25 +1,26 @@
-From de25d1057ccc9ff84af775f7db1d3917185f394d Mon Sep 17 00:00:00 2001
+From 327217acf663e12015c8c4227c32374ac225c677 Mon Sep 17 00:00:00 2001
 From: JustinWayland <justintwayland+github@gmail.com>
 Date: Sat, 6 Sep 2025 19:59:41 -0400
 Subject: [PATCH] Change .desktop file target
 
 ---
- Assets/Misc/Helion.desktop | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Assets/Misc/Helion.desktop | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/Assets/Misc/Helion.desktop b/Assets/Misc/Helion.desktop
-index d7050de44..517fe0644 100644
+index d7050de44..93cf09631 100644
 --- a/Assets/Misc/Helion.desktop
 +++ b/Assets/Misc/Helion.desktop
-@@ -4,7 +4,7 @@ Name=Helion
+@@ -3,8 +3,7 @@ Type=Application
+ Name=Helion
  Comment=Doom source port focused on performance
  Icon=Helion
- TryExec=Helion
+-TryExec=Helion
 -Exec=Helion %f
 +Exec=/opt/Helion/Helion %f
  Categories=Game;ActionGame;
  MimeType=application/x-doom-wad
  Keywords=first;person;shooter;doom;boom;mbf;
 -- 
-2.51.0
+2.51.1
 
