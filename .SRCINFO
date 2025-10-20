@@ -1,6 +1,6 @@
 pkgbase = sct_argsp
 	pkgdesc = Simple arguments parser for C++20.
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/SuicideCatt/ArgsP
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sct_argsp
 	makedepends = cmake
 	makedepends = make
 	depends = gcc
-	source = sct_argsp-0.3.2.tag.gz::https://github.com/SuicideCatt/ArgsP/archive/refs/tags/v0.3.2.tar.gz
+	source = sct_argsp-0.4.0.tag.gz::https://github.com/SuicideCatt/ArgsP/archive/refs/tags/v0.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = sct_argsp
