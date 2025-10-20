@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!linphone_package-cmake.patch

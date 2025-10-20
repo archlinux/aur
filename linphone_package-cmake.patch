@@ -1,0 +1,25 @@
+diff --git a/cmake/install/install.cmake b/cmake/install/install.cmake
+index f4312d6f..3f6c4b78 100644
+--- a/cmake/install/install.cmake
++++ b/cmake/install/install.cmake
+@@ -20,7 +20,7 @@
+ #
+ ################################################################################
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ set(TARGET_NAME Linphone)
+
+diff --git a/Linphone/CMakeLists.txt b/Linphone/CMakeLists.txt
+index 4e8701a40..2f0bbfe6a 100644
+--- a/Linphone/CMakeLists.txt
++++ b/Linphone/CMakeLists.txt
+@@ -42,7 +42,7 @@ set(QT_PACKAGES Core Quick Qml Widgets Svg Multimedia Test NetworkAuth Concurrent)
+ endif()
+ 
+ if(NOT WIN32)
+-	add_compile_options(-Werror=deprecated-declarations)
++	add_compile_options(-Wno-error=deprecated-declarations)
+ endif()
+
