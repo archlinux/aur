@@ -1,6 +1,6 @@
 pkgbase = rusty-path-of-building
 	pkgdesc = An offline build planner for Path of Exile using the cross-platform 'rusty-path-of-building' runtime
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/meehl/rusty-path-of-building
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = rusty-path-of-building
 	depends = lua51-luautf8
 	provides = rusty-path-of-building
 	options = !lto
-	source = rusty-path-of-building-0.1.1.tar.gz::https://github.com/meehl/rusty-path-of-building/archive/v0.1.1.tar.gz
+	source = rusty-path-of-building-0.1.2.tar.gz::https://github.com/meehl/rusty-path-of-building/archive/v0.1.2.tar.gz
 	source = rusty-path-of-building-1.desktop
 	source = rusty-path-of-building-2.desktop
-	b2sums = 2b9333ef5546323728d0716f7df97b8cc55dc786195dff65bfb2e557e3a2d42a230c244d55276fbe7a8c843a7481275a0e6b751a722e14fc52d5532b7427a8f5
+	b2sums = 78ee61d919eaa6798c1fa18564f5059bcea12698df74a3f1a9abd284517bf64326b9bf5e21e677340a5abc5df59117c09ede8c583503bee5f9d83d75e13b4b2c
 	b2sums = 1f36d38ebf57060232e9e7dee6b83e1a8897c640d1e298bcf82e2eb14bfff4151415e7ee900517f081f4f22538b6ea4d55115aad736dd190b1836f2b8b397452
 	b2sums = 00ddcff0984164b162b75b4223c38a67d131c36564a884bf3774ce42490084f38fcd208a9cc24fa9ef7d826c331024b7be0ef10a9fb5069237563a114d6f9239
 
