@@ -1,16 +1,16 @@
 # Maintainer: Sleep-No-More <sleepnomore@example.com>
 pkgname=cpmenu
-pkgver=0.1.4
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Modern circular power menu for Wayland desktop environments"
 arch=('x86_64')
 url="https://github.com/Sleep-No-More/cpmenu"
 license=('MIT')
 depends=('gtk3' 'cairo')
-source=("cpmenu::https://github.com/Sleep-No-More/cpmenu/releases/download/v${pkgver}/cpmenu"
-        "LICENSE::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/v${pkgver}/LICENSE"
-        "README.md::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/v${pkgver}/README.md")
-sha256sums=('84db68da89bc311fb3b6f1bfba1770a98bf265d9d38c5dbe56134e38abb62df8'
+source=("cpmenu::https://github.com/Sleep-No-More/cpmenu/releases/download/${pkgver}/cpmenu"
+        "LICENSE::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/${pkgver}/LICENSE"
+        "README.md::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/${pkgver}/README.md")
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
             'SKIP'
             'SKIP')
 
