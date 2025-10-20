@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'libayatana-appindicator')
 options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
-sha256sums=('2a96a5bad1c2a5a89017284a6851453fce8c91c6e3832f2b562d32a81308b0fd')
+sha256sums=('75d15a9a89fb8d264eb9e20daa4743a70313c86d11a065226d65702008107067')
 
 build() {
   bsdtar -x -f data.tar.gz
