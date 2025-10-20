@@ -1,0 +1,5 @@
+[scafetch-bin]
+source = "github"
+github = "iddev5/scafetch"
+use_latest_release = true
+prefix = "v"
