@@ -8,7 +8,7 @@ pkgbase="python-${_pkgname}-cuda12.9"
 pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 pkgdesc="${_pkgdesc}"
@@ -16,8 +16,11 @@ arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
 depends=(
+  abseil-cpp
   eigen
+  gcc14-libs
   gflags
+  glibc
   google-glog
   intel-oneapi-mkl
   libuv
@@ -66,6 +69,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-NVTX::git+https://github.com/NVIDIA/NVTX.git"
         "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+        "${pkgname}-aiter::git+https://github.com/ROCm/aiter.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
         "${pkgname}-composable_kernel::git+https://github.com/ROCm/composable_kernel.git"
@@ -103,11 +107,11 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         pytorch-rocm-jit.patch
         fix_cmake_prefix_path.patch
         add_gpu_targets_rocm.patch
-        0001-Add-cmake-variable-USE_ROCM_CK.patch
         aotriton_disable_install.patch
         pyproject.patch
         )
-b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd26f4a9bdd4042c0b740600705ab4216a88b81a3ef6409874d43d87afc'
+b2sums=('b744fa2e28a641c6ae76e87cf32d511f68d4a8ed2a0d4c8d3cee8652fe7d2467d21925d59b303f4183040949c3ffbb685f83d3d52acc7f54df91d3a245b393e0'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -149,12 +153,10 @@ b2sums=('019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
-        '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626'
+        'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
-        'e77c8ad06e9956acac623e7fe9f7ab670cbc2807c4734ed36c297253567e6bd3eaefef2d24fb8746ca5f1f722308435913cb35b605792c8751ce41c37f82103b'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '864362bedab4fc851593f35e7df4c4103bcbac4fb49cd7df37a46b78a8e51857140585b20304b44516450df9a693da89f7a33aa7693506c37111184edee59b10'
-        )
+        'a9b0c8897a898344b0d41c1a3fb1df21a5acd3fee27fe2be3aafd250cf7004d8bb34f4d700262cae3ce66137172772d63758202d5991a2d5ac39202c49baf1e0')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -176,6 +178,7 @@ prepare() {
   git config submodule."third_party/NVTX".url "${srcdir}/${pkgname}"-NVTX
   git config submodule."third_party/VulkanMemoryAllocator".url "${srcdir}/${pkgname}"-VulkanMemoryAllocator
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
+  git config submodule."third_party/aiter".url "${srcdir}/${pkgname}"-aiter
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
   git config submodule."third_party/composable_kernel".url "${srcdir}/${pkgname}"-composable_kernel
   git config submodule."third_party/cpp-httplib".url "${srcdir}/${pkgname}"-cpp-httplib
@@ -221,58 +224,17 @@ prepare() {
   # ROCm 6.4.2+ requires architectures to appear as cmake arguments too
   patch -p1 -i "${srcdir}/add_gpu_targets_rocm.patch"
 
-  # Disable composable kernels as it's not supported by all platforms.
-  # Patch from Fedora,
-  # https://src.fedoraproject.org/rpms/python-torch/blob/rawhide/f/0001-Add-cmake-variable-USE_ROCM_CK.patch
-  patch -p1 -i "${srcdir}/0001-Add-cmake-variable-USE_ROCM_CK.patch"
-
   # If using prebuilt aotriton, pytorch attempts to copy /usr/lib and /user/include
   # into the torch folder. Disable this behavior.
   patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
 
-  cd third_party/XNNPACK
-  git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
-  cd ../..
-
   # Fix build with CUDA 13 (CCCL headers path changed)
   sed -i 's|${CUDA_TOOLKIT_INCLUDE}|${CUDA_TOOLKIT_INCLUDE}/cccl|' cmake/Modules/FindCUB.cmake
-
-  # [ATen][CUDA][cuFFT] Guard against deprecated error codes
-  # https://github.com/pytorch/pytorch/commit/25343b343e6dd87f89ae0f37d5d44bf9344b8cff
-  git cherry-pick -X theirs --no-commit 25343b343e6dd87f89ae0f37d5d44bf9344b8cff
-
-  # [ATen][CUDA][CUB] Implement changes to CCCL (CUB/Thrust/LibCUDACXX) usage in ATen (#153373)
-  # https://github.com/pytorch/pytorch/commit/51eb8e8f84bb9aa901cff17dd649e18b17a8908c
-  git cherry-pick -X theirs --no-commit 51eb8e8f84bb9aa901cff17dd649e18b17a8908c
-
-  # [ATen][CUDA] Use new CCCL API in v2.8 (#160554)
-  # https://github.com/pytorch/pytorch/commit/d670304001429a1a833255a918ed788d7ec4989a
-  git cherry-pick -X theirs --no-commit d670304001429a1a833255a918ed788d7ec4989a
-
-  # [NVIDIA] Refactor Family Blackwell Support codegen
-  # https://github.com/pytorch/pytorch/commit/9c5601ecc316e5be548038bc24411acd7c74a032
-  git cherry-pick -X theirs --no-commit 9c5601ecc316e5be548038bc24411acd7c74a032
-
-  # Update tensorpipe submodule for CUDA 13
-  # https://github.com/pytorch/pytorch/commit/691d17a5c6f52b0bfec94ade1ac60d2956db65c0
-  cd third_party/tensorpipe
-  git cherry-pick -X theirs --no-commit af0118d13e52f5a08841464a768e01a0bf3e3075
-  cd ../..
 
   # Update flash-attention module for CUDA 13
   # https://github.com/Dao-AILab/flash-attention/commit/dfb664994c1e5056961c90d5e4f70bf7acc8af10
   cd third_party/flash-attention
   git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
-  cd ../..
-
-  # GCC 15 fixes
-  # Make TensorPipe compilable by gcc-14+
-  cd third_party/tensorpipe
-  git cherry-pick --no-commit 62a3ab9d816b2d824cb153ee43bcf2a2b7dc8fa3
-  cd ../..
-  # gloo/types.h: include cstdint
-  cd third_party/gloo
-  git cherry-pick --no-commit 54cbae0d3a67fa890b4c3d9ee162b7860315e341
   cd ../..
 
   # https://bugs.archlinux.org/task/64981
@@ -333,7 +295,10 @@ _prepare() {
   # gfx950 lacks support for 128 bit atomics
   export PYTORCH_ROCM_ARCH="$(rocm-supported-gfx -e gfx950)"
   # Composable kernels is not supported for all architectures.
-  export USE_ROCM_CK=OFF
+  # https://github.com/pytorch/pytorch/issues/150187
+  export USE_ROCM_CK_GEMM=OFF
+  export USE_ROCM_CK_SDPA=OFF
+  export USE_FBGEMM_GENAI=OFF
 
   # Compile source code for supported GPU archs in parallel (but using too many jobs is not helpful)
   export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=4 --gcc-install-dir=$(dirname $(gcc-14 -print-libgcc-file-name))"
@@ -343,6 +308,10 @@ _prepare() {
 
   # Fix build issues for onnx with cmake 4.0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+  # Fix ROCm build with glog (these macros are defined in /usr/lib/cmake/glog/glog-targets.cmake but for some reason
+  # this target is not applied when building some *.hip files)
+  HIPCC_COMPILE_FLAGS_APPEND+=" -DGLOG_USE_GLOG_EXPORT -DGLOG_USE_GFLAGS"
 
   # Limit number of threads to avoid running out of memory
   export MAX_JOBS=20

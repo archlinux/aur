@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
@@ -23,8 +23,11 @@ pkgbase = python-pytorch-cuda12.9
 	makedepends = python-yaml
 	makedepends = shaderc
 	makedepends = vulkan-headers
+	depends = abseil-cpp
 	depends = eigen
+	depends = gcc14-libs
 	depends = gflags
+	depends = glibc
 	depends = google-glog
 	depends = intel-oneapi-mkl
 	depends = libuv
@@ -45,13 +48,14 @@ pkgbase = python-pytorch-cuda12.9
 	depends = vulkan-icd-loader
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.8.0
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.9.0
 	source = python-pytorch-cuda12.9-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-cuda12.9-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-cuda12.9-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
 	source = python-pytorch-cuda12.9-NVTX::git+https://github.com/NVIDIA/NVTX.git
 	source = python-pytorch-cuda12.9-PeachPy::git+https://github.com/malfet/PeachPy.git
 	source = python-pytorch-cuda12.9-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
+	source = python-pytorch-cuda12.9-aiter::git+https://github.com/ROCm/aiter.git
 	source = python-pytorch-cuda12.9-XNNPACK::git+https://github.com/google/XNNPACK.git
 	source = python-pytorch-cuda12.9-benchmark::git+https://github.com/google/benchmark.git
 	source = python-pytorch-cuda12.9-composable_kernel::git+https://github.com/ROCm/composable_kernel.git
@@ -89,10 +93,10 @@ pkgbase = python-pytorch-cuda12.9
 	source = pytorch-rocm-jit.patch
 	source = fix_cmake_prefix_path.patch
 	source = add_gpu_targets_rocm.patch
-	source = 0001-Add-cmake-variable-USE_ROCM_CK.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	b2sums = 019a808d6370c1b31f832351567b29506c3f9f34fc271f5ebd269962938ed59f518e1bd26f4a9bdd4042c0b740600705ab4216a88b81a3ef6409874d43d87afc
+	b2sums = b744fa2e28a641c6ae76e87cf32d511f68d4a8ed2a0d4c8d3cee8652fe7d2467d21925d59b303f4183040949c3ffbb685f83d3d52acc7f54df91d3a245b393e0
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -134,16 +138,18 @@ pkgbase = python-pytorch-cuda12.9
 	b2sums = 0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18
 	b2sums = 20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e
 	b2sums = e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe
-	b2sums = 12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626
+	b2sums = eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980
 	b2sums = 007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c
-	b2sums = e77c8ad06e9956acac623e7fe9f7ab670cbc2807c4734ed36c297253567e6bd3eaefef2d24fb8746ca5f1f722308435913cb35b605792c8751ce41c37f82103b
 	b2sums = ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0
-	b2sums = 864362bedab4fc851593f35e7df4c4103bcbac4fb49cd7df37a46b78a8e51857140585b20304b44516450df9a693da89f7a33aa7693506c37111184edee59b10
+	b2sums = a9b0c8897a898344b0d41c1a3fb1df21a5acd3fee27fe2be3aafd250cf7004d8bb34f4d700262cae3ce66137172772d63758202d5991a2d5ac39202c49baf1e0
 
 pkgname = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support) (with CUDA 12.9)
+	depends = abseil-cpp
 	depends = eigen
+	depends = gcc14-libs
 	depends = gflags
+	depends = glibc
 	depends = google-glog
 	depends = intel-oneapi-mkl
 	depends = libuv
@@ -167,13 +173,16 @@ pkgname = python-pytorch-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.8.0
+	provides = python-pytorch=2.9.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support) (with CUDA 12.9 and AVX2 CPU optimizations)
+	depends = abseil-cpp
 	depends = eigen
+	depends = gcc14-libs
 	depends = gflags
+	depends = glibc
 	depends = google-glog
 	depends = intel-oneapi-mkl
 	depends = libuv
@@ -197,6 +206,6 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.8.0
-	provides = python-pytorch-cuda=2.8.0
+	provides = python-pytorch=2.9.0
+	provides = python-pytorch-cuda=2.9.0
 	conflicts = python-pytorch
