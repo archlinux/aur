@@ -2,9 +2,9 @@
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
-_pkgname=icann-rdap
+_pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -52,11 +52,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '399e550c33ac33c4bc26fae0b4400ad61de3e018244409f18f78654d5a976c76'
+  '9e72eb81d57c2773c3dcb70e60285ad5d953d4b2807514566c03dff960e1c2c5'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  '92ceae2844add20995ce18d0edebb665521da751c6a77a3d6e2baac457c84a03'
+  'b83dda3aceb717f55746fa5a6c248fc2fec4f672e72247244bd1c39c950722d7'
   "${_skip[@]}"
 )
 
