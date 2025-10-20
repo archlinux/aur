@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-WNNM'
-license=('GPL2')
+license=('MIT')
 depends=(
     'vapoursynth'
     'python-mkl'
