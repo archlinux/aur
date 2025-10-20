@@ -42,27 +42,29 @@ build() {
      --name="Linphone Desktop 6 Call Edition" \
      --genericname="VoIP Client" \
      --categories=Network \
-     --icon=linphone.png \
-     --exec=/opt/linphone/linphone-launcher \
+     --icon="${pkgname}.png" \
+     --exec="/usr/bin/${pkgname}" \
      --terminal=false \
      --startupnotify=true \
      --comment "Linphone"
 }
 
 package() {
-    mkdir -p "$pkgdir/opt/linphone/"
-    cp -r "$srcdir/linphone-desktop/build/OUTPUT/." "$pkgdir/opt/linphone/"
+    mkdir -p "$pkgdir/opt/${pkgname}/"
+    cp -r "$srcdir/linphone-desktop/build/OUTPUT/." "$pkgdir/opt/${pkgname}/"
 
     mkdir -p "$pkgdir/usr/share/applications/"
-    install -Dm644 "$srcdir/linphone-desktop.desktop" "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
     mkdir -p "$pkgdir/usr/share/pixmaps/"
-    install -Dm644 "$srcdir/linphone.png" "$pkgdir/usr/share/pixmaps/"
+    install -Dm644 "$srcdir/linphone.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 
-    echo "#!/bin/bash" > "$pkgdir/opt/linphone/linphone-launcher"
-    echo 'LD_LIBRARY_PATH="/opt/linphone/lib:$LD_LIBRARY_PATH" /opt/linphone/bin/linphone "$@"' >> "$pkgdir/opt/linphone/linphone-launcher"
-    chmod +x "$pkgdir/opt/linphone/linphone-launcher"
+    cat <<'EOF' > "$pkgdir/opt/${pkgname}/${pkgname}-launcher"
+#!/bin/bash
+LD_LIBRARY_PATH="/opt/${pkgname}/lib:$LD_LIBRARY_PATH" /opt/${pkgname}/bin/linphone "$@"
+EOF
+    chmod +x "$pkgdir/opt/${pkgname}/${pkgname}-launcher"
 
     mkdir -p "$pkgdir/usr/bin/"
-    ln -s /opt/linphone/linphone-launcher "$pkgdir/usr/bin/linphone"
+    ln -s "/opt/${pkgname}/${pkgname}-launcher" "$pkgdir/usr/bin/${pkgname}"
 }

@@ -19,6 +19,7 @@ pkgbase = linphone-desktop-call-edition
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-multimedia
+	depends = qt6-networkauth
 	depends = qt6-speech
 	depends = qt6-tools
 	depends = libpulse
@@ -28,7 +29,9 @@ pkgbase = linphone-desktop-call-edition
 	provides = linphone=6.0.1
 	source = git+https://gitlab.linphone.org/BC/public/linphone-desktop.git#tag=6.0.1-CallEdition
 	source = linphone.png::https://gitlab.linphone.org/BC/public/linphone-desktop/-/raw/8dfd384e3df08b200c8eb382b740da6839961bf0/linphone-app/assets/icons/hicolor/128x128/apps/icon.png
+	source = linphone_package-cmake.patch
 	sha256sums = d111c476f24624c7c91f34269bc92ecf13b10881e846f3c849524e2ff6ef409d
 	sha256sums = 1ab2170029e8c090a498e37cdad12c087c5de623ddd665898309f00d114d7706
+	sha256sums = aaf9fe6ab49c62368d358ecb09f3e97363fd8e60f35fb4cbdf300acb6a53cb10
 
 pkgname = linphone-desktop-call-edition
