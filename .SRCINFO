@@ -1,6 +1,6 @@
 pkgbase = python-chemicals
 	pkgdesc = Chemical database of Chemical Engineering Design Library
-	pkgver = 1.3.3
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/CalebBell/chemicals
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-chemicals
 	makedepends = python-wheel
 	depends = python-fluids
 	depends = python-pandas
-	source = https://pypi.org/packages/source/c/chemicals/chemicals-1.3.3.tar.gz
-	sha512sums = 7079248938edeb596335b48d9eabae6a6dbd716041764682cf6e6a90cb8e35b0b0f2c06c0d9247a2ced27afa27fa79962fb1e6bf5fb5151050418ff639ad4dde
+	source = https://pypi.org/packages/source/c/chemicals/chemicals-1.4.0.tar.gz
+	sha512sums = 35e8259acb3160e461a9aae3447900da347397c7712b6dd169e4c724a1282c4db43a0e6a6b37ca3bcce4acbbdb53256d2d3d97aaeac17c0cca8994dc2017b267
 
 pkgname = python-chemicals
