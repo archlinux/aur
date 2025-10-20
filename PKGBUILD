@@ -1,6 +1,6 @@
 # Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 pkgname=emmental
-pkgver=3.2.5
+pkgver=3.2.6
 pkgrel=1
 pkgdesc='The cheesy music player'
 url='https://git.nowheycreamery.com/anna/emmental'
@@ -11,7 +11,7 @@ makedepends=(git desktop-file-utils)
 optdepends=(gst-plugins-bad gst-plugins-ugly)
 checkdepends=(flake8 python-flake8-docstrings python-pytest python-pytest-timeout python-pytest-subtests)
 source=("https://git.nowheycreamery.com/anna/emmental/archive/emmental-$pkgver.tar.gz")
-sha256sums=(1bce275286f03374009739d7264bddb688d32cdbab527821e8d0d122b24a68c9)
+sha256sums=(7790ba9275fd8d791f8a514a26082af526b79310ca9bf580e549ed0bfb095ff9)
 
 prepare() {
 	cd $pkgname
