@@ -1,6 +1,6 @@
 # Maintainer: Eshaan Desh eshaan2031@icloud.com
 pkgname=cshell
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="C version of Python shell"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('gcc' 'make')
 source=("cshell-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e26d9b34fb40df63ca70c79225111534c721350b13829ccc007a4fd0358f9e8b')
+sha256sums=('e16a85cb7d527f73f8aa4d6c91c6af6cb5a1439eb198ff1429e8c6cae4831e1d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
