@@ -2,3 +2,5 @@
 source = "httpheader"
 url = "https://www.mathworks.com/mpm/glnxa64/mpm"
 regex = '/supportfiles/downloads/mpm/([0-9.]+)/glnxa64/mpm'
+from_pattern = '^(.*)$'
+to_pattern = '\1+r0.updateme'
