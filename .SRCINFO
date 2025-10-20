@@ -1,6 +1,6 @@
 pkgbase = codename-goose
 	pkgdesc = An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/block/goose
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = codename-goose
 	optdepends = wtype: computer controller extension on Wayland
 	optdepends = wl-clipboard: computer controller extension on Wayland
 	options = !lto
-	source = codename-goose-1.11.0.tar.gz::https://github.com/block/goose/archive/refs/tags/v1.11.0.tar.gz
-	b2sums = 8f294735f05241495df41715cc03d3edd935d3f331b1c559e66582ba6c6850fa4be9806326f3d0353eeaf7c724d1b69368d10d2b911b5361964eac293652fcd8
+	source = codename-goose-1.11.1.tar.gz::https://github.com/block/goose/archive/refs/tags/v1.11.1.tar.gz
+	b2sums = 0202c8331d0bacd2b68dc46a4957c0c5933a1b95057e51efa7917358bcffd000000a2bdaf88f729f1d39add19cd761b918768ffce5f055aea57e8b871910960e
 
 pkgname = codename-goose
