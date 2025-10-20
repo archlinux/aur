@@ -1,20 +1,20 @@
 pkgbase = notesnook-electron-bin
 	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = asar
-	depends = electron36
-	provides = notesnook=3.3.1
+	depends = electron37
+	provides = notesnook=3.3.2
 	conflicts = notesnook
 	source = notesnook-electron.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = notesnook-electron-3.3.1-aarch64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.3.1/notesnook_linux_arm64.AppImage
-	sha256sums_aarch64 = a8d0ae997c0b1f5bab7a82dee42f7f686d277be77bdc18292fe4223cfe0ea021
-	source_x86_64 = notesnook-electron-3.3.1-x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.3.1/notesnook_linux_x86_64.AppImage
-	sha256sums_x86_64 = b2cede9ca9972165cd9ae0b6ed766057470d8e8e30866971c2c19888b743e0e5
+	source_aarch64 = notesnook-electron-3.3.2-aarch64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.3.2/notesnook_linux_arm64.AppImage
+	sha256sums_aarch64 = 55dea6acb348073631b1666b6ca194539370172cc6f77b31b9531c54526a048d
+	source_x86_64 = notesnook-electron-3.3.2-x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.3.2/notesnook_linux_x86_64.AppImage
+	sha256sums_x86_64 = 01e8992b2ea6abc05bc261c01c99d21c4c06514b5a392b1a0f58fbcfc98f2b46
 
 pkgname = notesnook-electron-bin
