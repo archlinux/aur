@@ -4,7 +4,7 @@ pkgname=python2-lxml
 _pkgver=4.9.4
 _libxslt_ver=1.1.41
 pkgver=${_pkgver/-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc='Python2 binding for the libxml2 and libxslt libraries'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://lxml.de/'
@@ -12,7 +12,8 @@ license=(
 	'MIT'
 	'BSD-3-Clause'
 	'custom:ElementTree'
-	'GPL-2.0-only')
+	'GPL-2.0-only'
+)
 depends=('python2' 'glibc' 'xz' 'libgcrypt' 'libxml2-2.9')
 makedepends=('python2-setuptools' 'cython2' 'patchelf')
 optdepends=(
@@ -78,6 +79,7 @@ package() {
 
 	local site_packages="$(python2 -c "import site; print(site.getsitepackages()[0])")"
 	install -Dm755 "${srcdir}/libxslt-install/lib/libxslt.so"* -t "${pkgdir}${site_packages}/lxml"
+	install -Dm755 "${srcdir}/libxslt-install/lib/libexslt.so"* -t "${pkgdir}${site_packages}/lxml"
 	patchelf --set-rpath '/usr/lib/libxml2-2.9:$ORIGIN' "${pkgdir}${site_packages}/lxml/"*.so
 
 	install -Dm644 'LICENSES.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
