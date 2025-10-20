@@ -1,0 +1,13 @@
+diff --git a/src/corelib/animation/qabstractanimation.cpp b/src/corelib/animation/qabstractanimation.cpp
+index 7b404712f77..5ec7a6fb25b 100644
+--- a/src/corelib/animation/qabstractanimation.cpp
++++ b/src/corelib/animation/qabstractanimation.cpp
+@@ -118,7 +118,7 @@
+ #include <QtCore/qpointer.h>
+ #include <QtCore/qscopedvaluerollback.h>
+ 
+-#define DEFAULT_TIMER_INTERVAL 16
++#define DEFAULT_TIMER_INTERVAL 1
+ #define PAUSE_TIMER_COARSE_THRESHOLD 2000
+ 
+ QT_BEGIN_NAMESPACE
