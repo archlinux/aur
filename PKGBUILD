@@ -5,7 +5,7 @@
 _branch=main
 _pkgname=yaml-language-server
 pkgname=${_pkgname}-git
-pkgver=r1371.b8750279
+pkgver=r1389.afb9b966
 pkgrel=1
 pkgdesc='YAML Language Server, git main build'
 url="https://github.com/redhat-developer/${_pkgname}"
@@ -27,7 +27,7 @@ pkgver() {
 check() {
   cd $pkgname
   # see: https://github.com/redhat-developer/yaml-language-server/issues/1018
-  #yarn test
+  yarn test
 }
 
 build() {
