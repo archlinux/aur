@@ -1,20 +1,20 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='multicoretests'
 pkgname="ocaml-$_projectname"
-pkgver='0.9'
+pkgver='0.10'
 pkgrel='1'
 pkgdesc='PBT testsuite and libraries for testing multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
 license=('BSD-2-Clause')
 depends=('ocaml>=4.12.0' 'ocaml-qcheck>=0.25')
-makedepends=('dune>=3.0.0')
+makedepends=('dune>=3.18.0')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'disable-dynlink-lin_tests_dsl-test.diff'
 )
-b2sums=('fb2aef49ccbb097a64d509f12d8500d87b44ee43e07f953dcbba8ffc6222108bd2e9a554e192acc9c08accba463d26dc7065b972d476e1be687d06009e14d36b'
+b2sums=('b367e27f8b19328445bf4e686ed8c466ccc3f39427b78b126cc4bbe0ee2c4a2edc0df403bd79b83ded71503b331cb48b0a4e282a9781647adab5b691463ee57b'
         '4332646b32b204fc68776f28bdbe61c153508aabde3b9afe9cf160e0b7ce7838c6e11bee3338e3b37d248b1c039a16d69b9be96607e32faf378e125242c5d5ef')
 
 _sourcedirectory="$_projectname-$pkgver"
