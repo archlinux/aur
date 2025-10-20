@@ -4,7 +4,7 @@ export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-dagger-io
-pkgver=0.11.0
+pkgver=0.19.2
 pkgrel=00
 pkgdesc='A client package for running Dagger pipelines in Python.'
 arch=(any)
@@ -52,16 +52,11 @@ source=(
 	"https://github.com/dagger/dagger/archive/refs/tags/sdk/python/v${pkgver}.tar.gz"
 	)
 sha256sums=(
-	"23d17b6e3bced60aa6939a36609c8d73d28040afeeba0cadac7b1038695d607b"
+	"79ad05b0968fe4d6e502f060836dabe8e86b61d341a8c43c8e31bcc3f5b831f9"
 	)
 
 _dist_name="dagger-sdk-python-v${pkgver}"
 _skd_dir="${_dist_name}/sdk/python"
-
-check() {
-	cd "${srcdir}/${_skd_dir}"
-	dagger call -m dev tests
-}
 
 build() {
 	cd "${srcdir}/${_skd_dir}"

@@ -1,6 +1,6 @@
 pkgbase = python-dagger-io
 	pkgdesc = A client package for running Dagger pipelines in Python.
-	pkgver = 0.11.0
+	pkgver = 0.19.2
 	pkgrel = 00
 	url = https://pypi.org/project/dagger-io/
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = python-dagger-io
 	depends = python-platformdirs
 	depends = python-rich
 	depends = python-typing_extensions
-	source = https://github.com/dagger/dagger/archive/refs/tags/sdk/python/v0.11.0.tar.gz
-	sha256sums = 23d17b6e3bced60aa6939a36609c8d73d28040afeeba0cadac7b1038695d607b
+	source = https://github.com/dagger/dagger/archive/refs/tags/sdk/python/v0.19.2.tar.gz
+	sha256sums = 79ad05b0968fe4d6e502f060836dabe8e86b61d341a8c43c8e31bcc3f5b831f9
 
 pkgname = python-dagger-io
