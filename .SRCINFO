@@ -10,7 +10,7 @@ pkgbase = cpmenu
 	source = cpmenu::https://github.com/Sleep-No-More/cpmenu/releases/download/0.2.0/cpmenu
 	source = LICENSE::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/0.2.0/LICENSE
 	source = README.md::https://raw.githubusercontent.com/Sleep-No-More/cpmenu/0.2.0/README.md
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = d2f065de4a90050dfd62b220810e406b1f999726d244224575ac3b7d774a189c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
