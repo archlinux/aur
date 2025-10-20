@@ -1,0 +1,4 @@
+[termgl]
+source = "git"
+git = "https://github.com/wojciech-graj/TermGL.git"
+prefix = "v"
