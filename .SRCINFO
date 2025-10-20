@@ -1,6 +1,6 @@
 pkgbase = vutronmusic-bin
 	pkgdesc = 高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/stark81/VutronMusic
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = vutronmusic-bin
 	depends = nss
 	depends = util-linux-libs
 	optdepends = libappindicator-gtk3
-	source = VutronMusic-2.6.0_linux_amd64.deb::https://github.com/stark81/VutronMusic/releases/download/v2.6.0/VutronMusic-2.6.0_linux_amd64.deb
-	sha256sums = be0c2080157b9085921b1a0fd732a085d16575ffb9024089fdd80bd5bdc45731
+	source = VutronMusic-2.7.0_linux_amd64.deb::https://github.com/stark81/VutronMusic/releases/download/v2.7.0/VutronMusic-2.7.0_linux_amd64.deb
+	sha256sums = 9825939b06b0e50a98b87eb915b4e21e0cb0ce510f8d0f35a2900afc649adec7
 
 pkgname = vutronmusic-bin
