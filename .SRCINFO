@@ -1,6 +1,6 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
-	pkgver = 4.1.4
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://exaile.org
 	arch = any
@@ -46,7 +46,7 @@ pkgbase = exaile
 	optdepends = gst-plugins-bad: BPM Counter plugin
 	optdepends = python-beautifulsoup4: lyrics from lyrics.wikia.com (lyricwiki)
 	optdepends = ipython: ipconsole plugin
-	source = exaile-4.1.4.tar.gz::https://github.com/exaile/exaile/archive/4.1.4.tar.gz
-	sha512sums = c84ae8c18f330c95b860fc211150eb02b47791340e3a6ce83b0d58f542b916a3187177996d4f572b4eddd28e253d061a3932d0d0d3a85c1f95be160fea2e32bc
+	source = exaile-4.2.0.tar.gz::https://github.com/exaile/exaile/archive/4.2.0.tar.gz
+	sha512sums = 22f8ccbb7e1f56b7b051918454610cd8e40f64b9c8c1108db8830c1224fa2b4a5d178deeb2dc967d8dc5c313cc62a661b65495e0c05d7a79123131d061b90529
 
 pkgname = exaile
