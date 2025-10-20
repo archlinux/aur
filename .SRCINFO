@@ -7,14 +7,15 @@ pkgbase = finamp-git
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = git
-	makedepends = flutter-tool
-	makedepends = flutter-target-linux
 	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = xz
 	depends = gtk3
 	depends = pango
+	optdepends = fvm
+	optdepends = flutter-tool
+	optdepends = flutter-target-linux
 	provides = finamp
 	conflicts = finamp
 	source = finamp::git+https://github.com/jmshrv/finamp.git#branch=redesign
