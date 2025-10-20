@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.12.4
+pkgver=4.12.5
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"{,.asc}
         "${pkgbase}-PyCA44-support-2.patch::https://github.com/freeipa/freeipa/commit/8dfec28647f7c17e47fbfc96a1720dcde1592386.patch"
         nis-domainname.service
         ipaplatform.tar.gz)
-sha256sums=('367ddd1e8680b7af8c67480c1422678978229eae20b8d33c1e30a1ade9fd69d6'
+sha256sums=('8ef5d2f47c7d54615c7052f5f47a207c7d79255216ee9737fd3635a4ebc98253'
             'SKIP'
             '574151858482df7ed5673eb19888d5853306aaffe6a96cd3d202f0d6b4ce1029'
             '85541b159d8bb6e1a8ee2f34c4fad6e3069eb9e1964036518e144c3d7394dc8e'
