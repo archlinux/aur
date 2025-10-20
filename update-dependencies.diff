@@ -1,9 +1,9 @@
 diff --git a/package.json b/package.json
-index d2b042f92..4b95f58b5 100644
+index 35e17792c..4a6b0f099 100644
 --- a/package.json
 +++ b/package.json
 @@ -132,6 +132,10 @@
-     "@leafygreen-ui/code": "^16.0.2",
+     "@leafygreen-ui/code": "^20.1.1",
      "@leafygreen-ui/text-area": "^10.0.2",
      "@leafygreen-ui/card": "^12.0.2",
 -    "@leafygreen-ui/logo": "^10.0.2"
