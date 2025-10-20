@@ -1,14 +1,13 @@
 pkgbase = diceware-auto
 	pkgdesc = Randomly generate Diceware passphrases
-	pkgver = 1.2
-	pkgrel = 2
-	url = https://github.com/dino-/diceware-auto
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://codeberg.org/dinofp/diceware-auto
 	arch = x86_64
 	license = ISC
 	depends = fuse2
 	options = !strip
-	source = https://github.com/dino-/diceware-auto/releases/download/1.2/diceware-auto-1.2-x86_64.AppImage
-	sha256sums = a2893c26bd59dbbaa4cd760c4dfe805c6d45dee0b801993c32cdf84352d602ff
+	source = https://codeberg.org/dinofp/diceware-auto/releases/download/1.3/diceware-auto-1.3-x86_64.AppImage
+	sha256sums = 2ef80ea6077283ac2b85748a9ef50367f31f7af3b20028c56ce553b1ee646c6d
 
 pkgname = diceware-auto
-
