@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libreoffice-extension-writingtool
-pkgver=25.7.2
+pkgver=25.10
 pkgrel=1
 pkgdesc="WritingTool is a LibreOffice extension for LibreOffice that adds a writing assistant to text editing."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime>=17' 'libreoffice' 'python' 'perl' 'bash')
 install=$pkgname.install
 makedepends=("maven" "java-environment=17")
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ec9c674f4f3db1addb5f946f8ef28a818b961f608d7f3765a12e0add1f4d23b2')
+sha256sums=('83f16e99179fafe193749381f323783befe284a09d9c8b75390f1935ce7d88b0')
 
 prepare() {
 	cd "$srcdir/${pkgname:22}-$pkgver"
