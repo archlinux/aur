@@ -1,0 +1,18 @@
+pkgbase = openai-codex-autoup-bin
+	pkgdesc = Lightweight coding agent that runs in your terminal (binary release)
+	pkgver = 0.47.0
+	pkgrel = 1
+	url = https://github.com/openai/codex
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	optdepends = git: for working with git repositories
+	optdepends = ripgrep: accelerated large-repo search
+	provides = openai-codex
+	conflicts = openai-codex
+	source_x86_64 = codex-0.47.0-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v0.47.0/codex-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 89694a9347fc8adb723645bad5cd25a6afe393cb2896f37a8beaa594412463f2
+	source_aarch64 = codex-0.47.0-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v0.47.0/codex-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b8e050dc0940d5375ab4b9d9fe08b7cddf0c6608a2c94bfe5e007f664b677b52
+
+pkgname = openai-codex-autoup-bin
