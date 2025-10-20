@@ -10,11 +10,12 @@ pkgbase = darknet-hankai-git
 	makedepends = cmake
 	makedepends = git
 	depends = opencv
-	optdepends = cuda
-	optdepends = cudnn
-	optdepends = rocm-opencl-runtime
-	optdepends = rocm-hip-runtime
-	optdepends = rocm-hip-sdk
+	depends = qt6-base
+	optdepends = cuda: for NVIDIA GPU support
+	optdepends = cudnn: for NVIDIA cuDNN acceleration
+	optdepends = rocm-hip-runtime: for AMD GPU support
+	optdepends = rocm-hip-sdk: for AMD GPU development
+	optdepends = amdsmi: for AMD GPU monitoring
 	source = git+https://github.com/hank-ai/darknet.git
 	sha256sums = SKIP
 
