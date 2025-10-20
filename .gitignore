@@ -1,4 +1,6 @@
 sox-*.tar.bz2
 v2*.tar.gz
+*torchaudio*.pkg.tar*
+
 
 
