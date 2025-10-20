@@ -1,7 +1,7 @@
 # Maintainer: Thomas Pellissier-Tanon <thomas at pellissier-tanon dot fr>
 
 pkgname=oxigraph
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="SPARQL graph database and RDF toolkit"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'openssl' 'rocksdb')
 makedepends=('clang' 'pkg-config' 'rust')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oxigraph/oxigraph/releases/download/v${pkgver//_/-}/oxigraph_v${pkgver//_/-}.tar.gz")
-sha512sums=('966a2a7941cd4626131c515845119088672199480cd90e4c288bb5b84955bc0dca82a2f520d1d596e276123f3ae852351d11a986a7e9da99da5da970f2eeb781')
+sha512sums=('61f0aca017427e73ee3e802e5d5f64b355dbac3584e07ac7efe6d7ab28bc06362f9ca1e412ed1101311e91467280680e04ed2bb5d8267c6d1bb5fb1f6df255d7')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
