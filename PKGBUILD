@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=nodejs-jsonschema2md
-pkgver=8.0.6 # renovate: datasource=github-releases depName=adobe/jsonschema2md
+pkgver=8.0.7 # renovate: datasource=github-releases depName=adobe/jsonschema2md
 pkgrel=1
 pkgdesc="Convert Complex JSON Schemas into Markdown Documentation"
 url="https://github.com/adobe/jsonschema2md"
@@ -11,7 +11,7 @@ noextract=("${source[0]##*/}")
 depends=("nodejs")
 makedepends=("npm")
 arch=('x86_64')
-sha512sums=('7483795c11d5641330bb564737c0f365cf71c3b2c7209fd9b33ecb0a957f07927a47f2c444ccdcc0bfd7db75abf379c90e3fa07b462aceb6e4e0dffc9332cdad')
+sha512sums=('9fa4aa41a8d45c07a4419a87859210c7f4d450c0a6575b7d36c1e5ebeb2f6b709b6267948a42bdd50efdc706c53463ef2846598728b3f959c58a00609b64d9bf')
 conflicts=("$pkgname" "${pkgname}-git")
 
 package() {
