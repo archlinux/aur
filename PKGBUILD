@@ -2,7 +2,7 @@
 
 pkgname=mangowc-git
 pkgver=r761.3346c8a
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
 arch=("x86_64")
@@ -30,7 +30,7 @@ makedepends=(
 )
 
 provides=(mangowc wayland-compositor)
-conflicts=(mangowc)
+conflicts=(mangowc mangowc-stable)
 source=("$pkgname::git+https://github.com/DreamMaoMao/mangowc.git")
 md5sums=('SKIP')
 
