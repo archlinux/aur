@@ -11,6 +11,7 @@ pkgbase = helion-bin
 	depends = glfw
 	depends = zmusic>=1.1.8
 	provides = helion
+	conflicts = helion
 	source = https://github.com/Helion-Engine/Helion/releases/download/0.9.8.0/Helion-0.9.8.0-linux-x64_AOT.zip
 	source = helion.desktop
 	source = helion.ico
