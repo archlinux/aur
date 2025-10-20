@@ -1,0 +1,4 @@
+[eless]
+source = "git"
+git = "https://github.com/kaushalmodi/eless.git"
+prefix = "v"

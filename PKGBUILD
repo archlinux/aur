@@ -1,26 +1,33 @@
-# Maintainer: arkhan <arkhan@disroot.org>
-pkgname=eless
+# Maintainer:
+# Contributor: arkhan <arkhan@disroot.org>
+
+_pkgname="eless"
+pkgname="$_pkgname"
 pkgver=0.7
-pkgrel=1
-pkgdesc="A Better 'less' - A bash script that loads emacs with minimal view-mode config"
-arch=('any')
+pkgrel=2
+pkgdesc="A bash script that loads emacs with minimal view-mode config"
+url="https://github.com/kaushalmodi/eless"
 license=('MIT')
-depends=("bash" "emacs")
-url='https://eless.scripter.co'
-source=("https://github.com/kaushalmodi/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('2c9405bc77dda2abcf7429551e4d6a9e')
+arch=('any')
+
+depends=(bash emacs)
+makedepends=(git)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
+sha256sums=('36e2b2ea243f50973eb0d9b9af7e901f361f3d194a7463b8d0e2ff7f2b508b63')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$_pkgsrc"
   make eless
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/doc/eless"
-  install -d "$pkgdir/usr/share/licences/eless"
-  cp -rf eless "$pkgdir/usr/bin/"
-  cp -rf docs "$pkgdir/usr/share/doc/eless"
-  cp -rf LICENSE.md "$pkgdir/usr/share/licences/eless/"
+  cd "$_pkgsrc"
+  install -Dm755 eless -t "$pkgdir/usr/bin/"
+
+  mkdir -pm755 "$pkgdir/usr/share/doc/$_pkgname"
+  cp -rf docs "$pkgdir/usr/share/doc/$_pkgname"
+
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
