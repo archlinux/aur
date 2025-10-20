@@ -5,14 +5,14 @@
 pkgname=micromamba
 _pkgname=${pkgname/micro/}
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The fast cross-platform package manager"
 arch=(i686 x86_64)
 url="https://github.com/${_pkgname}-org/${_pkgname}"
 license=(BSD-3-Clause)
 depends=(python fmt libsolv reproc yaml-cpp simdjson)
 makedepends=(cli11 spdlog tl-expected nlohmann-json cmake pybind11 ninja
-  python-build python-installer python-scikit-build)
+  python-build python-installer python-scikit-build-core)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   etc-install.patch::https://github.com/mamba-org/mamba/commit/3dec9c0bc0e424749c649eae96de92c323e3b3d3.patch
   static-off.patch)

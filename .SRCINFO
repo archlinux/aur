@@ -1,7 +1,7 @@
 pkgbase = micromamba
 	pkgdesc = The fast cross-platform package manager
 	pkgver = 2.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mamba-org/mamba
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = micromamba
 	makedepends = ninja
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-scikit-build
+	makedepends = python-scikit-build-core
 	depends = python
 	depends = fmt
 	depends = libsolv
