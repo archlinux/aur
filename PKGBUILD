@@ -1,33 +1,22 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Debjeet Banerjee <serene.brew.git@gmail.com>
+# Co Maintainer: Imon Chakraborty <serene.brew.git@gmail.com>
 
-_pkgname=espionage
-pkgname=$_pkgname-git
-pkgver=0.9.r17.c7fa0fb
+pkgname=espionage-git
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="PyEFL D-Bus inspector"
+pkgdesc="ESP8266 and EPS32 firmware binaries analysis toolkit "
 arch=('any')
-url="https://phab.enlightenment.org/w/projects/espionage/"
-license=('GPL3')
-depends=('python-efl')
-makedepends=('git')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-install=$_pkgname.install
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+url="https://github.com/serene-brew/ESPionage"
+license=('BSD-3-CLAUSE')
+depends=('python')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-
-  printf "$(python setup.py -V).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+build() {
+  cd "${srcdir}/ESPionage-${pkgver}"
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  python setup.py install --root="$pkgdir"
-
-# install text files
-  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$_pkgname/ChangeLog"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  cd "${srcdir}/ESPionage-${pkgver}"
+  install -Dm755 install.sh "${pkgdir}/usr/bin/espionage-install"
 }
