@@ -7,7 +7,7 @@ arch=('any')
 license=('BSD')
 #makedepends=()
 depends=('fftw' 'alsa-lib' 'libvorbis' 'flac' 'libjpeg' 'xforms' 'libsamplerate' 'ncurses' 'libx11' 'libpng' 'libxpm' 'libshout' 'sox' 'gnuplot' 'texlive-core')
-url="http://abelian.org/vlfrx-tools"
+url="https://abelian.vvsindia.com/vlfrx-tools/"
 source=("$url/$pkgname-$pkgver.tgz")
 
 sha256sums=('SKIP')
