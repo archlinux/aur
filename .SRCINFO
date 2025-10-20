@@ -1,7 +1,7 @@
 pkgbase = newelle
 	pkgdesc = Your Ultimate Virtual Assistant
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/qwersyk/Newelle
 	arch = any
 	license = GPL-3.0-or-later
@@ -33,7 +33,7 @@ pkgbase = newelle
 	depends = webkitgtk-6.0
 	depends = python-markdownify
 	optdepends = python-gpt4all
-	source = https://github.com/qwersyk/Newelle/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = fcf48743e1f2bb69277dce4a9327e134175e2cdc2eae889aeb6127348077d17d
+	source = https://github.com/qwersyk/Newelle/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 144673bfbff16c6da13df127a476ee3f6f89460a24be21ce2537d149f530cd17
 
 pkgname = newelle
