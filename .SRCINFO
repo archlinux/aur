@@ -1,4 +1,4 @@
-pkgbase = cosmic-ext-applet-logomenu
+pkgbase = cosmic-ext-applet-logomenu-git
 	pkgdesc = Logo Menu applet for the COSMIC™ desktop
 	pkgver = 0.6.5
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = cosmic-ext-applet-logomenu
 	source = git+https://github.com/cappsyco/cosmic-ext-applet-logomenu-git.git
 	sha256sums = SKIP
 
-pkgname = cosmic-ext-applet-logomenu
+pkgname = cosmic-ext-applet-logomenu-git
