@@ -13,6 +13,7 @@ pkgbase = tosu-overlay-git
 	depends = qt6-webengine
 	depends = layer-shell-qt
 	depends = tosu
+	provides = tosu-overlay
 	conflicts = tosu-overlay
 	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay-qt.git
 	sha256sums = SKIP
