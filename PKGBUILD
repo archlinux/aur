@@ -15,16 +15,19 @@ install="$pkgname.install"
 source=("https://github.com/kondrak/$_remote/archive/$pkgver.tar.gz"
         'quake2.png'
         'vkquake2.desktop'
-        'ref_vk.patch')
+        'ref_vk.patch'
+        'vkquake2-fix-config-dir.patch')
 sha256sums=('14faa07bc5b0fe2084d4515220e138a47e23b69ea6b8aa73ba5ea01be14a8588'
             'f7ca0b94414770903248c193a28e4c3e0d25faf31aab53e86001395f5526e4f6'
             '6c7a493f782e8bf4e9b79f0654054207f4d11c36f4cea217dd2295a1297ff27b'
-            '5c373b6cb4a605ccd9357105145780b1507ffc268061e25c22e86afa9690f7c8')
+            '5c373b6cb4a605ccd9357105145780b1507ffc268061e25c22e86afa9690f7c8'
+            '094d2d809bd8c681548e9075c11cd4ac6279df7ca2b7511c5dfc5d2c4dfecd7f')
 _build=release #unset for debug
 
 prepare() {
     cd "$srcdir/$_remote-$pkgver"
     patch -Np1 -i ../ref_vk.patch
+    patch -p1 -i ../vkquake2-fix-config-dir.patch
     sed -i '/XCFLAGS=/a RELEASE_CFLAGS=$(BASE_CFLAGS) $(CFLAGS) $(LDFLAGS) -std=c17' 'linux/Makefile'
 }
 

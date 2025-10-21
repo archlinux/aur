@@ -1,0 +1,358 @@
+diff --git a/client/cl_main.c b/client/cl_main.c
+index e284026..24e7c3a 100644
+--- a/client/cl_main.c
++++ b/client/cl_main.c
+@@ -21,6 +21,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+ #include "client.h"
+ 
++#include <sys/stat.h>
++#include <errno.h>
++
+ cvar_t	*freelook;
+ 
+ cvar_t	*adr0;
+@@ -1561,11 +1564,18 @@ void CL_WriteConfiguration (void)
+ {
+ 	FILE	*f;
+ 	char	path[MAX_QPATH];
++	int res;
+ 
+ 	if (cls.state == ca_uninitialized)
+ 		return;
+ 
+-	Com_sprintf (path, sizeof(path),"%s/config.cfg",FS_Gamedir());
++	Com_sprintf (path, sizeof(path), "%s/vkQuake2", FS_XdgConfigHome());
++	res = mkdir(path, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
++	if (res && errno != EEXIST) {
++		Com_Printf ("Couldn't create config directory `%s`: %d\n", path, res);
++		return;
++	}
++	Com_sprintf (path, sizeof(path), "%s/vkQuake2/config.cfg", FS_XdgConfigHome());
+ 	f = fopen (path, "w");
+ 	if (!f)
+ 	{
+diff --git a/client/menu.c b/client/menu.c
+index 8b97142..dabbc82 100644
+--- a/client/menu.c
++++ b/client/menu.c
+@@ -2072,7 +2072,7 @@ void Create_Savestrings (void)
+ 
+ 	for (i=0 ; i<MAX_SAVEGAMES ; i++)
+ 	{
+-		Com_sprintf (name, sizeof(name), "%s/save/save%i/server.ssv", FS_Gamedir(), i);
++		Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/save%i/server.ssv", FS_XdgDataHome(), FS_GameName(), i);
+ 		f = fopen (name, "rb");
+ 		if (!f)
+ 		{
+diff --git a/linux/Makefile b/linux/Makefile
+index cd328d3..1252cc5 100644
+--- a/linux/Makefile
++++ b/linux/Makefile
+@@ -90,6 +90,7 @@ LDFLAGS=-L/usr/local/lib -ldl -lm -lasound -lpthread
+ SVGALDFLAGS=-lvga -lm
+ XLDFLAGS=-L/usr/X11R6/lib -L/usr/local/lib -lX11 -lXext -lXxf86dga
+ XCFLAGS=
++RELEASE_CFLAGS=$(BASE_CFLAGS) $(CFLAGS) $(LDFLAGS) -std=c17
+ 
+ GLLDFLAGS=-L/usr/X11R6/lib -L/usr/local/lib -L$(MESA_DIR)/lib -lX11 -lXext -lvga -lm
+ GLXLDFLAGS=-L/usr/X11R6/lib -L/usr/local/lib -L$(MESA_DIR)/lib -lX11 -lXext -lXxf86dga -lXxf86vm -lm
+diff --git a/qcommon/common.c b/qcommon/common.c
+index b4bced4..904623d 100644
+--- a/qcommon/common.c
++++ b/qcommon/common.c
+@@ -1408,6 +1408,7 @@ Qcommon_Init
+ void Qcommon_Init (int argc, char **argv)
+ {
+ 	char	*s;
++	char path[MAX_OSPATH + 100];
+ 
+ 	if (setjmp (abortframe) )
+ 		Sys_Error ("Error during initialization");
+@@ -1437,6 +1438,9 @@ void Qcommon_Init (int argc, char **argv)
+ 
+ 	Cbuf_AddText ("exec default.cfg\n");
+ 	Cbuf_AddText ("exec config.cfg\n");
++	Com_sprintf( path, sizeof(path), "exec %s/vkQuake2/config.cfg\n", FS_XdgConfigHome() );
++	Com_Printf(path);
++	Cbuf_AddText (path);
+ 
+ 	Cbuf_AddEarlyCommands (true);
+ 	Cbuf_Execute ();
+diff --git a/qcommon/files.c b/qcommon/files.c
+index ecf3438..e29a760 100644
+--- a/qcommon/files.c
++++ b/qcommon/files.c
+@@ -58,6 +58,7 @@ typedef struct pack_s
+ 	packfile_t	*files;
+ } pack_t;
+ 
++char	fs_gamename[MAX_OSPATH];
+ char	fs_gamedir[MAX_OSPATH];
+ cvar_t	*fs_basedir;
+ cvar_t	*fs_cddir;
+@@ -83,6 +84,8 @@ typedef struct searchpath_s
+ searchpath_t	*fs_searchpaths;
+ searchpath_t	*fs_base_searchpaths;	// without gamedirs
+ 
++char fs_xdgConfigHome[MAX_OSPATH];
++char fs_xdgDataHome[MAX_OSPATH];
+ 
+ /*
+ 
+@@ -213,6 +216,17 @@ int FS_FOpenFile (char *filename, FILE **file)
+ 
+ 	file_from_pak = 0;
+ 
++	if (filename[0] == '/')
++	{
++		*file = fopen (filename, "rb");
++		if (*file)
++		{
++			Com_DPrintf ("link file: %s\n",filename);
++			return FS_filelength (*file);
++		}
++		return -1;
++	}
++
+ 	// check for links first
+ 	for (link = fs_links ; link ; link=link->next)
+ 	{
+@@ -631,6 +645,7 @@ void FS_SetGamedir (char *dir)
+ 	{
+ 		Cvar_FullSet ("gamedir", "", CVAR_SERVERINFO|CVAR_NOSET);
+ 		Cvar_FullSet ("game", "", CVAR_LATCH|CVAR_SERVERINFO);
++		fs_gamename[0] = '\0';
+ 	}
+ 	else
+ 	{
+@@ -638,6 +653,7 @@ void FS_SetGamedir (char *dir)
+ 		if (fs_cddir->string[0])
+ 			FS_AddGameDirectory (va("%s/%s", fs_cddir->string, dir) );
+ 		FS_AddGameDirectory (va("%s/%s", fs_basedir->string, dir) );
++		strncpy(fs_gamename, dir, sizeof(fs_gamename));
+ 	}
+ }
+ 
+@@ -839,6 +855,24 @@ char *FS_NextPath (char *prevpath)
+ 	return NULL;
+ }
+ 
++char *FS_XdgConfigHome (void)
++{
++	return fs_xdgConfigHome;
++}
++
++char *FS_XdgDataHome (void)
++{
++	return fs_xdgDataHome;
++}
++
++char *FS_GameName (void)
++{
++	if (fs_gamename[0] == '\0') {
++		return BASEDIRNAME;
++	} else {
++		return fs_gamename;
++	}
++}
+ 
+ /*
+ ================
+@@ -878,7 +912,17 @@ void FS_InitFilesystem (void)
+ 	fs_gamedirvar = Cvar_Get ("game", "", CVAR_LATCH|CVAR_SERVERINFO);
+ 	if (fs_gamedirvar->string[0])
+ 		FS_SetGamedir (fs_gamedirvar->string);
+-}
+ 
++	char *dir = getenv("XDG_CONFIG_HOME");
++	if (dir != NULL)
++		strncpy(fs_xdgConfigHome, dir, sizeof(fs_xdgConfigHome));
++	else
++		Com_sprintf( fs_xdgConfigHome, sizeof(fs_xdgConfigHome), "%s/.config", getenv("HOME") );
+ 
++	dir = getenv("XDG_DATA_HOME");
++	if (dir != NULL)
++		strncpy(fs_xdgDataHome, dir, sizeof(fs_xdgDataHome));
++	else
++		Com_sprintf( fs_xdgDataHome, sizeof(fs_xdgDataHome), "%s/.local/share", getenv("HOME") );
++}
+ 
+diff --git a/qcommon/qcommon.h b/qcommon/qcommon.h
+index 846c974..3b9ece5 100644
+--- a/qcommon/qcommon.h
++++ b/qcommon/qcommon.h
+@@ -734,6 +734,9 @@ void	FS_FreeFile (void *buffer);
+ 
+ void	FS_CreatePath (char *path);
+ 
++char *FS_XdgConfigHome (void);
++char *FS_XdgDataHome (void);
++char *FS_GameName (void);
+ 
+ /*
+ ==============================================================
+diff --git a/server/sv_ccmds.c b/server/sv_ccmds.c
+index 037b7cf..f4d56fb 100644
+--- a/server/sv_ccmds.c
++++ b/server/sv_ccmds.c
+@@ -160,12 +160,12 @@ void SV_WipeSavegame (char *savename)
+ 
+ 	Com_DPrintf("SV_WipeSaveGame(%s)\n", savename);
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/server.ssv", FS_Gamedir (), savename);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/server.ssv", FS_XdgDataHome(), FS_GameName(), savename);
+ 	remove (name);
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/game.ssv", FS_Gamedir (), savename);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/game.ssv", FS_XdgDataHome(), FS_GameName(), savename);
+ 	remove (name);
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/*.sav", FS_Gamedir (), savename);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/*.sav", FS_XdgDataHome(), FS_GameName(), savename);
+ 	s = Sys_FindFirst( name, 0, 0 );
+ 	while (s)
+ 	{
+@@ -173,7 +173,7 @@ void SV_WipeSavegame (char *savename)
+ 		s = Sys_FindNext( 0, 0 );
+ 	}
+ 	Sys_FindClose ();
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/*.sv2", FS_Gamedir (), savename);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/*.sv2", FS_XdgDataHome(), FS_GameName(), savename);
+ 	s = Sys_FindFirst(name, 0, 0 );
+ 	while (s)
+ 	{
+@@ -236,24 +236,24 @@ void SV_CopySaveGame (char *src, char *dst)
+ 	SV_WipeSavegame (dst);
+ 
+ 	// copy the savegame over
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/server.ssv", FS_Gamedir(), src);
+-	Com_sprintf (name2, sizeof(name2), "%s/save/%s/server.ssv", FS_Gamedir(), dst);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/server.ssv", FS_XdgDataHome(), FS_GameName(), src);
++	Com_sprintf (name2, sizeof(name2), "%s/vkQuake2/%s/save/%s/server.ssv", FS_XdgDataHome(), FS_GameName(), dst);
+ 	FS_CreatePath (name2);
+ 	CopyFile (name, name2);
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/game.ssv", FS_Gamedir(), src);
+-	Com_sprintf (name2, sizeof(name2), "%s/save/%s/game.ssv", FS_Gamedir(), dst);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/game.ssv", FS_XdgDataHome(), FS_GameName(), src);
++	Com_sprintf (name2, sizeof(name2), "%s/vkQuake2/%s/save/%s/game.ssv", FS_XdgDataHome(), FS_GameName(), dst);
+ 	CopyFile (name, name2);
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/", FS_Gamedir(), src);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/", FS_XdgDataHome(), FS_GameName(), src);
+ 	len = (int)strlen(name);
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/*.sav", FS_Gamedir(), src);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/*.sav", FS_XdgDataHome(), FS_GameName(), src);
+ 	found = Sys_FindFirst(name, 0, 0 );
+ 	while (found)
+ 	{
+ 		strcpy (name+len, found+len);
+ 
+-		Com_sprintf (name2, sizeof(name2), "%s/save/%s/%s", FS_Gamedir(), dst, found+len);
++		Com_sprintf (name2, sizeof(name2), "%s/vkQuake2/%s/save/%s/%s", FS_XdgDataHome(), FS_GameName(), dst, found+len);
+ 		CopyFile (name, name2);
+ 
+ 		// change sav to sv2
+@@ -282,7 +282,7 @@ void SV_WriteLevelFile (void)
+ 
+ 	Com_DPrintf("SV_WriteLevelFile()\n");
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/%s.sv2", FS_Gamedir(), sv.name);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/%s.sv2", FS_XdgDataHome(), FS_GameName(), sv.name);
+ 	f = fopen(name, "wb");
+ 	if (!f)
+ 	{
+@@ -293,7 +293,7 @@ void SV_WriteLevelFile (void)
+ 	CM_WritePortalState (f);
+ 	fclose (f);
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/%s.sav", FS_Gamedir(), sv.name);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/%s.sav", FS_XdgDataHome(), FS_GameName(), sv.name);
+ 	ge->WriteLevel (name);
+ }
+ 
+@@ -310,7 +310,7 @@ void SV_ReadLevelFile (void)
+ 
+ 	Com_DPrintf("SV_ReadLevelFile()\n");
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/%s.sv2", FS_Gamedir(), sv.name);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/%s.sv2", FS_XdgDataHome(), FS_GameName(), sv.name);
+ 	f = fopen(name, "rb");
+ 	if (!f)
+ 	{
+@@ -321,7 +321,7 @@ void SV_ReadLevelFile (void)
+ 	CM_ReadPortalState (f);
+ 	fclose (f);
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/%s.sav", FS_Gamedir(), sv.name);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/%s.sav", FS_XdgDataHome(), FS_GameName(), sv.name);
+ 	ge->ReadLevel (name);
+ }
+ 
+@@ -342,7 +342,7 @@ void SV_WriteServerFile (qboolean autosave)
+ 
+ 	Com_DPrintf("SV_WriteServerFile(%s)\n", autosave ? "true" : "false");
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/server.ssv", FS_Gamedir());
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/server.ssv", FS_XdgDataHome(), FS_GameName());
+ 	f = fopen (name, "wb");
+ 	if (!f)
+ 	{
+@@ -394,7 +394,7 @@ void SV_WriteServerFile (qboolean autosave)
+ 	fclose (f);
+ 
+ 	// write game state
+-	Com_sprintf (name, sizeof(name), "%s/save/current/game.ssv", FS_Gamedir());
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/game.ssv", FS_XdgDataHome(), FS_GameName());
+ 	ge->WriteGame (name, autosave);
+ }
+ 
+@@ -413,7 +413,7 @@ void SV_ReadServerFile (void)
+ 
+ 	Com_DPrintf("SV_ReadServerFile()\n");
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/server.ssv", FS_Gamedir());
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/server.ssv", FS_XdgDataHome(), FS_GameName());
+ 	f = fopen (name, "rb");
+ 	if (!f)
+ 	{
+@@ -445,7 +445,7 @@ void SV_ReadServerFile (void)
+ 	strcpy (svs.mapcmd, mapcmd);
+ 
+ 	// read game state
+-	Com_sprintf (name, sizeof(name), "%s/save/current/game.ssv", FS_Gamedir());
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/game.ssv", FS_XdgDataHome(), FS_GameName());
+ 	ge->ReadGame (name);
+ }
+ 
+@@ -500,7 +500,7 @@ void SV_GameMap_f (void)
+ 
+ 	Com_DPrintf("SV_GameMap(%s)\n", Cmd_Argv(1));
+ 
+-	FS_CreatePath (va("%s/save/current/", FS_Gamedir()));
++	FS_CreatePath (va("%s/vkQuake2/%s/save/current/", FS_XdgDataHome(), FS_GameName()));
+ 
+ 	// check for clearing the current savegame
+ 	map = Cmd_Argv(1);
+@@ -613,7 +613,7 @@ void SV_Loadgame_f (void)
+ 	}
+ 
+ 	// make sure the server.ssv file exists
+-	Com_sprintf (name, sizeof(name), "%s/save/%s/server.ssv", FS_Gamedir(), Cmd_Argv(1));
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/%s/server.ssv", FS_XdgDataHome(), FS_GameName(), Cmd_Argv(1));
+ 	f = fopen (name, "rb");
+ 	if (!f)
+ 	{
+diff --git a/server/sv_init.c b/server/sv_init.c
+index 7ac1220..b567c3d 100644
+--- a/server/sv_init.c
++++ b/server/sv_init.c
+@@ -126,7 +126,7 @@ void SV_CheckForSavegame (void)
+ 	if (Cvar_VariableValue ("deathmatch"))
+ 		return;
+ 
+-	Com_sprintf (name, sizeof(name), "%s/save/current/%s.sav", FS_Gamedir(), sv.name);
++	Com_sprintf (name, sizeof(name), "%s/vkQuake2/%s/save/current/%s.sav", FS_XdgDataHome(), FS_GameName(), sv.name);
+ 	f = fopen (name, "rb");
+ 	if (!f)
+ 		return;		// no savegame

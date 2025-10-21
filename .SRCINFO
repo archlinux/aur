@@ -18,9 +18,11 @@ pkgbase = vkquake2
 	source = quake2.png
 	source = vkquake2.desktop
 	source = ref_vk.patch
+	source = vkquake2-fix-config-dir.patch
 	sha256sums = 14faa07bc5b0fe2084d4515220e138a47e23b69ea6b8aa73ba5ea01be14a8588
 	sha256sums = f7ca0b94414770903248c193a28e4c3e0d25faf31aab53e86001395f5526e4f6
 	sha256sums = 6c7a493f782e8bf4e9b79f0654054207f4d11c36f4cea217dd2295a1297ff27b
 	sha256sums = 5c373b6cb4a605ccd9357105145780b1507ffc268061e25c22e86afa9690f7c8
+	sha256sums = 094d2d809bd8c681548e9075c11cd4ac6279df7ca2b7511c5dfc5d2c4dfecd7f
 
 pkgname = vkquake2
