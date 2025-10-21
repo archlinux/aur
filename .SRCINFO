@@ -1,6 +1,6 @@
 pkgbase = mirarr-bin
 	pkgdesc = A Flutter-based movie and TV show app
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/mirarr-app/mirarr
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mirarr-bin
 	depends = gtk3
 	provides = mirarr
 	conflicts = mirarr
-	source = mirarr-bin-2.2.1.zip::https://github.com/mirarr-app/mirarr/releases/download/2.2.1/mirarr.zip
+	source = mirarr-bin-2.2.2.zip::https://github.com/mirarr-app/mirarr/releases/download/2.2.2/mirarr.zip
 	sha256sums = SKIP
 
 pkgname = mirarr-bin
