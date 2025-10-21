@@ -1,0 +1,17 @@
+pkgbase = unibarrage-bin
+	pkgdesc = High-performance real-time proxy tool to unify live barrage data collection across multiple streaming platforms
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/xifan2333/UniBarrage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = unibarrage
+	conflicts = unibarrage
+	options = !strip
+	source_x86_64 = UniBarrage-linux-amd64.tar.gz::https://github.com/xifan2333/UniBarrage/releases/download/v1.0.1/UniBarrage-linux-amd64.tar.gz
+	sha256sums_x86_64 = c88e5e1242caeb878a04676d1ac6af72166ce57cd09ead47c4351dc127ebdd04
+	source_aarch64 = UniBarrage-linux-arm64.tar.gz::https://github.com/xifan2333/UniBarrage/releases/download/v1.0.1/UniBarrage-linux-arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = unibarrage-bin
