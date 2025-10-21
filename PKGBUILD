@@ -10,7 +10,7 @@
 
 pkgname=mozillavpn
 pkgver=2.31.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
 url="https://vpn.mozilla.org"
@@ -58,10 +58,10 @@ _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefi
 _pkgsrc="$pkgname-$pkgver"
 source=(
   "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
-  "cmake-qt610-private.patch"
+  "https://patch-diff.githubusercontent.com/raw/mozilla-mobile/mozilla-vpn-client/pull/10832.patch"
 )
 sha256sums=('0d3a7b34c4bbdc935c80473b3081b3b715a7e916b6184d5eb3433afd11ab0640'
-            '73f4b9e6ed4b228d40e576bdaf9a3653021f98c71d62b370e9accb9f2507668e')
+            '2bbfd19a27b6633cee05f3ace41f789ba7a41d971bb4a50db7b4edc0a0ea32b6')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
@@ -82,7 +82,7 @@ prepare() {
   cargo update
 
   cd ../../
-  patch -p1 < ../cmake-qt610-private.patch
+  patch -p1 < ../10832.patch
 }
 
 build() {
