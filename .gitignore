@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !PKGBUILD.template
+!.nvchecker.toml
