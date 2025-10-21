@@ -1,0 +1,19 @@
+pkgbase = brrtfetch-git
+	pkgdesc = Render animated GIFs as ASCII in your fetcher of choice
+	pkgver = r21.ebe8634
+	pkgrel = 1
+	url = https://github.com/ferrebarrat/brrtfetch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = expect
+	depends = fastfetch
+	optdepends = neofetch: system fetcher alternative
+	optdepends = hyfetch: system fetcher alternative
+	optdepends = screenfetch: system fetcher alternative
+	optdepends = bsdutils: sysinfo color support
+	source = brrtfetch::git+https://github.com/ferrebarrat/brrtfetch.git
+	sha256sums = SKIP
+
+pkgname = brrtfetch-git
