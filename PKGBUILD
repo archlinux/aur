@@ -1,7 +1,7 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
 source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64.tar.xz")
@@ -46,11 +46,18 @@ package() {
     install -Dm755 bin/dwarfs2 "${pkgdir}/usr/bin/dwarfs2"
     ln -s dwarfs2 "${pkgdir}/usr/bin/mount.dwarfs2"
   }
+  install -Dm755 bin/pxattr "${pkgdir}/usr/bin/pxattr"
+  
+  install -Dm644 share/applications/dwarfs-mount-handler.desktop "$pkgdir/usr/share/applications/dwarfs-mount-handler.desktop"
 
   install -Dm644 share/man/man1/dwarfs.1 "$pkgdir/usr/share/man/man1/dwarfs.1"
   install -Dm644 share/man/man1/dwarfsck.1 "$pkgdir/usr/share/man/man1/dwarfsck.1"
   install -Dm644 share/man/man1/dwarfsextract.1 "$pkgdir/usr/share/man/man1/dwarfsextract.1"
   install -Dm644 share/man/man1/mkdwarfs.1 "$pkgdir/usr/share/man/man1/mkdwarfs.1"
-
   install -Dm644 share/man/man5/dwarfs-format.5 "$pkgdir/usr/share/man/man5/dwarfs-format.5"
+  install -Dm644 share/man/man7/dwarfs-env.7 "$pkgdir/usr/share/man/man7/dwarfs-env.7"
+
+  install -Dm644 share/bash-completion/completions/_mkdwarfs "$pkgdir/usr/share/bash-completion/completions/mkdwarfs"
+  install -Dm644 share/mime/packages/dwarfs.xml "$pkgdir/usr/share/mime/packages/dwarfs.xml"
+  install -Dm644 share/zsh/site-functions/_mkdwarfs "$pkgdir/usr/share/zsh/site-functions/_mkdwarfs"
 }
