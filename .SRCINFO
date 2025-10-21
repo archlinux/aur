@@ -12,7 +12,8 @@ pkgbase = ripunzip
 	depends = glibc
 	depends = openssl
 	depends = xz
-	source = https://github.com/google/ripunzip/archive/refs/tags/v2.0.3.tar.gz
+	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	source = ripunzip2.0.3.tar.gz::https://github.com/google/ripunzip/archive/refs/tags/v2.0.3.tar.gz
 	sha256sums = d44262d390dc3fa41b7de2e28a199aef4343c0197b5a1c9216e13b1aa0f0273f
 
 pkgname = ripunzip
