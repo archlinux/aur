@@ -2,7 +2,7 @@
 
 tool for exporting and importing files in ~/.config, packages and AUR packages for Arch Linux.
 
-install with:
+it is on the AUR, so install with:
 ```
 yay -S cfgprf
 ```
@@ -13,11 +13,17 @@ paru -S cfgprf
 
 usage:
 ```
-cfgprf --export --profile ~/myconfig.cfgprf
-# and
-cfgprf --import --profile ~/myconfig.cfgprf
+cfgprf --export --configs --profile ~/myconfig.cfgprf
+```
+```
+cfgprf --import --configs --profile ~/myconfig.cfgprf
+```
+or
+```
+cfgprf -ecP ~/myconfig.cfgprf
+```
+```
+cfgprf -icP ~/myconfig.cfgprf
 ```
 
-use `--help` for commands
-
-honestly have no idea how to properly use git
+use `--help` or `-h` for commands
