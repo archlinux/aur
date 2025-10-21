@@ -7,7 +7,7 @@
 _pkgname=charta
 pkgname=${_pkgname}-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Charta is a utility written in Go to display small colored charts in the terminal."
 arch=(any)
 url="https://spn109.fr/charta"
@@ -37,6 +37,19 @@ package()
     install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
  
     # Create completion scripts
-    "${pkgdir}/usr/bin/${_pkgname}" --completion > "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-    "${pkgdir}/usr/bin/${_pkgname}" --completion > "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_${_pkgname}"
+    #!/bin/bash completion for dispositio
+    echo "#!/bin/bash completion for ${_pkgname}" > "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+    while read line; do 
+        if [[ $line =~ "^if type complete" ]]; then
+            break
+        fi
+        echo $line
+    done <<< $(while read line; do if [[ $line =~ "^elif" ]]; then break; fi ;echo $line; done <<< $("${pkgdir}/usr/bin/${_pkgname}"  --completion) |tac)|tac >> "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+    echo "#compdef ${_pkgname}" > "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_${_pkgname}"
+    while read line; do
+        if [[ $line =~ "^fi" ]]; then
+            break
+        fi
+        echo $line
+    done <<< $(while read line; do if [[ $line =~ "^elif" ]]; then break; fi ;echo $line; done <<< $("${pkgdir}/usr/bin/${_pkgname}"  --completion|tac) |tac) >> "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_${_pkgname}"
 }
