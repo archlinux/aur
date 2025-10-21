@@ -1,4 +1,5 @@
-# Maintainer: zan <zan@nie.rs>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: zan <zan@nie.rs>
 
 pkgname=vkquake2
 _remote=vkQuake2
@@ -7,8 +8,8 @@ pkgrel=2
 pkgdesc="id Software's Quake 2 v3.21 with Vulkan support"
 arch=(i686 x86_64)
 url="https://github.com/kondrak/vkQuake2"
-license=(GPL2)
-depends=(alsa-lib libxxf86dga xdg-utils opengl-driver)
+license=(GPL-2.0-only)
+depends=(alsa-lib libxxf86dga xdg-utils opengl-driver vulkan-icd-loader)
 makedepends=(vulkan-headers glu)
 install="$pkgname.install"
 source=("https://github.com/kondrak/$_remote/archive/$pkgver.tar.gz"
@@ -24,6 +25,7 @@ _build=release #unset for debug
 prepare() {
     cd "$srcdir/$_remote-$pkgver"
     patch -Np1 -i ../ref_vk.patch
+    sed -i '/XCFLAGS=/a RELEASE_CFLAGS=$(BASE_CFLAGS) $(CFLAGS) $(LDFLAGS) -std=c17' 'linux/Makefile'
 }
 
 build() {
