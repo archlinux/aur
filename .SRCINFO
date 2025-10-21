@@ -1,6 +1,6 @@
 pkgbase = wivrn-server-git
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
-	pkgver = 25.9.81.g0e5b339b
+	pkgver = r1856.0e5b339
 	pkgrel = 1
 	url = https://github.com/WiVRn/WiVRn
 	install = wivrn-server-git.install

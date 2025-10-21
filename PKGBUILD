@@ -1,7 +1,7 @@
 # Maintainer: Álvaro De Quinta <blackcherry at danwin1210 dot de>
 # Contributor: Sapphire <imsapphire0 at gmail dot com>
 pkgname=wivrn-server-git
-pkgver=25.9.81.g0e5b339b
+pkgver=r1856.0e5b339
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -45,8 +45,8 @@ makedepends=(
 )
 
 optdepends=(
-    "opencomposite: OpenVR to OpenXR translation layer"
-    "xrizer: Another OpenVR to OpenXR translation layer"
+    	"opencomposite: OpenVR to OpenXR translation layer"
+    	"xrizer: Another OpenVR to OpenXR translation layer"
 )
 provides=(
 	"openxr-runtime"
@@ -58,8 +58,8 @@ sha256sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-    cd "$srcdir/WiVRn"
-    git describe --tags --long | sed 's/^v//;s/-/./g'
+  	cd "$srcdir/WiVRn"
+  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
