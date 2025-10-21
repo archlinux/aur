@@ -1,45 +1,54 @@
-# Maintainer: legiz <legiz.ru@gmail.com>
 pkgname=prizrak-box-bin
 _pkgname=Prizrak-Box
-pkgver=1.0.20_alpha2 # Embeds the calculated version string directly
+pkgver=1.0.20_alpha3
+_electronversion=36
 pkgrel=1
-pkgdesc="A cross-platform GUI client for Prizrak."
-arch=('x86_64' 'aarch64')
+pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
+arch=('aarch64' 'x86_64')
 url="https://github.com/legiz-ru/prizrak-box"
-license=('MIT')
-depends=('gtk3' 'libappindicator-gtk3')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=('GPL-3.0-only')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+depends=("electron${_electronversion}")
+makedepends=('asar')
+source=("prizrak-box.sh")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v1.0.20-alpha3/linux-arm64-aur.tar.zst")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v1.0.20-alpha3/linux-amd64-aur.tar.zst")
+sha256sums=('4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65')
+sha256sums_aarch64=('34b741f2c015f692f16871d8fd924b3f12c7c0bf00eece65a51dbaef0ba40251')
+sha256sums_x86_64=('a3f2948760de7e8c883dbf2e53869b2a6caf39ff33bb47472d1adaad3370c802')
 
-# Source files: format is (filename::URL)
-source_x86_64=("-linux-x64-${pkgver}.deb::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.20-alpha2/linux-amd64.deb")
-source_aarch64=("-linux-arm64-${pkgver}.deb::https://github.com/legiz-ru/prizrak-box/releases/download/v1.0.20-alpha2/linux-arm64.deb")
+_get_electron_version() {
+  _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+  echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 
-sha256sums_x86_64=('b3e7c20fadc478cc3974e484098323c8ffeb2584c2a6bdc6f28480db54c56ab2')
-sha256sums_aarch64=('cd4c13d3e26c1113ef51ef59792e8d56e0668db8995470defbd2b0b619b5fb35')
+prepare() {
+  sed -i -e "
+    s/@electronversion@/${_electronversion}/g
+    s/@appname@/${pkgname%-bin}/g
+    s/@runname@/app.asar/g
+    s/@cfgdirname@/${_pkgname}/g
+    s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+  " "${srcdir}/prizrak-box.sh"
+
+  _get_electron_version
+
+  sed -i -e "
+    s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+    s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+  " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+
+  asar e "${srcdir}/usr/lib/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+  find "${srcdir}/app.asar.unpacked/.vite" -type f -exec sed -i "s/process.resourcesPath/'\/usr\/lib\/${pkgname%-bin}'/g" {} +
+  asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+}
 
 package() {
-  local _deb_file
-  
-  # Определяем имя скачанного .deb файла в зависимости от архитектуры.
-  # Название файла в массиве source совпадает с ${_pkgname}-linux-*-${pkgver}.deb
-  if [ "${CARCH}" = "x86_64" ]; then
-    _deb_file="${_pkgname}-linux-x64-${pkgver}.deb"
-  elif [ "${CARCH}" = "aarch64" ]; then
-    _deb_file="${_pkgname}-linux-arm64-${pkgver}.deb"
-  else
-    error "Unsupported architecture: ${CARCH}"
-  fi
-
-  cd "${srcdir}"
-  
-  # 1. Извлекаем data.tar.xz (архив с данными) из .deb файла с помощью bsdtar
-  # bsdtar -xf <deb_file> -C <target_dir> <file_to_extract>
-  bsdtar -xf "${_deb_file}" -C . data.tar.xz
-  
-  # 2. Извлекаем содержимое data.tar.xz в пакетный каталог
-  tar -xf data.tar.xz -C "${pkgdir}/"
-  
-  # Очистка
-  rm data.tar.xz
+  install -Dm755 "${srcdir}/prizrak-box.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+  install -Dm755 "${srcdir}/usr/lib/${_pkgname}/resources/px" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+  install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+  install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+  install -Dm644 "${srcdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
