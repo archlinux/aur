@@ -1,6 +1,6 @@
 pkgbase = e2-studio-bin
 	pkgdesc = Eclipse-based IDE for Renesas MCUs
-	pkgver = 2025.07
+	pkgver = 2025.10
 	pkgrel = 1
 	epoch = 1
 	url = https://www.renesas.com/en/software-tool/e-studio
@@ -11,9 +11,9 @@ pkgbase = e2-studio-bin
 	conflicts = e2-studio
 	options = !strip
 	options = !debug
-	source = file:///e2studio_installer-2025-07_linux_host.run
+	source = file:///e2studio_installer-2025-10_linux_host.run
 	source = e2-studio.desktop
-	sha256sums = b2ce983a9f36bc5e44cae27be110d70126e5c45fdcd5bb3ab02123c60c5b1cff
+	sha256sums = 1195b474b7d78b99222a4acea8b507a00eb83619d2cc9528899a55bc8749c96f
 	sha256sums = 722d40188bbbc7925aa7b264d79817548edbf0e3d01f8195eea2880bc60a1c95
 
 pkgname = e2-studio-bin
