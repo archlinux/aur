@@ -2,8 +2,8 @@
 # Contributor: Tom < reztho at archlinux dot us >
 
 pkgname=openmsx
-pkgver=20.0
-pkgrel=2
+pkgver=21.0
+pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
@@ -13,13 +13,8 @@ optdepends=('python' 'jack-audio-connection-kit')
 install=${pkgname}.install
 provides=("openmsx")
 conflicts=("openmsx-git")
-source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz" "fix_view_operator.patch")
-md5sums=('baa9eb5e84a7b3114a8a62d969197455' '10e084d0a4f067f254a7d753eaf241f0')
-
-prepare() {
-    cd $pkgname-$pkgver
-    patch -Np1 -i ../../fix_view_operator.patch
-}
+source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('b83bdf25802def751efd06ec1c124263')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

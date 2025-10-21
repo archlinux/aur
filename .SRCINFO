@@ -1,7 +1,7 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
-	pkgver = 20.0
-	pkgrel = 2
+	pkgver = 21.0
+	pkgrel = 1
 	url = http://openmsx.org/
 	install = openmsx.install
 	arch = i686
@@ -20,9 +20,7 @@ pkgbase = openmsx
 	optdepends = jack-audio-connection-kit
 	provides = openmsx
 	conflicts = openmsx-git
-	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_20_0/openmsx-20.0.tar.gz
-	source = fix_view_operator.patch
-	md5sums = baa9eb5e84a7b3114a8a62d969197455
-	md5sums = 10e084d0a4f067f254a7d753eaf241f0
+	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_21_0/openmsx-21.0.tar.gz
+	md5sums = b83bdf25802def751efd06ec1c124263
 
 pkgname = openmsx
