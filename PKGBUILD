@@ -12,7 +12,8 @@ arch=('x86_64')
 url=https://github.com/reubeno/brush
 license=(MIT)
 depends=(gcc-libs)
-makedepends=(rust rust-src)
+makedepends=(rust)
+optdepends=("rust-src: optimization with RUSTC_BOOTSTRAP=1")
 conflicts=(brush)
 provides=(brush)
 source=("git+${url}.git")
@@ -20,8 +21,11 @@ sha256sums=('SKIP')
 
 build() {
   cd brush
-  export RUSTC_BOOTSTRAP=1
-  cargo build --release -Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort
+  if [ $RUSTC_BOOTSTRAP = 1 ];then
+    echo Building with build-std...
+    _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
+  fi
+  cargo build --release $_cargoflags
 }
 
 package() {

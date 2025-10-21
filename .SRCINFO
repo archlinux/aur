@@ -6,8 +6,8 @@ pkgbase = brush-git
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = rust-src
 	depends = gcc-libs
+	optdepends = rust-src: optimization with RUSTC_BOOTSTRAP=1
 	provides = brush
 	conflicts = brush
 	source = git+https://github.com/reubeno/brush.git
