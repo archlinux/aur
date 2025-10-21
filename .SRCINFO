@@ -1,0 +1,18 @@
+pkgbase = plasmasys
+	pkgdesc = A simple Python sensor monitor for the KDE Plasma 6 desktop.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/asif54800-spec/plasmasys
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	depends = python-psutil
+	optdepends = wireless_tools: for displaying Wi-Fi SSID
+	source = git+https://github.com/asif54800-spec/plasmasys.git#tag=v1.0
+	sha256sums = SKIP
+
+pkgname = plasmasys
