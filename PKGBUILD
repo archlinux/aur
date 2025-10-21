@@ -4,7 +4,7 @@
 # Contributor: Jerome Gravel-Niquet <jeromegn@gmail.com>
 
 pkgname="flyctl-bin"
-pkgver="0.3.198"
+pkgver="0.3.199"
 pkgrel="1"
 pkgdesc="Command line tools for fly.io services"
 arch=("x86_64")
@@ -16,7 +16,7 @@ replaces=('flyctl')
 provides=('flyctl')
 options=(!strip)
 source=("$pkgname-$pkgver-x86_64.tgz::$url/releases/download/v${pkgver}/flyctl_${pkgver}_Linux_x86_64.tar.gz")
-b2sums=('360c9c6d0888375e98008863df5a708bf9feae8fc392f183e2f2e916dfd539d97a352a006a3092d8af6e930d5f4849ef800e01a11e491e29d48229298dfb8fc6')
+b2sums=('814d2c60d3afcd7bf9a00d56083bb4d4c8cd17cce816bf679f98645f4e3a216870ad9571b6a08940dad529e37398a29cffab509c2eb089471a6606a42c4d6e7b')
 
 package() {
   install -Dm755 flyctl -t "$pkgdir/usr/bin/"
