@@ -1,14 +1,15 @@
 pkgbase = vms-empire
 	pkgdesc = Empire is a simulation of a full-scale war between two emperors, the computer and you.
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = http://www.catb.org/~esr/vms-empire/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = xmlto
+	depends = glibc
 	depends = ncurses
-	source = http://www.catb.org/~esr/vms-empire/vms-empire-1.17.tar.gz
-	md5sums = 2c0ba007fb3d84875ee972cbe1b02976
+	source = http://www.catb.org/~esr/vms-empire/vms-empire-1.18.tar.gz
+	md5sums = 65175a4fa171638a1bd77048c1b5d8e8
 
 pkgname = vms-empire

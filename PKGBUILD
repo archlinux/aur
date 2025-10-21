@@ -1,20 +1,20 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=vms-empire
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Empire is a simulation of a full-scale war between two emperors, the computer and you."
 arch=('i686' 'x86_64')
 url="http://www.catb.org/~esr/vms-empire/"
-license=('GPL')
-depends=('ncurses')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'ncurses')
 makedepends=('xmlto')
 source=("http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('2c0ba007fb3d84875ee972cbe1b02976')
+md5sums=('65175a4fa171638a1bd77048c1b5d8e8')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   sed -i 's/^install: empire.6 uninstall/install: empire.6/' Makefile
 
   # gcc10 tweaks
@@ -32,12 +32,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make PREFIX="/usr"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
 }
 
