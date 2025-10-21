@@ -2,7 +2,7 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgrel="4"
+pkgrel="5"
 pkgver="0.2"
 _name="tuxnix-sway"
 pkgname="$_name"
@@ -30,5 +30,8 @@ package() {
     install -Dm605 keys-md "$pkgdir/usr/local/bin/keys-md"
     install -Dm605 keys-html "$pkgdir/usr/local/bin/keys-html"
     install -Dm605 sway-switch "$pkgdir/usr/local/bin/sway-switch"
+    install -Dm605 a2j.sh "$pkgdir/usr/local/bin/a2j.sh"
+    install -Dm605 a2jmidid.sh "$pkgdir//usr/local/bin/a2jmidid.sh"
+    install -Dm605 start_jack.sh "$pkgdir/usr/local/bin/start_jack.sh"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
