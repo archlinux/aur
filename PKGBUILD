@@ -3,7 +3,7 @@
 
 pkgname=mathgl
 pkgver=8.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for making high-quality scientific graphics"
 arch=('x86_64')
 url="http://${pkgname}.sourceforge.net"
@@ -46,6 +46,7 @@ build() {
     -Denable-png=ON
     -Denable-qt6=ON
     -Denable-qt6asqt=ON
+    -DHDF5_NO_FIND_PACKAGE_CONFIG_FILE=TRUE
   )
 
   cmake "${cmake_options[@]}"

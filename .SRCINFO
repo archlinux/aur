@@ -1,7 +1,7 @@
 pkgbase = mathgl
 	pkgdesc = A library for making high-quality scientific graphics
 	pkgver = 8.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mathgl.sourceforge.net
 	arch = x86_64
 	license = GPL-3.0-only
