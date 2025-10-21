@@ -1,0 +1,14 @@
+pkgbase = smoothdev-commit
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.smoothdev.io/about
+	arch = x86_64
+	license = BSD
+	makedepends = python-installer
+	depends = python
+	depends = python-requests
+	provides = smoothdev-commit-message-cli
+	source = https://files.pythonhosted.org/packages/py3/s/smoothdev-commit-message-cli/smoothdev_commit_message_cli-1.0.5-py3-none-any.whl
+	sha256sums = 9a47d5df33a9e80eee65a4400803c74af9c1e7111625b59b7cb8881aa47dfc2f
+
+pkgname = smoothdev-commit
