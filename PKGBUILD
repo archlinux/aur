@@ -2,15 +2,17 @@
 
 pkgname=kissfft-git
 _pkgname=kissfft
-pkgver=383.9feadb9
-pkgrel=6
+pkgver=390.7bce415
+pkgrel=1
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mborgerding/kissfft'
 license=('BSD-3-Clause')
 depends=('glibc' 'gcc-libs')
+# Hack to allow building with Clang, this makes `makepkg --printsrcinfo` vary, but at least it builds
+if [[ ${CC} == "clang" ]]; then depends+=(openmp); fi
 makedepends=('git' 'cmake' 'fftw' 'libpng' 'python')
-conflicts=('kissfft' 'kissfft-clang-git')
+conflicts=('kissfft')
 provides=('kissfft')
 source=('git+https://github.com/mborgerding/kissfft.git')
 sha256sums=('SKIP')
@@ -20,12 +22,6 @@ pkgver() {
 	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	if [[ "${CC}" == "clang" ]]; then
-		echo "≪This package does not support building with clang, use kissfft-clang-git instead≫" >&2
-		exit 1
-	fi
-}
 
 build() {
 	cd "${srcdir}/${_pkgname}"
