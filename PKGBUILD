@@ -3,12 +3,12 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
 pkgver=0.0.3
-pkgrel=14
+pkgrel=15
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
-depends=('enet' 'fmt' 'opus' 'quazip-qt6' 'zydis' 'lz4' 'zlib' 'zstd' 'spirv-tools' 'cubeb' 'libusb'
+depends=('enet' 'fmt' 'opus' 'lz4' 'zlib' 'zstd' 'libusb' 'llvm-libs' 'openssl' 'glibc'
 	'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg')
 makedepends=('git' 'cmake' 'catch2' 'boost' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers')
 optdepends=('gamemode: Gamemoded support')
@@ -23,6 +23,8 @@ build() {
 		-DYUZU_CHECK_SUBMODULES=OFF \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_LTO=OFF \
+		-DYUZU_USE_CPM=OFF \
+		-DCPM_USE_LOCAL_PACKAGES=ON \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
