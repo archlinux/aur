@@ -41,11 +41,11 @@ optdepends=('sshpass: for ssh connections with password'
             'python-jmespath: json_query support'
             'python-pip: for module to manage Python libarary dependencies'
             'python-setuptools: for module to manage Python libarary dependencies')
-makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
+makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'git')
 source=($pkgname::git+https://github.com/ansible/ansible.git
         'relax_strict_dependencies_upper_bound.patch')
 sha512sums=('SKIP'
-            '7b5364f9ea28bd8ed5d01a3fa43304e922a94946df1495874b4c0b58ea30da10f1c848f93f5e8e485497f3a23a5b0007705bdab2a854d76a9be528738615d0bd')
+            '0b4b3bf9d145a0f69f2160c75d5a92b47a5208a1804e323e269ab062bbad36de430aa6970eb9ac7cae24f5734d6c9a4dbb29c0051f9d2f7e22a7e6aac69ba0a9')
 
 prepare() {
   cd "$pkgname"
