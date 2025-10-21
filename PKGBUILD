@@ -3,14 +3,14 @@ _basename="deadlock-modmanager"
 _reponame="deadlock-mod-manager"
 pkgname="${_basename}-bin"
 pkgdesc="A mod manager for the Valve game Deadlock"
-pkgver=0.8.2
+pkgver=0.9.2
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${_reponame}/${_reponame}"
 license=("GPL-3.0-or-later")
 _filename="${_basename}-${pkgver}.AppImage"
 source=("${_filename}::https://github.com/${_reponame}/${_reponame}/releases/download/v${pkgver}/Deadlock.Mod.Manager_${pkgver}_amd64.AppImage")
-sha256sums=("409b5c638db87dfd64cb5e93806b2d06bace42856aa92c06ce0795dbeac03493")
+sha256sums=('ab1f9af508fc27f945404c55030059439a83715084df7fc48b0e19e400260bf0')
 provides=("${_basename}")
 conflicts=("${_basename}" "${_basename}-git")
 
