@@ -7,7 +7,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20251009.15035
+pkgver=20251020.15054
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
