@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=charta
 pkgname=${_pkgname}-bin
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Charta is a utility written in Go to display small colored charts in the terminal."
 arch=(any)
