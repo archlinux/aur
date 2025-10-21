@@ -5,7 +5,7 @@ _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
 pkgver=6.3.0.3420
 _pkgver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="3D slicer for Creality printers"
 arch=('x86_64')
@@ -39,6 +39,7 @@ depends=(
   'nss'
   'pango'
   'sh'
+  'wayland'
   'webkit2gtk-4.1'
   'zlib'
   'zstd'
@@ -49,7 +50,6 @@ makedepends=(
 optdepends=(
   'python'
   'slicer-udev: 3D printer connection rules'
-  'wayland'
 )
 provides=(
   "${_pkgname}=${_pkgver}"

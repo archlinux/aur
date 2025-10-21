@@ -1,7 +1,7 @@
 pkgbase = creality-print-bin
 	pkgdesc = 3D slicer for Creality printers
 	pkgver = 6.3.0.3420
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.creality.com
 	arch = x86_64
@@ -33,12 +33,12 @@ pkgbase = creality-print-bin
 	depends = nss
 	depends = pango
 	depends = sh
+	depends = wayland
 	depends = webkit2gtk-4.1
 	depends = zlib
 	depends = zstd
 	optdepends = python
 	optdepends = slicer-udev: 3D printer connection rules
-	optdepends = wayland
 	provides = creality-print=6.3.0
 	conflicts = creality-print
 	source = creality-print.sh
