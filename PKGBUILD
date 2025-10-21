@@ -14,9 +14,11 @@ pkgdesc="The fast, Pythonic way to build MCP servers and clients."
 arch=('any')
 url='https://github.com/jlowin/fastmcp'
 license=('MIT')
-depends=('python' 'uvicorn' 'python-httpx' 'python-pydantic' 'python-pydantic-core' 'python-pydantic-settings' 'python-openai' 'python-openapi-pydantic' 'python-jsonschema-path' 'python-pyperclip' 'python-cryptography' 'python-mcp' 'python-authlib' 'python-starlette' 'python-rich' 'python-typing_extensions' 'python-anyio' 'python-dotenv')
-optdepends=()
+
+depends=('python' 'uvicorn' 'python-dotenv' 'python-pydantic-settings' 'python-pydantic' 'python-authlib' 'python-cryptography' 'python-rich' 'python-openai' 'python-httpx' 'python-pydantic-core' 'python-fastmcp' 'python-starlette' 'python-typing_extensions' 'python-anyio' 'python-pyperclip' 'python-exceptiongroup' 'python-openapi-pydantic' 'python-mcp' 'python-jsonschema-path')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+optdepends=()
+
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 sha256sums=('2dfd02e255705a4afe43d26caddbc864563036e233dbc6870f389ee523b39a6a')
 
