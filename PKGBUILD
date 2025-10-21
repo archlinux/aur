@@ -10,7 +10,15 @@ arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
 depends=('tbb' 'icu' 'fmt' 'spdlog')
-makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust' 'doxygen' 'python-breathe' 'python-sphinx') # 'uv' for docs
+makedepends=(
+	'git'
+	'cmake'
+	'rust'
+	#'doxygen' # docs
+	#'python-breathe' # docs
+	#'python-sphinx' # docs
+	#'uv' # docs
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('c39bae45541dcb56743ce1276854f52fe188394ce427b02539444d84fad56c2d')
 build() {
@@ -24,7 +32,6 @@ build() {
 	mkdir -p build
 	cd build
 	# https://github.com/loot/libloot/tree/master/cpp#build
-	# built-in yaml-cpp hack due to https://github.com/loot/loot/issues/2076#issuecomment-2729508538
 	cmake .. \
 		-DCMAKE_SKIP_RPATH=TRUE
 	make loot
