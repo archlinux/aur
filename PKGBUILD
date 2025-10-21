@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A tool for fetching code"
 arch=('any')
 depends=('git' 'python' 'python-yaml')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-hatch)
 optdepends=('mercurial: fetching from hg repos'
             'subversion: fetching from svn repos')
 url="https://github.com/buildinspace/peru"
@@ -19,7 +19,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Building...'
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -33,5 +33,5 @@ package() {
   cp -dpr --no-preserve=ownership docs/* "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
