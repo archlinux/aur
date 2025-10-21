@@ -1,6 +1,6 @@
 pkgbase = x-tools
 	pkgdesc = Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant.
-	pkgver = 7.4.0
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://github.com/x-tools-author/x-tools
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = x-tools
 	provides = xtools
 	conflicts = x-tools
 	conflicts = xtools
-	source = x-tools::git+https://github.com/x-tools-author/x-tools.git#tag=v7.4.0
-	sha256sums = f45dc6ea16c5be7871563bc5d997c7d8e901839a6496b6b3fcf1cc568997b5ef
+	source = x-tools::git+https://github.com/x-tools-author/x-tools.git#tag=v7.5.0
+	sha256sums = c1caa46387080e7214ccbc53295ab55e0c1cd5e9873fbb793571d3da0cdaa991
 
 pkgname = x-tools
