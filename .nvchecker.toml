@@ -1,0 +1,5 @@
+[yesplaymusic-electron]
+source = "github"
+github = "qier222/YesPlayMusic"
+use_latest_release = true
+prefix = "v"
