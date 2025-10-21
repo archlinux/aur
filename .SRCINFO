@@ -1,7 +1,7 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
-	pkgver = 3.2.7
-	pkgrel = 11
+	pkgver = 3.2.8
+	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
@@ -65,9 +65,9 @@ pkgbase = slade
 	depends = wayland
 	depends = wxwidgets-common
 	depends = sfml2
-	source = git+https://github.com/sirjuddington/SLADE.git#commit=62467e4ea9f41ac04e28bfed266731da22ff874c
+	source = git+https://github.com/sirjuddington/SLADE.git#tag=3.2.8
 	source = git+https://github.com/wxWidgets/wxWidgets#tag=v3.2.8.1
-	sha256sums = c51da7928e58a2aad849fb75ce914f4a0d6623d09dc0e35098e9f5ba3a1c6e66
+	sha256sums = 07a8ba0f0416960975727561599746af915c02fcb3cd61f9b4efa575938b70a2
 	sha256sums = 11bfcbbbb10515d9fd31f52477166bc37725e704dc7f3baf6cad30b92e1defe8
 
 pkgname = slade
