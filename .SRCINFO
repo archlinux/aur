@@ -1,0 +1,18 @@
+pkgbase = cinny-electron-git
+	pkgdesc = Yet another matrix client — unofficial electron version
+	pkgver = r6.59d4b7f
+	pkgrel = 1
+	url = https://github.com/Enovale/cinny-electron
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = pnpm
+	makedepends = npm
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	provides = cinny-electron
+	conflicts = cinny-electron
+	source = cinny-electron::git+https://github.com/Enovale/cinny-electron.git
+	sha256sums = SKIP
+
+pkgname = cinny-electron-git
