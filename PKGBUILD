@@ -1,6 +1,6 @@
 # Maintainer: Matar <khaledmatar19733@gmail.com>
 pkgname=gitfetch-python
-pkgver=1.1.1
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A neofetch-style CLI tool for GitHub statistics"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-2.0')
 depends=("python-requests" "python-readchar")
 makedepends=("python-requests" "python-readchar")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Matars/gitfetch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76678d401de5644a98d47b83bc816360c43ce474998ae8fe934587ec7a1d7730')
+sha256sums=('6ae1b2977f459a15352375f46cd56133eec4c37812b71448528a44f43b77f1f6')
 
 package() {
     cd "gitfetch-$pkgver"
