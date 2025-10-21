@@ -39,5 +39,5 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
