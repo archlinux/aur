@@ -2,24 +2,24 @@
 # Updated with automatic SHA256 hash calculation
 pkgname=meowrch-settings
 pkgver=2.0.0
-pkgrel=5
-pkgdesc="System optimization settings for Meowrch distribution"
+pkgrel=6
+pkgdesc="System optimization settings for Meowrch distribution with dconf integration"
 arch=('any')
 url="https://github.com/meowrch/meowrch"
 license=('MIT')
-depends=('systemd' 'zram-generator' 'pipewire' 'earlyoom' 'pciutils')
+depends=('systemd' 'zram-generator' 'pipewire' 'earlyoom' 'pciutils' 'dconf')
 optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'amd-ucode: for AMD CPU microcode'
             'intel-ucode: for Intel CPU microcode'
             'hdparm: for HDD performance optimizations')
 install=meowrch-settings.install
-source=("meowrch-settings-2.0.0-5.tar.gz::$url/archive/refs/heads/v3.0.tar.gz")
-sha256sums=('c8dfb4eb41552374bf72c89eac1ae2e9d5dfd5bc4e767c0ae35d3d97fab809fb')
+source=("meowrch-settings-2.0.0-6.tar.gz::$url/archive/refs/heads/v3.0.tar.gz")
+sha256sums=('86a1b9089c7b75722da5b84bc3d8ff19e61812199c8bcd28e67e93968db6218c')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-settings"
     
-    # Copy organized structure 
+    # Copy organized structure
     cp -r "etc" "$pkgdir/"
     cp -r "usr" "$pkgdir/"
     
