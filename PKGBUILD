@@ -85,6 +85,7 @@ package_sentencepiece-bin() {
 
 package_python-sentencepiece-bin() {
   pkgdesc+=" (Python bindings)"
+  url+="/tree/master/python"
   depends+=(
     "${_pkgbase}=${pkgver}"
     "python>=${_py}"

@@ -32,6 +32,7 @@ pkgname = sentencepiece-bin
 
 pkgname = python-sentencepiece-bin
 	pkgdesc = Unsupervised text tokenizer for Neural Network-based text generation (Python bindings)
+	url = https://github.com/google/sentencepiece/tree/master/python
 	depends = gcc-libs
 	depends = glibc
 	depends = sentencepiece=0.2.1
