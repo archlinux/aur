@@ -1,7 +1,7 @@
 pkgbase = salmon
 	pkgdesc = Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments
 	pkgver = 1.10.3
-	pkgrel = 7
+	pkgrel = 9
 	url = https://combine-lab.github.io/salmon/
 	arch = x86_64
 	license = GPL-3.0-only

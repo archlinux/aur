@@ -4,7 +4,7 @@
 pkgname=salmon
 pkgver=1.10.3
 _SVER=${pkgname}-v${pkgver}
-pkgrel=7
+pkgrel=9
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
@@ -52,6 +52,7 @@ prepare() {
   patch -p1 < ${srcdir}/use-system-stadeniolib.patch
   # Use OS provided eigen3 instead of one bundled with sources.
   sed -i 's|${GAT_SOURCE_DIR}/include/eigen3|/usr/include/eigen3|g' src/CMakeLists.txt
+  sed -Ei 's|(find_package\(Boost.*) system([a-z_ ]*)( REQUIRED)?\)|\1\2 OPTIONAL_COMPONENTS system\3)|' CMakeLists.txt
   # Add missing include <string> in 1.3.0 headers
   sed -i 's/#include <unordered_map>/#include <unordered_map>\n#include <string>/g' include/BAMUtils.hpp
 }
