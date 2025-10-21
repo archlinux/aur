@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=25.10.1
+pkgver=25.10.2
 _electronversion=38
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('92acba2449e3bbd69edda06899b1160795e7307bcfea44f9200f1acbeb8b0eae')
-sha256sums_x86_64=('5a0975649d31b41b3f7883ab38ef30b4b75db98dcd901635061e221d7cfef337')
+sha256sums_aarch64=('3c8b73479caf67c992ec64772163b59d227f20fba039b4b0af3e2d30ed52ecab')
+sha256sums_x86_64=('b12b21ead50092bb0fa7e5f9fa9ca2fccaec90a898a9e397f1e9c2ce19cb3dc0')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -56,13 +56,14 @@ prepare() {
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
-    find "${srcdir}/squashfs-root/resources/app.asar.unpacked" \( -name "darwin-*" -o -name "win32-*" -o -name "android-*" \) -type d -exec rm -rf {} +
+    find "${srcdir}/squashfs-root/resources/app.asar.unpacked" -type d \( -name "darwin-*" -o -name "win32-*" -o -name "android-*" \
+        -o -name "linux-arm" -o -name "linux-ia32" \) -type d -exec rm -rf {} +
     case "${CARCH}" in
         aarch64)
-            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm,linux-ia32,linux-x64}
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/linux-x64"
             ;;
         x86_64)
-            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm,linux-arm64,linux-ia32}
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/linux-arm64"
             ;;
     esac
 }
