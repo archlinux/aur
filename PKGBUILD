@@ -1,6 +1,6 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=hhd
-pkgver=3.19.24
+pkgver=3.19.25
 pkgrel=1
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-setuptools' 'python-evdev' 'python-rich' 'python-yaml'
 optdepends=('hhd-user: allows running hhd as a user service.')
 makedepends=('python-'{'build','installer','setuptools','wheel'})
 source=("https://pypi.python.org/packages/source/h/hhd/hhd-${pkgver}.tar.gz")
-sha512sums=('000aee2fc115cc035c33a20e6cc5483804bacf07f78ecc8dc80b259d00767d3b78fed18374f4c6d99e61338e2f1745c97d40b9979d168679cedf16d229b35b48')
+sha512sums=('76f371a163999286c219770564a8e2918301f2b79be3e18c6700c5c1f2518572aa866ffb29012ce6a4be1e7a744839cc7459301e6e9d84ba84d2081f6a0b4514')
 
 build() {
   cd "hhd-$pkgver"
