@@ -10,7 +10,7 @@ url="https://docs.montblu.eu/terrabutler/"
 license=('GPL-3.0')
 makedepends=('python' 'python-pip')
 source=("https://github.com/montblu/terrabutler/archive/refs/tags/v$pkgver.zip")
-sha256sums=('770db0539629b5272b6fe82079236727e71fc927841d34955182126aa71650bf')
+sha256sums=('4c4657af3edc20f08c1dc1121af2bcfb3bde374aabf049abf66d4ab80533e459')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
