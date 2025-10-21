@@ -1,11 +1,13 @@
 pkgbase = peru-git
 	pkgdesc = A tool for fetching code
-	pkgver = 690.7007451
+	pkgver = 696.c0e6c55
 	pkgrel = 1
 	url = https://github.com/buildinspace/peru
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch
 	depends = python
 	depends = python-yaml
 	depends = git
