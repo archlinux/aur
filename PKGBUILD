@@ -1,73 +1,92 @@
-# Maintainer: Sapphire <imsapphire0 at gmail dot com>
+# Maintainer: Álvaro De Quinta <blackcherry at danwin1210 dot de>
+# Contributor: Sapphire <imsapphire0 at gmail dot com>
 pkgname=wivrn-server-git
-_pkgname=wivrn-server
-pkgver=0.22.r85.gb97c8b2
+pkgver=25.9.81.g0e5b339b
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
-license=("GPL-3.0-only")
+license=("GPL-3.0-or-later")
 depends=(
 	"avahi"
+	"cairo"
 	"ffmpeg"
 	"gcc-libs"
+	"glib2"
 	"glibc"
+	"libarchive"
 	"libbsd"
 	"libgl"
+	"libnotify"
 	"libpipewire"
+	"libpng"
 	"libpulse"
+	"librsvg"
 	"libx11"
 	"libxcb"
+	"openssl"
 	"systemd-libs"
 	"vulkan-icd-loader"
 	"x264"
-	"libnotify"
-	"glib2"
-	"openssl"
 )
+
 makedepends=(
-	"cmake"
-	"boost-libs"
-	"eigen"
-	"nlohmann-json"
-	"cli11"
-	"glib2-devel"
 	"boost"
-	"vulkan-headers"
-	"libxrandr"
+	"cli11"
+	"cmake"
+	"eigen"
 	"git"
+	"glib2-devel"
+	"libdrm"
+	"libxrandr"
+	"nlohmann-json"
+	"vulkan-headers"
+	"wayland"
 )
+
 optdepends=(
-	"cuda: NVIDIA hardware encoding"
+    "opencomposite: OpenVR to OpenXR translation layer"
+    "xrizer: Another OpenVR to OpenXR translation layer"
+)
+provides=(
+	"openxr-runtime"
+	"wivrn-server"
 )
 conflicts=("wivrn-server")
-provides=("wivrn-server" "openxr-runtime")
-source=("git+https://github.com/WiVRn/WiVRn")
+source=("git+$url")
 sha256sums=('SKIP')
-install=$_pkgname.install
+install=$pkgname.install
 
 pkgver() {
-	cd "WiVRn"
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/WiVRn"
+    git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
-	cd "WiVRn"
+	cd "$srcdir/WiVRn"
 	cmake -B build-server . \
 	-DGIT_DESC=v${pkgver} \
+	-DWIVRN_BUILD_SERVER=ON \
+	-DWIVRN_BUILD_WIVRNCTL=ON \
 	-DWIVRN_BUILD_CLIENT=OFF \
+	-DWIVRN_BUILD_DASHBOARD=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DWIVRN_USE_VAAPI=ON \
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
-	-DOPENCOMPOSITE_SEARCH_PATH=/opt/opencomposite \
+	-DWIVRN_USE_VULKAN_ENCODE=ON \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
+	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
 	cmake --build build-server
 }
 
 package() {
-	cd "WiVRn"
+	cd "$srcdir/WiVRn"
 	DESTDIR="$pkgdir" cmake --install build-server
+
+	mkdir -p $pkgdir/usr/lib/environment.d
+	echo PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 > $pkgdir/usr/lib/environment.d/wivrn.conf
 }
