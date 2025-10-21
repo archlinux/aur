@@ -3,11 +3,11 @@
 
 pkgname=dedupe-dir
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Dedupes directories of your choosing once a week.'
 arch=('any')
 url='https://github.com/theblu3j/dedupe-dir'
-depends=('systemd' 'duperemove' 'coreutils')
+depends=('systemd' 'duperemove' 'coreutils' 'grep' 'sh')
 source=(
     "dedupe.timer"
     "dedupe.service"
