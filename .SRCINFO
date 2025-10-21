@@ -1,10 +1,16 @@
 pkgbase = waitup-bin
-	pkgdesc = A utility to check when a system or service becomes available (RDP/SSH/Port)
-	pkgver = 0.0.0
+	pkgdesc = A utility to check when a system/service becomes available (RDP/SSH/Port)
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/creaked/waitup
-	arch = x86_64
 	license = MIT
-
+	conflicts = waitup
+	provides = waitup
+	arch = aarch64
+	source_aarch64 = https://github.com/creaked/waitup/releases/download/v0.4.0/waitup_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f994d3bf8a63afeb8c6826e2f262c0da78b4f65e5cb313a8d00e6dfad0bfb335
+	arch = x86_64
+	source_x86_64 = https://github.com/creaked/waitup/releases/download/v0.4.0/waitup_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8a5fd14521a2443bfd29572b8797dd946a1d8d2cf587f36e1e6cb9a0b41c6328
+	
 pkgname = waitup-bin
-
