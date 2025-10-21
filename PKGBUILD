@@ -2,8 +2,7 @@
 
 pkgbase=fsp-bin
 pkgname=(fsp-bin fsp-e2s-bin fsp-renesas-bin)
-_tagname=6.1.0_e2s_v2025-07
-pkgver=${_tagname%%_*}
+pkgver=6.2.0
 pkgrel=1
 epoch=
 pkgdesc="Flexible Software Package (FSP) for Renesas RA MCU Family"
@@ -20,7 +19,7 @@ optdepends=()
 backup=()
 options=('!strip' '!debug' '!lto' 'emptydirs')
 install=
-_year_month=${_tagname##*v}
+_year_month=2025-10
 _e2s=setup_fsp_v${pkgver//./_}_e2s_v${_year_month}.xz.run
 _rasc=setup_fsp_v${pkgver//./_}_rasc_v${_year_month}.xz.run
 source=(
@@ -29,8 +28,8 @@ source=(
     "${url}/releases/download/v${pkgver}/${_rasc}"
 )
 sha256sums=('e1f6671c02e028678ed35996becd061f3498e08557986b7d15678d9985c96d97'
-            '695ad046cc1b79ffc60f687feb296b27c157dcf5113ba2a728f070869cc3d29c'
-            '924f79b239c605bcb83e8bbb9c8b53ce3727280ea08ead312bc8c27d5bf933cf')
+            '935b144f2de4c09ec9a5c12aec4ff25053801cc0c9a127bd4af88a24a99f6cab'
+            '694565dfaf7366793952da11f8a4c155a484067ed10d9520ac9ef0de23cc8d43')
 noextract=()
 
 prepare() {
