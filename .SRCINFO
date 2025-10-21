@@ -1,12 +1,14 @@
 pkgbase = dedupe-dir
 	pkgdesc = Dedupes directories of your choosing once a week.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theblu3j/dedupe-dir
 	arch = any
 	depends = systemd
 	depends = duperemove
 	depends = coreutils
+	depends = grep
+	depends = sh
 	conflicts = dedupe
 	source = dedupe.timer
 	source = dedupe.service
