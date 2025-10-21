@@ -1,7 +1,7 @@
 pkgbase = python-bitsandbytes
 	pkgdesc = k-bit optimizers and matrix multiplication routines.
 	pkgver = 0.48.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bitsandbytes-foundation/bitsandbytes
 	arch = x86_64
 	license = MIT
