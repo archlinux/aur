@@ -1,6 +1,6 @@
 pkgbase = python-datatypes
 	pkgdesc = Utility Classes and Functions that are handy across multiple projects
-	pkgver = 0.27.1
+	pkgver = 0.27.2
 	pkgrel = 1
 	url = https://github.com/jaymon/datatypes
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-datatypes
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.org/packages/source/d/datatypes/datatypes-0.27.1.tar.gz
-	sha512sums = fa6ec76af8737719f7093241578381c7393303fd7cb6245a0ea73720607c2b4967572edb70cc9821c565d4fe651f6d34a39ee3feb41a27faa82af38f52b96a7a
+	source = https://pypi.org/packages/source/d/datatypes/datatypes-0.27.2.tar.gz
+	sha512sums = 673898cf735a82044dd3cf9beeb82cf90d325c1c70fa784f46ba34fb72b559b9d11b0246561775b835ad299ae1360820baf17bc7cba80a62b68c83cdddbe1e6b
 
 pkgname = python-datatypes
