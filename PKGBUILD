@@ -9,7 +9,7 @@ license=('0BSD')
 depends=()
 makedepends=('git' 'cargo')
 optdepends=('grim: for the screen_burn feature')
-source=("$pkgname::git+https://github.com/larry-oates/doom_fire_wallpaper")
+source=("$pkgname::git+https://github.com/larry-oates/doom-fire-wallpaper")
 md5sums=('SKIP')
 
 prepare() {

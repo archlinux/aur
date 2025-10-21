@@ -8,7 +8,7 @@ pkgbase = doomfire-wallpaper
 	makedepends = git
 	makedepends = cargo
 	optdepends = grim: for the screen_burn feature
-	source = doomfire-wallpaper::git+https://github.com/larry-oates/doom_fire_wallpaper
+	source = doomfire-wallpaper::git+https://github.com/larry-oates/doom-fire-wallpaper
 	md5sums = SKIP
 
 pkgname = doomfire-wallpaper
