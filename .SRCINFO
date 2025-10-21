@@ -1,6 +1,6 @@
 pkgbase = dragengine
 	pkgdesc = Drag[en]gine game engine, launcher and editor
-	pkgver = 1.29
+	pkgver = 1.28.1
 	pkgrel = 1
 	url = https://dragondreams.ch/index.php/dragengine
 	changelog = Changelog
@@ -32,7 +32,7 @@ pkgbase = dragengine
 	depends = libpng
 	depends = openxr
 	depends = xdg-utils
-	source = dragengine-1.29::git+https://github.com/LordOfDragons/dragengine.git?signed#commit=7f796cbbef4747b0e84ebce4ce68ec2adbcef331
+	source = dragengine-1.28.1::git+https://github.com/LordOfDragons/dragengine.git?signed#commit=7f796cbbef4747b0e84ebce4ce68ec2adbcef331
 	source = custom.py
 	source = fixManifests.py
 	validpgpkeys = E0ECD22F5F70777588450034446C9C667CFC1DF3
