@@ -1,14 +1,14 @@
 # Maintainer: Jaroslav Bolek www.jbolek.cz <jaroslav.bolek@gmail.com>
 pkgname=lenovo-legion16irx9h
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lenovo Legion Pro 7 16IRX9H driver"
 arch=("x86_64")
 url="https://github.com/bolekjar/LenovoLegion/archive/refs/tags/release/${pkgver}.tar.gz"
 license=('GPL3')
 depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-charts")
 source=("LenovoLegion-release-$pkgver.tar.gz::$url")
-sha256sums=('99c0a64efa571a2e321e7f92d875ebef5ed33eaaf3d847c8d7505d6abc85499e')
+sha256sums=('748ed03c9229a9a0186ed590683144a488b2eb088d81b9f8d809dfe769e82662')
 install=default.install
 
 package() {
