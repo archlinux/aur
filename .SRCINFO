@@ -9,6 +9,7 @@ pkgbase = grayjay-git
 	makedepends = git
 	makedepends = git-lfs
 	makedepends = npm
+	makedepends = libappindicator-gtk3
 	depends = ffmpeg
 	depends = libsodium
 	provides = grayjay
