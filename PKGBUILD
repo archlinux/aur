@@ -1,7 +1,7 @@
 # Maintainer: Roland Plüss <roland@dragondreams.ch>
 pkgname=('dragengine' 'deigde')
 pkgbase=dragengine
-pkgver=1.29
+pkgver=1.28.1
 pkgrel=1
 pkgdesc="Drag[en]gine game engine, launcher and editor"
 arch=('x86_64')
