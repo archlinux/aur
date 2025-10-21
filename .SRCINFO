@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-kurve
 	pkgdesc = Audio visualizer widget powered by CAVA for the KDE Plasma Desktop
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/kurve
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = plasma6-applets-kurve
 	depends = python
 	depends = python-websockets
 	depends = qt6-websockets
-	source = kurve-2.1.0.tar.gz::https://github.com/luisbocanegra/kurve/archive/v2.1.0/kurve-2.1.0.tar.gz
-	sha256sums = db55280ccbed2a07354df47c695ecd3cd6031141d65712b781abd54519b4a647
+	source = kurve-2.2.0.tar.gz::https://github.com/luisbocanegra/kurve/archive/v2.2.0/kurve-2.2.0.tar.gz
+	sha256sums = 11c7e2aa29526ba73104268d507e8989d0c34389564f21e6bebcc9f8d67a8e00
 
 pkgname = plasma6-applets-kurve
