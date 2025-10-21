@@ -1,10 +1,10 @@
 pkgbase = liblinphone
 	pkgdesc = A high-level SIP library
-	pkgver = 5.3.5
+	pkgver = 5.4.50
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = x86_64
-	license = GPL
+	license = AGPL-3.0-only
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
@@ -17,7 +17,9 @@ pkgbase = liblinphone
 	depends = mediastreamer
 	depends = xerces-c
 	depends = lime
-	source = https://gitlab.linphone.org/BC/public/liblinphone/-/archive/5.3.5/liblinphone-5.3.5.tar.gz
-	sha256sums = 4e57fa4f2bb4cd00f15e0af155c2cb279ffcef960557ffa23bf9c276ed7f6d89
+	source = https://gitlab.linphone.org/BC/public/liblinphone/-/archive/5.4.50/liblinphone-5.4.50.tar.gz
+	source = temp_variables.patch
+	sha256sums = e237e79b2ce95ab490ff8bd89b5c485720c738b7f942cd49de168adbbc1d9ef4
+	sha256sums = 9288d6612ce110a14eea93ee7c45082c8fbf3963166a881458a3f03944283d8f
 
 pkgname = liblinphone
