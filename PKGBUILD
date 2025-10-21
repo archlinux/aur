@@ -18,7 +18,7 @@ _futo_github_base="https://github.com/futo-org"
 host="${_futo_gitlab_base}"
 license=('custom:Source-First-License-1.1')
 depends=('ffmpeg' 'libsodium')
-makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm')
+makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm' 'libappindicator-gtk3')
 source=("${_appname}::git+${host}/Grayjay.Desktop.git"
         "grayjay.desktop"
         "grayjay.sh"
