@@ -1,4 +1,4 @@
-# Maintainer: Mylloon <kennel.anri@tutanota.com>
+# Maintainer: Mylloon <aur@mylloon.fr>
 
 # shellcheck disable=SC2034,SC2148,SC2154
 
