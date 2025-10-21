@@ -1,12 +1,12 @@
-pkgbase = access
+pkgbase = access_pkg
 	pkgdesc = Check file and folder permission
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://github.com/MasoudAmiriBatmanghlnj/access.sh
+	url = https://github.com/MasoudAmiriBatmanghlnj/access_pkg.sh
 	arch = x86_64
 	license = MIT
 	depends = bash
-	source = https://github.com/MasoudAmiriBatmanghlnj/access.sh/blob/main/access.sh
+	source = https://github.com/MasoudAmiriBatmanghlnj/access_pkg.sh/blob/main/access.sh
 	sha512sums = 2eb9ed495dff2e2399d042bceaf0961cb4110f5819ceb4e8421d2909b1acaff9f961acf07e16a614d0052e53b1c86be6812856ea35584e49bbffec62e78b77b0
 
-pkgname = access
+pkgname = access_pkg
