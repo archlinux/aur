@@ -13,7 +13,7 @@ groups=('qownnotes')
 depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-websockets' 'aspell')
 makedepends=('qt6-tools')
 source=("https://github.com/pbek/QOwnNotes/releases/download/v${pkgver}/qownnotes-${pkgver}.tar.xz")
-sha256sums=('4deafc30a5f7a50934d942b4428a4b4240e2f92771dda950735031d5a61f3662')
+sha256sums=('b5a62b3eb8ab488bb5086b3c19e5f6961492f11d65de6afc60faa9907e18fdb9')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
