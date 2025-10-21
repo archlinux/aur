@@ -3,7 +3,7 @@
 pkgname=xcursor-haiku
 pkgdesc='A port of of haiku cursor as a xcursor theme, using haiku-icons repo'
 pkgver=2
-pkgrel=1
+pkgrel=2
 url=https://github.com/leath-dub/Haiku_Cursor
 arch=(any)
 makedepends=(git librsvg xorg-xcursorgen yq)
@@ -56,6 +56,11 @@ build () {
 		name=${name%.cursor}
 		svg=${svg#48x48/}
 		svg=${svg%.png}
+
+		if [[ $svg = FollowLink ]] ; then
+			svg=CreateLink
+		fi
+
 		svg="haiku-icons/svg/cursors/$svg.svg"
 
 		for size in 24 32 48 64 96 ; do

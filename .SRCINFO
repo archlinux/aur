@@ -1,7 +1,7 @@
 pkgbase = xcursor-haiku
 	pkgdesc = A port of of haiku cursor as a xcursor theme, using haiku-icons repo
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leath-dub/Haiku_Cursor
 	arch = any
 	license = MIT
