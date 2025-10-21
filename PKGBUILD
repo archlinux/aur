@@ -5,8 +5,8 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.2.1
-pkgrel=2
+pkgver=12.3.2
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -16,7 +16,7 @@ makedepends=(
   'imagemagick'
 )
 optdepends=(
-  'ffmpeg: h.264 video'
+  'ffmpeg4.4: h.264 video'
   'hunspell-dictionary: spell checking'
   'hyphen: hyphenation'
   'libnotify: notification integration'
@@ -33,15 +33,15 @@ source=(
   "floorp.desktop"
   "floorp.png"
 )
-source_x86_64=("$_pkgname-$pkgver-linux-amd64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-amd64.tar.xz")
+source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-x86_64.tar.xz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.xz"::"$url/releases/download/v${pkgver}/floorp-linux-aarch64.tar.xz")
 
 sha256sums=(
   '076d85367a4291cd2be96075dd993cda40f8edc6f3b22750139692078c0475c1'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
-sha256sums_x86_64=('cac00263e6cea2a4490d597a6287a7902a72907ad0ed6676a959873104b049d2')
-sha256sums_aarch64=('bacc6f31dbda6a2bbb5e9b3541511750d835feb1b161092bd801b8c5feaae249')
+sha256sums_x86_64=('2aac35fe8c82b8e1751dbacf87b1ddd1020ce614c8e5cbfd6833e7e03044ef2c')
+sha256sums_aarch64=('d1882e1619c4b38480f5520d1c2bac9dfbd3751da456b6951c33e6f6a64aa5fa')
 
 package() {
   depends=(
