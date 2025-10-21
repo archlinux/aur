@@ -1,6 +1,7 @@
 # Maintainer: Alexander Ellul (aellul27) <igsalexcodes@gmail.com>
 
 pkgname=libfprint-06cb-00e9
+_pkgdirname=libfprint
 pkgver=1.94.9
 pkgrel=1
 pkgdesc="Library for fingerprint readers with support for 06cb:00e9. See this issue: https://gitlab.freedesktop.org/libfprint/libfprint/-/issues/614"
@@ -45,7 +46,7 @@ validpgpkeys=(
 )
 
 prepare() {
-  cd $pkgname
+  cd $_pkgdirname
   patch -Np1 -i ../enable-device-06cb-00e9.patch
 }
 
