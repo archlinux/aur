@@ -4,7 +4,7 @@
 pkgname=vkquake2
 _remote=vkQuake2
 pkgver=1.5.9
-pkgrel=2
+pkgrel=3
 pkgdesc="id Software's Quake 2 v3.21 with Vulkan support"
 arch=(i686 x86_64)
 url="https://github.com/kondrak/vkQuake2"
@@ -41,7 +41,9 @@ package() {
     fi
 
     cd "$srcdir/$_remote-$pkgver/linux/$_build$_arch-glibc"
-    install -Dm644 "baseq2/game$_arch.so" "$pkgdir/opt/$pkgname/baseq2/game$_arch.so"
+    for game in baseq2 ctf rogue smd xatrix zaero; do
+        install -Dm644 "$game/game$_arch.so" "$pkgdir/opt/$pkgname/$game/game$_arch.so"
+    done
     install -m755 quake2 "$pkgdir/opt/$pkgname/quake2"
     install -m644 ref_glx.so "$pkgdir/opt/$pkgname/ref_glx.so"
     install -m644 ref_vk.so "$pkgdir/opt/$pkgname/ref_vk.so"

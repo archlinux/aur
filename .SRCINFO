@@ -1,7 +1,7 @@
 pkgbase = vkquake2
 	pkgdesc = id Software's Quake 2 v3.21 with Vulkan support
 	pkgver = 1.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kondrak/vkQuake2
 	install = vkquake2.install
 	arch = i686
