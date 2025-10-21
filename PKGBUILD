@@ -15,7 +15,6 @@ build() {
   cd "$srcdir/reskin-$pkgver/src-tauri"
 
   npm install
-  npm run build
 
   npm run tauri build
 }
