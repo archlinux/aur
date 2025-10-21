@@ -8,7 +8,7 @@
 readonly _pkgname="CLI11"
 
 pkgname="cli11-compiled"
-pkgver="2.5.0"
+pkgver="2.6.0"
 pkgrel="1"
 pkgdesc="Command line parser for C++."
 arch=("x86_64")
@@ -19,7 +19,7 @@ checkdepends=("catch2" "cmake")
 conflicts=("cli11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=("!strip")
-sha512sums=("895fb61e4c9974ee8e8d4681fb880a10126a412f24bb147d558d465d78fe784a044c5443edf1ce20fc9936901073073d795b034e0c02bdb3c8aa74c9d6ac811c")
+sha512sums=("341e1f0ef06952645960cda60429ea48fa9b1c7e10eebb5544abfebb59a7a43f9beb9a3d4380fb59888579f301f5ad9e374457c370db3c3b8135c7b7fa9732dd")
 
 _compile()
 {
@@ -29,11 +29,13 @@ _compile()
         -D CLI11_BUILD_EXAMPLES_JSON=OFF \
         -D CLI11_BUILD_TESTS="$1" \
         -D CLI11_CUDA_TESTS=OFF \
-        -D CLI11_INSTALL=ON \
         -D CLI11_FORCE_LIBCXX=OFF \
+        -D CLI11_INSTALL=ON \
         -D CLI11_PRECOMPILED=ON \
+        -D CLI11_SANITIZERS=OFF \
         -D CLI11_SINGLE_FILE=OFF \
         -D CLI11_SINGLE_FILE_TESTS=OFF \
+        -D CLI11_WARNINGS_AS_ERRORS=OFF \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
         -S "${srcdir}"/"${_pkgname}"-"${pkgver}"/ \
