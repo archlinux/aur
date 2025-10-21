@@ -3,9 +3,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
-pkgver=6.4.5
+pkgver=6.5.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=5
+pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -30,6 +30,7 @@ depends=(aurorae
          kirigami
          kitemmodels
          knewstuff
+         knighttime
          knotifications
          kpackage
          kquickcharts
@@ -70,18 +71,13 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('cea91879467afdfa2caf0ec6dd7256eae78defa970cdc9a947fefd85d417acb1'
+sha256sums=('a79d8f7b4610b48f1d8f51329422b2882ed4daadf38e5c9042d25b1594176513'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1'  # Nicolas Fella <nicolas.fella@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
-
-prepare() {
-# Fix doc build with libxml2 2.15
-  find -name index.docbook | xargs sed -e 's|url=" http|url="http|g' -i
-}
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
