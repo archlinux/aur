@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Cinny
+Exec=/usr/bin/cinny-electron %U
+Terminal=false
+Type=Application
+Icon=cinny-electron
+StartupWMClass=cinny-electron
+GenericName=Internet Messenger
+Categories=Network;
+Keywords=matrix;cinny;electron;chat;
+Comment=Yet another matrix client
+MimeType=x-scheme-handler/matrix;
