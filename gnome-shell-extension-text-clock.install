@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2024-2025 Wesley Benica <wesley@benica.dev>
+# SPDX-License-Identifier: 0BSD
+
+post_install() {
+    # Compile GSettings schemas
+    echo "Compiling GSettings schemas..."
+    glib-compile-schemas --targetdir="/usr/share/gnome-shell/extensions/text-clock@benica.dev/schemas" /usr/share/gnome-shell/extensions/text-clock@benica.dev/schemas
+    
+    echo "==> Text Clock extension installed successfully"
+    echo "==> This is a system-installed extension managed by the package manager"
+    echo "==> Do not update via GNOME Extensions - use 'yay -Syu' instead"
+    echo "==> To enable the extension:"
+    echo "    1. Restart GNOME Shell (Wayland: log out/in, X11: Alt+F2 -> 'r' -> Enter)"
+    echo "    2. Enable the extension via Extensions app or:"
+    echo "       gnome-extensions enable text-clock@benica.dev"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Disable the extension before removal
+    echo "Disabling Text Clock extension..."
+    gnome-extensions disable text-clock@benica.dev 2>/dev/null || true
+}
+
+post_remove() {
+    # Recompile schemas after removal
+    echo "Recompiling GSettings schemas..."
+    glib-compile-schemas /usr/share/glib-2.0/schemas
+    
+    echo "==> Text Clock extension removed"
+}
