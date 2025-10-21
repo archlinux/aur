@@ -1,0 +1,19 @@
+pkgbase = rkcfgtool-git
+	pkgdesc = Command line utility for Rockchip RKDevTool configuration files
+	pkgver = 1.0.0.r0.g414bf46
+	pkgrel = 1
+	url = https://github.com/guoh27/rkcfgtool
+	arch = any
+	license = MIT
+	checkdepends = diffutils
+	checkdepends = grep
+	checkdepends = xxd
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = rkcfgtool
+	conflicts = rkcfgtool
+	source = rkcfgtool-git::git+https://github.com/guoh27/rkcfgtool.git
+	sha256sums = SKIP
+
+pkgname = rkcfgtool-git
