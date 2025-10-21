@@ -10,6 +10,8 @@
 #include <map>
 #include <random>
 #include <regex>
+#include <openssl/sha.h>
+#include <openssl/rand.h>
 
 namespace fs = std::filesystem;
 
@@ -61,6 +63,7 @@ class PasswordManager {
 private:
     std::string baseDir;
     std::string masterPasswordHash;
+    std::string encryptionKey;
     
     struct PasswordEntry {
         std::string service;
@@ -101,13 +104,61 @@ private:
         return getServiceDir(service) + "/" + usernameClean + ".pwd";
     }
     
-    // Simple hash function for demonstration
-    std::string simpleHash(const std::string& input) {
-        unsigned long hash = 5381;
-        for (char c : input) {
-            hash = ((hash << 5) + hash) + c;
+    // Генерация случайной соли
+    std::string generateSalt() {
+        std::vector<unsigned char> salt(16);
+        RAND_bytes(salt.data(), salt.size());
+        return std::string(salt.begin(), salt.end());
+    }
+    
+    // Безопасный хэш с SHA-512 и итерациями
+    std::string secureHash(const std::string& password, const std::string& salt) {
+        std::string data = password + salt;
+        unsigned char hash[SHA512_DIGEST_LENGTH];
+        
+        // Первое хэширование
+        SHA512(reinterpret_cast<const unsigned char*>(data.c_str()), data.length(), hash);
+        
+        // Многократное хэширование для замедления brute-force
+        for (int i = 0; i < 50000; i++) {
+            SHA512(hash, SHA512_DIGEST_LENGTH, hash);
         }
-        return std::to_string(hash);
+        
+        // Возвращаем соль + хэш для хранения
+        return salt + std::string(reinterpret_cast<char*>(hash), SHA512_DIGEST_LENGTH);
+    }
+    
+    // Проверка пароля
+    bool verifyPassword(const std::string& password, const std::string& storedHash) {
+        // Проверяем длину хэша
+        if (storedHash.length() != 16 + SHA512_DIGEST_LENGTH) {
+            return false;
+        }
+        
+        // Извлекаем соль (первые 16 байт) и хэш (остальные)
+        std::string salt = storedHash.substr(0, 16);
+        std::string storedHashOnly = storedHash.substr(16);
+        
+        // Вычисляем хэш для проверки
+        std::string computedHash = secureHash(password, salt);
+        std::string computedHashOnly = computedHash.substr(16);
+        
+        return computedHashOnly == storedHashOnly;
+    }
+    
+    // Производный ключ из мастер-пароля
+    std::string deriveEncryptionKey(const std::string& password, const std::string& salt) {
+        std::string data = password + salt + "encryption-key";
+        unsigned char hash[SHA512_DIGEST_LENGTH];
+        
+        // Многократное хэширование для ключа
+        SHA512(reinterpret_cast<const unsigned char*>(data.c_str()), data.length(), hash);
+        for (int i = 0; i < 10000; i++) {
+            SHA512(hash, SHA512_DIGEST_LENGTH, hash);
+        }
+        
+        // Используем первые 32 байта для ключа шифрования
+        return std::string(reinterpret_cast<char*>(hash), 32);
     }
     
     std::string encryptDecrypt(const std::string& input, const std::string& key) {
@@ -151,7 +202,10 @@ private:
             
             if (password1 == password2) {
                 if (password1.length() >= 6) {
-                    masterPasswordHash = simpleHash(password1);
+                    std::string salt = generateSalt();
+                    masterPasswordHash = secureHash(password1, salt);
+                    encryptionKey = deriveEncryptionKey(password1, salt);
+                    
                     std::ofstream file(getMasterPasswordFile());
                     if (file.is_open()) {
                         file << masterPasswordHash;
@@ -169,7 +223,33 @@ private:
     
     bool verifyMasterPassword() {
         std::string password = readPassword("Enter master password: ");
-        return simpleHash(password) == masterPasswordHash;
+        
+        // Загружаем сохраненный хэш
+        std::ifstream file(getMasterPasswordFile());
+        if (!file.is_open()) {
+            return false;
+        }
+        
+        std::string savedHash;
+        std::getline(file, savedHash);
+        
+        // Проверяем длину хэша
+        if (savedHash.length() != 16 + SHA512_DIGEST_LENGTH) {
+            std::cout << Colors::BRIGHT_RED << "✗ Invalid password database format!" << Colors::RESET << std::endl;
+            return false;
+        }
+        
+        // Проверяем пароль
+        if (!verifyPassword(password, savedHash)) {
+            return false;
+        }
+        
+        // Восстанавливаем ключ шифрования
+        std::string salt = savedHash.substr(0, 16);
+        encryptionKey = deriveEncryptionKey(password, salt);
+        masterPasswordHash = savedHash;
+        
+        return true;
     }
     
     void loadMasterPassword() {
@@ -232,7 +312,7 @@ private:
                             if (file.is_open()) {
                                 std::string encryptedPassword;
                                 std::getline(file, encryptedPassword);
-                                std::string password = encryptDecrypt(encryptedPassword, masterPasswordHash);
+                                std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
                                 
                                 results.push_back({service, username, password});
                             }
@@ -251,7 +331,7 @@ private:
                                 if (file.is_open()) {
                                     std::string encryptedPassword;
                                     std::getline(file, encryptedPassword);
-                                    std::string password = encryptDecrypt(encryptedPassword, masterPasswordHash);
+                                    std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
                                     
                                     results.push_back({service, username, password});
                                 }
@@ -301,7 +381,7 @@ private:
         
         std::ofstream file(filePath);
         if (file.is_open()) {
-            std::string encryptedPassword = encryptDecrypt(password, masterPasswordHash);
+            std::string encryptedPassword = encryptDecrypt(password, encryptionKey);
             file << encryptedPassword;
             std::cout << Colors::BRIGHT_GREEN << "✓ Password for '" << username << "' in service '" << service << "' saved successfully!" << Colors::RESET << std::endl;
             return true;
@@ -481,7 +561,7 @@ public:
             std::string encryptedPassword;
             std::getline(file, encryptedPassword);
             
-            std::string password = encryptDecrypt(encryptedPassword, masterPasswordHash);
+            std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
             
             std::cout << Colors::BRIGHT_CYAN << "\n--- Account Data ---" << Colors::RESET << std::endl;
             std::cout << Colors::BRIGHT_BLUE << "Service: " << Colors::BRIGHT_WHITE << service << Colors::RESET << std::endl;
@@ -609,7 +689,7 @@ public:
         
         std::ofstream file(filePath);
         if (file.is_open()) {
-            std::string encryptedPassword = encryptDecrypt(newPassword, masterPasswordHash);
+            std::string encryptedPassword = encryptDecrypt(newPassword, encryptionKey);
             file << encryptedPassword;
             std::cout << Colors::BRIGHT_GREEN << "✓ Password changed successfully!" << Colors::RESET << std::endl;
         } else {

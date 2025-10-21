@@ -6,6 +6,7 @@ pkgbase = canpass
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
+	depends = openssl
 	source = canpass.cpp
 	md5sums = SKIP
 
