@@ -2,7 +2,7 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=cNORM
-_pkgver=3.5.0
+_pkgver=3.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,14 +16,16 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-markdown
   r-readxl
   r-rmarkdown
   r-shiny
+  r-shinycssloaders
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('05735906f0c8b407ba23012c9fa2f9d2')
-b2sums=('1956568237eeb3fc858aeed87965391dec881cd501611932d44883ebcb4ad98e304c2290be46037f0d9c485eac55f234b5ca0cb2c79416fe933d0ebc521e75cc')
+md5sums=('d352be6d75f33d94a0fd9f08c28eca7a')
+b2sums=('2897754745ffe773bb5d1d1d72ba7d6e62d1a328b2cf24b4aa55f27e95402f952cb411f08a6de573782184949ff0dab798b6edb494f883cd67c862cf0dde590e')
 
 build() {
   mkdir build
