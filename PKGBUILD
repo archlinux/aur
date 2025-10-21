@@ -1,7 +1,7 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r332.710c366
+pkgver=r520.b0baa9b
 pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo')
 optdepends=('nginx: when using nginx as reverse proxy'
 			'caddy: when using caddy as reverse proxy')
-backup=('etc/webapps/iocaine/iocaine.toml')
+backup=('etc/iocaine/config.kdl')
 conflicts=('iocaine')
 options=('!lto')
 source=('git+https://git.madhouse-project.org/iocaine/iocaine.git'
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b'
             'd98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193'
             '7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b'
-            '5f399aeebab673326c8140f6c7c2fd8fa07e7234dbef288708cb00d56d6dd232')
+            '17daf94524947c173e2d18d6090cf372e40dfce7e4e610bced6bfd88b43c37de')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -50,7 +50,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/webapps/iocaine"
 
 	# Docs/Example configs
-	install -Dm644 "data/etc/config.toml" "${pkgdir}/etc/webapps/iocaine/iocaine.toml"
+	install -Dm644 "data/defaults/config.kdl" "${pkgdir}/etc/iocaine/config.toml"
 	install -Dm644 "${srcdir}/nginx_filter.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine_filter.conf"
 	install -Dm644 "${srcdir}/nginx_component.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine.component"
 
