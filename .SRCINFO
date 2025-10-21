@@ -1,6 +1,6 @@
 pkgbase = tagstudio
 	pkgdesc = A User-Focused Photo & File Management System
-	pkgver = alpha9.5.5
+	pkgver = alpha9.5.6
 	pkgrel = 1
 	url = https://github.com/TagStudioDev/TagStudio
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = tagstudio
 	depends = python-send2trash>=1.8.0
 	depends = python-ffmpeg-python>=0.2.0
 	depends = python-mutagen>=1.47.0
+	depends = python-py7zr>=1.0.0
 	depends = python-pydub>=0.25.1
 	depends = python-sqlalchemy>=2.0.34
 	depends = python-srctools>=2.6.0
@@ -46,11 +47,11 @@ pkgbase = tagstudio
 	optdepends = qt-wayland
 	provides = tagstudio
 	conflicts = tagstudio
-	source = tagstudio-9.5.5.tar.gz::https://github.com/TagStudioDev/TagStudio/archive/refs/tags/v9.5.5.tar.gz
+	source = tagstudio-9.5.6.tar.gz::https://github.com/TagStudioDev/TagStudio/archive/refs/tags/v9.5.6.tar.gz
 	source = tagstudio.desktop
 	source = tagstudio
 	source = MANIFEST.in
-	sha256sums = 8903add2a9e6d7d7d49e84d10c72db70a4bb251a38720216e2c13b70d65fe91a
+	sha256sums = d5e8558b6fd2d56eba12d07d029a94bbd288258feeb48a4dd24702dab33de77a
 	sha256sums = 75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3
 	sha256sums = 7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f
 	sha256sums = ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb
