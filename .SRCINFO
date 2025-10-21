@@ -1,6 +1,6 @@
 pkgbase = tosu-overlay-git
 	pkgdesc = Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt
-	pkgver = 2.0.1.r3.gdb219a2
+	pkgver = 2.0.1.r14.g56d645e
 	pkgrel = 1
 	url = https://github.com/K4zoku/tosu-overlay-qt
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = tosu-overlay-git
 	depends = qt6-webengine
 	depends = layer-shell-qt
 	depends = tosu
+	provides = tosu-overlay
 	conflicts = tosu-overlay
 	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay-qt.git
 	sha256sums = SKIP

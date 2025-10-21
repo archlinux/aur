@@ -1,7 +1,7 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 _pkgbase=tosu-overlay
 pkgname=${_pkgbase}-git
-pkgver=2.0.1.r4.g81c9fa6
+pkgver=2.0.1.r14.g56d645e
 pkgrel=1
 pkgdesc="Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt"
 arch=('x86_64')
@@ -28,7 +28,7 @@ package() {
     meson install -C build --destdir "${pkgdir}"
 
     cd "${_pkgbase}"
-    install -Dm644 "resources/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgbase}.svg"
+    install -Dm644 "res/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgbase}.svg"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
-    install -Dm644 "distributions/${_pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgbase}.desktop"
+    install -Dm644 "dist/${_pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgbase}.desktop"
 }
