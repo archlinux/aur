@@ -9,6 +9,7 @@ pkgbase = gitfetch-python
 	depends = python-readchar
 	makedepends = python-requests
 	makedepends = python-readchar
+	makedepends = python-pip
 	source = gitfetch-python-1.1.7.tar.gz::https://github.com/Matars/gitfetch/archive/refs/tags/v1.1.7.tar.gz
 	sha256sums = 6ae1b2977f459a15352375f46cd56133eec4c37812b71448528a44f43b77f1f6
 
