@@ -7,7 +7,7 @@
 
 pkgname=texturepacker
 pkgver=7.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Sprite sheet creator and image optimizer"
 arch=('x86_64')
 url="https://www.codeandweb.com/$pkgname"

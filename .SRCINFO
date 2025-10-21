@@ -1,7 +1,7 @@
 pkgbase = texturepacker
 	pkgdesc = Sprite sheet creator and image optimizer
 	pkgver = 7.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.codeandweb.com/texturepacker
 	install = texturepacker.install
 	arch = x86_64
