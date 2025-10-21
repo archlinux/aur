@@ -53,4 +53,8 @@ package() {
     for f in ${srcdir}/${pkgname%-git}/udev-rules/*; do
         install -D -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "$f"
     done
+    echo "*****"
+    echo "To run the driver without requiring root permissions, follow these instructions starting from step 2:"
+    echo "https://github.com/tolga9009/elgato-gchd/wiki/Configuring-the-Driver-to-be-Run-Without-Root-Permissions"
+    echo "*****"
 }
