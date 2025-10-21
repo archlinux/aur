@@ -1,6 +1,6 @@
 pkgbase = scratchmark
 	pkgdesc = Organized markdown editor
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/sevonj/scratchmark
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = scratchmark
 	depends = gtk4
 	depends = gtksourceview5
 	depends = libadwaita
-	source = scratchmark-1.4.6.tar.gz::https://github.com/sevonj/scratchmark/archive/refs/tags/v1.4.6.tar.gz
-	sha256sums = 20528b3dd35061699e85d193fc71ee3f4c52cc29858bbe24732b64427c950ed5
+	source = scratchmark-1.4.7.tar.gz::https://github.com/sevonj/scratchmark/archive/refs/tags/v1.4.7.tar.gz
+	sha256sums = 75c89dc5455c646226b17ffd6f02477aea9c778f9ee6948f04b398c80801076a
 
 pkgname = scratchmark
