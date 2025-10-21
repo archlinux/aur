@@ -2,7 +2,7 @@
 # Contributor: X0rg
 
 pkgname=obs-service-tar_scm
-pkgver=0.10.41
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=('cpio: needed for running properly the obs_scm source service'
 	'bzr: bzr repo support')
 backup=("etc/obs/services/tar_scm")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openSUSE/obs-service-tar_scm/archive/$pkgver.tar.gz")
-sha512sums=('2f7c3b807ee9d2735330db7dbae5eac71e2a344c37276ab31941576693dfcceb6524f50d055cbb23bfc081a8152f645d4981a25a31a7c3dc07cd17be93a50c8f')
+sha512sums=('6390949c8d4d3d5a5959d0b925d08bd7f838a6305d40724bfe7330013dae7fc8f7edc85e9872ddebee9094041de22eaaa0654f86afce7194a49890e4bf64c0dc')
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver"

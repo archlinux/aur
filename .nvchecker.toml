@@ -1,0 +1,4 @@
+[obs-service-tar_scm]
+source = "git"
+git = "https://github.com/openSUSE/obs-service-tar_scm.git"
+prefix = "v"
