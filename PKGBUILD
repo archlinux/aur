@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('avahi' 'belr' "bctoolbox>=$pkgver")
 makedepends=('cmake')
 options=('!emptydirs')
