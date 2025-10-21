@@ -1,5 +1,7 @@
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
+options=(!debug !strip)
+
 pkgname=msdfgen
 pkgver=1.12.1
 pkgrel=1
