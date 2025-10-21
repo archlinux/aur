@@ -9,7 +9,7 @@ pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -371,7 +371,7 @@ package_python-pytorch-cuda12.9() {
   pkgdesc="${_pkgdesc} (with CUDA 12.9)"
   depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
   conflicts=(python-pytorch)
-  provides=(python-pytorch=${pkgver})
+  provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
 
   cd "${srcdir}/${_pkgname}-cuda"
   _package
@@ -381,7 +381,7 @@ package_python-pytorch-opt-cuda12.9() {
   pkgdesc="${_pkgdesc} (with CUDA 12.9 and AVX2 CPU optimizations)"
   depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
   conflicts=(python-pytorch)
-  provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
+  provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver} python-pytorch-cuda12.9=${pkgver})
 
   cd "${srcdir}/${_pkgname}-opt-cuda"
   _package
