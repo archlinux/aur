@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=verus-analyzer-bin
-pkgver=2025.10.03
+pkgver=2025.10.20
 _tag="${pkgver//./-}"
 pkgrel=1
 provides=('verus-analyzer')
@@ -12,7 +12,7 @@ url='https://github.com/verus-lang/verus-analyzer'
 license=('MIT OR Apache-2.0')
 optdepends=('verus: verification support')
 source=("$url/releases/download/$_tag/verus-analyzer-x86_64-unknown-linux-gnu.gz")
-sha256sums=('e4446c4880616f7336ee9a3a70e2ebc4803fa23bb8e9ba178949b95d2715c1df')
+sha256sums=('708d25b3a058149fa58ec979d317d82d6b4e861bbba10db9965978260e25a83b')
 
 package() {
     install -Dm755 verus-analyzer-x86_64-unknown-linux-gnu "$pkgdir/usr/bin/verus-analyzer"
