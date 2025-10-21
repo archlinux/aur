@@ -5,7 +5,7 @@
 pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
-pkgver=0.27.0
+pkgver=0.28.2
 pkgrel=1
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
@@ -14,9 +14,13 @@ license=('GPL-3.0-only')
 depends=('tbb' 'icu' 'fmt' 'spdlog')
 makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust' 'doxygen' 'python-breathe' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('bf3f419dcf63e5d9f0766c174b52aa2a669396ed8da2809ec3a77f2e4773bdf3')
+sha256sums=('c39bae45541dcb56743ce1276854f52fe188394ce427b02539444d84fad56c2d')
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	# Rust components, not sure if we should be shipping this
+	#cd "${srcdir}/${pkgname}-${pkgver}"
+	#cargo build --release
+
+	cd "${srcdir}/${pkgname}-${pkgver}/cpp"
 	mkdir -p build
 	cd build
 	# https://github.com/loot/libloot?tab=readme-ov-file#cmake-variables
@@ -29,7 +33,11 @@ build() {
 }
 
 package() {
-	_builddir="${srcdir}/${pkgname}-${pkgver}/build"
+	# Rust components, not sure if we should be shipping this
+	#_builddir="${srcdir}/${pkgname}-${pkgver}/target/release"
+	#install -Dm755 -t "${pkgdir}/usr/lib" "${_builddir}/liblibloot.rlib"
+
+	_builddir="${srcdir}/${pkgname}-${pkgver}/cpp/build"
 	install -Dm755 -t "${pkgdir}/usr/lib" "${_builddir}/libloot.so.${pkgver}"
 	ln -s "libloot.so.${pkgver}" "${pkgdir}/usr/lib/libloot.so.0"
 	ln -s "libloot.so.${pkgver}" "${pkgdir}/usr/lib/libloot.so"
