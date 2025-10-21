@@ -1,12 +1,12 @@
 # Maintainer: Frtz Qe <nextlxqt@gmail.com>
 
 pkgname=lext-theme-lubuntu-arc
-upstreampkgver="25.10-2"
+upstreampkgver="25.10-3"
 pkgdesc="LXQt theme: Lubuntu-Arc (from Lubuntu $upstreampkgver)"
 
 # Intentionally not following the release and version numbering of Lubuntu
 pkgver=1
-pkgrel=2
+pkgrel=3
 
 arch=('any')
 url="https://github.com/lext-next/lext-theme-lubuntu-arc"

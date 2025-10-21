@@ -1,7 +1,7 @@
 pkgbase = lext-theme-lubuntu-arc
-	pkgdesc = LXQt theme: Lubuntu-Arc (from Lubuntu 25.10-2)
-	pkgver = 1
-	pkgrel = 2
+	pkgdesc = LXQt theme: Lubuntu-Arc (from Lubuntu 25.10-3)
+	pkgver = 2
+	pkgrel = 1
 	url = https://github.com/lext-next/lext-theme-lubuntu-arc
 	arch = any
 	license = GPL-2.0
