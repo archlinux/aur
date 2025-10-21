@@ -4,7 +4,7 @@ pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
 pkgver=0.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -29,12 +29,13 @@ build() {
 	#uv run -- sphinx-build -b html . build/html
 
 	cd "${srcdir}/${pkgname}-${pkgver}/cpp"
-	mkdir -p build
-	cd build
+
+	# Workaround - with LTO some symbols are somehow undefined and building against LOOT fails
+	export CXXFLAGS="${CXXFLAGS} -fno-lto"
 	# https://github.com/loot/libloot/tree/master/cpp#build
-	cmake .. \
-		-DCMAKE_SKIP_RPATH=TRUE
-	make loot
+	cmake -B build . \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo
+	cmake --build build --target loot
 }
 
 package() {
