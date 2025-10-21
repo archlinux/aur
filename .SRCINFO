@@ -1,6 +1,6 @@
 pkgbase = matlab-mpm-input-git
 	pkgdesc = MATLAB Package Manager (input files)
-	pkgver = R2025b+r121.1c3c73b
+	pkgver = R2025b+r123.gdf30d7e
 	pkgrel = 1
 	url = https://www.mathworks.com/products/mpm.html
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = matlab-mpm-input-git
 	depends = matlab-mpm
 	provides = matlab-mpm-input
 	provides = matlab-mpm-input-release=R2025b
-	provides = matlab-mpm-input-version=r121.1c3c73b
+	provides = matlab-mpm-input-version=r123.gdf30d7e
 	source = matlab-dockerfile::git+https://github.com/mathworks-ref-arch/matlab-dockerfile.git
 	sha256sums = SKIP
 

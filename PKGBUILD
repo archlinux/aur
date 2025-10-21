@@ -2,9 +2,9 @@
 
 _pkgname="matlab-mpm-input"
 pkgname="${_pkgname}-git"
-pkgver=R2025b+r121.1c3c73b
+pkgver=R2025b+r123.gdf30d7e
 _release="${pkgver%%+*}"
-_version="${pkgver##*+}"
+_version="${pkgver#*+}"
 pkgrel=1
 pkgdesc="MATLAB Package Manager (input files)"
 arch=('any')
@@ -28,10 +28,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
-  release="$(ls mpm-input-files | sort -V | tail -n1)"
-  commmit="$(git rev-list --count HEAD)"
-  hash="$(git rev-parse --short=7 HEAD)"
-  printf '%s+r%s.%s' "${release}" "${commmit}" "${hash}"
+  local release="$(ls mpm-input-files | sort -V | tail -n1)"
+  local commmit="$(git rev-list --count HEAD)"
+  local hash="$(git rev-parse --short=7 HEAD)"
+  printf '%s+r%s.g%s' "${release}" "${commmit}" "${hash}"
 }
 
 package() {
