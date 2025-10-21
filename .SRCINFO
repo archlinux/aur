@@ -1,13 +1,13 @@
 pkgbase = live-server
 	pkgdesc = Launch a local network server with live reload feature for static pages
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/lomirus/live-server
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = live-server-0.10.1.tar.gz::https://github.com/lomirus/live-server/archive/refs/tags/v0.10.1.tar.gz
-	sha256sums = 4b0820e64b435bd8e5bd3df2d61e1ca123c302f2cc0fe58e45e285d1a51aef83
+	source = live-server-0.11.0.tar.gz::https://github.com/lomirus/live-server/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = b673f6e3cef28d48c5c74803c7e40f92cf9919a45bd0965f8d12cdb5c0b42826
 
 pkgname = live-server
