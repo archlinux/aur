@@ -1,7 +1,5 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
-# TODO: Build and ship the docs
-
 pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
@@ -12,7 +10,7 @@ arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
 depends=('tbb' 'icu' 'fmt' 'spdlog')
-makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust' 'doxygen' 'python-breathe' 'python-sphinx')
+makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust' 'doxygen' 'python-breathe' 'python-sphinx') # 'uv' for docs
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('c39bae45541dcb56743ce1276854f52fe188394ce427b02539444d84fad56c2d')
 build() {
@@ -20,15 +18,20 @@ build() {
 	#cd "${srcdir}/${pkgname}-${pkgver}"
 	#cargo build --release
 
+	# Build docs - Doxygen needs to be installed for C++
+	# They are half a gig, so they are disabled
+	#cd "${srcdir}/${pkgname}-${pkgver}/docs"
+	#cargo doc
+	#uv run -- sphinx-build -b html . build/html
+
 	cd "${srcdir}/${pkgname}-${pkgver}/cpp"
 	mkdir -p build
 	cd build
-	# https://github.com/loot/libloot?tab=readme-ov-file#cmake-variables
+	# https://github.com/loot/libloot/tree/master/cpp#build
 	# built-in yaml-cpp hack due to https://github.com/loot/loot/issues/2076#issuecomment-2729508538
 	cmake .. \
 		-DCMAKE_DISABLE_FIND_PACKAGE_yaml-cpp=ON \
 		-DCMAKE_SKIP_RPATH=TRUE
-		# -DLIBLOOT_INSTALL_DOCS=OFF
 	make loot
 }
 
@@ -37,6 +40,14 @@ package() {
 	#_builddir="${srcdir}/${pkgname}-${pkgver}/target/release"
 	#install -Dm755 -t "${pkgdir}/usr/lib" "${_builddir}/liblibloot.rlib"
 
+	# Docs - they are half a gig, so they are disabled
+	#_builddir="${srcdir}/${pkgname}-${pkgver}/target/doc"
+	#cp -r "${_builddir}/." "${pkgdir}/usr/share/doc/${pkgname}/rust"
+	#_builddir="${srcdir}/${pkgname}-${pkgver}/cpp/build"
+	#install -d "${pkgdir}/usr/share/doc/${pkgname}/rust"
+	#cp -r "${_builddir}/docs/." "${pkgdir}/usr/share/doc/${pkgname}/"
+
+	# Lib
 	_builddir="${srcdir}/${pkgname}-${pkgver}/cpp/build"
 	install -Dm755 -t "${pkgdir}/usr/lib" "${_builddir}/libloot.so.${pkgver}"
 	ln -s "libloot.so.${pkgver}" "${pkgdir}/usr/lib/libloot.so.0"
