@@ -1,6 +1,6 @@
 pkgbase = oxfuse-dmd
 	pkgdesc = High-level binding to libfuse3 for the D programming language
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 0
 	url = https://gitlab.com/os-18/oxfuse
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oxfuse-dmd
 	makedepends = dmd
 	depends = fuse3
 	depends = dmd
-	source = oxfuse-dmd-0.5.0.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.5.0/oxfuse-v0.5.0.tar.gz
-	sha256sums = 7d55858b1a574b382568d64ec1554806cea8778ec0ff42aa336ed5a212da746d
+	source = oxfuse-dmd-0.5.1.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.5.1/oxfuse-v0.5.1.tar.gz
+	sha256sums = 3d3bdde092da02c770b862ccc360da0c00568a0286d162cab2980d96f2840f2b
 
 pkgname = oxfuse-dmd
