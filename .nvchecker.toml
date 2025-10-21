@@ -1,0 +1,5 @@
+["jetty"]
+source = "github"
+github = "jetty/jetty.project"
+use_latest_release = true
+prefix = "jetty-"
