@@ -24,6 +24,6 @@ pkgbase = meowrch-tools
 	optdepends = less: for migration file preview
 	optdepends = sudo: for system updates
 	source = meowrch-tools-2.0.0-9.tar.gz::https://github.com/meowrch/meowrch/archive/refs/heads/v3.0.tar.gz
-	sha256sums = c8dfb4eb41552374bf72c89eac1ae2e9d5dfd5bc4e767c0ae35d3d97fab809fb
+	sha256sums = 86a1b9089c7b75722da5b84bc3d8ff19e61812199c8bcd28e67e93968db6218c
 
 pkgname = meowrch-tools

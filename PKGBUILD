@@ -20,7 +20,7 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
 install=meowrch-tools.install
 source=("meowrch-tools-2.0.0-9.tar.gz::$url/archive/refs/heads/v3.0.tar.gz")
 # Автоматическая замена в workflow
-sha256sums=('c8dfb4eb41552374bf72c89eac1ae2e9d5dfd5bc4e767c0ae35d3d97fab809fb')
+sha256sums=('86a1b9089c7b75722da5b84bc3d8ff19e61812199c8bcd28e67e93968db6218c')
 
 package() {
     cd "$srcdir/meowrch-3.0/aur-packages/meowrch-tools"
