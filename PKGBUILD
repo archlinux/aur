@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/asif54800-spec/plasmasys"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-psutil')
-makedepends=('git' 'python-setuptools' 'python-wheel')
+makedepends=()
 optdepends=('wireless_tools: for displaying Wi-Fi SSID')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
