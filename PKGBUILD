@@ -39,7 +39,6 @@ md5sums=('6984e60963bb52e46ad8f7039aa00ac1'
 package() {
     cp -r "usr" "${pkgdir}"
     rm "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
-    install -d "${pkgdir}/usr/share"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "yesplaymusic.desktop"
     install -Dm644 "opt/YesPlayMusic/resources/app.asar" "${pkgdir}/usr/share/yesplaymusic/app.asar"
     install -Dm755 "yesplaymusic" "${pkgdir}/usr/bin/yesplaymusic"
