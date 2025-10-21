@@ -1,0 +1,12 @@
+diff --git a/src/videogenerator.h b/src/videogenerator.h
+index c716788..6ea2e2e 100644
+--- a/src/videogenerator.h
++++ b/src/videogenerator.h
+@@ -21,6 +21,7 @@
+ #define VIDEOGENERATOR_H
+ 
+ #include <QDialog>
++#include <QElapsedTimer>
+ #include <QTimer>
+ 
+ #include "lyrics.h"
