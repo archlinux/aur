@@ -3,7 +3,7 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r1398.2019e8a
+pkgver=r1399.db1c28b
 pkgrel=1
 arch=('any')
 depends=(
@@ -42,8 +42,9 @@ url="https://gitlab.com/cobib/${_pkgname}"
 source=(
     "${_pkgname}::git+${url}.git"
     "git+https://gitlab.com/cobib/cobib-docs-theme.git"
+    "git+https://gitlab.com/cobib/templates/cobib-plugin-template.git"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -59,6 +60,7 @@ prepare() {
   cd $srcdir/${_pkgname}
   git submodule init
   git config submodule.theme.url "$srcdir/cobib-docs-theme"
+  git config submodule.plugin.url "$srcdir/cobib-plugin-template"
   git -c protocol.file.allow=always submodule update
 }
 
