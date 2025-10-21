@@ -3,8 +3,8 @@
 
 _pyname=lizard
 pkgname=python-$_pyname
-pkgver=1.17.13
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C"
 arch=('any')
 url="https://github.com/terryyin/lizard"
@@ -12,6 +12,7 @@ license=('MIT')
 depends=(
     'python'
     'python-jinja'
+    'python-pathspec'
     'python-pygments'
 )
 makedepends=(
@@ -25,7 +26,7 @@ checkdepends=(
     'python-pytest'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/terryyin/lizard/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('e41e7bb461f64459f9327fa5719e57cc713dcebb89dfb6b01e27f38a9c6014bbe77b1a50cab094a8b68b630385ca9ff3c35b1a9a65545e9c23942f038b560d33')
+b2sums=('3b692e0ef662a6bb0d95cfcad5bc4e79cff5a388d75a41500b7e136a779c589a478dcbff2bf0053bb30260123b281a90c75f549c027c06cfee022ea9ed8e28a6')
 
 build() {
     cd $_pyname-$pkgver
