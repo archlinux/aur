@@ -1,9 +1,9 @@
 pkgbase = nyacc
 	pkgdesc = Not Yet Another Compiler Compiler
 	pkgver = 2.02.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/nyacc
-	arch = any
+	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = FDL

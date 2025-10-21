@@ -4,10 +4,10 @@
 
 pkgname=nyacc
 pkgver=2.02.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
-arch=('any')
+arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('guile' 'guile-bytestructures')
 makedepends=('guile')
