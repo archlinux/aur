@@ -4,7 +4,7 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.34.1
+pkgver=1.36.2
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -31,9 +31,9 @@ source=(
     0002-stats-thread_local_cache-thread-safety.patch
     0003-disable-thread-safety-analysis-for-file-system-http.patch
 )
-sha512sums=('8e99b6934e3d53945ca19a466176825aaabb342c7ec9891a18e18513b7371773cbd53a1b7ea467478b89ebb64b71dc5b95e50b54fd3942a4c546017fa893b3d0'
-            'ad0e9b86552c85f23fa28a54a07f686d2acfb929d6218668ec147f26d5cfe8f7778fd12e332e22216247c7ed42d8227855ee1a514e4af90af4689aacb8ce7b35'
-            'cde218638527bc17f765c722a9c9197d51a8ce0acdfabab887d8fb02541d47d0fed28b6f3db7ceb9aa68dc11152b11209d084b54f39f3780c11f9f888b1a3dbb'
+sha512sums=('e5521856c5aa2526deca036c556e26e8094da512e731d9e3032116d0bc958a1168cb712bbc0f734bcd32cae8c26561aff6b2bbe781fe31a8ae66a190e3481437'
+            '93bcae0f82c89f62efcf1708f6230d316125c5735f16f235cebd998b4360deba1c619fab8dcf21013bde36c267f45d28945232b1e501350190c1a936ab8e2fc0'
+            '472607b2392b0f41ff812ded7dd73621bbb664a7c104cda393f4be80787369a651c4cbfcad0515c515ea542451dc45e71e8d4635491f9b23c74f4ea0b51301de'
             '81b63af4585b5d7d392c5315f0cf125ab5df6fc0c2a3165446f9a5d5803c1ab03a6d7047997c7dc16b1fa838ad44b0021863c1910ab73f365d5722d3a8e314da')
 
 prepare() {
@@ -70,7 +70,7 @@ build() {
 
   $BAZELISK build \
     --workspace_status_command bazel/get_workspace_status \
-    --config=libc++ --verbose_failures -c opt \
+    --config=clang --config=libc++ --verbose_failures -c opt \
     //source/exe:envoy-static
 }
 

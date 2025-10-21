@@ -1,21 +1,21 @@
 diff -Naur a/.bazelrc b/.bazelrc
---- a/.bazelrc	2025-05-07 15:06:00.000000000 -0400
-+++ b/.bazelrc	2025-06-17 13:32:21.516679158 -0400
-@@ -73,7 +73,7 @@
+--- a/.bazelrc	2025-10-17 13:14:03.000000000 -0400
++++ b/.bazelrc	2025-10-20 19:09:57.033342160 -0400
+@@ -76,7 +76,7 @@
  build:linux --fission=dbg,opt
  build:linux --features=per_object_debug_info
  build:linux --action_env=BAZEL_LINKLIBS=-l%:libstdc++.a
--build:linux --action_env=BAZEL_LINKOPTS=-lm
-+build:linux --action_env=BAZEL_LINKOPTS=-lm:-lpsl
+-build:linux --action_env=BAZEL_LINKOPTS=-lm:-fuse-ld=gold
++build:linux --action_env=BAZEL_LINKOPTS=-lm:-lpsl:-fuse-ld=gold
  
  # We already have absl in the build, define absl=1 to tell googletest to use absl for backtrace.
  build --define absl=1
-@@ -220,7 +220,7 @@
+@@ -221,7 +221,7 @@
  build:libc++ --action_env=LDFLAGS=-stdlib=libc++
  build:libc++ --action_env=BAZEL_CXXOPTS=-stdlib=libc++
  build:libc++ --action_env=BAZEL_LINKLIBS=-l%:libc++.a:-l%:libc++abi.a
 -build:libc++ --action_env=BAZEL_LINKOPTS=-lm:-pthread
 +build:libc++ --action_env=BAZEL_LINKOPTS=-lm:-pthread:-lpsl
  build:libc++ --define force_libcpp=enabled
- build:clang-libc++ --config=libc++
- build:clang-libc++ --action_env=ARFLAGS=r
+ build:libc++ --@envoy//bazel:libc++=true
+ 
