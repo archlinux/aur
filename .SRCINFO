@@ -1,6 +1,6 @@
 pkgbase = orgtbl-query
 	pkgdesc = query the contents of emacs org-mode tables in files
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://sr.ht/~minshall/orgtbl-query/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = orgtbl-query
 	depends = gawk
 	optdepends = emacs: create and operate on org-mode files
 	optdepends = cram: functional testing framework
-	source = git+https://git.sr.ht/~minshall/orgtbl-query#tag=fbff597972a3d983f2ede9a494ddb7419cec101e?signed
+	source = git+https://git.sr.ht/~minshall/orgtbl-query#tag=6ed64477fc7e43a15716d93da7dfe8fb4af9bd8e?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
