@@ -2,7 +2,7 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname=TriliumNotes
-pkgver=0.99.1
+pkgver=0.99.2
 _electronversion=38
 pkgrel=1
 pkgdesc="Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)"
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('dce0d5f8ee722454fd7183e9110b13bff6487690e80a7e0b62fcbb464a1c254c')
-sha256sums_x86_64=('91396777913753d2bad796a480b43dfc5895bc106d79f4b77458ba58bcdfa65d')
+sha256sums_aarch64=('34992fd96d68332e43b3ff457364717d4c69f1f5797f67cb25496731dcb97c12')
+sha256sums_x86_64=('2b7622c659e2f199aa54bef3c9f0c6ca8ca94ecf79ad611dcdd80e65195ba40b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
