@@ -1,5 +1,5 @@
 pkgbase = spectacle-no-purpose
-	pkgdesc = KDE screenshot capture utility
+	pkgdesc = KDE screenshot capture utility, without the dependency on purpose. This disables the share menu
 	pkgver = 6.4.5
 	pkgrel = 2
 	epoch = 1
