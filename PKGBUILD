@@ -14,19 +14,14 @@ source_aarch64=("https://oas.shimonote.com/panther/${_pkgname}/release/linux/arm
 sha512sums_x86_64=('8ea8a82a17d8128e4ed7421bb42e194421264ff630c9d3f648cb85796f7dfe3b2e83f58873bff704345abcbbad87e610455db352c8b8ef7aa55ddcee5b78af16')
 sha512sums_aarch64=('1f042280754be9d9732844ea1180abca93b3a3ac357418a98ef3394b78fc97ac2c5330ae229b3ea650b2c3506a49ee88efc67f493ac6fe440f47516e27952f3a')
 
-prepare() {
-    tar -xpf data.tar.gz -C ${srcdir}
-}
-
 package() {
-    mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}
-    mkdir -p ${pkgdir}/usr/bin
-    mkdir -p ${pkgdir}/opt
-    cd ${srcdir}
-    cp -r usr ${pkgdir}
-    cd ${srcdir}/opt
-    cp -r ${_pkgname} ${pkgdir}/opt/${_pkgname}
-    ln -s "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/opt/shimo/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-    install -Dm644 "${srcdir}/opt/shimo/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    tar -xpf data.tar.gz -C "${pkgdir}"
+
+    # Launcher
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # License
+    install -Dm644 "${pkgdir}/opt/shimo/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${pkgdir}/opt/shimo/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
