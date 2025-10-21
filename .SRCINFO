@@ -1,7 +1,7 @@
 pkgbase = obsolete-appimagetool-bin
 	pkgdesc = Package desktop applications as AppImages (Obsolete version, compatible with Game Maker Studio, at least as on today 21/08/2025)
 	pkgver = 13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AppImage/AppImageKit/releases/download/
 	arch = x86_64
 	arch = armhf
@@ -11,6 +11,7 @@ pkgbase = obsolete-appimagetool-bin
 	provides = appimagetool
 	conflicts = appimagetool
 	noextract = appimagetool-13-x86_64.appimage
+	options = !strip
 	source = https://github.com/AppImage/appimagetool/raw/refs/tags/continuous/README.md
 	source = https://github.com/AppImage/appimagetool/raw/refs/tags/continuous/LICENSE
 	sha256sums = 5fda0457b69bc54b7f8a4274d574be98b836573a893b13d89b321843a27eb220
