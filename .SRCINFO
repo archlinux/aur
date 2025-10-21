@@ -1,13 +1,13 @@
 pkgbase = sourcetrail
 	pkgdesc = Interactive source explorer for C/C++ and Java
 	pkgver = 2025.10.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/petermost/Sourcetrail
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = java-environment=21
-	makedepends = lld
-	makedepends = llvm
+	makedepends = lld20
+	makedepends = llvm20
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
@@ -15,8 +15,8 @@ pkgbase = sourcetrail
 	makedepends = ninja
 	makedepends = imagemagick
 	makedepends = patchelf
-	depends = clang
-	depends = llvm-libs
+	depends = clang20<22
+	depends = llvm20-libs<22
 	depends = libboost_chrono.so
 	depends = libboost_filesystem.so
 	depends = libboost_program_options.so

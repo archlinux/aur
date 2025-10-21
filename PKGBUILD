@@ -2,25 +2,26 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 # options
-: ${_ver_clang=}
+: ${_ver_clang=20}
 : ${_ver_jdk:=21}
 
 : ${_install_path:=usr/lib}
 
 : ${_commit:=00ff0ccbb2208566ae81274dbf4edc0c4c822041} # 2025.10.13
+_llvm_ver_maj=$(LC_ALL=C pacman -Si llvm | grep -Pom1 '^Version\s+:\s+\K[0-9]+')
 
 _pkgname="sourcetrail"
 pkgname="$_pkgname"
 pkgver=2025.10.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Interactive source explorer for C/C++ and Java'
 url="https://github.com/petermost/Sourcetrail"
 license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
-  "clang${_ver_clang:-}"
-  "llvm${_ver_clang:-}-libs"
+  "clang${_ver_clang:-}<$((_llvm_ver_maj + 1))"
+  "llvm${_ver_clang:-}-libs<$((_llvm_ver_maj + 1))"
   'libboost_chrono.so'          # boost-libs
   'libboost_filesystem.so'      # boost-libs
   'libboost_program_options.so' # boost-libs
