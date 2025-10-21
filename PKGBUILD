@@ -2,30 +2,36 @@
 # Maintainer: ejedev <evan@ejedev.com>
 # Contributor: Aloxaf <aloxafx@gmail.com>
 
-pkgname=semgrep-bin
 _name=semgrep
-pkgver=1.136.0
+pkgname=${_name}-bin
+pkgver=1.140.0
 pkgrel=1
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
 license=(LGPL-2.1-only)
+
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 depends=(
   'python' 'python-attrs' 'python-boltons' 'python-click' 'python-click-option-group'
   'python-colorama' 'python-defusedxml' 'python-glom' 'python-jsonschema' 'python-packaging'
   'python-peewee' 'python-lsp-jsonrpc' 'python-requests' 'python-rich'  'python-ruamel-yaml'
-  'python-tomli' 'python-typing_extensions' 'python-urllib3' 'python-wcmatch' 'python-opentelemetry-api'
-  'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-instrumentation-requests'
-  'python-opentelemetry-sdk'
+  'python-tomli' 'python-typing_extensions' 'python-urllib3' 'python-wcmatch' 'python-pydantic'
+  'python-opentelemetry-api' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-sdk'
+  'python-opentelemetry-instrumentation-requests' 'python-starlette' 'python-mcp' 'python-fastmcp'
 )
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')
+
+_b2sum="45f40d72ffb4573c4bbfcec2c31c5c519f43a2595b3855c30b3bed5f8e53a4f7"
+_whl="semgrep-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_${CARCH}.manylinux2014_${CARCH}.whl"
 options=('!strip')
-source=("https://files.pythonhosted.org/packages/eb/ff/c3a34e5ed444a8a7f99b0b45e4446a785d2028a595a8710359e0e4eda8f9/semgrep-1.136.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl")
-sha256sums=('94dbd9a9f145ebd192441d5d826a1fba485f87496f353c5ba24ad2e16bc250ed')
+source=("https://files.pythonhosted.org/packages/${_b2sum:0:2}/${_b2sum:2:2}/${_b2sum:4}/${_whl}")
+sha512sums=('974f53da41333e33b88d9e1e2c5fed50c3bd2811205c3d9d324f52e7440da5703299b1c6f0504e140bf937bc68d12724584680ce0ae04eeacda2a459e6eb2ad6')
+
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-${pkgver}-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps "${_whl}"
+
   python -O -m compileall "${pkgdir}"
 }
