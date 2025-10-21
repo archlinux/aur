@@ -1,7 +1,7 @@
 pkgbase = imagescan
 	pkgdesc = EPSON Image Scan v3 front-end for scanners and all-in-ones
 	pkgver = 3.65.0
-	pkgrel = 16
+	pkgrel = 17
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -36,7 +36,9 @@ pkgbase = imagescan
 	optdepends = tesseract: OCR support
 	source = https://sources.archlinux.org/other/packages/imagescan/imagescan_3.65.0.orig.tar.gz
 	source = boost-1.74.patch
+	source = remove-boost-system.patch
 	sha256sums = e83704398c51a3166fd62c25b89e95cf6262e52f3dc6e627db3e7556e2220d64
 	sha256sums = e7da445c970a4a99b476b3bb994d0d18f327e0cd166cd87ba24fcd16abee7d49
+	sha256sums = 8cf3866d0ef316fed39e6480658a07fd3aa2c199f538f77c445c87faadd716ec
 
 pkgname = imagescan

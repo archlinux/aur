@@ -5,7 +5,7 @@
 pkgname=imagescan
 pkgver=3.65.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=16
+pkgrel=17
 pkgdesc='EPSON Image Scan v3 front-end for scanners and all-in-ones'
 arch=(x86_64)
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -40,16 +40,20 @@ makedepends=(boost
              systemd)
 optdepends=('tesseract: OCR support')
 source=(https://sources.archlinux.org/other/packages/imagescan/imagescan_$pkgver.orig.tar.gz
-        boost-1.74.patch)
+        boost-1.74.patch
+        remove-boost-system.patch)
 sha256sums=('e83704398c51a3166fd62c25b89e95cf6262e52f3dc6e627db3e7556e2220d64'
-            'e7da445c970a4a99b476b3bb994d0d18f327e0cd166cd87ba24fcd16abee7d49')
+            'e7da445c970a4a99b476b3bb994d0d18f327e0cd166cd87ba24fcd16abee7d49'
+            '8cf3866d0ef316fed39e6480658a07fd3aa2c199f538f77c445c87faadd716ec')
 
 prepare() {
   cd utsushi-$_utsushiver
 
   patch -Np1 -i ../boost-1.74.patch # Fix build with boost 1.74
+  patch -p0 -i ../remove-boost-system.patch
   rm -r upstream/boost # Remove vendored libraries
   sed -e 's|&& (SANE_MINOR == 0)||' -i sane/version.hpp # Fix build with sane 1.1
+  autoreconf -fi
 }
 
 build() {
