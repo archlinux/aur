@@ -1,6 +1,6 @@
 pkgbase = vutronmusic
 	pkgdesc = A high-quality third-party NetEase Cloud Music player that supports local music playback, offline playlists, and desktop lyrics.(Use system-wide electron)高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示、Linux-gnome桌面状态栏歌词显示.
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/stark81/VutronMusic
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = vutronmusic
 	makedepends = yarn
 	makedepends = git
 	depends = electron29
-	source = vutronmusic-2.6.0::git+https://github.com/stark81/VutronMusic#tag=v2.6.0
+	source = vutronmusic-2.7.0::git+https://github.com/stark81/VutronMusic#tag=v2.7.0
 	source = vutronmusic.sh
-	sha256sums = 817b6dd1f6c5474f2204c37d55fb3123739538822895365e5abb395f9de6a441
+	sha256sums = f2e1909b00b6a7d2fc4328b7ebcf2424deae8ad2d413baf1f32856b6a303416f
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = vutronmusic
