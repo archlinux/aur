@@ -1,8 +1,8 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=grayjay-git
 _appname=Grayjay
-pkgver=11.r0.gbf547a9
-pkgrel=1
+pkgver=11.r8.g0dc9daa
+pkgrel=2
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
@@ -91,9 +91,9 @@ package() {
     # Copy application files
     local _appdir="${pkgdir}/opt/grayjay"
     cp -va "${srcdir}/${_appname}/Grayjay.Desktop.CEF/bin/${_configuration}/net9.0/${_target}/publish/." "${_appdir}"
-    rm -v "${_appdir}/ffmpeg"
-    rm -v "${_appdir}/Portable"
-    rm -v "${_appdir}/libsodium.so"
+    rm -v "${_appdir}/ffmpeg" || true
+    rm -v "${_appdir}/Portable" || true
+    rm -v "${_appdir}/libsodium.so" || true
     find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
     install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
