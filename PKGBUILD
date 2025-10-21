@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-extension-text-clock
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple text clock for the GNOME Shell top panel"
 arch=('any')
 url="https://github.com/wtbenica/text-clock"
