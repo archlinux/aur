@@ -3,7 +3,7 @@
 _pkgauthor=n0-computer
 _pkgname=dumbpipe
 pkgname=${_pkgname}-bin
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc='Unix pipes between devices'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,11 +20,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[1]}.tar.gz")
-sha256sums=('c3dab8bea55155636539f43612aa19cb0be3999a57505fd02da046880a325845'
+sha256sums=('27866d975f6c8f87a37eb495a1164a435e067901a4f7fdb258025be86ec238bc'
             'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353'
             '7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60')
-sha256sums_x86_64=('67dbf65e986c7dd00c2c26b05d02e785cae5a3f901e1e7ab2fe2815eb42945ef')
-sha256sums_aarch64=('2a44c70654d9f42ced9f878895faa9a7e8ddd9d02ca23c542a3b2c140ad64ec1')
+sha256sums_x86_64=('cb185114266d0f37594336dde4188a2635301da24553abe18e2f8f01f8725f8c')
+sha256sums_aarch64=('e1ed856b954c0b863524e1d99be3044e35cd0a6169bdf5cdb5b1e271c671e62e')
 
 package() {
   cd "${srcdir}/" || exit
