@@ -1,11 +1,12 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils-git
-pkgver=17.r0.gdc9dd2ce
+pkgver=20.5.3.r29.g5a07ad64
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
 arch=('any')
-license=('custom:ISC')
+license=('ISC')
+#source=('git+https://github.com/AladW/aurutils#branch=release')  # LTS branch
 source=('git+https://github.com/AladW/aurutils')
 changelog=aurutils.changelog
 sha256sums=('SKIP')
@@ -20,7 +21,8 @@ optdepends=('bash-completion: bash completion'
             'ninja: aur-sync ninja support'
             'bat: view-delta example script'
             'git-delta: view-delta example script'
-            'python-srcinfo: sync-rebuild example script')
+            'python-srcinfo: sync-rebuild example script'
+            'expect: non-interactive usage')
 
 pkgver() {
     cd aurutils
