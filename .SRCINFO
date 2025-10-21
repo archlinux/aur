@@ -1,0 +1,14 @@
+pkgbase = ck-bin
+	pkgdesc = Local first semantic and hybrid BM25 grep/search tool for use by AI and humans
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/BeaconBay/ck
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	provides = ck
+	conflicts = ck
+	source = ck-bin-0.7.0.tar.gz::https://github.com/BeaconBay/ck/releases/download/0.7.0/ck-0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 066b7f3e7448608e36d792615a17cdc1a8ecce65dbd8b511621c9594d43b8cf1
+
+pkgname = ck-bin
