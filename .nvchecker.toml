@@ -1,0 +1,4 @@
+[python-lizard]
+source = "git"
+git = "https://github.com/terryyin/lizard.git"
+prefix = "v"
