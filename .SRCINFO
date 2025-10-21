@@ -1,0 +1,13 @@
+pkgbase = flapc
+	pkgdesc = The Flap compiler
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xyproto/flapc
+	arch = x86_64
+	license = BSD3
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/xyproto/flapc#tag=v1.0.0
+	b2sums = 9a24e2e95285aa66f351756b1801942dcfb7a69a216c1a0571f8cf46f5c5a22c0c49da82bfda569d057cb48ab8eee5797789f6b0f25b7e859fefd24fa1799621
+
+pkgname = flapc
