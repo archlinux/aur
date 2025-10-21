@@ -6,8 +6,8 @@ pkgbase = plasmasys
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-pyqt6
 	depends = python-psutil
+	depends = python-pyqt6
 	optdepends = wireless_tools: for displaying Wi-Fi SSID
 	source = git+https://github.com/asif54800-spec/plasmasys.git#tag=v1.0
 	sha256sums = SKIP
