@@ -17,7 +17,7 @@ build() {
   npm install
   npm run build
 
-  cargo build --release
+  npm run tauri build
 }
 
 package() {
