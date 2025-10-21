@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/note-gen-v$pkgver.tar.gz")
 sha256sums=('87b8a5af2c8596304890a275bbbba294a01aeb3040ea3dbb3fb12011425ee06b')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgname-v$pkgver"
     # 设置构建环境
     export npm_config_build_from_source=true
     export CARGO_HOME="$srcdir/.cargo"
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgname-v$pkgver"
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
 
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-    cd "$_pkgname-$pkgver/src-tauri"
+    cd "$pkgname-$pkgname-v$pkgver/src-tauri"
     export CARGO_HOME="$srcdir/.cargo"
 
     # 安装二进制文件
