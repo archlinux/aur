@@ -1,14 +1,14 @@
 # Maintainer: Violet (violetemailwastaken@gmail.com)
 pkgname=cfgprf
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 epoch=
-pkgdesc="tool for exporting and importing configs, packages and AUR packages."
+pkgdesc="tool for exporting and importing dotfiles, packages and AUR packages."
 arch=(any)
 url=""
 license=('GPL-3.0-or-later')
 groups=()
-depends=('rsync' 'tar')
+depends=('rsync' 'tar', 'getopt')
 makedepends=()
 checkdepends=()
 optdepends=('yay: working with AUR packages' 'paru: working with AUR packages')

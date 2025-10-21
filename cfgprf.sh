@@ -1,8 +1,15 @@
 #!/bin/bash
 
-POSITIONAL_ARGS=()
+OPTS=$(getopt -o hiepcAaysP: --long help,import,export,packages,configs,aur,all,yes,follow-symlinks,profile: -n 'cfgprf' -- "$@")
 
-while [[ $# -gt 0 ]]; do
+if [ $? -ne 0 ]; then
+  echo "failed to parse options" >&2
+  exit 1
+fi
+
+eval set -- "$OPTS"
+
+while true; do
   case $1 in
     -h|--help)
       HELP=1
@@ -37,18 +44,22 @@ while [[ $# -gt 0 ]]; do
       CONFIRM=1
       shift # past argument
       ;;
+    -s|--follow-symlinks)
+      FOLLOWSYMLINKS=1
+      shift # past argument
+      ;;
     -P|--profile)
       PROFILE="$2"
       shift # past argument
       shift # past value
       ;;
-    -*|--*)
-      echo "error: unknown option $1"
-      exit 1
+    --)
+      shift
+      break
       ;;
     *)
-      POSITIONAL_ARGS+=("$1") # save positional arg
-      shift # past argument
+      echo "error idk"
+      exit 1
       ;;
   esac
 done
@@ -58,29 +69,34 @@ help() {
     echo
     echo "  cfgprf"
     echo
-    echo "  a tool to easily save packages and configs over multiple machines"
+    echo "  a tool to easily save packages and dotfiles over multiple machines"
     echo "  really useful for reinstalling, which is exactly why i made it"
     echo
     echo "  primary commands:"
     echo "      -e | --export: export mode"
-    echo "          -P | --profile: REQUIRED. path to file to write to, preferrably .cfgprf"
+    echo "          -P | --profile {path}: REQUIRED. path to file to write to, preferrably .cfgprf"
     echo "          -p | --packages: export packages with pacman"
     echo "          -A | --aur: export AUR packages with yay or paru"
     echo "          -c | --configs: export files in ~/.config/"
-    echo "          -a | --all: shorthard for --packages and --configs together. not having either will default to this"
+    echo "          -a | --all: shorthard for --packages, --aur and --configs together. not having either will default to this"
+    echo "          -s | --follow-symlinks: will follow symlinks, export actual files"
+    echo
     echo "      -i | --import: import mode"
-    echo "          -P | --profile: REQUIRED. path to file to import from, usually .cfgprf"
+    echo "          -P | --profile {path}: REQUIRED. path to file to import from, usually .cfgprf"
     echo "          -p | --packages: import packages with pacman"
     echo "          -A | --aur: import AUR packages with yay or paru"
     echo "          -c | --configs: import files to ~/.config/"
     echo "          -a | --all: shorthard for --packages, --aur and --configs together. not having either will default to this"
     echo "          -y | --yes: will skip confirmation"
+    echo "          -s | --follow-symlinks: will not override symlinks in ~/.config/ if they're a directory, will follow them and put the files there"
     echo
     echo "  other commands:"
     echo "      -h | --help: show this menu"
     echo
     echo "  example usage:"
     echo "      cfgprf --export --packages --configs --profile ~/myconfig.cfgprf"
+    echo "      or"
+    echo "      cfgprf -epcP ~/myconfig.cfgprf"
     echo
 }
 
@@ -110,7 +126,7 @@ elif [ $MODE == "ERROR" ]; then
     exit 1
 fi
 
-# default to --all if neither --packages or --configs
+# default to --all if neither --packages or --configs or --aur
 if ! [ $PACKAGES ] && ! [ $CONFIGS ] && ! [ $AUR ]; then
     PACKAGES=1
     AUR=1
@@ -129,16 +145,19 @@ if [ $MODE == "IMPORT" ]; then
 
     if ! [ $CONFIRM ]; then
 
-        if [ $PACKAGES ] && [ $CONFIGS ]; then
-            MESSAGE="are you sure you want to import configs and packages? the configs will override yours, and packages will be installed."
-        elif [ $PACKAGES ]; then
-            MESSAGE="are you sure you want to import packages? the packages will be installed using pacman."
-        elif [ $CONFIGS ]; then
-            MESSAGE="are you sure you want to import configs? the configs will override yours, so it is advised to back them up if you don't want to get rid of them."
+        echo
+        echo "are you sure you want to import the following:"
+        if [ $PACKAGES ]; then
+            echo "  packages, will be installed using pacman"
+        fi
+        if [ $AUR ]; then
+            echo "  AUR packages, will be installed using yay or paru"
+        fi
+        if [ $CONFIGS ]; then
+            echo "  configs, will override your dotfiles in ~/.config"
         fi
 
-        echo
-        read -p "${MESSAGE} (Y/n): " CONFIRM
+        read -p "(Y/n): " CONFIRM
 
         if [ "${CONFIRM,,}" != "y" ]; then
             echo "aborting"
@@ -153,42 +172,64 @@ if [ $MODE == "IMPORT" ]; then
 
     if [ $PACKAGES ]; then
 
-        echo "importing packages"
+        if tar -tf $PROFILE packages >/dev/null 2>&1; then
 
-        PACKAGELIST= tar -xf $PROFILE packages -O
+            echo "importing packages"
 
-        sudo pacman -S $PACKAGELIST
+            PACKAGELIST= tar -xf $PROFILE packages -O
+
+            sudo pacman -S $PACKAGELIST
+
+        else
+            echo "skipping importing packages because profile does not have package info"
+        fi
 
     fi
 
     if [ $AUR ]; then
 
-        echo "importing AUR packages"
+        if tar -tf $PROFILE aur >/dev/null 2>&1; then
 
-        PACKAGELIST= tar -xf $PROFILE aur -O
+            echo "importing AUR packages"
 
-        if command -v yay >/dev/null; then
-            yay -S $PACKAGELIST
-        elif command -v paru >/dev/null; then
-            paru -S $PACKAGELIST
+            PACKAGELIST= tar -xf $PROFILE aur -O
+
+            if command -v yay >/dev/null; then
+                yay -S $PACKAGELIST
+            elif command -v paru >/dev/null; then
+                paru -S $PACKAGELIST
+            else
+                echo "error: yay nor paru found"
+            fi
+
         else
-            echo "error: yay nor paru found"
+            echo "skipping importing AUR packages because profile does not have package info"
         fi
 
     fi
 
     if [ $CONFIGS ]; then
 
-        echo "importing configs"
+        if tar -tf $PROFILE config/ >/dev/null 2>&1; then
 
-        TEMP=$(mktemp -d)
-        cd $TEMP
+            echo "importing configs"
 
-        tar -xf $PROFILE &>/dev/null
+            TEMP=$(mktemp -d)
+            cd $TEMP
 
-        rsync -a "config/" "$HOME/.config/" >/dev/null
+            tar -xf $PROFILE &>/dev/null
 
-        rm -r $TEMP
+            if [ $FOLLOWSYMLINKS ]; then
+                rsync -aK "config/" "$HOME/.config/" >/dev/null
+            else
+                rsync -a "config/" "$HOME/.config/" >/dev/null
+            fi
+
+            rm -r $TEMP
+
+        else
+            echo "skipping importing configs because profile does not have config info"
+        fi
 
     fi
 
@@ -202,8 +243,12 @@ elif [ $MODE == "EXPORT" ]; then
     echo
     echo "exporting"
 
-    # empty file cause don't wanna append nuh uh
-    > $PROFILE
+    if  [ -f $PROFILE ]; then
+        > $PROFILE
+    else
+        touch $PROFILE;
+    fi
+
     TEMP=$(mktemp -d)
 
     cd $TEMP
@@ -251,7 +296,11 @@ elif [ $MODE == "EXPORT" ]; then
 
         rsync "${EXCLUDE[@]}" -a "$HOME/.config/" "config/"
 
-        tar -rf $PROFILE "config"
+        if [ $FOLLOWSYMLINKS ]; then
+            tar -rhf $PROFILE "config"
+        else
+            tar -rf $PROFILE "config"
+        fi
 
     fi
 
