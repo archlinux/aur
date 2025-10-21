@@ -14,14 +14,14 @@
 # https://github.com/NVIDIA/DALI/blob/4d95a057199a09590490b2d99ae0b9948655e07d/internal_tools/stub_generator/nvcuvid.json#L4-L5
 
 # update when available in pytorch
-_CUDA_ARCH_LIST="7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;11.0;12.0;12.1;12.1+PTX"
-_CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;110;120;121;121-virtual"
+_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;12.0;12.1;12.1+PTX"
+_CUDA_ARCH_LIST_CMAKE="52;53;60;61;62;70;72;75;80;86;87;89;90;100;103;120;121;121-virtual"
 _pkgname=vision
-pkgbase='torchvision'
-pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
+pkgbase='torchvision-cuda12.9'
+pkgname=('torchvision-cuda12.9' 'python-torchvision-cuda12.9')
 pkgver=0.23.0
-pkgrel=5
-pkgdesc='Datasets, transforms, and models specific to computer vision'
+pkgrel=1
+pkgdesc='Datasets, transforms, and models specific to computer vision (Maxwell/Pascal/Volta support)'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
 license=('BSD-3-Clause')
@@ -40,10 +40,10 @@ optdepends=(
 makedepends=(
   cmake
   ninja
-  cuda
-  cudnn
+  cuda-12.9
+  cudnn9.10-cuda12.9
   ffmpeg
-  python-pytorch-opt-cuda
+  python-pytorch-opt-cuda12.9
   python-build
   python-installer
   python-setuptools
@@ -78,11 +78,7 @@ prepare() {
   patch -p1 -i "${srcdir}"/ffmpeg-8.patch
 
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
-  cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-${pkgver}"
-  # need this to disable CUDA
-  cd "${srcdir}/python-${_pkgname}-${pkgver}"
-  sed -e 's#torch.cuda.is_available()#False#' -i setup.py
-  cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
+  mv "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
 }
 
 build() {
@@ -102,26 +98,11 @@ build() {
     -DUSE_SYSTEM_NVTX=ON
   )
 
-  echo "Building torchvision (CPU version)"
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  local _cpu_args=("${_common_cmake[@]}" -DWITH_CUDA=OFF)
-  cmake "${_cpu_args[@]}"
-  cmake --build build
-
   echo "Building torchvision (GPU version with CUDA)"
   cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
   local _gpu_args=("${_common_cmake[@]}" -DWITH_CUDA=ON)
   cmake "${_gpu_args[@]}"
   cmake --build build
-
-  # build python-torchvision
-  echo "Building torchvision python bindings (CPU version)"
-  cd "${srcdir}/python-${_pkgname}-${pkgver}"
-  WITH_CUDA=0 \
-  FORCE_CUDA=0 \
-  TORCHVISION_USE_NVJPEG=0 \
-  python setup.py build
-
 
   # build python-torchvision-cuda
   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
@@ -146,18 +127,10 @@ build() {
 #   python -c "from torchvision.io import VideoReader"
 # }
 
-package_python-torchvision() {
-  depends+=('python-pytorch')
-
-  cd "${srcdir}/python-${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-}
-
-package_python-torchvision-cuda() {
+package_python-torchvision-cuda12.9() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (with GPU support)'
-  depends+=('python-pytorch-cuda')
-  provides+=('python-torchvision')
+  depends+=('python-pytorch-cuda12.9')
+  provides+=('python-torchvision' 'python-torchvision-cuda')
   conflicts+=('python-torchvision')
 
   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
@@ -169,18 +142,10 @@ package_python-torchvision-cuda() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_torchvision() {
-  pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only)'
-  depends+=('python-pytorch')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" cmake --install build
-  install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-}
-package_torchvision-cuda() {
+package_torchvision-cuda12.9() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only with GPU support)'
-  depends+=('python-pytorch-cuda')
-  provides+=('torchvision')
+  depends+=('python-pytorch-cuda12.9')
+  provides+=('torchvision' 'torchvision-cuda')
   conflicts+=('torchvision')
 
   cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
