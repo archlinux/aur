@@ -1,0 +1,16 @@
+pkgbase = python-sudachipy
+	pkgdesc = Python version of Sudachi, the Japanese Morphological Analyzer
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://worksapplications.github.io/Sudachi/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-rust
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/86/eb/ceadfb1e9178332839a75b91393765b135ab870fad9230d47c201c931607/sudachipy-0.6.10.tar.gz
+	sha256sums = b8910a4610de98b2c3cb6dc3362fea93e3ba5059f1eb445a68baa9585278f31b
+
+pkgname = python-sudachipy
