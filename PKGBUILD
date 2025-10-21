@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=belcard
-pkgver=5.3.4
-pkgrel=2
+pkgver=5.4.50
+pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
 url="http://www.linphone.org/"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=("belr>=$pkgver" 'gcc-libs')
 makedepends=('cmake')
 source=("belcard-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belcard/archive/$pkgver.tar.gz")
-sha256sums=('6c846b1c4be8a48e96a060f540e80551a2c678f2ecc1781384d3711ae8f2586f')
+sha256sums=('42fbadbc02dcb4d13772c97abf83ac97ad2aac768b1dec27cf42096dd5e37e41')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
