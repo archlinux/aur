@@ -1,7 +1,7 @@
 pkgbase = coreutils-uutils
-	pkgdesc = (Experimental) Use uutils as system core utilities
+	pkgdesc = Use uutils as system core utilities
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/uutils/coreutils
 	arch = any
 	license = MIT

@@ -2,8 +2,8 @@
 # Contributor: kj_sh604
 pkgname=coreutils-uutils
 pkgver=0.2.2
-pkgrel=3
-pkgdesc='(Experimental) Use uutils as system core utilities'
+pkgrel=4
+pkgdesc='Use uutils as system core utilities'
 arch=('any')
 license=('MIT')
 url=https://github.com/uutils/coreutils
@@ -12,7 +12,7 @@ provides=(coreutils b3sum)
 depends=(uutils-coreutils) #=$pkgver is safer
 
 package() {
-  install -d "$pkgdir"/usr/{bin,lib/coreutils,share/{man/man1,zsh/site-functions,fish/vendor_completions.d}}
+  install -d "$pkgdir"/usr/{bin,lib/coreutils,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
   ln -sf /usr/lib/${depends[0]}/libstdbuf.so -t lib/coreutils
   ln -sf uu-coreutils bin/\[ # completion err
@@ -25,4 +25,5 @@ package() {
     echo -e "#compdef ${f}=uu-${f}\n_uu-${f}" > share/zsh/site-functions/_$f
     echo "complete -c ${f} -w uu-${f}" > share/fish/vendor_completions.d/${f}.fish
   done
+  ln -sf /usr/share/licenses/uutils-coreutils/LICENSE -t share/licenses/$pkgname
 }
