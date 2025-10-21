@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=laradumps-bin
 _pkgname=LaraDumps
-pkgver=4.8.2
+pkgver=4.9.0
 _electronversion=38
 pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/laradumps/app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9b44f88fc0b74d4e98ad79e00517ddb6128c4bfe83bc791cfa9f20b69a98cb88'
+sha256sums=('3a675a911565ed54628440f3839cd45c2193ca0793e7a9faebfd7431b2328986'
             '012534ec9b9548dda44757815a0bf415a4d7d4df66a2b8dfbf25118c370c6649'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -36,6 +36,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
