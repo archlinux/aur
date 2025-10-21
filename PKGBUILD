@@ -7,32 +7,32 @@ pkgdesc="Drag[en]gine game engine, launcher and editor"
 arch=('x86_64')
 url="https://dragondreams.ch/index.php/dragengine"
 license=('MIT')
-depends=('libx11'
-	'libxrandr'
-	'libglvnd'
-	'libxi'
-	'libxft'
-	'libjpeg'
-	'openal'
-	'libogg'
-	'libvorbis'
-	'libtheora'
-	'hidapi'
-	'libevdev'
-	'soundtouch'
-	'libwebp'
-	'libvpx'
-	'freetype2'
-	'libpng'
-	'openxr'
-	'xdg-utils')
-makedepends=('git'
-	'gcc'
-	'scons'
-	'cmake'
-	'nasm'
-	'patchelf'
-	'glslang')
+depends=('freetype2'
+         'hidapi'
+         'libevdev'
+         'libglvnd'
+         'libjpeg'
+         'libogg'
+         'libpng'
+         'libtheora'
+         'libvorbis'
+         'libvpx'
+         'libwebp'
+         'libx11'
+         'libxft'
+         'libxi'
+         'libxrandr'
+         'openal'
+         'openxr'
+         'soundtouch'
+         'xdg-utils')
+makedepends=('cmake'
+             'gcc'
+             'git'
+             'glslang'
+             'nasm'
+             'patchelf'
+             'scons')
 changelog="Changelog"
 # HEAD until arch package is properly set up
 _commit='7f796cbbef4747b0e84ebce4ce68ec2adbcef331'
@@ -40,7 +40,8 @@ source=("${pkgname}-${pkgver}::git+https://github.com/LordOfDragons/dragengine.g
 	'custom.py')
 # makepkg -g
 sha256sums=('cfd2e2cb76bb56790b08105adc245df3cd64b92ebc035eb2e1cea9cb19b38bb4'
-	'ee9228918cd07e17e66ac9a4b1eab1d682678df57d3d3de1e2d3abd89004bdd3')
+            'ee9228918cd07e17e66ac9a4b1eab1d682678df57d3d3de1e2d3abd89004bdd3')
+# Roland Plüss (roland@dragondreams.ch)
 validpgpkeys=("E0ECD22F5F70777588450034446C9C667CFC1DF3")
 
 build() {
@@ -56,7 +57,6 @@ package_dragengine() {
 	pkgdesc="Drag[en]gine game engine and launcher"
 	provides=('libdragengine.so'
 		'libdelauncher.so')
-	#install="dragengine.install"
 	
 	cd "dragengine-$pkgver"
 	scons -j 8 --install-sandbox="$(realpath "$pkgdir")" \
@@ -67,6 +67,12 @@ package_dragengine() {
 		dragengine_develop \
 		delauncher_develop
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/dragengine/LICENSE
+	
+	# fixing manifest files commented out since striping libraries happens
+	# after package_* call nullifying any attempt to fix the manifests.
+	# instead with_engine_module_checks='no' is used in "custom.py" to
+	# disable module checking altogether
+	
 	#for f in `find "$pkgdir"/usr/lib/dragengine/modules -type f -name "module.xml"`; do
 	#	echo "Fix Manifest: $f"
 	#	/usr/bin/python3 "$srcdir"/fixManifests.py "$f"
@@ -85,6 +91,12 @@ package_deigde() {
 		deigde_shared_develop
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/deigde/LICENSE
 	rm -rf "$pkgdir"/dragengine-import-export
+	
+	# fixing manifest files commented out since striping libraries happens
+	# after package_* call nullifying any attempt to fix the manifests.
+	# instead with_engine_module_checks='no' is used in "custom.py" to
+	# disable module checking altogether
+	
 	#for f in `find "$pkgdir"/usr/lib/deigde/modules -type f -name "module.xml"`; do
 	#	echo "Fix Manifest: $f"
 	#	/usr/bin/python3 "$srcdir"/fixManifests.py "$f"
