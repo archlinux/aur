@@ -1,36 +1,20 @@
 # Maintainer: steeltitanium <steeltitanium1 at gmail dot com>
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
-# Variables which can be customized at build time. Use env or export to set
-
-## Discord Rich Presence integration
-## Required for game invites.
-if [ -z ${_use_discordrpc+x} ]; then
-  # Automatically enable discord rpc integration if `discord-rpc-git` is installed
-  if (pacman -Q discord-rpc-git >/dev/null); then
-    _use_discordrpc=y
-  else
-    _use_discordrpc=n
-  fi
-fi
 # Don't compress with UPX, don't dump symbols to speed up compiling
 _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 pkgname=srb2kart
 pkgver=1.6
 _dataver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 url='https://mb.srb2.org/showthread.php?t=43708'
-depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl')
+depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl' 'discord-rpc')
 makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
-
-if [ "${_use_discordrpc}" = "y" ]; then
-  depends+=('discord-rpc-git')
-fi
 
 options=(!buildflags)
 source=("git+https://github.com/STJr/Kart-Public.git#tag=v$pkgver"
@@ -45,9 +29,8 @@ build() {
 
   [ "$CARCH" == "x86_64" -o "$CARCH" == "aarch64" ] && _buildflags+="LINUX64=1 " || _buildflags+="LINUX=1 "
 
-  if [ "${_use_discordrpc}" = "y" ]; then
-    _buildflags+="HAVE_DISCORDRPC=1"
-  fi
+  export CFLAGS="${CFLAGS} -std=gnu99"
+  _buildflags+="HAVE_DISCORDRPC=1"
 
   echo "Build options: $_buildflags"
   make $_buildflags
