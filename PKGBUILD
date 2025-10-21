@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=torch
-_pkgver=0.16.0
+_pkgver=0.16.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Neural Networks with 'GPU' Acceleration"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,17 +35,9 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix-build.patch")
-md5sums=('552e35de8a96da48d705a819b6f92a96'
-         '539874681ec47604d54ac506a0f7a14d')
-b2sums=('f222349ba2d95e223c0756abc9dc7e7d1099d7d219d296d7fd1aa466849b8a36664b9760f8435bc3e6a026bac39abf07a9b499bcccac6e8cc47c172dc8536835'
-        '81629ea7a33491bf8dcec19019d97b90d838559adb023cde8e1bca1165bba58c9d48fb931300f51a717c0b048fd13750b3fdec16c416ed43e1de9296d146ee6e')
-
-prepare() {
-  # remove unnecessary torch.so library copy
-  patch -Np1 -i fix-build.patch
-}
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('5deb6bf5ca67bd649d77e2919c212149')
+b2sums=('ff6b668dee6ae9f386c11c9cdd99ab092c28045d148ebdaf3de6bd1ef89a5be51756b7627b49e19b7bcef5b1c0a3ea2cff4c4fc3e1769ee887c7e4683ccecc95')
 
 build() {
   mkdir build
