@@ -4,8 +4,8 @@ _sdk=9.0
 _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.79.2
-pkgrel=2
+pkgver=0.80.0
+pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
 url="https://ionide.io/Tools/fsac.html"
@@ -26,9 +26,9 @@ source=("dotnet-tool-common.sh"
         "${_url}/releases/download/v${pkgver}/${_Name}.${pkgver}.nupkg"
         "${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-LICENSE.md::${_url}/raw/refs/tags/v${pkgver}/LICENSE.md")
-sha256sums=('b3329b46f618290380c6b9d7436fa9ca19efc269af5a8b4fb06263daaaaa5ad1'
-            '3b35f1eb62afc3ef014f238945c86a88399333f81798b3b9f3024394c465b6e5'
-            '9cf7b4689f1dee6429db489b537efe7d5f44aa4d7f06c1d22e9e4d0e769bd1dd'
+sha256sums=('8569a77543f4db3ce10517dd1614bc1d7200f8e746370c59ceb8b58cff267f8f'
+            'b9f4aaa1c1be81885687872ba31e3c8090272c2bf63ccb9b72fd41eccdf03d8c'
+            'eba58f08aa35c96ddf2616d809256306bebf9def201e3fe485d9b9332cd12b07'
             '1ee6b06043c1f7eca730ecb0e4d2272c451077f6c96ff66fdd252d29843ba482')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
@@ -39,7 +39,7 @@ elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
 prepare() {
   cd "${srcdir}"
   sed -e "s/@@DOTNET_TOOL_NAME@@/${_pkgname}/g" \
-      -e "s/@@DOTNET_TOOL_DLL@@/${_pkgname}.dll/g" \
+      -e "s/@@DOTNET_TOOL_DLL@@/${_pkgname}/g" \
       -i "dotnet-tool-common.sh"
 
   cd "tools/net${_sdk}/any/runtimes"
