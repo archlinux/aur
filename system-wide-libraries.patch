@@ -1,15 +1,15 @@
-diff --unified --recursive --text python-simplification.orig/setup.py python-simplification.new/setup.py
---- python-simplification.orig/setup.py	2023-11-14 17:56:40.000000000 +0200
-+++ python-simplification.new/setup.py	2023-12-28 14:42:17.254159069 +0200
-@@ -6,39 +6,19 @@
+diff --unified --recursive --text a/setup.py b/setup.py
+--- a/setup.py	2025-10-21 00:39:37.000000000 +0200
++++ b/setup.py	2025-10-21 10:31:15.658954308 +0200
+@@ -5,40 +5,19 @@
  Created by Stephan Hügel on 2016-07-25
  """
  
 -import sys
- from setuptools import setup, Extension
+-
  import numpy
  from Cython.Build import cythonize
- 
+ from setuptools import Extension, setup
  
 -# Set dynamic RPATH differently, depending on platform
 -ldirs = []
@@ -27,8 +27,9 @@ diff --unified --recursive --text python-simplification.orig/setup.py python-sim
 -if sys.platform == "win32":
 -    ddirs = ["src/simplification/header.h"]
 -    platform_lib = "rdp.dll"
+-ddirs.append("header.h")
 -
--
+ 
  extension = Extension(
      "simplification.cutil",
      sources=["src/simplification/cutil.pyx"],
@@ -44,7 +45,7 @@ diff --unified --recursive --text python-simplification.orig/setup.py python-sim
  )
  
  extensions = cythonize(
-@@ -50,7 +30,7 @@
+@@ -50,7 +29,7 @@
  
  setup(
      package_data={
@@ -53,13 +54,23 @@ diff --unified --recursive --text python-simplification.orig/setup.py python-sim
      },
      ext_modules=[extension],
  )
-diff --unified --recursive --text python-simplification.orig/src/simplification/util.py python-simplification.new/src/simplification/util.py
---- python-simplification.orig/src/simplification/util.py	2023-11-14 17:56:40.000000000 +0200
-+++ python-simplification.new/src/simplification/util.py	2023-12-28 14:41:49.874331441 +0200
-@@ -58,15 +58,7 @@
+diff --unified --recursive --text a/src/simplification/util.py b/src/simplification/util.py
+--- a/src/simplification/util.py	2025-10-21 00:39:37.000000000 +0200
++++ b/src/simplification/util.py	2025-10-21 10:32:44.481345820 +0200
+@@ -24,25 +24,7 @@
+ extension = {"darwin": ".dylib", "win32": ".dll"}.get(platform, ".so")
+ fpath = {"darwin": "", "win32": ""}.get(platform, os.path.join(file_path, ".libs"))
  
-     py3 = False
- 
+-# Python 3 check
+-if version_info > (3, 0):
+-    from subprocess import getoutput as spop
+-
+-    py3 = True
+-else:
+-    from subprocess import check_output as spop
+-
+-    py3 = False
+-
 -try:
 -    lib = cdll.LoadLibrary(os.path.join(file_path, prefix + "rdp" + extension))
 -except OSError:

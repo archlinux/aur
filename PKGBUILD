@@ -5,8 +5,8 @@ _name=${pkgname#python-}
 pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Whyatt"
 url="https://github.com/urschrei/simplification"
 
-pkgver=0.7.13
-pkgrel=2
+pkgver=0.7.14
+pkgrel=1
 
 arch=("any")
 license=("custom:Blue-Oak-Model-License-1.0.0")
@@ -32,8 +32,10 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "system-wide-libraries.patch"
 )
-b2sums=("352f82008f64ed5c21edb5400ad26150ef45b846bd45114016d9a159f2a800d7faa5be36911af90935d5d4790e4d9b119ff899c14db37d94c0b174793f7afeca"
-        "2f3cfb66346c66f50f7c1d8cd832324bb9337cca9676d92e4dc8ca1e0d967a02e6fbc253a1abf865404c293cb7b3c87084685080aea8f701fe8d38ebf78e0e33")
+b2sums=(
+    "c3dd379a6d2f9c9c7c7b959c36f888d32ef5024c72af142952eb9b1ee3ef13ffb9169406198af6f86d7005ac74f28cfd43ef3caa9d79d1cd5712c17f37e59213"
+    "dabc6dbf3b1b18a87d6118b8a930ef489f82c39d133f601d7a997241e1442f4f08b22ab58af8507b5d569d0bda9aed5eaea28b96fbe35ed731eee4e92ccce608"
+)
 
 prepare() {
     cd "${srcdir}"/${_name}-${pkgver}
