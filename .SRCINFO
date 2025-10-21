@@ -12,7 +12,6 @@ pkgbase = orca-slicer-bin
 	depends = cairo
 	depends = gtk3
 	depends = libsoup
-	depends = webkit2gtk
 	depends = gstreamer
 	depends = openvdb
 	depends = wayland
