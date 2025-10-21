@@ -1,0 +1,20 @@
+pkgbase = swob-git
+	pkgdesc = Volume and brightness controls for wayland, using wob
+	pkgver = r23.7898ea7
+	pkgrel = 1
+	url = https://git.sr.ht/~blueingreen/swob
+	arch = any
+	license = GPL-3.0-or-later
+	depends = sh
+	depends = coreutils
+	depends = sed
+	depends = wob
+	depends = alsa-utils
+	depends = brightnessctl
+	optdepends = wireplumber: wpctl, for pipewire support
+	optdepends = libpulse: pactl, for pulseaudio support
+	provides = swob
+	source = swob::git+https://git.sr.ht/~blueingreen/swob
+	b2sums = SKIP
+
+pkgname = swob-git
