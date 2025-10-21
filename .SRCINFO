@@ -1,21 +1,21 @@
 pkgbase = obsession-git
 	pkgdesc = A Hotline client written in Qt featuring Shift-JIS support and other stuff.
-	pkgver = 109.05.alpha.r0.g1f0c0a3
-	pkgrel = 3
+	pkgver = 109.05.alpha.r16.g135feb6
+	pkgrel = 1
 	url = https://github.com/tjohnman/Obsession
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = patch
 	makedepends = make
-	depends = qt5-base
-	depends = qt5-multimedia
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-multimedia
 	provides = Obsession
-	source = git+https://github.com/tjohnman/Obsession.git
-	source = qt5.patch
+	options = !lto
+	source = git+https://github.com/tjohnman/Obsession.git#branch=qt6
 	source = obsession.desktop
 	sha256sums = SKIP
-	sha256sums = e81f88718796660d05489397a8008ca343d7445107b71453101ca9ca55529c8e
 	sha256sums = 1d6692f0add24ca7e8eb246035a5ee730453505c4f2868b51ec71b6d3fa7a14c
 
 pkgname = obsession-git

@@ -1,21 +1,20 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=obsession-git
-pkgver=109.05.alpha.r0.g1f0c0a3
-pkgrel=3
+pkgver=109.05.alpha.r16.g135feb6
+pkgrel=1
 pkgdesc="A Hotline client written in Qt featuring Shift-JIS support and other stuff."
 arch=('i686' 'x86_64')
 url="https://github.com/tjohnman/Obsession"
-depends=('qt5-base' 'qt5-multimedia')
-makedepends=('patch' 'make')
+depends=('qt6-base' 'qt6-multimedia')
+makedepends=('patch' 'make' 'cmake')
 license=('GPL3')
-source=('git+https://github.com/tjohnman/Obsession.git'
-        'qt5.patch'
+source=('git+https://github.com/tjohnman/Obsession.git#branch=qt6'
         'obsession.desktop')
 sha256sums=('SKIP'
-            'e81f88718796660d05489397a8008ca343d7445107b71453101ca9ca55529c8e'
             '1d6692f0add24ca7e8eb246035a5ee730453505c4f2868b51ec71b6d3fa7a14c')
 provides=('Obsession')
+options=('!lto')
 
 pkgver() {
   cd "Obsession"
@@ -24,10 +23,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/Obsession"
-  patch -p1 < "$srcdir/qt5.patch"
   mkdir -p build
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM='3.5' -S . -B build
   cd build
-  qmake -config release ../Obsession.pro
   make
 }
 
