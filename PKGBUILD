@@ -2,7 +2,7 @@
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.6.r42.gd25ded8
+pkgver=1.9.6.r52.g53b21fc
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
@@ -31,10 +31,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/gnunn1/tilix.git'
-        "https://github.com/gnunn1/tilix/pull/2222.patch")
-sha256sums=('SKIP'
-            'e56da87ae09124a229b5641de5a477351db9656063def9ad07f42b51735bd826')
+source=('git+https://github.com/gnunn1/tilix.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -47,9 +45,6 @@ prepare() {
   # Patch Align to GtkAlign, due to conflicting symbols
   sed -i 's/(Align\./(GtkAlign./g' source/gx/tilix/prefeditor/prefdialog.d
   sed -i 's/(Align\./(GtkAlign./g' source/gx/tilix/terminal/terminal.d
-
-  # Remove unneeded libunwind dep
-  patch -Np1 -i ../2222.patch
 }
 
 build() {
