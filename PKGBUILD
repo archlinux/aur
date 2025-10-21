@@ -1,7 +1,7 @@
 # Contributor: fitu996 <fitu996 at gmail dot com>
 
 pkgname=ffqueue-git
-pkgver=1.7.67.r0.g15db4f2
+pkgver=1.7.69.r5.g548736a
 pkgrel=1
 pkgdesc='Graphical user interface for FFMpeg with comprehensive support for basic and advances features'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname/"
-    git describe --long --tags | sed 's/-/.r/;s/-/./g'
+    git describe --long --tags | sed 's/^[vV]//;s/-/.r/;s/-/./g'
 }
 
 build() {
