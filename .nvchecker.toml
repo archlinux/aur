@@ -1,0 +1,3 @@
+[obs-service-set_version]
+source = "git"
+git = "https://github.com/openSUSE/obs-service-set_version.git"
