@@ -3,7 +3,7 @@
 
 _basename=openvpn
 pkgname=openvpn-aws
-pkgver=2.6.14
+pkgver=2.6.15
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) with patches to support AWS Client VPN'
 arch=('x86_64')
@@ -24,7 +24,7 @@ validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security M
 source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         '0001-unprivileged.patch'
         'openvpn-v2.6.14-aws.patch')
-sha256sums=('d8d156ddde53a011740a1fc23929b5caca3db42cd6b94e43e8ddaeb8608bc212'
+sha256sums=('54eace27fd4ebc94ea6c4f0c67d49ce2044d0006a76e0dab03f8790364162c62'
             'bb47b298b59300a4282fc4d0b69dcdd8dcfb72d2ff2f702f96ea369a8381456a'
             '2ccc958430a26e06b4324465fbe7fc00dff8ef7eea0f5958915e5080463ed8f3')
 
