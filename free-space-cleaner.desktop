@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Barones Free Space Cleaner
+Comment=Securely wipe free space and clean filesystem metadata
+Exec=/usr/bin/barones-free-space-cleaner
+Icon=barones-free-space-cleaner
+Terminal=false
+Type=Application
+Categories=System;Utility;
