@@ -5,7 +5,7 @@
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
 pkgver=0.71.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
 url="https://github.com/anthropics/anthropic-sdk-python"
@@ -51,6 +51,11 @@ sha256sums=('985f029ec58b36891e11daea2596398c5385aa49686380ab4f294da164b6027f')
 prepare() {
   cd $_pkgname-$pkgver
   sed -i 's/hatchling==/hatchling>=/' pyproject.toml
+  sed -i '/^filterwarnings = \[/,/^]/d' pyproject.toml
+  # The following attempts to avoid pytest benchmarking utilities as suggested by
+  # AUR's comments section failed
+  #sed -i 's|^\(addopts *= *\).*|\1"--benchmark-skip --tb=short -n auto"|' pyproject.toml
+  #sed -i 's|^\(addopts *= *\).*|\1"--benchmark-skip --tb=short -n auto"|' pyproject.toml
 }
 build() {
   cd $_pkgname-$pkgver
