@@ -1,0 +1,29 @@
+[Unit]
+Description=Betula Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/betula /var/lib/betula/links.betula
+User=betula
+Group=betula
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+DevicePolicy=closed
+ProtectSystem=strict
+ReadWritePaths=/var/lib/betula/
+ProtectHome=read-only
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

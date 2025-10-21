@@ -1,47 +1,46 @@
-# Maintainer: Lobo Torres <lobo@quiltro.org>
+# Maintainer: Luca Weiss <aur (at) lucaweiss (dot) eu>
+# Contributor: Lobo Torres <lobo@quiltro.org>
 # -*- mode: sh -*-
 
 pkgname='betula'
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted personal link collection manager'
 arch=('aarch64' 'armv7h' 'x86_64')
-url="https://git.sr.ht/~bouncepaw/$pkgname"
+url="https://git.sr.ht/~bouncepaw/betula"
 license=('AGPL3')
 depends=('sqlite' 'glibc')
 makedepends=('go')
-source=("v$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-options=('lto')
+source=("v$pkgver.tar.gz::https://git.sr.ht/~bouncepaw/betula/archive/v$pkgver.tar.gz"
+        "betula.service"
+        "sysusers-betula.conf"
+        "tmpfiles-betula.conf")
+sha512sums=('8b2c722f01ac7df1c6f16e5876d063803ba072c0323d4532c893079acf14cc5de3fcc0082ae70735e5d1a7c17e5a9f8fd448140e1e310b621c2e88760b27fb99'
+            '09a770e73cbfd3f0e1f95dc0ef638f71cae2abb8b3a462bb2107c5c4d2caa02e9c6ed4328ad11b0eadab5619cd31f39150077447f059427781d12ecacc0d7641'
+            '64a833456140c1fccf70ba5dfc8070f4039eaf904c5a487af817c64658c47077dcf45a0529aedd6bb7a72ace7524c8ef622b60eb75819b2abb016968e796ba49'
+            'a8581fbd0a5918cb1a5dcd6a980f921e8c356f3effd35dc8ab91e4600723f3f6e5c101142488e8dca7ffdd73abaf2df726f5750f30baaea4289614bf9ba99dfd')
 
 prepare() {
   cd "$pkgname-v$pkgver"
-
-  export CGO_ENABLED=1
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export CGO_LDFLAGS="$LDFLAGS"
-
   mkdir -p build
-  go mod tidy
 }
 
 build() {
   cd "$pkgname-v$pkgver"
 
-  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build \
-    -tags "libsqlite3 linux" \
-    -buildmode=pie \
     -trimpath \
-    -ldflags="-linkmode=external -X main.version=$pkgver" \
+    -buildmode=pie \
     -mod=readonly \
     -modcacherw \
+    -ldflags="-linkmode=external -extldflags \"${LDFLAGS}\" -X main.version=$pkgver" \
+    -tags "libsqlite3 linux" \
     -o build \
      ./cmd/betula
 }
@@ -51,7 +50,8 @@ package() {
 
   install -Dm0755 "build/betula" "$pkgdir/usr/bin/betula"
   install -Dm0644 "README.md"    "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -Dm644 "$srcdir"/betula.service "$pkgdir"/usr/lib/systemd/system/betula.service
+  install -Dm644 "$srcdir"/sysusers-betula.conf "$pkgdir"/usr/lib/sysusers.d/betula.conf
+  install -Dm644 "$srcdir"/tmpfiles-betula.conf "$pkgdir"/usr/lib/tmpfiles.d/betula.conf
 }
-
-sha256sums=('1c67b159a43bd69020e00a3ef923ea9218893d050c867a8aee34e9dd3b40385d')
-
