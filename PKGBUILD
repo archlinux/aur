@@ -1,6 +1,6 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
@@ -18,13 +18,13 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('81d2c5178b51367207df819a3a754fc3141d0f74d4ac80dbf20b1f0bd9d1be44')
-sha256sums_aarch64=('eb4a21fe560721a17059eb26b14abb894420008cc0dc990b829bdfda08e97af8')
-sha256sums_i386=('d7157d7a2faedea61829835060edfb1614d75b8559252f237aae38a97a684e9c')
-sha256sums_loong64=('786351112f1659d041e40ef70a4376c55f68bb783fc710ff71a1cb612b6786f5')
-sha256sums_powerpc64=('cb44187074793b4aca9e252fb0bee269725180448e7a47abbf17e38b0b32e6ac')
-sha256sums_powerpc64le=('465c0a2c14f13612a0413ba4e79f853cefdcc25a82d8ea7e74e3a349ac887983')
-sha256sums_riscv64=('0d8eac724b5c00f22592c68c2f61a1ae7be92aef0b236ace208e73e759e6965f')
+sha256sums_x86_64=('2b253aec82243437a7913e8a878944d96a7ab308a3861d59ce41aaa15e1409ad')
+sha256sums_aarch64=('ad4c9f31bf292d9a684add611c954f20b9aae698beae9d1a1144e3f9da4e8521')
+sha256sums_i386=('f006e7c2c0d527a3d40cbcdbdbbe339225dc2e0844abba862e684f8c1b79a8db')
+sha256sums_loong64=('4b81e7476eb6286c53137cf6ecd955aec534fb458e983baddfd8a384b064107b')
+sha256sums_powerpc64=('36fd97fd8b36703c416dbe8f24e1642339392bc7134a9f39b3962b84afd6785e')
+sha256sums_powerpc64le=('f4150d897e689dc755233050f948d4c73de426311dee45ca8eed453f678e7e57')
+sha256sums_riscv64=('ff3507cfe450fc2e0c04437901d164d21d322ce0540ef1251be70fbb96c5f557')
 
 package() {
   case "$CARCH" in
@@ -39,12 +39,11 @@ package() {
   install -Dm755 bin/dwarfsck "${pkgdir}/usr/bin/dwarfsck"
   install -Dm755 bin/dwarfsextract "${pkgdir}/usr/bin/dwarfsextract"
   install -Dm755 bin/mkdwarfs "${pkgdir}/usr/bin/mkdwarfs"
-
-  install -Dm755 sbin/dwarfs "${pkgdir}/usr/bin/dwarfs"
+  install -Dm755 bin/dwarfs "${pkgdir}/usr/bin/dwarfs"
   ln -s dwarfs "${pkgdir}/usr/bin/mount.dwarfs"
   # install dwarfs2 only if it exists (not present in all architectures)
   [ -f sbin/dwarfs2 ] && {
-    install -Dm755 sbin/dwarfs2 "${pkgdir}/usr/bin/dwarfs2"
+    install -Dm755 bin/dwarfs2 "${pkgdir}/usr/bin/dwarfs2"
     ln -s dwarfs2 "${pkgdir}/usr/bin/mount.dwarfs2"
   }
 
