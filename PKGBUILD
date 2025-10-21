@@ -4,7 +4,7 @@ pkgbase=python-cdshealpix
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A healpix manipulation library"
 arch=('i686' 'x86_64')
@@ -30,17 +30,17 @@ checkdepends=('python-pytest-benchmark'
               'python-matplotlib'
               'python-astropy-healpix')   # matplotlib
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('05eb46b10addddd3ec85bf4ac1bdc049')
+md5sums=('ac73cbda485e60477b72b5e076c8288a')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i "/typing/a _matplotlib_missing = False" python/${_pyname}/skymap/skymap.py
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   sed -i "/typing/a _matplotlib_missing = False" python/${_pyname}/skymap/skymap.py
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
