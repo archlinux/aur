@@ -1,0 +1,4 @@
+[gpg-import-bin]
+source = "github"
+github = "purpleclay/gpg-import"
+use_latest_release = true
