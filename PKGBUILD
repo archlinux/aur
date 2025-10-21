@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-extension-text-clock
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple text clock for the GNOME Shell top panel"
 arch=('any')
 url="https://github.com/wtbenica/text-clock"
@@ -15,15 +15,19 @@ makedepends=('unzip' 'curl')
 install='gnome-shell-extension-text-clock.install'
 
 source=(
-    "text-clock@benica.dev.zip::https://github.com/wtbenica/text-clock/releases/download/v${pkgver}/text-clock@benica.dev.zip"
+    "${pkgname}-${pkgver}.zip::https://github.com/wtbenica/text-clock/releases/download/v${pkgver}/text-clock@benica.dev.zip"
 )
 sha256sums=('5f5e3abc0ced48fefe8f3171ac8304258db6dc5ea66155301b5079474dc29243')
-noextract=("text-clock@benica.dev.zip")
+noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
-    # Rename downloaded unversioned asset to include version so AUR helpers keep distinct files
-    if [ -f "${srcdir}/text-clock@benica.dev.zip" ]; then
-        mv "${srcdir}/text-clock@benica.dev.zip" "${srcdir}/${pkgname}-${pkgver}.zip"
+    # Prefer the versioned ZIP filename so AUR helpers/cache keep distinct files per version.
+    # If an unversioned download exists in srcdir, rename it to the versioned name. Otherwise
+    # download the release asset directly to the versioned filename.
+    if [ -f "${srcdir}/${pkgname}-${pkgver}.zip" ]; then
+        : # already present
+    elif [ -f "${srcdir}/text-clock@benica.dev.zip" ]; then
+        rm "${srcdir}/text-clock@benica.dev.zip"
     else
         # fallback: download directly and name with version
         curl -L -o "${srcdir}/${pkgname}-${pkgver}.zip" \
