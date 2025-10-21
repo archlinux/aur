@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://shimo.im/"
 license=('custom')
 depends=('nss' 'gtk3' 'libnotify' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+replaces=('shimo-bin')
 source=(
 	"https://oas.shimonote.com/panther/shimo/release/linux/x64/shimo_v${pkgver}-release.ea23524.shimo_linux-amd64.deb"
 )
