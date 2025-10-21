@@ -4,8 +4,8 @@
 pkgname=todesk-rpm-bin
 _pkgname=${pkgname%-rpm-bin}
 _binaryname=ToDesk
-pkgver=4.7.2.0
-pkgrel=6
+pkgver=4.8.1.0
+pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
 url="https://www.todesk.com/"
@@ -27,12 +27,11 @@ DLAGENTS=("https::/usr/bin/wget -U 'Mozilla' -O %o %u")
 install="${_pkgname}.install"
 source=('license.html')
 # https://dl.todesk.com/linux/todesk-v4.7.2.0-c7-x86_64.rpm
-source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-c7-x86_64.rpm")
-source_aarch64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-arm64.deb")
-source_armv7h=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-armv7l.deb")
+# https://dl.todesk.com/linux/todesk-v4.8.1.0-x86_64.rpm
+# https://dl.todesk.com/linux/todesk-v4.8.1.0-x86_64.rpm
+source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-x86_64.rpm")
 sha256sums=('402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b')
-sha256sums_x86_64=('ff6add633adf8af7a3e2aef839db7bf1877fde296954130664e6d12a07952529')
-sha256sums_aarch64=('07a1239d0ea6b94f24e12b446d39cf6b23747b2e52f09c3dff50daa1394ae0b5')
+sha256sums_x86_64=('01dfa91f429053921412596a52853eb40d89202ce140f2633d8621cce8788971')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
