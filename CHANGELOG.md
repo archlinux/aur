@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expand browser filter to other unit properties
 - Fix Flatpak save file in home directory (make a warning)
 
+## [2.5.1] - 2025-10-21
+
+### Fixed
+- Multiple scrolled windows behavior regarding the vertical height (second try)
+
 ## [2.5.0] - 2025-10-21
 ### Added
 - Reload option in the unit popup menu
