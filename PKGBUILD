@@ -7,7 +7,7 @@
 
 pkgname=folly
 pkgver=2025.10.20.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -89,6 +89,7 @@ build() {
     -DPYTHON_PACKAGE_INSTALL_DIR=$pkgdir/usr \
     -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_CXX_STANDARD_REQUIRED=ON \
+    -DBoost_NO_BOOST_CMAKE=ON \
     -Wno-dev
   cmake --build build
 }
