@@ -14,9 +14,9 @@ makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust' 'doxygen' 'python-breathe' 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('c39bae45541dcb56743ce1276854f52fe188394ce427b02539444d84fad56c2d')
 build() {
-	# Rust components, not sure if we should be shipping this
-	#cd "${srcdir}/${pkgname}-${pkgver}"
-	#cargo build --release
+	# Build Rust bits
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cargo build --release
 
 	# Build docs - Doxygen needs to be installed for C++
 	# They are half a gig, so they are disabled
