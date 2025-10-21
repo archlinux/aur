@@ -1,6 +1,6 @@
 pkgbase = juliaup
 	pkgdesc = An experimental Julia version manager
-	pkgver = 1.18.3
+	pkgver = 1.18.5
 	pkgrel = 1
 	url = https://github.com/JuliaLang/juliaup
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = juliaup
 	conflicts = julia
 	conflicts = julia-bin
 	options = !lto
-	source = https://github.com/JuliaLang/juliaup/archive/refs/tags/v1.18.3.tar.gz
-	md5sums = e821b4ccec0568be0497271a659a0132
+	source = https://github.com/JuliaLang/juliaup/archive/refs/tags/v1.18.5.tar.gz
+	md5sums = 96c9bb67022d4dfafd3b912acb0938f3
 
 pkgname = juliaup
