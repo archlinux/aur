@@ -1,0 +1,10 @@
+pkgbase = waitup-bin
+	pkgdesc = A utility to check when a system or service becomes available (RDP/SSH/Port)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/creaked/waitup
+	arch = x86_64
+	license = MIT
+
+pkgname = waitup-bin
+
