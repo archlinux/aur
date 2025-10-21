@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -20,8 +20,8 @@ makedepends=(
   'gtest' 'parallel-hashmap'
 )
 source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz")
-sha256sums=('d0654fcc1219bfd11c96f737011d141c3ae5929620cd22928e49f25c37a15dc9')
-b2sums=('19cf0b68ffb016907cac88521ff5390f1ef637e978e4c9c5a32bf99fb9f7f9e4214b5b74c49dcd4b1fd1f3a7057b0bc9d1f821e871c4870cee0b41c186e5143e')
+sha256sums=('514b851af356102abca9103dd12c92a31fad6d2f705c4cfaff4e815b5753250f')
+b2sums=('84dcbb80ca8bd779b238dd9f91963a543b8608e308d93cbb58b0ff64c51f50abef0ee42e520af20741aab7363ef2e144c0f8512bbfe38e4445ebbb4599782e11')
 
 build() {
   # Setting up release flags manually here so we get to use `CMAKE_BUILD_TYPE=None`
@@ -36,7 +36,6 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_INSTALL_SBINDIR=bin \
     -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -D WITH_TESTS=ON \
     -D PREFER_SYSTEM_ZSTD=ON \
     -D PREFER_SYSTEM_XXHASH=ON \
@@ -54,6 +53,8 @@ check() {
 
 package() {
   cmake --install build --prefix "$pkgdir/usr"
+  rm "$pkgdir/usr/bin/mount.dwarfs"
+  ln -s dwarfs "$pkgdir/usr/bin/mount.dwarfs"
 
   install -Dm0644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
