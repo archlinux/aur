@@ -58,7 +58,7 @@ build() {
     -D installed-tests=false
   )
 
-  arch-meson $pkgname build "${meson_options[@]}"
+  arch-meson $_pkgdirname build "${meson_options[@]}"
   meson compile -C build
 }
 
