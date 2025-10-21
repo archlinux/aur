@@ -8,7 +8,7 @@
 declare -r _tag="74743a4b9a198721b72ebf909102589ab706a9ea"
 
 pkgname="matomo"
-pkgver="5.5.0"
+pkgver="5.5.1"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("x86_64")
