@@ -2,17 +2,29 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.85'
+pkgver='2.0.86'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
-makedepends=('cmake' 'dos2unix' 'gendesk' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'sdl2-compat'
-  'vulkan-headers')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7eaf32807045bb23f0523448dba6f14b5891d862cc4f291d607e2ff850185d17')
+makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'git-lfs' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
+  'sdl2-compat' 'vulkan-headers')
+source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
+sha256sums=('adb6d417a5e494ff6840b9a9042706cff53b617b0a4957dfdb4cbaca8c0e7efb')
+
+prepare() {
+  cd BZRPlayer
+  git lfs install --local
+
+  if git remote | grep network-origin >/dev/null; then
+    git remote remove network-origin
+  fi
+
+  git remote add network-origin https://github.com/aargirakis/BZRPlayer
+  git lfs pull network-origin
+}
 
 build() {
   # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
@@ -20,7 +32,7 @@ build() {
   CXXFLAGS=${CFLAGS}
   LDFLAGS=$(echo "$LDFLAGS" | sed 's/-Wl,-z,now//g')
 
-  cmake -B cmake-build -S BZRPlayer-${pkgver} -DCMAKE_PREFIX_PATH=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
+  cmake -B cmake-build -S BZRPlayer -DCMAKE_PREFIX_PATH=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
   ninja -C cmake-build
 }
 
@@ -35,8 +47,8 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
   done
 
-  install -Dm644 "BZRPlayer-${pkgver}/src/inst/x-bzr-player.xml" "$pkgdir/usr/share/mime/packages/x-bzr-player.xml"
-  mapfile -t mime_types_supported <"BZRPlayer-${pkgver}/src/inst/supported_mime_types"
+  install -Dm644 "BZRPlayer/src/inst/x-bzr-player.xml" "$pkgdir/usr/share/mime/packages/x-bzr-player.xml"
+  mapfile -t mime_types_supported <"BZRPlayer/src/inst/supported_mime_types"
 
   for mime_type in "${mime_types_supported[@]}"; do
     desktop_entry_mime_types="$desktop_entry_mime_types$mime_type;"
@@ -45,7 +57,7 @@ package() {
   desktop_entry_mime_types="${desktop_entry_mime_types%?}"
 
   gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-    --name="BZR Player" \
+    --name="BZR Player 2" \
     --genericname='Audio player' \
     --exec="/usr/bin/$pkgname %U" \
     --icon="$pkgname" \

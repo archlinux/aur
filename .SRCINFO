@@ -1,6 +1,6 @@
 pkgbase = bzr-player
 	pkgdesc = Audio player supporting a wide array of multi-platform exotic file formats
-	pkgver = 2.0.85
+	pkgver = 2.0.86
 	pkgrel = 1
 	url = https://bzrplayer.blazer.nu
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = bzr-player
 	makedepends = cmake
 	makedepends = dos2unix
 	makedepends = gendesk
+	makedepends = git
+	makedepends = git-lfs
 	makedepends = libglvnd
 	makedepends = ninja
 	makedepends = patchutils
@@ -18,7 +20,7 @@ pkgbase = bzr-player
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qt-advanced-docking-system
-	source = bzr-player-2.0.85.tar.gz::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/2.0.85.tar.gz
-	sha256sums = 7eaf32807045bb23f0523448dba6f14b5891d862cc4f291d607e2ff850185d17
+	source = git+https://github.com/aargirakis/BZRPlayer.git#tag=2.0.86
+	sha256sums = adb6d417a5e494ff6840b9a9042706cff53b617b0a4957dfdb4cbaca8c0e7efb
 
 pkgname = bzr-player
