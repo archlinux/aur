@@ -1,13 +1,13 @@
 # Maintainer: Jannify <Jannify at outlook dot com>
 
-pkgver=1.8.0.0
-sha256sums=("2d1382cdb40afdb14ade7a9600fe25a1a088b018ded1633dceabf3edacc67ae9"
+pkgver=1.8.0.1
+pkgrel=1
+sha256sums=("8f3a39de6e4bbe631b3653e467c292aff57c01a320cdf446a96906357f281899"
             "9c726e2440a7ad241bbf9f846731d28986d94aa0a0ee609ef1842992aa8fceb0")
 _dotnet_version=9.0
 
 pkgname=nitrox
 pkgdesc="An open-source, multiplayer modification for the game Subnautica."
-pkgrel=2
 url="https://github.com/SubnauticaNitrox/Nitrox"
 license=("GPL-3.0-only")
 provides=("nitrox")
