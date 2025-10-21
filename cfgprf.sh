@@ -64,6 +64,8 @@ while true; do
   esac
 done
 
+set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
+
 help() {
     echo
     echo
@@ -99,8 +101,6 @@ help() {
     echo "      cfgprf -epcP ~/myconfig.cfgprf"
     echo
 }
-
-set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 if [ $HELP ]; then
     help
