@@ -2,7 +2,7 @@
 # Contributor: Quan Guo <guotsuan at gmail dot com>
 
 pkgname=python-llvmlite-git
-pkgver=0.46.0dev0.r2.g81461681
+pkgver=0.46.0b1.r26.g2cc5e2a4
 pkgrel=1
 pkgdesc="A lightweight LLVM Python binding for writing JIT compilers (Git version)"
 url="https://github.com/numba/llvmlite"
@@ -13,12 +13,12 @@ depends=(
   'gcc-libs'
   'glibc'
   'python'
-  'llvm-libs'
+  'llvm20-libs'
 )
 makedepends=(
   'cmake'
   'git'
-  'llvm'
+  'llvm20'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -44,6 +44,7 @@ pkgver() {
 build() {
   cd llvmlite
   export LLVMLITE_SHARED=1
+  export LLVM_DIR=/usr/lib/llvm20
   python -m build --no-isolation --wheel
 }
 
