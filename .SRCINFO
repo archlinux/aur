@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2025.09.1.401
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -49,11 +49,13 @@ pkgbase = rstudio-desktop
 	options = !strip
 	source = rstudio-2025.09.1.401-20de356.tar.gz::https://github.com/rstudio/rstudio/archive/20de356561bd58a6d88927cce948bd076d06e4ca.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
+	source = 0001-steady_timer.patch
 	source = https://rstudio-buildtools.s3.us-east-1.amazonaws.com/gwt/gwt-2.12.2.tar.gz
 	source = soci-4.0.3.tar.gz::https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
-	source = https://github.com/github/copilot-language-server-release/releases/download/1.378.0/copilot-language-server-linux-x64-1.378.0.zip
+	source = https://github.com/github/copilot-language-server-release/releases/download/1.381.0/copilot-language-server-linux-x64-1.381.0.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = d192d1f7344fcf73bf7ffc404f0a385a1d4fbfd962b701689cd84099d97ab90a
 	sha256sums = 27284accdad05ff8919a7ac6dc5f939a511a90842a35f6393517506d74809e76
 	sha256sums = 4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928
 	sha256sums = SKIP
