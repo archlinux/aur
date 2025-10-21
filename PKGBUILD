@@ -3,7 +3,7 @@
 # Maintainer: bannert <aur@bannert.dev>
 
 pkgname=karere
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A modern, native GTK4/LibAdwaita wrapper for WhatsApp Web"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('meson' 'ninja' 'vala' 'blueprint-compiler' 'gobject-introspection'
 optdepends=('gspell: spell checking support' 'libvoikko: Finnish spell-checker' 'hspell: Hebrew spell-checker')
 provides=('karere')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('de8713f9fca8dfc2be5fa5ee102ef6e206669d7ddd53ef849d4217a6861f1e98')
+sha256sums=('625f5f1f864c01e41a6174fb83d083b01a402c7ca14a66fbe81021f724a41989')
 
 build() {
 	set -euo pipefail

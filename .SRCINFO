@@ -1,6 +1,6 @@
 pkgbase = karere
 	pkgdesc = A modern, native GTK4/LibAdwaita wrapper for WhatsApp Web
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/tobagin/karere
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = karere
 	optdepends = libvoikko: Finnish spell-checker
 	optdepends = hspell: Hebrew spell-checker
 	provides = karere
-	source = karere-1.0.2.tar.gz::https://github.com/tobagin/karere/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = de8713f9fca8dfc2be5fa5ee102ef6e206669d7ddd53ef849d4217a6861f1e98
+	source = karere-1.0.3.tar.gz::https://github.com/tobagin/karere/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 625f5f1f864c01e41a6174fb83d083b01a402c7ca14a66fbe81021f724a41989
 
 pkgname = karere
