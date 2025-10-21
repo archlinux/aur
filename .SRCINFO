@@ -1,6 +1,6 @@
 pkgbase = clash-mi
 	pkgdesc = 又一款 Mihomo 核心的代理工具
-	pkgver = 1.0.9.137
+	pkgver = 1.0.11.150
 	pkgrel = 1
 	url = https://github.com/KaringX/clashmi/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = clash-mi
 	depends = gtk3
 	depends = pango
 	depends = gcc-libs
-	source = https://github.com/KaringX/clashmi/releases/download/v1.0.9.137/clashmi_1.0.9.137_linux_amd64.rpm
-	sha256sums = cd3ecbb6634daa3b3aeb301aee0dfd055a29fa50f3db3d9bf5aaf5b0eb3fd0e2
+	source = https://github.com/KaringX/clashmi/releases/download/v1.0.11.150/clashmi_1.0.11.150_linux_amd64.rpm
+	sha256sums = fd1246ad594b25d9d8fdaa4ecb10ecbe30b3ded81ecba8ebd89d56d5ea5f90ea
 
 pkgname = clash-mi
