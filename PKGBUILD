@@ -26,3 +26,4 @@ sha256sums=('11825903fd56d040b92d55a682d8e1dd6b71103f4fbcdece02ae7161b7778766')
 package() {
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
+sha256sums=('f1e29b16105541371a375a47a6a743f3b2691a296558f4174d031cd6701aa316')
