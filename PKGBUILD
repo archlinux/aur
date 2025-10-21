@@ -1,6 +1,6 @@
 pkgname=ura-git
 _pkgname=ura
-pkgver=r194.c1148a0
+pkgver=r202.7a0c2a0
 pkgrel=1
 pkgdesc="A highly customizable Wayland compositor driven by Lua"
 url="https://github.com/levinion/ura"
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   make build
-  cd "$srcdir/$_pkgname/uracil"
+  cd "$srcdir/$_pkgname/shell"
   cargo build --release
 }
 
@@ -35,5 +35,5 @@ package() {
   install -d $pkgdir/etc/$_pkgname
   install -Dm644 ./assets/init.lua $pkgdir/etc/$_pkgname/init.lua
   cp -r lua/$_pkgname $pkgdir/usr/share/
-  install -Dm755 uracil/target/release/uracil $pkgdir/usr/bin/uracil
+  install -Dm755 shell/target/release/ura-shell $pkgdir/usr/bin/ura-shell
 }
