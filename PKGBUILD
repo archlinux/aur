@@ -1,7 +1,7 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=lobehub-desktop-beta-bin
-_pkgver=1.139.3
+_pkgver=1.139.4
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Desktop version of lobe-chat, an open-source, modern design AI chat framework."
@@ -10,16 +10,16 @@ url="https://github.com/lobehub/lobe-chat"
 license=('Apache-2.0 WITH lobe-chat-exception')
 makedepends=()
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
-source=("lobehub-desktop-beta-1.139.3.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-1.139.3.x86_64.rpm"
+source=("lobehub-desktop-beta-1.139.4.x86_64.rpm::https://github.com/lobehub/lobe-chat/releases/download/v${_pkgver}/lobehub-desktop-beta-1.139.4.x86_64.rpm"
   "LICENSE::https://raw.githubusercontent.com/lobehub/lobe-chat/main/LICENSE"
   "lobehub-desktop-beta.png::https://raw.githubusercontent.com/lobehub/lobe-chat/main/apps/desktop/resources/tray.png")
-sha256sums=('649db5e75bdd0f91aff3003244760bd6132463c6f1dbd547043bb3d4f980a1be'
+sha256sums=('c757caf03606784a7190e13c19bd1718ec4ad8a07c33904f932cff22d5451973'
   '790a8c42f10beb4f5e9122e05a8e65d5522de49f89ac69cd31063c0f2be93ea4'
   '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf')
 
 package() {
   cd "${pkgdir}"
-  bsdtar -xf "${srcdir}/lobehub-desktop-beta-1.139.3.x86_64.rpm"
+  bsdtar -xf "${srcdir}/lobehub-desktop-beta-1.139.4.x86_64.rpm"
 
   cd "${srcdir}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
