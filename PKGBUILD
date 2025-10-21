@@ -1,6 +1,6 @@
 # Maintainer:mistgc <georgecai0908@outlook.com>
 pkgname=shimo
-pkgver=3.3.1
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="石墨文档 Shimo document (An online collaborative office software)."
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ url="https://shimo.im/"
 license=('custom')
 depends=('nss' 'gtk3' 'libnotify' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 replaces=('shimo-bin')
-source_x86_64=("https://oas.shimonote.com/panther/${pkgname}/release/linux/x64/${pkgname}_v${pkgver}-release.ea23524.shimo_linux-amd64.deb")
-source_aarch64=("https://oas.shimonote.com/panther/${pkgname}/release/linux/arm64/${pkgname}_v${pkgver}-release.ea23524.shimo_linux-arm64.deb")
-sha512sums_x86_64=('8ea8a82a17d8128e4ed7421bb42e194421264ff630c9d3f648cb85796f7dfe3b2e83f58873bff704345abcbbad87e610455db352c8b8ef7aa55ddcee5b78af16')
-sha512sums_aarch64=('1f042280754be9d9732844ea1180abca93b3a3ac357418a98ef3394b78fc97ac2c5330ae229b3ea650b2c3506a49ee88efc67f493ac6fe440f47516e27952f3a')
+source_x86_64=("https://oas.shimonote.com/panther/${pkgname}/release/linux/x64/${pkgname}_v${pkgver}-release.6d12f71.shimo_linux-amd64.deb")
+source_aarch64=("https://oas.shimonote.com/panther/${pkgname}/release/linux/arm64/${pkgname}_v${pkgver}-release.6d12f71.shimo_linux-arm64.deb")
+sha512sums_x86_64=('85adccd148d9ce0bcf708acd1d4b87990f0577496866a47a8fe0f3b38ac034a57e4381704dbc5921e5d6620700bcc725a26a574f2b89d1de21b9ec4b7c0b889f')
+sha512sums_aarch64=('6c9190ac8040ca8bc0a5ba256e332ac36916ef06bf7805bd848e24e8eb014ebb253f5635ae0a377674248816b29c115be0e796c221813afb01b1fab58f527413')
 
 package() {
     tar -xpf data.tar.gz -C "${pkgdir}"
