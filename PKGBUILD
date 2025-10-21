@@ -24,7 +24,7 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node')
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
 depends=('valkey' 'postgresql>=14' 'nodejs>=20'
-    'vectorchord>=0.3' 'vectorchord<0.5'  # server/src/constants.ts
+    'vectorchord>=0.3' 'vectorchord<0.6'  # server/src/constants.ts
     'zlib'
     'glib2'
     'expat'
