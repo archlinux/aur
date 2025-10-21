@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-resource-manager
 	pkgdesc = Google Cloud Resource Manager API client library
-	pkgver = 1.14.2
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-resource-manager
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-google-cloud-resource-manager
 	depends = python-googleapis-common-protos
 	depends = python-requests
 	depends = python-grpcio
-	source = https://files.pythonhosted.org/packages/source/g/google-cloud-resource-manager/google_cloud_resource_manager-1.14.2.tar.gz
-	sha256sums = 962e2d904c550d7bac48372607904ff7bb3277e3bb4a36d80cc9a37e28e6eb74
+	source = https://files.pythonhosted.org/packages/source/g/google-cloud-resource-manager/google_cloud_resource_manager-1.15.0.tar.gz
+	sha256sums = 3d0b78c3daa713f956d24e525b35e9e9a76d597c438837171304d431084cedaf
 
 pkgname = python-google-cloud-resource-manager

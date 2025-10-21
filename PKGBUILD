@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-google-cloud-resource-manager
 _pkgname=${pkgname#python-}
-pkgver=1.14.2
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Google Cloud Resource Manager API client library"
 arch=(any)
@@ -25,7 +25,7 @@ depends=(
   python-grpcio
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('962e2d904c550d7bac48372607904ff7bb3277e3bb4a36d80cc9a37e28e6eb74')
+sha256sums=('3d0b78c3daa713f956d24e525b35e9e9a76d597c438837171304d431084cedaf')
 
 _archive="google_cloud_resource_manager-${pkgver}"
 
