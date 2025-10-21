@@ -93,7 +93,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _ensure_local_nvm
-    NODE_ENV=production     npx nx build:desktop @notesnook/web
+    NODE_ENV=production     npm run tx @notesnook/web:build:desktop
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
     local electronDist="/usr/lib/electron${_electronversion}"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
