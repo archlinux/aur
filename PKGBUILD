@@ -13,7 +13,7 @@ provides=('note-gen')
 conflicts=('note-gen-bin')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/note-gen-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('87b8a5af2c8596304890a275bbbba294a01aeb3040ea3dbb3fb12011425ee06b')
 
 prepare() {
     cd "$_pkgname-$pkgver"
