@@ -1,13 +1,13 @@
 pkgbase = cconsole
 	pkgdesc = C version of Python console
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/eshnd/cconsole
 	arch = any
 	license = MIT
 	makedepends = gcc
 	makedepends = make
-	source = cconsole-0.1.0.tar.gz::https://github.com/eshnd/cconsole/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 32f59511f568ecad0536ed5a1db3a81a10497e87a62dcbc48b77dbc421db450b
+	source = cconsole-0.1.1.tar.gz::https://github.com/eshnd/cconsole/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 54bbfc84c0fc648e6c0daa431294546e592b87f9dabf2f39a349da147f37befd
 
 pkgname = cconsole

@@ -1,6 +1,6 @@
 # Maintainer: Eshaan Desh eshaan2031@icloud.com
 pkgname=cconsole
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="C version of Python console"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('gcc' 'make')
 source=("cconsole-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32f59511f568ecad0536ed5a1db3a81a10497e87a62dcbc48b77dbc421db450b')
+sha256sums=('54bbfc84c0fc648e6c0daa431294546e592b87f9dabf2f39a349da147f37befd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
