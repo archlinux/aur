@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=27
+pkgrel=28
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -66,7 +66,7 @@ package() {
     elif [ -f "src-tauri/icons/128x128.png" ]; then
         install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
     fi
-    cat > "$pkgdir/usr/share/applications/$_pkgname.desktop" << EOF
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << EOF
 [Desktop Entry]
 Name=NoteGen
 Comment=A cross-platform Markdown note-taking application with AI integration
