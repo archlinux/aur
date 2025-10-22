@@ -1,59 +1,108 @@
-# Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+# Maintainer:
+# Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
-_pkgname=dwarfs
-pkgname=${_pkgname}-git
-pkgver=0.7.0.r0.gb98f08e
+_pkgname="dwarfs"
+pkgname="$_pkgname-git"
+pkgver=0.14.0.r0.g35dc3e1
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
-url='https://github.com/mhx/dwarfs'
+url="https://github.com/mhx/dwarfs"
+license=(
+  'MIT'          # read
+  'GPL-3.0-only' # write, tests
+)
 arch=('x86_64')
-license=('GPL3')
+
 depends=(
-  'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash'
-  'lz4' 'xz' 'zstd' 'libarchive' 'brotli'
-  'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
-  # 'python'
+  'libbrotlidec.so' # brotli
+  'libbrotlienc.so' # brotli
+  'double-conversion'
+  'fuse3'
+  'gflags'
+  'google-glog'
+  'libFLAC++.so' # flac
+  'libFLAC.so'   # flac
+  'libarchive'
+  'libboost_chrono.so'          # boost-libs
+  'libboost_filesystem.so'      # boost-libs
+  'libboost_process.so'         # boost-libs
+  'libboost_program_options.so' # boost-libs
+  'libfmt.so'                   # fmt
+  'lz4'
+  'openssl'
+  'xxhash'
+  'xz'
+  'zstd'
 )
 makedepends=(
-  'git' 'cmake' 'ruby-ronn'
-  'boost' 'libevent' 'libdwarf' 'utf8cpp'
+  'boost'
+  'cmake'
+  'git'
+  'ninja'
+  'nlohmann-json'
+  'python'
+  'python-mistletoe' # render manpage
+  'range-v3'
+  'ruby-ronn'
+  'utf8cpp'
 )
-source=("$pkgname::git+https://github.com/mhx/dwarfs.git")
+checkdepends=(
+  'gtest'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname"
-
-  git submodule update --init --depth=1
+  cd "$_pkgsrc"
+  git submodule update --init --recursive --depth=1
 }
 
 build() {
-  # CMAKE_BUILD_TYPE=None is recommended by
-  # https://wiki.archlinux.org/title/CMake_package_guidelines#Fixing_the_automatic_optimization_flag_override
-  cmake -B build -S "$pkgname" \
-    -W no-dev \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=None \
-    -D PREFER_SYSTEM_ZSTD=ON \
-    -D PREFER_SYSTEM_XXHASH=ON \
-    -D PREFER_SYSTEM_LIBFMT=ON
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_SBINDIR='bin'
+    -Wno-dev
 
+    -DPREFER_SYSTEM_GTEST=ON
+    -DWITH_TESTS=$CHECKFUNC
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
+check() {
+  local _jobs=$(grep -Pom1 -- '-j\K[0-9]+' <<< "$MAKEFLAGS")
+  local _test_opts=(
+    --test-dir build
+    --output-on-failure
+    --parallel ${_jobs:-}
+    --verbose
+
+    # some tests may fail
+    -E 'categorize|dwarfs_automount|dwarfs_fsname_and_subtype|end_to_end|huge_holes_fuse|mutating_and_error_ops|random_large_files|random_small_files_fuse|timestamps_fuse'
+  )
+  ctest "${_test_opts[@]}"
+}
+
 package() {
-  DESTDIR="$pkgdir" cmake --install build \
+  DESTDIR="$pkgdir" cmake --install build
 
-  mv "$pkgdir/usr/sbin"/* "$pkgdir/usr/bin"
-  rm -rf "$pkgdir/usr/sbin"
+  # fix symlink
+  ln -sf dwarfs "$pkgdir/usr/bin/mount.dwarfs"
 
-  cd "$pkgname"
-
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # license
+  install -Dm644 "$_pkgsrc"/LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
