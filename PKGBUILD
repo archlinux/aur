@@ -1,4 +1,4 @@
-# based on https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/blob/a99214c27c32ccd2dac7ccbf40179827c8ea2969/PKGBUILD
+# based on https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/blob/645a95f3cf9eec182c8bb61b8ea573d389967729/PKGBUILD
 
 # -- Arch credits
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -16,9 +16,10 @@
 pkgbase=mutter-git
 pkgname=(
   mutter-git
+  mutter-devkit-git
   mutter-docs-git
 )
-pkgver=49.alpha.1+r46+g96d4e7c3c
+pkgver=49.1+r25+g5d357fccec
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -36,6 +37,7 @@ depends=(
   gdk-pixbuf2
   glib2
   glibc
+  glycin
   gnome-desktop-4
   gnome-settings-daemon
   graphene
@@ -79,6 +81,7 @@ depends=(
   pixman
   python
   python-argcomplete
+  python-dbus
   python-gobject
   startup-notification
   systemd-libs
@@ -140,13 +143,41 @@ _pick() {
 }
 
 package_mutter-git() {
-  provides=(mutter libmutter-17.so)
+  provides=(mutter libmutter-18.so)
   conflicts=(mutter)
-  optdepends=('bash-completion: Bash completions for gdctl')
+  optdepends=(
+    'bash-completion: Bash completions for gdctl'
+    'mutter-devkit: Mutter SDK, "MDK"'
+  )
 
   meson install -C build --destdir "$pkgdir"
 
+  _pick devkit "$pkgdir"/usr/lib/mutter-devkit
+  _pick devkit "$pkgdir"/usr/share/applications/org.gnome.Mutter.Mdk.desktop
+  _pick devkit "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.gnome.Mutter.Mdk.Devel.svg
+  _pick devkit "$pkgdir"/usr/share/icons/hicolor/scalable/apps/org.gnome.Mutter.Mdk.svg
+  _pick devkit "$pkgdir"/usr/share/icons/hicolor/symbolic/apps/org.gnome.Mutter.Mdk-symbolic.svg
+
   _pick docs "$pkgdir"/usr/share/mutter-*/doc
+}
+
+package_mutter-devkit-git() {
+  provides=(mutter-devkit)
+  conflicts=(mutter-devkit)
+  pkgdesc="GNOME Mutter Development Kit"
+  depends=(
+    gcc-libs
+    glib2
+    glibc
+    gtk4
+    hicolor-icon-theme
+    libadwaita
+    libei
+    libpipewire
+    mutter
+  )
+
+  mv devkit/* "$pkgdir"
 }
 
 package_mutter-docs-git() {
