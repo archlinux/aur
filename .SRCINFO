@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, or chromedriver
-	pkgver = 141.0.7390.107
+	pkgver = 141.0.7390.122
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgbase = chromium-no-extras
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=141.0.7390.107
+	provides = chromium=141.0.7390.122
 	conflicts = chromium
 	options = !lto
 	source = fetch-chromium-release
