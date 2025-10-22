@@ -21,8 +21,8 @@ optdepends=(
 
 source=("$url/-/archive/$_tag/Zoi-$_tag.tar.gz"
         "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('7b01138603ac5c626ffbd1d917e84c856b16d27e2cbdb134e3e61767f0bf5eb2a862c352d5cbe3db0acfdc67e36d4d43255b934c7d4d5ab3db8c489b47b6840d'
-            'b3923750b32ac92a6305437fec688b51fdd2083f2fa51a5a5ac87a0359937e574edf909b02cfc7f26197df730810102572944fe294a0f8f605fe8264ab825afb')
+sha512sums=('4270bb0c17803ba4d3892952562f4632cd9b118f7a51137ccb4c541ff9b23f39c7a34afa86748f81f433ab7cbdf46d49afabef87a859ee72d8ce6900f5c16568'
+            '79caa3cd361a8875ce9c8c3ecc8c5ac085088b5fde880a3de45def41800d85ad5c6679c589a263e8e3eac2497188d13e26e534d20d2dcdfd665bbd7ead79d3a4')
 
 build() {
   cd "$srcdir/$_pkgname_cap-$_tag"
@@ -47,4 +47,9 @@ package() {
   local _fish_completion_dir="$pkgdir/usr/share/fish/vendor_completions.d"
   install -d "$_fish_completion_dir"
   "$pkgdir/usr/bin/$pkgname" generate-completions fish > "$_fish_completion_dir/$pkgname.fish"
+
+  local _man_dir="$pkgdir/usr/share/man/man1"
+  install -d "$_man_dir"
+  "$pkgdir/usr/bin/$pkgname" generate-manual
+  install -Dm644 manuals/*.1 "$_man_dir"
 }
