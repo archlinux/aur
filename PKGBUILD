@@ -2,7 +2,7 @@
 
 pkgname=elephant-menus
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='menus provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-menus')
 provides=('elephant-menus')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e59e873fd3f4d1b8402e146aa36ad7e33c0797a8c7aba3c716dc7b4c91a767d8')
+sha256sums=('878e275e5dfe5dfca64c11b13ec7a565a0c81d165ccee2ec0940ffe538bf83f8')
 
 build() {
     cd elephant-${pkgver}/internal/providers/menus
