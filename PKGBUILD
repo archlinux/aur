@@ -1,4 +1,5 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
+# Maintainer: Jai Brown (JaINTP) <jaintp.dev@gmail.com>
 
 _pkgname=capacities
 _version=1.54.16
@@ -7,7 +8,7 @@ _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.c
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
 url="https://capacities.io/"
