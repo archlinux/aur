@@ -13,6 +13,7 @@ install_bin
 *.swo
 *.tmp
 .#*
+.lock
 
 # dossiers de build
 /build/
