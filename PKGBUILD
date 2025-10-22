@@ -15,9 +15,11 @@ optdepends=(
 	'git'
 	'ripgrep: accelerated large-repo search'
 	'chromium: connect external browser sessions via /chrome'
+	'claude-code: integrate with the Claude Caude CLI agent'
+	'gemini-cli: connect to the Google Gemini terminal client'
+	'codanna: share context with the Codanna code-awareness agent'
 )
 options=('!lto')
-conflicts=('code' 'visual-studio-code' 'visual-studio-code-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('eddfa76cfd8ace8c027fe5f4bb3f6f766d6b9e92f48435569f7ab17db1f29bd136b3826611ad1457874d1d86f548b63c07b6e0c73df4316ae8bfd89fafebded4')
 
@@ -47,7 +49,7 @@ build() {
 package() {
 	cd "code-${pkgver}/code-rs"
 
-	install -Dm755 "target/release/code" "${pkgdir}/usr/bin/code"
+	install -Dm755 "target/release/code" "${pkgdir}/usr/bin/coder"
 	install -Dm755 "target/release/code-exec" "${pkgdir}/usr/bin/code-exec"
 	install -Dm755 "target/release/code-linux-sandbox" "${pkgdir}/usr/bin/code-linux-sandbox"
 
