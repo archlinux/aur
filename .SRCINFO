@@ -1,6 +1,6 @@
 pkgbase = eco-paste-beta-bin
 	pkgdesc = 内测预览版!!!🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool .
-	pkgver = 0.6.0beta.1
+	pkgver = 0.6.0beta.2
 	pkgrel = 1
 	url = https://github.com/EcoPasteHub/EcoPaste
 	arch = any
@@ -137,9 +137,9 @@ pkgbase = eco-paste-beta-bin
 	conflicts = eco-paste-git
 	conflicts = eco-paste-appimage
 	conflicts = eco-paste-bin
-	source = EcoPaste-0.6.0-beta.1_amd64.deb::https://github.com/EcoPasteHub/EcoPaste/releases/download/v0.6.0-beta.1/EcoPaste_0.6.0-beta.1_amd64.deb
+	source = EcoPaste-0.6.0-beta.2_amd64.deb::https://github.com/EcoPasteHub/EcoPaste/releases/download/v0.6.0-beta.2/EcoPaste_0.6.0-beta.2_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE
-	sha256sums = 9a50b7ad3e9c376bf8942b0cb2bef8abb2e43826fdec93e21a9427a3debbd52d
+	sha256sums = ea43c3a8047b10ebcb66d3a710d97b06222bce7d3a4b0dd244a9fed69dd7266e
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = eco-paste-beta-bin
