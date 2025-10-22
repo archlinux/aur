@@ -2,13 +2,13 @@
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=wleave
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland-native logout script written in GTK4 "
 arch=('x86_64')
 url="https://github.com/AMNatty/wleave"
 source=("wleave::git+https://github.com/AMNatty/wleave#tag=${pkgver}")
 b2sums=('SKIP')
-depends=('librsvg' 'libadwaita')
+depends=('librsvg' 'libadwaita' 'gtk4-layer-shell')
 makedepends=('cargo' 'git' 'scdoc')
 license=("MIT")
 conflicts=("wleave-git")
