@@ -1,6 +1,6 @@
 pkgbase = zed-preview
 	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-	pkgver = 0.209.2
+	pkgver = 0.210.0
 	pkgrel = 1
 	url = https://zed.dev
 	arch = x86_64
@@ -43,10 +43,10 @@ pkgbase = zed-preview
 	optdepends = eslint: improved Javascript language support
 	optdepends = pyright: improved Python language support
 	optdepends = rust-analyzer: improved Rust language support
-	provides = zed=0.209.2
+	provides = zed=0.210.0
 	conflicts = zed
 	replaces = zed-editor-preview
-	source = https://github.com/zed-industries/zed/archive/v0.209.2-pre/zed-0.209.2-pre.tar.gz
-	sha256sums = 589102ccd3c41be1735bafe2a80f9edb9661af0c6ac24a8e950e544884c8dd19
+	source = https://github.com/zed-industries/zed/archive/v0.210.0-pre/zed-0.210.0-pre.tar.gz
+	sha256sums = ad3f224d0ffff597ee3408831497346c68308a548d3dd70bc5d7e5d5f7e79ed1
 
 pkgname = zed-preview
