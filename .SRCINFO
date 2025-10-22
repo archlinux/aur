@@ -1,6 +1,6 @@
 pkgbase = python-snakemake-interface-logger-plugins
 	pkgdesc = Snakemake Logger Plugin Interface
-	pkgver = 1.2.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/snakemake/snakemake-interface-logger-plugins
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-snakemake-interface-logger-plugins
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python-snakemake-interface-common
-	source = snakemake-interface-logger-plugins-1.2.4.tar.gz::https://github.com/snakemake/snakemake-interface-logger-plugins/archive/refs/tags/v1.2.4.tar.gz
-	sha256sums = d1a062b2fc0af8ff5345c2725a6a96f184a41a16671663b4c5800a200bf3d4c8
+	source = snakemake-interface-logger-plugins-2.0.0.tar.gz::https://github.com/snakemake/snakemake-interface-logger-plugins/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 1577df5f30b430690a0c31d11e90085e3207bf0ad929170d8242a6f48a74f2b2
 
 pkgname = python-snakemake-interface-logger-plugins
