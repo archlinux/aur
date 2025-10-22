@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="clipsim-git"
-pkgver=r708.a2a5840
+pkgver=r732.6c1e18b
 pkgrel=1
 pkgdesc="clipsim is a simple and fast X clipboard manager written in C."
 arch=(x86_64)
