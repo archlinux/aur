@@ -2,14 +2,15 @@
 # Maintainer: ArjixWasTaken <me@arjix.dev>
 # Contributor: tiziodcaio <d dot bass05 at pm dot me>
 
-pkgname=winboat
+_pkgname=winboat
+pkgname=winboat-electron
 pkgver=0.8.7
 pkgrel=3
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
 license=('MIT')
-_electron=electron37
+_electron=electron38
 depends=(
   'alsa-lib'
   'docker'
@@ -30,15 +31,17 @@ makedepends=(
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
 sha256sums=('bf74ba69a303235d671a61b881dc42c9ce0dc99bcbcaab6713f43eb160984014')
+provides=('winboat')
+conflicts=('winboat')
 
 prepare(){
-  cd "$pkgname"
+  cd "$_pkgname"
   export npm_config_cache="$srcdir/npm_cache"
   npm install
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -64,27 +67,27 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 /dev/null "${pkgdir}/usr/bin/$pkgname"
-  cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
+  cd "$_pkgname"
+  install -Dm755 /dev/null "${pkgdir}/usr/bin/$_pkgname"
+  cat >>"${pkgdir}/usr/bin/$_pkgname" <<EOD
 #! /usr/bin/sh
-exec $_electron /usr/lib/$pkgname/app.asar "\$@"
+exec $_electron /usr/lib/$_pkgname/app.asar "\$@"
 EOD
-  install -d "$pkgdir/usr/lib/$pkgname/"
+  install -d "$pkgdir/usr/lib/$_pkgname/"
 
-  cp -a dist/linux-unpacked/resources/** "$pkgdir/usr/lib/$pkgname"
+  cp -a dist/linux-unpacked/resources/** "$pkgdir/usr/lib/$_pkgname"
 
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 dist/.icon-set/icon_${i}x${i}.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<EOF
 [Desktop Entry]
 Name=WinBoat
-Exec=/usr/bin/$pkgname
-Icon=$pkgname
+Exec=/usr/bin/$_pkgname
+Icon=$_pkgname
 Terminal=false
 Type=Application
 Comment=Run Windows apps on Linux with seamless integration

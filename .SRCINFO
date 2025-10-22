@@ -1,7 +1,7 @@
-pkgbase = winboat
+pkgbase = winboat-electron
 	pkgdesc = Run Windows apps on Linux with seamless integration
 	pkgver = 0.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.winboat.app
 	arch = x86_64
 	license = MIT
@@ -16,8 +16,11 @@ pkgbase = winboat
 	depends = freerdp
 	depends = gtk3
 	depends = nss
+	depends = electron38
+	provides = winboat
+	conflicts = winboat
 	options = !strip
 	source = git+https://github.com/TibixDev/winboat.git#tag=v0.8.7
 	sha256sums = bf74ba69a303235d671a61b881dc42c9ce0dc99bcbcaab6713f43eb160984014
 
-pkgname = winboat
+pkgname = winboat-electron
