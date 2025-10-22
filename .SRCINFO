@@ -1,0 +1,10 @@
+pkgbase = sayo-driver
+	pkgdesc = Sayo Driver - Flutter application
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = mit
+	depends = gtk3
+	depends = libayatana-appindicator
+
+pkgname = sayo-driver
