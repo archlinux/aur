@@ -3,8 +3,8 @@
 
 pkgname=dotnet-aot-xc
 pkgver=2025.08
-pkgrel=1
-pkgdesc="Complete cross-compilation toolchain for .NET AOT (linux-x64, linux-arm64, linux-musl-x64, linux-musl-arm64)"
+pkgrel=2
+pkgdesc="Complete cross-compilation toolchain for .NET AOT (linux-x64, linux-arm64, linux-musl-x64, linux-musl-arm64). Run 'dotnet-aot-xc --help' for usage"
 arch=("x86_64")
 url="https://toolchains.bootlin.com"
 license=(
@@ -31,7 +31,7 @@ sha256sums=('dc986211c6a8701868277d52e8f5061ea13d119ce0d9f23b61f1b0373984479b'
             '830644a5f9c921fd8df2d40ab80dd81f03a662e5a7ad3cee20dbe2fde0de272e'
             '54875d12829a792b8d4d1c9fb1f736afc60f514b0d260616f188eafafaac7cb5'
             'e102fe06809440bbca3b6d0d8837ffdb5122b07386d1d2ac023084d898aafe7b'
-            'e03a57a149b2b82221bbf726b6259c4004488732a01f9140e4d6012ab35a48ba')
+            'acd6a47a60fef238101f948ae20bc7f27f9852e8c6eadd0d88878a643e78fe23')
 
 build() {
     cd "$srcdir"
