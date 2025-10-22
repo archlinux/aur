@@ -8,7 +8,7 @@
 
 _pkgname="godot-export-templates"
 pkgname="$_pkgname-linux"
-pkgver=4.5
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='Godot export templates - Linux x86_64'
 url="https://github.com/godotengine/godot"
