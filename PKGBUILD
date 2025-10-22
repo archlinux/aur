@@ -2,16 +2,16 @@
 # Maintainer (old): Janne Heß <jannehess@gmail.com>
 
 pkgname=mkinitcpio-sd-zfs
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Compatibility between systemd and ZFS roots'
 license=('MIT')
-url='https://github.com/dasJ/sd-zfs'
+url='https://github.com/jkolo/sd-zfs'
 conflicts=('mkinitcpio-sd-zfs-git')
 depends=('mkinitcpio' 'systemd')
 
-source=("https://github.com/dasJ/sd-zfs/archive/v${pkgver}.tar.gz")
-sha512sums=('04ceb91cf0c1d54a787ab3ac028c4b930eb948ee71d1b07b45b8faa8cbae08a3458f0d2f9e076ea8f19a344cc44a9e155ec59f4f5f4e45ef0d851b2ac12880b8')
+source=("https://github.com/jkolo/sd-zfs/archive/v${pkgver}.tar.gz")
+sha512sums=('1488d13cb8cd9b9c9c2670ee6c77885de73507bcd55183c013a5be313878b08873ce71b07481b00ab13e1e1d7631f4b1b05e8c4fa4ff3223eef640bf39b981b4')
 
 #_git_commit="1a36d4fd85377c0b323d8f2ca2039770e5a0fee4"
 #source=("https://github.com/dasJ/sd-zfs/archive/${_git_commit}.tar.gz")
