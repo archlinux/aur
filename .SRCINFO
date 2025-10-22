@@ -1,16 +1,16 @@
 pkgbase = plutonia-bin
 	pkgdesc = A powerful launcher for Plutonia, built with Electron and JavaScript.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.18
+	pkgver = 1.1.19
 	pkgrel = 1
 	url = https://github.com/Plutonia-Games/Plutonia-Launcher
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron38
-	provides = plutonia=1.1.18
+	provides = plutonia=1.1.19
 	conflicts = plutonia
-	source = plutonia-1.1.18-x86_64.AppImage::https://github.com/Plutonia-Games/Plutonia-Launcher/releases/download/1.1.18/Plutonia-linux-x86_64.AppImage
+	source = plutonia-1.1.19-x86_64.AppImage::https://github.com/Plutonia-Games/Plutonia-Launcher/releases/download/1.1.19/Plutonia-linux-x86_64.AppImage
 	source = plutonia.sh
-	sha256sums = 15740ece3ab3112ca63205e69d668b43c15002f04d92b0e0ac1a5539a17ec56f
+	sha256sums = a2e0b7447d280e4be0a8fd6b2c411a9dca235e0e50b9d70c164b9f75ffc944ca
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = plutonia-bin
