@@ -1,22 +1,20 @@
 pkgbase = brs-desktop-bin
 	pkgdesc = Roku device simulator as a desktop app
-	pkgver = 1.4.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/lvcabral/brs-desktop
-	arch = armv7h
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron25
-	provides = brs-desktop=1.4.0
+	depends = electron29
+	provides = brs-desktop=2.0.1
 	conflicts = brs-desktop
-	source = LICENSE-1.4.0::https://raw.githubusercontent.com/lvcabral/brs-desktop/v1.4.0/LICENSE
+	source = LICENSE-2.0.1::https://raw.githubusercontent.com/lvcabral/brs-desktop/v2.0.1/LICENSE
 	source = brs-desktop.sh
-	sha256sums = 2a22abb3fe5e373c8bc269cc5f61321ca9ece31084b86e3b093bd7bf37427c23
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_armv7h = brs-desktop-1.4.0-armv7h.AppImage::https://github.com/lvcabral/brs-desktop/releases/download/v1.4.0/brs-desktop-1.4.0-linux-armv7l.AppImage
-	sha256sums_armv7h = 83967f916596aadcc34cca5535e6f9730ec7af357cbf0189053ec69717d18e6b
-	source_x86_64 = brs-desktop-1.4.0-x86_64.AppImage::https://github.com/lvcabral/brs-desktop/releases/download/v1.4.0/brs-desktop-1.4.0-linux-x86_64.AppImage
-	sha256sums_x86_64 = d674e182ab35eccebc17ea221820abef165e744c26caf3642c2ec89040ce8fe5
+	sha256sums = 3931f2a649011059e8bfbc83a75d5fd2c4982362af31cb9cd14fae5a5c42f3fa
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_x86_64 = brs-desktop-2.0.1-x86_64.deb::https://github.com/lvcabral/brs-desktop/releases/download/v2.0.1/brs-desktop-2.0.1-linux-amd64.deb
+	sha256sums_x86_64 = 0125e71bd9396a747c5bfa4085b9cdaf7e9b537b89663fe54ba236f9971ec370
 
 pkgname = brs-desktop-bin
