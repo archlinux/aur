@@ -1,16 +1,16 @@
 # Maintainers: arraen, thadah
 pkgname="synergy3-bin"
-pkgver="3.3.1"
-pkgrel="2"
+pkgver="3.4.0"
+pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
 arch=("x86_64")
-source=("landing.html::https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x64.deb")
+source=("landing.html::https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x86_64.deb")
 sha256sums=('SKIP')
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
 depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libappindicator-gtk3' 'libayatana-appindicator')
-optdepends=()
+optdepends=('pugixml')
 options=("!strip")
 
 # Since Synergy API now requires a token, we need to enter the landing page and scrape it to download the deb file
@@ -26,14 +26,14 @@ prepare() {
 
   rm -f "$html_file"
 
-  local download_url="https://symless.com/synergy/api/download/synergy-$pkgver-linux-noble-x64.deb?token=$token"
-
+  local download_url="https://symless.com/synergy/api/download/synergy-$pkgver-linux-noble-x86_64.deb?token=$token"
+  
   echo "Downloading from tokenized URL: $download_url"
-  curl -L -s -o "${srcdir}/synergy-$pkgver-linux-noble-x64.deb" "$download_url"
+  curl -L -s -o "${srcdir}/synergy-$pkgver-linux-noble-x86_64.deb" "$download_url"
 }
 
 package() {
-  bsdtar -xf "${srcdir}/synergy-${pkgver}-linux-noble-x64.deb" -C "${srcdir}/"
+  bsdtar -xf "${srcdir}/synergy-${pkgver}-linux-noble-x86_64.deb" -C "${srcdir}/"
   bsdtar -xf "${srcdir}/data.tar.bz2" -C "${pkgdir}/"
 
   # Install binaries and create symlinks
@@ -50,6 +50,10 @@ package() {
   # Install the login service into the system unit directory (disabled).
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
   cp "${pkgdir}/opt/Synergy/resources/services/system/synergy.service" "${pkgdir}/usr/lib/systemd/system/"
+
+  # Add the loginInfo file
+  mkdir -p "${pkgdir}/etc/Synergy"
+  touch "${pkgdir}/etc/Synergy/loginInfo"
 
   chmod 4755 "${pkgdir}/opt/Synergy/chrome-sandbox" || true
 }
