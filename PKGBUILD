@@ -15,11 +15,11 @@ source=("https://pypi.python.org/packages/${_hash_id}/${pkgname}-${pkgver}.tar.g
 md5sums=('dacc7a4f16e1f7981d19d53bdea36dc7')
 
 build() {
-	cd $pkgname-$pkgver
-    	python -m build --wheel --no-isolation
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd $pkgname-$pkgver
-    	python -m installer --destdir="$pkgdir" dist/*.whl
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
