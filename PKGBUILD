@@ -3,7 +3,7 @@
 
 pkgname=rudesktop
 pkgver=2.8.1705
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
