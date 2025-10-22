@@ -1,7 +1,7 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname='ssh2incus'
-pkgver=0.6
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc="SSH server for Incus instances"
 arch=(
   'x86_64'
@@ -11,6 +11,7 @@ url='https://ssh2incus.com/'
 license=('GPL-3.0-only')
 depends=()
 makedepends=(
+  'go'
   'just'
 )
 optdepends=('incus')
@@ -22,7 +23,7 @@ source=(
   "git+https://github.com/mobydeck/ssh2incus.git#tag=${pkgver}"
 )
 sha256sums=(
-  'f3329cff779af0112c60d3e8f8652b9af70ccb97269456d499fb3f957e024315'
+  '7337a6d5064eb48d991677906c73e5eaf40259207b5e1dfb16fddbf8d1b9c566'
 )
 
 _buildarch="$CARCH"
@@ -45,6 +46,8 @@ package() {
 
   install -Dm755 "dist/ssh2incus-linux-${_buildarch}" "$pkgdir/usr/bin/ssh2incus"
   install -Dm644 "packaging/ssh2incus.env" "$pkgdir/etc/default/ssh2incus"
+  install -Dm644 "packaging/config.yaml" "$pkgdir/etc/ssh2incus/config.yaml"
+  install -Dm644 "packaging/create-config.yaml" "$pkgdir/etc/ssh2incus/create-config.yaml"
   install -Dm644 "packaging/ssh2incus.service" "$pkgdir/usr/lib/systemd/system/ssh2incus.service"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/ssh2incus/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ssh2incus/LICENSE"
