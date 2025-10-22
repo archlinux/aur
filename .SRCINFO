@@ -1,0 +1,20 @@
+pkgbase = arch-update-manager
+	pkgdesc = A Linux Mint inspired GTK4-based update manager for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/destbg/arch-update-manager
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = vte4
+	depends = polkit
+	depends = pacman
+	depends = timeshift
+	optdepends = paru: AUR helper support
+	optdepends = yay: AUR helper support
+	source = arch-update-manager::git+https://github.com/destbg/arch-update-manager.git
+	sha256sums = SKIP
+
+pkgname = arch-update-manager
