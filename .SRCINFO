@@ -1,6 +1,6 @@
 pkgbase = factorio-space-age-experimental
 	pkgdesc = A 2D game about building and maintaining factories (experimental branch w/ Space Age expansion).
-	pkgver = 2.0.69
+	pkgver = 2.0.72
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = x86_64
