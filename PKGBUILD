@@ -9,6 +9,7 @@ url="https://github.com/OmixVisualization/qtjambi"
 license=("LGPL" "GPL")
 depends=("qt6-base=${qtver}" "qt6-declarative=${qtver}")
 makedepends=("ant" "chrpath" "gcc" "jdk21-openjdk" "make" "patch")
+options=(!debug)
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${qtjambiver}.tar.gz)
 sha256sums=(SKIP)
 
