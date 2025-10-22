@@ -3,7 +3,7 @@
 
 pkgname=hatari-enhanced-git
 realpkgname=hatari
-pkgver=v2.5.0.148.g17bec54e
+pkgver=v2.6.1.r89.ge626bb1
 pkgrel=1
 pkgdesc='An Atari ST and STE emulator. This build uses capsimage for using IPF and STX disk images.'
 arch=('x86_64')
@@ -12,12 +12,12 @@ license=('GPL')
 depends=('sdl2' 'libpng' 'portaudio' 'systemd-libs' 'hicolor-icon-theme' 'capsimage')
 makedepends=('cmake' 'git' 'systemd')
 conflicts=('hatari')
-source=("git://git.tuxfamily.org/gitroot/hatari/hatari.git")
+source=("git+https://framagit.org/hatari/hatari.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$realpkgname"
-	git describe --long | sed "s/\([^-]*-g\) /r\1/;s/-/./g"
+	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
