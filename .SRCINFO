@@ -10,6 +10,10 @@ pkgbase = hypr-mon-switch-git
 	depends = yq
 	depends = bash
 	depends = systemd
+	depends = procps-ng
+	depends = util-linux
+	optdepends = libnotify: for desktop notifications
+	optdepends = sudo: for user switching
 	source = hypr-mon-switch-git::git+https://github.com/aujezus/hypr-mon-switch.git
 	sha256sums = SKIP
 
