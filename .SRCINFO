@@ -1,7 +1,7 @@
 pkgbase = bash-timer
 	pkgdesc = Human-readable execution time for every command in bash!
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hopeseekr/bash-timer
 	install = bash-timer.install
 	arch = any

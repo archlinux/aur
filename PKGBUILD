@@ -1,7 +1,7 @@
 # Maintainer: Quentin Bouvet <qbouvet at outlook dot com>
 pkgname=bash-timer
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Human-readable execution time for every command in bash!"
 arch=('any')
 url="https://github.com/hopeseekr/bash-timer"
