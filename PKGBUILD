@@ -11,6 +11,7 @@ depends=('fontconfig'
          'freetype2'
          'glibc'
          'gcc-libs'
+         'hicolor-icon-theme'
          'hidapi'
          'libevdev'
          'libglvnd'
@@ -40,7 +41,6 @@ makedepends=('cmake'
              'nasm'
              'patchelf'
              'scons')
-changelog="Changelog"
 # HEAD until arch package is properly set up
 _commit='7f796cbbef4747b0e84ebce4ce68ec2adbcef331'
 source=("${pkgname}-${pkgver}::git+https://github.com/LordOfDragons/dragengine.git?signed#commit=$_commit"
