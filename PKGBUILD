@@ -40,5 +40,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	./build.sh DESTDIR="$pkgdir/" PREFIX=/usr install
+	DESTDIR="$pkgdir/" PREFIX=/usr ./build.sh install
 }
