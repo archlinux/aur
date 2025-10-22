@@ -1,7 +1,7 @@
 # Maintainer: Bono Fox <tiny4linux@bono-fox.de>
 
 pkgname=tiny4linux-cli
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A command line interface for controlling the OBSBOT Tiny series."
 arch=('x86_64')
@@ -11,10 +11,10 @@ categories=('Utility')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$url/releases/download/v$pkgver/tiny4linux-$pkgver.tar.gz")
-sha256sums=('2e2fb12ed6080c35dd389a0c0b30906cf9abab0c2fd7035296c7e4fa41728df6')
+sha256sums=('56a2af8a39527cb8cb352083ce0da28e744efa452b2f0b84bbdea0348c4f3ee7')
 
 build() {
-  cargo build --release --locked
+  cargo build --release --features cli --locked
 }
 
 package() {
