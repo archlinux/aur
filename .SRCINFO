@@ -1,7 +1,7 @@
 pkgbase = deta-surf
 	pkgdesc = Deta Surf, an AI notebook that brings all your files and the web directly into your stream of thought.
 	pkgver = 1.1.0_beta.1.x86
-	pkgrel = 3
+	pkgrel = 4
 	url = https://deta.surf
 	arch = x86_64
 	license = Apache-2.0
