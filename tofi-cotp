@@ -1,0 +1,118 @@
+#!/bin/bash
+#
+# tofi-cotp - A tofi wrapper for cotp (CLI TOTP authenticator)
+# Provides a clean, sorted menu for selecting and copying TOTP codes
+#
+
+set -euo pipefail
+
+# Check if cotp is installed
+if ! command -v cotp &> /dev/null; then
+    notify-send "TOTP Error" "cotp is not installed. Run: sudo pacman -S cotp"
+    exit 1
+fi
+
+# Check if tofi is installed
+if ! command -v tofi &> /dev/null; then
+    notify-send "TOTP Error" "tofi is not installed. Run: sudo pacman -S tofi"
+    exit 1
+fi
+
+# Check if database exists
+COTP_DB="$HOME/.local/share/cotp/db.cotp"
+if [ ! -f "$COTP_DB" ]; then
+    notify-send "TOTP Setup" "No TOTP database found. Run 'cotp' to set up."
+    if command -v alacritty &> /dev/null; then
+        alacritty -e cotp &
+    else
+        cotp &
+    fi
+    exit 0
+fi
+
+# Get password from keyring
+PASSWORD=$(secret-tool lookup application cotp 2>/dev/null || true)
+
+# If password not in keyring, prompt for it and store
+if [ -z "$PASSWORD" ]; then
+    PASSWORD=$(zenity --password --title="COTP Master Password" 2>/dev/null | tr -d '\n' || true)
+    if [ -z "$PASSWORD" ]; then
+        notify-send "TOTP Cancelled" "Password required"
+        exit 0
+    fi
+    
+    # Verify password works before storing
+    if ! echo "$PASSWORD" | cotp --password-stdin list &>/dev/null; then
+        notify-send "TOTP Error" "Invalid password"
+        exit 1
+    fi
+    
+    # Store in keyring
+    echo -n "$PASSWORD" | secret-tool store --label="COTP Master Password" application cotp
+fi
+
+# Create temp file for mapping display name to label
+MAPPING_FILE=$(mktemp)
+trap "rm -f $MAPPING_FILE" EXIT
+
+# Build display list and mapping
+# Format: "Display Name\tActual Label"
+echo "$PASSWORD" | cotp --password-stdin list 2>/dev/null | tail -n +2 | awk '{
+    label = $3;
+    # If column 2 is "<No", then issuer is "<No issuer>" and label is column 4
+    if ($2 == "<No") {
+        display = $4;
+        label = $4;
+    } else {
+        # Normal case: issuer is column 2, label is column 3
+        display = $2 " - " $3;
+        label = $3;
+    }
+    print display "\t" label;
+}' | sort > "$MAPPING_FILE"
+
+# Extract just the display names for tofi
+accounts=$(cut -f1 "$MAPPING_FILE")
+
+if [ -z "$accounts" ]; then
+    notify-send "TOTP Error" "No accounts found. Add accounts with 'cotp add'."
+    if command -v alacritty &> /dev/null; then
+        alacritty -e cotp &
+    else
+        cotp &
+    fi
+    exit 0
+fi
+
+# Show tofi menu with accounts
+selected=$(echo "$accounts" | tofi --prompt-text="TOTP: " || true)
+
+# Exit if no selection
+[ -z "$selected" ] && exit 0
+
+# Look up the actual label from the mapping file
+label=$(grep -F "$selected" "$MAPPING_FILE" | head -1 | cut -f2)
+
+if [ -z "$label" ]; then
+    notify-send "TOTP Error" "Could not find label for: $selected"
+    exit 1
+fi
+
+# Generate TOTP code using label
+code=$(echo "$PASSWORD" | cotp --password-stdin extract --label "$label" 2>/dev/null || true)
+
+if [ -z "$code" ]; then
+    notify-send "TOTP Error" "Failed to generate code for $selected"
+    exit 1
+fi
+
+# Copy to clipboard (both regular and primary selection)
+echo -n "$code" | wl-copy
+echo -n "$code" | wl-copy -p
+
+# Calculate remaining seconds for the current TOTP period (30s)
+current_time=$(date +%s)
+remaining=$((30 - (current_time % 30)))
+
+# Show notification with code and countdown
+notify-send -t 5000 "TOTP: $selected" "Code: $code\nExpires in: ${remaining}s"
