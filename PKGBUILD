@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=26
+pkgrel=27
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -11,7 +11,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg' 'libvips' 'lib
 makedepends=('rust' 'nodejs' 'npm' 'pnpm' 'pkgconf' 'clang' 'sqlite')
 provides=('note-gen')
 conflicts=('note-gen-bin')
-options=('!strip')
+options=('!strip' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/note-gen-v$pkgver.tar.gz")
 sha256sums=('87b8a5af2c8596304890a275bbbba294a01aeb3040ea3dbb3fb12011425ee06b')
 
@@ -21,17 +21,6 @@ prepare() {
     export npm_config_build_from_source=true
     export CARGO_HOME="$srcdir/.cargo"
 
-    # SQLite构建环境变量
-    export LIBSQLITE3_LIB_DIR=/usr/lib
-    export LIBSQLITE3_INCLUDE_DIR=/usr/include
-    export SQLITE_USE_STATIC=0
-    export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
-
-    # 优化pkg-config和链接器行为
-    export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
-    export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
-    export RUSTFLAGS="-L/usr/lib"
-
     # 安装前端依赖
     pnpm install --frozen-lockfile
 }
@@ -40,17 +29,6 @@ build() {
     cd "$pkgname-$pkgname-v$pkgver"
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
-
-    # SQLite构建环境变量
-    export LIBSQLITE3_LIB_DIR=/usr/lib
-    export LIBSQLITE3_INCLUDE_DIR=/usr/include
-    export SQLITE_USE_STATIC=0
-    export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
-
-    # 优化pkg-config和链接器行为
-    export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
-    export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
-    export RUSTFLAGS="-L/usr/lib"
 
     # 构建前端 (由Tauri的beforeBuildCommand调用)
     pnpm build
