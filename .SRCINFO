@@ -1,6 +1,6 @@
 pkgbase = ssh-vault
 	pkgdesc = Encrypt/Decrypt using SSH keys
-	pkgver = 1.0.12
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://ssh-vault.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ssh-vault
 	makedepends = rust
 	makedepends = git
 	depends = glibc
-	source = ssh-vault-1.0.12.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/1.0.12.tar.gz
-	sha256sums = ee05defead0a520c0273409aa8bf45980624dec2bd151dcb329a8939174f095f
+	source = ssh-vault-1.1.3.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/1.1.3.tar.gz
+	sha256sums = 84ddf474cac5e0befc7bd9766352a5e24b817160eee29fcd99e5b54ec270ead3
 
 pkgname = ssh-vault
