@@ -1,6 +1,6 @@
 pkgbase = cctools
 	pkgdesc = Apple cctools port for Linux
-	pkgver = 1010.6+g84ce22d
+	pkgver = 1024.3+geea1c9e
 	pkgrel = 1
 	url = https://github.com/tpoechtrager/cctools-port
 	arch = i686
@@ -8,12 +8,15 @@ pkgbase = cctools
 	license = APSL-2.0
 	makedepends = clang
 	makedepends = git
+	makedepends = llvm
 	depends = gcc-libs
 	depends = glibc
 	depends = libdispatch
+	optdepends = apple-libtapi: for SDKs with .tdb stubs
+	optdepends = xar: for bitcode bundle support
 	provides = x86_64-apple-darwin-binutils
 	conflicts = x86_64-apple-darwin-binutils
-	source = git+https://github.com/tpoechtrager/cctools-port.git#commit=a2724f04cafe3590fbc3d0beacc37293d83a2177
+	source = git+https://github.com/tpoechtrager/cctools-port.git#commit=eea1c9ee2a3a386d96898b39feaa62a58a33f82a
 	md5sums = SKIP
 
 pkgname = cctools
