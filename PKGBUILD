@@ -3,7 +3,7 @@
 
 pkgname=lora-cyrillic-font
 pkgver=3.021
-pkgrel=1
+pkgrel=2
 pkgdesc='Contemporary serif font that supports Latin and Cyrillic scripts. Includes OTF, TTF, Variable and Webfonts.'
 arch=('any')
 url="https://github.com/cyrealtype/Lora-Cyrillic"
@@ -19,8 +19,8 @@ package() {
     mkdir -p "${pkgdir}/usr/share/fonts/Variable/"
     mkdir -p "${pkgdir}/usr/share/fonts/Webfonts/"
     cd "${srcdir}"
-    install -Dm644 fonts/otf/* "${pkgdir}/usr/share/fonts/OTF/"
-    install -Dm644 fonts/ttf/* "${pkgdir}/usr/share/fonts/TTF/"
-    install -Dm644 fonts/variable/* "${pkgdir}/usr/share/fonts/Variable/"
-    install -Dm644 fonts/webfonts/* "${pkgdir}/usr/share/fonts/Webfonts/"
+    install -Dm644 otf/* "${pkgdir}/usr/share/fonts/OTF/"
+    install -Dm644 ttf/* "${pkgdir}/usr/share/fonts/TTF/"
+    install -Dm644 variable/* "${pkgdir}/usr/share/fonts/Variable/"
+    install -Dm644 webfonts/* "${pkgdir}/usr/share/fonts/Webfonts/"
 }
