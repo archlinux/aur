@@ -1,0 +1,5 @@
+democap-*.pkg.tar.zst
+*.delga
+democap*/
+pkg/
+src/
