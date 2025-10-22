@@ -3,12 +3,12 @@ pkgbase = democap
 	pkgver = 1.5
 	pkgrel = 1
 	url = https://dragondreams.ch/index.php/democap
-	changelog = Changelog
 	arch = any
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = scons
 	depends = dragengine
+	depends = hicolor-icon-theme
 	depends = xdg-utils
 	noextract = DEMoCap-nightly.delga
 	source = democap-1.5::git+https://github.com/LordOfDragons/democap.git?signed#commit=29eb6e6c77293cfb228da87e7a5282ff4aebf468

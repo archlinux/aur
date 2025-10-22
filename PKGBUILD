@@ -6,12 +6,12 @@ pkgrel=1
 pkgdesc="Drag[en]gine motion capture using VR hardware"
 arch=('any')
 url="https://dragondreams.ch/index.php/democap"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('dragengine'
+         'hicolor-icon-theme'
          'xdg-utils')
 makedepends=('git'
              'scons')
-changelog="Changelog"
 # nightly until arch package is properly set up
 _commit='29eb6e6c77293cfb228da87e7a5282ff4aebf468'
 _delgaVersion="nightly"
@@ -41,6 +41,4 @@ build() {
 package() {
 	cd "democap-$pkgver"/unix
 	scons version="$pkgver" --install-sandbox="$(realpath "$pkgdir")"
-	cd ..
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/democap/LICENSE
 }
