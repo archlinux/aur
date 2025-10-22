@@ -1,9 +1,9 @@
 # Maintainer: Mrinmoy <mrinmoyin@duck.com>
 pkgname=compose-cli-bin
 pkgver=0.0.21
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="Compose Cli — for Android devs who live in the terminal "
 arch=(x86_64)
 url="https://mrinmoyin.gitlab.io/compose-cli"
 license=('BSD-4')
