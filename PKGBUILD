@@ -1,15 +1,15 @@
-# Maintainer: Frederiuc Bezies <fredbezies at gmail dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 _gitname=fs-uae
 pkgname=fs-uae-git
-pkgver=r2703.80f74628
+pkgver=r7778.f362278cc
 pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (GIT version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
 license=("GPL2")
-depends=('sdl2_ttf' 'portmidi' 'libmpeg2' 'hicolor-icon-theme' 'openal' 'libxi')
+depends=('sdl3_ttf' 'sdl3_image' 'portmidi' 'libmpeg2' 'hicolor-icon-theme' 'openal' 'libxi')
 makedepends=('zip')
 source=("git+https://github.com/FrodeSolheim/fs-uae.git")
 provides=("fs-uae" "fs-uae-devel")
