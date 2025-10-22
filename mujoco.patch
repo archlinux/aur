@@ -1,5 +1,5 @@
 diff --git a/python/mujoco/CMakeLists.txt b/python/mujoco/CMakeLists.txt
-index 2f8da9e6..4f673c99 100644
+index 90fab4eb..03162872 100644
 --- a/python/mujoco/CMakeLists.txt
 +++ b/python/mujoco/CMakeLists.txt
 @@ -132,7 +132,7 @@ endif()
@@ -29,7 +29,7 @@ index 2f8da9e6..4f673c99 100644
    PACKAGE_NAME
    pybind11
 diff --git a/python/mujoco/__init__.py b/python/mujoco/__init__.py
-index de578935..186cb9bd 100644
+index d551daa2..8dc9892e 100644
 --- a/python/mujoco/__init__.py
 +++ b/python/mujoco/__init__.py
 @@ -198,8 +198,8 @@ _specs.MjSpec.to_zip = to_zip
@@ -69,10 +69,10 @@ index cebdec84..ec798295 100644
        self._copy_mjpython()
  
 diff --git a/simulate/CMakeLists.txt b/simulate/CMakeLists.txt
-index bd94acc3..42e53801 100644
+index 4a615018..5a0fbd0e 100644
 --- a/simulate/CMakeLists.txt
 +++ b/simulate/CMakeLists.txt
-@@ -80,6 +80,7 @@ if(MUJOCO_HARDEN)
+@@ -81,6 +81,7 @@ if(MUJOCO_HARDEN)
  endif()
  
  # Fetch lodepng dependency.
@@ -80,10 +80,10 @@ index bd94acc3..42e53801 100644
  if(NOT TARGET lodepng)
    FetchContent_Declare(
      lodepng
-@@ -115,8 +116,13 @@ if(APPLE)
+@@ -116,8 +117,13 @@ if(APPLE)
  endif()
  target_include_directories(
-   platform_ui_adapter PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+   platform_ui_adapter PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 -                             $<TARGET_PROPERTY:glfw,INTERFACE_INCLUDE_DIRECTORIES>
  )
 +# Upstream MuJoCo is carefully not linking glfw here, and so it is just include its directories
@@ -96,7 +96,7 @@ index bd94acc3..42e53801 100644
  if(SIMULATE_GLFW_DYNAMIC_SYMBOLS)
    target_compile_definitions(platform_ui_adapter PUBLIC mjGLFW_DYNAMIC_SYMBOLS)
 diff --git a/simulate/cmake/SimulateDependencies.cmake b/simulate/cmake/SimulateDependencies.cmake
-index 5141406c..2f413cae 100644
+index 7885f5f9..1b69b018 100644
 --- a/simulate/cmake/SimulateDependencies.cmake
 +++ b/simulate/cmake/SimulateDependencies.cmake
 @@ -22,12 +22,12 @@ else()
@@ -114,7 +114,7 @@ index 5141406c..2f413cae 100644
 +option(MUJOCO_SIMULATE_USE_SYSTEM_GLFW "Use installed GLFW version." ON)
  
  set(MUJOCO_DEP_VERSION_glfw3
-     7482de6071d21db77a7236155da44c172a7f6c9e # 3.3.8
+     7b6aead9fb88b3623e3b3725ebb42670cbe4c579 # 3.4
 @@ -59,7 +59,7 @@ findorfetch(
  )
  
