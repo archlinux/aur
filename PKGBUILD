@@ -1,7 +1,7 @@
-# Maintainer: Alexander <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=flapc
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='The Flap compiler'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/flapc'
 license=(BSD3)
 makedepends=(git go)
 source=("git+$url#tag=v$pkgver")
-b2sums=('c1db0bf5d9bcc3a5d6d178453dcf6077178bf10ea6915e7b7f5eefaf14f0720b4212e5fe1c6a6c7df5cf8d81216837d31cf8ed34c2271ca668e85d38a02e761d')
+b2sums=('aaaaf54ab3f7cce4769378c315b069f2f7358a4847ae9c144b7dea91baf6b2be9af3838cadf9a18ea3adfa4403b2b4587d51a5f3222a06339e57d5c3e3b22d62')
 
 build() {
   cd $pkgname
