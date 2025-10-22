@@ -1,6 +1,6 @@
 pkgbase = proxygen
 	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server
-	pkgver = 2025.10.13.00
+	pkgver = 2025.10.20.00
 	pkgrel = 1
 	url = https://github.com/facebook/proxygen
 	arch = x86_64
@@ -12,16 +12,16 @@ pkgbase = proxygen
 	makedepends = python
 	depends = boost-libs
 	depends = double-conversion
-	depends = fizz>=2025.10.13.00
+	depends = fizz>=2025.10.20.00
 	depends = fmt
-	depends = folly>=2025.10.13.00
+	depends = folly>=2025.10.20.00
 	depends = gcc-libs
 	depends = gflags
 	depends = glibc
 	depends = google-glog
-	depends = mvfst>=2025.10.13.00
+	depends = mvfst>=2025.10.20.00
 	depends = openssl
-	depends = wangle>=2025.10.13.00
+	depends = wangle>=2025.10.20.00
 	depends = c-ares
 	depends = zlib
 	depends = zstd
@@ -31,7 +31,9 @@ pkgbase = proxygen
 	provides = libproxygendeviousbaton.so
 	provides = libproxygenhqloggerhelper.so
 	provides = libproxygenhttpserver.so
-	source = proxygen-2025.10.13.00.tar.gz::https://github.com/facebook/proxygen/archive/v2025.10.13.00.tar.gz
-	sha256sums = 5c82c8296842a7f104cddf4e63cb850abf15772cbf183737a5f10af352b43763
+	source = proxygen-2025.10.20.00.tar.gz::https://github.com/facebook/proxygen/archive/v2025.10.20.00.tar.gz
+	source = fix-cmake-remove-boost-system.patch::https://github.com/facebook/proxygen/pull/580.patch
+	sha256sums = af7942f37a76bf755c0e0d1573b1357377852486b5d569db98b4d69ee98cf182
+	sha256sums = 5b4ee1b3ebdfdc7f78c2aeb39f1192dbf7d1d9a4786ff9395e0fd8d7d4847ffd
 
 pkgname = proxygen

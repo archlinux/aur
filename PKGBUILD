@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=proxygen
-pkgver=2025.10.13.00
+pkgver=2025.10.20.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=(x86_64)
@@ -46,11 +46,14 @@ provides=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "fix-cmake-remove-boost-system.patch::https://github.com/facebook/proxygen/pull/580.patch"
   )
-sha256sums=('5c82c8296842a7f104cddf4e63cb850abf15772cbf183737a5f10af352b43763')
+sha256sums=('af7942f37a76bf755c0e0d1573b1357377852486b5d569db98b4d69ee98cf182'
+            '5b4ee1b3ebdfdc7f78c2aeb39f1192dbf7d1d9a4786ff9395e0fd8d7d4847ffd')
 
 prepare() {
   cd $pkgname-$pkgver
+  patch --forward --strip=1 --input="$srcdir/fix-cmake-remove-boost-system.patch"
   # Use system CMake config instead of bundled module, incompatible with glog
   # v0.7.0+
   sed -i '/find_package(fmt REQUIRED)/a find_package(Glog CONFIG REQUIRED)' \
