@@ -1,77 +1,109 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Jelle van der Waa <jelle vdwaa nl>
-# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Dale Blount <dale@archlinux.org>
-# Contributor: Michael Düll <mail@akurei.me>
-# Contributor: Luca Corbatto <lucaatcorbatto.de>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: arraen
+# Contributor: thadah
 
-# I would just like to take a minute here and state that synergy is
-# some of the worst packaged software ever. They BUNDLE a fucking
-# zip for cryptopp and do not provide an option to use a system-
-# installed version of that library. They change around paths every
-# update and just generally don't seem to care much.
-pkgname=synergy
-pkgver=1.15.1+r4
-# Avoid external commands like `sed` here, as PKGBUILD may be sourced without /usr/bin in $PATH
-_tag=${pkgver/snapshot/-snapshot}
-_tag=${_tag/beta/-beta}
+_electron=38
+_Name="Synergy"
+pkgname="${_Name,,}"
+pkgver=3.4.0
 pkgrel=1
-pkgdesc='Share a single mouse and keyboard between multiple computers'
-url='https://symless.com/synergy/'
-arch=('x86_64')
-# https://github.com/symless/synergy-core/blob/1.15.0.16-snapshot/LICENSE indicates GPLv2, and only one C++ file says "any later"
-license=('GPL-2.0-only')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbfile' 'openssl' 'libxrandr' 'hicolor-icon-theme' 'libnotify' 'pugixml')
-makedepends=('git' 'libxt' 'cmake' 'qt6-base' 'qt6-tools' 'gmock' 'gtest')
-optdepends=('qt6-base: gui support')
-checkdepends=('xorg-server-xvfb')
-source=("git+https://github.com/deskflow/deskflow.git#tag=${_tag}"
-        use-system-libs.patch
-        synergys.socket
-        synergys.service)
-sha512sums=('a4ba508972a222ada73b7a9009f52fc2872422c0bf903d1bdcde57f398465e60a4585223596e0e54a8d94986586c8bfa4c87173e219f200ea491df7289746fc0'
-            'fd521ed2464d91fe20576b51060224bc402489d5c08c13a34122f573ab4c77812c289ad09258829e190cbe2533dd170fd636587f68751965cbcc6039be5b6859'
-            'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
-            '9663a11b915e10e60317e732a4d1191e8f8ff19176994c27dd20aa445daab7565bd624e5575c9c639d144293879fbe8376834a076723f778fd322ebd1c9f2029')
+pkgdesc="Share one mouse and keyboard between multiple computers"
+arch=(
+  'aarch64'
+  'x86_64'
+)
+url="https://symless.com/synergy"
+license=('custom:Proprietary')
+depends=(
+  'bash'
+  "electron${_electron}"
+  'gcc-libs'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libappindicator-gtk3'
+  'libayatana-appindicator'
+  'libei'
+  'libnotify'
+  'libxkbfile'
+  'openssl'
+  'qt6-base'
+)
+makedepends=(
+  'curl'
+  'ostree'
+  'patchelf'
+)
+optdepends=(
+  'gdm: login service'
+)
+backup=(
+  "etc/${pkgname}.conf"
+  "etc/${_Name}/loginInfo"
+)
+_pkgsrc="${pkgname}-${pkgver}"
+_landing_html="$(curl -s "${url}/download/package/synergy-personal-v3/flatpak/${_pkgsrc}-linux-noble-${CARCH}.flatpak")"
+_token="$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' <<< "${_landing_html}" | head -n1)"
+source=("electron-common.sh")
+source_aarch64=("${_pkgsrc}-aarch64.flatpak::${url}/api/download/${_pkgsrc}-linux-noble-aarch64.flatpak?token=${_token}")
+source_x86_64=("${_pkgsrc}-x86_64.flatpak::${url}/api/download/${_pkgsrc}-linux-noble-x86_64.flatpak?token=${_token}")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('fdfcc99b9a24833ce9a7323786cb34c6bb1cfb039e1bd47e1306378c54199138')
+sha256sums_x86_64=('91f683385aa12e4da6f16bb0bb6d2df5a9b0865c981dce7df5001ddf951c0b7f')
 
 prepare() {
-  cd deskflow
+  cd "${srcdir}"
+  sed -e "s/@electronversion@/${_electron}/g" \
+      -e "s/@appname@/${pkgname}/g" \
+      -e "s/@runname@/app.asar/g" \
+      -e "s/@cfgdirname@/${pkgname}/g" \
+      -e "s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g" \
+      -i "electron-common.sh"
 
-  # get rid of shitty bundled gtest and gmock
-  patch -Np1 < "${srcdir}/use-system-libs.patch"
-}
+  rm -rf "${_pkgsrc}-${CARCH}" "${_pkgsrc}-${CARCH}.ostree"
+  ostree init --repo="${_pkgsrc}-${CARCH}.ostree" --mode=bare-user
+  ostree static-delta apply-offline --repo="${_pkgsrc}-${CARCH}.ostree" "${_pkgsrc}-${CARCH}.flatpak"
+  ostree checkout --repo="${_pkgsrc}-${CARCH}.ostree" -U \
+    $(basename $(echo "${_pkgsrc}-${CARCH}.ostree"/objects/*/*.commit | cut -d/ -f3- --output-delimiter='' | tr -d '\0') .commit) "${_pkgsrc}-${CARCH}"
 
-build() {
-  cd deskflow
-  cmake -B build -S . \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGIT_SUBMODULE=OFF \
-    -DSYSTEM_PUGIXML=ON
-  make -C build
-}
+  cd "${_pkgsrc}-${CARCH}"
+  find . -type f -exec \
+    sed -i "s|/opt/${_Name}|/usr/lib/${pkgname}|g" "{}" +
 
-check() {
-  cd deskflow/build
-  xvfb-run --auto-display ./bin/unittests
-  xvfb-run --auto-display ./bin/integtests
+  sed -i "s/^Exec=.*/Exec=${pkgname}/g" 'export/share/applications/com.symless.synergy.desktop'
+
+  cd "files/lib/com.symless.synergy"
+  find . -maxdepth 1 -type f -executable -exec \
+    patchelf --remove-rpath "{}" \;
 }
 
 package() {
-  cd deskflow
+  cd "${srcdir}"
+  install -vDm755 "electron-common.sh" "${pkgdir}/usr/bin/${pkgname}"
+  
+  cd "${_pkgsrc}-${CARCH}"
+  install -vd "${pkgdir}/usr"
+  cp -vaT --no-preserve=ownership "export" "${pkgdir}/usr"
 
-  # install binary
-  install -Dm 755 build/bin/{synergy,synergyc,synergyd,synergys,syntool} -t "${pkgdir}/usr/bin"
+  cd "files/lib/com.symless.synergy"
+  install -vDm644 "resources/services/global/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -vDm644 "resources/services/system/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}-login.service"
+  find . -type f -name '*.service' -delete
 
-  # install config
-  install -Dm 644 doc/${pkgname}.conf* -t "${pkgdir}/etc"
+  install -vd "${pkgdir}/usr/lib/${pkgname}"
+  cp -vaT --no-preserve=ownership "resources" "${pkgdir}/usr/lib/${pkgname}"
+  find . -maxdepth 1 -type f -executable -name "${pkgname}-*" -exec \
+    cp -va --no-preserve=ownership "{}" -t "${pkgdir}/usr/lib/${pkgname}" \;
 
-  # install systemd service and socket
-  install -Dm 644 "${srcdir}"/synergys.{service,socket} -t "${pkgdir}/usr/lib/systemd/user"
+  cd "${pkgdir}"
+  install -vd "etc/${_Name}"
+  : > "etc/${pkgname}.conf"
+  : > "etc/${_Name}/loginInfo"
 
-  # install desktop/icon stuff
-  install -Dm 644 res/synergy.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm 644 res/dist/linux/synergy.desktop -t "${pkgdir}/usr/share/applications"
+  cd "usr"
+  install -vd "bin"
+  find "lib/${pkgname}" -maxdepth 1 -type f -executable -exec \
+    ln -vsf "/usr/{}" "bin/" \;
 }
-
-# vim:set ts=2 sw=2 et:
