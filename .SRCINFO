@@ -1,5 +1,5 @@
 pkgbase = apollo
-	pkgdesc = A self-hosted GameStream server
+	pkgdesc = A self-hosted game stream server
 	pkgver = 0.4.6
 	pkgrel = 3
 	url = https://github.com/ClassicOldSong/Apollo
