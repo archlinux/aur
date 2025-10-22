@@ -1,7 +1,7 @@
 pkgbase = litecoin-daemon
 	pkgdesc = Peer-to-peer digital currency (includes litecoind and litecoin-cli)
 	pkgver = 0.21.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.litecoin.org/
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = litecoin-daemon
 	source = 0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch
 	source = 0002-fix-missing-headers-for-gcc-15.patch
 	source = 0003-Fix-_FORTIFY_SOURCE-flag.patch
+	source = 0004-remove-boost-system.patch
 	validpgpkeys = D35621D53A1CC6A3456758D03620E9D387E55666
 	sha256sums = ba0922213f69c1b1a1d6c3441c5ea3696b538437533555ab74268f075f0de5d3
 	sha256sums = SKIP
@@ -29,5 +30,6 @@ pkgbase = litecoin-daemon
 	sha256sums = 8f4354356b66f92b52a85d91c19d576e7cb637957380c052404794a70d9f8383
 	sha256sums = bd5ecad7133a98bcb5387fa298a296cde8985d92b5a84eed06c19ec93e8b7ab4
 	sha256sums = 0ca550e3967ee880f8e24b77fc58ff22451f2966d056b4554184104c3ca5dbb5
+	sha256sums = 7d427d1ae3f0f8d848e7baf4210448bdede90b83c3ca6948f48eb4eb115b4db5
 
 pkgname = litecoin-daemon
