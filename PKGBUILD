@@ -1,7 +1,7 @@
 # Maintainer: Ludovico Genangeli <genangeliludovico26@gmail.com>
 pkgname=ytmplaylistsync
 _name="playlistmng"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=1
 pkgdesc="A covenient way to sync locally all your YTMusic playists"
@@ -17,11 +17,11 @@ depends=(
   "python-yaml>=6.0.3-1"
 )
 source=(
-  "playlistmng-$pkgver.tar.gz::https://github.com/Nias26/YTMPlaylistSync/releases/download/v$pkgver/playlistmng.tar.gz"
-  "LICENSE::https://github.com/Nias26/YTMPlaylistSync/releases/download/v$pkgver/LICENSE"
+  "playlistmng-$pkgver::https://raw.githubusercontent.com/Nias26/YTMPlaylistSync/refs/tags/v$pkgver/playlistmng"
+  "LICENSE::https://raw.githubusercontent.com/Nias26/YTMPlaylistSync/refs/tags/v$pkgver/LICENSE"
 )
 sha256sums=(
-  "76c50a06db380a349f4cc80ba762cb8073532f890543c47033d593741129ec74"
+  "6c307fc3beb042a535f66451a71c800a2297511683859aa8cf770094aeb2c472"
   "0afe56a95cbfc12001182dc98ed965083dde7f3f1247c53b611c9ee8dde150fd"
 )
 
