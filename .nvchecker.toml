@@ -1,0 +1,4 @@
+[ziggy]
+source = "git"
+git = "https://github.com/kristoff-it/ziggy.git"
+prefix = "v"

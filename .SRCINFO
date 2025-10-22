@@ -1,0 +1,19 @@
+pkgbase = ziggy
+	pkgdesc = A data serialization language for expressing clear API messages, config files, etc
+	pkgver = 0.0.1+r72+g4353b20
+	pkgrel = 1
+	url = https://ziggy-lang.io
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.15
+	noextract = known-folders-aa24df42183ad415d10bc0a33e6238c437fc0f59.tar.gz
+	noextract = lsp-kit-01c14e592d25dc57dfebba27b8bd2b4aa91c1140.tar.gz
+	source = ziggy-4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901.tar.gz::https://github.com/kristoff-it/ziggy/archive/4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901.tar.gz
+	source = known-folders-aa24df42183ad415d10bc0a33e6238c437fc0f59.tar.gz::https://github.com/ziglibs/known-folders/archive/aa24df42183ad415d10bc0a33e6238c437fc0f59.tar.gz
+	source = lsp-kit-01c14e592d25dc57dfebba27b8bd2b4aa91c1140.tar.gz::https://github.com/kristoff-it/lsp-kit/archive/01c14e592d25dc57dfebba27b8bd2b4aa91c1140.tar.gz
+	b2sums = 13ce20c231f31d629b399d5c115eff43e953d1c3d7f1a3b30de177c3b9a2eaa61f801b65483dbe51e18eb8ee7d0605fa2d8c892aca6e2e53fa5463805872ada6
+	b2sums = c2d8a5062b1baf2868b4b6f58df9d065638a551c60bc7217a14e8395009a231603d2b2a8112fad7198ede43934f523c2b25654a54f89a088eabf72d23bd9b48d
+	b2sums = 492dbc25635417efebb71ed5b3c655b8ce95cf499a7c7f9def3af7377fbdb20b1f9fdf698fbd3689cce343a44ece116b858d950850bc7efacbccc894aaf2bef9
+
+pkgname = ziggy
