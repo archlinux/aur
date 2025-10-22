@@ -1,0 +1,16 @@
+pkgbase = cache-cleaner
+	pkgdesc = Simple cache cleaner for Arch Linux and AUR helpers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cristofer528yt/cache-cleaner
+	arch = any
+	license = MIT
+	depends = pacman
+	depends = bash
+	optdepends = yay: AUR helper support
+	optdepends = paru: AUR helper support
+	optdepends = trizen: AUR helper support
+	source = cache-cleaner
+	sha256sums = SKIP
+
+pkgname = cache-cleaner

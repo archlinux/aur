@@ -1,0 +1,152 @@
+#!/bin/bash
+
+# Cache Cleaner for Arch Linux
+# AUR package: cache-cleaner
+
+VERSION="1.0.0"
+CACHE_DIRS=(
+    "/var/cache/pacman/pkg"
+    "$HOME/.cache/yay"
+    "$HOME/.cache/paru"
+    "$HOME/.cache"
+    "/var/cache"
+)
+
+show_help() {
+    echo "Cache Cleaner $VERSION"
+    echo "Usage: cache-cleaner [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  -p, --pacman     Clean pacman cache only"
+    echo "  -a, --aur        Clean AUR helpers cache only"
+    echo "  -u, --user       Clean user cache only"
+    echo "  -s, --system     Clean system cache only"
+    echo "  -A, --all        Clean all caches (default)"
+    echo "  -n, --dry-run    Show what would be deleted"
+    echo "  -h, --help       Show this help"
+    echo ""
+}
+
+clean_pacman() {
+    echo "🧹 Cleaning pacman cache..."
+    if [[ $DRY_RUN -eq 1 ]]; then
+        echo "Would run: sudo pacman -Sc"
+        sudo pacman -Sc --noconfirm --dry-run
+    else
+        sudo pacman -Sc --noconfirm
+    fi
+}
+
+clean_aur() {
+    echo "🧹 Cleaning AUR cache..."
+    local aur_dirs=(
+        "$HOME/.cache/yay"
+        "$HOME/.cache/paru"
+        "$HOME/.cache/trizen"
+    )
+    
+    for dir in "${aur_dirs[@]}"; do
+        if [[ -d "$dir" ]]; then
+            if [[ $DRY_RUN -eq 1 ]]; then
+                echo "Would remove: $dir/*"
+                find "$dir" -mindepth 1 -maxdepth 1 | head -10
+            else
+                rm -rf "$dir"/*
+                echo "✅ Cleaned: $dir"
+            fi
+        fi
+    done
+}
+
+clean_user_cache() {
+    echo "🧹 Cleaning user cache..."
+    if [[ $DRY_RUN -eq 1 ]]; then
+        echo "Would remove: $HOME/.cache/*"
+        find "$HOME/.cache" -mindepth 1 -maxdepth 1 | head -10
+    else
+        rm -rf "$HOME/.cache"/*
+        echo "✅ Cleaned user cache"
+    fi
+}
+
+clean_system_cache() {
+    echo "🧹 Cleaning system cache..."
+    if [[ $DRY_RUN -eq 1 ]]; then
+        echo "Would clean: /var/cache/*"
+        find "/var/cache" -type f 2>/dev/null | head -10
+    else
+        sudo rm -rf /var/cache/*
+        echo "✅ Cleaned system cache"
+    fi
+}
+
+# Parse arguments
+MODE="all"
+DRY_RUN=0
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -p|--pacman)
+            MODE="pacman"
+            shift
+            ;;
+        -a|--aur)
+            MODE="aur"
+            shift
+            ;;
+        -u|--user)
+            MODE="user"
+            shift
+            ;;
+        -s|--system)
+            MODE="system"
+            shift
+            ;;
+        -A|--all)
+            MODE="all"
+            shift
+            ;;
+        -n|--dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+# Main execution
+echo "🚀 Starting cache cleanup..."
+echo "Mode: $MODE | Dry run: $([ $DRY_RUN -eq 1 ] && echo "yes" || echo "no")"
+echo ""
+
+case $MODE in
+    pacman)
+        clean_pacman
+        ;;
+    aur)
+        clean_aur
+        ;;
+    user)
+        clean_user_cache
+        ;;
+    system)
+        clean_system_cache
+        ;;
+    all)
+        clean_pacman
+        clean_aur
+        clean_user_cache
+        clean_system_cache
+        ;;
+esac
+
+echo ""
+echo "✅ Cache cleanup completed!"
