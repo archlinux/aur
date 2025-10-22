@@ -1,0 +1,27 @@
+pkgbase = splashtop-onprem-bin
+	pkgdesc = Splashtop On-Prem. Self-hosted on-premise remote access and remote support solution.
+	pkgver = 3.7.4.5
+	pkgrel = 1
+	url = https://www.splashtop.com/downloads/on-prem
+	install = splashtop-onprem-bin.install
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = gcc-libs
+	depends = glibc
+	depends = keyutils
+	depends = libcap
+	depends = libpulse
+	depends = libxcb
+	depends = qt5-base
+	depends = util-linux-libs
+	depends = xcb-util-keysyms
+	depends = xcb-util
+	depends = xdotool
+	depends = zlib
+	optdepends = bash-completion: Bash completion support
+	provides = splashtop-onprem
+	options = !strip
+	source = https://download.splashtop.com/ste_v3/v3360/EP/Splashtop_Client_v3.7.4.5.deb
+	md5sums = 33c96d2ef18cb33e9501e51611e16461
+
+pkgname = splashtop-onprem-bin
