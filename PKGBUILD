@@ -14,7 +14,7 @@ makedepends=('meson' 'ninja' 'vala' 'blueprint-compiler' 'gobject-introspection'
 optdepends=('gspell: spell checking support' 'libvoikko: Finnish spell-checker' 'hspell: Hebrew spell-checker')
 provides=('karere')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('625f5f1f864c01e41a6174fb83d083b01a402c7ca14a66fbe81021f724a41989')
+sha256sums=('d56c9af6c6bcb59bb073e4237ea6a8ac7dddf3d34e72dcbbebd85635e4d573c4')
 
 build() {
 	set -euo pipefail

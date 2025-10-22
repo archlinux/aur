@@ -28,6 +28,6 @@ pkgbase = karere
 	optdepends = hspell: Hebrew spell-checker
 	provides = karere
 	source = karere-1.0.3.tar.gz::https://github.com/tobagin/karere/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 625f5f1f864c01e41a6174fb83d083b01a402c7ca14a66fbe81021f724a41989
+	sha256sums = d56c9af6c6bcb59bb073e4237ea6a8ac7dddf3d34e72dcbbebd85635e4d573c4
 
 pkgname = karere
