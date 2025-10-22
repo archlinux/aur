@@ -7,7 +7,10 @@ pkgdesc="Drag[en]gine game engine, launcher and editor"
 arch=('x86_64')
 url="https://dragondreams.ch/index.php/dragengine"
 license=('MIT')
-depends=('freetype2'
+depends=('fontconfig'
+         'freetype2'
+         'glibc'
+         'gcc-libs'
          'hidapi'
          'libevdev'
          'libglvnd'
@@ -19,13 +22,17 @@ depends=('freetype2'
          'libvpx'
          'libwebp'
          'libx11'
+         'libxext'
+         'libxfixes'
          'libxft'
          'libxi'
          'libxrandr'
+         'libxrender'
          'openal'
          'openxr'
          'soundtouch'
-         'xdg-utils')
+         'xdg-utils'
+         'zlib')
 makedepends=('cmake'
              'gcc'
              'git'
@@ -82,6 +89,11 @@ package_dragengine() {
 package_deigde() {
 	pkgdesc="Drag[en]gine IGDE (Editor)"
 	provides=('libdeigdeshared.so')
+	depends=('dragengine'
+             'glibc'
+             'gcc-libs'
+	         'xdg-utils'
+	         'zlib')
 	
 	cd "dragengine-$pkgver"
 	scons -j 8 --install-sandbox="$(realpath "$pkgdir")" \
