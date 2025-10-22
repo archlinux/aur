@@ -1,12 +1,12 @@
 pkgbase = soundfont-gmgsx
 	pkgdesc = Soundfont by Kenneth Rundt which has similar sound as gm.dls
-	pkgver = 2.9.1.0
+	pkgver = 2.9.1.1
 	pkgrel = 1
 	url = http://www.synthfont.com
 	arch = any
 	license = LicenseRef-SynthFont
 	makedepends = innoextract
-	source = 2.9.1.0.exe::http://www.synthfont.com/SynthFont2x64Setup.exe
-	sha256sums = 979b50c029cc9e9cf9bce97bab2eaf14cece835d770f8914be8ee1383eb51f41
+	source = soundfont-gmgsx2.9.1.1.exe::http://www.synthfont.com/SynthFont2x64Setup.exe
+	sha256sums = SKIP
 
 pkgname = soundfont-gmgsx
