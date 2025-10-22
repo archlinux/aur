@@ -1,6 +1,6 @@
 pkgbase = canpass
 	pkgdesc = Cool console password manager for your linux system!
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://thendsoft.su/canpass.html
 	arch = x86_64

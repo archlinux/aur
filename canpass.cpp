@@ -1097,7 +1097,7 @@ public:
     }
     
     void showMenu() {
-        std::cout << Colors::RED << "\n  ===== CanPass =====" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_BLUE << "\n ====== CanPass ======" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "1. " << Colors::BRIGHT_WHITE << "Add Password" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "2. " << Colors::BRIGHT_WHITE << "Get Password" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "3. " << Colors::BRIGHT_WHITE << "Services and Accounts List" << Colors::RESET << std::endl;
@@ -1108,6 +1108,7 @@ public:
         std::cout << Colors::BRIGHT_GREEN << "8. " << Colors::BRIGHT_WHITE << "Import Passwords" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "9. " << Colors::BRIGHT_WHITE << "Export Passwords" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "10. " << Colors::BRIGHT_WHITE << "Exit" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "11. " << Colors::BRIGHT_WHITE << "Clear terminal" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_BLUE << "Choose action: " << Colors::RESET;
     }
     
@@ -1148,6 +1149,10 @@ public:
                 case 10:
                     std::cout << Colors::BRIGHT_CYAN << "👋 Goodbye!" << Colors::RESET << std::endl;
                     return;
+                case 11:
+					system("clear");
+                    break;
+
                 default:
                     std::cout << Colors::BRIGHT_RED << "✗ Invalid choice! Try again." << Colors::RESET << std::endl;
                     break;
