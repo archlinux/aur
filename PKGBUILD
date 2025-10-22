@@ -2,7 +2,7 @@
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 
 pkgname=noctalia-shell
-pkgver=2.16.1
+pkgver=2.19.0
 pkgrel=1
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
@@ -22,13 +22,14 @@ optdepends=(
   'matugen-bin: Material You color scheme generation'
   'cava: Audio visualizer component'
   'wlsunset: For supporting NightLight'
-  'ddcutil: For external display brightess control'
+  'power-profiles-daemon: For power profile management'
+  'ddcutil: For external display brightness control'
 )
 
 conflicts=('noctalia-shell-git')
 
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('91ad4dfb3e9922b5b4bd5d8a63f4fc1cc5136130505e9e6a4893122cd5f99965')
+sha256sums=('f5d3ab7e397c11d6bb00431c08b11211726d6b219668db26a522ad98fd0f2ba7')
 
 package() {
   cd "$srcdir/$pkgname"
