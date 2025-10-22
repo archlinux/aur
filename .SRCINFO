@@ -1,19 +1,18 @@
 pkgbase = sofie-chef-bin
 	pkgdesc = Disrupting the industry & stirring pots.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/Sofie-Automation/sofie-chef
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
 	depends = electron36
-	provides = sofie-chef=0.4.2
+	provides = sofie-chef=0.4.3
 	conflicts = sofie-chef
-	source = sofie-chef-0.4.2.AppImage::https://github.com/Sofie-Automation/sofie-chef/releases/download/v0.4.2/SofieChef-0.4.2-Linux-Executable.AppImage
-	source = LICENSE-0.4.2::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.4.2/LICENSE
+	source = sofie-chef-0.4.3-x86_64.AppImage::https://github.com/Sofie-Automation/sofie-chef/releases/download/v0.4.3/SofieChef-0.4.3-Linux-Executable.AppImage
+	source = LICENSE-0.4.3::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.4.3/LICENSE
 	source = sofie-chef.sh
-	sha256sums = b735388693c823446b4d6496265af8ed359a5072fd95639fcf818e7533f18526
+	sha256sums = 2972fa0e09ab8c604b7c6b0725c02ff160bc0125178492b375fd75f2aa3a09cc
 	sha256sums = ac26e60681c9ba6ec5eddf9b1afa3442d8ada9d77fe42b4515c42a2a15392c44
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = sofie-chef-bin
