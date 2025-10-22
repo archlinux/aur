@@ -4,12 +4,14 @@ pkgname=(seanime-server-git seanime-desktop-git seanime-denshi-git)
 _pkgname=seanime
 _electronver=36
 pkgver=v2.9.10.r2.g8afb003
-pkgrel=2
+_release=${pkgver%.r*}
+pkgrel=3
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
 url="https://github.com/5rahim/seanime"
 license=('GPL-3.0-only')
 makedepends=('git'
+             'make'
              'npm'
              'go>=1.24.1'
              'gcc-libs' 
@@ -17,17 +19,16 @@ makedepends=('git'
              'glib2' 
              'libsoup3' 'libsoup-3.0.so'
              'gtk3' 
-             'rust' #to be removed later
+             'rust'
              'cargo' 
              'clang' 
              'llvm' 
              'lld' 
              'patchelf' 
-             'cargo-tauri' 
              'webkit2gtk-4.1' 
              'gdk-pixbuf2' 'libgdk_pixbuf-2.0.so' 
              'libappindicator-gtk3' 
-             'cairo' 'libcairo.so' 
+             'cairo' 'libcairo.so'
              "electron$_electronver")
 source=("git+https://github.com/5rahim/seanime.git"
         "seanime-denshi.desktop"
@@ -58,18 +59,13 @@ build() {
     cd "${_pkgname}/seanime-web"
 
     # Mirror the workflow, build order webapp > server > tauri app & denshi, start with webapp below
-
-    npm install --cache "${srcdir}/npm-cache"
-    npm run build
-    npm run build:desktop
-    npm run build:denshi
+    # Check for "npm ci" fix
+    npm install 
+    #Prep for server and desktop (tauri)
+    make build-web
+    #Prep for denshi
+    make build-denshi
     
-    # Needed for the server build, tauri build and denshi
-
-    cp -r out/ ../web
-    cp -r out-denshi/ ../seanime-denshi/web-denshi
-    cp -r out-desktop/ ../web-desktop
-
     cd "${srcdir}/${_pkgname}"
 
     # Prepare for server
@@ -99,7 +95,7 @@ build() {
     -o ./binaries/seanime-server-linux-${GOARCH} \
     .	
     
-    # Denshi app
+    #Denshi app
 
     cd "seanime-denshi/"
     
@@ -111,33 +107,29 @@ build() {
     # Prepare for system electron for use after build
 
     electronDist=/usr/lib/electron$_electronver
-	electronVer=$(electron$_electronver --version | tail -c +2)
+    electronVer=$(electron$_electronver --version | tail -c +2)
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
-    npm install --cache "${srcdir}/npm-cache"
-    npm exec -c "electron-builder --linux --x64 --dir -c.electronDist=$electronDist \
-	             -c.electronVersion=$electronVer"
-   
-   # Tauri app
+    npm ci
+    npm run build:linux -- --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
+
+    #Tauri app
+    # Might be removed "https://github.com/5rahim/seanime/issues/303"
   
-   cd "${srcdir}/${_pkgname}/seanime-desktop"
+    cd "${srcdir}/${_pkgname}/seanime-desktop"
   
-   npm install --cache "${srcdir}/npm-cache"
+    cp "${srcdir}/${_pkgname}/binaries/seanime-server-linux-${GOARCH}" ./src-tauri/binaries/seanime-"$(rustc -vV | sed -n 's/host: //p')"
   
-   cd "src-tauri/"
+    # Build tauri with clang to not raise errors, bundle as 'deb' instead of 'appimage'
   
-   cp "${srcdir}/${_pkgname}/binaries/seanime-server-linux-${GOARCH}" ./binaries/seanime-"$(rustc -vV | sed -n 's/host: //p')"
-  
-   # Build tauri with clang to not raise errors, bundle as 'deb' instead of 'appimage'
-  
-   export CC=clang
-   export CXX=clang++
-   export ld=lld
-   export llvm=1
-   export RUSTFLAGS="-Cforce-frame-pointers=yes -Clinker=clang -Clink-arg=-fuse-ld=lld"
-   export RUSTUP_TOOLCHAIN=stable
-   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-   cargo tauri build -b deb --ci
+    export CC=clang
+    export CXX=clang++
+    export ld=lld
+    export llvm=1
+    export RUSTFLAGS="-Cforce-frame-pointers=yes -Clinker=clang -Clink-arg=-fuse-ld=lld"
+    export RUSTUP_TOOLCHAIN=stable
+    npm ci
+    npm run tauri build -- -b deb --ci
 }
 
 package_seanime-server-git() {
@@ -185,6 +177,6 @@ package_seanime-desktop-git() {
     install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}-desktop"
 
     cd "${_pkgname}/seanime-desktop/src-tauri"
-
-    cp -r 'target/release/bundle/deb/Seanime Desktop_2.9.10_amd64/data/usr' "${pkgdir}"
+    # Borrow "GOARCH" value 
+    cp -r "target/release/bundle/deb/Seanime Desktop_${_release//v/}_${GOARCH}/data/usr" "${pkgdir}"
 }

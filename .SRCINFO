@@ -1,12 +1,13 @@
 pkgbase = seanime-git
 	pkgdesc = Open-source media server with a web interface and desktop app for anime and manga.
 	pkgver = v2.9.10.r2.g8afb003
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/5rahim/seanime
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = make
 	makedepends = npm
 	makedepends = go>=1.24.1
 	makedepends = gcc-libs
@@ -21,7 +22,6 @@ pkgbase = seanime-git
 	makedepends = llvm
 	makedepends = lld
 	makedepends = patchelf
-	makedepends = cargo-tauri
 	makedepends = webkit2gtk-4.1
 	makedepends = gdk-pixbuf2
 	makedepends = libgdk_pixbuf-2.0.so
