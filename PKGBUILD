@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mullvad-vpn-beta-bin
-_pkgver=2025.10
-_channel=stable
+_pkgver=2025.13
+_channel=beta
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
@@ -24,17 +24,17 @@ conflicts=('mullvad-vpn')
 install='mullvad-vpn.install'
 source=('mullvad-vpn.sh')
 source_x86_64=(
-#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
+#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
   )
 source_aarch64=(
-#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
+#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
   )
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('3afd935b8e4c37fb7e746b87f884dbca6ee19efdba524daebf0d25238e17bf11'
+sha256sums_x86_64=('e17dafbd7ab2a6c4379493a4335c560dfb5216d06cac44f6c9fa4a991c9dd162'
                    'SKIP')
-sha256sums_aarch64=('ed3abb02e575590f9eca0d5772db74995eba69e6bdb214b63ef8f38abe654e56'
+sha256sums_aarch64=('d85b1ac68709a7949b1dd3784f46e0826386d0935bc310ec48c84e01f6e6daad'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
