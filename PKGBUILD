@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=28
+pkgrel=29
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -78,7 +78,7 @@ StartupNotify=true
 EOF
 
     # 创建清理脚本
-    cat > "$pkgdir/usr/share/$_pkgname/cleanup.sh" << 'CLEANUP_EOF'
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/$_pkgname/cleanup.sh" << 'CLEANUP_EOF'
 #!/bin/bash
 # NoteGen cleanup script for package removal
 
