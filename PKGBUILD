@@ -113,6 +113,8 @@ pkgver() {
   local official_pkgrel
   official_pkgver=$(grep -E '^pkgver=' PKGBUILD | cut -d= -f2)
   official_pkgrel=$(grep -E '^pkgrel=' PKGBUILD | cut -d= -f2)
+  #official_pkgver=6.5.0
+  #official_pkgrel=1
 
   popd >/dev/null
   rm -rf "$tmpdir"
@@ -150,6 +152,10 @@ prepare() {
 
   echo ">>> Applying MR 7980 patch for frame pacing fixes..."
   patch -Np1 -i "${srcdir}/0001-retick.patch"
+
+  echo ">>> Applying additional patches..."
+  patch -Np1 -i "${srcdir}/0002_set_interval_1ms.patch"
+
 
   echo ">>> Fixing docbook URLs (if any)..."
   find "$srcdir" -name index.docbook -print0 | xargs -0 sed -i -e 's|url=" http|url="http|g' || true
