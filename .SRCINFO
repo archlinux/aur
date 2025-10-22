@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-mr
 	pkgdesc = Marathi language pack for Firefox Nightly
-	pkgver = 146.0a1.20251021.125738
+	pkgver = 146.0a1.20251021.202405
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-mr
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-mr-146.0a1.20251021.125738.xpi
-	source = firefox-nightly-i18n-mr-146.0a1.20251021.125738.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.mr.langpack.xpi
-	sha256sums = 7362567a1200c69027345855324a85db523c6c827a7ba0ed39f827c6ff8d2099
+	noextract = firefox-nightly-i18n-mr-146.0a1.20251021.202405.xpi
+	source = firefox-nightly-i18n-mr-146.0a1.20251021.202405.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.mr.langpack.xpi
+	sha256sums = 828c03deb42e12779196ac44b1949bd2aa250c1c05fc178e5a483d93552591ed
 
 pkgname = firefox-nightly-i18n-mr
