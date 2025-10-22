@@ -5,7 +5,6 @@ pkgbase = hwatch-bin
 	url = https://github.com/blacknon/hwatch
 	arch = x86_64
 	license = MIT
-	makedepends = gzip
 	depends = glibc
 	provides = hwatch
 	conflicts = hwatch

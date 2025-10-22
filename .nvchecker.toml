@@ -1,0 +1,5 @@
+["hwatch-bin"]
+source = "github"
+github = "blacknon/hwatch"
+use_latest_release = true
+prefix = "v"
