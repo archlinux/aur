@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=25
+pkgrel=26
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -27,6 +27,11 @@ prepare() {
     export SQLITE_USE_STATIC=0
     export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
 
+    # 优化pkg-config和链接器行为
+    export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
+    export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
+    export RUSTFLAGS="-L/usr/lib"
+
     # 安装前端依赖
     pnpm install --frozen-lockfile
 }
@@ -41,6 +46,11 @@ build() {
     export LIBSQLITE3_INCLUDE_DIR=/usr/include
     export SQLITE_USE_STATIC=0
     export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
+
+    # 优化pkg-config和链接器行为
+    export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
+    export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
+    export RUSTFLAGS="-L/usr/lib"
 
     # 构建前端 (由Tauri的beforeBuildCommand调用)
     pnpm build
