@@ -1,6 +1,6 @@
 pkgbase = ytmplaylistsync
 	pkgdesc = A covenient way to sync locally all your YTMusic playists
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Nias26/YTMusicPlaylistSync
@@ -12,9 +12,9 @@ pkgbase = ytmplaylistsync
 	depends = python-halo>=0.0.31-7
 	depends = python-pyxdg>=0.28-4
 	depends = python-yaml>=6.0.3-1
-	source = playlistmng-1.1.tar.gz::https://github.com/Nias26/YTMPlaylistSync/releases/download/v1.1/playlistmng.tar.gz
-	source = LICENSE::https://github.com/Nias26/YTMPlaylistSync/releases/download/v1.1/LICENSE
-	sha256sums = 76c50a06db380a349f4cc80ba762cb8073532f890543c47033d593741129ec74
+	source = playlistmng-1.2::https://raw.githubusercontent.com/Nias26/YTMPlaylistSync/refs/tags/v1.2/playlistmng
+	source = LICENSE::https://raw.githubusercontent.com/Nias26/YTMPlaylistSync/refs/tags/v1.2/LICENSE
+	sha256sums = 6c307fc3beb042a535f66451a71c800a2297511683859aa8cf770094aeb2c472
 	sha256sums = 0afe56a95cbfc12001182dc98ed965083dde7f3f1247c53b611c9ee8dde150fd
 
 pkgname = ytmplaylistsync
