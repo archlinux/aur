@@ -1,11 +1,12 @@
 pkgbase = telepresence2-bin
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
 	pkgver = 2.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	depends = sshfs
 	provides = telepresence2
 	conflicts = telepresence2-git
 	conflicts = telepresence2

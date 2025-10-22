@@ -4,12 +4,13 @@ _name=telepresence
 _pkgname=${_name}2
 pkgname=${_pkgname}-bin
 pkgver=2.25.0 # renovate: datasource=github-releases depName=telepresenceio/telepresence
-pkgrel=1
+pkgrel=2
 url="https://github.com/telepresenceio/$_name"
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
 license=('Apache-2.0')
 arch=('x86_64' 'aarch64')
 provides=(telepresence2)
+depends=(sshfs)
 conflicts=("$_pkgname-git" "$_pkgname")
 source_x86_64=("$_name-x86_64::$url/releases/download/v${pkgver}/telepresence-linux-amd64")
 sha512sums_x86_64=('d8294b1db027dbdaa91bb45d26eeccda5e4addd1dc1abc83d96ae69ec88e8d793760ad2add8d05c356df2a4e320617dcdce20cfc08e1b31fe535b917b3fe10a5')
