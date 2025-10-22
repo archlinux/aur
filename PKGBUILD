@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=tellusim-core-sdk-git
-pkgver=r22.fdd3b31
+pkgver=r34.7609040
 pkgrel=1
 pkgdesc='Cross-platform C++ SDK for graphics, compute and simulation (git version)'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=(
     'gcc-libs'
     'glibc')
 optdepends=(
-    'java-runtime: for java bindings'
-    'python: for python bindings')
+    'java-runtime: for Java bindings'
+    'python: for Python bindings')
 makedepends=(
     'clang'
     'cmake'
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
 
 prepare() {
     patch -d Tellusim_Core_SDK -Np1 -i "${srcdir}/010-tellesium-core-sdk-fix-build.patch"
-    rm Tellusim_Core_SDK/plugins/binding/java/tellusim.jar
+    rm -f Tellusim_Core_SDK/plugins/binding/java/tellusim.jar
 }
 
 pkgver() {
@@ -81,12 +81,12 @@ package() {
     local _sitepkgs
     _sitepkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"
     
-    install -d -m755 "${pkgdir}/usr/"{lib,share/doc}
+    install -d -m755 "${pkgdir}/usr/"{include,lib,share/doc}
     install -D -m644 Tellusim_Core_SDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     cp -dr --no-preserve='ownership' Tellusim_Core_SDK/docs "${pkgdir}/usr/share/doc/tellusim-core-sdk"
-    cp -dr --no-preserve='ownership' Tellusim_Core_SDK/include "${pkgdir}/usr"
+    cp -dr --no-preserve='ownership' Tellusim_Core_SDK/include "${pkgdir}/usr/include/tellusim"
     cp -dr --no-preserve='ownership' Tellusim_Core_SDK/lib/linux/x64/libTellusim_x64.so "${pkgdir}/usr/lib"
-    install -D -m644 Tellusim_Core_SDK/plugins/binding/{capi,java}/include/* "${pkgdir}/usr/include"
+    install -D -m644 Tellusim_Core_SDK/plugins/binding/{capi,java}/include/* "${pkgdir}/usr/include/tellusim"
     install -D -m644 build-capi/libTellusimC_x64.so -t "${pkgdir}/usr/lib"
     install -D -m644 build-java/libTellusimJNI_x64.so -t "${pkgdir}/usr/lib"
     install -D -m644 build-python/libTellusimPy_x64.so "${pkgdir}${_sitepkgs}/tellusim/tellusim.so"
