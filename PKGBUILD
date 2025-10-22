@@ -2,7 +2,7 @@
 
 # Previous Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=phanpy-bin
-pkgver=2025.09.17.03ce4c6
+pkgver=2025.10.09.1897f38
 pkgrel=1
 pkgdesc="A minimalistic opinionated Mastodon web client"
 arch=('any')
@@ -12,7 +12,7 @@ provides=('phanpy')
 conflicts=('phanpy')
 source=(phanpy-dist-$pkgver.tar.gz::"https://github.com/cheeaun/phanpy/releases/download/${pkgver}/phanpy-dist.tar.gz")
 noextract=(phanpy-dist-$pkgver.tar.gz)
-sha256sums=('3f3b135976dba07c11673d4d3ac2ea7d1d7c534270efa564ede7d7c3d4f0bfb0')
+sha256sums=('9688dff5d51c732c9a5bc45cf6deb470c050a9c3dd2bf06f1fb6e466f6dece91')
 
 package() {
 	install -d "${pkgdir}"/usr/share/webapps/phanpy/
