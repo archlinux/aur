@@ -1,6 +1,6 @@
 pkgbase = multiqc
 	pkgdesc = Aggregate results from bioinformatics analyses across many samples into a single report
-	pkgver = 1.29
+	pkgver = 1.31
 	pkgrel = 1
 	url = https://multiqc.info/
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = multiqc
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python-boto3
 	depends = python-click
 	depends = python-coloredlogs
 	depends = python-dotenv
@@ -32,7 +33,7 @@ pkgbase = multiqc
 	depends = python-tqdm
 	depends = python-pydantic
 	depends = python-typeguard
-	source = multiqc-1.29.tar.gz::https://github.com/MultiQC/MultiQC/archive/refs/tags/v1.29.tar.gz
-	sha256sums = 3c81adf083fa899e4d4538021577b17d8f5f88fdf0b364a0192722ff85547936
+	source = multiqc-1.31.tar.gz::https://github.com/MultiQC/MultiQC/archive/refs/tags/v1.31.tar.gz
+	sha256sums = 0d9aef6a956dc34eeb1667e128f79a2969f0c57c3958403991c9ee5f22d70096
 
 pkgname = multiqc
