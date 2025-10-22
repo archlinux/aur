@@ -1,6 +1,6 @@
 pkgbase = linux-vfio-lts
 	pkgdesc = LTS Linux
-	pkgver = 6.12.52
+	pkgver = 6.12.54
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -25,18 +25,18 @@ pkgbase = linux-vfio-lts
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.52.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.52.tar.sign
-	source = config-6.12.52::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/6.12.52-1/config
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.54.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.54.tar.sign
+	source = config-6.12.54::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 	source = 1001-6.8.0-add-acs-overrides.patch
 	source = 1002-6.8.0-i915-vga-arbiter.patch
-	source = 0001-6.12.52-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/6.12.52-1/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-6.12.52-set-default-aslr-bits.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/6.12.52-1/0002-Default-to-maximum-amount-of-ASLR-bits.patch
-	source = 0003-6.12.52-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/6.12.52-1/0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
+	source = 0001-6.12.54-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-6.12.54-set-default-aslr-bits.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-Default-to-maximum-amount-of-ASLR-bits.patch
+	source = 0003-6.12.54-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = b4850cf670a032c70f38b713a27d62046c5f747caf028c5f50b18f98606a9eb1
+	sha256sums = 1b0dcd3390efeec44e528748609bafcf36eae895bb68c8f62ac5e5940943de62
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = b35c26d5dc31fb9cfac68292de7b1ee8ca93b4647e4958efc77e2c77f586f1f2
