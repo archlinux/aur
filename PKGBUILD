@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=sniffert
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Terminal-based disk analyzer inspired by SpaceSniffer, written in Fortran'
 arch=('x86_64' 'i686' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = sniffert
 	pkgdesc = Terminal-based disk analyzer inspired by SpaceSniffer, written in Fortran
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/sniffert
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sniffert
 	depends = glibc
 	depends = ncurses
 	depends = fzf
-	source = git+https://github.com/FortranGoingOnForty/sniffert.git#tag=v0.5.0
+	source = git+https://github.com/FortranGoingOnForty/sniffert.git#tag=v0.6.0
 	sha256sums = SKIP
 
 pkgname = sniffert
